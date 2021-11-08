@@ -1,0 +1,7 @@
+{
+	"name": "@ag.ds-next/button",
+	"version": "1.0.0",
+	"main": "dist/ag.ds-next-button.cjs.js",
+	"module": "dist/ag.ds-next-button.esm.js",
+	"license": "MIT"
+}

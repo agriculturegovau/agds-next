@@ -1,0 +1,20 @@
+:root {
+	--app-bg: #ffffff;
+	--code-bg: #f0f7ff;
+	--code: #363b41;
+	--border: #c4cad1;
+	--font-body: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial,
+		sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+	--text: #313131;
+	--text-heading: ;
+	--link: #00698f;
+	--focus: #9263de;
+	--info: #00bfe9;
+	--info-bg: #d9f2f8;
+	--warning: #f69900;
+	--warning-bg: #edc88d;
+	--danger: #d60000;
+	--danger-bg: #f1c5c5;
+	--selection: #c497f5c6;
+	--selection-text: #ffffff;
+}

@@ -1,0 +1,10 @@
+{
+	"name": "@ag.ds-next/body",
+	"version": "1.0.0",
+	"main": "dist/ag.ds-next-body.cjs.js",
+	"module": "dist/ag.ds-next-body.esm.js",
+	"license": "MIT",
+	"dependencies": {
+		"@vanilla-extract/css": "^1.6.3"
+	}
+}

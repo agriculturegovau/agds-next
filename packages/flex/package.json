@@ -1,0 +1,10 @@
+{
+	"name": "@ag.ds-next/flex",
+	"version": "1.0.0",
+	"main": "dist/ag.ds-next-flex.cjs.js",
+	"module": "dist/ag.ds-next-flex.esm.js",
+	"license": "MIT",
+	"dependencies": {
+		"classnames": "^2.3.1"
+	}
+}
