@@ -1,6 +1,6 @@
 {
 	"name": "@ag.ds-next/example-site",
-	"version": "1.0.0",
+	"version": "0.1.0",
 	"main": "index.js",
 	"author": "Mike Hazell <mikehazell@users.noreply.github.com>",
 	"license": "MIT",
@@ -16,11 +16,6 @@
 	},
 	"dependencies": {
 		"@preconstruct/next": "^3.0.1",
-		"@vanilla-extract/babel-plugin": "^1.1.2",
-		"@vanilla-extract/css": "^1.6.3",
-		"@vanilla-extract/next-plugin": "^1.0.1",
-		"@vanilla-extract/sprinkles": "^1.3.1",
-		"classnames": "^2.3.1",
 		"next": "12.0.4",
 		"react": "17.0.2",
 		"react-dom": "^17.0.2"
