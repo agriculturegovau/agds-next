@@ -3,5 +3,8 @@
 	"version": "0.1.0",
 	"main": "dist/ag.ds-next-core.cjs.js",
 	"module": "dist/ag.ds-next-core.esm.js",
-	"license": "MIT"
+	"license": "MIT",
+	"dependencies": {
+		"@emotion/react": "^11.7.0"
+	}
 }

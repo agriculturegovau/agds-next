@@ -1,7 +1,0 @@
-{
-	"name": "@ag.ds-next/utils",
-	"version": "0.1.0",
-	"main": "dist/ag.ds-next-utils.cjs.js",
-	"module": "dist/ag.ds-next-utils.esm.js",
-	"license": "MIT"
-}

@@ -41,9 +41,6 @@
 	},
 	"workspaces": [
 		"packages/core"
-		// "packages/*",
-		// "example-site",
-		// "docs"
 	],
 	"preconstruct": {
 		"packages": [
