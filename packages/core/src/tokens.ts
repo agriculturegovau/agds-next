@@ -7,6 +7,7 @@ const breakpoints = {
 	lg: 992,
 	xl: 1200,
 } as const;
+
 const rem = '16px';
 
 /** "unit" used for all type and grid calculations */
@@ -20,13 +21,13 @@ export type Font = 'body' | 'mono';
 
 /** Predetermined pixel sizes from a 1.25 type-scale rounded to the nearest "unit" (vertical grid) */
 const fontsize = {
-	xs: '14px',
-	sm: '16px',
-	md: '20px',
-	lg: '24px',
-	xl: '32px',
-	xxl: '40px',
-	xxxl: '48px',
+	xs: ['0.875rem', '14px'],
+	sm: ['1rem', '16px'],
+	md: ['1.25rem', '20px'],
+	lg: ['1.5rem', '24px'],
+	xl: ['2rem', '32px'],
+	xxl: ['2.5rem', '40px'],
+	xxxl: ['3rem', '48px'],
 };
 export type FontSize = keyof typeof fontsize;
 
@@ -70,8 +71,6 @@ export type ColorTheme = {
 		text: string;
 		action: string;
 		focus: string;
-		hint: string;
-		hintAlt: string;
 		muted: string;
 	};
 	background: {
@@ -90,8 +89,6 @@ const light: ColorTheme = {
 		text: '#313131',
 		action: '#00698f',
 		focus: '#9263de',
-		hint: '#6f777b',
-		hintAlt: '#61696b',
 		muted: '#626262',
 	},
 	background: {
@@ -110,8 +107,6 @@ const dark: ColorTheme = {
 		text: '#FFFFFF',
 		action: '#61daff',
 		focus: '#c390f9',
-		hint: '#6f777b',
-		hintAlt: '#61696b',
 		muted: '#bdd2d7',
 	},
 	background: {
@@ -125,13 +120,15 @@ const dark: ColorTheme = {
 	},
 };
 
-const intentColor = {
+const systemColors = {
 	error: '#d60000',
 	success: '#0b996c',
 	warning: '#f69900',
 	info: '#00bfe9',
+	hint: '#6f777b',
+	hintAlt: '#61696b',
 };
-export type Intent = keyof typeof intentColor;
+export type SystemColor = keyof typeof systemColors;
 
 const borderRadius = unit;
 
@@ -147,6 +144,6 @@ export const tokens = {
 	maxwidth,
 	light,
 	dark,
-	intentColor,
+	systemColors,
 	borderRadius,
 };

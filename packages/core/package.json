@@ -5,6 +5,10 @@
 	"module": "dist/ag.ds-next-core.esm.js",
 	"license": "MIT",
 	"dependencies": {
-		"@emotion/react": "^11.7.0"
+		"@emotion/react": "^11.7.0",
+		"facepaint": "^1.2.1"
+	},
+	"devDependencies": {
+		"@types/facepaint": "^1.2.2"
 	}
 }

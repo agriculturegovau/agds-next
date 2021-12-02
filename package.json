@@ -40,7 +40,9 @@
 		"typescript": "^4.4.4"
 	},
 	"workspaces": [
-		"packages/core"
+		"packages/*",
+		"docs",
+		"site"
 	],
 	"preconstruct": {
 		"packages": [

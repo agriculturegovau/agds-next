@@ -1,6 +1,5 @@
 import { defineProperties, createSprinkles } from '@vanilla-extract/sprinkles';
 import { tokens } from './tokens';
-import { vars } from './theme.css';
 
 const responsiveProperties = defineProperties({
 	conditions: Object.fromEntries(

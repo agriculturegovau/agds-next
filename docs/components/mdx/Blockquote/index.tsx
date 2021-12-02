@@ -1,4 +1,5 @@
-import * as styles from './style.css';
+import cn from 'classnames';
+import styles from './style.module.css';
 
 type BlockquoteProps = React.AllHTMLAttributes<HTMLQuoteElement>;
 

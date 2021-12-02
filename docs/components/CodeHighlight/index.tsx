@@ -2,7 +2,8 @@ import PrismHighlight, { Language, Prism } from 'prism-react-renderer';
 import rangeParser from 'parse-numeric-range';
 
 import { theme } from '../prism-theme';
-import * as styles from './styles.css';
+
+import styles from './styles.module.css';
 
 function getShouldHighlightLine(meta?: string) {
 	const pattern = /{([\d,-]+)}/;

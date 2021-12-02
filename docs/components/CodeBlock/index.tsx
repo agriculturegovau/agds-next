@@ -1,7 +1,7 @@
 import { CodeHighlight } from '../CodeHighlight';
 import { ReactLive } from '../ReactLive';
 
-import * as styles from './styles.css';
+import styles from './styles.module.css';
 
 type CodeBlockProps = {
 	className: string;

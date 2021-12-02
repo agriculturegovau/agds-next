@@ -1,0 +1,8 @@
+.header {
+	border-top: 1px dashed var(--border);
+}
+
+.headerInner {
+	padding: 0.5rem 1rem;
+	text-align: right;
+}
