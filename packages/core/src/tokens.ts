@@ -79,9 +79,7 @@ export type ColorTheme = {
 		pageAlt: string;
 		shadeAlt: string;
 	};
-	border: {
-		default: string;
-	};
+	border: string;
 };
 
 const light: ColorTheme = {
@@ -97,9 +95,7 @@ const light: ColorTheme = {
 		pageAlt: '#ebebeb',
 		shadeAlt: '#e0e0e0',
 	},
-	border: {
-		default: '#808080',
-	},
+	border: '#808080',
 };
 
 const dark: ColorTheme = {
@@ -115,9 +111,7 @@ const dark: ColorTheme = {
 		pageAlt: '#0d414d',
 		shadeAlt: '#0a323c',
 	},
-	border: {
-		default: '#95b7bf',
-	},
+	border: '#95b7bf',
 };
 
 const systemColors = {
