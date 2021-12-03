@@ -1,13 +1,13 @@
 import React from 'react';
 import { css } from '@emotion/react';
-import { forwardRefWithAs } from '@ag.ds-next/utils';
+import { forwardRefWithAs } from '@ag.ds-next/core';
 import { Box, BoxProps } from '@ag.ds-next/box';
 
 export const Body = forwardRefWithAs<'div', BoxProps>(function Body(
 	props,
 	ref
 ) {
-	return <Box ref={ref} color="text" className={styles.body} {...props} />;
+	return <Box ref={ref} color="text" className={bodyClass} {...props} />;
 });
 
 export const bodyClass = css({

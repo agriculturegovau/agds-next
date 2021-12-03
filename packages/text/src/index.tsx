@@ -1,4 +1,4 @@
-import { forwardRefWithAs } from '@ag.ds-next/utils';
+import { forwardRefWithAs } from '@ag.ds-next/core';
 import { Box, BoxProps } from '@ag.ds-next/box';
 
 export const Text = forwardRefWithAs<'span', BoxProps>(function Text(
