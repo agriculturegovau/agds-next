@@ -3,17 +3,11 @@
 	"version": "0.1.0",
 	"private": true,
 	"scripts": {
-		"dev": "next",
+		"dev": "next dev",
 		"dev:watch": "next-remote-watch ./posts",
-		"build": "next build",
+		"build": "next build && next export",
 		"start": "next start",
-		"export": "next export",
-		"netlify": "yarn build && yarn export",
-		"format": "prettier --write \"**/*.{js,md,mdx,json,html}\"",
-		"test:format": "prettier --list-different \"**/*.{js,md,mdx,json,html}\"",
-		"lint": "next lint",
-		"test": "yarn test:format && yarn test:lint",
-		"nuke": "rm -rf node_modules && rm -rf .next rm -rf out && rm yarn.lock"
+		"lint": "next lint"
 	},
 	"dependencies": {
 		"@preconstruct/next": "^3.0.1",

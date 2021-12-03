@@ -11,9 +11,10 @@
 	"scripts": {
 		"postinstall": "manypkg check && preconstruct dev",
 		"lint": "yarn lint:example && yarn lint:docs && yarn lint:prettier && yarn lint:typescript",
+		"lint:packages": "yarn eslint packages/**",
 		"lint:example": "yarn --cwd example-site lint",
 		"lint:docs": "yarn --cwd docs lint",
-		"lint:prettier": "prettier --list-different \"**/*.{js,jsx,json,ts,tsx,md,mdx}\"",
+		"lint:prettier": "prettier --list-different \"**/*.{js,jsx,json,ts,tsx,md,mdx,yml,yaml}\"",
 		"lint:typescript": "tsc --noEmit",
 		"format": "prettier --write \"**/*.{js,jsx,json,ts,tsx,md,mdx}\"",
 		"example:dev": "yarn --cwd example-site next dev",
