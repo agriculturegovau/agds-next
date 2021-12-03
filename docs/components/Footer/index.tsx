@@ -1,12 +1,18 @@
-export function Footer() {
+import React from 'react';
+
+type FooterProps = {
+	style?: React.CSSProperties;
+};
+
+export function Footer(props: FooterProps) {
 	return (
 		<footer
 			style={{
-				gridArea: 'footer',
 				textAlign: 'center',
 				background: 'var(--code-bg)',
 				padding: 'var(--space-xlarge) 0',
 				borderTop: '2px dashed var(--border)',
+				...props.style,
 			}}
 		>
 			<div

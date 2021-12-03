@@ -4,7 +4,7 @@ description: A primitive layout component
 ---
 
 ```jsx live
-<Box background="page" borderColor="default" padding={2} textAlign="center">
+<Box theme="dark" background="page" border padding={2} textAlign="center">
 	A Box example
 </Box>
 ```

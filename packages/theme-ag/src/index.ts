@@ -5,8 +5,6 @@ const light: ColorTheme = {
 		text: '#313131',
 		action: '#00558b',
 		focus: '#9263de',
-		hint: '#6f777b',
-		hintAlt: '#61696b',
 		muted: '#626262',
 	},
 	background: {
@@ -15,9 +13,7 @@ const light: ColorTheme = {
 		pageAlt: '#ebebeb',
 		shadeAlt: '#e0e0e0',
 	},
-	border: {
-		default: '#808080',
-	},
+	border: '#808080',
 };
 
 const dark: ColorTheme = {
@@ -25,8 +21,6 @@ const dark: ColorTheme = {
 		text: '#FFFFFF',
 		action: '#61daff',
 		focus: '#c390f9',
-		hint: '#6f777b',
-		hintAlt: '#61696b',
 		muted: '#bdd2d7',
 	},
 	background: {
@@ -35,10 +29,11 @@ const dark: ColorTheme = {
 		pageAlt: '#474747',
 		shadeAlt: '#0A323C',
 	},
-	border: {
-		default: '#95b7bf',
-	},
+	border: '#95b7bf',
 };
+
+// hint: '#6f777b',
+// hintAlt: '#61696b',
 
 export const tokens = {
 	light,

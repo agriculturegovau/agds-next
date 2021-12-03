@@ -1,6 +1,6 @@
 {
 	"name": "@ag.ds-next/theme-ag",
-	"version": "1.0.0",
+	"version": "0.1.0",
 	"main": "dist/ag.ds-next-theme-ag.cjs.js",
 	"module": "dist/ag.ds-next-theme-ag.esm.js",
 	"license": "MIT"

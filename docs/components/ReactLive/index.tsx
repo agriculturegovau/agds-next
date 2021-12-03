@@ -7,7 +7,7 @@ import { Button } from '@ag.ds-next/button';
 import { Box } from '@ag.ds-next/box';
 
 import { CodeHighlight } from '../CodeHighlight';
-import * as styles from './styles.css';
+import styles from './styles.module.css';
 
 const codeStyles = {
 	backgroundColor: 'var(--code-bg)',
@@ -28,7 +28,7 @@ function highlightCode(code: string) {
 function Header({ code }: { code: string }) {
 	return (
 		<div className={styles.header}>
-			<Box textAlign="right">
+			<Box>
 				<Button onClick={() => copy(code)}>Copy</Button>
 			</Box>
 		</div>

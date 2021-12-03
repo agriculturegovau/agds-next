@@ -13,27 +13,20 @@ type LayoutProps = {
 	style?: CSSProperties;
 };
 
-export function Layout({
-	pkgs,
-	noNav,
-	children,
-	className,
-	style,
-}: LayoutProps) {
+export function Layout({ pkgs, children }: LayoutProps) {
 	return (
 		<Fragment>
 			<div
 				style={{
 					display: 'grid',
-					gridTemplateColumns: '18.75rem auto',
-					...style,
+					gridTemplateColumns: '18.75rem 1fr',
+					minHeight: 'calc(100vh - 3rem)',
 				}}
-				className={className}
 			>
-				{!noNav && <Navigation pkgs={pkgs} />}
-				<div style={{ margin: '0 1rem' }}>{children}</div>
+				<Navigation pkgs={pkgs} />
+				<div>{children}</div>
 			</div>
-			<Footer />
+			<Footer style={{ height: '3rem' }} />
 		</Fragment>
 	);
 }

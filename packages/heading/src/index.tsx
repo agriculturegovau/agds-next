@@ -1,9 +1,6 @@
 import React from 'react';
-import cn from 'classnames';
-import { forwardRefWithAs } from '@ag.ds-next/utils';
+import { forwardRefWithAs } from '@ag.ds-next/core';
 import { Box, BoxProps } from '@ag.ds-next/box';
-
-import * as styles from './styles.css';
 
 const sizeMap = {
 	h1: 'xxl',
@@ -43,7 +40,6 @@ export const Heading = forwardRefWithAs<'h2', HeadingProps>(function Heading(
 			fontFamily={fontFamily}
 			fontWeight={fontWeight}
 			lineHeight={lineHeight}
-			className={cn([styles.base])}
 			{...props}
 		/>
 	);

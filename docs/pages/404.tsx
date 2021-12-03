@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { Layout } from '../components/Layout';
 import { getAllPkgs } from '../lib/mdxUtils';
 import { H1, H2 } from '@ag.ds-next/heading';
-import { Flex } from '@ag.ds-next/flex';
+import { Flex } from '@ag.ds-next/box';
 
 import { Pkgs } from '../types';
 
@@ -13,15 +13,7 @@ type PageProps = {
 
 export default function NotFoundPage({ pkgs }: PageProps) {
 	return (
-		<Layout
-			pkgs={pkgs}
-			noNav
-			style={{
-				alignItems: 'center',
-				justifyContent: 'center',
-				textAlign: 'center',
-			}}
-		>
+		<Layout pkgs={pkgs}>
 			<Flex flexDirection="column" gap={2}>
 				<H1>404</H1>
 				<H2>Sitemap</H2>

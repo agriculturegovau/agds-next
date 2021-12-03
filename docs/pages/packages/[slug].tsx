@@ -7,7 +7,7 @@ import { mdxComponents } from '../../components/utils';
 import { EditPage } from '../../components/EditPage';
 import { Layout } from '../../components/Layout';
 import { H1 } from '@ag.ds-next/heading';
-import { Flex } from '@ag.ds-next/flex';
+import { Flex } from '@ag.ds-next/box';
 
 export default function Packages({
 	pkgs,

@@ -1,0 +1,7 @@
+.code {
+	/* we don't want ligatures because they look strange in lots of cases
+	   and mess up the editor */
+	font-feature-settings: initial;
+	--moz-font-feature-settings: initial;
+	min-width: 100%;
+}

@@ -1,4 +1,14 @@
 module.exports = {
-	presets: ['next/babel', '@babel/preset-env', '@babel/preset-typescript'],
-	plugins: ['@vanilla-extract/babel-plugin'],
+	presets: [
+		[
+			'next/babel',
+			{
+				'preset-react': {
+					runtime: 'automatic',
+					importSource: '@emotion/react',
+				},
+			},
+		],
+	],
+	plugins: ['@emotion/babel-plugin'],
 };

@@ -23,15 +23,16 @@ function Link({ path, children }: { path: string; children: string }) {
 
 type NavigationProps = {
 	pkgs: Pkgs;
+	style?: React.CSSProperties;
 };
 
-export function Navigation({ pkgs }: NavigationProps) {
+export function Navigation({ pkgs, style }: NavigationProps) {
 	return (
-		<Box
-			as="nav"
-			padding={2}
+		<nav
 			style={{
 				position: 'relative',
+				padding: '1rem',
+				...style,
 			}}
 		>
 			<div
@@ -40,7 +41,14 @@ export function Navigation({ pkgs }: NavigationProps) {
 					top: '1rem',
 				}}
 			>
-				<ul>
+				<ul
+					style={{
+						listStyle: 'none',
+						margin: 0,
+						padding: 0,
+						lineHeight: 1.5,
+					}}
+				>
 					<li>
 						<Link path="/">Home</Link>
 					</li>
@@ -56,7 +64,14 @@ export function Navigation({ pkgs }: NavigationProps) {
 						>
 							Packages
 						</h2>
-						<ul>
+						<ul
+							style={{
+								listStyle: 'none',
+								margin: 0,
+								padding: 0,
+								paddingLeft: '0.5rem',
+							}}
+						>
 							{pkgs.map(({ slug, name }) => (
 								<li key={slug}>
 									<Link path={`/packages/${slug}`}>{name}</Link>
@@ -66,6 +81,6 @@ export function Navigation({ pkgs }: NavigationProps) {
 					</li>
 				</ul>
 			</div>
-		</Box>
+		</nav>
 	);
 }
