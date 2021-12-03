@@ -38,7 +38,7 @@ export function mapResponsiveProp<T>(
 			key in resValue ? valueMapper(resValue[key]) : null
 		);
 	}
-	return [value];
+	return [valueMapper(value)];
 }
 
 export type ResponsiveProp<T> =

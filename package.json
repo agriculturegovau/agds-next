@@ -29,6 +29,7 @@
 		"@babel/plugin-transform-runtime": "^7.16.4",
 		"@babel/preset-env": "^7.16.4",
 		"@changesets/cli": "^2.18.0",
+		"@emotion/babel-preset-css-prop": "^11.2.0",
 		"@manypkg/cli": "^0.19.1",
 		"@preconstruct/cli": "^2.1.5",
 		"@preconstruct/next": "^3.0.1",
@@ -62,8 +63,5 @@
 		"ignoredRules": [
 			"ROOT_HAS_DEV_DEPENDENCIES"
 		]
-	},
-	"dependencies": {
-		"@emotion/babel-preset-css-prop": "^11.2.0"
 	}
 }
