@@ -20,7 +20,9 @@
 		"example:dev": "yarn --cwd example-site next dev",
 		"example:build": "yarn --cwd example-site next build",
 		"docs:dev": "yarn --cwd docs dev",
-		"docs:build": "yarn --cwd docs build"
+		"docs:build": "yarn --cwd docs build",
+		"storybook": "start-storybook -p 6006",
+		"storybook:build": "build-storybook"
 	},
 	"devDependencies": {
 		"@babel/core": "^7.16.0",
@@ -30,10 +32,15 @@
 		"@manypkg/cli": "^0.19.1",
 		"@preconstruct/cli": "^2.1.5",
 		"@preconstruct/next": "^3.0.1",
+		"@storybook/addon-actions": "^6.4.4",
+		"@storybook/addon-essentials": "^6.4.4",
+		"@storybook/addon-links": "^6.4.4",
+		"@storybook/react": "^6.4.4",
 		"@types/node": "16.11.7",
 		"@types/react": "17.0.34",
 		"@typescript-eslint/eslint-plugin": "^5.3.1",
 		"@typescript-eslint/parser": "^5.3.1",
+		"babel-loader": "^8.2.3",
 		"eslint": "^7.30.0",
 		"eslint-config-next": "12.0.4",
 		"eslint-config-prettier": "^8.3.0",
