@@ -6,62 +6,54 @@ description: Core includes a range of styles, variables and code that form the f
 ## Colour
 
 ```jsx live
-<Flex gap={2} justifyContent="space-between">
-	<Box>Something about colors</Box>
-
-	<Flex flexDirection="column" gap={2} padding={2} border rounded>
-		<Flex theme="light">
-			{['page', 'shade', 'pageAlt', 'shadeAlt'].map((bg) => (
-				<Flex
-					key={bg}
-					flexDirection="column"
-					gap={2}
-					background={bg}
-					paddingY={3}
-					paddingX={4}
-				>
-					{['text', 'muted', 'action', 'focus'].map((fg) => (
-						<Text key={fg} color={fg}>
-							{fg}
-						</Text>
-					))}
-				</Flex>
-			))}
-		</Flex>
-		<Flex theme="dark">
-			{['page', 'shade', 'pageAlt', 'shadeAlt'].map((bg) => (
-				<Flex
-					key={bg}
-					flexDirection="column"
-					gap={2}
-					background={bg}
-					paddingY={3}
-					paddingX={4}
-				>
-					{['text', 'muted', 'action', 'focus'].map((fg) => (
-						<Text key={fg} color={fg}>
-							{fg}
-						</Text>
-					))}
-					<Text color="focus">
-						<hr />
+<Flex flexDirection="column" gap={2} padding={2} border rounded>
+	<Flex theme="light">
+		{['page', 'shade', 'pageAlt', 'shadeAlt'].map((bg) => (
+			<Flex
+				key={bg}
+				flexDirection="column"
+				gap={2}
+				background={bg}
+				paddingY={10}
+				paddingX={20}
+			>
+				{['text', 'muted', 'action', 'focus'].map((fg) => (
+					<Text key={fg} color={fg}>
+						{fg}
 					</Text>
-				</Flex>
-			))}
-		</Flex>
+				))}
+			</Flex>
+		))}
+	</Flex>
+	<Flex theme="dark">
+		{['page', 'shade', 'pageAlt', 'shadeAlt'].map((bg) => (
+			<Flex
+				key={bg}
+				flexDirection="column"
+				gap={2}
+				background={bg}
+				paddingY={10}
+				paddingX={20}
+			>
+				{['text', 'muted', 'action', 'focus'].map((fg) => (
+					<Text key={fg} color={fg}>
+						{fg}
+					</Text>
+				))}
+				<Text color="focus">
+					<hr />
+				</Text>
+			</Flex>
+		))}
 	</Flex>
 </Flex>
 ```
 
 ## Typography
 
-<Flex gap={2} justifyContent="space-between">
-	<Box>
-		Some things about typography
-	</Box>
-
+```jsx live
 <Flex theme="light" background="page" gap={2} border padding={2}>
-	<Flex flexDirection="column" gap={2} >
+	<Flex flexDirection="column" gap={2}>
 		<Text fontSize="sm" fontWeight="bold">
 			Default
 		</Text>
@@ -96,4 +88,4 @@ description: Core includes a range of styles, variables and code that form the f
 		))}
 	</Flex>
 </Flex>
-</Flex>
+```

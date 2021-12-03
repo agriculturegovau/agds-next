@@ -20,7 +20,7 @@ const font = {
 export type Font = 'body' | 'mono';
 
 /** Predetermined pixel sizes from a 1.25 type-scale rounded to the nearest "unit" (vertical grid) */
-const fontsize = {
+const fontSize = {
 	xs: ['0.875rem', '14px'],
 	sm: ['1rem', '16px'],
 	md: ['1.25rem', '20px'],
@@ -29,7 +29,7 @@ const fontsize = {
 	xxl: ['2.5rem', '40px'],
 	xxxl: ['3rem', '48px'],
 };
-export type FontSize = keyof typeof fontsize;
+export type FontSize = keyof typeof fontSize;
 
 const fontWeight = {
 	normal: 'normal',
@@ -131,7 +131,7 @@ export const tokens = {
 	rem,
 	unit,
 	font,
-	fontsize,
+	fontSize,
 	fontWeight,
 	lineHeight,
 	spacing,

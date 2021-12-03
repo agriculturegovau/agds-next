@@ -3,44 +3,67 @@ import { Global, css } from '@emotion/react';
 import { tokens } from './tokens';
 
 const themeMap = {
-	lightForegroundText: '--light-foreground-text',
-	lightForegroundAction: '--light-foreground-action',
-	lightForegroundFocus: '--light-foreground-focus',
-	lightForegroundHint: '--light-foreground-hint',
-	lightForegroundHintAlt: '--light-foreground-hint-alt',
-	lightForegroundMuted: '--light-foreground-muted',
-	lightBackgroundPage: '--light-background-page',
-	lightBackgroundShade: '--light-background-shade',
-	lightBackgroundPageAlt: '--light-background-page-alt',
-	lightBackgroundShadeAlt: '--light-background-shade-alt',
-	lightBorder: '--light-border',
-	darkForegroundText: '--dark-foreground-text',
-	darkForegroundAction: '--dark-foreground-action',
-	darkForegroundFocus: '--dark-foreground-focus',
-	darkForegroundHint: '--dark-foreground-hint',
-	darkForegroundHintAlt: '--dark-foreground-hint-alt',
-	darkForegroundMuted: '--dark-foreground-muted',
-	darkBackgroundPage: '--dark-background-page',
-	darkBackgroundShade: '--dark-background-shade',
-	darkBackgroundPageAlt: '--dark-background-page-alt',
-	darkBackgroundShadeAlt: '--dark-background-shade-alt',
-	darkBorder: '--dark-border',
+	lightForegroundText: '--agds-light-foreground-text',
+	lightForegroundAction: '--agds-light-foreground-action',
+	lightForegroundFocus: '--agds-light-foreground-focus',
+	lightForegroundMuted: '--agds-light-foreground-muted',
+	lightBackgroundPage: '--agds-light-background-page',
+	lightBackgroundShade: '--agds-light-background-shade',
+	lightBackgroundPageAlt: '--agds-light-background-page-alt',
+	lightBackgroundShadeAlt: '--agds-light-background-shade-alt',
+	lightBorder: '--agds-light-border',
+	darkForegroundText: '--agds-dark-foreground-text',
+	darkForegroundAction: '--agds-dark-foreground-action',
+	darkForegroundFocus: '--agds-dark-foreground-focus',
+	darkForegroundMuted: '--agds-dark-foreground-muted',
+	darkBackgroundPage: '--agds-dark-background-page',
+	darkBackgroundShade: '--agds-dark-background-shade',
+	darkBackgroundPageAlt: '--agds-dark-background-page-alt',
+	darkBackgroundShadeAlt: '--agds-dark-background-shade-alt',
+	darkBorder: '--agds-dark-border',
 } as const;
 
 type ThemeConfig = Record<keyof typeof themeMap, string>;
 
+const defaultTheme: ThemeConfig = {
+	lightForegroundText: tokens.light.foreground.text,
+	lightForegroundAction: tokens.light.foreground.action,
+	lightForegroundFocus: tokens.light.foreground.focus,
+	lightForegroundMuted: tokens.light.foreground.muted,
+	lightBackgroundPage: tokens.light.background.page,
+	lightBackgroundShade: tokens.light.background.shade,
+	lightBackgroundPageAlt: tokens.light.background.pageAlt,
+	lightBackgroundShadeAlt: tokens.light.background.shadeAlt,
+	lightBorder: tokens.light.border,
+	darkForegroundText: tokens.dark.foreground.text,
+	darkForegroundAction: tokens.dark.foreground.action,
+	darkForegroundFocus: tokens.dark.foreground.focus,
+	darkForegroundMuted: tokens.dark.foreground.muted,
+	darkBackgroundPage: tokens.dark.background.page,
+	darkBackgroundShade: tokens.dark.background.shade,
+	darkBackgroundPageAlt: tokens.dark.background.pageAlt,
+	darkBackgroundShadeAlt: tokens.dark.background.shadeAlt,
+	darkBorder: tokens.dark.border,
+};
+
+type ThemeKey = keyof typeof themeMap;
+
 export function Theme({
 	children,
 	applyReset = true,
-	theme,
-}: React.PropsWithChildren<{ theme: ThemeConfig; applyReset?: boolean }>) {
+	theme = defaultTheme,
+}: React.PropsWithChildren<{
+	theme?: Partial<ThemeConfig>;
+	applyReset?: boolean;
+}>) {
 	return (
 		<Fragment>
 			<Global
 				styles={[
 					{
 						'body, html': {
-							background: theme.lightBackgroundPage,
+							background:
+								theme.lightBackgroundPage ?? defaultTheme.lightBackgroundPage,
 						},
 					},
 					applyReset
@@ -52,7 +75,7 @@ export function Theme({
 						':root': Object.fromEntries(
 							Object.entries(themeMap).map(([key, variableName]) => [
 								variableName,
-								theme[key as keyof typeof themeMap],
+								theme[key as ThemeKey] ?? defaultTheme[key as ThemeKey],
 							])
 						),
 					},
@@ -131,15 +154,15 @@ export const themes = {
 		'--agds-border': 'var(--agds-light-border)',
 	}),
 	dark: css({
-		'--agds-foreground-text': 'var(--agds-light-foreground-text)',
-		'--agds-foreground-action': 'var(--agds-light-foreground-action)',
-		'--agds-foreground-focus': 'var(--agds-light-foreground-focus)',
-		'--agds-foreground-muted': 'var(--agds-light-foreground-muted)',
-		'--agds-background-page': 'var(--agds-light-background-page)',
-		'--agds-background-shade': 'var(--agds-light-background-shade)',
-		'--agds-background-page-alt': 'var(--agds-light-background-page-alt)',
-		'--agds-background-shade-alt': 'var(--agds-light-background-shade-alt)',
-		'--agds-border': 'var(--agds-light-border)',
+		'--agds-foreground-text': 'var(--agds-dark-foreground-text)',
+		'--agds-foreground-action': 'var(--agds-dark-foreground-action)',
+		'--agds-foreground-focus': 'var(--agds-dark-foreground-focus)',
+		'--agds-foreground-muted': 'var(--agds-dark-foreground-muted)',
+		'--agds-background-page': 'var(--agds-dark-background-page)',
+		'--agds-background-shade': 'var(--agds-dark-background-shade)',
+		'--agds-background-page-alt': 'var(--agds-dark-background-page-alt)',
+		'--agds-background-shade-alt': 'var(--agds-dark-background-shade-alt)',
+		'--agds-border': 'var(--agds-dark-border)',
 	}),
 } as const;
 

@@ -8,7 +8,7 @@ import { useToggleState } from '@ag.ds-next/core';
 const Home: NextPage = () => {
 	const [theme, toggle] = useToggleState('light', 'dark');
 	return (
-		<div className="gold-de">
+		<Box fontFamily="body">
 			<Head>
 				<title>AG Design System | Example site</title>
 				<meta
@@ -39,7 +39,7 @@ const Home: NextPage = () => {
 					</Box>
 				</Box>
 			</main>
-		</div>
+		</Box>
 	);
 };
 

@@ -19,9 +19,23 @@ type ThemeProps = Partial<{
 type TypographyProps = Partial<{
 	fontWeight: keyof typeof tokens.fontWeight;
 	fontFamily: keyof typeof tokens.font;
-	fontSize: keyof typeof tokens.fontsize;
+	fontSize: keyof typeof tokens.fontSize;
 	lineHeight: keyof typeof tokens.lineHeight;
 }>;
+
+function typographyStyles({
+	fontWeight,
+	fontFamily,
+	fontSize,
+	lineHeight,
+}: TypographyProps) {
+	return {
+		fontWeight: fontWeight ? tokens.fontWeight[fontWeight] : undefined,
+		fontFamily: fontFamily ? tokens.font[fontFamily] : undefined,
+		fontSize: fontSize ? tokens.fontSize[fontSize] : undefined,
+		lineHeight: lineHeight ? tokens.lineHeight[lineHeight] : undefined,
+	};
+}
 
 type LayoutProps = Partial<{
 	display: ResponsiveProp<'block' | 'flex' | 'none'>;
@@ -46,6 +60,15 @@ type BorderProps = Partial<{
 	rounded: boolean;
 }>;
 
+function borderStyles(rounded?: boolean) {
+	return {
+		borderColor: themeColors.border,
+		borderWidth: 1,
+		borderStyle: 'solid',
+		borderRadius: rounded ? tokens.borderRadius : undefined,
+	};
+}
+
 type PaddingProps = Partial<
 	Record<
 		| 'paddingTop'
@@ -59,19 +82,7 @@ type PaddingProps = Partial<
 	>
 >;
 
-function borderStyles(rounded?: boolean) {
-	return {
-		borderColor: themeColors.border,
-		borderWidth: 1,
-		borderStyle: 'solid',
-		borderRadius: rounded ? tokens.borderRadius : undefined,
-	};
-}
-
-/**
- * TODO: Explain how overlapping shorthands padding is applied.
- */
-
+// TODO: Explain how overlapping shorthands padding is applied.
 function paddingStyles({
 	paddingTop,
 	paddingBottom,
@@ -101,6 +112,7 @@ function paddingStyles({
 	};
 }
 
+// UTILS
 function mapSpacing(v: keyof typeof tokens.spacing | undefined | null) {
 	return v === undefined || v === null ? undefined : tokens.spacing[v];
 }
@@ -130,6 +142,10 @@ export function boxStyles({
 	paddingX,
 	paddingY,
 	padding,
+	fontWeight,
+	fontFamily,
+	fontSize,
+	lineHeight,
 	...restProps
 }: BoxProps) {
 	return [
@@ -160,6 +176,13 @@ export function boxStyles({
 					paddingX,
 					paddingY,
 					padding,
+				}),
+
+				...typographyStyles({
+					fontWeight,
+					fontFamily,
+					fontSize,
+					lineHeight,
 				}),
 			}),
 		]),
