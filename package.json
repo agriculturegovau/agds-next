@@ -22,7 +22,7 @@
 		"docs:dev": "yarn --cwd docs dev",
 		"docs:build": "yarn --cwd docs build",
 		"storybook": "start-storybook -p 6006",
-		"storybook:build": "build-storybook"
+		"storybook:build": "build-storybook -o docs/public/storybook"
 	},
 	"devDependencies": {
 		"@babel/core": "^7.16.0",
