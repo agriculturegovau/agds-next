@@ -1,5 +1,5 @@
 import React from 'react';
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { ComponentStory, ComponentMeta, Story } from '@storybook/react';
 import { Flex } from './Flex';
 import { Stack } from './Stack';
 import { Box } from './Box';
@@ -27,8 +27,16 @@ Default.args = {
 	gap: 6,
 	theme: 'light',
 };
+Default.story = {
+	parameters: {
+		docs: {
+			storyDescription:
+				'`Flex` convenience wrapper around the `Box` component. It applies some default flex styling and should be used for horizontal layouts which require consistent spacing.',
+		},
+	},
+};
 
-export const Alignment = () => (
+export const Alignment: Story = () => (
 	<Stack gap={6} alignItems="flex-start">
 		<Box fontFamily="monospace">center</Box>
 		<Flex gap={6} alignItems="center" border>
@@ -60,3 +68,11 @@ export const Alignment = () => (
 		</Flex>
 	</Stack>
 );
+Alignment.story = {
+	parameters: {
+		docs: {
+			storyDescription:
+				'Use `alignItems` to set the vertical alignment of children.',
+		},
+	},
+};
