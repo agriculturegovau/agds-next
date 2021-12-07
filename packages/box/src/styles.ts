@@ -12,9 +12,21 @@ type SpacingToken = keyof typeof tokens.spacing;
 
 type ThemeProps = Partial<{
 	theme: keyof typeof themes;
+}>;
+
+type ColorProps = Partial<{
 	color: keyof typeof themeColors.foreground;
 	background: keyof typeof themeColors.background;
 }>;
+
+function colorStyles({ color, background }: ColorProps) {
+	return {
+		color: color ? themeColors.foreground[color] : undefined,
+		backgroundColor: background
+			? themeColors.background[background]
+			: undefined,
+	};
+}
 
 type TypographyProps = Partial<{
 	fontWeight: keyof typeof tokens.fontWeight;
@@ -38,7 +50,9 @@ function typographyStyles({
 }
 
 type LayoutProps = Partial<{
-	display: ResponsiveProp<'block' | 'flex' | 'none'>;
+	display: ResponsiveProp<
+		'block' | 'flex' | 'inline' | 'inline-block' | 'inline-flex' | 'none'
+	>;
 	flexDirection: ResponsiveProp<'row' | 'column'>;
 	flexWrap: ResponsiveProp<'nowrap' | 'wrap' | 'wrap-reverse'>;
 	justifyContent: ResponsiveProp<
@@ -53,34 +67,68 @@ type LayoutProps = Partial<{
 		'stretch' | 'flex-start' | 'flex-end' | 'center' | 'baseline'
 	>;
 	gap: ResponsiveProp<SpacingToken>;
+	width: ResponsiveProp<number | string>;
+	minWidth: ResponsiveProp<number | string>;
+	maxWidth: ResponsiveProp<number | string>;
+	height: ResponsiveProp<number | string>;
+	minHeight: ResponsiveProp<number | string>;
+	maxHeight: ResponsiveProp<number | string>;
 }>;
+
+function layoutStyles({
+	display,
+	flexDirection,
+	flexWrap,
+	justifyContent,
+	alignItems,
+	gap,
+	width,
+	minWidth,
+	maxWidth,
+	height,
+	minHeight,
+	maxHeight,
+}: LayoutProps) {
+	return {
+		display: mapResponsiveProp(display),
+		flexDirection: mapResponsiveProp(flexDirection),
+		flexWrap: mapResponsiveProp(flexWrap),
+		justifyContent: mapResponsiveProp(justifyContent),
+		alignItems: mapResponsiveProp(alignItems),
+		gap: mapResponsiveProp(gap, mapSpacing),
+		width: mapResponsiveProp(width),
+		minWidth: mapResponsiveProp(minWidth),
+		maxWidth: mapResponsiveProp(maxWidth),
+		height: mapResponsiveProp(height),
+		minHeight: mapResponsiveProp(minHeight),
+		maxHeight: mapResponsiveProp(maxHeight),
+	};
+}
 
 type BorderProps = Partial<{
 	border: boolean;
 	rounded: boolean;
 }>;
 
-function borderStyles(rounded?: boolean) {
+function borderStyles({ border, rounded }: BorderProps) {
 	return {
-		borderColor: themeColors.border,
-		borderWidth: 1,
-		borderStyle: 'solid',
+		border: border ? `1px solid ${themeColors.border}` : undefined,
+		// borderColor: border ? themeColors.border : undefined,
+		// borderWidth: border ? 1 : undefined,
+		// borderStyle: border ? 'solid' : undefined,
 		borderRadius: rounded ? tokens.borderRadius : undefined,
 	};
 }
 
-type PaddingProps = Partial<
-	Record<
-		| 'paddingTop'
-		| 'paddingBottom'
-		| 'paddingRight'
-		| 'paddingLeft'
-		| 'paddingX'
-		| 'paddingY'
-		| 'padding',
-		ResponsiveProp<SpacingToken>
-	>
->;
+type PaddingProps = Partial<{
+	paddingTop: ResponsiveProp<SpacingToken>;
+	paddingBottom: ResponsiveProp<SpacingToken>;
+	paddingRight: ResponsiveProp<SpacingToken>;
+	paddingLeft: ResponsiveProp<SpacingToken>;
+	paddingX: ResponsiveProp<SpacingToken>;
+	paddingY: ResponsiveProp<SpacingToken>;
+	padding: ResponsiveProp<SpacingToken>;
+}>;
 
 // TODO: Explain how overlapping shorthands padding is applied.
 function paddingStyles({
@@ -112,12 +160,16 @@ function paddingStyles({
 	};
 }
 
-// UTILS
+/**
+ * UTILS
+ */
+
 function mapSpacing(v: keyof typeof tokens.spacing | undefined | null) {
 	return v === undefined || v === null ? undefined : tokens.spacing[v];
 }
 
 export type BoxProps = ThemeProps &
+	ColorProps &
 	BorderProps &
 	TypographyProps &
 	LayoutProps &
@@ -135,6 +187,12 @@ export function boxStyles({
 	justifyContent,
 	alignItems,
 	gap,
+	width,
+	minWidth,
+	maxWidth,
+	height,
+	minHeight,
+	maxHeight,
 	paddingTop,
 	paddingBottom,
 	paddingRight,
@@ -152,22 +210,25 @@ export function boxStyles({
 		css([
 			theme ? themes[theme] : undefined,
 			mq({
-				// Color
-				color: color ? themeColors.foreground[color] : undefined,
-				backgroundColor: background
-					? themeColors.background[background]
-					: undefined,
+				...colorStyles({ background, color }),
 
-				// Border
-				...(border ? borderStyles(rounded) : undefined),
+				...borderStyles({ border, rounded }),
 
-				// Layout
-				display: mapResponsiveProp(display),
-				flexDirection: mapResponsiveProp(flexDirection),
-				flexWrap: mapResponsiveProp(flexWrap),
-				justifyContent: mapResponsiveProp(justifyContent),
-				alignItems: mapResponsiveProp(alignItems),
-				gap: mapResponsiveProp(gap, mapSpacing),
+				...layoutStyles({
+					display,
+					flexDirection,
+					flexWrap,
+					justifyContent,
+					alignItems,
+					gap,
+					width,
+					minWidth,
+					maxWidth,
+					height,
+					minHeight,
+					maxHeight,
+				}),
+
 				...paddingStyles({
 					paddingTop,
 					paddingBottom,
