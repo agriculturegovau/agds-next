@@ -4,7 +4,7 @@
 	"private": true,
 	"scripts": {
 		"dev": "next dev",
-		"dev:watch": "next-remote-watch ./posts",
+		"dev:watch": "next-remote-watch ../packages",
 		"build": "next build && next export",
 		"start": "next start",
 		"lint": "next lint"
