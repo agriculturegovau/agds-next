@@ -19,6 +19,10 @@ export const Text = forwardRefWithAs<'span', BoxProps>(function Text(
 		<Box
 			ref={ref}
 			as={as}
+			css={{
+				marginTop: 0,
+				marginBottom: 0,
+			}}
 			color={color}
 			fontFamily={fontFamily}
 			fontSize={fontSize}

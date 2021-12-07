@@ -35,6 +35,7 @@ export const Heading = forwardRefWithAs<'h2', HeadingProps>(function Heading(
 		<Box
 			as={Tag}
 			ref={ref}
+			css={{ marginTop: 0, marginBottom: 0 }}
 			color={color}
 			fontSize={fontSize}
 			fontFamily={fontFamily}
