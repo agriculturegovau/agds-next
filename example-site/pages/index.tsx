@@ -71,8 +71,9 @@ const Home: NextPage = () => {
 								<Heading type="h2">Welcome to the AG Design-System</Heading>
 								<Text>
 									Support the callout with some short explanatory text. You
-									don't need more than a couple of sentences. Use buttons to
-									give your user a clear call to action about what to do next.
+									don&apos;t need more than a couple of sentences. Use buttons
+									to give your user a clear call to action about what to do
+									next.
 								</Text>
 							</Stack>
 							<Box width={600} height={200} background="shadeAlt">
