@@ -29,10 +29,10 @@ function colorStyles({ color, background }: ColorProps) {
 }
 
 type TypographyProps = Partial<{
-	fontWeight: keyof typeof tokens.fontWeight;
-	fontFamily: keyof typeof tokens.font;
-	fontSize: keyof typeof tokens.fontSize;
-	lineHeight: keyof typeof tokens.lineHeight;
+	fontWeight: ResponsiveProp<keyof typeof tokens.fontWeight>;
+	fontFamily: ResponsiveProp<keyof typeof tokens.font>;
+	fontSize: ResponsiveProp<keyof typeof tokens.fontSize>;
+	lineHeight: ResponsiveProp<keyof typeof tokens.lineHeight>;
 }>;
 
 function typographyStyles({
@@ -42,10 +42,10 @@ function typographyStyles({
 	lineHeight,
 }: TypographyProps) {
 	return {
-		fontWeight: fontWeight ? tokens.fontWeight[fontWeight] : undefined,
-		fontFamily: fontFamily ? tokens.font[fontFamily] : undefined,
-		fontSize: fontSize ? tokens.fontSize[fontSize] : undefined,
-		lineHeight: lineHeight ? tokens.lineHeight[lineHeight] : undefined,
+		fontWeight: mapResponsiveProp(fontWeight, (t) => tokens.fontWeight[t]),
+		fontFamily: mapResponsiveProp(fontFamily, (t) => tokens.font[t]),
+		fontSize: mapResponsiveProp(fontSize, (t) => tokens.fontSize[t]),
+		lineHeight: mapResponsiveProp(lineHeight, (t) => tokens.lineHeight[t]),
 	};
 }
 
@@ -58,7 +58,7 @@ type LayoutProps = Partial<{
 	justifyContent: ResponsiveProp<
 		| 'flex-start'
 		| 'flex-end'
-		| 'center,'
+		| 'center'
 		| 'space-between'
 		| 'space-around'
 		| 'space-evenly'
@@ -164,7 +164,7 @@ function paddingStyles({
  * UTILS
  */
 
-function mapSpacing(v: keyof typeof tokens.spacing | undefined | null) {
+function mapSpacing(v: keyof typeof tokens.spacing) {
 	return v === undefined || v === null ? undefined : tokens.spacing[v];
 }
 
