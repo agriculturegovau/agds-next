@@ -30,7 +30,8 @@ jobs:
         run: yarn
 
       - name: Build
-        run: yarn storybook:build
+        run: |
+          yarn storybook:build
           yarn docs:build
 
       - name: Deploy 🚀
