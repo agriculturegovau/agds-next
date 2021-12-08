@@ -170,5 +170,5 @@ export const outline = {
 	outlineWidth: '3px',
 	outlineStyle: 'solid',
 	outlineColor: themeColors.foreground.focus,
-	outlineOffset: tokens.spacing[0.5],
+	outlineOffset: 0.5 * tokens.unit,
 };

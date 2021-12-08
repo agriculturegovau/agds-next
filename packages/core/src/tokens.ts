@@ -45,21 +45,22 @@ const lineHeight = {
 
 export type LintHeight = keyof typeof lineHeight;
 
-const spacing = {
-	[0]: '0',
-	[0.25]: '1px',
-	[0.5]: '2px',
-	[0.75]: '3px',
-	[1]: '4px',
-	[1.5]: '6px',
-	[2]: '8px',
-	[3]: '12px',
-	[4]: '16px',
-	[5]: '20px',
-	[6]: '24px',
-};
-
-export type Spacing = keyof typeof spacing;
+export type Spacing =
+	| 0
+	| 0.25
+	| 0.5
+	| 0.75
+	| 1
+	| 1.5
+	| 2
+	| 3
+	| 4
+	| 5
+	| 6
+	| 8
+	| 16
+	| 20
+	| 80;
 
 /* awe-maxwidth for line lengths (the ‘measure’) */
 const maxwidth = '42em';
@@ -134,7 +135,7 @@ export const tokens = {
 	fontSize,
 	fontWeight,
 	lineHeight,
-	spacing,
+	// spacing,
 	maxwidth,
 	light,
 	dark,

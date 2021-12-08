@@ -6,9 +6,8 @@ import {
 	ResponsiveProp,
 	mapResponsiveProp,
 	mq,
+	Spacing,
 } from '@ag.ds-next/core';
-
-type SpacingToken = keyof typeof tokens.spacing;
 
 type ThemeProps = Partial<{
 	theme: keyof typeof themes;
@@ -66,7 +65,7 @@ type LayoutProps = Partial<{
 	alignItems: ResponsiveProp<
 		'stretch' | 'flex-start' | 'flex-end' | 'center' | 'baseline'
 	>;
-	gap: ResponsiveProp<SpacingToken>;
+	gap: ResponsiveProp<Spacing>;
 	width: ResponsiveProp<number | string>;
 	minWidth: ResponsiveProp<number | string>;
 	maxWidth: ResponsiveProp<number | string>;
@@ -121,13 +120,13 @@ function borderStyles({ border, rounded }: BorderProps) {
 }
 
 type PaddingProps = Partial<{
-	paddingTop: ResponsiveProp<SpacingToken>;
-	paddingBottom: ResponsiveProp<SpacingToken>;
-	paddingRight: ResponsiveProp<SpacingToken>;
-	paddingLeft: ResponsiveProp<SpacingToken>;
-	paddingX: ResponsiveProp<SpacingToken>;
-	paddingY: ResponsiveProp<SpacingToken>;
-	padding: ResponsiveProp<SpacingToken>;
+	paddingTop: ResponsiveProp<Spacing>;
+	paddingBottom: ResponsiveProp<Spacing>;
+	paddingRight: ResponsiveProp<Spacing>;
+	paddingLeft: ResponsiveProp<Spacing>;
+	paddingX: ResponsiveProp<Spacing>;
+	paddingY: ResponsiveProp<Spacing>;
+	padding: ResponsiveProp<Spacing>;
 }>;
 
 // TODO: Explain how overlapping shorthands padding is applied.
@@ -164,8 +163,8 @@ function paddingStyles({
  * UTILS
  */
 
-function mapSpacing(v: keyof typeof tokens.spacing) {
-	return v === undefined || v === null ? undefined : tokens.spacing[v];
+function mapSpacing(v: Spacing) {
+	return tokens.unit * v; // TODO: make this produce rem values
 }
 
 export type BoxProps = ThemeProps &
