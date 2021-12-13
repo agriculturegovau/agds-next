@@ -106,15 +106,35 @@ function layoutStyles({
 
 type BorderProps = Partial<{
 	border: boolean;
+	borderLeft: boolean;
+	borderRight: boolean;
+	borderTop: boolean;
+	borderBottom: boolean;
+	borderX: boolean;
+	borderY: boolean;
 	rounded: boolean;
 }>;
 
-function borderStyles({ border, rounded }: BorderProps) {
+function borderStyles({
+	border,
+	borderLeft,
+	borderRight,
+	borderTop,
+	borderBottom,
+	borderX,
+	borderY,
+	rounded,
+}: BorderProps) {
+	const anyBorder =
+		border || borderLeft || borderRight || borderBottom || borderX || borderY;
 	return {
-		border: border ? `1px solid ${themeColors.border}` : undefined,
-		// borderColor: border ? themeColors.border : undefined,
-		// borderWidth: border ? 1 : undefined,
-		// borderStyle: border ? 'solid' : undefined,
+		borderWidth: 0,
+		borderLeftWidth: border ?? borderX ?? borderLeft ? `1px` : undefined,
+		borderRightWidth: border ?? borderX ?? borderRight ? `1px` : undefined,
+		borderTopWidth: border ?? borderY ?? borderTop ? `1px` : undefined,
+		borderBottomWidth: border ?? borderY ?? borderBottom ? `1px` : undefined,
+		borderColor: anyBorder ? themeColors.border : undefined,
+		borderStyle: anyBorder ? 'solid' : undefined,
 		borderRadius: rounded ? tokens.borderRadius : undefined,
 	};
 }
@@ -164,7 +184,7 @@ function paddingStyles({
  */
 
 function mapSpacing(v: Spacing) {
-	return tokens.unit * v; // TODO: make this produce rem values
+	return `${v}rem`;
 }
 
 export type BoxProps = ThemeProps &
@@ -179,6 +199,12 @@ export function boxStyles({
 	color,
 	background,
 	border,
+	borderLeft,
+	borderRight,
+	borderTop,
+	borderBottom,
+	borderX,
+	borderY,
 	rounded,
 	display,
 	flexDirection,
@@ -208,10 +234,24 @@ export function boxStyles({
 	return [
 		css([
 			theme ? themes[theme] : undefined,
+
+			// Reset margins for things like ul / ol, headings
+
+			{ margin: 0 },
+
 			mq({
 				...colorStyles({ background, color }),
 
-				...borderStyles({ border, rounded }),
+				...borderStyles({
+					border,
+					borderLeft,
+					borderRight,
+					borderTop,
+					borderBottom,
+					borderX,
+					borderY,
+					rounded,
+				}),
 
 				...layoutStyles({
 					display,

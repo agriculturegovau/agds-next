@@ -45,22 +45,8 @@ const lineHeight = {
 
 export type LintHeight = keyof typeof lineHeight;
 
-export type Spacing =
-	| 0
-	| 0.25
-	| 0.5
-	| 0.75
-	| 1
-	| 1.5
-	| 2
-	| 3
-	| 4
-	| 5
-	| 6
-	| 8
-	| 16
-	| 20
-	| 80;
+// FIXME... it's unclear how spacing should work at the moment.
+export type Spacing = 0 | 0.25 | 0.5 | 0.75 | 1 | 1.5 | 2 | 3 | 4 | 5 | 6;
 
 /* awe-maxwidth for line lengths (the ‘measure’) */
 const maxwidth = '42em';
