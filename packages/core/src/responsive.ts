@@ -24,21 +24,31 @@ const breakpointNames = ['xs', 'sm', 'md', 'lg', 'xl'] as const;
 
 export function mapResponsiveProp<T>(
 	value: ResponsiveProp<T>,
-	valueMapper: (t: T | null) => unknown = (t) => t
+	valueMapper: (t: NonNullable<T>) => unknown = (t) => t
 ) {
-	if (value === null || value === undefined) {
+	if (!isNonNullable(value)) {
 		return undefined;
 	}
 	if (Array.isArray(value)) {
-		return value.map(valueMapper);
+		return value.map((t: T | null) =>
+			isNonNullable(t) ? valueMapper(t) : null
+		);
 	}
 	if (typeof value === 'object') {
 		const resValue = value as Record<NamedBreakpoint, T>;
-		return breakpointNames.map((key) =>
-			key in resValue ? valueMapper(resValue[key]) : null
-		);
+		return breakpointNames.map((key) => {
+			const token = key in resValue ? resValue[key] : undefined;
+			if (isNonNullable(token)) {
+				return valueMapper(token);
+			}
+			return null;
+		});
 	}
 	return [valueMapper(value)];
+}
+
+function isNonNullable<T>(t: T): t is NonNullable<T> {
+	return t !== null && t !== undefined;
 }
 
 export type ResponsiveProp<T> =

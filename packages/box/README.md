@@ -4,7 +4,15 @@ description: A primitive layout component
 ---
 
 ```jsx live
-<Box theme="dark" background="page" border padding={2} textAlign="center">
+<Box
+	theme="dark"
+	background="page"
+	color="text"
+	fontFamily="body"
+	border
+	padding={4}
+	rounded
+>
 	A Box example
 </Box>
 ```

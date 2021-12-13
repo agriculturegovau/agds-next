@@ -6,9 +6,8 @@ import {
 	ResponsiveProp,
 	mapResponsiveProp,
 	mq,
+	Spacing,
 } from '@ag.ds-next/core';
-
-type SpacingToken = keyof typeof tokens.spacing;
 
 type ThemeProps = Partial<{
 	theme: keyof typeof themes;
@@ -29,10 +28,10 @@ function colorStyles({ color, background }: ColorProps) {
 }
 
 type TypographyProps = Partial<{
-	fontWeight: keyof typeof tokens.fontWeight;
-	fontFamily: keyof typeof tokens.font;
-	fontSize: keyof typeof tokens.fontSize;
-	lineHeight: keyof typeof tokens.lineHeight;
+	fontWeight: ResponsiveProp<keyof typeof tokens.fontWeight>;
+	fontFamily: ResponsiveProp<keyof typeof tokens.font>;
+	fontSize: ResponsiveProp<keyof typeof tokens.fontSize>;
+	lineHeight: ResponsiveProp<keyof typeof tokens.lineHeight>;
 }>;
 
 function typographyStyles({
@@ -42,10 +41,10 @@ function typographyStyles({
 	lineHeight,
 }: TypographyProps) {
 	return {
-		fontWeight: fontWeight ? tokens.fontWeight[fontWeight] : undefined,
-		fontFamily: fontFamily ? tokens.font[fontFamily] : undefined,
-		fontSize: fontSize ? tokens.fontSize[fontSize] : undefined,
-		lineHeight: lineHeight ? tokens.lineHeight[lineHeight] : undefined,
+		fontWeight: mapResponsiveProp(fontWeight, (t) => tokens.fontWeight[t]),
+		fontFamily: mapResponsiveProp(fontFamily, (t) => tokens.font[t]),
+		fontSize: mapResponsiveProp(fontSize, (t) => tokens.fontSize[t]),
+		lineHeight: mapResponsiveProp(lineHeight, (t) => tokens.lineHeight[t]),
 	};
 }
 
@@ -58,7 +57,7 @@ type LayoutProps = Partial<{
 	justifyContent: ResponsiveProp<
 		| 'flex-start'
 		| 'flex-end'
-		| 'center,'
+		| 'center'
 		| 'space-between'
 		| 'space-around'
 		| 'space-evenly'
@@ -66,7 +65,7 @@ type LayoutProps = Partial<{
 	alignItems: ResponsiveProp<
 		'stretch' | 'flex-start' | 'flex-end' | 'center' | 'baseline'
 	>;
-	gap: ResponsiveProp<SpacingToken>;
+	gap: ResponsiveProp<Spacing>;
 	width: ResponsiveProp<number | string>;
 	minWidth: ResponsiveProp<number | string>;
 	maxWidth: ResponsiveProp<number | string>;
@@ -107,27 +106,47 @@ function layoutStyles({
 
 type BorderProps = Partial<{
 	border: boolean;
+	borderLeft: boolean;
+	borderRight: boolean;
+	borderTop: boolean;
+	borderBottom: boolean;
+	borderX: boolean;
+	borderY: boolean;
 	rounded: boolean;
 }>;
 
-function borderStyles({ border, rounded }: BorderProps) {
+function borderStyles({
+	border,
+	borderLeft,
+	borderRight,
+	borderTop,
+	borderBottom,
+	borderX,
+	borderY,
+	rounded,
+}: BorderProps) {
+	const anyBorder =
+		border || borderLeft || borderRight || borderBottom || borderX || borderY;
 	return {
-		border: border ? `1px solid ${themeColors.border}` : undefined,
-		// borderColor: border ? themeColors.border : undefined,
-		// borderWidth: border ? 1 : undefined,
-		// borderStyle: border ? 'solid' : undefined,
+		borderWidth: 0,
+		borderLeftWidth: border ?? borderX ?? borderLeft ? `1px` : undefined,
+		borderRightWidth: border ?? borderX ?? borderRight ? `1px` : undefined,
+		borderTopWidth: border ?? borderY ?? borderTop ? `1px` : undefined,
+		borderBottomWidth: border ?? borderY ?? borderBottom ? `1px` : undefined,
+		borderColor: anyBorder ? themeColors.border : undefined,
+		borderStyle: anyBorder ? 'solid' : undefined,
 		borderRadius: rounded ? tokens.borderRadius : undefined,
 	};
 }
 
 type PaddingProps = Partial<{
-	paddingTop: ResponsiveProp<SpacingToken>;
-	paddingBottom: ResponsiveProp<SpacingToken>;
-	paddingRight: ResponsiveProp<SpacingToken>;
-	paddingLeft: ResponsiveProp<SpacingToken>;
-	paddingX: ResponsiveProp<SpacingToken>;
-	paddingY: ResponsiveProp<SpacingToken>;
-	padding: ResponsiveProp<SpacingToken>;
+	paddingTop: ResponsiveProp<Spacing>;
+	paddingBottom: ResponsiveProp<Spacing>;
+	paddingRight: ResponsiveProp<Spacing>;
+	paddingLeft: ResponsiveProp<Spacing>;
+	paddingX: ResponsiveProp<Spacing>;
+	paddingY: ResponsiveProp<Spacing>;
+	padding: ResponsiveProp<Spacing>;
 }>;
 
 // TODO: Explain how overlapping shorthands padding is applied.
@@ -164,8 +183,8 @@ function paddingStyles({
  * UTILS
  */
 
-function mapSpacing(v: keyof typeof tokens.spacing | undefined | null) {
-	return v === undefined || v === null ? undefined : tokens.spacing[v];
+function mapSpacing(v: Spacing) {
+	return `${v}rem`;
 }
 
 export type BoxProps = ThemeProps &
@@ -180,6 +199,12 @@ export function boxStyles({
 	color,
 	background,
 	border,
+	borderLeft,
+	borderRight,
+	borderTop,
+	borderBottom,
+	borderX,
+	borderY,
 	rounded,
 	display,
 	flexDirection,
@@ -209,10 +234,24 @@ export function boxStyles({
 	return [
 		css([
 			theme ? themes[theme] : undefined,
+
+			// Reset margins for things like ul / ol, headings
+
+			{ margin: 0 },
+
 			mq({
 				...colorStyles({ background, color }),
 
-				...borderStyles({ border, rounded }),
+				...borderStyles({
+					border,
+					borderLeft,
+					borderRight,
+					borderTop,
+					borderBottom,
+					borderX,
+					borderY,
+					rounded,
+				}),
 
 				...layoutStyles({
 					display,

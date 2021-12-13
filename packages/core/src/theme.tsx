@@ -23,7 +23,7 @@ const themeMap = {
 	darkBorder: '--agds-dark-border',
 } as const;
 
-type ThemeConfig = Record<keyof typeof themeMap, string>;
+export type ThemeConfig = Record<keyof typeof themeMap, string>;
 
 const defaultTheme: ThemeConfig = {
 	lightForegroundText: tokens.light.foreground.text,
@@ -60,17 +60,15 @@ export function Theme({
 		<Fragment>
 			<Global
 				styles={[
-					{
+					applyReset && {
+						// FIXME: apply the css reset
 						'body, html': {
+							margin: 0,
+							padding: 0,
 							background:
 								theme.lightBackgroundPage ?? defaultTheme.lightBackgroundPage,
 						},
 					},
-					applyReset
-						? {
-								// FIXME: apply the css reset
-						  }
-						: {},
 					{
 						':root': Object.fromEntries(
 							Object.entries(themeMap).map(([key, variableName]) => [
@@ -172,5 +170,5 @@ export const outline = {
 	outlineWidth: '3px',
 	outlineStyle: 'solid',
 	outlineColor: themeColors.foreground.focus,
-	outlineOffset: tokens.spacing[0.5],
+	outlineOffset: 0.5 * tokens.unit,
 };
