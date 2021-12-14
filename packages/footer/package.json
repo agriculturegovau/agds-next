@@ -1,0 +1,7 @@
+{
+	"name": "@ag.ds-next/footer",
+	"version": "0.1.0",
+	"main": "dist/ag.ds-next-footer.cjs.js",
+	"module": "dist/ag.ds-next-footer.esm.js",
+	"license": "MIT"
+}

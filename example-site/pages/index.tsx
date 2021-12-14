@@ -8,6 +8,8 @@ import { Heading } from '@ag.ds-next/heading';
 import { Text } from '@ag.ds-next/text';
 import { Box, BoxProps, Flex, Stack } from '@ag.ds-next/box';
 
+import { SiteFooter } from '../components/SiteFooter';
+
 const Home: NextPage = () => {
 	return (
 		<Box fontFamily="body" theme="light">
@@ -85,7 +87,14 @@ const Home: NextPage = () => {
 						Explain some important information upfront, what is the product or
 						service. What is the role of it. How does the user get started using
 						it. Keep this text simple and informative. Vestibulum non consequat
-						tellus.
+						tellus.{' '}
+						<a
+							target="_blank"
+							href="https://guides.service.gov.au/content-guide/"
+							rel="noreferrer"
+						>
+							Content guide
+						</a>
 						<Box color="muted" padding={6} border background="shade">
 							A box in a box
 						</Box>
@@ -106,6 +115,8 @@ const Home: NextPage = () => {
 					</Box>
 				</Exp_Content>
 			</main>
+
+			<SiteFooter />
 		</Box>
 	);
 };
