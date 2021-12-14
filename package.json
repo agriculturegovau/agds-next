@@ -51,7 +51,7 @@
 	"workspaces": [
 		"packages/*",
 		"docs",
-		"site"
+		"example-site"
 	],
 	"preconstruct": {
 		"packages": [

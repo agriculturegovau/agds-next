@@ -21,13 +21,13 @@ export type Font = 'body' | 'mono';
 
 /** Predetermined pixel sizes from a 1.25 type-scale rounded to the nearest "unit" (vertical grid) */
 const fontSize = {
-	xs: ['0.875rem', '14px'],
-	sm: ['1rem', '16px'],
-	md: ['1.25rem', '20px'],
-	lg: ['1.5rem', '24px'],
-	xl: ['2rem', '32px'],
-	xxl: ['2.5rem', '40px'],
-	xxxl: ['3rem', '48px'],
+	xs: '0.875rem',
+	sm: '1rem',
+	md: '1.25rem',
+	lg: '1.5rem',
+	xl: '2rem',
+	xxl: '2.5rem',
+	xxxl: '3rem',
 };
 export type FontSize = keyof typeof fontSize;
 
@@ -48,8 +48,12 @@ export type LintHeight = keyof typeof lineHeight;
 // FIXME... it's unclear how spacing should work at the moment.
 export type Spacing = 0 | 0.25 | 0.5 | 0.75 | 1 | 1.5 | 2 | 3 | 4 | 5 | 6;
 
+export function mapSpacing(v: Spacing) {
+	return `${v}rem`;
+}
+
 /* awe-maxwidth for line lengths (the ‘measure’) */
-const maxwidth = '42em';
+const maxWidth = '42em';
 
 /** Colors light theme */
 
