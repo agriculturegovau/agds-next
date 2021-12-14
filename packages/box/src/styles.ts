@@ -1,6 +1,7 @@
 import { css } from '@emotion/react';
 import {
 	tokens,
+	BoxTheme,
 	themes,
 	themeColors,
 	ResponsiveProp,
@@ -11,7 +12,7 @@ import {
 } from '@ag.ds-next/core';
 
 type ThemeProps = Partial<{
-	theme: keyof typeof themes;
+	theme: BoxTheme;
 }>;
 
 type ColorProps = Partial<{

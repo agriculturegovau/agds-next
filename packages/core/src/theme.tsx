@@ -138,6 +138,10 @@ export const themeColors = {
 	},
 	border: `var(--agds-border)`,
 };
+export type BoxThemeColors = {
+	foreground: keyof typeof themeColors.foreground;
+	background: keyof typeof themeColors.background;
+};
 
 export const themes = {
 	light: css({
@@ -163,7 +167,9 @@ export const themes = {
 		'--agds-border': 'var(--agds-dark-border)',
 	}),
 } as const;
-
+// FIXME: naming ... BoxTheme? there is confusion around the meaning of `theme` between
+// the variables being applied to the site as a whole or the subset of colors being applied to content in a box.
+export type BoxTheme = keyof typeof themes;
 // Compositions - todo: move me somewhere else
 
 export const outline = {
