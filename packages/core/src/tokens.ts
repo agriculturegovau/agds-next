@@ -126,7 +126,7 @@ export const tokens = {
 	fontWeight,
 	lineHeight,
 	// spacing,
-	maxwidth,
+	maxWidth,
 	light,
 	dark,
 	systemColors,
