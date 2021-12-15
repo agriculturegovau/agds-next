@@ -106,6 +106,7 @@ const dark: ColorTheme = {
 };
 
 const systemColors = {
+	accent: undefined, //'#61daff', // TODO: think about this
 	error: '#d60000',
 	success: '#0b996c',
 	warning: '#f69900',

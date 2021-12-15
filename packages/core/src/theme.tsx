@@ -2,7 +2,24 @@ import React, { Fragment } from 'react';
 import { Global, css } from '@emotion/react';
 import { tokens } from './tokens';
 
+export const themeColors = {
+	foreground: {
+		text: `var(--agds-foreground-text)`,
+		action: `var(--agds-foreground-action)`,
+		focus: `var(--agds-foreground-focus)`,
+		muted: `var(--agds-foreground-muted)`,
+	},
+	background: {
+		page: `var(--agds-background-page)`,
+		shade: `var(--agds-background-shade)`,
+		pageAlt: `var(--agds-background-page-alt)`,
+		shadeAlt: `var(--agds-background-shade-alt)`,
+	},
+	border: `var(--agds-border)`,
+};
+
 const themeMap = {
+	// Light
 	lightForegroundText: '--agds-light-foreground-text',
 	lightForegroundAction: '--agds-light-foreground-action',
 	lightForegroundFocus: '--agds-light-foreground-focus',
@@ -12,6 +29,7 @@ const themeMap = {
 	lightBackgroundPageAlt: '--agds-light-background-page-alt',
 	lightBackgroundShadeAlt: '--agds-light-background-shade-alt',
 	lightBorder: '--agds-light-border',
+	// Dark
 	darkForegroundText: '--agds-dark-foreground-text',
 	darkForegroundAction: '--agds-dark-foreground-action',
 	darkForegroundFocus: '--agds-dark-foreground-focus',
@@ -21,10 +39,19 @@ const themeMap = {
 	darkBackgroundPageAlt: '--agds-dark-background-page-alt',
 	darkBackgroundShadeAlt: '--agds-dark-background-shade-alt',
 	darkBorder: '--agds-dark-border',
+	// System colors
+	accent: '--agds-accent',
+	error: '--agds-error',
+	success: '--agds-success',
+	warning: '--agds-warning',
+	info: '--agds-info',
+	hint: '--agds-hint',
+	hintAlt: '--agds-hint-alt',
 } as const;
 
-export type ThemeConfig = Record<keyof typeof themeMap, string>;
+export type ThemeConfig = Record<keyof typeof themeMap, string | undefined>;
 
+// GOLD theme
 const defaultTheme: ThemeConfig = {
 	lightForegroundText: tokens.light.foreground.text,
 	lightForegroundAction: tokens.light.foreground.action,
@@ -44,45 +71,17 @@ const defaultTheme: ThemeConfig = {
 	darkBackgroundPageAlt: tokens.dark.background.pageAlt,
 	darkBackgroundShadeAlt: tokens.dark.background.shadeAlt,
 	darkBorder: tokens.dark.border,
+	// system colors
+	accent: themeColors.foreground.action,
+	error: tokens.systemColors.error,
+	success: tokens.systemColors.success,
+	warning: tokens.systemColors.warning,
+	info: tokens.systemColors.info,
+	hint: tokens.systemColors.hint,
+	hintAlt: tokens.systemColors.hintAlt,
 };
 
 type ThemeKey = keyof typeof themeMap;
-
-export function Theme({
-	children,
-	applyReset = true,
-	theme = defaultTheme,
-}: React.PropsWithChildren<{
-	theme?: Partial<ThemeConfig>;
-	applyReset?: boolean;
-}>) {
-	return (
-		<Fragment>
-			<Global
-				styles={[
-					applyReset && {
-						// FIXME: apply the css reset
-						'body, html': {
-							margin: 0,
-							padding: 0,
-							background:
-								theme.lightBackgroundPage ?? defaultTheme.lightBackgroundPage,
-						},
-					},
-					{
-						':root': Object.fromEntries(
-							Object.entries(themeMap).map(([key, variableName]) => [
-								variableName,
-								theme[key as ThemeKey] ?? defaultTheme[key as ThemeKey],
-							])
-						),
-					},
-				]}
-			/>
-			{children}
-		</Fragment>
-	);
-}
 
 export const globalVariables = {
 	light: {
@@ -123,21 +122,6 @@ export const globalVariables = {
 	hintAlt: `var(--agds-hint-alt, ${tokens.systemColors.hintAlt})`,
 };
 
-export const themeColors = {
-	foreground: {
-		text: `var(--agds-foreground-text)`,
-		action: `var(--agds-foreground-action)`,
-		focus: `var(--agds-foreground-focus)`,
-		muted: `var(--agds-foreground-muted)`,
-	},
-	background: {
-		page: `var(--agds-background-page)`,
-		shade: `var(--agds-background-shade)`,
-		pageAlt: `var(--agds-background-page-alt)`,
-		shadeAlt: `var(--agds-background-shade-alt)`,
-	},
-	border: `var(--agds-border)`,
-};
 export type BoxThemeColors = {
 	foreground: keyof typeof themeColors.foreground;
 	background: keyof typeof themeColors.background;
@@ -178,3 +162,39 @@ export const outline = {
 	outlineColor: themeColors.foreground.focus,
 	outlineOffset: 0.5 * tokens.unit,
 };
+
+export function Theme({
+	children,
+	applyReset = true,
+	theme = defaultTheme,
+}: React.PropsWithChildren<{
+	theme?: Partial<ThemeConfig>;
+	applyReset?: boolean;
+}>) {
+	return (
+		<Fragment>
+			<Global
+				styles={[
+					applyReset && {
+						// FIXME: apply the css reset
+						'body, html': {
+							margin: 0,
+							padding: 0,
+							background:
+								theme.lightBackgroundPage ?? defaultTheme.lightBackgroundPage,
+						},
+					},
+					{
+						':root': Object.fromEntries(
+							Object.entries(themeMap).map(([key, variableName]) => [
+								variableName,
+								theme[key as ThemeKey] ?? defaultTheme[key as ThemeKey],
+							])
+						),
+					},
+				]}
+			/>
+			{children}
+		</Fragment>
+	);
+}
