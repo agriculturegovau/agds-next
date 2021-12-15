@@ -74,7 +74,7 @@ export const bodyClass = css({
 	 * Vertical spacing of common text elements.
 	 */
 	p: {
-		maxWidth: tokens.maxWidth,
+		maxWidth: tokens.maxWidth.bodyText,
 		margin: 0,
 	},
 

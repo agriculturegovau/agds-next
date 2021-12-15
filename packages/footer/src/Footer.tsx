@@ -1,8 +1,10 @@
 import { Flex, Divider, Box, Stack } from '@ag.ds-next/box';
+import { tokens } from '@ag.ds-next/core';
+import type { PropsWithChildren } from 'react';
 
-type FooterProps = { children: any };
+type FooterProps = PropsWithChildren<{ theme: string }>;
 
-export const Footer = ({ children }: FooterProps) => {
+export const Footer = ({ theme, children }: FooterProps) => {
 	return (
 		<Flex
 			as="footer"
@@ -12,15 +14,15 @@ export const Footer = ({ children }: FooterProps) => {
 			theme="dark"
 		>
 			<Stack
-				maxWidth={1280}
+				maxWidth={tokens.maxWidth.container}
 				width="100%"
 				gap={1}
-				paddingX={2}
+				paddingX={tokens.gutter}
 				paddingY={{ xs: 1, md: 2 }}
 			>
 				{children}
-				<Divider />
-				<span>&copy; Commmonwealth of Australia</span>
+				<Divider accent />
+				<span>&copy; Commonwealth of Australia</span>
 			</Stack>
 		</Flex>
 	);
