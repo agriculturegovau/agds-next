@@ -1,10 +1,8 @@
-import { Flex, Box } from '@ag.ds-next/box';
+import { Flex, Divider, Box, Stack } from '@ag.ds-next/box';
 
-type FooterProps = {
-	links: { title: string; href: string }[];
-};
+type FooterProps = { children: any };
 
-export const Footer = ({ links }: FooterProps) => {
+export const Footer = ({ children }: FooterProps) => {
 	return (
 		<Flex
 			as="footer"
@@ -13,20 +11,17 @@ export const Footer = ({ links }: FooterProps) => {
 			color="text"
 			theme="dark"
 		>
-			<Box
+			<Stack
 				maxWidth={1280}
 				width="100%"
+				gap={1}
 				paddingX={2}
 				paddingY={{ xs: 1, md: 2 }}
 			>
-				{links.map(({ title, href }) => (
-					<a key={href} href={href}>
-						{title}
-					</a>
-				))}
-				<hr />
+				{children}
+				<Divider />
 				<span>&copy; Commmonwealth of Australia</span>
-			</Box>
+			</Stack>
 		</Flex>
 	);
 };
