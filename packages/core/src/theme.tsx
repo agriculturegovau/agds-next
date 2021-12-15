@@ -1,7 +1,7 @@
-import React, { Fragment } from 'react';
-import { Global, css } from '@emotion/react';
+import { css } from '@emotion/react';
 import { tokens } from './tokens';
 
+// Used in Box component
 export const themeColors = {
 	foreground: {
 		text: `var(--agds-foreground-text)`,
@@ -18,7 +18,8 @@ export const themeColors = {
 	border: `var(--agds-border)`,
 };
 
-const themeMap = {
+// names of color
+export const paletteCssVars = {
 	// Light
 	lightForegroundText: '--agds-light-foreground-text',
 	lightForegroundAction: '--agds-light-foreground-action',
@@ -49,78 +50,99 @@ const themeMap = {
 	hintAlt: '--agds-hint-alt',
 } as const;
 
-export type ThemeConfig = Record<keyof typeof themeMap, string | undefined>;
+export type Palette = Partial<Record<keyof typeof paletteCssVars, string>>;
 
 // GOLD theme
-const defaultTheme: ThemeConfig = {
-	lightForegroundText: tokens.light.foreground.text,
-	lightForegroundAction: tokens.light.foreground.action,
-	lightForegroundFocus: tokens.light.foreground.focus,
-	lightForegroundMuted: tokens.light.foreground.muted,
-	lightBackgroundPage: tokens.light.background.page,
-	lightBackgroundShade: tokens.light.background.shade,
-	lightBackgroundPageAlt: tokens.light.background.pageAlt,
-	lightBackgroundShadeAlt: tokens.light.background.shadeAlt,
-	lightBorder: tokens.light.border,
-	darkForegroundText: tokens.dark.foreground.text,
-	darkForegroundAction: tokens.dark.foreground.action,
-	darkForegroundFocus: tokens.dark.foreground.focus,
-	darkForegroundMuted: tokens.dark.foreground.muted,
-	darkBackgroundPage: tokens.dark.background.page,
-	darkBackgroundShade: tokens.dark.background.shade,
-	darkBackgroundPageAlt: tokens.dark.background.pageAlt,
-	darkBackgroundShadeAlt: tokens.dark.background.shadeAlt,
-	darkBorder: tokens.dark.border,
-	// system colors
-	accent: themeColors.foreground.action,
-	error: tokens.systemColors.error,
-	success: tokens.systemColors.success,
-	warning: tokens.systemColors.warning,
-	info: tokens.systemColors.info,
-	hint: tokens.systemColors.hint,
-	hintAlt: tokens.systemColors.hintAlt,
+
+/** Colors light theme */
+
+export type ColorTheme = {
+	foreground: {
+		text: string;
+		action: string;
+		focus: string;
+		muted: string;
+	};
+	background: {
+		page: string;
+		shade: string;
+		pageAlt: string;
+		shadeAlt: string;
+	};
+	border: string;
 };
 
-type ThemeKey = keyof typeof themeMap;
+// Default palette from GOLD.
+export const defaultPalette = {
+	lightForegroundText: '#313131',
+	lightForegroundAction: '#00698f',
+	lightForegroundFocus: '#9263de',
+	lightForegroundMuted: '#626262',
+	lightBackgroundPage: '#FFFFFF',
+	lightBackgroundShade: '#f5f5f5',
+	lightBackgroundPageAlt: '#ebebeb',
+	lightBackgroundShadeAlt: '#e0e0e0',
+	lightBorder: '#808080',
+	darkForegroundText: '#FFFFFF',
+	darkForegroundAction: '#61daff',
+	darkForegroundFocus: '#c390f9',
+	darkForegroundMuted: '#bdd2d7',
+	darkBackgroundPage: '#135e70',
+	darkBackgroundShade: '#104f5f',
+	darkBackgroundPageAlt: '#0d414d',
+	darkBackgroundShadeAlt: '#0a323c',
+	darkBorder: '#95b7bf',
+	// system colors
+	accent: themeColors.foreground.action, // accent does not exist in GOLD. Here we fallback to the dark or light themed action color
+	error: '#d60000',
+	success: '#0b996c',
+	warning: '#f69900',
+	info: '#00bfe9',
+	hint: '#6f777b',
+	hintAlt: '#61696b',
+} as const;
+
+export type PaletteKey = keyof typeof paletteCssVars;
 
 export const globalVariables = {
 	light: {
 		foreground: {
-			text: `var(--agds-light-foreground-text, ${tokens.light.foreground.text})`,
-			action: `var(--agds-light-foreground-action, ${tokens.light.foreground.action})`,
-			focus: `var(--agds-light-foreground-focus, ${tokens.light.foreground.focus})`,
-			muted: `var(--agds-light-foreground-muted, ${tokens.light.foreground.muted})`,
+			text: `var(${paletteCssVars.lightForegroundText})`,
+			action: `var(${paletteCssVars.lightForegroundAction})`,
+			focus: `var(${paletteCssVars.lightForegroundFocus})`,
+			muted: `var(${paletteCssVars.lightForegroundMuted})`,
 		},
 		background: {
-			page: `var(--agds-light-background-page, ${tokens.light.background.page})`,
-			shade: `var(--agds-light-background-shade, ${tokens.light.background.shade})`,
-			pageAlt: `var(--agds-light-background-page-alt, ${tokens.light.background.pageAlt})`,
-			shadeAlt: `var(--agds-light-background-shade-alt, ${tokens.light.background.shadeAlt})`,
+			page: `var(${paletteCssVars.lightBackgroundPage})`,
+			shade: `var(${paletteCssVars.lightBackgroundShade})`,
+			pageAlt: `var(${paletteCssVars.lightBackgroundPageAlt})`,
+			shadeAlt: `var(${paletteCssVars.lightBackgroundShadeAlt})`,
 		},
-		border: `var(--agds-light-border, ${tokens.light.border})`,
+		border: `var(${paletteCssVars.lightBorder})`,
 	},
 	dark: {
 		foreground: {
-			text: `var(--agds-dark-foreground-text, ${tokens.dark.foreground.text})`,
-			action: `var(--agds-dark-foreground-action, ${tokens.dark.foreground.action})`,
-			focus: `var(--agds-dark-foreground-focus, ${tokens.dark.foreground.focus})`,
-			muted: `var(--agds-dark-foreground-muted, ${tokens.dark.foreground.muted})`,
+			text: `var(${paletteCssVars.darkForegroundFocus})`,
+			action: `var(${paletteCssVars.darkForegroundAction})`,
+			focus: `var(${paletteCssVars.darkForegroundFocus})`,
+			muted: `var(${paletteCssVars.darkForegroundMuted})`,
 		},
 		background: {
-			page: `var(--agds-dark-background-page, ${tokens.dark.background.page})`,
-			shade: `var(--agds-dark-background-shade, ${tokens.dark.background.shade})`,
-			pageAlt: `var(--agds-dark-background-page-alt, ${tokens.dark.background.pageAlt})`,
-			shadeAlt: `var(--agds-dark-background-shade-alt, ${tokens.dark.background.shadeAlt})`,
+			page: `var(${paletteCssVars.darkBackgroundPage})`,
+			shade: `var(${paletteCssVars.darkBackgroundShade})`,
+			pageAlt: `var(${paletteCssVars.darkBackgroundPageAlt})`,
+			shadeAlt: `var(${paletteCssVars.darkBackgroundShadeAlt})`,
 		},
-		border: 'var(--agds-dark-border)',
+		border: `var(${paletteCssVars.darkBorder})`,
 	},
-	error: `var(--agds-error, ${tokens.systemColors.error})`,
-	success: `var(--agds-success, ${tokens.systemColors.success})`,
-	warning: `var(--agds-warning, ${tokens.systemColors.warning})`,
-	info: `var(--agds-info, ${tokens.systemColors.info})`,
-	hint: `var(--agds-hint, ${tokens.systemColors.hint})`,
-	hintAlt: `var(--agds-hint-alt, ${tokens.systemColors.hintAlt})`,
-};
+	accent: `var(${paletteCssVars.accent})`,
+	error: `var(${paletteCssVars.error})`,
+	success: `var(${paletteCssVars.success})`,
+	warning: `var(${paletteCssVars.warning})`,
+	info: `var(${paletteCssVars.info})`,
+	hint: `var(${paletteCssVars.hint})`,
+	hintAlt: `var(${paletteCssVars.hintAlt})`,
+} as const;
 
 export type BoxThemeColors = {
 	foreground: keyof typeof themeColors.foreground;
@@ -129,26 +151,26 @@ export type BoxThemeColors = {
 
 export const themes = {
 	light: css({
-		'--agds-foreground-text': 'var(--agds-light-foreground-text)',
-		'--agds-foreground-action': 'var(--agds-light-foreground-action)',
-		'--agds-foreground-focus': 'var(--agds-light-foreground-focus)',
-		'--agds-foreground-muted': 'var(--agds-light-foreground-muted)',
-		'--agds-background-page': 'var(--agds-light-background-page)',
-		'--agds-background-shade': 'var(--agds-light-background-shade)',
-		'--agds-background-page-alt': 'var(--agds-light-background-page-alt)',
-		'--agds-background-shade-alt': 'var(--agds-light-background-shade-alt)',
-		'--agds-border': 'var(--agds-light-border)',
+		'--agds-foreground-text': globalVariables.light.foreground.text,
+		'--agds-foreground-action': globalVariables.light.foreground.action,
+		'--agds-foreground-focus': globalVariables.light.foreground.focus,
+		'--agds-foreground-muted': globalVariables.light.foreground.muted,
+		'--agds-background-page': globalVariables.light.background.page,
+		'--agds-background-shade': globalVariables.light.background.shade,
+		'--agds-background-page-alt': globalVariables.light.background.pageAlt,
+		'--agds-background-shade-alt': globalVariables.light.background.shadeAlt,
+		'--agds-border': globalVariables.light.border,
 	}),
 	dark: css({
-		'--agds-foreground-text': 'var(--agds-dark-foreground-text)',
-		'--agds-foreground-action': 'var(--agds-dark-foreground-action)',
-		'--agds-foreground-focus': 'var(--agds-dark-foreground-focus)',
-		'--agds-foreground-muted': 'var(--agds-dark-foreground-muted)',
-		'--agds-background-page': 'var(--agds-dark-background-page)',
-		'--agds-background-shade': 'var(--agds-dark-background-shade)',
-		'--agds-background-page-alt': 'var(--agds-dark-background-page-alt)',
-		'--agds-background-shade-alt': 'var(--agds-dark-background-shade-alt)',
-		'--agds-border': 'var(--agds-dark-border)',
+		'--agds-foreground-text': globalVariables.dark.foreground.text,
+		'--agds-foreground-action': globalVariables.dark.foreground.action,
+		'--agds-foreground-focus': globalVariables.dark.foreground.focus,
+		'--agds-foreground-muted': globalVariables.dark.foreground.muted,
+		'--agds-background-page': globalVariables.dark.background.page,
+		'--agds-background-shade': globalVariables.dark.background.shade,
+		'--agds-background-page-alt': globalVariables.dark.background.pageAlt,
+		'--agds-background-shade-alt': globalVariables.dark.background.shadeAlt,
+		'--agds-border': globalVariables.dark.border,
 	}),
 } as const;
 // FIXME: naming ... BoxTheme? there is confusion around the meaning of `theme` between
@@ -162,39 +184,3 @@ export const outline = {
 	outlineColor: themeColors.foreground.focus,
 	outlineOffset: 0.5 * tokens.unit,
 };
-
-export function Theme({
-	children,
-	applyReset = true,
-	theme = defaultTheme,
-}: React.PropsWithChildren<{
-	theme?: Partial<ThemeConfig>;
-	applyReset?: boolean;
-}>) {
-	return (
-		<Fragment>
-			<Global
-				styles={[
-					applyReset && {
-						// FIXME: apply the css reset
-						'body, html': {
-							margin: 0,
-							padding: 0,
-							background:
-								theme.lightBackgroundPage ?? defaultTheme.lightBackgroundPage,
-						},
-					},
-					{
-						':root': Object.fromEntries(
-							Object.entries(themeMap).map(([key, variableName]) => [
-								variableName,
-								theme[key as ThemeKey] ?? defaultTheme[key as ThemeKey],
-							])
-						),
-					},
-				]}
-			/>
-			{children}
-		</Fragment>
-	);
-}

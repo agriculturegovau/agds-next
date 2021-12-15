@@ -52,69 +52,13 @@ export function mapSpacing(v: Spacing) {
 	return `${v}rem`;
 }
 
+const gutter = { xs: 1, md: 2 } as const;
+
 /* awe-maxwidth for line lengths (the ‘measure’) */
-const maxWidth = '42em';
-
-/** Colors light theme */
-
-export type ColorTheme = {
-	foreground: {
-		text: string;
-		action: string;
-		focus: string;
-		muted: string;
-	};
-	background: {
-		page: string;
-		shade: string;
-		pageAlt: string;
-		shadeAlt: string;
-	};
-	border: string;
+const maxWidth = {
+	bodyText: '42em',
+	container: '80rem', // 1280 px
 };
-
-const light: ColorTheme = {
-	foreground: {
-		text: '#313131',
-		action: '#00698f',
-		focus: '#9263de',
-		muted: '#626262',
-	},
-	background: {
-		page: '#FFFFFF',
-		shade: '#f5f5f5',
-		pageAlt: '#ebebeb',
-		shadeAlt: '#e0e0e0',
-	},
-	border: '#808080',
-};
-
-const dark: ColorTheme = {
-	foreground: {
-		text: '#FFFFFF',
-		action: '#61daff',
-		focus: '#c390f9',
-		muted: '#bdd2d7',
-	},
-	background: {
-		page: '#135e70',
-		shade: '#104f5f',
-		pageAlt: '#0d414d',
-		shadeAlt: '#0a323c',
-	},
-	border: '#95b7bf',
-};
-
-const systemColors = {
-	accent: undefined, //'#61daff', // TODO: think about this
-	error: '#d60000',
-	success: '#0b996c',
-	warning: '#f69900',
-	info: '#00bfe9',
-	hint: '#6f777b',
-	hintAlt: '#61696b',
-};
-export type SystemColor = keyof typeof systemColors;
 
 const borderRadius = unit;
 
@@ -126,10 +70,8 @@ export const tokens = {
 	fontSize,
 	fontWeight,
 	lineHeight,
+	gutter,
 	// spacing,
 	maxWidth,
-	light,
-	dark,
-	systemColors,
 	borderRadius,
 };
