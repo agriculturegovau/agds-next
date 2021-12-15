@@ -1,4 +1,5 @@
+export * from './Core';
 export * from './tokens';
 export * from './utils';
-export * from './theme';
+export * from './colors';
 export * from './responsive';

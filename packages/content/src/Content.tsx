@@ -1,4 +1,5 @@
 import { Flex, Stack, BoxProps } from '@ag.ds-next/box';
+import { tokens } from '@ag.ds-next/core';
 
 const paddingYMap = {
 	small: { xs: 1, md: 2 },
@@ -24,7 +25,7 @@ export function Content({
 		<Flex as={as} justifyContent="center" theme={theme} background={background}>
 			<Stack
 				width="100%"
-				maxWidth={1280}
+				maxWidth={tokens.maxWidth.container}
 				paddingY={paddingYMap[spacing]}
 				paddingX={{ xs: 1, md: 2 }}
 				gap={1}

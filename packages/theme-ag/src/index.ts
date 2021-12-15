@@ -1,6 +1,6 @@
-import { ThemeConfig } from '@ag.ds-next/core';
+import { Palette } from '@ag.ds-next/core';
 
-export const theme: Partial<ThemeConfig> = {
+export const palette: Partial<Palette> = {
 	lightForegroundAction: '#00558b',
 	darkBackgroundPage: '#162845',
 	darkBackgroundShade: '#0A1931',

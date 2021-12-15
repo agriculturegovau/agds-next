@@ -3,7 +3,7 @@ import {
 	tokens,
 	BoxTheme,
 	themes,
-	themeColors,
+	themeVars,
 	ResponsiveProp,
 	mapResponsiveProp,
 	mapSpacing,
@@ -16,16 +16,14 @@ type ThemeProps = Partial<{
 }>;
 
 type ColorProps = Partial<{
-	color: keyof typeof themeColors.foreground;
-	background: keyof typeof themeColors.background;
+	color: keyof typeof themeVars.foreground;
+	background: keyof typeof themeVars.background;
 }>;
 
 function colorStyles({ color, background }: ColorProps) {
 	return {
-		color: color ? themeColors.foreground[color] : undefined,
-		backgroundColor: background
-			? themeColors.background[background]
-			: undefined,
+		color: color ? themeVars.foreground[color] : undefined,
+		backgroundColor: background ? themeVars.background[background] : undefined,
 	};
 }
 
@@ -135,7 +133,7 @@ function borderStyles({
 		borderRightWidth: border ?? borderX ?? borderRight ? `1px` : undefined,
 		borderTopWidth: border ?? borderY ?? borderTop ? `1px` : undefined,
 		borderBottomWidth: border ?? borderY ?? borderBottom ? `1px` : undefined,
-		borderColor: anyBorder ? themeColors.border : undefined,
+		borderColor: anyBorder ? themeVars.border : undefined,
 		borderStyle: anyBorder ? 'solid' : undefined,
 		borderRadius: rounded ? tokens.borderRadius : undefined,
 	};
