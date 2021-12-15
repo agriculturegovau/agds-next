@@ -1,0 +1,7 @@
+{
+	"name": "@ag.ds-next/content",
+	"version": "1.0.0",
+	"main": "dist/ag.ds-next-content.cjs.js",
+	"module": "dist/ag.ds-next-content.esm.js",
+	"license": "MIT"
+}

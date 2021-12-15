@@ -1,0 +1,7 @@
+{
+	"name": "@ag.ds-next/header",
+	"version": "1.0.0",
+	"main": "dist/ag.ds-next-header.cjs.js",
+	"module": "dist/ag.ds-next-header.esm.js",
+	"license": "MIT"
+}
