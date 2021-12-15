@@ -7,7 +7,8 @@ import placeholder from '../public/placeholder.png';
 import { Heading } from '@ag.ds-next/heading';
 import { Header } from '@ag.ds-next/header';
 import { Text } from '@ag.ds-next/text';
-import { Box, BoxProps, Flex, Stack } from '@ag.ds-next/box';
+import { Box, Flex, Stack } from '@ag.ds-next/box';
+import { Content } from '@ag.ds-next/content';
 
 import { SiteFooter } from '../components/SiteFooter';
 
@@ -38,7 +39,7 @@ const Home: NextPage = () => {
 			</Box>
 
 			<main>
-				<Exp_Content spacing="large" background="shade">
+				<Content spacing="large" background="shade">
 					<Flex gap={2} alignItems="flex-start" justifyContent="space-between">
 						<Stack gap={1}>
 							<Heading type="h2">Welcome to the AG Design-System</Heading>
@@ -55,9 +56,9 @@ const Home: NextPage = () => {
 							alt="Place holder image"
 						/>
 					</Flex>
-				</Exp_Content>
+				</Content>
 
-				<Exp_Content spacing="small">
+				<Content spacing="small">
 					<Heading type="h2">Some highlighted content</Heading>
 
 					<Stack background="page" color="text" theme="light" gap={4}>
@@ -90,7 +91,7 @@ const Home: NextPage = () => {
 							A box in a box
 						</Box>
 					</Box>
-				</Exp_Content>
+				</Content>
 			</main>
 
 			<SiteFooter />
@@ -99,44 +100,3 @@ const Home: NextPage = () => {
 };
 
 export default Home;
-
-type ContentProps = {
-	spacing?: 'small' | 'medium' | 'large';
-	theme?: BoxProps['theme'];
-	background?: BoxProps['background'];
-};
-
-const Exp_Content = ({
-	spacing = 'small',
-	theme,
-	background,
-	children,
-}: React.PropsWithChildren<ContentProps>) => {
-	// changes at breakpoints
-	const paddingY = (
-		{
-			small: { xs: 1, md: 2 },
-			medium: { xs: 1, md: 3 },
-			large: { xs: 1, md: 4 },
-		} as const
-	)[spacing];
-
-	return (
-		<Flex
-			as="section"
-			justifyContent="center"
-			theme={theme}
-			background={background}
-		>
-			<Stack
-				width="100%"
-				maxWidth={1280}
-				paddingY={paddingY}
-				paddingX={2} /* probably changes at breakpoints */
-				gap={1}
-			>
-				{children}
-			</Stack>
-		</Flex>
-	);
-};
