@@ -3,46 +3,17 @@ import { Stack, Flex, Box } from '@ag.ds-next/box';
 import { Heading } from '@ag.ds-next/heading';
 import { Text } from '@ag.ds-next/text';
 
+import { HeaderContainer } from './HeaderContainer';
+
 type HeaderProps = {
-	theme?: 'light' | 'lightAlt' | 'dark' | 'darkAlt';
-	logo: JSX.Element;
+	variant?: 'light' | 'lightAlt' | 'dark' | 'darkAlt';
+	logo?: JSX.Element;
 };
 
-const themeMap = {
-	light: {
-		theme: 'light',
-		background: 'page',
-	},
-	lightAlt: {
-		theme: 'light',
-		background: 'pageAlt',
-	},
-	dark: {
-		theme: 'dark',
-		background: 'page',
-	},
-	darkAlt: {
-		theme: 'dark',
-		background: 'pageAlt',
-	},
-} as const;
-
-export const Header = ({ theme = 'dark', logo }: HeaderProps) => (
-	<Flex
-		as="header"
-		theme={themeMap[theme].theme}
-		background={themeMap[theme].background}
-		color="text"
-		paddingY={3}
-		paddingX={1}
-		justifyContent="center"
-	>
-		<Flex
-			justifyContent="flex-start"
-			maxWidth={{ md: 900, xl: 1200 }}
-			width="100%"
-		>
-			<Flex gap={1} flexWrap={{ xs: 'wrap', md: 'nowrap' }}>
+export function Header({ variant = 'dark', logo }: HeaderProps) {
+	return (
+		<HeaderContainer variant={variant}>
+			<Flex gap={1} flexDirection={{ xs: 'column', md: 'row' }}>
 				{logo}
 				<Box borderRight display={{ xs: 'none', md: 'block' }} />
 				<Stack justifyContent="center">
@@ -52,6 +23,6 @@ export const Header = ({ theme = 'dark', logo }: HeaderProps) => (
 					</Text>
 				</Stack>
 			</Flex>
-		</Flex>
-	</Flex>
-);
+		</HeaderContainer>
+	);
+}
