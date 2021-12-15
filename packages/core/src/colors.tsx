@@ -2,7 +2,7 @@ import { css } from '@emotion/react';
 import { tokens } from './tokens';
 
 // Used in Box component
-export const themeColors = {
+export const themeVars = {
 	foreground: {
 		text: `var(--agds-foreground-text)`,
 		action: `var(--agds-foreground-action)`,
@@ -19,7 +19,7 @@ export const themeColors = {
 };
 
 // names of color
-export const paletteCssVars = {
+export const paletteVars = {
 	// Light
 	lightForegroundText: '--agds-light-foreground-text',
 	lightForegroundAction: '--agds-light-foreground-action',
@@ -50,7 +50,7 @@ export const paletteCssVars = {
 	hintAlt: '--agds-hint-alt',
 } as const;
 
-export type Palette = Partial<Record<keyof typeof paletteCssVars, string>>;
+export type Palette = Partial<Record<keyof typeof paletteVars, string>>;
 
 // GOLD theme
 
@@ -93,7 +93,7 @@ export const defaultPalette = {
 	darkBackgroundShadeAlt: '#0a323c',
 	darkBorder: '#95b7bf',
 	// system colors
-	accent: themeColors.foreground.action, // accent does not exist in GOLD. Here we fallback to the dark or light themed action color
+	accent: themeVars.foreground.action, // accent does not exist in GOLD. Here we fallback to the dark or light themed action color
 	error: '#d60000',
 	success: '#0b996c',
 	warning: '#f69900',
@@ -102,85 +102,85 @@ export const defaultPalette = {
 	hintAlt: '#61696b',
 } as const;
 
-export type PaletteKey = keyof typeof paletteCssVars;
+export type PaletteKey = keyof typeof paletteVars;
 
-export const globalVariables = {
+export const globalVars = {
 	light: {
 		foreground: {
-			text: `var(${paletteCssVars.lightForegroundText})`,
-			action: `var(${paletteCssVars.lightForegroundAction})`,
-			focus: `var(${paletteCssVars.lightForegroundFocus})`,
-			muted: `var(${paletteCssVars.lightForegroundMuted})`,
+			text: `var(${paletteVars.lightForegroundText})`,
+			action: `var(${paletteVars.lightForegroundAction})`,
+			focus: `var(${paletteVars.lightForegroundFocus})`,
+			muted: `var(${paletteVars.lightForegroundMuted})`,
 		},
 		background: {
-			page: `var(${paletteCssVars.lightBackgroundPage})`,
-			shade: `var(${paletteCssVars.lightBackgroundShade})`,
-			pageAlt: `var(${paletteCssVars.lightBackgroundPageAlt})`,
-			shadeAlt: `var(${paletteCssVars.lightBackgroundShadeAlt})`,
+			page: `var(${paletteVars.lightBackgroundPage})`,
+			shade: `var(${paletteVars.lightBackgroundShade})`,
+			pageAlt: `var(${paletteVars.lightBackgroundPageAlt})`,
+			shadeAlt: `var(${paletteVars.lightBackgroundShadeAlt})`,
 		},
-		border: `var(${paletteCssVars.lightBorder})`,
+		border: `var(${paletteVars.lightBorder})`,
 	},
 	dark: {
 		foreground: {
-			text: `var(${paletteCssVars.darkForegroundText})`,
-			action: `var(${paletteCssVars.darkForegroundAction})`,
-			focus: `var(${paletteCssVars.darkForegroundFocus})`,
-			muted: `var(${paletteCssVars.darkForegroundMuted})`,
+			text: `var(${paletteVars.darkForegroundText})`,
+			action: `var(${paletteVars.darkForegroundAction})`,
+			focus: `var(${paletteVars.darkForegroundFocus})`,
+			muted: `var(${paletteVars.darkForegroundMuted})`,
 		},
 		background: {
-			page: `var(${paletteCssVars.darkBackgroundPage})`,
-			shade: `var(${paletteCssVars.darkBackgroundShade})`,
-			pageAlt: `var(${paletteCssVars.darkBackgroundPageAlt})`,
-			shadeAlt: `var(${paletteCssVars.darkBackgroundShadeAlt})`,
+			page: `var(${paletteVars.darkBackgroundPage})`,
+			shade: `var(${paletteVars.darkBackgroundShade})`,
+			pageAlt: `var(${paletteVars.darkBackgroundPageAlt})`,
+			shadeAlt: `var(${paletteVars.darkBackgroundShadeAlt})`,
 		},
-		border: `var(${paletteCssVars.darkBorder})`,
+		border: `var(${paletteVars.darkBorder})`,
 	},
-	accent: `var(${paletteCssVars.accent})`,
-	error: `var(${paletteCssVars.error})`,
-	success: `var(${paletteCssVars.success})`,
-	warning: `var(${paletteCssVars.warning})`,
-	info: `var(${paletteCssVars.info})`,
-	hint: `var(${paletteCssVars.hint})`,
-	hintAlt: `var(${paletteCssVars.hintAlt})`,
+	accent: `var(${paletteVars.accent})`,
+	error: `var(${paletteVars.error})`,
+	success: `var(${paletteVars.success})`,
+	warning: `var(${paletteVars.warning})`,
+	info: `var(${paletteVars.info})`,
+	hint: `var(${paletteVars.hint})`,
+	hintAlt: `var(${paletteVars.hintAlt})`,
 } as const;
 
-export type BoxThemeColors = {
-	foreground: keyof typeof themeColors.foreground;
-	background: keyof typeof themeColors.background;
+export type BoxthemeVars = {
+	foreground: keyof typeof themeVars.foreground;
+	background: keyof typeof themeVars.background;
 };
 
 export const themes = {
 	light: css({
-		'--agds-foreground-text': globalVariables.light.foreground.text,
-		'--agds-foreground-action': globalVariables.light.foreground.action,
-		'--agds-foreground-focus': globalVariables.light.foreground.focus,
-		'--agds-foreground-muted': globalVariables.light.foreground.muted,
-		'--agds-background-page': globalVariables.light.background.page,
-		'--agds-background-shade': globalVariables.light.background.shade,
-		'--agds-background-page-alt': globalVariables.light.background.pageAlt,
-		'--agds-background-shade-alt': globalVariables.light.background.shadeAlt,
-		'--agds-border': globalVariables.light.border,
+		'--agds-foreground-text': globalVars.light.foreground.text,
+		'--agds-foreground-action': globalVars.light.foreground.action,
+		'--agds-foreground-focus': globalVars.light.foreground.focus,
+		'--agds-foreground-muted': globalVars.light.foreground.muted,
+		'--agds-background-page': globalVars.light.background.page,
+		'--agds-background-shade': globalVars.light.background.shade,
+		'--agds-background-page-alt': globalVars.light.background.pageAlt,
+		'--agds-background-shade-alt': globalVars.light.background.shadeAlt,
+		'--agds-border': globalVars.light.border,
 	}),
 	dark: css({
-		'--agds-foreground-text': globalVariables.dark.foreground.text,
-		'--agds-foreground-action': globalVariables.dark.foreground.action,
-		'--agds-foreground-focus': globalVariables.dark.foreground.focus,
-		'--agds-foreground-muted': globalVariables.dark.foreground.muted,
-		'--agds-background-page': globalVariables.dark.background.page,
-		'--agds-background-shade': globalVariables.dark.background.shade,
-		'--agds-background-page-alt': globalVariables.dark.background.pageAlt,
-		'--agds-background-shade-alt': globalVariables.dark.background.shadeAlt,
-		'--agds-border': globalVariables.dark.border,
+		'--agds-foreground-text': globalVars.dark.foreground.text,
+		'--agds-foreground-action': globalVars.dark.foreground.action,
+		'--agds-foreground-focus': globalVars.dark.foreground.focus,
+		'--agds-foreground-muted': globalVars.dark.foreground.muted,
+		'--agds-background-page': globalVars.dark.background.page,
+		'--agds-background-shade': globalVars.dark.background.shade,
+		'--agds-background-page-alt': globalVars.dark.background.pageAlt,
+		'--agds-background-shade-alt': globalVars.dark.background.shadeAlt,
+		'--agds-border': globalVars.dark.border,
 	}),
 } as const;
 // FIXME: naming ... BoxTheme? there is confusion around the meaning of `theme` between
 // the variables being applied to the site as a whole or the subset of colors being applied to content in a box.
 export type BoxTheme = keyof typeof themes;
-// Compositions - todo: move me somewhere else
 
+// TODO: Move this out of here. Maybe packs
 export const outline = {
 	outlineWidth: '3px',
 	outlineStyle: 'solid',
-	outlineColor: themeColors.foreground.focus,
+	outlineColor: themeVars.foreground.focus,
 	outlineOffset: 0.5 * tokens.unit,
 };

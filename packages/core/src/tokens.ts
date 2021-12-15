@@ -54,7 +54,6 @@ export function mapSpacing(v: Spacing) {
 
 const gutter = { xs: 1, md: 2 } as const;
 
-/* awe-maxwidth for line lengths (the ‘measure’) */
 const maxWidth = {
 	bodyText: '42em',
 	container: '80rem', // 1280 px
@@ -71,7 +70,6 @@ export const tokens = {
 	fontWeight,
 	lineHeight,
 	gutter,
-	// spacing,
 	maxWidth,
 	borderRadius,
 };

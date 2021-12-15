@@ -1,4 +1,4 @@
-import { themeColors, globalVariables } from '@ag.ds-next/core';
+import { themeVars, globalVars } from '@ag.ds-next/core';
 
 export function Divider({ accent }: { accent?: boolean }) {
 	return (
@@ -10,7 +10,7 @@ export function Divider({ accent }: { accent?: boolean }) {
 				border: 'none',
 				borderTopWidth: 1,
 				borderTopStyle: 'solid',
-				borderColor: accent ? globalVariables.accent : themeColors.border,
+				borderColor: accent ? globalVars.accent : themeVars.border,
 				width: '100%',
 			}}
 		/>

@@ -1,4 +1,3 @@
-// import type { BoxTheme, BoxThemeColors } from '@ag.ds-next/core';
 import { Stack, Flex, Box } from '@ag.ds-next/box';
 import { Heading } from '@ag.ds-next/heading';
 import { Text } from '@ag.ds-next/text';

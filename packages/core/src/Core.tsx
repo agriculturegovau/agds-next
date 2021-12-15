@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import { Global } from '@emotion/react';
-import { defaultPalette, paletteCssVars, PaletteKey, Palette } from './theme';
+import { defaultPalette, paletteVars, PaletteKey, Palette } from './colors';
 
 export function Core({
 	children,
@@ -26,7 +26,7 @@ export function Core({
 					},
 					{
 						':root': Object.fromEntries(
-							Object.entries(paletteCssVars).map(([key, variableName]) => [
+							Object.entries(paletteVars).map(([key, variableName]) => [
 								variableName,
 								palette[key as PaletteKey] ?? defaultPalette[key as PaletteKey],
 							])
