@@ -5,6 +5,7 @@ import {
 	themeColors,
 	ResponsiveProp,
 	mapResponsiveProp,
+	mapSpacing,
 	mq,
 	Spacing,
 } from '@ag.ds-next/core';
@@ -177,14 +178,6 @@ function paddingStyles({
 			mapSpacing
 		),
 	};
-}
-
-/**
- * UTILS
- */
-
-function mapSpacing(v: Spacing) {
-	return `${v}rem`;
 }
 
 export type BoxProps = ThemeProps &
