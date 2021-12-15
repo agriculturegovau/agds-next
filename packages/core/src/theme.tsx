@@ -122,7 +122,7 @@ export const globalVariables = {
 	},
 	dark: {
 		foreground: {
-			text: `var(${paletteCssVars.darkForegroundFocus})`,
+			text: `var(${paletteCssVars.darkForegroundText})`,
 			action: `var(${paletteCssVars.darkForegroundAction})`,
 			focus: `var(${paletteCssVars.darkForegroundFocus})`,
 			muted: `var(${paletteCssVars.darkForegroundMuted})`,

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Theme, tokens } from '@ag.ds-next/core';
+import { Core, tokens } from '@ag.ds-next/core';
 import { Box } from '@ag.ds-next/box';
 
 const viewportMap = {
@@ -43,10 +43,10 @@ export const parameters = {
 
 export const decorators = [
 	(Story) => (
-		<Theme>
+		<Core>
 			<Box theme="light" fontFamily="body">
 				<Story />
 			</Box>
-		</Theme>
+		</Core>
 	),
 ];

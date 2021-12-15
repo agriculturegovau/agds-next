@@ -1,17 +1,17 @@
-import { Flex, Divider, Box, Stack } from '@ag.ds-next/box';
+import { Flex, Divider, BoxProps, Stack } from '@ag.ds-next/box';
 import { tokens } from '@ag.ds-next/core';
 import type { PropsWithChildren } from 'react';
 
-type FooterProps = PropsWithChildren<{ theme: string }>;
+type FooterProps = PropsWithChildren<{ theme?: BoxProps['theme'] }>;
 
-export const Footer = ({ theme, children }: FooterProps) => {
+export const Footer = ({ theme = 'dark', children }: FooterProps) => {
 	return (
 		<Flex
 			as="footer"
 			justifyContent="center"
 			background="page"
 			color="text"
-			theme="dark"
+			theme={theme}
 		>
 			<Stack
 				maxWidth={tokens.maxWidth.container}
@@ -27,40 +27,3 @@ export const Footer = ({ theme, children }: FooterProps) => {
 		</Flex>
 	);
 };
-
-/*
-const Exp_Content = ({
-	spacing = 'small',
-	theme,
-	background,
-	children,
-}: React.PropsWithChildren<ContentProps>) => {
-	// changes at breakpoints
-	const paddingY = (
-		{
-			small: { xs: 1, md: 2 },
-			medium: { xs: 1, md: 3 },
-			large: { xs: 1, md: 4 },
-		} as const
-	)[spacing];
-
-	return (
-		<Flex
-			as="section"
-			justifyContent="center"
-			theme={theme}
-			background={background}
-		>
-			<Stack
-				width="100%"
-				maxWidth={1280}
-				paddingY={paddingY}
-				paddingX={2}
-				gap={1}
-			>
-				{children}
-			</Stack>
-		</Flex>
-	);
-};
-*/

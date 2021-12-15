@@ -1,12 +1,12 @@
 import type { AppProps } from 'next/app';
-import { Theme } from '@ag.ds-next/core';
-import { theme } from '@ag.ds-next/theme-ag';
+import { Core } from '@ag.ds-next/core';
+import { palette } from '@ag.ds-next/theme-ag';
 
 function MyApp({ Component, pageProps }: AppProps) {
 	return (
-		<Theme theme={theme}>
+		<Core palette={palette}>
 			<Component {...pageProps} />
-		</Theme>
+		</Core>
 	);
 }
 
