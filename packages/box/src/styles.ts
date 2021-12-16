@@ -1,6 +1,7 @@
 import { css } from '@emotion/react';
 import {
 	tokens,
+	outline,
 	BoxTheme,
 	themes,
 	themeVars,
@@ -179,9 +180,22 @@ function paddingStyles({
 	};
 }
 
+type FocusProps = Partial<{ focus: boolean }>;
+function focusStyles({ focus }: FocusProps) {
+	return focus
+		? {
+				':focus': outline,
+				'&::-moz-focus-inner': {
+					border: 0,
+				},
+		  }
+		: undefined;
+}
+
 export type BoxProps = ThemeProps &
 	ColorProps &
 	BorderProps &
+	FocusProps &
 	TypographyProps &
 	LayoutProps &
 	PaddingProps;
@@ -220,6 +234,7 @@ export function boxStyles({
 	fontWeight,
 	fontFamily,
 	fontSize,
+	focus,
 	lineHeight,
 	...restProps
 }: BoxProps) {
@@ -276,6 +291,8 @@ export function boxStyles({
 					fontSize,
 					lineHeight,
 				}),
+
+				...focusStyles({ focus }),
 			}),
 		]),
 		restProps,
