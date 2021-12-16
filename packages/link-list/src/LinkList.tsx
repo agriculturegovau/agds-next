@@ -3,7 +3,7 @@ import { mapSpacing } from '@ag.ds-next/core';
 
 type LinkListProps = {
 	links: { href: string; label: string }[];
-	inline: boolean;
+	inline?: boolean;
 };
 
 // <ul className="au-link-list"
@@ -22,7 +22,7 @@ export const LinkList = ({ links, inline }: LinkListProps) => {
 	);
 };
 
-const linkListStyles = ({ inline }: { inline: boolean }) => {
+const linkListStyles = ({ inline }: { inline?: boolean }) => {
 	const display = inline ? 'inline-block' : 'block';
 	return {
 		// @include AU-fontgrid( sm ),

@@ -1,6 +1,6 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { Divider } from '@ag.ds-next/box';
+import { Divider, Flex } from '@ag.ds-next/box';
 import { Heading } from '@ag.ds-next/heading';
 import { TextLink } from '@ag.ds-next/text-link';
 import { LinkList } from '@ag.ds-next/link-list';
@@ -27,13 +27,22 @@ Primary.parameters = {
 	layout: 'fullscreen',
 };
 
-export const AgFooter = (args) => {
+export const AgComplexFooter = (args) => {
 	return (
 		<FooterContainer variant={args.variant}>
 			<div>
 				<Divider />
 
-				<nav className="au-footer__navigation row" aria-label="footer">
+				<Flex
+					as="footer"
+					className="au-footer__navigation row"
+					aria-label="footer"
+					gap={1}
+					css={{
+						display: 'grid',
+						gridTemplateColumns: 'repeat(12, [col-start] 1fr)',
+					}}
+				>
 					<div className="col-md-3 col-sm-6">
 						<Heading type="h3">Section</Heading>
 						<LinkList
@@ -54,7 +63,7 @@ export const AgFooter = (args) => {
 							]}
 						/>
 					</div>
-				</nav>
+				</Flex>
 				<div className="row">
 					<div className="col-sm-12">
 						<div className="au-footer__end">
@@ -83,6 +92,39 @@ export const AgFooter = (args) => {
 	);
 };
 
-AgFooter.parameters = {
+AgComplexFooter.parameters = {
+	layout: 'fullscreen',
+};
+
+export const AgSimpleFooter = (args) => {
+	return (
+		<FooterContainer variant={args.variant}>
+			<div>
+				<LinkList
+					inline
+					links={[
+						{ href: '#', label: 'Link 1' },
+						{ href: '#', label: 'Link 2' },
+						{ href: '#', label: 'Link 3' },
+					]}
+				/>
+				<Divider />
+
+				<p>
+					<small>
+						&copy; Commonwealth of Australia,{' '}
+						<TextLink
+							href="https://github.com/govau/design-system-components/blob/master/LICENSE.md"
+							rel="external license"
+						>
+							MIT licensed
+						</TextLink>
+					</small>
+				</p>
+			</div>
+		</FooterContainer>
+	);
+};
+AgSimpleFooter.parameters = {
 	layout: 'fullscreen',
 };
