@@ -28,7 +28,7 @@ export function FooterContainer({ children, variant = 'dark' }: FooterProps) {
 			<Stack
 				maxWidth={tokens.maxWidth.container}
 				width="100%"
-				gap={1}
+				gap={1.5}
 				paddingX={tokens.gutter}
 				paddingY={{ xs: 1, md: 2 }}
 			>

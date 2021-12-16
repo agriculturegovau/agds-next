@@ -47,9 +47,9 @@ export const AgComplexFooter = (args) => {
 						<Heading type="h3">Section</Heading>
 						<LinkList
 							links={[
-								{ href: '#', label: 'Link 1' },
-								{ href: '#', label: 'Link 2' },
-								{ href: '#', label: 'Link 3' },
+								{ link: '#', text: 'Link 1' },
+								{ link: '#', text: 'Link 2' },
+								{ link: '#', text: 'Link 3' },
 							]}
 						/>
 					</div>
@@ -57,9 +57,9 @@ export const AgComplexFooter = (args) => {
 						<Heading type="h3">Section</Heading>
 						<LinkList
 							links={[
-								{ href: '#', label: 'Link 1' },
-								{ href: '#', label: 'Link 2' },
-								{ href: '#', label: 'Link 3' },
+								{ link: '#', text: 'Link 1' },
+								{ link: '#', text: 'Link 2' },
+								{ link: '#', text: 'Link 3' },
 							]}
 						/>
 					</div>
@@ -103,12 +103,12 @@ export const AgSimpleFooter = (args) => {
 				<LinkList
 					inline
 					links={[
-						{ href: '#', label: 'Link 1' },
-						{ href: '#', label: 'Link 2' },
-						{ href: '#', label: 'Link 3' },
+						{ link: '#', text: 'Link 1' },
+						{ link: '#', text: 'Link 2' },
+						{ link: '#', text: 'Link 3' },
 					]}
 				/>
-				<Divider />
+				<Divider accent />
 
 				<p>
 					<small>

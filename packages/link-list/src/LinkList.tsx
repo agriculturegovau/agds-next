@@ -2,7 +2,7 @@ import { TextLink } from '@ag.ds-next/text-link';
 import { mapSpacing } from '@ag.ds-next/core';
 
 type LinkListProps = {
-	links: { href: string; label: string }[];
+	links: { link: string; text: string }[];
 	inline?: boolean;
 };
 
@@ -13,9 +13,9 @@ export const LinkList = ({ links, inline }: LinkListProps) => {
 	});
 	return (
 		<ul css={styles}>
-			{links.map(({ href, label }, index) => (
+			{links.map(({ link, text }, index) => (
 				<li key={index}>
-					<TextLink href={href}>{label}</TextLink>
+					<TextLink href={link}>{text}</TextLink>
 				</li>
 			))}
 		</ul>
