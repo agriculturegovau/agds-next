@@ -4,7 +4,7 @@ export function EditPage({ slug = '' }) {
 	return (
 		<Box
 			as="a"
-			href={`https://github.com/mikehazell/gold-sprinkles/edit/main${slug}/README.md`}
+			href={`https://github.com/steelthreads/agds-next/edit/main${slug}/README.md`}
 			target="_blank"
 			rel="noopener noreferrer"
 			paddingTop={3}
