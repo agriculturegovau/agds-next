@@ -10,7 +10,7 @@ export default {
 
 const Template: ComponentStory<typeof Header> = (args) => <Header {...args} />;
 
-export const HeaderDark = Template.bind({ theme: 'dark' });
-export const HeaderDarkAlt = Template.bind({ theme: 'darkAlt' });
-export const HeaderLight = Template.bind({ theme: 'light' });
-export const HeaderLightAlt = Template.bind({ theme: 'lightAlt' });
+export const Primary = Template.bind({});
+Primary.parameters = {
+	layout: 'fullscreen',
+};
