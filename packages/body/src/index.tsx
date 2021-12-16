@@ -63,6 +63,10 @@ export const bodyClass = css({
 		// Why RGBA 0.99? https://stackoverflow.com/a/7224621
 	},
 
+	img: {
+		maxWidth: '100%',
+	},
+
 	// Decrease the opacity for certain elements
 	'img::selection,video::selection,iframe::selection': {
 		// TODO: verify this doesn't need to be a RGBA color
