@@ -1,0 +1,7 @@
+{
+	"name": "@ag.ds-next/link-list",
+	"version": "0.1.0",
+	"main": "dist/ag.ds-next-link-list.cjs.js",
+	"module": "dist/ag.ds-next-link-list.esm.js",
+	"license": "MIT"
+}

@@ -2,16 +2,28 @@ import { Flex, Divider, BoxProps, Stack } from '@ag.ds-next/box';
 import { tokens } from '@ag.ds-next/core';
 import type { PropsWithChildren } from 'react';
 
-type FooterProps = PropsWithChildren<{ theme?: BoxProps['theme'] }>;
+type FooterProps = PropsWithChildren<{
+	variant?: 'light' | 'lightAlt' | 'dark' | 'darkAlt';
+}>;
 
-export const Footer = ({ theme = 'dark', children }: FooterProps) => {
+export const Footer = ({ variant = 'dark', children }: FooterProps) => {
+	return (
+		<FooterContainer variant={variant}>
+			{children}
+			<Divider />
+			<span>&copy; Commmonwealth of Australia</span>
+		</FooterContainer>
+	);
+};
+
+export function FooterContainer({ children, variant = 'dark' }: FooterProps) {
 	return (
 		<Flex
 			as="footer"
 			justifyContent="center"
-			background="page"
+			background={variantMap[variant].background}
 			color="text"
-			theme={theme}
+			theme={variantMap[variant].theme}
 		>
 			<Stack
 				maxWidth={tokens.maxWidth.container}
@@ -21,9 +33,26 @@ export const Footer = ({ theme = 'dark', children }: FooterProps) => {
 				paddingY={{ xs: 1, md: 2 }}
 			>
 				{children}
-				<Divider accent />
-				<span>&copy; Commonwealth of Australia</span>
 			</Stack>
 		</Flex>
 	);
-};
+}
+
+const variantMap = {
+	light: {
+		theme: 'light',
+		background: 'page',
+	},
+	lightAlt: {
+		theme: 'light',
+		background: 'pageAlt',
+	},
+	dark: {
+		theme: 'dark',
+		background: 'page',
+	},
+	darkAlt: {
+		theme: 'dark',
+		background: 'pageAlt',
+	},
+} as const;
