@@ -30,61 +30,56 @@ Primary.parameters = {
 export const AgComplexFooter = (args) => {
 	return (
 		<FooterContainer variant={args.variant}>
-			<div>
-				<Divider />
-
-				<Flex
-					as="footer"
-					className="au-footer__navigation row"
-					aria-label="footer"
-					gap={1}
-					css={{
-						display: 'grid',
-						gridTemplateColumns: 'repeat(12, [col-start] 1fr)',
-					}}
-				>
-					<div className="col-md-3 col-sm-6">
-						<Heading type="h3">Section</Heading>
-						<LinkList
-							links={[
-								{ link: '#', text: 'Link 1' },
-								{ link: '#', text: 'Link 2' },
-								{ link: '#', text: 'Link 3' },
-							]}
+			<Flex
+				className="au-footer__navigation row"
+				aria-label="footer"
+				gap={1}
+				css={{
+					display: 'grid',
+					gridTemplateColumns: 'repeat(12, [col-start] 1fr)',
+				}}
+			>
+				<div className="col-md-3 col-sm-6">
+					<Heading type="h3">Section</Heading>
+					<LinkList
+						links={[
+							{ link: '#', text: 'Link 1' },
+							{ link: '#', text: 'Link 2' },
+							{ link: '#', text: 'Link 3' },
+						]}
+					/>
+				</div>
+				<div className="col-md-3 col-sm-6">
+					<Heading type="h3">Section</Heading>
+					<LinkList
+						links={[
+							{ link: '#', text: 'Link 1' },
+							{ link: '#', text: 'Link 2' },
+							{ link: '#', text: 'Link 3' },
+						]}
+					/>
+				</div>
+			</Flex>
+			<div className="row">
+				<div className="col-sm-12">
+					<div className="au-footer__end">
+						<p>Footer text</p>
+						<img
+							className="au-responsive-media-img"
+							src="https://designsystem.gov.au/assets/img/placeholder/157X80.png"
+							alt="Placeholder image"
 						/>
-					</div>
-					<div className="col-md-3 col-sm-6">
-						<Heading type="h3">Section</Heading>
-						<LinkList
-							links={[
-								{ link: '#', text: 'Link 1' },
-								{ link: '#', text: 'Link 2' },
-								{ link: '#', text: 'Link 3' },
-							]}
-						/>
-					</div>
-				</Flex>
-				<div className="row">
-					<div className="col-sm-12">
-						<div className="au-footer__end">
-							<p>Footer text</p>
-							<img
-								className="au-responsive-media-img"
-								src="https://designsystem.gov.au/assets/img/placeholder/157X80.png"
-								alt="Placeholder image"
-							/>
-							<p>
-								<small>
-									&copy; Commonwealth of Australia,{' '}
-									<TextLink
-										href="https://github.com/govau/design-system-components/blob/master/LICENSE.md"
-										rel="external license"
-									>
-										MIT licensed
-									</TextLink>
-								</small>
-							</p>
-						</div>
+						<p>
+							<small>
+								&copy; Commonwealth of Australia,{' '}
+								<TextLink
+									href="https://github.com/govau/design-system-components/blob/master/LICENSE.md"
+									rel="external license"
+								>
+									MIT licensed
+								</TextLink>
+							</small>
+						</p>
 					</div>
 				</div>
 			</div>
@@ -99,29 +94,27 @@ AgComplexFooter.parameters = {
 export const AgSimpleFooter = (args) => {
 	return (
 		<FooterContainer variant={args.variant}>
-			<div>
-				<LinkList
-					inline
-					links={[
-						{ link: '#', text: 'Link 1' },
-						{ link: '#', text: 'Link 2' },
-						{ link: '#', text: 'Link 3' },
-					]}
-				/>
-				<Divider accent />
+			<LinkList
+				inline
+				links={[
+					{ link: '#', text: 'Link 1' },
+					{ link: '#', text: 'Link 2' },
+					{ link: '#', text: 'Link 3' },
+				]}
+			/>
+			<Divider accent />
 
-				<p>
-					<small>
-						&copy; Commonwealth of Australia,{' '}
-						<TextLink
-							href="https://github.com/govau/design-system-components/blob/master/LICENSE.md"
-							rel="external license"
-						>
-							MIT licensed
-						</TextLink>
-					</small>
-				</p>
-			</div>
+			<p>
+				<small>
+					&copy; Commonwealth of Australia,{' '}
+					<TextLink
+						href="https://github.com/govau/design-system-components/blob/master/LICENSE.md"
+						rel="external license"
+					>
+						MIT licensed
+					</TextLink>
+				</small>
+			</p>
 		</FooterContainer>
 	);
 };

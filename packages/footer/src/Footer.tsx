@@ -24,13 +24,13 @@ export function FooterContainer({ children, variant = 'dark' }: FooterProps) {
 			background={variantMap[variant].background}
 			color="text"
 			theme={variantMap[variant].theme}
+			paddingY={3}
 		>
 			<Stack
 				maxWidth={tokens.maxWidth.container}
 				width="100%"
-				gap={1.5}
+				gap={1}
 				paddingX={tokens.gutter}
-				paddingY={{ xs: 1, md: 2 }}
 			>
 				{children}
 			</Stack>
