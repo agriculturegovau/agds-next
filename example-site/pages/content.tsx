@@ -2,9 +2,10 @@ import type { NextPage } from 'next';
 import Head from 'next/head';
 
 import { Body } from '@ag.ds-next/body';
-import { Box, BoxProps, Flex, Stack } from '@ag.ds-next/box';
+import { Box } from '@ag.ds-next/box';
+import { Content } from '@ag.ds-next/content';
 
-import { Header } from '../components/header';
+import { Header } from '../components/AgHeader';
 
 const ContentPage: NextPage = () => {
 	return (
@@ -21,12 +22,12 @@ const ContentPage: NextPage = () => {
 			<Header />
 
 			<main>
-				<Exp_Content>
-					<Box theme="dark">
+				<Content>
+					<Box>
 						<Body>
 							<img
 								src="https://carsguide-res.cloudinary.com/image/upload/f_auto%2Cfl_lossy%2Cq_auto%2Ct_default/v1/editorial/review/hero_image/2021-Ford-Match-1-Hatch-Orange-Press-1001x565-2.jpg"
-								css={{ maxWidth: 800 }}
+								alt="Example image"
 							/>
 							<h1>Content page example (h1)</h1>
 							<p>
@@ -93,51 +94,10 @@ const ContentPage: NextPage = () => {
 							</ul>
 						</Body>
 					</Box>
-				</Exp_Content>
+				</Content>
 			</main>
 		</Box>
 	);
 };
 
 export default ContentPage;
-
-type ContentProps = {
-	spacing?: 'small' | 'medium' | 'large';
-	theme?: BoxProps['theme'];
-	background?: BoxProps['background'];
-};
-
-const Exp_Content = ({
-	spacing = 'small',
-	theme,
-	background,
-	children,
-}: React.PropsWithChildren<ContentProps>) => {
-	// changes at breakpoints
-	const paddingY = (
-		{
-			small: { xs: 1, md: 2 },
-			medium: { xs: 1, md: 3 },
-			large: { xs: 1, md: 4 },
-		} as const
-	)[spacing];
-
-	return (
-		<Flex
-			as="section"
-			justifyContent="center"
-			theme={theme}
-			background={background}
-		>
-			<Stack
-				width="100%"
-				maxWidth={1280}
-				paddingY={paddingY}
-				paddingX={2} /* probably changes at breakpoints */
-				gap={1}
-			>
-				{children}
-			</Stack>
-		</Flex>
-	);
-};

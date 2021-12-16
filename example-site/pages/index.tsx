@@ -1,15 +1,14 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
 import Image from 'next/image';
-import auLogo from '../public/header-logo-agov.png';
 import placeholder from '../public/placeholder.png';
 
 import { Heading } from '@ag.ds-next/heading';
-import { Header } from '@ag.ds-next/header';
 import { Text } from '@ag.ds-next/text';
 import { Box, Flex, Stack } from '@ag.ds-next/box';
 import { Content } from '@ag.ds-next/content';
 
+import { Header } from '../components/AgHeader';
 import { SiteFooter } from '../components/SiteFooter';
 
 const Home: NextPage = () => {
@@ -24,19 +23,7 @@ const Home: NextPage = () => {
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
 
-			<Header
-				logo={<Image src={auLogo} alt="Logo" width="256" height="62" />}
-			/>
-
-			{/* FIXME: NavBar this needs to be a custom thing */}
-			<Box as="nav" theme="dark" background="page" color="text">
-				<Box as="ul">
-					<li>
-						<a>Home</a>
-					</li>
-				</Box>
-				<Box theme="dark" background="shade" paddingTop={0.5} />
-			</Box>
+			<Header />
 
 			<main>
 				<Content spacing="large" background="shade">
