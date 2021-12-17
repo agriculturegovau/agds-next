@@ -1,5 +1,7 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { Logo as AgLogo } from '@ag.ds-next/ag-branding';
+
 import { Header } from './Header';
 import { HeaderContainer } from './HeaderContainer';
 import { HeaderBrand } from './HeaderBrand';
@@ -11,19 +13,11 @@ import { HeaderBrand } from './HeaderBrand';
  */
 import logoImageLight from '../../../example-site/public/header-logo-agov.png';
 import logoImageDark from '../../../example-site/public/header-logo-agov--dark.png';
-import agLogoDarkSvg from '../../../example-site/public/ag-logo.svg';
-import agLogoLightSvg from '../../../example-site/public/ag-logo-light.svg';
 const logoLight = <img src={logoImageLight as any} alt="Logo" />;
 const logoDark = <img src={logoImageDark as any} alt="Logo" />;
-const agLogoLight = (
-	<img src={agLogoLightSvg} alt="Logo" style={{ width: '100%' }} />
-);
-const agLogoDark = (
-	<img src={agLogoDarkSvg} alt="Logo" style={{ width: '100%' }} />
-);
 
 export default {
-	title: 'layout/Header',
+	title: 'layout/👉  Header',
 	component: Header,
 	subcomponents: {
 		HeaderContainer,
@@ -40,13 +34,13 @@ const Template: ComponentStory<typeof Header> = (args) => <Header {...args} />;
 export const HeaderDark = Template.bind({});
 HeaderDark.args = {
 	...defaultArgs,
-	logo: agLogoLight,
+	logo: <AgLogo />,
 	variant: 'dark',
 };
 export const HeaderDarkAlt = Template.bind({});
 HeaderDarkAlt.args = {
 	...defaultArgs,
-	logo: logoLight,
+	logo: <AgLogo />,
 	variant: 'darkAlt',
 };
 export const HeaderLight = Template.bind({});
@@ -62,12 +56,10 @@ HeaderLightAlt.args = {
 	variant: 'lightAlt',
 };
 
-// Content variants
-
 export const LongSubline = Template.bind({});
 LongSubline.args = {
 	...defaultArgs,
-	logo: agLogoLight,
+	logo: logoLight,
 	variant: 'dark',
 	subline: 'Service description that could be a little longer',
 };
@@ -77,17 +69,23 @@ HeaderNoLogo.args = {
 	...defaultArgs,
 };
 
+// TODO
+
 export const HeaderCoBranded = Template.bind({});
 HeaderCoBranded.args = {
 	...defaultArgs,
 	logo: logoLight,
 	heading: 'TODO ...',
 };
+HeaderCoBranded.storyName = '🕥 Header Co-Branded';
+
 export const HeaderHero = Template.bind({});
 HeaderHero.args = {
 	...defaultArgs,
 	logo: logoLight,
+	heading: 'TODO ...',
 };
+HeaderHero.storyName = '🕥 Header Hero';
 
 export const HeaderSearch = Template.bind({});
 HeaderSearch.args = {
@@ -95,3 +93,4 @@ HeaderSearch.args = {
 	logo: logoLight,
 	heading: 'TODO ...',
 };
+HeaderSearch.storyName = '🕥 Header Search';

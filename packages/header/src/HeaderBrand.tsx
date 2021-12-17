@@ -32,7 +32,13 @@ export function HeaderBrand({
 			}}
 		>
 			{logo ? (
-				<Flex alignItems="flex-start" css={{ ' img': { maxWidth: 266 } }}>
+				<Flex
+					alignItems="flex-start"
+					css={{
+						' img': { maxWidth: 266 },
+						' svg': { maxWidth: 266, width: '100%' },
+					}}
+				>
 					{logo}
 				</Flex>
 			) : null}
