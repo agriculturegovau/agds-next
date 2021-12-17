@@ -29,9 +29,9 @@ function makeViewports(breakpoints) {
 }
 
 export const globalTypes = {
-	palette: {
-		name: 'Brand palette',
-		description: 'Global brand color palette for components',
+	brand: {
+		name: 'Brand',
+		description: 'Global branding',
 		defaultValue: 'gold',
 		toolbar: {
 			icon: 'circlehollow',
@@ -57,15 +57,15 @@ export const parameters = {
 	},
 };
 
-const getPalette = (paletteName) => {
+const getPalette = (brand) => {
 	return {
 		gold: {},
 		agriculture: agPalette,
-	}[paletteName];
+	}[brand];
 };
 
-const withTheme = (Story, context) => {
-	const palette = getPalette(context.globals.palette);
+const withBrandPalette = (Story, context) => {
+	const palette = getPalette(context.globals.brand);
 	return (
 		<Core palette={palette}>
 			<Box theme="light" fontFamily="body">
@@ -75,4 +75,4 @@ const withTheme = (Story, context) => {
 	);
 };
 
-export const decorators = [withTheme];
+export const decorators = [withBrandPalette];

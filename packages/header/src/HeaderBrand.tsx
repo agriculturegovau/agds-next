@@ -20,6 +20,7 @@ export function HeaderBrand({
 			as="a"
 			href={href}
 			flexDirection={{ xs: 'column', md: 'row' }}
+			maxWidth="60rem"
 			color="text"
 			gap={1}
 			focus
@@ -35,8 +36,8 @@ export function HeaderBrand({
 				<Flex
 					alignItems="flex-start"
 					css={{
-						' img': { maxWidth: 266 },
-						' svg': { maxWidth: 266, width: '100%' },
+						' img': { maxWidth: '18rem' },
+						' svg': { maxWidth: '18rem', width: '100%' },
 					}}
 				>
 					{logo}

@@ -8,7 +8,7 @@ import { Text } from '@ag.ds-next/text';
 import { Box, Flex, Stack } from '@ag.ds-next/box';
 import { Content } from '@ag.ds-next/content';
 
-import { Header } from '../components/AgHeader';
+import { AgHeader } from '../components/AgHeader';
 import { SiteFooter } from '../components/SiteFooter';
 
 const Home: NextPage = () => {
@@ -23,7 +23,7 @@ const Home: NextPage = () => {
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
 
-			<Header />
+			<AgHeader />
 
 			<main>
 				<Content spacing="large" background="shade">

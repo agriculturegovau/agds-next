@@ -29,29 +29,41 @@ const defaultArgs = {
 	heading: 'Example heading',
 	subline: 'Example subline',
 };
-const Template: ComponentStory<typeof Header> = (args) => <Header {...args} />;
+
+function getLogo(context: any, variant = 'dark') {
+	if (context.globals.brand === 'agriculture') {
+		return <AgLogo />;
+	}
+
+	return {
+		dark: logoLight,
+		darkAlt: logoLight,
+		light: logoDark,
+		lightAlt: logoDark,
+	}[variant];
+}
+
+const Template: ComponentStory<typeof Header> = (args, context) => (
+	<Header logo={getLogo(context, args.variant)} {...args} />
+);
 
 export const HeaderDark = Template.bind({});
 HeaderDark.args = {
 	...defaultArgs,
-	logo: <AgLogo />,
 	variant: 'dark',
 };
 export const HeaderDarkAlt = Template.bind({});
 HeaderDarkAlt.args = {
 	...defaultArgs,
-	logo: <AgLogo />,
 	variant: 'darkAlt',
 };
 export const HeaderLight = Template.bind({});
 HeaderLight.args = {
 	...defaultArgs,
-	logo: logoDark,
 	variant: 'light',
 };
 export const HeaderLightAlt = Template.bind({});
 HeaderLightAlt.args = {
-	logo: logoDark,
 	...defaultArgs,
 	variant: 'lightAlt',
 };

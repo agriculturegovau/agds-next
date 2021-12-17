@@ -1,16 +1,13 @@
-import Image from 'next/image';
-
+import { Logo } from '@ag.ds-next/ag-branding';
 import { Box, Stack } from '@ag.ds-next/box';
 import { Header } from '@ag.ds-next/header';
-
-import auLogo from '../public/header-logo-agov.png';
 
 export const AgHeader = () => {
 	return (
 		<Stack>
 			<Header
 				variant="dark"
-				logo={<Image src={auLogo} alt="Logo" width="256" height="62" />}
+				logo={<Logo />}
 				heading="AG Design-System"
 				subline="Welcome to the AG Design-System"
 			/>
