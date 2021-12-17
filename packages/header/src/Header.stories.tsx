@@ -11,10 +11,16 @@ import { HeaderBrand } from './HeaderBrand';
  */
 import logoImageLight from '../../../example-site/public/header-logo-agov.png';
 import logoImageDark from '../../../example-site/public/header-logo-agov--dark.png';
-import agLogoSvg from '../../../example-site/public/ag-logo.svg';
+import agLogoDarkSvg from '../../../example-site/public/ag-logo.svg';
+import agLogoLightSvg from '../../../example-site/public/ag-logo-light.svg';
 const logoLight = <img src={logoImageLight as any} alt="Logo" />;
 const logoDark = <img src={logoImageDark as any} alt="Logo" />;
-const agLogo = <img src={agLogoSvg} alt="Logo" style={{ width: '100%' }} />;
+const agLogoLight = (
+	<img src={agLogoLightSvg} alt="Logo" style={{ width: '100%' }} />
+);
+const agLogoDark = (
+	<img src={agLogoDarkSvg} alt="Logo" style={{ width: '100%' }} />
+);
 
 export default {
 	title: 'layout/Header',
@@ -34,7 +40,7 @@ const Template: ComponentStory<typeof Header> = (args) => <Header {...args} />;
 export const HeaderDark = Template.bind({});
 HeaderDark.args = {
 	...defaultArgs,
-	logo: agLogo,
+	logo: agLogoLight,
 	variant: 'dark',
 };
 export const HeaderDarkAlt = Template.bind({});
@@ -56,6 +62,16 @@ HeaderLightAlt.args = {
 	variant: 'lightAlt',
 };
 
+// Content variants
+
+export const LongSubline = Template.bind({});
+LongSubline.args = {
+	...defaultArgs,
+	logo: agLogoLight,
+	variant: 'dark',
+	subline: 'Service description that could be a little longer',
+};
+
 export const HeaderNoLogo = Template.bind({});
 HeaderNoLogo.args = {
 	...defaultArgs,
@@ -66,18 +82,11 @@ HeaderCoBranded.args = {
 	...defaultArgs,
 	logo: logoLight,
 	heading: 'TODO ...',
-	// ?? what's the prop here
-	// hero: true,
 };
 export const HeaderHero = Template.bind({});
 HeaderHero.args = {
 	...defaultArgs,
 	logo: logoLight,
-	heading: 'TODO ...',
-	// ?? what's the prop here
-	// layout: 'hero',
-	// variant: 'hero',
-	// hero: true,
 };
 
 export const HeaderSearch = Template.bind({});
@@ -85,8 +94,4 @@ HeaderSearch.args = {
 	...defaultArgs,
 	logo: logoLight,
 	heading: 'TODO ...',
-	// ?? what's the prop here
-	// layout: 'hero',
-	// variant: 'hero',
-	// hero: true,
 };

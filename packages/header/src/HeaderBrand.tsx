@@ -3,7 +3,6 @@ import { Heading } from '@ag.ds-next/heading';
 import { Text } from '@ag.ds-next/text';
 
 type HeaderBrandProps = {
-	// variant?: 'light' | 'lightAlt' | 'dark' | 'darkAlt';
 	href?: string;
 	heading: string;
 	subline?: string;
@@ -33,11 +32,12 @@ export function HeaderBrand({
 			}}
 		>
 			{logo ? (
-				<Box css={{ ' img': { maxWidth: 266 } }} borderRight paddingRight={1}>
+				<Flex alignItems="flex-start" css={{ ' img': { maxWidth: 266 } }}>
 					{logo}
-				</Box>
+				</Flex>
 			) : null}
-			<Stack justifyContent="center">
+			{logo ? <Box borderRight display={{ xs: 'none', md: 'block' }} /> : null}
+			<Stack justifyContent="flex-start">
 				<Heading fontSize={{ xs: 'md', md: 'xl' }}>{heading}</Heading>
 				{subline && (
 					<Text color="muted" fontSize={{ xs: 'sm', md: 'md' }}>
