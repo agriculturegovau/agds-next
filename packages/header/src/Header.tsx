@@ -1,27 +1,29 @@
-import { Stack, Flex, Box } from '@ag.ds-next/box';
-import { Heading } from '@ag.ds-next/heading';
-import { Text } from '@ag.ds-next/text';
-
 import { HeaderContainer } from './HeaderContainer';
+import { HeaderBrand } from './HeaderBrand';
 
-type HeaderProps = {
-	variant?: 'light' | 'lightAlt' | 'dark' | 'darkAlt';
+export type HeaderProps = {
+	heading: string;
 	logo?: JSX.Element;
+	subline?: string;
+	variant?: 'light' | 'lightAlt' | 'dark' | 'darkAlt';
+	href?: string;
 };
 
-export function Header({ variant = 'dark', logo }: HeaderProps) {
+export function Header({
+	logo,
+	heading,
+	subline,
+	variant = 'dark',
+	href = '/',
+}: HeaderProps) {
 	return (
 		<HeaderContainer variant={variant}>
-			<Flex gap={1} flexDirection={{ xs: 'column', md: 'row' }}>
-				{logo}
-				<Box borderRight display={{ xs: 'none', md: 'block' }} />
-				<Stack justifyContent="center">
-					<Heading fontSize={{ xs: 'md', md: 'xl' }}>AG Design-System</Heading>
-					<Text color="muted" fontSize={{ xs: 'sm', md: 'md' }}>
-						Welcome to the AG Design-System
-					</Text>
-				</Stack>
-			</Flex>
+			<HeaderBrand
+				logo={logo}
+				href={href}
+				heading={heading}
+				subline={subline}
+			/>
 		</HeaderContainer>
 	);
 }

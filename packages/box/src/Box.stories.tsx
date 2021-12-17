@@ -16,7 +16,7 @@ export const LightBox = Template.bind({});
 LightBox.args = {
 	children: 'A light box',
 	theme: 'light',
-	padding: 6,
+	padding: 2,
 	border: true,
 	rounded: true,
 };
@@ -30,8 +30,8 @@ DarkBox.args = {
 	theme: 'dark',
 	background: 'page',
 	color: 'text',
-	paddingX: 6,
-	paddingY: 6,
+	paddingX: 2,
+	paddingY: 2,
 	border: true,
 	rounded: true,
 };
@@ -59,14 +59,14 @@ function ResponsiveSizeIndicator() {
 			display="flex"
 			flexDirection="row"
 			gap={2}
-			paddingTop={3}
+			paddingTop={1}
 		>
 			{['xs', 'sm', 'md', 'lg', 'xl'].map((s, index, arr) => (
 				// TODO: replace with a pill / tag when it exists
 				<Box
 					key={s}
 					background="page"
-					padding={1}
+					padding={0.5}
 					rounded
 					display={Object.fromEntries(
 						[
