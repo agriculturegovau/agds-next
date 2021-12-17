@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { Core, tokens } from '@ag.ds-next/core';
-import { palette as agPalette } from '@ag.ds-next/theme-ag';
+import { palette as agPalette } from '@ag.ds-next/ag-branding';
 import { Box } from '@ag.ds-next/box';
 
 const viewportMap = {
