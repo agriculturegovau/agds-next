@@ -5,7 +5,7 @@ import { Body } from '@ag.ds-next/body';
 import { Box } from '@ag.ds-next/box';
 import { Content } from '@ag.ds-next/content';
 
-import { Header } from '../components/AgHeader';
+import { AgHeader } from '../components/AgHeader';
 
 const ContentPage: NextPage = () => {
 	return (
@@ -19,7 +19,7 @@ const ContentPage: NextPage = () => {
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
 
-			<Header />
+			<AgHeader />
 
 			<main>
 				<Content>

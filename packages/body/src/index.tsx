@@ -24,7 +24,7 @@ export const bodyClass = css({
 
 	// can we use themes here? ... do we need to?
 	color: themeVars.foreground.text,
-	backgroundColor: themeVars.background.page,
+	// backgroundColor: themeVars.background.page,
 
 	a: {
 		color: themeVars.foreground.action,
