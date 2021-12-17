@@ -1,7 +1,0 @@
-{
-	"name": "@ag.ds-next/logo",
-	"version": "0.1.0",
-	"main": "dist/ag.ds-next-logo.cjs.js",
-	"module": "dist/ag.ds-next-logo.esm.js",
-	"license": "MIT"
-}

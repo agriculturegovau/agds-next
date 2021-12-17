@@ -1,6 +1,6 @@
 import type { AppProps } from 'next/app';
 import { Core } from '@ag.ds-next/core';
-import { palette } from '@ag.ds-next/theme-ag';
+import { palette } from '@ag.ds-next/ag-branding';
 
 function MyApp({ Component, pageProps }: AppProps) {
 	return (
