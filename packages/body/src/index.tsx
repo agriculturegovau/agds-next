@@ -24,7 +24,7 @@ export const bodyClass = css({
 
 	// can we use themes here? ... do we need to?
 	color: themeVars.foreground.text,
-	backgroundColor: themeVars.background.page,
+	// backgroundColor: themeVars.background.page,
 
 	a: {
 		color: themeVars.foreground.action,
@@ -61,6 +61,10 @@ export const bodyClass = css({
 		color: themeVars.background.page,
 		backgroundColor: themeVars.foreground.action,
 		// Why RGBA 0.99? https://stackoverflow.com/a/7224621
+	},
+
+	img: {
+		maxWidth: '100%',
 	},
 
 	// Decrease the opacity for certain elements

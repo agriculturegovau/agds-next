@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { Core, tokens } from '@ag.ds-next/core';
+import { palette as agPalette } from '@ag.ds-next/ag-branding';
 import { Box } from '@ag.ds-next/box';
 
 const viewportMap = {
@@ -27,6 +28,21 @@ function makeViewports(breakpoints) {
 	);
 }
 
+export const globalTypes = {
+	brand: {
+		name: 'Brand',
+		description: 'Global branding',
+		defaultValue: 'gold',
+		toolbar: {
+			icon: 'circlehollow',
+			// Array of plain string values or MenuItem shape (see below)
+			items: ['gold', 'agriculture'],
+			// Property that specifies if the name of the item will be displayed
+			showName: true,
+		},
+	},
+};
+
 export const parameters = {
 	actions: { argTypesRegex: '^on[A-Z].*' },
 	controls: {
@@ -37,16 +53,26 @@ export const parameters = {
 	},
 	viewport: {
 		viewports: makeViewports(tokens.breakpoints),
-		defaultViewport: 'xs',
+		defaultViewport: 'fullscreen',
 	},
 };
 
-export const decorators = [
-	(Story) => (
-		<Core>
+const getPalette = (brand) => {
+	return {
+		gold: {},
+		agriculture: agPalette,
+	}[brand];
+};
+
+const withBrandPalette = (Story, context) => {
+	const palette = getPalette(context.globals.brand);
+	return (
+		<Core palette={palette}>
 			<Box theme="light" fontFamily="body">
 				<Story />
 			</Box>
 		</Core>
-	),
-];
+	);
+};
+
+export const decorators = [withBrandPalette];
