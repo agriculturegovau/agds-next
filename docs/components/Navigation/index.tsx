@@ -56,6 +56,9 @@ export function Navigation({ pkgs, style }: NavigationProps) {
 					<li>
 						<Link path="/storybook/index.html">Storybook</Link>
 					</li>
+					<li>
+						<Link path="/playroom/">Playroom</Link>
+					</li>
 
 					<li>
 						<h2

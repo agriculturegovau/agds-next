@@ -5,9 +5,11 @@
 	"scripts": {
 		"dev": "next dev",
 		"dev:watch": "next-remote-watch ../packages",
-		"build": "next build && next export",
+		"build": "next build && next export && playroom build",
 		"start": "next start",
-		"lint": "next lint"
+		"lint": "next lint",
+		"playroom:start": "playroom start",
+		"playroom:build": "playroom build"
 	},
 	"dependencies": {
 		"@preconstruct/next": "^3.0.1",
@@ -19,6 +21,7 @@
 		"next-mdx-remote": "^3.0.4",
 		"next-remote-watch": "^1.0.0",
 		"parse-numeric-range": "^1.2.0",
+		"playroom": "^0.27.9",
 		"prism-react-renderer": "^1.2.1",
 		"react": "17.0.2",
 		"react-dom": "^17.0.2",

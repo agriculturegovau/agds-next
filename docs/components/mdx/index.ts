@@ -1,3 +1,5 @@
+import { LinkList } from '@ag.ds-next/link-list';
+
 import { NextLink } from './NextLink';
 import { Paragraph } from './Paragraph';
 import { Blockquote } from './Blockquote';
@@ -17,4 +19,5 @@ export const contentComponents = {
 	h5: H5,
 	h6: H6,
 	inlineCode: InlineCode,
+	LinkList,
 };
