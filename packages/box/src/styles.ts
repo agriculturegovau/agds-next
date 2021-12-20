@@ -5,6 +5,7 @@ import {
 	BoxTheme,
 	themes,
 	themeVars,
+	globalVars,
 	ResponsiveProp,
 	mapResponsiveProp,
 	mapSpacing,
@@ -105,14 +106,43 @@ function layoutStyles({
 	};
 }
 
+const borderStylePacks = {
+	undefined: {
+		color: undefined,
+		width: undefined,
+		style: undefined,
+	},
+	standard: {
+		color: themeVars.border,
+		width: '1px',
+		style: 'solid',
+	},
+	muted: {
+		color: themeVars.border,
+		width: '1px',
+		style: 'solid',
+	},
+	accent: {
+		color: globalVars.accent,
+		width: '1px',
+		style: 'solid',
+	},
+	accentLarge: {
+		color: globalVars.accent,
+		width: '4px',
+		style: 'solid',
+	},
+};
+
+type BorderToken = keyof typeof borderStylePacks;
 type BorderProps = Partial<{
-	border: boolean;
-	borderLeft: boolean;
-	borderRight: boolean;
-	borderTop: boolean;
-	borderBottom: boolean;
-	borderX: boolean;
-	borderY: boolean;
+	border?: BorderToken;
+	borderLeft?: BorderToken;
+	borderRight?: BorderToken;
+	borderTop?: BorderToken;
+	borderBottom?: BorderToken;
+	borderX?: BorderToken;
+	borderY?: BorderToken;
 	rounded: boolean;
 }>;
 
@@ -127,15 +157,24 @@ function borderStyles({
 	rounded,
 }: BorderProps) {
 	const anyBorder =
-		border || borderLeft || borderRight || borderBottom || borderX || borderY;
+		border ||
+		borderLeft ||
+		borderRight ||
+		borderTop ||
+		borderBottom ||
+		borderX ||
+		borderY;
+
+	const { color, style, width } = borderStylePacks[anyBorder || 'undefined'];
+
 	return {
 		borderWidth: 0,
-		borderLeftWidth: border ?? borderX ?? borderLeft ? `1px` : undefined,
-		borderRightWidth: border ?? borderX ?? borderRight ? `1px` : undefined,
-		borderTopWidth: border ?? borderY ?? borderTop ? `1px` : undefined,
-		borderBottomWidth: border ?? borderY ?? borderBottom ? `1px` : undefined,
-		borderColor: anyBorder ? themeVars.border : undefined,
-		borderStyle: anyBorder ? 'solid' : undefined,
+		borderLeftWidth: border ?? borderX ?? borderLeft ? width : undefined,
+		borderRightWidth: border ?? borderX ?? borderRight ? width : undefined,
+		borderTopWidth: border ?? borderY ?? borderTop ? width : undefined,
+		borderBottomWidth: border ?? borderY ?? borderBottom ? width : undefined,
+		borderColor: color,
+		borderStyle: style,
 		borderRadius: rounded ? tokens.borderRadius : undefined,
 	};
 }

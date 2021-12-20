@@ -22,7 +22,7 @@ Default.args = {
 			<Box display="block" width={100} height={100} background="shadeAlt" />
 		</Fragment>
 	),
-	border: true,
+	border: 'standard',
 	padding: 6,
 	gap: 6,
 	theme: 'light',
@@ -39,28 +39,28 @@ Default.story = {
 export const Alignment: Story = () => (
 	<Stack gap={6} alignItems="flex-start">
 		<Box fontFamily="monospace">center</Box>
-		<Flex gap={6} alignItems="center" border>
+		<Flex gap={6} alignItems="center" border="standard">
 			<Box display="block" width={100} minHeight={40} background="shadeAlt" />
 			<Box display="block" width={100} minHeight={60} background="shadeAlt" />
 			<Box display="block" width={100} minHeight={100} background="shadeAlt" />
 			<Box display="block" width={100} minHeight={80} background="shadeAlt" />
 		</Flex>
 		<Box fontFamily="monospace">flex-start</Box>
-		<Flex gap={6} alignItems="flex-start" border>
+		<Flex gap={6} alignItems="flex-start" border="standard">
 			<Box display="block" width={100} minHeight={40} background="shadeAlt" />
 			<Box display="block" width={100} minHeight={60} background="shadeAlt" />
 			<Box display="block" width={100} minHeight={100} background="shadeAlt" />
 			<Box display="block" width={100} minHeight={80} background="shadeAlt" />
 		</Flex>
 		<Box fontFamily="monospace">flex-end</Box>
-		<Flex gap={6} alignItems="flex-end" border>
+		<Flex gap={6} alignItems="flex-end" border="standard">
 			<Box display="block" width={100} minHeight={40} background="shadeAlt" />
 			<Box display="block" width={100} minHeight={60} background="shadeAlt" />
 			<Box display="block" width={100} minHeight={100} background="shadeAlt" />
 			<Box display="block" width={100} minHeight={80} background="shadeAlt" />
 		</Flex>
 		<Box fontFamily="monospace">stretch</Box>
-		<Flex gap={6} alignItems="stretch" border>
+		<Flex gap={6} alignItems="stretch" border="standard">
 			<Box display="block" width={100} minHeight={40} background="shadeAlt" />
 			<Box display="block" width={100} minHeight={60} background="shadeAlt" />
 			<Box display="block" width={100} minHeight={100} background="shadeAlt" />

@@ -17,7 +17,7 @@ LightBox.args = {
 	children: 'A light box',
 	theme: 'light',
 	padding: 2,
-	border: true,
+	border: 'standard',
 	rounded: true,
 };
 
@@ -32,7 +32,7 @@ DarkBox.args = {
 	color: 'text',
 	paddingX: 2,
 	paddingY: 2,
-	border: true,
+	border: 'standard',
 	rounded: true,
 };
 
@@ -46,7 +46,7 @@ ResponsivePadding.args = {
 			<ResponsiveSizeIndicator />
 		</div>
 	),
-	border: true,
+	border: 'standard',
 	rounded: true,
 	padding: { xs: 1, sm: 2, md: 3, lg: 4, xl: 5 },
 };

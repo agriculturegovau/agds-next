@@ -22,7 +22,7 @@ Default.args = {
 			<Box display="block" height={60} background="shadeAlt" />
 		</Fragment>
 	),
-	border: true,
+	border: 'standard',
 	padding: 6,
 	gap: 6,
 	theme: 'light',
@@ -40,7 +40,7 @@ export const Alignment: Story = () => (
 	<Flex gap={6} justifyContent="space-between">
 		<Stack gap={2} alignItems="center">
 			<Box fontFamily="monospace">center</Box>
-			<Stack gap={6} alignItems="center" border>
+			<Stack gap={6} alignItems="center" border="standard">
 				<Box display="block" height={100} minWidth={40} background="shadeAlt" />
 				<Box display="block" height={100} minWidth={60} background="shadeAlt" />
 				<Box
@@ -54,7 +54,7 @@ export const Alignment: Story = () => (
 		</Stack>
 		<Stack gap={2} alignItems="center">
 			<Box fontFamily="monospace">flex-start</Box>
-			<Stack gap={6} alignItems="flex-start" border>
+			<Stack gap={6} alignItems="flex-start" border="standard">
 				<Box display="block" height={100} minWidth={40} background="shadeAlt" />
 				<Box display="block" height={100} minWidth={60} background="shadeAlt" />
 				<Box
@@ -68,7 +68,7 @@ export const Alignment: Story = () => (
 		</Stack>
 		<Stack gap={2} alignItems="center">
 			<Box fontFamily="monospace">flex-end</Box>
-			<Stack gap={6} alignItems="flex-end" border>
+			<Stack gap={6} alignItems="flex-end" border="standard">
 				<Box display="block" height={100} minWidth={40} background="shadeAlt" />
 				<Box display="block" height={100} minWidth={60} background="shadeAlt" />
 				<Box
@@ -82,7 +82,7 @@ export const Alignment: Story = () => (
 		</Stack>
 		<Stack gap={2} alignItems="center">
 			<Box fontFamily="monospace">stretch</Box>
-			<Stack gap={6} alignItems="stretch" border>
+			<Stack gap={6} alignItems="stretch" border="standard">
 				<Box display="block" height={100} minWidth={40} background="shadeAlt" />
 				<Box display="block" height={100} minWidth={60} background="shadeAlt" />
 				<Box
