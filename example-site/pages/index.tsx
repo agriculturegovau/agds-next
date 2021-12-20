@@ -68,20 +68,20 @@ const Home: NextPage = () => {
 							</a>
 						</p>
 					</Body>
-					<Box color="muted" padding={6} border background="shade">
+					<Box color="muted" padding={6} border="standard" background="shade">
 						A box in a box
 					</Box>
 					<Box
 						background="page"
 						color="text"
-						border
+						border="standard"
 						paddingY={{ xs: 1, sm: 2, xl: 3 }}
 						paddingX={2}
 						theme="dark"
 					>
 						This is a very basic test to ensure the plumbing is working as
 						intended
-						<Box color="muted" padding={6} border background="shade">
+						<Box color="muted" padding={6} border="standard" background="shade">
 							A box in a box
 						</Box>
 					</Box>
