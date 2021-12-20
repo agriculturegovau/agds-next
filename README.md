@@ -33,8 +33,13 @@ yarn storybook:build
 yarn docs:build
 ```
 
-To test the local build you can use a tool like `serve` to open the docs build directory.
+> NOTE: If you see an error during the build like the following:
+>
+> ```sh
+> > Build error occurred
+> Error: ENOENT: no such file or directory, open '.../packages/logo/package.json'
+> ```
+>
+> Check if the package has been removed or renamed. If so you may need to delete the folder.
 
-```
-npx serve
-```
+> Note: Running the built site from you local machine has some challenges as the nextjs site is expecting to be deployed to a sub directory at `/agds-next`.
