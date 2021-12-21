@@ -1,5 +1,5 @@
 import { Flex, Divider, BoxProps, Stack } from '@ag.ds-next/box';
-import { tokens } from '@ag.ds-next/core';
+import { tokens, globalVars } from '@ag.ds-next/core';
 import type { PropsWithChildren } from 'react';
 
 type FooterProps = PropsWithChildren<{
@@ -25,6 +25,14 @@ export function FooterContainer({ children, variant = 'dark' }: FooterProps) {
 			color="text"
 			theme={variantMap[variant].theme}
 			paddingY={3}
+			css={{
+				borderTop: '3px solid',
+				borderColor: globalVars.accent,
+
+				li: {
+					marginLeft: 0,
+				},
+			}}
 		>
 			<Stack
 				maxWidth={tokens.maxWidth.container}

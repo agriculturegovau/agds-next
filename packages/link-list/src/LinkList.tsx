@@ -29,7 +29,7 @@ const linkListStyles = ({ inline }: { inline?: boolean }) => {
 		display: display,
 		listStyleType: 'none',
 		margin: 0,
-		padding: mapSpacing(0.25),
+		padding: `${mapSpacing(0.25)} 0`,
 
 		'.au-body &': {
 			margin: 0,

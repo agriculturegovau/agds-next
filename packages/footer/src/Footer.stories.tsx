@@ -61,29 +61,26 @@ export const AgComplexFooter = (args) => {
 					/>
 				</div>
 			</Flex>
-			<div className="row">
-				<div className="col-sm-12">
-					<div className="au-footer__end">
-						<p>Footer text</p>
-						<img
-							className="au-responsive-media-img"
-							src="https://designsystem.gov.au/assets/img/placeholder/157X80.png"
-							alt="Placeholder image"
-						/>
-						<p>
-							<small>
-								&copy; Commonwealth of Australia,{' '}
-								<TextLink
-									href="https://github.com/govau/design-system-components/blob/master/LICENSE.md"
-									rel="external license"
-								>
-									MIT licensed
-								</TextLink>
-							</small>
-						</p>
-					</div>
-				</div>
-			</div>
+			<Divider />
+			<p>Footer text</p>
+			<Divider />
+			<img
+				className="au-responsive-media-img"
+				src="https://designsystem.gov.au/assets/img/placeholder/157X80.png"
+				alt="Placeholder image"
+				width="240px"
+			/>
+			<p>
+				<small>
+					&copy; Commonwealth of Australia,{' '}
+					<TextLink
+						href="https://github.com/govau/design-system-components/blob/master/LICENSE.md"
+						rel="external license"
+					>
+						MIT licensed
+					</TextLink>
+				</small>
+			</p>
 		</FooterContainer>
 	);
 };

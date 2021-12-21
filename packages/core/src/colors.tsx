@@ -135,7 +135,7 @@ export const globalVars = {
 		},
 		border: `var(${paletteVars.darkBorder})`,
 	},
-	accent: `var(${paletteVars.accent})`,
+	accent: `var(${paletteVars.accent}, var(--agds-foreground-action))`,
 	error: `var(${paletteVars.error})`,
 	success: `var(${paletteVars.success})`,
 	warning: `var(${paletteVars.warning})`,

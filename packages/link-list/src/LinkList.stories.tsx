@@ -12,9 +12,9 @@ const Template: ComponentStory<typeof LinkList> = (args) => {
 };
 
 const exampleLinks = [
-	{ href: '#', label: 'Home' },
-	{ href: '#', label: 'Establishments' },
-	{ href: '#', label: 'Applications' },
+	{ link: '#', text: 'Home' },
+	{ link: '#', text: 'Establishments' },
+	{ link: '#', text: 'Applications' },
 ];
 
 export const Basic = Template.bind({});
