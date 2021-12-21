@@ -1,0 +1,7 @@
+{
+  "name": "@ag.ds-next/main-nav",
+  "version": "1.0.0",
+  "main": "dist/ag.ds-next-main-nav.cjs.js",
+  "module": "dist/ag.ds-next-main-nav.esm.js",
+  "license": "MIT"
+}
