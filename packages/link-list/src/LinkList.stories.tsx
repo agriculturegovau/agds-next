@@ -27,3 +27,15 @@ Inline.args = {
 	links: exampleLinks,
 	inline: true,
 };
+
+export const BasicWithCustomLink: ComponentStory<typeof LinkList> = (args) => {
+	return (
+		<LinkList
+			{...args}
+			linkComponent={({ link, text }) => <a href={link}>{text}</a>}
+		/>
+	);
+};
+BasicWithCustomLink.args = {
+	links: exampleLinks,
+};

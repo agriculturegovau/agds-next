@@ -1,21 +1,28 @@
 import { TextLink } from '@ag.ds-next/text-link';
 import { mapSpacing } from '@ag.ds-next/core';
 
+type LinkProps = { link: string; text: string };
 type LinkListProps = {
 	links: { link: string; text: string }[];
 	inline?: boolean;
+	linkComponent?: ({ link, text }: LinkProps) => JSX.Element;
 };
 
-// <ul className="au-link-list"
-export const LinkList = ({ links, inline }: LinkListProps) => {
-	const styles = linkListStyles({
-		inline,
-	});
+const DefaultLink = ({ link, text }: LinkProps) => {
+	return <TextLink href={link}>{text}</TextLink>;
+};
+
+export const LinkList = ({
+	links,
+	inline,
+	linkComponent: Link = DefaultLink,
+}: LinkListProps) => {
+	const styles = linkListStyles({ inline });
 	return (
 		<ul css={styles}>
 			{links.map(({ link, text }, index) => (
 				<li key={index}>
-					<TextLink href={link}>{text}</TextLink>
+					<Link link={link} text={text} />
 				</li>
 			))}
 		</ul>
@@ -25,7 +32,6 @@ export const LinkList = ({ links, inline }: LinkListProps) => {
 const linkListStyles = ({ inline }: { inline?: boolean }) => {
 	const display = inline ? 'inline-block' : 'block';
 	return {
-		// @include AU-fontgrid( sm ),
 		display: display,
 		listStyleType: 'none',
 		margin: 0,
