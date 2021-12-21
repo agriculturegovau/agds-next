@@ -25,10 +25,6 @@ const ContentPage: NextPage = () => {
 				<Content>
 					<Box>
 						<Body>
-							<img
-								src="https://carsguide-res.cloudinary.com/image/upload/f_auto%2Cfl_lossy%2Cq_auto%2Ct_default/v1/editorial/review/hero_image/2021-Ford-Match-1-Hatch-Orange-Press-1001x565-2.jpg"
-								alt="Example image"
-							/>
 							<h1>Content page example (h1)</h1>
 							<p>
 								The page heading communicates the main focus of the page. Make

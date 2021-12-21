@@ -3,5 +3,7 @@ design-system/lib
 packages/**/dist
 docs/out
 docs/public
+example-site/out
+example-site/public
 .next
 .changeset

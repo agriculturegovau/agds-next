@@ -3,10 +3,8 @@ import Head from 'next/head';
 import Image from 'next/image';
 import placeholder from '../public/placeholder.png';
 
-import { Heading } from '@ag.ds-next/heading';
 import { Body } from '@ag.ds-next/body';
-import { Text } from '@ag.ds-next/text';
-import { Box, Flex, Stack } from '@ag.ds-next/box';
+import { Box, Flex } from '@ag.ds-next/box';
 import { Content } from '@ag.ds-next/content';
 
 import { AgHeader } from '../components/AgHeader';
