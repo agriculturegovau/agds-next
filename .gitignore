@@ -2,6 +2,7 @@
 
 packages/*/dist
 docs/public/storybook
+docs/public/playroom
 
 # dependencies
 node_modules

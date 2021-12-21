@@ -6,6 +6,7 @@ import { Box, Flex, Stack } from '@ag.ds-next/box';
 import { Body } from '@ag.ds-next/body';
 import { Text } from '@ag.ds-next/text';
 import { Heading, H1, H2, H3, H4, H5, H6 } from '@ag.ds-next/heading';
+import { LinkList } from '@ag.ds-next/link-list';
 
 import { contentComponents } from './mdx';
 
@@ -23,6 +24,7 @@ const packages = {
 	H4,
 	H5,
 	H6,
+	LinkList,
 
 	Fragment,
 };
