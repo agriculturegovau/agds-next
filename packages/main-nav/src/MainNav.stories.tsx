@@ -7,7 +7,7 @@ export default {
 	component: MainNav,
 } as ComponentMeta<typeof MainNav>;
 
-const navitems = [
+const NAV_ITEMS = [
 	{ href: '#', label: 'Home' },
 	{ href: 'content', label: 'Content page' },
 	{ href: 'form', label: 'Form page' },
@@ -15,4 +15,30 @@ const navitems = [
 	{ href: '#', label: 'Distinct from eachother' },
 ];
 
-// export const DarkNav;
+const Template: ComponentStory<typeof MainNav> = (args) => (
+	<MainNav {...args} />
+);
+
+export const MainNavDark = Template.bind({});
+MainNavDark.args = {
+	links: NAV_ITEMS,
+	variant: 'dark',
+};
+
+export const MainNavDarkAlt = Template.bind({});
+MainNavDark.args = {
+	links: NAV_ITEMS,
+	variant: 'darkAlt',
+};
+
+export const MainNavLight = Template.bind({});
+MainNavDark.args = {
+	links: NAV_ITEMS,
+	variant: 'light',
+};
+
+export const MainNavLightAlt = Template.bind({});
+MainNavDark.args = {
+	links: NAV_ITEMS,
+	variant: 'lightAlt',
+};

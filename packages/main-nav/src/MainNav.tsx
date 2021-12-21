@@ -20,7 +20,7 @@ export function MainNav({
 	);
 }
 
-function NavLink({ href, label }: { href: string; label: string }) {
+function DefaultLink({ href, label }: { href: string; label: string }) {
 	return <a href={href}>{label}</a>;
 }
 
@@ -34,12 +34,12 @@ export function NavLinkListContainer({ children }: { children: ReactNode }) {
 
 type NavLinkListProps = {
 	links: { href: string; label: string }[];
-	linkComponent?: typeof NavLink;
+	linkComponent?: typeof DefaultLink;
 };
 
 export function NavLinkList({
 	links,
-	linkComponent: Link = NavLink,
+	linkComponent: Link = DefaultLink,
 }: NavLinkListProps) {
 	return (
 		<NavLinkListContainer>
