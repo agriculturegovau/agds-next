@@ -3,6 +3,7 @@ import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { Divider, Flex } from '@ag.ds-next/box';
 import { Heading } from '@ag.ds-next/heading';
+import { Text } from '@ag.ds-next/text';
 import { TextLink } from '@ag.ds-next/text-link';
 import { LinkList } from '@ag.ds-next/link-list';
 import { Footer, FooterContainer } from './Footer';
@@ -62,7 +63,7 @@ export const AgComplexFooter = (args) => {
 				</div>
 			</Flex>
 			<Divider />
-			<p>Footer text</p>
+			<Text as="p">Footer text</Text>
 			<Divider />
 			<img
 				className="au-responsive-media-img"

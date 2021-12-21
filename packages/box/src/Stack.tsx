@@ -20,9 +20,6 @@ export const Stack = forwardRefWithAs<'div', StackProps>(function Stack(
 			flexDirection={flexDirection}
 			justifyContent={justifyContent}
 			alignItems={alignItems}
-			css={{
-				p: { margin: 0 },
-			}}
 			{...props}
 		/>
 	);
