@@ -18,16 +18,14 @@ export default function Homepage({
 	return (
 		<Layout pkgs={pkgs}>
 			<MDXRemote {...source} components={mdxComponents} />
-			<EditPage />
+			<EditPage slug="/docs" />
 		</Layout>
 	);
 }
 
 export async function getStaticProps() {
 	const pkgs = await getAllPkgs();
-	const { source } = await getMarkdown(
-		normalize(`${process.cwd()}/../README.md`)
-	);
+	const { source } = await getMarkdown(normalize(`${process.cwd()}/README.md`));
 
 	return {
 		props: {
