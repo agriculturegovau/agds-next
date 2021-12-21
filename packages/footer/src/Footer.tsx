@@ -1,4 +1,4 @@
-import { Flex, Divider, BoxProps, Stack } from '@ag.ds-next/box';
+import { Flex, Divider, Stack } from '@ag.ds-next/box';
 import { tokens, globalVars } from '@ag.ds-next/core';
 import type { PropsWithChildren } from 'react';
 

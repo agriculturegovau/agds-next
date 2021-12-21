@@ -1,8 +1,6 @@
 import { useRouter } from 'next/router';
 import NextLink from 'next/link';
 
-import { Box } from '@ag.ds-next/box';
-
 import { Pkgs } from '../../types';
 
 function Link({ path, children }: { path: string; children: string }) {
@@ -55,6 +53,10 @@ export function Navigation({ pkgs, style }: NavigationProps) {
 					<li>
 						<Link path="#">Github</Link>
 					</li>
+					<li>
+						<Link path="/storybook/index.html">Storybook</Link>
+					</li>
+
 					<li>
 						<h2
 							style={{
