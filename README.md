@@ -41,5 +41,3 @@ yarn docs:build
 > ```
 >
 > Check if the package has been removed or renamed. If so you may need to delete the folder.
-
-> Note: Running the built site from you local machine has some challenges as the nextjs site is expecting to be deployed to a sub directory at `/agds-next`.
