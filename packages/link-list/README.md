@@ -4,10 +4,11 @@ description: A list of links
 ---
 
 ```jsx live
-<LinkList links={[
-    { href: '#', label: 'Home' },
-    { href: '#', label: 'Establishments' },
-    { href: '#', label: 'Applications' },
-  ]}
+<LinkList
+	links={[
+		{ href: '#', label: 'Home' },
+		{ href: '#', label: 'Establishments' },
+		{ href: '#', label: 'Applications' },
+	]}
 />
 ```

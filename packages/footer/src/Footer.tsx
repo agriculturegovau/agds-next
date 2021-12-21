@@ -1,4 +1,4 @@
-import { Flex, Divider, Stack } from '@ag.ds-next/box';
+import { Flex, Stack } from '@ag.ds-next/box';
 import { tokens, globalVars } from '@ag.ds-next/core';
 import type { PropsWithChildren } from 'react';
 
@@ -7,16 +7,6 @@ type FooterProps = PropsWithChildren<{
 }>;
 
 export const Footer = ({ variant = 'dark', children }: FooterProps) => {
-	return (
-		<FooterContainer variant={variant}>
-			{children}
-			<Divider />
-			<span>&copy; Commmonwealth of Australia</span>
-		</FooterContainer>
-	);
-};
-
-export function FooterContainer({ children, variant = 'dark' }: FooterProps) {
 	return (
 		<Flex
 			as="footer"
@@ -44,7 +34,7 @@ export function FooterContainer({ children, variant = 'dark' }: FooterProps) {
 			</Stack>
 		</Flex>
 	);
-}
+};
 
 const variantMap = {
 	light: {

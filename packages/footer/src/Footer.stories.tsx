@@ -6,32 +6,64 @@ import { Heading } from '@ag.ds-next/heading';
 import { Text } from '@ag.ds-next/text';
 import { TextLink } from '@ag.ds-next/text-link';
 import { LinkList } from '@ag.ds-next/link-list';
-import { Footer, FooterContainer } from './Footer';
+import { Footer } from './Footer';
 
 export default {
 	title: 'layout/Footer',
 	component: Footer,
-	// subcomponents: [FooterContainer],
 } as ComponentMeta<typeof Footer>;
 
-const Template: ComponentStory<typeof Footer> = (args) => {
-	return <Footer {...args} />;
+const AgSimpleFooter: ComponentStory<typeof Footer> = (args) => {
+	return (
+		<Footer variant={args.variant}>
+			<LinkList
+				inline
+				links={[
+					{ link: '#', text: 'Link 1' },
+					{ link: '#', text: 'Link 2' },
+					{ link: '#', text: 'Link 3' },
+				]}
+			/>
+			<Divider accent />
+
+			<p>
+				<small>
+					&copy; Commonwealth of Australia,{' '}
+					<TextLink
+						href="https://github.com/govau/design-system-components/blob/master/LICENSE.md"
+						rel="external license"
+					>
+						MIT licensed
+					</TextLink>
+				</small>
+			</p>
+		</Footer>
+	);
 };
 
-export const Primary = Template.bind({});
-Primary.args = {
+export const SimpleFooterLight = AgSimpleFooter.bind({});
+SimpleFooterLight.args = {
+	variant: 'light',
+};
+
+export const SimpleFooterLightAlt = AgSimpleFooter.bind({});
+SimpleFooterLight.args = {
+	variant: 'lightAlt',
+};
+
+export const SimpleFooterDark = AgSimpleFooter.bind({});
+SimpleFooterDark.args = {
 	variant: 'dark',
 };
-Primary.parameters = {
-	variant: {
-		values: ['dark', 'darkAlt', 'light', 'lightAlt'],
-	},
-	layout: 'fullscreen',
+
+export const SimpleFooterDarkAlt = AgSimpleFooter.bind({});
+SimpleFooterDark.args = {
+	variant: 'darkAlt',
 };
 
-export const AgComplexFooter = (args) => {
+const AgComplexFooter: ComponentStory<typeof Footer> = (args) => {
 	return (
-		<FooterContainer variant={args.variant}>
+		<Footer variant={args.variant}>
 			<Flex
 				className="au-footer__navigation row"
 				aria-label="footer"
@@ -82,41 +114,26 @@ export const AgComplexFooter = (args) => {
 					</TextLink>
 				</small>
 			</p>
-		</FooterContainer>
+		</Footer>
 	);
 };
 
-AgComplexFooter.parameters = {
-	layout: 'fullscreen',
+export const ComplexFooterLight = AgComplexFooter.bind({});
+ComplexFooterLight.args = {
+	variant: 'light',
 };
 
-export const AgSimpleFooter = (args) => {
-	return (
-		<FooterContainer variant={args.variant}>
-			<LinkList
-				inline
-				links={[
-					{ link: '#', text: 'Link 1' },
-					{ link: '#', text: 'Link 2' },
-					{ link: '#', text: 'Link 3' },
-				]}
-			/>
-			<Divider accent />
-
-			<p>
-				<small>
-					&copy; Commonwealth of Australia,{' '}
-					<TextLink
-						href="https://github.com/govau/design-system-components/blob/master/LICENSE.md"
-						rel="external license"
-					>
-						MIT licensed
-					</TextLink>
-				</small>
-			</p>
-		</FooterContainer>
-	);
+export const ComplexFooterLightAlt = AgComplexFooter.bind({});
+ComplexFooterLight.args = {
+	variant: 'lightAlt',
 };
-AgSimpleFooter.parameters = {
-	layout: 'fullscreen',
+
+export const ComplexFooterDark = AgComplexFooter.bind({});
+ComplexFooterDark.args = {
+	variant: 'dark',
+};
+
+export const ComplexFooterDarkAlt = AgComplexFooter.bind({});
+ComplexFooterDark.args = {
+	variant: 'darkAlt',
 };
