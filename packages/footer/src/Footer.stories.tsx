@@ -37,10 +37,10 @@ export const AgComplexFooter = (args) => {
 				gap={1}
 				css={{
 					display: 'grid',
-					gridTemplateColumns: 'repeat(12, [col-start] 1fr)',
+					gridTemplateColumns: 'repeat(4, [col-start] 1fr)',
 				}}
 			>
-				<div className="col-md-3 col-sm-6">
+				<div>
 					<Heading type="h3">Section</Heading>
 					<LinkList
 						links={[
@@ -50,7 +50,7 @@ export const AgComplexFooter = (args) => {
 						]}
 					/>
 				</div>
-				<div className="col-md-3 col-sm-6">
+				<div>
 					<Heading type="h3">Section</Heading>
 					<LinkList
 						links={[
