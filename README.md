@@ -41,3 +41,13 @@ yarn docs:build
 > ```
 >
 > Check if the package has been removed or renamed. If so you may need to delete the folder.
+
+### Adding new components
+
+When adding a new component please make sure you do all of the following
+
+- run `preconstruct init`
+- add to playroom (docs/playroom/components.js)
+- add to Docs for jsx live (docs/components/utils.tsx)
+- create stories for all color variants
+- add a README.md
