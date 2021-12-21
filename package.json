@@ -21,7 +21,9 @@
 		"example:build": "yarn --cwd example-site next build",
 		"docs:dev": "yarn --cwd docs dev",
 		"docs:build": "yarn --cwd docs build",
-		"storybook": "start-storybook -p 6006",
+		"playroom:dev": "yarn --cwd docs playroom:start",
+		"playroom:build": "yarn --cwd docs playroom:build",
+		"storybook:dev": "start-storybook -p 6006",
 		"storybook:build": "build-storybook -o docs/public/storybook"
 	},
 	"devDependencies": {

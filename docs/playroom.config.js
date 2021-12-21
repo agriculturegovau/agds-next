@@ -1,6 +1,6 @@
 module.exports = {
 	components: './playroom/components',
-	outputPath: './out/playroom',
+	outputPath: './public/playroom',
 	title: 'AgDS Playroom',
 	frameComponent: './playroom/frame.js',
 	openBrowser: false,

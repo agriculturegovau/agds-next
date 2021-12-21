@@ -5,10 +5,10 @@
 	"scripts": {
 		"dev": "next dev",
 		"dev:watch": "next-remote-watch ../packages",
-		"build": "next build && next export && playroom build",
+		"build": "next build && next export",
 		"start": "next start",
 		"lint": "next lint",
-		"playroom:start": "playroom start",
+		"playroom:dev": "playroom start",
 		"playroom:build": "playroom build"
 	},
 	"dependencies": {

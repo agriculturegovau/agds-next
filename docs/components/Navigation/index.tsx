@@ -57,7 +57,7 @@ export function Navigation({ pkgs, style }: NavigationProps) {
 						<Link path="/storybook/index.html">Storybook</Link>
 					</li>
 					<li>
-						<Link path="/playroom/">Playroom</Link>
+						<Link path="/playroom/index.html">Playroom</Link>
 					</li>
 
 					<li>

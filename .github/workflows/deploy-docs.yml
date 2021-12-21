@@ -32,6 +32,7 @@ jobs:
       - name: Build
         run: |
           yarn storybook:build
+          yarn playroom:build
           yarn docs:build
 
       - name: Deploy 🚀
