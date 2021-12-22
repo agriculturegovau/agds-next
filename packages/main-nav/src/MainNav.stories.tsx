@@ -8,11 +8,11 @@ export default {
 } as ComponentMeta<typeof MainNav>;
 
 const NAV_ITEMS = [
-	{ href: '#', label: 'Home' },
-	{ href: 'content', label: 'Content page' },
-	{ href: 'form', label: 'Form page' },
+	{ href: '#home', label: 'Home' },
+	{ href: '#content', label: 'Content page' },
+	{ href: '#form', label: 'Form page' },
 	{ href: '#', label: 'Simple terms' },
-	{ href: '#', label: 'Distinct from eachother' },
+	{ href: '#', label: 'Distinct from each other' },
 ];
 
 const Template: ComponentStory<typeof MainNav> = (args) => (
@@ -22,23 +22,25 @@ const Template: ComponentStory<typeof MainNav> = (args) => (
 export const MainNavDark = Template.bind({});
 MainNavDark.args = {
 	links: NAV_ITEMS,
+	activePath: '#home',
 	variant: 'dark',
 };
 
 export const MainNavDarkAlt = Template.bind({});
-MainNavDark.args = {
+MainNavDarkAlt.args = {
 	links: NAV_ITEMS,
+	activePath: '#content',
 	variant: 'darkAlt',
 };
 
 export const MainNavLight = Template.bind({});
-MainNavDark.args = {
+MainNavLight.args = {
 	links: NAV_ITEMS,
 	variant: 'light',
 };
 
 export const MainNavLightAlt = Template.bind({});
-MainNavDark.args = {
+MainNavLightAlt.args = {
 	links: NAV_ITEMS,
 	variant: 'lightAlt',
 };

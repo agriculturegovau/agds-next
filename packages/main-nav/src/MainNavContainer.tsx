@@ -6,7 +6,6 @@ const variantMap = {
 	light: {
 		theme: 'light',
 		background: 'page',
-		linkHoverBg: 'pageAlt',
 	},
 	lightAlt: {
 		theme: 'light',
@@ -33,19 +32,21 @@ export type MainNavContainerProps = React.PropsWithChildren<{
 }>;
 
 export function MainNavContainer({ variant, children }: MainNavContainerProps) {
+	const { theme, background } = variantMap[variant];
 	return (
 		<Box
-			theme={variantMap[variant].theme}
-			background={variantMap[variant].background}
+			theme={theme}
+			background={background}
 			color="text"
 			css={{
 				position: 'relative',
-				[localVars.linkHoverBg]: themeVars.background.shadeAlt,
+				[localVars.linkHoverBg]: themeVars.background.shade,
 				[localVars.linkHoverBorder]: themeVars.background.page,
-				[localVars.linkActiveBorder]: themeVars.background.page,
+				[localVars.linkActiveBorder]: themeVars.background[background],
 			}}
 		>
-			<Flex as="nav" justifyContent="center">
+			<BottomBar />
+			<Flex as="nav" justifyContent="center" css={{ position: 'relative' }}>
 				<Flex
 					justifyContent="space-between"
 					maxWidth={1280}
@@ -55,17 +56,22 @@ export function MainNavContainer({ variant, children }: MainNavContainerProps) {
 					{children}
 				</Flex>
 			</Flex>
-			<Box
-				theme="dark"
-				paddingTop={0.5}
-				css={{
-					position: 'absolute',
-					bottom: 0,
-					left: 0,
-					right: 0,
-					backgroundColor: globalVars.accent,
-				}}
-			/>
 		</Box>
+	);
+}
+
+function BottomBar() {
+	return (
+		<Box
+			theme="dark"
+			paddingTop={0.5}
+			css={{
+				position: 'absolute',
+				bottom: 0,
+				left: 0,
+				right: 0,
+				backgroundColor: globalVars.accent,
+			}}
+		/>
 	);
 }

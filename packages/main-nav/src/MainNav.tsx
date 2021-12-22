@@ -9,13 +9,15 @@ import { NavItem } from './NavItem';
 export function MainNav({
 	variant,
 	links,
+	activePath,
 }: React.PropsWithChildren<{
 	variant: MainNavContainerProps['variant'];
 	links: NavLinkListProps['links'];
+	activePath?: string;
 }>) {
 	return (
 		<MainNavContainer variant={variant}>
-			<NavLinkList links={links} />
+			<NavLinkList links={links} activePath={activePath} />
 		</MainNavContainer>
 	);
 }
@@ -26,7 +28,7 @@ function DefaultLink({ href, label }: { href: string; label: string }) {
 
 export function NavLinkListContainer({ children }: { children: ReactNode }) {
 	return (
-		<Flex as="ul" flexDirection={{ xs: 'column', md: 'row' }} gap={2}>
+		<Flex as="ul" flexDirection={{ xs: 'column', md: 'row' }} gap={1}>
 			{children}
 		</Flex>
 	);
@@ -35,16 +37,18 @@ export function NavLinkListContainer({ children }: { children: ReactNode }) {
 type NavLinkListProps = {
 	links: { href: string; label: string }[];
 	linkComponent?: typeof DefaultLink;
+	activePath?: string;
 };
 
 export function NavLinkList({
 	links,
 	linkComponent: Link = DefaultLink,
+	activePath,
 }: NavLinkListProps) {
 	return (
 		<NavLinkListContainer>
 			{links.map((link, index) => (
-				<NavItem key={index}>
+				<NavItem key={index} active={link.href === activePath}>
 					<Link {...link} />
 				</NavItem>
 			))}
