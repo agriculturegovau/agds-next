@@ -15,7 +15,7 @@ const Template: ComponentStory<typeof Text> = (args) => {
 export const Basic = Template.bind({});
 Basic.args = {};
 
-export const Sizes = (args) => (
+export const Sizes: ComponentStory<typeof Text> = (args) => (
 	<div>
 		<Text as="p" {...args} fontSize="xs">
 			This is some text - xs.
@@ -41,7 +41,7 @@ export const Sizes = (args) => (
 	</div>
 );
 
-export const Paragraph = (args) => (
+export const Paragraph: ComponentStory<typeof Text> = (args) => (
 	<Text as="p" lineHeight="default" {...args}>
 		Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas iaculis,
 		felis eget imperdiet dapibus, sapien enim maximus urna, at iaculis est risus
@@ -55,7 +55,7 @@ export const Paragraph = (args) => (
 	</Text>
 );
 
-export const FontGrid = (args) => {
+export const FontGrid: ComponentStory<typeof Text> = (args) => {
 	return (
 		<Text
 			as="p"
