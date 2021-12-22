@@ -44,7 +44,8 @@ function typographyStyles({
 	return {
 		fontWeight: mapResponsiveProp(fontWeight, (t) => tokens.fontWeight[t]),
 		fontFamily: mapResponsiveProp(fontFamily, (t) => tokens.font[t]),
-		fontSize: mapResponsiveProp(fontSize, (t) => tokens.fontSize[t]),
+		// TODO: use fontGrid here. Make it play nicely with mapResponsiveProp
+		fontSize: mapResponsiveProp(fontSize, (t) => `${tokens.fontSize[t]}rem`),
 		lineHeight: mapResponsiveProp(lineHeight, (t) => tokens.lineHeight[t]),
 	};
 }
