@@ -1,5 +1,6 @@
 import { FontSize, tokens, LineHeight } from '../tokens';
 
+/** Ensures that font-size and line-height snaps to the 4px grid. */
 export const fontGrid = (
 	fontSize: FontSize | number,
 	lineHeight: LineHeight
