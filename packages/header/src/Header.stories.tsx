@@ -17,7 +17,7 @@ const logoLight = <img src={logoImageLight as any} alt="Logo" />;
 const logoDark = <img src={logoImageDark as any} alt="Logo" />;
 
 export default {
-	title: 'layout/👉  Header',
+	title: 'layout/Header',
 	component: Header,
 	subcomponents: {
 		HeaderContainer,
