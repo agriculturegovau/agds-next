@@ -4,8 +4,6 @@ import FocusTrap from 'focus-trap-react';
 import { Box, Flex } from '@ag.ds-next/box';
 import {
 	globalVars,
-	mq,
-	mapResponsiveProp,
 	themeVars,
 	useTernaryState,
 	mapSpacing,
