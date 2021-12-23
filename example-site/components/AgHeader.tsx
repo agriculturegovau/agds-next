@@ -11,6 +11,9 @@ const NAV_LINKS = [
 	{ label: 'Form example', href: '/form' },
 ];
 
+// TODO: example links when authenticated / not authenticated
+const SECONDARY_LINKS = [{ label: 'Sign in', href: '/sign-in' }];
+
 export const AgHeader = () => {
 	const router = useRouter();
 
@@ -22,7 +25,12 @@ export const AgHeader = () => {
 				heading="AG Design-System"
 				subline="Welcome to the AG Design-System"
 			/>
-			<MainNav variant="darkAlt" links={NAV_LINKS} activePath={router.asPath} />
+			<MainNav
+				variant="darkAlt"
+				links={NAV_LINKS}
+				secondaryLinks={SECONDARY_LINKS}
+				activePath={router.asPath}
+			/>
 		</Stack>
 	);
 };
