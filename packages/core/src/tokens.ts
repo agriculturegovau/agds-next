@@ -8,7 +8,7 @@ const breakpoints = {
 	xl: 1200,
 } as const;
 
-const rem = '16px';
+const rem = 16;
 
 /** "unit" used for all type and grid calculations */
 const unit = 4;
@@ -19,16 +19,16 @@ const font = {
 };
 export type Font = 'body' | 'mono';
 
-/** Predetermined pixel sizes from a 1.25 type-scale rounded to the nearest "unit" (vertical grid) */
+/** Use as rem values */
 const fontSize = {
-	xs: '0.875rem',
-	sm: '1rem',
-	md: '1.25rem',
-	lg: '1.5rem',
-	xl: '2rem',
-	xxl: '2.5rem',
-	xxxl: '3rem',
-};
+	xs: 0.875,
+	sm: 1,
+	md: 1.25,
+	lg: 1.5,
+	xl: 2,
+	xxl: 2.5,
+	xxxl: 3,
+} as const;
 export type FontSize = keyof typeof fontSize;
 
 const fontWeight = {
@@ -41,9 +41,9 @@ const lineHeight = {
 	nospace: 1,
 	heading: 1.25,
 	default: 1.5,
-};
+} as const;
 
-export type LintHeight = keyof typeof lineHeight;
+export type LineHeight = keyof typeof lineHeight;
 
 // FIXME... it's unclear how spacing should work at the moment.
 export type Spacing = 0 | 0.25 | 0.5 | 0.75 | 1 | 1.5 | 2 | 3 | 4 | 5 | 6;
