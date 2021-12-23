@@ -1,8 +1,14 @@
-import { themeVars, mapSpacing, tokens, outline } from '@ag.ds-next/core';
+import {
+	themeVars,
+	mapSpacing,
+	outline,
+	mq,
+	mapResponsiveProp,
+} from '@ag.ds-next/core';
 import { Box } from '@ag.ds-next/box';
 import type { ReactNode } from 'react';
 
-import { localVars } from './MainNavContainer';
+import { localVars } from './utils';
 
 export function NavItem({
 	children,
@@ -14,27 +20,51 @@ export function NavItem({
 	return (
 		<Box
 			as="li"
-			paddingBottom={0.5}
-			css={{
+			paddingBottom={{ md: 0.5 }}
+			css={mq({
+				// TODO: may also need to support button element
 				' a': {
 					position: 'relative',
 					display: 'block',
-					color: themeVars.foreground.action,
+					color: themeVars.foreground[active ? 'text' : 'action'],
 					padding: mapSpacing(1),
 					textDecoration: 'none',
 
+					fontWeight: mapResponsiveProp({
+						xs: active ? 'bold' : undefined,
+						md: 'normal',
+					}),
+
+					// Underline overlay for active menu item
 					'&:after': {
-						content: '""',
+						content: mapResponsiveProp({ xs: undefined, md: '""' }),
 						height: mapSpacing(0.5),
 						position: 'absolute',
 						top: '100%',
 						left: 0,
 						right: 0,
-						backgroundColor: 'transparent',
+						backgroundColor: active
+							? `var(${localVars.linkActiveBorder})`
+							: 'transparent',
 					},
 
+					// Focus styles
 					'&:focus': {
-						...outline,
+						outline: 'none',
+
+						'&:before': {
+							content: '""',
+							position: 'absolute',
+							zIndex: 100,
+							top: 0,
+							left: 0,
+							height: '100%',
+							width: '100%',
+							...outline,
+						},
+						'&::-moz-focus-inner': {
+							border: 0,
+						},
 					},
 
 					'&:hover': {
@@ -42,30 +72,17 @@ export function NavItem({
 						textDecorationSkipInk: 'auto',
 						color: themeVars.foreground.text,
 						backgroundColor: `var(${localVars.linkHoverBg})`,
-					},
-					...(active
-						? {
-								fontWeight: tokens.fontWeight.bold,
-								color: themeVars.foreground.text,
-								'&::after': {
-									backgroundColor: `var(${localVars.linkActiveBorder})`,
-								},
 
-								'&:hover::after': {
-									background: `var(${localVars.linkHoverBg})`,
-								},
-						  }
-						: undefined),
+						'&::after': {
+							background: active
+								? `var(${localVars.linkHoverBg})`
+								: 'transparent',
+						},
+					},
 				},
-			}}
+			})}
 		>
 			{children}
 		</Box>
 	);
 }
-
-/**
- * ActiveClassName
- *
- * https://github.com/vercel/next.js/blob/canary/examples/active-class-name/components/ActiveLink.js
- */

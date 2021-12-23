@@ -36,11 +36,21 @@ MainNavDarkAlt.args = {
 export const MainNavLight = Template.bind({});
 MainNavLight.args = {
 	links: NAV_ITEMS,
+	activePath: '#content',
 	variant: 'light',
 };
 
 export const MainNavLightAlt = Template.bind({});
 MainNavLightAlt.args = {
 	links: NAV_ITEMS,
+	activePath: '#content',
 	variant: 'lightAlt',
+};
+
+export const MainNavSecondaryLinks = Template.bind({});
+MainNavSecondaryLinks.args = {
+	links: NAV_ITEMS,
+	secondaryLinks: [{ href: '#login', label: 'Sign in' }],
+	activePath: '#content',
+	variant: 'dark',
 };
