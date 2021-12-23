@@ -57,6 +57,7 @@ const gutter = { xs: 1, md: 2 } as const;
 const maxWidth = {
 	bodyText: '42em',
 	container: '80rem', // 1280 px
+	mobileMenu: '17.5rem', // 280 px
 };
 
 const borderRadius = unit;

@@ -9,6 +9,7 @@ import {
 	mapResponsiveProp,
 	mapSpacing,
 	mq,
+	fontGrid,
 	Spacing,
 } from '@ag.ds-next/core';
 
@@ -32,24 +33,45 @@ type TypographyProps = Partial<{
 	fontWeight: ResponsiveProp<keyof typeof tokens.fontWeight>;
 	fontFamily: ResponsiveProp<keyof typeof tokens.font>;
 	fontSize: ResponsiveProp<keyof typeof tokens.fontSize>;
-	lineHeight: ResponsiveProp<keyof typeof tokens.lineHeight>;
+	lineHeight: keyof typeof tokens.lineHeight;
 }>;
 
 function typographyStyles({
 	fontWeight,
 	fontFamily,
-	fontSize,
-	lineHeight,
+	fontSize: _fontSize,
+	lineHeight: _lineHeight = 'default',
 }: TypographyProps) {
+	const responsiveFontGrid = mapResponsiveProp(_fontSize, (t) =>
+		fontGrid(t, _lineHeight)
+	);
+
+	const { fontSize, lineHeight } = responsiveFontGrid?.reduce<{
+		fontSize: (string | null)[];
+		lineHeight: (number | null)[];
+	}>(
+		(acc, entry, index) => {
+			acc.fontSize[index] = isEntry(entry) ? entry.fontSize : null;
+			acc.lineHeight[index] = isEntry(entry) ? entry.lineHeight : null;
+			return acc;
+		},
+		{ fontSize: [], lineHeight: [] }
+	) ?? { fontSize: undefined, lineHeight: undefined };
+
 	return {
 		fontWeight: mapResponsiveProp(fontWeight, (t) => tokens.fontWeight[t]),
 		fontFamily: mapResponsiveProp(fontFamily, (t) => tokens.font[t]),
-		// TODO: use fontGrid here. Make it play nicely with mapResponsiveProp
-		fontSize: mapResponsiveProp(fontSize, (t) => `${tokens.fontSize[t]}rem`),
-		lineHeight: mapResponsiveProp(lineHeight, (t) => tokens.lineHeight[t]),
+		fontSize,
+		lineHeight,
 	};
 }
 
+function isEntry(a: unknown): a is {
+	fontSize: string;
+	lineHeight: number;
+} {
+	return !!a; // ie. not null or undefined
+}
 type LayoutProps = Partial<{
 	display: ResponsiveProp<
 		'block' | 'flex' | 'inline' | 'inline-block' | 'inline-flex' | 'none'
@@ -182,7 +204,7 @@ function paddingStyles({
 }
 
 type FocusProps = Partial<{ focus: boolean }>;
-function focusStyles({ focus }: FocusProps) {
+export function focusStyles({ focus }: FocusProps) {
 	return focus
 		? {
 				':focus': outline,
@@ -243,9 +265,13 @@ export function boxStyles({
 		css([
 			theme ? themes[theme] : undefined,
 
-			// Reset margins for things like ul / ol, headings
-
-			{ margin: 0 },
+			// common resets
+			{
+				boxSizing: 'border-box',
+				listStyle: 'none',
+				margin: 0,
+				padding: 0,
+			},
 
 			mq({
 				...colorStyles({ background, color }),

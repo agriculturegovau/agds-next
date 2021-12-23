@@ -2,7 +2,7 @@ import { forwardRefWithAs } from '@ag.ds-next/core';
 import type { BoxProps } from './styles';
 import { Box } from './Box';
 
-export type FlexProps = Omit<BoxProps, 'display'> & { inline?: boolean };
+export type FlexProps = BoxProps & { inline?: boolean };
 
 export const Flex = forwardRefWithAs<'div', FlexProps>(function Flex(
 	{
@@ -10,6 +10,7 @@ export const Flex = forwardRefWithAs<'div', FlexProps>(function Flex(
 		flexDirection = 'row',
 		justifyContent = 'flex-start',
 		alignItems = 'stretch',
+		display,
 		...props
 	},
 	ref
@@ -17,7 +18,7 @@ export const Flex = forwardRefWithAs<'div', FlexProps>(function Flex(
 	return (
 		<Box
 			ref={ref}
-			display={inline ? 'inline-flex' : 'flex'}
+			display={display ?? (inline ? 'inline-flex' : 'flex')}
 			flexDirection={flexDirection}
 			justifyContent={justifyContent}
 			alignItems={alignItems}
