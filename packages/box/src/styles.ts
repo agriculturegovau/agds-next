@@ -204,7 +204,7 @@ function paddingStyles({
 }
 
 type FocusProps = Partial<{ focus: boolean }>;
-function focusStyles({ focus }: FocusProps) {
+export function focusStyles({ focus }: FocusProps) {
 	return focus
 		? {
 				':focus': outline,
@@ -265,9 +265,13 @@ export function boxStyles({
 		css([
 			theme ? themes[theme] : undefined,
 
-			// Reset margins for things like ul / ol, headings
-
-			{ margin: 0 },
+			// common resets
+			{
+				boxSizing: 'border-box',
+				listStyle: 'none',
+				margin: 0,
+				padding: 0,
+			},
 
 			mq({
 				...colorStyles({ background, color }),
