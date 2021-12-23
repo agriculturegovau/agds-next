@@ -39,7 +39,6 @@ export type NavContainerProps = React.PropsWithChildren<{
 export function NavContainer({ variant, children }: NavContainerProps) {
 	const { theme, background } = variantMap[variant];
 	const [menuOpen, open, close] = useTernaryState(false);
-	console.log({ menuOpen });
 
 	return (
 		<Box
@@ -64,7 +63,8 @@ export function NavContainer({ variant, children }: NavContainerProps) {
 					<FocusTrap
 						active={menuOpen}
 						focusTrapOptions={{
-							preventScroll: true,
+							clickOutsideDeactivates: true,
+							onDeactivate: close,
 						}}
 					>
 						<div

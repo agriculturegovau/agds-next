@@ -1,5 +1,6 @@
 import type { ReactNode } from 'react';
 import { Flex } from '@ag.ds-next/box';
+import { themeVars, tokens } from '@ag.ds-next/core';
 
 import { NavItem } from './NavItem';
 
@@ -22,8 +23,15 @@ export function NavList({
 		<Flex
 			as="ul"
 			flexDirection={{ xs: 'column', md: 'row' }}
-			gap={1}
+			gap={{ md: 1 }}
 			alignItems="stretch"
+			css={{
+				[`@media (max-width: ${tokens.breakpoints.md - 1}px)`]: {
+					'& > li': {
+						borderTop: `1px solid ${themeVars.border}`,
+					},
+				},
+			}}
 		>
 			{links.map((link, index) => (
 				<NavItem key={index} active={link.href === activePath}>
