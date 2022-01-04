@@ -22,7 +22,7 @@ const NavLink = ({ href, label }: { href: string; label: ReactNode }) => (
 	</Link>
 );
 
-export const AgHeader = () => {
+export const SiteHeader = () => {
 	const router = useRouter();
 
 	return (
