@@ -52,7 +52,7 @@ export const parameters = {
 		},
 	},
 	viewport: {
-		viewports: makeViewports(tokens.breakpoints),
+		viewports: makeViewports(tokens.breakpoint),
 		defaultViewport: 'fullscreen',
 	},
 };

@@ -69,7 +69,7 @@ export function NavContainer({ variant, children }: NavContainerProps) {
 					>
 						<div
 							css={{
-								[`@media (max-width: ${tokens.breakpoints.md - 1}px)`]: {
+								[tokens.mediaQuery.max.sm]: {
 									zIndex: 200,
 									position: 'fixed',
 									display: menuOpen ? 'block' : 'none',

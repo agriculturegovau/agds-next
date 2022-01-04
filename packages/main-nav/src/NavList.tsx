@@ -26,7 +26,7 @@ export function NavList({
 			gap={{ md: 1 }}
 			alignItems="stretch"
 			css={{
-				[`@media (max-width: ${tokens.breakpoints.md - 1}px)`]: {
+				[tokens.mediaQuery.max.sm]: {
 					'& > li': {
 						borderTop: `1px solid ${themeVars.border}`,
 					},

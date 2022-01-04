@@ -12,14 +12,13 @@ import facepaint from 'facepaint';
  */
 
 export const mq = facepaint([
-	// `@media(min-width: ${tokens.breakpoints.xs}px)`,
-	`@media(min-width: ${tokens.breakpoints.sm}px)`,
-	`@media(min-width: ${tokens.breakpoints.md}px)`,
-	`@media(min-width: ${tokens.breakpoints.lg}px)`,
-	`@media(min-width: ${tokens.breakpoints.xl}px)`,
+	tokens.mediaQuery.min.sm,
+	tokens.mediaQuery.min.md,
+	tokens.mediaQuery.min.lg,
+	tokens.mediaQuery.min.xl,
 ]);
 
-type NamedBreakpoint = keyof typeof tokens.breakpoints;
+type NamedBreakpoint = keyof typeof tokens.breakpoint;
 const breakpointNames = ['xs', 'sm', 'md', 'lg', 'xl'] as const;
 
 export function mapResponsiveProp<T>(
