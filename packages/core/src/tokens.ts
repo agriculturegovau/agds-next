@@ -1,12 +1,28 @@
 // Tokens
 
-const breakpoints = {
+const breakpoint = {
 	xs: 0,
 	sm: 576,
 	md: 768,
 	lg: 992,
 	xl: 1200,
 } as const;
+
+const mediaQuery = {
+	min: {
+		xs: `@media(min-width: ${breakpoint.xs}px)`,
+		sm: `@media(min-width: ${breakpoint.sm}px)`,
+		md: `@media(min-width: ${breakpoint.md}px)`,
+		lg: `@media(min-width: ${breakpoint.lg}px)`,
+		xl: `@media(min-width: ${breakpoint.xl}px)`,
+	},
+	max: {
+		xs: `@media(max-width: ${breakpoint.sm - 1}px)`,
+		sm: `@media(max-width: ${breakpoint.md - 1}px)`,
+		md: `@media(max-width: ${breakpoint.lg - 1}px)`,
+		lg: `@media(max-width: ${breakpoint.xl - 1}px)`,
+	},
+};
 
 const rem = 16;
 
@@ -63,7 +79,8 @@ const maxWidth = {
 const borderRadius = unit;
 
 export const tokens = {
-	breakpoints,
+	breakpoint,
+	mediaQuery,
 	rem,
 	unit,
 	font,

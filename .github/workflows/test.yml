@@ -9,7 +9,6 @@ on:
 
 jobs:
   jest:
-    if: ${{ false }} # disable for now
     name: Unit Tests
     runs-on: ubuntu-latest
     env:
@@ -44,7 +43,7 @@ jobs:
       - name: Install dependencies
         run: yarn
 
-      - name: Unit tests - map_platform
+      - name: Unit tests
         run: yarn test
 
   linting:
