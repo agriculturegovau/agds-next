@@ -14,7 +14,7 @@ Run `yarn fresh` to rebuild `node_modules` and clean-up any build output.
 
 Finally, run `yarn publish-changed` to find packages where the version listed in the `package.json` is ahead of the version published on npm, and publish just those packages.
 
-The above command requires OTP and publish privileges on npm.
+The above command requires publish privileges on npm and a one time password (OTP).
 
 Create git tag relevant to release date, such as `git tag "$(date +'%Y-%m-%d')"`.
 
@@ -44,17 +44,31 @@ TODO
 
 ## Github release notes
 
-Create a draft release on GitHub based on the above tag (such as 2021-11-02) with the following template.
+Create a draft release on GitHub based on the above tag (such as 2022-01-05).
 
-Update the following:
+Give the release a title using the date of the release like `✨ January 5th, 2022`.
 
-- Summary headline of what's in the release (can be updated later)
+Use emoji to indicate the type of release:
+
+```
+⚙️ : Indicates a patch release. Bug fixes only.
+✨ : Indicates a release with new features. Minor or major version changes.
+```
+
+Use the template below and update the following details:
+
+- Summary headline of what's in the release
+- Release description of what is new. This may be taken from the changelogs but should remove the noise. In some cases it may be better to write something new.
 - The Docs website link
-- Packages output
-- Verbose release notes link
+- Packages output (formatted for easy copy paste into package.json)
+- Verbose release notes link (link to the PR)
 
 ````
 [summary headline]
+
+[release description]
+
+> ⚠️ Note: All releases under the `@ag.ds-next` package scope should be considered alpha pre-releases. Expect breaking changes. Once we are happy with the state of the core packages we will migrate all packages to `@ag.ds`.
 
 ### **View the [complete release notes on the AG DS website](https://steelthreads.github.io/agds-next/releases/YYYY-MM-DD)**.
 
@@ -67,5 +81,5 @@ Update the following:
 
 https://steelthreads.github.io/agds-next
 
-Aside from the [complete release notes on the @ag.ds-next website](https://steelthreads.github.io/agds-next), you can also view the [verbose change log](https://github.com/steelthreads/agds-next/pull/XXXX) in the related PR (https://github.com/steelthreads/agds-next/pull/XXXX) for this release.
+Aside from the [complete release notes on the @ag.ds-next website](https://steelthreads.github.io/agds-next/releases/YYYY-MM-DD), you can also view the [verbose change log](https://github.com/steelthreads/agds-next/pull/XXXX) in the related PR (https://github.com/steelthreads/agds-next/pull/XXXX) for this release.
 ````
