@@ -1,16 +1,14 @@
 {
-	"name": "@ag.ds-next/body",
+	"name": "@ag.ds-next/text-link",
 	"version": "0.0.1",
-	"main": "dist/ag.ds-next-body.cjs.js",
-	"module": "dist/ag.ds-next-body.esm.js",
+	"main": "dist/ag.ds-next-text-link.cjs.js",
+	"module": "dist/ag.ds-next-text-link.esm.js",
 	"license": "MIT",
 	"peerDependencies": {
-		"@ag.ds-next/box": "0.0.1",
 		"@ag.ds-next/core": "0.0.1",
 		"@emotion/react": "^11.7.0"
 	},
 	"devDependencies": {
-		"@ag.ds-next/box": "*",
 		"@ag.ds-next/core": "*",
 		"@emotion/react": "^11.7.0"
 	}

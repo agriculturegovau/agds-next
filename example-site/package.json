@@ -1,6 +1,6 @@
 {
 	"name": "@ag.ds-next/example-site",
-	"version": "0.1.0",
+	"version": "0.0.1",
 	"main": "index.js",
 	"author": "Mike Hazell <mikehazell@users.noreply.github.com>",
 	"license": "MIT",

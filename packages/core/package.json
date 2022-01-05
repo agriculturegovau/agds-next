@@ -1,14 +1,18 @@
 {
 	"name": "@ag.ds-next/core",
-	"version": "0.1.0",
+	"version": "0.0.1",
 	"main": "dist/ag.ds-next-core.cjs.js",
 	"module": "dist/ag.ds-next-core.esm.js",
 	"license": "MIT",
-	"dependencies": {
+	"peerDependencies": {
 		"@emotion/react": "^11.7.0",
-		"facepaint": "^1.2.1"
+		"facepaint": "^1.2.1",
+		"react": "^16.14.0 || ^17.0.0"
 	},
 	"devDependencies": {
-		"@types/facepaint": "^1.2.2"
+		"@emotion/react": "^11.7.0",
+		"@types/facepaint": "^1.2.2",
+		"facepaint": "^1.2.1",
+		"react": "17.0.2"
 	}
 }

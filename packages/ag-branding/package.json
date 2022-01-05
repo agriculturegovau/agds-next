@@ -1,7 +1,16 @@
 {
 	"name": "@ag.ds-next/ag-branding",
-	"version": "0.1.0",
+	"version": "0.0.1",
 	"main": "dist/ag.ds-next-ag-branding.cjs.js",
 	"module": "dist/ag.ds-next-ag-branding.esm.js",
-	"license": "MIT"
+	"license": "MIT",
+	"peerDependencies": {
+		"@ag.ds-next/core": "0.0.1",
+		"@emotion/react": "^11.7.0"
+	},
+	"devDependencies": {
+		"@ag.ds-next/core": "*",
+		"@emotion/react": "^11.7.0",
+		"react": "17.0.2"
+	}
 }
