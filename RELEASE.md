@@ -56,7 +56,7 @@ Update the following:
 ````
 [summary headline]
 
-### **View the [complete release notes on the Keystone website](https://keystonejs.com/releases/YYYY-MM-DD)**.
+### **View the [complete release notes on the AG DS website](https://steelthreads.github.io/agds-next/releases/YYYY-MM-DD)**.
 
 ```sh
 "@ag.ds-next/core": "x.x.x"
