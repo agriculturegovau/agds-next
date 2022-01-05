@@ -14,11 +14,11 @@
 '@ag.ds-next/text-link': major
 ---
 
-# Initial Test Release
+Initial Test Release
 
 This is the initial pre-release of the base set of DS components. The goal of this release is to test the process. Expect things to be broken if you're trying to use components from this release.
 
-## If this is just a test, why is it a "major release"
+### If this is just a test, why is it a "major release"
 
 TL;DR: Because it __is__ a major release. Before there was nothing. Now there is something.
 
