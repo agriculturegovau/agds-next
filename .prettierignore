@@ -7,3 +7,4 @@ example-site/out
 example-site/public
 .next
 .changeset
+CHANGELOG.md
