@@ -1,7 +1,0 @@
-{
-	"name": "@ag.ds-next/text-link",
-	"version": "0.1.0",
-	"main": "dist/ag.ds-next-text-link.cjs.js",
-	"module": "dist/ag.ds-next-text-link.esm.js",
-	"license": "MIT"
-}

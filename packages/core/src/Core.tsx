@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import { Fragment, PropsWithChildren } from 'react';
 import { Global } from '@emotion/react';
 import { defaultPalette, paletteVars, PaletteKey, Palette } from './colors';
 
@@ -6,7 +6,7 @@ export function Core({
 	children,
 	applyReset = true,
 	palette = defaultPalette,
-}: React.PropsWithChildren<{
+}: PropsWithChildren<{
 	palette?: Partial<Palette>;
 	applyReset?: boolean;
 }>) {
