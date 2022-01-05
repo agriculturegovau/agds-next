@@ -1,6 +1,4 @@
 ---
-'@ag.ds-next/docs': minor
-'@ag.ds-next/example-site': minor
 '@ag.ds-next/ag-branding': minor
 '@ag.ds-next/body': minor
 '@ag.ds-next/box': minor
@@ -17,3 +15,6 @@
 ---
 
 Initial test release
+
+This is the initial pre-release of the base set of DS components.
+The goal of this release is to test the process. Expect things to be broken if you're trying to use components from this release.
