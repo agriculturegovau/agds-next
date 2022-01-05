@@ -13,6 +13,7 @@
 		"clean": "rimraf \"**/node_modules\" \"**/yarn-error.log\" \"**/out.log\" \"**/.DS_Store\" \"**/dist\" \"**/out\" \"**/.next\"",
 		"fresh": "yarn clean && yarn",
 		"build": "preconstruct build",
+		"publish-changed": "yarn build && yarn changeset publish",
 		"lint": "yarn lint:example && yarn lint:docs && yarn lint:prettier && yarn lint:typescript",
 		"lint:packages": "yarn eslint packages/**",
 		"lint:example": "yarn --cwd example-site lint",
