@@ -6,10 +6,10 @@ import { Text } from '@ag.ds-next/text';
 
 import {
 	getAllNavItems,
-	getAllPkgs,
 	getPkg,
 	Pkg,
 	NavItems,
+	getAllPkgSlugs,
 } from '../../lib/mdxUtils';
 
 import { InlineCode } from '../../components/mdx/InlineCode';
@@ -80,16 +80,12 @@ export const getStaticProps: GetStaticProps<
 };
 
 export const getStaticPaths = async () => {
-	const pkgs = await getAllPkgs();
+	const slugs = await getAllPkgSlugs();
 
 	return {
-		paths: pkgs.map((pkg) => {
-			return {
-				params: {
-					slug: pkg.slug,
-				},
-			};
-		}),
+		paths: slugs.map((slug) => ({
+			params: { slug },
+		})),
 		fallback: false,
 	};
 };

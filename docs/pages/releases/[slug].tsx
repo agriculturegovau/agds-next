@@ -6,7 +6,7 @@ import { Flex } from '@ag.ds-next/box';
 import {
 	getAllNavItems,
 	getRelease,
-	getAllReleases,
+	getAllReleaseSlugs,
 	Release,
 	NavItems,
 } from '../../lib/mdxUtils';
@@ -59,16 +59,12 @@ export const getStaticProps: GetStaticProps<
 };
 
 export const getStaticPaths = async () => {
-	const releases = await getAllReleases();
+	const slugs = await getAllReleaseSlugs();
 
 	return {
-		paths: releases.map((release) => {
-			return {
-				params: {
-					slug: release.slug,
-				},
-			};
-		}),
+		paths: slugs.map((slug) => ({
+			params: { slug },
+		})),
 		fallback: false,
 	};
 };

@@ -35,8 +35,7 @@ export async function getMarkdown(filePath: string) {
 
 // Packages
 
-export async function getPkg(filename: string) {
-	const slug = slugify(stripExtension(filename));
+export async function getPkg(slug: string) {
 	const filePath = normalize(`${PKG_PATH}/${slug}/README.md`);
 	const pkgContents = JSON.parse(
 		readFileSync(normalize(`${PKG_PATH}/${slug}/package.json`), 'utf8')
@@ -54,21 +53,24 @@ export async function getPkg(filename: string) {
 	};
 }
 
-export async function getAllPkgs(limit = 0) {
+export async function getAllPkgSlugs() {
 	const slugs = readdirSync(PKG_PATH, { withFileTypes: true });
-	const files = await Promise.all(
-		slugs
-			.filter(
-				(file) =>
-					!file.name.startsWith('_') &&
-					!file.name.startsWith('.') &&
-					file.isDirectory()
-			)
-			.sort((file) => (file.name === 'core' ? -1 : 1))
-			.map((file) => getPkg(file.name))
-	);
+	return slugs
+		.filter(
+			(file) =>
+				!file.name.startsWith('_') &&
+				!file.name.startsWith('.') &&
+				file.isDirectory()
+		)
+		.map((file) => slugify(stripExtension(file.name)))
+		.sort((slug) => (slug === 'core' ? -1 : 1));
+}
 
-	return limit ? files.slice(0, limit) : files;
+export async function getAllPkgs(limit = 0) {
+	const slugs = await getAllPkgSlugs();
+	return Promise.all(
+		(limit ? slugs.slice(0, limit) : slugs).map((slug) => getPkg(slug))
+	);
 }
 
 type Awaited<T> = T extends PromiseLike<infer U> ? U : T;
@@ -77,8 +79,7 @@ export type PkgList = Pkg[];
 
 // Releases
 
-export async function getRelease(filename: string) {
-	const slug = slugify(stripExtension(filename));
+export async function getRelease(slug: string) {
 	const filePath = normalize(`${RELEASE_PATH}/${slug}.mdx`);
 	const { source, data } = await getMarkdown(filePath);
 
@@ -90,21 +91,22 @@ export async function getRelease(filename: string) {
 	};
 }
 
-export async function getAllReleases(limit = 0) {
+export async function getAllReleaseSlugs() {
 	const entries = readdirSync(RELEASE_PATH, { withFileTypes: true });
-	const releases = await Promise.all(
-		entries
-			.filter(
-				(entry) =>
-					!entry.name.startsWith('_') &&
-					!entry.name.startsWith('.') &&
-					!entry.name.startsWith('index') &&
-					entry.isFile()
-			)
-			.map((entry) => getRelease(entry.name))
-	);
+	return entries
+		.filter(
+			(entry) =>
+				!entry.name.startsWith('_') &&
+				!entry.name.startsWith('.') &&
+				!entry.name.startsWith('index') &&
+				entry.isFile()
+		)
+		.map((entry) => slugify(stripExtension(entry.name)));
+}
 
-	return limit ? releases.slice(0, limit) : releases;
+export async function getAllReleases(limit = 0) {
+	const slugs = await getAllReleaseSlugs();
+	return Promise.all((limit ? slugs.slice(0, limit) : slugs).map(getRelease));
 }
 
 export type Release = Awaited<ReturnType<typeof getRelease>>;
