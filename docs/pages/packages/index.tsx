@@ -10,7 +10,6 @@ import { mdxComponents } from '../../components/utils';
 import { EditPage } from '../../components/EditPage';
 import { Layout } from '../../components/Layout';
 
-type Awaited<T> = T extends PromiseLike<infer U> ? U : T;
 type StaticProps = Awaited<ReturnType<typeof getStaticProps>>['props'];
 
 export default function PackagesHome({ navItems, source }: StaticProps) {

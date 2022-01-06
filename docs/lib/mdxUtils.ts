@@ -118,7 +118,6 @@ export async function getNavItems() {
 				)
 			)
 		),
-		// Releases
 		getReleaseSlugs().then((slugs) =>
 			Promise.all(
 				slugs.map((slug) =>
