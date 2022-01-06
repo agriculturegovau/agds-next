@@ -1,4 +1,4 @@
 ---
-title: The Text component
+title: Text
 description:
 ---

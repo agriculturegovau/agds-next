@@ -1,5 +1,5 @@
 ---
-title: The Box package
+title: Box
 description: A primitive layout component
 ---
 

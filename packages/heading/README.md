@@ -1,5 +1,5 @@
 ---
-title: The Heading component
+title: Heading
 description:
 ---
 

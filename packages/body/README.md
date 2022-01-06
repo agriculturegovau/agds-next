@@ -1,5 +1,5 @@
 ---
-title: The body package
+title: Body
 description: A container for CMS content
 ---
 
