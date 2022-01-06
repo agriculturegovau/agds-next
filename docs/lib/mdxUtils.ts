@@ -106,28 +106,36 @@ export type Release = Awaited<ReturnType<typeof getRelease>>;
 
 // All Nav Items
 
+export function getPkgList() {
+	return getPkgSlugs().then((slugs) =>
+		Promise.all(
+			slugs.map((slug) =>
+				getMarkdownData(pkgDocsPath(slug)).then(({ data }) => ({
+					title: (data?.title ?? slug) as string,
+					slug,
+				}))
+			)
+		)
+	);
+}
+
+export function getReleaseList() {
+	return getReleaseSlugs().then((slugs) =>
+		Promise.all(
+			slugs.map((slug) =>
+				getMarkdownData(releasePath(slug)).then(({ data }) => ({
+					title: (data?.title ?? slug) as string,
+					slug,
+				}))
+			)
+		)
+	);
+}
+
 export async function getNavItems() {
 	const [pkgList, releaseList] = await Promise.all([
-		getPkgSlugs().then((slugs) =>
-			Promise.all(
-				slugs.map((slug) =>
-					getMarkdownData(pkgDocsPath(slug)).then(({ data }) => ({
-						title: (data?.title ?? slug) as string,
-						slug,
-					}))
-				)
-			)
-		),
-		getReleaseSlugs().then((slugs) =>
-			Promise.all(
-				slugs.map((slug) =>
-					getMarkdownData(releasePath(slug)).then(({ data }) => ({
-						title: (data?.title ?? slug) as string,
-						slug,
-					}))
-				)
-			)
-		),
+		getPkgList(),
+		getReleaseList(),
 	]);
 	return { pkgList, releaseList };
 }

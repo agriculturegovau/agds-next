@@ -4,7 +4,7 @@ import Image from 'next/image';
 import placeholder from '../public/placeholder.png';
 
 import { Body } from '@ag.ds-next/body';
-import { Box, Flex } from '@ag.ds-next/box';
+import { Flex } from '@ag.ds-next/box';
 import { Content } from '@ag.ds-next/content';
 
 import { Layout } from '../components/Layout';

@@ -1,24 +1,16 @@
 import type { ReactNode } from 'react';
 import { Flex } from '@ag.ds-next/box';
-import { themeVars, tokens } from '@ag.ds-next/core';
+import { themeVars, tokens, useLinkComponent } from '@ag.ds-next/core';
 
 import { NavItem } from './NavItem';
 
-function DefaultLink({ href, label }: { href: string; label: ReactNode }) {
-	return <a href={href}>{label}</a>;
-}
-
 export type NavListProps = {
-	links: { href: string; label: ReactNode }[];
-	linkComponent?: typeof DefaultLink;
+	links: { href: string; label: ReactNode }[]; // FIXME: this is too restrictive
 	activePath?: string;
 };
 
-export function NavList({
-	links,
-	linkComponent: Link = DefaultLink,
-	activePath,
-}: NavListProps) {
+export function NavList({ links, activePath }: NavListProps) {
+	const Link = useLinkComponent();
 	return (
 		<Flex
 			as="ul"
@@ -33,9 +25,11 @@ export function NavList({
 				},
 			}}
 		>
-			{links.map((link, index) => (
-				<NavItem key={index} active={link.href === activePath}>
-					<Link {...link} />
+			{links.map(({ href, label, ...props }, index) => (
+				<NavItem key={index} active={href === activePath}>
+					<Link href={href} {...props}>
+						{label}
+					</Link>
 				</NavItem>
 			))}
 		</Flex>

@@ -1,17 +1,22 @@
-import { Fragment, PropsWithChildren } from 'react';
+import React, { PropsWithChildren, ComponentProps } from 'react';
 import { Global } from '@emotion/react';
+
+import { CoreProvider } from './context';
 import { defaultPalette, paletteVars, PaletteKey, Palette } from './colors';
 
 export function Core({
 	children,
 	applyReset = true,
 	palette = defaultPalette,
-}: PropsWithChildren<{
-	palette?: Partial<Palette>;
-	applyReset?: boolean;
-}>) {
+	linkComponent,
+}: PropsWithChildren<
+	{
+		palette?: Partial<Palette>;
+		applyReset?: boolean;
+	} & ComponentProps<typeof CoreProvider>
+>) {
 	return (
-		<Fragment>
+		<CoreProvider linkComponent={linkComponent}>
 			<Global
 				styles={[
 					applyReset && {
@@ -35,6 +40,6 @@ export function Core({
 				]}
 			/>
 			{children}
-		</Fragment>
+		</CoreProvider>
 	);
 }

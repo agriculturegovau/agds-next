@@ -48,19 +48,6 @@ export function Navigation({ navItems, style }: NavigationProps) {
 					}}
 				>
 					<li>
-						<Link path="/">Home</Link>
-					</li>
-					<li>
-						<Link path="#">Github</Link>
-					</li>
-					<li>
-						<Link path="/storybook/index.html">Storybook</Link>
-					</li>
-					<li>
-						<Link path="/playroom/index.html">Playroom</Link>
-					</li>
-
-					<li>
 						<h2
 							style={{
 								fontSize: '1rem',

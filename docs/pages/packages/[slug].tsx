@@ -3,6 +3,7 @@ import { MDXRemote } from 'next-mdx-remote';
 import { H1 } from '@ag.ds-next/heading';
 import { Flex, Box } from '@ag.ds-next/box';
 import { Text } from '@ag.ds-next/text';
+import { Body } from '@ag.ds-next/body';
 
 import {
 	getNavItems,
@@ -16,15 +17,16 @@ import { InlineCode } from '../../components/mdx/InlineCode';
 import { mdxComponents } from '../../components/utils';
 import { EditPage } from '../../components/EditPage';
 import { Layout } from '../../components/Layout';
+import { Content } from '@ag.ds-next/content';
 
 export default function Packages({
-	navItems,
 	pkg,
-	slug,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
+	if (!pkg) return null;
+
 	return (
-		<Layout navItems={navItems}>
-			{pkg ? (
+		<Layout>
+			<Content>
 				<Flex as="main" flexDirection="column" gap={1}>
 					<Flex flexDirection="column" gap={1}>
 						<H1>{pkg.data.title}</H1>
@@ -48,16 +50,15 @@ export default function Packages({
 							</code>
 						</pre>
 					</Box>
-
+				</Flex>
+			</Content>
+			<Content>
+				<Body>
 					<MDXRemote {...pkg.source} components={mdxComponents} />
+				</Body>
 
-					<EditPage slug={`/packages/${pkg.slug}`} />
-				</Flex>
-			) : (
-				<Flex as="main" flexDirection="column">
-					<H1>Page data could not be found {slug}</H1>
-				</Flex>
-			)}
+				<EditPage slug={`/packages/${pkg.slug}`} />
+			</Content>
 		</Layout>
 	);
 }
