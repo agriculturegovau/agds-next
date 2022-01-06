@@ -5,11 +5,11 @@ import { Flex, Box } from '@ag.ds-next/box';
 import { Text } from '@ag.ds-next/text';
 
 import {
-	getAllNavItems,
+	getNavItems,
 	getPkg,
 	Pkg,
 	NavItems,
-	getAllPkgSlugs,
+	getPkgSlugs,
 } from '../../lib/mdxUtils';
 
 import { InlineCode } from '../../components/mdx/InlineCode';
@@ -66,7 +66,7 @@ export const getStaticProps: GetStaticProps<
 	{ pkg: Pkg | undefined; navItems: NavItems; slug?: string },
 	{ slug: string }
 > = async ({ params }) => {
-	const navItems = await getAllNavItems();
+	const navItems = await getNavItems();
 
 	const pkg = params ? await getPkg(params.slug) : undefined;
 
@@ -80,7 +80,7 @@ export const getStaticProps: GetStaticProps<
 };
 
 export const getStaticPaths = async () => {
-	const slugs = await getAllPkgSlugs();
+	const slugs = await getPkgSlugs();
 
 	return {
 		paths: slugs.map((slug) => ({

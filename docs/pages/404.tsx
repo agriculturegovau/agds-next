@@ -2,7 +2,7 @@ import { H1 } from '@ag.ds-next/heading';
 import { Flex } from '@ag.ds-next/box';
 
 import { Layout } from '../components/Layout';
-import { getAllNavItems } from '../lib/mdxUtils';
+import { getNavItems } from '../lib/mdxUtils';
 import { Text } from '@ag.ds-next/text';
 
 type StaticProps = Awaited<ReturnType<typeof getStaticProps>>['props'];
@@ -19,6 +19,6 @@ export default function NotFoundPage({ navItems }: StaticProps) {
 }
 
 export async function getStaticProps() {
-	const navItems = await getAllNavItems();
+	const navItems = await getNavItems();
 	return { props: { navItems } };
 }

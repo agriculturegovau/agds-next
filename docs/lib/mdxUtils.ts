@@ -1,6 +1,6 @@
 import { plugin } from '@untitled-docs/live-code/rehype';
 import { serialize } from 'next-mdx-remote/serialize';
-import { readdirSync, readFileSync } from 'fs';
+import { readdir, readFile } from 'fs/promises';
 import remarkHint from 'remark-hint';
 import { normalize } from 'path';
 import matter from 'gray-matter';
@@ -10,89 +10,87 @@ import { slugify } from './slugify';
 const PKG_PATH = normalize(`${process.cwd()}/../packages/`);
 const RELEASE_PATH = normalize(`${process.cwd()}/../releases/`);
 
-function stripExtension(filename: string) {
+const pkgDocsPath = (slug: string) =>
+	normalize(`${PKG_PATH}/${slug}/README.md`);
+const pkgJsonPath = (slug: string) =>
+	normalize(`${PKG_PATH}/${slug}/package.json`);
+const releasePath = (slug: string) => normalize(`${RELEASE_PATH}/${slug}.mdx`);
+
+function stripMdxExtension(filename: string) {
 	return filename.replace(/\.mdx?$/gi, '');
 }
 
-export async function getMarkdown(filePath: string) {
-	const fileContents = readFileSync(filePath, 'utf8');
+export async function getMarkdownData(filePath: string) {
+	const fileContents = await readFile(filePath, { encoding: 'utf8' });
+	return matter(fileContents);
+}
 
-	const { data, content } = matter(fileContents);
+export async function getJSONData(filePath: string) {
+	const fileContents = await readFile(filePath, { encoding: 'utf8' });
+	return JSON.parse(fileContents);
+}
 
-	const mdxSource = await serialize(content, {
+export function serializeMarkdown(
+	source: string,
+	scope?: Record<string, unknown>
+) {
+	return serialize(source, {
 		mdxOptions: {
 			remarkPlugins: [remarkHint],
 			rehypePlugins: [plugin],
 		},
-		scope: data,
+		scope,
 	});
-
-	return {
-		source: mdxSource,
-		data,
-	};
 }
 
 // Packages
 
 export async function getPkg(slug: string) {
-	const filePath = normalize(`${PKG_PATH}/${slug}/README.md`);
-	const pkgContents = JSON.parse(
-		readFileSync(normalize(`${PKG_PATH}/${slug}/package.json`), 'utf8')
-	) as { name: string; version: string };
-
-	const { source, data } = await getMarkdown(filePath);
-
-	return {
-		source,
-		data,
-		slug: slug,
-		name: pkgContents.name,
-		title: data.title ?? pkgContents.name,
-		version: pkgContents.version,
-	};
-}
-
-export async function getAllPkgSlugs() {
-	const slugs = readdirSync(PKG_PATH, { withFileTypes: true });
-	return slugs
-		.filter(
-			(file) =>
-				!file.name.startsWith('_') &&
-				!file.name.startsWith('.') &&
-				file.isDirectory()
-		)
-		.map((file) => slugify(stripExtension(file.name)))
-		.sort((slug) => (slug === 'core' ? -1 : 1));
-}
-
-export async function getAllPkgs(limit = 0) {
-	const slugs = await getAllPkgSlugs();
-	return Promise.all(
-		(limit ? slugs.slice(0, limit) : slugs).map((slug) => getPkg(slug))
-	);
-}
-
-type Awaited<T> = T extends PromiseLike<infer U> ? U : T;
-export type Pkg = Awaited<ReturnType<typeof getPkg>>;
-export type PkgList = Pkg[];
-
-// Releases
-
-export async function getRelease(slug: string) {
-	const filePath = normalize(`${RELEASE_PATH}/${slug}.mdx`);
-	const { source, data } = await getMarkdown(filePath);
+	const { name, version } = await getJSONData(pkgJsonPath(slug));
+	const { data, content } = await getMarkdownData(pkgDocsPath(slug));
+	const source = await serializeMarkdown(content, data);
 
 	return {
 		slug,
 		source,
 		data,
-		title: data.title ?? slug,
+		name: name as string,
+		version: version as string,
+		title: (data.title ?? slug) as string,
 	};
 }
 
-export async function getAllReleaseSlugs() {
-	const entries = readdirSync(RELEASE_PATH, { withFileTypes: true });
+export async function getPkgSlugs() {
+	const entries = await readdir(PKG_PATH, { withFileTypes: true });
+	return entries
+		.filter(
+			(entry) =>
+				!entry.name.startsWith('_') &&
+				!entry.name.startsWith('.') &&
+				entry.isDirectory()
+		)
+		.map((entry) => slugify(stripMdxExtension(entry.name)));
+}
+
+export type Pkg = Awaited<ReturnType<typeof getPkg>>;
+
+// Releases
+
+export async function getRelease(slug: string) {
+	const { content, data } = await getMarkdownData(releasePath(slug));
+	const source = await serializeMarkdown(content, data);
+
+	return {
+		slug,
+		source,
+		data,
+		title: (data.title ?? slug) as string,
+		type: data.type as string | undefined,
+	};
+}
+
+export async function getReleaseSlugs() {
+	const entries = await readdir(RELEASE_PATH, { withFileTypes: true });
 	return entries
 		.filter(
 			(entry) =>
@@ -101,24 +99,37 @@ export async function getAllReleaseSlugs() {
 				!entry.name.startsWith('index') &&
 				entry.isFile()
 		)
-		.map((entry) => slugify(stripExtension(entry.name)));
-}
-
-export async function getAllReleases(limit = 0) {
-	const slugs = await getAllReleaseSlugs();
-	return Promise.all((limit ? slugs.slice(0, limit) : slugs).map(getRelease));
+		.map((entry) => slugify(stripMdxExtension(entry.name)));
 }
 
 export type Release = Awaited<ReturnType<typeof getRelease>>;
-export type ReleaseList = Release[];
 
 // All Nav Items
 
-export async function getAllNavItems() {
+export async function getNavItems() {
 	const [pkgList, releaseList] = await Promise.all([
-		getAllPkgs(),
-		getAllReleases(),
+		getPkgSlugs().then((slugs) =>
+			Promise.all(
+				slugs.map((slug) =>
+					getMarkdownData(pkgDocsPath(slug)).then(({ data }) => ({
+						title: (data?.title ?? slug) as string,
+						slug,
+					}))
+				)
+			)
+		),
+		// Releases
+		getReleaseSlugs().then((slugs) =>
+			Promise.all(
+				slugs.map((slug) =>
+					getMarkdownData(releasePath(slug)).then(({ data }) => ({
+						title: (data?.title ?? slug) as string,
+						slug,
+					}))
+				)
+			)
+		),
 	]);
 	return { pkgList, releaseList };
 }
-export type NavItems = Awaited<ReturnType<typeof getAllNavItems>>;
+export type NavItems = Awaited<ReturnType<typeof getNavItems>>;

@@ -1,7 +1,11 @@
 import { MDXRemote } from 'next-mdx-remote';
 import { normalize } from 'path';
 
-import { getAllNavItems, getMarkdown } from '../../lib/mdxUtils';
+import {
+	getNavItems,
+	getMarkdownData,
+	serializeMarkdown,
+} from '../../lib/mdxUtils';
 import { mdxComponents } from '../../components/utils';
 import { EditPage } from '../../components/EditPage';
 import { Layout } from '../../components/Layout';
@@ -19,10 +23,11 @@ export default function PackagesHome({ navItems, source }: StaticProps) {
 }
 
 export async function getStaticProps() {
-	const navItems = await getAllNavItems();
-	const { source } = await getMarkdown(
+	const navItems = await getNavItems();
+	const { content } = await getMarkdownData(
 		normalize(`${process.cwd()}/../releases/index.mdx`)
 	);
+	const source = await serializeMarkdown(content);
 
 	return {
 		props: {

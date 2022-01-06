@@ -4,9 +4,9 @@ import { H1 } from '@ag.ds-next/heading';
 import { Flex } from '@ag.ds-next/box';
 
 import {
-	getAllNavItems,
+	getNavItems,
 	getRelease,
-	getAllReleaseSlugs,
+	getReleaseSlugs,
 	Release,
 	NavItems,
 } from '../../lib/mdxUtils';
@@ -45,7 +45,7 @@ export const getStaticProps: GetStaticProps<
 	{ release: Release | undefined; navItems: NavItems; slug?: string },
 	{ slug: string }
 > = async ({ params }) => {
-	const navItems = await getAllNavItems();
+	const navItems = await getNavItems();
 
 	const release = params ? await getRelease(params.slug) : undefined;
 
@@ -59,7 +59,7 @@ export const getStaticProps: GetStaticProps<
 };
 
 export const getStaticPaths = async () => {
-	const slugs = await getAllReleaseSlugs();
+	const slugs = await getReleaseSlugs();
 
 	return {
 		paths: slugs.map((slug) => ({
