@@ -1,68 +1,91 @@
 import { GetStaticProps, InferGetStaticPropsType } from 'next';
 import { MDXRemote } from 'next-mdx-remote';
+import { H1 } from '@ag.ds-next/heading';
+import { Flex, Box } from '@ag.ds-next/box';
+import { Text } from '@ag.ds-next/text';
 
-import { getAllPkgs, getPkgBySlug } from '../../lib/mdxUtils';
+import {
+	getNavItems,
+	getPkg,
+	Pkg,
+	NavItems,
+	getPkgSlugs,
+} from '../../lib/mdxUtils';
+
 import { InlineCode } from '../../components/mdx/InlineCode';
 import { mdxComponents } from '../../components/utils';
 import { EditPage } from '../../components/EditPage';
 import { Layout } from '../../components/Layout';
-import { H1 } from '@ag.ds-next/heading';
-import { Flex } from '@ag.ds-next/box';
 
 export default function Packages({
-	pkgs,
-	source,
-	data,
-	name,
-	version,
+	navItems,
+	pkg,
 	slug,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
 	return (
-		<Layout pkgs={pkgs}>
-			<Flex as="main" flexDirection="column">
-				<Flex flexDirection="column" gap={1}>
-					<H1>{data.title}</H1>
-					<div>
-						<InlineCode>{name}</InlineCode> <InlineCode>v{version}</InlineCode>
-					</div>
-				</Flex>
-				{data.description && (
-					<p style={{ marginBottom: '3rem' }}>{data.description}</p>
-				)}
-				<MDXRemote {...source} components={mdxComponents} />
+		<Layout navItems={navItems}>
+			{pkg ? (
+				<Flex as="main" flexDirection="column" gap={1}>
+					<Flex flexDirection="column" gap={1}>
+						<H1>{pkg.data.title}</H1>
+						<Box>
+							<InlineCode>{pkg.name}</InlineCode>{' '}
+							<InlineCode>v{pkg.version}</InlineCode>
+						</Box>
+						{pkg.data.description && <Text>{pkg.data.description}</Text>}
+					</Flex>
+					<Box
+						theme="light"
+						rounded
+						background="shade"
+						paddingX={1}
+						fontSize="sm"
+						color="text"
+					>
+						<pre>
+							<code>
+								yarn add {pkg.name}@{pkg.version}
+							</code>
+						</pre>
+					</Box>
 
-				<EditPage slug={`/packages/${slug}`} />
-			</Flex>
+					<MDXRemote {...pkg.source} components={mdxComponents} />
+
+					<EditPage slug={`/packages/${pkg.slug}`} />
+				</Flex>
+			) : (
+				<Flex as="main" flexDirection="column">
+					<H1>Page data could not be found {slug}</H1>
+				</Flex>
+			)}
 		</Layout>
 	);
 }
 
 export const getStaticProps: GetStaticProps<
-	Record<string, any>,
+	{ pkg: Pkg | undefined; navItems: NavItems; slug?: string },
 	{ slug: string }
 > = async ({ params }) => {
-	const pkgs = await getAllPkgs();
-	const slugPkg = await getPkgBySlug(params!.slug);
+	const navItems = await getNavItems();
+
+	const pkg = params ? await getPkg(params.slug) : undefined;
 
 	return {
 		props: {
-			pkgs,
-			...slugPkg,
+			navItems,
+			pkg,
+			slug: params?.slug,
 		},
 	};
 };
 
 export const getStaticPaths = async () => {
-	const pkgs = await getAllPkgs();
+	const slugs = await getPkgSlugs();
 
 	return {
-		paths: pkgs.map((pkg) => {
-			return {
-				params: {
-					slug: pkg.slug,
-				},
-			};
-		}),
+		paths: slugs.map((slug) => ({
+			params: { slug },
+		})),
 		fallback: false,
 	};
 };

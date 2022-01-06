@@ -37,6 +37,7 @@ const linkListStyles = ({ inline }: { inline?: boolean }) => {
 		margin: 0,
 		padding: `${mapSpacing(0.25)} 0`,
 
+		// FIXME: this class will not exist
 		'.au-body &': {
 			margin: 0,
 			padding: mapSpacing(0.25),

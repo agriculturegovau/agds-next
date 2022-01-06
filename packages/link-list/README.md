@@ -1,14 +1,16 @@
 ---
-title: The link-list package
+title: LinkList
 description: A list of links
 ---
 
 ```jsx live
-<LinkList
-	links={[
-		{ href: '#', label: 'Home' },
-		{ href: '#', label: 'Establishments' },
-		{ href: '#', label: 'Applications' },
-	]}
-/>
+<Box theme="light" background="page">
+	<LinkList
+		links={[
+			{ href: '#', text: 'Home' },
+			{ href: '#', text: 'Establishments' },
+			{ href: '#', text: 'Applications' },
+		]}
+	/>
+</Box>
 ```

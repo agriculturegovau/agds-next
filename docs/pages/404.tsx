@@ -1,48 +1,24 @@
-import Link from 'next/link';
-
-import { Layout } from '../components/Layout';
-import { getAllPkgs } from '../lib/mdxUtils';
-import { H1, H2 } from '@ag.ds-next/heading';
+import { H1 } from '@ag.ds-next/heading';
 import { Flex } from '@ag.ds-next/box';
 
-import { Pkgs } from '../types';
+import { Layout } from '../components/Layout';
+import { getNavItems } from '../lib/mdxUtils';
+import { Text } from '@ag.ds-next/text';
 
-type PageProps = {
-	pkgs: Pkgs;
-};
+type StaticProps = Awaited<ReturnType<typeof getStaticProps>>['props'];
 
-export default function NotFoundPage({ pkgs }: PageProps) {
+export default function NotFoundPage({ navItems }: StaticProps) {
 	return (
-		<Layout pkgs={pkgs}>
-			<Flex flexDirection="column" gap={2}>
+		<Layout navItems={navItems}>
+			<Flex flexDirection="column" gap={1}>
 				<H1>404</H1>
-				<H2>Sitemap</H2>
-				<ul
-					style={{
-						listStyle: 'none',
-						margin: 0,
-						padding: 0,
-					}}
-				>
-					<li style={{ margin: 0 }}>
-						<Link href="/">
-							<a>Home</a>
-						</Link>
-					</li>
-					{pkgs.map(({ slug, name }) => (
-						<li key={slug} style={{ margin: '1rem 0' }}>
-							<Link href={`/packages/${slug}`}>
-								<a>{name}</a>
-							</Link>
-						</li>
-					))}
-				</ul>
+				<Text as="p">We could not find this page.</Text>
 			</Flex>
 		</Layout>
 	);
 }
 
 export async function getStaticProps() {
-	const pkgs = await getAllPkgs();
-	return { props: { pkgs } };
+	const navItems = await getNavItems();
+	return { props: { navItems } };
 }

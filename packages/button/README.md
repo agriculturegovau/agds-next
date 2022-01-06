@@ -1,5 +1,5 @@
 ---
-title: The Button component
+title: Button
 description:
 ---
 

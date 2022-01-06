@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router';
 import NextLink from 'next/link';
 
-import { Pkgs } from '../../types';
+import type { NavItems } from '../../lib/mdxUtils';
 
 function Link({ path, children }: { path: string; children: string }) {
 	const { asPath } = useRouter();
@@ -20,11 +20,11 @@ function Link({ path, children }: { path: string; children: string }) {
 }
 
 type NavigationProps = {
-	pkgs: Pkgs;
+	navItems: NavItems;
 	style?: React.CSSProperties;
 };
 
-export function Navigation({ pkgs, style }: NavigationProps) {
+export function Navigation({ navItems, style }: NavigationProps) {
 	return (
 		<nav
 			style={{
@@ -67,7 +67,7 @@ export function Navigation({ pkgs, style }: NavigationProps) {
 								margin: '1rem 0 0.5rem 0',
 							}}
 						>
-							Packages
+							<Link path="/packages">Packages</Link>
 						</h2>
 						<ul
 							style={{
@@ -77,9 +77,33 @@ export function Navigation({ pkgs, style }: NavigationProps) {
 								paddingLeft: '0.5rem',
 							}}
 						>
-							{pkgs.map(({ slug, name }) => (
+							{navItems.pkgList.map(({ slug, title }) => (
 								<li key={slug}>
-									<Link path={`/packages/${slug}`}>{name}</Link>
+									<Link path={`/packages/${slug}`}>{title}</Link>
+								</li>
+							))}
+						</ul>
+					</li>
+					<li>
+						<h2
+							style={{
+								fontSize: '1rem',
+								margin: '1rem 0 0.5rem 0',
+							}}
+						>
+							<Link path="/releases">Releases</Link>
+						</h2>
+						<ul
+							style={{
+								listStyle: 'none',
+								margin: 0,
+								padding: 0,
+								paddingLeft: '0.5rem',
+							}}
+						>
+							{navItems.releaseList.map(({ slug, title }) => (
+								<li key={slug}>
+									<Link path={`/releases/${slug}`}>{title}</Link>
 								</li>
 							))}
 						</ul>

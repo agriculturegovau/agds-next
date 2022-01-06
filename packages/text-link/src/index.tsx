@@ -1,4 +1,4 @@
-import { themeVars } from '@ag.ds-next/core';
+import { themeVars, outline } from '@ag.ds-next/core';
 import { HTMLProps } from 'react';
 
 export function textLinkStyles() {
@@ -11,7 +11,7 @@ export function textLinkStyles() {
 			textDecoration: 'none',
 		},
 
-		// @include AU-focus();
+		'&:focus': outline,
 	};
 }
 

@@ -5,18 +5,18 @@ import {
 	getNavItems,
 	getMarkdownData,
 	serializeMarkdown,
-} from '../lib/mdxUtils';
-import { mdxComponents } from '../components/utils';
-import { EditPage } from '../components/EditPage';
-import { Layout } from '../components/Layout';
+} from '../../lib/mdxUtils';
+import { mdxComponents } from '../../components/utils';
+import { EditPage } from '../../components/EditPage';
+import { Layout } from '../../components/Layout';
 
 type StaticProps = Awaited<ReturnType<typeof getStaticProps>>['props'];
 
-export default function Homepage({ navItems, source }: StaticProps) {
+export default function PackagesHome({ navItems, source }: StaticProps) {
 	return (
 		<Layout navItems={navItems}>
 			<MDXRemote {...source} components={mdxComponents} />
-			<EditPage slug="/docs" />
+			<EditPage slug="/releases" filename="index.mdx" />
 		</Layout>
 	);
 }
@@ -24,7 +24,7 @@ export default function Homepage({ navItems, source }: StaticProps) {
 export async function getStaticProps() {
 	const navItems = await getNavItems();
 	const { content } = await getMarkdownData(
-		normalize(`${process.cwd()}/README.md`)
+		normalize(`${process.cwd()}/../releases/index.mdx`)
 	);
 	const source = await serializeMarkdown(content);
 

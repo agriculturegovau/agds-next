@@ -1,21 +1,21 @@
 ---
-title: The core package
+title: Core
 description: Core includes a range of styles, variables and code that form the foundation of how the Design System works, including colour, typography and spacing.
 ---
 
 ## Colour
 
 ```jsx live
-<Flex flexDirection="column" gap={2} padding={2} border rounded>
+<Flex flexDirection="column" gap={1} padding={1}>
 	<Flex theme="light">
 		{['page', 'shade', 'pageAlt', 'shadeAlt'].map((bg) => (
 			<Flex
 				key={bg}
 				flexDirection="column"
-				gap={2}
+				gap={1}
 				background={bg}
-				paddingY={10}
-				paddingX={20}
+				paddingY={1}
+				paddingX={2}
 			>
 				{['text', 'muted', 'action', 'focus'].map((fg) => (
 					<Text key={fg} color={fg}>
@@ -30,10 +30,10 @@ description: Core includes a range of styles, variables and code that form the f
 			<Flex
 				key={bg}
 				flexDirection="column"
-				gap={2}
+				gap={1}
 				background={bg}
-				paddingY={10}
-				paddingX={20}
+				paddingY={1}
+				paddingX={2}
 			>
 				{['text', 'muted', 'action', 'focus'].map((fg) => (
 					<Text key={fg} color={fg}>
@@ -52,8 +52,8 @@ description: Core includes a range of styles, variables and code that form the f
 ## Typography
 
 ```jsx live
-<Flex theme="light" background="page" gap={2} border padding={2}>
-	<Flex flexDirection="column" gap={2}>
+<Flex theme="light" background="page" gap={1} padding={1}>
+	<Flex flexDirection="column" gap={1}>
 		<Text fontSize="sm" fontWeight="bold">
 			Default
 		</Text>
@@ -63,7 +63,7 @@ description: Core includes a range of styles, variables and code that form the f
 			</Box>
 		))}
 	</Flex>
-	<Flex flexDirection="column" theme="light" background="page" gap={2}>
+	<Flex flexDirection="column" theme="light" background="page" gap={1}>
 		<Text fontSize="sm" fontWeight="bold">
 			Heading
 		</Text>
@@ -75,7 +75,7 @@ description: Core includes a range of styles, variables and code that form the f
 			</Box>
 		))}
 	</Flex>
-	<Flex flexDirection="column" theme="light" background="page" gap={2}>
+	<Flex flexDirection="column" theme="light" background="page" gap={1}>
 		<Text fontSize="sm" fontWeight="bold">
 			Nospace
 		</Text>
