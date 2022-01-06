@@ -3,17 +3,17 @@ import { CSSProperties, Fragment } from 'react';
 import { Navigation } from '../Navigation';
 import { Footer } from '../Footer';
 
-import type { Pkgs } from '../../types';
+import type { NavItems } from '../../lib/mdxUtils';
 
 type LayoutProps = {
-	pkgs: Pkgs;
+	navItems: NavItems;
 	noNav?: boolean;
 	children: React.ReactNode;
 	className?: string;
 	style?: CSSProperties;
 };
 
-export function Layout({ pkgs, children }: LayoutProps) {
+export function Layout({ navItems, children }: LayoutProps) {
 	return (
 		<Fragment>
 			<div
@@ -23,7 +23,7 @@ export function Layout({ pkgs, children }: LayoutProps) {
 					minHeight: 'calc(100vh - 3rem)',
 				}}
 			>
-				<Navigation pkgs={pkgs} />
+				<Navigation navItems={navItems} />
 				<div>{children}</div>
 			</div>
 			<Footer style={{ height: '3rem' }} />

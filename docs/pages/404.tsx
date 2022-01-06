@@ -1,19 +1,15 @@
 import Link from 'next/link';
-
-import { Layout } from '../components/Layout';
-import { getAllPkgs } from '../lib/mdxUtils';
 import { H1, H2 } from '@ag.ds-next/heading';
 import { Flex } from '@ag.ds-next/box';
 
-import { Pkgs } from '../types';
+import { Layout } from '../components/Layout';
+import { getAllNavItems } from '../lib/mdxUtils';
 
-type PageProps = {
-	pkgs: Pkgs;
-};
+type StaticProps = Awaited<ReturnType<typeof getStaticProps>>['props'];
 
-export default function NotFoundPage({ pkgs }: PageProps) {
+export default function NotFoundPage({ navItems }: StaticProps) {
 	return (
-		<Layout pkgs={pkgs}>
+		<Layout navItems={navItems}>
 			<Flex flexDirection="column" gap={2}>
 				<H1>404</H1>
 				<H2>Sitemap</H2>
@@ -29,7 +25,7 @@ export default function NotFoundPage({ pkgs }: PageProps) {
 							<a>Home</a>
 						</Link>
 					</li>
-					{pkgs.map(({ slug, name }) => (
+					{navItems.pkgList.map(({ slug, name }) => (
 						<li key={slug} style={{ margin: '1rem 0' }}>
 							<Link href={`/packages/${slug}`}>
 								<a>{name}</a>
@@ -43,6 +39,6 @@ export default function NotFoundPage({ pkgs }: PageProps) {
 }
 
 export async function getStaticProps() {
-	const pkgs = await getAllPkgs();
-	return { props: { pkgs } };
+	const navItems = await getAllNavItems();
+	return { props: { navItems } };
 }

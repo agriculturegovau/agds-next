@@ -8,26 +8,12 @@ import matter from 'gray-matter';
 import { slugify } from './slugify';
 
 const PKG_PATH = normalize(`${process.cwd()}/../packages/`);
+const RELEASE_PATH = normalize(`${process.cwd()}/../releases/`);
 
-export async function getPkgBySlug(slug: string) {
-	const realSlug = slugify(slug).replace(/\.md$/, '');
-	const filePath = normalize(`${PKG_PATH}/${realSlug}/README.md`);
-	const pkgContents = JSON.parse(
-		readFileSync(normalize(`${PKG_PATH}/${realSlug}/package.json`), 'utf8')
-	);
-
-	const data = await getMarkdown(filePath);
-
-	return {
-		...data,
-		slug: realSlug,
-		name: pkgContents.name,
-		version: pkgContents.version,
-	};
+function stripExtension(filename: string) {
+	return filename.replace(/\.mdx?$/gi, '');
 }
 
-type Awaited<T> = T extends PromiseLike<infer U> ? U : T;
-export type Pkg = Awaited<ReturnType<typeof getPkgBySlug>>;
 export async function getMarkdown(filePath: string) {
 	const fileContents = readFileSync(filePath, 'utf8');
 
@@ -47,8 +33,29 @@ export async function getMarkdown(filePath: string) {
 	};
 }
 
-export async function getAllPkgs(filePath = PKG_PATH, limit = 0) {
-	const slugs = readdirSync(filePath, { withFileTypes: true });
+// Packages
+
+export async function getPkg(filename: string) {
+	const slug = slugify(stripExtension(filename));
+	const filePath = normalize(`${PKG_PATH}/${slug}/README.md`);
+	const pkgContents = JSON.parse(
+		readFileSync(normalize(`${PKG_PATH}/${slug}/package.json`), 'utf8')
+	) as { name: string; version: string };
+
+	const { source, data } = await getMarkdown(filePath);
+
+	return {
+		source,
+		data,
+		slug: slug,
+		name: pkgContents.name,
+		title: data.title ?? pkgContents.name,
+		version: pkgContents.version,
+	};
+}
+
+export async function getAllPkgs(limit = 0) {
+	const slugs = readdirSync(PKG_PATH, { withFileTypes: true });
 	const files = await Promise.all(
 		slugs
 			.filter(
@@ -58,8 +65,58 @@ export async function getAllPkgs(filePath = PKG_PATH, limit = 0) {
 					file.isDirectory()
 			)
 			.sort((file) => (file.name === 'core' ? -1 : 1))
-			.map((slug) => getPkgBySlug(slug.name))
+			.map((file) => getPkg(file.name))
 	);
 
 	return limit ? files.slice(0, limit) : files;
 }
+
+type Awaited<T> = T extends PromiseLike<infer U> ? U : T;
+export type Pkg = Awaited<ReturnType<typeof getPkg>>;
+export type PkgList = Pkg[];
+
+// Releases
+
+export async function getRelease(filename: string) {
+	const slug = slugify(stripExtension(filename));
+	const filePath = normalize(`${RELEASE_PATH}/${slug}.mdx`);
+	const { source, data } = await getMarkdown(filePath);
+
+	return {
+		slug,
+		source,
+		data,
+		title: data.title ?? slug,
+	};
+}
+
+export async function getAllReleases(limit = 0) {
+	const entries = readdirSync(RELEASE_PATH, { withFileTypes: true });
+	const releases = await Promise.all(
+		entries
+			.filter(
+				(entry) =>
+					!entry.name.startsWith('_') &&
+					!entry.name.startsWith('.') &&
+					!entry.name.startsWith('index') &&
+					entry.isFile()
+			)
+			.map((entry) => getRelease(entry.name))
+	);
+
+	return limit ? releases.slice(0, limit) : releases;
+}
+
+export type Release = Awaited<ReturnType<typeof getRelease>>;
+export type ReleaseList = Release[];
+
+// All Nav Items
+
+export async function getAllNavItems() {
+	const [pkgList, releaseList] = await Promise.all([
+		getAllPkgs(),
+		getAllReleases(),
+	]);
+	return { pkgList, releaseList };
+}
+export type NavItems = Awaited<ReturnType<typeof getAllNavItems>>;

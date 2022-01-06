@@ -13,7 +13,7 @@ export default function PackagesHome({ navItems, source }: StaticProps) {
 	return (
 		<Layout navItems={navItems}>
 			<MDXRemote {...source} components={mdxComponents} />
-			<EditPage slug="/packages" />
+			<EditPage slug="/releases" filename="index.mdx" />
 		</Layout>
 	);
 }
@@ -21,7 +21,7 @@ export default function PackagesHome({ navItems, source }: StaticProps) {
 export async function getStaticProps() {
 	const navItems = await getAllNavItems();
 	const { source } = await getMarkdown(
-		normalize(`${process.cwd()}/../packages/README.md`)
+		normalize(`${process.cwd()}/../releases/index.mdx`)
 	);
 
 	return {
