@@ -1,11 +1,9 @@
-import type { ReactNode } from 'react';
 import { Logo } from '@ag.ds-next/ag-branding';
 import { Stack } from '@ag.ds-next/box';
 import { Header } from '@ag.ds-next/header';
 import { MainNav } from '@ag.ds-next/main-nav';
 
 import { useRouter } from 'next/router';
-import Link from 'next/link';
 
 const NAV_LINKS = [
 	{ label: 'Home', href: '/' },
@@ -14,16 +12,8 @@ const NAV_LINKS = [
 ];
 
 const SECONDARY_LINKS = [
-	{ label: 'Storybook', href: '/storybook/index.html' },
-	{ label: 'Playroom', href: '/playroom/index.html' },
 	{ label: 'GitHub', href: 'https://github.com/steelthreads/agds-next' },
 ];
-
-const NavLink = ({ href, label }: { href: string; label: ReactNode }) => (
-	<Link href={href}>
-		<a>{label}</a>
-	</Link>
-);
 
 export const SiteHeader = () => {
 	const router = useRouter();
@@ -41,7 +31,6 @@ export const SiteHeader = () => {
 				links={NAV_LINKS}
 				secondaryLinks={SECONDARY_LINKS}
 				activePath={router.asPath}
-				linkComponent={NavLink}
 			/>
 		</Stack>
 	);
