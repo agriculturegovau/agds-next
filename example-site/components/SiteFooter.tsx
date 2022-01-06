@@ -1,22 +1,15 @@
 import { Footer as AgDsFooter } from '@ag.ds-next/footer';
-import { Flex } from '@ag.ds-next/box';
-import { TextLink } from '@ag.ds-next/text-link';
+import { LinkList } from '@ag.ds-next/link-list';
 
 const footerLinks = [
-	{ title: 'Home', href: '/' },
-	{ title: 'Content', href: '/content' },
+	{ label: 'Home', href: '/' },
+	{ label: 'Content', href: '/content' },
 ];
 
 export const SiteFooter = () => {
 	return (
 		<AgDsFooter>
-			<Flex gap={1}>
-				{footerLinks.map(({ title, href }) => (
-					<TextLink key={href} href={href}>
-						{title}
-					</TextLink>
-				))}
-			</Flex>
+			<LinkList links={footerLinks} inline />
 		</AgDsFooter>
 	);
 };
