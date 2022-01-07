@@ -32,10 +32,6 @@ export const bodyClass = css({
 	h5: fontGrid('sm', 'heading'),
 	h6: fontGrid('xs', 'heading'),
 
-	// Defensive: Ensure user entered content can't break the page layout
-	// by simply being long with no spaces.
-	wordBreak: 'break-all',
-
 	a: {
 		color: themeVars.foreground.action,
 		textDecoration: 'underline',
