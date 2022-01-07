@@ -79,7 +79,13 @@ Use the template below and update the following details:
 
 ## Changelog
 
-https://steelthreads.github.io/agds-next
-
 Aside from the [complete release notes on the @ag.ds-next website](https://steelthreads.github.io/agds-next/releases/YYYY-MM-DD), you can also view the [verbose change log](https://github.com/steelthreads/agds-next/pull/XXXX) in the related PR (https://github.com/steelthreads/agds-next/pull/XXXX) for this release.
+
+---
+
+<details>
+<summary>View verbose release notes</summary>
+
+[Paste the full changeset output here]
+
 ````

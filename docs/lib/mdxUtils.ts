@@ -113,7 +113,9 @@ export async function getReleaseSlugs() {
 				!entry.name.startsWith('index') &&
 				entry.isFile()
 		)
-		.map((entry) => slugify(stripMdxExtension(entry.name)));
+		.map((entry) => slugify(stripMdxExtension(entry.name)))
+		.sort()
+		.reverse();
 }
 
 export function getReleaseList() {

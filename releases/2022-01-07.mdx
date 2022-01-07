@@ -1,0 +1,32 @@
+---
+title: January 7th, 2022
+type: patch
+---
+
+Changes to imporve usability of primitive components and to better enable using framework provided link components.
+
+- `Body`: Applied fontGrid to some content elements
+- `Core`, `LinkList`, `MainNav`: Add a linkComponent to Core which can be used in LinkList and MainNav. This enables supporting Link components from `next.js` or `react-router` inside DS components.
+- `Box`: Added `flexGrow` and `flexShrink` props
+
+> ⚠️ Note: All releases under the `@ag.ds-next` package scope should be considered alpha pre-releases. Expect breaking changes. Once we are happy with the state of the core packages we will migrate all packages to `@ag.ds`.
+
+```sh
+"@ag.ds-next/ag-branding": "1.0.1",
+"@ag.ds-next/body": "1.0.1",
+"@ag.ds-next/box": "1.0.1",
+"@ag.ds-next/button": "1.0.1",
+"@ag.ds-next/content": "1.0.1",
+"@ag.ds-next/core": "1.0.1",
+"@ag.ds-next/footer": "1.0.1",
+"@ag.ds-next/header": "1.0.1",
+"@ag.ds-next/heading": "1.0.1",
+"@ag.ds-next/link-list": "1.0.1",
+"@ag.ds-next/main-nav": "1.0.1",
+"@ag.ds-next/text": "1.0.1",
+"@ag.ds-next/text-link": "1.0.1",
+```
+
+## Changelog
+
+Aside from the [complete release notes on the @ag.ds-next website](https://steelthreads.github.io/agds-next/releases/2022-01-07), you can also view the [verbose change log](https://github.com/steelthreads/agds-next/pull/29) in the related PR (https://github.com/steelthreads/agds-next/pull/29) for this release.
