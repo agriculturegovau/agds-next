@@ -7,9 +7,9 @@ description: A list of links
 <Box theme="light" background="page">
 	<LinkList
 		links={[
-			{ href: '#', text: 'Home' },
-			{ href: '#', text: 'Establishments' },
-			{ href: '#', text: 'Applications' },
+			{ href: '#', label: 'Home' },
+			{ href: '#', label: 'Establishments' },
+			{ href: '#', label: 'Applications' },
 		]}
 	/>
 </Box>
