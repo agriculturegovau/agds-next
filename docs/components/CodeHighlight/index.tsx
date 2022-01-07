@@ -3,8 +3,6 @@ import rangeParser from 'parse-numeric-range';
 
 import { theme } from '../prism-theme';
 
-import styles from './styles.module.css';
-
 function getShouldHighlightLine(meta?: string) {
 	const pattern = /{([\d,-]+)}/;
 	const result = meta && pattern.exec(meta);
@@ -36,7 +34,7 @@ export function CodeHighlight({
 			language={language as Language}
 		>
 			{({ tokens, getLineProps, getTokenProps }) => (
-				<code className={styles.code}>
+				<code>
 					{tokens.map((line, i) => {
 						return (
 							<div

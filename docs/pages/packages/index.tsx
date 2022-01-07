@@ -1,38 +1,28 @@
 import { MDXRemote } from 'next-mdx-remote';
 import { normalize } from 'path';
+import { Body } from '@ag.ds-next/body';
 
 import {
-	getPkg,
-	getPkgSlugs,
 	getMarkdownData,
 	serializeMarkdown,
 	getPkgList,
 } from '../../lib/mdxUtils';
 import { mdxComponents } from '../../components/utils';
 import { EditPage } from '../../components/EditPage';
-import { Layout } from '../../components/Layout';
-import { Content } from '@ag.ds-next/content';
-import { Body } from '@ag.ds-next/body';
-import { LinkList } from '@ag.ds-next/link-list';
+import { AppLayout } from '../../components/AppLayout';
+import { PageLayout } from '../../components/PageLayout';
 
 type StaticProps = Awaited<ReturnType<typeof getStaticProps>>['props'];
 
-export default function PackagesHome({ pkgList, source }: StaticProps) {
+export default function PackagesHome({ pkgLinks, source }: StaticProps) {
 	return (
-		<Layout>
-			<Content spacing="large">
+		<AppLayout>
+			<PageLayout navLinks={pkgLinks} editPath="/packages/README.md">
 				<Body>
 					<MDXRemote {...source} components={mdxComponents} />
 				</Body>
-				<LinkList
-					links={pkgList.map(({ title, slug }) => ({
-						label: title,
-						href: `/packages/${slug}`,
-					}))}
-				/>
-				<EditPage slug="/packages" />
-			</Content>
-		</Layout>
+			</PageLayout>
+		</AppLayout>
 	);
 }
 
@@ -42,10 +32,14 @@ export async function getStaticProps() {
 	);
 	const source = await serializeMarkdown(content);
 	const pkgList = await getPkgList();
+	const pkgLinks = pkgList.map(({ title, slug }) => ({
+		label: title,
+		href: `/packages/${slug}`,
+	}));
 
 	return {
 		props: {
-			pkgList,
+			pkgLinks,
 			source,
 		},
 	};

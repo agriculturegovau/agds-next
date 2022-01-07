@@ -1,39 +1,32 @@
 import { GetStaticProps, InferGetStaticPropsType } from 'next';
 import { MDXRemote } from 'next-mdx-remote';
 import { H1 } from '@ag.ds-next/heading';
-import { Flex, Box } from '@ag.ds-next/box';
+import { Box, Flex, Stack } from '@ag.ds-next/box';
 import { Text } from '@ag.ds-next/text';
 import { Body } from '@ag.ds-next/body';
 
-import {
-	getNavItems,
-	getPkg,
-	Pkg,
-	NavItems,
-	getPkgSlugs,
-} from '../../lib/mdxUtils';
+import { getPkgList, getPkg, Pkg, getPkgSlugs } from '../../lib/mdxUtils';
 
-import { InlineCode } from '../../components/mdx/InlineCode';
 import { mdxComponents } from '../../components/utils';
-import { EditPage } from '../../components/EditPage';
-import { Layout } from '../../components/Layout';
-import { Content } from '@ag.ds-next/content';
+import { AppLayout } from '../../components/AppLayout';
+import { PageLayout } from '../../components/PageLayout';
 
 export default function Packages({
 	pkg,
+	pkgLinks,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
-	if (!pkg) return null;
-
 	return (
-		<Layout>
-			<Content>
-				<Flex as="main" flexDirection="column" gap={1}>
-					<Flex flexDirection="column" gap={1}>
+		<AppLayout>
+			<PageLayout
+				navLinks={pkgLinks}
+				editPath={`/packages/${pkg.slug}/README.md`}
+			>
+				<Stack as="main" gap={1}>
+					<Flex flexDirection="column" gap={0.25}>
+						<Text fontSize="sm" color="muted">
+							v{pkg.version}
+						</Text>
 						<H1>{pkg.data.title}</H1>
-						<Box>
-							<InlineCode>{pkg.name}</InlineCode>{' '}
-							<InlineCode>v{pkg.version}</InlineCode>
-						</Box>
 						{pkg.data.description && <Text>{pkg.data.description}</Text>}
 					</Flex>
 					<Box
@@ -50,31 +43,39 @@ export default function Packages({
 							</code>
 						</pre>
 					</Box>
-				</Flex>
-			</Content>
-			<Content>
-				<Body>
-					<MDXRemote {...pkg.source} components={mdxComponents} />
-				</Body>
-
-				<EditPage slug={`/packages/${pkg.slug}`} />
-			</Content>
-		</Layout>
+					<Body>
+						<MDXRemote {...pkg.source} components={mdxComponents} />
+					</Body>
+				</Stack>
+			</PageLayout>
+		</AppLayout>
 	);
 }
 
 export const getStaticProps: GetStaticProps<
-	{ pkg: Pkg | undefined; navItems: NavItems; slug?: string },
+	{
+		pkg: Pkg;
+		pkgLinks: { href: string; label: string }[];
+		slug?: string;
+	},
 	{ slug: string }
 > = async ({ params }) => {
-	const navItems = await getNavItems();
-
+	const pkgList = await getPkgList();
 	const pkg = params ? await getPkg(params.slug) : undefined;
+
+	if (!pkg) {
+		return { notFound: true };
+	}
+
+	const pkgLinks = pkgList.map(({ slug, title }) => ({
+		href: `/packages/${slug}`,
+		label: title,
+	}));
 
 	return {
 		props: {
-			navItems,
 			pkg,
+			pkgLinks,
 			slug: params?.slug,
 		},
 	};

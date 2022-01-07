@@ -1,58 +1,74 @@
 import { GetStaticProps, InferGetStaticPropsType } from 'next';
 import { MDXRemote } from 'next-mdx-remote';
 import { H1 } from '@ag.ds-next/heading';
-import { Flex } from '@ag.ds-next/box';
+import { Box, Flex } from '@ag.ds-next/box';
 
 import {
-	getNavItems,
 	getRelease,
+	getReleaseList,
 	getReleaseSlugs,
 	Release,
-	NavItems,
 } from '../../lib/mdxUtils';
 
 import { mdxComponents } from '../../components/utils';
-import { EditPage } from '../../components/EditPage';
-import { Layout } from '../../components/Layout';
+import { AppLayout } from '../../components/AppLayout';
+import { PageLayout } from '../../components/PageLayout';
 
 export default function Packages({
-	navItems,
 	release,
-	slug,
+	releaseLinks,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
 	return (
-		<Layout navItems={navItems}>
-			{release ? (
-				<Flex as="main" flexDirection="column" gap={1}>
+		<AppLayout>
+			<PageLayout
+				navLinks={releaseLinks}
+				editPath={`/releases/${release.slug}.mdx`}
+			>
+				<Flex as="main" flexDirection="column" gap={1} alignItems="flex-start">
 					<H1>{release.data.title}</H1>
 					{release.data.type && (
-						<p style={{ marginBottom: '3rem' }}>{release.data.type}</p>
+						<Box
+							background="shade"
+							paddingX={0.25}
+							border
+							rounded
+							fontSize="xs"
+							display="inline-block"
+						>
+							{release.data.type}
+						</Box>
 					)}
-					<MDXRemote {...release.source} components={mdxComponents} />
-
-					<EditPage slug={`/releases/${release.slug}`} />
+					<Box>
+						<MDXRemote {...release.source} components={mdxComponents} />
+					</Box>
 				</Flex>
-			) : (
-				<Flex as="main" flexDirection="column">
-					<H1>Page data could not be found for &lquo;{slug}&rquo;</H1>
-				</Flex>
-			)}
-		</Layout>
+			</PageLayout>
+		</AppLayout>
 	);
 }
 
 export const getStaticProps: GetStaticProps<
-	{ release: Release | undefined; navItems: NavItems; slug?: string },
+	{
+		release: Release;
+		releaseLinks: { href: string; label: string }[];
+	},
 	{ slug: string }
 > = async ({ params }) => {
-	const navItems = await getNavItems();
-
 	const release = params ? await getRelease(params.slug) : undefined;
+	const releaseList = await getReleaseList();
+	const releaseLinks = releaseList.map(({ title, slug }) => ({
+		href: `/releases/${slug}`,
+		label: title,
+	}));
+
+	if (!release) {
+		return { notFound: true };
+	}
 
 	return {
 		props: {
-			navItems,
 			release,
+			releaseLinks,
 			slug: params?.slug,
 		},
 	};

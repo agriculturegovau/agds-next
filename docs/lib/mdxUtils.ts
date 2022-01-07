@@ -72,7 +72,21 @@ export async function getPkgSlugs() {
 		.map((entry) => slugify(stripMdxExtension(entry.name)));
 }
 
+export function getPkgList() {
+	return getPkgSlugs().then((slugs) =>
+		Promise.all(
+			slugs.map((slug) =>
+				getMarkdownData(pkgDocsPath(slug)).then(({ data }) => ({
+					title: (data?.title ?? slug) as string,
+					slug,
+				}))
+			)
+		)
+	);
+}
+
 export type Pkg = Awaited<ReturnType<typeof getPkg>>;
+export type PkgList = Awaited<ReturnType<typeof getPkgList>>;
 
 // Releases
 
@@ -102,23 +116,6 @@ export async function getReleaseSlugs() {
 		.map((entry) => slugify(stripMdxExtension(entry.name)));
 }
 
-export type Release = Awaited<ReturnType<typeof getRelease>>;
-
-// All Nav Items
-
-export function getPkgList() {
-	return getPkgSlugs().then((slugs) =>
-		Promise.all(
-			slugs.map((slug) =>
-				getMarkdownData(pkgDocsPath(slug)).then(({ data }) => ({
-					title: (data?.title ?? slug) as string,
-					slug,
-				}))
-			)
-		)
-	);
-}
-
 export function getReleaseList() {
 	return getReleaseSlugs().then((slugs) =>
 		Promise.all(
@@ -132,11 +129,5 @@ export function getReleaseList() {
 	);
 }
 
-export async function getNavItems() {
-	const [pkgList, releaseList] = await Promise.all([
-		getPkgList(),
-		getReleaseList(),
-	]);
-	return { pkgList, releaseList };
-}
-export type NavItems = Awaited<ReturnType<typeof getNavItems>>;
+export type Release = Awaited<ReturnType<typeof getRelease>>;
+export type ReleaseList = Awaited<ReturnType<typeof getReleaseList>>;

@@ -8,18 +8,10 @@ import { Box } from '@ag.ds-next/box';
 
 import { CodeHighlight } from '../CodeHighlight';
 import styles from './styles.module.css';
+import { themeVars, tokens } from '@ag.ds-next/core';
 
-const codeStyles = {
-	backgroundColor: 'var(--code-bg)',
-	color: 'var(--code)',
-	fontFamily: 'var(--font-mono)',
-	fontSize: '0.875rem',
-	maxWidth: '100%',
-
-	code: {
-		fontFamily: 'inherit',
-	},
-};
+// FIXME!!!! - styling is a mess in here. Also why we have `CodeBlock`, `CodeHighlight`, `InlineCode` and `ReactLive` is unclear. This needs thought and consolidation.
+// That plus the fact this gets rendered inside a `ag.ds/body` component is making things hard here.
 
 function highlightCode(code: string) {
 	return <CodeHighlight code={code} language="jsx" />;
@@ -75,7 +67,7 @@ export function ReactLive({
 	if (demo) {
 		return (
 			<div
-				style={{
+				css={{
 					borderRadius: '3px',
 					borderTopLeftRadius: '3px',
 					borderTopRightRadius: '3px',
@@ -90,9 +82,10 @@ export function ReactLive({
 
 	return (
 		<div
-			style={{
+			css={{
 				borderRadius: '3px',
-				boxShadow: '0 0 0 1px var(--border)',
+				border: '1px solid',
+				// boxShadow: '0 0 0 1px var(--border)',
 				margin: '1rem 0',
 				whiteSpace: 'break-spaces',
 				wordWrap: 'break-word',
@@ -100,7 +93,7 @@ export function ReactLive({
 		>
 			<div>
 				<div
-					style={{
+					css={{
 						borderTopLeftRadius: '3px',
 						borderTopRightRadius: '3px',
 						padding: gutter,
@@ -110,7 +103,7 @@ export function ReactLive({
 				</div>
 				{latestSuccessfulCompiledResult && <Header code={liveCode} />}
 				<div
-					style={{
+					css={{
 						overflow: 'hidden',
 						borderBottomLeftRadius: '3px',
 						borderBottomRightRadius: '3px',
@@ -129,8 +122,17 @@ export function ReactLive({
 						padding="1rem"
 						highlight={highlightCode}
 						onValueChange={setLiveCode}
-						style={{
-							...codeStyles,
+						css={{
+							backgroundColor: 'transparent',
+							color: themeVars.foreground.text,
+							fontFamily: tokens.font.monospace,
+							fontSize: `${tokens.fontSize.xs}rem`,
+							maxWidth: '100%',
+
+							code: {
+								fontFamily: 'inherit',
+							},
+
 							...(error
 								? {}
 								: {
@@ -141,14 +143,15 @@ export function ReactLive({
 					/>
 					{collapsible.current && (
 						<button
-							style={{
-								background: 'var(--code-bg)',
+							css={{
+								// background: 'var(--code-bg)',
+								background: themeVars.background.shade,
 								border: 0,
 								bottom: 0,
 								borderBottomLeftRadius: '3px',
 								borderBottomRightRadius: '3px',
 								boxSizing: 'border-box',
-								color: 'var(--code)',
+								color: themeVars.foreground.text, // 'var(--code)',
 								cursor: 'pointer',
 								fontSize: '0.875rem',
 								fontWeight: 500,
@@ -168,7 +171,7 @@ export function ReactLive({
 			</div>
 			{error && (
 				<pre
-					style={{
+					css={{
 						backgroundColor: 'var(--danger-bg)',
 						color: 'var(--danger)',
 						borderBottomLeftRadius: '3px',

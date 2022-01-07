@@ -1,7 +1,6 @@
+import { Box } from '@ag.ds-next/box';
 import { CodeHighlight } from '../CodeHighlight';
 import { ReactLive } from '../ReactLive';
-
-import styles from './styles.module.css';
 
 type CodeBlockProps = {
 	className: string;
@@ -36,8 +35,8 @@ export function CodeBlock({
 	}
 
 	return (
-		<pre className={styles.pre}>
+		<Box padding={1} border rounded background="shade">
 			<CodeHighlight metastring={metastring} code={code} language={language} />
-		</pre>
+		</Box>
 	);
 }
