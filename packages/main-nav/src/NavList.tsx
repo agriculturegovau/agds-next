@@ -3,7 +3,6 @@ import { Flex } from '@ag.ds-next/box';
 import { themeVars, tokens, useLinkComponent } from '@ag.ds-next/core';
 
 import { NavItem } from './NavItem';
-import { active } from '../../../docs/public/storybook/vendors~main.903e0c9f354136890982.manager.bundle';
 
 export type NavListProps = {
 	links: { href: string; label: ReactNode }[]; // FIXME: this is too restrictive
