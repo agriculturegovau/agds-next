@@ -32,6 +32,10 @@ export const bodyClass = css({
 	h5: fontGrid('sm', 'heading'),
 	h6: fontGrid('xs', 'heading'),
 
+	// Defensive: Ensure user entered content can't break the page layout
+	// by simply being long with no spaces.
+	wordBreak: 'break-all',
+
 	a: {
 		color: themeVars.foreground.action,
 		textDecoration: 'underline',
@@ -225,6 +229,13 @@ export const bodyClass = css({
 
 	sup: {
 		top: '-0.5em',
+	},
+
+	blockquote: {
+		padding: mapSpacing(2),
+		borderLeft: '4px solid',
+		borderColor: themeVars.border,
+		background: themeVars.background.shade,
 	},
 
 	/**

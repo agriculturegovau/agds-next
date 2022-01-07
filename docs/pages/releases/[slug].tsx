@@ -2,6 +2,7 @@ import { GetStaticProps, InferGetStaticPropsType } from 'next';
 import { MDXRemote } from 'next-mdx-remote';
 import { H1 } from '@ag.ds-next/heading';
 import { Box, Flex } from '@ag.ds-next/box';
+import { Body } from '@ag.ds-next/body';
 
 import {
 	getRelease,
@@ -38,9 +39,9 @@ export default function Packages({
 							{release.data.type}
 						</Box>
 					)}
-					<Box>
+					<Body>
 						<MDXRemote {...release.source} components={mdxComponents} />
-					</Box>
+					</Body>
 				</Flex>
 			</PageLayout>
 		</AppLayout>
