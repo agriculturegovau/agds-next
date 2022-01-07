@@ -4,8 +4,9 @@ import {
 	tokens,
 	themeVars,
 	mapSpacing,
+	fontGrid,
 } from '@ag.ds-next/core';
-import { Box, BoxProps } from '@ag.ds-next/box';
+import { Box, BoxProps, focusStyles } from '@ag.ds-next/box';
 
 export const Body = forwardRefWithAs<'div', BoxProps>(function Body(
 	props,
@@ -15,27 +16,28 @@ export const Body = forwardRefWithAs<'div', BoxProps>(function Body(
 });
 
 export const bodyClass = css({
-	// fontSize: tokens.rem,
-	lineHeight: tokens.lineHeight.default,
 	margin: 0,
 	textSizeAdjust: '100%',
-	fontFamily: tokens.font.body,
 
 	// can we use themes here? ... do we need to?
 	color: themeVars.foreground.text,
-	// backgroundColor: themeVars.background.page,
+
+	// Font grid
+	fontFamily: tokens.font.body,
+	...fontGrid('sm', 'default'),
+	h1: fontGrid('xxl', 'heading'),
+	h2: fontGrid('xl', 'heading'),
+	h3: fontGrid('lg', 'heading'),
+	h4: fontGrid('md', 'heading'),
+	h5: fontGrid('sm', 'heading'),
+	h6: fontGrid('xs', 'heading'),
 
 	a: {
 		color: themeVars.foreground.action,
 		textDecoration: 'underline',
 		textDecorationSkipInk: 'auto',
 
-		'&:hover': {
-			color: themeVars.foreground.action,
-			textDecoration: 'none',
-		},
-
-		// @include AU-focus();
+		...focusStyles({ focus: true }),
 	},
 
 	/**
@@ -230,14 +232,12 @@ export const bodyClass = css({
 	 * Code snippets and code blocks.
 	 */
 	'kbd,code,samp': {
-		fontSize: tokens.fontSize.xs,
-		lineHeight: tokens.lineHeight.default,
-		// @include AU-fontgrid( xs );
-		// @include AU-space( padding, 0.25unit );
+		...fontGrid('xs', 'default'),
+		padding: mapSpacing(0.25),
 		fontFamily: tokens.font.monospace,
 		display: 'inline-block',
 		borderRadius: tokens.borderRadius,
-		backgroundColor: themeVars.background.shade,
+		// backgroundColor: themeVars.background.shade,
 		color: themeVars.foreground.text,
 	},
 
