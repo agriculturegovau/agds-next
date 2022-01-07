@@ -237,7 +237,7 @@ export const bodyClass = css({
 		fontFamily: tokens.font.monospace,
 		display: 'inline-block',
 		borderRadius: tokens.borderRadius,
-		// backgroundColor: themeVars.background.shade,
+		// backgroundColor: themeVars.background.shade, // FIXME: This conflicts with the Live Code rending in the docs site.
 		color: themeVars.foreground.text,
 	},
 
