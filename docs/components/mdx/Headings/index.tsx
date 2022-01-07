@@ -47,7 +47,6 @@ function DocsHeading({
 	const Heading = type;
 
 	if (slug) {
-		// add and anchor link wrapper
 		return (
 			<Heading css={{ position: 'relative' }} id={slug} {...props}>
 				<AnchorLink slug={slug} />
