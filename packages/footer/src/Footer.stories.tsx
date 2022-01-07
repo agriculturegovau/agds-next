@@ -19,9 +19,9 @@ const AgSimpleFooter: ComponentStory<typeof Footer> = (args) => {
 			<LinkList
 				inline
 				links={[
-					{ link: '#', text: 'Link 1' },
-					{ link: '#', text: 'Link 2' },
-					{ link: '#', text: 'Link 3' },
+					{ href: '#', label: 'Link 1' },
+					{ href: '#', label: 'Link 2' },
+					{ href: '#', label: 'Link 3' },
 				]}
 			/>
 			<Divider accent />
@@ -77,9 +77,9 @@ const AgComplexFooter: ComponentStory<typeof Footer> = (args) => {
 					<Heading type="h3">Section</Heading>
 					<LinkList
 						links={[
-							{ link: '#', text: 'Link 1' },
-							{ link: '#', text: 'Link 2' },
-							{ link: '#', text: 'Link 3' },
+							{ href: '#', label: 'Link 1' },
+							{ href: '#', label: 'Link 2' },
+							{ href: '#', label: 'Link 3' },
 						]}
 					/>
 				</div>
@@ -87,9 +87,9 @@ const AgComplexFooter: ComponentStory<typeof Footer> = (args) => {
 					<Heading type="h3">Section</Heading>
 					<LinkList
 						links={[
-							{ link: '#', text: 'Link 1' },
-							{ link: '#', text: 'Link 2' },
-							{ link: '#', text: 'Link 3' },
+							{ href: '#', label: 'Link 1' },
+							{ href: '#', label: 'Link 2' },
+							{ href: '#', label: 'Link 3' },
 						]}
 					/>
 				</div>

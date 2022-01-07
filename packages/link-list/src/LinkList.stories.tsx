@@ -12,9 +12,9 @@ const Template: ComponentStory<typeof LinkList> = (args) => {
 };
 
 const exampleLinks = [
-	{ link: '#', text: 'Home' },
-	{ link: '#', text: 'Establishments' },
-	{ link: '#', text: 'Applications' },
+	{ href: '#', label: 'Home' },
+	{ href: '#', label: 'Establishments' },
+	{ href: '#', label: 'Applications' },
 ];
 
 export const Basic = Template.bind({});
@@ -26,16 +26,4 @@ export const Inline = Template.bind({});
 Inline.args = {
 	links: exampleLinks,
 	inline: true,
-};
-
-export const BasicWithCustomLink: ComponentStory<typeof LinkList> = (args) => {
-	return (
-		<LinkList
-			{...args}
-			linkComponent={({ link, text }) => <a href={link}>{text}</a>}
-		/>
-	);
-};
-BasicWithCustomLink.args = {
-	links: exampleLinks,
 };
