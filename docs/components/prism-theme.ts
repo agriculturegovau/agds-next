@@ -1,6 +1,8 @@
+import { themeVars } from '@ag.ds-next/core';
+
 export const theme = {
 	plain: {
-		color: 'var(--text-heading)',
+		color: themeVars.foreground.text,
 		backgroundColor: '#f6f7f9',
 	},
 	styles: [

@@ -7,9 +7,12 @@ import { Body } from '@ag.ds-next/body';
 import { Text } from '@ag.ds-next/text';
 import { Heading, H1, H2, H3, H4, H5, H6 } from '@ag.ds-next/heading';
 import { LinkList } from '@ag.ds-next/link-list';
+import { Header, HeaderBrand, HeaderContainer } from '@ag.ds-next/header';
+import { Footer } from '@ag.ds-next/footer';
 
 import { contentComponents } from './mdx';
 
+// TODO: This feels hacky, importing every component so we can do jsx live.
 const packages = {
 	Button,
 	Box,
@@ -25,6 +28,10 @@ const packages = {
 	H5,
 	H6,
 	LinkList,
+	Footer,
+	Header,
+	HeaderBrand,
+	HeaderContainer,
 
 	Fragment,
 };

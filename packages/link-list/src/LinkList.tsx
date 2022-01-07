@@ -1,28 +1,26 @@
-import { TextLink } from '@ag.ds-next/text-link';
-import { mapSpacing } from '@ag.ds-next/core';
+import type { ReactNode } from 'react';
+import {
+	mapSpacing,
+	themeVars,
+	outline,
+	useLinkComponent,
+} from '@ag.ds-next/core';
 
-type LinkProps = { link: string; text: string };
 type LinkListProps = {
-	links: { link: string; text: string }[];
+	links: { href: string; label: ReactNode }[];
 	inline?: boolean;
-	linkComponent?: ({ link, text }: LinkProps) => JSX.Element;
 };
 
-const DefaultLink = ({ link, text }: LinkProps) => {
-	return <TextLink href={link}>{text}</TextLink>;
-};
-
-export const LinkList = ({
-	links,
-	inline,
-	linkComponent: Link = DefaultLink,
-}: LinkListProps) => {
+export const LinkList = ({ links, inline }: LinkListProps) => {
+	const Link = useLinkComponent();
 	const styles = linkListStyles({ inline });
 	return (
 		<ul css={styles}>
-			{links.map(({ link, text }, index) => (
+			{links.map(({ href, label, ...props }, index) => (
 				<li key={index}>
-					<Link link={link} text={text} />
+					<Link href={href} {...props}>
+						{label}
+					</Link>
 				</li>
 			))}
 		</ul>
@@ -37,15 +35,20 @@ const linkListStyles = ({ inline }: { inline?: boolean }) => {
 		margin: 0,
 		padding: `${mapSpacing(0.25)} 0`,
 
-		// FIXME: this class will not exist
-		'.au-body &': {
-			margin: 0,
-			padding: mapSpacing(0.25),
-		},
-
 		'> li': {
 			display: display,
 			margin: mapSpacing(0.25),
+		},
+		' a': {
+			color: themeVars.foreground.action,
+			textDecoration: 'underline',
+
+			'&:hover': {
+				color: themeVars.foreground.action,
+				textDecoration: 'none',
+			},
+
+			'&:focus': outline,
 		},
 	};
 };

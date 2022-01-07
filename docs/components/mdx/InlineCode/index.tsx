@@ -1,23 +1,22 @@
-type InlindeCodeProps = React.AllHTMLAttributes<HTMLSpanElement>;
-export function InlineCode(props: InlindeCodeProps) {
+import { Box } from '@ag.ds-next/box';
+
+type InlineCodeProps = React.AllHTMLAttributes<HTMLSpanElement>;
+export function InlineCode({ children }: InlineCodeProps) {
 	return (
-		<span
-			style={{
-				display: 'inline-block',
-				color: 'var(--code)',
-				background: 'var(--code-bg)',
-				padding: '0.025rem 0.25rem',
-				margin: 0,
-				border: '1px solid var(--border)',
-				borderRadius: '5px',
-				fontSize: '85%',
-				fontFamily: 'var(--font-mono)',
+		<Box
+			as="span"
+			display="inline-block"
+			border
+			rounded
+			background="shade"
+			paddingX={0.25}
+			fontSize="xs"
+			fontFamily="monospace"
+			css={{
 				wordBreak: 'break-all',
-				// 'a &': {
-				// 	textDecoration: 'underline',
-				// },
 			}}
-			{...props}
-		/>
+		>
+			{children}
+		</Box>
 	);
 }

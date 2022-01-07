@@ -1,9 +1,9 @@
 import { Box, Flex } from '@ag.ds-next/box';
 
-import { SiteHeader } from '../components/SiteHeader';
-import { SiteFooter } from '../components/SiteFooter';
+import { SiteHeader } from './SiteHeader';
+import { SiteFooter } from './SiteFooter';
 
-export const Layout: React.FC = ({ children }) => {
+export const AppLayout: React.FC = ({ children }) => {
 	return (
 		<Flex
 			flexDirection="column"
@@ -12,11 +12,9 @@ export const Layout: React.FC = ({ children }) => {
 			minHeight="100vh"
 		>
 			<SiteHeader />
-
 			<Box as="main" flexGrow={1}>
 				{children}
 			</Box>
-
 			<SiteFooter />
 		</Flex>
 	);

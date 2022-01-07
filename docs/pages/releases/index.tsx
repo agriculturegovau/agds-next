@@ -1,37 +1,45 @@
 import { MDXRemote } from 'next-mdx-remote';
 import { normalize } from 'path';
+import { Body } from '@ag.ds-next/body';
 
 import {
-	getNavItems,
 	getMarkdownData,
+	getReleaseList,
 	serializeMarkdown,
 } from '../../lib/mdxUtils';
 import { mdxComponents } from '../../components/utils';
-import { EditPage } from '../../components/EditPage';
-import { Layout } from '../../components/Layout';
+import { AppLayout } from '../../components/AppLayout';
+import { PageLayout } from '../../components/PageLayout';
 
 type StaticProps = Awaited<ReturnType<typeof getStaticProps>>['props'];
 
-export default function PackagesHome({ navItems, source }: StaticProps) {
+export default function PackagesHome({ source, releaseLinks }: StaticProps) {
 	return (
-		<Layout navItems={navItems}>
-			<MDXRemote {...source} components={mdxComponents} />
-			<EditPage slug="/releases" filename="index.mdx" />
-		</Layout>
+		<AppLayout>
+			<PageLayout navLinks={releaseLinks} editPath="/releases/index.mdx">
+				<Body>
+					<MDXRemote {...source} components={mdxComponents} />
+				</Body>
+			</PageLayout>
+		</AppLayout>
 	);
 }
 
 export async function getStaticProps() {
-	const navItems = await getNavItems();
 	const { content } = await getMarkdownData(
 		normalize(`${process.cwd()}/../releases/index.mdx`)
 	);
 	const source = await serializeMarkdown(content);
+	const releaseList = await getReleaseList();
+	const releaseLinks = releaseList.map(({ slug, title }) => ({
+		href: `/releases/${slug}`,
+		label: title,
+	}));
 
 	return {
 		props: {
-			navItems,
 			source,
+			releaseLinks,
 		},
 	};
 }

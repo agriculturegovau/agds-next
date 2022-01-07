@@ -7,12 +7,13 @@ import { useRouter } from 'next/router';
 
 const NAV_LINKS = [
 	{ label: 'Home', href: '/' },
-	{ label: 'Content', href: '/content' },
-	{ label: 'Form example', href: '/form' },
+	{ label: 'Packages', href: '/packages' },
+	{ label: 'Releases', href: '/releases' },
 ];
 
-// TODO: example links when authenticated / not authenticated
-const SECONDARY_LINKS = [{ label: 'Sign in', href: '/sign-in' }];
+const SECONDARY_LINKS = [
+	{ label: 'GitHub', href: 'https://github.com/steelthreads/agds-next' },
+];
 
 export const SiteHeader = () => {
 	const router = useRouter();

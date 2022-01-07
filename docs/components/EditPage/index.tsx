@@ -1,16 +1,21 @@
 import { Box } from '@ag.ds-next/box';
 
-export function EditPage({ slug = '', filename = 'README.md' }) {
+const ORG = 'steelthreads';
+const REPO = 'agds-next';
+const BRANCH = 'main';
+
+export function EditPage({ path = '' }) {
 	return (
 		<Box
 			as="a"
-			href={`https://github.com/steelthreads/agds-next/edit/main${slug}/${filename}`}
+			display="inline-block"
+			href={`https://github.com/${ORG}/${REPO}/edit/${BRANCH}${path}`}
 			target="_blank"
 			rel="noopener noreferrer"
-			paddingTop={3}
 			color="action"
 			fontSize="sm"
 			fontFamily="body"
+			focus
 		>
 			Edit this page
 		</Box>
