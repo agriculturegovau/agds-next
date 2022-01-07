@@ -78,6 +78,8 @@ type LayoutProps = Partial<{
 	>;
 	flexDirection: ResponsiveProp<'row' | 'column'>;
 	flexWrap: ResponsiveProp<'nowrap' | 'wrap' | 'wrap-reverse'>;
+	flexGrow: ResponsiveProp<number>;
+	flexShrink: ResponsiveProp<number>;
 	justifyContent: ResponsiveProp<
 		| 'flex-start'
 		| 'flex-end'
@@ -102,6 +104,8 @@ function layoutStyles({
 	display,
 	flexDirection,
 	flexWrap,
+	flexGrow,
+	flexShrink,
 	justifyContent,
 	alignItems,
 	gap,
@@ -116,6 +120,8 @@ function layoutStyles({
 		display: mapResponsiveProp(display),
 		flexDirection: mapResponsiveProp(flexDirection),
 		flexWrap: mapResponsiveProp(flexWrap),
+		flexGrow: mapResponsiveProp(flexGrow),
+		flexShrink: mapResponsiveProp(flexShrink),
 		justifyContent: mapResponsiveProp(justifyContent),
 		alignItems: mapResponsiveProp(alignItems),
 		gap: mapResponsiveProp(gap, mapSpacing),
@@ -238,6 +244,8 @@ export function boxStyles({
 	display,
 	flexDirection,
 	flexWrap,
+	flexGrow,
+	flexShrink,
 	justifyContent,
 	alignItems,
 	gap,
@@ -291,6 +299,8 @@ export function boxStyles({
 					display,
 					flexDirection,
 					flexWrap,
+					flexGrow,
+					flexShrink,
 					justifyContent,
 					alignItems,
 					gap,
