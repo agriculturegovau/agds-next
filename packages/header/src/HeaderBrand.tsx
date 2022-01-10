@@ -44,7 +44,7 @@ export function HeaderBrand({
 				</Flex>
 			) : null}
 			{logo ? <Box borderRight display={{ xs: 'none', md: 'block' }} /> : null}
-			<Stack justifyContent="flex-start">
+			<Stack justifyContent={subline ? "flex-start" : "center"}>
 				<Heading fontSize={{ xs: 'md', md: 'xl' }}>{heading}</Heading>
 				{subline && (
 					<Text color="muted" fontSize={{ xs: 'sm', md: 'md' }}>
