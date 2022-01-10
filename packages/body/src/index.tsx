@@ -25,12 +25,6 @@ export const bodyClass = css({
 	// Font grid
 	fontFamily: tokens.font.body,
 	...fontGrid('sm', 'default'),
-	h1: fontGrid('xxl', 'heading'),
-	h2: fontGrid('xl', 'heading'),
-	h3: fontGrid('lg', 'heading'),
-	h4: fontGrid('md', 'heading'),
-	h5: fontGrid('sm', 'heading'),
-	h6: fontGrid('xs', 'heading'),
 
 	a: {
 		color: themeVars.foreground.action,
@@ -127,6 +121,64 @@ export const bodyClass = css({
 		},
 	},
 
+	h1: {
+		display: 'block',
+		fontWeight: 'bold',
+		margin: 0,
+		...fontGrid('xxl', 'heading'),
+	},
+
+	'* + h1': {
+		marginTop: mapSpacing(3),
+	},
+
+	h2: {
+		display: 'block',
+		fontWeight: 'bold',
+		margin: 0,
+		...fontGrid('xl', 'heading'),
+	},
+
+	'* + h2': {
+		marginTop: mapSpacing(3),
+	},
+
+	h3: {
+		display: 'block',
+		fontWeight: 'bold',
+		margin: 0,
+		...fontGrid('lg', 'heading'),
+	},
+
+	'* + h3': {
+		marginTop: mapSpacing(2),
+	},
+
+	h4: {
+		display: 'block',
+		fontWeight: 'bold',
+		margin: 0,
+		...fontGrid('md', 'heading'),
+	},
+
+	h5: {
+		display: 'block',
+		fontWeight: 'bold',
+		margin: 0,
+		...fontGrid('sm', 'heading'),
+	},
+
+	h6: {
+		display: 'block',
+		fontWeight: 'bold',
+		margin: 0,
+		...fontGrid('xs', 'heading'),
+	},
+
+	'h1 + h2, h2 + h3, * + h3, * + h4, * + h5, * + h6': {
+		marginTop: mapSpacing(1.5),
+	},
+
 	/**
 	 * Emphasis and alt. voice/mood/diff. from prose text.
 	 */
@@ -145,7 +197,7 @@ export const bodyClass = css({
 	 * `small`: for less important information (not stylistic purposes).
 	 */
 	small: {
-		// @include AU-fontgrid( xs );
+		...fontGrid('xs', 'default'),
 	},
 
 	/**
@@ -214,7 +266,7 @@ export const bodyClass = css({
 	 * https://github.com/necolas/normalize.css/blob/master/normalize.css#L174
 	 */
 	'sub,sup': {
-		// @include AU-fontgrid( xs, nospace ),
+		...fontGrid('xs', 'nospace'),
 		position: 'relative',
 		verticalAlign: 'baseline',
 	},
