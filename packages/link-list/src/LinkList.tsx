@@ -1,5 +1,6 @@
 import type { ReactNode } from 'react';
 import {
+	fontGrid,
 	mapSpacing,
 	themeVars,
 	outline,
@@ -37,7 +38,12 @@ const linkListStyles = ({ inline }: { inline?: boolean }) => {
 
 		'> li': {
 			display: display,
-			margin: mapSpacing(0.25),
+			marginTop: mapSpacing(0),
+			marginBottom: inline ? 0 : mapSpacing(0.5),
+			marginLeft: '0px',
+			marginRight: mapSpacing(1),
+			padding: 0,
+			...fontGrid('sm', 'default'),
 		},
 		' a': {
 			color: themeVars.foreground.action,

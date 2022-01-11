@@ -96,13 +96,13 @@ const AgComplexFooter: ComponentStory<typeof Footer> = (args) => {
 			</Flex>
 			<Divider />
 			<Text as="p">Footer text</Text>
-			<Divider />
 			<img
 				className="au-responsive-media-img"
 				src="https://designsystem.gov.au/assets/img/placeholder/157X80.png"
 				alt="Placeholder image"
 				width="240px"
 			/>
+			<Divider />
 			<p>
 				<small>
 					&copy; Commonwealth of Australia,{' '}
