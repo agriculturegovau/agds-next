@@ -1,38 +1,27 @@
-import { ReactNode } from 'react';
-import { LinkList } from '@ag.ds-next/link-list';
-import { sideNavLinkListStyles } from './styles';
+import { SideNavLink } from './SideNavLink';
+import { SideNavLinkGroup } from './SideNavLinkGroup';
+import { findBestMatch } from './utils';
 
-export type SideNavMenuItemType = {
+type SideNavMenuItemType = {
 	href: string;
 	label: string;
 	active?: boolean;
-	children?: SideNavMenuItemType;
+	children?: SideNavMenuItemType[];
 };
 
-type SideNavMenuProps = {
+export type SideNavMenuProps = {
 	activePath: string;
 	items: SideNavMenuItemType[];
-	linkComponent: ReactNode;
 };
 
-/**
- * A menu inside the AUsideNav
- *
- * @param  {array}  items            - The links in an array containing text, location and active status
- * @param  {string} linkComponent    - The component used for the link
- */
-export const SideNavMenu = ({
-	activePath,
-	items,
-	linkComponent,
-}: SideNavMenuProps) => {
+export const SideNavMenu = ({ activePath, items }: SideNavMenuProps) => {
 	const bestMatch = findBestMatch(items, activePath);
 
 	// Recursively re generate the menu with children as necessary
-	const GenerateMenu = (items: SideNavMenuItemType[]) => {
+	const generateMenu = (items: SideNavMenuItemType[]) => {
 		const menu = items.map((item) => {
 			const link = {
-				link: item.active ? '' : item.href,
+				href: item.active ? '' : item.href,
 				label: item.active ? <span>{item.label}</span> : item.label,
 				li: {
 					className: item.active ? 'active' : '',
@@ -42,10 +31,9 @@ export const SideNavMenu = ({
 			// If it has children create a menu again
 			if (item.children) {
 				link.children = (
-					<LinkList
+					<SideNavLinkList
 						links={GenerateMenu(item.children)}
-						css={sideNavLinkListStyles}
-						linkComponent={item.linkComponent}
+						activePath={bestMatch}
 					/>
 				);
 			}
@@ -57,29 +45,30 @@ export const SideNavMenu = ({
 		return menu;
 	};
 
+	const links = generateMenu(items);
+
 	// Create the menu with children
-	return (
-		<LinkList
-			links={GenerateMenu(items)}
-			css={sideNavLinkListStyles}
-			// linkComponent={linkComponent}
-		/>
-	);
+	return <SideNavLinkList links={links} activePath={bestMatch} />;
 };
 
-function findBestMatch(items: { link: string }[], activePath?: string) {
-	if (!activePath) return '';
-	let bestMatch = '';
-
-	for (const link of items) {
-		if (link.link === activePath) return link.link;
-		if (
-			activePath?.startsWith(link.link) &&
-			link.link.length > bestMatch.length
-		) {
-			bestMatch = link.link;
-		}
-	}
-
-	return bestMatch;
-}
+export const SideNavLinkList = ({
+	activePath,
+	links,
+	...props
+}: {
+	activePath?: string;
+	links: { href: string; label: string }[];
+	inline?: boolean;
+}) => {
+	return (
+		<SideNavLinkGroup {...props}>
+			{links.map((props, index) => (
+				<SideNavLink
+					active={props.href === activePath}
+					key={index}
+					{...props}
+				/>
+			))}
+		</SideNavLinkGroup>
+	);
+};
