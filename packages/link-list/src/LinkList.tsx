@@ -38,9 +38,9 @@ const linkListStyles = ({ inline }: { inline?: boolean }) => {
 
 		'> li': {
 			display: display,
-			marginTop: mapSpacing(0),
+			marginTop: 0,
 			marginBottom: inline ? 0 : mapSpacing(0.5),
-			marginLeft: '0px',
+			marginLeft: 0,
 			marginRight: mapSpacing(1),
 			padding: 0,
 			...fontGrid('sm', 'default'),
