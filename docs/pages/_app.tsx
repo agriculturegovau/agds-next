@@ -7,10 +7,11 @@ import { palette } from '@ag.ds-next/ag-branding';
 
 const LinkComponent = ({
 	children,
+	className,
 	...props
-}: PropsWithChildren<LinkProps>) => (
+}: PropsWithChildren<LinkProps & { className?: string }>) => (
 	<Link {...props}>
-		<a>{children}</a>
+		<a className={className}>{children}</a>
 	</Link>
 );
 
