@@ -1,8 +1,8 @@
 import { LinkListGroup } from './LinkListGroup';
-import { LinkListItem } from './LinkListItem';
+import { LinkListItem, LinkListItemType } from './LinkListItem';
 
 export type LinkListProps = {
-	links: { href: string; label: string }[];
+	links: LinkListItemType[];
 	inline?: boolean;
 };
 

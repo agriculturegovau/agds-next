@@ -1,4 +1,3 @@
-import { ReactNode } from 'react';
 import { Content } from '@ag.ds-next/content';
 import { Box, Flex, Stack } from '@ag.ds-next/box';
 import { LinkList } from '@ag.ds-next/link-list';
@@ -11,7 +10,7 @@ export function PageLayout({
 	editPath,
 	children,
 }: PropsWithChildren<{
-	navLinks?: { href: string; label: ReactNode }[];
+	navLinks?: { href: string; label: string }[];
 	editPath?: string;
 }>) {
 	return (
