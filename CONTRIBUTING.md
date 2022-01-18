@@ -72,7 +72,7 @@ const CustomLinkList = ({ links, ..props }) => (
 
 ```
 
-So components which (like `LinkList`) are a composition of several other components should expose their parts in addition to the main component to enable recomposing the parts in a different way. This lets us maintain a simple API while enabling much more complex changes.
+So components which are a composition of several other components (like `LinkList`) should expose their parts in addition to the main component to enable recomposing the parts in a different way. This lets us maintain a simple API while enabling more complex use cases.
 
 ### Limit cross dependencies
 
@@ -82,7 +82,7 @@ It is fully expected that almost every design-system component will depend on `c
 
 Going down this path is fraught.
 
-1. While there are certainly similarities in the look and functionality of these components they are fundamentally different. The `Accordion` is always an accordion. Open or closed. Nothing more. The `SideNavigation` how ever could change at runtime (on resize or device rotation) from a collapsible accordion-like component to one with a fixed height, locked open and then back again. This is not a feature the `Accordion` should support.
+1. While there are certainly similarities in the look and functionality of these components they are fundamentally different. The `Accordion` is always an accordion. Open or closed. Nothing more. The `SideNavigation` however could change at runtime (on resize or device rotation) from a collapsible accordion-like component to one with a fixed height, locked open and then back again. This is a feature of the `SideNavigation` and not something the `Accordion` should be aware of or have to support.
 2. While the relationship from `SideNavigation` to `Accordion` may be easy to see, there is no indication from within the `Accordion` that this dependency exists. This can leads to changes in the `Accordion` causing issues in `SideNavigation` with no good way to expose this dependency.
 
 A better choice here is to take the parts of `Accordion` which are common / reusable and extract them to a more generic component or into `core` as a utility. If this is too hard, copy paste the code to the new component. Duplication is better than dependency here.
