@@ -1,13 +1,12 @@
-import { ReactNode } from 'react';
+import { PropsWithChildren } from 'react';
 import { Box } from '@ag.ds-next/box';
 import { useLinkComponent, themeVars, outline } from '@ag.ds-next/core';
 
-export type LinkListItemType = {
-	href: string;
-	label: ReactNode;
-};
-
-export const LinkListItem = ({ href, label, ...props }: LinkListItemType) => {
+export const LinkListItem = (
+	props: PropsWithChildren<{
+		href: string;
+	}>
+) => {
 	const Link = useLinkComponent();
 	return (
 		<Box
@@ -28,9 +27,7 @@ export const LinkListItem = ({ href, label, ...props }: LinkListItemType) => {
 				},
 			}}
 		>
-			<Link href={href} {...props}>
-				{label}
-			</Link>
+			<Link {...props} />
 		</Box>
 	);
 };
