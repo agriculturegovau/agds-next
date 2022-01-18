@@ -46,9 +46,9 @@ InlineDark.args = {
 export const Modular: ComponentStory<typeof LinkList> = (args) => {
 	return (
 		<LinkListGroup {...args}>
-			<LinkListItem label="One" href="#one" />
-			<LinkListItem label="Two" href="#two" />
-			<LinkListItem label="Three" href="#three" />
+			<LinkListItem href="#one">One</LinkListItem>
+			<LinkListItem href="#two">Two</LinkListItem>
+			<LinkListItem href="#three">Three</LinkListItem>
 		</LinkListGroup>
 	);
 };

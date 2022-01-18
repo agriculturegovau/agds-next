@@ -8,7 +8,6 @@ import {
 	getPkgList,
 } from '../../lib/mdxUtils';
 import { mdxComponents } from '../../components/utils';
-import { EditPage } from '../../components/EditPage';
 import { AppLayout } from '../../components/AppLayout';
 import { PageLayout } from '../../components/PageLayout';
 
