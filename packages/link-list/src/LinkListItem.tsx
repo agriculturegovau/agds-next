@@ -13,6 +13,7 @@ export const LinkListItem = ({ href, label, ...props }: LinkListItemType) => {
 		<Box
 			as="li"
 			fontSize="sm"
+			fontFamily="body"
 			lineHeight="default"
 			css={{
 				a: {

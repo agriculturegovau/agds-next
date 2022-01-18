@@ -16,7 +16,6 @@ export const LinkListGroup = ({
 			as="ul"
 			gap={horizontal ? 1 : 0.5}
 			flexDirection={horizontal ? 'row' : 'column'}
-			fontFamily="body"
 			{...props}
 		>
 			{children}
