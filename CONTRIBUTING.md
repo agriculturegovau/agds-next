@@ -4,7 +4,7 @@
 
 An incomplete list of the principles guiding decisions around API and implementation details in the Design-System.
 
-### Avoid making up new words for thing that already exist in the domain
+### Avoid making up new words for things that already exist in the domain
 
 Eg. For component props which map directly to css properties, just use the same name. Shortening `flexGrow` to `grow` makes it harder to understand what that prop does.
 
@@ -86,6 +86,8 @@ Going down this path is fraught.
 2. While the relationship from `SideNavigation` to `Accordion` may be easy to see, there is no indication from within the `Accordion` that this dependency exists. This can leads to changes in the `Accordion` causing issues in `SideNavigation` with no good way to expose this dependency.
 
 A better choice here is to take the parts of `Accordion` which are common / reusable and extract them to a more generic component or into `core` as a utility. If this is too hard, copy paste the code to the new component. Duplication is better than dependency here.
+
+##
 
 ## Component / Feature checklist
 
