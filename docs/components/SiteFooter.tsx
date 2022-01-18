@@ -12,7 +12,7 @@ export const SiteFooter = () => {
 	return (
 		<AgDsFooter>
 			<Flex gap={1}>
-				<LinkList links={footerLinks} inline />
+				<LinkList links={footerLinks} horizontal />
 			</Flex>
 		</AgDsFooter>
 	);
