@@ -1,9 +1,10 @@
+import { ReactNode } from 'react';
 import { Box } from '@ag.ds-next/box';
 import { useLinkComponent, themeVars, outline } from '@ag.ds-next/core';
 
 export type LinkListItemType = {
 	href: string;
-	label: string;
+	label: ReactNode;
 };
 
 export const LinkListItem = ({ href, label, ...props }: LinkListItemType) => {
