@@ -45,6 +45,7 @@ export function NavContainer({ variant, children }: NavContainerProps) {
 			theme={theme}
 			background={background}
 			color="text"
+			fontFamily="body"
 			css={{
 				position: 'relative',
 				[localVars.linkHoverBg]: themeVars.background.shade,
