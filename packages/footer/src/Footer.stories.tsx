@@ -1,7 +1,8 @@
 /* eslint-disable @next/next/no-img-element */
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { Divider, Flex } from '@ag.ds-next/box';
+import { Logo } from '@ag.ds-next/ag-branding';
+import { Box, Divider, Flex } from '@ag.ds-next/box';
 import { Heading } from '@ag.ds-next/heading';
 import { Text } from '@ag.ds-next/text';
 import { TextLink } from '@ag.ds-next/text-link';
@@ -17,7 +18,7 @@ const AgSimpleFooter: ComponentStory<typeof Footer> = (args) => {
 	return (
 		<Footer variant={args.variant}>
 			<LinkList
-				inline
+				horizontal
 				links={[
 					{ href: '#', label: 'Link 1' },
 					{ href: '#', label: 'Link 2' },
@@ -96,12 +97,11 @@ const AgComplexFooter: ComponentStory<typeof Footer> = (args) => {
 			</Flex>
 			<Divider />
 			<Text as="p">Footer text</Text>
-			<img
-				className="au-responsive-media-img"
-				src="https://designsystem.gov.au/assets/img/placeholder/157X80.png"
-				alt="Placeholder image"
-				width="240px"
-			/>
+
+			<Box maxWidth="240px">
+				<Logo />
+			</Box>
+
 			<Divider />
 			<p>
 				<small>

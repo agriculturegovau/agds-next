@@ -9,7 +9,7 @@ const footerLinks = [
 export const SiteFooter = () => {
 	return (
 		<AgDsFooter>
-			<LinkList links={footerLinks} inline />
+			<LinkList links={footerLinks} horizontal />
 		</AgDsFooter>
 	);
 };
