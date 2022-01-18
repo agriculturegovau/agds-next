@@ -61,7 +61,7 @@ const defaultArgs = {
 		},
 	],
 	activePath: '#welcome',
-} as const;
+};
 
 const Template: ComponentStory<typeof SideNav> = (args) => {
 	return <SideNav {...args} />;

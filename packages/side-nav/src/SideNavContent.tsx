@@ -1,17 +1,19 @@
 import type { ReactNode } from 'react';
-import { Box } from '@ag.ds-next/box';
+import { Box, BoxProps } from '@ag.ds-next/box';
 import { tokens, themeVars } from '@ag.ds-next/core';
 
 export type SideNavVariantType = keyof typeof variantMap;
+
+export type SideNavContentProps = BoxProps & {
+	children: ReactNode;
+	variant: SideNavVariantType;
+};
 
 export const SideNavContent = ({
 	children,
 	variant,
 	...props
-}: {
-	children: ReactNode;
-	variant: SideNavVariantType;
-}) => {
+}: SideNavContentProps) => {
 	return (
 		<Box
 			fontFamily="body"

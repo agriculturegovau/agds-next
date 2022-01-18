@@ -1,9 +1,16 @@
 import { ReactNode } from 'react';
-import { Box } from '@ag.ds-next/box';
+import { Box, BoxProps } from '@ag.ds-next/box';
 import { useLinkComponent, mapSpacing } from '@ag.ds-next/core';
 import { themeVars, fontGrid, outline } from '@ag.ds-next/core';
 
 import { useLinkListDepth } from './context';
+
+export type SideNavLinkType = {
+	active?: boolean;
+	children?: ReactNode;
+	href: string;
+	label: string | JSX.Element;
+};
 
 export const SideNavLink = ({
 	active,
@@ -11,12 +18,7 @@ export const SideNavLink = ({
 	href,
 	label,
 	...props
-}: {
-	active?: boolean;
-	children?: ReactNode;
-	href: string;
-	label: string;
-}) => {
+}: BoxProps & SideNavLinkType) => {
 	const depth = useLinkListDepth();
 	const Link = useLinkComponent();
 
@@ -57,18 +59,15 @@ export const SideNavLink = ({
 							float: 'left',
 							backgroundRepeat: 'no-repeat',
 							backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath fill='gray' d='M2 10h12v1H2zM2 5h1v5H2z'/%3E%3C/svg%3E")`,
-							// backgroundImage: "url('data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath fill='gray' d='M2 10h12v1H2zM2 5h1v5H2z'/%3E%3C/svg%3E')",
 						},
-					}),
-
-					...(active && {
-						fontWeight: 'bold',
 					}),
 				},
 			}}
 			{...props}
 		>
-			{active ? <span>{label}</span> : <Link href={href}>{label}</Link>}
+			<Box fontWeight={active ? 'bold' : 'normal'}>
+				{active ? <span>{label}</span> : <Link href={href}>{label}</Link>}
+			</Box>
 			{children}
 		</Box>
 	);

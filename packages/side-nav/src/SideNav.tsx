@@ -1,13 +1,18 @@
 import { SideNavMenu, SideNavMenuProps } from './SideNavMenu';
 import { SideNavTitle } from './SideNavTitle';
-import { SideNavContent, SideNavVariantType } from './SideNavContent';
+import {
+	SideNavContent,
+	SideNavContentProps,
+	SideNavVariantType,
+} from './SideNavContent';
 
-type SideNavProps = SideNavMenuProps & {
-	variant?: SideNavVariantType;
-	accordionHeader: string;
-	menuHeaderLink: string;
-	menuHeader: string;
-};
+type SideNavProps = SideNavMenuProps &
+	SideNavContentProps & {
+		variant?: SideNavVariantType;
+		accordionHeader: string;
+		menuHeaderLink: string;
+		menuHeader: string;
+	};
 
 export function SideNav({
 	activePath,

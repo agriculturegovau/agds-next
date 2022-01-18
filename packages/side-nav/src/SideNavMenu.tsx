@@ -1,4 +1,4 @@
-import { SideNavLink } from './SideNavLink';
+import { SideNavLink, SideNavLinkType } from './SideNavLink';
 import { SideNavLinkGroup } from './SideNavLinkGroup';
 import { findBestMatch } from './utils';
 
@@ -20,19 +20,18 @@ export const SideNavMenu = ({ activePath, items }: SideNavMenuProps) => {
 	// Recursively re generate the menu with children as necessary
 	const generateMenu = (items: SideNavMenuItemType[]) => {
 		const menu = items.map((item) => {
-			const link = {
+			const link: SideNavLinkType = {
 				href: item.active ? '' : item.href,
 				label: item.active ? <span>{item.label}</span> : item.label,
-				li: {
-					className: item.active ? 'active' : '',
-				},
 			};
 
 			// If it has children create a menu again
 			if (item.children) {
+				const bestMatch = findBestMatch(item.children, activePath);
+
 				link.children = (
 					<SideNavLinkList
-						links={GenerateMenu(item.children)}
+						links={generateMenu(item.children)}
 						activePath={bestMatch}
 					/>
 				);
@@ -57,17 +56,12 @@ export const SideNavLinkList = ({
 	...props
 }: {
 	activePath?: string;
-	links: { href: string; label: string }[];
-	inline?: boolean;
+	links: SideNavLinkType[];
 }) => {
 	return (
 		<SideNavLinkGroup {...props}>
-			{links.map((props, index) => (
-				<SideNavLink
-					active={props.href === activePath}
-					key={index}
-					{...props}
-				/>
+			{links.map((link, index) => (
+				<SideNavLink active={link.href === activePath} key={index} {...link} />
 			))}
 		</SideNavLinkGroup>
 	);
