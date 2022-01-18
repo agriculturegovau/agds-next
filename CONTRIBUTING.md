@@ -87,7 +87,20 @@ Going down this path is fraught.
 
 A better choice here is to take the parts of `Accordion` which are common / reusable and extract them to a more generic component or into `core` as a utility. If this is too hard, copy paste the code to the new component. Duplication is better than dependency here.
 
-##
+### Avoid polluting the global scope
+
+This Design-System will likely be adopted either only partially or incrementally. For this reason it is important that we avoid polluting global namespaces and scopes in css and javascript.
+
+This is why the neither `core` or `body` apply a default `fontFamily` or `color` and why the global reset is minimal and optional. For each component in the design system we need to consider whether it is appropriate for the component to apply styling to it's children.
+
+#### Examples:
+
+In the context of `LinkList`, it makes sense to apply styles to the child `a` tags (`color`, `textDecoration`, `fontFamily` etc.). That is the purpose of the component.
+
+In the case of `Box` or `Stack`, unless the user has specified a property we should not apply anything that effects the component's children.
+
+When choosing defaults it's important to consider that some css properties will be inherited by child elements while others will not.
+Eg, setting color on a `Box` will apply that color to child text nodes. Setting `width` will only change the width of the `Box` component itself.
 
 ## Component / Feature checklist
 
