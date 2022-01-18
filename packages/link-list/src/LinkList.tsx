@@ -1,14 +1,16 @@
+import { StackProps } from '@ag.ds-next/box';
+
 import { LinkListGroup } from './LinkListGroup';
 import { LinkListItem, LinkListItemType } from './LinkListItem';
 
-export type LinkListProps = {
+export type LinkListProps = StackProps & {
 	links: LinkListItemType[];
-	inline?: boolean;
+	horizontal?: boolean;
 };
 
-export const LinkList = ({ links, inline, ...props }: LinkListProps) => {
+export const LinkList = ({ links, horizontal, ...props }: LinkListProps) => {
 	return (
-		<LinkListGroup inline={inline} {...props}>
+		<LinkListGroup horizontal={horizontal} {...props}>
 			{links.map((props, index) => (
 				<LinkListItem key={index} {...props} />
 			))}

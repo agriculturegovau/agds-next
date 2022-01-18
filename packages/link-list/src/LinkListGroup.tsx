@@ -1,19 +1,21 @@
 import type { ReactNode } from 'react';
-import { Stack } from '@ag.ds-next/box';
+import { Stack, StackProps } from '@ag.ds-next/box';
+
+export type LinkListGroupProps = StackProps & {
+	children: ReactNode;
+	horizontal?: boolean;
+};
 
 export const LinkListGroup = ({
 	children,
-	inline,
+	horizontal,
 	...props
-}: {
-	children: ReactNode;
-	inline?: boolean;
-}) => {
+}: LinkListGroupProps) => {
 	return (
 		<Stack
 			as="ul"
-			gap={inline ? 1 : 0.5}
-			flexDirection={inline ? 'row' : 'column'}
+			gap={horizontal ? 1 : 0.5}
+			flexDirection={horizontal ? 'row' : 'column'}
 			fontFamily="body"
 			{...props}
 		>
