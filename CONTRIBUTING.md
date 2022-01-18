@@ -54,13 +54,27 @@ import { LinkList } from '@ag.ds-next/link-list';
 
 If you wanted to do something more complex you can pick and choose the parts of `LinkList` which are useful to you and replace anything you need to.
 
-```jsx
-import { LinkGroup, Link } from '@ag.ds-next/link-list';
+```tsx
+// In this example, we create a LinkList component which can highlight external links
+import { LinkListGroup, LinkListItem } from '@ag.ds-next/link-list';
+
+function isExternal(href: string) {
+	return href.startsWith('http');
+}
+
+const CustomLinkList = ({ links, ..props }) => (
+	<LinkListGroup {...props}>
+		{links.map(({ label, ...props }, index) => (
+			<LinkListItem key={index}>
+				{label} {isExternal(href) ? '[^]' : ''}
+			</LinkListItem>
+		))}
+	</LinkListGroup>
+);
+
 ```
 
-Components which are a composition of many things should expose their parts in addition to the composition component.
-
-Eg. LinkList can be used as a single component links being passed as an array to the `links` prop.
+So components which (like `LinkList`) are a composition of several other components should expose their parts in addition to the main component to enable recomposing the parts in a different way. This lets us maintain a simple API while enabling much more complex changes.
 
 ## Component / Feature checklist
 
