@@ -42,6 +42,73 @@ const snippits = [
       { href: '#', label: 'Applications' },
     ]} />`,
 	},
+	{
+		group: 'Footer',
+		name: 'Basic',
+		code: `<Footer variant='dark'>
+    <LinkList
+      horizontal
+      links={[
+        { href: '#', label: 'Link 1' },
+        { href: '#', label: 'Link 2' },
+        { href: '#', label: 'Link 3' },
+      ]}
+    />
+    <Divider accent />
+
+    <Text><small>&copy; Commonwealth of Australia</small></Text>
+  </Footer>`,
+	},
+	{
+		group: 'Footer',
+		name: 'Complex',
+		code: `<Footer variant="dark">
+    <Flex
+      className="au-footer__navigation row"
+      aria-label="footer"
+      gap={1}
+      css={{
+        display: "grid",
+        gridTemplateColumns: "repeat(4, [col-start] 1fr)",
+      }}
+    >
+      <div>
+        <H3>Section</H3>
+        <LinkList
+          links={[
+            { href: "#", label: "Link 1" },
+            { href: "#", label: "Link 2" },
+            { href: "#", label: "Link 3" },
+          ]}
+        />
+      </div>
+      <div>
+        <H3>Section</H3>
+        <LinkList
+          links={[
+            { href: "#", label: "Link 1" },
+            { href: "#", label: "Link 2" },
+            { href: "#", label: "Link 3" },
+          ]}
+        />
+      </div>
+    </Flex>
+    <Divider />
+    <Text as="p">Footer text</Text>
+
+    <Box maxWidth="240px">
+      <Logo />
+    </Box>
+
+    <Divider />
+    <Text>
+      <small>
+        &copy; Commonwealth of Australia
+      </small>
+    </Text>
+  </Footer>
+  `,
+	},
 ];
 
 export default snippits;
