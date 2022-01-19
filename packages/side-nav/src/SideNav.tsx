@@ -7,9 +7,9 @@ import {
 } from './SideNavContent';
 
 type SideNavProps = SideNavMenuProps &
-	SideNavContentProps & {
+	Omit<SideNavContentProps, 'children'> & {
 		variant?: SideNavVariantType;
-		accordionHeader: string;
+		accordionHeader?: string;
 		menuHeaderLink: string;
 		menuHeader: string;
 	};

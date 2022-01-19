@@ -1,5 +1,5 @@
 import { Box } from '@ag.ds-next/box';
-import { themeVars } from '@ag.ds-next/core';
+import { themeVars, useLinkComponent } from '@ag.ds-next/core';
 
 export const SideNavTitle = ({
 	href,
@@ -8,12 +8,13 @@ export const SideNavTitle = ({
 	href: string;
 	text: string;
 }) => {
+	const Link = useLinkComponent();
 	return (
 		<Box
-			as="a"
+			as={Link}
 			href={href}
 			padding={1}
-			color="text"
+			color="muted"
 			fontSize="sm"
 			fontWeight="bold"
 			lineHeight="default"

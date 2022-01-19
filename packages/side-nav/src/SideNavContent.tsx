@@ -16,6 +16,7 @@ export const SideNavContent = ({
 }: SideNavContentProps) => {
 	return (
 		<Box
+			as="nav"
 			fontFamily="body"
 			background={variantMap[variant].background}
 			theme={variantMap[variant].theme}
