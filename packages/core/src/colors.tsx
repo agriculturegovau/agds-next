@@ -25,10 +25,10 @@ export const themeValues = {
 		muted: `var(${themeVars.foreground.muted})`,
 	},
 	background: {
-		page: `var(${themeVars.background.page}`,
-		shade: `var(${themeVars.background.shade}`,
-		pageAlt: `var(${themeVars.background.pageAlt}`,
-		shadeAlt: `var(${themeVars.background.shadeAlt}`,
+		page: `var(${themeVars.background.page})`,
+		shade: `var(${themeVars.background.shade})`,
+		pageAlt: `var(${themeVars.background.pageAlt})`,
+		shadeAlt: `var(${themeVars.background.shadeAlt})`,
 	},
 	border: `var(${themeVars.border})`,
 };

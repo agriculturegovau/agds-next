@@ -44,9 +44,7 @@ export function NavItem({
 						top: '100%',
 						left: 0,
 						right: 0,
-						backgroundColor: active
-							? localValues.linkActiveBorder
-							: 'transparent',
+						backgroundColor: active ? localValues.linkActiveBg : 'transparent',
 					},
 
 					// Focus styles

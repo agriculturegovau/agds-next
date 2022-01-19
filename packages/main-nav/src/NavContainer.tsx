@@ -3,32 +3,36 @@ import FocusTrap from 'focus-trap-react';
 
 import { Box, Flex } from '@ag.ds-next/box';
 import {
-	globalVars,
+	paletteVars,
 	themeValues,
 	useTernaryState,
 	mapSpacing,
 	tokens,
 } from '@ag.ds-next/core';
 
-import { localVars } from './utils';
+import { localValues, localVars } from './utils';
 import { CloseButton, ToggleButton } from './MenuButtons';
 
 const variantMap = {
 	light: {
 		theme: 'light',
 		background: 'page',
+		hover: 'shade',
 	},
 	lightAlt: {
 		theme: 'light',
-		background: 'shade',
+		background: 'pageAlt',
+		hover: 'shadeAlt',
 	},
 	dark: {
 		theme: 'dark',
 		background: 'page',
+		hover: 'shade',
 	},
 	darkAlt: {
 		theme: 'dark',
-		background: 'shade',
+		background: 'pageAlt',
+		hover: 'shadeAlt',
 	},
 } as const;
 
@@ -37,19 +41,20 @@ export type NavContainerProps = React.PropsWithChildren<{
 }>;
 
 export function NavContainer({ variant, children }: NavContainerProps) {
-	const { theme, background } = variantMap[variant];
+	const { theme, background, hover } = variantMap[variant];
 	const [menuOpen, open, close] = useTernaryState(false);
 
 	return (
 		<Box
+			data-name="nav-container"
 			theme={theme}
 			background={background}
 			color="text"
 			css={{
 				position: 'relative',
-				[localVars.linkHoverBg]: themeValues.background.shade,
-				[localVars.linkHoverBorder]: themeValues.background.page,
-				[localVars.linkActiveBorder]: themeValues.background[background],
+				[localVars.linkHoverBg]: themeValues.background[hover],
+				[localVars.linkActiveBg]: themeValues.background[background],
+				[localVars.bottomBar]: `var(${paletteVars.accent}, ${themeValues.foreground.action})`,
 			}}
 		>
 			<BottomBar />
@@ -126,6 +131,7 @@ function Overlay({ menuOpen }: { menuOpen: boolean }) {
 function BottomBar() {
 	return (
 		<Box
+			data-name="nav-bottom-bar"
 			display={{ xs: 'none', md: 'block' }}
 			paddingTop={0.5}
 			css={{
@@ -133,7 +139,7 @@ function BottomBar() {
 				bottom: 0,
 				left: 0,
 				right: 0,
-				backgroundColor: globalVars.accent,
+				backgroundColor: localValues.bottomBar,
 			}}
 		/>
 	);
