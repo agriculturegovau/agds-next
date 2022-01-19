@@ -13,13 +13,16 @@ import {
 	Spacing,
 } from '@ag.ds-next/core';
 
+type Tokens = typeof tokens & typeof themeVars;
+type Token<T extends keyof Tokens> = keyof Tokens[T];
+
 type ThemeProps = Partial<{
 	theme: BoxTheme;
 }>;
 
 type ColorProps = Partial<{
-	color: keyof typeof themeVars.foreground;
-	background: keyof typeof themeVars.background;
+	color: Token<'foreground'>;
+	background: Token<'background'>;
 }>;
 
 function colorStyles({ color, background }: ColorProps) {
@@ -30,10 +33,10 @@ function colorStyles({ color, background }: ColorProps) {
 }
 
 type TypographyProps = Partial<{
-	fontWeight: ResponsiveProp<keyof typeof tokens.fontWeight>;
-	fontFamily: ResponsiveProp<keyof typeof tokens.font>;
-	fontSize: ResponsiveProp<keyof typeof tokens.fontSize>;
-	lineHeight: keyof typeof tokens.lineHeight;
+	fontWeight: ResponsiveProp<Token<'fontWeight'>>;
+	fontFamily: ResponsiveProp<Token<'font'>>;
+	fontSize: ResponsiveProp<Token<'fontSize'>>;
+	lineHeight: Token<'lineHeight'>;
 }>;
 
 function typographyStyles({
@@ -94,7 +97,7 @@ type LayoutProps = Partial<{
 	gap: ResponsiveProp<Spacing>;
 	width: ResponsiveProp<number | string>;
 	minWidth: ResponsiveProp<number | string>;
-	maxWidth: ResponsiveProp<number | keyof typeof tokens.maxWidth | string>;
+	maxWidth: ResponsiveProp<Token<'maxWidth'> | number | string>;
 	height: ResponsiveProp<number | string>;
 	minHeight: ResponsiveProp<number | string>;
 	maxHeight: ResponsiveProp<number | string>;
