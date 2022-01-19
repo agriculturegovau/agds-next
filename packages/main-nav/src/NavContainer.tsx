@@ -8,6 +8,7 @@ import {
 	useTernaryState,
 	mapSpacing,
 	tokens,
+	globalVars,
 } from '@ag.ds-next/core';
 
 import { localValues, localVars } from './utils';
@@ -54,7 +55,7 @@ export function NavContainer({ variant, children }: NavContainerProps) {
 				position: 'relative',
 				[localVars.linkHoverBg]: themeValues.background[hover],
 				[localVars.linkActiveBg]: themeValues.background[background],
-				[localVars.bottomBar]: `var(${paletteVars.accent}, ${themeValues.foreground.action})`,
+				[localVars.bottomBar]: globalVars.accent,
 			}}
 		>
 			<BottomBar />

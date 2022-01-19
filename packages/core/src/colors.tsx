@@ -108,7 +108,7 @@ export const defaultPalette = {
 	darkBackgroundShadeAlt: '#0a323c',
 	darkBorder: '#95b7bf',
 	// system colors
-	// accent: themeValues.foreground.action, // accent does not exist in GOLD. Here we fallback to the dark or light themed action color
+	accent: undefined, // accent does not exist in GOLD.
 	error: '#d60000',
 	success: '#0b996c',
 	warning: '#f69900',
@@ -150,7 +150,7 @@ export const globalVars = {
 		},
 		border: `var(${paletteVars.darkBorder})`,
 	},
-	accent: `var(${paletteVars.accent})`, // NOTE: accent is optional
+	accent: `var(${paletteVars.accent}, ${themeValues.foreground.action})`, // NOTE: accent is optional
 	error: `var(${paletteVars.error})`,
 	success: `var(${paletteVars.success})`,
 	warning: `var(${paletteVars.warning})`,
