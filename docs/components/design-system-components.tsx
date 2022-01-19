@@ -6,6 +6,14 @@ import { Heading, H1, H2, H3, H4, H5, H6 } from '@ag.ds-next/heading';
 import { LinkList } from '@ag.ds-next/link-list';
 import { Header, HeaderBrand, HeaderContainer } from '@ag.ds-next/header';
 import { Footer } from '@ag.ds-next/footer';
+import {
+	SideNav,
+	SideNavContent,
+	SideNavLink,
+	SideNavLinkGroup,
+	SideNavMenu,
+	SideNavTitle,
+} from '@ag.ds-next/side-nav';
 
 export const designSystemComponents = {
 	Button,
@@ -26,4 +34,10 @@ export const designSystemComponents = {
 	Header,
 	HeaderBrand,
 	HeaderContainer,
+	SideNav,
+	SideNavContent,
+	SideNavLink,
+	SideNavLinkGroup,
+	SideNavMenu,
+	SideNavTitle,
 };

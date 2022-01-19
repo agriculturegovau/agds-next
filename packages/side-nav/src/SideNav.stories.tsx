@@ -1,6 +1,12 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { SideNav } from './SideNav';
+import {
+	SideNav,
+	SideNavContent,
+	SideNavTitle,
+	SideNavLinkGroup,
+	SideNavLink,
+} from './index';
 
 export default {
 	title: 'layout/SideNav',
@@ -89,4 +95,20 @@ export const SideNavDarkAlt = Template.bind({});
 SideNavDarkAlt.args = {
 	...defaultArgs,
 	variant: 'darkAlt',
+};
+
+export const Modular: ComponentStory<typeof SideNav> = (args) => {
+	return (
+		<SideNavContent {...args}>
+			<SideNavTitle href="#" text="SideNavTitle" />
+			<SideNavLinkGroup>
+				<SideNavLink active={true} href="#one" label="One" />
+				<SideNavLink href="#two" label="Two" />
+				<SideNavLink href="#three" label="Three" />
+			</SideNavLinkGroup>
+		</SideNavContent>
+	);
+};
+Modular.args = {
+	variant: 'light',
 };
