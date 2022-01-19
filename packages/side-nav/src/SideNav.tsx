@@ -9,7 +9,6 @@ import {
 type SideNavProps = SideNavMenuProps &
 	Omit<SideNavContentProps, 'children'> & {
 		variant?: SideNavVariantType;
-		accordionHeader?: string;
 		menuHeaderLink: string;
 		menuHeader: string;
 	};
@@ -18,7 +17,6 @@ export function SideNav({
 	activePath,
 	items,
 	variant = 'light',
-	accordionHeader = 'In this section',
 	menuHeaderLink = '#',
 	menuHeader,
 	...props

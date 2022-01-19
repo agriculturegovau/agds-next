@@ -14,7 +14,6 @@ export default {
 } as ComponentMeta<typeof SideNav>;
 
 const defaultArgs = {
-	accordionHeader: 'In this section',
 	menuHeader: 'Lodging your tax return',
 	items: [
 		{

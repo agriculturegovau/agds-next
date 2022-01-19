@@ -113,7 +113,6 @@ const snippits = [
 		group: 'SideNav',
 		name: 'Basic',
 		code: `<SideNav
-accordionHeader="In this section"
 activePath="#welcome"
 menuHeader="SideNav"
 items={[
