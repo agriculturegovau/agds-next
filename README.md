@@ -20,7 +20,7 @@ For development run one or more of the following commands:
 
 - `yarn docs:dev` – start the docs site
 - `yarn example:dev` – start the example site
-- `yarn storybook` – start storybook
+- `yarn storybook:dev` – start storybook
 
 ### Docs site
 

@@ -1,6 +1,7 @@
 import { Box, Flex, Stack } from '@ag.ds-next/box';
 import { Heading } from '@ag.ds-next/heading';
 import { Text } from '@ag.ds-next/text';
+import { useLinkComponent } from '@ag.ds-next/core';
 
 type HeaderBrandProps = {
 	href?: string;
@@ -15,15 +16,17 @@ export function HeaderBrand({
 	heading,
 	subline,
 }: HeaderBrandProps) {
+	const Link = useLinkComponent();
+
 	return (
 		<Flex
-			as="a"
+			as={Link}
 			href={href}
 			flexDirection={{ xs: 'column', md: 'row' }}
-			maxWidth="60rem"
 			color="text"
 			gap={1}
 			focus
+			alignItems="stretch"
 			css={{
 				textDecoration: 'none',
 				':hover': {
@@ -35,16 +38,16 @@ export function HeaderBrand({
 			{logo ? (
 				<Flex
 					alignItems="flex-start"
+					maxWidth="16rem"
 					css={{
-						' img': { maxWidth: '18rem' },
-						' svg': { maxWidth: '18rem', width: '100%' },
+						' img, svg': { width: '100%' },
 					}}
 				>
 					{logo}
 				</Flex>
 			) : null}
 			{logo ? <Box borderRight display={{ xs: 'none', md: 'block' }} /> : null}
-			<Stack justifyContent="flex-start">
+			<Stack justifyContent="center">
 				<Heading fontSize={{ xs: 'md', md: 'xl' }}>{heading}</Heading>
 				{subline && (
 					<Text color="muted" fontSize={{ xs: 'sm', md: 'md' }}>

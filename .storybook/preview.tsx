@@ -2,7 +2,6 @@ import React from 'react';
 
 import { Core, tokens } from '@ag.ds-next/core';
 import { palette as agPalette } from '@ag.ds-next/ag-branding';
-import { Box } from '@ag.ds-next/box';
 
 const viewportMap = {
 	xs: 'mobile',
@@ -68,9 +67,7 @@ const withBrandPalette = (Story, context) => {
 	const palette = getPalette(context.globals.brand);
 	return (
 		<Core palette={palette}>
-			<Box theme="light" fontFamily="body">
-				<Story />
-			</Box>
+			<Story />
 		</Core>
 	);
 };

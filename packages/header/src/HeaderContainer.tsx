@@ -1,4 +1,5 @@
 import { Flex } from '@ag.ds-next/box';
+import { tokens } from '@ag.ds-next/core';
 import React from 'react';
 
 const variantMap = {
@@ -35,7 +36,11 @@ export function HeaderContainer({ variant, children }: HeaderContainerProps) {
 			paddingX={{ xs: 1, md: 2 }}
 			justifyContent="center"
 		>
-			<Flex justifyContent="flex-start" maxWidth={1280} width="100%">
+			<Flex
+				justifyContent="flex-start"
+				maxWidth={tokens.maxWidth.container}
+				width="100%"
+			>
 				{children}
 			</Flex>
 		</Flex>

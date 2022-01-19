@@ -1,54 +1,22 @@
-import type { ReactNode } from 'react';
-import {
-	mapSpacing,
-	themeVars,
-	outline,
-	useLinkComponent,
-} from '@ag.ds-next/core';
+import { StackProps } from '@ag.ds-next/box';
+import { ReactNode } from 'react';
 
-type LinkListProps = {
+import { LinkListGroup } from './LinkListGroup';
+import { LinkListItem } from './LinkListItem';
+
+export type LinkListProps = StackProps & {
 	links: { href: string; label: ReactNode }[];
-	inline?: boolean;
+	horizontal?: boolean;
 };
 
-export const LinkList = ({ links, inline }: LinkListProps) => {
-	const Link = useLinkComponent();
-	const styles = linkListStyles({ inline });
+export const LinkList = ({ links, horizontal, ...props }: LinkListProps) => {
 	return (
-		<ul css={styles}>
-			{links.map(({ href, label, ...props }, index) => (
-				<li key={index}>
-					<Link href={href} {...props}>
-						{label}
-					</Link>
-				</li>
+		<LinkListGroup horizontal={horizontal} {...props}>
+			{links.map(({ label, ...props }, index) => (
+				<LinkListItem key={index} {...props}>
+					{label}
+				</LinkListItem>
 			))}
-		</ul>
+		</LinkListGroup>
 	);
-};
-
-const linkListStyles = ({ inline }: { inline?: boolean }) => {
-	const display = inline ? 'inline-block' : 'block';
-	return {
-		display: display,
-		listStyleType: 'none',
-		margin: 0,
-		padding: `${mapSpacing(0.25)} 0`,
-
-		'> li': {
-			display: display,
-			margin: mapSpacing(0.25),
-		},
-		' a': {
-			color: themeVars.foreground.action,
-			textDecoration: 'underline',
-
-			'&:hover': {
-				color: themeVars.foreground.action,
-				textDecoration: 'none',
-			},
-
-			'&:focus': outline,
-		},
-	};
 };
