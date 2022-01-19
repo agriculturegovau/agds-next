@@ -51,3 +51,7 @@ When adding a new component please make sure you do all of the following
 - add to Docs for jsx live (docs/components/utils.tsx)
 - create stories for all color variants
 - add a README.md
+
+## Don't like the way tabs look in GitHub?
+
+Go to your [github settings](https://github.com/settings/appearance) and choose a tab width that suits you.
