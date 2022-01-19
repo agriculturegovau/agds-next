@@ -21,6 +21,7 @@ export function NavItem({
 		<Box
 			as="li"
 			paddingBottom={{ md: 0.5 }}
+			fontFamily="body"
 			css={mq({
 				// TODO: may also need to support button element
 				' a': {

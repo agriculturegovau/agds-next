@@ -12,6 +12,7 @@ export const LinkListItem = (
 		<Box
 			as="li"
 			fontSize="sm"
+			fontFamily="body"
 			lineHeight="default"
 			css={{
 				a: {
