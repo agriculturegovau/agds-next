@@ -94,7 +94,7 @@ type LayoutProps = Partial<{
 	gap: ResponsiveProp<Spacing>;
 	width: ResponsiveProp<number | string>;
 	minWidth: ResponsiveProp<number | string>;
-	maxWidth: ResponsiveProp<number | string>;
+	maxWidth: ResponsiveProp<number | keyof typeof tokens.maxWidth | string>;
 	height: ResponsiveProp<number | string>;
 	minHeight: ResponsiveProp<number | string>;
 	maxHeight: ResponsiveProp<number | string>;
@@ -127,7 +127,12 @@ function layoutStyles({
 		gap: mapResponsiveProp(gap, mapSpacing),
 		width: mapResponsiveProp(width),
 		minWidth: mapResponsiveProp(minWidth),
-		maxWidth: mapResponsiveProp(maxWidth),
+		maxWidth: mapResponsiveProp(maxWidth, (v) => {
+			if (typeof v === 'string' && v in tokens.maxWidth) {
+				return tokens.maxWidth[v as keyof typeof tokens.maxWidth];
+			}
+			return v;
+		}),
 		height: mapResponsiveProp(height),
 		minHeight: mapResponsiveProp(minHeight),
 		maxHeight: mapResponsiveProp(maxHeight),

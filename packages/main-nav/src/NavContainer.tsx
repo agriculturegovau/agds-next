@@ -54,11 +54,7 @@ export function NavContainer({ variant, children }: NavContainerProps) {
 		>
 			<BottomBar />
 			<Flex as="nav" justifyContent="center" css={{ position: 'relative' }}>
-				<Box
-					maxWidth={tokens.maxWidth.container}
-					width="100%"
-					paddingX={{ xs: 1, md: 2 }}
-				>
+				<Box maxWidth="container" width="100%" paddingX={tokens.gutter}>
 					<ToggleButton onClick={open} />
 					<FocusTrap
 						active={menuOpen}

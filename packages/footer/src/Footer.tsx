@@ -24,12 +24,7 @@ export const Footer = ({ variant = 'dark', children }: FooterProps) => {
 				},
 			}}
 		>
-			<Stack
-				maxWidth={tokens.maxWidth.container}
-				width="100%"
-				gap={1}
-				paddingX={tokens.gutter}
-			>
+			<Stack maxWidth="container" width="100%" gap={1} paddingX={tokens.gutter}>
 				{children}
 			</Stack>
 		</Flex>
