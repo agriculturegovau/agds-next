@@ -1,5 +1,5 @@
 import {
-	themeVars,
+	themeValues,
 	mapSpacing,
 	outline,
 	mq,
@@ -8,7 +8,7 @@ import {
 import { Box } from '@ag.ds-next/box';
 import type { ReactNode } from 'react';
 
-import { localVars } from './utils';
+import { localValues } from './utils';
 
 export function NavItem({
 	children,
@@ -27,7 +27,7 @@ export function NavItem({
 				' a': {
 					position: 'relative',
 					display: 'block',
-					color: themeVars.foreground[active ? 'text' : 'action'],
+					color: themeValues.foreground[active ? 'text' : 'action'],
 					padding: mapSpacing(1),
 					textDecoration: 'none',
 
@@ -45,7 +45,7 @@ export function NavItem({
 						left: 0,
 						right: 0,
 						backgroundColor: active
-							? `var(${localVars.linkActiveBorder})`
+							? localValues.linkActiveBorder
 							: 'transparent',
 					},
 
@@ -71,13 +71,11 @@ export function NavItem({
 					'&:hover': {
 						textDecoration: 'underline',
 						textDecorationSkipInk: 'auto',
-						color: themeVars.foreground.text,
-						backgroundColor: `var(${localVars.linkHoverBg})`,
+						color: themeValues.foreground.text,
+						backgroundColor: localValues.linkHoverBg,
 
 						'&::after': {
-							background: active
-								? `var(${localVars.linkHoverBg})`
-								: 'transparent',
+							background: active ? localValues.linkHoverBg : 'transparent',
 						},
 					},
 				},

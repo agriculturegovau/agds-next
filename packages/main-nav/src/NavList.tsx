@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react';
 import { Flex } from '@ag.ds-next/box';
-import { themeVars, tokens, useLinkComponent } from '@ag.ds-next/core';
+import { themeValues, tokens, useLinkComponent } from '@ag.ds-next/core';
 
 import { NavItem } from './NavItem';
 
@@ -21,7 +21,7 @@ export function NavList({ links, activePath }: NavListProps) {
 			css={{
 				[tokens.mediaQuery.max.sm]: {
 					'& > li': {
-						borderTop: `1px solid ${themeVars.border}`,
+						borderTop: `1px solid ${themeValues.border}`,
 					},
 				},
 			}}

@@ -4,7 +4,7 @@ import {
 	outline,
 	BoxTheme,
 	themes,
-	themeVars,
+	themeValues,
 	ResponsiveProp,
 	mapResponsiveProp,
 	mapSpacing,
@@ -18,14 +18,16 @@ type ThemeProps = Partial<{
 }>;
 
 type ColorProps = Partial<{
-	color: keyof typeof themeVars.foreground;
-	background: keyof typeof themeVars.background;
+	color: keyof typeof themeValues.foreground;
+	background: keyof typeof themeValues.background;
 }>;
 
 function colorStyles({ color, background }: ColorProps) {
 	return {
-		color: color ? themeVars.foreground[color] : undefined,
-		backgroundColor: background ? themeVars.background[background] : undefined,
+		color: color ? themeValues.foreground[color] : undefined,
+		backgroundColor: background
+			? themeValues.background[background]
+			: undefined,
 	};
 }
 
@@ -163,7 +165,7 @@ function borderStyles({
 		borderRightWidth: border ?? borderX ?? borderRight ? `1px` : undefined,
 		borderTopWidth: border ?? borderY ?? borderTop ? `1px` : undefined,
 		borderBottomWidth: border ?? borderY ?? borderBottom ? `1px` : undefined,
-		borderColor: anyBorder ? themeVars.border : undefined,
+		borderColor: anyBorder ? themeValues.border : undefined,
 		borderStyle: anyBorder ? 'solid' : undefined,
 		borderRadius: rounded ? tokens.borderRadius : undefined,
 	};

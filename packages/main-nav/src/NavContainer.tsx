@@ -4,7 +4,7 @@ import FocusTrap from 'focus-trap-react';
 import { Box, Flex } from '@ag.ds-next/box';
 import {
 	globalVars,
-	themeVars,
+	themeValues,
 	useTernaryState,
 	mapSpacing,
 	tokens,
@@ -47,9 +47,9 @@ export function NavContainer({ variant, children }: NavContainerProps) {
 			color="text"
 			css={{
 				position: 'relative',
-				[localVars.linkHoverBg]: themeVars.background.shade,
-				[localVars.linkHoverBorder]: themeVars.background.page,
-				[localVars.linkActiveBorder]: themeVars.background[background],
+				[localVars.linkHoverBg]: themeValues.background.shade,
+				[localVars.linkHoverBorder]: themeValues.background.page,
+				[localVars.linkActiveBorder]: themeValues.background[background],
 			}}
 		>
 			<BottomBar />
@@ -73,7 +73,7 @@ export function NavContainer({ variant, children }: NavContainerProps) {
 									zIndex: 200,
 									position: 'fixed',
 									display: menuOpen ? 'block' : 'none',
-									background: themeVars.background.page,
+									background: themeValues.background.page,
 									top: 0,
 									left: 0,
 									bottom: 0,

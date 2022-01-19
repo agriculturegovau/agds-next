@@ -1,13 +1,13 @@
-import { themeVars, outline } from '@ag.ds-next/core';
+import { themeValues, outline } from '@ag.ds-next/core';
 import { HTMLProps } from 'react';
 
 export function textLinkStyles() {
 	return {
-		color: themeVars.foreground.action,
+		color: themeValues.foreground.action,
 		textDecoration: 'underline',
 
 		'&:hover': {
-			color: themeVars.foreground.action,
+			color: themeValues.foreground.action,
 			textDecoration: 'none',
 		},
 
