@@ -25,7 +25,6 @@ export const SideNavContent = ({
 			paddingLeft={{ xs: 1, md: 0 }}
 			paddingRight={{ xs: 1, md: 0 }}
 			css={{
-				// background-color: $AU-color-background-alt;
 				overflow: 'hidden',
 
 				'& > ul > li': {
@@ -38,7 +37,6 @@ export const SideNavContent = ({
 
 				// Desktop styles
 				[tokens.mediaQuery.min.md]: {
-					// background: 'transparent',
 					overflow: 'visible',
 
 					// Open the menu on desktop
