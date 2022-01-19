@@ -109,6 +109,57 @@ const snippits = [
   </Footer>
   `,
 	},
+	{
+		group: 'SideNav',
+		name: 'Basic',
+		code: `<SideNav
+accordionHeader="In this section"
+activePath="#welcome"
+menuHeader="SideNav"
+items={[
+  {
+    href: "#welcome",
+    label: "Welcome",
+  },
+  {
+    href: "#one",
+    label: "Item",
+    children: [
+      {
+        href: "#two",
+        label: "Sub-item",
+      },
+    ],
+  },
+  { href: "#three", label: "Item" },
+  {
+    href: "#four",
+    label: "Item",
+    children: [
+      {
+        href: "#five",
+        label: "Sub-item",
+        children: [
+          {
+            href: "#six",
+            label: "Sub-sub-item",
+          },
+          {
+            href: "#seven",
+            label: "Sub-sub-item",
+          },
+        ],
+      },
+      {
+        href: "#eight",
+        label: "Sub-item",
+      },
+    ],
+  },
+]}
+/>
+`,
+	},
 ];
 
 export default snippits;
