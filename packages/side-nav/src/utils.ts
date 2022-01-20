@@ -18,11 +18,9 @@ export function findBestMatch(items: { href: string }[], activePath?: string) {
 export const localVars = {
 	linkHoverBg: '--sideNav-linkHoverBg',
 	linkActiveBg: '--sideNav-linkActiveBg',
-	bottomBar: '--sideNav-bottomBar',
 };
 
 export const localValues = {
 	linkHoverBg: `var(${localVars.linkHoverBg})`,
 	linkActiveBg: `var(${localVars.linkActiveBg})`,
-	bottomBar: `var(${localVars.bottomBar})`,
 };
