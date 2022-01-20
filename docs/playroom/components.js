@@ -9,6 +9,12 @@ export { H1, H2, H3, H4, H5, H6 } from '@ag.ds-next/heading';
 export { Text } from '@ag.ds-next/text';
 export { TextLink } from '@ag.ds-next/text-link';
 export { LinkList, LinkListGroup, LinkListItem } from '@ag.ds-next/link-list';
+export {
+	Breadcrumbs,
+	BreadcrumbsGroup,
+	BreadcrumbsDivider,
+	BreadcrumbsItem,
+} from '@ag.ds-next/breadcrumbs';
 export { MainNav } from '@ag.ds-next/main-nav';
 export {
 	SideNav,
