@@ -3,7 +3,6 @@ import FocusTrap from 'focus-trap-react';
 
 import { Box, Flex } from '@ag.ds-next/box';
 import {
-	paletteVars,
 	themeValues,
 	useTernaryState,
 	mapSpacing,
@@ -32,8 +31,8 @@ const variantMap = {
 	},
 	darkAlt: {
 		theme: 'dark',
-		background: 'pageAlt',
-		hover: 'shadeAlt',
+		background: 'shade',
+		hover: 'page',
 	},
 } as const;
 

@@ -14,6 +14,7 @@ import {
 	SideNavMenu,
 	SideNavTitle,
 } from '@ag.ds-next/side-nav';
+import { Icon, IconExamples } from '@ag.ds-next/icon';
 
 export const designSystemComponents = {
 	Button,
@@ -40,4 +41,6 @@ export const designSystemComponents = {
 	SideNavLinkGroup,
 	SideNavMenu,
 	SideNavTitle,
+	Icon,
+	IconExamples,
 };
