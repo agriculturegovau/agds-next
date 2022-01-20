@@ -14,13 +14,13 @@ type SvgProps = Omit<
 	'width' | 'height' | 'viewBox' | 'fill' | 'fillRule' | 'clipRule' | 'xmlns'
 >;
 
-export type Props = SvgProps & {
+export type IconProps = SvgProps & {
 	icon: IconNameType;
 	size: Spacing;
 	color?: keyof typeof colors;
 };
 
-export const Icon = ({ icon, size = 1, color, ...props }: Props) => (
+export const Icon = ({ icon, size = 1, color, ...props }: IconProps) => (
 	<svg
 		aria-hidden="true"
 		width={mapSpacing(size)}
