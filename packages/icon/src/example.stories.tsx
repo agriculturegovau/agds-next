@@ -9,38 +9,12 @@ export default {
 	component: Icon,
 } as ComponentMeta<typeof Icon>;
 
-const Template: ComponentStory<typeof Icon> = (args, context) => (
+export const Primary: ComponentStory<typeof Icon> = (args, context) => (
 	<Icon {...args} />
 );
-
-export const IconDark = Template.bind({});
-IconDark.args = {
-	theme: 'dark',
-	icon: 'arrowDown',
+Primary.args = {
+	icon: 'avatar',
 	size: 4,
 };
 
-export const IconDarkAlt = Template.bind({});
-IconDarkAlt.args = {
-	theme: 'darkAlt',
-	icon: 'arrowDown',
-	size: 4,
-};
-
-export const IconLight = Template.bind({});
-IconLight.args = {
-	theme: 'light',
-	icon: 'arrowDown',
-	size: 4,
-};
-
-export const IconLightAlt = Template.bind({});
-IconLightAlt.args = {
-	theme: 'lightAlt',
-	icon: 'arrowDown',
-	size: 4,
-};
-
-export const AllIcons: ComponentStory<typeof Icon> = (args) => (
-	<IconExamples {...args} />
-);
+export const AllIcons: ComponentStory<typeof Icon> = () => <IconExamples />;

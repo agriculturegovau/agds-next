@@ -1,7 +1,7 @@
 import { Flex } from '@ag.ds-next/box';
 import { Text } from '@ag.ds-next/text';
 
-import { Icon } from './Icon';
+import { Icon, IconNameType } from './Icon';
 import { ICONS } from './icons';
 
 const IconExample = ({ iconName }: { iconName: keyof typeof ICONS }) => {
@@ -24,7 +24,7 @@ const IconExample = ({ iconName }: { iconName: keyof typeof ICONS }) => {
 export const IconExamples = () => {
 	return (
 		<Flex gap={0.5} flexWrap="wrap" flexDirection="row">
-			{Object.keys(ICONS).map((iconName) => (
+			{(Object.keys(ICONS) as IconNameType[]).sort().map((iconName) => (
 				<IconExample iconName={iconName} key={iconName} />
 			))}
 		</Flex>
