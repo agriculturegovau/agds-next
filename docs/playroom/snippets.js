@@ -43,6 +43,15 @@ const snippits = [
     ]} />`,
 	},
 	{
+		group: 'Breadcrumbs',
+		name: 'Basic',
+		code: `<Breadcrumbs links={[
+      { href: '#', label: 'Home' },
+      { href: '#', label: 'Establishments' },
+      { label: 'Applications' },
+    ]} />`,
+	},
+	{
 		group: 'Footer',
 		name: 'Basic',
 		code: `<Footer variant='dark'>
