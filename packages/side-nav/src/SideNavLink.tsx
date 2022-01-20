@@ -1,9 +1,10 @@
 import { ReactNode } from 'react';
 import { Box, BoxProps } from '@ag.ds-next/box';
 import { useLinkComponent, mapSpacing } from '@ag.ds-next/core';
-import { themeVars, fontGrid, outline } from '@ag.ds-next/core';
+import { themeValues, fontGrid, outline } from '@ag.ds-next/core';
 
 import { useLinkListDepth } from './context';
+import { localValues } from './utils';
 
 export type SideNavLinkType = {
 	active?: boolean;
@@ -30,7 +31,7 @@ export const SideNavLink = ({
 			css={{
 				' a, span': {
 					...fontGrid('xs', 'default'),
-					color: themeVars.foreground[active ? 'text' : 'muted'],
+					color: themeValues.foreground[active ? 'text' : 'muted'],
 					textDecoration: 'none',
 
 					paddingTop: mapSpacing(1),
@@ -40,10 +41,10 @@ export const SideNavLink = ({
 					display: 'block',
 
 					'&:hover': {
-						color: themeVars.foreground.muted,
+						color: themeValues.foreground.text,
 						textDecoration: 'underline',
 						textDecorationSkipInk: 'auto',
-						backgroundColor: themeVars.background.shadeAlt,
+						backgroundColor: localValues.linkHoverBg,
 					},
 
 					'&:focus': outline,
