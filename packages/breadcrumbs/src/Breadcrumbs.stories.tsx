@@ -28,11 +28,14 @@ Light.args = {
 	links: exampleLinks,
 };
 
-export const BasicDark: ComponentStory<typeof Breadcrumbs> = (args) => (
+export const Dark: ComponentStory<typeof Breadcrumbs> = (args) => (
 	<Box theme="dark" background="page">
 		<Breadcrumbs {...args} />
 	</Box>
 );
+Dark.args = {
+	links: exampleLinks,
+};
 
 export const Modular: ComponentStory<typeof Breadcrumbs> = (args) => {
 	return (
