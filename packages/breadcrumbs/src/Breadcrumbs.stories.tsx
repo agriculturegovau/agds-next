@@ -5,7 +5,7 @@ import {
 	Breadcrumbs,
 	BreadcrumbsDivider,
 	BreadcrumbsItem,
-	BreadcrumbsGroup,
+	BreadcrumbsContainer,
 } from './index';
 
 export default {
@@ -40,12 +40,12 @@ BasicDark.args = {
 
 export const Modular: ComponentStory<typeof Breadcrumbs> = (args) => {
 	return (
-		<BreadcrumbsGroup {...args}>
+		<BreadcrumbsContainer {...args}>
 			<BreadcrumbsItem href="#one">One</BreadcrumbsItem>
 			<BreadcrumbsDivider />
 			<BreadcrumbsItem href="#two">Two</BreadcrumbsItem>
 			<BreadcrumbsDivider />
 			<BreadcrumbsItem>Three</BreadcrumbsItem>
-		</BreadcrumbsGroup>
+		</BreadcrumbsContainer>
 	);
 };

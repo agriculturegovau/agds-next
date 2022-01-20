@@ -1,7 +1,7 @@
 import { Fragment, ReactNode } from 'react';
 
 import { BreadcrumbsDivider } from './BreadcrumbsDivider';
-import { BreadcrumbsGroup } from './BreadcrumbsGroup';
+import { BreadcrumbsContainer } from './BreadcrumbsContainer';
 import { BreadcrumbsItem } from './BreadcrumbsItem';
 
 export type BreadcrumbsProps = {
@@ -10,13 +10,13 @@ export type BreadcrumbsProps = {
 
 export const Breadcrumbs = ({ links, ...props }: BreadcrumbsProps) => {
 	return (
-		<BreadcrumbsGroup {...props}>
+		<BreadcrumbsContainer {...props}>
 			{links.map(({ label, ...props }, index) => (
 				<Fragment key={index}>
 					{index == 0 ? null : <BreadcrumbsDivider />}
 					<BreadcrumbsItem {...props}>{label}</BreadcrumbsItem>
 				</Fragment>
 			))}
-		</BreadcrumbsGroup>
+		</BreadcrumbsContainer>
 	);
 };

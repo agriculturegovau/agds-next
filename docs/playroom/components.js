@@ -11,7 +11,7 @@ export { TextLink } from '@ag.ds-next/text-link';
 export { LinkList, LinkListGroup, LinkListItem } from '@ag.ds-next/link-list';
 export {
 	Breadcrumbs,
-	BreadcrumbsGroup,
+	BreadcrumbsContainer,
 	BreadcrumbsDivider,
 	BreadcrumbsItem,
 } from '@ag.ds-next/breadcrumbs';
