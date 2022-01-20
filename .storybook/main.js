@@ -8,6 +8,7 @@ module.exports = {
 				backgrounds: false,
 			},
 		},
+		'@storybook/addon-a11y',
 	],
 	framework: '@storybook/react',
 	staticDirs: ['../example-site/public'],
