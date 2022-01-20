@@ -73,7 +73,6 @@ const snippits = [
 		name: 'Complex',
 		code: `<Footer variant="dark">
     <Flex
-      className="au-footer__navigation row"
       aria-label="footer"
       gap={1}
       css={{
