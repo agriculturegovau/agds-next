@@ -10,4 +10,13 @@ export { Text } from '@ag.ds-next/text';
 export { TextLink } from '@ag.ds-next/text-link';
 export { LinkList, LinkListGroup, LinkListItem } from '@ag.ds-next/link-list';
 export { MainNav } from '@ag.ds-next/main-nav';
+export {
+	SideNav,
+	SideNavContent,
+	SideNavLink,
+	SideNavLinkGroup,
+	SideNavLinkList,
+	SideNavMenu,
+	SideNavTitle,
+} from '@ag.ds-next/side-nav';
 export { Icon } from '@ag.ds-next/icon';

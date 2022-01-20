@@ -109,6 +109,73 @@ const snippits = [
   </Footer>
   `,
 	},
+	{
+		group: 'SideNav',
+		name: 'Basic',
+		code: `<SideNav
+activePath="#welcome"
+menuHeader="SideNav"
+items={[
+  {
+    href: "#welcome",
+    label: "Welcome",
+  },
+  {
+    href: "#one",
+    label: "Item",
+    children: [
+      {
+        href: "#two",
+        label: "Sub-item",
+      },
+    ],
+  },
+  { href: "#three", label: "Item" },
+  {
+    href: "#four",
+    label: "Item",
+    children: [
+      {
+        href: "#five",
+        label: "Sub-item",
+        children: [
+          {
+            href: "#six",
+            label: "Sub-sub-item",
+          },
+          {
+            href: "#seven",
+            label: "Sub-sub-item",
+          },
+        ],
+      },
+      {
+        href: "#eight",
+        label: "Sub-item",
+      },
+    ],
+  },
+]}
+/>
+`,
+	},
+	{
+		group: 'SideNav',
+		name: 'Modular',
+		code: `<SideNavContent variant='light'>
+      <SideNavTitle href="#" text="SideNavTitle" />
+      <SideNavLinkGroup>
+        <SideNavLink active={true} href="#one" label="One" />
+        <SideNavLink href="#two" label="Two" />
+        <SideNavLink href="#three" label="Three" />
+        <SideNavLinkGroup>
+        <SideNavLink href="#four" label="Four" />
+        <SideNavLink href="#five" label="Five" />
+        <SideNavLink href="#six" label="Six" />
+      </SideNavLinkGroup>
+      </SideNavLinkGroup>
+    </SideNavContent>`,
+	},
 ];
 
 export default snippits;
