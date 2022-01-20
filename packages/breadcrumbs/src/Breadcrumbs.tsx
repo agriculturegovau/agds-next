@@ -1,11 +1,10 @@
-import { StackProps } from '@ag.ds-next/box';
 import { Fragment, ReactNode } from 'react';
 
 import { BreadcrumbsDivider } from './BreadcrumbsDivider';
 import { BreadcrumbsGroup } from './BreadcrumbsGroup';
 import { BreadcrumbsItem } from './BreadcrumbsItem';
 
-export type BreadcrumbsProps = StackProps & {
+export type BreadcrumbsProps = {
 	links: { href?: string; label: ReactNode }[];
 };
 

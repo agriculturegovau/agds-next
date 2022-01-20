@@ -1,5 +1,6 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { Box } from '@ag.ds-next/box';
 import {
 	Breadcrumbs,
 	BreadcrumbsDivider,
@@ -8,12 +9,16 @@ import {
 } from './index';
 
 export default {
-	title: 'layout/Breadcrumbs',
+	title: 'navigation/Breadcrumbs',
 	component: Breadcrumbs,
 } as ComponentMeta<typeof Breadcrumbs>;
 
-const Template: ComponentStory<typeof Breadcrumbs> = (args) => {
-	return <Breadcrumbs {...args} />;
+const Template: ComponentStory<typeof Breadcrumbs> = ({ theme, ...args }) => {
+	return (
+		<Box theme={theme} background="page">
+			<Breadcrumbs {...args} />
+		</Box>
+	);
 };
 
 const exampleLinks = [
@@ -22,13 +27,8 @@ const exampleLinks = [
 	{ label: 'Applications' },
 ];
 
-export const Basic = Template.bind({});
-Basic.args = {
-	links: exampleLinks,
-};
-
-export const Horizontal = Template.bind({});
-Horizontal.args = {
+export const Light = Template.bind({});
+Light.args = {
 	links: exampleLinks,
 };
 
@@ -36,14 +36,6 @@ export const BasicDark = Template.bind({});
 BasicDark.args = {
 	links: exampleLinks,
 	theme: 'dark',
-	background: 'page',
-};
-
-export const InlineDark = Template.bind({});
-InlineDark.args = {
-	links: exampleLinks,
-	theme: 'dark',
-	background: 'page',
 };
 
 export const Modular: ComponentStory<typeof Breadcrumbs> = (args) => {

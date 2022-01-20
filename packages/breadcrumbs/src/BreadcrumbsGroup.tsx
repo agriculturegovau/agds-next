@@ -1,23 +1,14 @@
 import type { ReactNode } from 'react';
-import { Stack, StackProps } from '@ag.ds-next/box';
+import { Stack } from '@ag.ds-next/box';
 
-export type BreadcrumbsGroupProps = StackProps & {
+export type BreadcrumbsGroupProps = {
 	children: ReactNode;
 };
 
-export const BreadcrumbsGroup = ({
-	children,
-	...props
-}: BreadcrumbsGroupProps) => {
+export const BreadcrumbsGroup = ({ children }: BreadcrumbsGroupProps) => {
 	return (
 		<nav aria-label="breadcrumb">
-			<Stack
-				as="ul"
-				gap={0.5}
-				flexDirection="row"
-				alignItems="center"
-				{...props}
-			>
+			<Stack as="ul" gap={0.5} flexDirection="row" alignItems="center">
 				{children}
 			</Stack>
 		</nav>
