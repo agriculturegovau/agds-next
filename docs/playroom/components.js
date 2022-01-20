@@ -10,3 +10,4 @@ export { Text } from '@ag.ds-next/text';
 export { TextLink } from '@ag.ds-next/text-link';
 export { LinkList, LinkListGroup, LinkListItem } from '@ag.ds-next/link-list';
 export { MainNav } from '@ag.ds-next/main-nav';
+export { Icon } from '@ag.ds-next/icon';

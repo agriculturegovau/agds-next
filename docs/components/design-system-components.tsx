@@ -6,6 +6,7 @@ import { Heading, H1, H2, H3, H4, H5, H6 } from '@ag.ds-next/heading';
 import { LinkList } from '@ag.ds-next/link-list';
 import { Header, HeaderBrand, HeaderContainer } from '@ag.ds-next/header';
 import { Footer } from '@ag.ds-next/footer';
+import { Icon, IconExamples } from '@ag.ds-next/icon';
 
 export const designSystemComponents = {
 	Button,
@@ -26,4 +27,6 @@ export const designSystemComponents = {
 	Header,
 	HeaderBrand,
 	HeaderContainer,
+	Icon,
+	IconExamples,
 };
