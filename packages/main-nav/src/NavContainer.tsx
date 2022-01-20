@@ -3,32 +3,37 @@ import FocusTrap from 'focus-trap-react';
 
 import { Box, Flex } from '@ag.ds-next/box';
 import {
-	globalVars,
-	themeVars,
+	paletteVars,
+	themeValues,
 	useTernaryState,
 	mapSpacing,
 	tokens,
+	globalVars,
 } from '@ag.ds-next/core';
 
-import { localVars } from './utils';
+import { localValues, localVars } from './utils';
 import { CloseButton, ToggleButton } from './MenuButtons';
 
 const variantMap = {
 	light: {
 		theme: 'light',
 		background: 'page',
+		hover: 'shade',
 	},
 	lightAlt: {
 		theme: 'light',
-		background: 'shade',
+		background: 'pageAlt',
+		hover: 'shadeAlt',
 	},
 	dark: {
 		theme: 'dark',
 		background: 'page',
+		hover: 'shade',
 	},
 	darkAlt: {
 		theme: 'dark',
-		background: 'shade',
+		background: 'pageAlt',
+		hover: 'shadeAlt',
 	},
 } as const;
 
@@ -37,19 +42,20 @@ export type NavContainerProps = React.PropsWithChildren<{
 }>;
 
 export function NavContainer({ variant, children }: NavContainerProps) {
-	const { theme, background } = variantMap[variant];
+	const { theme, background, hover } = variantMap[variant];
 	const [menuOpen, open, close] = useTernaryState(false);
 
 	return (
 		<Box
+			data-name="nav-container"
 			theme={theme}
 			background={background}
 			color="text"
 			css={{
 				position: 'relative',
-				[localVars.linkHoverBg]: themeVars.background.shade,
-				[localVars.linkHoverBorder]: themeVars.background.page,
-				[localVars.linkActiveBorder]: themeVars.background[background],
+				[localVars.linkHoverBg]: themeValues.background[hover],
+				[localVars.linkActiveBg]: themeValues.background[background],
+				[localVars.bottomBar]: globalVars.accent,
 			}}
 		>
 			<BottomBar />
@@ -73,7 +79,7 @@ export function NavContainer({ variant, children }: NavContainerProps) {
 									zIndex: 200,
 									position: 'fixed',
 									display: menuOpen ? 'block' : 'none',
-									background: themeVars.background.page,
+									background: themeValues.background.page,
 									top: 0,
 									left: 0,
 									bottom: 0,
@@ -126,6 +132,7 @@ function Overlay({ menuOpen }: { menuOpen: boolean }) {
 function BottomBar() {
 	return (
 		<Box
+			data-name="nav-bottom-bar"
 			display={{ xs: 'none', md: 'block' }}
 			paddingTop={0.5}
 			css={{
@@ -133,7 +140,7 @@ function BottomBar() {
 				bottom: 0,
 				left: 0,
 				right: 0,
-				backgroundColor: globalVars.accent,
+				backgroundColor: localValues.bottomBar,
 			}}
 		/>
 	);

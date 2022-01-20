@@ -1,21 +1,36 @@
 import { css } from '@emotion/react';
 import { tokens } from './tokens';
 
-// Used in Box component
 export const themeVars = {
 	foreground: {
-		text: `var(--agds-foreground-text)`,
-		action: `var(--agds-foreground-action)`,
-		focus: `var(--agds-foreground-focus)`,
-		muted: `var(--agds-foreground-muted)`,
+		text: '--agds-foreground-text',
+		action: '--agds-foreground-action',
+		focus: '--agds-foreground-focus',
+		muted: '--agds-foreground-muted',
 	},
 	background: {
-		page: `var(--agds-background-page)`,
-		shade: `var(--agds-background-shade)`,
-		pageAlt: `var(--agds-background-page-alt)`,
-		shadeAlt: `var(--agds-background-shade-alt)`,
+		page: '--agds-background-page',
+		shade: '--agds-background-shade',
+		pageAlt: '--agds-background-page-alt',
+		shadeAlt: '--agds-background-shade-alt',
 	},
-	border: `var(--agds-border)`,
+	border: '--agds-border',
+};
+
+export const themeValues = {
+	foreground: {
+		text: `var(${themeVars.foreground.text})`,
+		action: `var(${themeVars.foreground.action})`,
+		focus: `var(${themeVars.foreground.focus})`,
+		muted: `var(${themeVars.foreground.muted})`,
+	},
+	background: {
+		page: `var(${themeVars.background.page})`,
+		shade: `var(${themeVars.background.shade})`,
+		pageAlt: `var(${themeVars.background.pageAlt})`,
+		shadeAlt: `var(${themeVars.background.shadeAlt})`,
+	},
+	border: `var(${themeVars.border})`,
 };
 
 // names of color
@@ -93,7 +108,7 @@ export const defaultPalette = {
 	darkBackgroundShadeAlt: '#0a323c',
 	darkBorder: '#95b7bf',
 	// system colors
-	accent: themeVars.foreground.action, // accent does not exist in GOLD. Here we fallback to the dark or light themed action color
+	accent: undefined, // accent does not exist in GOLD.
 	error: '#d60000',
 	success: '#0b996c',
 	warning: '#f69900',
@@ -135,7 +150,7 @@ export const globalVars = {
 		},
 		border: `var(${paletteVars.darkBorder})`,
 	},
-	accent: `var(${paletteVars.accent}, var(--agds-foreground-action))`,
+	accent: `var(${paletteVars.accent}, ${themeValues.foreground.action})`, // NOTE: accent is optional
 	error: `var(${paletteVars.error})`,
 	success: `var(${paletteVars.success})`,
 	warning: `var(${paletteVars.warning})`,
@@ -143,11 +158,6 @@ export const globalVars = {
 	hint: `var(${paletteVars.hint})`,
 	hintAlt: `var(${paletteVars.hintAlt})`,
 } as const;
-
-export type BoxthemeVars = {
-	foreground: keyof typeof themeVars.foreground;
-	background: keyof typeof themeVars.background;
-};
 
 export const themes = {
 	light: css({
@@ -181,6 +191,6 @@ export type BoxTheme = keyof typeof themes;
 export const outline = {
 	outlineWidth: '3px',
 	outlineStyle: 'solid',
-	outlineColor: themeVars.foreground.focus,
+	outlineColor: themeValues.foreground.focus,
 	outlineOffset: 0.5 * tokens.unit,
 };

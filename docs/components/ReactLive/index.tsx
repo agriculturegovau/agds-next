@@ -8,7 +8,7 @@ import { Box } from '@ag.ds-next/box';
 
 import { CodeHighlight } from '../CodeHighlight';
 import styles from './styles.module.css';
-import { themeVars, tokens } from '@ag.ds-next/core';
+import { themeValues, tokens } from '@ag.ds-next/core';
 
 // FIXME!!!! - styling is a mess in here. Also why we have `CodeBlock`, `CodeHighlight`, `InlineCode` and `ReactLive` is unclear. This needs thought and consolidation.
 // That plus the fact this gets rendered inside a `ag.ds/body` component is making things hard here.
@@ -124,7 +124,7 @@ export function ReactLive({
 						onValueChange={setLiveCode}
 						css={{
 							backgroundColor: 'transparent',
-							color: themeVars.foreground.text,
+							color: themeValues.foreground.text,
 							fontFamily: tokens.font.monospace,
 							fontSize: `${tokens.fontSize.xs}rem`,
 							maxWidth: '100%',
@@ -145,13 +145,13 @@ export function ReactLive({
 						<button
 							css={{
 								// background: 'var(--code-bg)',
-								background: themeVars.background.shade,
+								background: themeValues.background.shade,
 								border: 0,
 								bottom: 0,
 								borderBottomLeftRadius: '3px',
 								borderBottomRightRadius: '3px',
 								boxSizing: 'border-box',
-								color: themeVars.foreground.text, // 'var(--code)',
+								color: themeValues.foreground.text, // 'var(--code)',
 								cursor: 'pointer',
 								fontSize: '0.875rem',
 								fontWeight: 500,
