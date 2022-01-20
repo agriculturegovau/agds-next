@@ -1,6 +1,7 @@
 ---
 title: Box
 description: A primitive layout component
+group: Core
 ---
 
 ```jsx live
