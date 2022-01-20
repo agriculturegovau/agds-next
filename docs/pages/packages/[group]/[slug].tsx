@@ -5,11 +5,11 @@ import { Box, Flex, Stack } from '@ag.ds-next/box';
 import { Text } from '@ag.ds-next/text';
 import { Body } from '@ag.ds-next/body';
 
-import { getPkgList, getPkg, Pkg, getPkgSlugs } from '../../lib/mdxUtils';
+import { getPkgList, getPkg, Pkg, getPkgSlugs } from '../../../lib/mdxUtils';
 
-import { mdxComponents } from '../../components/utils';
-import { AppLayout } from '../../components/AppLayout';
-import { PageLayout } from '../../components/PageLayout';
+import { mdxComponents } from '../../../components/utils';
+import { AppLayout } from '../../../components/AppLayout';
+import { PageLayout } from '../../../components/PageLayout';
 
 export default function Packages({
 	pkg,

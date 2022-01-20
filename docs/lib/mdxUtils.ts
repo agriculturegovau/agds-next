@@ -78,6 +78,7 @@ export function getPkgList() {
 			slugs.map((slug) =>
 				getMarkdownData(pkgDocsPath(slug)).then(({ data }) => ({
 					title: (data?.title ?? slug) as string,
+					group: (data?.group ?? 'other') as string,
 					slug,
 				}))
 			)
