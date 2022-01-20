@@ -72,18 +72,32 @@ export async function getPkgSlugs() {
 		.map((entry) => slugify(stripMdxExtension(entry.name)));
 }
 
-export function getPkgList() {
+export function getPkgList(group?: string) {
 	return getPkgSlugs().then((slugs) =>
 		Promise.all(
 			slugs.map((slug) =>
 				getMarkdownData(pkgDocsPath(slug)).then(({ data }) => ({
 					title: (data?.title ?? slug) as string,
-					group: (data?.group ?? 'other') as string,
+					group: slugify(data?.group ?? 'Other') as string,
+					groupName: (data?.group ?? 'Other') as string,
 					slug,
 				}))
 			)
+		).then((pkgList) =>
+			// filter if group is passed
+			group ? pkgList.filter((pkg) => pkg.group === group) : pkgList
 		)
 	);
+}
+
+export function getPkgGroupList() {
+	return getPkgList().then((pkgs) => {
+		const uniqueGroups = new Map(pkgs.map((p) => [p.group, p.groupName]));
+		return Array.from(uniqueGroups.entries()).map(([slug, name]) => ({
+			slug,
+			name,
+		}));
+	});
 }
 
 export type Pkg = Awaited<ReturnType<typeof getPkg>>;

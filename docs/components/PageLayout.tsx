@@ -1,7 +1,7 @@
 import { Content } from '@ag.ds-next/content';
 import { Box, Flex, Stack } from '@ag.ds-next/box';
 import { SideNav } from '@ag.ds-next/side-nav';
-import { PropsWithChildren } from 'react';
+import { ComponentProps, PropsWithChildren } from 'react';
 import { useRouter } from 'next/router';
 
 import { EditPage } from './EditPage';
@@ -11,7 +11,7 @@ export function PageLayout({
 	editPath,
 	children,
 }: PropsWithChildren<{
-	navLinks?: { href: string; label: string }[];
+	navLinks?: ComponentProps<typeof SideNav>['items'];
 	editPath?: string;
 }>) {
 	const router = useRouter();
@@ -31,9 +31,11 @@ export function PageLayout({
 				)}
 				<Stack flexGrow={1} gap={1}>
 					{children}
-					<Flex justifyContent="flex-start">
-						<EditPage path={editPath} />
-					</Flex>
+					{editPath && (
+						<Flex justifyContent="flex-start">
+							<EditPage path={editPath} />
+						</Flex>
+					)}
 				</Stack>
 			</Flex>
 		</Content>

@@ -5,7 +5,7 @@ import { Body } from '@ag.ds-next/body';
 import {
 	getMarkdownData,
 	serializeMarkdown,
-	getPkgList,
+	getPkgGroupList,
 } from '../../lib/mdxUtils';
 import { mdxComponents } from '../../components/utils';
 import { AppLayout } from '../../components/AppLayout';
@@ -30,8 +30,8 @@ export async function getStaticProps() {
 		normalize(`${process.cwd()}/../packages/README.md`)
 	);
 	const source = await serializeMarkdown(content);
-	const pkgList = await getPkgList();
-	const pkgLinks = pkgList.map(({ title, slug }) => ({
+	const groupList = await getPkgGroupList();
+	const navLinks = groupList.map(({ title, slug }) => ({
 		label: title,
 		href: `/packages/${slug}`,
 	}));
