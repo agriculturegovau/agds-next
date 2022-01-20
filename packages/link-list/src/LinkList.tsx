@@ -1,22 +1,21 @@
-import { StackProps } from '@ag.ds-next/box';
 import { ReactNode } from 'react';
 
-import { LinkListGroup } from './LinkListGroup';
+import { LinkListContainer } from './LinkListContainer';
 import { LinkListItem } from './LinkListItem';
 
-export type LinkListProps = StackProps & {
+export type LinkListProps = {
 	links: { href: string; label: ReactNode }[];
 	horizontal?: boolean;
 };
 
-export const LinkList = ({ links, horizontal, ...props }: LinkListProps) => {
+export const LinkList = ({ links, horizontal }: LinkListProps) => {
 	return (
-		<LinkListGroup horizontal={horizontal} {...props}>
+		<LinkListContainer horizontal={horizontal}>
 			{links.map(({ label, ...props }, index) => (
 				<LinkListItem key={index} {...props}>
 					{label}
 				</LinkListItem>
 			))}
-		</LinkListGroup>
+		</LinkListContainer>
 	);
 };

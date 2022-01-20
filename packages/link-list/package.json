@@ -7,13 +7,11 @@
 	"peerDependencies": {
 		"@ag.ds-next/box": "1.0.1",
 		"@ag.ds-next/core": "1.0.1",
-		"@ag.ds-next/text-link": "1.0.1",
 		"@emotion/react": "^11.7.0"
 	},
 	"devDependencies": {
 		"@ag.ds-next/box": "*",
 		"@ag.ds-next/core": "*",
-		"@ag.ds-next/text-link": "*",
 		"@emotion/react": "^11.7.0"
 	}
 }
