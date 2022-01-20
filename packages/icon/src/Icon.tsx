@@ -1,18 +1,19 @@
-import { themeVars, mapSpacing, Spacing } from '@ag.ds-next/core';
+import { themeValues, mapSpacing, Spacing } from '@ag.ds-next/core';
 import { DetailedHTMLProps, SVGAttributes } from 'react';
 
 import { ICONS } from './icons';
 
 export type IconNameType = keyof typeof ICONS;
 
-const colors = {
-	...themeVars.foreground,
-};
-
 type SvgProps = Omit<
 	DetailedHTMLProps<SVGAttributes<SVGSVGElement>, SVGSVGElement>,
 	'width' | 'height' | 'viewBox' | 'fill' | 'fillRule' | 'clipRule' | 'xmlns'
 >;
+
+const colors = {
+	...themeValues.foreground,
+	border: themeValues.border,
+};
 
 export type IconProps = SvgProps & {
 	icon: IconNameType;
