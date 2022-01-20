@@ -1,10 +1,10 @@
 export const localVars = {
 	linkHoverBg: '--nav-linkHoverBg',
-	linkHoverBorder: '--nav-linkHoverBorder',
-	linkActiveBorder: '--nav-linkActiveBorder',
+	linkActiveBg: '--nav-linkActiveBg',
+	bottomBar: '--nav-bottomBar',
 };
 export const localValues = {
-	linkHoverBg: 'var(--nav-linkHoverBg)',
-	linkHoverBorder: 'var(--nav-linkHoverBorder)',
-	linkActiveBorder: 'var(--nav-linkActiveBorder)',
+	linkHoverBg: `var(${localVars.linkHoverBg})`,
+	linkActiveBg: `var(${localVars.linkActiveBg})`,
+	bottomBar: `var(${localVars.bottomBar})`,
 };

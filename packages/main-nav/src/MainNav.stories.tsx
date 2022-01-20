@@ -22,7 +22,7 @@ const Template: ComponentStory<typeof MainNav> = (args) => (
 export const MainNavDark = Template.bind({});
 MainNavDark.args = {
 	links: NAV_ITEMS,
-	activePath: '#home',
+	activePath: '#content',
 	variant: 'dark',
 };
 

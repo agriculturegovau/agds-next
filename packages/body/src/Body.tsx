@@ -2,7 +2,7 @@ import { css } from '@emotion/react';
 import {
 	forwardRefWithAs,
 	tokens,
-	themeVars,
+	themeValues,
 	mapSpacing,
 	fontGrid,
 } from '@ag.ds-next/core';
@@ -20,14 +20,14 @@ export const bodyClass = css({
 	textSizeAdjust: '100%',
 
 	// can we use themes here? ... do we need to?
-	color: themeVars.foreground.text,
+	color: themeValues.foreground.text,
 
 	// Font grid
 	fontFamily: tokens.font.body,
 	...fontGrid('sm', 'default'),
 
 	a: {
-		color: themeVars.foreground.action,
+		color: themeValues.foreground.action,
 		textDecoration: 'underline',
 		textDecorationSkipInk: 'auto',
 
@@ -45,16 +45,16 @@ export const bodyClass = css({
 	 * `mark` styling.
 	 */
 	mark: {
-		color: themeVars.background.page,
-		backgroundColor: themeVars.foreground.action,
+		color: themeValues.background.page,
+		backgroundColor: themeValues.foreground.action,
 	},
 
 	/**
 	 * Text selection styling
 	 */
 	'& ::selection': {
-		color: themeVars.background.page,
-		backgroundColor: themeVars.foreground.action,
+		color: themeValues.background.page,
+		backgroundColor: themeValues.foreground.action,
 		// Why RGBA 0.99? https://stackoverflow.com/a/7224621
 	},
 
@@ -66,7 +66,7 @@ export const bodyClass = css({
 	'img::selection,video::selection,iframe::selection': {
 		// TODO: verify this doesn't need to be a RGBA color
 		// with 75% transparency
-		backgroundColor: themeVars.foreground.action,
+		backgroundColor: themeValues.foreground.action,
 	},
 
 	/**
@@ -249,8 +249,8 @@ export const bodyClass = css({
 	blockquote: {
 		padding: mapSpacing(2),
 		borderLeft: '4px solid',
-		borderColor: themeVars.border,
-		background: themeVars.background.shade,
+		borderColor: themeValues.border,
+		background: themeValues.background.shade,
 	},
 
 	/**
@@ -264,7 +264,7 @@ export const bodyClass = css({
 		display: 'inline-block',
 		borderRadius: tokens.borderRadius,
 		// backgroundColor: themeVars.background.shade, // FIXME: This conflicts with the Live Code rending in the docs site.
-		color: themeVars.foreground.text,
+		color: themeValues.foreground.text,
 	},
 
 	pre: {
@@ -285,7 +285,7 @@ export const bodyClass = css({
 		height: 0,
 		overflow: 'visible',
 		border: 'none',
-		borderTop: `1px solid ${themeVars.border}`,
+		borderTop: `1px solid ${themeValues.border}`,
 		marginBottom: mapSpacing(1.5),
 	},
 
@@ -297,10 +297,10 @@ export const bodyClass = css({
 	 *  Body colour schemes
 	 */
 	'&.au-body--alt': {
-		background: themeVars.background.pageAlt,
+		background: themeValues.background.pageAlt,
 
 		'kbd,code,samp': {
-			backgroundColor: themeVars.background.shadeAlt,
+			backgroundColor: themeValues.background.shadeAlt,
 		},
 	},
 
@@ -339,7 +339,7 @@ export const bodyClass = css({
 		},
 
 		hr: {
-			borderTopColor: themeVars.border,
+			borderTopColor: themeValues.border,
 		},
 
 		'code, kbd,samp': {
