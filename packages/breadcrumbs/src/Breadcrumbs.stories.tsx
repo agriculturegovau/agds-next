@@ -13,30 +13,26 @@ export default {
 	component: Breadcrumbs,
 } as ComponentMeta<typeof Breadcrumbs>;
 
-const Template: ComponentStory<typeof Breadcrumbs> = ({ theme, ...args }) => {
-	return (
-		<Box theme={theme} background="page">
-			<Breadcrumbs {...args} />
-		</Box>
-	);
-};
-
 const exampleLinks = [
 	{ href: '#', label: 'Home' },
 	{ href: '#', label: 'Establishments' },
 	{ label: 'Applications' },
 ];
 
-export const Light = Template.bind({});
+export const Light: ComponentStory<typeof Breadcrumbs> = (args) => (
+	<Box theme="light" background="page">
+		<Breadcrumbs {...args} />
+	</Box>
+);
 Light.args = {
 	links: exampleLinks,
 };
 
-export const BasicDark = Template.bind({});
-BasicDark.args = {
-	links: exampleLinks,
-	theme: 'dark',
-};
+export const BasicDark: ComponentStory<typeof Breadcrumbs> = (args) => (
+	<Box theme="dark" background="page">
+		<Breadcrumbs {...args} />
+	</Box>
+);
 
 export const Modular: ComponentStory<typeof Breadcrumbs> = (args) => {
 	return (
