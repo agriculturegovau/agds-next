@@ -6,6 +6,7 @@ import { normalize } from 'path';
 import matter from 'gray-matter';
 
 import { slugify } from './slugify';
+import { group } from 'console';
 
 const PKG_PATH = normalize(`${process.cwd()}/../packages/`);
 const RELEASE_PATH = normalize(`${process.cwd()}/../releases/`);
@@ -72,16 +73,25 @@ export async function getPkgSlugs() {
 		.map((entry) => slugify(stripMdxExtension(entry.name)));
 }
 
+function pkgNavMetaData(
+	slug: string,
+	data: Awaited<ReturnType<typeof getMarkdownData>>['data']
+) {
+	return {
+		title: (data?.title ?? slug) as string,
+		group: slugify(data?.group ?? 'Other') as string,
+		groupName: (data?.group ?? 'Other') as string,
+		slug,
+	};
+}
+
 export function getPkgList(group?: string) {
 	return getPkgSlugs().then((slugs) =>
 		Promise.all(
 			slugs.map((slug) =>
-				getMarkdownData(pkgDocsPath(slug)).then(({ data }) => ({
-					title: (data?.title ?? slug) as string,
-					group: slugify(data?.group ?? 'Other') as string,
-					groupName: (data?.group ?? 'Other') as string,
-					slug,
-				}))
+				getMarkdownData(pkgDocsPath(slug)).then(({ data }) =>
+					pkgNavMetaData(slug, data)
+				)
 			)
 		)
 			.then((pkgList) =>
@@ -104,6 +114,27 @@ export function getPkgGroupList() {
 	});
 }
 
+export function getGroupBreadCrumbs(groupSlug: string) {
+	return getPkgGroupList().then((groups) => {
+		const group = groups.find((g) => g.slug === groupSlug);
+		return group
+			? [{ href: '/packages', label: 'Packages' }, { label: group.title }]
+			: undefined;
+	});
+}
+
+export function getPkgBreadcrumbs(slug: string) {
+	return getMarkdownData(pkgDocsPath(slug)).then(({ data }) => {
+		const meta = pkgNavMetaData(slug, data);
+
+		return [
+			{ href: '/packages', label: 'Packages' },
+			{ href: `/packages/${meta.group}`, label: meta.groupName },
+			{ label: meta.title },
+		];
+	});
+}
+
 export async function getPkgNavLinks(group?: string) {
 	const groupList = await getPkgGroupList();
 	const pkgList = group ? await getPkgList(group) : [];
@@ -118,14 +149,14 @@ export async function getPkgNavLinks(group?: string) {
 	});
 }
 
-function groupNavItem(g: { title: string; slug: string }) {
+export function groupNavItem(g: { title: string; slug: string }) {
 	return {
 		label: g.title,
 		href: `/packages/${g.slug}`,
 	};
 }
 
-function pkgNavItem(p: { title: string; group: string; slug: string }) {
+export function pkgNavItem(p: { title: string; group: string; slug: string }) {
 	return {
 		label: p.title,
 		href: `/packages/${p.group}/${p.slug}`,

@@ -1,20 +1,26 @@
 import type { GetStaticProps, InferGetStaticPropsType } from 'next';
-
-import { getPkgList, getPkgGroupList } from '../../../lib/mdxUtils';
-import { AppLayout } from '../../../components/AppLayout';
-import { PageLayout } from '../../../components/PageLayout';
 import { Flex } from '@ag.ds-next/box';
 import { H1 } from '@ag.ds-next/heading';
+
+import { AppLayout } from '../../../components/AppLayout';
+import { PageLayout } from '../../../components/PageLayout';
 import { PkgCard } from '../../../components/PkgCard';
+import {
+	getPkgList,
+	getPkgGroupList,
+	getPkgNavLinks,
+	getGroupBreadCrumbs,
+} from '../../../lib/mdxUtils';
 
 export default function PackagesHome({
 	group,
 	pkgList,
 	navLinks,
+	breadcrumbs,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
 	return (
 		<AppLayout>
-			<PageLayout navLinks={navLinks}>
+			<PageLayout navLinks={navLinks} breadcrumbs={breadcrumbs}>
 				<H1>{group.title}</H1>
 				<Flex gap={2} flexWrap="wrap">
 					{pkgList.map((pkg) => (
@@ -30,44 +36,29 @@ export const getStaticProps: GetStaticProps<
 	{
 		navLinks: { href: string; label: string }[];
 		pkgList: Awaited<ReturnType<typeof getPkgList>>;
+		breadcrumbs: Awaited<ReturnType<typeof getGroupBreadCrumbs>>;
 		group: { slug: string; title: string };
 	},
 	{ group: string }
 > = async ({ params }) => {
-	// Bail if page not found
+	const groupSlug = params?.group;
 	const groupList = await getPkgGroupList();
-
-	const group = params?.group
-		? groupList.find((g) => g.slug === params.group)
+	const group = groupSlug
+		? groupList.find((g) => g.slug === groupSlug)
 		: undefined;
 
-	if (!group) return { notFound: true };
+	if (!(groupSlug && group)) return { notFound: true };
 
-	const pkgList = await getPkgList(group.slug);
-
-	const navLinks = groupList.map((g) => {
-		if (g.slug === group.slug) {
-			return {
-				label: g.title,
-				href: `/packages/${g.slug}`,
-				children: pkgList.map(({ title, slug }) => ({
-					label: title,
-					href: `/packages/${group.slug}/${slug}`,
-				})),
-			};
-		}
-
-		return {
-			label: g.title,
-			href: `/packages/${g.slug}`,
-		};
-	});
+	const navLinks = await getPkgNavLinks(groupSlug);
+	const pkgList = await getPkgList(groupSlug);
+	const breadcrumbs = await getGroupBreadCrumbs(groupSlug);
 
 	return {
 		props: {
 			navLinks,
 			pkgList,
 			group,
+			breadcrumbs,
 		},
 	};
 };

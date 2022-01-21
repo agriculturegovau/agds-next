@@ -5,7 +5,13 @@ import { Box, Flex, Stack } from '@ag.ds-next/box';
 import { Text } from '@ag.ds-next/text';
 import { Body } from '@ag.ds-next/body';
 
-import { getPkgList, getPkg, Pkg, getPkgNavLinks } from '../../../lib/mdxUtils';
+import {
+	getPkgList,
+	getPkg,
+	Pkg,
+	getPkgNavLinks,
+	getPkgBreadcrumbs,
+} from '../../../lib/mdxUtils';
 
 import { mdxComponents } from '../../../components/utils';
 import { AppLayout } from '../../../components/AppLayout';
@@ -14,12 +20,14 @@ import { PageLayout } from '../../../components/PageLayout';
 export default function Packages({
 	pkg,
 	navLinks,
+	breadcrumbs,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
 	return (
 		<AppLayout>
 			<PageLayout
 				navLinks={navLinks}
 				editPath={`/packages/${pkg.slug}/README.md`}
+				breadcrumbs={breadcrumbs}
 			>
 				<Stack as="main" gap={1}>
 					<Flex flexDirection="column" gap={0.25}>
@@ -56,7 +64,7 @@ export const getStaticProps: GetStaticProps<
 	{
 		pkg: Pkg;
 		navLinks: Awaited<ReturnType<typeof getPkgNavLinks>>;
-		slug?: string;
+		breadcrumbs: Awaited<ReturnType<typeof getPkgBreadcrumbs>>;
 	},
 	{ slug: string; group: string }
 > = async ({ params }) => {
@@ -68,12 +76,13 @@ export const getStaticProps: GetStaticProps<
 	}
 
 	const navLinks = await getPkgNavLinks(group);
+	const breadcrumbs = await getPkgBreadcrumbs(slug);
 
 	return {
 		props: {
 			pkg,
 			navLinks,
-			slug: params?.slug,
+			breadcrumbs,
 		},
 	};
 };
