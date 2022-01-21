@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react';
 import { Box, BoxProps } from '@ag.ds-next/box';
-import { themeVars, themeValues } from '@ag.ds-next/core';
+import { themeValues } from '@ag.ds-next/core';
 
 import { localVars } from './utils';
 
@@ -27,7 +27,7 @@ export const SideNavContent = ({
 			lineHeight="default"
 			css={{
 				'& > ul > li': {
-					borderBottom: `1px solid ${themeVars.border}`,
+					borderBottom: `1px solid ${themeValues.border}`,
 
 					'&:last-of-type': {
 						border: 'none',
