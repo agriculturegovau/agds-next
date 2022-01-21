@@ -16,10 +16,10 @@ export function PageLayout({
 }>) {
 	const router = useRouter();
 	return (
-		<Content spacing="large">
+		<Content>
 			<Flex gap={{ xs: 1, md: 2 }} flexDirection={{ xs: 'column', md: 'row' }}>
 				{navLinks && (
-					<Box width={'20rem'} padding={1} flexShrink={0}>
+					<Box width={'20rem'} flexShrink={0}>
 						<SideNav
 							variant="light"
 							activePath={router.asPath}
