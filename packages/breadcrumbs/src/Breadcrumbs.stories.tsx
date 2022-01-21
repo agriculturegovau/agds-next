@@ -37,14 +37,12 @@ Dark.args = {
 	links: exampleLinks,
 };
 
-export const Modular: ComponentStory<typeof Breadcrumbs> = (args) => {
-	return (
-		<BreadcrumbsContainer {...args}>
-			<BreadcrumbsItem href="#one">One</BreadcrumbsItem>
-			<BreadcrumbsDivider />
-			<BreadcrumbsItem href="#two">Two</BreadcrumbsItem>
-			<BreadcrumbsDivider />
-			<BreadcrumbsItem>Three</BreadcrumbsItem>
-		</BreadcrumbsContainer>
-	);
-};
+export const Modular: ComponentStory<typeof BreadcrumbsContainer> = () => (
+	<BreadcrumbsContainer>
+		<BreadcrumbsItem href="#one">One</BreadcrumbsItem>
+		<BreadcrumbsDivider />
+		<BreadcrumbsItem href="#two">Two</BreadcrumbsItem>
+		<BreadcrumbsDivider />
+		<BreadcrumbsItem>Three</BreadcrumbsItem>
+	</BreadcrumbsContainer>
+);
