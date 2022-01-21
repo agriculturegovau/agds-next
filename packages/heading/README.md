@@ -1,6 +1,7 @@
 ---
-title: Heading
+title: Headings
 description:
+group: Content
 ---
 
 # Testing headings in markdown (H1)

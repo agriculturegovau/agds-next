@@ -31,8 +31,15 @@ const variantMap = {
 	},
 	darkAlt: {
 		theme: 'dark',
+		background: 'pageAlt',
+		hover: 'shadeAlt',
+	},
+	agriculture: {
+		theme: 'dark',
 		background: 'shade',
 		hover: 'page',
+		bottomBar: globalVars.accent,
+		// accent color ...
 	},
 } as const;
 
@@ -46,7 +53,7 @@ export function NavContainer({ variant, children }: NavContainerProps) {
 
 	return (
 		<Box
-			data-name="nav-container"
+			data-name="nav-container" // TODO: make this (or something like this) a pattern for providing end users a consistent handle for applying style overrides.
 			theme={theme}
 			background={background}
 			color="text"

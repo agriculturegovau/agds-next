@@ -1,6 +1,7 @@
 ---
 title: LinkList
 description: A list of links
+group: Navigation
 ---
 
 ```jsx live
