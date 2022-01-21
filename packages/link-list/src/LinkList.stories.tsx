@@ -1,15 +1,12 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { LinkList, LinkListItem, LinkListGroup } from './index';
+import { LinkList, LinkListItem, LinkListContainer } from './index';
+import { Box } from '@ag.ds-next/box';
 
 export default {
-	title: 'layout/LinkList',
+	title: 'navigation/LinkList',
 	component: LinkList,
 } as ComponentMeta<typeof LinkList>;
-
-const Template: ComponentStory<typeof LinkList> = (args) => {
-	return <LinkList {...args} />;
-};
 
 const exampleLinks = [
 	{ href: '#', label: 'Home' },
@@ -17,38 +14,50 @@ const exampleLinks = [
 	{ href: '#', label: 'Applications' },
 ];
 
-export const Basic = Template.bind({});
+export const Basic: ComponentStory<typeof LinkList> = (args) => (
+	<Box theme="light" background="page">
+		<LinkList {...args} />
+	</Box>
+);
 Basic.args = {
 	links: exampleLinks,
 };
 
-export const Horizontal = Template.bind({});
+export const Horizontal: ComponentStory<typeof LinkList> = (args) => (
+	<Box theme="light" background="page">
+		<LinkList {...args} />
+	</Box>
+);
 Horizontal.args = {
 	links: exampleLinks,
 	horizontal: true,
 };
 
-export const BasicDark = Template.bind({});
+export const BasicDark: ComponentStory<typeof LinkList> = (args) => (
+	<Box theme="dark" background="page">
+		<LinkList {...args} />
+	</Box>
+);
 BasicDark.args = {
 	links: exampleLinks,
-	theme: 'dark',
-	background: 'page',
 };
 
-export const InlineDark = Template.bind({});
+export const InlineDark: ComponentStory<typeof LinkList> = (args) => (
+	<Box theme="dark" background="page">
+		<LinkList {...args} />
+	</Box>
+);
 InlineDark.args = {
 	links: exampleLinks,
 	horizontal: true,
-	theme: 'dark',
-	background: 'page',
 };
 
 export const Modular: ComponentStory<typeof LinkList> = (args) => {
 	return (
-		<LinkListGroup {...args}>
+		<LinkListContainer {...args}>
 			<LinkListItem href="#one">One</LinkListItem>
 			<LinkListItem href="#two">Two</LinkListItem>
 			<LinkListItem href="#three">Three</LinkListItem>
-		</LinkListGroup>
+		</LinkListContainer>
 	);
 };

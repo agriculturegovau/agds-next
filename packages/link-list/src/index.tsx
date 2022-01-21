@@ -1,3 +1,3 @@
 export * from './LinkList';
-export * from './LinkListGroup';
+export * from './LinkListContainer';
 export * from './LinkListItem';
