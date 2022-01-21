@@ -3,8 +3,9 @@ import type { GetStaticProps, InferGetStaticPropsType } from 'next';
 import { getPkgList, getPkgGroupList } from '../../../lib/mdxUtils';
 import { AppLayout } from '../../../components/AppLayout';
 import { PageLayout } from '../../../components/PageLayout';
-import { Box } from '@ag.ds-next/box';
+import { Flex } from '@ag.ds-next/box';
 import { H1 } from '@ag.ds-next/heading';
+import { PkgCard } from '../../../components/PkgCard';
 
 export default function PackagesHome({
 	group,
@@ -14,14 +15,12 @@ export default function PackagesHome({
 	return (
 		<AppLayout>
 			<PageLayout navLinks={navLinks}>
-				<H1>{group.name}</H1>
-				<Box>
-					{pkgList.map((p) => (
-						<Box key={p.slug} border>
-							{p.title}
-						</Box>
+				<H1>{group.title}</H1>
+				<Flex gap={2} flexWrap="wrap">
+					{pkgList.map((pkg) => (
+						<PkgCard key={pkg.slug} pkg={pkg} />
 					))}
-				</Box>
+				</Flex>
 			</PageLayout>
 		</AppLayout>
 	);
@@ -30,8 +29,8 @@ export default function PackagesHome({
 export const getStaticProps: GetStaticProps<
 	{
 		navLinks: { href: string; label: string }[];
-		pkgList: any[];
-		group: { slug: string; name: string };
+		pkgList: Awaited<ReturnType<typeof getPkgList>>;
+		group: { slug: string; title: string };
 	},
 	{ group: string }
 > = async ({ params }) => {
@@ -39,7 +38,7 @@ export const getStaticProps: GetStaticProps<
 	const groupList = await getPkgGroupList();
 
 	const group = params?.group
-		? groupList.find((g) => g.name === params.group)
+		? groupList.find((g) => g.slug === params.group)
 		: undefined;
 
 	if (!group) return { notFound: true };
@@ -49,7 +48,7 @@ export const getStaticProps: GetStaticProps<
 	const navLinks = groupList.map((g) => {
 		if (g.slug === group.slug) {
 			return {
-				label: g.name,
+				label: g.title,
 				href: `/packages/${g.slug}`,
 				children: pkgList.map(({ title, slug }) => ({
 					label: title,
@@ -59,7 +58,7 @@ export const getStaticProps: GetStaticProps<
 		}
 
 		return {
-			label: g.name,
+			label: g.title,
 			href: `/packages/${g.slug}`,
 		};
 	});
