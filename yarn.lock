@@ -9014,6 +9014,11 @@ he@1.2.0, he@^1.2.0:
   resolved "https://registry.yarnpkg.com/he/-/he-1.2.0.tgz#84ae65fa7eafb165fddb61566ae14baf05664f0f"
   integrity sha512-F/1DnUGPopORZi0ni+CvrCgHQ5FyEAHRLSApuYWMmrbSwoN2Mn/7k+Gl38gJnR7yyDZk6WLXwiGod1JOWNDKGw==
 
+hex-a11y@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/hex-a11y/-/hex-a11y-1.0.2.tgz#d379e22ceb56b00e43a9ba8b6acc3339eee4c1e1"
+  integrity sha512-M5ez7G+ebutJXr6aYoEzjM5RKbWJJmpxjgvw34Tai9k3robs9B1BfIJBPrAzzPD9eb2bGJ5qNSUcAyVs1T6XzQ==
+
 highlight.js@^10.1.1, highlight.js@~10.7.0:
   version "10.7.3"
   resolved "https://registry.yarnpkg.com/highlight.js/-/highlight.js-10.7.3.tgz#697272e3991356e40c3cac566a74eef681756531"
