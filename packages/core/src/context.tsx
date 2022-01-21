@@ -1,6 +1,6 @@
 import { createContext, useContext, PropsWithChildren } from 'react';
 
-function DefaultLinkComponent<P extends PropsWithChildren<{ href: string }>>(
+function DefaultLinkComponent<P extends PropsWithChildren<{ href?: string }>>(
 	props: P
 ) {
 	return <a {...props} />;
