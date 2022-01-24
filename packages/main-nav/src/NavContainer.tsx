@@ -38,7 +38,6 @@ const variantMap = {
 		theme: 'dark',
 		background: 'shade',
 		hover: 'page',
-		bottomBar: globalVars.accent,
 	},
 } as const;
 
