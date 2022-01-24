@@ -1,4 +1,4 @@
 ---
 title: TextLink
-group: Core
+group: Foundations
 ---

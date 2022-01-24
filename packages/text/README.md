@@ -1,5 +1,5 @@
 ---
 title: Text
 description:
-group: Core
+group: Foundations
 ---
