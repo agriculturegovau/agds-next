@@ -12,7 +12,7 @@ export const PkgCard = ({
 	};
 }) => (
 	<Box key={pkg.slug} border rounded padding={2}>
-		<TextLink href={`./${pkg.group}/${pkg.slug}`}>
+		<TextLink href={`/packages/${pkg.group}/${pkg.slug}`}>
 			<H3>{pkg.title}</H3>
 		</TextLink>
 	</Box>
