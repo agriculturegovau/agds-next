@@ -1,5 +1,20 @@
 # @ag.ds-next/body
 
+## 2.0.0
+
+### Minor Changes
+
+- 40c6ab2: Utilise fontGrid in Body
+
+### Patch Changes
+
+- 6048f94: Playroom fixes
+- e3c292c: Rolled back the workbreak change which was not working as expected.
+- Updated dependencies [6048f94]
+- Updated dependencies [50d3dd9]
+  - @ag.ds-next/core@1.1.0
+  - @ag.ds-next/box@2.0.0
+
 ## 1.0.1
 
 ### Patch Changes
