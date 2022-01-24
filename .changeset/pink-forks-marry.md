@@ -1,5 +1,5 @@
 ---
-'@ag.ds-next/body': minor
+'@ag.ds-next/body': patch
 ---
 
 Utilise fontGrid in Body
