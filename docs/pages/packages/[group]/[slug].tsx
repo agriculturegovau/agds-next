@@ -5,21 +5,29 @@ import { Box, Flex, Stack } from '@ag.ds-next/box';
 import { Text } from '@ag.ds-next/text';
 import { Body } from '@ag.ds-next/body';
 
-import { getPkgList, getPkg, Pkg, getPkgSlugs } from '../../lib/mdxUtils';
+import {
+	getPkgList,
+	getPkg,
+	Pkg,
+	getPkgNavLinks,
+	getPkgBreadcrumbs,
+} from '../../../lib/mdxUtils';
 
-import { mdxComponents } from '../../components/utils';
-import { AppLayout } from '../../components/AppLayout';
-import { PageLayout } from '../../components/PageLayout';
+import { mdxComponents } from '../../../components/utils';
+import { AppLayout } from '../../../components/AppLayout';
+import { PageLayout } from '../../../components/PageLayout';
 
 export default function Packages({
 	pkg,
-	pkgLinks,
+	navLinks,
+	breadcrumbs,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
 	return (
 		<AppLayout>
 			<PageLayout
-				navLinks={pkgLinks}
+				navLinks={navLinks}
 				editPath={`/packages/${pkg.slug}/README.md`}
+				breadcrumbs={breadcrumbs}
 			>
 				<Stack as="main" gap={1}>
 					<Flex flexDirection="column" gap={0.25}>
@@ -55,38 +63,36 @@ export default function Packages({
 export const getStaticProps: GetStaticProps<
 	{
 		pkg: Pkg;
-		pkgLinks: { href: string; label: string }[];
-		slug?: string;
+		navLinks: Awaited<ReturnType<typeof getPkgNavLinks>>;
+		breadcrumbs: Awaited<ReturnType<typeof getPkgBreadcrumbs>>;
 	},
-	{ slug: string }
+	{ slug: string; group: string }
 > = async ({ params }) => {
-	const pkgList = await getPkgList();
-	const pkg = params ? await getPkg(params.slug) : undefined;
+	const { slug, group } = params ?? {};
+	const pkg = slug ? await getPkg(slug) : undefined;
 
-	if (!pkg) {
+	if (!(slug && group && pkg)) {
 		return { notFound: true };
 	}
 
-	const pkgLinks = pkgList.map(({ slug, title }) => ({
-		href: `/packages/${slug}`,
-		label: title,
-	}));
+	const navLinks = await getPkgNavLinks(group);
+	const breadcrumbs = await getPkgBreadcrumbs(slug);
 
 	return {
 		props: {
 			pkg,
-			pkgLinks,
-			slug: params?.slug,
+			navLinks,
+			breadcrumbs,
 		},
 	};
 };
 
 export const getStaticPaths = async () => {
-	const slugs = await getPkgSlugs();
+	const packages = await getPkgList();
 
 	return {
-		paths: slugs.map((slug) => ({
-			params: { slug },
+		paths: packages.map(({ group, slug }) => ({
+			params: { group, slug },
 		})),
 		fallback: false,
 	};

@@ -71,7 +71,6 @@ export function NavItem({
 						textDecorationSkipInk: 'auto',
 						color: themeValues.foreground.text,
 						backgroundColor: localValues.linkHoverBg,
-
 						'&::after': {
 							background: active ? localValues.linkHoverBg : 'transparent',
 						},

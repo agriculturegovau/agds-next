@@ -8,7 +8,7 @@ import {
 	PaletteKey,
 	Palette,
 	themes,
-	themeVars,
+	themeValues,
 } from './colors';
 
 export function Core({
@@ -42,7 +42,7 @@ export function Core({
 						'body, html': {
 							margin: 0,
 							padding: 0,
-							background: themeVars.background.page,
+							background: themeValues.background.page,
 						},
 					},
 				]}

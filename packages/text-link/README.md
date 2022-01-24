@@ -1,3 +1,4 @@
 ---
 title: TextLink
+group: Core
 ---
