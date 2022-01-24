@@ -1,5 +1,16 @@
 # @ag.ds-next/text-link
 
+## 2.0.0
+
+### Patch Changes
+
+- 50d3dd9: - Fixed internal usage of `themeVars` vs `themeValues`
+  - Use the LinkComponent from Core in TextLink
+  - Added `agriculture` variant to `MainNav` component.
+- Updated dependencies [6048f94]
+- Updated dependencies [50d3dd9]
+  - @ag.ds-next/core@1.1.0
+
 ## 1.0.1
 
 ### Patch Changes
