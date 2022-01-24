@@ -66,7 +66,6 @@ const AgComplexFooter: ComponentStory<typeof Footer> = (args) => {
 	return (
 		<Footer variant={args.variant}>
 			<Flex
-				className="au-footer__navigation row"
 				aria-label="footer"
 				gap={1}
 				css={{

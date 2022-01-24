@@ -1,6 +1,8 @@
 import { themeValues, outline } from '@ag.ds-next/core';
 import { HTMLProps } from 'react';
 
+import { useLinkComponent } from '@ag.ds-next/core';
+
 export function textLinkStyles() {
 	return {
 		color: themeValues.foreground.action,
@@ -18,6 +20,7 @@ export function textLinkStyles() {
 type TextLinkProps = HTMLProps<HTMLAnchorElement>;
 
 export const TextLink = (props: TextLinkProps) => {
+	const Link = useLinkComponent();
 	const styles = textLinkStyles();
-	return <a css={styles} {...props} />;
+	return <Link css={styles} {...props} />;
 };

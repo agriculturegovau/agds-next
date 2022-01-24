@@ -43,6 +43,15 @@ const snippits = [
     ]} />`,
 	},
 	{
+		group: 'Breadcrumbs',
+		name: 'Basic',
+		code: `<Breadcrumbs links={[
+      { href: '#', label: 'Home' },
+      { href: '#', label: 'Establishments' },
+      { label: 'Applications' },
+    ]} />`,
+	},
+	{
 		group: 'Footer',
 		name: 'Basic',
 		code: `<Footer variant='dark'>
@@ -64,7 +73,6 @@ const snippits = [
 		name: 'Complex',
 		code: `<Footer variant="dark">
     <Flex
-      className="au-footer__navigation row"
       aria-label="footer"
       gap={1}
       css={{

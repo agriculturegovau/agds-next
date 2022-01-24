@@ -9,7 +9,7 @@ import {
 } from './index';
 
 export default {
-	title: 'layout/SideNav',
+	title: 'navigation/SideNav',
 	component: SideNav,
 } as ComponentMeta<typeof SideNav>;
 

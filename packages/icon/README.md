@@ -1,6 +1,7 @@
 ---
 title: Icon
 description:
+group: Core
 ---
 
 Make use of our Design System's icon library, anywhere in your app.

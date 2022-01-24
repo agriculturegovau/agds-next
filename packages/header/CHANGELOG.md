@@ -1,5 +1,18 @@
 # @ag.ds-next/header
 
+## 2.0.0
+
+### Patch Changes
+
+- a78a224: Fixed alignment when the site `Header` has no `subline`
+  - header now uses the link component provided by `useLinkComponent` to wrap the `HeaderBrand`.
+- Updated dependencies [6048f94]
+- Updated dependencies [50d3dd9]
+  - @ag.ds-next/core@1.1.0
+  - @ag.ds-next/box@2.0.0
+  - @ag.ds-next/heading@2.0.0
+  - @ag.ds-next/text@2.0.0
+
 ## 1.0.1
 
 ### Patch Changes

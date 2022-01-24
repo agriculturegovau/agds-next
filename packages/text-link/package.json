@@ -1,11 +1,11 @@
 {
 	"name": "@ag.ds-next/text-link",
-	"version": "1.0.1",
+	"version": "2.0.0",
 	"main": "dist/ag.ds-next-text-link.cjs.js",
 	"module": "dist/ag.ds-next-text-link.esm.js",
 	"license": "MIT",
 	"peerDependencies": {
-		"@ag.ds-next/core": "1.0.1",
+		"@ag.ds-next/core": "1.1.0",
 		"@emotion/react": "^11.7.0"
 	},
 	"devDependencies": {

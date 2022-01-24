@@ -72,17 +72,94 @@ export async function getPkgSlugs() {
 		.map((entry) => slugify(stripMdxExtension(entry.name)));
 }
 
-export function getPkgList() {
+function pkgNavMetaData(
+	slug: string,
+	data: Awaited<ReturnType<typeof getMarkdownData>>['data']
+) {
+	return {
+		title: (data?.title ?? slug) as string,
+		group: slugify(data?.group ?? 'Other') as string,
+		groupName: (data?.group ?? 'Other') as string,
+		slug,
+	};
+}
+
+export function getPkgList(group?: string) {
 	return getPkgSlugs().then((slugs) =>
 		Promise.all(
 			slugs.map((slug) =>
-				getMarkdownData(pkgDocsPath(slug)).then(({ data }) => ({
-					title: (data?.title ?? slug) as string,
-					slug,
-				}))
+				getMarkdownData(pkgDocsPath(slug)).then(({ data }) =>
+					pkgNavMetaData(slug, data)
+				)
 			)
 		)
+			.then((pkgList) =>
+				// filter if group is passed
+				group ? pkgList.filter((pkg) => pkg.group === group) : pkgList
+			)
+			.then((pkgList) => pkgList.sort((a, b) => (a.title > b.title ? 1 : -1)))
 	);
+}
+
+export function getPkgGroupList() {
+	return getPkgList().then((pkgs) => {
+		const uniqueGroups = new Map(pkgs.map((p) => [p.group, p.groupName]));
+		return Array.from(uniqueGroups.entries())
+			.map(([slug, title]) => ({
+				slug,
+				title,
+			}))
+			.sort((a, b) => (a.title > b.title ? 1 : -1));
+	});
+}
+
+export function getGroupBreadCrumbs(groupSlug: string) {
+	return getPkgGroupList().then((groups) => {
+		const group = groups.find((g) => g.slug === groupSlug);
+		return group
+			? [{ href: '/packages', label: 'Packages' }, { label: group.title }]
+			: undefined;
+	});
+}
+
+export function getPkgBreadcrumbs(slug: string) {
+	return getMarkdownData(pkgDocsPath(slug)).then(({ data }) => {
+		const meta = pkgNavMetaData(slug, data);
+
+		return [
+			{ href: '/packages', label: 'Packages' },
+			{ href: `/packages/${meta.group}`, label: meta.groupName },
+			{ label: meta.title },
+		];
+	});
+}
+
+export async function getPkgNavLinks(group?: string) {
+	const groupList = await getPkgGroupList();
+	const pkgList = group ? await getPkgList(group) : [];
+
+	return groupList.map((g) => {
+		return g.slug === group
+			? {
+					...groupNavItem(g),
+					children: pkgList.map(pkgNavItem),
+			  }
+			: groupNavItem(g);
+	});
+}
+
+export function groupNavItem(g: { title: string; slug: string }) {
+	return {
+		label: g.title,
+		href: `/packages/${g.slug}`,
+	};
+}
+
+export function pkgNavItem(p: { title: string; group: string; slug: string }) {
+	return {
+		label: p.title,
+		href: `/packages/${p.group}/${p.slug}`,
+	};
 }
 
 export type Pkg = Awaited<ReturnType<typeof getPkg>>;
