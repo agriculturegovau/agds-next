@@ -1,6 +1,13 @@
 # @ag.ds-next/icon
 
+## 2.0.1
+
+### Patch Changes
+
+- e1cf05c: Include correct dependencies
+
 ## 2.0.0
+
 ### Patch Changes
 
 - 62bc031: - Added new `Breadcrumbs` component
