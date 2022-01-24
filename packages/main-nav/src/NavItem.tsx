@@ -70,11 +70,7 @@ export function NavItem({
 						textDecoration: 'underline',
 						textDecorationSkipInk: 'auto',
 						color: themeValues.foreground.text,
-
-						// FIXME: note that the background hover color in currently incorrect for gold
-						// because AG Main Nav was producing in-accessible colors.
 						backgroundColor: localValues.linkHoverBg,
-
 						'&::after': {
 							background: active ? localValues.linkHoverBg : 'transparent',
 						},
