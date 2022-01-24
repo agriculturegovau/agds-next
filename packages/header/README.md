@@ -4,4 +4,11 @@ description:
 group: Layout
 ---
 
-# Header
+```jsx live
+<Header
+	variant="dark"
+	logo={<AgLogo />}
+	heading="AG Design-System"
+	subline="Welcome to the AG Design-System"
+/>
+```
