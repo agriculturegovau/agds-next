@@ -24,7 +24,7 @@ export function Button({
 >) {
 	const buttonStyles = useButtonStyles({ block, disabled, weight });
 	return (
-		<button css={buttonStyles} {...props}>
+		<button disabled={disabled} css={buttonStyles} {...props}>
 			{loading ? 'Loading...' : children}
 		</button>
 	);

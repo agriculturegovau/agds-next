@@ -14,7 +14,7 @@ const weights = {
 		border: `3px solid ${themeValues.foreground.action}`,
 		color: getContrastColor(themeValues.foreground.action),
 
-		'&:hover': {
+		'&:enabled:hover': {
 			background: themeValues.foreground.text,
 			border: `3px solid ${themeValues.foreground.text}`,
 			color: getContrastColor(themeValues.foreground.text),
@@ -28,7 +28,7 @@ const weights = {
 		border: `3px solid ${themeValues.foreground.action}`,
 		color: themeValues.foreground.action,
 
-		'&:hover': {
+		'&:enabled:hover': {
 			background: 'transparent',
 			border: `3px solid ${themeValues.foreground.text}`,
 			color: themeValues.foreground.text,
@@ -42,7 +42,7 @@ const weights = {
 		border: `3px solid transparent`,
 		color: themeValues.foreground.action,
 
-		'&:hover': {
+		'&:enabled:hover': {
 			background: 'transparent',
 			border: `3px solid transparent`,
 			color: themeValues.foreground.text,
@@ -66,7 +66,7 @@ export const useButtonStyles = ({
 }) => {
 	return {
 		...weights[weight],
-		display: block ? 'block' : 'inline-block',
+		display: 'inline-block',
 		borderRadius: tokens.borderRadius,
 		cursor: 'pointer',
 		fontFamily: tokens.font.body,
@@ -76,6 +76,13 @@ export const useButtonStyles = ({
 		paddingBottom: mapSpacing(0.5),
 		paddingLeft: mapSpacing(1.5),
 		paddingRight: mapSpacing(1.5),
+
+		...(block && {
+			display: 'block',
+			width: '100%',
+			boxSizing: 'border-box',
+			textAlign: 'center',
+		}),
 
 		...(disabled && {
 			cursor: 'not-allowed',
