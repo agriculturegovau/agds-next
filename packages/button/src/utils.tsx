@@ -14,7 +14,7 @@ const weights = {
 		border: `3px solid ${themeValues.foreground.action}`,
 		color: getContrastColor(themeValues.foreground.action),
 
-		'&:enabled:hover': {
+		'&:hover': {
 			background: themeValues.foreground.text,
 			border: `3px solid ${themeValues.foreground.text}`,
 			color: getContrastColor(themeValues.foreground.text),
@@ -28,7 +28,7 @@ const weights = {
 		border: `3px solid ${themeValues.foreground.action}`,
 		color: themeValues.foreground.action,
 
-		'&:enabled:hover': {
+		'&:hover': {
 			background: 'transparent',
 			border: `3px solid ${themeValues.foreground.text}`,
 			color: themeValues.foreground.text,
@@ -42,7 +42,7 @@ const weights = {
 		border: `3px solid transparent`,
 		color: themeValues.foreground.action,
 
-		'&:enabled:hover': {
+		'&:hover': {
 			background: 'transparent',
 			border: `3px solid transparent`,
 			color: themeValues.foreground.text,
@@ -87,6 +87,9 @@ export const useButtonStyles = ({
 		...(disabled && {
 			cursor: 'not-allowed',
 			opacity: 0.3,
+			// reset hover and focus styles
+			'&:hover': {},
+			'&:focus': {},
 		}),
 	};
 };
