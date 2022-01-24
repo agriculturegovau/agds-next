@@ -1,5 +1,5 @@
 ---
-'@ag.ds-next/link-list': major
+'@ag.ds-next/link-list': minor
 '@ag.ds-next/docs': patch
 '@ag.ds-next/example-site': patch
 '@ag.ds-next/ag-branding': patch
