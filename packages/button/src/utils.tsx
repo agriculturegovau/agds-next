@@ -56,14 +56,17 @@ const weights = {
 export type ButtonWeight = 'primary' | 'secondary' | 'tertiary';
 
 export const useButtonStyles = ({
-	weight = 'primary',
+	block,
 	disabled,
+	weight = 'primary',
 }: {
-	weight?: ButtonWeight;
+	block?: boolean;
 	disabled?: boolean;
+	weight?: ButtonWeight;
 }) => {
 	return {
 		...weights[weight],
+		display: block ? 'block' : 'inline-block',
 		borderRadius: tokens.borderRadius,
 		cursor: 'pointer',
 		fontFamily: tokens.font.body,

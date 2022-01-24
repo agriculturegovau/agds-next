@@ -2,6 +2,7 @@ import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { Button, ButtonLink } from './Button';
 import { Box, Stack } from '@ag.ds-next/box';
+import { Text } from '@ag.ds-next/text';
 
 export default {
 	title: 'primitive/Button',
@@ -26,8 +27,9 @@ export const LightButton: ComponentStory<typeof Button> = (args) => (
 	</Stack>
 );
 LightButton.args = {
-	loading: false,
+	block: false,
 	disabled: false,
+	loading: false,
 };
 
 export const DarkButton: ComponentStory<typeof Button> = (args) => (
@@ -42,8 +44,23 @@ export const DarkButton: ComponentStory<typeof Button> = (args) => (
 	</Stack>
 );
 DarkButton.args = {
-	loading: false,
+	block: false,
 	disabled: false,
+	loading: false,
+};
+
+export const LightBlockButton: ComponentStory<typeof Button> = (args) => (
+	<Box theme="light">
+		<Text>
+			This is some text, with a Button inside.
+			<Button {...args}>Primary</Button>
+		</Text>
+	</Box>
+);
+LightBlockButton.args = {
+	block: true,
+	disabled: false,
+	loading: false,
 };
 
 export const ButtonLinkExample: ComponentStory<typeof ButtonLink> = (args) => (
@@ -52,6 +69,7 @@ export const ButtonLinkExample: ComponentStory<typeof ButtonLink> = (args) => (
 	</Box>
 );
 ButtonLinkExample.args = {
+	block: false,
 	href: '#',
 	weight: 'primary',
 };
