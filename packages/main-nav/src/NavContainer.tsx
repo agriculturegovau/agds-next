@@ -39,7 +39,6 @@ const variantMap = {
 		background: 'shade',
 		hover: 'page',
 		bottomBar: globalVars.accent,
-		// accent color ...
 	},
 } as const;
 
