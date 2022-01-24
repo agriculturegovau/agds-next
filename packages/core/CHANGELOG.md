@@ -1,5 +1,17 @@
 # @ag.ds-next/core
 
+## 1.1.0
+
+### Minor Changes
+
+- 6048f94: Playroom fixes
+
+### Patch Changes
+
+- 50d3dd9: - Fixed internal usage of `themeVars` vs `themeValues`
+  - Use the LinkComponent from Core in TextLink
+  - Added `agriculture` variant to `MainNav` component.
+
 ## 1.0.1
 
 ### Patch Changes

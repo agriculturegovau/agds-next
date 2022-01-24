@@ -1,5 +1,18 @@
 # @ag.ds-next/footer
 
+## 2.0.0
+
+### Patch Changes
+
+- c13a0e6: Refactor LinkList, new subcomponents and improved spacing
+- 62bc031: - Added new `Breadcrumbs` component
+  - Renamed `LinkListGroup` to `LinkListContainer`
+  - Updated `Icon` component to allow spreading of SVG props
+- Updated dependencies [6048f94]
+- Updated dependencies [50d3dd9]
+  - @ag.ds-next/core@1.1.0
+  - @ag.ds-next/box@2.0.0
+
 ## 1.0.1
 
 ### Patch Changes

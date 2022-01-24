@@ -1,5 +1,23 @@
 # @ag.ds-next/link-list
 
+## 2.0.0
+
+### Minor Changes
+
+- c13a0e6: Refactor LinkList, new subcomponents and improved spacing
+
+### Patch Changes
+
+- 6048f94: Playroom fixes
+- 62bc031: - Added new `Breadcrumbs` component
+  - Renamed `LinkListGroup` to `LinkListContainer`
+  - Updated `Icon` component to allow spreading of SVG props
+- 331c577: LinkListItem takes `children` instead of `label` prop
+- Updated dependencies [6048f94]
+- Updated dependencies [50d3dd9]
+  - @ag.ds-next/core@1.1.0
+  - @ag.ds-next/box@2.0.0
+
 ## 1.0.1
 
 ### Patch Changes
