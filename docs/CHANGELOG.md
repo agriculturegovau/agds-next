@@ -1,5 +1,13 @@
 # @ag.ds-next/docs
 
+## 0.1.1
+
+### Patch Changes
+
+- Updated dependencies [e1cf05c]
+  - @ag.ds-next/breadcrumbs@2.0.1
+  - @ag.ds-next/icon@2.0.1
+
 ## 0.1.0
 
 ### Minor Changes
