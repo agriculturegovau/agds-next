@@ -6,7 +6,6 @@ import { normalize } from 'path';
 import matter from 'gray-matter';
 
 import { slugify } from './slugify';
-import { group } from 'console';
 
 const PKG_PATH = normalize(`${process.cwd()}/../packages/`);
 const RELEASE_PATH = normalize(`${process.cwd()}/../releases/`);
