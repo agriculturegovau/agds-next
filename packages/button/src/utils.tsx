@@ -1,4 +1,10 @@
-import { outline, themeValues, tokens, mapSpacing } from '@ag.ds-next/core';
+import {
+	fontGrid,
+	outline,
+	themeValues,
+	tokens,
+	mapSpacing,
+} from '@ag.ds-next/core';
 
 const variants = {
 	primary: {
@@ -61,14 +67,13 @@ export function buttonStyles({
 }) {
 	return {
 		...variants[variant],
+		...fontGrid('sm', 'default'),
 		display: 'inline-block',
 		borderWidth: 3,
 		borderStyle: 'solid',
 		borderRadius: tokens.borderRadius,
 		cursor: 'pointer',
 		fontFamily: tokens.font.body,
-		fontSize: `${tokens.fontSize.sm}rem`,
-		lineHeight: 1.5,
 		paddingTop: mapSpacing(0.5),
 		paddingBottom: mapSpacing(0.5),
 		paddingLeft: mapSpacing(1.5),
