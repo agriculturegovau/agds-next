@@ -3,13 +3,13 @@ import { outline, themeValues, tokens, mapSpacing } from '@ag.ds-next/core';
 const variants = {
 	primary: {
 		background: themeValues.foreground.action,
-		border: `3px solid ${themeValues.foreground.action}`,
+		borderColor: themeValues.foreground.action,
 		color: themeValues.background.page,
 		textDecoration: 'none',
 
 		'&:hover': {
 			background: themeValues.foreground.text,
-			border: `3px solid ${themeValues.foreground.text}`,
+			borderColor: themeValues.foreground.text,
 			color: themeValues.background.page,
 			textDecoration: 'underline',
 		},
@@ -62,6 +62,8 @@ export function buttonStyles({
 	return {
 		...variants[variant],
 		display: 'inline-block',
+		borderWidth: 3,
+		borderStyle: 'solid',
 		borderRadius: tokens.borderRadius,
 		cursor: 'pointer',
 		fontFamily: tokens.font.body,
