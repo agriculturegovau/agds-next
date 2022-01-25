@@ -1,23 +1,16 @@
 import { outline, themeValues, tokens, mapSpacing } from '@ag.ds-next/core';
-import { getContrastColor as hexAlly } from 'hex-a11y';
 
-function getContrastColor(bg: string) {
-	return hexAlly(bg, {
-		dark: themeValues.background.page,
-		light: 'white',
-	});
-}
-
-const weights = {
+const variants = {
 	primary: {
 		background: themeValues.foreground.action,
 		border: `3px solid ${themeValues.foreground.action}`,
-		color: getContrastColor(themeValues.foreground.action),
+		color: themeValues.background.page,
+		textDecoration: 'none',
 
 		'&:hover': {
 			background: themeValues.foreground.text,
 			border: `3px solid ${themeValues.foreground.text}`,
-			color: getContrastColor(themeValues.foreground.text),
+			color: themeValues.background.page,
 			textDecoration: 'underline',
 		},
 
@@ -27,6 +20,7 @@ const weights = {
 		background: 'transparent',
 		border: `3px solid ${themeValues.foreground.action}`,
 		color: themeValues.foreground.action,
+		textDecoration: 'none',
 
 		'&:hover': {
 			background: 'transparent',
@@ -41,31 +35,32 @@ const weights = {
 		background: 'transparent',
 		border: `3px solid transparent`,
 		color: themeValues.foreground.action,
+		textDecoration: 'underline',
 
 		'&:hover': {
 			background: 'transparent',
 			border: `3px solid transparent`,
 			color: themeValues.foreground.text,
-			textDecoration: 'underline',
+			textDecoration: 'none',
 		},
 
 		'&:focus': { ...outline },
 	},
 };
 
-export type ButtonWeight = 'primary' | 'secondary' | 'tertiary';
+export type ButtonVariant = 'primary' | 'secondary' | 'tertiary';
 
-export const useButtonStyles = ({
+export function buttonStyles({
 	block,
 	disabled,
-	weight = 'primary',
+	variant = 'primary',
 }: {
 	block?: boolean;
 	disabled?: boolean;
-	weight?: ButtonWeight;
-}) => {
+	variant?: ButtonVariant;
+}) {
 	return {
-		...weights[weight],
+		...variants[variant],
 		display: 'inline-block',
 		borderRadius: tokens.borderRadius,
 		cursor: 'pointer',
@@ -92,4 +87,4 @@ export const useButtonStyles = ({
 			'&:focus': {},
 		}),
 	};
-};
+}

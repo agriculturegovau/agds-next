@@ -17,11 +17,11 @@ A light button style used for tertiary actions on a screen such as a Cancel butt
 
 ```jsx live
 <Flex gap={1}>
-	<Button weight="primary" onClick={() => alert('primary')}>Primary</Button>
-	<Button weight="secondary" onClick={() => alert('secondary')}>
+	<Button variant="primary" onClick={() => alert('primary')}>Primary</Button>
+	<Button variant="secondary" onClick={() => alert('secondary')}>
 		Secondary
 	</Button>
-	<Button weight="tertiary" onClick={() => alert('tertiary')}>
+	<Button variant="tertiary" onClick={() => alert('tertiary')}>
 		Tertiary
 	</Button>
 </Flex>

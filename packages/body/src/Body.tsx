@@ -26,7 +26,7 @@ export const bodyClass = css({
 	fontFamily: tokens.font.body,
 	...fontGrid('sm', 'default'),
 
-	a: {
+	'a:not([class])': {
 		color: themeValues.foreground.action,
 		textDecoration: 'underline',
 		textDecorationSkipInk: 'auto',
