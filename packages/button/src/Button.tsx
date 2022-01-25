@@ -15,7 +15,6 @@ export function Button({
 	...props
 }: {
 	block?: boolean;
-	disabled?: boolean;
 	loading?: boolean;
 	variant?: ButtonVariant;
 } & DetailedHTMLProps<
@@ -37,7 +36,6 @@ export function ButtonLink({
 	variant,
 	...props
 }: {
-	href: string;
 	block?: boolean;
 	variant?: ButtonVariant;
 } & DetailedHTMLProps<
@@ -46,7 +44,6 @@ export function ButtonLink({
 >) {
 	const styles = buttonStyles({ block, variant });
 	const Link = useLinkComponent();
-
 	return (
 		<Link href={href} css={styles} {...props}>
 			{children}

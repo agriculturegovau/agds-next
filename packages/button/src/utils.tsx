@@ -14,7 +14,7 @@ const variants = {
 			textDecoration: 'underline',
 		},
 
-		'&:focus': { ...outline },
+		'&:focus': outline,
 	},
 	secondary: {
 		background: 'transparent',
@@ -29,7 +29,7 @@ const variants = {
 			textDecoration: 'underline',
 		},
 
-		'&:focus': { ...outline },
+		'&:focus': outline,
 	},
 	tertiary: {
 		background: 'transparent',
@@ -44,11 +44,11 @@ const variants = {
 			textDecoration: 'none',
 		},
 
-		'&:focus': { ...outline },
+		'&:focus': outline,
 	},
-};
+} as const;
 
-export type ButtonVariant = 'primary' | 'secondary' | 'tertiary';
+export type ButtonVariant = keyof typeof variants;
 
 export function buttonStyles({
 	block,

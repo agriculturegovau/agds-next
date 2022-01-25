@@ -5,7 +5,7 @@ import { Box, Stack } from '@ag.ds-next/box';
 import { Text } from '@ag.ds-next/text';
 
 export default {
-	title: 'primitive/Button',
+	title: 'forms/Button',
 	component: Button,
 } as ComponentMeta<typeof Button>;
 
@@ -64,7 +64,7 @@ LightBlockButton.args = {
 };
 
 export const ButtonLinkExample: ComponentStory<typeof ButtonLink> = (args) => (
-	<Box flexDirection="row" padding={2} background="page" theme="dark">
+	<Box padding={2} background="page" theme="dark">
 		<ButtonLink {...args}>Primary</ButtonLink>
 	</Box>
 );
