@@ -18,10 +18,10 @@ export const LightButton: ComponentStory<typeof Button> = (args) => (
 		theme="light"
 	>
 		<Button {...args}>Primary</Button>
-		<Button {...args} weight="secondary">
+		<Button {...args} variant="secondary">
 			Secondary
 		</Button>
-		<Button {...args} weight="tertiary">
+		<Button {...args} variant="tertiary">
 			Tertiary
 		</Button>
 	</Stack>
@@ -35,10 +35,10 @@ LightButton.args = {
 export const DarkButton: ComponentStory<typeof Button> = (args) => (
 	<Stack gap={2} flexDirection="row" padding={2} background="page" theme="dark">
 		<Button {...args}>Primary</Button>
-		<Button {...args} weight="secondary">
+		<Button {...args} variant="secondary">
 			Secondary
 		</Button>
-		<Button {...args} weight="tertiary">
+		<Button {...args} variant="tertiary">
 			Tertiary
 		</Button>
 	</Stack>
