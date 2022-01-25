@@ -20,7 +20,12 @@ export default function PackagesHome({
 }: InferGetStaticPropsType<typeof getStaticProps>) {
 	return (
 		<AppLayout>
-			<PageLayout navLinks={navLinks} breadcrumbs={breadcrumbs}>
+			<PageLayout
+				navTitle="Packages"
+				navTitleLink="/packages"
+				navLinks={navLinks}
+				breadcrumbs={breadcrumbs}
+			>
 				<H1>{group.title}</H1>
 				<Flex gap={2} flexWrap="wrap">
 					{pkgList.map((pkg) => (
