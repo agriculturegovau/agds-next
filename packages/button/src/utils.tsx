@@ -71,12 +71,12 @@ export function buttonStyles({
 		paddingBottom: mapSpacing(0.5),
 		paddingLeft: mapSpacing(1.5),
 		paddingRight: mapSpacing(1.5),
+		boxSizing: 'border-box',
+		textAlign: 'center',
 
 		...(block && {
 			display: 'block',
 			width: '100%',
-			boxSizing: 'border-box',
-			textAlign: 'center',
 		}),
 
 		...(disabled && {
@@ -86,5 +86,5 @@ export function buttonStyles({
 			'&:hover': {},
 			'&:focus': {},
 		}),
-	};
+	} as const;
 }

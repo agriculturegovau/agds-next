@@ -71,5 +71,5 @@ export const ButtonLinkExample: ComponentStory<typeof ButtonLink> = (args) => (
 ButtonLinkExample.args = {
 	block: false,
 	href: '#',
-	weight: 'primary',
+	variant: 'primary',
 };
