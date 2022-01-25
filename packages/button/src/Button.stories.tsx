@@ -1,7 +1,7 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { Button, ButtonLink } from './Button';
-import { Box, Stack } from '@ag.ds-next/box';
+import { Box, Flex } from '@ag.ds-next/box';
 import { Text } from '@ag.ds-next/text';
 
 export default {
@@ -10,13 +10,7 @@ export default {
 } as ComponentMeta<typeof Button>;
 
 export const LightButton: ComponentStory<typeof Button> = (args) => (
-	<Stack
-		gap={2}
-		flexDirection="row"
-		padding={2}
-		background="page"
-		theme="light"
-	>
+	<Flex gap={2} flexDirection="row" padding={2} background="page" theme="light">
 		<Button {...args}>Primary</Button>
 		<Button {...args} variant="secondary">
 			Secondary
@@ -24,7 +18,7 @@ export const LightButton: ComponentStory<typeof Button> = (args) => (
 		<Button {...args} variant="tertiary">
 			Tertiary
 		</Button>
-	</Stack>
+	</Flex>
 );
 LightButton.args = {
 	block: false,
@@ -33,7 +27,7 @@ LightButton.args = {
 };
 
 export const DarkButton: ComponentStory<typeof Button> = (args) => (
-	<Stack gap={2} flexDirection="row" padding={2} background="page" theme="dark">
+	<Flex gap={2} flexDirection="row" padding={2} background="page" theme="dark">
 		<Button {...args}>Primary</Button>
 		<Button {...args} variant="secondary">
 			Secondary
@@ -41,7 +35,7 @@ export const DarkButton: ComponentStory<typeof Button> = (args) => (
 		<Button {...args} variant="tertiary">
 			Tertiary
 		</Button>
-	</Stack>
+	</Flex>
 );
 DarkButton.args = {
 	block: false,
