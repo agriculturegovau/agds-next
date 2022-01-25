@@ -94,14 +94,14 @@ const AgComplexFooter: ComponentStory<typeof Footer> = (args) => {
 					/>
 				</div>
 			</Flex>
-			<Divider />
+			<Divider accent />
 			<Text as="p">Footer text</Text>
 
 			<Box maxWidth="240px">
 				<Logo />
 			</Box>
 
-			<Divider />
+			<Divider accent />
 			<p>
 				<small>
 					&copy; Commonwealth of Australia,{' '}
