@@ -1,21 +1,18 @@
-import type { ReactNode } from 'react';
-import { Box, BoxProps } from '@ag.ds-next/box';
+import type { PropsWithChildren } from 'react';
+import { Box } from '@ag.ds-next/box';
 import { themeValues } from '@ag.ds-next/core';
 
 import { localVars } from './utils';
 
-export type SideNavVariantType = keyof typeof variantMap;
+export type SideNavContainerProps = PropsWithChildren<{
+	variant: keyof typeof variantMap;
+}>;
 
-export type SideNavContentProps = BoxProps & {
-	children: ReactNode;
-	variant: SideNavVariantType;
-};
-
-export const SideNavContent = ({
+export const SideNavContainer = ({
 	children,
 	variant,
 	...props
-}: SideNavContentProps) => {
+}: SideNavContainerProps) => {
 	const { theme, background, hover } = variantMap[variant];
 	return (
 		<Box
@@ -26,14 +23,6 @@ export const SideNavContent = ({
 			fontSize="sm"
 			lineHeight="default"
 			css={{
-				'& > ul > li': {
-					borderBottom: `1px solid ${themeValues.border}`,
-
-					'&:last-of-type': {
-						border: 'none',
-					},
-				},
-
 				[localVars.linkHoverBg]: themeValues.background[hover],
 				[localVars.linkActiveBg]: themeValues.background[background],
 			}}
