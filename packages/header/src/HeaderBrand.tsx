@@ -1,5 +1,4 @@
 import { Box, Flex, Stack } from '@ag.ds-next/box';
-import { Heading } from '@ag.ds-next/heading';
 import { Text } from '@ag.ds-next/text';
 import { useLinkComponent } from '@ag.ds-next/core';
 
@@ -48,7 +47,13 @@ export function HeaderBrand({
 			) : null}
 			{logo ? <Box borderRight display={{ xs: 'none', md: 'block' }} /> : null}
 			<Stack justifyContent="center">
-				<Heading fontSize={{ xs: 'md', md: 'xl' }}>{heading}</Heading>
+				<Text
+					lineHeight="default"
+					fontSize={{ xs: 'md', md: 'xl' }}
+					fontWeight="bold"
+				>
+					{heading}
+				</Text>
 				{subline && (
 					<Text color="muted" fontSize={{ xs: 'sm', md: 'md' }}>
 						{subline}
