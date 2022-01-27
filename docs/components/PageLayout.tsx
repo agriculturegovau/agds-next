@@ -21,10 +21,13 @@ export function PageLayout({
 	const router = useRouter();
 	return (
 		<Content>
-			<Flex gap={{ xs: 1, md: 2 }} flexDirection={{ xs: 'column', md: 'row' }}>
+			<Flex
+				gap={{ xs: 1, md: 2, lg: 6 }}
+				flexDirection={{ xs: 'column', md: 'row' }}
+			>
 				{navLinks && (
 					<Box
-						width={{ md: '33%' }}
+						width={{ md: '25%' }}
 						minWidth={'10rem'}
 						maxWidth={{ md: '20rem' }}
 						flexShrink={0}
