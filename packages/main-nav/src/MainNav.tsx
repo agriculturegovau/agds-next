@@ -2,7 +2,7 @@ import { NavContainer, NavContainerProps } from './NavContainer';
 import { NavList, NavListProps } from './NavList';
 
 export function MainNav({
-	variant = 'darkAlt',
+	variant = 'agriculture',
 	links,
 	secondaryLinks,
 	activePath,
