@@ -1,14 +1,5 @@
 const snippits = [
 	{
-		group: 'Button',
-		name: 'Strong',
-		code: `
-      <Button weight="strong">
-        Button
-      </Button>
-    `,
-	},
-	{
 		group: 'Boilerplate',
 		name: 'One',
 		code: `<Header logo={<Logo />} heading="Export services" />
@@ -183,6 +174,21 @@ items={[
       </SideNavLinkGroup>
       </SideNavLinkGroup>
     </SideNavContent>`,
+	},
+	{
+		group: 'Button',
+		name: 'Primary',
+		code: `<Button>Submit</Button>`,
+	},
+	{
+		group: 'Button',
+		name: 'Secondary',
+		code: `<Button variant='secondary'>Save</Button>`,
+	},
+	{
+		group: 'Button',
+		name: 'Tertiary',
+		code: `<Button variant='tertiary'>Cancel</Button>`,
 	},
 ];
 
