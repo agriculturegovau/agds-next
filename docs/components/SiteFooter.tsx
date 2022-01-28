@@ -1,5 +1,6 @@
-import { Footer as AgDsFooter } from '@ag.ds-next/footer';
-import { Flex } from '@ag.ds-next/box';
+import { Footer } from '@ag.ds-next/footer';
+import { Divider } from '@ag.ds-next/box';
+import { Text } from '@ag.ds-next/text';
 import { LinkList } from '@ag.ds-next/link-list';
 
 const footerLinks = [
@@ -10,10 +11,12 @@ const footerLinks = [
 
 export const SiteFooter = () => {
 	return (
-		<AgDsFooter>
-			<Flex gap={1}>
-				<LinkList links={footerLinks} horizontal />
-			</Flex>
-		</AgDsFooter>
+		<Footer>
+			<LinkList links={footerLinks} horizontal />
+
+			<Divider />
+
+			<Text>&copy; Commonwealth of Australia.</Text>
+		</Footer>
 	);
 };

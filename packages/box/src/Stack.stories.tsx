@@ -6,7 +6,7 @@ import { Box } from './Box';
 import { Fragment } from 'react';
 
 export default {
-	title: 'primitive/Stack',
+	title: 'foundations/Stack',
 	component: Stack,
 } as ComponentMeta<typeof Stack>;
 

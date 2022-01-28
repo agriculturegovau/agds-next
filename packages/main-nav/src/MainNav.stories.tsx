@@ -19,6 +19,13 @@ const Template: ComponentStory<typeof MainNav> = (args) => (
 	<MainNav {...args} />
 );
 
+export const MainNavAg = Template.bind({});
+MainNavAg.args = {
+	links: NAV_ITEMS,
+	activePath: '#content',
+	variant: 'agriculture',
+};
+
 export const MainNavDark = Template.bind({});
 MainNavDark.args = {
 	links: NAV_ITEMS,

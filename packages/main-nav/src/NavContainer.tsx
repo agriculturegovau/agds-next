@@ -67,7 +67,7 @@ export function NavContainer({ variant, children }: NavContainerProps) {
 				<Box
 					maxWidth={tokens.maxWidth.container}
 					width="100%"
-					paddingX={{ xs: 1, md: 2 }}
+					paddingX={{ xs: 0.75, md: 2 }}
 				>
 					<ToggleButton onClick={open} />
 					<FocusTrap

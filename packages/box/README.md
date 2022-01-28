@@ -1,8 +1,10 @@
 ---
 title: Box
 description: A primitive layout component
-group: Core
+group: Foundations
 ---
+
+This package includes the components `<Box />`, `<Flex />` and `<Stack />`.
 
 ```jsx live
 <Box

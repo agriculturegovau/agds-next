@@ -16,11 +16,15 @@ export const Footer = ({ variant = 'dark', children }: FooterProps) => {
 			theme={variantMap[variant].theme}
 			paddingY={3}
 			css={{
-				borderTop: '3px solid',
+				borderTop: '4px solid',
 				borderColor: globalVars.accent,
 
 				li: {
 					marginLeft: 0,
+				},
+
+				hr: {
+					borderColor: globalVars.accent,
 				},
 			}}
 		>

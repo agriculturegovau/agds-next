@@ -18,8 +18,10 @@ import {
 	SideNavTitle,
 } from '@ag.ds-next/side-nav';
 import { Icon, IconExamples } from '@ag.ds-next/icon';
+import { Logo as AgLogo } from '@ag.ds-next/ag-branding';
 
 export const designSystemComponents = {
+	AgLogo,
 	Button,
 	ButtonLink,
 	Box,
