@@ -3,6 +3,7 @@ import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { Logo } from '@ag.ds-next/ag-branding';
 import { Box, Divider, Flex } from '@ag.ds-next/box';
+import { tokens } from '@ag.ds-next/core';
 import { Heading } from '@ag.ds-next/heading';
 import { Text } from '@ag.ds-next/text';
 import { TextLink } from '@ag.ds-next/text-link';
@@ -70,7 +71,14 @@ const AgComplexFooter: ComponentStory<typeof Footer> = (args) => {
 				gap={1}
 				css={{
 					display: 'grid',
-					gridTemplateColumns: 'repeat(4, [col-start] 1fr)',
+
+					[tokens.mediaQuery.min.sm]: {
+						gridTemplateColumns: 'repeat(2, [col-start] 1fr)',
+					},
+
+					[tokens.mediaQuery.min.lg]: {
+						gridTemplateColumns: 'repeat(4, [col-start] 1fr)',
+					},
 				}}
 			>
 				<div>

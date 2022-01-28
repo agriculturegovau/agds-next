@@ -3,7 +3,7 @@ const snippits = [
 		group: 'Boilerplate',
 		name: 'One',
 		code: `<Header logo={<Logo />} heading="Export services" />
-    <MainNav links={[{ label: "Hello", href: "#" }]} />
+    <MainNav links={[{ label: "Hello", href: "#" }]} variant='agriculture' />
 
     <Content>
       <Body>
@@ -68,9 +68,36 @@ const snippits = [
       gap={1}
       css={{
         display: "grid",
-        gridTemplateColumns: "repeat(4, [col-start] 1fr)",
+
+        [tokens.mediaQuery.min.sm]: {
+          gridTemplateColumns: "repeat(2, [col-start] 1fr)",
+        },
+
+        [tokens.mediaQuery.min.lg]: {
+          gridTemplateColumns: "repeat(4, [col-start] 1fr)",
+        },
       }}
     >
+      <div>
+        <H3>Section</H3>
+        <LinkList
+          links={[
+            { href: "#", label: "Link 1" },
+            { href: "#", label: "Link 2" },
+            { href: "#", label: "Link 3" },
+          ]}
+        />
+      </div>
+      <div>
+        <H3>Section</H3>
+        <LinkList
+          links={[
+            { href: "#", label: "Link 1" },
+            { href: "#", label: "Link 2" },
+            { href: "#", label: "Link 3" },
+          ]}
+        />
+      </div>
       <div>
         <H3>Section</H3>
         <LinkList
