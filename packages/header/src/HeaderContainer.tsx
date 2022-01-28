@@ -33,12 +33,12 @@ export function HeaderContainer({ variant, children }: HeaderContainerProps) {
 			background={variantMap[variant].background}
 			color="text"
 			paddingY={{ xs: 1, md: 3 }}
-			paddingX={{ xs: 1, md: 2 }}
 			justifyContent="center"
 		>
 			<Flex
 				justifyContent="flex-start"
 				maxWidth={tokens.maxWidth.container}
+				paddingX={{ xs: 0.75, md: 2 }}
 				width="100%"
 			>
 				{children}

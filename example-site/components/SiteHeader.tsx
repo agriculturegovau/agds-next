@@ -26,7 +26,7 @@ export const SiteHeader = () => {
 				subline="Welcome to the AG Design-System"
 			/>
 			<MainNav
-				variant="darkAlt"
+				variant="agriculture"
 				links={NAV_LINKS}
 				secondaryLinks={SECONDARY_LINKS}
 				activePath={router.asPath}
