@@ -36,8 +36,8 @@ export function PageLayout({
 						<SideNav
 							variant="light"
 							activePath={router.asPath}
-							menuHeader={navTitle}
-							menuHeaderLink={navTitleLink}
+							menuHeader={navTitle || 'Navigation'}
+							menuHeaderLink={navTitleLink || '#'}
 							items={navLinks}
 						/>
 					</Box>
