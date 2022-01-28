@@ -63,11 +63,11 @@ const snippits = [
 		group: 'Footer',
 		name: 'Complex',
 		code: `<Footer variant="dark">
-    <Flex
+    <Box
       aria-label="footer"
-      gap={1}
       css={{
         display: "grid",
+        gridGap: '1rem',
 
         [tokens.mediaQuery.min.sm]: {
           gridTemplateColumns: "repeat(2, [col-start] 1fr)",
@@ -78,7 +78,7 @@ const snippits = [
         },
       }}
     >
-      <div>
+      <Stack gap={0.5}>
         <H3>Section</H3>
         <LinkList
           links={[
@@ -87,8 +87,8 @@ const snippits = [
             { href: "#", label: "Link 3" },
           ]}
         />
-      </div>
-      <div>
+      </Stack>
+      <Stack gap={0.5}>
         <H3>Section</H3>
         <LinkList
           links={[
@@ -97,8 +97,8 @@ const snippits = [
             { href: "#", label: "Link 3" },
           ]}
         />
-      </div>
-      <div>
+      </Stack>
+      <Stack gap={0.5}>
         <H3>Section</H3>
         <LinkList
           links={[
@@ -107,8 +107,8 @@ const snippits = [
             { href: "#", label: "Link 3" },
           ]}
         />
-      </div>
-      <div>
+      </Stack>
+      <Stack gap={0.5}>
         <H3>Section</H3>
         <LinkList
           links={[
@@ -117,8 +117,8 @@ const snippits = [
             { href: "#", label: "Link 3" },
           ]}
         />
-      </div>
-    </Flex>
+      </Stack>
+    </Box>
     <Divider />
     <Text as="p">Footer text</Text>
 

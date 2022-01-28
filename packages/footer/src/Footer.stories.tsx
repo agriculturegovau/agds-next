@@ -2,9 +2,9 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { Logo } from '@ag.ds-next/ag-branding';
-import { Box, Divider, Flex } from '@ag.ds-next/box';
+import { Box, Divider, Stack } from '@ag.ds-next/box';
 import { tokens } from '@ag.ds-next/core';
-import { Heading } from '@ag.ds-next/heading';
+import { H3 } from '@ag.ds-next/heading';
 import { Text } from '@ag.ds-next/text';
 import { TextLink } from '@ag.ds-next/text-link';
 import { LinkList } from '@ag.ds-next/link-list';
@@ -66,11 +66,11 @@ SimpleFooterDark.args = {
 const AgComplexFooter: ComponentStory<typeof Footer> = (args) => {
 	return (
 		<Footer variant={args.variant}>
-			<Flex
+			<Box
 				aria-label="footer"
-				gap={1}
 				css={{
 					display: 'grid',
+					gridGap: '1rem',
 
 					[tokens.mediaQuery.min.sm]: {
 						gridTemplateColumns: 'repeat(2, [col-start] 1fr)',
@@ -81,8 +81,8 @@ const AgComplexFooter: ComponentStory<typeof Footer> = (args) => {
 					},
 				}}
 			>
-				<div>
-					<Heading type="h3">Section</Heading>
+				<Stack gap={0.5}>
+					<H3>Section</H3>
 					<LinkList
 						links={[
 							{ href: '#', label: 'Link 1' },
@@ -90,9 +90,9 @@ const AgComplexFooter: ComponentStory<typeof Footer> = (args) => {
 							{ href: '#', label: 'Link 3' },
 						]}
 					/>
-				</div>
-				<div>
-					<Heading type="h3">Section</Heading>
+				</Stack>
+				<Stack gap={0.5}>
+					<H3>Section</H3>
 					<LinkList
 						links={[
 							{ href: '#', label: 'Link 1' },
@@ -100,16 +100,36 @@ const AgComplexFooter: ComponentStory<typeof Footer> = (args) => {
 							{ href: '#', label: 'Link 3' },
 						]}
 					/>
-				</div>
-			</Flex>
-			<Divider accent />
+				</Stack>
+				<Stack gap={0.5}>
+					<H3>Section</H3>
+					<LinkList
+						links={[
+							{ href: '#', label: 'Link 1' },
+							{ href: '#', label: 'Link 2' },
+							{ href: '#', label: 'Link 3' },
+						]}
+					/>
+				</Stack>
+				<Stack gap={0.5}>
+					<H3>Section</H3>
+					<LinkList
+						links={[
+							{ href: '#', label: 'Link 1' },
+							{ href: '#', label: 'Link 2' },
+							{ href: '#', label: 'Link 3' },
+						]}
+					/>
+				</Stack>
+			</Box>
+			<Divider />
 			<Text as="p">Footer text</Text>
 
 			<Box maxWidth="240px">
 				<Logo />
 			</Box>
 
-			<Divider accent />
+			<Divider />
 			<p>
 				<small>
 					&copy; Commonwealth of Australia,{' '}
