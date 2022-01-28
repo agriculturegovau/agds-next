@@ -1,5 +1,5 @@
 import { Logo } from '@ag.ds-next/ag-branding';
-import { Button } from '@ag.ds-next/button';
+import { Button, ButtonLink } from '@ag.ds-next/button';
 import { Box, Divider, Flex, Stack } from '@ag.ds-next/box';
 import { Body } from '@ag.ds-next/body';
 import { Text } from '@ag.ds-next/text';
@@ -21,6 +21,7 @@ import { Icon, IconExamples } from '@ag.ds-next/icon';
 
 export const designSystemComponents = {
 	Button,
+	ButtonLink,
 	Box,
 	Divider,
 	Flex,
