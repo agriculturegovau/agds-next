@@ -11,7 +11,11 @@ group: Layout
 			{ href: '#2', label: 'Second link' },
 			{ href: '#3', label: 'Third link' },
 		]}
-		inline
+		horizontal
 	/>
+	<Body>
+		<hr />
+		<p>©️ Copyright 2022</p>
+	</Body>
 </Footer>
 ```

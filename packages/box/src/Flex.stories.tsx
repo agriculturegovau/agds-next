@@ -6,7 +6,7 @@ import { Box } from './Box';
 import { Fragment } from 'react';
 
 export default {
-	title: 'primitive/Flex',
+	title: 'foundations/Flex',
 	component: Flex,
 } as ComponentMeta<typeof Flex>;
 
