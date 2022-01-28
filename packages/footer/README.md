@@ -96,8 +96,8 @@ The footer at the bottom of a page. Usually contains copyright information and l
 
 	<Text fontSize="xs" maxWidth="42em">
 		We acknowledge the traditional owners of country throughout Australia and
-		recognise their  continuing connection to land, waters and culture. We pay
-		our respects to their Elders past,  present and emerging.
+		recognise their continuing connection to land, waters and culture. We pay
+		our respects to their Elders past, present and emerging.
 	</Text>
 
 	<Text fontSize="xs">© Commonwealth of Australia.</Text>
