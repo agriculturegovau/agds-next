@@ -16,8 +16,8 @@ export function PageLayout({
 	breadcrumbs,
 	children,
 }: PropsWithChildren<{
-	navTitle: ComponentProps<typeof SideNav>['menuHeader'];
-	navTitleLink: ComponentProps<typeof SideNav>['menuHeaderLink'];
+	navTitle?: ComponentProps<typeof SideNav>['menuHeader'];
+	navTitleLink?: ComponentProps<typeof SideNav>['menuHeaderLink'];
 	navLinks?: ComponentProps<typeof SideNav>['items'];
 	breadcrumbs?: ComponentProps<typeof Breadcrumbs>['links'];
 	editPath?: string;
