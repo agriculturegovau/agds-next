@@ -4,7 +4,7 @@ import { Body } from '@ag.ds-next/body';
 
 import {
 	getMarkdownData,
-	getReleaseList,
+	getGuideList,
 	serializeMarkdown,
 } from '../../lib/mdxUtils';
 import { mdxComponents } from '../../components/utils';
@@ -13,14 +13,14 @@ import { PageLayout } from '../../components/PageLayout';
 
 type StaticProps = Awaited<ReturnType<typeof getStaticProps>>['props'];
 
-export default function ReleasesHome({ source, releaseLinks }: StaticProps) {
+export default function GuidesHome({ source, guideLinks }: StaticProps) {
 	return (
 		<AppLayout>
 			<PageLayout
-				navTitle="Releases"
-				navTitleLink="/releases"
-				navLinks={releaseLinks}
-				editPath="/releases/index.mdx"
+				navTitle="Guides"
+				navTitleLink="/guides"
+				navLinks={guideLinks}
+				editPath="/guides/index.mdx"
 			>
 				<Body>
 					<MDXRemote {...source} components={mdxComponents} />
@@ -32,19 +32,19 @@ export default function ReleasesHome({ source, releaseLinks }: StaticProps) {
 
 export async function getStaticProps() {
 	const { content } = await getMarkdownData(
-		normalize(`${process.cwd()}/../releases/index.mdx`)
+		normalize(`${process.cwd()}/../guides/index.mdx`)
 	);
 	const source = await serializeMarkdown(content);
-	const releaseList = await getReleaseList();
-	const releaseLinks = releaseList.map(({ slug, title }) => ({
-		href: `/releases/${slug}`,
+	const guideList = await getGuideList();
+	const guideLinks = guideList.map(({ slug, title }) => ({
+		href: `/guides/${slug}`,
 		label: title,
 	}));
 
 	return {
 		props: {
 			source,
-			releaseLinks,
+			guideLinks,
 		},
 	};
 }

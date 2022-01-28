@@ -28,7 +28,12 @@ export default function PackagesHome({
 }: StaticProps) {
 	return (
 		<AppLayout>
-			<PageLayout navLinks={navLinks} editPath="/packages/README.md">
+			<PageLayout
+				navTitle="Packages"
+				navTitleLink="/packages"
+				navLinks={navLinks}
+				editPath="/packages/README.md"
+			>
 				<Body>
 					<MDXRemote {...source} components={mdxComponents} />
 				</Body>

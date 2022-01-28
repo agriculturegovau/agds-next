@@ -25,6 +25,8 @@ export default function Packages({
 	return (
 		<AppLayout>
 			<PageLayout
+				navTitle="Packages"
+				navTitleLink="/packages"
 				navLinks={navLinks}
 				editPath={`/packages/${pkg.slug}/README.md`}
 				breadcrumbs={breadcrumbs}

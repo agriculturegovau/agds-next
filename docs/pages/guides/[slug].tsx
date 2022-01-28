@@ -1,48 +1,36 @@
 import { GetStaticProps, InferGetStaticPropsType } from 'next';
 import { MDXRemote } from 'next-mdx-remote';
 import { H1 } from '@ag.ds-next/heading';
-import { Box, Flex } from '@ag.ds-next/box';
+import { Flex } from '@ag.ds-next/box';
 import { Body } from '@ag.ds-next/body';
 
 import {
-	getRelease,
-	getReleaseList,
-	getReleaseSlugs,
-	Release,
+	getGuide,
+	getGuideList,
+	getGuideSlugs,
+	Guide,
 } from '../../lib/mdxUtils';
 
 import { mdxComponents } from '../../components/utils';
 import { AppLayout } from '../../components/AppLayout';
 import { PageLayout } from '../../components/PageLayout';
 
-export default function Releases({
-	release,
-	releaseLinks,
+export default function Guides({
+	guide,
+	guideLinks,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
 	return (
 		<AppLayout>
 			<PageLayout
-				navTitle="Releases"
-				navTitleLink="/releases"
-				navLinks={releaseLinks}
-				editPath={`/releases/${release.slug}.mdx`}
+				navTitle="Guides"
+				navTitleLink="/guides"
+				navLinks={guideLinks}
+				editPath={`/guides/${guide.slug}.mdx`}
 			>
 				<Flex as="main" flexDirection="column" gap={1} alignItems="flex-start">
-					<H1>{release.data.title}</H1>
-					{release.data.type && (
-						<Box
-							background="shade"
-							paddingX={0.25}
-							border
-							rounded
-							fontSize="xs"
-							display="inline-block"
-						>
-							{release.data.type}
-						</Box>
-					)}
+					<H1>{guide.data.title}</H1>
 					<Body>
-						<MDXRemote {...release.source} components={mdxComponents} />
+						<MDXRemote {...guide.source} components={mdxComponents} />
 					</Body>
 				</Flex>
 			</PageLayout>
@@ -52,33 +40,33 @@ export default function Releases({
 
 export const getStaticProps: GetStaticProps<
 	{
-		release: Release;
-		releaseLinks: { href: string; label: string }[];
+		guide: Guide;
+		guideLinks: { href: string; label: string }[];
 	},
 	{ slug: string }
 > = async ({ params }) => {
-	const release = params ? await getRelease(params.slug) : undefined;
-	const releaseList = await getReleaseList();
-	const releaseLinks = releaseList.map(({ title, slug }) => ({
-		href: `/releases/${slug}`,
+	const guide = params ? await getGuide(params.slug) : undefined;
+	const guideList = await getGuideList();
+	const guideLinks = guideList.map(({ title, slug }) => ({
+		href: `/guides/${slug}`,
 		label: title,
 	}));
 
-	if (!release) {
+	if (!guide) {
 		return { notFound: true };
 	}
 
 	return {
 		props: {
-			release,
-			releaseLinks,
+			guide,
+			guideLinks,
 			slug: params?.slug,
 		},
 	};
 };
 
 export const getStaticPaths = async () => {
-	const slugs = await getReleaseSlugs();
+	const slugs = await getGuideSlugs();
 
 	return {
 		paths: slugs.map((slug) => ({

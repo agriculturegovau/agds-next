@@ -9,6 +9,7 @@ const NAV_LINKS = [
 	{ label: 'Home', href: '/' },
 	{ label: 'Packages', href: '/packages' },
 	{ label: 'Releases', href: '/releases' },
+	{ label: 'Guides', href: '/guides' },
 ];
 
 const SECONDARY_LINKS = [
