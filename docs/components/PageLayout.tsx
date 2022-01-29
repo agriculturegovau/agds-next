@@ -9,16 +9,16 @@ import { useRouter } from 'next/router';
 import { EditPage } from './EditPage';
 
 export function PageLayout({
-	navTitle,
-	navTitleLink,
-	navLinks,
+	sideNav,
 	editPath,
 	breadcrumbs,
 	children,
 }: PropsWithChildren<{
-	navTitle?: ComponentProps<typeof SideNav>['menuHeader'];
-	navTitleLink?: ComponentProps<typeof SideNav>['menuHeaderLink'];
-	navLinks?: ComponentProps<typeof SideNav>['items'];
+	sideNav?: {
+		title: string;
+		titleLink: string;
+		items: ComponentProps<typeof SideNav>['items'];
+	};
 	breadcrumbs?: ComponentProps<typeof Breadcrumbs>['links'];
 	editPath?: string;
 }>) {
@@ -29,7 +29,7 @@ export function PageLayout({
 				gap={{ xs: 1, md: 2, lg: 6 }}
 				flexDirection={{ xs: 'column', md: 'row' }}
 			>
-				{navLinks && (
+				{sideNav && (
 					<Box
 						width={{ md: '25%' }}
 						minWidth={'10rem'}
@@ -39,9 +39,9 @@ export function PageLayout({
 						<SideNav
 							variant="light"
 							activePath={router.asPath}
-							menuHeader={navTitle || 'Navigation'}
-							menuHeaderLink={navTitleLink || '#'}
-							items={navLinks}
+							title={sideNav.title}
+							titleLink={sideNav.titleLink}
+							items={sideNav.items}
 						/>
 					</Box>
 				)}

@@ -144,7 +144,7 @@ export async function getPkgNavLinks(group?: string) {
 		return g.slug === group
 			? {
 					...groupNavItem(g),
-					children: pkgList.map(pkgNavItem),
+					items: pkgList.map(pkgNavItem),
 			  }
 			: groupNavItem(g);
 	});

@@ -9,10 +9,9 @@ import { Header, HeaderBrand, HeaderContainer } from '@ag.ds-next/header';
 import { Footer } from '@ag.ds-next/footer';
 import {
 	SideNav,
-	SideNavContent,
+	SideNavContainer,
 	SideNavLink,
-	SideNavLinkGroup,
-	SideNavMenu,
+	SideNavGroup,
 	SideNavTitle,
 } from '@ag.ds-next/side-nav';
 import { Icon, IconExamples } from '@ag.ds-next/icon';
@@ -41,10 +40,9 @@ export const designSystemComponents = {
 	HeaderBrand,
 	HeaderContainer,
 	SideNav,
-	SideNavContent,
+	SideNavContainer,
 	SideNavLink,
-	SideNavLinkGroup,
-	SideNavMenu,
+	SideNavGroup,
 	SideNavTitle,
 	Icon,
 	IconExamples,

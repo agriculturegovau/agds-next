@@ -22,9 +22,11 @@ export default function Releases({
 	return (
 		<AppLayout>
 			<PageLayout
-				navTitle="Releases"
-				navTitleLink="/releases"
-				navLinks={releaseLinks}
+				sideNav={{
+					title: 'Releases',
+					titleLink: '/releases',
+					items: releaseLinks,
+				}}
 				editPath={`/releases/${release.slug}.mdx`}
 			>
 				<Flex as="main" flexDirection="column" gap={1} alignItems="flex-start">

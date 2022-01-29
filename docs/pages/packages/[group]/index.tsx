@@ -21,9 +21,11 @@ export default function PackagesHome({
 	return (
 		<AppLayout>
 			<PageLayout
-				navTitle="Packages"
-				navTitleLink="/packages"
-				navLinks={navLinks}
+				sideNav={{
+					title: 'Packages',
+					titleLink: '/packages',
+					items: navLinks,
+				}}
 				breadcrumbs={breadcrumbs}
 			>
 				<H1>{group.title}</H1>

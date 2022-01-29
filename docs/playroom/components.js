@@ -22,11 +22,9 @@ export {
 export { MainNav } from '@ag.ds-next/main-nav';
 export {
 	SideNav,
-	SideNavContent,
+	SideNavContainer,
 	SideNavLink,
-	SideNavLinkGroup,
-	SideNavLinkList,
-	SideNavMenu,
+	SideNavGroup,
 	SideNavTitle,
 } from '@ag.ds-next/side-nav';
 export { Icon } from '@ag.ds-next/icon';

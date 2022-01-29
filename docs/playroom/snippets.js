@@ -113,7 +113,8 @@ const snippits = [
 		name: 'Basic',
 		code: `<SideNav
 activePath="#welcome"
-menuHeader="SideNav"
+title="SideNav"
+titleLink="#"
 items={[
   {
     href: "#welcome",
@@ -161,7 +162,7 @@ items={[
 	{
 		group: 'SideNav',
 		name: 'Modular',
-		code: `<SideNavContent variant='light'>
+		code: `<SideNavContainer variant='light'>
       <SideNavTitle href="#" text="SideNavTitle" />
       <SideNavLinkGroup>
         <SideNavLink active={true} href="#one" label="One" />
@@ -173,7 +174,7 @@ items={[
         <SideNavLink href="#six" label="Six" />
       </SideNavLinkGroup>
       </SideNavLinkGroup>
-    </SideNavContent>`,
+    </SideNavContainer>`,
 	},
 	{
 		group: 'Button',

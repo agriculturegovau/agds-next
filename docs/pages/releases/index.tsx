@@ -17,9 +17,11 @@ export default function ReleasesHome({ source, releaseLinks }: StaticProps) {
 	return (
 		<AppLayout>
 			<PageLayout
-				navTitle="Releases"
-				navTitleLink="/releases"
-				navLinks={releaseLinks}
+				sideNav={{
+					title: 'Releases',
+					titleLink: '/releases',
+					items: releaseLinks,
+				}}
 				editPath="/releases/index.mdx"
 			>
 				<Body>
