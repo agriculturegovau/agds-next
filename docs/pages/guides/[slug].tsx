@@ -22,9 +22,11 @@ export default function Guides({
 	return (
 		<AppLayout>
 			<PageLayout
-				navTitle="Guides"
-				navTitleLink="/guides"
-				navLinks={guideLinks}
+				sideNav={{
+					title: 'Guides',
+					titleLink: '/guides',
+					items: guideLinks,
+				}}
 				editPath={`/guides/${guide.slug}.mdx`}
 			>
 				<Flex as="main" flexDirection="column" gap={1} alignItems="flex-start">
