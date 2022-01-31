@@ -1,6 +1,8 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { Logo as AgLogo } from '@ag.ds-next/ag-branding';
+import { Button } from '@ag.ds-next/button';
+import { Box, Flex } from '@ag.ds-next/box';
 
 import { Header } from './Header';
 import { HeaderContainer } from './HeaderContainer';
@@ -99,10 +101,25 @@ HeaderHero.args = {
 };
 HeaderHero.storyName = '🕥 Header Hero';
 
-export const HeaderSearch = Template.bind({});
+// Search
+const ExampleSearchBox = () => {
+	return (
+		<Flex width="100%">
+			<Box as="input" padding={0.5} rounded width="100%" />
+			<Button>Search</Button>
+		</Flex>
+	);
+};
+
+export const HeaderSearch: ComponentStory<typeof Header> = (args, context) => (
+	<Header
+		logo={getLogo(context, args.variant)}
+		rightContent={<ExampleSearchBox />}
+		{...args}
+	/>
+);
 HeaderSearch.args = {
-	...defaultArgs,
-	logo: logoLight,
-	heading: 'TODO ...',
+	heading: 'Export Services',
+	subline: 'Example subline',
 };
 HeaderSearch.storyName = '🕥 Header Search';

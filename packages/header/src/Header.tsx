@@ -1,9 +1,12 @@
+import { Flex } from '@ag.ds-next/box';
 import { HeaderContainer } from './HeaderContainer';
 import { HeaderBrand } from './HeaderBrand';
+import type { ReactNode } from 'react';
 
 export type HeaderProps = {
 	heading: string;
 	logo?: JSX.Element;
+	rightContent?: ReactNode;
 	subline?: string;
 	variant?: 'light' | 'lightAlt' | 'dark' | 'darkAlt';
 	href?: string;
@@ -12,6 +15,7 @@ export type HeaderProps = {
 export function Header({
 	logo,
 	heading,
+	rightContent,
 	subline,
 	variant = 'dark',
 	href = '/',
@@ -24,6 +28,15 @@ export function Header({
 				heading={heading}
 				subline={subline}
 			/>
+			<HeaderRight>{rightContent}</HeaderRight>
 		</HeaderContainer>
 	);
 }
+
+const HeaderRight = ({ children }: { children: ReactNode }) => {
+	return (
+		<Flex width={{ xs: '100%', md: '33.33%' }} alignItems="flex-end">
+			{children}
+		</Flex>
+	);
+};

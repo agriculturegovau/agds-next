@@ -36,7 +36,10 @@ export function HeaderContainer({ variant, children }: HeaderContainerProps) {
 			justifyContent="center"
 		>
 			<Flex
-				justifyContent="flex-start"
+				justifyContent="space-between"
+				flexDirection={{ xs: 'column', md: 'row' }}
+				alignItems={{ md: 'center' }}
+				gap={1.5}
 				maxWidth={tokens.maxWidth.container}
 				paddingX={{ xs: 0.75, md: 2 }}
 				width="100%"
