@@ -1,7 +1,9 @@
+import { Logo } from '@ag.ds-next/ag-branding';
 import { Button, ButtonLink } from '@ag.ds-next/button';
-import { Box, Flex, Stack } from '@ag.ds-next/box';
+import { Box, Divider, Flex, Stack } from '@ag.ds-next/box';
 import { Body } from '@ag.ds-next/body';
 import { Text } from '@ag.ds-next/text';
+import { TextLink } from '@ag.ds-next/text-link';
 import { Heading, H1, H2, H3, H4, H5, H6 } from '@ag.ds-next/heading';
 import { LinkList } from '@ag.ds-next/link-list';
 import { Breadcrumbs } from '@ag.ds-next/breadcrumbs';
@@ -22,10 +24,12 @@ export const designSystemComponents = {
 	Button,
 	ButtonLink,
 	Box,
+	Divider,
 	Flex,
 	Stack,
 	Body,
 	Text,
+	TextLink,
 	Heading,
 	H1,
 	H2,
@@ -34,6 +38,7 @@ export const designSystemComponents = {
 	H5,
 	H6,
 	LinkList,
+	Logo,
 	Breadcrumbs,
 	Footer,
 	Header,

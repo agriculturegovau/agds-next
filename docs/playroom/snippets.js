@@ -3,7 +3,7 @@ const snippits = [
 		group: 'Boilerplate',
 		name: 'One',
 		code: `<Header logo={<Logo />} heading="Export services" />
-    <MainNav links={[{ label: "Hello", href: "#" }]} />
+    <MainNav links={[{ label: "Hello", href: "#" }]} variant='agriculture' />
 
     <Content>
       <Body>
@@ -63,15 +63,22 @@ const snippits = [
 		group: 'Footer',
 		name: 'Complex',
 		code: `<Footer variant="dark">
-    <Flex
+    <Box
       aria-label="footer"
-      gap={1}
       css={{
         display: "grid",
-        gridTemplateColumns: "repeat(4, [col-start] 1fr)",
+        gridGap: '1rem',
+
+        [tokens.mediaQuery.min.sm]: {
+          gridTemplateColumns: "repeat(2, [col-start] 1fr)",
+        },
+
+        [tokens.mediaQuery.min.lg]: {
+          gridTemplateColumns: "repeat(4, [col-start] 1fr)",
+        },
       }}
     >
-      <div>
+      <Stack gap={0.5}>
         <H3>Section</H3>
         <LinkList
           links={[
@@ -80,8 +87,8 @@ const snippits = [
             { href: "#", label: "Link 3" },
           ]}
         />
-      </div>
-      <div>
+      </Stack>
+      <Stack gap={0.5}>
         <H3>Section</H3>
         <LinkList
           links={[
@@ -90,8 +97,28 @@ const snippits = [
             { href: "#", label: "Link 3" },
           ]}
         />
-      </div>
-    </Flex>
+      </Stack>
+      <Stack gap={0.5}>
+        <H3>Section</H3>
+        <LinkList
+          links={[
+            { href: "#", label: "Link 1" },
+            { href: "#", label: "Link 2" },
+            { href: "#", label: "Link 3" },
+          ]}
+        />
+      </Stack>
+      <Stack gap={0.5}>
+        <H3>Section</H3>
+        <LinkList
+          links={[
+            { href: "#", label: "Link 1" },
+            { href: "#", label: "Link 2" },
+            { href: "#", label: "Link 3" },
+          ]}
+        />
+      </Stack>
+    </Box>
     <Divider />
     <Text as="p">Footer text</Text>
 
