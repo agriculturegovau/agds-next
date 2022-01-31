@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ComponentProps } from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import {
 	SideNav,
@@ -14,7 +14,7 @@ export default {
 } as ComponentMeta<typeof SideNav>;
 
 const defaultArgs = {
-	header: 'Lodging your tax return',
+	title: 'Lodging your tax return',
 	items: [
 		{
 			href: '#welcome',
@@ -66,7 +66,7 @@ const defaultArgs = {
 		},
 	],
 	activePath: '#in-detail/record-keeping/incorrect-amounts',
-};
+} as ComponentProps<typeof SideNav>;
 
 const Template: ComponentStory<typeof SideNav> = (args) => {
 	return <SideNav {...args} />;
