@@ -6,9 +6,9 @@ description: The masthead of our applications, Header incorporates our AWE brand
 
 ```jsx live
 <Header
-	variant="dark"
+	heading="Export Service"
+	subline="Supporting Australian agricultural exports"
 	logo={<AgLogo />}
-	heading="AG Design-System"
-	subline="Welcome to the AG Design-System"
+	variant="dark"
 />
 ```
