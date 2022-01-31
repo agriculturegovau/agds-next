@@ -77,6 +77,10 @@ function typographyStyles({
 		fontFamily: mapResponsiveProp(fontFamily, (t) => tokens.font[t]),
 		fontSize,
 		lineHeight,
+		'& ::selection': {
+			color: themeValues.background.page,
+			backgroundColor: themeValues.foreground.action,
+		},
 	};
 }
 

@@ -55,29 +55,21 @@ export const bodyClass = css({
 	'& ::selection': {
 		color: themeValues.background.page,
 		backgroundColor: themeValues.foreground.action,
-		// Why RGBA 0.99? https://stackoverflow.com/a/7224621
 	},
 
 	img: {
 		maxWidth: '100%',
 	},
 
-	// Decrease the opacity for certain elements
-	'img::selection,video::selection,iframe::selection': {
-		// TODO: verify this doesn't need to be a RGBA color
-		// with 75% transparency
-		backgroundColor: themeValues.foreground.action,
-	},
-
 	/**
 	 * Vertical spacing of common text elements.
 	 */
-	p: {
+	'p:not([class])': {
 		maxWidth: tokens.maxWidth.bodyText,
 		margin: 0,
 	},
 
-	'* + p': {
+	'* + p:not([class])': {
 		marginTop: mapSpacing(1.5),
 	},
 
@@ -257,7 +249,7 @@ export const bodyClass = css({
 	 * Keyboard strokes.
 	 * Code snippets and code blocks.
 	 */
-	'kbd,code,samp': {
+	'kbd:not([class]),code:not([class]),samp:not([class])': {
 		...fontGrid('xs', 'default'),
 		padding: mapSpacing(0.25),
 		fontFamily: tokens.font.monospace,
@@ -267,12 +259,11 @@ export const bodyClass = css({
 		color: themeValues.foreground.text,
 	},
 
-	pre: {
+	'pre:not([class])': {
 		fontFamily: tokens.font.monospace,
 	},
 
 	'pre code': {
-		// @include AU-space( padding, 1unit ),
 		display: 'block',
 		tabSize: 4,
 	},
@@ -280,7 +271,7 @@ export const bodyClass = css({
 	/**
 	 * Horizontal rule, used for paragraph-level thematic breaks.
 	 */
-	hr: {
+	'hr:not([class])': {
 		boxSizing: 'content-box',
 		height: 0,
 		overflow: 'visible',
@@ -289,70 +280,7 @@ export const bodyClass = css({
 		marginBottom: mapSpacing(1.5),
 	},
 
-	'* + hr': {
+	'* + hr:not([class])': {
 		marginTop: mapSpacing(1.5),
-	},
-
-	/**
-	 *  Body colour schemes
-	 */
-	'&.au-body--alt': {
-		background: themeValues.background.pageAlt,
-
-		'kbd,code,samp': {
-			backgroundColor: themeValues.background.shadeAlt,
-		},
-	},
-
-	'&.au-body--dark': {
-		// background: themeVars.background.page,
-		// color: $AU-colordark-foreground-text;
-
-		'::selection': {
-			// color: $AU-colordark-background;
-			// backgroundColor: rgba( $AU-colordark-foreground-action, 0.99 );
-			// Why RGBA 0.99? https://stackoverflow.com/a/7224621
-		},
-
-		// Decrease the opacity for certain elements
-		'img::selection,video::selection,iframe::selection': {
-			// backgroundColor: rgba( $AU-colordark-foreground-action, 0.75 );
-		},
-
-		a: {
-			// color: $AU-colordark-foreground-action;
-
-			'&:hover': {
-				// color: $AU-colordark-foreground-text;
-			},
-
-			// @include AU-focus( 'dark' );
-		},
-
-		'[tabindex="0"]:focus, :target': {
-			// @include AU-outline( 'dark' );
-		},
-
-		mark: {
-			// backgroundColor: $AU-colordark-foreground-action;
-			// color: $AU-colordark-background;
-		},
-
-		hr: {
-			borderTopColor: themeValues.border,
-		},
-
-		'code, kbd,samp': {
-			// color: $AU-colordark-foreground-text;
-			// backgroundColor: $AU-colordark-background-shade;
-		},
-	},
-
-	'&.au-body--dark.au-body--alt': {
-		// background: $AU-colordark-background-alt;
-
-		'code,kbd, samp': {
-			// backgroundColor: $AU-colordark-background-alt-shade;
-		},
 	},
 });
