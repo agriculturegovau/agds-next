@@ -76,9 +76,26 @@ export const SideNavLink = ({
 					},
 				}}
 			>
-				<Link href={href}>{label}</Link>
+				<Link href={href}>
+					{label}
+					{active && !children && (
+						<span css={visuallyHidden}> Current page</span>
+					)}
+				</Link>
 			</Box>
 			{children}
 		</Box>
 	);
 };
+
+// Content that should be read out
+// to screenreaders only
+const visuallyHidden = {
+	clip: 'rect(0 0 0 0)',
+	clipPath: 'inset(50%)',
+	height: 1,
+	overflow: 'hidden',
+	position: 'absolute',
+	whiteSpace: 'nowrap',
+	width: 1,
+} as const;
