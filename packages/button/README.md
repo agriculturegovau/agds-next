@@ -23,7 +23,7 @@ A standard button style used to highlight an important action such as a Save but
 A light button style used for tertiary actions on a screen such as a Cancel button on a form. (A tertiary button assumes there is already a secondary button.) Typically it performs the opposite action to the secondary button (e.g. Cancel vs Save).
 
 ```jsx live
-<Flex gap={1}>
+<Flex gap={0.5}>
 	<Button variant="primary" onClick={() => alert('primary')}>
 		Primary
 	</Button>
@@ -31,6 +31,23 @@ A light button style used for tertiary actions on a screen such as a Cancel butt
 		Secondary
 	</Button>
 	<Button variant="tertiary" onClick={() => alert('tertiary')}>
+		Tertiary
+	</Button>
+</Flex>
+```
+
+### Size
+Size is another prop that allows adjustment of visual weight. The medium button should be used for most circumstances.
+
+```jsx live
+<Flex gap={0.25}>
+	<Button variant="primary" size='sm' onClick={() => alert('primary')}>
+		Primary
+	</Button>
+	<Button variant="secondary" size='sm' onClick={() => alert('secondary')}>
+		Secondary
+	</Button>
+	<Button variant="tertiary" size='sm' onClick={() => alert('tertiary')}>
 		Tertiary
 	</Button>
 </Flex>
@@ -65,6 +82,8 @@ A block-level button uses 100% of the available width of the container or parent
 ### ButtonLink
 
 For situations where you need something that has the visual weight of a Button, but the functionality of a link, you can use ButtonLink!
+
+ButtonLink adopts the Link component from your chosen router framework, which you can set in the Core component.
 
 ```jsx live
 <ButtonLink href="/sign-in">Sign in</ButtonLink>
