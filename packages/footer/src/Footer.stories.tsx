@@ -28,7 +28,7 @@ const AgSimpleFooter: ComponentStory<typeof Footer> = (args) => {
 			/>
 			<Divider accent />
 
-			<p>
+			<Text>
 				<small>
 					&copy; Commonwealth of Australia,{' '}
 					<TextLink
@@ -38,7 +38,7 @@ const AgSimpleFooter: ComponentStory<typeof Footer> = (args) => {
 						MIT licensed
 					</TextLink>
 				</small>
-			</p>
+			</Text>
 		</Footer>
 	);
 };
@@ -70,7 +70,7 @@ const AgComplexFooter: ComponentStory<typeof Footer> = (args) => {
 				aria-label="footer"
 				css={{
 					display: 'grid',
-					gridGap: '1rem',
+					gridGap: '1.5rem',
 
 					[tokens.mediaQuery.min.sm]: {
 						gridTemplateColumns: 'repeat(2, [col-start] 1fr)',
@@ -130,7 +130,7 @@ const AgComplexFooter: ComponentStory<typeof Footer> = (args) => {
 			</Box>
 
 			<Divider />
-			<p>
+			<Text>
 				<small>
 					&copy; Commonwealth of Australia,{' '}
 					<TextLink
@@ -140,7 +140,7 @@ const AgComplexFooter: ComponentStory<typeof Footer> = (args) => {
 						MIT licensed
 					</TextLink>
 				</small>
-			</p>
+			</Text>
 		</Footer>
 	);
 };
