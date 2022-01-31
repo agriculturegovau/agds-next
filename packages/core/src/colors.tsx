@@ -99,7 +99,7 @@ export const defaultPalette = {
 	lightBackgroundShadeAlt: '#e0e0e0',
 	lightBorder: '#808080',
 	darkForegroundText: '#FFFFFF',
-	darkForegroundAction: '#61daff',
+	darkForegroundAction: '#9EE8FF',
 	darkForegroundFocus: '#c390f9',
 	darkForegroundMuted: '#bdd2d7',
 	darkBackgroundPage: '#135e70',
