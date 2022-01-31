@@ -29,9 +29,11 @@ export default function PackagesHome({
 	return (
 		<AppLayout>
 			<PageLayout
-				navTitle="Packages"
-				navTitleLink="/packages"
-				navLinks={navLinks}
+				sideNav={{
+					title: 'Packages',
+					titleLink: '/packages',
+					items: navLinks,
+				}}
 				editPath="/packages/README.md"
 			>
 				<Body>

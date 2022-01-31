@@ -1,12 +1,13 @@
+import { ReactNode } from 'react';
 import { Box } from '@ag.ds-next/box';
 import { themeValues, useLinkComponent } from '@ag.ds-next/core';
 
 export const SideNavTitle = ({
 	href,
-	text,
+	children,
 }: {
 	href: string;
-	text: string;
+	children: ReactNode;
 }) => {
 	const Link = useLinkComponent();
 	return (
@@ -29,7 +30,7 @@ export const SideNavTitle = ({
 				},
 			}}
 		>
-			{text}
+			{children}
 		</Box>
 	);
 };

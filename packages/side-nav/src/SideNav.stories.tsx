@@ -2,9 +2,9 @@ import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import {
 	SideNav,
-	SideNavContent,
+	SideNavContainer,
 	SideNavTitle,
-	SideNavLinkGroup,
+	SideNavGroup,
 	SideNavLink,
 } from './index';
 
@@ -14,7 +14,7 @@ export default {
 } as ComponentMeta<typeof SideNav>;
 
 const defaultArgs = {
-	menuHeader: 'Lodging your tax return',
+	header: 'Lodging your tax return',
 	items: [
 		{
 			href: '#welcome',
@@ -27,7 +27,7 @@ const defaultArgs = {
 		{
 			href: '#two',
 			label: 'Lodge online',
-			children: [
+			items: [
 				{
 					href: '#three',
 					label: 'Pre-filling your online tax return',
@@ -37,19 +37,19 @@ const defaultArgs = {
 		{ href: '#four', label: "What's new for individuals" },
 		{ href: '#five', label: 'Why you may receive a tax bill' },
 		{
-			href: '#six',
+			href: '#in-detail',
 			label: 'In detail',
-			children: [
+			items: [
 				{
-					href: '#seven',
+					href: '#in-detail/record-keeping',
 					label: 'Record keeping',
-					children: [
+					items: [
 						{
-							href: '#eight',
+							href: '#in-detail/record-keeping/tax',
 							label: 'Keeping your tax records',
 						},
 						{
-							href: '#nine',
+							href: '#in-detail/record-keeping/incorrect-amounts',
 							label: 'Incorrect amounts',
 						},
 					],
@@ -65,7 +65,7 @@ const defaultArgs = {
 			],
 		},
 	],
-	activePath: '#welcome',
+	activePath: '#in-detail/record-keeping/incorrect-amounts',
 };
 
 const Template: ComponentStory<typeof SideNav> = (args) => {
@@ -96,16 +96,26 @@ SideNavDarkAlt.args = {
 	variant: 'darkAlt',
 };
 
-export const Modular: ComponentStory<typeof SideNav> = (args) => {
+export const Modular: ComponentStory<typeof SideNavContainer> = (args) => {
 	return (
-		<SideNavContent {...args}>
-			<SideNavTitle href="#" text="SideNavTitle" />
-			<SideNavLinkGroup>
-				<SideNavLink active={true} href="#one" label="One" />
+		<SideNavContainer {...args}>
+			<SideNavTitle href="#">SideNavTitle</SideNavTitle>
+			<SideNavGroup>
+				<SideNavLink href="#one" label="One" />
 				<SideNavLink href="#two" label="Two" />
-				<SideNavLink href="#three" label="Three" />
-			</SideNavLinkGroup>
-		</SideNavContent>
+				<SideNavLink href="#three" label="Three" active>
+					<SideNavGroup>
+						<SideNavLink href="#three-1" label="Three - 1" active>
+							<SideNavGroup>
+								<SideNavLink href="#three-1-1" label="Three - 1:1" />
+								<SideNavLink href="#three-1-2" label="Three - 1:2" active />
+							</SideNavGroup>
+						</SideNavLink>
+						<SideNavLink href="#three-2" label="Three - 2" />
+					</SideNavGroup>
+				</SideNavLink>
+			</SideNavGroup>
+		</SideNavContainer>
 	);
 };
 Modular.args = {

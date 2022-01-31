@@ -17,9 +17,11 @@ export default function GuidesHome({ source, guideLinks }: StaticProps) {
 	return (
 		<AppLayout>
 			<PageLayout
-				navTitle="Guides"
-				navTitleLink="/guides"
-				navLinks={guideLinks}
+				sideNav={{
+					title: 'Guides',
+					titleLink: '/guides',
+					items: guideLinks,
+				}}
 				editPath="/guides/index.mdx"
 			>
 				<Body>
