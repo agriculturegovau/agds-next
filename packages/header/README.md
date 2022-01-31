@@ -1,7 +1,7 @@
 ---
 title: Header
-description:
 group: Layout
+description: The masthead of our applications, Header incorporates our AWE brand, and provides a user context on where they are.
 ---
 
 ```jsx live
