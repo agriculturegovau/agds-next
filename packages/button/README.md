@@ -37,17 +37,18 @@ A light button style used for tertiary actions on a screen such as a Cancel butt
 ```
 
 ### Size
+
 Size is another prop that allows adjustment of visual weight. The medium button should be used for most circumstances.
 
 ```jsx live
 <Flex gap={0.25}>
-	<Button variant="primary" size='sm' onClick={() => alert('primary')}>
+	<Button variant="primary" size="sm" onClick={() => alert('primary')}>
 		Primary
 	</Button>
-	<Button variant="secondary" size='sm' onClick={() => alert('secondary')}>
+	<Button variant="secondary" size="sm" onClick={() => alert('secondary')}>
 		Secondary
 	</Button>
-	<Button variant="tertiary" size='sm' onClick={() => alert('tertiary')}>
+	<Button variant="tertiary" size="sm" onClick={() => alert('tertiary')}>
 		Tertiary
 	</Button>
 </Flex>
