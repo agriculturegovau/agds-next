@@ -3,7 +3,6 @@ import {
 	LiveProvider,
 	LiveEditor,
 	LivePreview,
-	LiveError,
 	Editor as StaticEditor,
 	withLive,
 } from 'react-live';
