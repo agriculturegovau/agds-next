@@ -218,6 +218,18 @@ items={[
 		name: 'Tertiary',
 		code: `<Button variant='tertiary'>Cancel</Button>`,
 	},
+	{
+		group: 'Columns',
+		name: 'Basic',
+		code: `<Columns gap={2}>
+      <Column colSpan={[12, 6]} background="shade" padding={1}>
+        <Text>Left</Text>
+      </Column>
+      <Column colSpan={[12, 6]} background="shade" padding={1}>
+        <Text>Right</Text>
+      </Column>
+    </Columns>`,
+	},
 ];
 
 export default snippits;
