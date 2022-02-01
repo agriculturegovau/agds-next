@@ -11,9 +11,18 @@ export default {
 export const Basic: ComponentStory<typeof Columns> = (args) => (
 	<Box theme="light" background="page">
 		<Columns {...args}>
-			<Column width={4} background="shade" padding={1} />
-			<Column width={4} background="shade" padding={1} />
-			<Column width={4} background="shade" padding={1} />
+			<Column colSpan={1} background="shade" padding={1} />
+			<Column colSpan={1} background="shade" padding={1} />
+			<Column colSpan={1} background="shade" padding={1} />
+			<Column colSpan={1} background="shade" padding={1} />
+			<Column colSpan={1} background="shade" padding={1} />
+			<Column colSpan={1} background="shade" padding={1} />
+			<Column colSpan={1} background="shade" padding={1} />
+			<Column colSpan={1} background="shade" padding={1} />
+			<Column colSpan={1} background="shade" padding={1} />
+			<Column colSpan={1} background="shade" padding={1} />
+			<Column colSpan={1} background="shade" padding={1} />
+			<Column colSpan={1} background="shade" padding={1} />
 		</Columns>
 	</Box>
 );
@@ -21,46 +30,60 @@ Basic.args = {
 	gridGap: 0.5,
 };
 
-export const Widths: ComponentStory<typeof Columns> = (args) => (
+export const ColSpans: ComponentStory<typeof Columns> = (args) => (
 	<Box theme="light" background="page">
 		<Columns {...args}>
-			<Column width={3} background="shade" padding={1} />
-			<Column width={3} background="shade" padding={1} />
-			<Column width={3} background="shade" padding={1} />
-			<Column width={3} background="shade" padding={1} />
-			<Column width={6} background="shade" padding={1} />
-			<Column width={6} background="shade" padding={1} />
-			<Column width={4} background="shade" padding={1} />
-			<Column width={4} background="shade" padding={1} />
-			<Column width={4} background="shade" padding={1} />
-			<Column width={2} background="shade" padding={1} />
-			<Column width={4} background="shade" padding={1} />
-			<Column width={4} background="shade" padding={1} />
-			<Column width={2} background="shade" padding={1} />
-			<Column width={8} background="shade" padding={1} />
-			<Column width={4} background="shade" padding={1} />
-			<Column width={2} background="shade" padding={1} />
-			<Column width={2} background="shade" padding={1} />
-			<Column width={2} background="shade" padding={1} />
-			<Column width={2} background="shade" padding={1} />
-			<Column width={2} background="shade" padding={1} />
-			<Column width={2} background="shade" padding={1} />
+			<Column colSpan={1} background="shade" padding={1} />
+			<Column colSpan={1} background="shade" padding={1} />
+			<Column colSpan={1} background="shade" padding={1} />
+			<Column colSpan={1} background="shade" padding={1} />
+			<Column colSpan={1} background="shade" padding={1} />
+			<Column colSpan={1} background="shade" padding={1} />
+			<Column colSpan={1} background="shade" padding={1} />
+			<Column colSpan={1} background="shade" padding={1} />
+			<Column colSpan={1} background="shade" padding={1} />
+			<Column colSpan={1} background="shade" padding={1} />
+			<Column colSpan={1} background="shade" padding={1} />
+			<Column colSpan={1} background="shade" padding={1} />
+			<Column colSpan={2} background="shade" padding={1} />
+			<Column colSpan={2} background="shade" padding={1} />
+			<Column colSpan={2} background="shade" padding={1} />
+			<Column colSpan={2} background="shade" padding={1} />
+			<Column colSpan={2} background="shade" padding={1} />
+			<Column colSpan={2} background="shade" padding={1} />
+			<Column colSpan={3} background="shade" padding={1} />
+			<Column colSpan={3} background="shade" padding={1} />
+			<Column colSpan={3} background="shade" padding={1} />
+			<Column colSpan={3} background="shade" padding={1} />
+			<Column colSpan={4} background="shade" padding={1} />
+			<Column colSpan={4} background="shade" padding={1} />
+			<Column colSpan={4} background="shade" padding={1} />
+			<Column colSpan={5} background="shade" padding={1} />
+			<Column colSpan={5} background="shade" padding={1} />
+			<Column colSpan={2} background="shade" padding={1} />
+			<Column colSpan={6} background="shade" padding={1} />
+			<Column colSpan={6} background="shade" padding={1} />
 		</Columns>
 	</Box>
 );
-Widths.args = {
-	gridGap: 2,
+ColSpans.args = {
+	gridGap: 0.5,
 };
 
-export const Responsive: ComponentStory<typeof Columns> = (args) => (
+export const RowAndColumnGaps: ComponentStory<typeof Columns> = (args) => (
 	<Box theme="light" background="page">
 		<Columns {...args}>
-			<Column width={[12, 6]} background="shade" padding={1} />
-			<Column width={[12, 6]} background="shade" padding={1} />
+			<Column colSpan={3} background="shade" padding={1} />
+			<Column colSpan={3} background="shade" padding={1} />
+			<Column colSpan={3} background="shade" padding={1} />
+			<Column colSpan={3} background="shade" padding={1} />
+			<Column colSpan={4} background="shade" padding={1} />
+			<Column colSpan={4} background="shade" padding={1} />
+			<Column colSpan={4} background="shade" padding={1} />
 		</Columns>
 	</Box>
 );
-Responsive.args = {
-	columnGap: [1, 2],
-	rowGap: [4, 0],
+RowAndColumnGaps.args = {
+	rowGap: 2,
+	columnGap: 0.5,
 };
