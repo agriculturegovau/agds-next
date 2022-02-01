@@ -12,3 +12,9 @@ description: The masthead of our applications, Header incorporates our AWE brand
 	variant="dark"
 />
 ```
+
+## Heading and Subline
+
+Heading should be set to the website or service title.
+
+Subline can provide additional information to describe your website or service.
