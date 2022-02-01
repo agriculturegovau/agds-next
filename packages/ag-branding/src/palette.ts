@@ -6,5 +6,6 @@ export const palette: Partial<Palette> = {
 	darkBackgroundShade: '#0A1931',
 	darkBackgroundPageAlt: '#474747',
 	darkBackgroundShadeAlt: '#0A323C',
+	darkForegroundAction: '#9EE8FF',
 	accent: '#F36C52',
 };

@@ -4,24 +4,26 @@ import React, {
 	AnchorHTMLAttributes,
 } from 'react';
 import { useLinkComponent } from '@ag.ds-next/core';
-import { buttonStyles, ButtonVariant } from './utils';
+import { buttonStyles, ButtonSize, ButtonVariant } from './utils';
 
 export function Button({
 	block,
 	children,
 	disabled,
+	size,
 	loading,
 	variant,
 	...props
 }: {
 	block?: boolean;
 	loading?: boolean;
+	size?: ButtonSize;
 	variant?: ButtonVariant;
 } & DetailedHTMLProps<
 	ButtonHTMLAttributes<HTMLButtonElement>,
 	HTMLButtonElement
 >) {
-	const styles = buttonStyles({ block, disabled, variant });
+	const styles = buttonStyles({ block, disabled, size, variant });
 	return (
 		<button disabled={disabled} css={styles} {...props}>
 			{loading ? 'Loading...' : children}

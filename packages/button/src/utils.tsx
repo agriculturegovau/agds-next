@@ -54,30 +54,46 @@ const variants = {
 	},
 } as const;
 
+export const sizes = {
+	sm: {
+		...fontGrid('xs', 'default'),
+		paddingTop: mapSpacing(0.25),
+		paddingBottom: mapSpacing(0.25),
+		paddingLeft: mapSpacing(0.5),
+		paddingRight: mapSpacing(0.5),
+	},
+	md: {
+		...fontGrid('sm', 'default'),
+		paddingTop: mapSpacing(0.5),
+		paddingBottom: mapSpacing(0.5),
+		paddingLeft: mapSpacing(1.5),
+		paddingRight: mapSpacing(1.5),
+	},
+};
+
 export type ButtonVariant = keyof typeof variants;
+export type ButtonSize = keyof typeof sizes;
 
 export function buttonStyles({
 	block,
 	disabled,
 	variant = 'primary',
+	size = 'md',
 }: {
 	block?: boolean;
 	disabled?: boolean;
 	variant?: ButtonVariant;
+	size?: ButtonSize;
 }) {
 	return {
 		...variants[variant],
-		...fontGrid('sm', 'default'),
+		...sizes[size],
 		display: 'inline-block',
 		borderWidth: 3,
 		borderStyle: 'solid',
 		borderRadius: tokens.borderRadius,
 		cursor: 'pointer',
 		fontFamily: tokens.font.body,
-		paddingTop: mapSpacing(0.5),
-		paddingBottom: mapSpacing(0.5),
-		paddingLeft: mapSpacing(1.5),
-		paddingRight: mapSpacing(1.5),
 		boxSizing: 'border-box',
 		textAlign: 'center',
 

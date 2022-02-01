@@ -39,7 +39,9 @@ export default function Packages({
 							v{pkg.version}
 						</Text>
 						<H1>{pkg.data.title}</H1>
-						{pkg.data.description && <Text>{pkg.data.description}</Text>}
+						{pkg.data.description && (
+							<Text fontSize="lg">{pkg.data.description}</Text>
+						)}
 					</Flex>
 					<Box
 						theme="light"
