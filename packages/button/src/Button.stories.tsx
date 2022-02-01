@@ -1,7 +1,7 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { Button, ButtonLink } from './Button';
-import { Box, Flex } from '@ag.ds-next/box';
+import { Box, Flex, Stack } from '@ag.ds-next/box';
 import { Text } from '@ag.ds-next/text';
 
 export default {
@@ -67,3 +67,16 @@ ButtonLinkExample.args = {
 	href: '#',
 	variant: 'primary',
 };
+
+export const ButtonSize: ComponentStory<typeof Button> = (args) => (
+	<Stack gap={1} padding={2} background="page" theme="light">
+		<div>
+			<Button {...args}>Medium</Button>
+		</div>
+		<div>
+			<Button {...args} size="sm">
+				Small
+			</Button>
+		</div>
+	</Stack>
+);
