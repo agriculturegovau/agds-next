@@ -1,5 +1,5 @@
 ---
-'@ag.ds-next/core': patch
+'@ag.ds-next/ag-branding': patch
 ---
 
 Update dark action color
