@@ -16,7 +16,7 @@ This is also known as a Prose component.
 			This is an opening paragraph, that{' '}
 			<a href="/site">contains an internal link</a>.
 		</p>
-    <img src="http://placehold.it/800x300" alt="Placeholder image" />
+		<img src="http://placehold.it/800x300" alt="Placeholder image" />
 		<h2>Heading level 2</h2>
 		<h3>Heading level 3, proceeding H2</h3>
 		<p>
