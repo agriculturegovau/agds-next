@@ -11,20 +11,32 @@ import {
 	mq,
 	fontGrid,
 	Spacing,
+	globalVars,
 } from '@ag.ds-next/core';
 
 type ThemeProps = Partial<{
 	theme: BoxTheme;
 }>;
 
+const foregroundColorMap = {
+	...themeValues.foreground,
+	accent: globalVars.accent,
+	error: globalVars.error,
+	success: globalVars.success,
+	warning: globalVars.warning,
+	info: globalVars.info,
+	hint: globalVars.hint,
+	hintAlt: globalVars.hintAlt,
+};
+
 type ColorProps = Partial<{
-	color: keyof typeof themeValues.foreground;
+	color: keyof typeof foregroundColorMap;
 	background: keyof typeof themeValues.background;
 }>;
 
 function colorStyles({ color, background }: ColorProps) {
 	return {
-		color: color ? themeValues.foreground[color] : undefined,
+		color: color ? foregroundColorMap[color] : undefined,
 		backgroundColor: background
 			? themeValues.background[background]
 			: undefined,
@@ -65,6 +77,10 @@ function typographyStyles({
 		fontFamily: mapResponsiveProp(fontFamily, (t) => tokens.font[t]),
 		fontSize,
 		lineHeight,
+		'& ::selection': {
+			color: themeValues.background.page,
+			backgroundColor: themeValues.foreground.action,
+		},
 	};
 }
 

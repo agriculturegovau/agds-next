@@ -1,38 +1,48 @@
-import { themeValues } from '@ag.ds-next/core';
+import { PrismTheme } from 'prism-react-renderer';
+import { globalVars } from '@ag.ds-next/core';
 
-export const theme = {
+export const agTheme: PrismTheme = {
 	plain: {
-		color: themeValues.foreground.text,
-		backgroundColor: '#f6f7f9',
+		color: globalVars.light.foreground.text,
+		backgroundColor: globalVars.light.background.shade,
 	},
 	styles: [
 		{
-			types: ['comment', 'prolog', 'doctype', 'cdata'],
+			types: ['comment', 'prolog', 'cdata'],
 			style: {
-				color: 'var(--text)',
+				color: globalVars.light.foreground.muted,
+				opacity: 0.5,
 			},
 		},
 		{
-			types: ['namespace'],
+			types: ['punctuation', 'entity'],
 			style: {
+				color: globalVars.hintAlt,
+			},
+		},
+		{
+			types: ['operator', 'doctype'],
+			style: {
+				color: globalVars.hintAlt,
 				opacity: 0.7,
 			},
 		},
 		{
-			types: ['string', 'attr-value'],
+			types: [
+				'selector',
+				'string',
+				'char',
+				'builtin',
+				'inserted',
+				'regex',
+				'attr-value',
+			],
 			style: {
-				color: '#eC1337',
-			},
-		},
-		{
-			types: ['punctuation', 'operator'],
-			style: {
-				color: '#94A3B8',
+				color: globalVars.success,
 			},
 		},
 		{
 			types: [
-				'entity',
 				'url',
 				'symbol',
 				'number',
@@ -44,31 +54,34 @@ export const theme = {
 				'inserted',
 			],
 			style: {
-				color: '#04865d',
+				color: globalVars.warning,
 			},
 		},
 		{
-			types: ['atrule', 'keyword', 'attr-name', 'selector'],
+			types: ['keyword'],
 			style: {
-				color: '#0080A8',
+				color: globalVars.light.foreground.focus,
 			},
 		},
 		{
-			types: ['function', 'deleted', 'tag'],
+			types: ['function'],
 			style: {
-				color: 'var(--focus)',
+				color: globalVars.light.foreground.action,
+				fontWeight: 'bold',
+				opacity: 0.8,
 			},
 		},
 		{
-			types: ['function-variable'],
+			types: ['deleted', 'tag', 'atrule', 'attr-name'],
 			style: {
-				color: '#7f54e0',
+				color: globalVars.light.foreground.action,
+				opacity: 0.8,
 			},
 		},
 		{
-			types: ['tag', 'selector', 'keyword'],
+			types: ['class-name'],
 			style: {
-				color: '#037dbb',
+				color: globalVars.warning,
 			},
 		},
 	],
