@@ -45,7 +45,7 @@ export const bodyClass = css({
 	 * `mark` styling.
 	 */
 	mark: {
-		color: themeValues.background.page,
+		color: themeValues.background.body,
 		backgroundColor: themeValues.foreground.action,
 	},
 
@@ -53,7 +53,7 @@ export const bodyClass = css({
 	 * Text selection styling
 	 */
 	'& ::selection': {
-		color: themeValues.background.page,
+		color: themeValues.background.body,
 		backgroundColor: themeValues.foreground.action,
 	},
 
