@@ -4,6 +4,7 @@ export { Body } from '@ag.ds-next/body';
 export { Box, Flex, Divider, Stack } from '@ag.ds-next/box';
 export { Button } from '@ag.ds-next/button';
 export { Content } from '@ag.ds-next/content';
+export { Columns, Column } from '@ag.ds-next/columns';
 export { Footer } from '@ag.ds-next/footer';
 export { Header } from '@ag.ds-next/header';
 export { Heading, H1, H2, H3, H4, H5, H6 } from '@ag.ds-next/heading';
