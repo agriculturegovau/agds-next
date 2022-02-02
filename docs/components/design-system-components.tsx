@@ -8,7 +8,7 @@ import { Heading, H1, H2, H3, H4, H5, H6 } from '@ag.ds-next/heading';
 import { LinkList } from '@ag.ds-next/link-list';
 import { Breadcrumbs } from '@ag.ds-next/breadcrumbs';
 import { Columns, Column } from '@ag.ds-next/columns';
-import { Card, CardInner } from '@ag.ds-next/card';
+import { Card, CardInner, CardLink } from '@ag.ds-next/card';
 import { Header, HeaderBrand, HeaderContainer } from '@ag.ds-next/header';
 import { Footer } from '@ag.ds-next/footer';
 import {
@@ -30,6 +30,7 @@ export const designSystemComponents = {
 	Flex,
 	Card,
 	CardInner,
+	CardLink,
 	Columns,
 	Column,
 	Stack,

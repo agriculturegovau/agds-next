@@ -11,9 +11,9 @@ import {
 import { mdxComponents } from '../../components/utils';
 import { AppLayout } from '../../components/AppLayout';
 import { PageLayout } from '../../components/PageLayout';
-import { PkgCard } from '../../components/PkgCard';
+import { PkgCardList } from '../../components/PkgCard';
 
-import { Flex, Stack } from '@ag.ds-next/box';
+import { Stack } from '@ag.ds-next/box';
 import { Body } from '@ag.ds-next/body';
 import { H2 } from '@ag.ds-next/heading';
 import { TextLink } from '@ag.ds-next/text-link';
@@ -45,13 +45,9 @@ export default function PackagesHome({
 							<TextLink href={`/packages/${group.slug}`}>
 								<H2>{group.title}</H2>
 							</TextLink>
-							<Flex gap={1} flexWrap="wrap">
-								{pkgList
-									.filter((p) => p.group === group.slug)
-									.map((p) => (
-										<PkgCard key={p.slug} pkg={p} />
-									))}
-							</Flex>
+							<PkgCardList
+								items={pkgList.filter((p) => p.group === group.slug)}
+							/>
 						</Stack>
 					))}
 				</Stack>

@@ -1,10 +1,9 @@
 import type { GetStaticProps, InferGetStaticPropsType } from 'next';
-import { Flex } from '@ag.ds-next/box';
 import { H1 } from '@ag.ds-next/heading';
 
 import { AppLayout } from '../../../components/AppLayout';
 import { PageLayout } from '../../../components/PageLayout';
-import { PkgCard } from '../../../components/PkgCard';
+import { PkgCardList } from '../../../components/PkgCard';
 import {
 	getPkgList,
 	getPkgGroupList,
@@ -29,11 +28,7 @@ export default function PackagesHome({
 				breadcrumbs={breadcrumbs}
 			>
 				<H1>{group.title}</H1>
-				<Flex gap={2} flexWrap="wrap">
-					{pkgList.map((pkg) => (
-						<PkgCard key={pkg.slug} pkg={pkg} />
-					))}
-				</Flex>
+				<PkgCardList items={pkgList} />
 			</PageLayout>
 		</AppLayout>
 	);
