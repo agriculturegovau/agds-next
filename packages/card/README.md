@@ -9,14 +9,28 @@ group: Layout
 Cards are used to organise information related to a single topic. Cards can contain multiple elements, such as images, links, actions, text and more.
 
 ```jsx live
-<Card>
-	<CardInner>
-		<Body>
-			<h2>Card Title</h2>
-			<p>Additional content</p>
-		</Body>
-	</CardInner>
-</Card>
+<Stack gap={1}>
+	<Box theme="light" padding={1} background="page">
+		<Card>
+			<CardInner>
+				<Body>
+					<h2>Card Title</h2>
+					<p>Additional content</p>
+				</Body>
+			</CardInner>
+		</Card>
+	</Box>
+	<Box theme="dark" padding={1} background="page">
+		<Card>
+			<CardInner>
+				<Body>
+					<h2>Card Title</h2>
+					<p>Additional content</p>
+				</Body>
+			</CardInner>
+		</Card>
+	</Box>
+</Stack>
 ```
 
 ## Images
