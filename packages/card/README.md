@@ -58,7 +58,7 @@ For cards that contain a single link, the hit area for that link can be made to 
 	<CardInner>
 		<Body>
 			<h3>
-				<a href="#">Title of article</a>
+				<CardLink href="#">Title of article</CardLink>
 			</h3>
 			<p>Some text</p>
 		</Body>

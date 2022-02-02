@@ -1,5 +1,6 @@
 import { PropsWithChildren, ElementType } from 'react';
-import { Box } from '@ag.ds-next/box';
+import { Box, focusStyles } from '@ag.ds-next/box';
+import { outline } from '@ag.ds-next/core';
 
 export type CardProps = PropsWithChildren<{
 	as?: ElementType;
@@ -7,7 +8,7 @@ export type CardProps = PropsWithChildren<{
 	clickable?: boolean;
 }>;
 
-export const Card = ({ as, children, shadow }: CardProps) => {
+export const Card = ({ as, children, shadow, clickable }: CardProps) => {
 	return (
 		<Box
 			as={as} // Note: this should be an li when used in a card list
@@ -19,16 +20,23 @@ export const Card = ({ as, children, shadow }: CardProps) => {
 				position: 'relative',
 				overflow: 'hidden',
 				borderColor: 'lightgray', // TODO: This needs a token
-			}}
 
-			// display:block; -- redundant, it's a div
-			// width: 100%; -- not sure this is needed.
-			// border-radius: $AU-border-radius; -- rounded
-			// border: 1px solid $AU-card-divider; ??? new color (lightgrey)
-			// font-family: $AU-font; -- Use body in the content
-			// position: relative; -- css prop
-			// background: $AU-color-background; -- Box prop
-			// overflow:hidden; -- css prop
+				...(clickable && {
+					// If any element inside the card receives focus, add a focus ring around the wrapper card div
+					'&:focus-within': outline,
+					// can we use focusStyles from Box (may need modification)
+					cursor: 'pointer',
+				}),
+
+				...(shadow && {
+					boxShadow: '0 2px 4px rgba(0, 0, 0, 0.3)',
+					'&:hover': clickable
+						? {
+								boxShadow: '0 1px 1px rgba(0, 0, 0, 0.3)',
+						  }
+						: undefined,
+				}),
+			}}
 		>
 			{children}
 		</Box>
