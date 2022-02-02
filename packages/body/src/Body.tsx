@@ -107,30 +107,47 @@ export const bodyClass = css({
 		},
 	},
 
-	h1: fontGrid('xxl', 'heading'),
-	h2: fontGrid('xl', 'heading'),
-	h3: fontGrid('lg', 'heading'),
-	h4: fontGrid('md', 'heading'),
-	h5: fontGrid('sm', 'heading'),
-	h6: fontGrid('xs', 'heading'),
-
-	'h1,h2,h3,h4,h5,h6': {
-		display: 'block', // this is a default ???
-		fontWeight: 'bold',
+	'h1:not([class])': {
+		...fontGrid('xxl', 'heading'),
+		marginTop: 0,
+		marginBottom: 0,
+	},
+	'h2:not([class])': {
+		...fontGrid('xl', 'heading'),
+		marginTop: 0,
+		marginBottom: 0,
+	},
+	'h3:not([class])': {
+		...fontGrid('lg', 'heading'),
+		marginTop: 0,
+		marginBottom: 0,
+	},
+	'h4:not([class])': {
+		...fontGrid('md', 'heading'),
+		marginTop: 0,
+		marginBottom: 0,
+	},
+	'h5:not([class])': {
+		...fontGrid('sm', 'heading'),
+		marginTop: 0,
+		marginBottom: 0,
+	},
+	'h6:not([class])': {
+		...fontGrid('xs', 'heading'),
 		marginTop: 0,
 		marginBottom: 0,
 	},
 
-	'* + h1': { marginTop: mapSpacing(3) },
-	'* + h2': { marginTop: mapSpacing(3) },
-	'* + h3': { marginTop: mapSpacing(2) },
-	'* + h4': { marginTop: mapSpacing(1.5) },
-	'* + h5': { marginTop: mapSpacing(1.5) },
-	'* + h6': { marginTop: mapSpacing(1.5) },
+	'* + h1:not([class])': { marginTop: mapSpacing(3) },
+	'* + h2:not([class])': { marginTop: mapSpacing(3) },
+	'* + h3:not([class])': { marginTop: mapSpacing(2) },
+	'* + h4:not([class])': { marginTop: mapSpacing(1.5) },
+	'* + h5:not([class])': { marginTop: mapSpacing(1.5) },
+	'* + h6:not([class])': { marginTop: mapSpacing(1.5) },
 
 	// Override for sequential headings
-	'h1 + h2': { marginTop: mapSpacing(1.5) },
-	'h2 + h3': { marginTop: mapSpacing(1.5) },
+	'h1 + h2:not([class])': { marginTop: mapSpacing(1.5) },
+	'h2 + h3:not([class])': { marginTop: mapSpacing(1.5) },
 
 	/**
 	 * Emphasis and alt. voice/mood/diff. from prose text.
