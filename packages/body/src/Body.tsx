@@ -6,7 +6,7 @@ import {
 	mapSpacing,
 	fontGrid,
 } from '@ag.ds-next/core';
-import { Box, BoxProps, focusStyles } from '@ag.ds-next/box';
+import { Box, BoxProps, linkStyles, focusStyles } from '@ag.ds-next/box';
 
 export const Body = forwardRefWithAs<'div', BoxProps>(function Body(
 	props,
@@ -26,13 +26,7 @@ export const bodyClass = css({
 	fontFamily: tokens.font.body,
 	...fontGrid('sm', 'default'),
 
-	'a:not([class])': {
-		color: themeValues.foreground.action,
-		textDecoration: 'underline',
-		textDecorationSkipInk: 'auto',
-
-		...focusStyles({ focus: true }),
-	},
+	'a:not([class])': [linkStyles, focusStyles],
 
 	/**
 	 * Highlighting in-page sections that are in focus
