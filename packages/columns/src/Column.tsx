@@ -7,19 +7,19 @@ import {
 import { Box, BoxProps } from '@ag.ds-next/box';
 
 export type ColumnProps = BoxProps & {
-	colSpan: ResponsiveProp<1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12>;
+	columnSpan: ResponsiveProp<1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12>;
 };
 
 export const Column = forwardRefWithAs<'div', ColumnProps>(function Column(
-	{ colSpan, ...props },
+	{ columnSpan, ...props },
 	ref
 ) {
-	const styles = columnStyles({ colSpan });
+	const styles = columnStyles({ columnSpan });
 	return <Box ref={ref} css={styles} {...props} />;
 });
 
-const columnStyles = ({ colSpan }: Pick<ColumnProps, 'colSpan'>) => {
+const columnStyles = ({ columnSpan }: Pick<ColumnProps, 'columnSpan'>) => {
 	return mq({
-		gridColumn: mapResponsiveProp(colSpan, (v) => `span ${v}/span ${v}`),
+		gridColumn: mapResponsiveProp(columnSpan, (v) => `span ${v}/span ${v}`),
 	});
 };

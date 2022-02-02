@@ -8,48 +8,48 @@ This package includes the components `<Columns />` and `<Column />`.
 
 ```jsx live
 <Columns gridGap={0.5}>
-	<Column colSpan={1} background="shade" padding={1} />
-	<Column colSpan={1} background="shade" padding={1} />
-	<Column colSpan={1} background="shade" padding={1} />
-	<Column colSpan={1} background="shade" padding={1} />
-	<Column colSpan={1} background="shade" padding={1} />
-	<Column colSpan={1} background="shade" padding={1} />
-	<Column colSpan={1} background="shade" padding={1} />
-	<Column colSpan={1} background="shade" padding={1} />
-	<Column colSpan={1} background="shade" padding={1} />
-	<Column colSpan={1} background="shade" padding={1} />
-	<Column colSpan={1} background="shade" padding={1} />
-	<Column colSpan={1} background="shade" padding={1} />
+	<Column columnSpan={1} background="shade" padding={1} />
+	<Column columnSpan={1} background="shade" padding={1} />
+	<Column columnSpan={1} background="shade" padding={1} />
+	<Column columnSpan={1} background="shade" padding={1} />
+	<Column columnSpan={1} background="shade" padding={1} />
+	<Column columnSpan={1} background="shade" padding={1} />
+	<Column columnSpan={1} background="shade" padding={1} />
+	<Column columnSpan={1} background="shade" padding={1} />
+	<Column columnSpan={1} background="shade" padding={1} />
+	<Column columnSpan={1} background="shade" padding={1} />
+	<Column columnSpan={1} background="shade" padding={1} />
+	<Column columnSpan={1} background="shade" padding={1} />
 </Columns>
 ```
 
 ### Col spans
 
-Use the `colSpan` prop to control how many columns you want to column to span.
+Use the `columnSpan` prop to control how many columns you want to column to span.
 
 ```jsx live
 <Columns gridGap={0.5}>
-	<Column colSpan={3} background="shade" padding={1} />
-	<Column colSpan={3} background="shade" padding={1} />
-	<Column colSpan={3} background="shade" padding={1} />
-	<Column colSpan={3} background="shade" padding={1} />
-	<Column colSpan={6} background="shade" padding={1} />
-	<Column colSpan={6} background="shade" padding={1} />
-	<Column colSpan={4} background="shade" padding={1} />
-	<Column colSpan={4} background="shade" padding={1} />
-	<Column colSpan={4} background="shade" padding={1} />
-	<Column colSpan={2} background="shade" padding={1} />
-	<Column colSpan={4} background="shade" padding={1} />
-	<Column colSpan={4} background="shade" padding={1} />
-	<Column colSpan={2} background="shade" padding={1} />
-	<Column colSpan={8} background="shade" padding={1} />
-	<Column colSpan={4} background="shade" padding={1} />
-	<Column colSpan={2} background="shade" padding={1} />
-	<Column colSpan={2} background="shade" padding={1} />
-	<Column colSpan={2} background="shade" padding={1} />
-	<Column colSpan={2} background="shade" padding={1} />
-	<Column colSpan={2} background="shade" padding={1} />
-	<Column colSpan={2} background="shade" padding={1} />
+	<Column columnSpan={3} background="shade" padding={1} />
+	<Column columnSpan={3} background="shade" padding={1} />
+	<Column columnSpan={3} background="shade" padding={1} />
+	<Column columnSpan={3} background="shade" padding={1} />
+	<Column columnSpan={6} background="shade" padding={1} />
+	<Column columnSpan={6} background="shade" padding={1} />
+	<Column columnSpan={4} background="shade" padding={1} />
+	<Column columnSpan={4} background="shade" padding={1} />
+	<Column columnSpan={4} background="shade" padding={1} />
+	<Column columnSpan={2} background="shade" padding={1} />
+	<Column columnSpan={4} background="shade" padding={1} />
+	<Column columnSpan={4} background="shade" padding={1} />
+	<Column columnSpan={2} background="shade" padding={1} />
+	<Column columnSpan={8} background="shade" padding={1} />
+	<Column columnSpan={4} background="shade" padding={1} />
+	<Column columnSpan={2} background="shade" padding={1} />
+	<Column columnSpan={2} background="shade" padding={1} />
+	<Column columnSpan={2} background="shade" padding={1} />
+	<Column columnSpan={2} background="shade" padding={1} />
+	<Column columnSpan={2} background="shade" padding={1} />
+	<Column columnSpan={2} background="shade" padding={1} />
 </Columns>
 ```
 
@@ -59,12 +59,12 @@ The `gap` prop effects both the row and column gap. To set a different gap for r
 
 ```jsx live
 <Columns columnGap={0.5} rowGap={2}>
-	<Column colSpan={3} background="shade" padding={1} />
-	<Column colSpan={3} background="shade" padding={1} />
-	<Column colSpan={3} background="shade" padding={1} />
-	<Column colSpan={3} background="shade" padding={1} />
-	<Column colSpan={4} background="shade" padding={1} />
-	<Column colSpan={4} background="shade" padding={1} />
-	<Column colSpan={4} background="shade" padding={1} />
+	<Column columnSpan={3} background="shade" padding={1} />
+	<Column columnSpan={3} background="shade" padding={1} />
+	<Column columnSpan={3} background="shade" padding={1} />
+	<Column columnSpan={3} background="shade" padding={1} />
+	<Column columnSpan={4} background="shade" padding={1} />
+	<Column columnSpan={4} background="shade" padding={1} />
+	<Column columnSpan={4} background="shade" padding={1} />
 </Columns>
 ```

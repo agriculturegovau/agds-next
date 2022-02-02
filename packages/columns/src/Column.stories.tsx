@@ -11,18 +11,18 @@ export default {
 export const Basic: ComponentStory<typeof Columns> = (args) => (
 	<Box theme="light" background="page">
 		<Columns {...args}>
-			<Column colSpan={1} background="shade" padding={1} />
-			<Column colSpan={1} background="shade" padding={1} />
-			<Column colSpan={1} background="shade" padding={1} />
-			<Column colSpan={1} background="shade" padding={1} />
-			<Column colSpan={1} background="shade" padding={1} />
-			<Column colSpan={1} background="shade" padding={1} />
-			<Column colSpan={1} background="shade" padding={1} />
-			<Column colSpan={1} background="shade" padding={1} />
-			<Column colSpan={1} background="shade" padding={1} />
-			<Column colSpan={1} background="shade" padding={1} />
-			<Column colSpan={1} background="shade" padding={1} />
-			<Column colSpan={1} background="shade" padding={1} />
+			<Column columnSpan={1} background="shade" padding={1} />
+			<Column columnSpan={1} background="shade" padding={1} />
+			<Column columnSpan={1} background="shade" padding={1} />
+			<Column columnSpan={1} background="shade" padding={1} />
+			<Column columnSpan={1} background="shade" padding={1} />
+			<Column columnSpan={1} background="shade" padding={1} />
+			<Column columnSpan={1} background="shade" padding={1} />
+			<Column columnSpan={1} background="shade" padding={1} />
+			<Column columnSpan={1} background="shade" padding={1} />
+			<Column columnSpan={1} background="shade" padding={1} />
+			<Column columnSpan={1} background="shade" padding={1} />
+			<Column columnSpan={1} background="shade" padding={1} />
 		</Columns>
 	</Box>
 );
@@ -33,36 +33,36 @@ Basic.args = {
 export const ColSpans: ComponentStory<typeof Columns> = (args) => (
 	<Box theme="light" background="page">
 		<Columns {...args}>
-			<Column colSpan={1} background="shade" padding={1} />
-			<Column colSpan={1} background="shade" padding={1} />
-			<Column colSpan={1} background="shade" padding={1} />
-			<Column colSpan={1} background="shade" padding={1} />
-			<Column colSpan={1} background="shade" padding={1} />
-			<Column colSpan={1} background="shade" padding={1} />
-			<Column colSpan={1} background="shade" padding={1} />
-			<Column colSpan={1} background="shade" padding={1} />
-			<Column colSpan={1} background="shade" padding={1} />
-			<Column colSpan={1} background="shade" padding={1} />
-			<Column colSpan={1} background="shade" padding={1} />
-			<Column colSpan={1} background="shade" padding={1} />
-			<Column colSpan={2} background="shade" padding={1} />
-			<Column colSpan={2} background="shade" padding={1} />
-			<Column colSpan={2} background="shade" padding={1} />
-			<Column colSpan={2} background="shade" padding={1} />
-			<Column colSpan={2} background="shade" padding={1} />
-			<Column colSpan={2} background="shade" padding={1} />
-			<Column colSpan={3} background="shade" padding={1} />
-			<Column colSpan={3} background="shade" padding={1} />
-			<Column colSpan={3} background="shade" padding={1} />
-			<Column colSpan={3} background="shade" padding={1} />
-			<Column colSpan={4} background="shade" padding={1} />
-			<Column colSpan={4} background="shade" padding={1} />
-			<Column colSpan={4} background="shade" padding={1} />
-			<Column colSpan={5} background="shade" padding={1} />
-			<Column colSpan={5} background="shade" padding={1} />
-			<Column colSpan={2} background="shade" padding={1} />
-			<Column colSpan={6} background="shade" padding={1} />
-			<Column colSpan={6} background="shade" padding={1} />
+			<Column columnSpan={1} background="shade" padding={1} />
+			<Column columnSpan={1} background="shade" padding={1} />
+			<Column columnSpan={1} background="shade" padding={1} />
+			<Column columnSpan={1} background="shade" padding={1} />
+			<Column columnSpan={1} background="shade" padding={1} />
+			<Column columnSpan={1} background="shade" padding={1} />
+			<Column columnSpan={1} background="shade" padding={1} />
+			<Column columnSpan={1} background="shade" padding={1} />
+			<Column columnSpan={1} background="shade" padding={1} />
+			<Column columnSpan={1} background="shade" padding={1} />
+			<Column columnSpan={1} background="shade" padding={1} />
+			<Column columnSpan={1} background="shade" padding={1} />
+			<Column columnSpan={2} background="shade" padding={1} />
+			<Column columnSpan={2} background="shade" padding={1} />
+			<Column columnSpan={2} background="shade" padding={1} />
+			<Column columnSpan={2} background="shade" padding={1} />
+			<Column columnSpan={2} background="shade" padding={1} />
+			<Column columnSpan={2} background="shade" padding={1} />
+			<Column columnSpan={3} background="shade" padding={1} />
+			<Column columnSpan={3} background="shade" padding={1} />
+			<Column columnSpan={3} background="shade" padding={1} />
+			<Column columnSpan={3} background="shade" padding={1} />
+			<Column columnSpan={4} background="shade" padding={1} />
+			<Column columnSpan={4} background="shade" padding={1} />
+			<Column columnSpan={4} background="shade" padding={1} />
+			<Column columnSpan={5} background="shade" padding={1} />
+			<Column columnSpan={5} background="shade" padding={1} />
+			<Column columnSpan={2} background="shade" padding={1} />
+			<Column columnSpan={6} background="shade" padding={1} />
+			<Column columnSpan={6} background="shade" padding={1} />
 		</Columns>
 	</Box>
 );
@@ -73,13 +73,13 @@ ColSpans.args = {
 export const RowAndColumnGaps: ComponentStory<typeof Columns> = (args) => (
 	<Box theme="light" background="page">
 		<Columns {...args}>
-			<Column colSpan={3} background="shade" padding={1} />
-			<Column colSpan={3} background="shade" padding={1} />
-			<Column colSpan={3} background="shade" padding={1} />
-			<Column colSpan={3} background="shade" padding={1} />
-			<Column colSpan={4} background="shade" padding={1} />
-			<Column colSpan={4} background="shade" padding={1} />
-			<Column colSpan={4} background="shade" padding={1} />
+			<Column columnSpan={3} background="shade" padding={1} />
+			<Column columnSpan={3} background="shade" padding={1} />
+			<Column columnSpan={3} background="shade" padding={1} />
+			<Column columnSpan={3} background="shade" padding={1} />
+			<Column columnSpan={4} background="shade" padding={1} />
+			<Column columnSpan={4} background="shade" padding={1} />
+			<Column columnSpan={4} background="shade" padding={1} />
 		</Columns>
 	</Box>
 );
