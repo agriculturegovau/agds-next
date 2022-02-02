@@ -1,4 +1,4 @@
-import React, { useState, useCallback, Fragment } from 'react';
+import React, { useState, useCallback, Fragment, HTMLAttributes } from 'react';
 import {
 	LiveProvider,
 	LiveEditor,
@@ -21,6 +21,13 @@ type CodeProps = {
 	className: string;
 	live: boolean;
 };
+
+const PlaceholderImage = ({
+	size,
+	...props
+}: HTMLAttributes<HTMLImageElement> & { size: string }) => (
+	<img src={`/agds-next/img/placeholder/${size}.png`} {...props} />
+);
 
 const LiveCode = withLive((props: unknown) => {
 	// The types on `withLive` are kind of useless.
@@ -135,6 +142,7 @@ const StaticCode = ({
 
 const LIVE_SCOPE = {
 	...designSystemComponents,
+	PlaceholderImage,
 	useState,
 	Fragment,
 	React,
