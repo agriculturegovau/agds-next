@@ -9,7 +9,7 @@ This package includes the components `<Box />`, `<Flex />` and `<Stack />`.
 ```jsx live
 <Box
 	theme="dark"
-	background="page"
+	background="body"
 	color="text"
 	fontFamily="body"
 	border

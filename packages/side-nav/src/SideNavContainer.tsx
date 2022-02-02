@@ -36,22 +36,22 @@ export const SideNavContainer = ({
 const variantMap = {
 	light: {
 		theme: 'light',
-		background: 'page',
+		background: 'body',
 		hover: 'shade',
 	},
 	lightAlt: {
 		theme: 'light',
-		background: 'pageAlt',
+		background: 'bodyAlt',
 		hover: 'shadeAlt',
 	},
 	dark: {
 		theme: 'dark',
-		background: 'page',
+		background: 'body',
 		hover: 'shade',
 	},
 	darkAlt: {
 		theme: 'dark',
-		background: 'pageAlt',
+		background: 'bodyAlt',
 		hover: 'shadeAlt',
 	},
 } as const;

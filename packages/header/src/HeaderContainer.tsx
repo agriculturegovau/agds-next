@@ -5,19 +5,19 @@ import React from 'react';
 const variantMap = {
 	light: {
 		theme: 'light',
-		background: 'page',
+		background: 'body',
 	},
 	lightAlt: {
 		theme: 'light',
-		background: 'pageAlt',
+		background: 'bodyAlt',
 	},
 	dark: {
 		theme: 'dark',
-		background: 'page',
+		background: 'body',
 	},
 	darkAlt: {
 		theme: 'dark',
-		background: 'pageAlt',
+		background: 'bodyAlt',
 	},
 } as const;
 
