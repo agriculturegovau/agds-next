@@ -25,8 +25,6 @@ const foregroundColorMap = {
 	success: globalVars.success,
 	warning: globalVars.warning,
 	info: globalVars.info,
-	hint: globalVars.hint,
-	hintAlt: globalVars.hintAlt,
 };
 
 type ColorProps = Partial<{

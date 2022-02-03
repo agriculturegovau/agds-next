@@ -17,13 +17,13 @@ export const agTheme: PrismTheme = {
 		{
 			types: ['punctuation', 'entity'],
 			style: {
-				color: globalVars.hintAlt,
+				color: globalVars.light.foreground.muted,
 			},
 		},
 		{
 			types: ['operator', 'doctype'],
 			style: {
-				color: globalVars.hintAlt,
+				color: globalVars.light.foreground.muted,
 				opacity: 0.7,
 			},
 		},
