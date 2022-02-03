@@ -69,7 +69,6 @@ The `gap` prop effects both the row and column gap. To set a different gap for r
 </Columns>
 ```
 
-
 ### Column start and end
 
 The `columnStart` and `columnEnd` props can be used to determine the Column's start and end location within the row.
