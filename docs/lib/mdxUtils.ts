@@ -111,7 +111,10 @@ export function getPkgGroupList() {
 				slug,
 				title,
 			}))
-			.sort((a, b) => (a.title > b.title ? 1 : -1));
+			.sort((a, b) => {
+				if (a.slug === 'foundations') return -1;
+				return a.title > b.title ? 1 : -1;
+			});
 	});
 }
 
