@@ -11,6 +11,8 @@ const PKG_PATH = normalize(`${process.cwd()}/../packages/`);
 const RELEASE_PATH = normalize(`${process.cwd()}/../releases/`);
 const GUIDE_PATH = normalize(`${process.cwd()}/../guides/`);
 
+const PKG_GROUPS = [{ slug: 'foundations', title: 'Foundations' }] as const;
+
 const pkgDocsPath = (slug: string) =>
 	normalize(`${PKG_PATH}/${slug}/README.md`);
 const pkgJsonPath = (slug: string) =>
@@ -106,12 +108,18 @@ export function getPkgList(group?: string) {
 export function getPkgGroupList() {
 	return getPkgList().then((pkgs) => {
 		const uniqueGroups = new Map(pkgs.map((p) => [p.group, p.groupName]));
-		return Array.from(uniqueGroups.entries())
-			.map(([slug, title]) => ({
-				slug,
-				title,
-			}))
-			.sort((a, b) => (a.title > b.title ? 1 : -1));
+		return [
+			...PKG_GROUPS,
+			...Array.from(uniqueGroups.entries())
+				.map(([slug, title]) => ({
+					slug,
+					title,
+				}))
+				.filter(
+					(item) => !PKG_GROUPS.find((pkgGroup) => pkgGroup.slug === item.slug)
+				)
+				.sort((a, b) => (a.title > b.title ? 1 : -1)),
+		];
 	});
 }
 
