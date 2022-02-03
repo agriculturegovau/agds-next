@@ -1,4 +1,4 @@
-import React, { useState, useCallback, Fragment } from 'react';
+import React, { useState, useCallback, Fragment, ComponentProps } from 'react';
 import {
 	LiveProvider,
 	LiveEditor,
@@ -7,6 +7,7 @@ import {
 	withLive,
 } from 'react-live';
 import { Language } from 'prism-react-renderer';
+import Image from 'next/image';
 import copy from 'clipboard-copy';
 
 import { globalVars, tokens } from '@ag.ds-next/core';
@@ -21,6 +22,26 @@ type CodeProps = {
 	className: string;
 	live: boolean;
 };
+
+const PlaceholderImage = ({
+	width,
+	height,
+	alt,
+	...props
+}: Omit<ComponentProps<typeof Image>, 'src'> & {
+	width: number;
+	height: number;
+	alt: string;
+}) => (
+	<Image
+		src={`/agds-next/img/placeholder/${width}x${height}.png`}
+		alt={alt}
+		width={width}
+		height={height}
+		layout="responsive"
+		{...props}
+	/>
+);
 
 const LiveCode = withLive((props: unknown) => {
 	// The types on `withLive` are kind of useless.
@@ -135,6 +156,7 @@ const StaticCode = ({
 
 const LIVE_SCOPE = {
 	...designSystemComponents,
+	PlaceholderImage,
 	useState,
 	Fragment,
 	React,

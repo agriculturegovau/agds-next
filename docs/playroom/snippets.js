@@ -2,7 +2,7 @@ const snippits = [
 	{
 		group: 'Boilerplate',
 		name: 'One',
-		code: `<Header logo={<Logo />} heading="Export services" />
+		code: `<Header logo={<Logo />} heading="Export Service" />
     <MainNav links={[{ label: "Hello", href: "#" }]} variant='agriculture' />
 
     <Content>

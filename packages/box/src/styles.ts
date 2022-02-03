@@ -227,17 +227,25 @@ function paddingStyles({
 	};
 }
 
+type LinkProps = Partial<{ link: boolean }>;
+export const linkStyles = {
+	color: themeValues.foreground.action,
+	textDecoration: 'underline',
+	textDecorationSkip: 'auto',
+
+	'&:hover': {
+		color: themeValues.foreground.text,
+		textDecoration: 'none',
+	},
+};
+
 type FocusProps = Partial<{ focus: boolean }>;
-export function focusStyles({ focus }: FocusProps) {
-	return focus
-		? {
-				':focus': outline,
-				'&::-moz-focus-inner': {
-					border: 0,
-				},
-		  }
-		: undefined;
-}
+export const focusStyles = {
+	':focus': outline,
+	'&::-moz-focus-inner': {
+		border: 0,
+	},
+};
 
 export type BoxProps = ThemeProps &
 	ColorProps &
@@ -245,6 +253,7 @@ export type BoxProps = ThemeProps &
 	FocusProps &
 	TypographyProps &
 	LayoutProps &
+	LinkProps &
 	PaddingProps;
 
 export function boxStyles({
@@ -284,6 +293,7 @@ export function boxStyles({
 	fontFamily,
 	fontSize,
 	focus,
+	link,
 	lineHeight,
 	...restProps
 }: BoxProps) {
@@ -347,7 +357,8 @@ export function boxStyles({
 					lineHeight,
 				}),
 
-				...focusStyles({ focus }),
+				...(link ? linkStyles : undefined),
+				...(focus ? focusStyles : undefined),
 			}),
 		]),
 		restProps,
