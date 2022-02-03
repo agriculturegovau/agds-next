@@ -16,28 +16,28 @@ import { CloseButton, ToggleButton } from './MenuButtons';
 const variantMap = {
 	light: {
 		theme: 'light',
-		background: 'page',
+		background: 'body',
 		hover: 'shade',
 	},
 	lightAlt: {
 		theme: 'light',
-		background: 'pageAlt',
+		background: 'bodyAlt',
 		hover: 'shadeAlt',
 	},
 	dark: {
 		theme: 'dark',
-		background: 'page',
+		background: 'body',
 		hover: 'shade',
 	},
 	darkAlt: {
 		theme: 'dark',
-		background: 'pageAlt',
+		background: 'bodyAlt',
 		hover: 'shadeAlt',
 	},
 	agriculture: {
 		theme: 'dark',
 		background: 'shade',
-		hover: 'page',
+		hover: 'body',
 	},
 } as const;
 
@@ -83,7 +83,7 @@ export function NavContainer({ variant, children }: NavContainerProps) {
 									zIndex: 200,
 									position: 'fixed',
 									display: menuOpen ? 'block' : 'none',
-									background: themeValues.background.page,
+									background: themeValues.background.body,
 									top: 0,
 									left: 0,
 									bottom: 0,

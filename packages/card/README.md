@@ -10,7 +10,7 @@ Cards are used to organise information related to a single topic. Cards can cont
 
 ```jsx live
 <Stack gap={1}>
-	<Box theme="light" padding={1} background="page">
+	<Box theme="light" padding={1} background="body">
 		<Card>
 			<CardInner>
 				<Body>
@@ -20,7 +20,7 @@ Cards are used to organise information related to a single topic. Cards can cont
 			</CardInner>
 		</Card>
 	</Box>
-	<Box theme="dark" padding={1} background="page">
+	<Box theme="dark" padding={1} background="body">
 		<Card>
 			<CardInner>
 				<Body>

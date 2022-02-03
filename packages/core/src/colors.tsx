@@ -9,9 +9,9 @@ export const themeVars = {
 		muted: '--agds-foreground-muted',
 	},
 	background: {
-		page: '--agds-background-page',
+		body: '--agds-background-body',
 		shade: '--agds-background-shade',
-		pageAlt: '--agds-background-page-alt',
+		bodyAlt: '--agds-background-body-alt',
 		shadeAlt: '--agds-background-shade-alt',
 	},
 	border: '--agds-border',
@@ -25,9 +25,9 @@ export const themeValues = {
 		muted: `var(${themeVars.foreground.muted})`,
 	},
 	background: {
-		page: `var(${themeVars.background.page})`,
+		body: `var(${themeVars.background.body})`,
 		shade: `var(${themeVars.background.shade})`,
-		pageAlt: `var(${themeVars.background.pageAlt})`,
+		bodyAlt: `var(${themeVars.background.bodyAlt})`,
 		shadeAlt: `var(${themeVars.background.shadeAlt})`,
 	},
 	border: `var(${themeVars.border})`,
@@ -40,9 +40,9 @@ export const paletteVars = {
 	lightForegroundAction: '--agds-light-foreground-action',
 	lightForegroundFocus: '--agds-light-foreground-focus',
 	lightForegroundMuted: '--agds-light-foreground-muted',
-	lightBackgroundPage: '--agds-light-background-page',
+	lightBackgroundBody: '--agds-light-background-body',
 	lightBackgroundShade: '--agds-light-background-shade',
-	lightBackgroundPageAlt: '--agds-light-background-page-alt',
+	lightBackgroundBodyAlt: '--agds-light-background-body-alt',
 	lightBackgroundShadeAlt: '--agds-light-background-shade-alt',
 	lightBorder: '--agds-light-border',
 	// Dark
@@ -50,9 +50,9 @@ export const paletteVars = {
 	darkForegroundAction: '--agds-dark-foreground-action',
 	darkForegroundFocus: '--agds-dark-foreground-focus',
 	darkForegroundMuted: '--agds-dark-foreground-muted',
-	darkBackgroundPage: '--agds-dark-background-page',
+	darkBackgroundBody: '--agds-dark-background-body',
 	darkBackgroundShade: '--agds-dark-background-shade',
-	darkBackgroundPageAlt: '--agds-dark-background-page-alt',
+	darkBackgroundBodyAlt: '--agds-dark-background-body-alt',
 	darkBackgroundShadeAlt: '--agds-dark-background-shade-alt',
 	darkBorder: '--agds-dark-border',
 	// System colors
@@ -79,9 +79,9 @@ export type ColorTheme = {
 		muted: string;
 	};
 	background: {
-		page: string;
+		body: string;
 		shade: string;
-		pageAlt: string;
+		bodyAlt: string;
 		shadeAlt: string;
 	};
 	border: string;
@@ -93,18 +93,18 @@ export const defaultPalette = {
 	lightForegroundAction: '#00698f',
 	lightForegroundFocus: '#9263de',
 	lightForegroundMuted: '#626262',
-	lightBackgroundPage: '#FFFFFF',
+	lightBackgroundBody: '#FFFFFF',
 	lightBackgroundShade: '#f5f5f5',
-	lightBackgroundPageAlt: '#ebebeb',
+	lightBackgroundBodyAlt: '#ebebeb',
 	lightBackgroundShadeAlt: '#e0e0e0',
 	lightBorder: '#808080',
 	darkForegroundText: '#FFFFFF',
 	darkForegroundAction: '#61daff',
 	darkForegroundFocus: '#c390f9',
 	darkForegroundMuted: '#bdd2d7',
-	darkBackgroundPage: '#135e70',
+	darkBackgroundBody: '#135e70',
 	darkBackgroundShade: '#104f5f',
-	darkBackgroundPageAlt: '#0d414d',
+	darkBackgroundBodyAlt: '#0d414d',
 	darkBackgroundShadeAlt: '#0a323c',
 	darkBorder: '#95b7bf',
 	// system colors
@@ -128,9 +128,9 @@ export const globalVars = {
 			muted: `var(${paletteVars.lightForegroundMuted})`,
 		},
 		background: {
-			page: `var(${paletteVars.lightBackgroundPage})`,
+			body: `var(${paletteVars.lightBackgroundBody})`,
 			shade: `var(${paletteVars.lightBackgroundShade})`,
-			pageAlt: `var(${paletteVars.lightBackgroundPageAlt})`,
+			bodyAlt: `var(${paletteVars.lightBackgroundBodyAlt})`,
 			shadeAlt: `var(${paletteVars.lightBackgroundShadeAlt})`,
 		},
 		border: `var(${paletteVars.lightBorder})`,
@@ -143,9 +143,9 @@ export const globalVars = {
 			muted: `var(${paletteVars.darkForegroundMuted})`,
 		},
 		background: {
-			page: `var(${paletteVars.darkBackgroundPage})`,
+			body: `var(${paletteVars.darkBackgroundBody})`,
 			shade: `var(${paletteVars.darkBackgroundShade})`,
-			pageAlt: `var(${paletteVars.darkBackgroundPageAlt})`,
+			bodyAlt: `var(${paletteVars.darkBackgroundBodyAlt})`,
 			shadeAlt: `var(${paletteVars.darkBackgroundShadeAlt})`,
 		},
 		border: `var(${paletteVars.darkBorder})`,
@@ -165,9 +165,9 @@ export const themes = {
 		'--agds-foreground-action': globalVars.light.foreground.action,
 		'--agds-foreground-focus': globalVars.light.foreground.focus,
 		'--agds-foreground-muted': globalVars.light.foreground.muted,
-		'--agds-background-page': globalVars.light.background.page,
+		'--agds-background-body': globalVars.light.background.body,
 		'--agds-background-shade': globalVars.light.background.shade,
-		'--agds-background-page-alt': globalVars.light.background.pageAlt,
+		'--agds-background-body-alt': globalVars.light.background.bodyAlt,
 		'--agds-background-shade-alt': globalVars.light.background.shadeAlt,
 		'--agds-border': globalVars.light.border,
 	}),
@@ -176,9 +176,9 @@ export const themes = {
 		'--agds-foreground-action': globalVars.dark.foreground.action,
 		'--agds-foreground-focus': globalVars.dark.foreground.focus,
 		'--agds-foreground-muted': globalVars.dark.foreground.muted,
-		'--agds-background-page': globalVars.dark.background.page,
+		'--agds-background-body': globalVars.dark.background.body,
 		'--agds-background-shade': globalVars.dark.background.shade,
-		'--agds-background-page-alt': globalVars.dark.background.pageAlt,
+		'--agds-background-body-alt': globalVars.dark.background.bodyAlt,
 		'--agds-background-shade-alt': globalVars.dark.background.shadeAlt,
 		'--agds-border': globalVars.dark.border,
 	}),

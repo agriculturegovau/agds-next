@@ -8,13 +8,13 @@ export default {
 } as ComponentMeta<typeof Logo>;
 
 export const LogoOnLight: ComponentStory<typeof Logo> = () => (
-	<Box theme="light" color="text" background="page" maxWidth={600} padding={2}>
+	<Box theme="light" color="text" background="body" maxWidth={600} padding={2}>
 		<Logo />
 	</Box>
 );
 
 export const LogoOnDark: ComponentStory<typeof Logo> = () => (
-	<Box theme="dark" color="text" background="page" maxWidth={600} padding={2}>
+	<Box theme="dark" color="text" background="body" maxWidth={600} padding={2}>
 		<Logo />
 	</Box>
 );

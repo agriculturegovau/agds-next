@@ -5,7 +5,7 @@ group: Navigation
 ---
 
 ```jsx live
-<Box theme="light" background="page">
+<Box theme="light" background="body">
 	<LinkList
 		links={[
 			{ href: '#', label: 'Home' },
