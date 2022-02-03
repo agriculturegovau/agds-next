@@ -98,7 +98,7 @@ const LiveCode = withLive((props: unknown) => {
 				onChange={handleChange}
 				css={{
 					'& ::selection': {
-						color: globalVars.dark.background.page,
+						color: globalVars.dark.background.body,
 						backgroundColor: globalVars.dark.foreground.action,
 					},
 					boxShadow: `0 1px 3px -2px ${globalVars.light.border}`,
@@ -139,7 +139,7 @@ const StaticCode = ({
 			css={{
 				boxShadow: `0 0 1px ${globalVars.light.border}`,
 				'& ::selection': {
-					color: globalVars.dark.background.page,
+					color: globalVars.dark.background.body,
 					backgroundColor: globalVars.dark.foreground.action,
 				},
 			}}

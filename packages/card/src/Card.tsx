@@ -20,7 +20,7 @@ export const Card = ({ as, children, shadow, clickable }: CardProps) => {
 			as={as} // Note: this should be an li when used in a card list
 			display="block"
 			border={!shadow}
-			background="page"
+			background="body"
 			rounded
 			css={{
 				position: 'relative',

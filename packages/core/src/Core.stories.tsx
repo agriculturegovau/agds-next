@@ -21,10 +21,10 @@ Usage.args = {
 	palette,
 	children: (
 		<Flex gap={2} fontFamily="body">
-			<Box theme="light" background="page" color="text" padding={4} border>
+			<Box theme="light" background="body" color="text" padding={4} border>
 				Content light
 			</Box>
-			<Box theme="dark" background="page" color="text" padding={4} border>
+			<Box theme="dark" background="body" color="text" padding={4} border>
 				Content dark
 			</Box>
 		</Flex>

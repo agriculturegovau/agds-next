@@ -10,7 +10,7 @@ export default {
 } as ComponentMeta<typeof Button>;
 
 export const LightButton: ComponentStory<typeof Button> = (args) => (
-	<Flex gap={2} flexDirection="row" padding={2} background="page" theme="light">
+	<Flex gap={2} flexDirection="row" padding={2} background="body" theme="light">
 		<Button {...args}>Primary</Button>
 		<Button {...args} variant="secondary">
 			Secondary
@@ -27,7 +27,7 @@ LightButton.args = {
 };
 
 export const DarkButton: ComponentStory<typeof Button> = (args) => (
-	<Flex gap={2} flexDirection="row" padding={2} background="page" theme="dark">
+	<Flex gap={2} flexDirection="row" padding={2} background="body" theme="dark">
 		<Button {...args}>Primary</Button>
 		<Button {...args} variant="secondary">
 			Secondary
@@ -58,7 +58,7 @@ LightBlockButton.args = {
 };
 
 export const ButtonLinkExample: ComponentStory<typeof ButtonLink> = (args) => (
-	<Box padding={2} background="page" theme="dark">
+	<Box padding={2} background="body" theme="dark">
 		<ButtonLink {...args}>Primary</ButtonLink>
 	</Box>
 );
@@ -69,7 +69,7 @@ ButtonLinkExample.args = {
 };
 
 export const ButtonSize: ComponentStory<typeof Button> = (args) => (
-	<Stack gap={1} padding={2} background="page" theme="light">
+	<Stack gap={1} padding={2} background="body" theme="light">
 		<div>
 			<Button {...args}>Medium</Button>
 		</div>

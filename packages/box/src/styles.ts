@@ -78,7 +78,7 @@ function typographyStyles({
 		fontSize,
 		lineHeight,
 		'& ::selection': {
-			color: themeValues.background.page,
+			color: themeValues.background.body,
 			backgroundColor: themeValues.foreground.action,
 		},
 	};

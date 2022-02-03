@@ -9,7 +9,7 @@ Many sites will have content being generated in a WYSIWIG or HTML field within a
 This is also known as a Prose component.
 
 ```jsx live
-<Box theme="light" background="page">
+<Box theme="light" background="body">
 	<Body>
 		<h1>Heading</h1>
 		<p>

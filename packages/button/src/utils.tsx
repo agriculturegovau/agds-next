@@ -10,13 +10,13 @@ const variants = {
 	primary: {
 		background: themeValues.foreground.action,
 		borderColor: themeValues.foreground.action,
-		color: themeValues.background.page,
+		color: themeValues.background.body,
 		textDecoration: 'none',
 
 		'&:hover': {
 			background: themeValues.foreground.text,
 			borderColor: themeValues.foreground.text,
-			color: themeValues.background.page,
+			color: themeValues.background.body,
 			textDecoration: 'underline',
 		},
 

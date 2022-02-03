@@ -43,7 +43,7 @@ export function Core({
 						'body, html': {
 							margin: 0,
 							padding: 0,
-							background: themeValues.background.page,
+							background: themeValues.background.body,
 							fontFamily: tokens.font.body,
 						},
 					},

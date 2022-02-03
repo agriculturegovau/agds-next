@@ -9,7 +9,7 @@ group: Foundations
 ```jsx live
 <Flex flexDirection="column" gap={1} padding={1}>
 	<Flex theme="light">
-		{['page', 'shade', 'pageAlt', 'shadeAlt'].map((bg) => (
+		{['body', 'shade', 'bodyAlt', 'shadeAlt'].map((bg) => (
 			<Flex
 				key={bg}
 				flexDirection="column"
@@ -27,7 +27,7 @@ group: Foundations
 		))}
 	</Flex>
 	<Flex theme="dark">
-		{['page', 'shade', 'pageAlt', 'shadeAlt'].map((bg) => (
+		{['body', 'shade', 'bodyAlt', 'shadeAlt'].map((bg) => (
 			<Flex
 				key={bg}
 				flexDirection="column"
@@ -53,7 +53,7 @@ group: Foundations
 ## Typography
 
 ```jsx live
-<Flex theme="light" background="page" gap={1} padding={1}>
+<Flex theme="light" background="body" gap={1} padding={1}>
 	<Flex flexDirection="column" gap={1}>
 		<Text fontSize="sm" fontWeight="bold">
 			Default
@@ -64,7 +64,7 @@ group: Foundations
 			</Box>
 		))}
 	</Flex>
-	<Flex flexDirection="column" theme="light" background="page" gap={1}>
+	<Flex flexDirection="column" theme="light" background="body" gap={1}>
 		<Text fontSize="sm" fontWeight="bold">
 			Heading
 		</Text>
@@ -76,7 +76,7 @@ group: Foundations
 			</Box>
 		))}
 	</Flex>
-	<Flex flexDirection="column" theme="light" background="page" gap={1}>
+	<Flex flexDirection="column" theme="light" background="body" gap={1}>
 		<Text fontSize="sm" fontWeight="bold">
 			Nospace
 		</Text>

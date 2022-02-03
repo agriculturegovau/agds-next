@@ -28,7 +28,7 @@ export const DarkBox = Template.bind({});
 DarkBox.args = {
 	children: 'Dark box',
 	theme: 'dark',
-	background: 'page',
+	background: 'body',
 	color: 'text',
 	paddingX: 2,
 	paddingY: 2,
@@ -65,7 +65,7 @@ function ResponsiveSizeIndicator() {
 				// TODO: replace with a pill / tag when it exists
 				<Box
 					key={s}
-					background="page"
+					background="body"
 					padding={0.5}
 					rounded
 					display={Object.fromEntries(
