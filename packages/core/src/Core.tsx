@@ -10,6 +10,7 @@ import {
 	themes,
 	themeValues,
 } from './colors';
+import { tokens } from './tokens';
 
 export function Core({
 	children,
@@ -43,6 +44,7 @@ export function Core({
 							margin: 0,
 							padding: 0,
 							background: themeValues.background.page,
+							fontFamily: tokens.font.body,
 						},
 					},
 				]}
