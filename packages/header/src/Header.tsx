@@ -1,4 +1,4 @@
-import { Flex } from '@ag.ds-next/box';
+import { Column } from '@ag.ds-next/columns';
 import { HeaderContainer } from './HeaderContainer';
 import { HeaderBrand } from './HeaderBrand';
 import type { ReactNode } from 'react';
@@ -20,23 +20,21 @@ export function Header({
 	variant = 'dark',
 	href = '/',
 }: HeaderProps) {
+	const hasRightContent = !!rightContent;
 	return (
 		<HeaderContainer variant={variant}>
-			<HeaderBrand
-				logo={logo}
-				href={href}
-				heading={heading}
-				subline={subline}
-			/>
-			<HeaderRight>{rightContent}</HeaderRight>
+			<Column columnSpan={{ xs: 12, md: hasRightContent ? 8 : 12 }}>
+				<HeaderBrand
+					logo={logo}
+					href={href}
+					heading={heading}
+					subline={subline}
+				/>
+			</Column>
+
+			{hasRightContent && (
+				<Column columnSpan={{ xs: 12, md: 4 }}>{rightContent}</Column>
+			)}
 		</HeaderContainer>
 	);
 }
-
-const HeaderRight = ({ children }: { children: ReactNode }) => {
-	return (
-		<Flex width={{ xs: '100%', md: '33.33%' }} alignItems="flex-end">
-			{children}
-		</Flex>
-	);
-};
