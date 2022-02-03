@@ -1,7 +1,10 @@
-import { Box, Flex } from '@ag.ds-next/box';
+import Image from 'next/image';
+import { Flex } from '@ag.ds-next/box';
 import { Icon } from '@ag.ds-next/icon';
 import { Card, CardInner, CardLink } from '@ag.ds-next/card';
 import { Columns, Column } from '@ag.ds-next/columns';
+
+import { getPictogram } from './pictograms';
 
 type Pkg = {
 	slug: string;
@@ -9,10 +12,17 @@ type Pkg = {
 	title: string;
 };
 
-export const PkgCard = ({ pkg }: { pkg: Pkg }) => (
+const PkgCard = ({ pkg }: { pkg: Pkg }) => (
 	<Card as="li" clickable shadow>
 		{/* Place holder - this needs to be an image */}
-		<Box width={'100%'} height={100} background="shade" />
+		<Flex
+			alignItems="center"
+			justifyContent="center"
+			padding={1}
+			background="shade"
+		>
+			<Image src={getPictogram(pkg.slug)} alt={`Pictogram of ${pkg.title}`} />
+		</Flex>
 		<CardInner>
 			<Flex
 				as={CardLink}

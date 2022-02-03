@@ -11,7 +11,7 @@ import {
 import { mdxComponents } from '../../components/utils';
 import { AppLayout } from '../../components/AppLayout';
 import { PageLayout } from '../../components/PageLayout';
-import { PkgCardList } from '../../components/PkgCard';
+import { PkgCardList } from '../../components/PkgCardList';
 
 import { Stack } from '@ag.ds-next/box';
 import { Body } from '@ag.ds-next/body';

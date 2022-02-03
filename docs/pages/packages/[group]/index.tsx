@@ -3,7 +3,7 @@ import { H1 } from '@ag.ds-next/heading';
 
 import { AppLayout } from '../../../components/AppLayout';
 import { PageLayout } from '../../../components/PageLayout';
-import { PkgCardList } from '../../../components/PkgCard';
+import { PkgCardList } from '../../../components/PkgCardList';
 import {
 	getPkgList,
 	getPkgGroupList,
