@@ -24,14 +24,10 @@ const PkgCard = ({ pkg }: { pkg: Pkg }) => (
 			<Image src={getPictogram(pkg.slug)} alt={`Pictogram of ${pkg.title}`} />
 		</Flex>
 		<CardInner>
-			<Flex
-				as={CardLink}
-				justifyContent="space-between"
-				href={`/packages/${pkg.group}/${pkg.slug}`}
-			>
+			<CardLink href={`/packages/${pkg.group}/${pkg.slug}`}>
 				{pkg.title}
 				<Icon icon="chevronRight" size={1} />
-			</Flex>
+			</CardLink>
 		</CardInner>
 	</Card>
 );

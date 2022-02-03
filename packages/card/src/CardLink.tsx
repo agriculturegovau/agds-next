@@ -1,11 +1,13 @@
 import { ComponentProps } from 'react';
 import { useLinkComponent, LinkComponent } from '@ag.ds-next/core';
-import { linkStyles } from '@ag.ds-next/box';
+import { Flex, linkStyles } from '@ag.ds-next/box';
 
 export const CardLink = (props: ComponentProps<LinkComponent>) => {
 	const Link = useLinkComponent();
 	return (
-		<Link
+		<Flex
+			as={Link}
+			justifyContent="space-between"
 			css={[
 				linkStyles,
 				// NOTE: no focus styles here because the parent Card does it.

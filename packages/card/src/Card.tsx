@@ -1,5 +1,5 @@
 import { PropsWithChildren, ElementType } from 'react';
-import { Box, focusStyles } from '@ag.ds-next/box';
+import { Box } from '@ag.ds-next/box';
 import { outline } from '@ag.ds-next/core';
 
 export type CardProps = PropsWithChildren<{
@@ -7,6 +7,12 @@ export type CardProps = PropsWithChildren<{
 	shadow?: boolean;
 	clickable?: boolean;
 }>;
+
+const componentTokens = {
+	borderColor: 'lightgray',
+	shadow: '0 2px 4px rgba(0, 0, 0, 0.3)',
+	hoverShadow: '0 1px 1px rgba(0, 0, 0, 0.3)',
+};
 
 export const Card = ({ as, children, shadow, clickable }: CardProps) => {
 	return (
@@ -19,21 +25,18 @@ export const Card = ({ as, children, shadow, clickable }: CardProps) => {
 			css={{
 				position: 'relative',
 				overflow: 'hidden',
-				borderColor: 'lightgray', // TODO: This needs a token
+				borderColor: componentTokens.borderColor,
 
 				...(clickable && {
+					cursor: 'pointer',
 					// If any element inside the card receives focus, add a focus ring around the wrapper card div
 					'&:focus-within': outline,
-					// can we use focusStyles from Box (may need modification)
-					cursor: 'pointer',
 				}),
 
 				...(shadow && {
-					boxShadow: '0 2px 4px rgba(0, 0, 0, 0.3)',
+					boxShadow: componentTokens.shadow,
 					'&:hover': clickable
-						? {
-								boxShadow: '0 1px 1px rgba(0, 0, 0, 0.3)',
-						  }
+						? { boxShadow: componentTokens.hoverShadow }
 						: undefined,
 				}),
 			}}
