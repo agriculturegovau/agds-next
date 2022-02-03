@@ -28,8 +28,8 @@ export default {
 } as ComponentMeta<typeof Header>;
 
 const defaultArgs = {
-	heading: 'Example heading',
-	subline: 'Example subline',
+	heading: 'Export Service',
+	subline: 'Supporting Australian agricultural exports',
 };
 
 function getLogo(context: any, variant = 'dark') {
@@ -119,7 +119,7 @@ export const HeaderSearch: ComponentStory<typeof Header> = (args, context) => (
 	/>
 );
 HeaderSearch.args = {
-	heading: 'Export Services',
-	subline: 'Example subline',
+	heading: 'Export Service',
+	subline: 'Supporting Australian agricultural exports',
 };
 HeaderSearch.storyName = '🕥 Header Search';
