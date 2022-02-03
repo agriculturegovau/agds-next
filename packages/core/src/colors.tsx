@@ -61,8 +61,6 @@ export const paletteVars = {
 	success: '--agds-success',
 	warning: '--agds-warning',
 	info: '--agds-info',
-	hint: '--agds-hint',
-	hintAlt: '--agds-hint-alt',
 } as const;
 
 export type Palette = Partial<Record<keyof typeof paletteVars, string>>;
@@ -113,8 +111,6 @@ export const defaultPalette = {
 	success: '#0b996c',
 	warning: '#f69900',
 	info: '#00bfe9',
-	hint: '#6f777b',
-	hintAlt: '#61696b',
 } as const;
 
 export type PaletteKey = keyof typeof paletteVars;
@@ -155,8 +151,6 @@ export const globalVars = {
 	success: `var(${paletteVars.success})`,
 	warning: `var(${paletteVars.warning})`,
 	info: `var(${paletteVars.info})`,
-	hint: `var(${paletteVars.hint})`,
-	hintAlt: `var(${paletteVars.hintAlt})`,
 } as const;
 
 export const themes = {
