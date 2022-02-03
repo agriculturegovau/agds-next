@@ -9,6 +9,7 @@ export const CardLink = (props: ComponentProps<LinkComponent>) => {
 			css={[
 				linkStyles,
 				// NOTE: no focus styles here because the parent Card does it.
+				{ '&:focus': { outline: 'none' } },
 				{
 					'&:after': {
 						content: '""',
