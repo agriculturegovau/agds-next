@@ -48,7 +48,7 @@ export function HeaderBrand({
 			{logo ? <Box borderRight display={{ xs: 'none', md: 'block' }} /> : null}
 			<Stack justifyContent="center">
 				<Text
-					lineHeight="default"
+					lineHeight="heading"
 					fontSize={{ xs: 'md', md: 'xl' }}
 					fontWeight="bold"
 				>

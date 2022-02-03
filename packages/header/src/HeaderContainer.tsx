@@ -1,5 +1,6 @@
 import { Flex } from '@ag.ds-next/box';
 import { tokens } from '@ag.ds-next/core';
+import { Columns } from '@ag.ds-next/columns';
 import React from 'react';
 
 const variantMap = {
@@ -35,17 +36,14 @@ export function HeaderContainer({ variant, children }: HeaderContainerProps) {
 			paddingY={{ xs: 1, md: 3 }}
 			justifyContent="center"
 		>
-			<Flex
-				justifyContent="space-between"
-				flexDirection={{ xs: 'column', md: 'row' }}
-				alignItems={{ md: 'center' }}
-				gap={1.5}
+			<Columns
+				alignItems="center"
 				maxWidth={tokens.maxWidth.container}
-				paddingX={{ xs: 0.75, md: 2 }}
+				paddingX={tokens.containerPadding}
 				width="100%"
 			>
 				{children}
-			</Flex>
+			</Columns>
 		</Flex>
 	);
 }
