@@ -1,5 +1,6 @@
 import { Content } from '@ag.ds-next/content';
-import { Box, Flex, Stack } from '@ag.ds-next/box';
+import { Flex, Stack } from '@ag.ds-next/box';
+import { Columns, Column } from '@ag.ds-next/columns';
 import { SideNav } from '@ag.ds-next/side-nav';
 import { Breadcrumbs } from '@ag.ds-next/breadcrumbs';
 
@@ -25,36 +26,33 @@ export function PageLayout({
 	const router = useRouter();
 	return (
 		<Content>
-			<Flex
-				gap={{ xs: 1, md: 2, lg: 6 }}
-				flexDirection={{ xs: 'column', md: 'row' }}
-			>
+			<Columns>
 				{sideNav && (
-					<Box
-						width={{ md: '25%' }}
-						minWidth={'10rem'}
-						maxWidth={{ md: '20rem' }}
-						flexShrink={0}
-					>
-						<SideNav
-							variant="light"
-							activePath={router.asPath}
-							title={sideNav.title}
-							titleLink={sideNav.titleLink}
-							items={sideNav.items}
-						/>
-					</Box>
+					<>
+						<Column columnSpan={{ xs: 12, md: 3 }} flexShrink={0}>
+							<SideNav
+								variant="light"
+								activePath={router.asPath}
+								title={sideNav.title}
+								titleLink={sideNav.titleLink}
+								items={sideNav.items}
+							/>
+						</Column>
+					</>
 				)}
-				<Stack flexGrow={1} gap={1}>
-					{breadcrumbs?.length ? <Breadcrumbs links={breadcrumbs} /> : null}
-					{children}
-					{editPath && (
-						<Flex justifyContent="flex-start">
-							<EditPage path={editPath} />
-						</Flex>
-					)}
-				</Stack>
-			</Flex>
+
+				<Column columnSpan={{ xs: 12, md: sideNav ? 8 : 12 }} columnStart={5}>
+					<Stack flexGrow={1} gap={1}>
+						{breadcrumbs?.length ? <Breadcrumbs links={breadcrumbs} /> : null}
+						{children}
+						{editPath && (
+							<Flex justifyContent="flex-start">
+								<EditPage path={editPath} />
+							</Flex>
+						)}
+					</Stack>
+				</Column>
+			</Columns>
 		</Content>
 	);
 }
