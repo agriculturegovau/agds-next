@@ -68,7 +68,7 @@ export function mapSpacing(v: Spacing) {
 	return `${v}rem`;
 }
 
-const gutter = { xs: 1, md: 2 } as const;
+const containerPadding = { xs: 0.75, md: 2 } as const;
 
 const maxWidth = {
 	bodyText: '42em',
@@ -87,7 +87,7 @@ export const tokens = {
 	fontSize,
 	fontWeight,
 	lineHeight,
-	gutter,
+	containerPadding,
 	maxWidth,
 	borderRadius,
 };

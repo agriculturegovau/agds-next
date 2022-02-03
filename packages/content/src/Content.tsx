@@ -27,7 +27,7 @@ export function Content({
 				width="100%"
 				maxWidth={tokens.maxWidth.container}
 				paddingY={paddingYMap[spacing]}
-				paddingX={{ xs: 1, md: 2 }}
+				paddingX={tokens.containerPadding}
 				gap={1}
 			>
 				{children}
