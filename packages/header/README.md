@@ -6,12 +6,13 @@ description: The masthead of our applications, Header incorporates our AWE brand
 
 ```jsx live
 <Header
-  heading="Export Service"
-  subline="Supporting Australian agricultural exports"
-  logo={<AgLogo />}
+	heading="Export Service"
+	subline="Supporting Australian agricultural exports"
+	logo={<AgLogo />}
 	variant="dark"
 />
 ```
+
 ## Heading and Subline
 
 Heading should be set to the website or service title.
