@@ -30,16 +30,10 @@ const columnStyles = ({
 	return mq({
 		gridColumn: mapResponsiveProp(columnSpan, (v) => `span ${v}/span ${v}`),
 		...(columnStart && {
-			gridColumnStart: mapResponsiveProp(
-				columnStart,
-				(v) => `span ${v}/span ${v}`
-			),
+			gridColumnStart: mapResponsiveProp(columnStart),
 		}),
 		...(columnEnd && {
-			gridColumnStart: mapResponsiveProp(
-				columnEnd,
-				(v) => `span ${v}/span ${v}`
-			),
+			gridColumnEnd: mapResponsiveProp(columnEnd),
 		}),
 	});
 };
