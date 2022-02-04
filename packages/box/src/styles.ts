@@ -16,7 +16,15 @@ import {
 
 type PaletteProps = Partial<{
 	palette: BoxPalette;
+	dark: boolean;
+	light: boolean;
 }>;
+
+function paletteStyles({ palette, dark, light }: PaletteProps) {
+	if (palette) return boxPalettes[palette];
+	if (dark) return boxPalettes.dark;
+	if (light) return boxPalettes.light;
+}
 
 const foregroundColorMap = {
 	...boxPalette.foreground,
@@ -27,15 +35,19 @@ const foregroundColorMap = {
 	info: globalPalette.info,
 };
 
+const backgroundColorMap = {
+	...boxPalette.background,
+};
+
 type ColorProps = Partial<{
 	color: keyof typeof foregroundColorMap;
-	background: keyof typeof boxPalette.background;
+	background: keyof typeof backgroundColorMap;
 }>;
 
 function colorStyles({ color, background }: ColorProps) {
 	return {
 		color: color ? foregroundColorMap[color] : undefined,
-		backgroundColor: background ? boxPalette.background[background] : undefined,
+		backgroundColor: background ? backgroundColorMap[background] : undefined,
 	};
 }
 
@@ -254,6 +266,8 @@ export type BoxProps = PaletteProps &
 
 export function boxStyles({
 	palette,
+	dark,
+	light,
 	color,
 	background,
 	border,
@@ -295,7 +309,7 @@ export function boxStyles({
 }: BoxProps) {
 	return [
 		css([
-			palette ? boxPalettes[palette] : undefined,
+			paletteStyles({ palette, dark, light }),
 
 			// common resets
 			{

@@ -15,10 +15,13 @@ const Template: ComponentStory<typeof Box> = (args) => <Box {...args} />;
 export const LightBox = Template.bind({});
 LightBox.args = {
 	children: 'A light box',
-	palette: 'light',
+	background: 'body',
+	color: 'text',
 	padding: 2,
 	border: true,
 	rounded: true,
+	// palette: 'light',
+	light: true,
 };
 
 /**
@@ -27,13 +30,13 @@ LightBox.args = {
 export const DarkBox = Template.bind({});
 DarkBox.args = {
 	children: 'Dark box',
-	palette: 'dark',
 	background: 'body',
 	color: 'text',
-	paddingX: 2,
-	paddingY: 2,
+	padding: 2,
 	border: true,
 	rounded: true,
+	// palette: 'dark',
+	dark: true,
 };
 
 /** Responsive props */
