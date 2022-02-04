@@ -18,26 +18,31 @@ const variantMap = {
 		palette: 'light',
 		background: 'body',
 		hover: 'shade',
+		bottomBar: boxPalette.foreground.action,
 	},
 	lightAlt: {
 		palette: 'light',
 		background: 'bodyAlt',
 		hover: 'shadeAlt',
+		bottomBar: boxPalette.foreground.action,
 	},
 	dark: {
 		palette: 'dark',
 		background: 'body',
 		hover: 'shade',
+		bottomBar: boxPalette.foreground.action,
 	},
 	darkAlt: {
 		palette: 'dark',
 		background: 'bodyAlt',
 		hover: 'shadeAlt',
+		bottomBar: boxPalette.foreground.action,
 	},
 	agriculture: {
 		palette: 'dark',
 		background: 'shade',
 		hover: 'body',
+		bottomBar: globalPalette.accent,
 	},
 } as const;
 
@@ -46,8 +51,8 @@ export type NavContainerProps = React.PropsWithChildren<{
 }>;
 
 export function NavContainer({ variant, children }: NavContainerProps) {
-	const { palette, background, hover } = variantMap[variant];
 	const [menuOpen, open, close] = useTernaryState(false);
+	const { background, bottomBar, hover, palette } = variantMap[variant];
 
 	return (
 		<Box
@@ -59,7 +64,7 @@ export function NavContainer({ variant, children }: NavContainerProps) {
 				position: 'relative',
 				[localPaletteVars.linkHoverBg]: boxPalette.background[hover],
 				[localPaletteVars.linkActiveBg]: boxPalette.background[background],
-				[localPaletteVars.bottomBar]: globalPalette.accent,
+				[localPaletteVars.bottomBar]: bottomBar, // <-- special case
 			}}
 		>
 			<BottomBar />
