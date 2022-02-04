@@ -25,7 +25,7 @@ export const SideNavTitle = ({
 				textDecoration: 'none',
 
 				'&:hover': {
-					backgroundColor: boxPalette.background.shade,
+					backgroundColor: boxPalette.backgroundShade,
 					textDecoration: 'underline',
 				},
 			}}

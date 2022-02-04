@@ -1,4 +1,5 @@
 import { boxPalette, mapSpacing, Spacing } from '@ag.ds-next/core';
+import { foregroundColorMap } from '@ag.ds-next/box';
 import { DetailedHTMLProps, SVGAttributes } from 'react';
 
 import { ICONS } from './icons';
@@ -11,7 +12,7 @@ type SvgProps = Omit<
 >;
 
 const colors = {
-	...boxPalette.foreground,
+	...foregroundColorMap,
 	border: boxPalette.border,
 };
 

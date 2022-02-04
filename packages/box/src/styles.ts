@@ -26,8 +26,11 @@ function paletteStyles({ palette, dark, light }: PaletteProps) {
 	if (light) return boxPalettes.light;
 }
 
-const foregroundColorMap = {
-	...boxPalette.foreground,
+export const foregroundColorMap = {
+	text: boxPalette.foregroundText,
+	action: boxPalette.foregroundAction,
+	focus: boxPalette.foregroundFocus,
+	muted: boxPalette.foregroundMuted,
 	accent: globalPalette.accent,
 	error: globalPalette.error,
 	success: globalPalette.success,
@@ -35,8 +38,11 @@ const foregroundColorMap = {
 	info: globalPalette.info,
 };
 
-const backgroundColorMap = {
-	...boxPalette.background,
+export const backgroundColorMap = {
+	body: boxPalette.backgroundBody,
+	shade: boxPalette.backgroundShade,
+	bodyAlt: boxPalette.backgroundBodyAlt,
+	shadeAlt: boxPalette.backgroundShadeAlt,
 };
 
 type ColorProps = Partial<{
@@ -86,8 +92,8 @@ function typographyStyles({
 		fontSize,
 		lineHeight,
 		'& ::selection': {
-			color: boxPalette.background.body,
-			backgroundColor: boxPalette.foreground.action,
+			color: boxPalette.backgroundBody,
+			backgroundColor: boxPalette.foregroundAction,
 		},
 	};
 }
@@ -237,12 +243,12 @@ function paddingStyles({
 
 type LinkProps = Partial<{ link: boolean }>;
 export const linkStyles = {
-	color: boxPalette.foreground.action,
+	color: boxPalette.foregroundAction,
 	textDecoration: 'underline',
 	textDecorationSkip: 'auto',
 
 	'&:hover': {
-		color: boxPalette.foreground.text,
+		color: boxPalette.foregroundText,
 		textDecoration: 'none',
 	},
 };

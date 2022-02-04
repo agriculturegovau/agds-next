@@ -16,11 +16,11 @@ export const LinkListItem = (
 			lineHeight="default"
 			css={{
 				a: {
-					color: boxPalette.foreground.action,
+					color: boxPalette.foregroundAction,
 					textDecoration: 'underline',
 
 					'&:hover': {
-						color: boxPalette.foreground.action,
+						color: boxPalette.foregroundAction,
 						textDecoration: 'none',
 					},
 

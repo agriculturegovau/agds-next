@@ -24,10 +24,10 @@ function MenuButton({
 			focus
 			css={{
 				background: 'transparent',
-				color: boxPalette.foreground.action,
+				color: boxPalette.foregroundAction,
 
 				'&:hover': {
-					color: boxPalette.foreground.text,
+					color: boxPalette.foregroundText,
 					backgroundColor: localPalette.linkHoverBg,
 				},
 			}}

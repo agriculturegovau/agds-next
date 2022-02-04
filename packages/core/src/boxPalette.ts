@@ -43,18 +43,14 @@ export const boxPalettes = {
 export type BoxPalette = keyof typeof boxPalettes;
 
 export const boxPalette = {
-	foreground: {
-		text: `var(${boxPaletteVars.foregroundText})`,
-		action: `var(${boxPaletteVars.foregroundAction})`,
-		focus: `var(${boxPaletteVars.foregroundFocus})`,
-		muted: `var(${boxPaletteVars.foregroundMuted})`,
-	},
-	background: {
-		body: `var(${boxPaletteVars.backgroundBody})`,
-		shade: `var(${boxPaletteVars.backgroundShade})`,
-		bodyAlt: `var(${boxPaletteVars.backgroundBodyAlt})`,
-		shadeAlt: `var(${boxPaletteVars.backgroundShadeAlt})`,
-	},
+	foregroundText: `var(${boxPaletteVars.foregroundText})`,
+	foregroundAction: `var(${boxPaletteVars.foregroundAction})`,
+	foregroundFocus: `var(${boxPaletteVars.foregroundFocus})`,
+	foregroundMuted: `var(${boxPaletteVars.foregroundMuted})`,
+	backgroundBody: `var(${boxPaletteVars.backgroundBody})`,
+	backgroundShade: `var(${boxPaletteVars.backgroundShade})`,
+	backgroundBodyAlt: `var(${boxPaletteVars.backgroundBodyAlt})`,
+	backgroundShadeAlt: `var(${boxPaletteVars.backgroundShadeAlt})`,
 	border: `var(${boxPaletteVars.border})`,
 };
 
@@ -62,6 +58,6 @@ export const boxPalette = {
 export const outline = {
 	outlineWidth: '3px',
 	outlineStyle: 'solid',
-	outlineColor: boxPalette.foreground.focus,
+	outlineColor: boxPalette.foregroundFocus,
 	outlineOffset: 0.5 * tokens.unit,
 };

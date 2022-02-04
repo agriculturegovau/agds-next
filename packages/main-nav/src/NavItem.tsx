@@ -29,7 +29,7 @@ export function NavItem({
 				' a': {
 					position: 'relative',
 					display: 'block',
-					color: boxPalette.foreground[active ? 'text' : 'action'],
+					color: boxPalette[active ? 'foregroundText' : 'foregroundAction'],
 					padding: mapSpacing(1),
 					textDecoration: 'none',
 
@@ -71,7 +71,7 @@ export function NavItem({
 					'&:hover': {
 						textDecoration: 'underline',
 						textDecorationSkipInk: 'auto',
-						color: boxPalette.foreground.text,
+						color: boxPalette.foregroundText,
 						backgroundColor: localPalette.linkHoverBg,
 						'&::after': {
 							background: active ? localPalette.linkHoverBg : 'transparent',

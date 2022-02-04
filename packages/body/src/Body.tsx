@@ -18,7 +18,7 @@ export const Body = forwardRefWithAs<'div', BoxProps>(function Body(
 export const bodyClass = css({
 	margin: 0,
 	textSizeAdjust: '100%',
-	color: boxPalette.foreground.text,
+	color: boxPalette.foregroundText,
 
 	// Font grid
 	fontFamily: tokens.font.body,
@@ -37,16 +37,16 @@ export const bodyClass = css({
 	 * `mark` styling.
 	 */
 	mark: {
-		color: boxPalette.background.body,
-		backgroundColor: boxPalette.foreground.action,
+		color: boxPalette.backgroundBody,
+		backgroundColor: boxPalette.foregroundAction,
 	},
 
 	/**
 	 * Text selection styling
 	 */
 	'& ::selection': {
-		color: boxPalette.background.body,
-		backgroundColor: boxPalette.foreground.action,
+		color: boxPalette.backgroundBody,
+		backgroundColor: boxPalette.foregroundAction,
 	},
 
 	img: {
@@ -251,7 +251,7 @@ export const bodyClass = css({
 		padding: mapSpacing(2),
 		borderLeft: '4px solid',
 		borderColor: boxPalette.border,
-		background: boxPalette.background.shade,
+		background: boxPalette.backgroundShade,
 	},
 
 	/**
@@ -264,8 +264,8 @@ export const bodyClass = css({
 		fontFamily: tokens.font.monospace,
 		display: 'inline-block',
 		borderRadius: tokens.borderRadius,
-		backgroundColor: boxPalette.background.shade, // TODO: Check this did't break Docs code rendering
-		color: boxPalette.foreground.text,
+		backgroundColor: boxPalette.backgroundShade, // TODO: Check this did't break Docs code rendering
+		color: boxPalette.foregroundText,
 	},
 
 	'pre:not([class])': {

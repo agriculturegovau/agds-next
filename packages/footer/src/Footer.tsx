@@ -8,22 +8,22 @@ const variantMap = {
 	light: {
 		palette: 'light',
 		background: 'body',
-		border: boxPalette.foreground.action,
+		border: boxPalette.foregroundAction,
 	},
 	lightAlt: {
 		palette: 'light',
 		background: 'bodyAlt',
-		border: boxPalette.foreground.action,
+		border: boxPalette.foregroundAction,
 	},
 	dark: {
 		palette: 'dark',
 		background: 'body',
-		border: boxPalette.foreground.action,
+		border: boxPalette.foregroundAction,
 	},
 	darkAlt: {
 		palette: 'dark',
 		background: 'bodyAlt',
-		border: boxPalette.foreground.action,
+		border: boxPalette.foregroundAction,
 	},
 	agriculture: {
 		palette: 'dark',

@@ -8,15 +8,15 @@ import {
 
 const variants = {
 	primary: {
-		background: boxPalette.foreground.action,
-		borderColor: boxPalette.foreground.action,
-		color: boxPalette.background.body,
+		background: boxPalette.foregroundAction,
+		borderColor: boxPalette.foregroundAction,
+		color: boxPalette.backgroundBody,
 		textDecoration: 'none',
 
 		'&:hover': {
-			background: boxPalette.foreground.text,
-			borderColor: boxPalette.foreground.text,
-			color: boxPalette.background.body,
+			background: boxPalette.foregroundText,
+			borderColor: boxPalette.foregroundText,
+			color: boxPalette.backgroundBody,
 			textDecoration: 'underline',
 		},
 
@@ -24,14 +24,14 @@ const variants = {
 	},
 	secondary: {
 		background: 'transparent',
-		border: `3px solid ${boxPalette.foreground.action}`,
-		color: boxPalette.foreground.action,
+		border: `3px solid ${boxPalette.foregroundAction}`,
+		color: boxPalette.foregroundAction,
 		textDecoration: 'none',
 
 		'&:hover': {
 			background: 'transparent',
-			border: `3px solid ${boxPalette.foreground.text}`,
-			color: boxPalette.foreground.text,
+			border: `3px solid ${boxPalette.foregroundText}`,
+			color: boxPalette.foregroundText,
 			textDecoration: 'underline',
 		},
 
@@ -40,13 +40,13 @@ const variants = {
 	tertiary: {
 		background: 'transparent',
 		border: `3px solid transparent`,
-		color: boxPalette.foreground.action,
+		color: boxPalette.foregroundAction,
 		textDecoration: 'underline',
 
 		'&:hover': {
 			background: 'transparent',
 			border: `3px solid transparent`,
-			color: boxPalette.foreground.text,
+			color: boxPalette.foregroundText,
 			textDecoration: 'none',
 		},
 

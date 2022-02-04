@@ -34,7 +34,7 @@ export function Core({
 						'body, html': {
 							margin: 0,
 							padding: 0,
-							background: boxPalette.background.body,
+							background: boxPalette.backgroundBody,
 							fontFamily: tokens.font.body,
 						},
 					},

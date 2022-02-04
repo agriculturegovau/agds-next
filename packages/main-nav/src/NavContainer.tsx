@@ -1,7 +1,7 @@
 import React from 'react';
 import FocusTrap from 'focus-trap-react';
 
-import { Box, Flex } from '@ag.ds-next/box';
+import { Box, Flex, backgroundColorMap } from '@ag.ds-next/box';
 import {
 	boxPalette,
 	useTernaryState,
@@ -18,25 +18,25 @@ const variantMap = {
 		palette: 'light',
 		background: 'body',
 		hover: 'shade',
-		bottomBar: boxPalette.foreground.action,
+		bottomBar: boxPalette.foregroundAction,
 	},
 	lightAlt: {
 		palette: 'light',
 		background: 'bodyAlt',
 		hover: 'shadeAlt',
-		bottomBar: boxPalette.foreground.action,
+		bottomBar: boxPalette.foregroundAction,
 	},
 	dark: {
 		palette: 'dark',
 		background: 'body',
 		hover: 'shade',
-		bottomBar: boxPalette.foreground.action,
+		bottomBar: boxPalette.foregroundAction,
 	},
 	darkAlt: {
 		palette: 'dark',
 		background: 'bodyAlt',
 		hover: 'shadeAlt',
-		bottomBar: boxPalette.foreground.action,
+		bottomBar: boxPalette.foregroundAction,
 	},
 	agriculture: {
 		palette: 'dark',
@@ -62,8 +62,8 @@ export function NavContainer({ variant, children }: NavContainerProps) {
 			color="text"
 			css={{
 				position: 'relative',
-				[localPaletteVars.linkHoverBg]: boxPalette.background[hover],
-				[localPaletteVars.linkActiveBg]: boxPalette.background[background],
+				[localPaletteVars.linkHoverBg]: backgroundColorMap[hover],
+				[localPaletteVars.linkActiveBg]: backgroundColorMap[background],
 				[localPaletteVars.bottomBar]: bottomBar, // <-- special case
 			}}
 		>
@@ -88,7 +88,7 @@ export function NavContainer({ variant, children }: NavContainerProps) {
 									zIndex: 200,
 									position: 'fixed',
 									display: menuOpen ? 'block' : 'none',
-									background: boxPalette.background.body,
+									background: boxPalette.backgroundBody,
 									top: 0,
 									left: 0,
 									bottom: 0,

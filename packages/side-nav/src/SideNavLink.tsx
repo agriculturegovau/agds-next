@@ -41,7 +41,7 @@ export const SideNavLink = ({
 				css={{
 					' a': {
 						...fontGrid('xs', 'default'),
-						color: boxPalette.foreground[active ? 'text' : 'muted'],
+						color: boxPalette[active ? 'foregroundText' : 'foregroundMuted'],
 						textDecoration: 'none',
 
 						paddingTop: mapSpacing(1),
@@ -51,7 +51,7 @@ export const SideNavLink = ({
 						display: 'block',
 
 						'&:hover': {
-							color: boxPalette.foreground.text,
+							color: boxPalette.foregroundText,
 							textDecoration: 'underline',
 							textDecorationSkipInk: 'auto',
 							backgroundColor: localPalette.linkHoverBg,
