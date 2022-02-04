@@ -28,17 +28,15 @@ export function PageLayout({
 		<Content>
 			<Columns>
 				{sideNav && (
-					<>
-						<Column columnSpan={{ xs: 12, md: 3 }} flexShrink={0}>
-							<SideNav
-								variant="light"
-								activePath={router.asPath}
-								title={sideNav.title}
-								titleLink={sideNav.titleLink}
-								items={sideNav.items}
-							/>
-						</Column>
-					</>
+					<Column columnSpan={{ xs: 12, md: 3 }} flexShrink={0}>
+						<SideNav
+							variant="light"
+							activePath={router.asPath}
+							title={sideNav.title}
+							titleLink={sideNav.titleLink}
+							items={sideNav.items}
+						/>
+					</Column>
 				)}
 
 				<Column columnStart={{ xs: 1, md: sideNav ? 5 : 1 }} columnEnd="last">

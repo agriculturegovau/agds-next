@@ -7,7 +7,7 @@ group: Foundations
 This package includes the components `<Columns />` and `<Column />`.
 
 ```jsx live
-<Columns gridGap={0.5}>
+<Columns gap={0.5}>
 	<Column columnSpan={1} background="shade" padding={1} />
 	<Column columnSpan={1} background="shade" padding={1} />
 	<Column columnSpan={1} background="shade" padding={1} />
@@ -28,7 +28,7 @@ This package includes the components `<Columns />` and `<Column />`.
 Use the `columnSpan` prop to control how many columns you want to column to span.
 
 ```jsx live
-<Columns gridGap={0.5}>
+<Columns gap={0.5}>
 	<Column columnSpan={3} background="shade" padding={1} />
 	<Column columnSpan={3} background="shade" padding={1} />
 	<Column columnSpan={3} background="shade" padding={1} />

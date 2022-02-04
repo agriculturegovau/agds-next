@@ -51,7 +51,7 @@ export const WithBody: ComponentStory<typeof Card> = (args) => (
 
 export const CardList: ComponentStory<typeof Card> = (args) => (
 	<Box theme="light" background="body">
-		<Columns gridGap={2}>
+		<Columns>
 			{[
 				'Mollis Tristique',
 				'Sollicitudin Ornare',
