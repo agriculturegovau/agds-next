@@ -39,7 +39,7 @@ A card with an image. For full width images, add the img tag outside the `CardIn
 
 ```jsx live
 <Card>
-	<PlaceholderImage alt="Grey placeholder image" />
+	<PlaceholderImage />
 	<CardInner>
 		<Body>
 			<a href="#">Action</a>
@@ -54,7 +54,7 @@ For cards that contain a single link, the hit area for that link can be made to 
 
 ```jsx live
 <Card shadow clickable>
-	<PlaceholderImage alt="Grey placeholder image" />
+	<PlaceholderImage />
 	<CardInner>
 		<Body>
 			<h3>

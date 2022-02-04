@@ -31,11 +31,10 @@ const PlaceholderImage = ({
 }: Omit<ComponentProps<typeof Image>, 'src'> & {
 	width: number;
 	height: number;
-	alt: string;
 }) => (
 	<img
 		src="/agds-next/img/placeholder/600x200.png"
-		alt={alt}
+		alt="Grey placeholder image"
 		width={width}
 		height={height}
 		layout="responsive"
