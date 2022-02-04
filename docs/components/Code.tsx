@@ -33,8 +33,8 @@ const PlaceholderImage = ({
 	height: number;
 	alt: string;
 }) => (
-	<Image
-		src={`/agds-next/img/placeholder/${width}x${height}.png`}
+	<img
+		src="/agds-next/img/placeholder/600x200.png"
 		alt={alt}
 		width={width}
 		height={height}

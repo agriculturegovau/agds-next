@@ -8,4 +8,14 @@ module.exports = {
 		'next/core-web-vitals',
 		'prettier',
 	],
+	overrides: [
+		{
+			// Both of these sites are hosted using GitHub pages
+			// which is incompatible with @next/image
+			files: ['docs/**/*', 'example-site/**/*'],
+			rules: {
+				'@next/next/no-img-element': 'off',
+			},
+		},
+	],
 };

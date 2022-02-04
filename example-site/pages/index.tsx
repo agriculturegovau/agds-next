@@ -1,7 +1,5 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
-import Image from 'next/image';
-import placeholder from '../public/placeholder.png';
 
 import { Body } from '@ag.ds-next/body';
 import { Flex } from '@ag.ds-next/box';
@@ -38,10 +36,10 @@ const Home: NextPage = () => {
 							sit amet, consectetur adipiscing elit.
 						</p>
 					</Body>
-					<Image
+					<img
 						width={600}
 						height={260}
-						src={placeholder}
+						src="/placeholder.png"
 						alt="Place holder image"
 					/>
 				</Flex>
