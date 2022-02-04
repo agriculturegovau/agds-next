@@ -41,7 +41,7 @@ export function PageLayout({
 					</>
 				)}
 
-				<Column columnSpan={{ xs: 12, md: sideNav ? 8 : 12 }} columnStart={5}>
+				<Column columnStart={{ xs: 1, md: sideNav ? 5 : 1 }} columnEnd="last">
 					<Stack flexGrow={1} gap={1}>
 						{breadcrumbs?.length ? <Breadcrumbs links={breadcrumbs} /> : null}
 						{children}

@@ -11,28 +11,27 @@ import { Box, BoxProps } from '@ag.ds-next/box';
 
 export type ColumnsProps = BoxProps & {
 	children: ReactNode;
-	gridGap?: ResponsiveProp<Spacing>;
 	columnGap?: ResponsiveProp<Spacing>;
 	rowGap?: ResponsiveProp<Spacing>;
 };
 
 export const Columns = forwardRefWithAs<'div', ColumnsProps>(function Columns(
-	{ gridGap, columnGap, rowGap, ...props },
+	{ gap, columnGap, rowGap, ...props },
 	ref
 ) {
-	const styles = columnsStyles({ gridGap, columnGap, rowGap });
+	const styles = columnsStyles({ gap, columnGap, rowGap });
 	return <Box ref={ref} css={styles} {...props} />;
 });
 
 const columnsStyles = ({
-	gridGap,
+	gap = 1.5,
 	columnGap,
 	rowGap,
-}: Pick<ColumnsProps, 'gridGap' | 'columnGap' | 'rowGap'>) => {
+}: Pick<ColumnsProps, 'gap' | 'columnGap' | 'rowGap'>) => {
 	return mq({
 		display: 'grid',
 		gridTemplateColumns: 'repeat(12, 1fr)',
-		gridGap: mapResponsiveProp(gridGap, mapSpacing),
+		gridGap: mapResponsiveProp(gap, mapSpacing),
 		columnGap: mapResponsiveProp(columnGap, mapSpacing),
 		rowGap: mapResponsiveProp(rowGap, mapSpacing),
 	});
