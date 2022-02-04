@@ -63,7 +63,7 @@ const LiveCode = withLive((props: unknown) => {
 	return (
 		<Box
 			css={{
-				boxShadow: `0 0 1px ${globalPalette.light.border}`,
+				boxShadow: `0 0 1px ${globalPalette.lightBorder}`,
 			}}
 		>
 			<Box padding={1}>
@@ -87,10 +87,10 @@ const LiveCode = withLive((props: unknown) => {
 						padding: `${mapSpacing(1)} !important`,
 					},
 					'& ::selection': {
-						color: globalPalette.dark.background.body,
-						backgroundColor: globalPalette.dark.foreground.action,
+						color: globalPalette.darkBackgroundBody,
+						backgroundColor: globalPalette.darkForegroundAction,
 					},
-					boxShadow: `0 1px 3px -2px ${globalPalette.light.border}`,
+					boxShadow: `0 1px 3px -2px ${globalPalette.lightBorder}`,
 				}}
 			/>
 			{live.error ? (
@@ -126,10 +126,10 @@ const StaticCode = ({
 	return (
 		<Box
 			css={{
-				boxShadow: `0 0 1px ${globalPalette.light.border}`,
+				boxShadow: `0 0 1px ${globalPalette.lightBorder}`,
 				'& ::selection': {
-					color: globalPalette.dark.background.body,
-					backgroundColor: globalPalette.dark.foreground.action,
+					color: globalPalette.darkBackgroundBody,
+					backgroundColor: globalPalette.darkForegroundAction,
 				},
 			}}
 		>

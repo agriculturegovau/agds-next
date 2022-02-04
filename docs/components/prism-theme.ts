@@ -3,27 +3,27 @@ import { globalPalette } from '@ag.ds-next/core';
 
 export const prismTheme: PrismTheme = {
 	plain: {
-		color: globalPalette.light.foreground.text,
-		backgroundColor: globalPalette.light.background.shade,
+		color: globalPalette.lightForegroundText,
+		backgroundColor: globalPalette.lightBackgroundShade,
 	},
 	styles: [
 		{
 			types: ['comment', 'prolog', 'cdata'],
 			style: {
-				color: globalPalette.light.foreground.muted,
+				color: globalPalette.lightForegroundMuted,
 				opacity: 0.5,
 			},
 		},
 		{
 			types: ['punctuation', 'entity'],
 			style: {
-				color: globalPalette.light.foreground.muted,
+				color: globalPalette.lightForegroundMuted,
 			},
 		},
 		{
 			types: ['operator', 'doctype'],
 			style: {
-				color: globalPalette.light.foreground.muted,
+				color: globalPalette.lightForegroundMuted,
 				opacity: 0.7,
 			},
 		},
@@ -60,13 +60,13 @@ export const prismTheme: PrismTheme = {
 		{
 			types: ['keyword'],
 			style: {
-				color: globalPalette.light.foreground.focus,
+				color: globalPalette.lightForegroundFocus,
 			},
 		},
 		{
 			types: ['function'],
 			style: {
-				color: globalPalette.light.foreground.action,
+				color: globalPalette.lightForegroundAction,
 				fontWeight: 'bold',
 				opacity: 0.8,
 			},
@@ -74,7 +74,7 @@ export const prismTheme: PrismTheme = {
 		{
 			types: ['deleted', 'tag', 'atrule', 'attr-name'],
 			style: {
-				color: globalPalette.light.foreground.action,
+				color: globalPalette.lightForegroundAction,
 				opacity: 0.8,
 			},
 		},

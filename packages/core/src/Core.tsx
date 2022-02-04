@@ -1,14 +1,10 @@
 import React, { PropsWithChildren, ComponentProps } from 'react';
 import { Global } from '@emotion/react';
 
+import { goldTheme } from './goldTheme';
 import { CoreProvider } from './context';
-import {
-	defaultTheme,
-	mergeTheme,
-	Theme,
-	boxPalettes,
-	boxPalette,
-} from './colors';
+import { mergeTheme, Theme } from './theme';
+import { boxPalettes, boxPalette } from './boxPalette';
 import { tokens } from './tokens';
 
 export function Core({
@@ -27,7 +23,7 @@ export function Core({
 			<Global
 				styles={[
 					{
-						':root': theme ? mergeTheme(theme) : defaultTheme,
+						':root': theme ? mergeTheme(goldTheme, theme) : goldTheme,
 					},
 					{
 						// Apply the light pallet by default
