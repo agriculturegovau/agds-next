@@ -3,7 +3,7 @@ import FocusTrap from 'focus-trap-react';
 
 import { Box, Flex } from '@ag.ds-next/box';
 import {
-	themeValues,
+	boxPalette,
 	useTernaryState,
 	mapSpacing,
 	tokens,
@@ -57,8 +57,8 @@ export function NavContainer({ variant, children }: NavContainerProps) {
 			color="text"
 			css={{
 				position: 'relative',
-				[localVars.linkHoverBg]: themeValues.background[hover],
-				[localVars.linkActiveBg]: themeValues.background[background],
+				[localVars.linkHoverBg]: boxPalette.background[hover],
+				[localVars.linkActiveBg]: boxPalette.background[background],
 				[localVars.bottomBar]: globalVars.accent,
 			}}
 		>
@@ -83,7 +83,7 @@ export function NavContainer({ variant, children }: NavContainerProps) {
 									zIndex: 200,
 									position: 'fixed',
 									display: menuOpen ? 'block' : 'none',
-									background: themeValues.background.body,
+									background: boxPalette.background.body,
 									top: 0,
 									left: 0,
 									bottom: 0,

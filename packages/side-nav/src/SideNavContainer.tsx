@@ -1,6 +1,6 @@
 import type { PropsWithChildren } from 'react';
 import { Box } from '@ag.ds-next/box';
-import { themeValues } from '@ag.ds-next/core';
+import { boxPalette } from '@ag.ds-next/core';
 
 import { localVars } from './utils';
 
@@ -23,8 +23,8 @@ export const SideNavContainer = ({
 			fontSize="sm"
 			lineHeight="default"
 			css={{
-				[localVars.linkHoverBg]: themeValues.background[hover],
-				[localVars.linkActiveBg]: themeValues.background[background],
+				[localVars.linkHoverBg]: boxPalette.background[hover],
+				[localVars.linkActiveBg]: boxPalette.background[background],
 			}}
 			{...props}
 		>

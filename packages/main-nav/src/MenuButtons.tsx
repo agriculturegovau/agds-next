@@ -1,5 +1,5 @@
 import { Box } from '@ag.ds-next/box';
-import { themeValues } from '@ag.ds-next/core';
+import { boxPalette } from '@ag.ds-next/core';
 
 import { localValues } from './utils';
 
@@ -24,10 +24,10 @@ function MenuButton({
 			focus
 			css={{
 				background: 'transparent',
-				color: themeValues.foreground.action,
+				color: boxPalette.foreground.action,
 
 				'&:hover': {
-					color: themeValues.foreground.text,
+					color: boxPalette.foreground.text,
 					backgroundColor: localValues.linkHoverBg,
 				},
 			}}

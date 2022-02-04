@@ -1,22 +1,22 @@
 import {
 	fontGrid,
 	outline,
-	themeValues,
+	boxPalette,
 	tokens,
 	mapSpacing,
 } from '@ag.ds-next/core';
 
 const variants = {
 	primary: {
-		background: themeValues.foreground.action,
-		borderColor: themeValues.foreground.action,
-		color: themeValues.background.body,
+		background: boxPalette.foreground.action,
+		borderColor: boxPalette.foreground.action,
+		color: boxPalette.background.body,
 		textDecoration: 'none',
 
 		'&:hover': {
-			background: themeValues.foreground.text,
-			borderColor: themeValues.foreground.text,
-			color: themeValues.background.body,
+			background: boxPalette.foreground.text,
+			borderColor: boxPalette.foreground.text,
+			color: boxPalette.background.body,
 			textDecoration: 'underline',
 		},
 
@@ -24,14 +24,14 @@ const variants = {
 	},
 	secondary: {
 		background: 'transparent',
-		border: `3px solid ${themeValues.foreground.action}`,
-		color: themeValues.foreground.action,
+		border: `3px solid ${boxPalette.foreground.action}`,
+		color: boxPalette.foreground.action,
 		textDecoration: 'none',
 
 		'&:hover': {
 			background: 'transparent',
-			border: `3px solid ${themeValues.foreground.text}`,
-			color: themeValues.foreground.text,
+			border: `3px solid ${boxPalette.foreground.text}`,
+			color: boxPalette.foreground.text,
 			textDecoration: 'underline',
 		},
 
@@ -40,13 +40,13 @@ const variants = {
 	tertiary: {
 		background: 'transparent',
 		border: `3px solid transparent`,
-		color: themeValues.foreground.action,
+		color: boxPalette.foreground.action,
 		textDecoration: 'underline',
 
 		'&:hover': {
 			background: 'transparent',
 			border: `3px solid transparent`,
-			color: themeValues.foreground.text,
+			color: boxPalette.foreground.text,
 			textDecoration: 'none',
 		},
 

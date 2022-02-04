@@ -1,6 +1,6 @@
 import { PropsWithChildren } from 'react';
 import { Box } from '@ag.ds-next/box';
-import { useLinkComponent, themeValues, outline } from '@ag.ds-next/core';
+import { useLinkComponent, boxPalette, outline } from '@ag.ds-next/core';
 
 export const LinkListItem = (
 	props: PropsWithChildren<{
@@ -16,11 +16,11 @@ export const LinkListItem = (
 			lineHeight="default"
 			css={{
 				a: {
-					color: themeValues.foreground.action,
+					color: boxPalette.foreground.action,
 					textDecoration: 'underline',
 
 					'&:hover': {
-						color: themeValues.foreground.action,
+						color: boxPalette.foreground.action,
 						textDecoration: 'none',
 					},
 

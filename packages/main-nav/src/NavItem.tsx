@@ -1,5 +1,5 @@
 import {
-	themeValues,
+	boxPalette,
 	mapSpacing,
 	outline,
 	mq,
@@ -29,7 +29,7 @@ export function NavItem({
 				' a': {
 					position: 'relative',
 					display: 'block',
-					color: themeValues.foreground[active ? 'text' : 'action'],
+					color: boxPalette.foreground[active ? 'text' : 'action'],
 					padding: mapSpacing(1),
 					textDecoration: 'none',
 
@@ -71,7 +71,7 @@ export function NavItem({
 					'&:hover': {
 						textDecoration: 'underline',
 						textDecorationSkipInk: 'auto',
-						color: themeValues.foreground.text,
+						color: boxPalette.foreground.text,
 						backgroundColor: localValues.linkHoverBg,
 						'&::after': {
 							background: active ? localValues.linkHoverBg : 'transparent',

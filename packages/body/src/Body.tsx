@@ -2,7 +2,7 @@ import { css } from '@emotion/react';
 import {
 	forwardRefWithAs,
 	tokens,
-	themeValues,
+	boxPalette,
 	mapSpacing,
 	fontGrid,
 } from '@ag.ds-next/core';
@@ -18,9 +18,7 @@ export const Body = forwardRefWithAs<'div', BoxProps>(function Body(
 export const bodyClass = css({
 	margin: 0,
 	textSizeAdjust: '100%',
-
-	// can we use themes here? ... do we need to?
-	color: themeValues.foreground.text,
+	color: boxPalette.foreground.text,
 
 	// Font grid
 	fontFamily: tokens.font.body,
@@ -39,16 +37,16 @@ export const bodyClass = css({
 	 * `mark` styling.
 	 */
 	mark: {
-		color: themeValues.background.body,
-		backgroundColor: themeValues.foreground.action,
+		color: boxPalette.background.body,
+		backgroundColor: boxPalette.foreground.action,
 	},
 
 	/**
 	 * Text selection styling
 	 */
 	'& ::selection': {
-		color: themeValues.background.body,
-		backgroundColor: themeValues.foreground.action,
+		color: boxPalette.background.body,
+		backgroundColor: boxPalette.foreground.action,
 	},
 
 	img: {
@@ -252,8 +250,8 @@ export const bodyClass = css({
 	blockquote: {
 		padding: mapSpacing(2),
 		borderLeft: '4px solid',
-		borderColor: themeValues.border,
-		background: themeValues.background.shade,
+		borderColor: boxPalette.border,
+		background: boxPalette.background.shade,
 	},
 
 	/**
@@ -266,8 +264,8 @@ export const bodyClass = css({
 		fontFamily: tokens.font.monospace,
 		display: 'inline-block',
 		borderRadius: tokens.borderRadius,
-		// backgroundColor: themeVars.background.shade, // FIXME: This conflicts with the Live Code rending in the docs site.
-		color: themeValues.foreground.text,
+		backgroundColor: boxPalette.background.shade, // TODO: Check this did't break Docs code rendering
+		color: boxPalette.foreground.text,
 	},
 
 	'pre:not([class])': {
@@ -287,7 +285,7 @@ export const bodyClass = css({
 		height: 0,
 		overflow: 'visible',
 		border: 'none',
-		borderTop: `1px solid ${themeValues.border}`,
+		borderTop: `1px solid ${boxPalette.border}`,
 		marginBottom: mapSpacing(1.5),
 	},
 

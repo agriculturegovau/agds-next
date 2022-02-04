@@ -12,10 +12,10 @@ import { palette } from '@ag.ds-next/ag-branding';
 
 export default function App({ Component }){
 	return (
-		<Core palette={palette}>
-      <Component />
-    </Core>
-  )
+		<Core theme={theme}>
+			<Component />
+		</Core>
+	)
 ```
 
 ## AG Logo

@@ -1,7 +1,7 @@
 import { css } from '@emotion/react';
 import { tokens } from './tokens';
 
-export const themeVars = {
+export const paletteVars = {
 	foreground: {
 		text: '--agds-foreground-text',
 		action: '--agds-foreground-action',
@@ -17,24 +17,24 @@ export const themeVars = {
 	border: '--agds-border',
 };
 
-export const themeValues = {
+export const boxPalette = {
 	foreground: {
-		text: `var(${themeVars.foreground.text})`,
-		action: `var(${themeVars.foreground.action})`,
-		focus: `var(${themeVars.foreground.focus})`,
-		muted: `var(${themeVars.foreground.muted})`,
+		text: `var(${paletteVars.foreground.text})`,
+		action: `var(${paletteVars.foreground.action})`,
+		focus: `var(${paletteVars.foreground.focus})`,
+		muted: `var(${paletteVars.foreground.muted})`,
 	},
 	background: {
-		body: `var(${themeVars.background.body})`,
-		shade: `var(${themeVars.background.shade})`,
-		bodyAlt: `var(${themeVars.background.bodyAlt})`,
-		shadeAlt: `var(${themeVars.background.shadeAlt})`,
+		body: `var(${paletteVars.background.body})`,
+		shade: `var(${paletteVars.background.shade})`,
+		bodyAlt: `var(${paletteVars.background.bodyAlt})`,
+		shadeAlt: `var(${paletteVars.background.shadeAlt})`,
 	},
-	border: `var(${themeVars.border})`,
+	border: `var(${paletteVars.border})`,
 };
 
 // names of color
-export const paletteVars = {
+export const themeVars = {
 	// Light
 	lightForegroundText: '--agds-light-foreground-text',
 	lightForegroundAction: '--agds-light-foreground-action',
@@ -63,7 +63,7 @@ export const paletteVars = {
 	info: '--agds-info',
 } as const;
 
-export type Palette = Partial<Record<keyof typeof paletteVars, string>>;
+export type Theme = Partial<Record<keyof typeof themeVars, string>>;
 
 // GOLD theme
 
@@ -86,7 +86,7 @@ export type ColorTheme = {
 };
 
 // Default palette from GOLD.
-export const defaultPalette = {
+export const defaultTheme = {
 	lightForegroundText: '#313131',
 	lightForegroundAction: '#00698f',
 	lightForegroundFocus: '#9263de',
@@ -113,47 +113,45 @@ export const defaultPalette = {
 	info: '#00bfe9',
 } as const;
 
-export type PaletteKey = keyof typeof paletteVars;
-
 export const globalVars = {
 	light: {
 		foreground: {
-			text: `var(${paletteVars.lightForegroundText})`,
-			action: `var(${paletteVars.lightForegroundAction})`,
-			focus: `var(${paletteVars.lightForegroundFocus})`,
-			muted: `var(${paletteVars.lightForegroundMuted})`,
+			text: `var(${themeVars.lightForegroundText})`,
+			action: `var(${themeVars.lightForegroundAction})`,
+			focus: `var(${themeVars.lightForegroundFocus})`,
+			muted: `var(${themeVars.lightForegroundMuted})`,
 		},
 		background: {
-			body: `var(${paletteVars.lightBackgroundBody})`,
-			shade: `var(${paletteVars.lightBackgroundShade})`,
-			bodyAlt: `var(${paletteVars.lightBackgroundBodyAlt})`,
-			shadeAlt: `var(${paletteVars.lightBackgroundShadeAlt})`,
+			body: `var(${themeVars.lightBackgroundBody})`,
+			shade: `var(${themeVars.lightBackgroundShade})`,
+			bodyAlt: `var(${themeVars.lightBackgroundBodyAlt})`,
+			shadeAlt: `var(${themeVars.lightBackgroundShadeAlt})`,
 		},
-		border: `var(${paletteVars.lightBorder})`,
+		border: `var(${themeVars.lightBorder})`,
 	},
 	dark: {
 		foreground: {
-			text: `var(${paletteVars.darkForegroundText})`,
-			action: `var(${paletteVars.darkForegroundAction})`,
-			focus: `var(${paletteVars.darkForegroundFocus})`,
-			muted: `var(${paletteVars.darkForegroundMuted})`,
+			text: `var(${themeVars.darkForegroundText})`,
+			action: `var(${themeVars.darkForegroundAction})`,
+			focus: `var(${themeVars.darkForegroundFocus})`,
+			muted: `var(${themeVars.darkForegroundMuted})`,
 		},
 		background: {
-			body: `var(${paletteVars.darkBackgroundBody})`,
-			shade: `var(${paletteVars.darkBackgroundShade})`,
-			bodyAlt: `var(${paletteVars.darkBackgroundBodyAlt})`,
-			shadeAlt: `var(${paletteVars.darkBackgroundShadeAlt})`,
+			body: `var(${themeVars.darkBackgroundBody})`,
+			shade: `var(${themeVars.darkBackgroundShade})`,
+			bodyAlt: `var(${themeVars.darkBackgroundBodyAlt})`,
+			shadeAlt: `var(${themeVars.darkBackgroundShadeAlt})`,
 		},
-		border: `var(${paletteVars.darkBorder})`,
+		border: `var(${themeVars.darkBorder})`,
 	},
-	accent: `var(${paletteVars.accent}, ${themeValues.foreground.action})`, // NOTE: accent is optional
-	error: `var(${paletteVars.error})`,
-	success: `var(${paletteVars.success})`,
-	warning: `var(${paletteVars.warning})`,
-	info: `var(${paletteVars.info})`,
+	accent: `var(${themeVars.accent}, ${boxPalette.foreground.action})`, // NOTE: accent is optional
+	error: `var(${themeVars.error})`,
+	success: `var(${themeVars.success})`,
+	warning: `var(${themeVars.warning})`,
+	info: `var(${themeVars.info})`,
 } as const;
 
-export const themes = {
+export const boxPalettes = {
 	light: css({
 		'--agds-foreground-text': globalVars.light.foreground.text,
 		'--agds-foreground-action': globalVars.light.foreground.action,
@@ -177,14 +175,22 @@ export const themes = {
 		'--agds-border': globalVars.dark.border,
 	}),
 } as const;
-// FIXME: naming ... BoxTheme? there is confusion around the meaning of `theme` between
-// the variables being applied to the site as a whole or the subset of colors being applied to content in a box.
-export type BoxTheme = keyof typeof themes;
+export type BoxPalette = keyof typeof boxPalettes;
 
 // TODO: Move this out of here. Maybe packs
 export const outline = {
 	outlineWidth: '3px',
 	outlineStyle: 'solid',
-	outlineColor: themeValues.foreground.focus,
+	outlineColor: boxPalette.foreground.focus,
 	outlineOffset: 0.5 * tokens.unit,
 };
+
+type ThemeKey = keyof typeof themeVars;
+export function mergeTheme(theme: Theme) {
+	return Object.fromEntries(
+		Object.entries(themeVars).map(([key, variableName]) => [
+			variableName,
+			theme[key as ThemeKey] ?? defaultTheme[key as ThemeKey],
+		])
+	);
+}

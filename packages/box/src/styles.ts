@@ -2,9 +2,9 @@ import { css } from '@emotion/react';
 import {
 	tokens,
 	outline,
-	BoxTheme,
-	themes,
-	themeValues,
+	BoxPalette,
+	boxPalettes,
+	boxPalette,
 	ResponsiveProp,
 	mapResponsiveProp,
 	mapSpacing,
@@ -15,11 +15,11 @@ import {
 } from '@ag.ds-next/core';
 
 type ThemeProps = Partial<{
-	theme: BoxTheme;
+	theme: BoxPalette;
 }>;
 
 const foregroundColorMap = {
-	...themeValues.foreground,
+	...boxPalette.foreground,
 	accent: globalVars.accent,
 	error: globalVars.error,
 	success: globalVars.success,
@@ -29,15 +29,13 @@ const foregroundColorMap = {
 
 type ColorProps = Partial<{
 	color: keyof typeof foregroundColorMap;
-	background: keyof typeof themeValues.background;
+	background: keyof typeof boxPalette.background;
 }>;
 
 function colorStyles({ color, background }: ColorProps) {
 	return {
 		color: color ? foregroundColorMap[color] : undefined,
-		backgroundColor: background
-			? themeValues.background[background]
-			: undefined,
+		backgroundColor: background ? boxPalette.background[background] : undefined,
 	};
 }
 
@@ -76,8 +74,8 @@ function typographyStyles({
 		fontSize,
 		lineHeight,
 		'& ::selection': {
-			color: themeValues.background.body,
-			backgroundColor: themeValues.foreground.action,
+			color: boxPalette.background.body,
+			backgroundColor: boxPalette.foreground.action,
 		},
 	};
 }
@@ -179,7 +177,7 @@ function borderStyles({
 		borderRightWidth: border ?? borderX ?? borderRight ? `1px` : undefined,
 		borderTopWidth: border ?? borderY ?? borderTop ? `1px` : undefined,
 		borderBottomWidth: border ?? borderY ?? borderBottom ? `1px` : undefined,
-		borderColor: anyBorder ? themeValues.border : undefined,
+		borderColor: anyBorder ? boxPalette.border : undefined,
 		borderStyle: anyBorder ? 'solid' : undefined,
 		borderRadius: rounded ? tokens.borderRadius : undefined,
 	};
@@ -227,12 +225,12 @@ function paddingStyles({
 
 type LinkProps = Partial<{ link: boolean }>;
 export const linkStyles = {
-	color: themeValues.foreground.action,
+	color: boxPalette.foreground.action,
 	textDecoration: 'underline',
 	textDecorationSkip: 'auto',
 
 	'&:hover': {
-		color: themeValues.foreground.text,
+		color: boxPalette.foreground.text,
 		textDecoration: 'none',
 	},
 };
@@ -297,7 +295,7 @@ export function boxStyles({
 }: BoxProps) {
 	return [
 		css([
-			theme ? themes[theme] : undefined,
+			theme ? boxPalettes[theme] : undefined,
 
 			// common resets
 			{

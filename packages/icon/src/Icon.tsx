@@ -1,4 +1,4 @@
-import { themeValues, mapSpacing, Spacing } from '@ag.ds-next/core';
+import { boxPalette, mapSpacing, Spacing } from '@ag.ds-next/core';
 import { DetailedHTMLProps, SVGAttributes } from 'react';
 
 import { ICONS } from './icons';
@@ -11,8 +11,8 @@ type SvgProps = Omit<
 >;
 
 const colors = {
-	...themeValues.foreground,
-	border: themeValues.border,
+	...boxPalette.foreground,
+	border: boxPalette.border,
 };
 
 export type IconProps = SvgProps & {

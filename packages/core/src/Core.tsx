@@ -3,23 +3,22 @@ import { Global } from '@emotion/react';
 
 import { CoreProvider } from './context';
 import {
-	defaultPalette,
-	paletteVars,
-	PaletteKey,
-	Palette,
-	themes,
-	themeValues,
+	defaultTheme,
+	mergeTheme,
+	Theme,
+	boxPalettes,
+	boxPalette,
 } from './colors';
 import { tokens } from './tokens';
 
 export function Core({
 	children,
 	applyReset = true,
-	palette = defaultPalette,
+	theme,
 	linkComponent,
 }: PropsWithChildren<
 	{
-		palette?: Partial<Palette>;
+		theme?: Theme;
 		applyReset?: boolean;
 	} & ComponentProps<typeof CoreProvider>
 >) {
@@ -28,22 +27,18 @@ export function Core({
 			<Global
 				styles={[
 					{
-						':root': Object.fromEntries(
-							Object.entries(paletteVars).map(([key, variableName]) => [
-								variableName,
-								palette[key as PaletteKey] ?? defaultPalette[key as PaletteKey],
-							])
-						),
+						':root': theme ? mergeTheme(theme) : defaultTheme,
 					},
 					{
-						'body,html': themes.light,
+						// Apply the light pallet by default
+						'body,html': boxPalettes.light,
 					},
 					applyReset && {
 						// FIXME: apply the css reset
 						'body, html': {
 							margin: 0,
 							padding: 0,
-							background: themeValues.background.body,
+							background: boxPalette.background.body,
 							fontFamily: tokens.font.body,
 						},
 					},
