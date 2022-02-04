@@ -27,7 +27,7 @@ export const Basic: ComponentStory<typeof Columns> = (args) => (
 	</Box>
 );
 Basic.args = {
-	gridGap: 0.5,
+	gap: 2,
 };
 
 export const ColSpans: ComponentStory<typeof Columns> = (args) => (
@@ -67,7 +67,7 @@ export const ColSpans: ComponentStory<typeof Columns> = (args) => (
 	</Box>
 );
 ColSpans.args = {
-	gridGap: 0.5,
+	gap: 2,
 };
 
 export const RowAndColumnGaps: ComponentStory<typeof Columns> = (args) => (

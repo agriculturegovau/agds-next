@@ -7,7 +7,7 @@ group: Foundations
 This package includes the components `<Columns />` and `<Column />`.
 
 ```jsx live
-<Columns gridGap={0.5}>
+<Columns gap={0.5}>
 	<Column columnSpan={1} background="shade" padding={1} />
 	<Column columnSpan={1} background="shade" padding={1} />
 	<Column columnSpan={1} background="shade" padding={1} />
@@ -28,7 +28,7 @@ This package includes the components `<Columns />` and `<Column />`.
 Use the `columnSpan` prop to control how many columns you want to column to span.
 
 ```jsx live
-<Columns gridGap={0.5}>
+<Columns gap={0.5}>
 	<Column columnSpan={3} background="shade" padding={1} />
 	<Column columnSpan={3} background="shade" padding={1} />
 	<Column columnSpan={3} background="shade" padding={1} />
@@ -66,5 +66,15 @@ The `gap` prop effects both the row and column gap. To set a different gap for r
 	<Column columnSpan={4} background="shade" padding={1} />
 	<Column columnSpan={4} background="shade" padding={1} />
 	<Column columnSpan={4} background="shade" padding={1} />
+</Columns>
+```
+
+### Column start and end
+
+The `columnStart` and `columnEnd` props can be used to determine the Column's start and end location within the row.
+
+```jsx live
+<Columns>
+	<Column columnStart={3} columnEnd={9} background="shade" padding={1} />
 </Columns>
 ```
