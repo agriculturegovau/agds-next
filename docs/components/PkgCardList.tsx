@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import { Flex } from '@ag.ds-next/box';
 import { Icon } from '@ag.ds-next/icon';
 import { Card, CardInner, CardLink } from '@ag.ds-next/card';
