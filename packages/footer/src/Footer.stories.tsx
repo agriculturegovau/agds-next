@@ -2,13 +2,14 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { Logo } from '@ag.ds-next/ag-branding';
-import { Box, Divider, Stack } from '@ag.ds-next/box';
-import { tokens } from '@ag.ds-next/core';
+import { Box, Stack } from '@ag.ds-next/box';
+import { Columns, Column } from '@ag.ds-next/columns';
 import { H3 } from '@ag.ds-next/heading';
 import { Text } from '@ag.ds-next/text';
 import { TextLink } from '@ag.ds-next/text-link';
 import { LinkList } from '@ag.ds-next/link-list';
 import { Footer } from './Footer';
+import { FooterDivider } from '.';
 
 export default {
 	title: 'layout/Footer',
@@ -21,12 +22,13 @@ const AgSimpleFooter: ComponentStory<typeof Footer> = (args) => {
 			<LinkList
 				horizontal
 				links={[
-					{ href: '#', label: 'Link 1' },
-					{ href: '#', label: 'Link 2' },
-					{ href: '#', label: 'Link 3' },
+					{ href: '#', label: 'Home' },
+					{ href: '#', label: 'Terms and conditions' },
+					{ href: '#', label: 'Privacy policy' },
+					{ href: '#', label: 'A really long link title' },
 				]}
 			/>
-			<Divider accent />
+			<FooterDivider />
 
 			<Text>
 				<small>
@@ -43,13 +45,17 @@ const AgSimpleFooter: ComponentStory<typeof Footer> = (args) => {
 	);
 };
 
+export const SimpleFooterAgriculture = AgSimpleFooter.bind({});
+SimpleFooterAgriculture.args = {
+	variant: 'agriculture',
+};
 export const SimpleFooterLight = AgSimpleFooter.bind({});
 SimpleFooterLight.args = {
 	variant: 'light',
 };
 
 export const SimpleFooterLightAlt = AgSimpleFooter.bind({});
-SimpleFooterLight.args = {
+SimpleFooterLightAlt.args = {
 	variant: 'lightAlt',
 };
 
@@ -59,77 +65,72 @@ SimpleFooterDark.args = {
 };
 
 export const SimpleFooterDarkAlt = AgSimpleFooter.bind({});
-SimpleFooterDark.args = {
+SimpleFooterDarkAlt.args = {
 	variant: 'darkAlt',
 };
 
 const AgComplexFooter: ComponentStory<typeof Footer> = (args) => {
+	const columnSpanning = { xs: 12, sm: 6, md: 4, lg: 3 } as const;
 	return (
-		<Footer variant={args.variant}>
-			<Box
-				aria-label="footer"
-				css={{
-					display: 'grid',
-					gridGap: '1.5rem',
-
-					[tokens.mediaQuery.min.sm]: {
-						gridTemplateColumns: 'repeat(2, [col-start] 1fr)',
-					},
-
-					[tokens.mediaQuery.min.lg]: {
-						gridTemplateColumns: 'repeat(4, [col-start] 1fr)',
-					},
-				}}
-			>
-				<Stack gap={0.5}>
-					<H3>Section</H3>
-					<LinkList
-						links={[
-							{ href: '#', label: 'Link 1' },
-							{ href: '#', label: 'Link 2' },
-							{ href: '#', label: 'Link 3' },
-						]}
-					/>
-				</Stack>
-				<Stack gap={0.5}>
-					<H3>Section</H3>
-					<LinkList
-						links={[
-							{ href: '#', label: 'Link 1' },
-							{ href: '#', label: 'Link 2' },
-							{ href: '#', label: 'Link 3' },
-						]}
-					/>
-				</Stack>
-				<Stack gap={0.5}>
-					<H3>Section</H3>
-					<LinkList
-						links={[
-							{ href: '#', label: 'Link 1' },
-							{ href: '#', label: 'Link 2' },
-							{ href: '#', label: 'Link 3' },
-						]}
-					/>
-				</Stack>
-				<Stack gap={0.5}>
-					<H3>Section</H3>
-					<LinkList
-						links={[
-							{ href: '#', label: 'Link 1' },
-							{ href: '#', label: 'Link 2' },
-							{ href: '#', label: 'Link 3' },
-						]}
-					/>
-				</Stack>
-			</Box>
-			<Divider />
+		<Footer variant={args.variant} aria-label="footer">
+			<Columns>
+				<Column columnSpan={columnSpanning}>
+					<Stack gap={0.5}>
+						<H3>Section</H3>
+						<LinkList
+							links={[
+								{ href: '#', label: 'A really long link title' },
+								{ href: '#', label: 'Terms and conditions' },
+								{ href: '#', label: 'Another really long link title' },
+							]}
+						/>
+					</Stack>
+				</Column>
+				<Column columnSpan={columnSpanning}>
+					<Stack gap={0.5}>
+						<H3>Section</H3>
+						<LinkList
+							links={[
+								{ href: '#', label: 'Link 1' },
+								{ href: '#', label: 'Link 2' },
+								{ href: '#', label: 'Link 3' },
+							]}
+						/>
+					</Stack>
+				</Column>
+				<Column columnSpan={columnSpanning}>
+					<Stack gap={0.5}>
+						<H3>Section</H3>
+						<LinkList
+							links={[
+								{ href: '#', label: 'Link 1' },
+								{ href: '#', label: 'Link 2' },
+								{ href: '#', label: 'Link 3' },
+							]}
+						/>
+					</Stack>
+				</Column>
+				<Column columnSpan={columnSpanning}>
+					<Stack gap={0.5}>
+						<H3>Section</H3>
+						<LinkList
+							links={[
+								{ href: '#', label: 'Link 1' },
+								{ href: '#', label: 'Link 2' },
+								{ href: '#', label: 'Link 3' },
+							]}
+						/>
+					</Stack>
+				</Column>
+			</Columns>
+			<FooterDivider />
 			<Text as="p">Footer text</Text>
 
 			<Box maxWidth="240px">
 				<Logo />
 			</Box>
 
-			<Divider />
+			<FooterDivider />
 			<Text>
 				<small>
 					&copy; Commonwealth of Australia,{' '}
@@ -145,13 +146,18 @@ const AgComplexFooter: ComponentStory<typeof Footer> = (args) => {
 	);
 };
 
+export const ComplexFooterAgriculture = AgComplexFooter.bind({});
+ComplexFooterAgriculture.args = {
+	variant: 'agriculture',
+};
+
 export const ComplexFooterLight = AgComplexFooter.bind({});
 ComplexFooterLight.args = {
 	variant: 'light',
 };
 
 export const ComplexFooterLightAlt = AgComplexFooter.bind({});
-ComplexFooterLight.args = {
+ComplexFooterLightAlt.args = {
 	variant: 'lightAlt',
 };
 
@@ -161,6 +167,6 @@ ComplexFooterDark.args = {
 };
 
 export const ComplexFooterDarkAlt = AgComplexFooter.bind({});
-ComplexFooterDark.args = {
+ComplexFooterDarkAlt.args = {
 	variant: 'darkAlt',
 };

@@ -45,7 +45,7 @@ const snippits = [
 	{
 		group: 'Footer',
 		name: 'Basic',
-		code: `<Footer variant='dark'>
+		code: `<Footer variant='agriculture'>
     <LinkList
       horizontal
       links={[
@@ -54,7 +54,7 @@ const snippits = [
         { href: '#', label: 'Link 3' },
       ]}
     />
-    <Divider accent />
+    <FooterDivider />
 
     <Text><small>&copy; Commonwealth of Australia</small></Text>
   </Footer>`,
@@ -62,7 +62,7 @@ const snippits = [
 	{
 		group: 'Footer',
 		name: 'Complex',
-		code: `<Footer variant="dark">
+		code: `<Footer variant="agriculture">
     <Box
       aria-label="footer"
       css={{
@@ -119,14 +119,14 @@ const snippits = [
         />
       </Stack>
     </Box>
-    <Divider />
+    <FooterDivider />
     <Text as="p">Footer text</Text>
 
     <Box maxWidth="240px">
       <Logo />
     </Box>
 
-    <Divider />
+    <FooterDivider />
     <Text>
       <small>
         &copy; Commonwealth of Australia
@@ -150,7 +150,7 @@ items={[
   {
     href: "#one",
     label: "Item",
-    children: [
+    items: [
       {
         href: "#two",
         label: "Sub-item",
@@ -161,11 +161,11 @@ items={[
   {
     href: "#four",
     label: "Item",
-    children: [
+    items: [
       {
         href: "#five",
         label: "Sub-item",
-        children: [
+        items: [
           {
             href: "#six",
             label: "Sub-sub-item",

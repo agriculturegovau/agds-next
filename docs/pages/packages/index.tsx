@@ -43,7 +43,7 @@ export default function PackagesHome({
 					{groupList.map((group) => (
 						<Stack gap={1} key={group.slug}>
 							<TextLink href={`/packages/${group.slug}`}>
-								<H2>{group.title}</H2>
+								<H2 color="inherit">{group.title}</H2>
 							</TextLink>
 							<PkgCardList
 								items={pkgList.filter((p) => p.group === group.slug)}

@@ -44,7 +44,7 @@ export default function Packages({
 						)}
 					</Flex>
 					<Box
-						theme="light"
+						palette="light"
 						rounded
 						background="shade"
 						paddingX={1}

@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 import { Box } from '@ag.ds-next/box';
-import { themeValues, useLinkComponent } from '@ag.ds-next/core';
+import { boxPalette, useLinkComponent } from '@ag.ds-next/core';
 
 import { visuallyHiddenStyles } from './utils';
 
@@ -25,11 +25,11 @@ export const SideNavTitle = ({
 			lineHeight="default"
 			display="block"
 			css={{
-				borderBottom: `2px solid ${themeValues.border}`,
+				borderBottom: `2px solid ${boxPalette.border}`,
 				textDecoration: 'none',
 
 				'&:hover': {
-					backgroundColor: themeValues.background.shade,
+					backgroundColor: boxPalette.backgroundShade,
 					textDecoration: 'underline',
 				},
 			}}

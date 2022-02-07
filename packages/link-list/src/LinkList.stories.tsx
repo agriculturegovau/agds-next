@@ -15,7 +15,7 @@ const exampleLinks = [
 ];
 
 export const Basic: ComponentStory<typeof LinkList> = (args) => (
-	<Box theme="light" background="body">
+	<Box palette="light" background="body">
 		<LinkList {...args} />
 	</Box>
 );
@@ -24,7 +24,7 @@ Basic.args = {
 };
 
 export const Horizontal: ComponentStory<typeof LinkList> = (args) => (
-	<Box theme="light" background="body">
+	<Box palette="light" background="body">
 		<LinkList {...args} />
 	</Box>
 );
@@ -34,7 +34,7 @@ Horizontal.args = {
 };
 
 export const BasicDark: ComponentStory<typeof LinkList> = (args) => (
-	<Box theme="dark" background="body">
+	<Box palette="dark" background="body">
 		<LinkList {...args} />
 	</Box>
 );
@@ -43,7 +43,7 @@ BasicDark.args = {
 };
 
 export const InlineDark: ComponentStory<typeof LinkList> = (args) => (
-	<Box theme="dark" background="body">
+	<Box palette="dark" background="body">
 		<LinkList {...args} />
 	</Box>
 );

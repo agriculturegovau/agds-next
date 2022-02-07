@@ -1,7 +1,7 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { Box, Flex } from '@ag.ds-next/box';
-import { palette } from '@ag.ds-next/ag-branding';
+import { theme } from '@ag.ds-next/ag-branding';
 
 import { Core } from './Core';
 
@@ -18,13 +18,13 @@ export const Usage = template.bind({});
 // - a demo component which consumes all palette tokens and shows some content in context
 
 Usage.args = {
-	palette,
+	theme,
 	children: (
 		<Flex gap={2} fontFamily="body">
-			<Box theme="light" background="body" color="text" padding={4} border>
+			<Box palette="light" background="body" color="text" padding={4} border>
 				Content light
 			</Box>
-			<Box theme="dark" background="body" color="text" padding={4} border>
+			<Box palette="dark" background="body" color="text" padding={4} border>
 				Content dark
 			</Box>
 		</Flex>

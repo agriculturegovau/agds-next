@@ -16,7 +16,7 @@ export default {
 } as ComponentMeta<typeof Card>;
 
 export const Basic: ComponentStory<typeof Card> = (args) => (
-	<Box theme="light" background="body" maxWidth={300}>
+	<Box palette="light" background="body" maxWidth={300}>
 		<Card {...args}>
 			<CardInner>
 				<Heading as="h2" type="h3" paddingBottom={1}>
@@ -32,7 +32,7 @@ export const Basic: ComponentStory<typeof Card> = (args) => (
 );
 
 export const WithBody: ComponentStory<typeof Card> = (args) => (
-	<Box theme="light" background="body" maxWidth={300}>
+	<Box palette="light" background="body" maxWidth={300}>
 		<Card {...args}>
 			<CardInner>
 				<Body>
@@ -50,7 +50,7 @@ export const WithBody: ComponentStory<typeof Card> = (args) => (
 );
 
 export const CardList: ComponentStory<typeof Card> = (args) => (
-	<Box theme="light" background="body">
+	<Box palette="light" background="body">
 		<Columns>
 			{[
 				'Mollis Tristique',

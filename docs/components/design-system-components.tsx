@@ -1,6 +1,6 @@
 import { Logo } from '@ag.ds-next/ag-branding';
 import { Button, ButtonLink } from '@ag.ds-next/button';
-import { Box, Divider, Flex, Stack } from '@ag.ds-next/box';
+import { Box, Flex, Stack } from '@ag.ds-next/box';
 import { Body } from '@ag.ds-next/body';
 import { Text } from '@ag.ds-next/text';
 import { TextLink } from '@ag.ds-next/text-link';
@@ -10,7 +10,8 @@ import { Breadcrumbs } from '@ag.ds-next/breadcrumbs';
 import { Columns, Column } from '@ag.ds-next/columns';
 import { Card, CardInner, CardLink } from '@ag.ds-next/card';
 import { Header, HeaderBrand, HeaderContainer } from '@ag.ds-next/header';
-import { Footer } from '@ag.ds-next/footer';
+import { Footer, FooterDivider } from '@ag.ds-next/footer';
+import { MainNav } from '@ag.ds-next/main-nav';
 import {
 	SideNav,
 	SideNavContainer,
@@ -26,7 +27,6 @@ export const designSystemComponents = {
 	Button,
 	ButtonLink,
 	Box,
-	Divider,
 	Flex,
 	Card,
 	CardInner,
@@ -48,9 +48,11 @@ export const designSystemComponents = {
 	Logo,
 	Breadcrumbs,
 	Footer,
+	FooterDivider,
 	Header,
 	HeaderBrand,
 	HeaderContainer,
+	MainNav,
 	SideNav,
 	SideNavContainer,
 	SideNavLink,

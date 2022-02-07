@@ -20,7 +20,7 @@ const exampleLinks = [
 ];
 
 export const Light: ComponentStory<typeof Breadcrumbs> = (args) => (
-	<Box theme="light" background="body">
+	<Box palette="light" background="body">
 		<Breadcrumbs {...args} />
 	</Box>
 );
@@ -29,7 +29,7 @@ Light.args = {
 };
 
 export const Dark: ComponentStory<typeof Breadcrumbs> = (args) => (
-	<Box theme="dark" background="body">
+	<Box palette="dark" background="body">
 		<Breadcrumbs {...args} />
 	</Box>
 );

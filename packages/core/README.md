@@ -8,7 +8,7 @@ group: Foundations
 
 ```jsx live
 <Flex flexDirection="column" gap={1} padding={1}>
-	<Flex theme="light">
+	<Flex palette="light">
 		{['body', 'shade', 'bodyAlt', 'shadeAlt'].map((bg) => (
 			<Flex
 				key={bg}
@@ -26,7 +26,7 @@ group: Foundations
 			</Flex>
 		))}
 	</Flex>
-	<Flex theme="dark">
+	<Flex palette="dark">
 		{['body', 'shade', 'bodyAlt', 'shadeAlt'].map((bg) => (
 			<Flex
 				key={bg}
@@ -53,7 +53,7 @@ group: Foundations
 ## Typography
 
 ```jsx live
-<Flex theme="light" background="body" gap={1} padding={1}>
+<Flex palette="light" background="body" gap={1} padding={1}>
 	<Flex flexDirection="column" gap={1}>
 		<Text fontSize="sm" fontWeight="bold">
 			Default
@@ -64,7 +64,7 @@ group: Foundations
 			</Box>
 		))}
 	</Flex>
-	<Flex flexDirection="column" theme="light" background="body" gap={1}>
+	<Flex flexDirection="column" palette="light" background="body" gap={1}>
 		<Text fontSize="sm" fontWeight="bold">
 			Heading
 		</Text>
@@ -76,7 +76,7 @@ group: Foundations
 			</Box>
 		))}
 	</Flex>
-	<Flex flexDirection="column" theme="light" background="body" gap={1}>
+	<Flex flexDirection="column" palette="light" background="body" gap={1}>
 		<Text fontSize="sm" fontWeight="bold">
 			Nospace
 		</Text>

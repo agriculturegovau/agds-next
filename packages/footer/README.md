@@ -9,63 +9,65 @@ description: Footers help users find what they need after scrolling to the botto
 The footer at the bottom of a page. Usually contains copyright information and links to other sections of the site.
 
 ```jsx live
-<Footer>
-	<Flex
-		gap={1}
-		css={{
-			display: 'grid',
-			gridTemplateColumns: 'repeat(auto-fill, minmax(150px, auto))',
-		}}
-	>
-		<Box>
-			<Heading type="h3">Section title</Heading>
-			<LinkList
-				links={[
-					{ href: '#', label: 'A really long link title' },
-					{ href: '#', label: 'Terms and conditions' },
-					{ href: '#', label: 'Another really long link title' },
-				]}
-			/>
-		</Box>
-		<Box>
-			<Heading type="h3">Section</Heading>
-			<LinkList
-				links={[
-					{ href: '#', label: 'Link 1' },
-					{ href: '#', label: 'Link 2' },
-					{ href: '#', label: 'Link 3' },
-				]}
-			/>
-		</Box>
-		<Box>
-			<Heading type="h3">Section</Heading>
-			<LinkList
-				links={[
-					{ href: '#', label: 'Link 1' },
-					{ href: '#', label: 'Link 2' },
-					{ href: '#', label: 'Link 3' },
-				]}
-			/>
-		</Box>
-		<Box>
-			<Heading type="h3">Section</Heading>
-			<LinkList
-				links={[
-					{ href: '#', label: 'Link 1' },
-					{ href: '#', label: 'Link 2' },
-					{ href: '#', label: 'Link 3' },
-				]}
-			/>
-		</Box>
-	</Flex>
-	<Divider accent />
+<Footer variant="agriculture">
+	<Columns>
+		<Column columnSpan={{ xs: 12, sm: 6, md: 4, lg: 3 }}>
+			<Stack gap={0.5}>
+				<Heading type="h3">Section title</Heading>
+				<LinkList
+					links={[
+						{ href: '#', label: 'A really long link title' },
+						{ href: '#', label: 'Terms and conditions' },
+						{ href: '#', label: 'Another really long link title' },
+					]}
+				/>
+			</Stack>
+		</Column>
+		<Column columnSpan={{ xs: 12, sm: 6, md: 4, lg: 3 }}>
+			<Stack gap={0.5}>
+				<H3>Section</H3>
+				<LinkList
+					links={[
+						{ href: '#', label: 'Link 1' },
+						{ href: '#', label: 'Link 2' },
+						{ href: '#', label: 'Link 3' },
+					]}
+				/>
+			</Stack>
+		</Column>
+		<Column columnSpan={{ xs: 12, sm: 6, md: 4, lg: 3 }}>
+			<Stack gap={0.5}>
+				<Heading type="h3">Section</Heading>
+				<LinkList
+					links={[
+						{ href: '#', label: 'Link 1' },
+						{ href: '#', label: 'Link 2' },
+						{ href: '#', label: 'Link 3' },
+					]}
+				/>
+			</Stack>
+		</Column>
+		<Column columnSpan={{ xs: 12, sm: 6, md: 4, lg: 3 }}>
+			<Stack gap={0.5}>
+				<Heading type="h3">Section</Heading>
+				<LinkList
+					links={[
+						{ href: '#', label: 'Link 1' },
+						{ href: '#', label: 'Link 2' },
+						{ href: '#', label: 'Link 3' },
+					]}
+				/>
+			</Stack>
+		</Column>
+	</Columns>
+	<FooterDivider />
 	<Text as="p">Footer text</Text>
 
 	<Box maxWidth="240px">
 		<Logo />
 	</Box>
 
-	<Divider accent />
+	<FooterDivider />
 	<Text>
 		<small>
 			&copy; Commonwealth of Australia,{' '}
@@ -83,7 +85,7 @@ The footer at the bottom of a page. Usually contains copyright information and l
 ## Streamlined
 
 ```jsx live
-<Footer>
+<Footer variant="agriculture">
 	<LinkList
 		links={[
 			{ href: '#1', label: 'Accessibility' },
@@ -92,7 +94,7 @@ The footer at the bottom of a page. Usually contains copyright information and l
 		]}
 		horizontal
 	/>
-	<Divider accent />
+	<FooterDivider />
 
 	<Text fontSize="xs" maxWidth="42em">
 		We acknowledge the traditional owners of country throughout Australia and

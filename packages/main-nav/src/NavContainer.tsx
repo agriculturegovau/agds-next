@@ -1,43 +1,48 @@
 import React from 'react';
 import FocusTrap from 'focus-trap-react';
 
-import { Box, Flex } from '@ag.ds-next/box';
+import { Box, Flex, backgroundColorMap } from '@ag.ds-next/box';
 import {
-	themeValues,
+	boxPalette,
 	useTernaryState,
 	mapSpacing,
 	tokens,
-	globalVars,
+	globalPalette,
 } from '@ag.ds-next/core';
 
-import { localValues, localVars } from './utils';
+import { localPalette, localPaletteVars } from './utils';
 import { CloseButton, ToggleButton } from './MenuButtons';
 
 const variantMap = {
 	light: {
-		theme: 'light',
+		palette: 'light',
 		background: 'body',
 		hover: 'shade',
+		bottomBar: boxPalette.foregroundAction,
 	},
 	lightAlt: {
-		theme: 'light',
+		palette: 'light',
 		background: 'bodyAlt',
 		hover: 'shadeAlt',
+		bottomBar: boxPalette.foregroundAction,
 	},
 	dark: {
-		theme: 'dark',
+		palette: 'dark',
 		background: 'body',
 		hover: 'shade',
+		bottomBar: boxPalette.foregroundAction,
 	},
 	darkAlt: {
-		theme: 'dark',
+		palette: 'dark',
 		background: 'bodyAlt',
 		hover: 'shadeAlt',
+		bottomBar: boxPalette.foregroundAction,
 	},
 	agriculture: {
-		theme: 'dark',
+		palette: 'dark',
 		background: 'shade',
 		hover: 'body',
+		bottomBar: globalPalette.accent,
 	},
 } as const;
 
@@ -46,20 +51,20 @@ export type NavContainerProps = React.PropsWithChildren<{
 }>;
 
 export function NavContainer({ variant, children }: NavContainerProps) {
-	const { theme, background, hover } = variantMap[variant];
 	const [menuOpen, open, close] = useTernaryState(false);
+	const { background, bottomBar, hover, palette } = variantMap[variant];
 
 	return (
 		<Box
 			data-name="nav-container" // TODO: make this (or something like this) a pattern for providing end users a consistent handle for applying style overrides.
-			theme={theme}
+			palette={palette}
 			background={background}
 			color="text"
 			css={{
 				position: 'relative',
-				[localVars.linkHoverBg]: themeValues.background[hover],
-				[localVars.linkActiveBg]: themeValues.background[background],
-				[localVars.bottomBar]: globalVars.accent,
+				[localPaletteVars.linkHoverBg]: backgroundColorMap[hover],
+				[localPaletteVars.linkActiveBg]: backgroundColorMap[background],
+				[localPaletteVars.bottomBar]: bottomBar, // <-- special case
 			}}
 		>
 			<BottomBar />
@@ -83,7 +88,7 @@ export function NavContainer({ variant, children }: NavContainerProps) {
 									zIndex: 200,
 									position: 'fixed',
 									display: menuOpen ? 'block' : 'none',
-									background: themeValues.background.body,
+									background: boxPalette.backgroundBody,
 									top: 0,
 									left: 0,
 									bottom: 0,
@@ -144,7 +149,7 @@ function BottomBar() {
 				bottom: 0,
 				left: 0,
 				right: 0,
-				backgroundColor: localValues.bottomBar,
+				backgroundColor: localPalette.bottomBar,
 			}}
 		/>
 	);

@@ -1,10 +1,10 @@
 import { ReactNode } from 'react';
 import { Box } from '@ag.ds-next/box';
 import { useLinkComponent, mapSpacing } from '@ag.ds-next/core';
-import { themeValues, fontGrid, outline } from '@ag.ds-next/core';
+import { boxPalette, fontGrid, outline } from '@ag.ds-next/core';
 
 import { useLinkListDepth } from './context';
-import { localValues, visuallyHiddenStyles } from './utils';
+import { localPalette, visuallyHiddenStyles } from './utils';
 
 export type SideNavLinkType = {
 	active?: boolean;
@@ -33,7 +33,7 @@ export const SideNavLink = ({
 			css={
 				depth === 1
 					? {
-							borderBottom: `1px solid ${themeValues.border}`,
+							borderBottom: `1px solid ${boxPalette.border}`,
 							'&:last-of-type': { border: 'none' },
 					  }
 					: undefined
@@ -44,7 +44,8 @@ export const SideNavLink = ({
 				css={{
 					' a': {
 						...fontGrid('xs', 'default'),
-						color: themeValues.foreground[isGroupActive ? 'text' : 'muted'],
+						color:
+							boxPalette[isGroupActive ? 'foregroundText' : 'foregroundMuted'],
 						textDecoration: 'none',
 
 						paddingTop: mapSpacing(1),
@@ -54,10 +55,10 @@ export const SideNavLink = ({
 						display: 'block',
 
 						'&:hover': {
-							color: themeValues.foreground.text,
+							color: boxPalette.foregroundText,
 							textDecoration: 'underline',
 							textDecorationSkipInk: 'auto',
-							backgroundColor: localValues.linkHoverBg,
+							backgroundColor: localPalette.linkHoverBg,
 						},
 
 						'&:focus': outline,

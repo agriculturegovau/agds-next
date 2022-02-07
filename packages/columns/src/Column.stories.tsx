@@ -9,7 +9,7 @@ export default {
 } as ComponentMeta<typeof Columns>;
 
 export const Basic: ComponentStory<typeof Columns> = (args) => (
-	<Box theme="light" background="body">
+	<Box palette="light" background="body">
 		<Columns {...args}>
 			<Column columnSpan={1} background="shade" padding={1} />
 			<Column columnSpan={1} background="shade" padding={1} />
@@ -31,7 +31,7 @@ Basic.args = {
 };
 
 export const ColSpans: ComponentStory<typeof Columns> = (args) => (
-	<Box theme="light" background="body">
+	<Box palette="light" background="body">
 		<Columns {...args}>
 			<Column columnSpan={1} background="shade" padding={1} />
 			<Column columnSpan={1} background="shade" padding={1} />
@@ -71,7 +71,7 @@ ColSpans.args = {
 };
 
 export const RowAndColumnGaps: ComponentStory<typeof Columns> = (args) => (
-	<Box theme="light" background="body">
+	<Box palette="light" background="body">
 		<Columns {...args}>
 			<Column columnSpan={3} background="shade" padding={1} />
 			<Column columnSpan={3} background="shade" padding={1} />
