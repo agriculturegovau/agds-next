@@ -4,10 +4,11 @@ import { useLinkComponent, mapSpacing } from '@ag.ds-next/core';
 import { themeValues, fontGrid, outline } from '@ag.ds-next/core';
 
 import { useLinkListDepth } from './context';
-import { localValues } from './utils';
+import { localValues, visuallyHiddenStyles } from './utils';
 
 export type SideNavLinkType = {
 	active?: boolean;
+	activePath: string;
 	children?: ReactNode;
 	href: string;
 	label: string | JSX.Element;
@@ -15,12 +16,14 @@ export type SideNavLinkType = {
 
 export const SideNavLink = ({
 	active,
+	activePath,
 	children,
 	href,
 	label,
 }: SideNavLinkType) => {
 	const depth = useLinkListDepth();
 	const Link = useLinkComponent();
+	const isGroupActive = activePath?.includes(href);
 
 	return (
 		<Box
@@ -37,11 +40,11 @@ export const SideNavLink = ({
 			}
 		>
 			<Box
-				fontWeight={active ? 'bold' : 'normal'}
+				fontWeight={isGroupActive ? 'bold' : 'normal'}
 				css={{
 					' a': {
 						...fontGrid('xs', 'default'),
-						color: themeValues.foreground[active ? 'text' : 'muted'],
+						color: themeValues.foreground[isGroupActive ? 'text' : 'muted'],
 						textDecoration: 'none',
 
 						paddingTop: mapSpacing(1),
@@ -78,24 +81,12 @@ export const SideNavLink = ({
 			>
 				<Link href={href}>
 					{label}
-					{active && !children && (
-						<span css={visuallyHidden}> Current page</span>
-					)}
+					{active ? (
+						<span css={visuallyHiddenStyles}> Current page</span>
+					) : null}
 				</Link>
 			</Box>
 			{children}
 		</Box>
 	);
 };
-
-// Content that should be read out
-// to screenreaders only
-const visuallyHidden = {
-	clip: 'rect(0 0 0 0)',
-	clipPath: 'inset(50%)',
-	height: 1,
-	overflow: 'hidden',
-	position: 'absolute',
-	whiteSpace: 'nowrap',
-	width: 1,
-} as const;

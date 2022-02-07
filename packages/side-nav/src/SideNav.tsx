@@ -4,7 +4,6 @@ import { SideNavContainer } from './SideNavContainer';
 import { SideNavTitle } from './SideNavTitle';
 import { SideNavGroup } from './SideNavGroup';
 import { SideNavLink } from './SideNavLink';
-import { findBestMatch } from './utils';
 
 type SideNavProps = LinkListProps & {
 	variant?: ComponentProps<typeof SideNavContainer>['variant'];
@@ -22,7 +21,9 @@ export function SideNav({
 }: SideNavProps) {
 	return (
 		<SideNavContainer variant={variant} {...props}>
-			<SideNavTitle href={titleLink}>{title}</SideNavTitle>
+			<SideNavTitle activePath={activePath} href={titleLink}>
+				{title}
+			</SideNavTitle>
 			<LinkList activePath={activePath} items={items} />
 		</SideNavContainer>
 	);
@@ -41,11 +42,15 @@ type LinkListProps = {
 
 // QUESTION: Should this be public api
 function LinkList({ activePath, items }: LinkListProps) {
-	const bestMatch = findBestMatch(items, activePath);
 	return (
 		<SideNavGroup>
 			{items.map(({ items: subItems, ...item }, index) => (
-				<SideNavLink key={index} active={item.href === bestMatch} {...item}>
+				<SideNavLink
+					key={index}
+					active={item.href === activePath}
+					activePath={activePath}
+					{...item}
+				>
 					{subItems?.length ? (
 						<LinkList items={subItems} activePath={activePath} />
 					) : null}
