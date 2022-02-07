@@ -102,10 +102,10 @@ const LiveCode = withLive((props: unknown) => {
 				</Box>
 			) : null}
 			<Flex theme="light" padding={0.5} gap={0.5} justifyContent="flex-end">
-				<Button size="sm" onClick={copyLiveCode}>
+				<Button size="sm" variant="secondary" onClick={copyLiveCode}>
 					Copy
 				</Button>
-				<Button size="sm" variant="secondary" onClick={resetLiveCode}>
+				<Button size="sm" variant="tertiary" onClick={resetLiveCode}>
 					Reset
 				</Button>
 			</Flex>
