@@ -10,56 +10,56 @@ The footer at the bottom of a page. Usually contains copyright information and l
 
 ```jsx live
 <Footer>
-  <Columns>
-    <Column columnSpan={{ xs: 12, sm: 6, md: 4, lg: 3 }}>
-      <Stack gap={0.5}>
-        <Heading type="h3">Section title</Heading>
-        <LinkList
-          links={[
-            { href: '#', label: 'A really long link title' },
-            { href: '#', label: 'Terms and conditions' },
-            { href: '#', label: 'Another really long link title' },
-          ]}
-        />
-      </Stack>
-    </Column>
-    <Column columnSpan={{ xs: 12, sm: 6, md: 4, lg: 3 }}>
-      <Stack gap={0.5}>
-        <H3>Section</H3>
-        <LinkList
-          links={[
-            { href: '#', label: 'Link 1' },
-            { href: '#', label: 'Link 2' },
-            { href: '#', label: 'Link 3' },
-          ]}
-        />
-      </Stack>
-    </Column>
-    <Column columnSpan={{ xs: 12, sm: 6, md: 4, lg: 3 }}>
-      <Stack gap={0.5}>
-        <Heading type="h3">Section</Heading>
-        <LinkList
-          links={[
-            { href: '#', label: 'Link 1' },
-            { href: '#', label: 'Link 2' },
-            { href: '#', label: 'Link 3' },
-          ]}
-        />
-      </Stack>
-    </Column>
-    <Column columnSpan={{ xs: 12, sm: 6, md: 4, lg: 3 }}>
-      <Stack gap={0.5}>
-        <Heading type="h3">Section</Heading>
-        <LinkList
-          links={[
-            { href: '#', label: 'Link 1' },
-            { href: '#', label: 'Link 2' },
-            { href: '#', label: 'Link 3' },
-          ]}
-        />
-      </Stack>
-    </Column>
-  </Columns>
+	<Columns>
+		<Column columnSpan={{ xs: 12, sm: 6, md: 4, lg: 3 }}>
+			<Stack gap={0.5}>
+				<Heading type="h3">Section title</Heading>
+				<LinkList
+					links={[
+						{ href: '#', label: 'A really long link title' },
+						{ href: '#', label: 'Terms and conditions' },
+						{ href: '#', label: 'Another really long link title' },
+					]}
+				/>
+			</Stack>
+		</Column>
+		<Column columnSpan={{ xs: 12, sm: 6, md: 4, lg: 3 }}>
+			<Stack gap={0.5}>
+				<H3>Section</H3>
+				<LinkList
+					links={[
+						{ href: '#', label: 'Link 1' },
+						{ href: '#', label: 'Link 2' },
+						{ href: '#', label: 'Link 3' },
+					]}
+				/>
+			</Stack>
+		</Column>
+		<Column columnSpan={{ xs: 12, sm: 6, md: 4, lg: 3 }}>
+			<Stack gap={0.5}>
+				<Heading type="h3">Section</Heading>
+				<LinkList
+					links={[
+						{ href: '#', label: 'Link 1' },
+						{ href: '#', label: 'Link 2' },
+						{ href: '#', label: 'Link 3' },
+					]}
+				/>
+			</Stack>
+		</Column>
+		<Column columnSpan={{ xs: 12, sm: 6, md: 4, lg: 3 }}>
+			<Stack gap={0.5}>
+				<Heading type="h3">Section</Heading>
+				<LinkList
+					links={[
+						{ href: '#', label: 'Link 1' },
+						{ href: '#', label: 'Link 2' },
+						{ href: '#', label: 'Link 3' },
+					]}
+				/>
+			</Stack>
+		</Column>
+	</Columns>
 	<Divider accent />
 	<Text as="p">Footer text</Text>
 
