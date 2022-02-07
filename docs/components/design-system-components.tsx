@@ -11,6 +11,7 @@ import { Columns, Column } from '@ag.ds-next/columns';
 import { Card, CardInner, CardLink } from '@ag.ds-next/card';
 import { Header, HeaderBrand, HeaderContainer } from '@ag.ds-next/header';
 import { Footer, FooterDivider } from '@ag.ds-next/footer';
+import { MainNav } from '@ag.ds-next/main-nav';
 import {
 	SideNav,
 	SideNavContainer,
@@ -51,6 +52,7 @@ export const designSystemComponents = {
 	Header,
 	HeaderBrand,
 	HeaderContainer,
+	MainNav,
 	SideNav,
 	SideNavContainer,
 	SideNavLink,
