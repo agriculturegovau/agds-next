@@ -36,6 +36,7 @@ export const foregroundColorMap = {
 	success: globalPalette.success,
 	warning: globalPalette.warning,
 	info: globalPalette.info,
+	inherit: 'inherit',
 };
 
 export const backgroundColorMap = {
