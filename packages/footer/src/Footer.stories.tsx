@@ -22,9 +22,10 @@ const AgSimpleFooter: ComponentStory<typeof Footer> = (args) => {
 			<LinkList
 				horizontal
 				links={[
-					{ href: '#', label: 'Link 1' },
-					{ href: '#', label: 'Link 2' },
-					{ href: '#', label: 'Link 3' },
+					{ href: '#', label: 'Home' },
+					{ href: '#', label: 'Terms and conditions' },
+					{ href: '#', label: 'Privacy policy' },
+					{ href: '#', label: 'A really long link title' },
 				]}
 			/>
 			<FooterDivider />
@@ -54,7 +55,7 @@ SimpleFooterLight.args = {
 };
 
 export const SimpleFooterLightAlt = AgSimpleFooter.bind({});
-SimpleFooterLight.args = {
+SimpleFooterLightAlt.args = {
 	variant: 'lightAlt',
 };
 
@@ -64,7 +65,7 @@ SimpleFooterDark.args = {
 };
 
 export const SimpleFooterDarkAlt = AgSimpleFooter.bind({});
-SimpleFooterDark.args = {
+SimpleFooterDarkAlt.args = {
 	variant: 'darkAlt',
 };
 
@@ -156,7 +157,7 @@ ComplexFooterLight.args = {
 };
 
 export const ComplexFooterLightAlt = AgComplexFooter.bind({});
-ComplexFooterLight.args = {
+ComplexFooterLightAlt.args = {
 	variant: 'lightAlt',
 };
 
@@ -166,6 +167,6 @@ ComplexFooterDark.args = {
 };
 
 export const ComplexFooterDarkAlt = AgComplexFooter.bind({});
-ComplexFooterDark.args = {
+ComplexFooterDarkAlt.args = {
 	variant: 'darkAlt',
 };

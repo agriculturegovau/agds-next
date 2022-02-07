@@ -49,13 +49,13 @@ export function HeaderBrand({
 			<Stack justifyContent="center">
 				<Text
 					lineHeight="heading"
-					fontSize={{ xs: 'md', md: 'xl' }}
+					fontSize={{ xs: 'md', sm: 'xl' }}
 					fontWeight="bold"
 				>
 					{heading}
 				</Text>
 				{subline && (
-					<Text color="muted" fontSize={{ xs: 'sm', md: 'md' }}>
+					<Text color="muted" fontSize={{ xs: 'sm', sm: 'md' }}>
 						{subline}
 					</Text>
 				)}
