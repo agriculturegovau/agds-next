@@ -65,6 +65,13 @@ export default function Homepage() {
 						<Column as="li" columnSpan={{ xs: 12, sm: 6, md: 6, lg: 4, xl: 3 }}>
 							<PictogramCard title="Guides" pictogram="guides" slug="/guides" />
 						</Column>
+						<Column as="li" columnSpan={{ xs: 12, sm: 6, md: 6, lg: 4, xl: 3 }}>
+							<PictogramCard
+								title="Starter kit"
+								pictogram="starter"
+								slug="/guides/getting-started"
+							/>
+						</Column>
 					</Columns>
 				</Stack>
 			</Content>

@@ -14,6 +14,7 @@ import linkList from './link-list.svg';
 import mainNav from './main-nav.svg';
 import packages from './packages.svg';
 import sideNav from './side-nav.svg';
+import starter from './starter.svg';
 import text from './text.svg';
 
 export const pictograms = {
@@ -37,6 +38,7 @@ export const pictograms = {
 	packages,
 	sideNav,
 	'side-nav': sideNav,
+	starter,
 	text,
 };
 
