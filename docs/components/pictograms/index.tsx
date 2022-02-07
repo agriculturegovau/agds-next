@@ -1,7 +1,9 @@
+import agBranding from './ag-branding.svg';
 import body from './body.svg';
 import box from './box.svg';
 import breadcrumb from './breadcrumb.svg';
 import button from './button.svg';
+import card from './card.svg';
 import columns from './columns.svg';
 import content from './content.svg';
 import core from './core.svg';
@@ -18,11 +20,13 @@ import starter from './starter.svg';
 import text from './text.svg';
 
 export const pictograms = {
+	'ag-branding': agBranding,
 	body,
 	box,
 	breadcrumb,
 	breadcrumbs: breadcrumb,
 	button,
+	card,
 	columns,
 	content,
 	core,
