@@ -9,7 +9,7 @@ export const SideNavTitle = ({
 	href,
 	children,
 }: {
-	activePath: string;
+	activePath?: string;
 	href: string;
 	children: ReactNode;
 }) => {

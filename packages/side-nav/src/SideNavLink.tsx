@@ -8,7 +8,7 @@ import { localPalette, visuallyHiddenStyles } from './utils';
 
 export type SideNavLinkType = {
 	active?: boolean;
-	activePath: string;
+	activePath?: string;
 	children?: ReactNode;
 	href: string;
 	label: string | JSX.Element;
