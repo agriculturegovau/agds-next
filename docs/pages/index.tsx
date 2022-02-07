@@ -3,8 +3,8 @@ import { Content } from '@ag.ds-next/content';
 import { Heading } from '@ag.ds-next/heading';
 import { Stack } from '@ag.ds-next/box';
 import { Text } from '@ag.ds-next/text';
-import { TextLink } from '@ag.ds-next/text-link';
 import { tokens } from '@ag.ds-next/core';
+import { Body } from '@ag.ds-next/body';
 import { AppLayout } from '../components/AppLayout';
 import { PictogramCard } from '../components/PictogramCard';
 
@@ -25,35 +25,35 @@ export default function Homepage() {
 			</Content>
 			<Content>
 				<Stack gap={3}>
-					<Stack maxWidth={tokens.maxWidth.bodyText} gap={1}>
-						<Text as="p">
+					<Body>
+						<p>
 							AgDS is based on the{' '}
-							<TextLink
+							<a
 								href="https://gold.designsystemau.org/"
 								target="_blank"
 								rel="noreferrer"
 							>
 								GOLD Design System
-							</TextLink>{' '}
+							</a>{' '}
 							which incorporates the highest usability and accessibility
 							standards, helping us to deliver a consistent experience for all
 							users, in line with the{' '}
-							<TextLink
+							<a
 								href="https://www.dta.gov.au/help-and-advice/about-digital-service-standard"
 								target="_blank"
 								rel="noreferrer"
 							>
 								Digital Service Standard
-							</TextLink>
+							</a>
 							.
-						</Text>
-						<Text as="p">
+						</p>
+						<p>
 							The system is in early development right now. Feel free to look
 							around and leave feedback or suggestions if you like but please do
 							not depend on these components just yet. We&apos;re working hard
 							to get a stable release out as soon as we can.
-						</Text>
-					</Stack>
+						</p>
+					</Body>
 					<Columns gap={1} flexWrap="wrap" as="ul">
 						<Column as="li" columnSpan={{ xs: 12, sm: 6, md: 6, lg: 4, xl: 3 }}>
 							<PictogramCard
