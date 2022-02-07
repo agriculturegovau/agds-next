@@ -60,14 +60,14 @@ The footer at the bottom of a page. Usually contains copyright information and l
 			</Stack>
 		</Column>
 	</Columns>
-	<Divider accent />
+	<FooterDivider />
 	<Text as="p">Footer text</Text>
 
 	<Box maxWidth="240px">
 		<Logo />
 	</Box>
 
-	<Divider accent />
+	<FooterDivider />
 	<Text>
 		<small>
 			&copy; Commonwealth of Australia,{' '}
@@ -94,7 +94,7 @@ The footer at the bottom of a page. Usually contains copyright information and l
 		]}
 		horizontal
 	/>
-	<Divider accent />
+	<FooterDivider />
 
 	<Text fontSize="xs" maxWidth="42em">
 		We acknowledge the traditional owners of country throughout Australia and
