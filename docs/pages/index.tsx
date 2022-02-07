@@ -1,79 +1,73 @@
 import { Columns, Column } from '@ag.ds-next/columns';
-import { Box, Stack } from '@ag.ds-next/box';
-import { Heading } from '@ag.ds-next/heading';
-import { Text } from '@ag.ds-next/text';
 import { Content } from '@ag.ds-next/content';
-import { tokens } from '@ag.ds-next/core';
+import { Heading } from '@ag.ds-next/heading';
+import { Stack } from '@ag.ds-next/box';
+import { Text } from '@ag.ds-next/text';
 import { TextLink } from '@ag.ds-next/text-link';
+import { tokens } from '@ag.ds-next/core';
 import { AppLayout } from '../components/AppLayout';
 import { PictogramCard } from '../components/PictogramCard';
 
 export default function Homepage() {
 	return (
 		<AppLayout>
-			<Box>
-				<Content background="bodyAlt">
-					<Stack maxWidth={tokens.maxWidth.bodyText} gap={1.5}>
-						<Heading type="h1" fontSize={['xxl', 'xxxl']}>
-							Welcome to the Agriculture Design System (AgDS)
-						</Heading>
-						<Text fontSize="lg" fontWeight="normal" lineHeight="heading">
-							AgDS provides a framework and a set of tools to help designers and
-							developers build the steel threads of the Export Service quickly,
-							efficiently and consistently.
+			<Content background="bodyAlt">
+				<Stack maxWidth={tokens.maxWidth.bodyText} gap={1.5}>
+					<Heading type="h1" fontSize={['xxl', 'xxxl']}>
+						Welcome to the Agriculture Design System (AgDS)
+					</Heading>
+					<Text fontSize="lg" fontWeight="normal" lineHeight="heading">
+						AgDS provides a framework and a set of tools to help designers and
+						developers build the steel threads of the Export Service quickly,
+						efficiently and consistently.
+					</Text>
+				</Stack>
+			</Content>
+			<Content>
+				<Stack gap={3}>
+					<Stack maxWidth={tokens.maxWidth.bodyText} gap={1}>
+						<Text as="p">
+							AgDS is based on the{' '}
+							<TextLink
+								href="https://gold.designsystemau.org/"
+								target="_blank"
+								rel="noreferrer"
+							>
+								GOLD Design System
+							</TextLink>{' '}
+							which incorporates the highest usability and accessibility
+							standards, helping us to deliver a consistent experience for all
+							users, in line with the{' '}
+							<TextLink
+								href="https://www.dta.gov.au/help-and-advice/about-digital-service-standard"
+								target="_blank"
+								rel="noreferrer"
+							>
+								Digital Service Standard
+							</TextLink>
+							.
+						</Text>
+						<Text as="p">
+							The system is in early development right now. Feel free to look
+							around and leave feedback or suggestions if you like but please do
+							not depend on these components just yet. We&apos;re working hard
+							to get a stable release out as soon as we can.
 						</Text>
 					</Stack>
-				</Content>
-				<Content>
-					<Stack gap={3}>
-						<Stack maxWidth={tokens.maxWidth.bodyText} gap={1}>
-							<Text as="p">
-								AgDS is based on the{' '}
-								<TextLink
-									href="https://gold.designsystemau.org/"
-									target="_blank"
-									rel="noreferrer"
-								>
-									GOLD Design System
-								</TextLink>{' '}
-								which incorporates the highest usability and accessibility
-								standards, helping us to deliver a consistent experience for all
-								users, in line with the{' '}
-								<TextLink
-									href="https://www.dta.gov.au/help-and-advice/about-digital-service-standard"
-									target="_blank"
-									rel="noreferrer"
-								>
-									Digital Service Standard
-								</TextLink>
-								.
-							</Text>
-							<Text as="p">
-								The system is in early development right now. Feel free to look
-								around and leave feedback or suggestions if you like but please
-								do not depend on these components just yet. We&apos;re working
-								hard to get a stable release out as soon as we can.
-							</Text>
-						</Stack>
-						<Columns gap={1} flexWrap="wrap" as="ul">
-							<Column columnSpan={{ xs: 12, sm: 6, md: 6, lg: 4, xl: 3 }}>
-								<PictogramCard
-									title="Packages"
-									pictogram="packages"
-									slug="/packages"
-								/>
-							</Column>
-							<Column columnSpan={{ xs: 12, sm: 6, md: 6, lg: 4, xl: 3 }}>
-								<PictogramCard
-									title="Guides"
-									pictogram="guides"
-									slug="/guides"
-								/>
-							</Column>
-						</Columns>
-					</Stack>
-				</Content>
-			</Box>
+					<Columns gap={1} flexWrap="wrap" as="ul">
+						<Column columnSpan={{ xs: 12, sm: 6, md: 6, lg: 4, xl: 3 }}>
+							<PictogramCard
+								title="Packages"
+								pictogram="packages"
+								slug="/packages"
+							/>
+						</Column>
+						<Column columnSpan={{ xs: 12, sm: 6, md: 6, lg: 4, xl: 3 }}>
+							<PictogramCard title="Guides" pictogram="guides" slug="/guides" />
+						</Column>
+					</Columns>
+				</Stack>
+			</Content>
 		</AppLayout>
 	);
 }
