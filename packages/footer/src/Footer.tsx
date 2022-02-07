@@ -1,23 +1,32 @@
 import { Flex, Stack } from '@ag.ds-next/box';
-import { tokens, globalPalette } from '@ag.ds-next/core';
+import { tokens, globalPalette, boxPalette } from '@ag.ds-next/core';
 import type { PropsWithChildren } from 'react';
 
 const variantMap = {
 	light: {
 		palette: 'light',
 		background: 'body',
+		border: boxPalette.foreground.action,
 	},
 	lightAlt: {
 		palette: 'light',
 		background: 'bodyAlt',
+		border: boxPalette.foreground.action,
 	},
 	dark: {
 		palette: 'dark',
 		background: 'body',
+		border: boxPalette.foreground.action,
 	},
 	darkAlt: {
 		palette: 'dark',
 		background: 'bodyAlt',
+		border: boxPalette.foreground.action,
+	},
+	agriculture: {
+		palette: 'dark',
+		background: 'body',
+		border: globalPalette.accent,
 	},
 } as const;
 
@@ -36,14 +45,14 @@ export const Footer = ({ variant = 'dark', children }: FooterProps) => {
 			paddingY={3}
 			css={{
 				borderTop: '4px solid',
-				borderColor: globalPalette.accent,
+				borderColor: variantMap[variant].border,
 
 				li: {
 					marginLeft: 0,
 				},
 
 				hr: {
-					borderColor: globalPalette.accent,
+					borderColor: variantMap[variant].border,
 				},
 			}}
 		>

@@ -9,7 +9,7 @@ description: Footers help users find what they need after scrolling to the botto
 The footer at the bottom of a page. Usually contains copyright information and links to other sections of the site.
 
 ```jsx live
-<Footer>
+<Footer variant="agriculture">
 	<Columns>
 		<Column columnSpan={{ xs: 12, sm: 6, md: 4, lg: 3 }}>
 			<Stack gap={0.5}>
@@ -85,7 +85,7 @@ The footer at the bottom of a page. Usually contains copyright information and l
 ## Streamlined
 
 ```jsx live
-<Footer>
+<Footer variant="agriculture">
 	<LinkList
 		links={[
 			{ href: '#1', label: 'Accessibility' },

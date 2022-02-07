@@ -45,7 +45,7 @@ const snippits = [
 	{
 		group: 'Footer',
 		name: 'Basic',
-		code: `<Footer variant='dark'>
+		code: `<Footer variant='agriculture'>
     <LinkList
       horizontal
       links={[
@@ -62,7 +62,7 @@ const snippits = [
 	{
 		group: 'Footer',
 		name: 'Complex',
-		code: `<Footer variant="dark">
+		code: `<Footer variant="agriculture">
     <Box
       aria-label="footer"
       css={{

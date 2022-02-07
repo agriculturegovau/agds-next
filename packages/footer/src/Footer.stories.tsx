@@ -43,6 +43,10 @@ const AgSimpleFooter: ComponentStory<typeof Footer> = (args) => {
 	);
 };
 
+export const SimpleFooterAgriculture = AgSimpleFooter.bind({});
+SimpleFooterAgriculture.args = {
+	variant: 'agriculture',
+};
 export const SimpleFooterLight = AgSimpleFooter.bind({});
 SimpleFooterLight.args = {
 	variant: 'light',
@@ -138,6 +142,11 @@ const AgComplexFooter: ComponentStory<typeof Footer> = (args) => {
 			</Text>
 		</Footer>
 	);
+};
+
+export const ComplexFooterAgriculture = AgComplexFooter.bind({});
+ComplexFooterAgriculture.args = {
+	variant: 'agriculture',
 };
 
 export const ComplexFooterLight = AgComplexFooter.bind({});
