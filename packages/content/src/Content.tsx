@@ -10,19 +10,24 @@ const paddingYMap = {
 type ContentProps = {
 	as?: React.ElementType;
 	spacing?: keyof typeof paddingYMap;
-	theme?: BoxProps['theme'];
+	palette?: BoxProps['palette'];
 	background?: BoxProps['background'];
 };
 
 export function Content({
 	as = 'section',
 	spacing = 'small',
-	theme,
+	palette,
 	background,
 	children,
 }: React.PropsWithChildren<ContentProps>) {
 	return (
-		<Flex as={as} justifyContent="center" theme={theme} background={background}>
+		<Flex
+			as={as}
+			justifyContent="center"
+			palette={palette}
+			background={background}
+		>
 			<Stack
 				width="100%"
 				maxWidth={tokens.maxWidth.container}

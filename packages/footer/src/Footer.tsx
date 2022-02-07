@@ -1,9 +1,39 @@
 import { Flex, Stack } from '@ag.ds-next/box';
-import { tokens, globalVars } from '@ag.ds-next/core';
+import { tokens, globalPalette, boxPalette } from '@ag.ds-next/core';
 import type { PropsWithChildren } from 'react';
 
+import { localPaletteVars } from './localPalette';
+
+const variantMap = {
+	light: {
+		palette: 'light',
+		background: 'body',
+		border: boxPalette.foregroundAction,
+	},
+	lightAlt: {
+		palette: 'light',
+		background: 'bodyAlt',
+		border: boxPalette.foregroundAction,
+	},
+	dark: {
+		palette: 'dark',
+		background: 'body',
+		border: boxPalette.foregroundAction,
+	},
+	darkAlt: {
+		palette: 'dark',
+		background: 'bodyAlt',
+		border: boxPalette.foregroundAction,
+	},
+	agriculture: {
+		palette: 'dark',
+		background: 'body',
+		border: globalPalette.accent,
+	},
+} as const;
+
 type FooterProps = PropsWithChildren<{
-	variant?: 'light' | 'lightAlt' | 'dark' | 'darkAlt';
+	variant?: keyof typeof variantMap;
 }>;
 
 export const Footer = ({ variant = 'dark', children }: FooterProps) => {
@@ -13,19 +43,14 @@ export const Footer = ({ variant = 'dark', children }: FooterProps) => {
 			justifyContent="center"
 			background={variantMap[variant].background}
 			color="text"
-			theme={variantMap[variant].theme}
+			palette={variantMap[variant].palette}
 			paddingY={3}
 			css={{
 				borderTop: '4px solid',
-				borderColor: globalVars.accent,
+				borderColor: variantMap[variant].border,
+				[localPaletteVars.border]: variantMap[variant].border,
 
-				li: {
-					marginLeft: 0,
-				},
-
-				hr: {
-					borderColor: globalVars.accent,
-				},
+				li: { marginLeft: 0 },
 			}}
 		>
 			<Stack
@@ -39,22 +64,3 @@ export const Footer = ({ variant = 'dark', children }: FooterProps) => {
 		</Flex>
 	);
 };
-
-const variantMap = {
-	light: {
-		theme: 'light',
-		background: 'body',
-	},
-	lightAlt: {
-		theme: 'light',
-		background: 'bodyAlt',
-	},
-	dark: {
-		theme: 'dark',
-		background: 'body',
-	},
-	darkAlt: {
-		theme: 'dark',
-		background: 'bodyAlt',
-	},
-} as const;

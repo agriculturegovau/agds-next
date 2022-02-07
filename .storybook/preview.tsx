@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { Core, tokens } from '@ag.ds-next/core';
-import { palette as agPalette } from '@ag.ds-next/ag-branding';
+import { theme } from '@ag.ds-next/ag-branding';
 
 const viewportMap = {
 	xs: 'mobile',
@@ -55,20 +55,20 @@ export const parameters = {
 	},
 };
 
-const getPalette = (brand) => {
+const getTheme = (brand) => {
 	return {
 		gold: {},
-		agriculture: agPalette,
+		agriculture: theme,
 	}[brand];
 };
 
-const withBrandPalette = (Story, context) => {
-	const palette = getPalette(context.globals.brand);
+const withBrandTheme = (Story, context) => {
+	const palette = getTheme(context.globals.brand);
 	return (
-		<Core palette={palette}>
+		<Core theme={palette}>
 			<Story />
 		</Core>
 	);
 };
 
-export const decorators = [withBrandPalette];
+export const decorators = [withBrandTheme];

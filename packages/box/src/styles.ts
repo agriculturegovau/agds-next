@@ -2,42 +2,58 @@ import { css } from '@emotion/react';
 import {
 	tokens,
 	outline,
-	BoxTheme,
-	themes,
-	themeValues,
+	BoxPalette,
+	boxPalettes,
+	boxPalette,
 	ResponsiveProp,
 	mapResponsiveProp,
 	mapSpacing,
 	mq,
 	fontGrid,
 	Spacing,
-	globalVars,
+	globalPalette,
 } from '@ag.ds-next/core';
 
-type ThemeProps = Partial<{
-	theme: BoxTheme;
+type PaletteProps = Partial<{
+	palette: BoxPalette;
+	dark: boolean;
+	light: boolean;
 }>;
 
-const foregroundColorMap = {
-	...themeValues.foreground,
-	accent: globalVars.accent,
-	error: globalVars.error,
-	success: globalVars.success,
-	warning: globalVars.warning,
-	info: globalVars.info,
+function paletteStyles({ palette, dark, light }: PaletteProps) {
+	if (palette) return boxPalettes[palette];
+	if (dark) return boxPalettes.dark;
+	if (light) return boxPalettes.light;
+}
+
+export const foregroundColorMap = {
+	text: boxPalette.foregroundText,
+	action: boxPalette.foregroundAction,
+	focus: boxPalette.foregroundFocus,
+	muted: boxPalette.foregroundMuted,
+	accent: globalPalette.accent,
+	error: globalPalette.error,
+	success: globalPalette.success,
+	warning: globalPalette.warning,
+	info: globalPalette.info,
+};
+
+export const backgroundColorMap = {
+	body: boxPalette.backgroundBody,
+	shade: boxPalette.backgroundShade,
+	bodyAlt: boxPalette.backgroundBodyAlt,
+	shadeAlt: boxPalette.backgroundShadeAlt,
 };
 
 type ColorProps = Partial<{
 	color: keyof typeof foregroundColorMap;
-	background: keyof typeof themeValues.background;
+	background: keyof typeof backgroundColorMap;
 }>;
 
 function colorStyles({ color, background }: ColorProps) {
 	return {
 		color: color ? foregroundColorMap[color] : undefined,
-		backgroundColor: background
-			? themeValues.background[background]
-			: undefined,
+		backgroundColor: background ? backgroundColorMap[background] : undefined,
 	};
 }
 
@@ -76,8 +92,8 @@ function typographyStyles({
 		fontSize,
 		lineHeight,
 		'& ::selection': {
-			color: themeValues.background.body,
-			backgroundColor: themeValues.foreground.action,
+			color: boxPalette.backgroundBody,
+			backgroundColor: boxPalette.foregroundAction,
 		},
 	};
 }
@@ -179,7 +195,7 @@ function borderStyles({
 		borderRightWidth: border ?? borderX ?? borderRight ? `1px` : undefined,
 		borderTopWidth: border ?? borderY ?? borderTop ? `1px` : undefined,
 		borderBottomWidth: border ?? borderY ?? borderBottom ? `1px` : undefined,
-		borderColor: anyBorder ? themeValues.border : undefined,
+		borderColor: anyBorder ? boxPalette.border : undefined,
 		borderStyle: anyBorder ? 'solid' : undefined,
 		borderRadius: rounded ? tokens.borderRadius : undefined,
 	};
@@ -227,12 +243,12 @@ function paddingStyles({
 
 type LinkProps = Partial<{ link: boolean }>;
 export const linkStyles = {
-	color: themeValues.foreground.action,
+	color: boxPalette.foregroundAction,
 	textDecoration: 'underline',
 	textDecorationSkip: 'auto',
 
 	'&:hover': {
-		color: themeValues.foreground.text,
+		color: boxPalette.foregroundText,
 		textDecoration: 'none',
 	},
 };
@@ -245,7 +261,7 @@ export const focusStyles = {
 	},
 };
 
-export type BoxProps = ThemeProps &
+export type BoxProps = PaletteProps &
 	ColorProps &
 	BorderProps &
 	FocusProps &
@@ -255,7 +271,9 @@ export type BoxProps = ThemeProps &
 	PaddingProps;
 
 export function boxStyles({
-	theme,
+	palette,
+	dark,
+	light,
 	color,
 	background,
 	border,
@@ -297,7 +315,7 @@ export function boxStyles({
 }: BoxProps) {
 	return [
 		css([
-			theme ? themes[theme] : undefined,
+			paletteStyles({ palette, dark, light }),
 
 			// common resets
 			{

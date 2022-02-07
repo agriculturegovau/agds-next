@@ -9,12 +9,12 @@ import {
 import { Language } from 'prism-react-renderer';
 import copy from 'clipboard-copy';
 
-import { globalVars, mapSpacing, tokens } from '@ag.ds-next/core';
+import { globalPalette, mapSpacing, tokens } from '@ag.ds-next/core';
 import { Box, Flex } from '@ag.ds-next/box';
 import { Button } from '@ag.ds-next/button';
 
 import { designSystemComponents } from './design-system-components';
-import { agTheme as theme } from './prism-theme';
+import { prismTheme } from './prism-theme';
 
 type CodeProps = {
 	children: string;
@@ -63,7 +63,7 @@ const LiveCode = withLive((props: unknown) => {
 	return (
 		<Box
 			css={{
-				boxShadow: `0 0 1px ${globalVars.light.border}`,
+				boxShadow: `0 0 1px ${globalPalette.lightBorder}`,
 			}}
 		>
 			<Box padding={1}>
@@ -77,7 +77,7 @@ const LiveCode = withLive((props: unknown) => {
 				/>
 			</Box>
 			<LiveEditor
-				theme={theme}
+				theme={prismTheme}
 				code={live.code}
 				language={live.language}
 				disabled={live.disabled}
@@ -87,10 +87,10 @@ const LiveCode = withLive((props: unknown) => {
 						padding: `${mapSpacing(1)} !important`,
 					},
 					'& ::selection': {
-						color: globalVars.dark.background.body,
-						backgroundColor: globalVars.dark.foreground.action,
+						color: globalPalette.darkBackgroundBody,
+						backgroundColor: globalPalette.darkForegroundAction,
 					},
-					boxShadow: `0 1px 3px -2px ${globalVars.light.border}`,
+					boxShadow: `0 1px 3px -2px ${globalPalette.lightBorder}`,
 				}}
 			/>
 			{live.error ? (
@@ -104,7 +104,7 @@ const LiveCode = withLive((props: unknown) => {
 					{live.error}
 				</Box>
 			) : null}
-			<Flex theme="light" padding={1} gap={0.5} justifyContent="flex-end">
+			<Flex palette="light" padding={1} gap={0.5} justifyContent="flex-end">
 				<Button size="sm" variant="secondary" onClick={copyLiveCode}>
 					Copy
 				</Button>
@@ -126,15 +126,20 @@ const StaticCode = ({
 	return (
 		<Box
 			css={{
-				boxShadow: `0 0 1px ${globalVars.light.border}`,
+				boxShadow: `0 0 1px ${globalPalette.lightBorder}`,
 				'& ::selection': {
-					color: globalVars.dark.background.body,
-					backgroundColor: globalVars.dark.foreground.action,
+					color: globalPalette.darkBackgroundBody,
+					backgroundColor: globalPalette.darkForegroundAction,
 				},
 			}}
 		>
-			<StaticEditor code={code} theme={theme} language={language} disabled />
-			<Flex theme="light" padding={0.5} gap={0.5} justifyContent="flex-end">
+			<StaticEditor
+				code={code}
+				theme={prismTheme}
+				language={language}
+				disabled
+			/>
+			<Flex palette="light" padding={1} justifyContent="flex-end">
 				<Button size="sm" onClick={() => copy(code)}>
 					Copy
 				</Button>

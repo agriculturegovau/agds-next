@@ -1,5 +1,4 @@
-import { Footer } from '@ag.ds-next/footer';
-import { Divider } from '@ag.ds-next/box';
+import { Footer, FooterDivider } from '@ag.ds-next/footer';
 import { Text } from '@ag.ds-next/text';
 import { LinkList } from '@ag.ds-next/link-list';
 
@@ -11,10 +10,10 @@ const footerLinks = [
 
 export const SiteFooter = () => {
 	return (
-		<Footer>
+		<Footer variant="agriculture">
 			<LinkList links={footerLinks} horizontal />
 
-			<Divider />
+			<FooterDivider />
 
 			<Text>&copy; Commonwealth of Australia.</Text>
 		</Footer>

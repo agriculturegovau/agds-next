@@ -9,7 +9,7 @@ description: Footers help users find what they need after scrolling to the botto
 The footer at the bottom of a page. Usually contains copyright information and links to other sections of the site.
 
 ```jsx live
-<Footer>
+<Footer variant="agriculture">
 	<Columns>
 		<Column columnSpan={{ xs: 12, sm: 6, md: 4, lg: 3 }}>
 			<Stack gap={0.5}>
@@ -60,14 +60,14 @@ The footer at the bottom of a page. Usually contains copyright information and l
 			</Stack>
 		</Column>
 	</Columns>
-	<Divider accent />
+	<FooterDivider />
 	<Text as="p">Footer text</Text>
 
 	<Box maxWidth="240px">
 		<Logo />
 	</Box>
 
-	<Divider accent />
+	<FooterDivider />
 	<Text>
 		<small>
 			&copy; Commonwealth of Australia,{' '}
@@ -85,7 +85,7 @@ The footer at the bottom of a page. Usually contains copyright information and l
 ## Streamlined
 
 ```jsx live
-<Footer>
+<Footer variant="agriculture">
 	<LinkList
 		links={[
 			{ href: '#1', label: 'Accessibility' },
@@ -94,7 +94,7 @@ The footer at the bottom of a page. Usually contains copyright information and l
 		]}
 		horizontal
 	/>
-	<Divider accent />
+	<FooterDivider />
 
 	<Text fontSize="xs" maxWidth="42em">
 		We acknowledge the traditional owners of country throughout Australia and

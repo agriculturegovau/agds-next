@@ -1,6 +1,6 @@
-import { themeValues, globalVars } from '@ag.ds-next/core';
+import { localPalette } from './localPalette';
 
-export function Divider({ accent }: { accent?: boolean }) {
+export function FooterDivider() {
 	return (
 		<hr
 			css={{
@@ -11,7 +11,7 @@ export function Divider({ accent }: { accent?: boolean }) {
 				border: 'none',
 				borderTopWidth: 1,
 				borderTopStyle: 'solid',
-				borderColor: accent ? globalVars.accent : themeValues.border,
+				borderColor: localPalette.border,
 				width: '100%',
 			}}
 		/>

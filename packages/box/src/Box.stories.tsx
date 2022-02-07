@@ -10,30 +10,33 @@ export default {
 const Template: ComponentStory<typeof Box> = (args) => <Box {...args} />;
 
 /**
- * The Box with a Light theme applied
+ * The Box with a Light palette applied
  */
 export const LightBox = Template.bind({});
 LightBox.args = {
 	children: 'A light box',
-	theme: 'light',
+	background: 'body',
+	color: 'text',
 	padding: 2,
 	border: true,
 	rounded: true,
+	// palette: 'light',
+	light: true,
 };
 
 /**
- * The Box with a Light theme applied
+ * The Box with a Light palette applied
  */
 export const DarkBox = Template.bind({});
 DarkBox.args = {
 	children: 'Dark box',
-	theme: 'dark',
 	background: 'body',
 	color: 'text',
-	paddingX: 2,
-	paddingY: 2,
+	padding: 2,
 	border: true,
 	rounded: true,
+	// palette: 'dark',
+	dark: true,
 };
 
 /** Responsive props */
@@ -54,7 +57,7 @@ ResponsivePadding.args = {
 function ResponsiveSizeIndicator() {
 	return (
 		<Box
-			theme="dark"
+			palette="dark"
 			color="text"
 			display="flex"
 			flexDirection="row"

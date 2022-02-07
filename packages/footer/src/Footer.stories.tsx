@@ -2,13 +2,14 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { Logo } from '@ag.ds-next/ag-branding';
-import { Box, Divider, Stack } from '@ag.ds-next/box';
+import { Box, Stack } from '@ag.ds-next/box';
 import { Columns, Column } from '@ag.ds-next/columns';
 import { H3 } from '@ag.ds-next/heading';
 import { Text } from '@ag.ds-next/text';
 import { TextLink } from '@ag.ds-next/text-link';
 import { LinkList } from '@ag.ds-next/link-list';
 import { Footer } from './Footer';
+import { FooterDivider } from '.';
 
 export default {
 	title: 'layout/Footer',
@@ -26,7 +27,7 @@ const AgSimpleFooter: ComponentStory<typeof Footer> = (args) => {
 					{ href: '#', label: 'Link 3' },
 				]}
 			/>
-			<Divider accent />
+			<FooterDivider />
 
 			<Text>
 				<small>
@@ -43,6 +44,10 @@ const AgSimpleFooter: ComponentStory<typeof Footer> = (args) => {
 	);
 };
 
+export const SimpleFooterAgriculture = AgSimpleFooter.bind({});
+SimpleFooterAgriculture.args = {
+	variant: 'agriculture',
+};
 export const SimpleFooterLight = AgSimpleFooter.bind({});
 SimpleFooterLight.args = {
 	variant: 'light',
@@ -117,14 +122,14 @@ const AgComplexFooter: ComponentStory<typeof Footer> = (args) => {
 					</Stack>
 				</Column>
 			</Columns>
-			<Divider />
+			<FooterDivider />
 			<Text as="p">Footer text</Text>
 
 			<Box maxWidth="240px">
 				<Logo />
 			</Box>
 
-			<Divider />
+			<FooterDivider />
 			<Text>
 				<small>
 					&copy; Commonwealth of Australia,{' '}
@@ -138,6 +143,11 @@ const AgComplexFooter: ComponentStory<typeof Footer> = (args) => {
 			</Text>
 		</Footer>
 	);
+};
+
+export const ComplexFooterAgriculture = AgComplexFooter.bind({});
+ComplexFooterAgriculture.args = {
+	variant: 'agriculture',
 };
 
 export const ComplexFooterLight = AgComplexFooter.bind({});
