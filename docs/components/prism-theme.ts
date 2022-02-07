@@ -1,29 +1,29 @@
 import { PrismTheme } from 'prism-react-renderer';
-import { globalVars } from '@ag.ds-next/core';
+import { globalPalette } from '@ag.ds-next/core';
 
 export const prismTheme: PrismTheme = {
 	plain: {
-		color: globalVars.light.foreground.text,
-		backgroundColor: globalVars.light.background.shade,
+		color: globalPalette.light.foreground.text,
+		backgroundColor: globalPalette.light.background.shade,
 	},
 	styles: [
 		{
 			types: ['comment', 'prolog', 'cdata'],
 			style: {
-				color: globalVars.light.foreground.muted,
+				color: globalPalette.light.foreground.muted,
 				opacity: 0.5,
 			},
 		},
 		{
 			types: ['punctuation', 'entity'],
 			style: {
-				color: globalVars.light.foreground.muted,
+				color: globalPalette.light.foreground.muted,
 			},
 		},
 		{
 			types: ['operator', 'doctype'],
 			style: {
-				color: globalVars.light.foreground.muted,
+				color: globalPalette.light.foreground.muted,
 				opacity: 0.7,
 			},
 		},
@@ -38,7 +38,7 @@ export const prismTheme: PrismTheme = {
 				'attr-value',
 			],
 			style: {
-				color: globalVars.success,
+				color: globalPalette.success,
 			},
 		},
 		{
@@ -54,19 +54,19 @@ export const prismTheme: PrismTheme = {
 				'inserted',
 			],
 			style: {
-				color: globalVars.warning,
+				color: globalPalette.warning,
 			},
 		},
 		{
 			types: ['keyword'],
 			style: {
-				color: globalVars.light.foreground.focus,
+				color: globalPalette.light.foreground.focus,
 			},
 		},
 		{
 			types: ['function'],
 			style: {
-				color: globalVars.light.foreground.action,
+				color: globalPalette.light.foreground.action,
 				fontWeight: 'bold',
 				opacity: 0.8,
 			},
@@ -74,14 +74,14 @@ export const prismTheme: PrismTheme = {
 		{
 			types: ['deleted', 'tag', 'atrule', 'attr-name'],
 			style: {
-				color: globalVars.light.foreground.action,
+				color: globalPalette.light.foreground.action,
 				opacity: 0.8,
 			},
 		},
 		{
 			types: ['class-name'],
 			style: {
-				color: globalVars.warning,
+				color: globalPalette.warning,
 			},
 		},
 	],

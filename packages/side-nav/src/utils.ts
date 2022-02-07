@@ -15,12 +15,12 @@ export function findBestMatch(items: { href: string }[], activePath?: string) {
 	return bestMatch;
 }
 
-export const localVars = {
+export const localPaletteVars = {
 	linkHoverBg: '--sideNav-linkHoverBg',
 	linkActiveBg: '--sideNav-linkActiveBg',
 };
 
-export const localValues = {
-	linkHoverBg: `var(${localVars.linkHoverBg})`,
-	linkActiveBg: `var(${localVars.linkActiveBg})`,
+export const localPalette = {
+	linkHoverBg: `var(${localPaletteVars.linkHoverBg})`,
+	linkActiveBg: `var(${localPaletteVars.linkActiveBg})`,
 };

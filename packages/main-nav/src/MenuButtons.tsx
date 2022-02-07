@@ -1,7 +1,7 @@
 import { Box } from '@ag.ds-next/box';
 import { boxPalette } from '@ag.ds-next/core';
 
-import { localValues } from './utils';
+import { localPalette } from './utils';
 
 export type MenuButtonProps = {
 	onClick: () => void;
@@ -28,7 +28,7 @@ function MenuButton({
 
 				'&:hover': {
 					color: boxPalette.foreground.text,
-					backgroundColor: localValues.linkHoverBg,
+					backgroundColor: localPalette.linkHoverBg,
 				},
 			}}
 			onClick={onClick}

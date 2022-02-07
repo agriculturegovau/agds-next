@@ -4,7 +4,7 @@ import { useLinkComponent, mapSpacing } from '@ag.ds-next/core';
 import { boxPalette, fontGrid, outline } from '@ag.ds-next/core';
 
 import { useLinkListDepth } from './context';
-import { localValues } from './utils';
+import { localPalette } from './utils';
 
 export type SideNavLinkType = {
 	active?: boolean;
@@ -54,7 +54,7 @@ export const SideNavLink = ({
 							color: boxPalette.foreground.text,
 							textDecoration: 'underline',
 							textDecorationSkipInk: 'auto',
-							backgroundColor: localValues.linkHoverBg,
+							backgroundColor: localPalette.linkHoverBg,
 						},
 
 						'&:focus': outline,

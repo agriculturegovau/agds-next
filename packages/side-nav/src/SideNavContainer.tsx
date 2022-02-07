@@ -2,7 +2,30 @@ import type { PropsWithChildren } from 'react';
 import { Box } from '@ag.ds-next/box';
 import { boxPalette } from '@ag.ds-next/core';
 
-import { localVars } from './utils';
+import { localPaletteVars } from './utils';
+
+const variantMap = {
+	light: {
+		palette: 'light',
+		background: 'body',
+		hover: 'shade',
+	},
+	lightAlt: {
+		palette: 'light',
+		background: 'bodyAlt',
+		hover: 'shadeAlt',
+	},
+	dark: {
+		palette: 'dark',
+		background: 'body',
+		hover: 'shade',
+	},
+	darkAlt: {
+		palette: 'dark',
+		background: 'bodyAlt',
+		hover: 'shadeAlt',
+	},
+} as const;
 
 export type SideNavContainerProps = PropsWithChildren<{
 	variant: keyof typeof variantMap;
@@ -13,18 +36,18 @@ export const SideNavContainer = ({
 	variant,
 	...props
 }: SideNavContainerProps) => {
-	const { theme, background, hover } = variantMap[variant];
+	const { palette, background, hover } = variantMap[variant];
 	return (
 		<Box
 			as="nav"
 			fontFamily="body"
 			background={background}
-			palette={theme}
+			palette={palette}
 			fontSize="sm"
 			lineHeight="default"
 			css={{
-				[localVars.linkHoverBg]: boxPalette.background[hover],
-				[localVars.linkActiveBg]: boxPalette.background[background],
+				[localPaletteVars.linkHoverBg]: boxPalette.background[hover],
+				[localPaletteVars.linkActiveBg]: boxPalette.background[background],
 			}}
 			{...props}
 		>
@@ -32,26 +55,3 @@ export const SideNavContainer = ({
 		</Box>
 	);
 };
-
-const variantMap = {
-	light: {
-		theme: 'light',
-		background: 'body',
-		hover: 'shade',
-	},
-	lightAlt: {
-		theme: 'light',
-		background: 'bodyAlt',
-		hover: 'shadeAlt',
-	},
-	dark: {
-		theme: 'dark',
-		background: 'body',
-		hover: 'shade',
-	},
-	darkAlt: {
-		theme: 'dark',
-		background: 'bodyAlt',
-		hover: 'shadeAlt',
-	},
-} as const;

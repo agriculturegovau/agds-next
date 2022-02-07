@@ -113,7 +113,7 @@ export const defaultTheme = {
 	info: '#00bfe9',
 } as const;
 
-export const globalVars = {
+export const globalPalette = {
 	light: {
 		foreground: {
 			text: `var(${themeVars.lightForegroundText})`,
@@ -153,26 +153,26 @@ export const globalVars = {
 
 export const boxPalettes = {
 	light: css({
-		'--agds-foreground-text': globalVars.light.foreground.text,
-		'--agds-foreground-action': globalVars.light.foreground.action,
-		'--agds-foreground-focus': globalVars.light.foreground.focus,
-		'--agds-foreground-muted': globalVars.light.foreground.muted,
-		'--agds-background-body': globalVars.light.background.body,
-		'--agds-background-shade': globalVars.light.background.shade,
-		'--agds-background-body-alt': globalVars.light.background.bodyAlt,
-		'--agds-background-shade-alt': globalVars.light.background.shadeAlt,
-		'--agds-border': globalVars.light.border,
+		'--agds-foreground-text': globalPalette.light.foreground.text,
+		'--agds-foreground-action': globalPalette.light.foreground.action,
+		'--agds-foreground-focus': globalPalette.light.foreground.focus,
+		'--agds-foreground-muted': globalPalette.light.foreground.muted,
+		'--agds-background-body': globalPalette.light.background.body,
+		'--agds-background-shade': globalPalette.light.background.shade,
+		'--agds-background-body-alt': globalPalette.light.background.bodyAlt,
+		'--agds-background-shade-alt': globalPalette.light.background.shadeAlt,
+		'--agds-border': globalPalette.light.border,
 	}),
 	dark: css({
-		'--agds-foreground-text': globalVars.dark.foreground.text,
-		'--agds-foreground-action': globalVars.dark.foreground.action,
-		'--agds-foreground-focus': globalVars.dark.foreground.focus,
-		'--agds-foreground-muted': globalVars.dark.foreground.muted,
-		'--agds-background-body': globalVars.dark.background.body,
-		'--agds-background-shade': globalVars.dark.background.shade,
-		'--agds-background-body-alt': globalVars.dark.background.bodyAlt,
-		'--agds-background-shade-alt': globalVars.dark.background.shadeAlt,
-		'--agds-border': globalVars.dark.border,
+		'--agds-foreground-text': globalPalette.dark.foreground.text,
+		'--agds-foreground-action': globalPalette.dark.foreground.action,
+		'--agds-foreground-focus': globalPalette.dark.foreground.focus,
+		'--agds-foreground-muted': globalPalette.dark.foreground.muted,
+		'--agds-background-body': globalPalette.dark.background.body,
+		'--agds-background-shade': globalPalette.dark.background.shade,
+		'--agds-background-body-alt': globalPalette.dark.background.bodyAlt,
+		'--agds-background-shade-alt': globalPalette.dark.background.shadeAlt,
+		'--agds-border': globalPalette.dark.border,
 	}),
 } as const;
 export type BoxPalette = keyof typeof boxPalettes;

@@ -11,7 +11,7 @@ import {
 	mq,
 	fontGrid,
 	Spacing,
-	globalVars,
+	globalPalette,
 } from '@ag.ds-next/core';
 
 type PaletteProps = Partial<{
@@ -20,11 +20,11 @@ type PaletteProps = Partial<{
 
 const foregroundColorMap = {
 	...boxPalette.foreground,
-	accent: globalVars.accent,
-	error: globalVars.error,
-	success: globalVars.success,
-	warning: globalVars.warning,
-	info: globalVars.info,
+	accent: globalPalette.accent,
+	error: globalPalette.error,
+	success: globalPalette.success,
+	warning: globalPalette.warning,
+	info: globalPalette.info,
 };
 
 type ColorProps = Partial<{

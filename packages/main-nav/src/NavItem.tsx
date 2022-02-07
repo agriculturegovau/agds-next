@@ -8,7 +8,7 @@ import {
 import { Box } from '@ag.ds-next/box';
 import type { ReactNode } from 'react';
 
-import { localValues } from './utils';
+import { localPalette } from './utils';
 
 export function NavItem({
 	children,
@@ -46,7 +46,7 @@ export function NavItem({
 						top: '100%',
 						left: 0,
 						right: 0,
-						backgroundColor: active ? localValues.linkActiveBg : 'transparent',
+						backgroundColor: active ? localPalette.linkActiveBg : 'transparent',
 					},
 
 					// Focus styles
@@ -72,9 +72,9 @@ export function NavItem({
 						textDecoration: 'underline',
 						textDecorationSkipInk: 'auto',
 						color: boxPalette.foreground.text,
-						backgroundColor: localValues.linkHoverBg,
+						backgroundColor: localPalette.linkHoverBg,
 						'&::after': {
-							background: active ? localValues.linkHoverBg : 'transparent',
+							background: active ? localPalette.linkHoverBg : 'transparent',
 						},
 					},
 				},

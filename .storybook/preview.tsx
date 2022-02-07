@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { Core, tokens } from '@ag.ds-next/core';
-import { theme as agTheme } from '@ag.ds-next/ag-branding';
+import { theme } from '@ag.ds-next/ag-branding';
 
 const viewportMap = {
 	xs: 'mobile',
@@ -58,7 +58,7 @@ export const parameters = {
 const getTheme = (brand) => {
 	return {
 		gold: {},
-		agriculture: agTheme,
+		agriculture: theme,
 	}[brand];
 };
 

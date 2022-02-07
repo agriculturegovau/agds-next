@@ -7,35 +7,35 @@ import {
 	useTernaryState,
 	mapSpacing,
 	tokens,
-	globalVars,
+	globalPalette,
 } from '@ag.ds-next/core';
 
-import { localValues, localVars } from './utils';
+import { localPalette, localPaletteVars } from './utils';
 import { CloseButton, ToggleButton } from './MenuButtons';
 
 const variantMap = {
 	light: {
-		theme: 'light',
+		palette: 'light',
 		background: 'body',
 		hover: 'shade',
 	},
 	lightAlt: {
-		theme: 'light',
+		palette: 'light',
 		background: 'bodyAlt',
 		hover: 'shadeAlt',
 	},
 	dark: {
-		theme: 'dark',
+		palette: 'dark',
 		background: 'body',
 		hover: 'shade',
 	},
 	darkAlt: {
-		theme: 'dark',
+		palette: 'dark',
 		background: 'bodyAlt',
 		hover: 'shadeAlt',
 	},
 	agriculture: {
-		theme: 'dark',
+		palette: 'dark',
 		background: 'shade',
 		hover: 'body',
 	},
@@ -46,20 +46,20 @@ export type NavContainerProps = React.PropsWithChildren<{
 }>;
 
 export function NavContainer({ variant, children }: NavContainerProps) {
-	const { theme, background, hover } = variantMap[variant];
+	const { palette, background, hover } = variantMap[variant];
 	const [menuOpen, open, close] = useTernaryState(false);
 
 	return (
 		<Box
 			data-name="nav-container" // TODO: make this (or something like this) a pattern for providing end users a consistent handle for applying style overrides.
-			palette={theme}
+			palette={palette}
 			background={background}
 			color="text"
 			css={{
 				position: 'relative',
-				[localVars.linkHoverBg]: boxPalette.background[hover],
-				[localVars.linkActiveBg]: boxPalette.background[background],
-				[localVars.bottomBar]: globalVars.accent,
+				[localPaletteVars.linkHoverBg]: boxPalette.background[hover],
+				[localPaletteVars.linkActiveBg]: boxPalette.background[background],
+				[localPaletteVars.bottomBar]: globalPalette.accent,
 			}}
 		>
 			<BottomBar />
@@ -144,7 +144,7 @@ function BottomBar() {
 				bottom: 0,
 				left: 0,
 				right: 0,
-				backgroundColor: localValues.bottomBar,
+				backgroundColor: localPalette.bottomBar,
 			}}
 		/>
 	);

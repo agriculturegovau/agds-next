@@ -10,7 +10,7 @@ export default {
 const Template: ComponentStory<typeof Box> = (args) => <Box {...args} />;
 
 /**
- * The Box with a Light theme applied
+ * The Box with a Light palette applied
  */
 export const LightBox = Template.bind({});
 LightBox.args = {
@@ -22,7 +22,7 @@ LightBox.args = {
 };
 
 /**
- * The Box with a Light theme applied
+ * The Box with a Light palette applied
  */
 export const DarkBox = Template.bind({});
 DarkBox.args = {

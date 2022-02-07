@@ -5,19 +5,19 @@ import React from 'react';
 
 const variantMap = {
 	light: {
-		theme: 'light',
+		palette: 'light',
 		background: 'body',
 	},
 	lightAlt: {
-		theme: 'light',
+		palette: 'light',
 		background: 'bodyAlt',
 	},
 	dark: {
-		theme: 'dark',
+		palette: 'dark',
 		background: 'body',
 	},
 	darkAlt: {
-		theme: 'dark',
+		palette: 'dark',
 		background: 'bodyAlt',
 	},
 } as const;
@@ -30,7 +30,7 @@ export function HeaderContainer({ variant, children }: HeaderContainerProps) {
 	return (
 		<Flex
 			as="header"
-			palette={variantMap[variant].theme}
+			palette={variantMap[variant].palette}
 			background={variantMap[variant].background}
 			color="text"
 			paddingY={{ xs: 1, md: 3 }}
