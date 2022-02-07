@@ -9,7 +9,7 @@ import {
 import { Language } from 'prism-react-renderer';
 import copy from 'clipboard-copy';
 
-import { globalVars, mapSpacing, tokens } from '@ag.ds-next/core';
+import { globalPalette, mapSpacing, tokens } from '@ag.ds-next/core';
 import { Box, Flex } from '@ag.ds-next/box';
 import { Button } from '@ag.ds-next/button';
 
