@@ -13,7 +13,7 @@ export const PictogramCard = ({
 	slug: string;
 	pictogram: string;
 }) => (
-	<Card as="li" clickable shadow>
+	<Card clickable shadow>
 		<Flex
 			alignItems="center"
 			justifyContent="center"

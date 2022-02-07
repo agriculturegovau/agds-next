@@ -55,14 +55,14 @@ export default function Homepage() {
 						</Text>
 					</Stack>
 					<Columns gap={1} flexWrap="wrap" as="ul">
-						<Column columnSpan={{ xs: 12, sm: 6, md: 6, lg: 4, xl: 3 }}>
+						<Column as="li" columnSpan={{ xs: 12, sm: 6, md: 6, lg: 4, xl: 3 }}>
 							<PictogramCard
 								title="Packages"
 								pictogram="packages"
 								slug="/packages"
 							/>
 						</Column>
-						<Column columnSpan={{ xs: 12, sm: 6, md: 6, lg: 4, xl: 3 }}>
+						<Column as="li" columnSpan={{ xs: 12, sm: 6, md: 6, lg: 4, xl: 3 }}>
 							<PictogramCard title="Guides" pictogram="guides" slug="/guides" />
 						</Column>
 					</Columns>
