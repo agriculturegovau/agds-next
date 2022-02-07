@@ -3,7 +3,7 @@ import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { Logo } from '@ag.ds-next/ag-branding';
 import { Box, Divider, Stack } from '@ag.ds-next/box';
-import { tokens } from '@ag.ds-next/core';
+import { Columns, Column } from '@ag.ds-next/columns';
 import { H3 } from '@ag.ds-next/heading';
 import { Text } from '@ag.ds-next/text';
 import { TextLink } from '@ag.ds-next/text-link';
@@ -64,64 +64,59 @@ SimpleFooterDark.args = {
 };
 
 const AgComplexFooter: ComponentStory<typeof Footer> = (args) => {
+	const columnSpanning = { xs: 12, sm: 6, md: 4, lg: 3 } as const;
 	return (
-		<Footer variant={args.variant}>
-			<Box
-				aria-label="footer"
-				css={{
-					display: 'grid',
-					gridGap: '1.5rem',
-
-					[tokens.mediaQuery.min.sm]: {
-						gridTemplateColumns: 'repeat(2, [col-start] 1fr)',
-					},
-
-					[tokens.mediaQuery.min.lg]: {
-						gridTemplateColumns: 'repeat(4, [col-start] 1fr)',
-					},
-				}}
-			>
-				<Stack gap={0.5}>
-					<H3>Section</H3>
-					<LinkList
-						links={[
-							{ href: '#', label: 'Link 1' },
-							{ href: '#', label: 'Link 2' },
-							{ href: '#', label: 'Link 3' },
-						]}
-					/>
-				</Stack>
-				<Stack gap={0.5}>
-					<H3>Section</H3>
-					<LinkList
-						links={[
-							{ href: '#', label: 'Link 1' },
-							{ href: '#', label: 'Link 2' },
-							{ href: '#', label: 'Link 3' },
-						]}
-					/>
-				</Stack>
-				<Stack gap={0.5}>
-					<H3>Section</H3>
-					<LinkList
-						links={[
-							{ href: '#', label: 'Link 1' },
-							{ href: '#', label: 'Link 2' },
-							{ href: '#', label: 'Link 3' },
-						]}
-					/>
-				</Stack>
-				<Stack gap={0.5}>
-					<H3>Section</H3>
-					<LinkList
-						links={[
-							{ href: '#', label: 'Link 1' },
-							{ href: '#', label: 'Link 2' },
-							{ href: '#', label: 'Link 3' },
-						]}
-					/>
-				</Stack>
-			</Box>
+		<Footer variant={args.variant} aria-label="footer">
+			<Columns>
+				<Column columnSpan={columnSpanning}>
+					<Stack gap={0.5}>
+						<H3>Section</H3>
+						<LinkList
+							links={[
+								{ href: '#', label: 'A really long link title' },
+								{ href: '#', label: 'Terms and conditions' },
+								{ href: '#', label: 'Another really long link title' },
+							]}
+						/>
+					</Stack>
+				</Column>
+				<Column columnSpan={columnSpanning}>
+					<Stack gap={0.5}>
+						<H3>Section</H3>
+						<LinkList
+							links={[
+								{ href: '#', label: 'Link 1' },
+								{ href: '#', label: 'Link 2' },
+								{ href: '#', label: 'Link 3' },
+							]}
+						/>
+					</Stack>
+				</Column>
+				<Column columnSpan={columnSpanning}>
+					<Stack gap={0.5}>
+						<H3>Section</H3>
+						<LinkList
+							links={[
+								{ href: '#', label: 'Link 1' },
+								{ href: '#', label: 'Link 2' },
+								{ href: '#', label: 'Link 3' },
+							]}
+						/>
+					</Stack>
+				</Column>
+				<Column columnSpan={columnSpanning}>
+					<Stack gap={0.5}>
+						<H3>Section</H3>
+						<LinkList
+							links={[
+								{ href: '#', label: 'Link 1' },
+								{ href: '#', label: 'Link 2' },
+								{ href: '#', label: 'Link 3' },
+							]}
+						/>
+					</Stack>
+				</Column>
+			</Columns>
 			<Divider />
 			<Text as="p">Footer text</Text>
 
