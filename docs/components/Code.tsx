@@ -9,7 +9,7 @@ import {
 import { Language } from 'prism-react-renderer';
 import copy from 'clipboard-copy';
 
-import { globalVars, tokens } from '@ag.ds-next/core';
+import { globalVars, mapSpacing, tokens } from '@ag.ds-next/core';
 import { Box, Flex } from '@ag.ds-next/box';
 import { Button } from '@ag.ds-next/button';
 
@@ -66,7 +66,7 @@ const LiveCode = withLive((props: unknown) => {
 				boxShadow: `0 0 1px ${globalVars.light.border}`,
 			}}
 		>
-			<Box padding={0.5}>
+			<Box padding={1}>
 				<LivePreview
 					css={{
 						// The mdx codeblock transform wraps the code component in a pre which
@@ -83,6 +83,9 @@ const LiveCode = withLive((props: unknown) => {
 				disabled={live.disabled}
 				onChange={handleChange}
 				css={{
+					'textarea, pre': {
+						padding: `${mapSpacing(1)} !important`,
+					},
 					'& ::selection': {
 						color: globalVars.dark.background.body,
 						backgroundColor: globalVars.dark.foreground.action,
@@ -101,7 +104,7 @@ const LiveCode = withLive((props: unknown) => {
 					{live.error}
 				</Box>
 			) : null}
-			<Flex theme="light" padding={0.5} gap={0.5} justifyContent="flex-end">
+			<Flex theme="light" padding={1} gap={0.5} justifyContent="flex-end">
 				<Button size="sm" variant="secondary" onClick={copyLiveCode}>
 					Copy
 				</Button>
