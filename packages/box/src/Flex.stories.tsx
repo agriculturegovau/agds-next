@@ -25,7 +25,7 @@ Default.args = {
 	border: true,
 	padding: 6,
 	gap: 6,
-	theme: 'light',
+	palette: 'light',
 };
 Default.story = {
 	parameters: {

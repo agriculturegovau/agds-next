@@ -15,7 +15,7 @@ const Template: ComponentStory<typeof Box> = (args) => <Box {...args} />;
 export const LightBox = Template.bind({});
 LightBox.args = {
 	children: 'A light box',
-	theme: 'light',
+	palette: 'light',
 	padding: 2,
 	border: true,
 	rounded: true,
@@ -27,7 +27,7 @@ LightBox.args = {
 export const DarkBox = Template.bind({});
 DarkBox.args = {
 	children: 'Dark box',
-	theme: 'dark',
+	palette: 'dark',
 	background: 'body',
 	color: 'text',
 	paddingX: 2,
@@ -54,7 +54,7 @@ ResponsivePadding.args = {
 function ResponsiveSizeIndicator() {
 	return (
 		<Box
-			theme="dark"
+			palette="dark"
 			color="text"
 			display="flex"
 			flexDirection="row"

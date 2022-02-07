@@ -24,7 +24,13 @@ export default function App({ Component }){
 import { Logo } from '@ag.ds-next/ag-branding';
 
 export const App = () => (
-	<Box theme="light" color="text" background="body" maxWidth={600} padding={2}>
+	<Box
+		palette="light"
+		color="text"
+		background="body"
+		maxWidth={600}
+		padding={2}
+	>
 		<Logo />
 	</Box>
 );

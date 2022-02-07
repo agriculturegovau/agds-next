@@ -13,7 +13,7 @@ export const Footer = ({ variant = 'dark', children }: FooterProps) => {
 			justifyContent="center"
 			background={variantMap[variant].background}
 			color="text"
-			theme={variantMap[variant].theme}
+			palette={variantMap[variant].theme}
 			paddingY={3}
 			css={{
 				borderTop: '4px solid',

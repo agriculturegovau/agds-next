@@ -14,8 +14,8 @@ import {
 	globalVars,
 } from '@ag.ds-next/core';
 
-type ThemeProps = Partial<{
-	theme: BoxPalette;
+type PaletteProps = Partial<{
+	palette: BoxPalette;
 }>;
 
 const foregroundColorMap = {
@@ -243,7 +243,7 @@ export const focusStyles = {
 	},
 };
 
-export type BoxProps = ThemeProps &
+export type BoxProps = PaletteProps &
 	ColorProps &
 	BorderProps &
 	FocusProps &
@@ -253,7 +253,7 @@ export type BoxProps = ThemeProps &
 	PaddingProps;
 
 export function boxStyles({
-	theme,
+	palette,
 	color,
 	background,
 	border,
@@ -295,7 +295,7 @@ export function boxStyles({
 }: BoxProps) {
 	return [
 		css([
-			theme ? boxPalettes[theme] : undefined,
+			palette ? boxPalettes[palette] : undefined,
 
 			// common resets
 			{

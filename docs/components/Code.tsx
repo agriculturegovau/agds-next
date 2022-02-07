@@ -14,7 +14,7 @@ import { Box, Flex } from '@ag.ds-next/box';
 import { Button } from '@ag.ds-next/button';
 
 import { designSystemComponents } from './design-system-components';
-import { agTheme as theme } from './prism-theme';
+import { prismTheme } from './prism-theme';
 
 type CodeProps = {
 	children: string;
@@ -77,7 +77,7 @@ const LiveCode = withLive((props: unknown) => {
 				/>
 			</Box>
 			<LiveEditor
-				theme={theme}
+				theme={prismTheme}
 				code={live.code}
 				language={live.language}
 				disabled={live.disabled}
@@ -104,7 +104,7 @@ const LiveCode = withLive((props: unknown) => {
 					{live.error}
 				</Box>
 			) : null}
-			<Flex theme="light" padding={1} gap={0.5} justifyContent="flex-end">
+			<Flex palette="light" padding={1} gap={0.5} justifyContent="flex-end">
 				<Button size="sm" variant="secondary" onClick={copyLiveCode}>
 					Copy
 				</Button>
@@ -133,8 +133,13 @@ const StaticCode = ({
 				},
 			}}
 		>
-			<StaticEditor code={code} theme={theme} language={language} disabled />
-			<Flex theme="light" padding={0.5} gap={0.5} justifyContent="flex-end">
+			<StaticEditor
+				code={code}
+				theme={prismTheme}
+				language={language}
+				disabled
+			/>
+			<Flex palette="light" padding={1} justifyContent="flex-end">
 				<Button size="sm" onClick={() => copy(code)}>
 					Copy
 				</Button>

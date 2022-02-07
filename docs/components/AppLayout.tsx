@@ -8,7 +8,7 @@ export const AppLayout: React.FC = ({ children }) => {
 		<Flex
 			flexDirection="column"
 			fontFamily="body"
-			theme="light"
+			palette="light"
 			minHeight="100vh"
 		>
 			<SiteHeader />

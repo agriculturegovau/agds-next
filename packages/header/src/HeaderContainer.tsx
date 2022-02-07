@@ -30,7 +30,7 @@ export function HeaderContainer({ variant, children }: HeaderContainerProps) {
 	return (
 		<Flex
 			as="header"
-			theme={variantMap[variant].theme}
+			palette={variantMap[variant].theme}
 			background={variantMap[variant].background}
 			color="text"
 			paddingY={{ xs: 1, md: 3 }}

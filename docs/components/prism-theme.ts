@@ -1,7 +1,7 @@
 import { PrismTheme } from 'prism-react-renderer';
 import { globalVars } from '@ag.ds-next/core';
 
-export const agTheme: PrismTheme = {
+export const prismTheme: PrismTheme = {
 	plain: {
 		color: globalVars.light.foreground.text,
 		backgroundColor: globalVars.light.background.shade,

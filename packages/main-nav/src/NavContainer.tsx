@@ -52,7 +52,7 @@ export function NavContainer({ variant, children }: NavContainerProps) {
 	return (
 		<Box
 			data-name="nav-container" // TODO: make this (or something like this) a pattern for providing end users a consistent handle for applying style overrides.
-			theme={theme}
+			palette={theme}
 			background={background}
 			color="text"
 			css={{
