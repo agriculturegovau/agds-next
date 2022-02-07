@@ -54,7 +54,7 @@ const snippits = [
         { href: '#', label: 'Link 3' },
       ]}
     />
-    <Divider accent />
+    <FooterDivider />
 
     <Text><small>&copy; Commonwealth of Australia</small></Text>
   </Footer>`,
@@ -119,14 +119,14 @@ const snippits = [
         />
       </Stack>
     </Box>
-    <Divider />
+    <FooterDivider />
     <Text as="p">Footer text</Text>
 
     <Box maxWidth="240px">
       <Logo />
     </Box>
 
-    <Divider />
+    <FooterDivider />
     <Text>
       <small>
         &copy; Commonwealth of Australia

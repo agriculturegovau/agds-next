@@ -2,6 +2,8 @@ import { Flex, Stack } from '@ag.ds-next/box';
 import { tokens, globalPalette, boxPalette } from '@ag.ds-next/core';
 import type { PropsWithChildren } from 'react';
 
+import { localPaletteVars } from './localPalette';
+
 const variantMap = {
 	light: {
 		palette: 'light',
@@ -46,14 +48,9 @@ export const Footer = ({ variant = 'dark', children }: FooterProps) => {
 			css={{
 				borderTop: '4px solid',
 				borderColor: variantMap[variant].border,
+				[localPaletteVars.border]: variantMap[variant].border,
 
-				li: {
-					marginLeft: 0,
-				},
-
-				hr: {
-					borderColor: variantMap[variant].border,
-				},
+				li: { marginLeft: 0 },
 			}}
 		>
 			<Stack
