@@ -150,7 +150,7 @@ items={[
   {
     href: "#one",
     label: "Item",
-    children: [
+    items: [
       {
         href: "#two",
         label: "Sub-item",
@@ -161,11 +161,11 @@ items={[
   {
     href: "#four",
     label: "Item",
-    children: [
+    items: [
       {
         href: "#five",
         label: "Sub-item",
-        children: [
+        items: [
           {
             href: "#six",
             label: "Sub-sub-item",
