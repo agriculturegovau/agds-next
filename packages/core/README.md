@@ -4,7 +4,7 @@ description: Core includes a range of styles, variables and code that form the f
 group: Foundations
 ---
 
-Core wraps your application, to enable our CSS variables and reset.
+The `Core` component should wrap your entire application, which will enable our CSS variables reset styles.
 
 It accepts a `theme` prop that enables overwriting of the default theme.
 

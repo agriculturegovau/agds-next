@@ -24,7 +24,7 @@ This package includes the components `<Box />`, `<Flex />` and `<Stack />`.
 
 ## Flex
 
-Same principles as Box, but extended with CSS Flexbox properties
+Same principles as `Box`, but extended with CSS Flexbox properties.
 
 ```jsx live
 <Flex gap={1} justifyContent="space-between" alignItems="flex-start">
