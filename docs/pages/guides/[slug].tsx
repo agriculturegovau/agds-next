@@ -7,6 +7,7 @@ import { Body } from '@ag.ds-next/body';
 import {
 	getGuide,
 	getGuideList,
+	getGuidesBreadcrumbs,
 	getGuideSlugs,
 	Guide,
 } from '../../lib/mdxUtils';
@@ -18,6 +19,7 @@ import { PageLayout } from '../../components/PageLayout';
 export default function Guides({
 	guide,
 	guideLinks,
+	breadcrumbs,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
 	return (
 		<AppLayout>
@@ -28,6 +30,7 @@ export default function Guides({
 					items: guideLinks,
 				}}
 				editPath={`/guides/${guide.slug}.mdx`}
+				breadcrumbs={breadcrumbs}
 			>
 				<Flex as="main" flexDirection="column" gap={1} alignItems="flex-start">
 					<H1>{guide.data.title}</H1>
@@ -44,25 +47,30 @@ export const getStaticProps: GetStaticProps<
 	{
 		guide: Guide;
 		guideLinks: { href: string; label: string }[];
+		breadcrumbs: Awaited<ReturnType<typeof getGuidesBreadcrumbs>>;
 	},
 	{ slug: string }
 > = async ({ params }) => {
-	const guide = params ? await getGuide(params.slug) : undefined;
+	const { slug } = params ?? {};
+	const guide = slug ? await getGuide(slug) : undefined;
 	const guideList = await getGuideList();
 	const guideLinks = guideList.map(({ title, slug }) => ({
 		href: `/guides/${slug}`,
 		label: title,
 	}));
 
-	if (!guide) {
+	if (!(slug && guide)) {
 		return { notFound: true };
 	}
+
+	const breadcrumbs = await getGuidesBreadcrumbs(slug);
 
 	return {
 		props: {
 			guide,
 			guideLinks,
-			slug: params?.slug,
+			breadcrumbs,
+			slug,
 		},
 	};
 };

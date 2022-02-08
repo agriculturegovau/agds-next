@@ -6,6 +6,7 @@ import { Body } from '@ag.ds-next/body';
 
 import {
 	getRelease,
+	getReleaseBreadcrumbs,
 	getReleaseList,
 	getReleaseSlugs,
 	Release,
@@ -18,6 +19,7 @@ import { PageLayout } from '../../components/PageLayout';
 export default function Releases({
 	release,
 	releaseLinks,
+	breadcrumbs,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
 	return (
 		<AppLayout>
@@ -28,6 +30,7 @@ export default function Releases({
 					items: releaseLinks,
 				}}
 				editPath={`/releases/${release.slug}.mdx`}
+				breadcrumbs={breadcrumbs}
 			>
 				<Flex as="main" flexDirection="column" gap={1} alignItems="flex-start">
 					<H1>{release.data.title}</H1>
@@ -56,25 +59,30 @@ export const getStaticProps: GetStaticProps<
 	{
 		release: Release;
 		releaseLinks: { href: string; label: string }[];
+		breadcrumbs: Awaited<ReturnType<typeof getReleaseBreadcrumbs>>;
 	},
 	{ slug: string }
 > = async ({ params }) => {
-	const release = params ? await getRelease(params.slug) : undefined;
+	const { slug } = params ?? {};
+	const release = slug ? await getRelease(slug) : undefined;
 	const releaseList = await getReleaseList();
 	const releaseLinks = releaseList.map(({ title, slug }) => ({
 		href: `/releases/${slug}`,
 		label: title,
 	}));
 
-	if (!release) {
+	if (!(slug && release)) {
 		return { notFound: true };
 	}
+
+	const breadcrumbs = await getReleaseBreadcrumbs(slug);
 
 	return {
 		props: {
 			release,
 			releaseLinks,
-			slug: params?.slug,
+			breadcrumbs,
+			slug,
 		},
 	};
 };
