@@ -1,10 +1,14 @@
 ---
 title: Headings
-description: Headings help to structure content on a page using relative visual prominence.
+description: A primitive typographic component for constrained heading styles. Headings help to structure content on a page using relative visual prominence.
 group: Content
 ---
 
-Our range of supported headings. These use the `fontGrid` function to make the font-size and line-height snap to grid.
+Headings use the `fontGrid` function to make the font-size and line-height snap to grid.
+
+## Levels
+
+Our range of supported headings.
 
 ```jsx live
 <Stack gap={1}>
@@ -17,9 +21,9 @@ Our range of supported headings. These use the `fontGrid` function to make the f
 </Stack>
 ```
 
-## Sizes
+## Semantic headings
 
-If you wish to use a pair a different font-size with a specific heading for semantic reason you can use the `Heading` component.
+If you wish to use a pair a different heading size with a different HTML element for semantic reason, you can use the `Heading` component and use the `as` property to change the HTML element that will be rendered.
 
 ```jsx live
 <Stack gap={1}>
