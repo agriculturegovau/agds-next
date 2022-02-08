@@ -1,16 +1,8 @@
 ---
 title: Icon
-description:
+description: The Agriculture Design System supports the use of universal system icons. The icon component is used to apply our set of universal icons to more complex components of the system.
 group: Foundations
 ---
-
-Make use of our Design System's icon library, anywhere in your app.
-
-## Usage
-
-```js
-import { Icon } from '@ag.ds-next/icon';
-```
 
 ```jsx live
 <Stack gap={1} flexDirection="row" margin={1}>
@@ -21,8 +13,6 @@ import { Icon } from '@ag.ds-next/icon';
 </Stack>
 ```
 
-## All icons
+See the full list of available icons [here](https://steelthreads.github.io/agds-next/storybook/index.html?path=/story/foundations-icon--all-icons).
 
-See the full list of available icons. See something is missing? Get in touch and we'll add it!
-
-<IconExamples />
+Do you have a user need for new or missing icon? Get in touch to discuss an icon contribution.

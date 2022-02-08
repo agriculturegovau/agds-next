@@ -14,9 +14,9 @@ We use semantic naming so that all colours labeled as foreground colours in a th
 
 ### Tips
 
-- Do pair foreground and background colours.
-- Don't mix light and dark variables.
-- Don't pair foreground with foreground or background with background.
+- **Do** pair foreground and background colours.
+- **Don't** mix light and dark variables.
+- **Don't** pair foreground with foreground or background with background.
 
 ```jsx live
 <Flex flexDirection="column" gap={1}>
@@ -63,6 +63,15 @@ We use semantic naming so that all colours labeled as foreground colours in a th
 ```
 
 ## Typography
+
+A typographic scale was used to create a set of font-size and line-height values which have been designed for legibility and can be easily be implemented by designers or developers with a predictable output.
+
+Using the design system's typography values means any object containing text is more likely to align with another element. This appearance of a baseline grid is created by automatically rounding the line-heights to the nearest grid value 4px, then converting them back to a unit-less value.
+
+To ensure consistency with other components in the system:
+
+- Designers can use font-size and line-height values from the typographic scale.
+- Developers can use the `fontSize` and `lineHeight` props available on typographic components which use of the `fontGrid` function.
 
 ```jsx live
 <Flex palette="light" background="body" gap={1}>
