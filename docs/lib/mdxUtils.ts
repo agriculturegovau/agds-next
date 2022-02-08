@@ -213,6 +213,23 @@ export function getReleaseList() {
 	);
 }
 
+function releaseNavMetaData(
+	slug: string,
+	data: Awaited<ReturnType<typeof getMarkdownData>>['data']
+) {
+	return {
+		title: (data?.title ?? slug) as string,
+		slug,
+	};
+}
+
+export function getReleaseBreadcrumbs(slug: string) {
+	return getMarkdownData(releasePath(slug)).then(({ data }) => {
+		const meta = releaseNavMetaData(slug, data);
+		return [{ href: '/releases', label: 'Releases' }, { label: meta.title }];
+	});
+}
+
 export type Release = Awaited<ReturnType<typeof getRelease>>;
 export type ReleaseList = Awaited<ReturnType<typeof getReleaseList>>;
 
@@ -256,6 +273,23 @@ export function getGuideList() {
 			)
 		)
 	);
+}
+
+function guideNavMetaData(
+	slug: string,
+	data: Awaited<ReturnType<typeof getMarkdownData>>['data']
+) {
+	return {
+		title: (data?.title ?? slug) as string,
+		slug,
+	};
+}
+
+export function getGuidesBreadcrumbs(slug: string) {
+	return getMarkdownData(guidePath(slug)).then(({ data }) => {
+		const meta = guideNavMetaData(slug, data);
+		return [{ href: '/guides', label: 'Guides' }, { label: meta.title }];
+	});
 }
 
 export type Guide = Awaited<ReturnType<typeof getGuide>>;
