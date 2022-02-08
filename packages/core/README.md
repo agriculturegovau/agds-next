@@ -15,7 +15,7 @@ We use semantic naming so that all colours labeled as foreground colours in a th
 ### Tips
 
 - Do pair foreground and background colours.
-- Don't Mix light and dark variables.
+- Don't mix light and dark variables.
 - Don't pair foreground with foreground or background with background.
 
 ```jsx live
