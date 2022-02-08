@@ -140,7 +140,7 @@ const StaticCode = ({
 				disabled
 			/>
 			<Flex palette="light" padding={1} justifyContent="flex-end">
-				<Button size="sm" onClick={() => copy(code)}>
+				<Button size="sm" variant="secondary" onClick={() => copy(code)}>
 					Copy
 				</Button>
 			</Flex>
