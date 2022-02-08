@@ -2,10 +2,14 @@ import { ReactNode } from 'react';
 import { Box } from '@ag.ds-next/box';
 import { boxPalette, useLinkComponent } from '@ag.ds-next/core';
 
+import { visuallyHiddenStyles } from './utils';
+
 export const SideNavTitle = ({
+	isCurrentPage,
 	href,
 	children,
 }: {
+	isCurrentPage?: boolean;
 	href: string;
 	children: ReactNode;
 }) => {
@@ -31,6 +35,9 @@ export const SideNavTitle = ({
 			}}
 		>
 			{children}
+			{isCurrentPage ? (
+				<span css={visuallyHiddenStyles}> Current page</span>
+			) : null}
 		</Box>
 	);
 };

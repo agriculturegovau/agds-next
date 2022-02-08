@@ -22,7 +22,9 @@ export function SideNav({
 }: SideNavProps) {
 	return (
 		<SideNavContainer variant={variant} {...props}>
-			<SideNavTitle href={titleLink}>{title}</SideNavTitle>
+			<SideNavTitle isCurrentPage={activePath === titleLink} href={titleLink}>
+				{title}
+			</SideNavTitle>
 			<LinkList activePath={activePath} items={items} />
 		</SideNavContainer>
 	);
@@ -45,7 +47,12 @@ function LinkList({ activePath, items }: LinkListProps) {
 	return (
 		<SideNavGroup>
 			{items.map(({ items: subItems, ...item }, index) => (
-				<SideNavLink key={index} active={item.href === bestMatch} {...item}>
+				<SideNavLink
+					key={index}
+					active={item.href === bestMatch}
+					isCurrentPage={item.href === activePath}
+					{...item}
+				>
 					{subItems?.length ? (
 						<LinkList items={subItems} activePath={activePath} />
 					) : null}
