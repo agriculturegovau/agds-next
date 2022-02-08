@@ -64,6 +64,12 @@ We use semantic naming so that all colours labeled as foreground colours in a th
 
 ## Typography
 
+A typographic scale was used to create a set of font-size and line-height values which have been designed for legibility and can be easily be implemented by designers or developers with a predictable output.
+
+Using the design system's typography values means any object containing text is more likely to align with another element. This appearance of a baseline grid is created by automatically rounding the line-heights to the nearest grid value 4px, then converting them back to a unit-less value.
+
+To ensure consistency with other components in the system designers and developers can use font size and line height values from the typographic scale.
+
 ```jsx live
 <Flex palette="light" background="body" gap={1}>
 	<Flex flexDirection="column" gap={1}>
