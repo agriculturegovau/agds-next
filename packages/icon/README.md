@@ -15,4 +15,4 @@ group: Foundations
 
 See the full list of available icons [here](https://steelthreads.github.io/agds-next/storybook/index.html?path=/story/foundations-icon--all-icons).
 
-See something is missing? Get in touch and we'll add it!
+Do you have a user need for new or missing icon? Get in touch to discuss an icon contribution.
