@@ -15,8 +15,8 @@
 	},
 	"devDependencies": {
 		"@ag.ds-next/box": "*",
-		"@ag.ds-next/core": "*",
 		"@ag.ds-next/columns": "*",
+		"@ag.ds-next/core": "*",
 		"@ag.ds-next/heading": "*",
 		"@ag.ds-next/text": "*",
 		"@emotion/react": "^11.7.0",
