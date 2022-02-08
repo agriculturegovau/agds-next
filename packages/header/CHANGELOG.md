@@ -1,5 +1,40 @@
 # @ag.ds-next/header
 
+## 3.0.0
+
+### Minor Changes
+
+- d860253: Compose with Columns. Add rightContent slot.
+
+### Patch Changes
+
+- 56c2179: Layout changes from review
+- 4d2c4a5: Rename background.page to body
+- fd181c9: Swapped the naming of theme and palette to better reflect expectations
+
+  `theme` now means the global set of colours which are applied to the a site as a whole. Eg. Gold theme or Agriculture theme.
+
+  `palette` (aka. `boxPalette`) is the set of colours to be applied within a Box or related component. Eg. `<Box palette="dark" />`
+
+- e220b64: Tweak responsive logic for text sizes
+- a7ec30f: Adjust logo sizing for small breakpoints
+- Updated dependencies [c995f6e]
+- Updated dependencies [3194f79]
+- Updated dependencies [bd3a1bb]
+- Updated dependencies [4d2c4a5]
+- Updated dependencies [9986517]
+- Updated dependencies [ef5d708]
+- Updated dependencies [d860253]
+- Updated dependencies [0d4cf72]
+- Updated dependencies [fd181c9]
+- Updated dependencies [e1c6866]
+- Updated dependencies [c995f6e]
+- Updated dependencies [5517fac]
+  - @ag.ds-next/box@3.0.0
+  - @ag.ds-next/core@2.0.0
+  - @ag.ds-next/heading@3.0.0
+  - @ag.ds-next/text@3.0.0
+
 ## 2.0.0
 
 ### Patch Changes
