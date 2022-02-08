@@ -8,7 +8,7 @@ import { localPalette, visuallyHiddenStyles } from './utils';
 
 export type SideNavLinkType = {
 	active?: boolean;
-	activePath?: string;
+	isCurrentPage?: boolean;
 	children?: ReactNode;
 	href: string;
 	label: string | JSX.Element;
@@ -16,14 +16,13 @@ export type SideNavLinkType = {
 
 export const SideNavLink = ({
 	active,
-	activePath,
+	isCurrentPage,
 	children,
 	href,
 	label,
 }: SideNavLinkType) => {
 	const depth = useLinkListDepth();
 	const Link = useLinkComponent();
-	const isGroupActive = activePath?.includes(href);
 
 	return (
 		<Box
@@ -40,12 +39,11 @@ export const SideNavLink = ({
 			}
 		>
 			<Box
-				fontWeight={isGroupActive ? 'bold' : 'normal'}
+				fontWeight={active ? 'bold' : 'normal'}
 				css={{
 					' a': {
 						...fontGrid('xs', 'default'),
-						color:
-							boxPalette[isGroupActive ? 'foregroundText' : 'foregroundMuted'],
+						color: boxPalette[active ? 'foregroundText' : 'foregroundMuted'],
 						textDecoration: 'none',
 
 						paddingTop: mapSpacing(1),
@@ -82,7 +80,7 @@ export const SideNavLink = ({
 			>
 				<Link href={href}>
 					{label}
-					{active ? (
+					{isCurrentPage ? (
 						<span css={visuallyHiddenStyles}> Current page</span>
 					) : null}
 				</Link>

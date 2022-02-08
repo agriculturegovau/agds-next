@@ -5,11 +5,11 @@ import { boxPalette, useLinkComponent } from '@ag.ds-next/core';
 import { visuallyHiddenStyles } from './utils';
 
 export const SideNavTitle = ({
-	activePath,
+	isCurrentPage,
 	href,
 	children,
 }: {
-	activePath?: string;
+	isCurrentPage?: boolean;
 	href: string;
 	children: ReactNode;
 }) => {
@@ -35,7 +35,7 @@ export const SideNavTitle = ({
 			}}
 		>
 			{children}
-			{href === activePath ? (
+			{isCurrentPage ? (
 				<span css={visuallyHiddenStyles}> Current page</span>
 			) : null}
 		</Box>
