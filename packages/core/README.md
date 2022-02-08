@@ -4,15 +4,33 @@ description: Core includes a range of styles, variables and code that form the f
 group: Foundations
 ---
 
-## Colour
+The `Core` component should wrap your entire application, which will enable our CSS variables reset styles.
+
+It accepts a `theme` prop that enables overwriting of the default theme.
+
+```jsx
+import { Core } from '@ag.ds-next/core';
+
+export const App = () => (
+	<Core theme={theme} linkComponent={LinkComponent}>
+		<MyApplication />
+	</Core>
+);
+```
+
+## Design Tokens
+
+Core includes a range of styles, variables and code that form the foundation of how the Design System works, including colour, typography and spacing.
+
+### Colour
 
 The colour palette is designed and tested to provide colour pairings that pass accessibility contrast ratios while still being easy to implement. This means that designers and developers using the system do not need to be concerned about if a colour will pass WCAG requirements in a particular circumstance.
 
-### Colour names imply their use
+#### Colour names imply their use
 
 We use semantic naming so that all colours labeled as foreground colours in a theme. These colours are manually tested to pass accessibility contrast ratios when used with all background colours within a theme and vice versa.
 
-### Tips
+#### Tips
 
 - **Do** pair foreground and background colours.
 - **Don't** mix light and dark variables.
@@ -62,7 +80,7 @@ We use semantic naming so that all colours labeled as foreground colours in a th
 </Flex>
 ```
 
-## Typography
+### Typography
 
 A typographic scale was used to create a set of font-size and line-height values which have been designed for legibility and can be easily be implemented by designers or developers with a predictable output.
 

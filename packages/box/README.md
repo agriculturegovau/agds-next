@@ -1,10 +1,12 @@
 ---
 title: Box
-description: A primitive layout component
+description: A set of primitive layout components
 group: Foundations
 ---
 
 This package includes the components `<Box />`, `<Flex />` and `<Stack />`.
+
+## Box
 
 ```jsx live
 <Box
@@ -13,9 +15,33 @@ This package includes the components `<Box />`, `<Flex />` and `<Stack />`.
 	color="text"
 	fontFamily="body"
 	border
-	padding={4}
+	padding={{ xs: 1, xl: 4 }}
 	rounded
 >
 	A Box example
 </Box>
+```
+
+## Flex
+
+Same principles as `Box`, but extended with CSS Flexbox properties.
+
+```jsx live
+<Flex gap={1} justifyContent="space-between" alignItems="flex-start">
+	<Box background="shade" padding={1} />
+	<Box background="shade" height="64px" padding={1} />
+	<Box background="shade" padding={1} />
+</Flex>
+```
+
+## Stack
+
+Use to distribute items vertically with even spacing.
+
+```jsx live
+<Stack gap={1}>
+	<Box background="shade" padding={1} />
+	<Box background="shade" padding={1} />
+	<Box background="shade" padding={1} />
+</Stack>
 ```
