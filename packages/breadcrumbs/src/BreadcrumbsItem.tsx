@@ -1,7 +1,6 @@
 import { PropsWithChildren } from 'react';
 import { Box } from '@ag.ds-next/box';
-import { Text } from '@ag.ds-next/text';
-import { TextLink } from '@ag.ds-next/text-link';
+import { Text, TextLink } from '@ag.ds-next/text';
 
 export const BreadcrumbsItem = (
 	props: PropsWithChildren<{

@@ -1,4 +1,0 @@
----
-title: TextLink
-group: Foundations
----

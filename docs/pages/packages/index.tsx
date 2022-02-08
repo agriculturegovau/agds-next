@@ -16,7 +16,7 @@ import { PkgCardList } from '../../components/PkgCardList';
 import { Stack } from '@ag.ds-next/box';
 import { Body } from '@ag.ds-next/body';
 import { H2 } from '@ag.ds-next/heading';
-import { TextLink } from '@ag.ds-next/text-link';
+import { TextLink } from '@ag.ds-next/text';
 
 type StaticProps = Awaited<ReturnType<typeof getStaticProps>>['props'];
 
