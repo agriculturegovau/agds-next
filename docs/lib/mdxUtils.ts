@@ -206,7 +206,7 @@ export function getReleaseList() {
 			slugs.map((slug) =>
 				getMarkdownData(releasePath(slug)).then(({ data }) => ({
 					title: (data?.title ?? slug) as string,
-					description: data.description as string,
+					description: (data.description ?? null) as string | null,
 					slug,
 				}))
 			)

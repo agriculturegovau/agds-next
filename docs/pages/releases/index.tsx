@@ -43,7 +43,7 @@ export default function ReleasesHome({
 										<h3>
 											<CardLink href={href}>{label}</CardLink>
 										</h3>
-										<p>{description}</p>
+										{description ? <p>{description}</p> : null}
 									</Body>
 								</CardInner>
 							</Card>
