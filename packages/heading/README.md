@@ -11,7 +11,7 @@ Headings use the `fontGrid` function to make the font-size and line-height snap 
 Our range of supported headings.
 
 ```jsx live
-<Stack gap={1}>
+<Stack>
 	<H1>Heading 1</H1>
 	<H2>Heading 2</H2>
 	<H3>Heading 3</H3>
@@ -26,7 +26,7 @@ Our range of supported headings.
 If you wish to use a pair a different heading size with a different HTML element for semantic reason, you can use the `Heading` component and use the `as` property to change the HTML element that will be rendered.
 
 ```jsx live
-<Stack gap={1}>
+<Stack>
 	<Heading as="h3" fontSize="xxxl">
 		Heading 3 (xxxl)
 	</Heading>

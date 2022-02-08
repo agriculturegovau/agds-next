@@ -18,25 +18,25 @@ Basic.args = {};
 export const Sizes: ComponentStory<typeof Text> = (args) => (
 	<div>
 		<Text as="p" {...args} fontSize="xs">
-			This is some text - xs.
+			This is some text (xs)
 		</Text>
 		<Text as="p" {...args} fontSize="sm">
-			This is some text - sm.
+			This is some text (sm)
 		</Text>
 		<Text as="p" {...args} fontSize="md">
-			This is some text - md.
+			This is some text (md)
 		</Text>
 		<Text as="p" {...args} fontSize="lg">
-			This is some text - lg.
+			This is some text (lg)
 		</Text>
 		<Text as="p" {...args} fontSize="xl">
-			This is some text - xl.
+			This is some text (xl)
 		</Text>
 		<Text as="p" {...args} fontSize="xxl">
-			This is some text - xxl.
+			This is some text (xxl)
 		</Text>
 		<Text as="p" {...args} fontSize="xxxl">
-			This is some text - xxxl.
+			This is some text (xxxl)
 		</Text>
 	</div>
 );
