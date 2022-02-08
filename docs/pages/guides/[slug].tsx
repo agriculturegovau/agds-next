@@ -14,6 +14,7 @@ import {
 
 import { mdxComponents } from '../../components/utils';
 import { AppLayout } from '../../components/AppLayout';
+import { DocumentTitle } from '../../components/DocumentTitle';
 import { PageLayout } from '../../components/PageLayout';
 
 export default function Guides({
@@ -22,24 +23,32 @@ export default function Guides({
 	breadcrumbs,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
 	return (
-		<AppLayout>
-			<PageLayout
-				sideNav={{
-					title: 'Guides',
-					titleLink: '/guides',
-					items: guideLinks,
-				}}
-				editPath={`/guides/${guide.slug}.mdx`}
-				breadcrumbs={breadcrumbs}
-			>
-				<Flex as="main" flexDirection="column" gap={1} alignItems="flex-start">
-					<H1>{guide.data.title}</H1>
-					<Body>
-						<MDXRemote {...guide.source} components={mdxComponents} />
-					</Body>
-				</Flex>
-			</PageLayout>
-		</AppLayout>
+		<>
+			<DocumentTitle title={guide.title} />
+			<AppLayout>
+				<PageLayout
+					sideNav={{
+						title: 'Guides',
+						titleLink: '/guides',
+						items: guideLinks,
+					}}
+					editPath={`/guides/${guide.slug}.mdx`}
+					breadcrumbs={breadcrumbs}
+				>
+					<Flex
+						as="main"
+						flexDirection="column"
+						gap={1}
+						alignItems="flex-start"
+					>
+						<H1>{guide.data.title}</H1>
+						<Body>
+							<MDXRemote {...guide.source} components={mdxComponents} />
+						</Body>
+					</Flex>
+				</PageLayout>
+			</AppLayout>
+		</>
 	);
 }
 

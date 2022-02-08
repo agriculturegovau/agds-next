@@ -9,26 +9,30 @@ import {
 } from '../../lib/mdxUtils';
 import { mdxComponents } from '../../components/utils';
 import { AppLayout } from '../../components/AppLayout';
+import { DocumentTitle } from '../../components/DocumentTitle';
 import { PageLayout } from '../../components/PageLayout';
 
 type StaticProps = Awaited<ReturnType<typeof getStaticProps>>['props'];
 
 export default function GuidesHome({ source, guideLinks }: StaticProps) {
 	return (
-		<AppLayout>
-			<PageLayout
-				sideNav={{
-					title: 'Guides',
-					titleLink: '/guides',
-					items: guideLinks,
-				}}
-				editPath="/guides/index.mdx"
-			>
-				<Body>
-					<MDXRemote {...source} components={mdxComponents} />
-				</Body>
-			</PageLayout>
-		</AppLayout>
+		<>
+			<DocumentTitle title="Guides" />
+			<AppLayout>
+				<PageLayout
+					sideNav={{
+						title: 'Guides',
+						titleLink: '/guides',
+						items: guideLinks,
+					}}
+					editPath="/guides/index.mdx"
+				>
+					<Body>
+						<MDXRemote {...source} components={mdxComponents} />
+					</Body>
+				</PageLayout>
+			</AppLayout>
+		</>
 	);
 }
 

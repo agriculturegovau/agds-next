@@ -10,6 +10,7 @@ import {
 	getPkgNavLinks,
 	getGroupBreadCrumbs,
 } from '../../../lib/mdxUtils';
+import { DocumentTitle } from '../../../components/DocumentTitle';
 
 export default function PackagesHome({
 	group,
@@ -18,19 +19,22 @@ export default function PackagesHome({
 	breadcrumbs,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
 	return (
-		<AppLayout>
-			<PageLayout
-				sideNav={{
-					title: 'Packages',
-					titleLink: '/packages',
-					items: navLinks,
-				}}
-				breadcrumbs={breadcrumbs}
-			>
-				<H1>{group.title}</H1>
-				<PkgCardList items={pkgList} />
-			</PageLayout>
-		</AppLayout>
+		<>
+			<DocumentTitle title={group.title} />
+			<AppLayout>
+				<PageLayout
+					sideNav={{
+						title: 'Packages',
+						titleLink: '/packages',
+						items: navLinks,
+					}}
+					breadcrumbs={breadcrumbs}
+				>
+					<H1>{group.title}</H1>
+					<PkgCardList items={pkgList} />
+				</PageLayout>
+			</AppLayout>
+		</>
 	);
 }
 

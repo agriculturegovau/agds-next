@@ -10,6 +10,7 @@ import {
 } from '../../lib/mdxUtils';
 import { mdxComponents } from '../../components/utils';
 import { AppLayout } from '../../components/AppLayout';
+import { DocumentTitle } from '../../components/DocumentTitle';
 import { PageLayout } from '../../components/PageLayout';
 import { PkgCardList } from '../../components/PkgCardList';
 
@@ -27,32 +28,35 @@ export default function PackagesHome({
 	source,
 }: StaticProps) {
 	return (
-		<AppLayout>
-			<PageLayout
-				sideNav={{
-					title: 'Packages',
-					titleLink: '/packages',
-					items: navLinks,
-				}}
-				editPath="/packages/README.md"
-			>
-				<Body>
-					<MDXRemote {...source} components={mdxComponents} />
-				</Body>
-				<Stack gap={2}>
-					{groupList.map((group) => (
-						<Stack gap={1} key={group.slug}>
-							<TextLink href={`/packages/${group.slug}`}>
-								<H2 color="inherit">{group.title}</H2>
-							</TextLink>
-							<PkgCardList
-								items={pkgList.filter((p) => p.group === group.slug)}
-							/>
-						</Stack>
-					))}
-				</Stack>
-			</PageLayout>
-		</AppLayout>
+		<>
+			<DocumentTitle title="Packages" />
+			<AppLayout>
+				<PageLayout
+					sideNav={{
+						title: 'Packages',
+						titleLink: '/packages',
+						items: navLinks,
+					}}
+					editPath="/packages/README.md"
+				>
+					<Body>
+						<MDXRemote {...source} components={mdxComponents} />
+					</Body>
+					<Stack gap={2}>
+						{groupList.map((group) => (
+							<Stack gap={1} key={group.slug}>
+								<TextLink href={`/packages/${group.slug}`}>
+									<H2 color="inherit">{group.title}</H2>
+								</TextLink>
+								<PkgCardList
+									items={pkgList.filter((p) => p.group === group.slug)}
+								/>
+							</Stack>
+						))}
+					</Stack>
+				</PageLayout>
+			</AppLayout>
+		</>
 	);
 }
 
