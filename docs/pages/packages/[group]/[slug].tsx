@@ -15,6 +15,7 @@ import {
 
 import { mdxComponents } from '../../../components/utils';
 import { AppLayout } from '../../../components/AppLayout';
+import { DocumentTitle } from '../../../components/DocumentTitle';
 import { PageLayout } from '../../../components/PageLayout';
 
 export default function Packages({
@@ -23,46 +24,49 @@ export default function Packages({
 	breadcrumbs,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
 	return (
-		<AppLayout>
-			<PageLayout
-				sideNav={{
-					title: 'Packages',
-					titleLink: '/packages',
-					items: navLinks,
-				}}
-				editPath={`/packages/${pkg.slug}/README.md`}
-				breadcrumbs={breadcrumbs}
-			>
-				<Stack as="main" gap={1}>
-					<Flex flexDirection="column" gap={0.25}>
-						<Text fontSize="sm" color="muted">
-							v{pkg.version}
-						</Text>
-						<H1>{pkg.data.title}</H1>
-						{pkg.data.description && (
-							<Text fontSize="lg">{pkg.data.description}</Text>
-						)}
-					</Flex>
-					<Box
-						palette="light"
-						rounded
-						background="shade"
-						paddingX={1}
-						fontSize="sm"
-						color="text"
-					>
-						<pre>
-							<code>
-								yarn add {pkg.name}@{pkg.version}
-							</code>
-						</pre>
-					</Box>
-					<Body>
-						<MDXRemote {...pkg.source} components={mdxComponents} />
-					</Body>
-				</Stack>
-			</PageLayout>
-		</AppLayout>
+		<>
+			<DocumentTitle title={pkg.title} />
+			<AppLayout>
+				<PageLayout
+					sideNav={{
+						title: 'Packages',
+						titleLink: '/packages',
+						items: navLinks,
+					}}
+					editPath={`/packages/${pkg.slug}/README.md`}
+					breadcrumbs={breadcrumbs}
+				>
+					<Stack as="main" gap={1}>
+						<Flex flexDirection="column" gap={0.25}>
+							<Text fontSize="sm" color="muted">
+								v{pkg.version}
+							</Text>
+							<H1>{pkg.data.title}</H1>
+							{pkg.data.description && (
+								<Text fontSize="lg">{pkg.data.description}</Text>
+							)}
+						</Flex>
+						<Box
+							palette="light"
+							rounded
+							background="shade"
+							paddingX={1}
+							fontSize="sm"
+							color="text"
+						>
+							<pre>
+								<code>
+									yarn add {pkg.name}@{pkg.version}
+								</code>
+							</pre>
+						</Box>
+						<Body>
+							<MDXRemote {...pkg.source} components={mdxComponents} />
+						</Body>
+					</Stack>
+				</PageLayout>
+			</AppLayout>
+		</>
 	);
 }
 

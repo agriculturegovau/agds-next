@@ -14,6 +14,7 @@ import {
 
 import { mdxComponents } from '../../components/utils';
 import { AppLayout } from '../../components/AppLayout';
+import { DocumentTitle } from '../../components/DocumentTitle';
 import { PageLayout } from '../../components/PageLayout';
 
 export default function Releases({
@@ -22,36 +23,44 @@ export default function Releases({
 	breadcrumbs,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
 	return (
-		<AppLayout>
-			<PageLayout
-				sideNav={{
-					title: 'Releases',
-					titleLink: '/releases',
-					items: releaseLinks,
-				}}
-				editPath={`/releases/${release.slug}.mdx`}
-				breadcrumbs={breadcrumbs}
-			>
-				<Flex as="main" flexDirection="column" gap={1} alignItems="flex-start">
-					<H1>{release.data.title}</H1>
-					{release.data.type && (
-						<Box
-							background="shade"
-							paddingX={0.25}
-							border
-							rounded
-							fontSize="xs"
-							display="inline-block"
-						>
-							{release.data.type}
-						</Box>
-					)}
-					<Body>
-						<MDXRemote {...release.source} components={mdxComponents} />
-					</Body>
-				</Flex>
-			</PageLayout>
-		</AppLayout>
+		<>
+			<DocumentTitle title={release.data.title} />
+			<AppLayout>
+				<PageLayout
+					sideNav={{
+						title: 'Releases',
+						titleLink: '/releases',
+						items: releaseLinks,
+					}}
+					editPath={`/releases/${release.slug}.mdx`}
+					breadcrumbs={breadcrumbs}
+				>
+					<Flex
+						as="main"
+						flexDirection="column"
+						gap={1}
+						alignItems="flex-start"
+					>
+						<H1>{release.data.title}</H1>
+						{release.data.type && (
+							<Box
+								background="shade"
+								paddingX={0.25}
+								border
+								rounded
+								fontSize="xs"
+								display="inline-block"
+							>
+								{release.data.type}
+							</Box>
+						)}
+						<Body>
+							<MDXRemote {...release.source} components={mdxComponents} />
+						</Body>
+					</Flex>
+				</PageLayout>
+			</AppLayout>
+		</>
 	);
 }
 
