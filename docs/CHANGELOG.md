@@ -1,5 +1,70 @@
 # @ag.ds-next/docs
 
+## 0.1.2
+
+### Patch Changes
+
+- 2d1576b: Added new `Columns` component
+- 56c2179: Layout changes from review
+- 4d2c4a5: Rename background.page to body
+- c4de3f7: Add Guides section
+- ef5d708: Move TextLink to Text
+- fd181c9: Swapped the naming of theme and palette to better reflect expectations
+
+  `theme` now means the global set of colours which are applied to the a site as a whole. Eg. Gold theme or Agriculture theme.
+
+  `palette` (aka. `boxPalette`) is the set of colours to be applied within a Box or related component. Eg. `<Box palette="dark" />`
+
+- 21aa449: Use Columns component for page layout
+- b76fddb: Remove usage of NextImage to fix builds
+- 2b2ae0b: Improve information architecture
+- Updated dependencies [54e2d1d]
+- Updated dependencies [c995f6e]
+- Updated dependencies [bd69a75]
+- Updated dependencies [d860253]
+- Updated dependencies [439f22c]
+- Updated dependencies [2d1576b]
+- Updated dependencies [3194f79]
+- Updated dependencies [bd3a1bb]
+- Updated dependencies [56c2179]
+- Updated dependencies [4d2c4a5]
+- Updated dependencies [744d620]
+- Updated dependencies [c995f6e]
+- Updated dependencies [9986517]
+- Updated dependencies [ef5d708]
+- Updated dependencies [d860253]
+- Updated dependencies [9336772]
+- Updated dependencies [ea3087e]
+- Updated dependencies [6f7ad65]
+- Updated dependencies [e220b64]
+- Updated dependencies [0d4cf72]
+- Updated dependencies [fd181c9]
+- Updated dependencies [e1c6866]
+- Updated dependencies [21aa449]
+- Updated dependencies [e220b64]
+- Updated dependencies [dfc68f0]
+- Updated dependencies [c995f6e]
+- Updated dependencies [a7ec30f]
+- Updated dependencies [889e832]
+- Updated dependencies [5517fac]
+  - @ag.ds-next/footer@3.0.0
+  - @ag.ds-next/body@3.0.0
+  - @ag.ds-next/box@3.0.0
+  - @ag.ds-next/breadcrumbs@3.0.0
+  - @ag.ds-next/side-nav@3.0.0
+  - @ag.ds-next/header@3.0.0
+  - @ag.ds-next/icon@3.0.0
+  - @ag.ds-next/columns@2.0.0
+  - @ag.ds-next/core@2.0.0
+  - @ag.ds-next/heading@3.0.0
+  - @ag.ds-next/text@3.0.0
+  - @ag.ds-next/ag-branding@3.0.0
+  - @ag.ds-next/main-nav@3.0.0
+  - @ag.ds-next/button@3.0.0
+  - @ag.ds-next/link-list@3.0.0
+  - @ag.ds-next/card@1.0.0
+  - @ag.ds-next/content@3.0.0
+
 ## 0.1.1
 
 ### Patch Changes
