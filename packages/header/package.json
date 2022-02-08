@@ -6,6 +6,7 @@
 	"license": "MIT",
 	"peerDependencies": {
 		"@ag.ds-next/box": "3.0.0",
+		"@ag.ds-next/columns": "2.0.0",
 		"@ag.ds-next/core": "2.0.0",
 		"@ag.ds-next/heading": "3.0.0",
 		"@ag.ds-next/text": "3.0.0",
@@ -14,6 +15,7 @@
 	},
 	"devDependencies": {
 		"@ag.ds-next/box": "*",
+		"@ag.ds-next/columns": "*",
 		"@ag.ds-next/core": "*",
 		"@ag.ds-next/heading": "*",
 		"@ag.ds-next/text": "*",
