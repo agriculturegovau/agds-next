@@ -1,7 +1,7 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { Input } from './Input';
-import { Flex } from '@ag.ds-next/box';
+import { Box, Stack } from '@ag.ds-next/box';
 import { Field } from '@ag.ds-next/field';
 
 export default {
@@ -10,76 +10,100 @@ export default {
 } as ComponentMeta<typeof Input>;
 
 export const LightInput: ComponentStory<typeof Input> = (args) => (
-	<Flex background="body" palette="light">
+	<Box background="body" palette="light">
 		<Field label="Light Input">
 			<Input {...args} />
 		</Field>
-	</Flex>
+	</Box>
 );
 LightInput.args = {};
 
 export const DarkInput: ComponentStory<typeof Input> = (args) => (
-	<Flex background="body" palette="dark" padding={1}>
+	<Box background="body" palette="dark" padding={1}>
 		<Field label="Dark Input">
 			<Input {...args} />
 		</Field>
-	</Flex>
+	</Box>
 );
 DarkInput.args = {};
 
-export const InputWithFieldHint: ComponentStory<typeof Input> = (args) => (
-	<Flex background="body" palette="light">
+export const DisabledInput: ComponentStory<typeof Input> = (args) => (
+	<Box background="body" palette="light">
+		<Field label="Disabled Input">
+			<Input {...args} />
+		</Field>
+	</Box>
+);
+DisabledInput.args = {
+	disabled: true,
+};
+
+export const InvalidInput: ComponentStory<typeof Input> = (args) => (
+	<Box background="body" palette="light">
+		<Field
+			label="Email"
+			errorMessage="Enter an email address in the correct format, like name@example.com"
+		>
+			<Input {...args} />
+		</Field>
+	</Box>
+);
+InvalidInput.args = {
+	type: 'email',
+};
+
+export const InputHint: ComponentStory<typeof Input> = (args) => (
+	<Box background="body" palette="light">
 		<Field
 			label="Email"
 			hint="We will only use this to respond to your question"
 		>
 			<Input {...args} />
 		</Field>
-	</Flex>
+	</Box>
 );
-InputWithFieldHint.args = {
-	type: 'email',
-};
+InputHint.args = {};
 
-export const DisabledInput: ComponentStory<typeof Input> = (args) => (
-	<Flex background="body" palette="light">
-		<Field label="Disabled Input">
+export const BlockInput: ComponentStory<typeof Input> = (args) => (
+	<Box background="body" palette="light" width="100%">
+		<Field label="Block Input">
 			<Input {...args} />
 		</Field>
-	</Flex>
+	</Box>
 );
-DisabledInput.args = {
-	disabled: true,
+BlockInput.args = {
+	block: true,
 };
 
-export const InvalidFieldInput: ComponentStory<typeof Input> = (args) => (
-	<Flex background="body" palette="light">
+export const MaxWidths: ComponentStory<typeof Input> = (args) => (
+	<Stack background="body" palette="light" gap={1}>
+		{(['xs', 'sm', 'md', 'lg', 'xl'] as const).map((size) => (
+			<Field key={size} label={`Input max width ${size}`}>
+				<Input {...args} maxWidth={size} />
+			</Field>
+		))}
+	</Stack>
+);
+MaxWidths.args = {};
+
+export const InputPlaceholder: ComponentStory<typeof Input> = (args) => (
+	<Box background="body" palette="light">
 		<Field
-			label="Invalid Input"
-			errorMessage="Enter an email address in the correct format, like name@example.com"
+			label="Email"
+			hint="We will only use this to respond to your question"
 		>
 			<Input {...args} />
 		</Field>
-	</Flex>
+	</Box>
 );
-InvalidFieldInput.args = {
-	disabled: true,
-};
-
-export const InputWithPlaceholder: ComponentStory<typeof Input> = (args) => (
-	<Flex background="body" palette="light">
-		<Field label="Name">
-			<Input {...args} />
-		</Field>
-	</Flex>
-);
-InputWithPlaceholder.args = {
-	placeholder: 'Enter a name',
+InputPlaceholder.args = {
+	placeholder: 'Enter an email',
+	type: 'email',
 };
 
 // https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input
 export const Types = () => (
-	<Flex flexDirection="column" gap={1} background="body" palette="light">
+	<Stack gap={1} background="body" palette="light">
 		{[
 			'text',
 			'email',
@@ -99,5 +123,5 @@ export const Types = () => (
 				<Input placeholder={`Placeholder for ${type}`} type={type} block />
 			</Field>
 		))}
-	</Flex>
+	</Stack>
 );
