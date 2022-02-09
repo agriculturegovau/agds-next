@@ -66,6 +66,17 @@ InvalidFieldInput.args = {
 	disabled: true,
 };
 
+export const InputWithPlaceholder: ComponentStory<typeof Input> = (args) => (
+	<Flex background="body" palette="light">
+		<Field label="Name">
+			<Input {...args} />
+		</Field>
+	</Flex>
+);
+InputWithPlaceholder.args = {
+	placeholder: 'Enter a name',
+};
+
 // https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input
 export const Types = () => (
 	<Flex flexDirection="column" gap={1} background="body" palette="light">
