@@ -20,6 +20,8 @@ import {
 } from '@ag.ds-next/side-nav';
 import { Icon, IconExamples } from '@ag.ds-next/icon';
 import { Logo as AgLogo } from '@ag.ds-next/ag-branding';
+import { Field } from '@ag.ds-next/field';
+import { Input } from '@ag.ds-next/input';
 
 export const designSystemComponents = {
 	AgLogo,
@@ -59,4 +61,6 @@ export const designSystemComponents = {
 	SideNavTitle,
 	Icon,
 	IconExamples,
+	Field,
+	Input,
 };
