@@ -15,11 +15,7 @@ import { PageLayout } from '../../components/PageLayout';
 
 type StaticProps = Awaited<ReturnType<typeof getStaticProps>>['props'];
 
-export default function ReleasesHome({
-	source,
-	releaseLinks,
-	releaseNotesList,
-}: StaticProps) {
+export default function ReleasesHome({ source, releaseLinks }: StaticProps) {
 	return (
 		<>
 			<DocumentTitle title="Releases" />
@@ -36,7 +32,7 @@ export default function ReleasesHome({
 						<MDXRemote {...source} components={mdxComponents} />
 					</Body>
 					<Stack as="ul" gap={1}>
-						{releaseNotesList.map(({ href, label, description }) => (
+						{releaseLinks.map(({ href, label, description }) => (
 							<Card key={label} as="li" clickable shadow>
 								<CardInner>
 									<Body>
@@ -62,12 +58,7 @@ export async function getStaticProps() {
 	const source = await serializeMarkdown(content);
 	const releaseList = await getReleaseList();
 
-	const releaseLinks = releaseList.map(({ slug, title }) => ({
-		href: `/releases/${slug}`,
-		label: title,
-	}));
-
-	const releaseNotesList = releaseList.map(({ slug, title, description }) => ({
+	const releaseLinks = releaseList.map(({ slug, title, description }) => ({
 		href: `/releases/${slug}`,
 		label: title,
 		description,
@@ -77,7 +68,6 @@ export async function getStaticProps() {
 		props: {
 			source,
 			releaseLinks,
-			releaseNotesList,
 		},
 	};
 }
