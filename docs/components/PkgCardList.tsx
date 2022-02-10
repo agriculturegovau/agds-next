@@ -8,7 +8,7 @@ type Pkg = {
 };
 
 export const PkgCardList = ({ items }: { items: Pkg[] }) => (
-	<Columns gap={1} flexWrap="wrap" as="ul">
+	<Columns gap={1} as="ul">
 		{items.map(({ title, slug, group }) => (
 			<Column
 				key={slug}
