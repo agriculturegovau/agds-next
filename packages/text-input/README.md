@@ -6,7 +6,7 @@ group: Forms
 
 ### Default
 
-The default text inputs do not have a width applied to them.
+By default, the `TextInput` component does not expand to fill the available space.
 
 ```jsx live
 <Field label="Name">
@@ -16,7 +16,7 @@ The default text inputs do not have a width applied to them.
 
 ### Block
 
-Use the `block` property to make them fill the available space.
+Use the `block` prop to expand the component to fill the available space.
 
 ```jsx live
 <Field label="Name">
@@ -26,7 +26,7 @@ Use the `block` property to make them fill the available space.
 
 ### Valid and invalid inputs
 
-Add a border to text inputs and text areas to indicate whether user input is valid (validates according to the elements settings) or invalid (does not validate according to the elements settings).
+Use the `invalid` and `valid` props to indicate whether user input is valid (validates according to the elements settings) or invalid (does not validate according to the elements settings).
 
 ```jsx live
 <Stack gap={1}>

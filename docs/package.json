@@ -31,6 +31,7 @@
 		"@ag.ds-next/side-nav": "3.0.0",
 		"@ag.ds-next/text": "3.0.0",
 		"@ag.ds-next/text-input": "1.0.0",
+		"@ag.ds-next/textarea": "1.0.0",
 		"@preconstruct/next": "^3.0.1",
 		"@untitled-docs/live-code": "^0.3.0",
 		"classnames": "^2.3.1",

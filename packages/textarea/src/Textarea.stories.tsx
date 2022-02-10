@@ -2,17 +2,17 @@ import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { Box, Stack } from '@ag.ds-next/box';
 import { Field } from '@ag.ds-next/field';
-import { TextInput } from './TextInput';
+import { Textarea } from './Textarea';
 
 export default {
-	title: 'forms/TextInput',
-	component: TextInput,
-} as ComponentMeta<typeof TextInput>;
+	title: 'forms/Textarea',
+	component: Textarea,
+} as ComponentMeta<typeof Textarea>;
 
 export const Light: ComponentStory<typeof Field> = (args) => (
 	<Box background="body" palette="light">
 		<Field label="Light Field">
-			<TextInput {...args} />
+			<Textarea {...args} />
 		</Field>
 	</Box>
 );
@@ -21,16 +21,16 @@ Light.args = {};
 export const Dark: ComponentStory<typeof Field> = (args) => (
 	<Box background="body" palette="dark" padding={1}>
 		<Field label="Dark Field">
-			<TextInput {...args} />
+			<Textarea {...args} />
 		</Field>
 	</Box>
 );
 Dark.args = {};
 
-export const Disabled: ComponentStory<typeof TextInput> = (args) => (
+export const Disabled: ComponentStory<typeof Textarea> = (args) => (
 	<Box background="body" palette="light">
-		<Field label="Disabled Input">
-			<TextInput {...args} />
+		<Field label="Disabled Textarea">
+			<Textarea {...args} />
 		</Field>
 	</Box>
 );
@@ -38,53 +38,50 @@ Disabled.args = {
 	disabled: true,
 };
 
-export const Invalid: ComponentStory<typeof TextInput> = (args) => (
+export const Invalid: ComponentStory<typeof Textarea> = (args) => (
 	<Box background="body" palette="light">
 		<Field
-			label="Email"
-			message="Enter an email address in the correct format, like name@example.com"
+			label="Message"
+			message="The message you have entered is invalid"
 			invalid
 		>
-			<TextInput {...args} />
+			<Textarea {...args} />
 		</Field>
 	</Box>
 );
-Invalid.args = {
-	type: 'email',
-};
+Invalid.args = {};
 
-export const Valid: ComponentStory<typeof TextInput> = (args) => (
+export const Valid: ComponentStory<typeof Textarea> = (args) => (
 	<Box background="body" palette="light">
 		<Field
-			label="Email"
-			message="The email address you have entered is valid"
-			valie
+			label="Message"
+			message="The message you have entered is valid"
+			valid
 		>
-			<TextInput {...args} />
+			<Textarea {...args} />
 		</Field>
 	</Box>
 );
 Valid.args = {
-	type: 'email',
 	value: 'hello@example.com',
 };
 
-export const Hint: ComponentStory<typeof TextInput> = (args) => (
+export const Hint: ComponentStory<typeof Textarea> = (args) => (
 	<Box background="body" palette="light">
 		<Field
-			label="Email"
+			label="Message"
 			hint="We will only use this to respond to your question"
 		>
-			<TextInput {...args} />
+			<Textarea {...args} />
 		</Field>
 	</Box>
 );
 Hint.args = {};
 
-export const Block: ComponentStory<typeof TextInput> = (args) => (
+export const Block: ComponentStory<typeof Textarea> = (args) => (
 	<Box background="body" palette="light" width="100%">
-		<Field label="Block Input">
-			<TextInput {...args} />
+		<Field label="Block Textarea">
+			<Textarea {...args} />
 		</Field>
 	</Box>
 );
@@ -92,30 +89,29 @@ Block.args = {
 	block: true,
 };
 
-export const MaxWidths: ComponentStory<typeof TextInput> = (args) => (
+export const MaxWidths: ComponentStory<typeof Textarea> = (args) => (
 	<Stack background="body" palette="light" gap={1}>
 		{(['xs', 'sm', 'md', 'lg', 'xl'] as const).map((size) => (
-			<Field key={size} label={`Input max width ${size}`}>
-				<TextInput {...args} maxWidth={size} />
+			<Field key={size} label={`Textarea max width ${size}`}>
+				<Textarea {...args} maxWidth={size} />
 			</Field>
 		))}
 	</Stack>
 );
 MaxWidths.args = {};
 
-export const InputPlaceholder: ComponentStory<typeof TextInput> = (args) => (
+export const TextareaPlaceholder: ComponentStory<typeof Textarea> = (args) => (
 	<Box background="body" palette="light">
-		<Field label="Email">
-			<TextInput {...args} />
+		<Field label="Message">
+			<Textarea {...args} />
 		</Field>
 	</Box>
 );
-InputPlaceholder.args = {
+TextareaPlaceholder.args = {
 	placeholder: 'Enter an email',
-	type: 'email',
 };
 
-// https://developer.mozilla.org/en-US/docs/Web/HTML/Element/text-input
+// https://developer.mozilla.org/en-US/docs/Web/HTML/Element/text-Textarea
 export const Types = () => (
 	<Stack gap={1} background="body" palette="light">
 		{[
@@ -133,8 +129,8 @@ export const Types = () => (
 			'month',
 			'week',
 		].map((type) => (
-			<Field key={type} label={`Input type ${type}`}>
-				<TextInput placeholder={`Placeholder for ${type}`} type={type} block />
+			<Field key={type} label={`Textarea type ${type}`}>
+				<Textarea placeholder={`Placeholder for ${type}`} type={type} block />
 			</Field>
 		))}
 	</Stack>

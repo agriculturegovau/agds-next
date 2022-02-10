@@ -54,7 +54,7 @@ TODO Success messages?
 		valid
 		message="The email address you have entered is valid"
 	>
-		<TextInput type="email" value="hello@example.com" />
+		<TextInput type="email" />
 	</Field>
 </Stack>
 ```
