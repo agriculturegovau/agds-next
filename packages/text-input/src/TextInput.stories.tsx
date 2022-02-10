@@ -58,7 +58,7 @@ export const Valid: ComponentStory<typeof TextInput> = (args) => (
 		<Field
 			label="Email"
 			message="The email address you have entered is valid"
-			valie
+			valid
 		>
 			<TextInput {...args} />
 		</Field>

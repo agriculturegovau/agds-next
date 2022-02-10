@@ -7,6 +7,7 @@
 	"peerDependencies": {
 		"@ag.ds-next/box": "3.0.0",
 		"@ag.ds-next/core": "2.0.0",
+		"@ag.ds-next/field": "1.0.0",
 		"@ag.ds-next/text-input": "1.0.0",
 		"@emotion/react": "^11.7.0",
 		"react": "^16.14.0 || ^17.0.0"
@@ -14,6 +15,7 @@
 	"devDependencies": {
 		"@ag.ds-next/box": "*",
 		"@ag.ds-next/core": "*",
+		"@ag.ds-next/field": "*",
 		"@ag.ds-next/text-input": "*",
 		"@emotion/react": "^11.7.0",
 		"react": "17.0.2"
