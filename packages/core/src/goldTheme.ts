@@ -21,7 +21,11 @@ export const goldTheme = {
 	// system colors
 	accent: undefined, // accent does not exist in GOLD.
 	error: '#d60000',
+	errorMuted: '#fdf2f2',
 	success: '#0b996c',
+	successMuted: '#f3faf8',
 	warning: '#f69900',
+	warningMuted: undefined,
 	info: '#00bfe9',
+	infoMuted: undefined,
 } as const;

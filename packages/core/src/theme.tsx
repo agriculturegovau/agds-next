@@ -22,9 +22,13 @@ export const themeVars = {
 	// System colors
 	accent: '--agds-accent',
 	error: '--agds-error',
+	errorMuted: '--agds-error-muted',
 	success: '--agds-success',
+	successMuted: '--agds-success-muted',
 	warning: '--agds-warning',
+	warningMuted: '--agds-warning-muted',
 	info: '--agds-info',
+	infoMuted: '--agds-info-muted',
 } as const;
 
 export type Theme = Partial<Record<keyof typeof themeVars, string>>;

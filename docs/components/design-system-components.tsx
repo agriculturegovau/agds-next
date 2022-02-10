@@ -21,7 +21,7 @@ import {
 import { Icon, IconExamples } from '@ag.ds-next/icon';
 import { Logo as AgLogo } from '@ag.ds-next/ag-branding';
 import { Field } from '@ag.ds-next/field';
-import { Input } from '@ag.ds-next/input';
+import { TextInput } from '@ag.ds-next/text-input';
 
 export const designSystemComponents = {
 	AgLogo,
@@ -62,5 +62,5 @@ export const designSystemComponents = {
 	Icon,
 	IconExamples,
 	Field,
-	Input,
+	TextInput,
 };

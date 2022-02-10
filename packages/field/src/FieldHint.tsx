@@ -1,5 +1,5 @@
 import { Text } from '@ag.ds-next/text';
-import { useField } from './FieldContext';
+import { useField } from './FieldProvider';
 
 export const FieldHint = ({ children }: { children: string }) => {
 	const { hintId } = useField();

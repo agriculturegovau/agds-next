@@ -1,24 +1,28 @@
 import { ReactNode } from 'react';
 import { Stack } from '@ag.ds-next/box';
-import { FieldProvider } from './FieldContext';
+import { FieldProvider } from './FieldProvider';
 import { FieldLabel } from './FieldLabel';
 import { FieldHint } from './FieldHint';
-import { FieldError } from './FieldError';
+import { FieldMessage } from './FieldMessage';
 
 export type FieldProps = {
 	children: ReactNode;
-	errorMessage?: string;
 	hint?: string;
 	label: string;
+	message?: string;
+	valid?: boolean;
 };
 
-export const Field = ({ children, errorMessage, hint, label }: FieldProps) => (
-	<FieldProvider hasError={Boolean(errorMessage)} hasHint={Boolean(hint)}>
-		<Stack gap={0.25}>
-			<FieldLabel>{label}</FieldLabel>
-			{hint ? <FieldHint>{hint}</FieldHint> : null}
-			{errorMessage ? <FieldError>{errorMessage}</FieldError> : null}
-			{children}
-		</Stack>
-	</FieldProvider>
-);
+export const Field = (props: FieldProps) => {
+	const { children, hint, label, message } = props;
+	return (
+		<FieldProvider {...props}>
+			<Stack gap={0.25}>
+				<FieldLabel>{label}</FieldLabel>
+				{hint ? <FieldHint>{hint}</FieldHint> : null}
+				{message ? <FieldMessage>{message}</FieldMessage> : null}
+				{children}
+			</Stack>
+		</FieldProvider>
+	);
+};

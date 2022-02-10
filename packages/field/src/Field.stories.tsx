@@ -15,7 +15,7 @@ export default {
 export const LightField: ComponentStory<typeof Field> = (args) => (
 	<Flex background="body" palette="light">
 		<Field label="Light Field">
-			<input />
+			<TextInput />
 		</Field>
 	</Flex>
 );
@@ -24,7 +24,7 @@ LightField.args = {};
 export const DarkField: ComponentStory<typeof Field> = (args) => (
 	<Flex background="body" palette="dark" padding={1}>
 		<Field label="Dark Field">
-			<input />
+			<TextInput />
 		</Field>
 	</Flex>
 );
@@ -37,7 +37,7 @@ export const Modular: ComponentStory<typeof Field> = (args) => (
 				<FieldLabel>Label</FieldLabel>
 				<FieldHint>Hint</FieldHint>
 				<FieldError>Field error</FieldError>
-				<input />
+				<TextInput />
 			</Stack>
 		</FieldProvider>
 	</Flex>

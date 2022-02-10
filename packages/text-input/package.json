@@ -1,8 +1,8 @@
 {
-	"name": "@ag.ds-next/input",
+	"name": "@ag.ds-next/text-input",
 	"version": "1.0.0",
-	"main": "dist/ag.ds-next-input.cjs.js",
-	"module": "dist/ag.ds-next-input.esm.js",
+	"main": "dist/ag.ds-next-text-input.cjs.js",
+	"module": "dist/ag.ds-next-text-input.esm.js",
 	"license": "MIT",
 	"peerDependencies": {
 		"@ag.ds-next/box": "3.0.0",

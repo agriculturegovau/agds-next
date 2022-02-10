@@ -18,30 +18,28 @@ export type InputProps = DetailedHTMLProps<
 	maxWidth?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
 };
 
-export const Input = ({ block, maxWidth, ...props }: InputProps) => {
-	const { fieldId, hintId, errorMessageId, hasHint, hasError } = useField();
-	const styles = inputStyles({ block, hasError, maxWidth });
+export const TextInput = ({ block, maxWidth, ...props }: InputProps) => {
+	const { fieldId, hintId, messageId, hasHint, isInvalid } = useField();
+	const styles = textInputStyles({ block, maxWidth, isInvalid });
 	return (
 		<input
 			{...props}
 			id={fieldId}
-			aria-invalid={hasError ? true : false}
-			aria-describedby={
-				hasError ? errorMessageId : hasHint ? hintId : undefined
-			}
+			aria-invalid={isInvalid ? true : false}
+			aria-describedby={isInvalid ? messageId : hasHint ? hintId : undefined}
 			css={styles}
 		/>
 	);
 };
 
-const inputStyles = ({
+export const textInputStyles = ({
 	block,
-	hasError,
 	maxWidth,
+	isInvalid,
 }: {
 	block?: boolean;
-	hasError: boolean;
 	maxWidth?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
+	isInvalid?: boolean;
 }) =>
 	({
 		appearance: 'none',
@@ -69,9 +67,16 @@ const inputStyles = ({
 			width: '100%',
 		}),
 
-		...(hasError && {
-			// backgroundColor: themeVars.error,
+		// Error
+		...(isInvalid === true && {
+			backgroundColor: `var(${themeVars.errorMuted})`,
 			borderColor: `var(${themeVars.error})`,
+		}),
+
+		// Success
+		...(isInvalid === false && {
+			backgroundColor: `var(${themeVars.successMuted})`,
+			borderColor: `var(${themeVars.success})`,
 		}),
 
 		'&:disabled': {
