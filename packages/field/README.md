@@ -14,6 +14,14 @@ Using [context](https://reactjs.org/docs/context.html), the field component conn
 </Field>
 ```
 
+### Required
+
+```jsx live
+<Field label="Name" required>
+	<TextInput />
+</Field>
+```
+
 ### Label
 
 Each text field must be accompanied by a label. Effective form labeling helps users understand what information to enter into a text input.

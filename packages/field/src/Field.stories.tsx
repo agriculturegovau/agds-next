@@ -1,9 +1,10 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { Box, Stack } from '@ag.ds-next/box';
+import { Box } from '@ag.ds-next/box';
 import { TextInput } from '@ag.ds-next/text-input';
 import { Field } from './Field';
 import { FieldProvider } from './FieldProvider';
+import { FieldContainer } from './FieldContainer';
 import { FieldLabel } from './FieldLabel';
 import { FieldMessage } from './FieldMessage';
 import { FieldHint } from './FieldHint';
@@ -13,26 +14,26 @@ export default {
 	component: Field,
 } as ComponentMeta<typeof Field>;
 
-export const LightField: ComponentStory<typeof Field> = (args) => (
+export const Basic: ComponentStory<typeof Field> = (args) => (
 	<Box background="body" palette="light">
 		<Field {...args}>
 			<TextInput />
 		</Field>
 	</Box>
 );
-LightField.args = {
-	label: 'Light',
+Basic.args = {
+	label: 'Basic',
 };
 
-export const DarkField: ComponentStory<typeof Field> = (args) => (
-	<Box background="body" palette="dark" padding={1}>
+export const Required: ComponentStory<typeof Field> = (args) => (
+	<Box background="body" palette="light">
 		<Field {...args}>
 			<TextInput />
 		</Field>
 	</Box>
 );
-DarkField.args = {
-	label: 'Dark',
+Required.args = {
+	required: true,
 };
 
 export const Invalid: ComponentStory<typeof Field> = (args) => (
@@ -64,12 +65,12 @@ Valid.args = {
 export const Modular: ComponentStory<typeof Field> = (args) => (
 	<Box background="body">
 		<FieldProvider {...args}>
-			<Stack gap={0.25}>
+			<FieldContainer>
 				<FieldLabel>{args.label}</FieldLabel>
 				{args.hint ? <FieldHint>{args.hint}</FieldHint> : null}
 				{args.message ? <FieldMessage>{args.message}</FieldMessage> : null}
 				<TextInput />
-			</Stack>
+			</FieldContainer>
 		</FieldProvider>
 	</Box>
 );

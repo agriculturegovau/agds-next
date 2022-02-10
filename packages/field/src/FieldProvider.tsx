@@ -8,6 +8,7 @@ type FieldContext =
 			hintId: string;
 			messageId: string;
 			describedById?: string;
+			required?: boolean;
 			hasHint: boolean;
 			hasMessage: boolean;
 			invalid?: boolean;
@@ -19,6 +20,7 @@ const fieldContext = createContext<FieldContext>(undefined);
 
 export const FieldProvider = ({
 	children,
+	required,
 	hint,
 	message,
 	invalid,
@@ -40,6 +42,7 @@ export const FieldProvider = ({
 				hintId,
 				messageId,
 				describedById,
+				required,
 				hasHint,
 				hasMessage,
 				invalid,
