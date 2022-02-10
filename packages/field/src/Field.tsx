@@ -16,7 +16,7 @@ export type FieldProps = {
 };
 
 export const Field = (props: FieldProps) => {
-	const { children, hint, label, message, required, invalid } = props;
+	const { children, hint, label, message, required } = props;
 	return (
 		<FieldProvider {...props}>
 			<FieldContainer>
