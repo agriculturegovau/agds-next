@@ -9,7 +9,6 @@ import {
 	tokens,
 } from '@ag.ds-next/core';
 
-// TODO Omit?
 export type InputProps = DetailedHTMLProps<
 	InputHTMLAttributes<HTMLInputElement>,
 	HTMLInputElement
@@ -52,17 +51,16 @@ export const textInputStyles = ({
 		paddingBottom: mapSpacing(0.5),
 		paddingLeft: mapSpacing(1),
 		paddingRight: mapSpacing(1),
+		backgroundColor: `var(${themeVars.lightBackgroundBody})`,
 		borderWidth: 3,
 		borderStyle: 'solid',
-		borderColor: boxPalette.border,
+		borderColor: boxPalette.borderInput,
 		borderRadius: tokens.borderRadius,
 		cursor: 'pointer',
+		color: themeVars.lightForegroundText,
+		maxWidth: maxWidth ? maxWidths[maxWidth] : '12.8125rem',
 		fontFamily: tokens.font.body,
 		...fontGrid('sm', 'nospace'),
-		backgroundColor: `var(${themeVars.lightBackgroundBody})`,
-		color: themeVars.lightForegroundText,
-
-		maxWidth: maxWidth ? maxWidths[maxWidth] : '12.8125rem', // TODO
 
 		...(block && {
 			maxWidth: 'none',
@@ -70,18 +68,17 @@ export const textInputStyles = ({
 			width: '100%',
 		}),
 
-		// Error
-		...(invalid && {
-			backgroundColor: `var(${themeVars.errorMuted})`,
-			borderColor: `var(${themeVars.error})`,
-		}),
-
-		// Success
-		...(valid &&
-			!invalid && {
-				backgroundColor: `var(${themeVars.successMuted})`,
-				borderColor: `var(${themeVars.success})`,
-			}),
+		...(invalid
+			? {
+					backgroundColor: `var(${themeVars.errorMuted})`,
+					borderColor: `var(${themeVars.error})`,
+			  }
+			: valid
+			? {
+					backgroundColor: `var(${themeVars.successMuted})`,
+					borderColor: `var(${themeVars.success})`,
+			  }
+			: undefined),
 
 		'&:disabled': {
 			cursor: 'not-allowed',
@@ -89,10 +86,6 @@ export const textInputStyles = ({
 		},
 
 		'&:focus': outline,
-
-		'::placeholder': {
-			color: `var(${themeVars.lightForegroundMuted})`,
-		},
 	} as const);
 
 const maxWidths = {

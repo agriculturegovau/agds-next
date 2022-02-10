@@ -9,6 +9,7 @@ export const themeVars = {
 	lightBackgroundBodyAlt: '--agds-light-background-body-alt',
 	lightBackgroundShadeAlt: '--agds-light-background-shade-alt',
 	lightBorder: '--agds-light-border',
+	lightBorderInput: '--agds-light-border-input',
 	// Dark
 	darkForegroundText: '--agds-dark-foreground-text',
 	darkForegroundAction: '--agds-dark-foreground-action',
@@ -19,6 +20,7 @@ export const themeVars = {
 	darkBackgroundBodyAlt: '--agds-dark-background-body-alt',
 	darkBackgroundShadeAlt: '--agds-dark-background-shade-alt',
 	darkBorder: '--agds-dark-border',
+	darkBorderInput: '--agds-dark-border-input',
 	// System colors
 	accent: '--agds-accent',
 	error: '--agds-error',

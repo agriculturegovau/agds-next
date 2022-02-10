@@ -13,6 +13,7 @@ const boxPaletteVars = {
 	backgroundBodyAlt: '--agds-background-body-alt',
 	backgroundShadeAlt: '--agds-background-shade-alt',
 	border: '--agds-border',
+	borderInput: '--agdds-border-input',
 };
 
 export const boxPalettes = {
@@ -26,6 +27,7 @@ export const boxPalettes = {
 		[boxPaletteVars.backgroundBodyAlt]: `var(${themeVars.lightBackgroundBodyAlt})`,
 		[boxPaletteVars.backgroundShadeAlt]: `var(${themeVars.lightBackgroundShadeAlt})`,
 		[boxPaletteVars.border]: `var(${themeVars.lightBorder})`,
+		[boxPaletteVars.borderInput]: `var(${themeVars.lightBorderInput})`,
 	}),
 	dark: css({
 		[boxPaletteVars.foregroundText]: `var(${themeVars.darkForegroundText})`,
@@ -37,6 +39,7 @@ export const boxPalettes = {
 		[boxPaletteVars.backgroundBodyAlt]: `var(${themeVars.darkBackgroundBodyAlt})`,
 		[boxPaletteVars.backgroundShadeAlt]: `var(${themeVars.darkBackgroundShadeAlt})`,
 		[boxPaletteVars.border]: `var(${themeVars.darkBorder})`,
+		[boxPaletteVars.borderInput]: `var(${themeVars.darkBorderInput})`,
 	}),
 } as const;
 
@@ -52,6 +55,7 @@ export const boxPalette = {
 	backgroundBodyAlt: `var(${boxPaletteVars.backgroundBodyAlt})`,
 	backgroundShadeAlt: `var(${boxPaletteVars.backgroundShadeAlt})`,
 	border: `var(${boxPaletteVars.border})`,
+	borderInput: `var(${boxPaletteVars.borderInput})`,
 };
 
 // TODO: Move this out of here. Maybe packs

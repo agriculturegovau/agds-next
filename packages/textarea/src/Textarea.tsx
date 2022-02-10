@@ -2,7 +2,6 @@ import React, { DetailedHTMLProps, TextareaHTMLAttributes } from 'react';
 import { useField } from '@ag.ds-next/field';
 import { textInputStyles } from '@ag.ds-next/text-input';
 
-// TODO Omit?
 export type TextareaProps = DetailedHTMLProps<
 	TextareaHTMLAttributes<HTMLTextAreaElement>,
 	HTMLTextAreaElement

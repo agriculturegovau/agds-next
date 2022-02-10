@@ -33,6 +33,7 @@ export const Required: ComponentStory<typeof Field> = (args) => (
 	</Box>
 );
 Required.args = {
+	label: 'Basic',
 	required: true,
 };
 

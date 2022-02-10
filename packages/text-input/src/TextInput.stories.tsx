@@ -1,6 +1,6 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { Box, Stack } from '@ag.ds-next/box';
+import { Stack } from '@ag.ds-next/box';
 import { Field } from '@ag.ds-next/field';
 import { TextInput } from './TextInput';
 
@@ -9,60 +9,52 @@ export default {
 	component: TextInput,
 } as ComponentMeta<typeof TextInput>;
 
-export const Light: ComponentStory<typeof Field> = (args) => (
-	<Box background="body" palette="light">
-		<Field label="Light Field">
-			<TextInput {...args} />
-		</Field>
-	</Box>
+export const Basic: ComponentStory<typeof TextInput> = (args) => (
+	<Field label="Basic TextInput">
+		<TextInput {...args} />
+	</Field>
 );
-Light.args = {};
+Basic.args = {};
 
-export const Dark: ComponentStory<typeof Field> = (args) => (
-	<Box background="body" palette="dark" padding={1}>
-		<Field label="Dark Field">
-			<TextInput {...args} />
-		</Field>
-	</Box>
+export const Required: ComponentStory<typeof TextInput> = (args) => (
+	<Field label="Basic TextInput" required>
+		<TextInput {...args} />
+	</Field>
 );
-Dark.args = {};
+Required.args = {
+	required: true,
+};
 
 export const Disabled: ComponentStory<typeof TextInput> = (args) => (
-	<Box background="body" palette="light">
-		<Field label="Disabled Input">
-			<TextInput {...args} />
-		</Field>
-	</Box>
+	<Field label="Disabled TextInput">
+		<TextInput {...args} />
+	</Field>
 );
 Disabled.args = {
 	disabled: true,
 };
 
 export const Invalid: ComponentStory<typeof TextInput> = (args) => (
-	<Box background="body" palette="light">
-		<Field
-			label="Email"
-			message="Enter an email address in the correct format, like name@example.com"
-			invalid
-		>
-			<TextInput {...args} />
-		</Field>
-	</Box>
+	<Field
+		label="Email"
+		message="Enter an email address in the correct format, like name@example.com"
+		invalid
+	>
+		<TextInput {...args} />
+	</Field>
 );
 Invalid.args = {
 	type: 'email',
 };
 
 export const Valid: ComponentStory<typeof TextInput> = (args) => (
-	<Box background="body" palette="light">
-		<Field
-			label="Email"
-			message="The email address you have entered is valid"
-			valid
-		>
-			<TextInput {...args} />
-		</Field>
-	</Box>
+	<Field
+		label="Email"
+		message="The email address you have entered is valid"
+		valid
+	>
+		<TextInput {...args} />
+	</Field>
 );
 Valid.args = {
 	type: 'email',
@@ -70,32 +62,25 @@ Valid.args = {
 };
 
 export const Hint: ComponentStory<typeof TextInput> = (args) => (
-	<Box background="body" palette="light">
-		<Field
-			label="Email"
-			hint="We will only use this to respond to your question"
-		>
-			<TextInput {...args} />
-		</Field>
-	</Box>
+	<Field label="Email" hint="We will only use this to respond to your question">
+		<TextInput {...args} />
+	</Field>
 );
 Hint.args = {};
 
 export const Block: ComponentStory<typeof TextInput> = (args) => (
-	<Box background="body" palette="light" width="100%">
-		<Field label="Block Input">
-			<TextInput {...args} />
-		</Field>
-	</Box>
+	<Field label="Block TextInput">
+		<TextInput {...args} />
+	</Field>
 );
 Block.args = {
 	block: true,
 };
 
 export const MaxWidths: ComponentStory<typeof TextInput> = (args) => (
-	<Stack background="body" palette="light" gap={1}>
+	<Stack gap={1}>
 		{(['xs', 'sm', 'md', 'lg', 'xl'] as const).map((size) => (
-			<Field key={size} label={`Input max width ${size}`}>
+			<Field key={size} label={`TextInput max width ${size}`}>
 				<TextInput {...args} maxWidth={size} />
 			</Field>
 		))}
@@ -103,39 +88,11 @@ export const MaxWidths: ComponentStory<typeof TextInput> = (args) => (
 );
 MaxWidths.args = {};
 
-export const InputPlaceholder: ComponentStory<typeof TextInput> = (args) => (
-	<Box background="body" palette="light">
-		<Field label="Email">
-			<TextInput {...args} />
-		</Field>
-	</Box>
+export const Password: ComponentStory<typeof TextInput> = (args) => (
+	<Field label="Password" required>
+		<TextInput {...args} />
+	</Field>
 );
-InputPlaceholder.args = {
-	placeholder: 'Enter an email',
-	type: 'email',
+Password.args = {
+	type: 'password',
 };
-
-// https://developer.mozilla.org/en-US/docs/Web/HTML/Element/text-input
-export const Types = () => (
-	<Stack gap={1} background="body" palette="light">
-		{[
-			'text',
-			'email',
-			'tel',
-			'url',
-			'password',
-			'file',
-			'number',
-			'date',
-			'time',
-			'datetime',
-			'datetime-local',
-			'month',
-			'week',
-		].map((type) => (
-			<Field key={type} label={`Input type ${type}`}>
-				<TextInput placeholder={`Placeholder for ${type}`} type={type} block />
-			</Field>
-		))}
-	</Stack>
-);

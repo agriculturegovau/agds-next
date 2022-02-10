@@ -1,6 +1,6 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { Box, Stack } from '@ag.ds-next/box';
+import { Stack } from '@ag.ds-next/box';
 import { Field } from '@ag.ds-next/field';
 import { Textarea } from './Textarea';
 
@@ -9,81 +9,67 @@ export default {
 	component: Textarea,
 } as ComponentMeta<typeof Textarea>;
 
-export const Light: ComponentStory<typeof Field> = (args) => (
-	<Box background="body" palette="light">
-		<Field label="Light Field">
-			<Textarea {...args} />
-		</Field>
-	</Box>
+export const Basic: ComponentStory<typeof Textarea> = (args) => (
+	<Field label="Basic Textarea">
+		<Textarea {...args} />
+	</Field>
 );
-Light.args = {};
+Basic.args = {};
 
-export const Dark: ComponentStory<typeof Field> = (args) => (
-	<Box background="body" palette="dark" padding={1}>
-		<Field label="Dark Field">
-			<Textarea {...args} />
-		</Field>
-	</Box>
+export const Required: ComponentStory<typeof Textarea> = (args) => (
+	<Field label="Basic Textarea" required>
+		<Textarea {...args} />
+	</Field>
 );
-Dark.args = {};
+Required.args = {
+	required: true,
+};
 
 export const Disabled: ComponentStory<typeof Textarea> = (args) => (
-	<Box background="body" palette="light">
-		<Field label="Disabled Textarea">
-			<Textarea {...args} />
-		</Field>
-	</Box>
+	<Field label="Disabled Textarea">
+		<Textarea {...args} />
+	</Field>
 );
 Disabled.args = {
 	disabled: true,
 };
 
 export const Invalid: ComponentStory<typeof Textarea> = (args) => (
-	<Box background="body" palette="light">
-		<Field
-			label="Message"
-			message="The message you have entered is invalid"
-			invalid
-		>
-			<Textarea {...args} />
-		</Field>
-	</Box>
+	<Field
+		label="Message"
+		message="The message you have entered is invalid"
+		invalid
+	>
+		<Textarea {...args} />
+	</Field>
 );
-Invalid.args = {};
+Invalid.args = {
+	value: '1e039ur4urf',
+};
 
 export const Valid: ComponentStory<typeof Textarea> = (args) => (
-	<Box background="body" palette="light">
-		<Field
-			label="Message"
-			message="The message you have entered is valid"
-			valid
-		>
-			<Textarea {...args} />
-		</Field>
-	</Box>
+	<Field label="Message" message="The message you have entered is valid" valid>
+		<Textarea {...args} />
+	</Field>
 );
 Valid.args = {
-	value: 'hello@example.com',
+	value: 'Lorem ipsum dolar',
 };
 
 export const Hint: ComponentStory<typeof Textarea> = (args) => (
-	<Box background="body" palette="light">
-		<Field
-			label="Message"
-			hint="We will only use this to respond to your question"
-		>
-			<Textarea {...args} />
-		</Field>
-	</Box>
+	<Field
+		label="Message"
+		hint="We will only use this to respond to your question"
+	>
+		<Textarea {...args} />
+	</Field>
 );
 Hint.args = {};
 
 export const Block: ComponentStory<typeof Textarea> = (args) => (
-	<Box background="body" palette="light" width="100%">
-		<Field label="Block Textarea">
-			<Textarea {...args} />
-		</Field>
-	</Box>
+	<Field label="Block Textarea">
+		<Textarea {...args} />
+	</Field>
 );
 Block.args = {
 	block: true,
@@ -99,14 +85,3 @@ export const MaxWidths: ComponentStory<typeof Textarea> = (args) => (
 	</Stack>
 );
 MaxWidths.args = {};
-
-export const TextareaPlaceholder: ComponentStory<typeof Textarea> = (args) => (
-	<Box background="body" palette="light">
-		<Field label="Message">
-			<Textarea {...args} />
-		</Field>
-	</Box>
-);
-TextareaPlaceholder.args = {
-	placeholder: 'Enter a message',
-};
