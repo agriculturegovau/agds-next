@@ -18,14 +18,14 @@ export type InputProps = DetailedHTMLProps<
 };
 
 export const TextInput = ({ block, maxWidth, ...props }: InputProps) => {
-	const { fieldId, describedById, invalid, valid, required } = useField();
+	const { fieldId, describedBy, invalid, valid, required } = useField();
 	const styles = textInputStyles({ block, maxWidth, invalid, valid });
 	return (
 		<input
 			id={fieldId}
 			required={required}
 			aria-invalid={Boolean(invalid)}
-			aria-describedby={describedById}
+			aria-describedby={describedBy}
 			css={styles}
 			{...props}
 		/>

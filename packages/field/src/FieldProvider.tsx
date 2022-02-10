@@ -7,7 +7,7 @@ type FieldContext =
 			fieldId: string;
 			hintId: string;
 			messageId: string;
-			describedById?: string;
+			describedBy?: string;
 			required?: boolean;
 			hasHint: boolean;
 			hasMessage: boolean;
@@ -33,7 +33,9 @@ export const FieldProvider = ({
 
 	const hasHint = Boolean(hint);
 	const hasMessage = Boolean(message);
-	const describedById = hasMessage ? messageId : hasHint ? hintId : undefined;
+	const describedBy = [message ? messageId : null, hint ? hintId : null]
+		.filter(Boolean)
+		.join(' ');
 
 	return (
 		<fieldContext.Provider
@@ -41,7 +43,7 @@ export const FieldProvider = ({
 				fieldId,
 				hintId,
 				messageId,
-				describedById,
+				describedBy,
 				required,
 				hasHint,
 				hasMessage,

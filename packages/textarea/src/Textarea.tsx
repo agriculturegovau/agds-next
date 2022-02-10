@@ -11,14 +11,14 @@ export type TextareaProps = DetailedHTMLProps<
 };
 
 export const Textarea = ({ block, maxWidth, ...props }: TextareaProps) => {
-	const { fieldId, describedById, invalid, valid, required } = useField();
+	const { fieldId, describedBy, invalid, valid, required } = useField();
 	const styles = textInputStyles({ block, maxWidth, invalid, valid });
 	return (
 		<textarea
 			id={fieldId}
 			required={required}
 			aria-invalid={Boolean(invalid)}
-			aria-describedby={describedById}
+			aria-describedby={describedBy}
 			css={styles}
 			{...props}
 		/>
