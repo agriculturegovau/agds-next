@@ -4,82 +4,200 @@ import { Box } from '@ag.ds-next/box';
 import { Columns, Column } from './index';
 
 export default {
-	title: 'foundations/Columns',
+	title: 'layout/Columns',
 	component: Columns,
 } as ComponentMeta<typeof Columns>;
+
+const Cell = () => <Box background="shadeAlt" padding={1} />;
 
 export const Basic: ComponentStory<typeof Columns> = (args) => (
 	<Box palette="light" background="body">
 		<Columns {...args}>
-			<Column columnSpan={1} background="shade" padding={1} />
-			<Column columnSpan={1} background="shade" padding={1} />
-			<Column columnSpan={1} background="shade" padding={1} />
-			<Column columnSpan={1} background="shade" padding={1} />
-			<Column columnSpan={1} background="shade" padding={1} />
-			<Column columnSpan={1} background="shade" padding={1} />
-			<Column columnSpan={1} background="shade" padding={1} />
-			<Column columnSpan={1} background="shade" padding={1} />
-			<Column columnSpan={1} background="shade" padding={1} />
-			<Column columnSpan={1} background="shade" padding={1} />
-			<Column columnSpan={1} background="shade" padding={1} />
-			<Column columnSpan={1} background="shade" padding={1} />
+			<Column columnSpan={1}>
+				<Cell />
+			</Column>
+			<Column columnSpan={1}>
+				<Cell />
+			</Column>
+			<Column columnSpan={1}>
+				<Cell />
+			</Column>
+			<Column columnSpan={1}>
+				<Cell />
+			</Column>
+			<Column columnSpan={1}>
+				<Cell />
+			</Column>
+			<Column columnSpan={1}>
+				<Cell />
+			</Column>
+			<Column columnSpan={1}>
+				<Cell />
+			</Column>
+			<Column columnSpan={1}>
+				<Cell />
+			</Column>
+			<Column columnSpan={1}>
+				<Cell />
+			</Column>
+			<Column columnSpan={1}>
+				<Cell />
+			</Column>
+			<Column columnSpan={1}>
+				<Cell />
+			</Column>
+			<Column columnSpan={1}>
+				<Cell />
+			</Column>
 		</Columns>
 	</Box>
 );
-Basic.args = {
-	gap: 2,
-};
+Basic.args = {};
 
 export const ColSpans: ComponentStory<typeof Columns> = (args) => (
 	<Box palette="light" background="body">
 		<Columns {...args}>
-			<Column columnSpan={1} background="shade" padding={1} />
-			<Column columnSpan={1} background="shade" padding={1} />
-			<Column columnSpan={1} background="shade" padding={1} />
-			<Column columnSpan={1} background="shade" padding={1} />
-			<Column columnSpan={1} background="shade" padding={1} />
-			<Column columnSpan={1} background="shade" padding={1} />
-			<Column columnSpan={1} background="shade" padding={1} />
-			<Column columnSpan={1} background="shade" padding={1} />
-			<Column columnSpan={1} background="shade" padding={1} />
-			<Column columnSpan={1} background="shade" padding={1} />
-			<Column columnSpan={1} background="shade" padding={1} />
-			<Column columnSpan={1} background="shade" padding={1} />
-			<Column columnSpan={2} background="shade" padding={1} />
-			<Column columnSpan={2} background="shade" padding={1} />
-			<Column columnSpan={2} background="shade" padding={1} />
-			<Column columnSpan={2} background="shade" padding={1} />
-			<Column columnSpan={2} background="shade" padding={1} />
-			<Column columnSpan={2} background="shade" padding={1} />
-			<Column columnSpan={3} background="shade" padding={1} />
-			<Column columnSpan={3} background="shade" padding={1} />
-			<Column columnSpan={3} background="shade" padding={1} />
-			<Column columnSpan={3} background="shade" padding={1} />
-			<Column columnSpan={4} background="shade" padding={1} />
-			<Column columnSpan={4} background="shade" padding={1} />
-			<Column columnSpan={4} background="shade" padding={1} />
-			<Column columnSpan={5} background="shade" padding={1} />
-			<Column columnSpan={5} background="shade" padding={1} />
-			<Column columnSpan={2} background="shade" padding={1} />
-			<Column columnSpan={6} background="shade" padding={1} />
-			<Column columnSpan={6} background="shade" padding={1} />
+			<Column columnSpan={1}>
+				<Cell />
+			</Column>
+			<Column columnSpan={1}>
+				<Cell />
+			</Column>
+			<Column columnSpan={1}>
+				<Cell />
+			</Column>
+			<Column columnSpan={1}>
+				<Cell />
+			</Column>
+			<Column columnSpan={1}>
+				<Cell />
+			</Column>
+			<Column columnSpan={1}>
+				<Cell />
+			</Column>
+			<Column columnSpan={1}>
+				<Cell />
+			</Column>
+			<Column columnSpan={1}>
+				<Cell />
+			</Column>
+			<Column columnSpan={1}>
+				<Cell />
+			</Column>
+			<Column columnSpan={1}>
+				<Cell />
+			</Column>
+			<Column columnSpan={1}>
+				<Cell />
+			</Column>
+			<Column columnSpan={1}>
+				<Cell />
+			</Column>
+			<Column columnSpan={2}>
+				<Cell />
+			</Column>
+			<Column columnSpan={2}>
+				<Cell />
+			</Column>
+			<Column columnSpan={2}>
+				<Cell />
+			</Column>
+			<Column columnSpan={2}>
+				<Cell />
+			</Column>
+			<Column columnSpan={2}>
+				<Cell />
+			</Column>
+			<Column columnSpan={2}>
+				<Cell />
+			</Column>
+			<Column columnSpan={3}>
+				<Cell />
+			</Column>
+			<Column columnSpan={3}>
+				<Cell />
+			</Column>
+			<Column columnSpan={3}>
+				<Cell />
+			</Column>
+			<Column columnSpan={3}>
+				<Cell />
+			</Column>
+			<Column columnSpan={4}>
+				<Cell />
+			</Column>
+			<Column columnSpan={4}>
+				<Cell />
+			</Column>
+			<Column columnSpan={4}>
+				<Cell />
+			</Column>
+			<Column columnSpan={5}>
+				<Cell />
+			</Column>
+			<Column columnSpan={5}>
+				<Cell />
+			</Column>
+			<Column columnSpan={2}>
+				<Cell />
+			</Column>
+			<Column columnSpan={6}>
+				<Cell />
+			</Column>
+			<Column columnSpan={6}>
+				<Cell />
+			</Column>
 		</Columns>
 	</Box>
 );
-ColSpans.args = {
-	gap: 2,
+ColSpans.args = {};
+
+export const Gap: ComponentStory<typeof Columns> = (args) => (
+	<Box palette="light" background="body">
+		<Columns {...args}>
+			<Column columnSpan={3}>
+				<Cell />
+			</Column>
+			<Column columnSpan={3}>
+				<Cell />
+			</Column>
+			<Column columnSpan={3}>
+				<Cell />
+			</Column>
+			<Column columnSpan={3}>
+				<Cell />
+			</Column>
+		</Columns>
+	</Box>
+);
+Gap.args = {
+	gap: 3,
 };
 
 export const RowAndColumnGaps: ComponentStory<typeof Columns> = (args) => (
 	<Box palette="light" background="body">
 		<Columns {...args}>
-			<Column columnSpan={3} background="shade" padding={1} />
-			<Column columnSpan={3} background="shade" padding={1} />
-			<Column columnSpan={3} background="shade" padding={1} />
-			<Column columnSpan={3} background="shade" padding={1} />
-			<Column columnSpan={4} background="shade" padding={1} />
-			<Column columnSpan={4} background="shade" padding={1} />
-			<Column columnSpan={4} background="shade" padding={1} />
+			<Column columnSpan={3}>
+				<Cell />
+			</Column>
+			<Column columnSpan={3}>
+				<Cell />
+			</Column>
+			<Column columnSpan={3}>
+				<Cell />
+			</Column>
+			<Column columnSpan={3}>
+				<Cell />
+			</Column>
+			<Column columnSpan={4}>
+				<Cell />
+			</Column>
+			<Column columnSpan={4}>
+				<Cell />
+			</Column>
+			<Column columnSpan={4}>
+				<Cell />
+			</Column>
 		</Columns>
 	</Box>
 );
