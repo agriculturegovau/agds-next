@@ -27,7 +27,7 @@ export const goldTheme = {
 	success: '#0b996c',
 	successMuted: '#f3faf8',
 	warning: '#f69900',
-	warningMuted: undefined,
+	warningMuted: '#fffaf2',
 	info: '#00bfe9',
-	infoMuted: undefined,
+	infoMuted: '#f2fcfe',
 } as const;
