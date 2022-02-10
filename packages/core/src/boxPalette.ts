@@ -13,7 +13,7 @@ const boxPaletteVars = {
 	backgroundBodyAlt: '--agds-background-body-alt',
 	backgroundShadeAlt: '--agds-background-shade-alt',
 	border: '--agds-border',
-	borderInput: '--agdds-border-input',
+	borderInput: '--agds-border-input',
 };
 
 export const boxPalettes = {
