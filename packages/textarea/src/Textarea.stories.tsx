@@ -108,30 +108,5 @@ export const TextareaPlaceholder: ComponentStory<typeof Textarea> = (args) => (
 	</Box>
 );
 TextareaPlaceholder.args = {
-	placeholder: 'Enter an email',
+	placeholder: 'Enter a message',
 };
-
-// https://developer.mozilla.org/en-US/docs/Web/HTML/Element/text-Textarea
-export const Types = () => (
-	<Stack gap={1} background="body" palette="light">
-		{[
-			'text',
-			'email',
-			'tel',
-			'url',
-			'password',
-			'file',
-			'number',
-			'date',
-			'time',
-			'datetime',
-			'datetime-local',
-			'month',
-			'week',
-		].map((type) => (
-			<Field key={type} label={`Textarea type ${type}`}>
-				<Textarea placeholder={`Placeholder for ${type}`} type={type} block />
-			</Field>
-		))}
-	</Stack>
-);
