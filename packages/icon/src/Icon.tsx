@@ -18,7 +18,7 @@ const colors = {
 
 export type IconProps = SvgProps & {
 	icon: IconNameType;
-	size: Spacing;
+	size?: Spacing;
 	color?: keyof typeof colors;
 };
 
