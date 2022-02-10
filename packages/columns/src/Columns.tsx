@@ -7,11 +7,10 @@ import {
 	mapSpacing,
 	mq,
 } from '@ag.ds-next/core';
-import { Box } from '@ag.ds-next/box';
+import { Box, BoxProps } from '@ag.ds-next/box';
 
-export type ColumnsProps = {
+export type ColumnsProps = Pick<BoxProps, 'gap' | 'alignItems'> & {
 	children: ReactNode;
-	gap?: ResponsiveProp<Spacing>;
 	columnGap?: ResponsiveProp<Spacing>;
 	rowGap?: ResponsiveProp<Spacing>;
 };
