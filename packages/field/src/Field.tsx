@@ -10,6 +10,7 @@ export type FieldProps = {
 	hint?: string;
 	label: string;
 	message?: string;
+	invalid?: boolean;
 	valid?: boolean;
 };
 

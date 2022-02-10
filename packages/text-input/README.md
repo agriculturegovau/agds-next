@@ -30,10 +30,10 @@ Add a border to text inputs and text areas to indicate whether user input is val
 
 ```jsx live
 <Stack gap={1}>
-	<Field label="Invalid" valid={false}>
+	<Field label="Invalid" invalid>
 		<TextInput />
 	</Field>
-	<Field label="Valid" valid={true}>
+	<Field label="Valid" valid>
 		<TextInput />
 	</Field>
 </Stack>

@@ -18,8 +18,6 @@ Using [context](https://reactjs.org/docs/context.html), the field component conn
 
 Each text field must be accompanied by a label. Effective form labeling helps users understand what information to enter into a text input.
 
-Using placeholder text in lieu of a label is sometimes employed as a space-saving method. However, this is not recommended because it hides context and presents accessibility issues.
-
 ```jsx live
 <Field label="Name">
 	<TextInput />
@@ -46,14 +44,14 @@ TODO Success messages?
 <Stack gap={1}>
 	<Field
 		label="Email"
-		valid={false}
+		invalid
 		message="Enter an email address in the correct format, like name@example.com"
 	>
 		<TextInput type="email" />
 	</Field>
 	<Field
 		label="Email"
-		valid={true}
+		valid
 		message="The email address you have entered is valid"
 	>
 		<TextInput type="email" value="hello@example.com" />
