@@ -11,6 +11,7 @@ export const FieldContainer = ({ children }: FieldContainerProps) => {
 	const { invalid } = useField();
 	return (
 		<Stack
+			gap={0.5}
 			css={
 				invalid
 					? {
