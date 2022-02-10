@@ -59,7 +59,7 @@ export const textInputStyles = ({
 		fontFamily: tokens.font.body,
 		...fontGrid('sm', 'nospace'),
 		backgroundColor: `var(${themeVars.lightBackgroundBody})`,
-		color: boxPalette.foregroundText,
+		color: themeVars.lightForegroundText,
 
 		maxWidth: maxWidth ? maxWidths[maxWidth] : '12.8125rem', // TODO
 
@@ -76,10 +76,11 @@ export const textInputStyles = ({
 		}),
 
 		// Success
-		...(valid && {
-			backgroundColor: `var(${themeVars.successMuted})`,
-			borderColor: `var(${themeVars.success})`,
-		}),
+		...(valid &&
+			!invalid && {
+				backgroundColor: `var(${themeVars.successMuted})`,
+				borderColor: `var(${themeVars.success})`,
+			}),
 
 		'&:disabled': {
 			cursor: 'not-allowed',
@@ -89,7 +90,7 @@ export const textInputStyles = ({
 		'&:focus': outline,
 
 		'::placeholder': {
-			color: boxPalette.foregroundMuted,
+			color: `var(${themeVars.lightForegroundMuted})`,
 		},
 	} as const);
 

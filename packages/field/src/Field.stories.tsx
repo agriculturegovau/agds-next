@@ -1,10 +1,11 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { Flex, Stack } from '@ag.ds-next/box';
+import { Box, Stack } from '@ag.ds-next/box';
+import { TextInput } from '@ag.ds-next/text-input';
 import { Field } from './Field';
-import { FieldProvider } from './FieldContext';
+import { FieldProvider } from './FieldProvider';
 import { FieldLabel } from './FieldLabel';
-import { FieldError } from './FieldError';
+import { FieldMessage } from './FieldMessage';
 import { FieldHint } from './FieldHint';
 
 export default {
@@ -13,33 +14,69 @@ export default {
 } as ComponentMeta<typeof Field>;
 
 export const LightField: ComponentStory<typeof Field> = (args) => (
-	<Flex background="body" palette="light">
-		<Field label="Light Field">
+	<Box background="body" palette="light">
+		<Field {...args}>
 			<TextInput />
 		</Field>
-	</Flex>
+	</Box>
 );
-LightField.args = {};
+LightField.args = {
+	label: 'Light',
+};
 
 export const DarkField: ComponentStory<typeof Field> = (args) => (
-	<Flex background="body" palette="dark" padding={1}>
-		<Field label="Dark Field">
+	<Box background="body" palette="dark" padding={1}>
+		<Field {...args}>
 			<TextInput />
 		</Field>
-	</Flex>
+	</Box>
 );
-DarkField.args = {};
+DarkField.args = {
+	label: 'Dark',
+};
+
+export const Invalid: ComponentStory<typeof Field> = (args) => (
+	<Box background="body" palette="light">
+		<Field {...args}>
+			<TextInput />
+		</Field>
+	</Box>
+);
+Invalid.args = {
+	label: 'Invalid',
+	message: 'This field is invalid',
+	invalid: true,
+};
+
+export const Valid: ComponentStory<typeof Field> = (args) => (
+	<Box background="body" palette="light">
+		<Field {...args}>
+			<TextInput />
+		</Field>
+	</Box>
+);
+Valid.args = {
+	label: 'Valid',
+	message: 'This field is valid',
+	valid: true,
+};
 
 export const Modular: ComponentStory<typeof Field> = (args) => (
-	<Flex background="body">
-		<FieldProvider hasHint={true} hasError={true}>
+	<Box background="body">
+		<FieldProvider {...args}>
 			<Stack gap={0.25}>
-				<FieldLabel>Label</FieldLabel>
-				<FieldHint>Hint</FieldHint>
-				<FieldError>Field error</FieldError>
+				<FieldLabel>{args.label}</FieldLabel>
+				{args.hint ? <FieldHint>{args.hint}</FieldHint> : null}
+				{args.message ? <FieldMessage>{args.message}</FieldMessage> : null}
 				<TextInput />
 			</Stack>
 		</FieldProvider>
-	</Flex>
+	</Box>
 );
-Modular.args = {};
+Modular.args = {
+	label: 'Label',
+	hint: 'Hint',
+	message: 'Message',
+	invalid: false,
+	valid: false,
+};

@@ -5,54 +5,71 @@ import { Field } from '@ag.ds-next/field';
 import { TextInput } from './TextInput';
 
 export default {
-	title: 'forms/text-input',
+	title: 'forms/TextInput',
 	component: TextInput,
 } as ComponentMeta<typeof TextInput>;
 
-export const LightInput: ComponentStory<typeof TextInput> = (args) => (
+export const Light: ComponentStory<typeof Field> = (args) => (
 	<Box background="body" palette="light">
-		<Field label="Light Input">
+		<Field label="Light Field">
 			<TextInput {...args} />
 		</Field>
 	</Box>
 );
-LightInput.args = {};
+Light.args = {};
 
-export const DarkInput: ComponentStory<typeof TextInput> = (args) => (
+export const Dark: ComponentStory<typeof Field> = (args) => (
 	<Box background="body" palette="dark" padding={1}>
-		<Field label="Dark Input">
+		<Field label="Dark Field">
 			<TextInput {...args} />
 		</Field>
 	</Box>
 );
-DarkInput.args = {};
+Dark.args = {};
 
-export const DisabledInput: ComponentStory<typeof TextInput> = (args) => (
+export const Disabled: ComponentStory<typeof TextInput> = (args) => (
 	<Box background="body" palette="light">
 		<Field label="Disabled Input">
 			<TextInput {...args} />
 		</Field>
 	</Box>
 );
-DisabledInput.args = {
+Disabled.args = {
 	disabled: true,
 };
 
-export const InvalidInput: ComponentStory<typeof TextInput> = (args) => (
+export const Invalid: ComponentStory<typeof TextInput> = (args) => (
 	<Box background="body" palette="light">
 		<Field
 			label="Email"
-			errorMessage="Enter an email address in the correct format, like name@example.com"
+			message="Enter an email address in the correct format, like name@example.com"
+			invalid
 		>
 			<TextInput {...args} />
 		</Field>
 	</Box>
 );
-InvalidInput.args = {
+Invalid.args = {
 	type: 'email',
 };
 
-export const InputHint: ComponentStory<typeof TextInput> = (args) => (
+export const Valid: ComponentStory<typeof TextInput> = (args) => (
+	<Box background="body" palette="light">
+		<Field
+			label="Email"
+			message="The email address you have entered is valid"
+			valie
+		>
+			<TextInput {...args} />
+		</Field>
+	</Box>
+);
+Valid.args = {
+	type: 'email',
+	value: 'hello@example.com',
+};
+
+export const Hint: ComponentStory<typeof TextInput> = (args) => (
 	<Box background="body" palette="light">
 		<Field
 			label="Email"
@@ -62,16 +79,16 @@ export const InputHint: ComponentStory<typeof TextInput> = (args) => (
 		</Field>
 	</Box>
 );
-InputHint.args = {};
+Hint.args = {};
 
-export const BlockInput: ComponentStory<typeof TextInput> = (args) => (
+export const Block: ComponentStory<typeof TextInput> = (args) => (
 	<Box background="body" palette="light" width="100%">
 		<Field label="Block Input">
 			<TextInput {...args} />
 		</Field>
 	</Box>
 );
-BlockInput.args = {
+Block.args = {
 	block: true,
 };
 
