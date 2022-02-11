@@ -247,6 +247,7 @@ export const linkStyles = {
 	color: boxPalette.foregroundAction,
 	textDecoration: 'underline',
 	textDecorationSkip: 'auto',
+	cursor: 'pointer',
 
 	'&:hover': {
 		color: boxPalette.foregroundText,
