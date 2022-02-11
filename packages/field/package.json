@@ -4,6 +4,9 @@
 	"main": "dist/ag.ds-next-field.cjs.js",
 	"module": "dist/ag.ds-next-field.esm.js",
 	"license": "MIT",
+	"dependencies": {
+		"@reach/auto-id": "^0.16.0"
+	},
 	"peerDependencies": {
 		"@ag.ds-next/box": "3.0.0",
 		"@ag.ds-next/core": "2.0.0",
