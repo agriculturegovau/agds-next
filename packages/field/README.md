@@ -45,6 +45,7 @@ Hints can be used to provide more context that will help the user successfully c
 ### Messages
 
 Error messages are used to notify the user when a form field has not passed validation. Use clear messages to explain what went wrong and how to fix it.
+
 ```jsx live
 <Stack gap={1}>
 	<Field
