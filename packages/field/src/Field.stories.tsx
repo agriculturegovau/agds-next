@@ -61,7 +61,7 @@ export const Modular: ComponentStory<typeof Field> = ({
 		invalid,
 	});
 	return (
-		<FieldContainer>
+		<FieldContainer invalid={invalid}>
 			<FieldLabel htmlFor={fieldId}>{label}</FieldLabel>
 			{hint ? <FieldHint id={hintId}>{hint}</FieldHint> : null}
 			{message ? <FieldMessage id={messageId}>{message}</FieldMessage> : null}
