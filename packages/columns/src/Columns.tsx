@@ -9,7 +9,7 @@ import {
 } from '@ag.ds-next/core';
 import { Box, BoxProps } from '@ag.ds-next/box';
 
-export type ColumnsProps = BoxProps & {
+export type ColumnsProps = Pick<BoxProps, 'gap' | 'alignItems'> & {
 	children: ReactNode;
 	columnGap?: ResponsiveProp<Spacing>;
 	rowGap?: ResponsiveProp<Spacing>;

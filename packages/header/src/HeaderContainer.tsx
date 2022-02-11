@@ -1,4 +1,4 @@
-import { Flex } from '@ag.ds-next/box';
+import { Box, Flex } from '@ag.ds-next/box';
 import { tokens } from '@ag.ds-next/core';
 import { Columns } from '@ag.ds-next/columns';
 import React from 'react';
@@ -36,14 +36,13 @@ export function HeaderContainer({ variant, children }: HeaderContainerProps) {
 			paddingY={{ xs: 1, md: 3 }}
 			justifyContent="center"
 		>
-			<Columns
-				alignItems="center"
+			<Box
 				maxWidth={tokens.maxWidth.container}
 				paddingX={tokens.containerPadding}
 				width="100%"
 			>
-				{children}
-			</Columns>
+				<Columns alignItems="center">{children}</Columns>
+			</Box>
 		</Flex>
 	);
 }

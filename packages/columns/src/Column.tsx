@@ -4,11 +4,11 @@ import {
 	mapResponsiveProp,
 	mq,
 } from '@ag.ds-next/core';
-import { Box, BoxProps } from '@ag.ds-next/box';
+import { Box } from '@ag.ds-next/box';
 
 type ColumnRange = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12;
 
-export type ColumnProps = BoxProps & {
+export type ColumnProps = {
 	columnSpan?: ResponsiveProp<ColumnRange>;
 	columnStart?: ResponsiveProp<ColumnRange | 'first' | 'last'>;
 	columnEnd?: ResponsiveProp<ColumnRange | 'first' | 'last'>;

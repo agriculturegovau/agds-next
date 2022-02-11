@@ -57,7 +57,7 @@ export default function Homepage() {
 								hard to get a stable release out as soon as we can.
 							</p>
 						</Body>
-						<Columns gap={1} flexWrap="wrap" as="ul">
+						<Columns gap={1} as="ul">
 							<Column
 								as="li"
 								columnSpan={{ xs: 12, sm: 6, md: 6, lg: 4, xl: 3 }}

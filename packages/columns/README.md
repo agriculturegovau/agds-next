@@ -1,25 +1,49 @@
 ---
 title: Columns
 description: A grid consists of a framework of cells laid out and aligned vertically and horizontally. It helps users read and visually navigate website content more easily, using a responsive, scrollable column structure.
-group: Foundations
+group: Layout
 ---
 
 This package includes the components `<Columns />` and `<Column />`.
 
 ```jsx live
 <Columns gap={0.5}>
-	<Column columnSpan={1} background="shade" padding={1} />
-	<Column columnSpan={1} background="shade" padding={1} />
-	<Column columnSpan={1} background="shade" padding={1} />
-	<Column columnSpan={1} background="shade" padding={1} />
-	<Column columnSpan={1} background="shade" padding={1} />
-	<Column columnSpan={1} background="shade" padding={1} />
-	<Column columnSpan={1} background="shade" padding={1} />
-	<Column columnSpan={1} background="shade" padding={1} />
-	<Column columnSpan={1} background="shade" padding={1} />
-	<Column columnSpan={1} background="shade" padding={1} />
-	<Column columnSpan={1} background="shade" padding={1} />
-	<Column columnSpan={1} background="shade" padding={1} />
+	<Column columnSpan={1}>
+		<Box background="shadeAlt" padding={1} />
+	</Column>
+	<Column columnSpan={1}>
+		<Box background="shadeAlt" padding={1} />
+	</Column>
+	<Column columnSpan={1}>
+		<Box background="shadeAlt" padding={1} />
+	</Column>
+	<Column columnSpan={1}>
+		<Box background="shadeAlt" padding={1} />
+	</Column>
+	<Column columnSpan={1}>
+		<Box background="shadeAlt" padding={1} />
+	</Column>
+	<Column columnSpan={1}>
+		<Box background="shadeAlt" padding={1} />
+	</Column>
+	<Column columnSpan={1}>
+		<Box background="shadeAlt" padding={1} />
+	</Column>
+	<Column columnSpan={1}>
+		<Box background="shadeAlt" padding={1} />
+	</Column>
+	<Column columnSpan={1}>
+		<Box background="shadeAlt" padding={1} />
+	</Column>
+	<Column columnSpan={1}>
+		<Box background="shadeAlt" padding={1} />
+	</Column>
+	<Column columnSpan={1}>
+		<Box background="shadeAlt" padding={1} />
+	</Column>
+	<Column columnSpan={1}>
+		<Box background="shadeAlt" padding={1} />
+	</Column>
 </Columns>
 ```
 
@@ -29,27 +53,69 @@ Use the `columnSpan` prop to control how many columns you want to column to span
 
 ```jsx live
 <Columns gap={0.5}>
-	<Column columnSpan={3} background="shade" padding={1} />
-	<Column columnSpan={3} background="shade" padding={1} />
-	<Column columnSpan={3} background="shade" padding={1} />
-	<Column columnSpan={3} background="shade" padding={1} />
-	<Column columnSpan={6} background="shade" padding={1} />
-	<Column columnSpan={6} background="shade" padding={1} />
-	<Column columnSpan={4} background="shade" padding={1} />
-	<Column columnSpan={4} background="shade" padding={1} />
-	<Column columnSpan={4} background="shade" padding={1} />
-	<Column columnSpan={2} background="shade" padding={1} />
-	<Column columnSpan={4} background="shade" padding={1} />
-	<Column columnSpan={4} background="shade" padding={1} />
-	<Column columnSpan={2} background="shade" padding={1} />
-	<Column columnSpan={8} background="shade" padding={1} />
-	<Column columnSpan={4} background="shade" padding={1} />
-	<Column columnSpan={2} background="shade" padding={1} />
-	<Column columnSpan={2} background="shade" padding={1} />
-	<Column columnSpan={2} background="shade" padding={1} />
-	<Column columnSpan={2} background="shade" padding={1} />
-	<Column columnSpan={2} background="shade" padding={1} />
-	<Column columnSpan={2} background="shade" padding={1} />
+	<Column columnSpan={3}>
+		<Box background="shadeAlt" padding={1} />
+	</Column>
+	<Column columnSpan={3}>
+		<Box background="shadeAlt" padding={1} />
+	</Column>
+	<Column columnSpan={3}>
+		<Box background="shadeAlt" padding={1} />
+	</Column>
+	<Column columnSpan={3}>
+		<Box background="shadeAlt" padding={1} />
+	</Column>
+	<Column columnSpan={6}>
+		<Box background="shadeAlt" padding={1} />
+	</Column>
+	<Column columnSpan={6}>
+		<Box background="shadeAlt" padding={1} />
+	</Column>
+	<Column columnSpan={4}>
+		<Box background="shadeAlt" padding={1} />
+	</Column>
+	<Column columnSpan={4}>
+		<Box background="shadeAlt" padding={1} />
+	</Column>
+	<Column columnSpan={4}>
+		<Box background="shadeAlt" padding={1} />
+	</Column>
+	<Column columnSpan={2}>
+		<Box background="shadeAlt" padding={1} />
+	</Column>
+	<Column columnSpan={4}>
+		<Box background="shadeAlt" padding={1} />
+	</Column>
+	<Column columnSpan={4}>
+		<Box background="shadeAlt" padding={1} />
+	</Column>
+	<Column columnSpan={2}>
+		<Box background="shadeAlt" padding={1} />
+	</Column>
+	<Column columnSpan={8}>
+		<Box background="shadeAlt" padding={1} />
+	</Column>
+	<Column columnSpan={4}>
+		<Box background="shadeAlt" padding={1} />
+	</Column>
+	<Column columnSpan={2}>
+		<Box background="shadeAlt" padding={1} />
+	</Column>
+	<Column columnSpan={2}>
+		<Box background="shadeAlt" padding={1} />
+	</Column>
+	<Column columnSpan={2}>
+		<Box background="shadeAlt" padding={1} />
+	</Column>
+	<Column columnSpan={2}>
+		<Box background="shadeAlt" padding={1} />
+	</Column>
+	<Column columnSpan={2}>
+		<Box background="shadeAlt" padding={1} />
+	</Column>
+	<Column columnSpan={2}>
+		<Box background="shadeAlt" padding={1} />
+	</Column>
 </Columns>
 ```
 
@@ -59,13 +125,27 @@ The `gap` prop effects both the row and column gap. To set a different gap for r
 
 ```jsx live
 <Columns columnGap={0.5} rowGap={2}>
-	<Column columnSpan={3} background="shade" padding={1} />
-	<Column columnSpan={3} background="shade" padding={1} />
-	<Column columnSpan={3} background="shade" padding={1} />
-	<Column columnSpan={3} background="shade" padding={1} />
-	<Column columnSpan={4} background="shade" padding={1} />
-	<Column columnSpan={4} background="shade" padding={1} />
-	<Column columnSpan={4} background="shade" padding={1} />
+	<Column columnSpan={3}>
+		<Box background="shadeAlt" padding={1} />
+	</Column>
+	<Column columnSpan={3}>
+		<Box background="shadeAlt" padding={1} />
+	</Column>
+	<Column columnSpan={3}>
+		<Box background="shadeAlt" padding={1} />
+	</Column>
+	<Column columnSpan={3}>
+		<Box background="shadeAlt" padding={1} />
+	</Column>
+	<Column columnSpan={4}>
+		<Box background="shadeAlt" padding={1} />
+	</Column>
+	<Column columnSpan={4}>
+		<Box background="shadeAlt" padding={1} />
+	</Column>
+	<Column columnSpan={4}>
+		<Box background="shadeAlt" padding={1} />
+	</Column>
 </Columns>
 ```
 
@@ -75,6 +155,8 @@ The `columnStart` and `columnEnd` props can be used to determine the Column's st
 
 ```jsx live
 <Columns>
-	<Column columnStart={3} columnEnd={9} background="shade" padding={1} />
+	<Column columnStart={3} columnEnd={9}>
+		<Box background="shadeAlt" padding={1} />
+	</Column>
 </Columns>
 ```

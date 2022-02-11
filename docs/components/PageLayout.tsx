@@ -28,7 +28,7 @@ export function PageLayout({
 		<Content>
 			<Columns>
 				{sideNav && (
-					<Column columnSpan={{ xs: 12, md: 3 }} flexShrink={0}>
+					<Column columnSpan={{ xs: 12, md: 3 }}>
 						<SideNav
 							variant="light"
 							activePath={router.asPath}
