@@ -73,6 +73,4 @@ Modular.args = {
 	label: 'Label',
 	hint: 'Hint',
 	message: 'Message',
-	invalid: false,
-	valid: false,
 };

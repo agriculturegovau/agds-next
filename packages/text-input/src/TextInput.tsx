@@ -17,8 +17,8 @@ export type InputProps = DetailedHTMLProps<
 	required?: boolean;
 	hint?: string;
 	message?: string;
-	invalid?: boolean;
-	valid?: boolean;
+	invalid?: true;
+	valid?: true;
 	block?: boolean;
 	maxWidth?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
 };
@@ -41,8 +41,8 @@ export const TextInput = ({
 			required={Boolean(required)}
 			hint={hint}
 			message={message}
-			invalid={Boolean(invalid)}
-			valid={Boolean(valid)}
+			invalid={invalid}
+			valid={valid}
 		>
 			{(allyProps) => (
 				<input required={required} css={styles} {...allyProps} {...props} />

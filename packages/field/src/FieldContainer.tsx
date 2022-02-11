@@ -4,7 +4,7 @@ import { globalPalette, mapSpacing } from '@ag.ds-next/core';
 
 export type FieldContainerProps = {
 	children: ReactNode;
-	invalid?: boolean;
+	invalid?: true;
 };
 
 export const FieldContainer = ({ children, invalid }: FieldContainerProps) => (
