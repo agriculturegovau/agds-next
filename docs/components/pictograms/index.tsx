@@ -7,6 +7,7 @@ import card from './card.svg';
 import columns from './columns.svg';
 import content from './content.svg';
 import core from './core.svg';
+import field from './field.svg';
 import footer from './footer.svg';
 import guides from './guides.svg';
 import header from './header.svg';
@@ -18,6 +19,7 @@ import packages from './packages.svg';
 import sideNav from './side-nav.svg';
 import starter from './starter.svg';
 import text from './text.svg';
+import textInput from './text-input.svg';
 
 export const pictograms = {
 	'ag-branding': agBranding,
@@ -30,6 +32,7 @@ export const pictograms = {
 	columns,
 	content,
 	core,
+	field,
 	footer,
 	guides,
 	header,
@@ -44,6 +47,8 @@ export const pictograms = {
 	'side-nav': sideNav,
 	starter,
 	text,
+	textarea: textInput,
+	'text-input': textInput,
 };
 
 export function getPictogram(slug: string) {
