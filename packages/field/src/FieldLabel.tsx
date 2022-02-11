@@ -1,12 +1,14 @@
 import type { ReactNode } from 'react';
 import { Text } from '@ag.ds-next/text';
-import { useField } from './FieldProvider';
 
-export const FieldLabel = ({ children }: { children: ReactNode }) => {
-	const { fieldId } = useField();
-	return (
-		<Text as="label" htmlFor={fieldId} display="block">
-			{children}
-		</Text>
-	);
-};
+export const FieldLabel = ({
+	children,
+	htmlFor,
+}: {
+	children: ReactNode;
+	htmlFor: string;
+}) => (
+	<Text as="label" htmlFor={htmlFor} display="block" fontWeight="bold">
+		{children}
+	</Text>
+);

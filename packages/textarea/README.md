@@ -9,9 +9,7 @@ group: Forms
 By default, the `Textarea` component does not expand to fill the available space.
 
 ```jsx live
-<Field label="Message">
-	<Textarea />
-</Field>
+<Textarea label="Message" />
 ```
 
 ### Block
@@ -19,9 +17,19 @@ By default, the `Textarea` component does not expand to fill the available space
 Use the `block` prop to expand the component to fill the available space.
 
 ```jsx live
-<Field label="Message">
-	<Textarea block />
-</Field>
+<Textarea label="Message" block />
+```
+
+### Required
+
+The `Textarea` component will always append `(optional)` or `(required)` to the label based on the `required` prop.
+
+```jsx live
+<Stack gap={1}>
+	<Textarea label="Default" />
+	<Textarea label="Required" required />
+	<Textarea label="Optional" required={false} />
+</Stack>
 ```
 
 ### Valid and invalid textareas
@@ -30,12 +38,8 @@ Use the `invalid` and `valid` props to indicate whether user input is valid (val
 
 ```jsx live
 <Stack gap={1}>
-	<Field label="Invalid" invalid message="This field is invalid">
-		<Textarea />
-	</Field>
-	<Field label="Valid" valid message="This field is valid">
-		<Textarea />
-	</Field>
+	<Textarea label="Invalid" invalid message="This field is invalid" />
+	<Textarea label="Valid" valid message="This field is valid" />
 </Stack>
 ```
 
@@ -44,9 +48,7 @@ Use the `invalid` and `valid` props to indicate whether user input is valid (val
 Disabled textarea elements are unusable and can not be clicked. This prevents a user from interacting with the textarea element until another action is complete. Disabled textarea elements in a form will not be submitted.
 
 ```jsx live
-<Field label="Message">
-	<Textarea disabled />
-</Field>
+<Textarea label="Message" disabled />
 ```
 
 ### Maximum widths
@@ -55,20 +57,10 @@ The maximum width of a textarea field should indicate the amount of information 
 
 ```jsx live
 <Stack gap={1}>
-	<Field label="xs textarea">
-		<Textarea maxWidth="xs" />
-	</Field>
-	<Field label="sm textarea">
-		<Textarea maxWidth="sm" />
-	</Field>
-	<Field label="md textarea">
-		<Textarea maxWidth="md" />
-	</Field>
-	<Field label="lg textarea">
-		<Textarea maxWidth="lg" />
-	</Field>
-	<Field label="xl textarea">
-		<Textarea maxWidth="xl" />
-	</Field>
+	<Textarea label="xs textarea" maxWidth="xs" />
+	<Textarea label="sm textarea" maxWidth="sm" />
+	<Textarea label="md textarea" maxWidth="md" />
+	<Textarea label="lg textarea" maxWidth="lg" />
+	<Textarea label="xl textarea" maxWidth="xl" />
 </Stack>
 ```

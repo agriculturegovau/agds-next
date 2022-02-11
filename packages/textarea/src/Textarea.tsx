@@ -1,26 +1,45 @@
 import React, { DetailedHTMLProps, TextareaHTMLAttributes } from 'react';
-import { useField } from '@ag.ds-next/field';
+import { Field } from '@ag.ds-next/field';
 import { textInputStyles } from '@ag.ds-next/text-input';
 
 export type TextareaProps = DetailedHTMLProps<
 	TextareaHTMLAttributes<HTMLTextAreaElement>,
 	HTMLTextAreaElement
 > & {
+	label: string;
+	required?: boolean;
+	hint?: string;
+	message?: string;
+	invalid?: boolean;
+	valid?: boolean;
 	block?: boolean;
 	maxWidth?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
 };
 
-export const Textarea = ({ block, maxWidth, ...props }: TextareaProps) => {
-	const { fieldId, describedBy, invalid, valid, required } = useField();
+export const Textarea = ({
+	label,
+	required,
+	hint,
+	message,
+	invalid,
+	valid,
+	block,
+	maxWidth,
+	...props
+}: TextareaProps) => {
 	const styles = textInputStyles({ block, maxWidth, invalid, valid });
 	return (
-		<textarea
-			id={fieldId}
-			required={required}
-			aria-invalid={Boolean(invalid)}
-			aria-describedby={describedBy}
-			css={styles}
-			{...props}
-		/>
+		<Field
+			label={label}
+			required={Boolean(required)}
+			hint={hint}
+			message={message}
+			invalid={Boolean(invalid)}
+			valid={Boolean(valid)}
+		>
+			{(allyProps) => (
+				<textarea required={required} css={styles} {...allyProps} {...props} />
+			)}
+		</Field>
 	);
 };

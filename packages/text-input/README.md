@@ -9,9 +9,7 @@ group: Forms
 By default, the `TextInput` component does not expand to fill the available space.
 
 ```jsx live
-<Field label="Name">
-	<TextInput />
-</Field>
+<TextInput label="Name" />
 ```
 
 ### Block
@@ -19,9 +17,19 @@ By default, the `TextInput` component does not expand to fill the available spac
 Use the `block` prop to expand the component to fill the available space.
 
 ```jsx live
-<Field label="Name">
-	<TextInput block />
-</Field>
+<TextInput label="Name" block />
+```
+
+### Required
+
+The `TextInput` component will always append `(optional)` or `(required)` to the label based on the `required` prop.
+
+```jsx live
+<Stack gap={1}>
+	<TextInput label="Default" />
+	<TextInput label="Required" required />
+	<TextInput label="Optional" required={false} />
+</Stack>
 ```
 
 ### Valid and invalid inputs
@@ -30,12 +38,8 @@ Use the `invalid` and `valid` props to indicate whether user input is valid (val
 
 ```jsx live
 <Stack gap={1}>
-	<Field label="Invalid" invalid>
-		<TextInput />
-	</Field>
-	<Field label="Valid" valid>
-		<TextInput />
-	</Field>
+	<TextInput label="Invalid" invalid message="This input is invalid" />
+	<TextInput label="Valid" valid />
 </Stack>
 ```
 
@@ -44,9 +48,7 @@ Use the `invalid` and `valid` props to indicate whether user input is valid (val
 Disabled input elements are unusable and can not be clicked. This prevents a user from interacting with the input element until another action is complete. Disabled input elements in a form will not be submitted.
 
 ```jsx live
-<Field label="Name">
-	<TextInput disabled />
-</Field>
+<TextInput label="Name" disabled />
 ```
 
 ### Different width sizes for inputs
@@ -55,20 +57,10 @@ The width of a text input field should indicate the amount of information expect
 
 ```jsx live
 <Stack gap={1}>
-	<Field label="xs input">
-		<TextInput maxWidth="xs" />
-	</Field>
-	<Field label="sm input">
-		<TextInput maxWidth="sm" />
-	</Field>
-	<Field label="md input">
-		<TextInput maxWidth="md" />
-	</Field>
-	<Field label="lg input">
-		<TextInput maxWidth="lg" />
-	</Field>
-	<Field label="xl input">
-		<TextInput maxWidth="xl" />
-	</Field>
+	<TextInput label="xs input" maxWidth="xs" />
+	<TextInput label="sm input" maxWidth="sm" />
+	<TextInput label="md input" maxWidth="md" />
+	<TextInput label="lg input" maxWidth="lg" />
+	<TextInput label="xl input" maxWidth="xl" />
 </Stack>
 ```

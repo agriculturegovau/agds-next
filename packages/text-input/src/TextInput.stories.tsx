@@ -1,7 +1,6 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { Stack } from '@ag.ds-next/box';
-import { Field } from '@ag.ds-next/field';
 import { TextInput } from './TextInput';
 
 export default {
@@ -10,89 +9,84 @@ export default {
 } as ComponentMeta<typeof TextInput>;
 
 export const Basic: ComponentStory<typeof TextInput> = (args) => (
-	<Field label="Basic TextInput">
-		<TextInput {...args} />
-	</Field>
+	<TextInput {...args} />
 );
-Basic.args = {};
+Basic.args = {
+	label: 'Example',
+};
 
 export const Required: ComponentStory<typeof TextInput> = (args) => (
-	<Field label="Basic TextInput" required>
-		<TextInput {...args} />
-	</Field>
+	<TextInput {...args} />
 );
 Required.args = {
 	required: true,
+	label: 'Example',
 };
 
 export const Disabled: ComponentStory<typeof TextInput> = (args) => (
-	<Field label="Disabled TextInput">
-		<TextInput {...args} />
-	</Field>
+	<TextInput {...args} />
 );
 Disabled.args = {
 	disabled: true,
+	label: 'Example',
 };
 
 export const Invalid: ComponentStory<typeof TextInput> = (args) => (
-	<Field
-		label="Email"
-		message="Enter an email address in the correct format, like name@example.com"
-		invalid
-	>
-		<TextInput {...args} />
-	</Field>
+	<TextInput {...args} />
 );
 Invalid.args = {
 	type: 'email',
+	label: 'Email',
+	message:
+		'Enter an email address in the correct format, like name@example.com',
+	invalid: true,
 };
 
 export const Valid: ComponentStory<typeof TextInput> = (args) => (
-	<Field
-		label="Email"
-		message="The email address you have entered is valid"
-		valid
-	>
-		<TextInput {...args} />
-	</Field>
+	<TextInput {...args} />
 );
 Valid.args = {
 	type: 'email',
+	label: 'Email',
+	message: 'The email address you have entered is valid',
 	value: 'hello@example.com',
 };
 
 export const Hint: ComponentStory<typeof TextInput> = (args) => (
-	<Field label="Email" hint="We will only use this to respond to your question">
-		<TextInput {...args} />
-	</Field>
+	<TextInput {...args} />
 );
-Hint.args = {};
+Hint.args = {
+	label: 'Email',
+	type: 'email',
+	hint: 'We will only use this to respond to your question',
+};
 
 export const Block: ComponentStory<typeof TextInput> = (args) => (
-	<Field label="Block TextInput">
-		<TextInput {...args} />
-	</Field>
+	<TextInput {...args} />
 );
 Block.args = {
 	block: true,
+	label: 'Block',
 };
 
 export const MaxWidths: ComponentStory<typeof TextInput> = (args) => (
 	<Stack gap={1}>
 		{(['xs', 'sm', 'md', 'lg', 'xl'] as const).map((size) => (
-			<Field key={size} label={`TextInput max width ${size}`}>
-				<TextInput {...args} maxWidth={size} />
-			</Field>
+			<TextInput
+				key={size}
+				{...args}
+				label={`TextInput max width ${size}`}
+				maxWidth={size}
+			/>
 		))}
 	</Stack>
 );
 MaxWidths.args = {};
 
 export const Password: ComponentStory<typeof TextInput> = (args) => (
-	<Field label="Password" required>
-		<TextInput {...args} />
-	</Field>
+	<TextInput {...args} />
 );
 Password.args = {
+	label: 'Password',
 	type: 'password',
 };
