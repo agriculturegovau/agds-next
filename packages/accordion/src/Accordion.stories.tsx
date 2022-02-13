@@ -1,47 +1,49 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { Box } from '@ag.ds-next/box';
 import { Text } from '@ag.ds-next/text';
-import { Accordion } from './Accordion';
+import { AccordionItem, AccordionGroup } from './Accordion';
 
 export default {
 	title: 'Layout/Accordion',
-	component: Accordion,
-} as ComponentMeta<typeof Accordion>;
+	component: AccordionItem,
+} as ComponentMeta<typeof AccordionItem>;
 
 export const AccordionOnLight: ComponentStory<typeof Accordion> = () => (
-	<Accordion title="Accordion test">
+	<AccordionItem title="Accordion test">
 		<Box padding={1}>
 			<Text>This is some text inside an Accordion</Text>
 		</Box>
-	</Accordion>
+	</AccordionItem>
 );
 
 export const AccordionOnDark: ComponentStory<typeof Accordion> = () => (
-	<Accordion palette="dark" title="Accordion test">
-		<Box padding={1}>
-			<Text>This is some text inside an Accordion</Text>
-		</Box>
-	</Accordion>
+	<Box padding={1} palette="dark" background="body">
+		<AccordionItem title="Accordion test">
+			<Box padding={1}>
+				<Text>This is some text inside an Accordion</Text>
+			</Box>
+		</AccordionItem>
+	</Box>
 );
 
 export const AccordionGroupOnLight: ComponentStory<typeof Accordion> = () => (
-	<Box>
-		<Accordion title="Accordion 1" id="one">
+	<AccordionGroup>
+		<AccordionItem title="Accordion 1" id="one">
 			<Box padding={1}>
 				<Text>This is some text inside an Accordion</Text>
 			</Box>
-		</Accordion>
+		</AccordionItem>
 
-		<Accordion title="Accordion 2" id="two">
+		<AccordionItem title="Accordion 2" id="two">
 			<Box padding={1}>
 				<Text>This is some text inside an Accordion</Text>
 			</Box>
-		</Accordion>
+		</AccordionItem>
 
-		<Accordion title="Accordion 3" id="three">
+		<AccordionItem title="Accordion 3" id="three">
 			<Box padding={1}>
 				<Text>This is some text inside an Accordion</Text>
 			</Box>
-		</Accordion>
-	</Box>
+		</AccordionItem>
+	</AccordionGroup>
 );

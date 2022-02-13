@@ -8,7 +8,7 @@ import { AccordionContext } from './context';
 type AccordionProps = { id: string } & AccordionTitleProps &
 	Pick<BoxProps, 'palette'>;
 
-export const Accordion = ({
+export const AccordionItem = ({
 	children,
 	id,
 	palette,
@@ -61,4 +61,8 @@ export const AccordionBody = ({ children }) => {
 			{children}
 		</Box>
 	);
+};
+
+export const AccordionGroup = ({ children }) => {
+	return <Box>{children}</Box>;
 };
