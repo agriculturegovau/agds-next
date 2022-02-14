@@ -1,8 +1,8 @@
 {
-	"name": "@ag.ds-next/search",
+	"name": "@ag.ds-next/search-box",
 	"version": "1.0.0",
-	"main": "dist/ag.ds-next-search.cjs.js",
-	"module": "dist/ag.ds-next-search.esm.js",
+	"main": "dist/ag.ds-next-search-box.cjs.js",
+	"module": "dist/ag.ds-next-search-box.esm.js",
 	"license": "MIT",
 	"dependencies": {
 		"@reach/auto-id": "^0.16.0"

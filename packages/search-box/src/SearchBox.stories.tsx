@@ -1,24 +1,24 @@
+import React, { useState } from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { Box } from '@ag.ds-next/box';
-import { Search } from './Search';
-import React, { useState } from 'react';
+import { SearchBox } from './SearchBox';
 
 export default {
-	title: 'forms/Search',
-	component: Search,
-} as ComponentMeta<typeof Search>;
+	title: 'forms/SearchBox',
+	component: SearchBox,
+} as ComponentMeta<typeof SearchBox>;
 
-export const Basic: ComponentStory<typeof Search> = (args) => (
-	<Search {...args} />
+export const Basic: ComponentStory<typeof SearchBox> = (args) => (
+	<SearchBox {...args} />
 );
 Basic.args = {
 	label: 'Search',
 	'aria-label': 'Sitewide',
 };
 
-export const Dark: ComponentStory<typeof Search> = (args) => (
+export const Dark: ComponentStory<typeof SearchBox> = (args) => (
 	<Box background="body" dark padding={2}>
-		<Search {...args} />
+		<SearchBox {...args} />
 	</Box>
 );
 Basic.args = {
@@ -26,8 +26,8 @@ Basic.args = {
 	'aria-label': 'Sitewide',
 };
 
-export const LabelVisible: ComponentStory<typeof Search> = (args) => (
-	<Search {...args} />
+export const LabelVisible: ComponentStory<typeof SearchBox> = (args) => (
+	<SearchBox {...args} />
 );
 LabelVisible.args = {
 	label: 'Search',
@@ -35,8 +35,8 @@ LabelVisible.args = {
 	labelVisible: true,
 };
 
-export const ButtonLabel: ComponentStory<typeof Search> = (args) => (
-	<Search {...args} />
+export const ButtonLabel: ComponentStory<typeof SearchBox> = (args) => (
+	<SearchBox {...args} />
 );
 ButtonLabel.args = {
 	label: 'Search',
@@ -44,8 +44,8 @@ ButtonLabel.args = {
 	buttonLabel: 'Check availability',
 };
 
-export const Responsive: ComponentStory<typeof Search> = (args) => (
-	<Search {...args} />
+export const Responsive: ComponentStory<typeof SearchBox> = (args) => (
+	<SearchBox {...args} />
 );
 Responsive.args = {
 	label: 'Search',
@@ -53,8 +53,8 @@ Responsive.args = {
 	butttonReponsive: true,
 };
 
-export const IconOnly: ComponentStory<typeof Search> = (args) => (
-	<Search {...args} />
+export const IconOnly: ComponentStory<typeof SearchBox> = (args) => (
+	<SearchBox {...args} />
 );
 IconOnly.args = {
 	label: 'Search',
@@ -75,7 +75,7 @@ export const Controlled = () => {
 	};
 
 	return (
-		<Search
+		<SearchBox
 			label="Search"
 			aria-label="Sitewide"
 			value={searchTerm}

@@ -5,7 +5,7 @@ import { SearchLabel } from './SearchLabel';
 import { SearchButton } from './SearchButton';
 import { SearchInput } from './SearchInput';
 
-export type SearchProps = {
+export type SearchBoxProps = {
 	label: string;
 	labelVisible?: boolean;
 	buttonLabel?: string;
@@ -17,7 +17,7 @@ export type SearchProps = {
 	onSubmit?: (event: FormEvent<HTMLFormElement>, value: string) => void;
 };
 
-export const Search = ({
+export const SearchBox = ({
 	label,
 	labelVisible = false,
 	buttonLabel = 'Search',
@@ -27,7 +27,7 @@ export const Search = ({
 	onChange,
 	'aria-label': ariaLabel,
 	onSubmit: onSubmitProp,
-}: SearchProps) => {
+}: SearchBoxProps) => {
 	const inputRef = useRef<HTMLInputElement>(null);
 	const { inputId } = useSearchIds();
 
