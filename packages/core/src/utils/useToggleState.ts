@@ -14,6 +14,7 @@ export function useToggleState<T extends ValueTypes>(
 	alternateValue: T
 ): [T, Toggle] {
 	const [state, setState] = useState(initialValue);
+
 	const toggle = useCallback(
 		function toggle() {
 			const __orig =
