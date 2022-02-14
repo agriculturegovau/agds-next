@@ -1,7 +1,7 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { fontGrid } from '@ag.ds-next/core';
-import { Text } from './index';
+import { Text } from './Text';
 
 export default {
 	title: 'foundations/Text',
