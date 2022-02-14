@@ -13,7 +13,7 @@ export const AccordionTitle = ({
 	title,
 	titleHeadingLevel = 'h3',
 }: AccordionTitleProps) => {
-	const { isOpen, id, onItemToggle } = useContext(AccordionContext);
+	const { isOpen, id, onToggle } = useContext(AccordionContext);
 	return (
 		<Box as={titleHeadingLevel}>
 			<Flex
@@ -21,7 +21,7 @@ export const AccordionTitle = ({
 				aria-controls={`${id}-default`}
 				aria-expanded={isOpen}
 				color="action"
-				onClick={onItemToggle}
+				onClick={onToggle}
 				fontSize="md"
 				id={`${id}-title`}
 				fontWeight="bold"
