@@ -17,9 +17,9 @@ export const SearchButton = ({
 	const styles = buttonStyles({ iconOnly, responsive });
 	return (
 		<Flex flexShrink={0} css={{ position: 'relative' }}>
-			<Button type="submit" css={styles}>
-				{!iconOnly ? <span>{children}</span> : null}
-				{iconOnly || responsive ? <Icon icon="search" /> : null}
+			<Button type="submit" aria-label={children} css={styles}>
+				<span>{children}</span>
+				{iconOnly || responsive ? <Icon icon="search" size={1.5} /> : null}
 			</Button>
 		</Flex>
 	);
