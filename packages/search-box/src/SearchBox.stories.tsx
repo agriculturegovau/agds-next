@@ -50,7 +50,7 @@ export const Responsive: ComponentStory<typeof SearchBox> = (args) => (
 Responsive.args = {
 	label: 'Search',
 	'aria-label': 'Sitewide',
-	butttonReponsive: true,
+	buttonReponsive: true,
 };
 
 export const IconOnly: ComponentStory<typeof SearchBox> = (args) => (

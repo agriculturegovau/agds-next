@@ -105,7 +105,7 @@ export const HeaderSearch: ComponentStory<typeof Header> = (args, context) => (
 	<Header
 		logo={getLogo(context, args.variant)}
 		rightContent={
-			<SearchBox label="Search" aria-label="Sitewide" butttonReponsive />
+			<SearchBox label="Search" aria-label="Sitewide" buttonReponsive />
 		}
 		{...args}
 	/>

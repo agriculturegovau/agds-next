@@ -17,5 +17,5 @@ Use the `SearchBox` component to help users find content or pages through keywor
 The responsive variation replaces the button text with a search icon on smaller devices. This allows more space for text to be written in the text input.
 
 ```jsx live
-<SearchBox label="Search this website" aria-label="Sitewide" butttonReponsive />
+<SearchBox label="Search this website" aria-label="Sitewide" buttonReponsive />
 ```

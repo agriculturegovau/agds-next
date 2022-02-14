@@ -10,7 +10,7 @@ export type SearchBoxProps = {
 	labelVisible?: boolean;
 	buttonLabel?: string;
 	buttonIconOnly?: boolean;
-	butttonReponsive?: boolean;
+	buttonReponsive?: boolean;
 	value?: string;
 	onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
 	'aria-label'?: string;
@@ -22,7 +22,7 @@ export const SearchBox = ({
 	labelVisible = false,
 	buttonLabel = 'Search',
 	buttonIconOnly,
-	butttonReponsive,
+	buttonReponsive,
 	value,
 	onChange,
 	'aria-label': ariaLabel,
@@ -52,7 +52,7 @@ export const SearchBox = ({
 						value={value}
 						onChange={onChange}
 					/>
-					<SearchButton iconOnly={buttonIconOnly} responsive={butttonReponsive}>
+					<SearchButton iconOnly={buttonIconOnly} responsive={buttonReponsive}>
 						{buttonLabel}
 					</SearchButton>
 				</Flex>
