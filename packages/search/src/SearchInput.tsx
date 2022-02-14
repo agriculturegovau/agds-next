@@ -1,16 +1,18 @@
-import React, { ChangeEvent } from 'react';
+import React, { ChangeEvent, forwardRef, PropsWithRef } from 'react';
 import { textInputStyles } from '@ag.ds-next/text-input';
 
-export type SearchInputProps = {
+export type SearchInputProps = PropsWithRef<{
 	id: string;
 	value?: string;
 	onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
-};
+}>;
 
-export const SearchInput = (props: SearchInputProps) => {
-	const styles = inputStyles();
-	return <input type="search" css={styles} {...props} />;
-};
+export const SearchInput = forwardRef<HTMLInputElement, SearchInputProps>(
+	function Input(props, ref) {
+		const styles = inputStyles();
+		return <input ref={ref} type="search" css={styles} {...props} />;
+	}
+);
 
 const inputStyles = () => {
 	const baseStyles = textInputStyles({
