@@ -63,6 +63,6 @@ export const AccordionBody = ({ children }: { children: ReactNode }) => {
 	);
 };
 
-export const AccordionGroup = ({ children }) => {
+export const AccordionGroup = ({ children }: { children: ReactNode }) => {
 	return <Box>{children}</Box>;
 };
