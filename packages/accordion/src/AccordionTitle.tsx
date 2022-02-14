@@ -1,7 +1,8 @@
 import { useContext } from 'react';
+import { animated, useSpring } from 'react-spring';
 import { Box, Flex } from '@ag.ds-next/box';
 import { Icon } from '@ag.ds-next/icon';
-
+import { usePrefersReducedMotion } from '@ag.ds-next/core';
 import { AccordionContext } from './context';
 
 export type AccordionTitleProps = {
@@ -14,6 +15,14 @@ export const AccordionTitle = ({
 	titleHeadingLevel = 'h3',
 }: AccordionTitleProps) => {
 	const { isOpen, id, onToggle } = useContext(AccordionContext);
+
+	const prefersReducedMotion = usePrefersReducedMotion();
+	const style = useSpring({
+		from: { transform: `rotate(0deg)` },
+		to: { transform: `rotate(${isOpen ? 180 : 0}deg)` },
+		immediate: prefersReducedMotion,
+	});
+
 	return (
 		<Box as={titleHeadingLevel}>
 			<Flex
@@ -34,15 +43,9 @@ export const AccordionTitle = ({
 				focus
 			>
 				{title}
-				<Box
-					link
-					css={{
-						transform: `rotate(${isOpen ? 180 : 0}deg)`,
-						transition: 'transform 0.25s ease-in',
-					}}
-				>
+				<animated.div style={style}>
 					<Icon icon="chevronUp" size={1} />
-				</Box>
+				</animated.div>
 			</Flex>
 		</Box>
 	);

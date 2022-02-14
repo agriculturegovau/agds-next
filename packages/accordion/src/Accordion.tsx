@@ -1,13 +1,10 @@
-import {
-	PropsWithChildren,
-	ReactNode,
-	useContext,
-	useState,
-	useLayoutEffect,
-	useRef,
-} from 'react';
+import { PropsWithChildren, ReactNode, useContext, useRef } from 'react';
 import { Box, BoxProps } from '@ag.ds-next/box';
-import { useToggleState } from '@ag.ds-next/core';
+import {
+	useElementSize,
+	usePrefersReducedMotion,
+	useToggleState,
+} from '@ag.ds-next/core';
 import { useId } from '@reach/auto-id';
 import { useSpring, animated } from 'react-spring';
 
@@ -41,55 +38,27 @@ export const AccordionItem = ({
 
 export const AccordionBody = ({ children }: { children: ReactNode }) => {
 	const { isOpen, id } = useContext(AccordionContext);
-	const [heightRef, height] = useHeight();
-	const style = useSpring(
-		{
-			overflow: 'hidden',
-			width: '100%',
-			from: { height: 0 },
-			to: {
-				height: isOpen ? height : 0,
-			},
-		},
-		[]
-	);
+	const ref = useRef<HTMLDivElement>(null);
+	const { height } = useElementSize(ref);
 
-	console.log({ height, style });
+	const prefersReducedMotion = usePrefersReducedMotion();
+	const style = useSpring({
+		from: { height: 0 },
+		to: { height: isOpen ? height : 0 },
+		immediate: prefersReducedMotion,
+	});
 
 	return (
 		<animated.section
 			id={`${id}-default`}
 			aria-labelledby={`${id}-title`}
 			role="region"
-			style={style}
+			style={{ overflow: 'hidden', ...style }}
 		>
-			<div ref={heightRef}>{children}</div>
+			<div ref={ref}>{children}</div>
 		</animated.section>
 	);
 };
-
-export function useHeight({ on = true /* no value means on */ } = {} as any) {
-	const ref = useRef<any>();
-	const [height, set] = useState(0);
-	const heightRef = useRef(height);
-	const [ro] = useState(
-		() =>
-			new ResizeObserver((packet) => {
-				if (ref.current && heightRef.current !== ref.current.offsetHeight) {
-					heightRef.current = ref.current.offsetHeight;
-					set(ref.current.offsetHeight);
-				}
-			})
-	);
-	useLayoutEffect(() => {
-		if (on && ref.current) {
-			set(ref.current.offsetHeight);
-			ro.observe(ref.current, {});
-		}
-		return () => ro.disconnect();
-	}, [on, ref.current]);
-	return [ref, height as any];
-}
 
 export const AccordionGroup = ({ children }: { children: ReactNode }) => {
 	return <Box>{children}</Box>;
