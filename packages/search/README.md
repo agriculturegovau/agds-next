@@ -6,7 +6,7 @@ group: Forms
 
 ### Default
 
-Use the search box component to help users find content or pages through keywords. This can be particularly useful for a web service with a large amount of pages.
+Use the `Search` component to help users find content or pages through keywords. This can be particularly useful for a web service with a large amount of pages.
 
 ```jsx live
 <Search label="Search this website" aria-label="Sitewide" />
@@ -16,15 +16,6 @@ Use the search box component to help users find content or pages through keyword
 
 The responsive variation replaces the button text with a search icon on smaller devices. This allows more space for text to be written in the text input.
 
-```
-
-```
-
-### Controlled
-
 ```jsx live
-	{() => {
-		return <Search label="Search this website" aria-label="Sitewide" />;
-	}}
-</>
+<Search label="Search this website" aria-label="Sitewide" butttonReponsive />
 ```

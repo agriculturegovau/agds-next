@@ -1,15 +1,26 @@
-import type { ReactNode } from 'react';
+import { Text } from '@ag.ds-next/text';
 
 export type SearchLabelprops = {
-	children: ReactNode;
+	children: string;
 	htmlFor: string;
+	visible: boolean;
 };
 
-export const SearchLabel = ({ children, htmlFor }: SearchLabelprops) => (
-	<label css={visuallyHiddenStyles} htmlFor={htmlFor}>
-		{children}
-	</label>
-);
+export const SearchLabel = ({
+	children,
+	htmlFor,
+	visible,
+}: SearchLabelprops) => {
+	return (
+		<Text
+			as="label"
+			htmlFor={htmlFor}
+			css={visible ? undefined : visuallyHiddenStyles}
+		>
+			{children}
+		</Text>
+	);
+};
 
 // Content that should be read out
 // to screenreaders only

@@ -1,23 +1,31 @@
 import React, { ChangeEvent, FormEvent, useRef, useCallback } from 'react';
 import { useId } from '@reach/auto-id';
-import { SearchForm } from './SearchForm';
+import { Flex, Stack } from '@ag.ds-next/box';
 import { SearchLabel } from './SearchLabel';
 import { SearchButton } from './SearchButton';
 import { SearchInput } from './SearchInput';
 
 export type SearchProps = {
 	label: string;
-	'aria-label': string;
+	labelVisible?: boolean;
+	buttonLabel?: string;
+	buttonIconOnly?: boolean;
+	butttonReponsive?: boolean;
 	value?: string;
 	onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
-	onSubmit: (event: FormEvent<HTMLFormElement>, value: string) => void;
+	'aria-label'?: string;
+	onSubmit?: (event: FormEvent<HTMLFormElement>, value: string) => void;
 };
 
 export const Search = ({
 	label,
-	'aria-label': ariaLabel,
+	labelVisible = false,
+	buttonLabel = 'Search',
+	buttonIconOnly,
+	butttonReponsive,
 	value,
 	onChange,
+	'aria-label': ariaLabel,
 	onSubmit: onSubmitProp,
 }: SearchProps) => {
 	const inputRef = useRef<HTMLInputElement>(null);
@@ -25,22 +33,31 @@ export const Search = ({
 
 	const onSubmit = useCallback(
 		(event: FormEvent<HTMLFormElement>) => {
+			if (!onSubmitProp) return;
 			onSubmitProp(event, inputRef.current?.value ?? '');
 		},
 		[onSubmitProp]
 	);
 
 	return (
-		<SearchForm onSubmit={onSubmit} aria-label={ariaLabel}>
-			<SearchLabel htmlFor={inputId}>{label}</SearchLabel>
-			<SearchInput
-				ref={inputRef}
-				id={inputId}
-				value={value}
-				onChange={onChange}
-			/>
-			<SearchButton>Search</SearchButton>
-		</SearchForm>
+		<form onSubmit={onSubmit} aria-label={ariaLabel}>
+			<Stack background="body">
+				<SearchLabel htmlFor={inputId} visible={labelVisible}>
+					{label}
+				</SearchLabel>
+				<Flex>
+					<SearchInput
+						ref={inputRef}
+						id={inputId}
+						value={value}
+						onChange={onChange}
+					/>
+					<SearchButton iconOnly={buttonIconOnly} responsive={butttonReponsive}>
+						{buttonLabel}
+					</SearchButton>
+				</Flex>
+			</Stack>
+		</form>
 	);
 };
 
