@@ -5,7 +5,7 @@ import { Icon } from '@ag.ds-next/icon';
 import { AccordionContext } from './context';
 
 export type AccordionTitleProps = {
-	titleHeadingLevel: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
+	titleHeadingLevel?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
 	title: string;
 };
 
@@ -31,6 +31,7 @@ export const AccordionTitle = ({
 				justifyContent="space-between"
 				alignItems="center"
 				link
+				focus
 			>
 				{title}
 				<Box

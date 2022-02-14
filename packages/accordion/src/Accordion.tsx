@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react';
+import { PropsWithChildren, ReactNode, useContext, useState } from 'react';
 import { Box, BoxProps } from '@ag.ds-next/box';
 
 import { AccordionTitle, AccordionTitleProps } from './AccordionTitle';
@@ -14,7 +14,7 @@ export const AccordionItem = ({
 	palette,
 	title,
 	titleHeadingLevel,
-}: AccordionProps) => {
+}: PropsWithChildren<AccordionProps>) => {
 	const [isOpen, setOpen] = useState(false);
 
 	const onItemOpen = () => {
@@ -45,7 +45,7 @@ export const AccordionItem = ({
 	);
 };
 
-export const AccordionBody = ({ children }) => {
+export const AccordionBody = ({ children }: { children: ReactNode }) => {
 	const { isOpen, id } = useContext(AccordionContext);
 	return (
 		<Box

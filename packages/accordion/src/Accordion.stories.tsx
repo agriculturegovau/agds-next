@@ -8,17 +8,17 @@ export default {
 	component: AccordionItem,
 } as ComponentMeta<typeof AccordionItem>;
 
-export const AccordionOnLight: ComponentStory<typeof Accordion> = () => (
-	<AccordionItem title="Accordion test">
+export const AccordionOnLight: ComponentStory<typeof AccordionItem> = () => (
+	<AccordionItem title="Accordion test" id="light">
 		<Box padding={1}>
 			<Text>This is some text inside an Accordion</Text>
 		</Box>
 	</AccordionItem>
 );
 
-export const AccordionOnDark: ComponentStory<typeof Accordion> = () => (
+export const AccordionOnDark: ComponentStory<typeof AccordionItem> = () => (
 	<Box padding={1} palette="dark" background="body">
-		<AccordionItem title="Accordion test">
+		<AccordionItem title="Accordion test" id="dark">
 			<Box padding={1}>
 				<Text>This is some text inside an Accordion</Text>
 			</Box>
@@ -26,24 +26,25 @@ export const AccordionOnDark: ComponentStory<typeof Accordion> = () => (
 	</Box>
 );
 
-export const AccordionGroupOnLight: ComponentStory<typeof Accordion> = () => (
-	<AccordionGroup>
-		<AccordionItem title="Accordion 1" id="one">
-			<Box padding={1}>
-				<Text>This is some text inside an Accordion</Text>
-			</Box>
-		</AccordionItem>
+export const AccordionGroupOnLight: ComponentStory<typeof AccordionItem> =
+	() => (
+		<AccordionGroup>
+			<AccordionItem title="Accordion 1" id="one">
+				<Box padding={1}>
+					<Text>This is some text inside an Accordion</Text>
+				</Box>
+			</AccordionItem>
 
-		<AccordionItem title="Accordion 2" id="two">
-			<Box padding={1}>
-				<Text>This is some text inside an Accordion</Text>
-			</Box>
-		</AccordionItem>
+			<AccordionItem title="Accordion 2" id="two">
+				<Box padding={1}>
+					<Text>This is some text inside an Accordion</Text>
+				</Box>
+			</AccordionItem>
 
-		<AccordionItem title="Accordion 3" id="three">
-			<Box padding={1}>
-				<Text>This is some text inside an Accordion</Text>
-			</Box>
-		</AccordionItem>
-	</AccordionGroup>
-);
+			<AccordionItem title="Accordion 3" id="three">
+				<Box padding={1}>
+					<Text>This is some text inside an Accordion</Text>
+				</Box>
+			</AccordionItem>
+		</AccordionGroup>
+	);
