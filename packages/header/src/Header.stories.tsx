@@ -104,7 +104,9 @@ HeaderHero.storyName = '🕥 Header Hero';
 export const HeaderSearch: ComponentStory<typeof Header> = (args, context) => (
 	<Header
 		logo={getLogo(context, args.variant)}
-		rightContent={<SearchBox />}
+		rightContent={
+			<SearchBox label="Search" aria-label="Sitewide" butttonReponsive />
+		}
 		{...args}
 	/>
 );
