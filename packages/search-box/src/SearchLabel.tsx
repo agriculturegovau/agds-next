@@ -1,4 +1,5 @@
 import { Text } from '@ag.ds-next/text';
+import { visuallyHiddenStyles } from '@ag.ds-next/a11y';
 
 export type SearchLabelprops = {
 	children: string;
@@ -21,15 +22,3 @@ export const SearchLabel = ({
 		</Text>
 	);
 };
-
-// Content that should be read out
-// to screenreaders only
-const visuallyHiddenStyles = {
-	clip: 'rect(0 0 0 0)',
-	clipPath: 'inset(50%)',
-	height: 1,
-	overflow: 'hidden',
-	position: 'absolute',
-	whiteSpace: 'nowrap',
-	width: 1,
-} as const;
