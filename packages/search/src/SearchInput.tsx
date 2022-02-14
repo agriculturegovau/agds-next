@@ -8,7 +8,7 @@ export type SearchInputProps = PropsWithRef<{
 }>;
 
 export const SearchInput = forwardRef<HTMLInputElement, SearchInputProps>(
-	function Input(props, ref) {
+	function SearchInput(props, ref) {
 		const styles = inputStyles();
 		return <input ref={ref} type="search" css={styles} {...props} />;
 	}
