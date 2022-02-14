@@ -16,6 +16,7 @@ import icon from './icon.svg';
 import linkList from './link-list.svg';
 import mainNav from './main-nav.svg';
 import packages from './packages.svg';
+import searchBox from './search-box.svg';
 import sideNav from './side-nav.svg';
 import starter from './starter.svg';
 import text from './text.svg';
@@ -44,6 +45,7 @@ export const pictograms = {
 	'main-nav': mainNav,
 	packages,
 	sideNav,
+	'search-box': searchBox,
 	'side-nav': sideNav,
 	starter,
 	text,
