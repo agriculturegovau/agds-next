@@ -1,3 +1,4 @@
+import { AccordionItem, AccordionGroup } from '@ag.ds-next/accordion';
 import { Logo } from '@ag.ds-next/ag-branding';
 import { Button, ButtonLink } from '@ag.ds-next/button';
 import { Box, Flex, Stack } from '@ag.ds-next/box';
@@ -25,6 +26,8 @@ import { TextInput } from '@ag.ds-next/text-input';
 import { Textarea } from '@ag.ds-next/textarea';
 
 export const designSystemComponents = {
+	AccordionItem,
+	AccordionGroup,
 	AgLogo,
 	Button,
 	ButtonLink,
