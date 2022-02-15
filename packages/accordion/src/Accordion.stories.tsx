@@ -15,7 +15,7 @@ export default {
 
 const AccordionBasicExample = ({ palette }: { palette: 'light' | 'dark' }) => (
 	<Box padding={1} palette={palette} background="body">
-		<AccordionItem title="Accordion test" id={`dark-${palette}`}>
+		<AccordionItem title="Accordion test">
 			<Text>This is some text inside an Accordion</Text>
 		</AccordionItem>
 	</Box>
