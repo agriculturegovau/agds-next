@@ -14,7 +14,7 @@ import {
 } from '@ag.ds-next/core';
 import { Icon } from '@ag.ds-next/icon';
 
-type Option = string | { label: string; value: string };
+type Option = { label: string; value: string; disabled?: boolean };
 
 export type SelectProps = DetailedHTMLProps<
 	SelectHTMLAttributes<HTMLSelectElement>,
@@ -28,7 +28,7 @@ export type SelectProps = DetailedHTMLProps<
 	valid?: true;
 	block?: boolean;
 	maxWidth?: FieldMaxWidth;
-	placeholder?: string | null;
+	placeholder?: string;
 	options: Option[];
 };
 
@@ -44,8 +44,8 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(
 			block,
 			maxWidth,
 			options,
-			placeholder = 'Please select',
-			defaultValue = '',
+			placeholder,
+			defaultValue,
 			...props
 		},
 		ref
@@ -79,11 +79,11 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(
 							{...props}
 							css={styles}
 						>
-							{placeholder ? <option value="">{placeholder}</option> : null}
+							{placeholder ? <option>{placeholder}</option> : null}
 							{options.map((option) => {
-								const { value, label } = getOptionProps(option);
+								const { value, label, disabled } = getOptionProps(option);
 								return (
-									<option key={value} value={value}>
+									<option key={value} value={value} disabled={disabled}>
 										{label}
 									</option>
 								);

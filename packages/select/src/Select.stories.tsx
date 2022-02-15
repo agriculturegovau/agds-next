@@ -8,12 +8,19 @@ export default {
 	component: Select,
 } as ComponentMeta<typeof Select>;
 
+const EXAMPLE_OPTIONS = [
+	{ value: 'a', label: 'Option A' },
+	{ value: 'b', label: 'Option B' },
+	{ value: 'c', label: 'Option C' },
+];
+
 export const Basic: ComponentStory<typeof Select> = (args) => (
 	<Select {...args} />
 );
 Basic.args = {
 	label: 'Example',
-	options: ['Option A', 'Option B', 'Option C'],
+	placeholder: 'Please select',
+	options: EXAMPLE_OPTIONS,
 };
 
 export const Placeholder: ComponentStory<typeof Select> = (args) => (
@@ -22,25 +29,40 @@ export const Placeholder: ComponentStory<typeof Select> = (args) => (
 Placeholder.args = {
 	label: 'Example',
 	placeholder: 'Select an option',
-	options: ['Option A', 'Option B', 'Option C'],
+	options: EXAMPLE_OPTIONS,
 };
 
 export const Required: ComponentStory<typeof Select> = (args) => (
 	<Select {...args} />
 );
 Required.args = {
-	required: true,
 	label: 'Example',
-	options: ['Option A', 'Option B', 'Option C'],
+	placeholder: 'Please select',
+	required: true,
+	options: EXAMPLE_OPTIONS,
 };
 
 export const Disabled: ComponentStory<typeof Select> = (args) => (
 	<Select {...args} />
 );
 Disabled.args = {
-	disabled: true,
 	label: 'Example',
-	options: ['Option A', 'Option B', 'Option C'],
+	placeholder: 'Please select',
+	disabled: true,
+	options: EXAMPLE_OPTIONS,
+};
+
+export const DisabledOption: ComponentStory<typeof Select> = (args) => (
+	<Select {...args} />
+);
+DisabledOption.args = {
+	label: 'Example',
+	placeholder: 'Please select',
+	options: [
+		{ value: 'a', label: 'Option A' },
+		{ value: 'b', label: 'Option B', disabled: true },
+		{ value: 'c', label: 'Option C' },
+	],
 };
 
 export const Invalid: ComponentStory<typeof Select> = (args) => (
@@ -48,10 +70,11 @@ export const Invalid: ComponentStory<typeof Select> = (args) => (
 );
 Invalid.args = {
 	label: 'Example',
+	placeholder: 'Please select',
 	message: 'This select is invalid',
 	required: true,
 	invalid: true,
-	options: ['Option A', 'Option B', 'Option C'],
+	options: EXAMPLE_OPTIONS,
 };
 
 export const Valid: ComponentStory<typeof Select> = (args) => (
@@ -59,10 +82,11 @@ export const Valid: ComponentStory<typeof Select> = (args) => (
 );
 Valid.args = {
 	label: 'Example',
+	placeholder: 'Please select',
 	message: 'This select is valid',
 	required: true,
 	valid: true,
-	options: ['Option A', 'Option B', 'Option C'],
+	options: EXAMPLE_OPTIONS,
 };
 
 export const Hint: ComponentStory<typeof Select> = (args) => (
@@ -70,17 +94,19 @@ export const Hint: ComponentStory<typeof Select> = (args) => (
 );
 Hint.args = {
 	label: 'Example',
+	placeholder: 'Please select',
 	hint: 'Lorem ipsum dolar',
-	options: ['Option A', 'Option B', 'Option C'],
+	options: EXAMPLE_OPTIONS,
 };
 
 export const Block: ComponentStory<typeof Select> = (args) => (
 	<Select {...args} />
 );
 Block.args = {
-	block: true,
 	label: 'Block',
-	options: ['Option A', 'Option B', 'Option C'],
+	placeholder: 'Please select',
+	block: true,
+	options: EXAMPLE_OPTIONS,
 };
 
 export const MaxWidths: ComponentStory<typeof Select> = (args) => (
@@ -91,39 +117,17 @@ export const MaxWidths: ComponentStory<typeof Select> = (args) => (
 	</Stack>
 );
 MaxWidths.args = {
-	options: ['Option A', 'Option B', 'Option C'],
+	placeholder: 'Please select',
+	options: EXAMPLE_OPTIONS,
 };
 
 export const Controlled = () => {
-	const options = ['Option A', 'Option B', 'Option C'];
-	const [value, setValue] = useState('Option B');
-
-	const onChange = (event: ChangeEvent<HTMLSelectElement>) => {
-		setValue(event.target.value);
-	};
-
-	return (
-		<Select
-			value={value}
-			onChange={onChange}
-			label="Controlled"
-			options={options}
-		/>
-	);
-};
-
-export const ControlledObjectOptions = () => {
-	const options = [
-		{ value: 'a', label: 'Option A' },
-		{ value: 'b', label: 'Option B' },
-		{ value: 'c', label: 'Option C' },
-	];
 	const [selected, setSelected] = useState<
 		{ label: string; value: string } | undefined
 	>();
 
 	const onChange = (event: ChangeEvent<HTMLSelectElement>) => {
-		const nextSelected = options.find(
+		const nextSelected = EXAMPLE_OPTIONS.find(
 			({ value }) => value === event.target.value
 		);
 		setSelected(nextSelected);
@@ -134,7 +138,8 @@ export const ControlledObjectOptions = () => {
 			value={selected?.value}
 			onChange={onChange}
 			label="Controlled object options"
-			options={options}
+			placeholder="Please select"
+			options={EXAMPLE_OPTIONS}
 		/>
 	);
 };
