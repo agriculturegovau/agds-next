@@ -15,10 +15,17 @@ import {
 } from '@ag.ds-next/core';
 import { Icon } from '@ag.ds-next/icon';
 
-export type Option = { label: string; value: string; disabled?: boolean };
-export type Options =
-	| Option[]
-	| { label: string; disabled?: boolean; options: Option[] }[];
+export type Option = {
+	label: string;
+	value: string;
+	disabled?: boolean;
+};
+export type OptionGroup = {
+	label: string;
+	disabled?: boolean;
+	options: Option[];
+};
+export type Options = (Option | OptionGroup)[];
 
 export type SelectProps = DetailedHTMLProps<
 	SelectHTMLAttributes<HTMLSelectElement>,
@@ -33,7 +40,7 @@ export type SelectProps = DetailedHTMLProps<
 	block?: boolean;
 	maxWidth?: FieldMaxWidth;
 	placeholder?: string;
-	options: Options;
+	options: Option[] | OptionGroup[];
 };
 
 export const Select = forwardRef<HTMLSelectElement, SelectProps>(
