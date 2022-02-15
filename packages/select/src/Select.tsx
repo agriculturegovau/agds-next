@@ -64,7 +64,11 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(
 					<div
 						css={{
 							position: 'relative',
-							maxWidth: maxWidth ? fieldMaxWidth[maxWidth] : '12.8125rem',
+							maxWidth: block
+								? undefined
+								: maxWidth
+								? fieldMaxWidth[maxWidth]
+								: '12.8125rem',
 						}}
 					>
 						<select

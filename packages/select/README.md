@@ -11,7 +11,7 @@ Select boxes (drop-down lists) allow users to select a value from a list.
 By default, the `Select` component does not expand to fill the available space.
 
 ```jsx live
-<Select label="Name" options={['Option A', 'Option B', 'Option C']} />
+<Select label="What option?" options={['Option A', 'Option B', 'Option C']} />
 ```
 
 ### Block
@@ -19,7 +19,11 @@ By default, the `Select` component does not expand to fill the available space.
 Use the `block` prop to expand the component to fill the available space.
 
 ```jsx live
-<TextInput label="Name" block />
+<Select
+	label="What option?"
+	options={['Option A', 'Option B', 'Option C']}
+	block
+/>
 ```
 
 ### Required
@@ -63,7 +67,11 @@ Use the `invalid` and `valid` props to indicate whether user input is valid (val
 Disabled input elements are unusable and can not be clicked. This prevents a user from interacting with the input element until another action is complete. Disabled input elements in a form will not be submitted.
 
 ```jsx live
-<Select label="Name" disabled options={['Option A', 'Option B', 'Option C']} />
+<Select
+	label="What option?"
+	disabled
+	options={['Option A', 'Option B', 'Option C']}
+/>
 ```
 
 ### Maximum widths
@@ -73,27 +81,27 @@ The width of a select should indicate the amount of information expected to be e
 ```jsx live
 <Stack gap={1}>
 	<Select
-		label="xs input"
+		label="xs"
 		maxWidth="xs"
 		options={['Option A', 'Option B', 'Option C']}
 	/>
 	<Select
-		label="sm input"
+		label="sm"
 		maxWidth="sm"
 		options={['Option A', 'Option B', 'Option C']}
 	/>
 	<Select
-		label="md input"
+		label="md"
 		maxWidth="md"
 		options={['Option A', 'Option B', 'Option C']}
 	/>
 	<Select
-		label="lg input"
+		label="lg"
 		maxWidth="lg"
 		options={['Option A', 'Option B', 'Option C']}
 	/>
 	<Select
-		label="xl input"
+		label="xl"
 		maxWidth="xl"
 		options={['Option A', 'Option B', 'Option C']}
 	/>
