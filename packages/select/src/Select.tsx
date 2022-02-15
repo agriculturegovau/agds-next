@@ -1,9 +1,9 @@
 import React, {
 	forwardRef,
 	DetailedHTMLProps,
-	InputHTMLAttributes,
+	SelectHTMLAttributes,
 } from 'react';
-import { Field, fieldMaxWidth, FieldMaxWidth } from '@ag.ds-next/field';
+import { Field, FieldMaxWidth, fieldMaxWidth } from '@ag.ds-next/field';
 import {
 	boxPalette,
 	fontGrid,
@@ -12,10 +12,13 @@ import {
 	themeVars,
 	tokens,
 } from '@ag.ds-next/core';
+import { Icon } from '@ag.ds-next/icon';
 
-export type InputProps = DetailedHTMLProps<
-	InputHTMLAttributes<HTMLInputElement>,
-	HTMLInputElement
+type Option = { label: string; value: string; disabled?: boolean };
+
+export type SelectProps = DetailedHTMLProps<
+	SelectHTMLAttributes<HTMLSelectElement>,
+	HTMLSelectElement
 > & {
 	label: string;
 	required?: boolean;
@@ -25,10 +28,12 @@ export type InputProps = DetailedHTMLProps<
 	valid?: true;
 	block?: boolean;
 	maxWidth?: FieldMaxWidth;
+	placeholder?: string;
+	options: Option[];
 };
 
-export const TextInput = forwardRef<HTMLInputElement, InputProps>(
-	function TextInput(
+export const Select = forwardRef<HTMLSelectElement, SelectProps>(
+	function Select(
 		{
 			label,
 			required,
@@ -38,11 +43,14 @@ export const TextInput = forwardRef<HTMLInputElement, InputProps>(
 			valid,
 			block,
 			maxWidth,
+			options,
+			placeholder,
+			defaultValue,
 			...props
 		},
 		ref
 	) {
-		const styles = textInputStyles({ block, maxWidth, invalid, valid });
+		const styles = selectStyles({ block, invalid, valid });
 		return (
 			<Field
 				label={label}
@@ -53,31 +61,68 @@ export const TextInput = forwardRef<HTMLInputElement, InputProps>(
 				valid={valid}
 			>
 				{(allyProps) => (
-					<input
-						ref={ref}
-						required={required}
-						css={styles}
-						{...allyProps}
-						{...props}
-					/>
+					<div
+						css={{
+							position: 'relative',
+							maxWidth: block
+								? undefined
+								: maxWidth
+								? fieldMaxWidth[maxWidth]
+								: '12.8125rem',
+						}}
+					>
+						<select
+							ref={ref}
+							defaultValue={defaultValue}
+							required={required}
+							{...allyProps}
+							{...props}
+							css={styles}
+						>
+							{placeholder ? <option>{placeholder}</option> : null}
+							{options.map((option) => {
+								const { value, label, disabled } = getOptionProps(option);
+								return (
+									<option key={value} value={value} disabled={disabled}>
+										{label}
+									</option>
+								);
+							})}
+						</select>
+						<Icon
+							icon="chevronDown"
+							color="action"
+							css={{
+								position: 'absolute',
+								top: '50%',
+								right: mapSpacing(1),
+								transform: 'translateY(-50%)',
+								opacity: props.disabled ? 0.3 : 1,
+							}}
+						/>
+					</div>
 				)}
 			</Field>
 		);
 	}
 );
 
-export const textInputStyles = ({
+const getOptionProps = (option: Option) => {
+	if (typeof option === 'string') return { label: option, value: option };
+	return option;
+};
+
+const selectStyles = ({
 	block,
-	maxWidth,
 	invalid,
 	valid,
 }: {
 	block?: boolean;
-	maxWidth?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
 	invalid?: boolean;
 	valid?: boolean;
 }) =>
 	({
+		position: 'relative',
 		appearance: 'none',
 		boxSizing: 'border-box',
 		verticalAlign: 'middle',
@@ -91,14 +136,13 @@ export const textInputStyles = ({
 		borderColor: boxPalette.borderInput,
 		borderRadius: tokens.borderRadius,
 		color: `var(${themeVars.lightForegroundText})`,
-		maxWidth: maxWidth ? fieldMaxWidth[maxWidth] : '12.8125rem',
 		fontFamily: tokens.font.body,
+		width: '100%',
 		...fontGrid('sm', 'nospace'),
 
 		...(block && {
 			maxWidth: 'none',
 			display: 'block',
-			width: '100%',
 		}),
 
 		...(invalid

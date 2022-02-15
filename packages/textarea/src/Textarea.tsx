@@ -1,5 +1,9 @@
-import React, { DetailedHTMLProps, TextareaHTMLAttributes } from 'react';
-import { Field } from '@ag.ds-next/field';
+import React, {
+	forwardRef,
+	DetailedHTMLProps,
+	TextareaHTMLAttributes,
+} from 'react';
+import { Field, FieldMaxWidth } from '@ag.ds-next/field';
 import { textInputStyles } from '@ag.ds-next/text-input';
 
 export type TextareaProps = DetailedHTMLProps<
@@ -13,33 +17,44 @@ export type TextareaProps = DetailedHTMLProps<
 	invalid?: true;
 	valid?: true;
 	block?: true;
-	maxWidth?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
+	maxWidth?: FieldMaxWidth;
 };
 
-export const Textarea = ({
-	label,
-	required,
-	hint,
-	message,
-	invalid,
-	valid,
-	block,
-	maxWidth,
-	...props
-}: TextareaProps) => {
-	const styles = textInputStyles({ block, maxWidth, invalid, valid });
-	return (
-		<Field
-			label={label}
-			required={Boolean(required)}
-			hint={hint}
-			message={message}
-			invalid={invalid}
-			valid={valid}
-		>
-			{(allyProps) => (
-				<textarea required={required} css={styles} {...allyProps} {...props} />
-			)}
-		</Field>
-	);
-};
+export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
+	function Textarea(
+		{
+			label,
+			required,
+			hint,
+			message,
+			invalid,
+			valid,
+			block,
+			maxWidth,
+			...props
+		},
+		ref
+	) {
+		const styles = textInputStyles({ block, maxWidth, invalid, valid });
+		return (
+			<Field
+				label={label}
+				required={Boolean(required)}
+				hint={hint}
+				message={message}
+				invalid={invalid}
+				valid={valid}
+			>
+				{(allyProps) => (
+					<textarea
+						ref={ref}
+						required={required}
+						css={styles}
+						{...allyProps}
+						{...props}
+					/>
+				)}
+			</Field>
+		);
+	}
+);

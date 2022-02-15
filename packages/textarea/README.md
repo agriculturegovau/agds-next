@@ -53,7 +53,7 @@ Disabled textarea elements are unusable and can not be clicked. This prevents a 
 
 ### Maximum widths
 
-The maximum width of a textarea field should indicate the amount of information expected to be entered into the field. The size of the field acts as a visual constraint for the end user.
+The maximum width of a textarea should indicate the amount of information expected to be entered into the field. The size of the textarea acts as a visual constraint for the end user.
 
 ```jsx live
 <Stack gap={1}>
