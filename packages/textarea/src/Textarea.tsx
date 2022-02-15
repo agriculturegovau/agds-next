@@ -20,7 +20,7 @@ export type TextareaProps = DetailedHTMLProps<
 	maxWidth?: FieldMaxWidth;
 };
 
-export const Textarea = forwardRef<HTMLSelectElement, TextareaProps>(
+export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
 	function Textarea(
 		{
 			label,
