@@ -130,6 +130,7 @@ const selectStyles = ({
 		paddingBottom: mapSpacing(0.5),
 		paddingLeft: mapSpacing(1),
 		paddingRight: mapSpacing(1),
+		margin: 0,
 		backgroundColor: `var(${themeVars.lightBackgroundBody})`,
 		borderWidth: 3,
 		borderStyle: 'solid',
