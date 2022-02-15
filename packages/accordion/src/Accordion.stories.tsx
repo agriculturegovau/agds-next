@@ -32,11 +32,11 @@ export const BasicOnDark: ComponentStory<typeof AccordionItem> = () => (
 const AccordionGroupExample = ({ palette }: { palette: 'light' | 'dark' }) => (
 	<Box padding={1} palette={palette} background="body">
 		<AccordionGroup>
-			<AccordionItem title="Accordion 1" id="one">
+			<AccordionItem title="Accordion 1">
 				<Text>This is some text inside an Accordion</Text>
 			</AccordionItem>
 
-			<AccordionItem title="Accordion 2" id="two">
+			<AccordionItem title="Accordion 2">
 				<Body>
 					<p>
 						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce a
@@ -68,7 +68,7 @@ const AccordionGroupExample = ({ palette }: { palette: 'light' | 'dark' }) => (
 				</Body>
 			</AccordionItem>
 
-			<AccordionItem title="Accordion 3" id="three">
+			<AccordionItem title="Accordion 3">
 				<Text>This is some text inside an Accordion</Text>
 			</AccordionItem>
 		</AccordionGroup>
@@ -126,7 +126,7 @@ export const Controlled = () => {
 };
 
 export const InitiallyOpened = () => (
-	<AccordionItem title="Initially opened" id="initiallyOpened" isInitiallyOpen>
+	<AccordionItem title="Initially opened" isInitiallyOpen>
 		<Text>
 			This is some text inside an Accordion, which is opened at time of page
 			render.
@@ -135,7 +135,7 @@ export const InitiallyOpened = () => (
 );
 
 export const NoPadding = () => (
-	<AccordionItem title="No padding" id="noPadding" isInitiallyOpen noPadding>
+	<AccordionItem title="No padding" isInitiallyOpen noPadding>
 		<img
 			src="http://placehold.it/800x200"
 			alt="Placeholder image"

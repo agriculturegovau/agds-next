@@ -8,7 +8,7 @@ export type AccordionTitleProps = {
 	ariaControls: string;
 	isOpen?: boolean;
 	onToggle?: () => void;
-	titleHeadingLevel?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
+	tag?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
 	title: string;
 };
 
@@ -18,7 +18,7 @@ export const AccordionTitle = ({
 	isOpen,
 	onToggle,
 	title,
-	titleHeadingLevel = 'h3',
+	tag = 'h3',
 }: AccordionTitleProps) => {
 	const prefersReducedMotion = usePrefersReducedMotion();
 	const style = useSpring({
@@ -28,7 +28,7 @@ export const AccordionTitle = ({
 	});
 
 	return (
-		<Box as={titleHeadingLevel}>
+		<Box as={tag}>
 			<Flex
 				as="button"
 				aria-controls={ariaControls}

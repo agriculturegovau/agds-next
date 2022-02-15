@@ -9,8 +9,9 @@ import { AccordionBody, AccordionBodyProps } from './AccordionBody';
 type AccordionProps = {
 	id?: string;
 	isInitiallyOpen?: boolean;
-} & Pick<AccordionTitleProps, 'titleHeadingLevel' | 'title'> &
-	Pick<AccordionBodyProps, 'noPadding'> &
+	title: AccordionTitleProps['title'];
+	titleHeadingTag?: AccordionTitleProps['tag'];
+} & Pick<AccordionBodyProps, 'noPadding'> &
 	Pick<BoxProps, 'palette'>;
 
 export const useAccordionIds = (initialId: string | undefined) => {
@@ -27,7 +28,7 @@ export const AccordionItem = ({
 	children,
 	palette,
 	title,
-	titleHeadingLevel,
+	titleHeadingTag,
 	...props
 }: PropsWithChildren<AccordionProps>) => {
 	const { titleId, bodyID } = useAccordionIds(props.id);
@@ -36,7 +37,7 @@ export const AccordionItem = ({
 	return (
 		<Box palette={palette} border>
 			<AccordionTitle
-				titleHeadingLevel={titleHeadingLevel}
+				tag={titleHeadingTag}
 				title={title}
 				id={titleId}
 				ariaControls={bodyID}
