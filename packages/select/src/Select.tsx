@@ -178,7 +178,7 @@ const selectStyles = ({
 		color: `var(${themeVars.lightForegroundText})`,
 		fontFamily: tokens.font.body,
 		width: '100%',
-		...fontGrid('sm', 'default'),
+		...fontGrid('sm', 'nospace'),
 
 		...(block && {
 			maxWidth: 'none',
