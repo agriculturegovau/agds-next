@@ -90,7 +90,7 @@ export const textInputStyles = ({
 		borderStyle: 'solid',
 		borderColor: boxPalette.borderInput,
 		borderRadius: tokens.borderRadius,
-		color: themeVars.lightForegroundText,
+		color: `var(${themeVars.lightForegroundText})`,
 		maxWidth: maxWidth ? fieldMaxWidth[maxWidth] : '12.8125rem',
 		fontFamily: tokens.font.body,
 		...fontGrid('sm', 'nospace'),

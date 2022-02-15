@@ -24,6 +24,7 @@ import { Field } from '@ag.ds-next/field';
 import { TextInput } from '@ag.ds-next/text-input';
 import { Textarea } from '@ag.ds-next/textarea';
 import { SearchBox } from '@ag.ds-next/search-box';
+import { Select } from '@ag.ds-next/select';
 import { VisuallyHidden } from '@ag.ds-next/a11y';
 
 export const designSystemComponents = {
@@ -67,5 +68,6 @@ export const designSystemComponents = {
 	TextInput,
 	Textarea,
 	SearchBox,
+	Select,
 	VisuallyHidden,
 };
