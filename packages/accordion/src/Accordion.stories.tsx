@@ -125,7 +125,7 @@ export const Controlled = () => {
 	);
 };
 
-export const InitallyOpened = () => (
+export const InitiallyOpened = () => (
 	<AccordionItem title="Initially opened" id="initiallyOpened" isInitiallyOpen>
 		<Text>
 			This is some text inside an Accordion, which is opened at time of page

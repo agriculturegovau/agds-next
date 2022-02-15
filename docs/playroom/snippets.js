@@ -230,6 +230,23 @@ items={[
       </Column>
     </Columns>`,
 	},
+	{
+		group: 'TextInput',
+		name: 'Simple',
+		code: `<TextInput label="Name" />`,
+	},
+	{
+		group: 'TextArea',
+		name: 'Simple',
+		code: `<Textarea label="Message" />`,
+	},
+	{
+		group: 'Accordion',
+		name: 'Basic',
+		code: `<AccordionItem title="Accordion">
+    <Text>This is some text inside an Accordion</Text>
+  </AccordionItem>`,
+	},
 ];
 
 export default snippits;
