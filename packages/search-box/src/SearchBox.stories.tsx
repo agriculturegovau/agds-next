@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, ChangeEvent, FormEvent } from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { Box } from '@ag.ds-next/box';
 import { SearchBox } from './SearchBox';
@@ -65,11 +65,11 @@ IconOnly.args = {
 export const Controlled = () => {
 	const [searchTerm, setSearchTerm] = useState('');
 
-	const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+	const onChange = (event: ChangeEvent<HTMLInputElement>) => {
 		setSearchTerm(event.target.value);
 	};
 
-	const onSubmit = (event: React.FormEvent<HTMLFormElement>, value: string) => {
+	const onSubmit = (event: FormEvent<HTMLFormElement>, value: string) => {
 		event.preventDefault();
 		console.log(value);
 	};
