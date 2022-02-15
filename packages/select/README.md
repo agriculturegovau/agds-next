@@ -6,19 +6,21 @@ group: Forms
 
 ### Default
 
-Select boxes (drop-down lists) allow users to select a value from a list. By default, the `Select` component does not expand to fill the available space.
+Select boxes (drop-down lists) allow users to select a value from a list.
+
+By default, the `Select` component does not expand to fill the available space.
 
 ```jsx live
 <Select label="Name" options={['Option A', 'Option B', 'Option C']} />
 ```
 
-<!-- ### Block
+### Block
 
 Use the `block` prop to expand the component to fill the available space.
 
 ```jsx live
 <TextInput label="Name" block />
-``` -->
+```
 
 ### Required
 
@@ -64,9 +66,9 @@ Disabled input elements are unusable and can not be clicked. This prevents a use
 <Select label="Name" disabled options={['Option A', 'Option B', 'Option C']} />
 ```
 
-### Different width sizes for inputs
+### Maximum widths
 
-The width of a text input field should indicate the amount of information expected to be entered into the field. The size of the field acts as a visual constraint for the end user. As an example, input fields for postcodes should have a smaller width than fields for emails.
+The width of a select should indicate the amount of information expected to be entered into the field. The size of the select acts as a visual constraint for the end user.
 
 ```jsx live
 <Stack gap={1}>

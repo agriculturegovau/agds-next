@@ -64,7 +64,7 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(
 					<div
 						css={{
 							position: 'relative',
-							maxWidth: maxWidth ? fieldMaxWidth[maxWidth] : undefined,
+							maxWidth: maxWidth ? fieldMaxWidth[maxWidth] : '12.8125rem',
 						}}
 					>
 						<select
@@ -85,7 +85,17 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(
 								);
 							})}
 						</select>
-						<SelectIcon disabled={props.disabled} />
+						<Icon
+							icon="chevronDown"
+							color="action"
+							css={{
+								position: 'absolute',
+								top: '50%',
+								right: mapSpacing(1),
+								transform: 'translateY(-50%)',
+								opacity: props.disabled ? 0.3 : 1,
+							}}
+						/>
 					</div>
 				)}
 			</Field>
@@ -117,7 +127,7 @@ const selectStyles = ({
 		paddingLeft: mapSpacing(1),
 		paddingRight: mapSpacing(1),
 		backgroundColor: `var(${themeVars.lightBackgroundBody})`,
-		borderWidth: 2,
+		borderWidth: 3,
 		borderStyle: 'solid',
 		borderColor: boxPalette.borderInput,
 		borderRadius: tokens.borderRadius,
@@ -150,17 +160,3 @@ const selectStyles = ({
 
 		'&:focus': outline,
 	} as const);
-
-const SelectIcon = ({ disabled }: { disabled?: boolean }) => (
-	<Icon
-		icon="chevronDown"
-		color="action"
-		css={{
-			position: 'absolute',
-			top: '50%',
-			right: mapSpacing(1),
-			transform: 'translateY(-50%)',
-			opacity: disabled ? 0.3 : 1,
-		}}
-	/>
-);
