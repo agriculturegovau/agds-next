@@ -23,7 +23,7 @@ export function Button({
 	ButtonHTMLAttributes<HTMLButtonElement>,
 	HTMLButtonElement
 >) {
-	const styles = buttonStyles({ block, disabled, size, variant });
+	const styles = buttonStyles({ block, size, variant });
 	return (
 		<button disabled={disabled} css={styles} {...props}>
 			{loading ? 'Loading...' : children}
@@ -35,16 +35,18 @@ export function ButtonLink({
 	children,
 	href,
 	block,
+	size,
 	variant,
 	...props
 }: {
 	block?: boolean;
+	size?: ButtonSize;
 	variant?: ButtonVariant;
 } & DetailedHTMLProps<
 	AnchorHTMLAttributes<HTMLAnchorElement>,
 	HTMLAnchorElement
 >) {
-	const styles = buttonStyles({ block, variant });
+	const styles = buttonStyles({ block, size, variant });
 	const Link = useLinkComponent();
 	return (
 		<Link href={href} css={styles} {...props}>

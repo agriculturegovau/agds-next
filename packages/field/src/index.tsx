@@ -3,3 +3,4 @@ export * from './FieldContainer';
 export * from './FieldLabel';
 export * from './FieldHint';
 export * from './FieldMessage';
+export * from './fieldMaxWidth';

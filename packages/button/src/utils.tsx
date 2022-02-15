@@ -54,13 +54,15 @@ const variants = {
 	},
 } as const;
 
-export const sizes = {
+export type ButtonVariant = keyof typeof variants;
+
+const sizes = {
 	sm: {
 		...fontGrid('xs', 'default'),
 		paddingTop: mapSpacing(0.25),
 		paddingBottom: mapSpacing(0.25),
-		paddingLeft: mapSpacing(0.5),
-		paddingRight: mapSpacing(0.5),
+		paddingLeft: mapSpacing(0.75),
+		paddingRight: mapSpacing(0.75),
 	},
 	md: {
 		...fontGrid('sm', 'default'),
@@ -71,17 +73,14 @@ export const sizes = {
 	},
 };
 
-export type ButtonVariant = keyof typeof variants;
 export type ButtonSize = keyof typeof sizes;
 
 export function buttonStyles({
 	block,
-	disabled,
 	variant = 'primary',
 	size = 'md',
 }: {
 	block?: boolean;
-	disabled?: boolean;
 	variant?: ButtonVariant;
 	size?: ButtonSize;
 }) {
@@ -102,12 +101,12 @@ export function buttonStyles({
 			width: '100%',
 		}),
 
-		...(disabled && {
+		'&:disabled': {
 			cursor: 'not-allowed',
 			opacity: 0.3,
 			// reset hover and focus styles
 			'&:hover': {},
 			'&:focus': {},
-		}),
+		},
 	} as const;
 }
