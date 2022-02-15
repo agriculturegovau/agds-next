@@ -143,3 +143,29 @@ export const Controlled = () => {
 		/>
 	);
 };
+
+export const Groups: ComponentStory<typeof Select> = (args) => (
+	<Select {...args} />
+);
+Groups.args = {
+	label: 'Example',
+	placeholder: 'Please select',
+	options: [
+		{
+			label: 'Group A',
+			options: [
+				{ value: 'a', label: 'Option A' },
+				{ value: 'b', label: 'Option B' },
+				{ value: 'c', label: 'Option C' },
+			],
+		},
+		{
+			label: 'Group B',
+			options: [
+				{ value: 'd', label: 'Option D' },
+				{ value: 'e', label: 'Option E' },
+				{ value: 'f', label: 'Option F' },
+			],
+		},
+	],
+};
