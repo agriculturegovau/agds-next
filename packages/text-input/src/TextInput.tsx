@@ -1,5 +1,9 @@
-import React, { DetailedHTMLProps, InputHTMLAttributes } from 'react';
-import { Field } from '@ag.ds-next/field';
+import React, {
+	forwardRef,
+	DetailedHTMLProps,
+	InputHTMLAttributes,
+} from 'react';
+import { Field, fieldMaxWidth, FieldMaxWidth } from '@ag.ds-next/field';
 import {
 	boxPalette,
 	fontGrid,
@@ -20,36 +24,47 @@ export type InputProps = DetailedHTMLProps<
 	invalid?: true;
 	valid?: true;
 	block?: boolean;
-	maxWidth?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
+	maxWidth?: FieldMaxWidth;
 };
 
-export const TextInput = ({
-	label,
-	required,
-	hint,
-	message,
-	invalid,
-	valid,
-	block,
-	maxWidth,
-	...props
-}: InputProps) => {
-	const styles = textInputStyles({ block, maxWidth, invalid, valid });
-	return (
-		<Field
-			label={label}
-			required={Boolean(required)}
-			hint={hint}
-			message={message}
-			invalid={invalid}
-			valid={valid}
-		>
-			{(allyProps) => (
-				<input required={required} css={styles} {...allyProps} {...props} />
-			)}
-		</Field>
-	);
-};
+export const TextInput = forwardRef<HTMLInputElement, InputProps>(
+	function TextInput(
+		{
+			label,
+			required,
+			hint,
+			message,
+			invalid,
+			valid,
+			block,
+			maxWidth,
+			...props
+		},
+		ref
+	) {
+		const styles = textInputStyles({ block, maxWidth, invalid, valid });
+		return (
+			<Field
+				label={label}
+				required={Boolean(required)}
+				hint={hint}
+				message={message}
+				invalid={invalid}
+				valid={valid}
+			>
+				{(allyProps) => (
+					<input
+						ref={ref}
+						required={required}
+						css={styles}
+						{...allyProps}
+						{...props}
+					/>
+				)}
+			</Field>
+		);
+	}
+);
 
 export const textInputStyles = ({
 	block,
@@ -75,9 +90,8 @@ export const textInputStyles = ({
 		borderStyle: 'solid',
 		borderColor: boxPalette.borderInput,
 		borderRadius: tokens.borderRadius,
-		cursor: 'pointer',
 		color: themeVars.lightForegroundText,
-		maxWidth: maxWidth ? maxWidths[maxWidth] : '12.8125rem',
+		maxWidth: maxWidth ? fieldMaxWidth[maxWidth] : '12.8125rem',
 		fontFamily: tokens.font.body,
 		...fontGrid('sm', 'nospace'),
 
@@ -106,11 +120,3 @@ export const textInputStyles = ({
 
 		'&:focus': outline,
 	} as const);
-
-const maxWidths = {
-	xs: '4.3rem',
-	sm: '6.3rem',
-	md: '10rem',
-	lg: '18rem',
-	xl: '25rem',
-} as const;
