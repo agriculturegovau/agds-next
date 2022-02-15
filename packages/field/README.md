@@ -6,19 +6,17 @@ group: Forms
 
 ### Field
 
-Using [context](https://reactjs.org/docs/context.html), the field component connects the label, description, and message to the input element.
+The field component connects the label, description, and message to the input element.
 
 ```jsx live
-<Field label="Name">
-	<TextInput />
-</Field>
+<Field label="Name">{(a11yProps) => <input {...a11yProps} />}</Field>
 ```
 
 ### Required
 
 ```jsx live
 <Field label="Name" required>
-	<TextInput />
+	{(a11yProps) => <input {...a11yProps} />}
 </Field>
 ```
 
@@ -27,9 +25,7 @@ Using [context](https://reactjs.org/docs/context.html), the field component conn
 Each text field must be accompanied by a label. Effective form labeling helps users understand what information to enter into a text input.
 
 ```jsx live
-<Field label="Name">
-	<TextInput />
-</Field>
+<Field label="Name">{(a11yProps) => <input {...a11yProps} />}</Field>
 ```
 
 ### Hint
@@ -38,7 +34,7 @@ Hints can be used to provide more context that will help the user successfully c
 
 ```jsx live
 <Field label="Email" hint="We will only use this to respond to your question">
-	<TextInput type="email" />
+	{(a11yProps) => <input type="email" {...a11yProps} />}
 </Field>
 ```
 
@@ -53,14 +49,14 @@ Error messages are used to notify the user when a form field has not passed vali
 		invalid
 		message="Enter an email address in the correct format, like name@example.com"
 	>
-		<TextInput type="email" />
+		{(a11yProps) => <input type="email" {...a11yProps} />}
 	</Field>
 	<Field
 		label="Email"
 		valid
 		message="The email address you have entered is valid"
 	>
-		<TextInput type="email" />
+		{(a11yProps) => <input type="email" {...a11yProps} />}
 	</Field>
 </Stack>
 ```
