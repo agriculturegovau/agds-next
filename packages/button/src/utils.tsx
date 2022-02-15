@@ -94,6 +94,7 @@ export function buttonStyles({
 		cursor: 'pointer',
 		fontFamily: tokens.font.body,
 		boxSizing: 'border-box',
+		margin: 0,
 		textAlign: 'center',
 
 		...(block && {
