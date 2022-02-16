@@ -40,7 +40,7 @@ export type SelectProps = DetailedHTMLProps<
 	block?: boolean;
 	maxWidth?: FieldMaxWidth;
 	placeholder?: string;
-	options: Option[] | OptionGroup[];
+	options: Options;
 };
 
 export const Select = forwardRef<HTMLSelectElement, SelectProps>(
