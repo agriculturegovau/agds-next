@@ -123,3 +123,31 @@ Disabled select elements are unusable and can not be clicked. This prevents a us
 	]}
 />
 ```
+
+### Groups
+
+```jsx live
+<Select
+	label="What option?"
+	placeholder="Please select"
+	disabled
+	options={[
+		{
+			label: 'Group A',
+			options: [
+				{ value: 'a', label: 'Option A' },
+				{ value: 'b', label: 'Option B' },
+				{ value: 'c', label: 'Option C' },
+			],
+		},
+		{
+			label: 'Group B',
+			options: [
+				{ value: 'd', label: 'Option D' },
+				{ value: 'e', label: 'Option E' },
+				{ value: 'f', label: 'Option F' },
+			],
+		},
+	]}
+/>
+```
