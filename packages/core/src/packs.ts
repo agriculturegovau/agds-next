@@ -10,7 +10,7 @@ const control = {
 		height: '2.125rem', // 34 px
 	},
 	md: {
-		fontSize: `${tokens.fontSize.md}rem`,
+		fontSize: `${tokens.fontSize.sm}rem`,
 		lineHeight: tokens.lineHeight.nospace,
 		height: '2.875rem', // 46 px
 	},
