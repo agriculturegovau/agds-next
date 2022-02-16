@@ -47,7 +47,6 @@ export type ButtonVariant = keyof typeof variants;
 const sizes = {
 	sm: {
 		...packs.control.sm,
-		paddingBottom: mapSpacing(0.25),
 		paddingLeft: mapSpacing(0.75),
 		paddingRight: mapSpacing(0.75),
 	},
@@ -73,6 +72,7 @@ export function buttonStyles({
 		...variants[variant],
 		...sizes[size],
 
+		appearance: 'none',
 		display: block ? 'flex' : 'inline-flex',
 		alignItems: 'center',
 		borderWidth: 3,

@@ -1,16 +1,17 @@
 import { boxPalette } from './boxPalette';
-import { fontGrid } from './utils/fontGrid';
 import { tokens } from './tokens';
 
 // Packs
 
 const control = {
 	sm: {
-		...fontGrid('xs', 'default'),
+		fontSize: `${tokens.fontSize.xs}rem`,
+		lineHeight: tokens.lineHeight.nospace,
 		height: '2.125rem', // 34 px
 	},
 	md: {
-		...fontGrid('sm', 'default'),
+		fontSize: `${tokens.fontSize.md}rem`,
+		lineHeight: tokens.lineHeight.nospace,
 		height: '2.875rem', // 46 px
 	},
 };
