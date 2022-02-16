@@ -1,22 +1,19 @@
 import { PropsWithChildren, useRef } from 'react';
-import { Box } from '@ag.ds-next/box';
 import { useElementSize, usePrefersReducedMotion } from '@ag.ds-next/core';
 import { useSpring, animated } from 'react-spring';
 
-export type AccordionBodyProps = {
-	isOpen?: boolean;
-	id: string;
+export type AccordionBodyProps = PropsWithChildren<{
 	ariaLabelledBy: string;
-	noPadding?: boolean;
-};
+	id: string;
+	isOpen: boolean;
+}>;
 
 export const AccordionBody = ({
-	ariaLabelledBy,
 	children,
-	isOpen,
+	ariaLabelledBy,
 	id,
-	noPadding,
-}: PropsWithChildren<AccordionBodyProps>) => {
+	isOpen,
+}: AccordionBodyProps) => {
 	const ref = useRef<HTMLDivElement>(null);
 	const { height } = useElementSize(ref);
 
@@ -34,9 +31,7 @@ export const AccordionBody = ({
 			role="region"
 			style={{ overflow: 'hidden', ...style }}
 		>
-			<Box padding={noPadding ? 0 : 1} ref={ref}>
-				{children}
-			</Box>
+			<div ref={ref}>{children}</div>
 		</animated.section>
 	);
 };

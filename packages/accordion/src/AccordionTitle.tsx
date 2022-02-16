@@ -4,20 +4,22 @@ import { Icon } from '@ag.ds-next/icon';
 import { usePrefersReducedMotion } from '@ag.ds-next/core';
 
 export type AccordionTitleProps = {
+	children: string;
 	id: string;
 	ariaControls: string;
 	isOpen?: boolean;
 	onToggle?: () => void;
 	tag?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
-	title: string;
 };
 
+const AnimatedIcon = animated(Icon);
+
 export const AccordionTitle = ({
-	id,
 	ariaControls,
+	children,
+	id,
 	isOpen,
 	onToggle,
-	title,
 	tag = 'h3',
 }: AccordionTitleProps) => {
 	const prefersReducedMotion = usePrefersReducedMotion();
@@ -28,7 +30,7 @@ export const AccordionTitle = ({
 	});
 
 	return (
-		<Box as={tag}>
+		<Box as={tag} borderBottom={isOpen}>
 			<Flex
 				as="button"
 				aria-controls={ariaControls}
@@ -46,10 +48,8 @@ export const AccordionTitle = ({
 				link
 				focus
 			>
-				{title}
-				<animated.div style={style}>
-					<Icon icon="chevronUp" size={1} />
-				</animated.div>
+				{children}
+				<AnimatedIcon icon="chevronUp" size={1} style={style} />
 			</Flex>
 		</Box>
 	);

@@ -241,11 +241,22 @@ items={[
 		code: `<Textarea label="Message" />`,
 	},
 	{
+		group: 'Select',
+		name: 'Simple',
+		code: `<Select 	label="What option?"
+    placeholder="Please select"
+    options={[
+      { value: 'a', label: 'Option A' },
+      { value: 'b', label: 'Option B' },
+      { value: 'c', label: 'Option C' },
+    ]} />`,
+	},
+	{
 		group: 'Accordion',
 		name: 'Basic',
-		code: `<AccordionItem title="Accordion">
-    <Text>This is some text inside an Accordion</Text>
-  </AccordionItem>`,
+		code: `<Accordion><AccordionItem title="Accordion">
+    <AccordionItemContent><Text>This is some text inside an Accordion</Text></AccordionItemContent>
+  </AccordionItem></Accordion>`,
 	},
 ];
 
