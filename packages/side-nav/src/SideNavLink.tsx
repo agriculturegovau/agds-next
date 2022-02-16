@@ -1,7 +1,7 @@
 import { ReactNode } from 'react';
 import { Box } from '@ag.ds-next/box';
 import { useLinkComponent, mapSpacing } from '@ag.ds-next/core';
-import { boxPalette, fontGrid, outline } from '@ag.ds-next/core';
+import { boxPalette, fontGrid, packs } from '@ag.ds-next/core';
 import { VisuallyHidden } from '@ag.ds-next/a11y';
 
 import { useLinkListDepth } from './context';
@@ -60,7 +60,7 @@ export const SideNavLink = ({
 							backgroundColor: localPalette.linkHoverBg,
 						},
 
-						'&:focus': outline,
+						'&:focus': packs.outline,
 
 						...(depth > 2 && {
 							'&:before': {

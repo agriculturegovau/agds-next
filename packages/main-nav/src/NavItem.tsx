@@ -1,9 +1,9 @@
 import {
 	boxPalette,
 	mapSpacing,
-	outline,
 	mq,
 	mapResponsiveProp,
+	packs,
 } from '@ag.ds-next/core';
 import { Box } from '@ag.ds-next/box';
 import type { ReactNode } from 'react';
@@ -61,7 +61,7 @@ export function NavItem({
 							left: 0,
 							height: '100%',
 							width: '100%',
-							...outline,
+							...packs.outline,
 						},
 						'&::-moz-focus-inner': {
 							border: 0,
