@@ -21,6 +21,7 @@
 		"@ag.ds-next/card": "1.0.0",
 		"@ag.ds-next/columns": "2.0.0",
 		"@ag.ds-next/content": "3.0.0",
+		"@ag.ds-next/control-inputs": "1.0.0",
 		"@ag.ds-next/core": "2.0.0",
 		"@ag.ds-next/field": "1.0.0",
 		"@ag.ds-next/footer": "3.0.0",

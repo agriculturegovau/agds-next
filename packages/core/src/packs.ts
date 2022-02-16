@@ -5,6 +5,23 @@ import { tokens } from './tokens';
 
 const control = {
 	sm: {
+		// fontSize: `${tokens.fontSize.xs}rem`,
+		// lineHeight: tokens.lineHeight.nospace,
+		width: '1.75rem', // 28 px
+		height: '1.75rem', // 28 px
+		borderWidth: 2,
+	},
+	md: {
+		fontSize: `${tokens.fontSize.sm}rem`,
+		lineHeight: tokens.lineHeight.nospace,
+		width: '2.375rem', // 38 px
+		height: '2.375rem', // 38 px
+		borderWidth: 2,
+	},
+};
+
+const input = {
+	sm: {
 		fontSize: `${tokens.fontSize.xs}rem`,
 		lineHeight: tokens.lineHeight.nospace,
 		height: '2.125rem', // 34 px
@@ -24,6 +41,7 @@ const outline = {
 };
 
 export const packs = {
-	control,
 	outline,
+	control,
+	input,
 };

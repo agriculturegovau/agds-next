@@ -90,7 +90,7 @@ export const textInputStyles = ({
 		color: `var(${themeVars.lightForegroundText})`,
 		maxWidth: maxWidth ? fieldMaxWidth[maxWidth] : '12.8125rem',
 		fontFamily: tokens.font.body,
-		...packs.control.md,
+		...packs.input.md,
 
 		...(block && {
 			maxWidth: 'none',

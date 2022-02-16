@@ -182,7 +182,7 @@ const selectStyles = ({
 		color: `var(${themeVars.lightForegroundText})`,
 		fontFamily: tokens.font.body,
 		width: '100%',
-		...packs.control.md,
+		...packs.input.md,
 
 		...(block && {
 			maxWidth: 'none',
