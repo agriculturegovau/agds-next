@@ -7,7 +7,7 @@ const variants = {
 		color: boxPalette.backgroundBody,
 		textDecoration: 'none',
 
-		'&:hover': {
+		'&:not(:disabled):hover': {
 			background: boxPalette.foregroundText,
 			borderColor: boxPalette.foregroundText,
 			color: boxPalette.backgroundBody,
@@ -20,7 +20,7 @@ const variants = {
 		color: boxPalette.foregroundAction,
 		textDecoration: 'none',
 
-		'&:hover': {
+		'&:not(:disabled):hover': {
 			background: 'transparent',
 			border: `3px solid ${boxPalette.foregroundText}`,
 			color: boxPalette.foregroundText,
@@ -33,7 +33,7 @@ const variants = {
 		color: boxPalette.foregroundAction,
 		textDecoration: 'underline',
 
-		'&:hover': {
+		'&:not(:disabled):hover': {
 			background: 'transparent',
 			border: `3px solid transparent`,
 			color: boxPalette.foregroundText,
@@ -91,11 +91,8 @@ export function buttonStyles({
 		'&:disabled': {
 			cursor: 'not-allowed',
 			opacity: 0.3,
-			// reset hover and focus styles
-			'&:hover': {},
-			'&:focus': {},
 		},
 
-		'&:focus': packs.outline,
+		'&:not(:disabled):focus': packs.outline,
 	} as const;
 }
