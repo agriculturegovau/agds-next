@@ -35,7 +35,10 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
 		},
 		ref
 	) {
-		const styles = textInputStyles({ block, maxWidth, invalid, valid });
+		const styles = {
+			...textInputStyles({ block, maxWidth, invalid, valid }),
+			height: 'auto',
+		};
 		return (
 			<Field
 				label={label}

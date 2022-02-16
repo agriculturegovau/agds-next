@@ -1,10 +1,4 @@
-import {
-	fontGrid,
-	outline,
-	boxPalette,
-	tokens,
-	mapSpacing,
-} from '@ag.ds-next/core';
+import { packs, boxPalette, tokens, mapSpacing } from '@ag.ds-next/core';
 
 const variants = {
 	primary: {
@@ -19,8 +13,6 @@ const variants = {
 			color: boxPalette.backgroundBody,
 			textDecoration: 'underline',
 		},
-
-		'&:focus': outline,
 	},
 	secondary: {
 		background: 'transparent',
@@ -34,8 +26,6 @@ const variants = {
 			color: boxPalette.foregroundText,
 			textDecoration: 'underline',
 		},
-
-		'&:focus': outline,
 	},
 	tertiary: {
 		background: 'transparent',
@@ -49,8 +39,6 @@ const variants = {
 			color: boxPalette.foregroundText,
 			textDecoration: 'none',
 		},
-
-		'&:focus': outline,
 	},
 } as const;
 
@@ -58,16 +46,13 @@ export type ButtonVariant = keyof typeof variants;
 
 const sizes = {
 	sm: {
-		...fontGrid('xs', 'default'),
-		paddingTop: mapSpacing(0.25),
+		...packs.control.sm,
 		paddingBottom: mapSpacing(0.25),
 		paddingLeft: mapSpacing(0.75),
 		paddingRight: mapSpacing(0.75),
 	},
 	md: {
-		...fontGrid('sm', 'default'),
-		paddingTop: mapSpacing(0.5),
-		paddingBottom: mapSpacing(0.5),
+		...packs.control.md,
 		paddingLeft: mapSpacing(1.5),
 		paddingRight: mapSpacing(1.5),
 	},
@@ -87,7 +72,9 @@ export function buttonStyles({
 	return {
 		...variants[variant],
 		...sizes[size],
-		display: 'inline-block',
+
+		display: block ? 'flex' : 'inline-flex',
+		alignItems: 'center',
 		borderWidth: 3,
 		borderStyle: 'solid',
 		borderRadius: tokens.borderRadius,
@@ -98,7 +85,6 @@ export function buttonStyles({
 		textAlign: 'center',
 
 		...(block && {
-			display: 'block',
 			width: '100%',
 		}),
 
@@ -109,5 +95,7 @@ export function buttonStyles({
 			'&:hover': {},
 			'&:focus': {},
 		},
+
+		'&:focus': packs.outline,
 	} as const;
 }
