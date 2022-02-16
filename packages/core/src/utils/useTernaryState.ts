@@ -16,11 +16,14 @@ export function useTernaryState(
 	initialValue: boolean | (() => boolean)
 ): [boolean, SetTrue, SetFalse] {
 	const [state, setState] = useState(initialValue);
+
 	const setTrue = useCallback(function setTrue() {
 		return setState(true);
 	}, []);
+
 	const setFalse = useCallback(function setTrue() {
 		return setState(false);
 	}, []);
+
 	return [state, setTrue, setFalse];
 }

@@ -1,5 +1,10 @@
 export { tokens } from '@ag.ds-next/core';
 export { Logo } from '@ag.ds-next/ag-branding';
+export {
+	Accordion,
+	AccordionItem,
+	AccordionItemContent,
+} from '@ag.ds-next/accordion';
 export { Body } from '@ag.ds-next/body';
 export { Box, Flex, Stack } from '@ag.ds-next/box';
 export { Button } from '@ag.ds-next/button';
@@ -8,7 +13,11 @@ export { Columns, Column } from '@ag.ds-next/columns';
 export { Footer, FooterDivider } from '@ag.ds-next/footer';
 export { Header } from '@ag.ds-next/header';
 export { Heading, H1, H2, H3, H4, H5, H6 } from '@ag.ds-next/heading';
+export { Select } from '@ag.ds-next/select';
 export { Text, TextLink } from '@ag.ds-next/text';
+export { TextInput } from '@ag.ds-next/text-input';
+export { Textarea } from '@ag.ds-next/textarea';
+export { Field } from '@ag.ds-next/field';
 export {
 	LinkList,
 	LinkListContainer,

@@ -1,3 +1,8 @@
+import {
+	Accordion,
+	AccordionItem,
+	AccordionItemContent,
+} from '@ag.ds-next/accordion';
 import { Logo } from '@ag.ds-next/ag-branding';
 import { Button, ButtonLink } from '@ag.ds-next/button';
 import { Box, Flex, Stack } from '@ag.ds-next/box';
@@ -28,6 +33,9 @@ import { Select } from '@ag.ds-next/select';
 import { VisuallyHidden } from '@ag.ds-next/a11y';
 
 export const designSystemComponents = {
+	Accordion,
+	AccordionItem,
+	AccordionItemContent,
 	AgLogo,
 	Button,
 	ButtonLink,

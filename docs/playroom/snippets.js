@@ -230,6 +230,34 @@ items={[
       </Column>
     </Columns>`,
 	},
+	{
+		group: 'TextInput',
+		name: 'Simple',
+		code: `<TextInput label="Name" />`,
+	},
+	{
+		group: 'TextArea',
+		name: 'Simple',
+		code: `<Textarea label="Message" />`,
+	},
+	{
+		group: 'Select',
+		name: 'Simple',
+		code: `<Select 	label="What option?"
+    placeholder="Please select"
+    options={[
+      { value: 'a', label: 'Option A' },
+      { value: 'b', label: 'Option B' },
+      { value: 'c', label: 'Option C' },
+    ]} />`,
+	},
+	{
+		group: 'Accordion',
+		name: 'Basic',
+		code: `<Accordion><AccordionItem title="Accordion">
+    <AccordionItemContent><Text>This is some text inside an Accordion</Text></AccordionItemContent>
+  </AccordionItem></Accordion>`,
+	},
 ];
 
 export default snippits;
