@@ -3,7 +3,7 @@ export const fieldMaxWidth = {
 	sm: '6.3rem',
 	md: '10rem',
 	lg: '18rem',
-	xl: '25rem',
+	xl: '24rem',
 } as const;
 
 export type FieldMaxWidth = keyof typeof fieldMaxWidth;
