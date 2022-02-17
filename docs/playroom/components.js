@@ -38,3 +38,4 @@ export {
 	SideNavTitle,
 } from '@ag.ds-next/side-nav';
 export { Icon } from '@ag.ds-next/icon';
+export { ProgressIndicator } from '@ag.ds-next/progress-indicator';

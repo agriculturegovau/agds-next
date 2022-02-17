@@ -16,46 +16,50 @@ export const ProgressIndicatorItem = ({
 	children,
 	href,
 	status,
-}: ProgressIndicatorItemProps) => (
-	<li
-		css={{
-			borderLeftWidth: 3,
-			borderLeftStyle: 'solid',
-			borderLeftColor:
-				status === 'doing' ? boxPalette.foregroundAction : 'transparent',
-		}}
-	>
-		{console.log(children, status)}
-		<Flex
-			as={TextLink}
-			href={href}
-			alignItems="center"
-			gap={1}
-			paddingX={0.5}
-			paddingY={0.75}
-			borderBottom
-			css={{
-				textDecoration: 'none',
-				'&:hover': {
-					backgroundColor: boxPalette.backgroundShade,
-				},
-			}}
-		>
-			<Icon icon={statusIconMap[status]} size={1.5} color="action" />
-			<Flex flexDirection="column" gap={0}>
-				<Text color="muted" lineHeight="nospace">
-					{statusLabelMap[status]}
-				</Text>
-				<Text
-					css={{ display: 'block' }}
-					fontWeight={status === 'doing' ? 'bold' : 'normal'}
-				>
+}: ProgressIndicatorItemProps) => {
+	const active = status === 'doing';
+	return (
+		<li css={{ position: 'relative' }}>
+			{active ? (
+				<div
+					style={{
+						position: 'absolute',
+						top: 0,
+						left: 0,
+						bottom: 0,
+						width: 3,
+						backgroundColor: boxPalette.foregroundAction,
+					}}
+				/>
+			) : null}
+			<Flex
+				as={TextLink}
+				href={href}
+				alignItems="center"
+				gap={0.75}
+				padding={0.75}
+				borderBottom
+				color="text"
+				fontWeight={status === 'doing' ? 'bold' : 'normal'}
+				css={{
+					position: 'relative',
+					textDecoration: 'none',
+					'&:hover': {
+						backgroundColor: boxPalette.backgroundShade,
+					},
+				}}
+			>
+				<Icon icon={statusIconMap[status]} size={1.5} color="action" />
+				<Flex flexDirection="column" gap={0}>
+					<Text color="muted" fontSize="xs" lineHeight="nospace">
+						{statusLabelMap[status]}
+					</Text>
 					{children}
-				</Text>
+				</Flex>
 			</Flex>
-		</Flex>
-	</li>
-);
+		</li>
+	);
+};
 
 const statusIconMap = {
 	doing: 'progressDoing',
