@@ -8,10 +8,9 @@ Our design system provides a progress indicator for larger tasks that can be com
 
 The individual tasks or steps are shown as either:
 
-- `open` – the task is available for the user to do
-- `partly finished` – the task has been started
-- `finished` – the task has been completed
-- `not yet started` – the user has to do something before the task can be started.
+- `todo` – the task is available for the user to do
+- `doing` – the task has been started
+- `docs` – the task has been completed
 
 ```jsx live
 <ProgressIndicator
