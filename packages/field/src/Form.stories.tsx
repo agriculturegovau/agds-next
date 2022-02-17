@@ -5,8 +5,7 @@ import { Field } from './Field';
 import { TextInput } from '@ag.ds-next/text-input';
 import { Button } from '@ag.ds-next/button';
 import { Select } from '@ag.ds-next/select';
-import { Radio } from '@ag.ds-next/checkbox';
-import { Radio } from '@ag.ds-next/radio';
+import { Checkbox, Radio } from '@ag.ds-next/control-input';
 import { SearchBox } from '@ag.ds-next/search-box';
 
 export default {
@@ -37,9 +36,9 @@ const Example = ({
 			value={checked ? 'a' : undefined}
 			disabled={disabled}
 		/>
-		<Radio checked={checked} disabled={disabled}>
+		<Checkbox checked={checked} disabled={disabled}>
 			Would you like an email?
-		</Radio>
+		</Checkbox>
 		<Radio checked={checked} disabled={disabled}>
 			Cooking
 		</Radio>

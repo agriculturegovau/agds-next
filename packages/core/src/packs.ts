@@ -5,8 +5,8 @@ import { tokens } from './tokens';
 
 const control = {
 	sm: {
-		// fontSize: `${tokens.fontSize.xs}rem`,
-		// lineHeight: tokens.lineHeight.nospace,
+		fontSize: `${tokens.fontSize.sm}rem`,
+		lineHeight: tokens.lineHeight.nospace,
 		width: '1.75rem', // 28 px
 		height: '1.75rem', // 28 px
 		borderWidth: 2,

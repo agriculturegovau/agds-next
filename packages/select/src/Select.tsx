@@ -180,9 +180,10 @@ const selectStyles = ({
 		borderColor: boxPalette.borderInput,
 		borderRadius: tokens.borderRadius,
 		color: `var(${themeVars.lightForegroundText})`,
-		fontFamily: tokens.font.body,
 		width: '100%',
+		fontFamily: tokens.font.body,
 		...packs.input.md,
+		lineHeight: tokens.lineHeight.default,
 
 		...(block && {
 			maxWidth: 'none',

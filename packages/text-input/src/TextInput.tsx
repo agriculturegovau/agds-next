@@ -70,11 +70,13 @@ export const textInputStyles = ({
 	maxWidth,
 	invalid,
 	valid,
+	multiline,
 }: {
 	block?: boolean;
 	maxWidth?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
 	invalid?: boolean;
 	valid?: boolean;
+	multiline?: boolean;
 }) =>
 	({
 		appearance: 'none',
@@ -109,6 +111,14 @@ export const textInputStyles = ({
 					borderColor: `var(${themeVars.success})`,
 			  }
 			: undefined),
+
+		...(multiline && {
+			lineHeight: tokens.lineHeight.default,
+			paddingTop: mapSpacing(0.5),
+			paddingBottom: mapSpacing(0.5),
+			height: 'auto,',
+			minHeight: '6rem',
+		}),
 
 		'&:disabled': {
 			cursor: 'not-allowed',

@@ -1,4 +1,6 @@
 import {
+	forwardRef,
+	PropsWithRef,
 	DetailedHTMLProps,
 	InputHTMLAttributes,
 	useState,
@@ -11,25 +13,30 @@ import { ControlContainer } from './ControlContainer';
 import { ControlLabel } from './ControlLabel';
 import { ControlSize } from './utils';
 
-export type RadioProps = Omit<
-	DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>,
-	'size'
-> & {
-	invalid?: true;
-	valid?: true;
-	size?: ControlSize;
-};
+export type RadioProps = PropsWithRef<
+	Omit<
+		DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>,
+		'size'
+	> & {
+		invalid?: true;
+		valid?: true;
+		size?: ControlSize;
+	}
+>;
 
-export const Radio = ({
-	children,
-	disabled,
-	checked: checkedProp,
-	onChange: onChangeProp,
-	invalid,
-	valid,
-	size = 'md',
-	...props
-}: RadioProps) => {
+export const Radio = forwardRef<HTMLInputElement, RadioProps>(function Radio(
+	{
+		children,
+		disabled,
+		checked: checkedProp,
+		onChange: onChangeProp,
+		invalid,
+		valid,
+		size = 'md',
+		...props
+	},
+	ref
+) {
 	const [checkedState, setCheckedState] = useState(checkedProp ?? false);
 
 	const onChange = useCallback(
@@ -45,6 +52,7 @@ export const Radio = ({
 	return (
 		<ControlContainer disabled={disabled} valid={valid} invalid={invalid}>
 			<ControlInput
+				ref={ref}
 				type="radio"
 				checked={checked}
 				onChange={onChange}
@@ -61,4 +69,4 @@ export const Radio = ({
 			<ControlLabel disabled={disabled}>{children}</ControlLabel>
 		</ControlContainer>
 	);
-};
+});

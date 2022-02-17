@@ -5,6 +5,7 @@ import React, {
 } from 'react';
 import { Field, FieldMaxWidth } from '@ag.ds-next/field';
 import { textInputStyles } from '@ag.ds-next/text-input';
+import { tokens } from '@ag.ds-next/core';
 
 export type TextareaProps = DetailedHTMLProps<
 	TextareaHTMLAttributes<HTMLTextAreaElement>,
@@ -35,10 +36,14 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
 		},
 		ref
 	) {
-		const styles = {
-			...textInputStyles({ block, maxWidth, invalid, valid }),
-			height: 'auto',
-		};
+		const styles = textInputStyles({
+			block,
+			maxWidth,
+			invalid,
+			valid,
+			multiline: true,
+		});
+
 		return (
 			<Field
 				label={label}
