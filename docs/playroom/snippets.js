@@ -232,17 +232,17 @@ items={[
 	},
 	{
 		group: 'TextInput',
-		name: 'Simple',
+		name: 'Basic',
 		code: `<TextInput label="Name" />`,
 	},
 	{
 		group: 'TextArea',
-		name: 'Simple',
+		name: 'Basic',
 		code: `<Textarea label="Message" />`,
 	},
 	{
 		group: 'Select',
-		name: 'Simple',
+		name: 'Basic',
 		code: `<Select 	label="What option?"
     placeholder="Please select"
     options={[
@@ -257,6 +257,17 @@ items={[
 		code: `<Accordion><AccordionItem title="Accordion">
     <AccordionItemContent><Text>This is some text inside an Accordion</Text></AccordionItemContent>
   </AccordionItem></Accordion>`,
+	},
+	{
+		group: 'ProgressIndicator',
+		name: 'Basic',
+		code: `<ProgressIndicator
+    items={[
+      { href: '#', label: 'Introduction', status: 'doing' },
+      { href: '#', label: 'Business Contacts', status: 'todo' },
+      { href: '#', label: 'Case Studies', status: 'done' },
+    ]}
+  />`,
 	},
 ];
 
