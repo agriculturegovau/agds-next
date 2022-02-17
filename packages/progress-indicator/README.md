@@ -10,7 +10,7 @@ The individual tasks or steps are shown as either:
 
 - `todo` – the task is available for the user to do
 - `doing` – the task has been started
-- `docs` – the task has been completed
+- `done` – the task has been completed
 
 ```jsx live
 <ProgressIndicator
