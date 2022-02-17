@@ -6,9 +6,13 @@ import { tokens, usePrefersReducedMotion } from '@ag.ds-next/core';
 const AnimatedIcon = animated(Icon);
 
 export const SideNavCollapseButton = ({
+	ariaControls,
+	id,
 	isOpen,
 	onClick,
 }: {
+	ariaControls: string;
+	id: string;
 	isOpen: boolean;
 	onClick: () => void;
 }) => {
@@ -23,13 +27,13 @@ export const SideNavCollapseButton = ({
 	return (
 		<Flex
 			as="button"
-			// aria-controls={ariaControls}
+			aria-controls={ariaControls}
 			aria-expanded={isOpen}
 			rounded
 			color="action"
 			onClick={onClick}
 			fontSize="md"
-			// id={id}
+			id={id}
 			fontWeight="bold"
 			padding={1}
 			width="100%"

@@ -33,7 +33,7 @@ export function SideNav({
 type SideNavMenuItemType = {
 	href: string;
 	label: string;
-	items?: SideNavMenuItemType[];
+	items?: readonly SideNavMenuItemType[];
 };
 
 type LinkListProps = {

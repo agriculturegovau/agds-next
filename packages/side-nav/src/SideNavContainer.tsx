@@ -10,7 +10,7 @@ import {
 } from '@ag.ds-next/core';
 
 import { SideNavCollapseButton } from './SideNavCollapseButton';
-import { localPaletteVars } from './utils';
+import { localPaletteVars, useSideNavIds } from './utils';
 
 const variantMap = {
 	light: {
@@ -48,6 +48,7 @@ export const SideNavContainer = ({
 	const [isOpen, onToggle] = useToggleState(true, false);
 	const ref = useRef<HTMLDivElement>(null);
 	const { height } = useElementSize(ref);
+	const { titleId, bodyId } = useSideNavIds();
 
 	const prefersReducedMotion = usePrefersReducedMotion();
 	const animatedHeight = useSpring({
@@ -58,10 +59,15 @@ export const SideNavContainer = ({
 
 	return (
 		<Box rounded background={{ xs: 'bodyAlt', sm: background }}>
-			<SideNavCollapseButton isOpen={isOpen} onClick={onToggle} />
+			<SideNavCollapseButton
+				isOpen={isOpen}
+				onClick={onToggle}
+				ariaControls={bodyId}
+				id={titleId}
+			/>
 			<animated.section
-				// id={id}
-				// aria-labelledby={ariaLabelledBy}
+				id={bodyId}
+				aria-labelledby={titleId}
 				role="region"
 				style={animatedHeight}
 				css={{
