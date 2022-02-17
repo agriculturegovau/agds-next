@@ -7,6 +7,7 @@ import button from './button.svg';
 import card from './card.svg';
 import columns from './columns.svg';
 import content from './content.svg';
+import controlInput from './control-input.svg';
 import core from './core.svg';
 import field from './field.svg';
 import footer from './footer.svg';
@@ -36,6 +37,7 @@ export const pictograms = {
 	card,
 	columns,
 	content,
+	'control-input': controlInput,
 	core,
 	field,
 	footer,

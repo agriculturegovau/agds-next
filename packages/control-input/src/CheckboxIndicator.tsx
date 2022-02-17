@@ -1,13 +1,13 @@
 import { Flex } from '@ag.ds-next/box';
 import { Icon } from '@ag.ds-next/icon';
 import { boxPalette, packs, themeVars } from '@ag.ds-next/core';
-import { CheckboxSize, iconSize } from './utils';
+import { ControlSize, iconSize } from './utils';
 
 export type CheckboxIndicatorProps = {
 	checked?: boolean;
 	disabled?: boolean;
 	invalid?: true;
-	size: CheckboxSize;
+	size: ControlSize;
 	valid?: true;
 };
 
@@ -38,7 +38,6 @@ export const CheckboxIndicator = ({
 				: undefined),
 		}}
 	>
-		{console.log({ size })}
 		{checked ? (
 			<Icon icon="checkbox" size={iconSize[size]} color="text" />
 		) : null}

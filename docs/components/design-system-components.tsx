@@ -80,11 +80,8 @@ export const designSystemComponents = {
 	SearchBox,
 	Select,
 	VisuallyHidden,
-<<<<<<< HEAD
 	ProgressIndicator,
-=======
 	Checkbox,
 	Radio,
 	ControlGroup,
->>>>>>> 77dee9d (Move radio and checkbox into single package)
 };
