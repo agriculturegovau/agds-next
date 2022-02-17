@@ -189,7 +189,13 @@ function borderStyles({
 	rounded,
 }: BorderProps) {
 	const anyBorder =
-		border || borderLeft || borderRight || borderBottom || borderX || borderY;
+		border ||
+		borderLeft ||
+		borderRight ||
+		borderTop ||
+		borderBottom ||
+		borderX ||
+		borderY;
 	return {
 		borderWidth: 0,
 		borderLeftWidth: border ?? borderX ?? borderLeft ? `1px` : undefined,
