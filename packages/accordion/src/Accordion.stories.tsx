@@ -12,8 +12,14 @@ export default {
 	component: Accordion,
 } as ComponentMeta<typeof Accordion>;
 
-const AccordionBasicExample = ({ palette }: { palette: 'light' | 'dark' }) => (
-	<Box padding={1} palette={palette} background="body">
+const AccordionBasicExample = ({
+	boxBg,
+	boxPalette,
+}: {
+	boxBg: 'body' | 'bodyAlt';
+	boxPalette: 'light' | 'dark';
+}) => (
+	<Box padding={1} palette={boxPalette} background={boxBg}>
 		<Accordion>
 			<AccordionItem title="Accordion test">
 				<AccordionItemContent>
@@ -24,16 +30,27 @@ const AccordionBasicExample = ({ palette }: { palette: 'light' | 'dark' }) => (
 	</Box>
 );
 
-export const BasicOnLight: ComponentStory<typeof AccordionItem> = () => (
-	<AccordionBasicExample palette="light" />
+export const SingleLight: ComponentStory<typeof AccordionItem> = () => (
+	<AccordionBasicExample boxBg="body" boxPalette="light" />
+);
+export const SingleLightAlt: ComponentStory<typeof AccordionItem> = () => (
+	<AccordionBasicExample boxBg="bodyAlt" boxPalette="light" />
+);
+export const SingleDark: ComponentStory<typeof AccordionItem> = () => (
+	<AccordionBasicExample boxBg="body" boxPalette="dark" />
+);
+export const SingleDarkAlt: ComponentStory<typeof AccordionItem> = () => (
+	<AccordionBasicExample boxBg="bodyAlt" boxPalette="dark" />
 );
 
-export const BasicOnDark: ComponentStory<typeof AccordionItem> = () => (
-	<AccordionBasicExample palette="dark" />
-);
-
-const AccordionGroupExample = ({ palette }: { palette: 'light' | 'dark' }) => (
-	<Box padding={1} palette={palette} background="body">
+const AccordionGroupExample = ({
+	boxBg,
+	boxPalette,
+}: {
+	boxBg: 'body' | 'bodyAlt';
+	boxPalette: 'light' | 'dark';
+}) => (
+	<Box padding={4} palette={boxPalette} background={boxBg}>
 		<Accordion>
 			<AccordionItem title="Accordion 1">
 				<AccordionItemContent>
@@ -85,12 +102,17 @@ const AccordionGroupExample = ({ palette }: { palette: 'light' | 'dark' }) => (
 	</Box>
 );
 
-export const GroupOnLight: ComponentStory<typeof AccordionItem> = () => (
-	<AccordionGroupExample palette="light" />
+export const GroupLight: ComponentStory<typeof AccordionItem> = () => (
+	<AccordionGroupExample boxBg="body" boxPalette="light" />
 );
-
-export const GroupOnDark: ComponentStory<typeof AccordionItem> = () => (
-	<AccordionGroupExample palette="dark" />
+export const GroupLightAlt: ComponentStory<typeof AccordionItem> = () => (
+	<AccordionGroupExample boxBg="bodyAlt" boxPalette="light" />
+);
+export const GroupDark: ComponentStory<typeof AccordionItem> = () => (
+	<AccordionGroupExample boxBg="body" boxPalette="dark" />
+);
+export const GroupDarkAlt: ComponentStory<typeof AccordionItem> = () => (
+	<AccordionGroupExample boxBg="bodyAlt" boxPalette="dark" />
 );
 
 export const Controlled = () => {

@@ -1,7 +1,10 @@
+import { useContext } from 'react';
 import { animated, useSpring } from 'react-spring';
 import { Box, Flex } from '@ag.ds-next/box';
 import { Icon } from '@ag.ds-next/icon';
 import { usePrefersReducedMotion } from '@ag.ds-next/core';
+
+import { AccordionContext } from './utils';
 
 export type AccordionTitleProps = {
 	children: string;
@@ -25,7 +28,7 @@ export const AccordionTitle = ({
 	const prefersReducedMotion = usePrefersReducedMotion();
 	const style = useSpring({
 		from: { transform: `rotate(0deg)` },
-		to: { transform: `rotate(${isOpen ? 180 : 0}deg)` },
+		to: { transform: `rotate(${isOpen ? 0 : 180}deg)` },
 		immediate: prefersReducedMotion,
 	});
 
@@ -40,7 +43,7 @@ export const AccordionTitle = ({
 				fontSize="md"
 				id={id}
 				fontWeight="bold"
-				background="bodyAlt"
+				background="shade"
 				padding={1}
 				width="100%"
 				justifyContent="space-between"

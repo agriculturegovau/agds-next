@@ -15,11 +15,11 @@ type AccordionItemProps = PropsWithChildren<{
 	onToggle?: () => void;
 }>;
 
-export const useAccordionItemIds = (initialId: string | undefined) => {
+export const useAccordionItemIds = (initialId?: string | undefined) => {
 	const id = useId(initialId);
 	return {
 		titleId: `${id}-title`,
-		bodyID: `${id}-default`,
+		bodyId: `${id}-default`,
 	};
 };
 
@@ -32,7 +32,7 @@ export const AccordionItem = ({
 	onToggle: onToggleProp,
 	...props
 }: AccordionItemProps) => {
-	const { titleId, bodyID } = useAccordionItemIds(props.id);
+	const { titleId, bodyId } = useAccordionItemIds(props.id);
 
 	const [isOpenState, onToggleState] = useToggleState(
 		isInitiallyOpen,
@@ -51,13 +51,13 @@ export const AccordionItem = ({
 			<AccordionTitle
 				tag={titleHeadingTag}
 				id={titleId}
-				ariaControls={bodyID}
+				ariaControls={bodyId}
 				isOpen={isOpen}
 				onToggle={onToggle}
 			>
 				{title}
 			</AccordionTitle>
-			<AccordionBody isOpen={isOpen} id={bodyID} ariaLabelledBy={titleId}>
+			<AccordionBody isOpen={isOpen} id={bodyId} ariaLabelledBy={titleId}>
 				{children}
 			</AccordionBody>
 		</Box>
