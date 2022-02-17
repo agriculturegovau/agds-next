@@ -17,6 +17,7 @@ import icon from './icon.svg';
 import linkList from './link-list.svg';
 import mainNav from './main-nav.svg';
 import packages from './packages.svg';
+import progressIndicator from './progress-indicator.svg';
 import searchBox from './search-box.svg';
 import select from './select.svg';
 import sideNav from './side-nav.svg';
@@ -47,6 +48,7 @@ export const pictograms = {
 	mainNav,
 	'main-nav': mainNav,
 	packages,
+	'progress-indicator': progressIndicator,
 	sideNav,
 	'search-box': searchBox,
 	select,
