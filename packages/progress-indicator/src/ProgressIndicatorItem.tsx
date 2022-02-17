@@ -40,7 +40,7 @@ export const ProgressIndicatorItem = ({
 				padding={0.75}
 				borderBottom
 				color="text"
-				fontWeight={status === 'doing' ? 'bold' : 'normal'}
+				fontWeight={active ? 'bold' : 'normal'}
 				css={{
 					position: 'relative',
 					textDecoration: 'none',
