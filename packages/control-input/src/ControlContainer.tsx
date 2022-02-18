@@ -18,6 +18,7 @@ export const ControlContainer = ({
 	<Flex
 		as="label"
 		alignItems="center"
+		color="text"
 		gap={0.75}
 		inline
 		css={{

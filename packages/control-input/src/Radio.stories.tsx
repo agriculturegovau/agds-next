@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { Box } from '@ag.ds-next/box';
 import { Radio } from './Radio';
@@ -13,6 +13,7 @@ const Template: ComponentStory<typeof Radio> = (args) => <Radio {...args} />;
 export const LightRadio = Template.bind({});
 LightRadio.args = {
 	children: 'Example',
+	checked: true,
 };
 
 export const LightAltRadio: ComponentStory<typeof Radio> = (args) => (
@@ -22,6 +23,7 @@ export const LightAltRadio: ComponentStory<typeof Radio> = (args) => (
 );
 LightAltRadio.args = {
 	children: 'Example',
+	checked: true,
 };
 
 export const DarkRadio: ComponentStory<typeof Radio> = (args) => (
@@ -31,6 +33,7 @@ export const DarkRadio: ComponentStory<typeof Radio> = (args) => (
 );
 DarkRadio.args = {
 	children: 'Example',
+	checked: true,
 };
 
 export const DarkAltRadio: ComponentStory<typeof Radio> = (args) => (
@@ -40,37 +43,33 @@ export const DarkAltRadio: ComponentStory<typeof Radio> = (args) => (
 );
 DarkAltRadio.args = {
 	children: 'Example',
+	checked: true,
 };
 
 export const SmallRadio = Template.bind({});
 SmallRadio.args = {
 	size: 'sm',
 	children: 'Small example',
+	checked: true,
 };
 
 export const DisabledRadio = Template.bind({});
 DisabledRadio.args = {
 	children: 'Disabled',
 	disabled: true,
+	checked: true,
 };
 
 export const InvalidRadio = Template.bind({});
 InvalidRadio.args = {
 	children: 'Invalid',
 	invalid: true,
+	checked: true,
 };
 
 export const ValidRadio = Template.bind({});
 ValidRadio.args = {
 	children: 'Valid',
 	valid: true,
-};
-
-export const ControlledRadio = () => {
-	const [checked, setChecked] = useState(false);
-	return (
-		<Radio checked={checked} onChange={(e) => setChecked(!e.target.checked)}>
-			{checked ? 'Checked' : 'Unchecked'}
-		</Radio>
-	);
+	checked: true,
 };

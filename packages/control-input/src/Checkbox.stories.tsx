@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { Box } from '@ag.ds-next/box';
 import { Checkbox } from './Checkbox';
@@ -15,6 +15,7 @@ const Template: ComponentStory<typeof Checkbox> = (args) => (
 export const LightCheckbox = Template.bind({});
 LightCheckbox.args = {
 	children: 'Example',
+	checked: true,
 };
 
 export const LightAltCheckbox: ComponentStory<typeof Checkbox> = (args) => (
@@ -24,6 +25,7 @@ export const LightAltCheckbox: ComponentStory<typeof Checkbox> = (args) => (
 );
 LightAltCheckbox.args = {
 	children: 'Example',
+	checked: true,
 };
 
 export const DarkCheckbox: ComponentStory<typeof Checkbox> = (args) => (
@@ -33,6 +35,7 @@ export const DarkCheckbox: ComponentStory<typeof Checkbox> = (args) => (
 );
 DarkCheckbox.args = {
 	children: 'Example',
+	checked: true,
 };
 
 export const DarkAltCheckbox: ComponentStory<typeof Checkbox> = (args) => (
@@ -42,37 +45,33 @@ export const DarkAltCheckbox: ComponentStory<typeof Checkbox> = (args) => (
 );
 DarkAltCheckbox.args = {
 	children: 'Example',
+	checked: true,
 };
 
 export const SmallCheckbox = Template.bind({});
 SmallCheckbox.args = {
 	size: 'sm',
 	children: 'Small example',
+	checked: true,
 };
 
 export const DisabledCheckbox = Template.bind({});
 DisabledCheckbox.args = {
 	children: 'Disabled',
 	disabled: true,
+	checked: true,
 };
 
 export const InvalidCheckbox = Template.bind({});
 InvalidCheckbox.args = {
 	children: 'Invalid',
 	invalid: true,
+	checked: true,
 };
 
 export const ValidCheckbox = Template.bind({});
 ValidCheckbox.args = {
 	children: 'Valid',
 	valid: true,
-};
-
-export const ControlledCheckbox = () => {
-	const [checked, setChecked] = useState(false);
-	return (
-		<Checkbox checked={checked} onChange={(e) => setChecked(e.target.checked)}>
-			{checked ? 'Checked' : 'Unchecked'}
-		</Checkbox>
-	);
+	checked: true,
 };

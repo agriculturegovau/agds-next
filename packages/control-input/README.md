@@ -45,7 +45,7 @@ Vertically stacked radio buttons.
 ```jsx live
 <ControlGroup block>
 	<Radio checked={false}>Phone</Radio>
-	<Radio checked={true}>Tablet</Radio>
+	<Radio checked={false}>Tablet</Radio>
 	<Radio checked={true}>Laptop</Radio>
 </ControlGroup>
 ```

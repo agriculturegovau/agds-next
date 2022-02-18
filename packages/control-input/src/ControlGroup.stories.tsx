@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { Box, Stack } from '@ag.ds-next/box';
 import { Checkbox } from './Checkbox';
@@ -14,18 +14,21 @@ const Template: ComponentStory<typeof ControlGroup> = (args) => (
 	<Stack gap={2}>
 		<ControlGroup {...args}>
 			<Checkbox checked>Coding</Checkbox>
-			<Checkbox>Music</Checkbox>
-			<Checkbox>Art</Checkbox>
+			<Checkbox checked={false}>Art</Checkbox>
 			<Checkbox checked disabled>
 				Cooking
 			</Checkbox>
-			<Checkbox disabled>Reading</Checkbox>
+			<Checkbox checked={false} disabled>
+				Reading
+			</Checkbox>
 		</ControlGroup>
 		<ControlGroup {...args}>
 			<Radio checked>Coding</Radio>
-			<Radio>Music</Radio>
-			<Radio>Art</Radio>
+			<Radio checked={false}>Music</Radio>
 			<Radio checked disabled>
+				Art
+			</Radio>
+			<Radio checked={false} disabled>
 				Cooking
 			</Radio>
 			<Radio disabled>Reading</Radio>

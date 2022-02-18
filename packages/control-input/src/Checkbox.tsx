@@ -3,9 +3,6 @@ import React, {
 	PropsWithRef,
 	DetailedHTMLProps,
 	InputHTMLAttributes,
-	useState,
-	useCallback,
-	ChangeEvent,
 } from 'react';
 import { CheckboxIndicator } from './CheckboxIndicator';
 import { ControlInput } from './ControlInput';
@@ -26,38 +23,15 @@ export type CheckboxProps = PropsWithRef<
 
 export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
 	function Checkbox(
-		{
-			children,
-			disabled,
-			checked: checkedProp,
-			onChange: onChangeProp,
-			invalid,
-			valid,
-			size = 'md',
-			...props
-		},
+		{ children, disabled, checked, invalid, valid, size = 'md', ...props },
 		ref
 	) {
-		const [checkedState, setCheckedState] = useState(checkedProp ?? false);
-
-		const onChange = useCallback(
-			(event: ChangeEvent<HTMLInputElement>) => {
-				setCheckedState(event.target.checked);
-				if (typeof onChangeProp === 'function') onChangeProp(event);
-			},
-			[onChangeProp]
-		);
-
-		const checked =
-			typeof checkedProp === 'boolean' ? checkedProp : checkedState;
-
 		return (
 			<ControlContainer disabled={disabled} valid={valid} invalid={invalid}>
 				<ControlInput
 					ref={ref}
 					type="checkbox"
 					checked={checked}
-					onChange={onChange}
 					disabled={disabled}
 					{...props}
 				/>
