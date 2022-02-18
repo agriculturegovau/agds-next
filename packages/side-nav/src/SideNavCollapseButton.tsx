@@ -33,8 +33,7 @@ export const SideNavCollapseButton = ({
 			background="shade"
 			color="action"
 			onClick={onClick}
-			fontSize="md"
-			fontWeight="bold"
+			fontSize="sm"
 			lineHeight="heading"
 			id={id}
 			padding={1}
@@ -44,7 +43,7 @@ export const SideNavCollapseButton = ({
 			link
 			focus
 			css={{
-				[tokens.mediaQuery.min.sm]: {
+				[tokens.mediaQuery.min.md]: {
 					display: 'none',
 				},
 			}}

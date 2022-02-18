@@ -45,7 +45,7 @@ export const SideNavContainer = ({
 	...props
 }: SideNavContainerProps) => {
 	const { palette, background, hover } = variantMap[variant];
-	const [isOpen, onToggle] = useToggleState(true, false);
+	const [isOpen, onToggle] = useToggleState(false, true);
 	const ref = useRef<HTMLDivElement>(null);
 	const { height } = useElementSize(ref);
 	const { titleId, bodyId } = useSideNavIds();
@@ -58,7 +58,7 @@ export const SideNavContainer = ({
 	});
 
 	return (
-		<Box rounded background={{ xs: 'shade', sm: background }}>
+		<Box rounded background={{ xs: 'shade', md: background }}>
 			<SideNavCollapseButton
 				isOpen={isOpen}
 				onClick={onToggle}
@@ -72,7 +72,7 @@ export const SideNavContainer = ({
 				style={animatedHeight}
 				css={{
 					overflow: 'hidden',
-					[tokens.mediaQuery.min.sm]: {
+					[tokens.mediaQuery.min.md]: {
 						// Overwrite the animated height
 						// for tablet/desktop sizes.
 						overflow: 'auto',
