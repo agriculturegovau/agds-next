@@ -57,11 +57,3 @@ export const boxPalette = {
 	border: `var(${boxPaletteVars.border})`,
 	borderInput: `var(${boxPaletteVars.borderInput})`,
 };
-
-// TODO: Move this out of here. Maybe packs
-export const outline = {
-	outlineWidth: '3px',
-	outlineStyle: 'solid',
-	outlineColor: boxPalette.foregroundFocus,
-	outlineOffset: 0.5 * tokens.unit,
-};

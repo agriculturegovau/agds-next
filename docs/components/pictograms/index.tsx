@@ -7,6 +7,7 @@ import button from './button.svg';
 import card from './card.svg';
 import columns from './columns.svg';
 import content from './content.svg';
+import controlInput from './control-input.svg';
 import core from './core.svg';
 import field from './field.svg';
 import footer from './footer.svg';
@@ -17,6 +18,7 @@ import icon from './icon.svg';
 import linkList from './link-list.svg';
 import mainNav from './main-nav.svg';
 import packages from './packages.svg';
+import progressIndicator from './progress-indicator.svg';
 import searchBox from './search-box.svg';
 import select from './select.svg';
 import sideNav from './side-nav.svg';
@@ -35,6 +37,7 @@ export const pictograms = {
 	card,
 	columns,
 	content,
+	'control-input': controlInput,
 	core,
 	field,
 	footer,
@@ -47,6 +50,7 @@ export const pictograms = {
 	mainNav,
 	'main-nav': mainNav,
 	packages,
+	'progress-indicator': progressIndicator,
 	sideNav,
 	'search-box': searchBox,
 	select,

@@ -8,7 +8,7 @@ const footerLinks = [
 
 export const SiteFooter = () => {
 	return (
-		<AgDsFooter>
+		<AgDsFooter variant="agriculture">
 			<LinkList links={footerLinks} horizontal />
 		</AgDsFooter>
 	);
