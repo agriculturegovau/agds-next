@@ -31,6 +31,7 @@ export function PageLayout({
 					<Column columnSpan={{ xs: 12, md: 3 }}>
 						<SideNav
 							variant="light"
+							collapseTitle="In this section"
 							activePath={router.asPath}
 							title={sideNav.title}
 							titleLink={sideNav.titleLink}
