@@ -1,10 +1,7 @@
-import { useContext } from 'react';
 import { animated, useSpring } from 'react-spring';
 import { Box, Flex } from '@ag.ds-next/box';
 import { Icon } from '@ag.ds-next/icon';
 import { usePrefersReducedMotion } from '@ag.ds-next/core';
-
-import { AccordionContext } from './utils';
 
 export type AccordionTitleProps = {
 	children: string;
@@ -41,6 +38,7 @@ export const AccordionTitle = ({
 				color="action"
 				onClick={onToggle}
 				fontSize="md"
+				lineHeight="heading"
 				id={id}
 				fontWeight="bold"
 				background="shade"
