@@ -6,7 +6,7 @@ import { SideNavGroup } from './SideNavGroup';
 import { SideNavLink } from './SideNavLink';
 import { findBestMatch } from './utils';
 
-type SideNavProps = LinkListProps & {
+export type SideNavProps = LinkListProps & {
 	variant?: ComponentProps<typeof SideNavContainer>['variant'];
 	title: ReactNode;
 	titleLink: string; // TODO: should this be optional
