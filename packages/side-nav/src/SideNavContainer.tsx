@@ -58,7 +58,7 @@ export const SideNavContainer = ({
 	});
 
 	return (
-		<Box rounded background={{ xs: 'bodyAlt', sm: background }}>
+		<Box rounded background={{ xs: 'shade', sm: background }}>
 			<SideNavCollapseButton
 				isOpen={isOpen}
 				onClick={onToggle}
