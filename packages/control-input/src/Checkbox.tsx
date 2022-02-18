@@ -23,7 +23,7 @@ export type CheckboxProps = PropsWithRef<
 
 export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
 	function Checkbox(
-		{ children, disabled, checked, invalid, valid, size = 'md', ...props },
+		{ children, disabled, invalid, valid, size = 'md', ...props },
 		ref
 	) {
 		return (
@@ -31,12 +31,10 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
 				<ControlInput
 					ref={ref}
 					type="checkbox"
-					checked={checked}
 					disabled={disabled}
 					{...props}
 				/>
 				<CheckboxIndicator
-					checked={checked}
 					disabled={disabled}
 					invalid={invalid}
 					size={size}

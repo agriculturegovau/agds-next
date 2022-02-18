@@ -3,7 +3,6 @@ import { boxPalette, packs, themeVars } from '@ag.ds-next/core';
 import { ControlSize } from './utils';
 
 export type RadioIndicatorProps = {
-	checked?: boolean;
 	disabled?: boolean;
 	invalid?: true;
 	size: ControlSize;
@@ -11,7 +10,6 @@ export type RadioIndicatorProps = {
 };
 
 export const RadioIndicator = ({
-	checked,
 	disabled,
 	invalid,
 	size,
@@ -39,15 +37,14 @@ export const RadioIndicator = ({
 				: undefined),
 		}}
 	>
-		{checked ? (
-			<div
-				style={{
-					width: `calc(100% - 8px)`,
-					height: `calc(100% - 8px)`,
-					background: disabled ? boxPalette.border : boxPalette.foregroundText,
-					borderRadius: '100%',
-				}}
-			/>
-		) : null}
+		<div
+			css={{
+				display: 'none',
+				width: `calc(100% - 8px)`,
+				height: `calc(100% - 8px)`,
+				background: disabled ? boxPalette.border : boxPalette.foregroundText,
+				borderRadius: '100%',
+			}}
+		/>
 	</Flex>
 );

@@ -9,7 +9,6 @@ import {
 import { ControlSize, iconSize } from './utils';
 
 export type CheckboxIndicatorProps = {
-	checked?: boolean;
 	disabled?: boolean;
 	invalid?: true;
 	size: ControlSize;
@@ -17,7 +16,6 @@ export type CheckboxIndicatorProps = {
 };
 
 export const CheckboxIndicator = ({
-	checked,
 	disabled,
 	invalid,
 	size,
@@ -43,7 +41,9 @@ export const CheckboxIndicator = ({
 				: undefined),
 		}}
 	>
-		{checked ? <CheckboxIcon size={iconSize[size]} /> : null}
+		<div css={{ display: 'none' }}>
+			<CheckboxIcon size={iconSize[size]} />
+		</div>
 	</Flex>
 );
 
