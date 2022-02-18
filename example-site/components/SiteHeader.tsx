@@ -22,8 +22,8 @@ export const SiteHeader = () => {
 			<Header
 				variant="dark"
 				logo={<Logo />}
-				heading="AG Design-System"
-				subline="Welcome to the AG Design-System"
+				heading="Export Service"
+				subline="Supporting Australian agricultural exports"
 			/>
 			<MainNav
 				variant="agriculture"
