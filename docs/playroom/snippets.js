@@ -269,6 +269,20 @@ items={[
     ]}
   />`,
 	},
+	{
+		group: 'Checkbox',
+		name: 'Basic',
+		code: `<Checkbox checked={false}>Label</Checkbox>`,
+	},
+	{
+		group: 'Radio',
+		name: 'Basic',
+		code: `<ControlGroup>
+    <Radio checked={false}>Phone</Radio>
+    <Radio checked={false}>Tablet</Radio>
+    <Radio checked={true}>Laptop</Radio>
+  </ControlGroup>`,
+	},
 ];
 
 export default snippits;

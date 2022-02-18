@@ -70,9 +70,7 @@ LightBlockButton.args = {
 };
 
 export const ButtonLinkExample: ComponentStory<typeof ButtonLink> = (args) => (
-	<Box padding={2} background="body" palette="dark">
-		<ButtonLink {...args}>Primary</ButtonLink>
-	</Box>
+	<ButtonLink {...args}>Primary</ButtonLink>
 );
 ButtonLinkExample.args = {
 	block: false,
@@ -81,14 +79,10 @@ ButtonLinkExample.args = {
 };
 
 export const ButtonSize: ComponentStory<typeof Button> = (args) => (
-	<Stack gap={1} padding={2} background="body" palette="light">
-		<div>
-			<Button {...args}>Medium</Button>
-		</div>
-		<div>
-			<Button {...args} size="sm">
-				Small
-			</Button>
-		</div>
+	<Stack gap={1} alignItems="flex-start">
+		<Button {...args}>Medium</Button>
+		<Button {...args} size="sm">
+			Small
+		</Button>
 	</Stack>
 );

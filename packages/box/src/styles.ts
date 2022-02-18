@@ -1,7 +1,6 @@
 import { css } from '@emotion/react';
 import {
 	tokens,
-	outline,
 	BoxPalette,
 	boxPalettes,
 	boxPalette,
@@ -12,6 +11,7 @@ import {
 	fontGrid,
 	Spacing,
 	globalPalette,
+	packs,
 } from '@ag.ds-next/core';
 
 type PaletteProps = Partial<{
@@ -263,7 +263,7 @@ export const linkStyles = {
 
 type FocusProps = Partial<{ focus: boolean }>;
 export const focusStyles = {
-	':focus': outline,
+	':focus': packs.outline,
 	'&::-moz-focus-inner': {
 		border: 0,
 	},

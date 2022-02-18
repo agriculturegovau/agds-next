@@ -5,10 +5,9 @@ import React, {
 } from 'react';
 import { Field, fieldMaxWidth, FieldMaxWidth } from '@ag.ds-next/field';
 import {
+	packs,
 	boxPalette,
-	fontGrid,
 	mapSpacing,
-	outline,
 	themeVars,
 	tokens,
 } from '@ag.ds-next/core';
@@ -71,18 +70,17 @@ export const textInputStyles = ({
 	maxWidth,
 	invalid,
 	valid,
+	multiline,
 }: {
 	block?: boolean;
 	maxWidth?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
 	invalid?: boolean;
 	valid?: boolean;
+	multiline?: boolean;
 }) =>
 	({
 		appearance: 'none',
 		boxSizing: 'border-box',
-		verticalAlign: 'middle',
-		paddingTop: mapSpacing(0.5),
-		paddingBottom: mapSpacing(0.5),
 		paddingLeft: mapSpacing(1),
 		paddingRight: mapSpacing(1),
 		margin: 0,
@@ -94,7 +92,7 @@ export const textInputStyles = ({
 		color: `var(${themeVars.lightForegroundText})`,
 		maxWidth: maxWidth ? fieldMaxWidth[maxWidth] : '12.8125rem',
 		fontFamily: tokens.font.body,
-		...fontGrid('sm', 'nospace'),
+		...packs.input.md,
 
 		...(block && {
 			maxWidth: 'none',
@@ -114,10 +112,18 @@ export const textInputStyles = ({
 			  }
 			: undefined),
 
+		...(multiline && {
+			lineHeight: tokens.lineHeight.default,
+			paddingTop: mapSpacing(0.5),
+			paddingBottom: mapSpacing(0.5),
+			height: 'auto,',
+			minHeight: '6rem',
+		}),
+
 		'&:disabled': {
 			cursor: 'not-allowed',
 			opacity: 0.3,
 		},
 
-		'&:focus': outline,
+		'&:focus': packs.outline,
 	} as const);
