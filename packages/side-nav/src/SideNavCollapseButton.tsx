@@ -20,7 +20,7 @@ export const SideNavCollapseButton = ({
 
 	const iconStyle = useSpring({
 		from: { transform: `rotate(0deg)` },
-		to: { transform: `rotate(${isOpen ? 0 : 180}deg)` },
+		to: { transform: `rotate(${isOpen ? 180 : 0}deg)` },
 		immediate: prefersReducedMotion,
 	});
 
@@ -49,7 +49,7 @@ export const SideNavCollapseButton = ({
 			}}
 		>
 			In this section
-			<AnimatedIcon icon="chevronUp" size={1} style={iconStyle} />
+			<AnimatedIcon icon="chevronDown" size={1} style={iconStyle} />
 		</Flex>
 	);
 };
