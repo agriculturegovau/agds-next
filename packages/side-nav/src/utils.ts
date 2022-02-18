@@ -1,3 +1,5 @@
+import { useId } from '@reach/auto-id';
+
 export function findBestMatch(items: { href: string }[], activePath?: string) {
 	if (!activePath) return '';
 	let bestMatch = '';
@@ -23,4 +25,12 @@ export const localPaletteVars = {
 export const localPalette = {
 	linkHoverBg: `var(${localPaletteVars.linkHoverBg})`,
 	linkActiveBg: `var(${localPaletteVars.linkActiveBg})`,
+};
+
+export const useSideNavIds = (initialId?: string | undefined) => {
+	const id = useId(initialId);
+	return {
+		titleId: `${id}-title`,
+		bodyId: `${id}-default`,
+	};
 };

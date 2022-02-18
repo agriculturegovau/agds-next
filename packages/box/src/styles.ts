@@ -47,14 +47,18 @@ export const backgroundColorMap = {
 };
 
 type ColorProps = Partial<{
-	color: keyof typeof foregroundColorMap;
-	background: keyof typeof backgroundColorMap;
+	color: ResponsiveProp<keyof typeof foregroundColorMap>;
+	background: ResponsiveProp<keyof typeof backgroundColorMap>;
 }>;
 
 function colorStyles({ color, background }: ColorProps) {
 	return {
-		color: color ? foregroundColorMap[color] : undefined,
-		backgroundColor: background ? backgroundColorMap[background] : undefined,
+		color: color
+			? mapResponsiveProp(color, (t) => foregroundColorMap[t])
+			: undefined,
+		backgroundColor: background
+			? mapResponsiveProp(background, (t) => backgroundColorMap[t])
+			: undefined,
 	};
 }
 
