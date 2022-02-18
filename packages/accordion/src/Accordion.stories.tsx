@@ -30,16 +30,16 @@ const AccordionBasicExample = ({
 	</Box>
 );
 
-export const SingleLight: ComponentStory<typeof AccordionItem> = () => (
+export const SingleOnLightBody: ComponentStory<typeof AccordionItem> = () => (
 	<AccordionBasicExample boxBg="body" boxPalette="light" />
 );
-export const SingleLightAlt: ComponentStory<typeof AccordionItem> = () => (
-	<AccordionBasicExample boxBg="bodyAlt" boxPalette="light" />
-);
-export const SingleDark: ComponentStory<typeof AccordionItem> = () => (
+export const SingleOnLightBodyAlt: ComponentStory<
+	typeof AccordionItem
+> = () => <AccordionBasicExample boxBg="bodyAlt" boxPalette="light" />;
+export const SingleOnDarkBody: ComponentStory<typeof AccordionItem> = () => (
 	<AccordionBasicExample boxBg="body" boxPalette="dark" />
 );
-export const SingleDarkAlt: ComponentStory<typeof AccordionItem> = () => (
+export const SingleOnDarkBodyAlt: ComponentStory<typeof AccordionItem> = () => (
 	<AccordionBasicExample boxBg="bodyAlt" boxPalette="dark" />
 );
 
@@ -102,16 +102,16 @@ const AccordionGroupExample = ({
 	</Box>
 );
 
-export const GroupLight: ComponentStory<typeof AccordionItem> = () => (
+export const GroupOnLightBody: ComponentStory<typeof AccordionItem> = () => (
 	<AccordionGroupExample boxBg="body" boxPalette="light" />
 );
-export const GroupLightAlt: ComponentStory<typeof AccordionItem> = () => (
+export const GroupOnLightBodyAlt: ComponentStory<typeof AccordionItem> = () => (
 	<AccordionGroupExample boxBg="bodyAlt" boxPalette="light" />
 );
-export const GroupDark: ComponentStory<typeof AccordionItem> = () => (
+export const GroupOnDarkBody: ComponentStory<typeof AccordionItem> = () => (
 	<AccordionGroupExample boxBg="body" boxPalette="dark" />
 );
-export const GroupDarkAlt: ComponentStory<typeof AccordionItem> = () => (
+export const GroupOnDarkBodyAlt: ComponentStory<typeof AccordionItem> = () => (
 	<AccordionGroupExample boxBg="bodyAlt" boxPalette="dark" />
 );
 
