@@ -24,6 +24,7 @@ const ContentPage: NextPage = () => {
 				<Columns>
 					<Column columnSpan={{ xs: 12, md: 4, lg: 3 }}>
 						<SideNav
+							collapseTitle="In this section"
 							title="Lodging your tax return"
 							variant="light"
 							titleLink="#welcome"
