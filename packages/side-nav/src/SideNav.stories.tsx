@@ -15,6 +15,7 @@ export default {
 
 const defaultArgs = {
 	title: 'Lodging your tax return',
+	collapseTitle: 'In this section',
 	items: [
 		{
 			href: '#welcome',
@@ -119,5 +120,6 @@ export const Modular: ComponentStory<typeof SideNavContainer> = (args) => {
 	);
 };
 Modular.args = {
+	collapseTitle: 'In this section',
 	variant: 'light',
 };

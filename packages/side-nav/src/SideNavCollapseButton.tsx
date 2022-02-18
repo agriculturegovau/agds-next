@@ -15,6 +15,7 @@ type SideNavCollapseButtonProps = PropsWithChildren<{
 
 export const SideNavCollapseButton = ({
 	ariaControls,
+	children,
 	id,
 	isOpen,
 	onClick,
