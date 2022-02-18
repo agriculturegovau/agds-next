@@ -53,6 +53,7 @@ SmallCheckbox.args = {
 export const DisabledCheckbox = Template.bind({});
 DisabledCheckbox.args = {
 	children: 'Disabled',
+	disabled: true,
 };
 
 export const InvalidCheckbox = Template.bind({});

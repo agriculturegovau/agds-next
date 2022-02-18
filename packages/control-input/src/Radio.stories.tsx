@@ -51,6 +51,7 @@ SmallRadio.args = {
 export const DisabledRadio = Template.bind({});
 DisabledRadio.args = {
 	children: 'Disabled',
+	disabled: true,
 };
 
 export const InvalidRadio = Template.bind({});
@@ -68,7 +69,7 @@ ValidRadio.args = {
 export const ControlledRadio = () => {
 	const [checked, setChecked] = useState(false);
 	return (
-		<Radio checked={checked} onChange={(e) => setChecked(e.target.checked)}>
+		<Radio checked={checked} onChange={(e) => setChecked(!e.target.checked)}>
 			{checked ? 'Checked' : 'Unchecked'}
 		</Radio>
 	);
