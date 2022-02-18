@@ -36,11 +36,13 @@ const variantMap = {
 } as const;
 
 export type SideNavContainerProps = PropsWithChildren<{
+	collapseTitle?: string;
 	variant: keyof typeof variantMap;
 }>;
 
 export const SideNavContainer = ({
 	children,
+	collapseTitle,
 	variant,
 	...props
 }: SideNavContainerProps) => {
@@ -64,7 +66,9 @@ export const SideNavContainer = ({
 				onClick={onToggle}
 				ariaControls={bodyId}
 				id={titleId}
-			/>
+			>
+				{collapseTitle}
+			</SideNavCollapseButton>
 			<animated.section
 				id={bodyId}
 				aria-labelledby={titleId}

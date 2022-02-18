@@ -1,3 +1,4 @@
+import { PropsWithChildren } from 'react';
 import { useSpring, animated } from 'react-spring';
 import { Flex } from '@ag.ds-next/box';
 import { Icon } from '@ag.ds-next/icon';
@@ -5,12 +6,12 @@ import { tokens, usePrefersReducedMotion } from '@ag.ds-next/core';
 
 const AnimatedIcon = animated(Icon);
 
-type SideNavCollapseButtonProps = {
+type SideNavCollapseButtonProps = PropsWithChildren<{
 	ariaControls: string;
 	id: string;
 	isOpen: boolean;
 	onClick: () => void;
-};
+}>;
 
 export const SideNavCollapseButton = ({
 	ariaControls,
@@ -50,7 +51,7 @@ export const SideNavCollapseButton = ({
 				},
 			}}
 		>
-			In this section
+			{children}
 			<AnimatedIcon icon="chevronDown" size={1} style={iconStyle} />
 		</Flex>
 	);
