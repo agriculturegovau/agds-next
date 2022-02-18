@@ -14,6 +14,9 @@ export const ControlInput = forwardRef<HTMLInputElement, ControlInputProps>(
 				ref={ref}
 				css={{
 					...visuallyHiddenStyles,
+
+					'&:checked ~ div > div': { display: 'block' },
+
 					'&:focus ~ div': packs.outline,
 				}}
 				{...props}

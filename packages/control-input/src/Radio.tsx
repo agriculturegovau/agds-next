@@ -22,20 +22,13 @@ export type RadioProps = PropsWithRef<
 >;
 
 export const Radio = forwardRef<HTMLInputElement, RadioProps>(function Radio(
-	{ children, disabled, checked, invalid, valid, size = 'md', ...props },
+	{ children, disabled, invalid, valid, size = 'md', ...props },
 	ref
 ) {
 	return (
 		<ControlContainer disabled={disabled} valid={valid} invalid={invalid}>
-			<ControlInput
-				ref={ref}
-				type="radio"
-				checked={checked}
-				disabled={disabled}
-				{...props}
-			/>
+			<ControlInput ref={ref} type="radio" disabled={disabled} {...props} />
 			<RadioIndicator
-				checked={checked}
 				disabled={disabled}
 				invalid={invalid}
 				size={size}
