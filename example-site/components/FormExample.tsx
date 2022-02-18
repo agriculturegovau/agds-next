@@ -73,10 +73,13 @@ export const FormExample = () => {
 			/>
 			<div>
 				<Checkbox
-					{...register('agreeTcs', { required: 'You must agree' })}
+					{...register('agreeTcs', {
+						required: 'You must agree to our terms and conditions',
+					})}
 					invalid={errors.agreeTcs?.message ? true : undefined}
 				>
-					I agree to the <TextLink href="#">Terms and conditions</TextLink>
+					By checking this box you agree to the{' '}
+					<TextLink href="#">terms and conditions</TextLink>
 				</Checkbox>
 			</div>
 			<div>
