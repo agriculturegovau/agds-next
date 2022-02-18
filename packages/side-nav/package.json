@@ -19,5 +19,9 @@
 		"@ag.ds-next/icon": "*",
 		"@emotion/react": "^11.7.0",
 		"react": "17.0.2"
+	},
+	"dependencies": {
+		"@reach/auto-id": "^0.16.0",
+		"react-spring": "^9.4.3"
 	}
 }
