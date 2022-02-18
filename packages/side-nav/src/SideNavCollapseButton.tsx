@@ -5,17 +5,19 @@ import { tokens, usePrefersReducedMotion } from '@ag.ds-next/core';
 
 const AnimatedIcon = animated(Icon);
 
+type SideNavCollapseButtonProps = {
+	ariaControls: string;
+	id: string;
+	isOpen: boolean;
+	onClick: () => void;
+};
+
 export const SideNavCollapseButton = ({
 	ariaControls,
 	id,
 	isOpen,
 	onClick,
-}: {
-	ariaControls: string;
-	id: string;
-	isOpen: boolean;
-	onClick: () => void;
-}) => {
+}: SideNavCollapseButtonProps) => {
 	const prefersReducedMotion = usePrefersReducedMotion();
 
 	const iconStyle = useSpring({
