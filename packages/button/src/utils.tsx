@@ -93,6 +93,6 @@ export function buttonStyles({
 			opacity: 0.3,
 		},
 
-		'&:not(:disabled):focus': packs.outline,
+		'&:focus': packs.outline,
 	} as const;
 }
