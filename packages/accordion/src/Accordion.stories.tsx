@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { ComponentMeta } from '@storybook/react';
+import { Story, ComponentMeta } from '@storybook/react';
 import { Box, Stack } from '@ag.ds-next/box';
 import { useToggleState } from '@ag.ds-next/core';
 import { Body } from '@ag.ds-next/body';
@@ -23,13 +23,15 @@ export default {
 	},
 } as ComponentMeta<typeof Accordion>;
 
-const AccordionBasicExample = ({
-	boxBackground,
-	boxPalette,
-}: {
+type AccordionExampleProps = {
 	boxBackground: 'body' | 'bodyAlt';
 	boxPalette: 'light' | 'dark';
-}) => (
+};
+
+const AccordionBasicExample: Story<AccordionExampleProps> = ({
+	boxBackground,
+	boxPalette,
+}: AccordionExampleProps) => (
 	<Box padding={3} palette={boxPalette} background={boxBackground}>
 		<Accordion>
 			<AccordionItem title="Accordion test">
@@ -52,13 +54,10 @@ BasicOnDark.args = {
 	boxPalette: 'dark',
 };
 
-const AccordionGroupExample = ({
+const AccordionGroupExample: Story<AccordionExampleProps> = ({
 	boxBackground,
 	boxPalette,
-}: {
-	boxBackground: 'body' | 'bodyAlt';
-	boxPalette: 'light' | 'dark';
-}) => (
+}: AccordionExampleProps) => (
 	<Box padding={3} palette={boxPalette} background={boxBackground}>
 		<Accordion>
 			<AccordionItem title="Accordion 1">
