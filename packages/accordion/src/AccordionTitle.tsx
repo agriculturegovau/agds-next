@@ -25,7 +25,7 @@ export const AccordionTitle = ({
 	const prefersReducedMotion = usePrefersReducedMotion();
 	const style = useSpring({
 		from: { transform: `rotate(0deg)` },
-		to: { transform: `rotate(${isOpen ? 0 : 180}deg)` },
+		to: { transform: `rotate(${isOpen ? 180 : 0}deg)` },
 		immediate: prefersReducedMotion,
 	});
 
@@ -50,7 +50,7 @@ export const AccordionTitle = ({
 				focus
 			>
 				{children}
-				<AnimatedIcon icon="chevronUp" size={1} style={style} />
+				<AnimatedIcon icon="chevronDown" size={1} style={style} />
 			</Flex>
 		</Box>
 	);
