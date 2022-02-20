@@ -6,10 +6,9 @@ import React, {
 } from 'react';
 import { Field, FieldMaxWidth, fieldMaxWidth } from '@ag.ds-next/field';
 import {
+	packs,
 	boxPalette,
-	fontGrid,
 	mapSpacing,
-	outline,
 	themeVars,
 	tokens,
 } from '@ag.ds-next/core';
@@ -172,11 +171,8 @@ const selectStyles = ({
 		position: 'relative',
 		appearance: 'none',
 		boxSizing: 'border-box',
-		verticalAlign: 'middle',
-		paddingTop: mapSpacing(0.5),
-		paddingBottom: mapSpacing(0.5),
 		paddingLeft: mapSpacing(1),
-		paddingRight: mapSpacing(1),
+		paddingRight: mapSpacing(3),
 		margin: 0,
 		backgroundColor: `var(${themeVars.lightBackgroundBody})`,
 		borderWidth: 3,
@@ -184,9 +180,10 @@ const selectStyles = ({
 		borderColor: boxPalette.borderInput,
 		borderRadius: tokens.borderRadius,
 		color: `var(${themeVars.lightForegroundText})`,
-		fontFamily: tokens.font.body,
 		width: '100%',
-		...fontGrid('sm', 'nospace'),
+		fontFamily: tokens.font.body,
+		...packs.input.md,
+		lineHeight: tokens.lineHeight.default,
 
 		...(block && {
 			maxWidth: 'none',
@@ -210,5 +207,5 @@ const selectStyles = ({
 			opacity: 0.3,
 		},
 
-		'&:focus': outline,
+		'&:focus': packs.outline,
 	} as const);

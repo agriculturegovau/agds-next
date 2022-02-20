@@ -1,10 +1,4 @@
-import {
-	fontGrid,
-	outline,
-	boxPalette,
-	tokens,
-	mapSpacing,
-} from '@ag.ds-next/core';
+import { packs, boxPalette, tokens, mapSpacing } from '@ag.ds-next/core';
 
 const variants = {
 	primary: {
@@ -13,14 +7,12 @@ const variants = {
 		color: boxPalette.backgroundBody,
 		textDecoration: 'none',
 
-		'&:hover': {
+		'&:not(:disabled):hover': {
 			background: boxPalette.foregroundText,
 			borderColor: boxPalette.foregroundText,
 			color: boxPalette.backgroundBody,
 			textDecoration: 'underline',
 		},
-
-		'&:focus': outline,
 	},
 	secondary: {
 		background: 'transparent',
@@ -28,14 +20,12 @@ const variants = {
 		color: boxPalette.foregroundAction,
 		textDecoration: 'none',
 
-		'&:hover': {
+		'&:not(:disabled):hover': {
 			background: 'transparent',
 			border: `3px solid ${boxPalette.foregroundText}`,
 			color: boxPalette.foregroundText,
 			textDecoration: 'underline',
 		},
-
-		'&:focus': outline,
 	},
 	tertiary: {
 		background: 'transparent',
@@ -43,14 +33,12 @@ const variants = {
 		color: boxPalette.foregroundAction,
 		textDecoration: 'underline',
 
-		'&:hover': {
+		'&:not(:disabled):hover': {
 			background: 'transparent',
 			border: `3px solid transparent`,
 			color: boxPalette.foregroundText,
 			textDecoration: 'none',
 		},
-
-		'&:focus': outline,
 	},
 } as const;
 
@@ -58,16 +46,12 @@ export type ButtonVariant = keyof typeof variants;
 
 const sizes = {
 	sm: {
-		...fontGrid('xs', 'default'),
-		paddingTop: mapSpacing(0.25),
-		paddingBottom: mapSpacing(0.25),
+		...packs.input.sm,
 		paddingLeft: mapSpacing(0.75),
 		paddingRight: mapSpacing(0.75),
 	},
 	md: {
-		...fontGrid('sm', 'default'),
-		paddingTop: mapSpacing(0.5),
-		paddingBottom: mapSpacing(0.5),
+		...packs.input.md,
 		paddingLeft: mapSpacing(1.5),
 		paddingRight: mapSpacing(1.5),
 	},
@@ -87,7 +71,10 @@ export function buttonStyles({
 	return {
 		...variants[variant],
 		...sizes[size],
-		display: 'inline-block',
+
+		appearance: 'none',
+		display: block ? 'flex' : 'inline-flex',
+		alignItems: 'center',
 		borderWidth: 3,
 		borderStyle: 'solid',
 		borderRadius: tokens.borderRadius,
@@ -98,16 +85,14 @@ export function buttonStyles({
 		textAlign: 'center',
 
 		...(block && {
-			display: 'block',
 			width: '100%',
 		}),
 
 		'&:disabled': {
 			cursor: 'not-allowed',
 			opacity: 0.3,
-			// reset hover and focus styles
-			'&:hover': {},
-			'&:focus': {},
 		},
+
+		'&:focus': packs.outline,
 	} as const;
 }

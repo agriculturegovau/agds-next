@@ -1,7 +1,6 @@
 import { css } from '@emotion/react';
 import {
 	tokens,
-	outline,
 	BoxPalette,
 	boxPalettes,
 	boxPalette,
@@ -12,6 +11,7 @@ import {
 	fontGrid,
 	Spacing,
 	globalPalette,
+	packs,
 } from '@ag.ds-next/core';
 
 type PaletteProps = Partial<{
@@ -47,14 +47,18 @@ export const backgroundColorMap = {
 };
 
 type ColorProps = Partial<{
-	color: keyof typeof foregroundColorMap;
-	background: keyof typeof backgroundColorMap;
+	color: ResponsiveProp<keyof typeof foregroundColorMap>;
+	background: ResponsiveProp<keyof typeof backgroundColorMap>;
 }>;
 
 function colorStyles({ color, background }: ColorProps) {
 	return {
-		color: color ? foregroundColorMap[color] : undefined,
-		backgroundColor: background ? backgroundColorMap[background] : undefined,
+		color: color
+			? mapResponsiveProp(color, (t) => foregroundColorMap[t])
+			: undefined,
+		backgroundColor: background
+			? mapResponsiveProp(background, (t) => backgroundColorMap[t])
+			: undefined,
 	};
 }
 
@@ -189,7 +193,13 @@ function borderStyles({
 	rounded,
 }: BorderProps) {
 	const anyBorder =
-		border || borderLeft || borderRight || borderBottom || borderX || borderY;
+		border ||
+		borderLeft ||
+		borderRight ||
+		borderTop ||
+		borderBottom ||
+		borderX ||
+		borderY;
 	return {
 		borderWidth: 0,
 		borderLeftWidth: border ?? borderX ?? borderLeft ? `1px` : undefined,
@@ -257,7 +267,7 @@ export const linkStyles = {
 
 type FocusProps = Partial<{ focus: boolean }>;
 export const focusStyles = {
-	':focus': outline,
+	':focus': packs.outline,
 	'&::-moz-focus-inner': {
 		border: 0,
 	},

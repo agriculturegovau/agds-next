@@ -6,7 +6,8 @@ import { SideNavGroup } from './SideNavGroup';
 import { SideNavLink } from './SideNavLink';
 import { findBestMatch } from './utils';
 
-type SideNavProps = LinkListProps & {
+export type SideNavProps = LinkListProps & {
+	collapseTitle: string;
 	variant?: ComponentProps<typeof SideNavContainer>['variant'];
 	title: ReactNode;
 	titleLink: string; // TODO: should this be optional
@@ -14,6 +15,7 @@ type SideNavProps = LinkListProps & {
 
 export function SideNav({
 	activePath,
+	collapseTitle,
 	items,
 	variant = 'light',
 	titleLink,
@@ -21,7 +23,11 @@ export function SideNav({
 	...props
 }: SideNavProps) {
 	return (
-		<SideNavContainer variant={variant} {...props}>
+		<SideNavContainer
+			variant={variant}
+			collapseTitle={collapseTitle}
+			{...props}
+		>
 			<SideNavTitle isCurrentPage={activePath === titleLink} href={titleLink}>
 				{title}
 			</SideNavTitle>

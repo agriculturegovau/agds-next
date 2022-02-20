@@ -31,6 +31,8 @@ import { Textarea } from '@ag.ds-next/textarea';
 import { SearchBox } from '@ag.ds-next/search-box';
 import { Select } from '@ag.ds-next/select';
 import { VisuallyHidden } from '@ag.ds-next/a11y';
+import { ProgressIndicator } from '@ag.ds-next/progress-indicator';
+import { Checkbox, Radio, ControlGroup } from '@ag.ds-next/control-input';
 
 export const designSystemComponents = {
 	Accordion,
@@ -78,4 +80,8 @@ export const designSystemComponents = {
 	SearchBox,
 	Select,
 	VisuallyHidden,
+	ProgressIndicator,
+	Checkbox,
+	Radio,
+	ControlGroup,
 };

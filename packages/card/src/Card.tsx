@@ -1,6 +1,6 @@
 import { PropsWithChildren, ElementType } from 'react';
 import { Box } from '@ag.ds-next/box';
-import { outline } from '@ag.ds-next/core';
+import { packs } from '@ag.ds-next/core';
 
 export type CardProps = PropsWithChildren<{
 	as?: ElementType;
@@ -30,7 +30,7 @@ export const Card = ({ as, children, shadow, clickable }: CardProps) => {
 				...(clickable && {
 					cursor: 'pointer',
 					// If any element inside the card receives focus, add a focus ring around the wrapper card div
-					'&:focus-within': outline,
+					'&:focus-within': packs.outline,
 				}),
 
 				...(shadow && {
