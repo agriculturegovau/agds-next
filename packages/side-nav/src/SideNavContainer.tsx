@@ -60,7 +60,7 @@ export const SideNavContainer = ({
 	});
 
 	return (
-		<Box rounded background={{ xs: 'shade', md: background }}>
+		<Box rounded background={{ xs: 'shade', md: background }} palette={palette}>
 			<SideNavCollapseButton
 				isOpen={isOpen}
 				onClick={onToggle}
@@ -87,7 +87,8 @@ export const SideNavContainer = ({
 				<Box
 					as="nav"
 					fontFamily="body"
-					palette={palette}
+					paddingLeft={{ xs: 1, md: 0 }}
+					paddingRight={{ xs: 1, md: 0 }}
 					fontSize="sm"
 					lineHeight="default"
 					css={{

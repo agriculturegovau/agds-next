@@ -17,7 +17,10 @@ export const SideNavTitle = ({
 		<Box
 			as={Link}
 			href={href}
-			padding={1}
+			paddingTop={1}
+			paddingBottom={1}
+			paddingLeft={{ xs: 0, md: 1 }}
+			paddingRight={{ xs: 0, md: 1 }}
 			color="text"
 			fontSize="sm"
 			fontWeight="bold"
