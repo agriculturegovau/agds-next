@@ -163,15 +163,16 @@ export const ControlledGroup = () => {
 
 	const openAll = () => setOpenAccordions([1, 2, 3]);
 	const closeAll = () => setOpenAccordions([]);
-	const isAnyOpen = openAccordions.length;
-
 	const toggle = (item: number) => {
-		if (openAccordions.includes(item)) {
-			setOpenAccordions(openAccordions.filter((acc) => acc !== item));
-		} else {
-			setOpenAccordions([...openAccordions, item]);
-		}
+		setOpenAccordions((openAccordions) => {
+			if (openAccordions.includes(item)) {
+				return openAccordions.filter((acc) => acc !== item);
+			}
+			return [...openAccordions, item];
+		});
 	};
+
+	const isAnyOpen = openAccordions.length;
 
 	return (
 		<Stack padding={3} gap={1} alignItems="flex-start">
