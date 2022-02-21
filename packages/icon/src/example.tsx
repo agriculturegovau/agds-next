@@ -7,13 +7,15 @@ import { ICONS } from './icons';
 const IconExample = ({ iconName }: { iconName: keyof typeof ICONS }) => {
 	return (
 		<Flex
+			flexDirection="column"
 			alignItems="center"
 			justifyContent="center"
-			flexDirection="column"
+			flexShrink={0}
 			rounded
 			gap={1}
 			padding={2}
 			background="shade"
+			css={{ width: 180 }}
 		>
 			<Icon size={3} icon={iconName} />
 			<Text>{iconName}</Text>
@@ -23,7 +25,7 @@ const IconExample = ({ iconName }: { iconName: keyof typeof ICONS }) => {
 
 export const IconExamples = () => {
 	return (
-		<Flex gap={0.5} flexWrap="wrap" flexDirection="row">
+		<Flex gap={0.5} flexWrap="wrap">
 			{(Object.keys(ICONS) as IconNameType[]).sort().map((iconName) => (
 				<IconExample iconName={iconName} key={iconName} />
 			))}

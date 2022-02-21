@@ -12,65 +12,47 @@ const Template: ComponentStory<typeof Checkbox> = (args) => (
 	<Checkbox {...args} />
 );
 
-export const LightCheckbox = Template.bind({});
-LightCheckbox.args = {
+export const OnLight: ComponentStory<typeof Checkbox> = (args) => (
+	<Template {...args} />
+);
+OnLight.args = {
 	children: 'Example',
 	checked: true,
 };
 
-export const LightAltCheckbox: ComponentStory<typeof Checkbox> = (args) => (
-	<Box palette="light" background="bodyAlt" padding={1}>
+export const OnDark: ComponentStory<typeof Checkbox> = (args) => (
+	<Box palette="dark" background="body" padding={1.5}>
 		<Template {...args} />
 	</Box>
 );
-LightAltCheckbox.args = {
+OnDark.args = {
 	children: 'Example',
 	checked: true,
 };
 
-export const DarkCheckbox: ComponentStory<typeof Checkbox> = (args) => (
-	<Box palette="dark" background="body" padding={1}>
-		<Template {...args} />
-	</Box>
-);
-DarkCheckbox.args = {
-	children: 'Example',
-	checked: true,
-};
-
-export const DarkAltCheckbox: ComponentStory<typeof Checkbox> = (args) => (
-	<Box palette="dark" background="bodyAlt" padding={1}>
-		<Template {...args} />
-	</Box>
-);
-DarkAltCheckbox.args = {
-	children: 'Example',
-	checked: true,
-};
-
-export const SmallCheckbox = Template.bind({});
-SmallCheckbox.args = {
+export const Size = Template.bind({});
+Size.args = {
 	size: 'sm',
 	children: 'Small example',
 	checked: true,
 };
 
-export const DisabledCheckbox = Template.bind({});
-DisabledCheckbox.args = {
+export const Disabled = Template.bind({});
+Disabled.args = {
 	children: 'Disabled',
 	disabled: true,
 	checked: true,
 };
 
-export const InvalidCheckbox = Template.bind({});
-InvalidCheckbox.args = {
+export const Invalid = Template.bind({});
+Invalid.args = {
 	children: 'Invalid',
 	invalid: true,
 	checked: true,
 };
 
-export const ValidCheckbox = Template.bind({});
-ValidCheckbox.args = {
+export const Valid = Template.bind({});
+Valid.args = {
 	children: 'Valid',
 	valid: true,
 	checked: true,

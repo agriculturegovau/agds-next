@@ -5,7 +5,6 @@ import React, {
 } from 'react';
 import { Field, FieldMaxWidth } from '@ag.ds-next/field';
 import { textInputStyles } from '@ag.ds-next/text-input';
-import { tokens } from '@ag.ds-next/core';
 
 export type TextareaProps = DetailedHTMLProps<
 	TextareaHTMLAttributes<HTMLTextAreaElement>,

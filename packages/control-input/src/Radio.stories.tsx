@@ -10,65 +10,45 @@ export default {
 
 const Template: ComponentStory<typeof Radio> = (args) => <Radio {...args} />;
 
-export const LightRadio = Template.bind({});
-LightRadio.args = {
+export const OnLight = Template.bind({});
+OnLight.args = {
 	children: 'Example',
 	checked: true,
 };
 
-export const LightAltRadio: ComponentStory<typeof Radio> = (args) => (
-	<Box palette="light" background="bodyAlt" padding={1}>
+export const OnDark: ComponentStory<typeof Radio> = (args) => (
+	<Box palette="dark" background="body" padding={1.5}>
 		<Template {...args} />
 	</Box>
 );
-LightAltRadio.args = {
+OnDark.args = {
 	children: 'Example',
 	checked: true,
 };
 
-export const DarkRadio: ComponentStory<typeof Radio> = (args) => (
-	<Box palette="dark" background="body" padding={1}>
-		<Template {...args} />
-	</Box>
-);
-DarkRadio.args = {
-	children: 'Example',
-	checked: true,
-};
-
-export const DarkAltRadio: ComponentStory<typeof Radio> = (args) => (
-	<Box palette="dark" background="bodyAlt" padding={1}>
-		<Template {...args} />
-	</Box>
-);
-DarkAltRadio.args = {
-	children: 'Example',
-	checked: true,
-};
-
-export const SmallRadio = Template.bind({});
-SmallRadio.args = {
+export const Size = Template.bind({});
+Size.args = {
 	size: 'sm',
 	children: 'Small example',
 	checked: true,
 };
 
-export const DisabledRadio = Template.bind({});
-DisabledRadio.args = {
+export const Disabled = Template.bind({});
+Disabled.args = {
 	children: 'Disabled',
 	disabled: true,
 	checked: true,
 };
 
-export const InvalidRadio = Template.bind({});
-InvalidRadio.args = {
+export const Invalid = Template.bind({});
+Invalid.args = {
 	children: 'Invalid',
 	invalid: true,
 	checked: true,
 };
 
-export const ValidRadio = Template.bind({});
-ValidRadio.args = {
+export const Valid = Template.bind({});
+Valid.args = {
 	children: 'Valid',
 	valid: true,
 	checked: true,

@@ -44,27 +44,27 @@ const AgSimpleFooter: ComponentStory<typeof Footer> = (args) => {
 	);
 };
 
-export const SimpleFooterAgriculture = AgSimpleFooter.bind({});
-SimpleFooterAgriculture.args = {
+export const AgricultureVariant = AgSimpleFooter.bind({});
+AgricultureVariant.args = {
 	variant: 'agriculture',
 };
-export const SimpleFooterLight = AgSimpleFooter.bind({});
-SimpleFooterLight.args = {
+export const LightVariant = AgSimpleFooter.bind({});
+LightVariant.args = {
 	variant: 'light',
 };
 
-export const SimpleFooterLightAlt = AgSimpleFooter.bind({});
-SimpleFooterLightAlt.args = {
+export const LightAltVariant = AgSimpleFooter.bind({});
+LightAltVariant.args = {
 	variant: 'lightAlt',
 };
 
-export const SimpleFooterDark = AgSimpleFooter.bind({});
-SimpleFooterDark.args = {
+export const DarkVariant = AgSimpleFooter.bind({});
+DarkVariant.args = {
 	variant: 'dark',
 };
 
-export const SimpleFooterDarkAlt = AgSimpleFooter.bind({});
-SimpleFooterDarkAlt.args = {
+export const DarkAltVariant = AgSimpleFooter.bind({});
+DarkAltVariant.args = {
 	variant: 'darkAlt',
 };
 
@@ -145,27 +145,7 @@ const AgComplexFooter: ComponentStory<typeof Footer> = (args) => {
 	);
 };
 
-export const ComplexFooterAgriculture = AgComplexFooter.bind({});
-ComplexFooterAgriculture.args = {
+export const ComplexContent = AgComplexFooter.bind({});
+ComplexContent.args = {
 	variant: 'agriculture',
-};
-
-export const ComplexFooterLight = AgComplexFooter.bind({});
-ComplexFooterLight.args = {
-	variant: 'light',
-};
-
-export const ComplexFooterLightAlt = AgComplexFooter.bind({});
-ComplexFooterLightAlt.args = {
-	variant: 'lightAlt',
-};
-
-export const ComplexFooterDark = AgComplexFooter.bind({});
-ComplexFooterDark.args = {
-	variant: 'dark',
-};
-
-export const ComplexFooterDarkAlt = AgComplexFooter.bind({});
-ComplexFooterDarkAlt.args = {
-	variant: 'darkAlt',
 };

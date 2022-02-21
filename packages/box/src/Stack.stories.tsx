@@ -12,8 +12,8 @@ export default {
 
 const Template: ComponentStory<typeof Stack> = (args) => <Stack {...args} />;
 
-export const Default = Template.bind({});
-Default.args = {
+export const Basic = Template.bind({});
+Basic.args = {
 	children: (
 		<Fragment>
 			<Box display="block" height={40} background="shadeAlt" />
@@ -27,7 +27,7 @@ Default.args = {
 	gap: 6,
 	palette: 'light',
 };
-Default.story = {
+Basic.story = {
 	parameters: {
 		docs: {
 			storyDescription:

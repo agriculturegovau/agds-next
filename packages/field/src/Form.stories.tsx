@@ -55,13 +55,13 @@ const Example = ({
 export const Alignment = () => {
 	return (
 		<Stack gap={2}>
-			<Stack gap={1} padding={2}>
+			<Stack gap={1} padding={1.5}>
 				<Example />
 				<Example checked />
 				<Example disabled />
 				<Example checked disabled />
 			</Stack>
-			<Stack background="body" dark gap={1} padding={2}>
+			<Stack background="body" dark gap={1} padding={1.5}>
 				<Example />
 				<Example checked />
 				<Example disabled />
