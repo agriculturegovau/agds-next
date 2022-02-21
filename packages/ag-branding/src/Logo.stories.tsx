@@ -3,7 +3,7 @@ import { Box } from '@ag.ds-next/box';
 import { Logo } from './Logo';
 
 export default {
-	title: 'Agriculture/Branding',
+	title: 'Brand/AG Branding/Logo',
 	component: Logo,
 } as ComponentMeta<typeof Logo>;
 

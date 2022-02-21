@@ -4,7 +4,7 @@ import { TextLink } from '@ag.ds-next/text/src/Text';
 import { VisuallyHidden, visuallyHiddenStyles } from './VisuallyHidden';
 
 export default {
-	title: 'foundations/VisuallyHidden',
+	title: 'foundations/A11y/VisuallyHidden',
 	component: VisuallyHidden,
 } as ComponentMeta<typeof VisuallyHidden>;
 
