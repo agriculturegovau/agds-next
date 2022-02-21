@@ -19,43 +19,43 @@ const Template: ComponentStory<typeof MainNav> = (args) => (
 	<MainNav {...args} />
 );
 
-export const MainNavAg = Template.bind({});
-MainNavAg.args = {
+export const AgricultureVariant = Template.bind({});
+AgricultureVariant.args = {
 	links: NAV_ITEMS,
 	activePath: '#content',
 	variant: 'agriculture',
 };
 
-export const MainNavDark = Template.bind({});
-MainNavDark.args = {
+export const DarkVariant = Template.bind({});
+DarkVariant.args = {
 	links: NAV_ITEMS,
 	activePath: '#content',
 	variant: 'dark',
 };
 
-export const MainNavDarkAlt = Template.bind({});
-MainNavDarkAlt.args = {
+export const DarkAltVariant = Template.bind({});
+DarkAltVariant.args = {
 	links: NAV_ITEMS,
 	activePath: '#content',
 	variant: 'darkAlt',
 };
 
-export const MainNavLight = Template.bind({});
-MainNavLight.args = {
+export const LightVariant = Template.bind({});
+LightVariant.args = {
 	links: NAV_ITEMS,
 	activePath: '#content',
 	variant: 'light',
 };
 
-export const MainNavLightAlt = Template.bind({});
-MainNavLightAlt.args = {
+export const LightAltVariant = Template.bind({});
+LightAltVariant.args = {
 	links: NAV_ITEMS,
 	activePath: '#content',
 	variant: 'lightAlt',
 };
 
-export const MainNavSecondaryLinks = Template.bind({});
-MainNavSecondaryLinks.args = {
+export const SecondaryLinks = Template.bind({});
+SecondaryLinks.args = {
 	links: NAV_ITEMS,
 	secondaryLinks: [{ href: '#login', label: 'Sign in' }],
 	activePath: '#content',

@@ -49,23 +49,26 @@ const Template: ComponentStory<typeof Header> = (args, context) => (
 	<Header logo={getLogo(context, args.variant)} {...args} />
 );
 
-export const HeaderDark = Template.bind({});
-HeaderDark.args = {
+export const DarkVariant = Template.bind({});
+DarkVariant.args = {
 	...defaultArgs,
 	variant: 'dark',
 };
-export const HeaderDarkAlt = Template.bind({});
-HeaderDarkAlt.args = {
+
+export const DarkAltVariant = Template.bind({});
+DarkAltVariant.args = {
 	...defaultArgs,
 	variant: 'darkAlt',
 };
-export const HeaderLight = Template.bind({});
-HeaderLight.args = {
+
+export const LightVariant = Template.bind({});
+LightVariant.args = {
 	...defaultArgs,
 	variant: 'light',
 };
-export const HeaderLightAlt = Template.bind({});
-HeaderLightAlt.args = {
+
+export const LightAltVariant = Template.bind({});
+LightAltVariant.args = {
 	...defaultArgs,
 	variant: 'lightAlt',
 };
@@ -78,40 +81,34 @@ LongSubline.args = {
 	subline: 'Service description that could be a little longer',
 };
 
-export const HeaderNoLogo = Template.bind({});
-HeaderNoLogo.args = {
+export const NoLogo = Template.bind({});
+NoLogo.args = {
 	...defaultArgs,
+	logo: undefined,
+};
+
+export const Search = Template.bind({});
+Search.args = {
+	...defaultArgs,
+	rightContent: (
+		<SearchBox label="Search" aria-label="Sitewide" buttonReponsive />
+	),
 };
 
 // TODO
 
-export const HeaderCoBranded = Template.bind({});
-HeaderCoBranded.args = {
+export const CoBranded = Template.bind({});
+CoBranded.args = {
 	...defaultArgs,
 	logo: logoLight,
 	heading: 'TODO ...',
 };
-HeaderCoBranded.storyName = '🕥 Header Co-Branded';
+CoBranded.storyName = '🕥 Co-Branded';
 
-export const HeaderHero = Template.bind({});
-HeaderHero.args = {
+export const Hero = Template.bind({});
+Hero.args = {
 	...defaultArgs,
 	logo: logoLight,
 	heading: 'TODO ...',
 };
-HeaderHero.storyName = '🕥 Header Hero';
-
-export const HeaderSearch: ComponentStory<typeof Header> = (args, context) => (
-	<Header
-		logo={getLogo(context, args.variant)}
-		rightContent={
-			<SearchBox label="Search" aria-label="Sitewide" buttonReponsive />
-		}
-		{...args}
-	/>
-);
-HeaderSearch.args = {
-	heading: 'Export Service',
-	subline: 'Supporting Australian agricultural exports',
-};
-HeaderSearch.storyName = '🕥 Header Search';
+Hero.storyName = '🕥 Header Hero';

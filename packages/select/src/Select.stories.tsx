@@ -1,6 +1,6 @@
 import React, { useState, ChangeEvent } from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { Stack } from '@ag.ds-next/box';
+import { Box, Stack } from '@ag.ds-next/box';
 import { Select } from './Select';
 
 export default {
@@ -14,10 +14,21 @@ const EXAMPLE_OPTIONS = [
 	{ value: 'c', label: 'Option C' },
 ];
 
-export const Basic: ComponentStory<typeof Select> = (args) => (
+export const OnLight: ComponentStory<typeof Select> = (args) => (
 	<Select {...args} />
 );
-Basic.args = {
+OnLight.args = {
+	label: 'Example',
+	placeholder: 'Please select',
+	options: EXAMPLE_OPTIONS,
+};
+
+export const OnDark: ComponentStory<typeof Select> = (args) => (
+	<Box background="body" palette="dark" padding={1.5}>
+		<Select {...args} />
+	</Box>
+);
+OnDark.args = {
 	label: 'Example',
 	placeholder: 'Please select',
 	options: EXAMPLE_OPTIONS,
@@ -28,7 +39,7 @@ export const Placeholder: ComponentStory<typeof Select> = (args) => (
 );
 Placeholder.args = {
 	label: 'Example',
-	placeholder: 'Select an option',
+	placeholder: 'Select an option from the menu',
 	options: EXAMPLE_OPTIONS,
 };
 
@@ -87,6 +98,7 @@ Valid.args = {
 	required: true,
 	valid: true,
 	options: EXAMPLE_OPTIONS,
+	value: EXAMPLE_OPTIONS[0].value,
 };
 
 export const Hint: ComponentStory<typeof Select> = (args) => (
@@ -122,9 +134,8 @@ MaxWidths.args = {
 };
 
 export const Controlled = () => {
-	const [selected, setSelected] = useState<
-		{ label: string; value: string } | undefined
-	>();
+	const [selected, setSelected] =
+		useState<{ label: string; value: string } | undefined>();
 
 	const onChange = (event: ChangeEvent<HTMLSelectElement>) => {
 		const nextSelected = EXAMPLE_OPTIONS.find(
@@ -137,18 +148,18 @@ export const Controlled = () => {
 		<Select
 			value={selected?.value}
 			onChange={onChange}
-			label="Controlled object options"
+			label="Controlled"
 			placeholder="Please select"
 			options={EXAMPLE_OPTIONS}
 		/>
 	);
 };
 
-export const Groups: ComponentStory<typeof Select> = (args) => (
+export const GroupedOptions: ComponentStory<typeof Select> = (args) => (
 	<Select {...args} />
 );
-Groups.args = {
-	label: 'Example',
+GroupedOptions.args = {
+	label: 'Grouped options',
 	placeholder: 'Please select',
 	options: [
 		{

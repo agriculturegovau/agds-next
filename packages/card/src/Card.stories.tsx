@@ -15,8 +15,8 @@ export default {
 	component: Card,
 } as ComponentMeta<typeof Card>;
 
-export const Basic: ComponentStory<typeof Card> = (args) => (
-	<Box palette="light" background="body" maxWidth={300}>
+export const OnLight: ComponentStory<typeof Card> = (args) => (
+	<Box maxWidth={300}>
 		<Card {...args}>
 			<CardInner>
 				<Heading as="h2" type="h3" paddingBottom={1}>
@@ -28,6 +28,24 @@ export const Basic: ComponentStory<typeof Card> = (args) => (
 				</CardLink>
 			</CardInner>
 		</Card>
+	</Box>
+);
+
+export const OnDark: ComponentStory<typeof Card> = (args) => (
+	<Box palette="dark" background="body" padding={1.5}>
+		<Box maxWidth={300}>
+			<Card {...args}>
+				<CardInner>
+					<Heading as="h2" type="h3" paddingBottom={1}>
+						Card heading
+					</Heading>
+					<CardLink href="#">
+						Linking out
+						<Icon icon="chevronRight" size={1} />
+					</CardLink>
+				</CardInner>
+			</Card>
+		</Box>
 	</Box>
 );
 

@@ -11,6 +11,7 @@ import {
 export default {
 	title: 'navigation/Breadcrumbs',
 	component: Breadcrumbs,
+	subcomponents: { BreadcrumbsContainer, BreadcrumbsItem, BreadcrumbsDivider },
 } as ComponentMeta<typeof Breadcrumbs>;
 
 const exampleLinks = [
@@ -19,21 +20,21 @@ const exampleLinks = [
 	{ label: 'Applications' },
 ];
 
-export const Light: ComponentStory<typeof Breadcrumbs> = (args) => (
-	<Box palette="light" background="body">
+export const OnLight: ComponentStory<typeof Breadcrumbs> = (args) => (
+	<Box palette="light" background="body" padding={1.5}>
 		<Breadcrumbs {...args} />
 	</Box>
 );
-Light.args = {
+OnLight.args = {
 	links: exampleLinks,
 };
 
-export const Dark: ComponentStory<typeof Breadcrumbs> = (args) => (
-	<Box palette="dark" background="body">
+export const OnDark: ComponentStory<typeof Breadcrumbs> = (args) => (
+	<Box palette="dark" background="body" padding={1.5}>
 		<Breadcrumbs {...args} />
 	</Box>
 );
-Dark.args = {
+OnDark.args = {
 	links: exampleLinks,
 };
 

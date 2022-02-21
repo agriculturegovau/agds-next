@@ -9,10 +9,8 @@ export default {
 	component: Icon,
 } as ComponentMeta<typeof Icon>;
 
-export const Primary: ComponentStory<typeof Icon> = (args) => (
-	<Icon {...args} />
-);
-Primary.args = {
+export const Basic: ComponentStory<typeof Icon> = (args) => <Icon {...args} />;
+Basic.args = {
 	icon: 'avatar',
 	size: 4,
 };

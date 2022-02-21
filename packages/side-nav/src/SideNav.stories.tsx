@@ -11,6 +11,7 @@ import {
 export default {
 	title: 'navigation/SideNav',
 	component: SideNav,
+	subcomponents: { SideNavContainer, SideNavTitle, SideNavGroup, SideNavLink },
 } as ComponentMeta<typeof SideNav>;
 
 const defaultArgs = {
@@ -69,56 +70,54 @@ const defaultArgs = {
 	activePath: '#in-detail/record-keeping/incorrect-amounts',
 } as ComponentProps<typeof SideNav>;
 
-const Template: ComponentStory<typeof SideNav> = (args) => {
-	return <SideNav {...args} />;
-};
+const Template: ComponentStory<typeof SideNav> = (args) => (
+	<SideNav {...args} />
+);
 
-export const SideNavLight = Template.bind({});
-SideNavLight.args = {
+export const LightVariant = Template.bind({});
+LightVariant.args = {
 	...defaultArgs,
 	variant: 'light',
 };
 
-export const SideNavLightAlt = Template.bind({});
-SideNavLightAlt.args = {
+export const LightAltVariant = Template.bind({});
+LightAltVariant.args = {
 	...defaultArgs,
 	variant: 'lightAlt',
 };
 
-export const SideNavDark = Template.bind({});
-SideNavDark.args = {
+export const DarkVariant = Template.bind({});
+DarkVariant.args = {
 	...defaultArgs,
 	variant: 'dark',
 };
 
-export const SideNavDarkAlt = Template.bind({});
-SideNavDarkAlt.args = {
+export const DarkAltVariant = Template.bind({});
+DarkAltVariant.args = {
 	...defaultArgs,
 	variant: 'darkAlt',
 };
 
-export const Modular: ComponentStory<typeof SideNavContainer> = (args) => {
-	return (
-		<SideNavContainer {...args}>
-			<SideNavTitle href="#">SideNavTitle</SideNavTitle>
-			<SideNavGroup>
-				<SideNavLink href="#one" label="One" />
-				<SideNavLink href="#two" label="Two" />
-				<SideNavLink href="#three" label="Three" active>
-					<SideNavGroup>
-						<SideNavLink href="#three-1" label="Three - 1" active>
-							<SideNavGroup>
-								<SideNavLink href="#three-1-1" label="Three - 1:1" />
-								<SideNavLink href="#three-1-2" label="Three - 1:2" active />
-							</SideNavGroup>
-						</SideNavLink>
-						<SideNavLink href="#three-2" label="Three - 2" />
-					</SideNavGroup>
-				</SideNavLink>
-			</SideNavGroup>
-		</SideNavContainer>
-	);
-};
+export const Modular: ComponentStory<typeof SideNavContainer> = (args) => (
+	<SideNavContainer {...args}>
+		<SideNavTitle href="#">SideNavTitle</SideNavTitle>
+		<SideNavGroup>
+			<SideNavLink href="#one" label="One" />
+			<SideNavLink href="#two" label="Two" />
+			<SideNavLink href="#three" label="Three" active>
+				<SideNavGroup>
+					<SideNavLink href="#three-1" label="Three - 1" active>
+						<SideNavGroup>
+							<SideNavLink href="#three-1-1" label="Three - 1:1" />
+							<SideNavLink href="#three-1-2" label="Three - 1:2" active />
+						</SideNavGroup>
+					</SideNavLink>
+					<SideNavLink href="#three-2" label="Three - 2" />
+				</SideNavGroup>
+			</SideNavLink>
+		</SideNavGroup>
+	</SideNavContainer>
+);
 Modular.args = {
 	collapseTitle: 'In this section',
 	variant: 'light',

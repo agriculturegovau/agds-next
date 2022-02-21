@@ -4,11 +4,11 @@ import { TextLink } from '@ag.ds-next/text/src/Text';
 import { VisuallyHidden, visuallyHiddenStyles } from './VisuallyHidden';
 
 export default {
-	title: 'foundations/A11y/VisuallyHidden',
+	title: 'foundations/VisuallyHidden',
 	component: VisuallyHidden,
 } as ComponentMeta<typeof VisuallyHidden>;
 
-export const Component = () => (
+export const Basic = () => (
 	<TextLink href="#">
 		Read more
 		<VisuallyHidden> about how to visually hide content</VisuallyHidden>

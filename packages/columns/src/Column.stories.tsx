@@ -11,46 +11,44 @@ export default {
 const Cell = () => <Box background="shadeAlt" padding={1} />;
 
 export const Basic: ComponentStory<typeof Columns> = (args) => (
-	<Box palette="light" background="body">
-		<Columns {...args}>
-			<Column columnSpan={1}>
-				<Cell />
-			</Column>
-			<Column columnSpan={1}>
-				<Cell />
-			</Column>
-			<Column columnSpan={1}>
-				<Cell />
-			</Column>
-			<Column columnSpan={1}>
-				<Cell />
-			</Column>
-			<Column columnSpan={1}>
-				<Cell />
-			</Column>
-			<Column columnSpan={1}>
-				<Cell />
-			</Column>
-			<Column columnSpan={1}>
-				<Cell />
-			</Column>
-			<Column columnSpan={1}>
-				<Cell />
-			</Column>
-			<Column columnSpan={1}>
-				<Cell />
-			</Column>
-			<Column columnSpan={1}>
-				<Cell />
-			</Column>
-			<Column columnSpan={1}>
-				<Cell />
-			</Column>
-			<Column columnSpan={1}>
-				<Cell />
-			</Column>
-		</Columns>
-	</Box>
+	<Columns {...args}>
+		<Column columnSpan={1}>
+			<Cell />
+		</Column>
+		<Column columnSpan={1}>
+			<Cell />
+		</Column>
+		<Column columnSpan={1}>
+			<Cell />
+		</Column>
+		<Column columnSpan={1}>
+			<Cell />
+		</Column>
+		<Column columnSpan={1}>
+			<Cell />
+		</Column>
+		<Column columnSpan={1}>
+			<Cell />
+		</Column>
+		<Column columnSpan={1}>
+			<Cell />
+		</Column>
+		<Column columnSpan={1}>
+			<Cell />
+		</Column>
+		<Column columnSpan={1}>
+			<Cell />
+		</Column>
+		<Column columnSpan={1}>
+			<Cell />
+		</Column>
+		<Column columnSpan={1}>
+			<Cell />
+		</Column>
+		<Column columnSpan={1}>
+			<Cell />
+		</Column>
+	</Columns>
 );
 Basic.args = {};
 

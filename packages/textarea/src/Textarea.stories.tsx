@@ -1,6 +1,6 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { Stack } from '@ag.ds-next/box';
+import { Box, Stack } from '@ag.ds-next/box';
 import { Textarea } from './Textarea';
 
 export default {
@@ -8,10 +8,19 @@ export default {
 	component: Textarea,
 } as ComponentMeta<typeof Textarea>;
 
-export const Basic: ComponentStory<typeof Textarea> = (args) => (
+export const OnLight: ComponentStory<typeof Textarea> = (args) => (
 	<Textarea {...args} />
 );
-Basic.args = {
+OnLight.args = {
+	label: 'Example',
+};
+
+export const OnDark: ComponentStory<typeof Textarea> = (args) => (
+	<Box background="body" palette="dark" padding={1.5}>
+		<Textarea {...args} />
+	</Box>
+);
+OnDark.args = {
 	label: 'Example',
 };
 
@@ -38,6 +47,7 @@ Invalid.args = {
 	label: 'Message',
 	message: 'The message you have entered is invalid',
 	value: '1e039ur4urf',
+	invalid: true,
 };
 
 export const Valid: ComponentStory<typeof Textarea> = (args) => (
@@ -47,6 +57,7 @@ Valid.args = {
 	label: 'Message',
 	message: 'The message you have entered is valid',
 	value: 'Lorem ipsum dolar',
+	valid: true,
 };
 
 export const Hint: ComponentStory<typeof Textarea> = (args) => (
@@ -69,12 +80,7 @@ Block.args = {
 export const MaxWidths: ComponentStory<typeof Textarea> = (args) => (
 	<Stack background="body" palette="light" gap={1}>
 		{(['xs', 'sm', 'md', 'lg', 'xl'] as const).map((size) => (
-			<Textarea
-				key={size}
-				{...args}
-				label={`Textarea max width ${size}`}
-				maxWidth={size}
-			/>
+			<Textarea key={size} {...args} label={size} maxWidth={size} />
 		))}
 	</Stack>
 );

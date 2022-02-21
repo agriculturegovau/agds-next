@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { Box, Stack } from '@ag.ds-next/box';
 import { Checkbox } from './Checkbox';
@@ -25,9 +25,6 @@ const Template: ComponentStory<typeof ControlGroup> = (args) => (
 		<ControlGroup {...args}>
 			<Radio checked>Coding</Radio>
 			<Radio checked={false}>Music</Radio>
-			<Radio checked disabled>
-				Art
-			</Radio>
 			<Radio checked={false} disabled>
 				Cooking
 			</Radio>
@@ -36,22 +33,24 @@ const Template: ComponentStory<typeof ControlGroup> = (args) => (
 	</Stack>
 );
 
-export const LightControlGroup = Template.bind({});
-LightControlGroup.args = {
+export const OnLight: ComponentStory<typeof ControlGroup> = (args) => (
+	<Template {...args} />
+);
+OnLight.args = {
 	title: 'Choose your interests',
 };
 
-export const DarkControlGroup: ComponentStory<typeof ControlGroup> = (args) => (
-	<Box background="body" padding={1} dark>
+export const OnDark: ComponentStory<typeof ControlGroup> = (args) => (
+	<Box palette="dark" background="body" padding={1.5}>
 		<Template {...args} />
 	</Box>
 );
-DarkControlGroup.args = {
+OnDark.args = {
 	title: 'Choose your interests',
 };
 
-export const BloxControlGroup = Template.bind({});
-BloxControlGroup.args = {
+export const Block = Template.bind({});
+Block.args = {
 	title: 'Choose your interests',
 	block: true,
 };
