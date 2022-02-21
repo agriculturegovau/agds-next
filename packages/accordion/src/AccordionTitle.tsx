@@ -38,9 +38,10 @@ export const AccordionTitle = ({
 				color="action"
 				onClick={onToggle}
 				fontSize="md"
+				lineHeight="heading"
 				id={id}
 				fontWeight="bold"
-				background="bodyAlt"
+				background="shade"
 				padding={1}
 				width="100%"
 				justifyContent="space-between"
@@ -49,7 +50,7 @@ export const AccordionTitle = ({
 				focus
 			>
 				{children}
-				<AnimatedIcon icon="chevronUp" size={1} style={style} />
+				<AnimatedIcon icon="chevronDown" size={1} style={style} />
 			</Flex>
 		</Box>
 	);
