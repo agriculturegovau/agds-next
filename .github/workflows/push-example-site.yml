@@ -7,14 +7,15 @@ on:
   workflow_dispatch:
 
 jobs:
-  push-example-site:
-    name: Pushes example-site to dedicated repository
-    uses: cpina/github-action-push-to-another-repository@main
-    env:
-      API_TOKEN_GITHUB: ${{ secrets.PUSH_EXAMPLE_API_TOKEN_GITHUB }}
-    with:
-      source-directory: 'example-site'
-      destination-github-username: 'steelthreads'
-      destination-repository-name: 'agds-next-example-site'
-      user-email: jordanoverbye@users.noreply.github.com
-      target-branch: main
+  push-to-another-repository:
+    steps:
+      - name: Push directory to another repository
+        uses: cpina/github-action-push-to-another-repository@v1.4.1
+        env:
+          API_TOKEN_GITHUB: ${{ secrets.PUSH_EXAMPLE_API_TOKEN_GITHUB }}
+        with:
+          source-directory: 'example-site'
+          destination-github-username: 'steelthreads'
+          destination-repository-name: 'agds-next-example-site'
+          user-email: jordanoverbye@users.noreply.github.com
+          target-branch: main
