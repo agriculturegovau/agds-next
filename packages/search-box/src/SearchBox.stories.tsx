@@ -34,6 +34,16 @@ LabelVisible.args = {
 	labelVisible: true,
 };
 
+export const ButtonLabel: ComponentStory<typeof SearchBoxButton> = (args) => (
+	<SearchBox>
+		<SearchBoxInput />
+		<SearchBoxButton {...args} />
+	</SearchBox>
+);
+ButtonLabel.args = {
+	children: 'Custom label',
+};
+
 export const ResponsiveButtonIcon: ComponentStory<typeof SearchBoxButton> = (
 	args
 ) => (

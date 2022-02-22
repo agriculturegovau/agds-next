@@ -17,7 +17,7 @@ Use the `SearchBox` component to help users find content or pages through keywor
 
 ### Responsive icon
 
-Use the `iconOnly` prop to configure when the search icon should replace the button label. This allows more space for text to be written in the text input.
+Use the `iconOnly` prop to configure at which breakpoints the search icon should replace the button label. This allows more space for text to be written in the text input.
 
 ```jsx live
 <SearchBox aria-label="Sitewide" onSubmit={console.log}>
