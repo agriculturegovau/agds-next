@@ -6,6 +6,7 @@ import { Box } from '@ag.ds-next/box';
 export default {
 	title: 'navigation/LinkList',
 	component: LinkList,
+	subcomponents: { LinkListContainer, LinkListItem },
 } as ComponentMeta<typeof LinkList>;
 
 const exampleLinks = [
@@ -14,12 +15,21 @@ const exampleLinks = [
 	{ href: '#', label: 'Applications' },
 ];
 
-export const Basic: ComponentStory<typeof LinkList> = (args) => (
-	<Box palette="light" background="body">
+export const OnLight: ComponentStory<typeof LinkList> = (args) => (
+	<Box palette="light" background="body" padding={1.5}>
 		<LinkList {...args} />
 	</Box>
 );
-Basic.args = {
+OnLight.args = {
+	links: exampleLinks,
+};
+
+export const OnDark: ComponentStory<typeof LinkList> = (args) => (
+	<Box palette="dark" background="body" padding={1.5}>
+		<LinkList {...args} />
+	</Box>
+);
+OnDark.args = {
 	links: exampleLinks,
 };
 
@@ -33,31 +43,10 @@ Horizontal.args = {
 	horizontal: true,
 };
 
-export const BasicDark: ComponentStory<typeof LinkList> = (args) => (
-	<Box palette="dark" background="body">
-		<LinkList {...args} />
-	</Box>
+export const Modular: ComponentStory<typeof LinkList> = (args) => (
+	<LinkListContainer {...args}>
+		<LinkListItem href="#one">One</LinkListItem>
+		<LinkListItem href="#two">Two</LinkListItem>
+		<LinkListItem href="#three">Three</LinkListItem>
+	</LinkListContainer>
 );
-BasicDark.args = {
-	links: exampleLinks,
-};
-
-export const InlineDark: ComponentStory<typeof LinkList> = (args) => (
-	<Box palette="dark" background="body">
-		<LinkList {...args} />
-	</Box>
-);
-InlineDark.args = {
-	links: exampleLinks,
-	horizontal: true,
-};
-
-export const Modular: ComponentStory<typeof LinkList> = (args) => {
-	return (
-		<LinkListContainer {...args}>
-			<LinkListItem href="#one">One</LinkListItem>
-			<LinkListItem href="#two">Two</LinkListItem>
-			<LinkListItem href="#three">Three</LinkListItem>
-		</LinkListContainer>
-	);
-};

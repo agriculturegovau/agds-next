@@ -32,7 +32,7 @@ const AccordionBasicExample: Story<AccordionExampleProps> = ({
 	boxBackground,
 	boxPalette,
 }: AccordionExampleProps) => (
-	<Box padding={3} palette={boxPalette} background={boxBackground}>
+	<Box padding={1.5} palette={boxPalette} background={boxBackground}>
 		<Accordion>
 			<AccordionItem title="Accordion test">
 				<AccordionItemContent>
@@ -43,13 +43,13 @@ const AccordionBasicExample: Story<AccordionExampleProps> = ({
 	</Box>
 );
 
-export const BasicOnLight = AccordionBasicExample.bind({});
-BasicOnLight.args = {
+export const OnLight = AccordionBasicExample.bind({});
+OnLight.args = {
 	boxBackground: 'body',
 	boxPalette: 'light',
 };
-export const BasicOnDark = AccordionBasicExample.bind({});
-BasicOnDark.args = {
+export const OnDark = AccordionBasicExample.bind({});
+OnDark.args = {
 	boxBackground: 'body',
 	boxPalette: 'dark',
 };
@@ -58,7 +58,7 @@ const AccordionGroupExample: Story<AccordionExampleProps> = ({
 	boxBackground,
 	boxPalette,
 }: AccordionExampleProps) => (
-	<Box padding={3} palette={boxPalette} background={boxBackground}>
+	<Box padding={1.5} palette={boxPalette} background={boxBackground}>
 		<Accordion>
 			<AccordionItem title="Accordion 1">
 				<AccordionItemContent>
@@ -124,7 +124,7 @@ GroupOnDark.args = {
 export const Controlled = () => {
 	const [isOpen, onToggle] = useToggleState(false, true);
 	return (
-		<Stack gap={1} padding={3} alignItems="flex-start">
+		<Stack gap={1} alignItems="flex-start">
 			<Button onClick={onToggle}>{isOpen ? 'Close' : 'Open'}</Button>
 			<Accordion>
 				<AccordionItem
@@ -175,7 +175,7 @@ export const ControlledGroup = () => {
 	const isAnyOpen = openAccordions.length;
 
 	return (
-		<Stack padding={3} gap={1} alignItems="flex-start">
+		<Stack gap={1} alignItems="flex-start">
 			<Button onClick={isAnyOpen ? closeAll : openAll}>
 				{isAnyOpen ? 'Close All' : 'Open'}
 			</Button>

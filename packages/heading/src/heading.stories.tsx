@@ -2,6 +2,7 @@ import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
 import { Heading, H1, H2, H3, H4, H5, H6 } from './Heading';
+import { Box, Stack } from '@ag.ds-next/box';
 
 export default {
 	title: 'content/Heading',
@@ -16,13 +17,22 @@ export default {
 	},
 } as ComponentMeta<typeof Heading>;
 
-const template: ComponentStory<typeof Heading> = (args) => (
+export const Basic: ComponentStory<typeof Heading> = (args) => (
 	<Heading {...args} />
 );
-
-export const Usage = template.bind({});
-Usage.args = {
+Basic.args = {
 	type: 'h1',
 	as: 'h1',
 	children: 'Heading Example',
 };
+
+export const Sizes = () => (
+	<Stack>
+		<H1>Heading 1</H1>
+		<H2>Heading 2</H2>
+		<H3>Heading 3</H3>
+		<H4>Heading 4</H4>
+		<H5>Heading 5</H5>
+		<H6>Heading 6</H6>
+	</Stack>
+);

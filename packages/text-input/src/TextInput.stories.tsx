@@ -1,6 +1,6 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { Stack } from '@ag.ds-next/box';
+import { Box, Stack } from '@ag.ds-next/box';
 import { TextInput } from './TextInput';
 
 export default {
@@ -8,10 +8,19 @@ export default {
 	component: TextInput,
 } as ComponentMeta<typeof TextInput>;
 
-export const Basic: ComponentStory<typeof TextInput> = (args) => (
+export const OnLight: ComponentStory<typeof TextInput> = (args) => (
 	<TextInput {...args} />
 );
-Basic.args = {
+OnLight.args = {
+	label: 'Example',
+};
+
+export const OnDark: ComponentStory<typeof TextInput> = (args) => (
+	<Box background="body" palette="dark" padding={1.5}>
+		<TextInput {...args} />
+	</Box>
+);
+OnDark.args = {
 	label: 'Example',
 };
 
@@ -50,6 +59,7 @@ Valid.args = {
 	label: 'Email',
 	message: 'The email address you have entered is valid',
 	value: 'hello@example.com',
+	valid: true,
 };
 
 export const Hint: ComponentStory<typeof TextInput> = (args) => (
@@ -89,4 +99,5 @@ export const Password: ComponentStory<typeof TextInput> = (args) => (
 Password.args = {
 	label: 'Password',
 	type: 'password',
+	required: true,
 };

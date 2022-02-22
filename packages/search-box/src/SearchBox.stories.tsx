@@ -8,20 +8,20 @@ export default {
 	component: SearchBox,
 } as ComponentMeta<typeof SearchBox>;
 
-export const Basic: ComponentStory<typeof SearchBox> = (args) => (
+export const OnLight: ComponentStory<typeof SearchBox> = (args) => (
 	<SearchBox {...args} />
 );
-Basic.args = {
+OnLight.args = {
 	label: 'Search',
 	'aria-label': 'Sitewide',
 };
 
-export const Dark: ComponentStory<typeof SearchBox> = (args) => (
-	<Box background="body" dark padding={2}>
+export const OnDark: ComponentStory<typeof SearchBox> = (args) => (
+	<Box background="body" palette="dark" padding={1.5}>
 		<SearchBox {...args} />
 	</Box>
 );
-Basic.args = {
+OnDark.args = {
 	label: 'Search',
 	'aria-label': 'Sitewide',
 };

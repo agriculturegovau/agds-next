@@ -25,7 +25,7 @@ LightBox.args = {
 };
 
 /**
- * The Box with a Light palette applied
+ * The Box with a Dark palette applied
  */
 export const DarkBox = Template.bind({});
 DarkBox.args = {
