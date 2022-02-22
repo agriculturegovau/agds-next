@@ -1,13 +1,13 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
-
 import { Body } from '@ag.ds-next/body';
-import { Box } from '@ag.ds-next/box';
+import { Stack } from '@ag.ds-next/box';
 import { Content } from '@ag.ds-next/content';
-
+import { Columns, Column } from '@ag.ds-next/columns';
 import { Layout } from '../components/Layout';
+import { FormExampleSignIn } from '../components/FormExampleSignIn';
 
-const FormPage: NextPage = () => {
+const SignInPage: NextPage = () => {
 	return (
 		<Layout>
 			<Head>
@@ -18,16 +18,24 @@ const FormPage: NextPage = () => {
 				/>
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
-
 			<Content>
-				<Box>
-					<Body>
-						<h1>Sign in</h1>
-					</Body>
-				</Box>
+				<Columns>
+					<Column columnSpan={{ xs: 12, md: 7 }}>
+						<Stack gap={2}>
+							<Body>
+								<h1>Sign in example</h1>
+								<p>
+									The page heading communicates the main focus of the page. Make
+									your page heading descriptive and keep it succinct.
+								</p>
+							</Body>
+							<FormExampleSignIn />
+						</Stack>
+					</Column>
+				</Columns>
 			</Content>
 		</Layout>
 	);
 };
 
-export default FormPage;
+export default SignInPage;
