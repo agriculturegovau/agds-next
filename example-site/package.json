@@ -29,7 +29,7 @@
 		"@ag.ds-next/heading": "3.0.0",
 		"@ag.ds-next/link-list": "3.0.0",
 		"@ag.ds-next/main-nav": "3.0.0",
-		"@ag.ds-next/searchbox": "1.0.0",
+		"@ag.ds-next/search-box": "1.0.0",
 		"@ag.ds-next/text": "3.0.0",
 		"@ag.ds-next/text-input": "1.0.0",
 		"@ag.ds-next/textarea": "1.0.0",
