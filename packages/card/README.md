@@ -53,7 +53,7 @@ A card with an image. For full width images, add the img tag outside the `CardIn
 For cards that contain a single link, the hit area for that link can be made to wrap the entire card. This pattern may be used on cards that act as a preview for an article or blog post, for example. These cards could contain an image, a title and a brief summary of the article. Avoid wrapping an entire card in an anchor tag as this can be a difficult experience for a screen reader user.
 
 ```jsx live
-<Card shadow clickable>
+<Card shadow clickable as={Link} href="#">
 	<PlaceholderImage />
 	<CardInner>
 		<Body>

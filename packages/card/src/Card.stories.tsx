@@ -67,6 +67,22 @@ export const WithBody: ComponentStory<typeof Card> = (args) => (
 	</Box>
 );
 
+export const Link: ComponentStory<typeof Card> = (args) => (
+	<Box maxWidth={300}>
+		<Card shadow clickable {...args}>
+			<CardInner>
+				<Heading as="h2" type="h3" paddingBottom={1}>
+					Card heading
+				</Heading>
+				<CardLink href="#">
+					Linking out
+					<Icon icon="chevronRight" size={1} />
+				</CardLink>
+			</CardInner>
+		</Card>
+	</Box>
+);
+
 export const CardList: ComponentStory<typeof Card> = (args) => (
 	<Box palette="light" background="body">
 		<Columns>
