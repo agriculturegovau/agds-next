@@ -33,7 +33,7 @@ export const useSideNavIds = (initialId?: string | undefined) => {
 	};
 };
 
-const normalStyles = {
+const defaultStyles = {
 	background: { xs: 'bodyAlt', md: 'body' },
 	hover: { xs: 'shadeAlt', md: 'shade' },
 } as const;
@@ -46,7 +46,7 @@ const altStyles = {
 export const variantMap = {
 	light: {
 		palette: 'light',
-		...normalStyles,
+		...defaultStyles,
 	},
 	lightAlt: {
 		palette: 'light',
@@ -54,7 +54,7 @@ export const variantMap = {
 	},
 	dark: {
 		palette: 'dark',
-		...normalStyles,
+		...defaultStyles,
 	},
 	darkAlt: {
 		palette: 'dark',
