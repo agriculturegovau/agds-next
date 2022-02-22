@@ -35,7 +35,7 @@ export const ControlGroup = ({
 			) : null}
 			<Stack gap={0.5} css={{ marginTop: label ? mapSpacing(0.5) : undefined }}>
 				{hint ? <FieldHint>{hint}</FieldHint> : null}
-				{message ? (
+				{message && invalid ? (
 					<FieldMessage invalid={invalid}>{message}</FieldMessage>
 				) : null}
 				<Flex

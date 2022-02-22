@@ -43,7 +43,7 @@ export const Field = ({
 				</Text>
 			</FieldLabel>
 			{hint ? <FieldHint id={hintId}>{hint}</FieldHint> : null}
-			{message ? (
+			{message && (invalid || valid) ? (
 				<FieldMessage id={messageId} invalid={invalid} valid={valid}>
 					{message}
 				</FieldMessage>
