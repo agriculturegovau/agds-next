@@ -49,7 +49,7 @@ export const SideNavLink = ({
 
 						paddingTop: mapSpacing(1),
 						paddingBottom: mapSpacing(1),
-						paddingLeft: mapSpacing(depth),
+						paddingLeft: `${depth}rem`,
 						paddingRight: mapSpacing(1),
 						display: 'block',
 
