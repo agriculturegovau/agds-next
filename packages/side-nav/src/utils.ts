@@ -18,13 +18,11 @@ export function findBestMatch(items: { href: string }[], activePath?: string) {
 }
 
 export const localPaletteVars = {
-	linkHoverBg: '--sideNav-linkHoverBg',
-	linkActiveBg: '--sideNav-linkActiveBg',
+	hover: '--sideNav-hover',
 };
 
 export const localPalette = {
-	linkHoverBg: `var(${localPaletteVars.linkHoverBg})`,
-	linkActiveBg: `var(${localPaletteVars.linkActiveBg})`,
+	hover: `var(${localPaletteVars.hover})`,
 };
 
 export const useSideNavIds = (initialId?: string | undefined) => {
@@ -34,3 +32,34 @@ export const useSideNavIds = (initialId?: string | undefined) => {
 		bodyId: `${id}-default`,
 	};
 };
+
+const defaultStyles = {
+	background: { xs: 'bodyAlt', md: 'body' },
+	hover: { xs: 'shadeAlt', md: 'shade' },
+} as const;
+
+const altStyles = {
+	background: { xs: 'body', md: 'bodyAlt' },
+	hover: { xs: 'shade', md: 'shadeAlt' },
+} as const;
+
+export const variantMap = {
+	light: {
+		palette: 'light',
+		...defaultStyles,
+	},
+	lightAlt: {
+		palette: 'light',
+		...altStyles,
+	},
+	dark: {
+		palette: 'dark',
+		...defaultStyles,
+	},
+	darkAlt: {
+		palette: 'dark',
+		...altStyles,
+	},
+} as const;
+
+export type SideNavVariant = keyof typeof variantMap;
