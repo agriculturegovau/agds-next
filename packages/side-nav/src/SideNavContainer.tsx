@@ -12,11 +12,16 @@ import {
 } from '@ag.ds-next/core';
 
 import { SideNavCollapseButton } from './SideNavCollapseButton';
-import { localPaletteVars, useSideNavIds, variantMap } from './utils';
+import {
+	localPaletteVars,
+	useSideNavIds,
+	variantMap,
+	SideNavVariant,
+} from './utils';
 
 export type SideNavContainerProps = PropsWithChildren<{
 	collapseTitle?: string;
-	variant: keyof typeof variantMap;
+	variant: SideNavVariant;
 }>;
 
 export const SideNavContainer = ({

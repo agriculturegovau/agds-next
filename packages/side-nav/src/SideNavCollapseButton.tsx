@@ -3,7 +3,7 @@ import { useSpring, animated } from 'react-spring';
 import { Flex } from '@ag.ds-next/box';
 import { Icon } from '@ag.ds-next/icon';
 import { tokens, usePrefersReducedMotion } from '@ag.ds-next/core';
-import { variantMap } from './utils';
+import { variantMap, SideNavVariant } from './utils';
 
 const AnimatedIcon = animated(Icon);
 
@@ -12,7 +12,7 @@ type SideNavCollapseButtonProps = PropsWithChildren<{
 	id: string;
 	isOpen: boolean;
 	onClick: () => void;
-	variant: keyof typeof variantMap;
+	variant: SideNavVariant;
 }>;
 
 export const SideNavCollapseButton = ({

@@ -65,3 +65,5 @@ export const variantMap = {
 		...altStyles,
 	},
 } as const;
+
+export type SideNavVariant = keyof typeof variantMap;
