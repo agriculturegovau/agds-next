@@ -286,7 +286,7 @@ items={[
 	{
 		group: 'Searchbox',
 		name: 'Basic',
-		code: `<SearchBox>
+		code: `<SearchBox aria-label="Sitewide" onSubmit={console.log}>
     <SearchBoxInput label="Search this website" />
     <SearchBoxButton>Search</SearchBoxButton>
   </SearchBox>`,
