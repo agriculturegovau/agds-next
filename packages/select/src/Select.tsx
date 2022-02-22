@@ -9,7 +9,7 @@ import {
 	packs,
 	boxPalette,
 	mapSpacing,
-	themeVars,
+	globalPalette,
 	tokens,
 } from '@ag.ds-next/core';
 import { Icon } from '@ag.ds-next/icon';
@@ -34,8 +34,8 @@ export type SelectProps = DetailedHTMLProps<
 	required?: boolean;
 	hint?: string;
 	message?: string;
-	invalid?: true;
-	valid?: true;
+	invalid?: boolean;
+	valid?: boolean;
 	block?: boolean;
 	maxWidth?: FieldMaxWidth;
 	placeholder?: string;
@@ -174,12 +174,12 @@ const selectStyles = ({
 		paddingLeft: mapSpacing(1),
 		paddingRight: mapSpacing(3),
 		margin: 0,
-		backgroundColor: `var(${themeVars.lightBackgroundBody})`,
+		backgroundColor: globalPalette.lightBackgroundBody,
 		borderWidth: 3,
 		borderStyle: 'solid',
 		borderColor: boxPalette.borderInput,
 		borderRadius: tokens.borderRadius,
-		color: `var(${themeVars.lightForegroundText})`,
+		color: globalPalette.lightForegroundText,
 		width: '100%',
 		fontFamily: tokens.font.body,
 		...packs.input.md,
@@ -192,13 +192,13 @@ const selectStyles = ({
 
 		...(invalid
 			? {
-					backgroundColor: `var(${themeVars.errorMuted})`,
-					borderColor: `var(${themeVars.error})`,
+					backgroundColor: globalPalette.errorMuted,
+					borderColor: globalPalette.error,
 			  }
 			: valid
 			? {
-					backgroundColor: `var(${themeVars.successMuted})`,
-					borderColor: `var(${themeVars.success})`,
+					backgroundColor: globalPalette.successMuted,
+					borderColor: globalPalette.success,
 			  }
 			: undefined),
 

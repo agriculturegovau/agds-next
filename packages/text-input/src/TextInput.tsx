@@ -8,7 +8,7 @@ import {
 	packs,
 	boxPalette,
 	mapSpacing,
-	themeVars,
+	globalPalette,
 	tokens,
 } from '@ag.ds-next/core';
 
@@ -20,8 +20,8 @@ export type InputProps = DetailedHTMLProps<
 	required?: boolean;
 	hint?: string;
 	message?: string;
-	invalid?: true;
-	valid?: true;
+	invalid?: boolean;
+	valid?: boolean;
 	block?: boolean;
 	maxWidth?: FieldMaxWidth;
 };
@@ -84,12 +84,12 @@ export const textInputStyles = ({
 		paddingLeft: mapSpacing(1),
 		paddingRight: mapSpacing(1),
 		margin: 0,
-		backgroundColor: `var(${themeVars.lightBackgroundBody})`,
+		backgroundColor: globalPalette.lightBackgroundBody,
 		borderWidth: 3,
 		borderStyle: 'solid',
 		borderColor: boxPalette.borderInput,
 		borderRadius: tokens.borderRadius,
-		color: `var(${themeVars.lightForegroundText})`,
+		color: globalPalette.lightForegroundText,
 		maxWidth: maxWidth ? fieldMaxWidth[maxWidth] : '12.8125rem',
 		fontFamily: tokens.font.body,
 		...packs.input.md,
@@ -102,13 +102,13 @@ export const textInputStyles = ({
 
 		...(invalid
 			? {
-					backgroundColor: `var(${themeVars.errorMuted})`,
-					borderColor: `var(${themeVars.error})`,
+					backgroundColor: globalPalette.errorMuted,
+					borderColor: globalPalette.error,
 			  }
 			: valid
 			? {
-					backgroundColor: `var(${themeVars.successMuted})`,
-					borderColor: `var(${themeVars.success})`,
+					backgroundColor: globalPalette.successMuted,
+					borderColor: globalPalette.success,
 			  }
 			: undefined),
 
