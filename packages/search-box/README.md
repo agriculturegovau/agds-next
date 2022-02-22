@@ -10,7 +10,7 @@ Use the `SearchBox` component to help users find content or pages through keywor
 
 ```jsx live
 <SearchBox aria-label="Sitewide" onSubmit={console.log}>
-	<SearchBoxInput />
+	<SearchBoxInput label="Search this website" />
 	<SearchBoxButton>Search</SearchBoxButton>
 </SearchBox>
 ```
@@ -21,7 +21,7 @@ Use the `iconOnly` prop to configure at which breakpoints the search icon should
 
 ```jsx live
 <SearchBox aria-label="Sitewide" onSubmit={console.log}>
-	<SearchBoxInput />
+	<SearchBoxInput label="Search this website" />
 	<SearchBoxButton iconOnly={{ xs: true, md: false }}>Search</SearchBoxButton>
 </SearchBox>
 ```

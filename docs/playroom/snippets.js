@@ -287,7 +287,7 @@ items={[
 		group: 'Searchbox',
 		name: 'Basic',
 		code: `<SearchBox>
-    <SearchBoxInput  />
+    <SearchBoxInput label="Search this website" />
     <SearchBoxButton>Search</SearchBoxButton>
   </SearchBox>`,
 	},
