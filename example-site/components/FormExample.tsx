@@ -21,11 +21,7 @@ export const FormExample = () => {
 		register,
 		handleSubmit,
 		formState: { errors },
-	} = useForm<ExampleFormInputs>({
-		defaultValues: {
-			feedbackType: 'compliment',
-		},
-	});
+	} = useForm<ExampleFormInputs>();
 
 	const onSubmit: SubmitHandler<ExampleFormInputs> = (data) => {
 		console.log(data);
@@ -35,8 +31,8 @@ export const FormExample = () => {
 		<Stack as="form" onSubmit={handleSubmit(onSubmit)} gap={2}>
 			<TextInput
 				label="Full name"
-				{...register('name', { required: 'Full name must not be empty' })}
-				invalid={errors.name?.message ? true : undefined}
+				{...register('name', { required: 'Full name is required' })}
+				invalid={Boolean(errors.name?.message)}
 				message={errors.name?.message}
 				maxWidth="xl"
 			/>
@@ -44,19 +40,37 @@ export const FormExample = () => {
 				type="email"
 				label="Email"
 				hint="We will only use this to respond to your request"
-				{...register('email', { required: 'Email must not be empty' })}
-				invalid={errors.email?.message ? true : undefined}
+				{...register('email', { required: 'Email is required' })}
+				invalid={Boolean(errors.email?.message)}
 				message={errors.email?.message}
 				maxWidth="xl"
 			/>
-			<ControlGroup title="Type of feedback" block>
-				<Radio {...register('feedbackType')} value="compliment">
+			<ControlGroup
+				label="Type of feedback"
+				invalid={Boolean(errors.feedbackType?.message)}
+				message={errors.feedbackType?.message}
+				required
+				block
+			>
+				<Radio
+					{...register('feedbackType', {
+						required: 'Type of feedback is required',
+					})}
+				>
 					Compliment
 				</Radio>
-				<Radio {...register('feedbackType')} value="suggestion">
+				<Radio
+					{...register('feedbackType', {
+						required: 'Type of feedback is required',
+					})}
+				>
 					Suggestion
 				</Radio>
-				<Radio {...register('feedbackType')} value="complaint">
+				<Radio
+					{...register('feedbackType', {
+						required: 'Type of feedback is required',
+					})}
+				>
 					Complaint
 				</Radio>
 			</ControlGroup>
@@ -64,24 +78,22 @@ export const FormExample = () => {
 				label="How can we help you?"
 				hint="Add some detail about your complaint, suggestion or compliment. Minimum 10 characters"
 				{...register('message', {
-					required: 'Message must not be empty',
+					required: 'Message is required',
 					minLength: 10,
 				})}
-				invalid={errors.message?.message ? true : undefined}
+				invalid={Boolean(errors.message?.message)}
 				message={errors.message?.message}
 				block
 			/>
-			<div>
-				<Checkbox
-					{...register('agreeTcs', {
-						required: 'You must agree to our terms and conditions',
-					})}
-					invalid={errors.agreeTcs?.message ? true : undefined}
-				>
-					By checking this box you agree to the{' '}
-					<TextLink href="#">terms and conditions</TextLink>
-				</Checkbox>
-			</div>
+			<Checkbox
+				{...register('agreeTcs', {
+					required: 'You must agree to our terms and conditions',
+				})}
+				invalid={Boolean(errors.agreeTcs?.message)}
+			>
+				By checking this box you agree to the{' '}
+				<TextLink href="#">terms and conditions</TextLink>
+			</Checkbox>
 			<div>
 				<Button type="submit">Send feedback</Button>
 			</div>

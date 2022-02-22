@@ -12,8 +12,8 @@ export type FieldProps = {
 	required: boolean;
 	hint: string | undefined;
 	message: string | undefined;
-	invalid?: true;
-	valid?: true;
+	invalid?: boolean;
+	valid?: boolean;
 };
 
 export const Field = ({
@@ -43,7 +43,7 @@ export const Field = ({
 				</Text>
 			</FieldLabel>
 			{hint ? <FieldHint id={hintId}>{hint}</FieldHint> : null}
-			{message ? (
+			{message && (invalid || valid) ? (
 				<FieldMessage id={messageId} invalid={invalid} valid={valid}>
 					{message}
 				</FieldMessage>
@@ -80,7 +80,7 @@ export const useFieldA11yProps = ({
 	messageId: string;
 	hint?: string;
 	hintId: string;
-	invalid?: true;
+	invalid?: boolean;
 }) => ({
 	'aria-invalid': Boolean(invalid),
 	'aria-describedby': [message ? messageId : null, hint ? hintId : null]

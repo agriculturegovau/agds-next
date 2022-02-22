@@ -5,18 +5,14 @@ import { tokens } from './tokens';
 
 const control = {
 	sm: {
-		fontSize: `${tokens.fontSize.sm}rem`,
-		lineHeight: tokens.lineHeight.nospace,
 		width: '1.75rem', // 28 px
 		height: '1.75rem', // 28 px
 		borderWidth: 2,
 	},
 	md: {
-		fontSize: `${tokens.fontSize.sm}rem`,
-		lineHeight: tokens.lineHeight.nospace,
 		width: '2.375rem', // 38 px
 		height: '2.375rem', // 38 px
-		borderWidth: 2,
+		borderWidth: 3,
 	},
 };
 

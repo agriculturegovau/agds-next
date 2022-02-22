@@ -26,7 +26,7 @@ Radio inputs allow users to select one item at a time.
 </ControlGroup>
 ```
 
-### Checkbox Block
+### Checkbox block
 
 Inline checkbox options can sometimes be difficult to scan. Users may find it challenging to determine with which label the checkbox option corresponds: the one before the checkbox or the one after. Vertical positioning of checkbox, with one choice per line, eliminates this potential cause for confusion.
 
@@ -38,7 +38,7 @@ Inline checkbox options can sometimes be difficult to scan. Users may find it ch
 </ControlGroup>
 ```
 
-### Radio Block
+### Radio block
 
 Vertically stacked radio buttons.
 

@@ -14,8 +14,8 @@ export type TextareaProps = DetailedHTMLProps<
 	required?: boolean;
 	hint?: string;
 	message?: string;
-	invalid?: true;
-	valid?: true;
+	invalid?: boolean;
+	valid?: boolean;
 	block?: true;
 	maxWidth?: FieldMaxWidth;
 };

@@ -9,9 +9,9 @@ export const FieldMessage = ({
 	valid,
 }: {
 	children: string;
-	id: string;
-	invalid?: true;
-	valid?: true;
+	id?: string;
+	invalid?: boolean;
+	valid?: boolean;
 }) => (
 	<Flex gap={0.5} alignItems="center">
 		{invalid ? <Icon color="error" size={1.5} icon="alert" /> : null}
@@ -21,7 +21,13 @@ export const FieldMessage = ({
 	</Flex>
 );
 
-const getColor = ({ invalid, valid }: { invalid?: true; valid?: true }) => {
+const getColor = ({
+	invalid,
+	valid,
+}: {
+	invalid?: boolean;
+	valid?: boolean;
+}) => {
 	if (invalid) return 'error';
 	if (valid) return 'success';
 };
