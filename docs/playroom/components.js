@@ -40,3 +40,8 @@ export {
 export { Icon } from '@ag.ds-next/icon';
 export { ProgressIndicator } from '@ag.ds-next/progress-indicator';
 export { ControlGroup, Checkbox, Radio } from '@ag.ds-next/control-input';
+export {
+	SearchBox,
+	SearchBoxInput,
+	SearchBoxButton,
+} from '@ag.ds-next/search-box';

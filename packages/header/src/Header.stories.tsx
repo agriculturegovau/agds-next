@@ -6,7 +6,11 @@ import {
 	ReactFramework,
 } from '@storybook/react';
 import { Logo as AgLogo } from '@ag.ds-next/ag-branding';
-import { SearchBox } from '@ag.ds-next/search-box';
+import {
+	SearchBox,
+	SearchBoxInput,
+	SearchBoxButton,
+} from '@ag.ds-next/search-box';
 
 import { Header, HeaderProps } from './Header';
 import { HeaderContainer } from './HeaderContainer';
@@ -98,7 +102,12 @@ export const Search = Template.bind({});
 Search.args = {
 	...defaultArgs,
 	rightContent: (
-		<SearchBox label="Search" aria-label="Sitewide" buttonReponsive />
+		<SearchBox aria-label="Sitewide" onSubmit={console.log}>
+			<SearchBoxInput label="Search this website" />
+			<SearchBoxButton iconOnly={{ xs: true, md: false }}>
+				Search
+			</SearchBoxButton>
+		</SearchBox>
 	),
 };
 

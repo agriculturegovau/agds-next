@@ -1,17 +1,17 @@
 import { Text } from '@ag.ds-next/text';
 import { visuallyHiddenStyles } from '@ag.ds-next/a11y';
 
-export type SearchLabelprops = {
+export type SearchBoxLabelprops = {
 	children: string;
 	htmlFor: string;
 	visible: boolean;
 };
 
-export const SearchLabel = ({
+export const SearchBoxLabel = ({
 	children,
 	htmlFor,
 	visible,
-}: SearchLabelprops) => {
+}: SearchBoxLabelprops) => {
 	return (
 		<Text
 			as="label"

@@ -1,10 +1,15 @@
+import { useRouter } from 'next/router';
+import { useForm, SubmitHandler } from 'react-hook-form';
+
 import { Logo } from '@ag.ds-next/ag-branding';
 import { Stack } from '@ag.ds-next/box';
 import { Header } from '@ag.ds-next/header';
 import { MainNav } from '@ag.ds-next/main-nav';
-import { SearchBox } from '@ag.ds-next/search-box';
-
-import { useRouter } from 'next/router';
+import {
+	SearchBoxForm,
+	SearchBoxInput,
+	SearchBoxButton,
+} from '@ag.ds-next/search-box';
 
 const NAV_LINKS = [
 	{ label: 'Home', href: '/' },
@@ -25,9 +30,7 @@ export const SiteHeader = () => {
 				logo={<Logo />}
 				heading="Export Service"
 				subline="Supporting Australian agricultural exports"
-				rightContent={
-					<SearchBox label="Search" aria-label="Sitewide" buttonIconOnly />
-				}
+				rightContent={<SiteHeaderSearch />}
 			/>
 			<MainNav
 				variant="agriculture"
@@ -36,5 +39,28 @@ export const SiteHeader = () => {
 				activePath={router.asPath}
 			/>
 		</Stack>
+	);
+};
+
+type SearchFormInput = {
+	search: string;
+};
+
+const SiteHeaderSearch = () => {
+	const { register, handleSubmit } = useForm<SearchFormInput>();
+
+	const onSubmit: SubmitHandler<SearchFormInput> = ({ search }) => {
+		console.log(search);
+	};
+
+	return (
+		<SearchBoxForm aria-label="Sitewide" onSubmit={handleSubmit(onSubmit)}>
+			<SearchBoxInput {...register('search')} />
+			<SearchBoxButton
+				iconOnly={{ xs: true, sm: false, md: true, lg: false, xl: false }}
+			>
+				Search
+			</SearchBoxButton>
+		</SearchBoxForm>
 	);
 };

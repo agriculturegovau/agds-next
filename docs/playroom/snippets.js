@@ -283,6 +283,14 @@ items={[
     <Radio checked={true}>Laptop</Radio>
   </ControlGroup>`,
 	},
+	{
+		group: 'Searchbox',
+		name: 'Basic',
+		code: `<SearchBox>
+    <SearchBoxInput  />
+    <SearchBoxButton>Search</SearchBoxButton>
+  </SearchBox>`,
+	},
 ];
 
 export default snippits;
