@@ -1,11 +1,6 @@
 import { ReactNode } from 'react';
 import { Box } from '@ag.ds-next/box';
-import {
-	useLinkComponent,
-	mapSpacing,
-	mapResponsiveProp,
-	mq,
-} from '@ag.ds-next/core';
+import { useLinkComponent, mapSpacing } from '@ag.ds-next/core';
 import { boxPalette, fontGrid, packs } from '@ag.ds-next/core';
 import { VisuallyHidden } from '@ag.ds-next/a11y';
 
@@ -46,7 +41,7 @@ export const SideNavLink = ({
 		>
 			<Box
 				fontWeight={active ? 'bold' : 'normal'}
-				css={mq({
+				css={{
 					' a': {
 						...fontGrid('xs', 'default'),
 						color: boxPalette[active ? 'foregroundText' : 'foregroundMuted'],
@@ -82,7 +77,7 @@ export const SideNavLink = ({
 							},
 						}),
 					},
-				})}
+				}}
 			>
 				<Link href={href}>
 					{label}
