@@ -18,15 +18,11 @@ export function findBestMatch(items: { href: string }[], activePath?: string) {
 }
 
 export const localPaletteVars = {
-	background: '--sideNav-background',
-	linkHoverBg: '--sideNav-linkHoverBg',
-	linkActiveBg: '--sideNav-linkActiveBg',
+	hover: '--sideNav-hover',
 };
 
 export const localPalette = {
-	background: `var(${localPaletteVars.background})`,
-	linkHoverBg: `var(${localPaletteVars.linkHoverBg})`,
-	linkActiveBg: `var(${localPaletteVars.linkActiveBg})`,
+	hover: `var(${localPaletteVars.hover})`,
 };
 
 export const useSideNavIds = (initialId?: string | undefined) => {

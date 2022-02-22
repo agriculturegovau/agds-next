@@ -57,7 +57,7 @@ export const SideNavLink = ({
 							color: boxPalette.foregroundText,
 							textDecoration: 'underline',
 							textDecorationSkipInk: 'auto',
-							backgroundColor: localPalette.linkHoverBg,
+							backgroundColor: localPalette.hover,
 						},
 
 						'&:focus': packs.outline,

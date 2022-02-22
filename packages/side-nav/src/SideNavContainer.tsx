@@ -44,18 +44,7 @@ export const SideNavContainer = ({
 	});
 
 	return (
-		<Box
-			rounded
-			background={background}
-			palette={palette}
-			css={mq({
-				[localPaletteVars.linkHoverBg]: mapResponsiveProp(
-					hover,
-					(t) => backgroundColorMap[t]
-				),
-				[localPaletteVars.linkActiveBg]: backgroundColorMap[background],
-			})}
-		>
+		<Box rounded background={background} palette={palette}>
 			<SideNavCollapseButton
 				isOpen={isOpen}
 				onClick={onToggle}
@@ -87,6 +76,12 @@ export const SideNavContainer = ({
 					paddingRight={{ xs: 1, md: 0 }}
 					fontSize="sm"
 					lineHeight="default"
+					css={mq({
+						[localPaletteVars.hover]: mapResponsiveProp(
+							hover,
+							(t) => backgroundColorMap[t]
+						),
+					})}
 					ref={ref}
 					{...props}
 				>
