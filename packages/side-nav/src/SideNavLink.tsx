@@ -54,10 +54,7 @@ export const SideNavLink = ({
 
 						paddingTop: mapSpacing(1),
 						paddingBottom: mapSpacing(1),
-						paddingLeft: mapResponsiveProp({
-							xs: mapSpacing(depth - 1),
-							md: mapSpacing(depth),
-						}),
+						paddingLeft: mapSpacing(depth),
 						paddingRight: mapSpacing(1),
 						display: 'block',
 
