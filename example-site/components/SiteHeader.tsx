@@ -2,6 +2,7 @@ import { Logo } from '@ag.ds-next/ag-branding';
 import { Stack } from '@ag.ds-next/box';
 import { Header } from '@ag.ds-next/header';
 import { MainNav } from '@ag.ds-next/main-nav';
+import { SearchBox } from '@ag.ds-next/search-box';
 
 import { useRouter } from 'next/router';
 
@@ -24,6 +25,9 @@ export const SiteHeader = () => {
 				logo={<Logo />}
 				heading="Export Service"
 				subline="Supporting Australian agricultural exports"
+				rightContent={
+					<SearchBox label="Search" aria-label="Sitewide" buttonIconOnly />
+				}
 			/>
 			<MainNav
 				variant="agriculture"

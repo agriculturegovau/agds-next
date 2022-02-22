@@ -35,6 +35,7 @@ export const FormExample = () => {
 				invalid={Boolean(errors.name?.message)}
 				message={errors.name?.message}
 				maxWidth="xl"
+				required
 			/>
 			<TextInput
 				type="email"
@@ -44,6 +45,7 @@ export const FormExample = () => {
 				invalid={Boolean(errors.email?.message)}
 				message={errors.email?.message}
 				maxWidth="xl"
+				required
 			/>
 			<ControlGroup
 				label="Type of feedback"
@@ -84,12 +86,14 @@ export const FormExample = () => {
 				invalid={Boolean(errors.message?.message)}
 				message={errors.message?.message}
 				block
+				required
 			/>
 			<Checkbox
 				{...register('agreeTcs', {
 					required: 'You must agree to our terms and conditions',
 				})}
 				invalid={Boolean(errors.agreeTcs?.message)}
+				required
 			>
 				By checking this box you agree to the{' '}
 				<TextLink href="#">terms and conditions</TextLink>
