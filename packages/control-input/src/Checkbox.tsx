@@ -15,8 +15,8 @@ export type CheckboxProps = PropsWithRef<
 		DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>,
 		'size'
 	> & {
-		invalid?: true;
-		valid?: true;
+		invalid?: boolean;
+		valid?: boolean;
 		size?: ControlSize;
 	}
 >;

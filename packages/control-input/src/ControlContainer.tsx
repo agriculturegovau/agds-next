@@ -1,12 +1,12 @@
 import { ReactNode } from 'react';
 import { Flex } from '@ag.ds-next/box';
-import { themeVars } from '@ag.ds-next/core';
+import { globalPalette, themeVars } from '@ag.ds-next/core';
 
 export type ControlContainerProps = {
 	children: ReactNode;
 	disabled?: boolean;
-	invalid?: true;
-	valid?: true;
+	invalid?: boolean;
+	valid?: boolean;
 };
 
 export const ControlContainer = ({
@@ -19,18 +19,14 @@ export const ControlContainer = ({
 		as="label"
 		alignItems="center"
 		color="text"
-		gap={0.75}
+		gap={0.5}
 		inline
 		css={{
 			cursor: disabled ? 'not-allowed' : 'pointer',
 			...(invalid
-				? {
-						backgroundColor: `var(${themeVars.errorMuted})`,
-				  }
+				? { backgroundColor: globalPalette.errorMuted }
 				: valid
-				? {
-						backgroundColor: `var(${themeVars.successMuted})`,
-				  }
+				? { backgroundColor: globalPalette.successMuted }
 				: undefined),
 		}}
 	>

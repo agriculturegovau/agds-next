@@ -37,7 +37,7 @@ export const OnLight: ComponentStory<typeof ControlGroup> = (args) => (
 	<Template {...args} />
 );
 OnLight.args = {
-	title: 'Choose your interests',
+	label: 'Choose your interests',
 };
 
 export const OnDark: ComponentStory<typeof ControlGroup> = (args) => (
@@ -46,11 +46,34 @@ export const OnDark: ComponentStory<typeof ControlGroup> = (args) => (
 	</Box>
 );
 OnDark.args = {
-	title: 'Choose your interests',
+	label: 'Choose your interests',
 };
 
 export const Block = Template.bind({});
 Block.args = {
-	title: 'Choose your interests',
+	label: 'Choose your interests',
 	block: true,
+};
+
+export const Required = Template.bind({});
+Required.args = {
+	label: 'Choose your interests',
+	block: true,
+	required: true,
+};
+
+export const Hint = Template.bind({});
+Hint.args = {
+	label: 'Choose your interests',
+	hint: 'This is a hint',
+	block: true,
+};
+
+export const Invalid = Template.bind({});
+Invalid.args = {
+	label: 'Choose your interests',
+	message: 'Please select an interest',
+	required: true,
+	block: true,
+	invalid: true,
 };
