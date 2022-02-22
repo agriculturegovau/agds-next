@@ -11,7 +11,6 @@ export type NavListProps = {
 
 export function NavList({ links, activePath }: NavListProps) {
 	const Link = useLinkComponent();
-	const bestMatch = findBestMatch(links, activePath);
 	return (
 		<Flex
 			as="ul"
@@ -26,7 +25,7 @@ export function NavList({ links, activePath }: NavListProps) {
 			}}
 		>
 			{links.map(({ href, label, ...props }, index) => (
-				<NavItem key={index} active={href === bestMatch}>
+				<NavItem key={index} active={href === activePath}>
 					<Link href={href} {...props}>
 						{label}
 					</Link>
@@ -34,21 +33,4 @@ export function NavList({ links, activePath }: NavListProps) {
 			))}
 		</Flex>
 	);
-}
-
-function findBestMatch(links: { href: string }[], activePath?: string) {
-	if (!activePath) return '';
-	let bestMatch = '';
-
-	for (const link of links) {
-		if (link.href === activePath) return link.href;
-		if (
-			activePath?.startsWith(link.href) &&
-			link.href.length > bestMatch.length
-		) {
-			bestMatch = link.href;
-		}
-	}
-
-	return bestMatch;
 }
