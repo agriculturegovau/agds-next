@@ -3,6 +3,8 @@ import type { PropsWithChildren } from 'react';
 import { useSpring, animated } from 'react-spring';
 import { Box, backgroundColorMap } from '@ag.ds-next/box';
 import {
+	mapResponsiveProp,
+	mq,
 	tokens,
 	useElementSize,
 	usePrefersReducedMotion,
@@ -10,30 +12,7 @@ import {
 } from '@ag.ds-next/core';
 
 import { SideNavCollapseButton } from './SideNavCollapseButton';
-import { localPaletteVars, useSideNavIds } from './utils';
-
-const variantMap = {
-	light: {
-		palette: 'light',
-		background: 'body',
-		hover: 'shade',
-	},
-	lightAlt: {
-		palette: 'light',
-		background: 'bodyAlt',
-		hover: 'shadeAlt',
-	},
-	dark: {
-		palette: 'dark',
-		background: 'body',
-		hover: 'shade',
-	},
-	darkAlt: {
-		palette: 'dark',
-		background: 'bodyAlt',
-		hover: 'shadeAlt',
-	},
-} as const;
+import { localPaletteVars, useSideNavIds, variantMap } from './utils';
 
 export type SideNavContainerProps = PropsWithChildren<{
 	collapseTitle?: string;
@@ -60,11 +39,23 @@ export const SideNavContainer = ({
 	});
 
 	return (
-		<Box rounded background={{ xs: 'shade', md: background }} palette={palette}>
+		<Box
+			rounded
+			background={background}
+			palette={palette}
+			css={mq({
+				[localPaletteVars.linkHoverBg]: mapResponsiveProp(
+					hover,
+					(t) => backgroundColorMap[t]
+				),
+				[localPaletteVars.linkActiveBg]: backgroundColorMap[background],
+			})}
+		>
 			<SideNavCollapseButton
 				isOpen={isOpen}
 				onClick={onToggle}
 				ariaControls={bodyId}
+				variant={variant}
 				id={titleId}
 			>
 				{collapseTitle}
@@ -91,10 +82,6 @@ export const SideNavContainer = ({
 					paddingRight={{ xs: 1, md: 0 }}
 					fontSize="sm"
 					lineHeight="default"
-					css={{
-						[localPaletteVars.linkHoverBg]: backgroundColorMap[hover],
-						[localPaletteVars.linkActiveBg]: backgroundColorMap[background],
-					}}
 					ref={ref}
 					{...props}
 				>

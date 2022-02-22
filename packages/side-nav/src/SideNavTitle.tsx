@@ -3,6 +3,8 @@ import { Box } from '@ag.ds-next/box';
 import { boxPalette, useLinkComponent } from '@ag.ds-next/core';
 import { VisuallyHidden } from '@ag.ds-next/a11y';
 
+import { localPalette } from './utils';
+
 export const SideNavTitle = ({
 	isCurrentPage,
 	href,
@@ -31,7 +33,7 @@ export const SideNavTitle = ({
 				textDecoration: 'none',
 
 				'&:hover': {
-					backgroundColor: boxPalette.backgroundShade,
+					backgroundColor: localPalette.linkHoverBg,
 					textDecoration: 'underline',
 				},
 			}}
