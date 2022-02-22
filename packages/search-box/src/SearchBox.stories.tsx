@@ -30,7 +30,7 @@ export const LabelVisible: ComponentStory<typeof SearchBoxInput> = (args) => (
 	</SearchBox>
 );
 LabelVisible.args = {
-	label: 'Visible label',
+	label: 'Search this website',
 	labelVisible: true,
 };
 
