@@ -31,7 +31,7 @@ export const ProgressIndicatorItem = ({
 				fontWeight={active ? 'bold' : 'normal'}
 				css={{
 					borderLeftWidth: 3,
-					borderLeftStyle: 3,
+					borderLeftStyle: 'solid',
 					borderLeftColor: active ? boxPalette.foregroundAction : 'transparent',
 					textDecoration: 'none',
 					'&:hover': {
