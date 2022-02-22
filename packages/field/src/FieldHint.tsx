@@ -5,7 +5,7 @@ export const FieldHint = ({
 	id,
 }: {
 	children: string;
-	id: string;
+	id?: string;
 }) => (
 	<Text display="block" color="muted" id={id}>
 		{children}
