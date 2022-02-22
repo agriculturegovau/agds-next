@@ -19,19 +19,7 @@ export const ProgressIndicatorItem = ({
 }: ProgressIndicatorItemProps) => {
 	const active = status === 'doing';
 	return (
-		<li css={{ position: 'relative' }}>
-			{active ? (
-				<div
-					style={{
-						position: 'absolute',
-						top: 0,
-						left: 0,
-						bottom: 0,
-						width: 3,
-						backgroundColor: boxPalette.foregroundAction,
-					}}
-				/>
-			) : null}
+		<li>
 			<Flex
 				as={TextLink}
 				href={href}
@@ -42,7 +30,9 @@ export const ProgressIndicatorItem = ({
 				color="text"
 				fontWeight={active ? 'bold' : 'normal'}
 				css={{
-					position: 'relative',
+					borderLeftWidth: 3,
+					borderLeftStyle: 3,
+					borderLeftColor: active ? boxPalette.foregroundAction : 'transparent',
 					textDecoration: 'none',
 					'&:hover': {
 						backgroundColor: boxPalette.backgroundShade,
