@@ -16,27 +16,29 @@ export const SideNavTitle = ({
 }) => {
 	const Link = useLinkComponent();
 	return (
-		<Box
-			as={Link}
-			href={href}
-			padding={1}
-			color="text"
-			fontSize="sm"
-			fontWeight="bold"
-			lineHeight="default"
-			display="block"
-			css={{
-				borderBottom: `2px solid ${boxPalette.border}`,
-				textDecoration: 'none',
+		<Box as="h2">
+			<Box
+				as={Link}
+				href={href}
+				padding={1}
+				color="text"
+				fontSize="sm"
+				fontWeight="bold"
+				lineHeight="heading"
+				display="block"
+				css={{
+					borderBottom: `2px solid ${boxPalette.border}`,
+					textDecoration: 'none',
 
-				'&:hover': {
-					backgroundColor: localPalette.hover,
-					textDecoration: 'underline',
-				},
-			}}
-		>
-			{children}
-			{isCurrentPage ? <VisuallyHidden> Current page</VisuallyHidden> : null}
+					'&:hover': {
+						backgroundColor: localPalette.hover,
+						textDecoration: 'underline',
+					},
+				}}
+			>
+				{children}
+				{isCurrentPage ? <VisuallyHidden> Current page</VisuallyHidden> : null}
+			</Box>
 		</Box>
 	);
 };
