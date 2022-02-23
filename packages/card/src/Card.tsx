@@ -25,7 +25,7 @@ export const Card = ({ as, children, shadow, clickable }: CardProps) => {
 			css={{
 				position: 'relative',
 				overflow: 'hidden',
-				borderColor: componentTokens.borderColor,
+				borderColor: componentTokens.borderColor, // todo: delete
 
 				...(clickable && {
 					cursor: 'pointer',
