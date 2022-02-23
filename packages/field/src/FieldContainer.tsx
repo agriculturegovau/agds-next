@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 import { Stack } from '@ag.ds-next/box';
-import { globalPalette, mapSpacing } from '@ag.ds-next/core';
+import { globalPalette, mapSpacing, tokens } from '@ag.ds-next/core';
 
 export type FieldContainerProps = {
 	children: ReactNode;
@@ -13,7 +13,7 @@ export const FieldContainer = ({ children, invalid }: FieldContainerProps) => (
 		css={
 			invalid
 				? {
-						borderLeftWidth: 4,
+						borderLeftWidth: tokens.borderWidth.heavy,
 						borderLeftStyle: 'solid',
 						borderLeftColor: globalPalette.error,
 						paddingLeft: mapSpacing(1),

@@ -80,8 +80,9 @@ const borderRadius = unit;
 
 const borderWidth = {
 	default: 1,
-	bold: 3,
-};
+	bold: 3, // TODO maybe 2?
+	heavy: 4,
+}; // TODO these names are incorrect
 
 export type BorderWidth = keyof typeof borderWidth;
 
