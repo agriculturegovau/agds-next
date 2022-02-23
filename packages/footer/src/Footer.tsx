@@ -45,8 +45,9 @@ export const Footer = ({ variant = 'dark', children }: FooterProps) => {
 			color="text"
 			palette={variantMap[variant].palette}
 			paddingY={3}
+			borderTop
+			borderTopWidth="xl"
 			css={{
-				borderTop: '4px solid',
 				borderColor: variantMap[variant].border,
 				[localPaletteVars.border]: variantMap[variant].border,
 

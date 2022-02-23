@@ -92,8 +92,9 @@ export const bodyClass = css({
 			marginTop: mapSpacing(0.5),
 			paddingLeft: mapSpacing(0.5),
 			marginLeft: 0,
-			borderLeftStyle: 'solid',
 			borderLeftWidth: tokens.borderWidth.sm,
+			borderLeftStyle: 'solid',
+			borderLeftColor: boxPalette.border,
 		},
 
 		'> dt': {
@@ -250,7 +251,8 @@ export const bodyClass = css({
 
 	blockquote: {
 		padding: mapSpacing(2),
-		borderLeft: '4px solid',
+		borderLeftWidth: tokens.borderWidth.xl,
+		borderLeftStyle: 'solid',
 		borderColor: boxPalette.border,
 		background: boxPalette.backgroundShade,
 	},
