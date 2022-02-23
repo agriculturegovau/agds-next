@@ -75,7 +75,7 @@ export function buttonStyles({
 		appearance: 'none',
 		display: block ? 'flex' : 'inline-flex',
 		alignItems: 'center',
-		borderWidth: tokens.borderWidth.bold,
+		borderWidth: tokens.borderWidth.lg,
 		borderStyle: 'solid',
 		borderRadius: tokens.borderRadius,
 		cursor: 'pointer',

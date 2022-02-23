@@ -190,7 +190,7 @@ type BorderProps = Partial<{
 
 function borderStyles({
 	border,
-	borderWidth = 'default',
+	borderWidth = 'sm',
 	borderLeft,
 	borderLeftWidth,
 	borderRight,
@@ -211,7 +211,6 @@ function borderStyles({
 		borderBottom ||
 		borderX ||
 		borderY;
-	console.log({ borderLeftWidth });
 	return {
 		borderWidth: 0,
 		borderLeftWidth:

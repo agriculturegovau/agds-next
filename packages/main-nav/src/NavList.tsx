@@ -19,7 +19,7 @@ export function NavList({ links, activePath }: NavListProps) {
 			css={{
 				[tokens.mediaQuery.max.sm]: {
 					'& > li': {
-						borderTopWidth: tokens.borderWidth.default,
+						borderTopWidth: tokens.borderWidth.sm,
 						borderTopStyle: 'solid',
 						borderTopColor: boxPalette.border,
 					},

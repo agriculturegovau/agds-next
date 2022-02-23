@@ -79,10 +79,11 @@ const maxWidth = {
 const borderRadius = unit;
 
 const borderWidth = {
-	default: 1,
-	bold: 3, // TODO maybe 2?
-	heavy: 4,
-}; // TODO these names are incorrect
+	sm: 1,
+	md: 2,
+	lg: 3,
+	xl: 4,
+} as const;
 
 export type BorderWidth = keyof typeof borderWidth;
 

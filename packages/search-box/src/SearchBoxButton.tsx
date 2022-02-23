@@ -22,7 +22,7 @@ export const SearchBoxButton = forwardRef<
 			flexShrink={0}
 			css={{ position: 'relative' }}
 			borderLeft
-			borderWidth="bold"
+			borderWidth="lg"
 		>
 			<Button ref={ref} type="submit" aria-label={children} css={buttonStyles}>
 				<span>{children}</span>

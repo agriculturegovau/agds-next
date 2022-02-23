@@ -30,7 +30,7 @@ export const ProgressIndicatorItem = ({
 				fontWeight={active ? 'bold' : 'normal'}
 				borderBottom
 				borderLeft
-				borderLeftWidth="bold"
+				borderLeftWidth="lg"
 				css={{
 					borderLeftColor: active ? boxPalette.foregroundAction : 'transparent',
 					textDecoration: 'none',
