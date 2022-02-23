@@ -3,17 +3,17 @@ import { KeywordListContainer } from './KeywordListContainer';
 import { KeywordListItem } from './KeywordListItem';
 
 export type KeywordListProps = {
-	links: {
+	items: {
 		href?: string;
 		title: ReactNode;
 		subTitle: ReactNode;
 	}[];
 };
 
-export const KeywordList = ({ links, ...props }: KeywordListProps) => {
+export const KeywordList = ({ items, ...props }: KeywordListProps) => {
 	return (
 		<KeywordListContainer {...props}>
-			{links.map((props, index) => (
+			{items.map((props, index) => (
 				<KeywordListItem key={index} {...props} />
 			))}
 		</KeywordListContainer>

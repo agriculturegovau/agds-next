@@ -14,6 +14,22 @@ const exampleItems = [
 	{ subTitle: 'Department of', title: 'Communications and the Arts' },
 ];
 
+export const OnLight: ComponentStory<typeof KeywordList> = (args) => (
+	<KeywordList {...args} />
+);
+OnLight.args = {
+	items: exampleItems,
+};
+
+export const OnDark: ComponentStory<typeof KeywordList> = (args) => (
+	<Box palette="dark" background="body" padding={1.5}>
+		<KeywordList {...args} />
+	</Box>
+);
+OnDark.args = {
+	items: exampleItems,
+};
+
 const exampleLinks = [
 	{
 		href: '#',
@@ -27,27 +43,11 @@ const exampleLinks = [
 	},
 ];
 
-export const OnLight: ComponentStory<typeof KeywordList> = (args) => (
-	<KeywordList {...args} />
-);
-OnLight.args = {
-	links: exampleItems,
-};
-
-export const OnDark: ComponentStory<typeof KeywordList> = (args) => (
-	<Box palette="dark" background="body" padding={1.5}>
-		<KeywordList {...args} />
-	</Box>
-);
-OnDark.args = {
-	links: exampleItems,
-};
-
 export const Links: ComponentStory<typeof KeywordList> = (args) => (
 	<KeywordList {...args} />
 );
 Links.args = {
-	links: exampleLinks,
+	items: exampleLinks,
 };
 
 export const Modular: ComponentStory<typeof KeywordListContainer> = () => (

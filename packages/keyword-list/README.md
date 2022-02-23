@@ -8,7 +8,7 @@ A key and value pair used to display a small subtitle above a larger title.
 
 ```jsx live
 <KeywordList
-	links={[
+	items={[
 		{ subTitle: 'Department of', title: 'Agriculture and Water Resources' },
 		{ subTitle: 'Department of', title: 'Communications and the Arts' },
 	]}
@@ -21,7 +21,7 @@ The keyword list also supports links which span both the key and value pair in t
 
 ```jsx live
 <KeywordList
-	links={[
+	items={[
 		{
 			href: '#',
 			subTitle: 'Department of',

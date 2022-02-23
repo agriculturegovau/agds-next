@@ -295,7 +295,7 @@ items={[
 		group: 'KeywordList',
 		name: 'Basic',
 		code: `<KeywordList
-    links={[
+    items={[
       { subTitle: 'Department of', title: 'Agriculture and Water Resources' },
       { subTitle: 'Department of', title: 'Communications and the Arts' },
     ]}
