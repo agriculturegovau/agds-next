@@ -1,6 +1,22 @@
 # @ag.ds-next/card
 
+## 2.0.0
+
+### Patch Changes
+
+- 3e8b39b: Added `packs` to core and updated usage
+- Updated dependencies [9680133]
+- Updated dependencies [c7d2a66]
+- Updated dependencies [cd7e437]
+- Updated dependencies [d94cb5d]
+- Updated dependencies [9680133]
+- Updated dependencies [214cbf9]
+- Updated dependencies [3e8b39b]
+  - @ag.ds-next/core@2.1.0
+  - @ag.ds-next/box@4.0.0
+
 ## 1.0.0
+
 ### Major Changes
 
 - c995f6e: Created the Card component
@@ -8,10 +24,11 @@
 ### Patch Changes
 
 - fd181c9: Swapped the naming of theme and palette to better reflect expectations
-  
+
   `theme` now means the global set of colours which are applied to the a site as a whole. Eg. Gold theme or Agriculture theme.
-  
+
   `palette` (aka. `boxPalette`) is the set of colours to be applied within a Box or related component. Eg. `<Box palette="dark" />`
+
 - Updated dependencies [c995f6e]
 - Updated dependencies [3194f79]
 - Updated dependencies [bd3a1bb]

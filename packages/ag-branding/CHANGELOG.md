@@ -1,5 +1,19 @@
 # @ag.ds-next/ag-branding
 
+## 4.0.0
+
+### Minor Changes
+
+- 2aff143: New bodyAlt and shadeAlt colours
+
+### Patch Changes
+
+- Updated dependencies [9680133]
+- Updated dependencies [d94cb5d]
+- Updated dependencies [214cbf9]
+- Updated dependencies [3e8b39b]
+  - @ag.ds-next/core@2.1.0
+
 ## 3.0.0
 
 ### Patch Changes

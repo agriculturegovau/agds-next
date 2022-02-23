@@ -1,5 +1,53 @@
 # @ag.ds-next/example-site
 
+## 0.0.5
+
+### Patch Changes
+
+- 01b9691: Updated form example
+- c4e8f13: Added more home page content and sign in example
+- d94cb5d: Updated usage of control input components in form example
+- 6831b2f: Updated usage of `SearchBox` after API change
+- Updated dependencies [2aff143]
+- Updated dependencies [088ff6c]
+- Updated dependencies [9680133]
+- Updated dependencies [6831b2f]
+- Updated dependencies [c7d2a66]
+- Updated dependencies [cd7e437]
+- Updated dependencies [a7a00b7]
+- Updated dependencies [8504053]
+- Updated dependencies [178d952]
+- Updated dependencies [d94cb5d]
+- Updated dependencies [3e8b39b]
+- Updated dependencies [ccaa011]
+- Updated dependencies [86cf334]
+- Updated dependencies [d94cb5d]
+- Updated dependencies [01b9691]
+- Updated dependencies [fe0b19c]
+- Updated dependencies [cb58bc1]
+- Updated dependencies [9680133]
+- Updated dependencies [b6a9bd9]
+- Updated dependencies [214cbf9]
+- Updated dependencies [3e8b39b]
+  - @ag.ds-next/ag-branding@4.0.0
+  - @ag.ds-next/button@4.0.0
+  - @ag.ds-next/text-input@2.0.0
+  - @ag.ds-next/core@2.1.0
+  - @ag.ds-next/search-box@2.0.0
+  - @ag.ds-next/box@4.0.0
+  - @ag.ds-next/textarea@2.0.0
+  - @ag.ds-next/header@4.0.0
+  - @ag.ds-next/control-input@2.0.0
+  - @ag.ds-next/columns@3.0.0
+  - @ag.ds-next/link-list@4.0.0
+  - @ag.ds-next/main-nav@4.0.0
+  - @ag.ds-next/text@4.0.0
+  - @ag.ds-next/card@2.0.0
+  - @ag.ds-next/body@4.0.0
+  - @ag.ds-next/content@4.0.0
+  - @ag.ds-next/footer@4.0.0
+  - @ag.ds-next/heading@4.0.0
+
 ## 0.0.4
 
 ### Patch Changes

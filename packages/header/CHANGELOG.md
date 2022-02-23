@@ -1,5 +1,29 @@
 # @ag.ds-next/header
 
+## 4.0.0
+
+### Patch Changes
+
+- 178d952: Updated `HeaderSearch` story
+- ccaa011: Remove `BoxProps` from `Column` and `Columns`
+- Updated dependencies [9680133]
+- Updated dependencies [6831b2f]
+- Updated dependencies [c7d2a66]
+- Updated dependencies [cd7e437]
+- Updated dependencies [8504053]
+- Updated dependencies [d94cb5d]
+- Updated dependencies [ccaa011]
+- Updated dependencies [9680133]
+- Updated dependencies [b6a9bd9]
+- Updated dependencies [214cbf9]
+- Updated dependencies [3e8b39b]
+  - @ag.ds-next/core@2.1.0
+  - @ag.ds-next/search-box@2.0.0
+  - @ag.ds-next/box@4.0.0
+  - @ag.ds-next/columns@3.0.0
+  - @ag.ds-next/text@4.0.0
+  - @ag.ds-next/heading@4.0.0
+
 ## 3.0.0
 
 ### Minor Changes

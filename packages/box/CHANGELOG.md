@@ -1,5 +1,19 @@
 # @ag.ds-next/box
 
+## 4.0.0
+
+### Patch Changes
+
+- c7d2a66: Fixed bug in `Box` where border top styles were not being applied when using the `borderTop` prop
+- cd7e437: Added responsive prop logic to the `background` and `color` props
+- 9680133: Added cursor styles to `linkStyles`
+- 3e8b39b: Added `packs` to core and updated usage
+- Updated dependencies [9680133]
+- Updated dependencies [d94cb5d]
+- Updated dependencies [214cbf9]
+- Updated dependencies [3e8b39b]
+  - @ag.ds-next/core@2.1.0
+
 ## 3.0.0
 
 ### Major Changes
