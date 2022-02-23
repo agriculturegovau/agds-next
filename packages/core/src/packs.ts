@@ -7,12 +7,12 @@ const control = {
 	sm: {
 		width: '1.75rem', // 28 px
 		height: '1.75rem', // 28 px
-		borderWidth: 2,
+		borderWidth: tokens.borderWidth.bold,
 	},
 	md: {
 		width: '2.375rem', // 38 px
 		height: '2.375rem', // 38 px
-		borderWidth: 3,
+		borderWidth: tokens.borderWidth.bold,
 	},
 };
 

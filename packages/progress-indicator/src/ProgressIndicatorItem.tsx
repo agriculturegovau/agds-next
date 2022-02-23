@@ -26,12 +26,12 @@ export const ProgressIndicatorItem = ({
 				alignItems="center"
 				gap={0.75}
 				padding={0.75}
-				borderBottom
 				color="text"
 				fontWeight={active ? 'bold' : 'normal'}
+				borderBottom
+				borderLeft
+				borderLeftWidth="bold"
 				css={{
-					borderLeftWidth: 3,
-					borderLeftStyle: 'solid',
 					borderLeftColor: active ? boxPalette.foregroundAction : 'transparent',
 					textDecoration: 'none',
 					'&:hover': {

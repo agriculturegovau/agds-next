@@ -12,6 +12,7 @@ import {
 	Spacing,
 	globalPalette,
 	packs,
+	BorderWidth,
 } from '@ag.ds-next/core';
 
 type PaletteProps = Partial<{
@@ -173,10 +174,15 @@ function layoutStyles({
 
 type BorderProps = Partial<{
 	border: boolean;
+	borderWidth: BorderWidth;
 	borderLeft: boolean;
+	borderLeftWidth: BorderWidth;
 	borderRight: boolean;
+	borderRightWidth: BorderWidth;
 	borderTop: boolean;
+	borderTopWidth: BorderWidth;
 	borderBottom: boolean;
+	borderBottomWidth: BorderWidth;
 	borderX: boolean;
 	borderY: boolean;
 	rounded: boolean;
@@ -184,10 +190,15 @@ type BorderProps = Partial<{
 
 function borderStyles({
 	border,
+	borderWidth = 'default',
 	borderLeft,
+	borderLeftWidth,
 	borderRight,
+	borderRightWidth,
 	borderTop,
+	borderTopWidth,
 	borderBottom,
+	borderBottomWidth,
 	borderX,
 	borderY,
 	rounded,
@@ -200,12 +211,25 @@ function borderStyles({
 		borderBottom ||
 		borderX ||
 		borderY;
+	console.log({ borderLeftWidth });
 	return {
 		borderWidth: 0,
-		borderLeftWidth: border ?? borderX ?? borderLeft ? `1px` : undefined,
-		borderRightWidth: border ?? borderX ?? borderRight ? `1px` : undefined,
-		borderTopWidth: border ?? borderY ?? borderTop ? `1px` : undefined,
-		borderBottomWidth: border ?? borderY ?? borderBottom ? `1px` : undefined,
+		borderLeftWidth:
+			border ?? borderX ?? borderLeft
+				? tokens.borderWidth[borderLeftWidth || borderWidth]
+				: undefined,
+		borderRightWidth:
+			border ?? borderX ?? borderRight
+				? tokens.borderWidth[borderRightWidth || borderWidth]
+				: undefined,
+		borderTopWidth:
+			border ?? borderY ?? borderTop
+				? tokens.borderWidth[borderTopWidth || borderWidth]
+				: undefined,
+		borderBottomWidth:
+			border ?? borderY ?? borderBottom
+				? tokens.borderWidth[borderBottomWidth || borderWidth]
+				: undefined,
 		borderColor: anyBorder ? boxPalette.border : undefined,
 		borderStyle: anyBorder ? 'solid' : undefined,
 		borderRadius: rounded ? tokens.borderRadius : undefined,
@@ -289,10 +313,15 @@ export function boxStyles({
 	color,
 	background,
 	border,
+	borderWidth,
 	borderLeft,
+	borderLeftWidth,
 	borderRight,
+	borderRightWidth,
 	borderTop,
+	borderTopWidth,
 	borderBottom,
+	borderBottomWidth,
 	borderX,
 	borderY,
 	rounded,
@@ -342,10 +371,15 @@ export function boxStyles({
 
 				...borderStyles({
 					border,
+					borderWidth,
 					borderLeft,
+					borderLeftWidth,
 					borderRight,
+					borderRightWidth,
 					borderTop,
+					borderTopWidth,
 					borderBottom,
+					borderBottomWidth,
 					borderX,
 					borderY,
 					rounded,

@@ -92,7 +92,8 @@ export const bodyClass = css({
 			marginTop: mapSpacing(0.5),
 			paddingLeft: mapSpacing(0.5),
 			marginLeft: 0,
-			borderLeft: 'solid 1px',
+			borderLeftStyle: 'solid',
+			borderLeftWidth: tokens.borderWidth.default,
 		},
 
 		'> dt': {
@@ -285,7 +286,9 @@ export const bodyClass = css({
 		height: 0,
 		overflow: 'visible',
 		border: 'none',
-		borderTop: `1px solid ${boxPalette.border}`,
+		borderTopWidth: tokens.borderWidth.default,
+		borderTopStyle: 'solid',
+		borderColor: boxPalette.border,
 		marginBottom: mapSpacing(1.5),
 	},
 
