@@ -1,4 +1,3 @@
 export * from './SearchBox';
-export * from './SearchButton';
-export * from './SearchInput';
-export * from './SearchLabel';
+export * from './SearchBoxButton';
+export * from './SearchBoxInput';

@@ -283,6 +283,14 @@ items={[
     <Radio checked={true}>Laptop</Radio>
   </ControlGroup>`,
 	},
+	{
+		group: 'Searchbox',
+		name: 'Basic',
+		code: `<SearchBox aria-label="Sitewide" onSubmit={console.log}>
+    <SearchBoxInput label="Search this website" />
+    <SearchBoxButton>Search</SearchBoxButton>
+  </SearchBox>`,
+	},
 ];
 
 export default snippits;
