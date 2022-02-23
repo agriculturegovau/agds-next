@@ -1,5 +1,70 @@
 # @ag.ds-next/docs
 
+## 0.1.3
+
+### Patch Changes
+
+- 6831b2f: Updated usage of `SearchBox` after API change
+- Updated dependencies [be7b54f]
+- Updated dependencies [2aff143]
+- Updated dependencies [088ff6c]
+- Updated dependencies [0ccabe5]
+- Updated dependencies [9680133]
+- Updated dependencies [6831b2f]
+- Updated dependencies [c7d2a66]
+- Updated dependencies [cd7e437]
+- Updated dependencies [cd7e437]
+- Updated dependencies [0b1ed6c]
+- Updated dependencies [a7a00b7]
+- Updated dependencies [a7a00b7]
+- Updated dependencies [8504053]
+- Updated dependencies [1a91ea3]
+- Updated dependencies [23f1c08]
+- Updated dependencies [e3f309e]
+- Updated dependencies [178d952]
+- Updated dependencies [d94cb5d]
+- Updated dependencies [3e8b39b]
+- Updated dependencies [ccaa011]
+- Updated dependencies [b6a9bd9]
+- Updated dependencies [86cf334]
+- Updated dependencies [d94cb5d]
+- Updated dependencies [214cbf9]
+- Updated dependencies [01b9691]
+- Updated dependencies [fe0b19c]
+- Updated dependencies [cb58bc1]
+- Updated dependencies [9680133]
+- Updated dependencies [9d19a2a]
+- Updated dependencies [b6a9bd9]
+- Updated dependencies [2d985a6]
+- Updated dependencies [9680133]
+- Updated dependencies [214cbf9]
+- Updated dependencies [3e8b39b]
+  - @ag.ds-next/side-nav@4.0.0
+  - @ag.ds-next/ag-branding@4.0.0
+  - @ag.ds-next/button@4.0.0
+  - @ag.ds-next/select@2.0.0
+  - @ag.ds-next/text-input@2.0.0
+  - @ag.ds-next/core@2.1.0
+  - @ag.ds-next/search-box@2.0.0
+  - @ag.ds-next/box@4.0.0
+  - @ag.ds-next/accordion@1.0.0
+  - @ag.ds-next/textarea@2.0.0
+  - @ag.ds-next/field@2.0.0
+  - @ag.ds-next/breadcrumbs@4.0.0
+  - @ag.ds-next/header@4.0.0
+  - @ag.ds-next/control-input@2.0.0
+  - @ag.ds-next/columns@3.0.0
+  - @ag.ds-next/icon@4.0.0
+  - @ag.ds-next/link-list@4.0.0
+  - @ag.ds-next/main-nav@4.0.0
+  - @ag.ds-next/progress-indicator@2.0.0
+  - @ag.ds-next/text@4.0.0
+  - @ag.ds-next/card@2.0.0
+  - @ag.ds-next/body@4.0.0
+  - @ag.ds-next/content@4.0.0
+  - @ag.ds-next/footer@4.0.0
+  - @ag.ds-next/heading@4.0.0
+
 ## 0.1.2
 
 ### Patch Changes

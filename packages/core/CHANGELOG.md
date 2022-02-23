@@ -1,5 +1,17 @@
 # @ag.ds-next/core
 
+## 2.1.0
+
+### Minor Changes
+
+- 9680133: Added new hooks `useElementSize` and `usePrefersReducedMotion`
+
+### Patch Changes
+
+- d94cb5d: Updated styles of the `control` pack and related components `ControlGroup`, `Radio` and `Checkbox`.
+- 214cbf9: Added new colors to theme object for use in field components (`errorMuted`, `successMuted`, `warningMuted` and `infoMuted`)
+- 3e8b39b: Added `packs` to core and updated usage
+
 ## 2.0.0
 
 ### Major Changes
