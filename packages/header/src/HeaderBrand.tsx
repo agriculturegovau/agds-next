@@ -3,6 +3,7 @@ import { Text } from '@ag.ds-next/text';
 import { useLinkComponent } from '@ag.ds-next/core';
 
 type HeaderBrandProps = {
+	badgeLabel?: string;
 	href?: string;
 	heading: string;
 	subline?: string;
@@ -10,6 +11,7 @@ type HeaderBrandProps = {
 };
 
 export function HeaderBrand({
+	badgeLabel,
 	href = '/',
 	logo,
 	heading,
@@ -47,13 +49,16 @@ export function HeaderBrand({
 			) : null}
 			{logo ? <Box borderRight display={{ xs: 'none', md: 'block' }} /> : null}
 			<Stack justifyContent="center">
-				<Text
-					lineHeight="heading"
-					fontSize={{ xs: 'md', sm: 'xl' }}
-					fontWeight="bold"
-				>
-					{heading}
-				</Text>
+				<Flex alignItems="center" gap={0.5}>
+					<Text
+						lineHeight="heading"
+						fontSize={{ xs: 'md', sm: 'xl' }}
+						fontWeight="bold"
+					>
+						{heading}
+					</Text>
+					{badgeLabel && <HeaderBadge>{badgeLabel}</HeaderBadge>}
+				</Flex>
 				{subline && (
 					<Text color="muted" fontSize={{ xs: 'sm', sm: 'md' }}>
 						{subline}
@@ -63,3 +68,24 @@ export function HeaderBrand({
 		</Flex>
 	);
 }
+
+const HeaderBadge = ({ children }) => {
+	return (
+		<Box
+			fontSize="xs"
+			paddingLeft={0.5}
+			paddingRight={0.5}
+			border
+			css={{
+				// These values don't exist in our tokens
+				paddingTop: '2px',
+				paddingBottom: '2px',
+				borderColor: '#fff',
+				borderRadius: '2em',
+				borderWidth: '2px',
+			}}
+		>
+			{children}
+		</Box>
+	);
+};
