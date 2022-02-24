@@ -78,6 +78,15 @@ const maxWidth = {
 
 const borderRadius = unit;
 
+const borderWidth = {
+	sm: 1,
+	md: 2,
+	lg: 3,
+	xl: 4,
+} as const;
+
+export type BorderWidth = keyof typeof borderWidth;
+
 export const tokens = {
 	breakpoint,
 	mediaQuery,
@@ -90,4 +99,5 @@ export const tokens = {
 	containerPadding,
 	maxWidth,
 	borderRadius,
+	borderWidth,
 };
