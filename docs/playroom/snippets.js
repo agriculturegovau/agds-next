@@ -301,6 +301,16 @@ items={[
     ]}
   />`,
 	},
+	{
+		group: 'SkipLinks',
+		name: 'Basic',
+		code: `<SkipLinks
+    links={[
+      { href: '#main-content', label: 'Skip to main content' },
+      { href: '#main-nav', label: 'Skip to main navigation' },
+    ]}
+  />`,
+	},
 ];
 
 export default snippits;

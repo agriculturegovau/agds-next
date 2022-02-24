@@ -29,6 +29,7 @@ export const SiteHeader = () => {
 				badgeLabel="Alpha"
 			/>
 			<MainNav
+				id="main-nav"
 				variant="agriculture"
 				links={NAV_LINKS}
 				secondaryLinks={SECONDARY_LINKS}
