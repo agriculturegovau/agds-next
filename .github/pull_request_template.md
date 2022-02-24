@@ -2,13 +2,13 @@
 Include photos if necessary.
 
 ## Checklist
-- [ ] Run `yarn format` over your changes
-- [ ] Ensure `yarn lint` and `yarn tsc` checks are passing
+- [ ] Run `yarn format`
+- [ ] Run `yarn lint` in the root of the repository to ensure tests are passing
 - [ ] Add necessary tests
-- [ ] Add Changeset
+- [ ] Run `yarn changeset` to create a  changeset file
 - [ ] Write documentation (README.md)
 - [ ] Create stories for Storybook
 - For new components...
 - - [ ] Add components to Playroom (docs/playroom/components.js)
-- - [ ] Add snippits to Playroom (docs/playroom/snippits.js)
+- - [ ] Add snippets to Playroom (docs/playroom/snippets.js)
 - - [ ] Add to Docs for jsx live (docs/components/utils.tsx)
