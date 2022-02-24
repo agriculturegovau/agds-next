@@ -37,6 +37,7 @@ import { Select } from '@ag.ds-next/select';
 import { VisuallyHidden } from '@ag.ds-next/a11y';
 import { ProgressIndicator } from '@ag.ds-next/progress-indicator';
 import { Checkbox, Radio, ControlGroup } from '@ag.ds-next/control-input';
+import { KeywordList } from '@ag.ds-next/keyword-list';
 
 export const designSystemComponents = {
 	Accordion,
@@ -90,4 +91,5 @@ export const designSystemComponents = {
 	Checkbox,
 	Radio,
 	ControlGroup,
+	KeywordList,
 };
