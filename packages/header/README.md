@@ -10,7 +10,7 @@ description: The masthead of our applications, Header incorporates our AWE brand
 	subline="Supporting Australian agricultural exports"
 	logo={<AgLogo />}
 	variant="dark"
-  badgeLabel="Beta"
+	badgeLabel="Beta"
 />
 ```
 
