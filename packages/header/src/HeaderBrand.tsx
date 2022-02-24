@@ -1,6 +1,7 @@
+import { ReactNode } from 'react';
 import { Box, Flex, Stack } from '@ag.ds-next/box';
 import { Text } from '@ag.ds-next/text';
-import { useLinkComponent } from '@ag.ds-next/core';
+import { useLinkComponent, boxPalette } from '@ag.ds-next/core';
 
 type HeaderBrandProps = {
 	badgeLabel?: string;
@@ -69,7 +70,7 @@ export function HeaderBrand({
 	);
 }
 
-const HeaderBadge = ({ children }) => {
+const HeaderBadge = ({ children }: { children: ReactNode }) => {
 	return (
 		<Box
 			fontSize="xs"
@@ -80,7 +81,7 @@ const HeaderBadge = ({ children }) => {
 				// These values don't exist in our tokens
 				paddingTop: '2px',
 				paddingBottom: '2px',
-				borderColor: '#fff',
+				borderColor: boxPalette.foregroundText,
 				borderRadius: '2em',
 				borderWidth: '2px',
 			}}
