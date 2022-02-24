@@ -291,6 +291,16 @@ items={[
     <SearchBoxButton>Search</SearchBoxButton>
   </SearchBox>`,
 	},
+	{
+		group: 'KeywordList',
+		name: 'Basic',
+		code: `<KeywordList
+    items={[
+      { subTitle: 'Department of', title: 'Agriculture and Water Resources' },
+      { subTitle: 'Department of', title: 'Communications and the Arts' },
+    ]}
+  />`,
+	},
 ];
 
 export default snippits;

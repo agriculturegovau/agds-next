@@ -45,3 +45,4 @@ export {
 	SearchBoxInput,
 	SearchBoxButton,
 } from '@ag.ds-next/search-box';
+export { KeywordList } from '@ag.ds-next/keyword-list';
