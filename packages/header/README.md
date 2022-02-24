@@ -10,6 +10,7 @@ description: The masthead of our applications, Header incorporates our AWE brand
 	subline="Supporting Australian agricultural exports"
 	logo={<AgLogo />}
 	variant="dark"
+  badgeLabel="Beta"
 />
 ```
 
@@ -18,3 +19,7 @@ description: The masthead of our applications, Header incorporates our AWE brand
 Heading should be set to the website or service title.
 
 Subline can provide additional information to describe your website or service.
+
+## Badge
+
+We use a badge to indicate if an application is in a prerelease state. Add `badgeLabel` prop to implement.
