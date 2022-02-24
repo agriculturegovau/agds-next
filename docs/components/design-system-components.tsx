@@ -38,6 +38,7 @@ import { VisuallyHidden } from '@ag.ds-next/a11y';
 import { ProgressIndicator } from '@ag.ds-next/progress-indicator';
 import { Checkbox, Radio, ControlGroup } from '@ag.ds-next/control-input';
 import { KeywordList } from '@ag.ds-next/keyword-list';
+import { SkipLinks, SkipLinkContainer, SkipLink } from '@ag.ds-next/skip-link';
 
 export const designSystemComponents = {
 	Accordion,
@@ -92,4 +93,7 @@ export const designSystemComponents = {
 	Radio,
 	ControlGroup,
 	KeywordList,
+	SkipLinks,
+	SkipLinkContainer,
+	SkipLink,
 };
