@@ -12,6 +12,7 @@ Include screenshots/photos if necessary.
 - [ ] Create stories for Storybook
 
 For new components...
+
 - [ ] Add components to Playroom (docs/playroom/components.js)
 - [ ] Add snippets to Playroom (docs/playroom/snippets.js)
 - [ ] Add to Docs for jsx live (docs/components/utils.tsx)
