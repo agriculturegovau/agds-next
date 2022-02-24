@@ -15,4 +15,6 @@
 '@ag.ds-next/text-input': patch
 ---
 
-Added `borderWidths` token to `core` and updated usage of hard coded border widths
+- Added new token `borderWidths` to `core`
+- Added new props to `Box` for configuring border widths
+- Replaced usage of inline border widths with new token values
