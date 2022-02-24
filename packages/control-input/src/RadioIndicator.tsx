@@ -1,5 +1,5 @@
 import { Box, Flex } from '@ag.ds-next/box';
-import { boxPalette, globalPalette, packs } from '@ag.ds-next/core';
+import { boxPalette, globalPalette, packs, tokens } from '@ag.ds-next/core';
 import { ControlSize } from './utils';
 
 export type RadioIndicatorProps = {
@@ -54,7 +54,7 @@ export const RadioIndicator = ({
 					height="100%"
 					css={{
 						display: 'none',
-						borderWidth,
+						borderWidth: tokens.borderWidth.lg,
 						borderStyle: 'solid',
 						borderColor: boxPalette.backgroundBody,
 						borderRadius: '100%',

@@ -30,10 +30,10 @@ export const SideNavLink = ({
 			as="li"
 			fontSize="sm"
 			lineHeight="default"
+			borderBottom={depth === 1}
 			css={
 				depth === 1
 					? {
-							borderBottom: `1px solid ${boxPalette.border}`,
 							'&:last-of-type': { border: 'none' },
 					  }
 					: undefined
