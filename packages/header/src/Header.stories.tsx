@@ -87,9 +87,15 @@ LightAltVariant.args = {
 export const LongSubline = Template.bind({});
 LongSubline.args = {
 	...defaultArgs,
-	logo: logoLight,
 	variant: 'dark',
 	subline: 'Service description that could be a little longer',
+};
+
+export const Badge = Template.bind({});
+Badge.args = {
+	...defaultArgs,
+	variant: 'dark',
+	badgeLabel: 'Beta',
 };
 
 export const NoLogo = Template.bind({});

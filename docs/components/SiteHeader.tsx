@@ -25,7 +25,8 @@ export const SiteHeader = () => {
 				variant="dark"
 				logo={<Logo />}
 				heading="Agriculture Design System"
-				subline="Design System (alpha) for the Export Service"
+				subline="Design System for the Export Service"
+				badgeLabel="Alpha"
 			/>
 			<MainNav
 				variant="agriculture"
