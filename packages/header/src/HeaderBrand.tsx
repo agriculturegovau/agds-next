@@ -77,13 +77,13 @@ const HeaderBadge = ({ children }: { children: ReactNode }) => {
 			paddingLeft={0.5}
 			paddingRight={0.5}
 			border
+			borderWidth="md"
 			css={{
 				// These values don't exist in our tokens
 				paddingTop: '2px',
 				paddingBottom: '2px',
 				borderColor: boxPalette.foregroundText,
 				borderRadius: '2em',
-				borderWidth: '2px',
 			}}
 		>
 			{children}
