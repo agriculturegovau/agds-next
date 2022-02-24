@@ -1,6 +1,6 @@
 ## Describe your changes
 
-Include photos if necessary.
+Include screenshots/photos if necessary.
 
 ## Checklist
 
@@ -10,7 +10,10 @@ Include photos if necessary.
 - [ ] Run `yarn changeset` to create a changeset file
 - [ ] Write documentation (README.md)
 - [ ] Create stories for Storybook
-- For new components...
-- - [ ] Add components to Playroom (docs/playroom/components.js)
-- - [ ] Add snippets to Playroom (docs/playroom/snippets.js)
-- - [ ] Add to Docs for jsx live (docs/components/utils.tsx)
+
+For new components...
+
+- [ ] Add components to Playroom (docs/playroom/components.js)
+- [ ] Add snippets to Playroom (docs/playroom/snippets.js)
+- [ ] Add to Docs for jsx live (docs/components/utils.tsx)
+- [ ] Add pictogram to Docs (docs/components/pictograms/index.tsx)
