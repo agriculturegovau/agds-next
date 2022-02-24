@@ -15,6 +15,7 @@ import guides from './guides.svg';
 import header from './header.svg';
 import heading from './heading.svg';
 import icon from './icon.svg';
+import keywordList from './keyword-list.svg';
 import linkList from './link-list.svg';
 import mainNav from './main-nav.svg';
 import packages from './packages.svg';
@@ -45,6 +46,7 @@ export const pictograms = {
 	header,
 	heading,
 	icon,
+	'keyword-list': keywordList,
 	linkList,
 	'link-list': linkList,
 	mainNav,
