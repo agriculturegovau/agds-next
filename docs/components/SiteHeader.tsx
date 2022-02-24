@@ -28,6 +28,7 @@ export const SiteHeader = () => {
 				subline="Design System (alpha) for the Export Service"
 			/>
 			<MainNav
+				id="main-nav"
 				variant="agriculture"
 				links={NAV_LINKS}
 				secondaryLinks={SECONDARY_LINKS}
