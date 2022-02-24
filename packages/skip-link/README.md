@@ -4,7 +4,7 @@ description: Skip links are internal page links that aid navigation around a pag
 group: Navigation
 ---
 
-Skip links are not visual until they receive focus. Include skip links between the opening of the `<body>` tag.
+Skip links are not visual until they receive focus. Include skip links after the opening of the `<body>` tag.
 
 ```jsx
 <React.Fragment>
