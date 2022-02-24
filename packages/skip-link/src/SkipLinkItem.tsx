@@ -7,13 +7,13 @@ import { buttonStyles } from '@ag.ds-next/button';
 import { visuallyHiddenStyles } from '@ag.ds-next/a11y';
 import { mapSpacing } from '@ag.ds-next/core';
 
-export type SkipLinkProps = DetailedHTMLProps<
+export type SkipLinkItemProps = DetailedHTMLProps<
 	AnchorHTMLAttributes<HTMLAnchorElement>,
 	HTMLAnchorElement
 >;
 
-export const SkipLink = forwardRef<HTMLAnchorElement, SkipLinkProps>(
-	function SkipLink({ children, ...props }, ref) {
+export const SkipLinkItem = forwardRef<HTMLAnchorElement, SkipLinkItemProps>(
+	function SkipLinkItem({ children, ...props }, ref) {
 		return (
 			<a
 				ref={ref}

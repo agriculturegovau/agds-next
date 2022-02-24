@@ -1,6 +1,6 @@
 import React from 'react';
 import { SkipLinkContainer } from './SkipLinkContainer';
-import { SkipLink } from './SkipLink';
+import { SkipLinkItem } from './SkipLinkItem';
 
 export type SkipLinksProps = {
 	links: {
@@ -12,9 +12,9 @@ export type SkipLinksProps = {
 export const SkipLinks = ({ links }: SkipLinksProps) => (
 	<SkipLinkContainer>
 		{links.map(({ href, label }, idx) => (
-			<SkipLink key={idx} href={href}>
+			<SkipLinkItem key={idx} href={href}>
 				{label}
-			</SkipLink>
+			</SkipLinkItem>
 		))}
 	</SkipLinkContainer>
 );

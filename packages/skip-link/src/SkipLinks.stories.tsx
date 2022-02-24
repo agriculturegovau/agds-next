@@ -2,15 +2,15 @@ import React from 'react';
 import { ComponentMeta } from '@storybook/react';
 import { Body } from '@ag.ds-next/body';
 import { Stack } from '@ag.ds-next/box';
-import { SkipLink } from './SkipLink';
+import { SkipLinkItem } from './SkipLinkItem';
 import { SkipLinks } from './SkipLinks';
 import { SkipLinkContainer } from './SkipLinkContainer';
 
 export default {
-	title: 'navigation/SkipLink',
+	title: 'navigation/SkipLinkItem',
 	component: SkipLinks,
-	subcomponents: { SkipLinkContainer, SkipLink },
-} as ComponentMeta<typeof SkipLink>;
+	subcomponents: { SkipLinkContainer, SkipLinkItem },
+} as ComponentMeta<typeof SkipLinkItem>;
 
 export const Basic = () => (
 	<>
@@ -27,8 +27,8 @@ export const Basic = () => (
 export const Modular = () => (
 	<>
 		<SkipLinkContainer>
-			<SkipLink href="#main-content">Skip to main content</SkipLink>
-			<SkipLink href="#main-nav">Skip to main navigation</SkipLink>
+			<SkipLinkItem href="#main-content">Skip to main content</SkipLinkItem>
+			<SkipLinkItem href="#main-nav">Skip to main navigation</SkipLinkItem>
 		</SkipLinkContainer>
 		<ExampleContent />
 	</>
