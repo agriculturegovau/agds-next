@@ -17,6 +17,9 @@ export const LinkComponent = ({
 }) => {
 	if (!href) return <a {...props} />;
 
+	if (typeof href === 'string' && /^https?:\/\//.test(href))
+		return <a href={href} {...props} />;
+
 	return (
 		<Link
 			href={href}
