@@ -176,78 +176,72 @@ Use feature footers to give the card footer more visual prominence. This can be 
 ```
 
 ## CardList
+
 ```jsx live
-<Columns>
-  <Column columnSpan={3}>
-    <Card shadow clickable>
-      <CardInner>
-        <Body>
-          <h2>Card Title</h2>
-          <p>Some content</p>
-        </Body>
-      </CardInner>
-    </Card>
-  </Column>
-  <Column columnSpan={3}>
-    <Card shadow clickable>
-      <CardInner>
-        <Body>
-          <h2>Card Title</h2>
-          <p>Some content</p>
-          <p>Additional content</p>
-        </Body>
-      </CardInner>
-    </Card>
-  </Column>
-  <Column columnSpan={3}>
-    <Card shadow clickable>
-      <CardInner>
-        <Body>
-          <h2>Card Title</h2>
-          <p>Some content</p>
-        </Body>
-      </CardInner>
-    </Card>
-  </Column>
-  <Column columnSpan={3}>
-    <Card shadow clickable>
-      <CardInner>
-        <Body>
-          <h2>Card Title</h2>
-          <p>Some content</p>
-        </Body>
-      </CardInner>
-    </Card>
-  </Column>
-  <Column columnSpan={3}>
-    <Card shadow clickable>
-      <CardInner>
-        <Body>
-          <h2>Card Title</h2>
-          <p>Some content</p>
-        </Body>
-      </CardInner>
-    </Card>
-  </Column>
-  <Column columnSpan={3}>
-    <Card shadow clickable>
-      <CardInner>
-        <Body>
-          <h2>Card Title</h2>
-          <p>Some content</p>
-        </Body>
-      </CardInner>
-    </Card>
-  </Column>
-  <Column columnSpan={3}>
-    <Card shadow clickable>
-      <CardInner>
-        <Body>
-          <h2>Card Title</h2>
-          <p>Some content</p>
-        </Body>
-      </CardInner>
-    </Card>
-  </Column>
-</Columns>
+<Box
+	gap={1}
+	css={{
+		display: 'grid',
+		gridTemplateColumns: '1fr 1fr 1fr',
+		gridGap: '1rem',
+	}}
+>
+	<Card shadow clickable>
+		<CardInner>
+			<Body>
+				<h2>Card Title</h2>
+				<p>Some content</p>
+			</Body>
+		</CardInner>
+	</Card>
+	<Card shadow clickable>
+		<CardInner>
+			<Body>
+				<h2>Card Title</h2>
+				<p>Some content</p>
+				<p>Additional content</p>
+			</Body>
+		</CardInner>
+	</Card>
+	<Card shadow clickable>
+		<CardInner>
+			<Body>
+				<h2>Card Title</h2>
+				<p>Some content</p>
+			</Body>
+		</CardInner>
+	</Card>
+	<Card shadow clickable>
+		<CardInner>
+			<Body>
+				<h2>Card Title</h2>
+				<p>Some content</p>
+			</Body>
+		</CardInner>
+	</Card>
+	<Card shadow clickable>
+		<CardInner>
+			<Body>
+				<h2>Card Title</h2>
+				<p>Some content</p>
+			</Body>
+		</CardInner>
+	</Card>
+	<Card shadow clickable>
+		<CardInner>
+			<Body>
+				<h2>Card Title</h2>
+				<p>Some content</p>
+			</Body>
+		</CardInner>
+	</Card>
+	<Card shadow clickable>
+		<CardInner>
+			<Body>
+				<h2>Card Title</h2>
+				<p>Some content</p>
+			</Body>
+		</CardInner>
+	</Card>
+</Box>
 ```
