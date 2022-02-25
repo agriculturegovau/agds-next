@@ -5,7 +5,7 @@ import { boxPalette, tokens, useLinkComponent } from '@ag.ds-next/core';
 import { NavItem } from './NavItem';
 
 export type NavListProps = {
-	links: { href: string; label: ReactNode }[]; // FIXME: this is too restrictive
+	links: { href: string; label: ReactNode; icon?: ReactNode }[]; // FIXME: this is too restrictive
 	activePath?: string;
 };
 
@@ -24,10 +24,11 @@ export function NavList({ links, activePath }: NavListProps) {
 				},
 			}}
 		>
-			{links.map(({ href, label, ...props }, index) => (
+			{links.map(({ href, label, icon, ...props }, index) => (
 				<NavItem key={index} active={href === activePath}>
 					<Link href={href} {...props}>
 						{label}
+						{icon}
 					</Link>
 				</NavItem>
 			))}

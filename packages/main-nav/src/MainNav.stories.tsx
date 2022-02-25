@@ -1,4 +1,5 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { Icon } from '@ag.ds-next/icon';
 
 import { MainNav } from './MainNav';
 
@@ -57,7 +58,13 @@ LightAltVariant.args = {
 export const SecondaryLinks = Template.bind({});
 SecondaryLinks.args = {
 	links: NAV_ITEMS,
-	secondaryLinks: [{ href: '#login', label: 'Sign in' }],
+	secondaryLinks: [
+		{
+			href: '#login',
+			label: 'Sign in',
+			icon: <Icon icon="avatar" size={1.5} />,
+		},
+	],
 	activePath: '#content',
-	variant: 'dark',
+	variant: 'agriculture',
 };

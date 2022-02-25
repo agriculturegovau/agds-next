@@ -28,7 +28,10 @@ export function NavItem({
 				// TODO: may also need to support button element
 				' a': {
 					position: 'relative',
-					display: 'block',
+					display: 'flex',
+					gap: '0.5rem',
+					flexDirection: 'row',
+					alignItems: 'center',
 					color: boxPalette[active ? 'foregroundText' : 'foregroundAction'],
 					padding: mapSpacing(1),
 					textDecoration: 'none',
