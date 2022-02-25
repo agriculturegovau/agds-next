@@ -1,6 +1,6 @@
-import { boxPalette, mapSpacing, Spacing } from '@ag.ds-next/core';
+import { boxPalette, mapSpacing, mq, Spacing } from '@ag.ds-next/core';
 import { foregroundColorMap } from '@ag.ds-next/box';
-import { DetailedHTMLProps, SVGAttributes } from 'react';
+import { DetailedHTMLProps, FC, SVGAttributes } from 'react';
 
 import { ICONS } from './icons';
 
@@ -37,3 +37,38 @@ export const Icon = ({ icon, size = 1, color, ...props }: IconProps) => (
 		<path d={ICONS[icon]} />
 	</svg>
 );
+
+export const createIcon = (children: React.ReactNode, name: string) => {
+	const Icon: FC<{
+		size?: Spacing;
+		color?: keyof typeof colors;
+	}> = ({ size = 1 }) => {
+		const resolvedSize = mapSpacing(size);
+
+		return (
+			<svg
+				aria-hidden="true"
+				width={resolvedSize}
+				height={resolvedSize}
+				viewBox="0 0 24 24"
+				clipRule="evenodd"
+				xmlns="http://www.w3.org/2000/svg"
+				focusable="false"
+				css={mq({
+					fill: 'none',
+					stroke: 'currentColor',
+					strokeLinejoin: 'round',
+					strokeLinecap: 'round',
+					strokeWidth: size > 1 ? 2 : 3,
+				})}
+				role="img"
+			>
+				{children}
+			</svg>
+		);
+	};
+
+	Icon.displayName = name;
+
+	return Icon;
+};
