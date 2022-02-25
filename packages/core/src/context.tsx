@@ -1,4 +1,9 @@
-import { createContext, useContext, PropsWithChildren } from 'react';
+import {
+	createContext,
+	useContext,
+	PropsWithChildren,
+	AnchorHTMLAttributes,
+} from 'react';
 
 function DefaultLinkComponent<P extends PropsWithChildren<{ href?: string }>>(
 	props: P
@@ -7,6 +12,8 @@ function DefaultLinkComponent<P extends PropsWithChildren<{ href?: string }>>(
 }
 
 export type LinkComponent = typeof DefaultLinkComponent;
+
+export type LinkProps = AnchorHTMLAttributes<HTMLAnchorElement>;
 
 export const coreContext = createContext({
 	linkComponent: DefaultLinkComponent,

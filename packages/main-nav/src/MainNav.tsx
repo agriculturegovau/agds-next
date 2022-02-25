@@ -1,14 +1,15 @@
 import { NavContainer, NavContainerProps } from './NavContainer';
-import { NavList, NavListProps } from './NavList';
+import { NavList, NavListLink } from './NavList';
 
 import { findBestMatch } from './utils';
 
 export type MainNavProps = React.PropsWithChildren<{
 	variant: NavContainerProps['variant'];
-	links: NavListProps['links'];
-	secondaryLinks?: NavListProps['links'];
+	links: NavListLink[];
+	secondaryLinks?: NavListLink[];
 	activePath?: string;
 	id?: string;
+	ariaLabel?: string;
 }>;
 
 export function MainNav({

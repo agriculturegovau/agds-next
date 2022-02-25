@@ -1,5 +1,9 @@
 import { HTMLProps } from 'react';
-import { forwardRefWithAs, useLinkComponent } from '@ag.ds-next/core';
+import {
+	forwardRefWithAs,
+	useLinkComponent,
+	LinkProps,
+} from '@ag.ds-next/core';
 import { Box, BoxProps, focusStyles, linkStyles } from '@ag.ds-next/box';
 
 export type TextProps = BoxProps;
@@ -34,7 +38,7 @@ export const Text = forwardRefWithAs<'span', BoxProps>(function Text(
 	);
 });
 
-type TextLinkProps = HTMLProps<HTMLAnchorElement>;
+type TextLinkProps = LinkProps;
 
 export const TextLink = (props: TextLinkProps) => {
 	const Link = useLinkComponent();
