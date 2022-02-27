@@ -9,7 +9,7 @@ export const SkipLinkContainer = ({
 	children,
 	...props
 }: SkipLinkContainerProps) => (
-	<nav aria-label="skip links navigation" {...props}>
+	<nav aria-label="Skip links" {...props}>
 		{children}
 	</nav>
 );
