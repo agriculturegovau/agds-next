@@ -1,5 +1,27 @@
 # @ag.ds-next/button
 
+## 4.0.0
+
+### Patch Changes
+
+- 088ff6c: Removed default browser margins
+- 3e8b39b: - Added fixed height
+  - Added ability to forward ref to `Button` and `ButtonLink` component
+  - Exported `ButtonProps` and `ButtonLinkProps`
+  - Simplified markup in storybook stories
+- cb58bc1: - Updated horizontal padding for the `sm` variant in the `Button` component
+  - Added `size` prop to `ButtonLink`
+  - Refactored how disabled styles are applied
+- Updated dependencies [9680133]
+- Updated dependencies [c7d2a66]
+- Updated dependencies [cd7e437]
+- Updated dependencies [d94cb5d]
+- Updated dependencies [9680133]
+- Updated dependencies [214cbf9]
+- Updated dependencies [3e8b39b]
+  - @ag.ds-next/core@2.1.0
+  - @ag.ds-next/box@4.0.0
+
 ## 3.0.0
 
 ### Major Changes

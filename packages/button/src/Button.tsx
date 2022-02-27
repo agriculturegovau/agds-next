@@ -5,7 +5,7 @@ import React, {
 	AnchorHTMLAttributes,
 } from 'react';
 import { useLinkComponent } from '@ag.ds-next/core';
-import { buttonStyles, ButtonSize, ButtonVariant } from './utils';
+import { buttonStyles, ButtonSize, ButtonVariant } from './styles';
 
 export type ButtonProps = DetailedHTMLProps<
 	ButtonHTMLAttributes<HTMLButtonElement>,

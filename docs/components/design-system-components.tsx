@@ -34,11 +34,21 @@ import { Logo as AgLogo } from '@ag.ds-next/ag-branding';
 import { Field } from '@ag.ds-next/field';
 import { TextInput } from '@ag.ds-next/text-input';
 import { Textarea } from '@ag.ds-next/textarea';
-import { SearchBox } from '@ag.ds-next/search-box';
+import {
+	SearchBox,
+	SearchBoxInput,
+	SearchBoxButton,
+} from '@ag.ds-next/search-box';
 import { Select } from '@ag.ds-next/select';
 import { VisuallyHidden } from '@ag.ds-next/a11y';
 import { ProgressIndicator } from '@ag.ds-next/progress-indicator';
 import { Checkbox, Radio, ControlGroup } from '@ag.ds-next/control-input';
+import { KeywordList } from '@ag.ds-next/keyword-list';
+import {
+	SkipLinks,
+	SkipLinkContainer,
+	SkipLinkItem,
+} from '@ag.ds-next/skip-link';
 
 export const designSystemComponents = {
 	Accordion,
@@ -86,10 +96,16 @@ export const designSystemComponents = {
 	TextInput,
 	Textarea,
 	SearchBox,
+	SearchBoxInput,
+	SearchBoxButton,
 	Select,
 	VisuallyHidden,
 	ProgressIndicator,
 	Checkbox,
 	Radio,
 	ControlGroup,
+	KeywordList,
+	SkipLinks,
+	SkipLinkContainer,
+	SkipLinkItem,
 };

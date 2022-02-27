@@ -1,9 +1,18 @@
 import React from 'react';
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import {
+	ComponentStory,
+	ComponentMeta,
+	StoryContext,
+	ReactFramework,
+} from '@storybook/react';
 import { Logo as AgLogo } from '@ag.ds-next/ag-branding';
-import { SearchBox } from '@ag.ds-next/search-box';
+import {
+	SearchBox,
+	SearchBoxInput,
+	SearchBoxButton,
+} from '@ag.ds-next/search-box';
 
-import { Header } from './Header';
+import { Header, HeaderProps } from './Header';
 import { HeaderContainer } from './HeaderContainer';
 import { HeaderBrand } from './HeaderBrand';
 
@@ -32,11 +41,13 @@ const defaultArgs = {
 	subline: 'Supporting Australian agricultural exports',
 };
 
-function getLogo(context: any, variant = 'dark') {
+function getLogo(
+	context: StoryContext<ReactFramework, HeaderProps>,
+	variant = 'dark'
+) {
 	if (context.globals.brand === 'agriculture') {
 		return <AgLogo />;
 	}
-
 	return {
 		dark: logoLight,
 		darkAlt: logoLight,
@@ -76,9 +87,15 @@ LightAltVariant.args = {
 export const LongSubline = Template.bind({});
 LongSubline.args = {
 	...defaultArgs,
-	logo: logoLight,
 	variant: 'dark',
 	subline: 'Service description that could be a little longer',
+};
+
+export const Badge = Template.bind({});
+Badge.args = {
+	...defaultArgs,
+	variant: 'dark',
+	badgeLabel: 'Beta',
 };
 
 export const NoLogo = Template.bind({});
@@ -91,7 +108,12 @@ export const Search = Template.bind({});
 Search.args = {
 	...defaultArgs,
 	rightContent: (
-		<SearchBox label="Search" aria-label="Sitewide" buttonReponsive />
+		<SearchBox aria-label="Sitewide" onSubmit={console.log}>
+			<SearchBoxInput label="Search this website" />
+			<SearchBoxButton iconOnly={{ xs: true, md: false }}>
+				Search
+			</SearchBoxButton>
+		</SearchBox>
 	),
 };
 

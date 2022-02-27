@@ -23,7 +23,7 @@ const FormPage: NextPage = () => {
 					<Column columnSpan={{ xs: 12, md: 7 }}>
 						<Stack gap={2}>
 							<Body>
-								<h1>Form example (h1)</h1>
+								<h1>Form example</h1>
 								<p>
 									The page heading communicates the main focus of the page. Make
 									your page heading descriptive and keep it succinct.

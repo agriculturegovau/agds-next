@@ -1,9 +1,9 @@
+import { useRouter } from 'next/router';
 import { Logo } from '@ag.ds-next/ag-branding';
 import { Stack } from '@ag.ds-next/box';
 import { Header } from '@ag.ds-next/header';
 import { MainNav } from '@ag.ds-next/main-nav';
-
-import { useRouter } from 'next/router';
+import { SiteHeaderSearch } from './SiteHeaderSearch';
 
 const NAV_LINKS = [
 	{ label: 'Home', href: '/' },
@@ -24,6 +24,7 @@ export const SiteHeader = () => {
 				logo={<Logo />}
 				heading="Export Service"
 				subline="Supporting Australian agricultural exports"
+				rightContent={<SiteHeaderSearch />}
 			/>
 			<MainNav
 				variant="agriculture"

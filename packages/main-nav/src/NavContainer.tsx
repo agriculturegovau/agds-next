@@ -48,14 +48,16 @@ const variantMap = {
 
 export type NavContainerProps = React.PropsWithChildren<{
 	variant: keyof typeof variantMap;
+	id?: string;
 }>;
 
-export function NavContainer({ variant, children }: NavContainerProps) {
+export function NavContainer({ children, variant, id }: NavContainerProps) {
 	const [menuOpen, open, close] = useTernaryState(false);
 	const { background, bottomBar, hover, palette } = variantMap[variant];
 
 	return (
 		<Box
+			id={id}
 			data-name="nav-container" // TODO: make this (or something like this) a pattern for providing end users a consistent handle for applying style overrides.
 			palette={palette}
 			background={background}

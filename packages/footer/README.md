@@ -102,6 +102,6 @@ The footer at the bottom of a page. Usually contains copyright information and l
 		our respects to their Elders past, present and emerging.
 	</Text>
 
-	<Text fontSize="xs">© Commonwealth of Australia.</Text>
+	<Text fontSize="xs">&copy; Commonwealth of Australia.</Text>
 </Footer>
 ```

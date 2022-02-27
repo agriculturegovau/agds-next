@@ -283,6 +283,34 @@ items={[
     <Radio checked={true}>Laptop</Radio>
   </ControlGroup>`,
 	},
+	{
+		group: 'Searchbox',
+		name: 'Basic',
+		code: `<SearchBox aria-label="Sitewide" onSubmit={console.log}>
+    <SearchBoxInput label="Search this website" />
+    <SearchBoxButton>Search</SearchBoxButton>
+  </SearchBox>`,
+	},
+	{
+		group: 'KeywordList',
+		name: 'Basic',
+		code: `<KeywordList
+    items={[
+      { subTitle: 'Department of', title: 'Agriculture and Water Resources' },
+      { subTitle: 'Department of', title: 'Communications and the Arts' },
+    ]}
+  />`,
+	},
+	{
+		group: 'SkipLinks',
+		name: 'Basic',
+		code: `<SkipLinks
+    links={[
+      { href: '#main-content', label: 'Skip to main content' },
+      { href: '#main-nav', label: 'Skip to main navigation' },
+    ]}
+  />`,
+	},
 ];
 
 export default snippits;
