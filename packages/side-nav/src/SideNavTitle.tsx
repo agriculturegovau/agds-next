@@ -26,6 +26,7 @@ export const SideNavTitle = ({
 				fontWeight="bold"
 				lineHeight="heading"
 				display="block"
+				focus
 				css={{
 					borderBottom: `2px solid ${boxPalette.border}`,
 					textDecoration: 'none',

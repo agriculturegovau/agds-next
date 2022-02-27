@@ -64,7 +64,7 @@ export const SideNavContainer = ({
 					[tokens.mediaQuery.min.md]: {
 						// Overwrite the animated height
 						// for tablet/desktop sizes.
-						overflow: 'auto',
+						overflow: 'unset',
 						height: 'auto !important',
 					},
 				}}
