@@ -269,7 +269,7 @@ export const ControlledGroup = () => {
 	);
 };
 
-export const ControlledGroup2 = () => {
+export const ExpandAll = () => {
 	const [openAccordions, setOpenAccordions] = useState<
 		AccordionControlledGroupExampleAccordionIndex[]
 	>([1]);
