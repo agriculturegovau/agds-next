@@ -17,10 +17,11 @@ export const LinkComponent = ({
 }) => {
 	if (!href) return <a {...props} />;
 
-	// Use an `a` tag when linking to an external site
+	// Use an `a` tag when linking externally
+	// Regex finds links starting with: `http://` | `https://` | `//`
 	const hrefAsString = typeof href === 'string' ? href : href.toString();
-	if (/^(http(s)?:)?\/\//.test(hrefAsString)) {
-		return <a {...props} />;
+	if (/^(https?:\/\/|\/\/)/i.test(hrefAsString)) {
+		return <a href={hrefAsString} {...props} />;
 	}
 
 	return (

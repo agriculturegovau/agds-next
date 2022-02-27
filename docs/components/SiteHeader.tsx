@@ -13,7 +13,12 @@ const NAV_LINKS = [
 ];
 
 const SECONDARY_LINKS = [
-	{ label: 'GitHub', href: 'https://github.com/steelthreads/agds-next' },
+	{
+		label: 'GitHub',
+		href: 'https://github.com/steelthreads/agds-next',
+		target: '_blank',
+		rel: 'noopener noreferrer',
+	},
 ];
 
 export const SiteHeader = () => {
