@@ -234,11 +234,13 @@ const AccordionControlledGroupExample = ({
 };
 
 export const ControlledGroup = () => {
-	const [openAccordions, setOpenAccordions] = useState([1]);
+	const [openAccordions, setOpenAccordions] = useState<
+		AccordionControlledGroupExampleAccordionIndex[]
+	>([1]);
 
 	const openAll = () => setOpenAccordions([1, 2, 3]);
 	const closeAll = () => setOpenAccordions([]);
-	const toggle = (item: number) => {
+	const toggle = (item: AccordionControlledGroupExampleAccordionIndex) => {
 		setOpenAccordions((openAccordions) => {
 			if (openAccordions.includes(item)) {
 				return openAccordions.filter((acc) => acc !== item);
@@ -252,7 +254,7 @@ export const ControlledGroup = () => {
 	return (
 		<Stack gap={1} alignItems="flex-start">
 			<Button
-				size="small"
+				size="sm"
 				variant="tertiary"
 				onClick={isAnyOpen ? closeAll : openAll}
 			>
@@ -268,11 +270,13 @@ export const ControlledGroup = () => {
 };
 
 export const ControlledGroup2 = () => {
-	const [openAccordions, setOpenAccordions] = useState([1]);
+	const [openAccordions, setOpenAccordions] = useState<
+		AccordionControlledGroupExampleAccordionIndex[]
+	>([1]);
 
 	const openAll = () => setOpenAccordions([1, 2, 3]);
 	const closeAll = () => setOpenAccordions([]);
-	const toggle = (item: number) => {
+	const toggle = (item: AccordionControlledGroupExampleAccordionIndex) => {
 		setOpenAccordions((openAccordions) => {
 			if (openAccordions.includes(item)) {
 				return openAccordions.filter((acc) => acc !== item);
@@ -284,11 +288,11 @@ export const ControlledGroup2 = () => {
 	return (
 		<Stack gap={1} alignItems="flex-start">
 			<Flex gap={1} flexDirection="row">
-				<Button size="small" variant="tertiary" onClick={openAll}>
+				<Button size="sm" variant="tertiary" onClick={openAll}>
 					Open All
 				</Button>
 
-				<Button size="small" variant="tertiary" onClick={closeAll}>
+				<Button size="sm" variant="tertiary" onClick={closeAll}>
 					Close All
 				</Button>
 			</Flex>
