@@ -3,6 +3,7 @@ import {
 	useContext,
 	PropsWithChildren,
 	AnchorHTMLAttributes,
+	DetailedHTMLProps,
 } from 'react';
 
 function DefaultLinkComponent<P extends PropsWithChildren<{ href?: string }>>(
@@ -13,7 +14,10 @@ function DefaultLinkComponent<P extends PropsWithChildren<{ href?: string }>>(
 
 export type LinkComponent = typeof DefaultLinkComponent;
 
-export type LinkProps = AnchorHTMLAttributes<HTMLAnchorElement>;
+export type LinkProps = DetailedHTMLProps<
+	AnchorHTMLAttributes<HTMLAnchorElement>,
+	HTMLAnchorElement
+>;
 
 export const coreContext = createContext({
 	linkComponent: DefaultLinkComponent,

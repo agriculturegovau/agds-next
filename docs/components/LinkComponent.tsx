@@ -17,6 +17,12 @@ export const LinkComponent = ({
 }) => {
 	if (!href) return <a {...props} />;
 
+	// Use an `a` tag when linking to an external site
+	const hrefAsString = typeof href === 'string' ? href : href.toString();
+	if (/^(http(s)?:)?\/\//.test(hrefAsString)) {
+		return <a {...props} />;
+	}
+
 	return (
 		<Link
 			href={href}
