@@ -11,8 +11,8 @@ Cards are used to organise information related to a single topic. Cards can cont
 ```jsx live
 <Flex gap={1} flexDirection="row">
 	<Flex
+		flexDirection="column"
 		flexGrow={1}
-		alignContent="stretch"
 		palette="light"
 		padding={1}
 		background="body"
@@ -26,7 +26,13 @@ Cards are used to organise information related to a single topic. Cards can cont
 			</CardInner>
 		</Card>
 	</Flex>
-	<Flex flexGrow={1} palette="dark" padding={1} background="body">
+	<Flex
+		flexDirection="column"
+		flexGrow={1}
+		palette="dark"
+		padding={1}
+		background="body"
+	>
 		<Card>
 			<CardInner>
 				<Body>
@@ -42,8 +48,8 @@ Cards are used to organise information related to a single topic. Cards can cont
 ```jsx live
 <Flex gap={1} flexDirection="row">
 	<Flex
+		flexDirection="column"
 		flexGrow={1}
-		alignContent="stretch"
 		palette="light"
 		padding={1}
 		background="body"
@@ -63,8 +69,8 @@ Cards are used to organise information related to a single topic. Cards can cont
 		</Card>
 	</Flex>
 	<Flex
+		flexDirection="column"
 		flexGrow={1}
-		alignContent="stretch"
 		palette="dark"
 		padding={1}
 		background="body"
