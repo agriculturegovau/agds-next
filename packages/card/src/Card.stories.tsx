@@ -22,7 +22,7 @@ export const OnLight: ComponentStory<typeof Card> = (args) => (
 				<Heading as="h2" type="h3" paddingBottom={1}>
 					Card heading
 				</Heading>
-				<CardLink href="http://google.com" target="_blank">
+				<CardLink href="#">
 					Linking out
 					<Icon icon="chevronRight" size={1} />
 				</CardLink>

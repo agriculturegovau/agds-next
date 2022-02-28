@@ -10,7 +10,7 @@ export default {
 } as ComponentMeta<typeof LinkList>;
 
 const exampleLinks = [
-	{ href: '#', label: 'Home', target: '_blank' },
+	{ href: '#', label: 'Home' },
 	{ href: '#', label: 'Establishments' },
 	{ href: '#', label: 'Applications' },
 	{

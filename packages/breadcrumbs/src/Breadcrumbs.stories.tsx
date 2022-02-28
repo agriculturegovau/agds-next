@@ -38,7 +38,13 @@ OnDark.args = {
 
 export const Modular: ComponentStory<typeof BreadcrumbsContainer> = () => (
 	<BreadcrumbsContainer>
-		<BreadcrumbsItem href="#one">External</BreadcrumbsItem>
+		<BreadcrumbsItem
+			href="https://github.com/steelthreads/agds-next"
+			target="_blank"
+			rel="noopener noreferrer"
+		>
+			External
+		</BreadcrumbsItem>
 		<BreadcrumbsDivider />
 		<BreadcrumbsItem href="#one">One</BreadcrumbsItem>
 		<BreadcrumbsDivider />
