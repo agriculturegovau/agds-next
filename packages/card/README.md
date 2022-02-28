@@ -9,8 +9,14 @@ group: Layout
 Cards are used to organise information related to a single topic. Cards can contain multiple elements, such as images, links, actions, text and more.
 
 ```jsx live
-<Stack gap={1}>
-	<Box palette="light" padding={1} background="body">
+<Flex gap={1} flexDirection="row">
+	<Flex
+		flexDirection="column"
+		flexGrow={1}
+		palette="light"
+		padding={1}
+		background="body"
+	>
 		<Card>
 			<CardInner>
 				<Body>
@@ -19,8 +25,14 @@ Cards are used to organise information related to a single topic. Cards can cont
 				</Body>
 			</CardInner>
 		</Card>
-	</Box>
-	<Box palette="dark" padding={1} background="body">
+	</Flex>
+	<Flex
+		flexDirection="column"
+		flexGrow={1}
+		palette="dark"
+		padding={1}
+		background="body"
+	>
 		<Card>
 			<CardInner>
 				<Body>
@@ -29,8 +41,55 @@ Cards are used to organise information related to a single topic. Cards can cont
 				</Body>
 			</CardInner>
 		</Card>
-	</Box>
-</Stack>
+	</Flex>
+</Flex>
+```
+
+```jsx live
+<Flex gap={1} flexDirection="row">
+	<Flex
+		flexDirection="column"
+		flexGrow={1}
+		palette="light"
+		padding={1}
+		background="body"
+	>
+		<Card>
+			<PlaceholderImage />
+			<CardInner>
+				<Body>
+					<h2>Card title with a longer heading</h2>
+					<p>
+						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras non
+						finibus leo, non rhoncus neque. Nunc et dui cursus, euismod felis
+						eget, tristique augue. Praesent consequat mollis lorem id efficitur.
+					</p>
+				</Body>
+			</CardInner>
+		</Card>
+	</Flex>
+	<Flex
+		flexDirection="column"
+		flexGrow={1}
+		palette="dark"
+		padding={1}
+		background="body"
+	>
+		<Card>
+			<PlaceholderImage />
+			<CardInner>
+				<Body>
+					<h2>Card title with a longer heading</h2>
+					<p>
+						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras non
+						finibus leo, non rhoncus neque. Nunc et dui cursus, euismod felis
+						eget, tristique augue. Praesent consequat mollis lorem id efficitur.
+					</p>
+				</Body>
+			</CardInner>
+		</Card>
+	</Flex>
+</Flex>
 ```
 
 ## Images
@@ -66,8 +125,146 @@ For cards that contain a single link, the hit area for that link can be made to 
 </Card>
 ```
 
-## TODO
+## Feature headers
 
-- [Card lists](https://designsystem.gov.au/components/card/#card-lists)
-- [Feature Headers](https://designsystem.gov.au/components/card/#feature-headers)
-- [Feature Footers](https://designsystem.gov.au/components/card/#feature-footers)
+Use feature headers to give the card heading more visual prominence.
+
+```jsx live
+<Columns>
+	<Column columnSpan={6}>
+		<Card>
+			<CardHeader>
+				<Body>
+					<h4>Feature card title</h4>
+				</Body>
+			</CardHeader>
+			<CardInner>
+				<Body>
+					<p>Additional conent relating to the card</p>
+				</Body>
+			</CardInner>
+		</Card>
+	</Column>
+	<Column columnSpan={6}>
+		<Card>
+			<CardHeader background="bodyAlt">
+				<Body>
+					<h4>Feature card title</h4>
+				</Body>
+			</CardHeader>
+			<CardInner>
+				<Body>
+					<p>Additional conent relating to the card</p>
+				</Body>
+			</CardInner>
+		</Card>
+	</Column>
+</Columns>
+```
+
+## Feature footers
+
+Use feature footers to give the card footer more visual prominence. This can be used to guide users to the call to action.
+
+```jsx live
+<Columns>
+	<Column columnSpan={6}>
+		<Card>
+			<CardInner>
+				<Body>
+					<h3>Card title</h3>
+					<p>
+						Lorem ipsum dolor, sit amet consectetur adipisicing elit. In,
+						voluptatibus.
+					</p>
+				</Body>
+			</CardInner>
+			<CardFooter>
+				<a href="#">Action</a>
+			</CardFooter>
+		</Card>
+	</Column>
+	<Column columnSpan={6}>
+		<Card>
+			<CardInner>
+				<Body>
+					<h3>Card title</h3>
+					<p>
+						Lorem ipsum dolor, sit amet consectetur adipisicing elit. In,
+						voluptatibus.
+					</p>
+				</Body>
+			</CardInner>
+			<CardFooter background="bodyAlt">
+				<a href="#">Action</a>
+			</CardFooter>
+		</Card>
+	</Column>
+</Columns>
+```
+
+## Card lists
+
+Multiple cards can be used in a list to display a collection of results or articles for example.
+
+```jsx live
+<CardList templateColumns={3}>
+	<Card shadow clickable>
+		<CardInner>
+			<Body>
+				<h2>Card Title</h2>
+				<p>Some content</p>
+			</Body>
+		</CardInner>
+	</Card>
+	<Card shadow clickable>
+		<CardInner>
+			<Body>
+				<h2>Card Title</h2>
+				<p>Some content</p>
+				<p>Additional content</p>
+			</Body>
+		</CardInner>
+	</Card>
+	<Card shadow clickable>
+		<CardInner>
+			<Body>
+				<h2>Card Title</h2>
+				<p>Some content</p>
+			</Body>
+		</CardInner>
+	</Card>
+	<Card shadow clickable>
+		<CardInner>
+			<Body>
+				<h2>Card Title</h2>
+				<p>Some content</p>
+			</Body>
+		</CardInner>
+	</Card>
+	<Card shadow clickable>
+		<CardInner>
+			<Body>
+				<h2>Card Title</h2>
+				<p>Some content</p>
+			</Body>
+		</CardInner>
+	</Card>
+	<Card shadow clickable>
+		<CardInner>
+			<Body>
+				<h2>Card Title</h2>
+				<p>Some content</p>
+			</Body>
+		</CardInner>
+	</Card>
+	<Card shadow clickable>
+		<CardInner>
+			<Body>
+				<h2>Card Title</h2>
+				<p>Some content</p>
+			</Body>
+		</CardInner>
+	</Card>
+</CardList>
+```

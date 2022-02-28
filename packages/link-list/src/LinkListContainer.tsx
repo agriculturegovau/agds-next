@@ -1,10 +1,9 @@
-import type { ReactNode } from 'react';
+import type { PropsWithChildren } from 'react';
 import { Stack } from '@ag.ds-next/box';
 
-export type LinkListContainerProps = {
-	children: ReactNode;
+export type LinkListContainerProps = PropsWithChildren<{
 	horizontal?: boolean;
-};
+}>;
 
 export const LinkListContainer = ({
 	children,

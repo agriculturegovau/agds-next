@@ -1,25 +1,15 @@
-import {
-	forwardRef,
-	PropsWithRef,
-	DetailedHTMLProps,
-	InputHTMLAttributes,
-} from 'react';
+import { forwardRef, InputHTMLAttributes } from 'react';
 import { RadioIndicator } from './RadioIndicator';
 import { ControlInput } from './ControlInput';
 import { ControlContainer } from './ControlContainer';
 import { ControlLabel } from './ControlLabel';
 import { ControlSize } from './utils';
 
-export type RadioProps = PropsWithRef<
-	Omit<
-		DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>,
-		'size'
-	> & {
-		invalid?: boolean;
-		valid?: boolean;
-		size?: ControlSize;
-	}
->;
+export type RadioProps = Omit<InputHTMLAttributes<HTMLInputElement>, 'size'> & {
+	invalid?: boolean;
+	valid?: boolean;
+	size?: ControlSize;
+};
 
 export const Radio = forwardRef<HTMLInputElement, RadioProps>(function Radio(
 	{ children, disabled, invalid, valid, size = 'md', ...props },

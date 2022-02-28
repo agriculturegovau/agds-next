@@ -1,15 +1,8 @@
-import React, {
-	forwardRef,
-	DetailedHTMLProps,
-	TextareaHTMLAttributes,
-} from 'react';
+import React, { forwardRef, TextareaHTMLAttributes } from 'react';
 import { Field, FieldMaxWidth } from '@ag.ds-next/field';
 import { textInputStyles } from '@ag.ds-next/text-input';
 
-export type TextareaProps = DetailedHTMLProps<
-	TextareaHTMLAttributes<HTMLTextAreaElement>,
-	HTMLTextAreaElement
-> & {
+export type TextareaProps = TextareaHTMLAttributes<HTMLTextAreaElement> & {
 	label: string;
 	required?: boolean;
 	hint?: string;

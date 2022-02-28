@@ -1,7 +1,6 @@
 import React, {
 	forwardRef,
-	ReactNode,
-	DetailedHTMLProps,
+	PropsWithChildren,
 	SelectHTMLAttributes,
 } from 'react';
 import { Field, FieldMaxWidth, fieldMaxWidth } from '@ag.ds-next/field';
@@ -26,10 +25,7 @@ export type OptionGroup = {
 };
 export type Options = (Option | OptionGroup)[];
 
-export type SelectProps = DetailedHTMLProps<
-	SelectHTMLAttributes<HTMLSelectElement>,
-	HTMLSelectElement
-> & {
+export type SelectProps = SelectHTMLAttributes<HTMLSelectElement> & {
 	label: string;
 	required?: boolean;
 	hint?: string;
@@ -92,11 +88,10 @@ const SelectContainer = ({
 	children,
 	block,
 	maxWidth,
-}: {
-	children: ReactNode;
+}: PropsWithChildren<{
 	block?: boolean;
 	maxWidth?: FieldMaxWidth;
-}) => (
+}>) => (
 	<div
 		css={{
 			position: 'relative',

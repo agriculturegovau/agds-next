@@ -1,14 +1,10 @@
-import { DetailedHTMLProps, ButtonHTMLAttributes, forwardRef } from 'react';
+import { ButtonHTMLAttributes, forwardRef } from 'react';
 import { Button } from '@ag.ds-next/button';
 import { Box } from '@ag.ds-next/box';
 import { Icon } from '@ag.ds-next/icon';
 import { mapResponsiveProp, mq, ResponsiveProp } from '@ag.ds-next/core';
 
-export type SearchBoxButtonProps = Omit<
-	DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement>,
-	'children'
-> & {
-	children: string;
+export type SearchBoxButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
 	iconOnly?: ResponsiveProp<boolean>;
 };
 
@@ -24,7 +20,7 @@ export const SearchBoxButton = forwardRef<
 			borderLeft
 			borderWidth="lg"
 		>
-			<Button ref={ref} type="submit" aria-label={children} css={buttonStyles}>
+			<Button ref={ref} type="submit" css={buttonStyles}>
 				<span>{children}</span>
 				{iconOnly ? <Icon icon="search" size={1.5} /> : null}
 			</Button>
