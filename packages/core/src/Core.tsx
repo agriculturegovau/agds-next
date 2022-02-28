@@ -1,23 +1,25 @@
-import React, { PropsWithChildren, ComponentProps } from 'react';
+import React, { PropsWithChildren } from 'react';
 import { Global } from '@emotion/react';
 
 import { goldTheme } from './goldTheme';
-import { CoreProvider } from './context';
+import { CoreProvider, CoreProviderProps } from './context';
 import { mergeTheme, Theme } from './theme';
 import { boxPalettes, boxPalette } from './boxPalette';
 import { tokens } from './tokens';
+
+export type CoreProps = PropsWithChildren<
+	{
+		theme?: Theme;
+		applyReset?: boolean;
+	} & CoreProviderProps
+>;
 
 export function Core({
 	children,
 	applyReset = true,
 	theme,
 	linkComponent,
-}: PropsWithChildren<
-	{
-		theme?: Theme;
-		applyReset?: boolean;
-	} & ComponentProps<typeof CoreProvider>
->) {
+}: CoreProps) {
 	return (
 		<CoreProvider linkComponent={linkComponent}>
 			<Global

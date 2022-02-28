@@ -1,15 +1,12 @@
-import React, { DetailedHTMLProps, HTMLAttributes } from 'react';
+import { HTMLAttributes } from 'react';
 
-export type SkipLinkContainerProps = DetailedHTMLProps<
-	HTMLAttributes<HTMLElement>,
-	HTMLElement
->;
+export type SkipLinkContainerProps = HTMLAttributes<HTMLElement>;
 
 export const SkipLinkContainer = ({
 	children,
 	...props
 }: SkipLinkContainerProps) => (
-	<nav aria-label="skip links navigation" {...props}>
+	<nav aria-label="Skip links" {...props}>
 		{children}
 	</nav>
 );

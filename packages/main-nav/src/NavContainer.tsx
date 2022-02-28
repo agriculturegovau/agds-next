@@ -70,7 +70,12 @@ export function NavContainer({ children, variant, id }: NavContainerProps) {
 			}}
 		>
 			<BottomBar />
-			<Flex as="nav" justifyContent="center" css={{ position: 'relative' }}>
+			<Flex
+				as="nav"
+				justifyContent="center"
+				css={{ position: 'relative' }}
+				aria-label="Main"
+			>
 				<Box
 					maxWidth={tokens.maxWidth.container}
 					width="100%"

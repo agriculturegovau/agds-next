@@ -1,3 +1,5 @@
+import { NavListLink } from './NavList';
+
 export const localPaletteVars = {
 	linkHoverBg: '--nav-linkHoverBg',
 	linkActiveBg: '--nav-linkActiveBg',
@@ -9,12 +11,12 @@ export const localPalette = {
 	bottomBar: `var(${localPaletteVars.bottomBar})`,
 };
 
-export function findBestMatch(links: { href: string }[], activePath?: string) {
+export function findBestMatch(links: NavListLink[], activePath?: string) {
 	if (!activePath) return '';
 	let bestMatch = '';
 
 	for (const link of links) {
-		if (link.href === activePath) return link.href;
+		if (!link.href || link.href === activePath) return link.href;
 		if (
 			activePath?.startsWith(link.href) &&
 			link.href.length > bestMatch.length

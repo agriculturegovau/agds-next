@@ -9,7 +9,7 @@ export const BreadcrumbsContainer = ({
 	children,
 }: BreadcrumbsContainerProps) => {
 	return (
-		<nav aria-label="breadcrumb">
+		<nav aria-label="Breadcrumb">
 			<Flex as="ul" gap={0.5} alignItems="center">
 				{children}
 			</Flex>

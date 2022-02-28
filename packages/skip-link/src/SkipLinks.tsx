@@ -1,18 +1,15 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import { SkipLinkContainer } from './SkipLinkContainer';
-import { SkipLinkItem } from './SkipLinkItem';
+import { SkipLinkItem, SkipLinkItemProps } from './SkipLinkItem';
 
 export type SkipLinksProps = {
-	links: {
-		href: string;
-		label: string;
-	}[];
+	links: (Omit<SkipLinkItemProps, 'children'> & { label: ReactNode })[];
 };
 
 export const SkipLinks = ({ links }: SkipLinksProps) => (
 	<SkipLinkContainer>
-		{links.map(({ href, label }, idx) => (
-			<SkipLinkItem key={idx} href={href}>
+		{links.map(({ label, ...props }, idx) => (
+			<SkipLinkItem key={idx} {...props}>
 				{label}
 			</SkipLinkItem>
 		))}
