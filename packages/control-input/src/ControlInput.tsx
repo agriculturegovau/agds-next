@@ -1,11 +1,8 @@
-import { forwardRef, DetailedHTMLProps, InputHTMLAttributes } from 'react';
+import { forwardRef, InputHTMLAttributes } from 'react';
 import { visuallyHiddenStyles } from '@ag.ds-next/a11y';
 import { packs } from '@ag.ds-next/core';
 
-export type ControlInputProps = DetailedHTMLProps<
-	InputHTMLAttributes<HTMLInputElement>,
-	HTMLInputElement
->;
+export type ControlInputProps = InputHTMLAttributes<HTMLInputElement>;
 
 export const ControlInput = forwardRef<HTMLInputElement, ControlInputProps>(
 	function ControlInput(props, ref) {

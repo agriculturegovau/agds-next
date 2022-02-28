@@ -1,18 +1,17 @@
-import { ReactNode } from 'react';
+import { PropsWithChildren } from 'react';
 import { Flex, Stack } from '@ag.ds-next/box';
 import { Text } from '@ag.ds-next/text';
 import { mapSpacing } from '@ag.ds-next/core';
 import { FieldContainer, FieldHint, FieldMessage } from '@ag.ds-next/field';
 
-export type ControlGroupProps = {
+export type ControlGroupProps = PropsWithChildren<{
 	block?: boolean;
-	children: ReactNode;
 	hint?: string;
 	invalid?: boolean;
 	label?: string;
 	message?: string;
 	required?: boolean;
-};
+}>;
 
 export const ControlGroup = ({
 	block,

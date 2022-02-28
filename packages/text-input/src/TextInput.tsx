@@ -1,8 +1,4 @@
-import React, {
-	forwardRef,
-	DetailedHTMLProps,
-	InputHTMLAttributes,
-} from 'react';
+import React, { forwardRef, InputHTMLAttributes } from 'react';
 import { Field, fieldMaxWidth, FieldMaxWidth } from '@ag.ds-next/field';
 import {
 	packs,
@@ -12,10 +8,7 @@ import {
 	tokens,
 } from '@ag.ds-next/core';
 
-export type InputProps = DetailedHTMLProps<
-	InputHTMLAttributes<HTMLInputElement>,
-	HTMLInputElement
-> & {
+export type InputProps = InputHTMLAttributes<HTMLInputElement> & {
 	label: string;
 	required?: boolean;
 	hint?: string;

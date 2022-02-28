@@ -1,13 +1,12 @@
-import { ReactNode } from 'react';
+import { PropsWithChildren } from 'react';
 import { Flex } from '@ag.ds-next/box';
-import { globalPalette, themeVars } from '@ag.ds-next/core';
+import { globalPalette } from '@ag.ds-next/core';
 
-export type ControlContainerProps = {
-	children: ReactNode;
+export type ControlContainerProps = PropsWithChildren<{
 	disabled?: boolean;
 	invalid?: boolean;
 	valid?: boolean;
-};
+}>;
 
 export const ControlContainer = ({
 	children,

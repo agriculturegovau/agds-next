@@ -6,17 +6,15 @@ import {
 	packs,
 } from '@ag.ds-next/core';
 import { Box } from '@ag.ds-next/box';
-import type { ReactNode } from 'react';
+import type { PropsWithChildren } from 'react';
 
 import { localPalette } from './utils';
 
-export function NavItem({
-	children,
-	active,
-}: {
-	children: ReactNode;
+export type NavItemProps = PropsWithChildren<{
 	active?: boolean;
-}) {
+}>;
+
+export function NavItem({ children, active }: NavItemProps) {
 	return (
 		<Box
 			as="li"
