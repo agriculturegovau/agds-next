@@ -21,8 +21,8 @@ export function LinkComponent({
 
 	// Use an `a` tag when linking externally
 	// Regex finds links starting with: `http://` | `https://` | `//`
-	const hrefAsString = typeof href === 'string' ? href : href.toString();
-	if (/^(https?:\/\/|\/\/)/i.test(hrefAsString)) {
+	const hrefAsString = typeof href === 'string' ? href : href?.pathname;
+	if (hrefAsString && /^(https?:\/\/|\/\/)/i.test(hrefAsString)) {
 		return <a href={hrefAsString} {...props} />;
 	}
 
