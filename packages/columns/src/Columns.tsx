@@ -1,4 +1,3 @@
-import { ReactNode } from 'react';
 import {
 	forwardRefWithAs,
 	ResponsiveProp,
@@ -8,12 +7,14 @@ import {
 	mq,
 } from '@ag.ds-next/core';
 import { Box, BoxProps } from '@ag.ds-next/box';
+import { PropsWithChildren } from 'react';
 
-export type ColumnsProps = Pick<BoxProps, 'gap' | 'alignItems'> & {
-	children: ReactNode;
-	columnGap?: ResponsiveProp<Spacing>;
-	rowGap?: ResponsiveProp<Spacing>;
-};
+export type ColumnsProps = PropsWithChildren<
+	Pick<BoxProps, 'gap' | 'alignItems'> & {
+		columnGap?: ResponsiveProp<Spacing>;
+		rowGap?: ResponsiveProp<Spacing>;
+	}
+>;
 
 export const Columns = forwardRefWithAs<'div', ColumnsProps>(function Columns(
 	{ gap, columnGap, rowGap, ...props },

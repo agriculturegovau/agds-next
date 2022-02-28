@@ -1,13 +1,13 @@
 import { boxPalette, mapSpacing, Spacing } from '@ag.ds-next/core';
 import { foregroundColorMap } from '@ag.ds-next/box';
-import { DetailedHTMLProps, SVGAttributes } from 'react';
+import { SVGAttributes } from 'react';
 
 import { ICONS } from './icons';
 
 export type IconNameType = keyof typeof ICONS;
 
 type SvgProps = Omit<
-	DetailedHTMLProps<SVGAttributes<SVGSVGElement>, SVGSVGElement>,
+	SVGAttributes<SVGSVGElement>,
 	'width' | 'height' | 'viewBox' | 'fill' | 'fillRule' | 'clipRule' | 'xmlns'
 >;
 

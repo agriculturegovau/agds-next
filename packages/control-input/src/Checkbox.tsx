@@ -1,25 +1,18 @@
-import React, {
-	forwardRef,
-	PropsWithRef,
-	DetailedHTMLProps,
-	InputHTMLAttributes,
-} from 'react';
+import React, { forwardRef, InputHTMLAttributes } from 'react';
 import { CheckboxIndicator } from './CheckboxIndicator';
 import { ControlInput } from './ControlInput';
 import { ControlContainer } from './ControlContainer';
 import { ControlLabel } from './ControlLabel';
 import { ControlSize } from './utils';
 
-export type CheckboxProps = PropsWithRef<
-	Omit<
-		DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>,
-		'size'
-	> & {
-		invalid?: boolean;
-		valid?: boolean;
-		size?: ControlSize;
-	}
->;
+export type CheckboxProps = Omit<
+	InputHTMLAttributes<HTMLInputElement>,
+	'size'
+> & {
+	invalid?: boolean;
+	valid?: boolean;
+	size?: ControlSize;
+};
 
 export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
 	function Checkbox(

@@ -70,7 +70,9 @@ export function HeaderBrand({
 	);
 }
 
-const HeaderBadge = ({ children }: { children: ReactNode }) => {
+type HeaderBadgeProps = { children: ReactNode };
+
+const HeaderBadge = ({ children }: HeaderBadgeProps) => {
 	return (
 		<Box
 			fontSize="xs"

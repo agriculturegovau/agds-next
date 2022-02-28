@@ -1,11 +1,10 @@
-import { ReactNode } from 'react';
+import { PropsWithChildren } from 'react';
 import { Stack } from '@ag.ds-next/box';
 import { globalPalette } from '@ag.ds-next/core';
 
-export type FieldContainerProps = {
-	children: ReactNode;
+export type FieldContainerProps = PropsWithChildren<{
 	invalid?: boolean;
-};
+}>;
 
 export const FieldContainer = ({ children, invalid }: FieldContainerProps) => (
 	<Stack

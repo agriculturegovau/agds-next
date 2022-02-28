@@ -2,7 +2,9 @@ import { ReactNode } from 'react';
 import { Box } from '@ag.ds-next/box';
 import { LinkListContext, useLinkListDepth } from './context';
 
-export const SideNavGroup = ({ children }: { children: ReactNode }) => {
+type SideNavGroupProps = { children: ReactNode };
+
+export const SideNavGroup = ({ children }: SideNavGroupProps) => {
 	const depth = useLinkListDepth();
 	return (
 		<LinkListContext.Provider value={depth + 1}>

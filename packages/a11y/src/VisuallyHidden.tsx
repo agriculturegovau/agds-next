@@ -1,6 +1,8 @@
 import React, { ReactNode } from 'react';
 
-export const VisuallyHidden = ({ children }: { children: ReactNode }) => (
+export type VisuallyHiddenProps = { children: ReactNode };
+
+export const VisuallyHidden = ({ children }: VisuallyHiddenProps) => (
 	<span css={visuallyHiddenStyles}>{children}</span>
 );
 
