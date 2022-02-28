@@ -24,9 +24,8 @@ export function MainNav({
 }: MainNavProps) {
 	const bestMatch = findBestMatch(links, activePath);
 	return (
-		<NavContainer variant={variant} id={id}>
+		<NavContainer variant={variant} id={id} rightContent={rightContent}>
 			<NavList links={links} activePath={bestMatch} />
-			{rightContent}
 		</NavContainer>
 	);
 }

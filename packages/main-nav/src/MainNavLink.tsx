@@ -5,7 +5,7 @@ import { NavListItem } from './NavListItem';
 export type MainNavLinkProps = Omit<LinkProps, 'children'> & {
 	active?: boolean;
 	label: ReactNode;
-	icon?: ReactNode;
+	icon: ReactNode;
 };
 
 export const MainNavLink = ({
@@ -32,7 +32,7 @@ export type MainNavButtonProps = Omit<
 > & {
 	active?: boolean;
 	label: ReactNode;
-	icon?: ReactNode;
+	icon: ReactNode;
 };
 
 export const MainNavButton = ({

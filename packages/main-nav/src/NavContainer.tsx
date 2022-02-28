@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import FocusTrap from 'focus-trap-react';
 
 import { Box, Flex, backgroundColorMap } from '@ag.ds-next/box';
@@ -47,11 +47,17 @@ const variantMap = {
 } as const;
 
 export type NavContainerProps = React.PropsWithChildren<{
+	rightContent: ReactNode;
 	variant: keyof typeof variantMap;
 	id?: string;
 }>;
 
-export function NavContainer({ children, variant, id }: NavContainerProps) {
+export function NavContainer({
+	children,
+	variant,
+	id,
+	rightContent,
+}: NavContainerProps) {
 	const [menuOpen, open, close] = useTernaryState(false);
 	const { background, bottomBar, hover, palette } = variantMap[variant];
 
@@ -76,7 +82,9 @@ export function NavContainer({ children, variant, id }: NavContainerProps) {
 				css={{ position: 'relative' }}
 				aria-label="Main"
 			>
-				<Box
+				<Flex
+					justifyContent="space-between"
+					alignItems="center"
 					maxWidth={tokens.maxWidth.container}
 					width="100%"
 					paddingX={{ xs: 0.75, md: 2 }}
@@ -116,7 +124,8 @@ export function NavContainer({ children, variant, id }: NavContainerProps) {
 							</Flex>
 						</div>
 					</FocusTrap>
-				</Box>
+					{rightContent}
+				</Flex>
 			</Flex>
 			<Overlay menuOpen={menuOpen} />
 		</Box>

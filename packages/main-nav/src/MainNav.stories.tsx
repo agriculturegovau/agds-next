@@ -71,7 +71,7 @@ export const HeaderRightLink: ComponentStory<typeof MainNav> = (args) => {
 				<MainNavLink
 					href="#login"
 					label="Sign in"
-					icon={<Icon icon="avatar" size={1.5} />}
+					icon={<Icon icon="avatar" />}
 				/>
 			}
 		/>
@@ -87,9 +87,9 @@ export const HeaderRightButton: ComponentStory<typeof MainNav> = (args) => {
 			{...args}
 			rightContent={
 				<MainNavButton
-					onClick={() => console.log('Hello Jordan')}
+					onClick={() => console.log('Button press')}
 					label="Sign in"
-					icon={<Icon icon="avatar" size={1.5} />}
+					icon={<Icon icon="avatar" />}
 				/>
 			}
 		/>
