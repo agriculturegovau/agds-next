@@ -7,14 +7,14 @@ import {
 	LinkProps,
 } from '@ag.ds-next/core';
 
-import { NavItem } from './NavItem';
+import { NavListItem } from './NavItem';
 
 export type NavListLink = Omit<LinkProps, 'children'> & {
 	label: ReactNode;
 };
 
 export type NavListProps = {
-	links: NavListLink & { icon?: ReactNode }[];
+	links: NavListLink[];
 	activePath?: string;
 };
 
@@ -35,13 +35,12 @@ export function NavList({ links, activePath }: NavListProps) {
 				},
 			}}
 		>
-			{links.map(({ href, label, icon, ...props }, index) => (
-				<NavItem key={index} active={href === activePath}>
+			{links.map(({ href, label, ...props }, index) => (
+				<NavListItem key={index} active={href === activePath}>
 					<Link href={href} {...props}>
 						{label}
-						{icon}
 					</Link>
-				</NavItem>
+				</NavListItem>
 			))}
 		</Flex>
 	);

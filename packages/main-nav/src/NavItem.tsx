@@ -10,7 +10,7 @@ import type { ReactNode } from 'react';
 
 import { localPalette } from './utils';
 
-export function NavItem({
+export function NavListItem({
 	children,
 	active,
 }: {
@@ -25,8 +25,15 @@ export function NavItem({
 			fontSize="sm"
 			lineHeight="default"
 			css={mq({
-				// TODO: may also need to support button element
-				' a': {
+				' button': {
+					backgroundColor: 'transparent',
+					fontFamily: 'inherit',
+					fontSize: 'inherit',
+					lineHeight: 'inherit',
+					border: 'none',
+					appearance: 'none',
+				},
+				'> a, > button': {
 					position: 'relative',
 					display: 'flex',
 					gap: '0.5rem',

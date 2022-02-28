@@ -2,6 +2,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { Icon } from '@ag.ds-next/icon';
 
 import { MainNav } from './MainNav';
+import { MainNavButton, MainNavLink } from './MainNavLink';
 
 export default {
 	title: 'navigation/MainNav',
@@ -22,55 +23,78 @@ const NAV_ITEMS = [
 	},
 ];
 
+const defaultArgs = {
+	links: NAV_ITEMS,
+	activePath: '#content',
+	variant: 'agriculture',
+} as const;
+
 const Template: ComponentStory<typeof MainNav> = (args) => (
 	<MainNav {...args} />
 );
 
 export const AgricultureVariant = Template.bind({});
 AgricultureVariant.args = {
-	links: NAV_ITEMS,
-	activePath: '#content',
+	...defaultArgs,
 	variant: 'agriculture',
 };
 
 export const DarkVariant = Template.bind({});
 DarkVariant.args = {
-	links: NAV_ITEMS,
-	activePath: '#content',
+	...defaultArgs,
 	variant: 'dark',
 };
 
 export const DarkAltVariant = Template.bind({});
 DarkAltVariant.args = {
-	links: NAV_ITEMS,
-	activePath: '#content',
+	...defaultArgs,
 	variant: 'darkAlt',
 };
 
 export const LightVariant = Template.bind({});
 LightVariant.args = {
-	links: NAV_ITEMS,
-	activePath: '#content',
+	...defaultArgs,
 	variant: 'light',
 };
 
 export const LightAltVariant = Template.bind({});
 LightAltVariant.args = {
-	links: NAV_ITEMS,
-	activePath: '#content',
+	...defaultArgs,
 	variant: 'lightAlt',
 };
 
-export const SecondaryLinks = Template.bind({});
-SecondaryLinks.args = {
-	links: NAV_ITEMS,
-	secondaryLinks: [
-		{
-			href: '#login',
-			label: 'Sign in',
-			icon: <Icon icon="avatar" size={1.5} />,
-		},
-	],
-	activePath: '#content',
-	variant: 'agriculture',
+export const HeaderRightLink: ComponentStory<typeof MainNav> = (args) => {
+	return (
+		<MainNav
+			{...args}
+			rightContent={
+				<MainNavLink
+					href="#login"
+					label="Sign in"
+					icon={<Icon icon="avatar" size={1.5} />}
+				/>
+			}
+		/>
+	);
+};
+HeaderRightLink.args = {
+	...defaultArgs,
+};
+
+export const HeaderRightButton: ComponentStory<typeof MainNav> = (args) => {
+	return (
+		<MainNav
+			{...args}
+			rightContent={
+				<MainNavButton
+					onClick={() => console.log('Hello Jordan')}
+					label="Sign in"
+					icon={<Icon icon="avatar" size={1.5} />}
+				/>
+			}
+		/>
+	);
+};
+HeaderRightButton.args = {
+	...defaultArgs,
 };

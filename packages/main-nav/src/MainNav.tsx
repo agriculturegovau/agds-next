@@ -1,9 +1,12 @@
+import { ReactNode } from 'react';
 import { NavContainer, NavContainerProps } from './NavContainer';
 import { NavList, NavListLink } from './NavList';
 
 import { findBestMatch } from './utils';
 
 export type MainNavProps = React.PropsWithChildren<{
+	/** Place for your global actions */
+	rightContent: ReactNode;
 	variant: NavContainerProps['variant'];
 	links: NavListLink[];
 	secondaryLinks?: NavListLink[];
@@ -15,20 +18,15 @@ export type MainNavProps = React.PropsWithChildren<{
 export function MainNav({
 	variant = 'darkAlt',
 	links,
-	secondaryLinks,
+	rightContent,
 	activePath,
 	id,
 }: MainNavProps) {
-	const bestMatch = findBestMatch(
-		[...links, ...(secondaryLinks || [])],
-		activePath
-	);
+	const bestMatch = findBestMatch(links, activePath);
 	return (
 		<NavContainer variant={variant} id={id}>
 			<NavList links={links} activePath={bestMatch} />
-			{secondaryLinks?.length ? (
-				<NavList links={secondaryLinks} activePath={bestMatch} />
-			) : null}
+			{rightContent}
 		</NavContainer>
 	);
 }
