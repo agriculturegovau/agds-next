@@ -4,6 +4,7 @@ import { packs } from '@ag.ds-next/core';
 
 export type CardProps = PropsWithChildren<{
 	as?: ElementType;
+	background?: 'body' | 'bodyAlt';
 	shadow?: boolean;
 	clickable?: boolean;
 }>;
@@ -14,13 +15,19 @@ const componentTokens = {
 	hoverShadow: '0 1px 1px rgba(0, 0, 0, 0.3)',
 };
 
-export const Card = ({ as, children, shadow, clickable }: CardProps) => {
+export const Card = ({
+	as,
+	background = 'body',
+	children,
+	shadow,
+	clickable,
+}: CardProps) => {
 	return (
 		<Box
 			as={as} // Note: this should be an li when used in a card list
 			display="block"
 			border={!shadow}
-			background="body"
+			background={background}
 			rounded
 			css={{
 				position: 'relative',
