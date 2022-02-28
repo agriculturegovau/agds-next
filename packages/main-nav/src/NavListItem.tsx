@@ -14,7 +14,7 @@ export type NavItemProps = PropsWithChildren<{
 	active?: boolean;
 }>;
 
-export function NavItem({ children, active }: NavItemProps) {
+export function NavListItem({ children, active }: NavItemProps) {
 	return (
 		<Box
 			as="li"

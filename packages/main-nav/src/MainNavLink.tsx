@@ -1,6 +1,6 @@
 import { ReactNode, ButtonHTMLAttributes } from 'react';
 import { LinkProps, useLinkComponent } from '@ag.ds-next/core';
-import { NavListItem } from './NavItem';
+import { NavListItem } from './NavListItem';
 
 export type MainNavLinkProps = Omit<LinkProps, 'children'> & {
 	active?: boolean;

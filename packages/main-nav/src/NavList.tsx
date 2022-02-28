@@ -7,7 +7,7 @@ import {
 	LinkProps,
 } from '@ag.ds-next/core';
 
-import { NavListItem } from './NavItem';
+import { NavListItem } from './NavListItem';
 
 export type NavListLink = Omit<LinkProps, 'children'> & {
 	label: ReactNode;
