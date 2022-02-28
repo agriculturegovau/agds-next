@@ -58,7 +58,6 @@ export function NavContainer({ children, variant, id }: NavContainerProps) {
 	return (
 		<Box
 			id={id}
-			aria-label="Main"
 			data-name="nav-container" // TODO: make this (or something like this) a pattern for providing end users a consistent handle for applying style overrides.
 			palette={palette}
 			background={background}
@@ -71,7 +70,12 @@ export function NavContainer({ children, variant, id }: NavContainerProps) {
 			}}
 		>
 			<BottomBar />
-			<Flex as="nav" justifyContent="center" css={{ position: 'relative' }}>
+			<Flex
+				as="nav"
+				justifyContent="center"
+				css={{ position: 'relative' }}
+				aria-label="Main"
+			>
 				<Box
 					maxWidth={tokens.maxWidth.container}
 					width="100%"
