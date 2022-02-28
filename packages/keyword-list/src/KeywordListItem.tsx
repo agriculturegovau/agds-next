@@ -1,15 +1,15 @@
 import React, { ReactNode } from 'react';
 import { Flex } from '@ag.ds-next/box';
 import { Text, TextLink } from '@ag.ds-next/text';
+import { LinkProps } from '@ag.ds-next/core';
 
-export type KeywordListItemProps = {
-	href?: string;
+export type KeywordListItemProps = LinkProps & {
 	title: ReactNode;
 	subTitle: ReactNode;
 };
 
 export const KeywordListItem = (props: KeywordListItemProps) => {
-	const { href, title, subTitle } = props;
+	const { title, subTitle, href, ...rest } = props;
 
 	const commonUi = (
 		<Flex
@@ -29,9 +29,9 @@ export const KeywordListItem = (props: KeywordListItemProps) => {
 	return (
 		<Flex as="li" alignItems="flex-start">
 			{href ? (
-				<Flex as={TextLink} href={href}>
+				<TextLink href={href} {...rest} css={{ display: 'flex' }}>
 					{commonUi}
-				</Flex>
+				</TextLink>
 			) : (
 				commonUi
 			)}

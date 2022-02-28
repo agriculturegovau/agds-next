@@ -38,7 +38,7 @@ export const Text = forwardRefWithAs<'span', BoxProps>(function Text(
 	);
 });
 
-type TextLinkProps = LinkProps;
+export type TextLinkProps = LinkProps;
 
 export const TextLink = (props: TextLinkProps) => {
 	const Link = useLinkComponent();

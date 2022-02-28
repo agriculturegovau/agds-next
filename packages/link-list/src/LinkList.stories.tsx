@@ -10,7 +10,7 @@ export default {
 } as ComponentMeta<typeof LinkList>;
 
 const exampleLinks = [
-	{ href: '#', label: 'Home' },
+	{ href: 'http://gog.com', label: 'Home', target: '_blank' },
 	{ href: '#', label: 'Establishments' },
 	{ href: '#', label: 'Applications' },
 ];

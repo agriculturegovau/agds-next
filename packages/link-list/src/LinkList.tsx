@@ -1,10 +1,9 @@
 import { ReactNode } from 'react';
-
 import { LinkListContainer } from './LinkListContainer';
-import { LinkListItem } from './LinkListItem';
+import { LinkListItem, LinkListItemProps } from './LinkListItem';
 
 export type LinkListProps = {
-	links: { href: string; label: ReactNode }[];
+	links: Omit<LinkListItemProps, 'children'> & { label: ReactNode }[];
 	horizontal?: boolean;
 };
 

@@ -10,7 +10,6 @@ import {
 import { NavItem } from './NavItem';
 
 export type NavListLink = Omit<LinkProps, 'children'> & {
-	href: string;
 	label: ReactNode;
 };
 

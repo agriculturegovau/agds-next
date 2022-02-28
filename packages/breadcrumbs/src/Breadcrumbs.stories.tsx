@@ -15,6 +15,7 @@ export default {
 } as ComponentMeta<typeof Breadcrumbs>;
 
 const exampleLinks = [
+	{ href: 'http://google.com', label: 'External', target: '_blank' },
 	{ href: '#', label: 'Home' },
 	{ href: '#', label: 'Establishments' },
 	{ label: 'Applications' },

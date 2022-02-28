@@ -1,25 +1,25 @@
-import { ReactNode } from 'react';
+import React from 'react';
 import { Box } from '@ag.ds-next/box';
-import { boxPalette, useLinkComponent } from '@ag.ds-next/core';
+import { boxPalette, LinkProps, useLinkComponent } from '@ag.ds-next/core';
 import { VisuallyHidden } from '@ag.ds-next/a11y';
 
 import { localPalette } from './utils';
 
-export const SideNavTitle = ({
-	isCurrentPage,
-	href,
-	children,
-}: {
+export type SideNavTitleProps = LinkProps & {
 	isCurrentPage?: boolean;
-	href: string;
-	children: ReactNode;
-}) => {
+};
+
+export const SideNavTitle = ({
+	children,
+	isCurrentPage,
+	...props
+}: SideNavTitleProps) => {
 	const Link = useLinkComponent();
 	return (
 		<Box as="h2">
 			<Box
 				as={Link}
-				href={href}
+				{...props}
 				padding={1}
 				color="text"
 				fontSize="sm"
