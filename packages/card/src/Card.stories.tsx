@@ -7,11 +7,15 @@ import { Body } from '@ag.ds-next/body';
 
 import { Card } from './Card';
 import { CardInner } from './CardInner';
-import { CardLink } from '.';
+import { CardLink } from './CardLink';
+import { CardList } from './CardList';
+import { CardHeader } from './CardHeader';
+import { CardFooter } from './CardFooter';
 
 export default {
 	title: 'layout/Card',
 	component: Card,
+	subcomponents: { CardInner, CardLink, CardList, CardHeader, CardFooter },
 } as ComponentMeta<typeof Card>;
 
 export const OnLight: ComponentStory<typeof Card> = (args) => (
@@ -82,17 +86,46 @@ export const Link: ComponentStory<typeof Card> = (args) => (
 	</Box>
 );
 
-export const CardList: ComponentStory<typeof Card> = () => (
-	<Box
-		palette="light"
-		background="body"
-		gap={1}
-		css={{
-			display: 'grid',
-			gridTemplateColumns: 'repeat(3, 1fr)',
-			gridGap: '1rem',
-		}}
-	>
+export const FeatureHeader: ComponentStory<typeof CardHeader> = (args) => (
+	<Card>
+		<CardHeader {...args}>
+			<Body>
+				<h4>Feature card title</h4>
+			</Body>
+		</CardHeader>
+		<CardInner>
+			<Body>
+				<p>Additional conent relating to the card</p>
+			</Body>
+		</CardInner>
+	</Card>
+);
+FeatureHeader.args = {
+	background: 'body',
+};
+
+export const FeatureFooter: ComponentStory<typeof CardFooter> = (args) => (
+	<Card>
+		<CardInner>
+			<Body>
+				<h3>Card title</h3>
+				<p>
+					Lorem ipsum dolor, sit amet consectetur adipisicing elit. In,
+					voluptatibus.
+				</p>
+			</Body>
+		</CardInner>
+		<CardFooter {...args}>
+			<a href="#">Action</a>
+		</CardFooter>
+	</Card>
+);
+FeatureFooter.args = {
+	background: 'body',
+};
+
+export const CardListStory: ComponentStory<typeof CardList> = (args) => (
+	<CardList {...args}>
 		<Card shadow clickable>
 			<CardInner>
 				<Body>
@@ -150,10 +183,10 @@ export const CardList: ComponentStory<typeof Card> = () => (
 				</Body>
 			</CardInner>
 		</Card>
-	</Box>
+	</CardList>
 );
-
-CardList.args = {
-	shadow: true,
-	clickable: true,
+CardListStory.storyName = 'Card list';
+CardListStory.args = {
+	gap: 1,
+	templateColumns: [1, 2, 4],
 };

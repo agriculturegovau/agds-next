@@ -119,73 +119,90 @@ For cards that contain a single link, the hit area for that link can be made to 
 </Card>
 ```
 
-## CardHeader
+## Feature headers
 
 Use feature headers to give the card heading more visual prominence.
 
 ```jsx live
-<Flex gap={1} flexDirection="row">
-	<Card>
-		<CardHeader>
-			<H4>Feature card title</H4>
-		</CardHeader>
-		<CardInner>
-			<Body>
-				<p>Some text</p>
-			</Body>
-		</CardInner>
-	</Card>
-
-	<Card>
-		<CardHeader background="bodyAlt">
-			<H4>Feature card title</H4>
-		</CardHeader>
-		<CardInner>
-			<Body>
-				<p>Some text</p>
-			</Body>
-		</CardInner>
-	</Card>
-</Flex>
+<Columns>
+	<Column columnSpan={6}>
+		<Card>
+			<CardHeader>
+				<Body>
+					<h4>Feature card title</h4>
+				</Body>
+			</CardHeader>
+			<CardInner>
+				<Body>
+					<p>Additional conent relating to the card</p>
+				</Body>
+			</CardInner>
+		</Card>
+	</Column>
+	<Column columnSpan={6}>
+		<Card>
+			<CardHeader background="bodyAlt">
+				<Body>
+					<h4>Feature card title</h4>
+				</Body>
+			</CardHeader>
+			<CardInner>
+				<Body>
+					<p>Additional conent relating to the card</p>
+				</Body>
+			</CardInner>
+		</Card>
+	</Column>
+</Columns>
 ```
 
-## CardFooter
+## Feature footers
 
 Use feature footers to give the card footer more visual prominence. This can be used to guide users to the call to action.
 
 ```jsx live
-<Flex gap={1} flexDirection="row">
-	<Card>
-		<CardInner>
-			<Text>Some body text can go here.</Text>
-		</CardInner>
-		<CardFooter>
-			<a href="#">Action</a>
-		</CardFooter>
-	</Card>
-
-	<Card>
-		<CardInner>
-			<Text>Some body text can go here.</Text>
-		</CardInner>
-		<CardFooter background="bodyAlt">
-			<a href="#">Action</a>
-		</CardFooter>
-	</Card>
-</Flex>
+<Columns>
+	<Column columnSpan={6}>
+		<Card>
+			<CardInner>
+				<Body>
+					<h3>Card title</h3>
+					<p>
+						Lorem ipsum dolor, sit amet consectetur adipisicing elit. In,
+						voluptatibus.
+					</p>
+				</Body>
+			</CardInner>
+			<CardFooter>
+				<a href="#">Action</a>
+			</CardFooter>
+		</Card>
+	</Column>
+	<Column columnSpan={6}>
+		<Card>
+			<CardInner>
+				<Body>
+					<h3>Card title</h3>
+					<p>
+						Lorem ipsum dolor, sit amet consectetur adipisicing elit. In,
+						voluptatibus.
+					</p>
+				</Body>
+			</CardInner>
+			<CardFooter background="bodyAlt">
+				<a href="#">Action</a>
+			</CardFooter>
+		</Card>
+	</Column>
+</Columns>
 ```
 
-## CardList
+## Card lists
+
+Multiple cards can be used in a list to display a collection of results or articles for example.
 
 ```jsx live
-<Box
-	gap={1}
-	css={{
-		display: 'grid',
-		gridTemplateColumns: 'repeat(3, 1fr)',
-		gridGap: '1rem',
-	}}
->
+<CardList templateColumns={3}>
 	<Card shadow clickable>
 		<CardInner>
 			<Body>
@@ -243,5 +260,5 @@ Use feature footers to give the card footer more visual prominence. This can be 
 			</Body>
 		</CardInner>
 	</Card>
-</Box>
+</CardList>
 ```

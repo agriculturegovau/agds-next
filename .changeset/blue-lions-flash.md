@@ -3,4 +3,4 @@
 '@ag.ds-next/docs': patch
 ---
 
-Add CardHeader and CardFooter
+Add `CardHeader`, `CardFooter` and `CardList`

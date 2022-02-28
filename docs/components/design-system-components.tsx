@@ -18,6 +18,7 @@ import {
 	CardHeader,
 	CardInner,
 	CardLink,
+	CardList,
 } from '@ag.ds-next/card';
 import { Header, HeaderBrand, HeaderContainer } from '@ag.ds-next/header';
 import { Footer, FooterDivider } from '@ag.ds-next/footer';
@@ -64,6 +65,7 @@ export const designSystemComponents = {
 	CardHeader,
 	CardInner,
 	CardLink,
+	CardList,
 	Columns,
 	Column,
 	Stack,
