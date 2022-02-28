@@ -14,6 +14,12 @@ const NAV_ITEMS = [
 	{ href: '#form', label: 'Form page' },
 	{ href: '#', label: 'Simple terms' },
 	{ href: '#', label: 'Distinct from each other' },
+	{
+		href: 'https://steelthreads.github.io/agds-next',
+		label: 'External link',
+		target: '_blank',
+		rel: 'external noreferrer',
+	},
 ];
 
 const Template: ComponentStory<typeof MainNav> = (args) => (

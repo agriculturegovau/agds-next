@@ -1,9 +1,13 @@
-import type { PropsWithChildren } from 'react';
+import { PropsWithChildren } from 'react';
 import Link, { LinkProps } from 'next/link';
 
 type NextLinkProps = Omit<LinkProps, 'as' | 'href'>;
 
-export const LinkComponent = ({
+export type LinkComponentProps = PropsWithChildren<NextLinkProps> & {
+	href?: LinkProps['href'];
+};
+
+export function LinkComponent({
 	href,
 	replace,
 	scroll,
@@ -12,10 +16,15 @@ export const LinkComponent = ({
 	prefetch,
 	locale,
 	...props
-}: PropsWithChildren<NextLinkProps> & {
-	href?: LinkProps['href'];
-}) => {
+}: LinkComponentProps) {
 	if (!href) return <a {...props} />;
+
+	// Use an `a` tag when linking externally
+	// Regex finds links starting with: `http://` | `https://` | `//`
+	const hrefAsString = typeof href === 'string' ? href : href?.pathname;
+	if (hrefAsString && /^(https?:\/\/|\/\/)/i.test(hrefAsString)) {
+		return <a href={hrefAsString} {...props} />;
+	}
 
 	return (
 		<Link
@@ -30,4 +39,4 @@ export const LinkComponent = ({
 			<a {...props} />
 		</Link>
 	);
-};
+}

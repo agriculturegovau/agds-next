@@ -21,9 +21,7 @@ const exampleLinks = [
 ];
 
 export const OnLight: ComponentStory<typeof Breadcrumbs> = (args) => (
-	<Box palette="light" background="body" padding={1.5}>
-		<Breadcrumbs {...args} />
-	</Box>
+	<Breadcrumbs {...args} />
 );
 OnLight.args = {
 	links: exampleLinks,
@@ -40,6 +38,14 @@ OnDark.args = {
 
 export const Modular: ComponentStory<typeof BreadcrumbsContainer> = () => (
 	<BreadcrumbsContainer>
+		<BreadcrumbsItem
+			href="https://github.com/steelthreads/agds-next"
+			target="_blank"
+			rel="noopener noreferrer"
+		>
+			External
+		</BreadcrumbsItem>
+		<BreadcrumbsDivider />
 		<BreadcrumbsItem href="#one">One</BreadcrumbsItem>
 		<BreadcrumbsDivider />
 		<BreadcrumbsItem href="#two">Two</BreadcrumbsItem>

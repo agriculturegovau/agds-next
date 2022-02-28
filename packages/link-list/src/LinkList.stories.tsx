@@ -13,6 +13,12 @@ const exampleLinks = [
 	{ href: '#', label: 'Home' },
 	{ href: '#', label: 'Establishments' },
 	{ href: '#', label: 'Applications' },
+	{
+		href: 'https://steelthreads.github.io/agds-next',
+		label: 'External link',
+		target: '_blank',
+		rel: 'external noreferrer',
+	},
 ];
 
 export const OnLight: ComponentStory<typeof LinkList> = (args) => (

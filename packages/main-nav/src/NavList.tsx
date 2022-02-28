@@ -1,11 +1,20 @@
 import type { ReactNode } from 'react';
 import { Flex } from '@ag.ds-next/box';
-import { boxPalette, tokens, useLinkComponent } from '@ag.ds-next/core';
+import {
+	boxPalette,
+	tokens,
+	useLinkComponent,
+	LinkProps,
+} from '@ag.ds-next/core';
 
 import { NavItem } from './NavItem';
 
+export type NavListLink = Omit<LinkProps, 'children'> & {
+	label: ReactNode;
+};
+
 export type NavListProps = {
-	links: { href: string; label: ReactNode; icon?: ReactNode }[]; // FIXME: this is too restrictive
+	links: NavListLink & { icon?: ReactNode }[];
 	activePath?: string;
 };
 
@@ -19,7 +28,9 @@ export function NavList({ links, activePath }: NavListProps) {
 			css={{
 				[tokens.mediaQuery.max.sm]: {
 					'& > li': {
-						borderTop: `1px solid ${boxPalette.border}`,
+						borderTopWidth: tokens.borderWidth.sm,
+						borderTopStyle: 'solid',
+						borderTopColor: boxPalette.border,
 					},
 				},
 			}}

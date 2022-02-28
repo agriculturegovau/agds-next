@@ -1,37 +1,34 @@
-import { ReactNode } from 'react';
 import { Flex } from '@ag.ds-next/box';
 import { Text, TextLink } from '@ag.ds-next/text';
 import { Icon } from '@ag.ds-next/icon';
-import { boxPalette } from '@ag.ds-next/core';
+import { boxPalette, LinkProps } from '@ag.ds-next/core';
 
 export type ProgressIndicatorItemStatus = 'doing' | 'todo' | 'done';
 
-export type ProgressIndicatorItemProps = {
-	children: ReactNode;
-	href: string;
+export type ProgressIndicatorItemProps = LinkProps & {
 	status: ProgressIndicatorItemStatus;
 };
 
 export const ProgressIndicatorItem = ({
 	children,
-	href,
 	status,
+	...props
 }: ProgressIndicatorItemProps) => {
 	const active = status === 'doing';
 	return (
 		<li>
 			<Flex
 				as={TextLink}
-				href={href}
+				{...props}
 				alignItems="center"
 				gap={0.75}
 				padding={0.75}
-				borderBottom
 				color="text"
 				fontWeight={active ? 'bold' : 'normal'}
+				borderBottom
+				borderLeft
+				borderLeftWidth="lg"
 				css={{
-					borderLeftWidth: 3,
-					borderLeftStyle: 'solid',
 					borderLeftColor: active ? boxPalette.foregroundAction : 'transparent',
 					textDecoration: 'none',
 					'&:hover': {

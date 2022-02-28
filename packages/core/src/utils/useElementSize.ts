@@ -1,4 +1,4 @@
-import { RefObject, useCallback, useLayoutEffect, useState } from 'react';
+import { RefObject, useCallback, useEffect, useState } from 'react';
 
 export function useElementSize<T extends HTMLElement = HTMLDivElement>(
 	ref: RefObject<T>
@@ -12,7 +12,7 @@ export function useElementSize<T extends HTMLElement = HTMLDivElement>(
 		});
 	}, [ref]);
 
-	useLayoutEffect(() => {
+	useEffect(() => {
 		handleSize();
 		window.addEventListener('resize', handleSize);
 		return () => window.removeEventListener('resize', handleSize);

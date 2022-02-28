@@ -8,14 +8,15 @@ group: Brand
 
 ```jsx
 import { Core } from '@ag.ds-next/core';
-import { palette } from '@ag.ds-next/ag-branding';
+import { theme } from '@ag.ds-next/ag-branding';
 
-export default function App({ Component }){
+export default function App({ Component }) {
 	return (
 		<Core theme={theme}>
 			<Component />
 		</Core>
-	)
+	);
+}
 ```
 
 ## AG Logo
@@ -23,15 +24,17 @@ export default function App({ Component }){
 ```jsx
 import { Logo } from '@ag.ds-next/ag-branding';
 
-export const App = () => (
-	<Box
-		palette="light"
-		color="text"
-		background="body"
-		maxWidth={600}
-		padding={2}
-	>
-		<Logo />
-	</Box>
-);
+export function App() {
+	return (
+		<Box
+			palette="light"
+			color="text"
+			background="body"
+			maxWidth={600}
+			padding={2}
+		>
+			<Logo />
+		</Box>
+	);
+}
 ```

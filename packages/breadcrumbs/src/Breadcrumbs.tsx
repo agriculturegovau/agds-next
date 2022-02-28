@@ -1,11 +1,10 @@
 import { Fragment, ReactNode } from 'react';
-
 import { BreadcrumbsDivider } from './BreadcrumbsDivider';
 import { BreadcrumbsContainer } from './BreadcrumbsContainer';
-import { BreadcrumbsItem } from './BreadcrumbsItem';
+import { BreadcrumbsItem, BreadcrumbsItemProps } from './BreadcrumbsItem';
 
 export type BreadcrumbsProps = {
-	links: { href?: string; label: ReactNode }[];
+	links: Omit<BreadcrumbsItemProps, 'children'> & { label: ReactNode }[];
 };
 
 export const Breadcrumbs = ({ links, ...props }: BreadcrumbsProps) => {

@@ -4,6 +4,7 @@ import { HeaderBrand } from './HeaderBrand';
 import type { ReactNode } from 'react';
 
 export type HeaderProps = {
+	badgeLabel?: string;
 	heading: string;
 	logo?: JSX.Element;
 	rightContent?: ReactNode;
@@ -13,6 +14,7 @@ export type HeaderProps = {
 };
 
 export function Header({
+	badgeLabel,
 	logo,
 	heading,
 	rightContent,
@@ -25,6 +27,7 @@ export function Header({
 		<HeaderContainer variant={variant}>
 			<Column columnSpan={{ xs: 12, md: hasRightContent ? 8 : 12 }}>
 				<HeaderBrand
+					badgeLabel={badgeLabel}
 					logo={logo}
 					href={href}
 					heading={heading}

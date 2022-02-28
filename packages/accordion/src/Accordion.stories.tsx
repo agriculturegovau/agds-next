@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Story, ComponentMeta } from '@storybook/react';
-import { Box, Stack } from '@ag.ds-next/box';
+import { Box, Flex, Stack } from '@ag.ds-next/box';
 import { useToggleState } from '@ag.ds-next/core';
 import { Body } from '@ag.ds-next/body';
 import { Button } from '@ag.ds-next/button';
@@ -158,12 +158,89 @@ export const Controlled = () => {
 	);
 };
 
+type AccordionControlledGroupExampleAccordionIndex = 1 | 2 | 3;
+
+const AccordionControlledGroupExample = ({
+	openAccordions,
+	toggle,
+}: {
+	openAccordions: AccordionControlledGroupExampleAccordionIndex[];
+	toggle: (
+		accordionIndex: AccordionControlledGroupExampleAccordionIndex
+	) => void;
+}) => {
+	return (
+		<Accordion>
+			<AccordionItem
+				title="Accordion 1"
+				isOpen={openAccordions.includes(1)}
+				onToggle={() => toggle(1)}
+			>
+				<AccordionItemContent>
+					<Text>This is some text inside an Accordion</Text>
+				</AccordionItemContent>
+			</AccordionItem>
+
+			<AccordionItem
+				title="Accordion 2"
+				isOpen={openAccordions.includes(2)}
+				onToggle={() => toggle(2)}
+			>
+				<AccordionItemContent>
+					<Body>
+						<p>
+							Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce a
+							libero vel dolor sollicitudin pretium quis quis mi. Fusce sapien
+							mi, efficitur sit amet ex et, bibendum efficitur odio. Ut nec
+							gravida metus, nec suscipit nulla. Donec est nulla, dictum sed
+							ultricies congue, suscipit at velit. Integer ut leo lectus. Nullam
+							volutpat ex quis imperdiet scelerisque. Etiam ultrices et nisi
+							eget pulvinar. Cras ultrices lectus ut nisl gravida, eu rutrum sem
+							luctus. Praesent vulputate eu dolor commodo tempor. Sed nec lorem
+							consectetur, maximus justo at, tincidunt quam. Suspendisse
+							pellentesque accumsan accumsan. Cras in odio leo. Nam pharetra,
+							lorem eget aliquam gravida, felis ex tempor sapien, a ornare leo
+							nulla eget magna. Quisque tempus ipsum eu elit bibendum, nec
+							bibendum ligula posuere. Nam porttitor est eros, ac maximus nisl
+							euismod nec.
+						</p>
+						<p>
+							Curabitur urna erat, ornare in nulla vitae, tempor porttitor
+							dolor. Nam luctus fermentum tellus, vitae maximus turpis viverra
+							eget. Phasellus hendrerit tortor eu mauris ultricies congue.
+							Suspendisse cursus, purus quis viverra pharetra, purus quam
+							hendrerit magna, condimentum cursus massa nisi ut est. Mauris in
+							tristique augue. Phasellus tellus ante, fermentum eget fringilla
+							eget, tempor nec nunc. Ut nec dui vitae ex dignissim tempus ac et
+							ante. Donec imperdiet suscipit leo. Suspendisse mattis quis nisl
+							id mattis. Sed dictum tempus nibh, quis feugiat magna efficitur
+							in. Sed vulputate et dui eu malesuada.
+						</p>
+					</Body>
+				</AccordionItemContent>
+			</AccordionItem>
+
+			<AccordionItem
+				title="Accordion 3"
+				isOpen={openAccordions.includes(3)}
+				onToggle={() => toggle(3)}
+			>
+				<AccordionItemContent>
+					<Text>This is some text inside an Accordion</Text>
+				</AccordionItemContent>
+			</AccordionItem>
+		</Accordion>
+	);
+};
+
 export const ControlledGroup = () => {
-	const [openAccordions, setOpenAccordions] = useState([1]);
+	const [openAccordions, setOpenAccordions] = useState<
+		AccordionControlledGroupExampleAccordionIndex[]
+	>([1]);
 
 	const openAll = () => setOpenAccordions([1, 2, 3]);
 	const closeAll = () => setOpenAccordions([]);
-	const toggle = (item: number) => {
+	const toggle = (item: AccordionControlledGroupExampleAccordionIndex) => {
 		setOpenAccordions((openAccordions) => {
 			if (openAccordions.includes(item)) {
 				return openAccordions.filter((acc) => acc !== item);
@@ -176,70 +253,54 @@ export const ControlledGroup = () => {
 
 	return (
 		<Stack gap={1} alignItems="flex-start">
-			<Button onClick={isAnyOpen ? closeAll : openAll}>
+			<Button
+				size="sm"
+				variant="tertiary"
+				onClick={isAnyOpen ? closeAll : openAll}
+			>
 				{isAnyOpen ? 'Close All' : 'Open'}
 			</Button>
 
-			<Accordion>
-				<AccordionItem
-					title="Accordion 1"
-					isOpen={openAccordions.includes(1)}
-					onToggle={() => toggle(1)}
-				>
-					<AccordionItemContent>
-						<Text>This is some text inside an Accordion</Text>
-					</AccordionItemContent>
-				</AccordionItem>
+			<AccordionControlledGroupExample
+				openAccordions={openAccordions}
+				toggle={toggle}
+			/>
+		</Stack>
+	);
+};
 
-				<AccordionItem
-					title="Accordion 2"
-					isOpen={openAccordions.includes(2)}
-					onToggle={() => toggle(2)}
-				>
-					<AccordionItemContent>
-						<Body>
-							<p>
-								Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce a
-								libero vel dolor sollicitudin pretium quis quis mi. Fusce sapien
-								mi, efficitur sit amet ex et, bibendum efficitur odio. Ut nec
-								gravida metus, nec suscipit nulla. Donec est nulla, dictum sed
-								ultricies congue, suscipit at velit. Integer ut leo lectus.
-								Nullam volutpat ex quis imperdiet scelerisque. Etiam ultrices et
-								nisi eget pulvinar. Cras ultrices lectus ut nisl gravida, eu
-								rutrum sem luctus. Praesent vulputate eu dolor commodo tempor.
-								Sed nec lorem consectetur, maximus justo at, tincidunt quam.
-								Suspendisse pellentesque accumsan accumsan. Cras in odio leo.
-								Nam pharetra, lorem eget aliquam gravida, felis ex tempor
-								sapien, a ornare leo nulla eget magna. Quisque tempus ipsum eu
-								elit bibendum, nec bibendum ligula posuere. Nam porttitor est
-								eros, ac maximus nisl euismod nec.
-							</p>
-							<p>
-								Curabitur urna erat, ornare in nulla vitae, tempor porttitor
-								dolor. Nam luctus fermentum tellus, vitae maximus turpis viverra
-								eget. Phasellus hendrerit tortor eu mauris ultricies congue.
-								Suspendisse cursus, purus quis viverra pharetra, purus quam
-								hendrerit magna, condimentum cursus massa nisi ut est. Mauris in
-								tristique augue. Phasellus tellus ante, fermentum eget fringilla
-								eget, tempor nec nunc. Ut nec dui vitae ex dignissim tempus ac
-								et ante. Donec imperdiet suscipit leo. Suspendisse mattis quis
-								nisl id mattis. Sed dictum tempus nibh, quis feugiat magna
-								efficitur in. Sed vulputate et dui eu malesuada.
-							</p>
-						</Body>
-					</AccordionItemContent>
-				</AccordionItem>
+export const ExpandAll = () => {
+	const [openAccordions, setOpenAccordions] = useState<
+		AccordionControlledGroupExampleAccordionIndex[]
+	>([1]);
 
-				<AccordionItem
-					title="Accordion 3"
-					isOpen={openAccordions.includes(3)}
-					onToggle={() => toggle(3)}
-				>
-					<AccordionItemContent>
-						<Text>This is some text inside an Accordion</Text>
-					</AccordionItemContent>
-				</AccordionItem>
-			</Accordion>
+	const openAll = () => setOpenAccordions([1, 2, 3]);
+	const closeAll = () => setOpenAccordions([]);
+	const toggle = (item: AccordionControlledGroupExampleAccordionIndex) => {
+		setOpenAccordions((openAccordions) => {
+			if (openAccordions.includes(item)) {
+				return openAccordions.filter((acc) => acc !== item);
+			}
+			return [...openAccordions, item];
+		});
+	};
+
+	return (
+		<Stack gap={1} alignItems="flex-start">
+			<Flex gap={1} flexDirection="row">
+				<Button size="sm" variant="tertiary" onClick={openAll}>
+					Open All
+				</Button>
+
+				<Button size="sm" variant="tertiary" onClick={closeAll}>
+					Close All
+				</Button>
+			</Flex>
+
+			<AccordionControlledGroupExample
+				openAccordions={openAccordions}
+				toggle={toggle}
+			/>
 		</Stack>
 	);
 };

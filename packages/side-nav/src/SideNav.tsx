@@ -5,6 +5,7 @@ import { SideNavTitle } from './SideNavTitle';
 import { SideNavGroup } from './SideNavGroup';
 import { SideNavLink } from './SideNavLink';
 import { findBestMatch } from './utils';
+import { LinkProps } from '@ag.ds-next/core';
 
 export type SideNavProps = LinkListProps & {
 	collapseTitle: string;
@@ -36,8 +37,7 @@ export function SideNav({
 	);
 }
 
-type SideNavMenuItemType = {
-	href: string;
+type SideNavMenuItemType = Omit<LinkProps, 'children'> & {
 	label: string;
 	items?: SideNavMenuItemType[];
 };

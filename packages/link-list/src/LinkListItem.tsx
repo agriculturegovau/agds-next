@@ -1,12 +1,9 @@
-import { PropsWithChildren } from 'react';
 import { Box } from '@ag.ds-next/box';
-import { TextLink } from '@ag.ds-next/text';
+import { TextLink, TextLinkProps } from '@ag.ds-next/text';
 
-export const LinkListItem = (
-	props: PropsWithChildren<{
-		href: string;
-	}>
-) => (
+export type LinkListItemProps = TextLinkProps;
+
+export const LinkListItem = (props: LinkListItemProps) => (
 	<Box as="li">
 		<TextLink {...props} />
 	</Box>
