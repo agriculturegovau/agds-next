@@ -1,13 +1,11 @@
-import { ReactNode } from 'react';
+import { PropsWithChildren } from 'react';
 import { Box } from '@ag.ds-next/box';
 
-export const CardHeader: React.FC = ({
-	background,
-	children,
-}: {
+export type CardHeaderProps = PropsWithChildren<{
 	background?: 'body' | 'bodyAlt';
-	children?: ReactNode;
-}) => (
+}>;
+
+export const CardHeader = ({ background, children }: CardHeaderProps) => (
 	<Box padding={1} borderBottom background={background}>
 		{children}
 	</Box>
