@@ -7,7 +7,7 @@ import { SkipLinks } from './SkipLinks';
 import { SkipLinkContainer } from './SkipLinkContainer';
 
 export default {
-	title: 'navigation/SkipLinkItem',
+	title: 'navigation/SkipLinks',
 	component: SkipLinks,
 	subcomponents: { SkipLinkContainer, SkipLinkItem },
 } as ComponentMeta<typeof SkipLinkItem>;

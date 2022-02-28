@@ -3,15 +3,13 @@ import {
 	useContext,
 	PropsWithChildren,
 	AnchorHTMLAttributes,
-	forwardRef,
 } from 'react';
 
-const DefaultLinkComponent = forwardRef<
-	HTMLAnchorElement,
-	AnchorHTMLAttributes<HTMLAnchorElement>
->(function DefaultLinkComponent(props, ref) {
-	return <a ref={ref} {...props} />;
-});
+function DefaultLinkComponent<P extends PropsWithChildren<{ href?: string }>>(
+	props: P
+) {
+	return <a {...props} />;
+}
 
 export type LinkComponent = typeof DefaultLinkComponent;
 
@@ -21,12 +19,11 @@ export const coreContext = createContext({
 	linkComponent: DefaultLinkComponent,
 });
 
-export function CoreProvider({
-	linkComponent,
-	children,
-}: PropsWithChildren<{
+export type CoreProviderProps = PropsWithChildren<{
 	linkComponent?: LinkComponent;
-}>) {
+}>;
+
+export function CoreProvider({ linkComponent, children }: CoreProviderProps) {
 	return (
 		<coreContext.Provider
 			value={{

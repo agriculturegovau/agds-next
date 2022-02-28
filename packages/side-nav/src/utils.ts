@@ -6,7 +6,7 @@ export function findBestMatch(items: LinkProps[], activePath?: string) {
 	let bestMatch = '';
 
 	for (const link of items) {
-		if (link.href === activePath) return link.href;
+		if (!link.href || link.href === activePath) return link.href;
 		if (
 			activePath?.startsWith(link.href) &&
 			link.href.length > bestMatch.length

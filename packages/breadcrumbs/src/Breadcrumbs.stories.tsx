@@ -15,16 +15,13 @@ export default {
 } as ComponentMeta<typeof Breadcrumbs>;
 
 const exampleLinks = [
-	{ href: 'http://google.com', label: 'External', target: '_blank' },
 	{ href: '#', label: 'Home' },
 	{ href: '#', label: 'Establishments' },
 	{ label: 'Applications' },
 ];
 
 export const OnLight: ComponentStory<typeof Breadcrumbs> = (args) => (
-	<Box palette="light" background="body" padding={1.5}>
-		<Breadcrumbs {...args} />
-	</Box>
+	<Breadcrumbs {...args} />
 );
 OnLight.args = {
 	links: exampleLinks,
@@ -41,6 +38,8 @@ OnDark.args = {
 
 export const Modular: ComponentStory<typeof BreadcrumbsContainer> = () => (
 	<BreadcrumbsContainer>
+		<BreadcrumbsItem href="#one">External</BreadcrumbsItem>
+		<BreadcrumbsDivider />
 		<BreadcrumbsItem href="#one">One</BreadcrumbsItem>
 		<BreadcrumbsDivider />
 		<BreadcrumbsItem href="#two">Two</BreadcrumbsItem>

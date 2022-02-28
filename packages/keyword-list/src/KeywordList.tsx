@@ -1,13 +1,8 @@
-import type { ReactNode } from 'react';
 import { KeywordListContainer } from './KeywordListContainer';
-import { KeywordListItem } from './KeywordListItem';
+import { KeywordListItem, KeywordListItemProps } from './KeywordListItem';
 
 export type KeywordListProps = {
-	items: {
-		href?: string;
-		title: ReactNode;
-		subTitle: ReactNode;
-	}[];
+	items: KeywordListItemProps[];
 };
 
 export const KeywordList = ({ items, ...props }: KeywordListProps) => {

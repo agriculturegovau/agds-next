@@ -10,9 +10,15 @@ export default {
 } as ComponentMeta<typeof LinkList>;
 
 const exampleLinks = [
-	{ href: 'http://gog.com', label: 'Home', target: '_blank' },
+	{ href: '#', label: 'Home', target: '_blank' },
 	{ href: '#', label: 'Establishments' },
 	{ href: '#', label: 'Applications' },
+	{
+		href: 'https://steelthreads.github.io/agds-next',
+		label: 'External link',
+		target: '_blank',
+		rel: 'external noreferrer',
+	},
 ];
 
 export const OnLight: ComponentStory<typeof LinkList> = (args) => (

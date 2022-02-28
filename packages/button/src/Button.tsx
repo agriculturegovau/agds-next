@@ -33,14 +33,18 @@ export type ButtonLinkProps = AnchorHTMLAttributes<HTMLAnchorElement> & {
 	variant?: ButtonVariant;
 };
 
-export const ButtonLink = forwardRef<HTMLAnchorElement, ButtonLinkProps>(
-	function ButtonLink({ children, block, size, variant, ...props }, ref) {
-		const styles = buttonStyles({ block, size, variant });
-		const Link = useLinkComponent();
-		return (
-			<Link ref={ref} css={styles} {...props}>
-				{children}
-			</Link>
-		);
-	}
-);
+export const ButtonLink = ({
+	children,
+	block,
+	size,
+	variant,
+	...props
+}: ButtonLinkProps) => {
+	const styles = buttonStyles({ block, size, variant });
+	const Link = useLinkComponent();
+	return (
+		<Link css={styles} {...props}>
+			{children}
+		</Link>
+	);
+};
