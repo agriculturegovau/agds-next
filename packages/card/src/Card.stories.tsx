@@ -1,6 +1,5 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { Columns, Column } from '@ag.ds-next/columns';
 import { Box } from '@ag.ds-next/box';
 import { Heading } from '@ag.ds-next/heading';
 import { Icon } from '@ag.ds-next/icon';
@@ -83,31 +82,74 @@ export const Link: ComponentStory<typeof Card> = (args) => (
 	</Box>
 );
 
-export const CardList: ComponentStory<typeof Card> = (args) => (
-	<Box palette="light" background="body">
-		<Columns>
-			{[
-				'Mollis Tristique',
-				'Sollicitudin Ornare',
-				'Fermentum',
-				'Vehicula Fringilla',
-				'Ridiculus Malesuada',
-			].map((title) => (
-				<Column columnSpan={3} key={title}>
-					<Card {...args}>
-						<CardInner>
-							<Heading as="h2" type="h3">
-								{title}
-							</Heading>
-							<CardLink href="#">
-								More information
-								<Icon icon="chevronRight" size={1} />
-							</CardLink>
-						</CardInner>
-					</Card>
-				</Column>
-			))}
-		</Columns>
+export const CardList: ComponentStory<typeof Card> = () => (
+	<Box
+		palette="light"
+		background="body"
+		gap={1}
+		css={{
+			display: 'grid',
+			gridTemplateColumns: 'repeat(3, 1fr)',
+			gridGap: '1rem',
+		}}
+	>
+		<Card shadow clickable>
+			<CardInner>
+				<Body>
+					<h2>Card Title</h2>
+					<p>Some content</p>
+				</Body>
+			</CardInner>
+		</Card>
+		<Card shadow clickable>
+			<CardInner>
+				<Body>
+					<h2>Card Title</h2>
+					<p>Some content</p>
+					<p>Additional content</p>
+				</Body>
+			</CardInner>
+		</Card>
+		<Card shadow clickable>
+			<CardInner>
+				<Body>
+					<h2>Card Title</h2>
+					<p>Some content</p>
+				</Body>
+			</CardInner>
+		</Card>
+		<Card shadow clickable>
+			<CardInner>
+				<Body>
+					<h2>Card Title</h2>
+					<p>Some content</p>
+				</Body>
+			</CardInner>
+		</Card>
+		<Card shadow clickable>
+			<CardInner>
+				<Body>
+					<h2>Card Title</h2>
+					<p>Some content</p>
+				</Body>
+			</CardInner>
+		</Card>
+		<Card shadow clickable>
+			<CardInner>
+				<Body>
+					<h2>Card Title</h2>
+					<p>Some content</p>
+				</Body>
+			</CardInner>
+		</Card>
+		<Card shadow clickable>
+			<CardInner>
+				<Body>
+					<h2>Card Title</h2>
+					<p>Some content</p>
+				</Body>
+			</CardInner>
+		</Card>
 	</Box>
 );
 

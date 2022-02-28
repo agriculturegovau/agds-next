@@ -182,7 +182,7 @@ Use feature footers to give the card footer more visual prominence. This can be 
 	gap={1}
 	css={{
 		display: 'grid',
-		gridTemplateColumns: '1fr 1fr 1fr',
+    gridTemplateColumns: 'repeat(3, 1fr)',
 		gridGap: '1rem',
 	}}
 >
