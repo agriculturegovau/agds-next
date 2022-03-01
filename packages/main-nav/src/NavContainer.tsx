@@ -84,7 +84,7 @@ export function NavContainer({
 			>
 				<Flex
 					justifyContent="space-between"
-					alignItems="center"
+					alignItems={{ xs: 'flex-start', lg: 'center' }}
 					maxWidth={tokens.maxWidth.container}
 					width="100%"
 					paddingX={{ xs: 0.75, lg: 2 }}

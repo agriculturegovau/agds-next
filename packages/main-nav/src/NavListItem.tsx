@@ -23,28 +23,9 @@ export function NavListItem({ children, active }: NavItemProps) {
 			fontSize={{ xs: 'xs', lg: 'sm' }}
 			lineHeight="default"
 			css={mq({
-				svg: {
-					height: 24,
-					width: 24,
-				},
-				' button': {
-					backgroundColor: 'transparent',
-					fontFamily: 'inherit',
-					fontSize: 'inherit',
-					lineHeight: 'inherit',
-					border: 'none',
-					appearance: 'none',
-				},
-				'> a, > button': {
+				' a': {
 					position: 'relative',
-					display: 'flex',
-					gap: '0.5rem',
-					flexDirection: mapResponsiveProp({
-						xs: 'column-reverse',
-						lg: 'row',
-					}),
-					textAlign: 'left',
-					alignItems: 'center',
+					display: 'block',
 					color: boxPalette[active ? 'foregroundText' : 'foregroundAction'],
 					padding: mapSpacing(1),
 					textDecoration: 'none',
