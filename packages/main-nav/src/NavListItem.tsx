@@ -18,9 +18,9 @@ export function NavListItem({ children, active }: NavItemProps) {
 	return (
 		<Box
 			as="li"
-			paddingBottom={{ md: 0.5 }}
+			paddingBottom={{ lg: 0.5 }}
 			fontFamily="body"
-			fontSize={{ xs: 'xs', md: 'sm' }}
+			fontSize={{ xs: 'xs', lg: 'sm' }}
 			lineHeight="default"
 			css={mq({
 				svg: {
@@ -41,7 +41,7 @@ export function NavListItem({ children, active }: NavItemProps) {
 					gap: '0.5rem',
 					flexDirection: mapResponsiveProp({
 						xs: 'column-reverse',
-						md: 'row',
+						lg: 'row',
 					}),
 					textAlign: 'left',
 					alignItems: 'center',
@@ -51,12 +51,12 @@ export function NavListItem({ children, active }: NavItemProps) {
 
 					fontWeight: mapResponsiveProp({
 						xs: active ? 'bold' : undefined,
-						md: 'normal',
+						lg: 'normal',
 					}),
 
 					// Underline overlay for active menu item
 					'&:after': {
-						content: mapResponsiveProp({ xs: undefined, md: '""' }),
+						content: mapResponsiveProp({ xs: undefined, lg: '""' }),
 						height: mapSpacing(0.5),
 						position: 'absolute',
 						top: '100%',

@@ -87,7 +87,7 @@ export function NavContainer({
 					alignItems="center"
 					maxWidth={tokens.maxWidth.container}
 					width="100%"
-					paddingX={{ xs: 0.75, md: 2 }}
+					paddingX={{ xs: 0.75, lg: 2 }}
 				>
 					<ToggleButton onClick={open} />
 					<FocusTrap
@@ -99,7 +99,7 @@ export function NavContainer({
 					>
 						<div
 							css={{
-								[tokens.mediaQuery.max.sm]: {
+								[tokens.mediaQuery.max.md]: {
 									zIndex: 200,
 									position: 'fixed',
 									display: menuOpen ? 'block' : 'none',
@@ -118,7 +118,7 @@ export function NavContainer({
 							<Flex
 								justifyContent="space-between"
 								width="100%"
-								flexDirection={{ xs: 'column', md: 'row' }}
+								flexDirection={{ xs: 'column', lg: 'row' }}
 							>
 								{children}
 							</Flex>
@@ -138,7 +138,7 @@ function Overlay({ menuOpen }: { menuOpen: boolean }) {
 		<Box
 			display={{
 				xs: 'block',
-				md: 'none',
+				lg: 'none',
 			}}
 			css={{
 				position: 'fixed',

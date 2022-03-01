@@ -23,11 +23,11 @@ export function NavList({ links, activePath }: NavListProps) {
 	return (
 		<Flex
 			as="ul"
-			flexDirection={{ xs: 'column', md: 'row' }}
+			flexDirection={{ xs: 'column', lg: 'row' }}
 			flexWrap="wrap"
 			alignItems="stretch"
 			css={{
-				[tokens.mediaQuery.max.sm]: {
+				[tokens.mediaQuery.max.md]: {
 					'& > li': {
 						borderTopWidth: tokens.borderWidth.sm,
 						borderTopStyle: 'solid',
