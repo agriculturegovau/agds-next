@@ -24,6 +24,7 @@ export function NavList({ links, activePath }: NavListProps) {
 		<Flex
 			as="ul"
 			flexDirection={{ xs: 'column', md: 'row' }}
+			flexWrap="wrap"
 			alignItems="stretch"
 			css={{
 				[tokens.mediaQuery.max.sm]: {
