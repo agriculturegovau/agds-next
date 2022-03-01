@@ -9,7 +9,7 @@ export const CardLink = (props: LinkProps) => {
 				linkStyles,
 				{
 					display: 'flex',
-					justifyContent: 'space-between ',
+					justifyContent: 'space-between',
 					// NOTE: no focus styles here because the parent Card does it.
 					'&:focus': {
 						outline: 'none',
@@ -20,6 +20,7 @@ export const CardLink = (props: LinkProps) => {
 						top: 0,
 						right: 0,
 						bottom: 0,
+						left: 0,
 					},
 				},
 			]}
