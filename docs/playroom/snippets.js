@@ -64,7 +64,6 @@ const snippits = [
 		name: 'Complex',
 		code: `<Footer variant="agriculture">
     <Box
-      aria-label="footer"
       css={{
         display: "grid",
         gridGap: '1rem',
@@ -286,7 +285,7 @@ items={[
 	{
 		group: 'Searchbox',
 		name: 'Basic',
-		code: `<SearchBox aria-label="Sitewide" onSubmit={console.log}>
+		code: `<SearchBox onSubmit={console.log}>
     <SearchBoxInput label="Search this website" />
     <SearchBoxButton>Search</SearchBoxButton>
   </SearchBox>`,

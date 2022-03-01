@@ -9,7 +9,7 @@ group: Forms
 Use the `SearchBox` component to help users find content or pages through keywords. This can be particularly useful for a web service with a large amount of pages.
 
 ```jsx live
-<SearchBox aria-label="Sitewide" onSubmit={console.log}>
+<SearchBox onSubmit={console.log}>
 	<SearchBoxInput label="Search this website" />
 	<SearchBoxButton>Search</SearchBoxButton>
 </SearchBox>
@@ -20,7 +20,7 @@ Use the `SearchBox` component to help users find content or pages through keywor
 Use the `iconOnly` prop to configure at which breakpoints the search icon should replace the button label. This allows more space for text to be written in the text input.
 
 ```jsx live
-<SearchBox aria-label="Sitewide" onSubmit={console.log}>
+<SearchBox onSubmit={console.log}>
 	<SearchBoxInput label="Search this website" />
 	<SearchBoxButton iconOnly={{ xs: true, md: false }}>Search</SearchBoxButton>
 </SearchBox>

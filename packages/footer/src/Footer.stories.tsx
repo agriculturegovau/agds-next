@@ -71,7 +71,7 @@ DarkAltVariant.args = {
 const AgComplexFooter: ComponentStory<typeof Footer> = (args) => {
 	const columnSpanning = { xs: 12, sm: 6, md: 4, lg: 3 } as const;
 	return (
-		<Footer variant={args.variant} aria-label="footer">
+		<Footer variant={args.variant}>
 			<Columns>
 				<Column columnSpan={columnSpanning}>
 					<Stack gap={0.5}>

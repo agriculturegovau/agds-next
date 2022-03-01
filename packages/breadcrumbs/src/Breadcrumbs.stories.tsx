@@ -36,8 +36,8 @@ OnDark.args = {
 	links: exampleLinks,
 };
 
-export const Modular: ComponentStory<typeof BreadcrumbsContainer> = () => (
-	<BreadcrumbsContainer>
+export const Modular = () => (
+	<BreadcrumbsContainer aria-label="breadcrumb">
 		<BreadcrumbsItem
 			href="https://github.com/steelthreads/agds-next"
 			target="_blank"
