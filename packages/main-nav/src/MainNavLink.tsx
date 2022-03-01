@@ -8,7 +8,6 @@ import {
 	mapResponsiveProp,
 	mapSpacing,
 	mq,
-	packs,
 } from '@ag.ds-next/core';
 import { localPalette } from './utils';
 
@@ -23,6 +22,7 @@ const MainNavItem = forwardRefWithAs<'div', BoxProps>(function MainNavItem({
 			fontSize={{ xs: 'xs', lg: 'sm' }}
 			padding={1}
 			gap={0.5}
+			focus
 			lineHeight="default"
 			color="action"
 			flexDirection={{
@@ -35,42 +35,10 @@ const MainNavItem = forwardRefWithAs<'div', BoxProps>(function MainNavItem({
 					height: 24,
 					width: 24,
 				},
-
 				marginBottom: mapResponsiveProp({
 					lg: mapSpacing(0.5),
 				}),
 				textDecoration: 'none',
-
-				// Underline overlay for active menu item
-				'&:after': {
-					content: mapResponsiveProp({ xs: undefined, lg: '""' }),
-					height: mapSpacing(0.5),
-					position: 'absolute',
-					top: '100%',
-					left: 0,
-					right: 0,
-					backgroundColor: 'transparent',
-				},
-
-				// Focus styles
-				'&:focus': {
-					outline: 'none',
-
-					'&:before': {
-						content: '""',
-						position: 'absolute',
-						zIndex: 100,
-						top: 0,
-						left: 0,
-						height: '100%',
-						width: '100%',
-						...packs.outline,
-					},
-					'&::-moz-focus-inner': {
-						border: 0,
-					},
-				},
-
 				'&:hover': {
 					textDecoration: 'underline',
 					textDecorationSkipInk: 'auto',
