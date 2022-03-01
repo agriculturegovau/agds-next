@@ -91,3 +91,7 @@ export const Modular: ComponentStory<typeof InpageNavContainer> = (args) => (
 		<ExampleContent />
 	</Stack>
 );
+
+Modular.args = {
+	'aria-label': 'In page',
+};
