@@ -6,7 +6,7 @@ import { InpageNavTitle } from './InpageNavTitle';
 
 export type InpageNavProps = {
 	title?: string;
-	links: Omit<InpageNavItemProps, 'children'> & { label: ReactNode }[];
+	links: (Omit<InpageNavItemProps, 'children'> & { label: ReactNode })[];
 };
 
 export const InpageNav = ({ title, links, ...props }: InpageNavProps) => (
