@@ -9,7 +9,6 @@ export type MainNavProps = React.PropsWithChildren<{
 	'aria-label'?: string;
 	id?: string;
 	links: NavListLink[];
-	/** Place for your global actions */
 	rightContent?: ReactNode;
 	secondaryLinks?: NavListLink[];
 	variant: NavContainerProps['variant'];

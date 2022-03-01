@@ -49,7 +49,6 @@ const variantMap = {
 export type NavContainerProps = PropsWithChildren<{
 	id?: string;
 	'aria-label': string;
-	/** Place for your global actions */
 	rightContent?: ReactNode;
 	variant: keyof typeof variantMap;
 }>;
