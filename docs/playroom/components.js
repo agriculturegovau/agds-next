@@ -16,6 +16,7 @@ export {
 	CardInner,
 	CardLink,
 } from '@ag.ds-next/card';
+export { Callout } from '@ag.ds-next/callout';
 export { Columns, Column } from '@ag.ds-next/columns';
 export { Footer, FooterDivider } from '@ag.ds-next/footer';
 export { Header } from '@ag.ds-next/header';
