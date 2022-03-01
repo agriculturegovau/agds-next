@@ -7,10 +7,8 @@ export type InpageNavItemContainerProps = {
 
 export const InpageNavItemContainer = ({
 	children,
-}: InpageNavItemContainerProps) => {
-	return (
-		<Stack as="ul" gap={0.5} aria-label="In page">
-			{children}
-		</Stack>
-	);
-};
+}: InpageNavItemContainerProps) => (
+	<Stack as="ul" gap={0.5}>
+		{children}
+	</Stack>
+);

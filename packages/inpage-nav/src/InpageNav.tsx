@@ -9,8 +9,8 @@ export type InpageNavProps = {
 	links: (Omit<InpageNavItemProps, 'children'> & { label: ReactNode })[];
 };
 
-export const InpageNav = ({ title, links, ...props }: InpageNavProps) => (
-	<InpageNavContainer {...props}>
+export const InpageNav = ({ title, links }: InpageNavProps) => (
+	<InpageNavContainer aria-label="In page">
 		{title ? <InpageNavTitle>{title}</InpageNavTitle> : null}
 		<InpageNavItemContainer>
 			{links.map(({ label, ...props }, index) => (
