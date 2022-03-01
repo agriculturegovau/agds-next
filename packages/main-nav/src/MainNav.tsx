@@ -10,7 +10,7 @@ export type MainNavProps = React.PropsWithChildren<{
 	id?: string;
 	links: NavListLink[];
 	/** Place for your global actions */
-	rightContent: ReactNode;
+	rightContent?: ReactNode;
 	secondaryLinks?: NavListLink[];
 	variant: NavContainerProps['variant'];
 }>;
