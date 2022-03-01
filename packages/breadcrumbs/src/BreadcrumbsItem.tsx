@@ -8,7 +8,7 @@ export const BreadcrumbsItem = (props: BreadcrumbsItemProps) => {
 	const { children, href } = props;
 	return (
 		<Box as="li">
-			{href ? <TextLink href={href} {...props} /> : <Text>{children}</Text>}
+			{href ? <TextLink {...props} /> : <Text>{children}</Text>}
 		</Box>
 	);
 };

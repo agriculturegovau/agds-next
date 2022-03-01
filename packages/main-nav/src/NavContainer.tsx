@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PropsWithChildren } from 'react';
 import FocusTrap from 'focus-trap-react';
 
 import { Box, Flex, backgroundColorMap } from '@ag.ds-next/box';
@@ -46,12 +46,18 @@ const variantMap = {
 	},
 } as const;
 
-export type NavContainerProps = React.PropsWithChildren<{
-	variant: keyof typeof variantMap;
+export type NavContainerProps = PropsWithChildren<{
 	id?: string;
+	'aria-label': string;
+	variant: keyof typeof variantMap;
 }>;
 
-export function NavContainer({ children, variant, id }: NavContainerProps) {
+export function NavContainer({
+	id,
+	'aria-label': ariaLabel,
+	children,
+	variant,
+}: NavContainerProps) {
 	const [menuOpen, open, close] = useTernaryState(false);
 	const { background, bottomBar, hover, palette } = variantMap[variant];
 
@@ -74,7 +80,7 @@ export function NavContainer({ children, variant, id }: NavContainerProps) {
 				as="nav"
 				justifyContent="center"
 				css={{ position: 'relative' }}
-				aria-label="Main"
+				aria-label={ariaLabel}
 			>
 				<Box
 					maxWidth={tokens.maxWidth.container}

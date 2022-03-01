@@ -4,12 +4,12 @@ import { NavList, NavListLink } from './NavList';
 import { findBestMatch } from './utils';
 
 export type MainNavProps = React.PropsWithChildren<{
-	variant: NavContainerProps['variant'];
+	id?: string;
+	'aria-label'?: string;
+	activePath?: string;
 	links: NavListLink[];
 	secondaryLinks?: NavListLink[];
-	activePath?: string;
-	id?: string;
-	ariaLabel?: string;
+	variant: NavContainerProps['variant'];
 }>;
 
 export function MainNav({
@@ -18,13 +18,14 @@ export function MainNav({
 	secondaryLinks,
 	activePath,
 	id,
+	'aria-label': ariaLabel = 'main',
 }: MainNavProps) {
 	const bestMatch = findBestMatch(
 		[...links, ...(secondaryLinks || [])],
 		activePath
 	);
 	return (
-		<NavContainer variant={variant} id={id}>
+		<NavContainer variant={variant} id={id} aria-label={ariaLabel}>
 			<NavList links={links} activePath={bestMatch} />
 			{secondaryLinks?.length ? (
 				<NavList links={secondaryLinks} activePath={bestMatch} />

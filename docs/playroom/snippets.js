@@ -45,87 +45,93 @@ const snippits = [
 	{
 		group: 'Footer',
 		name: 'Basic',
-		code: `<Footer variant='agriculture'>
-    <LinkList
-      horizontal
-      links={[
-        { href: '#', label: 'Link 1' },
-        { href: '#', label: 'Link 2' },
-        { href: '#', label: 'Link 3' },
-      ]}
-    />
+		code: `<Footer variant={args.variant}>
+    <nav aria-label="footer">
+      <LinkList
+        horizontal
+        links={[
+          { href: '#', label: 'Home' },
+          { href: '#', label: 'Terms and conditions' },
+          { href: '#', label: 'Privacy policy' },
+          { href: '#', label: 'A really long link title' },
+        ]}
+      />
+    </nav>
     <FooterDivider />
-
-    <Text><small>&copy; Commonwealth of Australia</small></Text>
+    <Text>
+      <small>
+        &copy; Commonwealth of Australia,{' '}
+        <TextLink
+          href="https://github.com/govau/design-system-components/blob/master/LICENSE.md"
+          rel="external license"
+        >
+          MIT licensed
+        </TextLink>
+      </small>
+    </Text>
   </Footer>`,
 	},
 	{
 		group: 'Footer',
 		name: 'Complex',
 		code: `<Footer variant="agriculture">
-    <Box
-      aria-label="footer"
-      css={{
-        display: "grid",
-        gridGap: '1rem',
-
-        [tokens.mediaQuery.min.sm]: {
-          gridTemplateColumns: "repeat(2, [col-start] 1fr)",
-        },
-
-        [tokens.mediaQuery.min.lg]: {
-          gridTemplateColumns: "repeat(4, [col-start] 1fr)",
-        },
-      }}
-    >
-      <Stack gap={0.5}>
-        <H3>Section</H3>
-        <LinkList
-          links={[
-            { href: "#", label: "Link 1" },
-            { href: "#", label: "Link 2" },
-            { href: "#", label: "Link 3" },
-          ]}
-        />
-      </Stack>
-      <Stack gap={0.5}>
-        <H3>Section</H3>
-        <LinkList
-          links={[
-            { href: "#", label: "Link 1" },
-            { href: "#", label: "Link 2" },
-            { href: "#", label: "Link 3" },
-          ]}
-        />
-      </Stack>
-      <Stack gap={0.5}>
-        <H3>Section</H3>
-        <LinkList
-          links={[
-            { href: "#", label: "Link 1" },
-            { href: "#", label: "Link 2" },
-            { href: "#", label: "Link 3" },
-          ]}
-        />
-      </Stack>
-      <Stack gap={0.5}>
-        <H3>Section</H3>
-        <LinkList
-          links={[
-            { href: "#", label: "Link 1" },
-            { href: "#", label: "Link 2" },
-            { href: "#", label: "Link 3" },
-          ]}
-        />
-      </Stack>
-    </Box>
+    <nav aria-label="footer">
+      <Columns>
+        <Column columnSpan={{ xs: 12, sm: 6, lg: 3  }}> 
+          <Stack gap={0.5}>
+            <H3>Section</H3>
+            <LinkList
+              links={[
+                { href: "#", label: "Link 1" },
+                { href: "#", label: "Link 2" },
+                { href: "#", label: "Link 3" },
+              ]}
+            />
+          </Stack>
+        </Column>
+        <Column columnSpan={{ xs: 12, sm: 6, lg: 3 }}> 
+          <Stack gap={0.5}>
+            <H3>Section</H3>
+            <LinkList
+              links={[
+                { href: "#", label: "Link 1" },
+                { href: "#", label: "Link 2" },
+                { href: "#", label: "Link 3" },
+              ]}
+            />
+          </Stack>
+        </Column>
+        <Column columnSpan={{ xs: 12, sm: 6, lg: 3 }}> 
+          <Stack gap={0.5}>
+            <H3>Section</H3>
+            <LinkList
+              links={[
+                { href: "#", label: "Link 1" },
+                { href: "#", label: "Link 2" },
+                { href: "#", label: "Link 3" },
+              ]}
+            />
+          </Stack>
+        </Column>
+        <Column columnSpan={{ xs: 12, sm: 6, lg: 3 }}> 
+          <Stack gap={0.5}>
+            <H3>Section</H3>
+            <LinkList
+              links={[
+                { href: "#", label: "Link 1" },
+                { href: "#", label: "Link 2" },
+                { href: "#", label: "Link 3" },
+              ]}
+            />
+          </Stack>
+        </Column>
+      </Columns>
+    </nav>
     <FooterDivider />
     <Text as="p">Footer text</Text>
-
     <Box maxWidth="240px">
       <Logo />
     </Box>
-
     <FooterDivider />
     <Text>
       <small>
@@ -286,7 +292,7 @@ items={[
 	{
 		group: 'Searchbox',
 		name: 'Basic',
-		code: `<SearchBox aria-label="Sitewide" onSubmit={console.log}>
+		code: `<SearchBox onSubmit={console.log}>
     <SearchBoxInput label="Search this website" />
     <SearchBoxButton>Search</SearchBoxButton>
   </SearchBox>`,

@@ -22,13 +22,14 @@ import {
 export type SideNavContainerProps = PropsWithChildren<{
 	collapseTitle?: string;
 	variant: SideNavVariant;
+	'aria-label': string;
 }>;
 
 export const SideNavContainer = ({
 	children,
 	collapseTitle,
 	variant,
-	...props
+	'aria-label': ariaLabel,
 }: SideNavContainerProps) => {
 	const { palette, background, hover } = variantMap[variant];
 	const [isOpen, onToggle] = useToggleState(false, true);
@@ -44,7 +45,13 @@ export const SideNavContainer = ({
 	});
 
 	return (
-		<Box rounded background={background} palette={palette}>
+		<Box
+			as="aside"
+			aria-label={ariaLabel}
+			rounded
+			background={background}
+			palette={palette}
+		>
 			<SideNavCollapseButton
 				isOpen={isOpen}
 				onClick={onToggle}
@@ -70,6 +77,7 @@ export const SideNavContainer = ({
 				}}
 			>
 				<Box
+					ref={ref}
 					as="nav"
 					fontFamily="body"
 					paddingLeft={{ xs: 1, md: 0 }}
@@ -82,8 +90,6 @@ export const SideNavContainer = ({
 							(t) => backgroundColorMap[t]
 						),
 					})}
-					ref={ref}
-					{...props}
 				>
 					{children}
 				</Box>
