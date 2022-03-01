@@ -2,7 +2,12 @@ import { ButtonHTMLAttributes, forwardRef } from 'react';
 import { Button } from '@ag.ds-next/button';
 import { Box } from '@ag.ds-next/box';
 import { Icon } from '@ag.ds-next/icon';
-import { mapResponsiveProp, mq, ResponsiveProp } from '@ag.ds-next/core';
+import {
+	mapResponsiveProp,
+	mapSpacing,
+	mq,
+	ResponsiveProp,
+} from '@ag.ds-next/core';
 
 export type SearchBoxButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
 	iconOnly?: ResponsiveProp<boolean>;
@@ -34,6 +39,8 @@ const getButtonStyles = ({
 	mq({
 		borderTopLeftRadius: 0,
 		borderBottomLeftRadius: 0,
+		paddingLeft: mapSpacing(1),
+		paddingRight: mapSpacing(1),
 
 		'& > span': {
 			display: mapResponsiveProp(iconOnly, (value) =>
