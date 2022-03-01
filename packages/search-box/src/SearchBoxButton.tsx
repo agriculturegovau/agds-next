@@ -16,7 +16,7 @@ export type SearchBoxButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
 export const SearchBoxButton = forwardRef<
 	HTMLButtonElement,
 	SearchBoxButtonProps
->(function SearchBoxInput({ children, iconOnly }, ref) {
+>(function SearchBoxButton({ children, iconOnly }, ref) {
 	const buttonStyles = getButtonStyles({ iconOnly });
 	return (
 		<Box
