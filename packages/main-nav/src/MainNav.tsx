@@ -5,14 +5,14 @@ import { NavList, NavListLink } from './NavList';
 import { findBestMatch } from './utils';
 
 export type MainNavProps = React.PropsWithChildren<{
+	activePath?: string;
+	'aria-label'?: string;
+	id?: string;
+	links: NavListLink[];
 	/** Place for your global actions */
 	rightContent: ReactNode;
-	variant: NavContainerProps['variant'];
-	links: NavListLink[];
 	secondaryLinks?: NavListLink[];
-	activePath?: string;
-	id?: string;
-	ariaLabel?: string;
+	variant: NavContainerProps['variant'];
 }>;
 
 export function MainNav({
@@ -21,10 +21,16 @@ export function MainNav({
 	rightContent,
 	activePath,
 	id,
+	'aria-label': ariaLabel = 'main',
 }: MainNavProps) {
 	const bestMatch = findBestMatch(links, activePath);
 	return (
-		<NavContainer variant={variant} id={id} rightContent={rightContent}>
+		<NavContainer
+			variant={variant}
+			id={id}
+			aria-label={ariaLabel}
+			rightContent={rightContent}
+		>
 			<NavList links={links} activePath={bestMatch} />
 		</NavContainer>
 	);

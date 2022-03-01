@@ -1,12 +1,10 @@
-import { HTMLAttributes } from 'react';
+import { PropsWithChildren } from 'react';
 
-export type SkipLinkContainerProps = HTMLAttributes<HTMLElement>;
+export type SkipLinkContainerProps = PropsWithChildren<{
+	'aria-label': string;
+}>;
 
 export const SkipLinkContainer = ({
 	children,
-	...props
-}: SkipLinkContainerProps) => (
-	<nav aria-label="Skip links" {...props}>
-		{children}
-	</nav>
-);
+	'aria-label': ariaLabel,
+}: SkipLinkContainerProps) => <nav aria-label={ariaLabel}>{children}</nav>;

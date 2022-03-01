@@ -108,7 +108,7 @@ export const Search = Template.bind({});
 Search.args = {
 	...defaultArgs,
 	rightContent: (
-		<SearchBox aria-label="Sitewide" onSubmit={console.log}>
+		<SearchBox onSubmit={console.log}>
 			<SearchBoxInput label="Search this website" />
 			<SearchBoxButton iconOnly={{ xs: true, md: false }}>
 				Search

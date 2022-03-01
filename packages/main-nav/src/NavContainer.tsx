@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import React, { PropsWithChildren, ReactNode } from 'react';
 import FocusTrap from 'focus-trap-react';
 
 import { Box, Flex, backgroundColorMap } from '@ag.ds-next/box';
@@ -46,17 +46,19 @@ const variantMap = {
 	},
 } as const;
 
-export type NavContainerProps = React.PropsWithChildren<{
+export type NavContainerProps = PropsWithChildren<{
+	id?: string;
+	'aria-label': string;
 	rightContent: ReactNode;
 	variant: keyof typeof variantMap;
-	id?: string;
 }>;
 
 export function NavContainer({
-	children,
-	variant,
 	id,
 	rightContent,
+	'aria-label': ariaLabel,
+	children,
+	variant,
 }: NavContainerProps) {
 	const [menuOpen, open, close] = useTernaryState(false);
 	const { background, bottomBar, hover, palette } = variantMap[variant];
@@ -80,7 +82,7 @@ export function NavContainer({
 				as="nav"
 				justifyContent="center"
 				css={{ position: 'relative' }}
-				aria-label="Main"
+				aria-label={ariaLabel}
 			>
 				<Flex
 					justifyContent="space-between"
