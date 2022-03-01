@@ -1,5 +1,5 @@
 ---
-'@ag.ds-next/main-nav': minor
+'@ag.ds-next/main-nav': major
 ---
 
-Add icon support nav link
+Add support for global actions
