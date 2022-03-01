@@ -158,7 +158,6 @@ function BottomBar() {
 	return (
 		<Box
 			data-name="nav-bottom-bar"
-			display={{ xs: 'none', md: 'block' }}
 			paddingTop={0.5}
 			css={{
 				position: 'absolute',
