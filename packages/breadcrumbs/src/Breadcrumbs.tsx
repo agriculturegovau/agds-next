@@ -4,7 +4,7 @@ import { BreadcrumbsContainer } from './BreadcrumbsContainer';
 import { BreadcrumbsItem, BreadcrumbsItemProps } from './BreadcrumbsItem';
 
 export type BreadcrumbsProps = {
-	links: Omit<BreadcrumbsItemProps, 'children'> & { label: ReactNode }[];
+	links: (Omit<BreadcrumbsItemProps, 'children'> & { label: ReactNode })[];
 };
 
 export const Breadcrumbs = ({ links, ...props }: BreadcrumbsProps) => {
