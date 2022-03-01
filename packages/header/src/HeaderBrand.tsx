@@ -50,9 +50,9 @@ export function HeaderBrand({
 			) : null}
 			{logo ? <Box borderRight display={{ xs: 'none', md: 'block' }} /> : null}
 			<Stack justifyContent="center">
-				<Flex alignItems="center" gap={0.5}>
+				<Flex alignItems="flex-start" gap={0.5}>
 					<Text
-						lineHeight="heading"
+						lineHeight="default"
 						fontSize={{ xs: 'md', sm: 'xl' }}
 						fontWeight="bold"
 					>
@@ -75,13 +75,14 @@ type HeaderBadgeProps = { children: ReactNode };
 const HeaderBadge = ({ children }: HeaderBadgeProps) => {
 	return (
 		<Box
-			fontSize="xs"
+			fontWeight="bold"
 			paddingLeft={0.5}
 			paddingRight={0.5}
 			border
 			borderWidth="md"
 			css={{
 				// These values don't exist in our tokens
+				fontSize: '0.75rem',
 				paddingTop: '2px',
 				paddingBottom: '2px',
 				borderColor: boxPalette.foregroundText,
