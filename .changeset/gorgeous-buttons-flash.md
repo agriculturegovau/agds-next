@@ -1,5 +1,5 @@
 ---
-'@ag.ds-next/inpage-nav': patch
+'@ag.ds-next/inpage-nav': major
 ---
 
-Created `InPage` component
+Created package
