@@ -1,32 +1,41 @@
 import { useForm, SubmitHandler } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as yup from 'yup';
 import { Button } from '@ag.ds-next/button';
 import { Stack } from '@ag.ds-next/box';
 import { TextInput } from '@ag.ds-next/text-input';
 
-// Simple example based off https://react-hook-form.com/get-started
+const formSchema = yup
+	.object({
+		email: yup
+			.string()
+			.email('Invalid email address')
+			.required('Enter your email address'),
+		password: yup.string().required('Enter your password'),
+	})
+	.required();
 
-type ExampleFormInputs = {
-	email: string;
-	password: string;
-};
+type FormSchema = yup.InferType<typeof formSchema>;
 
 export const FormExampleSignIn = () => {
 	const {
 		register,
 		handleSubmit,
 		formState: { errors },
-	} = useForm<ExampleFormInputs>();
+	} = useForm<FormSchema>({
+		resolver: yupResolver(formSchema),
+	});
 
-	const onSubmit: SubmitHandler<ExampleFormInputs> = (data) => {
+	const onSubmit: SubmitHandler<FormSchema> = (data) => {
 		console.log(data);
 	};
 
 	return (
 		<Stack as="form" onSubmit={handleSubmit(onSubmit)} gap={2}>
 			<TextInput
-				label="Email"
+				label="Email address"
 				type="email"
-				{...register('email', { required: 'Email is required' })}
+				{...register('email')}
 				invalid={Boolean(errors.email?.message)}
 				message={errors.email?.message}
 				maxWidth="xl"
@@ -35,9 +44,9 @@ export const FormExampleSignIn = () => {
 			<TextInput
 				label="Password"
 				type="password"
-				{...register('password', { required: 'Password is required' })}
-				invalid={Boolean(errors.email?.message)}
-				message={errors.email?.message}
+				{...register('password')}
+				invalid={Boolean(errors.password?.message)}
+				message={errors.password?.message}
 				maxWidth="xl"
 				required
 			/>
