@@ -2,7 +2,7 @@ import { Flex } from '@ag.ds-next/box';
 import { Text } from '@ag.ds-next/text';
 
 import { Icon, IconNameType } from './Icon';
-import { ICONS } from './icons';
+import { ICONS } from './icons_old';
 
 const IconExample = ({ iconName }: { iconName: keyof typeof ICONS }) => {
 	return (

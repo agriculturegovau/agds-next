@@ -2,7 +2,7 @@ import { boxPalette, mapSpacing, mq, Spacing } from '@ag.ds-next/core';
 import { foregroundColorMap } from '@ag.ds-next/box';
 import { FC, SVGAttributes } from 'react';
 
-import { ICONS } from './icons';
+import { ICONS } from './icons_old';
 
 export type IconNameType = keyof typeof ICONS;
 
