@@ -30,7 +30,6 @@ export const CheckboxIndicator = ({
 			borderWidth="lg"
 			style={{
 				borderColor: 'transparent',
-				borderRadius: '100%',
 				opacity: disabled ? 0.3 : undefined,
 			}}
 		>
