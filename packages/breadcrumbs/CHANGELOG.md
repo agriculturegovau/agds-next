@@ -1,5 +1,22 @@
 # @ag.ds-next/breadcrumbs
 
+## 4.0.1
+
+### Patch Changes
+
+- 135bb87: Updated link components to accept all anchor element HTML attributes
+- 66eb7ed: Fix small typescript bug in main component types
+- ffa1b11: Ensured consistent API of `aria-label`
+- Updated dependencies [135bb87]
+- Updated dependencies [c16dbbe]
+- Updated dependencies [653709c]
+- Updated dependencies [bd36abb]
+- Updated dependencies [c3a5ded]
+  - @ag.ds-next/core@2.1.1
+  - @ag.ds-next/text@4.0.1
+  - @ag.ds-next/box@4.0.1
+  - @ag.ds-next/icon@4.0.1
+
 ## 4.0.0
 
 ### Patch Changes

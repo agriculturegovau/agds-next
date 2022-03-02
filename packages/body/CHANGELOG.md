@@ -1,5 +1,21 @@
 # @ag.ds-next/body
 
+## 4.0.1
+
+### Patch Changes
+
+- c16dbbe: - Added new token `borderWidths` to `core`
+  - Added new props to `Box` for configuring border widths
+  - Replaced usage of inline border widths with new token values
+- c16dbbe: Updated example to include a `blockquote` element
+- c1ef321: Adjust margin for H3s
+- Updated dependencies [135bb87]
+- Updated dependencies [c16dbbe]
+- Updated dependencies [653709c]
+- Updated dependencies [bd36abb]
+  - @ag.ds-next/core@2.1.1
+  - @ag.ds-next/box@4.0.1
+
 ## 4.0.0
 
 ### Patch Changes

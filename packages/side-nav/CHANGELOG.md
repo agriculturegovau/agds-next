@@ -1,5 +1,26 @@
 # @ag.ds-next/side-nav
 
+## 4.0.1
+
+### Patch Changes
+
+- 135bb87: Updated link components to accept all anchor element HTML attributes
+- c16dbbe: - Added new token `borderWidths` to `core`
+  - Added new props to `Box` for configuring border widths
+  - Replaced usage of inline border widths with new token values
+- 2af17ba: Removed overflow to improve focus state
+- ffa1b11: Ensured consistent API of `aria-label`
+- c3a5ded: Improved the typescript types of components with children or extend default HTML elements
+- Updated dependencies [135bb87]
+- Updated dependencies [c16dbbe]
+- Updated dependencies [653709c]
+- Updated dependencies [bd36abb]
+- Updated dependencies [c3a5ded]
+  - @ag.ds-next/core@2.1.1
+  - @ag.ds-next/box@4.0.1
+  - @ag.ds-next/a11y@1.0.1
+  - @ag.ds-next/icon@4.0.1
+
 ## 4.0.0
 
 ### Minor Changes
