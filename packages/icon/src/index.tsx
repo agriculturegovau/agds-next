@@ -1,5 +1,5 @@
 export * from './Icon';
 
-export { AlignJustifyIcon } from './iconss/alert';
-export { ArrowLeftIcon } from './iconss/ArrowLeftIcon';
-export { ChevronLeftIcon } from './iconss/ChevronLeftIcon';
+export { AlignJustifyIcon } from './icons/alert';
+export { ArrowLeftIcon } from './icons/ArrowLeftIcon';
+export { ChevronLeftIcon } from './icons/ChevronLeftIcon';

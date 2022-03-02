@@ -42,7 +42,8 @@ export const createIcon = (children: React.ReactNode, name: string) => {
 	const Icon: FC<{
 		size?: Spacing;
 		color?: keyof typeof colors;
-	}> = ({ size = 1 }) => {
+		weight?: 'regular' | 'bold';
+	}> = ({ size = 1, weight = 'regular' }) => {
 		const resolvedSize = mapSpacing(size);
 
 		return (
@@ -59,7 +60,7 @@ export const createIcon = (children: React.ReactNode, name: string) => {
 					stroke: 'currentColor',
 					strokeLinejoin: 'round',
 					strokeLinecap: 'round',
-					strokeWidth: size > 1 ? 2 : 3,
+					strokeWidth: weight === 'regular' ? 2 : 3,
 				})}
 				role="img"
 			>

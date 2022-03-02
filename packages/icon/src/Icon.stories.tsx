@@ -3,8 +3,8 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 
 import { Icon } from './Icon';
 import { IconExamples } from './example';
-import { AlignJustifyIcon } from './iconss/alert';
-import { ChevronLeftIcon } from './iconss/ChevronLeftIcon';
+import { AlignJustifyIcon } from './icons/alert';
+import { ChevronLeftIcon } from './icons/ChevronLeftIcon';
 
 export default {
 	title: 'foundations/Icon',
@@ -21,9 +21,11 @@ export const AllIcons: ComponentStory<typeof Icon> = () => <IconExamples />;
 
 export const Align = () => <AlignJustifyIcon size={6} />;
 export const AlignSmall = () => <AlignJustifyIcon size={2} />;
-export const ChevronsLeft = () => (
+export const ChevronLeft = () => (
 	<>
-		<ChevronLeftIcon size={4} />
+		<ChevronLeftIcon size={1.5} />
 		<ChevronLeftIcon size={1} />
+		<ChevronLeftIcon size={1.5} weight="bold" />
+		<ChevronLeftIcon size={1} weight="bold" />
 	</>
 );
