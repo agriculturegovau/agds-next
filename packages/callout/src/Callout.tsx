@@ -1,9 +1,16 @@
-import { ReactNode } from 'react';
+import { ReactNode, ElementType } from 'react';
 import { Box } from '@ag.ds-next/box';
 
-export const Callout = ({ children }: { children: ReactNode }) => {
+export const Callout = ({
+	as,
+	children,
+}: {
+	as?: ElementType;
+	children: ReactNode;
+}) => {
 	return (
 		<Box
+			as={as}
 			borderLeft
 			background="shade"
 			padding={1.5}
