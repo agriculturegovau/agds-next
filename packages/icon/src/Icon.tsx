@@ -38,12 +38,14 @@ export const Icon = ({ icon, size = 1, color, ...props }: IconProps) => (
 	</svg>
 );
 
+type IconProps2 = {
+	size?: Spacing;
+	color?: keyof typeof colors;
+	weight?: 'regular' | 'bold';
+};
+
 export const createIcon = (children: React.ReactNode, name: string) => {
-	const Icon: FC<{
-		size?: Spacing;
-		color?: keyof typeof colors;
-		weight?: 'regular' | 'bold';
-	}> = ({ size = 1, weight = 'regular' }) => {
+	const Icon: FC<IconProps2> = ({ size = 1, weight = 'regular' }) => {
 		const resolvedSize = mapSpacing(size);
 
 		return (
@@ -60,7 +62,7 @@ export const createIcon = (children: React.ReactNode, name: string) => {
 					stroke: 'currentColor',
 					strokeLinejoin: 'round',
 					strokeLinecap: 'round',
-					strokeWidth: weight === 'regular' ? 2 : 3,
+					strokeWidth: weight === 'bold' ? 3 : 2,
 				})}
 				role="img"
 			>
