@@ -5,8 +5,10 @@ import { SideNavTitle } from './SideNavTitle';
 import { SideNavGroup } from './SideNavGroup';
 import { SideNavLink } from './SideNavLink';
 import { findBestMatch } from './utils';
+import { LinkProps } from '@ag.ds-next/core';
 
 export type SideNavProps = LinkListProps & {
+	'aria-label'?: string;
 	collapseTitle: string;
 	variant?: ComponentProps<typeof SideNavContainer>['variant'];
 	title: ReactNode;
@@ -14,19 +16,19 @@ export type SideNavProps = LinkListProps & {
 };
 
 export function SideNav({
+	'aria-label': ariaLabel = 'side navigation',
 	activePath,
 	collapseTitle,
 	items,
 	variant = 'light',
 	titleLink,
 	title,
-	...props
 }: SideNavProps) {
 	return (
 		<SideNavContainer
+			aria-label={ariaLabel}
 			variant={variant}
 			collapseTitle={collapseTitle}
-			{...props}
 		>
 			<SideNavTitle isCurrentPage={activePath === titleLink} href={titleLink}>
 				{title}
@@ -36,8 +38,7 @@ export function SideNav({
 	);
 }
 
-type SideNavMenuItemType = {
-	href: string;
+type SideNavMenuItemType = Omit<LinkProps, 'children'> & {
 	label: string;
 	items?: SideNavMenuItemType[];
 };

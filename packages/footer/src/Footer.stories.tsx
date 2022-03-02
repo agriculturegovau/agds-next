@@ -18,17 +18,18 @@ export default {
 const AgSimpleFooter: ComponentStory<typeof Footer> = (args) => {
 	return (
 		<Footer variant={args.variant}>
-			<LinkList
-				horizontal
-				links={[
-					{ href: '#', label: 'Home' },
-					{ href: '#', label: 'Terms and conditions' },
-					{ href: '#', label: 'Privacy policy' },
-					{ href: '#', label: 'A really long link title' },
-				]}
-			/>
+			<nav aria-label="footer">
+				<LinkList
+					horizontal
+					links={[
+						{ href: '#', label: 'Home' },
+						{ href: '#', label: 'Terms and conditions' },
+						{ href: '#', label: 'Privacy policy' },
+						{ href: '#', label: 'A really long link title' },
+					]}
+				/>
+			</nav>
 			<FooterDivider />
-
 			<Text>
 				<small>
 					&copy; Commonwealth of Australia,{' '}
@@ -69,66 +70,66 @@ DarkAltVariant.args = {
 };
 
 const AgComplexFooter: ComponentStory<typeof Footer> = (args) => {
-	const columnSpanning = { xs: 12, sm: 6, md: 4, lg: 3 } as const;
+	const columnSpanning = { xs: 12, sm: 6, lg: 3 } as const;
 	return (
-		<Footer variant={args.variant} aria-label="footer">
-			<Columns>
-				<Column columnSpan={columnSpanning}>
-					<Stack gap={0.5}>
-						<H3>Section</H3>
-						<LinkList
-							links={[
-								{ href: '#', label: 'A really long link title' },
-								{ href: '#', label: 'Terms and conditions' },
-								{ href: '#', label: 'Another really long link title' },
-							]}
-						/>
-					</Stack>
-				</Column>
-				<Column columnSpan={columnSpanning}>
-					<Stack gap={0.5}>
-						<H3>Section</H3>
-						<LinkList
-							links={[
-								{ href: '#', label: 'Link 1' },
-								{ href: '#', label: 'Link 2' },
-								{ href: '#', label: 'Link 3' },
-							]}
-						/>
-					</Stack>
-				</Column>
-				<Column columnSpan={columnSpanning}>
-					<Stack gap={0.5}>
-						<H3>Section</H3>
-						<LinkList
-							links={[
-								{ href: '#', label: 'Link 1' },
-								{ href: '#', label: 'Link 2' },
-								{ href: '#', label: 'Link 3' },
-							]}
-						/>
-					</Stack>
-				</Column>
-				<Column columnSpan={columnSpanning}>
-					<Stack gap={0.5}>
-						<H3>Section</H3>
-						<LinkList
-							links={[
-								{ href: '#', label: 'Link 1' },
-								{ href: '#', label: 'Link 2' },
-								{ href: '#', label: 'Link 3' },
-							]}
-						/>
-					</Stack>
-				</Column>
-			</Columns>
+		<Footer variant={args.variant}>
+			<nav aria-label="footer">
+				<Columns>
+					<Column columnSpan={columnSpanning}>
+						<Stack gap={0.5}>
+							<H3>Section</H3>
+							<LinkList
+								links={[
+									{ href: '#', label: 'Link 1' },
+									{ href: '#', label: 'Link 2' },
+									{ href: '#', label: 'Link 3' },
+								]}
+							/>
+						</Stack>
+					</Column>
+					<Column columnSpan={columnSpanning}>
+						<Stack gap={0.5}>
+							<H3>Section</H3>
+							<LinkList
+								links={[
+									{ href: '#', label: 'Link 1' },
+									{ href: '#', label: 'Link 2' },
+									{ href: '#', label: 'Link 3' },
+								]}
+							/>
+						</Stack>
+					</Column>
+					<Column columnSpan={columnSpanning}>
+						<Stack gap={0.5}>
+							<H3>Section</H3>
+							<LinkList
+								links={[
+									{ href: '#', label: 'Link 1' },
+									{ href: '#', label: 'Link 2' },
+									{ href: '#', label: 'Link 3' },
+								]}
+							/>
+						</Stack>
+					</Column>
+					<Column columnSpan={columnSpanning}>
+						<Stack gap={0.5}>
+							<H3>Section</H3>
+							<LinkList
+								links={[
+									{ href: '#', label: 'Link 1' },
+									{ href: '#', label: 'Link 2' },
+									{ href: '#', label: 'Link 3' },
+								]}
+							/>
+						</Stack>
+					</Column>
+				</Columns>
+			</nav>
 			<FooterDivider />
 			<Text as="p">Footer text</Text>
-
 			<Box maxWidth="240px">
 				<Logo />
 			</Box>
-
 			<FooterDivider />
 			<Text>
 				<small>

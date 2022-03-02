@@ -1,13 +1,14 @@
-import React, { DetailedHTMLProps, FormHTMLAttributes } from 'react';
+import React, { FormHTMLAttributes } from 'react';
 import { Flex } from '@ag.ds-next/box';
 
-export type SearchBoxProps = DetailedHTMLProps<
-	FormHTMLAttributes<HTMLFormElement>,
-	HTMLFormElement
->;
+export type SearchBoxProps = FormHTMLAttributes<HTMLFormElement>;
 
-export const SearchBox = ({ children, ...props }: SearchBoxProps) => (
-	<form role="search" {...props}>
+export const SearchBox = ({
+	'aria-label': ariaLabel = 'sitewide',
+	children,
+	...props
+}: SearchBoxProps) => (
+	<form role="search" aria-label={ariaLabel} {...props}>
 		<Flex alignItems="flex-end">{children}</Flex>
 	</form>
 );

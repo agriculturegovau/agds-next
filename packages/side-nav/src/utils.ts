@@ -1,11 +1,12 @@
 import { useId } from '@reach/auto-id';
+import { LinkProps } from '@ag.ds-next/core';
 
-export function findBestMatch(items: { href: string }[], activePath?: string) {
+export function findBestMatch(items: LinkProps[], activePath?: string) {
 	if (!activePath) return '';
 	let bestMatch = '';
 
 	for (const link of items) {
-		if (link.href === activePath) return link.href;
+		if (!link.href || link.href === activePath) return link.href;
 		if (
 			activePath?.startsWith(link.href) &&
 			link.href.length > bestMatch.length

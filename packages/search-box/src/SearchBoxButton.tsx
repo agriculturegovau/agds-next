@@ -1,45 +1,37 @@
-import { DetailedHTMLProps, ButtonHTMLAttributes, forwardRef } from 'react';
+import { ButtonHTMLAttributes, forwardRef } from 'react';
 import { Button } from '@ag.ds-next/button';
-import { Flex } from '@ag.ds-next/box';
+import { Box } from '@ag.ds-next/box';
 import { Icon } from '@ag.ds-next/icon';
 import {
-	boxPalette,
 	mapResponsiveProp,
+	mapSpacing,
 	mq,
 	ResponsiveProp,
 } from '@ag.ds-next/core';
 
-export type SearchBoxButtonProps = Omit<
-	DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement>,
-	'children'
-> & {
-	children: string;
+export type SearchBoxButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
 	iconOnly?: ResponsiveProp<boolean>;
 };
 
 export const SearchBoxButton = forwardRef<
 	HTMLButtonElement,
 	SearchBoxButtonProps
->(function SearchBoxInput({ children, iconOnly }, ref) {
-	const containerStyles = getContainerStyles();
+>(function SearchBoxButton({ children, iconOnly }, ref) {
 	const buttonStyles = getButtonStyles({ iconOnly });
 	return (
-		<Flex flexShrink={0} css={containerStyles}>
-			<Button ref={ref} type="submit" aria-label={children} css={buttonStyles}>
+		<Box
+			flexShrink={0}
+			css={{ position: 'relative' }}
+			borderLeft
+			borderWidth="lg"
+		>
+			<Button ref={ref} type="submit" css={buttonStyles}>
 				<span>{children}</span>
 				{iconOnly ? <Icon icon="search" size={1.5} /> : null}
 			</Button>
-		</Flex>
+		</Box>
 	);
 });
-
-const getContainerStyles = () =>
-	({
-		position: 'relative',
-		borderLeftWidth: 3,
-		borderLeftStyle: 'solid',
-		borderLeftColor: boxPalette.border,
-	} as const);
 
 const getButtonStyles = ({
 	iconOnly,
@@ -47,6 +39,8 @@ const getButtonStyles = ({
 	mq({
 		borderTopLeftRadius: 0,
 		borderBottomLeftRadius: 0,
+		paddingLeft: mapSpacing(1),
+		paddingRight: mapSpacing(1),
 
 		'& > span': {
 			display: mapResponsiveProp(iconOnly, (value) =>

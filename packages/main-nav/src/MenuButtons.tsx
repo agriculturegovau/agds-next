@@ -14,7 +14,7 @@ function MenuButton({
 	return (
 		<Box
 			as="button"
-			display={{ xs: 'flex', md: 'none' }}
+			display={{ xs: 'flex', lg: 'none' }}
 			flexDirection="column"
 			alignItems="center"
 			fontSize="xs"

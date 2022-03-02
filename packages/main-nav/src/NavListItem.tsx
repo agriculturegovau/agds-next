@@ -6,26 +6,23 @@ import {
 	packs,
 } from '@ag.ds-next/core';
 import { Box } from '@ag.ds-next/box';
-import type { ReactNode } from 'react';
+import type { PropsWithChildren } from 'react';
 
 import { localPalette } from './utils';
 
-export function NavItem({
-	children,
-	active,
-}: {
-	children: ReactNode;
+export type NavItemProps = PropsWithChildren<{
 	active?: boolean;
-}) {
+}>;
+
+export function NavListItem({ children, active }: NavItemProps) {
 	return (
 		<Box
 			as="li"
-			paddingBottom={{ md: 0.5 }}
+			paddingBottom={{ lg: 0.5 }}
 			fontFamily="body"
-			fontSize="sm"
+			fontSize={{ xs: 'xs', lg: 'sm' }}
 			lineHeight="default"
 			css={mq({
-				// TODO: may also need to support button element
 				' a': {
 					position: 'relative',
 					display: 'block',
@@ -35,12 +32,12 @@ export function NavItem({
 
 					fontWeight: mapResponsiveProp({
 						xs: active ? 'bold' : undefined,
-						md: 'normal',
+						lg: 'normal',
 					}),
 
 					// Underline overlay for active menu item
 					'&:after': {
-						content: mapResponsiveProp({ xs: undefined, md: '""' }),
+						content: mapResponsiveProp({ xs: undefined, lg: '""' }),
 						height: mapSpacing(0.5),
 						position: 'absolute',
 						top: '100%',

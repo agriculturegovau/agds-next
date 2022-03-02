@@ -87,9 +87,15 @@ LightAltVariant.args = {
 export const LongSubline = Template.bind({});
 LongSubline.args = {
 	...defaultArgs,
-	logo: logoLight,
 	variant: 'dark',
 	subline: 'Service description that could be a little longer',
+};
+
+export const Badge = Template.bind({});
+Badge.args = {
+	...defaultArgs,
+	variant: 'dark',
+	badgeLabel: 'Beta',
 };
 
 export const NoLogo = Template.bind({});
@@ -102,7 +108,7 @@ export const Search = Template.bind({});
 Search.args = {
 	...defaultArgs,
 	rightContent: (
-		<SearchBox aria-label="Sitewide" onSubmit={console.log}>
+		<SearchBox onSubmit={console.log}>
 			<SearchBoxInput label="Search this website" />
 			<SearchBoxButton iconOnly={{ xs: true, md: false }}>
 				Search

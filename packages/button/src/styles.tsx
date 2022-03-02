@@ -16,26 +16,26 @@ const variants = {
 	},
 	secondary: {
 		background: 'transparent',
-		border: `3px solid ${boxPalette.foregroundAction}`,
+		borderColor: boxPalette.foregroundAction,
 		color: boxPalette.foregroundAction,
 		textDecoration: 'none',
 
 		'&:not(:disabled):hover': {
 			background: 'transparent',
-			border: `3px solid ${boxPalette.foregroundText}`,
+			borderColor: boxPalette.foregroundText,
 			color: boxPalette.foregroundText,
 			textDecoration: 'underline',
 		},
 	},
 	tertiary: {
 		background: 'transparent',
-		border: `3px solid transparent`,
+		borderColor: 'transparent',
 		color: boxPalette.foregroundAction,
 		textDecoration: 'underline',
 
 		'&:not(:disabled):hover': {
 			background: 'transparent',
-			border: `3px solid transparent`,
+			borderColor: 'transparent',
 			color: boxPalette.foregroundText,
 			textDecoration: 'none',
 		},
@@ -75,7 +75,7 @@ export function buttonStyles({
 		appearance: 'none',
 		display: block ? 'flex' : 'inline-flex',
 		alignItems: 'center',
-		borderWidth: 3,
+		borderWidth: tokens.borderWidth.lg,
 		borderStyle: 'solid',
 		borderRadius: tokens.borderRadius,
 		cursor: 'pointer',

@@ -1,25 +1,20 @@
-import { ReactNode } from 'react';
+import { PropsWithChildren } from 'react';
 import { Stack } from '@ag.ds-next/box';
-import { globalPalette, mapSpacing } from '@ag.ds-next/core';
+import { globalPalette } from '@ag.ds-next/core';
 
-export type FieldContainerProps = {
-	children: ReactNode;
+export type FieldContainerProps = PropsWithChildren<{
 	invalid?: boolean;
-};
+}>;
 
 export const FieldContainer = ({ children, invalid }: FieldContainerProps) => (
 	<Stack
 		gap={0.5}
-		css={
-			invalid
-				? {
-						borderLeftWidth: 4,
-						borderLeftStyle: 'solid',
-						borderLeftColor: globalPalette.error,
-						paddingLeft: mapSpacing(1),
-				  }
-				: undefined
-		}
+		paddingLeft={invalid ? 1 : undefined}
+		borderLeft={invalid}
+		borderLeftWidth="xl"
+		css={{
+			borderLeftColor: invalid ? globalPalette.error : undefined,
+		}}
 	>
 		{children}
 	</Stack>

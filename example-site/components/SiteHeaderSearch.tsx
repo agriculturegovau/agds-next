@@ -17,7 +17,7 @@ export const SiteHeaderSearch = () => {
 	};
 
 	return (
-		<SearchBox aria-label="Sitewide" onSubmit={handleSubmit(onSubmit)}>
+		<SearchBox onSubmit={handleSubmit(onSubmit)}>
 			<SearchBoxInput {...register('search')} />
 			<SearchBoxButton iconOnly={{ xs: true, sm: false, md: true, lg: false }}>
 				Search

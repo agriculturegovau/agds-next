@@ -1,11 +1,20 @@
 import type { ReactNode } from 'react';
 import { Flex } from '@ag.ds-next/box';
-import { boxPalette, tokens, useLinkComponent } from '@ag.ds-next/core';
+import {
+	boxPalette,
+	tokens,
+	useLinkComponent,
+	LinkProps,
+} from '@ag.ds-next/core';
 
-import { NavItem } from './NavItem';
+import { NavListItem } from './NavListItem';
+
+export type NavListLink = Omit<LinkProps, 'children'> & {
+	label: ReactNode;
+};
 
 export type NavListProps = {
-	links: { href: string; label: ReactNode }[]; // FIXME: this is too restrictive
+	links: NavListLink[];
 	activePath?: string;
 };
 
@@ -14,22 +23,25 @@ export function NavList({ links, activePath }: NavListProps) {
 	return (
 		<Flex
 			as="ul"
-			flexDirection={{ xs: 'column', md: 'row' }}
+			flexDirection={{ xs: 'column', lg: 'row' }}
+			flexWrap="wrap"
 			alignItems="stretch"
 			css={{
-				[tokens.mediaQuery.max.sm]: {
+				[tokens.mediaQuery.max.md]: {
 					'& > li': {
-						borderTop: `1px solid ${boxPalette.border}`,
+						borderTopWidth: tokens.borderWidth.sm,
+						borderTopStyle: 'solid',
+						borderTopColor: boxPalette.border,
 					},
 				},
 			}}
 		>
 			{links.map(({ href, label, ...props }, index) => (
-				<NavItem key={index} active={href === activePath}>
+				<NavListItem key={index} active={href === activePath}>
 					<Link href={href} {...props}>
 						{label}
 					</Link>
-				</NavItem>
+				</NavListItem>
 			))}
 		</Flex>
 	);

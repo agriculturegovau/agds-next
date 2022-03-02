@@ -1,8 +1,4 @@
-import React, {
-	forwardRef,
-	DetailedHTMLProps,
-	InputHTMLAttributes,
-} from 'react';
+import React, { forwardRef, InputHTMLAttributes } from 'react';
 import { Field, fieldMaxWidth, FieldMaxWidth } from '@ag.ds-next/field';
 import {
 	packs,
@@ -12,10 +8,7 @@ import {
 	tokens,
 } from '@ag.ds-next/core';
 
-export type InputProps = DetailedHTMLProps<
-	InputHTMLAttributes<HTMLInputElement>,
-	HTMLInputElement
-> & {
+export type InputProps = InputHTMLAttributes<HTMLInputElement> & {
 	label: string;
 	required?: boolean;
 	hint?: string;
@@ -85,7 +78,7 @@ export const textInputStyles = ({
 		paddingRight: mapSpacing(1),
 		margin: 0,
 		backgroundColor: globalPalette.lightBackgroundBody,
-		borderWidth: 3,
+		borderWidth: tokens.borderWidth.lg,
 		borderStyle: 'solid',
 		borderColor: boxPalette.borderInput,
 		borderRadius: tokens.borderRadius,

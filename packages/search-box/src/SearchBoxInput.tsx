@@ -1,17 +1,10 @@
-import React, {
-	DetailedHTMLProps,
-	InputHTMLAttributes,
-	forwardRef,
-} from 'react';
+import React, { InputHTMLAttributes, forwardRef } from 'react';
 import { useId } from '@reach/auto-id';
 import { textInputStyles } from '@ag.ds-next/text-input';
 import { Stack } from '@ag.ds-next/box';
 import { SearchBoxLabel } from './SearchBoxLabel';
 
-export type SearchBoxInputProps = DetailedHTMLProps<
-	InputHTMLAttributes<HTMLInputElement>,
-	HTMLInputElement
-> & {
+export type SearchBoxInputProps = InputHTMLAttributes<HTMLInputElement> & {
 	label?: string;
 	labelVisible?: boolean;
 };
