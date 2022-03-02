@@ -1,6 +1,22 @@
 # @ag.ds-next/accordion
 
+## 1.0.1
+
+### Patch Changes
+
+- 935e833: Add example for expand all Accordion group
+- c3a5ded: Improved the typescript types of components with children or extend default HTML elements
+- Updated dependencies [135bb87]
+- Updated dependencies [c16dbbe]
+- Updated dependencies [653709c]
+- Updated dependencies [bd36abb]
+- Updated dependencies [c3a5ded]
+  - @ag.ds-next/core@2.1.1
+  - @ag.ds-next/box@4.0.1
+  - @ag.ds-next/icon@4.0.1
+
 ## 1.0.0
+
 ### Patch Changes
 
 - 0b1ed6c: Use shade color in Accordion title

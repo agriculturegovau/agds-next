@@ -1,5 +1,15 @@
 # @ag.ds-next/core
 
+## 2.1.1
+
+### Patch Changes
+
+- 135bb87: Updated link components to accept all anchor element HTML attributes
+- c16dbbe: - Added new token `borderWidths` to `core`
+  - Added new props to `Box` for configuring border widths
+  - Replaced usage of inline border widths with new token values
+- bd36abb: Replaced usage of `useLayoutEffect` with `useEffect` in `useElementSize`
+
 ## 2.1.0
 
 ### Minor Changes
