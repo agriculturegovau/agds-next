@@ -4,26 +4,41 @@ import { Box } from '@ag.ds-next/box';
 import {
 	ProgressIndicatorContainer,
 	ProgressIndicator,
-	ProgressIndicatorItem,
+	ProgressIndicatorItemLink,
+	ProgressIndicatorItemButton,
 } from './index';
 
 export default {
 	title: 'forms/ProgressIndicator',
 	component: ProgressIndicator,
-	subcomponents: { ProgressIndicatorContainer, ProgressIndicatorItem },
+	subcomponents: {
+		ProgressIndicatorContainer,
+		ProgressIndicatorItemLink,
+		ProgressIndicatorItemButton,
+	},
 } as ComponentMeta<typeof ProgressIndicator>;
 
-const exampleItems = [
+const exampleLinkItems = [
 	{ href: '#', label: 'Introduction', status: 'doing' as const },
 	{ href: '#', label: 'Business Contacts', status: 'todo' as const },
 	{ href: '#', label: 'Case Studies', status: 'done' as const },
+];
+
+const exampleButtonItems = [
+	{
+		onClick: console.log,
+		label: 'Introduction button',
+		status: 'doing' as const,
+	},
+	{ onClick: console.log, label: 'Business Contacts', status: 'todo' as const },
+	{ onClick: console.log, label: 'Case Studies', status: 'done' as const },
 ];
 
 export const OnLight: ComponentStory<typeof ProgressIndicator> = (args) => (
 	<ProgressIndicator {...args} />
 );
 OnLight.args = {
-	items: exampleItems,
+	items: exampleLinkItems,
 };
 
 export const OnDark: ComponentStory<typeof ProgressIndicator> = (args) => (
@@ -32,15 +47,32 @@ export const OnDark: ComponentStory<typeof ProgressIndicator> = (args) => (
 	</Box>
 );
 OnDark.args = {
-	items: exampleItems,
+	items: exampleLinkItems,
 };
 
-export const Modular = () => (
+export const Button: ComponentStory<typeof ProgressIndicator> = (args) => (
+	<ProgressIndicator {...args} />
+);
+Button.args = {
+	items: exampleButtonItems,
+};
+
+export const ModularLinks = () => (
 	<ProgressIndicatorContainer>
-		{exampleItems.map(({ label, ...props }, index) => (
-			<ProgressIndicatorItem key={index} {...props}>
+		{exampleLinkItems.map(({ label, ...props }, index) => (
+			<ProgressIndicatorItemLink key={index} {...props}>
 				{label}
-			</ProgressIndicatorItem>
+			</ProgressIndicatorItemLink>
+		))}
+	</ProgressIndicatorContainer>
+);
+
+export const ModularButtons = () => (
+	<ProgressIndicatorContainer>
+		{exampleLinkItems.map(({ label, ...props }, index) => (
+			<ProgressIndicatorItemButton key={index} {...props}>
+				{label}
+			</ProgressIndicatorItemButton>
 		))}
 	</ProgressIndicatorContainer>
 );
