@@ -1,6 +1,6 @@
 {
 	"name": "@ag.ds-next/inpage-nav",
-	"version": "1.0.0",
+	"version": "0.0.1",
 	"main": "dist/ag.ds-next-inpage-nav.cjs.js",
 	"module": "dist/ag.ds-next-inpage-nav.esm.js",
 	"license": "MIT",
