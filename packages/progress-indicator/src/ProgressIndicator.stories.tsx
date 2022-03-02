@@ -65,7 +65,7 @@ export const ModularLinks = () => (
 
 export const ModularButtons = () => (
 	<ProgressIndicatorContainer>
-		{exampleLinkItems.map(({ label, ...props }, index) => (
+		{exampleButtonItems.map(({ label, ...props }, index) => (
 			<ProgressIndicatorItemButton key={index} {...props}>
 				{label}
 			</ProgressIndicatorItemButton>
