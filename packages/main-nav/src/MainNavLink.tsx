@@ -91,9 +91,10 @@ export const MainNavButton = ({
 		<MainNavItem
 			as="button"
 			css={{
-				backgroundColor: 'transparent',
-				border: 'none',
 				appearance: 'none',
+				background: 'transparent',
+				cursor: 'pointer',
+				textAlign: 'left',
 			}}
 			{...props}
 		>
