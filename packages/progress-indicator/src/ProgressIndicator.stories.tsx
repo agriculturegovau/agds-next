@@ -25,11 +25,7 @@ const exampleLinkItems = [
 ];
 
 const exampleButtonItems = [
-	{
-		onClick: console.log,
-		label: 'Introduction button',
-		status: 'doing' as const,
-	},
+	{ onClick: console.log, label: 'Introduction', status: 'doing' as const },
 	{ onClick: console.log, label: 'Business Contacts', status: 'todo' as const },
 	{ onClick: console.log, label: 'Case Studies', status: 'done' as const },
 ];
