@@ -1,5 +1,5 @@
 import { PropsWithChildren } from 'react';
-import { Box, Stack } from '@ag.ds-next/box';
+import { Stack } from '@ag.ds-next/box';
 import { Text } from '@ag.ds-next/text';
 import { mapSpacing } from '@ag.ds-next/core';
 import { FieldContainer, FieldHint, FieldMessage } from '@ag.ds-next/field';
@@ -26,18 +26,18 @@ export const Fieldset = ({
 					as="legend"
 					display="block"
 					fontWeight="bold"
-					fontSize="md"
+					fontSize="xl"
 					lineHeight="heading"
 				>
 					{label}
 				</Text>
 			) : null}
-			<Stack gap={0.5} css={{ marginTop: label ? mapSpacing(0.5) : undefined }}>
+			<Stack gap={0.5} css={{ marginTop: label ? mapSpacing(2) : undefined }}>
 				{hint ? <FieldHint>{hint}</FieldHint> : null}
 				{message && invalid ? (
 					<FieldMessage invalid={invalid}>{message}</FieldMessage>
 				) : null}
-				<Box>{children}</Box>
+				<Stack gap={1.5}>{children}</Stack>
 			</Stack>
 		</fieldset>
 	</FieldContainer>

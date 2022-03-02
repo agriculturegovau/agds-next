@@ -115,7 +115,7 @@ const SelectOptions = ({
 }) => {
 	return (
 		<>
-			{placeholder ? <option>{placeholder}</option> : null}
+			{placeholder ? <option value="">{placeholder}</option> : null}
 			{options.map((opt) => {
 				if ('options' in opt) {
 					return (
