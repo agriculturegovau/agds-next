@@ -1,6 +1,6 @@
 import { Card, CardInner, CardLink } from '@ag.ds-next/card';
 import { Flex } from '@ag.ds-next/box';
-import { Icon } from '@ag.ds-next/icon';
+import { ChevronRightIcon } from '@ag.ds-next/icon';
 
 import { getPictogram } from './pictograms';
 
@@ -25,7 +25,7 @@ export const PictogramCard = ({
 		<CardInner>
 			<CardLink href={slug}>
 				{title}
-				<Icon icon="chevronRight" size={1} />
+				<ChevronRightIcon size={1} />
 			</CardLink>
 		</CardInner>
 	</Card>

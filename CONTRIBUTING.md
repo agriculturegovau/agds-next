@@ -36,7 +36,7 @@ import { LinkList } from '@ag.ds-next/link-list';
 			href: '/',
 			label: (
 				<Box>
-					<Icon icon="house" /> Home
+					<HouseIcon /> Home
 				</Box>
 			),
 		},
@@ -44,7 +44,7 @@ import { LinkList } from '@ag.ds-next/link-list';
 			href: '/about',
 			label: (
 				<Box>
-					<Icon icon="question" /> About
+					<QuestionIcon /> About
 				</Box>
 			),
 		},

@@ -1,6 +1,6 @@
 import { Flex } from '@ag.ds-next/box';
 import { Text, TextLink } from '@ag.ds-next/text';
-import { Icon } from '@ag.ds-next/icon';
+import { DoingIcon, DoneIcon, TodoIcon } from '@ag.ds-next/icon';
 import { boxPalette, LinkProps } from '@ag.ds-next/core';
 
 export type ProgressIndicatorItemStatus = 'doing' | 'todo' | 'done';
@@ -15,6 +15,7 @@ export const ProgressIndicatorItem = ({
 	...props
 }: ProgressIndicatorItemProps) => {
 	const active = status === 'doing';
+	const Icon = statusIconMap[status];
 	return (
 		<li>
 			<Flex
@@ -36,7 +37,7 @@ export const ProgressIndicatorItem = ({
 					},
 				}}
 			>
-				<Icon icon={statusIconMap[status]} size={1.5} color="action" />
+				<Icon size={1.5} color="action" />
 				<Flex flexDirection="column" gap={0}>
 					<Text color="muted" fontSize="xs" lineHeight="nospace">
 						{statusLabelMap[status]}
@@ -49,9 +50,9 @@ export const ProgressIndicatorItem = ({
 };
 
 const statusIconMap = {
-	doing: 'progressDoing',
-	todo: 'progressTodo',
-	done: 'progressDone',
+	doing: DoingIcon,
+	todo: TodoIcon,
+	done: DoneIcon,
 } as const;
 
 const statusLabelMap = {

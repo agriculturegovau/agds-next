@@ -11,7 +11,7 @@ import {
 	globalPalette,
 	tokens,
 } from '@ag.ds-next/core';
-import { Icon } from '@ag.ds-next/icon';
+import { ChevronDownIcon } from '@ag.ds-next/icon';
 
 export type Option = {
 	label: string;
@@ -139,8 +139,8 @@ const SelectOptions = ({
 };
 
 const SelectIcon = ({ disabled }: { disabled?: boolean }) => (
-	<Icon
-		icon="chevronDown"
+	<ChevronDownIcon
+		weight="bold"
 		color="action"
 		css={{
 			position: 'absolute',

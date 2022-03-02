@@ -45,7 +45,12 @@ type IconProps2 = {
 };
 
 export const createIcon = (children: React.ReactNode, name: string) => {
-	const Icon: FC<IconProps2> = ({ size = 1, color, weight = 'regular' }) => {
+	const Icon: FC<IconProps2> = ({
+		size = 1,
+		color,
+		weight = 'regular',
+		...props
+	}) => {
 		const resolvedSize = mapSpacing(size);
 
 		return (
@@ -67,6 +72,7 @@ export const createIcon = (children: React.ReactNode, name: string) => {
 					strokeWidth: weight === 'bold' ? 3 : 2,
 				})}
 				role="img"
+				{...props}
 			>
 				{children}
 			</Box>

@@ -1,5 +1,5 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { Icon } from '@ag.ds-next/icon';
+import { AvatarIcon } from '@ag.ds-next/icon';
 
 import { MainNav } from './MainNav';
 import { MainNavButton, MainNavLink } from './MainNavLink';
@@ -68,11 +68,7 @@ export const HeaderRightLink: ComponentStory<typeof MainNav> = (args) => {
 		<MainNav
 			{...args}
 			rightContent={
-				<MainNavLink
-					href="#login"
-					label="Sign in"
-					icon={<Icon icon="avatar" />}
-				/>
+				<MainNavLink href="#login" label="Sign in" icon={<AvatarIcon />} />
 			}
 		/>
 	);
@@ -89,7 +85,7 @@ export const HeaderRightButton: ComponentStory<typeof MainNav> = (args) => {
 				<MainNavButton
 					onClick={() => console.log('Button press')}
 					label="Sign in"
-					icon={<Icon icon="avatar" />}
+					icon={<AvatarIcon />}
 				/>
 			}
 		/>

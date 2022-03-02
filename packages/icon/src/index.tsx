@@ -1,5 +1,21 @@
 export * from './Icon';
-
-export { AlignJustifyIcon } from './icons/alert';
+export { AlertIcon } from './icons/AlertIcon';
+export { AlertFilledIcon } from './icons/AlertFilledIcon';
+export { ArrowUpIcon } from './icons/ArrowUpIcon';
+export { ArrowDownIcon } from './icons/ArrowDownIcon';
 export { ArrowLeftIcon } from './icons/ArrowLeftIcon';
+export { ArrowRightIcon } from './icons/ArrowRightIcon';
+export { AvatarIcon } from './icons/AvatarIcon';
+export { ChevronUpIcon } from './icons/ChevronUpIcon';
+export { ChevronDownIcon } from './icons/ChevronDownIcon';
 export { ChevronLeftIcon } from './icons/ChevronLeftIcon';
+export { ChevronRightIcon } from './icons/ChevronRightIcon';
+export { CloseIcon } from './icons/CloseIcon';
+export { DoingIcon } from './icons/DoingIcon';
+export { DoneIcon } from './icons/DoneIcon';
+export { ExternalLinkIcon } from './icons/ExternalLinkIcon';
+export { MenuIcon } from './icons/MenuIcon';
+export { SearchIcon } from './icons/SearchIcon';
+export { SuccessIcon } from './icons/SuccessIcon';
+export { SuccessFilledIcon } from './icons/SuccessFilledIcon';
+export { TodoIcon } from './icons/TodoIcon';
