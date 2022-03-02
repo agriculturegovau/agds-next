@@ -1,5 +1,5 @@
 import { boxPalette, mapSpacing, mq, Spacing } from '@ag.ds-next/core';
-import { foregroundColorMap } from '@ag.ds-next/box';
+import { Box, foregroundColorMap } from '@ag.ds-next/box';
 import { FC, SVGAttributes } from 'react';
 
 import { ICONS } from './icons_old';
@@ -45,12 +45,14 @@ type IconProps2 = {
 };
 
 export const createIcon = (children: React.ReactNode, name: string) => {
-	const Icon: FC<IconProps2> = ({ size = 1, weight = 'regular' }) => {
+	const Icon: FC<IconProps2> = ({ size = 1, color, weight = 'regular' }) => {
 		const resolvedSize = mapSpacing(size);
 
 		return (
-			<svg
+			<Box
+				as="svg"
 				aria-hidden="true"
+				color={color}
 				width={resolvedSize}
 				height={resolvedSize}
 				viewBox="0 0 24 24"
@@ -67,7 +69,7 @@ export const createIcon = (children: React.ReactNode, name: string) => {
 				role="img"
 			>
 				{children}
-			</svg>
+			</Box>
 		);
 	};
 
