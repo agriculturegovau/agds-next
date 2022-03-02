@@ -1,5 +1,22 @@
 # @ag.ds-next/card
 
+## 2.1.0
+
+### Minor Changes
+
+- fe056ee: Add `CardHeader`, `CardFooter` and `CardList`
+
+### Patch Changes
+
+- 135bb87: Updated link components to accept all anchor element HTML attributes
+- 69cdd3d: Fix positioning bug in `CardLink` component
+- Updated dependencies [135bb87]
+- Updated dependencies [c16dbbe]
+- Updated dependencies [653709c]
+- Updated dependencies [bd36abb]
+  - @ag.ds-next/core@2.1.1
+  - @ag.ds-next/box@4.0.1
+
 ## 2.0.0
 
 ### Patch Changes

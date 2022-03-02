@@ -1,5 +1,67 @@
 # @ag.ds-next/docs
 
+## 0.2.0
+
+### Minor Changes
+
+- 91528c5: Implement Alpha badge in Header
+
+### Patch Changes
+
+- fe056ee: Add `CardHeader`, `CardFooter` and `CardList`
+- 135bb87: Updated `LinkComponent` to use an `a` tag when linking to external sites
+- f8cba6b: Added skip links to documentation site
+- ffa1b11: Updated snippets using the `aria-label` attribute
+- Updated dependencies [fe056ee]
+- Updated dependencies [135bb87]
+- Updated dependencies [c16dbbe]
+- Updated dependencies [2af17ba]
+- Updated dependencies [935e833]
+- Updated dependencies [66eb7ed]
+- Updated dependencies [c16dbbe]
+- Updated dependencies [ffa1b11]
+- Updated dependencies [653709c]
+- Updated dependencies [7abc9d8]
+- Updated dependencies [bd36abb]
+- Updated dependencies [d28a3c4]
+- Updated dependencies [ffa1b11]
+- Updated dependencies [653709c]
+- Updated dependencies [f8cba6b]
+- Updated dependencies [ffd5cba]
+- Updated dependencies [c1ef321]
+- Updated dependencies [91528c5]
+- Updated dependencies [c3a5ded]
+- Updated dependencies [69cdd3d]
+- Updated dependencies [f8cba6b]
+- Updated dependencies [a51f0d9]
+  - @ag.ds-next/card@2.1.0
+  - @ag.ds-next/breadcrumbs@4.0.1
+  - @ag.ds-next/button@4.0.1
+  - @ag.ds-next/core@2.1.1
+  - @ag.ds-next/keyword-list@1.0.1
+  - @ag.ds-next/link-list@4.0.1
+  - @ag.ds-next/main-nav@5.0.0
+  - @ag.ds-next/progress-indicator@2.0.1
+  - @ag.ds-next/side-nav@4.0.1
+  - @ag.ds-next/skip-link@1.0.1
+  - @ag.ds-next/text@4.0.1
+  - @ag.ds-next/body@4.0.1
+  - @ag.ds-next/box@4.0.1
+  - @ag.ds-next/control-input@2.0.1
+  - @ag.ds-next/field@2.0.1
+  - @ag.ds-next/footer@4.0.1
+  - @ag.ds-next/heading@4.0.1
+  - @ag.ds-next/search-box@2.0.1
+  - @ag.ds-next/select@2.0.1
+  - @ag.ds-next/text-input@2.0.1
+  - @ag.ds-next/accordion@1.0.1
+  - @ag.ds-next/header@4.1.0
+  - @ag.ds-next/ag-branding@4.0.1
+  - @ag.ds-next/columns@3.0.1
+  - @ag.ds-next/icon@4.0.1
+  - @ag.ds-next/textarea@2.0.1
+  - @ag.ds-next/content@4.0.1
+
 ## 0.1.3
 
 ### Patch Changes
