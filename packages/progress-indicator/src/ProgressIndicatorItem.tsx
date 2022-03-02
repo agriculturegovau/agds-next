@@ -35,10 +35,9 @@ export const ProgressIndicatorItemButton = ({
 		css={{
 			appearance: 'none',
 			background: 'transparent',
-			textAlign: 'left',
-			fontFamily: 'inherit',
-			fontSize: 'inherit',
 			cursor: 'pointer',
+			textAlign: 'left',
+			fontSize: 'inherit',
 		}}
 		{...props}
 	>
@@ -63,16 +62,13 @@ const ProgressIndicatorItem = forwardRefWithAs<
 				gap={0.75}
 				padding={0.75}
 				color="text"
+				fontFamily="body"
 				fontWeight={active ? 'bold' : 'normal'}
 				borderBottom
 				borderLeft
-<<<<<<< Updated upstream
 				borderLeftWidth="xl"
-=======
-				borderLeftWidth="lg"
 				width="100%"
 				focus
->>>>>>> Stashed changes
 				css={{
 					borderLeftColor: active ? boxPalette.foregroundAction : 'transparent',
 					textDecoration: 'none',
