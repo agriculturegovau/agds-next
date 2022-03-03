@@ -1,5 +1,17 @@
 # @ag.ds-next/example-site
 
+## 0.0.7
+
+### Patch Changes
+
+- c6c6c26: Updated usage of `MainNav`
+- f7a0a7e: Deploy example site to documentation site (github pages)
+- Updated dependencies [c6c6c26]
+- Updated dependencies [77aaeba]
+- Updated dependencies [54339e9]
+  - @ag.ds-next/main-nav@5.0.1
+  - @ag.ds-next/control-input@2.0.2
+
 ## 0.0.6
 
 ### Patch Changes

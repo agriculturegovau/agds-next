@@ -1,5 +1,12 @@
 # @ag.ds-next/main-nav
 
+## 5.0.1
+
+### Patch Changes
+
+- c6c6c26: Fixed bugs with `secondaryLinks` and `rightContent`
+- 54339e9: Added pointer cursor to `MainNavButton`
+
 ## 5.0.0
 
 ### Major Changes
