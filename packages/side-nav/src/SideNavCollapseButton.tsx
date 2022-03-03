@@ -57,7 +57,7 @@ export const SideNavCollapseButton = ({
 			}}
 		>
 			{children}
-			<AnimatedIcon size={1} style={iconStyle} />
+			<AnimatedIcon size={1} style={iconStyle} weight="bold" />
 		</Flex>
 	);
 };
