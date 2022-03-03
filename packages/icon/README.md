@@ -7,9 +7,9 @@ group: Foundations
 ```jsx live
 <Stack gap={1} flexDirection="row" margin={1}>
 	<AvatarIcon size={3} />
-	<TodoIcon size={3} />
-	<DoingIcon size={3} />
-	<DoneIcon size={3} />
+	<ProgressTodoIcon size={3} />
+	<ProgressDoingIcon size={3} />
+	<ProgressDoneIcon size={3} />
 </Stack>
 ```
 

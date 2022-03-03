@@ -13,14 +13,14 @@ import { ChevronDownIcon } from './icons/ChevronDownIcon';
 import { ChevronLeftIcon } from './icons/ChevronLeftIcon';
 import { ChevronRightIcon } from './icons/ChevronRightIcon';
 import { CloseIcon } from './icons/CloseIcon';
-import { DoingIcon } from './icons/DoingIcon';
-import { DoneIcon } from './icons/DoneIcon';
+import { ProgressDoingIcon } from './icons/ProgressDoingIcon';
+import { ProgressDoneIcon } from './icons/ProgressDoneIcon';
 import { ExternalLinkIcon } from './icons/ExternalLinkIcon';
 import { MenuIcon } from './icons/MenuIcon';
 import { SearchIcon } from './icons/SearchIcon';
 import { SuccessIcon } from './icons/SuccessIcon';
 import { SuccessFilledIcon } from './icons/SuccessFilledIcon';
-import { TodoIcon } from './icons/TodoIcon';
+import { ProgressTodoIcon } from './icons/ProgressTodoIcon';
 
 const allNewIcons = {
 	AlertIcon,
@@ -35,14 +35,14 @@ const allNewIcons = {
 	ChevronLeftIcon,
 	ChevronRightIcon,
 	CloseIcon,
-	DoingIcon,
-	DoneIcon,
+	ProgressDoingIcon,
+	ProgressDoneIcon,
 	ExternalLinkIcon,
 	MenuIcon,
 	SearchIcon,
 	SuccessIcon,
 	SuccessFilledIcon,
-	TodoIcon,
+	ProgressTodoIcon,
 };
 
 export const IconExamples = ({ size = 3, ...args }) => {

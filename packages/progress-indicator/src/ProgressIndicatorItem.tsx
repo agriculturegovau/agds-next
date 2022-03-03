@@ -1,6 +1,10 @@
 import { Flex } from '@ag.ds-next/box';
 import { Text, TextLink } from '@ag.ds-next/text';
-import { DoingIcon, DoneIcon, TodoIcon } from '@ag.ds-next/icon';
+import {
+	ProgressDoingIcon,
+	ProgressDoneIcon,
+	ProgressTodoIcon,
+} from '@ag.ds-next/icon';
 import { boxPalette, LinkProps } from '@ag.ds-next/core';
 
 export type ProgressIndicatorItemStatus = 'doing' | 'todo' | 'done';
@@ -50,9 +54,9 @@ export const ProgressIndicatorItem = ({
 };
 
 const statusIconMap = {
-	doing: DoingIcon,
-	todo: TodoIcon,
-	done: DoneIcon,
+	doing: ProgressDoingIcon,
+	todo: ProgressTodoIcon,
+	done: ProgressDoneIcon,
 } as const;
 
 const statusLabelMap = {

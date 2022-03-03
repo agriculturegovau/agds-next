@@ -57,14 +57,14 @@ export {
 	ChevronLeftIcon,
 	ChevronRightIcon,
 	CloseIcon,
-	DoingIcon,
-	DoneIcon,
+	ProgressDoingIcon,
+	ProgressDoneIcon,
 	ExternalLinkIcon,
 	MenuIcon,
 	SearchIcon,
 	SuccessIcon,
 	SuccessFilledIcon,
-	TodoIcon,
+	ProgressTodoIcon,
 } from '@ag.ds-next/icon';
 export { ProgressIndicator } from '@ag.ds-next/progress-indicator';
 export { ControlGroup, Checkbox, Radio } from '@ag.ds-next/control-input';
