@@ -4,7 +4,7 @@ import { Stack } from '@ag.ds-next/box';
 import { Header } from '@ag.ds-next/header';
 import { MainNav, MainNavLink } from '@ag.ds-next/main-nav';
 import { SiteHeaderSearch } from './SiteHeaderSearch';
-import { Icon } from '@ag.ds-next/icon';
+import { AvatarIcon } from '@ag.ds-next/icon';
 
 const NAV_LINKS = [
 	{ label: 'Home', href: '/' },
@@ -32,7 +32,7 @@ export const SiteHeader = () => {
 					<MainNavLink
 						label="Sign in"
 						href="/sign-in"
-						icon={<Icon icon="avatar" size={1.5} />}
+						icon={<AvatarIcon size={1.5} />}
 					/>
 				}
 			/>

@@ -1,39 +1,69 @@
-import { boxPalette, mapSpacing, Spacing } from '@ag.ds-next/core';
+import {
+	boxPalette,
+	mapSpacing,
+	mapResponsiveProp,
+	mq,
+	Spacing,
+} from '@ag.ds-next/core';
 import { foregroundColorMap } from '@ag.ds-next/box';
-import { SVGAttributes } from 'react';
-
-import { ICONS } from './icons';
-
-export type IconNameType = keyof typeof ICONS;
+import { ReactNode, SVGAttributes } from 'react';
 
 type SvgProps = Omit<
 	SVGAttributes<SVGSVGElement>,
-	'width' | 'height' | 'viewBox' | 'fill' | 'fillRule' | 'clipRule' | 'xmlns'
+	| 'width'
+	| 'height'
+	| 'viewBox'
+	| 'fill'
+	| 'fillRule'
+	| 'clipRule'
+	| 'xmlns'
+	| 'color'
 >;
 
-const colors = {
+export const iconColors = {
 	...foregroundColorMap,
 	border: boxPalette.border,
 };
+type IconColor = keyof typeof iconColors;
 
 export type IconProps = SvgProps & {
-	icon: IconNameType;
 	size?: Spacing;
-	color?: keyof typeof colors;
+	color?: IconColor;
+	weight?: 'regular' | 'bold';
 };
 
-export const Icon = ({ icon, size = 1, color, ...props }: IconProps) => (
-	<svg
-		aria-hidden="true"
-		width={mapSpacing(size)}
-		height={mapSpacing(size)}
-		viewBox="0 0 24 24"
-		fill={color ? colors[color] : 'currentColor'}
-		fillRule="evenodd"
-		clipRule="evenodd"
-		xmlns="http://www.w3.org/2000/svg"
-		{...props}
-	>
-		<path d={ICONS[icon]} />
-	</svg>
-);
+export const createIcon = (children: ReactNode, name: string) => {
+	const Icon = ({ size = 1, color, weight = 'regular', style }: IconProps) => {
+		const resolvedSize = mapSpacing(size);
+
+		return (
+			<svg
+				aria-hidden="true"
+				width={resolvedSize}
+				height={resolvedSize}
+				viewBox="0 0 24 24"
+				clipRule="evenodd"
+				xmlns="http://www.w3.org/2000/svg"
+				focusable="false"
+				css={mq({
+					color: color
+						? mapResponsiveProp(color, (t) => iconColors[t])
+						: undefined,
+					fill: 'none',
+					stroke: 'currentColor',
+					strokeLinejoin: 'round',
+					strokeLinecap: 'round',
+					strokeWidth: weight === 'bold' ? 3 : 2,
+				})}
+				role="img"
+				style={style}
+			>
+				{children}
+			</svg>
+		);
+	};
+
+	Icon.displayName = name;
+
+	return Icon;
+};

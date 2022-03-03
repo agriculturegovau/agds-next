@@ -1,6 +1,6 @@
 import { animated, useSpring } from 'react-spring';
 import { Box, Flex } from '@ag.ds-next/box';
-import { Icon } from '@ag.ds-next/icon';
+import { ChevronDownIcon } from '@ag.ds-next/icon';
 import { usePrefersReducedMotion } from '@ag.ds-next/core';
 
 export type AccordionTitleProps = {
@@ -12,7 +12,7 @@ export type AccordionTitleProps = {
 	tag?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
 };
 
-const AnimatedIcon = animated(Icon);
+const AnimatedIcon = animated(ChevronDownIcon);
 
 export const AccordionTitle = ({
 	ariaControls,
@@ -50,7 +50,7 @@ export const AccordionTitle = ({
 				focus
 			>
 				{children}
-				<AnimatedIcon icon="chevronDown" size={1} style={style} />
+				<AnimatedIcon weight="bold" size={1} style={style} />
 			</Flex>
 		</Box>
 	);

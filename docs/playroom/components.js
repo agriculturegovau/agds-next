@@ -44,7 +44,28 @@ export {
 	SideNavGroup,
 	SideNavTitle,
 } from '@ag.ds-next/side-nav';
-export { Icon } from '@ag.ds-next/icon';
+export {
+	AlertIcon,
+	AlertFilledIcon,
+	ArrowUpIcon,
+	ArrowDownIcon,
+	ArrowLeftIcon,
+	ArrowRightIcon,
+	AvatarIcon,
+	ChevronUpIcon,
+	ChevronDownIcon,
+	ChevronLeftIcon,
+	ChevronRightIcon,
+	CloseIcon,
+	ProgressDoingIcon,
+	ProgressDoneIcon,
+	ExternalLinkIcon,
+	MenuIcon,
+	SearchIcon,
+	SuccessIcon,
+	SuccessFilledIcon,
+	ProgressTodoIcon,
+} from '@ag.ds-next/icon';
 export { ProgressIndicator } from '@ag.ds-next/progress-indicator';
 export { ControlGroup, Checkbox, Radio } from '@ag.ds-next/control-input';
 export {

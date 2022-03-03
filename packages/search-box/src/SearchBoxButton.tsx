@@ -1,7 +1,7 @@
 import { ButtonHTMLAttributes, forwardRef } from 'react';
 import { Button } from '@ag.ds-next/button';
 import { Box } from '@ag.ds-next/box';
-import { Icon } from '@ag.ds-next/icon';
+import { SearchIcon } from '@ag.ds-next/icon';
 import {
 	mapResponsiveProp,
 	mapSpacing,
@@ -27,7 +27,7 @@ export const SearchBoxButton = forwardRef<
 		>
 			<Button ref={ref} type="submit" css={buttonStyles}>
 				<span>{children}</span>
-				{iconOnly ? <Icon icon="search" size={1.5} /> : null}
+				{iconOnly ? <SearchIcon size={1.5} /> : null}
 			</Button>
 		</Box>
 	);

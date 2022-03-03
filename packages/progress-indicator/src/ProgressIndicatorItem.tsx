@@ -1,7 +1,11 @@
 import { ButtonHTMLAttributes, PropsWithChildren } from 'react';
 import { Flex } from '@ag.ds-next/box';
 import { Text, TextLink } from '@ag.ds-next/text';
-import { Icon } from '@ag.ds-next/icon';
+import {
+	ProgressDoingIcon,
+	ProgressDoneIcon,
+	ProgressTodoIcon,
+} from '@ag.ds-next/icon';
 import { boxPalette, forwardRefWithAs, LinkProps } from '@ag.ds-next/core';
 
 export type ProgressIndicatorItemStatus = 'doing' | 'todo' | 'done';
@@ -54,6 +58,7 @@ const ProgressIndicatorItem = forwardRefWithAs<
 	ProgressIndicatorItemProps
 >(function ProgressIndicatorItem({ children, as, status, ...props }) {
 	const active = status === 'doing';
+	const Icon = statusIconMap[status];
 	return (
 		<li>
 			<Flex
@@ -78,7 +83,7 @@ const ProgressIndicatorItem = forwardRefWithAs<
 				}}
 				{...props}
 			>
-				<Icon icon={statusIconMap[status]} size={1.5} color="action" />
+				<Icon size={1.5} color="action" />
 				<Flex flexDirection="column" gap={0}>
 					<Text color="muted" fontSize="xs" lineHeight="nospace">
 						{statusLabelMap[status]}
@@ -91,9 +96,9 @@ const ProgressIndicatorItem = forwardRefWithAs<
 });
 
 const statusIconMap = {
-	doing: 'progressDoing',
-	todo: 'progressTodo',
-	done: 'progressDone',
+	doing: ProgressDoingIcon,
+	todo: ProgressTodoIcon,
+	done: ProgressDoneIcon,
 } as const;
 
 const statusLabelMap = {
