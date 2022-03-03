@@ -31,7 +31,7 @@ export const SiteHeader = () => {
 				rightContent={
 					<MainNavLink
 						label="GitHub"
-						href="https://github.com/steelthreads/ads-next"
+						href="https://github.com/steelthreads/agds-next"
 						target="_blank"
 						rel="noopener noeferrer"
 					/>
