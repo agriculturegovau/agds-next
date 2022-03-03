@@ -10,11 +10,7 @@ export type MenuButtonProps = PropsWithChildren<{
 
 function MenuButton({ onClick, children }: MenuButtonProps) {
 	return (
-		<Box
-			paddingBottom={0.5}
-			display={{ xs: 'block', lg: 'none' }}
-			height="100%"
-		>
+		<Box paddingBottom={0.5} display={{ xs: 'block', lg: 'none' }}>
 			<Flex
 				as="button"
 				flexDirection="column"
