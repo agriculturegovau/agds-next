@@ -1,10 +1,12 @@
-import { boxPalette, mapSpacing, mq, Spacing } from '@ag.ds-next/core';
+import {
+	boxPalette,
+	mapSpacing,
+	mapResponsiveProp,
+	mq,
+	Spacing,
+} from '@ag.ds-next/core';
 import { Box, foregroundColorMap } from '@ag.ds-next/box';
 import { FC, SVGAttributes } from 'react';
-
-import { ICONS } from './icons_old';
-
-export type IconNameType = keyof typeof ICONS;
 
 type SvgProps = Omit<
 	SVGAttributes<SVGSVGElement>,
@@ -17,35 +19,13 @@ const colors = {
 };
 
 export type IconProps = SvgProps & {
-	icon: IconNameType;
-	size?: Spacing;
-	color?: keyof typeof colors;
-};
-
-export const Icon = ({ icon, size = 1, color, ...props }: IconProps) => (
-	<svg
-		aria-hidden="true"
-		width={mapSpacing(size)}
-		height={mapSpacing(size)}
-		viewBox="0 0 24 24"
-		fill={color ? colors[color] : 'currentColor'}
-		fillRule="evenodd"
-		clipRule="evenodd"
-		xmlns="http://www.w3.org/2000/svg"
-		{...props}
-	>
-		<path d={ICONS[icon]} />
-	</svg>
-);
-
-type IconProps2 = {
 	size?: Spacing;
 	color?: keyof typeof colors;
 	weight?: 'regular' | 'bold';
 };
 
 export const createIcon = (children: React.ReactNode, name: string) => {
-	const Icon: FC<IconProps2> = ({
+	const Icon: FC<IconProps> = ({
 		size = 1,
 		color,
 		weight = 'regular',
@@ -54,10 +34,8 @@ export const createIcon = (children: React.ReactNode, name: string) => {
 		const resolvedSize = mapSpacing(size);
 
 		return (
-			<Box
-				as="svg"
+			<svg
 				aria-hidden="true"
-				color={color}
 				width={resolvedSize}
 				height={resolvedSize}
 				viewBox="0 0 24 24"
@@ -65,6 +43,9 @@ export const createIcon = (children: React.ReactNode, name: string) => {
 				xmlns="http://www.w3.org/2000/svg"
 				focusable="false"
 				css={mq({
+					color: color
+						? mapResponsiveProp(color, (t) => foregroundColorMap[t])
+						: undefined,
 					fill: 'none',
 					stroke: 'currentColor',
 					strokeLinejoin: 'round',
@@ -75,7 +56,7 @@ export const createIcon = (children: React.ReactNode, name: string) => {
 				{...props}
 			>
 				{children}
-			</Box>
+			</svg>
 		);
 	};
 
