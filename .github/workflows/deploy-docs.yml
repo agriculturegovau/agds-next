@@ -35,7 +35,6 @@ jobs:
           yarn playroom:build
           yarn example:build
           yarn docs:build
-          yarn example:build
 
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@4.1.7
