@@ -1,5 +1,11 @@
 # @ag.ds-next/select
 
+## 2.0.2
+
+### Patch Changes
+
+- ae3ddb0: Added blank value to placeholder option
+
 ## 2.0.1
 
 ### Patch Changes

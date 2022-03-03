@@ -1,6 +1,6 @@
 {
 	"name": "@ag.ds-next/control-input",
-	"version": "2.0.1",
+	"version": "2.0.2",
 	"main": "dist/ag.ds-next-control-input.cjs.js",
 	"module": "dist/ag.ds-next-control-input.esm.js",
 	"license": "MIT",

@@ -1,6 +1,6 @@
 {
 	"name": "@ag.ds-next/progress-indicator",
-	"version": "2.0.1",
+	"version": "2.0.2",
 	"main": "dist/ag.ds-next-progress-indicator.cjs.js",
 	"module": "dist/ag.ds-next-progress-indicator.esm.js",
 	"license": "MIT",

@@ -1,5 +1,11 @@
 # @ag.ds-next/control-input
 
+## 2.0.2
+
+### Patch Changes
+
+- 77aaeba: Updated sizing of the `Checkbox` and `Radio` indicators
+
 ## 2.0.1
 
 ### Patch Changes

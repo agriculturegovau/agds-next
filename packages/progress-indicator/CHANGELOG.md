@@ -1,5 +1,11 @@
 # @ag.ds-next/progress-indicator
 
+## 2.0.2
+
+### Patch Changes
+
+- 5d3891e: Allow button elements to be rendered
+
 ## 2.0.1
 
 ### Patch Changes

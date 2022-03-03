@@ -1,5 +1,22 @@
 # @ag.ds-next/docs
 
+## 0.2.1
+
+### Patch Changes
+
+- c6c6c26: Updated usage of `MainNav`
+- Updated dependencies [ae3ddb0]
+- Updated dependencies [c6c6c26]
+- Updated dependencies [bebc219]
+- Updated dependencies [77aaeba]
+- Updated dependencies [5d3891e]
+- Updated dependencies [54339e9]
+  - @ag.ds-next/select@2.0.2
+  - @ag.ds-next/main-nav@5.0.1
+  - @ag.ds-next/inpage-nav@1.0.0
+  - @ag.ds-next/control-input@2.0.2
+  - @ag.ds-next/progress-indicator@2.0.2
+
 ## 0.2.0
 
 ### Minor Changes
