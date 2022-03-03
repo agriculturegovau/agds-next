@@ -10,7 +10,6 @@ export type MainNavProps = React.PropsWithChildren<{
 	id?: string;
 	links: NavListLink[];
 	rightContent?: ReactNode;
-	secondaryLinks?: NavListLink[];
 	variant: NavContainerProps['variant'];
 }>;
 

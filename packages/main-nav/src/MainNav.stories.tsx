@@ -2,7 +2,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { AvatarIcon } from '@ag.ds-next/icon';
 
 import { MainNav } from './MainNav';
-import { MainNavButton, MainNavLink } from './MainNavLink';
+import { MainNavButton, MainNavLink } from './MainNavItem';
 
 export default {
 	title: 'navigation/MainNav',

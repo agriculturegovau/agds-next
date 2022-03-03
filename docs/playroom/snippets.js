@@ -317,6 +317,17 @@ items={[
     ]}
   />`,
 	},
+	{
+		group: 'InpageNav',
+		name: 'Basic',
+		code: `<InpageNav
+		title="Contents"
+		links={[
+			{ href: '#section-1', label: 'Section 1' },
+			{ href: '#section-2', label: 'Section 2' },
+		]}
+	/>`,
+	},
 ];
 
 export default snippits;
