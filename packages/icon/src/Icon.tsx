@@ -10,14 +10,21 @@ import { ReactNode, SVGAttributes } from 'react';
 
 type SvgProps = Omit<
 	SVGAttributes<SVGSVGElement>,
-	'width' | 'height' | 'viewBox' | 'fill' | 'fillRule' | 'clipRule' | 'xmlns'
+	| 'width'
+	| 'height'
+	| 'viewBox'
+	| 'fill'
+	| 'fillRule'
+	| 'clipRule'
+	| 'xmlns'
+	| 'color'
 >;
 
-const colors = {
+export const iconColors = {
 	...foregroundColorMap,
 	border: boxPalette.border,
 };
-type IconColor = keyof typeof colors;
+type IconColor = keyof typeof iconColors;
 
 export type IconProps = SvgProps & {
 	size?: Spacing;
@@ -39,7 +46,9 @@ export const createIcon = (children: ReactNode, name: string) => {
 				xmlns="http://www.w3.org/2000/svg"
 				focusable="false"
 				css={mq({
-					color: color ? mapResponsiveProp(color, (t) => colors[t]) : undefined,
+					color: color
+						? mapResponsiveProp(color, (t) => iconColors[t])
+						: undefined,
 					fill: 'none',
 					stroke: 'currentColor',
 					strokeLinejoin: 'round',

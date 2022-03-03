@@ -1,58 +1,58 @@
 import { Flex } from '@ag.ds-next/box';
 import { Text } from '@ag.ds-next/text';
 
-import { IconProps } from './Icon';
-import { AlertIcon } from './icons/AlertIcon';
 import { AlertFilledIcon } from './icons/AlertFilledIcon';
-import { ArrowUpIcon } from './icons/ArrowUpIcon';
+import { AlertIcon } from './icons/AlertIcon';
 import { ArrowDownIcon } from './icons/ArrowDownIcon';
 import { ArrowLeftIcon } from './icons/ArrowLeftIcon';
 import { ArrowRightIcon } from './icons/ArrowRightIcon';
+import { ArrowUpIcon } from './icons/ArrowUpIcon';
 import { AvatarIcon } from './icons/AvatarIcon';
-import { ChevronUpIcon } from './icons/ChevronUpIcon';
 import { ChevronDownIcon } from './icons/ChevronDownIcon';
 import { ChevronLeftIcon } from './icons/ChevronLeftIcon';
 import { ChevronRightIcon } from './icons/ChevronRightIcon';
+import { ChevronUpIcon } from './icons/ChevronUpIcon';
 import { CloseIcon } from './icons/CloseIcon';
+import { ExternalLinkIcon } from './icons/ExternalLinkIcon';
+import { IconProps } from './Icon';
+import { MenuIcon } from './icons/MenuIcon';
 import { ProgressDoingIcon } from './icons/ProgressDoingIcon';
 import { ProgressDoneIcon } from './icons/ProgressDoneIcon';
-import { ExternalLinkIcon } from './icons/ExternalLinkIcon';
-import { MenuIcon } from './icons/MenuIcon';
-import { SearchIcon } from './icons/SearchIcon';
-import { SuccessIcon } from './icons/SuccessIcon';
-import { SuccessFilledIcon } from './icons/SuccessFilledIcon';
 import { ProgressTodoIcon } from './icons/ProgressTodoIcon';
+import { SearchIcon } from './icons/SearchIcon';
+import { SuccessFilledIcon } from './icons/SuccessFilledIcon';
+import { SuccessIcon } from './icons/SuccessIcon';
 
-const allNewIcons = {
-	AlertIcon,
+const allIcons = {
 	AlertFilledIcon,
-	ArrowUpIcon,
+	AlertIcon,
 	ArrowDownIcon,
 	ArrowLeftIcon,
 	ArrowRightIcon,
+	ArrowUpIcon,
 	AvatarIcon,
-	ChevronUpIcon,
 	ChevronDownIcon,
 	ChevronLeftIcon,
 	ChevronRightIcon,
+	ChevronUpIcon,
 	CloseIcon,
-	ProgressDoingIcon,
-	ProgressDoneIcon,
 	ExternalLinkIcon,
 	MenuIcon,
-	SearchIcon,
-	SuccessIcon,
-	SuccessFilledIcon,
+	ProgressDoingIcon,
+	ProgressDoneIcon,
 	ProgressTodoIcon,
+	SearchIcon,
+	SuccessFilledIcon,
+	SuccessIcon,
 };
 
-type IconNameType = keyof typeof allNewIcons;
+type IconNameType = keyof typeof allIcons;
 
 export const IconExamples = ({ size = 3, ...args }: IconProps) => {
 	return (
 		<Flex gap={0.5} flexWrap="wrap">
-			{(Object.keys(allNewIcons) as IconNameType[]).sort().map((iconName) => {
-				const Icon = allNewIcons[iconName];
+			{(Object.keys(allIcons) as IconNameType[]).sort().map((iconName) => {
+				const Icon = allIcons[iconName];
 				return (
 					<Flex
 						key={iconName}
