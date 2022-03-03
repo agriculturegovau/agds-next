@@ -31,6 +31,7 @@ import {
 	SideNavTitle,
 } from '@ag.ds-next/side-nav';
 import { Icon } from '@ag.ds-next/icon';
+import { InpageNav } from '@ag.ds-next/inpage-nav';
 import { Logo as AgLogo } from '@ag.ds-next/ag-branding';
 import { Field } from '@ag.ds-next/field';
 import { TextInput } from '@ag.ds-next/text-input';
@@ -94,6 +95,7 @@ export const designSystemComponents = {
 	SideNavGroup,
 	SideNavTitle,
 	Icon,
+	InpageNav,
 	Field,
 	TextInput,
 	Textarea,

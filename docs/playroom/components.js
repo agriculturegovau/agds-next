@@ -58,3 +58,10 @@ export {
 	SkipLinkContainer,
 	SkipLinkItem,
 } from '@ag.ds-next/skip-link';
+export {
+	InpageNav,
+	InpageNavContainer,
+	InpageNavItem,
+	InpageNavItemContainer,
+	InpageNavTitle,
+} from '@ag.ds-next/inpage-nav';
