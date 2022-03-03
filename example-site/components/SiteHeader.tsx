@@ -2,7 +2,7 @@ import { useRouter } from 'next/router';
 import { Logo } from '@ag.ds-next/ag-branding';
 import { Stack } from '@ag.ds-next/box';
 import { Header } from '@ag.ds-next/header';
-import { MainNav, MainNavButton } from '@ag.ds-next/main-nav';
+import { MainNav, MainNavLink } from '@ag.ds-next/main-nav';
 import { SiteHeaderSearch } from './SiteHeaderSearch';
 import { Icon } from '@ag.ds-next/icon';
 
@@ -29,9 +29,9 @@ export const SiteHeader = () => {
 				links={NAV_LINKS}
 				activePath={router.asPath}
 				rightContent={
-					<MainNavButton
+					<MainNavLink
 						label="Sign in"
-						// href="/sign-in"
+						href="/sign-in"
 						icon={<Icon icon="avatar" size={1.5} />}
 					/>
 				}
