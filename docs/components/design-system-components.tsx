@@ -34,6 +34,7 @@ import { Icon } from '@ag.ds-next/icon';
 import { InpageNav } from '@ag.ds-next/inpage-nav';
 import { Logo as AgLogo } from '@ag.ds-next/ag-branding';
 import { Field } from '@ag.ds-next/field';
+import { Fieldset } from '@ag.ds-next/fieldset';
 import { TextInput } from '@ag.ds-next/text-input';
 import { Textarea } from '@ag.ds-next/textarea';
 import {
@@ -97,6 +98,7 @@ export const designSystemComponents = {
 	Icon,
 	InpageNav,
 	Field,
+	Fieldset,
 	TextInput,
 	Textarea,
 	SearchBox,

@@ -25,6 +25,7 @@ export { Text, TextLink } from '@ag.ds-next/text';
 export { TextInput } from '@ag.ds-next/text-input';
 export { Textarea } from '@ag.ds-next/textarea';
 export { Field } from '@ag.ds-next/field';
+export { Fieldset } from '@ag.ds-next/fieldset';
 export {
 	LinkList,
 	LinkListContainer,
