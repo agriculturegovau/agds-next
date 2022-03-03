@@ -1,6 +1,7 @@
 import { Flex } from '@ag.ds-next/box';
 import { Text } from '@ag.ds-next/text';
 
+import { IconProps } from './Icon';
 import { AlertIcon } from './icons/AlertIcon';
 import { AlertFilledIcon } from './icons/AlertFilledIcon';
 import { ArrowUpIcon } from './icons/ArrowUpIcon';
@@ -45,31 +46,31 @@ const allNewIcons = {
 	ProgressTodoIcon,
 };
 
-export const IconExamples = ({ size = 3, ...args }) => {
+type IconNameType = keyof typeof allNewIcons;
+
+export const IconExamples = ({ size = 3, ...args }: IconProps) => {
 	return (
 		<Flex gap={0.5} flexWrap="wrap">
-			{Object.keys(allNewIcons)
-				.sort()
-				.map((iconName) => {
-					const Icon = allNewIcons[iconName];
-					return (
-						<Flex
-							key={iconName}
-							flexDirection="column"
-							alignItems="center"
-							justifyContent="center"
-							flexShrink={0}
-							rounded
-							gap={1}
-							padding={2}
-							background="shade"
-							css={{ width: 180 }}
-						>
-							<Icon size={size} {...args} />
-							<Text>{iconName}</Text>
-						</Flex>
-					);
-				})}
+			{(Object.keys(allNewIcons) as IconNameType[]).sort().map((iconName) => {
+				const Icon = allNewIcons[iconName];
+				return (
+					<Flex
+						key={iconName}
+						flexDirection="column"
+						alignItems="center"
+						justifyContent="center"
+						flexShrink={0}
+						rounded
+						gap={1}
+						padding={2}
+						background="shade"
+						css={{ width: 180 }}
+					>
+						<Icon size={size} {...args} />
+						<Text>{iconName}</Text>
+					</Flex>
+				);
+			})}
 		</Flex>
 	);
 };

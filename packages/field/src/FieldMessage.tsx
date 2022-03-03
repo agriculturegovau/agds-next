@@ -14,7 +14,7 @@ export const FieldMessage = ({
 	valid?: boolean;
 }) => (
 	<Flex gap={0.5} alignItems="center">
-		{invalid ? <AlertFilledIcon color="error" size={1.5} icon="alert" /> : null}
+		{invalid ? <AlertFilledIcon color="error" size={1.5} /> : null}
 		<Text display="block" color={getColor({ invalid, valid })} id={id}>
 			{children}
 		</Text>
