@@ -10,7 +10,7 @@
 	},
 	"scripts": {
 		"dev": "next dev",
-		"build": "next build",
+		"build": "next build && next export -o ../docs/public/example-site",
 		"start": "next start",
 		"lint": "next lint"
 	},
