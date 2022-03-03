@@ -1,4 +1,4 @@
-import * as React from 'react';
+import { Fragment } from 'react';
 import { createIcon } from '../Icon';
 
 export const ChevronUpIcon = createIcon(

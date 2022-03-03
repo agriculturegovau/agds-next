@@ -1,8 +1,8 @@
-import * as React from 'react';
+import { Fragment } from 'react';
 import { createIcon } from '../Icon';
 
 export const SuccessFilledIcon = createIcon(
-	<React.Fragment>
+	<Fragment>
 		<path
 			fillRule="evenodd"
 			clipRule="evenodd"
@@ -10,6 +10,6 @@ export const SuccessFilledIcon = createIcon(
 			fill="currentColor"
 			stroke="none"
 		/>
-	</React.Fragment>,
+	</Fragment>,
 	'SuccessFilledIcon'
 );

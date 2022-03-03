@@ -1,8 +1,8 @@
-import * as React from 'react';
+import { Fragment } from 'react';
 import { createIcon } from '../Icon';
 
 export const ProgressDoingIcon = createIcon(
-	<React.Fragment>
+	<Fragment>
 		<path
 			d="M6.5 13.5C7.32843 13.5 8 12.8284 8 12C8 11.1716 7.32843 10.5 6.5 10.5C5.67157 10.5 5 11.1716 5 12C5 12.8284 5.67157 13.5 6.5 13.5Z"
 			fill="currentColor"
@@ -19,6 +19,6 @@ export const ProgressDoingIcon = createIcon(
 			stroke="none"
 		/>
 		<circle cx="12" cy="12" r="10.5" />
-	</React.Fragment>,
+	</Fragment>,
 	'ProgressDoingIcon'
 );

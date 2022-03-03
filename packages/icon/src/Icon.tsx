@@ -5,8 +5,8 @@ import {
 	mq,
 	Spacing,
 } from '@ag.ds-next/core';
-import { Box, foregroundColorMap } from '@ag.ds-next/box';
-import { FC, SVGAttributes } from 'react';
+import { foregroundColorMap } from '@ag.ds-next/box';
+import { ReactNode, SVGAttributes } from 'react';
 
 type SvgProps = Omit<
 	SVGAttributes<SVGSVGElement>,
@@ -17,20 +17,16 @@ const colors = {
 	...foregroundColorMap,
 	border: boxPalette.border,
 };
+type IconColor = keyof typeof colors;
 
 export type IconProps = SvgProps & {
 	size?: Spacing;
-	color?: keyof typeof colors;
+	color?: IconColor;
 	weight?: 'regular' | 'bold';
 };
 
-export const createIcon = (children: React.ReactNode, name: string) => {
-	const Icon: FC<IconProps> = ({
-		size = 1,
-		color,
-		weight = 'regular',
-		...props
-	}) => {
+export const createIcon = (children: ReactNode, name: string) => {
+	const Icon = ({ size = 1, color, weight = 'regular', style }: IconProps) => {
 		const resolvedSize = mapSpacing(size);
 
 		return (
@@ -43,9 +39,7 @@ export const createIcon = (children: React.ReactNode, name: string) => {
 				xmlns="http://www.w3.org/2000/svg"
 				focusable="false"
 				css={mq({
-					color: color
-						? mapResponsiveProp(color, (t) => foregroundColorMap[t])
-						: undefined,
+					color: color ? mapResponsiveProp(color, (t) => colors[t]) : undefined,
 					fill: 'none',
 					stroke: 'currentColor',
 					strokeLinejoin: 'round',
@@ -53,7 +47,7 @@ export const createIcon = (children: React.ReactNode, name: string) => {
 					strokeWidth: weight === 'bold' ? 3 : 2,
 				})}
 				role="img"
-				{...props}
+				style={style}
 			>
 				{children}
 			</svg>
