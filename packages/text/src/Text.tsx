@@ -1,4 +1,3 @@
-import { HTMLProps } from 'react';
 import {
 	forwardRefWithAs,
 	useLinkComponent,
