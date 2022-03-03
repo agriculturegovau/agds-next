@@ -124,5 +124,5 @@ jobs:
       - name: Install dependencies
         run: yarn
 
-      - name: Preconstruct
-        run: yarn preconstruct build
+      - name: Build packages
+        run: yarn build
