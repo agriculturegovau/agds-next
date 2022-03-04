@@ -2,7 +2,6 @@ import { ReactNode } from 'react';
 import { Box } from '@ag.ds-next/box';
 import { useLinkComponent, mapSpacing, LinkProps } from '@ag.ds-next/core';
 import { boxPalette, fontGrid, packs } from '@ag.ds-next/core';
-import { VisuallyHidden } from '@ag.ds-next/a11y';
 
 import { useLinkListDepth } from './context';
 import { localPalette } from './utils';
@@ -15,7 +14,6 @@ export type SideNavLinkType = LinkProps & {
 
 export const SideNavLink = ({
 	active,
-	isCurrentPage,
 	children,
 	label,
 	...props
@@ -77,12 +75,7 @@ export const SideNavLink = ({
 					},
 				}}
 			>
-				<Link {...props}>
-					{label}
-					{isCurrentPage ? (
-						<VisuallyHidden> Current page</VisuallyHidden>
-					) : null}
-				</Link>
+				<Link {...props}>{label}</Link>
 			</Box>
 			{children}
 		</Box>

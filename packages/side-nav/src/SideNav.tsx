@@ -57,7 +57,7 @@ function LinkList({ activePath, items }: LinkListProps) {
 				<SideNavLink
 					key={index}
 					active={item.href === bestMatch}
-					isCurrentPage={item.href === activePath}
+					aria-current={item.href === activePath ? 'page' : undefined}
 					{...item}
 				>
 					{subItems?.length ? (
