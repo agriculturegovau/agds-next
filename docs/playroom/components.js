@@ -87,3 +87,4 @@ export {
 	InpageNavItemContainer,
 	InpageNavTitle,
 } from '@ag.ds-next/inpage-nav';
+export { DirectionLink, DirectionButton } from '@ag.ds-next/direction-link';
