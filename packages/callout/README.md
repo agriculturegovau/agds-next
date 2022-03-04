@@ -1,5 +1,5 @@
 ---
-title: Callouts
+title: Callout
 description: Callouts are an excerpt of text or an article that has been pulled out and used as a visual clue to draw the eye to the text. They are used to help direct a user's attention to important pieces of information.
 group: Content
 ---
@@ -10,8 +10,8 @@ Use callout to notify and alert users of important snippets of information.
 
 ```jsx live
 <Callout>
-  <H2>Title of the callout</H2>
-  <Text>Description of the callout</Text>
+	<CalloutTitle as="h3">Callout heading</CalloutTitle>
+	<Text>Description of the callout.</Text>
 </Callout>
 ```
 
