@@ -7,13 +7,11 @@ group: Navigation
 Breadcrumbs show users where they are in the website hierarchy and how to navigate back/up to previous levels or content.
 
 ```jsx live
-<Box palette="light" background="body">
-	<Breadcrumbs
-		links={[
-			{ href: '#', label: 'Home' },
-			{ href: '#', label: 'Establishments' },
-			{ label: 'Applications' },
-		]}
-	/>
-</Box>
+<Breadcrumbs
+	links={[
+		{ href: '#', label: 'Home' },
+		{ href: '#', label: 'Establishments' },
+		{ label: 'Applications' },
+	]}
+/>
 ```

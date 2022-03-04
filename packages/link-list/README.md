@@ -7,15 +7,13 @@ group: Navigation
 The default link list component removes the normal bullets and spacing associated with a list.
 
 ```jsx live
-<Box palette="light" background="body">
-	<LinkList
-		links={[
-			{ href: '#', label: 'Home' },
-			{ href: '#', label: 'Establishments' },
-			{ href: '#', label: 'Applications' },
-		]}
-	/>
-</Box>
+<LinkList
+	links={[
+		{ href: '#', label: 'Home' },
+		{ href: '#', label: 'Establishments' },
+		{ href: '#', label: 'Applications' },
+	]}
+/>
 ```
 
 ## Horizontal
@@ -23,14 +21,12 @@ The default link list component removes the normal bullets and spacing associate
 Setting the `horizontal` prop will stack the links horizontally.
 
 ```jsx live
-<Box palette="light" background="body">
-	<LinkList
-		links={[
-			{ href: '#', label: 'Home' },
-			{ href: '#', label: 'Establishments' },
-			{ href: '#', label: 'Applications' },
-		]}
-		horizontal
-	/>
-</Box>
+<LinkList
+	links={[
+		{ href: '#', label: 'Home' },
+		{ href: '#', label: 'Establishments' },
+		{ href: '#', label: 'Applications' },
+	]}
+	horizontal
+/>
 ```
