@@ -1,8 +1,8 @@
 {
-	"name": "@ag.ds-next/progress-indicator",
-	"version": "2.0.2",
-	"main": "dist/ag.ds-next-progress-indicator.cjs.js",
-	"module": "dist/ag.ds-next-progress-indicator.esm.js",
+	"name": "@ag.ds-next/direction-link",
+	"version": "0.0.1",
+	"main": "dist/ag.ds-next-direction-link.cjs.js",
+	"module": "dist/ag.ds-next-direction-link.esm.js",
 	"license": "MIT",
 	"peerDependencies": {
 		"@ag.ds-next/box": "4.0.1",

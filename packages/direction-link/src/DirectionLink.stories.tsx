@@ -41,18 +41,18 @@ Button.args = {
 };
 
 export const AllDirections = () => (
-	<Flex gap={2}>
-		<DirectionLink href="#" direction="up">
-			Up
+	<Flex flexDirection="column" alignItems="flex-start" gap={2}>
+		<DirectionLink href="#" direction="left">
+			Back
 		</DirectionLink>
 		<DirectionLink href="#" direction="right">
-			Right
+			Next
+		</DirectionLink>
+		<DirectionLink href="#" direction="up">
+			Top
 		</DirectionLink>
 		<DirectionLink href="#" direction="down">
-			Down
-		</DirectionLink>
-		<DirectionLink href="#" direction="left">
-			Left
+			Skip to footer
 		</DirectionLink>
 	</Flex>
 );

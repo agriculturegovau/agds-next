@@ -9,6 +9,7 @@ import columns from './columns.svg';
 import content from './content.svg';
 import controlInput from './control-input.svg';
 import core from './core.svg';
+import directionLink from './direction-link.svg';
 import field from './field.svg';
 import footer from './footer.svg';
 import guides from './guides.svg';
@@ -42,6 +43,7 @@ export const pictograms = {
 	content,
 	'control-input': controlInput,
 	core,
+	'direction-link': directionLink,
 	field,
 	footer,
 	guides,
