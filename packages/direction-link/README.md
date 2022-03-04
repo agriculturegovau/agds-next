@@ -1,0 +1,49 @@
+---
+title: Direction links
+description: Direction links are accompanied by arrows to help users move quickly to other parts of the page or through a process.
+group: Navigation
+---
+
+Use direction links to indicate a physical direction, such as:
+
+- Linking `up` or `down` within the page.
+- Going `back` to a parent page.
+- Showing the `next` or `previous` pages.
+
+```jsx live
+<Flex gap={2}>
+	<DirectionLink href="#" direction="up">
+		Back
+	</DirectionLink>
+	<DirectionLink href="#" direction="right">
+		Next
+	</DirectionLink>
+	<DirectionLink href="#" direction="down">
+		Top
+	</DirectionLink>
+	<DirectionLink href="#" direction="left">
+		Skip to footer
+	</DirectionLink>
+</Flex>
+```
+
+### Buttons
+
+Sometimes direction is needed inside a form. Buttons offer a way to direct users to the next or previous section inside a form.
+
+```jsx live
+<Flex gap={2}>
+	<DirectionButton onClick={console.log} direction="up">
+		Up
+	</DirectionButton>
+	<DirectionButton onClick={console.log} direction="right">
+		Right
+	</DirectionButton>
+	<DirectionButton onClick={console.log} direction="down">
+		Down
+	</DirectionButton>
+	<DirectionButton onClick={console.log} direction="left">
+		Left
+	</DirectionButton>
+</Flex>
+```
