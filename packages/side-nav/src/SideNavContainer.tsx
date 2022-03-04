@@ -46,6 +46,7 @@ export const SideNavContainer = ({
 
 	return (
 		<Box
+			as="aside"
 			aria-label={ariaLabel}
 			rounded
 			background={background}
