@@ -27,9 +27,12 @@ If you’re asking just one question per page, you can set the contents of the `
 ```jsx live
 <Stack as="form" alignItems="flex-start" gap={1.5}>
 	<Fieldset
-		legend="What is your date of birth?"
-		legendAsPageHeading
-		hint="We will only use this to respond to your request"
+		legend={<H1>What is your date of birth?</H1>}
+		hint={
+			<Text fontSize="md" color="muted">
+				We will only use this to respond to your requests
+			</Text>
+		}
 	>
 		<Stack alignItems="flex-start" gap={1.5}>
 			<TextInput type="number" label="Day" required />

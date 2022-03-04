@@ -4,10 +4,14 @@ import { Box, Stack } from '@ag.ds-next/box';
 import { Button } from '@ag.ds-next/button';
 import { TextInput } from '@ag.ds-next/text-input';
 import { Fieldset, FieldsetContainer, FieldsetLegend } from './index';
+import { H1 } from '@ag.ds-next/heading';
+import { Text } from '@ag.ds-next/text';
+import { FieldsetHint } from './FieldsetHint';
 
 export default {
 	title: 'forms/Fieldset',
 	component: Fieldset,
+	subcomponents: { FieldsetContainer, FieldsetLegend, FieldsetHint },
 } as ComponentMeta<typeof Fieldset>;
 
 const Template: ComponentStory<typeof Fieldset> = (args) => (
@@ -49,16 +53,22 @@ export const LegendAsPageHeading: ComponentStory<typeof Fieldset> = (args) => (
 	</Stack>
 );
 LegendAsPageHeading.args = {
-	legend: 'What is your date of birth?',
-	legendAsPageHeading: true,
-	hint: 'We will only use this to respond to your request',
+	legend: <H1>What is your date of birth?</H1>,
+	hint: (
+		<Text fontSize="md" color="muted">
+			We will only use this to respond to your requests
+		</Text>
+	),
 };
 
 export const Modular = () => (
 	<FieldsetContainer>
-		<FieldsetLegend hint="We will only use this to respond to your request">
-			What is your address?
-		</FieldsetLegend>
+		<Stack gap={0.75}>
+			<FieldsetLegend>What is your address?</FieldsetLegend>
+			<FieldsetHint>
+				We will only use this to respond to your requests
+			</FieldsetHint>
+		</Stack>
 		<Stack alignItems="flex-start" gap={1.5}>
 			<TextInput label="Street and number" required maxWidth="xl" />
 			<TextInput label="Suburb" required maxWidth="xl" />
