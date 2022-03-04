@@ -23,6 +23,7 @@
 		"@ag.ds-next/content": "4.0.1",
 		"@ag.ds-next/control-input": "2.0.2",
 		"@ag.ds-next/core": "2.1.1",
+		"@ag.ds-next/direction-link": "0.0.1",
 		"@ag.ds-next/field": "2.0.1",
 		"@ag.ds-next/fieldset": "0.0.1",
 		"@ag.ds-next/footer": "4.0.1",

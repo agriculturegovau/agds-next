@@ -340,6 +340,11 @@ items={[
 		]}
 	/>`,
 	},
+	{
+		group: 'DirectionLink',
+		name: 'Basic',
+		code: `<DirectionLink href="#" direction="left">Back</DirectionLink>`,
+	},
 ];
 
 export default snippits;

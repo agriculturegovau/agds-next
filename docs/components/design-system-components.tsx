@@ -73,6 +73,7 @@ import {
 	SkipLinkContainer,
 	SkipLinkItem,
 } from '@ag.ds-next/skip-link';
+import { DirectionLink, DirectionButton } from '@ag.ds-next/direction-link';
 
 export const designSystemComponents = {
 	Accordion,
@@ -154,4 +155,6 @@ export const designSystemComponents = {
 	SkipLinks,
 	SkipLinkContainer,
 	SkipLinkItem,
+	DirectionLink,
+	DirectionButton,
 };
