@@ -21,21 +21,32 @@ A callout with a heading that can be read by screen readers. Markup for the titl
 
 ```jsx live
 <Callout>
-  <VisuallyHidden>
-    <H2>Title of the callout</H2>
-  </VisuallyHidden>
-  <Text>Description of the callout</Text>
+	<VisuallyHidden>
+		<H2>Title of the callout</H2>
+	</VisuallyHidden>
+	<Text>Description of the callout</Text>
 </Callout>
 ```
 
 ## Calendar
+
 Use a calendar callout to notify and alert users of important dates and events.
 
 ```jsx live
 <Callout as="section">
-  <H2>Description of the callout</H2>
-  <Text>The next public holiday is:</Text>
-  <Text as="time" size="lg" datetime="2017-01-01T00:00:00+00:00">Sunday 1 January</Text>
-  <Text>New Year’s Day</Text>
+	<VisuallyHidden>
+		<H2>Description of the callout</H2>
+	</VisuallyHidden>
+	<Text as="p">The next public holiday is:</Text>
+	<Text
+		display="block"
+		as="time"
+		fontSize="xl"
+		fontWeight="bold"
+		datetime="2017-01-01T00:00:00+00:00"
+	>
+		Sunday 1 January
+	</Text>
+	<Text>New Year’s Day</Text>
 </Callout>
 ```
