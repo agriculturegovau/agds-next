@@ -45,13 +45,7 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
 				valid={valid}
 			>
 				{(allyProps) => (
-					<input
-						ref={ref}
-						required={required}
-						css={styles}
-						{...allyProps}
-						{...props}
-					/>
+					<input ref={ref} css={styles} {...allyProps} {...props} />
 				)}
 			</Field>
 		);
