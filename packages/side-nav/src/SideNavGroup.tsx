@@ -8,7 +8,9 @@ export const SideNavGroup = ({ children }: SideNavGroupProps) => {
 	const depth = useLinkListDepth();
 	return (
 		<LinkListContext.Provider value={depth + 1}>
-			<Box as="ul">{children}</Box>
+			<Box as="ul" role="menu">
+				{children}
+			</Box>
 		</LinkListContext.Provider>
 	);
 };
