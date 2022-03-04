@@ -34,19 +34,21 @@ Use a calendar callout to notify and alert users of important dates and events.
 
 ```jsx live
 <Callout as="section">
-	<VisuallyHidden>
-		<H2>Description of the callout</H2>
-	</VisuallyHidden>
-	<Text as="p">The next public holiday is:</Text>
-	<Text
-		display="block"
-		as="time"
-		fontSize="xl"
-		fontWeight="bold"
-		datetime="2017-01-01T00:00:00+00:00"
-	>
-		Sunday 1 January
-	</Text>
-	<Text>New Year’s Day</Text>
+	<Flex flexDirection="column">
+		<VisuallyHidden>
+			<H2>Description of the callout</H2>
+		</VisuallyHidden>
+		<Text as="p">The next public holiday is:</Text>
+		<Text
+			display="block"
+			as="time"
+			fontSize="xl"
+			fontWeight="bold"
+			datetime="2017-01-01T00:00:00+00:00"
+		>
+			Sunday 1 January
+		</Text>
+		<Text>New Year’s Day</Text>
+	</Flex>
 </Callout>
 ```
