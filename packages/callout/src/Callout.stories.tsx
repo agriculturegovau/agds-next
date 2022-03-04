@@ -18,7 +18,7 @@ export const OnLight: ComponentStory<typeof Callout> = (args) => (
 	</Callout>
 );
 OnLight.args = {
-	title: 'Callout heading<',
+	title: 'Callout heading',
 };
 
 export const OnDark: ComponentStory<typeof Callout> = (args) => (
@@ -30,5 +30,5 @@ export const OnDark: ComponentStory<typeof Callout> = (args) => (
 );
 
 OnDark.args = {
-	title: 'Callout heading<',
+	title: 'Callout heading',
 };
