@@ -42,7 +42,7 @@ const Home: NextPage = () => {
 					</Column>
 					<Column columnSpan={{ xs: 12, md: 6 }}>
 						<img
-							src="/placeholder/600X260.png"
+							src="/agds-next/example-site/placeholder/600X260.png"
 							alt="Place holder image"
 							css={{ width: '100%' }}
 						/>
