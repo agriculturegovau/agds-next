@@ -1,24 +1,23 @@
-import { ReactNode, ElementType } from 'react';
-import { Box } from '@ag.ds-next/box';
+import { ElementType, PropsWithChildren } from 'react';
+import { Flex } from '@ag.ds-next/box';
+import { CalloutTitle } from './CalloutTitle';
 
-export const Callout = ({
-	as,
-	children,
-}: {
+export type CalloutProps = PropsWithChildren<{
 	as?: ElementType;
-	children: ReactNode;
-}) => {
-	return (
-		<Box
-			as={as}
-			borderLeft
-			background="shade"
-			padding={1.5}
-			css={{
-				borderLeftWidth: '0.25rem',
-			}}
-		>
-			{children}
-		</Box>
-	);
-};
+	title?: string;
+}>;
+
+export const Callout = ({ as, children, title }: CalloutProps) => (
+	<Flex
+		as={as}
+		flexDirection="column"
+		gap={1}
+		background="shade"
+		padding={1.5}
+		borderLeft
+		borderLeftWidth="xl"
+	>
+		{title ? <CalloutTitle>{title}</CalloutTitle> : null}
+		{children}
+	</Flex>
+);

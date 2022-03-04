@@ -1,16 +1,12 @@
-import { ReactNode } from 'react';
+import { PropsWithChildren } from 'react';
 import { Text } from '@ag.ds-next/text';
 
-export const CalloutTitle = ({
-	as,
-	children,
-}: {
+export type CalloutTitleProps = PropsWithChildren<{
 	as?: 'h2' | 'h3' | 'h4' | 'h5';
-	children: ReactNode;
-}) => {
-	return (
-		<Text as={as} fontSize="md" fontWeight="bold">
-			{children}
-		</Text>
-	);
-};
+}>;
+
+export const CalloutTitle = ({ as = 'h2', children }: CalloutTitleProps) => (
+	<Text as={as} fontSize="md" fontWeight="bold">
+		{children}
+	</Text>
+);

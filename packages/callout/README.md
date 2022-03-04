@@ -9,8 +9,7 @@ group: Content
 Use callout to notify and alert users of important snippets of information.
 
 ```jsx live
-<Callout>
-	<CalloutTitle as="h3">Callout heading</CalloutTitle>
+<Callout title="Callout heading">
 	<Text>Description of the callout.</Text>
 </Callout>
 ```
@@ -22,7 +21,7 @@ A callout with a heading that can be read by screen readers. Markup for the titl
 ```jsx live
 <Callout>
 	<VisuallyHidden>
-		<H2>Title of the callout</H2>
+		<h2>Title of the callout</h2>
 	</VisuallyHidden>
 	<Text>Description of the callout</Text>
 </Callout>
@@ -36,11 +35,10 @@ Use a calendar callout to notify and alert users of important dates and events.
 <Callout as="section">
 	<Flex flexDirection="column">
 		<VisuallyHidden>
-			<H2>Description of the callout</H2>
+			<h2>Description of the callout</h2>
 		</VisuallyHidden>
 		<Text as="p">The next public holiday is:</Text>
 		<Text
-			display="block"
 			as="time"
 			fontSize="xl"
 			fontWeight="bold"
