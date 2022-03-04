@@ -48,7 +48,7 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
 				{(allyProps) => (
 					<textarea
 						ref={ref}
-						required={required}
+						aria-required={required}
 						css={styles}
 						{...allyProps}
 						{...props}

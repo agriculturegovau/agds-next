@@ -69,7 +69,7 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(
 					<SelectContainer block={block} maxWidth={maxWidth}>
 						<select
 							ref={ref}
-							required={required}
+							aria-required={required}
 							css={styles}
 							{...allyProps}
 							{...props}

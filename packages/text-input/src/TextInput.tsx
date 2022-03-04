@@ -47,7 +47,7 @@ export const TextInput = forwardRef<HTMLInputElement, InputProps>(
 				{(allyProps) => (
 					<input
 						ref={ref}
-						required={required}
+						aria-required={required}
 						css={styles}
 						{...allyProps}
 						{...props}
