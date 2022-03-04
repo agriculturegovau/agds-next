@@ -33,7 +33,13 @@ export type IconProps = SvgProps & {
 };
 
 export const createIcon = (children: ReactNode, name: string) => {
-	const Icon = ({ size = 1, color, weight = 'regular', style }: IconProps) => {
+	const Icon = ({
+		className,
+		size = 1,
+		color,
+		weight = 'regular',
+		style,
+	}: IconProps) => {
 		const resolvedSize = mapSpacing(size);
 
 		return (
@@ -57,6 +63,7 @@ export const createIcon = (children: ReactNode, name: string) => {
 				})}
 				role="img"
 				style={style}
+				className={className}
 			>
 				{children}
 			</svg>
