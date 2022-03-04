@@ -26,13 +26,12 @@ export const CheckboxIndicator = ({
 		<Box
 			width={width}
 			height={height}
+			border
+			borderWidth="lg"
 			style={{
-				borderWidth,
-				borderStyle: 'solid',
 				borderColor: 'transparent',
 				opacity: disabled ? 0.3 : undefined,
 			}}
-			rounded
 		>
 			<Flex
 				justifyContent="center"

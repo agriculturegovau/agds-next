@@ -31,9 +31,32 @@ import {
 	SideNavGroup,
 	SideNavTitle,
 } from '@ag.ds-next/side-nav';
-import { Icon } from '@ag.ds-next/icon';
+import {
+	AlertIcon,
+	AlertFilledIcon,
+	ArrowUpIcon,
+	ArrowDownIcon,
+	ArrowLeftIcon,
+	ArrowRightIcon,
+	AvatarIcon,
+	ChevronUpIcon,
+	ChevronDownIcon,
+	ChevronLeftIcon,
+	ChevronRightIcon,
+	CloseIcon,
+	ExternalLinkIcon,
+	MenuIcon,
+	ProgressDoingIcon,
+	ProgressDoneIcon,
+	ProgressTodoIcon,
+	SearchIcon,
+	SuccessIcon,
+	SuccessFilledIcon,
+} from '@ag.ds-next/icon';
+import { InpageNav } from '@ag.ds-next/inpage-nav';
 import { Logo as AgLogo } from '@ag.ds-next/ag-branding';
 import { Field } from '@ag.ds-next/field';
+import { Fieldset } from '@ag.ds-next/fieldset';
 import { TextInput } from '@ag.ds-next/text-input';
 import { Textarea } from '@ag.ds-next/textarea';
 import {
@@ -51,6 +74,7 @@ import {
 	SkipLinkContainer,
 	SkipLinkItem,
 } from '@ag.ds-next/skip-link';
+import { DirectionLink, DirectionButton } from '@ag.ds-next/direction-link';
 
 export const designSystemComponents = {
 	Accordion,
@@ -95,8 +119,29 @@ export const designSystemComponents = {
 	SideNavLink,
 	SideNavGroup,
 	SideNavTitle,
-	Icon,
+	AlertIcon,
+	AlertFilledIcon,
+	ArrowUpIcon,
+	ArrowDownIcon,
+	ArrowLeftIcon,
+	ArrowRightIcon,
+	AvatarIcon,
+	ChevronUpIcon,
+	ChevronDownIcon,
+	ChevronLeftIcon,
+	ChevronRightIcon,
+	CloseIcon,
+	ProgressDoingIcon,
+	ProgressDoneIcon,
+	ExternalLinkIcon,
+	MenuIcon,
+	SearchIcon,
+	SuccessIcon,
+	SuccessFilledIcon,
+	ProgressTodoIcon,
+	InpageNav,
 	Field,
+	Fieldset,
 	TextInput,
 	Textarea,
 	SearchBox,
@@ -112,4 +157,6 @@ export const designSystemComponents = {
 	SkipLinks,
 	SkipLinkContainer,
 	SkipLinkItem,
+	DirectionLink,
+	DirectionButton,
 };

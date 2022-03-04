@@ -46,13 +46,7 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
 				valid={valid}
 			>
 				{(allyProps) => (
-					<textarea
-						ref={ref}
-						required={required}
-						css={styles}
-						{...allyProps}
-						{...props}
-					/>
+					<textarea ref={ref} css={styles} {...allyProps} {...props} />
 				)}
 			</Field>
 		);

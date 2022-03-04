@@ -27,6 +27,7 @@ export const Field = ({
 }: FieldProps) => {
 	const { fieldId, hintId, messageId } = useFieldIds();
 	const a11yProps = useFieldA11yProps({
+		required,
 		fieldId,
 		message,
 		messageId,
@@ -62,12 +63,14 @@ export const useFieldIds = () => {
 };
 
 type A11yProps = {
+	'aria-required': boolean;
 	'aria-invalid': boolean;
 	'aria-describedby': string;
 	id: string;
 };
 
 export const useFieldA11yProps = ({
+	required,
 	fieldId,
 	message,
 	messageId,
@@ -75,13 +78,15 @@ export const useFieldA11yProps = ({
 	hintId,
 	invalid,
 }: {
+	required?: boolean;
 	fieldId: string;
 	message?: string;
 	messageId: string;
 	hint?: string;
 	hintId: string;
 	invalid?: boolean;
-}) => ({
+}): A11yProps => ({
+	'aria-required': Boolean(required),
 	'aria-invalid': Boolean(invalid),
 	'aria-describedby': [message ? messageId : null, hint ? hintId : null]
 		.filter(Boolean)

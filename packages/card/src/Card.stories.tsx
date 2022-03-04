@@ -2,7 +2,7 @@ import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { Box } from '@ag.ds-next/box';
 import { Heading } from '@ag.ds-next/heading';
-import { Icon } from '@ag.ds-next/icon';
+import { ChevronRightIcon } from '@ag.ds-next/icon';
 import { Body } from '@ag.ds-next/body';
 
 import { Card } from './Card';
@@ -27,7 +27,7 @@ export const OnLight: ComponentStory<typeof Card> = (args) => (
 				</Heading>
 				<CardLink href="#">
 					Linking out
-					<Icon icon="chevronRight" size={1} />
+					<ChevronRightIcon weight="bold" size={1} />
 				</CardLink>
 			</CardInner>
 		</Card>
@@ -44,7 +44,7 @@ export const OnDark: ComponentStory<typeof Card> = (args) => (
 					</Heading>
 					<CardLink href="#">
 						Linking out
-						<Icon icon="chevronRight" size={1} />
+						<ChevronRightIcon weight="bold" size={1} />
 					</CardLink>
 				</CardInner>
 			</Card>
@@ -79,7 +79,7 @@ export const Link: ComponentStory<typeof Card> = (args) => (
 				</Heading>
 				<CardLink href="#">
 					Linking out
-					<Icon icon="chevronRight" size={1} />
+					<ChevronRightIcon weight="bold" size={1} />
 				</CardLink>
 			</CardInner>
 		</Card>

@@ -258,6 +258,18 @@ items={[
     ]} />`,
 	},
 	{
+		group: 'Fieldset',
+		name: 'Basic',
+		code: `	<Fieldset legend="What is your address?">
+    <Stack alignItems="flex-start" gap={1.5}>
+			<TextInput label="Street and number" required maxWidth="xl" />
+			<TextInput label="Suburb" required maxWidth="xl" />
+			<TextInput label="Country" required maxWidth="xl" />
+			<TextInput label="Postcode" required maxWidth="sm" />
+		</Stack>
+	</Fieldset>`,
+	},
+	{
 		group: 'Accordion',
 		name: 'Basic',
 		code: `<Accordion><AccordionItem title="Accordion">
@@ -316,6 +328,22 @@ items={[
       { href: '#main-nav', label: 'Skip to main navigation' },
     ]}
   />`,
+	},
+	{
+		group: 'InpageNav',
+		name: 'Basic',
+		code: `<InpageNav
+		title="Contents"
+		links={[
+			{ href: '#section-1', label: 'Section 1' },
+			{ href: '#section-2', label: 'Section 2' },
+		]}
+	/>`,
+	},
+	{
+		group: 'DirectionLink',
+		name: 'Basic',
+		code: `<DirectionLink href="#" direction="left">Back</DirectionLink>`,
 	},
 ];
 

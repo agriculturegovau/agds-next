@@ -1,5 +1,34 @@
 # @ag.ds-next/main-nav
 
+## 5.0.1
+
+### Patch Changes
+
+- c6c6c26: Fixed bugs with `secondaryLinks` and `rightContent`
+- 54339e9: Added pointer cursor to `MainNavButton`
+
+## 5.0.0
+
+### Major Changes
+
+- 653709c: Add support for global actions
+
+### Patch Changes
+
+- 135bb87: Updated link components to accept all anchor element HTML attributes
+- c16dbbe: - Added new token `borderWidths` to `core`
+  - Added new props to `Box` for configuring border widths
+  - Replaced usage of inline border widths with new token values
+- ffa1b11: Ensured consistent API of `aria-label`
+- c3a5ded: Improved the typescript types of components with children or extend default HTML elements
+- f8cba6b: Added `id` prop so it can be used with skip links
+- Updated dependencies [135bb87]
+- Updated dependencies [c16dbbe]
+- Updated dependencies [653709c]
+- Updated dependencies [bd36abb]
+  - @ag.ds-next/core@2.1.1
+  - @ag.ds-next/box@4.0.1
+
 ## 4.0.0
 
 ### Patch Changes

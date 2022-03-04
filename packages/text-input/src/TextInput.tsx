@@ -8,7 +8,7 @@ import {
 	tokens,
 } from '@ag.ds-next/core';
 
-export type InputProps = InputHTMLAttributes<HTMLInputElement> & {
+export type TextInputProps = InputHTMLAttributes<HTMLInputElement> & {
 	label: string;
 	required?: boolean;
 	hint?: string;
@@ -19,7 +19,7 @@ export type InputProps = InputHTMLAttributes<HTMLInputElement> & {
 	maxWidth?: FieldMaxWidth;
 };
 
-export const TextInput = forwardRef<HTMLInputElement, InputProps>(
+export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
 	function TextInput(
 		{
 			label,
@@ -45,13 +45,7 @@ export const TextInput = forwardRef<HTMLInputElement, InputProps>(
 				valid={valid}
 			>
 				{(allyProps) => (
-					<input
-						ref={ref}
-						required={required}
-						css={styles}
-						{...allyProps}
-						{...props}
-					/>
+					<input ref={ref} css={styles} {...allyProps} {...props} />
 				)}
 			</Field>
 		);
