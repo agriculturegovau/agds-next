@@ -59,7 +59,7 @@ export const createIcon = (children: ReactNode, name: string) => {
 					stroke: 'currentColor',
 					strokeLinejoin: 'round',
 					strokeLinecap: 'round',
-					strokeWidth: weight === 'bold' ? '12.5%' : '8%',
+					strokeWidth: weight === 'bold' ? 3 : 2,
 				})}
 				role="img"
 				style={style}
