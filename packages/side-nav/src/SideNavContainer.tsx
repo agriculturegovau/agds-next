@@ -46,7 +46,6 @@ export const SideNavContainer = ({
 
 	return (
 		<Box
-			as="aside"
 			aria-label={ariaLabel}
 			rounded
 			background={background}
@@ -61,7 +60,7 @@ export const SideNavContainer = ({
 			>
 				{collapseTitle}
 			</SideNavCollapseButton>
-			<animated.section
+			<animated.div
 				id={bodyId}
 				aria-labelledby={titleId}
 				role="region"
@@ -93,7 +92,7 @@ export const SideNavContainer = ({
 				>
 					{children}
 				</Box>
-			</animated.section>
+			</animated.div>
 		</Box>
 	);
 };
