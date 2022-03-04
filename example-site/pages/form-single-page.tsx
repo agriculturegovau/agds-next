@@ -5,9 +5,10 @@ import { Stack } from '@ag.ds-next/box';
 import { Content } from '@ag.ds-next/content';
 import { Columns, Column } from '@ag.ds-next/columns';
 import { Layout } from '../components/Layout';
-import { FormExample } from '../components/FormExample';
+import { FormExampleSinglePage } from '../components/FormExampleSinglePage';
+import { Divider } from '../components/Divider';
 
-const FormPage: NextPage = () => {
+const FormSinglePage: NextPage = () => {
 	return (
 		<Layout>
 			<Head>
@@ -21,21 +22,16 @@ const FormPage: NextPage = () => {
 			<Content>
 				<Columns>
 					<Column columnSpan={{ xs: 12, md: 7 }}>
-						<Stack gap={2}>
+						<Stack gap={3}>
 							<Body>
-								<h1>Form example</h1>
+								<h1>Single page form</h1>
 								<p>
-									The page heading communicates the main focus of the page. Make
-									your page heading descriptive and keep it succinct.
-								</p>
-								<p>
-									These headings introduce, respectively, sections and
-									subsections within your body copy. As you create these
-									headings, follow the same guidelines that you use when writing
-									section headings: Be succinct, descriptive, and precise.
+									Lorem ipsum dolor sit amet, laoreet necessitatibus sed in, ut
+									quem latine eligendi vim, noster utamur sit an.
 								</p>
 							</Body>
-							<FormExample />
+							<Divider />
+							<FormExampleSinglePage />
 						</Stack>
 					</Column>
 				</Columns>
@@ -44,4 +40,4 @@ const FormPage: NextPage = () => {
 	);
 };
 
-export default FormPage;
+export default FormSinglePage;

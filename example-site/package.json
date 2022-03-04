@@ -33,11 +33,13 @@
 		"@ag.ds-next/text": "4.0.1",
 		"@ag.ds-next/text-input": "2.0.1",
 		"@ag.ds-next/textarea": "2.0.1",
+		"@hookform/resolvers": "^2.8.8",
 		"@preconstruct/next": "^3.0.1",
 		"next": "^12.1.0",
 		"react": "17.0.2",
 		"react-dom": "^17.0.2",
-		"react-hook-form": "^7.27.0"
+		"react-hook-form": "^7.27.1",
+		"yup": "^0.32.11"
 	},
 	"devDependencies": {
 		"@babel/preset-typescript": "^7.16.0"

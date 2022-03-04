@@ -8,7 +8,7 @@ import { ProgressIndicator } from '@ag.ds-next/progress-indicator';
 import { Layout } from '../components/Layout';
 import { FormExampleMultiStep } from '../components/FormExampleMultiStep';
 
-const FormPageMultiStep: NextPage = () => {
+const FormMultiStepPage: NextPage = () => {
 	return (
 		<Layout>
 			<Head>
@@ -50,4 +50,4 @@ const FormPageMultiStep: NextPage = () => {
 	);
 };
 
-export default FormPageMultiStep;
+export default FormMultiStepPage;

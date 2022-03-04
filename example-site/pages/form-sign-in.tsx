@@ -7,7 +7,7 @@ import { Columns, Column } from '@ag.ds-next/columns';
 import { Layout } from '../components/Layout';
 import { FormExampleSignIn } from '../components/FormExampleSignIn';
 
-const SignInPage: NextPage = () => {
+const FormSignInPage: NextPage = () => {
 	return (
 		<Layout>
 			<Head>
@@ -38,4 +38,4 @@ const SignInPage: NextPage = () => {
 	);
 };
 
-export default SignInPage;
+export default FormSignInPage;
