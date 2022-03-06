@@ -5,12 +5,17 @@ import { InpageNavItem, InpageNavItemProps } from './InpageNavItem';
 import { InpageNavTitle } from './InpageNavTitle';
 
 export type InpageNavProps = {
-	title?: string;
+	'aria-label'?: string;
 	links: (Omit<InpageNavItemProps, 'children'> & { label: ReactNode })[];
+	title?: string;
 };
 
-export const InpageNav = ({ title, links }: InpageNavProps) => (
-	<InpageNavContainer aria-label="In page">
+export const InpageNav = ({
+	'aria-label': ariaLabel = 'In page',
+	links,
+	title,
+}: InpageNavProps) => (
+	<InpageNavContainer aria-label={ariaLabel}>
 		{title ? <InpageNavTitle>{title}</InpageNavTitle> : null}
 		<InpageNavItemContainer>
 			{links.map(({ label, ...props }, index) => (
