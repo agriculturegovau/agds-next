@@ -17,7 +17,7 @@ export {
 	CardLink,
 } from '@ag.ds-next/card';
 export { Callout, CalloutTitle } from '@ag.ds-next/callout';
-export { CallToActionLink } from '@ag.ds-next/cta-link';
+export { CallToActionLink, CallToActionButton } from '@ag.ds-next/cta-link';
 export { Columns, Column } from '@ag.ds-next/columns';
 export { Footer, FooterDivider } from '@ag.ds-next/footer';
 export { Header } from '@ag.ds-next/header';

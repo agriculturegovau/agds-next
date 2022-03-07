@@ -355,8 +355,13 @@ items={[
 	},
 	{
 		group: 'CallToAction',
-		name: 'Basic',
+		name: 'Link',
 		code: `<CallToActionLink href="#">Sign up</CallToActionLink>`,
+	},
+	{
+		group: 'CallToAction',
+		name: 'Button',
+		code: `<CallToActionButton onClick={console.log}>Sign up</CallToActionButton>`,
 	},
 ];
 
