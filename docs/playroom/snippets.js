@@ -353,6 +353,16 @@ items={[
 		name: 'Basic',
 		code: `<DirectionLink href="#" direction="left">Back</DirectionLink>`,
 	},
+	{
+		group: 'CallToAction',
+		name: 'Link',
+		code: `<CallToActionLink href="#">Sign up</CallToActionLink>`,
+	},
+	{
+		group: 'CallToAction',
+		name: 'Button',
+		code: `<CallToActionButton onClick={console.log}>Sign up</CallToActionButton>`,
+	},
 ];
 
 export default snippits;

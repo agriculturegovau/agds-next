@@ -4,6 +4,7 @@ import body from './body.svg';
 import box from './box.svg';
 import breadcrumb from './breadcrumb.svg';
 import button from './button.svg';
+import callToAction from './call-to-action.svg';
 import callout from './callout.svg';
 import card from './card.svg';
 import columns from './columns.svg';
@@ -39,6 +40,7 @@ export const pictograms = {
 	breadcrumb,
 	breadcrumbs: breadcrumb,
 	button,
+	'call-to-action': callToAction,
 	callout,
 	card,
 	columns,
