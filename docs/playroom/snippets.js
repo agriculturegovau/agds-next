@@ -77,7 +77,7 @@ const snippits = [
 		code: `<Footer variant="agriculture">
     <nav aria-label="footer">
       <Columns>
-        <Column columnSpan={{ xs: 12, sm: 6, lg: 3  }}> 
+        <Column columnSpan={{ xs: 12, sm: 6, lg: 3  }}>
           <Stack gap={0.5}>
             <H3>Section</H3>
             <LinkList
@@ -89,7 +89,7 @@ const snippits = [
             />
           </Stack>
         </Column>
-        <Column columnSpan={{ xs: 12, sm: 6, lg: 3 }}> 
+        <Column columnSpan={{ xs: 12, sm: 6, lg: 3 }}>
           <Stack gap={0.5}>
             <H3>Section</H3>
             <LinkList
@@ -101,7 +101,7 @@ const snippits = [
             />
           </Stack>
         </Column>
-        <Column columnSpan={{ xs: 12, sm: 6, lg: 3 }}> 
+        <Column columnSpan={{ xs: 12, sm: 6, lg: 3 }}>
           <Stack gap={0.5}>
             <H3>Section</H3>
             <LinkList
@@ -113,7 +113,7 @@ const snippits = [
             />
           </Stack>
         </Column>
-        <Column columnSpan={{ xs: 12, sm: 6, lg: 3 }}> 
+        <Column columnSpan={{ xs: 12, sm: 6, lg: 3 }}>
           <Stack gap={0.5}>
             <H3>Section</H3>
             <LinkList
@@ -235,6 +235,14 @@ items={[
         <Text>Right</Text>
       </Column>
     </Columns>`,
+	},
+	{
+		group: 'Callout',
+		name: 'Basic',
+		code: `<Callout>
+    <CalloutTitle as="h3">Callout heading</CalloutTitle>
+      <Text>Description of the callout.</Text>
+    </Callout>`,
 	},
 	{
 		group: 'TextInput',
