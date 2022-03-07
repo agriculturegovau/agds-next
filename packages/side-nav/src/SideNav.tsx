@@ -4,7 +4,7 @@ import { SideNavContainer } from './SideNavContainer';
 import { SideNavTitle } from './SideNavTitle';
 import { SideNavGroup } from './SideNavGroup';
 import { SideNavLink } from './SideNavLink';
-import { findBestMatch } from './utils';
+import { findBestMatch, useSideNavIds } from './utils';
 import { LinkProps } from '@ag.ds-next/core';
 
 export type SideNavProps = LinkListProps & {
@@ -24,13 +24,19 @@ export function SideNav({
 	titleLink,
 	title,
 }: SideNavProps) {
+	const sideNavIds = useSideNavIds();
 	return (
 		<SideNavContainer
 			aria-label={ariaLabel}
+			ids={sideNavIds}
 			variant={variant}
 			collapseTitle={collapseTitle}
 		>
-			<SideNavTitle isCurrentPage={activePath === titleLink} href={titleLink}>
+			<SideNavTitle
+				isCurrentPage={activePath === titleLink}
+				id={sideNavIds.titleId}
+				href={titleLink}
+			>
 				{title}
 			</SideNavTitle>
 			<LinkList activePath={activePath} items={items} />

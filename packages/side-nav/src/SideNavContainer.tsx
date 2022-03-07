@@ -12,15 +12,11 @@ import {
 } from '@ag.ds-next/core';
 
 import { SideNavCollapseButton } from './SideNavCollapseButton';
-import {
-	localPaletteVars,
-	useSideNavIds,
-	variantMap,
-	SideNavVariant,
-} from './utils';
+import { localPaletteVars, variantMap, SideNavVariant } from './utils';
 
 export type SideNavContainerProps = PropsWithChildren<{
 	collapseTitle?: string;
+	ids: { bodyId: string; buttonId: string; titleId: string; navId: string };
 	variant: SideNavVariant;
 	'aria-label': string;
 }>;
@@ -28,6 +24,7 @@ export type SideNavContainerProps = PropsWithChildren<{
 export const SideNavContainer = ({
 	children,
 	collapseTitle,
+	ids: { bodyId, buttonId, titleId, navId },
 	variant,
 	'aria-label': ariaLabel,
 }: SideNavContainerProps) => {
@@ -35,7 +32,6 @@ export const SideNavContainer = ({
 	const [isOpen, onToggle] = useToggleState(false, true);
 	const ref = useRef<HTMLDivElement>(null);
 	const { height } = useElementSize(ref);
-	const { titleId, bodyId } = useSideNavIds();
 
 	const prefersReducedMotion = usePrefersReducedMotion();
 	const animatedHeight = useSpring({
@@ -57,13 +53,13 @@ export const SideNavContainer = ({
 				onClick={onToggle}
 				ariaControls={bodyId}
 				variant={variant}
-				id={titleId}
+				id={buttonId}
 			>
 				{collapseTitle}
 			</SideNavCollapseButton>
 			<animated.div
 				id={bodyId}
-				aria-labelledby={titleId}
+				aria-labelledby={buttonId}
 				role="region"
 				style={animatedHeight}
 				css={{
@@ -79,6 +75,9 @@ export const SideNavContainer = ({
 				<Box
 					ref={ref}
 					as="nav"
+					role="navigation"
+					aria-labelledby={titleId}
+					id={navId}
 					fontFamily="body"
 					paddingLeft={{ xs: 1, md: 0 }}
 					paddingRight={{ xs: 1, md: 0 }}

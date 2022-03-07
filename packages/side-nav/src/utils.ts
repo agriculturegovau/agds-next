@@ -29,8 +29,10 @@ export const localPalette = {
 export const useSideNavIds = (initialId?: string | undefined) => {
 	const id = useId(initialId);
 	return {
-		titleId: `${id}-title`,
+		buttonId: `${id}-button`,
 		bodyId: `${id}-default`,
+		navId: `${id}-nav`,
+		titleId: `${id}-title`,
 	};
 };
 
