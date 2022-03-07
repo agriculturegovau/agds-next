@@ -1,4 +1,4 @@
-import { ButtonHTMLAttributes, PropsWithChildren } from 'react';
+import { ButtonHTMLAttributes, ElementType, PropsWithChildren } from 'react';
 import { Flex, linkStyles } from '@ag.ds-next/box';
 import { TextLink } from '@ag.ds-next/text';
 import {
@@ -7,7 +7,7 @@ import {
 	ArrowLeftIcon,
 	ArrowRightIcon,
 } from '@ag.ds-next/icon';
-import { forwardRefWithAs, LinkProps } from '@ag.ds-next/core';
+import { LinkProps } from '@ag.ds-next/core';
 
 export type Direction = 'up' | 'right' | 'down' | 'left';
 
@@ -48,32 +48,36 @@ export const DirectionButton = ({
 );
 
 type DirectionLinkBaseProps = PropsWithChildren<{
+	as: ElementType;
 	direction: Direction;
 }>;
 
-const DirectionLinkBase = forwardRefWithAs<'div', DirectionLinkBaseProps>(
-	function DirectionLinkBase({ children, as, direction, ...props }) {
-		const Icon = iconMap[direction];
-		const iconLeft = direction === 'left';
-		return (
-			<Flex
-				as={as}
-				inline
-				gap={0.5}
-				alignItems="center"
-				color="action"
-				fontFamily="body"
-				fontWeight="normal"
-				focus
-				{...props}
-			>
-				{iconLeft ? <Icon size={1} /> : null}
-				{children}
-				{!iconLeft ? <Icon size={1} /> : null}
-			</Flex>
-		);
-	}
-);
+const DirectionLinkBase = ({
+	as,
+	children,
+	direction,
+	...props
+}: DirectionLinkBaseProps) => {
+	const Icon = iconMap[direction];
+	const iconLeft = direction === 'left';
+	return (
+		<Flex
+			as={as}
+			inline
+			gap={0.5}
+			alignItems="center"
+			color="action"
+			fontFamily="body"
+			fontWeight="normal"
+			focus
+			{...props}
+		>
+			{iconLeft ? <Icon size={1} /> : null}
+			{children}
+			{!iconLeft ? <Icon size={1} /> : null}
+		</Flex>
+	);
+};
 
 const iconMap = {
 	up: ArrowUpIcon,
