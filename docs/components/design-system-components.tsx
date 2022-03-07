@@ -20,8 +20,11 @@ import {
 	CardLink,
 	CardList,
 } from '@ag.ds-next/card';
+import {
+	CallToActionLink,
+	CallToActionButton,
+} from '@ag.ds-next/call-to-action';
 import { Callout, CalloutTitle } from '@ag.ds-next/callout';
-import { CallToActionLink, CallToActionButton } from '@ag.ds-next/cta-link';
 import { Header, HeaderBrand, HeaderContainer } from '@ag.ds-next/header';
 import { Footer, FooterDivider } from '@ag.ds-next/footer';
 import { MainNav } from '@ag.ds-next/main-nav';

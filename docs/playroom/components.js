@@ -16,8 +16,11 @@ export {
 	CardInner,
 	CardLink,
 } from '@ag.ds-next/card';
+export {
+	CallToActionLink,
+	CallToActionButton,
+} from '@ag.ds-next/call-to-action';
 export { Callout, CalloutTitle } from '@ag.ds-next/callout';
-export { CallToActionLink, CallToActionButton } from '@ag.ds-next/cta-link';
 export { Columns, Column } from '@ag.ds-next/columns';
 export { Footer, FooterDivider } from '@ag.ds-next/footer';
 export { Header } from '@ag.ds-next/header';

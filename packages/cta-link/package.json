@@ -1,8 +1,8 @@
 {
-	"name": "@ag.ds-next/cta-link",
+	"name": "@ag.ds-next/call-to-action",
 	"version": "0.0.1",
-	"main": "dist/ag.ds-next-cta-link.cjs.js",
-	"module": "dist/ag.ds-next-cta-link.esm.js",
+	"main": "dist/ag.ds-next-call-to-action.cjs.js",
+	"module": "dist/ag.ds-next-call-to-action.esm.js",
 	"license": "MIT",
 	"peerDependencies": {
 		"@ag.ds-next/box": "4.0.1",
