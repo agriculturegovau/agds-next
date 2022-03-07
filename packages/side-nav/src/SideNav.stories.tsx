@@ -98,9 +98,9 @@ DarkAltVariant.args = {
 	variant: 'darkAlt',
 };
 
-export const Modular: ComponentStory<typeof SideNavContainer> = (args) => (
-	<SideNavContainer {...args}>
-		<SideNavTitle href="#">SideNavTitle</SideNavTitle>
+export const Modular = () => (
+	<SideNavContainer variant="light" aria-label="side navigation">
+		<SideNavTitle href="#">SideNav Title</SideNavTitle>
 		<SideNavGroup>
 			<SideNavLink href="#one" label="One" />
 			<SideNavLink href="#two" label="Two" />
@@ -118,7 +118,3 @@ export const Modular: ComponentStory<typeof SideNavContainer> = (args) => (
 		</SideNavGroup>
 	</SideNavContainer>
 );
-Modular.args = {
-	collapseTitle: 'In this section',
-	variant: 'light',
-};

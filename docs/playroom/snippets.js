@@ -77,7 +77,7 @@ const snippits = [
 		code: `<Footer variant="agriculture">
     <nav aria-label="footer">
       <Columns>
-        <Column columnSpan={{ xs: 12, sm: 6, lg: 3  }}> 
+        <Column columnSpan={{ xs: 12, sm: 6, lg: 3  }}>
           <Stack gap={0.5}>
             <H3>Section</H3>
             <LinkList
@@ -89,7 +89,7 @@ const snippits = [
             />
           </Stack>
         </Column>
-        <Column columnSpan={{ xs: 12, sm: 6, lg: 3 }}> 
+        <Column columnSpan={{ xs: 12, sm: 6, lg: 3 }}>
           <Stack gap={0.5}>
             <H3>Section</H3>
             <LinkList
@@ -101,7 +101,7 @@ const snippits = [
             />
           </Stack>
         </Column>
-        <Column columnSpan={{ xs: 12, sm: 6, lg: 3 }}> 
+        <Column columnSpan={{ xs: 12, sm: 6, lg: 3 }}>
           <Stack gap={0.5}>
             <H3>Section</H3>
             <LinkList
@@ -113,7 +113,7 @@ const snippits = [
             />
           </Stack>
         </Column>
-        <Column columnSpan={{ xs: 12, sm: 6, lg: 3 }}> 
+        <Column columnSpan={{ xs: 12, sm: 6, lg: 3 }}>
           <Stack gap={0.5}>
             <H3>Section</H3>
             <LinkList
@@ -195,7 +195,7 @@ items={[
 	{
 		group: 'SideNav',
 		name: 'Modular',
-		code: `<SideNavContainer variant='light'>
+		code: `<SideNavContainer variant='light' aria-label="side navigation">
       <SideNavTitle href="#" text="SideNavTitle" />
       <SideNavLinkGroup>
         <SideNavLink active={true} href="#one" label="One" />
