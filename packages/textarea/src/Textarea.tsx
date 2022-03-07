@@ -24,6 +24,7 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
 			valid,
 			block,
 			maxWidth,
+			id,
 			...props
 		},
 		ref
@@ -44,6 +45,7 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
 				message={message}
 				invalid={invalid}
 				valid={valid}
+				id={id}
 			>
 				{(allyProps) => (
 					<textarea ref={ref} css={styles} {...allyProps} {...props} />

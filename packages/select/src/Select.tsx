@@ -51,6 +51,7 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(
 			maxWidth,
 			options,
 			placeholder,
+			id,
 			...props
 		},
 		ref
@@ -64,6 +65,7 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(
 				message={message}
 				invalid={invalid}
 				valid={valid}
+				id={id}
 			>
 				{(allyProps) => (
 					<SelectContainer block={block} maxWidth={maxWidth}>

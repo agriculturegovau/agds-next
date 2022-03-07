@@ -30,6 +30,7 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
 			valid,
 			block,
 			maxWidth,
+			id,
 			...props
 		},
 		ref
@@ -43,6 +44,7 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
 				message={message}
 				invalid={invalid}
 				valid={valid}
+				id={id}
 			>
 				{(allyProps) => (
 					<input ref={ref} css={styles} {...allyProps} {...props} />
