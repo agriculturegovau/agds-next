@@ -1,7 +1,6 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { Box, Stack } from '@ag.ds-next/box';
-import { Button } from '@ag.ds-next/button';
 import { TextInput } from '@ag.ds-next/text-input';
 import { Fieldset, FieldsetContainer, FieldsetLegend } from './index';
 import { H1 } from '@ag.ds-next/heading';
@@ -41,16 +40,13 @@ OnDark.args = {
 	hint: 'We will only use this to respond to your requests',
 };
 export const LegendAsPageHeading: ComponentStory<typeof Fieldset> = (args) => (
-	<Stack as="form" alignItems="flex-start" gap={1.5}>
-		<Fieldset {...args}>
-			<Stack alignItems="flex-start" gap={1.5}>
-				<TextInput type="number" label="Day" required />
-				<TextInput type="number" label="Month" required />
-				<TextInput type="number" label="Year" required />
-			</Stack>
-		</Fieldset>
-		<Button type="submit">Continue</Button>
-	</Stack>
+	<Fieldset {...args}>
+		<Stack alignItems="flex-start" gap={1.5}>
+			<TextInput label="Day" inputMode="numeric" maxWidth="md" required />
+			<TextInput label="Month" inputMode="numeric" maxWidth="md" required />
+			<TextInput label="Year" inputMode="numeric" maxWidth="md" required />
+		</Stack>
+	</Fieldset>
 );
 LegendAsPageHeading.args = {
 	legend: <H1>What is your date of birth?</H1>,

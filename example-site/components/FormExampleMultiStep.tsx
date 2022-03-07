@@ -11,7 +11,9 @@ import { Text } from '@ag.ds-next/text';
 
 const formSchema = yup
 	.object({
-		fullName: yup.string().required('Enter your name'),
+		day: yup.string().required('Enter day'),
+		month: yup.string().required('Enter month'),
+		year: yup.string().required('Enter year'),
 	})
 	.required();
 
@@ -31,31 +33,49 @@ export const FormExampleMultiStep = () => {
 	};
 
 	return (
-		<Stack
-			as="form"
-			alignItems="flex-start"
-			gap={1.5}
-			onSubmit={handleSubmit(onSubmit)}
-		>
-			<Fieldset
-				legend={<H1>Personal details</H1>}
-				hint={
-					<Text fontSize="md" color="muted">
-						We will only use this to respond to your requests
-					</Text>
-				}
-			>
-				<TextInput
-					label="Full name"
-					{...register('fullName')}
-					invalid={Boolean(errors.fullName?.message)}
-					message={errors.fullName?.message}
-					maxWidth="xl"
-					required
-				/>
-			</Fieldset>
-			<Divider />
-			<Button type="submit">Continue</Button>
-		</Stack>
+		<form onSubmit={handleSubmit(onSubmit)}>
+			<Stack alignItems="flex-start" gap={1.5}>
+				<Fieldset
+					legend={<H1>What is your date of birth?</H1>}
+					hint={
+						<Text fontSize="md" color="muted">
+							We will only use this to respond to your requests
+						</Text>
+					}
+				>
+					<Stack alignItems="flex-start" gap={1.5}>
+						<TextInput
+							label="Day"
+							inputMode="numeric"
+							maxWidth="md"
+							required
+							{...register('day')}
+							invalid={Boolean(errors.day?.message)}
+							message={errors.day?.message}
+						/>
+						<TextInput
+							label="Month"
+							inputMode="numeric"
+							maxWidth="md"
+							required
+							{...register('month')}
+							invalid={Boolean(errors.month?.message)}
+							message={errors.month?.message}
+						/>
+						<TextInput
+							label="Year"
+							inputMode="numeric"
+							maxWidth="md"
+							required
+							{...register('year')}
+							invalid={Boolean(errors.year?.message)}
+							message={errors.year?.message}
+						/>
+					</Stack>
+				</Fieldset>
+				<Divider />
+				<Button type="submit">Continue</Button>
+			</Stack>
+		</form>
 	);
 };
