@@ -11,12 +11,13 @@ export type SideNavTitleProps = LinkProps & {
 
 export const SideNavTitle = ({
 	children,
+	id,
 	isCurrentPage,
 	...props
 }: SideNavTitleProps) => {
 	const Link = useLinkComponent();
 	return (
-		<Box as="h2">
+		<Box as="h2" id={id}>
 			<Box
 				as={Link}
 				{...props}

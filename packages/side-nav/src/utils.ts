@@ -26,11 +26,13 @@ export const localPalette = {
 	hover: `var(${localPaletteVars.hover})`,
 };
 
-export const useSideNavIds = (initialId?: string | undefined) => {
-	const id = useId(initialId);
+export const useSideNavIds = () => {
+	const autoId = useId();
 	return {
-		titleId: `${id}-title`,
-		bodyId: `${id}-default`,
+		buttonId: `sideNav-${autoId}-button`,
+		bodyId: `sideNav-${autoId}-default`,
+		navId: `sideNav-${autoId}-nav`,
+		titleId: `sideNav-${autoId}-title`,
 	};
 };
 

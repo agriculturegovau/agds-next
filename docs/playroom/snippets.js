@@ -193,23 +193,6 @@ items={[
 `,
 	},
 	{
-		group: 'SideNav',
-		name: 'Modular',
-		code: `<SideNavContainer variant='light'>
-      <SideNavTitle href="#" text="SideNavTitle" />
-      <SideNavLinkGroup>
-        <SideNavLink active={true} href="#one" label="One" />
-        <SideNavLink href="#two" label="Two" />
-        <SideNavLink href="#three" label="Three" />
-        <SideNavLinkGroup>
-        <SideNavLink href="#four" label="Four" />
-        <SideNavLink href="#five" label="Five" />
-        <SideNavLink href="#six" label="Six" />
-      </SideNavLinkGroup>
-      </SideNavLinkGroup>
-    </SideNavContainer>`,
-	},
-	{
 		group: 'Button',
 		name: 'Primary',
 		code: `<Button>Submit</Button>`,
