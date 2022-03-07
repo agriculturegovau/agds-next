@@ -353,6 +353,11 @@ items={[
 		name: 'Basic',
 		code: `<DirectionLink href="#" direction="left">Back</DirectionLink>`,
 	},
+	{
+		group: 'CallToAction',
+		name: 'Basic',
+		code: `<CallToActionLink href="#">Sign up</CallToActionLink>`,
+	},
 ];
 
 export default snippits;

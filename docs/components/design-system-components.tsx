@@ -21,6 +21,7 @@ import {
 	CardList,
 } from '@ag.ds-next/card';
 import { Callout, CalloutTitle } from '@ag.ds-next/callout';
+import { CallToActionLink } from '@ag.ds-next/cta-link';
 import { Header, HeaderBrand, HeaderContainer } from '@ag.ds-next/header';
 import { Footer, FooterDivider } from '@ag.ds-next/footer';
 import { MainNav } from '@ag.ds-next/main-nav';
@@ -87,6 +88,7 @@ export const designSystemComponents = {
 	Flex,
 	Callout,
 	CalloutTitle,
+	CallToActionLink,
 	Card,
 	CardFooter,
 	CardHeader,
