@@ -40,7 +40,7 @@ const FormMultiStepPage: NextPage = () => {
 								]}
 							/>
 						</Column>
-						<Column columnStart={5} columnEnd="last">
+						<Column columnSpan={{ xs: 12, md: 8 }} columnStart={{ md: 5 }}>
 							<FormExampleMultiStep />
 						</Column>
 					</Columns>
