@@ -56,7 +56,7 @@ export const Field = ({
 	);
 };
 
-export const useFieldIds = (idProp: string | undefined) => {
+export const useFieldIds = (idProp?: string) => {
 	const autoId = useId(idProp);
 	const fieldId = idProp ? idProp : `field-${autoId}`;
 	const hintId = `field-${autoId}-hint`;
