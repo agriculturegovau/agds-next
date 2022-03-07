@@ -15,7 +15,7 @@ const formSchema = yup
 	.object({
 		fullName: yup.string().required('Enter your name'),
 		streetAddress: yup.string().required('Enter your street address'),
-		state: yup.string().required('Enter your street state'),
+		state: yup.string().required('Enter your state'),
 		postcode: yup.string().required('Enter your postcode'),
 		email: yup
 			.string()

@@ -25,18 +25,18 @@ Fieldset is used to associate a number of related form fields as well as labels 
 If you’re asking just one question per page, you can set the contents of the `legend` as the page heading, as shown in the example below. This is good practice as it means that users of screen readers will only hear the contents once.
 
 ```jsx live
-<Stack as="form" alignItems="flex-start" gap={1.5}>
-	<Fieldset
-		legend="What is your date of birth?"
-		legendAsPageHeading
-		hint="We will only use this to respond to your request"
-	>
-		<Stack alignItems="flex-start" gap={1.5}>
-			<TextInput type="number" label="Day" required />
-			<TextInput type="number" label="Month" required />
-			<TextInput type="number" label="Year" required />
-		</Stack>
-	</Fieldset>
-	<Button type="submit">Continue</Button>
-</Stack>
+<Fieldset
+	legend={<H1>What is your date of birth?</H1>}
+	hint={
+		<Text fontSize="md" color="muted">
+			We will only use this to respond to your requests
+		</Text>
+	}
+>
+	<Stack alignItems="flex-start" gap={1.5}>
+		<TextInput label="Day" inputMode="numeric" maxWidth="md" required />
+		<TextInput label="Month" inputMode="numeric" maxWidth="md" required />
+		<TextInput label="Year" inputMode="numeric" maxWidth="md" required />
+	</Stack>
+</Fieldset>
 ```

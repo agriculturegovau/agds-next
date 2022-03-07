@@ -4,23 +4,16 @@ import * as yup from 'yup';
 import { Button } from '@ag.ds-next/button';
 import { Divider } from '../components/Divider';
 import { Fieldset } from '@ag.ds-next/fieldset';
-import { Flex, Stack } from '@ag.ds-next/box';
+import { Stack } from '@ag.ds-next/box';
 import { H1 } from '@ag.ds-next/heading';
-import { Select } from '@ag.ds-next/select';
 import { TextInput } from '@ag.ds-next/text-input';
+import { Text } from '@ag.ds-next/text';
 
 const formSchema = yup
 	.object({
-		fullName: yup.string().required('Enter your name'),
-		streetAddress: yup.string().required('Enter your street address'),
-		state: yup.string().required('Enter your street state'),
-		postcode: yup.string().required('Enter your postcode'),
-		email: yup
-			.string()
-			.email('Invalid email address')
-			.required('Enter your email address'),
-		mobile: yup.string().required('Enter your postcode'),
-		notificationPreference: yup.string().required('Please select an option'),
+		day: yup.string().required('Enter day'),
+		month: yup.string().required('Enter month'),
+		year: yup.string().required('Enter year'),
 	})
 	.required();
 
@@ -41,60 +34,47 @@ export const FormExampleMultiStep = () => {
 
 	return (
 		<form onSubmit={handleSubmit(onSubmit)}>
-			<Stack gap={3}>
+			<Stack alignItems="flex-start" gap={1.5}>
 				<Fieldset
-					legend="Personal details"
-					legendAsPageHeading
-					hint="Lorem ipsum dolor sit amet, laoreet necessitatibus sed in, ut quem latine eligendi vim, noster utamur sit an."
+					legend={<H1>What is your date of birth?</H1>}
+					hint={
+						<Text fontSize="md" color="muted">
+							We will only use this to respond to your requests
+						</Text>
+					}
 				>
-					<Stack gap={1.5}>
+					<Stack alignItems="flex-start" gap={1.5}>
 						<TextInput
-							label="Full name"
-							{...register('fullName')}
-							invalid={Boolean(errors.fullName?.message)}
-							message={errors.fullName?.message}
-							maxWidth="xl"
+							label="Day"
+							inputMode="numeric"
+							maxWidth="md"
 							required
+							{...register('day')}
+							invalid={Boolean(errors.day?.message)}
+							message={errors.day?.message}
 						/>
 						<TextInput
-							label="Street address"
-							{...register('streetAddress')}
-							invalid={Boolean(errors.streetAddress?.message)}
-							message={errors.streetAddress?.message}
-							maxWidth="xl"
+							label="Month"
+							inputMode="numeric"
+							maxWidth="md"
 							required
-						/>
-						<Select
-							label="State"
-							{...register('state')}
-							placeholder="Please select"
-							options={[
-								{ label: 'QLD', value: 'qld' },
-								{ label: 'NSW', value: 'nsw' },
-								{ label: 'VIC', value: 'vic' },
-							]}
-							invalid={Boolean(errors.state?.message)}
-							message={errors.state?.message}
-							maxWidth="xl"
-							required
+							{...register('month')}
+							invalid={Boolean(errors.month?.message)}
+							message={errors.month?.message}
 						/>
 						<TextInput
-							label="Postcode"
-							{...register('postcode')}
-							invalid={Boolean(errors.postcode?.message)}
-							message={errors.postcode?.message}
-							maxWidth="sm"
+							label="Year"
+							inputMode="numeric"
+							maxWidth="md"
 							required
+							{...register('year')}
+							invalid={Boolean(errors.year?.message)}
+							message={errors.year?.message}
 						/>
 					</Stack>
 				</Fieldset>
 				<Divider />
-				<Flex gap={1}>
-					<Button type="submit">Submit</Button>
-					<Button type="button" variant="secondary">
-						Cancel
-					</Button>
-				</Flex>
+				<Button type="submit">Continue</Button>
 			</Stack>
 		</form>
 	);
