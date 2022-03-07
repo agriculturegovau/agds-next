@@ -1,4 +1,4 @@
-import { ButtonHTMLAttributes, PropsWithChildren } from 'react';
+import { ButtonHTMLAttributes, ElementType, PropsWithChildren } from 'react';
 import { Flex } from '@ag.ds-next/box';
 import { Text, TextLink } from '@ag.ds-next/text';
 import {
@@ -6,7 +6,7 @@ import {
 	ProgressDoneIcon,
 	ProgressTodoIcon,
 } from '@ag.ds-next/icon';
-import { boxPalette, forwardRefWithAs, LinkProps } from '@ag.ds-next/core';
+import { boxPalette, LinkProps } from '@ag.ds-next/core';
 
 export type ProgressIndicatorItemStatus = 'doing' | 'todo' | 'done';
 
@@ -17,13 +17,11 @@ export type ProgressIndicatorItemLinkProps = LinkProps & {
 export const ProgressIndicatorItemLink = ({
 	children,
 	...props
-}: ProgressIndicatorItemLinkProps) => {
-	return (
-		<ProgressIndicatorItem as={TextLink} {...props}>
-			{children}
-		</ProgressIndicatorItem>
-	);
-};
+}: ProgressIndicatorItemLinkProps) => (
+	<ProgressIndicatorItem as={TextLink} {...props}>
+		{children}
+	</ProgressIndicatorItem>
+);
 
 export type ProgressIndicatorItemButtonProps =
 	ButtonHTMLAttributes<HTMLButtonElement> & {
@@ -50,13 +48,16 @@ export const ProgressIndicatorItemButton = ({
 );
 
 type ProgressIndicatorItemProps = PropsWithChildren<{
+	as: ElementType;
 	status: ProgressIndicatorItemStatus;
 }>;
 
-const ProgressIndicatorItem = forwardRefWithAs<
-	'div',
-	ProgressIndicatorItemProps
->(function ProgressIndicatorItem({ children, as, status, ...props }) {
+const ProgressIndicatorItem = ({
+	as,
+	children,
+	status,
+	...props
+}: ProgressIndicatorItemProps) => {
 	const active = status === 'doing';
 	const Icon = statusIconMap[status];
 	return (
@@ -93,7 +94,7 @@ const ProgressIndicatorItem = forwardRefWithAs<
 			</Flex>
 		</li>
 	);
-});
+};
 
 const statusIconMap = {
 	doing: ProgressDoingIcon,
