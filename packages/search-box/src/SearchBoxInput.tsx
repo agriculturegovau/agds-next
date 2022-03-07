@@ -28,8 +28,8 @@ export const SearchBoxInput = forwardRef<HTMLInputElement, SearchBoxInputProps>(
 );
 
 const useInputId = (idProp?: string) => {
-	const id = useId(idProp);
-	return idProp || `search-${id}`;
+	const autoId = useId();
+	return idProp || `search-${autoId}`;
 };
 
 const inputStyles = () => {

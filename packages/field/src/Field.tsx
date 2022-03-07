@@ -8,24 +8,26 @@ import { useId } from '@reach/auto-id';
 
 export type FieldProps = {
 	children: ((allyProps: A11yProps) => ReactNode) | ReactNode;
-	label: string;
-	required: boolean;
 	hint: string | undefined;
-	message: string | undefined;
+	id?: string;
 	invalid?: boolean;
+	label: string;
+	message: string | undefined;
+	required: boolean;
 	valid?: boolean;
 };
 
 export const Field = ({
 	children,
 	hint,
+	id,
+	invalid,
 	label,
 	message,
 	required,
-	invalid,
 	valid,
 }: FieldProps) => {
-	const { fieldId, hintId, messageId } = useFieldIds();
+	const { fieldId, hintId, messageId } = useFieldIds(id);
 	const a11yProps = useFieldA11yProps({
 		required,
 		fieldId,
@@ -54,11 +56,11 @@ export const Field = ({
 	);
 };
 
-export const useFieldIds = () => {
-	const id = useId();
-	const fieldId = `field-${id}`;
-	const hintId = `field-${id}-hint`;
-	const messageId = `field-${id}-message`;
+export const useFieldIds = (idProp?: string) => {
+	const autoId = useId(idProp);
+	const fieldId = idProp ? idProp : `field-${autoId}`;
+	const hintId = `field-${autoId}-hint`;
+	const messageId = `field-${autoId}-message`;
 	return { fieldId, hintId, messageId };
 };
 
