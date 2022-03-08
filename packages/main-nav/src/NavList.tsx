@@ -36,13 +36,20 @@ export function NavList({ links, activePath }: NavListProps) {
 				},
 			}}
 		>
-			{links.map(({ href, label, ...props }, index) => (
-				<NavListItem key={index} active={href === activePath}>
-					<Link href={href} {...props}>
-						{label}
-					</Link>
-				</NavListItem>
-			))}
+			{links.map(({ href, label, ...props }, index) => {
+				const active = href === activePath;
+				return (
+					<NavListItem key={index} active={active}>
+						<Link
+							href={href}
+							aria-current={active ? 'page' : undefined}
+							{...props}
+						>
+							{label}
+						</Link>
+					</NavListItem>
+				);
+			})}
 		</Flex>
 	);
 }
