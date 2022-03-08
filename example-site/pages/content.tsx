@@ -19,10 +19,9 @@ const ContentPage: NextPage = () => {
 				/>
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
-
 			<Content>
 				<Columns>
-					<Column columnSpan={{ xs: 12, md: 4, lg: 3 }}>
+					<Column columnSpan={{ xs: 12, md: 3 }}>
 						<SideNav
 							collapseTitle="In this section"
 							title="Lodging your tax return"
@@ -32,7 +31,7 @@ const ContentPage: NextPage = () => {
 							items={sideNavItems}
 						/>
 					</Column>
-					<Column columnStart={{ xs: 1, md: 5, lg: 5 }} columnEnd="last">
+					<Column columnSpan={{ xs: 12, md: 8 }} columnStart={{ md: 5 }}>
 						<Body>
 							<h1>Content page example (h1)</h1>
 							<p>
