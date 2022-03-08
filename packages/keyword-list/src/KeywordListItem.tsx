@@ -19,7 +19,7 @@ export const KeywordListItem = (props: KeywordListItemProps) => {
 			fontWeight="bold"
 			color={href ? 'action' : 'text'}
 		>
-			<Text as="small" fontSize="xs">
+			<Text as="small" fontSize="xs" color="inherit">
 				{subTitle}
 			</Text>
 			{title}
