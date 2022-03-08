@@ -8,25 +8,28 @@ import { useId } from '@reach/auto-id';
 
 export type FieldProps = {
 	children: ((allyProps: A11yProps) => ReactNode) | ReactNode;
-	label: string;
-	required: boolean;
 	hint: string | undefined;
-	message: string | undefined;
+	id?: string;
 	invalid?: boolean;
+	label: string;
+	message: string | undefined;
+	required: boolean;
 	valid?: boolean;
 };
 
 export const Field = ({
 	children,
 	hint,
+	id,
+	invalid,
 	label,
 	message,
 	required,
-	invalid,
 	valid,
 }: FieldProps) => {
-	const { fieldId, hintId, messageId } = useFieldIds();
+	const { fieldId, hintId, messageId } = useFieldIds(id);
 	const a11yProps = useFieldA11yProps({
+		required,
 		fieldId,
 		message,
 		messageId,
@@ -53,21 +56,23 @@ export const Field = ({
 	);
 };
 
-export const useFieldIds = () => {
-	const id = useId();
-	const fieldId = `field-${id}`;
-	const hintId = `field-${id}-hint`;
-	const messageId = `field-${id}-message`;
+export const useFieldIds = (idProp?: string) => {
+	const autoId = useId(idProp);
+	const fieldId = idProp ? idProp : `field-${autoId}`;
+	const hintId = `field-${autoId}-hint`;
+	const messageId = `field-${autoId}-message`;
 	return { fieldId, hintId, messageId };
 };
 
 type A11yProps = {
+	'aria-required': boolean;
 	'aria-invalid': boolean;
 	'aria-describedby': string;
 	id: string;
 };
 
 export const useFieldA11yProps = ({
+	required,
 	fieldId,
 	message,
 	messageId,
@@ -75,13 +80,15 @@ export const useFieldA11yProps = ({
 	hintId,
 	invalid,
 }: {
+	required?: boolean;
 	fieldId: string;
 	message?: string;
 	messageId: string;
 	hint?: string;
 	hintId: string;
 	invalid?: boolean;
-}) => ({
+}): A11yProps => ({
+	'aria-required': Boolean(required),
 	'aria-invalid': Boolean(invalid),
 	'aria-describedby': [message ? messageId : null, hint ? hintId : null]
 		.filter(Boolean)

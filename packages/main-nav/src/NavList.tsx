@@ -7,7 +7,7 @@ import {
 	LinkProps,
 } from '@ag.ds-next/core';
 
-import { NavItem } from './NavItem';
+import { NavListItem } from './NavListItem';
 
 export type NavListLink = Omit<LinkProps, 'children'> & {
 	label: ReactNode;
@@ -23,10 +23,11 @@ export function NavList({ links, activePath }: NavListProps) {
 	return (
 		<Flex
 			as="ul"
-			flexDirection={{ xs: 'column', md: 'row' }}
+			flexDirection={{ xs: 'column', lg: 'row' }}
+			flexWrap="wrap"
 			alignItems="stretch"
 			css={{
-				[tokens.mediaQuery.max.sm]: {
+				[tokens.mediaQuery.max.md]: {
 					'& > li': {
 						borderTopWidth: tokens.borderWidth.sm,
 						borderTopStyle: 'solid',
@@ -35,13 +36,20 @@ export function NavList({ links, activePath }: NavListProps) {
 				},
 			}}
 		>
-			{links.map(({ href, label, ...props }, index) => (
-				<NavItem key={index} active={href === activePath}>
-					<Link href={href} {...props}>
-						{label}
-					</Link>
-				</NavItem>
-			))}
+			{links.map(({ href, label, ...props }, index) => {
+				const active = href === activePath;
+				return (
+					<NavListItem key={index} active={active}>
+						<Link
+							href={href}
+							aria-current={active ? 'page' : undefined}
+							{...props}
+						>
+							{label}
+						</Link>
+					</NavListItem>
+				);
+			})}
 		</Flex>
 	);
 }

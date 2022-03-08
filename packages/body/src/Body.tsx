@@ -140,7 +140,7 @@ export const bodyClass = css({
 
 	'* + h1:not([class])': { marginTop: mapSpacing(3) },
 	'* + h2:not([class])': { marginTop: mapSpacing(3) },
-	'* + h3:not([class])': { marginTop: mapSpacing(2) },
+	'* + h3:not([class])': { marginTop: mapSpacing(1.5) },
 	'* + h4:not([class])': { marginTop: mapSpacing(1.5) },
 	'* + h5:not([class])': { marginTop: mapSpacing(1.5) },
 	'* + h6:not([class])': { marginTop: mapSpacing(1.5) },

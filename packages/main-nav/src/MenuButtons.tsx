@@ -1,39 +1,42 @@
-import { Box } from '@ag.ds-next/box';
+import { MouseEventHandler, PropsWithChildren } from 'react';
+import { Box, Flex } from '@ag.ds-next/box';
 import { boxPalette } from '@ag.ds-next/core';
 
 import { localPalette } from './utils';
 
-export type MenuButtonProps = {
-	onClick: () => void;
-};
+export type MenuButtonProps = PropsWithChildren<{
+	onClick: MouseEventHandler<HTMLButtonElement>;
+}>;
 
-function MenuButton({
-	onClick,
-	children,
-}: React.PropsWithChildren<MenuButtonProps>) {
+function MenuButton({ onClick, children }: MenuButtonProps) {
 	return (
-		<Box
-			as="button"
-			display={{ xs: 'flex', md: 'none' }}
-			flexDirection="column"
-			alignItems="center"
-			fontSize="xs"
-			lineHeight="nospace"
-			gap={0.5}
-			padding={1}
-			focus
-			css={{
-				background: 'transparent',
-				color: boxPalette.foregroundAction,
-
-				'&:hover': {
-					color: boxPalette.foregroundText,
-					backgroundColor: localPalette.linkHoverBg,
-				},
-			}}
-			onClick={onClick}
-		>
-			{children}
+		<Box paddingBottom={0.5} display={{ xs: 'block', lg: 'none' }}>
+			<Flex
+				as="button"
+				flexDirection="column"
+				justifyContent="center"
+				alignItems="center"
+				fontSize="xs"
+				lineHeight="nospace"
+				gap={0.5}
+				padding={1}
+				height="100%"
+				focus
+				css={{
+					appearance: 'none',
+					border: 'none',
+					cursor: 'pointer',
+					background: 'transparent',
+					color: boxPalette.foregroundAction,
+					'&:hover': {
+						color: boxPalette.foregroundText,
+						backgroundColor: localPalette.linkHoverBg,
+					},
+				}}
+				onClick={onClick}
+			>
+				{children}
+			</Flex>
 		</Box>
 	);
 }

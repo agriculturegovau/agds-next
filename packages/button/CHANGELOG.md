@@ -1,5 +1,21 @@
 # @ag.ds-next/button
 
+## 4.0.1
+
+### Patch Changes
+
+- 135bb87: Updated link components to accept all anchor element HTML attributes
+- c16dbbe: - Added new token `borderWidths` to `core`
+  - Added new props to `Box` for configuring border widths
+  - Replaced usage of inline border widths with new token values
+- f8cba6b: Exported `buttonStyles` function for use in other packages
+- Updated dependencies [135bb87]
+- Updated dependencies [c16dbbe]
+- Updated dependencies [653709c]
+- Updated dependencies [bd36abb]
+  - @ag.ds-next/core@2.1.1
+  - @ag.ds-next/box@4.0.1
+
 ## 4.0.0
 
 ### Patch Changes

@@ -77,7 +77,7 @@ const snippits = [
 		code: `<Footer variant="agriculture">
     <nav aria-label="footer">
       <Columns>
-        <Column columnSpan={{ xs: 12, sm: 6, lg: 3  }}> 
+        <Column columnSpan={{ xs: 12, sm: 6, lg: 3  }}>
           <Stack gap={0.5}>
             <H3>Section</H3>
             <LinkList
@@ -89,7 +89,7 @@ const snippits = [
             />
           </Stack>
         </Column>
-        <Column columnSpan={{ xs: 12, sm: 6, lg: 3 }}> 
+        <Column columnSpan={{ xs: 12, sm: 6, lg: 3 }}>
           <Stack gap={0.5}>
             <H3>Section</H3>
             <LinkList
@@ -101,7 +101,7 @@ const snippits = [
             />
           </Stack>
         </Column>
-        <Column columnSpan={{ xs: 12, sm: 6, lg: 3 }}> 
+        <Column columnSpan={{ xs: 12, sm: 6, lg: 3 }}>
           <Stack gap={0.5}>
             <H3>Section</H3>
             <LinkList
@@ -113,7 +113,7 @@ const snippits = [
             />
           </Stack>
         </Column>
-        <Column columnSpan={{ xs: 12, sm: 6, lg: 3 }}> 
+        <Column columnSpan={{ xs: 12, sm: 6, lg: 3 }}>
           <Stack gap={0.5}>
             <H3>Section</H3>
             <LinkList
@@ -193,23 +193,6 @@ items={[
 `,
 	},
 	{
-		group: 'SideNav',
-		name: 'Modular',
-		code: `<SideNavContainer variant='light'>
-      <SideNavTitle href="#" text="SideNavTitle" />
-      <SideNavLinkGroup>
-        <SideNavLink active={true} href="#one" label="One" />
-        <SideNavLink href="#two" label="Two" />
-        <SideNavLink href="#three" label="Three" />
-        <SideNavLinkGroup>
-        <SideNavLink href="#four" label="Four" />
-        <SideNavLink href="#five" label="Five" />
-        <SideNavLink href="#six" label="Six" />
-      </SideNavLinkGroup>
-      </SideNavLinkGroup>
-    </SideNavContainer>`,
-	},
-	{
 		group: 'Button',
 		name: 'Primary',
 		code: `<Button>Submit</Button>`,
@@ -237,6 +220,14 @@ items={[
     </Columns>`,
 	},
 	{
+		group: 'Callout',
+		name: 'Basic',
+		code: `<Callout>
+    <CalloutTitle as="h3">Callout heading</CalloutTitle>
+      <Text>Description of the callout.</Text>
+    </Callout>`,
+	},
+	{
 		group: 'TextInput',
 		name: 'Basic',
 		code: `<TextInput label="Name" />`,
@@ -256,6 +247,18 @@ items={[
       { value: 'b', label: 'Option B' },
       { value: 'c', label: 'Option C' },
     ]} />`,
+	},
+	{
+		group: 'Fieldset',
+		name: 'Basic',
+		code: `	<Fieldset legend="What is your address?">
+    <Stack alignItems="flex-start" gap={1.5}>
+			<TextInput label="Street and number" required maxWidth="xl" />
+			<TextInput label="Suburb" required maxWidth="xl" />
+			<TextInput label="Country" required maxWidth="xl" />
+			<TextInput label="Postcode" required maxWidth="sm" />
+		</Stack>
+	</Fieldset>`,
 	},
 	{
 		group: 'Accordion',
@@ -316,6 +319,32 @@ items={[
       { href: '#main-nav', label: 'Skip to main navigation' },
     ]}
   />`,
+	},
+	{
+		group: 'InpageNav',
+		name: 'Basic',
+		code: `<InpageNav
+		title="Contents"
+		links={[
+			{ href: '#section-1', label: 'Section 1' },
+			{ href: '#section-2', label: 'Section 2' },
+		]}
+	/>`,
+	},
+	{
+		group: 'DirectionLink',
+		name: 'Basic',
+		code: `<DirectionLink href="#" direction="left">Back</DirectionLink>`,
+	},
+	{
+		group: 'CallToAction',
+		name: 'Link',
+		code: `<CallToActionLink href="#">Sign up</CallToActionLink>`,
+	},
+	{
+		group: 'CallToAction',
+		name: 'Button',
+		code: `<CallToActionButton onClick={console.log}>Sign up</CallToActionButton>`,
 	},
 ];
 

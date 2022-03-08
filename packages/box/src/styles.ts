@@ -114,7 +114,9 @@ type LayoutProps = Partial<{
 	display: ResponsiveProp<
 		'block' | 'flex' | 'inline' | 'inline-block' | 'inline-flex' | 'none'
 	>;
-	flexDirection: ResponsiveProp<'row' | 'column'>;
+	flexDirection: ResponsiveProp<
+		'row' | 'column' | 'row-reverse' | 'column-reverse'
+	>;
 	flexWrap: ResponsiveProp<'nowrap' | 'wrap' | 'wrap-reverse'>;
 	flexGrow: ResponsiveProp<number>;
 	flexShrink: ResponsiveProp<number>;

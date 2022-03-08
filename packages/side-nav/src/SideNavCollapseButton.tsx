@@ -1,11 +1,11 @@
 import { PropsWithChildren } from 'react';
 import { useSpring, animated } from 'react-spring';
 import { Flex } from '@ag.ds-next/box';
-import { Icon } from '@ag.ds-next/icon';
+import { ChevronDownIcon } from '@ag.ds-next/icon';
 import { tokens, usePrefersReducedMotion } from '@ag.ds-next/core';
 import { variantMap, SideNavVariant } from './utils';
 
-const AnimatedIcon = animated(Icon);
+const AnimatedIcon = animated(ChevronDownIcon);
 
 type SideNavCollapseButtonProps = PropsWithChildren<{
 	ariaControls: string;
@@ -35,8 +35,10 @@ export const SideNavCollapseButton = ({
 	return (
 		<Flex
 			as="button"
+			role="button"
 			aria-controls={ariaControls}
 			aria-expanded={isOpen}
+			aria-haspopup="menu"
 			rounded
 			background={background}
 			color="action"
@@ -57,7 +59,7 @@ export const SideNavCollapseButton = ({
 			}}
 		>
 			{children}
-			<AnimatedIcon icon="chevronDown" size={1} style={iconStyle} />
+			<AnimatedIcon size={1} style={iconStyle} weight="bold" />
 		</Flex>
 	);
 };

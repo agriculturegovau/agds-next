@@ -1,5 +1,31 @@
 # @ag.ds-next/header
 
+## 4.1.0
+
+### Minor Changes
+
+- 91528c5: Added badge
+
+### Patch Changes
+
+- ffa1b11: Ensured consistent API of `aria-label`
+- ffd5cba: Visual tweaks to Header Badge
+- c3a5ded: Improved the typescript types of components with children or extend default HTML elements
+- Updated dependencies [135bb87]
+- Updated dependencies [c16dbbe]
+- Updated dependencies [ffa1b11]
+- Updated dependencies [653709c]
+- Updated dependencies [7abc9d8]
+- Updated dependencies [bd36abb]
+- Updated dependencies [ffa1b11]
+- Updated dependencies [c3a5ded]
+  - @ag.ds-next/core@2.1.1
+  - @ag.ds-next/text@4.0.1
+  - @ag.ds-next/box@4.0.1
+  - @ag.ds-next/heading@4.0.1
+  - @ag.ds-next/search-box@2.0.1
+  - @ag.ds-next/columns@3.0.1
+
 ## 4.0.0
 
 ### Patch Changes

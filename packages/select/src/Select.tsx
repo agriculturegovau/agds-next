@@ -11,7 +11,7 @@ import {
 	globalPalette,
 	tokens,
 } from '@ag.ds-next/core';
-import { Icon } from '@ag.ds-next/icon';
+import { ChevronDownIcon } from '@ag.ds-next/icon';
 
 export type Option = {
 	label: string;
@@ -51,6 +51,7 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(
 			maxWidth,
 			options,
 			placeholder,
+			id,
 			...props
 		},
 		ref
@@ -64,16 +65,11 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(
 				message={message}
 				invalid={invalid}
 				valid={valid}
+				id={id}
 			>
 				{(allyProps) => (
 					<SelectContainer block={block} maxWidth={maxWidth}>
-						<select
-							ref={ref}
-							required={required}
-							css={styles}
-							{...allyProps}
-							{...props}
-						>
+						<select ref={ref} css={styles} {...allyProps} {...props}>
 							<SelectOptions options={options} placeholder={placeholder} />
 						</select>
 						<SelectIcon disabled={props.disabled} />
@@ -115,7 +111,7 @@ const SelectOptions = ({
 }) => {
 	return (
 		<>
-			{placeholder ? <option>{placeholder}</option> : null}
+			{placeholder ? <option value="">{placeholder}</option> : null}
 			{options.map((opt) => {
 				if ('options' in opt) {
 					return (
@@ -139,8 +135,8 @@ const SelectOptions = ({
 };
 
 const SelectIcon = ({ disabled }: { disabled?: boolean }) => (
-	<Icon
-		icon="chevronDown"
+	<ChevronDownIcon
+		weight="bold"
 		color="action"
 		css={{
 			position: 'absolute',

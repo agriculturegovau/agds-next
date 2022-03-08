@@ -19,6 +19,7 @@ export function findBestMatch(links: NavListLink[], activePath?: string) {
 		if (!link.href || link.href === activePath) return link.href;
 		if (
 			activePath?.startsWith(link.href) &&
+			link.href !== '/' &&
 			link.href.length > bestMatch.length
 		) {
 			bestMatch = link.href;

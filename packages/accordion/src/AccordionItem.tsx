@@ -7,7 +7,6 @@ import { AccordionTitle, AccordionTitleProps } from './AccordionTitle';
 import { AccordionBody } from './AccordionBody';
 
 type AccordionItemProps = PropsWithChildren<{
-	id?: string;
 	title: AccordionTitleProps['children'];
 	titleHeadingTag?: AccordionTitleProps['tag'];
 	isInitiallyOpen?: boolean;
@@ -15,11 +14,11 @@ type AccordionItemProps = PropsWithChildren<{
 	onToggle?: () => void;
 }>;
 
-export const useAccordionItemIds = (initialId?: string | undefined) => {
-	const id = useId(initialId);
+export const useAccordionItemIds = () => {
+	const autoId = useId();
 	return {
-		titleId: `${id}-title`,
-		bodyId: `${id}-default`,
+		titleId: `accordion-${autoId}-title`,
+		bodyId: `accordion-${autoId}-body`,
 	};
 };
 
@@ -30,9 +29,8 @@ export const AccordionItem = ({
 	isInitiallyOpen = false,
 	isOpen: isOpenProp,
 	onToggle: onToggleProp,
-	...props
 }: AccordionItemProps) => {
-	const { titleId, bodyId } = useAccordionItemIds(props.id);
+	const { titleId, bodyId } = useAccordionItemIds();
 
 	const [isOpenState, onToggleState] = useToggleState(
 		isInitiallyOpen,
