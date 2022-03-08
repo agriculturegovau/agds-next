@@ -14,7 +14,7 @@ export default {
 
 export const OnLight: ComponentStory<typeof Callout> = (args) => (
 	<Callout {...args}>
-		<Text>Description of the callout.</Text>
+		<Text as="p">Description of the callout.</Text>
 	</Callout>
 );
 OnLight.args = {
@@ -24,7 +24,7 @@ OnLight.args = {
 export const OnDark: ComponentStory<typeof Callout> = (args) => (
 	<Box palette="dark" background="body" padding={1.5}>
 		<Callout {...args}>
-			<Text>Description of the callout</Text>
+			<Text as="p">Description of the callout</Text>
 		</Callout>
 	</Box>
 );

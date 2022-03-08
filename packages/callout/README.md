@@ -10,7 +10,7 @@ Use callout to notify and alert users of important snippets of information.
 
 ```jsx live
 <Callout title="Callout heading">
-	<Text>Description of the callout.</Text>
+	<Text as="p">Description of the callout.</Text>
 </Callout>
 ```
 
@@ -23,7 +23,7 @@ A callout with a heading that can be read by screen readers. Markup for the titl
 	<VisuallyHidden>
 		<h2>Title of the callout</h2>
 	</VisuallyHidden>
-	<Text>Description of the callout</Text>
+	<Text as="p">Description of the callout</Text>
 </Callout>
 ```
 
