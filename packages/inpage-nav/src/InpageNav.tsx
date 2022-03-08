@@ -11,7 +11,7 @@ export type InpageNavProps = {
 };
 
 export const InpageNav = ({
-	'aria-label': ariaLabel = 'In page',
+	'aria-label': ariaLabel = 'in page',
 	links,
 	title,
 }: InpageNavProps) => (
