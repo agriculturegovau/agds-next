@@ -14,7 +14,6 @@ export const Tag = (props: TagProps) => {
 			rounded
 			paddingX={0.5}
 			fontSize="sm"
-			lineHeight="default"
 			color={href ? 'action' : 'text'}
 			{...props}
 			css={{
