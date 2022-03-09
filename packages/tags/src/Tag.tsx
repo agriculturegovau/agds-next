@@ -1,6 +1,6 @@
 import { Box } from '@ag.ds-next/box';
 import { TextLink } from '@ag.ds-next/text';
-import { boxPalette, LinkProps } from '@ag.ds-next/core';
+import { LinkProps } from '@ag.ds-next/core';
 
 export type TagProps = Omit<LinkProps, 'color'>;
 
@@ -16,9 +16,6 @@ export const Tag = (props: TagProps) => {
 			fontSize="sm"
 			color={href ? 'action' : 'text'}
 			{...props}
-			css={{
-				borderColor: boxPalette.foregroundAction,
-			}}
 		>
 			{children}
 		</Box>
