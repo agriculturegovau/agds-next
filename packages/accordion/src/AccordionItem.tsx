@@ -1,18 +1,10 @@
-import { PropsWithChildren, ReactNode, useCallback } from 'react';
+import React, { PropsWithChildren, ReactNode, useCallback } from 'react';
 import { Box } from '@ag.ds-next/box';
 import { useToggleState } from '@ag.ds-next/core';
 import { useId } from '@reach/auto-id';
 
 import { AccordionTitle, AccordionTitleProps } from './AccordionTitle';
 import { AccordionBody } from './AccordionBody';
-
-type AccordionItemProps = PropsWithChildren<{
-	title: AccordionTitleProps['children'];
-	titleHeadingTag?: AccordionTitleProps['tag'];
-	isInitiallyOpen?: boolean;
-	isOpen?: boolean;
-	onToggle?: () => void;
-}>;
 
 export const useAccordionItemIds = () => {
 	const autoId = useId();
@@ -21,6 +13,14 @@ export const useAccordionItemIds = () => {
 		bodyId: `accordion-${autoId}-body`,
 	};
 };
+
+type AccordionItemProps = PropsWithChildren<{
+	title: AccordionTitleProps['children'];
+	titleHeadingTag?: AccordionTitleProps['tag'];
+	isInitiallyOpen?: boolean;
+	isOpen?: boolean;
+	onToggle?: () => void;
+}>;
 
 export const AccordionItem = ({
 	children,
@@ -66,4 +66,4 @@ export type AccordionItemContentProps = { children: ReactNode };
 
 export const AccordionItemContent = ({
 	children,
-}: AccordionItemContentProps) => <Box padding={1}>{children}</Box>;
+}: AccordionItemContentProps) => <Box paddingBottom={1}>{children}</Box>;
