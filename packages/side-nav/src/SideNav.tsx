@@ -45,7 +45,7 @@ export function SideNav({
 	const { bodyId, buttonId, navId, titleId } = useSideNavIds();
 	const { hover } = variantMap[variant];
 
-	const { width = 0 } = useWindowSize();
+	const { windowWidth } = useWindowSize();
 	const ref = useRef<HTMLDivElement>(null);
 	const [isOpen, onToggle] = useToggleState(false, true);
 	const { height } = useElementSize(ref);
@@ -58,10 +58,10 @@ export function SideNav({
 	});
 
 	const bodyAriaHidden = useMemo(() => {
-		if (width === undefined) return;
-		if (width >= tokens.breakpoint.md) return;
+		if (windowWidth === undefined) return;
+		if (windowWidth >= tokens.breakpoint.md) return;
 		return !isOpen;
-	}, [width, isOpen]);
+	}, [windowWidth, isOpen]);
 
 	return (
 		<SideNavContainer aria-label={ariaLabel} variant={variant}>
