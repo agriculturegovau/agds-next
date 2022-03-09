@@ -196,7 +196,7 @@ const KitchenSink = () => {
 						/>
 						<TextInput
 							label="Username"
-							value="snoopdogg_"
+							value="example"
 							valid
 							message="This username is available"
 						/>
@@ -232,7 +232,7 @@ const KitchenSink = () => {
 	);
 };
 
-export const Light = () => {
+export const OnLight = () => {
 	return (
 		<Box palette="light" background="body">
 			<KitchenSink />
@@ -240,7 +240,7 @@ export const Light = () => {
 	);
 };
 
-export const Dark = () => {
+export const OnDark = () => {
 	return (
 		<Box palette="dark" background="body">
 			<KitchenSink />
