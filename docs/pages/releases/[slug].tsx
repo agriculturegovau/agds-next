@@ -1,7 +1,7 @@
 import { GetStaticProps, InferGetStaticPropsType } from 'next';
 import { MDXRemote } from 'next-mdx-remote';
 import { H1 } from '@ag.ds-next/heading';
-import { Box, Flex } from '@ag.ds-next/box';
+import { Flex } from '@ag.ds-next/box';
 import { Body } from '@ag.ds-next/body';
 
 import {
@@ -16,6 +16,7 @@ import { mdxComponents } from '../../components/utils';
 import { AppLayout } from '../../components/AppLayout';
 import { DocumentTitle } from '../../components/DocumentTitle';
 import { PageLayout } from '../../components/PageLayout';
+import { Tag } from '@ag.ds-next/tags';
 
 export default function Releases({
 	release,
@@ -42,18 +43,7 @@ export default function Releases({
 						alignItems="flex-start"
 					>
 						<H1>{release.data.title}</H1>
-						{release.data.type && (
-							<Box
-								background="shade"
-								paddingX={0.25}
-								border
-								rounded
-								fontSize="xs"
-								display="inline-block"
-							>
-								{release.data.type}
-							</Box>
-						)}
+						{release.data.type && <Tag>{release.data.type}</Tag>}
 						<Body>
 							<MDXRemote {...release.source} components={mdxComponents} />
 						</Body>

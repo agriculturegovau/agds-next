@@ -93,3 +93,4 @@ export {
 	InpageNavTitle,
 } from '@ag.ds-next/inpage-nav';
 export { DirectionLink, DirectionButton } from '@ag.ds-next/direction-link';
+export { Tags } from '@ag.ds-next/tags';

@@ -346,6 +346,18 @@ items={[
 		name: 'Button',
 		code: `<CallToActionButton onClick={console.log}>Sign up</CallToActionButton>`,
 	},
+	{
+		group: 'Tags',
+		name: 'Basic',
+		code: `<Tags
+    heading={<Text as="h2" fontWeight="bold">Tags:</Text>}
+    items={[
+      { href: '#', label: 'Foo' },
+      { href: '#', label: 'Bar' },
+      { href: '#', label: 'Baz' },
+    ]}
+    />`,
+	},
 ];
 
 export default snippits;
