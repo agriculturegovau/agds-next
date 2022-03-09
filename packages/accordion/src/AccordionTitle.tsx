@@ -30,22 +30,22 @@ export const AccordionTitle = ({
 	});
 
 	return (
-		<Box as={tag} borderBottom={isOpen}>
+		<Box as={tag}>
 			<Flex
 				as="button"
+				id={id}
 				aria-controls={ariaControls}
 				aria-expanded={isOpen}
-				color="action"
 				onClick={onToggle}
+				color="action"
 				fontSize="md"
 				lineHeight="heading"
-				id={id}
 				fontWeight="bold"
-				background="shade"
-				padding={1}
-				width="100%"
+				background="body"
+				paddingY={1}
 				justifyContent="space-between"
 				alignItems="center"
+				width="100%"
 				link
 				focus
 			>
