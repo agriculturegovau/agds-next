@@ -3,6 +3,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { Button, ButtonLink } from './Button';
 import { Flex, Stack } from '@ag.ds-next/box';
 import { Text } from '@ag.ds-next/text';
+import { ExternalLinkIcon } from '@ag.ds-next/icon';
 
 export default {
 	title: 'forms/Button',
@@ -66,11 +67,28 @@ export const Size: ComponentStory<typeof Button> = (args) => (
 );
 
 export const ButtonLinkStory: ComponentStory<typeof ButtonLink> = (args) => (
-	<ButtonLink {...args}>Primary</ButtonLink>
+	<ButtonLink {...args} />
 );
 ButtonLinkStory.storyName = 'ButtonLink';
 ButtonLinkStory.args = {
+	children: 'Button Link',
 	block: false,
 	href: '#',
 	variant: 'primary',
+};
+
+export const ButtonWithIcon: ComponentStory<typeof Button> = (args) => (
+	<Button {...args} />
+);
+ButtonWithIcon.args = {
+	children: 'Button',
+	icon: ExternalLinkIcon,
+};
+
+export const ButtonLinkWithIcon: ComponentStory<typeof ButtonLink> = (args) => (
+	<ButtonLink {...args} />
+);
+ButtonLinkWithIcon.args = {
+	children: 'Button link with icon',
+	icon: ExternalLinkIcon,
 };

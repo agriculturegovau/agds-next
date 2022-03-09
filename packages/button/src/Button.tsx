@@ -2,12 +2,15 @@ import React, {
 	forwardRef,
 	ButtonHTMLAttributes,
 	AnchorHTMLAttributes,
+	ComponentType,
 } from 'react';
 import { useLinkComponent } from '@ag.ds-next/core';
-import { buttonStyles, ButtonSize, ButtonVariant } from './styles';
+import { IconProps } from '@ag.ds-next/icon';
+import { buttonStyles, ButtonSize, ButtonVariant, iconSize } from './styles';
 
 export type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
 	block?: boolean;
+	icon?: ComponentType<IconProps>;
 	loading?: boolean;
 	size?: ButtonSize;
 	variant?: ButtonVariant;
@@ -15,13 +18,23 @@ export type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
 
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 	function Button(
-		{ block, children, disabled, size, loading, variant, ...props },
+		{
+			block = false,
+			icon: Icon,
+			children,
+			disabled,
+			size = 'md',
+			loading = false,
+			variant = 'primary',
+			...props
+		},
 		ref
 	) {
 		const styles = buttonStyles({ block, size, variant });
 		return (
 			<button ref={ref} disabled={disabled} css={styles} {...props}>
 				{loading ? 'Loading...' : children}
+				{Icon ? <Icon size={iconSize[size]} weight="regular" /> : null}
 			</button>
 		);
 	}
@@ -29,15 +42,17 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 
 export type ButtonLinkProps = AnchorHTMLAttributes<HTMLAnchorElement> & {
 	block?: boolean;
+	icon?: ComponentType<IconProps>;
 	size?: ButtonSize;
 	variant?: ButtonVariant;
 };
 
 export const ButtonLink = ({
 	children,
-	block,
-	size,
-	variant,
+	block = false,
+	icon: Icon,
+	size = 'md',
+	variant = 'primary',
 	...props
 }: ButtonLinkProps) => {
 	const styles = buttonStyles({ block, size, variant });
@@ -45,6 +60,7 @@ export const ButtonLink = ({
 	return (
 		<Link css={styles} {...props}>
 			{children}
+			{Icon ? <Icon size={iconSize[size]} /> : null}
 		</Link>
 	);
 };

@@ -1,3 +1,5 @@
+import type { IconProps as _IconProps } from './Icon';
+
 export { AlertIcon } from './icons/AlertIcon';
 export { AlertFilledIcon } from './icons/AlertFilledIcon';
 export { ArrowUpIcon } from './icons/ArrowUpIcon';
@@ -18,3 +20,5 @@ export { SearchIcon } from './icons/SearchIcon';
 export { SuccessIcon } from './icons/SuccessIcon';
 export { SuccessFilledIcon } from './icons/SuccessFilledIcon';
 export { ProgressTodoIcon } from './icons/ProgressTodoIcon';
+
+export type IconProps = _IconProps;
