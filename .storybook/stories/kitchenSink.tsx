@@ -54,7 +54,11 @@ const sideNavItems = [
 	{ href: '#five', label: 'Why you may receive a tax bill' },
 ];
 
-const KitchenSink = () => {
+const KitchenSink = ({
+	sideNavVariant,
+}: {
+	sideNavVariant: 'light' | 'dark';
+}) => {
 	return (
 		<Content>
 			<Columns>
@@ -72,6 +76,7 @@ const KitchenSink = () => {
 							collapseTitle="In this section"
 							items={sideNavItems}
 							activePath="#in-detail/record-keeping/incorrect-amounts"
+							variant={sideNavVariant}
 						/>
 						<ProgressIndicator
 							items={[
@@ -235,7 +240,7 @@ const KitchenSink = () => {
 export const OnLight = () => {
 	return (
 		<Box palette="light" background="body">
-			<KitchenSink />
+			<KitchenSink sideNavVariant="light" />
 		</Box>
 	);
 };
@@ -243,7 +248,7 @@ export const OnLight = () => {
 export const OnDark = () => {
 	return (
 		<Box palette="dark" background="body">
-			<KitchenSink />
+			<KitchenSink sideNavVariant="dark" />
 		</Box>
 	);
 };
