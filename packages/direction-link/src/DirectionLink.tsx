@@ -72,9 +72,9 @@ const DirectionLinkBase = ({
 			focus
 			{...props}
 		>
-			{iconLeft ? <Icon size="sm" weight="bold" /> : null}
+			{iconLeft ? <Icon size="sm" /> : null}
 			{children}
-			{!iconLeft ? <Icon size="sm" weight="bold" /> : null}
+			{!iconLeft ? <Icon size="sm" /> : null}
 		</Flex>
 	);
 };
