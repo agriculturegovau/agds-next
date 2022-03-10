@@ -56,7 +56,7 @@ Size is another prop that allows adjustment of visual weight. The medium button 
 
 ### Disabled
 
-A button that can’t be clicked and doesn’t react to hover. A disabled button is typically greyed out to indicate to users that they cannot undertake the action associated with it. This is usually for page logic reasons.
+A button that can’t be interacted with. A disabled button is typically greyed out to indicate to users that they cannot undertake the action associated with it. This is usually for page logic reasons.
 
 ```jsx live
 <Flex gap={1}>
@@ -80,20 +80,27 @@ A block-level button uses 100% of the available width of the container or parent
 <Button block>Submit</Button>
 ```
 
-### ButtonLink
+### Icons
 
-For situations where you need something that has the visual weight of a Button, but the functionality of a link, you can use ButtonLink!
+The `iconAfter` and `iconBefore` props can be used to add system icons to buttons.
 
-ButtonLink adopts the Link component from your chosen router framework, which you can set in the Core component.
+```jsx live
+<ButtonLink
+	iconAfter={ExternalLinkIcon}
+	href="https://steelthreads.github.io/agds-next"
+	target="_blank"
+	rel="noopener noreferrer"
+>
+	Open external link
+</ButtonLink>
+```
+
+## Buttons links
+
+For situations where you need something that has the visual weight of a Button, but the functionality of a link, you can use `ButtonLink`!
+
+`ButtonLink` adopts the `Link` component from your chosen router framework, which you can set in the `Core` component.
 
 ```jsx live
 <ButtonLink href="/sign-in">Sign in</ButtonLink>
-```
-
-### Icon
-
-Is provided to support universial icons in buttons.
-
-```jsx live
-<ButtonLink href="/sign-in" iconRight={ChevronRighticon}>Sign in</Button>
 ```

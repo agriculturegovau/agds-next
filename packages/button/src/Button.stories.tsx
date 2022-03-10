@@ -81,14 +81,18 @@ export const ButtonWithIcon: ComponentStory<typeof Button> = (args) => (
 	<Button {...args} />
 );
 ButtonWithIcon.args = {
-	children: 'Button',
-	icon: ExternalLinkIcon,
+	children: 'Primary',
+	iconAfter: ExternalLinkIcon,
 };
 
 export const ButtonLinkWithIcon: ComponentStory<typeof ButtonLink> = (args) => (
 	<ButtonLink {...args} />
 );
+ButtonLinkWithIcon.storyName = 'ButtonLink With Icon';
 ButtonLinkWithIcon.args = {
-	children: 'Button link with icon',
-	icon: ExternalLinkIcon,
+	children: 'Open external link',
+	href: 'https://steelthreads.github.io/agds-next',
+	target: '_blank',
+	rel: 'noopener noreferrer',
+	iconAfter: ExternalLinkIcon,
 };

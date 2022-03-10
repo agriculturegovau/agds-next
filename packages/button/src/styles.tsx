@@ -87,8 +87,8 @@ export function buttonStyles({
 
 		appearance: 'none',
 		display: block ? 'flex' : 'inline-flex',
-		justifyContent: 'space-between',
 		alignItems: 'center',
+		justifyContent: 'center',
 		borderWidth: tokens.borderWidth.lg,
 		borderStyle: 'solid',
 		borderRadius: tokens.borderRadius,

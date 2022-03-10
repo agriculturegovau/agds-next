@@ -10,7 +10,8 @@ import { buttonStyles, ButtonSize, ButtonVariant, iconSize } from './styles';
 
 export type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
 	block?: boolean;
-	icon?: ComponentType<IconProps>;
+	iconBefore?: ComponentType<IconProps>;
+	iconAfter?: ComponentType<IconProps>;
 	loading?: boolean;
 	size?: ButtonSize;
 	variant?: ButtonVariant;
@@ -20,7 +21,8 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 	function Button(
 		{
 			block = false,
-			icon: Icon,
+			iconBefore: IconBefore,
+			iconAfter: IconAfter,
 			children,
 			disabled,
 			size = 'md',
@@ -33,8 +35,13 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 		const styles = buttonStyles({ block, size, variant });
 		return (
 			<button ref={ref} disabled={disabled} css={styles} {...props}>
+				{IconBefore ? (
+					<IconBefore size={iconSize[size]} weight="regular" />
+				) : null}
 				{loading ? 'Loading...' : children}
-				{Icon ? <Icon size={iconSize[size]} weight="regular" /> : null}
+				{IconAfter ? (
+					<IconAfter size={iconSize[size]} weight="regular" />
+				) : null}
 			</button>
 		);
 	}
@@ -42,7 +49,8 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 
 export type ButtonLinkProps = AnchorHTMLAttributes<HTMLAnchorElement> & {
 	block?: boolean;
-	icon?: ComponentType<IconProps>;
+	iconBefore?: ComponentType<IconProps>;
+	iconAfter?: ComponentType<IconProps>;
 	size?: ButtonSize;
 	variant?: ButtonVariant;
 };
@@ -50,7 +58,8 @@ export type ButtonLinkProps = AnchorHTMLAttributes<HTMLAnchorElement> & {
 export const ButtonLink = ({
 	children,
 	block = false,
-	icon: Icon,
+	iconBefore: IconBefore,
+	iconAfter: IconAfter,
 	size = 'md',
 	variant = 'primary',
 	...props
@@ -59,8 +68,11 @@ export const ButtonLink = ({
 	const Link = useLinkComponent();
 	return (
 		<Link css={styles} {...props}>
+			{IconBefore ? (
+				<IconBefore size={iconSize[size]} weight="regular" />
+			) : null}
 			{children}
-			{Icon ? <Icon size={iconSize[size]} /> : null}
+			{IconAfter ? <IconAfter size={iconSize[size]} weight="regular" /> : null}
 		</Link>
 	);
 };
