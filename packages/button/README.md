@@ -89,3 +89,11 @@ ButtonLink adopts the Link component from your chosen router framework, which yo
 ```jsx live
 <ButtonLink href="/sign-in">Sign in</ButtonLink>
 ```
+
+### Icon
+
+Is provided to support universial icons in buttons.
+
+```jsx live
+<ButtonLink href="/sign-in" iconRight={ChevronRighticon}>Sign in</Button>
+```

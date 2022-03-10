@@ -69,7 +69,7 @@ export type ButtonSize = keyof typeof sizes;
 
 export const iconSize: Record<ButtonSize, Spacing> = {
 	sm: 1,
-	md: 1.25,
+	md: 1.5,
 };
 
 export function buttonStyles({
