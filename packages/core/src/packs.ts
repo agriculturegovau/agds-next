@@ -36,8 +36,14 @@ const outline = {
 	outlineOffset: 0.5 * tokens.unit,
 };
 
+const underline = {
+	textDecoration: 'underline',
+	textDecorationSkipInk: 'auto',
+} as const;
+
 export const packs = {
-	outline,
 	control,
 	input,
+	outline,
+	underline,
 };
