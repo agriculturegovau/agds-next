@@ -66,4 +66,8 @@ export type AccordionItemContentProps = { children: ReactNode };
 
 export const AccordionItemContent = ({
 	children,
-}: AccordionItemContentProps) => <Box paddingBottom={1}>{children}</Box>;
+}: AccordionItemContentProps) => (
+	<Box paddingBottom={1.5} paddingTop={0.5}>
+		{children}
+	</Box>
+);

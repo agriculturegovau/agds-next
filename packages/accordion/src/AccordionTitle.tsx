@@ -1,7 +1,7 @@
 import { animated, useSpring } from 'react-spring';
 import { Box, Flex } from '@ag.ds-next/box';
 import { ChevronDownIcon } from '@ag.ds-next/icon';
-import { usePrefersReducedMotion } from '@ag.ds-next/core';
+import { boxPalette, usePrefersReducedMotion } from '@ag.ds-next/core';
 
 export type AccordionTitleProps = {
 	children: string;
@@ -48,6 +48,11 @@ export const AccordionTitle = ({
 				width="100%"
 				link
 				focus
+				css={{
+					'&:hover': {
+						backgroundColor: boxPalette.backgroundShade,
+					},
+				}}
 			>
 				{children}
 				<AnimatedIcon weight="bold" size={1} style={style} />
