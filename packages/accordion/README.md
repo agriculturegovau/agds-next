@@ -4,6 +4,8 @@ description: Accordions help users see only the content they need, by expanding 
 group: Layout
 ---
 
+A singular method of expanding and collapsing a piece of content with a title.
+
 ```jsx live
 <Accordion>
 	<AccordionItem title="Accordion">

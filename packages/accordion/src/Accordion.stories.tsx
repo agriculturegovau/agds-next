@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Story, ComponentMeta } from '@storybook/react';
-import { Box, Flex, Stack } from '@ag.ds-next/box';
+import { Box, Stack } from '@ag.ds-next/box';
 import { useToggleState } from '@ag.ds-next/core';
 import { Body } from '@ag.ds-next/body';
 import { Button } from '@ag.ds-next/button';
@@ -125,7 +125,9 @@ export const Controlled = () => {
 	const [isOpen, onToggle] = useToggleState(false, true);
 	return (
 		<Stack gap={1} alignItems="flex-start">
-			<Button onClick={onToggle}>{isOpen ? 'Close' : 'Open'}</Button>
+			<Button variant="tertiary" onClick={onToggle} aria-expanded={isOpen}>
+				{isOpen ? 'Close section' : 'Open section'}
+			</Button>
 			<Accordion>
 				<AccordionItem
 					isOpen={isOpen}
@@ -158,16 +160,15 @@ export const Controlled = () => {
 	);
 };
 
-type AccordionControlledGroupExampleAccordionIndex = 1 | 2 | 3;
+const controlledGroupExampleLength = 3;
+type ControlledGroupAccordion = 1 | 2 | 3;
 
 const AccordionControlledGroupExample = ({
 	openAccordions,
 	toggle,
 }: {
-	openAccordions: AccordionControlledGroupExampleAccordionIndex[];
-	toggle: (
-		accordionIndex: AccordionControlledGroupExampleAccordionIndex
-	) => void;
+	openAccordions: ControlledGroupAccordion[];
+	toggle: (accordionIndex: ControlledGroupAccordion) => void;
 }) => {
 	return (
 		<Accordion>
@@ -180,7 +181,6 @@ const AccordionControlledGroupExample = ({
 					<Text>This is some text inside an Accordion</Text>
 				</AccordionItemContent>
 			</AccordionItem>
-
 			<AccordionItem
 				title="Accordion 2"
 				isOpen={openAccordions.includes(2)}
@@ -235,12 +235,13 @@ const AccordionControlledGroupExample = ({
 
 export const ControlledGroup = () => {
 	const [openAccordions, setOpenAccordions] = useState<
-		AccordionControlledGroupExampleAccordionIndex[]
+		ControlledGroupAccordion[]
 	>([1]);
 
 	const openAll = () => setOpenAccordions([1, 2, 3]);
 	const closeAll = () => setOpenAccordions([]);
-	const toggle = (item: AccordionControlledGroupExampleAccordionIndex) => {
+
+	const toggle = (item: ControlledGroupAccordion) => {
 		setOpenAccordions((openAccordions) => {
 			if (openAccordions.includes(item)) {
 				return openAccordions.filter((acc) => acc !== item);
@@ -249,54 +250,18 @@ export const ControlledGroup = () => {
 		});
 	};
 
-	const isAnyOpen = openAccordions.length;
+	const isAllOpen = openAccordions.length === controlledGroupExampleLength;
 
 	return (
 		<Stack gap={1} alignItems="flex-start">
 			<Button
 				size="sm"
 				variant="tertiary"
-				onClick={isAnyOpen ? closeAll : openAll}
+				onClick={isAllOpen ? closeAll : openAll}
+				aria-expanded={isAllOpen}
 			>
-				{isAnyOpen ? 'Close All' : 'Open'}
+				{isAllOpen ? 'Hide all sections' : 'Show all sections'}
 			</Button>
-
-			<AccordionControlledGroupExample
-				openAccordions={openAccordions}
-				toggle={toggle}
-			/>
-		</Stack>
-	);
-};
-
-export const ExpandAll = () => {
-	const [openAccordions, setOpenAccordions] = useState<
-		AccordionControlledGroupExampleAccordionIndex[]
-	>([1]);
-
-	const openAll = () => setOpenAccordions([1, 2, 3]);
-	const closeAll = () => setOpenAccordions([]);
-	const toggle = (item: AccordionControlledGroupExampleAccordionIndex) => {
-		setOpenAccordions((openAccordions) => {
-			if (openAccordions.includes(item)) {
-				return openAccordions.filter((acc) => acc !== item);
-			}
-			return [...openAccordions, item];
-		});
-	};
-
-	return (
-		<Stack gap={1} alignItems="flex-start">
-			<Flex gap={1} flexDirection="row">
-				<Button size="sm" variant="tertiary" onClick={openAll}>
-					Open All
-				</Button>
-
-				<Button size="sm" variant="tertiary" onClick={closeAll}>
-					Close All
-				</Button>
-			</Flex>
-
 			<AccordionControlledGroupExample
 				openAccordions={openAccordions}
 				toggle={toggle}
