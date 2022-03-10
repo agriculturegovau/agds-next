@@ -60,6 +60,9 @@ export const createIcon = (children: ReactNode, name: string) => {
 					strokeLinejoin: 'round',
 					strokeLinecap: 'round',
 					strokeWidth: weight === 'bold' ? 3 : 2,
+					'& path, & circle, & line': {
+						vectorEffect: 'non-scaling-stroke',
+					},
 				})}
 				role="img"
 				style={style}
