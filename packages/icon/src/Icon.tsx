@@ -3,7 +3,6 @@ import {
 	mapSpacing,
 	mapResponsiveProp,
 	mq,
-	Spacing,
 } from '@ag.ds-next/core';
 import { foregroundColorMap } from '@ag.ds-next/box';
 import { ReactNode, SVGAttributes } from 'react';
@@ -24,10 +23,18 @@ export const iconColors = {
 	...foregroundColorMap,
 	border: boxPalette.border,
 };
+
 type IconColor = keyof typeof iconColors;
 
+const iconSizes = {
+	sm: 1,
+	md: 1.5,
+} as const;
+
+type IconSize = keyof typeof iconSizes;
+
 export type IconProps = SvgProps & {
-	size?: Spacing;
+	size?: IconSize;
 	color?: IconColor;
 	weight?: 'regular' | 'bold';
 };
@@ -35,13 +42,12 @@ export type IconProps = SvgProps & {
 export const createIcon = (children: ReactNode, name: string) => {
 	const Icon = ({
 		className,
-		size = 1,
+		size = 'md',
 		color,
 		weight = 'regular',
 		style,
 	}: IconProps) => {
-		const resolvedSize = mapSpacing(size);
-
+		const resolvedSize = mapSpacing(iconSizes[size]);
 		return (
 			<svg
 				aria-hidden="true"
@@ -60,9 +66,6 @@ export const createIcon = (children: ReactNode, name: string) => {
 					strokeLinejoin: 'round',
 					strokeLinecap: 'round',
 					strokeWidth: weight === 'bold' ? 3 : 2,
-					'& path, & circle, & line': {
-						vectorEffect: 'non-scaling-stroke',
-					},
 				})}
 				role="img"
 				style={style}
