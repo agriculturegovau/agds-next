@@ -160,7 +160,7 @@ export const Controlled = () => {
 	);
 };
 
-const controlledGroupExampleLength = 3;
+const controlledGroupAccordionLength = 3;
 type ControlledGroupAccordion = 1 | 2 | 3;
 
 const AccordionControlledGroupExample = ({
@@ -250,7 +250,7 @@ export const ControlledGroup = () => {
 		});
 	};
 
-	const isAllOpen = openAccordions.length === controlledGroupExampleLength;
+	const isAllOpen = openAccordions.length === controlledGroupAccordionLength;
 
 	return (
 		<Stack gap={1} alignItems="flex-start">
