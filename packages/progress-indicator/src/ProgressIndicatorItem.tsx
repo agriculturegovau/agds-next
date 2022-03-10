@@ -6,7 +6,7 @@ import {
 	ProgressDoneIcon,
 	ProgressTodoIcon,
 } from '@ag.ds-next/icon';
-import { boxPalette, LinkProps } from '@ag.ds-next/core';
+import { boxPalette, LinkProps, packs } from '@ag.ds-next/core';
 
 export type ProgressIndicatorItemStatus = 'doing' | 'todo' | 'done';
 
@@ -79,8 +79,7 @@ const ProgressIndicatorItem = ({
 					borderLeftColor: active ? boxPalette.foregroundAction : 'transparent',
 					textDecoration: 'none',
 					'&:hover': {
-						textDecoration: 'underline',
-						textDecorationSkipInk: 'auto',
+						...packs.underline,
 						backgroundColor: boxPalette.backgroundShade,
 					},
 				}}
