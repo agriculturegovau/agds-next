@@ -79,6 +79,8 @@ const ProgressIndicatorItem = ({
 					borderLeftColor: active ? boxPalette.foregroundAction : 'transparent',
 					textDecoration: 'none',
 					'&:hover': {
+						textDecoration: 'underline',
+						textDecorationSkipInk: 'auto',
 						backgroundColor: boxPalette.backgroundShade,
 					},
 				}}

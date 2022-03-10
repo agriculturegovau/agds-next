@@ -279,9 +279,8 @@ function paddingStyles({
 
 type LinkProps = Partial<{ link: boolean }>;
 export const linkStyles = {
+	...packs.underline,
 	color: boxPalette.foregroundAction,
-	textDecoration: 'underline',
-	textDecorationSkip: 'auto',
 	cursor: 'pointer',
 
 	'&:hover': {

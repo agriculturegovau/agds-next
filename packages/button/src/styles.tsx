@@ -11,7 +11,7 @@ const variants = {
 			background: boxPalette.foregroundText,
 			borderColor: boxPalette.foregroundText,
 			color: boxPalette.backgroundBody,
-			textDecoration: 'underline',
+			...packs.underline,
 		},
 	},
 	secondary: {
@@ -24,14 +24,14 @@ const variants = {
 			background: 'transparent',
 			borderColor: boxPalette.foregroundText,
 			color: boxPalette.foregroundText,
-			textDecoration: 'underline',
+			...packs.underline,
 		},
 	},
 	tertiary: {
 		background: 'transparent',
 		borderColor: 'transparent',
 		color: boxPalette.foregroundAction,
-		textDecoration: 'underline',
+		...packs.underline,
 
 		'&:not(:disabled):hover': {
 			background: 'transparent',
