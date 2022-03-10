@@ -27,7 +27,7 @@ export const OnLight: ComponentStory<typeof Card> = (args) => (
 				</Heading>
 				<CardLink href="#">
 					Linking out
-					<ChevronRightIcon weight="bold" size={1} />
+					<ChevronRightIcon weight="bold" size="sm" />
 				</CardLink>
 			</CardInner>
 		</Card>
@@ -44,7 +44,7 @@ export const OnDark: ComponentStory<typeof Card> = (args) => (
 					</Heading>
 					<CardLink href="#">
 						Linking out
-						<ChevronRightIcon weight="bold" size={1} />
+						<ChevronRightIcon weight="bold" size="sm" />
 					</CardLink>
 				</CardInner>
 			</Card>
@@ -79,7 +79,7 @@ export const Link: ComponentStory<typeof Card> = (args) => (
 				</Heading>
 				<CardLink href="#">
 					Linking out
-					<ChevronRightIcon weight="bold" size={1} />
+					<ChevronRightIcon weight="bold" size="sm" />
 				</CardLink>
 			</CardInner>
 		</Card>

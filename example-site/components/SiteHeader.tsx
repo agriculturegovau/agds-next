@@ -32,7 +32,7 @@ export const SiteHeader = () => {
 					<MainNavLink
 						label="Sign in"
 						href="/form-sign-in"
-						icon={<AvatarIcon size={1.5} />}
+						icon={<AvatarIcon size="md" />}
 					/>
 				}
 			/>

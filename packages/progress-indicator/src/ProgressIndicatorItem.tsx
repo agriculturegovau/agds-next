@@ -85,7 +85,7 @@ const ProgressIndicatorItem = ({
 				}}
 				{...props}
 			>
-				<Icon size={1.5} color="action" />
+				<Icon size="md" color="action" />
 				<Flex flexDirection="column" gap={0}>
 					<Text color="muted" fontSize="xs" lineHeight="nospace">
 						{statusLabelMap[status]}
