@@ -1,10 +1,4 @@
-import {
-	packs,
-	boxPalette,
-	tokens,
-	mapSpacing,
-	Spacing,
-} from '@ag.ds-next/core';
+import { packs, boxPalette, tokens, mapSpacing } from '@ag.ds-next/core';
 
 const variants = {
 	primary: {
@@ -67,10 +61,10 @@ const sizes = {
 
 export type ButtonSize = keyof typeof sizes;
 
-export const iconSize: Record<ButtonSize, Spacing> = {
-	sm: 1,
-	md: 1.5,
-};
+export const iconSize = {
+	sm: 'sm',
+	md: 'md',
+} as const;
 
 export function buttonStyles({
 	block,
