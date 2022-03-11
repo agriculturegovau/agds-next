@@ -21,7 +21,7 @@ export const themeVars = {
 	darkBackgroundBodyAlt: '--agds-dark-background-body-alt',
 	darkBackgroundShadeAlt: '--agds-dark-background-shade-alt',
 	darkBorder: '--agds-dark-border',
-	darkBorderMuted: '--agds-light-border-muted',
+	darkBorderMuted: '--agds-dark-border-muted',
 	darkBorderInput: '--agds-dark-border-input',
 	// System colors
 	accent: '--agds-accent',

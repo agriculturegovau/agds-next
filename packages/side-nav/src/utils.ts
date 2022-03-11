@@ -37,10 +37,12 @@ export const useSideNavIds = () => {
 };
 
 const defaultStyles = {
+	background: 'body',
 	hover: { xs: 'shadeAlt', md: 'shade' },
 } as const;
 
 const altStyles = {
+	background: 'bodyAlt',
 	hover: { xs: 'shade', md: 'shadeAlt' },
 } as const;
 

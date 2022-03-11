@@ -20,7 +20,7 @@ export const goldTheme = {
 	darkBackgroundBodyAlt: '#0d414d',
 	darkBackgroundShadeAlt: '#0a323c',
 	darkBorder: '#95b7bf',
-	darkBorderMuted: '#476d76',
+	darkBorderMuted: '#4D7680',
 	darkBorderInput: '#FFFFFF',
 	// system colors
 	accent: undefined, // accent does not exist in GOLD.
