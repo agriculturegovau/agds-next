@@ -27,7 +27,7 @@ export const SearchBoxButton = forwardRef<
 		>
 			<Button ref={ref} type="submit" css={buttonStyles}>
 				<span>{children}</span>
-				{iconOnly ? <SearchIcon size={1.5} /> : null}
+				{iconOnly ? <SearchIcon size="md" /> : null}
 			</Button>
 		</Box>
 	);

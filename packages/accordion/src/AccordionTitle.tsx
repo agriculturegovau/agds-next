@@ -55,7 +55,7 @@ export const AccordionTitle = ({
 				}}
 			>
 				{children}
-				<AnimatedIcon weight="bold" size={1} style={style} />
+				<AnimatedIcon weight="bold" size="sm" style={style} />
 			</Flex>
 		</Box>
 	);

@@ -3,6 +3,7 @@ import { Logo } from '@ag.ds-next/ag-branding';
 import { Stack } from '@ag.ds-next/box';
 import { Header } from '@ag.ds-next/header';
 import { MainNav, MainNavLink } from '@ag.ds-next/main-nav';
+import { ExternalLinkIcon } from '@ag.ds-next/icon';
 
 const NAV_LINKS = [
 	{ label: 'Home', href: '/' },
@@ -34,6 +35,7 @@ export const SiteHeader = () => {
 						href="https://github.com/steelthreads/agds-next"
 						target="_blank"
 						rel="noopener noeferrer"
+						icon={ExternalLinkIcon}
 					/>
 				}
 			/>

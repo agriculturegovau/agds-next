@@ -48,7 +48,7 @@ const allIcons = {
 
 type IconNameType = keyof typeof allIcons;
 
-export const IconExamples = ({ size = 3, ...args }: IconProps) => {
+export const IconExamples = ({ size, ...args }: IconProps) => {
 	return (
 		<Flex gap={0.5} flexWrap="wrap">
 			{(Object.keys(allIcons) as IconNameType[]).sort().map((iconName) => {

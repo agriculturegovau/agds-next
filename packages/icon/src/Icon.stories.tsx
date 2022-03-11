@@ -20,6 +20,6 @@ export const AllIcons: ComponentStory<typeof AlertIcon> = (args) => (
 	<IconExamples {...args} />
 );
 AllIcons.args = {
-	size: 2,
+	size: 'md',
 	weight: 'regular',
 };
