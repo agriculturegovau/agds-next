@@ -29,11 +29,7 @@ export const SiteHeader = () => {
 				links={NAV_LINKS}
 				activePath={router.asPath}
 				rightContent={
-					<MainNavLink
-						label="Sign in"
-						href="/form-sign-in"
-						icon={<AvatarIcon size="md" />}
-					/>
+					<MainNavLink label="Sign in" href="/form-sign-in" icon={AvatarIcon} />
 				}
 			/>
 		</Stack>

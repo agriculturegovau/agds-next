@@ -1,4 +1,5 @@
 import {
+	ComponentType,
 	ReactNode,
 	ButtonHTMLAttributes,
 	PropsWithChildren,
@@ -13,6 +14,7 @@ import {
 	mq,
 } from '@ag.ds-next/core';
 import { localPalette } from './utils';
+import { IconProps } from '@ag.ds-next/icon';
 
 type MainNavItemProps = PropsWithChildren<{
 	as: ElementType;
@@ -60,14 +62,18 @@ const MainNavItem = ({ as, ...props }: MainNavItemProps) => (
 
 export type MainNavLinkProps = Omit<LinkProps, 'children' | 'color'> & {
 	label: ReactNode;
-	icon?: ReactNode;
+	icon?: ComponentType<IconProps>;
 };
 
-export const MainNavLink = ({ icon, label, ...props }: MainNavLinkProps) => {
+export const MainNavLink = ({
+	icon: Icon,
+	label,
+	...props
+}: MainNavLinkProps) => {
 	const Link = useLinkComponent();
 	return (
 		<MainNavItem as={Link} css={{ textDecoration: 'none' }} {...props}>
-			{icon}
+			{Icon ? <Icon size="md" weight="regular" /> : null}
 			{label}
 		</MainNavItem>
 	);
@@ -78,11 +84,11 @@ export type MainNavButtonProps = Omit<
 	'children' | 'color'
 > & {
 	label: ReactNode;
-	icon?: ReactNode;
+	icon?: ComponentType<IconProps>;
 };
 
 export const MainNavButton = ({
-	icon,
+	icon: Icon,
 	label,
 	...props
 }: MainNavButtonProps) => (
@@ -96,7 +102,7 @@ export const MainNavButton = ({
 		}}
 		{...props}
 	>
-		{icon}
+		{Icon ? <Icon size="md" weight="regular" /> : null}
 		{label}
 	</MainNavItem>
 );
