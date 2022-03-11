@@ -41,7 +41,7 @@ export const boxPalettes = {
 		[boxPaletteVars.backgroundBodyAlt]: `var(${themeVars.darkBackgroundBodyAlt})`,
 		[boxPaletteVars.backgroundShadeAlt]: `var(${themeVars.darkBackgroundShadeAlt})`,
 		[boxPaletteVars.border]: `var(${themeVars.darkBorder})`,
-		[boxPaletteVars.borderInput]: `var(${themeVars.darkBorderMuted})`,
+		[boxPaletteVars.borderMuted]: `var(${themeVars.darkBorderMuted})`,
 		[boxPaletteVars.borderInput]: `var(${themeVars.darkBorderInput})`,
 	}),
 } as const;
