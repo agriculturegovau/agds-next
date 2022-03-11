@@ -41,7 +41,6 @@ export const SideNavCollapseButton = ({
 			fontSize="md"
 			lineHeight="heading"
 			fontWeight="bold"
-			background="body"
 			padding={1}
 			justifyContent="space-between"
 			alignItems="center"
@@ -50,6 +49,8 @@ export const SideNavCollapseButton = ({
 			focus
 			borderBottom
 			css={{
+				appearance: 'none',
+				background: 'transparent',
 				[tokens.mediaQuery.min.md]: {
 					display: 'none',
 				},

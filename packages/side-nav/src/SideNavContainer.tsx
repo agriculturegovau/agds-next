@@ -12,9 +12,14 @@ export const SideNavContainer = ({
 	children,
 	variant,
 }: SideNavContainerProps) => {
-	const { palette } = variantMap[variant];
+	const { palette, background } = variantMap[variant];
 	return (
-		<Box as="aside" aria-label={ariaLabel} palette={palette}>
+		<Box
+			as="aside"
+			aria-label={ariaLabel}
+			palette={palette}
+			background={background}
+		>
 			{children}
 		</Box>
 	);
