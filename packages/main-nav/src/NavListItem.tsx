@@ -66,8 +66,7 @@ export function NavListItem({ children, active }: NavItemProps) {
 					},
 
 					'&:hover': {
-						textDecoration: 'underline',
-						textDecorationSkipInk: 'auto',
+						...packs.underline,
 						color: boxPalette.foregroundText,
 						backgroundColor: localPalette.linkHoverBg,
 						'&::after': {

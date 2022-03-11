@@ -50,9 +50,8 @@ export const SideNavLink = ({
 						display: 'block',
 
 						'&:hover': {
+							...packs.underline,
 							color: boxPalette.foregroundText,
-							textDecoration: 'underline',
-							textDecorationSkipInk: 'auto',
 							backgroundColor: localPalette.hover,
 						},
 

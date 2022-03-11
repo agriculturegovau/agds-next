@@ -1,7 +1,7 @@
 import { ReactNode } from 'react';
 import { Box, Flex, Stack } from '@ag.ds-next/box';
 import { Text } from '@ag.ds-next/text';
-import { useLinkComponent, boxPalette } from '@ag.ds-next/core';
+import { useLinkComponent, boxPalette, packs } from '@ag.ds-next/core';
 
 type HeaderBrandProps = {
 	badgeLabel?: string;
@@ -31,10 +31,7 @@ export function HeaderBrand({
 			alignItems="stretch"
 			css={{
 				textDecoration: 'none',
-				':hover': {
-					textDecoration: 'underline',
-					textDecorationSkipInk: 'auto',
-				},
+				':hover': packs.underline,
 			}}
 		>
 			{logo ? (

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Box } from '@ag.ds-next/box';
-import { boxPalette, LinkProps, useLinkComponent } from '@ag.ds-next/core';
+import { LinkProps, packs, useLinkComponent } from '@ag.ds-next/core';
 import { VisuallyHidden } from '@ag.ds-next/a11y';
 
 import { localPalette } from './utils';
@@ -28,17 +28,18 @@ export const SideNavTitle = ({
 				lineHeight="heading"
 				display="block"
 				focus
+				borderBottom
+				borderBottomWidth="md"
 				css={{
-					borderBottom: `2px solid ${boxPalette.border}`,
 					textDecoration: 'none',
-
 					'&:hover': {
+						...packs.underline,
 						backgroundColor: localPalette.hover,
-						textDecoration: 'underline',
 					},
 				}}
 			>
 				{children}
+				{/** TODO this should be removed **/}
 				{isCurrentPage ? <VisuallyHidden> Current page</VisuallyHidden> : null}
 			</Box>
 		</Box>
