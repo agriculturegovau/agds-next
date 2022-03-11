@@ -1,4 +1,4 @@
-import { Content } from '@ag.ds-next/content';
+import { Content, ContentBleed } from '@ag.ds-next/content';
 import { Flex, Stack } from '@ag.ds-next/box';
 import { Columns, Column } from '@ag.ds-next/columns';
 import { SideNav } from '@ag.ds-next/side-nav';
@@ -29,14 +29,16 @@ export function PageLayout({
 			<Columns>
 				{sideNav && (
 					<Column columnSpan={{ xs: 12, md: 3 }}>
-						<SideNav
-							variant="light"
-							collapseTitle="In this section"
-							activePath={router.asPath}
-							title={sideNav.title}
-							titleLink={sideNav.titleLink}
-							items={sideNav.items}
-						/>
+						<ContentBleed visible={{ md: false }}>
+							<SideNav
+								variant="light"
+								collapseTitle="In this section"
+								activePath={router.asPath}
+								title={sideNav.title}
+								titleLink={sideNav.titleLink}
+								items={sideNav.items}
+							/>
+						</ContentBleed>
 					</Column>
 				)}
 				<Column

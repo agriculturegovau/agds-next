@@ -69,7 +69,6 @@ export function SideNav({
 				isOpen={isOpen}
 				onClick={onToggle}
 				ariaControls={bodyId}
-				variant={variant}
 				id={buttonId}
 			>
 				{collapseTitle}
@@ -95,8 +94,6 @@ export function SideNav({
 					aria-labelledby={titleId}
 					id={navId}
 					fontFamily="body"
-					paddingLeft={{ xs: 1, md: 0 }}
-					paddingRight={{ xs: 1, md: 0 }}
 					fontSize="sm"
 					lineHeight="default"
 					css={mq({
@@ -139,7 +136,7 @@ function LinkList({ activePath, items }: LinkListProps) {
 				<SideNavLink
 					key={index}
 					active={item.href === bestMatch}
-					aria-current={item.href === activePath ? 'page' : undefined}
+					current={item.href === activePath}
 					{...item}
 				>
 					{subItems?.length ? (

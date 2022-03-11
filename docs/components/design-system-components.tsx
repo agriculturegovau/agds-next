@@ -80,6 +80,7 @@ import {
 } from '@ag.ds-next/skip-link';
 import { DirectionLink, DirectionButton } from '@ag.ds-next/direction-link';
 import { Tags } from '@ag.ds-next/tags';
+import { Content, ContentBleed } from '@ag.ds-next/content';
 
 export const designSystemComponents = {
 	Accordion,
@@ -168,4 +169,6 @@ export const designSystemComponents = {
 	DirectionLink,
 	DirectionButton,
 	Tags,
+	Content,
+	ContentBleed,
 };

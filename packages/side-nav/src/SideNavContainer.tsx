@@ -3,24 +3,18 @@ import { Box } from '@ag.ds-next/box';
 import { variantMap, SideNavVariant } from './utils';
 
 export type SideNavContainerProps = PropsWithChildren<{
-	variant: SideNavVariant;
 	'aria-label': string;
+	variant: SideNavVariant;
 }>;
 
 export const SideNavContainer = ({
+	'aria-label': ariaLabel,
 	children,
 	variant,
-	'aria-label': ariaLabel,
 }: SideNavContainerProps) => {
-	const { palette, background } = variantMap[variant];
+	const { palette } = variantMap[variant];
 	return (
-		<Box
-			as="aside"
-			aria-label={ariaLabel}
-			rounded
-			background={background}
-			palette={palette}
-		>
+		<Box as="aside" aria-label={ariaLabel} palette={palette}>
 			{children}
 		</Box>
 	);

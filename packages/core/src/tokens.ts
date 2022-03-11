@@ -68,6 +68,7 @@ export function mapSpacing(v: Spacing) {
 	return `${v}rem`;
 }
 
+const negativeContainerPadding = { xs: -0.75, md: -2 } as const;
 const containerPadding = { xs: 0.75, md: 2 } as const;
 
 const maxWidth = {
@@ -96,6 +97,7 @@ export const tokens = {
 	fontSize,
 	fontWeight,
 	lineHeight,
+	negativeContainerPadding,
 	containerPadding,
 	maxWidth,
 	borderRadius,

@@ -3,7 +3,6 @@ import { useSpring, animated } from 'react-spring';
 import { Flex } from '@ag.ds-next/box';
 import { ChevronDownIcon } from '@ag.ds-next/icon';
 import { tokens, usePrefersReducedMotion } from '@ag.ds-next/core';
-import { variantMap, SideNavVariant } from './utils';
 
 const AnimatedIcon = animated(ChevronDownIcon);
 
@@ -12,7 +11,6 @@ type SideNavCollapseButtonProps = PropsWithChildren<{
 	id: string;
 	isOpen: boolean;
 	onClick: () => void;
-	variant: SideNavVariant;
 }>;
 
 export const SideNavCollapseButton = ({
@@ -21,10 +19,8 @@ export const SideNavCollapseButton = ({
 	id,
 	isOpen,
 	onClick,
-	variant,
 }: SideNavCollapseButtonProps) => {
 	const prefersReducedMotion = usePrefersReducedMotion();
-	const { background } = variantMap[variant];
 
 	const iconStyle = useSpring({
 		from: { transform: `rotate(0deg)` },
@@ -39,19 +35,20 @@ export const SideNavCollapseButton = ({
 			aria-controls={ariaControls}
 			aria-expanded={isOpen}
 			aria-haspopup="menu"
-			rounded
-			background={background}
-			color="action"
 			onClick={onClick}
-			fontSize="sm"
-			lineHeight="heading"
 			id={id}
+			color="action"
+			fontSize="md"
+			lineHeight="heading"
+			fontWeight="bold"
+			background="body"
 			padding={1}
-			width="100%"
 			justifyContent="space-between"
 			alignItems="center"
+			width="100%"
 			link
 			focus
+			borderBottom
 			css={{
 				[tokens.mediaQuery.min.md]: {
 					display: 'none',
