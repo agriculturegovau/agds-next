@@ -21,8 +21,7 @@ const Home: NextPage = () => {
 				/>
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
-
-			<Content spacing="large" background="shade">
+			<Content spacing="lg" background="shade">
 				<Columns gap={1}>
 					<Column columnSpan={{ xs: 12, md: 6 }}>
 						<Stack gap={2} alignItems="flex-start">
@@ -50,7 +49,7 @@ const Home: NextPage = () => {
 				</Columns>
 			</Content>
 
-			<Content spacing="large">
+			<Content spacing="lg">
 				<Body>
 					<h2>Some highlighted content</h2>
 					<p>
@@ -69,7 +68,7 @@ const Home: NextPage = () => {
 				</Body>
 			</Content>
 
-			<Content spacing="large" background="shade">
+			<Content spacing="lg" background="shade">
 				<Body>
 					<h2>Sub content</h2>
 					<p>
@@ -85,7 +84,7 @@ const Home: NextPage = () => {
 				</Flex>
 			</Content>
 
-			<Content spacing="large">
+			<Content spacing="lg">
 				<H2>Articles</H2>
 				<Columns gap={1} as="ul">
 					{Array.from(Array(3).keys()).map((idx) => (
