@@ -2,4 +2,6 @@
 '@ag.ds-next/content': patch
 ---
 
-Created new `ContentBleed` component
+- Updated documentation
+- Updated `spacing` prop to match rest of system
+- Created new `ContentBleed` component
