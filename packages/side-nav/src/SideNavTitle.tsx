@@ -1,11 +1,10 @@
 import React from 'react';
 import { Box } from '@ag.ds-next/box';
 import { LinkProps, packs, useLinkComponent } from '@ag.ds-next/core';
-import { VisuallyHidden } from '@ag.ds-next/a11y';
 
 import { localPalette } from './utils';
 
-export type SideNavTitleProps = LinkProps & {
+export type SideNavTitleProps = Omit<LinkProps, 'color'> & {
 	isCurrentPage?: boolean;
 };
 
@@ -20,7 +19,6 @@ export const SideNavTitle = ({
 		<Box as="h2" id={id}>
 			<Box
 				as={Link}
-				{...props}
 				padding={1}
 				color="text"
 				fontSize="sm"
@@ -28,8 +26,8 @@ export const SideNavTitle = ({
 				lineHeight="heading"
 				display="block"
 				focus
-				borderBottom
-				borderBottomWidth="md"
+				aria-current={isCurrentPage ? 'page' : undefined}
+				{...props}
 				css={{
 					textDecoration: 'none',
 					'&:hover': {
@@ -39,8 +37,6 @@ export const SideNavTitle = ({
 				}}
 			>
 				{children}
-				{/** TODO this should be removed **/}
-				{isCurrentPage ? <VisuallyHidden> Current page</VisuallyHidden> : null}
 			</Box>
 		</Box>
 	);

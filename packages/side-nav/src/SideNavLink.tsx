@@ -1,6 +1,11 @@
 import { ReactNode } from 'react';
 import { Box } from '@ag.ds-next/box';
-import { useLinkComponent, mapSpacing, LinkProps } from '@ag.ds-next/core';
+import {
+	useLinkComponent,
+	mapSpacing,
+	LinkProps,
+	tokens,
+} from '@ag.ds-next/core';
 import { boxPalette, fontGrid, packs } from '@ag.ds-next/core';
 
 import { useLinkListDepth } from './context';
@@ -14,6 +19,7 @@ export type SideNavLinkType = LinkProps & {
 
 export const SideNavLink = ({
 	active,
+	isCurrentPage,
 	children,
 	label,
 	...props
@@ -26,14 +32,11 @@ export const SideNavLink = ({
 			as="li"
 			fontSize="sm"
 			lineHeight="default"
-			borderBottom={depth === 1}
-			css={
-				depth === 1
-					? {
-							'&:last-of-type': { border: 'none' },
-					  }
-					: undefined
-			}
+			borderBottom
+			css={{
+				'&:last-child': { borderBottomWidth: depth > 1 ? 0 : undefined },
+				borderBottomColor: depth > 1 ? boxPalette.borderMuted : undefined,
+			}}
 		>
 			<Box
 				fontWeight={active ? 'bold' : 'normal'}
@@ -48,6 +51,11 @@ export const SideNavLink = ({
 						paddingLeft: `${depth}rem`,
 						paddingRight: mapSpacing(1),
 						display: 'block',
+						borderLeftWidth: tokens.borderWidth.xl,
+						borderLeftStyle: 'solid',
+						borderLeftColor: isCurrentPage
+							? boxPalette.foregroundAction
+							: 'transparent',
 
 						'&:hover': {
 							...packs.underline,
@@ -74,7 +82,9 @@ export const SideNavLink = ({
 					},
 				}}
 			>
-				<Link {...props}>{label}</Link>
+				<Link {...props} aria-current={isCurrentPage ? 'page' : undefined}>
+					{label}
+				</Link>
 			</Box>
 			{children}
 		</Box>
