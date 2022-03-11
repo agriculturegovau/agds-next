@@ -31,8 +31,6 @@ const Template = () => (
 			voluptates veniam!
 		</p>
 
-		<img src="http://placehold.it/800x200" alt="Placeholder image" />
-
 		<h2>Heading level 2</h2>
 		<h3>Heading level 3, proceeding H2</h3>
 		<p>
@@ -188,6 +186,14 @@ const Template = () => (
 				<figcaption>
 					—Aldous Huxley, <cite>Brave New World</cite>
 				</figcaption>
+			</figure>
+
+			<figure>
+				<img
+					src="/agds-next/img/placeholder/600X260.png"
+					alt="Placeholder image"
+				/>
+				<figcaption>Placeholder caption</figcaption>
 			</figure>
 
 			<p>An unordered list containing an ordered list:</p>
