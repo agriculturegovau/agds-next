@@ -1,6 +1,6 @@
 import { css } from '@emotion/react';
 import { themeVars } from './theme';
-import { tokens } from './tokens';
+
 // Box Palette
 
 const boxPaletteVars = {
@@ -13,6 +13,7 @@ const boxPaletteVars = {
 	backgroundBodyAlt: '--agds-background-body-alt',
 	backgroundShadeAlt: '--agds-background-shade-alt',
 	border: '--agds-border',
+	borderMuted: '--agds-border-muted',
 	borderInput: '--agds-border-input',
 };
 
@@ -27,6 +28,7 @@ export const boxPalettes = {
 		[boxPaletteVars.backgroundBodyAlt]: `var(${themeVars.lightBackgroundBodyAlt})`,
 		[boxPaletteVars.backgroundShadeAlt]: `var(${themeVars.lightBackgroundShadeAlt})`,
 		[boxPaletteVars.border]: `var(${themeVars.lightBorder})`,
+		[boxPaletteVars.borderMuted]: `var(${themeVars.lightBorderMuted})`,
 		[boxPaletteVars.borderInput]: `var(${themeVars.lightBorderInput})`,
 	}),
 	dark: css({
@@ -39,6 +41,7 @@ export const boxPalettes = {
 		[boxPaletteVars.backgroundBodyAlt]: `var(${themeVars.darkBackgroundBodyAlt})`,
 		[boxPaletteVars.backgroundShadeAlt]: `var(${themeVars.darkBackgroundShadeAlt})`,
 		[boxPaletteVars.border]: `var(${themeVars.darkBorder})`,
+		[boxPaletteVars.borderInput]: `var(${themeVars.darkBorderMuted})`,
 		[boxPaletteVars.borderInput]: `var(${themeVars.darkBorderInput})`,
 	}),
 } as const;
@@ -55,5 +58,6 @@ export const boxPalette = {
 	backgroundBodyAlt: `var(${boxPaletteVars.backgroundBodyAlt})`,
 	backgroundShadeAlt: `var(${boxPaletteVars.backgroundShadeAlt})`,
 	border: `var(${boxPaletteVars.border})`,
+	borderMuted: `var(${boxPaletteVars.borderMuted})`,
 	borderInput: `var(${boxPaletteVars.borderInput})`,
 };
