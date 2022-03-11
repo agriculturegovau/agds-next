@@ -1,4 +1,4 @@
-import { ReactNode, useRef } from 'react';
+import { ReactNode, useMemo, useRef } from 'react';
 import { useSpring, animated } from 'react-spring';
 import { Box, backgroundColorMap } from '@ag.ds-next/box';
 import {
@@ -9,6 +9,7 @@ import {
 	useElementSize,
 	usePrefersReducedMotion,
 	useToggleState,
+	useWindowSize,
 } from '@ag.ds-next/core';
 
 import { SideNavContainer } from './SideNavContainer';
@@ -43,8 +44,10 @@ export function SideNav({
 }: SideNavProps) {
 	const { bodyId, buttonId, navId, titleId } = useSideNavIds();
 	const { hover } = variantMap[variant];
-	const [isOpen, onToggle] = useToggleState(false, true);
+
+	const { windowWidth } = useWindowSize();
 	const ref = useRef<HTMLDivElement>(null);
+	const [isOpen, onToggle] = useToggleState(false, true);
 	const { height } = useElementSize(ref);
 
 	const prefersReducedMotion = usePrefersReducedMotion();
@@ -53,6 +56,13 @@ export function SideNav({
 		to: { height: isOpen ? height : 0 },
 		immediate: prefersReducedMotion,
 	});
+
+	const bodyAriaHidden = useMemo(() => {
+		if (windowWidth === undefined) return;
+		if (windowWidth >= tokens.breakpoint.md) return;
+		return !isOpen;
+	}, [windowWidth, isOpen]);
+
 	return (
 		<SideNavContainer aria-label={ariaLabel} variant={variant}>
 			<SideNavCollapseButton
@@ -67,12 +77,12 @@ export function SideNav({
 			<animated.div
 				id={bodyId}
 				aria-labelledby={buttonId}
+				aria-hidden={bodyAriaHidden}
 				style={animatedHeight}
 				css={{
 					overflow: 'hidden',
+					// Overwrite the animated height for tablet/desktop sizes.
 					[tokens.mediaQuery.min.md]: {
-						// Overwrite the animated height
-						// for tablet/desktop sizes.
 						overflow: 'unset',
 						height: 'auto !important',
 					},
