@@ -5,7 +5,6 @@
 	"module": "dist/ag.ds-next-side-nav.esm.js",
 	"license": "MIT",
 	"peerDependencies": {
-		"@ag.ds-next/a11y": "1.0.1",
 		"@ag.ds-next/box": "4.0.1",
 		"@ag.ds-next/core": "2.1.1",
 		"@ag.ds-next/icon": "4.0.1",
@@ -13,7 +12,6 @@
 		"react": "^16.14.0 || ^17.0.0"
 	},
 	"devDependencies": {
-		"@ag.ds-next/a11y": "*",
 		"@ag.ds-next/box": "*",
 		"@ag.ds-next/core": "*",
 		"@ag.ds-next/icon": "*",
