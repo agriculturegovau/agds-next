@@ -249,7 +249,18 @@ export const bodyClass = css({
 		top: '-0.5em',
 	},
 
-	blockquote: {
+	'figure:not([class])': {
+		marginTop: mapSpacing(1.5),
+		marginBottom: 0,
+		marginLeft: 0,
+		marginRight: 0,
+	},
+
+	'blockquote:not([class])': {
+		marginTop: mapSpacing(1.5),
+		marginBottom: mapSpacing(1),
+		marginLeft: 0,
+		marginRight: 0,
 		padding: mapSpacing(2),
 		borderLeftWidth: tokens.borderWidth.xl,
 		borderLeftStyle: 'solid',
