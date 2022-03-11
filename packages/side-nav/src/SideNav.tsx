@@ -104,9 +104,9 @@ export function SideNav({
 					})}
 				>
 					<SideNavTitle
-						isCurrentPage={activePath === titleLink}
 						id={titleId}
 						href={titleLink}
+						isCurrentPage={activePath === titleLink}
 					>
 						{title}
 					</SideNavTitle>
@@ -136,7 +136,7 @@ function LinkList({ activePath, items }: LinkListProps) {
 				<SideNavLink
 					key={index}
 					active={item.href === bestMatch}
-					current={item.href === activePath}
+					isCurrentPage={item.href === activePath}
 					{...item}
 				>
 					{subItems?.length ? (

@@ -13,13 +13,13 @@ import { localPalette } from './utils';
 
 export type SideNavLinkType = LinkProps & {
 	active?: boolean;
-	current?: boolean;
+	isCurrentPage?: boolean;
 	label: ReactNode;
 };
 
 export const SideNavLink = ({
 	active,
-	current,
+	isCurrentPage,
 	children,
 	label,
 	...props
@@ -34,7 +34,8 @@ export const SideNavLink = ({
 			lineHeight="default"
 			borderBottom
 			css={{
-				borderBottomColor: depth === 1 ? undefined : '#80808050',
+				'&:last-child': { borderBottomWidth: depth > 1 ? 0 : undefined },
+				borderBottomColor: depth > 1 ? boxPalette.borderMuted : undefined,
 			}}
 		>
 			<Box
@@ -52,7 +53,7 @@ export const SideNavLink = ({
 						display: 'block',
 						borderLeftWidth: tokens.borderWidth.xl,
 						borderLeftStyle: 'solid',
-						borderLeftColor: current
+						borderLeftColor: isCurrentPage
 							? boxPalette.foregroundAction
 							: 'transparent',
 
@@ -81,7 +82,7 @@ export const SideNavLink = ({
 					},
 				}}
 			>
-				<Link {...props} aria-current={current ? 'page' : undefined}>
+				<Link {...props} aria-current={isCurrentPage ? 'page' : undefined}>
 					{label}
 				</Link>
 			</Box>
