@@ -10,11 +10,11 @@ In this guide, we're going to go through the steps necessary to get started with
 
 React is a popular framework for building User Interfaces, which our component library is built on.
 
-If you’re new to React, we recommend going through official [React getting started documentation](https://facebook.github.io/react/docs/hello-world.html), and follow along using the [React Hello World CodePen example](http://codepen.io/gaearon/pen/ZpvBNJ?editors=0010).
+If you’re new to React we recommend going through official [React getting started documentation](https://facebook.github.io/react/docs/hello-world.html), and follow along using the [React Hello World CodePen example](http://codepen.io/gaearon/pen/ZpvBNJ?editors=0010).
 
 ## If you’re starting a new project…
 
-You can [take a look at the code for our example-site](https://github.com/steelthreads/agds-next/tree/main/example-site), which is built on NextJS. Clone the repository and port the code over to a new repository.
+We have built an [example site](https://github.com/steelthreads/agds-next/tree/main/example-site) in [NextJS](https://nextjs.org/) which you can clone and use as a starting point.
 
 ## If you’re implementing components in an existing project…
 
@@ -22,9 +22,10 @@ All of our AgDS components can be used in your existing React application.
 
 In order to get everything working, install the latest versions of these packages…
 
-`yarn add @ag.ds-next/ag-branding @ag.ds-next/box @ag.ds-next/core @ag.ds-next/text`
+`yarn add @ag.ds-next/ag-branding @ag.ds-next/box @ag.ds-next/core @ag.ds-next/text @emotion/react facepaint
+`
 
-Then wrap your application in our Core component…
+Then wrap your application in our `Core` component…
 
 ```jsx
 // This example assumes you are using NextJS.
@@ -43,7 +44,7 @@ function MyApp({ Component, pageProps }) {
 export default MyApp;
 ```
 
-The Core component is responsible for enabling our CSS variables, and also make your chosen framework's Link component available to all of the AgDS components.
+The `Core` component is responsible for enabling our CSS variables, and also make your chosen framework's Link component available to all of the AgDS components.
 
 You can now start using our components!
 
