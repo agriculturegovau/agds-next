@@ -1,4 +1,8 @@
-import { ButtonHTMLAttributes, ElementType, PropsWithChildren } from 'react';
+import React, {
+	ButtonHTMLAttributes,
+	ElementType,
+	PropsWithChildren,
+} from 'react';
 import { Box, Flex } from '@ag.ds-next/box';
 import { Text, TextLink } from '@ag.ds-next/text';
 import {
@@ -9,6 +13,13 @@ import {
 import { boxPalette, LinkProps, packs } from '@ag.ds-next/core';
 
 export type ProgressIndicatorItemStatus = 'doing' | 'todo' | 'done';
+
+export type ProgressIndicatorItem = (
+	| ProgressIndicatorItemButtonProps
+	| ProgressIndicatorItemLinkProps
+) & {
+	label: string;
+};
 
 export type ProgressIndicatorItemLinkProps = LinkProps & {
 	status: ProgressIndicatorItemStatus;
@@ -61,46 +72,36 @@ const ProgressIndicatorItem = ({
 	const active = status === 'doing';
 	const Icon = statusIconMap[status];
 	return (
-		<Box
-			as="li"
-			borderBottom
+		<Flex
+			as={as}
+			alignItems="center"
+			gap={0.75}
+			padding={0.75}
+			color="text"
+			fontFamily="body"
+			fontWeight={active ? 'bold' : 'normal'}
+			borderLeft
+			borderLeftWidth="xl"
+			width="100%"
+			focus
 			css={{
-				'&:last-of-type': {
-					borderBottom: 'none',
+				borderLeftColor: active ? boxPalette.foregroundAction : 'transparent',
+				textDecoration: 'none',
+				'&:hover': {
+					...packs.underline,
+					backgroundColor: boxPalette.backgroundShade,
 				},
 			}}
+			{...props}
 		>
-			<Flex
-				as={as}
-				alignItems="center"
-				gap={0.75}
-				padding={0.75}
-				color="text"
-				fontFamily="body"
-				fontWeight={active ? 'bold' : 'normal'}
-				borderLeft
-				borderLeftWidth="xl"
-				width="100%"
-				focus
-				css={{
-					borderLeftColor: active ? boxPalette.foregroundAction : 'transparent',
-					textDecoration: 'none',
-					'&:hover': {
-						...packs.underline,
-						backgroundColor: boxPalette.backgroundShade,
-					},
-				}}
-				{...props}
-			>
-				<Icon size="md" color="action" />
-				<Flex flexDirection="column" gap={0}>
-					<Text color="muted" fontSize="xs" lineHeight="nospace">
-						{statusLabelMap[status]}
-					</Text>
-					{children}
-				</Flex>
+			<Icon size="md" color="action" css={{ flexShrink: 0 }} />
+			<Flex flexDirection="column" gap={0}>
+				<Text color="muted" fontSize="xs" lineHeight="nospace">
+					{statusLabelMap[status]}
+				</Text>
+				{children}
 			</Flex>
-		</Box>
+		</Flex>
 	);
 };
 

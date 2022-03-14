@@ -4,9 +4,7 @@ import { Flex } from '@ag.ds-next/box';
 import { ChevronDownIcon } from '@ag.ds-next/icon';
 import { packs, tokens, usePrefersReducedMotion } from '@ag.ds-next/core';
 import { Text } from '@ag.ds-next/text';
-import { ProgressIndicatorItem } from './ProgressIndicator';
-
-const AnimatedIcon = animated(ChevronDownIcon);
+import type { ProgressIndicatorItem } from './ProgressIndicatorItem';
 
 type ProgressIndicatorCollapseButtonProps = PropsWithChildren<{
 	ariaControls: string;
@@ -15,6 +13,8 @@ type ProgressIndicatorCollapseButtonProps = PropsWithChildren<{
 	onClick: () => void;
 	items: ProgressIndicatorItem[];
 }>;
+
+const AnimatedIcon = animated(ChevronDownIcon);
 
 export const ProgressIndicatorCollapseButton = ({
 	ariaControls,

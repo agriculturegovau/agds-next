@@ -2,17 +2,22 @@ import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { Box } from '@ag.ds-next/box';
 import {
-	ProgressIndicatorContainer,
 	ProgressIndicator,
 	ProgressIndicatorItemLink,
 	ProgressIndicatorItemButton,
 } from './index';
+import {
+	ProgressIndicatorList,
+	ProgressIndicatorListItem,
+} from './ProgressIndicatorList';
+import { ButtonLink } from '@ag.ds-next/button';
+import { Text } from '@ag.ds-next/text';
 
 export default {
 	title: 'forms/ProgressIndicator',
 	component: ProgressIndicator,
 	subcomponents: {
-		ProgressIndicatorContainer,
+		ProgressIndicatorListItem,
 		ProgressIndicatorItemLink,
 		ProgressIndicatorItemButton,
 	},
@@ -54,21 +59,43 @@ Button.args = {
 };
 
 export const ModularLinks = () => (
-	<ProgressIndicatorContainer>
+	<ProgressIndicatorList>
 		{exampleLinkItems.map(({ label, ...props }, index) => (
-			<ProgressIndicatorItemLink key={index} {...props}>
-				{label}
-			</ProgressIndicatorItemLink>
+			<ProgressIndicatorListItem key={index}>
+				<ProgressIndicatorItemLink {...props}>
+					{label}
+				</ProgressIndicatorItemLink>
+			</ProgressIndicatorListItem>
 		))}
-	</ProgressIndicatorContainer>
+	</ProgressIndicatorList>
 );
 
 export const ModularButtons = () => (
-	<ProgressIndicatorContainer>
+	<ProgressIndicatorList>
 		{exampleButtonItems.map(({ label, ...props }, index) => (
-			<ProgressIndicatorItemButton key={index} {...props}>
-				{label}
-			</ProgressIndicatorItemButton>
+			<ProgressIndicatorListItem key={index}>
+				<ProgressIndicatorItemButton {...props}>
+					{label}
+				</ProgressIndicatorItemButton>
+			</ProgressIndicatorListItem>
 		))}
-	</ProgressIndicatorContainer>
+	</ProgressIndicatorList>
+);
+
+export const TaskList = () => (
+	<ProgressIndicatorList>
+		{exampleButtonItems.map(({ label, ...props }, index) => (
+			<ProgressIndicatorListItem key={index}>
+				<ProgressIndicatorItemButton {...props}>
+					{label}
+					<Text color="muted">
+						Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+					</Text>
+				</ProgressIndicatorItemButton>
+				<ButtonLink href="#" variant="secondary" size="sm">
+					Example
+				</ButtonLink>
+			</ProgressIndicatorListItem>
+		))}
+	</ProgressIndicatorList>
 );

@@ -1,4 +1,3 @@
-import { Box } from '@ag.ds-next/box';
 import { useId } from '@reach/auto-id';
 import {
 	tokens,
@@ -7,34 +6,23 @@ import {
 	useToggleState,
 	useWindowSize,
 } from '@ag.ds-next/core';
-import { forwardRef, useMemo, useRef } from 'react';
+import { useMemo, useRef } from 'react';
 import { useSpring, animated } from 'react-spring';
 import { ProgressIndicatorCollapseButton } from './ProgressIndicatorCollapseButton';
 import { ProgressIndicatorContainer } from './ProgressIndicatorContainer';
 import {
+	ProgressIndicatorList,
+	ProgressIndicatorListItem,
+} from './ProgressIndicatorList';
+import {
+	ProgressIndicatorItem,
 	ProgressIndicatorItemButton,
-	ProgressIndicatorItemButtonProps,
 	ProgressIndicatorItemLink,
 	ProgressIndicatorItemLinkProps,
 } from './ProgressIndicatorItem';
 
-export type ProgressIndicatorItem = (
-	| ProgressIndicatorItemButtonProps
-	| ProgressIndicatorItemLinkProps
-) & {
-	label: string;
-};
-
 export type ProgressIndicatorProps = {
 	items: ProgressIndicatorItem[];
-};
-
-export const useProgressIndicatorIds = () => {
-	const autoId = useId();
-	return {
-		buttonId: `progress-indicator-${autoId}-button`,
-		bodyId: `progress-indicator-${autoId}-body`,
-	};
 };
 
 export const ProgressIndicator = ({ items }: ProgressIndicatorProps) => {
@@ -83,49 +71,41 @@ export const ProgressIndicator = ({ items }: ProgressIndicatorProps) => {
 					},
 				}}
 			>
-				<ProgressIndicatorList items={items} ref={ref} />
+				<ProgressIndicatorList ref={ref}>
+					{items.map(({ label, ...props }, index) => (
+						<ProgressIndicatorListItem
+							key={index}
+							css={{
+								[tokens.mediaQuery.max.md]: {
+									'&:last-of-type': { borderBottom: 'none' },
+								},
+							}}
+						>
+							{isItemLink(props) ? (
+								<ProgressIndicatorItemLink {...props}>
+									{label}
+								</ProgressIndicatorItemLink>
+							) : (
+								<ProgressIndicatorItemButton {...props}>
+									{label}
+								</ProgressIndicatorItemButton>
+							)}
+						</ProgressIndicatorListItem>
+					))}
+				</ProgressIndicatorList>
 			</animated.div>
 		</ProgressIndicatorContainer>
 	);
 };
 
-export type ProgressIndicatorListProps = {
-	items: ProgressIndicatorItem[];
+export const useProgressIndicatorIds = () => {
+	const autoId = useId();
+	return {
+		buttonId: `progress-indicator-${autoId}-button`,
+		bodyId: `progress-indicator-${autoId}-body`,
+	};
 };
 
-const ProgressIndicatorList = forwardRef<
-	HTMLUListElement,
-	ProgressIndicatorListProps
->(function ProgressIndicatorList({ items }, ref) {
-	return (
-		<Box
-			as="ul"
-			ref={ref}
-			borderTop
-			css={{
-				[tokens.mediaQuery.min.md]: {
-					borderTop: 'none',
-				},
-			}}
-		>
-			{items.map(({ label, ...props }, index) => {
-				if (isItemLink(props)) {
-					return (
-						<ProgressIndicatorItemLink key={index} {...props}>
-							{label}
-						</ProgressIndicatorItemLink>
-					);
-				}
-				return (
-					<ProgressIndicatorItemButton key={index} {...props}>
-						{label}
-					</ProgressIndicatorItemButton>
-				);
-			})}
-		</Box>
-	);
-});
-
-const isItemLink = (
+export const isItemLink = (
 	item: Omit<ProgressIndicatorItem, 'label'>
 ): item is ProgressIndicatorItemLinkProps => 'href' in item;
