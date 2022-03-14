@@ -5,14 +5,9 @@ group: Foundations
 ---
 
 ```jsx live
-<Stack gap={1} flexDirection="row" margin={1}>
-	<AvatarIcon size={3} />
-	<ProgressTodoIcon size={3} />
-	<ProgressDoingIcon size={3} />
-	<ProgressDoneIcon size={3} />
-</Stack>
+<AvatarIcon size="md" weight="regular" />
 ```
 
 See the full list of available icons [here](https://steelthreads.github.io/agds-next/storybook/index.html?path=/story/foundations-icon--all-icons).
 
-Do you have a user need for new or missing icon? Get in touch to discuss an icon contribution.
+> Do you have a user need for new or missing icon? Get in touch to discuss an icon contribution.
