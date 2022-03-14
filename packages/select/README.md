@@ -130,7 +130,6 @@ Disabled select elements are unusable and can not be clicked. This prevents a us
 <Select
 	label="What option?"
 	placeholder="Please select"
-	disabled
 	options={[
 		{
 			label: 'Group A',
