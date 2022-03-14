@@ -27,6 +27,7 @@ import {
 import { Callout, CalloutTitle } from '@ag.ds-next/callout';
 import { Header, HeaderBrand, HeaderContainer } from '@ag.ds-next/header';
 import { Footer, FooterDivider } from '@ag.ds-next/footer';
+import { FormStack } from '@ag.ds-next/form-stack';
 import { MainNav } from '@ag.ds-next/main-nav';
 import {
 	SideNav,
@@ -119,6 +120,7 @@ export const designSystemComponents = {
 	Breadcrumbs,
 	Footer,
 	FooterDivider,
+	FormStack,
 	Header,
 	HeaderBrand,
 	HeaderContainer,

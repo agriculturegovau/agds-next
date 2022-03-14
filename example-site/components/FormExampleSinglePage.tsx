@@ -5,6 +5,7 @@ import { Button } from '@ag.ds-next/button';
 import { Checkbox } from '@ag.ds-next/control-input';
 import { Flex, Stack } from '@ag.ds-next/box';
 import { Fieldset } from '@ag.ds-next/fieldset';
+import { FormStack } from '@ag.ds-next/form-stack';
 import { Select } from '@ag.ds-next/select';
 import { Textarea } from '@ag.ds-next/textarea';
 import { TextInput } from '@ag.ds-next/text-input';
@@ -48,7 +49,7 @@ export const FormExampleSinglePage = () => {
 		<form onSubmit={handleSubmit(onSubmit)}>
 			<Stack gap={3}>
 				<Fieldset legend="Personal details">
-					<Stack gap={1.5}>
+					<FormStack>
 						<TextInput
 							label="Full name"
 							{...register('fullName')}
@@ -87,11 +88,11 @@ export const FormExampleSinglePage = () => {
 							maxWidth="sm"
 							required
 						/>
-					</Stack>
+					</FormStack>
 				</Fieldset>
 				<Divider />
 				<Fieldset legend="Contact details">
-					<Stack gap={1.5}>
+					<FormStack>
 						<TextInput
 							label="Email"
 							type="email"
@@ -110,10 +111,10 @@ export const FormExampleSinglePage = () => {
 							message={errors.mobile?.message}
 							maxWidth="md"
 						/>
-					</Stack>
+					</FormStack>
 				</Fieldset>
 				<Divider />
-				<Stack gap={1.5}>
+				<FormStack>
 					<Textarea
 						label="Message"
 						{...register('message')}
@@ -128,7 +129,7 @@ export const FormExampleSinglePage = () => {
 						By checking this box you agree to our{' '}
 						<TextLink href="#">terms and conditions</TextLink>.
 					</Checkbox>
-				</Stack>
+				</FormStack>
 				<Divider />
 				<Flex gap={1}>
 					<Button type="submit">Submit</Button>

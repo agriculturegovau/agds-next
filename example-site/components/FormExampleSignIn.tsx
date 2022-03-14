@@ -2,7 +2,7 @@ import { useForm, SubmitHandler } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { Button } from '@ag.ds-next/button';
-import { Stack } from '@ag.ds-next/box';
+import { FormStack } from '@ag.ds-next/form-stack';
 import { TextInput } from '@ag.ds-next/text-input';
 
 const formSchema = yup
@@ -32,7 +32,7 @@ export const FormExampleSignIn = () => {
 
 	return (
 		<form onSubmit={handleSubmit(onSubmit)}>
-			<Stack gap={1.5}>
+			<FormStack>
 				<TextInput
 					label="Email address"
 					type="email"
@@ -54,7 +54,7 @@ export const FormExampleSignIn = () => {
 				<div>
 					<Button type="submit">Sign in</Button>
 				</div>
-			</Stack>
+			</FormStack>
 		</form>
 	);
 };

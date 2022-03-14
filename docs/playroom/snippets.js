@@ -358,6 +358,22 @@ items={[
     ]}
     />`,
 	},
+	{
+		group: 'Form',
+		name: 'Sign in',
+		code: `<form>
+    <FormStack>
+      <TextInput label="Email" type="email" maxWidth="xl" />
+      <TextInput label="Password" type="password" maxWidth="xl" />
+      <Flex gap={1}>
+        <Button type="submit">Submit</Button>
+        <Button type="button" variant="secondary">
+          Cancel
+        </Button>
+      </Flex>
+    </FormStack>
+  </form>`,
+	},
 ];
 
 export default snippits;
