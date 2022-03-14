@@ -1,5 +1,55 @@
 ---
 title: Getting started
+type: Code
 ---
 
-Coming soon
+Welcome to AgDS - the Design System for the Australian Government Department of Agriculture, Water and the Environment.
+
+In this guide, we're going to go through the steps necessary to get started with the React component library from our Design System.
+
+## What is React?
+React is a popular framework for building User Interfaces, which our component library is built on.
+
+If you’re new to React, we recommend going through official [React getting started documentation](https://facebook.github.io/react/docs/hello-world.html), and follow along using the [React Hello World CodePen example](http://codepen.io/gaearon/pen/ZpvBNJ?editors=0010).
+
+## If you’re starting a new project…
+
+You can [take a look at the code for our example-site](https://github.com/steelthreads/agds-next/tree/main/example-site), which is built on NextJS. Clone the repository and port the code over to a new repository.
+
+## If you’re implementing components in an existing project…
+
+All of our AgDS components can be used in your existing React application.
+
+In order to get everything working, install the latest versions of these packages…
+
+`yarn add @ag.ds-next/ag-branding @ag.ds-next/box @ag.ds-next/core @ag.ds-next/text`
+
+Then wrap your application in our Core component…
+
+```jsx
+// This example assumes you are using NextJS.
+import Link, { LinkProps } from 'next/link';
+import { Core } from '@ag.ds-next/core';
+import { theme } from '@ag.ds-next/ag-branding';
+
+function MyApp({ Component, pageProps }) {
+	return (
+		<Core theme={theme} linkComponent={Link}>
+			<Component {...pageProps} />
+		</Core>
+	);
+}
+
+export default MyApp;
+```
+
+The Core component is responsible for enabling our CSS variables, and also make your chosen framework's Link component available to all of the AgDS components.
+
+You can now start using our components!
+
+> We recommend using TypeScript to get the most out of these components. Our [Example Site](https://github.com/steelthreads/agds-next/tree/main/example-site) already uses TypeScript so you can use that as reference.
+
+## What's next?
+Take a look at our wide range of [components](https://steelthreads.github.io/agds-next/packages), and install the ones you need in your application.
+
+If you get stuck, feel free to reach out to us in the Design System Teams Chat.
