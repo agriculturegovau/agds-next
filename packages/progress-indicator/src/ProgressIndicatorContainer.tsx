@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react';
-import { Stack } from '@ag.ds-next/box';
+import { Box } from '@ag.ds-next/box';
 
 export type ProgressIndicatorContainerProps = {
 	children: ReactNode;
@@ -8,7 +8,7 @@ export type ProgressIndicatorContainerProps = {
 export const ProgressIndicatorContainer = ({
 	children,
 }: ProgressIndicatorContainerProps) => (
-	<Stack as="ul" borderTop>
+	<Box borderTop borderBottom>
 		{children}
-	</Stack>
+	</Box>
 );
