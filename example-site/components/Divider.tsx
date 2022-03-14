@@ -1,4 +1,4 @@
-import { boxPalette } from '@ag.ds-next/core';
+import { boxPalette, tokens } from '@ag.ds-next/core';
 
 export const Divider = () => (
 	<hr
@@ -8,9 +8,9 @@ export const Divider = () => (
 			margin: 0,
 			overflow: 'visible',
 			border: 'none',
-			borderTopWidth: 1,
+			borderTopWidth: tokens.borderWidth.sm,
 			borderTopStyle: 'solid',
-			borderColor: boxPalette.border,
+			borderColor: boxPalette.borderMuted,
 			width: '100%',
 		}}
 	/>
