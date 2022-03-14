@@ -1,6 +1,6 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { Box } from '@ag.ds-next/box';
+import { Box, Flex } from '@ag.ds-next/box';
 import {
 	ProgressIndicator,
 	ProgressIndicatorItemLink,
@@ -12,6 +12,10 @@ import {
 } from './ProgressIndicatorList';
 import { ButtonLink } from '@ag.ds-next/button';
 import { Text } from '@ag.ds-next/text';
+import {
+	ProgressIndicatorItemIcon,
+	ProgressIndicatorItemLabel,
+} from './ProgressIndicatorItem';
 
 export default {
 	title: 'forms/ProgressIndicator',
@@ -63,7 +67,11 @@ export const ModularLinks = () => (
 		{exampleLinkItems.map(({ label, ...props }, index) => (
 			<ProgressIndicatorListItem key={index}>
 				<ProgressIndicatorItemLink {...props}>
-					{label}
+					<ProgressIndicatorItemIcon status={props.status} />
+					<Flex flexDirection="column">
+						<ProgressIndicatorItemLabel status={props.status} />
+						{label}
+					</Flex>
 				</ProgressIndicatorItemLink>
 			</ProgressIndicatorListItem>
 		))}
@@ -75,7 +83,11 @@ export const ModularButtons = () => (
 		{exampleButtonItems.map(({ label, ...props }, index) => (
 			<ProgressIndicatorListItem key={index}>
 				<ProgressIndicatorItemButton {...props}>
-					{label}
+					<ProgressIndicatorItemIcon status={props.status} />
+					<Flex flexDirection="column">
+						<ProgressIndicatorItemLabel status={props.status} />
+						{label}
+					</Flex>
 				</ProgressIndicatorItemButton>
 			</ProgressIndicatorListItem>
 		))}
@@ -84,13 +96,23 @@ export const ModularButtons = () => (
 
 export const TaskList = () => (
 	<ProgressIndicatorList>
-		{exampleButtonItems.map(({ label, ...props }, index) => (
+		{exampleButtonItems.map(({ label, status, ...props }, index) => (
 			<ProgressIndicatorListItem key={index}>
-				<ProgressIndicatorItemButton {...props}>
-					{label}
-					<Text color="muted">
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-					</Text>
+				<ProgressIndicatorItemButton status={status} {...props}>
+					<ProgressIndicatorItemIcon status={status} />
+					<Flex flexDirection="column">
+						<ProgressIndicatorItemLabel status={status} />
+						<Text
+							fontSize="md"
+							fontWeight={status === 'doing' ? 'bold' : 'normal'}
+							lineHeight="heading"
+						>
+							{label}
+						</Text>
+						<Text color="muted">
+							Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+						</Text>
+					</Flex>
 				</ProgressIndicatorItemButton>
 				<ButtonLink href="#" variant="secondary" size="sm">
 					Example

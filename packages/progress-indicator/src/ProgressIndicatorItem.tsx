@@ -3,7 +3,7 @@ import React, {
 	ElementType,
 	PropsWithChildren,
 } from 'react';
-import { Box, Flex } from '@ag.ds-next/box';
+import { Flex } from '@ag.ds-next/box';
 import { Text, TextLink } from '@ag.ds-next/text';
 import {
 	ProgressDoingIcon,
@@ -70,7 +70,6 @@ const ProgressIndicatorItem = ({
 	...props
 }: ProgressIndicatorItemProps) => {
 	const active = status === 'doing';
-	const Icon = statusIconMap[status];
 	return (
 		<Flex
 			as={as}
@@ -94,13 +93,7 @@ const ProgressIndicatorItem = ({
 			}}
 			{...props}
 		>
-			<Icon size="md" color="action" css={{ flexShrink: 0 }} />
-			<Flex flexDirection="column" gap={0}>
-				<Text color="muted" fontSize="xs" lineHeight="nospace">
-					{statusLabelMap[status]}
-				</Text>
-				{children}
-			</Flex>
+			{children}
 		</Flex>
 	);
 };
@@ -111,8 +104,29 @@ const statusIconMap = {
 	done: ProgressDoneIcon,
 } as const;
 
+export const ProgressIndicatorItemIcon = ({
+	status,
+}: {
+	status: ProgressIndicatorItemStatus;
+}) => {
+	const Icon = statusIconMap[status];
+	return <Icon size="md" color="action" css={{ flexShrink: 0 }} />;
+};
+
 const statusLabelMap = {
 	doing: 'Doing',
 	todo: 'Todo',
 	done: 'Done',
 } as const;
+
+export const ProgressIndicatorItemLabel = ({
+	status,
+}: {
+	status: ProgressIndicatorItemStatus;
+}) => {
+	return (
+		<Text color="muted" fontSize="xs" lineHeight="nospace">
+			{statusLabelMap[status]}
+		</Text>
+	);
+};

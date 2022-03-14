@@ -6,7 +6,7 @@ import {
 	useToggleState,
 	useWindowSize,
 } from '@ag.ds-next/core';
-import { useMemo, useRef } from 'react';
+import { Fragment, useMemo, useRef } from 'react';
 import { useSpring, animated } from 'react-spring';
 import { ProgressIndicatorCollapseButton } from './ProgressIndicatorCollapseButton';
 import { ProgressIndicatorContainer } from './ProgressIndicatorContainer';
@@ -17,9 +17,13 @@ import {
 import {
 	ProgressIndicatorItem,
 	ProgressIndicatorItemButton,
+	ProgressIndicatorItemIcon,
+	ProgressIndicatorItemLabel,
 	ProgressIndicatorItemLink,
 	ProgressIndicatorItemLinkProps,
 } from './ProgressIndicatorItem';
+import { Flex } from '@ag.ds-next/box';
+import { Text } from '@ag.ds-next/text';
 
 export type ProgressIndicatorProps = {
 	items: ProgressIndicatorItem[];
@@ -72,26 +76,37 @@ export const ProgressIndicator = ({ items }: ProgressIndicatorProps) => {
 				}}
 			>
 				<ProgressIndicatorList ref={ref}>
-					{items.map(({ label, ...props }, index) => (
-						<ProgressIndicatorListItem
-							key={index}
-							css={{
-								[tokens.mediaQuery.max.md]: {
-									'&:last-of-type': { borderBottom: 'none' },
-								},
-							}}
-						>
-							{isItemLink(props) ? (
-								<ProgressIndicatorItemLink {...props}>
+					{items.map(({ label, ...props }, index) => {
+						const commonUi = (
+							<Fragment>
+								<ProgressIndicatorItemIcon status={props.status} />
+								<Flex flexDirection="column">
+									<ProgressIndicatorItemLabel status={props.status} />
 									{label}
-								</ProgressIndicatorItemLink>
-							) : (
-								<ProgressIndicatorItemButton {...props}>
-									{label}
-								</ProgressIndicatorItemButton>
-							)}
-						</ProgressIndicatorListItem>
-					))}
+								</Flex>
+							</Fragment>
+						);
+						return (
+							<ProgressIndicatorListItem
+								key={index}
+								css={{
+									[tokens.mediaQuery.max.sm]: {
+										'&:last-of-type': { borderBottom: 'none' },
+									},
+								}}
+							>
+								{isItemLink(props) ? (
+									<ProgressIndicatorItemLink {...props}>
+										{commonUi}
+									</ProgressIndicatorItemLink>
+								) : (
+									<ProgressIndicatorItemButton {...props}>
+										{commonUi}
+									</ProgressIndicatorItemButton>
+								)}
+							</ProgressIndicatorListItem>
+						);
+					})}
 				</ProgressIndicatorList>
 			</animated.div>
 		</ProgressIndicatorContainer>
