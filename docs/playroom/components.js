@@ -95,3 +95,4 @@ export {
 export { DirectionLink, DirectionButton } from '@ag.ds-next/direction-link';
 export { Tags } from '@ag.ds-next/tags';
 export { FormStack } from '@ag.ds-next/form-stack';
+export { TaskList } from '@ag.ds-next/task-list';
