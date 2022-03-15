@@ -4,10 +4,11 @@ import * as yup from 'yup';
 import { Button } from '@ag.ds-next/button';
 import { Divider } from '../components/Divider';
 import { Fieldset } from '@ag.ds-next/fieldset';
-import { Stack } from '@ag.ds-next/box';
+import { Flex } from '@ag.ds-next/box';
 import { H1 } from '@ag.ds-next/heading';
 import { TextInput } from '@ag.ds-next/text-input';
 import { Text } from '@ag.ds-next/text';
+import { FormStack } from '@ag.ds-next/form-stack';
 
 const formSchema = yup
 	.object({
@@ -34,7 +35,7 @@ export const FormExampleMultiStep = () => {
 
 	return (
 		<form onSubmit={handleSubmit(onSubmit)}>
-			<Stack alignItems="flex-start" gap={1.5}>
+			<FormStack>
 				<Fieldset
 					legend={<H1>What is your date of birth?</H1>}
 					hint={
@@ -43,7 +44,7 @@ export const FormExampleMultiStep = () => {
 						</Text>
 					}
 				>
-					<Stack alignItems="flex-start" gap={1.5}>
+					<FormStack>
 						<TextInput
 							label="Day"
 							inputMode="numeric"
@@ -71,11 +72,16 @@ export const FormExampleMultiStep = () => {
 							invalid={Boolean(errors.year?.message)}
 							message={errors.year?.message}
 						/>
-					</Stack>
+					</FormStack>
 				</Fieldset>
 				<Divider />
-				<Button type="submit">Continue</Button>
-			</Stack>
+				<Flex gap={1}>
+					<Button type="submit">Continue</Button>
+					<Button type="button" variant="secondary">
+						Cancel
+					</Button>
+				</Flex>
+			</FormStack>
 		</form>
 	);
 };

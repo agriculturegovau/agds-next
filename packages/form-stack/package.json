@@ -1,0 +1,19 @@
+{
+	"name": "@ag.ds-next/form-stack",
+	"version": "0.0.1",
+	"main": "dist/ag.ds-next-form-stack.cjs.js",
+	"module": "dist/ag.ds-next-form-stack.esm.js",
+	"license": "MIT",
+	"peerDependencies": {
+		"@ag.ds-next/box": "4.0.1",
+		"@ag.ds-next/core": "2.1.1",
+		"@emotion/react": "^11.7.0",
+		"react": "^16.14.0 || ^17.0.0"
+	},
+	"devDependencies": {
+		"@ag.ds-next/box": "*",
+		"@ag.ds-next/core": "*",
+		"@emotion/react": "^11.7.0",
+		"react": "17.0.2"
+	}
+}
