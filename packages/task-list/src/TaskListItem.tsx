@@ -29,6 +29,7 @@ export const TaskListItemLink = ({
 export type TaskListItemButtonProps =
 	ButtonHTMLAttributes<HTMLButtonElement> & {
 		status: TaskListItemStatus;
+		message?: string;
 	};
 
 export const TaskListItemButton = ({
@@ -83,26 +84,31 @@ const TaskListItem = ({
 				css={{
 					borderLeftColor: active ? boxPalette.foregroundAction : 'transparent',
 					textDecoration: 'none',
-					// '&:hover': {
-					// 	...packs.underline,
-					// 	backgroundColor: boxPalette.backgroundShade,
-					// },
+					'&:hover': {
+						// ...packs.underline,
+						backgroundColor: boxPalette.backgroundShade,
+					},
 				}}
 				{...props}
 			>
 				<Icon size="md" color="action" />
-				<Flex flexDirection="column" gap={0}>
+				<Flex flexDirection="column" gap={0.25}>
 					<Text color="muted" fontSize="xs" lineHeight="nospace">
 						{statusLabelMap[status]}
 					</Text>
 					<Text
 						fontSize="md"
-						color="text"
+						color="action"
 						// fontWeight={active ? 'bold' : 'normal'}
+						css={{
+							...packs.underline,
+						}}
 					>
 						{children}
 					</Text>
-					<Text>{message}</Text>
+					<Text color="muted" fontSize="sm">
+						{message}
+					</Text>
 				</Flex>
 			</Flex>
 		</li>
