@@ -11,6 +11,7 @@ const NAV_LINKS = [
 	{ label: 'Content', href: '/content' },
 	{ label: 'Single page form', href: '/form-single-page' },
 	{ label: 'Multi step form', href: '/form-multi-step' },
+	{ label: 'Profile', href: '/profile' },
 ];
 
 export const SiteHeader = ({ focusMode }: { focusMode: boolean }) => {
