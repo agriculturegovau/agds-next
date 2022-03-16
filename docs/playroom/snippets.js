@@ -252,13 +252,13 @@ items={[
 		group: 'Fieldset',
 		name: 'Basic',
 		code: `	<Fieldset legend="What is your address?">
-    <Stack alignItems="flex-start" gap={1.5}>
+    <FormStack>
 			<TextInput label="Street and number" required maxWidth="xl" />
 			<TextInput label="Suburb" required maxWidth="xl" />
 			<TextInput label="Country" required maxWidth="xl" />
 			<TextInput label="Postcode" required maxWidth="sm" />
 		</Stack>
-	</Fieldset>`,
+	</FormStack>`,
 	},
 	{
 		group: 'Accordion',

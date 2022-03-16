@@ -11,12 +11,12 @@ Fieldset is used to associate a number of related form fields as well as labels 
 	legend="What is your address?"
 	hint="We will only use this to respond to your request"
 >
-	<Stack alignItems="flex-start" gap={1.5}>
+	<FormStack>
 		<TextInput label="Street and number" required maxWidth="xl" />
 		<TextInput label="Suburb" required maxWidth="xl" />
 		<TextInput label="Country" required maxWidth="xl" />
 		<TextInput label="Postcode" required maxWidth="sm" />
-	</Stack>
+	</FormStack>
 </Fieldset>
 ```
 
@@ -33,10 +33,10 @@ If you’re asking just one question per page, you can set the contents of the `
 		</Text>
 	}
 >
-	<Stack alignItems="flex-start" gap={1.5}>
+	<FormStack>
 		<TextInput label="Day" inputMode="numeric" maxWidth="md" required />
 		<TextInput label="Month" inputMode="numeric" maxWidth="md" required />
 		<TextInput label="Year" inputMode="numeric" maxWidth="md" required />
-	</Stack>
+	</FormStack>
 </Fieldset>
 ```
