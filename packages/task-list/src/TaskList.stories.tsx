@@ -21,7 +21,7 @@ export default {
 const exampleOrderedLinkItems = [
 	{ href: '#', label: 'Check eligibility', status: 'done' as const },
 	{ href: '#', label: 'Lorem ipsum dolor sit amet', status: 'done' as const },
-	{ href: '#', label: 'Case Studies', status: 'todo' as const },
+	{ href: '#', label: 'Case Studies', status: 'doing' as const },
 	{
 		href: '#',
 		label: 'Review and submit',
@@ -33,7 +33,7 @@ const exampleOrderedLinkItems = [
 const exampleUnorderedLinkItems = [
 	{ href: '#', label: 'Check eligibility', status: 'done' as const },
 	{ href: '#', label: 'Lorem ipsum dolor sit amet', status: 'done' as const },
-	{ href: '#', label: 'Case Studies', status: 'todo' as const },
+	{ href: '#', label: 'Case Studies', status: 'doing' as const },
 	{ href: '#', label: 'Review and submit', status: 'todo' as const },
 ];
 
@@ -51,7 +51,7 @@ const exampleOrderedButtonItems = [
 	{
 		onClick: console.log,
 		label: 'Case Studies',
-		status: 'todo' as const,
+		status: 'doing' as const,
 	},
 	{
 		onClick: console.log,
