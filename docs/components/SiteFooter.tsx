@@ -6,6 +6,7 @@ const footerLinks = [
 	{ label: 'Home', href: '/' },
 	{ label: 'Storybook', href: '/storybook/index.html' },
 	{ label: 'Playroom', href: '/playroom/index.html' },
+	{ label: 'Example site', href: '/example-site/index.html' },
 ];
 
 export const SiteFooter = () => {
