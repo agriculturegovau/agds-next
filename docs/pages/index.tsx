@@ -2,6 +2,7 @@ import { Columns, Column } from '@ag.ds-next/columns';
 import { Content } from '@ag.ds-next/content';
 import { Heading } from '@ag.ds-next/heading';
 import { Stack } from '@ag.ds-next/box';
+import { CallToActionLink } from '@ag.ds-next/call-to-action';
 import { Text } from '@ag.ds-next/text';
 import { tokens } from '@ag.ds-next/core';
 import { Body } from '@ag.ds-next/body';
@@ -15,7 +16,11 @@ export default function Homepage() {
 			<DocumentTitle />
 			<AppLayout>
 				<Content background="bodyAlt">
-					<Stack maxWidth={tokens.maxWidth.bodyText} gap={1.5}>
+					<Stack
+						maxWidth={tokens.maxWidth.bodyText}
+						gap={1.5}
+						alignItems="flex-start"
+					>
 						<Heading type="h1" fontSize={['xxl', 'xxxl']}>
 							Welcome to the Agriculture Design System (AgDS)
 						</Heading>
@@ -24,6 +29,9 @@ export default function Homepage() {
 							developers build the steel threads of the Export Service quickly,
 							efficiently and consistently.
 						</Text>
+						<CallToActionLink href="/guides/getting-started">
+							Get started
+						</CallToActionLink>
 					</Stack>
 				</Content>
 				<Content>
