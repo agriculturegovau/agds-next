@@ -10,7 +10,7 @@ export const TaskListContainer = ({
 	children,
 	as = 'ul',
 }: TaskListContainerProps) => (
-	<Stack as={as} borderTop>
+	<Stack as={as} borderTop css={{ counterReset: 'task-count' }}>
 		{children}
 	</Stack>
 );

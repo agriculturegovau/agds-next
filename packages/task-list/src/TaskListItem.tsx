@@ -78,15 +78,14 @@ const TaskListItem = ({
 	const active = status === 'doing';
 	const Icon = statusIconMap[status];
 	return (
-		<li css={{ counterIncrement: 'li-count' }}>
+		<li css={{ counterIncrement: 'task-count' }}>
 			<Flex
 				as={as}
 				alignItems="center"
 				gap={0.75}
 				padding={0.75}
+				fontFamily="body"
 				color="text"
-				// fontFamily="body"
-				// fontWeight={active ? 'bold' : 'normal'}
 				borderBottom
 				borderLeft
 				borderLeftWidth="xl"
@@ -96,7 +95,6 @@ const TaskListItem = ({
 					borderLeftColor: active ? boxPalette.foregroundAction : 'transparent',
 					textDecoration: 'none',
 					'&:hover': {
-						// ...packs.underline,
 						backgroundColor: boxPalette.backgroundShade,
 					},
 				}}
@@ -109,12 +107,14 @@ const TaskListItem = ({
 					</Text>
 					<Text
 						fontSize="md"
+						lineHeight="heading"
+						fontWeight="bold"
 						color="action"
 						css={{
 							...packs.underline,
 							...(ordered && {
 								'&:before': {
-									content: "counter(li-count) '. '",
+									content: "counter(task-count) '. '",
 								},
 							}),
 						}}
