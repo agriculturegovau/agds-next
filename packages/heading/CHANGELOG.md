@@ -1,5 +1,15 @@
 # @ag.ds-next/heading
 
+## 4.0.2
+
+### Patch Changes
+
+- Updated dependencies [89e8a5bd]
+- Updated dependencies [d1d414c9]
+- Updated dependencies [cb844b7e]
+  - @ag.ds-next/box@4.0.2
+  - @ag.ds-next/core@2.1.2
+
 ## 4.0.1
 
 ### Patch Changes

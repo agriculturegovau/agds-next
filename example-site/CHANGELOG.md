@@ -1,5 +1,59 @@
 # @ag.ds-next/example-site
 
+## 0.0.8
+
+### Patch Changes
+
+- 96690306: Updated multi step example
+- 60822794: - Restricted the `size` prop in the `Icon` component to accept only `sm` and `md`
+  - Removed vector scaling from icon components
+  - Updated usage of icons
+- 2a06c8c5: Fixed layout issue on mobile
+- 7e58e438: Updated forms to use `FormStack`
+- 22f57db3: Use new Icon components
+- 60822794: Updated `icon` prop API to be consistent with `Button` and updated usage
+- ef84e9d7: Added single page and multi-step form examples
+- Updated dependencies [974b379d]
+- Updated dependencies [7e58e438]
+- Updated dependencies [60822794]
+- Updated dependencies [74bd2fff]
+- Updated dependencies [4a45d834]
+- Updated dependencies [a48ac575]
+- Updated dependencies [0bf021f6]
+- Updated dependencies [eb7b2b1e]
+- Updated dependencies [89e8a5bd]
+- Updated dependencies [cb844b7e]
+- Updated dependencies [22f57db3]
+- Updated dependencies [60822794]
+- Updated dependencies [d1d414c9]
+- Updated dependencies [42b85722]
+- Updated dependencies [96690306]
+- Updated dependencies [cb844b7e]
+- Updated dependencies [2e6085ef]
+- Updated dependencies [3cb18aed]
+- Updated dependencies [fd41c54a]
+  - @ag.ds-next/main-nav@6.0.0
+  - @ag.ds-next/progress-indicator@3.0.0
+  - @ag.ds-next/form-stack@1.0.0
+  - @ag.ds-next/card@2.1.1
+  - @ag.ds-next/search-box@3.0.0
+  - @ag.ds-next/text-input@3.0.0
+  - @ag.ds-next/textarea@3.0.0
+  - @ag.ds-next/link-list@4.0.2
+  - @ag.ds-next/fieldset@1.0.0
+  - @ag.ds-next/box@4.0.2
+  - @ag.ds-next/button@4.0.2
+  - @ag.ds-next/core@2.1.2
+  - @ag.ds-next/header@5.0.0
+  - @ag.ds-next/content@4.0.2
+  - @ag.ds-next/body@4.0.2
+  - @ag.ds-next/control-input@3.0.0
+  - @ag.ds-next/columns@3.0.2
+  - @ag.ds-next/footer@4.0.2
+  - @ag.ds-next/heading@4.0.2
+  - @ag.ds-next/text@4.0.2
+  - @ag.ds-next/ag-branding@4.0.2
+
 ## 0.0.7
 
 ### Patch Changes

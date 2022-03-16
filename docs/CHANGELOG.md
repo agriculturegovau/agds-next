@@ -1,5 +1,92 @@
 # @ag.ds-next/docs
 
+## 0.2.2
+
+### Patch Changes
+
+- 60822794: - Restricted the `size` prop in the `Icon` component to accept only `sm` and `md`
+  - Removed vector scaling from icon components
+  - Updated usage of icons
+- 2a06c8c5: Fixed layout issue on mobile
+- 22f57db3: Use new Icon components
+- 60822794: Updated `icon` prop API to be consistent with `Button` and updated usage
+- 7f919084: Used new `tag` component in release page
+- Updated dependencies [974b379d]
+- Updated dependencies [7e58e438]
+- Updated dependencies [60822794]
+- Updated dependencies [74bd2fff]
+- Updated dependencies [4a45d834]
+- Updated dependencies [a48ac575]
+- Updated dependencies [f61e4466]
+- Updated dependencies [0bf021f6]
+- Updated dependencies [f185fbf9]
+- Updated dependencies [a35f83a5]
+- Updated dependencies [eb7b2b1e]
+- Updated dependencies [1ea67132]
+- Updated dependencies [42b85722]
+- Updated dependencies [89e8a5bd]
+- Updated dependencies [cb844b7e]
+- Updated dependencies [2a6c7516]
+- Updated dependencies [22f57db3]
+- Updated dependencies [cb844b7e]
+- Updated dependencies [60822794]
+- Updated dependencies [d1d414c9]
+- Updated dependencies [2e6085ef]
+- Updated dependencies [b71b667d]
+- Updated dependencies [42b85722]
+- Updated dependencies [96690306]
+- Updated dependencies [19dfa596]
+- Updated dependencies [d1d414c9]
+- Updated dependencies [1c2bd6b3]
+- Updated dependencies [cb844b7e]
+- Updated dependencies [2e6085ef]
+- Updated dependencies [11113d3a]
+- Updated dependencies [6e62afe1]
+- Updated dependencies [cc5412a1]
+- Updated dependencies [3cb18aed]
+- Updated dependencies [d263c0cc]
+- Updated dependencies [fd41c54a]
+- Updated dependencies [cfea9d7e]
+- Updated dependencies [7f919084]
+- Updated dependencies [3d4831cd]
+- Updated dependencies [72e9eb7f]
+- Updated dependencies [22f57db3]
+  - @ag.ds-next/direction-link@1.0.0
+  - @ag.ds-next/main-nav@6.0.0
+  - @ag.ds-next/progress-indicator@3.0.0
+  - @ag.ds-next/form-stack@1.0.0
+  - @ag.ds-next/accordion@2.0.0
+  - @ag.ds-next/breadcrumbs@5.0.0
+  - @ag.ds-next/card@2.1.1
+  - @ag.ds-next/field@3.0.0
+  - @ag.ds-next/icon@5.0.0
+  - @ag.ds-next/search-box@3.0.0
+  - @ag.ds-next/side-nav@5.0.0
+  - @ag.ds-next/text-input@3.0.0
+  - @ag.ds-next/select@3.0.0
+  - @ag.ds-next/textarea@3.0.0
+  - @ag.ds-next/link-list@4.0.2
+  - @ag.ds-next/call-to-action@1.0.0
+  - @ag.ds-next/fieldset@1.0.0
+  - @ag.ds-next/box@4.0.2
+  - @ag.ds-next/button@4.0.2
+  - @ag.ds-next/core@2.1.2
+  - @ag.ds-next/header@5.0.0
+  - @ag.ds-next/content@4.0.2
+  - @ag.ds-next/callout@1.0.0
+  - @ag.ds-next/task-list@1.0.0
+  - @ag.ds-next/keyword-list@1.0.2
+  - @ag.ds-next/tags@1.0.0
+  - @ag.ds-next/body@4.0.2
+  - @ag.ds-next/inpage-nav@1.0.1
+  - @ag.ds-next/skip-link@1.0.2
+  - @ag.ds-next/control-input@3.0.0
+  - @ag.ds-next/columns@3.0.2
+  - @ag.ds-next/footer@4.0.2
+  - @ag.ds-next/heading@4.0.2
+  - @ag.ds-next/text@4.0.2
+  - @ag.ds-next/ag-branding@4.0.2
+
 ## 0.2.1
 
 ### Patch Changes

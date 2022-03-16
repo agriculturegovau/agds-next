@@ -1,5 +1,31 @@
 # @ag.ds-next/accordion
 
+## 2.0.0
+
+### Patch Changes
+
+- 60822794: - Restricted the `size` prop in the `Icon` component to accept only `sm` and `md`
+  - Removed vector scaling from icon components
+  - Updated usage of icons
+- 22f57db3: Use new Icon components
+- 19dfa596: - Added hover styles
+  - Increased content padding
+  - Updated controlled documentation
+- 11113d3a: Updated UI to reflect latest designs
+- 72e9eb7f: - Removed `id` prop from `AccordionItem`
+  - Updated format of auto generate IDs
+- Updated dependencies [60822794]
+- Updated dependencies [a35f83a5]
+- Updated dependencies [42b85722]
+- Updated dependencies [89e8a5bd]
+- Updated dependencies [d1d414c9]
+- Updated dependencies [cb844b7e]
+- Updated dependencies [cfea9d7e]
+- Updated dependencies [22f57db3]
+  - @ag.ds-next/icon@5.0.0
+  - @ag.ds-next/box@4.0.2
+  - @ag.ds-next/core@2.1.2
+
 ## 1.0.1
 
 ### Patch Changes

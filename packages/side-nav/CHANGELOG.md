@@ -1,5 +1,33 @@
 # @ag.ds-next/side-nav
 
+## 5.0.0
+
+### Major Changes
+
+- 1c2bd6b3: - Move collapse logic outside of SideNavContainer.
+  - Improve accessibility for screenreader users.
+
+### Patch Changes
+
+- 60822794: - Restricted the `size` prop in the `Icon` component to accept only `sm` and `md`
+  - Removed vector scaling from icon components
+  - Updated usage of icons
+- 89e8a5bd: Added `underline` pack and updated usage
+- 22f57db3: Use new Icon components
+- cb844b7e: Applied new design
+- d1d414c9: Added `aria-hidden` to collapsable content
+- Updated dependencies [60822794]
+- Updated dependencies [a35f83a5]
+- Updated dependencies [42b85722]
+- Updated dependencies [89e8a5bd]
+- Updated dependencies [d1d414c9]
+- Updated dependencies [cb844b7e]
+- Updated dependencies [cfea9d7e]
+- Updated dependencies [22f57db3]
+  - @ag.ds-next/icon@5.0.0
+  - @ag.ds-next/box@4.0.2
+  - @ag.ds-next/core@2.1.2
+
 ## 4.0.1
 
 ### Patch Changes

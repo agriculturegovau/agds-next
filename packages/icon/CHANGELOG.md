@@ -1,5 +1,29 @@
 # @ag.ds-next/icon
 
+## 5.0.0
+
+### Major Changes
+
+- 22f57db3: All-new Icon components
+
+### Minor Changes
+
+- 60822794: - Restricted the `size` prop in the `Icon` component to accept only `sm` and `md`
+  - Removed vector scaling from icon components
+  - Updated usage of icons
+
+### Patch Changes
+
+- a35f83a5: Updated documentation
+- 42b85722: Export `IconProps` type
+- cfea9d7e: Support classnames, Don't scale strokes
+- Updated dependencies [89e8a5bd]
+- Updated dependencies [d1d414c9]
+- Updated dependencies [cb844b7e]
+  - @ag.ds-next/box@4.0.2
+  - @ag.ds-next/core@2.1.2
+  - @ag.ds-next/text@4.0.2
+
 ## 4.0.1
 
 ### Patch Changes

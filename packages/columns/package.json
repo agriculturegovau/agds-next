@@ -1,12 +1,12 @@
 {
 	"name": "@ag.ds-next/columns",
-	"version": "3.0.1",
+	"version": "3.0.2",
 	"main": "dist/ag.ds-next-columns.cjs.js",
 	"module": "dist/ag.ds-next-columns.esm.js",
 	"license": "MIT",
 	"peerDependencies": {
-		"@ag.ds-next/box": "4.0.1",
-		"@ag.ds-next/core": "2.1.1",
+		"@ag.ds-next/box": "4.0.2",
+		"@ag.ds-next/core": "2.1.2",
 		"@emotion/react": "^11.7.0",
 		"react": "^16.14.0 || ^17.0.0"
 	},

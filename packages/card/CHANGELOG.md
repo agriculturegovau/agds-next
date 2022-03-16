@@ -1,5 +1,19 @@
 # @ag.ds-next/card
 
+## 2.1.1
+
+### Patch Changes
+
+- 60822794: - Restricted the `size` prop in the `Icon` component to accept only `sm` and `md`
+  - Removed vector scaling from icon components
+  - Updated usage of icons
+- 22f57db3: Use new Icon components
+- Updated dependencies [89e8a5bd]
+- Updated dependencies [d1d414c9]
+- Updated dependencies [cb844b7e]
+  - @ag.ds-next/box@4.0.2
+  - @ag.ds-next/core@2.1.2
+
 ## 2.1.0
 
 ### Minor Changes
