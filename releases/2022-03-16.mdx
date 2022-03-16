@@ -1,0 +1,137 @@
+---
+title: March 16th, 2022
+type: minor
+description: Updated Icon API, new components, bug fixes and improvements.
+---
+
+> ⚠️ Note: All releases under the `@ag.ds-next` package scope should be considered alpha pre-releases. Expect breaking changes. Once we are happy with the state of the core packages we will migrate all packages to `@ag.ds`.
+
+## New packages
+
+- `@ag.ds-next/callout`
+- `@ag.ds-next/fieldset`
+- `@ag.ds-next/call-to-action`
+- `@ag.ds-next/direction-link`
+- `@ag.ds-next/form-stack`
+- `@ag.ds-next/tags`
+- `@ag.ds-next/task-list`
+
+## Updates
+
+### `@ag.ds-next/icon`
+
+- Replaced the generic `Icon` component with components for each individual Icon. Please upgrade like so:
+
+```diff
+- <Icon name="avatar" ... />
++ <AvatarIcon ... />
+```
+
+- Restricted values of the `size` prop to `sm` and `md`. Please upgrade like so:
+
+```diff
+- <AvatarIcon size={1.5} />
++ <AvatarIcon size="md" />
+```
+
+### @ag.ds-next/side-nav
+
+- Move collapse logic outside of SideNavContainer
+- Improve accessibility for screenreader users
+
+### @ag.ds-next/field
+
+- Replace `required` with `aria-required` to improve a11y
+- Fixed a bug where if an `id` prop is supplied that value was not being used
+
+### @ag.ds-next/text-input
+
+- Replace `required` with `aria-required` to improve a11y
+
+### @ag.ds-next/textarea
+
+- Replace `required` with `aria-required` to improve a11y
+
+### @ag.ds-next/body
+
+- Removed margins from blockquote elements
+
+### @ag.ds-next/button
+
+- Added `iconBefore` and `iconAfter` props
+
+### @ag.ds-next/content
+
+- Added new color token `borderMuted`
+- Added new hook `useWindowSize`
+- Added underline pack
+
+### @ag.ds-next/core
+
+- Added new color token `borderMuted`
+- Added new hook `useWindowSize`
+- Added underline pack
+
+### @ag.ds-next/inpage-nav
+
+- Added `aria-label` prop and updated default value
+
+### @ag.ds-next/keyword-list
+
+- Updated color of sub title
+
+### @ag.ds-next/link-list
+
+- Updated documentation
+
+### @ag.ds-next/main-nav
+
+- Added `aria-current="page"` to active nav item
+
+### @ag.ds-next/skip-link
+
+- Updated default aria label
+
+## Full Changelog
+
+Aside from the [complete release notes on the @ag.ds-next website](https://steelthreads.github.io/agds-next/releases/2022-03-16), you can also view the [verbose change log](https://github.com/steelthreads/agds-next/pull/190) in the related PR (https://github.com/steelthreads/agds-next/pull/190) for this release.
+
+## Released packages
+
+```sh
+"@ag.ds-next/accordion": "2.0.0",
+"@ag.ds-next/ag-branding": "4.0.2",
+"@ag.ds-next/body": "4.0.2",
+"@ag.ds-next/box": "4.0.2",
+"@ag.ds-next/breadcrumbs": "5.0.0",
+"@ag.ds-next/button": "4.0.2",
+"@ag.ds-next/call-to-action": "1.0.0",
+"@ag.ds-next/callout": "1.0.0",
+"@ag.ds-next/card": "2.1.1",
+"@ag.ds-next/columns": "3.0.2",
+"@ag.ds-next/content": "4.0.2",
+"@ag.ds-next/control-input": "3.0.0",
+"@ag.ds-next/core": "2.1.2",
+"@ag.ds-next/direction-link": "1.0.0",
+"@ag.ds-next/field": "3.0.0",
+"@ag.ds-next/fieldset": "1.0.0",
+"@ag.ds-next/footer": "4.0.2",
+"@ag.ds-next/form-stack": "1.0.0",
+"@ag.ds-next/header": "5.0.0",
+"@ag.ds-next/heading": "4.0.2",
+"@ag.ds-next/icon": "5.0.0",
+"@ag.ds-next/inpage-nav": "1.0.1",
+"@ag.ds-next/keyword-list": "1.0.2",
+"@ag.ds-next/link-list": "4.0.2",
+"@ag.ds-next/main-nav": "6.0.0",
+"@ag.ds-next/progress-indicator": "3.0.0",
+"@ag.ds-next/search-box": "3.0.0",
+"@ag.ds-next/select": "3.0.0",
+"@ag.ds-next/side-nav": "5.0.0",
+"@ag.ds-next/skip-link": "1.0.2",
+"@ag.ds-next/tags": "1.0.0",
+"@ag.ds-next/task-list": "1.0.0",
+"@ag.ds-next/text": "4.0.2",
+"@ag.ds-next/text-input": "3.0.0",
+"@ag.ds-next/textarea": "3.0.0",
+```
