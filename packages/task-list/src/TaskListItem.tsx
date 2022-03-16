@@ -81,9 +81,9 @@ const TaskListItem = ({
 		<li css={{ counterIncrement: 'task-count' }}>
 			<Flex
 				as={as}
-				alignItems="center"
 				gap={0.75}
-				padding={0.75}
+				paddingY={1.5}
+				paddingX={0.75}
 				fontFamily="body"
 				color="text"
 				borderBottom
@@ -100,7 +100,14 @@ const TaskListItem = ({
 				}}
 				{...props}
 			>
-				<Icon size="md" color="action" />
+				<Icon
+					size="md"
+					color="action"
+					css={{
+						// Use padding to ensure the icon is aligned centered with the status label and title
+						paddingTop: '0.75rem',
+					}}
+				/>
 				<Flex flexDirection="column" gap={0.25}>
 					<Text color="muted" fontSize="xs" lineHeight="nospace">
 						{statusLabelMap[status]}
@@ -121,7 +128,7 @@ const TaskListItem = ({
 					>
 						{children}
 					</Text>
-					<Text color="muted" fontSize="sm">
+					<Text color="muted" fontSize="xs">
 						{message}
 					</Text>
 				</Flex>

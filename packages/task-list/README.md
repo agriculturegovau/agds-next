@@ -26,7 +26,7 @@ The individual tasks or steps are shown as either:
 		{
 			href: '#',
 			label: 'Case Studies',
-			status: 'todo',
+			status: 'doing',
 		},
 		{
 			href: '#',
@@ -90,7 +90,7 @@ If an item does not specify a `href` attribute a `button` element will be render
 		{
 			onClick: console.log,
 			label: 'Case Studies',
-			status: 'todo',
+			status: 'doing',
 		},
 		{
 			onClick: console.log,
