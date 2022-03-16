@@ -21,15 +21,13 @@ export const TaskList = ({ items, ordered = true }: TaskListProps) => (
 		{items.map(({ label, ...props }, index) => {
 			if (isItemLink(props)) {
 				return (
-					<TaskListItemLink key={index} {...props}>
-						{ordered ? `${index + 1}. ` : null}
+					<TaskListItemLink key={index} ordered={ordered} {...props}>
 						{label}
 					</TaskListItemLink>
 				);
 			}
 			return (
-				<TaskListItemButton key={index} {...props}>
-					{ordered ? `${index + 1}. ` : null}
+				<TaskListItemButton key={index} ordered={ordered} {...props}>
 					{label}
 				</TaskListItemButton>
 			);

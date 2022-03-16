@@ -13,15 +13,23 @@ export type TaskListItemStatus = 'doing' | 'todo' | 'done';
 export type TaskListItemLinkProps = LinkProps & {
 	status: TaskListItemStatus;
 	message?: string;
+	ordered?: boolean;
 };
 
 export const TaskListItemLink = ({
 	children,
 	message,
 	status,
+	ordered,
 	...props
 }: TaskListItemLinkProps) => (
-	<TaskListItem as={TextLink} status={status} message={message} {...props}>
+	<TaskListItem
+		as={TextLink}
+		status={status}
+		message={message}
+		ordered={ordered}
+		{...props}
+	>
 		{children}
 	</TaskListItem>
 );
@@ -30,6 +38,7 @@ export type TaskListItemButtonProps =
 	ButtonHTMLAttributes<HTMLButtonElement> & {
 		status: TaskListItemStatus;
 		message?: string;
+		ordered?: boolean;
 	};
 
 export const TaskListItemButton = ({
@@ -55,6 +64,7 @@ type TaskListItemProps = PropsWithChildren<{
 	as: ElementType;
 	status: TaskListItemStatus;
 	message?: string;
+	ordered?: boolean;
 }>;
 
 const TaskListItem = ({
@@ -62,12 +72,13 @@ const TaskListItem = ({
 	children,
 	status,
 	message,
+	ordered,
 	...props
 }: TaskListItemProps) => {
 	const active = status === 'doing';
 	const Icon = statusIconMap[status];
 	return (
-		<li>
+		<li css={{ counterIncrement: 'li-count' }}>
 			<Flex
 				as={as}
 				alignItems="center"
@@ -99,9 +110,13 @@ const TaskListItem = ({
 					<Text
 						fontSize="md"
 						color="action"
-						// fontWeight={active ? 'bold' : 'normal'}
 						css={{
 							...packs.underline,
+							...(ordered && {
+								'&:before': {
+									content: "counter(li-count) '. '",
+								},
+							}),
 						}}
 					>
 						{children}
