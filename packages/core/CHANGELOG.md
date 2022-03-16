@@ -1,5 +1,13 @@
 # @ag.ds-next/core
 
+## 2.1.2
+
+### Patch Changes
+
+- 89e8a5bd: Added `underline` pack and updated usage
+- d1d414c9: Added new hook `useWindowSize`
+- cb844b7e: Added new color token `borderMuted`
+
 ## 2.1.1
 
 ### Patch Changes

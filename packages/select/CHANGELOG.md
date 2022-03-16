@@ -1,5 +1,32 @@
 # @ag.ds-next/select
 
+## 3.0.0
+
+### Minor Changes
+
+- fd41c54a: Replace `required` with `aria-required` to improve a11y
+
+### Patch Changes
+
+- 4a45d834: Fixed a bug in `Field` and updated usage so if an `id` prop is supplied, that value will be used instead of the auto generated ID.
+- 1ea67132: Update documentation
+- 22f57db3: Use new Icon components
+- Updated dependencies [60822794]
+- Updated dependencies [4a45d834]
+- Updated dependencies [a35f83a5]
+- Updated dependencies [42b85722]
+- Updated dependencies [89e8a5bd]
+- Updated dependencies [22f57db3]
+- Updated dependencies [d1d414c9]
+- Updated dependencies [cb844b7e]
+- Updated dependencies [fd41c54a]
+- Updated dependencies [cfea9d7e]
+- Updated dependencies [22f57db3]
+  - @ag.ds-next/field@3.0.0
+  - @ag.ds-next/icon@5.0.0
+  - @ag.ds-next/box@4.0.2
+  - @ag.ds-next/core@2.1.2
+
 ## 2.0.2
 
 ### Patch Changes

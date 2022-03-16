@@ -1,5 +1,23 @@
 # @ag.ds-next/header
 
+## 5.0.0
+
+### Patch Changes
+
+- 89e8a5bd: Added `underline` pack and updated usage
+- Updated dependencies [60822794]
+- Updated dependencies [4a45d834]
+- Updated dependencies [89e8a5bd]
+- Updated dependencies [22f57db3]
+- Updated dependencies [d1d414c9]
+- Updated dependencies [cb844b7e]
+  - @ag.ds-next/search-box@3.0.0
+  - @ag.ds-next/box@4.0.2
+  - @ag.ds-next/core@2.1.2
+  - @ag.ds-next/columns@3.0.2
+  - @ag.ds-next/heading@4.0.2
+  - @ag.ds-next/text@4.0.2
+
 ## 4.1.0
 
 ### Minor Changes

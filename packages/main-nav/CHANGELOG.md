@@ -1,5 +1,26 @@
 # @ag.ds-next/main-nav
 
+## 6.0.0
+
+### Patch Changes
+
+- 974b379d: Update usage of `forwardRefWithAs`
+- 0bf021f6: Added `aria-current="page"` to active nav item
+- 89e8a5bd: Added `underline` pack and updated usage
+- 22f57db3: Use new Icon components
+- 60822794: Updated `icon` prop API to be consistent with `Button` and updated usage
+- Updated dependencies [60822794]
+- Updated dependencies [a35f83a5]
+- Updated dependencies [42b85722]
+- Updated dependencies [89e8a5bd]
+- Updated dependencies [d1d414c9]
+- Updated dependencies [cb844b7e]
+- Updated dependencies [cfea9d7e]
+- Updated dependencies [22f57db3]
+  - @ag.ds-next/icon@5.0.0
+  - @ag.ds-next/box@4.0.2
+  - @ag.ds-next/core@2.1.2
+
 ## 5.0.1
 
 ### Patch Changes
