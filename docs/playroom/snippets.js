@@ -374,6 +374,35 @@ items={[
     </FormStack>
   </form>`,
 	},
+	{
+		group: 'TaskList',
+		name: 'Basic',
+		code: `<TaskList
+    items={[
+      {
+        href: '#',
+        label: 'Check eligibility',
+        status: 'done',
+      },
+      {
+        href: '#',
+        label: 'Lorem ipsum dolor sit amet',
+        status: 'done',
+      },
+      {
+        href: '#',
+        label: 'Case Studies',
+        status: 'todo',
+      },
+      {
+        href: '#',
+        label: 'Review and submit',
+        message: 'Not available until previous tasks are done',
+        status: 'todo',
+      },
+    ]}
+  />`,
+	},
 ];
 
 export default snippits;
