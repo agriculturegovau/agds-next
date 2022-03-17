@@ -1,0 +1,124 @@
+---
+title: Forms
+---
+
+Web forms are one of the main points of interaction between a user and a web site or application. Forms allow users to enter data, which is generally sent to a web server for processing and storage.
+
+In this guide, we will be building a simple sign in form which could be used to authenticate a user to a web site or application.
+
+### Install AgDS packages
+
+Install the following packages by running the following command in your terminal:
+
+```sh
+yarn add @ag.ds-next/field @ag.ds-next/icon @ag.ds-next/text-input @ag.ds-next/button @ag.ds-next/form-stack
+```
+
+### Compose the user interface
+
+Using the `TextInput`, `FormStack` and `Button` components, we can quickly compose the user interface for the form.
+
+```tsx
+import { Button } from '@ag.ds-next/button';
+import { FormStack } from '@ag.ds-next/form-stack';
+import { TextInput } from '@ag.ds-next/text-input';
+
+function FormExampleSignIn() {
+	return (
+		<form>
+			<FormStack>
+				<TextInput label="Email" required />
+				<TextInput label="Password" type="password" required />
+				<div>
+					<Button type="submit">Sign in</Button>
+				</div>
+			</FormStack>
+		</form>
+	);
+}
+```
+
+### Handling form state
+
+The AgDS component library does not have any opinions for handling form state, instead our components have been designed to work with any form library.
+
+In this step, we will be using `react-hook-form` and `yup` to handle form state and client-side validation. Fore more information about these two libraries, please refer to the [official documentation](https://react-hook-form.com/get-started#SchemaValidation).
+
+Firsly, we need to install these dependencies by running the following command in your terminal:
+
+```sh
+yarn add react-hook-form @hookform/resolvers yup
+```
+
+Secondly, we will build our form schema with `yup` and use `react-hook-form` to handle our form state.
+
+```tsx
+import { useForm, SubmitHandler } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as yup from 'yup';
+import { Button } from '@ag.ds-next/button';
+import { FormStack } from '@ag.ds-next/form-stack';
+import { TextInput } from '@ag.ds-next/text-input';
+
+const formSchema = yup
+	.object({
+		email: yup
+			.string()
+			.email('Invalid email address')
+			.required('Enter your email address'),
+		password: yup.string().required('Enter your password'),
+	})
+	.required();
+
+type FormSchema = yup.InferType<typeof formSchema>;
+
+export function FormExampleSignIn() {
+	const {
+		register,
+		handleSubmit,
+		formState: { errors },
+	} = useForm<FormSchema>({
+		resolver: yupResolver(formSchema),
+	});
+
+	const onSubmit: SubmitHandler<FormSchema> = (data) => {
+		console.log(data);
+	};
+
+	return (
+		<form onSubmit={handleSubmit(onSubmit)}>
+			<FormStack>
+				<TextInput
+					label="Email address"
+					type="email"
+					{...register('email')}
+					invalid={Boolean(errors.email?.message)}
+					message={errors.email?.message}
+					maxWidth="xl"
+					required
+				/>
+				<TextInput
+					label="Password"
+					type="password"
+					{...register('password')}
+					invalid={Boolean(errors.password?.message)}
+					message={errors.password?.message}
+					maxWidth="xl"
+					required
+				/>
+				<div>
+					<Button type="submit">Sign in</Button>
+				</div>
+			</FormStack>
+		</form>
+	);
+}
+```
+
+## What's next?
+
+Take a look at our wide range of [form components](https://steelthreads.github.io/agds-next/packages/form), and install the ones you need in your application.
+
+> We recommend using TypeScript to get the most out of these components.
+
+If you get stuck, feel free to reach out to us in the Design System Teams Chat.
