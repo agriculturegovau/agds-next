@@ -45,7 +45,7 @@ const snippits = [
 	{
 		group: 'Footer',
 		name: 'Basic',
-		code: `<Footer variant={args.variant}>
+		code: `<Footer>
     <nav aria-label="footer">
       <LinkList
         horizontal
@@ -257,8 +257,8 @@ items={[
 			<TextInput label="Suburb" required maxWidth="xl" />
 			<TextInput label="Country" required maxWidth="xl" />
 			<TextInput label="Postcode" required maxWidth="sm" />
-		</Stack>
-	</FormStack>`,
+		</FormStack>
+	</Fieldset>`,
 	},
 	{
 		group: 'Accordion',
