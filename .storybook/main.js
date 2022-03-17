@@ -12,7 +12,6 @@ module.exports = {
 			},
 		},
 		'@storybook/addon-a11y',
-		'@storybook/addon-ie11',
 	],
 	framework: '@storybook/react',
 	staticDirs: ['../example-site/public'],

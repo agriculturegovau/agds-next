@@ -2476,15 +2476,6 @@
     regenerator-runtime "^0.13.7"
     ts-dedent "^2.0.0"
 
-"@storybook/addon-ie11@^0.0.6":
-  version "0.0.6"
-  resolved "https://registry.yarnpkg.com/@storybook/addon-ie11/-/addon-ie11-0.0.6.tgz#aa3c704a74880328c1c3522a95a46950538c367e"
-  integrity sha512-4f8Q8vRtJwf7pujMKsPcMq+OwlON9gTp11ddhd2I5EYUp9Zrb58anCfif+rPEhUMsmOKhLjVf/H7W5RUNeEdvw==
-  dependencies:
-    "@babel/preset-env" "^7.12.11"
-    "@storybook/node-logger" "*"
-    babel-loader "^8.1.0"
-
 "@storybook/addon-links@^6.4.19":
   version "6.4.19"
   resolved "https://registry.yarnpkg.com/@storybook/addon-links/-/addon-links-6.4.19.tgz#001f26c4ffc7d36fd6018b8a137449948b337869"
@@ -2990,7 +2981,7 @@
     webpack-dev-middleware "^3.7.3"
     webpack-virtual-modules "^0.2.2"
 
-"@storybook/node-logger@*", "@storybook/node-logger@6.4.19":
+"@storybook/node-logger@6.4.19":
   version "6.4.19"
   resolved "https://registry.yarnpkg.com/@storybook/node-logger/-/node-logger-6.4.19.tgz#554f9efad4e95ce6fa63222d026f43258293c896"
   integrity sha512-hO2Aar3PgPnPtNq2fVgiuGlqo3EEVR6TKVBXMq7foL3tN2k4BQFKLDHbm5qZQQntyYKurKsRUGKPJFPuI1ov/w==
@@ -4628,7 +4619,7 @@ babel-jest@^27.4.5, babel-jest@^27.5.1:
     graceful-fs "^4.2.9"
     slash "^3.0.0"
 
-babel-loader@^8.0.0, babel-loader@^8.1.0, babel-loader@^8.2.2, babel-loader@^8.2.3:
+babel-loader@^8.0.0, babel-loader@^8.2.2, babel-loader@^8.2.3:
   version "8.2.3"
   resolved "https://registry.yarnpkg.com/babel-loader/-/babel-loader-8.2.3.tgz#8986b40f1a64cacfcb4b8429320085ef68b1342d"
   integrity sha512-n4Zeta8NC3QAsuyiizu0GkmRcQ6clkV9WFUnUf1iXP//IeSKbWjofW3UHyZVwlOB4y039YQKefawyTn64Zwbuw==
