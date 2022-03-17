@@ -44,7 +44,6 @@
 		"@storybook/addon-a11y": "^6.4.19",
 		"@storybook/addon-actions": "^6.4.19",
 		"@storybook/addon-essentials": "^6.4.19",
-		"@storybook/addon-ie11": "^0.0.6",
 		"@storybook/addon-links": "^6.4.19",
 		"@storybook/react": "^6.4.19",
 		"@types/jest": "^27.0.3",
