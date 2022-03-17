@@ -31,7 +31,7 @@ export const globalTypes = {
 	brand: {
 		name: 'Brand',
 		description: 'Global branding',
-		defaultValue: 'gold',
+		defaultValue: 'agriculture',
 		toolbar: {
 			icon: 'circlehollow',
 			// Array of plain string values or MenuItem shape (see below)
