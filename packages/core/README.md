@@ -6,16 +6,36 @@ group: Foundations
 
 The `Core` component should wrap your entire application, which will enable our CSS variables reset styles.
 
-It accepts a `theme` prop that enables overwriting of the default theme.
+### Theming
+
+The `Core` component accepts a `theme` prop that enables overwriting of the default theme.
 
 ```jsx
 import { Core } from '@ag.ds-next/core';
 
-export const App = () => (
-	<Core theme={theme} linkComponent={LinkComponent}>
-		<MyApplication />
-	</Core>
-);
+export default function MyApp({ Component, pageProps }) {
+	return (
+		<Core theme={theme}>
+			<Component {...pageProps} />
+		</Core>
+	);
+}
+```
+
+### Routing / Linking
+
+Our component library has been designed to work with any react routing library. For an example of configuring routing/links in AgDS for a Next.js application, please see [our example site](https://github.com/steelthreads/agds-next/tree/main/example-site/components/LinkComponent.tsx).
+
+```jsx
+import { Core } from '@ag.ds-next/core';
+
+export default function MyApp({ Component, pageProps }) {
+	return (
+		<Core theme={theme} linkComponent={LinkComponent}>
+			<Component {...pageProps} />
+		</Core>
+	);
+}
 ```
 
 ## Design Tokens

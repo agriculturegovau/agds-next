@@ -4,7 +4,9 @@ description: A colour palette and logo set for Agriculture
 group: Brand
 ---
 
-## AG Palette
+## Agriculture theme
+
+To use the agriculture theme in your website or application, pass the `theme` object from this package to our `Core` component.
 
 ```jsx
 import { Core } from '@ag.ds-next/core';
@@ -19,22 +21,10 @@ export default function App({ Component }) {
 }
 ```
 
-## AG Logo
+## Agriculture logo
 
-```jsx
-import { Logo } from '@ag.ds-next/ag-branding';
-
-export function App() {
-	return (
-		<Box
-			palette="light"
-			color="text"
-			background="body"
-			maxWidth={600}
-			padding={2}
-		>
-			<Logo />
-		</Box>
-	);
-}
+```jsx live
+<Box maxWidth={600}>
+	<Logo />
+</Box>
 ```
