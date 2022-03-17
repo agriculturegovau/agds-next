@@ -2,6 +2,7 @@ import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { Box, Stack } from '@ag.ds-next/box';
 import { TextInput } from '@ag.ds-next/text-input';
+import { FormStack } from '@ag.ds-next/form-stack';
 import { Fieldset, FieldsetContainer, FieldsetLegend } from './index';
 import { H1 } from '@ag.ds-next/heading';
 import { Text } from '@ag.ds-next/text';
@@ -15,12 +16,12 @@ export default {
 
 const Template: ComponentStory<typeof Fieldset> = (args) => (
 	<Fieldset {...args}>
-		<Stack alignItems="flex-start" gap={1.5}>
+		<FormStack>
 			<TextInput label="Street and number" required maxWidth="xl" />
 			<TextInput label="Suburb" required maxWidth="xl" />
 			<TextInput label="Country" required maxWidth="xl" />
 			<TextInput label="Postcode" required maxWidth="sm" />
-		</Stack>
+		</FormStack>
 	</Fieldset>
 );
 
@@ -41,11 +42,11 @@ OnDark.args = {
 };
 export const LegendAsPageHeading: ComponentStory<typeof Fieldset> = (args) => (
 	<Fieldset {...args}>
-		<Stack alignItems="flex-start" gap={1.5}>
+		<FormStack>
 			<TextInput label="Day" inputMode="numeric" maxWidth="md" required />
 			<TextInput label="Month" inputMode="numeric" maxWidth="md" required />
 			<TextInput label="Year" inputMode="numeric" maxWidth="md" required />
-		</Stack>
+		</FormStack>
 	</Fieldset>
 );
 LegendAsPageHeading.args = {
@@ -65,11 +66,11 @@ export const Modular = () => (
 				We will only use this to respond to your requests
 			</FieldsetHint>
 		</Stack>
-		<Stack alignItems="flex-start" gap={1.5}>
+		<FormStack>
 			<TextInput label="Street and number" required maxWidth="xl" />
 			<TextInput label="Suburb" required maxWidth="xl" />
 			<TextInput label="Country" required maxWidth="xl" />
 			<TextInput label="Postcode" required maxWidth="sm" />
-		</Stack>
+		</FormStack>
 	</FieldsetContainer>
 );

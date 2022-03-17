@@ -5,7 +5,7 @@ export type FormStackProps = { children: ReactNode };
 
 export function FormStack({ children }: FormStackProps) {
 	return (
-		<Flex flexDirection="column" gap={1.5}>
+		<Flex flexDirection="column" gap={2}>
 			{children}
 		</Flex>
 	);
