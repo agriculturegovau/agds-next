@@ -1,7 +1,6 @@
 import { H1 } from '@ag.ds-next/heading';
 import { Text } from '@ag.ds-next/text';
 import { Content } from '@ag.ds-next/content';
-
 import { AppLayout } from '../components/AppLayout';
 import { DocumentTitle } from '../components/DocumentTitle';
 
