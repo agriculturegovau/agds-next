@@ -25,6 +25,7 @@ export const SiteHeader = () => {
 				rightContent={<SiteHeaderSearch />}
 			/>
 			<MainNav
+				id="main-nav"
 				variant="agriculture"
 				links={NAV_LINKS}
 				activePath={router.asPath}
