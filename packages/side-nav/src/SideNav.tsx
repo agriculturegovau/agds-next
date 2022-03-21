@@ -1,10 +1,8 @@
 import { ReactNode, useMemo, useRef } from 'react';
 import { useSpring, animated } from 'react-spring';
-import { Box, backgroundColorMap } from '@ag.ds-next/box';
+import { Box } from '@ag.ds-next/box';
 import {
 	LinkProps,
-	mapResponsiveProp,
-	mq,
 	tokens,
 	useElementSize,
 	usePrefersReducedMotion,
@@ -17,13 +15,7 @@ import { SideNavTitle } from './SideNavTitle';
 import { SideNavGroup } from './SideNavGroup';
 import { SideNavLink } from './SideNavLink';
 import { SideNavCollapseButton } from './SideNavCollapseButton';
-import {
-	localPaletteVars,
-	variantMap,
-	SideNavVariant,
-	findBestMatch,
-	useSideNavIds,
-} from './utils';
+import { SideNavVariant, findBestMatch, useSideNavIds } from './utils';
 
 export type SideNavProps = LinkListProps & {
 	'aria-label'?: string;
@@ -43,7 +35,6 @@ export function SideNav({
 	title,
 }: SideNavProps) {
 	const { bodyId, buttonId, navId, titleId } = useSideNavIds();
-	const { hover } = variantMap[variant];
 
 	const { windowWidth } = useWindowSize();
 	const ref = useRef<HTMLDivElement>(null);
@@ -96,12 +87,6 @@ export function SideNav({
 					fontFamily="body"
 					fontSize="sm"
 					lineHeight="default"
-					css={mq({
-						[localPaletteVars.hover]: mapResponsiveProp(
-							hover,
-							(t) => backgroundColorMap[t]
-						),
-					})}
 				>
 					<SideNavTitle
 						id={titleId}

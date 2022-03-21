@@ -3,6 +3,7 @@ import { useSpring, animated } from 'react-spring';
 import { Flex } from '@ag.ds-next/box';
 import { ChevronDownIcon } from '@ag.ds-next/icon';
 import { tokens, usePrefersReducedMotion } from '@ag.ds-next/core';
+import { localPalette } from './utils';
 
 const AnimatedIcon = animated(ChevronDownIcon);
 
@@ -51,6 +52,9 @@ export const SideNavCollapseButton = ({
 			css={{
 				appearance: 'none',
 				background: 'transparent',
+				'&:hover': {
+					background: localPalette.hover,
+				},
 				[tokens.mediaQuery.min.md]: {
 					display: 'none',
 				},
