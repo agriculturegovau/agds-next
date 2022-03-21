@@ -4,7 +4,7 @@ description: Page alerts are used to notify users of important information or ch
 group: Content
 ---
 
-Typically PageAlerts appear at the top of a page following a submit action.
+Typically Page Alerts appear at the top of a page following a submit action.
 
 ## Info
 Page alerts are intended for important time-sensitive information only and should be used sparingly.
