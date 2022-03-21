@@ -11,6 +11,7 @@ import {
 export type TextInputProps = InputHTMLAttributes<HTMLInputElement> & {
 	label: string;
 	required?: boolean;
+	requiredLabel?: boolean;
 	hint?: string;
 	message?: string;
 	invalid?: boolean;
@@ -24,6 +25,7 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
 		{
 			label,
 			required,
+			requiredLabel,
 			hint,
 			message,
 			invalid,
@@ -40,6 +42,7 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
 			<Field
 				label={label}
 				required={Boolean(required)}
+				requiredLabel={requiredLabel}
 				hint={hint}
 				message={message}
 				invalid={invalid}
