@@ -30,7 +30,7 @@ export const useSideNavIds = () => {
 	const autoId = useId();
 	return {
 		buttonId: `sideNav-${autoId}-button`,
-		bodyId: `sideNav-${autoId}-default`,
+		bodyId: `sideNav-${autoId}-body`,
 		navId: `sideNav-${autoId}-nav`,
 		titleId: `sideNav-${autoId}-title`,
 	};
@@ -38,12 +38,12 @@ export const useSideNavIds = () => {
 
 const defaultStyles = {
 	background: 'body',
-	hover: { xs: 'shadeAlt', md: 'shade' },
+	hover: 'shade',
 } as const;
 
 const altStyles = {
 	background: 'bodyAlt',
-	hover: { xs: 'shade', md: 'shadeAlt' },
+	hover: 'shadeAlt',
 } as const;
 
 export const variantMap = {
