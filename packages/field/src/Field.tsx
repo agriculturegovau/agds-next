@@ -14,6 +14,7 @@ export type FieldProps = {
 	label: string;
 	message: string | undefined;
 	required: boolean;
+	requiredLabel?: boolean;
 	valid?: boolean;
 };
 
@@ -25,6 +26,7 @@ export const Field = ({
 	label,
 	message,
 	required,
+	requiredLabel = true,
 	valid,
 }: FieldProps) => {
 	const { fieldId, hintId, messageId } = useFieldIds(id);
@@ -40,10 +42,13 @@ export const Field = ({
 	return (
 		<FieldContainer invalid={invalid}>
 			<FieldLabel htmlFor={fieldId}>
-				{label}{' '}
-				<Text as="span" color="muted">
-					({required ? 'required' : 'optional'})
-				</Text>
+				{label}
+				{requiredLabel ? (
+					<Text as="span" color="muted">
+						{' '}
+						({required ? 'required' : 'optional'})
+					</Text>
+				) : null}
 			</FieldLabel>
 			{hint ? <FieldHint id={hintId}>{hint}</FieldHint> : null}
 			{message && (invalid || valid) ? (

@@ -60,3 +60,13 @@ Error messages are used to notify the user when a form field has not passed vali
 	</Field>
 </Stack>
 ```
+
+### Required label
+
+By default, "(optional)" or "(required)" will be appended to labels. To disable this, set the `requiredLabel` prop to `false`.
+
+```jsx live
+<Field label="Start date" requiredLabel={false}>
+	{(a11yProps) => <select {...a11yProps} />}
+</Field>
+```
