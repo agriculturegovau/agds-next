@@ -1,5 +1,5 @@
 ---
-title: PageAlert
+title: Page alert
 description: Page alerts are used to notify users of important information or changes on a page, in a way that attracts the user's attention without interrupting the current task.
 group: Content
 ---

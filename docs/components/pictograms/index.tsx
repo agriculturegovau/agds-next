@@ -23,6 +23,7 @@ import keywordList from './keyword-list.svg';
 import linkList from './link-list.svg';
 import mainNav from './main-nav.svg';
 import packages from './packages.svg';
+import pageAlert from './page-alert.svg';
 import progressIndicator from './progress-indicator.svg';
 import searchBox from './search-box.svg';
 import select from './select.svg';
@@ -62,6 +63,7 @@ export const pictograms = {
 	mainNav,
 	'main-nav': mainNav,
 	packages,
+	'page-alert': pageAlert,
 	'progress-indicator': progressIndicator,
 	sideNav,
 	'search-box': searchBox,

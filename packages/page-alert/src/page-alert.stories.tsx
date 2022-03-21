@@ -4,7 +4,7 @@ import { Box } from '@ag.ds-next/box';
 import { PageAlert } from './page-alert';
 
 export default {
-	title: 'content/PageAlert',
+	title: 'content/Page Alert',
 	component: PageAlert,
 } as ComponentMeta<typeof PageAlert>;
 
