@@ -36,7 +36,7 @@ export const PageAlert = ({ children, tone }: PageAlertProps) => {
 					backgroundColor: toneColor,
 				}}
 			>
-				<Icon size="md" color="body" />
+				<Icon />
 			</Flex>
 			<Box padding={1}>
 				<Body>{children}</Body>
