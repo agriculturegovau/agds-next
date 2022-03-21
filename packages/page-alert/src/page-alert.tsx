@@ -21,7 +21,7 @@ export const PageAlert = ({ children, tone }: PageAlertProps) => {
 	const Icon = icons[tone];
 
 	return (
-		<Box
+		<Flex
 			rounded
 			border
 			borderWidth="lg"
@@ -41,7 +41,7 @@ export const PageAlert = ({ children, tone }: PageAlertProps) => {
 			<Box padding={1}>
 				<Body>{children}</Body>
 			</Box>
-		</Box>
+		</Flex>
 	);
 };
 
