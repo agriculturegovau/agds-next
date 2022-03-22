@@ -12,6 +12,7 @@
 		"playroom:build": "playroom build"
 	},
 	"dependencies": {
+		"@ag.ds-next/a11y": "^1.0.1",
 		"@ag.ds-next/accordion": "2.0.0",
 		"@ag.ds-next/ag-branding": "4.0.2",
 		"@ag.ds-next/body": "4.0.2",
