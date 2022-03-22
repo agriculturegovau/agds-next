@@ -1,5 +1,5 @@
 import { ButtonHTMLAttributes, ElementType, PropsWithChildren } from 'react';
-import { Flex } from '@ag.ds-next/box';
+import { Box, Flex } from '@ag.ds-next/box';
 import { Text, TextLink } from '@ag.ds-next/text';
 import {
 	ProgressDoingIcon,
@@ -7,6 +7,13 @@ import {
 	ProgressTodoIcon,
 } from '@ag.ds-next/icon';
 import { boxPalette, LinkProps, packs } from '@ag.ds-next/core';
+
+export type ProgressIndicatorItem = (
+	| ProgressIndicatorItemButtonProps
+	| ProgressIndicatorItemLinkProps
+) & {
+	label: string;
+};
 
 export type ProgressIndicatorItemStatus = 'doing' | 'todo' | 'done';
 
@@ -61,7 +68,7 @@ const ProgressIndicatorItem = ({
 	const active = status === 'doing';
 	const Icon = statusIconMap[status];
 	return (
-		<li>
+		<Box as="li" borderBottom>
 			<Flex
 				as={as}
 				alignItems="center"
@@ -70,7 +77,6 @@ const ProgressIndicatorItem = ({
 				color="text"
 				fontFamily="body"
 				fontWeight={active ? 'bold' : 'normal'}
-				borderBottom
 				borderLeft
 				borderLeftWidth="xl"
 				width="100%"
@@ -93,7 +99,7 @@ const ProgressIndicatorItem = ({
 					{children}
 				</Flex>
 			</Flex>
-		</li>
+		</Box>
 	);
 };
 
