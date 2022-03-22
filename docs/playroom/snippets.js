@@ -403,6 +403,38 @@ items={[
     ]}
   />`,
 	},
+	{
+		group: 'PageAlert',
+		name: 'Info',
+		code: `<PageAlert tone="info" title="Notice">
+      <p>All vacancies close on the advertised closing date unless otherwise specified.</p>
+    </PageAlert>`,
+	},
+	{
+		group: 'PageAlert',
+		name: 'Success',
+		code: `<PageAlert tone="success" title="Submission successful">
+      <p>Your application has been successfully submitted.</p>
+    </PageAlert>`,
+	},
+	{
+		group: 'PageAlert',
+		name: 'Error',
+		code: `<PageAlert tone="error" title="There is a problem">
+      <ul>
+          <li><a href="#">Full name must not be empty</a></li>
+          <li><a href="#">Email must not be empty</a></li>
+          <li><a href="#">Description must not be empty</a></li>
+      </ul>
+    </PageAlert>`,
+	},
+	{
+		group: 'PageAlert',
+		name: 'Warning',
+		code: `<PageAlert tone="warning" title="Browser out of date">
+      <p>Your web browser is out of date.</p>
+    </PageAlert>`,
+	},
 ];
 
 export default snippits;

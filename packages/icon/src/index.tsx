@@ -12,6 +12,7 @@ export { ChevronDownIcon } from './icons/ChevronDownIcon';
 export { ChevronLeftIcon } from './icons/ChevronLeftIcon';
 export { ChevronRightIcon } from './icons/ChevronRightIcon';
 export { CloseIcon } from './icons/CloseIcon';
+export { InfoFilledIcon } from './icons/InfoFilledIcon';
 export { ProgressDoingIcon } from './icons/ProgressDoingIcon';
 export { ProgressDoneIcon } from './icons/ProgressDoneIcon';
 export { ExternalLinkIcon } from './icons/ExternalLinkIcon';
@@ -20,5 +21,6 @@ export { SearchIcon } from './icons/SearchIcon';
 export { SuccessIcon } from './icons/SuccessIcon';
 export { SuccessFilledIcon } from './icons/SuccessFilledIcon';
 export { ProgressTodoIcon } from './icons/ProgressTodoIcon';
+export { WarningFilledIcon } from './icons/WarningFilledIcon';
 
 export type IconProps = _IconProps;

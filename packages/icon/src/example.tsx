@@ -15,6 +15,7 @@ import { ChevronUpIcon } from './icons/ChevronUpIcon';
 import { CloseIcon } from './icons/CloseIcon';
 import { ExternalLinkIcon } from './icons/ExternalLinkIcon';
 import { IconProps } from './Icon';
+import { InfoFilledIcon } from './icons/InfoFilledIcon';
 import { MenuIcon } from './icons/MenuIcon';
 import { ProgressDoingIcon } from './icons/ProgressDoingIcon';
 import { ProgressDoneIcon } from './icons/ProgressDoneIcon';
@@ -22,6 +23,7 @@ import { ProgressTodoIcon } from './icons/ProgressTodoIcon';
 import { SearchIcon } from './icons/SearchIcon';
 import { SuccessFilledIcon } from './icons/SuccessFilledIcon';
 import { SuccessIcon } from './icons/SuccessIcon';
+import { WarningFilledIcon } from './icons/WarningFilledIcon';
 
 const allIcons = {
 	AlertFilledIcon,
@@ -37,6 +39,7 @@ const allIcons = {
 	ChevronUpIcon,
 	CloseIcon,
 	ExternalLinkIcon,
+	InfoFilledIcon,
 	MenuIcon,
 	ProgressDoingIcon,
 	ProgressDoneIcon,
@@ -44,6 +47,7 @@ const allIcons = {
 	SearchIcon,
 	SuccessFilledIcon,
 	SuccessIcon,
+	WarningFilledIcon,
 };
 
 type IconNameType = keyof typeof allIcons;
