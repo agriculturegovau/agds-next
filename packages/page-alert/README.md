@@ -6,38 +6,61 @@ group: Content
 
 Typically Page Alerts appear at the top of a page following a submit action.
 
-## Info
+
+## Tones
+Choosing a tone for a PageAlert allows the user to understand the importance and severity of the message at a glance.
+
+The four supported tones are `info`, `success`, `error` and `warning`.
+### Info
 
 Page alerts are intended for important time-sensitive information only and should be used sparingly.
 
 ```jsx live
-<PageAlert tone="info">
-	<h3>Notice</h3>
-	<p>
+<PageAlert tone="info" title="Notice">
+	<Text as="p">
 		All vacancies close on the advertised closing date unless otherwise
 		specified.
-	</p>
+	</Text>
 </PageAlert>
 ```
 
-## Success
+### Success
 
 The success page alert is used for notifying the user that a task is fully completed.
 
 ```jsx live
-<PageAlert tone="success">
-	<h3>Submission successful</h3>
-	<p>Your application has been successfully submitted.</p>
+<PageAlert tone="success" title="Submission successful">
+	<Text as="p">Your application has been successfully submitted.</Text>
 </PageAlert>
 ```
 
-## Error
+### Error
 
 The error page alert should be used with form validation errors or other errors which will block the user from completing their task.
 
 ```jsx live
-<PageAlert tone="error">
-	<h3>There is a problem</h3>
+<PageAlert tone="error" title="There is a problem">
+	<Text as="p"><a href="#">Full name must not be empty</a></Text>
+</PageAlert>
+```
+
+### Warning
+
+Use warning page alerts to tell the user something urgent. Only use an alert if the information will help the user avoid a problem.
+
+```jsx live
+<PageAlert tone="warning" title="Browser out of date">
+	<Text as="p">Your web browser is out of date.</Text>
+</PageAlert>
+```
+
+## Composition
+You can take advantage of our `Body` component to ensure consistant spacing between HTML elements.
+
+```jsx live
+<PageAlert tone="error" title="There is a problem">
+  <Body>
+  <p>Please correct the following fields and try again</p>
 	<ul>
 		<li>
 			<a href="#">Full name must not be empty</a>
@@ -49,16 +72,6 @@ The error page alert should be used with form validation errors or other errors 
 			<a href="#">Description must not be empty</a>
 		</li>
 	</ul>
-</PageAlert>
-```
-
-## Warning
-
-Use warning page alerts to tell the user something urgent. Only use an alert if the information will help the user avoid a problem.
-
-```jsx live
-<PageAlert tone="warning">
-	<h3>Browser out of date</h3>
-	<p>Your web browser is out of date.</p>
+  </Body>
 </PageAlert>
 ```

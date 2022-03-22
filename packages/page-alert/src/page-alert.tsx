@@ -1,6 +1,5 @@
 import { PropsWithChildren } from 'react';
 import { Box, Flex } from '@ag.ds-next/box';
-import { Body } from '@ag.ds-next/body';
 import { globalPalette } from '@ag.ds-next/core';
 import {
 	AlertFilledIcon,
@@ -9,13 +8,16 @@ import {
 	WarningFilledIcon,
 } from '@ag.ds-next/icon';
 
+import { PageAlertTitle } from './page-alert-title';
+
 export type PageAlertTone = 'success' | 'error' | 'warning' | 'info';
 
 export type PageAlertProps = PropsWithChildren<{
+	title?: string;
 	tone: PageAlertTone;
 }>;
 
-export const PageAlert = ({ children, tone }: PageAlertProps) => {
+export const PageAlert = ({ children, title, tone }: PageAlertProps) => {
 	const { fg, bg } = pageAlertToneMap[tone];
 	const Icon = icons[tone];
 
@@ -38,9 +40,10 @@ export const PageAlert = ({ children, tone }: PageAlertProps) => {
 			>
 				<Icon color="text" />
 			</Flex>
-			<Box padding={1} palette="light">
-				<Body>{children}</Body>
-			</Box>
+			<Flex padding={1} palette="light" gap={1} flexDirection="column">
+				{title ? <PageAlertTitle>{title}</PageAlertTitle> : null}
+				{children}
+			</Flex>
 		</Flex>
 	);
 };
