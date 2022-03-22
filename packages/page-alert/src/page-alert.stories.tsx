@@ -1,5 +1,6 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { Box } from '@ag.ds-next/box';
+import { Text } from '@ag.ds-next/text';
 
 import { PageAlert } from './page-alert';
 
@@ -10,22 +11,22 @@ export default {
 
 export const OnLight: ComponentStory<typeof PageAlert> = (args) => (
 	<PageAlert {...args}>
-		<h3>Page Alert</h3>
-		<p>This is a Page Alert component.</p>
+		<Text as="p">This is a Page Alert component.</Text>
 	</PageAlert>
 );
 OnLight.args = {
+	title: 'Page Alert',
 	tone: 'success',
 };
 
 export const OnDark: ComponentStory<typeof PageAlert> = (args) => (
 	<Box palette="dark" background="body" padding={1.5}>
 		<PageAlert {...args}>
-			<h3>Page Alert</h3>
-			<p>This is a Page Alert component.</p>
+			<Text as="p">This is a Page Alert component.</Text>
 		</PageAlert>
 	</Box>
 );
 OnDark.args = {
+	title: 'Page Alert',
 	tone: 'success',
 };

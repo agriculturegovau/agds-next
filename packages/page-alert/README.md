@@ -75,3 +75,16 @@ You can take advantage of our `Body` component to ensure consistant spacing betw
   </Body>
 </PageAlert>
 ```
+
+## Accessibility
+To improve accessibility, you may consider using the ARIA alert role ( role="alert" ) in certain situations.
+
+Using role="alert" will immediately interrupt assistive technology to inform users of the alert and for this reason should be used sparingly.
+
+We recommend only using the role="alert" when there is important time-sensitive information that would be detrimental for a user to miss.
+
+```jsx live
+<PageAlert tone="success" title="Submission successful" aria-role="alert">
+	<Text as="p">Your application has been successfully submitted.</Text>
+</PageAlert>
+```

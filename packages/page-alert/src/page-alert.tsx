@@ -17,7 +17,12 @@ export type PageAlertProps = PropsWithChildren<{
 	tone: PageAlertTone;
 }>;
 
-export const PageAlert = ({ children, title, tone }: PageAlertProps) => {
+export const PageAlert = ({
+	children,
+	title,
+	tone,
+	...props
+}: PageAlertProps) => {
 	const { fg, bg } = pageAlertToneMap[tone];
 	const Icon = icons[tone];
 
@@ -27,6 +32,7 @@ export const PageAlert = ({ children, title, tone }: PageAlertProps) => {
 			css={{
 				backgroundColor: bg,
 			}}
+			{...props}
 		>
 			<Flex
 				padding={0.75}
