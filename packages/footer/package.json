@@ -6,13 +6,11 @@
 	"license": "MIT",
 	"peerDependencies": {
 		"@ag.ds-next/box": "4.0.2",
-		"@ag.ds-next/columns": "3.0.2",
 		"@ag.ds-next/core": "2.1.2",
 		"@emotion/react": "^11.7.0"
 	},
 	"devDependencies": {
 		"@ag.ds-next/box": "*",
-		"@ag.ds-next/columns": "*",
 		"@ag.ds-next/core": "*",
 		"@emotion/react": "^11.7.0"
 	}
