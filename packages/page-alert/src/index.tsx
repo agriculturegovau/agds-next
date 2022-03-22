@@ -1,2 +1,2 @@
-export * from './page-alert';
-export * from './page-alert-title';
+export * from './PageAlert';
+export * from './PageAlertTitle';

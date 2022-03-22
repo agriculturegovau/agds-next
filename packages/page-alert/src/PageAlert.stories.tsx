@@ -2,7 +2,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { Box } from '@ag.ds-next/box';
 import { Text } from '@ag.ds-next/text';
 
-import { PageAlert } from './page-alert';
+import { PageAlert } from './PageAlert';
 
 export default {
 	title: 'content/Page Alert',
