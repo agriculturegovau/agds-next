@@ -1,6 +1,6 @@
 import { PropsWithChildren } from 'react';
 import { Flex } from '@ag.ds-next/box';
-import { globalPalette } from '@ag.ds-next/core';
+import { globalPalette, tokens } from '@ag.ds-next/core';
 import {
 	AlertFilledIcon,
 	InfoFilledIcon,
@@ -30,12 +30,12 @@ export const PageAlert = ({ role, children, title, tone }: PageAlertProps) => {
 			role={role}
 		>
 			<Flex
-				padding={0.75}
+				padding={0.5}
 				alignItems="center"
 				palette="dark"
 				css={{
-					borderTopLeftRadius: 4,
-					borderBottomLeftRadius: 4,
+					borderTopLeftRadius: tokens.borderRadius,
+					borderBottomLeftRadius: tokens.borderRadius,
 					backgroundColor: fg,
 				}}
 			>
