@@ -13,16 +13,12 @@ import { PageAlertTitle } from './PageAlertTitle';
 export type PageAlertTone = 'success' | 'error' | 'warning' | 'info';
 
 export type PageAlertProps = PropsWithChildren<{
+	role?: string;
 	title?: string;
 	tone: PageAlertTone;
 }>;
 
-export const PageAlert = ({
-	children,
-	title,
-	tone,
-	...props
-}: PageAlertProps) => {
+export const PageAlert = ({ role, children, title, tone }: PageAlertProps) => {
 	const { fg, bg, Icon } = pageAlertToneMap[tone];
 
 	return (
@@ -31,7 +27,7 @@ export const PageAlert = ({
 			css={{
 				backgroundColor: bg,
 			}}
-			{...props}
+			role={role}
 		>
 			<Flex
 				padding={0.75}
