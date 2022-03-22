@@ -1,5 +1,5 @@
 import { PropsWithChildren } from 'react';
-import { Box, Flex } from '@ag.ds-next/box';
+import { Flex } from '@ag.ds-next/box';
 import { globalPalette } from '@ag.ds-next/core';
 import {
 	AlertFilledIcon,
@@ -23,8 +23,7 @@ export const PageAlert = ({
 	tone,
 	...props
 }: PageAlertProps) => {
-	const { fg, bg } = pageAlertToneMap[tone];
-	const Icon = icons[tone];
+	const { fg, bg, Icon } = pageAlertToneMap[tone];
 
 	return (
 		<Flex
@@ -54,16 +53,25 @@ export const PageAlert = ({
 	);
 };
 
-const icons = {
-	success: SuccessFilledIcon,
-	error: AlertFilledIcon,
-	info: InfoFilledIcon,
-	warning: WarningFilledIcon,
-};
-
 const pageAlertToneMap = {
-	success: { fg: globalPalette.success, bg: globalPalette.successMuted },
-	error: { fg: globalPalette.error, bg: globalPalette.errorMuted },
-	info: { fg: globalPalette.info, bg: globalPalette.infoMuted },
-	warning: { fg: globalPalette.warning, bg: globalPalette.warningMuted },
+	success: {
+		fg: globalPalette.success,
+		bg: globalPalette.successMuted,
+		Icon: SuccessFilledIcon,
+	},
+	error: {
+		fg: globalPalette.error,
+		bg: globalPalette.errorMuted,
+		Icon: AlertFilledIcon,
+	},
+	info: {
+		fg: globalPalette.info,
+		bg: globalPalette.infoMuted,
+		Icon: InfoFilledIcon,
+	},
+	warning: {
+		fg: globalPalette.warning,
+		bg: globalPalette.warningMuted,
+		Icon: WarningFilledIcon,
+	},
 };
