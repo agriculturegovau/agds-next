@@ -6,11 +6,12 @@ group: Content
 
 Typically Page Alerts appear at the top of a page following a submit action.
 
-
 ## Tones
+
 Choosing a tone for a PageAlert allows the user to understand the importance and severity of the message at a glance.
 
 The four supported tones are `info`, `success`, `error` and `warning`.
+
 ### Info
 
 Page alerts are intended for important time-sensitive information only and should be used sparingly.
@@ -40,7 +41,9 @@ The error page alert should be used with form validation errors or other errors 
 
 ```jsx live
 <PageAlert tone="error" title="There is a problem">
-	<Text as="p"><a href="#">Full name must not be empty</a></Text>
+	<Text as="p">
+		<a href="#">Full name must not be empty</a>
+	</Text>
 </PageAlert>
 ```
 
@@ -55,28 +58,30 @@ Use warning page alerts to tell the user something urgent. Only use an alert if 
 ```
 
 ## Composition
+
 You can take advantage of our `Body` component to ensure consistant spacing between HTML elements.
 
 ```jsx live
 <PageAlert tone="error" title="There is a problem">
-  <Body>
-  <p>Please correct the following fields and try again</p>
-	<ul>
-		<li>
-			<a href="#">Full name must not be empty</a>
-		</li>
-		<li>
-			<a href="#">Email must not be empty</a>
-		</li>
-		<li>
-			<a href="#">Description must not be empty</a>
-		</li>
-	</ul>
-  </Body>
+	<Body>
+		<p>Please correct the following fields and try again</p>
+		<ul>
+			<li>
+				<a href="#">Full name must not be empty</a>
+			</li>
+			<li>
+				<a href="#">Email must not be empty</a>
+			</li>
+			<li>
+				<a href="#">Description must not be empty</a>
+			</li>
+		</ul>
+	</Body>
 </PageAlert>
 ```
 
 ## Accessibility
+
 To improve accessibility, you may consider using the ARIA alert role ( role="alert" ) in certain situations.
 
 Using role="alert" will immediately interrupt assistive technology to inform users of the alert and for this reason should be used sparingly.
