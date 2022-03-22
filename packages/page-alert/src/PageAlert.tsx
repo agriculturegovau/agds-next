@@ -41,7 +41,7 @@ export const PageAlert = ({ role, children, title, tone }: PageAlertProps) => {
 			>
 				<Icon color="text" />
 			</Flex>
-			<Flex padding={1} palette="light" gap={1} flexDirection="column">
+			<Flex padding={1.5} palette="light" gap={1} flexDirection="column">
 				{title ? <PageAlertTitle>{title}</PageAlertTitle> : null}
 				{children}
 			</Flex>
