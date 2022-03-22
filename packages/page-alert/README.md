@@ -88,6 +88,8 @@ Using role="alert" will immediately interrupt assistive technology to inform use
 
 We recommend only using the role="alert" when there is important time-sensitive information that would be detrimental for a user to miss.
 
+More information on [ARIA alert role](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/Alert_Role)
+
 ```jsx live
 <PageAlert tone="success" title="Submission successful" role="alert">
 	<Text as="p">Your application has been successfully submitted.</Text>
