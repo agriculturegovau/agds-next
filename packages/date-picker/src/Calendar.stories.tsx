@@ -84,12 +84,28 @@ export const Range = () => {
 	const modifiers = { start: from, end: to };
 
 	return (
-		<Calendar
-			className="Selectable"
-			numberOfMonths={2}
-			selectedDays={[from, { from, to }]}
-			modifiers={modifiers}
-			onDayClick={handleDayClick}
-		/>
+		<Stack gap={2}>
+			<Calendar
+				className="Selectable"
+				numberOfMonths={2}
+				selectedDays={[from, { from, to }]}
+				modifiers={modifiers}
+				onDayClick={handleDayClick}
+				range
+			/>
+			<p>
+				{!from && !to && 'Please select the first day.'}
+				{from && !to && 'Please select the last day.'}
+				{from &&
+					to &&
+					`Selected from ${from.toLocaleDateString()} to
+                ${to.toLocaleDateString()}`}{' '}
+				{from && to && (
+					<button className="link" onClick={() => handleResetClick()}>
+						Reset
+					</button>
+				)}
+			</p>
+		</Stack>
 	);
 };

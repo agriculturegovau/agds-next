@@ -14,8 +14,8 @@ export const CalendarNavbar = ({
 			onClick={() => onPreviousClick()}
 			css={{
 				position: 'absolute',
+				top: mapSpacing(1),
 				left: mapSpacing(1.5),
-				top: '0.5rem',
 				paddingLeft: 0,
 				paddingRight: 0,
 			}}
@@ -28,8 +28,8 @@ export const CalendarNavbar = ({
 			onClick={() => onNextClick()}
 			css={{
 				position: 'absolute',
+				top: mapSpacing(1),
 				right: mapSpacing(1.5),
-				top: '0.5rem',
 				paddingLeft: 0,
 				paddingRight: 0,
 			}}

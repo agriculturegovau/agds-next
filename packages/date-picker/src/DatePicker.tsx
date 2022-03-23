@@ -3,7 +3,7 @@ import { usePopper } from 'react-popper';
 import { Flex } from '@ag.ds-next/box';
 import { CalendarIcon } from '@ag.ds-next/icon';
 import { TextInput } from '@ag.ds-next/text-input';
-import { mapSpacing } from '@ag.ds-next/core';
+import { mapSpacing, useClickOutside } from '@ag.ds-next/core';
 import { Calendar, CalendarProps } from './Calendar';
 import { Button } from '@ag.ds-next/button';
 import { format, parse, isValid } from 'date-fns';
@@ -40,9 +40,9 @@ export const DatePicker = ({
 
 	const [referenceElement, setReferenceElement] =
 		useState<HTMLInputElement | null>(null);
-
-	const [popperElement, setPopperElement] = useState(null);
-
+	const [popperElement, setPopperElement] = useState<HTMLDivElement | null>(
+		null
+	);
 	const { styles, attributes } = usePopper(referenceElement, popperElement, {
 		placement: 'bottom-start',
 		modifiers: [
@@ -54,6 +54,9 @@ export const DatePicker = ({
 			},
 		],
 	});
+
+	const clickOutsideRef = useRef(popperElement);
+	useClickOutside(clickOutsideRef, () => setOpen(false));
 
 	const [inputValue, setInputValue] = useState('');
 

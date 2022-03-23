@@ -13,9 +13,13 @@ const componentTokens = {
 
 export type CalendarContainerProps = {
 	children: ReactNode;
+	range: boolean;
 };
 
-export const CalendarContainer = ({ children }: CalendarContainerProps) => (
+export const CalendarContainer = ({
+	children,
+	range,
+}: CalendarContainerProps) => (
 	<div
 		css={{
 			'& .DayPicker': {
@@ -58,6 +62,10 @@ export const CalendarContainer = ({ children }: CalendarContainerProps) => (
 			},
 
 			'& .DayPicker-Caption > div': {
+				display: 'flex',
+				alignItems: 'center',
+				justifyContent: 'center',
+				height: '2.875rem',
 				...fontGrid('lg', 'nospace'),
 				fontWeight: tokens.fontWeight.bold,
 			},
@@ -95,8 +103,8 @@ export const CalendarContainer = ({ children }: CalendarContainerProps) => (
 				display: `table-cell`,
 				verticalAlign: `middle`,
 				borderRadius: tokens.borderRadius,
-				width: mapSpacing(3),
-				height: mapSpacing(3),
+				width: '2.875rem',
+				height: '2.875rem',
 				textAlign: `center`,
 				cursor: `pointer`,
 				color: boxPalette.foregroundAction,
@@ -118,6 +126,25 @@ export const CalendarContainer = ({ children }: CalendarContainerProps) => (
 				{
 					backgroundColor: boxPalette.backgroundShade,
 				},
+
+			...(range && {
+				'.Selectable .DayPicker-Day--selected.DayPicker-Day--start:not(.DayPicker-Day--outside)':
+					{
+						borderTopRightRadius: 0,
+						borderBottomRightRadius: 0,
+					},
+				'.Selectable .DayPicker-Day--selected.DayPicker-Day--end:not(.DayPicker-Day--outside)':
+					{
+						borderTopLefttRadius: 0,
+						borderBottomLefttRadius: 0,
+					},
+				'.Selectable .DayPicker-Day--selected:not(.DayPicker-Day--start):not(.DayPicker-Day--end):not(.DayPicker-Day--outside)':
+					{
+						backgroundColor: boxPalette.backgroundShade,
+						color: boxPalette.foregroundText,
+						borderRadius: 0,
+					},
+			}),
 		}}
 	>
 		{children}
