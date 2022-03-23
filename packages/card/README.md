@@ -17,12 +17,17 @@ Cards are used to organise information related to a single topic. Cards can cont
 		padding={1}
 		background="body"
 	>
-		<Card>
+		<Card shadow clickable>
 			<CardInner>
-				<Body>
-					<h2>Card Title</h2>
-					<p>Additional content</p>
-				</Body>
+				<Stack gap={1}>
+					<Box as="h3">
+						<CardLink href="#">Card link</CardLink>
+					</Box>
+					<Text>
+						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras non
+						finibus leo.
+					</Text>
+				</Stack>
 			</CardInner>
 		</Card>
 	</Flex>
@@ -33,59 +38,17 @@ Cards are used to organise information related to a single topic. Cards can cont
 		padding={1}
 		background="body"
 	>
-		<Card>
+		<Card clickable>
 			<CardInner>
-				<Body>
-					<h2>Card Title</h2>
-					<p>Additional content</p>
-				</Body>
-			</CardInner>
-		</Card>
-	</Flex>
-</Flex>
-```
-
-```jsx live
-<Flex gap={1} flexDirection="row">
-	<Flex
-		flexDirection="column"
-		flexGrow={1}
-		palette="light"
-		padding={1}
-		background="body"
-	>
-		<Card>
-			<PlaceholderImage />
-			<CardInner>
-				<Body>
-					<h2>Card title with a longer heading</h2>
-					<p>
+				<Stack gap={1}>
+					<Box as="h3">
+						<CardLink href="#">Card link</CardLink>
+					</Box>
+					<Text>
 						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras non
-						finibus leo, non rhoncus neque. Nunc et dui cursus, euismod felis
-						eget, tristique augue. Praesent consequat mollis lorem id efficitur.
-					</p>
-				</Body>
-			</CardInner>
-		</Card>
-	</Flex>
-	<Flex
-		flexDirection="column"
-		flexGrow={1}
-		palette="dark"
-		padding={1}
-		background="body"
-	>
-		<Card>
-			<PlaceholderImage />
-			<CardInner>
-				<Body>
-					<h2>Card title with a longer heading</h2>
-					<p>
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras non
-						finibus leo, non rhoncus neque. Nunc et dui cursus, euismod felis
-						eget, tristique augue. Praesent consequat mollis lorem id efficitur.
-					</p>
-				</Body>
+						finibus leo.
+					</Text>
+				</Stack>
 			</CardInner>
 		</Card>
 	</Flex>
