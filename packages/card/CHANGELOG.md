@@ -1,5 +1,15 @@
 # @ag.ds-next/card
 
+## 2.1.2
+
+### Patch Changes
+
+- fe63315e: Document compositions
+- aa23d98f: Update inner padding
+- Updated dependencies [e8ea2abe]
+  - @ag.ds-next/core@2.1.3
+  - @ag.ds-next/box@4.0.3
+
 ## 2.1.1
 
 ### Patch Changes

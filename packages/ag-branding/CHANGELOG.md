@@ -1,5 +1,17 @@
 # @ag.ds-next/ag-branding
 
+## 4.1.0
+
+### Minor Changes
+
+- f05e58d8: New tone colours
+
+### Patch Changes
+
+- e8ea2abe: Updated documentation
+- Updated dependencies [e8ea2abe]
+  - @ag.ds-next/core@2.1.3
+
 ## 4.0.2
 
 ### Patch Changes

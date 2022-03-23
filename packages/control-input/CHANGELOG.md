@@ -1,5 +1,17 @@
 # @ag.ds-next/control-input
 
+## 4.0.0
+
+### Patch Changes
+
+- a6fdf372: Added new prop `requiredLabel` which can be used to disable the "(optional)" and "(required)" label text
+- Updated dependencies [e8ea2abe]
+- Updated dependencies [a6fdf372]
+  - @ag.ds-next/core@2.1.3
+  - @ag.ds-next/field@4.0.0
+  - @ag.ds-next/box@4.0.3
+  - @ag.ds-next/text@4.0.3
+
 ## 3.0.0
 
 ### Patch Changes

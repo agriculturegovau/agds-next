@@ -1,5 +1,16 @@
 # @ag.ds-next/header
 
+## 5.0.1
+
+### Patch Changes
+
+- b93e3ca6: Removed unused dependencies
+- Updated dependencies [e8ea2abe]
+  - @ag.ds-next/core@2.1.3
+  - @ag.ds-next/box@4.0.3
+  - @ag.ds-next/columns@3.0.3
+  - @ag.ds-next/text@4.0.3
+
 ## 5.0.0
 
 ### Patch Changes

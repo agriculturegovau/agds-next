@@ -1,5 +1,18 @@
 # @ag.ds-next/icon
 
+## 5.1.0
+
+### Minor Changes
+
+- f05e58d8: Add InfoFilledIcon and WarningFilledIcon
+
+### Patch Changes
+
+- Updated dependencies [e8ea2abe]
+  - @ag.ds-next/core@2.1.3
+  - @ag.ds-next/box@4.0.3
+  - @ag.ds-next/text@4.0.3
+
 ## 5.0.0
 
 ### Major Changes

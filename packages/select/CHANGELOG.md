@@ -1,5 +1,19 @@
 # @ag.ds-next/select
 
+## 4.0.0
+
+### Patch Changes
+
+- ce3b91c5: Updated icon size
+- a6fdf372: Added new prop `requiredLabel` which can be used to disable the "(optional)" and "(required)" label text
+- Updated dependencies [e8ea2abe]
+- Updated dependencies [f05e58d8]
+- Updated dependencies [a6fdf372]
+  - @ag.ds-next/core@2.1.3
+  - @ag.ds-next/icon@5.1.0
+  - @ag.ds-next/field@4.0.0
+  - @ag.ds-next/box@4.0.3
+
 ## 3.0.0
 
 ### Minor Changes

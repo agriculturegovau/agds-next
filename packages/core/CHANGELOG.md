@@ -1,5 +1,11 @@
 # @ag.ds-next/core
 
+## 2.1.3
+
+### Patch Changes
+
+- e8ea2abe: Updated documentation
+
 ## 2.1.2
 
 ### Patch Changes

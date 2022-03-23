@@ -1,5 +1,12 @@
 # @ag.ds-next/box
 
+## 4.0.3
+
+### Patch Changes
+
+- Updated dependencies [e8ea2abe]
+  - @ag.ds-next/core@2.1.3
+
 ## 4.0.2
 
 ### Patch Changes
