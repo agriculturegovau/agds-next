@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { Box, Stack } from '@ag.ds-next/box';
 import { DatePicker } from './DatePicker';
-import { DateRangePicker } from './DateRangePicker';
 import { Text } from '@ag.ds-next/text';
 
 export default {
@@ -65,17 +64,6 @@ export const Disabled: ComponentStory<typeof DatePicker> = (args) => (
 Disabled.args = {
 	disabled: true,
 };
-
-// export const DateRangePickerExample: ComponentStory<typeof DatePicker> = (
-// 	args
-// ) => (
-// 	<Box background="body" palette="dark" padding={1.5}>
-// 		<DateRangePicker />
-// 	</Box>
-// );
-// DateRangePickerExample.args = {
-// 	label: 'Example',
-// };
 
 export const Required: ComponentStory<typeof DatePicker> = (args) => (
 	<Template {...args} />
