@@ -373,10 +373,9 @@ export const Compositions = () => {
 
 					<Card shadow clickable>
 						<img
-							alt="placeholder"
-							src="https://source.unsplash.com/random368x207"
+							alt="Placeholder image"
+							src="/agds-next/img/placeholder/600X260.png"
 							width="100%"
-							height="207"
 						/>
 						<CardInner>
 							<Stack gap={1}>
