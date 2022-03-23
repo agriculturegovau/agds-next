@@ -105,6 +105,6 @@ const statusIconMap = {
 
 const statusLabelMap = {
 	doing: 'Doing',
-	todo: 'Todo',
+	todo: 'To do',
 	done: 'Done',
 } as const;
