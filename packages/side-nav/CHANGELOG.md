@@ -1,5 +1,16 @@
 # @ag.ds-next/side-nav
 
+## 6.0.0
+
+### Patch Changes
+
+- 335dd760: Updated hover state colours
+- Updated dependencies [e8ea2abe]
+- Updated dependencies [f05e58d8]
+  - @ag.ds-next/core@2.1.3
+  - @ag.ds-next/icon@5.1.0
+  - @ag.ds-next/box@4.0.3
+
 ## 5.0.0
 
 ### Major Changes

@@ -1,5 +1,19 @@
 # @ag.ds-next/search-box
 
+## 4.0.0
+
+### Patch Changes
+
+- Updated dependencies [e8ea2abe]
+- Updated dependencies [f05e58d8]
+- Updated dependencies [a6fdf372]
+  - @ag.ds-next/core@2.1.3
+  - @ag.ds-next/icon@5.1.0
+  - @ag.ds-next/text-input@4.0.0
+  - @ag.ds-next/box@4.0.3
+  - @ag.ds-next/button@4.0.3
+  - @ag.ds-next/text@4.0.3
+
 ## 3.0.0
 
 ### Patch Changes

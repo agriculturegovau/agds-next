@@ -1,5 +1,14 @@
 # @ag.ds-next/footer
 
+## 4.0.3
+
+### Patch Changes
+
+- b93e3ca6: Removed unused dependencies
+- Updated dependencies [e8ea2abe]
+  - @ag.ds-next/core@2.1.3
+  - @ag.ds-next/box@4.0.3
+
 ## 4.0.2
 
 ### Patch Changes
