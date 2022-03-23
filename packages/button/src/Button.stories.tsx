@@ -1,14 +1,31 @@
-import React from 'react';
-import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { Button, ButtonLink } from './Button';
 import { Flex, Stack } from '@ag.ds-next/box';
+import {
+	ChevronLeftIcon,
+	ExternalLinkIcon,
+	SearchIcon,
+} from '@ag.ds-next/icon';
 import { Text } from '@ag.ds-next/text';
-import { ExternalLinkIcon } from '@ag.ds-next/icon';
+import { ComponentMeta, ComponentStory } from '@storybook/react';
+import React from 'react';
+import { Button, ButtonLink } from './Button';
+
+const beforeIcons = { undefined, ChevronLeftIcon };
+const afterIcons = { undefined, ExternalLinkIcon, SearchIcon };
 
 export default {
 	title: 'forms/Button',
 	component: Button,
 	subcomponents: { ButtonLink },
+	argTypes: {
+		iconAfter: {
+			options: Object.keys(afterIcons), // An array of serializable values
+			mapping: afterIcons, // Maps serializable option values to complex arg values
+		},
+		iconBefore: {
+			options: Object.keys(beforeIcons), // An array of serializable values
+			mapping: beforeIcons, // Maps serializable option values to complex arg values
+		},
+	},
 } as ComponentMeta<typeof Button>;
 
 export const OnLight: ComponentStory<typeof Button> = (args) => (
