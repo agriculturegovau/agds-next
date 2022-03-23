@@ -76,11 +76,14 @@ export const WithBody: ComponentStory<typeof Card> = (args) => (
 			<CardInner>
 				<Body>
 					<h3>Card heading</h3>
-					<h3>Some more information</h3>
+					<p>
+						Lorem ipsum dolor, sit amet consectetur adipisicing elit. In,
+						voluptat
+					</p>
 					<p>
 						Cum sociis natoque penatibus et magnis dis parturient montes,
 						nascetur ridiculus mus. Donec ullamcorper nulla non metus auctor
-						fringilla.{' '}
+						fringilla.
 					</p>
 				</Body>
 			</CardInner>
