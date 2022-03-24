@@ -86,7 +86,6 @@ export const Range = () => {
 	return (
 		<Stack gap={2}>
 			<Calendar
-				className="Selectable"
 				numberOfMonths={2}
 				selectedDays={[from, { from, to }]}
 				modifiers={modifiers}

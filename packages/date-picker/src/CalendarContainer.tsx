@@ -128,17 +128,17 @@ export const CalendarContainer = ({
 				},
 
 			...(range && {
-				'.Selectable .DayPicker-Day--selected.DayPicker-Day--start:not(.DayPicker-Day--outside)':
+				'.DayPicker-Day--selected.DayPicker-Day--start:not(.DayPicker-Day--outside)':
 					{
 						borderTopRightRadius: 0,
 						borderBottomRightRadius: 0,
 					},
-				'.Selectable .DayPicker-Day--selected.DayPicker-Day--end:not(.DayPicker-Day--outside)':
+				'.DayPicker-Day--selected.DayPicker-Day--end:not(.DayPicker-Day--outside)':
 					{
-						borderTopLefttRadius: 0,
-						borderBottomLefttRadius: 0,
+						borderTopLeftRadius: 0,
+						borderBottomLeftRadius: 0,
 					},
-				'.Selectable .DayPicker-Day--selected:not(.DayPicker-Day--start):not(.DayPicker-Day--end):not(.DayPicker-Day--outside)':
+				'.DayPicker-Day--selected:not(.DayPicker-Day--start):not(.DayPicker-Day--end):not(.DayPicker-Day--outside)':
 					{
 						backgroundColor: boxPalette.backgroundShade,
 						color: boxPalette.foregroundText,

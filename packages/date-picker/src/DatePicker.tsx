@@ -1,49 +1,26 @@
 import React, { ChangeEvent, useCallback, useRef, useState } from 'react';
 import { usePopper } from 'react-popper';
-import { Flex } from '@ag.ds-next/box';
-import { CalendarIcon } from '@ag.ds-next/icon';
-import { TextInput } from '@ag.ds-next/text-input';
-import { mapSpacing, useClickOutside } from '@ag.ds-next/core';
+import { useClickOutside, useTernaryState } from '@ag.ds-next/core';
 import { Calendar, CalendarProps } from './Calendar';
-import { Button } from '@ag.ds-next/button';
 import { format, parse, isValid } from 'date-fns';
+import { DateInput, DateInputProps } from './DatePickerInput';
 
-export type DatePickerProps = CalendarProps & {
-	value: Date | undefined;
-	onChange: (day: Date | undefined) => void;
+// TODO ref
+// Debounced ???
 
-	disabled?: boolean;
-	label: string;
-	required?: boolean;
-	requiredLabel?: boolean;
-	hint?: string;
-	message?: string;
-	invalid?: boolean;
-	valid?: boolean;
-	block?: boolean;
-};
+export type DatePickerProps = CalendarProps &
+	Omit<DateInputProps, 'value' | 'onChange' | 'buttonRef' | 'buttonOnClick'> & {
+		value: Date | undefined;
+		onChange: (day: Date | undefined) => void;
+	};
 
-export const DatePicker = ({
-	value,
-	onChange,
-	label,
-	invalid,
-	valid,
-	message,
-	disabled,
-	required,
-	requiredLabel,
-	hint,
-}: DatePickerProps) => {
-	const [open, setOpen] = useState(false);
-	const triggerRef = useRef<HTMLButtonElement>(null);
+export const DatePicker = ({ value, onChange, ...props }: DatePickerProps) => {
+	const [isCalendarOpen, openCalendar, closeCalendar] = useTernaryState(false);
 
-	const [referenceElement, setReferenceElement] =
-		useState<HTMLInputElement | null>(null);
-	const [popperElement, setPopperElement] = useState<HTMLDivElement | null>(
-		null
-	);
-	const { styles, attributes } = usePopper(referenceElement, popperElement, {
+	const buttonRef = useRef<HTMLButtonElement>(null);
+	const [refEl, setRefEl] = useState<HTMLDivElement | null>(null);
+	const [popperEl, setPopperEl] = useState<HTMLDivElement | null>(null);
+	const { styles, attributes } = usePopper(refEl, popperEl, {
 		placement: 'bottom-start',
 		modifiers: [
 			{
@@ -55,19 +32,20 @@ export const DatePicker = ({
 		],
 	});
 
-	const clickOutsideRef = useRef(popperElement);
-	useClickOutside(clickOutsideRef, () => setOpen(false));
+	const clickOutsideRef = useRef(popperEl);
+	clickOutsideRef.current = popperEl;
+	useClickOutside(clickOutsideRef, closeCalendar);
 
 	const [inputValue, setInputValue] = useState('');
 
 	const onDayClick = useCallback(
 		(day: Date) => {
-			setOpen(false);
 			setInputValue(format(day, 'dd/MM/yyyy'));
 			onChange(day);
-			triggerRef.current?.focus();
+			buttonRef.current?.focus();
+			closeCalendar();
 		},
-		[onChange]
+		[onChange, closeCalendar]
 	);
 
 	// TODO debounced
@@ -89,56 +67,24 @@ export const DatePicker = ({
 	);
 
 	return (
-		<div>
-			<Flex alignItems="flex-end">
-				<TextInput
-					ref={setReferenceElement}
-					value={inputValue}
-					onChange={onInputChange}
-					placeholder="DD/MM/YYYY"
-					label={label}
-					invalid={invalid}
-					valid={valid}
-					message={message}
-					disabled={disabled}
-					required={required}
-					requiredLabel={requiredLabel}
-					hint={hint}
-					css={{
-						borderRight: 'none',
-						borderTopRightRadius: 0,
-						borderBottomRightRadius: 0,
-					}}
-				/>
-				<Button
-					type="button"
-					variant="secondary"
-					ref={triggerRef}
-					onClick={() => setOpen(true)}
-					disabled={disabled}
-					css={{
-						borderTopLeftRadius: 0,
-						borderBottomLeftRadius: 0,
-						paddingLeft: mapSpacing(1),
-						paddingRight: mapSpacing(1),
-					}}
-				>
-					<CalendarIcon size="md" />
-				</Button>
-			</Flex>
-			{open && (
-				<div
-					ref={setPopperElement}
-					style={styles.popper}
-					{...attributes.popper}
-				>
+		<div ref={setRefEl}>
+			<DateInput
+				{...props}
+				value={inputValue}
+				onChange={onInputChange}
+				placeholder="DD/MM/YYYY"
+				buttonRef={buttonRef}
+				buttonOnClick={openCalendar}
+			/>
+			{isCalendarOpen ? (
+				<div ref={setPopperEl} style={styles.popper} {...attributes.popper}>
 					<Calendar
 						initialMonth={value}
 						selectedDays={[value]}
 						onDayClick={onDayClick}
 					/>
 				</div>
-			)}
+			) : null}
 		</div>
 	);
 };
