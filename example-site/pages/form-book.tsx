@@ -7,7 +7,7 @@ import { AppLayout } from '../components/AppLayout';
 import { DocumentTitle } from '../components/DocumentTitle';
 import { FormExampleBook } from '../components/FormExampleBook';
 
-const FormSignInPage: NextPage = () => {
+const FormBookPage: NextPage = () => {
 	return (
 		<>
 			<DocumentTitle title="Booking example" />
@@ -33,4 +33,4 @@ const FormSignInPage: NextPage = () => {
 	);
 };
 
-export default FormSignInPage;
+export default FormBookPage;
