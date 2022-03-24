@@ -8,6 +8,7 @@ export type TableCaptionProps = {
 export const TableCaption = ({ children }: TableCaptionProps) => {
 	return (
 		<Text
+			as="caption"
 			fontSize="md"
 			fontWeight="bold"
 			paddingBottom={0.5}
