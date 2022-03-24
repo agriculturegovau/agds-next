@@ -95,35 +95,3 @@ export const DateInput = forwardRef<HTMLInputElement, DateInputProps>(
 		);
 	}
 );
-
-// export const DateInput = ({
-// 	block,
-// 	disabled,
-// 	buttonRef,
-// 	buttonOnClick,
-// 	maxWidth,
-// 	...props
-// }: DateInputProps) => {
-// 	return (
-// 		<Flex
-// 			alignItems="flex-end"
-// 			css={{
-// 				position: 'relative',
-
-// 				'& > div': {
-// 					flex: 1,
-// 				},
-// 			}}
-// 		>
-// 			<TextInput
-// 				{...props}
-// 				disabled={disabled}
-// 				block
-// 				css={{
-//
-// 				}}
-// 			/>
-
-// 		</Flex>
-// 	);
-// };

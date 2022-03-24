@@ -169,7 +169,6 @@ export const DateRangePicker = ({
 					{...attributes.popper}
 					css={{ zIndex: 1 }}
 				>
-					{mode}
 					<Calendar
 						initialMonth={mode === 'start' ? value.from : value.to}
 						selectedDays={[value.from, value]}
