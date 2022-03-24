@@ -5,7 +5,7 @@ import { DatePicker } from './DatePicker';
 import { Text } from '@ag.ds-next/text';
 
 export default {
-	title: 'forms/DatePicker',
+	title: 'forms/DatePicker/DatePicker',
 	component: DatePicker,
 } as ComponentMeta<typeof DatePicker>;
 

@@ -1,18 +1,11 @@
 import React, { ChangeEvent, useCallback, useRef, useState } from 'react';
 import { usePopper } from 'react-popper';
 import { Flex } from '@ag.ds-next/box';
-import { CalendarIcon } from '@ag.ds-next/icon';
-import { TextInput } from '@ag.ds-next/text-input';
-import {
-	mapSpacing,
-	useClickOutside,
-	useTernaryState,
-	useToggleState,
-} from '@ag.ds-next/core';
+import { useClickOutside, useTernaryState } from '@ag.ds-next/core';
 import { Calendar, CalendarProps } from './Calendar';
-import { Button } from '@ag.ds-next/button';
 import { format, parse, isValid } from 'date-fns';
-import { DateUtils } from 'react-day-picker';
+// import { DateUtils } from 'react-day-picker';
+import { DateInput } from './DatePickerInput';
 
 export type DateRange = {
 	from: Date | undefined;
@@ -20,19 +13,26 @@ export type DateRange = {
 };
 
 export type DateRangePickerProps = CalendarProps & {
+	disabled?: boolean;
 	value: DateRange;
 	onChange: (day: DateRange) => void;
+	fromLabel?: string;
+	toLabel?: string;
+	requiredLabel?: boolean;
 };
 
-export const DateRangePicker = ({ value, onChange }: DateRangePickerProps) => {
+export const DateRangePicker = ({
+	disabled,
+	value,
+	onChange,
+	fromLabel = 'From',
+	toLabel = 'To',
+}: DateRangePickerProps) => {
 	const [isCalendarOpen, openCalendar, closeCalendar] = useTernaryState(false);
 	const [mode, setMode] = useState<'start' | 'end'>();
 
 	const startTriggerRef = useRef<HTMLButtonElement>(null);
 	const endTriggerRef = useRef<HTMLButtonElement>(null);
-
-	const startInputRef = useRef<HTMLInputElement>(null);
-	const endInputRef = useRef<HTMLInputElement>(null);
 
 	const onStartTriggerClick = useCallback(() => {
 		setMode('start');
@@ -150,62 +150,26 @@ export const DateRangePicker = ({ value, onChange }: DateRangePickerProps) => {
 	return (
 		<div>
 			<Flex inline gap={1} ref={setReferenceElement}>
-				<Flex alignItems="flex-end">
-					<TextInput
-						ref={startInputRef}
-						value={startInputValue}
-						onChange={onStartInputChange}
-						placeholder="DD/MM/YYYY"
-						label="From"
-						css={{
-							borderRight: 'none',
-							borderTopRightRadius: 0,
-							borderBottomRightRadius: 0,
-						}}
-					/>
-					<Button
-						type="button"
-						variant="secondary"
-						ref={startTriggerRef}
-						onClick={onStartTriggerClick}
-						css={{
-							borderTopLeftRadius: 0,
-							borderBottomLeftRadius: 0,
-							paddingLeft: mapSpacing(1),
-							paddingRight: mapSpacing(1),
-						}}
-					>
-						<CalendarIcon size="md" />
-					</Button>
-				</Flex>
-				<Flex alignItems="flex-end">
-					<TextInput
-						ref={endInputRef}
-						value={endInputValue}
-						onChange={onEndInputChange}
-						placeholder="DD/MM/YYYY"
-						label="To"
-						css={{
-							borderRight: 'none',
-							borderTopRightRadius: 0,
-							borderBottomRightRadius: 0,
-						}}
-					/>
-					<Button
-						type="button"
-						variant="secondary"
-						ref={endTriggerRef}
-						onClick={onEndTriggerClick}
-						css={{
-							borderTopLeftRadius: 0,
-							borderBottomLeftRadius: 0,
-							paddingLeft: mapSpacing(1),
-							paddingRight: mapSpacing(1),
-						}}
-					>
-						<CalendarIcon size="md" />
-					</Button>
-				</Flex>
+				<DateInput
+					label={fromLabel}
+					value={startInputValue}
+					onChange={onStartInputChange}
+					placeholder="DD/MM/YYYY"
+					buttonRef={startTriggerRef}
+					buttonOnClick={onStartTriggerClick}
+					disabled={disabled}
+					// requiredLabel={requiredLabel}
+				/>
+				<DateInput
+					label={toLabel}
+					value={endInputValue}
+					onChange={onEndInputChange}
+					placeholder="DD/MM/YYYY"
+					buttonRef={endTriggerRef}
+					buttonOnClick={onEndTriggerClick}
+					disabled={disabled}
+					// requiredLabel={requiredLabel}
+				/>
 			</Flex>
 			{isCalendarOpen ? (
 				<div
