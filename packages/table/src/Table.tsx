@@ -16,7 +16,7 @@ export const Table = ({ children, striped }: TableProps) => {
 				borderCollapse: 'collapse',
 				borderSpacing: 0,
 
-				'tbody tr:nth-child( even )': {
+				'tbody tr:nth-last-child( odd )': {
 					backgroundColor: striped ? boxPalette.backgroundShade : 'transparent',
 				},
 			}}

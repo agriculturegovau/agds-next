@@ -1,14 +1,19 @@
 import { PropsWithChildren } from 'react';
 import { Box, BoxProps } from '@ag.ds-next/box';
+import { ResponsiveProp, mapResponsiveProp } from '@ag.ds-next/core';
+
+export type TableHeaderWidthType = 10 | 20 | 25 | 33 | 50 | 75;
 
 export type TableHeaderProps = PropsWithChildren<{
 	textAlign?: 'left' | 'center' | 'right';
+	width?: ResponsiveProp<TableHeaderWidthType>;
 }> &
 	Pick<BoxProps, 'display'>;
 
 export const TableHeader = ({
 	children,
 	textAlign = 'left',
+	width,
 	...props
 }: TableHeaderProps) => {
 	return (
@@ -19,6 +24,12 @@ export const TableHeader = ({
 			fontWeight="bold"
 			borderBottom
 			focus
+			width={
+				width &&
+				mapResponsiveProp(width, (value: TableHeaderWidthType) =>
+					value ? `${value}%` : undefined
+				)
+			}
 			css={{
 				textAlign,
 			}}
