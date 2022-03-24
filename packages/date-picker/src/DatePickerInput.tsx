@@ -51,6 +51,7 @@ export const DateInput = ({
 				onClick={buttonOnClick}
 				disabled={disabled}
 				variant="secondary"
+				aria-label="Choose date"
 				css={{
 					borderTopLeftRadius: 0,
 					borderBottomLeftRadius: 0,
