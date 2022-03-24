@@ -37,6 +37,7 @@ export const DateInput = ({
 		>
 			<TextInput
 				{...props}
+				disabled={disabled}
 				block
 				css={{
 					borderRight: 'none',

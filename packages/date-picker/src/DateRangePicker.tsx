@@ -207,12 +207,12 @@ export const DateRangePicker = ({ value, onChange }: DateRangePickerProps) => {
 					</Button>
 				</Flex>
 			</Flex>
-			{mode}
 			{isCalendarOpen ? (
 				<div
 					ref={setPopperElement}
 					style={styles.popper}
 					{...attributes.popper}
+					css={{ zIndex: 1 }}
 				>
 					<Calendar
 						initialMonth={mode === 'start' ? value.from : value.to}
@@ -227,5 +227,3 @@ export const DateRangePicker = ({ value, onChange }: DateRangePickerProps) => {
 		</div>
 	);
 };
-
-const;

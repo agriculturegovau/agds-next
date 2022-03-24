@@ -77,7 +77,12 @@ export const DatePicker = ({ value, onChange, ...props }: DatePickerProps) => {
 				buttonOnClick={openCalendar}
 			/>
 			{isCalendarOpen ? (
-				<div ref={setPopperEl} style={styles.popper} {...attributes.popper}>
+				<div
+					ref={setPopperEl}
+					style={styles.popper}
+					{...attributes.popper}
+					css={{ zIndex: 1 }}
+				>
 					<Calendar
 						initialMonth={value}
 						selectedDays={[value]}

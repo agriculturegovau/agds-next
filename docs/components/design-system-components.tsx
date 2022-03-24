@@ -92,6 +92,7 @@ import { Tags } from '@ag.ds-next/tags';
 import { Content, ContentBleed } from '@ag.ds-next/content';
 import { TaskList } from '@ag.ds-next/task-list';
 import { PageAlert } from '@ag.ds-next/page-alert';
+import { DatePicker, DateRangePicker } from '@ag.ds-next/date-picker';
 
 export const designSystemComponents = {
 	Accordion,
@@ -191,4 +192,6 @@ export const designSystemComponents = {
 	Content,
 	ContentBleed,
 	TaskList,
+	DatePicker,
+	DateRangePicker,
 };
