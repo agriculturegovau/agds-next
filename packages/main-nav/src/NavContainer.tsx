@@ -1,6 +1,5 @@
 import React, { PropsWithChildren, ReactNode } from 'react';
-import FocusTrap from 'focus-trap-react';
-
+import FocusLock from 'react-focus-lock';
 import { Box, Flex, backgroundColorMap } from '@ag.ds-next/box';
 import {
 	boxPalette,
@@ -8,10 +7,13 @@ import {
 	mapSpacing,
 	tokens,
 	globalPalette,
+	useWindowSize,
 } from '@ag.ds-next/core';
 
 import { localPalette, localPaletteVars } from './utils';
 import { CloseButton, ToggleButton } from './MenuButtons';
+import { Global } from '@emotion/react';
+import { useEffect } from '@storybook/addons';
 
 const variantMap = {
 	light: {
@@ -60,8 +62,12 @@ export function NavContainer({
 	children,
 	variant,
 }: NavContainerProps) {
-	const [menuOpen, open, close] = useTernaryState(false);
 	const { background, bottomBar, hover, palette } = variantMap[variant];
+
+	const { windowWidth } = useWindowSize();
+	const [menuOpen, open, close] = useTernaryState(false);
+	const menuVisiblyOpen =
+		menuOpen && (windowWidth || 0) <= tokens.breakpoint.lg - 1;
 
 	return (
 		<Box
@@ -77,6 +83,7 @@ export function NavContainer({
 				[localPaletteVars.bottomBar]: bottomBar, // <-- special case
 			}}
 		>
+			{menuVisiblyOpen ? <LockScroll /> : null}
 			<BottomBar />
 			<Flex
 				as="nav"
@@ -92,13 +99,7 @@ export function NavContainer({
 					paddingX={{ xs: 0.75, lg: 2 }}
 				>
 					<ToggleButton onClick={open} />
-					<FocusTrap
-						active={menuOpen}
-						focusTrapOptions={{
-							clickOutsideDeactivates: true,
-							onDeactivate: close,
-						}}
-					>
+					<FocusLock disabled={!menuVisiblyOpen}>
 						<div
 							css={{
 								[tokens.mediaQuery.max.md]: {
@@ -125,23 +126,26 @@ export function NavContainer({
 								{children}
 							</Flex>
 						</div>
-					</FocusTrap>
+					</FocusLock>
 					{rightContent}
 				</Flex>
 			</Flex>
-			<Overlay menuOpen={menuOpen} />
+			{menuVisiblyOpen ? <Overlay onClick={close} /> : null}
 		</Box>
 	);
 }
 
-function Overlay({ menuOpen }: { menuOpen: boolean }) {
-	if (!menuOpen) return null;
+function LockScroll() {
+	return <Global styles={{ body: { overflow: 'hidden' } }} />;
+}
+
+function Overlay({
+	onClick,
+}: {
+	onClick: React.MouseEventHandler<HTMLDivElement>;
+}) {
 	return (
 		<Box
-			display={{
-				xs: 'block',
-				lg: 'none',
-			}}
 			css={{
 				position: 'fixed',
 				top: 0,
@@ -152,6 +156,7 @@ function Overlay({ menuOpen }: { menuOpen: boolean }) {
 				opacity: 0.8,
 				zIndex: 100,
 			}}
+			onClick={onClick}
 		/>
 	);
 }

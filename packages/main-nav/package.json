@@ -5,7 +5,7 @@
 	"module": "dist/ag.ds-next-main-nav.esm.js",
 	"license": "MIT",
 	"dependencies": {
-		"focus-trap-react": "^8.9.0"
+		"react-focus-lock": "^2.8.1"
 	},
 	"peerDependencies": {
 		"@ag.ds-next/box": "4.0.3",
