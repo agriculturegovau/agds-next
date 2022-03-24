@@ -8,8 +8,6 @@ export function useClickOutside<T extends HTMLElement = HTMLElement>(
 		const listener = (event: MouseEvent) => {
 			const el = ref?.current;
 
-			console.log(listener);
-
 			// Do nothing if clicking ref's element or descendent elements
 			if (!el || el.contains(event.target as Node)) {
 				return;

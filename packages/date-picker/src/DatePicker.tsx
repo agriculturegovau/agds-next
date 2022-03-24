@@ -7,6 +7,7 @@ import { DateInput, DateInputProps } from './DatePickerInput';
 
 // TODO ref
 // Debounced ???
+// TODO improve props
 
 export type DatePickerProps = CalendarProps &
 	Omit<DateInputProps, 'value' | 'onChange' | 'buttonRef' | 'buttonOnClick'> & {
@@ -14,7 +15,16 @@ export type DatePickerProps = CalendarProps &
 		onChange: (day: Date | undefined) => void;
 	};
 
-export const DatePicker = ({ value, onChange, ...props }: DatePickerProps) => {
+export const DatePicker = ({
+	value,
+	onChange,
+	disabledDays,
+	modifiers,
+	initialMonth,
+	fromMonth,
+	toMonth,
+	...props
+}: DatePickerProps) => {
 	const [isCalendarOpen, openCalendar, closeCalendar] = useTernaryState(false);
 
 	const buttonRef = useRef<HTMLButtonElement>(null);
@@ -84,9 +94,15 @@ export const DatePicker = ({ value, onChange, ...props }: DatePickerProps) => {
 					css={{ zIndex: 1 }}
 				>
 					<Calendar
-						initialMonth={value}
-						selectedDays={[value]}
+						selectedDays={value}
 						onDayClick={onDayClick}
+						disabledDays={disabledDays}
+						modifiers={modifiers}
+						initialMonth={initialMonth || value}
+						fromMonth={fromMonth}
+						toMonth={toMonth}
+						numberOfMonths={1}
+						range={false}
 					/>
 				</div>
 			) : null}

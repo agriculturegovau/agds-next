@@ -16,6 +16,7 @@ export const DateInput = forwardRef<HTMLInputElement, DateInputProps>(
 		{
 			label,
 			required,
+			requiredLabel,
 			hint,
 			message,
 			invalid,
@@ -47,6 +48,7 @@ export const DateInput = forwardRef<HTMLInputElement, DateInputProps>(
 			<Field
 				label={label}
 				required={Boolean(required)}
+				requiredLabel={requiredLabel}
 				hint={hint}
 				message={message}
 				invalid={invalid}

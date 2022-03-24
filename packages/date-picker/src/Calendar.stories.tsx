@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { Box, Stack } from '@ag.ds-next/box';
-import { Text } from '@ag.ds-next/text';
+import { Box } from '@ag.ds-next/box';
 import { Calendar, CalendarProps } from './Calendar';
 import { DateUtils } from 'react-day-picker';
+import { DateRange } from './DateRangePicker';
 
 export default {
 	title: 'forms/DatePicker/Calendar',
@@ -12,16 +12,7 @@ export default {
 
 const Template = (props: CalendarProps) => {
 	const [value, setValue] = useState(new Date());
-	return (
-		<Stack gap={3}>
-			<Calendar selectedDays={value} onDayClick={setValue} {...props} />
-			{value ? (
-				<Text fontSize="xs" color="muted">
-					Value: {value.toLocaleDateString()}
-				</Text>
-			) : null}
-		</Stack>
-	);
+	return <Calendar selectedDays={value} onDayClick={setValue} {...props} />;
 };
 
 export const OnLight: ComponentStory<typeof Calendar> = (args) => (
@@ -66,45 +57,27 @@ DisabledWeekdays.args = {
 };
 
 export const Range = () => {
-	const [from, setFrom] = useState();
-	const [to, setTo] = useState();
+	const [range, setRange] = useState<DateRange>({
+		from: undefined,
+		to: undefined,
+	});
 
-	function handleDayClick(day) {
-		const range = DateUtils.addDayToRange(day, { from, to });
-		setFrom(range.from);
-		setTo(range.to);
-	}
+	const handleDayClick = useCallback((day: Date) => {
+		setRange((range) => {
+			const newRange = DateUtils.addDayToRange(day, range);
+			return { from: newRange.from || undefined, to: newRange.to || undefined };
+		});
+	}, []);
 
-	function handleResetClick() {
-		setFrom(undefined);
-		setTo(undefined);
-	}
-
-	// const { from, to } = this.state;
-	const modifiers = { start: from, end: to };
+	const modifiers = { start: range.from, end: range.to };
 
 	return (
-		<Stack gap={2}>
-			<Calendar
-				numberOfMonths={2}
-				selectedDays={[from, { from, to }]}
-				modifiers={modifiers}
-				onDayClick={handleDayClick}
-				range
-			/>
-			<p>
-				{!from && !to && 'Please select the first day.'}
-				{from && !to && 'Please select the last day.'}
-				{from &&
-					to &&
-					`Selected from ${from.toLocaleDateString()} to
-                ${to.toLocaleDateString()}`}{' '}
-				{from && to && (
-					<button className="link" onClick={() => handleResetClick()}>
-						Reset
-					</button>
-				)}
-			</p>
-		</Stack>
+		<Calendar
+			numberOfMonths={2}
+			selectedDays={[range.from, range]}
+			modifiers={modifiers}
+			onDayClick={handleDayClick}
+			range
+		/>
 	);
 };

@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { Box, Stack } from '@ag.ds-next/box';
 import { DatePicker } from './DatePicker';
-import { Text } from '@ag.ds-next/text';
 
 export default {
 	title: 'forms/DatePicker/DatePicker',
@@ -11,16 +10,7 @@ export default {
 
 const Template: ComponentStory<typeof DatePicker> = (args) => {
 	const [value, setValue] = useState<Date>();
-	return (
-		<Stack gap={4}>
-			<DatePicker {...args} value={value} onChange={setValue} />
-			{value ? (
-				<Text fontSize="xs" color="muted">
-					Value: {value.toLocaleDateString()}
-				</Text>
-			) : null}
-		</Stack>
-	);
+	return <DatePicker {...args} value={value} onChange={setValue} />;
 };
 
 export const OnLight: ComponentStory<typeof DatePicker> = (args) => (
@@ -39,24 +29,20 @@ OnDark.args = {
 	label: 'Example',
 };
 
-export const CalendarProps: ComponentStory<typeof DatePicker> = (args) => {
-	const [value, setValue] = useState();
+export const CalendarProps = () => {
+	const [value, setValue] = useState<Date>();
 	const today = new Date();
 	return (
-		<Template
+		<DatePicker
+			label="Example"
 			disabledDays={{ before: today }}
 			fromMonth={today}
-			label="Pay date"
 			value={value}
 			onChange={setValue}
-			onClear={() => setValue(undefined)}
-			showOverlay
 		/>
 	);
 };
-CalendarProps.args = {
-	label: 'Example',
-};
+CalendarProps.args = {};
 
 export const Disabled: ComponentStory<typeof DatePicker> = (args) => (
 	<Template {...args} />

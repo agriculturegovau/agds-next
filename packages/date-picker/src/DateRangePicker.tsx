@@ -4,13 +4,9 @@ import { Flex } from '@ag.ds-next/box';
 import { useClickOutside, useTernaryState } from '@ag.ds-next/core';
 import { Calendar, CalendarProps } from './Calendar';
 import { format, parse, isValid } from 'date-fns';
-// import { DateUtils } from 'react-day-picker';
 import { DateInput } from './DatePickerInput';
 
-export type DateRange = {
-	from: Date | undefined;
-	to: Date | undefined;
-};
+import { DateRange, getValidDateRange } from './utils';
 
 export type DateRangePickerProps = CalendarProps & {
 	disabled?: boolean;
@@ -18,6 +14,7 @@ export type DateRangePickerProps = CalendarProps & {
 	onChange: (day: DateRange) => void;
 	fromLabel?: string;
 	toLabel?: string;
+	required?: boolean;
 	requiredLabel?: boolean;
 };
 
@@ -27,6 +24,8 @@ export const DateRangePicker = ({
 	onChange,
 	fromLabel = 'From',
 	toLabel = 'To',
+	required,
+	requiredLabel,
 }: DateRangePickerProps) => {
 	const [isCalendarOpen, openCalendar, closeCalendar] = useTernaryState(false);
 	const [mode, setMode] = useState<'start' | 'end'>();
@@ -67,37 +66,27 @@ export const DateRangePicker = ({
 	useClickOutside(clickOutsideRef, closeCalendar);
 
 	const onDayClick = useCallback(
-		(day: Date) => {
-			const rawRange =
-				mode === 'start'
-					? { from: day, to: value.to }
-					: { from: value.from, to: day };
-
-			const range = {
-				from: rawRange.from || undefined,
-				to: rawRange.to || undefined,
-			};
+		(selectedDay: Date) => {
+			if (!mode) return;
+			const range = getValidDateRange(mode, selectedDay, value);
 
 			onChange(range);
 			setStartInputValue(range.from ? format(range.from, 'dd/MM/yyyy') : '');
 			setEndInputValue(range.to ? format(range.to, 'dd/MM/yyyy') : '');
 
+			if (range.from && range.to) {
+				mode === 'start'
+					? startTriggerRef.current?.focus()
+					: endTriggerRef.current?.focus();
+				closeCalendar();
+				setMode(undefined);
+				return;
+			}
+
 			if (mode === 'start') {
 				setMode('end');
 				endTriggerRef.current?.focus();
-			}
-
-			if (mode === 'end') {
-				if (!range.from) {
-					setMode('start');
-					startTriggerRef.current?.focus();
-					return;
-				}
-				setMode(undefined);
-			}
-
-			if (mode === 'end' && range.from && range.to) {
-				closeCalendar();
+				return;
 			}
 		},
 		[mode, value, onChange, closeCalendar]
@@ -158,7 +147,8 @@ export const DateRangePicker = ({
 					buttonRef={startTriggerRef}
 					buttonOnClick={onStartTriggerClick}
 					disabled={disabled}
-					// requiredLabel={requiredLabel}
+					required={required}
+					requiredLabel={requiredLabel}
 				/>
 				<DateInput
 					label={toLabel}
@@ -168,7 +158,8 @@ export const DateRangePicker = ({
 					buttonRef={endTriggerRef}
 					buttonOnClick={onEndTriggerClick}
 					disabled={disabled}
-					// requiredLabel={requiredLabel}
+					required={required}
+					requiredLabel={requiredLabel}
 				/>
 			</Flex>
 			{isCalendarOpen ? (
@@ -178,6 +169,7 @@ export const DateRangePicker = ({
 					{...attributes.popper}
 					css={{ zIndex: 1 }}
 				>
+					{mode}
 					<Calendar
 						initialMonth={mode === 'start' ? value.from : value.to}
 						selectedDays={[value.from, value]}
