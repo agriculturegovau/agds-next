@@ -11,7 +11,7 @@ import { useClickOutside, useTernaryState } from '@ag.ds-next/core';
 import { Calendar, CalendarProps } from './Calendar';
 import { format, isValid } from 'date-fns';
 import { DateInput } from './DatePickerInput';
-import { dateFormat, getValidDateRange, parseDate, placeholder } from './utils';
+import { getValidDateRange, parseDate } from './utils';
 
 export type DateRange = {
 	from: Date | undefined;
@@ -26,6 +26,8 @@ export type DateRangePickerProps = CalendarProps & {
 	toLabel?: string;
 	required?: boolean;
 	requiredLabel?: boolean;
+	dateFormat?: string;
+	placeholder?: string;
 };
 
 export const DateRangePicker = ({
@@ -36,6 +38,8 @@ export const DateRangePicker = ({
 	toLabel = 'To',
 	required,
 	requiredLabel,
+	dateFormat = 'dd/MM/YYYY',
+	placeholder = 'dd/mm/yyyy',
 }: DateRangePickerProps) => {
 	const [isCalendarOpen, openCalendar, closeCalendar] = useTernaryState(false);
 	const [inputMode, setInputMode] = useState<'from' | 'to'>();
@@ -85,7 +89,7 @@ export const DateRangePicker = ({
 				return;
 			}
 		},
-		[closeCalendar, inputMode, onChange, value]
+		[closeCalendar, dateFormat, inputMode, onChange, value]
 	);
 
 	// From input state
@@ -96,13 +100,13 @@ export const DateRangePicker = ({
 			const inputValue = e.target.value;
 			setFromInputValue(inputValue);
 			// Ensure the text entered is a valid date
-			const parsedDate = parseDate(inputValue);
+			const parsedDate = parseDate(inputValue, dateFormat);
 			onChange({
 				...value,
 				from: isValid(parsedDate) ? parsedDate : undefined,
 			});
 		},
-		[onChange, value]
+		[onChange, value, dateFormat]
 	);
 
 	// End input state
@@ -113,13 +117,13 @@ export const DateRangePicker = ({
 			const inputValue = e.target.value;
 			setEndInputValue(inputValue);
 			// Ensure the text entered is a valid date
-			const parsedDate = parseDate(inputValue);
+			const parsedDate = parseDate(inputValue, dateFormat);
 			onChange({
 				...value,
 				to: isValid(parsedDate) ? parsedDate : undefined,
 			});
 		},
-		[onChange, value]
+		[onChange, value, dateFormat]
 	);
 
 	// Close the calendar when the user clicks outside

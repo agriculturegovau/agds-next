@@ -46,10 +46,21 @@ Required.args = {
 };
 
 export const Labels = Template.bind({});
-Labels.args = { fromLabel: 'Start date', toLabel: 'End date' };
+Labels.args = {
+	fromLabel: 'Start date',
+	toLabel: 'End date',
+};
 
 export const RequiredLabel = Template.bind({});
 RequiredLabel.args = { requiredLabel: false };
+
+export const DateFormat: ComponentStory<typeof DateRangePicker> = (args) => (
+	<Template {...args} />
+);
+DateFormat.args = {
+	dateFormat: 'MM-dd-yyyy',
+	placeholder: 'mm-dd-yyyy',
+};
 
 export const ExampleFilters = () => {
 	const [option, setOption] = useState<string>();

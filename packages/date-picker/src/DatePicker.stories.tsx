@@ -97,3 +97,12 @@ RequiredLabel.args = {
 	label: 'Example',
 	requiredLabel: false,
 };
+
+export const DateFormat: ComponentStory<typeof DatePicker> = (args) => (
+	<Template {...args} />
+);
+DateFormat.args = {
+	dateFormat: 'MM-dd-yyyy',
+	placeholder: 'mm-dd-yyyy',
+	label: 'Example',
+};

@@ -4,17 +4,26 @@ import { useClickOutside, useTernaryState } from '@ag.ds-next/core';
 import { Calendar, CalendarProps } from './Calendar';
 import { format, isValid } from 'date-fns';
 import { DateInput, DateInputProps } from './DatePickerInput';
-import { dateFormat, parseDate, placeholder } from './utils';
+import { parseDate } from './utils';
+
+type InputProps = Omit<
+	DateInputProps,
+	'value' | 'onChange' | 'buttonRef' | 'buttonOnClick'
+>;
 
 export type DatePickerProps = CalendarProps &
-	Omit<DateInputProps, 'value' | 'onChange' | 'buttonRef' | 'buttonOnClick'> & {
+	InputProps & {
 		value: Date | undefined;
 		onChange: (day: Date | undefined) => void;
+		dateFormat?: string;
+		placeholder?: string;
 	};
 
 export const DatePicker = ({
 	value,
 	onChange,
+	dateFormat = 'dd/MM/YYYY',
+	placeholder = 'dd/mm/yyyy',
 	initialMonth,
 	...props
 }: DatePickerProps) => {
@@ -39,7 +48,7 @@ export const DatePicker = ({
 			closeCalendar();
 			triggerRef.current?.focus();
 		},
-		[onChange, closeCalendar]
+		[dateFormat, onChange, closeCalendar]
 	);
 
 	const [inputValue, setInputValue] = useState(
@@ -52,10 +61,10 @@ export const DatePicker = ({
 			const value = e.target.value;
 			setInputValue(value);
 			// Ensure the text entered is a valid date
-			const parsedDate = parseDate(value);
+			const parsedDate = parseDate(value, dateFormat);
 			onChange(isValid(parsedDate) ? parsedDate : undefined);
 		},
-		[onChange]
+		[onChange, dateFormat]
 	);
 
 	// Close the calendar when the user clicks outside

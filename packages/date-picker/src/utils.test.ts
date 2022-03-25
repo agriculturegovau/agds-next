@@ -2,18 +2,25 @@ import { add } from 'date-fns';
 import { getValidDateRange, parseDate } from './utils';
 
 describe('parseDate', () => {
+	const dateFormat = 'dd/MM/yyyy';
 	test('works on valid dates', () => {
-		expect(parseDate('31/01/1950')?.toLocaleDateString()).toEqual('31/01/1950');
-		expect(parseDate('31/12/1999')?.toLocaleDateString()).toEqual('31/12/1999');
-		expect(parseDate('01/01/2000')?.toLocaleDateString()).toEqual('01/01/2000');
+		expect(parseDate('31/01/1950', dateFormat)?.toLocaleDateString()).toEqual(
+			'31/01/1950'
+		);
+		expect(parseDate('31/12/1999', dateFormat)?.toLocaleDateString()).toEqual(
+			'31/12/1999'
+		);
+		expect(parseDate('01/01/2000', dateFormat)?.toLocaleDateString()).toEqual(
+			'01/01/2000'
+		);
 	});
 	test('works on invalid dates and invalid formats', () => {
-		expect(parseDate('50/50/2019')).toEqual(undefined);
-		expect(parseDate('50/50/19')).toEqual(undefined);
-		expect(parseDate('31/01/19')).toEqual(undefined);
-		expect(parseDate('31/01/199')).toEqual(undefined);
-		expect(parseDate('31-01-19')).toEqual(undefined);
-		expect(parseDate('1-2-3')).toEqual(undefined);
+		expect(parseDate('50/50/2019', dateFormat)).toEqual(undefined);
+		expect(parseDate('50/50/19', dateFormat)).toEqual(undefined);
+		expect(parseDate('31/01/19', dateFormat)).toEqual(undefined);
+		expect(parseDate('31/01/199', dateFormat)).toEqual(undefined);
+		expect(parseDate('31-01-19', dateFormat)).toEqual(undefined);
+		expect(parseDate('1-2-3', dateFormat)).toEqual(undefined);
 	});
 });
 
