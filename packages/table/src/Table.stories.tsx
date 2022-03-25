@@ -1,6 +1,7 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { Box } from '@ag.ds-next/box';
+import { Box, Flex } from '@ag.ds-next/box';
+import { TextLink } from '@ag.ds-next/text';
 import { Table } from './Table';
 import { TableBody } from './TableBody';
 import { TableCaption } from './TableCaption';
@@ -20,14 +21,108 @@ export default {
 	},
 } as ComponentMeta<typeof Table>;
 
-const Example: ComponentStory<typeof Table> = (args) => (
+const Example: ComponentStory<typeof Table> = (args) => {
+	const data = [
+		{
+			submissionDate: undefined,
+			id: '4f690575-8b96-4dbb-b9d6-a248088782f8',
+			type: 'Establishment registration',
+		},
+		{
+			submissionDate: undefined,
+			id: '0c8eaf7b-b9d3-4221-9e5b-87871c8442e2',
+			type: 'Establishment registration',
+		},
+		{
+			submissionDate: 'Tuesday 22 March 2022',
+			id: '4dea2af2-8192-41b9-8909-5772b5e1969d',
+			type: 'Establishment registration',
+		},
+		{
+			submissionDate: undefined,
+			id: 'aef2fa47-c431-472b-ab9f-f0a8a5d37f56',
+			type: 'Establishment registration',
+		},
+		{
+			submissionDate: 'Tuesday 22 March 2022',
+			id: '04bc33ac-134c-4edb-a221-81d345a891ec',
+			type: 'Establishment registration',
+		},
+		{
+			submissionDate: 'Tuesday 22 March 2022',
+			id: '4b8fecdf-d602-4476-be68-fce7133c272f',
+			type: 'Establishment registration',
+		},
+		{
+			submissionDate: undefined,
+			id: '89bf7ea4-d68f-4b6c-bae6-99d29e70811d',
+			type: 'Establishment registration',
+		},
+		{
+			submissionDate: 'Tuesday 22 March 2022',
+			id: 'f2342620-b5bc-44db-894d-969689373d1d',
+			type: 'Establishment registration',
+		},
+	];
+
+	return (
+		<Table {...args}>
+			<TableCaption>Your establishment registration applications</TableCaption>
+			<TableHead>
+				<tr>
+					<TableHeader>Date submitted</TableHeader>
+					<TableHeader>Name</TableHeader>
+					<TableHeader display={{ xs: 'none', md: 'table-cell' }}>
+						Application type
+					</TableHeader>
+					<TableHeader>Actions</TableHeader>
+				</tr>
+			</TableHead>
+			<TableBody>
+				{data.map(({ id, submissionDate, type }) => (
+					<tr key={id}>
+						<TableCell>{submissionDate || 'Not yet submitted'}</TableCell>
+						<TableCell>
+							<TextLink href={`#${id}`}>{id}</TextLink>
+						</TableCell>
+						<TableCell display={{ xs: 'none', md: 'table-cell' }}>
+							{type}
+						</TableCell>
+						<TableCell>
+							<Flex gap={1}>
+								<TextLink href={`#${id}`}>
+									{submissionDate ? 'View' : 'Edit'}
+								</TextLink>
+								{!submissionDate && <TextLink href={`#${id}`}>Delete</TextLink>}
+							</Flex>
+						</TableCell>
+					</tr>
+				))}
+			</TableBody>
+		</Table>
+	);
+};
+
+export const OnLight: ComponentStory<typeof Table> = (args) => (
+	<Example {...args} />
+);
+
+export const OnDark: ComponentStory<typeof Table> = (args) => (
+	<Box palette="dark" background="body" padding={1.5}>
+		<Example {...args} />
+	</Box>
+);
+
+export const Modular: ComponentStory<typeof Table> = (args) => (
 	<Table {...args}>
 		<TableCaption>
 			Population of Australian states and territories, December 2015
 		</TableCaption>
 		<TableHead>
 			<tr>
-				<TableHeader scope="col"> Location </TableHeader>
+				<TableHeader width={50} scope="col">
+					Location
+				</TableHeader>
 				<TableHeader textAlign="right" scope="col">
 					Population
 				</TableHeader>
@@ -91,89 +186,3 @@ const Example: ComponentStory<typeof Table> = (args) => (
 		</TableBody>
 	</Table>
 );
-
-export const OnLight: ComponentStory<typeof Table> = (args) => (
-	<Example {...args} />
-);
-
-export const OnDark: ComponentStory<typeof Table> = (args) => (
-	<Box palette="dark" background="body" padding={1.5}>
-		<Example {...args} />
-	</Box>
-);
-
-
-export const ERAs = () => {
-	const eras = [
-		{
-			submissionDate: undefined,
-			id: '4f690575-8b96-4dbb-b9d6-a248088782f8',
-			type: 'Establishment registration',
-		},
-		{
-			submissionDate: undefined,
-			id: '0c8eaf7b-b9d3-4221-9e5b-87871c8442e2',
-			type: 'Establishment registration',
-		},
-		{
-			submissionDate: 'Tuesday 22 March 2022',
-			id: '4dea2af2-8192-41b9-8909-5772b5e1969d',
-			type: 'Establishment registration',
-		},
-		{
-			submissionDate: undefined,
-			id: 'aef2fa47-c431-472b-ab9f-f0a8a5d37f56',
-			type: 'Establishment registration',
-		},
-		{
-			submissionDate: 'Tuesday 22 March 2022',
-			id: '04bc33ac-134c-4edb-a221-81d345a891ec',
-			type: 'Establishment registration',
-		},
-		{
-			submissionDate: 'Tuesday 22 March 2022',
-			id: '4b8fecdf-d602-4476-be68-fce7133c272f',
-			type: 'Establishment registration',
-		},
-		{
-			submissionDate: undefined,
-			id: '89bf7ea4-d68f-4b6c-bae6-99d29e70811d',
-			type: 'Establishment registration',
-		},
-		{
-			submissionDate: 'Tuesday 22 March 2022',
-			id: 'f2342620-b5bc-44db-894d-969689373d1d',
-			type: 'Establishment registration',
-		},
-	];
-
-	return (
-		<Table striped>
-			<TableCaption>Your establishment registration applications</TableCaption>
-			<TableHead>
-				<tr>
-					<TableHeader>Date submitted</TableHeader>
-					<TableHeader>Name</TableHeader>
-					<TableHeader>Application type</TableHeader>
-					<TableHeader>Actions</TableHeader>
-				</tr>
-			</TableHead>
-			<TableBody>
-				{eras.map(({ id, submissionDate, type }) => (
-					<tr key={id}>
-						<TableCell>{submissionDate || 'Not yet submitted'}</TableCell>
-						<TableCell>
-							<TextLink href={`#${id}`}>{id}</TextLink>
-						</TableCell>
-						<TableCell>{type}</TableCell>
-						<TableCell>
-							<TextLink href={`#${id}`}>
-								{submissionDate ? 'View' : 'Edit draft'}
-							</TextLink>
-						</TableCell>
-					</tr>
-				))}
-			</TableBody>
-		</Table>
-	);
-};

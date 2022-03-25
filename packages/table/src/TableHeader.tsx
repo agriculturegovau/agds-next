@@ -5,6 +5,7 @@ import { ResponsiveProp, mapResponsiveProp } from '@ag.ds-next/core';
 export type TableHeaderWidthType = 10 | 20 | 25 | 33 | 50 | 75;
 
 export type TableHeaderProps = PropsWithChildren<{
+	scope?: 'col' | 'row' | 'colgroup' | 'rowgroup';
 	textAlign?: 'left' | 'center' | 'right';
 	width?: ResponsiveProp<TableHeaderWidthType>;
 }> &
