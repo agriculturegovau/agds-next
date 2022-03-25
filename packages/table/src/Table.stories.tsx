@@ -1,6 +1,7 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { Box, Flex } from '@ag.ds-next/box';
+import { Button } from '@ag.ds-next/button';
 import { TextLink } from '@ag.ds-next/text';
 import { Table } from './Table';
 import { TableBody } from './TableBody';
@@ -89,12 +90,9 @@ const Example: ComponentStory<typeof Table> = (args) => {
 							{type}
 						</TableCell>
 						<TableCell>
-							<Flex gap={1}>
-								<TextLink href={`#${id}`}>
-									{submissionDate ? 'View' : 'Edit'}
-								</TextLink>
-								{!submissionDate && <TextLink href={`#${id}`}>Delete</TextLink>}
-							</Flex>
+							<TextLink href={`#${id}`}>
+								{submissionDate ? 'View' : 'Edit Draft'}
+							</TextLink>
 						</TableCell>
 					</tr>
 				))}
