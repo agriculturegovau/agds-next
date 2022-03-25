@@ -7,6 +7,7 @@ export { ArrowDownIcon } from './icons/ArrowDownIcon';
 export { ArrowLeftIcon } from './icons/ArrowLeftIcon';
 export { ArrowRightIcon } from './icons/ArrowRightIcon';
 export { AvatarIcon } from './icons/AvatarIcon';
+export { CalendarIcon } from './icons/CalendarIcon';
 export { ChevronUpIcon } from './icons/ChevronUpIcon';
 export { ChevronDownIcon } from './icons/ChevronDownIcon';
 export { ChevronLeftIcon } from './icons/ChevronLeftIcon';

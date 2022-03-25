@@ -513,6 +513,17 @@ items={[
   </TableWrapper>
   `,
 	},
+	{
+		group: 'DatePicker',
+		name: 'Basic',
+		code: `<DatePicker label="Select date" value={new Date()} onChange={() => {}} />`,
+	},
+	{
+		group: 'DateRangePicker',
+		name: 'Basic',
+		code: `<DateRangePicker value={{ from: new Date('2000-01-03'), to: new Date('2000-01-07') }} onChange={() => {}}
+  />`,
+	},
 ];
 
 export default snippits;
