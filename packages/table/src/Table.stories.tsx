@@ -1,7 +1,6 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { Box, Flex } from '@ag.ds-next/box';
-import { Button } from '@ag.ds-next/button';
+import { Box } from '@ag.ds-next/box';
 import { TextLink } from '@ag.ds-next/text';
 import { Table } from './Table';
 import { TableBody } from './TableBody';
@@ -9,6 +8,7 @@ import { TableCaption } from './TableCaption';
 import { TableCell } from './TableCell';
 import { TableHeader } from './TableHeader';
 import { TableHead } from './TableHead';
+import { TableWrapper } from './TableWrapper';
 
 export default {
 	title: 'content/Table',
@@ -19,6 +19,7 @@ export default {
 		TableCell,
 		TableHeader,
 		TableHead,
+		TableWrapper,
 	},
 } as ComponentMeta<typeof Table>;
 
@@ -67,37 +68,41 @@ const Example: ComponentStory<typeof Table> = (args) => {
 	];
 
 	return (
-		<Table {...args}>
-			<TableCaption>Your establishment registration applications</TableCaption>
-			<TableHead>
-				<tr>
-					<TableHeader>Date submitted</TableHeader>
-					<TableHeader>Name</TableHeader>
-					<TableHeader display={{ xs: 'none', md: 'table-cell' }}>
-						Application type
-					</TableHeader>
-					<TableHeader>Actions</TableHeader>
-				</tr>
-			</TableHead>
-			<TableBody>
-				{data.map(({ id, submissionDate, type }) => (
-					<tr key={id}>
-						<TableCell>{submissionDate || 'Not yet submitted'}</TableCell>
-						<TableCell>
-							<TextLink href={`#${id}`}>{id}</TextLink>
-						</TableCell>
-						<TableCell display={{ xs: 'none', md: 'table-cell' }}>
-							{type}
-						</TableCell>
-						<TableCell>
-							<TextLink href={`#${id}`}>
-								{submissionDate ? 'View' : 'Edit Draft'}
-							</TextLink>
-						</TableCell>
+		<TableWrapper>
+			<Table {...args}>
+				<TableCaption>
+					Your establishment registration applications
+				</TableCaption>
+				<TableHead>
+					<tr>
+						<TableHeader>Date submitted</TableHeader>
+						<TableHeader>Name</TableHeader>
+						<TableHeader display={{ xs: 'none', md: 'table-cell' }}>
+							Application type
+						</TableHeader>
+						<TableHeader>Actions</TableHeader>
 					</tr>
-				))}
-			</TableBody>
-		</Table>
+				</TableHead>
+				<TableBody>
+					{data.map(({ id, submissionDate, type }) => (
+						<tr key={id}>
+							<TableCell>{submissionDate || 'Not yet submitted'}</TableCell>
+							<TableCell>
+								<TextLink href={`#${id}`}>{id}</TextLink>
+							</TableCell>
+							<TableCell display={{ xs: 'none', md: 'table-cell' }}>
+								{type}
+							</TableCell>
+							<TableCell>
+								<TextLink href={`#${id}`}>
+									{submissionDate ? 'View' : 'Edit Draft'}
+								</TextLink>
+							</TableCell>
+						</tr>
+					))}
+				</TableBody>
+			</Table>
+		</TableWrapper>
 	);
 };
 
@@ -118,7 +123,7 @@ export const Modular: ComponentStory<typeof Table> = (args) => (
 		</TableCaption>
 		<TableHead>
 			<tr>
-				<TableHeader width={50} scope="col">
+				<TableHeader width="50%" scope="col">
 					Location
 				</TableHeader>
 				<TableHeader textAlign="right" scope="col">

@@ -104,4 +104,5 @@ export {
 	TableCell,
 	TableHeader,
 	TableHead,
+	TableWrapper,
 } from '@ag.ds-next/table';

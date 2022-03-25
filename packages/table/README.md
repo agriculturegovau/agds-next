@@ -166,7 +166,7 @@ You can use custom widths based on the expected length of the data under each co
 <Table>
 	<TableHead>
 		<tr>
-			<TableHeader width={50}>Location</TableHeader>
+			<TableHeader width="50%">Location</TableHeader>
 		</tr>
 	</TableHead>
 	...
@@ -180,9 +180,7 @@ You can use custom widths based on the expected length of the data under each co
 	</TableCaption>
 	<TableHead>
 		<tr>
-			<TableHeader scope="col" width={50}>
-				Location
-			</TableHeader>
+			<TableHeader scope="col">Location</TableHeader>
 			<TableHeader textAlign="right" scope="col">
 				Population
 			</TableHeader>
