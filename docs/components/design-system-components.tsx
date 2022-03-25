@@ -62,6 +62,14 @@ import { InpageNav } from '@ag.ds-next/inpage-nav';
 import { Logo as AgLogo } from '@ag.ds-next/ag-branding';
 import { Field } from '@ag.ds-next/field';
 import { Fieldset } from '@ag.ds-next/fieldset';
+import {
+	Table,
+	TableBody,
+	TableCaption,
+	TableCell,
+	TableHeader,
+	TableHead,
+} from '@ag.ds-next/table';
 import { TextInput } from '@ag.ds-next/text-input';
 import { Textarea } from '@ag.ds-next/textarea';
 import {
@@ -108,6 +116,12 @@ export const designSystemComponents = {
 	Column,
 	Stack,
 	Body,
+	Table,
+	TableBody,
+	TableCaption,
+	TableCell,
+	TableHeader,
+	TableHead,
 	Text,
 	TextLink,
 	Heading,

@@ -112,7 +112,20 @@ function isEntry(a: unknown): a is {
 }
 type LayoutProps = Partial<{
 	display: ResponsiveProp<
-		'block' | 'flex' | 'inline' | 'inline-block' | 'inline-flex' | 'none'
+		| 'block'
+		| 'flex'
+		| 'inline'
+		| 'inline-block'
+		| 'inline-flex'
+		| 'none'
+		| 'table-row-group'
+		| 'table-header-group'
+		| 'table-footer-group'
+		| 'table-row'
+		| 'table-cell'
+		| 'table-column-group'
+		| 'table-column'
+		| 'table-caption'
 	>;
 	flexDirection: ResponsiveProp<
 		'row' | 'column' | 'row-reverse' | 'column-reverse'
