@@ -12,7 +12,7 @@ group: forms
 
 ```jsx live
 () => {
-	const [value, setValue] = React.useState(new Date());
+	const [value, setValue] = React.useState();
 	return <DatePicker label="Select date" value={value} onChange={setValue} />;
 };
 ```
@@ -23,7 +23,7 @@ Use the `block` prop to expand the component to fill the available space.
 
 ```jsx live
 () => {
-	const [value, setValue] = React.useState(new Date());
+	const [value, setValue] = React.useState();
 	return (
 		<DatePicker label="Select date" value={value} onChange={setValue} block />
 	);
@@ -32,11 +32,11 @@ Use the `block` prop to expand the component to fill the available space.
 
 ### Required
 
-The `TextInput` component will always append `(optional)` or `(required)` to the label based on the `required` prop.
+The `DatePicker` component will always append `(optional)` or `(required)` to the label based on the `required` prop.
 
 ```jsx live
 () => {
-	const [value, setValue] = React.useState(new Date());
+	const [value, setValue] = React.useState();
 	return (
 		<Stack gap={1}>
 			<DatePicker label="Default" value={value} onChange={setValue} />
@@ -58,7 +58,7 @@ Use the `invalid` and `valid` props to indicate whether user input is valid (val
 
 ```jsx live
 () => {
-	const [value, setValue] = React.useState(new Date());
+	const [value, setValue] = React.useState();
 	return (
 		<Stack gap={1}>
 			<DatePicker
@@ -76,11 +76,11 @@ Use the `invalid` and `valid` props to indicate whether user input is valid (val
 
 ### Disabled
 
-Disabled input elements are unusable and can not be clicked. This prevents a user from interacting with the input element until another action is complete. Disabled input elements in a form will not be submitted.
+Disabled input elements are unusable and can not be clicked. This prevents a user from interacting with the input element until another action is complete.
 
 ```jsx live
 () => {
-	const [value, setValue] = React.useState(new Date());
+	const [value, setValue] = React.useState();
 	return (
 		<DatePicker
 			label="Select date"
@@ -119,5 +119,14 @@ Disabled input elements are unusable and can not be clicked. This prevents a use
 			requiredLabel={false}
 		/>
 	);
+};
+```
+
+### Disabled
+
+```jsx live
+() => {
+	const [value, setValue] = React.useState({ from: undefined, to: undefined });
+	return <DateRangePicker value={value} onChange={setValue} disabled />;
 };
 ```

@@ -11,7 +11,7 @@ import { useClickOutside, useTernaryState } from '@ag.ds-next/core';
 import { Calendar, CalendarProps } from './Calendar';
 import { format, isValid } from 'date-fns';
 import { DateInput } from './DatePickerInput';
-import { dateFormat, getValidDateRange, parseDate } from './utils';
+import { dateFormat, getValidDateRange, parseDate, placeholder } from './utils';
 
 export type DateRange = {
 	from: Date | undefined;
@@ -139,7 +139,7 @@ export const DateRangePicker = ({
 					label={fromLabel}
 					value={fromInputValue}
 					onChange={onFromInputChange}
-					placeholder="DD/MM/YYYY"
+					placeholder={placeholder}
 					buttonRef={fromTriggerRef}
 					buttonOnClick={onFromTriggerClick}
 					disabled={disabled}
@@ -150,7 +150,7 @@ export const DateRangePicker = ({
 					label={toLabel}
 					value={endInputValue}
 					onChange={onEndInputChange}
-					placeholder="DD/MM/YYYY"
+					placeholder={placeholder}
 					buttonRef={toTriggerRef}
 					buttonOnClick={onEndTriggerClick}
 					disabled={disabled}

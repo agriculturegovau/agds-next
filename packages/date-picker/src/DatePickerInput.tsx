@@ -4,7 +4,7 @@ import { CalendarIcon } from '@ag.ds-next/icon';
 import { TextInputProps, textInputStyles } from '@ag.ds-next/text-input';
 import { mapSpacing } from '@ag.ds-next/core';
 import { Button } from '@ag.ds-next/button';
-import { Field, fieldMaxWidth } from '@ag.ds-next/field';
+import { Field } from '@ag.ds-next/field';
 
 export type DateInputProps = TextInputProps & {
 	buttonRef: RefObject<HTMLButtonElement>;
@@ -22,7 +22,6 @@ export const DateInput = forwardRef<HTMLInputElement, DateInputProps>(
 			invalid,
 			valid,
 			block,
-			maxWidth: maxWidthProp,
 			id,
 			buttonRef,
 			buttonOnClick,
@@ -31,14 +30,8 @@ export const DateInput = forwardRef<HTMLInputElement, DateInputProps>(
 		},
 		ref
 	) {
-		const styles = {
-			...textInputStyles({
-				block,
-				maxWidth: maxWidthProp,
-				invalid,
-				valid,
-			}),
-			maxWidth: 'unset',
+		const { maxWidth, ...styles } = {
+			...textInputStyles({ block, invalid, valid }),
 			width: '100%',
 			borderRight: 'none',
 			borderTopRightRadius: 0,
@@ -56,19 +49,10 @@ export const DateInput = forwardRef<HTMLInputElement, DateInputProps>(
 				id={id}
 			>
 				{(allyProps) => (
-					<Flex
-						alignItems="flex-end"
-						css={{
-							maxWidth: block
-								? undefined
-								: maxWidthProp
-								? fieldMaxWidth[maxWidthProp]
-								: '12.8125rem',
-						}}
-					>
+					<Flex alignItems="flex-end" css={{ maxWidth }}>
 						<input
 							ref={ref}
-							css={styles}
+							css={{ ...styles, maxWidth: 'unset' }}
 							{...allyProps}
 							{...props}
 							disabled={disabled}

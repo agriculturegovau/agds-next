@@ -1,5 +1,6 @@
 import { isDate, parse, isValid, isBefore, isAfter } from 'date-fns';
 
+// TODO make the date formats configurable
 export const dateFormat = 'dd/MM/yyyy';
 export const placeholder = 'dd/mm/yyyy';
 
