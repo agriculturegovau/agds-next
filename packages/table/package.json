@@ -1,6 +1,6 @@
 {
-  "name": "@ag.ds-next/table",
-  "version": "0.0.1",
+	"name": "@ag.ds-next/table",
+	"version": "0.0.1",
 	"main": "dist/ag.ds-next-table.cjs.js",
 	"module": "dist/ag.ds-next-table.esm.js",
 	"license": "MIT",
