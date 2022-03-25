@@ -80,11 +80,7 @@ For data tables with a small amount of rows use the default table. Align text co
 
 ## Striped
 
-Striping is a good way to improve readability of tables with lots of rows.
-
-```jsx
-<Table striped>...</Table>
-```
+For data tables with more rows, use the `striped` prop.
 
 ```jsx live
 <Table striped>
@@ -162,17 +158,6 @@ Striping is a good way to improve readability of tables with lots of rows.
 
 You can use custom widths based on the expected length of the data under each corresponding column.
 
-```jsx
-<Table>
-	<TableHead>
-		<tr>
-			<TableHeader width="50%">Location</TableHeader>
-		</tr>
-	</TableHead>
-	...
-</Table>
-```
-
 ```jsx live
 <Table striped>
 	<TableCaption>
@@ -180,7 +165,7 @@ You can use custom widths based on the expected length of the data under each co
 	</TableCaption>
 	<TableHead>
 		<tr>
-			<TableHeader scope="col">Location</TableHeader>
+			<TableHeader scope="col" width="50%">Location</TableHeader>
 			<TableHeader textAlign="right" scope="col">
 				Population
 			</TableHeader>

@@ -14,6 +14,7 @@ export const TableCaption = ({ children }: TableCaptionProps) => {
 			paddingBottom={0.5}
 			css={{
 				display: 'table-caption',
+				textAlign: 'left',
 			}}
 		>
 			{children}

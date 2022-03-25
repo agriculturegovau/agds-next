@@ -1,5 +1,6 @@
 import { PropsWithChildren } from 'react';
 import { Box, BoxProps } from '@ag.ds-next/box';
+import { boxPalette } from '@ag.ds-next/core';
 
 export type TableCellProps = PropsWithChildren<{
 	textAlign?: 'center' | 'left' | 'right';
@@ -18,7 +19,10 @@ export const TableCell = ({
 			color="text"
 			focus
 			as="td"
-			css={{ textAlign }}
+			css={{
+				textAlign,
+				borderColor: boxPalette.borderMuted,
+			}}
 			{...props}
 		>
 			{children}
