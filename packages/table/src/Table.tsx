@@ -1,6 +1,6 @@
 import { PropsWithChildren } from 'react';
 import { Box } from '@ag.ds-next/box';
-import { boxPalette } from '../../core/src';
+import { boxPalette } from '@ag.ds-next/core';
 
 export type TableProps = PropsWithChildren<{
 	striped?: boolean;
