@@ -3,7 +3,6 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { DateUtils } from 'react-day-picker';
 import { Box } from '@ag.ds-next/box';
 import { Calendar, CalendarProps } from './Calendar';
-import { DateRange } from './utils';
 
 export default {
 	title: 'forms/DatePicker/Calendar',
