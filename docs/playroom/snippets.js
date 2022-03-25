@@ -513,6 +513,22 @@ items={[
   </TableWrapper>
   `,
 	},
+	{
+		group: 'DatePicker',
+		name: 'Basic',
+		code: `{(() => {
+      const [value, setValue] = React.useState();
+      return <DatePicker label="Select date" value={value} onChange={setValue} />;
+    })()}`,
+	},
+	{
+		group: 'DateRangePicker',
+		name: 'Basic',
+		code: `{(() => {
+      const [value, setValue] = React.useState({ from: undefined, to: undefined });
+      return <DateRangePicker value={value} onChange={setValue} />;
+    })()}`,
+	},
 ];
 
 export default snippits;

@@ -38,7 +38,7 @@ export const DateRangePicker = ({
 	toLabel = 'To',
 	required,
 	requiredLabel,
-	dateFormat = 'dd/MM/YYYY',
+	dateFormat = 'dd/MM/yyyy',
 	placeholder = 'dd/mm/yyyy',
 }: DateRangePickerProps) => {
 	const [isCalendarOpen, openCalendar, closeCalendar] = useTernaryState(false);
@@ -138,7 +138,12 @@ export const DateRangePicker = ({
 
 	return (
 		<Fragment>
-			<Flex inline gap={1} ref={setRefEl}>
+			<Flex
+				flexDirection={{ xs: 'column', sm: 'row' }}
+				inline
+				gap={1}
+				ref={setRefEl}
+			>
 				<DateInput
 					label={fromLabel}
 					value={fromInputValue}

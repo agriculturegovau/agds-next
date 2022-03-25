@@ -22,7 +22,7 @@ export type DatePickerProps = CalendarProps &
 export const DatePicker = ({
 	value,
 	onChange,
-	dateFormat = 'dd/MM/YYYY',
+	dateFormat = 'dd/MM/yyyy',
 	placeholder = 'dd/mm/yyyy',
 	initialMonth,
 	...props
