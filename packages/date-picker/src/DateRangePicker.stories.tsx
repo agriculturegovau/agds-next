@@ -47,8 +47,8 @@ Required.args = {
 
 export const Labels = Template.bind({});
 Labels.args = {
-	fromLabel: 'Start date',
-	toLabel: 'End date',
+	fromLabel: 'From',
+	toLabel: 'To',
 };
 
 export const RequiredLabel = Template.bind({});

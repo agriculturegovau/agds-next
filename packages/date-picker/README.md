@@ -114,8 +114,8 @@ Disabled input elements are unusable and can not be clicked. This prevents a use
 		<DateRangePicker
 			value={value}
 			onChange={setValue}
-			fromLabel="Start date"
-			toLabel="End date"
+			fromLabel="From"
+			toLabel="To"
 			requiredLabel={false}
 		/>
 	);

@@ -33,6 +33,7 @@ export const Disabled: ComponentStory<typeof DatePicker> = (args) => (
 	<Template {...args} />
 );
 Disabled.args = {
+	label: 'Example',
 	disabled: true,
 };
 
@@ -77,20 +78,6 @@ Block.args = {
 	block: true,
 	label: 'Block',
 };
-
-export const MaxWidths: ComponentStory<typeof DatePicker> = (args) => (
-	<Stack gap={1}>
-		{(['xs', 'sm', 'md', 'lg', 'xl'] as const).map((size) => (
-			<Template
-				key={size}
-				{...args}
-				label={`DatePicker max width ${size}`}
-				maxWidth={size}
-			/>
-		))}
-	</Stack>
-);
-MaxWidths.args = {};
 
 export const RequiredLabel = Template.bind({});
 RequiredLabel.args = {
