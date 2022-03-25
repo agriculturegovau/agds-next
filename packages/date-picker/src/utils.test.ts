@@ -23,11 +23,11 @@ describe('getValidDateRange', () => {
 		const nextWeek = add(today, { weeks: 1 });
 
 		expect(
-			getValidDateRange('start', today, { from: undefined, to: undefined })
+			getValidDateRange('from', today, { from: undefined, to: undefined })
 		).toStrictEqual({ from: today, to: undefined });
 
 		expect(
-			getValidDateRange('end', nextWeek, { from: today, to: undefined })
+			getValidDateRange('to', nextWeek, { from: today, to: undefined })
 		).toStrictEqual({ from: today, to: nextWeek });
 	});
 
@@ -37,15 +37,15 @@ describe('getValidDateRange', () => {
 		const nextMonth = add(today, { months: 1 });
 
 		expect(
-			getValidDateRange('start', today, { from: nextMonth, to: nextMonth })
+			getValidDateRange('from', today, { from: nextMonth, to: nextMonth })
 		).toStrictEqual({ from: today, to: nextMonth });
 
 		expect(
-			getValidDateRange('end', nextMonth, { from: today, to: nextWeek })
+			getValidDateRange('to', nextMonth, { from: today, to: nextWeek })
 		).toStrictEqual({ from: today, to: nextMonth });
 
 		expect(
-			getValidDateRange('end', nextWeek, { from: today, to: nextMonth })
+			getValidDateRange('to', nextWeek, { from: today, to: nextMonth })
 		).toStrictEqual({ from: today, to: nextWeek });
 	});
 
@@ -54,7 +54,7 @@ describe('getValidDateRange', () => {
 		const nextWeek = add(today, { weeks: 1 });
 		const nextMonth = add(today, { months: 1 });
 		expect(
-			getValidDateRange('start', nextMonth, { from: today, to: nextWeek })
+			getValidDateRange('from', nextMonth, { from: today, to: nextWeek })
 		).toStrictEqual({ from: nextMonth, to: undefined });
 	});
 
@@ -63,7 +63,7 @@ describe('getValidDateRange', () => {
 		const nextWeek = add(today, { weeks: 1 });
 		const nextMonth = add(today, { months: 1 });
 		expect(
-			getValidDateRange('end', today, { from: nextWeek, to: nextMonth })
+			getValidDateRange('to', today, { from: nextWeek, to: nextMonth })
 		).toStrictEqual({ from: today, to: undefined });
 	});
 });
