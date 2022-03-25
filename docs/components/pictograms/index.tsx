@@ -30,6 +30,7 @@ import select from './select.svg';
 import sideNav from './side-nav.svg';
 import skipLink from './skip-link.svg';
 import starter from './starter.svg';
+import table from './table.svg';
 import tags from './tags.svg';
 import text from './text.svg';
 import textInput from './text-input.svg';
@@ -71,6 +72,7 @@ export const pictograms = {
 	'side-nav': sideNav,
 	'skip-link': skipLink,
 	starter,
+	table,
 	tags,
 	text,
 	textarea: textInput,
