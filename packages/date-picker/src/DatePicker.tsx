@@ -2,12 +2,9 @@ import React, { ChangeEvent, useCallback, useRef, useState } from 'react';
 import { usePopper } from 'react-popper';
 import { useClickOutside, useTernaryState } from '@ag.ds-next/core';
 import { Calendar, CalendarProps } from './Calendar';
-import { format, parse, isValid } from 'date-fns';
+import { format, isValid } from 'date-fns';
 import { DateInput, DateInputProps } from './DatePickerInput';
-
-// TODO ref
-// Debounced ???
-// TODO improve props
+import { dateFormat, parseDate, placeholder } from './utils';
 
 export type DatePickerProps = CalendarProps &
 	Omit<DateInputProps, 'value' | 'onChange' | 'buttonRef' | 'buttonOnClick'> & {
@@ -18,63 +15,58 @@ export type DatePickerProps = CalendarProps &
 export const DatePicker = ({
 	value,
 	onChange,
-	disabledDays,
-	modifiers,
 	initialMonth,
-	fromMonth,
-	toMonth,
 	...props
 }: DatePickerProps) => {
 	const [isCalendarOpen, openCalendar, closeCalendar] = useTernaryState(false);
 
-	const buttonRef = useRef<HTMLButtonElement>(null);
+	// Popper state
+	const triggerRef = useRef<HTMLButtonElement>(null);
 	const [refEl, setRefEl] = useState<HTMLDivElement | null>(null);
 	const [popperEl, setPopperEl] = useState<HTMLDivElement | null>(null);
 	const { styles, attributes } = usePopper(refEl, popperEl, {
 		placement: 'bottom-start',
-		modifiers: [
-			{
-				name: 'offset',
-				options: {
-					offset: [0, 8],
-				},
-			},
-		],
+		modifiers: [{ name: 'offset', options: { offset: [0, 8] } }],
 	});
-
-	const clickOutsideRef = useRef(popperEl);
-	clickOutsideRef.current = popperEl;
-	useClickOutside(clickOutsideRef, closeCalendar);
-
-	const [inputValue, setInputValue] = useState('');
 
 	const onDayClick = useCallback(
 		(day: Date) => {
-			setInputValue(format(day, 'dd/MM/yyyy'));
+			// Update the input field with the selected day
+			setInputValue(format(day, dateFormat));
+			// Trigger the callback
 			onChange(day);
-			buttonRef.current?.focus();
+			// Close the calendar and focus the calendar icon
 			closeCalendar();
+			triggerRef.current?.focus();
 		},
 		[onChange, closeCalendar]
 	);
 
-	// TODO debounced
+	const [inputValue, setInputValue] = useState(
+		value ? format(value, dateFormat) : ''
+	);
+
 	const onInputChange = useCallback(
 		(e: ChangeEvent<HTMLInputElement>) => {
+			// Immediately update the input field
 			const value = e.target.value;
 			setInputValue(value);
-
-			// Check if the user has a entered a full date (31/01/2000)
-			if (value.length !== 10) {
-				onChange(undefined);
-				return;
-			}
-
-			const parsedDate = parse(value, 'dd/MM/yyyy', new Date());
+			// Ensure the text entered is a valid date
+			const parsedDate = parseDate(value);
 			onChange(isValid(parsedDate) ? parsedDate : undefined);
 		},
 		[onChange]
 	);
+
+	// Close the calendar when the user clicks outside
+	const clickOutsideRef = useRef(popperEl);
+	clickOutsideRef.current = popperEl;
+
+	const handleClickOutside = useCallback(() => {
+		if (isCalendarOpen) closeCalendar();
+	}, [isCalendarOpen, closeCalendar]);
+
+	useClickOutside(clickOutsideRef, handleClickOutside);
 
 	return (
 		<div ref={setRefEl}>
@@ -82,8 +74,8 @@ export const DatePicker = ({
 				{...props}
 				value={inputValue}
 				onChange={onInputChange}
-				placeholder="DD/MM/YYYY"
-				buttonRef={buttonRef}
+				placeholder={placeholder}
+				buttonRef={triggerRef}
 				buttonOnClick={openCalendar}
 			/>
 			{isCalendarOpen ? (
@@ -96,11 +88,7 @@ export const DatePicker = ({
 					<Calendar
 						selectedDays={value}
 						onDayClick={onDayClick}
-						disabledDays={disabledDays}
-						modifiers={modifiers}
 						initialMonth={initialMonth || value}
-						fromMonth={fromMonth}
-						toMonth={toMonth}
 						numberOfMonths={1}
 						range={false}
 					/>

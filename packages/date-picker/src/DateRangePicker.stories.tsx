@@ -31,25 +31,6 @@ export const OnDark: ComponentStory<typeof DateRangePicker> = (args) => (
 );
 OnDark.args = {};
 
-// export const CalendarProps: ComponentStory<typeof DateRangePicker> = (args) => {
-// 	const [value, setValue] = useState();
-// 	const today = new Date();
-// 	return (
-// 		<Template
-// 			disabledDays={{ before: today }}
-// 			fromMonth={today}
-// 			label="Pay date"
-// 			value={value}
-// 			onChange={setValue}
-// 			onClear={() => setValue(undefined)}
-// 			showOverlay
-// 		/>
-// 	);
-// };
-// CalendarProps.args = {
-// 	label: 'Example',
-// };
-
 export const Disabled: ComponentStory<typeof DateRangePicker> = (args) => (
 	<Template {...args} />
 );
@@ -64,52 +45,10 @@ Required.args = {
 	required: true,
 };
 
-// export const Invalid: ComponentStory<typeof DateRangePicker> = (args) => (
-// 	<Template {...args} />
-// );
-// Invalid.args = {
-// 	label: 'Example',
-// 	message: 'Enter a valid date',
-// 	invalid: true,
-// };
-
-// export const Valid: ComponentStory<typeof DateRangePicker> = (args) => (
-// 	<Template {...args} />
-// );
-// Valid.args = {
-// 	label: 'Example',
-// 	message: 'The date you have entered is valid',
-// 	valid: true,
-// };
-
-// export const Hint: ComponentStory<typeof DateRangePicker> = (args) => (
-// 	<Template {...args} />
-// );
-// Hint.args = {
-// 	label: 'Example',
-// 	hint: 'We will only use this to respond to your question',
-// };
-
 export const Block: ComponentStory<typeof DateRangePicker> = (args) => (
 	<Template {...args} />
 );
-Block.args = {
-	block: true,
-};
-
-// export const MaxWidths: ComponentStory<typeof DateRangePicker> = (args) => (
-// 	<Stack gap={1}>
-// 		{(['xs', 'sm', 'md', 'lg', 'xl'] as const).map((size) => (
-// 			<Template
-// 				key={size}
-// 				{...args}
-// 				label={`DateRangePicker max width ${size}`}
-// 				maxWidth={size}
-// 			/>
-// 		))}
-// 	</Stack>
-// );
-// MaxWidths.args = {};
+Block.args = { block: true };
 
 export const Labels = Template.bind({});
 Labels.args = { fromLabel: 'Start date', toLabel: 'End date' };

@@ -1,17 +1,27 @@
-import React, { ChangeEvent, useCallback, useRef, useState } from 'react';
+import React, {
+	Fragment,
+	ChangeEvent,
+	useCallback,
+	useRef,
+	useState,
+} from 'react';
 import { usePopper } from 'react-popper';
 import { Flex } from '@ag.ds-next/box';
 import { useClickOutside, useTernaryState } from '@ag.ds-next/core';
 import { Calendar, CalendarProps } from './Calendar';
-import { format, parse, isValid } from 'date-fns';
+import { format, isValid } from 'date-fns';
 import { DateInput } from './DatePickerInput';
+import { dateFormat, getValidDateRange, parseDate } from './utils';
 
-import { DateRange, getValidDateRange } from './utils';
+export type DateRange = {
+	from: Date | undefined;
+	to: Date | undefined;
+};
 
 export type DateRangePickerProps = CalendarProps & {
-	disabled?: boolean;
 	value: DateRange;
 	onChange: (day: DateRange) => void;
+	disabled?: boolean;
 	fromLabel?: string;
 	toLabel?: string;
 	required?: boolean;
@@ -19,93 +29,74 @@ export type DateRangePickerProps = CalendarProps & {
 };
 
 export const DateRangePicker = ({
-	disabled,
 	value,
 	onChange,
+	disabled,
 	fromLabel = 'From',
 	toLabel = 'To',
 	required,
 	requiredLabel,
 }: DateRangePickerProps) => {
 	const [isCalendarOpen, openCalendar, closeCalendar] = useTernaryState(false);
-	const [mode, setMode] = useState<'start' | 'end'>();
+	const [inputMode, setInputMode] = useState<'from' | 'to'>();
 
-	const startTriggerRef = useRef<HTMLButtonElement>(null);
-	const endTriggerRef = useRef<HTMLButtonElement>(null);
+	const fromTriggerRef = useRef<HTMLButtonElement>(null);
+	const toTriggerRef = useRef<HTMLButtonElement>(null);
 
-	const onStartTriggerClick = useCallback(() => {
-		setMode('start');
+	const onFromTriggerClick = useCallback(() => {
+		setInputMode('from');
 		openCalendar();
 	}, [openCalendar]);
 
 	const onEndTriggerClick = useCallback(() => {
-		setMode('end');
+		setInputMode('to');
 		openCalendar();
 	}, [openCalendar]);
 
-	const [referenceElement, setReferenceElement] =
-		useState<HTMLDivElement | null>(null);
-
-	const [popperElement, setPopperElement] = useState<HTMLDivElement | null>(
-		null
-	);
-	const { styles, attributes } = usePopper(referenceElement, popperElement, {
+	// Popper state
+	const [refEl, setRefEl] = useState<HTMLDivElement | null>(null);
+	const [popperEl, setPopperEl] = useState<HTMLDivElement | null>(null);
+	const { styles, attributes } = usePopper(refEl, popperEl, {
 		placement: 'bottom-start',
-		modifiers: [
-			{
-				name: 'offset',
-				options: {
-					offset: [0, 8],
-				},
-			},
-		],
+		modifiers: [{ name: 'offset', options: { offset: [0, 8] } }],
 	});
-
-	const clickOutsideRef = useRef(popperElement);
-	clickOutsideRef.current = popperElement;
-	useClickOutside(clickOutsideRef, closeCalendar);
 
 	const onDayClick = useCallback(
 		(selectedDay: Date) => {
-			if (!mode) return;
-			const range = getValidDateRange(mode, selectedDay, value);
+			if (!inputMode) return;
+			const range = getValidDateRange(inputMode, selectedDay, value);
 
 			onChange(range);
-			setStartInputValue(range.from ? format(range.from, 'dd/MM/yyyy') : '');
-			setEndInputValue(range.to ? format(range.to, 'dd/MM/yyyy') : '');
+			setFromInputValue(range.from ? format(range.from, dateFormat) : '');
+			setEndInputValue(range.to ? format(range.to, dateFormat) : '');
 
 			if (range.from && range.to) {
-				mode === 'start'
-					? startTriggerRef.current?.focus()
-					: endTriggerRef.current?.focus();
+				inputMode === 'from'
+					? fromTriggerRef.current?.focus()
+					: toTriggerRef.current?.focus();
 				closeCalendar();
-				setMode(undefined);
+				setInputMode(undefined);
 				return;
 			}
 
-			if (mode === 'start') {
-				setMode('end');
-				endTriggerRef.current?.focus();
+			if (inputMode === 'from') {
+				setInputMode('to');
+				toTriggerRef.current?.focus();
 				return;
 			}
 		},
-		[mode, value, onChange, closeCalendar]
+		[closeCalendar, inputMode, onChange, value]
 	);
 
-	const [startInputValue, setStartInputValue] = useState('');
-
-	const onStartInputChange = useCallback(
+	// From input state
+	const [fromInputValue, setFromInputValue] = useState('');
+	const onFromInputChange = useCallback(
 		(e: ChangeEvent<HTMLInputElement>) => {
+			// Immediately update the input field
 			const inputValue = e.target.value;
-			setStartInputValue(inputValue);
-
-			// Check if the user has a entered a full date (31/01/2000)
-			if (inputValue.length !== 10) {
-				onChange({ ...value, from: undefined });
-				return;
-			}
-
-			const parsedDate = parse(inputValue, 'dd/MM/yyyy', new Date());
+			setFromInputValue(inputValue);
+			// Ensure the text entered is a valid date
+			const parsedDate = parseDate(inputValue);
 			onChange({
 				...value,
 				from: isValid(parsedDate) ? parsedDate : undefined,
@@ -114,20 +105,15 @@ export const DateRangePicker = ({
 		[onChange, value]
 	);
 
+	// End input state
 	const [endInputValue, setEndInputValue] = useState('');
-
 	const onEndInputChange = useCallback(
 		(e: ChangeEvent<HTMLInputElement>) => {
+			// Immediately update the input field
 			const inputValue = e.target.value;
 			setEndInputValue(inputValue);
-
-			// Check if the user has a entered a full date (31/01/2000)
-			if (inputValue.length !== 10) {
-				onChange({ ...value, to: undefined });
-				return;
-			}
-
-			const parsedDate = parse(inputValue, 'dd/MM/yyyy', new Date());
+			// Ensure the text entered is a valid date
+			const parsedDate = parseDate(inputValue);
 			onChange({
 				...value,
 				to: isValid(parsedDate) ? parsedDate : undefined,
@@ -136,16 +122,26 @@ export const DateRangePicker = ({
 		[onChange, value]
 	);
 
+	// Close the calendar when the user clicks outside
+	const clickOutsideRef = useRef(popperEl);
+	clickOutsideRef.current = popperEl;
+
+	const handleClickOutside = useCallback(() => {
+		if (isCalendarOpen) closeCalendar();
+	}, [isCalendarOpen, closeCalendar]);
+
+	useClickOutside(clickOutsideRef, handleClickOutside);
+
 	return (
-		<div>
-			<Flex inline gap={1} ref={setReferenceElement}>
+		<Fragment>
+			<Flex inline gap={1} ref={setRefEl}>
 				<DateInput
 					label={fromLabel}
-					value={startInputValue}
-					onChange={onStartInputChange}
+					value={fromInputValue}
+					onChange={onFromInputChange}
 					placeholder="DD/MM/YYYY"
-					buttonRef={startTriggerRef}
-					buttonOnClick={onStartTriggerClick}
+					buttonRef={fromTriggerRef}
+					buttonOnClick={onFromTriggerClick}
 					disabled={disabled}
 					required={required}
 					requiredLabel={requiredLabel}
@@ -155,7 +151,7 @@ export const DateRangePicker = ({
 					value={endInputValue}
 					onChange={onEndInputChange}
 					placeholder="DD/MM/YYYY"
-					buttonRef={endTriggerRef}
+					buttonRef={toTriggerRef}
 					buttonOnClick={onEndTriggerClick}
 					disabled={disabled}
 					required={required}
@@ -164,13 +160,13 @@ export const DateRangePicker = ({
 			</Flex>
 			{isCalendarOpen ? (
 				<div
-					ref={setPopperElement}
+					ref={setPopperEl}
 					style={styles.popper}
 					{...attributes.popper}
 					css={{ zIndex: 1 }}
 				>
 					<Calendar
-						initialMonth={mode === 'start' ? value.from : value.to}
+						initialMonth={inputMode === 'from' ? value.from : value.to}
 						selectedDays={[value.from, value]}
 						onDayClick={onDayClick}
 						modifiers={{ start: value.from, end: value.to }}
@@ -179,6 +175,6 @@ export const DateRangePicker = ({
 					/>
 				</div>
 			) : null}
-		</div>
+		</Fragment>
 	);
 };

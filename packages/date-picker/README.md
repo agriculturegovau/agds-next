@@ -1,14 +1,18 @@
 ---
 title: Date Picker
-description: TODO
-group: Forms
+description: Allow users to select a single date or a range of dates.
+group: forms
 ---
 
 ## Date Picker
 
+`DatePicker` is a [controlled component](https://reactjs.org/docs/forms.html#controlled-components).
+
+### Basic
+
 ```jsx live
 () => {
-	const [value, setValue] = React.useState();
+	const [value, setValue] = React.useState(new Date());
 	return <DatePicker label="Select date" value={value} onChange={setValue} />;
 };
 ```
@@ -19,7 +23,7 @@ Use the `block` prop to expand the component to fill the available space.
 
 ```jsx live
 () => {
-	const [value, setValue] = React.useState();
+	const [value, setValue] = React.useState(new Date());
 	return (
 		<DatePicker label="Select date" value={value} onChange={setValue} block />
 	);
@@ -32,7 +36,7 @@ The `TextInput` component will always append `(optional)` or `(required)` to the
 
 ```jsx live
 () => {
-	const [value, setValue] = React.useState();
+	const [value, setValue] = React.useState(new Date());
 	return (
 		<Stack gap={1}>
 			<DatePicker label="Default" value={value} onChange={setValue} />
@@ -54,7 +58,7 @@ Use the `invalid` and `valid` props to indicate whether user input is valid (val
 
 ```jsx live
 () => {
-	const [value, setValue] = React.useState();
+	const [value, setValue] = React.useState(new Date());
 	return (
 		<Stack gap={1}>
 			<DatePicker
@@ -76,7 +80,7 @@ Disabled input elements are unusable and can not be clicked. This prevents a use
 
 ```jsx live
 () => {
-	const [value, setValue] = React.useState();
+	const [value, setValue] = React.useState(new Date());
 	return (
 		<DatePicker
 			label="Select date"
@@ -88,32 +92,32 @@ Disabled input elements are unusable and can not be clicked. This prevents a use
 };
 ```
 
-### Maximum widths
-
-The width of a text input field should indicate the amount of information expected to be entered into the field. The size of the text input acts as a visual constraint for the end user.
-
-As an example, input fields for postcodes should have a smaller width than fields for emails.
-
-```jsx live
-<Stack gap={1}>
-	<DatePicker label="xs input" maxWidth="xs" />
-	<DatePicker label="sm input" maxWidth="sm" />
-	<DatePicker label="md input" maxWidth="md" />
-	<DatePicker label="lg input" maxWidth="lg" />
-	<DatePicker label="xl input" maxWidth="xl" />
-</Stack>
-```
-
 ## Date Range Picker
+
+`DateRangePicker` is a [controlled component](https://reactjs.org/docs/forms.html#controlled-components).
+
+### Basic
 
 ```jsx live
 () => {
-	const [value, setValue] = React.useState({
-		from: undefined,
-		to: undefined,
-	});
+	const [value, setValue] = React.useState({ from: undefined, to: undefined });
+	return <DateRangePicker value={value} onChange={setValue} />;
+};
+```
+
+### Labels
+
+```jsx live
+() => {
+	const [value, setValue] = React.useState({ from: undefined, to: undefined });
 	return (
-		<DateRangePicker label="Select date" value={value} onChange={setValue} />
+		<DateRangePicker
+			value={value}
+			onChange={setValue}
+			fromLabel="Start date"
+			toLabel="End date"
+			requiredLabel={false}
+		/>
 	);
 };
 ```

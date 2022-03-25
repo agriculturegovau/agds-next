@@ -1,9 +1,9 @@
 import React, { useCallback, useState } from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { DateUtils } from 'react-day-picker';
 import { Box } from '@ag.ds-next/box';
 import { Calendar, CalendarProps } from './Calendar';
-import { DateUtils } from 'react-day-picker';
-import { DateRange } from './DateRangePicker';
+import { DateRange } from './utils';
 
 export default {
 	title: 'forms/DatePicker/Calendar',
@@ -32,28 +32,6 @@ export const MultipleMonths: ComponentStory<typeof Calendar> = (args) => (
 );
 MultipleMonths.args = {
 	numberOfMonths: 2,
-};
-
-export const DisabledDays: ComponentStory<typeof Calendar> = (args) => (
-	<Template {...args} />
-);
-DisabledDays.args = {
-	initialMonth: new Date(2017, 3),
-	disabledDays: [
-		new Date(2017, 3, 12),
-		new Date(2017, 3, 2),
-		{
-			after: new Date(2017, 3, 20),
-			before: new Date(2017, 3, 25),
-		},
-	],
-};
-
-export const DisabledWeekdays: ComponentStory<typeof Calendar> = (args) => (
-	<Template {...args} />
-);
-DisabledWeekdays.args = {
-	disabledDays: [{ daysOfWeek: [0, 6] }],
 };
 
 export const Range = () => {

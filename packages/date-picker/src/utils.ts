@@ -1,18 +1,26 @@
-import { isBefore, isAfter } from 'date-fns';
+import { isDate, parse, isValid, isBefore, isAfter } from 'date-fns';
 
-export type DateRange = {
-	from: Date | undefined;
-	to: Date | undefined;
+export const dateFormat = 'dd/MM/yyyy';
+export const placeholder = 'dd/mm/yyyy';
+
+// https://github.com/date-fns/date-fns/issues/942
+export const parseDate = (value: string) => {
+	if (value.length !== dateFormat.length) return undefined;
+
+	const parsed = parse(value, dateFormat, new Date());
+	if (isDate(parsed) && isValid(parsed)) return parsed;
+
+	return undefined;
 };
 
 // Ensure a valid date range is always sent back to the consumer
 export function getValidDateRange(
-	mode: 'start' | 'end',
+	inputMode: 'from' | 'to',
 	selectedDay: Date,
-	currentRange: DateRange
+	currentRange: { from: Date | undefined; to: Date | undefined }
 ) {
 	// The user is selecting a start date
-	if (mode === 'start') {
+	if (inputMode === 'from') {
 		// If a start date has not been set, we can continue on
 		if (!currentRange.to) return { from: selectedDay, to: undefined };
 
