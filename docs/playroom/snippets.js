@@ -516,18 +516,13 @@ items={[
 	{
 		group: 'DatePicker',
 		name: 'Basic',
-		code: `{(() => {
-      const [value, setValue] = React.useState();
-      return <DatePicker label="Select date" value={value} onChange={setValue} />;
-    })()}`,
+		code: `<DatePicker label="Select date" value={new Date()} onChange={() => {}} />`,
 	},
 	{
 		group: 'DateRangePicker',
 		name: 'Basic',
-		code: `{(() => {
-      const [value, setValue] = React.useState({ from: undefined, to: undefined });
-      return <DateRangePicker value={value} onChange={setValue} />;
-    })()}`,
+		code: `<DateRangePicker value={{ from: new Date('2000-01-03'), to: new Date('2000-01-07') }} onChange={() => {}}
+  />`,
 	},
 ];
 

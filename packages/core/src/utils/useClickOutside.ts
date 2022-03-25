@@ -18,6 +18,6 @@ export function useClickOutside<T extends HTMLElement = HTMLElement>(
 
 		window.addEventListener('mousedown', listener);
 
-		return () => window.removeEventListener('click', listener);
+		return () => window.removeEventListener('mousedown', listener);
 	}, [handler, ref]);
 }

@@ -52,7 +52,7 @@ export const DateRangePicker = ({
 		openCalendar();
 	}, [openCalendar]);
 
-	const onEndTriggerClick = useCallback(() => {
+	const onToTriggerClick = useCallback(() => {
 		setInputMode('to');
 		openCalendar();
 	}, [openCalendar]);
@@ -72,7 +72,7 @@ export const DateRangePicker = ({
 
 			onChange(range);
 			setFromInputValue(range.from ? format(range.from, dateFormat) : '');
-			setEndInputValue(range.to ? format(range.to, dateFormat) : '');
+			setToInputValue(range.to ? format(range.to, dateFormat) : '');
 
 			if (range.from && range.to) {
 				inputMode === 'from'
@@ -93,7 +93,9 @@ export const DateRangePicker = ({
 	);
 
 	// From input state
-	const [fromInputValue, setFromInputValue] = useState('');
+	const [fromInputValue, setFromInputValue] = useState(
+		value.from ? format(value.from, dateFormat) : ''
+	);
 	const onFromInputChange = useCallback(
 		(e: ChangeEvent<HTMLInputElement>) => {
 			// Immediately update the input field
@@ -109,13 +111,15 @@ export const DateRangePicker = ({
 		[onChange, value, dateFormat]
 	);
 
-	// End input state
-	const [endInputValue, setEndInputValue] = useState('');
-	const onEndInputChange = useCallback(
+	// To input state
+	const [toInputValue, setToInputValue] = useState(
+		value.to ? format(value.to, dateFormat) : ''
+	);
+	const onToInputChange = useCallback(
 		(e: ChangeEvent<HTMLInputElement>) => {
 			// Immediately update the input field
 			const inputValue = e.target.value;
-			setEndInputValue(inputValue);
+			setToInputValue(inputValue);
 			// Ensure the text entered is a valid date
 			const parsedDate = parseDate(inputValue, dateFormat);
 			onChange({
@@ -157,11 +161,11 @@ export const DateRangePicker = ({
 				/>
 				<DateInput
 					label={toLabel}
-					value={endInputValue}
-					onChange={onEndInputChange}
+					value={toInputValue}
+					onChange={onToInputChange}
 					placeholder={placeholder}
 					buttonRef={toTriggerRef}
-					buttonOnClick={onEndTriggerClick}
+					buttonOnClick={onToTriggerClick}
 					disabled={disabled}
 					required={required}
 					requiredLabel={requiredLabel}

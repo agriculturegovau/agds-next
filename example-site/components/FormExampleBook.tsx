@@ -9,7 +9,7 @@ import { DatePicker } from '@ag.ds-next/date-picker';
 const formSchema = yup
 	.object({
 		fullName: yup.string().required('Enter your name'),
-		date: yup.date().required('Enter a date'),
+		date: yup.date().required('Select a date'),
 	})
 	.required();
 
@@ -35,10 +35,16 @@ export const FormExampleBook = () => {
 				<Controller
 					control={control}
 					name="date"
-					render={({ field, fieldState: { invalid, error } }) => (
+					render={({
+						field: { onChange, onBlur, value, name },
+						fieldState: { invalid, error },
+					}) => (
 						<DatePicker
-							{...field}
 							label="Select a date"
+							value={value}
+							onChange={onChange}
+							onBlur={onBlur}
+							name={name}
 							invalid={invalid}
 							message={error?.message}
 							maxWidth="xl"
