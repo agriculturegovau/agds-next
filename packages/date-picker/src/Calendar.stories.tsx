@@ -35,7 +35,10 @@ MultipleMonths.args = {
 };
 
 export const Range = () => {
-	const [range, setRange] = useState<DateRange>({
+	const [range, setRange] = useState<{
+		from: Date | undefined;
+		to: Date | undefined;
+	}>({
 		from: undefined,
 		to: undefined,
 	});

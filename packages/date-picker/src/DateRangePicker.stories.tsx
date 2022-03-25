@@ -45,11 +45,6 @@ Required.args = {
 	required: true,
 };
 
-export const Block: ComponentStory<typeof DateRangePicker> = (args) => (
-	<Template {...args} />
-);
-Block.args = { block: true };
-
 export const Labels = Template.bind({});
 Labels.args = { fromLabel: 'Start date', toLabel: 'End date' };
 

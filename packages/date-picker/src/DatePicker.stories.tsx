@@ -29,21 +29,6 @@ OnDark.args = {
 	label: 'Example',
 };
 
-export const CalendarProps = () => {
-	const [value, setValue] = useState<Date>();
-	const today = new Date();
-	return (
-		<DatePicker
-			label="Example"
-			disabledDays={{ before: today }}
-			fromMonth={today}
-			value={value}
-			onChange={setValue}
-		/>
-	);
-};
-CalendarProps.args = {};
-
 export const Disabled: ComponentStory<typeof DatePicker> = (args) => (
 	<Template {...args} />
 );
