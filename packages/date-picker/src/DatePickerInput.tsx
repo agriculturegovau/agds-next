@@ -84,7 +84,7 @@ export const DateInput = ({
 								maxLength: 4,
 							},
 						}}
-						css={styles}
+						css={{ ...styles, maxWidth: 'unset' }}
 						{...props}
 						{...allyProps}
 					/>
