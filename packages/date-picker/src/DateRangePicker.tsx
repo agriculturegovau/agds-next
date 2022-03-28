@@ -1,15 +1,9 @@
-import React, {
-	Fragment,
-	ChangeEvent,
-	useCallback,
-	useRef,
-	useState,
-} from 'react';
+import React, { Fragment, useCallback, useRef, useState } from 'react';
 import { usePopper } from 'react-popper';
+import { format, isValid } from 'date-fns';
 import { Flex } from '@ag.ds-next/box';
 import { useClickOutside, useTernaryState } from '@ag.ds-next/core';
 import { Calendar, CalendarProps } from './Calendar';
-import { format, isValid } from 'date-fns';
 import { DateInput } from './DatePickerInput';
 import { getValidDateRange, parseDate } from './utils';
 
@@ -39,7 +33,6 @@ export const DateRangePicker = ({
 	required,
 	requiredLabel,
 	dateFormat = 'dd/MM/yyyy',
-	placeholder = 'dd/mm/yyyy',
 }: DateRangePickerProps) => {
 	const [isCalendarOpen, openCalendar, closeCalendar] = useTernaryState(false);
 	const [inputMode, setInputMode] = useState<'from' | 'to'>();
@@ -97,9 +90,8 @@ export const DateRangePicker = ({
 		value.from ? format(value.from, dateFormat) : ''
 	);
 	const onFromInputChange = useCallback(
-		(e: ChangeEvent<HTMLInputElement>) => {
+		(inputValue: string) => {
 			// Immediately update the input field
-			const inputValue = e.target.value;
 			setFromInputValue(inputValue);
 			// Ensure the text entered is a valid date
 			const parsedDate = parseDate(inputValue, dateFormat);
@@ -116,9 +108,8 @@ export const DateRangePicker = ({
 		value.to ? format(value.to, dateFormat) : ''
 	);
 	const onToInputChange = useCallback(
-		(e: ChangeEvent<HTMLInputElement>) => {
+		(inputValue: string) => {
 			// Immediately update the input field
-			const inputValue = e.target.value;
 			setToInputValue(inputValue);
 			// Ensure the text entered is a valid date
 			const parsedDate = parseDate(inputValue, dateFormat);

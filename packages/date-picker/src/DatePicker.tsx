@@ -74,8 +74,6 @@ export const DatePicker = ({
 
 	useClickOutside(clickOutsideRef, handleClickOutside);
 
-	console.log('x', props);
-
 	return (
 		<div ref={setRefEl}>
 			<DateInput
