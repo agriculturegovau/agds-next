@@ -23,7 +23,6 @@ export const DatePicker = ({
 	value,
 	onChange,
 	dateFormat = 'dd/MM/yyyy',
-	placeholder = 'dd/mm/yyyy',
 	initialMonth,
 	...props
 }: DatePickerProps) => {
@@ -56,9 +55,7 @@ export const DatePicker = ({
 	);
 
 	const onInputChange = useCallback(
-		(e: ChangeEvent<HTMLInputElement>) => {
-			// Immediately update the input field
-			const value = e.target.value;
+		(value: string) => {
 			setInputValue(value);
 			// Ensure the text entered is a valid date
 			const parsedDate = parseDate(value, dateFormat);
@@ -77,13 +74,14 @@ export const DatePicker = ({
 
 	useClickOutside(clickOutsideRef, handleClickOutside);
 
+	console.log('x', props);
+
 	return (
 		<div ref={setRefEl}>
 			<DateInput
 				{...props}
 				value={inputValue}
 				onChange={onInputChange}
-				placeholder={placeholder}
 				buttonRef={triggerRef}
 				buttonOnClick={openCalendar}
 			/>

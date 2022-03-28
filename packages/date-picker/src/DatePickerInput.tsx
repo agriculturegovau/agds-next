@@ -1,4 +1,6 @@
 import React, { forwardRef, MouseEventHandler, RefObject } from 'react';
+import { IMask, IMaskInput } from 'react-imask';
+import { format, parse } from 'date-fns';
 import { Flex } from '@ag.ds-next/box';
 import { CalendarIcon } from '@ag.ds-next/icon';
 import { TextInputProps, textInputStyles } from '@ag.ds-next/text-input';
@@ -51,12 +53,40 @@ export const DateInput = forwardRef<HTMLInputElement, DateInputProps>(
 			>
 				{(allyProps) => (
 					<Flex alignItems="flex-end" css={{ maxWidth }}>
-						<input
-							ref={ref}
-							css={{ ...styles, maxWidth: 'unset' }}
+						<IMaskInput
+							mask={Date}
+							pattern="d{/}`m{/}`Y"
+							format={(date) => format(date, 'dd/MM/yyyy')}
+							parse={(value) => parse(value, 'dd/MM/yyyy', new Date())}
+							value={props.value}
+							onAccept={(value) => props.onChange(value)}
+							unmask={false}
+							lazy={false}
+							css={styles}
+							blocks={{
+								d: {
+									mask: IMask.MaskedRange,
+									placeholderChar: 'd',
+									from: 1,
+									to: 31,
+									maxLength: 2,
+								},
+								m: {
+									mask: IMask.MaskedRange,
+									placeholderChar: 'm',
+									from: 1,
+									to: 12,
+									maxLength: 2,
+								},
+								Y: {
+									mask: IMask.MaskedRange,
+									placeholderChar: 'y',
+									from: 1,
+									to: 9999,
+									maxLength: 4,
+								},
+							}}
 							{...allyProps}
-							{...props}
-							disabled={disabled}
 						/>
 						<Button
 							type="button"
