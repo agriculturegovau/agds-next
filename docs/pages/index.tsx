@@ -73,7 +73,7 @@ export default function Homepage() {
 								<PictogramCard
 									title="Packages"
 									pictogram="packages"
-									slug="/packages"
+									href="/packages"
 								/>
 							</Column>
 							<Column
@@ -83,7 +83,7 @@ export default function Homepage() {
 								<PictogramCard
 									title="Guides"
 									pictogram="guides"
-									slug="/guides"
+									href="/guides"
 								/>
 							</Column>
 							<Column
@@ -93,7 +93,9 @@ export default function Homepage() {
 								<PictogramCard
 									title="Starter kit"
 									pictogram="starter"
-									slug="/guides/getting-started"
+									href="https://github.com/steelthreads/agds-next-starter-kit"
+									target="_blank"
+									rel="noopener noreferrer"
 								/>
 							</Column>
 						</Columns>
