@@ -1,16 +1,9 @@
 import { Flex, Stack } from '@ag.ds-next/box';
-import {
-	ChevronLeftIcon,
-	ExternalLinkIcon,
-	SearchIcon,
-} from '@ag.ds-next/icon';
+import { allIcons } from '@ag.ds-next/icon/src/example';
 import { Text } from '@ag.ds-next/text';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import React from 'react';
 import { Button, ButtonLink } from './Button';
-
-const beforeIcons = { undefined, ChevronLeftIcon };
-const afterIcons = { undefined, ExternalLinkIcon, SearchIcon };
 
 export default {
 	title: 'forms/Button',
@@ -18,12 +11,12 @@ export default {
 	subcomponents: { ButtonLink },
 	argTypes: {
 		iconAfter: {
-			options: Object.keys(afterIcons), // An array of serializable values
-			mapping: afterIcons, // Maps serializable option values to complex arg values
+			options: Object.keys(allIcons), // An array of serializable values
+			mapping: allIcons, // Maps serializable option values to complex arg values
 		},
 		iconBefore: {
-			options: Object.keys(beforeIcons), // An array of serializable values
-			mapping: beforeIcons, // Maps serializable option values to complex arg values
+			options: Object.keys(allIcons), // An array of serializable values
+			mapping: allIcons, // Maps serializable option values to complex arg values
 		},
 	},
 } as ComponentMeta<typeof Button>;

@@ -25,7 +25,7 @@ import { SuccessFilledIcon } from './icons/SuccessFilledIcon';
 import { SuccessIcon } from './icons/SuccessIcon';
 import { WarningFilledIcon } from './icons/WarningFilledIcon';
 
-const allIcons = {
+export const allIcons = {
 	AlertFilledIcon,
 	AlertIcon,
 	ArrowDownIcon,
