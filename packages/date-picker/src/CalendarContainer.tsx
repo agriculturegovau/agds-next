@@ -130,6 +130,8 @@ export const CalendarContainer = ({
 			...(range && {
 				'.DayPicker-Day--selected.DayPicker-Day--start:not(.DayPicker-Day--outside)':
 					{
+						borderTopLeftRadius: '50%',
+						borderBottomLeftRadius: '50%',
 						borderTopRightRadius: 0,
 						borderBottomRightRadius: 0,
 					},
@@ -137,7 +139,14 @@ export const CalendarContainer = ({
 					{
 						borderTopLeftRadius: 0,
 						borderBottomLeftRadius: 0,
+						borderTopRightRadius: '50%',
+						borderBottomRightRadius: '50%',
 					},
+				'.DayPicker-Day--selected.DayPicker-Day--start:not(.DayPicker-Day--outside).DayPicker-Day--end:not(.DayPicker-Day--outside)':
+					{
+						borderRadius: '50%',
+					},
+
 				'.DayPicker-Day--selected:not(.DayPicker-Day--start):not(.DayPicker-Day--end):not(.DayPicker-Day--outside)':
 					{
 						backgroundColor: boxPalette.backgroundShade,
