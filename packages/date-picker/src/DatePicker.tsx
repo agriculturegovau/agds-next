@@ -2,7 +2,6 @@ import React, { useCallback, useRef, useState } from 'react';
 import { usePopper } from 'react-popper';
 import { useClickOutside, useTernaryState } from '@ag.ds-next/core';
 import { Calendar, CalendarProps } from './Calendar';
-import { isValid } from 'date-fns';
 import { DateInput, DateInputProps } from './DatePickerInput';
 import { parseDate, formatDate } from './utils';
 
@@ -55,7 +54,7 @@ export const DatePicker = ({
 			setInputValue(value);
 			// Ensure the text entered is a valid date
 			const parsedDate = parseDate(value);
-			onChange(isValid(parsedDate) ? parsedDate : undefined);
+			onChange(parsedDate);
 		},
 		[onChange]
 	);

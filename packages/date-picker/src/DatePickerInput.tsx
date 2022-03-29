@@ -1,12 +1,12 @@
 import React, { MouseEventHandler, RefObject } from 'react';
 import { IMask, IMaskInput } from 'react-imask';
-import { format, parse } from 'date-fns';
 import { Flex } from '@ag.ds-next/box';
 import { CalendarIcon } from '@ag.ds-next/icon';
 import { TextInputProps, textInputStyles } from '@ag.ds-next/text-input';
 import { mapSpacing } from '@ag.ds-next/core';
 import { Button } from '@ag.ds-next/button';
 import { Field } from '@ag.ds-next/field';
+import { formatDate, parseDate } from './utils';
 
 export type DateInputProps = Omit<TextInputProps, 'onChange'> & {
 	onChange: (value: string) => void;
@@ -55,8 +55,8 @@ export const DateInput = ({
 					<IMaskInput
 						mask={Date}
 						pattern="d{/}`m{/}`Y"
-						format={(date) => format(date, 'dd/MM/yyyy')}
-						parse={(value) => parse(value, 'dd/MM/yyyy', new Date())}
+						format={(date) => formatDate(date)}
+						parse={(value) => parseDate(value) || new Date()}
 						value={value}
 						onAccept={(value) => typeof value === 'string' && onChange(value)}
 						unmask={false}
