@@ -1,10 +1,10 @@
-import React, { ChangeEvent, useCallback, useRef, useState } from 'react';
+import React, { useCallback, useRef, useState } from 'react';
 import { usePopper } from 'react-popper';
 import { useClickOutside, useTernaryState } from '@ag.ds-next/core';
 import { Calendar, CalendarProps } from './Calendar';
-import { format, isValid } from 'date-fns';
+import { isValid } from 'date-fns';
 import { DateInput, DateInputProps } from './DatePickerInput';
-import { parseDate } from './utils';
+import { parseDate, formatDate } from './utils';
 
 type InputProps = Omit<
 	DateInputProps,
@@ -15,14 +15,12 @@ export type DatePickerProps = CalendarProps &
 	InputProps & {
 		value: Date | undefined;
 		onChange: (day: Date | undefined) => void;
-		dateFormat?: string;
 		placeholder?: string;
 	};
 
 export const DatePicker = ({
 	value,
 	onChange,
-	dateFormat = 'dd/MM/yyyy',
 	initialMonth,
 	...props
 }: DatePickerProps) => {
@@ -40,28 +38,26 @@ export const DatePicker = ({
 	const onDayClick = useCallback(
 		(day: Date) => {
 			// Update the input field with the selected day
-			setInputValue(format(day, dateFormat));
+			setInputValue(formatDate(day));
 			// Trigger the callback
 			onChange(day);
 			// Close the calendar and focus the calendar icon
 			closeCalendar();
 			triggerRef.current?.focus();
 		},
-		[dateFormat, onChange, closeCalendar]
+		[onChange, closeCalendar]
 	);
 
-	const [inputValue, setInputValue] = useState(
-		value ? format(value, dateFormat) : ''
-	);
+	const [inputValue, setInputValue] = useState(value ? formatDate(value) : '');
 
 	const onInputChange = useCallback(
 		(value: string) => {
 			setInputValue(value);
 			// Ensure the text entered is a valid date
-			const parsedDate = parseDate(value, dateFormat);
+			const parsedDate = parseDate(value);
 			onChange(isValid(parsedDate) ? parsedDate : undefined);
 		},
-		[onChange, dateFormat]
+		[onChange]
 	);
 
 	// Close the calendar when the user clicks outside

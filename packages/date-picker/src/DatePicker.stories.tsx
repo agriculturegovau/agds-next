@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { Box, Stack } from '@ag.ds-next/box';
+import { Box } from '@ag.ds-next/box';
 import { DatePicker } from './DatePicker';
 
 export default {
@@ -83,13 +83,4 @@ export const RequiredLabel = Template.bind({});
 RequiredLabel.args = {
 	label: 'Example',
 	requiredLabel: false,
-};
-
-export const DateFormat: ComponentStory<typeof DatePicker> = (args) => (
-	<Template {...args} />
-);
-DateFormat.args = {
-	dateFormat: 'MM-dd-yyyy',
-	placeholder: 'mm-dd-yyyy',
-	label: 'Example',
 };

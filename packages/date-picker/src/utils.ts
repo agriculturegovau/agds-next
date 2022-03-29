@@ -1,7 +1,12 @@
-import { isDate, parse, isValid, isBefore, isAfter } from 'date-fns';
+import { isDate, format, parse, isValid, isBefore, isAfter } from 'date-fns';
+
+// Date format is not configurable
+const dateFormat = 'dd/MM/yyyy';
+
+export const formatDate = (date: Date) => format(date, dateFormat);
 
 // https://github.com/date-fns/date-fns/issues/942
-export const parseDate = (value: string, dateFormat: string) => {
+export const parseDate = (value: string) => {
 	if (value.length !== dateFormat.length) return undefined;
 
 	const parsed = parse(value, dateFormat, new Date());
