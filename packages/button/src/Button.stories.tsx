@@ -1,8 +1,8 @@
+import React from 'react';
 import { Flex, Stack } from '@ag.ds-next/box';
-import { allIcons } from '@ag.ds-next/icon/src/example';
+import { allIcons, ExternalLinkIcon } from '@ag.ds-next/icon';
 import { Text } from '@ag.ds-next/text';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import React from 'react';
 import { Button, ButtonLink } from './Button';
 
 export default {
