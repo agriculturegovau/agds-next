@@ -14,7 +14,11 @@ If you’re new to React we recommend going through official [React getting star
 
 ## If you’re starting a new project…
 
-We have built an [example site](https://github.com/steelthreads/agds-next/tree/main/example-site) in [NextJS](https://nextjs.org/) which you can clone and use as a starting point.
+We have built a [starter kit](https://github.com/steelthreads/agds-next-starter-kit) in NextJS, Typescript and Emotion which you can clone and use as a starting point for your next project.
+
+```sh
+git clone git@github.com:steelthreads/agds-next-starter-kit.git
+```
 
 ## If you’re implementing components in an existing project…
 
@@ -27,6 +31,15 @@ Our component library uses the CSS-in-JS styling libraries Emotion and Facepaint
 ```sh
 yarn add @emotion/react facepaint
 ```
+
+If you're using typescript, your TSConfig `compilerOptions` should contain:
+
+```
+"jsx": "react-jsx",
+"jsxImportSource": "@emotion/react"
+```
+
+Fore more information about using emotion with typescript, please refer to the [official documentation](https://emotion.sh/docs/typescript).
 
 ### 2. Install base AgDS packages
 
