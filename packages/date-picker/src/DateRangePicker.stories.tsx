@@ -54,14 +54,6 @@ Labels.args = {
 export const RequiredLabel = Template.bind({});
 RequiredLabel.args = { requiredLabel: false };
 
-export const DateFormat: ComponentStory<typeof DateRangePicker> = (args) => (
-	<Template {...args} />
-);
-DateFormat.args = {
-	dateFormat: 'MM-dd-yyyy',
-	placeholder: 'mm-dd-yyyy',
-};
-
 export const ExampleFilters = () => {
 	const [option, setOption] = useState<string>();
 

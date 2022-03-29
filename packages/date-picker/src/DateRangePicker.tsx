@@ -1,17 +1,10 @@
-import React, {
-	Fragment,
-	ChangeEvent,
-	useCallback,
-	useRef,
-	useState,
-} from 'react';
+import React, { Fragment, useCallback, useRef, useState } from 'react';
 import { usePopper } from 'react-popper';
 import { Flex } from '@ag.ds-next/box';
 import { useClickOutside, useTernaryState } from '@ag.ds-next/core';
 import { Calendar, CalendarProps } from './Calendar';
-import { format, isValid } from 'date-fns';
 import { DateInput } from './DatePickerInput';
-import { getValidDateRange, parseDate } from './utils';
+import { getValidDateRange, parseDate, formatDate } from './utils';
 
 export type DateRange = {
 	from: Date | undefined;
@@ -26,7 +19,6 @@ export type DateRangePickerProps = CalendarProps & {
 	toLabel?: string;
 	required?: boolean;
 	requiredLabel?: boolean;
-	dateFormat?: string;
 	placeholder?: string;
 };
 
@@ -38,8 +30,6 @@ export const DateRangePicker = ({
 	toLabel = 'End date',
 	required,
 	requiredLabel,
-	dateFormat = 'dd/MM/yyyy',
-	placeholder = 'dd/mm/yyyy',
 }: DateRangePickerProps) => {
 	const [isCalendarOpen, openCalendar, closeCalendar] = useTernaryState(false);
 	const [inputMode, setInputMode] = useState<'from' | 'to'>();
@@ -71,8 +61,8 @@ export const DateRangePicker = ({
 			const range = getValidDateRange(inputMode, selectedDay, value);
 
 			onChange(range);
-			setFromInputValue(range.from ? format(range.from, dateFormat) : '');
-			setToInputValue(range.to ? format(range.to, dateFormat) : '');
+			setFromInputValue(range.from ? formatDate(range.from) : '');
+			setToInputValue(range.to ? formatDate(range.to) : '');
 
 			if (range.from && range.to) {
 				inputMode === 'from'
@@ -89,45 +79,37 @@ export const DateRangePicker = ({
 				return;
 			}
 		},
-		[closeCalendar, dateFormat, inputMode, onChange, value]
+		[closeCalendar, inputMode, onChange, value]
 	);
 
 	// From input state
 	const [fromInputValue, setFromInputValue] = useState(
-		value.from ? format(value.from, dateFormat) : ''
+		value.from ? formatDate(value.from) : ''
 	);
 	const onFromInputChange = useCallback(
-		(e: ChangeEvent<HTMLInputElement>) => {
+		(inputValue: string) => {
 			// Immediately update the input field
-			const inputValue = e.target.value;
 			setFromInputValue(inputValue);
 			// Ensure the text entered is a valid date
-			const parsedDate = parseDate(inputValue, dateFormat);
-			onChange({
-				...value,
-				from: isValid(parsedDate) ? parsedDate : undefined,
-			});
+			const parsedDate = parseDate(inputValue);
+			onChange({ ...value, from: parsedDate });
 		},
-		[onChange, value, dateFormat]
+		[onChange, value]
 	);
 
 	// To input state
 	const [toInputValue, setToInputValue] = useState(
-		value.to ? format(value.to, dateFormat) : ''
+		value.to ? formatDate(value.to) : ''
 	);
 	const onToInputChange = useCallback(
-		(e: ChangeEvent<HTMLInputElement>) => {
+		(inputValue: string) => {
 			// Immediately update the input field
-			const inputValue = e.target.value;
 			setToInputValue(inputValue);
 			// Ensure the text entered is a valid date
-			const parsedDate = parseDate(inputValue, dateFormat);
-			onChange({
-				...value,
-				to: isValid(parsedDate) ? parsedDate : undefined,
-			});
+			const parsedDate = parseDate(inputValue);
+			onChange({ ...value, to: parsedDate });
 		},
-		[onChange, value, dateFormat]
+		[onChange, value]
 	);
 
 	// Close the calendar when the user clicks outside
@@ -152,7 +134,6 @@ export const DateRangePicker = ({
 					label={fromLabel}
 					value={fromInputValue}
 					onChange={onFromInputChange}
-					placeholder={placeholder}
 					buttonRef={fromTriggerRef}
 					buttonOnClick={onFromTriggerClick}
 					disabled={disabled}
@@ -163,7 +144,6 @@ export const DateRangePicker = ({
 					label={toLabel}
 					value={toInputValue}
 					onChange={onToInputChange}
-					placeholder={placeholder}
 					buttonRef={toTriggerRef}
 					buttonOnClick={onToTriggerClick}
 					disabled={disabled}
