@@ -1,4 +1,7 @@
 import type { IconProps as _IconProps } from './Icon';
+export type IconProps = _IconProps;
+
+export * from './utils';
 
 export { AlertIcon } from './icons/AlertIcon';
 export { AlertFilledIcon } from './icons/AlertFilledIcon';
@@ -23,5 +26,3 @@ export { SuccessIcon } from './icons/SuccessIcon';
 export { SuccessFilledIcon } from './icons/SuccessFilledIcon';
 export { ProgressTodoIcon } from './icons/ProgressTodoIcon';
 export { WarningFilledIcon } from './icons/WarningFilledIcon';
-
-export type IconProps = _IconProps;

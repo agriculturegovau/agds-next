@@ -1,6 +1,3 @@
-import { Flex } from '@ag.ds-next/box';
-import { Text } from '@ag.ds-next/text';
-
 import { AlertFilledIcon } from './icons/AlertFilledIcon';
 import { AlertIcon } from './icons/AlertIcon';
 import { ArrowDownIcon } from './icons/ArrowDownIcon';
@@ -14,7 +11,6 @@ import { ChevronRightIcon } from './icons/ChevronRightIcon';
 import { ChevronUpIcon } from './icons/ChevronUpIcon';
 import { CloseIcon } from './icons/CloseIcon';
 import { ExternalLinkIcon } from './icons/ExternalLinkIcon';
-import { IconProps } from './Icon';
 import { InfoFilledIcon } from './icons/InfoFilledIcon';
 import { MenuIcon } from './icons/MenuIcon';
 import { ProgressDoingIcon } from './icons/ProgressDoingIcon';
@@ -25,7 +21,7 @@ import { SuccessFilledIcon } from './icons/SuccessFilledIcon';
 import { SuccessIcon } from './icons/SuccessIcon';
 import { WarningFilledIcon } from './icons/WarningFilledIcon';
 
-const allIcons = {
+export const allIcons = {
 	AlertFilledIcon,
 	AlertIcon,
 	ArrowDownIcon,
@@ -48,33 +44,4 @@ const allIcons = {
 	SuccessFilledIcon,
 	SuccessIcon,
 	WarningFilledIcon,
-};
-
-type IconNameType = keyof typeof allIcons;
-
-export const IconExamples = ({ size, ...args }: IconProps) => {
-	return (
-		<Flex gap={0.5} flexWrap="wrap">
-			{(Object.keys(allIcons) as IconNameType[]).sort().map((iconName) => {
-				const Icon = allIcons[iconName];
-				return (
-					<Flex
-						key={iconName}
-						flexDirection="column"
-						alignItems="center"
-						justifyContent="center"
-						flexShrink={0}
-						rounded
-						gap={1}
-						padding={2}
-						background="shade"
-						css={{ width: 180 }}
-					>
-						<Icon size={size} {...args} />
-						<Text>{iconName}</Text>
-					</Flex>
-				);
-			})}
-		</Flex>
-	);
 };
