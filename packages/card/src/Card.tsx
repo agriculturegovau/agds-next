@@ -33,7 +33,6 @@ export const Card = ({
 				overflow: 'hidden',
 
 				...(clickable && {
-					cursor: 'pointer',
 					// If any element inside the card receives focus, add a focus ring around the wrapper card div
 					'&:focus-within': packs.outline,
 				}),
