@@ -1,9 +1,9 @@
 import { Card, CardInner, CardLink } from '@ag.ds-next/card';
 import { Flex } from '@ag.ds-next/box';
 import { ChevronRightIcon } from '@ag.ds-next/icon';
+import { LinkProps } from '@ag.ds-next/core';
 
 import { getPictogram } from './pictograms';
-import { LinkProps } from 'next/link';
 
 export const PictogramCard = ({
 	pictogram,
@@ -12,7 +12,7 @@ export const PictogramCard = ({
 }: {
 	pictogram: string;
 	title: string;
-} & LinkProps & { href: string }) => (
+} & LinkProps) => (
 	<Card clickable shadow>
 		<Flex
 			alignItems="center"

@@ -93,7 +93,8 @@ export default function Homepage() {
 								<PictogramCard
 									title="Starter kit"
 									pictogram="starter"
-									href="/guides/getting-started"
+									href="https://github.com/steelthreads/agds-next-starter-kit"
+									target="_blank"
 									rel="noopener noreferrer"
 								/>
 							</Column>
