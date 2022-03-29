@@ -32,11 +32,27 @@ Our component library uses the CSS-in-JS styling libraries Emotion and Facepaint
 yarn add @emotion/react facepaint
 ```
 
+You will also need to configure the emotion babel plugin for the minification and optimization of emotion styles.
+
+```
+yarn add --dev @emotion/babel-plugin
+```
+
+Your `.babelrc` should contain:
+
+```
+{
+  "plugins": ["@emotion"]
+}
+```
+
 If you're using typescript, your TSConfig `compilerOptions` should contain:
 
 ```
+
 "jsx": "react-jsx",
 "jsxImportSource": "@emotion/react"
+
 ```
 
 Fore more information about using emotion with typescript, please refer to the [official documentation](https://emotion.sh/docs/typescript).
