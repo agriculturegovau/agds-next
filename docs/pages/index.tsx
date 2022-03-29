@@ -73,7 +73,7 @@ export default function Homepage() {
 								<PictogramCard
 									title="Packages"
 									pictogram="packages"
-									slug="/packages"
+									href="/packages"
 								/>
 							</Column>
 							<Column
@@ -83,7 +83,7 @@ export default function Homepage() {
 								<PictogramCard
 									title="Guides"
 									pictogram="guides"
-									slug="/guides"
+									href="/guides"
 								/>
 							</Column>
 							<Column
@@ -93,7 +93,8 @@ export default function Homepage() {
 								<PictogramCard
 									title="Starter kit"
 									pictogram="starter"
-									slug="/guides/getting-started"
+									href="/guides/getting-started"
+									rel="noopener noreferrer"
 								/>
 							</Column>
 						</Columns>

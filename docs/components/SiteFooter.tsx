@@ -6,7 +6,13 @@ const footerLinks = [
 	{ label: 'Home', href: '/' },
 	{ label: 'Storybook', href: '/storybook/index.html' },
 	{ label: 'Playroom', href: '/playroom/index.html' },
-	{ label: 'Example site', href: '/example-site/index.html' },
+	{ label: 'Starter kit', href: '/example-site/index.html' },
+	{
+		label: 'Example site',
+		href: 'https://github.com/steelthreads/agds-next-starter-kit',
+		target: '_blank',
+		rel: 'noopener noreferrer',
+	},
 ];
 
 export const SiteFooter = () => {

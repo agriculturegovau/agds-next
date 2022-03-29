@@ -18,7 +18,7 @@ export const PkgCardList = ({ items }: { items: Pkg[] }) => (
 				<PictogramCard
 					title={title}
 					pictogram={slug}
-					slug={`/packages/${group}/${slug}`}
+					href={`/packages/${group}/${slug}`}
 				/>
 			</Column>
 		))}
