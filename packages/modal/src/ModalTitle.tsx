@@ -1,7 +1,9 @@
 import { ReactNode } from 'react';
 import { Text } from '@ag.ds-next/text';
 
-export const ModalTitle = ({ children }: { children: ReactNode }) => {
+export type ModalTitleProps = { children: ReactNode };
+
+export const ModalTitle = ({ children }: ModalTitleProps) => {
 	return (
 		<Text fontSize="lg" fontWeight="bold">
 			{children}
