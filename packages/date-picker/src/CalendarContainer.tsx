@@ -59,7 +59,10 @@ export const CalendarContainer = ({
 
 			'& .DayPicker-Caption': {
 				display: `table-caption`,
-				marginBottom: mapSpacing(1.5),
+				marginBottom: mapResponsiveProp(
+					[0.75 as const, 1.5 as const],
+					mapSpacing
+				),
 				textAlign: `center`,
 			},
 

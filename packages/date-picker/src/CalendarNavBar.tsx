@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import { mapSpacing } from '@ag.ds-next/core';
+import { mapResponsiveProp, mapSpacing, mq } from '@ag.ds-next/core';
 import type { NavbarElementProps } from 'react-day-picker';
 import { ChevronLeftIcon, ChevronRightIcon } from '@ag.ds-next/icon';
 import { Button } from '@ag.ds-next/button';
@@ -15,13 +15,13 @@ export const CalendarNavbar = ({
 			<Button
 				variant="tertiary"
 				onClick={() => onPreviousClick()}
-				css={{
+				css={mq({
 					position: 'absolute',
-					top: mapSpacing(1),
-					left: mapSpacing(1.5),
+					top: mapResponsiveProp([0.25 as const, 1 as const], mapSpacing),
+					left: mapResponsiveProp([0.5 as const, 1.5 as const], mapSpacing),
 					paddingLeft: 0,
 					paddingRight: 0,
-				}}
+				})}
 				aria-label="Previous month"
 			>
 				<ChevronLeftIcon size="md" weight="bold" />
@@ -31,13 +31,13 @@ export const CalendarNavbar = ({
 			<Button
 				variant="tertiary"
 				onClick={() => onNextClick()}
-				css={{
+				css={mq({
 					position: 'absolute',
-					top: mapSpacing(1),
-					right: mapSpacing(1.5),
+					top: mapResponsiveProp([0.25 as const, 1 as const], mapSpacing),
+					right: mapResponsiveProp([0.5 as const, 1.5 as const], mapSpacing),
 					paddingLeft: 0,
 					paddingRight: 0,
-				}}
+				})}
 				aria-label="Next month"
 			>
 				<ChevronRightIcon size="md" weight="bold" />
