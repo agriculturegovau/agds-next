@@ -76,9 +76,9 @@ By default, "(optional)" or "(required)" will be appended to labels. To disable 
 ### `useScrollToField`
 
 By default, the browser will scroll the target into view. Because our labels or legends appear above the input, this means the user will be presented with an input without any context, as the label or legend will be off the top of
-the screen.
+the screen. Manually handling the click event, scrolling the question into view and then focussing the element solves this.
 
-Manually handling the click event, scrolling the question into view and then focussing the element solves this.
+Please refer to the [example site single page form example](https://steelthreads.github.io/agds-next/example-site/form-single-page) to see an example of this hook in use.
 
 ```jsx
 function ExampleForm() {
