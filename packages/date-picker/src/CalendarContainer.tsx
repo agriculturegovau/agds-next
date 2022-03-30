@@ -2,7 +2,9 @@ import React, { ReactNode } from 'react';
 import {
 	boxPalette,
 	fontGrid,
+	mapResponsiveProp,
 	mapSpacing,
+	mq,
 	packs,
 	tokens,
 } from '@ag.ds-next/core';
@@ -21,7 +23,7 @@ export const CalendarContainer = ({
 	range,
 }: CalendarContainerProps) => (
 	<div
-		css={{
+		css={mq({
 			'& .DayPicker': {
 				display: `inline-block`,
 				fontSize: `1rem`,
@@ -37,7 +39,7 @@ export const CalendarContainer = ({
 			'& .DayPicker-wrapper': {
 				position: `relative`,
 				flexDirection: `row`,
-				padding: `${mapSpacing(1)}`,
+				padding: mapResponsiveProp([0.25 as const, 1 as const], mapSpacing),
 				'&:focus': packs.outline,
 			},
 
@@ -154,7 +156,7 @@ export const CalendarContainer = ({
 						borderRadius: 0,
 					},
 			}),
-		}}
+		})}
 	>
 		{children}
 	</div>
