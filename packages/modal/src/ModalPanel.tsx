@@ -7,7 +7,6 @@ import { Button } from '@ag.ds-next/button';
 
 export type ModalPanelProps = { children: ReactNode; onDismiss: () => void };
 
-// configure if default close button is visible
 const AnimatedBox = animated(Box);
 
 export const ModalPanel = ({ children, onDismiss }: ModalPanelProps) => {

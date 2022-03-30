@@ -1,6 +1,5 @@
 import { forwardRef, ReactNode, HTMLAttributes } from 'react';
 
-// Will act as a darkened backdrop
 export const ModalCover = forwardRef<
 	HTMLDivElement,
 	{ children: ReactNode } & HTMLAttributes<HTMLDivElement>
