@@ -1,4 +1,4 @@
-import React, { PropsWithChildren } from 'react';
+import { PropsWithChildren, FunctionComponent } from 'react';
 import { createPortal } from 'react-dom';
 
 import { ModalCover } from './ModalCover';
@@ -6,10 +6,14 @@ import { ModalPanel, ModalPanelProps } from './ModalPanel';
 
 export type ModalProps = PropsWithChildren<{
 	isOpen?: boolean;
-}> &
-	Pick<ModalPanelProps, 'onDismiss'>;
+	onDismiss: ModalPanelProps['onDismiss'];
+}>;
 
-export const Modal = ({ children, isOpen, onDismiss }: ModalProps) => {
+export const Modal: FunctionComponent<ModalProps> = ({
+	children,
+	isOpen,
+	onDismiss,
+}) => {
 	if (!isOpen) {
 		return null;
 	}
