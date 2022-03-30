@@ -5,6 +5,9 @@ const dateFormat = 'dd/MM/yyyy';
 
 export const formatDate = (date: Date) => format(date, dateFormat);
 
+export const formatHumanReadableDate = (date: Date) =>
+	format(date, 'eeee MMMM do, yyyy');
+
 // https://github.com/date-fns/date-fns/issues/942
 export const parseDate = (value: string) => {
 	if (value.length !== dateFormat.length) return undefined;
