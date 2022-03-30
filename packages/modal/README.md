@@ -15,9 +15,7 @@ For other uses, other patterns are preferred.
 	const onDismiss = () => setOpen(false);
 	return (
 		<div>
-			<Button onClick={() => setOpen(!isOpen)}>
-				Open Example Modal
-			</Button>
+			<Button onClick={() => setOpen(!isOpen)}>Open Example Modal</Button>
 			<Modal isOpen={isOpen} onDismiss={onDismiss}>
 				<Stack gap={1}>
 					<ModalTitle>
@@ -39,5 +37,5 @@ For other uses, other patterns are preferred.
 			</Modal>
 		</div>
 	);
-}
+};
 ```
