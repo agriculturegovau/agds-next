@@ -70,3 +70,29 @@ By default, "(optional)" or "(required)" will be appended to labels. To disable 
 	{(a11yProps) => <select {...a11yProps} />}
 </Field>
 ```
+
+## Hooks
+
+### `useScrollToField`
+
+By default, the browser will scroll the target into view. Because our labels or legends appear above the input, this means the user will be presented with an input without any context, as the label or legend will be off the top of
+the screen.
+
+Manually handling the click event, scrolling the question into view and then focussing the element solves this.
+
+```jsx
+function ExampleForm() {
+	const scrollToField = useScrollToField();
+	return (
+		<ul>
+			{Object.entries(errors).map(([id, errorMessage]) => (
+				<li key={id}>
+					<a href={`#${id}`} onClick={scrollToField}>
+						{errorMessage}
+					</a>
+				</li>
+			))}
+		</ul>
+	);
+}
+```

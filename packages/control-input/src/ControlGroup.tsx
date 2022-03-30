@@ -12,6 +12,7 @@ export type ControlGroupProps = PropsWithChildren<{
 	message?: string;
 	required?: boolean;
 	requiredLabel?: boolean;
+	id?: string;
 }>;
 
 export const ControlGroup = ({
@@ -23,8 +24,9 @@ export const ControlGroup = ({
 	message,
 	required,
 	requiredLabel,
+	id,
 }: ControlGroupProps) => (
-	<FieldContainer invalid={invalid}>
+	<FieldContainer invalid={invalid} id={id}>
 		<fieldset css={{ padding: 0, margin: 0, border: 'none' }}>
 			{label ? (
 				<Text as="legend" display="block" fontWeight="bold">
