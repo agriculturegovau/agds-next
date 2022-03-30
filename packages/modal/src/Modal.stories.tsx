@@ -12,7 +12,7 @@ export default {
 	component: Modal,
 } as ComponentMeta<typeof Modal>;
 
-export const Light = () => {
+export const Basic = () => {
 	const [isOpen, setOpen] = useState(false);
 
 	const onDismiss = () => setOpen(false);

@@ -4,7 +4,7 @@ import { createPortal } from 'react-dom';
 import { ModalCover } from './ModalCover';
 import { ModalPanel, ModalPanelProps } from './ModalPanel';
 
-type ModalProps = PropsWithChildren<{
+export type ModalProps = PropsWithChildren<{
 	isOpen?: boolean;
 	footerContent?: ReactNode;
 }> &
