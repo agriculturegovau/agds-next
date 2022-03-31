@@ -28,7 +28,6 @@
 		"@popperjs/core": "^2.11.4",
 		"date-fns": "^2.28.0",
 		"react-day-picker": "^7.4.10",
-		"react-imask": "^6.4.2",
 		"react-popper": "^2.2.5"
 	}
 }
