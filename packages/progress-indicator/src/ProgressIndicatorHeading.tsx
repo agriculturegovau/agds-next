@@ -11,14 +11,18 @@ export const ProgressIndicatorHeading = ({
 	subTitle,
 }: ProgressIndicatorHeadingProps) => {
 	return (
-		<Flex gap={0.5} flexDirection="column" display={{ xs: 'none', md: 'flex' }}>
+		<Flex
+			gap={0.25}
+			flexDirection="column"
+			display={{ xs: 'none', md: 'flex' }}
+		>
 			{title ? (
-				<Text as="h2" fontSize="md" fontWeight="bold" lineHeight="heading">
+				<Text as="span" fontSize="md" fontWeight="bold" lineHeight="heading">
 					{title}
 				</Text>
 			) : null}
 			{subTitle ? (
-				<Text color="muted" lineHeight="heading">
+				<Text as="span" color="muted" lineHeight="heading">
 					{subTitle}
 				</Text>
 			) : null}

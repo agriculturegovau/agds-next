@@ -78,7 +78,7 @@ export const ProgressIndicator = ({
 					},
 				}}
 			>
-				<Stack gap={1.5}>
+				<Stack gap={1}>
 					{title || subTitle ? (
 						<ProgressIndicatorHeading title={title} subTitle={subTitle} />
 					) : null}
