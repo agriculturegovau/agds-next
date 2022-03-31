@@ -21,6 +21,43 @@ export const Basic = () => {
 			<Button onClick={() => setOpen(!isOpen)}>
 				{isOpen ? 'Close' : 'Open'}
 			</Button>
+			<Modal
+				isOpen={isOpen}
+				onDismiss={onDismiss}
+				title="This is the title of the modal dialogue, it can span lines but
+						should not be too long."
+			>
+				<Text as="p">
+					This is the Modal Body paragraph, it provides detailed instruction and
+					context for the the modal action. It can also span lines but long form
+					content should be avoided.
+				</Text>
+
+				<ModalButtonGroup>
+					<Button onClick={onDismiss}>Ok</Button>
+
+					<Button variant="secondary" onClick={onDismiss}>
+						Cancel
+					</Button>
+
+					<Button variant="tertiary" onClick={onDismiss}>
+						Cancel
+					</Button>
+				</ModalButtonGroup>
+			</Modal>
+		</div>
+	);
+};
+
+export const ComposedTitle = () => {
+	const [isOpen, setOpen] = useState(false);
+
+	const onDismiss = () => setOpen(false);
+	return (
+		<div>
+			<Button onClick={() => setOpen(!isOpen)}>
+				{isOpen ? 'Close' : 'Open'}
+			</Button>
 			<Modal isOpen={isOpen} onDismiss={onDismiss}>
 				<Stack gap={1}>
 					<ModalTitle>
