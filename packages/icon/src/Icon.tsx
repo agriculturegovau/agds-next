@@ -57,16 +57,14 @@ export const createIcon = (children: ReactNode, name: string) => {
 				clipRule="evenodd"
 				xmlns="http://www.w3.org/2000/svg"
 				focusable="false"
-				css={mq({
-					color: color
-						? mapResponsiveProp(color, (t) => iconColors[t])
-						: undefined,
+				css={{
 					fill: 'none',
+					color: color ? iconColors[color] : undefined,
 					stroke: 'currentColor',
 					strokeLinejoin: 'round',
 					strokeLinecap: 'round',
 					strokeWidth: weight === 'bold' ? 3 : 2,
-				})}
+				}}
 				role="img"
 				style={style}
 				className={className}
