@@ -9,6 +9,7 @@ export const ProgressIndicatorContainer = ({
 	children,
 }: ProgressIndicatorContainerProps) => (
 	<Box
+		as="section"
 		borderBottom
 		css={{
 			'li:last-of-type': { borderBottom: 'none' },

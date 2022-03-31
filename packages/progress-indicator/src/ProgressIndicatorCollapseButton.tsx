@@ -1,28 +1,36 @@
 import { PropsWithChildren } from 'react';
 import { useSpring, animated } from 'react-spring';
-import { Flex } from '@ag.ds-next/box';
+import { Flex, Stack } from '@ag.ds-next/box';
 import { ChevronDownIcon } from '@ag.ds-next/icon';
-import { packs, tokens, usePrefersReducedMotion } from '@ag.ds-next/core';
+import {
+	boxPalette,
+	packs,
+	tokens,
+	usePrefersReducedMotion,
+} from '@ag.ds-next/core';
 import { Text } from '@ag.ds-next/text';
 import type { ProgressIndicatorItem } from './ProgressIndicatorItem';
 
-type ProgressIndicatorCollapseButtonProps = PropsWithChildren<{
+type ProgressIndicatorCollapseButtonProps = {
 	ariaControls: string;
 	id: string;
 	isOpen: boolean;
 	items: ProgressIndicatorItem[];
 	onClick: () => void;
-}>;
+	title: string;
+	subTitle?: string;
+};
 
 const AnimatedIcon = animated(ChevronDownIcon);
 
 export const ProgressIndicatorCollapseButton = ({
 	ariaControls,
-	children,
 	id,
 	isOpen,
 	items,
 	onClick,
+	title,
+	subTitle,
 }: ProgressIndicatorCollapseButtonProps) => {
 	const activeItemIndex = items.findIndex(({ status }) => status === 'doing');
 	const prefersReducedMotion = usePrefersReducedMotion();
@@ -50,18 +58,28 @@ export const ProgressIndicatorCollapseButton = ({
 				appearance: 'none',
 				background: 'transparent',
 				cursor: 'pointer',
+				textAlign: 'left',
 
 				'& > span': packs.underline,
 				'&:hover > span': { textDecoration: 'none' },
+
+				'&:hover': {
+					background: boxPalette.backgroundShade,
+				},
 
 				[tokens.mediaQuery.min.md]: {
 					display: 'none',
 				},
 			}}
 		>
-			<Text color="action" fontSize="md" lineHeight="heading" fontWeight="bold">
-				{children}
-			</Text>
+			<Stack>
+				<Text color="action" fontSize="md" fontWeight="bold">
+					{title}
+				</Text>
+				<Text color="muted" fontSize="xs">
+					{subTitle}
+				</Text>
+			</Stack>
 			<Flex gap={1}>
 				{activeItemIndex > -1 ? (
 					<Text
