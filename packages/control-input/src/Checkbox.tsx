@@ -20,7 +20,7 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
 		ref
 	) {
 		return (
-			<ControlContainer disabled={disabled} valid={valid} invalid={invalid}>
+			<ControlContainer disabled={disabled}>
 				<ControlInput
 					ref={ref}
 					type="checkbox"

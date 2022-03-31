@@ -1,4 +1,4 @@
-import { Box, Flex } from '@ag.ds-next/box';
+import { Flex } from '@ag.ds-next/box';
 import {
 	boxPalette,
 	globalPalette,
@@ -23,38 +23,38 @@ export const CheckboxIndicator = ({
 }: CheckboxIndicatorProps) => {
 	const { width, height, borderWidth } = packs.control[size];
 	return (
-		<Box
+		<Flex
+			justifyContent="center"
+			alignItems="center"
 			width={width}
 			height={height}
-			border
-			borderWidth="lg"
-			style={{
-				borderColor: 'transparent',
+			css={{
+				borderWidth,
+				borderStyle: 'solid',
+				borderColor: boxPalette.borderInput,
+				backgroundColor: globalPalette.lightBackgroundBody,
 				opacity: disabled ? 0.3 : undefined,
+				...(invalid
+					? {
+							borderColor: globalPalette.error,
+							backgroundColor: globalPalette.errorMuted,
+					  }
+					: valid
+					? {
+							borderColor: globalPalette.success,
+							backgroundColor: globalPalette.successMuted,
+					  }
+					: undefined),
 			}}
+			background="body"
+			color="text"
+			rounded
 		>
-			<Flex
-				justifyContent="center"
-				alignItems="center"
-				width="100%"
-				height="100%"
-				css={{
-					borderWidth,
-					borderStyle: 'solid',
-					borderColor: boxPalette.border,
-					...(invalid
-						? { borderColor: globalPalette.error }
-						: valid
-						? { borderColor: globalPalette.success }
-						: undefined),
-				}}
-				background="body"
-				color="text"
-				rounded
-			>
-				<CheckboxIcon size={iconSize[size]} css={{ display: 'none' }} />
-			</Flex>
-		</Box>
+			<CheckboxIcon
+				size={iconSize[size]}
+				css={{ display: 'none', color: globalPalette.lightForegroundText }}
+			/>
+		</Flex>
 	);
 };
 

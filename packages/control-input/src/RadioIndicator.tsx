@@ -17,50 +17,43 @@ export const RadioIndicator = ({
 }: RadioIndicatorProps) => {
 	const { width, height, borderWidth } = packs.control[size];
 	return (
-		<Box
+		<Flex
+			justifyContent="center"
+			alignItems="center"
 			width={width}
 			height={height}
-			border
-			borderWidth="lg"
-			style={{
-				borderColor: 'transparent',
+			css={{
+				borderWidth,
 				borderRadius: '100%',
+				borderStyle: 'solid',
+				borderColor: boxPalette.borderInput,
+				backgroundColor: globalPalette.lightBackgroundBody,
 				opacity: disabled ? 0.3 : undefined,
+				...(invalid
+					? {
+							borderColor: globalPalette.error,
+							backgroundColor: globalPalette.errorMuted,
+					  }
+					: valid
+					? {
+							borderColor: globalPalette.success,
+							backgroundColor: globalPalette.successMuted,
+					  }
+					: undefined),
 			}}
+			background="body"
+			color="text"
+			rounded
 		>
-			<Flex
-				justifyContent="center"
-				alignItems="center"
-				width="100%"
-				height="100%"
+			<Box
+				width="calc(100% - 0.5rem)"
+				height="calc(100% - 0.5rem)"
 				css={{
-					borderWidth,
-					borderStyle: 'solid',
-					borderColor: boxPalette.border,
+					display: 'none',
 					borderRadius: '100%',
-					...(invalid
-						? { borderColor: globalPalette.error }
-						: valid
-						? { borderColor: globalPalette.success }
-						: undefined),
+					background: globalPalette.lightForegroundText,
 				}}
-				background="body"
-				color="text"
-				rounded
-			>
-				<Box
-					width="100%"
-					height="100%"
-					css={{
-						display: 'none',
-						borderWidth: tokens.borderWidth.lg,
-						borderStyle: 'solid',
-						borderColor: boxPalette.backgroundBody,
-						borderRadius: '100%',
-						background: boxPalette.foregroundText,
-					}}
-				/>
-			</Flex>
-		</Box>
+			/>
+		</Flex>
 	);
 };
