@@ -14,6 +14,7 @@ The individual tasks or steps are shown as either:
 
 ```jsx live
 <ProgressIndicator
+	title="Progress"
 	items={[
 		{ href: '#', label: 'Introduction', status: 'done' },
 		{ href: '#', label: 'Business Contacts', status: 'doing' },
@@ -28,6 +29,7 @@ If an item does not specify a `href` attribute a `button` element will be render
 
 ```jsx live
 <ProgressIndicator
+	title="Progress"
 	items={[
 		{ onClick: console.log, label: 'Introduction', status: 'done' },
 		{ onClick: console.log, label: 'Business Contacts', status: 'doing' },

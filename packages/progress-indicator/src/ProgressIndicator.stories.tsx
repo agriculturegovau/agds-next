@@ -58,7 +58,7 @@ export const Titles: ComponentStory<typeof ProgressIndicator> = (args) => (
 	<ProgressIndicator {...args} />
 );
 Titles.args = {
-	title: 'Example',
+	title: 'Progress',
 	subTitle: 'Lorem ipsum dolar',
 	collapseTitle: 'Progress',
 	items: exampleLinkItems,

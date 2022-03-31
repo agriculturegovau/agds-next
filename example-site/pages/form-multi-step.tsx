@@ -18,6 +18,7 @@ const FormMultiStepPage: NextPage = () => {
 							<Column columnSpan={{ xs: 12, md: 3 }}>
 								<ContentBleed visible={{ md: false }}>
 									<ProgressIndicator
+										title="Progress"
 										items={[
 											{
 												label: 'Personal details',
