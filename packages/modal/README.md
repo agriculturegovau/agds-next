@@ -16,12 +16,16 @@ For other uses, other patterns are preferred.
 	return (
 		<div>
 			<Button onClick={() => setOpen(!isOpen)}>Open Example Modal</Button>
-			<Modal isOpen={isOpen} onDismiss={onDismiss} title="This is the title of the modal dialogue, it can span lines but should not be too long.">
-					<Text as="p">
-						This is the Modal Body paragraph, it provides detailed instruction
-						and context for the the modal action. It can also span lines but
-						long form content should be avoided.
-					</Text>
+			<Modal
+				isOpen={isOpen}
+				onDismiss={onDismiss}
+				title="This is the title of the modal dialogue, it can span lines but should not be too long."
+			>
+				<Text as="p">
+					This is the Modal Body paragraph, it provides detailed instruction and
+					context for the the modal action. It can also span lines but long form
+					content should be avoided.
+				</Text>
 				<ModalButtonGroup>
 					<Button onClick={onDismiss}>Ok</Button>
 					<Button variant="tertiary" onClick={onDismiss}>
