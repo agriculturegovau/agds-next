@@ -1,4 +1,4 @@
-import React, { useCallback, useRef, useState } from 'react';
+import React, { ChangeEvent, useCallback, useRef, useState } from 'react';
 import { usePopper } from 'react-popper';
 import { useClickOutside, useTernaryState } from '@ag.ds-next/core';
 import { Calendar, CalendarProps } from './Calendar';
@@ -50,10 +50,11 @@ export const DatePicker = ({
 	const [inputValue, setInputValue] = useState(value ? formatDate(value) : '');
 
 	const onInputChange = useCallback(
-		(value: string) => {
-			setInputValue(value);
+		(e: ChangeEvent<HTMLInputElement>) => {
+			const inputValue = e.target.value;
+			setInputValue(inputValue);
 			// Ensure the text entered is a valid date
-			const parsedDate = parseDate(value);
+			const parsedDate = parseDate(inputValue);
 			onChange(parsedDate);
 		},
 		[onChange]

@@ -1,4 +1,10 @@
-import React, { Fragment, useCallback, useRef, useState } from 'react';
+import React, {
+	ChangeEvent,
+	Fragment,
+	useCallback,
+	useRef,
+	useState,
+} from 'react';
 import { usePopper } from 'react-popper';
 import { Flex } from '@ag.ds-next/box';
 import { useClickOutside, useTernaryState } from '@ag.ds-next/core';
@@ -87,7 +93,8 @@ export const DateRangePicker = ({
 		value.from ? formatDate(value.from) : ''
 	);
 	const onFromInputChange = useCallback(
-		(inputValue: string) => {
+		(e: ChangeEvent<HTMLInputElement>) => {
+			const inputValue = e.target.value;
 			// Immediately update the input field
 			setFromInputValue(inputValue);
 			// Ensure the text entered is a valid date
@@ -102,7 +109,8 @@ export const DateRangePicker = ({
 		value.to ? formatDate(value.to) : ''
 	);
 	const onToInputChange = useCallback(
-		(inputValue: string) => {
+		(e: ChangeEvent<HTMLInputElement>) => {
+			const inputValue = e.target.value;
 			// Immediately update the input field
 			setToInputValue(inputValue);
 			// Ensure the text entered is a valid date
