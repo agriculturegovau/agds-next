@@ -1,0 +1,32 @@
+{
+	"name": "@ag.ds-next/modal",
+	"version": "0.0.1",
+	"main": "dist/ag.ds-next-modal.cjs.js",
+	"module": "dist/ag.ds-next-modal.esm.js",
+	"license": "MIT",
+	"peerDependencies": {
+		"@ag.ds-next/box": "4.0.3",
+		"@ag.ds-next/button": "4.0.3",
+		"@ag.ds-next/core": "2.1.3",
+		"@ag.ds-next/icon": "5.1.0",
+		"@ag.ds-next/text": "4.0.3",
+		"@emotion/react": "^11.7.0",
+		"react": "^16.14.0 || ^17.0.0",
+		"react-dom": "^16.14.0 || ^17.0.0"
+	},
+	"devDependencies": {
+		"@ag.ds-next/box": "*",
+		"@ag.ds-next/button": "*",
+		"@ag.ds-next/core": "*",
+		"@ag.ds-next/icon": "*",
+		"@ag.ds-next/text": "*",
+		"@emotion/react": "^11.7.0",
+		"react": "17.0.2",
+		"react-dom": "^17.0.2"
+	},
+	"dependencies": {
+		"@reach/auto-id": "^0.16.0",
+		"react-focus-lock": "^2.8.1",
+		"react-spring": "^9.4.3"
+	}
+}
