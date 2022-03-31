@@ -7,6 +7,7 @@ import { Logo } from '@ag.ds-next/ag-branding';
 import { Button, ButtonLink } from '@ag.ds-next/button';
 import { Box, Flex, Stack } from '@ag.ds-next/box';
 import { Body } from '@ag.ds-next/body';
+import { useTernaryState } from '@ag.ds-next/core';
 import { Text, TextLink } from '@ag.ds-next/text';
 import { Heading, H1, H2, H3, H4, H5, H6 } from '@ag.ds-next/heading';
 import { LinkList } from '@ag.ds-next/link-list';
@@ -204,4 +205,5 @@ export const designSystemComponents = {
 	TaskList,
 	DatePicker,
 	DateRangePicker,
+	useTernaryState,
 };

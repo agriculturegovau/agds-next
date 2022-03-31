@@ -1,4 +1,4 @@
-import { FunctionComponent } from 'react';
+import { FunctionComponent, KeyboardEvent, useCallback } from 'react';
 import { createPortal } from 'react-dom';
 
 import { ModalCover } from './ModalCover';
@@ -14,11 +14,22 @@ export const Modal: FunctionComponent<ModalProps> = ({
 	onDismiss,
 	title,
 }) => {
+	const handleEscape = useCallback(
+		(e: KeyboardEvent<HTMLDivElement>) => {
+			if (isOpen && e.code === 'Escape') {
+				e.preventDefault();
+				e.stopPropagation();
+				onDismiss();
+			}
+		},
+		[isOpen, onDismiss]
+	);
+
 	if (!isOpen) {
 		return null;
 	}
 	return createPortal(
-		<ModalCover>
+		<ModalCover onKeyDown={handleEscape}>
 			<ModalPanel onDismiss={onDismiss} title={title}>
 				{children}
 			</ModalPanel>

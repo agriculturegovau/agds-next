@@ -59,7 +59,7 @@ export const ModalPanel = ({ children, title, onDismiss }: ModalPanelProps) => {
 
 				<Stack gap={1}>
 					{title && <ModalTitle id={titleId}>{title}</ModalTitle>}
-					{children}
+					<div>{children}</div>
 				</Stack>
 			</AnimatedBox>
 		</FocusLock>
