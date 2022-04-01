@@ -1,6 +1,7 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { Box, Stack } from '@ag.ds-next/box';
+import { Box } from '@ag.ds-next/box';
+import { FormStack } from '@ag.ds-next/form-stack';
 import { Checkbox } from './Checkbox';
 import { Radio } from './Radio';
 import { ControlGroup } from './ControlGroup';
@@ -11,7 +12,7 @@ export default {
 } as ComponentMeta<typeof ControlGroup>;
 
 const Template: ComponentStory<typeof ControlGroup> = (args) => (
-	<Stack gap={2}>
+	<FormStack>
 		<ControlGroup {...args}>
 			<Checkbox invalid={args.invalid} checked>
 				Coding
@@ -40,7 +41,7 @@ const Template: ComponentStory<typeof ControlGroup> = (args) => (
 				Reading
 			</Radio>
 		</ControlGroup>
-	</Stack>
+	</FormStack>
 );
 
 export const OnLight: ComponentStory<typeof ControlGroup> = (args) => (
