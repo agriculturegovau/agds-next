@@ -1,16 +1,16 @@
 {
 	"name": "@ag.ds-next/date-picker",
-	"version": "0.0.1",
+	"version": "1.0.0",
 	"main": "dist/ag.ds-next-date-picker.cjs.js",
 	"module": "dist/ag.ds-next-date-picker.esm.js",
 	"license": "MIT",
 	"peerDependencies": {
-		"@ag.ds-next/box": "4.0.2",
-		"@ag.ds-next/button": "4.0.3",
-		"@ag.ds-next/core": "2.1.2",
-		"@ag.ds-next/field": "3.0.0",
-		"@ag.ds-next/icon": "5.1.0",
-		"@ag.ds-next/text-input": "4.0.0",
+		"@ag.ds-next/box": "4.1.0",
+		"@ag.ds-next/button": "5.0.0",
+		"@ag.ds-next/core": "2.1.4",
+		"@ag.ds-next/field": "5.0.0",
+		"@ag.ds-next/icon": "6.0.0",
+		"@ag.ds-next/text-input": "5.0.0",
 		"@emotion/react": "^11.7.0",
 		"react": "^16.14.0 || ^17.0.0"
 	},

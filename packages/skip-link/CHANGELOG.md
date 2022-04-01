@@ -1,5 +1,15 @@
 # @ag.ds-next/skip-link
 
+## 2.0.0
+
+### Patch Changes
+
+- Updated dependencies [1c084608]
+- Updated dependencies [c2d3c64a]
+- Updated dependencies [b2270b13]
+  - @ag.ds-next/core@2.1.4
+  - @ag.ds-next/button@5.0.0
+
 ## 1.0.3
 
 ### Patch Changes

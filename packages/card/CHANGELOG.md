@@ -1,5 +1,16 @@
 # @ag.ds-next/card
 
+## 3.0.0
+
+### Patch Changes
+
+- 1fb96813: Remove pointer cursor for clickable mode
+- Updated dependencies [1c084608]
+- Updated dependencies [533c20f6]
+- Updated dependencies [b2270b13]
+  - @ag.ds-next/core@2.1.4
+  - @ag.ds-next/box@4.1.0
+
 ## 2.1.2
 
 ### Patch Changes

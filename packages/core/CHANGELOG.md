@@ -1,5 +1,12 @@
 # @ag.ds-next/core
 
+## 2.1.4
+
+### Patch Changes
+
+- 1c084608: Updated control pack sizes
+- b2270b13: Added new hook `useClickOutside`
+
 ## 2.1.3
 
 ### Patch Changes

@@ -1,13 +1,13 @@
 {
 	"name": "@ag.ds-next/fieldset",
-	"version": "1.0.1",
+	"version": "2.0.0",
 	"main": "dist/ag.ds-next-fieldset.cjs.js",
 	"module": "dist/ag.ds-next-fieldset.esm.js",
 	"license": "MIT",
 	"peerDependencies": {
-		"@ag.ds-next/box": "4.0.3",
-		"@ag.ds-next/core": "2.1.3",
-		"@ag.ds-next/text": "4.0.3",
+		"@ag.ds-next/box": "4.1.0",
+		"@ag.ds-next/core": "2.1.4",
+		"@ag.ds-next/text": "5.0.0",
 		"@emotion/react": "^11.7.0",
 		"react": "^16.14.0 || ^17.0.0"
 	},
