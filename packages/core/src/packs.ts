@@ -1,17 +1,17 @@
 import { boxPalette } from './boxPalette';
-import { tokens } from './tokens';
+import { mapSpacing, tokens } from './tokens';
 
 // Packs
 
 const control = {
 	sm: {
-		width: '1.75rem', // 28 px
-		height: '1.75rem', // 28 px
+		width: mapSpacing(1.5),
+		height: mapSpacing(1.5),
 		borderWidth: tokens.borderWidth.md,
 	},
 	md: {
-		width: '2.375rem', // 38 px
-		height: '2.375rem', // 38 px
+		width: mapSpacing(2),
+		height: mapSpacing(2),
 		borderWidth: tokens.borderWidth.md,
 	},
 };

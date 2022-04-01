@@ -16,7 +16,7 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>(function Radio(
 	ref
 ) {
 	return (
-		<ControlContainer disabled={disabled} valid={valid} invalid={invalid}>
+		<ControlContainer disabled={disabled}>
 			<ControlInput ref={ref} type="radio" disabled={disabled} {...props} />
 			<RadioIndicator
 				disabled={disabled}
