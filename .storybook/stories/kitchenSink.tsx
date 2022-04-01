@@ -25,6 +25,7 @@ import { InpageNav } from '@ag.ds-next/inpage-nav';
 import { KeywordList } from '@ag.ds-next/keyword-list';
 import { LinkList } from '@ag.ds-next/link-list';
 import { ProgressIndicator } from '@ag.ds-next/progress-indicator';
+import { PageAlert } from '@ag.ds-next/page-alert';
 import { Select } from '@ag.ds-next/select';
 import { SideNav } from '@ag.ds-next/side-nav';
 import { Text } from '@ag.ds-next/text';
@@ -62,7 +63,7 @@ const KitchenSink = ({
 	return (
 		<Content>
 			<Columns>
-				<Column columnSpan={{ xs: 12, md: 6 }}>
+				<Column columnSpan={{ xs: 12, md: 4 }}>
 					<Stack gap={1}>
 						<DirectionLink
 							children="Direction link"
@@ -85,9 +86,6 @@ const KitchenSink = ({
 								{ href: '#', label: 'Case Studies', status: 'done' },
 							]}
 						/>
-						<Callout title="Callout heading">
-							<Text as="p">Description of the callout.</Text>
-						</Callout>
 						<KeywordList
 							items={[
 								{
@@ -133,7 +131,7 @@ const KitchenSink = ({
 						</SearchBox>
 					</Stack>
 				</Column>
-				<Column columnSpan={{ xs: 12, md: 6 }}>
+				<Column columnSpan={{ xs: 12, md: 4 }}>
 					<Stack gap={1} alignItems="flex-start">
 						<Breadcrumbs
 							links={[
@@ -230,6 +228,37 @@ const KitchenSink = ({
 								Tertiary
 							</Button>
 						</Flex>
+					</Stack>
+				</Column>
+
+				<Column columnSpan={{ xs: 12, md: 4 }}>
+					<Stack gap={1} alignItems="flex-start">
+						<PageAlert tone="info" title="Notice">
+							<Text as="p">
+								All vacancies close on the advertised closing date unless
+								otherwise specified.
+							</Text>
+						</PageAlert>
+
+						<PageAlert tone="success" title="Submission successful">
+							<Text as="p">
+								Your application has been successfully submitted.
+							</Text>
+						</PageAlert>
+
+						<PageAlert tone="error" title="There is a problem">
+							<Text as="p">
+								<a href="#">Full name must not be empty</a>
+							</Text>
+						</PageAlert>
+
+						<PageAlert tone="warning" title="Browser out of date">
+							<Text as="p">Your web browser is out of date.</Text>
+						</PageAlert>
+
+						<Callout title="Callout heading">
+							<Text as="p">Description of the callout.</Text>
+						</Callout>
 					</Stack>
 				</Column>
 			</Columns>
