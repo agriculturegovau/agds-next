@@ -72,7 +72,11 @@ export const CallToAction = ({ as, children, ...props }: CallToActionProps) => {
 				{...props}
 			>
 				{children}
-				<AnimatedChevronRightIcon weight="bold" style={animationStyles} />
+				<AnimatedChevronRightIcon
+					weight="bold"
+					size="sm"
+					style={animationStyles}
+				/>
 			</Flex>
 		</div>
 	);
