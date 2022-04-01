@@ -1,9 +1,21 @@
-import { packs, boxPalette, tokens, mapSpacing } from '@ag.ds-next/core';
+import {
+	packs,
+	boxPalette,
+	globalPalette,
+	tokens,
+	mapSpacing,
+} from '@ag.ds-next/core';
+
+const buttonTones = {
+	action: boxPalette.foregroundAction,
+	danger: globalPalette.error,
+};
+type buttonTone = keyof typeof buttonTones;
 
 const variants = {
-	primary: {
-		background: boxPalette.foregroundAction,
-		borderColor: boxPalette.foregroundAction,
+	primary: (tone: buttonTone) => ({
+		background: buttonTones[tone],
+		borderColor: buttonTones[tone],
 		color: boxPalette.backgroundBody,
 		textDecoration: 'none',
 
@@ -13,11 +25,11 @@ const variants = {
 			color: boxPalette.backgroundBody,
 			...packs.underline,
 		},
-	},
-	secondary: {
+	}),
+	secondary: (tone: buttonTone) => ({
 		background: 'transparent',
-		borderColor: boxPalette.foregroundAction,
-		color: boxPalette.foregroundAction,
+		borderColor: buttonTones[tone],
+		color: buttonTones[tone],
 		textDecoration: 'none',
 
 		'&:not(:disabled):hover': {
@@ -26,11 +38,11 @@ const variants = {
 			color: boxPalette.foregroundText,
 			...packs.underline,
 		},
-	},
-	tertiary: {
+	}),
+	tertiary: (tone: buttonTone) => ({
 		background: 'transparent',
 		borderColor: 'transparent',
-		color: boxPalette.foregroundAction,
+		color: buttonTones[tone],
 		...packs.underline,
 
 		'&:not(:disabled):hover': {
@@ -39,7 +51,7 @@ const variants = {
 			color: boxPalette.foregroundText,
 			textDecoration: 'none',
 		},
-	},
+	}),
 } as const;
 
 export type ButtonVariant = keyof typeof variants;
@@ -66,17 +78,21 @@ export const iconSize = {
 	md: 'md',
 } as const;
 
+type buttonStylesProps = {
+	block: boolean;
+	variant: ButtonVariant;
+	size: ButtonSize;
+	tone: 'action' | 'danger';
+};
+
 export function buttonStyles({
 	block,
 	variant,
 	size,
-}: {
-	block: boolean;
-	variant: ButtonVariant;
-	size: ButtonSize;
-}) {
+	tone,
+}: buttonStylesProps) {
 	return {
-		...variants[variant],
+		...variants[variant](tone),
 		...sizes[size],
 
 		appearance: 'none',

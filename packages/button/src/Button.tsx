@@ -15,6 +15,7 @@ export type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
 	loading?: boolean;
 	size?: ButtonSize;
 	variant?: ButtonVariant;
+	tone?: 'action' | 'danger';
 };
 
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
@@ -28,11 +29,12 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 			size = 'md',
 			loading = false,
 			variant = 'primary',
+			tone = 'action',
 			...props
 		},
 		ref
 	) {
-		const styles = buttonStyles({ block, size, variant });
+		const styles = buttonStyles({ block, size, tone, variant });
 		return (
 			<button ref={ref} disabled={disabled} css={styles} {...props}>
 				{IconBefore ? (
@@ -64,7 +66,7 @@ export const ButtonLink = ({
 	variant = 'primary',
 	...props
 }: ButtonLinkProps) => {
-	const styles = buttonStyles({ block, size, variant });
+	const styles = buttonStyles({ block, size, tone: 'action', variant });
 	const Link = useLinkComponent();
 	return (
 		<Link css={styles} {...props}>
