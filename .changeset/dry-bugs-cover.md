@@ -3,4 +3,4 @@
 '@ag.ds-next/field': patch
 ---
 
-Added `id` prop to `ControlGroup`
+Added `id` prop to `ControlGroup` and `FieldContainer`
