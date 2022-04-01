@@ -9,9 +9,15 @@ import {
 import { Language } from 'prism-react-renderer';
 import copy from 'clipboard-copy';
 
-import { globalPalette, mapSpacing, tokens } from '@ag.ds-next/core';
+import {
+	boxPalette,
+	globalPalette,
+	mapSpacing,
+	tokens,
+} from '@ag.ds-next/core';
 import { Box, Flex } from '@ag.ds-next/box';
 import { Button } from '@ag.ds-next/button';
+import { ChevronDownIcon, ChevronUpIcon } from '@ag.ds-next/icon';
 
 import { designSystemComponents } from './design-system-components';
 import { prismTheme } from './prism-theme';
@@ -44,6 +50,7 @@ const LiveCode = withLive((props: unknown) => {
 
 	const liveOnChange = live.onChange;
 	const [localCopy, setLocalCopy] = useState<string>(live.code);
+	const [isCodeVisible, setCodeVisible] = useState(false);
 
 	const copyLiveCode = useCallback(() => {
 		copy(localCopy);
@@ -77,23 +84,25 @@ const LiveCode = withLive((props: unknown) => {
 					}}
 				/>
 			</Box>
-			<LiveEditor
-				theme={prismTheme}
-				code={live.code}
-				language={live.language}
-				disabled={live.disabled}
-				onChange={handleChange}
-				css={{
-					'textarea, pre': {
-						padding: `${mapSpacing(1)} !important`,
-					},
-					'& ::selection': {
-						color: globalPalette.darkBackgroundBody,
-						backgroundColor: globalPalette.darkForegroundAction,
-					},
-					boxShadow: `0 1px 3px -2px ${globalPalette.lightBorder}`,
-				}}
-			/>
+			{isCodeVisible && (
+				<LiveEditor
+					theme={prismTheme}
+					code={live.code}
+					language={live.language}
+					disabled={live.disabled}
+					onChange={handleChange}
+					css={{
+						'textarea, pre': {
+							padding: `${mapSpacing(1)} !important`,
+						},
+						'& ::selection': {
+							color: globalPalette.darkBackgroundBody,
+							backgroundColor: globalPalette.darkForegroundAction,
+						},
+						boxShadow: `0 1px 3px -2px ${globalPalette.lightBorder}`,
+					}}
+				/>
+			)}
 			{live.error ? (
 				<Box
 					fontFamily="monospace"
@@ -105,13 +114,35 @@ const LiveCode = withLive((props: unknown) => {
 					{live.error}
 				</Box>
 			) : null}
-			<Flex palette="light" padding={1} gap={0.5} justifyContent="flex-end">
-				<Button size="sm" variant="secondary" onClick={copyLiveCode}>
-					Copy
+			<Flex
+				palette="light"
+				background="bodyAlt"
+				padding={1}
+				gap={0.5}
+				justifyContent="space-between"
+				borderTop
+				css={{
+					borderColor: boxPalette.borderMuted,
+				}}
+			>
+				<Button
+					size="sm"
+					variant="secondary"
+					onClick={() => setCodeVisible(!isCodeVisible)}
+					iconAfter={isCodeVisible ? ChevronUpIcon : ChevronDownIcon}
+				>
+					{isCodeVisible ? 'Hide Code' : 'Show Code'}
 				</Button>
-				<Button size="sm" variant="tertiary" onClick={resetLiveCode}>
-					Reset
-				</Button>
+				{isCodeVisible && (
+					<Flex gap={0.5} justifyContent="flex-end">
+						<Button size="sm" variant="secondary" onClick={copyLiveCode}>
+							Copy
+						</Button>
+						<Button size="sm" variant="tertiary" onClick={resetLiveCode}>
+							Reset
+						</Button>
+					</Flex>
+				)}
 			</Flex>
 		</Box>
 	);
