@@ -1,9 +1,4 @@
-import {
-	boxPalette,
-	mapSpacing,
-	mapResponsiveProp,
-	mq,
-} from '@ag.ds-next/core';
+import { boxPalette, mapSpacing } from '@ag.ds-next/core';
 import { foregroundColorMap } from '@ag.ds-next/box';
 import { ReactNode, SVGAttributes } from 'react';
 
