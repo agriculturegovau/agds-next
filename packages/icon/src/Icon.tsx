@@ -1,9 +1,4 @@
-import {
-	boxPalette,
-	mapSpacing,
-	mapResponsiveProp,
-	mq,
-} from '@ag.ds-next/core';
+import { boxPalette, mapSpacing } from '@ag.ds-next/core';
 import { foregroundColorMap } from '@ag.ds-next/box';
 import { ReactNode, SVGAttributes } from 'react';
 
@@ -51,13 +46,16 @@ export const createIcon = (children: ReactNode, name: string) => {
 		return (
 			<svg
 				aria-hidden="true"
-				width={resolvedSize}
-				height={resolvedSize}
+				// Note the width and height attribute is a fallback for older browsers. This may not be required and could potentially be removed.
+				width="24"
+				height="24"
 				viewBox="0 0 24 24"
 				clipRule="evenodd"
 				xmlns="http://www.w3.org/2000/svg"
 				focusable="false"
 				css={{
+					width: resolvedSize,
+					height: resolvedSize,
 					fill: 'none',
 					color: color ? iconColors[color] : undefined,
 					stroke: 'currentColor',
