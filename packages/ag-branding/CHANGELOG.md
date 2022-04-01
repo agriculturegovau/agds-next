@@ -1,5 +1,13 @@
 # @ag.ds-next/ag-branding
 
+## 4.1.1
+
+### Patch Changes
+
+- Updated dependencies [1c084608]
+- Updated dependencies [b2270b13]
+  - @ag.ds-next/core@2.1.4
+
 ## 4.1.0
 
 ### Minor Changes

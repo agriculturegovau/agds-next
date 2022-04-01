@@ -1,5 +1,17 @@
 # @ag.ds-next/box
 
+## 4.1.0
+
+### Minor Changes
+
+- 533c20f6: Add support for table display properties
+
+### Patch Changes
+
+- Updated dependencies [1c084608]
+- Updated dependencies [b2270b13]
+  - @ag.ds-next/core@2.1.4
+
 ## 4.0.3
 
 ### Patch Changes
