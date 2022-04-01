@@ -13,7 +13,6 @@ import {
 import { localPalette, localPaletteVars } from './utils';
 import { CloseButton, ToggleButton } from './MenuButtons';
 import { Global } from '@emotion/react';
-import { useEffect } from '@storybook/addons';
 
 const variantMap = {
 	light: {
@@ -101,6 +100,8 @@ export function NavContainer({
 					<ToggleButton onClick={open} />
 					<FocusLock disabled={!menuVisiblyOpen}>
 						<div
+							role={menuVisiblyOpen ? 'dialog' : 'none'}
+							aria-modal={menuVisiblyOpen ? 'true' : 'false'}
 							css={{
 								[tokens.mediaQuery.max.md]: {
 									zIndex: 200,
@@ -152,8 +153,7 @@ function Overlay({
 				left: 0,
 				bottom: 0,
 				right: 0,
-				background: '#000',
-				opacity: 0.8,
+				backgroundColor: `rgba(0, 0, 0, 0.8)`,
 				zIndex: 100,
 			}}
 			onClick={onClick}
