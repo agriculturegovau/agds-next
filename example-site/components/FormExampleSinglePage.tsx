@@ -154,9 +154,24 @@ export const FormExampleSinglePage = () => {
 						message={errors.interest?.message}
 						id="interest"
 					>
-						<Radio {...register('interest')}>Art</Radio>
-						<Radio {...register('interest')}>Cooking</Radio>
-						<Radio {...register('interest')}>Reading</Radio>
+						<Radio
+							{...register('interest')}
+							invalid={Boolean(errors.interest?.message)}
+						>
+							Art
+						</Radio>
+						<Radio
+							{...register('interest')}
+							invalid={Boolean(errors.interest?.message)}
+						>
+							Cooking
+						</Radio>
+						<Radio
+							{...register('interest')}
+							invalid={Boolean(errors.interest?.message)}
+						>
+							Reading
+						</Radio>
 					</ControlGroup>
 					<Textarea
 						label="Message"

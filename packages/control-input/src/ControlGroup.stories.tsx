@@ -13,22 +13,32 @@ export default {
 const Template: ComponentStory<typeof ControlGroup> = (args) => (
 	<Stack gap={2}>
 		<ControlGroup {...args}>
-			<Checkbox checked>Coding</Checkbox>
-			<Checkbox checked={false}>Art</Checkbox>
-			<Checkbox checked disabled>
+			<Checkbox invalid={args.invalid} checked>
+				Coding
+			</Checkbox>
+			<Checkbox invalid={args.invalid} checked={false}>
+				Art
+			</Checkbox>
+			<Checkbox invalid={args.invalid} checked disabled>
 				Cooking
 			</Checkbox>
-			<Checkbox checked={false} disabled>
+			<Checkbox invalid={args.invalid} checked={false} disabled>
 				Reading
 			</Checkbox>
 		</ControlGroup>
 		<ControlGroup {...args}>
-			<Radio checked>Coding</Radio>
-			<Radio checked={false}>Music</Radio>
-			<Radio checked={false} disabled>
+			<Radio invalid={args.invalid} checked>
+				Coding
+			</Radio>
+			<Radio invalid={args.invalid} checked={false}>
+				Music
+			</Radio>
+			<Radio invalid={args.invalid} checked={false} disabled>
 				Cooking
 			</Radio>
-			<Radio disabled>Reading</Radio>
+			<Radio invalid={args.invalid} disabled>
+				Reading
+			</Radio>
 		</ControlGroup>
 	</Stack>
 );
