@@ -46,6 +46,7 @@ export const createIcon = (children: ReactNode, name: string) => {
 		return (
 			<svg
 				aria-hidden="true"
+				// Note the width and height attribute is a fallback for older browsers. This may not be required and could potentially be removed.
 				width="24"
 				height="24"
 				viewBox="0 0 24 24"
