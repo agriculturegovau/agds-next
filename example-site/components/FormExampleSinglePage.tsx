@@ -2,7 +2,7 @@ import { useForm, SubmitHandler } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { Button } from '@ag.ds-next/button';
-import { Checkbox } from '@ag.ds-next/control-input';
+import { Checkbox, ControlGroup, Radio } from '@ag.ds-next/control-input';
 import { Body } from '@ag.ds-next/body';
 import { Flex, Stack } from '@ag.ds-next/box';
 import { Fieldset } from '@ag.ds-next/fieldset';
@@ -13,6 +13,7 @@ import { TextInput } from '@ag.ds-next/text-input';
 import { TextLink } from '@ag.ds-next/text';
 import { PageAlert } from '@ag.ds-next/page-alert';
 import { Divider } from './Divider';
+import { useScrollToField } from '@ag.ds-next/field';
 
 const formSchema = yup
 	.object({
@@ -24,7 +25,11 @@ const formSchema = yup
 			.string()
 			.email('Invalid email address')
 			.required('Enter your email address'),
-		mobile: yup.string().required('Enter your postcode'),
+		mobile: yup.string().required('Enter your mobile'),
+		interest: yup
+			.string()
+			.typeError('Select an interest')
+			.required('Select an interest'),
 		message: yup.string(),
 		termsAndConditions: yup
 			.boolean()
@@ -35,6 +40,8 @@ const formSchema = yup
 type FormSchema = yup.InferType<typeof formSchema>;
 
 export const FormExampleSinglePage = () => {
+	const scrollToField = useScrollToField();
+
 	const {
 		register,
 		handleSubmit,
@@ -59,7 +66,9 @@ export const FormExampleSinglePage = () => {
 							<ul>
 								{Object.entries(errors).map(([key, value]) => (
 									<li key={key}>
-										<a href={`#${key}`}>{value.message}</a>
+										<a href={`#${key}`} onClick={scrollToField}>
+											{value.message}
+										</a>
 									</li>
 								))}
 							</ul>
@@ -139,6 +148,16 @@ export const FormExampleSinglePage = () => {
 				</Fieldset>
 				<Divider />
 				<FormStack>
+					<ControlGroup
+						label="Interest"
+						invalid={Boolean(errors.interest?.message)}
+						message={errors.interest?.message}
+						id="interest"
+					>
+						<Radio {...register('interest')}>Art</Radio>
+						<Radio {...register('interest')}>Cooking</Radio>
+						<Radio {...register('interest')}>Reading</Radio>
+					</ControlGroup>
 					<Textarea
 						label="Message"
 						{...register('message')}
