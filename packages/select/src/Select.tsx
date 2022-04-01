@@ -141,7 +141,6 @@ const SelectIcon = ({ disabled }: { disabled?: boolean }) => (
 	<ChevronDownIcon
 		size="sm"
 		weight="bold"
-		color="action"
 		css={{
 			position: 'absolute',
 			top: '50%',
@@ -149,6 +148,7 @@ const SelectIcon = ({ disabled }: { disabled?: boolean }) => (
 			transform: 'translateY(-50%)',
 			opacity: disabled ? 0.3 : 1,
 			pointerEvents: 'none',
+			color: globalPalette.lightForegroundAction,
 		}}
 	/>
 );
