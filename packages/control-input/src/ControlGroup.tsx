@@ -44,11 +44,7 @@ export const ControlGroup = ({
 				{message && invalid ? (
 					<FieldMessage invalid={invalid}>{message}</FieldMessage>
 				) : null}
-				<Flex
-					gap={block ? 0.5 : 1}
-					flexDirection={block ? 'column' : 'row'}
-					width="100%"
-				>
+				<Flex gap={1} flexDirection={block ? 'column' : 'row'} width="100%">
 					{children}
 				</Flex>
 			</Stack>

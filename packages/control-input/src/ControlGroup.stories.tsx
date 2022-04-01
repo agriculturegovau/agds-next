@@ -1,6 +1,7 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { Box, Stack } from '@ag.ds-next/box';
+import { Box } from '@ag.ds-next/box';
+import { FormStack } from '@ag.ds-next/form-stack';
 import { Checkbox } from './Checkbox';
 import { Radio } from './Radio';
 import { ControlGroup } from './ControlGroup';
@@ -11,26 +12,36 @@ export default {
 } as ComponentMeta<typeof ControlGroup>;
 
 const Template: ComponentStory<typeof ControlGroup> = (args) => (
-	<Stack gap={2}>
+	<FormStack>
 		<ControlGroup {...args}>
-			<Checkbox checked>Coding</Checkbox>
-			<Checkbox checked={false}>Art</Checkbox>
-			<Checkbox checked disabled>
+			<Checkbox invalid={args.invalid} checked>
+				Coding
+			</Checkbox>
+			<Checkbox invalid={args.invalid} checked={false}>
+				Art
+			</Checkbox>
+			<Checkbox invalid={args.invalid} checked disabled>
 				Cooking
 			</Checkbox>
-			<Checkbox checked={false} disabled>
+			<Checkbox invalid={args.invalid} checked={false} disabled>
 				Reading
 			</Checkbox>
 		</ControlGroup>
 		<ControlGroup {...args}>
-			<Radio checked>Coding</Radio>
-			<Radio checked={false}>Music</Radio>
-			<Radio checked={false} disabled>
+			<Radio invalid={args.invalid} checked>
+				Coding
+			</Radio>
+			<Radio invalid={args.invalid} checked={false}>
+				Music
+			</Radio>
+			<Radio invalid={args.invalid} checked={false} disabled>
 				Cooking
 			</Radio>
-			<Radio disabled>Reading</Radio>
+			<Radio invalid={args.invalid} disabled>
+				Reading
+			</Radio>
 		</ControlGroup>
-	</Stack>
+	</FormStack>
 );
 
 export const OnLight: ComponentStory<typeof ControlGroup> = (args) => (
