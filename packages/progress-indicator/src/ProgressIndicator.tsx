@@ -8,7 +8,6 @@ import {
 	useToggleState,
 	useWindowSize,
 } from '@ag.ds-next/core';
-import { Stack } from '@ag.ds-next/box';
 import { ProgressIndicatorCollapseButton } from './ProgressIndicatorCollapseButton';
 import { ProgressIndicatorContainer } from './ProgressIndicatorContainer';
 import {
@@ -18,21 +17,12 @@ import {
 	ProgressIndicatorItemLinkProps,
 } from './ProgressIndicatorItem';
 import { ProgressIndicatorList } from './ProgressIndicatorList';
-import { ProgressIndicatorHeading } from './ProgressIndicatorHeading';
 
 export type ProgressIndicatorProps = {
 	items: ProgressIndicatorItem[];
-	collapseTitle?: string;
-	title?: string;
-	subTitle?: string;
 };
 
-export const ProgressIndicator = ({
-	items,
-	title,
-	subTitle,
-	collapseTitle = 'Progress',
-}: ProgressIndicatorProps) => {
+export const ProgressIndicator = ({ items }: ProgressIndicatorProps) => {
 	const { buttonId, bodyId } = useProgressIndicatorIds();
 	const ref = useRef<HTMLUListElement>(null);
 	const [isOpen, onToggle] = useToggleState(false, true);
@@ -61,8 +51,6 @@ export const ProgressIndicator = ({
 				ariaControls={bodyId}
 				id={buttonId}
 				items={items}
-				title={collapseTitle}
-				subTitle={subTitle}
 			/>
 			<animated.div
 				id={bodyId}
@@ -78,27 +66,22 @@ export const ProgressIndicator = ({
 					},
 				}}
 			>
-				<Stack gap={1}>
-					{title || subTitle ? (
-						<ProgressIndicatorHeading title={title} subTitle={subTitle} />
-					) : null}
-					<ProgressIndicatorList ref={ref}>
-						{items.map(({ label, ...props }, index) => {
-							if (isItemLink(props)) {
-								return (
-									<ProgressIndicatorItemLink key={index} {...props}>
-										{label}
-									</ProgressIndicatorItemLink>
-								);
-							}
+				<ProgressIndicatorList ref={ref}>
+					{items.map(({ label, ...props }, index) => {
+						if (isItemLink(props)) {
 							return (
-								<ProgressIndicatorItemButton key={index} {...props}>
+								<ProgressIndicatorItemLink key={index} {...props}>
 									{label}
-								</ProgressIndicatorItemButton>
+								</ProgressIndicatorItemLink>
 							);
-						})}
-					</ProgressIndicatorList>
-				</Stack>
+						}
+						return (
+							<ProgressIndicatorItemButton key={index} {...props}>
+								{label}
+							</ProgressIndicatorItemButton>
+						);
+					})}
+				</ProgressIndicatorList>
 			</animated.div>
 		</ProgressIndicatorContainer>
 	);

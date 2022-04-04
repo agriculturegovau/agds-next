@@ -1,6 +1,5 @@
-import { PropsWithChildren } from 'react';
 import { useSpring, animated } from 'react-spring';
-import { Flex, Stack } from '@ag.ds-next/box';
+import { Flex } from '@ag.ds-next/box';
 import { ChevronDownIcon } from '@ag.ds-next/icon';
 import {
 	boxPalette,
@@ -10,6 +9,7 @@ import {
 } from '@ag.ds-next/core';
 import { Text } from '@ag.ds-next/text';
 import type { ProgressIndicatorItem } from './ProgressIndicatorItem';
+import { useMemo } from 'react';
 
 type ProgressIndicatorCollapseButtonProps = {
 	ariaControls: string;
@@ -17,8 +17,6 @@ type ProgressIndicatorCollapseButtonProps = {
 	isOpen: boolean;
 	items: ProgressIndicatorItem[];
 	onClick: () => void;
-	title: string;
-	subTitle?: string;
 };
 
 const AnimatedIcon = animated(ChevronDownIcon);
@@ -29,10 +27,7 @@ export const ProgressIndicatorCollapseButton = ({
 	isOpen,
 	items,
 	onClick,
-	title,
-	subTitle,
 }: ProgressIndicatorCollapseButtonProps) => {
-	const activeItemIndex = items.findIndex(({ status }) => status === 'doing');
 	const prefersReducedMotion = usePrefersReducedMotion();
 
 	const iconStyle = useSpring({
@@ -40,6 +35,12 @@ export const ProgressIndicatorCollapseButton = ({
 		to: { transform: `rotate(${isOpen ? 180 : 0}deg)` },
 		immediate: prefersReducedMotion,
 	});
+
+	const title = useMemo(() => {
+		const activeItemIndex = items.findIndex(({ status }) => status === 'doing');
+		if (activeItemIndex === -1) return 'Progress';
+		return `Doing step ${activeItemIndex + 1} of ${items.length}`;
+	}, [items]);
 
 	return (
 		<Flex
@@ -72,26 +73,10 @@ export const ProgressIndicatorCollapseButton = ({
 				},
 			}}
 		>
-			<Stack>
-				<Text color="action" fontSize="md" fontWeight="bold">
-					{title}
-				</Text>
-				<Text color="muted" fontSize="xs">
-					{subTitle}
-				</Text>
-			</Stack>
-			<Flex gap={1}>
-				{activeItemIndex > -1 ? (
-					<Text
-						display="inline-block"
-						fontSize="xs"
-						css={{ textDecoration: 'none' }}
-					>
-						Doing step {activeItemIndex + 1} of {items.length}
-					</Text>
-				) : null}
-				<AnimatedIcon color="text" size="sm" weight="bold" style={iconStyle} />
-			</Flex>
+			<Text color="action" fontSize="md" fontWeight="bold">
+				{title}
+			</Text>
+			<AnimatedIcon color="text" size="sm" weight="bold" style={iconStyle} />
 		</Flex>
 	);
 };
