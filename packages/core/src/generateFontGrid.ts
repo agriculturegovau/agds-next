@@ -1,50 +1,41 @@
-import { tokens } from './tokens';
+import { FontSize, tokens } from './tokens';
 import { generateLineHeight } from './utils/fontGrid';
 
-const fontSizes = Object.keys(
+const fontScales = Object.keys(
 	tokens.fontSize
 ) as (keyof typeof tokens.fontSize)[];
-
-const fontSizeDesktop = Object.keys(
-	tokens.fontSizeDesktop
-) as (keyof typeof tokens.fontSizeDesktop)[];
 
 const lineHeights = Object.keys(
 	tokens.lineHeight
 ) as (keyof typeof tokens.lineHeight)[];
 
 export function generateFontGrid() {
-	const entries: [string, string | number][] = [];
-	const desktopEntries: [string, string | number][] = [];
+	let cssVars: Record<string, unknown> = {};
 
-	for (const fontSize of fontSizes) {
-		entries.push([
-			`--font-size-${fontSize}`,
-			`${tokens.fontSize[fontSize]}rem`,
-		]);
-		for (const lineHeight of lineHeights) {
-			entries.push([
-				`--font-size-${fontSize}-${lineHeight}`,
-				generateLineHeight(fontSize, lineHeight),
+	for (const scale of fontScales) {
+		const scaleVars: [string, string | number][] = [];
+		const fontSizes = Object.keys(tokens.fontSize[scale]) as FontSize[];
+
+		for (const size of fontSizes) {
+			scaleVars.push([
+				`--font-size-${size}`,
+				`${tokens.fontSize[scale][size]}rem`,
 			]);
+			for (const lineHeight of lineHeights) {
+				scaleVars.push([
+					`--font-size-${size}-${lineHeight}`,
+					generateLineHeight(scale, size, lineHeight),
+				]);
+			}
+		}
+
+		if (scale === 'xs') {
+			cssVars = { ...cssVars, ...Object.fromEntries(scaleVars) };
+		} else {
+			const key = tokens.mediaQuery.min[scale];
+			cssVars[key] = Object.fromEntries(scaleVars);
 		}
 	}
 
-	for (const fontSize of fontSizeDesktop) {
-		desktopEntries.push([
-			`--font-size-${fontSize}`,
-			`${tokens.fontSizeDesktop[fontSize]}rem`,
-		]);
-		for (const lineHeight of lineHeights) {
-			desktopEntries.push([
-				`--font-size-${fontSize}-${lineHeight}`,
-				generateLineHeight(fontSize, lineHeight),
-			]);
-		}
-	}
-
-	return {
-		...Object.fromEntries(entries),
-		[tokens.mediaQuery.min.sm]: Object.fromEntries(desktopEntries),
-	};
+	return cssVars;
 }

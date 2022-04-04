@@ -37,26 +37,27 @@ export type Font = 'body' | 'mono';
 
 /** Use as rem values */
 const fontSize = {
-	xs: 0.875,
-	sm: 1,
-	md: 1.25,
-	lg: 1.2,
-	xl: 1.4,
-	xxl: 1.5,
-	xxxl: 1.75,
+	xs: {
+		xs: 0.875,
+		sm: 1,
+		md: 1.25,
+		lg: 1.5,
+		xl: 1.75,
+		xxl: 2,
+		xxxl: 2.5,
+	},
+	sm: {
+		xs: 0.875,
+		sm: 1,
+		md: 1.25,
+		lg: 1.5,
+		xl: 2,
+		xxl: 2.5,
+		xxxl: 3,
+	},
 } as const;
 
-const fontSizeDesktop = {
-	xs: 0.875,
-	sm: 1,
-	md: 1.25,
-	lg: 1.5,
-	xl: 2,
-	xxl: 2.5,
-	xxxl: 3,
-} as const;
-
-export type FontSize = keyof typeof fontSize;
+export type FontSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'xxl' | 'xxxl';
 
 const fontWeight = {
 	normal: 'normal',
@@ -105,7 +106,6 @@ export const tokens = {
 	unit,
 	font,
 	fontSize,
-	fontSizeDesktop,
 	fontWeight,
 	lineHeight,
 	containerPadding,
