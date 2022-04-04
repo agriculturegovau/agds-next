@@ -40,11 +40,22 @@ const fontSize = {
 	xs: 0.875,
 	sm: 1,
 	md: 1.25,
+	lg: 1.2,
+	xl: 1.4,
+	xxl: 1.5,
+	xxxl: 1.75,
+} as const;
+
+const fontSizeDesktop = {
+	xs: 0.875,
+	sm: 1,
+	md: 1.25,
 	lg: 1.5,
 	xl: 2,
 	xxl: 2.5,
 	xxxl: 3,
 } as const;
+
 export type FontSize = keyof typeof fontSize;
 
 const fontWeight = {
@@ -94,6 +105,7 @@ export const tokens = {
 	unit,
 	font,
 	fontSize,
+	fontSizeDesktop,
 	fontWeight,
 	lineHeight,
 	containerPadding,

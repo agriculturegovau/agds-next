@@ -6,6 +6,7 @@ import { CoreProvider, CoreProviderProps } from './context';
 import { mergeTheme, Theme } from './theme';
 import { boxPalettes, boxPalette } from './boxPalette';
 import { tokens } from './tokens';
+import { generateFontGrid } from './generateFontGrid';
 
 export type CoreProps = PropsWithChildren<
 	{
@@ -25,7 +26,10 @@ export function Core({
 			<Global
 				styles={[
 					{
-						':root': theme ? mergeTheme(goldTheme, theme) : goldTheme,
+						':root': {
+							...(theme ? mergeTheme(goldTheme, theme) : goldTheme),
+							...generateFontGrid(),
+						},
 					},
 					{
 						// Apply the light pallet by default
