@@ -50,6 +50,8 @@ export function ToggleButton({ onClick }: MenuButtonProps) {
 				viewBox="0 0 24 24"
 				fill="currentcolor"
 				xmlns="http://www.w3.org/2000/svg"
+				aria-hidden="true"
+				focusable="false"
 			>
 				<rect x="4" y="16" width="16" height="2" />
 				<rect x="4" y="11" width="16" height="2" />
