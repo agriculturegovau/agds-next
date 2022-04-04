@@ -54,16 +54,6 @@ OnDark.args = {
 	items: exampleLinkItems,
 };
 
-export const Titles: ComponentStory<typeof ProgressIndicator> = (args) => (
-	<ProgressIndicator {...args} />
-);
-Titles.args = {
-	title: 'Progress',
-	subTitle: 'Lorem ipsum dolar',
-	collapseTitle: 'Progress',
-	items: exampleLinkItems,
-};
-
 export const Button: ComponentStory<typeof ProgressIndicator> = (args) => (
 	<ProgressIndicator {...args} />
 );
