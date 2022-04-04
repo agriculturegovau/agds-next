@@ -43,7 +43,6 @@ export const ModalPanel = ({ children, title, onDismiss }: ModalPanelProps) => {
 			>
 				<Flex justifyContent="flex-end">
 					<Button
-						size="sm"
 						variant="tertiary"
 						onClick={onDismiss}
 						iconAfter={CloseIcon}
