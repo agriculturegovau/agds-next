@@ -101,6 +101,7 @@ export function NavContainer({
 					<FocusLock disabled={!menuVisiblyOpen}>
 						<div
 							role={menuVisiblyOpen ? 'dialog' : 'none'}
+							aria-label="Main navigation"
 							aria-modal={menuVisiblyOpen ? 'true' : 'false'}
 							css={{
 								[tokens.mediaQuery.max.md]: {
