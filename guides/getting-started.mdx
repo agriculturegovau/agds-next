@@ -16,8 +16,29 @@ If you’re new to React we recommend going through official [React getting star
 
 We have built a [starter kit](https://github.com/steelthreads/agds-next-starter-kit) in NextJS, Typescript and Emotion which you can clone and use as a starting point for your next project.
 
+### 1. Clone latest code
+
+These commands clone the latest starter kit code, without the version history or ties to the remote repository.
+
 ```sh
-git clone git@github.com:steelthreads/agds-next-starter-kit.git
+git clone --depth=1 --branch=main git@github.com:steelthreads/agds-next-starter-kit.git my-app
+rm -rf ./my-app/.git
+```
+
+### 2. Create new git repository
+
+The code has been downloaded, but you probably want to set up your own version control. **Rename the project `name` in `package.json`** and then initialise git.
+
+```sh
+git init
+```
+
+### 3. Install dependencies
+
+Now run the following commands to install packages and run the project.
+
+```sh
+yarn && yarn dev
 ```
 
 ## If you’re implementing components in an existing project…
