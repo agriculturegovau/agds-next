@@ -11,8 +11,10 @@ import columns from './columns.svg';
 import content from './content.svg';
 import controlInput from './control-input.svg';
 import core from './core.svg';
+import datePicker from './date-picker.svg';
 import directionLink from './direction-link.svg';
 import field from './field.svg';
+import fieldset from './fieldset.svg';
 import footer from './footer.svg';
 import guides from './guides.svg';
 import header from './header.svg';
@@ -32,7 +34,9 @@ import skipLink from './skip-link.svg';
 import starter from './starter.svg';
 import table from './table.svg';
 import tags from './tags.svg';
+import taskList from './task-list.svg';
 import text from './text.svg';
+import textarea from './textarea.svg';
 import textInput from './text-input.svg';
 
 export const pictograms = {
@@ -51,7 +55,9 @@ export const pictograms = {
 	'control-input': controlInput,
 	core,
 	'direction-link': directionLink,
+	datePicker,
 	field,
+	fieldset,
 	footer,
 	guides,
 	header,
@@ -73,9 +79,10 @@ export const pictograms = {
 	'skip-link': skipLink,
 	starter,
 	table,
+	taskList,
 	tags,
 	text,
-	textarea: textInput,
+	textarea,
 	'text-input': textInput,
 };
 
