@@ -3,6 +3,8 @@ import { normalize } from 'path';
 import { Body } from '@ag.ds-next/body';
 import { Card, CardInner, CardLink } from '@ag.ds-next/card';
 import { Stack } from '@ag.ds-next/box';
+import { Heading } from '@ag.ds-next/heading';
+import { Text } from '@ag.ds-next/text';
 import {
 	getMarkdownData,
 	getReleaseList,
@@ -35,12 +37,12 @@ export default function ReleasesHome({ source, releaseLinks }: StaticProps) {
 						{releaseLinks.map(({ href, label, description }) => (
 							<Card key={label} as="li" clickable shadow>
 								<CardInner>
-									<Body>
-										<h3>
+									<Stack gap={1}>
+										<Heading type="h3">
 											<CardLink href={href}>{label}</CardLink>
-										</h3>
-										{description ? <p>{description}</p> : null}
-									</Body>
+										</Heading>
+										{description ? <Text as="p">{description}</Text> : null}
+									</Stack>
 								</CardInner>
 							</Card>
 						))}
