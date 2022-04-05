@@ -34,6 +34,10 @@ import table from './table.svg';
 import tags from './tags.svg';
 import text from './text.svg';
 import textInput from './text-input.svg';
+import datePicker from './date-picker.svg';
+import fieldSet from './field-set.svg';
+import taskList from './task-list.svg';
+import textarea from './text-area.svg';
 
 export const pictograms = {
 	accordion,
@@ -51,7 +55,9 @@ export const pictograms = {
 	'control-input': controlInput,
 	core,
 	'direction-link': directionLink,
+	datePicker,
 	field,
+	fieldSet,
 	footer,
 	guides,
 	header,
@@ -73,9 +79,10 @@ export const pictograms = {
 	'skip-link': skipLink,
 	starter,
 	table,
+	taskList,
 	tags,
 	text,
-	textarea: textInput,
+	textarea,
 	'text-input': textInput,
 };
 
