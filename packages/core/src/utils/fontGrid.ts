@@ -112,11 +112,8 @@ const calculateLineHeight = (
 		typeof fontSize === 'number' ? fontSize : tokens.fontSize[scale][fontSize];
 	const fSizePx = fSizeRem * tokens.rem;
 	const lHeight = tokens.lineHeight[lineHeight];
-
 	const totalHeight =
 		Math.round((fSizePx * lHeight) / tokens.unit) * tokens.unit;
-
 	const calcLineHeight = totalHeight / fSizePx;
-
 	return calcLineHeight;
 };
