@@ -19,7 +19,7 @@ const AnimatedBox = animated(Box);
 export const ModalPanel = ({ children, title, onDismiss }: ModalPanelProps) => {
 	const { titleId } = useModalId();
 	const prefersReducedMotion = usePrefersReducedMotion();
-	const style = useSpring({
+	const animationStyles = useSpring({
 		from: { y: 20, opacity: 0 },
 		to: { y: 0, opacity: 1 },
 		immediate: prefersReducedMotion,
@@ -30,16 +30,23 @@ export const ModalPanel = ({ children, title, onDismiss }: ModalPanelProps) => {
 			<AnimatedBox
 				role="dialog"
 				aria-modal="true"
+				tabIndex={-1}
+				data-autofocus
 				background="body"
 				aria-labelledby={titleId}
 				rounded
 				padding={1.5}
 				maxWidth={tokens.maxWidth.bodyText}
-				style={{
+				css={{
 					position: 'relative',
-					margin: `${mapSpacing(6)} auto`,
-					...style,
+					margin: '0 auto',
+					height: '100vh',
+					[tokens.mediaQuery.min.sm]: {
+						margin: `${mapSpacing(6)} auto`,
+						height: 'auto',
+					},
 				}}
+				style={animationStyles}
 			>
 				<Flex justifyContent="flex-end">
 					<Button
