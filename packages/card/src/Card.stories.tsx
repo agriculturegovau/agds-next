@@ -126,7 +126,7 @@ export const FeatureFooter: ComponentStory<typeof Card> = (args) => (
 					</Stack>
 				</CardInner>
 				<CardFooter>
-					<a href="#">Action</a>
+					<TextLink href="#">Action</TextLink>
 				</CardFooter>
 			</Card>
 		</Column>
@@ -142,7 +142,7 @@ export const FeatureFooter: ComponentStory<typeof Card> = (args) => (
 					</Stack>
 				</CardInner>
 				<CardFooter background="bodyAlt">
-					<a href="#">Action</a>
+					<TextLink href="#">Action</TextLink>
 				</CardFooter>
 			</Card>
 		</Column>
