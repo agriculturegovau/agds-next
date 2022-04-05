@@ -11,8 +11,10 @@ import columns from './columns.svg';
 import content from './content.svg';
 import controlInput from './control-input.svg';
 import core from './core.svg';
+import datePicker from './date-picker.svg';
 import directionLink from './direction-link.svg';
 import field from './field.svg';
+import fieldset from './fieldset.svg';
 import footer from './footer.svg';
 import guides from './guides.svg';
 import header from './header.svg';
@@ -32,12 +34,10 @@ import skipLink from './skip-link.svg';
 import starter from './starter.svg';
 import table from './table.svg';
 import tags from './tags.svg';
-import text from './text.svg';
-import textInput from './text-input.svg';
-import datePicker from './date-picker.svg';
-import fieldSet from './field-set.svg';
 import taskList from './task-list.svg';
-import textarea from './text-area.svg';
+import text from './text.svg';
+import textarea from './textarea.svg';
+import textInput from './text-input.svg';
 
 export const pictograms = {
 	accordion,
@@ -57,7 +57,7 @@ export const pictograms = {
 	'direction-link': directionLink,
 	datePicker,
 	field,
-	fieldSet,
+	fieldset,
 	footer,
 	guides,
 	header,
