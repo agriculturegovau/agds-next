@@ -1,5 +1,5 @@
 import { Global } from '@emotion/react';
-import { Fragment, KeyboardEvent, useCallback } from 'react';
+import { Fragment, FunctionComponent, KeyboardEvent, useCallback } from 'react';
 import { createPortal } from 'react-dom';
 
 import { ModalCover } from './ModalCover';
@@ -9,7 +9,12 @@ export type ModalProps = ModalPanelProps & {
 	isOpen?: boolean;
 };
 
-export const Modal = ({ children, isOpen, onDismiss, title }: ModalProps) => {
+export const Modal: FunctionComponent<ModalProps> = ({
+	children,
+	isOpen,
+	onDismiss,
+	title,
+}) => {
 	const handleEscape = useCallback(
 		(e: KeyboardEvent<HTMLDivElement>) => {
 			if (isOpen && e.code === 'Escape') {
