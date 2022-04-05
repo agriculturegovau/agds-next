@@ -2,7 +2,6 @@ import { ComponentMeta } from '@storybook/react';
 import { Modal } from './Modal';
 import { ModalButtonGroup } from './ModalButtonGroup';
 import { ModalTitle } from './ModalTitle';
-import { Body } from '@ag.ds-next/body';
 import { Button } from '@ag.ds-next/button';
 import { Stack } from '@ag.ds-next/box';
 import { useTernaryState } from '@ag.ds-next/core';
@@ -58,19 +57,17 @@ export const Modular = () => {
 							This is the title of the modal dialogue, it can span lines but
 							should not be too long.
 						</ModalTitle>
-						<Body>
-							<p>
-								This is the Modal Body paragraph, it provides detailed
-								instruction and context for the the modal action. It can also
-								span lines but long form content should be avoided.
-							</p>
+						<Text as="p">
+							This is the Modal Body paragraph, it provides detailed instruction
+							and context for the the modal action. It can also span lines but
+							long form content should be avoided.
+						</Text>
 
-							<p>
-								This is the Modal Body paragraph, it provides detailed
-								instruction and context for the the modal action. It can also
-								span lines but long form content should be avoided.
-							</p>
-						</Body>
+						<Text as="p">
+							This is the Modal Body paragraph, it provides detailed instruction
+							and context for the the modal action. It can also span lines but
+							long form content should be avoided.
+						</Text>
 					</Stack>
 					<ModalButtonGroup>
 						<Button onClick={closeModal}>Ok</Button>

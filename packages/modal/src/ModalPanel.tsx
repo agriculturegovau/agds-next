@@ -2,7 +2,7 @@ import { PropsWithChildren } from 'react';
 import FocusLock from 'react-focus-lock';
 import { animated, useSpring } from 'react-spring';
 import { Box, Flex, Stack } from '@ag.ds-next/box';
-import { usePrefersReducedMotion, mapSpacing } from '@ag.ds-next/core';
+import { usePrefersReducedMotion, mapSpacing, tokens } from '@ag.ds-next/core';
 import { CloseIcon } from '@ag.ds-next/icon';
 import { Button } from '@ag.ds-next/button';
 
@@ -34,7 +34,7 @@ export const ModalPanel = ({ children, title, onDismiss }: ModalPanelProps) => {
 				aria-labelledby={titleId}
 				rounded
 				padding={1.5}
-				maxWidth="32rem"
+				maxWidth={tokens.maxWidth.bodyText}
 				style={{
 					position: 'relative',
 					margin: `${mapSpacing(6)} auto`,
@@ -43,7 +43,6 @@ export const ModalPanel = ({ children, title, onDismiss }: ModalPanelProps) => {
 			>
 				<Flex justifyContent="flex-end">
 					<Button
-						size="sm"
 						variant="tertiary"
 						onClick={onDismiss}
 						iconAfter={CloseIcon}

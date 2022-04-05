@@ -8,6 +8,8 @@ Many sites will have content being generated in a WYSIWIG or HTML field within a
 
 This is also known as a Prose component.
 
+Body component should only be used in the context of a page, to format long-form content. It should not be used inside a 'framing' component like a Card or Modal. Instead, a simple Stack should be used.
+
 ```jsx live
 <Box palette="light" background="body">
 	<Body>
