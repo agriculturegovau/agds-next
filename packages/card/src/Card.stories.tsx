@@ -70,27 +70,6 @@ export const OnDark: ComponentStory<typeof Card> = (args) => (
 	</Box>
 );
 
-export const WithBody: ComponentStory<typeof Card> = (args) => (
-	<Box palette="light" background="body" maxWidth={300}>
-		<Card {...args}>
-			<CardInner>
-				<Body>
-					<h3>Card heading</h3>
-					<p>
-						Lorem ipsum dolor, sit amet consectetur adipisicing elit. In,
-						voluptat
-					</p>
-					<p>
-						Cum sociis natoque penatibus et magnis dis parturient montes,
-						nascetur ridiculus mus. Donec ullamcorper nulla non metus auctor
-						fringilla.
-					</p>
-				</Body>
-			</CardInner>
-		</Card>
-	</Box>
-);
-
 export const Link: ComponentStory<typeof Card> = (args) => (
 	<Box maxWidth={300}>
 		<Card shadow clickable {...args}>
@@ -183,6 +162,7 @@ FeatureFooter.args = {
 	background: 'body',
 };
 
+// redo without body
 export const CardListStory: ComponentStory<typeof CardList> = (args) => (
 	<CardList {...args}>
 		<Card shadow clickable>
