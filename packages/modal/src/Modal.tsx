@@ -1,4 +1,5 @@
-import { FunctionComponent, KeyboardEvent, useCallback } from 'react';
+import { Global } from '@emotion/react';
+import { Fragment, KeyboardEvent, useCallback } from 'react';
 import { createPortal } from 'react-dom';
 
 import { ModalCover } from './ModalCover';
@@ -8,12 +9,7 @@ export type ModalProps = ModalPanelProps & {
 	isOpen?: boolean;
 };
 
-export const Modal: FunctionComponent<ModalProps> = ({
-	children,
-	isOpen,
-	onDismiss,
-	title,
-}) => {
+export const Modal = ({ children, isOpen, onDismiss, title }: ModalProps) => {
 	const handleEscape = useCallback(
 		(e: KeyboardEvent<HTMLDivElement>) => {
 			if (isOpen && e.code === 'Escape') {
@@ -29,11 +25,16 @@ export const Modal: FunctionComponent<ModalProps> = ({
 		return null;
 	}
 	return createPortal(
-		<ModalCover onKeyDown={handleEscape}>
-			<ModalPanel onDismiss={onDismiss} title={title}>
-				{children}
-			</ModalPanel>
-		</ModalCover>,
+		<Fragment>
+			<LockScroll />
+			<ModalCover onKeyDown={handleEscape}>
+				<ModalPanel onDismiss={onDismiss} title={title}>
+					{children}
+				</ModalPanel>
+			</ModalCover>
+		</Fragment>,
 		document.body
 	);
 };
+
+const LockScroll = () => <Global styles={{ body: { overflow: 'hidden' } }} />;

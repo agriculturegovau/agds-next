@@ -1,9 +1,8 @@
-import { ReactNode, KeyboardEventHandler } from 'react';
+import { KeyboardEventHandler, PropsWithChildren } from 'react';
 
-export type ModalCoverProps = {
-	children: ReactNode;
+export type ModalCoverProps = PropsWithChildren<{
 	onKeyDown: KeyboardEventHandler<HTMLDivElement>;
-};
+}>;
 
 export const ModalCover = ({ children, onKeyDown }: ModalCoverProps) => (
 	<div
