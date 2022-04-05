@@ -6,7 +6,7 @@ import { CoreProvider, CoreProviderProps } from './context';
 import { mergeTheme, Theme } from './theme';
 import { boxPalettes, boxPalette } from './boxPalette';
 import { tokens } from './tokens';
-import { generateFontGrid } from './generateFontGrid';
+import { generateFontGrid } from './utils/fontGrid';
 
 export type CoreProps = PropsWithChildren<
 	{

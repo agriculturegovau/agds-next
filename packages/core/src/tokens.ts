@@ -28,12 +28,14 @@ const rem = 16;
 
 /** "unit" used for all type and grid calculations */
 const unit = 4;
+
 const font = {
 	body: "-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
 	monospace:
 		"'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace",
-};
-export type Font = 'body' | 'mono';
+} as const;
+
+export type Font = keyof typeof font;
 
 /** Use as rem values */
 const fontSize = {
@@ -63,6 +65,8 @@ const fontWeight = {
 	normal: 'normal',
 	bold: 'bold',
 } as const;
+
+export type FontWeight = keyof typeof fontWeight;
 
 /** lineHeight-map - Predetermined line-height mapped to keyword */
 const lineHeight = {

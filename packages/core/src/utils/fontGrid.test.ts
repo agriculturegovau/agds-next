@@ -1,9 +1,9 @@
-import { fontGrid } from './fontGrid';
+import { fontGridVars, fontGrid } from './fontGrid';
 
 test('works with font tokens', () => {
 	expect(fontGrid('sm', 'default')).toStrictEqual({
-		fontSize: 'var(--typography-sm)',
-		lineHeight: 'var(--typography-sm-default)',
+		fontSize: `var(${fontGridVars.sm.size})`,
+		lineHeight: `var(${fontGridVars.sm.default})`,
 	});
 });
 

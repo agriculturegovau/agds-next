@@ -13,6 +13,10 @@ import {
 	globalPalette,
 	packs,
 	BorderWidth,
+	FontWeight,
+	FontSize,
+	LineHeight,
+	Font,
 } from '@ag.ds-next/core';
 
 type PaletteProps = Partial<{
@@ -64,10 +68,10 @@ function colorStyles({ color, background }: ColorProps) {
 }
 
 type TypographyProps = Partial<{
-	fontWeight: ResponsiveProp<keyof typeof tokens.fontWeight>;
-	fontFamily: ResponsiveProp<keyof typeof tokens.font>;
-	fontSize: ResponsiveProp<keyof typeof tokens.fontSize>;
-	lineHeight: keyof typeof tokens.lineHeight;
+	fontWeight: ResponsiveProp<FontWeight>;
+	fontFamily: ResponsiveProp<Font>;
+	fontSize: ResponsiveProp<FontSize>;
+	lineHeight: LineHeight;
 }>;
 
 function typographyStyles({
