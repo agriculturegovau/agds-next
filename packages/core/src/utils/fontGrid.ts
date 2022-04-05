@@ -76,7 +76,7 @@ export function generateFontGrid() {
 			}
 		}
 
-		if (scale === 'xs') {
+		if (tokens.breakpoint[scale] === 0) {
 			cssVars = { ...cssVars, ...Object.fromEntries(scaleVars) };
 		} else {
 			const key = tokens.mediaQuery.min[scale];
