@@ -18,12 +18,12 @@ export function generateFontGrid() {
 
 		for (const size of fontSizes) {
 			scaleVars.push([
-				`--font-size-${size}`,
+				`--typography-${size}`,
 				`${tokens.fontSize[scale][size]}rem`,
 			]);
 			for (const lineHeight of lineHeights) {
 				scaleVars.push([
-					`--font-size-${size}-${lineHeight}`,
+					`--typography-${size}-${lineHeight}`,
 					generateLineHeight(scale, size, lineHeight),
 				]);
 			}

@@ -11,8 +11,8 @@ export const fontGrid = (
 		};
 	}
 	return {
-		fontSize: `var(--font-size-${fontSize})`,
-		lineHeight: `var(--font-size-${fontSize}-${lineHeight})`,
+		fontSize: `var(--typography-${fontSize})`,
+		lineHeight: `var(--typography-${fontSize}-${lineHeight})`,
 	};
 };
 
@@ -29,6 +29,7 @@ export const generateLineHeight = (
 
 	const totalHeight =
 		Math.round((fSizePx * lHeight) / tokens.unit) * tokens.unit;
+
 	const calcLineHeight = totalHeight / fSizePx;
 
 	return calcLineHeight;
