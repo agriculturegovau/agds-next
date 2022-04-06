@@ -1,5 +1,7 @@
 import { Card, CardLink, CardInner } from '@ag.ds-next/card';
-import { Body } from '@ag.ds-next/body';
+import { Stack } from '@ag.ds-next/box';
+import { Heading } from '@ag.ds-next/heading';
+import { Text } from '@ag.ds-next/text';
 
 export const ArticleCard = () => (
 	<Card clickable shadow>
@@ -9,12 +11,12 @@ export const ArticleCard = () => (
 			css={{ width: '100%' }}
 		/>
 		<CardInner>
-			<Body>
-				<h3>
+			<Stack gap={1}>
+				<Heading type="h3">
 					<CardLink href="#">Title of article</CardLink>
-				</h3>
-				<p>Some text</p>
-			</Body>
+				</Heading>
+				<Text as="p">Some text</Text>
+			</Stack>
 		</CardInner>
 	</Card>
 );

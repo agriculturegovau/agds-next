@@ -9,7 +9,6 @@ import {
 	SearchBoxButton,
 	SearchBoxInput,
 } from '@ag.ds-next/search-box';
-import { Body } from '@ag.ds-next/body';
 import { Box, Flex, Stack } from '@ag.ds-next/box';
 import { Breadcrumbs } from '@ag.ds-next/breadcrumbs';
 import { Button } from '@ag.ds-next/button';
@@ -20,7 +19,7 @@ import { Columns, Column } from '@ag.ds-next/columns';
 import { Content } from '@ag.ds-next/content';
 import { ControlGroup, Checkbox, Radio } from '@ag.ds-next/control-input';
 import { DirectionLink } from '@ag.ds-next/direction-link';
-import { H1, H2 } from '@ag.ds-next/heading';
+import { Heading, H1, H2 } from '@ag.ds-next/heading';
 import { InpageNav } from '@ag.ds-next/inpage-nav';
 import { KeywordList } from '@ag.ds-next/keyword-list';
 import { LinkList } from '@ag.ds-next/link-list';
@@ -100,28 +99,28 @@ const KitchenSink = ({
 						/>
 						<Card background="body">
 							<CardInner>
-								<Body>
-									<h2>Card with body background</h2>
-									<p>
+								<Stack gap={1}>
+									<Heading type="h2">Card with body background</Heading>
+									<Text as="p">
 										Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 										Cras non finibus leo, non rhoncus neque. Nunc et dui cursus,
 										euismod felis eget, tristique augue. Praesent consequat
 										mollis lorem id efficitur.
-									</p>
-								</Body>
+									</Text>
+								</Stack>
 							</CardInner>
 						</Card>
 						<Card background="bodyAlt">
 							<CardInner>
-								<Body>
-									<h2>Card with bodyAlt background</h2>
-									<p>
+								<Stack gap={1}>
+									<Heading type="h2">Card with bodyAlt background</Heading>
+									<Text as="p">
 										Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 										Cras non finibus leo, non rhoncus neque. Nunc et dui cursus,
 										euismod felis eget, tristique augue. Praesent consequat
 										mollis lorem id efficitur.
-									</p>
-								</Body>
+									</Text>
+								</Stack>
 							</CardInner>
 						</Card>
 

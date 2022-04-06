@@ -1,10 +1,8 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { Button } from '@ag.ds-next/button';
 import { Box, Flex, Stack } from '@ag.ds-next/box';
 import { Heading } from '@ag.ds-next/heading';
 import { ChevronRightIcon } from '@ag.ds-next/icon';
-import { Body } from '@ag.ds-next/body';
 import { Columns, Column } from '@ag.ds-next/columns';
 import { DirectionLink } from '@ag.ds-next/direction-link';
 import { Tags } from '@ag.ds-next/tags';
@@ -70,27 +68,6 @@ export const OnDark: ComponentStory<typeof Card> = (args) => (
 	</Box>
 );
 
-export const WithBody: ComponentStory<typeof Card> = (args) => (
-	<Box palette="light" background="body" maxWidth={300}>
-		<Card {...args}>
-			<CardInner>
-				<Body>
-					<h3>Card heading</h3>
-					<p>
-						Lorem ipsum dolor, sit amet consectetur adipisicing elit. In,
-						voluptat
-					</p>
-					<p>
-						Cum sociis natoque penatibus et magnis dis parturient montes,
-						nascetur ridiculus mus. Donec ullamcorper nulla non metus auctor
-						fringilla.
-					</p>
-				</Body>
-			</CardInner>
-		</Card>
-	</Box>
-);
-
 export const Link: ComponentStory<typeof Card> = (args) => (
 	<Box maxWidth={300}>
 		<Card shadow clickable {...args}>
@@ -112,28 +89,20 @@ export const FeatureHeader: ComponentStory<typeof Card> = (args) => (
 		<Column columnSpan={6}>
 			<Card {...args}>
 				<CardHeader>
-					<Body>
-						<h4>Feature card title</h4>
-					</Body>
+					<Heading type="h4">Feature card title</Heading>
 				</CardHeader>
 				<CardInner>
-					<Body>
-						<p>Additional conent relating to the card</p>
-					</Body>
+					<Text as="p">Additional conent relating to the card</Text>
 				</CardInner>
 			</Card>
 		</Column>
 		<Column columnSpan={6}>
 			<Card {...args}>
 				<CardHeader background="bodyAlt">
-					<Body>
-						<h4>Feature card title</h4>
-					</Body>
+					<Heading type="h4">Feature card title</Heading>
 				</CardHeader>
 				<CardInner>
-					<Body>
-						<p>Additional conent relating to the card</p>
-					</Body>
+					<Text as="p">Additional conent relating to the card</Text>
 				</CardInner>
 			</Card>
 		</Column>
@@ -148,32 +117,32 @@ export const FeatureFooter: ComponentStory<typeof Card> = (args) => (
 		<Column columnSpan={6}>
 			<Card {...args}>
 				<CardInner>
-					<Body>
-						<h3>Card title</h3>
-						<p>
+					<Stack gap={1}>
+						<Heading type="h3">Card title</Heading>
+						<Text as="p">
 							Lorem ipsum dolor, sit amet consectetur adipisicing elit. In,
 							voluptatibus.
-						</p>
-					</Body>
+						</Text>
+					</Stack>
 				</CardInner>
 				<CardFooter>
-					<a href="#">Action</a>
+					<TextLink href="#">Action</TextLink>
 				</CardFooter>
 			</Card>
 		</Column>
 		<Column columnSpan={6}>
 			<Card {...args}>
 				<CardInner>
-					<Body>
-						<h3>Card title</h3>
-						<p>
+					<Stack gap={1}>
+						<Heading type="h3">Card title</Heading>
+						<Text as="p">
 							Lorem ipsum dolor, sit amet consectetur adipisicing elit. In,
 							voluptatibus.
-						</p>
-					</Body>
+						</Text>
+					</Stack>
 				</CardInner>
 				<CardFooter background="bodyAlt">
-					<a href="#">Action</a>
+					<TextLink href="#">Action</TextLink>
 				</CardFooter>
 			</Card>
 		</Column>
@@ -187,59 +156,59 @@ export const CardListStory: ComponentStory<typeof CardList> = (args) => (
 	<CardList {...args}>
 		<Card shadow clickable>
 			<CardInner>
-				<Body>
-					<h3>Card Title</h3>
-					<p>Some content</p>
-				</Body>
+				<Stack gap={1}>
+					<Heading type="h3">Card Title</Heading>
+					<Text as="p">Some content</Text>
+				</Stack>
 			</CardInner>
 		</Card>
 		<Card shadow clickable>
 			<CardInner>
-				<Body>
-					<h3>Card Title</h3>
-					<p>Some content</p>
-					<p>Additional content</p>
-				</Body>
+				<Stack gap={1}>
+					<Heading type="h3">Card Title</Heading>
+					<Text as="p">Some content</Text>
+					<Text as="p">Additional content</Text>
+				</Stack>
 			</CardInner>
 		</Card>
 		<Card shadow clickable>
 			<CardInner>
-				<Body>
-					<h3>Card Title</h3>
-					<p>Some content</p>
-				</Body>
+				<Stack gap={1}>
+					<Heading type="h3">Card Title</Heading>
+					<Text as="p">Some content</Text>
+				</Stack>
 			</CardInner>
 		</Card>
 		<Card shadow clickable>
 			<CardInner>
-				<Body>
-					<h3>Card Title</h3>
-					<p>Some content</p>
-				</Body>
+				<Stack gap={1}>
+					<Heading type="h3">Card Title</Heading>
+					<Text as="p">Some content</Text>
+				</Stack>
 			</CardInner>
 		</Card>
 		<Card shadow clickable>
 			<CardInner>
-				<Body>
-					<h3>Card Title</h3>
-					<p>Some content</p>
-				</Body>
+				<Stack gap={1}>
+					<Heading type="h3">Card Title</Heading>
+					<Text as="p">Some content</Text>
+				</Stack>
 			</CardInner>
 		</Card>
 		<Card shadow clickable>
 			<CardInner>
-				<Body>
-					<h3>Card Title</h3>
-					<p>Some content</p>
-				</Body>
+				<Stack gap={1}>
+					<Heading type="h3">Card Title</Heading>
+					<Text as="p">Some content</Text>
+				</Stack>
 			</CardInner>
 		</Card>
 		<Card shadow clickable>
 			<CardInner>
-				<Body>
-					<h3>Card Title</h3>
-					<p>Some content</p>
-				</Body>
+				<Stack gap={1}>
+					<Heading type="h3">Card Title</Heading>
+					<Text as="p">Some content</Text>
+				</Stack>
 			</CardInner>
 		</Card>
 	</CardList>

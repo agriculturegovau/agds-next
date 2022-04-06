@@ -63,9 +63,7 @@ A card with an image. For full width images, add the img tag outside the `CardIn
 <Card>
 	<PlaceholderImage />
 	<CardInner>
-		<Body>
-			<a href="#">Action</a>
-		</Body>
+		<TextLink href="#">Action</TextLink>
 	</CardInner>
 </Card>
 ```
@@ -78,12 +76,12 @@ For cards that contain a single link, the hit area for that link can be made to 
 <Card shadow clickable>
 	<PlaceholderImage />
 	<CardInner>
-		<Body>
-			<h3>
+		<Stack gap={1}>
+			<Heading type="h3">
 				<CardLink href="#">Title of article</CardLink>
-			</h3>
-			<p>Some text</p>
-		</Body>
+			</Heading>
+			<Text as="p">Some text</Text>
+		</Stack>
 	</CardInner>
 </Card>
 ```
@@ -97,28 +95,20 @@ Use feature headers to give the card heading more visual prominence.
 	<Column columnSpan={6}>
 		<Card>
 			<CardHeader>
-				<Body>
-					<h4>Feature card title</h4>
-				</Body>
+				<Heading type="h4">Feature card title</Heading>
 			</CardHeader>
 			<CardInner>
-				<Body>
-					<p>Additional conent relating to the card</p>
-				</Body>
+				<Text as="p">Additional conent relating to the card</Text>
 			</CardInner>
 		</Card>
 	</Column>
 	<Column columnSpan={6}>
 		<Card>
 			<CardHeader background="bodyAlt">
-				<Body>
-					<h4>Feature card title</h4>
-				</Body>
+				<Heading type="h4">Feature card title</Heading>
 			</CardHeader>
 			<CardInner>
-				<Body>
-					<p>Additional conent relating to the card</p>
-				</Body>
+				<Text as="p">Additional conent relating to the card</Text>
 			</CardInner>
 		</Card>
 	</Column>
@@ -134,32 +124,32 @@ Use feature footers to give the card footer more visual prominence. This can be 
 	<Column columnSpan={6}>
 		<Card>
 			<CardInner>
-				<Body>
-					<h3>Card title</h3>
-					<p>
+				<Stack gap={1}>
+					<Heading type="h3">Card title</Heading>
+					<Text as="p">
 						Lorem ipsum dolor, sit amet consectetur adipisicing elit. In,
 						voluptatibus.
-					</p>
-				</Body>
+					</Text>
+				</Stack>
 			</CardInner>
 			<CardFooter>
-				<a href="#">Action</a>
+				<TextLink href="#">Action</TextLink>
 			</CardFooter>
 		</Card>
 	</Column>
 	<Column columnSpan={6}>
 		<Card>
 			<CardInner>
-				<Body>
-					<h3>Card title</h3>
-					<p>
+				<Stack gap={1}>
+					<Heading type="h3">Card title</Heading>
+					<Text as="p">
 						Lorem ipsum dolor, sit amet consectetur adipisicing elit. In,
 						voluptatibus.
-					</p>
-				</Body>
+					</Text>
+				</Stack>
 			</CardInner>
 			<CardFooter background="bodyAlt">
-				<a href="#">Action</a>
+				<TextLink href="#">Action</TextLink>
 			</CardFooter>
 		</Card>
 	</Column>
@@ -174,59 +164,59 @@ Multiple cards can be used in a list to display a collection of results or artic
 <CardList templateColumns={3}>
 	<Card shadow clickable>
 		<CardInner>
-			<Body>
-				<h2>Card Title</h2>
-				<p>Some content</p>
-			</Body>
+			<Stack gap={1}>
+				<Heading type="h3">Card Title</Heading>
+				<Text as="p">Some content</Text>
+			</Stack>
 		</CardInner>
 	</Card>
 	<Card shadow clickable>
 		<CardInner>
-			<Body>
-				<h2>Card Title</h2>
-				<p>Some content</p>
-				<p>Additional content</p>
-			</Body>
+			<Stack gap={1}>
+				<Heading type="h3">Card Title</Heading>
+				<Text as="p">Some content</Text>
+				<Text as="p">Additional content</Text>
+			</Stack>
 		</CardInner>
 	</Card>
 	<Card shadow clickable>
 		<CardInner>
-			<Body>
-				<h2>Card Title</h2>
-				<p>Some content</p>
-			</Body>
+			<Stack gap={1}>
+				<Heading type="h3">Card Title</Heading>
+				<Text as="p">Some content</Text>
+			</Stack>
 		</CardInner>
 	</Card>
 	<Card shadow clickable>
 		<CardInner>
-			<Body>
-				<h2>Card Title</h2>
-				<p>Some content</p>
-			</Body>
+			<Stack gap={1}>
+				<Heading type="h3">Card Title</Heading>
+				<Text as="p">Some content</Text>
+			</Stack>
 		</CardInner>
 	</Card>
 	<Card shadow clickable>
 		<CardInner>
-			<Body>
-				<h2>Card Title</h2>
-				<p>Some content</p>
-			</Body>
+			<Stack gap={1}>
+				<Heading type="h3">Card Title</Heading>
+				<Text as="p">Some content</Text>
+			</Stack>
 		</CardInner>
 	</Card>
 	<Card shadow clickable>
 		<CardInner>
-			<Body>
-				<h2>Card Title</h2>
-				<p>Some content</p>
-			</Body>
+			<Stack gap={1}>
+				<Heading type="h3">Card Title</Heading>
+				<Text as="p">Some content</Text>
+			</Stack>
 		</CardInner>
 	</Card>
 	<Card shadow clickable>
 		<CardInner>
-			<Body>
-				<h2>Card Title</h2>
-				<p>Some content</p>
-			</Body>
+			<Stack gap={1}>
+				<Heading type="h3">Card Title</Heading>
+				<Text as="p">Some content</Text>
+			</Stack>
 		</CardInner>
 	</Card>
 </CardList>
