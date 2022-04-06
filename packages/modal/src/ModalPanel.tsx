@@ -35,6 +35,7 @@ export const ModalPanel = ({ children, title, onDismiss }: ModalPanelProps) => {
 				background="body"
 				aria-labelledby={titleId}
 				rounded
+				focus
 				padding={1.5}
 				maxWidth={tokens.maxWidth.bodyText}
 				css={{
