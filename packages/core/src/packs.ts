@@ -1,5 +1,6 @@
 import { boxPalette } from './boxPalette';
 import { mapSpacing, tokens } from './tokens';
+import { fontGrid } from './utils';
 
 // Packs
 
@@ -18,13 +19,11 @@ const control = {
 
 const input = {
 	sm: {
-		fontSize: `${tokens.fontSize.xs}rem`,
-		lineHeight: tokens.lineHeight.nospace,
+		...fontGrid('xs', 'nospace'),
 		height: '2.125rem', // 34 px
 	},
 	md: {
-		fontSize: `${tokens.fontSize.sm}rem`,
-		lineHeight: tokens.lineHeight.nospace,
+		...fontGrid('sm', 'nospace'),
 		height: '2.875rem', // 46 px
 	},
 };
