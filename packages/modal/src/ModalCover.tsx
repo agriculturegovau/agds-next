@@ -14,6 +14,7 @@ export const ModalCover = ({ children, onKeyDown }: ModalCoverProps) => (
 			right: 0,
 			backgroundColor: `rgba(0, 0, 0, 0.8)`,
 			zIndex: 100,
+			overflowY: 'auto',
 		}}
 		onKeyDown={onKeyDown}
 	>
