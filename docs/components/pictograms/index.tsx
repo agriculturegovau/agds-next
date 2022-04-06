@@ -24,6 +24,7 @@ import inpageNav from './inpage-nav.svg';
 import keywordList from './keyword-list.svg';
 import linkList from './link-list.svg';
 import mainNav from './main-nav.svg';
+import modal from './modal.svg';
 import packages from './packages.svg';
 import pageAlert from './page-alert.svg';
 import progressIndicator from './progress-indicator.svg';
@@ -55,7 +56,7 @@ export const pictograms = {
 	'control-input': controlInput,
 	core,
 	'direction-link': directionLink,
-	datePicker,
+	'date-picker': datePicker,
 	field,
 	fieldset,
 	footer,
@@ -65,10 +66,9 @@ export const pictograms = {
 	icon,
 	'inpage-nav': inpageNav,
 	'keyword-list': keywordList,
-	linkList,
 	'link-list': linkList,
-	mainNav,
 	'main-nav': mainNav,
+	modal,
 	packages,
 	'page-alert': pageAlert,
 	'progress-indicator': progressIndicator,
@@ -79,7 +79,7 @@ export const pictograms = {
 	'skip-link': skipLink,
 	starter,
 	table,
-	taskList,
+	'task-list': taskList,
 	tags,
 	text,
 	textarea,
