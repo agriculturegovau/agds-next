@@ -11,7 +11,7 @@ import { useModalId } from './utils';
 
 export type ModalPanelProps = PropsWithChildren<{
 	onDismiss: () => void;
-	title?: string;
+	title: string;
 }>;
 
 const AnimatedStack = animated(Stack);
@@ -51,7 +51,7 @@ export const ModalPanel = ({ children, title, onDismiss }: ModalPanelProps) => {
 				}}
 				style={animationStyles}
 			>
-				{title && <ModalTitle id={titleId}>{title}</ModalTitle>}
+				<ModalTitle id={titleId}>{title}</ModalTitle>
 				<div>{children}</div>
 
 				<Button
