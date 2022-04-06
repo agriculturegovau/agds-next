@@ -14,7 +14,7 @@ For other uses, other patterns are preferred.
 
 	return (
 		<div>
-			<Button onClick={openModal}>Open Modal</Button>
+			<Button onClick={openModal}>Open modal</Button>
 			<Modal
 				isOpen={isModalOpen}
 				onDismiss={closeModal}
