@@ -30,7 +30,7 @@ export const AccordionBody = ({
 	});
 
 	return (
-		<animated.section
+		<animated.div
 			id={id}
 			aria-labelledby={ariaLabelledBy}
 			role="region"
@@ -38,6 +38,6 @@ export const AccordionBody = ({
 			css={{ overflow: 'hidden' }}
 		>
 			<div ref={ref}>{children}</div>
-		</animated.section>
+		</animated.div>
 	);
 };
