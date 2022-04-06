@@ -1,5 +1,5 @@
 import { PropsWithChildren, useRef } from 'react';
-import { useElementSize, usePrefersReducedMotion } from '@ag.ds-next/core';
+import { usePrefersReducedMotion } from '@ag.ds-next/core';
 import { useSpring, animated } from 'react-spring';
 
 export type AccordionBodyProps = PropsWithChildren<{
@@ -15,23 +15,29 @@ export const AccordionBody = ({
 	isOpen,
 }: AccordionBodyProps) => {
 	const ref = useRef<HTMLDivElement>(null);
-	const { height } = useElementSize(ref);
 
 	const prefersReducedMotion = usePrefersReducedMotion();
-	const style = useSpring({
-		from: { height: 0 },
-		to: { height: isOpen ? height : 0 },
-		immediate: prefersReducedMotion,
+	const animatedHeight = useSpring({
+		from: { display: 'none', height: 0 },
+		to: async (next) => {
+			if (isOpen) await next({ display: 'block' });
+			await next({
+				height: isOpen ? ref.current?.offsetHeight : 0,
+				immediate: prefersReducedMotion,
+			});
+			await next(isOpen ? { height: 'auto' } : { display: 'none' });
+		},
 	});
 
 	return (
-		<animated.section
+		<animated.div
 			id={id}
 			aria-labelledby={ariaLabelledBy}
 			role="region"
-			style={{ overflow: 'hidden', ...style }}
+			style={animatedHeight}
+			css={{ overflow: 'hidden' }}
 		>
 			<div ref={ref}>{children}</div>
-		</animated.section>
+		</animated.div>
 	);
 };

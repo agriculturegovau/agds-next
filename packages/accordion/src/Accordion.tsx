@@ -4,5 +4,7 @@ import { Box } from '@ag.ds-next/box';
 export type AccordionProps = { children: ReactNode };
 
 export const Accordion = ({ children }: AccordionProps) => (
-	<Box borderTop>{children}</Box>
+	<Box width="100%" borderTop>
+		{children}
+	</Box>
 );

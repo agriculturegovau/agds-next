@@ -84,11 +84,11 @@ It is common for multiple AccordionItems to appear together. Grouped AccordionIt
 
 ```jsx live
 <Accordion>
-	<AccordionItem title="Edge-to-edge image" isInitiallyOpen>
+	<AccordionItem title="Edge-to-edge image">
 		<img
-			src="http://placehold.it/800x200"
 			alt="Placeholder image"
-			style={{ width: '100%' }}
+			src="/agds-next/img/placeholder/600X260.png"
+			width="100%"
 		/>
 		<AccordionItemContent>
 			<Text>
