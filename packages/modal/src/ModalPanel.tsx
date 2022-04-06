@@ -1,7 +1,7 @@
-import { PropsWithChildren } from 'react';
+import { PropsWithChildren, ReactNode } from 'react';
 import FocusLock from 'react-focus-lock';
 import { animated, useSpring } from 'react-spring';
-import { Stack } from '@ag.ds-next/box';
+import { Flex, Stack } from '@ag.ds-next/box';
 import { usePrefersReducedMotion, mapSpacing, tokens } from '@ag.ds-next/core';
 import { CloseIcon } from '@ag.ds-next/icon';
 import { Button } from '@ag.ds-next/button';
@@ -10,13 +10,19 @@ import { ModalTitle } from './ModalTitle';
 import { useModalId } from './utils';
 
 export type ModalPanelProps = PropsWithChildren<{
+	actions?: ReactNode;
 	onDismiss: () => void;
 	title: string;
 }>;
 
 const AnimatedStack = animated(Stack);
 
-export const ModalPanel = ({ children, title, onDismiss }: ModalPanelProps) => {
+export const ModalPanel = ({
+	actions,
+	children,
+	title,
+	onDismiss,
+}: ModalPanelProps) => {
 	const { titleId } = useModalId();
 	const prefersReducedMotion = usePrefersReducedMotion();
 	const animationStyles = useSpring({
@@ -52,7 +58,10 @@ export const ModalPanel = ({ children, title, onDismiss }: ModalPanelProps) => {
 				style={animationStyles}
 			>
 				<ModalTitle id={titleId}>{title}</ModalTitle>
-				<div>{children}</div>
+				<Flex gap={2} flexGrow={1} flexDirection="column">
+					{children}
+					{actions}
+				</Flex>
 
 				<Button
 					variant="tertiary"

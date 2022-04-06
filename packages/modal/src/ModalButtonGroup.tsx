@@ -5,7 +5,13 @@ export type ModalButtonGroupProps = { children: ReactNode };
 
 export const ModalButtonGroup = ({ children }: ModalButtonGroupProps) => {
 	return (
-		<Stack gap={0.5} flexDirection={{ xs: 'column', sm: 'row' }}>
+		<Stack
+			gap={0.5}
+			flexDirection={{ xs: 'column', sm: 'row' }}
+			css={{
+				marginTop: 'auto',
+			}}
+		>
 			{children}
 		</Stack>
 	);
