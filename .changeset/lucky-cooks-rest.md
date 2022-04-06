@@ -1,5 +1,5 @@
 ---
-'@ag.ds-next/modal': minor
+'@ag.ds-next/modal': major
 ---
 
-Resolve issue with Chrome not reading title in VoiceOver
+Title is required. Also, resolves issue with Chrome not reading title in VoiceOver.
