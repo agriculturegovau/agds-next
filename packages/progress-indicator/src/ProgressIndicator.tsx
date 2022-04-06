@@ -1,12 +1,10 @@
-import { useMemo, useRef } from 'react';
+import { useRef } from 'react';
 import { useId } from '@reach/auto-id';
 import { useSpring, animated } from 'react-spring';
 import {
 	tokens,
-	useElementSize,
 	usePrefersReducedMotion,
 	useToggleState,
-	useWindowSize,
 } from '@ag.ds-next/core';
 import { ProgressIndicatorCollapseButton } from './ProgressIndicatorCollapseButton';
 import { ProgressIndicatorContainer } from './ProgressIndicatorContainer';
@@ -26,22 +24,19 @@ export const ProgressIndicator = ({ items }: ProgressIndicatorProps) => {
 	const { buttonId, bodyId } = useProgressIndicatorIds();
 	const ref = useRef<HTMLUListElement>(null);
 	const [isOpen, onToggle] = useToggleState(false, true);
-	const { height } = useElementSize(ref);
 
 	const prefersReducedMotion = usePrefersReducedMotion();
 	const animatedHeight = useSpring({
-		from: { height: 0 },
-		to: { height: isOpen ? height : 0 },
-		immediate: prefersReducedMotion,
+		from: { display: 'none', height: 0 },
+		to: async (next) => {
+			if (isOpen) await next({ display: 'block' });
+			await next({
+				height: isOpen ? ref.current?.offsetHeight : 0,
+				immediate: prefersReducedMotion,
+			});
+			await next(isOpen ? { height: 'auto' } : { display: 'none' });
+		},
 	});
-
-	const { windowWidth } = useWindowSize();
-
-	const bodyAriaHidden = useMemo(() => {
-		if (windowWidth === undefined) return;
-		if (windowWidth >= tokens.breakpoint.md) return;
-		return !isOpen;
-	}, [windowWidth, isOpen]);
 
 	return (
 		<ProgressIndicatorContainer>
@@ -55,13 +50,13 @@ export const ProgressIndicator = ({ items }: ProgressIndicatorProps) => {
 			<animated.div
 				id={bodyId}
 				aria-labelledby={buttonId}
-				aria-hidden={bodyAriaHidden}
 				style={animatedHeight}
 				css={{
 					overflow: 'hidden',
 					// Overwrite the animated height for tablet/desktop sizes.
 					[tokens.mediaQuery.min.md]: {
 						overflow: 'unset',
+						display: 'block !important',
 						height: 'auto !important',
 					},
 				}}
