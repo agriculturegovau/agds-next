@@ -98,7 +98,7 @@ export function NavContainer({
 					paddingX={{ xs: 0.75, lg: 2 }}
 				>
 					<ToggleButton onClick={open} />
-					<FocusLock disabled={!menuVisiblyOpen}>
+					<FocusLock returnFocus disabled={!menuVisiblyOpen}>
 						<div
 							role={menuVisiblyOpen ? 'dialog' : 'none'}
 							aria-label="Main navigation"
