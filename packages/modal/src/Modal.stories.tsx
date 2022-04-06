@@ -2,7 +2,6 @@ import { ComponentMeta } from '@storybook/react';
 import { Modal } from './Modal';
 import { ModalButtonGroup } from './ModalButtonGroup';
 import { Button } from '@ag.ds-next/button';
-import { Stack } from '@ag.ds-next/box';
 import { useTernaryState } from '@ag.ds-next/core';
 import { Text } from '@ag.ds-next/text';
 

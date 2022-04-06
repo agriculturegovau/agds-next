@@ -19,23 +19,23 @@ For other uses, other patterns are preferred.
 				isOpen={isModalOpen}
 				onDismiss={closeModal}
 				title="This is the title of the modal dialogue, it can span lines but should not be too long."
-			>
-				<Stack gap={2}>
-					<Text as="p">
-						This is the Modal Body paragraph, it provides detailed instruction
-						and context for the the modal action. It can also span lines but
-						long form content should be avoided.
-					</Text>
+				actions={
 					<ModalButtonGroup>
-						<Button onClick={closeModal}>Ok</Button>
+						<Button onClick={closeModal}>Primary button</Button>
 						<Button variant="secondary" onClick={closeModal}>
-							Cancel
+							Secondary button
 						</Button>
 						<Button variant="tertiary" onClick={closeModal}>
-							Cancel
+							Tertiary button
 						</Button>
 					</ModalButtonGroup>
-				</Stack>
+				}
+			>
+				<Text as="p">
+					This is the Modal Body paragraph, it provides detailed instruction and
+					context for the the modal action. It can also span lines but long form
+					content should be avoided.
+				</Text>
 			</Modal>
 		</div>
 	);
