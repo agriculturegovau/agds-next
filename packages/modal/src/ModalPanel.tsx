@@ -26,7 +26,7 @@ export const ModalPanel = ({ children, title, onDismiss }: ModalPanelProps) => {
 	});
 
 	return (
-		<FocusLock>
+		<FocusLock returnFocus>
 			<AnimatedBox
 				role="dialog"
 				aria-modal="true"

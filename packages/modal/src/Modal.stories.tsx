@@ -30,12 +30,12 @@ export const Basic = () => {
 						long form content should be avoided.
 					</Text>
 					<ModalButtonGroup>
-						<Button onClick={closeModal}>Ok</Button>
+						<Button onClick={closeModal}>Primary button</Button>
 						<Button variant="secondary" onClick={closeModal}>
-							Cancel
+							Secondary button
 						</Button>
 						<Button variant="tertiary" onClick={closeModal}>
-							Cancel
+							Tertiary button
 						</Button>
 					</ModalButtonGroup>
 				</Stack>
