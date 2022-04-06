@@ -60,8 +60,8 @@ export const ModalPanel = ({ children, title, onDismiss }: ModalPanelProps) => {
 					iconAfter={CloseIcon}
 					css={{
 						position: 'absolute',
-						top: `${mapSpacing(0.5)}`,
-						right: `${mapSpacing(0.5)}`,
+						top: mapSpacing(0.5),
+						right: mapSpacing(0.5),
 					}}
 				>
 					Close
