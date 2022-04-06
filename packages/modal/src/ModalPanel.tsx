@@ -1,7 +1,7 @@
 import { PropsWithChildren } from 'react';
 import FocusLock from 'react-focus-lock';
 import { animated, useSpring } from 'react-spring';
-import { Box, Flex, Stack } from '@ag.ds-next/box';
+import { Stack } from '@ag.ds-next/box';
 import { usePrefersReducedMotion, mapSpacing, tokens } from '@ag.ds-next/core';
 import { CloseIcon } from '@ag.ds-next/icon';
 import { Button } from '@ag.ds-next/button';
@@ -11,10 +11,10 @@ import { useModalId } from './utils';
 
 export type ModalPanelProps = PropsWithChildren<{
 	onDismiss: () => void;
-	title?: string;
+	title: string;
 }>;
 
-const AnimatedBox = animated(Box);
+const AnimatedStack = animated(Stack);
 
 export const ModalPanel = ({ children, title, onDismiss }: ModalPanelProps) => {
 	const { titleId } = useModalId();
@@ -27,7 +27,7 @@ export const ModalPanel = ({ children, title, onDismiss }: ModalPanelProps) => {
 
 	return (
 		<FocusLock returnFocus>
-			<AnimatedBox
+			<AnimatedStack
 				role="dialog"
 				aria-modal="true"
 				tabIndex={-1}
@@ -37,6 +37,8 @@ export const ModalPanel = ({ children, title, onDismiss }: ModalPanelProps) => {
 				rounded
 				focus
 				padding={1.5}
+				paddingTop={4}
+				gap={1}
 				maxWidth={tokens.maxWidth.bodyText}
 				css={{
 					position: 'relative',
@@ -49,26 +51,22 @@ export const ModalPanel = ({ children, title, onDismiss }: ModalPanelProps) => {
 				}}
 				style={animationStyles}
 			>
-				<Flex justifyContent="flex-end">
-					<Button
-						variant="tertiary"
-						onClick={onDismiss}
-						iconAfter={CloseIcon}
-						css={{
-							position: 'relative',
-							top: `-${mapSpacing(1)}`,
-							right: `-${mapSpacing(1)}`,
-						}}
-					>
-						Close
-					</Button>
-				</Flex>
+				<ModalTitle id={titleId}>{title}</ModalTitle>
+				<div>{children}</div>
 
-				<Stack gap={1}>
-					{title && <ModalTitle id={titleId}>{title}</ModalTitle>}
-					<div>{children}</div>
-				</Stack>
-			</AnimatedBox>
+				<Button
+					variant="tertiary"
+					onClick={onDismiss}
+					iconAfter={CloseIcon}
+					css={{
+						position: 'absolute',
+						top: mapSpacing(0.5),
+						right: mapSpacing(0.5),
+					}}
+				>
+					Close
+				</Button>
+			</AnimatedStack>
 		</FocusLock>
 	);
 };
