@@ -41,10 +41,10 @@ export const ModalPanel = ({ children, title, onDismiss }: ModalPanelProps) => {
 				css={{
 					position: 'relative',
 					margin: '0 auto',
-					height: '100vh',
+					minHeight: '100vh',
 					[tokens.mediaQuery.min.sm]: {
-						margin: `${mapSpacing(6)} auto`,
-						height: 'auto',
+						margin: `${mapSpacing(6)} auto ${mapSpacing(1)}`,
+						minHeight: 'auto',
 					},
 				}}
 				style={animationStyles}
