@@ -17,7 +17,7 @@ export const Basic = () => {
 
 	return (
 		<div>
-			<Button onClick={openModal}>Open Modal</Button>
+			<Button onClick={openModal}>Open modal</Button>
 			<Modal
 				isOpen={isModalOpen}
 				onDismiss={closeModal}
@@ -49,7 +49,7 @@ export const Modular = () => {
 
 	return (
 		<div>
-			<Button onClick={openModal}>Open Modal</Button>
+			<Button onClick={openModal}>Open modal</Button>
 			<Modal isOpen={isModalOpen} onDismiss={closeModal}>
 				<Stack gap={2}>
 					<Stack gap={1}>
