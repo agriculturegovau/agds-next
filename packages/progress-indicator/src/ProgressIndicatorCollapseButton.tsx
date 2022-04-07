@@ -1,12 +1,7 @@
 import { useSpring, animated } from 'react-spring';
 import { Flex } from '@ag.ds-next/box';
 import { ChevronDownIcon } from '@ag.ds-next/icon';
-import {
-	boxPalette,
-	packs,
-	tokens,
-	usePrefersReducedMotion,
-} from '@ag.ds-next/core';
+import { boxPalette, tokens, usePrefersReducedMotion } from '@ag.ds-next/core';
 import { Text } from '@ag.ds-next/text';
 import type { ProgressIndicatorItem } from './ProgressIndicatorItem';
 import { useMemo } from 'react';
@@ -50,19 +45,21 @@ export const ProgressIndicatorCollapseButton = ({
 			aria-expanded={isOpen}
 			onClick={onClick}
 			id={id}
+			color="action"
+			fontSize="md"
+			lineHeight="heading"
+			fontWeight="bold"
 			padding={1}
 			justifyContent="space-between"
 			alignItems="center"
 			width="100%"
+			link
 			focus
 			css={{
 				appearance: 'none',
 				background: 'transparent',
 				cursor: 'pointer',
 				textAlign: 'left',
-
-				'& > span': packs.underline,
-				'&:hover > span': { textDecoration: 'none' },
 
 				'&:hover': {
 					background: boxPalette.backgroundShade,
@@ -73,9 +70,7 @@ export const ProgressIndicatorCollapseButton = ({
 				},
 			}}
 		>
-			<Text color="action" fontSize="md" fontWeight="bold">
-				{title}
-			</Text>
+			{title}
 			<AnimatedIcon color="text" size="sm" weight="bold" style={iconStyle} />
 		</Flex>
 	);
