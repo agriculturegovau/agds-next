@@ -10,6 +10,7 @@ export type ModalProps = ModalPanelProps & {
 };
 
 export const Modal: FunctionComponent<ModalProps> = ({
+	actions,
 	children,
 	isOpen,
 	onDismiss,
@@ -33,7 +34,7 @@ export const Modal: FunctionComponent<ModalProps> = ({
 		<Fragment>
 			<LockScroll />
 			<ModalCover onKeyDown={handleEscape}>
-				<ModalPanel onDismiss={onDismiss} title={title}>
+				<ModalPanel onDismiss={onDismiss} title={title} actions={actions}>
 					{children}
 				</ModalPanel>
 			</ModalCover>
