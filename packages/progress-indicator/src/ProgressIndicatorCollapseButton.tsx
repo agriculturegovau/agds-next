@@ -71,7 +71,7 @@ export const ProgressIndicatorCollapseButton = ({
 			}}
 		>
 			{title}
-			<AnimatedIcon color="text" size="sm" weight="bold" style={iconStyle} />
+			<AnimatedIcon size="sm" weight="bold" style={iconStyle} />
 		</Flex>
 	);
 };
