@@ -9,11 +9,10 @@ export function Logo() {
 		<svg
 			xmlns="http://www.w3.org/2000/svg"
 			version="1.1"
-			id="Department of Agriculture Water and the Environment Logo"
-			x="0px"
-			y="0px"
 			viewBox="0 0 186 52"
 			css={logoStyles}
+			role="img"
+			aria-label="Department of Agriculture Water and the Environment Logo"
 		>
 			<g>
 				<g>
