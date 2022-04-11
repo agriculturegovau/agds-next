@@ -1,7 +1,13 @@
-import React, { ChangeEvent, useCallback, useRef, useState } from 'react';
+import React, {
+	ChangeEvent,
+	KeyboardEvent,
+	useCallback,
+	useRef,
+	useState,
+} from 'react';
 import { usePopper } from 'react-popper';
 import { useClickOutside, useTernaryState } from '@ag.ds-next/core';
-import { Calendar, CalendarProps } from './Calendar';
+import { Calendar, CalendarProps, CalendarRef } from './Calendar';
 import { DateInput, DateInputProps } from './DatePickerInput';
 import { parseDate, formatDate } from './utils';
 
@@ -23,15 +29,18 @@ export const DatePicker = ({
 	initialMonth,
 	...props
 }: DatePickerProps) => {
+	const calendarRef = useRef<CalendarRef>(null);
 	const [isCalendarOpen, openCalendar, closeCalendar] = useTernaryState(false);
 
 	// Popper state
 	const triggerRef = useRef<HTMLButtonElement>(null);
 	const [refEl, setRefEl] = useState<HTMLDivElement | null>(null);
 	const [popperEl, setPopperEl] = useState<HTMLDivElement | null>(null);
+	const onFirstUpdate = useCallback(() => calendarRef.current?.focus(), []);
 	const { styles, attributes } = usePopper(refEl, popperEl, {
 		placement: 'bottom-start',
 		modifiers: [{ name: 'offset', options: { offset: [0, 8] } }],
+		onFirstUpdate,
 	});
 
 	const onDayClick = useCallback(
@@ -42,7 +51,6 @@ export const DatePicker = ({
 			onChange(day);
 			// Close the calendar and focus the calendar icon
 			closeCalendar();
-			triggerRef.current?.focus();
 		},
 		[onChange, closeCalendar]
 	);
@@ -70,8 +78,21 @@ export const DatePicker = ({
 
 	useClickOutside(clickOutsideRef, handleClickOutside);
 
+	// Close the calendar when the user presses escape
+	const handleEscape = useCallback(
+		(e: KeyboardEvent<HTMLDivElement>) => {
+			if (isCalendarOpen && e.code === 'Escape') {
+				e.preventDefault();
+				e.stopPropagation();
+				// Close the calendar and focus the calendar icon
+				closeCalendar();
+			}
+		},
+		[isCalendarOpen, closeCalendar]
+	);
+
 	return (
-		<div ref={setRefEl}>
+		<div ref={setRefEl} onKeyDown={handleEscape}>
 			<DateInput
 				{...props}
 				value={inputValue}
@@ -87,6 +108,7 @@ export const DatePicker = ({
 					css={{ zIndex: 1 }}
 				>
 					<Calendar
+						ref={calendarRef}
 						selectedDays={value}
 						onDayClick={onDayClick}
 						initialMonth={initialMonth || value}

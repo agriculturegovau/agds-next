@@ -13,9 +13,7 @@ const Template: ComponentStory<typeof DatePicker> = (args) => {
 	return <DatePicker {...args} value={value} onChange={setValue} />;
 };
 
-export const OnLight: ComponentStory<typeof DatePicker> = (args) => (
-	<Template {...args} />
-);
+export const OnLight = Template.bind({});
 OnLight.args = {
 	label: 'Example',
 };
@@ -29,51 +27,39 @@ OnDark.args = {
 	label: 'Example',
 };
 
-export const Disabled: ComponentStory<typeof DatePicker> = (args) => (
-	<Template {...args} />
-);
+export const Disabled = Template.bind({});
 Disabled.args = {
 	label: 'Example',
 	disabled: true,
 };
 
-export const Required: ComponentStory<typeof DatePicker> = (args) => (
-	<Template {...args} />
-);
+export const Required = Template.bind({});
 Required.args = {
 	required: true,
 	label: 'Example',
 };
 
-export const Invalid: ComponentStory<typeof DatePicker> = (args) => (
-	<Template {...args} />
-);
+export const Invalid = Template.bind({});
 Invalid.args = {
 	label: 'Example',
 	message: 'Enter a valid date',
 	invalid: true,
 };
 
-export const Valid: ComponentStory<typeof DatePicker> = (args) => (
-	<Template {...args} />
-);
+export const Valid = Template.bind({});
 Valid.args = {
 	label: 'Example',
 	message: 'The date you have entered is valid',
 	valid: true,
 };
 
-export const Hint: ComponentStory<typeof DatePicker> = (args) => (
-	<Template {...args} />
-);
+export const Hint = Template.bind({});
 Hint.args = {
 	label: 'Example',
 	hint: 'We will only use this to respond to your question',
 };
 
-export const Block: ComponentStory<typeof DatePicker> = (args) => (
-	<Template {...args} />
-);
+export const Block = Template.bind({});
 Block.args = {
 	block: true,
 	label: 'Block',
@@ -83,4 +69,15 @@ export const RequiredLabel = Template.bind({});
 RequiredLabel.args = {
 	label: 'Example',
 	requiredLabel: false,
+};
+
+export const ScrollExample: ComponentStory<typeof DatePicker> = (args) => (
+	<Box>
+		<Box height="1000px"></Box>
+		<Template {...args} />
+		<Box height="1000px"></Box>
+	</Box>
+);
+ScrollExample.args = {
+	label: 'Example',
 };

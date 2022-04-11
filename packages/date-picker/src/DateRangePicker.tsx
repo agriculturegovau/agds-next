@@ -1,5 +1,6 @@
 import React, {
 	ChangeEvent,
+	KeyboardEvent,
 	Fragment,
 	useCallback,
 	useRef,
@@ -13,7 +14,7 @@ import {
 	useTernaryState,
 	useWindowSize,
 } from '@ag.ds-next/core';
-import { Calendar, CalendarProps } from './Calendar';
+import { Calendar, CalendarProps, CalendarRef } from './Calendar';
 import { DateInput } from './DatePickerInput';
 import { getValidDateRange, parseDate, formatDate } from './utils';
 
@@ -42,6 +43,7 @@ export const DateRangePicker = ({
 	required,
 	requiredLabel,
 }: DateRangePickerProps) => {
+	const calendarRef = useRef<CalendarRef>(null);
 	const [isCalendarOpen, openCalendar, closeCalendar] = useTernaryState(false);
 	const [inputMode, setInputMode] = useState<'from' | 'to'>();
 
@@ -61,9 +63,11 @@ export const DateRangePicker = ({
 	// Popper state
 	const [refEl, setRefEl] = useState<HTMLDivElement | null>(null);
 	const [popperEl, setPopperEl] = useState<HTMLDivElement | null>(null);
+	const onFirstUpdate = useCallback(() => calendarRef.current?.focus(), []);
 	const { styles, attributes } = usePopper(refEl, popperEl, {
 		placement: 'bottom-start',
 		modifiers: [{ name: 'offset', options: { offset: [0, 8] } }],
+		onFirstUpdate,
 	});
 
 	const onDayClick = useCallback(
@@ -86,7 +90,7 @@ export const DateRangePicker = ({
 
 			if (inputMode === 'from') {
 				setInputMode('to');
-				toTriggerRef.current?.focus();
+				// toTriggerRef.current?.focus();
 				return;
 			}
 		},
@@ -135,17 +139,32 @@ export const DateRangePicker = ({
 
 	useClickOutside(clickOutsideRef, handleClickOutside);
 
+	// Close the calendar when the user presses escape
+	const handleEscape = useCallback(
+		(e: KeyboardEvent<HTMLDivElement>) => {
+			console.log({ isCalendarOpen }, e.code);
+			if (isCalendarOpen && e.code === 'Escape') {
+				e.preventDefault();
+				e.stopPropagation();
+				// Close the calendar and focus the calendar icon
+				closeCalendar();
+				setInputMode(undefined);
+			}
+		},
+		[isCalendarOpen, closeCalendar]
+	);
+
 	// 2 months visible on desktop, 1 on mobile
 	const { windowWidth = 0 } = useWindowSize();
 	const numberOfMonths = windowWidth > tokens.breakpoint.md ? 2 : 1;
 
 	return (
-		<Fragment>
+		<div onKeyDown={handleEscape}>
 			<Flex
+				ref={setRefEl}
 				flexDirection={{ xs: 'column', sm: 'row' }}
 				inline
 				gap={1}
-				ref={setRefEl}
 			>
 				<DateInput
 					label={fromLabel}
@@ -176,6 +195,7 @@ export const DateRangePicker = ({
 					css={{ zIndex: 1 }}
 				>
 					<Calendar
+						ref={calendarRef}
 						initialMonth={inputMode === 'from' ? value.from : value.to}
 						selectedDays={[value.from, value]}
 						onDayClick={onDayClick}
@@ -185,6 +205,6 @@ export const DateRangePicker = ({
 					/>
 				</div>
 			) : null}
-		</Fragment>
+		</div>
 	);
 };

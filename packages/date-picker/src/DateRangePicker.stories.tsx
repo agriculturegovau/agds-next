@@ -19,9 +19,7 @@ const Template: ComponentStory<typeof DateRangePicker> = (args) => {
 	return <DateRangePicker {...args} value={range} onChange={setRange} />;
 };
 
-export const OnLight: ComponentStory<typeof DateRangePicker> = (args) => (
-	<Template {...args} />
-);
+export const OnLight = Template.bind({});
 OnLight.args = {};
 
 export const OnDark: ComponentStory<typeof DateRangePicker> = (args) => (
@@ -31,16 +29,12 @@ export const OnDark: ComponentStory<typeof DateRangePicker> = (args) => (
 );
 OnDark.args = {};
 
-export const Disabled: ComponentStory<typeof DateRangePicker> = (args) => (
-	<Template {...args} />
-);
+export const Disabled = Template.bind({});
 Disabled.args = {
 	disabled: true,
 };
 
-export const Required: ComponentStory<typeof DateRangePicker> = (args) => (
-	<Template {...args} />
-);
+export const Required = Template.bind({});
 Required.args = {
 	required: true,
 };
@@ -54,7 +48,7 @@ Labels.args = {
 export const RequiredLabel = Template.bind({});
 RequiredLabel.args = { requiredLabel: false };
 
-export const ExampleFilters = () => {
+export const FiltersExample = () => {
 	const [option, setOption] = useState<string>();
 
 	const [range, setRange] = useState<DateRange>({
@@ -86,5 +80,15 @@ export const ExampleFilters = () => {
 				</ul>
 			</Body>
 		</Stack>
+	);
+};
+
+export const ScrollExample: ComponentStory<typeof DateRangePicker> = (args) => {
+	return (
+		<Box>
+			<Box height="1000px"></Box>
+			<Template {...args} />
+			<Box height="1000px"></Box>
+		</Box>
 	);
 };
