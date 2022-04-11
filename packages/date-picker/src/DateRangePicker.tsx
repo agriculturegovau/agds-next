@@ -7,7 +7,12 @@ import React, {
 } from 'react';
 import { usePopper } from 'react-popper';
 import { Flex } from '@ag.ds-next/box';
-import { useClickOutside, useTernaryState } from '@ag.ds-next/core';
+import {
+	tokens,
+	useClickOutside,
+	useTernaryState,
+	useWindowSize,
+} from '@ag.ds-next/core';
 import { Calendar, CalendarProps } from './Calendar';
 import { DateInput } from './DatePickerInput';
 import { getValidDateRange, parseDate, formatDate } from './utils';
@@ -130,6 +135,10 @@ export const DateRangePicker = ({
 
 	useClickOutside(clickOutsideRef, handleClickOutside);
 
+	// 2 months visible on desktop, 1 on mobile
+	const { windowWidth = 0 } = useWindowSize();
+	const numberOfMonths = windowWidth > tokens.breakpoint.md ? 2 : 1;
+
 	return (
 		<Fragment>
 			<Flex
@@ -171,7 +180,7 @@ export const DateRangePicker = ({
 						selectedDays={[value.from, value]}
 						onDayClick={onDayClick}
 						modifiers={{ start: value.from, end: value.to }}
-						numberOfMonths={2}
+						numberOfMonths={numberOfMonths}
 						range
 					/>
 				</div>
