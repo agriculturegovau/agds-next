@@ -80,9 +80,6 @@ export const DateRangePicker = ({
 			setToInputValue(range.to ? formatDate(range.to) : '');
 
 			if (range.from && range.to) {
-				inputMode === 'from'
-					? fromTriggerRef.current?.focus()
-					: toTriggerRef.current?.focus();
 				closeCalendar();
 				setInputMode(undefined);
 				return;
@@ -90,7 +87,6 @@ export const DateRangePicker = ({
 
 			if (inputMode === 'from') {
 				setInputMode('to');
-				// toTriggerRef.current?.focus();
 				return;
 			}
 		},
@@ -142,7 +138,6 @@ export const DateRangePicker = ({
 	// Close the calendar when the user presses escape
 	const handleEscape = useCallback(
 		(e: KeyboardEvent<HTMLDivElement>) => {
-			console.log({ isCalendarOpen }, e.code);
 			if (isCalendarOpen && e.code === 'Escape') {
 				e.preventDefault();
 				e.stopPropagation();
