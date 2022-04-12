@@ -25,14 +25,18 @@ const commonArgs = {
 	mobileImage: (
 		<img
 			src="https://steelthreads.github.io/export-landing/homepage-harvest-medium.jpg"
-			style={{ width: '100%', height: 'auto' }}
+			style={{ display: 'block', width: '100%', height: 'auto' }}
 			alt="Hero image"
 		/>
 	),
 	backgroundImageSrc:
 		'https://steelthreads.github.io/export-landing/homepage-harvest-medium.jpg',
 	children: (
-		<Box maxWidth={{ sm: '50%', lg: tokens.maxWidth.bodyText }} width="100%">
+		<Box
+			width="100%"
+			maxWidth={[null, '66%', '66%', tokens.maxWidth.bodyText]}
+			paddingY={[0, 1, 1, 2]}
+		>
 			<Stack gap={[1.5, 2]}>
 				<Stack gap={[0.5, 1]}>
 					<Heading type="h1" fontSize="xxxl">
@@ -81,7 +85,7 @@ Buttons.args = {
 		<Box
 			maxWidth={tokens.maxWidth.bodyText}
 			width="100%"
-			css={{ margin: '0 auto' }}
+			paddingY={[0, 1, 1, 2]}
 		>
 			<Stack gap={[1.5, 2]}>
 				<Stack gap={[0.5, 1]}>
@@ -92,7 +96,7 @@ Buttons.args = {
 						Hero banner paragraph text
 					</Text>
 				</Stack>
-				<Flex gap={1}>
+				<Flex flexDirection={['column', 'row']} gap={1}>
 					<Button>Primary button</Button>
 					<Button variant="secondary">Secondary button</Button>
 				</Flex>
@@ -109,6 +113,7 @@ Centered.args = {
 			alignItems="center"
 			maxWidth={tokens.maxWidth.bodyText}
 			width="100%"
+			paddingY={[0, 1, 1, 2]}
 			css={{ margin: '0 auto', textAlign: 'center' }}
 		>
 			<Stack gap={[1.5, 2]}>
@@ -120,7 +125,7 @@ Centered.args = {
 						Hero banner paragraph text
 					</Text>
 				</Stack>
-				<Flex gap={1}>
+				<Flex flexDirection={['column', 'row']} gap={1}>
 					<Button>Primary button</Button>
 					<Button variant="secondary">Secondary button</Button>
 				</Flex>
