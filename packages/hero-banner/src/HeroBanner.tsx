@@ -25,7 +25,7 @@ export const HeroBanner = ({
 			<Box
 				width="100%"
 				height="100%"
-				paddingY={[1, 3, 6]}
+				paddingY={[0, 4]}
 				css={mq({
 					background: [
 						null,
@@ -34,7 +34,7 @@ export const HeroBanner = ({
 					backgroundSize: [null, 'auto 100%'],
 				})}
 			>
-				<Content>{children}</Content>
+				<Content spacing="sm">{children}</Content>
 			</Box>
 		</Box>
 	);

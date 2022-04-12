@@ -15,19 +15,17 @@ group: Layout
 		/>
 	}
 >
-	<Box
-		maxWidth={{
-			lg: tokens.maxWidth.bodyText,
-			sm: '50%',
-		}}
-		width="100%"
-	>
-		<Stack gap={1.5}>
-			<Stack gap={0.5}>
-				<Heading type="h1">Hero banner title</Heading>
-				<Text as="p">Hero banner paragraph text</Text>
+	<Box maxWidth={{ sm: '50%', lg: tokens.maxWidth.bodyText }} width="100%">
+		<Stack gap={[1.5, 2]}>
+			<Stack gap={[0.5, 1]}>
+				<Heading type="h1" fontSize="xxxl">
+					Hero banner title
+				</Heading>
+				<Text as="p" fontSize="md">
+					Hero banner paragraph text
+				</Text>
 			</Stack>
-			<SearchBox onSubmit={() => {}}>
+			<SearchBox onSubmit={console.log}>
 				<SearchBoxInput label="Search this website" />
 				<SearchBoxButton>Search</SearchBoxButton>
 			</SearchBox>
