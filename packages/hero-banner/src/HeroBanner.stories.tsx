@@ -6,10 +6,11 @@ import {
 	SearchBoxButton,
 } from '@ag.ds-next/search-box';
 import { Heading } from '@ag.ds-next/heading';
-import { Box, Stack } from '@ag.ds-next/box';
+import { Box, Flex, Stack } from '@ag.ds-next/box';
 import { Text } from '@ag.ds-next/text';
 import { HeroBanner } from './HeroBanner';
 import { tokens } from '@ag.ds-next/core';
+import { Button } from '@ag.ds-next/button';
 
 export default {
 	title: 'layout/HeroBanner',
@@ -70,10 +71,34 @@ DarkAlt.args = {
 	variant: 'darkAlt',
 };
 
+export const Buttons = Template.bind({});
+Buttons.args = {
+	children: (
+		<Box
+			maxWidth={tokens.maxWidth.bodyText}
+			width="100%"
+			css={{ margin: '0 auto' }}
+		>
+			<Stack gap={1.5}>
+				<Stack gap={0.5}>
+					<Heading type="h1">Hero banner title</Heading>
+					<Text as="p">Hero banner paragraph text</Text>
+				</Stack>
+				<Flex gap={1}>
+					<Button>Primary button</Button>
+					<Button variant="secondary">Secondary button</Button>
+				</Flex>
+			</Stack>
+		</Box>
+	),
+};
+
 export const Centered = Template.bind({});
 Centered.args = {
 	children: (
-		<Box
+		<Flex
+			flexDirection="column"
+			alignItems="center"
 			maxWidth={tokens.maxWidth.bodyText}
 			width="100%"
 			css={{ margin: '0 auto', textAlign: 'center' }}
@@ -83,11 +108,11 @@ Centered.args = {
 					<Heading type="h1">Hero banner title</Heading>
 					<Text as="p">Hero banner paragraph text</Text>
 				</Stack>
-				<SearchBox onSubmit={console.log}>
-					<SearchBoxInput label="Search this website" />
-					<SearchBoxButton>Search</SearchBoxButton>
-				</SearchBox>
+				<Flex gap={1}>
+					<Button>Primary button</Button>
+					<Button variant="secondary">Secondary button</Button>
+				</Flex>
 			</Stack>
-		</Box>
+		</Flex>
 	),
 };
