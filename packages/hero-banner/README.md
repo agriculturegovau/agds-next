@@ -17,7 +17,7 @@ group: Layout
 >
 	<Box
 		maxWidth={{
-			lg: '42em',
+			lg: tokens.maxWidth.bodyText,
 			sm: '50%',
 		}}
 		width="100%"

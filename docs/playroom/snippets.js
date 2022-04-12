@@ -1,3 +1,5 @@
+import { tokens } from '@ag.ds-next/core';
+
 const snippits = [
 	{
 		group: 'Boilerplate',
@@ -523,6 +525,39 @@ items={[
 		name: 'Basic',
 		code: `<DateRangePicker value={{ from: new Date('2000-01-03'), to: new Date('2000-01-07') }} onChange={() => {}}
   />`,
+	},
+	{
+		group: 'HeroBanner',
+		name: 'Basic',
+		code: `<HeroBanner
+    backgroundImageSrc="https://steelthreads.github.io/export-landing/homepage-harvest-medium.jpg"
+    mobileImage={
+      <img
+        alt="Hero image"
+        src="https://steelthreads.github.io/export-landing/homepage-harvest-medium.jpg"
+        style={{ height: 'auto', width: '100%' }}
+      />
+    }
+  >
+    <Box
+      maxWidth={{
+        lg: '${tokens.maxWidth.bodyText}',
+        sm: '50%',
+      }}
+      width="100%"
+    >
+      <Stack gap={1.5}>
+        <Stack gap={0.5}>
+          <Heading type="h1">Hero banner title</Heading>
+          <Text as="p">Hero banner paragraph text</Text>
+        </Stack>
+        <SearchBox onSubmit={() => {}}>
+          <SearchBoxInput label="Search this website" />
+          <SearchBoxButton>Search</SearchBoxButton>
+        </SearchBox>
+      </Stack>
+    </Box>
+  </HeroBanner>`,
 	},
 ];
 
