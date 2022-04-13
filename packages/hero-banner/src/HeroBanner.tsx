@@ -49,14 +49,16 @@ export const HeroBanner = ({
 						paddingY={[0, 1, 1, 2]}
 					>
 						<Stack gap={[1.5, 2]}>
-							<Stack gap={[0.5, 1]}>
-								<Heading type="h1" fontSize="xxxl">
-									{title}
-								</Heading>
-								<Text as="p" fontSize="md">
-									{subTitle}
-								</Text>
-							</Stack>
+							{title || subTitle ? (
+								<Stack gap={[0.5, 1]}>
+									<Heading type="h1" fontSize="xxxl">
+										{title}
+									</Heading>
+									<Text as="p" fontSize="md">
+										{subTitle}
+									</Text>
+								</Stack>
+							) : null}
 							{children}
 						</Stack>
 					</Box>
