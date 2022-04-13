@@ -63,34 +63,33 @@ LightAltVariant.args = {
 	variant: 'lightAlt',
 };
 
-export const HeaderRightLink: ComponentStory<typeof MainNav> = (args) => {
-	return (
-		<MainNav
-			{...args}
-			rightContent={
-				<MainNavLink href="#login" label="Sign in" icon={AvatarIcon} />
-			}
-		/>
-	);
-};
+export const HeaderRightLink = Template.bind({});
 HeaderRightLink.args = {
 	...defaultArgs,
+	rightContent: <MainNavLink href="#login" label="Sign in" icon={AvatarIcon} />,
 };
 
-export const HeaderRightButton: ComponentStory<typeof MainNav> = (args) => {
-	return (
-		<MainNav
-			{...args}
-			rightContent={
-				<MainNavButton
-					onClick={() => console.log('Button press')}
-					label="Sign in"
-					icon={AvatarIcon}
-				/>
-			}
-		/>
-	);
-};
+export const HeaderRightButton = Template.bind({});
 HeaderRightButton.args = {
 	...defaultArgs,
+	rightContent: (
+		<MainNavButton
+			onClick={() => console.log('Button press')}
+			label="Sign in"
+			icon={AvatarIcon}
+		/>
+	),
+};
+
+export const NoLinks = Template.bind({});
+NoLinks.args = {
+	...defaultArgs,
+	links: undefined,
+	rightContent: (
+		<MainNavButton
+			onClick={() => console.log('Button press')}
+			label="Sign in"
+			icon={AvatarIcon}
+		/>
+	),
 };
