@@ -1,5 +1,6 @@
 import React, { PropsWithChildren, ReactNode } from 'react';
 import FocusLock from 'react-focus-lock';
+import { Global } from '@emotion/react';
 import { Box, Flex, backgroundColorMap } from '@ag.ds-next/box';
 import {
 	boxPalette,
@@ -12,7 +13,7 @@ import {
 
 import { localPalette, localPaletteVars } from './utils';
 import { CloseButton, ToggleButton } from './MenuButtons';
-import { Global } from '@emotion/react';
+import { NavListLink } from './NavList';
 
 const variantMap = {
 	light: {
@@ -47,11 +48,14 @@ const variantMap = {
 	},
 } as const;
 
+export type NavContainerVariant = keyof typeof variantMap;
+
 export type NavContainerProps = PropsWithChildren<{
 	id?: string;
 	'aria-label': string;
 	rightContent?: ReactNode;
-	variant: keyof typeof variantMap;
+	variant: NavContainerVariant;
+	links?: NavListLink[];
 }>;
 
 export function NavContainer({
@@ -60,6 +64,7 @@ export function NavContainer({
 	'aria-label': ariaLabel,
 	children,
 	variant,
+	links,
 }: NavContainerProps) {
 	const { background, bottomBar, hover, palette } = variantMap[variant];
 
@@ -97,7 +102,7 @@ export function NavContainer({
 					width="100%"
 					paddingX={{ xs: 0.75, lg: 2 }}
 				>
-					<ToggleButton onClick={open} />
+					{links && links.length > 0 ? <ToggleButton onClick={open} /> : null}
 					<FocusLock returnFocus disabled={!menuVisiblyOpen}>
 						<div
 							role={menuVisiblyOpen ? 'dialog' : 'none'}
