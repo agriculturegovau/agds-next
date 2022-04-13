@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import { NavContainer, NavContainerProps } from './NavContainer';
+import { NavContainer, NavContainerVariant } from './NavContainer';
 import { NavList, NavListLink } from './NavList';
 
 import { findBestMatch } from './utils';
@@ -8,9 +8,9 @@ export type MainNavProps = React.PropsWithChildren<{
 	activePath?: string;
 	'aria-label'?: string;
 	id?: string;
-	links: NavListLink[];
+	links?: NavListLink[];
 	rightContent?: ReactNode;
-	variant: NavContainerProps['variant'];
+	variant: NavContainerVariant;
 }>;
 
 export function MainNav({
@@ -28,6 +28,7 @@ export function MainNav({
 			id={id}
 			aria-label={ariaLabel}
 			rightContent={rightContent}
+			links={links}
 		>
 			<NavList links={links} activePath={bestMatch} />
 		</NavContainer>

@@ -14,7 +14,7 @@ export type NavListLink = Omit<LinkProps, 'children'> & {
 };
 
 export type NavListProps = {
-	links: NavListLink[];
+	links?: NavListLink[];
 	activePath?: string;
 };
 
@@ -36,7 +36,7 @@ export function NavList({ links, activePath }: NavListProps) {
 				},
 			}}
 		>
-			{links.map(({ href, label, ...props }, index) => {
+			{links?.map(({ href, label, ...props }, index) => {
 				const active = href === activePath;
 				return (
 					<NavListItem key={index} active={active}>
