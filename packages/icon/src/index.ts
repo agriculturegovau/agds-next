@@ -25,4 +25,5 @@ export { SearchIcon } from './icons/SearchIcon';
 export { SuccessIcon } from './icons/SuccessIcon';
 export { SuccessFilledIcon } from './icons/SuccessFilledIcon';
 export { ProgressTodoIcon } from './icons/ProgressTodoIcon';
+export { UploadIcon } from './icons/UploadIcon';
 export { WarningFilledIcon } from './icons/WarningFilledIcon';
