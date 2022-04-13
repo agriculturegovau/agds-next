@@ -11,8 +11,11 @@ export const localPalette = {
 	bottomBar: `var(${localPaletteVars.bottomBar})`,
 };
 
-export function findBestMatch(links: NavListLink[], activePath?: string) {
-	if (!activePath) return '';
+export function findBestMatch(
+	links: NavListLink[] | undefined,
+	activePath?: string
+) {
+	if (!activePath || !links) return '';
 	let bestMatch = '';
 
 	for (const link of links) {

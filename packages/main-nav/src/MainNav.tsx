@@ -21,7 +21,7 @@ export function MainNav({
 	id,
 	'aria-label': ariaLabel = 'main',
 }: MainNavProps) {
-	const bestMatch = links ? findBestMatch(links, activePath) : undefined;
+	const bestMatch = findBestMatch(links, activePath);
 	return (
 		<NavContainer
 			variant={variant}
