@@ -3,7 +3,7 @@ import { Box, Stack } from '@ag.ds-next/box';
 import { Content } from '@ag.ds-next/content';
 import { boxPalette, mq, tokens } from '@ag.ds-next/core';
 import { Heading } from '@ag.ds-next/heading';
-import { Text } from '@ag.ds-next/text/src';
+import { Text } from '@ag.ds-next/text';
 
 export type HeroBannerProps = PropsWithChildren<{
 	backgroundImageSrc?: string;
@@ -42,7 +42,7 @@ export const HeroBanner = ({
 						: undefined
 				}
 			>
-				<Content spacing="sm">
+				<Content as="div" spacing="sm">
 					<Box
 						width="100%"
 						maxWidth={[null, '66%', '66%', tokens.maxWidth.bodyText]}
