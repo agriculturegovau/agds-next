@@ -16,7 +16,6 @@ group: Layout
 	}
 	subTitle="Hero banner paragraph text"
 	title="Hero banner title"
-	variant="light"
 >
 	<SearchBox onSubmit={() => {}}>
 		<SearchBoxInput label="Search this website" />
@@ -39,7 +38,6 @@ group: Layout
 	}
 	subTitle="Hero banner paragraph text"
 	title="Hero banner title"
-	variant="light"
 >
 	<Flex flexDirection={['column', 'row']} gap={1}>
 		<Button>Primary button</Button>
