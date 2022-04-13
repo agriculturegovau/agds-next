@@ -5,11 +5,8 @@ import {
 	SearchBoxInput,
 	SearchBoxButton,
 } from '@ag.ds-next/search-box';
-import { Heading } from '@ag.ds-next/heading';
-import { Box, Flex, Stack } from '@ag.ds-next/box';
-import { Text } from '@ag.ds-next/text';
+import { Flex } from '@ag.ds-next/box';
 import { HeroBanner } from './HeroBanner';
-import { tokens } from '@ag.ds-next/core';
 import { Button } from '@ag.ds-next/button';
 
 export default {
@@ -31,27 +28,13 @@ const commonArgs = {
 	),
 	backgroundImageSrc:
 		'https://steelthreads.github.io/export-landing/homepage-harvest-medium.jpg',
+	title: 'Hero banner title',
+	subTitle: 'Hero banner paragraph text',
 	children: (
-		<Box
-			width="100%"
-			maxWidth={[null, '66%', '66%', tokens.maxWidth.bodyText]}
-			paddingY={[0, 1, 1, 2]}
-		>
-			<Stack gap={[1.5, 2]}>
-				<Stack gap={[0.5, 1]}>
-					<Heading type="h1" fontSize="xxxl">
-						Hero banner title
-					</Heading>
-					<Text as="p" fontSize="md">
-						Hero banner paragraph text
-					</Text>
-				</Stack>
-				<SearchBox onSubmit={console.log}>
-					<SearchBoxInput label="Search this website" />
-					<SearchBoxButton>Search</SearchBoxButton>
-				</SearchBox>
-			</Stack>
-		</Box>
+		<SearchBox onSubmit={console.log}>
+			<SearchBoxInput label="Search this website" />
+			<SearchBoxButton>Search</SearchBoxButton>
+		</SearchBox>
 	),
 };
 
@@ -81,55 +64,12 @@ DarkAlt.args = {
 
 export const Buttons = Template.bind({});
 Buttons.args = {
+	title: 'Hero banner title',
+	subTitle: 'Hero banner paragraph text',
 	children: (
-		<Box
-			maxWidth={tokens.maxWidth.bodyText}
-			width="100%"
-			paddingY={[0, 1, 1, 2]}
-		>
-			<Stack gap={[1.5, 2]}>
-				<Stack gap={[0.5, 1]}>
-					<Heading type="h1" fontSize="xxxl">
-						Hero banner title
-					</Heading>
-					<Text as="p" fontSize="md">
-						Hero banner paragraph text
-					</Text>
-				</Stack>
-				<Flex flexDirection={['column', 'row']} gap={1}>
-					<Button>Primary button</Button>
-					<Button variant="secondary">Secondary button</Button>
-				</Flex>
-			</Stack>
-		</Box>
-	),
-};
-
-export const Centered = Template.bind({});
-Centered.args = {
-	children: (
-		<Flex
-			flexDirection="column"
-			alignItems="center"
-			maxWidth={tokens.maxWidth.bodyText}
-			width="100%"
-			paddingY={[0, 1, 1, 2]}
-			css={{ margin: '0 auto', textAlign: 'center' }}
-		>
-			<Stack gap={[1.5, 2]}>
-				<Stack gap={[0.5, 1]}>
-					<Heading type="h1" fontSize="xxxl">
-						Hero banner title
-					</Heading>
-					<Text as="p" fontSize="md">
-						Hero banner paragraph text
-					</Text>
-				</Stack>
-				<Flex flexDirection={['column', 'row']} gap={1}>
-					<Button>Primary button</Button>
-					<Button variant="secondary">Secondary button</Button>
-				</Flex>
-			</Stack>
+		<Flex flexDirection={['column', 'row']} gap={1}>
+			<Button>Primary button</Button>
+			<Button variant="secondary">Secondary button</Button>
 		</Flex>
 	),
 };

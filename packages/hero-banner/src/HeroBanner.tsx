@@ -1,12 +1,16 @@
 import { PropsWithChildren, ReactNode } from 'react';
-import { Box } from '@ag.ds-next/box';
+import { Box, Stack } from '@ag.ds-next/box';
 import { Content } from '@ag.ds-next/content';
-import { boxPalette, mq } from '@ag.ds-next/core';
+import { boxPalette, mq, tokens } from '@ag.ds-next/core';
+import { Heading } from '@ag.ds-next/heading';
+import { Text } from '@ag.ds-next/text/src';
 
 export type HeroBannerProps = PropsWithChildren<{
 	backgroundImageSrc?: string;
 	mobileImage?: ReactNode;
 	variant?: HeroBannerVariant;
+	title?: string;
+	subTitle: string;
 }>;
 
 export const HeroBanner = ({
@@ -14,6 +18,8 @@ export const HeroBanner = ({
 	mobileImage,
 	variant = 'lightAlt',
 	children,
+	title,
+	subTitle,
 }: HeroBannerProps) => {
 	const { palette, background, backgroundVar } = variantMap[variant];
 	return (
@@ -36,7 +42,25 @@ export const HeroBanner = ({
 						: undefined
 				}
 			>
-				<Content spacing="sm">{children}</Content>
+				<Content spacing="sm">
+					<Box
+						width="100%"
+						maxWidth={[null, '66%', '66%', tokens.maxWidth.bodyText]}
+						paddingY={[0, 1, 1, 2]}
+					>
+						<Stack gap={[1.5, 2]}>
+							<Stack gap={[0.5, 1]}>
+								<Heading type="h1" fontSize="xxxl">
+									{title}
+								</Heading>
+								<Text as="p" fontSize="md">
+									{subTitle}
+								</Text>
+							</Stack>
+							{children}
+						</Stack>
+					</Box>
+				</Content>
 			</Box>
 		</Box>
 	);
