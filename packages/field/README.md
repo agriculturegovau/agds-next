@@ -61,12 +61,12 @@ Error messages are used to notify the user when a form field has not passed vali
 </Stack>
 ```
 
-### Required label
+### Required
 
-By default, "(optional)" or "(required)" will be appended to labels. To disable this, set the `requiredLabel` prop to `false`.
+The `Field` component will always append `(optional)` to the label based on the `required` prop.
 
 ```jsx live
-<Field label="Start date" requiredLabel={false}>
+<Field label="Start date" required={false}>
 	{(a11yProps) => <select {...a11yProps} />}
 </Field>
 ```
