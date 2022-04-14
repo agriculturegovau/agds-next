@@ -1,13 +1,11 @@
 import { PropsWithChildren } from 'react';
 import { Flex, Stack } from '@ag.ds-next/box';
-import { Text } from '@ag.ds-next/text';
 import { mapSpacing } from '@ag.ds-next/core';
 import {
 	FieldContainer,
 	FieldHint,
 	FieldLabel,
 	FieldMessage,
-	FieldSecondaryLabel,
 } from '@ag.ds-next/field';
 
 export type ControlGroupProps = PropsWithChildren<{
@@ -27,6 +25,7 @@ export const ControlGroup = ({
 	hint,
 	invalid,
 	label,
+	secondaryLabel,
 	message,
 	required,
 	id,
@@ -34,7 +33,11 @@ export const ControlGroup = ({
 	<FieldContainer invalid={invalid} id={id}>
 		<fieldset css={{ padding: 0, margin: 0, border: 'none' }}>
 			{label ? (
-				<FieldLabel as="legend" required={required}>
+				<FieldLabel
+					as="legend"
+					required={required}
+					secondaryLabel={secondaryLabel}
+				>
 					{label}
 				</FieldLabel>
 			) : null}
