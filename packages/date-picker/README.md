@@ -116,7 +116,6 @@ Disabled input elements are unusable and can not be clicked. This prevents a use
 			onChange={setValue}
 			fromLabel="From"
 			toLabel="To"
-			requiredLabel={false}
 		/>
 	);
 };

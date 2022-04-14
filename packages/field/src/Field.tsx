@@ -1,7 +1,7 @@
-import { ReactNode, useMemo } from 'react';
+import { ReactNode } from 'react';
 import { useId } from '@reach/auto-id';
 import { FieldContainer } from './FieldContainer';
-import { FieldLabel, FieldSecondaryLabel } from './FieldLabel';
+import { FieldLabel } from './FieldLabel';
 import { FieldHint } from './FieldHint';
 import { FieldMessage } from './FieldMessage';
 
@@ -12,11 +12,8 @@ export type FieldProps = {
 	invalid?: boolean;
 	label: string;
 	secondaryLabel?: string;
-
 	message: string | undefined;
 	required: boolean;
-	requiredLabel?: boolean;
-
 	valid?: boolean;
 };
 
@@ -26,7 +23,7 @@ export const Field = ({
 	id,
 	invalid,
 	label,
-	secondaryLabel: secondaryLabelProp,
+	secondaryLabel,
 	message,
 	required,
 	valid,
@@ -43,18 +40,14 @@ export const Field = ({
 		invalid,
 	});
 
-	const secondaryLabel = useMemo(() => {
-		if (secondaryLabelProp) return secondaryLabelProp;
-		if (!required) return `(optional)`;
-	}, [required, secondaryLabelProp]);
-
 	return (
 		<FieldContainer invalid={invalid}>
-			<FieldLabel htmlFor={fieldId}>
+			<FieldLabel
+				htmlFor={fieldId}
+				secondaryLabel={secondaryLabel}
+				required={required}
+			>
 				{label}
-				{secondaryLabel ? (
-					<FieldSecondaryLabel>{secondaryLabel}</FieldSecondaryLabel>
-				) : null}
 			</FieldLabel>
 			{hint ? <FieldHint id={hintId}>{hint}</FieldHint> : null}
 			{message && (invalid || valid) ? (

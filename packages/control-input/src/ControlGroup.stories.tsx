@@ -88,9 +88,3 @@ Invalid.args = {
 	block: true,
 	invalid: true,
 };
-
-export const RequiredLabel = Template.bind({});
-RequiredLabel.args = {
-	label: 'Choose your interests',
-	requiredLabel: false,
-};

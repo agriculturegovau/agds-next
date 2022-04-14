@@ -101,11 +101,3 @@ Password.args = {
 	type: 'password',
 	required: true,
 };
-
-export const RequiredLabel: ComponentStory<typeof TextInput> = (args) => (
-	<TextInput {...args} />
-);
-RequiredLabel.args = {
-	label: 'Example',
-	requiredLabel: false,
-};

@@ -65,12 +65,6 @@ Block.args = {
 	label: 'Block',
 };
 
-export const RequiredLabel = Template.bind({});
-RequiredLabel.args = {
-	label: 'Example',
-	requiredLabel: false,
-};
-
 export const ScrollExample: ComponentStory<typeof DatePicker> = (args) => (
 	<Box>
 		<Box height="1000px"></Box>

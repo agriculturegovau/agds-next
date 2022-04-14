@@ -1,24 +1,28 @@
-import type { PropsWithChildren, ReactNode } from 'react';
+import { ElementType, PropsWithChildren, useMemo } from 'react';
 import { Text } from '@ag.ds-next/text';
 
 export type FieldLabelProps = PropsWithChildren<{
-	htmlFor: string;
+	as?: ElementType;
+	htmlFor?: string;
+	required?: boolean;
+	secondaryLabel?: string;
 }>;
 
-export const FieldLabel = ({ children, htmlFor }: FieldLabelProps) => (
-	<Text
-		as="label"
-		htmlFor={htmlFor}
-		display="flex"
-		gap={0.25}
-		fontWeight="bold"
-	>
-		{children}
-	</Text>
-);
-
-export type FieldSecondaryLabelProps = { children: ReactNode };
-
-export const FieldSecondaryLabel = ({ children }: FieldSecondaryLabelProps) => (
-	<Text color="muted">{children}</Text>
-);
+export const FieldLabel = ({
+	as = 'label',
+	children,
+	htmlFor,
+	required,
+	secondaryLabel: secondaryLabelProp,
+}: FieldLabelProps) => {
+	const secondaryLabel = useMemo(() => {
+		if (secondaryLabelProp) return secondaryLabelProp;
+		if (!required) return `(optional)`;
+	}, [required, secondaryLabelProp]);
+	return (
+		<Text as={as} htmlFor={htmlFor} display="flex" gap={0.25} fontWeight="bold">
+			{children}
+			{secondaryLabel ? <Text color="muted">{secondaryLabel}</Text> : null}
+		</Text>
+	);
+};

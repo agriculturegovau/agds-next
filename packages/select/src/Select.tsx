@@ -28,7 +28,6 @@ export type Options = (Option | OptionGroup)[];
 export type SelectProps = SelectHTMLAttributes<HTMLSelectElement> & {
 	label: string;
 	required?: boolean;
-	requiredLabel?: boolean;
 	hint?: string;
 	message?: string;
 	invalid?: boolean;
@@ -44,7 +43,6 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(
 		{
 			label,
 			required,
-			requiredLabel,
 			hint,
 			message,
 			invalid,
@@ -63,7 +61,6 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(
 			<Field
 				label={label}
 				required={Boolean(required)}
-				requiredLabel={requiredLabel}
 				hint={hint}
 				message={message}
 				invalid={invalid}

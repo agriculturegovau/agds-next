@@ -84,11 +84,3 @@ Modular.args = {
 	hint: 'Hint',
 	message: 'Message',
 };
-
-export const RequiredLabel: ComponentStory<typeof Field> = (args) => (
-	<Field {...args}>{(a11yProps) => <input {...a11yProps} />}</Field>
-);
-RequiredLabel.args = {
-	label: 'Example',
-	requiredLabel: false,
-};
