@@ -85,11 +85,3 @@ export const MaxWidths: ComponentStory<typeof Textarea> = (args) => (
 	</Stack>
 );
 MaxWidths.args = {};
-
-export const RequiredLabel: ComponentStory<typeof Textarea> = (args) => (
-	<Textarea {...args} />
-);
-RequiredLabel.args = {
-	label: 'Example',
-	requiredLabel: false,
-};
