@@ -1,4 +1,4 @@
-import type { PropsWithChildren } from 'react';
+import type { PropsWithChildren, ReactNode } from 'react';
 import { Text } from '@ag.ds-next/text';
 
 export type FieldLabelProps = PropsWithChildren<{
@@ -6,7 +6,19 @@ export type FieldLabelProps = PropsWithChildren<{
 }>;
 
 export const FieldLabel = ({ children, htmlFor }: FieldLabelProps) => (
-	<Text as="label" htmlFor={htmlFor} display="block" fontWeight="bold">
+	<Text
+		as="label"
+		htmlFor={htmlFor}
+		display="flex"
+		gap={0.25}
+		fontWeight="bold"
+	>
 		{children}
 	</Text>
+);
+
+export type FieldSecondaryLabelProps = { children: ReactNode };
+
+export const FieldSecondaryLabel = ({ children }: FieldSecondaryLabelProps) => (
+	<Text color="muted">{children}</Text>
 );

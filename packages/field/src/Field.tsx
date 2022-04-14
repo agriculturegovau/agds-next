@@ -1,10 +1,9 @@
-import { ReactNode } from 'react';
+import { ReactNode, useMemo } from 'react';
+import { useId } from '@reach/auto-id';
 import { FieldContainer } from './FieldContainer';
-import { FieldLabel } from './FieldLabel';
+import { FieldLabel, FieldSecondaryLabel } from './FieldLabel';
 import { FieldHint } from './FieldHint';
 import { FieldMessage } from './FieldMessage';
-import { Text } from '@ag.ds-next/text';
-import { useId } from '@reach/auto-id';
 
 export type FieldProps = {
 	children: ((allyProps: A11yProps) => ReactNode) | ReactNode;
@@ -12,9 +11,12 @@ export type FieldProps = {
 	id?: string;
 	invalid?: boolean;
 	label: string;
+	secondaryLabel?: string;
+
 	message: string | undefined;
 	required: boolean;
 	requiredLabel?: boolean;
+
 	valid?: boolean;
 };
 
@@ -24,12 +26,13 @@ export const Field = ({
 	id,
 	invalid,
 	label,
+	secondaryLabel: secondaryLabelProp,
 	message,
 	required,
-	requiredLabel = true,
 	valid,
 }: FieldProps) => {
 	const { fieldId, hintId, messageId } = useFieldIds(id);
+
 	const a11yProps = useFieldA11yProps({
 		required,
 		fieldId,
@@ -39,15 +42,18 @@ export const Field = ({
 		hintId,
 		invalid,
 	});
+
+	const secondaryLabel = useMemo(() => {
+		if (secondaryLabelProp) return secondaryLabelProp;
+		if (!required) return `(optional)`;
+	}, [required, secondaryLabelProp]);
+
 	return (
 		<FieldContainer invalid={invalid}>
 			<FieldLabel htmlFor={fieldId}>
 				{label}
-				{requiredLabel ? (
-					<Text as="span" color="muted">
-						{' '}
-						({required ? 'required' : 'optional'})
-					</Text>
+				{secondaryLabel ? (
+					<FieldSecondaryLabel>{secondaryLabel}</FieldSecondaryLabel>
 				) : null}
 			</FieldLabel>
 			{hint ? <FieldHint id={hintId}>{hint}</FieldHint> : null}
