@@ -1,5 +1,5 @@
 ---
-'@ag.ds-next/field': patch
+'@ag.ds-next/field': minor
 ---
 
 Added `secondaryLabel` prop

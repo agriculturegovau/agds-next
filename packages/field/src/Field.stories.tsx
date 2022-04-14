@@ -55,11 +55,21 @@ Valid.args = {
 	valid: true,
 };
 
+export const SecondaryLabel: ComponentStory<typeof Field> = (args) => (
+	<Field {...args}>{(a11yProps) => <input {...a11yProps} />}</Field>
+);
+SecondaryLabel.args = {
+	label: 'Valid',
+	secondaryLabel: '(dd/mm/yyy)',
+};
+
 export const Modular: ComponentStory<typeof Field> = ({
 	label,
+	secondaryLabel,
 	hint,
 	message,
 	invalid,
+	required,
 }) => {
 	const { fieldId, messageId, hintId } = useFieldIds();
 	const a11yProps = useFieldA11yProps({
@@ -72,7 +82,13 @@ export const Modular: ComponentStory<typeof Field> = ({
 	});
 	return (
 		<FieldContainer invalid={invalid}>
-			<FieldLabel htmlFor={fieldId}>{label}</FieldLabel>
+			<FieldLabel
+				htmlFor={fieldId}
+				required={required}
+				secondaryLabel={secondaryLabel}
+			>
+				{label}
+			</FieldLabel>
 			{hint ? <FieldHint id={hintId}>{hint}</FieldHint> : null}
 			{message ? <FieldMessage id={messageId}>{message}</FieldMessage> : null}
 			<input {...a11yProps} />
