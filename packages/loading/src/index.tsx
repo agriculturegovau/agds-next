@@ -1,2 +1,2 @@
-export * from './LoadingDots';
 export * from './LoadingBlanket';
+export * from './LoadingDots';

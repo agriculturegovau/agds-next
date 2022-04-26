@@ -1,6 +1,7 @@
 import { ReactNode } from 'react';
-import { Flex } from '@ag.ds-next/box';
+import { Flex, Stack } from '@ag.ds-next/box';
 import { globalPalette } from '@ag.ds-next/core';
+import { Content } from '@ag.ds-next/content';
 import { Text } from '@ag.ds-next/text';
 import { LoadingDots } from './LoadingDots';
 
@@ -23,24 +24,20 @@ export const LoadingBlanket = ({ fullScreen, label }: LoadingBlanketProps) => (
 			textAlign: 'center',
 		}}
 	>
-		<Flex
-			flexDirection="column"
-			alignItems="center"
-			gap={1}
-			padding={2}
-			rounded
-		>
-			<LoadingDots size={fullScreen ? 'lg' : 'md'} />
-			{label ? (
-				<Text
-					fontSize="lg"
-					fontWeight="bold"
-					lineHeight="heading"
-					css={{ color: globalPalette.lightForegroundText }}
-				>
-					{label}
-				</Text>
-			) : null}
-		</Flex>
+		<Content>
+			<Stack gap={1} alignItems="center" css={{ textAlign: 'center' }}>
+				<LoadingDots size={fullScreen ? 'lg' : 'md'} />
+				{label ? (
+					<Text
+						fontSize="lg"
+						fontWeight="bold"
+						lineHeight="heading"
+						css={{ color: globalPalette.lightForegroundText }}
+					>
+						{label}
+					</Text>
+				) : null}
+			</Stack>
+		</Content>
 	</Flex>
 );
