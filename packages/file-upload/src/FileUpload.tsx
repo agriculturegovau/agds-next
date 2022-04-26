@@ -1,19 +1,14 @@
 import React, { forwardRef } from 'react';
 import { useDropzone, DropzoneOptions } from 'react-dropzone';
-import { Box, Flex, Stack } from '@ag.ds-next/box';
+import { Flex, Stack } from '@ag.ds-next/box';
 import { Button } from '@ag.ds-next/button';
 import { packs, boxPalette, globalPalette, tokens } from '@ag.ds-next/core';
 import { Field } from '@ag.ds-next/field';
 import { UploadIcon } from '@ag.ds-next/icon';
 import { Text } from '@ag.ds-next/text';
 
-const formatFileSize = (fileSize) => `${fileSize} bytes`;
-
-const getFilesTotal = function (files: File[]) {
-	const label = files.length > 1 ? 'files' : 'file';
-	const size = files.reduce((memo, { size }) => memo + size, 0);
-	return `${files.length} ${label} selected (${formatFileSize(size)})`;
-};
+import { FileUploadFile } from './FileUploadFile';
+import { getFilesTotal } from './utils';
 
 export type FileUploadProps = {
 	accept: DropzoneOptions['accept'];
@@ -70,6 +65,7 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 				>
 					{(allyProps) => (
 						<Flex
+							{...getRootProps()}
 							gap={1}
 							padding={1.5}
 							alignItems="center"
@@ -77,7 +73,6 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 							border
 							rounded
 							background="shade"
-							{...getRootProps()}
 							css={styles}
 						>
 							<UploadIcon size="lg" color="action" />
@@ -137,30 +132,3 @@ export const fileInputStyles = ({
 
 		'&:focus': packs.outline,
 	} as const);
-
-const FileUploadFile = ({ file }: { file: { path: string; size: number } }) => (
-	<Flex
-		background="shade"
-		rounded
-		alignItems="center"
-		as="li"
-		key={file.path}
-		justifyContent="space-between"
-	>
-		<Text padding={1}>
-			{file.path} ({file.size} bytes)
-		</Text>
-
-		<Button variant="tertiary">Remove file</Button>
-		{/* <Box
-			as="button"
-			color="action"
-			background="shade"
-			css={{
-				textDecoration: 'underline',
-			}}
-		>
-			Remove file
-		</Box> */}
-	</Flex>
-);
