@@ -181,13 +181,3 @@ GroupedOptions.args = {
 		},
 	],
 };
-
-export const RequiredLabel: ComponentStory<typeof Select> = (args) => (
-	<Select {...args} />
-);
-RequiredLabel.args = {
-	label: 'Example',
-	placeholder: 'Please select',
-	options: EXAMPLE_OPTIONS,
-	requiredLabel: false,
-};

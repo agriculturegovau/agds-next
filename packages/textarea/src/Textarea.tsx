@@ -5,7 +5,6 @@ import { textInputStyles } from '@ag.ds-next/text-input';
 export type TextareaProps = TextareaHTMLAttributes<HTMLTextAreaElement> & {
 	label: string;
 	required?: boolean;
-	requiredLabel?: boolean;
 	hint?: string;
 	message?: string;
 	invalid?: boolean;
@@ -19,7 +18,6 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
 		{
 			label,
 			required,
-			requiredLabel,
 			hint,
 			message,
 			invalid,
@@ -43,7 +41,6 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
 			<Field
 				label={label}
 				required={Boolean(required)}
-				requiredLabel={requiredLabel}
 				hint={hint}
 				message={message}
 				invalid={invalid}

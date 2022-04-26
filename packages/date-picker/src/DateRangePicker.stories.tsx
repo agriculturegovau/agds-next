@@ -45,9 +45,6 @@ Labels.args = {
 	toLabel: 'To',
 };
 
-export const RequiredLabel = Template.bind({});
-RequiredLabel.args = { requiredLabel: false };
-
 export const FiltersExample = () => {
 	const [option, setOption] = useState<string>();
 

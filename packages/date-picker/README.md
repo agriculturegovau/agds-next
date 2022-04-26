@@ -30,28 +30,6 @@ Use the `block` prop to expand the component to fill the available space.
 };
 ```
 
-### Required
-
-The `DatePicker` component will always append `(optional)` or `(required)` to the label based on the `required` prop.
-
-```jsx live
-() => {
-	const [value, setValue] = React.useState();
-	return (
-		<Stack gap={1}>
-			<DatePicker label="Default" value={value} onChange={setValue} />
-			<DatePicker label="Required" value={value} onChange={setValue} required />
-			<DatePicker
-				label="Optional"
-				value={value}
-				onChange={setValue}
-				required={false}
-			/>
-		</Stack>
-	);
-};
-```
-
 ### Valid and invalid inputs
 
 Use the `invalid` and `valid` props to indicate whether user input is valid (validates according to the elements settings) or invalid (does not validate according to the elements settings).
@@ -116,7 +94,6 @@ Disabled input elements are unusable and can not be clicked. This prevents a use
 			onChange={setValue}
 			fromLabel="From"
 			toLabel="To"
-			requiredLabel={false}
 		/>
 	);
 };

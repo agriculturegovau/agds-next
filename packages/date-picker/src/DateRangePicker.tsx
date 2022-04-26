@@ -30,7 +30,6 @@ export type DateRangePickerProps = CalendarProps & {
 	fromLabel?: string;
 	toLabel?: string;
 	required?: boolean;
-	requiredLabel?: boolean;
 	placeholder?: string;
 };
 
@@ -41,7 +40,6 @@ export const DateRangePicker = ({
 	fromLabel = 'Start date',
 	toLabel = 'End date',
 	required,
-	requiredLabel,
 }: DateRangePickerProps) => {
 	const calendarRef = useRef<CalendarRef>(null);
 	const [isCalendarOpen, openCalendar, closeCalendar] = useTernaryState(false);
@@ -169,7 +167,6 @@ export const DateRangePicker = ({
 					buttonOnClick={onFromTriggerClick}
 					disabled={disabled}
 					required={required}
-					requiredLabel={requiredLabel}
 				/>
 				<DateInput
 					label={toLabel}
@@ -179,7 +176,6 @@ export const DateRangePicker = ({
 					buttonOnClick={onToTriggerClick}
 					disabled={disabled}
 					required={required}
-					requiredLabel={requiredLabel}
 				/>
 			</Flex>
 			{isCalendarOpen ? (

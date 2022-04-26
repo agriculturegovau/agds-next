@@ -22,7 +22,7 @@ Use the `block` prop to expand the component to fill the available space.
 
 ### Required
 
-The `Textarea` component will always append `(optional)` or `(required)` to the label based on the `required` prop.
+The `Textarea` component will always append `(optional)` to the label based on the `required` prop.
 
 ```jsx live
 <Stack gap={1}>
