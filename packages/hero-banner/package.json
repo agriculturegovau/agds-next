@@ -1,0 +1,25 @@
+{
+	"name": "@ag.ds-next/hero-banner",
+	"version": "0.0.1",
+	"main": "dist/ag.ds-next-hero-banner.cjs.js",
+	"module": "dist/ag.ds-next-hero-banner.esm.js",
+	"license": "MIT",
+	"peerDependencies": {
+		"@ag.ds-next/box": "4.1.0",
+		"@ag.ds-next/content": "5.0.0",
+		"@ag.ds-next/core": "2.1.4",
+		"@ag.ds-next/heading": "5.0.0",
+		"@ag.ds-next/text": "5.0.0",
+		"@emotion/react": "^11.7.0",
+		"react": "^16.14.0 || ^17.0.0"
+	},
+	"devDependencies": {
+		"@ag.ds-next/box": "*",
+		"@ag.ds-next/content": "*",
+		"@ag.ds-next/core": "*",
+		"@ag.ds-next/heading": "*",
+		"@ag.ds-next/text": "*",
+		"@emotion/react": "^11.7.0",
+		"react": "17.0.2"
+	}
+}

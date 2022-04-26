@@ -7,7 +7,7 @@ import { Logo } from '@ag.ds-next/ag-branding';
 import { Button, ButtonLink } from '@ag.ds-next/button';
 import { Box, Flex, Stack } from '@ag.ds-next/box';
 import { Body } from '@ag.ds-next/body';
-import { useTernaryState } from '@ag.ds-next/core';
+import { useTernaryState, tokens } from '@ag.ds-next/core';
 import { Text, TextLink } from '@ag.ds-next/text';
 import { Heading, H1, H2, H3, H4, H5, H6 } from '@ag.ds-next/heading';
 import { LinkList } from '@ag.ds-next/link-list';
@@ -95,6 +95,7 @@ import { Content, ContentBleed } from '@ag.ds-next/content';
 import { TaskList } from '@ag.ds-next/task-list';
 import { PageAlert } from '@ag.ds-next/page-alert';
 import { DatePicker, DateRangePicker } from '@ag.ds-next/date-picker';
+import { HeroBanner } from '@ag.ds-next/hero-banner';
 
 export const designSystemComponents = {
 	Accordion,
@@ -199,4 +200,6 @@ export const designSystemComponents = {
 	DatePicker,
 	DateRangePicker,
 	useTernaryState,
+	HeroBanner,
+	tokens,
 };

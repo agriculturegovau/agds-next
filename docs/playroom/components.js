@@ -108,3 +108,4 @@ export {
 	TableWrapper,
 } from '@ag.ds-next/table';
 export { DatePicker, DateRangePicker } from '@ag.ds-next/date-picker';
+export { HeroBanner } from '@ag.ds-next/hero-banner';
