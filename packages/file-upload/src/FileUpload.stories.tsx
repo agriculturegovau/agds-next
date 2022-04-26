@@ -40,3 +40,11 @@ AcceptedFormats.args = {
 	],
 	multiple: true,
 };
+
+export const Disabled: ComponentStory<typeof FileUpload> = (args) => {
+	return <FileUpload {...args} onChange={console.log} />;
+};
+Disabled.args = {
+	label: 'Drivers licence',
+	disabled: true,
+};

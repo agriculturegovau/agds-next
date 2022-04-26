@@ -1,4 +1,4 @@
-import React, { forwardRef, useEffect, useState } from 'react';
+import React, { forwardRef, useState } from 'react';
 import { useDropzone, DropzoneOptions, FileWithPath } from 'react-dropzone';
 import { Flex, Stack } from '@ag.ds-next/box';
 import { Button } from '@ag.ds-next/button';
@@ -32,6 +32,7 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 	function FileUpload(
 		{
 			accept,
+			disabled,
 			label,
 			multiple,
 			onChange,
@@ -47,7 +48,7 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 		ref
 	) {
 		const [files, setFiles] = useState<FileWithPath[]>([]);
-		const styles = fileInputStyles({ invalid, valid });
+		const styles = fileInputStyles({ disabled, invalid, valid });
 		const filesPlural = multiple ? 'files' : 'file';
 
 		const handleRemoveFile = (file: FileWithPath) => {
@@ -75,7 +76,7 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 			// minSize: minFileSizeKb && minFileSizeKb / 1024,
 			// multiple: maxFiles > 1,
 			onDropAccepted: handleDropAccepted,
-			// disabled,
+			disabled,
 		});
 
 		return (
@@ -102,14 +103,14 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 							background="shade"
 							css={styles}
 						>
-							<UploadIcon size="lg" color="action" />
+							<UploadIcon size="lg" color="muted" />
 							<input ref={ref} {...getInputProps()} {...allyProps} {...props} />
 							<Text color="muted">
 								{isDragActive
 									? `Drop ${filesPlural} here...`
 									: `Drag and drop ${filesPlural} here or select ${filesPlural} to upload.`}
 							</Text>
-							<Button variant="secondary" onClick={open}>
+							<Button variant="secondary" onClick={open} disabled={disabled}>
 								{`Select ${filesPlural}`}
 							</Button>
 						</Flex>
@@ -133,9 +134,11 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 );
 
 export const fileInputStyles = ({
+	disabled,
 	invalid,
 	valid,
 }: {
+	disabled?: boolean;
 	invalid?: boolean;
 	valid?: boolean;
 	multiline?: boolean;
@@ -154,12 +157,13 @@ export const fileInputStyles = ({
 					backgroundColor: globalPalette.successMuted,
 					borderColor: globalPalette.success,
 			  }
+			: disabled
+			? {
+					cursor: 'not-allowed',
+					opacity: 0.3,
+					background: 'none',
+			  }
 			: undefined),
-
-		'&:disabled': {
-			cursor: 'not-allowed',
-			opacity: 0.3,
-		},
 
 		'&:focus': packs.outline,
 	} as const);
