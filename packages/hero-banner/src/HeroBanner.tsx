@@ -10,7 +10,7 @@ export type HeroBannerProps = PropsWithChildren<{
 	mobileImage?: ReactNode;
 	variant?: HeroBannerVariant;
 	title?: string;
-	subTitle: string;
+	subTitle?: string;
 }>;
 
 export const HeroBanner = ({
