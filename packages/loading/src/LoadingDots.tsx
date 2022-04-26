@@ -1,5 +1,6 @@
 import { Box, Flex } from '@ag.ds-next/box';
 import { mapSpacing, usePrefersReducedMotion } from '@ag.ds-next/core';
+import { HTMLAttributes } from 'react';
 import { useTrail, animated } from 'react-spring';
 
 const loadingDotsSizes = {
@@ -12,14 +13,22 @@ const AnimatedBox = animated(Box);
 
 type LoadingDotsSizes = keyof typeof loadingDotsSizes;
 
-export type LoadingDotsProps = {
+type HTMLProps = Pick<
+	HTMLAttributes<HTMLDivElement>,
+	'aria-label' | 'aria-live' | 'role'
+>;
+
+export type LoadingDotsProps = HTMLProps & {
 	'aria-label'?: string;
+	'aria-live'?: 'off' | 'assertive' | 'polite';
 	className?: string;
 	size?: LoadingDotsSizes;
 };
 
 export const LoadingDots = ({
 	'aria-label': ariaLabel,
+	'aria-live': ariaLive,
+	role,
 	className,
 	size = 'md',
 }: LoadingDotsProps) => {
@@ -39,7 +48,13 @@ export const LoadingDots = ({
 	);
 
 	return (
-		<Flex gap={gap} className={className} aria-label={ariaLabel}>
+		<Flex
+			gap={gap}
+			className={className}
+			aria-label={ariaLabel}
+			aria-live={ariaLive}
+			role={role}
+		>
 			{trail.map((style, idx) => (
 				<AnimatedBox
 					key={idx}

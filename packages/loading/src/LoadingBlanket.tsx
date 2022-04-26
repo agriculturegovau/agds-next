@@ -7,7 +7,7 @@ import { LoadingDots } from './LoadingDots';
 
 export type LoadingBlanketProps = {
 	fullScreen?: boolean;
-	label?: ReactNode;
+	label: ReactNode;
 };
 
 export const LoadingBlanket = ({ fullScreen, label }: LoadingBlanketProps) => (
@@ -15,28 +15,29 @@ export const LoadingBlanket = ({ fullScreen, label }: LoadingBlanketProps) => (
 		flexDirection="column"
 		justifyContent="center"
 		alignItems="center"
-		aria-live="polite"
+		aria-live="assertive"
 		css={{
 			position: fullScreen ? 'fixed' : 'absolute',
 			inset: 0,
 			zIndex: 100,
 			backgroundColor: `rgba(255, 255, 255, 0.9)`,
-			textAlign: 'center',
 		}}
 	>
 		<Content>
 			<Stack gap={1} alignItems="center" css={{ textAlign: 'center' }}>
-				<LoadingDots size={fullScreen ? 'lg' : 'md'} />
-				{label ? (
-					<Text
-						fontSize="lg"
-						fontWeight="bold"
-						lineHeight="heading"
-						css={{ color: globalPalette.lightForegroundText }}
-					>
-						{label}
-					</Text>
-				) : null}
+				<LoadingDots
+					aria-label="loading"
+					role="status"
+					size={fullScreen ? 'lg' : 'md'}
+				/>
+				<Text
+					fontSize="lg"
+					fontWeight="bold"
+					lineHeight="heading"
+					css={{ color: globalPalette.lightForegroundText }}
+				>
+					{label}
+				</Text>
 			</Stack>
 		</Content>
 	</Flex>

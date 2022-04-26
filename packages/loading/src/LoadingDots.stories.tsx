@@ -13,6 +13,8 @@ export const OnLight: ComponentStory<typeof LoadingDots> = (args) => (
 );
 OnLight.args = {
 	size: 'md',
+	'aria-label': 'Loading',
+	role: 'status',
 };
 
 export const OnDark: ComponentStory<typeof LoadingDots> = (args) => (
@@ -22,4 +24,6 @@ export const OnDark: ComponentStory<typeof LoadingDots> = (args) => (
 );
 OnDark.args = {
 	size: 'md',
+	'aria-label': 'Loading',
+	role: 'status',
 };

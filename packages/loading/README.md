@@ -8,18 +8,10 @@ group: Content
 
 The `LoadingBlanket` component can be used indicate the loading state of a component or page.
 
-Note: As this component is positioned absolute, you will need to make sure your component container has relative position set.
+By default this component is positioned absolutely, so you will need to make sure your component container is positioned relatively.
 
 ```jsx live
-<Box
-	background="body"
-	height="300px"
-	width="100%"
-	padding={1}
-	border
-	rounded
-	style={{ position: 'relative' }}
->
+<Box height="300px" width="100%" border style={{ position: 'relative' }}>
 	<LoadingBlanket label="Component loading state" />
 </Box>
 ```
@@ -28,18 +20,20 @@ Note: As this component is positioned absolute, you will need to make sure your 
 
 Adding the `fullScreen` prop will position the component over the whole screen.
 
+We recommend limiting the use of this pattern to certain use cases such as before or after a redirection.
+
 ```jsx
 <LoadingBlanket fullScreen label="Page loading state" />
 ```
 
 ## Loading Dots
 
-The `LoadingDots` component can be used on it's own in some scenarios, for example when fetching data from a remote source.
+The `LoadingDots` component can be used on it's own, for example when fetching data from a remote source.
 
 ```jsx live
 <Stack gap={2} alignItems="center">
-	<LoadingDots size="sm" aria-label="Loading" />
-	<LoadingDots size="md" aria-label="Loading" />
-	<LoadingDots size="lg" aria-label="Loading" />
+	<LoadingDots size="sm" aria-label="Loading" role="status" />
+	<LoadingDots size="md" aria-label="Loading" role="status" />
+	<LoadingDots size="lg" aria-label="Loading" role="status" />
 </Stack>
 ```

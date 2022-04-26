@@ -17,14 +17,18 @@ import {
 	loadingSize,
 } from './styles';
 
-export type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
+type BaseButtonProps = {
 	block?: boolean;
 	iconBefore?: ComponentType<IconProps>;
 	iconAfter?: ComponentType<IconProps>;
 	loading?: boolean;
+	loadingLabel?: string;
 	size?: ButtonSize;
 	variant?: ButtonVariant;
 };
+
+export type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> &
+	BaseButtonProps;
 
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 	function Button(
@@ -33,24 +37,25 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 			iconBefore: IconBefore,
 			iconAfter: IconAfter,
 			children,
-			disabled,
 			size = 'md',
 			loading = false,
+			loadingLabel = 'Busy',
 			variant = 'primary',
+			type = 'button',
 			...props
 		},
 		ref
 	) {
 		const styles = buttonStyles({ block, size, variant });
 		return (
-			<button ref={ref} disabled={disabled} css={styles} {...props}>
+			<button ref={ref} css={styles} type={type} {...props}>
 				{IconBefore ? (
 					<IconBefore size={iconSize[size]} weight="regular" />
 				) : null}
 				{loading ? (
 					<Fragment>
 						<HiddenText>{children}</HiddenText>
-						<CenteredLoading size={size} />
+						<CenteredLoading aria-label={loadingLabel} size={size} />
 					</Fragment>
 				) : (
 					children
@@ -63,14 +68,8 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 	}
 );
 
-export type ButtonLinkProps = AnchorHTMLAttributes<HTMLAnchorElement> & {
-	block?: boolean;
-	iconBefore?: ComponentType<IconProps>;
-	iconAfter?: ComponentType<IconProps>;
-	size?: ButtonSize;
-	loading?: boolean;
-	variant?: ButtonVariant;
-};
+export type ButtonLinkProps = AnchorHTMLAttributes<HTMLAnchorElement> &
+	BaseButtonProps;
 
 export const ButtonLink = ({
 	children,
@@ -79,6 +78,7 @@ export const ButtonLink = ({
 	iconAfter: IconAfter,
 	size = 'md',
 	loading,
+	loadingLabel = 'Busy',
 	variant = 'primary',
 	...props
 }: ButtonLinkProps) => {
@@ -92,7 +92,7 @@ export const ButtonLink = ({
 			{loading ? (
 				<Fragment>
 					<HiddenText>{children}</HiddenText>
-					<CenteredLoading size={size} />
+					<CenteredLoading aria-label={loadingLabel} size={size} />
 				</Fragment>
 			) : (
 				children
@@ -106,8 +106,16 @@ const HiddenText = ({ children }: { children: ReactNode }) => (
 	<span css={{ visibility: 'hidden' }}>{children}</span>
 );
 
-const CenteredLoading = ({ size }: { size: ButtonSize }) => (
+const CenteredLoading = ({
+	'aria-label': ariaLabel,
+	size,
+}: {
+	'aria-label': string;
+	size: ButtonSize;
+}) => (
 	<LoadingDots
+		aria-label={ariaLabel}
+		aria-live="assertive"
 		size={loadingSize[size]}
 		css={{
 			position: 'absolute',

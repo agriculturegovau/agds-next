@@ -21,7 +21,6 @@ const Template = (props: LoadingBlanketProps) => (
 		width="100%"
 		padding={1}
 		border
-		rounded
 		css={{ position: 'relative' }}
 	>
 		<LoadingBlanket {...props} />
