@@ -1,5 +1,5 @@
-import React, { forwardRef } from 'react';
-import { useDropzone, DropzoneOptions } from 'react-dropzone';
+import React, { forwardRef, useEffect, useState } from 'react';
+import { useDropzone, DropzoneOptions, FileWithPath } from 'react-dropzone';
 import { Flex, Stack } from '@ag.ds-next/box';
 import { Button } from '@ag.ds-next/button';
 import { packs, boxPalette, globalPalette, tokens } from '@ag.ds-next/core';
@@ -10,9 +10,13 @@ import { Text } from '@ag.ds-next/text';
 import { FileUploadFile } from './FileUploadFile';
 import { getFilesTotal } from './utils';
 
-export type FileUploadProps = {
+type InputProps = Pick<
+	React.InputHTMLAttributes<HTMLInputElement>,
+	'name' | 'onBlur' | 'disabled' | 'id'
+>;
+
+export type FileUploadProps = InputProps & {
 	accept: DropzoneOptions['accept'];
-	id?: string;
 	label: string;
 	onChange: DropzoneOptions['onDrop'];
 	required?: boolean;
@@ -42,14 +46,37 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 		},
 		ref
 	) {
+		const [files, setFiles] = useState<FileWithPath[]>([]);
 		const styles = fileInputStyles({ invalid, valid });
+		const filesPlural = multiple ? 'files' : 'file';
 
-		const { acceptedFiles, getRootProps, getInputProps, isDragActive, open } =
-			useDropzone({
-				onDrop: onChange,
-				accept,
-				multiple,
+		const handleRemoveFile = (file: FileWithPath) => {
+			setFiles((previousFiles) => {
+				const indexOfFile = previousFiles.indexOf(file);
+				return previousFiles.filter((_, index) => index !== indexOfFile);
 			});
+		};
+
+		const handleDropAccepted = (acceptedFiles: FileWithPath[]) => {
+			// replace file if multiple is false
+			if (multiple) {
+				setFiles((prevFiles) => [...prevFiles, ...acceptedFiles]);
+			} else {
+				setFiles(acceptedFiles);
+			}
+		};
+
+		const { getRootProps, getInputProps, isDragActive, open } = useDropzone({
+			onDrop: onChange,
+			accept,
+			multiple,
+			// maxFiles,
+			// maxSize: maxFileSizeKb && maxFileSizeKb / 1024,
+			// minSize: minFileSizeKb && minFileSizeKb / 1024,
+			// multiple: maxFiles > 1,
+			onDropAccepted: handleDropAccepted,
+			// disabled,
+		});
 
 		return (
 			<Stack gap={0.5}>
@@ -79,21 +106,25 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 							<input ref={ref} {...getInputProps()} {...allyProps} {...props} />
 							<Text color="muted">
 								{isDragActive
-									? 'Drop the files here...'
-									: 'Drag and drop file here or select file to upload.'}
+									? `Drop ${filesPlural} here...`
+									: `Drag and drop ${filesPlural} here or select ${filesPlural} to upload.`}
 							</Text>
 							<Button variant="secondary" onClick={open}>
-								Select files
+								{`Select ${filesPlural}`}
 							</Button>
 						</Flex>
 					)}
 				</Field>
-				{acceptedFiles.length ? (
-					<Text color="muted">{getFilesTotal(acceptedFiles)}</Text>
+				{files.length ? (
+					<Text color="muted">{getFilesTotal(files)}</Text>
 				) : null}
 				<Stack as="ul" gap={0.5}>
-					{acceptedFiles.map((file, index) => (
-						<FileUploadFile file={file} key={index} />
+					{files.map((file, index) => (
+						<FileUploadFile
+							file={file}
+							key={index}
+							onRemove={() => handleRemoveFile(file)}
+						/>
 					))}
 				</Stack>
 			</Stack>
