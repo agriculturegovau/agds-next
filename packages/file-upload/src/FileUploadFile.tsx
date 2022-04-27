@@ -19,10 +19,12 @@ export const FileUploadFile = ({
 			rounded
 			alignItems="center"
 			as="li"
+			paddingY={0.5}
+			paddingLeft={1.5}
 			key={file.name}
 			justifyContent="space-between"
 		>
-			<Text padding={1}>
+			<Text>
 				{file.path} ({formatFileSize(file.size)})
 			</Text>
 

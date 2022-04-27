@@ -17,6 +17,7 @@ type InputProps = Pick<
 
 export type FileUploadProps = InputProps & {
 	accept: DropzoneOptions['accept'];
+	maxFiles?: number;
 	label: string;
 	onChange: DropzoneOptions['onDrop'];
 	required?: boolean;
@@ -34,6 +35,7 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 			accept,
 			disabled,
 			label,
+			maxFiles,
 			multiple,
 			onChange,
 			required,
@@ -71,7 +73,7 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 			onDrop: onChange,
 			accept,
 			multiple,
-			// maxFiles,
+			maxFiles,
 			// maxSize: maxFileSizeKb && maxFileSizeKb / 1024,
 			// minSize: minFileSizeKb && minFileSizeKb / 1024,
 			// multiple: maxFiles > 1,

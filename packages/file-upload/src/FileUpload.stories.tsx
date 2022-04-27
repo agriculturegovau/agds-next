@@ -20,6 +20,7 @@ export const Multiple: ComponentStory<typeof FileUpload> = (args) => {
 Multiple.args = {
 	label: 'Identity documents',
 	multiple: true,
+	maxFiles: 2,
 };
 
 export const AcceptedFormats: ComponentStory<typeof FileUpload> = (args) => {
