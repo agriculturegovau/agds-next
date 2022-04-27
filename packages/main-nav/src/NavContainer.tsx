@@ -76,7 +76,6 @@ export function NavContainer({
 	return (
 		<Box
 			id={id}
-			data-name="nav-container" // TODO: make this (or something like this) a pattern for providing end users a consistent handle for applying style overrides.
 			palette={palette}
 			background={background}
 			color="text"
@@ -170,7 +169,6 @@ function Overlay({
 function BottomBar() {
 	return (
 		<Box
-			data-name="nav-bottom-bar"
 			paddingTop={0.5}
 			css={{
 				position: 'absolute',
