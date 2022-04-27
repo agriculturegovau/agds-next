@@ -103,28 +103,34 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 					id={id}
 				>
 					{(allyProps) => (
-						<Flex
-							{...getRootProps()}
-							gap={1}
-							padding={1.5}
-							alignItems="center"
-							flexDirection="column"
-							border
-							rounded
-							background="shade"
-							css={styles}
-						>
-							<UploadIcon size="lg" color="muted" />
-							<input ref={ref} {...getInputProps()} {...allyProps} {...props} />
-							<Text color="muted">
-								{isDragActive
-									? `Drop ${filesPlural} here...`
-									: `Drag and drop ${filesPlural} here or select ${filesPlural} to upload.`}
-							</Text>
-							<Button variant="secondary" onClick={open} disabled={disabled}>
-								{`Select ${filesPlural}`}
-							</Button>
-						</Flex>
+						<div {...getRootProps()}>
+							<Flex
+								gap={1}
+								padding={1.5}
+								alignItems="center"
+								flexDirection="column"
+								border
+								rounded
+								background="shade"
+								css={styles}
+							>
+								<UploadIcon size="lg" color="muted" />
+								<input
+									ref={ref}
+									{...getInputProps()}
+									{...allyProps}
+									{...props}
+								/>
+								<Text color="muted">
+									{isDragActive
+										? `Drop ${filesPlural} here...`
+										: `Drag and drop ${filesPlural} here or select ${filesPlural} to upload.`}
+								</Text>
+								<Button variant="secondary" onClick={open} disabled={disabled}>
+									{`Select ${filesPlural}`}
+								</Button>
+							</Flex>
+						</div>
 					)}
 				</Field>
 				{files.length ? (
