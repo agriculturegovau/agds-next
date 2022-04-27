@@ -1,15 +1,19 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { Box } from '@ag.ds-next/box';
-import { LoadingBlanket } from './index';
-import { LoadingBlanketProps } from './LoadingBlanket';
+import {
+	LoadingBlanket,
+	LoadingBlanketProps,
+	LoadingBlanketContainer,
+	LoadingBlanketContent,
+	LoadingBlanketLabel,
+	LoadingDots,
+} from './index';
 import { Header } from '@ag.ds-next/header';
 import { Logo } from '@ag.ds-next/ag-branding/';
 import { MainNav } from '@ag.ds-next/main-nav';
 import { Content } from '@ag.ds-next/content';
 import { Body } from '@ag.ds-next/body';
-import { LoadingBlanketContainer } from './LoadingBlanketContainer';
-import { LoadingDots } from './LoadingDots';
 
 export default {
 	title: 'content/Loading/LoadingBlanket',
@@ -133,10 +137,10 @@ export const Modular = () => (
 	<Box background="body" dark>
 		<FullScreenContent />
 		<LoadingBlanketContainer fullScreen>
-			<LoadingBlanketContainer>
+			<LoadingBlanketContent>
 				<LoadingDots aria-label="loading" role="status" size="lg" />
-				<LoadingBlanketContainer>Loading</LoadingBlanketContainer>
-			</LoadingBlanketContainer>
+				<LoadingBlanketLabel>Loading</LoadingBlanketLabel>
+			</LoadingBlanketContent>
 		</LoadingBlanketContainer>
 	</Box>
 );
