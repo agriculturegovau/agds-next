@@ -41,14 +41,13 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 			loading = false,
 			loadingLabel = 'Busy',
 			variant = 'primary',
-			type = 'button',
 			...props
 		},
 		ref
 	) {
 		const styles = buttonStyles({ block, size, variant });
 		return (
-			<button ref={ref} css={styles} type={type} {...props}>
+			<button ref={ref} css={styles} {...props}>
 				{IconBefore ? (
 					<IconBefore size={iconSize[size]} weight="regular" />
 				) : null}
