@@ -3,10 +3,19 @@ import React, {
 	ButtonHTMLAttributes,
 	AnchorHTMLAttributes,
 	ComponentType,
+	Fragment,
+	ReactNode,
 } from 'react';
 import { useLinkComponent } from '@ag.ds-next/core';
 import { IconProps } from '@ag.ds-next/icon';
-import { buttonStyles, ButtonSize, ButtonVariant, iconSize } from './styles';
+import { LoadingDots } from '@ag.ds-next/loading';
+import {
+	buttonStyles,
+	ButtonSize,
+	ButtonVariant,
+	iconSize,
+	loadingSize,
+} from './styles';
 
 export type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
 	block?: boolean;
@@ -38,7 +47,14 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 				{IconBefore ? (
 					<IconBefore size={iconSize[size]} weight="regular" />
 				) : null}
-				{loading ? 'Loading...' : children}
+				{loading ? (
+					<Fragment>
+						<HiddenText>{children}</HiddenText>
+						<CenteredLoading size={size} />
+					</Fragment>
+				) : (
+					children
+				)}
 				{IconAfter ? (
 					<IconAfter size={iconSize[size]} weight="regular" />
 				) : null}
@@ -52,6 +68,7 @@ export type ButtonLinkProps = AnchorHTMLAttributes<HTMLAnchorElement> & {
 	iconBefore?: ComponentType<IconProps>;
 	iconAfter?: ComponentType<IconProps>;
 	size?: ButtonSize;
+	loading?: boolean;
 	variant?: ButtonVariant;
 };
 
@@ -61,6 +78,7 @@ export const ButtonLink = ({
 	iconBefore: IconBefore,
 	iconAfter: IconAfter,
 	size = 'md',
+	loading,
 	variant = 'primary',
 	...props
 }: ButtonLinkProps) => {
@@ -71,8 +89,31 @@ export const ButtonLink = ({
 			{IconBefore ? (
 				<IconBefore size={iconSize[size]} weight="regular" />
 			) : null}
-			{children}
+			{loading ? (
+				<Fragment>
+					<HiddenText>{children}</HiddenText>
+					<CenteredLoading size={size} />
+				</Fragment>
+			) : (
+				children
+			)}
 			{IconAfter ? <IconAfter size={iconSize[size]} weight="regular" /> : null}
 		</Link>
 	);
 };
+
+const HiddenText = ({ children }: { children: ReactNode }) => (
+	<span css={{ visibility: 'hidden' }}>{children}</span>
+);
+
+const CenteredLoading = ({ size }: { size: ButtonSize }) => (
+	<LoadingDots
+		size={loadingSize[size]}
+		css={{
+			position: 'absolute',
+			left: '50%',
+			top: '50%',
+			transform: 'translate(-50%, -50%)',
+		}}
+	/>
+);

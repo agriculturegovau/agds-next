@@ -1,21 +1,24 @@
 {
-	"name": "@ag.ds-next/button",
-	"version": "5.0.0",
-	"main": "dist/ag.ds-next-button.cjs.js",
-	"module": "dist/ag.ds-next-button.esm.js",
+	"name": "@ag.ds-next/loading",
+	"version": "0.0.1",
+	"main": "dist/ag.ds-next-loading.cjs.js",
+	"module": "dist/ag.ds-next-loading.esm.js",
 	"license": "MIT",
 	"peerDependencies": {
 		"@ag.ds-next/box": "4.1.0",
 		"@ag.ds-next/core": "2.1.4",
-		"@ag.ds-next/loading": "0.0.1",
+		"@ag.ds-next/text": "5.0.0",
 		"@emotion/react": "^11.7.0",
 		"react": "^16.14.0 || ^17.0.0"
 	},
 	"devDependencies": {
 		"@ag.ds-next/box": "*",
 		"@ag.ds-next/core": "*",
-		"@ag.ds-next/loading": "*",
+		"@ag.ds-next/text": "*",
 		"@emotion/react": "^11.7.0",
 		"react": "17.0.2"
+	},
+	"dependencies": {
+		"react-spring": "^9.4.3"
 	}
 }

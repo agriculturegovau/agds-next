@@ -1,0 +1,154 @@
+import React from 'react';
+import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { Box } from '@ag.ds-next/box';
+import { LoadingBlanket } from './index';
+import { LoadingBlanketProps } from './LoadingBlanket';
+import { Header } from '@ag.ds-next/header';
+import { Logo } from '@ag.ds-next/ag-branding/';
+import { MainNav } from '@ag.ds-next/main-nav';
+import { Content } from '@ag.ds-next/content';
+import { Body } from '@ag.ds-next/body';
+
+export default {
+	title: 'content/Loading/LoadingBlanket',
+	component: LoadingBlanket,
+} as ComponentMeta<typeof LoadingBlanket>;
+
+const Template = (props: LoadingBlanketProps) => (
+	<Box
+		background="body"
+		height="300px"
+		width="100%"
+		padding={1}
+		border
+		rounded
+		css={{ position: 'relative' }}
+	>
+		<LoadingBlanket {...props} />
+	</Box>
+);
+
+export const OnLight: ComponentStory<typeof LoadingBlanket> = (args) => (
+	<Template {...args} />
+);
+OnLight.args = {
+	label: 'Component loading state message',
+};
+
+export const OnDark: ComponentStory<typeof LoadingBlanket> = (args) => (
+	<Box dark>
+		<Template {...args} />
+	</Box>
+);
+OnDark.args = {
+	label: 'Component loading state message',
+};
+
+export const FullScreenOnLight: ComponentStory<typeof LoadingBlanket> = (
+	args
+) => (
+	<>
+		<Header logo={<Logo />} heading="Export Service" />
+		<MainNav links={[{ label: 'Hello', href: '#' }]} variant="agriculture" />
+		<Content>
+			<Body>
+				<h1>Page heading</h1>
+				<p>
+					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque
+					at arcu eleifend, varius enim non, eleifend nibh. Quisque ac lacinia
+					elit. Orci varius natoque penatibus et magnis dis parturient montes,
+					nascetur ridiculus mus. Integer scelerisque at ligula tempor eleifend.
+					Vestibulum volutpat, dolor eu rutrum consequat, libero justo lacinia
+					tortor, id varius tortor ante sit amet nisl. Aenean at dui diam. Cras
+					a ligula a ante aliquam lacinia. Ut dolor quam, gravida eu dui quis,
+					molestie lacinia dolor. Fusce lacus mi, pharetra molestie tortor eu,
+					finibus lacinia libero.
+				</p>
+				<p>
+					Suspendisse feugiat rhoncus magna eleifend aliquam. Morbi euismod ex
+					convallis viverra eleifend. Nullam vel finibus libero. Maecenas leo
+					sem, consectetur sit amet ipsum vel, commodo porttitor quam. Nullam
+					libero nulla, cursus a turpis et, ullamcorper lobortis metus. Aliquam
+					aliquam sodales malesuada. Phasellus sit amet libero ut nulla porta
+					ornare. In elit lectus, iaculis et volutpat eget, tempor ornare eros.
+					Interdum et malesuada fames ac ante ipsum primis in faucibus.
+					Suspendisse sodales metus quis vulputate convallis. Morbi congue
+					lectus eget massa finibus luctus. Pellentesque tempus dui vel auctor
+					ullamcorper.
+				</p>
+			</Body>
+		</Content>
+		<LoadingBlanket {...args} />
+	</>
+);
+FullScreenOnLight.args = {
+	fullScreen: true,
+	label: 'Loading state message',
+};
+
+export const FullScreenOnDark: ComponentStory<typeof LoadingBlanket> = (
+	args
+) => (
+	<>
+		<Box background="body" dark>
+			<Header logo={<Logo />} heading="Export Service" />
+			<MainNav links={[{ label: 'Hello', href: '#' }]} variant="agriculture" />
+			<Content>
+				<Body>
+					<h1>Page heading</h1>
+					<p>
+						Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+						Pellentesque at arcu eleifend, varius enim non, eleifend nibh.
+						Quisque ac lacinia elit. Orci varius natoque penatibus et magnis dis
+						parturient montes, nascetur ridiculus mus. Integer scelerisque at
+						ligula tempor eleifend. Vestibulum volutpat, dolor eu rutrum
+						consequat, libero justo lacinia tortor, id varius tortor ante sit
+						amet nisl. Aenean at dui diam. Cras a ligula a ante aliquam lacinia.
+						Ut dolor quam, gravida eu dui quis, molestie lacinia dolor. Fusce
+						lacus mi, pharetra molestie tortor eu, finibus lacinia libero.
+					</p>
+					<p>
+						Suspendisse feugiat rhoncus magna eleifend aliquam. Morbi euismod ex
+						convallis viverra eleifend. Nullam vel finibus libero. Maecenas leo
+						sem, consectetur sit amet ipsum vel, commodo porttitor quam. Nullam
+						libero nulla, cursus a turpis et, ullamcorper lobortis metus.
+						Aliquam aliquam sodales malesuada. Phasellus sit amet libero ut
+						nulla porta ornare. In elit lectus, iaculis et volutpat eget, tempor
+						ornare eros. Interdum et malesuada fames ac ante ipsum primis in
+						faucibus. Suspendisse sodales metus quis vulputate convallis. Morbi
+						congue lectus eget massa finibus luctus. Pellentesque tempus dui vel
+						auctor ullamcorper.
+					</p>
+					<p>
+						Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+						Pellentesque at arcu eleifend, varius enim non, eleifend nibh.
+						Quisque ac lacinia elit. Orci varius natoque penatibus et magnis dis
+						parturient montes, nascetur ridiculus mus. Integer scelerisque at
+						ligula tempor eleifend. Vestibulum volutpat, dolor eu rutrum
+						consequat, libero justo lacinia tortor, id varius tortor ante sit
+						amet nisl. Aenean at dui diam. Cras a ligula a ante aliquam lacinia.
+						Ut dolor quam, gravida eu dui quis, molestie lacinia dolor. Fusce
+						lacus mi, pharetra molestie tortor eu, finibus lacinia libero.
+					</p>
+					<p>
+						Suspendisse feugiat rhoncus magna eleifend aliquam. Morbi euismod ex
+						convallis viverra eleifend. Nullam vel finibus libero. Maecenas leo
+						sem, consectetur sit amet ipsum vel, commodo porttitor quam. Nullam
+						libero nulla, cursus a turpis et, ullamcorper lobortis metus.
+						Aliquam aliquam sodales malesuada. Phasellus sit amet libero ut
+						nulla porta ornare. In elit lectus, iaculis et volutpat eget, tempor
+						ornare eros. Interdum et malesuada fames ac ante ipsum primis in
+						faucibus. Suspendisse sodales metus quis vulputate convallis. Morbi
+						congue lectus eget massa finibus luctus. Pellentesque tempus dui vel
+						auctor ullamcorper.
+					</p>
+				</Body>
+			</Content>
+			<LoadingBlanket {...args} />
+		</Box>
+	</>
+);
+FullScreenOnDark.args = {
+	fullScreen: true,
+	label: 'Loading state message',
+};

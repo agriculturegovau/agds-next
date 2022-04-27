@@ -39,6 +39,7 @@
 		"@ag.ds-next/inpage-nav": "2.0.0",
 		"@ag.ds-next/keyword-list": "2.0.0",
 		"@ag.ds-next/link-list": "5.0.0",
+		"@ag.ds-next/loading": "0.0.1",
 		"@ag.ds-next/main-nav": "8.0.0",
 		"@ag.ds-next/page-alert": "2.0.0",
 		"@ag.ds-next/progress-indicator": "5.0.0",

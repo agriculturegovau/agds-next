@@ -96,6 +96,7 @@ import { TaskList } from '@ag.ds-next/task-list';
 import { PageAlert } from '@ag.ds-next/page-alert';
 import { DatePicker, DateRangePicker } from '@ag.ds-next/date-picker';
 import { HeroBanner } from '@ag.ds-next/hero-banner';
+import { LoadingBlanket, LoadingDots } from '@ag.ds-next/loading';
 
 export const designSystemComponents = {
 	Accordion,
@@ -202,4 +203,6 @@ export const designSystemComponents = {
 	useTernaryState,
 	HeroBanner,
 	tokens,
+	LoadingBlanket,
+	LoadingDots,
 };

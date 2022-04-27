@@ -109,3 +109,4 @@ export {
 } from '@ag.ds-next/table';
 export { DatePicker, DateRangePicker } from '@ag.ds-next/date-picker';
 export { HeroBanner } from '@ag.ds-next/hero-banner';
+export { LoadingDots, LoadingBlanket } from '@ag.ds-next/loading';
