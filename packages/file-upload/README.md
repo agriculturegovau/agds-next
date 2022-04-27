@@ -15,7 +15,7 @@ group: Forms
 
 ## Multiple files
 
-Selecting multiple files is also supported with FileUpload. Simply add `multiple={true}`, and you can select as many files as you want. You can also set `maxFiles` to limit how many files can be selected.
+Selecting multiple files is also supported with FileUpload. Simply add `multiple={true}`, and you can select as many files as you want.
 
 ## Accepted files
 
