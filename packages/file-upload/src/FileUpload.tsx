@@ -16,14 +16,22 @@ type InputProps = Pick<
 >;
 
 export type FileUploadProps = InputProps & {
+	/** List of acceptible file types, e.g.`image/jpeg`, `application/pdf` */
 	accept: DropzoneOptions['accept'];
+	/** The maximum number of files allowed to be selected. By default there is no limit. */
 	maxFiles?: number;
+	/** The maximum allowed file size, measured in KB */
+	maxFileSizeKb?: number;
+	/** The minimum allowed file size, measured in KB */
+	minFileSizeKb?: number;
+	/** A label that describes the field*/
 	label: string;
 	onChange: DropzoneOptions['onDrop'];
 	required?: boolean;
 	requiredLabel?: boolean;
 	hint?: string;
 	message?: string;
+	/** Whether multiple files are allowed to be selected. False by default. */
 	multiple?: boolean;
 	invalid?: boolean;
 	valid?: boolean;
@@ -36,6 +44,8 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 			disabled,
 			label,
 			maxFiles,
+			maxFileSizeKb,
+			minFileSizeKb,
 			multiple,
 			onChange,
 			required,
@@ -74,9 +84,8 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 			accept,
 			multiple,
 			maxFiles,
-			// maxSize: maxFileSizeKb && maxFileSizeKb / 1024,
-			// minSize: minFileSizeKb && minFileSizeKb / 1024,
-			// multiple: maxFiles > 1,
+			maxSize: maxFileSizeKb && maxFileSizeKb / 1024,
+			minSize: minFileSizeKb && minFileSizeKb / 1024,
 			onDropAccepted: handleDropAccepted,
 			disabled,
 		});
