@@ -95,6 +95,14 @@ The `iconAfter` and `iconBefore` props can be used to add system icons to button
 </ButtonLink>
 ```
 
+### Loading
+
+The `loading` prop can be used to inform users that their action is being processed.
+
+```jsx live
+<Button loading>Submit</Button>
+```
+
 ## Buttons links
 
 For situations where you need something that has the visual weight of a Button, but the functionality of a link, you can use `ButtonLink`!

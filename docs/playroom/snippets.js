@@ -523,8 +523,19 @@ items={[
 	{
 		group: 'DateRangePicker',
 		name: 'Basic',
-		code: `<DateRangePicker value={{ from: new Date('2000-01-03'), to: new Date('2000-01-07') }} onChange={() => {}}
-  />`,
+		code: `<DateRangePicker value={{ from: new Date('2000-01-03'), to: new Date('2000-01-07') }} onChange={() => {}} />`,
+	},
+	{
+		group: 'LoadingDots',
+		name: 'Basic',
+		code: `<LoadingDots />`,
+	},
+	{
+		group: 'LoadingBlanket',
+		name: 'Basic',
+		code: `<Box background="body" height="300px" width="100%" padding={1} border rounded style={{ position: 'relative' }}>
+      <LoadingBlanket label="Component loading state" />
+    </Box>`,
 	},
 	{
 		group: 'HeroBanner',

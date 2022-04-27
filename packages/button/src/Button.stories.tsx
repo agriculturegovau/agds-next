@@ -55,6 +55,23 @@ OnDark.args = {
 	loading: false,
 };
 
+export const Loading: ComponentStory<typeof Button> = (args) => (
+	<Flex gap={2}>
+		<Button {...args}>Primary</Button>
+		<Button {...args} variant="secondary">
+			Secondary
+		</Button>
+		<Button {...args} variant="tertiary">
+			Tertiary
+		</Button>
+	</Flex>
+);
+Loading.args = {
+	block: false,
+	disabled: false,
+	loading: true,
+};
+
 export const Block: ComponentStory<typeof Button> = (args) => (
 	<Text>
 		This is some text, with a Button inside.

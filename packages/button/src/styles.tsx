@@ -66,6 +66,11 @@ export const iconSize = {
 	md: 'md',
 } as const;
 
+export const loadingSize = {
+	sm: 'sm',
+	md: 'md',
+} as const;
+
 export function buttonStyles({
 	block,
 	variant,
@@ -80,6 +85,8 @@ export function buttonStyles({
 		...sizes[size],
 
 		appearance: 'none',
+		boxSizing: 'border-box',
+		position: 'relative',
 		display: block ? 'flex' : 'inline-flex',
 		alignItems: 'center',
 		justifyContent: 'center',
@@ -88,7 +95,6 @@ export function buttonStyles({
 		borderRadius: tokens.borderRadius,
 		cursor: 'pointer',
 		fontFamily: tokens.font.body,
-		boxSizing: 'border-box',
 		margin: 0,
 		textAlign: 'center',
 
