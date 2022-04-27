@@ -4,23 +4,21 @@ description: Allows a user to insert a file into a form, via drag-and-drop or us
 group: Forms
 ---
 
-
 ```jsx live
-<FileUpload label="Avatar image"
-	hint='Formats accepted: .png, .jpg.'
-  multiple={false}
-	accept={[
-		'image/jpeg',
-		'image/jpg',
-		'image/png',
-	]}
+<FileUpload
+	label="Avatar image"
+	hint="Formats accepted: .png, .jpg."
+	multiple={false}
+	accept={['image/jpeg', 'image/jpg', 'image/png']}
 />
 ```
 
 ## Multiple files
+
 Selecting multiple files is also supported with FileUpload. Simply add `multiple={true}`, and you can select as many files as you want. You can also set `maxFiles` to limit how many files can be selected.
 
 ## Accepted files
+
 Using the `accept` prop, you can specify what filetypes are allowed to be selected. Filetypes include...
 
 - `application/msword`

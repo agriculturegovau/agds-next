@@ -1,4 +1,5 @@
 import React from 'react';
+import { Box } from '@ag.ds-next/box';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { FileUpload } from './FileUpload';
 
@@ -7,11 +8,54 @@ export default {
 	component: FileUpload,
 } as ComponentMeta<typeof FileUpload>;
 
-export const Basic: ComponentStory<typeof FileUpload> = (args) => {
+export const OnLight: ComponentStory<typeof FileUpload> = (args) => (
+	<FileUpload {...args} onChange={console.log} />
+);
+OnLight.args = {
+	label: 'Drivers licence',
+};
+
+export const OnDark: ComponentStory<typeof FileUpload> = (args) => (
+	<Box background="body" palette="dark" padding={1.5}>
+		<FileUpload {...args} onChange={console.log} />
+	</Box>
+);
+OnDark.args = {
+	label: 'Drivers licence',
+};
+
+export const Required: ComponentStory<typeof FileUpload> = (args) => {
 	return <FileUpload {...args} onChange={console.log} />;
 };
-Basic.args = {
+Required.args = {
 	label: 'Drivers licence',
+	required: true,
+};
+
+export const Disabled: ComponentStory<typeof FileUpload> = (args) => {
+	return <FileUpload {...args} onChange={console.log} />;
+};
+Disabled.args = {
+	label: 'Drivers licence',
+	disabled: true,
+};
+
+export const Invalid: ComponentStory<typeof FileUpload> = (args) => (
+	<FileUpload {...args} onChange={console.log} />
+);
+Invalid.args = {
+	label: 'Drivers licence',
+	message: 'Please choose a valid file',
+	invalid: true,
+};
+
+export const Valid: ComponentStory<typeof FileUpload> = (args) => (
+	<FileUpload {...args} onChange={console.log} />
+);
+Valid.args = {
+	label: 'Drivers licence',
+	message: 'The file you have sublitted is valid',
+	valid: true,
 };
 
 export const Multiple: ComponentStory<typeof FileUpload> = (args) => {
@@ -40,12 +84,4 @@ AcceptedFormats.args = {
 		'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
 	],
 	multiple: true,
-};
-
-export const Disabled: ComponentStory<typeof FileUpload> = (args) => {
-	return <FileUpload {...args} onChange={console.log} />;
-};
-Disabled.args = {
-	label: 'Drivers licence',
-	disabled: true,
 };
