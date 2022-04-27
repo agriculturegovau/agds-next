@@ -49,7 +49,6 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 			multiple,
 			onChange,
 			required,
-			requiredLabel,
 			hint,
 			message,
 			invalid,
@@ -95,7 +94,6 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 				<Field
 					label={label}
 					required={Boolean(required)}
-					requiredLabel={requiredLabel}
 					hint={hint}
 					message={message}
 					invalid={invalid}
