@@ -3,8 +3,7 @@ import { Flex } from '@ag.ds-next/box';
 import { Text } from '@ag.ds-next/text';
 import { Button } from '@ag.ds-next/button';
 import { FileWithPath } from 'react-dropzone';
-
-import { formatFileSize } from './utils';
+import formatFileSize from 'filesize';
 
 export const FileUploadFile = ({
 	file,
