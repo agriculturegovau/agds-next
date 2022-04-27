@@ -5,11 +5,13 @@ import { Button } from '@ag.ds-next/button';
 import { FormStack } from '@ag.ds-next/form-stack';
 import { TextInput } from '@ag.ds-next/text-input';
 import { DatePicker } from '@ag.ds-next/date-picker';
+import { FileUpload } from '@ag.ds-next/file-upload';
 
 const formSchema = yup
 	.object({
 		fullName: yup.string().required('Enter your name'),
 		date: yup.date().required('Select a date'),
+		photo: yup.mixed().required('Photo is required'),
 	})
 	.required();
 
@@ -60,6 +62,27 @@ export const FormExampleBook = () => {
 					maxWidth="xl"
 					required
 				/>
+
+				<Controller
+					control={control}
+					name="photo"
+					render={({
+						field: { onChange, name },
+						fieldState: { invalid, error },
+					}) => (
+						<FileUpload
+							label="License photo"
+							hint="Formats accepted: .png, .jpg"
+							accept={['image/jpeg', 'image/jpg', 'image/png']}
+							onChange={onChange}
+							name={name}
+							invalid={invalid}
+							message={error?.message}
+							required
+						/>
+					)}
+				/>
+
 				<div>
 					<Button type="submit">Request a booking</Button>
 				</div>
