@@ -20,7 +20,6 @@ export const FileUploadFile = ({
 			as="li"
 			paddingY={0.5}
 			paddingLeft={1.5}
-			key={file.name}
 			justifyContent="space-between"
 		>
 			<Text>

@@ -1,4 +1,4 @@
-import React, { forwardRef, useState } from 'react';
+import React, { Fragment, forwardRef, useState } from 'react';
 import { useDropzone, DropzoneOptions, FileWithPath } from 'react-dropzone';
 import { Flex, Stack } from '@ag.ds-next/box';
 import { Button } from '@ag.ds-next/button';
@@ -120,17 +120,19 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 					)}
 				</Field>
 				{files.length ? (
-					<Text color="muted">{getFilesTotal(files)}</Text>
+					<Fragment>
+						<Text color="muted">{getFilesTotal(files)}</Text>
+						<Stack as="ul" gap={0.5}>
+							{files.map((file, index) => (
+								<FileUploadFile
+									file={file}
+									key={index}
+									onRemove={() => handleRemoveFile(file)}
+								/>
+							))}
+						</Stack>
+					</Fragment>
 				) : null}
-				<Stack as="ul" gap={0.5}>
-					{files.map((file, index) => (
-						<FileUploadFile
-							file={file}
-							key={index}
-							onRemove={() => handleRemoveFile(file)}
-						/>
-					))}
-				</Stack>
 			</Stack>
 		);
 	}
