@@ -46,7 +46,7 @@ export const HeroBanner = ({
 					<Box
 						width="100%"
 						maxWidth={[null, '66%', '66%', tokens.maxWidth.bodyText]}
-						paddingY={[0, 1, 1, 2]}
+						padding={{ xs: 1, lg: 2 }}
 					>
 						<Stack gap={[1.5, 2]}>
 							{title || subTitle ? (
