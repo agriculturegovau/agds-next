@@ -541,11 +541,11 @@ items={[
 		group: 'HeroBanner',
 		name: 'Basic',
 		code: `<HeroBanner
-    backgroundImageSrc="https://steelthreads.github.io/export-landing/homepage-harvest-medium.jpg"
+    backgroundImageSrc="/agds-next/img/placeholder/hero-banner.png"
     mobileImage={
       <img
         alt="Hero image"
-        src="https://steelthreads.github.io/export-landing/homepage-harvest-medium.jpg"
+        src="/agds-next/img/placeholder/hero-banner.png"
         style={{ display: 'block', height: 'auto', width: '100%' }}
       />
     }
@@ -555,7 +555,7 @@ items={[
   >
     <SearchBox onSubmit={() => {}}>
       <SearchBoxInput label="Search this website" />
-      <SearchBoxButton>Search</SearchBoxButton>
+      <SearchBoxButton iconOnly={{ xs: true, md: false }}>Search</SearchBoxButton>
     </SearchBox>
   </HeroBanner>`,
 	},

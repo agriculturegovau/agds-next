@@ -21,19 +21,20 @@ const Template: ComponentStory<typeof HeroBanner> = (args) => (
 const commonArgs = {
 	mobileImage: (
 		<img
-			src="https://steelthreads.github.io/export-landing/homepage-harvest-medium.jpg"
+			src="/agds-next/img/placeholder/hero-banner.png"
 			style={{ display: 'block', width: '100%', height: 'auto' }}
 			alt="Hero image"
 		/>
 	),
-	backgroundImageSrc:
-		'https://steelthreads.github.io/export-landing/homepage-harvest-medium.jpg',
+	backgroundImageSrc: '/agds-next/img/placeholder/hero-banner.png',
 	title: 'Hero banner title',
 	subTitle: 'Hero banner paragraph text',
 	children: (
 		<SearchBox onSubmit={console.log}>
 			<SearchBoxInput label="Search this website" />
-			<SearchBoxButton>Search</SearchBoxButton>
+			<SearchBoxButton iconOnly={{ xs: true, md: false }}>
+				Search
+			</SearchBoxButton>
 		</SearchBox>
 	),
 };
@@ -67,7 +68,7 @@ Buttons.args = {
 	title: 'Hero banner title',
 	subTitle: 'Hero banner paragraph text',
 	children: (
-		<Flex flexDirection={['column', 'row']} gap={1}>
+		<Flex flexDirection={{ xs: 'column', md: 'row' }} gap={1}>
 			<Button>Primary button</Button>
 			<Button variant="secondary">Secondary button</Button>
 		</Flex>
