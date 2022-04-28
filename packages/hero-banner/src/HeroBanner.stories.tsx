@@ -97,16 +97,18 @@ export const Modular = () => (
 			backgroundImageSrc="/agds-next/img/placeholder/hero-banner.png"
 			variant="dark"
 		>
-			<HeroBannerTitleContainer>
-				<HeroBannerTitle>Hero banner title</HeroBannerTitle>
-				<HeroBannerSubTitle>Hero banner paragraph text</HeroBannerSubTitle>
-			</HeroBannerTitleContainer>
-			<SearchBox onSubmit={console.log}>
-				<SearchBoxInput label="Search this website" />
-				<SearchBoxButton iconOnly={{ xs: true, md: false }}>
-					Search
-				</SearchBoxButton>
-			</SearchBox>
+			<HeroBannerContent>
+				<HeroBannerTitleContainer>
+					<HeroBannerTitle>Hero banner title</HeroBannerTitle>
+					<HeroBannerSubTitle>Hero banner paragraph text</HeroBannerSubTitle>
+				</HeroBannerTitleContainer>
+				<SearchBox onSubmit={console.log}>
+					<SearchBoxInput label="Search this website" />
+					<SearchBoxButton iconOnly={{ xs: true, md: false }}>
+						Search
+					</SearchBoxButton>
+				</SearchBox>
+			</HeroBannerContent>
 		</HeroBannerBackground>
 	</HeroBannerContainer>
 );
