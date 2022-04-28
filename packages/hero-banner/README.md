@@ -6,11 +6,11 @@ group: Layout
 
 ```jsx live
 <HeroBanner
-	backgroundImageSrc="https://steelthreads.github.io/export-landing/homepage-harvest-medium.jpg"
+	backgroundImageSrc="/agds-next/img/placeholder/hero-banner.png"
 	mobileImage={
 		<img
 			alt="Hero image"
-			src="https://steelthreads.github.io/export-landing/homepage-harvest-medium.jpg"
+			src="/agds-next/img/placeholder/hero-banner.png"
 			style={{ display: 'block', height: 'auto', width: '100%' }}
 		/>
 	}
@@ -19,7 +19,7 @@ group: Layout
 >
 	<SearchBox onSubmit={() => {}}>
 		<SearchBoxInput label="Search this website" />
-		<SearchBoxButton>Search</SearchBoxButton>
+		<SearchBoxButton iconOnly={{ xs: true, md: false }}>Search</SearchBoxButton>
 	</SearchBox>
 </HeroBanner>
 ```
@@ -28,18 +28,18 @@ group: Layout
 
 ```jsx live
 <HeroBanner
-	backgroundImageSrc="https://steelthreads.github.io/export-landing/homepage-harvest-medium.jpg"
+	backgroundImageSrc="/agds-next/img/placeholder/hero-banner.png"
 	mobileImage={
 		<img
 			alt="Hero image"
-			src="https://steelthreads.github.io/export-landing/homepage-harvest-medium.jpg"
+			src="/agds-next/img/placeholder/hero-banner.png"
 			style={{ display: 'block', height: 'auto', width: '100%' }}
 		/>
 	}
 	subTitle="Hero banner paragraph text"
 	title="Hero banner title"
 >
-	<Flex flexDirection={['column', 'row']} gap={1}>
+	<Flex flexDirection={{ xs: 'column', md: 'row' }} gap={1}>
 		<Button>Primary button</Button>
 		<Button variant="secondary">Secondary button</Button>
 	</Flex>
