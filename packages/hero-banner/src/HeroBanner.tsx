@@ -11,10 +11,15 @@ import { HeroBannerContainer } from './HeroBannerContainer';
 import { HeroBannerVariant } from './utils';
 
 export type HeroBannerProps = PropsWithChildren<{
+	/** The image to display as part of the gradient background */
 	backgroundImageSrc?: string;
+	/** The image to display on smaller breakpoints */
 	mobileImage?: ReactNode;
+	/** The palette of the component */
 	variant?: HeroBannerVariant;
+	/** The primary title */
 	title?: string;
+	/** The secondary title */
 	subTitle?: string;
 }>;
 
