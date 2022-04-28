@@ -1,7 +1,6 @@
 import { ReactNode } from 'react';
 import { Box } from '@ag.ds-next/box';
 import { LinkListContext, useLinkListDepth } from './context';
-import { boxPalette } from '@ag.ds-next/core';
 
 type SideNavGroupProps = { children: ReactNode };
 
@@ -14,9 +13,7 @@ export const SideNavGroup = ({ children }: SideNavGroupProps) => {
 				as="ul"
 				role="menu"
 				borderTop
-				css={{
-					borderTopColor: value > 1 ? boxPalette.borderMuted : undefined,
-				}}
+				borderColor={value > 1 ? 'muted' : 'border'}
 			>
 				{children}
 			</Box>
