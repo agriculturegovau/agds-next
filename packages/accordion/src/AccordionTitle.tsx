@@ -1,4 +1,4 @@
-import { animated, useSpring } from 'react-spring';
+import { animated, useSpring } from '@react-spring/web';
 import { Box, Flex } from '@ag.ds-next/box';
 import { ChevronDownIcon } from '@ag.ds-next/icon';
 import { boxPalette, usePrefersReducedMotion } from '@ag.ds-next/core';

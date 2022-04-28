@@ -1,5 +1,5 @@
 import { PropsWithChildren } from 'react';
-import { useSpring, animated } from 'react-spring';
+import { useSpring, animated } from '@react-spring/web';
 import { Flex } from '@ag.ds-next/box';
 import { ChevronDownIcon } from '@ag.ds-next/icon';
 import { tokens, usePrefersReducedMotion } from '@ag.ds-next/core';
