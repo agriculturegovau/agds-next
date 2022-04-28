@@ -1,0 +1,161 @@
+---
+title: April 28th, 2022
+type: minor
+description: Add HeroBanner and Loading. Various bug fixes and improvements.
+---
+
+> ⚠️ Note: All releases under the `@ag.ds-next` package scope should be considered alpha pre-releases. Expect breaking changes. Once we are happy with the state of the core packages we will migrate all packages to `@ag.ds`.
+
+## New packages
+
+```sh
+"@ag.ds-next/loading": "1.0.0",
+"@ag.ds-next/hero-banner": "1.0.0"
+```
+
+## Updates
+
+### @ag.ds-next/modal@2.0.0
+
+- Title is required. Also, resolves issue with Chrome not reading title in VoiceOver.
+- Buttons now appear at bottom of screen in Mobile view. We have achieved this by changing the way buttons are added to a modal - via a 'actions' prop on the Modal.
+- Improve mobile styles
+- Design improvements
+- Prevented the body from being scrollable while modal is open
+
+### @ag.ds-next/accordion@4.1.0
+
+- Updated height animation logic to improve accessibility
+
+### @ag.ds-next/button@6.0.0
+
+- Added `LoadingDots` to button component
+
+### @ag.ds-next/control-input@6.0.0
+
+- Removed `requiredLabel` prop
+- Increased gap between control group children and label
+- Updated spacing between elements
+
+### @ag.ds-next/date-picker@2.0.0
+
+- Added date format to label
+- Remove placeholder
+- Removed `requiredLabel` prop
+- `DateRangePicker` only shows 1 month in mobile
+- Calendar now closes when the escape key is pressed
+- Improved focus management
+
+### @ag.ds-next/field@5.1.0
+
+- Added `secondaryLabel` prop
+- Removed `requiredLabel` prop
+
+### @ag.ds-next/main-nav@8.1.0
+
+- Improve accessibility for screenreader users
+- Remove data attributes for style overrides
+- Return focus when modal is closed
+- Hide mobile toggle button if no links are supplied
+
+### @ag.ds-next/progress-indicator@5.1.0
+
+- Updated height animation logic to improve accessibility
+- Removed props for setting titles (`title`, `subTitle` and `collapseTitle`)
+- Updated mobile UI
+- Updated hover styles
+
+### @ag.ds-next/select@6.0.0
+
+- Removed `requiredLabel` prop
+- Update icon color in dark mode
+
+### @ag.ds-next/side-nav@7.1.0
+
+- Updated height animation logic to improve accessibility
+
+### @ag.ds-next/text-input@6.0.0
+
+- Removed `requiredLabel` prop
+
+### @ag.ds-next/textarea@6.0.0
+
+- Removed `requiredLabel` prop
+
+### @ag.ds-next/ag-branding@4.1.2
+
+- Added aria tags to `Logo`
+
+### @ag.ds-next/box@4.1.1
+
+- Added responsive type scale
+
+### @ag.ds-next/call-to-action@3.0.1
+
+- Reduced icon size from 1.5rem to 1rem
+
+### @ag.ds-next/core@2.1.5
+
+- Added responsive type scale
+
+### @ag.ds-next/footer@5.0.1
+
+- Hide footer divider from screen readers
+
+### @ag.ds-next/skip-link@3.0.0
+
+- Explicitly set position absolute to anchor tags
+
+### @ag.ds-next/table@1.0.1
+
+- Fix emotion warning
+
+## Full Changelog
+
+Aside from the [complete release notes on the @ag.ds-next website](https://steelthreads.github.io/agds-next/releases/2022-04-28), you can also view the [verbose change log](https://github.com/steelthreads/agds-next/pull/279) in the related PR (https://github.com/steelthreads/agds-next/pull/279) for this release.
+
+## Released packages
+
+```sh
+"@ag.ds-next/accordion": "4.1.0",
+"@ag.ds-next/ag-branding": "4.1.2",
+"@ag.ds-next/body": "5.0.1",
+"@ag.ds-next/box": "4.1.1",
+"@ag.ds-next/breadcrumbs": "7.0.1",
+"@ag.ds-next/button": "6.0.0",
+"@ag.ds-next/call-to-action": "3.0.1",
+"@ag.ds-next/callout": "2.0.1",
+"@ag.ds-next/card": "3.0.1",
+"@ag.ds-next/columns": "4.0.1",
+"@ag.ds-next/content": "5.0.1",
+"@ag.ds-next/control-input": "6.0.0",
+"@ag.ds-next/core": "2.1.5",
+"@ag.ds-next/date-picker": "2.0.0",
+"@ag.ds-next/direction-link": "3.0.1",
+"@ag.ds-next/field": "5.1.0",
+"@ag.ds-next/fieldset": "2.0.1",
+"@ag.ds-next/footer": "5.0.1",
+"@ag.ds-next/form-stack": "2.0.1",
+"@ag.ds-next/header": "6.0.1",
+"@ag.ds-next/heading": "5.0.1",
+"@ag.ds-next/hero-banner": "1.0.0",
+"@ag.ds-next/icon": "6.0.1",
+"@ag.ds-next/inpage-nav": "2.0.1",
+"@ag.ds-next/keyword-list": "2.0.1",
+"@ag.ds-next/link-list": "5.0.1",
+"@ag.ds-next/loading": "1.0.0",
+"@ag.ds-next/main-nav": "8.1.0",
+"@ag.ds-next/modal": "2.0.0",
+"@ag.ds-next/page-alert": "2.0.1",
+"@ag.ds-next/progress-indicator": "5.1.0",
+"@ag.ds-next/search-box": "6.0.0",
+"@ag.ds-next/select": "6.0.0",
+"@ag.ds-next/side-nav": "7.1.0",
+"@ag.ds-next/skip-link": "3.0.0",
+"@ag.ds-next/table": "1.0.1",
+"@ag.ds-next/tags": "2.0.1",
+"@ag.ds-next/task-list": "3.0.1",
+"@ag.ds-next/text": "5.0.1",
+"@ag.ds-next/text-input": "6.0.0",
+"@ag.ds-next/textarea": "6.0.0",
+```
