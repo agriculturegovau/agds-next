@@ -14,15 +14,13 @@ export const TableCell = ({
 }: TableCellProps) => {
 	return (
 		<Box
+			as="td"
 			padding={0.75}
 			borderBottom
+			borderColor="muted"
 			color="text"
 			focus
-			as="td"
-			css={{
-				textAlign,
-				borderColor: boxPalette.borderMuted,
-			}}
+			css={{ textAlign }}
 			{...props}
 		>
 			{children}
