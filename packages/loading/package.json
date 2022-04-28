@@ -21,6 +21,6 @@
 		"react": "17.0.2"
 	},
 	"dependencies": {
-		"react-spring": "^9.4.3"
+		"@react-spring/web": "^9.4.4"
 	}
 }
