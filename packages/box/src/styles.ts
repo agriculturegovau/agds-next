@@ -191,9 +191,17 @@ function layoutStyles({
 	};
 }
 
+const borderColorMap = {
+	border: 'border',
+	muted: 'borderMuted',
+} as const;
+
+type BorderColor = keyof typeof borderColorMap;
+
 type BorderProps = Partial<{
 	border: boolean;
 	borderWidth: BorderWidth;
+	borderColor: BorderColor;
 	borderLeft: boolean;
 	borderLeftWidth: BorderWidth;
 	borderRight: boolean;
@@ -210,6 +218,7 @@ type BorderProps = Partial<{
 function borderStyles({
 	border,
 	borderWidth = 'sm',
+	borderColor = 'border',
 	borderLeft,
 	borderLeftWidth,
 	borderRight,
@@ -248,7 +257,9 @@ function borderStyles({
 			border ?? borderY ?? borderBottom
 				? tokens.borderWidth[borderBottomWidth || borderWidth]
 				: undefined,
-		borderColor: anyBorder ? boxPalette.border : undefined,
+		borderColor: anyBorder
+			? boxPalette[borderColorMap[borderColor]]
+			: undefined,
 		borderStyle: anyBorder ? 'solid' : undefined,
 		borderRadius: rounded ? tokens.borderRadius : undefined,
 	};
@@ -331,6 +342,7 @@ export function boxStyles({
 	background,
 	border,
 	borderWidth,
+	borderColor,
 	borderLeft,
 	borderLeftWidth,
 	borderRight,
@@ -389,6 +401,7 @@ export function boxStyles({
 				...borderStyles({
 					border,
 					borderWidth,
+					borderColor,
 					borderLeft,
 					borderLeftWidth,
 					borderRight,
