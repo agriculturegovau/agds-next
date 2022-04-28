@@ -22,6 +22,7 @@ export type LoadingDotsProps = HTMLProps & {
 	'aria-label'?: string;
 	'aria-live'?: 'off' | 'assertive' | 'polite';
 	className?: string;
+	/** The size and number of the dots */
 	size?: LoadingDotsSizes;
 };
 
