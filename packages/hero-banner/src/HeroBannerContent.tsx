@@ -11,6 +11,7 @@ export const HeroBannerContent = ({ children }: HeroBannerContentProps) => (
 			width="100%"
 			maxWidth={[null, '66%', '66%', tokens.maxWidth.bodyText]}
 			padding={{ xs: 1, lg: 2 }}
+			paddingLeft={0}
 		>
 			<Stack gap={[1.5, 2]}>{children}</Stack>
 		</Box>
