@@ -8,6 +8,15 @@ import {
 import { Flex } from '@ag.ds-next/box';
 import { HeroBanner } from './HeroBanner';
 import { Button } from '@ag.ds-next/button';
+import { HeroBannerContainer } from './HeroBannerContainer';
+import { HeroBannerMobileImage } from './HeroBannerMobileImage';
+import { HeroBannerBackground } from './HeroBannerBackground';
+import { HeroBannerContent } from './HeroBannerContent';
+import {
+	HeroBannerSubTitle,
+	HeroBannerTitle,
+	HeroBannerTitleContainer,
+} from './HeroBannerTitle';
 
 export default {
 	title: 'layout/HeroBanner',
@@ -74,3 +83,32 @@ Buttons.args = {
 		</Flex>
 	),
 };
+
+export const Modular = () => (
+	<HeroBannerContainer variant="dark">
+		<HeroBannerMobileImage>
+			<img
+				src="/agds-next/img/placeholder/hero-banner.png"
+				style={{ display: 'block', width: '100%', height: 'auto' }}
+				alt="Hero image"
+			/>
+		</HeroBannerMobileImage>
+		<HeroBannerBackground
+			backgroundImageSrc="/agds-next/img/placeholder/hero-banner.png"
+			variant="dark"
+		>
+			<HeroBannerContent>
+				<HeroBannerTitleContainer>
+					<HeroBannerTitle>Hero banner title</HeroBannerTitle>
+					<HeroBannerSubTitle>Hero banner paragraph text</HeroBannerSubTitle>
+				</HeroBannerTitleContainer>
+				<SearchBox onSubmit={console.log}>
+					<SearchBoxInput label="Search this website" />
+					<SearchBoxButton iconOnly={{ xs: true, md: false }}>
+						Search
+					</SearchBoxButton>
+				</SearchBox>
+			</HeroBannerContent>
+		</HeroBannerBackground>
+	</HeroBannerContainer>
+);
