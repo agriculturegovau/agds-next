@@ -1,5 +1,11 @@
 # @ag.ds-next/core
 
+## 2.1.5
+
+### Patch Changes
+
+- 3e2abfe3: Added responsive type scale
+
 ## 2.1.4
 
 ### Patch Changes

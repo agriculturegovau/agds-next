@@ -1,5 +1,20 @@
 # @ag.ds-next/button
 
+## 6.0.0
+
+### Minor Changes
+
+- 4869ca9a: Added `LoadingDots` to button component
+
+### Patch Changes
+
+- Updated dependencies [4869ca9a]
+- Updated dependencies [3e2abfe3]
+- Updated dependencies [c15a9374]
+  - @ag.ds-next/loading@1.0.0
+  - @ag.ds-next/box@4.1.1
+  - @ag.ds-next/core@2.1.5
+
 ## 5.0.0
 
 ### Patch Changes

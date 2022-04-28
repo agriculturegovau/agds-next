@@ -1,5 +1,13 @@
 # @ag.ds-next/content
 
+## 5.0.1
+
+### Patch Changes
+
+- Updated dependencies [3e2abfe3]
+  - @ag.ds-next/box@4.1.1
+  - @ag.ds-next/core@2.1.5
+
 ## 5.0.0
 
 ### Patch Changes

@@ -1,5 +1,13 @@
 # @ag.ds-next/ag-branding
 
+## 4.1.2
+
+### Patch Changes
+
+- 9dbf6670: Added aria tags to `Logo`
+- Updated dependencies [3e2abfe3]
+  - @ag.ds-next/core@2.1.5
+
 ## 4.1.1
 
 ### Patch Changes

@@ -1,5 +1,13 @@
 # @ag.ds-next/box
 
+## 4.1.1
+
+### Patch Changes
+
+- 3e2abfe3: Added responsive type scale
+- Updated dependencies [3e2abfe3]
+  - @ag.ds-next/core@2.1.5
+
 ## 4.1.0
 
 ### Minor Changes

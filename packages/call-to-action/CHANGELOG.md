@@ -1,5 +1,16 @@
 # @ag.ds-next/call-to-action
 
+## 3.0.1
+
+### Patch Changes
+
+- 6336cb22: Reduced icon size from 1.5rem to 1rem
+- Updated dependencies [3e2abfe3]
+  - @ag.ds-next/box@4.1.1
+  - @ag.ds-next/core@2.1.5
+  - @ag.ds-next/icon@6.0.1
+  - @ag.ds-next/text@5.0.1
+
 ## 3.0.0
 
 ### Patch Changes

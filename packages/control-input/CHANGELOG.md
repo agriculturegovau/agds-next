@@ -1,5 +1,24 @@
 # @ag.ds-next/control-input
 
+## 6.0.0
+
+### Minor Changes
+
+- 3f6803d6: Removed `requiredLabel` prop
+
+### Patch Changes
+
+- f9432f01: Increased gap between control group children and label
+- 38fbc85c: - Updated spacing between elements
+  - Updated stories to show invalid states
+- Updated dependencies [3f6803d6]
+- Updated dependencies [3e2abfe3]
+- Updated dependencies [3f6803d6]
+  - @ag.ds-next/field@5.1.0
+  - @ag.ds-next/box@4.1.1
+  - @ag.ds-next/core@2.1.5
+  - @ag.ds-next/text@5.0.1
+
 ## 5.0.0
 
 ### Patch Changes
