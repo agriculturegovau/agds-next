@@ -1,7 +1,9 @@
 import { useLinkComponent, LinkProps } from '@ag.ds-next/core';
 import { linkStyles } from '@ag.ds-next/box';
 
-export const CardLink = (props: LinkProps) => {
+export type CardLinkProps = LinkProps;
+
+export const CardLink = (props: CardLinkProps) => {
 	const Link = useLinkComponent();
 	return (
 		<Link

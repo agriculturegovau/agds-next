@@ -25,7 +25,8 @@ export const Card = ({
 		<Box
 			as={as} // Note: this should be an li when used in a card list
 			display="block"
-			border={!shadow}
+			border
+			borderColor="muted"
 			background={background}
 			rounded
 			css={{

@@ -6,7 +6,7 @@ export type CardHeaderProps = PropsWithChildren<{
 }>;
 
 export const CardHeader = ({ background, children }: CardHeaderProps) => (
-	<Box padding={1.5} borderBottom background={background}>
+	<Box padding={1.5} borderBottom borderColor="muted" background={background}>
 		{children}
 	</Box>
 );
