@@ -1,5 +1,18 @@
 # @ag.ds-next/accordion
 
+## 4.1.0
+
+### Minor Changes
+
+- 181b58f6: Updated height animation logic to improve accessibility
+
+### Patch Changes
+
+- Updated dependencies [3e2abfe3]
+  - @ag.ds-next/box@4.1.1
+  - @ag.ds-next/core@2.1.5
+  - @ag.ds-next/icon@6.0.1
+
 ## 4.0.0
 
 ### Patch Changes

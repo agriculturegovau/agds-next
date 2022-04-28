@@ -1,5 +1,22 @@
 # @ag.ds-next/progress-indicator
 
+## 5.1.0
+
+### Minor Changes
+
+- 181b58f6: Updated height animation logic to improve accessibility
+- e90ab8e8: - Removed props for setting titles (`title`, `subTitle` and `collapseTitle`)
+  - Updated mobile UI
+
+### Patch Changes
+
+- 556ee539: Updated hover styles
+- Updated dependencies [3e2abfe3]
+  - @ag.ds-next/box@4.1.1
+  - @ag.ds-next/core@2.1.5
+  - @ag.ds-next/icon@6.0.1
+  - @ag.ds-next/text@5.0.1
+
 ## 5.0.0
 
 ### Patch Changes

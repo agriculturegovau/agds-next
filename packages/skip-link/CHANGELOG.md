@@ -1,5 +1,15 @@
 # @ag.ds-next/skip-link
 
+## 3.0.0
+
+### Patch Changes
+
+- 4869ca9a: Explicity set position absolute to anchor taags
+- Updated dependencies [3e2abfe3]
+- Updated dependencies [4869ca9a]
+  - @ag.ds-next/core@2.1.5
+  - @ag.ds-next/button@6.0.0
+
 ## 2.0.0
 
 ### Patch Changes

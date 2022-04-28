@@ -1,5 +1,20 @@
 # @ag.ds-next/text-input
 
+## 6.0.0
+
+### Minor Changes
+
+- 3f6803d6: Removed `requiredLabel` prop
+
+### Patch Changes
+
+- Updated dependencies [3f6803d6]
+- Updated dependencies [3e2abfe3]
+- Updated dependencies [3f6803d6]
+  - @ag.ds-next/field@5.1.0
+  - @ag.ds-next/box@4.1.1
+  - @ag.ds-next/core@2.1.5
+
 ## 5.0.0
 
 ### Patch Changes

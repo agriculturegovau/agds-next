@@ -1,5 +1,14 @@
 # @ag.ds-next/card
 
+## 3.0.1
+
+### Patch Changes
+
+- 7c567fb6: Remove withBody example
+- Updated dependencies [3e2abfe3]
+  - @ag.ds-next/box@4.1.1
+  - @ag.ds-next/core@2.1.5
+
 ## 3.0.0
 
 ### Patch Changes

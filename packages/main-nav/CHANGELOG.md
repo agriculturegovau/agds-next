@@ -1,5 +1,21 @@
 # @ag.ds-next/main-nav
 
+## 8.1.0
+
+### Minor Changes
+
+- cd053653: Improve accessibility for screenreader users
+
+### Patch Changes
+
+- 4a29ac1a: Remove data attributes for style overrides
+- c1b67108: Return focus when modal is closed
+- 124bddeb: Hide mobile toggle button if no links are supplied
+- Updated dependencies [3e2abfe3]
+  - @ag.ds-next/box@4.1.1
+  - @ag.ds-next/core@2.1.5
+  - @ag.ds-next/icon@6.0.1
+
 ## 8.0.0
 
 ### Patch Changes
