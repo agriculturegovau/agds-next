@@ -25,12 +25,15 @@ export const HeroBannerBackground = ({
 				},
 				[tokens.mediaQuery.min.md]: {
 					background: `linear-gradient(270deg, transparent 0px, ${boxPalette[backgroundVar]} 320px), no-repeat center right url(${backgroundImageSrc})`,
+					backgroundSize: 'auto 100%',
 				},
 				[tokens.mediaQuery.min.lg]: {
 					background: `linear-gradient(270deg, transparent 0px, ${boxPalette[backgroundVar]} 380px), no-repeat center right url(${backgroundImageSrc})`,
+					backgroundSize: 'auto 100%',
 				},
 				[tokens.mediaQuery.min.xl]: {
 					background: `linear-gradient(270deg, transparent 0px, ${boxPalette[backgroundVar]} 580px), no-repeat center right url(${backgroundImageSrc})`,
+					backgroundSize: 'auto 100%',
 				},
 			}}
 		>
