@@ -7,11 +7,11 @@ import { Card, CardInner, CardList } from '@ag.ds-next/card';
 import { H1, H2 } from '@ag.ds-next/heading';
 import { Text, TextLink } from '@ag.ds-next/text';
 
-import { Layout } from '../components/Layout';
+import { AppLayout } from '../components/AppLayout';
 
 const ProfilePage: NextPage = () => {
 	return (
-		<Layout>
+		<AppLayout>
 			<Head>
 				<title>AG Design System | Example site</title>
 				<meta
@@ -50,7 +50,7 @@ const ProfilePage: NextPage = () => {
 					/>
 				</CardList>
 			</Content>
-		</Layout>
+		</AppLayout>
 	);
 };
 
