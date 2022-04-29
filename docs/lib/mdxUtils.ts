@@ -181,7 +181,6 @@ export async function getRelease(slug: string) {
 		source,
 		data,
 		title: (data.title ?? slug) as string,
-		type: data.type as string | undefined,
 	};
 }
 
