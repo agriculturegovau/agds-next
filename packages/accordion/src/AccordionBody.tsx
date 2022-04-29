@@ -35,7 +35,13 @@ export const AccordionBody = ({
 			aria-labelledby={ariaLabelledBy}
 			role="region"
 			style={animatedHeight}
-			css={{ overflow: 'hidden' }}
+			css={{
+				overflow: 'hidden',
+				'@media print': {
+					display: 'block !important',
+					height: 'auto !important',
+				},
+			}}
 		>
 			<div ref={ref}>{children}</div>
 		</animated.div>
