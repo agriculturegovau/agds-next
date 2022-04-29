@@ -119,7 +119,7 @@ const LiveCode = withLive((props: unknown) => {
 					Reset
 				</Button>
 				<ButtonLink size="sm" variant="tertiary" href={playroomUrl}>
-					Open in playroom
+					Open in Playroom
 				</ButtonLink>
 			</Flex>
 		</Box>
