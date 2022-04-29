@@ -33,9 +33,9 @@ export const SideNavLink = ({
 			fontSize="sm"
 			lineHeight="default"
 			borderBottom
+			borderColor={depth > 1 ? 'muted' : 'border'}
 			css={{
 				'&:last-child': { borderBottomWidth: depth > 1 ? 0 : undefined },
-				borderBottomColor: depth > 1 ? boxPalette.borderMuted : undefined,
 			}}
 		>
 			<Box

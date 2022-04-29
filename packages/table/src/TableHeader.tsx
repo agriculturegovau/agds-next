@@ -29,7 +29,6 @@ export const TableHeader = ({
 			color="text"
 			padding={0.75}
 			fontWeight="bold"
-			borderBottom
 			focus
 			width={width}
 			css={{

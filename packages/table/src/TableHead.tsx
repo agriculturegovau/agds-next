@@ -1,6 +1,5 @@
 import { ReactNode } from 'react';
 import { Box } from '@ag.ds-next/box';
-import { boxPalette } from '@ag.ds-next/core';
 
 export type TableHeadProps = { children: ReactNode };
 
@@ -10,9 +9,9 @@ export const TableHead = ({ children }: TableHeadProps) => {
 			as="thead"
 			borderBottom
 			borderBottomWidth="xl"
+			borderColor="muted"
 			css={{
 				display: 'table-header-group',
-				borderBottomColor: boxPalette.borderMuted,
 			}}
 		>
 			{children}
