@@ -58,13 +58,9 @@ const LiveCode = withLive((props: unknown) => {
 		[liveOnChange]
 	);
 
-	const resetLiveCode = useCallback(() => {
-		handleChange(live.code);
-	}, [handleChange, live.code]);
-
 	const playroomUrl = createUrl({
 		baseUrl: '/agds-next/playroom',
-		code: localCopy,
+		code: live.code,
 	});
 
 	return (
@@ -111,12 +107,9 @@ const LiveCode = withLive((props: unknown) => {
 					{live.error}
 				</Box>
 			) : null}
-			<Flex palette="light" padding={1} gap={0.5} justifyContent="flex-end">
-				<Button size="sm" variant="primary" onClick={copyLiveCode}>
+			<Flex palette="light" padding={1} gap={0.5}>
+				<Button size="sm" variant="secondary" onClick={copyLiveCode}>
 					Copy
-				</Button>
-				<Button size="sm" variant="secondary" onClick={resetLiveCode}>
-					Reset
 				</Button>
 				<ButtonLink size="sm" variant="tertiary" href={playroomUrl}>
 					Open in Playroom
