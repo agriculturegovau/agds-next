@@ -9,6 +9,7 @@ import {
 	tokens,
 	globalPalette,
 	useWindowSize,
+	packs,
 } from '@ag.ds-next/core';
 
 import { localPalette, localPaletteVars } from './utils';
@@ -84,6 +85,7 @@ export function NavContainer({
 				[localPaletteVars.linkHoverBg]: backgroundColorMap[hover],
 				[localPaletteVars.linkActiveBg]: backgroundColorMap[background],
 				[localPaletteVars.bottomBar]: bottomBar, // <-- special case
+				...packs.printHidden,
 			}}
 		>
 			{menuVisiblyOpen ? <LockScroll /> : null}

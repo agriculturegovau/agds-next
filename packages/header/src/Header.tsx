@@ -1,7 +1,8 @@
-import { Column } from '@ag.ds-next/columns';
-import { HeaderContainer } from './HeaderContainer';
-import { HeaderBrand } from './HeaderBrand';
 import type { ReactNode } from 'react';
+import { Column } from '@ag.ds-next/columns';
+import { packs } from '@ag.ds-next/core';
+import { HeaderBrand } from './HeaderBrand';
+import { HeaderContainer } from './HeaderContainer';
 
 export type HeaderProps = {
 	badgeLabel?: string;
@@ -34,9 +35,10 @@ export function Header({
 					subline={subline}
 				/>
 			</Column>
-
 			{hasRightContent && (
-				<Column columnSpan={{ xs: 12, md: 4 }}>{rightContent}</Column>
+				<Column columnSpan={{ xs: 12, md: 4 }} css={packs.printHidden}>
+					{rightContent}
+				</Column>
 			)}
 		</HeaderContainer>
 	);

@@ -40,9 +40,16 @@ const underline = {
 	textDecorationSkipInk: 'auto',
 } as const;
 
+export const printHidden = {
+	'@media print': {
+		display: 'none',
+	},
+};
+
 export const packs = {
 	control,
 	input,
 	outline,
 	underline,
+	printHidden,
 };

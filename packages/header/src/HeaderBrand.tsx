@@ -40,12 +40,19 @@ export function HeaderBrand({
 					maxWidth={{ xs: '12rem', sm: '16rem' }}
 					css={{
 						' img, svg': { width: '100%' },
+						...packs.printHidden,
 					}}
 				>
 					{logo}
 				</Flex>
 			) : null}
-			{logo ? <Box borderRight display={{ xs: 'none', md: 'block' }} /> : null}
+			{logo ? (
+				<Box
+					borderRight
+					display={{ xs: 'none', md: 'block' }}
+					css={packs.printHidden}
+				/>
+			) : null}
 			<Stack justifyContent="center">
 				<Flex alignItems="flex-start" gap={0.5}>
 					<Text

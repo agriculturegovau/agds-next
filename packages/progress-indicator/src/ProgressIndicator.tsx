@@ -59,6 +59,10 @@ export const ProgressIndicator = ({ items }: ProgressIndicatorProps) => {
 						display: 'block !important',
 						height: 'auto !important',
 					},
+					'@media print': {
+						display: 'block !important',
+						height: 'auto !important',
+					},
 				}}
 			>
 				<ProgressIndicatorList ref={ref}>
