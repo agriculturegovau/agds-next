@@ -59,7 +59,7 @@ const LiveCode = withLive((props: unknown) => {
 	);
 
 	const playroomUrl = createUrl({
-		baseUrl: '/agds-next/playroom',
+		baseUrl: '/playroom',
 		code: live.code,
 	});
 
