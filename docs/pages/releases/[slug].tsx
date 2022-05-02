@@ -16,7 +16,6 @@ import { mdxComponents } from '../../components/utils';
 import { AppLayout } from '../../components/AppLayout';
 import { DocumentTitle } from '../../components/DocumentTitle';
 import { PageLayout } from '../../components/PageLayout';
-import { Tag } from '@ag.ds-next/tags';
 
 export default function Releases({
 	release,
@@ -43,7 +42,6 @@ export default function Releases({
 						alignItems="flex-start"
 					>
 						<H1>{release.data.title}</H1>
-						{release.data.type && <Tag>{release.data.type}</Tag>}
 						<Body>
 							<MDXRemote {...release.source} components={mdxComponents} />
 						</Body>
