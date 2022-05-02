@@ -15,7 +15,13 @@ export const Basic = () => {
 
 	return (
 		<div>
-			<Button onClick={openModal}>Open modal</Button>
+			<Button
+				onClick={openModal}
+				aria-haspopup="dialog"
+				aria-expanded={isModalOpen}
+			>
+				Open modal
+			</Button>
 			<Modal
 				isOpen={isModalOpen}
 				onDismiss={closeModal}
