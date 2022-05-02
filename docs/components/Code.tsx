@@ -6,12 +6,13 @@ import {
 	Editor as StaticEditor,
 	withLive,
 } from 'react-live';
+import { createUrl } from 'playroom/utils';
 import { Language } from 'prism-react-renderer';
 import copy from 'clipboard-copy';
 
 import { globalPalette, mapSpacing, tokens } from '@ag.ds-next/core';
 import { Box, Flex } from '@ag.ds-next/box';
-import { Button } from '@ag.ds-next/button';
+import { Button, ButtonLink } from '@ag.ds-next/button';
 
 import { designSystemComponents } from './design-system-components';
 import { prismTheme } from './prism-theme';
@@ -57,9 +58,10 @@ const LiveCode = withLive((props: unknown) => {
 		[liveOnChange]
 	);
 
-	const resetLiveCode = useCallback(() => {
-		handleChange(live.code);
-	}, [handleChange, live.code]);
+	const playroomUrl = createUrl({
+		baseUrl: '/agds-next/playroom',
+		code: live.code,
+	});
 
 	return (
 		<Box
@@ -105,13 +107,13 @@ const LiveCode = withLive((props: unknown) => {
 					{live.error}
 				</Box>
 			) : null}
-			<Flex palette="light" padding={1} gap={0.5} justifyContent="flex-end">
+			<Flex palette="light" padding={1} gap={0.5}>
 				<Button size="sm" variant="secondary" onClick={copyLiveCode}>
 					Copy
 				</Button>
-				<Button size="sm" variant="tertiary" onClick={resetLiveCode}>
-					Reset
-				</Button>
+				<ButtonLink size="sm" variant="tertiary" href={playroomUrl}>
+					Open in Playroom
+				</ButtonLink>
 			</Flex>
 		</Box>
 	);
