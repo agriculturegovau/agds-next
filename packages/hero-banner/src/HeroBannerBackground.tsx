@@ -1,6 +1,6 @@
 import { PropsWithChildren } from 'react';
 import { Box } from '@ag.ds-next/box';
-import { boxPalette, mq } from '@ag.ds-next/core';
+import { boxPalette, mq, tokens } from '@ag.ds-next/core';
 import { HeroBannerVariant, variantMap } from './utils';
 
 export type HeroBannerBackgroundProps = PropsWithChildren<{
@@ -18,17 +18,24 @@ export const HeroBannerBackground = ({
 		<Box
 			width="100%"
 			height="100%"
-			css={
-				backgroundImageSrc
-					? mq({
-							background: [
-								null,
-								`linear-gradient(90deg, ${boxPalette[backgroundVar]} 0%, ${boxPalette[backgroundVar]} 60%, transparent 100%), no-repeat center right url(${backgroundImageSrc});`,
-							],
-							backgroundSize: [null, 'auto 100%'],
-					  })
-					: undefined
-			}
+			css={{
+				[tokens.mediaQuery.min.sm]: {
+					background: `linear-gradient(270deg, transparent 0px, ${boxPalette[backgroundVar]} 240px), no-repeat center right url(${backgroundImageSrc})`,
+					backgroundSize: 'auto 100%',
+				},
+				[tokens.mediaQuery.min.md]: {
+					background: `linear-gradient(270deg, transparent 0px, ${boxPalette[backgroundVar]} 320px), no-repeat center right url(${backgroundImageSrc})`,
+					backgroundSize: 'auto 100%',
+				},
+				[tokens.mediaQuery.min.lg]: {
+					background: `linear-gradient(270deg, transparent 0px, ${boxPalette[backgroundVar]} 380px), no-repeat center right url(${backgroundImageSrc})`,
+					backgroundSize: 'auto 100%',
+				},
+				[tokens.mediaQuery.min.xl]: {
+					background: `linear-gradient(270deg, transparent 0px, ${boxPalette[backgroundVar]} 580px), no-repeat center right url(${backgroundImageSrc})`,
+					backgroundSize: 'auto 100%',
+				},
+			}}
 		>
 			{children}
 		</Box>
