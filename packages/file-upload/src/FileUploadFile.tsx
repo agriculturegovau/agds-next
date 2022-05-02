@@ -19,7 +19,7 @@ export const FileUploadFile = ({
 			alignItems="center"
 			as="li"
 			paddingY={0.5}
-			paddingLeft={1.5}
+			paddingLeft={1}
 			justifyContent="space-between"
 		>
 			<Text>

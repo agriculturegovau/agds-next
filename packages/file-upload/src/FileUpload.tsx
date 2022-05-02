@@ -1,12 +1,19 @@
 import React, { Fragment, forwardRef, useState } from 'react';
-import { useDropzone, DropzoneOptions, FileWithPath } from 'react-dropzone';
-import { Flex, Stack } from '@ag.ds-next/box';
+import {
+	useDropzone,
+	DropzoneOptions,
+	FileWithPath,
+	FileRejection as FileRejectionType,
+} from 'react-dropzone';
+import { Box, Flex, Stack } from '@ag.ds-next/box';
 import { Button } from '@ag.ds-next/button';
 import { packs, boxPalette, globalPalette, tokens } from '@ag.ds-next/core';
 import { Field } from '@ag.ds-next/field';
 import { UploadIcon } from '@ag.ds-next/icon';
 import { Text } from '@ag.ds-next/text';
+import formatFileSize from 'filesize';
 
+import { FileRejection } from './FileRejection';
 import { FileUploadFile } from './FileUploadFile';
 import { getFilesTotal } from './utils';
 
@@ -20,6 +27,10 @@ export type FileUploadProps = InputProps & {
 	accept: DropzoneOptions['accept'];
 	/** A label that describes the field*/
 	label: string;
+	/** The maximum number of files allowed to be selected. By default there is no limit (if `multiple` is true). */
+	maxFiles?: DropzoneOptions['maxFiles'];
+	/** The maximum allowed file size, measured in KB */
+	maxSize?: DropzoneOptions['maxSize'];
 	onChange: DropzoneOptions['onDrop'];
 	/** Whether the field is required */
 	required?: boolean;
@@ -37,6 +48,8 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 			accept,
 			disabled,
 			label,
+			maxFiles,
+			maxSize,
 			multiple,
 			onChange,
 			required,
@@ -69,13 +82,46 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 			}
 		};
 
-		const { getRootProps, getInputProps, isDragActive, open } = useDropzone({
-			onDrop: onChange,
-			accept,
-			multiple,
-			onDropAccepted: handleDropAccepted,
-			disabled,
-		});
+		const { getRootProps, getInputProps, isDragActive, open, fileRejections } =
+			useDropzone({
+				onDrop: onChange,
+				accept,
+				maxFiles,
+				// converts kB to B
+				maxSize: maxSize && maxSize * 1000,
+				multiple,
+				onDropAccepted: handleDropAccepted,
+				disabled,
+			});
+
+		const errorMessageMaps = ({ file, errors }: FileRejectionType) => {
+			const { code, message } = errors[0];
+			if (code === 'file-too-large') {
+				return `${file.name} size exceeds ${formatFileSize(
+					(maxSize || 0) * 1000
+				)}`;
+			}
+
+			return `${file.name}: ${message}`;
+		};
+
+		const getErrorSummary = (rejections: FileRejectionType[] | undefined) => {
+			if (!rejections || !rejections.length) return undefined;
+
+			const firstError = rejections[0].errors[0];
+
+			if (firstError.code === 'file-too-large') {
+				return `Some files exceed ${formatFileSize((maxSize || 0) * 1000)}`;
+			}
+
+			if (firstError.code === 'too-many-files') {
+				return `Too many files were selected. Up to ${maxFiles} can be picked.`;
+			}
+
+			return 'There was an issue with at least on of the selected files.';
+		};
+
+		const errorSummary = getErrorSummary(fileRejections);
 
 		return (
 			<Stack gap={0.5}>
@@ -83,8 +129,8 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 					label={label}
 					required={Boolean(required)}
 					hint={hint}
-					message={message}
-					invalid={invalid}
+					message={message || errorSummary}
+					invalid={invalid || !!errorSummary}
 					valid={valid}
 					id={id}
 				>
@@ -133,6 +179,14 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 						</Stack>
 					</Fragment>
 				) : null}
+
+				{fileRejections && (
+					<Stack as="ul" gap={0.5}>
+						{fileRejections.map((err, index) => (
+							<FileRejection key={index}>{errorMessageMaps(err)}</FileRejection>
+						))}
+					</Stack>
+				)}
 			</Stack>
 		);
 	}
