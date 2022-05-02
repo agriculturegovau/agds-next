@@ -15,7 +15,23 @@ group: Forms
 
 ## Multiple files
 
-Selecting multiple files is also supported with FileUpload. Simply add `multiple={true}`, and you can select as many files as you want.
+Selecting multiple files is also supported with FileUpload. Simply add `multiple={true}`, and you can select as many files as you want. You can also set `maxFiles` to limit how many files can be selected.
+
+## Maximum size
+
+Use the `maxSize` prop to set a maximum size for each file. maxSize is measured in kB.
+
+```jsx
+<FileUpload
+  maxSize={200} // 200kB
+/>
+
+<FileUpload
+  maxSize={20000} // 20MB
+/>
+
+
+```
 
 ## Accepted files
 

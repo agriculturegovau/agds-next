@@ -65,6 +65,8 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 		const [files, setFiles] = useState<FileWithPath[]>([]);
 		const styles = fileInputStyles({ disabled, invalid, valid });
 		const filesPlural = multiple ? 'files' : 'file';
+		const maxSizeBytes = (maxSize || 0) * 1000;
+		const formattedFileSize = formatFileSize(maxSizeBytes);
 
 		const handleRemoveFile = (file: FileWithPath) => {
 			setFiles((previousFiles) => {
@@ -97,9 +99,7 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 		const errorMessageMaps = ({ file, errors }: FileRejectionType) => {
 			const { code, message } = errors[0];
 			if (code === 'file-too-large') {
-				return `${file.name} size exceeds ${formatFileSize(
-					(maxSize || 0) * 1000
-				)}`;
+				return `${file.name} size exceeds ${formattedFileSize}`;
 			}
 
 			return `${file.name}: ${message}`;
@@ -111,7 +111,7 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 			const firstError = rejections[0].errors[0];
 
 			if (firstError.code === 'file-too-large') {
-				return `Some files exceed ${formatFileSize((maxSize || 0) * 1000)}`;
+				return `Some files exceed ${formattedFileSize}`;
 			}
 
 			if (firstError.code === 'too-many-files') {
@@ -158,6 +158,9 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 										? `Drop ${filesPlural} here...`
 										: `Drag and drop ${filesPlural} here or select ${filesPlural} to upload.`}
 								</Text>
+								{maxSize ? (
+									<Text>Each file cannot exceed {formattedFileSize}</Text>
+								) : null}
 								<Button variant="secondary" onClick={open} disabled={disabled}>
 									{`Select ${filesPlural}`}
 								</Button>

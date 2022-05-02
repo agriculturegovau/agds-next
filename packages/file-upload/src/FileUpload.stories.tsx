@@ -72,6 +72,7 @@ export const AcceptedFormats: ComponentStory<typeof FileUpload> = (args) => {
 AcceptedFormats.args = {
 	label: 'Identity documents',
 	hint: 'Formats accepted: .png, .jpg, .pdf, .docx, .xlsx.',
+	maxSize: 200,
 	accept: [
 		'image/jpeg',
 		'image/jpg',
