@@ -142,7 +142,7 @@ const StaticCode = ({
 				language={language}
 				disabled
 			/>
-			<Flex palette="light" padding={1} justifyContent="flex-end">
+			<Flex palette="light" padding={1}>
 				<Button size="sm" variant="secondary" onClick={() => copy(code)}>
 					Copy
 				</Button>
