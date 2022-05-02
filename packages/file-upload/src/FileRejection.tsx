@@ -1,5 +1,6 @@
 import React, { ReactNode } from 'react';
 import { Flex } from '@ag.ds-next/box';
+import { globalPalette } from '@ag.ds-next/core';
 import { AlertFilledIcon } from '@ag.ds-next/icon';
 import { Text } from '@ag.ds-next/text';
 
@@ -9,11 +10,18 @@ type FileRejectionProps = {
 
 export const FileRejection = ({ children }: FileRejectionProps) => {
 	return (
-		<Flex as="li" gap={0.5} alignItems="center" padding={1} background="error">
+		<Flex
+			as="li"
+			gap={0.5}
+			alignItems="center"
+			rounded
+			padding={1}
+			css={{
+				background: globalPalette.errorMuted,
+			}}
+		>
 			<AlertFilledIcon color="error" size="md" />
-			<Text fontWeight="bold" color="error">
-				{children}
-			</Text>
+			<Text color="error">{children}</Text>
 		</Flex>
 	);
 };

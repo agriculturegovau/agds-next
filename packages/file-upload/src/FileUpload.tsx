@@ -15,7 +15,7 @@ import formatFileSize from 'filesize';
 
 import { FileRejection } from './FileRejection';
 import { FileUploadFile } from './FileUploadFile';
-import { getFilesTotal } from './utils';
+import { getFilesTotal, getAcceptedFilesSummary, FileFormats } from './utils';
 
 type InputProps = Pick<
 	React.InputHTMLAttributes<HTMLInputElement>,
@@ -24,7 +24,7 @@ type InputProps = Pick<
 
 export type FileUploadProps = InputProps & {
 	/** List of acceptible file types, e.g.`image/jpeg`, `application/pdf` */
-	accept: DropzoneOptions['accept'];
+	accept?: FileFormats[];
 	/** A label that describes the field*/
 	label: string;
 	/** The maximum number of files allowed to be selected. By default there is no limit (if `multiple` is true). */
@@ -102,26 +102,36 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 				return `${file.name} size exceeds ${formattedFileSize}`;
 			}
 
+			if (code === 'file-invalid-type') {
+				return `${file.name} must be one of the following types: ${acceptedFilesSummary}`;
+			}
+
 			return `${file.name}: ${message}`;
 		};
 
 		const getErrorSummary = (rejections: FileRejectionType[] | undefined) => {
 			if (!rejections || !rejections.length) return undefined;
-
 			const firstError = rejections[0].errors[0];
-
-			if (firstError.code === 'file-too-large') {
-				return `Some files exceed ${formattedFileSize}`;
-			}
 
 			if (firstError.code === 'too-many-files') {
 				return `Too many files were selected. Up to ${maxFiles} can be picked.`;
 			}
 
-			return 'There was an issue with at least on of the selected files.';
+			if (rejections.length === 1) {
+				if (firstError.code === 'file-too-large') {
+					return `Some files exceed ${formattedFileSize}`;
+				}
+
+				if (firstError.code === 'file-invalid-type') {
+					return `Some files are not of the correct format`;
+				}
+			}
+
+			return 'There was an issue with at least one of the selected files.';
 		};
 
 		const errorSummary = getErrorSummary(fileRejections);
+		const acceptedFilesSummary = getAcceptedFilesSummary(accept);
 
 		return (
 			<Stack gap={0.5}>
@@ -153,14 +163,23 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 									{...allyProps}
 									{...props}
 								/>
-								<Text color="muted">
-									{isDragActive
-										? `Drop ${filesPlural} here...`
-										: `Drag and drop ${filesPlural} here or select ${filesPlural} to upload.`}
-								</Text>
-								{maxSize ? (
-									<Text>Each file cannot exceed {formattedFileSize}</Text>
-								) : null}
+								<Stack gap={0} alignItems="center">
+									<Text color="muted">
+										{isDragActive
+											? `Drop ${filesPlural} here...`
+											: `Drag and drop ${filesPlural} here or select ${filesPlural} to upload.`}
+									</Text>
+									{maxSize ? (
+										<Text color="muted">
+											Each file cannot exceed {formattedFileSize}.
+										</Text>
+									) : null}
+									{accept ? (
+										<Text color="muted">
+											Files accepted: {acceptedFilesSummary}
+										</Text>
+									) : null}
+								</Stack>
 								<Button variant="secondary" onClick={open} disabled={disabled}>
 									{`Select ${filesPlural}`}
 								</Button>

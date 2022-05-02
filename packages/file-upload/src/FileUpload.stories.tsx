@@ -85,3 +85,14 @@ AcceptedFormats.args = {
 	],
 	multiple: true,
 };
+
+export const MultipleImages: ComponentStory<typeof FileUpload> = (args) => {
+	return <FileUpload {...args} onChange={console.log} />;
+};
+MultipleImages.args = {
+	label: 'Photos from your holiday',
+	maxSize: 2000,
+	maxFiles: 3,
+	accept: ['image/jpeg', 'image/jpg', 'image/png', 'image/heic'],
+	multiple: true,
+};
