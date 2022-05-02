@@ -1,6 +1,6 @@
 import { useRef } from 'react';
 import { useId } from '@reach/auto-id';
-import { useSpring, animated } from 'react-spring';
+import { useSpring, animated } from '@react-spring/web';
 import {
 	tokens,
 	usePrefersReducedMotion,

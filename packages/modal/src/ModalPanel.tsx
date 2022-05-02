@@ -1,6 +1,6 @@
 import { PropsWithChildren, ReactNode } from 'react';
 import FocusLock from 'react-focus-lock';
-import { animated, useSpring } from 'react-spring';
+import { animated, useSpring } from '@react-spring/web';
 import { Flex, Stack } from '@ag.ds-next/box';
 import { usePrefersReducedMotion, mapSpacing, tokens } from '@ag.ds-next/core';
 import { CloseIcon } from '@ag.ds-next/icon';

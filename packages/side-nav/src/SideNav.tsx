@@ -1,5 +1,5 @@
 import { ReactNode, useRef } from 'react';
-import { useSpring, animated } from 'react-spring';
+import { useSpring, animated } from '@react-spring/web';
 import { Box } from '@ag.ds-next/box';
 import {
 	LinkProps,

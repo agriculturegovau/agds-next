@@ -4,7 +4,7 @@ import {
 	PropsWithChildren,
 	useState,
 } from 'react';
-import { useSpring, animated } from 'react-spring';
+import { useSpring, animated } from '@react-spring/web';
 import { Flex, linkStyles } from '@ag.ds-next/box';
 import { TextLink } from '@ag.ds-next/text';
 import { ChevronRightIcon } from '@ag.ds-next/icon';
