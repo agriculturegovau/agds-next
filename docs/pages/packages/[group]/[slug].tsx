@@ -52,9 +52,10 @@ export default function Packages({
 							<div>
 								<ButtonLink
 									target="_blank"
-									iconAfter={ExternalLinkIcon}
-									variant="secondary"
 									href={`https://steelthreads.github.io/agds-next/storybook/index.html?path=${pkg.storybookPath}`}
+									rel="noopener noreferrer"
+									variant="secondary"
+									iconAfter={ExternalLinkIcon}
 								>
 									View in Storybook
 								</ButtonLink>
