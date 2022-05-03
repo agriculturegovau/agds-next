@@ -13,6 +13,7 @@ import copy from 'clipboard-copy';
 import { globalPalette, mapSpacing, tokens } from '@ag.ds-next/core';
 import { Box, Flex } from '@ag.ds-next/box';
 import { Button, ButtonLink } from '@ag.ds-next/button';
+import { ExternalLinkIcon } from '@ag.ds-next/icon';
 
 import { designSystemComponents } from './design-system-components';
 import { prismTheme } from './prism-theme';
@@ -111,7 +112,14 @@ const LiveCode = withLive((props: unknown) => {
 				<Button size="sm" variant="secondary" onClick={copyLiveCode}>
 					Copy
 				</Button>
-				<ButtonLink size="sm" variant="tertiary" href={playroomUrl}>
+				<ButtonLink
+					href={playroomUrl}
+					target="_blank"
+					rel="noopener noreferrer"
+					size="sm"
+					variant="tertiary"
+					iconAfter={ExternalLinkIcon}
+				>
 					Open in Playroom
 				</ButtonLink>
 			</Flex>
