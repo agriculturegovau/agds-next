@@ -85,7 +85,7 @@ export function NavContainer({
 				[localPaletteVars.linkHoverBg]: backgroundColorMap[hover],
 				[localPaletteVars.linkActiveBg]: backgroundColorMap[background],
 				[localPaletteVars.bottomBar]: bottomBar, // <-- special case
-				...packs.printHidden,
+				...packs.print.hidden,
 			}}
 		>
 			{menuVisiblyOpen ? <LockScroll /> : null}

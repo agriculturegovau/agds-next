@@ -40,7 +40,7 @@ export function HeaderBrand({
 					maxWidth={{ xs: '12rem', sm: '16rem' }}
 					css={{
 						' img, svg': { width: '100%' },
-						...packs.printHidden,
+						...packs.print.hidden,
 					}}
 				>
 					{logo}
@@ -50,7 +50,7 @@ export function HeaderBrand({
 				<Box
 					borderRight
 					display={{ xs: 'none', md: 'block' }}
-					css={packs.printHidden}
+					css={packs.print.hidden}
 				/>
 			) : null}
 			<Stack justifyContent="center">

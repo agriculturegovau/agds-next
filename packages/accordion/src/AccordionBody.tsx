@@ -1,5 +1,5 @@
 import { PropsWithChildren, useRef } from 'react';
-import { usePrefersReducedMotion } from '@ag.ds-next/core';
+import { packs, usePrefersReducedMotion } from '@ag.ds-next/core';
 import { useSpring, animated } from '@react-spring/web';
 
 export type AccordionBodyProps = PropsWithChildren<{
@@ -37,10 +37,7 @@ export const AccordionBody = ({
 			style={animatedHeight}
 			css={{
 				overflow: 'hidden',
-				'@media print': {
-					display: 'block !important',
-					height: 'auto !important',
-				},
+				...packs.print.visible,
 			}}
 		>
 			<div ref={ref}>{children}</div>

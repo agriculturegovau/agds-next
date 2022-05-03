@@ -21,7 +21,7 @@ export const SideNavContainer = ({
 			palette={palette}
 			background={background}
 			css={mq({
-				...packs.printHidden,
+				...packs.print.hidden,
 				[localPaletteVars.hover]: mapResponsiveProp(
 					hover,
 					(t) => backgroundColorMap[t]

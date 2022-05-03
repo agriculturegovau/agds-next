@@ -15,7 +15,6 @@ export function FooterDivider() {
 				borderTopStyle: 'solid',
 				borderColor: localPalette.border,
 				width: '100%',
-				...packs.printHidden,
 			}}
 		/>
 	);

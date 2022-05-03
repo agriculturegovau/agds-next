@@ -36,7 +36,7 @@ export function Header({
 				/>
 			</Column>
 			{hasRightContent && (
-				<Column columnSpan={{ xs: 12, md: 4 }} css={packs.printHidden}>
+				<Column columnSpan={{ xs: 12, md: 4 }} css={packs.print.hidden}>
 					{rightContent}
 				</Column>
 			)}

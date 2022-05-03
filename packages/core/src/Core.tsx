@@ -31,7 +31,7 @@ export function Core({
 							...(theme ? mergeTheme(goldTheme, theme) : goldTheme),
 							...generateFontGrid(),
 						},
-						// Override the theme in print mode to black & white
+						// Reset the global theme in print mode to black & white
 						// Note: Components can also contain print specific styles
 						'@media print': {
 							':root': mergeTheme(goldTheme, printTheme),

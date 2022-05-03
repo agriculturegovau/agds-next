@@ -2,6 +2,7 @@ import { useRef } from 'react';
 import { useId } from '@reach/auto-id';
 import { useSpring, animated } from '@react-spring/web';
 import {
+	packs,
 	tokens,
 	usePrefersReducedMotion,
 	useToggleState,
@@ -59,10 +60,7 @@ export const ProgressIndicator = ({ items }: ProgressIndicatorProps) => {
 						display: 'block !important',
 						height: 'auto !important',
 					},
-					'@media print': {
-						display: 'block !important',
-						height: 'auto !important',
-					},
+					...packs.print.visible,
 				}}
 			>
 				<ProgressIndicatorList ref={ref}>

@@ -315,6 +315,12 @@ export const linkStyles = {
 		color: boxPalette.foregroundText,
 		textDecoration: 'none',
 	},
+
+	'@media print': {
+		'&[href]:after': {
+			content: '" (" attr(href) ")" !important',
+		},
+	},
 };
 
 type FocusProps = Partial<{ focus: boolean }>;

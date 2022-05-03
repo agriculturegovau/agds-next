@@ -308,4 +308,19 @@ export const bodyClass = css({
 	'* + hr:not([class])': {
 		marginTop: mapSpacing(1.5),
 	},
+
+	/**
+	 * Print styles
+	 */
+	'@media print': {
+		// Display link URLs
+		'a:not([class])[href]:after': {
+			display: 'inline',
+			content: '" (" attr(href) ")" !important',
+		},
+		// Expand abbreviations
+		'abbr[title]:after': {
+			content: '" (" attr(title) ")"',
+		},
+	},
 });
