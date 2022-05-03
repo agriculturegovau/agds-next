@@ -1,4 +1,5 @@
 import formatFileSize from 'filesize';
+import type { FileRejection } from 'react-dropzone';
 
 export const getFilesTotal = (files: { size: number }[]) => {
 	const label = files.length > 1 ? 'files' : 'file';
@@ -39,10 +40,53 @@ export const fileTypeMapping = {
 // Accepted MIME types
 export type FileFormats = keyof typeof fileTypeMapping;
 
-export const getAcceptedFilesSummary = (accept: FileFormats[]) => {
-	if (!accept || !accept.length) {
-		return undefined;
-	}
+export const getAcceptedFilesSummary = (accept: FileFormats[] | undefined) => {
+	if (!accept?.length) return;
 	const symbols = accept.map((MIME) => fileTypeMapping[MIME]);
 	return symbols.join(', ');
+};
+
+export const getFileRejectionErrorMessage = (
+	{ file, errors }: FileRejection,
+	formattedMaxFileSize: string,
+	acceptedFilesSummary: string | undefined
+) => {
+	const { code, message } = errors[0];
+	if (code === 'file-too-large') {
+		return `${file.name} size exceeds ${formattedMaxFileSize}`;
+	}
+
+	if (code === 'file-invalid-type') {
+		if (!acceptedFilesSummary)
+			return `${file.name} must be an acceptable format`;
+		return `${file.name} must be one of the following types: ${acceptedFilesSummary}`;
+	}
+
+	return `${file.name}: ${message}`;
+};
+
+export const getErrorSummary = (
+	rejections: FileRejection[] | undefined,
+	formattedMaxFileSize: string,
+	maxFiles: number | undefined
+) => {
+	if (!rejections?.length) return;
+
+	const firstError = rejections[0].errors[0];
+
+	if (firstError.code === 'too-many-files') {
+		return `Too many files were selected. Up to ${maxFiles} can be picked`;
+	}
+
+	if (rejections.length === 1) {
+		if (firstError.code === 'file-too-large') {
+			return `Some files exceed ${formattedMaxFileSize}`;
+		}
+
+		if (firstError.code === 'file-invalid-type') {
+			return `Some files are not of the correct format`;
+		}
+	}
+
+	return 'There was an issue with at least one of the selected files';
 };

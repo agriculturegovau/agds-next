@@ -72,7 +72,6 @@ export const FormExampleBook = () => {
 					}) => (
 						<FileUpload
 							label="License photo"
-							hint="Formats accepted: .png, .jpg"
 							accept={['image/jpeg', 'image/jpg', 'image/png']}
 							onChange={onChange}
 							name={name}

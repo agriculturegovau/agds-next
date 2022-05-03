@@ -1,5 +1,5 @@
 import { MouseEventHandler } from 'react';
-import { Flex } from '@ag.ds-next/box';
+import { Box, Flex } from '@ag.ds-next/box';
 import { Text } from '@ag.ds-next/text';
 import { Button } from '@ag.ds-next/button';
 import { FileWithPath } from 'react-dropzone';
@@ -22,13 +22,15 @@ export const FileUploadFile = ({
 			paddingLeft={1}
 			justifyContent="space-between"
 		>
-			<Text>
+			<Text css={{ wordBreak: 'break-all' }}>
 				{file.path} ({formatFileSize(file.size)})
 			</Text>
 
-			<Button variant="tertiary" onClick={onRemove}>
-				Remove file
-			</Button>
+			<Box flexShrink={0}>
+				<Button variant="tertiary" onClick={onRemove}>
+					Remove file
+				</Button>
+			</Box>
 		</Flex>
 	);
 };
