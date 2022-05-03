@@ -1,6 +1,6 @@
 import { PropsWithChildren, useRef } from 'react';
-import { packs, usePrefersReducedMotion } from '@ag.ds-next/core';
 import { useSpring, animated } from '@react-spring/web';
+import { packs, usePrefersReducedMotion } from '@ag.ds-next/core';
 
 export type AccordionBodyProps = PropsWithChildren<{
 	ariaLabelledBy: string;
