@@ -2,6 +2,7 @@
 title: FileUpload
 description: Allows a user to insert a file into a form, via drag-and-drop or using the system file browser.
 group: Forms
+storybookPath: /story/forms-fileupload--on-light
 ---
 
 ```jsx live

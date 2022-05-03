@@ -2,6 +2,7 @@
 title: Progress indicator
 description: Progress indicators provide visual feedback to users to let them know and understand their current context at any given time and be assured that they are progressing through the system.
 group: Forms
+storybookPath: /story/forms-progressindicator--on-light
 ---
 
 Our design system provides a progress indicator for larger tasks that can be completed out of order and returned to at a later date, like doing a tax return or applying for a driver’s licence.

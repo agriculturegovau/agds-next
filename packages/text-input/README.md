@@ -2,6 +2,7 @@
 title: Text Input
 description: Text inputs are input fields typically used in forms that allow the user to enter text data in a structured format.
 group: Forms
+storybookPath: /story/forms-textinput--on-light
 ---
 
 ### Default

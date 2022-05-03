@@ -2,6 +2,7 @@
 title: Icon
 description: The Agriculture Design System supports the use of universal system icons. The icon component is used to apply our set of universal icons to more complex components of the system.
 group: Foundations
+storybookPath: /story/foundations-icon--all-icons
 ---
 
 ```jsx live

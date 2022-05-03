@@ -2,6 +2,7 @@
 title: Text
 description: A primitive typographic component for constrained text styles
 group: Foundations
+storybookPath: /story/foundations-text--basic
 ---
 
 This package includes the components `<Text />` and `<TextLink />`.

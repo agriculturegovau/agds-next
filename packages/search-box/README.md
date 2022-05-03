@@ -2,6 +2,7 @@
 title: Search Box
 description: An input that allows users to enter a keyword to filter content on the website.
 group: Forms
+storybookPath: /story/forms-searchbox--on-light
 ---
 
 ### Default

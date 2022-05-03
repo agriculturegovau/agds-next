@@ -2,6 +2,7 @@
 title: MainNav
 description: A horizontal list of links to key areas on the website. Typically placed in the header.
 group: Navigation
+storybookPath: /story/navigation-mainnav--agriculture-variant
 ---
 
 The main navigation component is intended to be used as the primary means of navigation around the website. It typically accommodates the top level of the information architecture.

@@ -2,6 +2,7 @@
 title: Columns
 description: A grid consists of a framework of cells laid out and aligned vertically and horizontally. It helps users read and visually navigate website content more easily, using a responsive, scrollable column structure.
 group: Layout
+storybookPath: /story/layout-columns--basic
 ---
 
 This package includes the components `<Columns />` and `<Column />`.

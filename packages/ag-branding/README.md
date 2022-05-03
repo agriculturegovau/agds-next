@@ -2,6 +2,7 @@
 title: AG Branding
 description: A colour palette and logo set for Agriculture
 group: Brand
+storybookPath: /story/brand-ag-branding-logo--on-light
 ---
 
 ## Agriculture theme

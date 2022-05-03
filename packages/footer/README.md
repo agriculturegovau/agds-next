@@ -2,6 +2,7 @@
 title: Footer
 group: Layout
 description: Footers help users find what they need after scrolling to the bottom of a page. They provide supplementary information such as copyright, ABN details, contact information, links to other pages within the website, and email and social media links.
+storybookPath: /story/layout-footer--agriculture-variant
 ---
 
 ## Main

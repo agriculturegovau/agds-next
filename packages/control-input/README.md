@@ -2,6 +2,7 @@
 title: Control input
 description: Control inputs help users input one or more selections from multiple options. Our control inputs consist of checkboxes and radio buttons.
 group: Forms
+storybookPath: /story/forms-checkbox--on-light
 ---
 
 ### Checkbox

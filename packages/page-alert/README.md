@@ -2,6 +2,7 @@
 title: Page alert
 description: Page alerts are used to notify users of important information or changes on a page, in a way that attracts the user's attention without interrupting the current task.
 group: Content
+storybookPath: /story/content-page-alert--on-light
 ---
 
 Typically Page Alerts appear at the top of a page following a submit action.

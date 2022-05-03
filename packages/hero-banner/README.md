@@ -2,6 +2,7 @@
 title: Hero Banner
 description: Hero banner are used to grab a user’s attention.
 group: Layout
+storybookPath: /story/layout-herobanner--light-variant
 ---
 
 ```jsx live

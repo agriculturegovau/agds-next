@@ -2,6 +2,7 @@
 title: Fieldset
 description: Use the fieldset component to group related form inputs.
 group: Forms
+storybookPath: /story/forms-fieldset--on-light
 ---
 
 Fieldset is used to associate a number of related form fields as well as labels within a form. The legend provides an association and caption for the form fields in the fieldset.
