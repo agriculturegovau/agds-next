@@ -40,7 +40,7 @@ const commonArgs = {
 	image: (
 		<img
 			src="https://steelthreads.github.io/agds-next/img/placeholder/hero-banner.png"
-			alt="Hero image"
+			alt="Harvester in a golden field of wheat emptying grain into a chaser bin moving alongside it."
 		/>
 	),
 	title: 'Hero banner title',
@@ -81,8 +81,7 @@ DarkAlt.args = {
 
 export const Buttons = Template.bind({});
 Buttons.args = {
-	title: 'Hero banner title',
-	subTitle: 'Hero banner paragraph text',
+	...commonArgs,
 	children: (
 		<Flex flexDirection={['column', 'row']} gap={1}>
 			<Button>Primary button</Button>
@@ -96,7 +95,7 @@ export const Modular = () => (
 		<HeroBannerMobileImage>
 			<img
 				src="https://steelthreads.github.io/agds-next/img/placeholder/hero-banner.png"
-				alt="Hero image"
+				alt="Harvester in a golden field of wheat emptying grain into a chaser bin moving alongside it."
 			/>
 		</HeroBannerMobileImage>
 		<HeroBannerContent
@@ -104,7 +103,7 @@ export const Modular = () => (
 			image={
 				<img
 					src="https://steelthreads.github.io/agds-next/img/placeholder/hero-banner.png"
-					alt="Hero image"
+					alt="Harvester in a golden field of wheat emptying grain into a chaser bin moving alongside it."
 				/>
 			}
 		>

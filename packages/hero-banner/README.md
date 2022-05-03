@@ -22,7 +22,7 @@ group: Layout
 </HeroBanner>
 ```
 
-### Buttons
+## Buttons
 
 ```jsx live
 <HeroBanner
@@ -41,3 +41,7 @@ group: Layout
 	</Flex>
 </HeroBanner>
 ```
+
+### Image selection
+
+Images in this component are automatically resized to fit their container using the [`object-fit`](https://developer.mozilla.org/en-US/docs/Web/CSS/object-fit) CSS property. Because of this it is important to use image at an appropriate image ratio. You can reference the image size and ratio of our [example image](/agds-next/img/placeholder/hero-banner.png). Images should be also accompanied by descriptive alternative text using the [alt tag](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#attr-alt).

@@ -547,7 +547,7 @@ items={[
     }
     subTitle="Hero banner paragraph text"
     title="Hero banner title"
-    variant="light"
+    variant="lightAlt"
   >
     <SearchBox onSubmit={() => {}}>
       <SearchBoxInput label="Search this website" />
