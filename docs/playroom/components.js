@@ -23,6 +23,7 @@ export {
 export { Callout, CalloutTitle } from '@ag.ds-next/callout';
 export { Columns, Column } from '@ag.ds-next/columns';
 export { Footer, FooterDivider } from '@ag.ds-next/footer';
+export { FileUpload } from '@ag.ds-next/file-upload';
 export { Header } from '@ag.ds-next/header';
 export { Heading, H1, H2, H3, H4, H5, H6 } from '@ag.ds-next/heading';
 export { Select } from '@ag.ds-next/select';

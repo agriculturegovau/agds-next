@@ -377,6 +377,11 @@ items={[
   </form>`,
 	},
 	{
+		group: 'FileUpload',
+		name: 'Basic',
+		code: '<FileUpload label="Drivers license" />',
+	},
+	{
 		group: 'TaskList',
 		name: 'Basic',
 		code: `<TaskList

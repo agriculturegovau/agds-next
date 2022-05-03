@@ -24,6 +24,7 @@ type IconColor = keyof typeof iconColors;
 const iconSizes = {
 	sm: 1,
 	md: 1.5,
+	lg: 2,
 } as const;
 
 type IconSize = keyof typeof iconSizes;

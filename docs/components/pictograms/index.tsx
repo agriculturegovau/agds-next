@@ -13,6 +13,7 @@ import controlInput from './control-input.svg';
 import core from './core.svg';
 import datePicker from './date-picker.svg';
 import directionLink from './direction-link.svg';
+import fileUpload from './file-upload.svg';
 import field from './field.svg';
 import fieldset from './fieldset.svg';
 import footer from './footer.svg';
@@ -57,6 +58,7 @@ export const pictograms = {
 	core,
 	'direction-link': directionLink,
 	'date-picker': datePicker,
+	'file-upload': fileUpload,
 	field,
 	fieldset,
 	footer,

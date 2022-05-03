@@ -19,6 +19,7 @@ import { ProgressTodoIcon } from './icons/ProgressTodoIcon';
 import { SearchIcon } from './icons/SearchIcon';
 import { SuccessFilledIcon } from './icons/SuccessFilledIcon';
 import { SuccessIcon } from './icons/SuccessIcon';
+import { UploadIcon } from './icons/UploadIcon';
 import { WarningFilledIcon } from './icons/WarningFilledIcon';
 
 export const allIcons = {
@@ -43,5 +44,6 @@ export const allIcons = {
 	SearchIcon,
 	SuccessFilledIcon,
 	SuccessIcon,
+	UploadIcon,
 	WarningFilledIcon,
 };
