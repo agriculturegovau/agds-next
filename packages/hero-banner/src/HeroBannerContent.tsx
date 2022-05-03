@@ -19,7 +19,7 @@ export const HeroBannerContent = ({
 			<Flex>
 				<Stack
 					gap={[1.5, 2]}
-					width={['100%', '50%']}
+					width={['100%', '100%', '60%']}
 					paddingY={{ xs: 1, lg: 2 }}
 					css={{ zIndex: 1 }}
 				>

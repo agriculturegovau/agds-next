@@ -14,8 +14,8 @@ export const HeroBannerImage = ({
 	const { backgroundVar } = variantMap[variant];
 	return (
 		<Box
-			display={['none', 'block']}
-			width="50%"
+			display={['none', 'none', 'block']}
+			width="40%"
 			css={{
 				position: 'absolute',
 				top: 0,
@@ -27,7 +27,7 @@ export const HeroBannerImage = ({
 					pointerEvents: 'none',
 					position: 'absolute',
 					inset: 0,
-					background: `linear-gradient(90deg, ${boxPalette[backgroundVar]} 0px, ${boxPalette[backgroundVar]} 32px, transparent 100%)`,
+					background: `linear-gradient(104deg, ${boxPalette[backgroundVar]} 0px, ${boxPalette[backgroundVar]} 80px, transparent 384px)`,
 				},
 
 				img: {

@@ -84,7 +84,7 @@ Buttons.args = {
 	title: 'Hero banner title',
 	subTitle: 'Hero banner paragraph text',
 	children: (
-		<Flex flexDirection={{ xs: 'column', md: 'row' }} gap={1}>
+		<Flex flexDirection={['column', 'row']} gap={1}>
 			<Button>Primary button</Button>
 			<Button variant="secondary">Secondary button</Button>
 		</Flex>
@@ -94,13 +94,16 @@ Buttons.args = {
 export const Modular = () => (
 	<HeroBannerContainer variant="dark">
 		<HeroBannerMobileImage>
-			<img src="/agds-next/img/placeholder/hero-banner.png" alt="Hero image" />
+			<img
+				src="https://steelthreads.github.io/agds-next/img/placeholder/hero-banner.png"
+				alt="Hero image"
+			/>
 		</HeroBannerMobileImage>
 		<HeroBannerContent
 			variant="dark"
 			image={
 				<img
-					src="/agds-next/img/placeholder/hero-banner.png"
+					src="https://steelthreads.github.io/agds-next/img/placeholder/hero-banner.png"
 					alt="Hero image"
 				/>
 			}

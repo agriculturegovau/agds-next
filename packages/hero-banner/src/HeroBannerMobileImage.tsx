@@ -7,11 +7,18 @@ export const HeroBannerMobileImage = ({
 	children,
 }: HeroBannerMobileImageProps) => (
 	<Box
-		display={['block', 'none']}
+		display={{ xs: 'block', md: 'none' }}
 		css={{
-			img: {
-				width: '100%',
-				height: '100%',
+			position: 'relative',
+			overflow: 'hidden',
+			paddingTop: '40%',
+			'& img': {
+				position: 'absolute',
+				top: '50%',
+				left: 0,
+				right: 0,
+				transform: 'translateY(-50%)',
+				maxWidth: '100%',
 			},
 		}}
 	>

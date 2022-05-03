@@ -35,7 +35,7 @@ group: Layout
 	subTitle="Hero banner paragraph text"
 	title="Hero banner title"
 >
-	<Flex flexDirection={{ xs: 'column', md: 'row' }} gap={1}>
+	<Flex flexDirection={['column', 'row']} gap={1}>
 		<Button>Primary button</Button>
 		<Button variant="secondary">Secondary button</Button>
 	</Flex>
