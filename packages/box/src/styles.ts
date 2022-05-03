@@ -316,6 +316,7 @@ export const linkStyles = {
 		textDecoration: 'none',
 	},
 
+	// Display link URLs
 	'@media print': {
 		'&[href]:after': {
 			content: '" (" attr(href) ")" !important',
