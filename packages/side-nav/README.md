@@ -2,6 +2,7 @@
 title: SideNav
 description: A vertical list of links for site navigation typically placed next to the body content.
 group: Navigation
+storybookPath: /story/navigation-sidenav--light-variant
 ---
 
 The side navigation allows users to find other pages which share a similar topic or section. By default it supports three levels of nesting along with an accompanying heading.

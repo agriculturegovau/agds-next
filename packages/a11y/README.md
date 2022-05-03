@@ -2,6 +2,7 @@
 title: A11y
 description: Utilities for improving accessibility.
 group: Foundations
+storybookPath: /story/foundations-a11y-visuallyhidden--basic
 ---
 
 ### Visually Hidden

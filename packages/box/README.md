@@ -2,6 +2,7 @@
 title: Box
 description: A set of primitive layout components
 group: Foundations
+storybookPath: /story/foundations-box--light-box
 ---
 
 This package includes the components `<Box />`, `<Flex />` and `<Stack />`.

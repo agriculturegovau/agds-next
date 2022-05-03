@@ -2,6 +2,7 @@
 title: Card
 description: The card component is used to provide a brief summary of content or a task, often with a link to more detail. Cards are frequently displayed alongside other cards to group related content or tasks.
 group: Layout
+storybookPath: /story/layout-card--on-light
 ---
 
 ## Basic card

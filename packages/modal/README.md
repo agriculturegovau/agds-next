@@ -2,6 +2,7 @@
 title: Modal
 description: Modal is a window that appears in front of the current page, to focus user attention on one action or piece of information
 group: Content
+storybookPath: /story/content-modal--basic
 ---
 
 Modals are ideal for prompting a user to confirm a destructive action.

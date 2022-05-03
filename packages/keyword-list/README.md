@@ -2,6 +2,7 @@
 title: Keyword List
 description: The keyword list style helps to emphasise and draw the user's eye to phrases that are repeated in a list.
 group: Content
+storybookPath: /story/content-keywordlist--on-light
 ---
 
 A key and value pair used to display a small subtitle above a larger title.

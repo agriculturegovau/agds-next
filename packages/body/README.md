@@ -2,6 +2,7 @@
 title: Body
 description: Provides correct styling for Markdown or CMS content.
 group: Content
+storybookPath: /story/content-body--on-light
 ---
 
 Many sites will have content being generated in a WYSIWIG or HTML field within a content management system. This content is inherently difficult to style as developers often times have limited control over the markup being generated in these editors. `Body` is designed to apply styling to make CMS content look ok.

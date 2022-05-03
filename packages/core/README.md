@@ -2,6 +2,7 @@
 title: Core
 description: Core includes a range of styles, variables and code that form the foundation of how the Design System works, including colour, typography and spacing.
 group: Foundations
+storybookPath: /story/foundations-core--usage
 ---
 
 The `Core` component should wrap your entire application, which will enable our CSS variables reset styles.

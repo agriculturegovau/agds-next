@@ -2,6 +2,7 @@
 title: Task List
 description:
 group: Forms
+storybookPath: /story/forms-tasklist--on-light
 ---
 
 The individual tasks or steps are shown as either:

@@ -2,6 +2,7 @@
 title: Table
 description: Used to display tabular data.
 group: Content
+storybookPath: /story/content-table--on-light
 ---
 
 For data tables with a small amount of rows use the default table. Align text columns and corresponding data cells to the left. When comparing numbers in a column, align data cells and column headers to the right.

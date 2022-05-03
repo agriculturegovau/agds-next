@@ -2,6 +2,7 @@
 title: Accordion
 description: Accordions help users see only the content they need, by expanding and collapsing sections of content.
 group: Layout
+storybookPath: /story/layout-accordion--on-light
 ---
 
 A singular method of expanding and collapsing a piece of content with a title.

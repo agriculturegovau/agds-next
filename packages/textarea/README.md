@@ -2,6 +2,7 @@
 title: Textarea
 description: Textarea is a long form text input and can be scaled up or down in size by the user.
 group: Forms
+storybookPath: /story/forms-textarea--on-light
 ---
 
 ### Default

@@ -2,6 +2,7 @@
 title: Headings
 description: A primitive typographic component for constrained heading styles. Headings help to structure content on a page using relative visual prominence.
 group: Content
+storybookPath: /story/content-heading--basic
 ---
 
 Headings use the `fontGrid` function to make the font-size and line-height snap to grid.

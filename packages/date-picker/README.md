@@ -2,6 +2,7 @@
 title: Date Picker
 description: Allow users to select a single date or a range of dates.
 group: forms
+storybookPath: /story/forms-datepicker-datepicker--on-light
 ---
 
 ## Date Picker

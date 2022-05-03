@@ -4,6 +4,8 @@ import { H1 } from '@ag.ds-next/heading';
 import { Box, Flex, Stack } from '@ag.ds-next/box';
 import { Text } from '@ag.ds-next/text';
 import { Body } from '@ag.ds-next/body';
+import { ButtonLink } from '@ag.ds-next/button';
+import { ExternalLinkIcon } from '@ag.ds-next/icon';
 
 import {
 	getPkgList,
@@ -46,6 +48,18 @@ export default function Packages({
 								<Text fontSize="lg">{pkg.data.description}</Text>
 							)}
 						</Flex>
+						{pkg.storybookPath && (
+							<div>
+								<ButtonLink
+									target="_blank"
+									iconAfter={ExternalLinkIcon}
+									variant="secondary"
+									href={`https://steelthreads.github.io/agds-next/storybook/index.html?path=${pkg.storybookPath}`}
+								>
+									View in Storybook
+								</ButtonLink>
+							</div>
+						)}
 						<Box
 							palette="light"
 							rounded

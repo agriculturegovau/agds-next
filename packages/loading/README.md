@@ -2,6 +2,7 @@
 title: Loading
 description: Loading indicators inform users that their action is being processed.
 group: Content
+storybookPath: /story/content-loading-loadingblanket--on-light
 ---
 
 ## Loading Blanket
