@@ -7,12 +7,10 @@ storybookPath: /story/layout-herobanner--light-variant
 
 ```jsx live
 <HeroBanner
-	backgroundImageSrc="/agds-next/img/placeholder/hero-banner.png"
-	mobileImage={
+	image={
 		<img
-			alt="Hero image"
+			alt="Harvester in a golden field of wheat emptying grain into a chaser bin moving alongside it."
 			src="/agds-next/img/placeholder/hero-banner.png"
-			style={{ display: 'block', height: 'auto', width: '100%' }}
 		/>
 	}
 	subTitle="Hero banner paragraph text"
@@ -25,24 +23,26 @@ storybookPath: /story/layout-herobanner--light-variant
 </HeroBanner>
 ```
 
-### Buttons
+## Buttons
 
 ```jsx live
 <HeroBanner
-	backgroundImageSrc="/agds-next/img/placeholder/hero-banner.png"
-	mobileImage={
+	image={
 		<img
-			alt="Hero image"
+			alt="Harvester in a golden field of wheat emptying grain into a chaser bin moving alongside it."
 			src="/agds-next/img/placeholder/hero-banner.png"
-			style={{ display: 'block', height: 'auto', width: '100%' }}
 		/>
 	}
 	subTitle="Hero banner paragraph text"
 	title="Hero banner title"
 >
-	<Flex flexDirection={{ xs: 'column', md: 'row' }} gap={1}>
+	<Flex flexDirection={['column', 'row']} gap={1}>
 		<Button>Primary button</Button>
 		<Button variant="secondary">Secondary button</Button>
 	</Flex>
 </HeroBanner>
 ```
+
+### Image selection
+
+Images in this component are automatically resized to fit their container using the [`object-fit`](https://developer.mozilla.org/en-US/docs/Web/CSS/object-fit) CSS property. Because of this it is important to use image at an appropriate image ratio. You can reference the image size and ratio of our [example image](/agds-next/img/placeholder/hero-banner.png). Images should be also accompanied by descriptive alternative text using the [alt tag](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#attr-alt).

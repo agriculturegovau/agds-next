@@ -6,11 +6,11 @@ import {
 	SearchBoxButton,
 } from '@ag.ds-next/search-box';
 import { Flex } from '@ag.ds-next/box';
-import { HeroBanner } from './HeroBanner';
 import { Button } from '@ag.ds-next/button';
+import { HeroBanner } from './HeroBanner';
 import { HeroBannerContainer } from './HeroBannerContainer';
+import { HeroBannerImage } from './HeroBannerImage';
 import { HeroBannerMobileImage } from './HeroBannerMobileImage';
-import { HeroBannerBackground } from './HeroBannerBackground';
 import { HeroBannerContent } from './HeroBannerContent';
 import {
 	HeroBannerSubTitle,
@@ -21,6 +21,15 @@ import {
 export default {
 	title: 'layout/HeroBanner',
 	component: HeroBanner,
+	subcomponents: {
+		HeroBannerContainer,
+		HeroBannerMobileImage,
+		HeroBannerImage,
+		HeroBannerContent,
+		HeroBannerSubTitle,
+		HeroBannerTitle,
+		HeroBannerTitleContainer,
+	},
 } as ComponentMeta<typeof HeroBanner>;
 
 const Template: ComponentStory<typeof HeroBanner> = (args) => (
@@ -28,14 +37,12 @@ const Template: ComponentStory<typeof HeroBanner> = (args) => (
 );
 
 const commonArgs = {
-	mobileImage: (
+	image: (
 		<img
-			src="/agds-next/img/placeholder/hero-banner.png"
-			style={{ display: 'block', width: '100%', height: 'auto' }}
-			alt="Hero image"
+			src="https://steelthreads.github.io/agds-next/img/placeholder/hero-banner.png"
+			alt="Harvester in a golden field of wheat emptying grain into a chaser bin moving alongside it."
 		/>
 	),
-	backgroundImageSrc: '/agds-next/img/placeholder/hero-banner.png',
 	title: 'Hero banner title',
 	subTitle: 'Hero banner paragraph text',
 	children: (
@@ -74,10 +81,9 @@ DarkAlt.args = {
 
 export const Buttons = Template.bind({});
 Buttons.args = {
-	title: 'Hero banner title',
-	subTitle: 'Hero banner paragraph text',
+	...commonArgs,
 	children: (
-		<Flex flexDirection={{ xs: 'column', md: 'row' }} gap={1}>
+		<Flex flexDirection={['column', 'row']} gap={1}>
 			<Button>Primary button</Button>
 			<Button variant="secondary">Secondary button</Button>
 		</Flex>
@@ -88,27 +94,29 @@ export const Modular = () => (
 	<HeroBannerContainer variant="dark">
 		<HeroBannerMobileImage>
 			<img
-				src="/agds-next/img/placeholder/hero-banner.png"
-				style={{ display: 'block', width: '100%', height: 'auto' }}
-				alt="Hero image"
+				src="https://steelthreads.github.io/agds-next/img/placeholder/hero-banner.png"
+				alt="Harvester in a golden field of wheat emptying grain into a chaser bin moving alongside it."
 			/>
 		</HeroBannerMobileImage>
-		<HeroBannerBackground
-			backgroundImageSrc="/agds-next/img/placeholder/hero-banner.png"
+		<HeroBannerContent
 			variant="dark"
+			image={
+				<img
+					src="https://steelthreads.github.io/agds-next/img/placeholder/hero-banner.png"
+					alt="Harvester in a golden field of wheat emptying grain into a chaser bin moving alongside it."
+				/>
+			}
 		>
-			<HeroBannerContent>
-				<HeroBannerTitleContainer>
-					<HeroBannerTitle>Hero banner title</HeroBannerTitle>
-					<HeroBannerSubTitle>Hero banner paragraph text</HeroBannerSubTitle>
-				</HeroBannerTitleContainer>
-				<SearchBox onSubmit={console.log}>
-					<SearchBoxInput label="Search this website" />
-					<SearchBoxButton iconOnly={{ xs: true, md: false }}>
-						Search
-					</SearchBoxButton>
-				</SearchBox>
-			</HeroBannerContent>
-		</HeroBannerBackground>
+			<HeroBannerTitleContainer>
+				<HeroBannerTitle>Hero banner title</HeroBannerTitle>
+				<HeroBannerSubTitle>Hero banner paragraph text</HeroBannerSubTitle>
+			</HeroBannerTitleContainer>
+			<SearchBox onSubmit={console.log}>
+				<SearchBoxInput label="Search this website" />
+				<SearchBoxButton iconOnly={{ xs: true, md: false }}>
+					Search
+				</SearchBoxButton>
+			</SearchBox>
+		</HeroBannerContent>
 	</HeroBannerContainer>
 );

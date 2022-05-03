@@ -12,7 +12,12 @@ export const HeroBannerContainer = ({
 }: HeroBannerContainerProps) => {
 	const { palette, background } = variantMap[variant];
 	return (
-		<Box as="section" palette={palette} background={background}>
+		<Box
+			as="section"
+			palette={palette}
+			background={background}
+			css={{ position: 'relative', overflow: 'hidden' }}
+		>
 			{children}
 		</Box>
 	);
