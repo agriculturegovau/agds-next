@@ -6,12 +6,10 @@ group: Layout
 
 ```jsx live
 <HeroBanner
-	backgroundImageSrc="/agds-next/img/placeholder/hero-banner.png"
-	mobileImage={
+	image={
 		<img
-			alt="Hero image"
+			alt="Harvester in a golden field of wheat emptying grain into a chaser bin moving alongside it."
 			src="/agds-next/img/placeholder/hero-banner.png"
-			style={{ display: 'block', height: 'auto', width: '100%' }}
 		/>
 	}
 	subTitle="Hero banner paragraph text"
@@ -28,12 +26,10 @@ group: Layout
 
 ```jsx live
 <HeroBanner
-	backgroundImageSrc="/agds-next/img/placeholder/hero-banner.png"
-	mobileImage={
+	image={
 		<img
-			alt="Hero image"
+			alt="Harvester in a golden field of wheat emptying grain into a chaser bin moving alongside it."
 			src="/agds-next/img/placeholder/hero-banner.png"
-			style={{ display: 'block', height: 'auto', width: '100%' }}
 		/>
 	}
 	subTitle="Hero banner paragraph text"

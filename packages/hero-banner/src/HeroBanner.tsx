@@ -1,5 +1,4 @@
 import { PropsWithChildren, ReactNode } from 'react';
-import { HeroBannerBackground } from './HeroBannerBackground';
 import {
 	HeroBannerSubTitle,
 	HeroBannerTitle,
@@ -11,10 +10,8 @@ import { HeroBannerContainer } from './HeroBannerContainer';
 import { HeroBannerVariant } from './utils';
 
 export type HeroBannerProps = PropsWithChildren<{
-	/** The image to display as part of the gradient background */
-	backgroundImageSrc?: string;
-	/** The image to display on smaller breakpoints */
-	mobileImage?: ReactNode;
+	/** The hero image */
+	image?: ReactNode;
 	/** The palette of the component */
 	variant?: HeroBannerVariant;
 	/** The primary title */
@@ -24,30 +21,22 @@ export type HeroBannerProps = PropsWithChildren<{
 }>;
 
 export const HeroBanner = ({
-	backgroundImageSrc,
-	mobileImage,
+	image,
 	variant = 'lightAlt',
 	children,
 	title,
 	subTitle,
 }: HeroBannerProps) => (
 	<HeroBannerContainer variant={variant}>
-		{mobileImage ? (
-			<HeroBannerMobileImage>{mobileImage}</HeroBannerMobileImage>
-		) : null}
-		<HeroBannerBackground
-			backgroundImageSrc={backgroundImageSrc}
-			variant={variant}
-		>
-			<HeroBannerContent>
-				{title || subTitle ? (
-					<HeroBannerTitleContainer>
-						<HeroBannerTitle>{title}</HeroBannerTitle>
-						<HeroBannerSubTitle>{subTitle}</HeroBannerSubTitle>
-					</HeroBannerTitleContainer>
-				) : null}
-				{children}
-			</HeroBannerContent>
-		</HeroBannerBackground>
+		{image ? <HeroBannerMobileImage>{image}</HeroBannerMobileImage> : null}
+		<HeroBannerContent variant={variant} image={image}>
+			{title || subTitle ? (
+				<HeroBannerTitleContainer>
+					<HeroBannerTitle>{title}</HeroBannerTitle>
+					<HeroBannerSubTitle>{subTitle}</HeroBannerSubTitle>
+				</HeroBannerTitleContainer>
+			) : null}
+			{children}
+		</HeroBannerContent>
 	</HeroBannerContainer>
 );
