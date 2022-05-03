@@ -23,7 +23,6 @@ import { PageLayout } from '../../../components/PageLayout';
 export default function Packages({
 	pkg,
 	navLinks,
-	storybookPath,
 	breadcrumbs,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
 	return (
@@ -40,7 +39,7 @@ export default function Packages({
 					breadcrumbs={breadcrumbs}
 				>
 					<Stack as="main" gap={1}>
-						<Flex alignItems="flex-start" flexDirection="column" gap={0.25}>
+						<Flex flexDirection="column" gap={0.25}>
 							<Text fontSize="sm" color="muted">
 								v{pkg.version}
 							</Text>
@@ -48,17 +47,19 @@ export default function Packages({
 							{pkg.data.description && (
 								<Text fontSize="lg">{pkg.data.description}</Text>
 							)}
-							{storybookPath && (
+						</Flex>
+						{pkg.storybookPath && (
+							<div>
 								<ButtonLink
 									target="_blank"
 									iconAfter={ExternalLinkIcon}
 									variant="secondary"
-									href={`https://steelthreads.github.io/agds-next/storybook/index.html?path=${storybookPath}`}
+									href={`https://steelthreads.github.io/agds-next/storybook/index.html?path=${pkg.storybookPath}`}
 								>
-									Open in Storybook
+									View in Storybook
 								</ButtonLink>
-							)}
-						</Flex>
+							</div>
+						)}
 						<Box
 							palette="light"
 							rounded
@@ -87,12 +88,11 @@ export const getStaticProps: GetStaticProps<
 	{
 		pkg: Pkg;
 		navLinks: Awaited<ReturnType<typeof getPkgNavLinks>>;
-		storybookPath: string | undefined;
 		breadcrumbs: Awaited<ReturnType<typeof getPkgBreadcrumbs>>;
 	},
 	{ slug: string; group: string }
 > = async ({ params }) => {
-	const { slug, group, storybookPath } = params ?? {};
+	const { slug, group } = params ?? {};
 	const pkg = slug ? await getPkg(slug) : undefined;
 
 	if (!(slug && group && pkg)) {
@@ -106,7 +106,6 @@ export const getStaticProps: GetStaticProps<
 		props: {
 			pkg,
 			navLinks,
-			storybookPath: storybookPath || undefined,
 			breadcrumbs,
 		},
 	};

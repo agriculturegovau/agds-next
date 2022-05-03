@@ -2,7 +2,7 @@
 title: Date Picker
 description: Allow users to select a single date or a range of dates.
 group: forms
-storybookPath: /story/foundations-core--usage
+storybookPath: /story/forms-datepicker-datepicker--on-light
 ---
 
 ## Date Picker
