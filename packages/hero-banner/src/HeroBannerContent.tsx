@@ -1,8 +1,8 @@
 import { PropsWithChildren, ReactNode } from 'react';
 import { Flex, Stack } from '@ag.ds-next/box';
 import { Content } from '@ag.ds-next/content';
+import { HeroBannerImage } from './HeroBannerImage';
 import { HeroBannerVariant } from './utils';
-import { HeroBannerImage } from './HeroBannerMobileImage';
 
 export type HeroBannerContentProps = PropsWithChildren<{
 	image?: ReactNode;
