@@ -59,7 +59,7 @@ export async function getPkg(slug: string) {
 		name: name as string,
 		version: version as string,
 		title: (data.title ?? slug) as string,
-		storybookPath: data.storybookPath,
+		storybookPath: data.storybookPath as string,
 	};
 }
 
