@@ -1,5 +1,4 @@
 import React, { useState, useCallback, Fragment } from 'react';
-import { useRouter } from 'next/router';
 import {
 	LiveProvider,
 	LiveEditor,
@@ -35,8 +34,6 @@ const PlaceholderImage = () => (
 );
 
 const LiveCode = withLive((props: unknown) => {
-	const { query } = useRouter();
-
 	// The types on `withLive` are kind of useless.
 	const { live } = props as {
 		live: {
@@ -72,10 +69,8 @@ const LiveCode = withLive((props: unknown) => {
 		<Box css={{ boxShadow: `0 0 1px ${globalPalette.lightBorder}` }}>
 			<Box padding={1}>
 				<LivePreview
-					// Prevents body styles from being inherited in live code examples that are not the `body` component
-					className={
-						query.slug === 'body' ? undefined : excludeBodyStylesClassname
-					}
+					// Prevents body styles from being inherited in live code examples
+					className={excludeBodyStylesClassname}
 					css={{
 						// The mdx codeblock transform wraps the code component in a pre which
 						// applies some weirdness here. This resets back to normal things
