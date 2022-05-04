@@ -78,7 +78,7 @@ export default function Packages({
 						<Box
 							css={bodyStyles({
 								// Prevents body styles from being inherited in live code examples
-								notSelector: ':not([class]):not(.live-code *)',
+								notSelector: ':not([class]):not(.code-live-preview *)',
 							})}
 						>
 							<MDXRemote {...pkg.source} components={mdxComponents} />
