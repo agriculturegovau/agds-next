@@ -15,14 +15,14 @@ Body component should only be used in the context of a page, to format long-form
 <Body>{{ html }}</Body>
 ```
 
-### Excluding styles
+### Unsetting styles
 
-In some cases you may want to prevent the body styles styles from being inherited on specific elements. This can be achieved by adding the `excludeBodyStylesClassname` to any child of the `Body` component.
+In some cases you may want to prevent the body styles from being inherited on specific elements. This can be achieved by adding the `unsetBodyStylesClassname` to any child of the `Body` component. This is similar to the CSS property `unset: all`.
 
 ```jsx
 <Body>
 	<h1>Styled heading</h1>
-	<div className={excludeBodyStylesClassname}>
+	<div className={unsetBodyStylesClassname}>
 		<h1>Unstyled heading</h1>
 	</div>
 </Body>

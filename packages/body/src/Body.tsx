@@ -16,17 +16,17 @@ export const Body = forwardRefWithAs<'div', BoxProps>(function Body(
 	return <Box ref={ref} css={bodyClass} {...props} />;
 });
 
-// Allow consumers to exclude body styles from being inherited on specific elements
-export const excludeBodyStylesClassname = 'agds-body-reset';
+// Allow consumers to unset body styles from being inherited on specific elements
+export const unsetBodyStylesClassname = 'unset-agds-body-styles';
 
-// Exclude tags which contain a class (generated from the CSS prop) or are a child of the excluded class
-const notSelector = `:not([class]):not(.${excludeBodyStylesClassname} *)`;
+// Exclude tags which contain a className (generated from the CSS prop) or are a child of the unset class
+const notSelector = `:not([class]):not(.${unsetBodyStylesClassname} *)`;
 
 export const bodyClass = css({
 	/**
 	 * Styles applied to the `Box` container
 	 */
-	[`&:not(.${excludeBodyStylesClassname} *)`]: {
+	[`&:not(.${unsetBodyStylesClassname} *)`]: {
 		margin: 0,
 		textSizeAdjust: '100%',
 		color: boxPalette.foregroundText,
