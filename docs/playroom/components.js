@@ -1,4 +1,4 @@
-export { tokens } from '@ag.ds-next/core';
+export { tokens, mq } from '@ag.ds-next/core';
 export { Logo } from '@ag.ds-next/ag-branding';
 export {
 	Accordion,
