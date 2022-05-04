@@ -329,7 +329,7 @@ export const bodyClass = css({
 	 */
 	'@media print': {
 		// Display link URLs
-		[`a[href]:after`]: {
+		'a[href]:after': {
 			content: '" (" attr(href) ")" !important',
 		},
 		// Expand abbreviations
