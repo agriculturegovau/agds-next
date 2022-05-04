@@ -40,9 +40,24 @@ const underline = {
 	textDecorationSkipInk: 'auto',
 } as const;
 
+export const print = {
+	hidden: {
+		'@media print': {
+			display: 'none !important',
+		},
+	},
+	visible: {
+		'@media print': {
+			display: 'block !important',
+			height: 'auto !important',
+		},
+	},
+};
+
 export const packs = {
 	control,
 	input,
 	outline,
 	underline,
+	print,
 };

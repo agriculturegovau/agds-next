@@ -308,4 +308,25 @@ export const bodyClass = css({
 	'* + hr:not([class])': {
 		marginTop: mapSpacing(1.5),
 	},
+
+	/**
+	 * Print styles
+	 */
+	'@media print': {
+		// Display link URLs
+		'a:not([class])[href]:after': {
+			content: '" (" attr(href) ")" !important',
+		},
+		// Expand abbreviations
+		'abbr[title]:after': {
+			content: '" (" attr(title) ")"',
+		},
+		// Page breaks
+		'pre, blockquote, tr, img': {
+			pageBreakInside: 'avoid',
+		},
+		'h2, h3 ': {
+			pageBreakAfter: 'avoid',
+		},
+	},
 });

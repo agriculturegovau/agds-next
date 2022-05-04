@@ -7,6 +7,7 @@ import { mergeTheme, Theme } from './theme';
 import { boxPalettes, boxPalette } from './boxPalette';
 import { tokens } from './tokens';
 import { generateFontGrid } from './utils/fontGrid';
+import { printTheme } from './printTheme';
 
 export type CoreProps = PropsWithChildren<
 	{
@@ -29,6 +30,11 @@ export function Core({
 						':root': {
 							...(theme ? mergeTheme(goldTheme, theme) : goldTheme),
 							...generateFontGrid(),
+						},
+						// Reset the global theme in print mode to black & white
+						// Note: Components can also contain print specific styles
+						'@media print': {
+							':root': mergeTheme(goldTheme, printTheme),
 						},
 					},
 					{

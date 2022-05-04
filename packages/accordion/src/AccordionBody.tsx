@@ -1,6 +1,6 @@
 import { PropsWithChildren, useRef } from 'react';
-import { usePrefersReducedMotion } from '@ag.ds-next/core';
 import { useSpring, animated } from '@react-spring/web';
+import { packs, usePrefersReducedMotion } from '@ag.ds-next/core';
 
 export type AccordionBodyProps = PropsWithChildren<{
 	ariaLabelledBy: string;
@@ -35,7 +35,10 @@ export const AccordionBody = ({
 			aria-labelledby={ariaLabelledBy}
 			role="region"
 			style={animatedHeight}
-			css={{ overflow: 'hidden' }}
+			css={{
+				overflow: 'hidden',
+				...packs.print.visible,
+			}}
 		>
 			<div ref={ref}>{children}</div>
 		</animated.div>

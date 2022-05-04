@@ -1,3 +1,4 @@
+import { packs } from '@ag.ds-next/core';
 import { localPalette } from './localPalette';
 
 export function FooterDivider() {
