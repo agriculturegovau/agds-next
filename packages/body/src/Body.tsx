@@ -16,19 +16,28 @@ export const Body = forwardRefWithAs<'div', BoxProps>(function Body(
 	return <Box ref={ref} css={bodyClass} {...props} />;
 });
 
+// Allow consumers to exclude body styles from being inherited on specific elements
 export const excludeBodyStylesClassname = 'agds-body-reset';
 
-const notSelector = `:not([class]):not(.${excludeBodyStylesClassname})`;
+// Exclude tags which contain a class (generated from the CSS prop) or are a child of the excluded class
+const notSelector = `:not([class]):not(.${excludeBodyStylesClassname} *)`;
 
 export const bodyClass = css({
-	margin: 0,
-	textSizeAdjust: '100%',
-	color: boxPalette.foregroundText,
+	/**
+	 * Styles applied to the `Box` container
+	 */
+	[`&:not(.${excludeBodyStylesClassname} *)`]: {
+		margin: 0,
+		textSizeAdjust: '100%',
+		color: boxPalette.foregroundText,
+		// Font grid
+		fontFamily: tokens.font.body,
+		...fontGrid('sm', 'default'),
+	},
 
-	// Font grid
-	fontFamily: tokens.font.body,
-	...fontGrid('sm', 'default'),
-
+	/**
+	 * Link styles
+	 */
 	[`a${notSelector}`]: [linkStyles, focusStyles],
 
 	/**
@@ -39,7 +48,7 @@ export const bodyClass = css({
 	/**
 	 * `mark` styling.
 	 */
-	mark: {
+	[`mark${notSelector}`]: {
 		color: boxPalette.backgroundBody,
 		backgroundColor: boxPalette.foregroundAction,
 	},
@@ -52,7 +61,7 @@ export const bodyClass = css({
 		backgroundColor: boxPalette.foregroundAction,
 	},
 
-	img: {
+	[`img${notSelector}`]: {
 		maxWidth: '100%',
 	},
 
@@ -156,21 +165,21 @@ export const bodyClass = css({
 	/**
 	 * Emphasis and alt. voice/mood/diff. from prose text.
 	 */
-	'em,i': {
+	[`em${notSelector}, i${notSelector}`]: {
 		fontStyle: 'italic',
 	},
 
 	/**
 	 * Stong emphasis.
 	 */
-	'strong,b': {
+	[`strong${notSelector}, b${notSelector}`]: {
 		fontWeight: 'bold',
 	},
 
 	/**
 	 * `small`: for less important information (not stylistic purposes).
 	 */
-	small: {
+	[`small:${notSelector}`]: {
 		...fontGrid('xs', 'default'),
 	},
 
@@ -178,11 +187,11 @@ export const bodyClass = css({
 	 * `s`: represents contents no longer accurate/relevant.
 	 * del` & `ins`: editorial markup.
 	 */
-	's,del': {
+	[`s${notSelector}, del${notSelector}`]: {
 		textDecoration: 'line-through',
 	},
 
-	ins: {
+	[`ins${notSelector}`]: {
 		textDecorationLine: 'underline',
 		textDecorationStyle: 'dashed', //Waiting on Chrome.
 		textDecorationSkipInk: 'auto',
@@ -197,23 +206,23 @@ export const bodyClass = css({
 	 *
 	 * Note: `abbr` can be nested inside `dfn`.
 	 */
-	dfn: {
+	[`dfn${notSelector}`]: {
 		fontStyle: 'normal',
 	},
 
 	/**
 	 * Abbreviations/acronyms.
 	 */
-	'abbr,abbr[title]': {
+	[`abbr,abbr[title]${notSelector}`]: {
 		borderBottom: 'none',
 		textDecoration: 'underline dotted',
 	},
 
-	'abbr[title]': {
+	[`abbr[title]${notSelector}`]: {
 		cursor: 'help',
 	},
 
-	'a abbr': {
+	[`a abbr${notSelector}`]: {
 		paddingBottom: 1,
 	},
 
@@ -222,10 +231,10 @@ export const bodyClass = css({
 	 *
 	 * We also provide semantic support for nested vars, and things like indices.
 	 */
-	var: {
+	[`var${notSelector}`]: {
 		padding: '0 1px',
 		fontStyle: 'italic',
-		fontFamily: 'serif', //We want mathematical notation to use serif vars per convention.
+		fontFamily: 'serif', // We want mathematical notation to use serif vars per convention.
 
 		'sup,sub': {
 			fontFamily: tokens.font.body,
@@ -239,17 +248,17 @@ export const bodyClass = css({
 	 * all browsers.
 	 * https://github.com/necolas/normalize.css/blob/master/normalize.css#L174
 	 */
-	'sub,sup': {
+	[`sub${notSelector}, sup${notSelector}`]: {
 		...fontGrid('xs', 'nospace'),
 		position: 'relative',
 		verticalAlign: 'baseline',
 	},
 
-	sub: {
+	[`sub${notSelector}`]: {
 		bottom: '-0.25em',
 	},
 
-	sup: {
+	[`sup${notSelector}`]: {
 		top: '-0.5em',
 	},
 
@@ -276,7 +285,14 @@ export const bodyClass = css({
 	 * Keyboard strokes.
 	 * Code snippets and code blocks.
 	 */
-	[`kbd${notSelector},code${notSelector},samp${notSelector}`]: {
+
+	[`pre code${notSelector}`]: {
+		display: 'block',
+		tabSize: 4,
+		padding: mapSpacing(1),
+	},
+
+	[`kbd${notSelector}, code${notSelector}, samp${notSelector}`]: {
 		...fontGrid('xs', 'default'),
 		padding: mapSpacing(0.25),
 		fontFamily: tokens.font.monospace,
@@ -286,13 +302,8 @@ export const bodyClass = css({
 		color: boxPalette.foregroundText,
 	},
 
-	'pre${notSelector}': {
+	[`pre${notSelector}`]: {
 		fontFamily: tokens.font.monospace,
-	},
-
-	'pre code': {
-		display: 'block',
-		tabSize: 4,
 	},
 
 	/**
