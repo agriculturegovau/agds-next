@@ -3,7 +3,7 @@ import { MDXRemote } from 'next-mdx-remote';
 import { H1 } from '@ag.ds-next/heading';
 import { Box, Flex, Stack } from '@ag.ds-next/box';
 import { Text } from '@ag.ds-next/text';
-import { Body, bodyClass, bodyStyles } from '@ag.ds-next/body';
+import { bodyStyles } from '@ag.ds-next/body';
 import { ButtonLink } from '@ag.ds-next/button';
 import { ExternalLinkIcon } from '@ag.ds-next/icon';
 
