@@ -12,6 +12,7 @@ import copy from 'clipboard-copy';
 
 import { globalPalette, mapSpacing, tokens } from '@ag.ds-next/core';
 import { Box, Flex } from '@ag.ds-next/box';
+import { excludeBodyStylesClassname } from '@ag.ds-next/body';
 import { Button, ButtonLink } from '@ag.ds-next/button';
 import { ExternalLinkIcon } from '@ag.ds-next/icon';
 
@@ -72,7 +73,8 @@ const LiveCode = withLive((props: unknown) => {
 		>
 			<Box padding={1}>
 				<LivePreview
-					className="code-live-preview"
+					// Prevents body styles from being inherited in live code examples
+					className={excludeBodyStylesClassname}
 					css={{
 						// The mdx codeblock transform wraps the code component in a pre which
 						// applies some weirdness here. This resets back to normal things

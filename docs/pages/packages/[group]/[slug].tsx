@@ -3,7 +3,7 @@ import { MDXRemote } from 'next-mdx-remote';
 import { H1 } from '@ag.ds-next/heading';
 import { Box, Flex, Stack } from '@ag.ds-next/box';
 import { Text } from '@ag.ds-next/text';
-import { bodyStyles } from '@ag.ds-next/body';
+import { Body } from '@ag.ds-next/body';
 import { ButtonLink } from '@ag.ds-next/button';
 import { ExternalLinkIcon } from '@ag.ds-next/icon';
 
@@ -75,14 +75,9 @@ export default function Packages({
 								</code>
 							</pre>
 						</Box>
-						<Box
-							css={bodyStyles({
-								// Prevents body styles from being inherited in live code examples
-								notSelector: ':not([class]):not(.code-live-preview *)',
-							})}
-						>
+						<Body>
 							<MDXRemote {...pkg.source} components={mdxComponents} />
-						</Box>
+						</Body>
 					</Stack>
 				</PageLayout>
 			</AppLayout>
