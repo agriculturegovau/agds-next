@@ -72,6 +72,7 @@ const LiveCode = withLive((props: unknown) => {
 		>
 			<Box padding={1}>
 				<LivePreview
+					className="code-live-preview"
 					css={{
 						// The mdx codeblock transform wraps the code component in a pre which
 						// applies some weirdness here. This resets back to normal things
