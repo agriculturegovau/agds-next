@@ -1,4 +1,4 @@
-import { H1, H2, H3 } from '@ag.ds-next/heading';
+import { H1, H3 } from '@ag.ds-next/heading';
 import { Flex, Stack } from '@ag.ds-next/box';
 import { Card } from '@ag.ds-next/card';
 import { mq, tokens } from '@ag.ds-next/core';
@@ -14,13 +14,21 @@ export default function TemplatesPage() {
 			<DocumentTitle title="Templates | AgDS" />
 			<AppLayout>
 				<Content>
-					<H1>Templates</H1>
-					<Text as="p">All of our examples</Text>
+					<Stack gap={2}>
+						<Stack gap={1}>
+							<H1>Templates</H1>
+							<Text as="p">
+								Examples of common user interface patterns in the Export
+								Service. You can view a full-screen preview of each page, or
+								copy the code from GitHub to use in your own applications.
+							</Text>
+						</Stack>
 
-					<Stack as="ul" gap={1} maxWidth={tokens.maxWidth.bodyText}>
-						{templateInfo.map((template) => {
-							return <TemplateCard key={template.name} data={template} />;
-						})}
+						<Stack as="ul" gap={1} maxWidth={tokens.maxWidth.bodyText}>
+							{templateInfo.map((template) => {
+								return <TemplateCard key={template.name} data={template} />;
+							})}
+						</Stack>
 					</Stack>
 				</Content>
 			</AppLayout>
