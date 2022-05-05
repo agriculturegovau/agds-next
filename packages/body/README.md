@@ -95,7 +95,7 @@ Body component should only be used in the context of a page, to format long-form
 		</sup>
 	</p>
 
-	<main id="content">
+	<main>
 		<dl>
 			<dt>Definition term</dt>
 			<dd>
