@@ -1,7 +1,7 @@
 import { PropsWithChildren, ReactNode } from 'react';
 import FocusLock from 'react-focus-lock';
 import { animated, useSpring } from '@react-spring/web';
-import { Flex, Stack } from '@ag.ds-next/box';
+import { Box, Stack } from '@ag.ds-next/box';
 import { usePrefersReducedMotion, mapSpacing, tokens } from '@ag.ds-next/core';
 import { CloseIcon } from '@ag.ds-next/icon';
 import { Button } from '@ag.ds-next/button';
@@ -36,8 +36,6 @@ export const ModalPanel = ({
 			<AnimatedStack
 				role="dialog"
 				aria-modal="true"
-				tabIndex={-1}
-				data-autofocus
 				background="body"
 				aria-labelledby={titleId}
 				rounded
@@ -58,10 +56,8 @@ export const ModalPanel = ({
 				style={animationStyles}
 			>
 				<ModalTitle id={titleId}>{title}</ModalTitle>
-				<Flex gap={2} flexGrow={1} flexDirection="column">
-					{children}
-					{actions}
-				</Flex>
+				<Box>{children}</Box>
+				{actions}
 
 				<Button
 					variant="tertiary"
