@@ -1,8 +1,10 @@
 import { PrismTheme } from 'prism-react-renderer';
-import { globalPalette } from '@ag.ds-next/core';
+import { globalPalette, tokens, fontGrid } from '@ag.ds-next/core';
 
 export const prismTheme: PrismTheme = {
 	plain: {
+		fontFamily: tokens.font.monospace,
+		...fontGrid('xs', 'default'),
 		color: globalPalette.lightForegroundText,
 		backgroundColor: globalPalette.lightBackgroundShade,
 	},

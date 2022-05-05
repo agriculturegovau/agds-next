@@ -93,7 +93,7 @@ const Template = () => (
 			</sup>
 		</p>
 
-		<main id="content">
+		<main>
 			<dl>
 				<dt>Definition term</dt>
 				<dd>
@@ -160,8 +160,8 @@ const Template = () => (
 			<h6>Heading level 6</h6>
 			<p>
 				I also have some <mark>kitten</mark>s who are visiting me these days.
-				They’re really cute. I think they like my garden! Maybe I should adopt a{' '}
-				<mark>kitten</mark>.
+				They&rsquo;re really cute. I think they like my garden! Maybe I should
+				adopt a <mark>kitten</mark>.
 			</p>
 
 			<p>
@@ -179,8 +179,8 @@ const Template = () => (
 			<figure>
 				<blockquote cite="https://www.huxley.net/bnw/four.html">
 					<p>
-						Words can be like X-rays, if you use them properly—they’ll go
-						through anything. You read and you’re pierced.
+						Words can be like X-rays, if you use them properly—they&rsquo;ll go
+						through anything. You read and you&rsquo;re pierced.
 					</p>
 				</blockquote>
 				<figcaption>
@@ -225,7 +225,7 @@ const Template = () => (
 
 		<hr />
 
-		<p>And that's a wrap.</p>
+		<p>And that&apos;s a wrap.</p>
 	</>
 );
 

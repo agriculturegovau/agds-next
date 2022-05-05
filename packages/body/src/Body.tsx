@@ -5,6 +5,7 @@ import {
 	boxPalette,
 	mapSpacing,
 	fontGrid,
+	packs,
 } from '@ag.ds-next/core';
 import { Box, BoxProps, linkStyles, focusStyles } from '@ag.ds-next/box';
 
@@ -15,28 +16,39 @@ export const Body = forwardRefWithAs<'div', BoxProps>(function Body(
 	return <Box ref={ref} css={bodyClass} {...props} />;
 });
 
+// Allow consumers to unset body styles from being inherited on specific elements
+export const unsetBodyStylesClassname = 'unset-agds-body-styles';
+
+// Exclude tags which contain a className (generated from the CSS prop) or are a child of the unset class
+const notSelector = `:not([class]):not(.${unsetBodyStylesClassname} *)`;
+
 export const bodyClass = css({
-	margin: 0,
-	textSizeAdjust: '100%',
-	color: boxPalette.foregroundText,
+	/**
+	 * Styles applied to the `Box` container
+	 */
+	[`&:not(.${unsetBodyStylesClassname} *)`]: {
+		margin: 0,
+		textSizeAdjust: '100%',
+		color: boxPalette.foregroundText,
+		// Font grid
+		fontFamily: tokens.font.body,
+		...fontGrid('sm', 'default'),
+	},
 
-	// Font grid
-	fontFamily: tokens.font.body,
-	...fontGrid('sm', 'default'),
-
-	'a:not([class])': [linkStyles, focusStyles],
+	/**
+	 * Link styles
+	 */
+	[`a${notSelector}`]: [linkStyles, focusStyles],
 
 	/**
 	 * Highlighting in-page sections that are in focus
 	 */
-	'[tabindex="0"]:focus, :target': {
-		// @include AU-outline();
-	},
+	'[tabindex="0"]:focus, :target': packs.outline,
 
 	/**
 	 * `mark` styling.
 	 */
-	mark: {
+	[`mark${notSelector}`]: {
 		color: boxPalette.backgroundBody,
 		backgroundColor: boxPalette.foregroundAction,
 	},
@@ -49,45 +61,46 @@ export const bodyClass = css({
 		backgroundColor: boxPalette.foregroundAction,
 	},
 
-	img: {
+	[`img${notSelector}`]: {
 		maxWidth: '100%',
 	},
 
 	/**
 	 * Vertical spacing of common text elements.
 	 */
-	'p:not([class])': {
+	[`p${notSelector}`]: {
 		maxWidth: tokens.maxWidth.bodyText,
 		margin: 0,
 	},
 
-	'* + p:not([class])': {
+	[`* + p${notSelector}`]: {
 		marginTop: mapSpacing(1.5),
 	},
 
-	'ul:not([class]),ol:not([class]),dl:not([class]),pre': {
+	[`ul${notSelector},ol${notSelector},dl${notSelector},pre`]: {
 		margin: 0, //reset defaults
 	},
 
-	'* + ul:not([class]), * + ol:not([class]), * + dl:not([class]), * + pre': {
-		marginTop: mapSpacing(1.5),
-	},
+	[`* + ul${notSelector}, * + ol${notSelector}, * + dl${notSelector}, * + pre`]:
+		{
+			marginTop: mapSpacing(1.5),
+		},
 
-	'ul:not([class]), ol:not([class])': {
+	[`ul${notSelector}, ol${notSelector}`]: {
 		'> li': {
 			marginTop: mapSpacing(0.5),
 
-			'> ul:not([class]), > ol:not([class])': {
+			[`> ul${notSelector}, > ol${notSelector}`]: {
 				marginTop: mapSpacing(0.5),
 			},
 		},
 
-		'> ul:not([class])': {
+		[`> ul${notSelector}`]: {
 			listStyleType: 'disc',
 		},
 	},
 
-	'dl:not([class])': {
+	[`dl${notSelector}`]: {
 		'> dd': {
 			marginTop: mapSpacing(0.5),
 			paddingLeft: mapSpacing(0.5),
@@ -107,66 +120,66 @@ export const bodyClass = css({
 		},
 	},
 
-	'h1:not([class])': {
+	[`h1${notSelector}`]: {
 		...fontGrid('xxl', 'heading'),
 		marginTop: 0,
 		marginBottom: 0,
 	},
-	'h2:not([class])': {
+	[`h2${notSelector}`]: {
 		...fontGrid('xl', 'heading'),
 		marginTop: 0,
 		marginBottom: 0,
 	},
-	'h3:not([class])': {
+	[`h3${notSelector}`]: {
 		...fontGrid('lg', 'heading'),
 		marginTop: 0,
 		marginBottom: 0,
 	},
-	'h4:not([class])': {
+	[`h4${notSelector}`]: {
 		...fontGrid('md', 'heading'),
 		marginTop: 0,
 		marginBottom: 0,
 	},
-	'h5:not([class])': {
+	[`h5${notSelector}`]: {
 		...fontGrid('sm', 'heading'),
 		marginTop: 0,
 		marginBottom: 0,
 	},
-	'h6:not([class])': {
+	[`h6${notSelector}`]: {
 		...fontGrid('xs', 'heading'),
 		marginTop: 0,
 		marginBottom: 0,
 	},
 
-	'* + h1:not([class])': { marginTop: mapSpacing(3) },
-	'* + h2:not([class])': { marginTop: mapSpacing(3) },
-	'* + h3:not([class])': { marginTop: mapSpacing(1.5) },
-	'* + h4:not([class])': { marginTop: mapSpacing(1.5) },
-	'* + h5:not([class])': { marginTop: mapSpacing(1.5) },
-	'* + h6:not([class])': { marginTop: mapSpacing(1.5) },
+	[`* + h1${notSelector}`]: { marginTop: mapSpacing(3) },
+	[`* + h2${notSelector}`]: { marginTop: mapSpacing(3) },
+	[`* + h3${notSelector}`]: { marginTop: mapSpacing(1.5) },
+	[`* + h4${notSelector}`]: { marginTop: mapSpacing(1.5) },
+	[`* + h5${notSelector}`]: { marginTop: mapSpacing(1.5) },
+	[`* + h6${notSelector}`]: { marginTop: mapSpacing(1.5) },
 
 	// Override for sequential headings
-	'h1 + h2:not([class])': { marginTop: mapSpacing(1.5) },
-	'h2 + h3:not([class])': { marginTop: mapSpacing(1.5) },
+	[`h1 + h2${notSelector}`]: { marginTop: mapSpacing(1.5) },
+	[`h2 + h3${notSelector}`]: { marginTop: mapSpacing(1.5) },
 
 	/**
 	 * Emphasis and alt. voice/mood/diff. from prose text.
 	 */
-	'em,i': {
+	[`em${notSelector}, i${notSelector}`]: {
 		fontStyle: 'italic',
 	},
 
 	/**
 	 * Stong emphasis.
 	 */
-	'strong,b': {
+	[`strong${notSelector}, b${notSelector}`]: {
 		fontWeight: 'bold',
 	},
 
 	/**
 	 * `small`: for less important information (not stylistic purposes).
 	 */
-	small: {
+	[`small:${notSelector}`]: {
 		...fontGrid('xs', 'default'),
 	},
 
@@ -174,11 +187,11 @@ export const bodyClass = css({
 	 * `s`: represents contents no longer accurate/relevant.
 	 * del` & `ins`: editorial markup.
 	 */
-	's,del': {
+	[`s${notSelector}, del${notSelector}`]: {
 		textDecoration: 'line-through',
 	},
 
-	ins: {
+	[`ins${notSelector}`]: {
 		textDecorationLine: 'underline',
 		textDecorationStyle: 'dashed', //Waiting on Chrome.
 		textDecorationSkipInk: 'auto',
@@ -193,23 +206,23 @@ export const bodyClass = css({
 	 *
 	 * Note: `abbr` can be nested inside `dfn`.
 	 */
-	dfn: {
+	[`dfn${notSelector}`]: {
 		fontStyle: 'normal',
 	},
 
 	/**
 	 * Abbreviations/acronyms.
 	 */
-	'abbr,abbr[title]': {
+	[`abbr,abbr[title]${notSelector}`]: {
 		borderBottom: 'none',
 		textDecoration: 'underline dotted',
 	},
 
-	'abbr[title]': {
+	[`abbr[title]${notSelector}`]: {
 		cursor: 'help',
 	},
 
-	'a abbr': {
+	[`a abbr${notSelector}`]: {
 		paddingBottom: 1,
 	},
 
@@ -218,10 +231,10 @@ export const bodyClass = css({
 	 *
 	 * We also provide semantic support for nested vars, and things like indices.
 	 */
-	var: {
+	[`var${notSelector}`]: {
 		padding: '0 1px',
 		fontStyle: 'italic',
-		fontFamily: 'serif', //We want mathematical notation to use serif vars per convention.
+		fontFamily: 'serif', // We want mathematical notation to use serif vars per convention.
 
 		'sup,sub': {
 			fontFamily: tokens.font.body,
@@ -235,28 +248,28 @@ export const bodyClass = css({
 	 * all browsers.
 	 * https://github.com/necolas/normalize.css/blob/master/normalize.css#L174
 	 */
-	'sub,sup': {
+	[`sub${notSelector}, sup${notSelector}`]: {
 		...fontGrid('xs', 'nospace'),
 		position: 'relative',
 		verticalAlign: 'baseline',
 	},
 
-	sub: {
+	[`sub${notSelector}`]: {
 		bottom: '-0.25em',
 	},
 
-	sup: {
+	[`sup${notSelector}`]: {
 		top: '-0.5em',
 	},
 
-	'figure:not([class])': {
+	[`figure${notSelector}`]: {
 		marginTop: mapSpacing(1.5),
 		marginBottom: 0,
 		marginLeft: 0,
 		marginRight: 0,
 	},
 
-	'blockquote:not([class])': {
+	[`blockquote${notSelector}`]: {
 		marginTop: mapSpacing(1.5),
 		marginBottom: mapSpacing(1),
 		marginLeft: 0,
@@ -272,7 +285,14 @@ export const bodyClass = css({
 	 * Keyboard strokes.
 	 * Code snippets and code blocks.
 	 */
-	'kbd:not([class]),code:not([class]),samp:not([class])': {
+
+	[`pre code${notSelector}`]: {
+		display: 'block',
+		tabSize: 4,
+		padding: mapSpacing(1),
+	},
+
+	[`kbd${notSelector}, code${notSelector}, samp${notSelector}`]: {
 		...fontGrid('xs', 'default'),
 		padding: mapSpacing(0.25),
 		fontFamily: tokens.font.monospace,
@@ -282,19 +302,14 @@ export const bodyClass = css({
 		color: boxPalette.foregroundText,
 	},
 
-	'pre:not([class])': {
+	[`pre${notSelector}`]: {
 		fontFamily: tokens.font.monospace,
-	},
-
-	'pre code': {
-		display: 'block',
-		tabSize: 4,
 	},
 
 	/**
 	 * Horizontal rule, used for paragraph-level thematic breaks.
 	 */
-	'hr:not([class])': {
+	[`hr${notSelector}`]: {
 		boxSizing: 'content-box',
 		height: 0,
 		overflow: 'visible',
@@ -305,7 +320,7 @@ export const bodyClass = css({
 		marginBottom: mapSpacing(1.5),
 	},
 
-	'* + hr:not([class])': {
+	[`* + hr${notSelector}`]: {
 		marginTop: mapSpacing(1.5),
 	},
 
@@ -314,7 +329,7 @@ export const bodyClass = css({
 	 */
 	'@media print': {
 		// Display link URLs
-		'a:not([class])[href]:after': {
+		'a[href]:after': {
 			content: '" (" attr(href) ")" !important',
 		},
 		// Expand abbreviations

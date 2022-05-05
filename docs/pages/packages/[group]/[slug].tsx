@@ -1,7 +1,7 @@
 import { GetStaticProps, InferGetStaticPropsType } from 'next';
 import { MDXRemote } from 'next-mdx-remote';
 import { H1 } from '@ag.ds-next/heading';
-import { Box, Flex, Stack } from '@ag.ds-next/box';
+import { Flex, Stack } from '@ag.ds-next/box';
 import { Text } from '@ag.ds-next/text';
 import { Body } from '@ag.ds-next/body';
 import { ButtonLink } from '@ag.ds-next/button';
@@ -61,20 +61,13 @@ export default function Packages({
 								</ButtonLink>
 							</div>
 						)}
-						<Box
-							palette="light"
-							rounded
-							background="shade"
-							paddingX={1}
-							fontSize="sm"
-							color="text"
-						>
+						<Body>
 							<pre>
 								<code>
 									yarn add {pkg.name}@{pkg.version}
 								</code>
 							</pre>
-						</Box>
+						</Body>
 						<Body>
 							<MDXRemote {...pkg.source} components={mdxComponents} />
 						</Body>
