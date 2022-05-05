@@ -1,4 +1,5 @@
 import React, { useState, useCallback, Fragment } from 'react';
+import { useRouter } from 'next/router';
 import {
 	LiveProvider,
 	LiveEditor,
@@ -34,6 +35,8 @@ const PlaceholderImage = () => (
 );
 
 const LiveCode = withLive((props: unknown) => {
+	const { query } = useRouter();
+
 	// The types on `withLive` are kind of useless.
 	const { live } = props as {
 		live: {
@@ -66,11 +69,18 @@ const LiveCode = withLive((props: unknown) => {
 	});
 
 	return (
-		<Box css={{ boxShadow: `0 0 1px ${globalPalette.lightBorder}` }}>
+		<Box
+			css={{
+				boxShadow: `0 0 1px ${globalPalette.lightBorder}`,
+				marginTop: mapSpacing(1.5),
+			}}
+		>
 			<Box padding={1}>
 				<LivePreview
-					// Prevents body styles from being inherited in live code examples
-					className={unsetBodyStylesClassname}
+					// Prevents body styles from being inherited in live code examples (except for the body example)
+					className={
+						query.slug === 'body' ? undefined : unsetBodyStylesClassname
+					}
 					css={{
 						// The mdx codeblock transform wraps the code component in a pre which
 						// applies some weirdness here. This resets back to normal things
@@ -137,6 +147,12 @@ const StaticCode = ({
 		<Box
 			css={{
 				boxShadow: `0 0 1px ${globalPalette.lightBorder}`,
+				marginTop: mapSpacing(1.5),
+
+				'textarea, pre': {
+					padding: `${mapSpacing(1)} !important`,
+				},
+
 				'& ::selection': {
 					color: globalPalette.darkBackgroundBody,
 					backgroundColor: globalPalette.darkForegroundAction,
