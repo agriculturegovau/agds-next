@@ -1,5 +1,9 @@
 import { ChevronRightIcon } from '@ag.ds-next/icon';
 
 export const BreadcrumbsDivider = () => (
-	<ChevronRightIcon size="sm" color="border" css={{ flexShrink: 0 }} />
+	<ChevronRightIcon
+		color="border"
+		weight="bold"
+		css={{ flexShrink: 0, width: 10, height: 10 }}
+	/>
 );
