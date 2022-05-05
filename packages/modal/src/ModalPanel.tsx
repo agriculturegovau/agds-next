@@ -57,7 +57,7 @@ export const ModalPanel = ({
 			>
 				<ModalTitle id={titleId}>{title}</ModalTitle>
 				<Box>{children}</Box>
-				{actions ? <Box paddingTop={1}>{actions}</Box> : null}
+				{actions}
 
 				<Button
 					variant="tertiary"

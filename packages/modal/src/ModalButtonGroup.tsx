@@ -8,6 +8,7 @@ export const ModalButtonGroup = ({ children }: ModalButtonGroupProps) => {
 		<Stack
 			gap={0.5}
 			flexDirection={{ xs: 'column', sm: 'row' }}
+			paddingTop={1}
 			css={{
 				marginTop: 'auto',
 			}}
