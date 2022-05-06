@@ -4,11 +4,11 @@ import { boxPalette } from '@ag.ds-next/core';
 
 import { localPalette } from './utils';
 
-export type MenuButtonProps = PropsWithChildren<{
+export type MainNavButtonProps = PropsWithChildren<{
 	onClick: MouseEventHandler<HTMLButtonElement>;
 }>;
 
-function MenuButton({ onClick, children }: MenuButtonProps) {
+function MainNavButton({ onClick, children, ...props }: MainNavButtonProps) {
 	return (
 		<Box paddingBottom={0.5} display={{ xs: 'block', lg: 'none' }}>
 			<Flex
@@ -34,6 +34,7 @@ function MenuButton({ onClick, children }: MenuButtonProps) {
 					},
 				}}
 				onClick={onClick}
+				{...props}
 			>
 				{children}
 			</Flex>
@@ -41,9 +42,14 @@ function MenuButton({ onClick, children }: MenuButtonProps) {
 	);
 }
 
-export function ToggleButton({ onClick }: MenuButtonProps) {
+export function OpenButton({ onClick }: MainNavButtonProps) {
 	return (
-		<MenuButton onClick={onClick}>
+		<MainNavButton
+			onClick={onClick}
+			aria-controls="main-nav-dialog"
+			aria-expanded="false"
+			aria-label="Open main navigation"
+		>
 			<svg
 				width="24"
 				height="24"
@@ -57,20 +63,27 @@ export function ToggleButton({ onClick }: MenuButtonProps) {
 				<rect x="4" y="11" width="16" height="2" />
 				<rect x="4" y="6" width="16" height="2" />
 			</svg>
-			<span>Menu</span>
-		</MenuButton>
+			Menu
+		</MainNavButton>
 	);
 }
 
-export function CloseButton({ onClick }: MenuButtonProps) {
+export function CloseButton({ onClick }: MainNavButtonProps) {
 	return (
-		<MenuButton onClick={onClick}>
+		<MainNavButton
+			onClick={onClick}
+			aria-controls="main-nav-dialog"
+			aria-expanded="true"
+			aria-label="Close main navigation"
+		>
 			<svg
 				width="24"
 				height="24"
 				viewBox="0 0 24 24"
 				fill="currentcolor"
 				xmlns="http://www.w3.org/2000/svg"
+				aria-hidden="true"
+				focusable="false"
 			>
 				<rect
 					x="6"
@@ -87,7 +100,7 @@ export function CloseButton({ onClick }: MenuButtonProps) {
 					transform="rotate(45 7.41406 6)"
 				/>
 			</svg>
-			<span>Close</span>
-		</MenuButton>
+			Close
+		</MainNavButton>
 	);
 }
