@@ -2,4 +2,4 @@
 '@ag.ds-next/breadcrumbs': patch
 ---
 
-Improve center aligninment of breadcrumbs
+Improve center alignment of breadcrumbs
