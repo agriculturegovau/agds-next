@@ -13,7 +13,7 @@ import {
 } from '@ag.ds-next/core';
 
 import { localPalette, localPaletteVars } from './utils';
-import { CloseButton, ToggleButton } from './MenuButtons';
+import { CloseButton, OpenButton } from './MenuButtons';
 import { NavListLink } from './NavList';
 
 const variantMap = {
@@ -103,12 +103,13 @@ export function NavContainer({
 					width="100%"
 					paddingX={{ xs: 0.75, lg: 2 }}
 				>
-					{links && links.length > 0 ? <ToggleButton onClick={open} /> : null}
+					{links && links.length > 0 ? <OpenButton onClick={open} /> : null}
 					<FocusLock returnFocus disabled={!menuVisiblyOpen}>
 						<div
 							role={menuVisiblyOpen ? 'dialog' : 'none'}
 							aria-label="Main navigation"
 							aria-modal={menuVisiblyOpen ? 'true' : 'false'}
+							id="main-nav-dialog"
 							css={{
 								[tokens.mediaQuery.max.md]: {
 									zIndex: 200,
