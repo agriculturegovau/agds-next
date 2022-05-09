@@ -1,67 +1,71 @@
-import { H1, H3 } from '@ag.ds-next/heading';
+import { MDXRemote } from 'next-mdx-remote';
+import { normalize } from 'path';
+import { Body } from '@ag.ds-next/body';
+import { H2, H3 } from '@ag.ds-next/heading';
 import { Flex, Stack } from '@ag.ds-next/box';
 import { Card } from '@ag.ds-next/card';
 import { mq, tokens } from '@ag.ds-next/core';
 import { Text, TextLink } from '@ag.ds-next/text';
-import { Content } from '@ag.ds-next/content';
 
+import {
+	getMarkdownData,
+	getTemplateList,
+	serializeMarkdown,
+} from '../../lib/mdxUtils';
+import { mdxComponents } from '../../components/utils';
 import { AppLayout } from '../../components/AppLayout';
+import { PageLayout } from '../../components/PageLayout';
 import { DocumentTitle } from '../../components/DocumentTitle';
 
-export default function TemplatesPage() {
+type StaticProps = Awaited<ReturnType<typeof getStaticProps>>['props'];
+
+export default function TemplatesPage({ source, templateLinks }: StaticProps) {
 	return (
 		<>
 			<DocumentTitle title="Templates | AgDS" />
 			<AppLayout>
-				<Content>
+				<PageLayout
+					sideNav={{
+						title: 'Templates',
+						titleLink: '/templates',
+						items: templateLinks,
+					}}
+					editPath="/templates/index.mdx"
+				>
 					<Stack gap={2}>
-						<Stack gap={1}>
-							<H1>Templates</H1>
-							<Text as="p">
-								Examples of common user interface patterns in the Export
-								Service. You can view a full-screen preview of each page, or
-								copy the code from GitHub to use in your own applications.
-							</Text>
-						</Stack>
+						<Body>
+							<MDXRemote {...source} components={mdxComponents} />
+						</Body>
 
+						<H2>All Templates</H2>
 						<Stack as="ul" gap={1} maxWidth={tokens.maxWidth.bodyText}>
-							{templateInfo.map((template) => {
-								return <TemplateCard key={template.name} data={template} />;
+							{templateLinks.map((template) => {
+								return <TemplateCard key={template.slug} data={template} />;
 							})}
 						</Stack>
 					</Stack>
-				</Content>
+				</PageLayout>
 			</AppLayout>
 		</>
 	);
 }
 
 const TemplateCard = ({
-	data: { imageId, name, description, URLS },
+	data: { slug, title, description },
 }: {
-	data: typeof templateInfo[number];
+	data: { slug: string; title: string; description: string };
 }) => {
 	return (
 		<Card as="li">
 			<Flex flexDirection={['column', 'row']}>
 				<Stack padding={1.5} gap={1} flexGrow={1}>
-					<Stack gap={0.5}>
-						<H3>{name}</H3>
-						<Text>{description}</Text>
-					</Stack>
-					<Flex gap={1} flexDirection={['column', 'row']}>
-						{URLS.preview ? (
-							<TextLink href={URLS.preview}>View Preview</TextLink>
-						) : null}
-						{URLS.code ? <TextLink href={URLS.code}>See Code</TextLink> : null}
-						{URLS.figma ? (
-							<TextLink href={URLS.figma}>View Figma File</TextLink>
-						) : null}
-					</Flex>
+					<H3>{title}</H3>
+					<Text>{description}</Text>
+					<TextLink href={`./templates/${slug}`}>View</TextLink>
 				</Stack>
 				<img
-					src={`/agds-next/img/templates/${imageId}.jpg`}
-					alt={`Screenshot of ${name} example`}
+					src={`/agds-next/img/templates/${slug}.jpg`}
+					alt={`Screenshot of ${title} example`}
 					height="auto"
 					css={mq({
 						width: ['100%', '40%'],
@@ -74,44 +78,24 @@ const TemplateCard = ({
 	);
 };
 
-const templateInfo = [
-	{
-		imageId: 'home',
-		name: 'Home page',
-		description: 'Our homepage example',
-		URLS: {
-			code: 'https://github.com/steelthreads/agds-next/blob/main/example-site/pages/index.tsx',
-			preview:
-				'https://steelthreads.github.io/agds-next/example-site/index.html',
+export async function getStaticProps() {
+	const { content } = await getMarkdownData(
+		normalize(`${process.cwd()}/../templates/index.mdx`)
+	);
+	const source = await serializeMarkdown(content);
+	const templateList = await getTemplateList();
+
+	const templateLinks = templateList.map(({ slug, title, description }) => ({
+		href: `/templates/${slug}`,
+		slug,
+		label: title,
+		description: description || null,
+	}));
+
+	return {
+		props: {
+			source,
+			templateLinks,
 		},
-	},
-	{
-		imageId: 'content',
-		name: 'Content',
-		description: 'Our content page example',
-		URLS: {
-			code: 'https://github.com/steelthreads/agds-next/blob/main/example-site/pages/content.tsx',
-			preview: 'https://steelthreads.github.io/agds-next/example-site/content',
-		},
-	},
-	{
-		imageId: 'single-page-form',
-		name: 'Single-page form',
-		description: 'Single-page form example',
-		URLS: {
-			code: 'https://github.com/steelthreads/agds-next/blob/main/example-site/pages/form-single-page.tsx',
-			preview:
-				'https://steelthreads.github.io/agds-next/example-site/form-single-page',
-		},
-	},
-	{
-		imageId: 'multi-step-form',
-		name: 'Multi-step form',
-		description: 'An example for a multi-facited form',
-		URLS: {
-			code: 'https://github.com/steelthreads/agds-next/blob/main/example-site/pages/form-multi-step.tsx',
-			preview:
-				'https://steelthreads.github.io/agds-next/example-site/form-multi-step',
-		},
-	},
-] as const;
+	};
+}
