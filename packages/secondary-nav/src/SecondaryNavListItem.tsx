@@ -4,36 +4,36 @@ import {
 	mq,
 	mapResponsiveProp,
 	packs,
+	tokens,
 } from '@ag.ds-next/core';
 import { Box } from '@ag.ds-next/box';
 import type { PropsWithChildren } from 'react';
 
 import { localPalette } from './utils';
 
-export type NavItemProps = PropsWithChildren<{
+export type SecondaryNavListItemProps = PropsWithChildren<{
 	active?: boolean;
 }>;
 
-export function NavListItem({ children, active }: NavItemProps) {
+export function SecondaryNavListItem({
+	children,
+	active,
+}: SecondaryNavListItemProps) {
 	return (
 		<Box
 			as="li"
 			paddingBottom={{ lg: 0.25 }}
-			fontFamily="body"
-			fontSize={{ xs: 'xs', lg: 'sm' }}
-			lineHeight="default"
+			borderBottom
+			borderColor="muted"
 			css={mq({
+				borderBottom: mapResponsiveProp({ lg: 'none' }),
+
 				' a': {
 					position: 'relative',
 					display: 'block',
 					color: boxPalette[active ? 'foregroundText' : 'foregroundAction'],
 					padding: mapSpacing(1),
 					textDecoration: 'none',
-
-					fontWeight: mapResponsiveProp({
-						xs: active ? 'bold' : undefined,
-						lg: 'normal',
-					}),
 
 					// Underline overlay for active menu item
 					'&:after': {

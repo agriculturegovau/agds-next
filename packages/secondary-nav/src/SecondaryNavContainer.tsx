@@ -1,5 +1,5 @@
 import React, { PropsWithChildren, ReactNode } from 'react';
-import { Box, Flex, backgroundColorMap } from '@ag.ds-next/box';
+import { Box, backgroundColorMap } from '@ag.ds-next/box';
 import { boxPalette, packs } from '@ag.ds-next/core';
 
 import { localPalette, localPaletteVars } from './utils';
@@ -35,21 +35,21 @@ const variantMap = {
 	},
 } as const;
 
-export type NavContainerVariant = keyof typeof variantMap;
+export type SecondaryNavContainerVariant = keyof typeof variantMap;
 
-export type NavContainerProps = PropsWithChildren<{
+export type SecondaryNavContainerProps = PropsWithChildren<{
 	id?: string;
 	'aria-label': string;
 	rightContent?: ReactNode;
-	variant: NavContainerVariant;
+	variant: SecondaryNavContainerVariant;
 }>;
 
-export function NavContainer({
+export function SecondaryNavContainer({
 	id,
 	'aria-label': ariaLabel,
 	children,
 	variant,
-}: NavContainerProps) {
+}: SecondaryNavContainerProps) {
 	const { background, bottomBar, bottomBarActive, hover, palette } =
 		variantMap[variant];
 	return (

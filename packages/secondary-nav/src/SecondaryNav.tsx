@@ -1,13 +1,16 @@
 import { PropsWithChildren } from 'react';
-import { NavContainer, NavContainerVariant } from './NavContainer';
-import { NavList, NavListLink } from './NavList';
+import {
+	SecondaryNavContainer,
+	SecondaryNavContainerVariant,
+} from './SecondaryNavContainer';
+import { SecondaryNavList, SecondaryNavListLink } from './SecondaryNavList';
 
 export type SecondaryNavProps = PropsWithChildren<{
 	activePath?: string;
 	'aria-label'?: string;
 	id?: string;
-	links: NavListLink[];
-	variant: NavContainerVariant;
+	links: SecondaryNavListLink[];
+	variant: SecondaryNavContainerVariant;
 }>;
 
 export function SecondaryNav({
@@ -18,8 +21,8 @@ export function SecondaryNav({
 	'aria-label': ariaLabel = 'main',
 }: SecondaryNavProps) {
 	return (
-		<NavContainer variant={variant} id={id} aria-label={ariaLabel}>
-			<NavList links={links} activePath={activePath} />
-		</NavContainer>
+		<SecondaryNavContainer variant={variant} id={id} aria-label={ariaLabel}>
+			<SecondaryNavList links={links} activePath={activePath} />
+		</SecondaryNavContainer>
 	);
 }

@@ -1,5 +1,4 @@
 export * from './SecondaryNav';
-// export * from './MainNavItem';
-export * from './NavContainer';
-export * from './NavList';
-export * from './NavListItem';
+export * from './SecondaryNavContainer';
+export * from './SecondaryNavList';
+export * from './SecondaryNavListItem';
