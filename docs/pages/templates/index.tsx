@@ -1,10 +1,11 @@
 import { MDXRemote } from 'next-mdx-remote';
 import { normalize } from 'path';
 import { Body } from '@ag.ds-next/body';
+import { mapSpacing } from '@ag.ds-next/core';
 import { H2, H3 } from '@ag.ds-next/heading';
-import { Flex, Stack } from '@ag.ds-next/box';
-import { Card } from '@ag.ds-next/card';
-import { mq, tokens } from '@ag.ds-next/core';
+import { Box, Stack } from '@ag.ds-next/box';
+import { Card, CardLink, CardInner } from '@ag.ds-next/card';
+import { mq } from '@ag.ds-next/core';
 import { Text, TextLink } from '@ag.ds-next/text';
 
 import {
@@ -38,11 +39,18 @@ export default function TemplatesPage({ source, templateLinks }: StaticProps) {
 						</Body>
 
 						<H2>All Templates</H2>
-						<Stack as="ul" gap={1} maxWidth={tokens.maxWidth.bodyText}>
+						<Box
+							as="ul"
+							css={mq({
+								display: 'grid',
+								gridGap: mapSpacing(1.5),
+								gridTemplateColumns: ['1fr', '1fr 1fr', '1fr 1fr 1fr'],
+							})}
+						>
 							{templateLinks.map((template) => {
 								return <TemplateCard key={template.slug} data={template} />;
 							})}
-						</Stack>
+						</Box>
 					</Stack>
 				</PageLayout>
 			</AppLayout>
@@ -51,29 +59,29 @@ export default function TemplatesPage({ source, templateLinks }: StaticProps) {
 }
 
 const TemplateCard = ({
-	data: { slug, title, description },
+	data: { slug, label, description },
 }: {
-	data: { slug: string; title: string; description: string };
+	data: { slug: string; label: string; description: string };
 }) => {
 	return (
-		<Card as="li">
-			<Flex flexDirection={['column', 'row']}>
-				<Stack padding={1.5} gap={1} flexGrow={1}>
-					<H3>{title}</H3>
+		<Card as="li" clickable shadow>
+			<img
+				src={`/agds-next/img/templates/${slug}.jpg`}
+				alt={`Screenshot of ${label} example`}
+				height="auto"
+				width="100%"
+				css={mq({
+					objectFit: 'cover',
+				})}
+			/>
+			<CardInner>
+				<Stack gap={1} flexGrow={1}>
+					<H3>
+						<CardLink href={`./templates/${slug}`}>{label}</CardLink>
+					</H3>
 					<Text>{description}</Text>
-					<TextLink href={`./templates/${slug}`}>View</TextLink>
 				</Stack>
-				<img
-					src={`/agds-next/img/templates/${slug}.jpg`}
-					alt={`Screenshot of ${title} example`}
-					height="auto"
-					css={mq({
-						width: ['100%', '40%'],
-						maxWidth: [undefined, 300],
-						objectFit: 'cover',
-					})}
-				/>
-			</Flex>
+			</CardInner>
 		</Card>
 	);
 };
