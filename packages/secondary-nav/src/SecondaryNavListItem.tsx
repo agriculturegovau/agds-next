@@ -45,7 +45,7 @@ export function SecondaryNavListItem({
 					textDecoration: 'none',
 
 					borderLeftStyle: 'solid',
-					borderLeftWidth: mapResponsiveProp([tokens.borderWidth.lg, 0]),
+					borderLeftWidth: mapResponsiveProp([tokens.borderWidth.xl, 0]),
 					borderLeftColor: active ? boxPalette.foregroundAction : 'transparent',
 
 					// Underline overlay for active menu item

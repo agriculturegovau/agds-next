@@ -560,6 +560,19 @@ items={[
     </SearchBox>
   </HeroBanner>`,
 	},
+	{
+		group: 'SecondaryNav',
+		name: 'Basic',
+		code: `<SecondaryNav
+    activePath="#code"
+    links={[
+      { href: '#usage', label: 'Usage' },
+      { href: '#code', label: 'Code' },
+      { href: '#content', label: 'Content' },
+      { href: '#accessibility', label: 'Accessibility' },
+    ]}
+  />`,
+	},
 ];
 
 export default snippits;
