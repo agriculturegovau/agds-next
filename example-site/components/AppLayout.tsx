@@ -3,8 +3,13 @@ import { SkipLinks } from '@ag.ds-next/skip-link';
 
 import { SiteHeader } from './SiteHeader';
 import { SiteFooter } from './SiteFooter';
+import { ExampleBanner, ExampleBannerProps } from './ExampleBanner';
 
-export const AppLayout: React.FC = ({ children }) => {
+export const AppLayout: React.FC<ExampleBannerProps> = ({
+	children,
+	templateName,
+	templateSlug,
+}) => {
 	return (
 		<>
 			<SkipLinks
@@ -19,6 +24,12 @@ export const AppLayout: React.FC = ({ children }) => {
 				palette="light"
 				minHeight="100vh"
 			>
+				{templateName ? (
+					<ExampleBanner
+						templateName={templateName}
+						templateSlug={templateSlug}
+					/>
+				) : null}
 				<SiteHeader />
 				<Box as="main" id="main-content" flexGrow={1}>
 					{children}
