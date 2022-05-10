@@ -1,4 +1,4 @@
-import { PropsWithChildren } from 'react';
+import { forwardRef, PropsWithChildren } from 'react';
 import { Flex } from '@ag.ds-next/box';
 import { globalPalette, tokens } from '@ag.ds-next/core';
 import {
@@ -14,40 +14,42 @@ export type PageAlertTone = 'success' | 'error' | 'warning' | 'info';
 
 export type PageAlertProps = PropsWithChildren<{
 	role?: string;
+	tabIndex?: number;
 	title?: string;
 	tone: PageAlertTone;
 }>;
 
-export const PageAlert = ({ role, children, title, tone }: PageAlertProps) => {
-	const { fg, bg, Icon } = pageAlertToneMap[tone];
-
-	return (
-		<Flex
-			rounded
-			css={{
-				backgroundColor: bg,
-			}}
-			role={role}
-		>
+export const PageAlert = forwardRef<HTMLDivElement, PageAlertProps>(
+	function PageAlert({ role, children, title, tone, tabIndex }, ref) {
+		const { fg, bg, Icon } = pageAlertToneMap[tone];
+		return (
 			<Flex
-				padding={0.5}
-				alignItems="center"
-				palette="dark"
-				css={{
-					borderTopLeftRadius: tokens.borderRadius,
-					borderBottomLeftRadius: tokens.borderRadius,
-					backgroundColor: fg,
-				}}
+				ref={ref}
+				rounded
+				role={role}
+				tabIndex={tabIndex}
+				css={{ backgroundColor: bg }}
 			>
-				<Icon color="text" />
+				<Flex
+					padding={0.5}
+					alignItems="center"
+					palette="dark"
+					css={{
+						borderTopLeftRadius: tokens.borderRadius,
+						borderBottomLeftRadius: tokens.borderRadius,
+						backgroundColor: fg,
+					}}
+				>
+					<Icon color="text" />
+				</Flex>
+				<Flex padding={1.5} palette="light" gap={1} flexDirection="column">
+					{title ? <PageAlertTitle>{title}</PageAlertTitle> : null}
+					{children}
+				</Flex>
 			</Flex>
-			<Flex padding={1.5} palette="light" gap={1} flexDirection="column">
-				{title ? <PageAlertTitle>{title}</PageAlertTitle> : null}
-				{children}
-			</Flex>
-		</Flex>
-	);
-};
+		);
+	}
+);
 
 const pageAlertToneMap = {
 	success: {
