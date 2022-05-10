@@ -24,7 +24,7 @@ export function SecondaryNavListItem({
 			css={mq({
 				borderBottomColor: mapResponsiveProp([
 					boxPalette.border,
-					active ? boxPalette.foregroundAction : boxPalette.borderMuted,
+					active ? boxPalette.foregroundAction : boxPalette.backgroundBodyAlt,
 				]),
 				borderBottomWidth: mapResponsiveProp([
 					tokens.borderWidth.sm,
