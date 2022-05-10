@@ -1,5 +1,6 @@
 import { H1 } from '@ag.ds-next/heading';
-import { Text } from '@ag.ds-next/text';
+import { Stack } from '@ag.ds-next/box';
+import { Text, TextLink } from '@ag.ds-next/text';
 import { Content } from '@ag.ds-next/content';
 import { AppLayout } from '../components/AppLayout';
 import { DocumentTitle } from '../components/DocumentTitle';
@@ -8,10 +9,17 @@ export default function NotFoundPage() {
 	return (
 		<>
 			<DocumentTitle title="Error 404" />
-			<AppLayout>
+			<AppLayout templateSlug="404" templateName="404">
 				<Content>
-					<H1>Error 404</H1>
-					<Text as="p">We could not find this page.</Text>
+					<Stack paddingTop={3} gap={1.5}>
+						<H1>Page not found</H1>
+						<Text as="p" fontSize="md">
+							Check the web address is correct or go back to the{' '}
+							<TextLink>Export Service.</TextLink>
+						</Text>
+
+						<Text>Error code: 404</Text>
+					</Stack>
 				</Content>
 			</AppLayout>
 		</>
