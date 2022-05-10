@@ -46,11 +46,12 @@ export default function Templates({
 							<Text fontSize="lg">{template.data.description}</Text>
 						</Flex>
 
-						<Flex gap={1}>
+						<Flex>
 							<ButtonLink
 								href={template.data.previewURL}
 								target="_blank"
 								iconAfter={ExternalLinkIcon}
+								variant="tertiary"
 							>
 								Visit Preview
 							</ButtonLink>
@@ -59,7 +60,7 @@ export default function Templates({
 								href={template.data.codeURL}
 								target="_blank"
 								iconAfter={ExternalLinkIcon}
-								variant="secondary"
+								variant="tertiary"
 							>
 								See code on GitHub
 							</ButtonLink>
