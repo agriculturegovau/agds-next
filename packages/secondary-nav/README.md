@@ -7,13 +7,12 @@ storybookPath: /story/navigation-secondarynav--light-variant
 
 ```jsx live
 <SecondaryNav
-	activePath="/button"
+	activePath="#code"
 	links={[
-		{ href: '/button', label: 'Button' },
-		{ href: '/button/code', label: 'Code' },
-		{ href: '/button/content', label: 'Content' },
-		{ href: '/button/accessibility', label: 'Accessibility' },
+		{ href: '#usage', label: 'Usage' },
+		{ href: '#code', label: 'Code' },
+		{ href: '#content', label: 'Content' },
+		{ href: '#accessibility', label: 'Accessibility' },
 	]}
-	variant="light"
 />
 ```

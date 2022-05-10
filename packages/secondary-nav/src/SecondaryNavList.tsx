@@ -1,11 +1,6 @@
 import type { ReactNode } from 'react';
 import { Flex } from '@ag.ds-next/box';
-import {
-	boxPalette,
-	tokens,
-	useLinkComponent,
-	LinkProps,
-} from '@ag.ds-next/core';
+import { useLinkComponent, LinkProps } from '@ag.ds-next/core';
 
 import { SecondaryNavListItem } from './SecondaryNavListItem';
 
@@ -21,7 +16,7 @@ export type SecondaryNavListProps = {
 export function SecondaryNavList({ links, activePath }: SecondaryNavListProps) {
 	const Link = useLinkComponent();
 	return (
-		<Flex as="ul" flexDirection={['column', 'row']}>
+		<Flex as="ul" flexWrap="wrap" flexDirection={['column', 'row']}>
 			{links.map(({ href, label, ...props }, index) => {
 				const active = href === activePath;
 				return (

@@ -1,8 +1,5 @@
 import { PropsWithChildren } from 'react';
-import {
-	SecondaryNavContainer,
-	SecondaryNavContainerVariant,
-} from './SecondaryNavContainer';
+import { SecondaryNavContainer } from './SecondaryNavContainer';
 import { SecondaryNavList, SecondaryNavListLink } from './SecondaryNavList';
 
 export type SecondaryNavProps = PropsWithChildren<{
@@ -10,18 +7,16 @@ export type SecondaryNavProps = PropsWithChildren<{
 	'aria-label'?: string;
 	id?: string;
 	links: SecondaryNavListLink[];
-	variant: SecondaryNavContainerVariant;
 }>;
 
 export function SecondaryNav({
-	variant = 'darkAlt',
 	links,
 	activePath,
 	id,
-	'aria-label': ariaLabel = 'main',
+	'aria-label': ariaLabel = 'secondary',
 }: SecondaryNavProps) {
 	return (
-		<SecondaryNavContainer variant={variant} id={id} aria-label={ariaLabel}>
+		<SecondaryNavContainer id={id} aria-label={ariaLabel}>
 			<SecondaryNavList links={links} activePath={activePath} />
 		</SecondaryNavContainer>
 	);
