@@ -13,6 +13,7 @@ import { PageAlertTitle } from './PageAlertTitle';
 export type PageAlertTone = 'success' | 'error' | 'warning' | 'info';
 
 export type PageAlertProps = PropsWithChildren<{
+	id?: string;
 	role?: string;
 	tabIndex?: number;
 	title?: string;
@@ -20,14 +21,15 @@ export type PageAlertProps = PropsWithChildren<{
 }>;
 
 export const PageAlert = forwardRef<HTMLDivElement, PageAlertProps>(
-	function PageAlert({ role, children, title, tone, tabIndex }, ref) {
+	function PageAlert({ id, role, children, title, tone, tabIndex }, ref) {
 		const { fg, bg, Icon } = pageAlertToneMap[tone];
 		return (
 			<Flex
 				ref={ref}
-				rounded
 				role={role}
+				id={id}
 				tabIndex={tabIndex}
+				rounded
 				css={{ backgroundColor: bg }}
 			>
 				<Flex
