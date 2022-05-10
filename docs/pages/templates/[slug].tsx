@@ -1,10 +1,11 @@
 import { GetStaticProps, InferGetStaticPropsType } from 'next';
 import { MDXRemote } from 'next-mdx-remote';
 import { H1 } from '@ag.ds-next/heading';
-import { Flex } from '@ag.ds-next/box';
+import { Flex, Stack } from '@ag.ds-next/box';
 import { ExternalLinkIcon } from '@ag.ds-next/icon';
 import { Body } from '@ag.ds-next/body';
 import { ButtonLink } from '@ag.ds-next/button';
+import { Text } from '@ag.ds-next/text';
 
 import {
 	getTemplate,
@@ -22,8 +23,7 @@ import { PageLayout } from '../../components/PageLayout';
 export default function Templates({
 	template,
 	templateLinks,
-}: // breadcrumbs,
-InferGetStaticPropsType<typeof getStaticProps>) {
+}: InferGetStaticPropsType<typeof getStaticProps>) {
 	return (
 		<>
 			<DocumentTitle title={`${template.data.title} | Templates | AgDS`} />
@@ -35,15 +35,16 @@ InferGetStaticPropsType<typeof getStaticProps>) {
 						items: templateLinks,
 					}}
 					editPath={`/templates/${template.slug}.mdx`}
-					// breadcrumbs={breadcrumbs}
+					breadcrumbs={[
+						{ href: '/templates', label: 'Templates' },
+						{ label: template.data.title },
+					]}
 				>
-					<Flex
-						as="main"
-						flexDirection="column"
-						gap={1}
-						alignItems="flex-start"
-					>
-						<H1>{template.data.title}</H1>
+					<Stack as="main" gap={1}>
+						<Flex flexDirection="column" gap={0.25}>
+							<H1>{template.data.title}</H1>
+							<Text fontSize="lg">{template.data.description}</Text>
+						</Flex>
 
 						<Flex gap={1}>
 							<ButtonLink
@@ -66,7 +67,7 @@ InferGetStaticPropsType<typeof getStaticProps>) {
 						<Body>
 							<MDXRemote {...template.source} components={mdxComponents} />
 						</Body>
-					</Flex>
+					</Stack>
 				</PageLayout>
 			</AppLayout>
 		</>
