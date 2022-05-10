@@ -12,7 +12,10 @@ const FormSinglePage: NextPage = () => {
 	return (
 		<>
 			<DocumentTitle title="Single page form example" />
-			<AppLayout>
+			<AppLayout
+				templateName="Single-page form"
+				templateSlug="single-page-form"
+			>
 				<Content>
 					<Columns>
 						<Column columnSpan={{ xs: 12, md: 7 }}>
