@@ -8,6 +8,7 @@ import {
 } from '@ag.ds-next/core';
 import { Box } from '@ag.ds-next/box';
 import type { PropsWithChildren } from 'react';
+import { localPalette } from './utils';
 
 export type SecondaryNavListItemProps = PropsWithChildren<{
 	active?: boolean;
@@ -30,10 +31,6 @@ export function SecondaryNavListItem({
 					tokens.borderWidth.sm,
 					mapSpacing(0.5),
 				]),
-
-				'&:last-of-type': {
-					flex: 1,
-				},
 
 				' a': {
 					display: mapResponsiveProp(['block', 'inline-block']),
@@ -79,9 +76,11 @@ export function SecondaryNavListItem({
 					'&:hover': {
 						...packs.underline,
 						color: boxPalette.foregroundText,
-						backgroundColor: boxPalette.backgroundShade,
+						backgroundColor: localPalette.linkHoverBg,
 					},
 				},
+
+				'&:last-of-type': { flex: 1 },
 			})}
 		>
 			{children}

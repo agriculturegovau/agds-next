@@ -1,4 +1,3 @@
-import { Box } from '@ag.ds-next/box';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { SecondaryNav } from './SecondaryNav';
 
@@ -18,24 +17,36 @@ const Template: ComponentStory<typeof SecondaryNav> = (args) => (
 	<SecondaryNav {...args} />
 );
 
-export const OnLight = Template.bind({});
-OnLight.args = {
+export const LightVariant = Template.bind({});
+LightVariant.args = {
+	variant: 'light',
 	activePath: '#code',
 	links: exampleLinks,
 };
 
-export const OnDark: ComponentStory<typeof SecondaryNav> = (args) => (
-	<Box palette="dark" background="body" padding={1.5}>
-		<Template {...args} />
-	</Box>
-);
-OnDark.args = {
+export const LightAltVariant = Template.bind({});
+LightAltVariant.args = {
+	variant: 'lightAlt',
 	activePath: '#code',
 	links: exampleLinks,
 };
 
-export const Wrapping = Template.bind({});
-Wrapping.args = {
+export const DarkVariant = Template.bind({});
+DarkVariant.args = {
+	variant: 'dark',
+	activePath: '#code',
+	links: exampleLinks,
+};
+
+export const DarkAltVariant = Template.bind({});
+DarkAltVariant.args = {
+	variant: 'darkAlt',
+	activePath: '#code',
+	links: exampleLinks,
+};
+
+export const Overflow = Template.bind({});
+Overflow.args = {
 	activePath: '#accessibility',
 	links: [
 		{ href: '#', label: 'Usage' },

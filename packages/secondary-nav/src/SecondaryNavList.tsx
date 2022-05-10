@@ -16,7 +16,7 @@ export type SecondaryNavListProps = {
 export function SecondaryNavList({ links, activePath }: SecondaryNavListProps) {
 	const Link = useLinkComponent();
 	return (
-		<Flex as="ul" flexWrap="wrap" flexDirection={['column', 'row']}>
+		<Flex as="ul" flexDirection={['column', 'row']} css={{ overflowX: 'auto' }}>
 			{links.map(({ href, label, ...props }, index) => {
 				const active = href === activePath;
 				return (
