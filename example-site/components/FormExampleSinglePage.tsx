@@ -1,4 +1,5 @@
-import { useForm, SubmitHandler } from 'react-hook-form';
+import { useEffect, useRef, useState } from 'react';
+import { useForm, SubmitHandler, SubmitErrorHandler } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { Button } from '@ag.ds-next/button';
@@ -12,8 +13,8 @@ import { Textarea } from '@ag.ds-next/textarea';
 import { TextInput } from '@ag.ds-next/text-input';
 import { TextLink } from '@ag.ds-next/text';
 import { PageAlert } from '@ag.ds-next/page-alert';
-import { Divider } from './Divider';
 import { useScrollToField } from '@ag.ds-next/field';
+import { Divider } from './Divider';
 
 const formSchema = yup
 	.object({
@@ -40,6 +41,9 @@ const formSchema = yup
 type FormSchema = yup.InferType<typeof formSchema>;
 
 export const FormExampleSinglePage = () => {
+	const errorPageAlertRef = useRef<HTMLDivElement>(null);
+	const [hasFocusedErrorRef, setHasFocusedErrorRef] = useState(false);
+
 	const scrollToField = useScrollToField();
 
 	const {
@@ -54,13 +58,29 @@ export const FormExampleSinglePage = () => {
 		console.log(data);
 	};
 
+	const onError: SubmitErrorHandler<FormSchema> = (errors, event) => {
+		console.log(errors, event);
+		setHasFocusedErrorRef(false);
+	};
+
 	const hasErrors = Boolean(Object.keys(errors).length);
 
+	useEffect(() => {
+		if (!(hasErrors || hasFocusedErrorRef)) return;
+		errorPageAlertRef.current?.focus();
+		setHasFocusedErrorRef(true);
+	}, [hasFocusedErrorRef, hasErrors]);
+
 	return (
-		<form onSubmit={handleSubmit(onSubmit)}>
+		<form onSubmit={handleSubmit(onSubmit, onError)}>
 			<Stack gap={3}>
 				{hasErrors && (
-					<PageAlert tone="error" title="There is a problem">
+					<PageAlert
+						ref={errorPageAlertRef}
+						tabIndex={-1}
+						tone="error"
+						title="There is a problem"
+					>
 						<Body>
 							<p>Please correct the following fields and try again</p>
 							<ul>
