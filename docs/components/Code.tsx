@@ -103,7 +103,7 @@ const LiveCode = withLive((props: unknown) => {
 					onClick={() => setCodeVisible(!isCodeVisible)}
 					iconAfter={isCodeVisible ? ChevronUpIcon : ChevronDownIcon}
 				>
-					Show code
+					{isCodeVisible ? 'Hide code' : 'Show code'}
 				</Button>
 
 				<Button size="sm" variant="tertiary" onClick={copyLiveCode}>
