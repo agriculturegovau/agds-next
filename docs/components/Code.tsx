@@ -15,7 +15,11 @@ import { globalPalette, mapSpacing, tokens } from '@ag.ds-next/core';
 import { Box, Flex } from '@ag.ds-next/box';
 import { unsetBodyStylesClassname } from '@ag.ds-next/body';
 import { Button, ButtonLink } from '@ag.ds-next/button';
-import { ExternalLinkIcon } from '@ag.ds-next/icon';
+import {
+	ChevronDownIcon,
+	ChevronUpIcon,
+	ExternalLinkIcon,
+} from '@ag.ds-next/icon';
 
 import { designSystemComponents } from './design-system-components';
 import { prismTheme } from './prism-theme';
@@ -50,6 +54,7 @@ const LiveCode = withLive((props: unknown) => {
 
 	const liveOnChange = live.onChange;
 	const [localCopy, setLocalCopy] = useState<string>(live.code);
+	const [isCodeVisible, setCodeVisible] = useState(false);
 
 	const copyLiveCode = useCallback(() => {
 		copy(localCopy);
@@ -70,12 +75,14 @@ const LiveCode = withLive((props: unknown) => {
 
 	return (
 		<Box
+			border
+			rounded
+			borderColor="muted"
 			css={{
-				boxShadow: `0 0 1px ${globalPalette.lightBorder}`,
 				marginTop: mapSpacing(1.5),
 			}}
 		>
-			<Box padding={1}>
+			<Box padding={2}>
 				<LivePreview
 					// Prevents body styles from being inherited in live code examples (except for the body example)
 					className={
@@ -89,37 +96,18 @@ const LiveCode = withLive((props: unknown) => {
 					}}
 				/>
 			</Box>
-			<LiveEditor
-				theme={prismTheme}
-				code={live.code}
-				language={live.language}
-				disabled={live.disabled}
-				onChange={handleChange}
-				css={{
-					'textarea, pre': {
-						padding: `${mapSpacing(1)} !important`,
-					},
-					'& ::selection': {
-						color: globalPalette.darkBackgroundBody,
-						backgroundColor: globalPalette.darkForegroundAction,
-					},
-					boxShadow: `0 1px 3px -2px ${globalPalette.lightBorder}`,
-				}}
-			/>
-			{live.error ? (
-				<Box
-					fontFamily="monospace"
-					fontSize="xs"
-					padding={1}
-					color="error"
-					background="shade"
+			<Flex palette="light" padding={1} gap={0.5} borderTop borderColor="muted">
+				<Button
+					size="sm"
+					variant="tertiary"
+					onClick={() => setCodeVisible(!isCodeVisible)}
+					iconAfter={isCodeVisible ? ChevronUpIcon : ChevronDownIcon}
 				>
-					{live.error}
-				</Box>
-			) : null}
-			<Flex palette="light" padding={1} gap={0.5}>
-				<Button size="sm" variant="secondary" onClick={copyLiveCode}>
-					Copy
+					Show code
+				</Button>
+
+				<Button size="sm" variant="tertiary" onClick={copyLiveCode}>
+					Copy code
 				</Button>
 				<ButtonLink
 					href={playroomUrl}
@@ -132,6 +120,37 @@ const LiveCode = withLive((props: unknown) => {
 					Open in Playroom
 				</ButtonLink>
 			</Flex>
+			{isCodeVisible && (
+				<Box borderTop borderColor="muted">
+					<LiveEditor
+						theme={prismTheme}
+						code={live.code}
+						language={live.language}
+						disabled={live.disabled}
+						onChange={handleChange}
+						css={{
+							'textarea, pre': {
+								padding: `${mapSpacing(1)} !important`,
+							},
+							'& ::selection': {
+								color: globalPalette.darkBackgroundBody,
+								backgroundColor: globalPalette.darkForegroundAction,
+							},
+						}}
+					/>
+				</Box>
+			)}
+			{live.error ? (
+				<Box
+					fontFamily="monospace"
+					fontSize="xs"
+					padding={1}
+					color="error"
+					background="shade"
+				>
+					{live.error}
+				</Box>
+			) : null}
 		</Box>
 	);
 });
