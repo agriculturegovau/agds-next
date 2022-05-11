@@ -10,6 +10,7 @@ import { ChevronLeftIcon } from './icons/ChevronLeftIcon';
 import { ChevronRightIcon } from './icons/ChevronRightIcon';
 import { ChevronUpIcon } from './icons/ChevronUpIcon';
 import { CloseIcon } from './icons/CloseIcon';
+import { CopyIcon } from './icons/CopyIcon';
 import { ExternalLinkIcon } from './icons/ExternalLinkIcon';
 import { InfoFilledIcon } from './icons/InfoFilledIcon';
 import { MenuIcon } from './icons/MenuIcon';
@@ -35,6 +36,7 @@ export const allIcons = {
 	ChevronRightIcon,
 	ChevronUpIcon,
 	CloseIcon,
+	CopyIcon,
 	ExternalLinkIcon,
 	InfoFilledIcon,
 	MenuIcon,
