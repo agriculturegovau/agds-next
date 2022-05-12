@@ -313,6 +313,10 @@ export async function getTemplate(slug: string) {
 	};
 }
 
+export const getTemplateBreadcrumbs = (templateTitle: string) => {
+	return [{ href: '/templates', label: 'Templates' }, { label: templateTitle }];
+};
+
 export async function getTemplateSlugs() {
 	const entries = await readdir(TEMPLATES_PATH, { withFileTypes: true });
 	return entries

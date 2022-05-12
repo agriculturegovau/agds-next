@@ -9,7 +9,7 @@ import { Text } from '@ag.ds-next/text';
 
 import {
 	getTemplate,
-	// getTemplateBreadcrumbs,
+	getTemplateBreadcrumbs,
 	getTemplateList,
 	getTemplateSlugs,
 	Template,
@@ -21,6 +21,7 @@ import { DocumentTitle } from '../../components/DocumentTitle';
 import { PageLayout } from '../../components/PageLayout';
 
 export default function Templates({
+	breadcrumbs,
 	template,
 	templateLinks,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
@@ -35,10 +36,7 @@ export default function Templates({
 						items: templateLinks,
 					}}
 					editPath={`/templates/${template.slug}.mdx`}
-					breadcrumbs={[
-						{ href: '/templates', label: 'Templates' },
-						{ label: template.data.title },
-					]}
+					breadcrumbs={breadcrumbs}
 				>
 					<Stack as="main" gap={1}>
 						<Flex flexDirection="column" gap={0.25}>
@@ -81,7 +79,7 @@ export const getStaticProps: GetStaticProps<
 	{
 		template: Template;
 		templateLinks: { href: string; label: string }[];
-		// breadcrumbs: Awaited<ReturnType<typeof getTemplateBreadcrumbs>>;
+		breadcrumbs: ReturnType<typeof getTemplateBreadcrumbs>;
 	},
 	{ slug: string }
 > = async ({ params }) => {
@@ -97,13 +95,13 @@ export const getStaticProps: GetStaticProps<
 		return { notFound: true };
 	}
 
-	// const breadcrumbs = await getTemplateBreadcrumbs(slug);
+	const breadcrumbs = getTemplateBreadcrumbs(template.data.title);
 
 	return {
 		props: {
 			template,
 			templateLinks,
-			// breadcrumbs,
+			breadcrumbs,
 			slug,
 		},
 	};
