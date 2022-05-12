@@ -17,6 +17,7 @@ import { Box, Flex } from '@ag.ds-next/box';
 import { unsetBodyStylesClassname } from '@ag.ds-next/body';
 import { Button, ButtonLink } from '@ag.ds-next/button';
 import {
+	CopyIcon,
 	ChevronDownIcon,
 	ChevronUpIcon,
 	ExternalLinkIcon,
@@ -117,6 +118,7 @@ const LiveCode = withLive((props: unknown) => {
 					size="sm"
 					variant="tertiary"
 					onClick={copyLiveCode}
+					iconAfter={CopyIcon}
 					aria-label="Copy code snippet to clipboard"
 				>
 					Copy code
