@@ -108,7 +108,7 @@ const LiveCode = withLive((props: unknown) => {
 					onClick={() => setCodeVisible(!isCodeVisible)}
 					iconAfter={isCodeVisible ? ChevronUpIcon : ChevronDownIcon}
 					aria-expanded={isCodeVisible}
-					aria-label="Show code snippit"
+					aria-label="Show code snippet"
 				>
 					{isCodeVisible ? 'Hide code' : 'Show code'}
 				</Button>
@@ -117,7 +117,7 @@ const LiveCode = withLive((props: unknown) => {
 					size="sm"
 					variant="tertiary"
 					onClick={copyLiveCode}
-					aria-label="Copy code snippit to clipboard"
+					aria-label="Copy code snippet to clipboard"
 				>
 					Copy code
 				</Button>
@@ -135,7 +135,7 @@ const LiveCode = withLive((props: unknown) => {
 			</Flex>
 			{isCodeVisible && (
 				<Box as="figure" borderTop borderColor="muted" id="code-example">
-					<figcaption css={visuallyHiddenStyles}>Code snippit</figcaption>
+					<figcaption css={visuallyHiddenStyles}>Code snippet</figcaption>
 					<LiveEditor
 						theme={prismTheme}
 						code={live.code}
