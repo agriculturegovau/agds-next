@@ -11,6 +11,7 @@ import { createUrl } from 'playroom/utils';
 import { Language } from 'prism-react-renderer';
 import copy from 'clipboard-copy';
 
+import { visuallyHiddenStyles } from '@ag.ds-next/a11y';
 import { globalPalette, mapSpacing, tokens } from '@ag.ds-next/core';
 import { Box, Flex } from '@ag.ds-next/box';
 import { unsetBodyStylesClassname } from '@ag.ds-next/body';
@@ -75,6 +76,8 @@ const LiveCode = withLive((props: unknown) => {
 
 	return (
 		<Box
+			as="aside"
+			aria-label="Code example"
 			border
 			rounded
 			borderColor="muted"
@@ -82,7 +85,8 @@ const LiveCode = withLive((props: unknown) => {
 				marginTop: mapSpacing(1.5),
 			}}
 		>
-			<Box padding={2}>
+			<Box as="figure">
+				<figcaption css={visuallyHiddenStyles}>Rendered example</figcaption>
 				<LivePreview
 					// Prevents body styles from being inherited in live code examples (except for the body example)
 					className={
@@ -93,6 +97,7 @@ const LiveCode = withLive((props: unknown) => {
 						// applies some weirdness here. This resets back to normal things
 						whiteSpace: 'normal', // other wise text content will not wrap and long lines can break the layout
 						fontFamily: tokens.font.body, // because pre applies gets monospace font.
+						padding: mapSpacing(2),
 					}}
 				/>
 			</Box>
@@ -102,11 +107,18 @@ const LiveCode = withLive((props: unknown) => {
 					variant="tertiary"
 					onClick={() => setCodeVisible(!isCodeVisible)}
 					iconAfter={isCodeVisible ? ChevronUpIcon : ChevronDownIcon}
+					aria-expanded={isCodeVisible}
+					aria-label="Show code snippit"
 				>
 					{isCodeVisible ? 'Hide code' : 'Show code'}
 				</Button>
 
-				<Button size="sm" variant="tertiary" onClick={copyLiveCode}>
+				<Button
+					size="sm"
+					variant="tertiary"
+					onClick={copyLiveCode}
+					aria-label="Copy code snippit to clipboard"
+				>
 					Copy code
 				</Button>
 				<ButtonLink
@@ -116,12 +128,14 @@ const LiveCode = withLive((props: unknown) => {
 					size="sm"
 					variant="tertiary"
 					iconAfter={ExternalLinkIcon}
+					aria-label="Open example in Playroom"
 				>
 					Open in Playroom
 				</ButtonLink>
 			</Flex>
 			{isCodeVisible && (
-				<Box borderTop borderColor="muted">
+				<Box as="figure" borderTop borderColor="muted" id="code-example">
+					<figcaption css={visuallyHiddenStyles}>Code snippit</figcaption>
 					<LiveEditor
 						theme={prismTheme}
 						code={live.code}
