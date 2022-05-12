@@ -26,7 +26,7 @@ export default function Templates({
 }: InferGetStaticPropsType<typeof getStaticProps>) {
 	return (
 		<>
-			<DocumentTitle title={`${template.data.title} | Templates | AgDS`} />
+			<DocumentTitle title={`${template.data.title} | Templates`} />
 			<AppLayout>
 				<PageLayout
 					sideNav={{
@@ -50,6 +50,7 @@ export default function Templates({
 							<ButtonLink
 								href={template.data.previewURL}
 								target="_blank"
+								rel="noopener noreferrer"
 								iconAfter={ExternalLinkIcon}
 								variant="tertiary"
 							>
@@ -59,6 +60,7 @@ export default function Templates({
 							<ButtonLink
 								href={template.data.codeURL}
 								target="_blank"
+								rel="noopener noreferrer"
 								iconAfter={ExternalLinkIcon}
 								variant="tertiary"
 							>

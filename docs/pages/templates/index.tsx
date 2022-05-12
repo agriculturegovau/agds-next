@@ -23,7 +23,7 @@ type StaticProps = Awaited<ReturnType<typeof getStaticProps>>['props'];
 export default function TemplatesPage({ source, templateLinks }: StaticProps) {
 	return (
 		<>
-			<DocumentTitle title="Templates | AgDS" />
+			<DocumentTitle title="Templates" />
 			<AppLayout>
 				<PageLayout
 					sideNav={{
@@ -77,7 +77,7 @@ const TemplateCard = ({
 			<CardInner>
 				<Stack gap={1} flexGrow={1}>
 					<H3>
-						<CardLink href={`./templates/${slug}`}>{label}</CardLink>
+						<CardLink href={`/templates/${slug}`}>{label}</CardLink>
 					</H3>
 					<Text>{description}</Text>
 				</Stack>
