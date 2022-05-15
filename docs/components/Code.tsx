@@ -113,7 +113,6 @@ const LiveCode = withLive((props: unknown) => {
 				>
 					{isCodeVisible ? 'Hide code' : 'Show code'}
 				</Button>
-
 				<Button
 					size="sm"
 					variant="tertiary"
@@ -201,8 +200,14 @@ const StaticCode = ({
 				disabled
 			/>
 			<Flex palette="light" padding={1}>
-				<Button size="sm" variant="secondary" onClick={() => copy(code)}>
-					Copy
+				<Button
+					size="sm"
+					variant="tertiary"
+					onClick={() => copy(code)}
+					iconAfter={CopyIcon}
+					aria-label="Copy code snippet to clipboard"
+				>
+					Copy code
 				</Button>
 			</Flex>
 		</Box>
