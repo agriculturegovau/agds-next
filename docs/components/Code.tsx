@@ -98,7 +98,7 @@ const LiveCode = withLive((props: unknown) => {
 						// applies some weirdness here. This resets back to normal things
 						whiteSpace: 'normal', // other wise text content will not wrap and long lines can break the layout
 						fontFamily: tokens.font.body, // because pre applies gets monospace font.
-						padding: mapSpacing(2),
+						padding: mapSpacing(1),
 					}}
 				/>
 			</Box>
@@ -179,8 +179,13 @@ const StaticCode = ({
 }) => {
 	return (
 		<Box
+			as="aside"
+			aria-label="Code example"
+			border
+			rounded
+			borderColor="muted"
 			css={{
-				boxShadow: `0 0 1px ${globalPalette.lightBorder}`,
+				overflow: 'hidden',
 				marginTop: mapSpacing(1.5),
 
 				'textarea, pre': {
