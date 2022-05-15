@@ -98,7 +98,7 @@ const LiveCode = withLive((props: unknown) => {
 						// applies some weirdness here. This resets back to normal things
 						whiteSpace: 'normal', // other wise text content will not wrap and long lines can break the layout
 						fontFamily: tokens.font.body, // because pre applies gets monospace font.
-						padding: mapSpacing(1),
+						padding: mapSpacing(2),
 					}}
 				/>
 			</Box>
@@ -145,7 +145,7 @@ const LiveCode = withLive((props: unknown) => {
 						onChange={handleChange}
 						css={{
 							'textarea, pre': {
-								padding: `${mapSpacing(1)} !important`,
+								padding: `${mapSpacing(2)} !important`,
 							},
 							'& ::selection': {
 								color: globalPalette.darkBackgroundBody,
@@ -189,7 +189,7 @@ const StaticCode = ({
 				marginTop: mapSpacing(1.5),
 
 				'textarea, pre': {
-					padding: `${mapSpacing(1)} !important`,
+					padding: `${mapSpacing(2)} !important`,
 				},
 
 				'& ::selection': {
