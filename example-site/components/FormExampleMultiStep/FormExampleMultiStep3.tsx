@@ -1,4 +1,4 @@
-import { useForm, SubmitHandler, Controller } from 'react-hook-form';
+import { useForm, SubmitHandler } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { FormStack } from '@ag.ds-next/form-stack';
@@ -7,13 +7,18 @@ import { Body } from '@ag.ds-next/body';
 import { PageAlert } from '@ag.ds-next/page-alert';
 import { useScrollToField } from '@ag.ds-next/field';
 import { useEffect, useRef, useState } from 'react';
+import { Checkbox, ControlGroup } from '@ag.ds-next/control-input';
 import { FormExampleMultiStepContainer } from './FormExampleMultiStepContainer';
 import { FormExampleMultiStepActions } from './FormExampleMultiStepActions';
-import { DatePicker } from '@ag.ds-next/date-picker';
+import { TextInput } from '@ag.ds-next/text-input';
 
 const formSchema = yup
 	.object({
-		date: yup.date().required('Select a date'),
+		checkboxA: yup.boolean(),
+		checkboxB: yup.boolean(),
+		checkboxC: yup.boolean(),
+		checkboxD: yup.boolean(),
+		nestedField: yup.string(),
 	})
 	.required();
 
@@ -27,7 +32,8 @@ export const FormExampleMultiStep3 = () => {
 	const scrollToField = useScrollToField();
 
 	const {
-		control,
+		watch,
+		register,
 		handleSubmit,
 		formState: { errors },
 	} = useForm<FormSchema>({
@@ -36,7 +42,8 @@ export const FormExampleMultiStep3 = () => {
 	});
 
 	const onSubmit: SubmitHandler<FormSchema> = (data) => {
-		setFocusedError(false);
+		// setFocusedError(false);
+		console.log({ data });
 		next(data);
 	};
 
@@ -53,9 +60,11 @@ export const FormExampleMultiStep3 = () => {
 		}
 	}, [hasErrors, focusedError, errors]);
 
+	const watchShowAge = watch('checkboxB');
+
 	return (
 		<FormExampleMultiStepContainer
-			title="Select date (H1)"
+			title="Conditional reveal title (H1)"
 			subTitle="The introductory paragraph provides context about this page of the form. Use a short paragraph to reduce cognitive load."
 		>
 			<form onSubmit={handleSubmit(onSubmit, onError)}>
@@ -82,26 +91,59 @@ export const FormExampleMultiStep3 = () => {
 							</Body>
 						</PageAlert>
 					)}
-					<Controller
-						control={control}
-						name="date"
-						render={({
-							field: { onChange, onBlur, value, name },
-							fieldState: { invalid, error },
-						}) => (
-							<DatePicker
-								label="Select a date"
-								value={value}
-								onChange={onChange}
-								onBlur={onBlur}
-								name={name}
-								invalid={invalid}
-								message={error?.message}
-								maxWidth="xl"
-								required
+					<ControlGroup
+						label="Checkbox fieldset question?"
+						hint="Provide a hint here"
+						// invalid={Boolean(errors.example?.message)}
+						// message={errors.example?.message}
+						id="example"
+						block
+					>
+						<Checkbox
+							{...register('checkboxA')}
+							invalid={Boolean(errors.checkboxA?.message)}
+						>
+							Checkbox label
+						</Checkbox>
+						<Checkbox
+							{...register('checkboxB')}
+							invalid={Boolean(errors.checkboxB?.message)}
+						>
+							Checkbox label
+						</Checkbox>
+						{watchShowAge ? (
+							<TextInput
+								label="Nested field"
+								invalid={Boolean(errors.nestedField?.message)}
 							/>
-						)}
-					/>
+						) : null}
+						<Checkbox
+							{...register('checkboxC')}
+							invalid={Boolean(errors.checkboxC?.message)}
+						>
+							Checkbox label
+						</Checkbox>
+						<Checkbox
+							{...register('checkboxD')}
+							invalid={Boolean(errors.checkboxD?.message)}
+						>
+							Checkbox label
+						</Checkbox>
+						{/* <Radio
+							{...register('example')}
+							value="B"
+							invalid={Boolean(errors.example?.message)}
+						>
+							Radio label
+						</Radio>
+						<Radio
+							{...register('example')}
+							value="C"
+							invalid={Boolean(errors.example?.message)}
+						>
+							Radio label
+						</Radio> */}
+					</ControlGroup>
 					<FormExampleMultiStepActions />
 				</FormStack>
 			</form>

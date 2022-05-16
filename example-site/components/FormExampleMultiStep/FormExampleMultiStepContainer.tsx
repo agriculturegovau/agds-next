@@ -6,7 +6,7 @@ import { useFormExampleMultiStepProdiver } from './FormExampleMultiStep';
 import { Body } from '@ag.ds-next/body';
 import { PageAlert } from '@ag.ds-next/page-alert';
 import { Text } from '@ag.ds-next/text';
-import { DirectionLink } from '@ag.ds-next/direction-link';
+import { DirectionButton } from '@ag.ds-next/direction-link';
 
 export const FormExampleMultiStepContainer = ({
 	children,
@@ -17,19 +17,27 @@ export const FormExampleMultiStepContainer = ({
 	title: string;
 	subTitle: string;
 }) => {
-	const { hasCompletedPreviousSteps } = useFormExampleMultiStepProdiver();
+	const { back } = useFormExampleMultiStepProdiver();
 	return (
 		<Stack gap={2}>
-			<Stack gap={0.5} alignItems="flex-start">
-				<DirectionLink direction="left" href="/form-multi-step">
+			<Stack gap={1} alignItems="flex-start">
+				<DirectionButton direction="left" onClick={back}>
 					Back
-				</DirectionLink>
-				<H1>{title}</H1>
-				<Text as="p" fontSize="lg">
-					{subTitle}
-				</Text>
+				</DirectionButton>
+				<Stack gap={0.25}>
+					<Stack>
+						<Text as="span" fontWeight="bold" fontSize="sm" color="muted">
+							Title of the form
+						</Text>
+						<H1>{title}</H1>
+					</Stack>
+					<Text as="p" fontSize="lg">
+						{subTitle}
+					</Text>
+				</Stack>
 			</Stack>
-			{hasCompletedPreviousSteps ? (
+			{children}
+			{/* {hasCompletedPreviousSteps ? (
 				children
 			) : (
 				<PageAlert
@@ -43,7 +51,7 @@ export const FormExampleMultiStepContainer = ({
 						</p>
 					</Body>
 				</PageAlert>
-			)}
+			)} */}
 		</Stack>
 	);
 };
