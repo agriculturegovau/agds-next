@@ -31,6 +31,7 @@ import { FileUpload } from '@ag.ds-next/file-upload';
 import { Footer, FooterDivider } from '@ag.ds-next/footer';
 import { FormStack } from '@ag.ds-next/form-stack';
 import { MainNav } from '@ag.ds-next/main-nav';
+import { SecondaryNav } from '@ag.ds-next/secondary-nav';
 import {
 	SideNav,
 	SideNavContainer,
@@ -149,6 +150,7 @@ export const designSystemComponents = {
 	HeaderBrand,
 	HeaderContainer,
 	MainNav,
+	SecondaryNav,
 	Modal,
 	ModalButtonGroup,
 	PageAlert,
