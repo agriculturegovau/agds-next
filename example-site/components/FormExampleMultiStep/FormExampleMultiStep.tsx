@@ -101,6 +101,8 @@ export const FormExampleMultiStep = () => {
 		return Boolean(formState[previousStep]);
 	}, [formState, currentStep]);
 
+	console.log({ formState });
+
 	return (
 		<context.Provider
 			value={{

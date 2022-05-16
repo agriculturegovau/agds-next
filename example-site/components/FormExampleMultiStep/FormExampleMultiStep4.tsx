@@ -23,6 +23,18 @@ import {
 import { FormExampleMultiStepContainer } from './FormExampleMultiStepContainer';
 import { FormExampleMultiStepActions } from './FormExampleMultiStepActions';
 
+import { formExampleMultiStep0ValuesMap } from './FormExampleMultiStep0';
+import { formExampleMultiStep1ValuesMap } from './FormExampleMultiStep1';
+import { formExampleMultiStep2ValuesMap } from './FormExampleMultiStep2';
+import { formExampleMultiStep3ValuesMap } from './FormExampleMultiStep3';
+
+const MAPPERS = [
+	formExampleMultiStep0ValuesMap,
+	formExampleMultiStep1ValuesMap,
+	formExampleMultiStep2ValuesMap,
+	formExampleMultiStep3ValuesMap,
+];
+
 const formSchema = yup
 	.object({
 		declaration: yup
@@ -38,7 +50,7 @@ export const FormExampleMultiStep4 = () => {
 	const [focusedError, setFocusedError] = useState(false);
 
 	const scrollToField = useScrollToField();
-	const { next } = useFormExampleMultiStepProdiver();
+	const { next, formState } = useFormExampleMultiStepProdiver();
 
 	const {
 		control,
@@ -82,12 +94,15 @@ export const FormExampleMultiStep4 = () => {
 								<TableHeader scope="col">Answer</TableHeader>
 							</tr>
 						</TableHead>
-						<TableBody>
-							<tr>
-								<TableCell>TODO</TableCell>
-								<TableCell>TODO</TableCell>
-							</tr>
-						</TableBody>
+						{Object.keys(MAPPERS[idx] || {}).map((key, i) => (
+							<TableBody key={i}>
+								<tr>
+									<TableCell>{MAPPERS[idx][key]}</TableCell>
+									{console.log(formState)}
+									<TableCell>{formState?.[idx]?.[key] || 'N/A'}</TableCell>
+								</tr>
+							</TableBody>
+						))}
 					</Table>
 				</Stack>
 			))}

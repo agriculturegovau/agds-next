@@ -24,6 +24,15 @@ const formSchema = yup
 
 type FormSchema = yup.InferType<typeof formSchema>;
 
+export const formExampleMultiStep3ValuesMap: Record<keyof FormSchema, string> =
+	{
+		checkboxA: 'Fieldset question?',
+		checkboxB: 'Fieldset question?',
+		checkboxC: 'Fieldset question?',
+		checkboxD: 'Fieldset question?',
+		nestedField: 'Fieldset qeuestion',
+	};
+
 export const FormExampleMultiStep3 = () => {
 	const { next, formState } = useFormExampleMultiStepProdiver();
 	const errorRef = useRef<HTMLDivElement>(null);

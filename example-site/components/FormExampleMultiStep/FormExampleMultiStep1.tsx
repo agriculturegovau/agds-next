@@ -30,6 +30,11 @@ const formSchema = yup
 
 type FormSchema = yup.InferType<typeof formSchema>;
 
+export const formExampleMultiStep1ValuesMap: Record<keyof FormSchema, string> =
+	{
+		photo: 'Fieldset question?',
+	};
+
 export const FormExampleMultiStep1 = () => {
 	const errorRef = useRef<HTMLDivElement>(null);
 	const [focusedError, setFocusedError] = useState(false);
