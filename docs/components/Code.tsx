@@ -10,9 +10,14 @@ import {
 import { createUrl } from 'playroom/utils';
 import { Language } from 'prism-react-renderer';
 import copy from 'clipboard-copy';
+import { useId } from '@reach/auto-id';
 
-import { visuallyHiddenStyles } from '@ag.ds-next/a11y';
-import { globalPalette, mapSpacing, tokens } from '@ag.ds-next/core';
+import {
+	globalPalette,
+	mapSpacing,
+	tokens,
+	useToggleState,
+} from '@ag.ds-next/core';
 import { Box, Flex } from '@ag.ds-next/box';
 import { unsetBodyStylesClassname } from '@ag.ds-next/body';
 import { Button, ButtonLink } from '@ag.ds-next/button';
@@ -56,7 +61,7 @@ const LiveCode = withLive((props: unknown) => {
 
 	const liveOnChange = live.onChange;
 	const [localCopy, setLocalCopy] = useState<string>(live.code);
-	const [isCodeVisible, setCodeVisible] = useState(false);
+	const [isCodeVisible, toggleIsCodeVisible] = useToggleState(false, true);
 
 	const copyLiveCode = useCallback(() => {
 		copy(localCopy);
@@ -75,41 +80,37 @@ const LiveCode = withLive((props: unknown) => {
 		code: live.code,
 	});
 
+	const id = useId();
+	const codeId = `live-code-${id}`;
+
 	return (
 		<Box
-			as="aside"
-			aria-label="Code example"
 			border
 			rounded
 			borderColor="muted"
-			css={{
-				marginTop: mapSpacing(1.5),
-			}}
+			css={{ marginTop: mapSpacing(1.5) }}
 		>
-			<Box as="figure">
-				<figcaption css={visuallyHiddenStyles}>Rendered example</figcaption>
-				<LivePreview
-					// Prevents body styles from being inherited in live code examples (except for the body example)
-					className={
-						query.slug === 'body' ? undefined : unsetBodyStylesClassname
-					}
-					css={{
-						// The mdx codeblock transform wraps the code component in a pre which
-						// applies some weirdness here. This resets back to normal things
-						whiteSpace: 'normal', // other wise text content will not wrap and long lines can break the layout
-						fontFamily: tokens.font.body, // because pre applies gets monospace font.
-						padding: mapSpacing(1.5),
-					}}
-				/>
-			</Box>
+			<LivePreview
+				aria-label="Rendered code snippet example"
+				// Prevents body styles from being inherited in live code examples (except for the body example)
+				className={query.slug === 'body' ? undefined : unsetBodyStylesClassname}
+				css={{
+					// The mdx codeblock transform wraps the code component in a pre which
+					// applies some weirdness here. This resets back to normal things
+					whiteSpace: 'normal', // other wise text content will not wrap and long lines can break the layout
+					fontFamily: tokens.font.body, // because pre applies gets monospace font.
+					padding: mapSpacing(1.5),
+				}}
+			/>
 			<Flex padding={0.5} gap={0.5} borderTop borderColor="muted">
 				<Button
 					size="sm"
 					variant="tertiary"
-					onClick={() => setCodeVisible(!isCodeVisible)}
+					onClick={toggleIsCodeVisible}
 					iconAfter={isCodeVisible ? ChevronUpIcon : ChevronDownIcon}
 					aria-expanded={isCodeVisible}
-					aria-label="Show code snippet"
+					aria-label={isCodeVisible ? 'Hide code snippet' : 'Show code snippet'}
+					aria-controls={codeId}
 				>
 					{isCodeVisible ? 'Hide code' : 'Show code'}
 				</Button>
@@ -129,32 +130,29 @@ const LiveCode = withLive((props: unknown) => {
 					size="sm"
 					variant="tertiary"
 					iconAfter={ExternalLinkIcon}
-					aria-label="Open example in Playroom"
+					aria-label="Open code snippet in Playroom"
 				>
 					Open in Playroom
 				</ButtonLink>
 			</Flex>
-			{isCodeVisible && (
-				<Box as="figure" borderTop borderColor="muted" id="code-example">
-					<figcaption css={visuallyHiddenStyles}>Code snippet</figcaption>
-					<LiveEditor
-						theme={prismTheme}
-						code={live.code}
-						language={live.language}
-						disabled={live.disabled}
-						onChange={handleChange}
-						css={{
-							'textarea, pre': {
-								padding: `${mapSpacing(1.5)} !important`,
-							},
-							'& ::selection': {
-								color: globalPalette.darkBackgroundBody,
-								backgroundColor: globalPalette.darkForegroundAction,
-							},
-						}}
-					/>
-				</Box>
-			)}
+			<Box id={codeId} display={isCodeVisible ? 'block' : 'none'}>
+				<LiveEditor
+					theme={prismTheme}
+					code={live.code}
+					language={live.language}
+					disabled={live.disabled}
+					onChange={handleChange}
+					css={{
+						'textarea, pre': {
+							padding: `${mapSpacing(1.5)} !important`,
+						},
+						'& ::selection': {
+							color: globalPalette.darkBackgroundBody,
+							backgroundColor: globalPalette.darkForegroundAction,
+						},
+					}}
+				/>
+			</Box>
 			{live.error ? (
 				<Box
 					fontFamily="monospace"
@@ -179,8 +177,6 @@ const StaticCode = ({
 }) => {
 	return (
 		<Box
-			as="aside"
-			aria-label="Code example"
 			border
 			rounded
 			borderColor="muted"
