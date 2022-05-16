@@ -3,7 +3,7 @@ import { normalize } from 'path';
 import { Body } from '@ag.ds-next/body';
 import { mapSpacing } from '@ag.ds-next/core';
 import { H2, H3 } from '@ag.ds-next/heading';
-import { Box, Stack } from '@ag.ds-next/box';
+import { Box, Flex, Stack } from '@ag.ds-next/box';
 import { Card, CardLink, CardInner } from '@ag.ds-next/card';
 import { mq } from '@ag.ds-next/core';
 import { Text, TextLink } from '@ag.ds-next/text';
@@ -38,7 +38,6 @@ export default function TemplatesPage({ source, templateLinks }: StaticProps) {
 							<MDXRemote {...source} components={mdxComponents} />
 						</Body>
 
-						<H2>All Templates</H2>
 						<Box
 							as="ul"
 							css={mq({
@@ -65,23 +64,25 @@ const TemplateCard = ({
 }) => {
 	return (
 		<Card as="li" clickable shadow>
-			<img
-				src={`/agds-next/img/templates/${slug}.jpg`}
-				alt={`Screenshot of ${label} example`}
-				height="auto"
-				width="100%"
-				css={mq({
-					objectFit: 'cover',
-				})}
-			/>
-			<CardInner>
-				<Stack gap={1} flexGrow={1}>
-					<H3>
-						<CardLink href={`/templates/${slug}`}>{label}</CardLink>
-					</H3>
-					<Text>{description}</Text>
-				</Stack>
-			</CardInner>
+			<Flex flexDirection="column-reverse">
+				<CardInner>
+					<Stack gap={1} flexGrow={1}>
+						<H3>
+							<CardLink href={`/templates/${slug}`}>{label}</CardLink>
+						</H3>
+						<Text>{description}</Text>
+					</Stack>
+				</CardInner>
+				<img
+					src={`/agds-next/img/templates/${slug}.jpg`}
+					alt={`Screenshot of ${label} example`}
+					height="auto"
+					width="100%"
+					css={mq({
+						objectFit: 'cover',
+					})}
+				/>
+			</Flex>
 		</Card>
 	);
 };
