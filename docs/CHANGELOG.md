@@ -1,5 +1,81 @@
 # @ag.ds-next/docs
 
+## 0.4.0
+
+### Minor Changes
+
+- f596c8b5: Show/hide code example
+- 2349d6c8: Prevent body styles from being inherited in live code examples
+- 94338184: Add mq function to Playroom
+
+### Patch Changes
+
+- 2349d6c8: Updated code theme to match body styles
+- 0e3c9d9e: Add Storybook links to docs site
+- b1a5f7e3: Add `Open in Playroom` link to interactive code examples
+- 99f031dd: Remove `type` from releases
+- Updated dependencies [ce428c01]
+- Updated dependencies [ae1ca403]
+- Updated dependencies [0e3c9d9e]
+- Updated dependencies [00362da6]
+- Updated dependencies [2e52d3d2]
+- Updated dependencies [6483d4b5]
+- Updated dependencies [71bdfef2]
+- Updated dependencies [3062abfa]
+- Updated dependencies [ae1ca403]
+- Updated dependencies [ae1ca403]
+- Updated dependencies [71bdfef2]
+- Updated dependencies [be5e2c2a]
+- Updated dependencies [2e52d3d2]
+- Updated dependencies [71bdfef2]
+- Updated dependencies [f596c8b5]
+- Updated dependencies [5195c600]
+- Updated dependencies [eea76e11]
+- Updated dependencies [2349d6c8]
+- Updated dependencies [edffae08]
+  - @ag.ds-next/hero-banner@2.0.0
+  - @ag.ds-next/file-upload@1.0.0
+  - @ag.ds-next/a11y@1.0.2
+  - @ag.ds-next/accordion@5.0.0
+  - @ag.ds-next/ag-branding@5.0.0
+  - @ag.ds-next/body@6.0.0
+  - @ag.ds-next/box@5.0.0
+  - @ag.ds-next/breadcrumbs@8.0.0
+  - @ag.ds-next/button@7.0.0
+  - @ag.ds-next/call-to-action@4.0.0
+  - @ag.ds-next/callout@3.0.0
+  - @ag.ds-next/card@4.0.0
+  - @ag.ds-next/columns@5.0.0
+  - @ag.ds-next/control-input@7.0.0
+  - @ag.ds-next/core@2.2.0
+  - @ag.ds-next/date-picker@3.0.0
+  - @ag.ds-next/direction-link@4.0.0
+  - @ag.ds-next/field@6.0.0
+  - @ag.ds-next/fieldset@3.0.0
+  - @ag.ds-next/footer@6.0.0
+  - @ag.ds-next/header@7.0.0
+  - @ag.ds-next/heading@6.0.0
+  - @ag.ds-next/icon@7.0.0
+  - @ag.ds-next/inpage-nav@3.0.0
+  - @ag.ds-next/keyword-list@3.0.0
+  - @ag.ds-next/link-list@6.0.0
+  - @ag.ds-next/loading@2.0.0
+  - @ag.ds-next/main-nav@9.0.0
+  - @ag.ds-next/page-alert@3.0.0
+  - @ag.ds-next/progress-indicator@6.0.0
+  - @ag.ds-next/search-box@7.0.0
+  - @ag.ds-next/select@7.0.0
+  - @ag.ds-next/side-nav@8.0.0
+  - @ag.ds-next/skip-link@4.0.0
+  - @ag.ds-next/table@2.0.0
+  - @ag.ds-next/tags@3.0.0
+  - @ag.ds-next/task-list@4.0.0
+  - @ag.ds-next/text@6.0.0
+  - @ag.ds-next/text-input@7.0.0
+  - @ag.ds-next/textarea@7.0.0
+  - @ag.ds-next/content@6.0.0
+  - @ag.ds-next/form-stack@3.0.0
+
 ## 0.3.0
 
 ### Minor Changes

@@ -1,5 +1,25 @@
 # @ag.ds-next/main-nav
 
+## 9.0.0
+
+### Minor Changes
+
+- eea76e11: Add aria labels to MainNav buttons
+
+### Patch Changes
+
+- 0e3c9d9e: Add Storybook links to docs site
+- 2e52d3d2: Added print media styles
+- Updated dependencies [0e3c9d9e]
+- Updated dependencies [ae1ca403]
+- Updated dependencies [ae1ca403]
+- Updated dependencies [2e52d3d2]
+- Updated dependencies [71bdfef2]
+- Updated dependencies [f596c8b5]
+  - @ag.ds-next/box@5.0.0
+  - @ag.ds-next/core@2.2.0
+  - @ag.ds-next/icon@7.0.0
+
 ## 8.1.0
 
 ### Minor Changes
