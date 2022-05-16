@@ -15,6 +15,7 @@ import { useId } from '@reach/auto-id';
 import {
 	globalPalette,
 	mapSpacing,
+	packs,
 	tokens,
 	useToggleState,
 } from '@ag.ds-next/core';
@@ -102,7 +103,13 @@ const LiveCode = withLive((props: unknown) => {
 					padding: mapSpacing(1.5),
 				}}
 			/>
-			<Flex padding={0.5} gap={0.5} borderTop borderColor="muted">
+			<Flex
+				padding={0.5}
+				gap={0.5}
+				borderTop
+				borderColor="muted"
+				css={packs.print.hidden}
+			>
 				<Button
 					size="sm"
 					variant="tertiary"
@@ -135,7 +142,11 @@ const LiveCode = withLive((props: unknown) => {
 					Open in Playroom
 				</ButtonLink>
 			</Flex>
-			<Box id={codeId} display={isCodeVisible ? 'block' : 'none'}>
+			<Box
+				id={codeId}
+				display={isCodeVisible ? 'block' : 'none'}
+				css={packs.print.visible}
+			>
 				<LiveEditor
 					theme={prismTheme}
 					code={live.code}
