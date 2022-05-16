@@ -1,0 +1,153 @@
+---
+title: May 16th, 2022
+description: Various bug fixes and improvements.
+---
+
+> ⚠️ Note: All releases under the `@ag.ds-next` package scope should be considered alpha pre-releases. Expect breaking changes. Once we are happy with the state of the core packages we will migrate all packages to `@ag.ds`.
+
+## New packages
+
+```sh
+"@ag.ds-next/file-upload": "1.0.0"
+```
+
+## Updates
+
+### @ag.ds-next/body@6.0.0
+
+- Added ability to stop body styles from being inherited on specific elements using `unsetBodyStylesClassname`
+
+### @ag.ds-next/box@5.0.0
+
+- Add `borderColor` prop to `Box`
+
+### @ag.ds-next/card@4.0.0
+
+- Updated border color from `border` to `borderMuted`
+- Replaced custom CSS border colors with new `borderColor` prop
+
+### @ag.ds-next/core@2.2.0
+
+- Reset the global theme to black and white in print mode
+- Add new `print` pack
+
+### @ag.ds-next/hero-banner@2.0.0
+
+- Update image position strategy
+- Replaced `backgroundImageSrc` and `mobileImage` prop with `image`
+- Updated padding in `HeroBannerContent` to fix content alignment issue
+- Add Storybook links to docs site
+
+### @ag.ds-next/icon@7.0.0
+
+- Added `UploadIcon` and `CopyIcon`
+- Add large Icon size
+
+### @ag.ds-next/main-nav@9.0.0
+
+- Add aria labels to MainNav buttons
+- Added print media styles
+
+### @ag.ds-next/modal@3.0.0
+
+- Fix bug with screenreaders. ModalTitle is now auto-focused
+- Replaced `react-spring` dependency with `@react-spring/web`
+
+### @ag.ds-next/page-alert@3.0.0
+
+- Added abilty to forward refs
+- Added `tabIndex` and `id` prop
+
+### @ag.ds-next/accordion@5.0.0
+
+- Added print media styles
+- Replaced `react-spring` dependency with `@react-spring/web`
+
+### @ag.ds-next/breadcrumbs@8.0.0
+
+- Updated size of `BreadcrumbsDivider`
+- Improve center alignment of breadcrumbs
+
+### @ag.ds-next/call-to-action@4.0.0
+
+- Replaced `react-spring` dependency with `@react-spring/web`
+
+### @ag.ds-next/footer@6.0.0
+
+- Added print media styles
+
+### @ag.ds-next/header@7.0.0
+
+- Added print media styles
+
+### @ag.ds-next/loading@2.0.0
+
+- Add Storybook links to docs site
+- Replaced `react-spring` dependency with `@react-spring/web`
+
+### @ag.ds-next/progress-indicator@6.0.0
+
+- Added print media styles
+- Replaced `react-spring` dependency with `@react-spring/web`
+
+### @ag.ds-next/side-nav@8.0.0
+
+- Added print media styles
+- Replaced `react-spring` dependency with `@react-spring/web`
+- Replaced custom CSS border colors with new `borderColor` prop
+
+### @ag.ds-next/table@2.0.0
+
+- Replaced custom CSS border colors with new `borderColor` prop
+
+## Full Changelog
+
+Aside from the [complete release notes on the @ag.ds-next website](https://steelthreads.github.io/agds-next/releases/2022-04-28), you can also view the [verbose change log](https://github.com/steelthreads/agds-next/pull/319) in the related PR (https://github.com/steelthreads/agds-next/pull/319) for this release.
+
+## Released packages
+
+```sh
+"@ag.ds-next/a11y": "1.0.2",
+"@ag.ds-next/accordion": "5.0.0",
+"@ag.ds-next/ag-branding": "5.0.0",
+"@ag.ds-next/body": "6.0.0",
+"@ag.ds-next/box": "5.0.0",
+"@ag.ds-next/breadcrumbs": "8.0.0",
+"@ag.ds-next/button": "7.0.0",
+"@ag.ds-next/call-to-action": "4.0.0",
+"@ag.ds-next/callout": "3.0.0",
+"@ag.ds-next/card": "4.0.0",
+"@ag.ds-next/columns": "5.0.0",
+"@ag.ds-next/content": "6.0.0",
+"@ag.ds-next/control-input": "7.0.0",
+"@ag.ds-next/core": "2.2.0",
+"@ag.ds-next/date-picker": "3.0.0",
+"@ag.ds-next/direction-link": "4.0.0",
+"@ag.ds-next/field": "6.0.0",
+"@ag.ds-next/fieldset": "3.0.0",
+"@ag.ds-next/file-upload": "1.0.0",
+"@ag.ds-next/footer": "6.0.0",
+"@ag.ds-next/form-stack": "3.0.0",
+"@ag.ds-next/header": "7.0.0",
+"@ag.ds-next/heading": "6.0.0",
+"@ag.ds-next/hero-banner": "2.0.0",
+"@ag.ds-next/icon": "7.0.0",
+"@ag.ds-next/inpage-nav": "3.0.0",
+"@ag.ds-next/keyword-list": "3.0.0",
+"@ag.ds-next/link-list": "6.0.0",
+"@ag.ds-next/loading": "2.0.0",
+"@ag.ds-next/main-nav": "9.0.0",
+"@ag.ds-next/modal": "3.0.0",
+"@ag.ds-next/page-alert": "3.0.0",
+"@ag.ds-next/progress-indicator": "6.0.0",
+"@ag.ds-next/search-box": "7.0.0",
+"@ag.ds-next/select": "7.0.0",
+"@ag.ds-next/side-nav": "8.0.0",
+"@ag.ds-next/skip-link": "4.0.0",
+"@ag.ds-next/table": "2.0.0",
+"@ag.ds-next/tags": "3.0.0",
+"@ag.ds-next/task-list": "4.0.0",
+"@ag.ds-next/text": "6.0.0",
+"@ag.ds-next/text-input": "7.0.0",
+"@ag.ds-next/textarea": "7.0.0",
+```
