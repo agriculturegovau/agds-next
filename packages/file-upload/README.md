@@ -14,6 +14,8 @@ storybookPath: /story/forms-fileupload--on-light
 />
 ```
 
+This input is ideal for uploading files with a smaller file size, on a single-page form - where the form is submitted on the same page. Full guidance coming soon.
+
 ## Multiple files
 
 Selecting multiple files is also supported with FileUpload. Simply add `multiple={true}`, and you can select as many files as you want. You can also set `maxFiles` to limit how many files can be selected.
