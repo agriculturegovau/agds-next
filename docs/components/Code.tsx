@@ -10,12 +10,24 @@ import {
 import { createUrl } from 'playroom/utils';
 import { Language } from 'prism-react-renderer';
 import copy from 'clipboard-copy';
+import { useId } from '@reach/auto-id';
 
-import { globalPalette, mapSpacing, tokens } from '@ag.ds-next/core';
+import {
+	globalPalette,
+	mapSpacing,
+	packs,
+	tokens,
+	useToggleState,
+} from '@ag.ds-next/core';
 import { Box, Flex } from '@ag.ds-next/box';
 import { unsetBodyStylesClassname } from '@ag.ds-next/body';
 import { Button, ButtonLink } from '@ag.ds-next/button';
-import { ExternalLinkIcon } from '@ag.ds-next/icon';
+import {
+	CopyIcon,
+	ChevronDownIcon,
+	ChevronUpIcon,
+	ExternalLinkIcon,
+} from '@ag.ds-next/icon';
 
 import { designSystemComponents } from './design-system-components';
 import { prismTheme } from './prism-theme';
@@ -50,6 +62,7 @@ const LiveCode = withLive((props: unknown) => {
 
 	const liveOnChange = live.onChange;
 	const [localCopy, setLocalCopy] = useState<string>(live.code);
+	const [isCodeVisible, toggleIsCodeVisible] = useToggleState(false, true);
 
 	const copyLiveCode = useCallback(() => {
 		copy(localCopy);
@@ -68,44 +81,89 @@ const LiveCode = withLive((props: unknown) => {
 		code: live.code,
 	});
 
+	const id = useId();
+	const codeId = `live-code-${id}`;
+
 	return (
 		<Box
-			css={{
-				boxShadow: `0 0 1px ${globalPalette.lightBorder}`,
-				marginTop: mapSpacing(1.5),
-			}}
+			border
+			rounded
+			borderColor="muted"
+			css={{ marginTop: mapSpacing(1.5) }}
 		>
-			<Box padding={1}>
-				<LivePreview
-					// Prevents body styles from being inherited in live code examples (except for the body example)
-					className={
-						query.slug === 'body' ? undefined : unsetBodyStylesClassname
-					}
+			<LivePreview
+				aria-label="Rendered code snippet example"
+				// Prevents body styles from being inherited in live code examples (except for the body example)
+				className={query.slug === 'body' ? undefined : unsetBodyStylesClassname}
+				css={{
+					// The mdx codeblock transform wraps the code component in a pre which
+					// applies some weirdness here. This resets back to normal things
+					whiteSpace: 'normal', // other wise text content will not wrap and long lines can break the layout
+					fontFamily: tokens.font.body, // because pre applies gets monospace font.
+					padding: mapSpacing(1.5),
+				}}
+			/>
+			<Flex
+				padding={0.5}
+				gap={0.5}
+				borderTop
+				borderColor="muted"
+				css={packs.print.hidden}
+			>
+				<Button
+					size="sm"
+					variant="tertiary"
+					onClick={toggleIsCodeVisible}
+					iconAfter={isCodeVisible ? ChevronUpIcon : ChevronDownIcon}
+					aria-expanded={isCodeVisible}
+					aria-label={isCodeVisible ? 'Hide code snippet' : 'Show code snippet'}
+					aria-controls={codeId}
+				>
+					{isCodeVisible ? 'Hide code' : 'Show code'}
+				</Button>
+				<Button
+					size="sm"
+					variant="tertiary"
+					onClick={copyLiveCode}
+					iconAfter={CopyIcon}
+					aria-label="Copy code snippet to clipboard"
+				>
+					Copy code
+				</Button>
+				<ButtonLink
+					href={playroomUrl}
+					target="_blank"
+					rel="noopener noreferrer"
+					size="sm"
+					variant="tertiary"
+					iconAfter={ExternalLinkIcon}
+					aria-label="Open code snippet in Playroom"
+				>
+					Open in Playroom
+				</ButtonLink>
+			</Flex>
+			<Box
+				id={codeId}
+				display={isCodeVisible ? 'block' : 'none'}
+				css={packs.print.visible}
+			>
+				<LiveEditor
+					theme={prismTheme}
+					code={live.code}
+					language={live.language}
+					disabled={live.disabled}
+					onChange={handleChange}
 					css={{
-						// The mdx codeblock transform wraps the code component in a pre which
-						// applies some weirdness here. This resets back to normal things
-						whiteSpace: 'normal', // other wise text content will not wrap and long lines can break the layout
-						fontFamily: tokens.font.body, // because pre applies gets monospace font.
+						'textarea, pre': {
+							padding: `${mapSpacing(1.5)} !important`,
+						},
+						'& ::selection': {
+							color: globalPalette.darkBackgroundBody,
+							backgroundColor: globalPalette.darkForegroundAction,
+						},
 					}}
 				/>
 			</Box>
-			<LiveEditor
-				theme={prismTheme}
-				code={live.code}
-				language={live.language}
-				disabled={live.disabled}
-				onChange={handleChange}
-				css={{
-					'textarea, pre': {
-						padding: `${mapSpacing(1)} !important`,
-					},
-					'& ::selection': {
-						color: globalPalette.darkBackgroundBody,
-						backgroundColor: globalPalette.darkForegroundAction,
-					},
-					boxShadow: `0 1px 3px -2px ${globalPalette.lightBorder}`,
-				}}
-			/>
 			{live.error ? (
 				<Box
 					fontFamily="monospace"
@@ -117,21 +175,6 @@ const LiveCode = withLive((props: unknown) => {
 					{live.error}
 				</Box>
 			) : null}
-			<Flex palette="light" padding={1} gap={0.5}>
-				<Button size="sm" variant="secondary" onClick={copyLiveCode}>
-					Copy
-				</Button>
-				<ButtonLink
-					href={playroomUrl}
-					target="_blank"
-					rel="noopener noreferrer"
-					size="sm"
-					variant="tertiary"
-					iconAfter={ExternalLinkIcon}
-				>
-					Open in Playroom
-				</ButtonLink>
-			</Flex>
 		</Box>
 	);
 });
@@ -145,12 +188,15 @@ const StaticCode = ({
 }) => {
 	return (
 		<Box
+			border
+			rounded
+			borderColor="muted"
 			css={{
-				boxShadow: `0 0 1px ${globalPalette.lightBorder}`,
+				overflow: 'hidden',
 				marginTop: mapSpacing(1.5),
 
 				'textarea, pre': {
-					padding: `${mapSpacing(1)} !important`,
+					padding: `${mapSpacing(1.5)} !important`,
 				},
 
 				'& ::selection': {
@@ -165,9 +211,15 @@ const StaticCode = ({
 				language={language}
 				disabled
 			/>
-			<Flex palette="light" padding={1}>
-				<Button size="sm" variant="secondary" onClick={() => copy(code)}>
-					Copy
+			<Flex padding={0.5}>
+				<Button
+					size="sm"
+					variant="tertiary"
+					onClick={() => copy(code)}
+					iconAfter={CopyIcon}
+					aria-label="Copy code snippet to clipboard"
+				>
+					Copy code
 				</Button>
 			</Flex>
 		</Box>

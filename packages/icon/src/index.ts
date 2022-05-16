@@ -16,6 +16,7 @@ export { ChevronDownIcon } from './icons/ChevronDownIcon';
 export { ChevronLeftIcon } from './icons/ChevronLeftIcon';
 export { ChevronRightIcon } from './icons/ChevronRightIcon';
 export { CloseIcon } from './icons/CloseIcon';
+export { CopyIcon } from './icons/CopyIcon';
 export { InfoFilledIcon } from './icons/InfoFilledIcon';
 export { ProgressDoingIcon } from './icons/ProgressDoingIcon';
 export { ProgressDoneIcon } from './icons/ProgressDoneIcon';
