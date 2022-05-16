@@ -1,5 +1,16 @@
 # @ag.ds-next/core
 
+## 2.2.0
+
+### Minor Changes
+
+- 2e52d3d2: - Reset the global theme to black and white in print mode
+  - Add new `print` pack
+
+### Patch Changes
+
+- 0e3c9d9e: Add Storybook links to docs site
+
 ## 2.1.5
 
 ### Patch Changes

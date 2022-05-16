@@ -1,5 +1,20 @@
 # @ag.ds-next/body
 
+## 6.0.0
+
+### Minor Changes
+
+- 2349d6c8: Added ability to stop body styles from being inherited on specific elements using `unsetBodyStylesClassname`
+
+### Patch Changes
+
+- 0e3c9d9e: Add Storybook links to docs site
+- Updated dependencies [0e3c9d9e]
+- Updated dependencies [2e52d3d2]
+- Updated dependencies [71bdfef2]
+  - @ag.ds-next/box@5.0.0
+  - @ag.ds-next/core@2.2.0
+
 ## 5.0.1
 
 ### Patch Changes
