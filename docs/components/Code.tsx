@@ -98,11 +98,11 @@ const LiveCode = withLive((props: unknown) => {
 						// applies some weirdness here. This resets back to normal things
 						whiteSpace: 'normal', // other wise text content will not wrap and long lines can break the layout
 						fontFamily: tokens.font.body, // because pre applies gets monospace font.
-						padding: mapSpacing(2),
+						padding: mapSpacing(1.5),
 					}}
 				/>
 			</Box>
-			<Flex palette="light" padding={1} gap={0.5} borderTop borderColor="muted">
+			<Flex padding={0.5} gap={0.5} borderTop borderColor="muted">
 				<Button
 					size="sm"
 					variant="tertiary"
@@ -145,7 +145,7 @@ const LiveCode = withLive((props: unknown) => {
 						onChange={handleChange}
 						css={{
 							'textarea, pre': {
-								padding: `${mapSpacing(2)} !important`,
+								padding: `${mapSpacing(1.5)} !important`,
 							},
 							'& ::selection': {
 								color: globalPalette.darkBackgroundBody,
@@ -189,7 +189,7 @@ const StaticCode = ({
 				marginTop: mapSpacing(1.5),
 
 				'textarea, pre': {
-					padding: `${mapSpacing(2)} !important`,
+					padding: `${mapSpacing(1.5)} !important`,
 				},
 
 				'& ::selection': {
@@ -204,7 +204,7 @@ const StaticCode = ({
 				language={language}
 				disabled
 			/>
-			<Flex palette="light" padding={1}>
+			<Flex padding={0.5}>
 				<Button
 					size="sm"
 					variant="tertiary"
