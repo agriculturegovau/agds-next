@@ -1,6 +1,6 @@
 ## Describe your changes
 
-Include screenshots/photos if necessary.
+Include screenshots, photos or links if necessary.
 
 ## Checklist
 
