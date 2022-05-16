@@ -11,7 +11,7 @@ import { FormStack } from '@ag.ds-next/form-stack';
 import { Select } from '@ag.ds-next/select';
 import { Textarea } from '@ag.ds-next/textarea';
 import { TextInput } from '@ag.ds-next/text-input';
-import { TextLink } from '@ag.ds-next/text';
+import { Text, TextLink } from '@ag.ds-next/text';
 import { PageAlert } from '@ag.ds-next/page-alert';
 import { useScrollToField } from '@ag.ds-next/field';
 import { Divider } from './Divider';
@@ -49,13 +49,15 @@ export const FormExampleSinglePage = () => {
 	const {
 		register,
 		handleSubmit,
-		formState: { errors },
+		formState: { errors, isSubmitSuccessful },
 	} = useForm<FormSchema>({
 		resolver: yupResolver(formSchema),
 	});
 
-	const onSubmit: SubmitHandler<FormSchema> = (data) => {
+	const onSubmit: SubmitHandler<FormSchema> = async (data) => {
 		console.log(data);
+
+		return 'success';
 	};
 
 	const onError: SubmitErrorHandler<FormSchema> = (errors, event) => {
@@ -74,6 +76,14 @@ export const FormExampleSinglePage = () => {
 	return (
 		<form onSubmit={handleSubmit(onSubmit, onError)}>
 			<Stack gap={3}>
+				{isSubmitSuccessful && (
+					<PageAlert tone="success" title="Thank you">
+						<Text>
+							The form has been submitted. <TextLink href="/">Go home</TextLink>
+							.
+						</Text>
+					</PageAlert>
+				)}
 				{hasErrors && (
 					<PageAlert
 						ref={errorPageAlertRef}
