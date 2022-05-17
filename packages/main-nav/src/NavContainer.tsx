@@ -7,55 +7,25 @@ import {
 	useTernaryState,
 	mapSpacing,
 	tokens,
-	globalPalette,
 	useWindowSize,
 	packs,
 } from '@ag.ds-next/core';
 
-import { localPalette, localPaletteVars } from './utils';
+import {
+	localPalette,
+	localPaletteVars,
+	variantMap,
+	MainNavVariant,
+	bottomBarPadding,
+} from './utils';
 import { CloseButton, OpenButton } from './MenuButtons';
 import { NavListLink } from './NavList';
-
-const variantMap = {
-	light: {
-		palette: 'light',
-		background: 'body',
-		hover: 'shade',
-		bottomBar: boxPalette.foregroundAction,
-	},
-	lightAlt: {
-		palette: 'light',
-		background: 'bodyAlt',
-		hover: 'shadeAlt',
-		bottomBar: boxPalette.foregroundAction,
-	},
-	dark: {
-		palette: 'dark',
-		background: 'body',
-		hover: 'shade',
-		bottomBar: boxPalette.foregroundAction,
-	},
-	darkAlt: {
-		palette: 'dark',
-		background: 'bodyAlt',
-		hover: 'shadeAlt',
-		bottomBar: boxPalette.foregroundAction,
-	},
-	agriculture: {
-		palette: 'dark',
-		background: 'shade',
-		hover: 'body',
-		bottomBar: globalPalette.accent,
-	},
-} as const;
-
-export type NavContainerVariant = keyof typeof variantMap;
 
 export type NavContainerProps = PropsWithChildren<{
 	id?: string;
 	'aria-label': string;
 	rightContent?: ReactNode;
-	variant: NavContainerVariant;
+	variant: MainNavVariant;
 	links?: NavListLink[];
 }>;
 
@@ -172,7 +142,7 @@ function Overlay({
 function BottomBar() {
 	return (
 		<Box
-			paddingTop={0.5}
+			paddingTop={bottomBarPadding}
 			css={{
 				position: 'absolute',
 				bottom: 0,

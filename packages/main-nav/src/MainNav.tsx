@@ -1,8 +1,8 @@
 import { ReactNode } from 'react';
-import { NavContainer, NavContainerVariant } from './NavContainer';
+import { NavContainer } from './NavContainer';
 import { NavList, NavListLink } from './NavList';
 
-import { findBestMatch } from './utils';
+import { findBestMatch, MainNavVariant } from './utils';
 
 export type MainNavProps = React.PropsWithChildren<{
 	activePath?: string;
@@ -10,7 +10,7 @@ export type MainNavProps = React.PropsWithChildren<{
 	id?: string;
 	links?: NavListLink[];
 	rightContent?: ReactNode;
-	variant: NavContainerVariant;
+	variant: MainNavVariant;
 }>;
 
 export function MainNav({

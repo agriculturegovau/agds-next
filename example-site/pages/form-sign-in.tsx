@@ -11,7 +11,7 @@ const FormSignInPage: NextPage = () => {
 	return (
 		<>
 			<DocumentTitle title="Sign in example" />
-			<AppLayout>
+			<AppLayout template={{ name: 'Sign-in form', slug: 'sign-in' }}>
 				<Content>
 					<Columns>
 						<Column columnSpan={{ xs: 12, md: 7 }}>
