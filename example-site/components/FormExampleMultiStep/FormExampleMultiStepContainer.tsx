@@ -1,12 +1,10 @@
 import { ReactNode } from 'react';
-import * as yup from 'yup';
-import { Flex, Stack } from '@ag.ds-next/box';
+import { Stack } from '@ag.ds-next/box';
 import { H1 } from '@ag.ds-next/heading';
-import { useFormExampleMultiStepProdiver } from './FormExampleMultiStep';
-import { Body } from '@ag.ds-next/body';
-import { PageAlert } from '@ag.ds-next/page-alert';
 import { Text } from '@ag.ds-next/text';
-import { DirectionButton } from '@ag.ds-next/direction-link';
+import { PageAlert } from '@ag.ds-next/page-alert';
+import { Body } from '@ag.ds-next/body';
+import { useFormExampleMultiStep } from './FormExampleMultiStep';
 
 export const FormExampleMultiStepContainer = ({
 	children,
@@ -17,27 +15,21 @@ export const FormExampleMultiStepContainer = ({
 	title: string;
 	subTitle: string;
 }) => {
-	const { back } = useFormExampleMultiStepProdiver();
+	const { hasCompletedPreviousSteps } = useFormExampleMultiStep();
 	return (
 		<Stack gap={2}>
-			<Stack gap={1} alignItems="flex-start">
-				<DirectionButton direction="left" onClick={back}>
-					Back
-				</DirectionButton>
-				<Stack gap={0.25}>
-					<Stack>
-						<Text as="span" fontWeight="bold" fontSize="sm" color="muted">
-							Title of the form
-						</Text>
-						<H1>{title}</H1>
-					</Stack>
-					<Text as="p" fontSize="lg">
-						{subTitle}
+			<Stack gap={0.25}>
+				<Stack>
+					<Text as="span" fontWeight="bold" fontSize="sm" color="muted">
+						Title of multi page form
 					</Text>
+					<H1>{title}</H1>
 				</Stack>
+				<Text as="p" fontSize="lg">
+					{subTitle}
+				</Text>
 			</Stack>
-			{children}
-			{/* {hasCompletedPreviousSteps ? (
+			{hasCompletedPreviousSteps ? (
 				children
 			) : (
 				<PageAlert
@@ -51,7 +43,7 @@ export const FormExampleMultiStepContainer = ({
 						</p>
 					</Body>
 				</PageAlert>
-			)} */}
+			)}
 		</Stack>
 	);
 };

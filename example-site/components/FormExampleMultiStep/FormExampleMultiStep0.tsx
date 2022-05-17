@@ -2,7 +2,7 @@ import { useForm, SubmitHandler } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { FormStack } from '@ag.ds-next/form-stack';
-import { useFormExampleMultiStepProdiver } from './FormExampleMultiStep';
+import { useFormExampleMultiStep } from './FormExampleMultiStep';
 import { Body } from '@ag.ds-next/body';
 import { PageAlert } from '@ag.ds-next/page-alert';
 import { useScrollToField } from '@ag.ds-next/field';
@@ -28,18 +28,17 @@ export const formExampleMultiStep0ValuesMap: Record<keyof FormSchema, string> =
 	};
 
 export const FormExampleMultiStep0 = () => {
-	const { next, formState } = useFormExampleMultiStepProdiver();
+	const { next, stepFormState } = useFormExampleMultiStep();
+	const scrollToField = useScrollToField();
 	const errorRef = useRef<HTMLDivElement>(null);
 	const [focusedError, setFocusedError] = useState(false);
-
-	const scrollToField = useScrollToField();
 
 	const {
 		register,
 		handleSubmit,
 		formState: { errors },
 	} = useForm<FormSchema>({
-		defaultValues: formState,
+		defaultValues: stepFormState,
 		resolver: yupResolver(formSchema),
 	});
 
@@ -74,7 +73,6 @@ export const FormExampleMultiStep0 = () => {
 							tone="error"
 							title="There is a problem"
 							tabIndex={-1}
-							autofocus
 						>
 							<Body>
 								<p>Please correct the following fields and try again</p>
@@ -93,9 +91,10 @@ export const FormExampleMultiStep0 = () => {
 					<ControlGroup
 						label="Fieldset question?"
 						hint="Hint test"
+						id="example"
 						invalid={Boolean(errors.example?.message)}
 						message={errors.example?.message}
-						id="example"
+						required
 						block
 					>
 						<Radio
@@ -103,21 +102,21 @@ export const FormExampleMultiStep0 = () => {
 							value="A"
 							invalid={Boolean(errors.example?.message)}
 						>
-							Radio label
+							Radio label A
 						</Radio>
 						<Radio
 							{...register('example')}
 							value="B"
 							invalid={Boolean(errors.example?.message)}
 						>
-							Radio label
+							Radio label B
 						</Radio>
 						<Radio
 							{...register('example')}
 							value="C"
 							invalid={Boolean(errors.example?.message)}
 						>
-							Radio label
+							Radio label C
 						</Radio>
 					</ControlGroup>
 					<FormExampleMultiStepActions />

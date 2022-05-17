@@ -2,7 +2,7 @@ import { useForm, SubmitHandler } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { FormStack } from '@ag.ds-next/form-stack';
-import { useFormExampleMultiStepProdiver } from './FormExampleMultiStep';
+import { useFormExampleMultiStep } from './FormExampleMultiStep';
 import { Body } from '@ag.ds-next/body';
 import { PageAlert } from '@ag.ds-next/page-alert';
 import { useScrollToField } from '@ag.ds-next/field';
@@ -11,6 +11,8 @@ import { Checkbox, ControlGroup } from '@ag.ds-next/control-input';
 import { FormExampleMultiStepContainer } from './FormExampleMultiStepContainer';
 import { FormExampleMultiStepActions } from './FormExampleMultiStepActions';
 import { TextInput } from '@ag.ds-next/text-input';
+import { Box } from '@ag.ds-next/box';
+import { mapSpacing } from '@ag.ds-next/core';
 
 const formSchema = yup
 	.object({
@@ -18,7 +20,7 @@ const formSchema = yup
 		checkboxB: yup.boolean(),
 		checkboxC: yup.boolean(),
 		checkboxD: yup.boolean(),
-		nestedField: yup.string(),
+		conditionalField: yup.string(),
 	})
 	.required();
 
@@ -26,19 +28,18 @@ type FormSchema = yup.InferType<typeof formSchema>;
 
 export const formExampleMultiStep3ValuesMap: Record<keyof FormSchema, string> =
 	{
-		checkboxA: 'Fieldset question?',
-		checkboxB: 'Fieldset question?',
-		checkboxC: 'Fieldset question?',
-		checkboxD: 'Fieldset question?',
-		nestedField: 'Fieldset qeuestion',
+		checkboxA: 'Checkbox label A',
+		checkboxB: 'Checkbox label B',
+		checkboxC: 'Checkbox label C',
+		checkboxD: 'Checkbox label D',
+		conditionalField: 'Nested field',
 	};
 
 export const FormExampleMultiStep3 = () => {
-	const { next, formState } = useFormExampleMultiStepProdiver();
+	const { next, stepFormState } = useFormExampleMultiStep();
+	const scrollToField = useScrollToField();
 	const errorRef = useRef<HTMLDivElement>(null);
 	const [focusedError, setFocusedError] = useState(false);
-
-	const scrollToField = useScrollToField();
 
 	const {
 		watch,
@@ -46,13 +47,12 @@ export const FormExampleMultiStep3 = () => {
 		handleSubmit,
 		formState: { errors },
 	} = useForm<FormSchema>({
-		defaultValues: formState,
+		defaultValues: stepFormState,
 		resolver: yupResolver(formSchema),
 	});
 
 	const onSubmit: SubmitHandler<FormSchema> = (data) => {
-		// setFocusedError(false);
-		console.log({ data });
+		setFocusedError(false);
 		next(data);
 	};
 
@@ -69,7 +69,7 @@ export const FormExampleMultiStep3 = () => {
 		}
 	}, [hasErrors, focusedError, errors]);
 
-	const watchShowAge = watch('checkboxB');
+	const showConditionalField = watch('checkboxB');
 
 	return (
 		<FormExampleMultiStepContainer
@@ -84,7 +84,6 @@ export const FormExampleMultiStep3 = () => {
 							tone="error"
 							title="There is a problem"
 							tabIndex={-1}
-							autofocus
 						>
 							<Body>
 								<p>Please correct the following fields and try again</p>
@@ -103,55 +102,48 @@ export const FormExampleMultiStep3 = () => {
 					<ControlGroup
 						label="Checkbox fieldset question?"
 						hint="Provide a hint here"
-						// invalid={Boolean(errors.example?.message)}
-						// message={errors.example?.message}
-						id="example"
 						block
 					>
 						<Checkbox
 							{...register('checkboxA')}
 							invalid={Boolean(errors.checkboxA?.message)}
 						>
-							Checkbox label
+							Checkbox label A
 						</Checkbox>
 						<Checkbox
 							{...register('checkboxB')}
 							invalid={Boolean(errors.checkboxB?.message)}
 						>
-							Checkbox label
+							Checkbox label B
 						</Checkbox>
-						{watchShowAge ? (
-							<TextInput
-								label="Nested field"
-								invalid={Boolean(errors.nestedField?.message)}
-							/>
+						{showConditionalField ? (
+							<Box
+								borderLeft
+								borderLeftWidth="xl"
+								paddingLeft={1.5}
+								css={{ marginLeft: mapSpacing(1) }}
+							>
+								<TextInput
+									label="Nested field"
+									hint="Hint text"
+									{...register('conditionalField')}
+									invalid={Boolean(errors.conditionalField?.message)}
+									required
+								/>
+							</Box>
 						) : null}
 						<Checkbox
 							{...register('checkboxC')}
 							invalid={Boolean(errors.checkboxC?.message)}
 						>
-							Checkbox label
+							Checkbox label C
 						</Checkbox>
 						<Checkbox
 							{...register('checkboxD')}
 							invalid={Boolean(errors.checkboxD?.message)}
 						>
-							Checkbox label
+							Checkbox label D
 						</Checkbox>
-						{/* <Radio
-							{...register('example')}
-							value="B"
-							invalid={Boolean(errors.example?.message)}
-						>
-							Radio label
-						</Radio>
-						<Radio
-							{...register('example')}
-							value="C"
-							invalid={Boolean(errors.example?.message)}
-						>
-							Radio label
-						</Radio> */}
 					</ControlGroup>
 					<FormExampleMultiStepActions />
 				</FormStack>

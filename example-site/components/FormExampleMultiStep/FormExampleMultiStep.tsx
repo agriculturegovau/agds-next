@@ -1,16 +1,17 @@
-import { Column, Columns } from '@ag.ds-next/columns';
-import { ContentBleed } from '@ag.ds-next/content';
-import { ProgressIndicator } from '@ag.ds-next/progress-indicator';
-import { useRouter } from 'next/router';
 import {
 	createContext,
-	ReactNode,
 	useCallback,
 	useContext,
-	useEffect,
 	useMemo,
 	useState,
 } from 'react';
+import { useRouter } from 'next/router';
+import { Column, Columns } from '@ag.ds-next/columns';
+import { ContentBleed } from '@ag.ds-next/content';
+import { ProgressIndicator } from '@ag.ds-next/progress-indicator';
+import { Stack } from '@ag.ds-next/box';
+import { Text } from '@ag.ds-next/text';
+import { DirectionButton } from '@ag.ds-next/direction-link';
 
 import { FormExampleMultiStep0 } from './FormExampleMultiStep0';
 import { FormExampleMultiStep1 } from './FormExampleMultiStep1';
@@ -42,68 +43,93 @@ export const FORM_STEPS = [
 	},
 ];
 
+const TOTAL_STEPS = FORM_STEPS.length - 1;
+
 type ContextType = {
-	hasCompletedPreviousSteps: boolean;
-	submittingStep: boolean;
-	next: (formState: Record<string, unknown>) => void;
+	/** When called, the user will be taken back to the previous step */
 	back: () => void;
-	formState: Record<string, unknown>;
-	globalFormState: any;
-	cancel: () => void;
-	saving: boolean;
+	/** When called, the user will be taken forward to the the next step */
+	next: (stepFormState: StepFormState) => void;
+	/** If true, the user has completed the previous step of the form */
+	hasCompletedPreviousSteps: boolean;
+	/** If true, the current from step is being submitted */
+	isSubmittingStep: boolean;
+	/** When called, the users progress will be saved and they will be taken to the home page */
 	saveAndExit: () => void;
+	/** If true, the user is about to exit the form */
+	isSavingBeforeExiting: boolean;
+	/** When called, the user will to the forms home page */
+	cancel: () => void;
+	/** The state of the entire form */
+	formState: FormState;
+	/** The state of the form of the current step */
+	stepFormState: StepFormState;
 };
 
 const context = createContext<ContextType | undefined>(undefined);
 
-export type FormExampleMultiStepProdiverProps = { children: ReactNode };
+type StepFormState = Record<string, unknown>;
 
 type FormState = Record<number, Record<string, unknown>>;
 
 export const FormExampleMultiStep = () => {
 	const router = useRouter();
-	const [saving, setSaving] = useState(false);
-	const [submittingStep, setSubmittingStep] = useState(false);
-	const [formState, setFormState] = useState<FormState>({});
+	const [success, setSuccess] = useState(false);
 	const [currentStep, setCurrentStep] = useState(0);
+	const [formState, setFormState] = useState<FormState>({});
 
+	/** When called, the user will be taken back to the previous step */
+	const back = useCallback(() => {
+		if (currentStep === 0) {
+			router.push('/form-multi-step');
+		} else {
+			setCurrentStep(currentStep - 1);
+		}
+	}, [currentStep, router]);
+
+	const [isSubmittingStep, setIsSubmittingStep] = useState(false);
+
+	/** When called, the user will be taken forward to the the next step */
 	const next = useCallback(
-		(formState: Record<string, unknown>) => {
-			setSubmittingStep(true);
+		(formState: StepFormState) => {
+			setIsSubmittingStep(true);
+			setFormState((current) => ({ ...current, [currentStep]: formState }));
+			// Using a `setTimeout` to replicate a call to a back-end API
 			setTimeout(() => {
-				setCurrentStep(currentStep + 1);
-				setSubmittingStep(false);
-				setFormState((current) => ({ ...current, [currentStep]: formState }));
-			}, 3000);
+				setIsSubmittingStep(false);
+				if (currentStep === TOTAL_STEPS) {
+					setSuccess(true);
+				} else {
+					setCurrentStep(currentStep + 1);
+				}
+			}, 1500);
 		},
 		[currentStep]
 	);
 
-	const back = useCallback(() => {
-		setCurrentStep((x) => x - 1);
-	}, []);
-
+	/** When called, the user will to the forms home page */
 	const cancel = useCallback(() => {
 		router.push('/form-multi-step');
 	}, [router]);
 
+	const [isSavingBeforeExiting, setIsSavingBeforeExiting] = useState(false);
+
+	/** When called, the users progress will be saved and they will be taken to the home page */
 	const saveAndExit = useCallback(() => {
-		setSaving(true);
+		setIsSavingBeforeExiting(true);
+		// Using a `setTimeout` to replicate a call to a back-end API
 		setTimeout(() => {
 			router.push('/form-multi-step');
-			setSaving(false);
-		}, 3000);
+			setIsSavingBeforeExiting(false);
+		}, 1500);
 	}, [router]);
 
-	const Comp = useMemo(() => FORM_STEPS[currentStep].component, [currentStep]);
-
+	/** If true, the user has completed the previous step of the form */
 	const hasCompletedPreviousSteps = useMemo(() => {
 		if (currentStep === 0) return true;
 		const previousStep = currentStep - 1;
 		return Boolean(formState[previousStep]);
 	}, [formState, currentStep]);
-
-	const success = false;
 
 	if (success) {
 		return (
@@ -115,45 +141,68 @@ export const FormExampleMultiStep = () => {
 		);
 	}
 
+	const FormStepComponent = FORM_STEPS[currentStep]?.component;
+
+	const contextValue = {
+		back,
+		next,
+		isSubmittingStep,
+		saveAndExit,
+		isSavingBeforeExiting,
+		cancel,
+		hasCompletedPreviousSteps,
+		formState,
+		stepFormState: formState[currentStep],
+	};
+
 	return (
-		<context.Provider
-			value={{
-				hasCompletedPreviousSteps,
-				next,
-				back,
-				globalFormState: formState,
-				formState: formState[currentStep],
-				submittingStep,
-				cancel,
-				saving,
-				saveAndExit,
-			}}
-		>
+		<context.Provider value={contextValue}>
 			<Columns>
 				<Column columnSpan={{ xs: 12, md: 3 }}>
 					<ContentBleed visible={{ md: false }}>
-						<ProgressIndicator
-							items={FORM_STEPS.map(({ label }, idx) => ({
-								label,
-								status: idx === currentStep ? 'doing' : 'todo',
-								onClick: () => setCurrentStep(idx),
-							}))}
-						/>
+						<Stack gap={0.75} paddingTop={{ xs: 0, md: 3 }}>
+							<Text
+								display={{ xs: 'none', md: 'block' }}
+								as="h3"
+								fontSize="md"
+								fontWeight="bold"
+								lineHeight="heading"
+							>
+								Progress
+							</Text>
+							<ProgressIndicator
+								items={FORM_STEPS.map(({ label }, idx) => ({
+									label,
+									status:
+										idx === currentStep
+											? 'doing'
+											: formState[idx]
+											? 'done'
+											: 'todo',
+									onClick: () => setCurrentStep(idx),
+								}))}
+							/>
+						</Stack>
 					</ContentBleed>
 				</Column>
 				<Column columnSpan={{ xs: 12, md: 8 }} columnStart={{ md: 5 }}>
-					<Comp />
+					<Stack gap={2}>
+						<DirectionButton direction="left" onClick={back}>
+							Back
+						</DirectionButton>
+						{FormStepComponent ? <FormStepComponent /> : null}
+					</Stack>
 				</Column>
 			</Columns>
 		</context.Provider>
 	);
 };
 
-export const useFormExampleMultiStepProdiver = () => {
+export const useFormExampleMultiStep = () => {
 	const value = useContext(context);
 
 	if (!value) {
-		throw new Error('Context not found');
+		throw new Error('Context provider not found');
 	}
 
 	return value;
