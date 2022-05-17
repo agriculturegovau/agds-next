@@ -8,7 +8,10 @@ const FormMultiStepPage: NextPage = () => {
 	return (
 		<>
 			<DocumentTitle title="Multi step form example" />
-			<AppLayout>
+			<AppLayout
+				template={{ name: '"Multi-step form', slug: 'multi-step-form' }}
+				focusMode
+			>
 				<Content>
 					<FormExampleMultiStep />
 				</Content>
