@@ -1,4 +1,5 @@
 import { normalize } from 'path';
+import { existsSync } from 'fs';
 import { readdir } from 'fs/promises';
 
 import {
@@ -10,13 +11,14 @@ import { slugify } from '../slugify';
 
 const TEMPLATES_PATH = normalize(`${process.cwd()}/../templates/`);
 
-const templatePath = (slug: string) =>
-	normalize(`${TEMPLATES_PATH}/${slug}.mdx`);
+const templateOverviewPath = (slug: string) =>
+	normalize(`${TEMPLATES_PATH}/${slug}/index.mdx`);
+const templateDocsPath = (slug: string) =>
+	normalize(`${TEMPLATES_PATH}/${slug}/`);
 
 export async function getTemplate(slug: string) {
-	const { content, data } = await getMarkdownData(templatePath(slug));
+	const { content, data } = await getMarkdownData(templateOverviewPath(slug));
 	const source = await serializeMarkdown(content, data);
-
 	return {
 		slug,
 		source,
@@ -29,6 +31,26 @@ export const getTemplateBreadcrumbs = (templateTitle: string) => {
 	return [{ href: '/templates', label: 'Templates' }, { label: templateTitle }];
 };
 
+export async function getTemplateSubNavItems(slug: string) {
+	return getMarkdownData(templateOverviewPath(slug)).then(({ data }) => {
+		const meta = templateNavMetaData(slug, data);
+		return [
+			{
+				label: 'Overview',
+				href: `/templates/${meta.slug}`,
+			},
+			{
+				label: 'Content',
+				href: `/templates/${meta.slug}/content`,
+			},
+			{
+				label: 'Code',
+				href: `/templates/${meta.slug}/code`,
+			},
+		];
+	});
+}
+
 export async function getTemplateSlugs() {
 	const entries = await readdir(TEMPLATES_PATH, { withFileTypes: true });
 	return entries
@@ -36,8 +58,7 @@ export async function getTemplateSlugs() {
 			(entry) =>
 				!entry.name.startsWith('_') &&
 				!entry.name.startsWith('.') &&
-				!entry.name.startsWith('index') &&
-				entry.isFile()
+				entry.isDirectory()
 		)
 		.map((entry) => slugify(stripMdxExtension(entry.name)))
 		.sort()
@@ -45,17 +66,24 @@ export async function getTemplateSlugs() {
 }
 
 export function getTemplateList() {
-	return getTemplateSlugs().then((slugs) =>
-		Promise.all(
+	return getTemplateSlugs().then((slugs) => {
+		return Promise.all(
 			slugs.map((slug) =>
-				getMarkdownData(templatePath(slug)).then(({ data }) => ({
-					title: (data?.title ?? slug) as string,
-					slug,
-					description: data?.description,
-				}))
+				getMarkdownData(templateOverviewPath(slug)).then(({ data }) =>
+					templateNavMetaData(slug, data)
+				)
 			)
-		)
+		).then((templateList) => {
+			return templateList.sort((a, b) => (a.title > b.title ? 1 : -1));
+		});
+	});
+}
+
+export async function getTemplateDocsContent(slug: string, path: string) {
+	const { data, content } = await getMarkdownData(
+		`${templateDocsPath(slug)}/${path}`
 	);
+	return await serializeMarkdown(content, data);
 }
 
 function templateNavMetaData(
@@ -65,11 +93,12 @@ function templateNavMetaData(
 	return {
 		title: (data?.title ?? slug) as string,
 		slug,
+		description: data?.description,
 	};
 }
 
 export function getTemplatesBreadcrumbs(slug: string) {
-	return getMarkdownData(templatePath(slug)).then(({ data }) => {
+	return getMarkdownData(templateOverviewPath(slug)).then(({ data }) => {
 		const meta = templateNavMetaData(slug, data);
 		return [{ href: '/templates', label: 'Templates' }, { label: meta.title }];
 	});

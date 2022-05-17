@@ -1,0 +1,82 @@
+import { GetStaticProps, InferGetStaticPropsType } from 'next';
+import { Body } from '@ag.ds-next/body';
+
+import {
+	getTemplate,
+	getTemplateBreadcrumbs,
+	getTemplateList,
+	getTemplateSlugs,
+	getTemplateSubNavItems,
+	Template,
+} from '../../../lib/mdx';
+
+import { TemplateLayout } from '../../../components/TemplateLayout';
+import { DocumentTitle } from '../../../components/DocumentTitle';
+
+export default function Templates({
+	breadcrumbs,
+	subNavItems,
+	template,
+	templateLinks,
+}: InferGetStaticPropsType<typeof getStaticProps>) {
+	return (
+		<TemplateLayout
+			template={template}
+			breadcrumbs={breadcrumbs}
+			navLinks={templateLinks}
+			subNavItems={subNavItems}
+		>
+			<DocumentTitle title={`${template.data.title} | Templates`} />
+			<Body>
+				You can view the full source code for this template on{' '}
+				<a href={template.data.codeURL}>GitHub</a>.
+			</Body>
+		</TemplateLayout>
+	);
+}
+
+export const getStaticProps: GetStaticProps<
+	{
+		template: Template;
+		templateLinks: { href: string; label: string }[];
+		subNavItems: Awaited<ReturnType<typeof getTemplateSubNavItems>>;
+		breadcrumbs: ReturnType<typeof getTemplateBreadcrumbs>;
+	},
+	{ slug: string }
+> = async ({ params }) => {
+	const { slug } = params ?? {};
+	const template = slug ? await getTemplate(slug) : undefined;
+	const templateList = await getTemplateList();
+	const subNavItems = slug ? await getTemplateSubNavItems(slug) : undefined;
+	const templateLinks = templateList.map(({ title, slug }) => ({
+		href: `/templates/${slug}`,
+		label: title,
+	}));
+
+	if (!(slug && template && subNavItems)) {
+		return { notFound: true };
+	}
+
+	const breadcrumbs = getTemplateBreadcrumbs(template.data.title);
+
+	return {
+		props: {
+			template,
+			templateLinks,
+			breadcrumbs,
+			slug,
+			subNavItems,
+		},
+	};
+};
+
+export const getStaticPaths = async () => {
+	const slugs = await getTemplateSlugs();
+
+	return {
+		paths: slugs.map((slug) => ({
+			params: { slug },
+		})),
+		fallback: false,
+	};
+};

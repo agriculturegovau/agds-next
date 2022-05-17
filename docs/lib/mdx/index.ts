@@ -2,7 +2,9 @@
 export {
 	getTemplate,
 	getTemplateBreadcrumbs,
+	getTemplateDocsContent,
 	getTemplateSlugs,
+	getTemplateSubNavItems,
 	getTemplateList,
 	getTemplatesBreadcrumbs,
 } from './templates';

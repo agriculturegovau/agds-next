@@ -8,7 +8,7 @@ import { ExternalLinkIcon } from '@ag.ds-next/icon';
 const NAV_LINKS = [
 	{ label: 'Home', href: '/' },
 	{ label: 'Packages', href: '/packages' },
-	// { label: 'Templates', href: '/templates' },
+	{ label: 'Templates', href: '/templates' },
 	{ label: 'Guides', href: '/guides' },
 	{ label: 'Releases', href: '/releases' },
 ];
