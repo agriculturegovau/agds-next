@@ -26,11 +26,8 @@ const formSchema = yup
 			.string()
 			.email('Invalid email address')
 			.required('Enter your email address'),
-		mobile: yup.string().required('Enter your mobile'),
-		interest: yup
-			.string()
-			.typeError('Select an interest')
-			.required('Select an interest'),
+		mobile: yup.string(),
+		interest: yup.string().typeError('Select an interest'),
 		message: yup.string(),
 		termsAndConditions: yup
 			.boolean()
@@ -56,8 +53,6 @@ export const FormExampleSinglePage = () => {
 
 	const onSubmit: SubmitHandler<FormSchema> = async (data) => {
 		console.log(data);
-
-		return 'success';
 	};
 
 	const onError: SubmitErrorHandler<FormSchema> = (errors, event) => {
@@ -73,17 +68,20 @@ export const FormExampleSinglePage = () => {
 		setHasFocusedErrorRef(true);
 	}, [hasFocusedErrorRef, hasErrors]);
 
+	if (isSubmitSuccessful) {
+		return (
+			<PageAlert tone="success" title="Thank you" tabIndex={-1} autofocus>
+				<Text>
+					The single-page form has been submitted sucessfully. You may now{' '}
+					<TextLink href="/">return home</TextLink>.
+				</Text>
+			</PageAlert>
+		);
+	}
+
 	return (
 		<form onSubmit={handleSubmit(onSubmit, onError)}>
 			<Stack gap={3}>
-				{isSubmitSuccessful && (
-					<PageAlert tone="success" title="Thank you">
-						<Text>
-							The form has been submitted. <TextLink href="/">Go home</TextLink>
-							.
-						</Text>
-					</PageAlert>
-				)}
 				{hasErrors && (
 					<PageAlert
 						ref={errorPageAlertRef}
@@ -131,9 +129,14 @@ export const FormExampleSinglePage = () => {
 							id="state"
 							placeholder="Please select"
 							options={[
-								{ label: 'QLD', value: 'qld' },
 								{ label: 'NSW', value: 'nsw' },
+								{ label: 'QLD', value: 'qld' },
+								{ label: 'ACT', value: 'act' },
 								{ label: 'VIC', value: 'vic' },
+								{ label: 'TAS', value: 'tas' },
+								{ label: 'NT', value: 'nt' },
+								{ label: 'SA', value: 'sa' },
+								{ label: 'WA', value: 'wa' },
 							]}
 							invalid={Boolean(errors.state?.message)}
 							message={errors.state?.message}
@@ -183,6 +186,7 @@ export const FormExampleSinglePage = () => {
 						invalid={Boolean(errors.interest?.message)}
 						message={errors.interest?.message}
 						id="interest"
+						required
 					>
 						<Radio
 							{...register('interest')}
