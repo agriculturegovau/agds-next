@@ -11,7 +11,7 @@ import { FormStack } from '@ag.ds-next/form-stack';
 import { Select } from '@ag.ds-next/select';
 import { Textarea } from '@ag.ds-next/textarea';
 import { TextInput } from '@ag.ds-next/text-input';
-import { TextLink } from '@ag.ds-next/text';
+import { Text, TextLink } from '@ag.ds-next/text';
 import { PageAlert } from '@ag.ds-next/page-alert';
 import { useScrollToField } from '@ag.ds-next/field';
 import { Divider } from './Divider';
@@ -26,11 +26,8 @@ const formSchema = yup
 			.string()
 			.email('Invalid email address')
 			.required('Enter your email address'),
-		mobile: yup.string().required('Enter your mobile'),
-		interest: yup
-			.string()
-			.typeError('Select an interest')
-			.required('Select an interest'),
+		mobile: yup.string(),
+		interest: yup.string().typeError('Select an interest'),
 		message: yup.string(),
 		termsAndConditions: yup
 			.boolean()
@@ -42,6 +39,7 @@ type FormSchema = yup.InferType<typeof formSchema>;
 
 export const FormExampleSinglePage = () => {
 	const errorPageAlertRef = useRef<HTMLDivElement>(null);
+	const successPageAlertRef = useRef<HTMLDivElement>(null);
 	const [hasFocusedErrorRef, setHasFocusedErrorRef] = useState(false);
 
 	const scrollToField = useScrollToField();
@@ -49,7 +47,7 @@ export const FormExampleSinglePage = () => {
 	const {
 		register,
 		handleSubmit,
-		formState: { errors },
+		formState: { errors, isSubmitSuccessful },
 	} = useForm<FormSchema>({
 		resolver: yupResolver(formSchema),
 	});
@@ -70,6 +68,27 @@ export const FormExampleSinglePage = () => {
 		errorPageAlertRef.current?.focus();
 		setHasFocusedErrorRef(true);
 	}, [hasFocusedErrorRef, hasErrors]);
+
+	useEffect(() => {
+		if (!isSubmitSuccessful) return;
+		successPageAlertRef.current?.focus();
+	}, [isSubmitSuccessful]);
+
+	if (isSubmitSuccessful) {
+		return (
+			<PageAlert
+				tone="success"
+				title="Thank you"
+				tabIndex={-1}
+				ref={successPageAlertRef}
+			>
+				<Text>
+					The single-page form has been submitted sucessfully. You may now{' '}
+					<TextLink href="/">return home</TextLink>.
+				</Text>
+			</PageAlert>
+		);
+	}
 
 	return (
 		<form onSubmit={handleSubmit(onSubmit, onError)}>
@@ -121,9 +140,14 @@ export const FormExampleSinglePage = () => {
 							id="state"
 							placeholder="Please select"
 							options={[
-								{ label: 'QLD', value: 'qld' },
 								{ label: 'NSW', value: 'nsw' },
+								{ label: 'QLD', value: 'qld' },
+								{ label: 'ACT', value: 'act' },
 								{ label: 'VIC', value: 'vic' },
+								{ label: 'TAS', value: 'tas' },
+								{ label: 'NT', value: 'nt' },
+								{ label: 'SA', value: 'sa' },
+								{ label: 'WA', value: 'wa' },
 							]}
 							invalid={Boolean(errors.state?.message)}
 							message={errors.state?.message}
@@ -173,6 +197,7 @@ export const FormExampleSinglePage = () => {
 						invalid={Boolean(errors.interest?.message)}
 						message={errors.interest?.message}
 						id="interest"
+						required
 					>
 						<Radio
 							{...register('interest')}
