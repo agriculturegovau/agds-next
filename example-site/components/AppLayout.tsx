@@ -5,16 +5,14 @@ import { PropsWithChildren, useMemo } from 'react';
 import { SiteHeader } from './SiteHeader';
 import { SiteFooter } from './SiteFooter';
 
-type AppLayoutProps = PropsWithChildren<{
-	template?: { name: string; slug: string };
-	focusMode?: boolean;
-}>;
-
 export const AppLayout = ({
 	children,
 	template,
 	focusMode = false,
-}: AppLayoutProps) => {
+}: PropsWithChildren<{
+	template?: { name: string; slug: string };
+	focusMode?: boolean;
+}>) => {
 	const skipLinks = useMemo(() => {
 		const items = [{ href: '#main-content', label: 'Skip to main content' }];
 		if (!focusMode) {
