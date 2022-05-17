@@ -1,20 +1,24 @@
 import { GetStaticProps, InferGetStaticPropsType } from 'next';
+import { MDXRemote } from 'next-mdx-remote';
 import { Body } from '@ag.ds-next/body';
 
 import {
 	getTemplate,
 	getTemplateBreadcrumbs,
+	getTemplateDocsContent,
 	getTemplateList,
 	getTemplateSlugs,
 	getTemplateSubNavItems,
 	Template,
 } from '../../../lib/mdx';
 
+import { mdxComponents } from '../../../components/utils';
 import { TemplateLayout } from '../../../components/TemplateLayout';
 import { DocumentTitle } from '../../../components/DocumentTitle';
 
 export default function Templates({
 	breadcrumbs,
+	content,
 	subNavItems,
 	template,
 	templateLinks,
@@ -28,8 +32,7 @@ export default function Templates({
 		>
 			<DocumentTitle title={`${template.data.title} | Templates`} />
 			<Body>
-				You can view the full source code for this template on{' '}
-				<a href={template.data.codeURL}>GitHub</a>.
+				<MDXRemote {...content} components={mdxComponents} />
 			</Body>
 		</TemplateLayout>
 	);
@@ -37,6 +40,7 @@ export default function Templates({
 
 export const getStaticProps: GetStaticProps<
 	{
+		content: NonNullable<Awaited<ReturnType<typeof getTemplateDocsContent>>>;
 		template: Template;
 		templateLinks: { href: string; label: string }[];
 		subNavItems: Awaited<ReturnType<typeof getTemplateSubNavItems>>;
@@ -53,7 +57,11 @@ export const getStaticProps: GetStaticProps<
 		label: title,
 	}));
 
-	if (!(slug && template && subNavItems)) {
+	const content = template
+		? await getTemplateDocsContent(template.slug, 'code.mdx')
+		: null;
+
+	if (!(slug && template && content && subNavItems)) {
 		return { notFound: true };
 	}
 
@@ -61,6 +69,7 @@ export const getStaticProps: GetStaticProps<
 
 	return {
 		props: {
+			content,
 			template,
 			templateLinks,
 			breadcrumbs,

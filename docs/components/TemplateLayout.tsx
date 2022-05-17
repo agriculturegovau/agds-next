@@ -1,7 +1,8 @@
 import { PropsWithChildren } from 'react';
 import { H1 } from '@ag.ds-next/heading';
-import { Flex, Stack } from '@ag.ds-next/box';
+import { Box, Flex, Stack } from '@ag.ds-next/box';
 import { Text } from '@ag.ds-next/text';
+import { Callout } from '@ag.ds-next/callout';
 import { SecondaryNav } from '@ag.ds-next/secondary-nav';
 import { useRouter } from 'next/router';
 
@@ -47,7 +48,11 @@ export const TemplateLayout = ({
 					</Flex>
 
 					<SecondaryNav activePath={router.asPath} links={subNavItems} />
-					{children}
+					<Box paddingY={0.5}>{children}</Box>
+
+					<Callout title="Questions or feedback?">
+						<Text as="p">Contact details go here...</Text>
+					</Callout>
 				</Stack>
 			</PageLayout>
 		</AppLayout>
