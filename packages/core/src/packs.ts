@@ -8,12 +8,12 @@ const control = {
 	sm: {
 		width: mapSpacing(1.5),
 		height: mapSpacing(1.5),
-		borderWidth: tokens.borderWidth.md,
+		borderWidth: tokens.borderWidth.lg,
 	},
 	md: {
 		width: mapSpacing(2),
 		height: mapSpacing(2),
-		borderWidth: tokens.borderWidth.md,
+		borderWidth: tokens.borderWidth.lg,
 	},
 };
 
