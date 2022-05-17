@@ -2,7 +2,7 @@ import { PropsWithChildren } from 'react';
 import { Text } from '@ag.ds-next/text';
 
 export type PageAlertTitleProps = PropsWithChildren<{
-	as?: 'h2' | 'h3' | 'h4' | 'h5';
+	as?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5';
 }>;
 
 export const PageAlertTitle = ({
