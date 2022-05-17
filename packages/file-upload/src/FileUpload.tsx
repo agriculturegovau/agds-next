@@ -155,7 +155,12 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 										</Text>
 									) : null}
 								</Flex>
-								<Button variant="secondary" onClick={open} disabled={disabled}>
+								<Button
+									type="button"
+									variant="secondary"
+									onClick={open}
+									disabled={disabled}
+								>
 									{`Select ${filesPlural}`}
 								</Button>
 							</Flex>
