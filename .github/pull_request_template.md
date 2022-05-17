@@ -1,9 +1,10 @@
 ## Describe your changes
 
-Include screenshots/photos if necessary.
+Include screenshots, photos or links if necessary.
 
 ## Checklist
 
+- [ ] Read and check your code before tagging someone for review.
 - [ ] Run `yarn format`
 - [ ] Run `yarn lint` in the root of the repository to ensure tests are passing
 - [ ] Add necessary tests
@@ -13,6 +14,7 @@ Include screenshots/photos if necessary.
 
 For new components...
 
+- [ ] Create changelog file (packages/component/CHANGELOG.md)
 - [ ] Add components to Playroom (docs/playroom/components.js)
 - [ ] Add snippets to Playroom (docs/playroom/snippets.js)
 - [ ] Add to Docs for jsx live (docs/components/utils.tsx)
