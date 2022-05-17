@@ -17,6 +17,7 @@ import { FormExampleMultiStep1 } from './FormExampleMultiStep1';
 import { FormExampleMultiStep2 } from './FormExampleMultiStep2';
 import { FormExampleMultiStep3 } from './FormExampleMultiStep3';
 import { FormExampleMultiStep4 } from './FormExampleMultiStep4';
+import { FormExampleMultiStepSuccess } from './FormExampleMultiStepSuccess';
 
 export const FORM_STEPS = [
 	{
@@ -47,6 +48,7 @@ type ContextType = {
 	next: (formState: Record<string, unknown>) => void;
 	back: () => void;
 	formState: Record<string, unknown>;
+	globalFormState: any;
 	cancel: () => void;
 	saving: boolean;
 	saveAndExit: () => void;
@@ -101,7 +103,17 @@ export const FormExampleMultiStep = () => {
 		return Boolean(formState[previousStep]);
 	}, [formState, currentStep]);
 
-	console.log({ formState });
+	const success = false;
+
+	if (success) {
+		return (
+			<Columns>
+				<Column columnSpan={{ xs: 12, md: 8 }}>
+					<FormExampleMultiStepSuccess />
+				</Column>
+			</Columns>
+		);
+	}
 
 	return (
 		<context.Provider
@@ -109,6 +121,7 @@ export const FormExampleMultiStep = () => {
 				hasCompletedPreviousSteps,
 				next,
 				back,
+				globalFormState: formState,
 				formState: formState[currentStep],
 				submittingStep,
 				cancel,

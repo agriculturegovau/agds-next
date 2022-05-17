@@ -50,7 +50,7 @@ export const FormExampleMultiStep4 = () => {
 	const [focusedError, setFocusedError] = useState(false);
 
 	const scrollToField = useScrollToField();
-	const { next, formState } = useFormExampleMultiStepProdiver();
+	const { next, globalFormState } = useFormExampleMultiStepProdiver();
 
 	const {
 		control,
@@ -98,8 +98,10 @@ export const FormExampleMultiStep4 = () => {
 							<TableBody key={i}>
 								<tr>
 									<TableCell>{MAPPERS[idx][key]}</TableCell>
-									{console.log(formState)}
-									<TableCell>{formState?.[idx]?.[key] || 'N/A'}</TableCell>
+									{console.log(globalFormState?.[idx]?.[key])}
+									<TableCell>
+										{globalFormState?.[idx]?.[key] || 'N/A'}
+									</TableCell>
 								</tr>
 							</TableBody>
 						))}
