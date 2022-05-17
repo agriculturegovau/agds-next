@@ -52,7 +52,7 @@ export const FormExampleSinglePage = () => {
 		resolver: yupResolver(formSchema),
 	});
 
-	const onSubmit: SubmitHandler<FormSchema> = async (data) => {
+	const onSubmit: SubmitHandler<FormSchema> = (data) => {
 		console.log(data);
 	};
 
