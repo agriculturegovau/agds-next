@@ -39,6 +39,7 @@ type FormSchema = yup.InferType<typeof formSchema>;
 
 export const FormExampleSinglePage = () => {
 	const errorPageAlertRef = useRef<HTMLDivElement>(null);
+	const successPageAlertRef = useRef<HTMLDivElement>(null);
 	const [hasFocusedErrorRef, setHasFocusedErrorRef] = useState(false);
 
 	const scrollToField = useScrollToField();
@@ -68,9 +69,19 @@ export const FormExampleSinglePage = () => {
 		setHasFocusedErrorRef(true);
 	}, [hasFocusedErrorRef, hasErrors]);
 
+	useEffect(() => {
+		if (!isSubmitSuccessful) return;
+		successPageAlertRef.current?.focus();
+	}, [isSubmitSuccessful]);
+
 	if (isSubmitSuccessful) {
 		return (
-			<PageAlert tone="success" title="Thank you" tabIndex={-1} autofocus>
+			<PageAlert
+				tone="success"
+				title="Thank you"
+				tabIndex={-1}
+				ref={successPageAlertRef}
+			>
 				<Text>
 					The single-page form has been submitted sucessfully. You may now{' '}
 					<TextLink href="/">return home</TextLink>.
