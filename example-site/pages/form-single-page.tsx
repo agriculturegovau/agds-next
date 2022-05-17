@@ -13,8 +13,7 @@ const FormSinglePage: NextPage = () => {
 		<>
 			<DocumentTitle title="Single page form example" />
 			<AppLayout
-				templateName="Single-page form"
-				templateSlug="single-page-form"
+				template={{ name: 'Single-page form', slug: 'single-page-form' }}
 			>
 				<Content>
 					<Columns>

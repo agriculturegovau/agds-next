@@ -10,7 +10,7 @@ const ContentPage: NextPage = () => {
 	return (
 		<>
 			<DocumentTitle title="Content page example" />
-			<AppLayout templateName="Content" templateSlug="content">
+			<AppLayout template={{ name: 'Content', slug: 'content' }}>
 				<Content>
 					<Columns>
 						<Column columnSpan={{ xs: 12, md: 3 }}>

@@ -2,17 +2,14 @@ import { Flex } from '@ag.ds-next/box';
 import { Text } from '@ag.ds-next/text';
 import { DirectionLink } from '../../packages/direction-link/src';
 
-export type ExampleBannerProps = {
+export type TemplateBannerProps = {
 	/** Pretty name of template: e.g. Multi-step form */
-	templateName: string;
+	name: string;
 	/** Template slug in the docs site. e.g. multi-step-form */
-	templateSlug: string;
+	slug: string;
 };
 
-export const ExampleBanner = ({
-	templateName,
-	templateSlug,
-}: ExampleBannerProps) => {
+export const TemplateBanner = ({ name, slug }: TemplateBannerProps) => {
 	return (
 		<Flex
 			gap={[2, 1]}
@@ -23,10 +20,12 @@ export const ExampleBanner = ({
 		>
 			<DirectionLink
 				direction="left"
-				href={`https://steelthreads.github.io/agds-next/templates/${templateSlug}`}
-			>{`View ${templateName} template overview`}</DirectionLink>
+				href={`https://steelthreads.github.io/agds-next/templates/${slug}`}
+			>
+				View {name} template overview
+			</DirectionLink>
 			<Text fontSize={['md', 'sm']} fontWeight="bold">
-				{templateName}
+				{name}
 			</Text>
 		</Flex>
 	);

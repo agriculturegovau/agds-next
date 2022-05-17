@@ -3,7 +3,7 @@ import { Logo } from '@ag.ds-next/ag-branding';
 import { Stack } from '@ag.ds-next/box';
 import { Header } from '@ag.ds-next/header';
 import { AvatarIcon } from '@ag.ds-next/icon';
-import { MainNav, MainNavLink } from '@ag.ds-next/main-nav';
+import { MainNav, MainNavBottomBar, MainNavLink } from '@ag.ds-next/main-nav';
 import { SiteHeaderSearch } from './SiteHeaderSearch';
 
 const NAV_LINKS = [
@@ -13,7 +13,7 @@ const NAV_LINKS = [
 	{ label: 'Multi step form', href: '/form-multi-step' },
 ];
 
-export const SiteHeader = () => {
+export const SiteHeader = ({ focusMode }: { focusMode: boolean }) => {
 	const router = useRouter();
 	return (
 		<Stack>
@@ -24,15 +24,24 @@ export const SiteHeader = () => {
 				subline="Supporting Australian agricultural exports"
 				rightContent={<SiteHeaderSearch />}
 			/>
-			<MainNav
-				id="main-nav"
-				variant="agriculture"
-				links={NAV_LINKS}
-				activePath={router.asPath}
-				rightContent={
-					<MainNavLink label="Sign in" href="/form-sign-in" icon={AvatarIcon} />
-				}
-			/>
+
+			{!focusMode ? (
+				<MainNav
+					id="main-nav"
+					variant="agriculture"
+					links={NAV_LINKS}
+					activePath={router.asPath}
+					rightContent={
+						<MainNavLink
+							label="Sign in"
+							href="/form-sign-in"
+							icon={AvatarIcon}
+						/>
+					}
+				/>
+			) : (
+				<MainNavBottomBar variant="agriculture" />
+			)}
 		</Stack>
 	);
 };

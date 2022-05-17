@@ -13,7 +13,7 @@ const Home: NextPage = () => {
 	return (
 		<>
 			<DocumentTitle title="Home" />
-			<AppLayout templateName="Home" templateSlug="home">
+			<AppLayout template={{ name: 'Home', slug: 'home' }}>
 				<Content spacing="lg" background="shade">
 					<Columns gap={1}>
 						<Column columnSpan={{ xs: 12, md: 6 }}>
