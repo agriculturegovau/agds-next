@@ -3,10 +3,12 @@ import { AvatarIcon } from '@ag.ds-next/icon';
 
 import { MainNav } from './MainNav';
 import { MainNavButton, MainNavLink } from './MainNavItem';
+import { MainNavBottomBar } from './MainNavBottomBar';
 
 export default {
 	title: 'navigation/MainNav',
 	component: MainNav,
+	subcomponents: { MainNavBottomBar },
 } as ComponentMeta<typeof MainNav>;
 
 const NAV_ITEMS = [
@@ -92,4 +94,11 @@ NoLinks.args = {
 			icon={AvatarIcon}
 		/>
 	),
+};
+
+export const BottomBar: ComponentStory<typeof MainNavBottomBar> = (args) => (
+	<MainNavBottomBar {...args} />
+);
+BottomBar.args = {
+	variant: 'agriculture',
 };
