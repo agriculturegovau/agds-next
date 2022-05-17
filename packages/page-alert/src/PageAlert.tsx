@@ -30,6 +30,7 @@ export const PageAlert = forwardRef<HTMLDivElement, PageAlertProps>(
 				id={id}
 				tabIndex={tabIndex}
 				rounded
+				focus
 				css={{ backgroundColor: bg }}
 			>
 				<Flex
