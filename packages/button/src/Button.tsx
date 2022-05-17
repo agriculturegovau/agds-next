@@ -33,6 +33,7 @@ export type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> &
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 	function Button(
 		{
+			type = 'button',
 			block = false,
 			iconBefore: IconBefore,
 			iconAfter: IconAfter,
@@ -47,7 +48,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 	) {
 		const styles = buttonStyles({ block, size, variant });
 		return (
-			<button ref={ref} css={styles} {...props}>
+			<button ref={ref} css={styles} type={type} {...props}>
 				{IconBefore ? (
 					<IconBefore size={iconSize[size]} weight="regular" />
 				) : null}
