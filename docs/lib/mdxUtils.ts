@@ -1,3 +1,4 @@
+// TODO: Rename me to lib/mdx/utils.ts
 import { plugin } from '@untitled-docs/live-code/rehype';
 import { serialize } from 'next-mdx-remote/serialize';
 import { readdir, readFile } from 'fs/promises';
@@ -10,7 +11,6 @@ import { slugify } from './slugify';
 const PKG_PATH = normalize(`${process.cwd()}/../packages/`);
 const RELEASE_PATH = normalize(`${process.cwd()}/../releases/`);
 const GUIDE_PATH = normalize(`${process.cwd()}/../guides/`);
-const TEMPLATES_PATH = normalize(`${process.cwd()}/../templates/`);
 
 const pkgDocsPath = (slug: string) =>
 	normalize(`${PKG_PATH}/${slug}/README.md`);
@@ -18,10 +18,8 @@ const pkgJsonPath = (slug: string) =>
 	normalize(`${PKG_PATH}/${slug}/package.json`);
 const releasePath = (slug: string) => normalize(`${RELEASE_PATH}/${slug}.mdx`);
 const guidePath = (slug: string) => normalize(`${GUIDE_PATH}/${slug}.mdx`);
-const templatePath = (slug: string) =>
-	normalize(`${TEMPLATES_PATH}/${slug}.mdx`);
 
-function stripMdxExtension(filename: string) {
+export function stripMdxExtension(filename: string) {
 	return filename.replace(/\.mdx?$/gi, '');
 }
 
@@ -298,70 +296,3 @@ export function getGuidesBreadcrumbs(slug: string) {
 
 export type Guide = Awaited<ReturnType<typeof getGuide>>;
 export type GuideList = Awaited<ReturnType<typeof getGuideList>>;
-
-// Templates
-
-export async function getTemplate(slug: string) {
-	const { content, data } = await getMarkdownData(templatePath(slug));
-	const source = await serializeMarkdown(content, data);
-
-	return {
-		slug,
-		source,
-		data,
-		title: (data.title ?? slug) as string,
-	};
-}
-
-export const getTemplateBreadcrumbs = (templateTitle: string) => {
-	return [{ href: '/templates', label: 'Templates' }, { label: templateTitle }];
-};
-
-export async function getTemplateSlugs() {
-	const entries = await readdir(TEMPLATES_PATH, { withFileTypes: true });
-	return entries
-		.filter(
-			(entry) =>
-				!entry.name.startsWith('_') &&
-				!entry.name.startsWith('.') &&
-				!entry.name.startsWith('index') &&
-				entry.isFile()
-		)
-		.map((entry) => slugify(stripMdxExtension(entry.name)))
-		.sort()
-		.reverse();
-}
-
-export function getTemplateList() {
-	return getTemplateSlugs().then((slugs) =>
-		Promise.all(
-			slugs.map((slug) =>
-				getMarkdownData(templatePath(slug)).then(({ data }) => ({
-					title: (data?.title ?? slug) as string,
-					slug,
-					description: data?.description,
-				}))
-			)
-		)
-	);
-}
-
-function templateNavMetaData(
-	slug: string,
-	data: Awaited<ReturnType<typeof getMarkdownData>>['data']
-) {
-	return {
-		title: (data?.title ?? slug) as string,
-		slug,
-	};
-}
-
-export function getTemplatesBreadcrumbs(slug: string) {
-	return getMarkdownData(templatePath(slug)).then(({ data }) => {
-		const meta = templateNavMetaData(slug, data);
-		return [{ href: '/templates', label: 'Templates' }, { label: meta.title }];
-	});
-}
-
-export type Template = Awaited<ReturnType<typeof getTemplate>>;
-export type TemplateList = Awaited<ReturnType<typeof getTemplateList>>;

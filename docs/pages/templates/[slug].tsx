@@ -13,7 +13,7 @@ import {
 	getTemplateList,
 	getTemplateSlugs,
 	Template,
-} from '../../lib/mdxUtils';
+} from '../../lib/mdx';
 
 import { mdxComponents } from '../../components/utils';
 import { AppLayout } from '../../components/AppLayout';

@@ -2,17 +2,14 @@ import { MDXRemote } from 'next-mdx-remote';
 import { normalize } from 'path';
 import { Body } from '@ag.ds-next/body';
 import { mapSpacing, boxPalette } from '@ag.ds-next/core';
-import { H2, H3 } from '@ag.ds-next/heading';
+import { H3 } from '@ag.ds-next/heading';
 import { Box, Flex, Stack } from '@ag.ds-next/box';
 import { Card, CardLink, CardInner } from '@ag.ds-next/card';
 import { mq } from '@ag.ds-next/core';
-import { Text, TextLink } from '@ag.ds-next/text';
+import { Text } from '@ag.ds-next/text';
 
-import {
-	getMarkdownData,
-	getTemplateList,
-	serializeMarkdown,
-} from '../../lib/mdxUtils';
+import { getMarkdownData, serializeMarkdown } from '../../lib/mdxUtils';
+import { getTemplateList } from '../../lib/mdx';
 import { mdxComponents } from '../../components/utils';
 import { AppLayout } from '../../components/AppLayout';
 import { PageLayout } from '../../components/PageLayout';
