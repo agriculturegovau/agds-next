@@ -1,32 +1,32 @@
 import { backgroundColorMap, Box } from '@ag.ds-next/box';
 import { boxPalette, packs } from '@ag.ds-next/core';
 import React, { PropsWithChildren } from 'react';
-import { localPaletteVars } from './utils';
+import { localPalette, localPaletteVars } from './utils';
 
 const variantMap = {
 	light: {
 		palette: 'light',
 		background: 'body',
 		hover: 'shade',
-		bottomBar: boxPalette.foregroundAction,
+		bottomBar: boxPalette.backgroundBodyAlt,
 	},
 	lightAlt: {
 		palette: 'light',
 		background: 'bodyAlt',
 		hover: 'shadeAlt',
-		bottomBar: boxPalette.foregroundAction,
+		bottomBar: boxPalette.backgroundBodyAlt,
 	},
 	dark: {
 		palette: 'dark',
 		background: 'body',
 		hover: 'shade',
-		bottomBar: boxPalette.foregroundAction,
+		bottomBar: boxPalette.backgroundBodyAlt,
 	},
 	darkAlt: {
 		palette: 'dark',
 		background: 'bodyAlt',
 		hover: 'shadeAlt',
-		bottomBar: boxPalette.foregroundAction,
+		bottomBar: boxPalette.backgroundBodyAlt,
 	},
 } as const;
 
@@ -44,7 +44,7 @@ export function SecondaryNavContainer({
 	children,
 	variant,
 }: SecondaryNavContainerProps) {
-	const { palette, background, bottomBar, hover } = variantMap[variant];
+	const { palette, bottomBar, background, hover } = variantMap[variant];
 	return (
 		<Box
 			as="nav"
@@ -53,12 +53,32 @@ export function SecondaryNavContainer({
 			id={id}
 			aria-label={ariaLabel}
 			css={{
+				position: 'relative',
+				overflowX: 'auto',
 				[localPaletteVars.linkHoverBg]: backgroundColorMap[hover],
-				[localPaletteVars.bottomBar]: bottomBar, // <-- special case
+				[localPaletteVars.bottomBar]: bottomBar,
 				...packs.print.hidden,
 			}}
 		>
 			{children}
+			<BottomBar />
 		</Box>
+	);
+}
+
+function BottomBar() {
+	return (
+		<Box
+			display={['none', 'block']}
+			paddingTop={0.5}
+			css={{
+				position: 'absolute',
+				bottom: 0,
+				left: 0,
+				right: 0,
+				width: '100%',
+				backgroundColor: localPalette.bottomBar,
+			}}
+		/>
 	);
 }

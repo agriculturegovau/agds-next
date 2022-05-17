@@ -24,15 +24,21 @@ export function SecondaryNavListItem({
 			borderBottom
 			css={mq({
 				borderBottomColor: mapResponsiveProp([
-					boxPalette.border,
-					active ? boxPalette.foregroundAction : boxPalette.backgroundBodyAlt,
+					boxPalette.borderMuted,
+					active ? boxPalette.foregroundAction : localPalette.bottomBar,
 				]),
 				borderBottomWidth: mapResponsiveProp([
 					tokens.borderWidth.sm,
 					mapSpacing(0.5),
 				]),
 
-				' a': {
+				'&:first-of-type': {
+					borderTopWidth: mapResponsiveProp([tokens.borderWidth.sm, 0]),
+					borderTopStyle: 'solid',
+					borderTopColor: boxPalette.borderMuted,
+				},
+
+				'& a': {
 					display: mapResponsiveProp(['block', 'inline-block']),
 					position: 'relative',
 					color: active
@@ -40,7 +46,6 @@ export function SecondaryNavListItem({
 						: boxPalette.foregroundAction,
 					padding: mapSpacing(1),
 					textDecoration: 'none',
-
 					borderLeftStyle: 'solid',
 					borderLeftWidth: mapResponsiveProp([tokens.borderWidth.xl, 0]),
 					borderLeftColor: active ? boxPalette.foregroundAction : 'transparent',
@@ -79,8 +84,6 @@ export function SecondaryNavListItem({
 						backgroundColor: localPalette.linkHoverBg,
 					},
 				},
-
-				'&:last-of-type': { flex: 1 },
 			})}
 		>
 			{children}
