@@ -5,7 +5,7 @@ import { Body } from '@ag.ds-next/body';
 import {
 	getTemplate,
 	getTemplateBreadcrumbs,
-	getTemplateList,
+	getTemplateNavLinks,
 	getTemplateSlugs,
 	getTemplateSubNavItems,
 	Template,
@@ -19,14 +19,14 @@ export default function Templates({
 	breadcrumbs,
 	subNavItems,
 	template,
-	templateLinks,
+	navLinks,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
 	return (
 		<TemplateLayout
 			template={template}
 			breadcrumbs={breadcrumbs}
 			subNavItems={subNavItems}
-			navLinks={templateLinks}
+			navLinks={navLinks}
 		>
 			<DocumentTitle title={`${template.data.title} | Templates`} />
 			<Body>
@@ -39,8 +39,8 @@ export default function Templates({
 export const getStaticProps: GetStaticProps<
 	{
 		template: Template;
-		templateLinks: { href: string; label: string }[];
-		breadcrumbs: ReturnType<typeof getTemplateBreadcrumbs>;
+		navLinks: { href: string; label: string }[];
+		breadcrumbs: Awaited<ReturnType<typeof getTemplateBreadcrumbs>>;
 		subNavItems: Awaited<ReturnType<typeof getTemplateSubNavItems>>;
 	},
 	{ slug: string }
@@ -48,22 +48,19 @@ export const getStaticProps: GetStaticProps<
 	const { slug } = params ?? {};
 	const template = slug ? await getTemplate(slug) : undefined;
 	const subNavItems = slug ? await getTemplateSubNavItems(slug) : undefined;
-	const templateList = await getTemplateList();
-	const templateLinks = templateList.map(({ title, slug }) => ({
-		href: `/templates/${slug}`,
-		label: title,
-	}));
+	const navLinks = await getTemplateNavLinks();
+	const breadcrumbs = slug
+		? await getTemplateBreadcrumbs(slug, 'Overview')
+		: undefined;
 
 	if (!(slug && template && subNavItems)) {
 		return { notFound: true };
 	}
 
-	const breadcrumbs = getTemplateBreadcrumbs(template.data.title);
-
 	return {
 		props: {
 			template,
-			templateLinks,
+			navLinks,
 			subNavItems,
 			breadcrumbs,
 			slug,

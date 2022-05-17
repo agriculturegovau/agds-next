@@ -1,5 +1,4 @@
 import { normalize } from 'path';
-import { existsSync } from 'fs';
 import { readdir } from 'fs/promises';
 
 import {
@@ -26,10 +25,6 @@ export async function getTemplate(slug: string) {
 		title: (data.title ?? slug) as string,
 	};
 }
-
-export const getTemplateBreadcrumbs = (templateTitle: string) => {
-	return [{ href: '/templates', label: 'Templates' }, { label: templateTitle }];
-};
 
 export async function getTemplateSubNavItems(slug: string) {
 	return getMarkdownData(templateOverviewPath(slug)).then(({ data }) => {
@@ -97,11 +92,23 @@ function templateNavMetaData(
 	};
 }
 
-export function getTemplatesBreadcrumbs(slug: string) {
+export function getTemplateBreadcrumbs(slug: string, currentPageName: string) {
 	return getMarkdownData(templateOverviewPath(slug)).then(({ data }) => {
 		const meta = templateNavMetaData(slug, data);
-		return [{ href: '/templates', label: 'Templates' }, { label: meta.title }];
+		return [
+			{ href: '/templates', label: 'Templates' },
+			{ href: `/templates/${slug}`, label: meta.title },
+			{ label: currentPageName },
+		];
 	});
+}
+
+export async function getTemplateNavLinks() {
+	const templateList = await getTemplateList();
+	return templateList.map(({ title, slug }) => ({
+		href: `/templates/${slug}`,
+		label: title,
+	}));
 }
 
 export type Template = Awaited<ReturnType<typeof getTemplate>>;

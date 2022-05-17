@@ -6,6 +6,6 @@ export {
 	getTemplateSlugs,
 	getTemplateSubNavItems,
 	getTemplateList,
-	getTemplatesBreadcrumbs,
+	getTemplateNavLinks,
 } from './templates';
 export type { Template, TemplateList } from './templates';

@@ -1,6 +1,7 @@
 import { PropsWithChildren } from 'react';
 import { H1 } from '@ag.ds-next/heading';
 import { Box, Flex, Stack } from '@ag.ds-next/box';
+import { SideNavProps } from '@ag.ds-next/side-nav';
 import { Text } from '@ag.ds-next/text';
 import { Callout } from '@ag.ds-next/callout';
 import { SecondaryNav } from '@ag.ds-next/secondary-nav';
@@ -16,10 +17,10 @@ import type {
 } from '../lib/mdx';
 
 type TemplateLayoutProps = PropsWithChildren<{
-	breadcrumbs: ReturnType<typeof getTemplateBreadcrumbs>;
+	breadcrumbs: Awaited<ReturnType<typeof getTemplateBreadcrumbs>>;
 	subNavItems: Awaited<ReturnType<typeof getTemplateSubNavItems>>;
 	template: Template;
-	navLinks: { href: string; label: string }[];
+	navLinks: SideNavProps['items'];
 }>;
 
 export const TemplateLayout = ({
@@ -42,9 +43,14 @@ export const TemplateLayout = ({
 				breadcrumbs={breadcrumbs}
 			>
 				<Stack as="main" gap={1}>
-					<Flex flexDirection="column" gap={0.25}>
+					<Flex flexDirection="column" gap={0.25} paddingBottom={1}>
+						<Text fontSize="lg" color="muted" fontWeight="bold">
+							vX.X.X
+						</Text>
 						<H1>{template.data.title}</H1>
-						<Text fontSize="lg">{template.data.description}</Text>
+						<Text fontSize="lg" color="muted">
+							{template.data.description}
+						</Text>
 					</Flex>
 
 					<SecondaryNav activePath={router.asPath} links={subNavItems} />

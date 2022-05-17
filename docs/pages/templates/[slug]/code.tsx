@@ -6,7 +6,7 @@ import {
 	getTemplate,
 	getTemplateBreadcrumbs,
 	getTemplateDocsContent,
-	getTemplateList,
+	getTemplateNavLinks,
 	getTemplateSlugs,
 	getTemplateSubNavItems,
 	Template,
@@ -21,13 +21,13 @@ export default function Templates({
 	content,
 	subNavItems,
 	template,
-	templateLinks,
+	navLinks,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
 	return (
 		<TemplateLayout
 			template={template}
 			breadcrumbs={breadcrumbs}
-			navLinks={templateLinks}
+			navLinks={navLinks}
 			subNavItems={subNavItems}
 		>
 			<DocumentTitle title={`${template.data.title} | Templates`} />
@@ -42,20 +42,19 @@ export const getStaticProps: GetStaticProps<
 	{
 		content: NonNullable<Awaited<ReturnType<typeof getTemplateDocsContent>>>;
 		template: Template;
-		templateLinks: { href: string; label: string }[];
+		navLinks: { href: string; label: string }[];
 		subNavItems: Awaited<ReturnType<typeof getTemplateSubNavItems>>;
-		breadcrumbs: ReturnType<typeof getTemplateBreadcrumbs>;
+		breadcrumbs: Awaited<ReturnType<typeof getTemplateBreadcrumbs>>;
 	},
 	{ slug: string }
 > = async ({ params }) => {
 	const { slug } = params ?? {};
 	const template = slug ? await getTemplate(slug) : undefined;
-	const templateList = await getTemplateList();
 	const subNavItems = slug ? await getTemplateSubNavItems(slug) : undefined;
-	const templateLinks = templateList.map(({ title, slug }) => ({
-		href: `/templates/${slug}`,
-		label: title,
-	}));
+	const navLinks = await getTemplateNavLinks();
+	const breadcrumbs = slug
+		? await getTemplateBreadcrumbs(slug, 'Code')
+		: undefined;
 
 	const content = template
 		? await getTemplateDocsContent(template.slug, 'code.mdx')
@@ -65,13 +64,11 @@ export const getStaticProps: GetStaticProps<
 		return { notFound: true };
 	}
 
-	const breadcrumbs = getTemplateBreadcrumbs(template.data.title);
-
 	return {
 		props: {
 			content,
 			template,
-			templateLinks,
+			navLinks,
 			breadcrumbs,
 			slug,
 			subNavItems,
