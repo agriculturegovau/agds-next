@@ -1,7 +1,7 @@
 import { Body } from '@ag.ds-next/body';
 import { Stack } from '@ag.ds-next/box';
-import { Callout } from '@ag.ds-next/callout';
 import { PageAlert, PageAlertTitle } from '@ag.ds-next/page-alert';
+import { FormExampleMultiStepCallout } from './FormExampleMultiStepCallout';
 
 export const FormExampleMultiStepSuccess = () => {
 	return (
@@ -26,14 +26,7 @@ export const FormExampleMultiStepSuccess = () => {
 					vim.{' '}
 				</p>
 			</Body>
-			<Callout title="Need help?">
-				<p>
-					Call <strong>000 000 000</strong> (9am to 5pm AEST Monday to Friday)
-					<br />
-					Email{' '}
-					<a href="mailto:emailaccount@awe.gov.au">emailaccount@awe.gov.au</a>
-				</p>
-			</Callout>
+			<FormExampleMultiStepCallout />
 		</Stack>
 	);
 };
