@@ -3,7 +3,6 @@ import { Content } from '@ag.ds-next/content';
 import { Columns, Column } from '@ag.ds-next/columns';
 import { LinkList } from '@ag.ds-next/link-list';
 import { ButtonLink } from '@ag.ds-next/button';
-import { Body } from '@ag.ds-next/body';
 import { ExternalLinkIcon } from '@ag.ds-next/icon';
 import { Flex, Stack } from '@ag.ds-next/box';
 import { AppLayout } from '../../components/AppLayout';
