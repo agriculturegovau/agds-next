@@ -16,33 +16,36 @@ import { TemplateLayout } from '../../../components/TemplateLayout';
 import { mdxComponents } from '../../../components/utils';
 import { DocumentTitle } from '../../../components/DocumentTitle';
 
-export default function Templates({
+export default function TemplateOverviewPage({
 	breadcrumbs,
 	subNavItems,
 	template,
 	navLinks,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
 	return (
-		<TemplateLayout
-			template={template}
-			breadcrumbs={breadcrumbs}
-			subNavItems={subNavItems}
-			navLinks={navLinks}
-		>
-			<DocumentTitle title={`${template.data.title} | Templates`} />
-			<Body>
-				{template.imageSrc && (
-					<Box border borderColor="muted" css={{ img: { display: 'block' } }}>
-						<img
-							role="presentation"
-							src={template.imageSrc}
-							alt="Screenshot of template"
-						/>
-					</Box>
-				)}
-				<MDXRemote {...template.source} components={mdxComponents} />
-			</Body>
-		</TemplateLayout>
+		<>
+			<DocumentTitle title={`${template.data.title} template`} />
+			<TemplateLayout
+				template={template}
+				breadcrumbs={breadcrumbs}
+				subNavItems={subNavItems}
+				navLinks={navLinks}
+				editPath={`/templates/${template.slug}/index.mdx`}
+			>
+				<Body>
+					{template.imageSrc && (
+						<Box border borderColor="muted" css={{ img: { display: 'block' } }}>
+							<img
+								role="presentation"
+								src={template.imageSrc}
+								alt="Screenshot of template"
+							/>
+						</Box>
+					)}
+					<MDXRemote {...template.source} components={mdxComponents} />
+				</Body>
+			</TemplateLayout>
+		</>
 	);
 }
 

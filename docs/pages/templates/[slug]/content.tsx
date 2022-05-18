@@ -16,7 +16,7 @@ import {
 import { mdxComponents } from '../../../components/utils';
 import { DocumentTitle } from '../../../components/DocumentTitle';
 
-export default function Templates({
+export default function TemplateContentPage({
 	breadcrumbs,
 	template,
 	content,
@@ -24,17 +24,20 @@ export default function Templates({
 	navLinks,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
 	return (
-		<TemplateLayout
-			template={template}
-			breadcrumbs={breadcrumbs}
-			navLinks={navLinks}
-			subNavItems={subNavItems}
-		>
-			<DocumentTitle title={`${template.data.title} | Templates`} />
-			<Body>
-				<MDXRemote {...content} components={mdxComponents} />
-			</Body>
-		</TemplateLayout>
+		<>
+			<DocumentTitle title={`${template.data.title} template content`} />
+			<TemplateLayout
+				template={template}
+				breadcrumbs={breadcrumbs}
+				navLinks={navLinks}
+				subNavItems={subNavItems}
+				editPath={`/templates/${template.slug}/content.mdx`}
+			>
+				<Body>
+					<MDXRemote {...content} components={mdxComponents} />
+				</Body>
+			</TemplateLayout>
+		</>
 	);
 }
 

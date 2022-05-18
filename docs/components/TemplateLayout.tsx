@@ -19,6 +19,7 @@ import type {
 
 type TemplateLayoutProps = PropsWithChildren<{
 	breadcrumbs: Awaited<ReturnType<typeof getTemplateBreadcrumbs>>;
+	editPath: string;
 	subNavItems: Awaited<ReturnType<typeof getTemplateSubNavItems>>;
 	template: Template;
 	navLinks: SideNavProps['items'];
@@ -26,6 +27,7 @@ type TemplateLayoutProps = PropsWithChildren<{
 
 export const TemplateLayout = ({
 	breadcrumbs,
+	editPath,
 	subNavItems,
 	children,
 	navLinks,
@@ -40,7 +42,7 @@ export const TemplateLayout = ({
 					titleLink: '/templates',
 					items: navLinks,
 				}}
-				editPath={`/templates/${template.slug}.mdx`}
+				editPath={editPath}
 				breadcrumbs={breadcrumbs}
 			>
 				<Stack as="main" gap={2}>

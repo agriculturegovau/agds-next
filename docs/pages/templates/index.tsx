@@ -1,9 +1,9 @@
 import { MDXRemote } from 'next-mdx-remote';
 import { normalize } from 'path';
 import { Body } from '@ag.ds-next/body';
-import { mapSpacing, boxPalette } from '@ag.ds-next/core';
+import { boxPalette } from '@ag.ds-next/core';
 import { Box, Flex, Stack } from '@ag.ds-next/box';
-import { Card, CardLink, CardInner } from '@ag.ds-next/card';
+import { Card, CardLink, CardInner, CardList } from '@ag.ds-next/card';
 import { mq } from '@ag.ds-next/core';
 import { Text } from '@ag.ds-next/text';
 
@@ -34,18 +34,11 @@ export default function TemplatesPage({ source, templateLinks }: StaticProps) {
 							<MDXRemote {...source} components={mdxComponents} />
 						</Body>
 
-						<Box
-							as="ul"
-							css={mq({
-								display: 'grid',
-								gridGap: mapSpacing(1.5),
-								gridTemplateColumns: ['1fr', '1fr 1fr', '1fr 1fr 1fr'],
-							})}
-						>
+						<CardList gap={1.5} templateColumns={{ xs: 1, sm: 2, lg: 3 }}>
 							{templateLinks.map((template) => {
-								return <TemplateCard key={template.slug} data={template} />;
+								return <TemplateCard key={template.slug} {...template} />;
 							})}
-						</Box>
+						</CardList>
 					</Stack>
 				</PageLayout>
 			</AppLayout>
@@ -54,9 +47,13 @@ export default function TemplatesPage({ source, templateLinks }: StaticProps) {
 }
 
 const TemplateCard = ({
-	data: { slug, label, description },
+	slug,
+	label,
+	description,
 }: {
-	data: { slug: string; label: string; description: string };
+	slug: string;
+	label: string;
+	description: string;
 }) => {
 	return (
 		<Card as="li" clickable shadow>
