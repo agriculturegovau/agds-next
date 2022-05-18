@@ -14,7 +14,7 @@ const Home: NextPage = () => {
 		<>
 			<DocumentTitle title="Home" />
 			<AppLayout template={{ name: 'Home', slug: 'home' }}>
-				<Content spacing="lg" background="shade">
+				<Content background="shade">
 					<Columns gap={1}>
 						<Column columnSpan={{ xs: 12, md: 6 }}>
 							<Stack gap={2} alignItems="flex-start">
@@ -43,7 +43,7 @@ const Home: NextPage = () => {
 					</Columns>
 				</Content>
 
-				<Content spacing="lg">
+				<Content>
 					<Body>
 						<h2>Some highlighted content</h2>
 						<p>
@@ -62,7 +62,7 @@ const Home: NextPage = () => {
 					</Body>
 				</Content>
 
-				<Content spacing="lg" background="shade">
+				<Content background="shade">
 					<Body>
 						<h2>Sub content</h2>
 						<p>
@@ -78,7 +78,7 @@ const Home: NextPage = () => {
 					</Flex>
 				</Content>
 
-				<Content spacing="lg">
+				<Content>
 					<H2>Articles</H2>
 					<Columns gap={1} as="ul">
 						{Array.from(Array(3).keys()).map((idx) => (

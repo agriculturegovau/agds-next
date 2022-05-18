@@ -15,7 +15,7 @@ export const HeroBannerContent = ({
 	variant,
 }: HeroBannerContentProps) => {
 	return (
-		<Content as="div" spacing="sm">
+		<Content as="div">
 			<Flex>
 				<Stack
 					gap={[1.5, 2]}
