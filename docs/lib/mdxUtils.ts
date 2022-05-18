@@ -1,3 +1,4 @@
+// TODO: Rename me to lib/mdx/utils.ts
 import { plugin } from '@untitled-docs/live-code/rehype';
 import { serialize } from 'next-mdx-remote/serialize';
 import { readdir, readFile } from 'fs/promises';
@@ -18,7 +19,7 @@ const pkgJsonPath = (slug: string) =>
 const releasePath = (slug: string) => normalize(`${RELEASE_PATH}/${slug}.mdx`);
 const guidePath = (slug: string) => normalize(`${GUIDE_PATH}/${slug}.mdx`);
 
-function stripMdxExtension(filename: string) {
+export function stripMdxExtension(filename: string) {
 	return filename.replace(/\.mdx?$/gi, '');
 }
 

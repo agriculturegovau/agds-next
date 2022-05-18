@@ -1,0 +1,104 @@
+import { MDXRemote } from 'next-mdx-remote';
+import { normalize } from 'path';
+import { Body } from '@ag.ds-next/body';
+import { boxPalette } from '@ag.ds-next/core';
+import { Box, Flex, Stack } from '@ag.ds-next/box';
+import { Card, CardLink, CardInner, CardList } from '@ag.ds-next/card';
+import { mq } from '@ag.ds-next/core';
+import { Text } from '@ag.ds-next/text';
+
+import { getMarkdownData, serializeMarkdown } from '../../lib/mdxUtils';
+import { getTemplateList } from '../../lib/mdx';
+import { mdxComponents } from '../../components/utils';
+import { AppLayout } from '../../components/AppLayout';
+import { PageLayout } from '../../components/PageLayout';
+import { DocumentTitle } from '../../components/DocumentTitle';
+
+type StaticProps = Awaited<ReturnType<typeof getStaticProps>>['props'];
+
+export default function TemplatesPage({ source, templateLinks }: StaticProps) {
+	return (
+		<>
+			<DocumentTitle title="Templates" />
+			<AppLayout>
+				<PageLayout
+					sideNav={{
+						title: 'Templates',
+						titleLink: '/templates',
+						items: templateLinks,
+					}}
+					editPath="/templates/index.mdx"
+				>
+					<Stack gap={2}>
+						<Body>
+							<MDXRemote {...source} components={mdxComponents} />
+						</Body>
+
+						<CardList gap={1.5} templateColumns={{ xs: 1, sm: 2, lg: 3 }}>
+							{templateLinks.map((template) => {
+								return <TemplateCard key={template.slug} {...template} />;
+							})}
+						</CardList>
+					</Stack>
+				</PageLayout>
+			</AppLayout>
+		</>
+	);
+}
+
+const TemplateCard = ({
+	slug,
+	label,
+	description,
+}: {
+	slug: string;
+	label: string;
+	description: string;
+}) => {
+	return (
+		<Card as="li" clickable shadow>
+			<Flex flexDirection="column-reverse">
+				<CardInner>
+					<Stack gap={1} flexGrow={1}>
+						<Box as="h3">
+							<CardLink href={`/templates/${slug}`}>{label}</CardLink>
+						</Box>
+						<Text>{description}</Text>
+					</Stack>
+				</CardInner>
+				<img
+					src={`/agds-next/img/templates/${slug}.png`}
+					alt={`Screenshot of ${label} example`}
+					height="auto"
+					width="100%"
+					css={mq({
+						borderBottom: `1px solid ${boxPalette.borderMuted}`,
+						objectFit: 'cover',
+					})}
+				/>
+			</Flex>
+		</Card>
+	);
+};
+
+export async function getStaticProps() {
+	const { content } = await getMarkdownData(
+		normalize(`${process.cwd()}/../templates/index.mdx`)
+	);
+	const source = await serializeMarkdown(content);
+	const templateList = await getTemplateList();
+
+	const templateLinks = templateList.map(({ slug, title, description }) => ({
+		href: `/templates/${slug}`,
+		slug,
+		label: title,
+		description: description || null,
+	}));
+
+	return {
+		props: {
+			source,
+			templateLinks,
+		},
+	};
+}
