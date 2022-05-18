@@ -64,9 +64,9 @@ const TemplateCard = ({
 			<Flex flexDirection="column-reverse">
 				<CardInner>
 					<Stack gap={1} flexGrow={1}>
-						<H3>
+						<Box as="h3">
 							<CardLink href={`/templates/${slug}`}>{label}</CardLink>
-						</H3>
+						</Box>
 						<Text>{description}</Text>
 					</Stack>
 				</CardInner>

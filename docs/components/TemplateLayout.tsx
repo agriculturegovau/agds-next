@@ -42,19 +42,18 @@ export const TemplateLayout = ({
 				editPath={`/templates/${template.slug}.mdx`}
 				breadcrumbs={breadcrumbs}
 			>
-				<Stack as="main" gap={1}>
-					<Flex flexDirection="column" gap={0.25} paddingBottom={1}>
-						<Text fontSize="lg" color="muted" fontWeight="bold">
-							vX.X.X
+				<Stack as="main" gap={2}>
+					<Flex flexDirection="column" gap={0.25}>
+						<Text as="span" fontSize="sm" color="muted">
+							v{template.data.version}
 						</Text>
 						<H1>{template.data.title}</H1>
-						<Text fontSize="lg" color="muted">
-							{template.data.description}
-						</Text>
+						<Text fontSize="lg">{template.data.description}</Text>
 					</Flex>
 
 					<SecondaryNav activePath={router.asPath} links={subNavItems} />
-					<Box paddingY={0.5}>{children}</Box>
+
+					<Box>{children}</Box>
 
 					<Callout title="Questions or feedback?">
 						<Text as="p">Contact details go here...</Text>
