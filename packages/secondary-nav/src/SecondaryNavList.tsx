@@ -19,6 +19,7 @@ export function SecondaryNavList({ links, activePath }: SecondaryNavListProps) {
 		<Flex
 			as="ul"
 			flexDirection={['column', 'row']}
+			flexWrap="wrap"
 			css={{ position: 'relative', zIndex: 1 }}
 		>
 			{links.map(({ href, label, ...props }, index) => {
