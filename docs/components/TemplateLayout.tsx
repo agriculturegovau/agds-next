@@ -54,11 +54,13 @@ export const TemplateLayout = ({
 						<Text as="span" fontSize="sm" color="muted">
 							v{template.data.version}
 						</Text>
-						<H1>{template.data.title}</H1>
+						<H1>{template.title}</H1>
 						<Text fontSize="lg">{template.data.description}</Text>
-						<CallToActionLink href={template.data.previewURL}>
-							View template preview
-						</CallToActionLink>
+						{template.previewUrl && (
+							<CallToActionLink href={template.previewUrl}>
+								View template preview
+							</CallToActionLink>
+						)}
 					</Flex>
 
 					<SecondaryNav activePath={router.asPath} links={subNavItems} />
