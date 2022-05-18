@@ -54,7 +54,6 @@ export function SecondaryNavContainer({
 			aria-label={ariaLabel}
 			css={{
 				position: 'relative',
-				overflowX: 'auto',
 				[localPaletteVars.linkHoverBg]: backgroundColorMap[hover],
 				[localPaletteVars.bottomBar]: bottomBar,
 				...packs.print.hidden,

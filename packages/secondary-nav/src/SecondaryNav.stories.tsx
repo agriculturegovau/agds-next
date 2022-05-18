@@ -44,22 +44,3 @@ DarkAltVariant.args = {
 	activePath: '#code',
 	links: exampleLinks,
 };
-
-export const Overflow = Template.bind({});
-Overflow.args = {
-	activePath: '#accessibility',
-	links: [
-		{ href: '#', label: 'Usage' },
-		{ href: '#', label: 'Code' },
-		{ href: '#', label: 'Content' },
-		{ href: '#accessibility', label: 'Accessibility' },
-		{ href: '#', label: 'Usage' },
-		{ href: '#', label: 'Code' },
-		{ href: '#', label: 'Content' },
-		{ href: '', label: 'Accessibility' },
-		{ href: '#', label: 'Usage' },
-		{ href: '#', label: 'Code' },
-		{ href: '#', label: 'Content' },
-		{ href: '', label: 'Accessibility' },
-	],
-};
