@@ -104,6 +104,7 @@ const LiveCode = withLive((props: unknown) => {
 				}}
 			/>
 			<Flex
+				flexWrap="wrap"
 				padding={0.5}
 				gap={0.5}
 				borderTop
