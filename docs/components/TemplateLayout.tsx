@@ -1,6 +1,7 @@
 import { PropsWithChildren } from 'react';
 import { H1 } from '@ag.ds-next/heading';
 import { Box, Flex, Stack } from '@ag.ds-next/box';
+import { CallToActionLink } from '@ag.ds-next/call-to-action';
 import { SideNavProps } from '@ag.ds-next/side-nav';
 import { Text } from '@ag.ds-next/text';
 import { Callout } from '@ag.ds-next/callout';
@@ -49,6 +50,9 @@ export const TemplateLayout = ({
 						</Text>
 						<H1>{template.data.title}</H1>
 						<Text fontSize="lg">{template.data.description}</Text>
+						<CallToActionLink href={template.data.previewURL}>
+							View template preview
+						</CallToActionLink>
 					</Flex>
 
 					<SecondaryNav activePath={router.asPath} links={subNavItems} />

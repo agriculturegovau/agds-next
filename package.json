@@ -26,6 +26,7 @@
 		"example:build": "yarn --cwd example-site build",
 		"docs:dev": "yarn --cwd docs dev",
 		"docs:build": "yarn --cwd docs build",
+		"docs:generate-template-images": "yarn --cwd docs generate-template-images",
 		"playroom:dev": "yarn --cwd docs playroom:dev",
 		"playroom:build": "yarn --cwd docs playroom:build",
 		"storybook:dev": "start-storybook -p 6006",

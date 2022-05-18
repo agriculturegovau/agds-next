@@ -42,7 +42,7 @@ export const getStaticProps: GetStaticProps<
 	{
 		content: NonNullable<Awaited<ReturnType<typeof getTemplateDocsContent>>>;
 		template: Template;
-		navLinks: { href: string; label: string }[];
+		navLinks: Awaited<ReturnType<typeof getTemplateNavLinks>>;
 		subNavItems: Awaited<ReturnType<typeof getTemplateSubNavItems>>;
 		breadcrumbs: Awaited<ReturnType<typeof getTemplateBreadcrumbs>>;
 	},
@@ -60,7 +60,7 @@ export const getStaticProps: GetStaticProps<
 		? await getTemplateDocsContent(template.slug, 'code.mdx')
 		: null;
 
-	if (!(slug && template && content && subNavItems)) {
+	if (!(slug && template && content && subNavItems && breadcrumbs)) {
 		return { notFound: true };
 	}
 

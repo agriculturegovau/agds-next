@@ -2,7 +2,6 @@ import { MDXRemote } from 'next-mdx-remote';
 import { normalize } from 'path';
 import { Body } from '@ag.ds-next/body';
 import { mapSpacing, boxPalette } from '@ag.ds-next/core';
-import { H3 } from '@ag.ds-next/heading';
 import { Box, Flex, Stack } from '@ag.ds-next/box';
 import { Card, CardLink, CardInner } from '@ag.ds-next/card';
 import { mq } from '@ag.ds-next/core';
@@ -71,8 +70,6 @@ const TemplateCard = ({
 					</Stack>
 				</CardInner>
 				<img
-					// To take a screenshot. Enter 'responsive design mode' in Safari, and take a
-					// screenshot (cmd-shift-4) of the webpage in iPad Pro 10.5.
 					src={`/agds-next/img/templates/${slug}.png`}
 					alt={`Screenshot of ${label} example`}
 					height="auto"

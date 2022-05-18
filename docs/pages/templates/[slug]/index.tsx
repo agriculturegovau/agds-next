@@ -1,5 +1,6 @@
 import { GetStaticProps, InferGetStaticPropsType } from 'next';
 import { MDXRemote } from 'next-mdx-remote';
+import { Box } from '@ag.ds-next/box';
 import { Body } from '@ag.ds-next/body';
 
 import {
@@ -30,6 +31,15 @@ export default function Templates({
 		>
 			<DocumentTitle title={`${template.data.title} | Templates`} />
 			<Body>
+				{template.imageSrc && (
+					<Box border borderColor="muted" css={{ img: { display: 'block' } }}>
+						<img
+							role="presentation"
+							src={template.imageSrc}
+							alt="Screenshot of template"
+						/>
+					</Box>
+				)}
 				<MDXRemote {...template.source} components={mdxComponents} />
 			</Body>
 		</TemplateLayout>
@@ -39,7 +49,7 @@ export default function Templates({
 export const getStaticProps: GetStaticProps<
 	{
 		template: Template;
-		navLinks: { href: string; label: string }[];
+		navLinks: Awaited<ReturnType<typeof getTemplateNavLinks>>;
 		breadcrumbs: Awaited<ReturnType<typeof getTemplateBreadcrumbs>>;
 		subNavItems: Awaited<ReturnType<typeof getTemplateSubNavItems>>;
 	},
@@ -53,7 +63,7 @@ export const getStaticProps: GetStaticProps<
 		? await getTemplateBreadcrumbs(slug, 'Overview')
 		: undefined;
 
-	if (!(slug && template && subNavItems)) {
+	if (!(slug && template && subNavItems && breadcrumbs)) {
 		return { notFound: true };
 	}
 
