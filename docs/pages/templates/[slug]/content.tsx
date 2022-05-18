@@ -32,8 +32,14 @@ export default function TemplateContentPage({
 				navLinks={navLinks}
 				subNavItems={subNavItems}
 				editPath={`/templates/${template.slug}/content.mdx`}
+				skipLinks={[
+					{
+						label: `Skip to ${template.data.title} template content`,
+						href: '#page-content',
+					},
+				]}
 			>
-				<Body>
+				<Body id="page-content">
 					<MDXRemote {...content} components={mdxComponents} />
 				</Body>
 			</TemplateLayout>

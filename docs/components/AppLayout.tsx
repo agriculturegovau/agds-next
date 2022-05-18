@@ -20,9 +20,7 @@ export const AppLayout: React.FC = ({ children }) => {
 				minHeight="100vh"
 			>
 				<SiteHeader />
-				<Box as="main" id="main-content" flexGrow={1}>
-					{children}
-				</Box>
+				<Box flexGrow={1}>{children}</Box>
 				<SiteFooter />
 			</Flex>
 		</>

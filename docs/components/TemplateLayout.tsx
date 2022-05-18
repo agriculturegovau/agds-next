@@ -3,6 +3,7 @@ import { H1 } from '@ag.ds-next/heading';
 import { Box, Flex, Stack } from '@ag.ds-next/box';
 import { CallToActionLink } from '@ag.ds-next/call-to-action';
 import { SideNavProps } from '@ag.ds-next/side-nav';
+import { SkipLinksProps } from '@ag.ds-next/skip-link';
 import { Text } from '@ag.ds-next/text';
 import { Callout } from '@ag.ds-next/callout';
 import { SecondaryNav } from '@ag.ds-next/secondary-nav';
@@ -21,6 +22,7 @@ type TemplateLayoutProps = PropsWithChildren<{
 	breadcrumbs: Awaited<ReturnType<typeof getTemplateBreadcrumbs>>;
 	editPath: string;
 	subNavItems: Awaited<ReturnType<typeof getTemplateSubNavItems>>;
+	skipLinks?: SkipLinksProps['links'];
 	template: Template;
 	navLinks: SideNavProps['items'];
 }>;
@@ -28,6 +30,7 @@ type TemplateLayoutProps = PropsWithChildren<{
 export const TemplateLayout = ({
 	breadcrumbs,
 	editPath,
+	skipLinks,
 	subNavItems,
 	children,
 	navLinks,
@@ -44,6 +47,7 @@ export const TemplateLayout = ({
 				}}
 				editPath={editPath}
 				breadcrumbs={breadcrumbs}
+				skipLinks={skipLinks}
 			>
 				<Stack as="main" gap={2}>
 					<Flex flexDirection="column" gap={0.25}>

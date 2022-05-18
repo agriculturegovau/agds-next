@@ -31,8 +31,14 @@ export default function TemplateOverviewPage({
 				subNavItems={subNavItems}
 				navLinks={navLinks}
 				editPath={`/templates/${template.slug}/index.mdx`}
+				skipLinks={[
+					{
+						label: `Skip to ${template.data.title} template overview`,
+						href: '#page-content',
+					},
+				]}
 			>
-				<Body>
+				<Body id="page-content">
 					{template.imageSrc && (
 						<Box border borderColor="muted" css={{ img: { display: 'block' } }}>
 							<img
