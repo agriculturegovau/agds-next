@@ -45,9 +45,6 @@ type FormSchema = yup.InferType<typeof formSchema>;
 
 export const FormExampleMultiStep4 = () => {
 	const { next, stepFormState, formState } = useFormExampleMultiStep();
-	const scrollToField = useScrollToField();
-	const errorRef = useRef<HTMLDivElement>(null);
-	const [focusedError, setFocusedError] = useState(false);
 
 	const {
 		register,
@@ -59,22 +56,8 @@ export const FormExampleMultiStep4 = () => {
 	});
 
 	const onSubmit: SubmitHandler<FormSchema> = (data) => {
-		setFocusedError(false);
 		next(data);
 	};
-
-	const onError = () => {
-		setFocusedError(false);
-	};
-
-	const hasErrors = Boolean(Object.keys(errors).length);
-
-	useEffect(() => {
-		if (hasErrors && !focusedError) {
-			errorRef.current?.focus();
-			setFocusedError(true);
-		}
-	}, [hasErrors, focusedError, errors]);
 
 	return (
 		<FormExampleMultiStepContainer
@@ -117,29 +100,8 @@ export const FormExampleMultiStep4 = () => {
 					</Stack>
 				)
 			)}
-			<form onSubmit={handleSubmit(onSubmit, onError)}>
+			<form onSubmit={handleSubmit(onSubmit)}>
 				<FormStack>
-					{hasErrors && (
-						<PageAlert
-							ref={errorRef}
-							tone="error"
-							title="There is a problem"
-							tabIndex={-1}
-						>
-							<Body>
-								<p>Please correct the following fields and try again</p>
-								<ul>
-									{Object.entries(errors).map(([key, value]) => (
-										<li key={key}>
-											<a href={`#${key}`} onClick={scrollToField}>
-												{value.message}
-											</a>
-										</li>
-									))}
-								</ul>
-							</Body>
-						</PageAlert>
-					)}
 					<Body>
 						<h2>Declaration</h2>
 						<p>I declare that:</p>

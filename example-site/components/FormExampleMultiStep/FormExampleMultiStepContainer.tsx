@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import { Stack } from '@ag.ds-next/box';
+import { Flex, Stack } from '@ag.ds-next/box';
 import { H1 } from '@ag.ds-next/heading';
 import { Text } from '@ag.ds-next/text';
 import { PageAlert } from '@ag.ds-next/page-alert';
@@ -19,12 +19,10 @@ export const FormExampleMultiStepContainer = ({
 	return (
 		<Stack gap={2}>
 			<Stack gap={0.25}>
-				<Stack>
-					<Text as="span" fontWeight="bold" fontSize="sm" color="muted">
-						Title of multi page form
-					</Text>
-					<H1>{title}</H1>
-				</Stack>
+				<Text as="span" fontSize="sm" color="muted">
+					Title of multi page form
+				</Text>
+				<H1>{title}</H1>
 				<Text as="p" fontSize="lg">
 					{subTitle}
 				</Text>
