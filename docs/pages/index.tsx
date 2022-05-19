@@ -20,9 +20,11 @@ export default function Homepage() {
 					developers build the steel threads of the Export Service quickly,
 					efficiently and consistently."
 				>
-					<CallToActionLink href="/guides/getting-started">
-						Get started
-					</CallToActionLink>
+					<div>
+						<CallToActionLink href="/guides/getting-started">
+							Get started
+						</CallToActionLink>
+					</div>
 				</HeroBanner>
 				<Content>
 					<Stack gap={3}>
