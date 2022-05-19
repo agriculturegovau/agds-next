@@ -8,7 +8,7 @@ type ContentProps = PropsWithChildren<{
 	background?: BoxProps['background'];
 }>;
 
-export const contentPaddingY = { xs: 1, md: 4 } as const;
+export const contentPaddingY = { xs: 1, sm: 2, lg: 4 } as const;
 
 export function Content({
 	as = 'section',
