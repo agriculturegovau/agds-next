@@ -1,11 +1,9 @@
 import { Columns, Column } from '@ag.ds-next/columns';
 import { Content } from '@ag.ds-next/content';
-import { Heading } from '@ag.ds-next/heading';
 import { Stack } from '@ag.ds-next/box';
 import { CallToActionLink } from '@ag.ds-next/call-to-action';
-import { Text } from '@ag.ds-next/text';
-import { tokens } from '@ag.ds-next/core';
 import { Body } from '@ag.ds-next/body';
+import { HeroBanner } from '@ag.ds-next/hero-banner';
 import { AppLayout } from '../components/AppLayout';
 import { PictogramCard } from '../components/PictogramCard';
 import { DocumentTitle } from '../components/DocumentTitle';
@@ -15,25 +13,17 @@ export default function Homepage() {
 		<>
 			<DocumentTitle />
 			<AppLayout>
-				<Content background="bodyAlt">
-					<Stack
-						maxWidth={tokens.maxWidth.bodyText}
-						gap={1.5}
-						alignItems="flex-start"
-					>
-						<Heading type="h1" fontSize={['xxl', 'xxxl']}>
-							Welcome to the Agriculture Design System (AgDS)
-						</Heading>
-						<Text fontSize="lg" fontWeight="normal" lineHeight="heading">
-							AgDS provides a framework and a set of tools to help designers and
-							developers build the steel threads of the Export Service quickly,
-							efficiently and consistently.
-						</Text>
-						<CallToActionLink href="/guides/getting-started">
-							Get started
-						</CallToActionLink>
-					</Stack>
-				</Content>
+				<HeroBanner
+					variant="lightAlt"
+					title="Welcome to the Agriculture Design System (AgDS)"
+					subTitle="AgDS provides a framework and a set of tools to help designers and
+					developers build the steel threads of the Export Service quickly,
+					efficiently and consistently."
+				>
+					<CallToActionLink href="/guides/getting-started">
+						Get started
+					</CallToActionLink>
+				</HeroBanner>
 				<Content>
 					<Stack gap={3}>
 						<Body>
