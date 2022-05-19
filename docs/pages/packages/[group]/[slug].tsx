@@ -4,8 +4,7 @@ import { H1 } from '@ag.ds-next/heading';
 import { Flex, Stack } from '@ag.ds-next/box';
 import { Text } from '@ag.ds-next/text';
 import { Body } from '@ag.ds-next/body';
-import { ButtonLink } from '@ag.ds-next/button';
-import { ExternalLinkIcon } from '@ag.ds-next/icon';
+import { CallToActionLink } from '@ag.ds-next/call-to-action';
 
 import {
 	getPkgList,
@@ -38,29 +37,26 @@ export default function Packages({
 					editPath={`/packages/${pkg.slug}/README.md`}
 					breadcrumbs={breadcrumbs}
 				>
-					<Stack as="main" gap={1}>
+					<Stack as="main" gap={2}>
 						<Flex flexDirection="column" gap={0.25}>
-							<Text fontSize="sm" color="muted">
+							<Text as="span" fontSize="sm" color="muted">
 								v{pkg.version}
 							</Text>
 							<H1>{pkg.data.title}</H1>
 							{pkg.data.description && (
 								<Text fontSize="lg">{pkg.data.description}</Text>
 							)}
-						</Flex>
-						{pkg.storybookPath && (
-							<div>
-								<ButtonLink
+
+							{pkg.storybookPath && (
+								<CallToActionLink
 									target="_blank"
 									href={`https://steelthreads.github.io/agds-next/storybook/index.html?path=${pkg.storybookPath}`}
 									rel="noopener noreferrer"
-									variant="secondary"
-									iconAfter={ExternalLinkIcon}
 								>
 									View in Storybook
-								</ButtonLink>
-							</div>
-						)}
+								</CallToActionLink>
+							)}
+						</Flex>
 						<Body>
 							<pre>
 								<code>
