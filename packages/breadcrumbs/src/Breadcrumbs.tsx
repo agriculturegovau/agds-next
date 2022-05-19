@@ -20,7 +20,7 @@ export const Breadcrumbs = ({
 				<BreadcrumbsItem {...props}>
 					{label}
 					{index === links.length - 1 ? (
-						<VisuallyHidden>(Current page)</VisuallyHidden>
+						<VisuallyHidden>{' (Current page)'}</VisuallyHidden>
 					) : null}
 				</BreadcrumbsItem>
 			</Fragment>
