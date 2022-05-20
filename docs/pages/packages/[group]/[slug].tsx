@@ -19,6 +19,7 @@ import { mdxComponents } from '../../../components/utils';
 import { AppLayout } from '../../../components/AppLayout';
 import { DocumentTitle } from '../../../components/DocumentTitle';
 import { PageLayout } from '../../../components/PageLayout';
+import { ExternalLinkCallout } from '@ag.ds-next/a11y';
 
 export default function Packages({
 	pkg,
@@ -57,7 +58,7 @@ export default function Packages({
 									variant="secondary"
 									iconAfter={ExternalLinkIcon}
 								>
-									View in Storybook
+									View in Storybook <ExternalLinkCallout />
 								</ButtonLink>
 							</div>
 						)}

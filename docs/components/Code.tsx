@@ -12,6 +12,7 @@ import { Language } from 'prism-react-renderer';
 import copy from 'clipboard-copy';
 import { useId } from '@reach/auto-id';
 
+import { ExternalLinkCallout } from '@ag.ds-next/a11y';
 import {
 	globalPalette,
 	mapSpacing,
@@ -141,6 +142,7 @@ const LiveCode = withLive((props: unknown) => {
 					aria-label="Open code snippet in Playroom"
 				>
 					Open in Playroom
+					<ExternalLinkCallout />
 				</ButtonLink>
 			</Flex>
 			<Box
