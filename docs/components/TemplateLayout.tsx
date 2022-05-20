@@ -50,23 +50,24 @@ export const TemplateLayout = ({
 				skipLinks={skipLinks}
 			>
 				<Stack as="main" gap={2}>
-					<Flex flexDirection="column" gap={0.25}>
-						<Text as="span" fontSize="sm" color="muted">
-							v{template.data.version}
-						</Text>
-						<H1>{template.title}</H1>
-						<Text fontSize="lg">{template.data.description}</Text>
+					<Stack gap={1.5} alignItems="flex-start">
+						<Stack gap={0.25}>
+							<Text fontSize="sm" color="muted" fontWeight="bold">
+								v{template.data.version}
+							</Text>
+							<H1>{template.title}</H1>
+							<Text as="p" fontSize="lg" color="muted">
+								{template.data.description}
+							</Text>
+						</Stack>
 						{template.previewUrl && (
 							<CallToActionLink href={template.previewUrl}>
 								View template preview
 							</CallToActionLink>
 						)}
-					</Flex>
-
+					</Stack>
 					<SecondaryNav activePath={router.asPath} links={subNavItems} />
-
 					<Box>{children}</Box>
-
 					<Callout title="Questions or feedback?">
 						<Text as="p">Contact details go here...</Text>
 					</Callout>
