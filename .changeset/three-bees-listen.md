@@ -1,5 +1,5 @@
 ---
-'@ag.ds-next/text': major
+'@ag.ds-next/text': minor
 ---
 
 Create TextLinkExternal component

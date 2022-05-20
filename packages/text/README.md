@@ -66,7 +66,7 @@ The `TextLink` component creates a hyperlink to web pages, files, email addresse
 
 ## TextLinkExternal
 
-The `TextLinkExternal` component creates a hyperlink to a web page, which will open in a new tab. It is adorned by an external link Icon, and includes descriptive text to communicate to a screenreader that communicates the interaction.
+The `TextLinkExternal` component creates a hyperlink to a web page, which will open in a new tab. It is adorned by an external link Icon, and includes descriptive text to communicate to a screenreader the interaction.
 
 ```jsx live
 <Text>

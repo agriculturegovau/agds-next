@@ -1,5 +1,5 @@
 ---
-'@ag.ds-next/a11y': major
+'@ag.ds-next/a11y': minor
 ---
 
 Create ExternalLinkCallout component
