@@ -8,13 +8,13 @@ export type FieldsetHintProps = {
 
 export const FieldsetHint = ({ children }: FieldsetHintProps) => {
 	return isValidElement(children) ? (
-		children
+		<div css={{ marginTop: mapSpacing(0.75) }}>{children}</div>
 	) : (
 		<Text
 			fontSize="sm"
 			color="muted"
 			display="block"
-			css={{ mariginTop: mapSpacing(0.75) }}
+			css={{ marginTop: mapSpacing(0.75) }}
 		>
 			{children}
 		</Text>
