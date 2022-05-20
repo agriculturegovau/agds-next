@@ -3,13 +3,9 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { FormStack } from '@ag.ds-next/form-stack';
 import { useFormExampleMultiStep } from './FormExampleMultiStep';
-import { Body } from '@ag.ds-next/body';
-import { PageAlert } from '@ag.ds-next/page-alert';
-import { useScrollToField } from '@ag.ds-next/field';
-import { useEffect, useRef, useState } from 'react';
 import { ControlGroup, Radio } from '@ag.ds-next/control-input';
-import { FormExampleMultiStepContainer } from './FormExampleMultiStepContainer';
 import { FormExampleMultiStepActions } from './FormExampleMultiStepActions';
+import { FormExampleMultiStepFieldset } from './FormExampleMultiStepFieldset';
 
 const formSchema = yup
 	.object({
@@ -29,9 +25,6 @@ export const formExampleMultiStep0ValuesMap: Record<keyof FormSchema, string> =
 
 export const FormExampleMultiStep0 = () => {
 	const { next, stepFormState } = useFormExampleMultiStep();
-	const scrollToField = useScrollToField();
-	const errorRef = useRef<HTMLDivElement>(null);
-	const [focusedError, setFocusedError] = useState(false);
 
 	const {
 		register,
@@ -43,55 +36,19 @@ export const FormExampleMultiStep0 = () => {
 	});
 
 	const onSubmit: SubmitHandler<FormSchema> = (data) => {
-		setFocusedError(false);
 		next(data);
 	};
 
-	const onError = () => {
-		setFocusedError(false);
-	};
-
-	const hasErrors = Boolean(Object.keys(errors).length);
-
-	useEffect(() => {
-		if (hasErrors && !focusedError) {
-			errorRef.current?.focus();
-			setFocusedError(true);
-		}
-	}, [hasErrors, focusedError, errors]);
-
 	return (
-		<FormExampleMultiStepContainer
-			title="Conditional fork title (H1)"
-			subTitle="The introductory paragraph provides context about this page of the form. Use a short paragraph to reduce cognitive load."
-		>
-			<form onSubmit={handleSubmit(onSubmit, onError)}>
-				<FormStack>
-					{hasErrors && (
-						<PageAlert
-							ref={errorRef}
-							tone="error"
-							title="There is a problem"
-							tabIndex={-1}
-						>
-							<Body>
-								<p>Please correct the following fields and try again</p>
-								<ul>
-									{Object.entries(errors).map(([key, value]) => (
-										<li key={key}>
-											<a href={`#${key}`} onClick={scrollToField}>
-												{value.message}
-											</a>
-										</li>
-									))}
-								</ul>
-							</Body>
-						</PageAlert>
-					)}
+		<form onSubmit={handleSubmit(onSubmit)}>
+			<FormStack>
+				<FormExampleMultiStepFieldset
+					title="Conditional fork title (H1)"
+					subTitle="The introductory paragraph provides context about this page of the form. Use a short paragraph to reduce cognitive load."
+				>
 					<ControlGroup
 						label="Fieldset question?"
 						hint="Hint test"
-						id="example"
 						invalid={Boolean(errors.example?.message)}
 						message={errors.example?.message}
 						required
@@ -119,9 +76,9 @@ export const FormExampleMultiStep0 = () => {
 							Radio label C
 						</Radio>
 					</ControlGroup>
-					<FormExampleMultiStepActions />
-				</FormStack>
-			</form>
-		</FormExampleMultiStepContainer>
+				</FormExampleMultiStepFieldset>
+				<FormExampleMultiStepActions />
+			</FormStack>
+		</form>
 	);
 };

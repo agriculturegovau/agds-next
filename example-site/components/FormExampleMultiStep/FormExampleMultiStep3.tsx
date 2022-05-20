@@ -8,11 +8,12 @@ import { PageAlert } from '@ag.ds-next/page-alert';
 import { useScrollToField } from '@ag.ds-next/field';
 import { useEffect, useRef, useState } from 'react';
 import { Checkbox, ControlGroup } from '@ag.ds-next/control-input';
-import { FormExampleMultiStepContainer } from './FormExampleMultiStepContainer';
+import { FormExampleMultiStepFieldset } from './FormExampleMultiStepFieldset';
 import { FormExampleMultiStepActions } from './FormExampleMultiStepActions';
 import { TextInput } from '@ag.ds-next/text-input';
 import { Box } from '@ag.ds-next/box';
 import { mapSpacing } from '@ag.ds-next/core';
+import { FormExampleMultiStepContainer } from './FormExampleMultiStepContainer';
 
 const formSchema = yup
 	.object({
@@ -20,7 +21,21 @@ const formSchema = yup
 		checkboxB: yup.boolean(),
 		checkboxC: yup.boolean(),
 		checkboxD: yup.boolean(),
-		conditionalField: yup.string(),
+		conditionalField: yup.string().when('checkboxB', {
+			is: true,
+			then: yup.string().required('Nested field is required'),
+		}),
+	})
+	.test('checkbox test', (obj) => {
+		// All good if at least 1 checkbox is checked
+		if (obj.checkboxA || obj.checkboxB || obj.checkboxC || obj.checkboxD) {
+			return true;
+		}
+		return new yup.ValidationError(
+			'Please check at least 1 option',
+			null,
+			'checkbox-fieldset'
+		);
 	})
 	.required();
 
@@ -72,82 +87,87 @@ export const FormExampleMultiStep3 = () => {
 	const showConditionalField = watch('checkboxB');
 
 	return (
-		<FormExampleMultiStepContainer
-			title="Conditional reveal title (H1)"
-			subTitle="The introductory paragraph provides context about this page of the form. Use a short paragraph to reduce cognitive load."
-		>
-			<form onSubmit={handleSubmit(onSubmit, onError)}>
-				<FormStack>
-					{hasErrors && (
-						<PageAlert
-							ref={errorRef}
-							tone="error"
-							title="There is a problem"
-							tabIndex={-1}
-						>
-							<Body>
-								<p>Please correct the following fields and try again</p>
-								<ul>
-									{Object.entries(errors).map(([key, value]) => (
-										<li key={key}>
-											<a href={`#${key}`} onClick={scrollToField}>
-												{value.message}
-											</a>
-										</li>
-									))}
-								</ul>
-							</Body>
-						</PageAlert>
-					)}
-					<ControlGroup
-						label="Checkbox fieldset question?"
-						hint="Provide a hint here"
-						block
-					>
-						<Checkbox
-							{...register('checkboxA')}
-							invalid={Boolean(errors.checkboxA?.message)}
-						>
-							Checkbox label A
-						</Checkbox>
-						<Checkbox
-							{...register('checkboxB')}
-							invalid={Boolean(errors.checkboxB?.message)}
-						>
-							Checkbox label B
-						</Checkbox>
-						{showConditionalField ? (
-							<Box
-								borderLeft
-								borderLeftWidth="xl"
-								paddingLeft={1.5}
-								css={{ marginLeft: mapSpacing(1) }}
+		<form onSubmit={handleSubmit(onSubmit, onError)}>
+			<FormExampleMultiStepFieldset
+				title="Conditional reveal title (H1)"
+				subTitle="The introductory paragraph provides context about this page of the form. Use a short paragraph to reduce cognitive load."
+			>
+				<FormExampleMultiStepContainer>
+					<FormStack>
+						{hasErrors && (
+							<PageAlert
+								ref={errorRef}
+								tone="error"
+								title="There is a problem"
+								tabIndex={-1}
 							>
-								<TextInput
-									label="Nested field"
-									hint="Hint text"
-									{...register('conditionalField')}
-									invalid={Boolean(errors.conditionalField?.message)}
-									required
-								/>
-							</Box>
-						) : null}
-						<Checkbox
-							{...register('checkboxC')}
-							invalid={Boolean(errors.checkboxC?.message)}
+								<Body>
+									<p>Please correct the following fields and try again</p>
+									<ul>
+										{Object.entries(errors).map(([key, value]) => (
+											<li key={key}>
+												<a href={`#${key}`} onClick={scrollToField}>
+													{value.message}
+												</a>
+											</li>
+										))}
+									</ul>
+								</Body>
+							</PageAlert>
+						)}
+						<ControlGroup
+							id="checkbox-fieldset"
+							label="Checkbox fieldset question?"
+							hint="Provide a hint here"
+							required
+							block
 						>
-							Checkbox label C
-						</Checkbox>
-						<Checkbox
-							{...register('checkboxD')}
-							invalid={Boolean(errors.checkboxD?.message)}
-						>
-							Checkbox label D
-						</Checkbox>
-					</ControlGroup>
-					<FormExampleMultiStepActions />
-				</FormStack>
-			</form>
-		</FormExampleMultiStepContainer>
+							<Checkbox
+								{...register('checkboxA')}
+								invalid={Boolean(errors.checkboxA?.message)}
+							>
+								Checkbox label A
+							</Checkbox>
+							<Checkbox
+								{...register('checkboxB')}
+								invalid={Boolean(errors.checkboxB?.message)}
+							>
+								Checkbox label B
+							</Checkbox>
+							{showConditionalField ? (
+								<Box
+									borderLeft
+									borderLeftWidth="xl"
+									paddingLeft={1.5}
+									css={{ marginLeft: mapSpacing(1) }}
+								>
+									<TextInput
+										id="conditionalField"
+										label="Nested field"
+										hint="Hint text"
+										{...register('conditionalField')}
+										invalid={Boolean(errors.conditionalField?.message)}
+										required
+									/>
+								</Box>
+							) : null}
+							<Checkbox
+								{...register('checkboxC')}
+								invalid={Boolean(errors.checkboxC?.message)}
+							>
+								Checkbox label C
+							</Checkbox>
+							<Checkbox
+								{...register('checkboxD')}
+								invalid={Boolean(errors.checkboxD?.message)}
+							>
+								Checkbox label D
+							</Checkbox>
+						</ControlGroup>
+						<FormExampleMultiStepActions />
+					</FormStack>
+				</FormExampleMultiStepContainer>
+			</FormExampleMultiStepFieldset>
+		</form>
 	);
 };
