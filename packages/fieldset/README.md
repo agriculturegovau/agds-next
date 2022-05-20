@@ -29,7 +29,7 @@ If you’re asking just one question per page, you can set the contents of the `
 <Fieldset
 	legend={<H1>What is your date of birth?</H1>}
 	hint={
-		<Text fontSize="md" color="muted">
+		<Text as="p" fontSize="md" color="muted">
 			We will only use this to respond to your requests
 		</Text>
 	}

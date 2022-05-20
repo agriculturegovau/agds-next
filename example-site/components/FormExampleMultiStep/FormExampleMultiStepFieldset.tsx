@@ -1,5 +1,4 @@
 import { ReactNode } from 'react';
-import { Stack } from '@ag.ds-next/box';
 import { H1 } from '@ag.ds-next/heading';
 import { Text } from '@ag.ds-next/text';
 import {
@@ -7,7 +6,6 @@ import {
 	FieldsetContent,
 	FieldsetLegend,
 } from '@ag.ds-next/fieldset';
-import { FormStack } from '@ag.ds-next/form-stack';
 
 export const FormExampleMultiStepFieldset = ({
 	children,
