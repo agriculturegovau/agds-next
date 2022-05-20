@@ -1,5 +1,5 @@
-import { Fragment } from 'react';
-import { LinkProps } from '@ag.ds-next/core';
+import { AnchorHTMLAttributes, Fragment } from 'react';
+import Link from 'next/link';
 import { TextLinkExternal } from '@ag.ds-next/text';
 import { Code } from './Code';
 
@@ -8,10 +8,13 @@ export const mdxComponents = {
 	pre: Fragment,
 	code: Code,
 	Fragment,
-	a: (props: LinkProps) => {
+	a: (props: AnchorHTMLAttributes<HTMLAnchorElement>) => {
+		if (!props.href) return <a {...props} />;
+
+		// Render an external link icon and open page in new tab
 		if (props.href && /^(https?:\/\/|\/\/)/i.test(props.href)) {
 			return <TextLinkExternal {...props} />;
 		}
-		return <a {...props} />;
+		return <Link {...props} />;
 	},
 };
