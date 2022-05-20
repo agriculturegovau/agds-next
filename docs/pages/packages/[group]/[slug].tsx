@@ -1,11 +1,12 @@
 import { GetStaticProps, InferGetStaticPropsType } from 'next';
 import { MDXRemote } from 'next-mdx-remote';
 import { H1 } from '@ag.ds-next/heading';
-import { Flex, Stack } from '@ag.ds-next/box';
+import { Stack } from '@ag.ds-next/box';
 import { Text } from '@ag.ds-next/text';
 import { Body } from '@ag.ds-next/body';
 import { ButtonLink } from '@ag.ds-next/button';
 import { ExternalLinkIcon } from '@ag.ds-next/icon';
+import { ExternalLinkCallout } from '@ag.ds-next/a11y';
 
 import {
 	getPkgList,
@@ -19,7 +20,6 @@ import { mdxComponents } from '../../../components/utils';
 import { AppLayout } from '../../../components/AppLayout';
 import { DocumentTitle } from '../../../components/DocumentTitle';
 import { PageLayout } from '../../../components/PageLayout';
-import { ExternalLinkCallout } from '@ag.ds-next/a11y';
 
 export default function Packages({
 	pkg,
@@ -39,37 +39,40 @@ export default function Packages({
 					editPath={`/packages/${pkg.slug}/README.md`}
 					breadcrumbs={breadcrumbs}
 				>
-					<Stack as="main" gap={1}>
-						<Flex flexDirection="column" gap={0.25}>
-							<Text fontSize="sm" color="muted">
-								v{pkg.version}
-							</Text>
-							<H1>{pkg.data.title}</H1>
-							{pkg.data.description && (
-								<Text fontSize="lg">{pkg.data.description}</Text>
+					<Stack as="main" gap={2}>
+						<Stack gap={1.5} alignItems="flex-start">
+							<Stack gap={0.25}>
+								<Text fontSize="sm" color="muted" fontWeight="bold">
+									v{pkg.version}
+								</Text>
+								<H1>{pkg.data.title}</H1>
+								{pkg.data.description && (
+									<Text as="p" fontSize="lg" color="muted">
+										{pkg.data.description}
+									</Text>
+								)}
+							</Stack>
+							{pkg.storybookPath && (
+								<div>
+									<ButtonLink
+										target="_blank"
+										href={`https://steelthreads.github.io/agds-next/storybook/index.html?path=${pkg.storybookPath}`}
+										rel="noopener noreferrer"
+										variant="secondary"
+										iconAfter={ExternalLinkIcon}
+									>
+										View in Storybook
+										<ExternalLinkCallout />
+									</ButtonLink>
+								</div>
 							)}
-						</Flex>
-						{pkg.storybookPath && (
-							<div>
-								<ButtonLink
-									target="_blank"
-									href={`https://steelthreads.github.io/agds-next/storybook/index.html?path=${pkg.storybookPath}`}
-									rel="noopener noreferrer"
-									variant="secondary"
-									iconAfter={ExternalLinkIcon}
-								>
-									View in Storybook <ExternalLinkCallout />
-								</ButtonLink>
-							</div>
-						)}
+						</Stack>
 						<Body>
 							<pre>
 								<code>
 									yarn add {pkg.name}@{pkg.version}
 								</code>
 							</pre>
-						</Body>
-						<Body>
 							<MDXRemote {...pkg.source} components={mdxComponents} />
 						</Body>
 					</Stack>
