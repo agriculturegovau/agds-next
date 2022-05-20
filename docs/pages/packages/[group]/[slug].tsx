@@ -1,11 +1,12 @@
 import { GetStaticProps, InferGetStaticPropsType } from 'next';
 import { MDXRemote } from 'next-mdx-remote';
 import { H1 } from '@ag.ds-next/heading';
-import { Flex, Stack } from '@ag.ds-next/box';
+import { Stack } from '@ag.ds-next/box';
 import { Text } from '@ag.ds-next/text';
 import { Body } from '@ag.ds-next/body';
 import { ButtonLink } from '@ag.ds-next/button';
 import { ExternalLinkIcon } from '@ag.ds-next/icon';
+import { ExternalLinkCallout } from '@ag.ds-next/a11y';
 
 import {
 	getPkgList,
@@ -19,7 +20,6 @@ import { mdxComponents } from '../../../components/utils';
 import { AppLayout } from '../../../components/AppLayout';
 import { DocumentTitle } from '../../../components/DocumentTitle';
 import { PageLayout } from '../../../components/PageLayout';
-import { ExternalLinkCallout } from '@ag.ds-next/a11y';
 
 export default function Packages({
 	pkg,
@@ -62,27 +62,11 @@ export default function Packages({
 										iconAfter={ExternalLinkIcon}
 									>
 										View in Storybook
+										<ExternalLinkCallout />
 									</ButtonLink>
 								</div>
 							)}
-<<<<<<< Updated upstream
-						</Flex>
-						{pkg.storybookPath && (
-							<div>
-								<ButtonLink
-									target="_blank"
-									href={`https://steelthreads.github.io/agds-next/storybook/index.html?path=${pkg.storybookPath}`}
-									rel="noopener noreferrer"
-									variant="secondary"
-									iconAfter={ExternalLinkIcon}
-								>
-									View in Storybook <ExternalLinkCallout />
-								</ButtonLink>
-							</div>
-						)}
-=======
 						</Stack>
->>>>>>> Stashed changes
 						<Body>
 							<pre>
 								<code>
