@@ -8,13 +8,13 @@ export const mdxComponents = {
 	pre: Fragment,
 	code: Code,
 	Fragment,
-	a: (props: AnchorHTMLAttributes<HTMLAnchorElement>) => {
-		if (!props.href) return <a {...props} />;
+	a: ({ href, ...props }: AnchorHTMLAttributes<HTMLAnchorElement>) => {
+		if (!href) return <a {...props} />;
 
 		// Render an external link icon and open page in new tab
-		if (props.href && /^(https?:\/\/|\/\/)/i.test(props.href)) {
-			return <TextLinkExternal {...props} />;
+		if (/^(https?:\/\/|\/\/)/i.test(href)) {
+			return <TextLinkExternal href={href} {...props} />;
 		}
-		return <Link {...props} />;
+		return <Link href={href} {...props} />;
 	},
 };
