@@ -21,15 +21,13 @@ const FormMultiStepPage: NextPage = () => {
 					<Columns>
 						<Column columnSpan={{ xs: 12, md: 8 }}>
 							<Stack gap={3}>
-								<Stack gap={1}>
-									<Stack gap={0.25}>
-										<H1>Multipage form title (H1)</H1>
-										<Text as="p" fontSize="lg" color="muted">
-											The introductory paragraph provides context about the
-											entire multipage form. Use a short paragraph to reduce
-											cognitive load.
-										</Text>
-									</Stack>
+								<Stack gap={0.25}>
+									<H1>Multipage form title (H1)</H1>
+									<Text as="p" fontSize="lg" color="muted">
+										The introductory paragraph provides context about the entire
+										multipage form. Use a short paragraph to reduce cognitive
+										load.
+									</Text>
 								</Stack>
 								<Body>
 									<h2>Multipage form subheading (H2)</h2>
