@@ -9,6 +9,8 @@ export type FieldsetProps = PropsWithChildren<{
 	legend: ReactNode;
 }>;
 
+// Note: These components do not use `Stack` as `legend` needs to the be the first child of the `fieldset` element and setting `fieldset` as a flex container does not behave consistently
+
 export const Fieldset = ({ children, hint, legend }: FieldsetProps) => (
 	<FieldsetContainer>
 		<FieldsetLegend>{legend}</FieldsetLegend>

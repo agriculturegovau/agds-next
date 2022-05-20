@@ -55,9 +55,7 @@ export const TemplateLayout = ({
 							v{template.data.version}
 						</Text>
 						<H1>{template.title}</H1>
-						<Text as="p" fontSize="lg">
-							{template.data.description}
-						</Text>
+						<Text fontSize="lg">{template.data.description}</Text>
 						{template.previewUrl && (
 							<CallToActionLink href={template.previewUrl}>
 								View template preview
