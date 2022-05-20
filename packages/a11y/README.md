@@ -33,10 +33,11 @@ Use the `ExternalLinkCallout` component to announce to a screenreader user that 
 
 ```jsx live
 <TextLink href="#" target="_blank">
-  Visit the Design System
+	Visit the Design System
 	<ExternalLinkCallout />
 </TextLink>
 ```
+
 > link, "Visit the Design System (Opens in a new Tab)"
 
 For links in Body text, we recommend reaching for the `TextLinkExternal` component in the [Text package](text#TextLinkExternal) instead.
