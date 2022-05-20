@@ -7,9 +7,9 @@ import { AppLayout } from '../../components/AppLayout';
 import { DocumentTitle } from '../../components/DocumentTitle';
 import { FormExampleMultiStepCallout } from '../../components/FormExampleMultiStep/FormExampleMultiStepCallout';
 import { Body } from '@ag.ds-next/body';
-import { Flex, Stack } from '@ag.ds-next/box';
+import { Stack } from '@ag.ds-next/box';
 import { H1 } from '@ag.ds-next/heading';
-import { Text } from '@ag.ds-next/text';
+import { Text, TextLinkExternal } from '@ag.ds-next/text';
 
 const FormMultiStepPage: NextPage = () => {
 	return (
@@ -41,55 +41,37 @@ const FormMultiStepPage: NextPage = () => {
 									<h3>More information link list heading (H3)</h3>
 									<ul>
 										<li>
-											<a href="#">
-												<Flex alignItems="center" gap={0.25}>
-													Meaningful link label that shows link purpose
-													<ExternalLinkIcon size="sm" />
-												</Flex>
-											</a>
+											<TextLinkExternal href="#">
+												Meaningful link label that shows link purpose
+											</TextLinkExternal>
 										</li>
 										<li>
-											<a href="#">
-												<Flex alignItems="center" gap={0.25}>
-													Meaningful link label that shows link purpose
-													<ExternalLinkIcon size="sm" />
-												</Flex>
-											</a>
+											<TextLinkExternal href="#">
+												Meaningful link label that shows link purpose
+											</TextLinkExternal>
 										</li>
 										<li>
-											<a href="#">
-												<Flex alignItems="center" gap={0.25}>
-													Meaningful link label that shows link purpose
-													<ExternalLinkIcon size="sm" />
-												</Flex>
-											</a>
+											<TextLinkExternal href="#">
+												Meaningful link label that shows link purpose
+											</TextLinkExternal>
 										</li>
 									</ul>
 									<h3>More information link list heading (H3)</h3>
 									<ul>
 										<li>
-											<a href="#">
-												<Flex alignItems="center" gap={0.25}>
-													Meaningful link label that shows link purpose
-													<ExternalLinkIcon size="sm" />
-												</Flex>
-											</a>
+											<TextLinkExternal href="#">
+												Meaningful link label that shows link purpose
+											</TextLinkExternal>
 										</li>
 										<li>
-											<a href="#">
-												<Flex alignItems="center" gap={0.25}>
-													Meaningful link label that shows link purpose
-													<ExternalLinkIcon size="sm" />
-												</Flex>
-											</a>
+											<TextLinkExternal href="#">
+												Meaningful link label that shows link purpose
+											</TextLinkExternal>
 										</li>
 										<li>
-											<a href="#">
-												<Flex alignItems="center" gap={0.25}>
-													Meaningful link label that shows link purpose
-													<ExternalLinkIcon size="sm" />
-												</Flex>
-											</a>
+											<TextLinkExternal href="#">
+												Meaningful link label that shows link purpose
+											</TextLinkExternal>
 										</li>
 									</ul>
 								</Body>
