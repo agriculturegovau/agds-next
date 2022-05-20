@@ -1,6 +1,8 @@
 import React from 'react';
+import { Stack } from '@ag.ds-next/box';
 import { ComponentMeta } from '@storybook/react';
-import { TextLink } from '@ag.ds-next/text/src/Text';
+import { Text, TextLink } from '@ag.ds-next/text';
+import { H1 } from '@ag.ds-next/heading';
 import { VisuallyHidden, visuallyHiddenStyles } from './VisuallyHidden';
 
 export default {
@@ -9,10 +11,18 @@ export default {
 } as ComponentMeta<typeof VisuallyHidden>;
 
 export const Basic = () => (
-	<TextLink href="#">
-		Read more
-		<VisuallyHidden> about how to visually hide content</VisuallyHidden>
-	</TextLink>
+	<Stack gap={1}>
+		<H1>VisuallyHidden</H1>
+		<Text>
+			Interact with the link in this example using Apple VoiceOver or your
+			chosen screenreader.
+		</Text>
+
+		<TextLink href="#">
+			Read more
+			<VisuallyHidden> about how to visually hide content</VisuallyHidden>
+		</TextLink>
+	</Stack>
 );
 
 export const Styles = () => (
