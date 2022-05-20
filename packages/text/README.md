@@ -63,3 +63,14 @@ The `TextLink` component creates a hyperlink to web pages, files, email addresse
 	This is some text with <TextLink href="#">a link</TextLink> inside.
 </Text>
 ```
+
+
+## TextLinkExternal
+
+The `TextLinkExternal` component creates a hyperlink to a web page, which will open in a new tab. It is adorned by an external link Icon, and includes descriptive text to communicate to a screenreader that communicates the interaction.
+
+```jsx live
+<Text>
+	Interact with our components in <TextLinkExternal href="https://steelthreads.github.io/agds-next/playroom/index.html">Playroom</TextLinkExternal>.
+</Text>
+```
