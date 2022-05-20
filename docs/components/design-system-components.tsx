@@ -8,7 +8,7 @@ import { Button, ButtonLink } from '@ag.ds-next/button';
 import { Box, Flex, Stack } from '@ag.ds-next/box';
 import { Body, unsetBodyStylesClassname } from '@ag.ds-next/body';
 import { useTernaryState, tokens } from '@ag.ds-next/core';
-import { Text, TextLink } from '@ag.ds-next/text';
+import { Text, TextLink, TextLinkExternal } from '@ag.ds-next/text';
 import { Heading, H1, H2, H3, H4, H5, H6 } from '@ag.ds-next/heading';
 import { LinkList } from '@ag.ds-next/link-list';
 import { Breadcrumbs } from '@ag.ds-next/breadcrumbs';
@@ -82,7 +82,7 @@ import {
 	SearchBoxButton,
 } from '@ag.ds-next/search-box';
 import { Select } from '@ag.ds-next/select';
-import { VisuallyHidden } from '@ag.ds-next/a11y';
+import { ExternalLinkCallout, VisuallyHidden } from '@ag.ds-next/a11y';
 import { ProgressIndicator } from '@ag.ds-next/progress-indicator';
 import { Checkbox, Radio, ControlGroup } from '@ag.ds-next/control-input';
 import { KeywordList } from '@ag.ds-next/keyword-list';
@@ -133,6 +133,7 @@ export const designSystemComponents = {
 	TableHead,
 	Text,
 	TextLink,
+	TextLinkExternal,
 	Heading,
 	H1,
 	H2,
@@ -189,6 +190,7 @@ export const designSystemComponents = {
 	SearchBoxButton,
 	Select,
 	VisuallyHidden,
+	ExternalLinkCallout,
 	ProgressIndicator,
 	Checkbox,
 	Radio,

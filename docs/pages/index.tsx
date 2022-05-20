@@ -7,6 +7,7 @@ import { HeroBanner } from '@ag.ds-next/hero-banner';
 import { AppLayout } from '../components/AppLayout';
 import { PictogramCard } from '../components/PictogramCard';
 import { DocumentTitle } from '../components/DocumentTitle';
+import { TextLinkExternal } from '@ag.ds-next/text';
 
 export default function Homepage() {
 	return (
@@ -31,23 +32,15 @@ export default function Homepage() {
 						<Body>
 							<p>
 								AgDS is based on the{' '}
-								<a
-									href="https://gold.designsystemau.org/"
-									target="_blank"
-									rel="noreferrer"
-								>
+								<TextLinkExternal href="https://gold.designsystemau.org/">
 									GOLD Design System
-								</a>{' '}
+								</TextLinkExternal>{' '}
 								which incorporates the highest usability and accessibility
 								standards, helping us to deliver a consistent experience for all
 								users, in line with the{' '}
-								<a
-									href="https://www.dta.gov.au/help-and-advice/about-digital-service-standard"
-									target="_blank"
-									rel="noreferrer"
-								>
+								<TextLinkExternal href="https://www.dta.gov.au/help-and-advice/about-digital-service-standard">
 									Digital Service Standard
-								</a>
+								</TextLinkExternal>
 								.
 							</p>
 							<p>
