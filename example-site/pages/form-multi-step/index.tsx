@@ -2,7 +2,6 @@ import type { NextPage } from 'next';
 import { Content } from '@ag.ds-next/content';
 import { Columns, Column } from '@ag.ds-next/columns';
 import { ButtonLink } from '@ag.ds-next/button';
-import { ExternalLinkIcon } from '@ag.ds-next/icon';
 import { AppLayout } from '../../components/AppLayout';
 import { DocumentTitle } from '../../components/DocumentTitle';
 import { FormExampleMultiStepCallout } from '../../components/FormExampleMultiStep/FormExampleMultiStepCallout';
