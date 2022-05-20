@@ -8,7 +8,7 @@ import { PageAlert } from '@ag.ds-next/page-alert';
 import { useScrollToField } from '@ag.ds-next/field';
 import { useEffect, useRef, useState } from 'react';
 import { Checkbox, ControlGroup } from '@ag.ds-next/control-input';
-import { FormExampleMultiStepContainer } from './FormExampleMultiStepContainer';
+import { FormExampleMultiStepFieldset } from './FormExampleMultiStepFieldset';
 import { FormExampleMultiStepActions } from './FormExampleMultiStepActions';
 import { TextInput } from '@ag.ds-next/text-input';
 import { Box } from '@ag.ds-next/box';
@@ -72,11 +72,11 @@ export const FormExampleMultiStep3 = () => {
 	const showConditionalField = watch('checkboxB');
 
 	return (
-		<FormExampleMultiStepContainer
-			title="Conditional reveal title (H1)"
-			subTitle="The introductory paragraph provides context about this page of the form. Use a short paragraph to reduce cognitive load."
-		>
-			<form onSubmit={handleSubmit(onSubmit, onError)}>
+		<form onSubmit={handleSubmit(onSubmit, onError)}>
+			<FormExampleMultiStepFieldset
+				title="Conditional reveal title (H1)"
+				subTitle="The introductory paragraph provides context about this page of the form. Use a short paragraph to reduce cognitive load."
+			>
 				<FormStack>
 					{hasErrors && (
 						<PageAlert
@@ -147,7 +147,7 @@ export const FormExampleMultiStep3 = () => {
 					</ControlGroup>
 					<FormExampleMultiStepActions />
 				</FormStack>
-			</form>
-		</FormExampleMultiStepContainer>
+			</FormExampleMultiStepFieldset>
+		</form>
 	);
 };

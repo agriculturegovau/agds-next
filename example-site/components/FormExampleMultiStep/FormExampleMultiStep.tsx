@@ -7,7 +7,7 @@ import {
 } from 'react';
 import { useRouter } from 'next/router';
 import { Column, Columns } from '@ag.ds-next/columns';
-import { ContentBleed } from '@ag.ds-next/content';
+import { Content, ContentBleed } from '@ag.ds-next/content';
 import { ProgressIndicator } from '@ag.ds-next/progress-indicator';
 import { Stack } from '@ag.ds-next/box';
 import { Text } from '@ag.ds-next/text';
@@ -19,6 +19,8 @@ import { FormExampleMultiStep2 } from './FormExampleMultiStep2';
 import { FormExampleMultiStep3 } from './FormExampleMultiStep3';
 import { FormExampleMultiStep4 } from './FormExampleMultiStep4';
 import { FormExampleMultiStepSuccess } from './FormExampleMultiStepSuccess';
+import { DocumentTitle } from '../DocumentTitle';
+import { AppLayout } from '../AppLayout';
 
 export const FORM_STEPS = [
 	{
@@ -133,11 +135,20 @@ export const FormExampleMultiStep = () => {
 
 	if (success) {
 		return (
-			<Columns>
-				<Column columnSpan={{ xs: 12, md: 8 }}>
-					<FormExampleMultiStepSuccess />
-				</Column>
-			</Columns>
+			<>
+				<DocumentTitle title="Multi step form example" />
+				<AppLayout
+					template={{ name: '"Multi-step form', slug: 'multi-step-form' }}
+				>
+					<Content>
+						<Columns>
+							<Column columnSpan={{ xs: 12, md: 8 }}>
+								<FormExampleMultiStepSuccess />
+							</Column>
+						</Columns>
+					</Content>
+				</AppLayout>
+			</>
 		);
 	}
 
@@ -156,45 +167,55 @@ export const FormExampleMultiStep = () => {
 	};
 
 	return (
-		<context.Provider value={contextValue}>
-			<Columns>
-				<Column columnSpan={{ xs: 12, md: 3 }}>
-					<ContentBleed visible={{ md: false }}>
-						<Stack gap={0.75} paddingTop={{ xs: 0, md: 3 }}>
-							<Text
-								display={{ xs: 'none', md: 'block' }}
-								as="h3"
-								fontSize="md"
-								fontWeight="bold"
-								lineHeight="heading"
-							>
-								Progress
-							</Text>
-							<ProgressIndicator
-								items={FORM_STEPS.map(({ label }, idx) => ({
-									label,
-									status:
-										idx === currentStep
-											? 'doing'
-											: formState[idx]
-											? 'done'
-											: 'todo',
-									onClick: () => setCurrentStep(idx),
-								}))}
-							/>
-						</Stack>
-					</ContentBleed>
-				</Column>
-				<Column columnSpan={{ xs: 12, md: 8 }} columnStart={{ md: 5 }}>
-					<Stack gap={2}>
-						<DirectionButton direction="left" onClick={back}>
-							Back
-						</DirectionButton>
-						{FormStepComponent ? <FormStepComponent /> : null}
-					</Stack>
-				</Column>
-			</Columns>
-		</context.Provider>
+		<>
+			<DocumentTitle title="Multi step form example" />
+			<AppLayout
+				template={{ name: '"Multi-step form', slug: 'multi-step-form' }}
+				focusMode
+			>
+				<Content>
+					<context.Provider value={contextValue}>
+						<Columns>
+							<Column columnSpan={{ xs: 12, md: 3 }}>
+								<ContentBleed visible={{ md: false }}>
+									<Stack gap={0.75} paddingTop={{ xs: 0, md: 3 }}>
+										<Text
+											display={{ xs: 'none', md: 'block' }}
+											as="h3"
+											fontSize="md"
+											fontWeight="bold"
+											lineHeight="heading"
+										>
+											Progress
+										</Text>
+										<ProgressIndicator
+											items={FORM_STEPS.map(({ label }, idx) => ({
+												label,
+												status:
+													idx === currentStep
+														? 'doing'
+														: formState[idx]
+														? 'done'
+														: 'todo',
+												onClick: () => setCurrentStep(idx),
+											}))}
+										/>
+									</Stack>
+								</ContentBleed>
+							</Column>
+							<Column columnSpan={{ xs: 12, md: 8 }} columnStart={{ md: 5 }}>
+								<Stack gap={2}>
+									<DirectionButton direction="left" onClick={back}>
+										Back
+									</DirectionButton>
+									{FormStepComponent ? <FormStepComponent /> : null}
+								</Stack>
+							</Column>
+						</Columns>
+					</context.Provider>
+				</Content>
+			</AppLayout>
+		</>
 	);
 };
 

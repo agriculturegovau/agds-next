@@ -3,7 +3,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { FormStack } from '@ag.ds-next/form-stack';
 import { useFormExampleMultiStep } from './FormExampleMultiStep';
-import { FormExampleMultiStepContainer } from './FormExampleMultiStepContainer';
+import { FormExampleMultiStepFieldset } from './FormExampleMultiStepFieldset';
 import { FormExampleMultiStepActions } from './FormExampleMultiStepActions';
 import { DatePicker } from '@ag.ds-next/date-picker';
 
@@ -33,11 +33,11 @@ export const FormExampleMultiStep2 = () => {
 	};
 
 	return (
-		<FormExampleMultiStepContainer
-			title="Select date (H1)"
-			subTitle="The introductory paragraph provides context about this page of the form. Use a short paragraph to reduce cognitive load."
-		>
-			<form onSubmit={handleSubmit(onSubmit)}>
+		<form onSubmit={handleSubmit(onSubmit)}>
+			<FormExampleMultiStepFieldset
+				title="Select date (H1)"
+				subTitle="The introductory paragraph provides context about this page of the form. Use a short paragraph to reduce cognitive load."
+			>
 				<FormStack>
 					<Controller
 						control={control}
@@ -61,7 +61,7 @@ export const FormExampleMultiStep2 = () => {
 					/>
 					<FormExampleMultiStepActions />
 				</FormStack>
-			</form>
-		</FormExampleMultiStepContainer>
+			</FormExampleMultiStepFieldset>
+		</form>
 	);
 };

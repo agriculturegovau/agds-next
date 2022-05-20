@@ -4,8 +4,8 @@ import * as yup from 'yup';
 import { FormStack } from '@ag.ds-next/form-stack';
 import { useFormExampleMultiStep } from './FormExampleMultiStep';
 import { ControlGroup, Radio } from '@ag.ds-next/control-input';
-import { FormExampleMultiStepContainer } from './FormExampleMultiStepContainer';
 import { FormExampleMultiStepActions } from './FormExampleMultiStepActions';
+import { FormExampleMultiStepFieldset } from './FormExampleMultiStepFieldset';
 
 const formSchema = yup
 	.object({
@@ -40,16 +40,15 @@ export const FormExampleMultiStep0 = () => {
 	};
 
 	return (
-		<FormExampleMultiStepContainer
-			title="Conditional fork title (H1)"
-			subTitle="The introductory paragraph provides context about this page of the form. Use a short paragraph to reduce cognitive load."
-		>
-			<form onSubmit={handleSubmit(onSubmit)}>
-				<FormStack>
+		<form onSubmit={handleSubmit(onSubmit)}>
+			<FormStack>
+				<FormExampleMultiStepFieldset
+					title="Conditional fork title (H1)"
+					subTitle="The introductory paragraph provides context about this page of the form. Use a short paragraph to reduce cognitive load."
+				>
 					<ControlGroup
 						label="Fieldset question?"
 						hint="Hint test"
-						id="example"
 						invalid={Boolean(errors.example?.message)}
 						message={errors.example?.message}
 						required
@@ -77,9 +76,9 @@ export const FormExampleMultiStep0 = () => {
 							Radio label C
 						</Radio>
 					</ControlGroup>
-					<FormExampleMultiStepActions />
-				</FormStack>
-			</form>
-		</FormExampleMultiStepContainer>
+				</FormExampleMultiStepFieldset>
+				<FormExampleMultiStepActions />
+			</FormStack>
+		</form>
 	);
 };
