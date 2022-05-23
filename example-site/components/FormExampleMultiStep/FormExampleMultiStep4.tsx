@@ -24,7 +24,6 @@ import { formExampleMultiStep1ValuesMap } from './FormExampleMultiStep1';
 import { formExampleMultiStep2ValuesMap } from './FormExampleMultiStep2';
 import { formExampleMultiStep3ValuesMap } from './FormExampleMultiStep3';
 import { formatFieldValue } from './utils';
-import { FormExampleMultiStepFieldset } from './FormExampleMultiStepFieldset';
 
 const MAPPERS = [
 	formExampleMultiStep0ValuesMap,
@@ -77,47 +76,47 @@ export const FormExampleMultiStep4 = () => {
 	}, [hasErrors, focusedError, errors]);
 
 	return (
-		<form onSubmit={handleSubmit(onSubmit, onError)}>
-			<FormExampleMultiStepFieldset
-				title="Confirm and submit (H1)"
-				subTitle="The introductory paragraph provides context about this page of the form. Use a short paragraph to reduce cognitive load."
-			>
-				<FormExampleMultiStepContainer>
-					<FormStack>
-						{FORM_STEPS.filter((_, idx) => idx !== FORM_STEPS.length - 1).map(
-							(step, idx) => (
-								<Table key={idx} striped>
-									<TableCaption>{step.label}</TableCaption>
-									<TableHead>
-										<tr>
-											<TableHeader scope="col" width="50%">
-												Question
-											</TableHeader>
-											<TableHeader scope="col" width="50%">
-												Answer
-											</TableHeader>
+		<FormExampleMultiStepContainer
+			title="Confirm and submit (H1)"
+			subTitle="The introductory paragraph provides context about this page of the form. Use a short paragraph to reduce cognitive load."
+		>
+			<FormStack>
+				{FORM_STEPS.filter((_, idx) => idx !== FORM_STEPS.length - 1).map(
+					(step, idx) => (
+						<Table key={idx} striped>
+							<TableCaption>{step.label}</TableCaption>
+							<TableHead>
+								<tr>
+									<TableHeader scope="col" width="50%">
+										Question
+									</TableHeader>
+									<TableHeader scope="col" width="50%">
+										Answer
+									</TableHeader>
+								</tr>
+							</TableHead>
+							<TableBody>
+								{Object.keys(MAPPERS[idx] || {}).map((key) => {
+									const mapping = MAPPERS[idx];
+									return (
+										<tr key={key}>
+											<TableCell>
+												{key in mapping
+													? mapping[key as keyof typeof mapping]
+													: 'N/A'}
+											</TableCell>
+											<TableCell>
+												{formatFieldValue(formState?.[idx]?.[key])}
+											</TableCell>
 										</tr>
-									</TableHead>
-									<TableBody>
-										{Object.keys(MAPPERS[idx] || {}).map((key) => {
-											const mapping = MAPPERS[idx];
-											return (
-												<tr key={key}>
-													<TableCell>
-														{key in mapping
-															? mapping[key as keyof typeof mapping]
-															: 'N/A'}
-													</TableCell>
-													<TableCell>
-														{formatFieldValue(formState?.[idx]?.[key])}
-													</TableCell>
-												</tr>
-											);
-										})}
-									</TableBody>
-								</Table>
-							)
-						)}
+									);
+								})}
+							</TableBody>
+						</Table>
+					)
+				)}
+				<form onSubmit={handleSubmit(onSubmit, onError)}>
+					<FormStack>
 						{hasErrors && (
 							<PageAlert
 								ref={errorRef}
@@ -160,8 +159,8 @@ export const FormExampleMultiStep4 = () => {
 						</Checkbox>
 						<FormExampleMultiStepActions />
 					</FormStack>
-				</FormExampleMultiStepContainer>
-			</FormExampleMultiStepFieldset>
-		</form>
+				</form>
+			</FormStack>
+		</FormExampleMultiStepContainer>
 	);
 };
