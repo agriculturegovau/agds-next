@@ -7,8 +7,8 @@ import { DocumentTitle } from '../../components/DocumentTitle';
 import { FormExampleMultiStepCallout } from '../../components/FormExampleMultiStep/FormExampleMultiStepCallout';
 import { Body } from '@ag.ds-next/body';
 import { Stack } from '@ag.ds-next/box';
-import { H1 } from '@ag.ds-next/heading';
-import { Text, TextLinkExternal } from '@ag.ds-next/text';
+import { TextLinkExternal } from '@ag.ds-next/text';
+import { PageTitle } from '../../components/PageTitle';
 
 const FormMultiStepPage: NextPage = () => {
 	return (
@@ -21,14 +21,10 @@ const FormMultiStepPage: NextPage = () => {
 					<Columns>
 						<Column columnSpan={{ xs: 12, md: 8 }}>
 							<Stack gap={3}>
-								<Stack gap={0.25}>
-									<H1>Multipage form title (H1)</H1>
-									<Text as="p" fontSize="lg" color="muted">
-										The introductory paragraph provides context about the entire
-										multipage form. Use a short paragraph to reduce cognitive
-										load.
-									</Text>
-								</Stack>
+								<PageTitle
+									title="Multipage form title (H1)"
+									introduction="The introductory paragraph provides context about the entire multipage form. Use a short paragraph to reduce cognitive load."
+								/>
 								<Body>
 									<h2>Multipage form subheading (H2)</h2>
 									<p>Multipage form subheading content</p>

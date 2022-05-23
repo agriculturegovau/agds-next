@@ -78,7 +78,7 @@ export const FormExampleMultiStep4 = () => {
 	return (
 		<FormExampleMultiStepContainer
 			title="Confirm and submit (H1)"
-			subTitle="The introductory paragraph provides context about this page of the form. Use a short paragraph to reduce cognitive load."
+			introduction="The introductory paragraph provides context about this page of the form. Use a short paragraph to reduce cognitive load."
 		>
 			<FormStack>
 				{FORM_STEPS.filter((_, idx) => idx !== FORM_STEPS.length - 1).map(

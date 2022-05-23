@@ -88,7 +88,7 @@ export const FormExampleMultiStep3 = () => {
 	return (
 		<FormExampleMultiStepContainer
 			title="Conditional reveal title (H1)"
-			subTitle="The introductory paragraph provides context about this page of the form. Use a short paragraph to reduce cognitive load."
+			introduction="The introductory paragraph provides context about this page of the form. Use a short paragraph to reduce cognitive load."
 		>
 			<form onSubmit={handleSubmit(onSubmit, onError)}>
 				<FormStack>

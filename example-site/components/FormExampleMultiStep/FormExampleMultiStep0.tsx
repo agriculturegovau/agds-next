@@ -42,7 +42,7 @@ export const FormExampleMultiStep0 = () => {
 	return (
 		<FormExampleMultiStepContainer
 			title="Conditional fork title (H1)"
-			subTitle="The introductory paragraph provides context about this page of the form. Use a short paragraph to reduce cognitive load."
+			introduction="The introductory paragraph provides context about this page of the form. Use a short paragraph to reduce cognitive load."
 		>
 			<form onSubmit={handleSubmit(onSubmit)}>
 				<FormStack>

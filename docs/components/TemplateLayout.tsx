@@ -17,6 +17,7 @@ import type {
 	getTemplateBreadcrumbs,
 	getTemplateSubNavItems,
 } from '../lib/mdx';
+import { PageTitle } from './PageTitle';
 
 type TemplateLayoutProps = PropsWithChildren<{
 	breadcrumbs: Awaited<ReturnType<typeof getTemplateBreadcrumbs>>;
@@ -51,15 +52,11 @@ export const TemplateLayout = ({
 			>
 				<Stack as="main" gap={2}>
 					<Stack gap={1.5} alignItems="flex-start">
-						<Stack gap={0.25}>
-							<Text fontSize="sm" color="muted" fontWeight="bold">
-								v{template.data.version}
-							</Text>
-							<H1>{template.title}</H1>
-							<Text as="p" fontSize="lg" color="muted">
-								{template.data.description}
-							</Text>
-						</Stack>
+						<PageTitle
+							pretext={`v${template.data.version}`}
+							title={template.title}
+							introduction={template.data.description}
+						/>
 						{template.previewUrl && (
 							<CallToActionLink href={template.previewUrl}>
 								View template preview
