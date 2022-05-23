@@ -1,7 +1,8 @@
 import { AnchorHTMLAttributes } from 'react';
 import { ExternalLinkCallout } from '@ag.ds-next/a11y';
-import { Flex } from '@ag.ds-next/box';
+import { Box } from '@ag.ds-next/box';
 import { ExternalLinkIcon } from '@ag.ds-next/icon';
+import { mapSpacing } from '@ag.ds-next/core';
 
 export type TextLinkExternalProps = Omit<
 	AnchorHTMLAttributes<HTMLAnchorElement>,
@@ -13,19 +14,18 @@ export const TextLinkExternal = ({
 	...props
 }: TextLinkExternalProps) => {
 	return (
-		<Flex
-			as="a"
-			inline
-			link
-			alignItems="center"
-			gap={0.25}
-			target="_blank"
-			rel="noopener noreferrer"
-			{...props}
-		>
+		<Box as="a" link target="_blank" rel="noopener noreferrer" {...props}>
 			{children}
 			<ExternalLinkCallout />
-			<ExternalLinkIcon weight="bold" size="sm" />
-		</Flex>
+			<ExternalLinkIcon
+				weight="bold"
+				size="sm"
+				css={{
+					position: 'relative',
+					top: 3,
+					marginLeft: mapSpacing(0.25),
+				}}
+			/>
+		</Box>
 	);
 };
