@@ -156,7 +156,7 @@ export const FormExampleSinglePage = () => {
 							message={errors.abn?.message}
 							required
 							inputMode="numeric"
-							inputPattern="[0-9]*"
+							pattern="[0-9]*"
 						/>
 						<TextInput
 							label="Australian Company Number (ACN)"
@@ -166,7 +166,7 @@ export const FormExampleSinglePage = () => {
 							message={errors.acn?.message}
 							required
 							inputMode="numeric"
-							inputPattern="[0-9]*"
+							pattern="[0-9]*"
 						/>
 						<TextInput
 							label="Business name"
@@ -203,7 +203,7 @@ export const FormExampleSinglePage = () => {
 							message={errors.entityNumber?.message}
 							required
 							inputMode="numeric"
-							inputPattern="[0-9]*"
+							pattern="[0-9]*"
 						/>
 					</FormStack>
 				</Fieldset>
@@ -255,7 +255,7 @@ export const FormExampleSinglePage = () => {
 							message={errors.postcode?.message}
 							maxWidth="sm"
 							inputMode="numeric"
-							inputPattern="[0-9]*"
+							pattern="[0-9]*"
 							required
 						/>
 					</FormStack>
@@ -318,7 +318,7 @@ export const FormExampleSinglePage = () => {
 									maxWidth="sm"
 									required
 									inputMode="numeric"
-									inputPattern="[0-9]*"
+									pattern="[0-9]*"
 								/>
 							</FormStack>
 						)}
