@@ -90,6 +90,17 @@ Buttons.args = {
 	),
 };
 
+export const WithoutImage = Template.bind({});
+WithoutImage.args = {
+	...commonArgs,
+	image: undefined,
+	children: (
+		<div>
+			<Button>Primary button</Button>
+		</div>
+	),
+};
+
 export const Modular = () => (
 	<HeroBannerContainer variant="dark">
 		<HeroBannerMobileImage>
