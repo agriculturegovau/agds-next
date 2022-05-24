@@ -10,7 +10,7 @@ export const BreadcrumbsContainer = ({
 	'aria-label': ariaLabel,
 }: BreadcrumbsContainerProps) => (
 	<nav aria-label={ariaLabel}>
-		<Flex as="ul" gap={0.5} alignItems="center">
+		<Flex as="ol" gap={0.5} alignItems="center">
 			{children}
 		</Flex>
 	</nav>
