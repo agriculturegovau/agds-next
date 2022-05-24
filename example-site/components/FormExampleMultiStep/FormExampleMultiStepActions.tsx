@@ -10,15 +10,8 @@ import { Fragment } from 'react';
 export const FormExampleMultiStepActions = () => {
 	const [isModalOpen, openModal, closeModal] = useTernaryState(false);
 
-	const {
-		hasCompletedPreviousSteps,
-		isSubmittingStep,
-		saveAndExit,
-		isSavingBeforeExiting,
-		cancel,
-	} = useFormExampleMultiStep();
-
-	if (!hasCompletedPreviousSteps) return null;
+	const { isSubmittingStep, saveAndExit, isSavingBeforeExiting, cancel } =
+		useFormExampleMultiStep();
 
 	return (
 		<Fragment>
