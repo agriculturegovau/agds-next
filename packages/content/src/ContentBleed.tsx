@@ -6,20 +6,22 @@ import {
 	ResponsiveProp,
 	tokens,
 } from '@ag.ds-next/core';
-import { contentPaddingY } from './Content';
+import { useContentSpacing } from './context';
+import { paddingYMap } from './utils';
 
 export type ContentBleedProps = PropsWithChildren<{
 	visible?: ResponsiveProp<boolean>;
 }>;
 
 export function ContentBleed({ children, visible }: ContentBleedProps) {
+	const spacing = useContentSpacing();
 	return (
 		<div
 			css={[
 				// Use negative margins to position this element
 				mq({
 					marginTop: mapResponsiveProp(
-						contentPaddingY,
+						paddingYMap[spacing],
 						(v) => `-${mapSpacing(v)}`
 					),
 					marginLeft: mapResponsiveProp(

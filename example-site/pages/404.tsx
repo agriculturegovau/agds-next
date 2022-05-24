@@ -11,13 +11,14 @@ export default function NotFoundPage() {
 			<DocumentTitle title="Error 404" />
 			<AppLayout template={{ name: '404', slug: '404' }}>
 				<Content>
-					<Stack gap={1.5}>
+					<Stack paddingTop={3} gap={1.5}>
 						<H1>Page not found</H1>
 						<Text as="p" fontSize="md">
 							Check the web address is correct or go back to the{' '}
-							<TextLink href="#">Export Service</TextLink>.
+							<TextLink>Export Service.</TextLink>
 						</Text>
-						<Text as="p">Error code: 404</Text>
+
+						<Text>Error code: 404</Text>
 					</Stack>
 				</Content>
 			</AppLayout>

@@ -15,11 +15,12 @@ export const HeroBannerContent = ({
 	variant,
 }: HeroBannerContentProps) => {
 	return (
-		<Content as="div">
+		<Content as="div" spacing="sm">
 			<Flex>
 				<Stack
 					gap={[1.5, 2]}
-					width={['100%', '100%', image ? '60%' : '100%']}
+					width={['100%', '100%', '60%']}
+					paddingY={{ xs: 1, lg: 2 }}
 					css={{ zIndex: 1 }}
 				>
 					{children}
