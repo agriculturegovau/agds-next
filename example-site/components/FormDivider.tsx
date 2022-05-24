@@ -1,7 +1,8 @@
 import { boxPalette, tokens } from '@ag.ds-next/core';
 
-export const Divider = () => (
+export const FormDivider = () => (
 	<hr
+		aria-hidden="true"
 		css={{
 			boxSizing: 'content-box',
 			height: 0,

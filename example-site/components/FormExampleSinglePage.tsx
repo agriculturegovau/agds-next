@@ -3,35 +3,53 @@ import { useForm, SubmitHandler, SubmitErrorHandler } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { Button } from '@ag.ds-next/button';
-import { Checkbox, ControlGroup, Radio } from '@ag.ds-next/control-input';
+import { Checkbox } from '@ag.ds-next/control-input';
 import { Body } from '@ag.ds-next/body';
 import { Flex, Stack } from '@ag.ds-next/box';
 import { Fieldset } from '@ag.ds-next/fieldset';
 import { FormStack } from '@ag.ds-next/form-stack';
 import { Select } from '@ag.ds-next/select';
-import { Textarea } from '@ag.ds-next/textarea';
+import { H2, H3 } from '@ag.ds-next/heading';
 import { TextInput } from '@ag.ds-next/text-input';
 import { Text, TextLink } from '@ag.ds-next/text';
 import { PageAlert } from '@ag.ds-next/page-alert';
 import { useScrollToField } from '@ag.ds-next/field';
-import { Divider } from './Divider';
+import { FormDivider } from './FormDivider';
 
 const formSchema = yup
 	.object({
-		fullName: yup.string().required('Enter your name'),
+		// business details
+		abn: yup.string().required('Enter your ABN'),
+		acn: yup.string().required('Enter your ACN'),
+		businessName: yup.string().required('Enter your business name'),
+		// entity details
+		entityName: yup.string().required('Enter your entity name'),
+		entityNumber: yup.string().required('Enter your entity number'),
+		// street address
 		streetAddress: yup.string().required('Enter your street address'),
+		suburbTownCity: yup.string().required('Enter your suburb, town or city'),
 		state: yup.string().required('Enter your state'),
 		postcode: yup.string().required('Enter your postcode'),
-		email: yup
+		// postal address
+		isPostalAddressSameAsStreetAddress: yup.boolean(),
+		postalAddress: yup.string().when('isPostalAddressSameAsStreetAddress', {
+			is: false,
+			then: yup.string().required('Enter your postal address'),
+		}),
+		postalSuburbTownCity: yup
 			.string()
-			.email('Invalid email address')
-			.required('Enter your email address'),
-		mobile: yup.string(),
-		interest: yup.string().typeError('Select an interest'),
-		message: yup.string(),
-		termsAndConditions: yup
-			.boolean()
-			.oneOf([true], 'You must agree to our terms and conditions'),
+			.when('isPostalAddressSameAsStreetAddress', {
+				is: false,
+				then: yup.string().required('Enter your suburb, town or city'),
+			}),
+		postalState: yup.string().when('isPostalAddressSameAsStreetAddress', {
+			is: false,
+			then: yup.string().required('Enter your state'),
+		}),
+		postalPostcode: yup.string().when('isPostalAddressSameAsStreetAddress', {
+			is: false,
+			then: yup.string().required('Enter your postcode'),
+		}),
 	})
 	.required();
 
@@ -47,7 +65,9 @@ export const FormExampleSinglePage = () => {
 	const {
 		register,
 		handleSubmit,
-		formState: { errors, isSubmitSuccessful },
+		watch,
+		trigger,
+		formState: { errors, isSubmitSuccessful, isSubmitted },
 	} = useForm<FormSchema>({
 		resolver: yupResolver(formSchema),
 	});
@@ -68,6 +88,15 @@ export const FormExampleSinglePage = () => {
 		errorPageAlertRef.current?.focus();
 		setHasFocusedErrorRef(true);
 	}, [hasFocusedErrorRef, hasErrors]);
+
+	const isPostalAddressSameAsStreetAddress = watch(
+		'isPostalAddressSameAsStreetAddress',
+		false
+	);
+
+	useEffect(() => {
+		if (isSubmitted) trigger();
+	}, [isPostalAddressSameAsStreetAddress, trigger, isSubmitted]);
 
 	useEffect(() => {
 		if (!isSubmitSuccessful) return;
@@ -114,31 +143,95 @@ export const FormExampleSinglePage = () => {
 						</Body>
 					</PageAlert>
 				)}
-				<Fieldset legend="Personal details">
+				<Fieldset
+					legend={<H2>Business details (H2)</H2>}
+					hint="Supporting information for provide details subheading - sm/default"
+				>
 					<FormStack>
 						<TextInput
-							label="Full name"
-							{...register('fullName')}
-							id="fullName"
-							invalid={Boolean(errors.fullName?.message)}
-							message={errors.fullName?.message}
+							label="Australian Business Number (ABN)"
+							{...register('abn')}
+							id="abn"
+							invalid={Boolean(errors.abn?.message)}
+							message={errors.abn?.message}
+							required
+							inputMode="numeric"
+							pattern="[0-9]*"
+						/>
+						<TextInput
+							label="Australian Company Number (ACN)"
+							{...register('acn')}
+							id="acn"
+							invalid={Boolean(errors.acn?.message)}
+							message={errors.acn?.message}
+							required
+							inputMode="numeric"
+							pattern="[0-9]*"
+						/>
+						<TextInput
+							label="Business name"
+							{...register('businessName')}
+							id="businessName"
+							invalid={Boolean(errors.businessName?.message)}
+							message={errors.businessName?.message}
+							required
 							maxWidth="xl"
+						/>
+					</FormStack>
+				</Fieldset>
+
+				<FormDivider />
+
+				<Fieldset
+					legend={<H2>Provide entity details (H2)</H2>}
+					hint="Supporting information for provide details subheading - sm/default"
+				>
+					<FormStack>
+						<TextInput
+							label="Entity name"
+							{...register('entityName')}
+							id="entityName"
+							invalid={Boolean(errors.entityName?.message)}
+							message={errors.entityName?.message}
 							required
 						/>
+						<TextInput
+							label="Entity number"
+							{...register('entityNumber')}
+							id="entityNumber"
+							invalid={Boolean(errors.entityNumber?.message)}
+							message={errors.entityNumber?.message}
+							required
+							inputMode="numeric"
+							pattern="[0-9]*"
+						/>
+					</FormStack>
+				</Fieldset>
+
+				<Fieldset legend={<H3>Street address (H3)</H3>}>
+					<FormStack>
 						<TextInput
 							label="Street address"
 							{...register('streetAddress')}
 							id="streetAddress"
 							invalid={Boolean(errors.streetAddress?.message)}
 							message={errors.streetAddress?.message}
+							required
 							maxWidth="xl"
+						/>
+						<TextInput
+							label="Suburb, town or city"
+							{...register('suburbTownCity')}
+							id="suburbTownCity"
+							invalid={Boolean(errors.suburbTownCity?.message)}
+							message={errors.suburbTownCity?.message}
 							required
 						/>
 						<Select
-							label="State"
+							label="State or territory"
 							{...register('state')}
 							id="state"
-							placeholder="Please select"
+							placeholder="Select"
 							options={[
 								{ label: 'NSW', value: 'nsw' },
 								{ label: 'QLD', value: 'qld' },
@@ -151,8 +244,8 @@ export const FormExampleSinglePage = () => {
 							]}
 							invalid={Boolean(errors.state?.message)}
 							message={errors.state?.message}
-							maxWidth="xl"
 							required
+							maxWidth="md"
 						/>
 						<TextInput
 							label="Postcode"
@@ -161,81 +254,79 @@ export const FormExampleSinglePage = () => {
 							invalid={Boolean(errors.postcode?.message)}
 							message={errors.postcode?.message}
 							maxWidth="sm"
+							inputMode="numeric"
+							pattern="[0-9]*"
 							required
 						/>
 					</FormStack>
 				</Fieldset>
-				<Divider />
-				<Fieldset legend="Contact details">
+
+				<Fieldset legend={<H3>Postal address (H3)</H3>}>
 					<FormStack>
-						<TextInput
-							label="Email"
-							type="email"
-							{...register('email')}
-							id="email"
-							invalid={Boolean(errors.email?.message)}
-							message={errors.email?.message}
-							maxWidth="xl"
-							required
-						/>
-						<TextInput
-							label="Mobile"
-							type="tel"
-							hint="We use this to send you SMS notifications"
-							{...register('mobile')}
-							id="mobile"
-							invalid={Boolean(errors.mobile?.message)}
-							message={errors.mobile?.message}
-							maxWidth="md"
-						/>
+						<Checkbox
+							{...register('isPostalAddressSameAsStreetAddress')}
+							id="isPostalAddressSameAsStreetAddress"
+						>
+							Same as street address
+						</Checkbox>
+
+						{!isPostalAddressSameAsStreetAddress && (
+							<FormStack>
+								<TextInput
+									label="Postal address"
+									{...register('postalAddress')}
+									id="postalAddress"
+									invalid={Boolean(errors.postalAddress?.message)}
+									message={errors.postalAddress?.message}
+									required
+									maxWidth="xl"
+								/>
+								<TextInput
+									label="Suburb, town or city"
+									{...register('postalSuburbTownCity')}
+									id="postalSuburbTownCity"
+									invalid={Boolean(errors.postalSuburbTownCity?.message)}
+									message={errors.postalSuburbTownCity?.message}
+									required
+								/>
+								<Select
+									label="State or territory"
+									{...register('postalState')}
+									id="postalState"
+									placeholder="Select"
+									options={[
+										{ label: 'NSW', value: 'nsw' },
+										{ label: 'QLD', value: 'qld' },
+										{ label: 'ACT', value: 'act' },
+										{ label: 'VIC', value: 'vic' },
+										{ label: 'TAS', value: 'tas' },
+										{ label: 'NT', value: 'nt' },
+										{ label: 'SA', value: 'sa' },
+										{ label: 'WA', value: 'wa' },
+									]}
+									invalid={Boolean(errors.postalState?.message)}
+									message={errors.postalState?.message}
+									required
+									maxWidth="md"
+								/>
+								<TextInput
+									label="Postcode"
+									{...register('postalPostcode')}
+									id="postalPostcode"
+									invalid={Boolean(errors.postalPostcode?.message)}
+									message={errors.postalPostcode?.message}
+									maxWidth="sm"
+									required
+									inputMode="numeric"
+									pattern="[0-9]*"
+								/>
+							</FormStack>
+						)}
 					</FormStack>
 				</Fieldset>
-				<Divider />
-				<FormStack>
-					<ControlGroup
-						label="Interest"
-						invalid={Boolean(errors.interest?.message)}
-						message={errors.interest?.message}
-						id="interest"
-						required
-					>
-						<Radio
-							{...register('interest')}
-							invalid={Boolean(errors.interest?.message)}
-						>
-							Art
-						</Radio>
-						<Radio
-							{...register('interest')}
-							invalid={Boolean(errors.interest?.message)}
-						>
-							Cooking
-						</Radio>
-						<Radio
-							{...register('interest')}
-							invalid={Boolean(errors.interest?.message)}
-						>
-							Reading
-						</Radio>
-					</ControlGroup>
-					<Textarea
-						label="Message"
-						{...register('message')}
-						id="message"
-						invalid={Boolean(errors.message?.message)}
-						message={errors.message?.message}
-						maxWidth="xl"
-					/>
-					<Checkbox
-						{...register('termsAndConditions')}
-						id="termsAndConditions"
-						invalid={Boolean(errors.termsAndConditions?.message)}
-					>
-						By checking this box you agree to our{' '}
-						<TextLink href="#">terms and conditions</TextLink>.
-					</Checkbox>
-				</FormStack>
-				<Divider />
+
+				<FormDivider />
+
 				<Flex gap={1}>
 					<Button type="submit">Submit</Button>
 					<Button type="button" variant="secondary">
