@@ -25,18 +25,17 @@ const formSchema = yup
 		// entity details
 		entityName: yup.string().required('Enter your entity name'),
 		entityNumber: yup.string().required('Enter your entity number'),
+		// street address
 		streetAddress: yup.string().required('Enter your street address'),
 		suburbTownCity: yup.string().required('Enter your suburb, town or city'),
 		state: yup.string().required('Enter your state'),
 		postcode: yup.string().required('Enter your postcode'),
+		// postal address
 		isPostalAddressSameAsStreetAddress: yup.boolean(),
-		postalAddress: yup
-			.string()
-
-			.when('isPostalAddressSameAsStreetAddress', {
-				is: false,
-				then: yup.string().required('Enter your postal address'),
-			}),
+		postalAddress: yup.string().when('isPostalAddressSameAsStreetAddress', {
+			is: false,
+			then: yup.string().required('Enter your postal address'),
+		}),
 		postalSuburbTownCity: yup
 			.string()
 			.when('isPostalAddressSameAsStreetAddress', {
@@ -67,7 +66,8 @@ export const FormExampleSinglePage = () => {
 		register,
 		handleSubmit,
 		watch,
-		formState: { errors, isSubmitSuccessful },
+		trigger,
+		formState: { errors, isSubmitSuccessful, isSubmitted },
 	} = useForm<FormSchema>({
 		resolver: yupResolver(formSchema),
 	});
@@ -88,6 +88,15 @@ export const FormExampleSinglePage = () => {
 		errorPageAlertRef.current?.focus();
 		setHasFocusedErrorRef(true);
 	}, [hasFocusedErrorRef, hasErrors]);
+
+	const isPostalAddressSameAsStreetAddress = watch(
+		'isPostalAddressSameAsStreetAddress',
+		false
+	);
+
+	useEffect(() => {
+		if (isSubmitted) trigger();
+	}, [isPostalAddressSameAsStreetAddress, trigger, isSubmitted]);
 
 	useEffect(() => {
 		if (!isSubmitSuccessful) return;
@@ -110,10 +119,6 @@ export const FormExampleSinglePage = () => {
 		);
 	}
 
-	const isPostalAddressSameAsStreetAddress = watch(
-		'isPostalAddressSameAsStreetAddress',
-		false
-	);
 	return (
 		<form onSubmit={handleSubmit(onSubmit, onError)}>
 			<Stack gap={3}>
