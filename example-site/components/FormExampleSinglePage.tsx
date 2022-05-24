@@ -140,12 +140,7 @@ export const FormExampleSinglePage = () => {
 				)}
 				<Fieldset
 					legend={<H2>Business details (H2)</H2>}
-					hint={
-						<Text color="muted">
-							Supporting information for provide details subheading - sm/default
-							(P).
-						</Text>
-					}
+					hint="Supporting information for provide details subheading - sm/default (P)."
 				>
 					<FormStack>
 						<TextInput
@@ -175,15 +170,12 @@ export const FormExampleSinglePage = () => {
 						/>
 					</FormStack>
 				</Fieldset>
+
 				<Divider />
+
 				<Fieldset
 					legend={<H2>Provide entity details (H2)</H2>}
-					hint={
-						<Text color="muted">
-							Supporting information for provide details subheading - sm/default
-							(P).
-						</Text>
-					}
+					hint="Supporting information for provide details subheading - sm/default"
 				>
 					<FormStack>
 						<TextInput
@@ -203,7 +195,11 @@ export const FormExampleSinglePage = () => {
 							message={errors.entityNumber?.message}
 							required
 						/>
-						<H3>Street address (H3)</H3>
+					</FormStack>
+				</Fieldset>
+
+				<Fieldset legend={<H3>Street address (H3)</H3>}>
+					<FormStack>
 						<TextInput
 							label="Street address"
 							{...register('streetAddress')}
@@ -250,8 +246,11 @@ export const FormExampleSinglePage = () => {
 							maxWidth="sm"
 							required
 						/>
+					</FormStack>
+				</Fieldset>
 
-						<H3>Postal address (H3)</H3>
+				<Fieldset legend={<H3>Postal address (H3)</H3>}>
+					<FormStack>
 						<Checkbox
 							{...register('isPostalAddressSameAsStreetAddress')}
 							id="isPostalAddressSameAsStreetAddress"
