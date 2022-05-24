@@ -14,7 +14,7 @@ import { TextInput } from '@ag.ds-next/text-input';
 import { Text, TextLink } from '@ag.ds-next/text';
 import { PageAlert } from '@ag.ds-next/page-alert';
 import { useScrollToField } from '@ag.ds-next/field';
-import { Divider } from './Divider';
+import { FormDivider } from './FormDivider';
 
 const formSchema = yup
 	.object({
@@ -180,7 +180,7 @@ export const FormExampleSinglePage = () => {
 					</FormStack>
 				</Fieldset>
 
-				<Divider />
+				<FormDivider />
 
 				<Fieldset
 					legend={<H2>Provide entity details (H2)</H2>}
@@ -325,7 +325,8 @@ export const FormExampleSinglePage = () => {
 					</FormStack>
 				</Fieldset>
 
-				<Divider />
+				<FormDivider />
+
 				<Flex gap={1}>
 					<Button type="submit">Submit</Button>
 					<Button type="button" variant="secondary">

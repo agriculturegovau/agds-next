@@ -1,11 +1,12 @@
 import { Button } from '@ag.ds-next/button';
 import { Flex } from '@ag.ds-next/box';
-import { boxPalette, useTernaryState } from '@ag.ds-next/core';
+import { useTernaryState } from '@ag.ds-next/core';
 import { Modal, ModalButtonGroup } from '@ag.ds-next/modal';
 import { useFormExampleMultiStep } from './FormExampleMultiStep';
 import { Text } from '@ag.ds-next/text';
 import { FormStack } from '@ag.ds-next/form-stack';
 import { Fragment } from 'react';
+import { FormDivider } from '../FormDivider';
 
 export const FormExampleMultiStepActions = () => {
 	const [isModalOpen, openModal, closeModal] = useTernaryState(false);
@@ -16,20 +17,7 @@ export const FormExampleMultiStepActions = () => {
 	return (
 		<Fragment>
 			<FormStack>
-				<hr
-					aria-hidden="true"
-					css={{
-						boxSizing: 'content-box',
-						height: 0,
-						margin: 0,
-						overflow: 'visible',
-						border: 'none',
-						borderTopWidth: 1,
-						borderTopStyle: 'solid',
-						borderColor: boxPalette.borderMuted,
-						width: '100%',
-					}}
-				/>
+				<FormDivider />
 				<Flex gap={1}>
 					<Button type="submit" variant="primary" loading={isSubmittingStep}>
 						Continue
