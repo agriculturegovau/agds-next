@@ -41,11 +41,7 @@ export default function TemplateOverviewPage({
 				<Body id="page-content">
 					{template.imageSrc && (
 						<Box border borderColor="muted" css={{ img: { display: 'block' } }}>
-							<img
-								role="presentation"
-								src={template.imageSrc}
-								alt="Screenshot of template"
-							/>
+							<img role="presentation" src={template.imageSrc} alt="" />
 						</Box>
 					)}
 					<MDXRemote {...template.source} components={mdxComponents} />
