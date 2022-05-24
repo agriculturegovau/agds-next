@@ -1,32 +1,27 @@
 import { ReactNode } from 'react';
 import { Stack } from '@ag.ds-next/box';
-import { H1 } from '@ag.ds-next/heading';
-import { Text } from '@ag.ds-next/text';
 import { PageAlert } from '@ag.ds-next/page-alert';
 import { Body } from '@ag.ds-next/body';
 import { useFormExampleMultiStep } from './FormExampleMultiStep';
+import { PageTitle } from '../PageTitle';
 
 export const FormExampleMultiStepContainer = ({
 	children,
 	title,
-	subTitle,
+	introduction,
 }: {
 	children: ReactNode;
 	title: string;
-	subTitle: string;
+	introduction: string;
 }) => {
 	const { hasCompletedPreviousSteps } = useFormExampleMultiStep();
 	return (
-		<Stack gap={2}>
-			<Stack gap={0.25}>
-				<Text as="span" fontWeight="bold" fontSize="sm" color="muted">
-					Title of multi page form
-				</Text>
-				<H1>{title}</H1>
-				<Text as="p" fontSize="lg" color="muted">
-					{subTitle}
-				</Text>
-			</Stack>
+		<Stack gap={3}>
+			<PageTitle
+				pretext="Title of multi page form"
+				title={title}
+				introduction={introduction}
+			/>
 			{hasCompletedPreviousSteps ? (
 				children
 			) : (

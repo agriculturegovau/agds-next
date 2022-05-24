@@ -35,7 +35,7 @@ export const FormExampleMultiStep2 = () => {
 	return (
 		<FormExampleMultiStepContainer
 			title="Select date (H1)"
-			subTitle="The introductory paragraph provides context about this page of the form. Use a short paragraph to reduce cognitive load."
+			introduction="The introductory paragraph provides context about this page of the form. Use a short paragraph to reduce cognitive load."
 		>
 			<form onSubmit={handleSubmit(onSubmit)}>
 				<FormStack>

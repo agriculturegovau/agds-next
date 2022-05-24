@@ -1,5 +1,4 @@
 import type { NextPage } from 'next';
-import { Body } from '@ag.ds-next/body';
 import { Stack } from '@ag.ds-next/box';
 import { Content } from '@ag.ds-next/content';
 import { Columns, Column } from '@ag.ds-next/columns';
@@ -7,6 +6,7 @@ import { AppLayout } from '../components/AppLayout';
 import { DocumentTitle } from '../components/DocumentTitle';
 import { FormExampleSinglePage } from '../components/FormExampleSinglePage';
 import { Divider } from '../components/Divider';
+import { PageTitle } from '../components/PageTitle';
 
 const FormSinglePage: NextPage = () => {
 	return (
@@ -19,13 +19,10 @@ const FormSinglePage: NextPage = () => {
 					<Columns>
 						<Column columnSpan={{ xs: 12, md: 7 }}>
 							<Stack gap={3}>
-								<Body>
-									<h1>Single page form example</h1>
-									<p>
-										Lorem ipsum dolor sit amet, laoreet necessitatibus sed in,
-										ut quem latine eligendi vim, noster utamur sit an.
-									</p>
-								</Body>
+								<PageTitle
+									title="Single page form example"
+									introduction="Lorem ipsum dolor sit amet, laoreet necessitatibus sed in, ut quem latine eligendi vim, noster utamur sit an."
+								/>
 								<Divider />
 								<FormExampleSinglePage />
 							</Stack>

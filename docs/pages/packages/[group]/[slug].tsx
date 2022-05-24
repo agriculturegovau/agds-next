@@ -20,6 +20,7 @@ import { mdxComponents } from '../../../components/utils';
 import { AppLayout } from '../../../components/AppLayout';
 import { DocumentTitle } from '../../../components/DocumentTitle';
 import { PageLayout } from '../../../components/PageLayout';
+import { PageTitle } from '../../../components/PageTitle';
 
 export default function Packages({
 	pkg,
@@ -41,17 +42,11 @@ export default function Packages({
 				>
 					<Stack as="main" gap={2}>
 						<Stack gap={1.5} alignItems="flex-start">
-							<Stack gap={0.25}>
-								<Text fontSize="sm" color="muted" fontWeight="bold">
-									v{pkg.version}
-								</Text>
-								<H1>{pkg.data.title}</H1>
-								{pkg.data.description && (
-									<Text as="p" fontSize="lg" color="muted">
-										{pkg.data.description}
-									</Text>
-								)}
-							</Stack>
+							<PageTitle
+								pretext={`v${pkg.version}`}
+								title={pkg.data.title}
+								introduction={pkg.data.description}
+							/>
 							{pkg.storybookPath && (
 								<div>
 									<ButtonLink
