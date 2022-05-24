@@ -27,7 +27,7 @@ export const HeroBannerImage = ({
 					pointerEvents: 'none',
 					position: 'absolute',
 					inset: 0,
-					background: `linear-gradient(104deg, ${boxPalette[backgroundVar]} 0px, ${boxPalette[backgroundVar]} 80px, transparent 384px)`,
+					background: `linear-gradient(90deg, ${boxPalette[backgroundVar]} 0px, rgba(255, 255, 255, 0.0) 360px)`,
 				},
 
 				img: {
