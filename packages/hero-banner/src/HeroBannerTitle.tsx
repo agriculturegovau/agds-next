@@ -8,11 +8,7 @@ export type HeroBannerTitleContainerProps = { children: ReactNode };
 
 export const HeroBannerTitleContainer = ({
 	children,
-}: HeroBannerTitleContainerProps) => (
-	<Stack gap={[0.5, 1]} maxWidth={tokens.maxWidth.bodyText}>
-		{children}
-	</Stack>
-);
+}: HeroBannerTitleContainerProps) => <Stack gap={[0.5, 1]}>{children}</Stack>;
 
 export type HeroBannerTitleProps = { children: ReactNode };
 
