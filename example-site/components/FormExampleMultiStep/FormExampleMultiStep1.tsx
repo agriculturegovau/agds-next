@@ -131,8 +131,8 @@ export const FormExampleMultiStep1 = () => {
 							</div>
 						)}
 					/>
+					<FormExampleMultiStepActions />
 				</FormStack>
-				<FormExampleMultiStepActions />
 			</form>
 		</FormExampleMultiStepContainer>
 	);
