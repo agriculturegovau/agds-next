@@ -145,7 +145,7 @@ export const FormExampleSinglePage = () => {
 				)}
 				<Fieldset
 					legend={<H2>Business details (H2)</H2>}
-					hint="Supporting information for provide details subheading - sm/default (P)."
+					hint="Supporting information for provide details subheading - sm/default"
 				>
 					<FormStack>
 						<TextInput
