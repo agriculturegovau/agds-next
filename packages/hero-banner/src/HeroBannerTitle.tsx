@@ -1,6 +1,5 @@
 import { ReactNode } from 'react';
 import { Stack } from '@ag.ds-next/box';
-import { tokens } from '@ag.ds-next/core';
 import { Heading } from '@ag.ds-next/heading';
 import { Text } from '@ag.ds-next/text';
 
@@ -21,7 +20,7 @@ export const HeroBannerTitle = ({ children }: HeroBannerTitleProps) => (
 export type HeroBannerSubTitleProps = { children: ReactNode };
 
 export const HeroBannerSubTitle = ({ children }: HeroBannerSubTitleProps) => (
-	<Text as="p" fontSize="md" maxWidth={tokens.maxWidth.bodyText}>
+	<Text as="p" fontSize="md">
 		{children}
 	</Text>
 );
