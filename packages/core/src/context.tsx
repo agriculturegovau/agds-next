@@ -5,7 +5,7 @@ import {
 	AnchorHTMLAttributes,
 } from 'react';
 
-function DefaultLinkComponent<P extends PropsWithChildren<{ href?: string }>>(
+function DefaultLinkComponent<P extends PropsWithChildren<LinkProps>>(
 	props: P
 ) {
 	return <a {...props} />;
