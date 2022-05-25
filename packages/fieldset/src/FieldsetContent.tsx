@@ -6,5 +6,5 @@ export type FieldsetContentProps = {
 };
 
 export const FieldsetContent = ({ children }: FieldsetContentProps) => {
-	return <div css={{ marginTop: mapSpacing(1.5) }}>{children}</div>;
+	return <div css={{ marginTop: mapSpacing(2) }}>{children}</div>;
 };
