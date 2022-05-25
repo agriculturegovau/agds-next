@@ -18,6 +18,7 @@ import { IconProps } from '@ag.ds-next/icon';
 
 type MainNavItemProps = PropsWithChildren<{
 	as: ElementType;
+	className?: string;
 }>;
 
 const MainNavItem = ({ as, ...props }: MainNavItemProps) => (

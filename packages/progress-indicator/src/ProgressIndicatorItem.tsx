@@ -56,6 +56,7 @@ export const ProgressIndicatorItemButton = ({
 
 type ProgressIndicatorItemProps = PropsWithChildren<{
 	as: ElementType;
+	className?: string;
 	status: ProgressIndicatorItemStatus;
 }>;
 

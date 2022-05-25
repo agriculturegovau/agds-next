@@ -332,7 +332,10 @@ export const focusStyles = {
 	},
 };
 
-export type BoxProps = PaletteProps &
+type EmotionProps = { className?: string };
+
+export type BoxProps = EmotionProps &
+	PaletteProps &
 	ColorProps &
 	BorderProps &
 	FocusProps &

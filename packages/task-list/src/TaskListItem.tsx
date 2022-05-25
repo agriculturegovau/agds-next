@@ -62,6 +62,7 @@ export const TaskListItemButton = ({
 
 type TaskListItemProps = PropsWithChildren<{
 	as: ElementType;
+	className?: string;
 	status: TaskListItemStatus;
 	message?: string;
 	ordered?: boolean;

@@ -40,6 +40,7 @@ export const CallToActionButton = (props: CallToActionButtonProps) => (
 
 type CallToActionProps = PropsWithChildren<{
 	as: ElementType;
+	className?: string;
 }>;
 
 const AnimatedChevronRightIcon = animated(ChevronRightIcon);

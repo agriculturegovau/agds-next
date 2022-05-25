@@ -50,6 +50,7 @@ export const DirectionButton = ({
 type DirectionLinkBaseProps = PropsWithChildren<{
 	as: ElementType;
 	direction: Direction;
+	className?: string;
 }>;
 
 const DirectionLinkBase = ({
