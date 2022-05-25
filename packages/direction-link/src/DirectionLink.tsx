@@ -50,12 +50,14 @@ export const DirectionButton = ({
 type DirectionLinkBaseProps = PropsWithChildren<{
 	as: ElementType;
 	direction: Direction;
+	className?: string;
 }>;
 
 const DirectionLinkBase = ({
 	as,
 	children,
 	direction,
+	className,
 	...props
 }: DirectionLinkBaseProps) => {
 	const Icon = iconMap[direction];
@@ -63,6 +65,7 @@ const DirectionLinkBase = ({
 	return (
 		<Flex
 			as={as}
+			className={className}
 			inline
 			gap={0.5}
 			alignItems="center"
