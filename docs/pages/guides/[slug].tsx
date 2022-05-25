@@ -1,7 +1,6 @@
 import { GetStaticProps, InferGetStaticPropsType } from 'next';
 import { MDXRemote } from 'next-mdx-remote';
 import { H1 } from '@ag.ds-next/heading';
-import { Flex } from '@ag.ds-next/box';
 import { Body } from '@ag.ds-next/body';
 
 import {
