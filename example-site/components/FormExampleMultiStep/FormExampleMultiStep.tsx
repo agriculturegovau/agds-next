@@ -138,7 +138,7 @@ export const FormExampleMultiStep = () => {
 			<>
 				<DocumentTitle title="Multi step form example" />
 				<AppLayout
-					template={{ name: '"Multi-step form', slug: 'multi-step-form' }}
+					template={{ name: 'Multi-step form', slug: 'multi-step-form' }}
 				>
 					<Content spacing="lg">
 						<Columns>
@@ -170,7 +170,7 @@ export const FormExampleMultiStep = () => {
 		<>
 			<DocumentTitle title="Multi step form example" />
 			<AppLayout
-				template={{ name: '"Multi-step form', slug: 'multi-step-form' }}
+				template={{ name: 'Multi-step form', slug: 'multi-step-form' }}
 				focusMode
 			>
 				<Content spacing="lg">
