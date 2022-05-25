@@ -1,13 +1,13 @@
 import { Box, Flex } from '@ag.ds-next/box';
 import { SkipLinks } from '@ag.ds-next/skip-link';
-// import { TemplateBanner } from './TemplateBanner';
+import { TemplateBanner } from './TemplateBanner';
 import { PropsWithChildren, useMemo } from 'react';
 import { SiteHeader } from './SiteHeader';
 import { SiteFooter } from './SiteFooter';
 
 export const AppLayout = ({
 	children,
-	// template,
+	template,
 	focusMode = false,
 }: PropsWithChildren<{
 	template?: { name: string; slug: string };
@@ -30,7 +30,7 @@ export const AppLayout = ({
 				palette="light"
 				minHeight="100vh"
 			>
-				{/* {template ? <TemplateBanner {...template} /> : null} */}
+				{template ? <TemplateBanner {...template} /> : null}
 				<SiteHeader focusMode={focusMode} />
 				<Box as="main" id="main-content" flexGrow={1}>
 					{children}
