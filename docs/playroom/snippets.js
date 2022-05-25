@@ -249,6 +249,25 @@ items={[
     ]} />`,
 	},
 	{
+		group: 'Select',
+		name: 'State or territory',
+		code: `<Select 	label="State or territory"
+    placeholder="Select"
+    options={[
+      { label: 'NSW', value: 'nsw' },
+      { label: 'QLD', value: 'qld' },
+      { label: 'ACT', value: 'act' },
+      { label: 'VIC', value: 'vic' },
+      { label: 'TAS', value: 'tas' },
+      { label: 'NT', value: 'nt' },
+      { label: 'SA', value: 'sa' },
+      { label: 'WA', value: 'wa' },
+    ]}
+    required
+    maxWidth="sm"
+    />`,
+	},
+	{
 		group: 'Fieldset',
 		name: 'Basic',
 		code: `	<Fieldset legend="What is your address?">
