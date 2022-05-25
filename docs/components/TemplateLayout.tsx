@@ -1,6 +1,5 @@
 import { PropsWithChildren } from 'react';
-import { H1 } from '@ag.ds-next/heading';
-import { Box, Flex, Stack } from '@ag.ds-next/box';
+import { Box, Stack } from '@ag.ds-next/box';
 import { CallToActionLink } from '@ag.ds-next/call-to-action';
 import { SideNavProps } from '@ag.ds-next/side-nav';
 import { SkipLinksProps } from '@ag.ds-next/skip-link';
