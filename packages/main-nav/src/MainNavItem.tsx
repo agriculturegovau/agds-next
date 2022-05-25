@@ -21,7 +21,12 @@ type MainNavItemProps = PropsWithChildren<{
 	className?: string;
 }>;
 
-const MainNavItem = ({ as, ...props }: MainNavItemProps) => (
+const MainNavItem = ({
+	as,
+	children,
+	className,
+	...props
+}: MainNavItemProps) => (
 	<Box
 		paddingBottom={0.5}
 		height="100%"
@@ -43,6 +48,7 @@ const MainNavItem = ({ as, ...props }: MainNavItemProps) => (
 	>
 		<Flex
 			as={as}
+			className={className}
 			fontFamily="body"
 			fontWeight="normal"
 			fontSize={{ xs: 'xs', lg: 'sm' }}
@@ -57,7 +63,9 @@ const MainNavItem = ({ as, ...props }: MainNavItemProps) => (
 			height="100%"
 			focus
 			{...props}
-		/>
+		>
+			{children}
+		</Flex>
 	</Box>
 );
 

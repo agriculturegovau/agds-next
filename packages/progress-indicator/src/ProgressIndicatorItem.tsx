@@ -64,6 +64,7 @@ const ProgressIndicatorItem = ({
 	as,
 	children,
 	status,
+	className,
 	...props
 }: ProgressIndicatorItemProps) => {
 	const active = status === 'doing';
@@ -72,6 +73,7 @@ const ProgressIndicatorItem = ({
 		<Box as="li" borderBottom>
 			<Flex
 				as={as}
+				className={className}
 				alignItems="center"
 				gap={0.75}
 				padding={0.75}

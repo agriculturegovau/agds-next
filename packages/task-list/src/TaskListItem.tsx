@@ -74,6 +74,7 @@ const TaskListItem = ({
 	status,
 	message,
 	ordered,
+	className,
 	...props
 }: TaskListItemProps) => {
 	const active = status === 'doing';
@@ -82,6 +83,7 @@ const TaskListItem = ({
 		<li css={{ counterIncrement: 'task-count' }}>
 			<Flex
 				as={as}
+				className={className}
 				gap={0.75}
 				paddingY={1.5}
 				paddingX={0.75}

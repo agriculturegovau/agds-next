@@ -45,7 +45,12 @@ type CallToActionProps = PropsWithChildren<{
 
 const AnimatedChevronRightIcon = animated(ChevronRightIcon);
 
-export const CallToAction = ({ as, children, ...props }: CallToActionProps) => {
+export const CallToAction = ({
+	as,
+	children,
+	className,
+	...props
+}: CallToActionProps) => {
 	const [mouseOver, setMouseOver] = useState(false);
 
 	const prefersReducedMotion = usePrefersReducedMotion();
@@ -63,6 +68,7 @@ export const CallToAction = ({ as, children, ...props }: CallToActionProps) => {
 		>
 			<Flex
 				as={as}
+				className={className}
 				gap={0.5}
 				alignItems="center"
 				fontFamily="body"
