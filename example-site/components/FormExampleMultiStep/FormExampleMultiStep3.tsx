@@ -14,27 +14,20 @@ import { useFormExampleMultiStep } from './FormExampleMultiStep';
 import { FormExampleMultiStepActions } from './FormExampleMultiStepActions';
 import { FormExampleMultiStepContainer } from './FormExampleMultiStepContainer';
 
+const checkboxErrorString = 'Please check at least one option';
 const formSchema = yup
 	.object({
-		checkboxA: yup.boolean(),
-		checkboxB: yup.boolean(),
-		checkboxC: yup.boolean(),
-		checkboxD: yup.boolean(),
-		conditionalField: yup.string().when('checkboxB', {
-			is: true,
-			then: yup.string().required('Nested field is required'),
+		checkbox: yup
+			.array()
+			.typeError(checkboxErrorString)
+			.of(yup.string())
+			.min(1, checkboxErrorString),
+		conditionalField: yup.string().when('checkbox', (value, schema) => {
+			if (Array.isArray(value) && value.includes('B')) {
+				return schema.required('Nested field is required');
+			}
+			return schema;
 		}),
-	})
-	.test('checkbox test', (obj) => {
-		// All good if at least 1 checkbox is checked
-		if (obj.checkboxA || obj.checkboxB || obj.checkboxC || obj.checkboxD) {
-			return true;
-		}
-		return new yup.ValidationError(
-			'Please check at least 1 option',
-			null,
-			'checkbox-fieldset'
-		);
 	})
 	.required();
 
@@ -42,10 +35,7 @@ type FormSchema = yup.InferType<typeof formSchema>;
 
 export const formExampleMultiStep3ValuesMap: Record<keyof FormSchema, string> =
 	{
-		checkboxA: 'Checkbox label A',
-		checkboxB: 'Checkbox label B',
-		checkboxC: 'Checkbox label C',
-		checkboxD: 'Checkbox label D',
+		checkbox: 'Checkbox fieldset question?',
 		conditionalField: 'Nested field',
 	};
 
@@ -59,8 +49,10 @@ export const FormExampleMultiStep3 = () => {
 		watch,
 		register,
 		handleSubmit,
-		formState: { errors },
+		trigger,
+		formState: { errors, isSubmitted },
 	} = useForm<FormSchema>({
+		reValidateMode: 'onChange',
 		defaultValues: stepFormState,
 		resolver: yupResolver(formSchema),
 	});
@@ -83,7 +75,13 @@ export const FormExampleMultiStep3 = () => {
 		}
 	}, [hasErrors, focusedError, errors]);
 
-	const showConditionalField = watch('checkboxB');
+	const checkboxWatch = watch('checkbox');
+	const showConditionalField =
+		Array.isArray(checkboxWatch) && checkboxWatch.includes('B');
+
+	useEffect(() => {
+		if (isSubmitted) trigger();
+	}, [trigger, isSubmitted, showConditionalField]);
 
 	return (
 		<FormExampleMultiStepContainer
@@ -105,7 +103,7 @@ export const FormExampleMultiStep3 = () => {
 									{Object.entries(errors).map(([key, value]) => (
 										<li key={key}>
 											<a href={`#${key}`} onClick={scrollToField}>
-												{value.message}
+												{Array.isArray(value) ? value[0] : value.message}
 											</a>
 										</li>
 									))}
@@ -114,22 +112,20 @@ export const FormExampleMultiStep3 = () => {
 						</PageAlert>
 					)}
 					<ControlGroup
-						id="checkbox-fieldset"
+						id="checkbox"
 						label="Checkbox fieldset question?"
 						hint="Provide a hint here"
+						invalid={Boolean(errors.checkbox)}
+						// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+						// @ts-ignore
+						message={errors?.checkbox?.message}
 						required
 						block
 					>
-						<Checkbox
-							{...register('checkboxA')}
-							invalid={Boolean(errors.checkboxA?.message)}
-						>
+						<Checkbox {...register('checkbox')} value="A">
 							Checkbox label A
 						</Checkbox>
-						<Checkbox
-							{...register('checkboxB')}
-							invalid={Boolean(errors.checkboxB?.message)}
-						>
+						<Checkbox {...register('checkbox')} value="B">
 							Checkbox label B
 						</Checkbox>
 						{showConditionalField ? (
@@ -145,20 +141,15 @@ export const FormExampleMultiStep3 = () => {
 									hint="Hint text"
 									{...register('conditionalField')}
 									invalid={Boolean(errors.conditionalField?.message)}
+									message={errors.conditionalField?.message}
 									required
 								/>
 							</Box>
 						) : null}
-						<Checkbox
-							{...register('checkboxC')}
-							invalid={Boolean(errors.checkboxC?.message)}
-						>
+						<Checkbox {...register('checkbox')} value="C">
 							Checkbox label C
 						</Checkbox>
-						<Checkbox
-							{...register('checkboxD')}
-							invalid={Boolean(errors.checkboxD?.message)}
-						>
+						<Checkbox {...register('checkbox')} value="D">
 							Checkbox label D
 						</Checkbox>
 					</ControlGroup>
