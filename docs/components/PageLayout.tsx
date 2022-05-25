@@ -29,7 +29,7 @@ export function PageLayout({
 	const router = useRouter();
 	return (
 		<div css={{ position: 'relative' }}>
-			<Content>
+			<Content spacing="lg">
 				<Columns>
 					{sideNav && (
 						<Column columnSpan={{ xs: 12, md: 3 }}>
@@ -52,7 +52,7 @@ export function PageLayout({
 						id="main-content"
 					>
 						{skipLinks?.length ? <SkipLinks links={skipLinks} /> : null}
-						<Stack flexGrow={1} gap={1}>
+						<Stack flexGrow={1} gap={3}>
 							{breadcrumbs?.length ? <Breadcrumbs links={breadcrumbs} /> : null}
 							{children}
 							{editPath && (

@@ -7,11 +7,17 @@ export type PageTitleProps = {
 	pretext?: ReactNode;
 	title: ReactNode;
 	introduction?: ReactNode;
+	callToAction?: ReactNode;
 };
 
-export const PageTitle = ({ pretext, title, introduction }: PageTitleProps) => (
+export const PageTitle = ({
+	pretext,
+	title,
+	introduction,
+	callToAction,
+}: PageTitleProps) => (
 	<Stack gap={1.5}>
-		<Stack gap={0.5}>
+		<Stack>
 			{pretext ? (
 				<Text
 					fontSize="sm"
@@ -29,5 +35,6 @@ export const PageTitle = ({ pretext, title, introduction }: PageTitleProps) => (
 				{introduction}
 			</Text>
 		) : null}
+		{callToAction}
 	</Stack>
 );

@@ -1,7 +1,6 @@
 import { GetStaticProps, InferGetStaticPropsType } from 'next';
 import { MDXRemote } from 'next-mdx-remote';
 import { H1 } from '@ag.ds-next/heading';
-import { Flex } from '@ag.ds-next/box';
 import { Body } from '@ag.ds-next/body';
 
 import {
@@ -35,17 +34,10 @@ export default function Guides({
 					editPath={`/guides/${guide.slug}.mdx`}
 					breadcrumbs={breadcrumbs}
 				>
-					<Flex
-						as="main"
-						flexDirection="column"
-						gap={1}
-						alignItems="flex-start"
-					>
-						<H1>{guide.data.title}</H1>
-						<Body>
-							<MDXRemote {...guide.source} components={mdxComponents} />
-						</Body>
-					</Flex>
+					<H1>{guide.data.title}</H1>
+					<Body>
+						<MDXRemote {...guide.source} components={mdxComponents} />
+					</Body>
 				</PageLayout>
 			</AppLayout>
 		</>

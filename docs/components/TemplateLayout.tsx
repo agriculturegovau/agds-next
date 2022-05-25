@@ -1,5 +1,4 @@
 import { PropsWithChildren } from 'react';
-import { Box, Stack } from '@ag.ds-next/box';
 import { CallToActionLink } from '@ag.ds-next/call-to-action';
 import { SideNavProps } from '@ag.ds-next/side-nav';
 import { SkipLinksProps } from '@ag.ds-next/skip-link';
@@ -49,25 +48,25 @@ export const TemplateLayout = ({
 				breadcrumbs={breadcrumbs}
 				skipLinks={skipLinks}
 			>
-				<Stack as="main" gap={2}>
-					<Stack gap={1.5} alignItems="flex-start">
-						<PageTitle
-							pretext={`v${template.data.version}`}
-							title={template.title}
-							introduction={template.data.description}
-						/>
-						{template.previewUrl && (
-							<CallToActionLink href={template.previewUrl}>
-								View template preview
-							</CallToActionLink>
-						)}
-					</Stack>
-					<SecondaryNav activePath={router.asPath} links={subNavItems} />
-					<Box>{children}</Box>
-					<Callout title="Questions or feedback?">
-						<Text as="p">Contact details go here...</Text>
-					</Callout>
-				</Stack>
+				<PageTitle
+					pretext={`v${template.data.version}`}
+					title={template.title}
+					introduction={template.data.description}
+					callToAction={
+						template.previewUrl && (
+							<div>
+								<CallToActionLink href={template.previewUrl}>
+									View template preview
+								</CallToActionLink>
+							</div>
+						)
+					}
+				/>
+				<SecondaryNav activePath={router.asPath} links={subNavItems} />
+				{children}
+				<Callout title="Questions or feedback?">
+					<Text as="p">Contact details go here...</Text>
+				</Callout>
 			</PageLayout>
 		</AppLayout>
 	);

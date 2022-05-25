@@ -1,6 +1,5 @@
 import { GetStaticProps, InferGetStaticPropsType } from 'next';
 import { MDXRemote } from 'next-mdx-remote';
-import { Stack } from '@ag.ds-next/box';
 import { Body } from '@ag.ds-next/body';
 import { ButtonLink } from '@ag.ds-next/button';
 import { ExternalLinkIcon } from '@ag.ds-next/icon';
@@ -38,14 +37,12 @@ export default function Packages({
 					editPath={`/packages/${pkg.slug}/README.md`}
 					breadcrumbs={breadcrumbs}
 				>
-					<Stack as="main" gap={2}>
-						<Stack gap={1.5} alignItems="flex-start">
-							<PageTitle
-								pretext={`v${pkg.version}`}
-								title={pkg.data.title}
-								introduction={pkg.data.description}
-							/>
-							{pkg.storybookPath && (
+					<PageTitle
+						pretext={`v${pkg.version}`}
+						title={pkg.data.title}
+						introduction={pkg.data.description}
+						callToAction={
+							pkg.storybookPath && (
 								<div>
 									<ButtonLink
 										target="_blank"
@@ -58,17 +55,19 @@ export default function Packages({
 										<ExternalLinkCallout />
 									</ButtonLink>
 								</div>
-							)}
-						</Stack>
-						<Body>
-							<pre>
-								<code>
-									yarn add {pkg.name}@{pkg.version}
-								</code>
-							</pre>
-							<MDXRemote {...pkg.source} components={mdxComponents} />
-						</Body>
-					</Stack>
+							)
+						}
+					/>
+					<Body>
+						<pre>
+							<code>
+								yarn add {pkg.name}@{pkg.version}
+							</code>
+						</pre>
+					</Body>
+					<Body>
+						<MDXRemote {...pkg.source} components={mdxComponents} />
+					</Body>
 				</PageLayout>
 			</AppLayout>
 		</>

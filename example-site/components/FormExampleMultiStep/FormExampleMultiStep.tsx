@@ -140,7 +140,7 @@ export const FormExampleMultiStep = () => {
 				<AppLayout
 					template={{ name: '"Multi-step form', slug: 'multi-step-form' }}
 				>
-					<Content>
+					<Content spacing="lg">
 						<Columns>
 							<Column columnSpan={{ xs: 12, md: 8 }}>
 								<FormExampleMultiStepSuccess />
@@ -173,12 +173,12 @@ export const FormExampleMultiStep = () => {
 				template={{ name: '"Multi-step form', slug: 'multi-step-form' }}
 				focusMode
 			>
-				<Content>
+				<Content spacing="lg">
 					<context.Provider value={contextValue}>
 						<Columns>
 							<Column columnSpan={{ xs: 12, md: 3 }}>
 								<ContentBleed visible={{ md: false }}>
-									<Stack gap={0.75} paddingTop={{ xs: 0, md: 3 }}>
+									<Stack gap={0.75}>
 										<Text
 											display={{ xs: 'none', md: 'block' }}
 											as="h3"
@@ -204,7 +204,7 @@ export const FormExampleMultiStep = () => {
 								</ContentBleed>
 							</Column>
 							<Column columnSpan={{ xs: 12, md: 8 }} columnStart={{ md: 5 }}>
-								<Stack gap={2}>
+								<Stack gap={3}>
 									<DirectionButton direction="left" onClick={back}>
 										Back
 									</DirectionButton>
