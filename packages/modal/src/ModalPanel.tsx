@@ -61,6 +61,7 @@ export const ModalPanel = ({
 
 				<Button
 					variant="tertiary"
+					aria-label="Close modal"
 					onClick={onDismiss}
 					iconAfter={CloseIcon}
 					css={{
