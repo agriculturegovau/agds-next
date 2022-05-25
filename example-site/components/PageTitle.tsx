@@ -11,7 +11,7 @@ export type PageTitleProps = {
 
 export const PageTitle = ({ pretext, title, introduction }: PageTitleProps) => (
 	<Stack gap={1.5}>
-		<Stack gap={0.5}>
+		<Stack>
 			{pretext ? (
 				<Text
 					fontSize="sm"

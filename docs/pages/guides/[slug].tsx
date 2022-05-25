@@ -35,17 +35,10 @@ export default function Guides({
 					editPath={`/guides/${guide.slug}.mdx`}
 					breadcrumbs={breadcrumbs}
 				>
-					<Flex
-						as="main"
-						flexDirection="column"
-						gap={1}
-						alignItems="flex-start"
-					>
-						<H1>{guide.data.title}</H1>
-						<Body>
-							<MDXRemote {...guide.source} components={mdxComponents} />
-						</Body>
-					</Flex>
+					<H1>{guide.data.title}</H1>
+					<Body>
+						<MDXRemote {...guide.source} components={mdxComponents} />
+					</Body>
 				</PageLayout>
 			</AppLayout>
 		</>

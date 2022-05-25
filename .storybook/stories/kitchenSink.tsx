@@ -60,7 +60,7 @@ const KitchenSink = ({
 	sideNavVariant: 'light' | 'dark';
 }) => {
 	return (
-		<Content>
+		<Content spacing="lg">
 			<Columns>
 				<Column columnSpan={{ xs: 12, md: 4 }}>
 					<Stack gap={1}>

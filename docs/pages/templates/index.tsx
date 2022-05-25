@@ -29,17 +29,14 @@ export default function TemplatesPage({ source, templateLinks }: StaticProps) {
 					}}
 					editPath="/templates/index.mdx"
 				>
-					<Stack gap={2}>
-						<Body>
-							<MDXRemote {...source} components={mdxComponents} />
-						</Body>
-
-						<CardList gap={1.5} templateColumns={{ xs: 1, sm: 2, lg: 3 }}>
-							{templateLinks.map((template) => {
-								return <TemplateCard key={template.slug} {...template} />;
-							})}
-						</CardList>
-					</Stack>
+					<Body>
+						<MDXRemote {...source} components={mdxComponents} />
+					</Body>
+					<CardList gap={1.5} templateColumns={{ xs: 1, sm: 2, lg: 3 }}>
+						{templateLinks.map((template) => {
+							return <TemplateCard key={template.slug} {...template} />;
+						})}
+					</CardList>
 				</PageLayout>
 			</AppLayout>
 		</>

@@ -1,7 +1,7 @@
 import { MDXRemote } from 'next-mdx-remote';
 import { normalize } from 'path';
 import { Body } from '@ag.ds-next/body';
-import { Card, CardInner, CardLink } from '@ag.ds-next/card';
+import { Card, CardInner, CardLink, CardList } from '@ag.ds-next/card';
 import { Stack } from '@ag.ds-next/box';
 import { Heading } from '@ag.ds-next/heading';
 import { Text } from '@ag.ds-next/text';
@@ -33,7 +33,7 @@ export default function ReleasesHome({ source, releaseLinks }: StaticProps) {
 					<Body>
 						<MDXRemote {...source} components={mdxComponents} />
 					</Body>
-					<Stack as="ul" gap={1}>
+					<CardList templateColumns={1}>
 						{releaseLinks.map(({ href, label, description }) => (
 							<Card key={label} as="li" clickable shadow>
 								<CardInner>
@@ -46,7 +46,7 @@ export default function ReleasesHome({ source, releaseLinks }: StaticProps) {
 								</CardInner>
 							</Card>
 						))}
-					</Stack>
+					</CardList>
 				</PageLayout>
 			</AppLayout>
 		</>
