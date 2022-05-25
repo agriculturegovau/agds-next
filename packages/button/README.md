@@ -24,7 +24,7 @@ A standard button style used to highlight an important action such as a Save but
 A light button style used for tertiary actions on a screen such as a Cancel button on a form. (A tertiary button assumes there is already a secondary button.) Typically it performs the opposite action to the secondary button (e.g. Cancel vs Save).
 
 ```jsx live
-<Flex gap={0.5}>
+<Flex gap={0.5} flexDirection={['column', 'row']} alignItems="flex-start">
 	<Button variant="primary" onClick={() => alert('primary')}>
 		Primary
 	</Button>
@@ -42,7 +42,7 @@ A light button style used for tertiary actions on a screen such as a Cancel butt
 Size is another prop that allows adjustment of visual weight. The medium button should be used for most circumstances.
 
 ```jsx live
-<Flex gap={0.25}>
+<Flex gap={0.5} flexDirection={['column', 'row']} alignItems="flex-start">
 	<Button variant="primary" size="sm" onClick={() => alert('primary')}>
 		Primary
 	</Button>
@@ -60,7 +60,7 @@ Size is another prop that allows adjustment of visual weight. The medium button 
 A button that can’t be interacted with. A disabled button is typically greyed out to indicate to users that they cannot undertake the action associated with it. This is usually for page logic reasons.
 
 ```jsx live
-<Flex gap={1}>
+<Flex gap={0.5} flexDirection={['column', 'row']} alignItems="flex-start">
 	<Button disabled variant="primary" onClick={() => alert('primary')}>
 		Primary
 	</Button>
