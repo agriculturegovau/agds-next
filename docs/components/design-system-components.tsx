@@ -62,7 +62,7 @@ import {
 	SuccessFilledIcon,
 } from '@ag.ds-next/icon';
 import { InpageNav } from '@ag.ds-next/inpage-nav';
-import { Modal, ModalButtonGroup } from '@ag.ds-next/modal';
+import { Modal } from '@ag.ds-next/modal';
 import { Logo as AgLogo } from '@ag.ds-next/ag-branding';
 import { Field } from '@ag.ds-next/field';
 import { Fieldset } from '@ag.ds-next/fieldset';
@@ -154,7 +154,6 @@ export const designSystemComponents = {
 	MainNav,
 	SecondaryNav,
 	Modal,
-	ModalButtonGroup,
 	PageAlert,
 	SideNav,
 	SideNavContainer,

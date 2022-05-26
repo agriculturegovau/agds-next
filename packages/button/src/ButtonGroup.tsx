@@ -8,15 +8,9 @@ export const ButtonGroup = ({
 	gap = 1,
 	flexDirection = ['column', 'row'],
 	alignItems = ['stretch', 'flex-start'],
-	...props
 }: ButtonGroupProps) => {
 	return (
-		<Flex
-			gap={gap}
-			flexDirection={flexDirection}
-			alignItems={alignItems}
-			{...props}
-		>
+		<Flex gap={gap} flexDirection={flexDirection} alignItems={alignItems}>
 			{children}
 		</Flex>
 	);

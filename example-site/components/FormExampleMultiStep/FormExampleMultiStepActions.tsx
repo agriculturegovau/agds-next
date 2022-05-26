@@ -1,6 +1,6 @@
 import { Button, ButtonGroup } from '@ag.ds-next/button';
 import { useTernaryState } from '@ag.ds-next/core';
-import { Modal, ModalButtonGroup } from '@ag.ds-next/modal';
+import { Modal } from '@ag.ds-next/modal';
 import { useFormExampleMultiStep } from './FormExampleMultiStep';
 import { Text } from '@ag.ds-next/text';
 import { FormStack } from '@ag.ds-next/form-stack';
@@ -39,12 +39,12 @@ export const FormExampleMultiStepActions = () => {
 				onDismiss={closeModal}
 				title="Are you sure you want to cancel?"
 				actions={
-					<ModalButtonGroup>
+					<ButtonGroup>
 						<Button onClick={cancel}>Yes, cancel</Button>
 						<Button variant="secondary" onClick={closeModal}>
 							No, take me back
 						</Button>
-					</ModalButtonGroup>
+					</ButtonGroup>
 				}
 			>
 				<Text as="p">

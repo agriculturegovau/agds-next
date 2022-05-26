@@ -99,7 +99,7 @@ export { DirectionLink, DirectionButton } from '@ag.ds-next/direction-link';
 export { Tags } from '@ag.ds-next/tags';
 export { FormStack } from '@ag.ds-next/form-stack';
 export { TaskList } from '@ag.ds-next/task-list';
-export { Modal, ModalButtonGroup } from '@ag.ds-next/modal';
+export { Modal } from '@ag.ds-next/modal';
 export {
 	Table,
 	TableBody,
