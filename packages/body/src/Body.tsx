@@ -267,6 +267,7 @@ export const bodyClass = css({
 		marginBottom: 0,
 		marginLeft: 0,
 		marginRight: 0,
+		'&:first-of-type': { marginTop: 0 },
 	},
 
 	[`blockquote${notSelector}`]: {
@@ -279,6 +280,7 @@ export const bodyClass = css({
 		borderLeftStyle: 'solid',
 		borderColor: boxPalette.border,
 		background: boxPalette.backgroundShade,
+		'&:first-of-type': { marginTop: 0 },
 	},
 
 	/**
@@ -316,7 +318,7 @@ export const bodyClass = css({
 		border: 'none',
 		borderTopWidth: tokens.borderWidth.sm,
 		borderTopStyle: 'solid',
-		borderColor: boxPalette.border,
+		borderColor: boxPalette.borderMuted,
 		marginBottom: mapSpacing(1.5),
 	},
 
