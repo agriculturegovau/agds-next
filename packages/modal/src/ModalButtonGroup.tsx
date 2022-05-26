@@ -1,19 +1,12 @@
 import { ReactNode } from 'react';
-import { Stack } from '@ag.ds-next/box';
+import { ButtonGroup } from '@ag.ds-next/button';
 
 export type ModalButtonGroupProps = { children: ReactNode };
 
 export const ModalButtonGroup = ({ children }: ModalButtonGroupProps) => {
 	return (
-		<Stack
-			gap={0.5}
-			flexDirection={{ xs: 'column', sm: 'row' }}
-			paddingTop={1}
-			css={{
-				marginTop: 'auto',
-			}}
-		>
+		<ButtonGroup paddingTop={1} css={{ marginTop: 'auto' }}>
 			{children}
-		</Stack>
+		</ButtonGroup>
 	);
 };

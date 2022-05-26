@@ -1,11 +1,22 @@
-import { ReactNode } from 'react';
-import { Flex } from '@ag.ds-next/box';
+import { PropsWithChildren } from 'react';
+import { Flex, FlexProps } from '@ag.ds-next/box';
 
-export type ButtonGroupProps = { children: ReactNode };
+export type ButtonGroupProps = PropsWithChildren<FlexProps>;
 
-export const ButtonGroup = ({ children }: ButtonGroupProps) => {
+export const ButtonGroup = ({
+	children,
+	gap = 1,
+	flexDirection = ['column', 'row'],
+	alignItems = ['stretch', 'flex-start'],
+	...props
+}: ButtonGroupProps) => {
 	return (
-		<Flex gap={1} flexDirection={['column', 'row']} alignItems="flex-start">
+		<Flex
+			gap={gap}
+			flexDirection={flexDirection}
+			alignItems={alignItems}
+			{...props}
+		>
 			{children}
 		</Flex>
 	);
