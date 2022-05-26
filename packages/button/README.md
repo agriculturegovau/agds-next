@@ -116,7 +116,7 @@ For situations where you need something that has the visual weight of a Button, 
 
 ## ButtonGroup
 
-The `ButtonGroup` component can be used to group buttons whose actions are related.
+The `ButtonGroup` component can be used to group buttons whose actions are related. In mobile, buttons will be stacked vertically and each button will stretch to the container witch.
 
 ```jsx live
 <ButtonGroup>
