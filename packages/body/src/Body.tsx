@@ -262,25 +262,37 @@ export const bodyClass = css({
 		top: '-0.5em',
 	},
 
+	/**
+	 * Figures
+	 */
+
 	[`figure${notSelector}`]: {
-		marginTop: mapSpacing(1.5),
-		marginBottom: 0,
-		marginLeft: 0,
-		marginRight: 0,
-		'&:first-of-type': { marginTop: 0 },
+		margin: 0,
 	},
 
-	[`blockquote${notSelector}`]: {
+	[`* + figure${notSelector}`]: {
 		marginTop: mapSpacing(1.5),
-		marginBottom: mapSpacing(1),
-		marginLeft: 0,
-		marginRight: 0,
+	},
+
+	[`figcaption${notSelector}`]: {
+		marginTop: mapSpacing(1),
+	},
+
+	/**
+	 * Blockquotes
+	 */
+
+	[`blockquote${notSelector}`]: {
+		margin: 0,
 		padding: mapSpacing(2),
 		borderLeftWidth: tokens.borderWidth.xl,
 		borderLeftStyle: 'solid',
 		borderColor: boxPalette.border,
 		background: boxPalette.backgroundShade,
-		'&:first-of-type': { marginTop: 0 },
+	},
+
+	[`* + blockquote${notSelector}`]: {
+		marginTop: mapSpacing(1.5),
 	},
 
 	/**
