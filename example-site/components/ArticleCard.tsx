@@ -7,8 +7,9 @@ export const ArticleCard = () => (
 	<Card clickable shadow>
 		<img
 			src="/agds-next/example-site/placeholder/600X260.png"
-			alt="Place holder image"
+			alt=""
 			css={{ width: '100%' }}
+			role="presentation"
 		/>
 		<CardInner>
 			<Stack gap={1}>
