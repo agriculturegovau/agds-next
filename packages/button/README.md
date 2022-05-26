@@ -116,6 +116,8 @@ For situations where you need something that has the visual weight of a Button, 
 
 ## ButtonGroup
 
+The `ButtonGroup` component can be used to group buttons whose actions are related.
+
 ```jsx live
 <ButtonGroup>
 	<Button variant="primary">Primary</Button>
