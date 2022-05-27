@@ -1,11 +1,10 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { Text } from './Text';
 import { TextLink } from './TextLink';
 
 export default {
 	title: 'foundations/Text/TextLink',
-	component: Text,
-} as ComponentMeta<typeof Text>;
+	component: TextLink,
+} as ComponentMeta<typeof TextLink>;
 
 const Template: ComponentStory<typeof TextLink> = (args) => {
 	return <TextLink {...args}>Internal link</TextLink>;
