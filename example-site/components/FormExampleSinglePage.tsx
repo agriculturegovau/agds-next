@@ -325,14 +325,15 @@ export const FormExampleSinglePage = () => {
 					</FormStack>
 				</Fieldset>
 
-				<FormDivider />
-
-				<Flex gap={1}>
-					<Button type="submit">Submit</Button>
-					<Button type="button" variant="secondary">
-						Cancel
-					</Button>
-				</Flex>
+				<FormStack>
+					<FormDivider />
+					<Flex gap={1}>
+						<Button type="submit">Submit</Button>
+						<Button type="button" variant="secondary">
+							Cancel
+						</Button>
+					</Flex>
+				</FormStack>
 			</Stack>
 		</form>
 	);
