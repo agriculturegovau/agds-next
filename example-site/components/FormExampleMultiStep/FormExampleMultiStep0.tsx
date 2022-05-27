@@ -48,7 +48,7 @@ export const FormExampleMultiStep0 = () => {
 				<FormStack>
 					<ControlGroup
 						label="Fieldset question?"
-						hint="Hint test"
+						hint="Hint text"
 						invalid={Boolean(errors.example?.message)}
 						message={errors.example?.message}
 						required
