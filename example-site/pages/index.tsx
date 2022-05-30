@@ -23,20 +23,20 @@ const Home: NextPage = () => {
 							src="/agds-next/example-site/placeholder/hero-banner.png"
 						/>
 					}
-					subTitle="Hero banner paragraph text"
-					title="Hero banner title"
+					subTitle="Short hero banner sentence"
+					title="Website hero banner title (H1)"
 					variant="lightAlt"
 				>
 					<ButtonGroup>
-						<Button>Primary call to action</Button>
-						<Button variant="secondary">Secondary call to action</Button>
+						<Button>Create account</Button>
+						<Button variant="secondary">Sign in</Button>
 					</ButtonGroup>
 				</HeroBanner>
 
 				<Content>
 					<Flex flexDirection="column" gap={2}>
 						<H2>Content heading (h2)</H2>
-						<Flex gap={1}>
+						<Flex gap={1.5}>
 							{Array.from(Array(4).keys()).map((idx) => (
 								<Flex flexDirection="column" gap={1} key={idx}>
 									<H3>Content heading (h3)</H3>
