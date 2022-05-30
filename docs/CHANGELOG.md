@@ -1,5 +1,88 @@
 # @ag.ds-next/docs
 
+## 0.5.0
+
+### Minor Changes
+
+- b3ff81ec: Adjusted content spacing
+- e1fe3b3e: Add Template docs
+
+### Patch Changes
+
+- 6a6e6952: Created `PageTitle` component
+- 48324e1d: Updated examples to utilise new `ButtonGroup` component
+- 51eb8049: Update repo URL for docs package
+- Updated dependencies [7eccff5b]
+- Updated dependencies [72a7efa7]
+- Updated dependencies [df01e99d]
+- Updated dependencies [e93f10ca]
+- Updated dependencies [711c47b1]
+- Updated dependencies [48324e1d]
+- Updated dependencies [3366253b]
+- Updated dependencies [f9ec2e90]
+- Updated dependencies [8b7b300c]
+- Updated dependencies [48324e1d]
+- Updated dependencies [f773d891]
+- Updated dependencies [711c47b1]
+- Updated dependencies [076b2fa6]
+- Updated dependencies [2cb7df61]
+- Updated dependencies [bd5a14a2]
+- Updated dependencies [9d64236c]
+- Updated dependencies [7d952e03]
+- Updated dependencies [bc90dd9e]
+- Updated dependencies [f7f75d19]
+- Updated dependencies [61a7c981]
+- Updated dependencies [9d64236c]
+- Updated dependencies [4bdc69f1]
+- Updated dependencies [1fea9c6c]
+- Updated dependencies [182c3245]
+- Updated dependencies [94a2c9b1]
+- Updated dependencies [f9ec2e90]
+- Updated dependencies [585bffeb]
+  - @ag.ds-next/hero-banner@3.0.0
+  - @ag.ds-next/card@4.0.1
+  - @ag.ds-next/core@2.2.1
+  - @ag.ds-next/file-upload@2.0.0
+  - @ag.ds-next/button@8.0.0
+  - @ag.ds-next/breadcrumbs@9.0.0
+  - @ag.ds-next/a11y@1.1.0
+  - @ag.ds-next/text@7.0.0
+  - @ag.ds-next/form-stack@3.0.1
+  - @ag.ds-next/page-alert@4.0.0
+  - @ag.ds-next/fieldset@4.0.0
+  - @ag.ds-next/secondary-nav@1.0.0
+  - @ag.ds-next/call-to-action@5.0.0
+  - @ag.ds-next/direction-link@5.0.0
+  - @ag.ds-next/main-nav@10.0.0
+  - @ag.ds-next/progress-indicator@7.0.0
+  - @ag.ds-next/task-list@5.0.0
+  - @ag.ds-next/body@6.0.1
+  - @ag.ds-next/ag-branding@5.1.0
+  - @ag.ds-next/content@6.0.1
+  - @ag.ds-next/accordion@6.0.0
+  - @ag.ds-next/box@5.0.1
+  - @ag.ds-next/callout@4.0.0
+  - @ag.ds-next/columns@5.0.1
+  - @ag.ds-next/control-input@8.0.0
+  - @ag.ds-next/date-picker@4.0.0
+  - @ag.ds-next/field@7.0.0
+  - @ag.ds-next/footer@6.0.1
+  - @ag.ds-next/header@8.0.0
+  - @ag.ds-next/heading@6.0.1
+  - @ag.ds-next/icon@8.0.0
+  - @ag.ds-next/inpage-nav@4.0.0
+  - @ag.ds-next/keyword-list@4.0.0
+  - @ag.ds-next/link-list@7.0.0
+  - @ag.ds-next/loading@3.0.0
+  - @ag.ds-next/search-box@8.0.0
+  - @ag.ds-next/select@8.0.0
+  - @ag.ds-next/side-nav@9.0.0
+  - @ag.ds-next/skip-link@5.0.0
+  - @ag.ds-next/table@3.0.0
+  - @ag.ds-next/tags@4.0.0
+  - @ag.ds-next/text-input@8.0.0
+  - @ag.ds-next/textarea@8.0.0
+
 ## 0.4.0
 
 ### Minor Changes

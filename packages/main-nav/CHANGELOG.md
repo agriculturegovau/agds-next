@@ -1,5 +1,17 @@
 # @ag.ds-next/main-nav
 
+## 10.0.0
+
+### Patch Changes
+
+- 9d64236c: Explicity pass `className` prop to components
+- 182c3245: Added `MainNavBottomBar` for focus modes
+- Updated dependencies [df01e99d]
+- Updated dependencies [9d64236c]
+  - @ag.ds-next/core@2.2.1
+  - @ag.ds-next/box@5.0.1
+  - @ag.ds-next/icon@8.0.0
+
 ## 9.0.0
 
 ### Minor Changes

@@ -1,5 +1,27 @@
 # @ag.ds-next/hero-banner
 
+## 3.0.0
+
+### Minor Changes
+
+- 7eccff5b: - Updated gradient direction to `90deg` to ensure the gradient always covers the image
+  - Improved width of content when no image is supplied
+
+### Patch Changes
+
+- e93f10ca: Use `HeroBanner` on home page
+- 48324e1d: Updated examples to utilise new `ButtonGroup` component
+- Updated dependencies [df01e99d]
+- Updated dependencies [8b7b300c]
+- Updated dependencies [9d64236c]
+- Updated dependencies [94a2c9b1]
+- Updated dependencies [f9ec2e90]
+  - @ag.ds-next/core@2.2.1
+  - @ag.ds-next/text@7.0.0
+  - @ag.ds-next/content@6.0.1
+  - @ag.ds-next/box@5.0.1
+  - @ag.ds-next/heading@6.0.1
+
 ## 2.0.0
 
 ### Minor Changes

@@ -1,5 +1,21 @@
 # @ag.ds-next/button
 
+## 8.0.0
+
+### Minor Changes
+
+- 48324e1d: Created `ButtonGroup` component which can be used to group buttons whose actions are related.
+- 711c47b1: Updated default props to ensure the default type of each button is `button`
+
+### Patch Changes
+
+- 585bffeb: Improve stacking in docs
+- Updated dependencies [df01e99d]
+- Updated dependencies [9d64236c]
+  - @ag.ds-next/core@2.2.1
+  - @ag.ds-next/box@5.0.1
+  - @ag.ds-next/loading@3.0.0
+
 ## 7.0.0
 
 ### Patch Changes

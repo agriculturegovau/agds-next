@@ -1,5 +1,15 @@
 # @ag.ds-next/form-stack
 
+## 3.0.1
+
+### Patch Changes
+
+- 48324e1d: Updated examples to utilise new `ButtonGroup` component
+- Updated dependencies [df01e99d]
+- Updated dependencies [9d64236c]
+  - @ag.ds-next/core@2.2.1
+  - @ag.ds-next/box@5.0.1
+
 ## 3.0.0
 
 ### Patch Changes

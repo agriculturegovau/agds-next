@@ -1,5 +1,15 @@
 # @ag.ds-next/content
 
+## 6.0.1
+
+### Patch Changes
+
+- 94a2c9b1: Update padding on mobile for `lg` variant
+- Updated dependencies [df01e99d]
+- Updated dependencies [9d64236c]
+  - @ag.ds-next/core@2.2.1
+  - @ag.ds-next/box@5.0.1
+
 ## 6.0.0
 
 ### Patch Changes

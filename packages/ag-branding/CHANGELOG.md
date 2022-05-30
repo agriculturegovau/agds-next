@@ -1,5 +1,17 @@
 # @ag.ds-next/ag-branding
 
+## 5.1.0
+
+### Minor Changes
+
+- 4bdc69f1: Updated `success` and `successMuted` colors
+
+### Patch Changes
+
+- Updated dependencies [df01e99d]
+- Updated dependencies [9d64236c]
+  - @ag.ds-next/core@2.2.1
+
 ## 5.0.0
 
 ### Patch Changes

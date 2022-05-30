@@ -1,5 +1,16 @@
 # @ag.ds-next/body
 
+## 6.0.1
+
+### Patch Changes
+
+- f7f75d19: - Updated color of `hr` elements
+  - Removed margin top for first of type blockquotes and figures
+- Updated dependencies [df01e99d]
+- Updated dependencies [9d64236c]
+  - @ag.ds-next/core@2.2.1
+  - @ag.ds-next/box@5.0.1
+
 ## 6.0.0
 
 ### Minor Changes

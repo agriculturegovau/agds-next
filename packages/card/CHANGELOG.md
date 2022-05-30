@@ -1,5 +1,15 @@
 # @ag.ds-next/card
 
+## 4.0.1
+
+### Patch Changes
+
+- 72a7efa7: Fixed type error in `CardListProps`. The `gap` prop is now optional.
+- Updated dependencies [df01e99d]
+- Updated dependencies [9d64236c]
+  - @ag.ds-next/core@2.2.1
+  - @ag.ds-next/box@5.0.1
+
 ## 4.0.0
 
 ### Minor Changes
