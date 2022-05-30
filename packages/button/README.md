@@ -24,7 +24,7 @@ A standard button style used to highlight an important action such as a Save but
 A light button style used for tertiary actions on a screen such as a Cancel button on a form. (A tertiary button assumes there is already a secondary button.) Typically it performs the opposite action to the secondary button (e.g. Cancel vs Save).
 
 ```jsx live
-<Flex gap={0.5} flexDirection={['column', 'row']} alignItems="flex-start">
+<ButtonGroup>
 	<Button variant="primary" onClick={() => alert('primary')}>
 		Primary
 	</Button>
@@ -34,7 +34,7 @@ A light button style used for tertiary actions on a screen such as a Cancel butt
 	<Button variant="tertiary" onClick={() => alert('tertiary')}>
 		Tertiary
 	</Button>
-</Flex>
+</ButtonGroup>
 ```
 
 ### Size
@@ -42,7 +42,7 @@ A light button style used for tertiary actions on a screen such as a Cancel butt
 Size is another prop that allows adjustment of visual weight. The medium button should be used for most circumstances.
 
 ```jsx live
-<Flex gap={0.5} flexDirection={['column', 'row']} alignItems="flex-start">
+<ButtonGroup>
 	<Button variant="primary" size="sm" onClick={() => alert('primary')}>
 		Primary
 	</Button>
@@ -52,7 +52,7 @@ Size is another prop that allows adjustment of visual weight. The medium button 
 	<Button variant="tertiary" size="sm" onClick={() => alert('tertiary')}>
 		Tertiary
 	</Button>
-</Flex>
+</ButtonGroup>
 ```
 
 ### Disabled
@@ -60,7 +60,7 @@ Size is another prop that allows adjustment of visual weight. The medium button 
 A button that can’t be interacted with. A disabled button is typically greyed out to indicate to users that they cannot undertake the action associated with it. This is usually for page logic reasons.
 
 ```jsx live
-<Flex gap={0.5} flexDirection={['column', 'row']} alignItems="flex-start">
+<ButtonGroup>
 	<Button disabled variant="primary" onClick={() => alert('primary')}>
 		Primary
 	</Button>
@@ -70,7 +70,7 @@ A button that can’t be interacted with. A disabled button is typically greyed 
 	<Button disabled variant="tertiary" onClick={() => alert('tertiary')}>
 		Tertiary
 	</Button>
-</Flex>
+</ButtonGroup>
 ```
 
 ### Block
@@ -112,4 +112,16 @@ For situations where you need something that has the visual weight of a Button, 
 
 ```jsx live
 <ButtonLink href="/sign-in">Sign in</ButtonLink>
+```
+
+## ButtonGroup
+
+The `ButtonGroup` component can be used to group buttons whose actions are related. On smaller devices, buttons will be stacked vertically and stretch to expand the width of the container.
+
+```jsx live
+<ButtonGroup>
+	<Button variant="primary">Primary</Button>
+	<Button variant="secondary">Secondary</Button>
+	<Button variant="tertiary">Tertiary</Button>
+</ButtonGroup>
 ```

@@ -5,8 +5,7 @@ import {
 	SearchBoxInput,
 	SearchBoxButton,
 } from '@ag.ds-next/search-box';
-import { Flex } from '@ag.ds-next/box';
-import { Button } from '@ag.ds-next/button';
+import { Button, ButtonGroup } from '@ag.ds-next/button';
 import { HeroBanner } from './HeroBanner';
 import { HeroBannerContainer } from './HeroBannerContainer';
 import { HeroBannerImage } from './HeroBannerImage';
@@ -83,10 +82,10 @@ export const Buttons = Template.bind({});
 Buttons.args = {
 	...commonArgs,
 	children: (
-		<Flex flexDirection={['column', 'row']} gap={1}>
+		<ButtonGroup>
 			<Button>Primary button</Button>
 			<Button variant="secondary">Secondary button</Button>
-		</Flex>
+		</ButtonGroup>
 	),
 };
 

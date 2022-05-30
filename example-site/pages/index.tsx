@@ -1,5 +1,6 @@
 import type { NextPage } from 'next';
 import { Flex, Stack } from '@ag.ds-next/box';
+import { Button, ButtonGroup } from '@ag.ds-next/button';
 import { Content } from '@ag.ds-next/content';
 import { Columns, Column } from '@ag.ds-next/columns';
 import { H2, H3 } from '@ag.ds-next/heading';
@@ -25,7 +26,12 @@ const Home: NextPage = () => {
 					subTitle="Hero banner paragraph text"
 					title="Hero banner title"
 					variant="lightAlt"
-				/>
+				>
+					<ButtonGroup>
+						<Button>Primary call to action</Button>
+						<Button variant="secondary">Secondary call to action</Button>
+					</ButtonGroup>
+				</HeroBanner>
 
 				<Content>
 					<Flex flexDirection="column" gap={2}>

@@ -2,10 +2,10 @@ import { useEffect, useRef, useState } from 'react';
 import { useForm, SubmitHandler, SubmitErrorHandler } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
-import { Button } from '@ag.ds-next/button';
+import { Button, ButtonGroup } from '@ag.ds-next/button';
 import { Checkbox } from '@ag.ds-next/control-input';
 import { Body } from '@ag.ds-next/body';
-import { Flex, Stack } from '@ag.ds-next/box';
+import { Stack } from '@ag.ds-next/box';
 import { Fieldset } from '@ag.ds-next/fieldset';
 import { FormStack } from '@ag.ds-next/form-stack';
 import { Select } from '@ag.ds-next/select';
@@ -327,12 +327,12 @@ export const FormExampleSinglePage = () => {
 
 				<FormStack>
 					<FormDivider />
-					<Flex gap={1}>
+					<ButtonGroup>
 						<Button type="submit">Submit</Button>
 						<Button type="button" variant="secondary">
 							Cancel
 						</Button>
-					</Flex>
+					</ButtonGroup>
 				</FormStack>
 			</Stack>
 		</form>

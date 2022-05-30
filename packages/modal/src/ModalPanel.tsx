@@ -24,6 +24,7 @@ export const ModalPanel = ({
 	onDismiss,
 }: ModalPanelProps) => {
 	const { titleId } = useModalId();
+
 	const prefersReducedMotion = usePrefersReducedMotion();
 	const animationStyles = useSpring({
 		from: { y: 20, opacity: 0 },
@@ -57,8 +58,11 @@ export const ModalPanel = ({
 			>
 				<ModalTitle id={titleId}>{title}</ModalTitle>
 				<Box>{children}</Box>
-				{actions}
-
+				{actions ? (
+					<Box paddingTop={1} css={{ marginTop: 'auto' }}>
+						{actions}
+					</Box>
+				) : null}
 				<Button
 					variant="tertiary"
 					aria-label="Close modal"

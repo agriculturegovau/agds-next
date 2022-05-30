@@ -1,7 +1,6 @@
 import { ComponentMeta } from '@storybook/react';
 import { Modal } from './Modal';
-import { ModalButtonGroup } from './ModalButtonGroup';
-import { Button } from '@ag.ds-next/button';
+import { Button, ButtonGroup } from '@ag.ds-next/button';
 import { useTernaryState } from '@ag.ds-next/core';
 import { Text } from '@ag.ds-next/text';
 
@@ -21,7 +20,7 @@ export const Basic = () => {
 				onDismiss={closeModal}
 				title="This is the title of the modal dialogue, it can span lines but should not be too long."
 				actions={
-					<ModalButtonGroup>
+					<ButtonGroup>
 						<Button onClick={closeModal}>Primary button</Button>
 						<Button variant="secondary" onClick={closeModal}>
 							Secondary button
@@ -29,7 +28,7 @@ export const Basic = () => {
 						<Button variant="tertiary" onClick={closeModal}>
 							Tertiary button
 						</Button>
-					</ModalButtonGroup>
+					</ButtonGroup>
 				}
 			>
 				<Text as="p">
