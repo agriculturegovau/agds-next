@@ -9,9 +9,9 @@ import {
 	SearchBoxButton,
 	SearchBoxInput,
 } from '@ag.ds-next/search-box';
-import { Box, Flex, Stack } from '@ag.ds-next/box';
+import { Box, Stack } from '@ag.ds-next/box';
 import { Breadcrumbs } from '@ag.ds-next/breadcrumbs';
-import { Button } from '@ag.ds-next/button';
+import { Button, ButtonGroup } from '@ag.ds-next/button';
 import { Callout } from '@ag.ds-next/callout';
 import { CallToActionLink } from '@ag.ds-next/call-to-action';
 import { Card, CardInner } from '@ag.ds-next/card';
@@ -218,7 +218,7 @@ const KitchenSink = ({
 							<Radio checked={true}>Laptop</Radio>
 						</ControlGroup>
 						<Checkbox checked={false}>Label</Checkbox>
-						<Flex gap={1}>
+						<ButtonGroup>
 							<Button size="md">Primary</Button>
 							<Button size="md" variant="secondary">
 								Secondary
@@ -226,7 +226,7 @@ const KitchenSink = ({
 							<Button size="md" variant="tertiary">
 								Tertiary
 							</Button>
-						</Flex>
+						</ButtonGroup>
 					</Stack>
 				</Column>
 

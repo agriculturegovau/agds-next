@@ -4,7 +4,7 @@ import {
 	AccordionItemContent,
 } from '@ag.ds-next/accordion';
 import { Logo } from '@ag.ds-next/ag-branding';
-import { Button, ButtonLink } from '@ag.ds-next/button';
+import { Button, ButtonLink, ButtonGroup } from '@ag.ds-next/button';
 import { Box, Flex, Stack } from '@ag.ds-next/box';
 import { Body, unsetBodyStylesClassname } from '@ag.ds-next/body';
 import { useTernaryState, tokens } from '@ag.ds-next/core';
@@ -107,6 +107,7 @@ export const designSystemComponents = {
 	AgLogo,
 	Button,
 	ButtonLink,
+	ButtonGroup,
 	Box,
 	Flex,
 	Callout,

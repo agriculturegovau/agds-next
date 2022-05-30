@@ -1,5 +1,4 @@
-import { Button } from '@ag.ds-next/button';
-import { Flex } from '@ag.ds-next/box';
+import { Button, ButtonGroup } from '@ag.ds-next/button';
 import { useTernaryState } from '@ag.ds-next/core';
 import { Modal, ModalButtonGroup } from '@ag.ds-next/modal';
 import { useFormExampleMultiStep } from './FormExampleMultiStep';
@@ -18,7 +17,7 @@ export const FormExampleMultiStepActions = () => {
 		<Fragment>
 			<FormStack>
 				<FormDivider />
-				<Flex gap={1}>
+				<ButtonGroup>
 					<Button type="submit" variant="primary" loading={isSubmittingStep}>
 						Continue
 					</Button>
@@ -33,7 +32,7 @@ export const FormExampleMultiStepActions = () => {
 					<Button type="button" variant="tertiary" onClick={openModal}>
 						Cancel
 					</Button>
-				</Flex>
+				</ButtonGroup>
 			</FormStack>
 			<Modal
 				isOpen={isModalOpen}

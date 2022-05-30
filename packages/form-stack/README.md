@@ -11,12 +11,12 @@ group: Forms
 	<FormStack>
 		<TextInput label="Email" type="email" maxWidth="xl" />
 		<TextInput label="Password" type="password" maxWidth="xl" />
-		<Flex gap={1}>
+		<ButtonGroup>
 			<Button type="submit">Submit</Button>
 			<Button type="button" variant="secondary">
 				Cancel
 			</Button>
-		</Flex>
+		</ButtonGroup>
 	</FormStack>
 </form>
 ```

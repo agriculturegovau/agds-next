@@ -36,10 +36,10 @@ storybookPath: /story/layout-herobanner--light-variant
 	subTitle="Hero banner paragraph text"
 	title="Hero banner title"
 >
-	<Flex flexDirection={['column', 'row']} gap={1}>
+	<ButtonGroup>
 		<Button>Primary button</Button>
 		<Button variant="secondary">Secondary button</Button>
-	</Flex>
+	</ButtonGroup>
 </HeroBanner>
 ```
 
