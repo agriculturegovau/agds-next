@@ -1,5 +1,16 @@
 # @ag.ds-next/select
 
+## 8.0.0
+
+### Patch Changes
+
+- Updated dependencies [df01e99d]
+- Updated dependencies [9d64236c]
+  - @ag.ds-next/core@2.2.1
+  - @ag.ds-next/box@5.0.1
+  - @ag.ds-next/field@7.0.0
+  - @ag.ds-next/icon@8.0.0
+
 ## 7.0.0
 
 ### Patch Changes

@@ -1,5 +1,21 @@
 # @ag.ds-next/date-picker
 
+## 4.0.0
+
+### Patch Changes
+
+- Updated dependencies [df01e99d]
+- Updated dependencies [48324e1d]
+- Updated dependencies [711c47b1]
+- Updated dependencies [9d64236c]
+- Updated dependencies [585bffeb]
+  - @ag.ds-next/core@2.2.1
+  - @ag.ds-next/button@8.0.0
+  - @ag.ds-next/box@5.0.1
+  - @ag.ds-next/field@7.0.0
+  - @ag.ds-next/icon@8.0.0
+  - @ag.ds-next/text-input@8.0.0
+
 ## 3.0.0
 
 ### Patch Changes

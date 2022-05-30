@@ -1,5 +1,12 @@
 # @ag.ds-next/core
 
+## 2.2.1
+
+### Patch Changes
+
+- df01e99d: Increased control (checkboxes, radio buttons) border widths from `2px` to `3px`
+- 9d64236c: Updated type definition for `LinkComponent`
+
 ## 2.2.0
 
 ### Minor Changes

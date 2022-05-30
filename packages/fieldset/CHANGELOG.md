@@ -1,5 +1,22 @@
 # @ag.ds-next/fieldset
 
+## 4.0.0
+
+### Minor Changes
+
+- 2cb7df61: Updated fieldset component so `<legend>` is always the first child of `<fieldset>`
+
+### Patch Changes
+
+- 61a7c981: Adjust FieldsetContent margin
+- Updated dependencies [df01e99d]
+- Updated dependencies [8b7b300c]
+- Updated dependencies [9d64236c]
+- Updated dependencies [f9ec2e90]
+  - @ag.ds-next/core@2.2.1
+  - @ag.ds-next/text@7.0.0
+  - @ag.ds-next/box@5.0.1
+
 ## 3.0.0
 
 ### Patch Changes

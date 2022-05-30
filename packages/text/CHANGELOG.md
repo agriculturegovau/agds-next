@@ -1,5 +1,22 @@
 # @ag.ds-next/text
 
+## 7.0.0
+
+### Minor Changes
+
+- f9ec2e90: Create TextLinkExternal component
+
+### Patch Changes
+
+- 8b7b300c: Fixed incorrect wrapping of `TextLinkExternal`
+- Updated dependencies [df01e99d]
+- Updated dependencies [f9ec2e90]
+- Updated dependencies [9d64236c]
+  - @ag.ds-next/core@2.2.1
+  - @ag.ds-next/a11y@1.1.0
+  - @ag.ds-next/box@5.0.1
+  - @ag.ds-next/icon@8.0.0
+
 ## 6.0.0
 
 ### Patch Changes
