@@ -1,0 +1,158 @@
+---
+title: May 16th, 2022
+description: Various bug fixes and improvements.
+---
+
+> ⚠️ Note: All releases under the `@ag.ds-next` package scope should be considered alpha pre-releases. Expect breaking changes. Once we are happy with the state of the core packages we will migrate all packages to `@ag.ds`.
+
+## New packages
+
+```sh
+"@ag.ds-next/secondary-nav": "1.0.0"
+```
+
+## Updates
+
+### @ag.ds-next/a11y@1.1.0
+
+- Create `ExternalLinkCallout` component
+
+### @ag.ds-next/ag-branding@5.1.0
+
+- Updated `success` and `successMuted` colors
+
+### @ag.ds-next/button@8.0.0
+
+- Created `ButtonGroup` component which can be used to group buttons whose actions are related.
+- Updated default props to ensure the default type of each button is `button`
+
+### @ag.ds-next/fieldset@4.0.0
+
+- Updated fieldset component so `<legend>` is always the first child of `<fieldset>`
+- Adjust `FieldsetContent` margin
+
+### @ag.ds-next/hero-banner@3.0.0
+
+- Updated gradient direction to `90deg` to ensure the gradient always covers the image
+- Improved width of content when no image is supplied
+- Updated examples to utilise new `ButtonGroup` component
+
+### @ag.ds-next/modal@4.0.0
+
+- Deleted `ModalButtonGroup` component. Usage of this component be replaced with `ButtonGroup`.
+- Add aria-label to close button
+
+### @ag.ds-next/page-alert@4.0.0
+
+- Updated `PageAlertTitle` so it can be rendered as a `h1` element
+- Add focus styles
+
+### @ag.ds-next/text@7.0.0
+
+- Create `TextLinkExternal` component
+- Fixed incorrect wrapping of `TextLinkExternal`
+
+### @ag.ds-next/body@6.0.1
+
+- Updated color of `hr` elements
+- Removed margin top for first of type blockquotes and figures
+
+### @ag.ds-next/breadcrumbs@9.0.0
+
+- Use ordered-list HTML element
+- Read out 'current page' for active item
+
+### @ag.ds-next/call-to-action@5.0.0
+
+- Explicity pass `className` prop to components
+
+### @ag.ds-next/card@4.0.1
+
+- Fixed type error in `CardListProps`. The `gap` prop is now optional.
+
+### @ag.ds-next/content@6.0.1
+
+- Update padding on mobile for `lg` variant
+
+### @ag.ds-next/core@2.2.1
+
+- Increased control (checkboxes, radio buttons) border widths from `2px` to `3px`
+- Updated type definition for `LinkComponent`
+
+### @ag.ds-next/direction-link@5.0.0
+
+- Explicity pass `className` prop to components
+
+### @ag.ds-next/file-upload@2.0.0
+
+- Added `type="button"` to select files button
+
+### @ag.ds-next/form-stack@3.0.1
+
+- Updated examples to utilise new `ButtonGroup` component
+
+### @ag.ds-next/main-nav@10.0.0
+
+- Explicity pass `className` prop to components
+- Added `MainNavBottomBar` for focus modes
+
+### @ag.ds-next/progress-indicator@7.0.0
+
+- Explicity pass `className` prop to components
+
+### @ag.ds-next/task-list@5.0.0
+
+- Explicity pass `className` prop to components
+
+## Full Changelog
+
+Aside from the [complete release notes on the @ag.ds-next website](https://steelthreads.github.io/agds-next/releases/2022-05-30), you can also view the [verbose change log](https://github.com/steelthreads/agds-next/pull/346) in the related PR (https://github.com/steelthreads/agds-next/pull/346) for this release.
+
+## Released packages
+
+```sh
+"@ag.ds-next/a11y": "1.1.0",
+"@ag.ds-next/accordion": "6.0.0",
+"@ag.ds-next/ag-branding": "5.1.0",
+"@ag.ds-next/body": "6.0.1",
+"@ag.ds-next/box": "5.0.1",
+"@ag.ds-next/breadcrumbs": "9.0.0",
+"@ag.ds-next/button": "8.0.0",
+"@ag.ds-next/call-to-action": "5.0.0",
+"@ag.ds-next/callout": "4.0.0",
+"@ag.ds-next/card": "4.0.1",
+"@ag.ds-next/columns": "5.0.1",
+"@ag.ds-next/content": "6.0.1",
+"@ag.ds-next/control-input": "8.0.0",
+"@ag.ds-next/core": "2.2.1",
+"@ag.ds-next/date-picker": "4.0.0",
+"@ag.ds-next/direction-link": "5.0.0",
+"@ag.ds-next/field": "7.0.0",
+"@ag.ds-next/fieldset": "4.0.0",
+"@ag.ds-next/file-upload": "2.0.0",
+"@ag.ds-next/footer": "6.0.1",
+"@ag.ds-next/form-stack": "3.0.1",
+"@ag.ds-next/header": "8.0.0",
+"@ag.ds-next/heading": "6.0.1",
+"@ag.ds-next/hero-banner": "3.0.0",
+"@ag.ds-next/icon": "8.0.0",
+"@ag.ds-next/inpage-nav": "4.0.0",
+"@ag.ds-next/keyword-list": "4.0.0",
+"@ag.ds-next/link-list": "7.0.0",
+"@ag.ds-next/loading": "3.0.0",
+"@ag.ds-next/main-nav": "10.0.0",
+"@ag.ds-next/modal": "4.0.0",
+"@ag.ds-next/page-alert": "4.0.0",
+"@ag.ds-next/progress-indicator": "7.0.0",
+"@ag.ds-next/search-box": "8.0.0",
+"@ag.ds-next/secondary-nav": "1.0.0",
+"@ag.ds-next/select": "8.0.0",
+"@ag.ds-next/side-nav": "9.0.0",
+"@ag.ds-next/skip-link": "5.0.0",
+"@ag.ds-next/table": "3.0.0",
+"@ag.ds-next/tags": "4.0.0",
+"@ag.ds-next/task-list": "5.0.0",
+"@ag.ds-next/text": "7.0.0",
+"@ag.ds-next/text-input": "8.0.0",
+"@ag.ds-next/textarea": "8.0.0",
+```
