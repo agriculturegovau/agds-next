@@ -33,25 +33,27 @@ const Home: NextPage = () => {
 					</ButtonGroup>
 				</HeroBanner>
 
-				<Content>
-					<Flex flexDirection="column" gap={2}>
+				<Content spacing="lg">
+					<Stack gap={2}>
 						<H2>Content heading (h2)</H2>
-						<Flex gap={1.5}>
+						<Columns gap={3}>
 							{Array.from(Array(4).keys()).map((idx) => (
-								<Flex flexDirection="column" gap={1} key={idx}>
-									<H3>Content heading (h3)</H3>
-									<Text>
-										Short descriptive paragraph designed to fit in this space -
-										sm/default (P). Short descriptive paragraph designed to fit
-										in this space - sm/default (P)
-									</Text>
-								</Flex>
+								<Column columnSpan={{ xs: 12, sm: 6, md: 3 }} key={idx}>
+									<Stack gap={1}>
+										<H3>Content heading (h3)</H3>
+										<Text>
+											Short descriptive paragraph designed to fit in this space
+											- sm/default (P). Short descriptive paragraph designed to
+											fit in this space - sm/default (P)
+										</Text>
+									</Stack>
+								</Column>
 							))}
-						</Flex>
-					</Flex>
+						</Columns>
+					</Stack>
 				</Content>
 				<Content spacing="lg" background="shade">
-					<Columns gap={1}>
+					<Columns gap={3}>
 						<Column columnSpan={{ xs: 12, md: 6 }}>
 							<Stack gap={2} alignItems="flex-start">
 								<Stack gap={1}>
@@ -75,15 +77,17 @@ const Home: NextPage = () => {
 					</Columns>
 				</Content>
 				<Content spacing="lg">
-					<H2>Articles heading (h2)</H2>
-					<Columns gap={1} as="ul">
-						{Array.from(Array(3).keys()).map((idx) => (
-							<Column key={idx} as="li" columnSpan={{ xs: 12, sm: 6, lg: 4 }}>
-								<ArticleCard />
-							</Column>
-						))}
-					</Columns>
-					<CallToActionLink href="#">See more articles</CallToActionLink>
+					<Stack gap={2}>
+						<H2>Articles heading (h2)</H2>
+						<Columns gap={1} as="ul">
+							{Array.from(Array(3).keys()).map((idx) => (
+								<Column key={idx} as="li" columnSpan={{ xs: 12, sm: 6, lg: 4 }}>
+									<ArticleCard />
+								</Column>
+							))}
+						</Columns>
+						<CallToActionLink href="#">See more articles</CallToActionLink>
+					</Stack>
 				</Content>
 			</AppLayout>
 		</>
