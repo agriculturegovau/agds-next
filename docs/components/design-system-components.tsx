@@ -4,7 +4,7 @@ import {
 	AccordionItemContent,
 } from '@ag.ds-next/accordion';
 import { Logo } from '@ag.ds-next/ag-branding';
-import { Button, ButtonLink } from '@ag.ds-next/button';
+import { Button, ButtonLink, ButtonGroup } from '@ag.ds-next/button';
 import { Box, Flex, Stack } from '@ag.ds-next/box';
 import { Body, unsetBodyStylesClassname } from '@ag.ds-next/body';
 import { useTernaryState, tokens } from '@ag.ds-next/core';
@@ -62,7 +62,7 @@ import {
 	SuccessFilledIcon,
 } from '@ag.ds-next/icon';
 import { InpageNav } from '@ag.ds-next/inpage-nav';
-import { Modal, ModalButtonGroup } from '@ag.ds-next/modal';
+import { Modal } from '@ag.ds-next/modal';
 import { Logo as AgLogo } from '@ag.ds-next/ag-branding';
 import { Field } from '@ag.ds-next/field';
 import { Fieldset } from '@ag.ds-next/fieldset';
@@ -107,6 +107,7 @@ export const designSystemComponents = {
 	AgLogo,
 	Button,
 	ButtonLink,
+	ButtonGroup,
 	Box,
 	Flex,
 	Callout,
@@ -153,7 +154,6 @@ export const designSystemComponents = {
 	MainNav,
 	SecondaryNav,
 	Modal,
-	ModalButtonGroup,
 	PageAlert,
 	SideNav,
 	SideNavContainer,

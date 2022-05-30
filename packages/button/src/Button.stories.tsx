@@ -1,9 +1,9 @@
-import React from 'react';
-import { Flex, Stack } from '@ag.ds-next/box';
+import { Flex } from '@ag.ds-next/box';
 import { allIcons, ExternalLinkIcon } from '@ag.ds-next/icon';
 import { Text } from '@ag.ds-next/text';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { Button, ButtonLink } from './Button';
+import { ButtonGroup } from './ButtonGroup';
 
 export default {
 	title: 'forms/Button',
@@ -22,7 +22,7 @@ export default {
 } as ComponentMeta<typeof Button>;
 
 export const OnLight: ComponentStory<typeof Button> = (args) => (
-	<Flex gap={2}>
+	<ButtonGroup>
 		<Button {...args}>Primary</Button>
 		<Button {...args} variant="secondary">
 			Secondary
@@ -30,7 +30,7 @@ export const OnLight: ComponentStory<typeof Button> = (args) => (
 		<Button {...args} variant="tertiary">
 			Tertiary
 		</Button>
-	</Flex>
+	</ButtonGroup>
 );
 OnLight.args = {
 	block: false,
@@ -39,14 +39,16 @@ OnLight.args = {
 };
 
 export const OnDark: ComponentStory<typeof Button> = (args) => (
-	<Flex gap={2} padding={1.5} background="body" palette="dark">
-		<Button {...args}>Primary</Button>
-		<Button {...args} variant="secondary">
-			Secondary
-		</Button>
-		<Button {...args} variant="tertiary">
-			Tertiary
-		</Button>
+	<Flex padding={1.5} background="body" palette="dark">
+		<ButtonGroup>
+			<Button {...args}>Primary</Button>
+			<Button {...args} variant="secondary">
+				Secondary
+			</Button>
+			<Button {...args} variant="tertiary">
+				Tertiary
+			</Button>
+		</ButtonGroup>
 	</Flex>
 );
 OnDark.args = {
@@ -56,7 +58,7 @@ OnDark.args = {
 };
 
 export const Loading: ComponentStory<typeof Button> = (args) => (
-	<Flex gap={2}>
+	<ButtonGroup>
 		<Button {...args}>Primary</Button>
 		<Button {...args} variant="secondary">
 			Secondary
@@ -64,7 +66,7 @@ export const Loading: ComponentStory<typeof Button> = (args) => (
 		<Button {...args} variant="tertiary">
 			Tertiary
 		</Button>
-	</Flex>
+	</ButtonGroup>
 );
 Loading.args = {
 	block: false,
@@ -85,12 +87,12 @@ Block.args = {
 };
 
 export const Size: ComponentStory<typeof Button> = (args) => (
-	<Stack gap={1} alignItems="flex-start">
+	<ButtonGroup>
 		<Button {...args} size="sm">
 			Small
 		</Button>
 		<Button {...args}>Medium</Button>
-	</Stack>
+	</ButtonGroup>
 );
 
 export const ButtonLinkStory: ComponentStory<typeof ButtonLink> = (args) => (

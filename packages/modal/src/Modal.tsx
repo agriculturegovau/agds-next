@@ -27,9 +27,8 @@ export const Modal: FunctionComponent<ModalProps> = ({
 		[isOpen, onDismiss]
 	);
 
-	if (!isOpen) {
-		return null;
-	}
+	if (!isOpen) return null;
+
 	return createPortal(
 		<Fragment>
 			<LockScroll />

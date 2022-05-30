@@ -21,7 +21,7 @@ For other uses, other patterns are preferred.
 				onDismiss={closeModal}
 				title="This is the title of the modal dialogue, it can span lines but should not be too long."
 				actions={
-					<ModalButtonGroup>
+					<ButtonGroup>
 						<Button onClick={closeModal}>Primary button</Button>
 						<Button variant="secondary" onClick={closeModal}>
 							Secondary button
@@ -29,7 +29,7 @@ For other uses, other patterns are preferred.
 						<Button variant="tertiary" onClick={closeModal}>
 							Tertiary button
 						</Button>
-					</ModalButtonGroup>
+					</ButtonGroup>
 				}
 			>
 				<Text as="p">

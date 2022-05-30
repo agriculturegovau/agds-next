@@ -1,7 +1,7 @@
 import type { NextPage } from 'next';
 import { Body } from '@ag.ds-next/body';
 import { Flex, Stack } from '@ag.ds-next/box';
-import { Button } from '@ag.ds-next/button';
+import { Button, ButtonGroup } from '@ag.ds-next/button';
 import { Content } from '@ag.ds-next/content';
 import { Columns, Column } from '@ag.ds-next/columns';
 import { H2 } from '@ag.ds-next/heading';
@@ -72,10 +72,10 @@ const Home: NextPage = () => {
 							of the functionality of a product or service.
 						</p>
 					</Body>
-					<Flex gap={1}>
+					<ButtonGroup>
 						<Button>Primary call to action</Button>
 						<Button variant="secondary">Secondary call to action</Button>
-					</Flex>
+					</ButtonGroup>
 				</Content>
 
 				<Content spacing="lg">
