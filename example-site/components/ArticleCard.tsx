@@ -17,8 +17,7 @@ export const ArticleCard = () => (
 					<CardLink href="#">Title of article (H3)</CardLink>
 				</Heading>
 				<Text as="p">
-					Short descriptive paragraph designed to fit in this space - sm/default
-					(P)
+					Short descriptive paragraph designed to fit in this space
 				</Text>
 			</Stack>
 		</CardInner>

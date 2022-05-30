@@ -37,38 +37,16 @@ const Home: NextPage = () => {
 					<Flex flexDirection="column" gap={2}>
 						<H2>Content heading (h2)</H2>
 						<Flex gap={1}>
-							<Flex flexDirection="column" gap={1}>
-								<H3>Content heading (h3)</H3>
-								<Text>
-									Short descriptive paragraph designed to fit in this space -
-									sm/default (P). Short descriptive paragraph designed to fit in
-									this space - sm/default (P)
-								</Text>
-							</Flex>
-							<Flex flexDirection="column" gap={1}>
-								<H3>Content heading (h3)</H3>
-								<Text>
-									Short descriptive paragraph designed to fit in this space -
-									sm/default (P). Short descriptive paragraph designed to fit in
-									this space - sm/default (P)
-								</Text>
-							</Flex>
-							<Flex flexDirection="column" gap={1}>
-								<H3>Content heading (h3)</H3>
-								<Text>
-									Short descriptive paragraph designed to fit in this space -
-									sm/default (P). Short descriptive paragraph designed to fit in
-									this space - sm/default (P)
-								</Text>
-							</Flex>
-							<Flex flexDirection="column" gap={1}>
-								<H3>Content heading (h3)</H3>
-								<Text>
-									Short descriptive paragraph designed to fit in this space -
-									sm/default (P). Short descriptive paragraph designed to fit in
-									this space - sm/default (P)
-								</Text>
-							</Flex>
+							{Array.from(Array(4).keys()).map((idx) => (
+								<Flex flexDirection="column" gap={1} key={idx}>
+									<H3>Content heading (h3)</H3>
+									<Text>
+										Short descriptive paragraph designed to fit in this space -
+										sm/default (P). Short descriptive paragraph designed to fit
+										in this space - sm/default (P)
+									</Text>
+								</Flex>
+							))}
 						</Flex>
 					</Flex>
 				</Content>
