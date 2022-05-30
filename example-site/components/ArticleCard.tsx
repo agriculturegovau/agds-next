@@ -6,7 +6,7 @@ import { Text } from '@ag.ds-next/text';
 export const ArticleCard = () => (
 	<Card clickable shadow>
 		<img
-			src="/agds-next/example-site/placeholder/600X260.png"
+			src="/agds-next/example-site/placeholder/hero-banner.png"
 			alt=""
 			css={{ width: '100%' }}
 			role="presentation"
@@ -14,9 +14,11 @@ export const ArticleCard = () => (
 		<CardInner>
 			<Stack gap={1}>
 				<Heading type="h3">
-					<CardLink href="#">Title of article</CardLink>
+					<CardLink href="#">Title of article (H3)</CardLink>
 				</Heading>
-				<Text as="p">Some text</Text>
+				<Text as="p">
+					Short descriptive paragraph designed to fit in this space
+				</Text>
 			</Stack>
 		</CardInner>
 	</Card>
