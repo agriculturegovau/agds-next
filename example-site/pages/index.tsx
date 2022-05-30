@@ -36,9 +36,9 @@ const Home: NextPage = () => {
 				<Content spacing="lg">
 					<Stack gap={2}>
 						<H2>Content heading (h2)</H2>
-						<Columns gap={3}>
+						<Columns gap={3} as="ul">
 							{Array.from(Array(4).keys()).map((idx) => (
-								<Column columnSpan={{ xs: 12, sm: 6, md: 3 }} key={idx}>
+								<Column columnSpan={{ xs: 12, sm: 6, md: 3 }} key={idx} as="li">
 									<Stack gap={1}>
 										<H3>Content heading (h3)</H3>
 										<Text>
