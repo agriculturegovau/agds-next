@@ -13,7 +13,7 @@ import { PageTitle } from '../../components/PageTitle';
 const FormMultiStepPage: NextPage = () => {
 	return (
 		<>
-			<DocumentTitle title="Multi step form example" />
+			<DocumentTitle title="Multi-step form example" />
 			<AppLayout
 				template={{ name: 'Multi-step form', slug: 'multi-step-form' }}
 			>
@@ -22,12 +22,12 @@ const FormMultiStepPage: NextPage = () => {
 						<Column columnSpan={{ xs: 12, md: 8 }}>
 							<Stack gap={3}>
 								<PageTitle
-									title="Multipage form title (H1)"
-									introduction="The introductory paragraph provides context about the entire multipage form. Use a short paragraph to reduce cognitive load."
+									title="Multi-step form title (H1)"
+									introduction="The introductory paragraph provides context about the entire multi-step form. Use a short paragraph to reduce cognitive load."
 								/>
 								<Body>
-									<h2>Multipage form subheading (H2)</h2>
-									<p>Multipage form subheading content</p>
+									<h2>Multi-step form subheading (H2)</h2>
+									<p>Multi-step form subheading content</p>
 									<hr aria-hidden="true" />
 									<ButtonLink href="/form-multi-step/form">
 										Start form
