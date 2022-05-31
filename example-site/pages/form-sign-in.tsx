@@ -1,6 +1,6 @@
 import type { NextPage } from 'next';
 import { Stack } from '@ag.ds-next/box';
-import { Content } from '@ag.ds-next/content';
+import { PageContent } from '@ag.ds-next/content';
 import { Columns, Column } from '@ag.ds-next/columns';
 import { AppLayout } from '../components/AppLayout';
 import { DocumentTitle } from '../components/DocumentTitle';
@@ -12,7 +12,7 @@ const FormSignInPage: NextPage = () => {
 		<>
 			<DocumentTitle title="Sign in example" />
 			<AppLayout template={{ name: 'Sign-in form', slug: 'sign-in' }}>
-				<Content spacing="page">
+				<PageContent>
 					<Columns>
 						<Column columnSpan={{ xs: 12, md: 7 }}>
 							<Stack gap={3}>
@@ -24,7 +24,7 @@ const FormSignInPage: NextPage = () => {
 							</Stack>
 						</Column>
 					</Columns>
-				</Content>
+				</PageContent>
 			</AppLayout>
 		</>
 	);

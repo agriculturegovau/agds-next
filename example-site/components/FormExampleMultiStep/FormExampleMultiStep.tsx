@@ -7,7 +7,7 @@ import {
 } from 'react';
 import { useRouter } from 'next/router';
 import { Column, Columns } from '@ag.ds-next/columns';
-import { Content, ContentBleed } from '@ag.ds-next/content';
+import { PageContent, ContentBleed } from '@ag.ds-next/content';
 import { ProgressIndicator } from '@ag.ds-next/progress-indicator';
 import { Stack } from '@ag.ds-next/box';
 import { Text } from '@ag.ds-next/text';
@@ -140,13 +140,13 @@ export const FormExampleMultiStep = () => {
 				<AppLayout
 					template={{ name: 'Multi-step form', slug: 'multi-step-form' }}
 				>
-					<Content spacing="page">
+					<PageContent>
 						<Columns>
 							<Column columnSpan={{ xs: 12, md: 8 }}>
 								<FormExampleMultiStepSuccess />
 							</Column>
 						</Columns>
-					</Content>
+					</PageContent>
 				</AppLayout>
 			</>
 		);
@@ -173,7 +173,7 @@ export const FormExampleMultiStep = () => {
 				template={{ name: 'Multi-step form', slug: 'multi-step-form' }}
 				focusMode
 			>
-				<Content spacing="page">
+				<PageContent>
 					<context.Provider value={contextValue}>
 						<Columns>
 							<Column columnSpan={{ xs: 12, md: 3 }}>
@@ -213,7 +213,7 @@ export const FormExampleMultiStep = () => {
 							</Column>
 						</Columns>
 					</context.Provider>
-				</Content>
+				</PageContent>
 			</AppLayout>
 		</>
 	);

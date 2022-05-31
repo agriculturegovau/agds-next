@@ -1,7 +1,7 @@
 import { PropsWithChildren, ReactNode } from 'react';
 import { Flex, Stack } from '@ag.ds-next/box';
 import { tokens } from '@ag.ds-next/core';
-import { Content } from '@ag.ds-next/content';
+import { SectionContent } from '@ag.ds-next/content';
 import { HeroBannerImage } from './HeroBannerImage';
 import { HeroBannerVariant } from './utils';
 
@@ -16,7 +16,7 @@ export const HeroBannerContent = ({
 	variant,
 }: HeroBannerContentProps) => {
 	return (
-		<Content as="div" spacing="section">
+		<SectionContent>
 			<Flex>
 				<Stack
 					gap={[1.5, 2]}
@@ -30,6 +30,6 @@ export const HeroBannerContent = ({
 					<HeroBannerImage variant={variant}>{image}</HeroBannerImage>
 				) : null}
 			</Flex>
-		</Content>
+		</SectionContent>
 	);
 };

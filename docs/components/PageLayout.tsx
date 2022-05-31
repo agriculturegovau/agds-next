@@ -1,4 +1,4 @@
-import { Content, ContentBleed } from '@ag.ds-next/content';
+import { PageContent, ContentBleed } from '@ag.ds-next/content';
 import { Flex, Stack } from '@ag.ds-next/box';
 import { Columns, Column } from '@ag.ds-next/columns';
 import { SideNav } from '@ag.ds-next/side-nav';
@@ -28,7 +28,7 @@ export function PageLayout({
 }>) {
 	const router = useRouter();
 	return (
-		<Content spacing="page" css={{ position: 'relative' }}>
+		<PageContent>
 			<Columns>
 				{sideNav && (
 					<Column columnSpan={{ xs: 12, md: 3 }}>
@@ -62,6 +62,6 @@ export function PageLayout({
 					</Stack>
 				</Column>
 			</Columns>
-		</Content>
+		</PageContent>
 	);
 }

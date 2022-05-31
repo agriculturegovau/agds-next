@@ -4,32 +4,34 @@ import { tokens } from '@ag.ds-next/core';
 import { ContentSpacingContext } from './context';
 import { paddingYMap } from './utils';
 
-type ContentProps = PropsWithChildren<
+type SectionContentProps = PropsWithChildren<
 	{
 		as?: React.ElementType;
+		className?: string;
 	} & Pick<BoxProps, 'background' | 'palette'>
 >;
 
-export function Content({
-	as = 'div',
+export function SectionContent({
+	as = 'section',
+	className,
 	palette,
 	background,
 	children,
-}: ContentProps) {
+}: SectionContentProps) {
 	return (
-		<ContentSpacingContext.Provider value={paddingYMap.none}>
+		<ContentSpacingContext.Provider value={paddingYMap.section}>
 			<Flex
 				as={as}
 				justifyContent="center"
 				palette={palette}
 				background={background}
-				css={{ position: 'relative' }}
+				className={className}
 			>
 				<Box
 					width="100%"
 					maxWidth={tokens.maxWidth.container}
-					paddingTop={paddingYMap.none.top}
-					paddingBottom={paddingYMap.none.bottom}
+					paddingTop={paddingYMap.section.top}
+					paddingBottom={paddingYMap.section.bottom}
 					paddingX={tokens.containerPadding}
 				>
 					{children}

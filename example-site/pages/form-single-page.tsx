@@ -1,7 +1,7 @@
 import type { NextPage } from 'next';
 import { Stack } from '@ag.ds-next/box';
 import { Breadcrumbs } from '@ag.ds-next/breadcrumbs';
-import { Content } from '@ag.ds-next/content';
+import { PageContent } from '@ag.ds-next/content';
 import { Columns, Column } from '@ag.ds-next/columns';
 import { AppLayout } from '../components/AppLayout';
 import { DocumentTitle } from '../components/DocumentTitle';
@@ -15,7 +15,7 @@ const FormSinglePage: NextPage = () => {
 			<AppLayout
 				template={{ name: 'Single-page form', slug: 'single-page-form' }}
 			>
-				<Content spacing="page">
+				<PageContent>
 					<Columns>
 						<Column columnSpan={{ xs: 12, md: 8 }}>
 							<Stack gap={3}>
@@ -37,7 +37,7 @@ const FormSinglePage: NextPage = () => {
 							</Stack>
 						</Column>
 					</Columns>
-				</Content>
+				</PageContent>
 			</AppLayout>
 		</>
 	);

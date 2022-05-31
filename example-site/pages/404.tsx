@@ -1,7 +1,7 @@
 import { H1 } from '@ag.ds-next/heading';
 import { Stack } from '@ag.ds-next/box';
 import { Text, TextLink } from '@ag.ds-next/text';
-import { Content } from '@ag.ds-next/content';
+import { PageContent } from '@ag.ds-next/content';
 import { AppLayout } from '../components/AppLayout';
 import { DocumentTitle } from '../components/DocumentTitle';
 
@@ -10,7 +10,7 @@ export default function NotFoundPage() {
 		<>
 			<DocumentTitle title="Error 404" />
 			<AppLayout template={{ name: '404', slug: '404' }}>
-				<Content spacing="page">
+				<PageContent as="main" id="main-content">
 					<Stack gap={1.5}>
 						<H1>Page not found</H1>
 						<Text as="p" fontSize="md">
@@ -19,7 +19,7 @@ export default function NotFoundPage() {
 						</Text>
 						<Text>Error code: 404</Text>
 					</Stack>
-				</Content>
+				</PageContent>
 			</AppLayout>
 		</>
 	);

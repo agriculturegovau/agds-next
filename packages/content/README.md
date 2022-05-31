@@ -1,17 +1,33 @@
 ---
 title: Content
-description: A simple layout container for content
+description: A set of simple layout containers for content.
 group: Layout
 ---
+
+### PageContent
 
 ```jsx
 <ExampleApp>
 	<ExampleAppHeader />
-	<main>
-		<Content spacing="page">
-			<ExampleAppContent />
-		</Content>
-	</main>
+	<PageContent as="main">
+		<ExampleAppContent />
+	</PageContent>
 	<ExampleAppFooter />
 </ExampleApp>
+```
+
+### SectionContent
+
+```jsx
+<SectionContent>
+	<p>Hello</p>
+</SectionContent>
+```
+
+### Content
+
+```jsx
+<Content>
+	<p>Blah</p>
+</Content>
 ```

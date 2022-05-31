@@ -1,6 +1,6 @@
 import type { NextPage } from 'next';
 import { Body } from '@ag.ds-next/body';
-import { Content, ContentBleed } from '@ag.ds-next/content';
+import { PageContent, ContentBleed } from '@ag.ds-next/content';
 import { Columns, Column } from '@ag.ds-next/columns';
 import { SideNav } from '@ag.ds-next/side-nav';
 import { AppLayout } from '../components/AppLayout';
@@ -11,7 +11,7 @@ const ContentPage: NextPage = () => {
 		<>
 			<DocumentTitle title="Content page example" />
 			<AppLayout template={{ name: 'Content', slug: 'content' }}>
-				<Content spacing="page">
+				<PageContent>
 					<Columns>
 						<Column columnSpan={{ xs: 12, md: 3 }}>
 							<ContentBleed visible={{ md: false }}>
@@ -93,7 +93,7 @@ const ContentPage: NextPage = () => {
 							</Body>
 						</Column>
 					</Columns>
-				</Content>
+				</PageContent>
 			</AppLayout>
 		</>
 	);

@@ -1,5 +1,5 @@
 import type { NextPage } from 'next';
-import { Content } from '@ag.ds-next/content';
+import { PageContent } from '@ag.ds-next/content';
 import { Columns, Column } from '@ag.ds-next/columns';
 import { ButtonLink } from '@ag.ds-next/button';
 import { AppLayout } from '../../components/AppLayout';
@@ -17,7 +17,7 @@ const FormMultiStepPage: NextPage = () => {
 			<AppLayout
 				template={{ name: 'Multi-step form', slug: 'multi-step-form' }}
 			>
-				<Content spacing="page">
+				<PageContent>
 					<Columns>
 						<Column columnSpan={{ xs: 12, md: 8 }}>
 							<Stack gap={3}>
@@ -74,7 +74,7 @@ const FormMultiStepPage: NextPage = () => {
 							</Stack>
 						</Column>
 					</Columns>
-				</Content>
+				</PageContent>
 			</AppLayout>
 		</>
 	);
