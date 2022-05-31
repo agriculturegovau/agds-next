@@ -93,7 +93,12 @@ import {
 } from '@ag.ds-next/skip-link';
 import { DirectionLink, DirectionButton } from '@ag.ds-next/direction-link';
 import { Tags } from '@ag.ds-next/tags';
-import { Content, ContentBleed } from '@ag.ds-next/content';
+import {
+	Content,
+	PageContent,
+	SectionContent,
+	ContentBleed,
+} from '@ag.ds-next/content';
 import { TaskList } from '@ag.ds-next/task-list';
 import { PageAlert } from '@ag.ds-next/page-alert';
 import { DatePicker, DateRangePicker } from '@ag.ds-next/date-picker';
@@ -203,6 +208,8 @@ export const designSystemComponents = {
 	DirectionButton,
 	Tags,
 	Content,
+	PageContent,
+	SectionContent,
 	ContentBleed,
 	TaskList,
 	DatePicker,
