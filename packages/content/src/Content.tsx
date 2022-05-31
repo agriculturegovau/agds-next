@@ -7,6 +7,7 @@ import { paddingYMap, ContentSpacing } from './utils';
 type BaseContentProps = PropsWithChildren<
 	{
 		as?: React.ElementType;
+		id?: string;
 		className?: string;
 	} & Pick<BoxProps, 'background' | 'palette'>
 >;
