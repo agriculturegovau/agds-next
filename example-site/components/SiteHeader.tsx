@@ -9,8 +9,8 @@ import { SiteHeaderSearch } from './SiteHeaderSearch';
 const NAV_LINKS = [
 	{ label: 'Home', href: '/' },
 	{ label: 'Content', href: '/content' },
-	{ label: 'Single page form', href: '/form-single-page' },
-	{ label: 'Multi step form', href: '/form-multi-step' },
+	{ label: 'Single-page form', href: '/form-single-page' },
+	{ label: 'Multi-step form', href: '/form-multi-step' },
 ];
 
 export const SiteHeader = ({ focusMode }: { focusMode: boolean }) => {

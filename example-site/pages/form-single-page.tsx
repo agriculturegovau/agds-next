@@ -11,7 +11,7 @@ import { PageTitle } from '../components/PageTitle';
 const FormSinglePage: NextPage = () => {
 	return (
 		<>
-			<DocumentTitle title="Single page form example" />
+			<DocumentTitle title="Single-page form example" />
 			<AppLayout
 				template={{ name: 'Single-page form', slug: 'single-page-form' }}
 			>
@@ -30,7 +30,7 @@ const FormSinglePage: NextPage = () => {
 									title="Provide details form title - multi question - xxl/display
                   (H1)"
 									introduction="Introductory paragraph providing context for this single
-                  page of the multipage form. All questions on page must be
+                  page of the multi-step form. All questions on page must be
                   related - md/default (P)"
 								/>
 								<FormExampleSinglePage />

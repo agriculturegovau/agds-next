@@ -136,7 +136,7 @@ export const FormExampleMultiStep = () => {
 	if (success) {
 		return (
 			<>
-				<DocumentTitle title="Multi step form example" />
+				<DocumentTitle title="Multi-step form example" />
 				<AppLayout
 					template={{ name: 'Multi-step form', slug: 'multi-step-form' }}
 				>
@@ -168,7 +168,7 @@ export const FormExampleMultiStep = () => {
 
 	return (
 		<>
-			<DocumentTitle title="Multi step form example" />
+			<DocumentTitle title="Multi-step form example" />
 			<AppLayout
 				template={{ name: 'Multi-step form', slug: 'multi-step-form' }}
 				focusMode
