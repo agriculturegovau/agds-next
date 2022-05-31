@@ -11,7 +11,7 @@ export default function NotFoundPage() {
 		<>
 			<DocumentTitle title="Error 404" />
 			<AppLayout>
-				<Content spacing="lg">
+				<Content spacing="page">
 					<Stack gap={1.5}>
 						<H1>Page not found</H1>
 						<Text as="p" fontSize="md">

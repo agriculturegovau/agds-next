@@ -11,7 +11,7 @@ const ContentPage: NextPage = () => {
 		<>
 			<DocumentTitle title="Content page example" />
 			<AppLayout template={{ name: 'Content', slug: 'content' }}>
-				<Content spacing="lg">
+				<Content spacing="page">
 					<Columns>
 						<Column columnSpan={{ xs: 12, md: 3 }}>
 							<ContentBleed visible={{ md: false }}>

@@ -23,7 +23,7 @@ export default function Homepage() {
 						Get started
 					</CallToActionLink>
 				</HeroBanner>
-				<Content spacing="lg">
+				<Content spacing="section">
 					<Stack gap={3}>
 						<Body>
 							<p>

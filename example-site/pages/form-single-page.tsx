@@ -15,7 +15,7 @@ const FormSinglePage: NextPage = () => {
 			<AppLayout
 				template={{ name: 'Single-page form', slug: 'single-page-form' }}
 			>
-				<Content spacing="lg">
+				<Content spacing="page">
 					<Columns>
 						<Column columnSpan={{ xs: 12, md: 8 }}>
 							<Stack gap={3}>

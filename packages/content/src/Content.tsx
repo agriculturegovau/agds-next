@@ -1,19 +1,21 @@
 import { PropsWithChildren } from 'react';
-import { Flex, Stack, BoxProps } from '@ag.ds-next/box';
+import { Flex, Box, BoxProps } from '@ag.ds-next/box';
 import { tokens } from '@ag.ds-next/core';
 import { ContentSpacingContext } from './context';
 import { paddingYMap, ContentSpacing } from './utils';
 
-type ContentProps = PropsWithChildren<{
-	as?: React.ElementType;
-	spacing?: ContentSpacing;
-	palette?: BoxProps['palette'];
-	background?: BoxProps['background'];
-}>;
+type ContentProps = PropsWithChildren<
+	{
+		as?: React.ElementType;
+		spacing?: ContentSpacing;
+		className?: string;
+	} & Pick<BoxProps, 'background' | 'palette'>
+>;
 
 export function Content({
 	as = 'section',
-	spacing = 'sm',
+	spacing = 'none',
+	className,
 	palette,
 	background,
 	children,
@@ -25,16 +27,17 @@ export function Content({
 				justifyContent="center"
 				palette={palette}
 				background={background}
+				className={className}
 			>
-				<Stack
+				<Box
 					width="100%"
 					maxWidth={tokens.maxWidth.container}
-					paddingY={paddingYMap[spacing]}
+					paddingTop={paddingYMap[spacing].top}
+					paddingBottom={paddingYMap[spacing].bottom}
 					paddingX={tokens.containerPadding}
-					gap={1}
 				>
 					{children}
-				</Stack>
+				</Box>
 			</Flex>
 		</ContentSpacingContext.Provider>
 	);

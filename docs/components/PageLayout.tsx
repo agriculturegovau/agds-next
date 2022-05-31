@@ -28,42 +28,40 @@ export function PageLayout({
 }>) {
 	const router = useRouter();
 	return (
-		<div css={{ position: 'relative' }}>
-			<Content spacing="lg">
-				<Columns>
-					{sideNav && (
-						<Column columnSpan={{ xs: 12, md: 3 }}>
-							<ContentBleed visible={{ md: false }}>
-								<SideNav
-									variant="light"
-									collapseTitle="In this section"
-									activePath={router.asPath}
-									title={sideNav.title}
-									titleLink={sideNav.titleLink}
-									items={sideNav.items}
-								/>
-							</ContentBleed>
-						</Column>
-					)}
-					<Column
-						columnSpan={{ xs: 12, md: 8 }}
-						columnStart={{ md: sideNav ? 5 : 1 }}
-						as="main"
-						id="main-content"
-					>
-						{skipLinks?.length ? <SkipLinks links={skipLinks} /> : null}
-						<Stack flexGrow={1} gap={3}>
-							{breadcrumbs?.length ? <Breadcrumbs links={breadcrumbs} /> : null}
-							{children}
-							{editPath && (
-								<Flex justifyContent="flex-start">
-									<EditPage path={editPath} />
-								</Flex>
-							)}
-						</Stack>
+		<Content spacing="page" css={{ position: 'relative' }}>
+			<Columns>
+				{sideNav && (
+					<Column columnSpan={{ xs: 12, md: 3 }}>
+						<ContentBleed visible={{ md: false }}>
+							<SideNav
+								variant="light"
+								collapseTitle="In this section"
+								activePath={router.asPath}
+								title={sideNav.title}
+								titleLink={sideNav.titleLink}
+								items={sideNav.items}
+							/>
+						</ContentBleed>
 					</Column>
-				</Columns>
-			</Content>
-		</div>
+				)}
+				<Column
+					columnSpan={{ xs: 12, md: 8 }}
+					columnStart={{ md: sideNav ? 5 : 1 }}
+					as="main"
+					id="main-content"
+				>
+					{skipLinks?.length ? <SkipLinks links={skipLinks} /> : null}
+					<Stack flexGrow={1} gap={3}>
+						{breadcrumbs?.length ? <Breadcrumbs links={breadcrumbs} /> : null}
+						{children}
+						{editPath && (
+							<Flex justifyContent="flex-start">
+								<EditPage path={editPath} />
+							</Flex>
+						)}
+					</Stack>
+				</Column>
+			</Columns>
+		</Content>
 	);
 }

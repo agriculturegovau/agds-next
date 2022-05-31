@@ -17,7 +17,7 @@ const FormMultiStepPage: NextPage = () => {
 			<AppLayout
 				template={{ name: 'Multi-step form', slug: 'multi-step-form' }}
 			>
-				<Content spacing="lg">
+				<Content spacing="page">
 					<Columns>
 						<Column columnSpan={{ xs: 12, md: 8 }}>
 							<Stack gap={3}>
