@@ -6,19 +6,19 @@ group: Layout
 
 ### PageContent
 
-The `PageContent` component should be used to wrap your applications page content. Typically this component will sit in between a header and footer component.
+The `PageContent` component should be used to wrap your applications page content. Typically this component will sit in-between your applications header and footer component.
 
 ```jsx
-<YourApplicationHeader />
+<YourApplicationsHeader />
 <PageContent as="main">
-	<YourApplicationHeaderPageContent />
+	<YourApplicationsPageContent />
 </PageContent>
-<YourApplicationFooter />
+<YourApplicationsFooter />
 ```
 
 ### SectionContent
 
-The `SectionContent` component should be used to wrap sections of your applications page content.
+The `SectionContent` component should be used to wrap sections your applications page content.
 
 ```jsx
 <SectionContent>
@@ -34,7 +34,7 @@ The `SectionContent` component should be used to wrap sections of your applicati
 
 ### Content
 
-The `Content` component should be used when you want to add a max-width to your content, but want to have custom padding values.
+The `Content` component can be used when you wrap content in a consistent container with a maximum width, but don't want any associated vertical padding.
 
 ```jsx
 <Content>
