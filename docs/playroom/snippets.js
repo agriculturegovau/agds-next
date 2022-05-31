@@ -1,4 +1,4 @@
-const snippits = [
+const snippets = [
 	{
 		group: 'Boilerplate',
 		name: 'One',
@@ -575,4 +575,4 @@ items={[
 	},
 ];
 
-export default snippits;
+export default snippets;
