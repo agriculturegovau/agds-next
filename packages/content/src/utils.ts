@@ -12,3 +12,5 @@ export const paddingYMap = {
 		bottom: { xs: 2, md: 4 },
 	},
 } as const;
+
+export type ContentSpacing = keyof typeof paddingYMap;

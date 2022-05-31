@@ -21,7 +21,7 @@ export function ContentBleed({ children, visible }: ContentBleedProps) {
 				// Use negative margins to position this element
 				mq({
 					marginTop: mapResponsiveProp(
-						paddingYMap[spacing],
+						paddingYMap[spacing].top,
 						(v) => `-${mapSpacing(v)}`
 					),
 					marginLeft: mapResponsiveProp(
