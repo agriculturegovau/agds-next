@@ -8,7 +8,7 @@ group: Layout
 <ExampleApp>
 	<ExampleAppHeader />
 	<main>
-		<Content>
+		<Content spacing="page">
 			<ExampleAppContent />
 		</Content>
 	</main>
