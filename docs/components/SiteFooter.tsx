@@ -10,13 +10,13 @@ const footerLinks = [
 	},
 	{
 		label: 'Storybook',
-		href: '/storybook/index.html',
+		href: 'https://steelthreads.github.io/agds-next/storybook/index.html',
 		target: '_blank',
 		rel: 'noopener noreferrer',
 	},
 	{
 		label: 'Playroom',
-		href: '/playroom/index.html',
+		href: 'https://steelthreads.github.io/agds-next/playroom/index.html',
 		target: '_blank',
 		rel: 'noopener noreferrer',
 	},
