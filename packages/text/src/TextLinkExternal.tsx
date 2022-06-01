@@ -1,20 +1,22 @@
-import { AnchorHTMLAttributes } from 'react';
 import { ExternalLinkCallout } from '@ag.ds-next/a11y';
-import { Box } from '@ag.ds-next/box';
+import { focusStyles, linkStyles } from '@ag.ds-next/box';
 import { ExternalLinkIcon } from '@ag.ds-next/icon';
-import { mapSpacing } from '@ag.ds-next/core';
+import { LinkProps, mapSpacing, useLinkComponent } from '@ag.ds-next/core';
 
-export type TextLinkExternalProps = Omit<
-	AnchorHTMLAttributes<HTMLAnchorElement>,
-	'color'
->;
+export type TextLinkExternalProps = LinkProps;
 
 export const TextLinkExternal = ({
 	children,
 	...props
 }: TextLinkExternalProps) => {
+	const Link = useLinkComponent();
 	return (
-		<Box as="a" link target="_blank" rel="noopener noreferrer" {...props}>
+		<Link
+			css={[linkStyles, focusStyles]}
+			target="_blank"
+			rel="noopener noreferrer"
+			{...props}
+		>
 			{children}
 			<ExternalLinkCallout />
 			<ExternalLinkIcon
@@ -26,6 +28,6 @@ export const TextLinkExternal = ({
 					marginLeft: mapSpacing(0.25),
 				}}
 			/>
-		</Box>
+		</Link>
 	);
 };
