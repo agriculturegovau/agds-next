@@ -1,5 +1,5 @@
 import { Columns, Column } from '@ag.ds-next/columns';
-import { Content } from '@ag.ds-next/content';
+import { SectionContent } from '@ag.ds-next/content';
 import { Stack } from '@ag.ds-next/box';
 import { CallToActionLink } from '@ag.ds-next/call-to-action';
 import { Body } from '@ag.ds-next/body';
@@ -23,7 +23,7 @@ export default function Homepage() {
 						Get started
 					</CallToActionLink>
 				</HeroBanner>
-				<Content spacing="lg">
+				<SectionContent>
 					<Stack gap={3}>
 						<Body>
 							<p>
@@ -81,7 +81,7 @@ export default function Homepage() {
 							</Column>
 						</Columns>
 					</Stack>
-				</Content>
+				</SectionContent>
 			</AppLayout>
 		</>
 	);

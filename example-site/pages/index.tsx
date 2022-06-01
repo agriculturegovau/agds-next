@@ -1,7 +1,7 @@
 import type { NextPage } from 'next';
-import { Flex, Stack } from '@ag.ds-next/box';
+import { Stack } from '@ag.ds-next/box';
 import { Button, ButtonGroup } from '@ag.ds-next/button';
-import { Content } from '@ag.ds-next/content';
+import { SectionContent } from '@ag.ds-next/content';
 import { Columns, Column } from '@ag.ds-next/columns';
 import { H2, H3 } from '@ag.ds-next/heading';
 import { Text } from '@ag.ds-next/text';
@@ -33,7 +33,7 @@ const Home: NextPage = () => {
 					</ButtonGroup>
 				</HeroBanner>
 
-				<Content spacing="lg">
+				<SectionContent>
 					<Stack gap={2}>
 						<H2>Content heading (h2)</H2>
 						<Columns gap={3} as="ul">
@@ -51,8 +51,9 @@ const Home: NextPage = () => {
 							))}
 						</Columns>
 					</Stack>
-				</Content>
-				<Content spacing="lg" background="shade">
+				</SectionContent>
+
+				<SectionContent background="shade">
 					<Columns gap={3}>
 						<Column columnSpan={{ xs: 12, md: 6 }}>
 							<Stack gap={2} alignItems="flex-start">
@@ -75,8 +76,9 @@ const Home: NextPage = () => {
 							/>
 						</Column>
 					</Columns>
-				</Content>
-				<Content spacing="lg">
+				</SectionContent>
+
+				<SectionContent>
 					<Stack gap={2}>
 						<H2>Articles heading (h2)</H2>
 						<Columns gap={1} as="ul">
@@ -88,7 +90,7 @@ const Home: NextPage = () => {
 						</Columns>
 						<CallToActionLink href="#">See more articles</CallToActionLink>
 					</Stack>
-				</Content>
+				</SectionContent>
 			</AppLayout>
 		</>
 	);

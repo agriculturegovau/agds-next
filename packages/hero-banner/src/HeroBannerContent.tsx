@@ -16,13 +16,13 @@ export const HeroBannerContent = ({
 	variant,
 }: HeroBannerContentProps) => {
 	return (
-		<Content as="div" spacing="sm">
+		<Content>
 			<Flex>
 				<Stack
 					gap={[1.5, 2]}
 					width={['100%', '100%', image ? '60%' : '100%']}
+					paddingY={{ xs: 2, md: 4 }}
 					maxWidth={image ? undefined : tokens.maxWidth.bodyText}
-					paddingY={{ xs: 1, lg: 2 }}
 					css={{ zIndex: 1 }}
 				>
 					{children}

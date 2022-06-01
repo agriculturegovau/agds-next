@@ -16,7 +16,7 @@ import { Callout } from '@ag.ds-next/callout';
 import { CallToActionLink } from '@ag.ds-next/call-to-action';
 import { Card, CardInner } from '@ag.ds-next/card';
 import { Columns, Column } from '@ag.ds-next/columns';
-import { Content } from '@ag.ds-next/content';
+import { PageContent } from '@ag.ds-next/content';
 import { ControlGroup, Checkbox, Radio } from '@ag.ds-next/control-input';
 import { DirectionLink } from '@ag.ds-next/direction-link';
 import { Heading, H1, H2 } from '@ag.ds-next/heading';
@@ -60,7 +60,7 @@ const KitchenSink = ({
 	sideNavVariant: 'light' | 'dark';
 }) => {
 	return (
-		<Content spacing="lg">
+		<PageContent>
 			<Columns>
 				<Column columnSpan={{ xs: 12, md: 4 }}>
 					<Stack gap={1}>
@@ -261,7 +261,7 @@ const KitchenSink = ({
 					</Stack>
 				</Column>
 			</Columns>
-		</Content>
+		</PageContent>
 	);
 };
 

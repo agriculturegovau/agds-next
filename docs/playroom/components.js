@@ -8,7 +8,12 @@ export {
 export { Body } from '@ag.ds-next/body';
 export { Box, Flex, Stack } from '@ag.ds-next/box';
 export { Button, ButtonLink, ButtonGroup } from '@ag.ds-next/button';
-export { Content } from '@ag.ds-next/content';
+export {
+	Content,
+	ContentBleed,
+	SectionContent,
+	PageContent,
+} from '@ag.ds-next/content';
 export {
 	Card,
 	CardFooter,
