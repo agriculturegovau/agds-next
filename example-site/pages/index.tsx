@@ -35,12 +35,12 @@ const Home: NextPage = () => {
 
 				<SectionContent>
 					<Stack gap={2}>
-						<H2>Content heading (h2)</H2>
+						<H2>Content heading (H2)</H2>
 						<Columns as="ul">
 							{Array.from(Array(4).keys()).map((idx) => (
 								<Column key={idx} as="li" columnSpan={{ xs: 12, sm: 6, md: 3 }}>
 									<Stack gap={1}>
-										<H3>Content heading (h3)</H3>
+										<H3>Content heading (H3)</H3>
 										<Text as="p">
 											Short descriptive paragraph designed to fit in this space
 											- sm/default (P). Short descriptive paragraph designed to
@@ -58,7 +58,7 @@ const Home: NextPage = () => {
 						<Column columnSpan={{ xs: 12, md: 6 }}>
 							<Stack gap={2} alignItems="flex-start">
 								<Stack gap={1}>
-									<H2>Highlighted content row heading (h2)</H2>
+									<H2>Highlighted content row heading (H2)</H2>
 									<Text as="p">
 										Short descriptive paragraph designed to fit in this space -
 										sm/default (P). Short descriptive paragraph designed to fit
