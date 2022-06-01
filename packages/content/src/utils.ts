@@ -9,7 +9,7 @@ export const paddingYMap = {
 	},
 	page: {
 		top: { xs: 2, md: 3 },
-		bottom: { xs: 2, md: 4 },
+		bottom: { xs: 3, md: 4 },
 	},
 } as const;
 
