@@ -121,7 +121,7 @@ const LiveCode = withLive((props: unknown) => {
 					aria-label={isCodeVisible ? 'Hide code snippet' : 'Show code snippet'}
 					aria-controls={codeId}
 				>
-					{isCodeVisible ? 'Hide code' : 'Show code'}
+					{isCodeVisible ? 'Hide live code' : 'Show live code'}
 				</Button>
 				<Button
 					size="sm"
