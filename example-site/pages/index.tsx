@@ -35,16 +35,16 @@ const Home: NextPage = () => {
 
 				<SectionContent>
 					<Stack gap={2}>
-						<H2>Content heading (h2)</H2>
-						<Columns gap={3} as="ul">
+						<H2>Content heading (H2)</H2>
+						<Columns as="ul">
 							{Array.from(Array(4).keys()).map((idx) => (
-								<Column columnSpan={{ xs: 12, sm: 6, md: 3 }} key={idx} as="li">
+								<Column key={idx} as="li" columnSpan={{ xs: 12, sm: 6, md: 3 }}>
 									<Stack gap={1}>
-										<H3>Content heading (h3)</H3>
-										<Text>
+										<H3>Content heading (H3)</H3>
+										<Text as="p">
 											Short descriptive paragraph designed to fit in this space
 											- sm/default (P). Short descriptive paragraph designed to
-											fit in this space - sm/default (P)
+											fit in this space - sm/default (P).
 										</Text>
 									</Stack>
 								</Column>
@@ -54,15 +54,15 @@ const Home: NextPage = () => {
 				</SectionContent>
 
 				<SectionContent background="shade">
-					<Columns gap={3}>
+					<Columns>
 						<Column columnSpan={{ xs: 12, md: 6 }}>
 							<Stack gap={2} alignItems="flex-start">
 								<Stack gap={1}>
-									<H2>Highlighted content row heading (h2)</H2>
-									<Text fontSize="sm">
+									<H2>Highlighted content row heading (H2)</H2>
+									<Text as="p">
 										Short descriptive paragraph designed to fit in this space -
 										sm/default (P). Short descriptive paragraph designed to fit
-										in this space - sm/default (P)
+										in this space - sm/default (P).
 									</Text>
 								</Stack>
 								<CallToActionLink>Read more</CallToActionLink>
@@ -71,8 +71,8 @@ const Home: NextPage = () => {
 						<Column columnSpan={{ xs: 12, md: 6 }}>
 							<img
 								src="/agds-next/example-site/placeholder/hero-banner.png"
-								alt="Place holder image"
-								css={{ width: '100%' }}
+								alt="Harvester in a golden field of wheat emptying grain into a chaser bin moving alongside it."
+								css={{ display: 'block', maxWidth: '100%' }}
 							/>
 						</Column>
 					</Columns>
@@ -80,8 +80,8 @@ const Home: NextPage = () => {
 
 				<SectionContent>
 					<Stack gap={2}>
-						<H2>Articles heading (h2)</H2>
-						<Columns gap={1} as="ul">
+						<H2>Articles heading (H2)</H2>
+						<Columns as="ul">
 							{Array.from(Array(3).keys()).map((idx) => (
 								<Column key={idx} as="li" columnSpan={{ xs: 12, sm: 6, lg: 4 }}>
 									<ArticleCard />
