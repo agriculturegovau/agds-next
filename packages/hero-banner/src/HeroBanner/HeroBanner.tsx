@@ -7,7 +7,7 @@ import {
 import { HeroBannerContent } from './HeroBannerContent';
 import { HeroBannerMobileImage } from './HeroBannerMobileImage';
 import { HeroBannerContainer } from './HeroBannerContainer';
-import { HeroBannerVariant } from './utils';
+import { HeroBannerVariant } from '../utils';
 
 export type HeroBannerProps = PropsWithChildren<{
 	/** The hero image */

@@ -1,11 +1,11 @@
 import { PropsWithChildren } from 'react';
 import { HeroSubcategoryBannerContainer } from './HeroSubcategoryBannerContainer';
 import { HeroSubcategoryBannerContent } from './HeroSubcategoryBannerContent';
-import { HeroSubcategoryBannerVariant } from './utils';
+import { HeroBannerVariant } from '../utils';
 
 export type HeroSubcategoryBannerProps = PropsWithChildren<{
 	/** The palette of the component */
-	variant?: HeroSubcategoryBannerVariant;
+	variant?: HeroBannerVariant;
 }>;
 
 export const HeroSubcategoryBanner = ({

@@ -2,11 +2,11 @@ import { PropsWithChildren, ReactNode } from 'react';
 import { Flex, Stack } from '@ag.ds-next/box';
 import { Content } from '@ag.ds-next/content';
 import { HeroCategoryBannerImage } from './HeroCategoryBannerImage';
-import { HeroCategoryBannerVariant } from './utils';
+import { HeroBannerVariant } from '../utils';
 
 export type HeroCategoryBannerContentProps = PropsWithChildren<{
 	image?: ReactNode;
-	variant: HeroCategoryBannerVariant;
+	variant: HeroBannerVariant;
 }>;
 
 export const HeroCategoryBannerContent = ({

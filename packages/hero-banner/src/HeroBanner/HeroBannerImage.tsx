@@ -1,7 +1,7 @@
 import { PropsWithChildren } from 'react';
 import { Box } from '@ag.ds-next/box';
 import { boxPalette } from '@ag.ds-next/core';
-import { HeroBannerVariant, variantMap } from './utils';
+import { HeroBannerVariant, variantMap } from '../utils';
 
 export type HeroBannerImageProps = PropsWithChildren<{
 	variant: HeroBannerVariant;

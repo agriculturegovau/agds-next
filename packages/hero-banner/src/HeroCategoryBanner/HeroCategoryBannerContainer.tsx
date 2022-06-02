@@ -1,9 +1,9 @@
 import { PropsWithChildren } from 'react';
 import { Box } from '@ag.ds-next/box';
-import { HeroCategoryBannerVariant, variantMap } from './utils';
+import { HeroBannerVariant, variantMap } from '../utils';
 
 export type HeroCategoryBannerContainerProps = PropsWithChildren<{
-	variant: HeroCategoryBannerVariant;
+	variant: HeroBannerVariant;
 }>;
 
 export const HeroCategoryBannerContainer = ({
