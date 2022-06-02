@@ -21,4 +21,4 @@ export const variantMap = {
 	},
 } as const;
 
-export type SectionBannerVariant = keyof typeof variantMap;
+export type HeroCategoryBannerVariant = keyof typeof variantMap;

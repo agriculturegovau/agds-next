@@ -1,19 +1,19 @@
 import { PropsWithChildren, ReactNode } from 'react';
 import { Flex, Stack } from '@ag.ds-next/box';
 import { Content } from '@ag.ds-next/content';
-import { SectionBannerImage } from './SectionBannerImage';
-import { SectionBannerVariant } from './utils';
+import { HeroCategoryBannerImage } from './HeroCategoryBannerImage';
+import { HeroCategoryBannerVariant } from './utils';
 
-export type SectionBannerContentProps = PropsWithChildren<{
+export type HeroCategoryBannerContentProps = PropsWithChildren<{
 	image?: ReactNode;
-	variant: SectionBannerVariant;
+	variant: HeroCategoryBannerVariant;
 }>;
 
-export const SectionBannerContent = ({
+export const HeroCategoryBannerContent = ({
 	children,
 	image,
 	variant,
-}: SectionBannerContentProps) => {
+}: HeroCategoryBannerContentProps) => {
 	return (
 		<Content>
 			<Flex>
@@ -26,7 +26,9 @@ export const SectionBannerContent = ({
 					{children}
 				</Stack>
 				{image ? (
-					<SectionBannerImage variant={variant}>{image}</SectionBannerImage>
+					<HeroCategoryBannerImage variant={variant}>
+						{image}
+					</HeroCategoryBannerImage>
 				) : null}
 			</Flex>
 		</Content>

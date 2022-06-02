@@ -1,3 +1,3 @@
 export * from './HeroBanner';
-export * from './SectionBanner';
+export * from './HeroCategoryBanner';
 export * from './HeroSubcategoryBanner';

@@ -7,6 +7,8 @@ storybookPath: /story/layout-herobanner--light-variant
 
 ## Hero Banner
 
+Use the `HeroBanner` components on home or landing pages.
+
 ```jsx live
 <HeroBanner
 	image={
@@ -29,8 +31,10 @@ storybookPath: /story/layout-herobanner--light-variant
 
 ## Section Banner
 
+Use the `HeroCategoryBanner` components for top level category pages.
+
 ```jsx live
-<SectionBanner
+<HeroCategoryBanner
 	image={
 		<img
 			alt="Harvester in a golden field of wheat emptying grain into a chaser bin moving alongside it."
@@ -38,16 +42,18 @@ storybookPath: /story/layout-herobanner--light-variant
 		/>
 	}
 >
-	<SectionBannerTitle>
+	<HeroCategoryBannerTitle>
 		Website hero banner title - xxl/display (H1)
-	</SectionBannerTitle>
-	<SectionBannerSubTitle>Hero banner sub title (P).</SectionBannerSubTitle>
-</SectionBanner>
+	</HeroCategoryBannerTitle>
+	<HeroCategoryBannerSubTitle>
+		Hero banner sub title (P).
+	</HeroCategoryBannerSubTitle>
+</HeroCategoryBanner>
 ```
 
 ## Subcategory Banner
 
-Use the `HeroSubcategoryBanner` components on pages within a category.
+Use the `HeroSubcategoryBanner` components pages within a category.
 
 ```jsx live
 <HeroSubcategoryBanner>

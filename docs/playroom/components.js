@@ -118,6 +118,9 @@ export {
 export { DatePicker, DateRangePicker } from '@ag.ds-next/date-picker';
 export {
 	HeroBanner,
+	HeroBannerTitleContainer,
+	HeroBannerTitle,
+	HeroBannerSubTitle,
 	HeroSubcategoryBanner,
 	HeroSubcategoryBannerTitle,
 } from '@ag.ds-next/hero-banner';

@@ -545,20 +545,37 @@ items={[
 		name: 'Basic',
 		code: `<HeroBanner
     image={
-      <img
-        alt="Harvester in a golden field of wheat emptying grain into a chaser bin moving alongside it."
-        src="/agds-next/img/placeholder/hero-banner.png"
-      />
+        <img
+            alt="Harvester in a golden field of wheat emptying grain into a chaser bin moving alongside it."
+            src="/agds-next/img/placeholder/hero-banner.png"
+        />
     }
-    subTitle="Hero banner paragraph text"
-    title="Hero banner title"
-    variant="lightAlt"
-  >
+>
+    <HeroBannerTitleContainer>
+        <HeroBannerTitle>Hero banner title (H1)</HeroBannerTitle>
+        <HeroBannerSubTitle>Hero banner paragraph text (P)</HeroBannerSubTitle>
+    </HeroBannerTitleContainer>
     <SearchBox onSubmit={() => {}}>
-      <SearchBoxInput label="Search this website" />
-      <SearchBoxButton iconOnly={{ xs: true, md: false }}>Search</SearchBoxButton>
+        <SearchBoxInput label="Search this website" />
+        <SearchBoxButton iconOnly={{ xs: true, md: false }}>Search</SearchBoxButton>
     </SearchBox>
   </HeroBanner>`,
+	},
+	{
+		group: 'HeroBanner',
+		name: 'Subcategory',
+		code: `<HeroSubcategoryBanner>
+    <Breadcrumbs
+      links={[
+        { href: '#', label: 'Section 1' },
+        { href: '#', label: 'Category page' },
+        { label: 'Subcategory page' },
+      ]}
+    />
+    <HeroSubcategoryBannerTitle>
+      Subcategory banner title - xxl/display (H1)
+    </HeroSubcategoryBannerTitle>
+  </HeroSubcategoryBanner>`,
 	},
 	{
 		group: 'SecondaryNav',

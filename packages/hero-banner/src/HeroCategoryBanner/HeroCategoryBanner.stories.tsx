@@ -1,34 +1,34 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { SectionBanner } from './SectionBanner';
-import { SectionBannerContainer } from './SectionBannerContainer';
-import { SectionBannerImage } from './SectionBannerImage';
-import { SectionBannerMobileImage } from './SectionBannerMobileImage';
-import { SectionBannerContent } from './SectionBannerContent';
+import { HeroCategoryBanner } from './HeroCategoryBanner';
+import { HeroCategoryBannerContainer } from './HeroCategoryBannerContainer';
+import { HeroCategoryBannerImage } from './HeroCategoryBannerImage';
+import { HeroCategoryBannerMobileImage } from './HeroCategoryBannerMobileImage';
+import { HeroCategoryBannerContent } from './HeroCategoryBannerContent';
 import {
-	SectionBannerSubTitle,
-	SectionBannerTitle,
-	SectionBannerTitleContainer,
-} from './SectionBannerTitle';
+	HeroCategoryBannerSubTitle,
+	HeroCategoryBannerTitle,
+	HeroCategoryBannerTitleContainer,
+} from './HeroCategoryBannerTitle';
 
 export default {
-	title: 'layout/HeroBanner/SectionBanner',
-	component: SectionBanner,
+	title: 'layout/HeroBanner/HeroCategoryBanner',
+	component: HeroCategoryBanner,
 	subcomponents: {
-		SectionBannerContainer,
-		SectionBannerMobileImage,
-		SectionBannerImage,
-		SectionBannerContent,
-		SectionBannerSubTitle,
-		SectionBannerTitle,
-		SectionBannerTitleContainer,
+		HeroCategoryBannerContainer,
+		HeroCategoryBannerMobileImage,
+		HeroCategoryBannerImage,
+		HeroCategoryBannerContent,
+		HeroCategoryBannerSubTitle,
+		HeroCategoryBannerTitle,
+		HeroCategoryBannerTitleContainer,
 	},
-} as ComponentMeta<typeof SectionBanner>;
+} as ComponentMeta<typeof HeroCategoryBanner>;
 
-const Template: ComponentStory<typeof SectionBanner> = (args) => (
-	<SectionBanner {...args}>
-		<SectionBannerTitle>{args.title}</SectionBannerTitle>
-		<SectionBannerSubTitle>{args.subTitle}</SectionBannerSubTitle>
-	</SectionBanner>
+const Template: ComponentStory<typeof HeroCategoryBanner> = (args) => (
+	<HeroCategoryBanner {...args}>
+		<HeroCategoryBannerTitle>{args.title}</HeroCategoryBannerTitle>
+		<HeroCategoryBannerSubTitle>{args.subTitle}</HeroCategoryBannerSubTitle>
+	</HeroCategoryBanner>
 );
 
 const commonArgs = {

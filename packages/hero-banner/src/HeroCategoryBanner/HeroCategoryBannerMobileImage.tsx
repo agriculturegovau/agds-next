@@ -1,11 +1,11 @@
 import { ReactNode } from 'react';
 import { Box } from '@ag.ds-next/box';
 
-export type SectionBannerMobileImageProps = { children: ReactNode };
+export type HeroCategoryBannerMobileImageProps = { children: ReactNode };
 
-export const SectionBannerMobileImage = ({
+export const HeroCategoryBannerMobileImage = ({
 	children,
-}: SectionBannerMobileImageProps) => (
+}: HeroCategoryBannerMobileImageProps) => (
 	<Box
 		display={{ xs: 'block', md: 'none' }}
 		css={{

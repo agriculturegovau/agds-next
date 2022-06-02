@@ -1,15 +1,15 @@
 import { PropsWithChildren } from 'react';
 import { Box } from '@ag.ds-next/box';
-import { SectionBannerVariant, variantMap } from './utils';
+import { HeroCategoryBannerVariant, variantMap } from './utils';
 
-export type SectionBannerContainerProps = PropsWithChildren<{
-	variant: SectionBannerVariant;
+export type HeroCategoryBannerContainerProps = PropsWithChildren<{
+	variant: HeroCategoryBannerVariant;
 }>;
 
-export const SectionBannerContainer = ({
+export const HeroCategoryBannerContainer = ({
 	children,
 	variant,
-}: SectionBannerContainerProps) => {
+}: HeroCategoryBannerContainerProps) => {
 	const { palette, background } = variantMap[variant];
 	return (
 		<Box
