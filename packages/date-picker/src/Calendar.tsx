@@ -1,4 +1,4 @@
-import React, { forwardRef } from 'react';
+import { forwardRef } from 'react';
 import DayPicker, { DayPickerProps } from 'react-day-picker';
 import FocusLock from 'react-focus-lock';
 import { CalendarContainer } from './CalendarContainer';

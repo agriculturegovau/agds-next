@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { Box, Flex, Stack } from '@ag.ds-next/box';
+import { Button, ButtonGroup } from '@ag.ds-next/button';
 import { DateRangePicker, DateRange } from './DateRangePicker';
 import { Select } from '@ag.ds-next/select';
 import { Body } from '@ag.ds-next/body';
@@ -15,7 +16,6 @@ const Template: ComponentStory<typeof DateRangePicker> = (args) => {
 		from: undefined,
 		to: undefined,
 	});
-
 	return <DateRangePicker {...args} value={range} onChange={setRange} />;
 };
 
@@ -87,5 +87,35 @@ export const ScrollExample: ComponentStory<typeof DateRangePicker> = (args) => {
 			<Template {...args} />
 			<Box height="1000px"></Box>
 		</Box>
+	);
+};
+
+export const ControlledExample = () => {
+	const [range, setRange] = useState<DateRange>({
+		from: undefined,
+		to: undefined,
+	});
+	return (
+		<Stack gap={4} alignItems="flex-start">
+			<DateRangePicker value={range} onChange={setRange} />
+			<ButtonGroup>
+				<Button
+					onClick={() =>
+						setRange({
+							from: new Date('2020-08-14'),
+							to: new Date('2020-08-18'),
+						})
+					}
+				>
+					Set pre-defined range
+				</Button>
+				<Button
+					variant="secondary"
+					onClick={() => setRange({ from: undefined, to: undefined })}
+				>
+					Clear range
+				</Button>
+			</ButtonGroup>
+		</Stack>
 	);
 };
