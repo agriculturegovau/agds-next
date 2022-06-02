@@ -1,33 +1,32 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { HeroCategoryBanner } from './HeroCategoryBanner';
-import { HeroCategoryBannerContainer } from './HeroCategoryBannerContainer';
-import { HeroCategoryBannerImage } from './HeroCategoryBannerImage';
-import { HeroCategoryBannerMobileImage } from './HeroCategoryBannerMobileImage';
-import { HeroCategoryBannerContent } from './HeroCategoryBannerContent';
+import { ComponentMeta, Story } from '@storybook/react';
+import {
+	HeroCategoryBanner,
+	HeroCategoryBannerProps,
+} from './HeroCategoryBanner';
 import {
 	HeroCategoryBannerSubtitle,
 	HeroCategoryBannerTitle,
-	HeroCategoryBannerTitleContainer,
 } from './HeroCategoryBannerTitle';
 
 export default {
 	title: 'layout/HeroBanner/HeroCategoryBanner',
 	component: HeroCategoryBanner,
 	subcomponents: {
-		HeroCategoryBannerContainer,
-		HeroCategoryBannerMobileImage,
-		HeroCategoryBannerImage,
-		HeroCategoryBannerContent,
-		HeroCategoryBannerSubtitle,
 		HeroCategoryBannerTitle,
-		HeroCategoryBannerTitleContainer,
+		HeroCategoryBannerSubtitle,
+	},
+	argTypes: {
+		title: { control: 'text' },
+		subtitle: { control: 'text' },
 	},
 } as ComponentMeta<typeof HeroCategoryBanner>;
 
-const Template: ComponentStory<typeof HeroCategoryBanner> = (args) => (
+const Template: Story<
+	HeroCategoryBannerProps & { title: string; subtitle: string }
+> = (args) => (
 	<HeroCategoryBanner {...args}>
 		<HeroCategoryBannerTitle>{args.title}</HeroCategoryBannerTitle>
-		<HeroCategoryBannerSubtitle>{args.subTitle}</HeroCategoryBannerSubtitle>
+		<HeroCategoryBannerSubtitle>{args.subtitle}</HeroCategoryBannerSubtitle>
 	</HeroCategoryBanner>
 );
 

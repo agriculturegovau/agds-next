@@ -1,21 +1,26 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { ComponentMeta, Story } from '@storybook/react';
 import { Breadcrumbs } from '@ag.ds-next/breadcrumbs';
-import { HeroSubcategoryBanner } from './HeroSubcategoryBanner';
-import { HeroSubcategoryBannerContainer } from './HeroSubcategoryBannerContainer';
-import { HeroSubcategoryBannerContent } from './HeroSubcategoryBannerContent';
+import {
+	HeroSubcategoryBanner,
+	HeroSubcategoryBannerProps,
+} from './HeroSubcategoryBanner';
 import { HeroSubcategoryBannerTitle } from './HeroSubcategoryBannerTitle';
 
 export default {
 	title: 'layout/HeroBanner/HeroSubcategoryBanner',
 	component: HeroSubcategoryBanner,
 	subcomponents: {
-		HeroSubcategoryBannerContainer,
-		HeroSubcategoryBannerContent,
 		HeroSubcategoryBannerTitle,
+	},
+	argTypes: {
+		title: { control: 'text' },
+		subtitle: { control: 'text' },
 	},
 } as ComponentMeta<typeof HeroSubcategoryBanner>;
 
-const Template: ComponentStory<typeof HeroSubcategoryBanner> = (args) => (
+const Template: Story<
+	HeroSubcategoryBannerProps & { title: string; subtitle: string }
+> = (args) => (
 	<HeroSubcategoryBanner {...args}>
 		<Breadcrumbs
 			links={[
@@ -24,9 +29,6 @@ const Template: ComponentStory<typeof HeroSubcategoryBanner> = (args) => (
 				{ label: 'Subcategory page' },
 			]}
 		/>
-		{/* 
-		// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-		@ts-ignore */}
 		<HeroSubcategoryBannerTitle>{args.title}</HeroSubcategoryBannerTitle>
 	</HeroSubcategoryBanner>
 );

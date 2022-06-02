@@ -1,6 +1,5 @@
 import { PropsWithChildren, ReactNode } from 'react';
 import { Flex, Stack } from '@ag.ds-next/box';
-import { tokens } from '@ag.ds-next/core';
 import { Content } from '@ag.ds-next/content';
 import { HeroBannerImage } from './HeroBannerImage';
 import { HeroBannerVariant } from '../utils';
