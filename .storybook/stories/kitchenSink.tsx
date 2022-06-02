@@ -174,7 +174,7 @@ const KitchenSink = ({
 						<Accordion>
 							<AccordionItem title="Accordion">
 								<AccordionItemContent>
-									<Text>
+									<Text as="p">
 										Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 										Pellentesque at arcu eleifend, varius enim non, eleifend
 										nibh. Quisque ac lacinia elit. Orci varius natoque penatibus

@@ -264,7 +264,7 @@ items={[
 		group: 'Accordion',
 		name: 'Basic',
 		code: `<Accordion><AccordionItem title="Accordion">
-    <AccordionItemContent><Text>This is some text inside an Accordion</Text></AccordionItemContent>
+    <AccordionItemContent><Text as="p">This is some text inside an Accordion</Text></AccordionItemContent>
   </AccordionItem></Accordion>`,
 	},
 	{
