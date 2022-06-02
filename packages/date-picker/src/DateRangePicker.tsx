@@ -1,10 +1,10 @@
-import React, {
+import {
 	ChangeEvent,
 	KeyboardEvent,
-	Fragment,
 	useCallback,
 	useRef,
 	useState,
+	useEffect,
 } from 'react';
 import { usePopper } from 'react-popper';
 import { Flex } from '@ag.ds-next/box';
@@ -122,6 +122,12 @@ export const DateRangePicker = ({
 		},
 		[onChange, value]
 	);
+
+	// Update the text inputs when the value updates
+	useEffect(() => {
+		setFromInputValue(value.from ? formatDate(value.from) : '');
+		setToInputValue(value.to ? formatDate(value.to) : '');
+	}, [value]);
 
 	// Close the calendar when the user clicks outside
 	const clickOutsideRef = useRef(popperEl);

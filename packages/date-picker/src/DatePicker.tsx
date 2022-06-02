@@ -1,7 +1,8 @@
-import React, {
+import {
 	ChangeEvent,
 	KeyboardEvent,
 	useCallback,
+	useEffect,
 	useRef,
 	useState,
 } from 'react';
@@ -67,6 +68,11 @@ export const DatePicker = ({
 		},
 		[onChange]
 	);
+
+	// Update the text inputs when the value updates
+	useEffect(() => {
+		setInputValue(value ? formatDate(value) : '');
+	}, [value]);
 
 	// Close the calendar when the user clicks outside
 	const clickOutsideRef = useRef(popperEl);
