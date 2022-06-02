@@ -19,9 +19,9 @@ const Template: ComponentStory<typeof CategoryBanner> = (args) => (
 	<CategoryBanner {...args}>
 		<Breadcrumbs
 			links={[
-				{ href: '#', label: 'Home' },
-				{ href: '#', label: 'Establishments' },
-				{ label: 'Applications' },
+				{ href: '#', label: 'Section 1' },
+				{ href: '#', label: 'Category page' },
+				{ label: 'Subcategory page' },
 			]}
 		/>
 		{/* 
@@ -33,24 +33,24 @@ const Template: ComponentStory<typeof CategoryBanner> = (args) => (
 
 export const LightVariant = Template.bind({});
 LightVariant.args = {
-	title: 'Hero banner title',
+	title: 'Subcategory banner title - xxl/display (H1)',
 	variant: 'light',
 };
 
 export const LightAlt = Template.bind({});
 LightAlt.args = {
-	title: 'Hero banner title',
+	title: 'Subcategory banner title - xxl/display (H1)',
 	variant: 'lightAlt',
 };
 
 export const Dark = Template.bind({});
 Dark.args = {
-	title: 'Hero banner title',
+	title: 'Subcategory banner title - xxl/display (H1)',
 	variant: 'dark',
 };
 
 export const DarkAlt = Template.bind({});
 DarkAlt.args = {
-	title: 'Hero banner title',
+	title: 'Subcategory banner title - xxl/display (H1)',
 	variant: 'darkAlt',
 };

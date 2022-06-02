@@ -9,7 +9,7 @@ export const CategoryBannerContent = ({
 }: CategoryBannerContentProps) => {
 	return (
 		<Content>
-			<Stack gap={1} paddingY={2}>
+			<Stack gap={1} paddingY={3}>
 				{children}
 			</Stack>
 		</Content>
