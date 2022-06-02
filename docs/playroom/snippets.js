@@ -545,20 +545,56 @@ items={[
 		name: 'Basic',
 		code: `<HeroBanner
     image={
+        <img
+            alt="Harvester in a golden field of wheat emptying grain into a chaser bin moving alongside it."
+            src="/agds-next/img/placeholder/hero-banner.png"
+        />
+    }
+>
+    <HeroBannerTitleContainer>
+        <HeroBannerTitle>Website hero banner title - xxxl/display (H1)</HeroBannerTitle>
+        <HeroBannerSubtitle>Hero banner paragraph text (P)</HeroBannerSubtitle>
+    </HeroBannerTitleContainer>
+    <SearchBox onSubmit={() => {}}>
+        <SearchBoxInput label="Search this website" />
+        <SearchBoxButton iconOnly={{ xs: true, md: false }}>Search</SearchBoxButton>
+    </SearchBox>
+  </HeroBanner>`,
+	},
+	{
+		group: 'HeroCategoryBanner',
+		name: 'Basic',
+		code: `<HeroCategoryBanner
+    image={
       <img
         alt="Harvester in a golden field of wheat emptying grain into a chaser bin moving alongside it."
         src="/agds-next/img/placeholder/hero-banner.png"
       />
     }
-    subTitle="Hero banner paragraph text"
-    title="Hero banner title"
-    variant="lightAlt"
   >
-    <SearchBox onSubmit={() => {}}>
-      <SearchBoxInput label="Search this website" />
-      <SearchBoxButton iconOnly={{ xs: true, md: false }}>Search</SearchBoxButton>
-    </SearchBox>
-  </HeroBanner>`,
+    <HeroCategoryBannerTitle>
+      Website hero banner title - xxl/display (H1)
+    </HeroCategoryBannerTitle>
+    <HeroCategoryBannerSubtitle>
+      Hero banner sub title (P).
+    </HeroCategoryBannerSubtitle>
+  </HeroCategoryBanner>`,
+	},
+	{
+		group: 'HeroSubcategoryBanner',
+		name: 'Basic',
+		code: `<HeroSubcategoryBanner>
+    <Breadcrumbs
+      links={[
+        { href: '#', label: 'Section 1' },
+        { href: '#', label: 'Category page' },
+        { label: 'Subcategory page' },
+      ]}
+    />
+    <HeroSubcategoryBannerTitle>
+      Subcategory banner title - xxl/display (H1)
+    </HeroSubcategoryBannerTitle>
+  </HeroSubcategoryBanner>`,
 	},
 	{
 		group: 'SecondaryNav',

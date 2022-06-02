@@ -102,7 +102,17 @@ import {
 import { TaskList } from '@ag.ds-next/task-list';
 import { PageAlert } from '@ag.ds-next/page-alert';
 import { DatePicker, DateRangePicker } from '@ag.ds-next/date-picker';
-import { HeroBanner } from '@ag.ds-next/hero-banner';
+import {
+	HeroBanner,
+	HeroBannerTitleContainer,
+	HeroBannerTitle,
+	HeroBannerSubtitle,
+	HeroCategoryBanner,
+	HeroCategoryBannerTitle,
+	HeroCategoryBannerSubtitle,
+	HeroSubcategoryBanner,
+	HeroSubcategoryBannerTitle,
+} from '@ag.ds-next/hero-banner';
 import { LoadingBlanket, LoadingDots } from '@ag.ds-next/loading';
 
 export const designSystemComponents = {
@@ -216,6 +226,14 @@ export const designSystemComponents = {
 	DateRangePicker,
 	useTernaryState,
 	HeroBanner,
+	HeroBannerTitleContainer,
+	HeroBannerTitle,
+	HeroBannerSubtitle,
+	HeroSubcategoryBanner,
+	HeroSubcategoryBannerTitle,
+	HeroCategoryBanner,
+	HeroCategoryBannerTitle,
+	HeroCategoryBannerSubtitle,
 	tokens,
 	LoadingBlanket,
 	LoadingDots,

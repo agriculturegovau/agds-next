@@ -6,7 +6,12 @@ import { Columns, Column } from '@ag.ds-next/columns';
 import { H2, H3 } from '@ag.ds-next/heading';
 import { Text } from '@ag.ds-next/text';
 import { CallToActionLink } from '@ag.ds-next/call-to-action';
-import { HeroBanner } from '@ag.ds-next/hero-banner';
+import {
+	HeroBanner,
+	HeroBannerSubtitle,
+	HeroBannerTitle,
+	HeroBannerTitleContainer,
+} from '@ag.ds-next/hero-banner';
 import { AppLayout } from '../components/AppLayout';
 import { DocumentTitle } from '../components/DocumentTitle';
 import { ArticleCard } from '../components/ArticleCard';
@@ -17,16 +22,22 @@ const Home: NextPage = () => {
 			<DocumentTitle title="Home" />
 			<AppLayout template={{ name: 'Home', slug: 'home' }}>
 				<HeroBanner
+					variant="lightAlt"
 					image={
 						<img
 							alt="Harvester in a golden field of wheat emptying grain into a chaser bin moving alongside it."
 							src="/agds-next/example-site/placeholder/hero-banner.png"
 						/>
 					}
-					subTitle="Short hero banner sentence"
-					title="Website hero banner title (H1)"
-					variant="lightAlt"
 				>
+					<HeroBannerTitleContainer>
+						<HeroBannerTitle>
+							Website hero banner title - xxxl/display (H1)
+						</HeroBannerTitle>
+						<HeroBannerSubtitle>
+							Short hero banner sentence - md/default (P)
+						</HeroBannerSubtitle>
+					</HeroBannerTitleContainer>
 					<ButtonGroup>
 						<Button>Create account</Button>
 						<Button variant="secondary">Sign in</Button>
