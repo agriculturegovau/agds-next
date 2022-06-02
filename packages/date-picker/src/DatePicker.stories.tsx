@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { Box } from '@ag.ds-next/box';
+import { Box, Stack } from '@ag.ds-next/box';
 import { DatePicker } from './DatePicker';
+import { Button, ButtonGroup } from '@ag.ds-next/button';
 
 export default {
 	title: 'forms/DatePicker/DatePicker',
@@ -74,4 +75,21 @@ export const ScrollExample: ComponentStory<typeof DatePicker> = (args) => (
 );
 ScrollExample.args = {
 	label: 'Example',
+};
+
+export const ControlledExample = () => {
+	const [value, setValue] = useState<Date>();
+	return (
+		<Stack gap={4} alignItems="flex-start">
+			<DatePicker label="Controlled" value={value} onChange={setValue} />
+			<ButtonGroup>
+				<Button onClick={() => setValue(new Date('2020-12-12'))}>
+					Set pre-defined date
+				</Button>
+				<Button variant="secondary" onClick={() => setValue(undefined)}>
+					Clear
+				</Button>
+			</ButtonGroup>
+		</Stack>
+	);
 };

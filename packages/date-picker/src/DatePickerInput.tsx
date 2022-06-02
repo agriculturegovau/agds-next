@@ -1,9 +1,4 @@
-import React, {
-	forwardRef,
-	MouseEventHandler,
-	RefObject,
-	useMemo,
-} from 'react';
+import { forwardRef, MouseEventHandler, RefObject, useMemo } from 'react';
 import { Flex } from '@ag.ds-next/box';
 import { CalendarIcon } from '@ag.ds-next/icon';
 import { TextInputProps, textInputStyles } from '@ag.ds-next/text-input';

@@ -1,6 +1,6 @@
-import React, { Fragment } from 'react';
-import { mapResponsiveProp, mapSpacing, mq } from '@ag.ds-next/core';
+import { Fragment } from 'react';
 import type { NavbarElementProps } from 'react-day-picker';
+import { mapResponsiveProp, mapSpacing, mq } from '@ag.ds-next/core';
 import { ChevronLeftIcon, ChevronRightIcon } from '@ag.ds-next/icon';
 import { Button } from '@ag.ds-next/button';
 

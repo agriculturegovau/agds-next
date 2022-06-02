@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react';
+import { useCallback, useState } from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { DateUtils } from 'react-day-picker';
 import { Box } from '@ag.ds-next/box';
