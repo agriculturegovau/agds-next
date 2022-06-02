@@ -36,7 +36,7 @@ const AccordionBasicExample: Story<AccordionExampleProps> = ({
 		<Accordion>
 			<AccordionItem title="Accordion test">
 				<AccordionItemContent>
-					<Text>This is some text inside an Accordion</Text>
+					<Text as="p">This is some text inside an Accordion</Text>
 				</AccordionItemContent>
 			</AccordionItem>
 		</Accordion>
@@ -62,10 +62,9 @@ const AccordionGroupExample: Story<AccordionExampleProps> = ({
 		<Accordion>
 			<AccordionItem title="Accordion 1">
 				<AccordionItemContent>
-					<Text>This is some text inside an Accordion</Text>
+					<Text as="p">This is some text inside an Accordion</Text>
 				</AccordionItemContent>
 			</AccordionItem>
-
 			<AccordionItem title="Accordion 2">
 				<AccordionItemContent>
 					<Body>
@@ -100,10 +99,9 @@ const AccordionGroupExample: Story<AccordionExampleProps> = ({
 					</Body>
 				</AccordionItemContent>
 			</AccordionItem>
-
 			<AccordionItem title="Accordion 3">
 				<AccordionItemContent>
-					<Text>This is some text inside an Accordion</Text>
+					<Text as="p">This is some text inside an Accordion</Text>
 				</AccordionItemContent>
 			</AccordionItem>
 		</Accordion>
@@ -178,7 +176,7 @@ const AccordionControlledGroupExample = ({
 				onToggle={() => toggle(1)}
 			>
 				<AccordionItemContent>
-					<Text>This is some text inside an Accordion</Text>
+					<Text as="p">This is some text inside an Accordion</Text>
 				</AccordionItemContent>
 			</AccordionItem>
 			<AccordionItem
@@ -219,14 +217,13 @@ const AccordionControlledGroupExample = ({
 					</Body>
 				</AccordionItemContent>
 			</AccordionItem>
-
 			<AccordionItem
 				title="Accordion 3"
 				isOpen={openAccordions.includes(3)}
 				onToggle={() => toggle(3)}
 			>
 				<AccordionItemContent>
-					<Text>This is some text inside an Accordion</Text>
+					<Text as="p">This is some text inside an Accordion</Text>
 				</AccordionItemContent>
 			</AccordionItem>
 		</Accordion>
@@ -274,7 +271,7 @@ export const InitiallyOpened = () => (
 	<Accordion>
 		<AccordionItem title="Initially opened" isInitiallyOpen>
 			<AccordionItemContent>
-				<Text>
+				<Text as="p">
 					This is some text inside an Accordion, which is opened at time of page
 					render.
 				</Text>
@@ -292,7 +289,7 @@ export const EdgeToEdgeImage = () => (
 				width="100%"
 			/>
 			<AccordionItemContent>
-				<Text>
+				<Text as="p">
 					In this example, we remove the default padding from the AccordionItem,
 					in order to achieve the edge-to-edge image above. This Text is wrapped
 					in the AccordionItemContent component.
