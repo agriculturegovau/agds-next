@@ -1,4 +1,5 @@
 import { ReactNode } from 'react';
+import { tokens } from '@ag.ds-next/core';
 import { Heading } from '@ag.ds-next/heading';
 import { Text } from '@ag.ds-next/text';
 
@@ -17,7 +18,7 @@ export type HeroCategoryBannerSubTitleProps = { children: ReactNode };
 export const HeroCategoryBannerSubtitle = ({
 	children,
 }: HeroCategoryBannerSubTitleProps) => (
-	<Text as="p" fontSize="md">
+	<Text as="p" fontSize="md" maxWidth={tokens.maxWidth.bodyText}>
 		{children}
 	</Text>
 );

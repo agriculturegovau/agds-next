@@ -19,8 +19,12 @@ Use the `HeroBanner` components on home or landing pages.
 	}
 >
 	<HeroBannerTitleContainer>
-		<HeroBannerTitle>Hero banner title (H1)</HeroBannerTitle>
-		<HeroBannerSubtitle>Hero banner paragraph text (P)</HeroBannerSubtitle>
+		<HeroBannerTitle>
+			Website hero banner title - xxxl/display (H1)
+		</HeroBannerTitle>
+		<HeroBannerSubtitle>
+			Short hero banner sentence - md/default (P)
+		</HeroBannerSubtitle>
 	</HeroBannerTitleContainer>
 	<SearchBox onSubmit={() => {}}>
 		<SearchBoxInput label="Search this website" />

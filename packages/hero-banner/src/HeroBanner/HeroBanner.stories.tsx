@@ -119,7 +119,9 @@ export const Modular = () => (
 		>
 			<HeroBannerTitleContainer>
 				<HeroBannerTitle>Hero banner title</HeroBannerTitle>
-				<HeroBannerSubtitle>Hero banner paragraph text</HeroBannerSubtitle>
+				<HeroBannerSubtitle>
+					Short hero banner sentence - md/default (P)
+				</HeroBannerSubtitle>
 			</HeroBannerTitleContainer>
 			<SearchBox onSubmit={console.log}>
 				<SearchBoxInput label="Search this website" />

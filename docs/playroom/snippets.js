@@ -552,7 +552,7 @@ items={[
     }
 >
     <HeroBannerTitleContainer>
-        <HeroBannerTitle>Hero banner title (H1)</HeroBannerTitle>
+        <HeroBannerTitle>Website hero banner title - xxxl/display (H1)</HeroBannerTitle>
         <HeroBannerSubtitle>Hero banner paragraph text (P)</HeroBannerSubtitle>
     </HeroBannerTitleContainer>
     <SearchBox onSubmit={() => {}}>
