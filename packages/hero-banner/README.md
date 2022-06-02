@@ -45,10 +45,12 @@ storybookPath: /story/layout-herobanner--light-variant
 </SectionBanner>
 ```
 
-## Category Banner
+## Subcategory Banner
+
+Use the `HeroSubcategoryBanner` components on pages within a category.
 
 ```jsx live
-<CategoryBanner>
+<HeroSubcategoryBanner>
 	<Breadcrumbs
 		links={[
 			{ href: '#', label: 'Section 1' },
@@ -56,10 +58,10 @@ storybookPath: /story/layout-herobanner--light-variant
 			{ label: 'Subcategory page' },
 		]}
 	/>
-	<CategoryBannerTitle>
+	<HeroSubcategoryBannerTitle>
 		Subcategory banner title - xxl/display (H1)
-	</CategoryBannerTitle>
-</CategoryBanner>
+	</HeroSubcategoryBannerTitle>
+</HeroSubcategoryBanner>
 ```
 
 ### Image selection

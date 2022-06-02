@@ -1,22 +1,22 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { Breadcrumbs } from '@ag.ds-next/breadcrumbs';
-import { CategoryBanner } from './CategoryBanner';
-import { CategoryBannerContainer } from './CategoryBannerContainer';
-import { CategoryBannerContent } from './CategoryBannerContent';
-import { CategoryBannerTitle } from './CategoryBannerTitle';
+import { HeroSubcategoryBanner } from './HeroSubcategoryBanner';
+import { HeroSubcategoryBannerContainer } from './HeroSubcategoryBannerContainer';
+import { HeroSubcategoryBannerContent } from './HeroSubcategoryBannerContent';
+import { HeroSubcategoryBannerTitle } from './HeroSubcategoryBannerTitle';
 
 export default {
-	title: 'layout/HeroBanner/CategoryBanner',
-	component: CategoryBanner,
+	title: 'layout/HeroBanner/HeroSubcategoryBanner',
+	component: HeroSubcategoryBanner,
 	subcomponents: {
-		CategoryBannerContainer,
-		CategoryBannerContent,
-		CategoryBannerTitle,
+		HeroSubcategoryBannerContainer,
+		HeroSubcategoryBannerContent,
+		HeroSubcategoryBannerTitle,
 	},
-} as ComponentMeta<typeof CategoryBanner>;
+} as ComponentMeta<typeof HeroSubcategoryBanner>;
 
-const Template: ComponentStory<typeof CategoryBanner> = (args) => (
-	<CategoryBanner {...args}>
+const Template: ComponentStory<typeof HeroSubcategoryBanner> = (args) => (
+	<HeroSubcategoryBanner {...args}>
 		<Breadcrumbs
 			links={[
 				{ href: '#', label: 'Section 1' },
@@ -27,8 +27,8 @@ const Template: ComponentStory<typeof CategoryBanner> = (args) => (
 		{/* 
 		// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 		@ts-ignore */}
-		<CategoryBannerTitle>{args.title}</CategoryBannerTitle>
-	</CategoryBanner>
+		<HeroSubcategoryBannerTitle>{args.title}</HeroSubcategoryBannerTitle>
+	</HeroSubcategoryBanner>
 );
 
 export const LightVariant = Template.bind({});

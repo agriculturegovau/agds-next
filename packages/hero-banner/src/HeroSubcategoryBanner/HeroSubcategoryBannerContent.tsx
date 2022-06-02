@@ -2,11 +2,11 @@ import { ReactNode } from 'react';
 import { Stack } from '@ag.ds-next/box';
 import { Content } from '@ag.ds-next/content';
 
-export type CategoryBannerContentProps = { children: ReactNode };
+export type HeroSubcategoryBannerContentProps = { children: ReactNode };
 
-export const CategoryBannerContent = ({
+export const HeroSubcategoryBannerContent = ({
 	children,
-}: CategoryBannerContentProps) => {
+}: HeroSubcategoryBannerContentProps) => {
 	return (
 		<Content>
 			<Stack gap={1} paddingY={3}>

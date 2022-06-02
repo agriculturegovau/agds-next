@@ -110,8 +110,8 @@ import {
 	SectionBanner,
 	SectionBannerTitle,
 	SectionBannerSubTitle,
-	CategoryBanner,
-	CategoryBannerTitle,
+	HeroSubcategoryBanner,
+	HeroSubcategoryBannerTitle,
 } from '@ag.ds-next/hero-banner';
 import { LoadingBlanket, LoadingDots } from '@ag.ds-next/loading';
 
@@ -229,8 +229,8 @@ export const designSystemComponents = {
 	HeroBannerTitleContainer,
 	HeroBannerTitle,
 	HeroBannerSubTitle,
-	CategoryBanner,
-	CategoryBannerTitle,
+	HeroSubcategoryBanner,
+	HeroSubcategoryBannerTitle,
 	SectionBanner,
 	SectionBannerTitle,
 	SectionBannerSubTitle,
