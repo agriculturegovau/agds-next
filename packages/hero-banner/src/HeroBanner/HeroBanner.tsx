@@ -1,6 +1,6 @@
 import { PropsWithChildren, ReactNode } from 'react';
 import {
-	HeroBannerSubTitle,
+	HeroBannerSubtitle,
 	HeroBannerTitle,
 	HeroBannerTitleContainer,
 } from './HeroBannerTitle';
@@ -33,7 +33,7 @@ export const HeroBanner = ({
 			{title || subTitle ? (
 				<HeroBannerTitleContainer>
 					<HeroBannerTitle>{title}</HeroBannerTitle>
-					<HeroBannerSubTitle>{subTitle}</HeroBannerSubTitle>
+					<HeroBannerSubtitle>{subTitle}</HeroBannerSubtitle>
 				</HeroBannerTitleContainer>
 			) : null}
 			{children}

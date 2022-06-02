@@ -20,7 +20,7 @@ Use the `HeroBanner` components on home or landing pages.
 >
 	<HeroBannerTitleContainer>
 		<HeroBannerTitle>Hero banner title (H1)</HeroBannerTitle>
-		<HeroBannerSubTitle>Hero banner paragraph text (P)</HeroBannerSubTitle>
+		<HeroBannerSubtitle>Hero banner paragraph text (P)</HeroBannerSubtitle>
 	</HeroBannerTitleContainer>
 	<SearchBox onSubmit={() => {}}>
 		<SearchBoxInput label="Search this website" />
@@ -45,9 +45,9 @@ Use the `HeroCategoryBanner` components for top level category pages.
 	<HeroCategoryBannerTitle>
 		Website hero banner title - xxl/display (H1)
 	</HeroCategoryBannerTitle>
-	<HeroCategoryBannerSubTitle>
+	<HeroCategoryBannerSubtitle>
 		Hero banner sub title (P).
-	</HeroCategoryBannerSubTitle>
+	</HeroCategoryBannerSubtitle>
 </HeroCategoryBanner>
 ```
 

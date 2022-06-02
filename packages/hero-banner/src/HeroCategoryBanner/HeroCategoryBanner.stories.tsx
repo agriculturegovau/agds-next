@@ -5,7 +5,7 @@ import { HeroCategoryBannerImage } from './HeroCategoryBannerImage';
 import { HeroCategoryBannerMobileImage } from './HeroCategoryBannerMobileImage';
 import { HeroCategoryBannerContent } from './HeroCategoryBannerContent';
 import {
-	HeroCategoryBannerSubTitle,
+	HeroCategoryBannerSubtitle,
 	HeroCategoryBannerTitle,
 	HeroCategoryBannerTitleContainer,
 } from './HeroCategoryBannerTitle';
@@ -18,7 +18,7 @@ export default {
 		HeroCategoryBannerMobileImage,
 		HeroCategoryBannerImage,
 		HeroCategoryBannerContent,
-		HeroCategoryBannerSubTitle,
+		HeroCategoryBannerSubtitle,
 		HeroCategoryBannerTitle,
 		HeroCategoryBannerTitleContainer,
 	},
@@ -27,7 +27,7 @@ export default {
 const Template: ComponentStory<typeof HeroCategoryBanner> = (args) => (
 	<HeroCategoryBanner {...args}>
 		<HeroCategoryBannerTitle>{args.title}</HeroCategoryBannerTitle>
-		<HeroCategoryBannerSubTitle>{args.subTitle}</HeroCategoryBannerSubTitle>
+		<HeroCategoryBannerSubtitle>{args.subTitle}</HeroCategoryBannerSubtitle>
 	</HeroCategoryBanner>
 );
 

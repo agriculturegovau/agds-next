@@ -120,7 +120,10 @@ export {
 	HeroBanner,
 	HeroBannerTitleContainer,
 	HeroBannerTitle,
-	HeroBannerSubTitle,
+	HeroBannerSubtitle,
+	HeroCategoryBanner,
+	HeroCategoryBannerTitle,
+	HeroCategoryBannerSubtitle,
 	HeroSubcategoryBanner,
 	HeroSubcategoryBannerTitle,
 } from '@ag.ds-next/hero-banner';

@@ -1,9 +1,4 @@
 import { PropsWithChildren, ReactNode } from 'react';
-import {
-	HeroCategoryBannerSubTitle,
-	HeroCategoryBannerTitle,
-	HeroCategoryBannerTitleContainer,
-} from './HeroCategoryBannerTitle';
 import { HeroCategoryBannerContent } from './HeroCategoryBannerContent';
 import { HeroCategoryBannerMobileImage } from './HeroCategoryBannerMobileImage';
 import { HeroCategoryBannerContainer } from './HeroCategoryBannerContainer';

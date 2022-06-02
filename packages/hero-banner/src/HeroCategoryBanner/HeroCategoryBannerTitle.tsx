@@ -14,7 +14,7 @@ export const HeroCategoryBannerTitle = ({
 
 export type HeroCategoryBannerSubTitleProps = { children: ReactNode };
 
-export const HeroCategoryBannerSubTitle = ({
+export const HeroCategoryBannerSubtitle = ({
 	children,
 }: HeroCategoryBannerSubTitleProps) => (
 	<Text as="p" fontSize="md">

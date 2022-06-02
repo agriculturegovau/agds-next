@@ -553,7 +553,7 @@ items={[
 >
     <HeroBannerTitleContainer>
         <HeroBannerTitle>Hero banner title (H1)</HeroBannerTitle>
-        <HeroBannerSubTitle>Hero banner paragraph text (P)</HeroBannerSubTitle>
+        <HeroBannerSubtitle>Hero banner paragraph text (P)</HeroBannerSubtitle>
     </HeroBannerTitleContainer>
     <SearchBox onSubmit={() => {}}>
         <SearchBoxInput label="Search this website" />
@@ -562,8 +562,27 @@ items={[
   </HeroBanner>`,
 	},
 	{
-		group: 'HeroBanner',
-		name: 'Subcategory',
+		group: 'HeroCategoryBanner',
+		name: 'Basic',
+		code: `<HeroCategoryBanner
+    image={
+      <img
+        alt="Harvester in a golden field of wheat emptying grain into a chaser bin moving alongside it."
+        src="/agds-next/img/placeholder/hero-banner.png"
+      />
+    }
+  >
+    <HeroCategoryBannerTitle>
+      Website hero banner title - xxl/display (H1)
+    </HeroCategoryBannerTitle>
+    <HeroCategoryBannerSubtitle>
+      Hero banner sub title (P).
+    </HeroCategoryBannerSubtitle>
+  </HeroCategoryBanner>`,
+	},
+	{
+		group: 'HeroSubcategoryBanner',
+		name: 'Basic',
 		code: `<HeroSubcategoryBanner>
     <Breadcrumbs
       links={[

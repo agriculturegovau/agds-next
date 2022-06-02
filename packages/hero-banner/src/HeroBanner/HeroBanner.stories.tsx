@@ -12,7 +12,7 @@ import { HeroBannerImage } from './HeroBannerImage';
 import { HeroBannerMobileImage } from './HeroBannerMobileImage';
 import { HeroBannerContent } from './HeroBannerContent';
 import {
-	HeroBannerSubTitle,
+	HeroBannerSubtitle,
 	HeroBannerTitle,
 	HeroBannerTitleContainer,
 } from './HeroBannerTitle';
@@ -25,7 +25,7 @@ export default {
 		HeroBannerMobileImage,
 		HeroBannerImage,
 		HeroBannerContent,
-		HeroBannerSubTitle,
+		HeroBannerSubtitle,
 		HeroBannerTitle,
 		HeroBannerTitleContainer,
 	},
@@ -119,7 +119,7 @@ export const Modular = () => (
 		>
 			<HeroBannerTitleContainer>
 				<HeroBannerTitle>Hero banner title</HeroBannerTitle>
-				<HeroBannerSubTitle>Hero banner paragraph text</HeroBannerSubTitle>
+				<HeroBannerSubtitle>Hero banner paragraph text</HeroBannerSubtitle>
 			</HeroBannerTitleContainer>
 			<SearchBox onSubmit={console.log}>
 				<SearchBoxInput label="Search this website" />
