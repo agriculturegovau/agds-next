@@ -20,7 +20,7 @@ export const HeroCategoryBannerContent = ({
 				<Stack
 					gap={1}
 					width={['100%', '100%', image ? '60%' : '100%']}
-					paddingY={{ xs: 2, md: 3 }}
+					paddingY={{ xs: 2, md: 4 }}
 					css={{ zIndex: 1 }}
 				>
 					{children}
