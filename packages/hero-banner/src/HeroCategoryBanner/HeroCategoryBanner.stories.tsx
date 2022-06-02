@@ -39,7 +39,7 @@ const commonArgs = {
 	),
 	title:
 		'Hero banner title Hero banner title Hero banner title Hero banner title Hero banner title Hero banner title',
-	subTitle: 'Hero banner paragraph text',
+	subtitle: 'Hero banner paragraph text',
 };
 
 export const LightVariant = Template.bind({});
