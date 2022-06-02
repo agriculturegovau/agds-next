@@ -22,7 +22,6 @@ export const HeroBannerContent = ({
 					gap={[1.5, 2]}
 					width={['100%', '100%', image ? '60%' : '100%']}
 					paddingY={{ xs: 2, md: 4 }}
-					maxWidth={image ? undefined : tokens.maxWidth.bodyText}
 					css={{ zIndex: 1 }}
 				>
 					{children}

@@ -7,18 +7,29 @@ import { AppLayout } from '../components/AppLayout';
 import { PictogramCard } from '../components/PictogramCard';
 import { DocumentTitle } from '../components/DocumentTitle';
 import { TextLinkExternal } from '@ag.ds-next/text';
-import { HeroBanner } from '@ag.ds-next/hero-banner';
+import {
+	HeroBanner,
+	HeroBannerTitleContainer,
+	HeroBannerTitle,
+	HeroBannerSubtitle,
+} from '@ag.ds-next/hero-banner';
 
 export default function Homepage() {
 	return (
 		<>
 			<DocumentTitle />
 			<AppLayout>
-				<HeroBanner
-					variant="lightAlt"
-					title="Welcome to the Agriculture Design System (AgDS)"
-					subTitle="AgDS provides a framework and a set of tools to help designers and developers build the steel threads of the Export Service quickly, efficiently and consistently."
-				>
+				<HeroBanner variant="lightAlt">
+					<HeroBannerTitleContainer>
+						<HeroBannerTitle>
+							Welcome to the Agriculture Design System (AgDS)
+						</HeroBannerTitle>
+						<HeroBannerSubtitle>
+							AgDS provides a framework and a set of tools to help designers and
+							developers build the steel threads of the Export Service quickly,
+							efficiently and consistently.
+						</HeroBannerSubtitle>
+					</HeroBannerTitleContainer>
 					<CallToActionLink href="/guides/getting-started">
 						Get started
 					</CallToActionLink>
