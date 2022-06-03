@@ -31,15 +31,14 @@ const Template: Story<
 );
 
 const commonArgs = {
+	title: 'Website hero banner title - xxl/display (H1)',
+	subtitle: 'Short hero banner sentence - md/default (P)',
 	image: (
 		<img
 			src="https://steelthreads.github.io/agds-next/img/placeholder/hero-banner.png"
 			alt="Harvester in a golden field of wheat emptying grain into a chaser bin moving alongside it."
 		/>
 	),
-	title:
-		'Hero banner title Hero banner title Hero banner title Hero banner title Hero banner title Hero banner title',
-	subtitle: 'Hero banner paragraph text',
 };
 
 export const LightVariant = Template.bind({});
