@@ -1,6 +1,6 @@
 import type { NextPage } from 'next';
 import { Stack } from '@ag.ds-next/box';
-import { Button, ButtonGroup, ButtonLink } from '@ag.ds-next/button';
+import { ButtonGroup, ButtonLink } from '@ag.ds-next/button';
 import { SectionContent } from '@ag.ds-next/content';
 import { Columns, Column } from '@ag.ds-next/columns';
 import { H2, H3 } from '@ag.ds-next/heading';
