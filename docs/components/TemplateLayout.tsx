@@ -55,9 +55,7 @@ export const TemplateLayout = ({
 					callToAction={
 						template.previewPath && (
 							<div>
-								<CallToActionLink
-									href={`/example-site/${template.previewPath}`}
-								>
+								<CallToActionLink href={`/example-site${template.previewPath}`}>
 									View template preview
 								</CallToActionLink>
 							</div>
