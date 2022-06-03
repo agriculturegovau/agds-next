@@ -3,7 +3,6 @@ import { Stack } from '@ag.ds-next/box';
 import { SectionContent } from '@ag.ds-next/content';
 import { H2, H3 } from '@ag.ds-next/heading';
 import { Text } from '@ag.ds-next/text';
-import { CallToActionLink } from '@ag.ds-next/call-to-action';
 import {
 	HeroSubcategoryBanner,
 	HeroSubcategoryBannerTitle,
@@ -22,7 +21,7 @@ const SubcategoryPage: NextPage = () => {
 					<Breadcrumbs
 						links={[
 							{ href: '/', label: 'Home' },
-							{ href: '/category', label: 'Section 1' },
+							{ href: '/category', label: 'Category 1' },
 							{ label: 'Subcategory page' },
 						]}
 					/>
@@ -33,13 +32,58 @@ const SubcategoryPage: NextPage = () => {
 				<SectionContent>
 					<Stack gap={2}>
 						<H2>Subcategory content pages (H2)</H2>
-						<CardList templateColumns={{ xs: 1, sm: 2, md: 3 }}>
-							{Array.from(Array(6).keys()).map((idx) => (
+						<CardList templateColumns={{ xs: 1, sm: 2, md: 4 }}>
+							<Card shadow clickable>
+								<CardInner>
+									<Stack gap={1}>
+										<H3>
+											<CardLink href="/category/subcategory/content">
+												Content - lg / display / underline (H3)
+											</CardLink>
+										</H3>
+										<Text as="p">
+											Short descriptive paragraph designed to fit in this space
+											- sm/default (P).
+										</Text>
+									</Stack>
+								</CardInner>
+							</Card>
+							<Card shadow clickable>
+								<CardInner>
+									<Stack gap={1}>
+										<H3>
+											<CardLink href="/category/subcategory/form-single-page">
+												Single-page form - lg / display / underline (H3)
+											</CardLink>
+										</H3>
+										<Text as="p">
+											Short descriptive paragraph designed to fit in this space
+											- sm/default (P).
+										</Text>
+									</Stack>
+								</CardInner>
+							</Card>
+							<Card shadow clickable>
+								<CardInner>
+									<Stack gap={1}>
+										<H3>
+											<CardLink href="/category/subcategory/form-multi-step">
+												Multi-step form - lg / display / underline (H3)
+											</CardLink>
+										</H3>
+										<Text as="p">
+											Short descriptive paragraph designed to fit in this space
+											- sm/default (P).
+										</Text>
+									</Stack>
+								</CardInner>
+							</Card>
+							{Array.from(Array(5).keys()).map((idx) => (
 								<Card key={idx} shadow clickable>
 									<CardInner>
 										<Stack gap={1}>
 											<H3>
-												<CardLink href="/category/subcategory/content">
+												<CardLink href="#">
 													Card title - lg / display / underline (H3)
 												</CardLink>
 											</H3>
@@ -52,9 +96,6 @@ const SubcategoryPage: NextPage = () => {
 								</Card>
 							))}
 						</CardList>
-						<CallToActionLink href="/category/subcategory/content">
-							See more content pages
-						</CallToActionLink>
 					</Stack>
 				</SectionContent>
 			</AppLayout>

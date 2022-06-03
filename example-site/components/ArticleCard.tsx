@@ -14,7 +14,9 @@ export const ArticleCard = () => (
 		<CardInner>
 			<Stack gap={1}>
 				<Heading type="h3">
-					<CardLink href="/content">Title of article (H3)</CardLink>
+					<CardLink href="/category/subcategory/content">
+						Title of article (H3)
+					</CardLink>
 				</Heading>
 				<Text as="p">
 					Short descriptive paragraph designed to fit in this space

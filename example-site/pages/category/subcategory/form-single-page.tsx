@@ -3,10 +3,10 @@ import { Stack } from '@ag.ds-next/box';
 import { Breadcrumbs } from '@ag.ds-next/breadcrumbs';
 import { PageContent } from '@ag.ds-next/content';
 import { Columns, Column } from '@ag.ds-next/columns';
-import { AppLayout } from '../components/AppLayout';
-import { DocumentTitle } from '../components/DocumentTitle';
-import { FormExampleSinglePage } from '../components/FormExampleSinglePage';
-import { PageTitle } from '../components/PageTitle';
+import { AppLayout } from '../../../components/AppLayout';
+import { DocumentTitle } from '../../../components/DocumentTitle';
+import { FormExampleSinglePage } from '../../../components/FormExampleSinglePage';
+import { PageTitle } from '../../../components/PageTitle';
 
 const FormSinglePage: NextPage = () => {
 	return (
@@ -22,6 +22,11 @@ const FormSinglePage: NextPage = () => {
 								<Breadcrumbs
 									links={[
 										{ href: '/', label: 'Home' },
+										{ href: '/category', label: 'Category 1' },
+										{
+											href: '/category/subcategory',
+											label: 'Subcategory page',
+										},
 										{ label: 'Single-page form' },
 									]}
 								/>

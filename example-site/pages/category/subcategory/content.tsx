@@ -29,7 +29,7 @@ const ContentPage: NextPage = () => {
 							<ContentBleed visible={{ md: false }}>
 								<SideNav
 									collapseTitle="In this section"
-									title="Section 1"
+									title="Category 1"
 									variant="light"
 									titleLink="/"
 									activePath="/content"
@@ -42,7 +42,7 @@ const ContentPage: NextPage = () => {
 								<Breadcrumbs
 									links={[
 										{ href: '/', label: 'Home' },
-										{ href: '/category', label: 'Section 1' },
+										{ href: '/category', label: 'Category 1' },
 										{
 											href: '/category/subcategory',
 											label: 'Subcategory page',

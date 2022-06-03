@@ -78,7 +78,9 @@ const Home: NextPage = () => {
 										in this space - sm/default (P).
 									</Text>
 								</Stack>
-								<CallToActionLink href="/content">Read more</CallToActionLink>
+								<CallToActionLink href="/category/subcategory/content">
+									Read more
+								</CallToActionLink>
 							</Stack>
 						</Column>
 						<Column columnSpan={{ xs: 12, md: 6 }}>

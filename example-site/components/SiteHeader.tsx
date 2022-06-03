@@ -8,7 +8,7 @@ import { SiteHeaderSearch } from './SiteHeaderSearch';
 
 const NAV_LINKS = [
 	{ label: 'Home', href: '/' },
-	{ label: 'Section 1', href: '/category' },
+	{ label: 'Category 1', href: '/category' },
 ];
 
 export const SiteHeader = ({ focusMode }: { focusMode: boolean }) => {

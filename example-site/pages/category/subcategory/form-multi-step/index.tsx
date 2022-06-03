@@ -2,14 +2,14 @@ import type { NextPage } from 'next';
 import { PageContent } from '@ag.ds-next/content';
 import { Columns, Column } from '@ag.ds-next/columns';
 import { ButtonLink } from '@ag.ds-next/button';
-import { AppLayout } from '../../components/AppLayout';
-import { DocumentTitle } from '../../components/DocumentTitle';
-import { FormExampleMultiStepCallout } from '../../components/FormExampleMultiStep/FormExampleMultiStepCallout';
 import { Body } from '@ag.ds-next/body';
 import { Breadcrumbs } from '@ag.ds-next/breadcrumbs';
 import { Stack } from '@ag.ds-next/box';
 import { TextLinkExternal } from '@ag.ds-next/text';
-import { PageTitle } from '../../components/PageTitle';
+import { AppLayout } from '../../../../components/AppLayout';
+import { DocumentTitle } from '../../../../components/DocumentTitle';
+import { FormExampleMultiStepCallout } from '../../../../components/FormExampleMultiStep/FormExampleMultiStepCallout';
+import { PageTitle } from '../../../../components/PageTitle';
 
 const FormMultiStepPage: NextPage = () => {
 	return (
@@ -25,7 +25,12 @@ const FormMultiStepPage: NextPage = () => {
 								<Breadcrumbs
 									links={[
 										{ href: '/', label: 'Home' },
-										{ label: 'Multi-page form' },
+										{ href: '/category', label: 'Category 1' },
+										{
+											href: '/category/subcategory',
+											label: 'Subcategory page',
+										},
+										{ label: 'Multi-step form' },
 									]}
 								/>
 								<PageTitle
@@ -36,7 +41,7 @@ const FormMultiStepPage: NextPage = () => {
 									<h2>Multi-step form subheading (H2)</h2>
 									<p>Multi-step form subheading content</p>
 									<hr aria-hidden="true" />
-									<ButtonLink href="/form-multi-step/form">
+									<ButtonLink href="/category/subcategory/form-multi-step/form">
 										Start form
 									</ButtonLink>
 									<h2>More information section heading (H2)</h2>

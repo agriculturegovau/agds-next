@@ -52,9 +52,6 @@ const CategoryPage: NextPage = () => {
 								</Card>
 							))}
 						</CardList>
-						<CallToActionLink href="/category/subcategory">
-							See more subcategory pages
-						</CallToActionLink>
 					</Stack>
 				</SectionContent>
 			</AppLayout>
