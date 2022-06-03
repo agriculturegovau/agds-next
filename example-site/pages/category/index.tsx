@@ -3,7 +3,6 @@ import { Stack } from '@ag.ds-next/box';
 import { SectionContent } from '@ag.ds-next/content';
 import { H2, H3 } from '@ag.ds-next/heading';
 import { Text } from '@ag.ds-next/text';
-import { CallToActionLink } from '@ag.ds-next/call-to-action';
 import {
 	HeroCategoryBanner,
 	HeroCategoryBannerTitle,
