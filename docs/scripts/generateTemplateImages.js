@@ -69,17 +69,22 @@ function getTemplateList() {
 
 	await Promise.all(
 		templates.map(async ({ slug, previewPath }, idx) => {
-			console.log(`Generating ${idx + 1} of ${templates.length}`);
-			const url = BASE_URL + previewPath;
-			const destination = OUTPUT_DIR + `/${slug}.png`;
-			const page = await browser.newPage();
-			await page.setViewport({
-				width: 1280,
-				height: 720,
-				deviceScaleFactor: 1,
-			});
-			await page.goto(url);
-			await page.screenshot({ path: destination });
+			try {
+				console.log(`Generating ${idx + 1} of ${templates.length}`);
+				const url = BASE_URL + previewPath;
+				const destination = OUTPUT_DIR + `/${slug}.png`;
+				const page = await browser.newPage();
+				await page.setViewport({
+					width: 1280,
+					height: 720,
+					deviceScaleFactor: 1,
+				});
+				await page.goto(url);
+				await page.screenshot({ path: destination });
+			} catch (error) {
+				console.log(`Error with "${slug}"`);
+				console.error(error.message);
+			}
 		})
 	);
 	await browser.close();

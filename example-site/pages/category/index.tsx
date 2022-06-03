@@ -27,7 +27,7 @@ const CategoryPage: NextPage = () => {
 					}
 				>
 					<HeroCategoryBannerTitle>
-						Website hero banner title - xxl/display (H1)
+						Category banner title - xxl/display (H1)
 					</HeroCategoryBannerTitle>
 				</HeroCategoryBanner>
 				<SectionContent>
