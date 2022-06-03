@@ -21,9 +21,8 @@ const FormSinglePage: NextPage = () => {
 							<Stack gap={3}>
 								<Breadcrumbs
 									links={[
-										{ href: '#', label: 'Home' },
-										{ href: '#', label: 'Establishments' },
-										{ label: 'Applications' },
+										{ href: '/', label: 'Home' },
+										{ label: 'Single-page form' },
 									]}
 								/>
 								<PageTitle

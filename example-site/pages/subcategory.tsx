@@ -21,7 +21,7 @@ const Home: NextPage = () => {
 				<HeroSubcategoryBanner variant="lightAlt">
 					<Breadcrumbs
 						links={[
-							{ href: '/', label: 'Section 1' },
+							{ href: '/', label: 'Home' },
 							{ href: '/category', label: 'Category page' },
 							{ label: 'Subcategory page' },
 						]}
@@ -39,7 +39,7 @@ const Home: NextPage = () => {
 									<CardInner>
 										<Stack gap={1}>
 											<H3>
-												<CardLink href="#">
+												<CardLink href="/content">
 													Card title - lg / display / underline (H3)
 												</CardLink>
 											</H3>
@@ -52,7 +52,7 @@ const Home: NextPage = () => {
 								</Card>
 							))}
 						</CardList>
-						<CallToActionLink href="/category">
+						<CallToActionLink href="/content">
 							See more content pages
 						</CallToActionLink>
 					</Stack>

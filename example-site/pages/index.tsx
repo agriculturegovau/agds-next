@@ -1,6 +1,6 @@
 import type { NextPage } from 'next';
 import { Stack } from '@ag.ds-next/box';
-import { Button, ButtonGroup } from '@ag.ds-next/button';
+import { Button, ButtonGroup, ButtonLink } from '@ag.ds-next/button';
 import { SectionContent } from '@ag.ds-next/content';
 import { Columns, Column } from '@ag.ds-next/columns';
 import { H2, H3 } from '@ag.ds-next/heading';
@@ -39,8 +39,10 @@ const Home: NextPage = () => {
 						</HeroBannerSubtitle>
 					</HeroBannerTitleContainer>
 					<ButtonGroup>
-						<Button>Create account</Button>
-						<Button variant="secondary">Sign in</Button>
+						<ButtonLink href="/form-sign-in">Create account</ButtonLink>
+						<ButtonLink href="/form-sign-in" variant="secondary">
+							Sign in
+						</ButtonLink>
 					</ButtonGroup>
 				</HeroBanner>
 
@@ -76,7 +78,7 @@ const Home: NextPage = () => {
 										in this space - sm/default (P).
 									</Text>
 								</Stack>
-								<CallToActionLink>Read more</CallToActionLink>
+								<CallToActionLink href="/content">Read more</CallToActionLink>
 							</Stack>
 						</Column>
 						<Column columnSpan={{ xs: 12, md: 6 }}>
@@ -90,7 +92,7 @@ const Home: NextPage = () => {
 				</SectionContent>
 
 				<SectionContent>
-					<Stack gap={2}>
+					<Stack alignItems="flex-start" gap={2}>
 						<H2>Articles heading (H2)</H2>
 						<Columns as="ul">
 							{Array.from(Array(3).keys()).map((idx) => (
@@ -99,7 +101,9 @@ const Home: NextPage = () => {
 								</Column>
 							))}
 						</Columns>
-						<CallToActionLink href="#">See more articles</CallToActionLink>
+						<CallToActionLink href="/category">
+							See more articles
+						</CallToActionLink>
 					</Stack>
 				</SectionContent>
 			</AppLayout>
