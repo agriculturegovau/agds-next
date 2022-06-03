@@ -15,8 +15,8 @@ import { Card, CardInner, CardLink, CardList } from '@ag.ds-next/card';
 const Home: NextPage = () => {
 	return (
 		<>
-			<DocumentTitle title="Subcategory" />
-			<AppLayout template={{ name: 'Subcategory', slug: 'subcategory' }}>
+			<DocumentTitle title="Category" />
+			<AppLayout template={{ name: 'Category', slug: 'category' }}>
 				<HeroCategoryBanner
 					variant="lightAlt"
 					image={
