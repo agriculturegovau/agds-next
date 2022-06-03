@@ -21,8 +21,8 @@ const Home: NextPage = () => {
 				<HeroSubcategoryBanner variant="lightAlt">
 					<Breadcrumbs
 						links={[
-							{ href: '#', label: 'Section 1' },
-							{ href: '#', label: 'Category page' },
+							{ href: '/', label: 'Section 1' },
+							{ href: '/category', label: 'Category page' },
 							{ label: 'Subcategory page' },
 						]}
 					/>

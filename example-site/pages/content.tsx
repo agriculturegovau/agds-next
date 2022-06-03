@@ -29,10 +29,10 @@ const ContentPage: NextPage = () => {
 							<ContentBleed visible={{ md: false }}>
 								<SideNav
 									collapseTitle="In this section"
-									title="Lodging your tax return"
+									title="Section 1"
 									variant="light"
-									titleLink="#welcome"
-									activePath="#in-detail/record-keeping/incorrect-amounts"
+									titleLink="/"
+									activePath="/content"
 									items={sideNavItems}
 								/>
 							</ContentBleed>
@@ -41,9 +41,10 @@ const ContentPage: NextPage = () => {
 							<Stack gap={3}>
 								<Breadcrumbs
 									links={[
-										{ href: '#', label: 'Section 1' },
-										{ href: '#', label: 'Category page' },
-										{ label: 'Subcategory page' },
+										{ href: '/', label: 'Section 1' },
+										{ href: '/category', label: 'Category page' },
+										{ href: '/subcategory', label: 'Subcategory page' },
+										{ label: 'Content page' },
 									]}
 								/>
 								<PageTitle
@@ -142,52 +143,50 @@ const ContentPage: NextPage = () => {
 
 const sideNavItems = [
 	{
-		href: '#welcome',
-		label: 'Welcome',
+		href: '/',
+		label: 'Content page',
 	},
 	{
-		href: '#one',
-		label: 'Do you need to lodge a tax return?',
-	},
-	{
-		href: '#two',
-		label: 'Lodge online',
+		href: '/content',
+		label: 'Content page',
 		items: [
 			{
-				href: '#three',
-				label: 'Pre-filling your online tax return',
+				href: '#',
+				label: 'Side nav item level 3',
+			},
+			{
+				href: '#',
+				label: 'Side nav item level 3',
 			},
 		],
 	},
-	{ href: '#four', label: "What's new for individuals" },
-	{ href: '#five', label: 'Why you may receive a tax bill' },
 	{
-		href: '#in-detail',
-		label: 'In detail',
-		items: [
-			{
-				href: '#in-detail/record-keeping',
-				label: 'Record keeping',
-				items: [
-					{
-						href: '#in-detail/record-keeping/tax',
-						label: 'Keeping your tax records',
-					},
-					{
-						href: '#in-detail/record-keeping/incorrect-amounts',
-						label: 'Incorrect amounts',
-					},
-				],
-			},
-			{
-				href: '#ten',
-				label: 'Tax receipt',
-			},
-			{
-				href: '#eleven',
-				label: 'Pre-fill availability',
-			},
-		],
+		href: '/',
+		label: 'Content page',
+	},
+	{
+		href: '/',
+		label: 'Content page',
+	},
+	{
+		href: '/',
+		label: 'Content page',
+	},
+	{
+		href: '/',
+		label: 'Content page',
+	},
+	{
+		href: '/',
+		label: 'Content page',
+	},
+	{
+		href: '/',
+		label: 'Content page',
+	},
+	{
+		href: '/',
+		label: 'Content page',
 	},
 ];
 
