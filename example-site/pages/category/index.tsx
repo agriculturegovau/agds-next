@@ -32,8 +32,8 @@ const CategoryPage: NextPage = () => {
 				<SectionContent>
 					<Stack gap={2}>
 						<H2>Subcategory pages (H2)</H2>
-						<CardList templateColumns={{ xs: 1, sm: 2, md: 4 }}>
-							{Array.from(Array(8).keys()).map((idx) => (
+						<CardList templateColumns={{ xs: 1, sm: 2, md: 3 }}>
+							{Array.from(Array(6).keys()).map((idx) => (
 								<Card key={idx} shadow clickable>
 									<CardInner>
 										<Stack gap={1}>
