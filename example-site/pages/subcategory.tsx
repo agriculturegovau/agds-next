@@ -13,7 +13,7 @@ import { DocumentTitle } from '../components/DocumentTitle';
 import { Breadcrumbs } from '@ag.ds-next/breadcrumbs';
 import { Card, CardInner, CardLink, CardList } from '@ag.ds-next/card';
 
-const Home: NextPage = () => {
+const SubcategoryPage: NextPage = () => {
 	return (
 		<>
 			<DocumentTitle title="Subcategory" />
@@ -62,4 +62,4 @@ const Home: NextPage = () => {
 	);
 };
 
-export default Home;
+export default SubcategoryPage;

@@ -12,7 +12,7 @@ import { AppLayout } from '../components/AppLayout';
 import { DocumentTitle } from '../components/DocumentTitle';
 import { Card, CardInner, CardLink, CardList } from '@ag.ds-next/card';
 
-const Home: NextPage = () => {
+const CategoryPage: NextPage = () => {
 	return (
 		<>
 			<DocumentTitle title="Category" />
@@ -62,4 +62,4 @@ const Home: NextPage = () => {
 	);
 };
 
-export default Home;
+export default CategoryPage;
