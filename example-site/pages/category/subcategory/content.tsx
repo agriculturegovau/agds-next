@@ -3,10 +3,10 @@ import { Body } from '@ag.ds-next/body';
 import { PageContent, ContentBleed } from '@ag.ds-next/content';
 import { Columns, Column } from '@ag.ds-next/columns';
 import { SideNav } from '@ag.ds-next/side-nav';
-import { AppLayout } from '../components/AppLayout';
-import { DocumentTitle } from '../components/DocumentTitle';
+import { AppLayout } from '../../../components/AppLayout';
+import { DocumentTitle } from '../../../components/DocumentTitle';
 import { Breadcrumbs } from '@ag.ds-next/breadcrumbs';
-import { PageTitle } from '../components/PageTitle';
+import { PageTitle } from '../../../components/PageTitle';
 import { Stack } from '@ag.ds-next/box';
 import { InpageNav } from '@ag.ds-next/inpage-nav';
 import { DirectionLink } from '@ag.ds-next/direction-link';
@@ -41,9 +41,12 @@ const ContentPage: NextPage = () => {
 							<Stack gap={3}>
 								<Breadcrumbs
 									links={[
-										{ href: '/', label: 'Section 1' },
-										{ href: '/category', label: 'Category page' },
-										{ href: '/subcategory', label: 'Subcategory page' },
+										{ href: '/', label: 'Home' },
+										{ href: '/category', label: 'Section 1' },
+										{
+											href: '/category/subcategory',
+											label: 'Subcategory page',
+										},
 										{ label: 'Content page' },
 									]}
 								/>

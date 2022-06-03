@@ -8,8 +8,8 @@ import {
 	HeroCategoryBanner,
 	HeroCategoryBannerTitle,
 } from '@ag.ds-next/hero-banner';
-import { AppLayout } from '../components/AppLayout';
-import { DocumentTitle } from '../components/DocumentTitle';
+import { AppLayout } from '../../components/AppLayout';
+import { DocumentTitle } from '../../components/DocumentTitle';
 import { Card, CardInner, CardLink, CardList } from '@ag.ds-next/card';
 
 const CategoryPage: NextPage = () => {
@@ -39,7 +39,7 @@ const CategoryPage: NextPage = () => {
 									<CardInner>
 										<Stack gap={1}>
 											<H3>
-												<CardLink href="/subcategory">
+												<CardLink href="/category/subcategory">
 													Card title - lg / display / underline (H3)
 												</CardLink>
 											</H3>
@@ -52,7 +52,7 @@ const CategoryPage: NextPage = () => {
 								</Card>
 							))}
 						</CardList>
-						<CallToActionLink href="/subcategory">
+						<CallToActionLink href="/category/subcategory">
 							See more subcategory pages
 						</CallToActionLink>
 					</Stack>

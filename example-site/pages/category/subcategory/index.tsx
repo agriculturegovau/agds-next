@@ -8,8 +8,8 @@ import {
 	HeroSubcategoryBanner,
 	HeroSubcategoryBannerTitle,
 } from '@ag.ds-next/hero-banner';
-import { AppLayout } from '../components/AppLayout';
-import { DocumentTitle } from '../components/DocumentTitle';
+import { AppLayout } from '../../../components/AppLayout';
+import { DocumentTitle } from '../../../components/DocumentTitle';
 import { Breadcrumbs } from '@ag.ds-next/breadcrumbs';
 import { Card, CardInner, CardLink, CardList } from '@ag.ds-next/card';
 
@@ -22,7 +22,7 @@ const SubcategoryPage: NextPage = () => {
 					<Breadcrumbs
 						links={[
 							{ href: '/', label: 'Home' },
-							{ href: '/category', label: 'Category page' },
+							{ href: '/category', label: 'Section 1' },
 							{ label: 'Subcategory page' },
 						]}
 					/>
@@ -39,7 +39,7 @@ const SubcategoryPage: NextPage = () => {
 									<CardInner>
 										<Stack gap={1}>
 											<H3>
-												<CardLink href="/content">
+												<CardLink href="/category/subcategory/content">
 													Card title - lg / display / underline (H3)
 												</CardLink>
 											</H3>
@@ -52,7 +52,7 @@ const SubcategoryPage: NextPage = () => {
 								</Card>
 							))}
 						</CardList>
-						<CallToActionLink href="/content">
+						<CallToActionLink href="/category/subcategory/content">
 							See more content pages
 						</CallToActionLink>
 					</Stack>
