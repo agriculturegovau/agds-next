@@ -31,7 +31,7 @@ const columnsStyles = ({
 }: Pick<ColumnsProps, 'gap' | 'columnGap' | 'rowGap'>) => {
 	return mq({
 		display: 'grid',
-		gridTemplateColumns: 'repeat(12, 1fr)',
+		gridTemplateColumns: ['1fr', 'repeat(12, 1fr)'],
 		gridGap: mapResponsiveProp(gap, mapSpacing),
 		columnGap: mapResponsiveProp(columnGap, mapSpacing),
 		rowGap: mapResponsiveProp(rowGap, mapSpacing),
