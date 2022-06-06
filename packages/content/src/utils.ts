@@ -4,8 +4,8 @@ export const paddingYMap = {
 		bottom: 0,
 	},
 	section: {
-		top: { xs: 2, md: 4 },
-		bottom: { xs: 2, md: 4 },
+		top: { xs: 3, md: 4 },
+		bottom: { xs: 3, md: 4 },
 	},
 	page: {
 		top: { xs: 2, md: 3 },
