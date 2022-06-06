@@ -30,7 +30,7 @@ const SubcategoryPage: NextPage = () => {
 					</HeroSubcategoryBannerTitle>
 				</HeroSubcategoryBanner>
 				<SectionContent>
-					<Stack gap={2}>
+					<Stack gap={1.5}>
 						<H2>Subcategory content pages (H2)</H2>
 						<CardList templateColumns={{ xs: 1, sm: 2, md: 3 }}>
 							<Card shadow clickable>
