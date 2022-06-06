@@ -22,7 +22,7 @@
 		"@ag.ds-next/icon": "*",
 		"@ag.ds-next/text-input": "*",
 		"@emotion/react": "^11.7.0",
-		"react": "17.0.2"
+		"react": "18.1.0"
 	},
 	"dependencies": {
 		"@popperjs/core": "^2.11.4",

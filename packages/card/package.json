@@ -14,6 +14,6 @@
 		"@ag.ds-next/box": "*",
 		"@ag.ds-next/core": "*",
 		"@emotion/react": "^11.7.0",
-		"react": "17.0.2"
+		"react": "18.1.0"
 	}
 }

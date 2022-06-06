@@ -104,7 +104,9 @@ export const FormExampleMultiStep3 = () => {
 									{Object.entries(errors).map(([key, value]) => (
 										<li key={key}>
 											<a href={`#${key}`} onClick={scrollToField}>
-												{Array.isArray(value) ? value[0] : value.message}
+												{Array.isArray(value)
+													? value[0].message
+													: value.message}
 											</a>
 										</li>
 									))}
