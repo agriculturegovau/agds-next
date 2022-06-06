@@ -7,11 +7,11 @@ import { Breadcrumbs } from '@ag.ds-next/breadcrumbs';
 import { Stack } from '@ag.ds-next/box';
 import { H2 } from '@ag.ds-next/heading';
 import { Text, TextLinkExternal } from '@ag.ds-next/text';
-import { AppLayout } from '../../components/AppLayout';
-import { DocumentTitle } from '../../components/DocumentTitle';
-import { FormExampleMultiStepCallout } from '../../components/FormExampleMultiStep/FormExampleMultiStepCallout';
-import { PageTitle } from '../../components/PageTitle';
-import { FormDivider } from '../../components/FormDivider';
+import { AppLayout } from '../../../../components/AppLayout';
+import { DocumentTitle } from '../../../../components/DocumentTitle';
+import { FormExampleMultiStepCallout } from '../../../../components/FormExampleMultiStep/FormExampleMultiStepCallout';
+import { PageTitle } from '../../../../components/PageTitle';
+import { FormDivider } from '../../../../components/FormDivider';
 
 const FormMultiStepPage: NextPage = () => {
 	return (
@@ -44,7 +44,11 @@ const FormMultiStepPage: NextPage = () => {
 									<Text as="p">Multi-step form subheading content</Text>
 								</Stack>
 								<FormDivider />
-								<ButtonLink href="/form-multi-step/form">Start form</ButtonLink>
+								<div>
+									<ButtonLink href="/category/subcategory/form-multi-step/form">
+										Start form
+									</ButtonLink>
+								</div>
 								<Body>
 									<h2>More information section heading (H2)</h2>
 									<h3>More information link list heading (H3)</h3>
