@@ -13,7 +13,7 @@ export const PkgCardList = ({ items }: { items: Pkg[] }) => (
 			<Column
 				key={slug}
 				as="li"
-				columnSpan={{ sm: 12, sm: 6, md: 6, lg: 4, xl: 3 }}
+				columnSpan={{ xs: 1, sm: 12, sm: 6, md: 6, lg: 4, xl: 3 }}
 			>
 				<PictogramCard
 					title={title}

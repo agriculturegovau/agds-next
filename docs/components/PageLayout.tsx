@@ -31,7 +31,7 @@ export function PageLayout({
 		<PageContent>
 			<Columns>
 				{sideNav && (
-					<Column columnSpan={{ sm: 12, md: 3 }}>
+					<Column columnSpan={{ xs: 1, sm: 12, md: 3 }}>
 						<ContentBleed visible={{ md: false }}>
 							<SideNav
 								variant="light"
@@ -45,7 +45,7 @@ export function PageLayout({
 					</Column>
 				)}
 				<Column
-					columnSpan={{ sm: 12, md: 8 }}
+					columnSpan={{ xs: 1, sm: 12, md: 8 }}
 					columnStart={{ md: sideNav ? 5 : 1 }}
 					as="main"
 					id="main-content"

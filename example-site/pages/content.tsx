@@ -13,7 +13,7 @@ const ContentPage: NextPage = () => {
 			<AppLayout template={{ name: 'Content', slug: 'content' }}>
 				<PageContent>
 					<Columns>
-						<Column columnSpan={{ sm: 12, md: 3 }}>
+						<Column columnSpan={{ xs: 1, sm: 12, md: 3 }}>
 							<ContentBleed visible={{ md: false }}>
 								<SideNav
 									collapseTitle="In this section"
@@ -25,7 +25,10 @@ const ContentPage: NextPage = () => {
 								/>
 							</ContentBleed>
 						</Column>
-						<Column columnSpan={{ sm: 12, md: 8 }} columnStart={{ md: 5 }}>
+						<Column
+							columnSpan={{ xs: 1, sm: 12, md: 8 }}
+							columnStart={{ md: 5 }}
+						>
 							<Body>
 								<h1>Content page example (h1)</h1>
 								<p>

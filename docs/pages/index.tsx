@@ -60,7 +60,7 @@ export default function Homepage() {
 						<Columns gap={1} as="ul">
 							<Column
 								as="li"
-								columnSpan={{ sm: 12, sm: 6, md: 6, lg: 4, xl: 3 }}
+								columnSpan={{ xs: 1, sm: 12, sm: 6, md: 6, lg: 4, xl: 3 }}
 							>
 								<PictogramCard
 									title="Packages"
@@ -70,7 +70,7 @@ export default function Homepage() {
 							</Column>
 							<Column
 								as="li"
-								columnSpan={{ sm: 12, sm: 6, md: 6, lg: 4, xl: 3 }}
+								columnSpan={{ xs: 1, sm: 12, sm: 6, md: 6, lg: 4, xl: 3 }}
 							>
 								<PictogramCard
 									title="Guides"
@@ -80,7 +80,7 @@ export default function Homepage() {
 							</Column>
 							<Column
 								as="li"
-								columnSpan={{ sm: 12, sm: 6, md: 6, lg: 4, xl: 3 }}
+								columnSpan={{ xs: 1, sm: 12, sm: 6, md: 6, lg: 4, xl: 3 }}
 							>
 								<PictogramCard
 									title="Starter kit"

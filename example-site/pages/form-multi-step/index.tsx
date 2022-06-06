@@ -19,7 +19,7 @@ const FormMultiStepPage: NextPage = () => {
 			>
 				<PageContent>
 					<Columns>
-						<Column columnSpan={{ sm: 12, md: 8 }}>
+						<Column columnSpan={{ xs: 1, sm: 12, md: 8 }}>
 							<Stack gap={3}>
 								<PageTitle
 									title="Multi-step form title (H1)"

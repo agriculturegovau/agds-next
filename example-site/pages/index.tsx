@@ -49,7 +49,11 @@ const Home: NextPage = () => {
 						<H2>Content heading (H2)</H2>
 						<Columns as="ul">
 							{Array.from(Array(4).keys()).map((idx) => (
-								<Column key={idx} as="li" columnSpan={{ sm: 12, sm: 6, md: 3 }}>
+								<Column
+									key={idx}
+									as="li"
+									columnSpan={{ xs: 1, sm: 12, sm: 6, md: 3 }}
+								>
 									<Stack gap={1}>
 										<H3>Content heading (H3)</H3>
 										<Text as="p">
@@ -66,7 +70,7 @@ const Home: NextPage = () => {
 
 				<SectionContent background="shade">
 					<Columns>
-						<Column columnSpan={{ sm: 12, md: 6 }}>
+						<Column columnSpan={{ xs: 1, sm: 12, md: 6 }}>
 							<Stack gap={2} alignItems="flex-start">
 								<Stack gap={1}>
 									<H2>Highlighted content row heading (H2)</H2>
@@ -79,7 +83,7 @@ const Home: NextPage = () => {
 								<CallToActionLink>Read more</CallToActionLink>
 							</Stack>
 						</Column>
-						<Column columnSpan={{ sm: 12, md: 6 }}>
+						<Column columnSpan={{ xs: 1, sm: 12, md: 6 }}>
 							<img
 								src="/agds-next/example-site/placeholder/hero-banner.png"
 								alt="Harvester in a golden field of wheat emptying grain into a chaser bin moving alongside it."
@@ -94,7 +98,11 @@ const Home: NextPage = () => {
 						<H2>Articles heading (H2)</H2>
 						<Columns as="ul">
 							{Array.from(Array(3).keys()).map((idx) => (
-								<Column key={idx} as="li" columnSpan={{ sm: 12, sm: 6, lg: 4 }}>
+								<Column
+									key={idx}
+									as="li"
+									columnSpan={{ xs: 1, sm: 12, sm: 6, lg: 4 }}
+								>
 									<ArticleCard />
 								</Column>
 							))}

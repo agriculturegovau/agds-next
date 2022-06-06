@@ -12,7 +12,7 @@ The footer at the bottom of a page. Usually contains copyright information and l
 ```jsx live
 <Footer variant="agriculture">
 	<Columns>
-		<Column columnSpan={{ sm: 12, sm: 6, md: 4, lg: 3 }}>
+		<Column columnSpan={{ xs: 1, sm: 12, sm: 6, md: 4, lg: 3 }}>
 			<Stack gap={0.5}>
 				<Heading type="h3">Section title</Heading>
 				<LinkList
@@ -24,7 +24,7 @@ The footer at the bottom of a page. Usually contains copyright information and l
 				/>
 			</Stack>
 		</Column>
-		<Column columnSpan={{ sm: 12, sm: 6, md: 4, lg: 3 }}>
+		<Column columnSpan={{ xs: 1, sm: 12, sm: 6, md: 4, lg: 3 }}>
 			<Stack gap={0.5}>
 				<H3>Section</H3>
 				<LinkList
@@ -36,7 +36,7 @@ The footer at the bottom of a page. Usually contains copyright information and l
 				/>
 			</Stack>
 		</Column>
-		<Column columnSpan={{ sm: 12, sm: 6, md: 4, lg: 3 }}>
+		<Column columnSpan={{ xs: 1, sm: 12, sm: 6, md: 4, lg: 3 }}>
 			<Stack gap={0.5}>
 				<Heading type="h3">Section</Heading>
 				<LinkList
@@ -48,7 +48,7 @@ The footer at the bottom of a page. Usually contains copyright information and l
 				/>
 			</Stack>
 		</Column>
-		<Column columnSpan={{ sm: 12, sm: 6, md: 4, lg: 3 }}>
+		<Column columnSpan={{ xs: 1, sm: 12, sm: 6, md: 4, lg: 3 }}>
 			<Stack gap={0.5}>
 				<Heading type="h3">Section</Heading>
 				<LinkList

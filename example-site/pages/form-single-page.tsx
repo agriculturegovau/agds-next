@@ -17,7 +17,7 @@ const FormSinglePage: NextPage = () => {
 			>
 				<PageContent>
 					<Columns>
-						<Column columnSpan={{ sm: 12, md: 8 }}>
+						<Column columnSpan={{ xs: 1, sm: 12, md: 8 }}>
 							<Stack gap={3}>
 								<Breadcrumbs
 									links={[

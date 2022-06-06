@@ -62,7 +62,7 @@ const KitchenSink = ({
 	return (
 		<PageContent>
 			<Columns>
-				<Column columnSpan={{ sm: 12, md: 4 }}>
+				<Column columnSpan={{ xs: 1, sm: 12, md: 4 }}>
 					<Stack gap={1}>
 						<DirectionLink
 							children="Direction link"
@@ -130,7 +130,7 @@ const KitchenSink = ({
 						</SearchBox>
 					</Stack>
 				</Column>
-				<Column columnSpan={{ sm: 12, md: 4 }}>
+				<Column columnSpan={{ xs: 1, sm: 12, md: 4 }}>
 					<Stack gap={1} alignItems="flex-start">
 						<Breadcrumbs
 							links={[
@@ -230,7 +230,7 @@ const KitchenSink = ({
 					</Stack>
 				</Column>
 
-				<Column columnSpan={{ sm: 12, md: 4 }}>
+				<Column columnSpan={{ xs: 1, sm: 12, md: 4 }}>
 					<Stack gap={1} alignItems="flex-start">
 						<PageAlert tone="info" title="Notice">
 							<Text as="p">
