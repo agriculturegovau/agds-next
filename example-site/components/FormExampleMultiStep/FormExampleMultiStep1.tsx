@@ -1,3 +1,4 @@
+import { useEffect, useRef, useState } from 'react';
 import {
 	useForm,
 	SubmitHandler,
@@ -6,17 +7,17 @@ import {
 } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
-import { FormStack } from '@ag.ds-next/form-stack';
-import { useFormExampleMultiStep } from './FormExampleMultiStep';
 import { Body } from '@ag.ds-next/body';
-import { PageAlert } from '@ag.ds-next/page-alert';
-import { useScrollToField } from '@ag.ds-next/field';
-import { useEffect, useRef, useState } from 'react';
 import { FileUpload } from '@ag.ds-next/file-upload';
-import { FormExampleMultiStepActions } from './FormExampleMultiStepActions';
-import { Textarea } from '@ag.ds-next/textarea';
-import { FormExampleMultiStepContainer } from './FormExampleMultiStepContainer';
+import { FormStack } from '@ag.ds-next/form-stack';
 import { LoadingBlanket } from '@ag.ds-next/loading';
+import { PageAlert } from '@ag.ds-next/page-alert';
+import { Stack } from '@ag.ds-next/box';
+import { Textarea } from '@ag.ds-next/textarea';
+import { useScrollToField } from '@ag.ds-next/field';
+import { FormExampleMultiStepActions } from './FormExampleMultiStepActions';
+import { useFormExampleMultiStep } from './FormExampleMultiStep';
+import { FormExampleMultiStepContainer } from './FormExampleMultiStepContainer';
 
 const formSchema = yup
 	.object({
@@ -58,7 +59,8 @@ export const FormExampleMultiStep1 = () => {
 		setFocusedError(false);
 	};
 
-	const hasErrors = Boolean(Object.keys(errors).length);
+	// Only show the page alert if there is more than 1 error
+	const hasErrors = Object.keys(errors).length > 1;
 
 	useEffect(() => {
 		if (hasErrors && !focusedError) {
@@ -72,7 +74,7 @@ export const FormExampleMultiStep1 = () => {
 			title="Submit evidence (H1)"
 			introduction="The introductory paragraph provides context about this page of the form. Use a short paragraph to reduce cognitive load."
 		>
-			<form onSubmit={handleSubmit(onSubmit, onError)}>
+			<Stack as="form" gap={3} onSubmit={handleSubmit(onSubmit, onError)}>
 				<FormStack>
 					{hasErrors && (
 						<PageAlert
@@ -131,9 +133,9 @@ export const FormExampleMultiStep1 = () => {
 							</div>
 						)}
 					/>
-					<FormExampleMultiStepActions />
 				</FormStack>
-			</form>
+				<FormExampleMultiStepActions />
+			</Stack>
 		</FormExampleMultiStepContainer>
 	);
 };

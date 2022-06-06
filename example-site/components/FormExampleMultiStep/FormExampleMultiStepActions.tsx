@@ -1,10 +1,10 @@
-import { Button, ButtonGroup } from '@ag.ds-next/button';
-import { useTernaryState } from '@ag.ds-next/core';
-import { Modal } from '@ag.ds-next/modal';
-import { useFormExampleMultiStep } from './FormExampleMultiStep';
-import { Text } from '@ag.ds-next/text';
-import { FormStack } from '@ag.ds-next/form-stack';
 import { Fragment } from 'react';
+import { Button, ButtonGroup } from '@ag.ds-next/button';
+import { Modal } from '@ag.ds-next/modal';
+import { Stack } from '@ag.ds-next/box';
+import { Text } from '@ag.ds-next/text';
+import { useTernaryState } from '@ag.ds-next/core';
+import { useFormExampleMultiStep } from './FormExampleMultiStep';
 import { FormDivider } from '../FormDivider';
 
 export const FormExampleMultiStepActions = () => {
@@ -15,7 +15,7 @@ export const FormExampleMultiStepActions = () => {
 
 	return (
 		<Fragment>
-			<FormStack>
+			<Stack gap={3}>
 				<FormDivider />
 				<ButtonGroup>
 					<Button type="submit" variant="primary" loading={isSubmittingStep}>
@@ -33,7 +33,7 @@ export const FormExampleMultiStepActions = () => {
 						Cancel
 					</Button>
 				</ButtonGroup>
-			</FormStack>
+			</Stack>
 			<Modal
 				isOpen={isModalOpen}
 				onDismiss={closeModal}
