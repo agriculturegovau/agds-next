@@ -3,19 +3,20 @@ import { useForm, SubmitHandler, SubmitErrorHandler } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { FormStack } from '@ag.ds-next/form-stack';
+import { VisuallyHidden } from '@ag.ds-next/a11y';
 import { Body } from '@ag.ds-next/body';
+import { Stack } from '@ag.ds-next/box';
 import { PageAlert } from '@ag.ds-next/page-alert';
 import { useScrollToField } from '@ag.ds-next/field';
 import { Checkbox } from '@ag.ds-next/control-input';
+
+import { H2 } from '@ag.ds-next/heading';
 import {
-	Table,
-	TableCaption,
-	TableHead,
-	TableHeader,
-	TableBody,
-	TableCell,
-} from '@ag.ds-next/table';
-import { Stack } from '@ag.ds-next/box';
+	DefinitionList,
+	DefinitionListItem,
+	DefinitionDescription,
+	DefinitionTerm,
+} from '../DefinitionList';
 import { FORM_STEPS, useFormExampleMultiStep } from './FormExampleMultiStep';
 import { FormExampleMultiStepContainer } from './FormExampleMultiStepContainer';
 import { FormExampleMultiStepActions } from './FormExampleMultiStepActions';
@@ -81,87 +82,77 @@ export const FormExampleMultiStep4 = () => {
 			title="Confirm and submit (H1)"
 			introduction="The introductory paragraph provides context about this page of the form. Use a short paragraph to reduce cognitive load."
 		>
-			<FormStack>
-				{FORM_STEPS.filter((_, idx) => idx !== FORM_STEPS.length - 1).map(
-					(step, idx) => (
-						<Table key={idx} striped>
-							<TableCaption>{step.label}</TableCaption>
-							<TableHead>
-								<tr>
-									<TableHeader scope="col" width="50%">
-										Question
-									</TableHeader>
-									<TableHeader scope="col" width="50%">
-										Answer
-									</TableHeader>
-								</tr>
-							</TableHead>
-							<TableBody>
-								{Object.keys(MAPPERS[idx] || {}).map((key) => {
-									const mapping = MAPPERS[idx];
-									return (
-										<tr key={key}>
-											<TableCell>
-												{key in mapping
-													? mapping[key as keyof typeof mapping]
-													: 'N/A'}
-											</TableCell>
-											<TableCell>
-												{formatFieldValue(formState?.[idx]?.[key])}
-											</TableCell>
-										</tr>
-									);
-								})}
-							</TableBody>
-						</Table>
-					)
-				)}
-				<Stack as="form" gap={3} onSubmit={handleSubmit(onSubmit, onError)}>
-					<FormStack>
-						{hasErrors && (
-							<PageAlert
-								ref={errorRef}
-								tone="error"
-								title="There is a problem"
-								tabIndex={-1}
-							>
-								<Body>
-									<p>Please correct the following fields and try again</p>
-									<ul>
-										{Object.entries(errors).map(([key, value]) => (
-											<li key={key}>
-												<a href={`#${key}`} onClick={scrollToField}>
-													{value.message}
-												</a>
-											</li>
-										))}
-									</ul>
-								</Body>
-							</PageAlert>
-						)}
-						<Body>
-							<h2>Declaration</h2>
-							<p>I declare that:</p>
-							<ul>
-								<li>
-									The information I have provided on behalf of the applicant is
-									true and accurate
-								</li>
-								<li>I have read and understood the terms and conditions</li>
-							</ul>
-						</Body>
-						<Checkbox
-							{...register('declaration')}
-							id="declaration"
-							invalid={Boolean(errors.declaration?.message)}
+			{FORM_STEPS.filter((_, idx) => idx !== FORM_STEPS.length - 1).map(
+				(step, idx) => (
+					<Stack key={idx} gap={1.5}>
+						<H2>{step.label}</H2>
+						<DefinitionList>
+							{Object.keys(MAPPERS[idx] || {}).map((key) => {
+								const mapping = MAPPERS[idx];
+								return (
+									<DefinitionListItem key={key}>
+										<DefinitionTerm>
+											<VisuallyHidden>{'Question '}</VisuallyHidden>
+											{key in mapping
+												? mapping[key as keyof typeof mapping]
+												: 'N/A'}
+										</DefinitionTerm>
+										<DefinitionDescription>
+											<VisuallyHidden>{'Answer '}</VisuallyHidden>
+											{formatFieldValue(formState?.[idx]?.[key])}
+										</DefinitionDescription>
+									</DefinitionListItem>
+								);
+							})}
+						</DefinitionList>
+					</Stack>
+				)
+			)}
+			<Stack as="form" gap={3} onSubmit={handleSubmit(onSubmit, onError)}>
+				<FormStack>
+					{hasErrors && (
+						<PageAlert
+							ref={errorRef}
+							tone="error"
+							title="There is a problem"
+							tabIndex={-1}
 						>
-							I confirm that I have read and agree with the above declaration
-							(required)
-						</Checkbox>
-					</FormStack>
-					<FormExampleMultiStepActions />
-				</Stack>
-			</FormStack>
+							<Body>
+								<p>Please correct the following fields and try again</p>
+								<ul>
+									{Object.entries(errors).map(([key, value]) => (
+										<li key={key}>
+											<a href={`#${key}`} onClick={scrollToField}>
+												{value.message}
+											</a>
+										</li>
+									))}
+								</ul>
+							</Body>
+						</PageAlert>
+					)}
+					<Body>
+						<h2>Declaration</h2>
+						<p>I declare that:</p>
+						<ul>
+							<li>
+								The information I have provided on behalf of the applicant is
+								true and accurate
+							</li>
+							<li>I have read and understood the terms and conditions</li>
+						</ul>
+					</Body>
+					<Checkbox
+						{...register('declaration')}
+						id="declaration"
+						invalid={Boolean(errors.declaration?.message)}
+					>
+						I confirm that I have read and agree with the above declaration
+						(required)
+					</Checkbox>
+				</FormStack>
+				<FormExampleMultiStepActions />
+			</Stack>
 		</FormExampleMultiStepContainer>
 	);
 };
