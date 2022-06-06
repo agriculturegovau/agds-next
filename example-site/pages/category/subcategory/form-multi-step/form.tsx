@@ -1,5 +1,5 @@
 import type { NextPage } from 'next';
-import { FormExampleMultiStep } from '../../components/FormExampleMultiStep/FormExampleMultiStep';
+import { FormExampleMultiStep } from '../../../../components/FormExampleMultiStep/FormExampleMultiStep';
 
 const FormMultiStepPage: NextPage = () => {
 	return <FormExampleMultiStep />;

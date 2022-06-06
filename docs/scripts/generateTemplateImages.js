@@ -4,7 +4,10 @@ const puppeteer = require('puppeteer');
 const { normalize } = require('path');
 const matter = require('gray-matter');
 
+const BASE_URL = `http://localhost:3000/agds-next/example-site`;
+const OUTPUT_DIR = `public/img/templates/`;
 const TEMPLATES_PATH = normalize(`${process.cwd()}/../templates/`);
+
 const templateOverviewPath = (slug) =>
 	normalize(`${TEMPLATES_PATH}/${slug}/index.mdx`);
 
@@ -49,7 +52,7 @@ function getTemplateList() {
 			slugs.map((slug) =>
 				getMarkdownData(templateOverviewPath(slug)).then(({ data }) => ({
 					slug,
-					previewUrl: data?.previewUrl,
+					previewPath: data?.previewPath,
 				}))
 			)
 		);
@@ -57,27 +60,33 @@ function getTemplateList() {
 }
 
 (async () => {
+	console.info('Starting');
+	console.log(`Screenshoting ${BASE_URL}`);
+	console.info(`Outputing images to ${OUTPUT_DIR}`);
+
 	const templates = await getTemplateList();
 	const browser = await puppeteer.launch();
 
 	await Promise.all(
-		templates
-			.filter((template) => template.previewUrl)
-			.map(async (template) => {
-				console.log(`Generating preview image for ${template.slug} page.`);
+		templates.map(async ({ slug, previewPath }, idx) => {
+			try {
+				console.log(`Generating ${idx + 1} of ${templates.length}`);
+				const url = BASE_URL + previewPath;
+				const destination = OUTPUT_DIR + `/${slug}.png`;
 				const page = await browser.newPage();
 				await page.setViewport({
 					width: 1280,
 					height: 720,
 					deviceScaleFactor: 1,
 				});
-				await page.goto(template.previewUrl);
-				await page.screenshot({
-					path: `public/img/templates/${template.slug}.png`,
-				});
-			})
+				await page.goto(url);
+				await page.screenshot({ path: destination });
+			} catch (error) {
+				console.log(`Error with "${slug}"`);
+				console.error(error.message);
+			}
+		})
 	);
-
 	await browser.close();
 
 	console.log('Done');

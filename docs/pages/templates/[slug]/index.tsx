@@ -39,11 +39,13 @@ export default function TemplateOverviewPage({
 				]}
 			>
 				<Body id="page-content">
-					{template.imageSrc && (
-						<Box border borderColor="muted" css={{ img: { display: 'block' } }}>
-							<img role="presentation" src={template.imageSrc} alt="" />
-						</Box>
-					)}
+					<Box border borderColor="muted" css={{ img: { display: 'block' } }}>
+						<img
+							role="presentation"
+							src={`/agds-next/img/templates/${template.slug}.png`}
+							alt=""
+						/>
+					</Box>
 					<MDXRemote {...template.source} components={mdxComponents} />
 				</Body>
 			</TemplateLayout>

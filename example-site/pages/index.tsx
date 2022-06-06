@@ -1,6 +1,6 @@
 import type { NextPage } from 'next';
 import { Stack } from '@ag.ds-next/box';
-import { Button, ButtonGroup } from '@ag.ds-next/button';
+import { ButtonGroup, ButtonLink } from '@ag.ds-next/button';
 import { SectionContent } from '@ag.ds-next/content';
 import { Columns, Column } from '@ag.ds-next/columns';
 import { H2, H3 } from '@ag.ds-next/heading';
@@ -35,22 +35,25 @@ const Home: NextPage = () => {
 							Website hero banner title - xxxl/display (H1)
 						</HeroBannerTitle>
 						<HeroBannerSubtitle>
-							Short hero banner sentence - md/default (P)
+							Short sentence providing more detail about the hero banner and
+							actions - md/default (P)
 						</HeroBannerSubtitle>
 					</HeroBannerTitleContainer>
 					<ButtonGroup>
-						<Button>Create account</Button>
-						<Button variant="secondary">Sign in</Button>
+						<ButtonLink href="/form-sign-in">Create account</ButtonLink>
+						<ButtonLink href="/form-sign-in" variant="secondary">
+							Sign in
+						</ButtonLink>
 					</ButtonGroup>
 				</HeroBanner>
 
 				<SectionContent>
-					<Stack gap={2}>
+					<Stack gap={1.5}>
 						<H2>Content heading (H2)</H2>
 						<Columns as="ul">
 							{Array.from(Array(4).keys()).map((idx) => (
 								<Column key={idx} as="li" columnSpan={{ xs: 12, sm: 6, md: 3 }}>
-									<Stack gap={1}>
+									<Stack gap={1.5}>
 										<H3>Content heading (H3)</H3>
 										<Text as="p">
 											Short descriptive paragraph designed to fit in this space
@@ -68,7 +71,7 @@ const Home: NextPage = () => {
 					<Columns>
 						<Column columnSpan={{ xs: 12, md: 6 }}>
 							<Stack gap={2} alignItems="flex-start">
-								<Stack gap={1}>
+								<Stack gap={1.5}>
 									<H2>Highlighted content row heading (H2)</H2>
 									<Text as="p">
 										Short descriptive paragraph designed to fit in this space -
@@ -76,7 +79,9 @@ const Home: NextPage = () => {
 										in this space - sm/default (P).
 									</Text>
 								</Stack>
-								<CallToActionLink>Read more</CallToActionLink>
+								<CallToActionLink href="/category/subcategory/content">
+									Read more
+								</CallToActionLink>
 							</Stack>
 						</Column>
 						<Column columnSpan={{ xs: 12, md: 6 }}>
@@ -90,7 +95,7 @@ const Home: NextPage = () => {
 				</SectionContent>
 
 				<SectionContent>
-					<Stack gap={2}>
+					<Stack alignItems="flex-start" gap={1.5}>
 						<H2>Articles heading (H2)</H2>
 						<Columns as="ul">
 							{Array.from(Array(3).keys()).map((idx) => (
@@ -99,7 +104,9 @@ const Home: NextPage = () => {
 								</Column>
 							))}
 						</Columns>
-						<CallToActionLink href="#">See more articles</CallToActionLink>
+						<CallToActionLink href="/category">
+							See more articles
+						</CallToActionLink>
 					</Stack>
 				</SectionContent>
 			</AppLayout>
