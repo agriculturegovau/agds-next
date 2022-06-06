@@ -16,7 +16,7 @@
 		"@ag.ds-next/icon": "8.0.0",
 		"@ag.ds-next/text": "7.0.0",
 		"@emotion/react": "^11.7.0",
-		"react": "^16.14.0 || ^17.0.0"
+		"react": "^16.14.0 || ^17.0.0 || ^18.0.0"
 	},
 	"devDependencies": {
 		"@ag.ds-next/box": "*",

@@ -6,7 +6,7 @@
 	"license": "MIT",
 	"peerDependencies": {
 		"@emotion/react": "^11.7.0",
-		"react": "^16.14.0 || ^17.0.0"
+		"react": "^16.14.0 || ^17.0.0 || ^18.0.0"
 	},
 	"devDependencies": {
 		"@emotion/react": "^11.7.0",
