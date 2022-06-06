@@ -1,9 +1,9 @@
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
-import { FormStack } from '@ag.ds-next/form-stack';
-import { useFormExampleMultiStep } from './FormExampleMultiStep';
+import { Stack } from '@ag.ds-next/box';
 import { ControlGroup, Radio } from '@ag.ds-next/control-input';
+import { useFormExampleMultiStep } from './FormExampleMultiStep';
 import { FormExampleMultiStepActions } from './FormExampleMultiStepActions';
 import { FormExampleMultiStepContainer } from './FormExampleMultiStepContainer';
 
@@ -44,41 +44,39 @@ export const FormExampleMultiStep0 = () => {
 			title="Conditional fork title (H1)"
 			introduction="The introductory paragraph provides context about this page of the form. Use a short paragraph to reduce cognitive load."
 		>
-			<form onSubmit={handleSubmit(onSubmit)}>
-				<FormStack>
-					<ControlGroup
-						label="Fieldset question?"
-						hint="Hint text"
+			<Stack as="form" onSubmit={handleSubmit(onSubmit)} gap={3}>
+				<ControlGroup
+					label="Fieldset question?"
+					hint="Hint text"
+					invalid={Boolean(errors.example?.message)}
+					message={errors.example?.message}
+					required
+					block
+				>
+					<Radio
+						{...register('example')}
+						value="A"
 						invalid={Boolean(errors.example?.message)}
-						message={errors.example?.message}
-						required
-						block
 					>
-						<Radio
-							{...register('example')}
-							value="A"
-							invalid={Boolean(errors.example?.message)}
-						>
-							Radio label A
-						</Radio>
-						<Radio
-							{...register('example')}
-							value="B"
-							invalid={Boolean(errors.example?.message)}
-						>
-							Radio label B
-						</Radio>
-						<Radio
-							{...register('example')}
-							value="C"
-							invalid={Boolean(errors.example?.message)}
-						>
-							Radio label C
-						</Radio>
-					</ControlGroup>
-					<FormExampleMultiStepActions />
-				</FormStack>
-			</form>
+						Radio label A
+					</Radio>
+					<Radio
+						{...register('example')}
+						value="B"
+						invalid={Boolean(errors.example?.message)}
+					>
+						Radio label B
+					</Radio>
+					<Radio
+						{...register('example')}
+						value="C"
+						invalid={Boolean(errors.example?.message)}
+					>
+						Radio label C
+					</Radio>
+				</ControlGroup>
+				<FormExampleMultiStepActions />
+			</Stack>
 		</FormExampleMultiStepContainer>
 	);
 };

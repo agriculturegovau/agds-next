@@ -81,7 +81,8 @@ export const FormExampleSinglePage = () => {
 		setHasFocusedErrorRef(false);
 	};
 
-	const hasErrors = Boolean(Object.keys(errors).length);
+	// Only show the page alert if there is more than 1 error
+	const hasErrors = Object.keys(errors).length > 1;
 
 	useEffect(() => {
 		if (!(hasErrors || hasFocusedErrorRef)) return;
@@ -179,9 +180,7 @@ export const FormExampleSinglePage = () => {
 						/>
 					</FormStack>
 				</Fieldset>
-
 				<FormDivider />
-
 				<Fieldset
 					legend={<H2>Provide entity details (H2)</H2>}
 					hint="Supporting information for provide details subheading - sm/default"
@@ -207,7 +206,6 @@ export const FormExampleSinglePage = () => {
 						/>
 					</FormStack>
 				</Fieldset>
-
 				<Fieldset legend={<H3>Street address (H3)</H3>}>
 					<FormStack>
 						<TextInput
@@ -260,7 +258,6 @@ export const FormExampleSinglePage = () => {
 						/>
 					</FormStack>
 				</Fieldset>
-
 				<Fieldset legend={<H3>Postal address (H3)</H3>}>
 					<FormStack>
 						<Checkbox
@@ -324,16 +321,13 @@ export const FormExampleSinglePage = () => {
 						)}
 					</FormStack>
 				</Fieldset>
-
-				<FormStack>
-					<FormDivider />
-					<ButtonGroup>
-						<Button type="submit">Submit</Button>
-						<Button type="button" variant="secondary">
-							Cancel
-						</Button>
-					</ButtonGroup>
-				</FormStack>
+				<FormDivider />
+				<ButtonGroup>
+					<Button type="submit">Submit</Button>
+					<Button type="button" variant="secondary">
+						Cancel
+					</Button>
+				</ButtonGroup>
 			</Stack>
 		</form>
 	);

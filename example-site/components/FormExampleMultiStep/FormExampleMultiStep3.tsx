@@ -1,15 +1,15 @@
+import { useEffect, useRef, useState } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
-import { FormStack } from '@ag.ds-next/form-stack';
 import { Body } from '@ag.ds-next/body';
-import { PageAlert } from '@ag.ds-next/page-alert';
-import { useScrollToField } from '@ag.ds-next/field';
-import { useEffect, useRef, useState } from 'react';
+import { Box, Stack } from '@ag.ds-next/box';
 import { Checkbox, ControlGroup } from '@ag.ds-next/control-input';
-import { TextInput } from '@ag.ds-next/text-input';
-import { Box } from '@ag.ds-next/box';
+import { FormStack } from '@ag.ds-next/form-stack';
 import { mapSpacing } from '@ag.ds-next/core';
+import { PageAlert } from '@ag.ds-next/page-alert';
+import { TextInput } from '@ag.ds-next/text-input';
+import { useScrollToField } from '@ag.ds-next/field';
 import { useFormExampleMultiStep } from './FormExampleMultiStep';
 import { FormExampleMultiStepActions } from './FormExampleMultiStepActions';
 import { FormExampleMultiStepContainer } from './FormExampleMultiStepContainer';
@@ -66,7 +66,8 @@ export const FormExampleMultiStep3 = () => {
 		setFocusedError(false);
 	};
 
-	const hasErrors = Boolean(Object.keys(errors).length);
+	// Only show the page alert if there is more than 1 error
+	const hasErrors = Object.keys(errors).length > 1;
 
 	useEffect(() => {
 		if (hasErrors && !focusedError) {
@@ -88,7 +89,7 @@ export const FormExampleMultiStep3 = () => {
 			title="Conditional reveal title (H1)"
 			introduction="The introductory paragraph provides context about this page of the form. Use a short paragraph to reduce cognitive load."
 		>
-			<form onSubmit={handleSubmit(onSubmit, onError)}>
+			<Stack as="form" gap={3} onSubmit={handleSubmit(onSubmit, onError)}>
 				<FormStack>
 					{hasErrors && (
 						<PageAlert
@@ -153,9 +154,9 @@ export const FormExampleMultiStep3 = () => {
 							Checkbox label D
 						</Checkbox>
 					</ControlGroup>
-					<FormExampleMultiStepActions />
 				</FormStack>
-			</form>
+				<FormExampleMultiStepActions />
+			</Stack>
 		</FormExampleMultiStepContainer>
 	);
 };

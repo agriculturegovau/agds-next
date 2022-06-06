@@ -1,12 +1,11 @@
+import { useEffect, useRef, useState } from 'react';
 import { useForm, SubmitHandler, SubmitErrorHandler } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { FormStack } from '@ag.ds-next/form-stack';
-import { FORM_STEPS, useFormExampleMultiStep } from './FormExampleMultiStep';
 import { Body } from '@ag.ds-next/body';
 import { PageAlert } from '@ag.ds-next/page-alert';
 import { useScrollToField } from '@ag.ds-next/field';
-import { useEffect, useRef, useState } from 'react';
 import { Checkbox } from '@ag.ds-next/control-input';
 import {
 	Table,
@@ -16,9 +15,10 @@ import {
 	TableBody,
 	TableCell,
 } from '@ag.ds-next/table';
+import { Stack } from '@ag.ds-next/box';
+import { FORM_STEPS, useFormExampleMultiStep } from './FormExampleMultiStep';
 import { FormExampleMultiStepContainer } from './FormExampleMultiStepContainer';
 import { FormExampleMultiStepActions } from './FormExampleMultiStepActions';
-
 import { formExampleMultiStep0ValuesMap } from './FormExampleMultiStep0';
 import { formExampleMultiStep1ValuesMap } from './FormExampleMultiStep1';
 import { formExampleMultiStep2ValuesMap } from './FormExampleMultiStep2';
@@ -66,7 +66,8 @@ export const FormExampleMultiStep4 = () => {
 		setFocusedError(false);
 	};
 
-	const hasErrors = Boolean(Object.keys(errors).length);
+	// Only show the page alert if there is more than 1 error
+	const hasErrors = Object.keys(errors).length > 1;
 
 	useEffect(() => {
 		if (hasErrors && !focusedError) {
@@ -115,7 +116,7 @@ export const FormExampleMultiStep4 = () => {
 						</Table>
 					)
 				)}
-				<form onSubmit={handleSubmit(onSubmit, onError)}>
+				<Stack as="form" gap={3} onSubmit={handleSubmit(onSubmit, onError)}>
 					<FormStack>
 						{hasErrors && (
 							<PageAlert
@@ -157,9 +158,9 @@ export const FormExampleMultiStep4 = () => {
 							I confirm that I have read and agree with the above declaration
 							(required)
 						</Checkbox>
-						<FormExampleMultiStepActions />
 					</FormStack>
-				</form>
+					<FormExampleMultiStepActions />
+				</Stack>
 			</FormStack>
 		</FormExampleMultiStepContainer>
 	);
