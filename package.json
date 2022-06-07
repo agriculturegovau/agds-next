@@ -14,7 +14,7 @@
 		"fresh": "yarn clean && yarn",
 		"build": "preconstruct build",
 		"publish-changed": "yarn build && yarn changeset publish",
-		"lint": "yarn lint:example && yarn lint:docs && yarn lint:prettier && yarn lint:typescript",
+		"lint": "yarn lint:packages && yarn lint:example && yarn lint:docs && yarn lint:prettier && yarn lint:typescript",
 		"lint:packages": "yarn eslint packages/**",
 		"lint:example": "yarn --cwd example-site lint",
 		"lint:docs": "yarn --cwd docs lint",
