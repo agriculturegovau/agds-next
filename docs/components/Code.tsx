@@ -1,4 +1,4 @@
-import React, { useState, useCallback, Fragment } from 'react';
+import React, { ReactNode, useState, useCallback, Fragment } from 'react';
 import { useRouter } from 'next/router';
 import {
 	LiveProvider,
@@ -33,12 +33,6 @@ import {
 import { designSystemComponents } from './design-system-components';
 import { prismTheme } from './prism-theme';
 
-type CodeProps = {
-	children: string;
-	className: string;
-	live: boolean;
-};
-
 const PlaceholderImage = () => (
 	<img
 		src="/agds-next/img/placeholder/600X260.png"
@@ -70,7 +64,7 @@ const LiveCode = withLive((props: unknown) => {
 	}, [localCopy]);
 
 	const handleChange = useCallback(
-		(code) => {
+		(code: string) => {
 			liveOnChange(code);
 			setLocalCopy(code);
 		},
@@ -237,12 +231,22 @@ const LIVE_SCOPE = {
 	React,
 };
 
+type CodeProps = {
+	children?: ReactNode;
+	className?: string;
+	live?: boolean;
+};
+
 export function Code({ children, live, className }: CodeProps) {
+	const childrenAsString = children?.toString().trim();
 	const language = className?.replace(/language-/, '') as Language;
+
+	if (!childrenAsString) return null;
+
 	if (live) {
 		return (
 			<LiveProvider
-				code={children.trim()}
+				code={childrenAsString}
 				scope={LIVE_SCOPE}
 				language={language}
 			>
@@ -251,5 +255,5 @@ export function Code({ children, live, className }: CodeProps) {
 		);
 	}
 
-	return <StaticCode language={language} code={children.trim()} />;
+	return <StaticCode language={language} code={childrenAsString} />;
 }
