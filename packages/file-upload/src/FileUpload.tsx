@@ -109,6 +109,12 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 			valid,
 		});
 
+		const showUploadBox = useMemo(() => {
+			if (!maxFiles) return true;
+			if (multiple) return value.length < maxFiles;
+			return value.length === 0;
+		}, [maxFiles, multiple, value.length]);
+
 		return (
 			<Field
 				label={label}
@@ -127,53 +133,54 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 
 					return (
 						<Stack gap={0.5} {...rootProps}>
-							<Flex
-								gap={1}
-								padding={1.5}
-								alignItems="center"
-								flexDirection="column"
-								border
-								rounded
-								css={styles}
-							>
-								<UploadIcon size="lg" color="muted" />
-								<input
-									ref={ref}
-									{...getInputProps()}
-									{...allyProps}
-									{...props}
-								/>
+							{showUploadBox && (
 								<Flex
-									flexDirection="column"
+									gap={1}
+									padding={1.5}
 									alignItems="center"
-									css={{ textAlign: 'center' }}
+									flexDirection="column"
+									border
+									rounded
+									css={styles}
 								>
-									<Text color="muted">
-										{isDragActive
-											? `Drop ${filesPlural} here...`
-											: `Drag and drop ${filesPlural} here or select ${filesPlural} to upload.`}
-									</Text>
-									{maxSize ? (
+									<UploadIcon size="lg" color="muted" />
+									<input
+										ref={ref}
+										{...getInputProps()}
+										{...allyProps}
+										{...props}
+									/>
+									<Flex
+										flexDirection="column"
+										alignItems="center"
+										css={{ textAlign: 'center' }}
+									>
 										<Text color="muted">
-											Each file cannot exceed {formattedMaxFileSize}.
+											{isDragActive
+												? `Drop ${filesPlural} here...`
+												: `Drag and drop ${filesPlural} here or select ${filesPlural} to upload.`}
 										</Text>
-									) : null}
-									{accept ? (
-										<Text color="muted">
-											Files accepted: {acceptedFilesSummary}
-										</Text>
-									) : null}
+										{maxSize ? (
+											<Text color="muted">
+												Each file cannot exceed {formattedMaxFileSize}.
+											</Text>
+										) : null}
+										{accept ? (
+											<Text color="muted">
+												Files accepted: {acceptedFilesSummary}
+											</Text>
+										) : null}
+									</Flex>
+									<Button
+										type="button"
+										variant="secondary"
+										onClick={open}
+										disabled={disabled}
+									>
+										{`Select ${filesPlural}`}
+									</Button>
 								</Flex>
-								<Button
-									type="button"
-									variant="secondary"
-									onClick={open}
-									disabled={disabled}
-								>
-									{`Select ${filesPlural}`}
-								</Button>
-							</Flex>
-							{files.length ? (
+							)}
 								<Fragment>
 									<Text color="muted">{getFilesTotal(files)}</Text>
 									<Stack as="ul" gap={0.5}>
