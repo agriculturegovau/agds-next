@@ -11,6 +11,7 @@ export const mdxComponents: Record<string, any> = {
 	// avoid wrapping live examples in pre tag
 	pre: Fragment,
 	code: Code,
+	Fragment,
 	a: ({ href, ...props }: AnchorHTMLAttributes<HTMLAnchorElement>) => {
 		if (!href) return <a {...props} />;
 		// Render an external link icon and open page in new tab
