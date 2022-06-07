@@ -24,8 +24,10 @@ import { HeaderBrand } from './HeaderBrand';
 import logoImageLight from '../../../example-site/public/header-logo-agov.png';
 import logoImageDark from '../../../example-site/public/header-logo-agov--dark.png';
 
-const logoLight = <img src={logoImageLight as any} alt="Logo" />;
-const logoDark = <img src={logoImageDark as any} alt="Logo" />;
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const logoLight = <img src={logoImageLight as any as string} alt="Logo" />;
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const logoDark = <img src={logoImageDark as any as string} alt="Logo" />;
 
 export default {
 	title: 'layout/Header',
