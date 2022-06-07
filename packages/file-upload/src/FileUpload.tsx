@@ -64,7 +64,6 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 		ref
 	) {
 		const [files, setFiles] = useState<FileWithPath[]>([]);
-		const styles = fileInputStyles({ disabled, invalid, valid });
 		const filesPlural = multiple ? 'files' : 'file';
 		const maxSizeBytes = (maxSize || 0) * 1000;
 		const formattedMaxFileSize = formatFileSize(maxSizeBytes);
@@ -95,6 +94,8 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 				multiple,
 				onDropAccepted: handleDropAccepted,
 				disabled,
+				noClick: true,
+				noKeyboard: true,
 			});
 
 		const errorSummary = getErrorSummary(
@@ -103,20 +104,30 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 			maxFiles
 		);
 		const acceptedFilesSummary = getAcceptedFilesSummary(accept);
+		const styles = fileInputStyles({
+			disabled,
+			invalid: invalid || !!errorSummary,
+			valid,
+		});
 
 		return (
-			<Stack gap={0.5}>
-				<Field
-					label={label}
-					required={Boolean(required)}
-					hint={hint}
-					message={message || errorSummary}
-					invalid={invalid || !!errorSummary}
-					valid={valid}
-					id={id}
-				>
-					{(allyProps) => (
-						<div {...getRootProps()}>
+			<Field
+				label={label}
+				required={Boolean(required)}
+				hint={hint}
+				message={message || errorSummary}
+				invalid={invalid || !!errorSummary}
+				valid={valid}
+				id={id}
+			>
+				{(allyProps) => {
+					// Avoid passing `color` to the Stack component, which causes
+					// TypeScript errors.
+					// eslint-disable-next-line @typescript-eslint/no-unused-vars
+					const { color, ...rootProps } = getRootProps();
+
+					return (
+						<Stack gap={0.5} {...rootProps}>
 							<Flex
 								gap={1}
 								padding={1.5}
@@ -124,7 +135,6 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 								flexDirection="column"
 								border
 								rounded
-								background="shade"
 								css={styles}
 							>
 								<UploadIcon size="lg" color="muted" />
@@ -164,38 +174,37 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 									{`Select ${filesPlural}`}
 								</Button>
 							</Flex>
-						</div>
-					)}
-				</Field>
-				{files.length ? (
-					<Fragment>
-						<Text color="muted">{getFilesTotal(files)}</Text>
-						<Stack as="ul" gap={0.5}>
-							{files.map((file, index) => (
-								<FileUploadFile
-									file={file}
-									key={index}
-									onRemove={() => handleRemoveFile(file)}
-								/>
-							))}
+							{files.length ? (
+								<Fragment>
+									<Text color="muted">{getFilesTotal(files)}</Text>
+									<Stack as="ul" gap={0.5}>
+										{files.map((file, index) => (
+											<FileUploadFile
+												file={file}
+												key={index}
+												onRemove={() => handleRemoveFile(file)}
+											/>
+										))}
+									</Stack>
+								</Fragment>
+							) : null}
+							{fileRejections.length ? (
+								<Stack as="ul" gap={0.5}>
+									{fileRejections.map((err, index) => (
+										<FileRejection key={index}>
+											{getFileRejectionErrorMessage(
+												err,
+												formattedMaxFileSize,
+												acceptedFilesSummary
+											)}
+										</FileRejection>
+									))}
+								</Stack>
+							) : null}{' '}
 						</Stack>
-					</Fragment>
-				) : null}
-
-				{fileRejections.length ? (
-					<Stack as="ul" gap={0.5}>
-						{fileRejections.map((err, index) => (
-							<FileRejection key={index}>
-								{getFileRejectionErrorMessage(
-									err,
-									formattedMaxFileSize,
-									acceptedFilesSummary
-								)}
-							</FileRejection>
-						))}
-					</Stack>
-				) : null}
-			</Stack>
+					);
+				}}
+			</Field>
 		);
 	}
 );
@@ -214,6 +223,7 @@ export const fileInputStyles = ({
 		borderWidth: tokens.borderWidth.lg,
 		borderStyle: 'dashed',
 		borderColor: boxPalette.borderInput,
+		backgroundColor: boxPalette.backgroundShade,
 		...(invalid
 			? {
 					backgroundColor: globalPalette.errorMuted,
