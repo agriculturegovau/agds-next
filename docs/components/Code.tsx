@@ -1,4 +1,4 @@
-import React, { useState, useCallback, Fragment } from 'react';
+import React, { ReactNode, useState, useCallback, Fragment } from 'react';
 import { useRouter } from 'next/router';
 import {
 	LiveProvider,
@@ -32,7 +32,6 @@ import {
 
 import { designSystemComponents } from './design-system-components';
 import { prismTheme } from './prism-theme';
-import { ReactNode } from 'react';
 
 const PlaceholderImage = () => (
 	<img
