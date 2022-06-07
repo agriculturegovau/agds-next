@@ -1,4 +1,4 @@
-import React, { FormHTMLAttributes } from 'react';
+import { FormHTMLAttributes } from 'react';
 import { Flex } from '@ag.ds-next/box';
 
 export type SearchBoxProps = FormHTMLAttributes<HTMLFormElement>;

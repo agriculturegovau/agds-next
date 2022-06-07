@@ -13,8 +13,8 @@ import {
 	mapSpacing,
 	mq,
 } from '@ag.ds-next/core';
-import { localPalette } from './utils';
 import { IconProps } from '@ag.ds-next/icon';
+import { localPalette } from './utils';
 
 type MainNavItemProps = PropsWithChildren<{
 	as: ElementType;

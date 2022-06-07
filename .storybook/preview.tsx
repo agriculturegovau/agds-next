@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { Core, tokens } from '@ag.ds-next/core';
 import { theme } from '@ag.ds-next/ag-branding';
 

@@ -1,5 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
-import React from 'react';
+
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { Logo } from '@ag.ds-next/ag-branding';
 import { Box, Stack } from '@ag.ds-next/box';

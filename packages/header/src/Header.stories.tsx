@@ -1,4 +1,3 @@
-import React from 'react';
 import {
 	ComponentStory,
 	ComponentMeta,
@@ -12,6 +11,8 @@ import {
 	SearchBoxButton,
 } from '@ag.ds-next/search-box';
 
+import logoImageLight from '../../../example-site/public/header-logo-agov.png';
+import logoImageDark from '../../../example-site/public/header-logo-agov--dark.png';
 import { Header, HeaderProps } from './Header';
 import { HeaderContainer } from './HeaderContainer';
 import { HeaderBrand } from './HeaderBrand';
@@ -21,8 +22,6 @@ import { HeaderBrand } from './HeaderBrand';
  * with `src` and other properties.
  * The image imports here are handled by storybook and resolve to strings.
  */
-import logoImageLight from '../../../example-site/public/header-logo-agov.png';
-import logoImageDark from '../../../example-site/public/header-logo-agov--dark.png';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const logoLight = <img src={logoImageLight as any as string} alt="Logo" />;

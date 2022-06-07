@@ -3,10 +3,7 @@ import { Body } from '@ag.ds-next/body';
 import { PageContent, ContentBleed } from '@ag.ds-next/content';
 import { Columns, Column } from '@ag.ds-next/columns';
 import { SideNav } from '@ag.ds-next/side-nav';
-import { AppLayout } from '../../../components/AppLayout';
-import { DocumentTitle } from '../../../components/DocumentTitle';
 import { Breadcrumbs } from '@ag.ds-next/breadcrumbs';
-import { PageTitle } from '../../../components/PageTitle';
 import { Stack } from '@ag.ds-next/box';
 import { InpageNav } from '@ag.ds-next/inpage-nav';
 import { DirectionLink } from '@ag.ds-next/direction-link';
@@ -17,6 +14,9 @@ import {
 	AccordionItem,
 	AccordionItemContent,
 } from '@ag.ds-next/accordion';
+import { PageTitle } from '../../../components/PageTitle';
+import { DocumentTitle } from '../../../components/DocumentTitle';
+import { AppLayout } from '../../../components/AppLayout';
 
 const ContentPage: NextPage = () => {
 	return (

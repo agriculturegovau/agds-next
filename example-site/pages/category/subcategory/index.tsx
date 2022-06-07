@@ -7,10 +7,10 @@ import {
 	HeroSubcategoryBanner,
 	HeroSubcategoryBannerTitle,
 } from '@ag.ds-next/hero-banner';
-import { AppLayout } from '../../../components/AppLayout';
-import { DocumentTitle } from '../../../components/DocumentTitle';
 import { Breadcrumbs } from '@ag.ds-next/breadcrumbs';
 import { Card, CardInner, CardLink, CardList } from '@ag.ds-next/card';
+import { AppLayout } from '../../../components/AppLayout';
+import { DocumentTitle } from '../../../components/DocumentTitle';
 
 const SubcategoryPage: NextPage = () => {
 	return (

@@ -1,4 +1,3 @@
-import React from 'react';
 import { ComponentMeta } from '@storybook/react';
 import { Body } from '@ag.ds-next/body';
 import { Stack } from '@ag.ds-next/box';

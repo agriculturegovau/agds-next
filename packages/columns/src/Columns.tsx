@@ -1,3 +1,4 @@
+import { PropsWithChildren } from 'react';
 import {
 	forwardRefWithAs,
 	ResponsiveProp,
@@ -7,7 +8,6 @@ import {
 	mq,
 } from '@ag.ds-next/core';
 import { Box, BoxProps } from '@ag.ds-next/box';
-import { PropsWithChildren } from 'react';
 
 export type ColumnsProps = PropsWithChildren<
 	Pick<BoxProps, 'gap' | 'alignItems'> & {

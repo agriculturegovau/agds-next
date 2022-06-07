@@ -1,9 +1,9 @@
+import { useMemo } from 'react';
 import { useSpring, animated } from '@react-spring/web';
 import { Flex } from '@ag.ds-next/box';
 import { ChevronDownIcon } from '@ag.ds-next/icon';
 import { boxPalette, tokens, usePrefersReducedMotion } from '@ag.ds-next/core';
 import type { ProgressIndicatorItem } from './ProgressIndicatorItem';
-import { useMemo } from 'react';
 
 type ProgressIndicatorCollapseButtonProps = {
 	ariaControls: string;

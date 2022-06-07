@@ -1,6 +1,6 @@
+import { PropsWithChildren } from 'react';
 import { backgroundColorMap, Box } from '@ag.ds-next/box';
 import { boxPalette, packs } from '@ag.ds-next/core';
-import React, { PropsWithChildren } from 'react';
 import { localPalette, localPaletteVars } from './utils';
 
 const variantMap = {

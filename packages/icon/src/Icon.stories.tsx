@@ -1,4 +1,3 @@
-import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { Text } from '@ag.ds-next/text';
 import { Flex } from '@ag.ds-next/box';

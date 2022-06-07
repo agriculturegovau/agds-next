@@ -1,8 +1,8 @@
 import { PropsWithChildren, ReactNode } from 'react';
+import { HeroBannerVariant } from '../utils';
 import { HeroCategoryBannerContent } from './HeroCategoryBannerContent';
 import { HeroCategoryBannerMobileImage } from './HeroCategoryBannerMobileImage';
 import { HeroCategoryBannerContainer } from './HeroCategoryBannerContainer';
-import { HeroBannerVariant } from '../utils';
 
 export type HeroCategoryBannerProps = PropsWithChildren<{
 	/** The hero image */

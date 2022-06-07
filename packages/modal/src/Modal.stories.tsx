@@ -1,8 +1,8 @@
 import { ComponentMeta } from '@storybook/react';
-import { Modal } from './Modal';
 import { Button, ButtonGroup } from '@ag.ds-next/button';
 import { useTernaryState } from '@ag.ds-next/core';
 import { Text } from '@ag.ds-next/text';
+import { Modal } from './Modal';
 
 export default {
 	title: 'content/Modal',

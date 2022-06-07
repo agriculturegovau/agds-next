@@ -1,9 +1,9 @@
 // TODO: Rename me to lib/mdx/utils.ts
+import { readdir, readFile } from 'fs/promises';
+import { normalize } from 'path';
 import { plugin } from '@untitled-docs/live-code/rehype';
 import { serialize } from 'next-mdx-remote/serialize';
-import { readdir, readFile } from 'fs/promises';
 import remarkHint from 'remark-hint';
-import { normalize } from 'path';
 import matter from 'gray-matter';
 
 import { slugify } from './slugify';

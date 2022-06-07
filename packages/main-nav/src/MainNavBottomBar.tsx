@@ -1,4 +1,3 @@
-import React from 'react';
 import { Box } from '@ag.ds-next/box';
 import { bottomBarPadding, MainNavVariant, variantMap } from './utils';
 

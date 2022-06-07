@@ -9,6 +9,18 @@ module.exports = {
 		'prettier',
 		'plugin:markdown/recommended',
 	],
+	rules: {
+		'import/order': [
+			'error',
+			{
+				// Ensure monorepo packages are imported between external dependencies and internal modules
+				pathGroups: [
+					{ pattern: '@ag.ds-next/**', group: 'external', position: 'after' },
+				],
+				pathGroupsExcludedImportTypes: ['builtin'],
+			},
+		],
+	},
 	overrides: [
 		{
 			// Both of these sites are hosted using GitHub pages

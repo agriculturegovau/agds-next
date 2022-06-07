@@ -1,6 +1,5 @@
-import React from 'react';
-import { Stack } from '@ag.ds-next/box';
 import { ComponentMeta } from '@storybook/react';
+import { Stack } from '@ag.ds-next/box';
 import { Text, TextLink } from '@ag.ds-next/text';
 import { H1 } from '@ag.ds-next/heading';
 import { VisuallyHidden, visuallyHiddenStyles } from './VisuallyHidden';

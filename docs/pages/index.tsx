@@ -3,9 +3,6 @@ import { SectionContent } from '@ag.ds-next/content';
 import { Stack } from '@ag.ds-next/box';
 import { CallToActionLink } from '@ag.ds-next/call-to-action';
 import { Body } from '@ag.ds-next/body';
-import { AppLayout } from '../components/AppLayout';
-import { PictogramCard } from '../components/PictogramCard';
-import { DocumentTitle } from '../components/DocumentTitle';
 import { TextLinkExternal } from '@ag.ds-next/text';
 import {
 	HeroBanner,
@@ -13,6 +10,9 @@ import {
 	HeroBannerTitle,
 	HeroBannerSubtitle,
 } from '@ag.ds-next/hero-banner';
+import { AppLayout } from '../components/AppLayout';
+import { PictogramCard } from '../components/PictogramCard';
+import { DocumentTitle } from '../components/DocumentTitle';
 
 export default function Homepage() {
 	return (

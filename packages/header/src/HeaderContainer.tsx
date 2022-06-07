@@ -1,7 +1,7 @@
+import { PropsWithChildren } from 'react';
 import { Box, Flex } from '@ag.ds-next/box';
 import { tokens } from '@ag.ds-next/core';
 import { Columns } from '@ag.ds-next/columns';
-import React from 'react';
 
 const variantMap = {
 	light: {
@@ -22,7 +22,7 @@ const variantMap = {
 	},
 } as const;
 
-type HeaderContainerProps = React.PropsWithChildren<{
+type HeaderContainerProps = PropsWithChildren<{
 	variant: keyof typeof variantMap;
 }>;
 

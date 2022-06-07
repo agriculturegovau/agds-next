@@ -1,4 +1,4 @@
-import React, { forwardRef, InputHTMLAttributes } from 'react';
+import { forwardRef, InputHTMLAttributes } from 'react';
 import { CheckboxIndicator } from './CheckboxIndicator';
 import { ControlInput } from './ControlInput';
 import { ControlContainer } from './ControlContainer';

@@ -1,8 +1,4 @@
-import React, {
-	forwardRef,
-	PropsWithChildren,
-	SelectHTMLAttributes,
-} from 'react';
+import { forwardRef, PropsWithChildren, SelectHTMLAttributes } from 'react';
 import { Field, FieldMaxWidth, fieldMaxWidth } from '@ag.ds-next/field';
 import {
 	packs,

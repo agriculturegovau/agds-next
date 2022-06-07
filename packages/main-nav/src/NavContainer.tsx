@@ -1,4 +1,4 @@
-import React, { PropsWithChildren, ReactNode } from 'react';
+import { PropsWithChildren, ReactNode, MouseEventHandler } from 'react';
 import FocusLock from 'react-focus-lock';
 import { Global } from '@emotion/react';
 import { Box, Flex, backgroundColorMap } from '@ag.ds-next/box';
@@ -118,11 +118,7 @@ function LockScroll() {
 	return <Global styles={{ body: { overflow: 'hidden' } }} />;
 }
 
-function Overlay({
-	onClick,
-}: {
-	onClick: React.MouseEventHandler<HTMLDivElement>;
-}) {
+function Overlay({ onClick }: { onClick: MouseEventHandler<HTMLDivElement> }) {
 	return (
 		<Box
 			css={{

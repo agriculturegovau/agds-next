@@ -1,5 +1,5 @@
-import { MDXRemote } from 'next-mdx-remote';
 import { normalize } from 'path';
+import { MDXRemote } from 'next-mdx-remote';
 import { Body } from '@ag.ds-next/body';
 import { Card, CardInner, CardLink, CardList } from '@ag.ds-next/card';
 import { Stack } from '@ag.ds-next/box';

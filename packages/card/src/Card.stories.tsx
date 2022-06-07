@@ -1,4 +1,3 @@
-import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { Box, Flex, Stack } from '@ag.ds-next/box';
 import { Heading } from '@ag.ds-next/heading';

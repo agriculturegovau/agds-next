@@ -1,7 +1,6 @@
-import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { LinkList, LinkListItem, LinkListContainer } from './index';
 import { Box } from '@ag.ds-next/box';
+import { LinkList, LinkListItem, LinkListContainer } from './index';
 
 export default {
 	title: 'navigation/LinkList',
