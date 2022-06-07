@@ -5,7 +5,6 @@ import { plugin } from '@untitled-docs/live-code/rehype';
 import { serialize } from 'next-mdx-remote/serialize';
 import remarkHint from 'remark-hint';
 import matter from 'gray-matter';
-
 import { slugify } from './slugify';
 
 const PKG_PATH = normalize(`${process.cwd()}/../packages/`);

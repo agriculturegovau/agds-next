@@ -1,7 +1,6 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { Box, Flex } from '@ag.ds-next/box';
 import { theme } from '@ag.ds-next/ag-branding';
-
 import { Core } from './Core';
 
 export default {

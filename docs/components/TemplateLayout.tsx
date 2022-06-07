@@ -6,7 +6,6 @@ import { SkipLinksProps } from '@ag.ds-next/skip-link';
 import { Text } from '@ag.ds-next/text';
 import { Callout } from '@ag.ds-next/callout';
 import { SecondaryNav } from '@ag.ds-next/secondary-nav';
-
 import type {
 	Template,
 	getTemplateBreadcrumbs,
@@ -14,7 +13,6 @@ import type {
 } from '../lib/mdx';
 import { AppLayout } from './AppLayout';
 import { PageLayout } from './PageLayout';
-
 import { PageTitle } from './PageTitle';
 
 type TemplateLayoutProps = PropsWithChildren<{

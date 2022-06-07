@@ -1,6 +1,5 @@
 import { PropsWithChildren } from 'react';
 import { Global } from '@emotion/react';
-
 import { goldTheme } from './goldTheme';
 import { CoreProvider, CoreProviderProps } from './context';
 import { mergeTheme, Theme } from './theme';

@@ -1,6 +1,5 @@
 import { normalize } from 'path';
 import { readdir } from 'fs/promises';
-
 import {
 	getMarkdownData,
 	serializeMarkdown,

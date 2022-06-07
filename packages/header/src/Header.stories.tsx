@@ -10,7 +10,6 @@ import {
 	SearchBoxInput,
 	SearchBoxButton,
 } from '@ag.ds-next/search-box';
-
 import logoImageLight from '../../../example-site/public/header-logo-agov.png';
 import logoImageDark from '../../../example-site/public/header-logo-agov--dark.png';
 import { Header, HeaderProps } from './Header';

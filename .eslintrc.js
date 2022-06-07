@@ -17,6 +17,7 @@ module.exports = {
 				pathGroups: [
 					{ pattern: '@ag.ds-next/**', group: 'external', position: 'after' },
 				],
+				'newlines-between': 'never',
 				pathGroupsExcludedImportTypes: ['builtin'],
 			},
 		],

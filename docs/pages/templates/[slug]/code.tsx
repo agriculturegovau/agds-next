@@ -1,7 +1,6 @@
 import { GetStaticProps, InferGetStaticPropsType } from 'next';
 import { MDXRemote } from 'next-mdx-remote';
 import { Body } from '@ag.ds-next/body';
-
 import {
 	getTemplate,
 	getTemplateBreadcrumbs,
@@ -11,7 +10,6 @@ import {
 	getTemplateSubNavItems,
 	Template,
 } from '../../../lib/mdx';
-
 import { mdxComponents } from '../../../components/utils';
 import { TemplateLayout } from '../../../components/TemplateLayout';
 import { DocumentTitle } from '../../../components/DocumentTitle';

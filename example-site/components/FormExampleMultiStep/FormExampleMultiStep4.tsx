@@ -9,7 +9,6 @@ import { Stack } from '@ag.ds-next/box';
 import { PageAlert } from '@ag.ds-next/page-alert';
 import { useScrollToField } from '@ag.ds-next/field';
 import { Checkbox } from '@ag.ds-next/control-input';
-
 import { H2 } from '@ag.ds-next/heading';
 import {
 	DefinitionList,

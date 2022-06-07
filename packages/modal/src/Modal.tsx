@@ -1,7 +1,6 @@
 import { Fragment, FunctionComponent, KeyboardEvent, useCallback } from 'react';
 import { Global } from '@emotion/react';
 import { createPortal } from 'react-dom';
-
 import { ModalCover } from './ModalCover';
 import { ModalPanel, ModalPanelProps } from './ModalPanel';
 

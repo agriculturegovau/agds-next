@@ -7,7 +7,6 @@ import { packs, boxPalette, globalPalette, tokens } from '@ag.ds-next/core';
 import { Field } from '@ag.ds-next/field';
 import { UploadIcon } from '@ag.ds-next/icon';
 import { Text } from '@ag.ds-next/text';
-
 import { FileRejection } from './FileRejection';
 import { FileUploadFile } from './FileUploadFile';
 import {

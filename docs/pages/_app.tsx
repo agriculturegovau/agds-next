@@ -2,7 +2,6 @@ import type { AppProps } from 'next/app';
 import Head from 'next/head';
 import { Core } from '@ag.ds-next/core';
 import { theme } from '@ag.ds-next/ag-branding';
-
 import { LinkComponent } from '../components/LinkComponent';
 
 export default function App({ Component, pageProps }: AppProps) {

@@ -10,7 +10,6 @@ import {
 	useWindowSize,
 	packs,
 } from '@ag.ds-next/core';
-
 import {
 	localPalette,
 	localPaletteVars,

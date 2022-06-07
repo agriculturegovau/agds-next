@@ -2,7 +2,6 @@ import { PropsWithChildren, ReactNode, useCallback } from 'react';
 import { useId } from '@reach/auto-id';
 import { Box } from '@ag.ds-next/box';
 import { useToggleState } from '@ag.ds-next/core';
-
 import { AccordionTitle, AccordionTitleProps } from './AccordionTitle';
 import { AccordionBody } from './AccordionBody';
 

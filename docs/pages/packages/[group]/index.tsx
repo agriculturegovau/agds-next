@@ -1,6 +1,5 @@
 import type { GetStaticProps, InferGetStaticPropsType } from 'next';
 import { H1 } from '@ag.ds-next/heading';
-
 import { AppLayout } from '../../../components/AppLayout';
 import { PageLayout } from '../../../components/PageLayout';
 import { PkgCardList } from '../../../components/PkgCardList';
