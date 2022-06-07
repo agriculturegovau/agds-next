@@ -1,12 +1,11 @@
-import { MDXRemote } from 'next-mdx-remote';
 import { normalize } from 'path';
+import { MDXRemote } from 'next-mdx-remote';
 import { Body } from '@ag.ds-next/body';
 import { boxPalette } from '@ag.ds-next/core';
 import { Box, Flex, Stack } from '@ag.ds-next/box';
 import { Card, CardLink, CardInner, CardList } from '@ag.ds-next/card';
 import { mq } from '@ag.ds-next/core';
 import { Text } from '@ag.ds-next/text';
-
 import { getMarkdownData, serializeMarkdown } from '../../lib/mdxUtils';
 import { getTemplateList } from '../../lib/mdx';
 import { mdxComponents } from '../../components/utils';

@@ -7,7 +7,6 @@ import {
 	SuccessFilledIcon,
 	WarningFilledIcon,
 } from '@ag.ds-next/icon';
-
 import { PageAlertTitle } from './PageAlertTitle';
 
 export type PageAlertTone = 'success' | 'error' | 'warning' | 'info';

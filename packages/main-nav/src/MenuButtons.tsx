@@ -1,7 +1,6 @@
 import { MouseEventHandler, PropsWithChildren } from 'react';
 import { Box, Flex } from '@ag.ds-next/box';
 import { boxPalette } from '@ag.ds-next/core';
-
 import { localPalette } from './utils';
 
 export type MainNavButtonProps = PropsWithChildren<{

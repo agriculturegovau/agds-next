@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { Box, Stack } from '@ag.ds-next/box';
-import { DatePicker } from './DatePicker';
 import { Button, ButtonGroup } from '@ag.ds-next/button';
+import { DatePicker } from './DatePicker';
 
 export default {
 	title: 'forms/DatePicker/DatePicker',

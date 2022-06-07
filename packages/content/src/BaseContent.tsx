@@ -1,4 +1,4 @@
-import { PropsWithChildren } from 'react';
+import { PropsWithChildren, ElementType } from 'react';
 import { Flex, Box, BoxProps } from '@ag.ds-next/box';
 import { tokens } from '@ag.ds-next/core';
 import { ContentSpacingContext } from './context';
@@ -6,7 +6,7 @@ import { paddingYMap, ContentSpacing } from './utils';
 
 export type BaseContentProps = PropsWithChildren<
 	{
-		as?: React.ElementType;
+		as?: ElementType;
 		id?: string;
 		className?: string;
 	} & Pick<BoxProps, 'background' | 'palette'>

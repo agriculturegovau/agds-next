@@ -1,7 +1,7 @@
 import type { PropsWithChildren } from 'react';
 import { backgroundColorMap, Box } from '@ag.ds-next/box';
-import { variantMap, SideNavVariant, localPaletteVars } from './utils';
 import { mapResponsiveProp, mq, packs } from '@ag.ds-next/core';
+import { variantMap, SideNavVariant, localPaletteVars } from './utils';
 
 export type SideNavContainerProps = PropsWithChildren<{
 	'aria-label': string;

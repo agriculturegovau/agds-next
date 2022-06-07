@@ -1,9 +1,8 @@
-import React from 'react';
-import { Stack } from '@ag.ds-next/box';
 import { ComponentMeta } from '@storybook/react';
+import { Stack } from '@ag.ds-next/box';
 import { Text, TextLink } from '@ag.ds-next/text';
-import { ExternalLinkCallout } from './ExternalLinkCallout';
 import { H1 } from '@ag.ds-next/heading';
+import { ExternalLinkCallout } from './ExternalLinkCallout';
 
 export default {
 	title: 'foundations/A11y/ExternalLinkCallout',

@@ -1,5 +1,5 @@
-import { tokens } from './tokens';
 import facepaint from 'facepaint';
+import { tokens } from './tokens';
 
 /**
  *  Facepaint lets you write properties as arrays e.g.

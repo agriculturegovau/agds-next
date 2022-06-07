@@ -1,6 +1,6 @@
+import { ReactNode, SVGAttributes } from 'react';
 import { boxPalette, mapSpacing } from '@ag.ds-next/core';
 import { foregroundColorMap } from '@ag.ds-next/box';
-import { ReactNode, SVGAttributes } from 'react';
 
 type SvgProps = Omit<
 	SVGAttributes<SVGSVGElement>,

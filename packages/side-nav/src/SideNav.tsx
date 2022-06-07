@@ -7,7 +7,6 @@ import {
 	usePrefersReducedMotion,
 	useToggleState,
 } from '@ag.ds-next/core';
-
 import { SideNavContainer } from './SideNavContainer';
 import { SideNavTitle } from './SideNavTitle';
 import { SideNavGroup } from './SideNavGroup';

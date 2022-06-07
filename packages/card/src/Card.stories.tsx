@@ -1,4 +1,3 @@
-import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { Box, Flex, Stack } from '@ag.ds-next/box';
 import { Heading } from '@ag.ds-next/heading';
@@ -8,7 +7,6 @@ import { DirectionLink } from '@ag.ds-next/direction-link';
 import { Tags } from '@ag.ds-next/tags';
 import { Text, TextLink } from '@ag.ds-next/text';
 import { ExternalLinkIcon } from '@ag.ds-next/icon';
-
 import { Card } from './Card';
 import { CardInner } from './CardInner';
 import { CardLink } from './CardLink';

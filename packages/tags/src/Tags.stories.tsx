@@ -1,8 +1,7 @@
-import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { Box } from '@ag.ds-next/box';
-import { Tags, TagsContainer, TagsList, Tag } from './index';
 import { Text } from '@ag.ds-next/text';
+import { Tags, TagsContainer, TagsList, Tag } from './index';
 
 export default {
 	title: 'content/Tags',

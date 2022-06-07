@@ -1,7 +1,6 @@
+import type { PropsWithChildren } from 'react';
 import { Flex, Stack } from '@ag.ds-next/box';
 import { tokens, globalPalette, boxPalette } from '@ag.ds-next/core';
-import type { PropsWithChildren } from 'react';
-
 import { localPaletteVars } from './localPalette';
 
 const variantMap = {

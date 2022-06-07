@@ -7,9 +7,9 @@ import {
 	HeroCategoryBanner,
 	HeroCategoryBannerTitle,
 } from '@ag.ds-next/hero-banner';
+import { Card, CardInner, CardLink, CardList } from '@ag.ds-next/card';
 import { AppLayout } from '../../components/AppLayout';
 import { DocumentTitle } from '../../components/DocumentTitle';
-import { Card, CardInner, CardLink, CardList } from '@ag.ds-next/card';
 
 const CategoryPage: NextPage = () => {
 	return (

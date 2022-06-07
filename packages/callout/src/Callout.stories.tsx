@@ -1,8 +1,6 @@
-import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { Box } from '@ag.ds-next/box';
 import { Text } from '@ag.ds-next/text';
-
 import { Callout } from './Callout';
 import { CalloutTitle } from './CalloutTitle';
 

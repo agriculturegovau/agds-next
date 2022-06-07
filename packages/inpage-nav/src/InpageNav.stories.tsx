@@ -1,5 +1,7 @@
-import React, { Fragment } from 'react';
+import { Fragment } from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { Body } from '@ag.ds-next/body';
+import { Stack } from '@ag.ds-next/box';
 import {
 	InpageNav,
 	InpageNavContainer,
@@ -7,8 +9,6 @@ import {
 	InpageNavItemContainer,
 	InpageNavTitle,
 } from './index';
-import { Body } from '@ag.ds-next/body';
-import { Stack } from '@ag.ds-next/box';
 
 export default {
 	title: 'navigation/InpageNav',

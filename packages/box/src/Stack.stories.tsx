@@ -1,9 +1,8 @@
-import React from 'react';
+import { Fragment } from 'react';
 import { ComponentStory, ComponentMeta, Story } from '@storybook/react';
 import { Stack } from './Stack';
 import { Flex } from './Flex';
 import { Box } from './Box';
-import { Fragment } from 'react';
 
 export default {
 	title: 'foundations/Stack',

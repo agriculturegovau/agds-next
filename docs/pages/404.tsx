@@ -1,10 +1,9 @@
 import { H1 } from '@ag.ds-next/heading';
 import { Text, TextLink } from '@ag.ds-next/text';
 import { PageContent } from '@ag.ds-next/content';
-
+import { Stack } from '@ag.ds-next/box';
 import { AppLayout } from '../components/AppLayout';
 import { DocumentTitle } from '../components/DocumentTitle';
-import { Stack } from '@ag.ds-next/box';
 
 export default function NotFoundPage() {
 	return (

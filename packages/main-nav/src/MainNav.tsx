@@ -1,10 +1,9 @@
-import { ReactNode } from 'react';
+import { ReactNode, PropsWithChildren } from 'react';
 import { NavContainer } from './NavContainer';
 import { NavList, NavListLink } from './NavList';
-
 import { findBestMatch, MainNavVariant } from './utils';
 
-export type MainNavProps = React.PropsWithChildren<{
+export type MainNavProps = PropsWithChildren<{
 	activePath?: string;
 	'aria-label'?: string;
 	id?: string;

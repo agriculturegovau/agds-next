@@ -1,4 +1,4 @@
-import React, { forwardRef, AnchorHTMLAttributes } from 'react';
+import { forwardRef, AnchorHTMLAttributes } from 'react';
 import { buttonStyles } from '@ag.ds-next/button';
 import { visuallyHiddenStyles } from '@ag.ds-next/a11y';
 import { mapSpacing } from '@ag.ds-next/core';

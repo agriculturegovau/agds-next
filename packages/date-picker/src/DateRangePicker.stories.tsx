@@ -2,9 +2,9 @@ import { useState } from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { Box, Flex, Stack } from '@ag.ds-next/box';
 import { Button, ButtonGroup } from '@ag.ds-next/button';
-import { DateRangePicker, DateRange } from './DateRangePicker';
 import { Select } from '@ag.ds-next/select';
 import { Body } from '@ag.ds-next/body';
+import { DateRangePicker, DateRange } from './DateRangePicker';
 
 export default {
 	title: 'forms/DatePicker/DateRangePicker',

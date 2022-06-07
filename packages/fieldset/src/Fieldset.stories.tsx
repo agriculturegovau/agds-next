@@ -1,12 +1,11 @@
-import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { Box, Stack } from '@ag.ds-next/box';
 import { TextInput } from '@ag.ds-next/text-input';
 import { FormStack } from '@ag.ds-next/form-stack';
-import { Fieldset, FieldsetContainer, FieldsetLegend } from './index';
 import { H1 } from '@ag.ds-next/heading';
 import { Text } from '@ag.ds-next/text';
 import { FieldsetHint } from './FieldsetHint';
+import { Fieldset, FieldsetContainer, FieldsetLegend } from './index';
 
 export default {
 	title: 'forms/Fieldset',

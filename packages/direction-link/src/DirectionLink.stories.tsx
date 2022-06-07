@@ -1,4 +1,3 @@
-import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { Box, Flex } from '@ag.ds-next/box';
 import { DirectionLink, DirectionButton } from './index';

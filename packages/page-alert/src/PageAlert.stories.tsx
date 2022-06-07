@@ -1,7 +1,6 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { Box } from '@ag.ds-next/box';
 import { Text } from '@ag.ds-next/text';
-
 import { PageAlert } from './PageAlert';
 
 export default {

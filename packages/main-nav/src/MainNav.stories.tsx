@@ -1,6 +1,5 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { AvatarIcon } from '@ag.ds-next/icon';
-
 import { MainNav } from './MainNav';
 import { MainNavButton, MainNavLink } from './MainNavItem';
 import { MainNavBottomBar } from './MainNavBottomBar';

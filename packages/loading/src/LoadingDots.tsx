@@ -1,7 +1,7 @@
-import { Box, Flex } from '@ag.ds-next/box';
-import { mapSpacing, usePrefersReducedMotion } from '@ag.ds-next/core';
 import { HTMLAttributes } from 'react';
 import { useTrail, animated } from '@react-spring/web';
+import { Box, Flex } from '@ag.ds-next/box';
+import { mapSpacing, usePrefersReducedMotion } from '@ag.ds-next/core';
 
 const loadingDotsSizes = {
 	sm: { gap: 0.5, dotSize: mapSpacing(0.5), dots: 3 },

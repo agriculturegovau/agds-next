@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import { ReactNode } from 'react';
 import { SkipLinkContainer } from './SkipLinkContainer';
 import { SkipLinkItem, SkipLinkItemProps } from './SkipLinkItem';
 

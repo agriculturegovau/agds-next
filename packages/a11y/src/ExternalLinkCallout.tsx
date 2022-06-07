@@ -1,4 +1,3 @@
-import React from 'react';
 import { VisuallyHidden } from './VisuallyHidden';
 
 export const ExternalLinkCallout = () => {

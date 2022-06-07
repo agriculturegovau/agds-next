@@ -1,6 +1,9 @@
-import { MDXRemote } from 'next-mdx-remote';
 import { normalize } from 'path';
-
+import { MDXRemote } from 'next-mdx-remote';
+import { Stack } from '@ag.ds-next/box';
+import { Body } from '@ag.ds-next/body';
+import { H2 } from '@ag.ds-next/heading';
+import { TextLink } from '@ag.ds-next/text';
 import {
 	getMarkdownData,
 	serializeMarkdown,
@@ -13,11 +16,6 @@ import { AppLayout } from '../../components/AppLayout';
 import { DocumentTitle } from '../../components/DocumentTitle';
 import { PageLayout } from '../../components/PageLayout';
 import { PkgCardList } from '../../components/PkgCardList';
-
-import { Stack } from '@ag.ds-next/box';
-import { Body } from '@ag.ds-next/body';
-import { H2 } from '@ag.ds-next/heading';
-import { TextLink } from '@ag.ds-next/text';
 
 type StaticProps = Awaited<ReturnType<typeof getStaticProps>>['props'];
 

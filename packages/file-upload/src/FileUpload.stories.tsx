@@ -1,6 +1,5 @@
-import React from 'react';
-import { Box } from '@ag.ds-next/box';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { Box } from '@ag.ds-next/box';
 import { FileUpload } from './FileUpload';
 
 export default {

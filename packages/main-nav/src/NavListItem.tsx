@@ -1,3 +1,4 @@
+import type { PropsWithChildren } from 'react';
 import {
 	boxPalette,
 	mapSpacing,
@@ -6,8 +7,6 @@ import {
 	packs,
 } from '@ag.ds-next/core';
 import { Box } from '@ag.ds-next/box';
-import type { PropsWithChildren } from 'react';
-
 import { localPalette } from './utils';
 
 export type NavItemProps = PropsWithChildren<{

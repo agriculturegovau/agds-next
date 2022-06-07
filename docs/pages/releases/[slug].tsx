@@ -2,7 +2,6 @@ import { GetStaticProps, InferGetStaticPropsType } from 'next';
 import { MDXRemote } from 'next-mdx-remote';
 import { H1 } from '@ag.ds-next/heading';
 import { Body } from '@ag.ds-next/body';
-
 import {
 	getRelease,
 	getReleaseBreadcrumbs,
@@ -10,7 +9,6 @@ import {
 	getReleaseSlugs,
 	Release,
 } from '../../lib/mdxUtils';
-
 import { mdxComponents } from '../../components/utils';
 import { AppLayout } from '../../components/AppLayout';
 import { DocumentTitle } from '../../components/DocumentTitle';

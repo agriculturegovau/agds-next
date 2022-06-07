@@ -11,7 +11,6 @@ import { createUrl } from 'playroom/utils';
 import { Language } from 'prism-react-renderer';
 import copy from 'clipboard-copy';
 import { useId } from '@reach/auto-id';
-
 import { ExternalLinkCallout } from '@ag.ds-next/a11y';
 import {
 	globalPalette,
@@ -29,7 +28,6 @@ import {
 	ChevronUpIcon,
 	ExternalLinkIcon,
 } from '@ag.ds-next/icon';
-
 import { designSystemComponents } from './design-system-components';
 import { prismTheme } from './prism-theme';
 

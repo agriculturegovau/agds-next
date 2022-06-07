@@ -1,7 +1,6 @@
 import type { AppProps } from 'next/app';
 import { Core } from '@ag.ds-next/core';
 import { theme } from '@ag.ds-next/ag-branding';
-
 import { LinkComponent } from '../components/LinkComponent';
 
 function MyApp({ Component, pageProps }: AppProps) {

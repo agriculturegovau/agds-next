@@ -1,9 +1,4 @@
-import {
-	useForm,
-	SubmitHandler,
-	Controller,
-	SubmitErrorHandler,
-} from 'react-hook-form';
+import { useForm, SubmitHandler, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { Stack } from '@ag.ds-next/box';

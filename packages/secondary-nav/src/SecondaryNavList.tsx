@@ -1,7 +1,6 @@
 import type { ReactNode } from 'react';
 import { Flex } from '@ag.ds-next/box';
 import { useLinkComponent, LinkProps } from '@ag.ds-next/core';
-
 import { SecondaryNavListItem } from './SecondaryNavListItem';
 
 export type SecondaryNavListLink = Omit<LinkProps, 'children'> & {

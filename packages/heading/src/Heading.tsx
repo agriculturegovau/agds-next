@@ -1,4 +1,3 @@
-import React from 'react';
 import { forwardRefWithAs } from '@ag.ds-next/core';
 import { Box, BoxProps } from '@ag.ds-next/box';
 

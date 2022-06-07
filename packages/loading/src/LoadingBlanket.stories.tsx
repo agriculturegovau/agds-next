@@ -1,6 +1,10 @@
-import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { Box } from '@ag.ds-next/box';
+import { Header } from '@ag.ds-next/header';
+import { Logo } from '@ag.ds-next/ag-branding/';
+import { MainNav } from '@ag.ds-next/main-nav';
+import { Content } from '@ag.ds-next/content';
+import { Body } from '@ag.ds-next/body';
 import {
 	LoadingBlanket,
 	LoadingBlanketProps,
@@ -9,11 +13,6 @@ import {
 	LoadingBlanketLabel,
 	LoadingDots,
 } from './index';
-import { Header } from '@ag.ds-next/header';
-import { Logo } from '@ag.ds-next/ag-branding/';
-import { MainNav } from '@ag.ds-next/main-nav';
-import { Content } from '@ag.ds-next/content';
-import { Body } from '@ag.ds-next/body';
 
 export default {
 	title: 'content/Loading/LoadingBlanket',

@@ -5,7 +5,6 @@ import { Box, Stack } from '@ag.ds-next/box';
 import { usePrefersReducedMotion, mapSpacing, tokens } from '@ag.ds-next/core';
 import { CloseIcon } from '@ag.ds-next/icon';
 import { Button } from '@ag.ds-next/button';
-
 import { ModalTitle } from './ModalTitle';
 import { useModalId } from './utils';
 
