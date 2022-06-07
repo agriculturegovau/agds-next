@@ -95,6 +95,8 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 				multiple,
 				onDropAccepted: handleDropAccepted,
 				disabled,
+				noClick: true,
+				noKeyboard: true,
 			});
 
 		const errorSummary = getErrorSummary(
