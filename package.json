@@ -57,6 +57,7 @@
 		"eslint": "^7.30.0",
 		"eslint-config-next": "12.0.4",
 		"eslint-config-prettier": "^8.3.0",
+		"eslint-plugin-markdown": "^2.2.1",
 		"facepaint": "^1.2.1",
 		"jest": "^27.4.5",
 		"prettier": "^2.4.1",
