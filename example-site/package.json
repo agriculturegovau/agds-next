@@ -51,6 +51,7 @@
 		"@ag.ds-next/task-list": "5.0.0",
 		"@ag.ds-next/text": "7.0.0",
 		"@ag.ds-next/text-input": "8.0.0",
+		"@ag.ds-next/text-link": "0.0.1",
 		"@ag.ds-next/textarea": "8.0.0",
 		"@hookform/resolvers": "^2.8.8",
 		"@preconstruct/next": "^3.0.1",

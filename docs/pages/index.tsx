@@ -3,7 +3,7 @@ import { SectionContent } from '@ag.ds-next/content';
 import { Stack } from '@ag.ds-next/box';
 import { CallToActionLink } from '@ag.ds-next/call-to-action';
 import { Body } from '@ag.ds-next/body';
-import { TextLinkExternal } from '@ag.ds-next/text';
+import { TextLinkExternal } from '@ag.ds-next/text-link';
 import {
 	HeroBanner,
 	HeroBannerTitleContainer,
