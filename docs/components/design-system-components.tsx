@@ -13,7 +13,8 @@ import {
 import { Box, Flex, Stack } from '@ag.ds-next/box';
 import { Body, unsetBodyStylesClassname } from '@ag.ds-next/body';
 import { useTernaryState, tokens } from '@ag.ds-next/core';
-import { Text, TextLink, TextLinkExternal } from '@ag.ds-next/text';
+import { Text } from '@ag.ds-next/text';
+import { TextLink, TextLinkExternal } from '@ag.ds-next/text-link';
 import { Heading, H1, H2, H3, H4, H5, H6 } from '@ag.ds-next/heading';
 import { LinkList } from '@ag.ds-next/link-list';
 import { Breadcrumbs } from '@ag.ds-next/breadcrumbs';

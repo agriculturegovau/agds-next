@@ -1,5 +1,6 @@
 import { Box } from '@ag.ds-next/box';
-import { Text, TextLink } from '@ag.ds-next/text';
+import { Text } from '@ag.ds-next/text';
+import { TextLink } from '@ag.ds-next/text-link';
 import { LinkProps } from '@ag.ds-next/core';
 
 export type BreadcrumbsItemProps = LinkProps;
