@@ -1,5 +1,9 @@
 import formatFileSize from 'filesize';
-import type { FileRejection } from 'react-dropzone';
+import type { FileRejection, FileWithPath } from 'react-dropzone';
+
+export type FileWithStatus = FileWithPath & {
+	status?: 'none' | 'uploading' | 'success';
+};
 
 export const getFilesTotal = (files: { size: number }[]) => {
 	const label = files.length > 1 ? 'files' : 'file';

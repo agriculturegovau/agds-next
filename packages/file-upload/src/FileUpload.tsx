@@ -16,16 +16,13 @@ import {
 	FileFormats,
 	getFileRejectionErrorMessage,
 	getErrorSummary,
+	FileWithStatus,
 } from './utils';
 
 type InputProps = Pick<
 	React.InputHTMLAttributes<HTMLInputElement>,
 	'name' | 'onBlur' | 'disabled' | 'id'
 >;
-
-export type FileUploadValue = FileWithPath & {
-	status?: 'none' | 'uploading' | 'success';
-};
 
 export type FileUploadProps = InputProps & {
 	/** List of acceptible file types, e.g.`image/jpeg`, `application/pdf` */
@@ -36,8 +33,8 @@ export type FileUploadProps = InputProps & {
 	maxFiles?: DropzoneOptions['maxFiles'];
 	/** The maximum allowed file size, measured in KB */
 	maxSize?: DropzoneOptions['maxSize'];
-	value: FileUploadValue[];
-	onChange: (value: FileUploadValue[]) => void;
+	value: FileWithStatus[];
+	onChange: (value: FileWithStatus[]) => void;
 	/** Whether the field is required */
 	required?: boolean;
 	hint?: string;

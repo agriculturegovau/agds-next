@@ -3,16 +3,16 @@ import { Box, Flex } from '@ag.ds-next/box';
 import { boxPalette, globalPalette } from '@ag.ds-next/core';
 import { Text } from '@ag.ds-next/text';
 import { Button } from '@ag.ds-next/button';
-import { FileWithPath } from 'react-dropzone';
 import formatFileSize from 'filesize';
 import { SuccessFilledIcon } from '@ag.ds-next/icon';
+import { FileWithStatus } from './utils';
 
 export const FileUploadFile = ({
 	file,
 	onRemove,
 	tone = 'none',
 }: {
-	file: FileWithPath;
+	file: FileWithStatus;
 	onRemove: MouseEventHandler<HTMLButtonElement>;
 	tone?: 'none' | 'uploading' | 'success';
 }) => {
@@ -33,7 +33,7 @@ export const FileUploadFile = ({
 				{/* TODO: Loading icon */}
 
 				<Text css={{ wordBreak: 'break-all' }}>
-					{file.path} ({formatFileSize(file.size)})
+					{file.name} ({formatFileSize(file.size)})
 				</Text>
 			</Flex>
 
