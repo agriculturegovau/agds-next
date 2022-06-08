@@ -120,9 +120,10 @@ export const FormExampleMultiStep1 = () => {
 									label="Select file to upload"
 									hint="General hint information"
 									accept={['image/jpeg', 'image/jpg', 'image/png']}
-									maxSize={500} // 500kb
-									multiple={false}
-									onChange={(acceptedFiles) => onChange(acceptedFiles[0])}
+									maxSize={2000}
+									maxFiles={3}
+									multiple
+									onChange={onChange}
 									onBlur={onBlur}
 									name={name}
 									invalid={invalid}

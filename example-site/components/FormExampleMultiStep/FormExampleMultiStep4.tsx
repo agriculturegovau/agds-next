@@ -24,6 +24,8 @@ import { formExampleMultiStep1ValuesMap } from './FormExampleMultiStep1';
 import { formExampleMultiStep2ValuesMap } from './FormExampleMultiStep2';
 import { formExampleMultiStep3ValuesMap } from './FormExampleMultiStep3';
 import { formatFieldValue } from './utils';
+import { TextLink } from '@ag.ds-next/text';
+import { Button } from '@ag.ds-next/button';
 
 const MAPPERS = [
 	formExampleMultiStep0ValuesMap,
@@ -43,7 +45,8 @@ const formSchema = yup
 type FormSchema = yup.InferType<typeof formSchema>;
 
 export const FormExampleMultiStep4 = () => {
-	const { next, stepFormState, formState } = useFormExampleMultiStep();
+	const { next, stepFormState, formState, goToStep } =
+		useFormExampleMultiStep();
 	const scrollToField = useScrollToField();
 	const errorRef = useRef<HTMLDivElement>(null);
 	const [focusedError, setFocusedError] = useState(false);
@@ -66,8 +69,7 @@ export const FormExampleMultiStep4 = () => {
 		setFocusedError(false);
 	};
 
-	// Only show the page alert if there is more than 1 error
-	const hasErrors = Object.keys(errors).length > 1;
+	const hasErrors = Boolean(Object.keys(errors).length);
 
 	useEffect(() => {
 		if (hasErrors && !focusedError) {
@@ -83,8 +85,12 @@ export const FormExampleMultiStep4 = () => {
 		>
 			{FORM_STEPS.filter((_, idx) => idx !== FORM_STEPS.length - 1).map(
 				(step, idx) => (
-					<Stack key={idx} gap={1.5}>
+					<Stack key={idx} gap={1.5} alignItems="flex-start">
 						<H2>{step.label}</H2>
+						{/** FIXME Change to `TextButton` */}
+						<Button variant="tertiary" onClick={() => goToStep(idx)}>
+							Change
+						</Button>
 						<DefinitionList>
 							{Object.keys(MAPPERS[idx] || {}).map((key) => {
 								const mapping = MAPPERS[idx];
