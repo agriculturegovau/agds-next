@@ -208,6 +208,11 @@ items={[
 		code: `<Button variant='tertiary'>Cancel</Button>`,
 	},
 	{
+		group: 'TextButton',
+		name: 'Basic',
+		code: `<TextButton>Example</TextButton>`,
+	},
+	{
 		group: 'Columns',
 		name: 'Basic',
 		code: `<Columns gap={2}>
