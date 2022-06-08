@@ -147,7 +147,7 @@ export const FormExampleMultiStep = () => {
 	const hasCompletedPreviousSteps = useMemo(() => {
 		if (currentStep === 0) return true;
 		const previousStep = currentStep - 1;
-		return Boolean(formState[previousStep]);
+		return Boolean(previousStep in formState);
 	}, [formState, currentStep]);
 
 	if (success) {
@@ -178,7 +178,10 @@ export const FormExampleMultiStep = () => {
 		cancel: backToHomePage,
 		hasCompletedPreviousSteps,
 		formState,
-		stepFormState: formState[currentStep],
+		stepFormState:
+			(currentStep in formState &&
+				formState[currentStep as keyof typeof formState]) ||
+			{},
 	};
 
 	return (
@@ -207,7 +210,7 @@ export const FormExampleMultiStep = () => {
 											status:
 												idx === currentStep
 													? 'doing'
-													: formState[idx]
+													: idx in formState
 													? 'done'
 													: 'todo',
 											onClick: () => setCurrentStep(idx),
