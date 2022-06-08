@@ -1,5 +1,5 @@
 ---
-'@ag.ds-next/button': minor
+'@ag.ds-next/text-link': major
 ---
 
-Created `TextButton` component
+Created package
