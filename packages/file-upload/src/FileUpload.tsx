@@ -1,4 +1,4 @@
-import React, { Fragment, forwardRef, useMemo } from 'react';
+import React, { Fragment, forwardRef } from 'react';
 import { useDropzone, DropzoneOptions, FileWithPath } from 'react-dropzone';
 import { Flex, Stack } from '@ag.ds-next/box';
 import { Button } from '@ag.ds-next/button';
@@ -112,12 +112,6 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 			valid,
 		});
 
-		const showUploadBox = useMemo(() => {
-			if (!maxFiles) return true;
-			if (multiple) return value.length < maxFiles;
-			return value.length === 0;
-		}, [maxFiles, multiple, value.length]);
-
 		return (
 			<Field
 				label={label}
@@ -135,54 +129,52 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 
 					return (
 						<Stack gap={0.5} {...rootProps}>
-							{showUploadBox && (
+							<Flex
+								gap={1}
+								padding={1.5}
+								alignItems="center"
+								flexDirection="column"
+								border
+								rounded
+								css={styles}
+							>
+								<UploadIcon size="lg" color="muted" />
+								<input
+									ref={ref}
+									{...getInputProps()}
+									{...allyProps}
+									{...props}
+								/>
 								<Flex
-									gap={1}
-									padding={1.5}
-									alignItems="center"
 									flexDirection="column"
-									border
-									rounded
-									css={styles}
+									alignItems="center"
+									css={{ textAlign: 'center' }}
 								>
-									<UploadIcon size="lg" color="muted" />
-									<input
-										ref={ref}
-										{...getInputProps()}
-										{...allyProps}
-										{...props}
-									/>
-									<Flex
-										flexDirection="column"
-										alignItems="center"
-										css={{ textAlign: 'center' }}
-									>
+									<Text color="muted">
+										{isDragActive
+											? `Drop ${filesPlural} here...`
+											: `Drag and drop ${filesPlural} here or select ${filesPlural} to upload.`}
+									</Text>
+									{maxSize ? (
 										<Text color="muted">
-											{isDragActive
-												? `Drop ${filesPlural} here...`
-												: `Drag and drop ${filesPlural} here or select ${filesPlural} to upload.`}
+											Each file cannot exceed {formattedMaxFileSize}.
 										</Text>
-										{maxSize ? (
-											<Text color="muted">
-												Each file cannot exceed {formattedMaxFileSize}.
-											</Text>
-										) : null}
-										{accept ? (
-											<Text color="muted">
-												Files accepted: {acceptedFilesSummary}
-											</Text>
-										) : null}
-									</Flex>
-									<Button
-										type="button"
-										variant="secondary"
-										onClick={open}
-										disabled={disabled}
-									>
-										{`Select ${filesPlural}`}
-									</Button>
+									) : null}
+									{accept ? (
+										<Text color="muted">
+											Files accepted: {acceptedFilesSummary}
+										</Text>
+									) : null}
 								</Flex>
-							)}
+								<Button
+									type="button"
+									variant="secondary"
+									onClick={open}
+									disabled={disabled}
+								>
+									{`Select ${filesPlural}`}
+								</Button>
+							</Flex>
 							{value.length ? (
 								<Fragment>
 									<Text color="muted">{getFilesTotal(value)}</Text>
