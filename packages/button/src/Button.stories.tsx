@@ -6,7 +6,7 @@ import { Button, ButtonLink } from './Button';
 import { ButtonGroup } from './ButtonGroup';
 
 export default {
-	title: 'forms/Button',
+	title: 'forms/Button/Button',
 	component: Button,
 	subcomponents: { ButtonLink },
 	argTypes: {

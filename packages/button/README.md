@@ -2,7 +2,7 @@
 title: Button
 description: Buttons make common actions more obvious and help users more easily perform them. Buttons use labels and sometimes icons to communicate the action that will occur when the user touches them.
 group: Forms
-storybookPath: /story/forms-button--on-light
+storybookPath: /story/forms-button-button--on-light
 ---
 
 ## Props
@@ -104,14 +104,22 @@ The `loading` prop can be used to inform users that their action is being proces
 <Button loading>Submit</Button>
 ```
 
-## Buttons links
+## ButtonLink
 
-For situations where you need something that has the visual weight of a Button, but the functionality of a link, you can use `ButtonLink`!
+Use the `ButtonLink` component in situations where you need an element that has the visual weight of a button, but the functionality of a link.
 
 `ButtonLink` adopts the `Link` component from your chosen router framework, which you can set in the `Core` component.
 
 ```jsx live
 <ButtonLink href="/sign-in">Sign in</ButtonLink>
+```
+
+## TextButton
+
+Use the `TextButton` component in situations where you need an element that has the visual weight of a link, but the functionality of a button.
+
+```jsx live
+<TextButton onClick={console.log}>Example</TextButton>
 ```
 
 ## ButtonGroup
