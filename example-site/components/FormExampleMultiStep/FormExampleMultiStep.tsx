@@ -65,7 +65,7 @@ type ContextType = {
 	back: () => void;
 	/** When called, the user will be taken forward to the the next step */
 	next: (stepFormState: StepFormState) => void;
-	/** When called, the user will be taken back to the provided step */
+	/** When called, the user will be taken to the provided step */
 	goToStep: (step: number) => void;
 	/** If true, the user has completed the previous step of the form */
 	hasCompletedPreviousSteps: boolean;
