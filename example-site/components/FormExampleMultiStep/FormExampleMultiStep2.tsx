@@ -13,12 +13,7 @@ const formSchema = yup
 	})
 	.required();
 
-type FormSchema = yup.InferType<typeof formSchema>;
-
-export const formExampleMultiStep2ValuesMap: Record<keyof FormSchema, string> =
-	{
-		date: 'Select a date',
-	};
+export type FormSchema = yup.InferType<typeof formSchema>;
 
 export const FormExampleMultiStep2 = () => {
 	const { next, stepFormState } = useFormExampleMultiStep();

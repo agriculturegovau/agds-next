@@ -13,11 +13,26 @@ import { Stack } from '@ag.ds-next/box';
 import { Text } from '@ag.ds-next/text';
 import { DirectionButton } from '@ag.ds-next/direction-link';
 import { AppLayout } from '../AppLayout';
-import { FormExampleMultiStep0 } from './FormExampleMultiStep0';
-import { FormExampleMultiStep1 } from './FormExampleMultiStep1';
-import { FormExampleMultiStep2 } from './FormExampleMultiStep2';
-import { FormExampleMultiStep3 } from './FormExampleMultiStep3';
-import { FormExampleMultiStep4 } from './FormExampleMultiStep4';
+import {
+	FormExampleMultiStep0,
+	FormSchema as FormExampleMultiStep0Schema,
+} from './FormExampleMultiStep0';
+import {
+	FormExampleMultiStep1,
+	FormSchema as FormExampleMultiStep1Schema,
+} from './FormExampleMultiStep1';
+import {
+	FormExampleMultiStep2,
+	FormSchema as FormExampleMultiStep2Schema,
+} from './FormExampleMultiStep2';
+import {
+	FormExampleMultiStep3,
+	FormSchema as FormExampleMultiStep3Schema,
+} from './FormExampleMultiStep3';
+import {
+	FormExampleMultiStep4,
+	FormSchema as FormExampleMultiStep4Schema,
+} from './FormExampleMultiStep4';
 import { FormExampleMultiStepSuccess } from './FormExampleMultiStepSuccess';
 
 export const FORM_STEPS = [
@@ -72,7 +87,13 @@ const context = createContext<ContextType | undefined>(undefined);
 
 type StepFormState = Record<string, unknown>;
 
-type FormState = Record<number, Record<string, unknown>>;
+type FormState = Partial<{
+	[0]: FormExampleMultiStep0Schema;
+	[1]: FormExampleMultiStep1Schema;
+	[2]: FormExampleMultiStep2Schema;
+	[3]: FormExampleMultiStep3Schema;
+	[4]: FormExampleMultiStep4Schema;
+}>;
 
 export const FormExampleMultiStep = () => {
 	const { push } = useRouter();
