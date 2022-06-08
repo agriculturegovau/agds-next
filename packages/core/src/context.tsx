@@ -6,12 +6,11 @@ import {
 	AnchorHTMLAttributes,
 } from 'react';
 
-const DefaultLinkComponent = forwardRef<
-	HTMLAnchorElement,
-	PropsWithChildren<LinkProps>
->(function DefaultLinkComponent(props, ref) {
-	return <a ref={ref} {...props} />;
-});
+const DefaultLinkComponent = forwardRef<HTMLAnchorElement, LinkProps>(
+	function DefaultLinkComponent(props, ref) {
+		return <a ref={ref} {...props} />;
+	}
+);
 
 export type LinkComponent = typeof DefaultLinkComponent;
 
