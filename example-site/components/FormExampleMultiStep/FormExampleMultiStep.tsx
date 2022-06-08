@@ -67,6 +67,8 @@ type ContextType = {
 	next: (stepFormState: StepFormState) => void;
 	/** When called, the user will be taken to the provided step */
 	goToStep: (step: number) => void;
+	/** The current step of the form */
+	currentStep: number;
 	/** If true, the user has completed the previous step of the form */
 	hasCompletedPreviousSteps: boolean;
 	/** If true, the current from step is being submitted */
@@ -172,6 +174,7 @@ export const FormExampleMultiStep = () => {
 		back,
 		next,
 		goToStep: setCurrentStep,
+		currentStep,
 		isSubmittingStep,
 		saveAndExit,
 		isSavingBeforeExiting,
