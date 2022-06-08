@@ -10,6 +10,18 @@ export const TextLink = forwardRefWithAs<'a', TextLinkProps>(function TextLink(
 ) {
 	const LinkComponent = useLinkComponent();
 	return (
-		<Text as={as || LinkComponent} ref={ref} button link focus {...props} />
+		<Text
+			as={as || LinkComponent}
+			ref={ref}
+			link
+			focus
+			css={{
+				appearance: 'none',
+				background: 'transparent',
+				cursor: 'pointer',
+				textAlign: 'left',
+			}}
+			{...props}
+		/>
 	);
 });

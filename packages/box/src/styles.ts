@@ -332,14 +332,6 @@ export const focusStyles = {
 	},
 };
 
-type ButtonProps = Partial<{ button: boolean }>;
-export const buttonStyles = {
-	appearance: 'none',
-	background: 'transparent',
-	cursor: 'pointer',
-	textAlign: 'left',
-};
-
 export type BoxProps = PaletteProps &
 	ColorProps &
 	BorderProps &
@@ -347,7 +339,6 @@ export type BoxProps = PaletteProps &
 	TypographyProps &
 	LayoutProps &
 	LinkProps &
-	ButtonProps &
 	PaddingProps;
 
 export function boxStyles({
@@ -396,7 +387,6 @@ export function boxStyles({
 	fontSize,
 	focus,
 	link,
-	button,
 	lineHeight,
 	...restProps
 }: BoxProps) {
@@ -467,7 +457,6 @@ export function boxStyles({
 				}),
 
 				...(link ? linkStyles : undefined),
-				...(button ? buttonStyles : undefined),
 				...(focus ? focusStyles : undefined),
 			}),
 		]),
