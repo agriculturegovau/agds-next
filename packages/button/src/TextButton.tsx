@@ -1,7 +1,10 @@
 import { ButtonHTMLAttributes } from 'react';
 import { Box } from '@ag.ds-next/box';
 
-export type TextButtonProps = ButtonHTMLAttributes<HTMLButtonElement>;
+export type TextButtonProps = Omit<
+	ButtonHTMLAttributes<HTMLButtonElement>,
+	'color'
+>;
 
 export const TextButton = (props: TextButtonProps) => {
 	return (
