@@ -20,10 +20,8 @@ export const FormExampleMultiStepSuccess = () => {
 			<Body>
 				<h2>What happens next? (H2)</h2>
 				<p>
-					Lorem ipsum dolor lorem ipsum dolor sit amet, laoreet necessitatibus
-					sed in, ut quem latine eligendi vim. Lorem ipsum dolor lorem ipsum
-					dolor sit amet, laoreet necessitatibus sed in, ut quem latine eligendi
-					vim.{' '}
+					Short paragraph to describe what a user can anticipate next. Use a
+					short paragraph to reduce cognitive load.
 				</p>
 			</Body>
 			<FormExampleMultiStepCallout />
