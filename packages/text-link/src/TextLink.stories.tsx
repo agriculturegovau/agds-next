@@ -7,7 +7,7 @@ export default {
 } as ComponentMeta<typeof TextLink>;
 
 const Template: ComponentStory<typeof TextLink> = (args) => {
-	return <TextLink {...args}>Internal link</TextLink>;
+	return <TextLink {...args} />;
 };
 
 export const Basic = Template.bind({});

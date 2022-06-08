@@ -609,6 +609,16 @@ items={[
     ]}
   />`,
 	},
+	{
+		group: 'TextLink',
+		name: 'Basic',
+		code: `<TextLink href="#">Internal link</TextLink>`,
+	},
+	{
+		group: 'TextLinkExternal',
+		name: 'Basic',
+		code: `<TextLinkExternal href="https://steelthreads.github.io/agds-next">External link</TextLinkExternal>`,
+	},
 ];
 
 export default snippets;
