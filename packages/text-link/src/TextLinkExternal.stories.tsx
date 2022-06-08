@@ -2,7 +2,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { TextLinkExternal } from './TextLinkExternal';
 
 export default {
-	title: 'foundations/Text/TextLinkExternal',
+	title: 'navigation/TextLinkExternal',
 	component: TextLinkExternal,
 } as ComponentMeta<typeof TextLinkExternal>;
 

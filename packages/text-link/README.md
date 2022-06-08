@@ -1,9 +1,11 @@
 ---
-title: Text Link
-description: A primitive typographic component for constrained text styles
+title: Text link
+description: A typographic component for creating a hyperlinks.
 group: Navigation
-storybookPath: /story/navigation-text-link--basic
+storybookPath: /story/navigation-textlink--basic
 ---
+
+This package includes the components `<TextLink />` and `<TextLinkExternal />`.
 
 The `TextLink` component creates a hyperlink to web pages, files, email addresses, locations in the same page, or anything else a URL can address.
 
