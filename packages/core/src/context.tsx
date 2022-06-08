@@ -1,15 +1,17 @@
 import {
+	forwardRef,
 	createContext,
 	useContext,
 	PropsWithChildren,
 	AnchorHTMLAttributes,
 } from 'react';
 
-function DefaultLinkComponent<P extends PropsWithChildren<LinkProps>>(
-	props: P
-) {
-	return <a {...props} />;
-}
+const DefaultLinkComponent = forwardRef<
+	HTMLAnchorElement,
+	PropsWithChildren<LinkProps>
+>(function DefaultLinkComponent(props, ref) {
+	return <a ref={ref} {...props} />;
+});
 
 export type LinkComponent = typeof DefaultLinkComponent;
 
