@@ -1,10 +1,14 @@
 import {
 	forwardRef,
+	ForwardRefExoticComponent,
 	createContext,
 	useContext,
 	PropsWithChildren,
 	AnchorHTMLAttributes,
+	RefAttributes,
 } from 'react';
+
+export type LinkProps = AnchorHTMLAttributes<HTMLAnchorElement>;
 
 const DefaultLinkComponent = forwardRef<HTMLAnchorElement, LinkProps>(
 	function DefaultLinkComponent(props, ref) {
@@ -12,9 +16,9 @@ const DefaultLinkComponent = forwardRef<HTMLAnchorElement, LinkProps>(
 	}
 );
 
-export type LinkComponent = typeof DefaultLinkComponent;
-
-export type LinkProps = AnchorHTMLAttributes<HTMLAnchorElement>;
+export type LinkComponent = ForwardRefExoticComponent<
+	unknown & RefAttributes<HTMLAnchorElement>
+>;
 
 export const coreContext = createContext({
 	linkComponent: DefaultLinkComponent,
