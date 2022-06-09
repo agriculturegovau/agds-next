@@ -5,15 +5,15 @@ import {
 	useState,
 } from 'react';
 import { useSpring, animated } from '@react-spring/web';
-import { Flex } from '@ag.ds-next/box';
-import { BaseButton } from '@ag.ds-next/button';
-import { TextLink } from '@ag.ds-next/text';
-import { ChevronRightIcon } from '@ag.ds-next/icon';
 import {
 	LinkProps,
 	mapSpacing,
 	usePrefersReducedMotion,
 } from '@ag.ds-next/core';
+import { Flex } from '@ag.ds-next/box';
+import { BaseButton } from '@ag.ds-next/button';
+import { ChevronRightIcon } from '@ag.ds-next/icon';
+import { TextLink } from '@ag.ds-next/text-link';
 
 export type CallToActionLinkProps = Omit<LinkProps, 'color'>;
 

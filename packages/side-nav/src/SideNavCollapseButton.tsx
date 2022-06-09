@@ -1,10 +1,10 @@
 import { PropsWithChildren } from 'react';
 import { useSpring, animated } from '@react-spring/web';
 import { Flex } from '@ag.ds-next/box';
+import { BaseButton } from '@ag.ds-next/button';
 import { ChevronDownIcon } from '@ag.ds-next/icon';
 import { tokens, usePrefersReducedMotion } from '@ag.ds-next/core';
 import { localPalette } from './utils';
-import { BaseButton } from '@ag.ds-next/button';
 
 const AnimatedIcon = animated(ChevronDownIcon);
 

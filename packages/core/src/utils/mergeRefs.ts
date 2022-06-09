@@ -6,6 +6,7 @@ import type { LegacyRef, MutableRefObject, RefCallback } from 'react';
  *
  * @see https://github.com/gregberge/react-merge-refs/blob/main/src/index.tsx
  */
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function mergeRefs<T = any>(
 	refs: Array<MutableRefObject<T> | LegacyRef<T>>
 ): RefCallback<T> {
