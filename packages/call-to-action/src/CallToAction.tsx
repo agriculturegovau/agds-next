@@ -5,7 +5,7 @@ import {
 	useState,
 } from 'react';
 import { useSpring, animated } from '@react-spring/web';
-import { Flex, linkStyles } from '@ag.ds-next/box';
+import { Flex } from '@ag.ds-next/box';
 import { TextLink } from '@ag.ds-next/text';
 import { ChevronRightIcon } from '@ag.ds-next/icon';
 import {
@@ -24,7 +24,7 @@ export const CallToActionLink = (props: CallToActionLinkProps) => (
 export type CallToActionButtonProps = ButtonHTMLAttributes<HTMLButtonElement>;
 
 export const CallToActionButton = (props: CallToActionButtonProps) => {
-	return <CallToAction as={BaseButton} css={linkStyles} {...props} />;
+	return <CallToAction as={BaseButton} {...props} />;
 };
 
 type CallToActionProps = PropsWithChildren<{
@@ -64,6 +64,7 @@ export const CallToAction = ({
 				fontWeight="bold"
 				color="action"
 				fontSize="md"
+				link
 				focus
 				{...props}
 			>
