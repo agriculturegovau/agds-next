@@ -13,6 +13,7 @@ import {
 	mapSpacing,
 	mq,
 } from '@ag.ds-next/core';
+import { BaseButton } from '@ag.ds-next/button';
 import { IconProps } from '@ag.ds-next/icon';
 import { localPalette } from './utils';
 
@@ -101,16 +102,7 @@ export const MainNavButton = ({
 	label,
 	...props
 }: MainNavButtonProps) => (
-	<MainNavItem
-		as="button"
-		css={{
-			appearance: 'none',
-			background: 'transparent',
-			cursor: 'pointer',
-			textAlign: 'left',
-		}}
-		{...props}
-	>
+	<MainNavItem as={BaseButton} {...props}>
 		{Icon ? <Icon size="md" weight="regular" /> : null}
 		{label}
 	</MainNavItem>

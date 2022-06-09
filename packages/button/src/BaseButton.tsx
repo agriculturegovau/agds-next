@@ -5,18 +5,18 @@ import {
 	useCallback,
 	useRef,
 } from 'react';
-import { fontGrid, mergeRefs, tokens } from '@ag.ds-next/core';
+import { mergeRefs, tokens } from '@ag.ds-next/core';
 
 export type BaseButtonProps = ButtonHTMLAttributes<HTMLButtonElement>;
 
-/**
- * In Safari buttons do not get focused automatically once pressed. Instead the nearest focusable ancestor is focused.
- * To fix this, we need to manually force focus after the user clicks on the element
- */
 export const BaseButton = forwardRef<HTMLButtonElement, BaseButtonProps>(
 	function BaseButton({ onClick: onClickProp, ...props }, forwardedRef) {
 		const ref = useRef<HTMLButtonElement>(null);
 
+		/**
+		 * In Safari buttons do not get focused automatically once pressed. Instead the nearest focusable ancestor is focused.
+		 * To fix this, we need to manually force focus after the user clicks on the element
+		 */
 		const onClick = useCallback(
 			(event: MouseEvent<HTMLButtonElement>) => {
 				ref.current?.focus();
@@ -36,7 +36,8 @@ export const BaseButton = forwardRef<HTMLButtonElement, BaseButtonProps>(
 					textAlign: 'left',
 					border: 'none',
 					fontFamily: tokens.font.body,
-					...fontGrid('sm', 'default'),
+					fontSize: 'inherit',
+					lineHeight: 'inherit',
 				}}
 				{...props}
 			/>

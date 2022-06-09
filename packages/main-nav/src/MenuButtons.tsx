@@ -1,4 +1,5 @@
 import { MouseEventHandler, PropsWithChildren } from 'react';
+import { BaseButton } from '@ag.ds-next/button';
 import { Box, Flex } from '@ag.ds-next/box';
 import { boxPalette } from '@ag.ds-next/core';
 import { localPalette } from './utils';
@@ -11,7 +12,7 @@ function MainNavButton({ onClick, children, ...props }: MainNavButtonProps) {
 	return (
 		<Box paddingBottom={0.5} display={{ xs: 'block', lg: 'none' }}>
 			<Flex
-				as="button"
+				as={BaseButton}
 				flexDirection="column"
 				justifyContent="center"
 				alignItems="center"
@@ -22,10 +23,6 @@ function MainNavButton({ onClick, children, ...props }: MainNavButtonProps) {
 				height="100%"
 				focus
 				css={{
-					appearance: 'none',
-					border: 'none',
-					cursor: 'pointer',
-					background: 'transparent',
 					color: boxPalette.foregroundAction,
 					'&:hover': {
 						color: boxPalette.foregroundText,
