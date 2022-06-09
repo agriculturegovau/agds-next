@@ -31,12 +31,10 @@ export type FileUploadProps = InputProps & {
 	label: string;
 	/** The maximum number of files allowed to be selected. By default there is no limit (if `multiple` is true). */
 	maxFiles?: DropzoneOptions['maxFiles'];
-	/** The maximum allowed file size, measured in KB */
+	/** The maximum allowed size for each file, measured in KB */
 	maxSize?: DropzoneOptions['maxSize'];
 	value: FileWithStatus[];
 	onChange: (value: FileWithStatus[]) => void;
-	/** A function that runs when a file with a 'success' status is removed. This should be used to delete a file from a server. */
-	onRemoveUploadedFile?: (removedFile: FileWithStatus) => void;
 	/** Whether the field is required */
 	required?: boolean;
 	hint?: string;
@@ -58,7 +56,6 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 			multiple,
 			value,
 			onChange,
-			onRemoveUploadedFile,
 			required,
 			hint,
 			message,
@@ -74,9 +71,6 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 		const formattedMaxFileSize = formatFileSize(maxSizeBytes);
 
 		const handleRemoveFile = (file: FileWithStatus) => {
-			if (file.status === 'success' && onRemoveUploadedFile) {
-				onRemoveUploadedFile(file);
-			}
 			const indexOfFile = value.indexOf(file);
 			onChange(value.filter((_, index) => index !== indexOfFile));
 		};
@@ -180,7 +174,7 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 									{`Select ${filesPlural}`}
 								</Button>
 							</Flex>
-							{value.length ? (
+							{value?.length ? (
 								<Fragment>
 									<Text color="muted">{getFilesTotal(value)}</Text>
 									<Stack as="ul" gap={0.5}>
