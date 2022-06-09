@@ -50,7 +50,7 @@ export const AccordionItem = ({
 				id={titleId}
 				ariaControls={bodyId}
 				isOpen={isOpen}
-				onToggle={onToggle}
+				onClick={onToggle}
 			>
 				{title}
 			</AccordionTitle>

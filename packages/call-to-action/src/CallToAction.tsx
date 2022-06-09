@@ -5,14 +5,15 @@ import {
 	useState,
 } from 'react';
 import { useSpring, animated } from '@react-spring/web';
-import { Flex, linkStyles } from '@ag.ds-next/box';
-import { TextLink } from '@ag.ds-next/text-link';
-import { ChevronRightIcon } from '@ag.ds-next/icon';
 import {
 	LinkProps,
 	mapSpacing,
 	usePrefersReducedMotion,
 } from '@ag.ds-next/core';
+import { Flex } from '@ag.ds-next/box';
+import { BaseButton } from '@ag.ds-next/button';
+import { ChevronRightIcon } from '@ag.ds-next/icon';
+import { TextLink } from '@ag.ds-next/text-link';
 
 export type CallToActionLinkProps = Omit<LinkProps, 'color'>;
 
@@ -22,21 +23,9 @@ export const CallToActionLink = (props: CallToActionLinkProps) => (
 
 export type CallToActionButtonProps = ButtonHTMLAttributes<HTMLButtonElement>;
 
-export const CallToActionButton = (props: CallToActionButtonProps) => (
-	<CallToAction
-		as="button"
-		css={[
-			linkStyles,
-			{
-				appearance: 'none',
-				background: 'transparent',
-				cursor: 'pointer',
-				textAlign: 'left',
-			},
-		]}
-		{...props}
-	/>
-);
+export const CallToActionButton = (props: CallToActionButtonProps) => {
+	return <CallToAction as={BaseButton} {...props} />;
+};
 
 type CallToActionProps = PropsWithChildren<{
 	as: ElementType;
@@ -73,8 +62,8 @@ export const CallToAction = ({
 				alignItems="center"
 				fontFamily="body"
 				fontWeight="bold"
-				color="action"
 				fontSize="md"
+				link
 				focus
 				{...props}
 			>

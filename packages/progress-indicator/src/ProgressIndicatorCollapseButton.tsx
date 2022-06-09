@@ -3,6 +3,7 @@ import { useSpring, animated } from '@react-spring/web';
 import { Flex } from '@ag.ds-next/box';
 import { ChevronDownIcon } from '@ag.ds-next/icon';
 import { boxPalette, tokens, usePrefersReducedMotion } from '@ag.ds-next/core';
+import { BaseButton } from '@ag.ds-next/button';
 import type { ProgressIndicatorItem } from './ProgressIndicatorItem';
 
 type ProgressIndicatorCollapseButtonProps = {
@@ -38,7 +39,7 @@ export const ProgressIndicatorCollapseButton = ({
 
 	return (
 		<Flex
-			as="button"
+			as={BaseButton}
 			role="button"
 			aria-controls={ariaControls}
 			aria-expanded={isOpen}
@@ -55,11 +56,6 @@ export const ProgressIndicatorCollapseButton = ({
 			link
 			focus
 			css={{
-				appearance: 'none',
-				background: 'transparent',
-				cursor: 'pointer',
-				textAlign: 'left',
-
 				'&:hover': {
 					background: boxPalette.backgroundShade,
 				},

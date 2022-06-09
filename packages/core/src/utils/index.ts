@@ -5,4 +5,5 @@ export { usePrefersReducedMotion } from './usePrefersReducedMotion';
 export { useWindowSize } from './useWindowSize';
 export { useClickOutside } from './useClickOutside';
 export { forwardRefWithAs } from './forwardRefWithAs';
+export { mergeRefs } from './mergeRefs';
 export { fontGrid } from './fontGrid';

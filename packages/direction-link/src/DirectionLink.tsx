@@ -1,13 +1,14 @@
 import { ButtonHTMLAttributes, ElementType, PropsWithChildren } from 'react';
-import { Flex, linkStyles } from '@ag.ds-next/box';
-import { TextLink } from '@ag.ds-next/text-link';
-import {
-	ArrowUpIcon,
-	ArrowDownIcon,
-	ArrowLeftIcon,
-	ArrowRightIcon,
-} from '@ag.ds-next/icon';
 import { LinkProps } from '@ag.ds-next/core';
+import { Flex } from '@ag.ds-next/box';
+import { BaseButton } from '@ag.ds-next/button';
+import {
+	ArrowDownIcon,
+	ArrowRightIcon,
+	ArrowLeftIcon,
+	ArrowUpIcon,
+} from '@ag.ds-next/icon';
+import { TextLink } from '@ag.ds-next/text-link';
 
 export type Direction = 'up' | 'right' | 'down' | 'left';
 
@@ -29,20 +30,7 @@ export const DirectionButton = ({
 	children,
 	...props
 }: DirectionButtonProps) => (
-	<DirectionLinkBase
-		as="button"
-		css={[
-			linkStyles,
-			{
-				appearance: 'none',
-				background: 'transparent',
-				cursor: 'pointer',
-				textAlign: 'left',
-				fontSize: 'inherit',
-			},
-		]}
-		{...props}
-	>
+	<DirectionLinkBase as={BaseButton} {...props}>
 		{children}
 	</DirectionLinkBase>
 );
@@ -69,9 +57,9 @@ const DirectionLinkBase = ({
 			inline
 			gap={0.5}
 			alignItems="center"
-			color="action"
 			fontFamily="body"
 			fontWeight="normal"
+			link
 			focus
 			{...props}
 		>

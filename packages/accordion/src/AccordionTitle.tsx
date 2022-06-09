@@ -1,16 +1,17 @@
+import { MouseEventHandler, PropsWithChildren } from 'react';
 import { animated, useSpring } from '@react-spring/web';
 import { Box, Flex } from '@ag.ds-next/box';
 import { ChevronDownIcon } from '@ag.ds-next/icon';
 import { boxPalette, usePrefersReducedMotion } from '@ag.ds-next/core';
+import { BaseButton } from '@ag.ds-next/button/';
 
-export type AccordionTitleProps = {
-	children: string;
+export type AccordionTitleProps = PropsWithChildren<{
 	id: string;
 	ariaControls: string;
 	isOpen?: boolean;
-	onToggle?: () => void;
+	onClick?: MouseEventHandler<HTMLButtonElement>;
 	tag?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
-};
+}>;
 
 const AnimatedIcon = animated(ChevronDownIcon);
 
@@ -19,7 +20,7 @@ export const AccordionTitle = ({
 	children,
 	id,
 	isOpen,
-	onToggle,
+	onClick,
 	tag = 'h3',
 }: AccordionTitleProps) => {
 	const prefersReducedMotion = usePrefersReducedMotion();
@@ -32,11 +33,11 @@ export const AccordionTitle = ({
 	return (
 		<Box as={tag}>
 			<Flex
-				as="button"
+				as={BaseButton}
 				id={id}
 				aria-controls={ariaControls}
 				aria-expanded={isOpen}
-				onClick={onToggle}
+				onClick={onClick}
 				color="action"
 				fontSize="md"
 				lineHeight="heading"

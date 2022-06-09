@@ -8,6 +8,7 @@ import {
 	ProgressTodoIcon,
 } from '@ag.ds-next/icon';
 import { boxPalette, LinkProps, packs } from '@ag.ds-next/core';
+import { BaseButton } from '@ag.ds-next/button';
 
 export type TaskListItemStatus = 'doing' | 'todo' | 'done';
 
@@ -46,17 +47,7 @@ export const TaskListItemButton = ({
 	children,
 	...props
 }: TaskListItemButtonProps) => (
-	<TaskListItem
-		as="button"
-		css={{
-			appearance: 'none',
-			background: 'transparent',
-			cursor: 'pointer',
-			textAlign: 'left',
-			fontSize: 'inherit',
-		}}
-		{...props}
-	>
+	<TaskListItem as={BaseButton} {...props}>
 		{children}
 	</TaskListItem>
 );

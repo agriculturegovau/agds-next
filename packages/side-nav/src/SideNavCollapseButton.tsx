@@ -1,6 +1,7 @@
 import { PropsWithChildren } from 'react';
 import { useSpring, animated } from '@react-spring/web';
 import { Flex } from '@ag.ds-next/box';
+import { BaseButton } from '@ag.ds-next/button';
 import { ChevronDownIcon } from '@ag.ds-next/icon';
 import { tokens, usePrefersReducedMotion } from '@ag.ds-next/core';
 import { localPalette } from './utils';
@@ -31,7 +32,7 @@ export const SideNavCollapseButton = ({
 
 	return (
 		<Flex
-			as="button"
+			as={BaseButton}
 			role="button"
 			aria-controls={ariaControls}
 			aria-expanded={isOpen}
@@ -50,8 +51,6 @@ export const SideNavCollapseButton = ({
 			focus
 			borderBottom
 			css={{
-				appearance: 'none',
-				background: 'transparent',
 				'&:hover': {
 					background: localPalette.hover,
 				},

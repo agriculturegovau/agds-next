@@ -16,8 +16,9 @@ import {
 	iconSize,
 	loadingSize,
 } from './styles';
+import { BaseButton } from './BaseButton';
 
-type BaseButtonProps = {
+type CommonButtonProps = {
 	block?: boolean;
 	iconBefore?: ComponentType<IconProps>;
 	iconAfter?: ComponentType<IconProps>;
@@ -28,7 +29,7 @@ type BaseButtonProps = {
 };
 
 export type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> &
-	BaseButtonProps;
+	CommonButtonProps;
 
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 	function Button(
@@ -48,7 +49,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 	) {
 		const styles = buttonStyles({ block, size, variant });
 		return (
-			<button ref={ref} css={styles} type={type} {...props}>
+			<BaseButton ref={ref} css={styles} type={type} {...props}>
 				{IconBefore ? (
 					<IconBefore size={iconSize[size]} weight="regular" />
 				) : null}
@@ -63,13 +64,13 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 				{IconAfter ? (
 					<IconAfter size={iconSize[size]} weight="regular" />
 				) : null}
-			</button>
+			</BaseButton>
 		);
 	}
 );
 
 export type ButtonLinkProps = AnchorHTMLAttributes<HTMLAnchorElement> &
-	BaseButtonProps;
+	CommonButtonProps;
 
 export const ButtonLink = ({
 	children,
