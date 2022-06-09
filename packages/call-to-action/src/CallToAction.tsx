@@ -6,6 +6,7 @@ import {
 } from 'react';
 import { useSpring, animated } from '@react-spring/web';
 import { Flex } from '@ag.ds-next/box';
+import { BaseButton } from '@ag.ds-next/button';
 import { TextLink } from '@ag.ds-next/text';
 import { ChevronRightIcon } from '@ag.ds-next/icon';
 import {
@@ -13,7 +14,6 @@ import {
 	mapSpacing,
 	usePrefersReducedMotion,
 } from '@ag.ds-next/core';
-import { BaseButton } from '@ag.ds-next/button';
 
 export type CallToActionLinkProps = Omit<LinkProps, 'color'>;
 

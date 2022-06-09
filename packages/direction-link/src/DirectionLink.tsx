@@ -1,5 +1,6 @@
 import { ButtonHTMLAttributes, ElementType, PropsWithChildren } from 'react';
 import { Flex } from '@ag.ds-next/box';
+import { BaseButton } from '@ag.ds-next/button';
 import { TextLink } from '@ag.ds-next/text';
 import {
 	ArrowUpIcon,
@@ -8,7 +9,6 @@ import {
 	ArrowRightIcon,
 } from '@ag.ds-next/icon';
 import { LinkProps } from '@ag.ds-next/core';
-import { BaseButton } from '@ag.ds-next/button';
 
 export type Direction = 'up' | 'right' | 'down' | 'left';
 

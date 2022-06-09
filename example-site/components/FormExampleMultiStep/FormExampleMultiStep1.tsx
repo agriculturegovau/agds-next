@@ -22,17 +22,11 @@ import { FormExampleMultiStepContainer } from './FormExampleMultiStepContainer';
 const formSchema = yup
 	.object({
 		description: yup.string().required('Describe actions taken'),
-		file: yup.mixed().required('Select a file to upload'),
+		file: yup.array().of(yup.mixed()).required('Select a file to upload'),
 	})
 	.required();
 
-type FormSchema = yup.InferType<typeof formSchema>;
-
-export const formExampleMultiStep1ValuesMap: Record<keyof FormSchema, string> =
-	{
-		description: 'Describe actions taken',
-		file: 'Uploaded file',
-	};
+export type FormSchema = yup.InferType<typeof formSchema>;
 
 export const FormExampleMultiStep1 = () => {
 	const { next, stepFormState, isSubmittingStep } = useFormExampleMultiStep();
@@ -89,7 +83,9 @@ export const FormExampleMultiStep1 = () => {
 									{Object.entries(errors).map(([key, value]) => (
 										<li key={key}>
 											<a href={`#${key}`} onClick={scrollToField}>
-												{value.message}
+												{Array.isArray(value)
+													? value[0].message
+													: value.message}
 											</a>
 										</li>
 									))}
@@ -120,9 +116,10 @@ export const FormExampleMultiStep1 = () => {
 									label="Select file to upload"
 									hint="General hint information"
 									accept={['image/jpeg', 'image/jpg', 'image/png']}
-									maxSize={500} // 500kb
-									multiple={false}
-									onChange={(acceptedFiles) => onChange(acceptedFiles[0])}
+									maxSize={2000}
+									maxFiles={3}
+									multiple
+									onChange={onChange}
 									onBlur={onBlur}
 									name={name}
 									invalid={invalid}

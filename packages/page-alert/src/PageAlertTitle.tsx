@@ -9,7 +9,7 @@ export const PageAlertTitle = ({
 	as = 'h3',
 	children,
 }: PageAlertTitleProps) => (
-	<Text as={as} fontSize="md" fontWeight="bold">
+	<Text as={as} fontSize="lg" fontWeight="bold">
 		{children}
 	</Text>
 );

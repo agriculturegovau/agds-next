@@ -1,5 +1,5 @@
 import { Box } from '@ag.ds-next/box';
-import { TextLink } from '@ag.ds-next/text';
+import { TextLink } from '@ag.ds-next/text-link';
 import { boxPalette, LinkProps } from '@ag.ds-next/core';
 
 export type TagProps = Omit<LinkProps, 'color'>;

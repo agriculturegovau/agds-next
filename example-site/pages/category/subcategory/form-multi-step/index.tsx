@@ -6,7 +6,8 @@ import { Body } from '@ag.ds-next/body';
 import { Breadcrumbs } from '@ag.ds-next/breadcrumbs';
 import { Stack } from '@ag.ds-next/box';
 import { H2 } from '@ag.ds-next/heading';
-import { Text, TextLinkExternal } from '@ag.ds-next/text';
+import { Text } from '@ag.ds-next/text';
+import { TextLinkExternal } from '@ag.ds-next/text-link';
 import { AppLayout } from '../../../../components/AppLayout';
 import { DocumentTitle } from '../../../../components/DocumentTitle';
 import { FormExampleMultiStepCallout } from '../../../../components/FormExampleMultiStep/FormExampleMultiStepCallout';
@@ -43,32 +44,14 @@ const FormMultiStepPage: NextPage = () => {
 									<H2>Multi-step form subheading (H2)</H2>
 									<Text as="p">Multi-step form subheading content</Text>
 								</Stack>
-								<FormDivider />
 								<div>
 									<ButtonLink href="/category/subcategory/form-multi-step/form">
 										Start form
 									</ButtonLink>
 								</div>
+								<FormDivider />
 								<Body>
 									<h2>More information section heading (H2)</h2>
-									<h3>More information link list heading (H3)</h3>
-									<ul>
-										<li>
-											<TextLinkExternal href="#">
-												Meaningful link label that shows link purpose
-											</TextLinkExternal>
-										</li>
-										<li>
-											<TextLinkExternal href="#">
-												Meaningful link label that shows link purpose
-											</TextLinkExternal>
-										</li>
-										<li>
-											<TextLinkExternal href="#">
-												Meaningful link label that shows link purpose
-											</TextLinkExternal>
-										</li>
-									</ul>
 									<h3>More information link list heading (H3)</h3>
 									<ul>
 										<li>

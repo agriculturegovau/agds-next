@@ -16,7 +16,7 @@ export const DefinitionDescription = ({ children }: PropsWithOnlyChildren) => (
 );
 
 export const DefinitionList = ({ children }: PropsWithOnlyChildren) => (
-	<Box as="dl" borderTop borderColor="muted">
+	<Box as="dl" width="100%" borderTop borderColor="muted">
 		{children}
 	</Box>
 );
