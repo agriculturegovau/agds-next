@@ -7,6 +7,7 @@ import {
 	ProgressTodoIcon,
 } from '@ag.ds-next/icon';
 import { boxPalette, LinkProps, packs } from '@ag.ds-next/core';
+import { BaseButton } from '@ag.ds-next/button';
 
 export type ProgressIndicatorItem = (
 	| ProgressIndicatorItemButtonProps
@@ -39,17 +40,7 @@ export const ProgressIndicatorItemButton = ({
 	children,
 	...props
 }: ProgressIndicatorItemButtonProps) => (
-	<ProgressIndicatorItem
-		as="button"
-		css={{
-			appearance: 'none',
-			background: 'transparent',
-			cursor: 'pointer',
-			textAlign: 'left',
-			fontSize: 'inherit',
-		}}
-		{...props}
-	>
+	<ProgressIndicatorItem as={BaseButton} {...props}>
 		{children}
 	</ProgressIndicatorItem>
 );
