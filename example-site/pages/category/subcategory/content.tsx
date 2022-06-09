@@ -32,7 +32,7 @@ const ContentPage: NextPage = () => {
 									title="Category 1"
 									variant="light"
 									titleLink="/"
-									activePath="/content"
+									activePath="/category/subcategory/content"
 									items={sideNavItems}
 								/>
 							</ContentBleed>
@@ -150,7 +150,7 @@ const sideNavItems = [
 		label: 'Content page',
 	},
 	{
-		href: '#',
+		href: '/category/subcategory/content',
 		label: 'Content page',
 		items: [
 			{
