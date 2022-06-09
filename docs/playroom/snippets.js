@@ -339,12 +339,7 @@ items={[
 	{
 		group: 'CallToAction',
 		name: 'Link',
-		code: `<CallToActionLink href="#">Sign up</CallToActionLink>`,
-	},
-	{
-		group: 'CallToAction',
-		name: 'Button',
-		code: `<CallToActionButton onClick={console.log}>Sign up</CallToActionButton>`,
+		code: `<CallToAction href="#">Sign up</CallToAction>`,
 	},
 	{
 		group: 'Tags',

@@ -4,7 +4,7 @@ import { SectionContent } from '@ag.ds-next/content';
 import { Columns, Column } from '@ag.ds-next/columns';
 import { H2, H3 } from '@ag.ds-next/heading';
 import { Text } from '@ag.ds-next/text';
-import { CallToActionLink } from '@ag.ds-next/call-to-action';
+import { CallToAction } from '@ag.ds-next/call-to-action';
 import {
 	HeroBanner,
 	HeroBannerSubtitle,
@@ -69,7 +69,7 @@ export default function HomePage() {
 				<SectionContent background="shade">
 					<Columns>
 						<Column columnSpan={{ xs: 12, md: 6 }}>
-							<Stack gap={2} alignItems="flex-start">
+							<Stack gap={2}>
 								<Stack gap={1.5}>
 									<H2>Highlighted content row heading (H2)</H2>
 									<Text as="p">
@@ -78,9 +78,9 @@ export default function HomePage() {
 										in this space - sm/default (P).
 									</Text>
 								</Stack>
-								<CallToActionLink href="/category/subcategory/content">
+								<CallToAction href="/category/subcategory/content">
 									Read more
-								</CallToActionLink>
+								</CallToAction>
 							</Stack>
 						</Column>
 						<Column columnSpan={{ xs: 12, md: 6 }}>
@@ -94,7 +94,7 @@ export default function HomePage() {
 				</SectionContent>
 
 				<SectionContent>
-					<Stack alignItems="flex-start" gap={1.5}>
+					<Stack gap={1.5}>
 						<H2>Articles heading (H2)</H2>
 						<Columns as="ul">
 							{Array.from(Array(3).keys()).map((idx) => (
@@ -103,9 +103,7 @@ export default function HomePage() {
 								</Column>
 							))}
 						</Columns>
-						<CallToActionLink href="/category">
-							See more articles
-						</CallToActionLink>
+						<CallToAction href="/category">See more articles</CallToAction>
 					</Stack>
 				</SectionContent>
 			</AppLayout>

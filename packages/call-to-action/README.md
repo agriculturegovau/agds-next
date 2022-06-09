@@ -8,11 +8,13 @@ storybookPath: /story/navigation-calltoaction--on-light
 A simple and clear link to direct users to a preferred action.
 
 ```jsx live
-<CallToActionLink href="#">Sign up</CallToActionLink>
+<CallToAction href="#">Sign up</CallToAction>
 ```
 
 ### Button
 
 ```jsx live
-<CallToActionButton onClick={console.log}>Sign up</CallToActionButton>
+<CallToAction as={BaseButton} onClick={console.log}>
+	Sign up
+</CallToAction>
 ```
