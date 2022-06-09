@@ -1,3 +1,4 @@
+import { Fragment } from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { Box } from '@ag.ds-next/box';
 import { Header } from '@ag.ds-next/header';
@@ -49,7 +50,7 @@ OnDark.args = {
 };
 
 const FullScreenContent = () => (
-	<>
+	<Fragment>
 		<Header logo={<Logo />} heading="Export Service" />
 		<MainNav links={[{ label: 'Hello', href: '#' }]} variant="agriculture" />
 		<Content>
@@ -103,7 +104,7 @@ const FullScreenContent = () => (
 				</p>
 			</Body>
 		</Content>
-	</>
+	</Fragment>
 );
 
 export const FullScreenOnLight: ComponentStory<typeof LoadingBlanket> = (

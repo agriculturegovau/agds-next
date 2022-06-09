@@ -1,3 +1,4 @@
+import { Fragment } from 'react';
 import { ComponentMeta } from '@storybook/react';
 import { Body } from '@ag.ds-next/body';
 import { Stack } from '@ag.ds-next/box';
@@ -12,7 +13,7 @@ export default {
 } as ComponentMeta<typeof SkipLinkItem>;
 
 export const Basic = () => (
-	<>
+	<Fragment>
 		<SkipLinks
 			links={[
 				{ href: '#main-content', label: 'Skip to main content' },
@@ -20,17 +21,17 @@ export const Basic = () => (
 			]}
 		/>
 		<ExampleContent />
-	</>
+	</Fragment>
 );
 
 export const Modular = () => (
-	<>
+	<Fragment>
 		<SkipLinkContainer aria-label="skip links navigation">
 			<SkipLinkItem href="#main-content">Skip to main content</SkipLinkItem>
 			<SkipLinkItem href="#main-nav">Skip to main navigation</SkipLinkItem>
 		</SkipLinkContainer>
 		<ExampleContent />
-	</>
+	</Fragment>
 );
 
 const ExampleContent = () => (
