@@ -38,7 +38,7 @@ const FormMultiStepPage: NextPage = () => {
 								/>
 								<PageTitle
 									title="Multi-page form title (H1)"
-									introduction="The introductory paragraph provides context about the entire Multi-page form. Use a short paragraph to reduce cognitive load."
+									introduction="The introductory paragraph provides context about the entire multi-page form. Use a short paragraph to reduce cognitive load."
 								/>
 								<Stack gap={1.5}>
 									<H2>Multi-page form subheading (H2)</H2>
