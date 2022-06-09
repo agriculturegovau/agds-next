@@ -1,4 +1,3 @@
-import type { NextPage } from 'next';
 import { Stack } from '@ag.ds-next/box';
 import { ButtonGroup, ButtonLink } from '@ag.ds-next/button';
 import { SectionContent } from '@ag.ds-next/content';
@@ -16,7 +15,7 @@ import { AppLayout } from '../components/AppLayout';
 import { DocumentTitle } from '../components/DocumentTitle';
 import { ArticleCard } from '../components/ArticleCard';
 
-const Home: NextPage = () => {
+export default function HomePage() {
 	return (
 		<>
 			<DocumentTitle title="Home" />
@@ -112,6 +111,4 @@ const Home: NextPage = () => {
 			</AppLayout>
 		</>
 	);
-};
-
-export default Home;
+}

@@ -1,4 +1,3 @@
-import type { NextPage } from 'next';
 import { PageContent } from '@ag.ds-next/content';
 import { Columns, Column } from '@ag.ds-next/columns';
 import { ButtonLink } from '@ag.ds-next/button';
@@ -14,7 +13,7 @@ import { FormExampleMultiStepCallout } from '../../../../components/FormExampleM
 import { PageTitle } from '../../../../components/PageTitle';
 import { FormDivider } from '../../../../components/FormDivider';
 
-const FormMultiStepPage: NextPage = () => {
+export default function FormMultiPageHomePage() {
 	return (
 		<>
 			<DocumentTitle title="Multi-page form example" />
@@ -79,6 +78,4 @@ const FormMultiStepPage: NextPage = () => {
 			</AppLayout>
 		</>
 	);
-};
-
-export default FormMultiStepPage;
+}

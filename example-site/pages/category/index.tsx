@@ -1,4 +1,3 @@
-import type { NextPage } from 'next';
 import { Stack } from '@ag.ds-next/box';
 import { SectionContent } from '@ag.ds-next/content';
 import { H2, H3 } from '@ag.ds-next/heading';
@@ -11,7 +10,7 @@ import { Card, CardInner, CardLink, CardList } from '@ag.ds-next/card';
 import { AppLayout } from '../../components/AppLayout';
 import { DocumentTitle } from '../../components/DocumentTitle';
 
-const CategoryPage: NextPage = () => {
+export default function CategoryPage() {
 	return (
 		<>
 			<DocumentTitle title="Category" />
@@ -56,6 +55,4 @@ const CategoryPage: NextPage = () => {
 			</AppLayout>
 		</>
 	);
-};
-
-export default CategoryPage;
+}

@@ -1,4 +1,3 @@
-import type { NextPage } from 'next';
 import { Stack } from '@ag.ds-next/box';
 import { Breadcrumbs } from '@ag.ds-next/breadcrumbs';
 import { PageContent } from '@ag.ds-next/content';
@@ -8,7 +7,7 @@ import { DocumentTitle } from '../../../components/DocumentTitle';
 import { FormExampleSinglePage } from '../../../components/FormExampleSinglePage';
 import { PageTitle } from '../../../components/PageTitle';
 
-const FormSinglePage: NextPage = () => {
+export default function SinglePageFormPage() {
 	return (
 		<>
 			<DocumentTitle title="Single-page form example" />
@@ -44,6 +43,4 @@ const FormSinglePage: NextPage = () => {
 			</AppLayout>
 		</>
 	);
-};
-
-export default FormSinglePage;
+}
