@@ -6,22 +6,21 @@ import {
 	AnchorHTMLAttributes,
 } from 'react';
 
-const DefaultLinkComponent = forwardRef<HTMLAnchorElement, LinkProps>(
-	function DefaultLinkComponent(props, ref) {
-		return <a ref={ref} {...props} />;
-	}
-);
-
-export type LinkComponent = React.ForwardRefExoticComponent<
+const DefaultLinkComponent = forwardRef<
+	HTMLAnchorElement,
 	// eslint-disable-next-line @typescript-eslint/no-explicit-any
-	LinkProps & { href?: any } & React.RefAttributes<HTMLAnchorElement>
->;
+	LinkProps & { href?: any }
+>(function DefaultLinkComponent(props, ref) {
+	return <a ref={ref} {...props} />;
+});
 
 export type LinkProps = AnchorHTMLAttributes<HTMLAnchorElement>;
 
 export const coreContext = createContext({
 	linkComponent: DefaultLinkComponent,
 });
+
+export type LinkComponent = typeof DefaultLinkComponent;
 
 export type CoreProviderProps = PropsWithChildren<{
 	linkComponent?: LinkComponent;

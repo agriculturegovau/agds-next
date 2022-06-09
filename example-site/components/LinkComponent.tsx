@@ -12,18 +12,17 @@ export const LinkComponent = forwardRef<HTMLAnchorElement, LinkComponentProps>(
 		{ href, replace, scroll, shallow, passHref, prefetch, locale, ...props },
 		ref
 	) {
-		if (!href) return <a {...props} />;
+		if (!href) return <a ref={ref} {...props} />;
 
 		// Use an `a` tag when linking externally
 		// Regex finds links starting with: `http://` | `https://` | `//`
 		const hrefAsString = typeof href === 'string' ? href : href?.pathname;
 		if (hrefAsString && /^(https?:\/\/|\/\/)/i.test(hrefAsString)) {
-			return <a href={hrefAsString} {...props} />;
+			return <a ref={ref} href={hrefAsString} {...props} />;
 		}
 
 		return (
 			<Link
-				ref={ref}
 				href={href}
 				replace={replace}
 				scroll={scroll}
@@ -32,7 +31,7 @@ export const LinkComponent = forwardRef<HTMLAnchorElement, LinkComponentProps>(
 				prefetch={prefetch}
 				locale={locale}
 			>
-				<a {...props} />
+				<a ref={ref} {...props} />
 			</Link>
 		);
 	}

@@ -1,5 +1,5 @@
 import { useLinkComponent, forwardRefWithAs } from '@ag.ds-next/core';
-import { Text } from '../../../docs/playroom/components';
+import { Text } from '@ag.ds-next/text';
 
 export const TextLink = forwardRefWithAs<'a', {}>(function TextLink(
 	{ as, ...props },
@@ -7,23 +7,6 @@ export const TextLink = forwardRefWithAs<'a', {}>(function TextLink(
 ) {
 	const Link = useLinkComponent();
 	return (
-		<Text
-			as={as || Link}
-			ref={ref}
-			color="action"
-			link
-			focus
-			css={{
-				appearance: 'none',
-				background: 'transparent',
-				cursor: 'pointer',
-				textAlign: 'left',
-			}}
-			{...props}
-		/>
+		<Text as={as ?? Link} ref={ref} color="action" link focus {...props} />
 	);
 });
-
-function MyComponent() {
-	return <TextLink onClick={console.log}></TextLink>;
-}
