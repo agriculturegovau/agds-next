@@ -1,3 +1,4 @@
+import { Fragment } from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { Body } from './index';
 
@@ -7,7 +8,7 @@ export default {
 } as ComponentMeta<typeof Body>;
 
 const Template = () => (
-	<>
+	<Fragment>
 		<h1>Heading level 1. Page heading</h1>
 		<h2>Heading level 2, proceeding H1</h2>
 
@@ -221,7 +222,7 @@ const Template = () => (
 		<hr />
 
 		<p>And that&apos;s a wrap.</p>
-	</>
+	</Fragment>
 );
 
 export const OnLight: ComponentStory<typeof Body> = (args) => (
