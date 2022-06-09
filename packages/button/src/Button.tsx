@@ -16,6 +16,7 @@ import {
 	iconSize,
 	loadingSize,
 } from './styles';
+import { BaseButton } from './BaseButton';
 
 type BaseButtonProps = {
 	block?: boolean;
@@ -48,7 +49,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 	) {
 		const styles = buttonStyles({ block, size, variant });
 		return (
-			<button ref={ref} css={styles} type={type} {...props}>
+			<BaseButton ref={ref} css={styles} type={type} {...props}>
 				{IconBefore ? (
 					<IconBefore size={iconSize[size]} weight="regular" />
 				) : null}
@@ -63,7 +64,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 				{IconAfter ? (
 					<IconAfter size={iconSize[size]} weight="regular" />
 				) : null}
-			</button>
+			</BaseButton>
 		);
 	}
 );
