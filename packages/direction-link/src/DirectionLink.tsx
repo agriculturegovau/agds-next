@@ -8,6 +8,7 @@ import {
 	ArrowRightIcon,
 } from '@ag.ds-next/icon';
 import { LinkProps } from '@ag.ds-next/core';
+import { BaseButton } from '@ag.ds-next/button';
 
 export type Direction = 'up' | 'right' | 'down' | 'left';
 
@@ -29,20 +30,7 @@ export const DirectionButton = ({
 	children,
 	...props
 }: DirectionButtonProps) => (
-	<DirectionLinkBase
-		as="button"
-		css={[
-			linkStyles,
-			{
-				appearance: 'none',
-				background: 'transparent',
-				cursor: 'pointer',
-				textAlign: 'left',
-				fontSize: 'inherit',
-			},
-		]}
-		{...props}
-	>
+	<DirectionLinkBase as={BaseButton} css={linkStyles} {...props}>
 		{children}
 	</DirectionLinkBase>
 );
