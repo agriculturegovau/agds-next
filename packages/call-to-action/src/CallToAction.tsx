@@ -62,7 +62,6 @@ export const CallToAction = ({
 				alignItems="center"
 				fontFamily="body"
 				fontWeight="bold"
-				color="action"
 				fontSize="md"
 				link
 				focus
