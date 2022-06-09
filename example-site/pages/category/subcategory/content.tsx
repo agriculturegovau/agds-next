@@ -146,11 +146,11 @@ const ContentPage: NextPage = () => {
 
 const sideNavItems = [
 	{
-		href: '/',
+		href: '#',
 		label: 'Content page',
 	},
 	{
-		href: '/content',
+		href: '#',
 		label: 'Content page',
 		items: [
 			{
@@ -164,31 +164,31 @@ const sideNavItems = [
 		],
 	},
 	{
-		href: '/',
+		href: '#',
 		label: 'Content page',
 	},
 	{
-		href: '/',
+		href: '#',
 		label: 'Content page',
 	},
 	{
-		href: '/',
+		href: '#',
 		label: 'Content page',
 	},
 	{
-		href: '/',
+		href: '#',
 		label: 'Content page',
 	},
 	{
-		href: '/',
+		href: '#',
 		label: 'Content page',
 	},
 	{
-		href: '/',
+		href: '#',
 		label: 'Content page',
 	},
 	{
-		href: '/',
+		href: '#',
 		label: 'Content page',
 	},
 ];
