@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
+const { normalize } = require('path');
 const { readdir, readFile } = require('fs/promises');
 const puppeteer = require('puppeteer');
-const { normalize } = require('path');
 const matter = require('gray-matter');
 
 const BASE_URL = `http://localhost:3000/agds-next/example-site`;

@@ -3,9 +3,9 @@ import { Text } from '@ag.ds-next/text';
 import { DirectionLink } from '../../packages/direction-link/src';
 
 export type TemplateBannerProps = {
-	/** Pretty name of template: e.g. Multi-step form */
+	/** Pretty name of template: e.g. Multi-page form */
 	name: string;
-	/** Template slug in the docs site. e.g. multi-step-form */
+	/** Template slug in the docs site. e.g. multi-page-form */
 	slug: string;
 };
 

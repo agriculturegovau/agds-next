@@ -104,7 +104,7 @@ export const FormExampleMultiStep = () => {
 	const [formState, setFormState] = useState<FormState>({});
 
 	const backToHomePage = useCallback(() => {
-		push('/category/subcategory/form-multi-step');
+		push('/category/subcategory/multi-page-form');
 	}, [push]);
 
 	/** When called, the user will be taken back to the previous step */
@@ -155,7 +155,7 @@ export const FormExampleMultiStep = () => {
 	if (success) {
 		return (
 			<AppLayout
-				template={{ name: 'Multi-step form', slug: 'multi-step-form' }}
+				template={{ name: 'Multi-page form', slug: 'multi-page-form' }}
 			>
 				<PageContent>
 					<Columns>
@@ -189,7 +189,7 @@ export const FormExampleMultiStep = () => {
 
 	return (
 		<AppLayout
-			template={{ name: 'Multi-step form', slug: 'multi-step-form' }}
+			template={{ name: 'Multi-page form', slug: 'multi-page-form' }}
 			focusMode
 		>
 			<PageContent>

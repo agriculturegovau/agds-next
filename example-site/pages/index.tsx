@@ -40,8 +40,8 @@ const Home: NextPage = () => {
 						</HeroBannerSubtitle>
 					</HeroBannerTitleContainer>
 					<ButtonGroup>
-						<ButtonLink href="/form-sign-in">Create account</ButtonLink>
-						<ButtonLink href="/form-sign-in" variant="secondary">
+						<ButtonLink href="/sign-in-form">Create account</ButtonLink>
+						<ButtonLink href="/sign-in-form" variant="secondary">
 							Sign in
 						</ButtonLink>
 					</ButtonGroup>

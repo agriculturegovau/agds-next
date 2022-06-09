@@ -6,7 +6,7 @@ import { FormExampleMultiStep } from '../../../../components/FormExampleMultiSte
 const FormMultiStepPage: NextPage = () => {
 	return (
 		<Fragment>
-			<DocumentTitle title="Multi-step form example" />
+			<DocumentTitle title="Multi-page form example" />
 			<FormExampleMultiStep />
 		</Fragment>
 	);
