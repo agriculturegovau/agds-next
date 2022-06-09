@@ -35,6 +35,8 @@ export type FileUploadProps = InputProps & {
 	maxSize?: DropzoneOptions['maxSize'];
 	value: FileWithStatus[];
 	onChange: (value: FileWithStatus[]) => void;
+	/** A function that runs when a file with a 'success' status is removed. This should be used to delete a file from a server. */
+	onRemoveUploadedFile?: (removedFile: FileWithStatus) => void;
 	/** Whether the field is required */
 	required?: boolean;
 	hint?: string;
@@ -56,6 +58,7 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 			multiple,
 			value,
 			onChange,
+			onRemoveUploadedFile,
 			required,
 			hint,
 			message,
@@ -70,12 +73,15 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 		const maxSizeBytes = (maxSize || 0) * 1000;
 		const formattedMaxFileSize = formatFileSize(maxSizeBytes);
 
-		const handleRemoveFile = (file: FileWithPath) => {
+		const handleRemoveFile = (file: FileWithStatus) => {
+			if (file.status === 'success' && onRemoveUploadedFile) {
+				onRemoveUploadedFile(file);
+			}
 			const indexOfFile = value.indexOf(file);
 			onChange(value.filter((_, index) => index !== indexOfFile));
 		};
 
-		const handleDropAccepted = (acceptedFiles: FileWithPath[]) => {
+		const handleDropAccepted = (acceptedFiles: FileWithStatus[]) => {
 			// replace file if multiple is false
 			if (multiple) {
 				onChange([...value, ...acceptedFiles]);
@@ -154,7 +160,8 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 									</Text>
 									{maxSize ? (
 										<Text color="muted">
-											Each file cannot exceed {formattedMaxFileSize}.
+											{multiple ? 'Each file' : 'File'} cannot exceed{' '}
+											{formattedMaxFileSize}.
 										</Text>
 									) : null}
 									{accept ? (
@@ -181,7 +188,6 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 												file={file}
 												key={index}
 												onRemove={() => handleRemoveFile(file)}
-												tone={file.status}
 											/>
 										))}
 									</Stack>
