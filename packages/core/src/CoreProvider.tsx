@@ -8,6 +8,7 @@ import {
 
 const DefaultLinkComponent = forwardRef<
 	HTMLAnchorElement,
+	// Using `any` here because the href prop differs between routing frameworks
 	// eslint-disable-next-line @typescript-eslint/no-explicit-any
 	LinkProps & { href?: any }
 >(function DefaultLinkComponent(props, ref) {
