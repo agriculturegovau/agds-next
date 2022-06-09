@@ -31,7 +31,7 @@ const FormSinglePage: NextPage = () => {
 									]}
 								/>
 								<PageTitle
-									title="Provide details form title - multi question - xxl/display
+									title="Single-page form - multi-question - xxl/display
                   (H1)"
 									introduction="Introductory paragraph providing context for this single
                   page of the multi-step form. All questions on page must be
