@@ -13,6 +13,7 @@ import {
 	mapSpacing,
 	usePrefersReducedMotion,
 } from '@ag.ds-next/core';
+import { BaseButton } from '@ag.ds-next/button';
 
 export type CallToActionLinkProps = Omit<LinkProps, 'color'>;
 
@@ -22,21 +23,9 @@ export const CallToActionLink = (props: CallToActionLinkProps) => (
 
 export type CallToActionButtonProps = ButtonHTMLAttributes<HTMLButtonElement>;
 
-export const CallToActionButton = (props: CallToActionButtonProps) => (
-	<CallToAction
-		as="button"
-		css={[
-			linkStyles,
-			{
-				appearance: 'none',
-				background: 'transparent',
-				cursor: 'pointer',
-				textAlign: 'left',
-			},
-		]}
-		{...props}
-	/>
-);
+export const CallToActionButton = (props: CallToActionButtonProps) => {
+	return <CallToAction as={BaseButton} css={linkStyles} {...props} />;
+};
 
 type CallToActionProps = PropsWithChildren<{
 	as: ElementType;
