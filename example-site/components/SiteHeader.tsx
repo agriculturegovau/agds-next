@@ -32,7 +32,7 @@ export const SiteHeader = ({ focusMode }: { focusMode: boolean }) => {
 					rightContent={
 						<MainNavLink
 							label="Sign in"
-							href="/form-sign-in"
+							href="/sign-in-form"
 							icon={AvatarIcon}
 						/>
 					}

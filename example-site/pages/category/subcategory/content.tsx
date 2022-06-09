@@ -1,4 +1,3 @@
-import type { NextPage } from 'next';
 import { Body } from '@ag.ds-next/body';
 import { PageContent, ContentBleed } from '@ag.ds-next/content';
 import { Columns, Column } from '@ag.ds-next/columns';
@@ -18,7 +17,7 @@ import { PageTitle } from '../../../components/PageTitle';
 import { DocumentTitle } from '../../../components/DocumentTitle';
 import { AppLayout } from '../../../components/AppLayout';
 
-const ContentPage: NextPage = () => {
+export default function ContentPage() {
 	return (
 		<>
 			<DocumentTitle title="Content page example" />
@@ -32,7 +31,7 @@ const ContentPage: NextPage = () => {
 									title="Category 1"
 									variant="light"
 									titleLink="/"
-									activePath="/content"
+									activePath="/category/subcategory/content"
 									items={sideNavItems}
 								/>
 							</ContentBleed>
@@ -142,7 +141,7 @@ const ContentPage: NextPage = () => {
 			</AppLayout>
 		</>
 	);
-};
+}
 
 const sideNavItems = [
 	{
@@ -150,7 +149,7 @@ const sideNavItems = [
 		label: 'Content page',
 	},
 	{
-		href: '#',
+		href: '/category/subcategory/content',
 		label: 'Content page',
 		items: [
 			{
@@ -192,5 +191,3 @@ const sideNavItems = [
 		label: 'Content page',
 	},
 ];
-
-export default ContentPage;

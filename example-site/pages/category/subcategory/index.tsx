@@ -1,4 +1,3 @@
-import type { NextPage } from 'next';
 import { Stack } from '@ag.ds-next/box';
 import { SectionContent } from '@ag.ds-next/content';
 import { H2, H3 } from '@ag.ds-next/heading';
@@ -12,7 +11,7 @@ import { Card, CardInner, CardLink, CardList } from '@ag.ds-next/card';
 import { AppLayout } from '../../../components/AppLayout';
 import { DocumentTitle } from '../../../components/DocumentTitle';
 
-const SubcategoryPage: NextPage = () => {
+export default function SubcategoryPage() {
 	return (
 		<>
 			<DocumentTitle title="Subcategory" />
@@ -52,7 +51,7 @@ const SubcategoryPage: NextPage = () => {
 								<CardInner>
 									<Stack gap={1}>
 										<H3>
-											<CardLink href="/category/subcategory/form-single-page">
+											<CardLink href="/category/subcategory/single-page-form">
 												Single-page form - lg / display / underline (H3)
 											</CardLink>
 										</H3>
@@ -67,8 +66,8 @@ const SubcategoryPage: NextPage = () => {
 								<CardInner>
 									<Stack gap={1}>
 										<H3>
-											<CardLink href="/category/subcategory/form-multi-step">
-												Multi-step form - lg / display / underline (H3)
+											<CardLink href="/category/subcategory/multi-page-form">
+												Multi-page form - lg / display / underline (H3)
 											</CardLink>
 										</H3>
 										<Text as="p">
@@ -101,6 +100,4 @@ const SubcategoryPage: NextPage = () => {
 			</AppLayout>
 		</>
 	);
-};
-
-export default SubcategoryPage;
+}

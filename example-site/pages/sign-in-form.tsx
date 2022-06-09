@@ -1,4 +1,3 @@
-import type { NextPage } from 'next';
 import { Stack } from '@ag.ds-next/box';
 import { PageContent } from '@ag.ds-next/content';
 import { Columns, Column } from '@ag.ds-next/columns';
@@ -7,7 +6,7 @@ import { DocumentTitle } from '../components/DocumentTitle';
 import { FormExampleSignIn } from '../components/FormExampleSignIn';
 import { PageTitle } from '../components/PageTitle';
 
-const FormSignInPage: NextPage = () => {
+export default function SignInFormPage() {
 	return (
 		<>
 			<DocumentTitle title="Sign in example" />
@@ -28,6 +27,4 @@ const FormSignInPage: NextPage = () => {
 			</AppLayout>
 		</>
 	);
-};
-
-export default FormSignInPage;
+}

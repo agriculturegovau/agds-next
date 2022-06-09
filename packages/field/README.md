@@ -78,7 +78,7 @@ The `Field` component will always append `(optional)` to the label based on the 
 
 By default, the browser will scroll the target into view. Because our labels or legends appear above the input, this means the user will be presented with an input without any context, as the label or legend will be off the top of the screen. Manually handling the click event, scrolling the question into view and then focussing the element solves this.
 
-Please refer to the [example site single-page form example](https://steelthreads.github.io/agds-next/example-site/form-single-page) to see an example of this hook in use.
+Please refer to the [example site single-page form example](https://steelthreads.github.io/agds-next/example-site/single-page-form) to see an example of this hook in use.
 
 ```jsx
 function ExampleForm() {
