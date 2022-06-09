@@ -1,6 +1,6 @@
 import { AnchorHTMLAttributes, Fragment } from 'react';
 import Link from 'next/link';
-import { TextLinkExternal } from '@ag.ds-next/text';
+import { TextLinkExternal } from '@ag.ds-next/text-link';
 import { Code } from './Code';
 
 // Note: We are using `any` here because of a typescript bug with react v18 and next-mdx-remote v3

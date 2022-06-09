@@ -1,6 +1,7 @@
 import { ButtonHTMLAttributes, ElementType, PropsWithChildren } from 'react';
 import { Flex } from '@ag.ds-next/box';
-import { Text, TextLink } from '@ag.ds-next/text';
+import { Text } from '@ag.ds-next/text';
+import { TextLink } from '@ag.ds-next/text-link';
 import {
 	ProgressDoingIcon,
 	ProgressDoneIcon,

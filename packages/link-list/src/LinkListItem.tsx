@@ -1,6 +1,6 @@
 import { Box } from '@ag.ds-next/box';
 import { LinkProps } from '@ag.ds-next/core';
-import { TextLink, TextLinkExternal } from '@ag.ds-next/text';
+import { TextLink, TextLinkExternal } from '@ag.ds-next/text-link';
 
 export type LinkListItemProps = LinkProps;
 

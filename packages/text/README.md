@@ -5,9 +5,7 @@ group: Foundations
 storybookPath: /story/foundations-text--basic
 ---
 
-This package includes the components `<Text />` and `<TextLink />`.
-
-`Text` and `TextLink` use the `fontGrid` function to make the font-size and line-height snap to grid.
+`Text` uses the `fontGrid` function to make the font-size and line-height snap to grid.
 
 ## Sizes
 
@@ -52,28 +50,4 @@ There are two font weights available, `normal` is the default.
 		Bold
 	</Text>
 </Stack>
-```
-
-## TextLink
-
-The `TextLink` component creates a hyperlink to web pages, files, email addresses, locations in the same page, or anything else a URL can address.
-
-```jsx live
-<Text>
-	This is some text with <TextLink href="#">a link</TextLink> inside.
-</Text>
-```
-
-## TextLinkExternal
-
-The `TextLinkExternal` component creates a hyperlink to a web page, which will open in a new tab. It is adorned by an external link Icon, and includes descriptive text to communicate to a screenreader the interaction.
-
-```jsx live
-<Text>
-	Interact with our components in{' '}
-	<TextLinkExternal href="https://steelthreads.github.io/agds-next/playroom/index.html">
-		Playroom
-	</TextLinkExternal>
-	.
-</Text>
 ```

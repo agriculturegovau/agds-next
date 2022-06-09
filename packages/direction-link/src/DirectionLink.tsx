@@ -1,6 +1,6 @@
 import { ButtonHTMLAttributes, ElementType, PropsWithChildren } from 'react';
 import { Flex, linkStyles } from '@ag.ds-next/box';
-import { TextLink } from '@ag.ds-next/text';
+import { TextLink } from '@ag.ds-next/text-link';
 import {
 	ArrowUpIcon,
 	ArrowDownIcon,
