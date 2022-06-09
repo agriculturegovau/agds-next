@@ -25,7 +25,6 @@ export const FileUploadFile = ({
 				paddingLeft={1}
 				justifyContent="space-between"
 				css={{
-					minHeight: 64,
 					backgroundColor: toneMapper[status],
 				}}
 			>
@@ -41,7 +40,7 @@ export const FileUploadFile = ({
 
 				<Box flexShrink={0}>
 					{status === 'uploading' ? (
-						<Box paddingX={1.5}>
+						<Box paddingY={1} paddingX={1.5}>
 							<LoadingDots />
 						</Box>
 					) : (
