@@ -65,3 +65,46 @@ Using the `accept` prop, you can specify what filetypes are allowed to be select
 - `video/*`
 - `video/mp4`
 - `video/mpeg`
+
+## Showing uploadingFiles
+
+FileUpload allows you to show whether a file is uploading, or has uploaded, via `file.status`.
+
+This is great for use-cases where a file instantly uploads to a server on selection, and the URL of the uploaded asset is added to the form on submission.
+
+```jsx live
+
+() => {
+  const file = new File(['this is an example file'], 'example.jpg', {
+    type: 'image/jpg',
+  })
+  file.status = 'uploading'
+
+  return(
+    <FileUpload
+      label="Avatar image"
+      hint="Formats accepted: .png, .jpg."
+      multiple={false}
+      accept={['image/jpeg', 'image/jpg', 'image/png']}
+      value={[
+        file
+      ]}
+    />
+  )
+}
+```
+
+You could also wrap the FileUpload component in a LoadingBlanket, if the file uploads
+
+```jsx live
+<div style={{position: 'relative'}}>
+  <FileUpload
+    label="Avatar image"
+    hint="Formats accepted: .png, .jpg."
+    multiple={false}
+    accept={['image/jpeg', 'image/jpg', 'image/png']}
+  />
+  <LoadingBlanket label="Uploading file (53%)" />
+</div>
+
+```
