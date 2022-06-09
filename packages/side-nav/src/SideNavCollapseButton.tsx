@@ -4,6 +4,7 @@ import { Flex } from '@ag.ds-next/box';
 import { ChevronDownIcon } from '@ag.ds-next/icon';
 import { tokens, usePrefersReducedMotion } from '@ag.ds-next/core';
 import { localPalette } from './utils';
+import { BaseButton } from '@ag.ds-next/button';
 
 const AnimatedIcon = animated(ChevronDownIcon);
 
@@ -31,7 +32,7 @@ export const SideNavCollapseButton = ({
 
 	return (
 		<Flex
-			as="button"
+			as={BaseButton}
 			role="button"
 			aria-controls={ariaControls}
 			aria-expanded={isOpen}
@@ -50,8 +51,6 @@ export const SideNavCollapseButton = ({
 			focus
 			borderBottom
 			css={{
-				appearance: 'none',
-				background: 'transparent',
 				'&:hover': {
 					background: localPalette.hover,
 				},
