@@ -10,8 +10,13 @@ import { useFormExampleMultiStep } from './FormExampleMultiStep';
 export const FormExampleMultiStepActions = () => {
 	const [isModalOpen, openModal, closeModal] = useTernaryState(false);
 
-	const { isSubmittingStep, saveAndExit, isSavingBeforeExiting, cancel } =
-		useFormExampleMultiStep();
+	const {
+		currentStep,
+		isSubmittingStep,
+		saveAndExit,
+		isSavingBeforeExiting,
+		cancel,
+	} = useFormExampleMultiStep();
 
 	return (
 		<Fragment>
@@ -19,7 +24,7 @@ export const FormExampleMultiStepActions = () => {
 				<FormDivider />
 				<ButtonGroup>
 					<Button type="submit" variant="primary" loading={isSubmittingStep}>
-						Continue
+						{currentStep === 4 ? 'Submit form' : 'Continue'}
 					</Button>
 					<Button
 						type="button"

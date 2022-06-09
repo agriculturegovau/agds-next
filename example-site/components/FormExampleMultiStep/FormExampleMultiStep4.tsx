@@ -10,6 +10,7 @@ import { PageAlert } from '@ag.ds-next/page-alert';
 import { useScrollToField } from '@ag.ds-next/field';
 import { Checkbox } from '@ag.ds-next/control-input';
 import { H2 } from '@ag.ds-next/heading';
+import { Button } from '@ag.ds-next/button';
 import {
 	DefinitionList,
 	DefinitionListItem,
@@ -19,18 +20,6 @@ import {
 import { FORM_STEPS, useFormExampleMultiStep } from './FormExampleMultiStep';
 import { FormExampleMultiStepContainer } from './FormExampleMultiStepContainer';
 import { FormExampleMultiStepActions } from './FormExampleMultiStepActions';
-import { formExampleMultiStep0ValuesMap } from './FormExampleMultiStep0';
-import { formExampleMultiStep1ValuesMap } from './FormExampleMultiStep1';
-import { formExampleMultiStep2ValuesMap } from './FormExampleMultiStep2';
-import { formExampleMultiStep3ValuesMap } from './FormExampleMultiStep3';
-import { formatFieldValue } from './utils';
-
-const MAPPERS = [
-	formExampleMultiStep0ValuesMap,
-	formExampleMultiStep1ValuesMap,
-	formExampleMultiStep2ValuesMap,
-	formExampleMultiStep3ValuesMap,
-];
 
 const formSchema = yup
 	.object({
@@ -40,10 +29,11 @@ const formSchema = yup
 	})
 	.required();
 
-type FormSchema = yup.InferType<typeof formSchema>;
+export type FormSchema = yup.InferType<typeof formSchema>;
 
 export const FormExampleMultiStep4 = () => {
-	const { next, stepFormState, formState } = useFormExampleMultiStep();
+	const { next, stepFormState, formState, goToStep } =
+		useFormExampleMultiStep();
 	const scrollToField = useScrollToField();
 	const errorRef = useRef<HTMLDivElement>(null);
 	const [focusedError, setFocusedError] = useState(false);
@@ -66,8 +56,7 @@ export const FormExampleMultiStep4 = () => {
 		setFocusedError(false);
 	};
 
-	// Only show the page alert if there is more than 1 error
-	const hasErrors = Object.keys(errors).length > 1;
+	const hasErrors = Boolean(Object.keys(errors).length);
 
 	useEffect(() => {
 		if (hasErrors && !focusedError) {
@@ -81,32 +70,103 @@ export const FormExampleMultiStep4 = () => {
 			title="Confirm and submit (H1)"
 			introduction="The introductory paragraph provides context about this page of the form. Use a short paragraph to reduce cognitive load."
 		>
-			{FORM_STEPS.filter((_, idx) => idx !== FORM_STEPS.length - 1).map(
-				(step, idx) => (
-					<Stack key={idx} gap={1.5}>
-						<H2>{step.label}</H2>
-						<DefinitionList>
-							{Object.keys(MAPPERS[idx] || {}).map((key) => {
-								const mapping = MAPPERS[idx];
-								return (
-									<DefinitionListItem key={key}>
-										<DefinitionTerm>
-											<VisuallyHidden>{'Question '}</VisuallyHidden>
-											{key in mapping
-												? mapping[key as keyof typeof mapping]
-												: 'N/A'}
-										</DefinitionTerm>
-										<DefinitionDescription>
-											<VisuallyHidden>{'Answer '}</VisuallyHidden>
-											{formatFieldValue(formState?.[idx]?.[key])}
-										</DefinitionDescription>
-									</DefinitionListItem>
-								);
-							})}
-						</DefinitionList>
-					</Stack>
-				)
-			)}
+			{/** Summary: Step 0 */}
+			<Stack gap={1.5} alignItems="flex-start">
+				<H2>{FORM_STEPS[0].label}</H2>
+				<Button variant="tertiary" onClick={() => goToStep(0)}>
+					Change
+				</Button>
+				<DefinitionList>
+					<DefinitionListItem>
+						<DefinitionTerm>
+							<VisuallyHidden>{'Question '}</VisuallyHidden>
+							Fieldset question?
+						</DefinitionTerm>
+						<DefinitionDescription>
+							<VisuallyHidden>{'Answer '}</VisuallyHidden>
+							{formState[0]?.example}
+						</DefinitionDescription>
+					</DefinitionListItem>
+				</DefinitionList>
+			</Stack>
+			{/** Summary: Step 1 */}
+			<Stack gap={1.5} alignItems="flex-start">
+				<H2>{FORM_STEPS[1].label}</H2>
+				<Button variant="tertiary" onClick={() => goToStep(0)}>
+					Change
+				</Button>
+				<DefinitionList>
+					<DefinitionListItem>
+						<DefinitionTerm>
+							<VisuallyHidden>{'Question '}</VisuallyHidden>
+							Describe actions taken
+						</DefinitionTerm>
+						<DefinitionDescription>
+							<VisuallyHidden>{'Answer '}</VisuallyHidden>
+							{formState[1]?.description}
+						</DefinitionDescription>
+					</DefinitionListItem>
+					<DefinitionListItem>
+						<DefinitionTerm>
+							<VisuallyHidden>{'Question '}</VisuallyHidden>
+							Uploaded file
+						</DefinitionTerm>
+						<DefinitionDescription>
+							<VisuallyHidden>{'Answer '}</VisuallyHidden>
+							{formState[1]?.file.map((file) => file.name).join(', ')}
+						</DefinitionDescription>
+					</DefinitionListItem>
+				</DefinitionList>
+			</Stack>
+			{/** Summary: Step 2 */}
+			<Stack gap={1.5} alignItems="flex-start">
+				<H2>{FORM_STEPS[2].label}</H2>
+				<Button variant="tertiary" onClick={() => goToStep(0)}>
+					Change
+				</Button>
+				<DefinitionList>
+					<DefinitionListItem>
+						<DefinitionTerm>
+							<VisuallyHidden>{'Question '}</VisuallyHidden>
+							Select a date
+						</DefinitionTerm>
+						<DefinitionDescription>
+							<VisuallyHidden>{'Answer '}</VisuallyHidden>
+							{formState[2]?.date.toLocaleDateString()}
+						</DefinitionDescription>
+					</DefinitionListItem>
+				</DefinitionList>
+			</Stack>
+			{/** Summary: Step 3 */}
+			<Stack gap={1.5} alignItems="flex-start">
+				<H2>{FORM_STEPS[3].label}</H2>
+				<Button variant="tertiary" onClick={() => goToStep(0)}>
+					Change
+				</Button>
+				<DefinitionList>
+					<DefinitionListItem>
+						<DefinitionTerm>
+							<VisuallyHidden>{'Question '}</VisuallyHidden>
+							Checkbox fieldset question?
+						</DefinitionTerm>
+						<DefinitionDescription>
+							<VisuallyHidden>{'Answer '}</VisuallyHidden>
+							{formState[3]?.checkbox?.join(', ')}
+						</DefinitionDescription>
+					</DefinitionListItem>
+					<DefinitionListItem>
+						<DefinitionTerm>
+							<VisuallyHidden>{'Question '}</VisuallyHidden>
+							Nested field
+						</DefinitionTerm>
+						<DefinitionDescription>
+							<VisuallyHidden>{'Answer '}</VisuallyHidden>
+							{formState[3]?.conditionalField}
+						</DefinitionDescription>
+					</DefinitionListItem>
+				</DefinitionList>
+			</Stack>
+			{/** Declaration form */}
 			<Stack as="form" gap={3} onSubmit={handleSubmit(onSubmit, onError)}>
 				<FormStack>
 					{hasErrors && (
