@@ -6,15 +6,16 @@ import {
 	AnchorHTMLAttributes,
 } from 'react';
 
-type UnknownObject = { [key: string | number | symbol]: unknown };
-
 const DefaultLinkComponent = forwardRef<HTMLAnchorElement, LinkProps>(
 	function DefaultLinkComponent(props, ref) {
 		return <a ref={ref} {...props} />;
 	}
 );
 
-export type LinkComponent = typeof DefaultLinkComponent;
+export type LinkComponent = React.ForwardRefExoticComponent<
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any
+	LinkProps & { href?: any } & React.RefAttributes<HTMLAnchorElement>
+>;
 
 export type LinkProps = AnchorHTMLAttributes<HTMLAnchorElement>;
 
