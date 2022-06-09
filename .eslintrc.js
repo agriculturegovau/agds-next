@@ -10,6 +10,15 @@ module.exports = {
 		'plugin:markdown/recommended',
 	],
 	rules: {
+		'@typescript-eslint/ban-types': [
+			'error',
+			{
+				extendDefaults: true,
+				types: {
+					'{}': false,
+				},
+			},
+		],
 		'import/order': [
 			'error',
 			{

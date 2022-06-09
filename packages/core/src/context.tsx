@@ -1,15 +1,18 @@
 import {
+	forwardRef,
 	createContext,
 	useContext,
 	PropsWithChildren,
 	AnchorHTMLAttributes,
 } from 'react';
 
-function DefaultLinkComponent<P extends PropsWithChildren<LinkProps>>(
-	props: P
-) {
-	return <a {...props} />;
-}
+type UnknownObject = { [key: string | number | symbol]: unknown };
+
+const DefaultLinkComponent = forwardRef<HTMLAnchorElement, LinkProps>(
+	function DefaultLinkComponent(props, ref) {
+		return <a ref={ref} {...props} />;
+	}
+);
 
 export type LinkComponent = typeof DefaultLinkComponent;
 
