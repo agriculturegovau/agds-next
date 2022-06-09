@@ -160,12 +160,15 @@ export const UploadSingleFileOnSubmit: ComponentStory<typeof FileUpload> = (
 
 	const onSubmit: SubmitHandler<FormSchema> = async (data) => {
 		setSubmitting(true);
+		console.log({ data });
 		setTimeout(() => {
 			setSubmitting(false);
 		}, 2000);
 	};
 
-	const onError: SubmitErrorHandler<FormSchema> = () => {};
+	const onError: SubmitErrorHandler<FormSchema> = (err) => {
+		console.error(err);
+	};
 
 	return (
 		<form onSubmit={handleSubmit(onSubmit, onError)}>

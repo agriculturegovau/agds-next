@@ -128,6 +128,7 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 				{(allyProps) => {
 					// Avoid passing `color` to the Stack component, which causes
 					// TypeScript errors.
+					// eslint-disable-next-line @typescript-eslint/no-unused-vars
 					const { color: _, ...rootProps } = getRootProps();
 
 					return (
