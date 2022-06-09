@@ -18,7 +18,7 @@ import {
 } from './styles';
 import { BaseButton } from './BaseButton';
 
-type BaseButtonProps = {
+type CommonButtonProps = {
 	block?: boolean;
 	iconBefore?: ComponentType<IconProps>;
 	iconAfter?: ComponentType<IconProps>;
@@ -29,7 +29,7 @@ type BaseButtonProps = {
 };
 
 export type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> &
-	BaseButtonProps;
+	CommonButtonProps;
 
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 	function Button(
@@ -70,7 +70,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 );
 
 export type ButtonLinkProps = AnchorHTMLAttributes<HTMLAnchorElement> &
-	BaseButtonProps;
+	CommonButtonProps;
 
 export const ButtonLink = ({
 	children,

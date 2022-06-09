@@ -14,13 +14,13 @@ export const BaseButton = forwardRef<HTMLButtonElement, BaseButtonProps>(
 		const ref = useRef<HTMLButtonElement>(null);
 
 		/**
-		 * In Safari buttons do not get focused automatically once pressed. Instead the nearest focusable ancestor is focused.
-		 * To fix this, we need to manually force focus after the user clicks on the element
+		 * In Safari buttons are not focused automatically by the browser once pressed, the default behaviour is to focus the nearest focusable ancestor.
+		 * To fix this we need to manually focus the button element after the user presses the element.
 		 */
 		const onClick = useCallback(
 			(event: MouseEvent<HTMLButtonElement>) => {
 				ref.current?.focus();
-				if (onClickProp) onClickProp(event);
+				onClickProp?.(event);
 			},
 			[ref, onClickProp]
 		);
