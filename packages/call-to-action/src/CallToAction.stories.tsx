@@ -3,7 +3,7 @@ import { Box } from '@ag.ds-next/box';
 import { CallToActionLink, CallToActionButton } from './index';
 
 export default {
-	title: 'content/CallToActionLink',
+	title: 'navigation/CallToAction',
 	component: CallToActionLink,
 	subcomponents: { CallToActionButton },
 } as ComponentMeta<typeof CallToActionLink>;
