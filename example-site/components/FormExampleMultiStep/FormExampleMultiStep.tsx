@@ -10,8 +10,9 @@ import { Column, Columns } from '@ag.ds-next/columns';
 import { PageContent, ContentBleed } from '@ag.ds-next/content';
 import { ProgressIndicator } from '@ag.ds-next/progress-indicator';
 import { Stack } from '@ag.ds-next/box';
+import { BaseButton } from '@ag.ds-next/button';
 import { Text } from '@ag.ds-next/text';
-import { DirectionButton } from '@ag.ds-next/direction-link';
+import { DirectionLink } from '@ag.ds-next/direction-link';
 import { AppLayout } from '../AppLayout';
 import {
 	FormExampleMultiStep0,
@@ -224,9 +225,9 @@ export const FormExampleMultiStep = () => {
 						</Column>
 						<Column columnSpan={{ xs: 12, md: 8 }} columnStart={{ md: 5 }}>
 							<Stack gap={3} alignItems="flex-start">
-								<DirectionButton direction="left" onClick={back}>
+								<DirectionLink as={BaseButton} direction="left" onClick={back}>
 									Back
-								</DirectionButton>
+								</DirectionLink>
 								{FormStepComponent ? <FormStepComponent /> : null}
 							</Stack>
 						</Column>

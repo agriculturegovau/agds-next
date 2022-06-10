@@ -2,7 +2,7 @@
 title: Direction link
 description: Direction links are accompanied by arrows to help users move quickly to other parts of the page or through a process.
 group: Navigation
-storybookPath: /story/navigation-directionlink--on-light
+storybookPath: /story/navigation-directionlink--basic
 ---
 
 Use direction links to indicate a physical direction, such as:
@@ -12,7 +12,7 @@ Use direction links to indicate a physical direction, such as:
 - Showing the `next` or `previous` pages.
 
 ```jsx live
-<Flex flexDirection="column" alignItems="flex-start" gap={2}>
+<Stack gap={2}>
 	<DirectionLink href="#" direction="left">
 		Back
 	</DirectionLink>
@@ -25,26 +25,26 @@ Use direction links to indicate a physical direction, such as:
 	<DirectionLink href="#" direction="down">
 		Skip to footer
 	</DirectionLink>
-</Flex>
+</Stack>
 ```
 
-### Buttons
+### As button element
 
-Sometimes direction is needed inside a form. Buttons offer a way to direct users to the next or previous section inside a form.
+For situations where you need the appearance of a `DirectionLink` but the functionality of a HTML `button` element, you can use `as` prop.
 
 ```jsx live
-<Flex flexDirection="column" alignItems="flex-start" gap={2}>
-	<DirectionButton onClick={console.log} direction="left">
+<Stack gap={2}>
+	<DirectionLink as={BaseButton} onClick={console.log} direction="left">
 		Back
-	</DirectionButton>
-	<DirectionButton onClick={console.log} direction="right">
+	</DirectionLink>
+	<DirectionLink as={BaseButton} onClick={console.log} direction="right">
 		Next
-	</DirectionButton>
-	<DirectionButton onClick={console.log} direction="up">
+	</DirectionLink>
+	<DirectionLink as={BaseButton} onClick={console.log} direction="up">
 		Top
-	</DirectionButton>
-	<DirectionButton onClick={console.log} direction="down">
+	</DirectionLink>
+	<DirectionLink as={BaseButton} onClick={console.log} direction="down">
 		Skip to footer
-	</DirectionButton>
-</Flex>
+	</DirectionLink>
+</Stack>
 ```
