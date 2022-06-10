@@ -20,7 +20,7 @@ export default function CategoryPage() {
 					image={
 						<img
 							alt="Harvester in a golden field of wheat emptying grain into a chaser bin moving alongside it."
-							src="/agds-next/example-site/placeholder/hero-banner.png"
+							src="/agds-next/example-site/placeholder/hero-banner.jpeg"
 						/>
 					}
 				>

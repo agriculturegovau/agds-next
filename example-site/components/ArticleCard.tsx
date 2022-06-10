@@ -6,7 +6,7 @@ import { Text } from '@ag.ds-next/text';
 export const ArticleCard = () => (
 	<Card clickable shadow>
 		<img
-			src="/agds-next/example-site/placeholder/hero-banner.png"
+			src="/agds-next/example-site/placeholder/hero-banner.jpeg"
 			alt=""
 			css={{ width: '100%' }}
 			role="presentation"

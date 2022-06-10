@@ -43,7 +43,7 @@ const commonArgs = {
 	subtitle: 'Short hero banner sentence - md/default (P)',
 	image: (
 		<img
-			src="https://steelthreads.github.io/agds-next/img/placeholder/hero-banner.png"
+			src="https://steelthreads.github.io/agds-next/img/placeholder/hero-banner.jpeg"
 			alt="Harvester in a golden field of wheat emptying grain into a chaser bin moving alongside it."
 		/>
 	),

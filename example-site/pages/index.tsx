@@ -25,7 +25,7 @@ export default function HomePage() {
 					image={
 						<img
 							alt="Harvester in a golden field of wheat emptying grain into a chaser bin moving alongside it."
-							src="/agds-next/example-site/placeholder/hero-banner.png"
+							src="/agds-next/example-site/placeholder/hero-banner.jpeg"
 						/>
 					}
 				>
@@ -85,7 +85,7 @@ export default function HomePage() {
 						</Column>
 						<Column columnSpan={{ xs: 12, md: 6 }}>
 							<img
-								src="/agds-next/example-site/placeholder/hero-banner.png"
+								src="/agds-next/example-site/placeholder/hero-banner.jpeg"
 								alt="Harvester in a golden field of wheat emptying grain into a chaser bin moving alongside it."
 								css={{ display: 'block', maxWidth: '100%' }}
 							/>
