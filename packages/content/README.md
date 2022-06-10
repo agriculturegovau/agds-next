@@ -2,6 +2,7 @@
 title: Content
 description: A collection of simple layout containers to wrap content.
 group: Layout
+storybookPath: /storybook/index.html?path=/story/layout-content-content--basic
 ---
 
 ### PageContent
