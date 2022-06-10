@@ -10,7 +10,8 @@ import { PageAlert } from '@ag.ds-next/page-alert';
 import { useScrollToField } from '@ag.ds-next/field';
 import { Checkbox } from '@ag.ds-next/control-input';
 import { H2 } from '@ag.ds-next/heading';
-import { Button } from '@ag.ds-next/button';
+import { BaseButton } from '@ag.ds-next/button';
+import { TextLink } from '@ag.ds-next/text-link';
 import {
 	DefinitionList,
 	DefinitionListItem,
@@ -73,9 +74,9 @@ export const FormExampleMultiStep4 = () => {
 			{/** Summary: Step 0 */}
 			<Stack gap={1.5} alignItems="flex-start">
 				<H2>{FORM_STEPS[0].label}</H2>
-				<Button variant="tertiary" onClick={() => goToStep(0)}>
+				<TextLink as={BaseButton} onClick={() => goToStep(0)}>
 					Change
-				</Button>
+				</TextLink>
 				<DefinitionList>
 					<DefinitionListItem>
 						<DefinitionTerm>
@@ -92,9 +93,9 @@ export const FormExampleMultiStep4 = () => {
 			{/** Summary: Step 1 */}
 			<Stack gap={1.5} alignItems="flex-start">
 				<H2>{FORM_STEPS[1].label}</H2>
-				<Button variant="tertiary" onClick={() => goToStep(0)}>
+				<TextLink as={BaseButton} onClick={() => goToStep(1)}>
 					Change
-				</Button>
+				</TextLink>
 				<DefinitionList>
 					<DefinitionListItem>
 						<DefinitionTerm>
@@ -121,9 +122,9 @@ export const FormExampleMultiStep4 = () => {
 			{/** Summary: Step 2 */}
 			<Stack gap={1.5} alignItems="flex-start">
 				<H2>{FORM_STEPS[2].label}</H2>
-				<Button variant="tertiary" onClick={() => goToStep(0)}>
+				<TextLink as={BaseButton} onClick={() => goToStep(2)}>
 					Change
-				</Button>
+				</TextLink>
 				<DefinitionList>
 					<DefinitionListItem>
 						<DefinitionTerm>
@@ -140,9 +141,9 @@ export const FormExampleMultiStep4 = () => {
 			{/** Summary: Step 3 */}
 			<Stack gap={1.5} alignItems="flex-start">
 				<H2>{FORM_STEPS[3].label}</H2>
-				<Button variant="tertiary" onClick={() => goToStep(0)}>
+				<TextLink as={BaseButton} onClick={() => goToStep(3)}>
 					Change
-				</Button>
+				</TextLink>
 				<DefinitionList>
 					<DefinitionListItem>
 						<DefinitionTerm>
