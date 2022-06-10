@@ -3,7 +3,7 @@ import { BaseButton } from '@ag.ds-next/button';
 import { CallToAction } from './CallToAction';
 
 export default {
-	title: 'content/CallToAction',
+	title: 'navigation/CallToAction',
 	component: CallToAction,
 } as ComponentMeta<typeof CallToAction>;
 
