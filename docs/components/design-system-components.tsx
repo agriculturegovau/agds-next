@@ -125,7 +125,6 @@ export const designSystemComponents = {
 	AgLogo,
 	BaseButton,
 	Button,
-	BaseButton,
 	ButtonLink,
 	ButtonGroup,
 	Box,
