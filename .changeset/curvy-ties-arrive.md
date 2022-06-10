@@ -1,5 +1,5 @@
 ---
-'@ag.ds-next/main-nav': major
+'@ag.ds-next/main-nav': minor
 ---
 
 - Added the ability the forward refs and use the as prop on the `MainNavLink` component
