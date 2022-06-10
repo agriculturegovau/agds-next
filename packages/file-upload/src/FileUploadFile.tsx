@@ -1,30 +1,41 @@
 import { MouseEventHandler } from 'react';
-import { FileWithPath } from 'react-dropzone';
-import formatFileSize from 'filesize';
 import { Box, Flex } from '@ag.ds-next/box';
+import { boxPalette, globalPalette } from '@ag.ds-next/core';
 import { Text } from '@ag.ds-next/text';
 import { Button } from '@ag.ds-next/button';
+import { FileWithPath } from 'react-dropzone';
+import formatFileSize from 'filesize';
+import { SuccessFilledIcon } from '@ag.ds-next/icon';
 
 export const FileUploadFile = ({
 	file,
 	onRemove,
+	tone = 'none',
 }: {
 	file: FileWithPath;
 	onRemove: MouseEventHandler<HTMLButtonElement>;
+	tone?: 'none' | 'uploading' | 'success';
 }) => {
 	return (
 		<Flex
-			background="shade"
 			rounded
 			alignItems="center"
 			as="li"
 			paddingY={0.5}
 			paddingLeft={1}
 			justifyContent="space-between"
+			css={{
+				backgroundColor: toneMapper[tone],
+			}}
 		>
-			<Text css={{ wordBreak: 'break-all' }}>
-				{file.path} ({formatFileSize(file.size)})
-			</Text>
+			<Flex alignItems="center" gap={0.5}>
+				{tone == 'success' && <SuccessFilledIcon color="success" size="md" />}
+				{/* TODO: Loading icon */}
+
+				<Text css={{ wordBreak: 'break-all' }}>
+					{file.path} ({formatFileSize(file.size)})
+				</Text>
+			</Flex>
 
 			<Box flexShrink={0}>
 				<Button variant="tertiary" onClick={onRemove}>
@@ -34,3 +45,9 @@ export const FileUploadFile = ({
 		</Flex>
 	);
 };
+
+const toneMapper = {
+	none: boxPalette.backgroundShade,
+	uploading: globalPalette.infoMuted,
+	success: globalPalette.successMuted,
+} as const;
