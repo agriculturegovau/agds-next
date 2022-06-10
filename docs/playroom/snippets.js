@@ -547,7 +547,7 @@ items={[
     image={
         <img
             alt="Harvester in a golden field of wheat emptying grain into a chaser bin moving alongside it."
-            src="/agds-next/img/placeholder/hero-banner.png"
+            src="/agds-next/img/placeholder/hero-banner.jpeg"
         />
     }
 >
@@ -568,7 +568,7 @@ items={[
     image={
       <img
         alt="Harvester in a golden field of wheat emptying grain into a chaser bin moving alongside it."
-        src="/agds-next/img/placeholder/hero-banner.png"
+        src="/agds-next/img/placeholder/hero-banner.jpeg"
       />
     }
   >
