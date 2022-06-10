@@ -61,7 +61,7 @@ Using the `accept` prop, you can specify what filetypes are allowed to be select
 
 ## Indicating upload status
 
-The `FileUpload` component allows you to indicate the upload status of a file via `file.status`.
+The `FileUpload` component allows you to indicate the status of a file upload via the `file.status` property.
 
 This is great for when a file instantly uploads to a server on selection and the URL of the uploaded asset is added to the form on submission.
 
