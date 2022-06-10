@@ -24,10 +24,10 @@ type ButtonProps = PropsWithChildren<{
 export const Button = forwardRefWithAs<'button', ButtonProps>(function Button(
 	{
 		as: Tag = BaseButton,
+		children,
 		block = false,
 		iconBefore: IconBefore,
 		iconAfter: IconAfter,
-		children,
 		size = 'md',
 		loading = false,
 		loadingLabel = 'Busy',
