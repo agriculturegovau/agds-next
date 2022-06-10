@@ -59,7 +59,7 @@ Using the `accept` prop, you can specify what filetypes are allowed to be select
 - `video/mp4`
 - `video/mpeg`
 
-## Indicatiing upload status
+## Indicating upload status
 
 The `FileUpload` component allows you to indicate the upload status of a file via `file.status`.
 
