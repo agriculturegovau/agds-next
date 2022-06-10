@@ -1,5 +1,5 @@
 ---
-title: Task List
+title: Task list
 description:
 group: Forms
 storybookPath: /story/forms-tasklist--on-light
