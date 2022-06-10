@@ -22,7 +22,7 @@ export const MainNavLink = forwardRefWithAs<'a', MainNavLinkProps>(
 				paddingBottom={0.5}
 				height="100%"
 				css={{
-					'& a, & >button': {
+					'& a, & button': {
 						textDecoration: 'none',
 						'&:hover': packs.underline,
 					},
