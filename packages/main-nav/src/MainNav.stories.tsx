@@ -1,13 +1,14 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { AvatarIcon } from '@ag.ds-next/icon';
+import { BaseButton } from '@ag.ds-next/button';
 import { MainNav } from './MainNav';
-import { MainNavButton, MainNavLink } from './MainNavItem';
+import { MainNavLink } from './MainNavLink';
 import { MainNavBottomBar } from './MainNavBottomBar';
 
 export default {
 	title: 'navigation/MainNav',
 	component: MainNav,
-	subcomponents: { MainNavBottomBar },
+	subcomponents: { MainNavLink, MainNavBottomBar },
 } as ComponentMeta<typeof MainNav>;
 
 const NAV_ITEMS = [
@@ -74,7 +75,8 @@ export const HeaderRightButton = Template.bind({});
 HeaderRightButton.args = {
 	...defaultArgs,
 	rightContent: (
-		<MainNavButton
+		<MainNavLink
+			as={BaseButton}
 			onClick={() => console.log('Button press')}
 			label="Sign in"
 			icon={AvatarIcon}
@@ -86,13 +88,7 @@ export const NoLinks = Template.bind({});
 NoLinks.args = {
 	...defaultArgs,
 	links: undefined,
-	rightContent: (
-		<MainNavButton
-			onClick={() => console.log('Button press')}
-			label="Sign in"
-			icon={AvatarIcon}
-		/>
-	),
+	rightContent: <MainNavLink href="#login" label="Sign in" icon={AvatarIcon} />,
 };
 
 export const BottomBar: ComponentStory<typeof MainNavBottomBar> = (args) => (
