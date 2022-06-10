@@ -14,7 +14,7 @@ export const TextLinkExternal = ({
 			{children}
 			<ExternalLinkCallout />
 			<ExternalLinkIcon
-				weight="bold"
+				weight="regular"
 				size="sm"
 				css={{
 					position: 'relative',

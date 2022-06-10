@@ -1,23 +1,27 @@
 import {
+	forwardRef,
 	createContext,
 	useContext,
 	PropsWithChildren,
 	AnchorHTMLAttributes,
 } from 'react';
 
-function DefaultLinkComponent<P extends PropsWithChildren<LinkProps>>(
-	props: P
-) {
-	return <a {...props} />;
-}
-
-export type LinkComponent = typeof DefaultLinkComponent;
+const DefaultLinkComponent = forwardRef<
+	HTMLAnchorElement,
+	// Using `any` here because the href prop differs between routing frameworks
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any
+	LinkProps & { href?: any }
+>(function DefaultLinkComponent(props, ref) {
+	return <a ref={ref} {...props} />;
+});
 
 export type LinkProps = AnchorHTMLAttributes<HTMLAnchorElement>;
 
 export const coreContext = createContext({
 	linkComponent: DefaultLinkComponent,
 });
+
+export type LinkComponent = typeof DefaultLinkComponent;
 
 export type CoreProviderProps = PropsWithChildren<{
 	linkComponent?: LinkComponent;

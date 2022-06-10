@@ -1,9 +1,12 @@
-import { useLinkComponent, LinkProps } from '@ag.ds-next/core';
-import { focusStyles, linkStyles } from '@ag.ds-next/box';
+import { useLinkComponent, forwardRefWithAs } from '@ag.ds-next/core';
+import { Text } from '@ag.ds-next/text';
 
-export type TextLinkProps = LinkProps;
-
-export const TextLink = (props: TextLinkProps) => {
+export const TextLink = forwardRefWithAs<'a', {}>(function TextLink(
+	{ as, ...props },
+	ref
+) {
 	const Link = useLinkComponent();
-	return <Link css={[linkStyles, focusStyles]} {...props} />;
-};
+	return (
+		<Text as={as ?? Link} ref={ref} color="action" link focus {...props} />
+	);
+});
