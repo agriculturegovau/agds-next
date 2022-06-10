@@ -26,7 +26,7 @@ export const DirectionLink = forwardRefWithAs<'a', DirectionLinkProps>(
 				inline
 				gap={0.5}
 				alignItems="center"
-				fontFamily="body"
+				fontSize="sm"
 				fontWeight="normal"
 				link
 				focus
