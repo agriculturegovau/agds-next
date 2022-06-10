@@ -1,13 +1,12 @@
-import React, { Fragment, forwardRef } from 'react';
-import { useDropzone, DropzoneOptions, FileWithPath } from 'react-dropzone';
+import { Fragment, forwardRef } from 'react';
+import { useDropzone, DropzoneOptions } from 'react-dropzone';
+import formatFileSize from 'filesize';
 import { Flex, Stack } from '@ag.ds-next/box';
 import { Button } from '@ag.ds-next/button';
 import { packs, boxPalette, globalPalette, tokens } from '@ag.ds-next/core';
 import { Field } from '@ag.ds-next/field';
 import { UploadIcon } from '@ag.ds-next/icon';
 import { Text } from '@ag.ds-next/text';
-import formatFileSize from 'filesize';
-
 import { FileRejection } from './FileRejection';
 import { FileUploadFile } from './FileUploadFile';
 import {

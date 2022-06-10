@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
+import { ComponentStory, ComponentMeta } from '@storybook/react';
 import {
 	useForm,
 	SubmitHandler,
@@ -8,12 +9,11 @@ import {
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { Box } from '@ag.ds-next/box';
-import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { FileUpload } from './FileUpload';
-import { FileWithStatus } from './utils';
 import { FormStack } from '@ag.ds-next/form-stack';
 import { Button } from '@ag.ds-next/button';
 import { LoadingBlanket } from '@ag.ds-next/loading';
+import { FileUpload } from './FileUpload';
+import { FileWithStatus } from './utils';
 
 export default {
 	title: 'forms/FileUpload',
