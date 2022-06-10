@@ -107,7 +107,7 @@ export const FormExampleMultiStep1 = () => {
 						control={control}
 						name="file"
 						render={({
-							field: { onChange, onBlur, name },
+							field: { value, onChange, onBlur, name },
 							fieldState: { invalid, error },
 						}) => (
 							<div css={{ position: 'relative' }}>
@@ -119,6 +119,7 @@ export const FormExampleMultiStep1 = () => {
 									maxSize={2000}
 									maxFiles={3}
 									multiple
+									value={value}
 									onChange={onChange}
 									onBlur={onBlur}
 									name={name}

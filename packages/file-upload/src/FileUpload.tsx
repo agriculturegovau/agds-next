@@ -1,5 +1,5 @@
-import { Fragment, forwardRef, useState, InputHTMLAttributes } from 'react';
-import { useDropzone, DropzoneOptions, FileWithPath } from 'react-dropzone';
+import { Fragment, forwardRef, InputHTMLAttributes } from 'react';
+import { useDropzone, DropzoneOptions } from 'react-dropzone';
 import formatFileSize from 'filesize';
 import { Flex, Stack } from '@ag.ds-next/box';
 import { Button } from '@ag.ds-next/button';
@@ -15,6 +15,7 @@ import {
 	FileFormats,
 	getFileRejectionErrorMessage,
 	getErrorSummary,
+	FileWithStatus,
 } from './utils';
 
 type InputProps = Pick<
@@ -29,9 +30,12 @@ export type FileUploadProps = InputProps & {
 	label: string;
 	/** The maximum number of files allowed to be selected. By default there is no limit (if `multiple` is true). */
 	maxFiles?: DropzoneOptions['maxFiles'];
-	/** The maximum allowed file size, measured in KB */
+	/** The maximum allowed size for each file, measured in KB */
 	maxSize?: DropzoneOptions['maxSize'];
-	onChange: DropzoneOptions['onDrop'];
+	/** The value of the input */
+	value: FileWithStatus[];
+	/** Callback for when an accepted file is added or removed */
+	onChange: (value: FileWithStatus[]) => void;
 	/** Whether the field is required */
 	required?: boolean;
 	hint?: string;
@@ -51,6 +55,7 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 			maxFiles,
 			maxSize,
 			multiple,
+			value,
 			onChange,
 			required,
 			hint,
@@ -62,30 +67,26 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 		},
 		ref
 	) {
-		const [files, setFiles] = useState<FileWithPath[]>([]);
 		const filesPlural = multiple ? 'files' : 'file';
 		const maxSizeBytes = (maxSize || 0) * 1000;
 		const formattedMaxFileSize = formatFileSize(maxSizeBytes);
 
-		const handleRemoveFile = (file: FileWithPath) => {
-			setFiles((previousFiles) => {
-				const indexOfFile = previousFiles.indexOf(file);
-				return previousFiles.filter((_, index) => index !== indexOfFile);
-			});
+		const handleRemoveFile = (file: FileWithStatus) => {
+			const indexOfFile = value.indexOf(file);
+			onChange(value.filter((_, index) => index !== indexOfFile));
 		};
 
-		const handleDropAccepted = (acceptedFiles: FileWithPath[]) => {
+		const handleDropAccepted = (acceptedFiles: FileWithStatus[]) => {
 			// replace file if multiple is false
 			if (multiple) {
-				setFiles((prevFiles) => [...prevFiles, ...acceptedFiles]);
+				onChange([...value, ...acceptedFiles]);
 			} else {
-				setFiles(acceptedFiles);
+				onChange(acceptedFiles);
 			}
 		};
 
 		const { getRootProps, getInputProps, isDragActive, open, fileRejections } =
 			useDropzone({
-				onDrop: onChange,
 				accept,
 				maxFiles,
 				// converts kB to B
@@ -123,7 +124,7 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 					// Avoid passing `color` to the Stack component, which causes
 					// TypeScript errors.
 					// eslint-disable-next-line @typescript-eslint/no-unused-vars
-					const { color, ...rootProps } = getRootProps();
+					const { color: _, ...rootProps } = getRootProps();
 
 					return (
 						<Stack gap={0.5} {...rootProps}>
@@ -155,7 +156,8 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 									</Text>
 									{maxSize ? (
 										<Text color="muted">
-											Each file cannot exceed {formattedMaxFileSize}.
+											{multiple ? 'Each file' : 'File'} cannot exceed{' '}
+											{formattedMaxFileSize}.
 										</Text>
 									) : null}
 									{accept ? (
@@ -173,11 +175,11 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 									{`Select ${filesPlural}`}
 								</Button>
 							</Flex>
-							{files.length ? (
+							{value?.length ? (
 								<Fragment>
-									<Text color="muted">{getFilesTotal(files)}</Text>
+									<Text color="muted">{getFilesTotal(value)}</Text>
 									<Stack as="ul" gap={0.5}>
-										{files.map((file, index) => (
+										{value.map((file, index) => (
 											<FileUploadFile
 												file={file}
 												key={index}

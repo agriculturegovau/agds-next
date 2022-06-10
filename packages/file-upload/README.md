@@ -1,5 +1,5 @@
 ---
-title: FileUpload
+title: File upload
 description: Allows a user to insert a file into a form, via drag-and-drop or using the system file browser.
 group: Forms
 storybookPath: /story/forms-fileupload--on-light
@@ -22,18 +22,11 @@ Selecting multiple files is also supported with FileUpload. Simply add `multiple
 
 ## Maximum size
 
-Use the `maxSize` prop to set a maximum size for each file. maxSize is measured in kB.
+Use the `maxSize` prop to set a maximum size for each file. This value is measured in kB.
 
 ```jsx
-<FileUpload
-  maxSize={200} // 200kB
-/>
-
-<FileUpload
-  maxSize={20000} // 20MB
-/>
-
-
+<FileUpload maxSize={200} /> // 200kB
+<FileUpload maxSize={20000} /> // 20MB
 ```
 
 ## Accepted files
@@ -65,3 +58,42 @@ Using the `accept` prop, you can specify what filetypes are allowed to be select
 - `video/*`
 - `video/mp4`
 - `video/mpeg`
+
+## Indicating upload status
+
+The `FileUpload` component allows you to indicate the status of a file upload via the `file.status` property.
+
+This is great for when a file instantly uploads to a server on selection and the URL of the uploaded asset is added to the form on submission.
+
+```jsx live
+() => {
+	const exampleFile = new File(['this is an example file'], 'example.jpg', {
+		type: 'image/jpg',
+	});
+	exampleFile.status = 'uploading';
+	return (
+		<FileUpload
+			label="Avatar image"
+			hint="Formats accepted: .png, .jpg."
+			multiple={false}
+			accept={['image/jpeg', 'image/jpg', 'image/png']}
+			value={[exampleFile]}
+			onChange={console.log}
+		/>
+	);
+};
+```
+
+Alternatively, you could also wrap the `FileUpload` component in a `LoadingBlanket` while the action is processing.
+
+```jsx live
+<div style={{ position: 'relative' }}>
+	<FileUpload
+		label="Avatar image"
+		hint="Formats accepted: .png, .jpg."
+		multiple={false}
+		accept={['image/jpeg', 'image/jpg', 'image/png']}
+	/>
+	<LoadingBlanket label="Uploading file (53%)" />
+</div>
+```

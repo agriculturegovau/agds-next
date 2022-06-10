@@ -14,6 +14,7 @@
 		"@ag.ds-next/core": "2.2.1",
 		"@ag.ds-next/field": "7.0.0",
 		"@ag.ds-next/icon": "8.0.0",
+		"@ag.ds-next/loading": "3.0.0",
 		"@ag.ds-next/text": "7.0.0",
 		"@emotion/react": "^11.7.0",
 		"react": "^16.14.0 || ^17.0.0 || ^18.0.0"
@@ -24,6 +25,7 @@
 		"@ag.ds-next/core": "*",
 		"@ag.ds-next/field": "*",
 		"@ag.ds-next/icon": "*",
+		"@ag.ds-next/loading": "*",
 		"@ag.ds-next/text": "*",
 		"@emotion/react": "^11.7.0",
 		"react": "18.1.0"
