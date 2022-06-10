@@ -1,19 +1,14 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { useLinkComponent } from '@ag.ds-next/core';
 import { Box } from '@ag.ds-next/box';
-import {
-	TaskListContainer,
-	TaskList,
-	TaskListItemLink,
-	TaskListItemButton,
-} from './index';
+import { TaskListContainer, TaskList, TaskListItem } from './index';
 
 export default {
 	title: 'forms/TaskList',
 	component: TaskList,
 	subcomponents: {
 		TaskListContainer,
-		TaskListItemLink,
-		TaskListItemButton,
+		TaskListItem,
 	},
 } as ComponentMeta<typeof TaskList>;
 
@@ -91,22 +86,25 @@ Button.args = {
 	items: exampleOrderedButtonItems,
 };
 
-export const ModularLinks = () => (
-	<TaskListContainer>
-		{exampleOrderedLinkItems.map(({ label, ...props }, index) => (
-			<TaskListItemLink key={index} {...props}>
-				{label}
-			</TaskListItemLink>
-		))}
-	</TaskListContainer>
-);
+export const ModularLinks = () => {
+	const Link = useLinkComponent();
+	return (
+		<TaskListContainer>
+			{exampleOrderedLinkItems.map(({ label, ...props }, index) => (
+				<TaskListItem key={index} as={Link} {...props}>
+					{label}
+				</TaskListItem>
+			))}
+		</TaskListContainer>
+	);
+};
 
 export const ModularButtons = () => (
 	<TaskListContainer>
 		{exampleOrderedButtonItems.map(({ label, ...props }, index) => (
-			<TaskListItemButton key={index} {...props}>
+			<TaskListItem key={index} {...props}>
 				{label}
-			</TaskListItemButton>
+			</TaskListItem>
 		))}
 	</TaskListContainer>
 );
