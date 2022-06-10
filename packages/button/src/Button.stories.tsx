@@ -95,11 +95,11 @@ export const Size: ComponentStory<typeof Button> = (args) => (
 	</ButtonGroup>
 );
 
-export const ButtonLink: ComponentStory<typeof Button> = (args) => {
+export const AsLink: ComponentStory<typeof Button> = (args) => {
 	const Link = useLinkComponent();
 	return <Button as={Link} {...args} />;
 };
-ButtonLink.args = {
+AsLink.args = {
 	children: 'Button Link',
 	block: false,
 	href: '#',

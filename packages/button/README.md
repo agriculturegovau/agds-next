@@ -97,7 +97,7 @@ The `loading` prop can be used to inform users that their action is being proces
 <Button loading>Submit</Button>
 ```
 
-## Buttons links
+## As link element
 
 For situations where you need the appearance of a `Button` but the functionality of a link, you can use `as` prop.
 
