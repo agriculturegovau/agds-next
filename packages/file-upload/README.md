@@ -1,5 +1,5 @@
 ---
-title: FileUpload
+title: File Upload
 description: Allows a user to insert a file into a form, via drag-and-drop or using the system file browser.
 group: Forms
 storybookPath: /story/forms-fileupload--on-light
@@ -22,18 +22,11 @@ Selecting multiple files is also supported with FileUpload. Simply add `multiple
 
 ## Maximum size
 
-Use the `maxSize` prop to set a maximum size for each file. maxSize is measured in kB.
+Use the `maxSize` prop to set a maximum size for each file. This value is measured in kB.
 
 ```jsx
-<FileUpload
-  maxSize={200} // 200kB
-/>
-
-<FileUpload
-  maxSize={20000} // 20MB
-/>
-
-
+<FileUpload maxSize={200} /> // 200kB
+<FileUpload maxSize={20000} /> // 20MB
 ```
 
 ## Accepted files
@@ -66,32 +59,32 @@ Using the `accept` prop, you can specify what filetypes are allowed to be select
 - `video/mp4`
 - `video/mpeg`
 
-## Showing uploadingFiles
+## Indicatiing upload status
 
-FileUpload allows you to show whether a file is uploading, or has uploaded, via `file.status`.
+The `FileUpload` component allows you to indicate the upload status of a file via `file.status`.
 
-This is great for use-cases where a file instantly uploads to a server on selection, and the URL of the uploaded asset is added to the form on submission.
+This is great for when a file instantly uploads to a server on selection and the URL of the uploaded asset is added to the form on submission.
 
 ```jsx live
 () => {
-	const file = new File(['this is an example file'], 'example.jpg', {
+	const exampleFile = new File(['this is an example file'], 'example.jpg', {
 		type: 'image/jpg',
 	});
-	file.status = 'uploading';
-
+	exampleFile.status = 'uploading';
 	return (
 		<FileUpload
 			label="Avatar image"
 			hint="Formats accepted: .png, .jpg."
 			multiple={false}
 			accept={['image/jpeg', 'image/jpg', 'image/png']}
-			value={[file]}
+			value={[exampleFile]}
+			onChange={console.log}
 		/>
 	);
 };
 ```
 
-You could also wrap the FileUpload component in a LoadingBlanket, if the file uploads
+Alternatively, you could also wrap the `FileUpload` component in a `LoadingBlanket` while the action is processing.
 
 ```jsx live
 <div style={{ position: 'relative' }}>
