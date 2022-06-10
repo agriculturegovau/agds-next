@@ -28,7 +28,7 @@ AsButton.args = {
 };
 
 export const AllDirections = () => (
-	<Stack gap={1}>
+	<Stack gap={2}>
 		<DirectionLink href="#" direction="left">
 			Back
 		</DirectionLink>
