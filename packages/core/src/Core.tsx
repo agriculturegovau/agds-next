@@ -1,7 +1,7 @@
 import { PropsWithChildren } from 'react';
 import { Global } from '@emotion/react';
 import { goldTheme } from './goldTheme';
-import { CoreProvider, CoreProviderProps } from './context';
+import { CoreProvider, CoreProviderProps } from './CoreProvider';
 import { mergeTheme, Theme } from './theme';
 import { boxPalettes, boxPalette } from './boxPalette';
 import { tokens } from './tokens';
