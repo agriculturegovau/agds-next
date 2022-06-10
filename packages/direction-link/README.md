@@ -34,17 +34,17 @@ Sometimes direction is needed inside a form. Buttons offer a way to direct users
 
 ```jsx live
 <Flex flexDirection="column" alignItems="flex-start" gap={2}>
-	<DirectionButton onClick={console.log} direction="left">
+	<DirectionLink as={BaseButton} onClick={console.log} direction="left">
 		Back
-	</DirectionButton>
-	<DirectionButton onClick={console.log} direction="right">
+	</DirectionLink>
+	<DirectionLink as={BaseButton} onClick={console.log} direction="right">
 		Next
-	</DirectionButton>
-	<DirectionButton onClick={console.log} direction="up">
+	</DirectionLink>
+	<DirectionLink as={BaseButton} onClick={console.log} direction="up">
 		Top
-	</DirectionButton>
-	<DirectionButton onClick={console.log} direction="down">
+	</DirectionLink>
+	<DirectionLink as={BaseButton} onClick={console.log} direction="down">
 		Skip to footer
-	</DirectionButton>
+	</DirectionLink>
 </Flex>
 ```
