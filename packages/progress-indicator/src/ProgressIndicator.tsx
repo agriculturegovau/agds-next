@@ -1,6 +1,8 @@
 import { useRef } from 'react';
 import { useId } from '@reach/auto-id';
 import { useSpring, animated } from '@react-spring/web';
+import { useLinkComponent } from '@ag.ds-next/core';
+import { BaseButton } from '@ag.ds-next/button';
 import {
 	packs,
 	tokens,
@@ -11,17 +13,16 @@ import { ProgressIndicatorCollapseButton } from './ProgressIndicatorCollapseButt
 import { ProgressIndicatorContainer } from './ProgressIndicatorContainer';
 import {
 	ProgressIndicatorItem,
-	ProgressIndicatorItemButton,
-	ProgressIndicatorItemLink,
-	ProgressIndicatorItemLinkProps,
+	ProgressIndicatorItemProps,
 } from './ProgressIndicatorItem';
 import { ProgressIndicatorList } from './ProgressIndicatorList';
 
 export type ProgressIndicatorProps = {
-	items: ProgressIndicatorItem[];
+	items: (Omit<ProgressIndicatorItemProps, 'children'> & { label: string })[];
 };
 
 export const ProgressIndicator = ({ items }: ProgressIndicatorProps) => {
+	const Link = useLinkComponent();
 	const { buttonId, bodyId } = useProgressIndicatorIds();
 	const ref = useRef<HTMLUListElement>(null);
 	const [isOpen, onToggle] = useToggleState(false, true);
@@ -64,20 +65,15 @@ export const ProgressIndicator = ({ items }: ProgressIndicatorProps) => {
 				}}
 			>
 				<ProgressIndicatorList ref={ref}>
-					{items.map(({ label, ...props }, index) => {
-						if (isItemLink(props)) {
-							return (
-								<ProgressIndicatorItemLink key={index} {...props}>
-									{label}
-								</ProgressIndicatorItemLink>
-							);
-						}
-						return (
-							<ProgressIndicatorItemButton key={index} {...props}>
-								{label}
-							</ProgressIndicatorItemButton>
-						);
-					})}
+					{items.map(({ label, ...props }, index) => (
+						<ProgressIndicatorItem
+							key={index}
+							as={'href' in props ? Link : BaseButton}
+							{...props}
+						>
+							{label}
+						</ProgressIndicatorItem>
+					))}
 				</ProgressIndicatorList>
 			</animated.div>
 		</ProgressIndicatorContainer>
@@ -91,7 +87,3 @@ export const useProgressIndicatorIds = () => {
 		bodyId: `progress-indicator-${autoId}-body`,
 	};
 };
-
-export const isItemLink = (
-	item: Omit<ProgressIndicatorItem, 'label'>
-): item is ProgressIndicatorItemLinkProps => 'href' in item;

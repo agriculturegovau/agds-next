@@ -4,13 +4,13 @@ import { Flex } from '@ag.ds-next/box';
 import { ChevronDownIcon } from '@ag.ds-next/icon';
 import { boxPalette, tokens, usePrefersReducedMotion } from '@ag.ds-next/core';
 import { BaseButton } from '@ag.ds-next/button';
-import type { ProgressIndicatorItem } from './ProgressIndicatorItem';
+import type { ProgressIndicatorItemProps } from './ProgressIndicatorItem';
 
 type ProgressIndicatorCollapseButtonProps = {
 	ariaControls: string;
 	id: string;
 	isOpen: boolean;
-	items: ProgressIndicatorItem[];
+	items: (Omit<ProgressIndicatorItemProps, 'children'> & { label: string })[];
 	onClick: () => void;
 };
 

@@ -35,7 +35,6 @@ export const CallToAction = forwardRefWithAs<'a', PropsWithChildren<{}>>(
 				onMouseLeave={setMouseOverFalse}
 				gap={0.5}
 				alignItems="center"
-				fontFamily="body"
 				fontWeight="bold"
 				fontSize="md"
 				link
