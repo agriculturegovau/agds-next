@@ -1,4 +1,4 @@
-import { Fragment, forwardRef } from 'react';
+import { Fragment, forwardRef, InputHTMLAttributes } from 'react';
 import { useDropzone, DropzoneOptions } from 'react-dropzone';
 import formatFileSize from 'filesize';
 import { Flex, Stack } from '@ag.ds-next/box';
@@ -19,7 +19,7 @@ import {
 } from './utils';
 
 type InputProps = Pick<
-	React.InputHTMLAttributes<HTMLInputElement>,
+	InputHTMLAttributes<HTMLInputElement>,
 	'name' | 'onBlur' | 'disabled' | 'id'
 >;
 
