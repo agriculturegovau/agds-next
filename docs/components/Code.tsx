@@ -17,11 +17,12 @@ import {
 	mapSpacing,
 	packs,
 	tokens,
+	useLinkComponent,
 	useToggleState,
 } from '@ag.ds-next/core';
 import { Box, Flex } from '@ag.ds-next/box';
 import { unsetBodyStylesClassname } from '@ag.ds-next/body';
-import { Button, ButtonLink } from '@ag.ds-next/button';
+import { Button } from '@ag.ds-next/button';
 import {
 	CopyIcon,
 	ChevronDownIcon,
@@ -40,6 +41,7 @@ const PlaceholderImage = () => (
 );
 
 const LiveCode = withLive((props: unknown) => {
+	const Link = useLinkComponent();
 	const { query } = useRouter();
 
 	// The types on `withLive` are kind of useless.
@@ -124,7 +126,8 @@ const LiveCode = withLive((props: unknown) => {
 				>
 					Copy code
 				</Button>
-				<ButtonLink
+				<Button
+					as={Link}
 					href={playroomUrl}
 					target="_blank"
 					rel="noopener noreferrer"
@@ -135,7 +138,7 @@ const LiveCode = withLive((props: unknown) => {
 				>
 					Open in Playroom
 					<ExternalLinkCallout />
-				</ButtonLink>
+				</Button>
 			</Flex>
 			<Box
 				id={codeId}

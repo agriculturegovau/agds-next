@@ -7,7 +7,7 @@ export {
 } from '@ag.ds-next/accordion';
 export { Body } from '@ag.ds-next/body';
 export { Box, Flex, Stack } from '@ag.ds-next/box';
-export { BaseButton, ButtonLink, ButtonGroup } from '@ag.ds-next/button';
+export { BaseButton, Button, ButtonGroup } from '@ag.ds-next/button';
 export {
 	Content,
 	ContentBleed,
