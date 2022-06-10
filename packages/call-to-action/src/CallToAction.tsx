@@ -1,4 +1,4 @@
-import { PropsWithChildren, useState } from 'react';
+import { PropsWithChildren } from 'react';
 import { useSpring, animated } from '@react-spring/web';
 import {
 	forwardRefWithAs,

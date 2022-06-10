@@ -11,10 +11,12 @@ A simple and clear link to direct users to a preferred action.
 <CallToAction href="#">Sign up</CallToAction>
 ```
 
-### Button
+### As button element
+
+For situations where you need the appearance of a `CallToAction` but the functionality of a HTML `button` element, you can use `as` prop.
 
 ```jsx live
 <CallToAction as={BaseButton} onClick={console.log}>
-	Sign up
+	Button element
 </CallToAction>
 ```
