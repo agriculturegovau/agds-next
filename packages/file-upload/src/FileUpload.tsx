@@ -33,7 +33,9 @@ export type FileUploadProps = InputProps & {
 	maxFiles?: DropzoneOptions['maxFiles'];
 	/** The maximum allowed size for each file, measured in KB */
 	maxSize?: DropzoneOptions['maxSize'];
+	/** The value of the input */
 	value: FileWithStatus[];
+	/** Callback for when an accepted file is added or removed */
 	onChange: (value: FileWithStatus[]) => void;
 	/** Whether the field is required */
 	required?: boolean;
