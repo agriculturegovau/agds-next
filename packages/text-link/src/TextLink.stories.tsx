@@ -1,5 +1,5 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { useEffect, useRef } from 'react';
+import { BaseButton } from '@ag.ds-next/button';
 import { TextLink } from './TextLink';
 
 export default {
@@ -8,13 +8,15 @@ export default {
 } as ComponentMeta<typeof TextLink>;
 
 const Template: ComponentStory<typeof TextLink> = (args) => {
-	const ref = useRef();
-	useEffect(() => console.log(ref));
-	return <TextLink ref={ref} {...args} />;
+	return <TextLink {...args} />;
 };
 
 export const Basic = Template.bind({});
 Basic.args = { children: 'Internal link', href: '#' };
 
 export const AsButton = Template.bind({});
-AsButton.args = { as: 'button', children: 'Button', onClick: console.log };
+AsButton.args = {
+	as: BaseButton,
+	children: 'Button element',
+	onClick: console.log,
+};
