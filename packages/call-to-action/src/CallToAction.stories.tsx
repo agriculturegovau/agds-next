@@ -1,35 +1,25 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { Box } from '@ag.ds-next/box';
 import { BaseButton } from '@ag.ds-next/button';
-import { CallToAction } from './index';
+import { CallToAction } from './CallToAction';
 
 export default {
 	title: 'content/CallToAction',
 	component: CallToAction,
 } as ComponentMeta<typeof CallToAction>;
 
-export const OnLight: ComponentStory<typeof CallToAction> = (args) => (
-	<CallToAction {...args} />
-);
-OnLight.args = {
+const Template: ComponentStory<typeof CallToAction> = (args) => {
+	return <CallToAction {...args} />;
+};
+
+export const Basic = Template.bind({});
+Basic.args = {
 	children: 'Sign up',
 	href: '#',
 };
 
-export const OnDark: ComponentStory<typeof CallToAction> = (args) => (
-	<Box palette="dark" background="body" padding={1.5}>
-		<CallToAction {...args} />
-	</Box>
-);
-OnDark.args = {
-	children: 'Sign up',
-	href: '#',
-};
-
-export const Button: ComponentStory<typeof CallToAction> = (args) => (
-	<CallToAction as={BaseButton} {...args} />
-);
-Button.args = {
-	children: 'Sign up',
+export const AsButton = Template.bind({});
+AsButton.args = {
+	as: BaseButton,
+	children: 'Button element',
 	onClick: console.log,
 };
