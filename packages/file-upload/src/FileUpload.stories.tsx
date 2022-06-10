@@ -1,15 +1,38 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import React, { useState } from 'react';
 import { Box } from '@ag.ds-next/box';
-import { FileUpload } from './FileUpload';
+import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { FileUpload, FileUploadValue } from './FileUpload';
 
 export default {
 	title: 'forms/FileUpload',
 	component: FileUpload,
 } as ComponentMeta<typeof FileUpload>;
 
-export const OnLight: ComponentStory<typeof FileUpload> = (args) => (
-	<FileUpload {...args} onChange={console.log} />
-);
+export const OnLight: ComponentStory<typeof FileUpload> = (args) => {
+	const [value, setValue] = useState<FileUploadValue[]>([]);
+
+	const onChange = (acceptedFiles: FileUploadValue[]) => {
+		// Update the UI to show loading state straight away
+		setValue(
+			acceptedFiles.map((file) => {
+				if (!file.status || file.status === 'none') file.status = 'uploading';
+				return file;
+			})
+		);
+		// Show uploaded state after simulated network request
+		setTimeout(() => {
+			setValue(
+				acceptedFiles.map((file) => {
+					if (file.status === 'uploading') file.status = 'success';
+					return file;
+				})
+			);
+		}, 3000);
+	};
+
+	return <FileUpload {...args} value={value} onChange={onChange} />;
+};
+
 OnLight.args = {
 	label: 'Drivers licence',
 };

@@ -1,12 +1,13 @@
-import { Fragment, forwardRef, useState, InputHTMLAttributes } from 'react';
+import React, { Fragment, forwardRef, useMemo } from 'react';
 import { useDropzone, DropzoneOptions, FileWithPath } from 'react-dropzone';
-import formatFileSize from 'filesize';
 import { Flex, Stack } from '@ag.ds-next/box';
 import { Button } from '@ag.ds-next/button';
 import { packs, boxPalette, globalPalette, tokens } from '@ag.ds-next/core';
 import { Field } from '@ag.ds-next/field';
 import { UploadIcon } from '@ag.ds-next/icon';
 import { Text } from '@ag.ds-next/text';
+import formatFileSize from 'filesize';
+
 import { FileRejection } from './FileRejection';
 import { FileUploadFile } from './FileUploadFile';
 import {
@@ -18,9 +19,13 @@ import {
 } from './utils';
 
 type InputProps = Pick<
-	InputHTMLAttributes<HTMLInputElement>,
+	React.InputHTMLAttributes<HTMLInputElement>,
 	'name' | 'onBlur' | 'disabled' | 'id'
 >;
+
+export type FileUploadValue = FileWithPath & {
+	status?: 'none' | 'uploading' | 'success';
+};
 
 export type FileUploadProps = InputProps & {
 	/** List of acceptible file types, e.g.`image/jpeg`, `application/pdf` */
@@ -31,7 +36,8 @@ export type FileUploadProps = InputProps & {
 	maxFiles?: DropzoneOptions['maxFiles'];
 	/** The maximum allowed file size, measured in KB */
 	maxSize?: DropzoneOptions['maxSize'];
-	onChange: DropzoneOptions['onDrop'];
+	value: FileUploadValue[];
+	onChange: (value: FileUploadValue[]) => void;
 	/** Whether the field is required */
 	required?: boolean;
 	hint?: string;
@@ -51,6 +57,7 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 			maxFiles,
 			maxSize,
 			multiple,
+			value,
 			onChange,
 			required,
 			hint,
@@ -62,30 +69,26 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 		},
 		ref
 	) {
-		const [files, setFiles] = useState<FileWithPath[]>([]);
 		const filesPlural = multiple ? 'files' : 'file';
 		const maxSizeBytes = (maxSize || 0) * 1000;
 		const formattedMaxFileSize = formatFileSize(maxSizeBytes);
 
 		const handleRemoveFile = (file: FileWithPath) => {
-			setFiles((previousFiles) => {
-				const indexOfFile = previousFiles.indexOf(file);
-				return previousFiles.filter((_, index) => index !== indexOfFile);
-			});
+			const indexOfFile = value.indexOf(file);
+			onChange(value.filter((_, index) => index !== indexOfFile));
 		};
 
 		const handleDropAccepted = (acceptedFiles: FileWithPath[]) => {
 			// replace file if multiple is false
 			if (multiple) {
-				setFiles((prevFiles) => [...prevFiles, ...acceptedFiles]);
+				onChange([...value, ...acceptedFiles]);
 			} else {
-				setFiles(acceptedFiles);
+				onChange(acceptedFiles);
 			}
 		};
 
 		const { getRootProps, getInputProps, isDragActive, open, fileRejections } =
 			useDropzone({
-				onDrop: onChange,
 				accept,
 				maxFiles,
 				// converts kB to B
@@ -180,14 +183,16 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 									</Button>
 								</Flex>
 							)}
+							{value.length ? (
 								<Fragment>
-									<Text color="muted">{getFilesTotal(files)}</Text>
+									<Text color="muted">{getFilesTotal(value)}</Text>
 									<Stack as="ul" gap={0.5}>
-										{files.map((file, index) => (
+										{value.map((file, index) => (
 											<FileUploadFile
 												file={file}
 												key={index}
 												onRemove={() => handleRemoveFile(file)}
+												tone={file.status}
 											/>
 										))}
 									</Stack>
