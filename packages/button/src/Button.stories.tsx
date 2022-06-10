@@ -1,14 +1,14 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
+import { useLinkComponent } from '@ag.ds-next/core';
 import { Flex } from '@ag.ds-next/box';
-import { allIcons, ExternalLinkIcon } from '@ag.ds-next/icon';
+import { allIcons, AvatarIcon } from '@ag.ds-next/icon';
 import { Text } from '@ag.ds-next/text';
-import { Button, ButtonLink } from './Button';
+import { Button } from './Button';
 import { ButtonGroup } from './ButtonGroup';
 
 export default {
 	title: 'forms/Button',
 	component: Button,
-	subcomponents: { ButtonLink },
 	argTypes: {
 		iconAfter: {
 			options: Object.keys(allIcons), // An array of serializable values
@@ -95,11 +95,11 @@ export const Size: ComponentStory<typeof Button> = (args) => (
 	</ButtonGroup>
 );
 
-export const ButtonLinkStory: ComponentStory<typeof ButtonLink> = (args) => (
-	<ButtonLink {...args} />
-);
-ButtonLinkStory.storyName = 'ButtonLink';
-ButtonLinkStory.args = {
+export const AsLink: ComponentStory<typeof Button> = (args) => {
+	const Link = useLinkComponent();
+	return <Button as={Link} {...args} />;
+};
+AsLink.args = {
 	children: 'Button Link',
 	block: false,
 	href: '#',
@@ -111,17 +111,5 @@ export const ButtonWithIcon: ComponentStory<typeof Button> = (args) => (
 );
 ButtonWithIcon.args = {
 	children: 'Primary',
-	iconAfter: ExternalLinkIcon,
-};
-
-export const ButtonLinkWithIcon: ComponentStory<typeof ButtonLink> = (args) => (
-	<ButtonLink {...args} />
-);
-ButtonLinkWithIcon.storyName = 'ButtonLink With Icon';
-ButtonLinkWithIcon.args = {
-	children: 'Open external link',
-	href: 'https://steelthreads.github.io/agds-next',
-	target: '_blank',
-	rel: 'noopener noreferrer',
-	iconAfter: ExternalLinkIcon,
+	iconAfter: AvatarIcon,
 };

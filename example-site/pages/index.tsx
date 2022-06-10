@@ -1,5 +1,6 @@
 import { Stack } from '@ag.ds-next/box';
-import { ButtonGroup, ButtonLink } from '@ag.ds-next/button';
+import { useLinkComponent } from '@ag.ds-next/core';
+import { ButtonGroup, Button } from '@ag.ds-next/button';
 import { SectionContent } from '@ag.ds-next/content';
 import { Columns, Column } from '@ag.ds-next/columns';
 import { H2, H3 } from '@ag.ds-next/heading';
@@ -16,6 +17,7 @@ import { DocumentTitle } from '../components/DocumentTitle';
 import { ArticleCard } from '../components/ArticleCard';
 
 export default function HomePage() {
+	const Link = useLinkComponent();
 	return (
 		<>
 			<DocumentTitle title="Home" />
@@ -39,10 +41,12 @@ export default function HomePage() {
 						</HeroBannerSubtitle>
 					</HeroBannerTitleContainer>
 					<ButtonGroup>
-						<ButtonLink href="/sign-in-form">Create account</ButtonLink>
-						<ButtonLink href="/sign-in-form" variant="secondary">
+						<Button as={Link} href="/sign-in-form">
+							Create account
+						</Button>
+						<Button as={Link} href="/sign-in-form" variant="secondary">
 							Sign in
-						</ButtonLink>
+						</Button>
 					</ButtonGroup>
 				</HeroBanner>
 

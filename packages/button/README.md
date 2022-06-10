@@ -86,14 +86,7 @@ A block-level button uses 100% of the available width of the container or parent
 The `iconAfter` and `iconBefore` props can be used to add system icons to buttons.
 
 ```jsx live
-<ButtonLink
-	iconAfter={ExternalLinkIcon}
-	href="https://steelthreads.github.io/agds-next"
-	target="_blank"
-	rel="noopener noreferrer"
->
-	Open external link
-</ButtonLink>
+<Button iconAfter={AvatarIcon}>Sign in</Button>
 ```
 
 ### Loading
@@ -104,14 +97,17 @@ The `loading` prop can be used to inform users that their action is being proces
 <Button loading>Submit</Button>
 ```
 
-## Buttons links
+## As link element
 
-For situations where you need something that has the visual weight of a Button, but the functionality of a link, you can use `ButtonLink`!
+For situations where you need the appearance of a `Button` but the functionality of a link, you can use `as` prop.
 
-`ButtonLink` adopts the `Link` component from your chosen router framework, which you can set in the `Core` component.
-
-```jsx live
-<ButtonLink href="/sign-in">Sign in</ButtonLink>
+```jsx
+const Link = useLinkComponent();
+return (
+	<Button as={LinkComponent} href="/sign-in">
+		Sign in
+	</Button>
+);
 ```
 
 ## ButtonGroup

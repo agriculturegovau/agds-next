@@ -1,6 +1,7 @@
 import { PageContent } from '@ag.ds-next/content';
+import { useLinkComponent } from '@ag.ds-next/core';
 import { Columns, Column } from '@ag.ds-next/columns';
-import { ButtonLink } from '@ag.ds-next/button';
+import { Button } from '@ag.ds-next/button';
 import { Body } from '@ag.ds-next/body';
 import { Breadcrumbs } from '@ag.ds-next/breadcrumbs';
 import { Stack } from '@ag.ds-next/box';
@@ -14,6 +15,7 @@ import { PageTitle } from '../../../../components/PageTitle';
 import { FormDivider } from '../../../../components/FormDivider';
 
 export default function FormMultiPageHomePage() {
+	const Link = useLinkComponent();
 	return (
 		<>
 			<DocumentTitle title="Multi-page form example" />
@@ -44,9 +46,12 @@ export default function FormMultiPageHomePage() {
 									<Text as="p">Multi-page form subheading content</Text>
 								</Stack>
 								<div>
-									<ButtonLink href="/category/subcategory/multi-page-form/form">
+									<Button
+										as={Link}
+										href="/category/subcategory/multi-page-form/form"
+									>
 										Start form
-									</ButtonLink>
+									</Button>
 								</div>
 								<FormDivider />
 								<Body>

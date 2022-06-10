@@ -1,7 +1,8 @@
 import { GetStaticProps, InferGetStaticPropsType } from 'next';
 import { MDXRemote } from 'next-mdx-remote';
+import { useLinkComponent } from '@ag.ds-next/core';
 import { Body } from '@ag.ds-next/body';
-import { ButtonGroup, ButtonLink } from '@ag.ds-next/button';
+import { Button, ButtonGroup } from '@ag.ds-next/button';
 import { ExternalLinkIcon } from '@ag.ds-next/icon';
 import { ExternalLinkCallout } from '@ag.ds-next/a11y';
 import {
@@ -22,6 +23,7 @@ export default function Packages({
 	navLinks,
 	breadcrumbs,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
+	const Link = useLinkComponent();
 	return (
 		<>
 			<DocumentTitle title={pkg.title} />
@@ -42,7 +44,8 @@ export default function Packages({
 						callToAction={
 							pkg.storybookPath && (
 								<ButtonGroup>
-									<ButtonLink
+									<Button
+										as={Link}
 										target="_blank"
 										href={`https://steelthreads.github.io/agds-next/storybook/index.html?path=${pkg.storybookPath}`}
 										rel="noopener noreferrer"
@@ -51,7 +54,7 @@ export default function Packages({
 									>
 										View in Storybook
 										<ExternalLinkCallout />
-									</ButtonLink>
+									</Button>
 								</ButtonGroup>
 							)
 						}
