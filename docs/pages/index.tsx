@@ -1,7 +1,7 @@
 import { Columns, Column } from '@ag.ds-next/columns';
 import { SectionContent } from '@ag.ds-next/content';
 import { Stack } from '@ag.ds-next/box';
-import { CallToActionLink } from '@ag.ds-next/call-to-action';
+import { CallToAction } from '@ag.ds-next/call-to-action';
 import { Body } from '@ag.ds-next/body';
 import { TextLinkExternal } from '@ag.ds-next/text-link';
 import {
@@ -30,9 +30,9 @@ export default function Homepage() {
 							efficiently and consistently.
 						</HeroBannerSubtitle>
 					</HeroBannerTitleContainer>
-					<CallToActionLink href="/guides/getting-started">
+					<CallToAction href="/guides/getting-started">
 						Get started
-					</CallToActionLink>
+					</CallToAction>
 				</HeroBanner>
 				<SectionContent>
 					<Stack gap={3}>
