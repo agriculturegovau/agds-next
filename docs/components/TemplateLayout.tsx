@@ -10,7 +10,7 @@ import type {
 	Template,
 	getTemplateBreadcrumbs,
 	getTemplateSubNavItems,
-} from '../lib/mdx';
+} from '../lib/mdx/templates';
 import { AppLayout } from './AppLayout';
 import { PageLayout } from './PageLayout';
 import { PageTitle } from './PageTitle';

@@ -1,6 +1,5 @@
 import { GetStaticProps, InferGetStaticPropsType } from 'next';
 import { MDXRemote } from 'next-mdx-remote';
-import { H1 } from '@ag.ds-next/heading';
 import { Body } from '@ag.ds-next/body';
 import {
 	getGuide,
