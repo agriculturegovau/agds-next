@@ -9,7 +9,7 @@ import {
 	getTemplateSlugs,
 	getTemplateSubNavItems,
 	Template,
-} from '../../../lib/mdx';
+} from '../../../lib/mdx/templates';
 import { mdxComponents } from '../../../components/utils';
 import { TemplateLayout } from '../../../components/TemplateLayout';
 import { DocumentTitle } from '../../../components/DocumentTitle';

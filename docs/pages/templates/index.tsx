@@ -7,7 +7,7 @@ import { Card, CardLink, CardInner, CardList } from '@ag.ds-next/card';
 import { mq } from '@ag.ds-next/core';
 import { Text } from '@ag.ds-next/text';
 import { getMarkdownData, serializeMarkdown } from '../../lib/mdxUtils';
-import { getTemplateList } from '../../lib/mdx';
+import { getTemplateList } from '../../lib/mdx/templates';
 import { mdxComponents } from '../../components/utils';
 import { AppLayout } from '../../components/AppLayout';
 import { PageLayout } from '../../components/PageLayout';
