@@ -231,5 +231,3 @@ export function getReleaseBreadcrumbs(slug: string) {
 
 export type Release = Awaited<ReturnType<typeof getRelease>>;
 export type ReleaseList = Awaited<ReturnType<typeof getReleaseList>>;
-
-// Guides
