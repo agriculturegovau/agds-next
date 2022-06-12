@@ -1,11 +1,8 @@
 import { normalize } from 'path';
 import { MDXRemote } from 'next-mdx-remote';
 import { Body } from '@ag.ds-next/body';
-import {
-	getMarkdownData,
-	getGuideList,
-	serializeMarkdown,
-} from '../../lib/mdxUtils';
+import { getMarkdownData, serializeMarkdown } from '../../lib/mdxUtils';
+import { getGuideList } from '../../lib/mdx/guides';
 import { mdxComponents } from '../../components/utils';
 import { AppLayout } from '../../components/AppLayout';
 import { DocumentTitle } from '../../components/DocumentTitle';
