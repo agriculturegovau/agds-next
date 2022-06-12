@@ -1,6 +1,5 @@
 import { GetStaticProps, InferGetStaticPropsType } from 'next';
 import { MDXRemote } from 'next-mdx-remote';
-import { H1 } from '@ag.ds-next/heading';
 import { Body } from '@ag.ds-next/body';
 import {
 	getGuide,
@@ -8,11 +7,12 @@ import {
 	getGuidesBreadcrumbs,
 	getGuideSlugs,
 	Guide,
-} from '../../lib/mdxUtils';
+} from '../../lib/mdx/guides';
 import { mdxComponents } from '../../components/utils';
 import { AppLayout } from '../../components/AppLayout';
 import { DocumentTitle } from '../../components/DocumentTitle';
 import { PageLayout } from '../../components/PageLayout';
+import { PageTitle } from '../../components/PageTitle';
 
 export default function Guides({
 	guide,
@@ -32,7 +32,7 @@ export default function Guides({
 					editPath={`/guides/${guide.slug}.mdx`}
 					breadcrumbs={breadcrumbs}
 				>
-					<H1>{guide.data.title}</H1>
+					<PageTitle title={guide.title} introduction={guide.description} />
 					<Body>
 						<MDXRemote {...guide.source} components={mdxComponents} />
 					</Body>

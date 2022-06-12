@@ -1,10 +1,8 @@
 ---
+order: 1
 title: Getting started
+description: Welcome to AgDS - the Design System for the Australian Government Department of Agriculture, Water and the Environment. In this guide we are going to go through the steps necessary to get started with the React component library from our Design System.
 ---
-
-Welcome to AgDS - the Design System for the Australian Government Department of Agriculture, Water and the Environment.
-
-In this guide we are going to go through the steps necessary to get started with the React component library from our Design System.
 
 ## What is React?
 
@@ -94,58 +92,17 @@ The `Core` component needs to wrap your entire application and it is where you c
 // This example assumes you are using NextJS
 // This is an example of `_app.tsx`
 
-import { PropsWithChildren } from 'react';
-import Link, { LinkProps } from 'next/link';
 import { Core } from '@ag.ds-next/core';
 import { theme } from '@ag.ds-next/ag-branding';
+
+// Note: You will need to create this import
+import { LinkComponent } from './LinkComponent';
 
 export default function MyApp({ Component, pageProps }) {
 	return (
 		<Core theme={theme} linkComponent={LinkComponent}>
 			<Component {...pageProps} />
 		</Core>
-	);
-}
-
-// If you are not using Next.js and instead using something like react-router, this `LinkComponent` will need to be configured differently
-
-type NextLinkProps = Omit<LinkProps, 'as' | 'href'>;
-
-type LinkComponentProps = PropsWithChildren<NextLinkProps> & {
-	href?: LinkProps['href'];
-};
-
-function LinkComponent({
-	href,
-	replace,
-	scroll,
-	shallow,
-	passHref,
-	prefetch,
-	locale,
-	...props
-}: LinkComponentProps) {
-	if (!href) return <a {...props} />;
-
-	// Use an `a` tag when linking externally
-	// Regex finds links starting with: `http://` | `https://` | `//`
-	const hrefAsString = typeof href === 'string' ? href : href?.pathname;
-	if (hrefAsString && /^(https?:\/\/|\/\/)/i.test(hrefAsString)) {
-		return <a href={hrefAsString} {...props} />;
-	}
-
-	return (
-		<Link
-			href={href}
-			replace={replace}
-			scroll={scroll}
-			shallow={shallow}
-			passHref={passHref}
-			prefetch={prefetch}
-			locale={locale}
-		>
-			<a {...props} />
-		</Link>
 	);
 }
 ```
