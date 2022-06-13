@@ -2,7 +2,7 @@ import { Box } from '@ag.ds-next/box';
 import { LinkProps, packs, useLinkComponent } from '@ag.ds-next/core';
 import { localPalette } from './utils';
 
-export type SideNavTitleProps = Omit<LinkProps, 'color'> & {
+export type SideNavTitleProps = LinkProps & {
 	isCurrentPage?: boolean;
 };
 

@@ -15,7 +15,7 @@ const DefaultLinkComponent = forwardRef<
 	return <a ref={ref} {...props} />;
 });
 
-export type LinkProps = AnchorHTMLAttributes<HTMLAnchorElement>;
+export type LinkProps = Omit<AnchorHTMLAttributes<HTMLAnchorElement>, 'color'>;
 
 export const coreContext = createContext({
 	linkComponent: DefaultLinkComponent,
