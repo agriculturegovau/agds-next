@@ -10,7 +10,7 @@ storybookPath: /story/content-badge--on-light
 Use badges to highlight an item's status for quick recognition.
 
 ```jsx live
-<Badge tone="info" label="In progress" />
+<Badge tone="action" label="Action" />
 ```
 
 ### Tones
@@ -21,6 +21,7 @@ The four supported tones are `info`, `success`, `error` and `warning`.
 
 ```jsx live
 <Flex gap={1}>
+	<Badge tone="action" label="Action" />
 	<Badge tone="info" label="In progress" />
 	<Badge tone="success" label="Resolved" />
 	<Badge tone="error" label="Rejected" />
@@ -34,6 +35,7 @@ A notification badge is a visual indicator for numeric values.
 
 ```jsx live
 <Flex gap={1}>
+	<NotificationBadge tone="action" value={8} />
 	<NotificationBadge tone="info" value={16} />
 	<NotificationBadge tone="success" value={32} />
 	<NotificationBadge tone="error" value={48} />
@@ -55,6 +57,7 @@ A small decorative indicator used to call attention to an item.
 
 ```jsx live
 <Flex gap={1}>
+	<IndicatorDot tone="action" />
 	<IndicatorDot tone="info" />
 	<IndicatorDot tone="success" />
 	<IndicatorDot tone="error" />

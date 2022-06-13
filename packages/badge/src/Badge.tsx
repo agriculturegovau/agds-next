@@ -1,6 +1,6 @@
-import { ReactNode } from 'react';
+import { forwardRef, ReactNode } from 'react';
 import { Flex } from '@ag.ds-next/box';
-import { forwardRefWithAs } from '@ag.ds-next/core';
+import { mapSpacing } from '@ag.ds-next/core';
 import { IndicatorDot } from './IndicatorDot';
 import { BadgeTone } from './utils';
 
@@ -9,24 +9,25 @@ export type BadgeProps = {
 	tone: BadgeTone;
 };
 
-export const Badge = forwardRefWithAs<'div', BadgeProps>(function Badge(
-	{ as = 'div', label, tone = 'info' },
+export const Badge = forwardRef<HTMLDivElement, BadgeProps>(function Badge(
+	{ label, tone },
 	ref
 ) {
 	return (
 		<Flex
 			ref={ref}
-			as={as}
 			display="inline-flex"
 			alignItems="center"
 			gap={0.5}
-			paddingX={0.5}
-			border
-			borderColor="muted"
+			height={mapSpacing(2)}
+			paddingX={0.75}
 			rounded
 			fontSize="sm"
+			lineHeight="nospace"
+			background="body"
 			color="text"
-			css={{ fontVariantNumeric: `tabular-nums` }}
+			border
+			borderColor="muted"
 		>
 			<IndicatorDot tone={tone} />
 			{label}
