@@ -35,6 +35,7 @@ export const BaseButton = forwardRef<HTMLButtonElement, BaseButtonProps>(
 					cursor: 'pointer',
 					textAlign: 'left',
 					border: 'none',
+					padding: 0,
 					fontFamily: tokens.font.body,
 					fontSize: 'inherit',
 					lineHeight: 'inherit',

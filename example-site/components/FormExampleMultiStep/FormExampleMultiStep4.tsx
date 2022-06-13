@@ -10,8 +10,7 @@ import { PageAlert } from '@ag.ds-next/page-alert';
 import { useScrollToField } from '@ag.ds-next/field';
 import { Checkbox } from '@ag.ds-next/control-input';
 import { H2 } from '@ag.ds-next/heading';
-import { BaseButton } from '@ag.ds-next/button';
-import { TextLink } from '@ag.ds-next/text-link';
+import { TextButton } from '@ag.ds-next/text-link';
 import {
 	DefinitionList,
 	DefinitionListItem,
@@ -74,9 +73,7 @@ export const FormExampleMultiStep4 = () => {
 			{/** Summary: Step 0 */}
 			<Stack gap={1.5} alignItems="flex-start">
 				<H2>{FORM_STEPS[0].label}</H2>
-				<TextLink as={BaseButton} onClick={() => goToStep(0)}>
-					Change
-				</TextLink>
+				<TextButton onClick={() => goToStep(0)}>Change</TextButton>
 				<DefinitionList>
 					<DefinitionListItem>
 						<DefinitionTerm>
@@ -93,9 +90,7 @@ export const FormExampleMultiStep4 = () => {
 			{/** Summary: Step 1 */}
 			<Stack gap={1.5} alignItems="flex-start">
 				<H2>{FORM_STEPS[1].label}</H2>
-				<TextLink as={BaseButton} onClick={() => goToStep(1)}>
-					Change
-				</TextLink>
+				<TextButton onClick={() => goToStep(1)}>Change</TextButton>
 				<DefinitionList>
 					<DefinitionListItem>
 						<DefinitionTerm>
@@ -122,9 +117,7 @@ export const FormExampleMultiStep4 = () => {
 			{/** Summary: Step 2 */}
 			<Stack gap={1.5} alignItems="flex-start">
 				<H2>{FORM_STEPS[2].label}</H2>
-				<TextLink as={BaseButton} onClick={() => goToStep(2)}>
-					Change
-				</TextLink>
+				<TextButton onClick={() => goToStep(2)}>Change</TextButton>
 				<DefinitionList>
 					<DefinitionListItem>
 						<DefinitionTerm>
@@ -141,9 +134,7 @@ export const FormExampleMultiStep4 = () => {
 			{/** Summary: Step 3 */}
 			<Stack gap={1.5} alignItems="flex-start">
 				<H2>{FORM_STEPS[3].label}</H2>
-				<TextLink as={BaseButton} onClick={() => goToStep(3)}>
-					Change
-				</TextLink>
+				<TextButton onClick={() => goToStep(3)}>Change</TextButton>
 				<DefinitionList>
 					<DefinitionListItem>
 						<DefinitionTerm>

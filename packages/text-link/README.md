@@ -17,12 +17,13 @@ The `TextLink` component creates a hyperlink to web pages, files, email addresse
 
 ### As button element
 
-For situations where you need the appearance of a `TextLink` but the functionality of a HTML `button` element, you can use `as` prop.
+For situations where you need the appearance of a `TextLink` but the functionality of a HTML `button` element, you can use the `TextButton` component.
 
 ```jsx live
-<TextLink as={BaseButton} onClick={console.log}>
-	Button element
-</TextLink>
+<Text>
+	This is some text with <TextButton onClick={console.log}>a button</TextButton>{' '}
+	inside.
+</Text>
 ```
 
 ## TextLinkExternal
