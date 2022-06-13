@@ -15,7 +15,7 @@ import { BaseButton } from '@ag.ds-next/button';
 import { ChevronRightIcon } from '@ag.ds-next/icon';
 import { TextLink } from '@ag.ds-next/text-link';
 
-export type CallToActionLinkProps = Omit<LinkProps, 'color'>;
+export type CallToActionLinkProps = LinkProps;
 
 export const CallToActionLink = (props: CallToActionLinkProps) => (
 	<CallToAction as={TextLink} {...props} />

@@ -70,7 +70,7 @@ const MainNavItem = ({
 	</Box>
 );
 
-export type MainNavLinkProps = Omit<LinkProps, 'children' | 'color'> & {
+export type MainNavLinkProps = Omit<LinkProps, 'children'> & {
 	label: ReactNode;
 	icon?: ComponentType<IconProps>;
 };
@@ -91,7 +91,7 @@ export const MainNavLink = ({
 
 export type MainNavButtonProps = Omit<
 	ButtonHTMLAttributes<HTMLButtonElement>,
-	'children' | 'color'
+	'children'
 > & {
 	label: ReactNode;
 	icon?: ComponentType<IconProps>;
