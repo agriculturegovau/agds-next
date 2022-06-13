@@ -1,5 +1,5 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { Box, Flex } from '@ag.ds-next/box';
+import { Box, Stack } from '@ag.ds-next/box';
 import { DirectionLink, DirectionButton } from './index';
 
 export default {
@@ -40,7 +40,7 @@ Button.args = {
 };
 
 export const AllDirections = () => (
-	<Flex flexDirection="column" alignItems="flex-start" gap={2}>
+	<Stack gap={2}>
 		<DirectionLink href="#" direction="left">
 			Back
 		</DirectionLink>
@@ -53,5 +53,5 @@ export const AllDirections = () => (
 		<DirectionLink href="#" direction="down">
 			Skip to footer
 		</DirectionLink>
-	</Flex>
+	</Stack>
 );

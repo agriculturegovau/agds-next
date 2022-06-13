@@ -12,7 +12,7 @@ Use direction links to indicate a physical direction, such as:
 - Showing the `next` or `previous` pages.
 
 ```jsx live
-<Flex flexDirection="column" alignItems="flex-start" gap={2}>
+<Stack gap={2}>
 	<DirectionLink href="#" direction="left">
 		Back
 	</DirectionLink>
@@ -25,7 +25,7 @@ Use direction links to indicate a physical direction, such as:
 	<DirectionLink href="#" direction="down">
 		Skip to footer
 	</DirectionLink>
-</Flex>
+</Stack>
 ```
 
 ### Buttons
@@ -33,7 +33,7 @@ Use direction links to indicate a physical direction, such as:
 Sometimes direction is needed inside a form. Buttons offer a way to direct users to the next or previous section inside a form.
 
 ```jsx live
-<Flex flexDirection="column" alignItems="flex-start" gap={2}>
+<Stack gap={2}>
 	<DirectionButton onClick={console.log} direction="left">
 		Back
 	</DirectionButton>
@@ -46,5 +46,5 @@ Sometimes direction is needed inside a form. Buttons offer a way to direct users
 	<DirectionButton onClick={console.log} direction="down">
 		Skip to footer
 	</DirectionButton>
-</Flex>
+</Stack>
 ```
