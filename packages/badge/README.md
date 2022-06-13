@@ -1,42 +1,63 @@
 ---
 title: Badge
-description: TODO
+description: A badge is a decorative indicator used to either call attention to an item or for communicating non-actionable, supplemental information.
 group: Content
 storybookPath: /story/content-badge--on-light
 ---
 
 ## Badge
 
-Use badges to highlight an item's status for quick recognition. Badges should contain short easy-to-scan text. Use sentence case for the badge's label.
+Use badges to highlight an item's status for quick recognition.
 
 ```jsx live
-<Badge label="To do" />
+<Badge tone="info" label="In progress" />
 ```
 
-## Tone
+### Tones
 
-Use the tone property to indicate the intent of the badge.
+Choosing a tone for a `Badge` allows the user to understand the importance and severity of the message at a glance.
+
+The four supported tones are `info`, `success`, `error` and `warning`.
 
 ```jsx live
 <Flex gap={1}>
-	<Badge tone="neutral" label="Draft" />
-	<Badge tone="informative" label="In progress" />
-	<Badge tone="accent" label="Pending" />
-	<Badge tone="critical" label="Rejected" />
-	<Badge tone="positive" label="Resolved" />
-	<Badge tone="cautious" label="Attention" />
-	<NotificationBadge tone="informative" max={99} value={123} />
+	<Badge tone="info" label="In progress" />
+	<Badge tone="success" label="Resolved" />
+	<Badge tone="error" label="Rejected" />
+	<Badge tone="warning" label="Attention" />
 </Flex>
 ```
 
-### Notification Badge
+## NotificationBadge
+
+A notification badge is a visual indicator for numeric values.
 
 ```jsx live
 <Flex gap={1}>
-	<NotificationBadge value={123} />
-	<NotificationBadge tone="neutral" value={12} />
-	<NotificationBadge tone="informative" value={23} />
-	<NotificationBadge tone="critical" value={34} />
-	<NotificationBadge tone="positive" value={45} />
+	<NotificationBadge tone="info" value={16} />
+	<NotificationBadge tone="success" value={32} />
+	<NotificationBadge tone="error" value={48} />
+	<NotificationBadge tone="warning" value={64} />
+</Flex>
+```
+
+### Maximum value
+
+Use the `max` property where the count is expected to exceed a reasonable number, and the exact count is not particularly valuable to the user.
+
+```jsx live
+<NotificationBadge tone="info" max={99} value={123} />
+```
+
+## IndicatorDot
+
+A small decorative indicator used to call attention to an item.
+
+```jsx live
+<Flex gap={1}>
+	<IndicatorDot tone="info" />
+	<IndicatorDot tone="success" />
+	<IndicatorDot tone="error" />
+	<IndicatorDot tone="warning" />
 </Flex>
 ```

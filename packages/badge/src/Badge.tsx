@@ -1,16 +1,8 @@
-import { PropsWithChildren, ReactNode } from 'react';
-import { Box, Flex } from '@ag.ds-next/box';
-import { TextLink } from '@ag.ds-next/text-link';
-import {
-	boxPalette,
-	forwardRefWithAs,
-	globalPalette,
-	LinkProps,
-} from '@ag.ds-next/core';
-import { Text } from '@ag.ds-next/text';
+import { ReactNode } from 'react';
+import { Flex } from '@ag.ds-next/box';
+import { forwardRefWithAs } from '@ag.ds-next/core';
 import { IndicatorDot } from './IndicatorDot';
-
-export type BadgeTone = keyof typeof TONE_BG_MAP;
+import { BadgeTone } from './utils';
 
 export type BadgeProps = {
 	label: ReactNode;
@@ -21,7 +13,6 @@ export const Badge = forwardRefWithAs<'div', BadgeProps>(function Badge(
 	{ as = 'div', label, tone = 'info' },
 	ref
 ) {
-	const backgroundColor = TONE_BG_MAP[tone];
 	return (
 		<Flex
 			ref={ref}
@@ -42,10 +33,3 @@ export const Badge = forwardRefWithAs<'div', BadgeProps>(function Badge(
 		</Flex>
 	);
 });
-
-const TONE_BG_MAP = {
-	success: globalPalette.success,
-	error: globalPalette.error,
-	info: globalPalette.info,
-	warning: globalPalette.warning,
-} as const;

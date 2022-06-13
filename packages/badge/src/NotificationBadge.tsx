@@ -1,27 +1,18 @@
-import { PropsWithChildren } from 'react';
-import { Box } from '@ag.ds-next/box';
-import { TextLink } from '@ag.ds-next/text-link';
-import {
-	boxPalette,
-	forwardRefWithAs,
-	globalPalette,
-	LinkProps,
-} from '@ag.ds-next/core';
+import { forwardRefWithAs } from '@ag.ds-next/core';
 import { Text } from '@ag.ds-next/text';
+import { badgeToneMap, BadgeTone } from './utils';
 
-export type NotificationBadgeTone = keyof typeof TONE_BG_MAP;
-
-export type NotificationBadgeProps = PropsWithChildren<{
+export type NotificationBadgeProps = {
 	value: number;
 	max?: number;
-	tone?: NotificationBadgeTone;
-}>;
+	tone: BadgeTone;
+};
 
 export const NotificationBadge = forwardRefWithAs<
 	'div',
 	NotificationBadgeProps
->(function NotificationBadge({ as = 'div', value, max, tone = 'info' }, ref) {
-	const backgroundColor = TONE_BG_MAP[tone];
+>(function NotificationBadge({ as = 'div', value, max, tone }, ref) {
+	const backgroundColor = badgeToneMap[tone];
 	return (
 		<Text
 			ref={ref}
@@ -38,10 +29,3 @@ export const NotificationBadge = forwardRefWithAs<
 		</Text>
 	);
 });
-
-const TONE_BG_MAP = {
-	success: globalPalette.success,
-	error: globalPalette.error,
-	info: globalPalette.info,
-	warning: globalPalette.warning,
-} as const;
