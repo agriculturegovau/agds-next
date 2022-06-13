@@ -94,7 +94,7 @@ import {
 	SkipLinkContainer,
 	SkipLinkItem,
 } from '@ag.ds-next/skip-link';
-import { DirectionLink } from '@ag.ds-next/direction-link';
+import { DirectionLink, DirectionButton } from '@ag.ds-next/direction-link';
 import { Tags } from '@ag.ds-next/tags';
 import {
 	Content,
@@ -218,6 +218,7 @@ export const designSystemComponents = {
 	SkipLinkContainer,
 	SkipLinkItem,
 	DirectionLink,
+	DirectionButton,
 	Tags,
 	Content,
 	PageContent,

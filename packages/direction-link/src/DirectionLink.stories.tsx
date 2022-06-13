@@ -1,34 +1,46 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { Stack } from '@ag.ds-next/box';
-import { BaseButton } from '@ag.ds-next/button';
-import { DirectionLink } from './DirectionLink';
+import { Box, Flex } from '@ag.ds-next/box';
+import { DirectionLink, DirectionButton } from './index';
 
 export default {
 	title: 'navigation/DirectionLink',
 	component: DirectionLink,
+	subcomponents: {
+		DirectionButton,
+	},
 } as ComponentMeta<typeof DirectionLink>;
 
-const Template: ComponentStory<typeof DirectionLink> = (args) => {
-	return <DirectionLink {...args} />;
-};
-
-export const Basic = Template.bind({});
-Basic.args = {
+export const OnLight: ComponentStory<typeof DirectionLink> = (args) => (
+	<DirectionLink {...args} />
+);
+OnLight.args = {
 	children: 'Continue',
 	direction: 'right',
 	href: '#',
 };
 
-export const AsButton = Template.bind({});
-AsButton.args = {
-	as: BaseButton,
-	children: 'Button element',
+export const OnDark: ComponentStory<typeof DirectionLink> = (args) => (
+	<Box palette="dark" background="body" padding={1.5}>
+		<DirectionLink {...args} />
+	</Box>
+);
+OnDark.args = {
+	children: 'Continue',
+	direction: 'right',
+	href: '#',
+};
+
+export const Button: ComponentStory<typeof DirectionButton> = (args) => (
+	<DirectionButton {...args} />
+);
+Button.args = {
+	children: 'Continue',
 	direction: 'right',
 	onClick: console.log,
 };
 
 export const AllDirections = () => (
-	<Stack gap={2}>
+	<Flex flexDirection="column" alignItems="flex-start" gap={2}>
 		<DirectionLink href="#" direction="left">
 			Back
 		</DirectionLink>
@@ -41,5 +53,5 @@ export const AllDirections = () => (
 		<DirectionLink href="#" direction="down">
 			Skip to footer
 		</DirectionLink>
-	</Stack>
+	</Flex>
 );
