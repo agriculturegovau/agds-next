@@ -1,5 +1,5 @@
 ---
-title: Side nav
+title: SideNav
 description: A vertical list of links for site navigation typically placed next to the body content.
 group: Navigation
 storybookPath: /story/navigation-sidenav--light-variant
