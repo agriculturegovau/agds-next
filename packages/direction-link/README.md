@@ -1,5 +1,5 @@
 ---
-title: Direction link
+title: Direction Link
 description: Direction links are accompanied by arrows to help users move quickly to other parts of the page or through a process.
 group: Navigation
 storybookPath: /story/navigation-directionlink--on-light

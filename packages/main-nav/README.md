@@ -1,5 +1,5 @@
 ---
-title: Main nav
+title: Main Nav
 description: A horizontal list of links to key areas on the website. Typically placed in the header.
 group: Navigation
 storybookPath: /story/navigation-mainnav--agriculture-variant

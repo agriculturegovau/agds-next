@@ -1,9 +1,11 @@
 ---
-title: File upload
+title: File Upload
 description: Allows a user to insert a file into a form, via drag-and-drop or using the system file browser.
 group: Forms
 storybookPath: /story/forms-fileupload--on-light
 ---
+
+`FileUpload` is a [controlled component](https://reactjs.org/docs/forms.html#controlled-components).
 
 ```jsx live
 <FileUpload

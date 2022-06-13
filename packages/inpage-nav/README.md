@@ -1,5 +1,5 @@
 ---
-title: Inpage nav
+title: Inpage Nav
 description: Inpage nav links helps users scan the contents of a page and navigate to different sections of the page.
 group: Navigation
 storybookPath: /story/navigation-inpagenav--on-light

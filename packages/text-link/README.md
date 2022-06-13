@@ -1,11 +1,11 @@
 ---
-title: Text link
+title: Text Link
 description: A typographic component for creating a hyperlinks.
 group: Navigation
 storybookPath: /story/navigation-textlink--basic
 ---
 
-This package includes the components `<TextLink />` and `<TextLinkExternal />`.
+This package includes the components `<TextLink />`, `<TextButton />` and `<TextLinkExternal />`.
 
 The `TextLink` component creates a hyperlink to web pages, files, email addresses, locations in the same page, or anything else a URL can address.
 
@@ -15,7 +15,7 @@ The `TextLink` component creates a hyperlink to web pages, files, email addresse
 </Text>
 ```
 
-### As button element
+## TextButton
 
 For situations where you need the appearance of a `TextLink` but the functionality of a HTML `button` element, you can use the `TextButton` component.
 

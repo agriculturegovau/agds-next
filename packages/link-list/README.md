@@ -1,5 +1,5 @@
 ---
-title: LinkList
+title: Link List
 description: The link list style is a simple list of vertical or horizontal links used for site navigation. It is used to order information for users.
 group: Navigation
 storybookPath: /story/navigation-linklist--on-light
