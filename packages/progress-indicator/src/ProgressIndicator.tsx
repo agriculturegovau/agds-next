@@ -1,7 +1,7 @@
-import { useRef } from 'react';
+import { ButtonHTMLAttributes, MouseEventHandler, useRef } from 'react';
 import { useId } from '@reach/auto-id';
 import { useSpring, animated } from '@react-spring/web';
-import { useLinkComponent } from '@ag.ds-next/core';
+import { LinkProps, useLinkComponent } from '@ag.ds-next/core';
 import { BaseButton } from '@ag.ds-next/button';
 import {
 	packs,
@@ -17,8 +17,20 @@ import {
 } from './ProgressIndicatorItem';
 import { ProgressIndicatorList } from './ProgressIndicatorList';
 
+type ButtonAttributes = Omit<
+	ButtonHTMLAttributes<HTMLButtonElement>,
+	'children'
+> & {
+	onClick: MouseEventHandler<HTMLButtonElement>;
+};
+
+type AnchorAttributes = Omit<LinkProps, 'children'> & {
+	href: NonNullable<LinkProps['href']>;
+};
+
 export type ProgressIndicatorProps = {
-	items: (Omit<ProgressIndicatorItemProps, 'children'> & { label: string })[];
+	items: ((ButtonAttributes | AnchorAttributes) &
+		Pick<ProgressIndicatorItemProps, 'status'> & { label: string })[];
 };
 
 export const ProgressIndicator = ({ items }: ProgressIndicatorProps) => {

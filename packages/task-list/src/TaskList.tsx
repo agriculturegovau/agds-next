@@ -1,13 +1,26 @@
+import { ButtonHTMLAttributes, MouseEventHandler } from 'react';
 import { BaseButton } from '@ag.ds-next/button';
-import { useLinkComponent } from '@ag.ds-next/core';
+import { LinkProps, useLinkComponent } from '@ag.ds-next/core';
 import { TaskListContainer } from './TaskListContainer';
 import { TaskListItem, TaskListItemProps } from './TaskListItem';
 
+type ButtonAttributes = Omit<
+	ButtonHTMLAttributes<HTMLButtonElement>,
+	'children'
+> & {
+	onClick: MouseEventHandler<HTMLButtonElement>;
+};
+
+type AnchorAttributes = Omit<LinkProps, 'children'> & {
+	href: NonNullable<LinkProps['href']>;
+};
+
 export type TaskListProps = {
-	items: (Omit<TaskListItemProps, 'children'> & {
-		label: string;
-		message?: string;
-	})[];
+	items: ((ButtonAttributes | AnchorAttributes) &
+		Pick<TaskListItemProps, 'status'> & {
+			label: string;
+			message?: string;
+		})[];
 	ordered?: boolean;
 };
 
