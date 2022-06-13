@@ -4,7 +4,7 @@ import { SectionContent } from '@ag.ds-next/content';
 import { Columns, Column } from '@ag.ds-next/columns';
 import { H2, H3 } from '@ag.ds-next/heading';
 import { Text } from '@ag.ds-next/text';
-import { CallToAction } from '@ag.ds-next/call-to-action';
+import { CallToActionLink } from '@ag.ds-next/call-to-action';
 import {
 	HeroBanner,
 	HeroBannerSubtitle,
@@ -78,9 +78,9 @@ export default function HomePage() {
 										in this space - sm/default (P).
 									</Text>
 								</Stack>
-								<CallToAction href="/category/subcategory/content">
+								<CallToActionLink href="/category/subcategory/content">
 									Read more
-								</CallToAction>
+								</CallToActionLink>
 							</Stack>
 						</Column>
 						<Column columnSpan={{ xs: 12, md: 6 }}>
@@ -103,7 +103,9 @@ export default function HomePage() {
 								</Column>
 							))}
 						</Columns>
-						<CallToAction href="/category">See more articles</CallToAction>
+						<CallToActionLink href="/category">
+							See more articles
+						</CallToActionLink>
 					</Stack>
 				</SectionContent>
 			</AppLayout>

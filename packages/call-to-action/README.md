@@ -8,15 +8,11 @@ storybookPath: /story/navigation-calltoaction--basic
 A simple and clear link to direct users to a preferred action.
 
 ```jsx live
-<CallToAction href="#">Sign up</CallToAction>
+<CallToActionLink href="#">Sign up</CallToActionLink>
 ```
 
-### As button element
-
-For situations where you need the appearance of a `CallToAction` but the functionality of a HTML `button` element, you can use `as` prop.
+### Button
 
 ```jsx live
-<CallToAction as={BaseButton} onClick={console.log}>
-	Button element
-</CallToAction>
+<CallToActionButton onClick={console.log}>Sign up</CallToActionButton>
 ```

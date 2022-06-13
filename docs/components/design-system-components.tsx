@@ -27,7 +27,10 @@ import {
 	CardLink,
 	CardList,
 } from '@ag.ds-next/card';
-import { CallToAction } from '@ag.ds-next/call-to-action';
+import {
+	CallToActionLink,
+	CallToActionButton,
+} from '@ag.ds-next/call-to-action';
 import { Callout, CalloutTitle } from '@ag.ds-next/callout';
 import { Header, HeaderBrand, HeaderContainer } from '@ag.ds-next/header';
 import { FileUpload } from '@ag.ds-next/file-upload';
@@ -131,7 +134,8 @@ export const designSystemComponents = {
 	Flex,
 	Callout,
 	CalloutTitle,
-	CallToAction,
+	CallToActionLink,
+	CallToActionButton,
 	Card,
 	CardFooter,
 	CardHeader,

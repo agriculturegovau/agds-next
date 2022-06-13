@@ -22,7 +22,10 @@ export {
 	CardLink,
 	CardList,
 } from '@ag.ds-next/card';
-export { CallToAction } from '@ag.ds-next/call-to-action';
+export {
+	CallToActionLink,
+	CallToActionButton,
+} from '@ag.ds-next/call-to-action';
 export { Callout, CalloutTitle } from '@ag.ds-next/callout';
 export { Columns, Column } from '@ag.ds-next/columns';
 export { Footer, FooterDivider } from '@ag.ds-next/footer';
