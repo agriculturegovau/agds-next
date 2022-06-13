@@ -22,7 +22,7 @@ import { FormExampleMultiStepContainer } from './FormExampleMultiStepContainer';
 const formSchema = yup
 	.object({
 		description: yup.string().required('Describe actions taken'),
-		file: yup.array().of(yup.mixed()).required('Select a file to upload'),
+		files: yup.array().of(yup.mixed()).required('Select a file to upload'),
 	})
 	.required();
 
@@ -40,7 +40,7 @@ export const FormExampleMultiStep1 = () => {
 		handleSubmit,
 		formState: { errors },
 	} = useForm<FormSchema>({
-		defaultValues: stepFormState,
+		defaultValues: stepFormState ?? { files: [] },
 		resolver: yupResolver(formSchema),
 	});
 
@@ -105,7 +105,7 @@ export const FormExampleMultiStep1 = () => {
 					/>
 					<Controller
 						control={control}
-						name="file"
+						name="files"
 						render={({
 							field: { value, onChange, onBlur, name },
 							fieldState: { invalid, error },

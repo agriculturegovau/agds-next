@@ -109,7 +109,7 @@ export const FormExampleMultiStep4 = () => {
 						</DefinitionTerm>
 						<DefinitionDescription>
 							<VisuallyHidden>{'Answer '}</VisuallyHidden>
-							{formState[1]?.file.map((file) => file.name).join(', ')}
+							{formState[1]?.files.map(({ name }) => name).join(', ')}
 						</DefinitionDescription>
 					</DefinitionListItem>
 				</DefinitionList>
