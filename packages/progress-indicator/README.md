@@ -1,5 +1,5 @@
 ---
-title: Progress indicator
+title: Progress Indicator
 description: Progress indicators provide visual feedback to users to let them know and understand their current context at any given time and be assured that they are progressing through the system.
 group: Forms
 storybookPath: /story/forms-progressindicator--on-light

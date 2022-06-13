@@ -1,5 +1,5 @@
 ---
-title: Call to action
+title: Call To Action
 description: Call to action links are visually distinct instructions to users designed to provoke an immediate response using verbs such as 'call now' or 'find out more'.
 group: Navigation
 storybookPath: /story/navigation-calltoaction--on-light
