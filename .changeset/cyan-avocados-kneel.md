@@ -3,4 +3,4 @@
 '@ag.ds-next/main-nav': patch
 ---
 
-Update types after change in `Core`
+Update link types after change in `Core`
