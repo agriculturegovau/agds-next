@@ -1,12 +1,11 @@
 import {
-	forwardRef,
 	ButtonHTMLAttributes,
-	AnchorHTMLAttributes,
 	ComponentType,
+	forwardRef,
 	Fragment,
 	ReactNode,
 } from 'react';
-import { useLinkComponent } from '@ag.ds-next/core';
+import { LinkProps, useLinkComponent } from '@ag.ds-next/core';
 import { IconProps } from '@ag.ds-next/icon';
 import { LoadingDots } from '@ag.ds-next/loading';
 import {
@@ -69,39 +68,45 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 	}
 );
 
-export type ButtonLinkProps = AnchorHTMLAttributes<HTMLAnchorElement> &
-	CommonButtonProps;
+export type ButtonLinkProps = CommonButtonProps & LinkProps;
 
-export const ButtonLink = ({
-	children,
-	block = false,
-	iconBefore: IconBefore,
-	iconAfter: IconAfter,
-	size = 'md',
-	loading,
-	loadingLabel = 'Busy',
-	variant = 'primary',
-	...props
-}: ButtonLinkProps) => {
-	const styles = buttonStyles({ block, size, variant });
-	const Link = useLinkComponent();
-	return (
-		<Link css={styles} {...props}>
-			{IconBefore ? (
-				<IconBefore size={iconSize[size]} weight="regular" />
-			) : null}
-			{loading ? (
-				<Fragment>
-					<HiddenText>{children}</HiddenText>
-					<CenteredLoading aria-label={loadingLabel} size={size} />
-				</Fragment>
-			) : (
-				children
-			)}
-			{IconAfter ? <IconAfter size={iconSize[size]} weight="regular" /> : null}
-		</Link>
-	);
-};
+export const ButtonLink = forwardRef<HTMLAnchorElement, ButtonLinkProps>(
+	function ButtonLink(
+		{
+			children,
+			block = false,
+			iconBefore: IconBefore,
+			iconAfter: IconAfter,
+			size = 'md',
+			loading,
+			loadingLabel = 'Busy',
+			variant = 'primary',
+			...props
+		},
+		ref
+	) {
+		const styles = buttonStyles({ block, size, variant });
+		const Link = useLinkComponent();
+		return (
+			<Link ref={ref} css={styles} {...props}>
+				{IconBefore ? (
+					<IconBefore size={iconSize[size]} weight="regular" />
+				) : null}
+				{loading ? (
+					<Fragment>
+						<HiddenText>{children}</HiddenText>
+						<CenteredLoading aria-label={loadingLabel} size={size} />
+					</Fragment>
+				) : (
+					children
+				)}
+				{IconAfter ? (
+					<IconAfter size={iconSize[size]} weight="regular" />
+				) : null}
+			</Link>
+		);
+	}
+);
 
 const HiddenText = ({ children }: { children: ReactNode }) => (
 	<span css={{ visibility: 'hidden' }}>{children}</span>
