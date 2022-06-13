@@ -61,6 +61,7 @@ export const CallToAction = ({
 				className={className}
 				gap={0.5}
 				alignItems="center"
+				fontFamily="body"
 				fontWeight="bold"
 				fontSize="md"
 				link

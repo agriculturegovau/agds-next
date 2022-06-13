@@ -1,39 +1,76 @@
-import { PropsWithChildren } from 'react';
+import { ButtonHTMLAttributes, ElementType, PropsWithChildren } from 'react';
 import { Box, Flex } from '@ag.ds-next/box';
 import { Text } from '@ag.ds-next/text';
+import { TextLink } from '@ag.ds-next/text-link';
 import {
 	ProgressDoingIcon,
 	ProgressDoneIcon,
 	ProgressTodoIcon,
 } from '@ag.ds-next/icon';
-import { boxPalette, forwardRefWithAs, packs } from '@ag.ds-next/core';
+import { boxPalette, LinkProps, packs } from '@ag.ds-next/core';
 import { BaseButton } from '@ag.ds-next/button';
 
-export type ProgressIndicatorItemProps = PropsWithChildren<{
-	status: ProgressIndicatorItemStatus;
-}>;
+export type ProgressIndicatorItem = (
+	| ProgressIndicatorItemButtonProps
+	| ProgressIndicatorItemLinkProps
+) & {
+	label: string;
+};
 
 export type ProgressIndicatorItemStatus = 'doing' | 'todo' | 'done';
 
-export const ProgressIndicatorItem = forwardRefWithAs<
-	'button',
-	ProgressIndicatorItemProps
->(function ProgressIndicatorItem(
-	{ as = BaseButton, children, status, ...props },
-	ref
-) {
+export type ProgressIndicatorItemLinkProps = LinkProps & {
+	status: ProgressIndicatorItemStatus;
+};
+
+export const ProgressIndicatorItemLink = ({
+	children,
+	...props
+}: ProgressIndicatorItemLinkProps) => (
+	<ProgressIndicatorItem as={TextLink} {...props}>
+		{children}
+	</ProgressIndicatorItem>
+);
+
+export type ProgressIndicatorItemButtonProps =
+	ButtonHTMLAttributes<HTMLButtonElement> & {
+		status: ProgressIndicatorItemStatus;
+	};
+
+export const ProgressIndicatorItemButton = ({
+	children,
+	...props
+}: ProgressIndicatorItemButtonProps) => (
+	<ProgressIndicatorItem as={BaseButton} {...props}>
+		{children}
+	</ProgressIndicatorItem>
+);
+
+type ProgressIndicatorItemProps = PropsWithChildren<{
+	as: ElementType;
+	className?: string;
+	status: ProgressIndicatorItemStatus;
+}>;
+
+const ProgressIndicatorItem = ({
+	as,
+	children,
+	status,
+	className,
+	...props
+}: ProgressIndicatorItemProps) => {
 	const active = status === 'doing';
 	const Icon = statusIconMap[status];
 	return (
 		<Box as="li" borderBottom>
 			<Flex
-				ref={ref}
 				as={as}
+				className={className}
 				alignItems="center"
 				gap={0.75}
 				padding={0.75}
 				color="text"
-				fontSize="sm"
+				fontFamily="body"
 				fontWeight={active ? 'bold' : 'normal'}
 				borderLeft
 				borderLeftWidth="xl"
@@ -59,7 +96,7 @@ export const ProgressIndicatorItem = forwardRefWithAs<
 			</Flex>
 		</Box>
 	);
-});
+};
 
 const statusIconMap = {
 	doing: ProgressDoingIcon,

@@ -1,12 +1,12 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { useLinkComponent } from '@ag.ds-next/core';
 import { Box } from '@ag.ds-next/box';
 import {
 	ProgressIndicator,
 	ProgressIndicatorCollapseButton,
 	ProgressIndicatorContainer,
+	ProgressIndicatorItemButton,
+	ProgressIndicatorItemLink,
 	ProgressIndicatorList,
-	ProgressIndicatorItem,
 } from './index';
 
 export default {
@@ -15,6 +15,8 @@ export default {
 	subcomponents: {
 		ProgressIndicatorCollapseButton,
 		ProgressIndicatorContainer,
+		ProgressIndicatorItemButton,
+		ProgressIndicatorItemLink,
 		ProgressIndicatorList,
 	},
 } as ComponentMeta<typeof ProgressIndicator>;
@@ -58,30 +60,22 @@ Button.args = {
 	items: exampleButtonItems,
 };
 
-export const ModularLinks = () => {
-	const Link = useLinkComponent();
-	return (
-		<ProgressIndicatorList>
-			{exampleLinkItems.map(({ label, status, href }, index) => (
-				<ProgressIndicatorItem
-					key={index}
-					as={Link}
-					href={href}
-					status={status}
-				>
-					{label}
-				</ProgressIndicatorItem>
-			))}
-		</ProgressIndicatorList>
-	);
-};
+export const ModularLinks = () => (
+	<ProgressIndicatorList>
+		{exampleLinkItems.map(({ label, ...props }, index) => (
+			<ProgressIndicatorItemLink key={index} {...props}>
+				{label}
+			</ProgressIndicatorItemLink>
+		))}
+	</ProgressIndicatorList>
+);
 
 export const ModularButtons = () => (
 	<ProgressIndicatorList>
-		{exampleButtonItems.map(({ label, status, onClick }, index) => (
-			<ProgressIndicatorItem key={index} onClick={onClick} status={status}>
+		{exampleButtonItems.map(({ label, ...props }, index) => (
+			<ProgressIndicatorItemButton key={index} {...props}>
 				{label}
-			</ProgressIndicatorItem>
+			</ProgressIndicatorItemButton>
 		))}
 	</ProgressIndicatorList>
 );
