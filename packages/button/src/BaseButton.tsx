@@ -28,7 +28,6 @@ export const BaseButton = forwardRef<HTMLButtonElement, BaseButtonProps>(
 		return (
 			<button
 				ref={mergeRefs([ref, forwardedRef])}
-				type="button"
 				onClick={onClick}
 				css={{
 					appearance: 'none',

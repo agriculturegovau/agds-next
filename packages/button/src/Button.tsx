@@ -1,8 +1,14 @@
-import { ComponentType, Fragment, ReactNode, PropsWithChildren } from 'react';
-import { forwardRefWithAs } from '@ag.ds-next/core';
+import {
+	forwardRef,
+	ButtonHTMLAttributes,
+	AnchorHTMLAttributes,
+	ComponentType,
+	Fragment,
+	ReactNode,
+} from 'react';
+import { useLinkComponent } from '@ag.ds-next/core';
 import { IconProps } from '@ag.ds-next/icon';
 import { LoadingDots } from '@ag.ds-next/loading';
-import { BaseButton } from './BaseButton';
 import {
 	buttonStyles,
 	ButtonSize,
@@ -10,8 +16,9 @@ import {
 	iconSize,
 	loadingSize,
 } from './styles';
+import { BaseButton } from './BaseButton';
 
-type ButtonProps = PropsWithChildren<{
+type CommonButtonProps = {
 	block?: boolean;
 	iconBefore?: ComponentType<IconProps>;
 	iconAfter?: ComponentType<IconProps>;
@@ -19,26 +26,67 @@ type ButtonProps = PropsWithChildren<{
 	loadingLabel?: string;
 	size?: ButtonSize;
 	variant?: ButtonVariant;
-}>;
+};
 
-export const Button = forwardRefWithAs<'button', ButtonProps>(function Button(
-	{
-		as: Tag = BaseButton,
-		children,
-		block = false,
-		iconBefore: IconBefore,
-		iconAfter: IconAfter,
-		size = 'md',
-		loading = false,
-		loadingLabel = 'Busy',
-		variant = 'primary',
-		...props
-	},
-	ref
-) {
+export type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> &
+	CommonButtonProps;
+
+export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
+	function Button(
+		{
+			type = 'button',
+			block = false,
+			iconBefore: IconBefore,
+			iconAfter: IconAfter,
+			children,
+			size = 'md',
+			loading = false,
+			loadingLabel = 'Busy',
+			variant = 'primary',
+			...props
+		},
+		ref
+	) {
+		const styles = buttonStyles({ block, size, variant });
+		return (
+			<BaseButton ref={ref} css={styles} type={type} {...props}>
+				{IconBefore ? (
+					<IconBefore size={iconSize[size]} weight="regular" />
+				) : null}
+				{loading ? (
+					<Fragment>
+						<HiddenText>{children}</HiddenText>
+						<CenteredLoading aria-label={loadingLabel} size={size} />
+					</Fragment>
+				) : (
+					children
+				)}
+				{IconAfter ? (
+					<IconAfter size={iconSize[size]} weight="regular" />
+				) : null}
+			</BaseButton>
+		);
+	}
+);
+
+export type ButtonLinkProps = AnchorHTMLAttributes<HTMLAnchorElement> &
+	CommonButtonProps;
+
+export const ButtonLink = ({
+	children,
+	block = false,
+	iconBefore: IconBefore,
+	iconAfter: IconAfter,
+	size = 'md',
+	loading,
+	loadingLabel = 'Busy',
+	variant = 'primary',
+	...props
+}: ButtonLinkProps) => {
 	const styles = buttonStyles({ block, size, variant });
+	const Link = useLinkComponent();
 	return (
-		<Tag ref={ref} css={styles} {...props}>
+		<Link css={styles} {...props}>
 			{IconBefore ? (
 				<IconBefore size={iconSize[size]} weight="regular" />
 			) : null}
@@ -51,9 +99,9 @@ export const Button = forwardRefWithAs<'button', ButtonProps>(function Button(
 				children
 			)}
 			{IconAfter ? <IconAfter size={iconSize[size]} weight="regular" /> : null}
-		</Tag>
+		</Link>
 	);
-});
+};
 
 const HiddenText = ({ children }: { children: ReactNode }) => (
 	<span css={{ visibility: 'hidden' }}>{children}</span>
