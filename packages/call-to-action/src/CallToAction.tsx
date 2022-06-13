@@ -10,7 +10,7 @@ import {
 	mapSpacing,
 	usePrefersReducedMotion,
 } from '@ag.ds-next/core';
-import { Box, Flex } from '@ag.ds-next/box';
+import { Flex } from '@ag.ds-next/box';
 import { BaseButton } from '@ag.ds-next/button';
 import { ChevronRightIcon } from '@ag.ds-next/icon';
 import { TextLink } from '@ag.ds-next/text-link';
@@ -50,10 +50,11 @@ export const CallToAction = ({
 	});
 
 	return (
-		<Box
-			display="inline-block"
+		<Flex
+			inline
 			onMouseEnter={() => setMouseOver(true)}
 			onMouseLeave={() => setMouseOver(false)}
+			css={{ alignSelf: 'flex-start' }}
 		>
 			<Flex
 				as={as}
@@ -64,7 +65,6 @@ export const CallToAction = ({
 				fontSize="md"
 				link
 				focus
-				css={{ alignSelf: 'flex-start' }}
 				{...props}
 			>
 				{children}
@@ -74,6 +74,6 @@ export const CallToAction = ({
 					style={animationStyles}
 				/>
 			</Flex>
-		</Box>
+		</Flex>
 	);
 };
