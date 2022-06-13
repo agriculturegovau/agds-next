@@ -1,30 +1,40 @@
-import { BaseButton } from '@ag.ds-next/button';
-import { useLinkComponent } from '@ag.ds-next/core';
 import { TaskListContainer } from './TaskListContainer';
-import { TaskListItem, TaskListItemProps } from './TaskListItem';
+import {
+	TaskListItemButton,
+	TaskListItemButtonProps,
+	TaskListItemLink,
+	TaskListItemLinkProps,
+} from './TaskListItem';
+
+type TaskListItem = (TaskListItemButtonProps | TaskListItemLinkProps) & {
+	label: string;
+	message?: string;
+};
 
 export type TaskListProps = {
-	items: (Omit<TaskListItemProps, 'children'> & {
-		label: string;
-		message?: string;
-	})[];
+	items: TaskListItem[];
 	ordered?: boolean;
 };
 
-export const TaskList = ({ items, ordered = true }: TaskListProps) => {
-	const Link = useLinkComponent();
-	return (
-		<TaskListContainer as={ordered ? 'ol' : 'ul'}>
-			{items.map(({ label, ...props }, index) => (
-				<TaskListItem
-					key={index}
-					as={'href' in props ? Link : BaseButton}
-					ordered={ordered}
-					{...props}
-				>
+export const TaskList = ({ items, ordered = true }: TaskListProps) => (
+	<TaskListContainer as={ordered ? 'ol' : 'ul'}>
+		{items.map(({ label, ...props }, index) => {
+			if (isItemLink(props)) {
+				return (
+					<TaskListItemLink key={index} ordered={ordered} {...props}>
+						{label}
+					</TaskListItemLink>
+				);
+			}
+			return (
+				<TaskListItemButton key={index} ordered={ordered} {...props}>
 					{label}
-				</TaskListItem>
-			))}
-		</TaskListContainer>
-	);
-};
+				</TaskListItemButton>
+			);
+		})}
+	</TaskListContainer>
+);
+
+const isItemLink = (
+	item: Omit<TaskListItem, 'label'>
+): item is TaskListItemLinkProps => 'href' in item;
