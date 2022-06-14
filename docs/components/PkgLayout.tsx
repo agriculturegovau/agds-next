@@ -8,6 +8,9 @@ import { SecondaryNav } from '@ag.ds-next/secondary-nav';
 import { getPkgBreadcrumbs, getPkgNavLinks, Pkg } from '../lib/mdxUtils';
 import { PageLayout } from './PageLayout';
 import { PageTitle } from './PageTitle';
+import { Callout } from '@ag.ds-next/callout';
+import { Text } from '@ag.ds-next/text';
+import { TextLink } from '@ag.ds-next/text-link';
 
 export function PkgLayout({
 	children,
@@ -72,6 +75,13 @@ export function PkgLayout({
 				/>
 			) : null}
 			{children}
+			<Callout title="Need more help?">
+				<Text as="p">
+					You can contact us for questions, comments or to suggest a new way to
+					use this component. Please email us at{' '}
+					<TextLink href="mailto:TODO">email address</TextLink>.
+				</Text>
+			</Callout>
 		</PageLayout>
 	);
 }

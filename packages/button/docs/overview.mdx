@@ -2,8 +2,9 @@
 title: Button
 description: A button makes an action obvious to the user, as well as making an action faster and easier to perform.
 group: Forms
-storybookPath: /story/forms-button--on-light
 ---
+
+<StoryBookPreview src="https://steelthreads.github.io/agds-next/storybook/iframe.html?args=&id=forms-button--on-light&viewMode=story" />
 
 A button indicates to a user what action will happen next.
 
@@ -149,4 +150,44 @@ The medium button should be used for most circumstances.
 		Tertiary
 	</Button>
 </ButtonGroup>
+```
+
+## Button groups
+
+### Inline
+
+You can use all 3 button forms in a group side-by-side on a line.
+
+```jsx live
+<ButtonGroup>
+	<Button variant="primary">Primary</Button>
+	<Button variant="secondary">Secondary</Button>
+	<Button variant="tertiary">Tertiary</Button>
+</ButtonGroup>
+```
+
+### Stack
+
+You can stack all 3 button forms in a group in a vertical line. Align buttons to the left.
+
+```jsx live
+<Stack gap={1} alignItems="flex-start">
+	<Button variant="primary">Primary</Button>
+	<Button variant="secondary">Secondary</Button>
+	<Button variant="tertiary">Tertiary</Button>
+</Stack>
+```
+
+### Block
+
+You can stack all 3 button types in a group and span the full width of a screen.
+
+Use this variant on a screen to add emphasis to the action a user can take and space is limited. For example, on mobile.
+
+```jsx live
+<Stack gap={1}>
+	<Button variant="primary">Primary</Button>
+	<Button variant="secondary">Secondary</Button>
+	<Button variant="tertiary">Tertiary</Button>
+</Stack>
 ```
