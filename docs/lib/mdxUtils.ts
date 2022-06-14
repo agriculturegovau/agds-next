@@ -1,4 +1,5 @@
 // TODO: Rename me to lib/mdx/utils.ts
+import { existsSync } from 'fs';
 import { readdir, readFile } from 'fs/promises';
 import { normalize } from 'path';
 import { plugin } from '@untitled-docs/live-code/rehype';
@@ -10,8 +11,14 @@ import { slugify } from './slugify';
 const PKG_PATH = normalize(`${process.cwd()}/../packages/`);
 const RELEASE_PATH = normalize(`${process.cwd()}/../releases/`);
 
-const pkgDocsPath = (slug: string) =>
-	normalize(`${PKG_PATH}/${slug}/README.md`);
+const pkgReadmePath = (slug: string) => {
+	const legacyLocation = `${PKG_PATH}/${slug}/README.md`;
+	const location = `${PKG_PATH}/${slug}/docs/overview.mdx`;
+	return existsSync(location) ? location : legacyLocation;
+};
+const pkgIsLegacyStructure = (slug: string) =>
+	!existsSync(`${PKG_PATH}/${slug}/docs/overview.mdx`);
+const pkgDocsPath = (slug: string) => normalize(`${PKG_PATH}/${slug}/docs/`);
 const pkgJsonPath = (slug: string) =>
 	normalize(`${PKG_PATH}/${slug}/package.json`);
 const releasePath = (slug: string) => normalize(`${RELEASE_PATH}/${slug}.mdx`);
@@ -47,9 +54,9 @@ export function serializeMarkdown(
 
 export async function getPkg(slug: string) {
 	const { name, version } = await getJSONData(pkgJsonPath(slug));
-	const { data, content } = await getMarkdownData(pkgDocsPath(slug));
+	const { data, content } = await getMarkdownData(pkgReadmePath(slug));
 	const source = await serializeMarkdown(content, data);
-
+	const subNavItems = await getPkgSubNavItems(slug);
 	return {
 		slug,
 		source,
@@ -58,7 +65,48 @@ export async function getPkg(slug: string) {
 		version: version as string,
 		title: (data.title ?? slug) as string,
 		storybookPath: (data.storybookPath ?? null) as string | null,
+		subNavItems: subNavItems ?? null,
 	};
+}
+
+export async function getPkgSubNavItems(slug: string) {
+	if (pkgIsLegacyStructure(slug)) return;
+	return getMarkdownData(pkgReadmePath(slug)).then(({ data }) => {
+		const meta = pkgNavMetaData(slug, data);
+		return [
+			{
+				title: meta.title,
+				slug: `/packages/${meta.group}/${meta.slug}`,
+				path: pkgReadmePath(slug),
+			},
+			{
+				title: 'Content',
+				slug: `/packages/${meta.group}/${meta.slug}/content`,
+				path: `${pkgDocsPath(slug)}/content.mdx`,
+			},
+			{
+				title: 'Code',
+				slug: `/packages/${meta.group}/${meta.slug}/code`,
+				path: `${pkgDocsPath(slug)}/code.mdx`,
+			},
+			{
+				title: 'Accessibility',
+				slug: `/packages/${meta.group}/${meta.slug}/accessibility`,
+				path: `${pkgDocsPath(slug)}/accessibility.mdx`,
+			},
+		].filter(({ path }) => existsSync(path));
+	});
+}
+
+export async function getPkgDocsContent(
+	slug: string,
+	path: string | string = 'overview.mdx'
+) {
+	if (pkgIsLegacyStructure(slug)) return;
+	const { data, content } = await getMarkdownData(
+		`${pkgDocsPath(slug)}/${path}`
+	);
+	return await serializeMarkdown(content, data);
 }
 
 export async function getPkgSlugs() {
@@ -89,7 +137,7 @@ export function getPkgList(group?: string) {
 	return getPkgSlugs().then((slugs) =>
 		Promise.all(
 			slugs.map((slug) =>
-				getMarkdownData(pkgDocsPath(slug)).then(({ data }) =>
+				getMarkdownData(pkgReadmePath(slug)).then(({ data }) =>
 					pkgNavMetaData(slug, data)
 				)
 			)
@@ -126,15 +174,21 @@ export function getGroupBreadCrumbs(groupSlug: string) {
 	});
 }
 
-export function getPkgBreadcrumbs(slug: string) {
-	return getMarkdownData(pkgDocsPath(slug)).then(({ data }) => {
+export function getPkgBreadcrumbs(slug: string, path?: string) {
+	return getMarkdownData(pkgReadmePath(slug)).then(({ data }) => {
 		const meta = pkgNavMetaData(slug, data);
-
-		return [
+		const baseItems = [
 			{ href: '/packages', label: 'Packages' },
 			{ href: `/packages/${meta.group}`, label: meta.groupName },
-			{ label: meta.title },
 		];
+		if (path) {
+			return [
+				...baseItems,
+				{ href: `/packages/${meta.group}/${meta.slug}`, label: meta.title },
+				{ label: path },
+			];
+		}
+		return [...baseItems, { label: meta.title }];
 	});
 }
 
