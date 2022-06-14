@@ -69,7 +69,7 @@ export function getTemplateList() {
 				)
 			)
 		).then((templateList) => {
-			return templateList.sort((a, b) => (a.title > b.title ? 1 : -1));
+			return templateList.sort((a, b) => a.order - b.order);
 		});
 	});
 }
@@ -86,6 +86,7 @@ function templateNavMetaData(
 	data: Awaited<ReturnType<typeof getMarkdownData>>['data']
 ) {
 	return {
+		order: (data?.order ?? 0) as number,
 		title: (data?.title ?? slug) as string,
 		slug,
 		description: data?.description,
