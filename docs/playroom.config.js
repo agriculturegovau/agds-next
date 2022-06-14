@@ -1,9 +1,14 @@
 module.exports = {
+	title: 'Playroom | Agriculture Design System',
 	components: './playroom/components',
 	snippets: './playroom/snippets.js',
 	outputPath: './public/playroom',
-	title: 'AgDS Playroom',
 	frameComponent: './playroom/frame.js',
+	typeScriptFiles: [
+		'../packages/**/*.{ts,tsx}',
+		'./components/**/*.{ts,tsx}',
+		'!**/node_modules',
+	],
 	openBrowser: false,
 	webpackConfig: () => ({
 		module: {
