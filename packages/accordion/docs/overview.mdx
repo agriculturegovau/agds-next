@@ -1,0 +1,332 @@
+---
+title: Accordion
+description: An accordion shows or hides sections of content. It lets users see only the content they need.
+group: Layout
+---
+
+<StoryBookPreview src="https://steelthreads.github.io/agds-next/storybook/iframe.html?args=&id=layout-accordion--on-light&viewMode=story" />
+
+Users can open or close an accordion to decide the content they see.
+
+An accordion can save space when it’s limited. It can also help a user to scan the contents of a page fast.
+
+Generally speaking, use accordions sparingly.
+
+**Do's**
+
+- If some content only is relevant to a user, you can use an accordion.
+- Before using accordions for page content that’s long, try simplifying or splitting it over more pages instead.
+- Limit the number of accordions to 10 at most in a group.
+- Use accordions to help users skim-read a list and get an overview of content. For example, a step-by-step process.
+- Use accordions if there’s evidence they help users and the benefits outweigh the negative impact on usability.
+
+**Dont's**
+
+- If all of content is relevant to a user, don’t use an accordion.
+- Don’t use an accordion if body content is short. Use a well-formatted paragraph or list instead.
+- Don’t use accordions if there’s evidence they don’t help the user, or content without accordions tests well.
+
+## Accordion
+
+The default state is a closed accordion.
+
+Sections and accordions that start closed give the user an overview of all content.
+
+You can set sections to start and stay open, if the user leaves then returns to the page.
+
+```jsx live
+<Accordion>
+	<AccordionItem title="Accordion label">
+		<AccordionItemContent>
+			<Text as="p">Here is the accordion content.</Text>
+		</AccordionItemContent>
+	</AccordionItem>
+</Accordion>
+```
+
+## Accordion group
+
+It’s common for more than one accordion to appear together.
+
+You can stack up to 10 accordions vertically in a group. If you need to use more than 10, redesign the content to reduce the number instead.
+
+Grouped accordions are single action accordions. They don’t influence each other – if one opens, another doesn’t close.
+
+Users can choose what content they want to see.
+
+```jsx live
+<Accordion>
+	<AccordionItem title="Accordion 1">
+		<AccordionItemContent>
+			<Body>
+				<p>
+					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce a
+					libero vel dolor sollicitudin pretium quis quis mi. Fusce sapien mi,
+					efficitur sit amet ex et, bibendum efficitur odio. Ut nec gravida
+					metus, nec suscipit nulla. Donec est nulla, dictum sed ultricies
+					congue, suscipit at velit. Integer ut leo lectus. Nullam volutpat ex
+					quis imperdiet scelerisque. Etiam ultrices et nisi eget pulvinar. Cras
+					ultrices lectus ut nisl gravida, eu rutrum sem luctus. Praesent
+					vulputate eu dolor commodo tempor. Sed nec lorem consectetur, maximus
+					justo at, tincidunt quam. Suspendisse pellentesque accumsan accumsan.
+					Cras in odio leo. Nam pharetra, lorem eget aliquam gravida, felis ex
+					tempor sapien, a ornare leo nulla eget magna. Quisque tempus ipsum eu
+					elit bibendum, nec bibendum ligula posuere. Nam porttitor est eros, ac
+					maximus nisl euismod nec.
+				</p>
+			</Body>
+		</AccordionItemContent>
+	</AccordionItem>
+	<AccordionItem title="Accordion 2">
+		<AccordionItemContent>
+			<Body>
+				<p>
+					Curabitur urna erat, ornare in nulla vitae, tempor porttitor dolor.
+					Nam luctus fermentum tellus, vitae maximus turpis viverra eget.
+					Phasellus hendrerit tortor eu mauris ultricies congue. Suspendisse
+					cursus, purus quis viverra pharetra, purus quam hendrerit magna,
+					condimentum cursus massa nisi ut est. Mauris in tristique augue.
+					Phasellus tellus ante, fermentum eget fringilla eget, tempor nec nunc.
+					Ut nec dui vitae ex dignissim tempus ac et ante. Donec imperdiet
+					suscipit leo. Suspendisse mattis quis nisl id mattis. Sed dictum
+					tempus nibh, quis feugiat magna efficitur in. Sed vulputate et dui eu
+					malesuada.
+				</p>
+			</Body>
+		</AccordionItemContent>
+	</AccordionItem>
+	<AccordionItem title="Accordion 3">
+		<AccordionItemContent>
+			<Body>
+				<p>
+					Curabitur urna erat, ornare in nulla vitae, tempor porttitor dolor.
+					Nam luctus fermentum tellus, vitae maximus turpis viverra eget.
+					Phasellus hendrerit tortor eu mauris ultricies congue. Suspendisse
+					cursus, purus quis viverra pharetra, purus quam hendrerit magna,
+					condimentum cursus massa nisi ut est. Mauris in tristique augue.
+					Phasellus tellus ante, fermentum eget fringilla eget, tempor nec nunc.
+					Ut nec dui vitae ex dignissim tempus ac et ante. Donec imperdiet
+					suscipit leo. Suspendisse mattis quis nisl id mattis. Sed dictum
+					tempus nibh, quis feugiat magna efficitur in. Sed vulputate et dui eu
+					malesuada.
+				</p>
+			</Body>
+		</AccordionItemContent>
+	</AccordionItem>
+</Accordion>
+```
+
+## Accordion edge-to-edge image
+
+An accordion can open to reveal an image the full width of the panel.
+
+Remove the default padding from the accordion to display an edge-to-edge image.
+
+This text is wrapped in the `AccordionContent` component.
+
+```jsx live
+<Accordion>
+	<AccordionItem title="Edge-to-edge image">
+		<img
+			alt="Placeholder image"
+			src="/agds-next/img/placeholder/600X260.png"
+			width="100%"
+		/>
+		<AccordionItemContent>
+			<Text as="p">
+				In this example, we remove the default padding from the AccordionItem,
+				in order to achieve the edge-to-edge image above. This Text is wrapped
+				in the AccordionItemContent component.
+			</Text>
+		</AccordionItemContent>
+	</AccordionItem>
+</Accordion>
+```
+
+<!--
+
+A button indicates to a user what action will happen next.
+
+There are 3 visual button weights that convey their order of importance: primary, secondary and tertiary.
+
+Make sure you include a meaningful text label with or without an icon on a button.
+
+**Do's**
+
+- Use a button if the user needs to perform an action.
+- Align buttons left from the most to least important action.
+- Use one Primary button on a page. You can use more than one Secondary or Tertiary button.
+
+**Dont's**
+
+- Don’t use a button if a user needs to go somewhere. For example, another page. Use a link or link that looks like a button instead.
+- Try to avoid using Disabled buttons.
+
+## Primary
+
+The Primary button is the default form of a button. It’s for the main action a user needs to complete on a page or a critical call to action.
+
+A Primary button uses a solid background so it’s prominent on a page.
+
+Only include one Primary button on a page.
+
+```jsx live
+<Button variant="primary">Primary button</Button>
+```
+
+## Secondary
+
+A Secondary button has a clear background and border and uses a less prominent style than a Primary button. It highlights another common action to the user.
+
+A Primary button usually already appears on a screen to use a Secondary button.
+
+You can use more than one Secondary button on a page.
+
+```jsx live
+<Button variant="secondary">Secondary button</Button>
+```
+
+## Tertiary
+
+A Tertiary button has no border to make it the least prominent button style. It’s for other minor actions on a screen.
+
+A Secondary button usually already appears on a screen to use a Tertiary button. You can use more than one Tertiary button on a page.
+
+```jsx live
+<Button variant="tertiary">Tertiary button</Button>
+```
+
+## Block
+
+A Block button uses the full width of the container or parent element.
+
+Use it to make a button stand out to the user.
+
+```jsx live
+<Button type="submit" block>
+	Submit
+</Button>
+```
+
+## Loading
+
+Use the Loading button to let users know their action is being processed.
+
+```jsx live
+<Button type="submit" loading>
+	Submit
+</Button>
+```
+
+## Disabled
+
+A user can’t interact with a Disabled button which is usually greyed out. It indicates the user can’t take an action at that time in their journey.
+
+Avoid using a Disabled button as much as possible. That is, unless usability testing suggests it’s easier for users to complete a form or other task.
+
+Instead, allow users to interact with a button and receive feedback from the system.
+
+```jsx live
+<ButtonGroup>
+	<Button variant="primary" disabled>
+		Primary
+	</Button>
+	<Button variant="secondary" disabled>
+		Secondary
+	</Button>
+	<Button variant="tertiary" disabled>
+		Tertiary
+	</Button>
+</ButtonGroup>
+```
+
+## Icons
+
+Generally use a button label and icon together not an icon on its own.
+
+A button should have a meaningful text label with an icon, usually on the left or right of the label. That’s unless, an icon only fits in the space available.
+
+For example, using a magnifying glass icon (🔍) to indicate to a user they can search for something on mobile.
+
+```jsx live
+<ButtonLink
+	iconAfter={ExternalLinkIcon}
+	href="https://steelthreads.github.io/agds-next"
+	target="_blank"
+	rel="noopener noreferrer"
+>
+	Open external link
+</ButtonLink>
+```
+
+## Links
+
+You can implement buttons as links.
+
+Use a button link when you need something with the visual weight and prominence of a button, but functionality of a link.
+
+ButtonLink adopts the Link component from your chosen router framework, which you can set in the Core component.
+
+```jsx live
+<ButtonLink href="/sign-in">Sign in</ButtonLink>
+```
+
+## Size
+
+Size is a property that allows you to adjust the visual weight of a button.
+
+The medium button should be used for most circumstances.
+
+```jsx live
+<ButtonGroup>
+	<Button variant="primary" size="sm">
+		Primary
+	</Button>
+	<Button variant="secondary" size="sm">
+		Secondary
+	</Button>
+	<Button variant="tertiary" size="sm">
+		Tertiary
+	</Button>
+</ButtonGroup>
+```
+
+## Button groups
+
+### Inline
+
+You can use all 3 button forms in a group side-by-side on a line.
+
+```jsx live
+<ButtonGroup>
+	<Button variant="primary">Primary</Button>
+	<Button variant="secondary">Secondary</Button>
+	<Button variant="tertiary">Tertiary</Button>
+</ButtonGroup>
+```
+
+### Stack
+
+You can stack all 3 button forms in a group in a vertical line. Align buttons to the left.
+
+```jsx live
+<Stack gap={1} alignItems="flex-start">
+	<Button variant="primary">Primary</Button>
+	<Button variant="secondary">Secondary</Button>
+	<Button variant="tertiary">Tertiary</Button>
+</Stack>
+```
+
+### Block
+
+You can stack all 3 button types in a group and span the full width of a screen.
+
+Use this variant on a screen to add emphasis to the action a user can take and space is limited. For example, on mobile.
+
+```jsx live
+<Stack gap={1}>
+	<Button variant="primary">Primary</Button>
+	<Button variant="secondary">Secondary</Button>
+	<Button variant="tertiary">Tertiary</Button>
+</Stack>
+``` -->
