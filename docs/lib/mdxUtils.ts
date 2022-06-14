@@ -75,8 +75,13 @@ export async function getPkgSubNavItems(slug: string) {
 		const meta = pkgNavMetaData(slug, data);
 		return [
 			{
-				title: meta.title,
+				title: 'Overview',
 				slug: `/packages/${meta.group}/${meta.slug}`,
+				path: pkgReadmePath(slug),
+			},
+			{
+				title: 'Rationale',
+				slug: `/packages/${meta.group}/${meta.slug}/rationale`,
 				path: pkgReadmePath(slug),
 			},
 			{
