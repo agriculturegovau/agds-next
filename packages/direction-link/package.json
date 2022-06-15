@@ -1,6 +1,6 @@
 {
 	"name": "@ag.ds-next/direction-link",
-	"version": "6.0.0",
+	"version": "7.0.0",
 	"main": "dist/ag.ds-next-direction-link.cjs.js",
 	"module": "dist/ag.ds-next-direction-link.esm.js",
 	"license": "MIT",
@@ -10,7 +10,7 @@
 		"@ag.ds-next/core": "3.0.0",
 		"@ag.ds-next/icon": "9.0.0",
 		"@ag.ds-next/text": "8.0.0",
-		"@ag.ds-next/text-link": "2.0.0",
+		"@ag.ds-next/text-link": "3.0.0",
 		"@emotion/react": "^11.7.0",
 		"react": "^16.14.0 || ^17.0.0 || ^18.0.0"
 	},

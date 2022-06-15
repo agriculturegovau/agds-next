@@ -1,5 +1,12 @@
 # @ag.ds-next/tags
 
+## 6.0.0
+
+### Patch Changes
+
+- Updated dependencies [743cd7b5]
+  - @ag.ds-next/text-link@3.0.0
+
 ## 5.0.0
 
 ### Minor Changes

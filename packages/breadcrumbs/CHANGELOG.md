@@ -1,5 +1,12 @@
 # @ag.ds-next/breadcrumbs
 
+## 11.0.0
+
+### Patch Changes
+
+- Updated dependencies [743cd7b5]
+  - @ag.ds-next/text-link@3.0.0
+
 ## 10.0.0
 
 ### Minor Changes

@@ -1,5 +1,21 @@
 # @ag.ds-next/docs
 
+## 0.5.2
+
+### Patch Changes
+
+- Updated dependencies [743cd7b5]
+  - @ag.ds-next/text-link@3.0.0
+  - @ag.ds-next/breadcrumbs@11.0.0
+  - @ag.ds-next/call-to-action@7.0.0
+  - @ag.ds-next/direction-link@7.0.0
+  - @ag.ds-next/inpage-nav@6.0.0
+  - @ag.ds-next/keyword-list@6.0.0
+  - @ag.ds-next/link-list@9.0.0
+  - @ag.ds-next/progress-indicator@9.0.0
+  - @ag.ds-next/tags@6.0.0
+  - @ag.ds-next/task-list@7.0.0
+
 ## 0.5.1
 
 ### Patch Changes
