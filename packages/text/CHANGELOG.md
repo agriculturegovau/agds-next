@@ -1,5 +1,28 @@
 # @ag.ds-next/text
 
+## 8.0.0
+
+### Major Changes
+
+- 0e2cc75b: Removed `TextLink` and `TextLinkExternal`. Please import these components from `@ag.ds-next/text-link`
+
+### Minor Changes
+
+- dd4f423d: Update `TextLinkExternal` to use the link component from context.
+- 8ddb8b61: Add support for React version 18
+
+### Patch Changes
+
+- 0e2cc75b: Updated imports of `text-link`
+- Updated dependencies [c248ec2e]
+- Updated dependencies [6fa3aa60]
+- Updated dependencies [afdc5214]
+- Updated dependencies [8ddb8b61]
+- Updated dependencies [6c5d1563]
+- Updated dependencies [00cbe00f]
+  - @ag.ds-next/core@3.0.0
+  - @ag.ds-next/box@6.0.0
+
 ## 7.0.0
 
 ### Minor Changes

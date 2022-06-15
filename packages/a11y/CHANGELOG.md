@@ -1,5 +1,16 @@
 # @ag.ds-next/a11y
 
+## 1.2.0
+
+### Minor Changes
+
+- 8ddb8b61: Add support for React version 18
+
+### Patch Changes
+
+- 6fa3aa60: Fixed small eslint warnings after updating import order rule
+- 0e2cc75b: Updated imports of `text-link`
+
 ## 1.1.0
 
 ### Minor Changes

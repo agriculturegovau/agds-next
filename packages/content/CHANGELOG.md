@@ -1,5 +1,28 @@
 # @ag.ds-next/content
 
+## 7.0.0
+
+### Major Changes
+
+- 27e26e25: Replaced the `spacing` prop in the `Content` component with 2 new components: `PageContent` and `SectionComponent`.
+
+### Minor Changes
+
+- 8ddb8b61: Add support for React version 18
+
+### Patch Changes
+
+- 6fa3aa60: Fixed small eslint warnings after updating import order rule
+- d748f7c9: Adjust mobile padding values in `SectionContent`
+- Updated dependencies [c248ec2e]
+- Updated dependencies [6fa3aa60]
+- Updated dependencies [afdc5214]
+- Updated dependencies [8ddb8b61]
+- Updated dependencies [6c5d1563]
+- Updated dependencies [00cbe00f]
+  - @ag.ds-next/core@3.0.0
+  - @ag.ds-next/box@6.0.0
+
 ## 6.0.1
 
 ### Patch Changes
