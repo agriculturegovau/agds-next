@@ -1,0 +1,158 @@
+---
+title: 15th June, 2022
+description: Added support for React 18. Various bug fixes and improvements.
+---
+
+> ⚠️ Note: All releases under the `@ag.ds-next` package scope should be considered alpha pre-releases. Expect breaking changes. Once we are happy with the state of the core packages we will migrate all packages to `@ag.ds`.
+
+## New packages
+
+```sh
+"@ag.ds-next/text-link": "3.0.0"
+```
+
+## Breaking Changes
+
+- `@ag.ds-next/text`: Moved `TextLink` and `TextLinkExternal` from `@ag.ds-next/text` to a new package `@ag.ds-next/text-link`. Please update imports accordingly.
+- `@ag.ds-next/core`: The `linkComponent` prop has been updated to support refs. Please wrap your `linkComponent` in `forwardRef` to avoid any warnings and errors. As an example you can the design systems [next.js example link component](https://github.com/steelthreads/agds-next/blob/main/example-site/components/LinkComponent.tsx)
+- `@ag.ds-next/content`: The `Content` component in has been replaced with 2 new components: `PageContent` and `SectionContent`. Please update usage accordingly.
+
+## Updates
+
+- All `@ag.ds-next` components now support [React 18](https://reactjs.org/blog/2022/03/29/react-v18.html). The design system monorepo now internally use React 18 in all environments.
+
+### @ag.ds-next/content@7.0.0
+
+- The `Content` component has been replaced with 2 new components: `PageContent` and `SectionContent`
+
+### @ag.ds-next/core@3.0.0
+
+- Updated default link component to include `forwardRef`
+- Created new `mergeRefs` utilty function
+- Removed color from `LinkProps`
+
+### @ag.ds-next/hero-banner@4.0.0
+
+- Removed `title` and `subTitle` prop from `HeroBanner`. This has been replaced with `HeroBannerTitle`, `HeroBannerSubtitle` and `HeroBannerTitleContainer`.
+- Created `HeroCategoryBanner` and `HeroSubcategoryBanner` components
+- Adjust mobile padding values in `HeroBanner`, `HeroCategoryBanner` and `HeroSubcategoryBanner`
+
+### @ag.ds-next/text@8.0.0
+
+- Removed `TextLink` and `TextLinkExternal`
+- Update `TextLinkExternal` to use the link component from context.
+
+### @ag.ds-next/accordion@7.0.0
+
+- Applied new `BaseButton` component to fix focus accessibilty bug in safari.
+
+### @ag.ds-next/breadcrumbs@11.0.0
+
+- Fix breadcrumb items shrinking smaller devices
+
+### @ag.ds-next/button@9.0.0
+
+- Created new `BaseButton` component
+- Added abilty to pass refs to `ButtonLink`
+- Applied new `BaseButton` component to fix focus accessibilty bug in safari.
+
+### @ag.ds-next/call-to-action@7.0.0
+
+- Applied new `BaseButton` component to fix focus accessibilty bug in safari.
+
+### @ag.ds-next/date-picker@5.0.0
+
+- Fixed bug where the text input would not reflect the `value` prop
+
+### @ag.ds-next/direction-link@7.0.0
+
+- Applied new `BaseButton` component to fix focus accessibilty bug in safari.
+
+### @ag.ds-next/file-upload@3.0.0
+
+- Added default value
+- Fixed `Select files` button not working in Safari
+- Improve styling for invalid states
+- Support indication of uploading/uploaded file
+
+### @ag.ds-next/link-list@8.0.0
+
+- Links that open in a new tab will use show the external link indicator
+
+### @ag.ds-next/main-nav@11.0.0
+
+- Applied new `BaseButton` component to fix focus accessibilty bug in safari.
+
+### @ag.ds-next/page-alert@5.0.0
+
+- Updated font size of title from `md` to `lg`
+
+### @ag.ds-next/progress-indicator@9.0.0
+
+- Applied new `BaseButton` component to fix focus accessibilty bug in safari.
+
+### @ag.ds-next/side-nav@10.0.0
+
+- Applied new `BaseButton` component to fix focus accessibilty bug in safari.
+
+### @ag.ds-next/task-list@7.0.0
+
+- Applied new `BaseButton` component to fix focus accessibilty bug in safari.
+
+### @ag.ds-next/text-link@3.0.0
+
+- Created package
+
+## Full Changelog
+
+Aside from the [complete release notes on the @ag.ds-next website](https://steelthreads.github.io/agds-next/releases/2022-06-15), you can also view the [verbose change log](https://github.com/steelthreads/agds-next/pull/399) in the related PR (https://github.com/steelthreads/agds-next/pull/399) for this release.
+
+## Released packages
+
+```sh
+"@ag.ds-next/a11y": "1.2.0",
+"@ag.ds-next/accordion": "7.0.0",
+"@ag.ds-next/ag-branding": "6.0.0",
+"@ag.ds-next/body": "7.0.0",
+"@ag.ds-next/box": "6.0.0",
+"@ag.ds-next/breadcrumbs": "11.0.0",
+"@ag.ds-next/button": "9.0.0",
+"@ag.ds-next/call-to-action": "7.0.0",
+"@ag.ds-next/callout": "5.0.0",
+"@ag.ds-next/card": "5.0.0",
+"@ag.ds-next/columns": "6.0.0",
+"@ag.ds-next/content": "7.0.0",
+"@ag.ds-next/control-input": "9.0.0",
+"@ag.ds-next/core": "3.0.0",
+"@ag.ds-next/date-picker": "5.0.0",
+"@ag.ds-next/direction-link": "7.0.0",
+"@ag.ds-next/field": "8.0.0",
+"@ag.ds-next/fieldset": "5.0.0",
+"@ag.ds-next/file-upload": "3.0.0",
+"@ag.ds-next/footer": "7.0.0",
+"@ag.ds-next/form-stack": "4.0.0",
+"@ag.ds-next/header": "9.0.0",
+"@ag.ds-next/heading": "7.0.0",
+"@ag.ds-next/hero-banner": "4.0.0",
+"@ag.ds-next/icon": "9.0.0",
+"@ag.ds-next/inpage-nav": "6.0.0",
+"@ag.ds-next/keyword-list": "6.0.0",
+"@ag.ds-next/link-list": "9.0.0",
+"@ag.ds-next/loading": "4.0.0",
+"@ag.ds-next/main-nav@": "1.0.0",
+"@ag.ds-next/modal": "5.0.0",
+"@ag.ds-next/page-alert": "5.0.0",
+"@ag.ds-next/progress-indicator": "9.0.0",
+"@ag.ds-next/search-box": "9.0.0",
+"@ag.ds-next/secondary-nav": "2.0.0",
+"@ag.ds-next/select": "9.0.0",
+"@ag.ds-next/side-nav@": "0.0.0",
+"@ag.ds-next/skip-link": "6.0.0",
+"@ag.ds-next/table": "4.0.0",
+"@ag.ds-next/tags": "6.0.0",
+"@ag.ds-next/task-list": "7.0.0",
+"@ag.ds-next/text-link": "3.0.0",
+"@ag.ds-next/text": "8.0.0",
+"@ag.ds-next/text-input": "9.0.0",
+"@ag.ds-next/textarea": "9.0.0",
+```
