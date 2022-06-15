@@ -1,5 +1,29 @@
 # @ag.ds-next/skip-link
 
+## 6.0.0
+
+### Minor Changes
+
+- 8ddb8b61: Add support for React version 18
+
+### Patch Changes
+
+- 6fa3aa60: Fixed small eslint warnings after updating import order rule
+- ac551394: Updated documentation
+- Updated dependencies [c248ec2e]
+- Updated dependencies [6fa3aa60]
+- Updated dependencies [0e2cc75b]
+- Updated dependencies [f8d3f116]
+- Updated dependencies [00cbe00f]
+- Updated dependencies [00cbe00f]
+- Updated dependencies [afdc5214]
+- Updated dependencies [8ddb8b61]
+- Updated dependencies [6c5d1563]
+- Updated dependencies [00cbe00f]
+  - @ag.ds-next/core@3.0.0
+  - @ag.ds-next/a11y@1.2.0
+  - @ag.ds-next/button@9.0.0
+
 ## 5.0.0
 
 ### Patch Changes

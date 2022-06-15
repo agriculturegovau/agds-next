@@ -1,5 +1,38 @@
 # @ag.ds-next/hero-banner
 
+## 4.0.0
+
+### Major Changes
+
+- 8d25d373: - Removed `title` and `subTitle` prop from `HeroBanner`. This has been replaced with `HeroBannerTitle`, `HeroBannerSubtitle` and `HeroBannerTitleContainer`.
+  - Created `HeroCategoryBanner` and `HeroSubcategoryBanner` components
+
+### Minor Changes
+
+- 8ddb8b61: Add support for React version 18
+
+### Patch Changes
+
+- 6fa3aa60: Fixed small eslint warnings after updating import order rule
+- 27e26e25: Updated usage of the `Content` component
+- bda91113: Adjust mobile padding values in `HeroBanner`, `HeroCategoryBanner` and `HeroSubcategoryBanner`
+- Updated dependencies [c248ec2e]
+- Updated dependencies [6fa3aa60]
+- Updated dependencies [0e2cc75b]
+- Updated dependencies [27e26e25]
+- Updated dependencies [0e2cc75b]
+- Updated dependencies [dd4f423d]
+- Updated dependencies [afdc5214]
+- Updated dependencies [8ddb8b61]
+- Updated dependencies [6c5d1563]
+- Updated dependencies [d748f7c9]
+- Updated dependencies [00cbe00f]
+  - @ag.ds-next/core@3.0.0
+  - @ag.ds-next/box@6.0.0
+  - @ag.ds-next/content@7.0.0
+  - @ag.ds-next/heading@7.0.0
+  - @ag.ds-next/text@8.0.0
+
 ## 3.0.0
 
 ### Minor Changes

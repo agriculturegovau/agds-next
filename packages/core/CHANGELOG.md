@@ -1,5 +1,22 @@
 # @ag.ds-next/core
 
+## 3.0.0
+
+### Major Changes
+
+- c248ec2e: Updated default link component to include `forwardRef`
+
+### Minor Changes
+
+- 8ddb8b61: Add support for React version 18
+- 00cbe00f: Created new `mergeRefs` utilty function
+
+### Patch Changes
+
+- 6fa3aa60: Fixed small eslint warnings after updating import order rule
+- afdc5214: Fixed small eslint warnings
+- 6c5d1563: Removed color from `LinkProps`
+
 ## 2.2.1
 
 ### Patch Changes

@@ -1,5 +1,21 @@
 # @ag.ds-next/ag-branding
 
+## 6.0.0
+
+### Minor Changes
+
+- 8ddb8b61: Add support for React version 18
+
+### Patch Changes
+
+- Updated dependencies [c248ec2e]
+- Updated dependencies [6fa3aa60]
+- Updated dependencies [afdc5214]
+- Updated dependencies [8ddb8b61]
+- Updated dependencies [6c5d1563]
+- Updated dependencies [00cbe00f]
+  - @ag.ds-next/core@3.0.0
+
 ## 5.1.0
 
 ### Minor Changes
