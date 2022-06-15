@@ -5,7 +5,7 @@
 ### Minor Changes
 
 - f8d3f116: Added abilty to pass refs to `ButtonLink`
-- 00cbe00f: Applied new `BaseButton` component to fix focus accessibilty bug in safari.
+- 00cbe00f: Applied new `BaseButton` component to fix focus accessibility bug in safari.
 - 00cbe00f: Created new `BaseButton` component
 - 8ddb8b61: Add support for React version 18
 
