@@ -34,7 +34,7 @@ export default function PackagesRationale({
 							href: '#pkg-content',
 						},
 					]}
-					editPath={`/packages/${pkg.slug}/rationale.mdx`}
+					editPath={`/packages/${pkg.slug}/docs/rationale.mdx`}
 				>
 					<Body>
 						<Body id="pkg-content">

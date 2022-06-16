@@ -34,7 +34,7 @@ export default function PackagesContent({
 							href: '#pkg-content',
 						},
 					]}
-					editPath={`/packages/${pkg.slug}/content.mdx`}
+					editPath={`/packages/${pkg.slug}/docs/content.mdx`}
 				>
 					<Body>
 						<Body id="pkg-content">

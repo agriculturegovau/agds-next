@@ -34,7 +34,7 @@ export default function PackagesAccessibility({
 							href: '#pkg-content',
 						},
 					]}
-					editPath={`/packages/${pkg.slug}/accessibility.mdx`}
+					editPath={`/packages/${pkg.slug}/docs/accessibility.mdx`}
 				>
 					<Body>
 						<Body id="pkg-content">
