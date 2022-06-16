@@ -1,8 +1,8 @@
 {
-	"name": "@ag.ds-next/secondary-nav",
-	"version": "2.0.0",
-	"main": "dist/ag.ds-next-secondary-nav.cjs.js",
-	"module": "dist/ag.ds-next-secondary-nav.esm.js",
+	"name": "@ag.ds-next/sub-nav",
+	"version": "0.0.1",
+	"main": "dist/ag.ds-next-sub-nav.cjs.js",
+	"module": "dist/ag.ds-next-sub-nav.esm.js",
 	"license": "MIT",
 	"peerDependencies": {
 		"@ag.ds-next/box": "6.0.0",

@@ -10,14 +10,11 @@ import {
 import { Box } from '@ag.ds-next/box';
 import { localPalette } from './utils';
 
-export type SecondaryNavListItemProps = PropsWithChildren<{
+export type SubNavListItemProps = PropsWithChildren<{
 	active?: boolean;
 }>;
 
-export function SecondaryNavListItem({
-	children,
-	active,
-}: SecondaryNavListItemProps) {
+export function SubNavListItem({ children, active }: SubNavListItemProps) {
 	return (
 		<Box
 			as="li"

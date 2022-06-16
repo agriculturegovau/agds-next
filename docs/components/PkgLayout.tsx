@@ -4,7 +4,7 @@ import { ButtonGroup, ButtonLink } from '@ag.ds-next/button';
 import { ExternalLinkIcon } from '@ag.ds-next/icon';
 import { Body } from '@ag.ds-next/body';
 import { SkipLinksProps } from '@ag.ds-next/skip-link';
-import { SecondaryNav } from '@ag.ds-next/secondary-nav';
+import { SubNav } from '@ag.ds-next/sub-nav';
 import { getPkgBreadcrumbs, getPkgNavLinks, Pkg } from '../lib/mdx/packages';
 import { PageTitle } from './PageTitle';
 import { PageLayout } from './PageLayout';
@@ -63,7 +63,7 @@ export function PkgLayout({
 				</pre>
 			</Body>
 			{pkg.subNavItems?.length ? (
-				<SecondaryNav
+				<SubNav
 					activePath={asPath}
 					links={pkg.subNavItems.map((item) => ({
 						label: item.title,

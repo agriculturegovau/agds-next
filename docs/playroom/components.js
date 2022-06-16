@@ -56,7 +56,7 @@ export {
 	BreadcrumbsItem,
 } from '@ag.ds-next/breadcrumbs';
 export { MainNav } from '@ag.ds-next/main-nav';
-export { SecondaryNav } from '@ag.ds-next/secondary-nav';
+export { SubNav } from '@ag.ds-next/sub-nav';
 export {
 	SideNav,
 	SideNavContainer,

@@ -30,20 +30,20 @@ const variantMap = {
 	},
 } as const;
 
-export type SecondaryNavContainerVariant = keyof typeof variantMap;
+export type SubNavContainerVariant = keyof typeof variantMap;
 
-export type SecondaryNavContainerProps = PropsWithChildren<{
+export type SubNavContainerProps = PropsWithChildren<{
 	id?: string;
 	'aria-label': string;
-	variant: SecondaryNavContainerVariant;
+	variant: SubNavContainerVariant;
 }>;
 
-export function SecondaryNavContainer({
+export function SubNavContainer({
 	id,
 	'aria-label': ariaLabel,
 	children,
 	variant,
-}: SecondaryNavContainerProps) {
+}: SubNavContainerProps) {
 	const { palette, bottomBar, background, hover } = variantMap[variant];
 	return (
 		<Box
