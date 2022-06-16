@@ -30,7 +30,7 @@ export default function Packages({
 					breadcrumbs={breadcrumbs}
 					skipLinks={[
 						{
-							label: `Skip to ${pkg.title} package overview`,
+							label: `Skip to ${pkg.title} overview`,
 							href: '#pkg-content',
 						},
 					]}
