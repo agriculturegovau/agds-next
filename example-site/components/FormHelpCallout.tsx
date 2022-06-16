@@ -1,7 +1,7 @@
 import { Body } from '@ag.ds-next/body';
 import { Callout } from '@ag.ds-next/callout';
 
-export const FormExampleMultiStepCallout = () => {
+export const FormHelpCallout = () => {
 	return (
 		<Callout title="Need help?">
 			<Body>

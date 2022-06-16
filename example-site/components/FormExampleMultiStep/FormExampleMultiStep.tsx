@@ -33,7 +33,6 @@ import {
 	FormExampleMultiStep4,
 	FormSchema as FormExampleMultiStep4Schema,
 } from './FormExampleMultiStep4';
-import { FormExampleMultiStepSuccess } from './FormExampleMultiStepSuccess';
 
 export const FORM_STEPS = [
 	{
@@ -98,14 +97,13 @@ type FormState = Partial<{
 }>;
 
 export const FormExampleMultiStep = () => {
-	const { push } = useRouter();
-	const [success, setSuccess] = useState(false);
+	const router = useRouter();
 	const [currentStep, setCurrentStep] = useState(0);
 	const [formState, setFormState] = useState<FormState>({});
 
 	const backToHomePage = useCallback(() => {
-		push('/category/subcategory/multi-page-form');
-	}, [push]);
+		router.push('/category/subcategory/multi-page-form');
+	}, [router]);
 
 	/** When called, the user will be taken back to the previous step */
 	const back = useCallback(() => {
@@ -124,13 +122,13 @@ export const FormExampleMultiStep = () => {
 			setTimeout(() => {
 				setIsSubmittingStep(false);
 				if (currentStep === TOTAL_STEPS) {
-					setSuccess(true);
+					router.push('success');
 				} else {
 					setCurrentStep(currentStep + 1);
 				}
 			}, 1500);
 		},
-		[currentStep]
+		[currentStep, router]
 	);
 
 	const [isSavingBeforeExiting, setIsSavingBeforeExiting] = useState(false);
@@ -151,22 +149,6 @@ export const FormExampleMultiStep = () => {
 		const previousStep = currentStep - 1;
 		return Boolean(previousStep in formState);
 	}, [formState, currentStep]);
-
-	if (success) {
-		return (
-			<AppLayout
-				template={{ name: 'Multi-page form', slug: 'multi-page-form' }}
-			>
-				<PageContent>
-					<Columns>
-						<Column columnSpan={{ xs: 12, md: 8 }}>
-							<FormExampleMultiStepSuccess />
-						</Column>
-					</Columns>
-				</PageContent>
-			</AppLayout>
-		);
-	}
 
 	const FormStepComponent = FORM_STEPS[currentStep]?.component;
 
