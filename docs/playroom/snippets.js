@@ -597,9 +597,9 @@ items={[
   </HeroSubcategoryBanner>`,
 	},
 	{
-		group: 'SecondaryNav',
+		group: 'SubNav',
 		name: 'Basic',
-		code: `<SecondaryNav
+		code: `<SubNav
     activePath="#code"
     links={[
       { href: '#usage', label: 'Usage' },

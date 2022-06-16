@@ -1,10 +1,10 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { SecondaryNav } from './SecondaryNav';
+import { SubNav } from './SubNav';
 
 export default {
-	title: 'navigation/SecondaryNav',
-	component: SecondaryNav,
-} as ComponentMeta<typeof SecondaryNav>;
+	title: 'navigation/SubNav',
+	component: SubNav,
+} as ComponentMeta<typeof SubNav>;
 
 const exampleLinks = [
 	{ href: '#usage', label: 'Usage' },
@@ -13,9 +13,7 @@ const exampleLinks = [
 	{ href: '#accessibility', label: 'Accessibility' },
 ];
 
-const Template: ComponentStory<typeof SecondaryNav> = (args) => (
-	<SecondaryNav {...args} />
-);
+const Template: ComponentStory<typeof SubNav> = (args) => <SubNav {...args} />;
 
 export const LightVariant = Template.bind({});
 LightVariant.args = {

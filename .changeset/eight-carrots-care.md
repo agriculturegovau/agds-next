@@ -1,5 +1,5 @@
 ---
-'@ag.ds-next/secondary-nav': patch
+'@ag.ds-next/sub-nav': major
 ---
 
-Updated documentation
+Created package

@@ -1,18 +1,18 @@
 import type { ReactNode } from 'react';
 import { Flex } from '@ag.ds-next/box';
 import { useLinkComponent, LinkProps } from '@ag.ds-next/core';
-import { SecondaryNavListItem } from './SecondaryNavListItem';
+import { SubNavListItem } from './SubNavListItem';
 
-export type SecondaryNavListLink = Omit<LinkProps, 'children'> & {
+export type SubNavListLink = Omit<LinkProps, 'children'> & {
 	label: ReactNode;
 };
 
-export type SecondaryNavListProps = {
-	links: SecondaryNavListLink[];
+export type SubNavListProps = {
+	links: SubNavListLink[];
 	activePath?: string;
 };
 
-export function SecondaryNavList({ links, activePath }: SecondaryNavListProps) {
+export function SubNavList({ links, activePath }: SubNavListProps) {
 	const Link = useLinkComponent();
 	return (
 		<Flex
@@ -24,7 +24,7 @@ export function SecondaryNavList({ links, activePath }: SecondaryNavListProps) {
 			{links.map(({ href, label, ...props }, index) => {
 				const active = href === activePath;
 				return (
-					<SecondaryNavListItem key={index} active={active}>
+					<SubNavListItem key={index} active={active}>
 						<Link
 							href={href}
 							aria-current={active ? 'page' : undefined}
@@ -32,7 +32,7 @@ export function SecondaryNavList({ links, activePath }: SecondaryNavListProps) {
 						>
 							{label}
 						</Link>
-					</SecondaryNavListItem>
+					</SubNavListItem>
 				);
 			})}
 		</Flex>
