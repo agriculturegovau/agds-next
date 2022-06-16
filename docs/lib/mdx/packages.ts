@@ -152,18 +152,18 @@ export function getGroupBreadCrumbs(groupSlug: string) {
 	});
 }
 
-export function getPkgBreadcrumbs(slug: string, path?: string) {
+export function getPkgBreadcrumbs(slug: string, currentPageName?: string) {
 	return getMarkdownData(pkgReadmePath(slug)).then(({ data }) => {
 		const meta = pkgNavMetaData(slug, data);
 		const baseItems = [
 			{ href: '/packages', label: 'Packages' },
 			{ href: `/packages/${meta.group}`, label: meta.groupName },
 		];
-		if (path) {
+		if (currentPageName) {
 			return [
 				...baseItems,
 				{ href: `/packages/${meta.group}/${meta.slug}`, label: meta.title },
-				{ label: path },
+				{ label: currentPageName },
 			];
 		}
 		return [...baseItems, { label: meta.title }];

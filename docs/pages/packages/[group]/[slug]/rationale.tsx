@@ -67,7 +67,7 @@ export const getStaticProps: GetStaticProps<
 	}
 
 	const navLinks = await getPkgNavLinks(group);
-	const breadcrumbs = await getPkgBreadcrumbs(slug);
+	const breadcrumbs = await getPkgBreadcrumbs(slug, 'Rationale');
 
 	return {
 		props: {

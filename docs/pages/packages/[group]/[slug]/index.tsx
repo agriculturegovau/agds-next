@@ -22,7 +22,7 @@ export default function Packages({
 }: InferGetStaticPropsType<typeof getStaticProps>) {
 	return (
 		<>
-			<DocumentTitle title={`${pkg.title} Content`} />
+			<DocumentTitle title={pkg.title} />
 			<AppLayout>
 				<PkgLayout
 					pkg={pkg}
@@ -30,7 +30,7 @@ export default function Packages({
 					breadcrumbs={breadcrumbs}
 					skipLinks={[
 						{
-							label: `Skip to ${pkg.title} content`,
+							label: `Skip to ${pkg.title} package overview`,
 							href: '#pkg-content',
 						},
 					]}
