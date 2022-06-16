@@ -1,0 +1,180 @@
+---
+title: Button
+description: A button makes an action obvious to the user, as well as making an action faster and easier to perform.
+group: Forms
+storybookPath: /story/forms-button--on-light
+---
+
+A button indicates to a user what action will happen next.
+
+There are 3 visual button weights that convey their order of importance: primary, secondary and tertiary.
+
+Make sure you include a [meaningful text label](/packages/forms/button/rationale#meaningful-text-label) with or without an icon on a button.
+
+**Do's**
+
+- Use a button if the user needs to perform an action.
+- [Align buttons left](/packages/forms/button/rationale#align-buttons-left) from the most to least important action.
+- Use one Primary button on a page. You can use more than one Secondary or Tertiary button.
+
+**Dont's**
+
+- Don’t use a button if a user needs to go somewhere. For example, another page. Use a link or a [link that looks like a button](#links) instead.
+- Try to avoid using [Disabled buttons](/packages/forms/button/accessibility).
+
+### Primary
+
+The Primary button is the default form of a button. It’s for the main action a user needs to complete on a page or a critical call to action.
+
+A Primary button uses a solid background so it’s prominent on a page.
+
+Only include one Primary button on a page.
+
+```jsx live
+<Button variant="primary">Primary button</Button>
+```
+
+### Secondary
+
+A Secondary button has a clear background and border and uses a less prominent style than a Primary button. It highlights another common action to the user.
+
+A Primary button usually already appears on a screen to use a Secondary button.
+
+You can use more than one Secondary button on a page.
+
+```jsx live
+<Button variant="secondary">Secondary button</Button>
+```
+
+### Tertiary
+
+A Tertiary button has no border to make it the least prominent button style. It’s for other minor actions on a screen.
+
+A Secondary button usually already appears on a screen to use a Tertiary button. You can use more than one Tertiary button on a page.
+
+```jsx live
+<Button variant="tertiary">Tertiary button</Button>
+```
+
+### Block
+
+A Block button uses the full width of the container or parent element.
+
+Use it to make a button stand out to the user.
+
+```jsx live
+<Button type="submit" block>
+	Submit
+</Button>
+```
+
+### Loading
+
+Use the Loading button to let users know their action is being processed.
+
+```jsx live
+<Button type="submit" loading>
+	Submit
+</Button>
+```
+
+### Disabled
+
+A user can’t interact with a Disabled button which is usually greyed out. It indicates the user can’t take an action at that time in their journey.
+
+Avoid using a [Disabled button](/packages/forms/button/accessibility) as much as possible. That is, unless usability testing suggests it’s easier for users to complete a form or other task.
+
+Instead, allow users to interact with a button and receive feedback from the system.
+
+```jsx live
+<ButtonGroup>
+	<Button variant="primary" disabled>
+		Primary
+	</Button>
+	<Button variant="secondary" disabled>
+		Secondary
+	</Button>
+	<Button variant="tertiary" disabled>
+		Tertiary
+	</Button>
+</ButtonGroup>
+```
+
+### Icons
+
+Generally use a button label and icon together not an icon on its own.
+
+A button should have a [meaningful text label](/packages/forms/button/rationale#meaningful-text-label) with an icon, usually on the left or right of the label. That’s unless, an icon only fits in the space available.
+
+For example, using a magnifying glass icon to indicate to a user they can search for something on mobile.
+
+```jsx live
+<ButtonLink
+	iconAfter={ExternalLinkIcon}
+	href="https://steelthreads.github.io/agds-next"
+	target="_blank"
+	rel="noopener noreferrer"
+>
+	Open external link
+</ButtonLink>
+```
+
+### Links
+
+You can implement [buttons as links](/packages/forms/button/accessibility).
+
+Use a button link when you need something with the visual weight and prominence of a button, but functionality of a link.
+
+ButtonLink adopts the Link component from your chosen router framework, which you can set in the Core component.
+
+```jsx live
+<ButtonLink href="/sign-in">Sign in</ButtonLink>
+```
+
+### Size
+
+Size is a property that allows you to adjust the visual weight of a button.
+
+The medium button should be used for most circumstances.
+
+```jsx live
+<ButtonGroup>
+	<Button variant="primary" size="sm">
+		Primary
+	</Button>
+	<Button variant="secondary" size="sm">
+		Secondary
+	</Button>
+	<Button variant="tertiary" size="sm">
+		Tertiary
+	</Button>
+</ButtonGroup>
+```
+
+### Colour
+
+Always use a light-coloured button unless the background fill colour is dark, or the same colour as a light button. For example, using a dark-coloured button on a header component.
+
+Don't draw attention to destructive actions by using a red button. For example, to delete something.
+
+```jsx live
+<Box palette="dark" background="body" padding={1}>
+	<ButtonGroup>
+		<Button variant="primary">Primary</Button>
+		<Button variant="secondary">Secondary</Button>
+		<Button variant="tertiary">Tertiary</Button>
+	</ButtonGroup>
+</Box>
+```
+
+### Button groups
+
+You can use all 3 button forms in a group side-by-side on a line. In mobile, all 3 button types will be stacked in a group and span the full width of a screen.
+
+```jsx live
+<ButtonGroup>
+	<Button variant="primary">Primary</Button>
+	<Button variant="secondary">Secondary</Button>
+	<Button variant="tertiary">Tertiary</Button>
+</ButtonGroup>
+```

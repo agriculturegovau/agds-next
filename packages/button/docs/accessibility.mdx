@@ -1,0 +1,33 @@
+Here are ways to make a button more accessible and inclusive of users of any ability or environment.
+
+For more help, go to the [Web Content Accessibility Guidelines 2.1](https://www.w3.org/TR/WCAG21/).
+
+### Use accessible button labels
+
+The visual text label is the accessible name of a button with an icon in the page code. It’s read aloud by screen readers.
+
+Include the [text of the visible label in the accessible name](https://www.w3.org/WAI/WCAG21/Techniques/general/G208.html) in the code to help speech input users. For example, ‘View Corrective Action 12345’.
+
+It especially helps those with cognitive, language and learning disabilities enter information correctly, or avoid submitting an incomplete form.
+
+Go to [Understanding Success Criterion 3.3.2 Labels or Instructions](https://www.w3.org/WAI/WCAG21/Understanding/labels-or-instructions) for more guidance.
+
+### Buttons as links
+
+You can implement a button as a link (`<a>`) or button (`<button>`).
+
+Mark up the code in the most semantic way possible.
+
+Using incorrect HTML in some situations can cause [accessibility](https://www.w3.org/TR/UNDERSTANDING-WCAG20/content-structure-separation-programmatic.html) issues.
+
+Go to [G115: Using semantic elements to markup structure](https://www.w3.org/TR/2016/NOTE-WCAG20-TECHS-20161007/G115.html) for important information about techniques.
+
+### Hover
+
+Buttons have an underline on hover to address [WCAG2.0 Criterion 1.4.1 Use of Color](https://www.w3.org/TR/UNDERSTANDING-WCAG20/visual-audio-contrast-without-color.html):
+
+Color is not used as the only visual means of conveying information, indicating an action, prompting a response, or distinguishing a visual element. (Level A)
+
+However, the ‘focus’ state is not underlined as it’s conveyed using the global focus outline.
+
+Go to our Global design guidelines for more guidance.

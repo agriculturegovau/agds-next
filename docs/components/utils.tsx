@@ -1,6 +1,8 @@
-import { AnchorHTMLAttributes, Fragment } from 'react';
+// TODO Rename this file `mdxComponents`
+import { AnchorHTMLAttributes, HTMLAttributes, Fragment } from 'react';
 import Link from 'next/link';
 import { TextLinkExternal } from '@ag.ds-next/text-link';
+import { slugify } from '../lib/slugify';
 import { Code } from './Code';
 
 // Note: We are using `any` here because of a typescript bug with react v18 and next-mdx-remote v3
@@ -19,5 +21,20 @@ export const mdxComponents: Record<string, any> = {
 			return <TextLinkExternal href={href} {...props} />;
 		}
 		return <Link href={href} {...props} />;
+	},
+	// Automatically assign an ID to h2 and h3 elements so they can be linked to
+	h2: ({ children }: HTMLAttributes<HTMLHeadingElement>) => {
+		return (
+			<h2 id={children ? slugify(children.toString()) : undefined}>
+				{children}
+			</h2>
+		);
+	},
+	h3: ({ children }: HTMLAttributes<HTMLHeadingElement>) => {
+		return (
+			<h3 id={children ? slugify(children.toString()) : undefined}>
+				{children}
+			</h3>
+		);
 	},
 };
