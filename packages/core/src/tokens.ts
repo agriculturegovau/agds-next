@@ -77,10 +77,26 @@ const lineHeight = {
 
 export type LineHeight = keyof typeof lineHeight;
 
-// FIXME... it's unclear how spacing should work at the moment.
-export type Spacing = 0 | 0.25 | 0.5 | 0.75 | 1 | 1.5 | 2 | 3 | 4 | 5 | 6;
+export const spacing = {
+	none: 0,
+	xxxs: 0.25,
+	xxs: 0.5,
+	xs: 0.75,
+	sm: 1,
+	m: 1.5,
+	lg: 2,
+	xl: 3,
+	xxl: 4,
+	xxxl: 5,
+	xxxxl: 6,
+} as const;
+
+export type LegacySpacing = 0 | 0.25 | 0.5 | 0.75 | 1 | 1.5 | 2 | 3 | 4 | 5 | 6;
+
+export type Spacing = keyof typeof spacing | LegacySpacing;
 
 export function mapSpacing(v: Spacing) {
+	if (v in spacing) return `${spacing[v as keyof typeof spacing]}rem`;
 	return `${v}rem`;
 }
 
@@ -112,6 +128,7 @@ export const tokens = {
 	fontSize,
 	fontWeight,
 	lineHeight,
+	spacing,
 	containerPadding,
 	maxWidth,
 	borderRadius,
