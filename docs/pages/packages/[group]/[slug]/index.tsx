@@ -1,7 +1,6 @@
 import { GetStaticProps, InferGetStaticPropsType } from 'next';
 import { MDXRemote } from 'next-mdx-remote';
 import { Body } from '@ag.ds-next/body';
-
 import {
 	getPkgList,
 	getPkg,
@@ -9,8 +8,7 @@ import {
 	getPkgNavLinks,
 	getPkgBreadcrumbs,
 	getPkgDocsContent,
-} from '../../../../lib/mdxUtils';
-
+} from '../../../../lib/mdx/packages';
 import { mdxComponents } from '../../../../components/utils';
 import { AppLayout } from '../../../../components/AppLayout';
 import { DocumentTitle } from '../../../../components/DocumentTitle';

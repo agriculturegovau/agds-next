@@ -3,8 +3,6 @@ import Link from 'next/link';
 import { TextLinkExternal } from '@ag.ds-next/text-link';
 import { slugify } from '../lib/slugify';
 import { Code } from './Code';
-import { Box } from '@ag.ds-next/box';
-import { Button } from '@ag.ds-next/button';
 
 // Note: We are using `any` here because of a typescript bug with react v18 and next-mdx-remote v3
 // Upgrading to v4 causes issues with our pre and code inline components. Be careful when upgrading
@@ -28,24 +26,6 @@ export const mdxComponents: Record<string, any> = {
 			<h2 id={children ? slugify(children.toString()) : undefined}>
 				{children}
 			</h2>
-		);
-	},
-	StoryBookPreview: ({ src }: { src: string }) => {
-		return (
-			<Box border borderColor="muted" rounded>
-				<iframe src={src} width="100%" height="100px" frameBorder="0" />
-				<Box
-					flexWrap="wrap"
-					padding={0.5}
-					gap={0.5}
-					borderTop
-					borderColor="muted"
-				>
-					<Button size="sm" variant="tertiary">
-						View in Storybook
-					</Button>
-				</Box>
-			</Box>
 		);
 	},
 };

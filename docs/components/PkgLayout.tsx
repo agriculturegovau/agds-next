@@ -5,12 +5,12 @@ import { ExternalLinkIcon } from '@ag.ds-next/icon';
 import { Body } from '@ag.ds-next/body';
 import { SkipLinksProps } from '@ag.ds-next/skip-link';
 import { SecondaryNav } from '@ag.ds-next/secondary-nav';
-import { getPkgBreadcrumbs, getPkgNavLinks, Pkg } from '../lib/mdxUtils';
-import { PageLayout } from './PageLayout';
-import { PageTitle } from './PageTitle';
 import { Callout } from '@ag.ds-next/callout';
 import { Text } from '@ag.ds-next/text';
 import { TextLink } from '@ag.ds-next/text-link';
+import { getPkgBreadcrumbs, getPkgNavLinks, Pkg } from '../lib/mdx/packages';
+import { PageTitle } from './PageTitle';
+import { PageLayout } from './PageLayout';
 
 export function PkgLayout({
 	children,
