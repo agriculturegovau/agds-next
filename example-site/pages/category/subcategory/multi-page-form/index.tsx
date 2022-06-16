@@ -9,7 +9,7 @@ import { Text } from '@ag.ds-next/text';
 import { TextLinkExternal } from '@ag.ds-next/text-link';
 import { AppLayout } from '../../../../components/AppLayout';
 import { DocumentTitle } from '../../../../components/DocumentTitle';
-import { FormExampleMultiStepCallout } from '../../../../components/FormExampleMultiStep/FormExampleMultiStepCallout';
+import { FormHelpCallout } from '../../../../components/FormHelpCallout';
 import { PageTitle } from '../../../../components/PageTitle';
 import { FormDivider } from '../../../../components/FormDivider';
 
@@ -70,7 +70,7 @@ export default function FormMultiPageHomePage() {
 										</li>
 									</ul>
 								</Body>
-								<FormExampleMultiStepCallout />
+								<FormHelpCallout />
 							</Stack>
 						</Column>
 					</Columns>
