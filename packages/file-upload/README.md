@@ -21,6 +21,7 @@ storybookPath: /story/forms-fileupload--on-light
 When using FileUpload, you need to consider how the communicate to the user that the upload is in progress. Otherwise the page will appear "frozen" as the operation happens in the background.
 
 ### Uploading on submission
+
 In this example, we are submitting a file as part of a typical form submission to an API.
 
 We recommend wrapping the FileUpload in a LoadingBanner as the form submits, to indicate to the user that any delays are being caused by a potentially larger file being uploaded. If your backend system supports it, you can also use this UI to indicate upload status as a percentage.
@@ -29,23 +30,23 @@ As normal, we indicate that the form is submitting by adding a `loading={true}` 
 
 ```jsx live
 <FormStack>
-  <div style={{ position: 'relative' }}>
-    <FileUpload
-      label="Avatar image"
-      hint="Formats accepted: .png, .jpg."
-      multiple={false}
-      accept={['image/jpeg', 'image/jpg', 'image/png']}
-    />
-    <LoadingBlanket label="Uploading file (53%)" />
-  </div>
-  <div>
-  <Button loading>Submit</Button>
-  </div>
+	<div style={{ position: 'relative' }}>
+		<FileUpload
+			label="Avatar image"
+			hint="Formats accepted: .png, .jpg."
+			multiple={false}
+			accept={['image/jpeg', 'image/jpg', 'image/png']}
+		/>
+		<LoadingBlanket label="Uploading file (53%)" />
+	</div>
+	<div>
+		<Button loading>Submit</Button>
+	</div>
 </FormStack>
 ```
 
-
 ### Uploading files instantly
+
 In this example, the file is instantly uploaded to a file hosting service, and the URL of the uploaded asset would be added to the form for submission. This means the form should not be allowed to submit until all assets are uploaded, but that the submission should be very quick as it's only text content being submitted.
 
 `FileUpload` component allows you to indicate the status of an upload via a `file.status` property.
@@ -56,9 +57,13 @@ In this example, the file is instantly uploaded to a file hosting service, and t
 		type: 'image/jpg',
 	});
 	uploadingFile.status = 'uploading';
-  const uploadedFile = new File(['this is another example file that has uploaded'], 'example.jpg', {
-		type: 'image/jpg',
-	});
+	const uploadedFile = new File(
+		['this is another example file that has uploaded'],
+		'example.jpg',
+		{
+			type: 'image/jpg',
+		}
+	);
 	uploadedFile.status = 'success';
 	return (
 		<FileUpload
@@ -72,6 +77,7 @@ In this example, the file is instantly uploaded to a file hosting service, and t
 	);
 };
 ```
+
 ---
 
 ## Props
@@ -81,9 +87,8 @@ In this example, the file is instantly uploaded to a file hosting service, and t
 Selecting multiple files is also supported with FileUpload. Simply add `multiple={true}`, and you can select as many files as you want. You can also set `maxFiles` to limit how many files can be selected.
 
 ```jsx
-	<FileUpload multiple={true} maxFiles={3} />
+<FileUpload multiple={true} maxFiles={3} />
 ```
-
 
 ### Maximum size
 
@@ -125,5 +130,5 @@ Using the `accept` prop, you can specify what filetypes are allowed to be select
 - `video/mpeg`
 
 ```jsx
-	<FileUpload accept={['image/jpeg', 'image/jpg', 'image/png']} />
+<FileUpload accept={['image/jpeg', 'image/jpg', 'image/png']} />
 ```
