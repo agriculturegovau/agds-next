@@ -28,4 +28,11 @@ export const mdxComponents: Record<string, any> = {
 			</h2>
 		);
 	},
+	h3: ({ children }: HTMLAttributes<HTMLHeadingElement>) => {
+		return (
+			<h3 id={children ? slugify(children.toString()) : undefined}>
+				{children}
+			</h3>
+		);
+	},
 };
