@@ -1,6 +1,6 @@
 import { PropsWithChildren } from 'react';
 import { useRouter } from 'next/router';
-import { ButtonLink } from '@ag.ds-next/button';
+import { ButtonGroup, ButtonLink } from '@ag.ds-next/button';
 import { ExternalLinkIcon } from '@ag.ds-next/icon';
 import { Body } from '@ag.ds-next/body';
 import { SkipLinksProps } from '@ag.ds-next/skip-link';
@@ -41,7 +41,7 @@ export function PkgLayout({
 				introduction={pkg.data.description}
 				callToAction={
 					pkg.storybookPath && (
-						<div>
+						<ButtonGroup>
 							<ButtonLink
 								target="_blank"
 								href={`https://steelthreads.github.io/agds-next/storybook/index.html?path=${pkg.storybookPath}`}
@@ -51,7 +51,7 @@ export function PkgLayout({
 							>
 								View in Storybook
 							</ButtonLink>
-						</div>
+						</ButtonGroup>
 					)
 				}
 			/>
