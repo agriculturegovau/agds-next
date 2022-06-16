@@ -1,3 +1,4 @@
+// TODO Rename this file `mdxComponents`
 import { AnchorHTMLAttributes, HTMLAttributes, Fragment } from 'react';
 import Link from 'next/link';
 import { TextLinkExternal } from '@ag.ds-next/text-link';
@@ -21,6 +22,7 @@ export const mdxComponents: Record<string, any> = {
 		}
 		return <Link href={href} {...props} />;
 	},
+	// Automatically assign an ID to h2 and h3 elements so they can be linked to
 	h2: ({ children }: HTMLAttributes<HTMLHeadingElement>) => {
 		return (
 			<h2 id={children ? slugify(children.toString()) : undefined}>
