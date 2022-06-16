@@ -4,13 +4,12 @@ import { Stack } from '@ag.ds-next/box';
 import { Body } from '@ag.ds-next/body';
 import { H2 } from '@ag.ds-next/heading';
 import { TextLink } from '@ag.ds-next/text-link';
+import { getMarkdownData, serializeMarkdown } from '../../lib/mdxUtils';
 import {
-	getMarkdownData,
-	serializeMarkdown,
 	getPkgGroupList,
 	getPkgList,
 	getPkgNavLinks,
-} from '../../lib/mdxUtils';
+} from '../../lib/mdx/packages';
 import { mdxComponents } from '../../components/utils';
 import { AppLayout } from '../../components/AppLayout';
 import { DocumentTitle } from '../../components/DocumentTitle';
