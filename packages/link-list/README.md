@@ -13,6 +13,12 @@ The default link list component removes the normal bullets and spacing associate
 		{ href: '#', label: 'Home' },
 		{ href: '#', label: 'Establishments' },
 		{ href: '#', label: 'Applications' },
+		{
+			href: 'https://steelthreads.github.io/agds-next',
+			label: 'External link',
+			target: '_blank',
+			rel: 'external noreferrer',
+		},
 	]}
 />
 ```
@@ -27,6 +33,12 @@ Setting the `horizontal` prop will stack the links horizontally.
 		{ href: '#', label: 'Home' },
 		{ href: '#', label: 'Establishments' },
 		{ href: '#', label: 'Applications' },
+		{
+			href: 'https://steelthreads.github.io/agds-next',
+			label: 'External link',
+			target: '_blank',
+			rel: 'external noreferrer',
+		},
 	]}
 	horizontal
 />
