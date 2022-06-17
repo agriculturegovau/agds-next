@@ -3,7 +3,7 @@ import { SectionContent } from '@ag.ds-next/content';
 import { Stack } from '@ag.ds-next/box';
 import { CallToActionLink } from '@ag.ds-next/call-to-action';
 import { Body } from '@ag.ds-next/body';
-import { TextLinkExternal } from '@ag.ds-next/text-link';
+import { TextLink } from '@ag.ds-next/text-link';
 import {
 	HeroBanner,
 	HeroBannerTitleContainer,
@@ -39,15 +39,15 @@ export default function Homepage() {
 						<Body>
 							<p>
 								AgDS is based on the{' '}
-								<TextLinkExternal href="https://gold.designsystemau.org/">
+								<TextLink href="https://gold.designsystemau.org/">
 									GOLD Design System
-								</TextLinkExternal>{' '}
+								</TextLink>{' '}
 								which incorporates the highest usability and accessibility
 								standards, helping us to deliver a consistent experience for all
 								users, in line with the{' '}
-								<TextLinkExternal href="https://www.dta.gov.au/help-and-advice/about-digital-service-standard">
+								<TextLink href="https://www.dta.gov.au/help-and-advice/about-digital-service-standard">
 									Digital Service Standard
-								</TextLinkExternal>
+								</TextLink>
 								.
 							</p>
 							<p>
@@ -86,8 +86,6 @@ export default function Homepage() {
 									title="Starter kit"
 									pictogram="starter"
 									href="https://github.com/steelthreads/agds-next-starter-kit"
-									target="_blank"
-									rel="noopener noreferrer"
 								/>
 							</Column>
 						</Columns>

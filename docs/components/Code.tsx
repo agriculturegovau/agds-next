@@ -126,11 +126,8 @@ const LiveCode = withLive((props: unknown) => {
 				</Button>
 				<ButtonLink
 					href={playroomUrl}
-					target="_blank"
-					rel="noopener noreferrer"
 					size="sm"
 					variant="tertiary"
-					iconAfter={ExternalLinkIcon}
 					aria-label="Open code snippet in Playroom"
 				>
 					Open in Playroom

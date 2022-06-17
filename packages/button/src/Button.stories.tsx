@@ -1,6 +1,6 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { Flex } from '@ag.ds-next/box';
-import { allIcons, ExternalLinkIcon } from '@ag.ds-next/icon';
+import { allIcons, AvatarIcon } from '@ag.ds-next/icon';
 import { Text } from '@ag.ds-next/text';
 import { Button, ButtonLink } from './Button';
 import { ButtonGroup } from './ButtonGroup';
@@ -110,18 +110,6 @@ export const ButtonWithIcon: ComponentStory<typeof Button> = (args) => (
 	<Button {...args} />
 );
 ButtonWithIcon.args = {
-	children: 'Primary',
-	iconAfter: ExternalLinkIcon,
-};
-
-export const ButtonLinkWithIcon: ComponentStory<typeof ButtonLink> = (args) => (
-	<ButtonLink {...args} />
-);
-ButtonLinkWithIcon.storyName = 'ButtonLink With Icon';
-ButtonLinkWithIcon.args = {
-	children: 'Open external link',
-	href: 'https://steelthreads.github.io/agds-next',
-	target: '_blank',
-	rel: 'noopener noreferrer',
-	iconAfter: ExternalLinkIcon,
+	children: 'Sign out',
+	iconAfter: AvatarIcon,
 };
