@@ -6,7 +6,6 @@ import { Breadcrumbs } from '@ag.ds-next/breadcrumbs';
 import { Stack } from '@ag.ds-next/box';
 import { H2 } from '@ag.ds-next/heading';
 import { Text } from '@ag.ds-next/text';
-import { TextLinkExternal } from '@ag.ds-next/text-link';
 import { AppLayout } from '../../../../components/AppLayout';
 import { DocumentTitle } from '../../../../components/DocumentTitle';
 import { FormHelpCallout } from '../../../../components/FormHelpCallout';
@@ -54,19 +53,19 @@ export default function FormMultiPageHomePage() {
 									<h3>More information link list heading (H3)</h3>
 									<ul>
 										<li>
-											<TextLinkExternal href="#">
+											<a href="#">
 												Meaningful link label that shows link purpose
-											</TextLinkExternal>
+											</a>
 										</li>
 										<li>
-											<TextLinkExternal href="#">
+											<a href="#">
 												Meaningful link label that shows link purpose
-											</TextLinkExternal>
+											</a>
 										</li>
 										<li>
-											<TextLinkExternal href="#">
+											<a href="#">
 												Meaningful link label that shows link purpose
-											</TextLinkExternal>
+											</a>
 										</li>
 									</ul>
 								</Body>
