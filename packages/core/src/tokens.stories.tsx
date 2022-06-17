@@ -44,7 +44,9 @@ export const Space = () => {
 			{tokens.map((token) => (
 				<Flex key={token} as="li" gap={1} alignItems="center">
 					<Box height="1rem" background="bodyAlt" width={mapSpacing(token)} />
-					<Text fontSize="xs">{mapSpacing(token)}</Text>
+					<Text fontSize="xs">
+						{token} ({mapSpacing(token)})
+					</Text>
 				</Flex>
 			))}
 		</Stack>
