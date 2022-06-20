@@ -28,7 +28,9 @@ For situations where you need the appearance of a `TextLink` but the functionali
 
 ## TextLinkExternal
 
-The `TextLinkExternal` component creates a hyperlink to a web page, which will open in a new tab. It is adorned by an external link Icon, and includes descriptive text to communicate to a screenreader the interaction.
+[The W3C states](https://www.w3.org/TR/WCAG20-TECHS/G200.html) "In general, it is better not to open links in new windows and tabs since they can be disorienting for people, especially people who have difficulty perceiving visual content. However there are some situations where it is preferable from an accessibility perspective to open a new window or tab".
+
+The `TextLinkExternal` component can be used to create a link that opens in a new tab which includes descriptive text to communicate to a screenreader the interaction.
 
 ```jsx live
 <Text>
