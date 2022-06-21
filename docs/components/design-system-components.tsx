@@ -120,6 +120,7 @@ import {
 	HeroSubcategoryBannerTitle,
 } from '@ag.ds-next/hero-banner';
 import { LoadingBlanket, LoadingDots } from '@ag.ds-next/loading';
+import { Pagination } from '@ag.ds-next/pagination';
 
 export const designSystemComponents = {
 	Accordion,
@@ -245,4 +246,5 @@ export const designSystemComponents = {
 	tokens,
 	LoadingBlanket,
 	LoadingDots,
+	Pagination,
 };

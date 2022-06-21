@@ -66,7 +66,7 @@ export function Pagination(props: PaginationProps) {
 function PaginationListItemButton({
 	isSelected,
 	...props
-}: BaseButtonProps & { isSelected: boolean }) {
+}: Omit<BaseButtonProps, 'color'> & { isSelected: boolean }) {
 	return (
 		<Flex
 			{...props}
