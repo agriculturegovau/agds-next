@@ -7,18 +7,17 @@
 	"peerDependencies": {
 		"@ag.ds-next/box": "6.0.0",
 		"@ag.ds-next/core": "3.0.0",
+		"@ag.ds-next/direction-link": "7.0.0",
 		"@ag.ds-next/text": "8.0.0",
-		"@ag.ds-next/text-link": "3.0.0",
 		"@emotion/react": "^11.7.0",
 		"react": "^16.14.0 || ^17.0.0 || ^18.0.0"
 	},
 	"devDependencies": {
 		"@ag.ds-next/box": "*",
 		"@ag.ds-next/core": "*",
+		"@ag.ds-next/direction-link": "*",
 		"@ag.ds-next/text": "*",
-		"@ag.ds-next/text-link": "*",
 		"@emotion/react": "^11.7.0",
-		"react": "18.1.0",
-		"swr": "^1.3.0"
+		"react": "18.1.0"
 	}
 }
