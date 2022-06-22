@@ -10,7 +10,7 @@ export const PaginationContainer = ({
 	'aria-label': ariaLabel,
 }: PaginationContainerProps) => (
 	<nav aria-label={ariaLabel}>
-		<Flex as="ul" gap={0.5} alignItems="center" flexWrap="wrap">
+		<Flex as="ol" gap={0.25} alignItems="center" flexWrap="wrap">
 			{children}
 		</Flex>
 	</nav>

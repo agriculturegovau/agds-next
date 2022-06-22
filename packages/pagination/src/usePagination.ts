@@ -13,15 +13,17 @@ type PaginationElements =
 			type: 'seperator';
 	  };
 
+export type UsePaginationProps = {
+	currentPage: number;
+	limit?: number;
+	totalPages: number;
+};
+
 export function usePagination({
 	currentPage,
 	limit = 3,
 	totalPages,
-}: {
-	currentPage: number;
-	limit?: number;
-	totalPages: number;
-}) {
+}: UsePaginationProps) {
 	const elements: PaginationElements[] = [];
 
 	let minPage = 1;

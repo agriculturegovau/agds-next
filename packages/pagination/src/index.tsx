@@ -1,4 +1,3 @@
 export * from './Pagination';
-// export * from './TagsContainer';
-// export * from './TagsList';
-// export * from './Tag';
+export * from './PaginationButtons';
+export * from './usePagination';

@@ -1,19 +1,56 @@
 import { MouseEventHandler } from 'react';
-import { mapSpacing } from '@ag.ds-next/core';
+import { boxPalette, LinkProps, useLinkComponent } from '@ag.ds-next/core';
 import { Flex } from '@ag.ds-next/box';
 import { BaseButton } from '@ag.ds-next/button';
+import { BUTTON_SIZE } from './utils';
 
-const SIZE = mapSpacing(3);
+export type PaginationItemPageProps = Pick<LinkProps, 'href'> & {
+	pageNumber: number;
+	isActive: boolean;
+};
 
 export function PaginationItemPage({
 	pageNumber,
-	onClick,
+	href,
 	isActive,
-}: {
+}: PaginationItemPageProps) {
+	const Link = useLinkComponent();
+	return (
+		<li>
+			<Flex
+				as={Link}
+				aria-label={`Go to page ${pageNumber}`}
+				href={href}
+				justifyContent="center"
+				alignItems="center"
+				width={BUTTON_SIZE}
+				height={BUTTON_SIZE}
+				link
+				focus
+				aria-current={isActive ? 'page' : undefined}
+				css={
+					isActive
+						? { color: boxPalette.foregroundText, textDecoration: 'none' }
+						: undefined
+				}
+			>
+				{pageNumber}
+			</Flex>
+		</li>
+	);
+}
+
+export type PaginationItemPageButtonProps = Pick<LinkProps, 'href'> & {
 	pageNumber: number;
 	isActive: boolean;
 	onClick: MouseEventHandler<HTMLButtonElement>;
-}) {
+};
+
+export function PaginationItemPageButton({
+	pageNumber,
+	onClick,
+	isActive,
+}: PaginationItemPageButtonProps) {
 	return (
 		<li>
 			<Flex
@@ -22,11 +59,15 @@ export function PaginationItemPage({
 				onClick={onClick}
 				justifyContent="center"
 				alignItems="center"
-				width={SIZE}
-				height={SIZE}
+				width={BUTTON_SIZE}
+				height={BUTTON_SIZE}
 				link
 				focus
-				css={isActive ? { color: 'black', textDecoration: 'none' } : undefined}
+				css={
+					isActive
+						? { color: boxPalette.foregroundText, textDecoration: 'none' }
+						: undefined
+				}
 			>
 				{pageNumber}
 			</Flex>

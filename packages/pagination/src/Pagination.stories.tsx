@@ -1,93 +1,54 @@
-// import { ComponentStory, ComponentMeta } from '@storybook/react';
-// import { Box } from '@ag.ds-next/box';
-// import { Text } from '@ag.ds-next/text';
-import { useState } from 'react';
-import useSWR from 'swr';
-import { Box, Stack } from '@ag.ds-next/box';
-import {
-	Table,
-	TableCaption,
-	TableCell,
-	TableHeader,
-	TableHead,
-	TableBody,
-} from '@ag.ds-next/table';
+import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { Box } from '@ag.ds-next/box';
 import { Pagination } from './Pagination';
-import { LoadingDots } from '../../../docs/playroom/components';
 
 export default {
 	title: 'navigation/Pagination',
-	component: { Pagination },
-};
+	component: Pagination,
+} as ComponentMeta<typeof Pagination>;
 
-export const Basic = () => {
-	const [currentPage, setCurrentPage] = useState(1);
+const Template: ComponentStory<typeof Pagination> = ({
+	currentPage,
+	limit = 3,
+	totalPages = 10,
+}) => {
 	return (
 		<Pagination
 			currentPage={currentPage}
-			onChange={setCurrentPage}
-			limit={5}
-			totalPages={10}
+			limit={limit}
+			totalPages={totalPages}
+			getHref={(pageNumber) => `#${pageNumber}`}
 		/>
 	);
 };
 
-export const ManyPages = () => {
-	const [currentPage, setCurrentPage] = useState(50);
-	return (
-		<Pagination
-			currentPage={currentPage}
-			onChange={setCurrentPage}
-			limit={5}
-			totalPages={300}
-		/>
-	);
+export const OnLight: ComponentStory<typeof Pagination> = (args) => (
+	<Template {...args} />
+);
+OnLight.args = {
+	currentPage: 5,
+	totalPages: 10,
 };
 
-const fetcher = (url: string) => fetch(url).then((res) => res.json());
+export const OnDark: ComponentStory<typeof Pagination> = (args) => (
+	<Box palette="dark" background="body" padding={1.5}>
+		<Template {...args} />
+	</Box>
+);
+OnDark.args = {
+	currentPage: 5,
+	totalPages: 10,
+};
 
-export function TablePagination() {
-	const [currentPage, setCurrentPage] = useState(1);
+export const ManyPages = Template.bind({});
+ManyPages.args = {
+	currentPage: 5,
+	totalPages: 300,
+};
 
-	const { data, error } = useSWR<{
-		count: number;
-		results: { name: string; population: string; climate: string }[];
-	}>(`https://swapi.dev/api/planets/?page=${currentPage}`, fetcher);
-
-	if (error) return <p>Error</p>;
-	if (!data && !error) return <LoadingDots aria-label="Loading data" />;
-
-	const totalPages = (data?.count || 0) / 10;
-
-	return (
-		<Stack gap={1}>
-			<Table>
-				<TableCaption>Star wars planets</TableCaption>
-				<TableHead>
-					<tr>
-						<TableHeader scope="col">Name</TableHeader>
-						<TableHeader scope="col">Climate</TableHeader>
-						<TableHeader textAlign="right" scope="col">
-							Population
-						</TableHeader>
-					</tr>
-				</TableHead>
-				<TableBody>
-					{data?.results.map((item) => (
-						<tr key={item.name}>
-							<TableCell>{item.name}</TableCell>
-							<TableCell>{item.climate}</TableCell>
-							<TableCell textAlign="right">{item.population}</TableCell>
-						</tr>
-					))}
-				</TableBody>
-			</Table>
-			<Pagination
-				currentPage={currentPage}
-				onChange={setCurrentPage}
-				limit={5}
-				totalPages={totalPages}
-			/>
-		</Stack>
-	);
-}
+export const CustomLimit = Template.bind({});
+CustomLimit.args = {
+	limit: 5,
+	currentPage: 5,
+	totalPages: 300,
+};

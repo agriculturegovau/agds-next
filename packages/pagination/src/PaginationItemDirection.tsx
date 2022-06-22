@@ -1,34 +1,44 @@
-{
-	/* <li key={idx}>
-<PaginationListItemButton
-  aria-label={`Go to page ${item.page}`}
-  onClick={() => props.onChange(item.page)}
-  isSelected={item.isSelected}
->
-  {item.page}
-</PaginationListItemButton>
-</li> */
-}
-
 import { MouseEventHandler } from 'react';
-import { mapSpacing } from '@ag.ds-next/core';
-import { DirectionButton } from '@ag.ds-next/direction-link';
+import { LinkProps } from '@ag.ds-next/core';
+import { DirectionButton, DirectionLink } from '@ag.ds-next/direction-link';
+import { BUTTON_SIZE } from './utils';
 
-const SIZE = mapSpacing(3);
+export type PaginationItemDirectionProps = Pick<LinkProps, 'href'> & {
+	direction: 'left' | 'right';
+};
 
 export function PaginationItemDirection({
 	direction,
-	onClick,
-}: {
+	href,
+}: PaginationItemDirectionProps) {
+	return (
+		<li>
+			<DirectionLink
+				direction={direction}
+				href={href}
+				css={{ height: BUTTON_SIZE }}
+			>
+				{direction === 'left' ? 'Previous' : 'Next'}
+			</DirectionLink>
+		</li>
+	);
+}
+
+export type PaginationItemDirectionButtonProps = {
 	direction: 'left' | 'right';
 	onClick: MouseEventHandler<HTMLButtonElement>;
-}) {
+};
+
+export function PaginationItemDirectionButton({
+	direction,
+	onClick,
+}: PaginationItemDirectionButtonProps) {
 	return (
 		<li>
 			<DirectionButton
 				direction={direction}
 				onClick={onClick}
-				css={{ height: SIZE }}
+				css={{ height: BUTTON_SIZE }}
 			>
 				{direction === 'left' ? 'Previous' : 'Next'}
 			</DirectionButton>

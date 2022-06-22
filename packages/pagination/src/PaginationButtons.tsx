@@ -1,24 +1,21 @@
-import { usePagination } from './usePagination';
+import { usePagination, UsePaginationProps } from './usePagination';
 import { PaginationContainer } from './PaginationContainer';
-import { PaginationItemDirection } from './PaginationItemDirection';
+import { PaginationItemDirectionButton } from './PaginationItemDirection';
 import { PaginationItemSeperator } from './PaginationItemSeperator';
-import { PaginationItemPage } from './PaginationItemPage';
+import { PaginationItemPageButton } from './PaginationItemPage';
 
-export type PaginationProps = {
+export type PaginationButtonsProps = UsePaginationProps & {
 	'aria-label'?: string;
-	getHref: (pageNumber: number) => string;
-	currentPage: number;
-	limit?: number;
-	totalPages: number;
+	onChange: (pageNumber: number) => void;
 };
 
-export function Pagination({
+export function PaginationButtons({
 	'aria-label': ariaLabel = 'pagination',
-	getHref,
-	limit,
+	onChange,
 	currentPage,
 	totalPages,
-}: PaginationProps) {
+	limit,
+}: PaginationButtonsProps) {
 	const pagination = usePagination({ currentPage, limit, totalPages });
 	return (
 		<PaginationContainer aria-label={ariaLabel}>
@@ -26,18 +23,18 @@ export function Pagination({
 				switch (item.type) {
 					case 'direction':
 						return (
-							<PaginationItemDirection
+							<PaginationItemDirectionButton
 								key={idx}
 								direction={item.direction}
-								href={getHref(item.pageNumber)}
+								onClick={() => onChange(item.pageNumber)}
 							/>
 						);
 					case 'page':
 						return (
-							<PaginationItemPage
+							<PaginationItemPageButton
 								key={idx}
-								href={getHref(item.pageNumber)}
 								pageNumber={item.pageNumber}
+								onClick={() => onChange(item.pageNumber)}
 								isActive={item.isActive}
 							/>
 						);
