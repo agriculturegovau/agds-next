@@ -6,6 +6,7 @@
 	"license": "MIT",
 	"peerDependencies": {
 		"@ag.ds-next/box": "6.0.0",
+		"@ag.ds-next/button": "9.0.0",
 		"@ag.ds-next/core": "3.0.0",
 		"@ag.ds-next/direction-link": "7.0.0",
 		"@ag.ds-next/text": "8.0.0",
@@ -14,6 +15,7 @@
 	},
 	"devDependencies": {
 		"@ag.ds-next/box": "*",
+		"@ag.ds-next/button": "*",
 		"@ag.ds-next/core": "*",
 		"@ag.ds-next/direction-link": "*",
 		"@ag.ds-next/text": "*",
