@@ -2,24 +2,25 @@ import { InputHTMLAttributes } from 'react';
 import { visuallyHiddenStyles } from '@ag.ds-next/a11y';
 import { Text } from '@ag.ds-next/text';
 import { Flex } from '@ag.ds-next/box';
-import { SwitchTrack, SwitchTrackProps } from './SwitchTrack';
+import {
+	SwitchContainer,
+	SwitchThumb,
+	SwitchTrack,
+	SwitchTrackProps,
+} from './SwitchTrack';
 
-export type SwitchProps = Omit<
-	InputHTMLAttributes<HTMLInputElement>,
-	'size' | 'onChange'
-> &
-	SwitchTrackProps & {
-		label: string;
-		checked: boolean;
-		onChange: InputHTMLAttributes<HTMLInputElement>['onChange'];
-	};
+export type SwitchProps = Omit<SwitchTrackProps, 'size'> & {
+	size?: 'sm' | 'md';
+	label: string;
+	checked: boolean;
+	onChange: InputHTMLAttributes<HTMLInputElement>['onChange'];
+};
 
 export const Switch = ({
 	size = 'md',
 	label,
 	onChange,
 	checked,
-	...props
 }: SwitchProps) => {
 	return (
 		<Flex
@@ -30,7 +31,10 @@ export const Switch = ({
 				cursor: 'pointer',
 			}}
 		>
-			<SwitchTrack size={size} checked={checked} {...props} />
+			<SwitchContainer size={size}>
+				<SwitchTrack size={size} checked={checked} />
+				<SwitchThumb size={size} checked={checked} />
+			</SwitchContainer>
 			<input
 				type="checkbox"
 				checked={checked}

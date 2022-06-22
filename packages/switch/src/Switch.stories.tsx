@@ -4,7 +4,7 @@ import { Box } from '@ag.ds-next/box';
 import { Switch } from './Switch';
 
 export default {
-	title: 'navigation/Switch',
+	title: 'forms/Switch',
 	component: Switch,
 } as ComponentMeta<typeof Switch>;
 

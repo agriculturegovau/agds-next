@@ -1,23 +1,46 @@
-import { useMemo } from 'react';
-import { boxPalette, globalPalette, packs } from '@ag.ds-next/core';
+import { PropsWithChildren } from 'react';
+import { useSpring, animated } from '@react-spring/web';
+import {
+	boxPalette,
+	globalPalette,
+	usePrefersReducedMotion,
+} from '@ag.ds-next/core';
+import { Box, Flex } from '@ag.ds-next/box';
+import { switchTrackStyles } from './utils';
 
-type SwitchThumbProps = {
-	checked: boolean;
-	size: 'sm' | 'md';
+type SwitchSize = 'sm' | 'md';
+
+type SwitchContainerProps = PropsWithChildren<{ size: SwitchSize }>;
+
+export const SwitchContainer = ({ children, size }: SwitchContainerProps) => {
+	const { width, height } = switchTrackStyles[size];
+	return (
+		<Box
+			css={{
+				flexShrink: 0,
+				width,
+				height,
+				position: 'relative',
+			}}
+		>
+			{children}
+		</Box>
+	);
 };
 
 export type SwitchTrackProps = SwitchThumbProps;
 
 export const SwitchTrack = ({ checked, size }: SwitchTrackProps) => {
-	const trackStyles = switchTrackStyles[size];
+	const { borderWidth, height } = switchTrackStyles[size];
 	return (
-		<div
+		<Box
 			css={{
-				...trackStyles,
+				borderWidth,
 				borderStyle: 'solid',
 				backgroundColor: globalPalette.lightBackgroundBody,
-				borderRadius: trackStyles.height,
-				position: 'relative',
+				borderRadius: height,
+				position: 'absolute',
+				inset: 0,
 				...(checked
 					? {
 							background: boxPalette.foregroundAction,
@@ -27,60 +50,49 @@ export const SwitchTrack = ({ checked, size }: SwitchTrackProps) => {
 							borderColor: boxPalette.borderInput,
 					  }),
 			}}
-		>
-			<SwitchThumb checked={checked} size={size} />
-		</div>
+		/>
 	);
 };
 
-const switchTrackStyles = {
-	sm: {
-		...packs.control.sm,
-		width: 44,
-		height: 24,
-	},
-	md: {
-		...packs.control.md,
-		width: 56,
-		height: 32,
-	},
-} as const;
+const AnimatedFlex = animated(Flex);
+
+type SwitchThumbProps = {
+	checked: boolean;
+	size: SwitchSize;
+};
 
 export const SwitchThumb = ({ checked, size }: SwitchThumbProps) => {
-	const { borderWidth, height, width: trackWidth } = switchTrackStyles[size];
+	const {
+		thumbCheckedPos,
+		borderWidth,
+		height: thumbSize,
+	} = switchTrackStyles[size];
 
-	const checkedPosition = useMemo(
-		() => trackWidth - height - borderWidth,
-		[trackWidth, height, borderWidth]
-	);
+	const prefersReducedMotion = usePrefersReducedMotion();
+	const animationStyles = useSpring({
+		from: { left: '0rem' },
+		to: { left: checked ? thumbCheckedPos : '0rem' },
+		immediate: prefersReducedMotion,
+	});
 
 	return (
-		<div
+		<AnimatedFlex
+			alignItems="center"
+			justifyContent="center"
+			style={animationStyles}
+			height={thumbSize}
+			width={thumbSize}
 			css={{
-				display: 'grid',
-				alignItems: 'center',
-				justifyContent: 'center',
 				background: boxPalette.backgroundBody,
-				height,
-				width: height,
-				borderRadius: height,
+				borderRadius: thumbSize,
 				borderWidth,
 				borderStyle: 'solid',
 				borderColor: boxPalette.foregroundAction,
-				position: 'relative',
-				top: -borderWidth,
-				transition: 'transform 240ms cubic-bezier(0.165,0.840,0.440,1.000)',
-				...(checked
-					? {
-							transform: `translateX(${checkedPosition}px)`,
-					  }
-					: {
-							transform: `translateX(${-borderWidth}px)`,
-					  }),
+				position: 'absolute',
 			}}
 		>
 			{checked && <SwitchThumbIcon />}
-		</div>
+		</AnimatedFlex>
 	);
 };
 
