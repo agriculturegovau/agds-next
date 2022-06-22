@@ -13,6 +13,7 @@ import {
 	TableBody,
 } from '@ag.ds-next/table';
 import { Pagination } from './Pagination';
+import { LoadingDots } from '../../../docs/playroom/components';
 
 export default {
 	title: 'navigation/Pagination',
@@ -54,7 +55,7 @@ export function TablePagination() {
 	}>(`https://swapi.dev/api/planets/?page=${currentPage}`, fetcher);
 
 	if (error) return <p>Error</p>;
-	if (!data && !error) return <p>Loading...</p>;
+	if (!data && !error) return <LoadingDots aria-label="Loading data" />;
 
 	const totalPages = (data?.count || 0) / 10;
 

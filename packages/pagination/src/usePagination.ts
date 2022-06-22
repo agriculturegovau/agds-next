@@ -2,15 +2,15 @@ type PaginationElements =
 	| {
 			type: 'direction';
 			direction: 'left' | 'right';
-			page: number;
+			pageNumber: number;
 	  }
 	| {
 			type: 'page';
-			page: number;
-			isSelected: boolean;
+			pageNumber: number;
+			isActive: boolean;
 	  }
 	| {
-			type: 'divider';
+			type: 'seperator';
 	  };
 
 export function usePagination({
@@ -50,29 +50,29 @@ export function usePagination({
 		elements.push({
 			type: 'direction',
 			direction: 'left',
-			page: currentPage - 1,
+			pageNumber: currentPage - 1,
 		});
 	}
 
 	// If we are passed page 2, create the '1 ...' elements
 	if (minPage > 1) {
-		elements.push({ type: 'page', page: 1, isSelected: 1 === currentPage });
-		if (minPage > 2) elements.push({ type: 'divider' });
+		elements.push({ type: 'page', pageNumber: 1, isActive: 1 === currentPage });
+		if (minPage > 2) elements.push({ type: 'seperator' });
 	}
 
 	// loop over range
 	for (let page = minPage; page <= maxPage; page++) {
-		const isSelected = page === currentPage;
-		elements.push({ type: 'page', page, isSelected });
+		const isActive = page === currentPage;
+		elements.push({ type: 'page', pageNumber: page, isActive });
 	}
 
 	// If we are not at the end of the list, create the 'n ...' elements
-	if (maxPage + 1 < totalPages) elements.push({ type: 'divider' });
+	if (maxPage + 1 < totalPages) elements.push({ type: 'seperator' });
 	if (maxPage < totalPages) {
 		elements.push({
 			type: 'page',
-			page: totalPages,
-			isSelected: totalPages === currentPage,
+			pageNumber: totalPages,
+			isActive: totalPages === currentPage,
 		});
 	}
 
@@ -81,7 +81,7 @@ export function usePagination({
 		elements.push({
 			type: 'direction',
 			direction: 'right',
-			page: currentPage + 1,
+			pageNumber: currentPage + 1,
 		});
 	}
 
