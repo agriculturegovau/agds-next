@@ -17,7 +17,7 @@ const Template: ComponentStory<typeof Pagination> = ({
 			currentPage={currentPage}
 			limit={limit}
 			totalPages={totalPages}
-			getHref={(pageNumber) => `#${pageNumber}`}
+			generateHref={(pageNumber) => `#${pageNumber}`}
 		/>
 	);
 };

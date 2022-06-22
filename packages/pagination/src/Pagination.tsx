@@ -6,15 +6,19 @@ import { PaginationItemPage } from './PaginationItemPage';
 
 export type PaginationProps = {
 	'aria-label'?: string;
-	getHref: (pageNumber: number) => string;
+	/** Function to generate a href for each list item */
+	generateHref: (pageNumber: number) => string;
+	/** The current page number */
 	currentPage: number;
+	/** Contols how many list items are shown */
 	limit?: number;
+	/** The total number of pages */
 	totalPages: number;
 };
 
 export function Pagination({
 	'aria-label': ariaLabel = 'pagination',
-	getHref,
+	generateHref,
 	limit,
 	currentPage,
 	totalPages,
@@ -29,14 +33,14 @@ export function Pagination({
 							<PaginationItemDirection
 								key={idx}
 								direction={item.direction}
-								href={getHref(item.pageNumber)}
+								href={generateHref(item.pageNumber)}
 							/>
 						);
 					case 'page':
 						return (
 							<PaginationItemPage
 								key={idx}
-								href={getHref(item.pageNumber)}
+								href={generateHref(item.pageNumber)}
 								pageNumber={item.pageNumber}
 								isActive={item.isActive}
 							/>

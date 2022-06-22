@@ -4,7 +4,7 @@ const withPreconstruct = require('@preconstruct/next');
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-	basePath: '/agds-next',
+	// basePath: '/agds-next',
 	reactStrictMode: true,
 };
 
