@@ -7,18 +7,9 @@ export default {
 	component: Pagination,
 } as ComponentMeta<typeof Pagination>;
 
-const Template: ComponentStory<typeof Pagination> = ({
-	currentPage,
-	limit = 3,
-	totalPages = 10,
-}) => {
+const Template: ComponentStory<typeof Pagination> = (props) => {
 	return (
-		<Pagination
-			currentPage={currentPage}
-			limit={limit}
-			totalPages={totalPages}
-			generateHref={(pageNumber) => `#${pageNumber}`}
-		/>
+		<Pagination {...props} generateHref={(pageNumber) => `#${pageNumber}`} />
 	);
 };
 

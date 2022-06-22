@@ -19,17 +19,13 @@ export default {
 	component: PaginationButtons,
 } as ComponentMeta<typeof PaginationButtons>;
 
-const Template: ComponentStory<typeof PaginationButtons> = ({
-	limit = 3,
-	totalPages = 10,
-}) => {
+const Template: ComponentStory<typeof PaginationButtons> = (props) => {
 	const [currentPage, setCurrentPage] = useState(5);
 	return (
 		<PaginationButtons
+			{...props}
 			currentPage={currentPage}
 			onChange={setCurrentPage}
-			limit={limit}
-			totalPages={totalPages}
 		/>
 	);
 };
