@@ -10,7 +10,7 @@ type PaginationElements =
 			isActive: boolean;
 	  }
 	| {
-			type: 'seperator';
+			type: 'separator';
 	  };
 
 export type UsePaginationProps = {
@@ -59,7 +59,7 @@ export function usePagination({
 	// If we are passed page 2, create the '1 ...' elements
 	if (minPage > 1) {
 		elements.push({ type: 'page', pageNumber: 1, isActive: 1 === currentPage });
-		if (minPage > 2) elements.push({ type: 'seperator' });
+		if (minPage > 2) elements.push({ type: 'separator' });
 	}
 
 	// loop over range
@@ -69,7 +69,7 @@ export function usePagination({
 	}
 
 	// If we are not at the end of the list, create the 'n ...' elements
-	if (maxPage + 1 < totalPages) elements.push({ type: 'seperator' });
+	if (maxPage + 1 < totalPages) elements.push({ type: 'separator' });
 	if (maxPage < totalPages) {
 		elements.push({
 			type: 'page',

@@ -1,7 +1,7 @@
 import { usePagination, UsePaginationProps } from './usePagination';
 import { PaginationContainer } from './PaginationContainer';
 import { PaginationItemDirectionButton } from './PaginationItemDirection';
-import { PaginationItemSeperator } from './PaginationItemSeperator';
+import { PaginationItemSeparator } from './PaginationItemSeparator';
 import { PaginationItemPageButton } from './PaginationItemPage';
 
 export type PaginationButtonsProps = UsePaginationProps & {
@@ -38,8 +38,8 @@ export function PaginationButtons({
 								isActive={item.isActive}
 							/>
 						);
-					case 'seperator':
-						return <PaginationItemSeperator key={idx} />;
+					case 'separator':
+						return <PaginationItemSeparator key={idx} />;
 					default:
 						return null;
 				}

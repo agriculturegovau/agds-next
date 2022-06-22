@@ -1,6 +1,6 @@
 import { Text } from '@ag.ds-next/text';
 
-export function PaginationItemSeperator() {
+export function PaginationItemSeparator() {
 	return (
 		<Text as="li" aria-hidden="true">
 			...
