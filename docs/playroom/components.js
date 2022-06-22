@@ -64,6 +64,7 @@ export {
 	SideNavGroup,
 	SideNavTitle,
 } from '@ag.ds-next/side-nav';
+export { Switch } from '@ag.ds-next/switch';
 export {
 	AlertIcon,
 	AlertFilledIcon,

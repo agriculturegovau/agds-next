@@ -45,6 +45,7 @@ import {
 	SideNavGroup,
 	SideNavTitle,
 } from '@ag.ds-next/side-nav';
+import { Switch } from '@ag.ds-next/switch';
 import {
 	AlertIcon,
 	AlertFilledIcon,
@@ -222,6 +223,7 @@ export const designSystemComponents = {
 	SkipLinks,
 	SkipLinkContainer,
 	SkipLinkItem,
+	Switch,
 	DirectionLink,
 	DirectionButton,
 	Tags,
