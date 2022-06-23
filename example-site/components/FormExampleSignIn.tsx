@@ -9,6 +9,8 @@ import { Stack } from '@ag.ds-next/box';
 import { PageAlert } from '@ag.ds-next/page-alert';
 import { Body } from '@ag.ds-next/body';
 import { useScrollToField } from '@ag.ds-next/field';
+import { TextLink } from '@ag.ds-next/text-link';
+import { FormDivider } from './FormDivider';
 
 const formSchema = yup
 	.object({
@@ -103,16 +105,19 @@ export const FormExampleSignIn = () => {
 						maxWidth="xl"
 						required
 					/>
-					<TextInput
-						label="Password"
-						type="password"
-						{...register('password')}
-						id="password"
-						invalid={Boolean(errors.password?.message)}
-						message={errors.password?.message}
-						maxWidth="xl"
-						required
-					/>
+					<Stack gap={0.75} alignItems="flex-start">
+						<TextInput
+							label="Password"
+							type="password"
+							{...register('password')}
+							id="password"
+							invalid={Boolean(errors.password?.message)}
+							message={errors.password?.message}
+							maxWidth="xl"
+							required
+						/>
+						<TextLink href="#">Forgot password?</TextLink>
+					</Stack>
 					<div>
 						<Button type="submit" loading={isSubmitting}>
 							Sign in
@@ -120,6 +125,15 @@ export const FormExampleSignIn = () => {
 					</div>
 				</FormStack>
 			</form>
+			<FormDivider />
+			<Body>
+				<p>
+					Don&apos;t have an account? <a href="#">Create an account</a>
+				</p>
+				<p>
+					Read our <a href="#">privacy policy</a>
+				</p>
+			</Body>
 		</Stack>
 	);
 };
