@@ -34,6 +34,7 @@ export const SwitchTrack = ({ checked, size }: SwitchTrackProps) => {
 	const { borderWidth, height } = switchTrackStyles[size];
 	return (
 		<Box
+			className="switchTrack"
 			css={{
 				borderWidth,
 				borderStyle: 'solid',
