@@ -5,35 +5,25 @@ group: Navigation
 storybookPath: /story/navigation--basic
 ---
 
-Use pagination to let users move through an ordered collection of items that has been split into pages.
+Pagination allows users to see total number of pages, which page they are viewing, and how to navigate to other pages.
+
+Use pagination to separate large lists of content, such as search results, into smaller lists that are easier to interact with. Showing content on several pages prevents your content from becoming too long and overwhelming.
 
 ```jsx live
-() => {
-	// Note: This is demo code only
-	// We are only using hash urls here so this interactiveexample works with our documentation website
-	// You probably want to use `use-query-params` to managae this state
-	const hash = window.location.hash;
-
-	const currentPage = React.useMemo(() => {
-		const pageParam = hash.match(/page-(\d)/);
-		return (pageParam && pageParam[1] && parseInt(pageParam[1])) || 1;
-	}, [hash]);
-
-	return (
-		<Pagination
-			currentPage={currentPage}
-			generateHref={(pageNumber) => `#page-${pageNumber}`}
-			totalPages={10}
-		/>
-	);
-};
+<Pagination
+	currentPage={5}
+	totalPages={10}
+	generateHref={(page) => `/example?page=${page}`}
+/>
 ```
 
 ### Buttons
 
-By default, the `Pagination` component renders an anchor tag for each list item. We strongly recommend using wherever possible as it the most inclusive and accessible solution for users.
+By default, the `Pagination` component renders a link for each list item. We strongly recommend using wherever possible as it the most inclusive and accessible solution for users.
 
-However, this requires the page number to be stored in the users URL. This is fine in the majority of use cases, but in scenarios where that isn't possible we offer a `PaginationButtons` component. This component renders button elements for each list item, meaning you can manage the state of the active page yourself, such as with `React.useState`.
+This requires you to manage the state of the current page in the URL, which usually fine, but in scenarios where that isn't possible we offer a `PaginationButtons` component.
+
+`PaginationButtons` renders a button element for each list item which makes it possible to manage the state outside of the URL, e.g. `React.useState`.
 
 ```jsx live
 () => {
