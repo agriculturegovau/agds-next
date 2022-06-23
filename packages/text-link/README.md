@@ -28,9 +28,14 @@ For situations where you need the appearance of a `TextLink` but the functionali
 
 ## TextLinkExternal
 
-[The W3C states](https://www.w3.org/TR/WCAG20-TECHS/G200.html) "In general, it is better not to open links in new windows and tabs since they can be disorienting for people, especially people who have difficulty perceiving visual content. However there are some situations where it is preferable from an accessibility perspective to open a new window or tab".
+For the most part, always open links in the same browser tab or window. There is generally one good reason to open a page in a new window, and that is that the user will need to refer to that content in order to complete a task in another window.
 
-The `TextLinkExternal` component can be used to create a link that opens in a new tab which includes descriptive text to communicate to a screenreader the interaction.
+In those situations, the `TextLinkExternal` component can be used to create a link that opens in a new tab which includes descriptive text to communicate to a screenreader the interaction.
+
+For more information, please refer to:
+
+- [G200: Opening new windows and tabs from a link only when necessary](https://www.w3.org/TR/WCAG20-TECHS/G200.html)
+- [Opening Links in New Browser Windows and Tabs](https://www.nngroup.com/articles/new-browser-windows-and-tabs/)
 
 ```jsx live
 <Text>
