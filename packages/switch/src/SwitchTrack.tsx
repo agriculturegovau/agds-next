@@ -1,16 +1,14 @@
 import { PropsWithChildren } from 'react';
 import { useSpring, animated } from '@react-spring/web';
-import {
-	boxPalette,
-	globalPalette,
-	usePrefersReducedMotion,
-} from '@ag.ds-next/core';
+import { boxPalette, usePrefersReducedMotion } from '@ag.ds-next/core';
 import { Box, Flex } from '@ag.ds-next/box';
 import { switchTrackStyles } from './utils';
 
 type SwitchSize = 'sm' | 'md';
 
-type SwitchContainerProps = PropsWithChildren<{ size: SwitchSize }>;
+type SwitchContainerProps = PropsWithChildren<{
+	size: SwitchSize;
+}>;
 
 export const SwitchContainer = ({ children, size }: SwitchContainerProps) => {
 	const { width, height } = switchTrackStyles[size];
@@ -34,21 +32,20 @@ export const SwitchTrack = ({ checked, size }: SwitchTrackProps) => {
 	const { borderWidth, height } = switchTrackStyles[size];
 	return (
 		<Box
-			className="switchTrack"
 			css={{
 				borderWidth,
 				borderStyle: 'solid',
-				backgroundColor: globalPalette.lightBackgroundBody,
 				borderRadius: height,
 				position: 'absolute',
 				inset: 0,
 				...(checked
 					? {
-							background: boxPalette.foregroundAction,
+							backgroundColor: boxPalette.foregroundAction,
 							borderColor: boxPalette.foregroundAction,
 					  }
 					: {
-							borderColor: boxPalette.borderInput,
+							borderColor: boxPalette.border,
+							backgroundColor: boxPalette.backgroundShade,
 					  }),
 			}}
 		/>
@@ -83,8 +80,8 @@ export const SwitchThumb = ({ checked, size }: SwitchThumbProps) => {
 			style={animationStyles}
 			height={thumbSize}
 			width={thumbSize}
+			background="body"
 			css={{
-				background: boxPalette.backgroundBody,
 				borderRadius: thumbSize,
 				borderWidth,
 				borderStyle: 'solid',
@@ -121,15 +118,13 @@ const SwitchThumbIcon = ({ size }: { size: SwitchSize }) => {
 				width,
 				height,
 			}}
+			stroke={boxPalette.foregroundAction}
+			strokeWidth={stroke}
+			strokeLinecap="round"
+			strokeLinejoin="round"
 			xmlns="http://www.w3.org/2000/svg"
 		>
-			<path
-				d="M2 7.71429L6.15385 12L15.8462 2"
-				stroke={boxPalette.foregroundAction}
-				strokeWidth={stroke}
-				strokeLinecap="round"
-				strokeLinejoin="round"
-			/>
+			<path d="M2 7.71429L6.15385 12L15.8462 2" />
 		</svg>
 	);
 };

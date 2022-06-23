@@ -2,7 +2,7 @@ import { InputHTMLAttributes } from 'react';
 import { visuallyHiddenStyles } from '@ag.ds-next/a11y';
 import { Text } from '@ag.ds-next/text';
 import { Flex } from '@ag.ds-next/box';
-import { packs } from '@ag.ds-next/core';
+import { boxPalette, packs } from '@ag.ds-next/core';
 import {
 	SwitchContainer,
 	SwitchThumb,
@@ -30,6 +30,20 @@ export const Switch = ({
 			alignItems="center"
 			css={{
 				cursor: 'pointer',
+				'&:hover': {
+					'& > div > div:first-of-type': {
+						borderColor: boxPalette.foregroundText,
+						backgroundColor: checked
+							? boxPalette.foregroundText
+							: boxPalette.backgroundShadeAlt,
+					},
+					'& > div > div:last-of-type': {
+						borderColor: boxPalette.foregroundText,
+						'& svg': {
+							stroke: checked ? boxPalette.foregroundText : undefined,
+						},
+					},
+				},
 			}}
 		>
 			<SwitchContainer size={size}>
@@ -39,7 +53,7 @@ export const Switch = ({
 					onChange={onChange}
 					css={{
 						...visuallyHiddenStyles,
-						'&:focus ~ .switchTrack': packs.outline,
+						'&:focus ~ div:first-of-type': packs.outline,
 					}}
 				/>
 				<SwitchTrack size={size} checked={checked} />
