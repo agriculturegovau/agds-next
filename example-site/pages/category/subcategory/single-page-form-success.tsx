@@ -31,7 +31,7 @@ export default function SinglePageFormSuccessPage() {
 										{ label: 'Single-page form' },
 									]}
 								/>
-								<PageTitle title="Single-page form - multi-question - xxl/display (H1)" />
+								<PageTitle title="Single-page form (multi-question) xxl/display (H1)" />
 								<PageAlert tone="success">
 									<PageAlertTitle as="h2">
 										Descriptive success message (H2)
