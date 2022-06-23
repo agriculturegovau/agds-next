@@ -92,24 +92,41 @@ export const SwitchThumb = ({ checked, size }: SwitchThumbProps) => {
 				position: 'absolute',
 			}}
 		>
-			{checked && <SwitchThumbIcon />}
+			{checked && <SwitchThumbIcon size={size} />}
 		</AnimatedFlex>
 	);
 };
 
-const SwitchThumbIcon = () => {
+const switchThumbIconsizeMap = {
+	md: {
+		width: 18,
+		height: 14,
+		stroke: 3,
+	},
+	sm: {
+		width: 10,
+		height: 7,
+		stroke: 4,
+	},
+};
+const SwitchThumbIcon = ({ size }: { size: SwitchSize }) => {
+	const { height, width, stroke } = switchThumbIconsizeMap[size];
 	return (
 		<svg
 			width="18"
 			height="14"
 			viewBox="0 0 18 14"
 			fill="none"
+			css={{
+				width,
+				height,
+			}}
 			xmlns="http://www.w3.org/2000/svg"
 		>
 			<path
 				d="M2 7.71429L6.15385 12L15.8462 2"
 				stroke={boxPalette.foregroundAction}
-				strokeWidth="3"
+				strokeWidth={stroke}
 				strokeLinecap="round"
 				strokeLinejoin="round"
 			/>
