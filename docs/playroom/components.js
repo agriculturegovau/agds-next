@@ -134,3 +134,4 @@ export {
 	HeroSubcategoryBannerTitle,
 } from '@ag.ds-next/hero-banner';
 export { LoadingDots, LoadingBlanket } from '@ag.ds-next/loading';
+export { Pagination, PaginationButtons } from '@ag.ds-next/pagination';

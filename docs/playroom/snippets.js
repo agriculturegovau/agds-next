@@ -619,6 +619,12 @@ items={[
 		name: 'Basic',
 		code: `<TextLinkExternal href="https://steelthreads.github.io/agds-next">External link</TextLinkExternal>`,
 	},
+
+	{
+		group: 'Pagination',
+		name: 'Basic',
+		code: `<Pagination currentPage={5} totalPages={10} generateHref={() => '#'} />`,
+	},
 ];
 
 export default snippets;
