@@ -11,7 +11,7 @@ export type PaginationProps = {
 	/** The current page number */
 	currentPage: number;
 	/** Contols how many list items are shown */
-	limit?: number;
+	windowLimit?: number;
 	/** The total number of pages */
 	totalPages: number;
 };
@@ -19,11 +19,11 @@ export type PaginationProps = {
 export function Pagination({
 	'aria-label': ariaLabel = 'pagination',
 	generateHref,
-	limit,
+	windowLimit,
 	currentPage,
 	totalPages,
 }: PaginationProps) {
-	const pagination = usePagination({ currentPage, limit, totalPages });
+	const pagination = usePagination({ currentPage, windowLimit, totalPages });
 	return (
 		<PaginationContainer aria-label={ariaLabel}>
 			{pagination.map((item, idx) => {

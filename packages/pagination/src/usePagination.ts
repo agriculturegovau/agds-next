@@ -14,15 +14,15 @@ type PaginationElements =
 	  };
 
 export type UsePaginationProps = {
+	windowLimit?: number;
 	currentPage: number;
-	limit?: number;
 	totalPages: number;
 };
 
 export function usePagination({
 	currentPage,
-	limit = 3,
 	totalPages,
+	windowLimit = 3,
 }: UsePaginationProps) {
 	const elements: PaginationElements[] = [];
 
@@ -30,19 +30,19 @@ export function usePagination({
 	let maxPage = totalPages;
 
 	// Create range
-	if (limit < totalPages) {
-		const rightLimit = Math.floor(limit / 2);
-		const leftLimit = rightLimit + (limit % 2) - 1;
+	if (windowLimit < totalPages) {
+		const rightLimit = Math.floor(windowLimit / 2);
+		const leftLimit = rightLimit + (windowLimit % 2) - 1;
 		minPage = currentPage - leftLimit;
 		maxPage = currentPage + rightLimit;
 
 		if (minPage < 1) {
-			maxPage = limit;
+			maxPage = windowLimit;
 			minPage = 1;
 		}
 
 		if (maxPage > totalPages) {
-			minPage = totalPages - limit + 1;
+			minPage = totalPages - windowLimit + 1;
 			maxPage = totalPages;
 		}
 	}

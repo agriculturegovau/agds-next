@@ -14,9 +14,9 @@ export function PaginationButtons({
 	onChange,
 	currentPage,
 	totalPages,
-	limit,
+	windowLimit,
 }: PaginationButtonsProps) {
-	const pagination = usePagination({ currentPage, limit, totalPages });
+	const pagination = usePagination({ currentPage, totalPages, windowLimit });
 	return (
 		<PaginationContainer aria-label={ariaLabel}>
 			{pagination.map((item, idx) => {

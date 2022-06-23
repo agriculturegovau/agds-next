@@ -39,7 +39,7 @@ ManyPages.args = {
 
 export const CustomLimit = Template.bind({});
 CustomLimit.args = {
-	limit: 5,
+	windowLimit: 5,
 	currentPage: 5,
 	totalPages: 300,
 };
