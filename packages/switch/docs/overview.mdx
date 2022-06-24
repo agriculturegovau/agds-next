@@ -9,14 +9,34 @@ A Switch allows a user to toggle a setting on or off, immediately affecting the 
 
 A Switch should not be used in Forms. Instead, a Checkbox or Radio component should be used.
 
+`Switch` is a [controlled component](https://reactjs.org/docs/forms.html#controlled-components).
+
 ```jsx live
 () => {
-	const [isGridVisible, setGridVisible] = React.useState(false);
+	const [isChecked, setChecked] = React.useState(false);
 	return (
 		<Switch
-			label="Show gridlines"
-			checked={isGridVisible}
-			onChange={setGridVisible}
+			label="Show establishments"
+			checked={isChecked}
+			onChange={setChecked}
+		/>
+	);
+};
+```
+
+## Size
+
+Control size can be changed using the `size` prop.
+
+```jsx live
+() => {
+	const [isChecked, setChecked] = React.useState(false);
+	return (
+		<Switch
+			label="Small Switch"
+			checked={isChecked}
+			onChange={setChecked}
+			size="sm"
 		/>
 	);
 };
