@@ -14,6 +14,7 @@ const Template: ComponentStory<typeof Checkbox> = (args) => (
 export const OnLight = Template.bind({});
 OnLight.args = {
 	children: 'Example',
+	disabled: false,
 };
 
 export const OnDark: ComponentStory<typeof Checkbox> = (args) => (
@@ -23,12 +24,14 @@ export const OnDark: ComponentStory<typeof Checkbox> = (args) => (
 );
 OnDark.args = {
 	children: 'Example',
+	disabled: false,
 };
 
 export const Size = Template.bind({});
 Size.args = {
 	size: 'sm',
 	children: 'Small example',
+	disabled: false,
 };
 
 export const Disabled = Template.bind({});
@@ -41,10 +44,12 @@ export const Invalid = Template.bind({});
 Invalid.args = {
 	children: 'Invalid',
 	invalid: true,
+	disabled: false,
 };
 
 export const Valid = Template.bind({});
 Valid.args = {
 	children: 'Valid',
 	valid: true,
+	disabled: false,
 };
