@@ -35,16 +35,18 @@ export const Color = () => {
 					<H2>{palette}</H2>
 					<CardList templateColumns={{ xs: 1, sm: 2, md: 3, lg: 4, xl: 6 }}>
 						{boxPaletteTokens.map((token) => (
-							<Card key={token} as="li">
+							<Card key={token} as="li" shadow>
 								<Box
 									width="100%"
 									height="6rem"
 									background="body"
 									css={{ backgroundColor: boxPalette[token] }}
 								/>
-								<CardInner>
-									<Text fontSize="xs">{token}</Text>
-								</CardInner>
+								<Box borderColor="muted" borderTop>
+									<CardInner>
+										<Text fontSize="xs">{token}</Text>
+									</CardInner>
+								</Box>
 							</Card>
 						))}
 					</CardList>
@@ -54,16 +56,18 @@ export const Color = () => {
 				<H2>system</H2>
 				<CardList templateColumns={{ xs: 1, sm: 2, md: 3, lg: 4, xl: 6 }}>
 					{globalPaletteTokens.map((token) => (
-						<Card key={token} as="li">
+						<Card key={token} as="li" shadow>
 							<Box
 								width="100%"
 								height="6rem"
 								background="body"
 								css={{ backgroundColor: globalPalette[token] }}
 							/>
-							<CardInner>
-								<Text fontSize="xs">{token}</Text>
-							</CardInner>
+							<Box borderColor="muted" borderTop>
+								<CardInner>
+									<Text fontSize="xs">{token}</Text>
+								</CardInner>
+							</Box>
 						</Card>
 					))}
 				</CardList>
