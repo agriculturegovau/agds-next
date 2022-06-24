@@ -83,8 +83,9 @@ function getTemplateList() {
 
 				// Scroll past the template banner
 				await page.evaluate(() => {
-					const templateBannerHeight = 56;
-					window.scrollTo(0, templateBannerHeight);
+					const header = document.querySelector('header');
+					const headerRect = header.getBoundingClientRect();
+					window.scrollTo(0, headerRect.top);
 				});
 
 				await page.screenshot({ path: destination });
