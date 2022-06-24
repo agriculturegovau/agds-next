@@ -80,6 +80,13 @@ function getTemplateList() {
 					deviceScaleFactor: 1,
 				});
 				await page.goto(url);
+
+				// Scroll past the template banner
+				await page.evaluate(() => {
+					const templateBannerHeight = 56;
+					window.scrollTo(0, templateBannerHeight);
+				});
+
 				await page.screenshot({ path: destination });
 			} catch (error) {
 				console.log(`Error with "${slug}"`);
