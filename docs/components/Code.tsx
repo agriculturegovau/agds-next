@@ -22,12 +22,7 @@ import {
 import { Box, Flex } from '@ag.ds-next/box';
 import { unsetBodyStylesClassname } from '@ag.ds-next/body';
 import { Button, ButtonLink } from '@ag.ds-next/button';
-import {
-	CopyIcon,
-	ChevronDownIcon,
-	ChevronUpIcon,
-	ExternalLinkIcon,
-} from '@ag.ds-next/icon';
+import { CopyIcon, ChevronDownIcon, ChevronUpIcon } from '@ag.ds-next/icon';
 import { designSystemComponents } from './design-system-components';
 import { prismTheme } from './prism-theme';
 
