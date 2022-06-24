@@ -79,12 +79,12 @@ export const getErrorSummary = (
 	const firstError = rejections[0].errors[0];
 
 	if (firstError.code === 'too-many-files') {
-		return `Too many files were selected. Up to ${maxFiles} can be picked`;
+		return `You can not select more than ${maxFiles} files`;
 	}
 
 	if (rejections.length === 1) {
 		if (firstError.code === 'file-too-large') {
-			return `Some files exceed ${formattedMaxFileSize}`;
+			return `Each file must be smaller than ${formattedMaxFileSize}`;
 		}
 
 		if (firstError.code === 'file-invalid-type') {
@@ -92,5 +92,5 @@ export const getErrorSummary = (
 		}
 	}
 
-	return 'There was an issue with at least one of the selected files';
+	return 'There’s an issue with one or more of your files';
 };
