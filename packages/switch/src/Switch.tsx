@@ -31,14 +31,14 @@ export const Switch = ({
 				cursor: 'pointer',
 				'&:hover': {
 					// Hover state for SwitchTrack
-					'& > div > div:first-of-type': {
+					'& input:not(:focus) ~ div:first-of-type': {
 						borderColor: boxPalette.foregroundText,
 						backgroundColor: checked
 							? boxPalette.foregroundText
 							: boxPalette.backgroundShadeAlt,
 					},
 					// Hover state for SwitchThumb
-					'& > div > div:last-of-type': {
+					'& input:not(:focus) ~ div:last-of-type': {
 						borderColor: boxPalette.foregroundText,
 						'& svg': {
 							stroke: checked ? boxPalette.foregroundText : undefined,
