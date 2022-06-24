@@ -30,7 +30,7 @@ For situations where you need the appearance of a `TextLink` but the functionali
 
 For the most part, always open links in the same browser tab or window. There is generally one good reason to open a page in a new window, and that is that the user will need to refer to that content in order to complete a task in another window.
 
-In those situations, the `TextLinkExternal` component can be used to create a link that opens in a new tab which includes descriptive text to communicate to a screenreader the interaction.
+In those situations, the `TextLinkExternal` component can be used to create a link that opens in a new tab and includes descriptive text to communicate the interaction to a screenreader user.
 
 For more information, please refer to:
 
