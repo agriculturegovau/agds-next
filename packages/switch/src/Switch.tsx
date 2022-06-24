@@ -30,12 +30,14 @@ export const Switch = ({
 			css={{
 				cursor: 'pointer',
 				'&:hover': {
+					// Hover state for SwitchTrack
 					'& > div > div:first-of-type': {
 						borderColor: boxPalette.foregroundText,
 						backgroundColor: checked
 							? boxPalette.foregroundText
 							: boxPalette.backgroundShadeAlt,
 					},
+					// Hover state for SwitchThumb
 					'& > div > div:last-of-type': {
 						borderColor: boxPalette.foregroundText,
 						'& svg': {
@@ -52,6 +54,7 @@ export const Switch = ({
 					onChange={() => onChange(!checked)}
 					css={{
 						...visuallyHiddenStyles,
+						// When this component is focused, outline the track
 						'&:focus ~ div:first-of-type': packs.outline,
 					}}
 				/>
