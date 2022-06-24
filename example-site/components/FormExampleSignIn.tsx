@@ -22,9 +22,11 @@ type FormSchema = yup.InferType<typeof formSchema>;
 
 export const FormExampleSignIn = () => {
 	const [isSubmitting, setIsSubmitting] = useState(false);
-	const [hasFocusedErrorRef, setHasFocusedErrorRef] = useState(false);
+	const networkErrorPageAlertRef = useRef<HTMLDivElement>(null);
 	const [networkErrorMessage, setNetworkErrorMessage] = useState<string>();
-	const errorPageAlertRef = useRef<HTMLDivElement>(null);
+	const clientErrorPageAlertRef = useRef<HTMLDivElement>(null);
+	const [hasFocusedClientErrorRef, setHasFocusedClientErrorRef] =
+		useState(false);
 
 	const scrollToField = useScrollToField();
 
@@ -42,53 +44,58 @@ export const FormExampleSignIn = () => {
 		setTimeout(() => {
 			setIsSubmitting(false);
 			setNetworkErrorMessage('Incorrect username or password');
-			errorPageAlertRef.current?.focus();
 		}, 3000);
 	};
 
 	const onError: SubmitErrorHandler<FormSchema> = (errors, event) => {
 		console.log(errors, event);
-		setHasFocusedErrorRef(false);
+		setHasFocusedClientErrorRef(false);
 	};
 
 	// Only show the page alert if there is more than 1 error
 	const hasClientErrors = Object.keys(errors).length > 1;
+
+	useEffect(() => {
+		if (!(hasClientErrors || hasFocusedClientErrorRef)) return;
+		clientErrorPageAlertRef.current?.focus();
+		setHasFocusedClientErrorRef(true);
+	}, [hasFocusedClientErrorRef, hasClientErrors]);
+
 	const hasNetworkErrors = Boolean(networkErrorMessage);
 
 	useEffect(() => {
-		if (!(hasClientErrors || hasNetworkErrors || hasFocusedErrorRef)) return;
-		errorPageAlertRef.current?.focus();
-		setHasFocusedErrorRef(true);
-	}, [hasFocusedErrorRef, hasClientErrors, hasNetworkErrors]);
+		if (!hasNetworkErrors) return;
+		networkErrorPageAlertRef.current?.focus();
+	}, [hasNetworkErrors]);
 
 	return (
 		<Stack gap={3}>
-			{(hasClientErrors || hasNetworkErrors) && (
+			{hasNetworkErrors && (
+				<PageAlert ref={networkErrorPageAlertRef} tabIndex={-1} tone="error">
+					<Body>
+						<p>{networkErrorMessage}</p>
+					</Body>
+				</PageAlert>
+			)}
+			{hasClientErrors && (
 				<PageAlert
-					ref={errorPageAlertRef}
+					ref={clientErrorPageAlertRef}
 					tabIndex={-1}
 					tone="error"
 					title="There is a problem"
 				>
-					{networkErrorMessage && (
-						<Body>
-							<p>{networkErrorMessage}</p>
-						</Body>
-					)}
-					{hasClientErrors && (
-						<Body>
-							<p>Please correct the following fields and try again</p>
-							<ul>
-								{Object.entries(errors).map(([key, value]) => (
-									<li key={key}>
-										<a href={`#${key}`} onClick={scrollToField}>
-											{value.message}
-										</a>
-									</li>
-								))}
-							</ul>
-						</Body>
-					)}
+					<Body>
+						<p>Please correct the following fields and try again</p>
+						<ul>
+							{Object.entries(errors).map(([key, value]) => (
+								<li key={key}>
+									<a href={`#${key}`} onClick={scrollToField}>
+										{value.message}
+									</a>
+								</li>
+							))}
+						</ul>
+					</Body>
 				</PageAlert>
 			)}
 			<form onSubmit={handleSubmit(onSubmit, onError)}>
