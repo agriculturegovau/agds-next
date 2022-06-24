@@ -34,6 +34,7 @@ import select from './select.svg';
 import sideNav from './side-nav.svg';
 import skipLink from './skip-link.svg';
 import starter from './starter.svg';
+import switchPictogram from './switch.svg';
 import table from './table.svg';
 import tags from './tags.svg';
 import taskList from './task-list.svg';
@@ -80,6 +81,7 @@ export const pictograms = {
 	'side-nav': sideNav,
 	'skip-link': skipLink,
 	starter,
+	switch: switchPictogram,
 	table,
 	'task-list': taskList,
 	tags,
