@@ -9,15 +9,15 @@ import { PageTitle } from '../components/PageTitle';
 export default function SignInFormPage() {
 	return (
 		<>
-			<DocumentTitle title="Sign in example" />
+			<DocumentTitle title="Sign in" />
 			<AppLayout template={{ name: 'Sign-in form', slug: 'sign-in' }}>
 				<PageContent>
 					<Columns>
 						<Column columnSpan={{ xs: 12, md: 7 }}>
 							<Stack gap={3}>
 								<PageTitle
-									title="Sign in example"
-									introduction="The page heading communicates the main focus of the page. Make your page heading descriptive and keep it succinct."
+									title="Sign in form - xxl/display (H1)"
+									introduction="Introductory paragraph providing context for this sign in form. All questions on page must be related - md/default (P)."
 								/>
 								<FormExampleSignIn />
 							</Stack>
