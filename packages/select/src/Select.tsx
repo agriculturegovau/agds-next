@@ -1,4 +1,9 @@
-import { forwardRef, PropsWithChildren, SelectHTMLAttributes } from 'react';
+import {
+	Fragment,
+	forwardRef,
+	PropsWithChildren,
+	SelectHTMLAttributes,
+} from 'react';
 import { Field, FieldMaxWidth, fieldMaxWidth } from '@ag.ds-next/field';
 import {
 	packs,
@@ -106,7 +111,7 @@ const SelectOptions = ({
 	placeholder?: string;
 }) => {
 	return (
-		<>
+		<Fragment>
 			{placeholder ? <option value="">{placeholder}</option> : null}
 			{options.map((opt) => {
 				if ('options' in opt) {
@@ -126,7 +131,7 @@ const SelectOptions = ({
 					</option>
 				);
 			})}
-		</>
+		</Fragment>
 	);
 };
 

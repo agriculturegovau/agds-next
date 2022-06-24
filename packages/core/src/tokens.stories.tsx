@@ -1,8 +1,10 @@
 import { Box, Flex, Stack } from '@ag.ds-next/box';
 import { Text } from '@ag.ds-next/text';
 import { CardList, Card, CardInner } from '@ag.ds-next/card';
+import { H2 } from '@ag.ds-next/heading';
 import { boxPalette } from './boxPalette';
 import { mapSpacing, Spacing } from './tokens';
+import { globalPalette } from './globalPalette';
 
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {
@@ -11,13 +13,28 @@ export default {
 
 export const Color = () => {
 	const palettes = ['light', 'dark'] as const;
-	const tokens = Object.keys(boxPalette) as (keyof typeof boxPalette)[];
+
+	const boxPaletteTokens = Object.keys(
+		boxPalette
+	) as (keyof typeof boxPalette)[];
+
+	const globalPaletteTokens = Object.keys(globalPalette).filter(
+		(x) => !(x.startsWith('light') || x.startsWith('dark'))
+	) as (keyof typeof globalPalette)[];
+
 	return (
 		<Stack gap={1.5}>
 			{palettes.map((palette) => (
-				<Box key={palette} padding={1.5} palette={palette} background="body">
+				<Stack
+					key={palette}
+					gap={2}
+					padding={1.5}
+					palette={palette}
+					background="body"
+				>
+					<H2>{palette}</H2>
 					<CardList templateColumns={{ xs: 1, sm: 2, md: 3, lg: 4, xl: 6 }}>
-						{tokens.map((token) => (
+						{boxPaletteTokens.map((token) => (
 							<Card key={token} as="li">
 								<Box
 									width="100%"
@@ -31,8 +48,26 @@ export const Color = () => {
 							</Card>
 						))}
 					</CardList>
-				</Box>
+				</Stack>
 			))}
+			<Stack gap={2} padding={1.5} background="body">
+				<H2>system</H2>
+				<CardList templateColumns={{ xs: 1, sm: 2, md: 3, lg: 4, xl: 6 }}>
+					{globalPaletteTokens.map((token) => (
+						<Card key={token} as="li">
+							<Box
+								width="100%"
+								height="6rem"
+								background="body"
+								css={{ backgroundColor: globalPalette[token] }}
+							/>
+							<CardInner>
+								<Text fontSize="xs">{token}</Text>
+							</CardInner>
+						</Card>
+					))}
+				</CardList>
+			</Stack>
 		</Stack>
 	);
 };
