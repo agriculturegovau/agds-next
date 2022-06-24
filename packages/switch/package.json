@@ -5,6 +5,7 @@
 	"module": "dist/ag.ds-next-switch.esm.js",
 	"license": "MIT",
 	"peerDependencies": {
+		"@ag.ds-next/a11y": "1.2.0",
 		"@ag.ds-next/box": "6.0.0",
 		"@ag.ds-next/core": "3.0.0",
 		"@ag.ds-next/text": "8.0.0",
@@ -12,10 +13,14 @@
 		"react": "^16.14.0 || ^17.0.0 || ^18.0.0"
 	},
 	"devDependencies": {
+		"@ag.ds-next/a11y": "*",
 		"@ag.ds-next/box": "*",
 		"@ag.ds-next/core": "*",
 		"@ag.ds-next/text": "*",
 		"@emotion/react": "^11.7.0",
 		"react": "18.1.0"
+	},
+	"dependencies": {
+		"@react-spring/web": "^9.4.5"
 	}
 }
