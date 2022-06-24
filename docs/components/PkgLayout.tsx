@@ -59,8 +59,8 @@ export function PkgLayout({
 				<SubNav
 					activePath={asPath}
 					links={pkg.subNavItems.map((item) => ({
-						label: item.title,
-						href: item.slug,
+						...item,
+						scroll: false,
 					}))}
 				/>
 			) : null}

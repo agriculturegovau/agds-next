@@ -48,28 +48,28 @@ export async function getPkgSubNavItems(slug: string) {
 		const meta = pkgNavMetaData(slug, data);
 		return [
 			{
-				title: 'Overview',
-				slug: `/packages/${meta.group}/${meta.slug}`,
+				label: 'Overview',
+				href: `/packages/${meta.group}/${meta.slug}`,
 				path: pkgReadmePath(slug),
 			},
 			{
-				title: 'Rationale',
-				slug: `/packages/${meta.group}/${meta.slug}/rationale`,
+				label: 'Rationale',
+				href: `/packages/${meta.group}/${meta.slug}/rationale`,
 				path: pkgReadmePath(slug),
 			},
 			{
-				title: 'Content',
-				slug: `/packages/${meta.group}/${meta.slug}/content`,
+				label: 'Content',
+				href: `/packages/${meta.group}/${meta.slug}/content`,
 				path: `${pkgDocsPath(slug)}/content.mdx`,
 			},
 			{
-				title: 'Code',
-				slug: `/packages/${meta.group}/${meta.slug}/code`,
+				label: 'Code',
+				href: `/packages/${meta.group}/${meta.slug}/code`,
 				path: `${pkgDocsPath(slug)}/code.mdx`,
 			},
 			{
-				title: 'Accessibility',
-				slug: `/packages/${meta.group}/${meta.slug}/accessibility`,
+				label: 'Accessibility',
+				href: `/packages/${meta.group}/${meta.slug}/accessibility`,
 				path: `${pkgDocsPath(slug)}/accessibility.mdx`,
 			},
 		].filter(({ path }) => existsSync(path));
