@@ -61,6 +61,7 @@ export function PkgLayout({
 					links={pkg.subNavItems.map((item) => ({
 						label: item.title,
 						href: item.slug,
+						scroll: false,
 					}))}
 				/>
 			) : null}

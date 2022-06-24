@@ -58,7 +58,13 @@ export const TemplateLayout = ({
 						)
 					}
 				/>
-				<SubNav activePath={router.asPath} links={subNavItems} />
+				<SubNav
+					activePath={router.asPath}
+					links={subNavItems.map((item) => ({
+						...item,
+						scroll: false,
+					}))}
+				/>
 				{children}
 				<Callout title="Questions or feedback?">
 					<Text as="p">Contact details go here...</Text>
