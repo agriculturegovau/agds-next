@@ -10,18 +10,11 @@ export default {
 
 const Template: ComponentStory<typeof Switch> = (args) => {
 	const [isChecked, setChecked] = useState(false);
-	return (
-		<Switch
-			{...args}
-			checked={isChecked}
-			onChange={() => setChecked(!isChecked)}
-		/>
-	);
+	return <Switch {...args} checked={isChecked} onChange={setChecked} />;
 };
 
 export const OnLight = Template.bind({});
 OnLight.args = {
-	checked: false,
 	size: 'md',
 	label: 'Show grid',
 };
@@ -34,7 +27,6 @@ export const OnDark: ComponentStory<typeof Switch> = (args) => {
 	);
 };
 OnDark.args = {
-	checked: false,
 	size: 'md',
 	label: 'Show grid',
 };
