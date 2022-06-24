@@ -16,7 +16,7 @@ const Template: ComponentStory<typeof Switch> = (args) => {
 export const OnLight = Template.bind({});
 OnLight.args = {
 	size: 'md',
-	label: 'Show grid',
+	label: 'Show establishments',
 };
 
 export const OnDark: ComponentStory<typeof Switch> = (args) => {
@@ -28,5 +28,5 @@ export const OnDark: ComponentStory<typeof Switch> = (args) => {
 };
 OnDark.args = {
 	size: 'md',
-	label: 'Show grid',
+	label: 'Show establishments',
 };
