@@ -293,6 +293,11 @@ items={[
   </ControlGroup>`,
 	},
 	{
+		group: 'Switch',
+		name: 'Basic',
+		code: `<Switch checked={false} label="Show establishments" />`,
+	},
+	{
 		group: 'Searchbox',
 		name: 'Basic',
 		code: `<SearchBox onSubmit={console.log}>
