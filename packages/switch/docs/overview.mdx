@@ -5,9 +5,9 @@ group: Forms
 storybookPath: /story/forms-switch--on-light
 ---
 
-A Switch Allows a User to choose between two mutually exclusive options, which immediately affect the interface.
+A Switch allows a user to toggle a setting on or off, immediately affecting the user interface. Common use-cases include filtering interfaces and settings menus.
 
-Common usecases include changing boolean (true/false) options in filtering interfaces and settings menus.
+A Switch should not be used in Forms. Instead, a Checkbox or Radio component should be used.
 
 ```jsx live
 () => {
@@ -21,5 +21,3 @@ Common usecases include changing boolean (true/false) options in filtering inter
 	);
 };
 ```
-
-A Switch should not be used in Forms. Instead, a Checkbox or Radio component should be used.
