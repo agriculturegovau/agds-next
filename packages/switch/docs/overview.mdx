@@ -1,0 +1,25 @@
+---
+title: Switch
+description: Allows a user to immediately update interface settings.
+group: Forms
+storybookPath: /story/forms-switch--on-light
+---
+
+A Switch Allows a User to choose between two mutually exclusive options, which immediately affect the interface.
+
+Common usecases include changing boolean (true/false) options in filtering interfaces and settings menus.
+
+```jsx live
+() => {
+	const [isGridVisible, setGridVisible] = React.useState(false);
+	return (
+		<Switch
+			label="Show gridlines"
+			checked={isGridVisible}
+			onChange={setGridVisible}
+		/>
+	);
+};
+```
+
+A Switch should not be used in Forms. Instead, a Checkbox or Radio component should be used.
