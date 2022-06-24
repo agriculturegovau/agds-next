@@ -10,14 +10,10 @@ import { PageAlert } from '@ag.ds-next/page-alert';
 import { Body } from '@ag.ds-next/body';
 import { useScrollToField } from '@ag.ds-next/field';
 import { TextLink } from '@ag.ds-next/text-link';
-import { FormDivider } from './FormDivider';
 
 const formSchema = yup
 	.object({
-		email: yup
-			.string()
-			.email('Invalid email address')
-			.required('Enter your email address'),
+		email: yup.string().email('Invalid email').required('Enter your email'),
 		password: yup.string().required('Enter your password'),
 	})
 	.required();
@@ -56,47 +52,49 @@ export const FormExampleSignIn = () => {
 	};
 
 	// Only show the page alert if there is more than 1 error
-	const hasErrors = Object.keys(errors).length > 1;
+	const hasClientErrors = Object.keys(errors).length > 1;
+	const hasNetworkErrors = Boolean(networkErrorMessage);
 
 	useEffect(() => {
-		if (!(hasErrors || networkErrorMessage || hasFocusedErrorRef)) return;
+		if (!(hasClientErrors || hasNetworkErrors || hasFocusedErrorRef)) return;
 		errorPageAlertRef.current?.focus();
 		setHasFocusedErrorRef(true);
-	}, [hasFocusedErrorRef, hasErrors, networkErrorMessage]);
+	}, [hasFocusedErrorRef, hasClientErrors, hasNetworkErrors]);
 
 	return (
 		<Stack gap={3}>
-			{(hasErrors || networkErrorMessage) && (
+			{(hasClientErrors || hasNetworkErrors) && (
 				<PageAlert
 					ref={errorPageAlertRef}
 					tabIndex={-1}
 					tone="error"
 					title="There is a problem"
 				>
-					<Body>
-						{networkErrorMessage ? (
+					{networkErrorMessage && (
+						<Body>
 							<p>{networkErrorMessage}</p>
-						) : (
-							<>
-								<p>Please correct the following fields and try again</p>
-								<ul>
-									{Object.entries(errors).map(([key, value]) => (
-										<li key={key}>
-											<a href={`#${key}`} onClick={scrollToField}>
-												{value.message}
-											</a>
-										</li>
-									))}
-								</ul>
-							</>
-						)}
-					</Body>
+						</Body>
+					)}
+					{hasClientErrors && (
+						<Body>
+							<p>Please correct the following fields and try again</p>
+							<ul>
+								{Object.entries(errors).map(([key, value]) => (
+									<li key={key}>
+										<a href={`#${key}`} onClick={scrollToField}>
+											{value.message}
+										</a>
+									</li>
+								))}
+							</ul>
+						</Body>
+					)}
 				</PageAlert>
 			)}
 			<form onSubmit={handleSubmit(onSubmit, onError)}>
 				<FormStack>
 					<TextInput
-						label="Email address"
+						label="Email"
 						type="email"
 						{...register('email')}
 						id="email"
@@ -105,7 +103,7 @@ export const FormExampleSignIn = () => {
 						maxWidth="xl"
 						required
 					/>
-					<Stack gap={0.75} alignItems="flex-start">
+					<Stack gap={0.75}>
 						<TextInput
 							label="Password"
 							type="password"
@@ -116,7 +114,9 @@ export const FormExampleSignIn = () => {
 							maxWidth="xl"
 							required
 						/>
-						<TextLink href="#">Forgot password?</TextLink>
+						<TextLink href="#" css={{ alignSelf: 'flex-start' }}>
+							Forgot password?
+						</TextLink>
 					</Stack>
 					<div>
 						<Button type="submit" loading={isSubmitting}>
@@ -125,15 +125,6 @@ export const FormExampleSignIn = () => {
 					</div>
 				</FormStack>
 			</form>
-			<FormDivider />
-			<Body>
-				<p>
-					Don&apos;t have an account? <a href="#">Create an account</a>
-				</p>
-				<p>
-					Read our <a href="#">privacy policy</a>
-				</p>
-			</Body>
 		</Stack>
 	);
 };
