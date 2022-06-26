@@ -159,7 +159,12 @@ export const FormExampleMultiStep4 = () => {
 				</DefinitionList>
 			</Stack>
 			{/** Declaration form */}
-			<Stack as="form" gap={3} onSubmit={handleSubmit(onSubmit, onError)}>
+			<Stack
+				as="form"
+				gap={3}
+				onSubmit={handleSubmit(onSubmit, onError)}
+				noValidate
+			>
 				<FormStack>
 					{hasErrors && (
 						<PageAlert
