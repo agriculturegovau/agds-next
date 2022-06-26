@@ -11,7 +11,7 @@ description: Web forms are one of the main points of interaction between a user 
 Install the following packages by running the following command in your terminal:
 
 ```sh
-yarn add @ag.ds-next/field @ag.ds-next/icon @ag.ds-next/text-input @ag.ds-next/button @ag.ds-next/form-stack
+yarn add @ag.ds-next/field @ag.ds-next/icon @ag.ds-next/text-input @ag.ds-next/button @ag.ds-next/form-stack @ag.ds-next/page-alert
 ```
 
 ## 2. Compose the user interface
@@ -76,9 +76,9 @@ type FormSchema = yup.InferType<typeof formSchema>;
 
 ### 3.3 Handling form state
 
-`react-hook-form` is a performant, flexible and extensible library for handling form state.
+In this step, we will be managing our form state with `react-hook-form`, a performant, flexible and extensible library for handling form state. For more information about `react-hook-form`, please refer to the [official documentation](https://react-hook-form.com/)
 
-For more information about `react-hook-form`, please refer to the [official documentation](https://react-hook-form.com/)
+Since we are already using `yup` for client-side validation, we have added [`noValidate`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form#attr-novalidate) to our form element which disabled native browser validation.
 
 ```tsx
 import { useForm, SubmitHandler } from 'react-hook-form';
@@ -114,7 +114,7 @@ export function FormExampleSignIn() {
 	};
 
 	return (
-		<form onSubmit={handleSubmit(onSubmit)}>
+		<form onSubmit={handleSubmit(onSubmit)} noValidate>
 			<FormStack>
 				<TextInput
 					label="Email address"
@@ -139,17 +139,24 @@ export function FormExampleSignIn() {
 }
 ```
 
-### 3.4 Handling invalid states
+### 4. Handling invalid states
 
 By making use of the `invalid` and `message` props available to the `TextInput` component, we can let the user know they have an invalid form.
 
+We have also added a `PageAlert` to the top of the form which lists out all form errors.
+
 ```tsx
-import { useForm, SubmitHandler } from 'react-hook-form';
+import { useEffect, useRef, useState } from 'react';
+import { useForm, SubmitHandler, SubmitErrorHandler } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { Button, ButtonGroup } from '@ag.ds-next/button';
+import { Stack } from '@ag.ds-next/box';
 import { FormStack } from '@ag.ds-next/form-stack';
 import { TextInput } from '@ag.ds-next/text-input';
+import { useScrollToField } from '@ag.ds-next/field';
+import { PageAlert } from '@ag.ds-next/page-alert';
+import { Body } from '@ag.ds-next/body';
 
 const formSchema = yup
 	.object({
@@ -164,6 +171,10 @@ const formSchema = yup
 type FormSchema = yup.InferType<typeof formSchema>;
 
 export function FormExampleSignIn() {
+	const errorPageAlertRef = useRef<HTMLDivElement>(null);
+	const [hasFocusedErrorRef, setHasFocusedErrorRef] = useState(false);
+	const scrollToField = useScrollToField();
+
 	const {
 		register,
 		handleSubmit,
@@ -176,32 +187,69 @@ export function FormExampleSignIn() {
 		console.log(data);
 	};
 
+	const onError: SubmitErrorHandler<FormSchema> = (errors, event) => {
+		console.log(errors, event);
+		setHasFocusedErrorRef(false);
+	};
+
+	// Only show the page alert if there is more than 1 error
+	const hasErrors = Object.keys(errors).length > 1;
+
+	useEffect(() => {
+		if (!(hasErrors || hasFocusedErrorRef)) return;
+		errorPageAlertRef.current?.focus();
+		setHasFocusedErrorRef(true);
+	}, [hasFocusedErrorRef, hasErrors]);
+
 	return (
-		<form onSubmit={handleSubmit(onSubmit)}>
-			<FormStack>
-				<TextInput
-					label="Email address"
-					type="email"
-					{...register('email')}
-					invalid={Boolean(errors.email?.message)}
-					message={errors.email?.message}
-					maxWidth="xl"
-					required
-				/>
-				<TextInput
-					label="Password"
-					type="password"
-					{...register('password')}
-					invalid={Boolean(errors.password?.message)}
-					message={errors.password?.message}
-					maxWidth="xl"
-					required
-				/>
-				<ButtonGroup>
-					<Button type="submit">Sign in</Button>
-				</ButtonGroup>
-			</FormStack>
-		</form>
+		<Stack gap={3}>
+			{hasErrors && (
+				<PageAlert
+					ref={errorPageAlertRef}
+					tabIndex={-1}
+					tone="error"
+					title="There is a problem"
+				>
+					<Body>
+						<p>Please correct the following fields and try again</p>
+						<ul>
+							{Object.entries(errors).map(([key, value]) => (
+								<li key={key}>
+									<a href={`#${key}`} onClick={scrollToField}>
+										{value.message}
+									</a>
+								</li>
+							))}
+						</ul>
+					</Body>
+				</PageAlert>
+			)}
+			<form onSubmit={handleSubmit(onSubmit, onError)} noValidate>
+				<FormStack>
+					<TextInput
+						label="Email address"
+						type="email"
+						{...register('email')}
+						invalid={Boolean(errors.email?.message)}
+						message={errors.email?.message}
+						maxWidth="xl"
+						required
+					/>
+					<TextInput
+						label="Password"
+						type="password"
+						{...register('password')}
+						invalid={Boolean(errors.password?.message)}
+						message={errors.password?.message}
+						maxWidth="xl"
+						required
+					/>
+					<ButtonGroup>
+						<Button type="submit">Sign in</Button>
+					</ButtonGroup>
+				</FormStack>
+			</form>
+		</Stack>
 	);
 }
 ```

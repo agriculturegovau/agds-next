@@ -83,7 +83,12 @@ export const FormExampleMultiStep3 = () => {
 			title="Conditional reveal title (H1)"
 			introduction="The introductory paragraph provides context about this page of the form. Use a short paragraph to reduce cognitive load."
 		>
-			<Stack as="form" gap={3} onSubmit={handleSubmit(onSubmit, onError)}>
+			<Stack
+				as="form"
+				gap={3}
+				onSubmit={handleSubmit(onSubmit, onError)}
+				noValidate
+			>
 				<FormStack>
 					{hasErrors && (
 						<PageAlert

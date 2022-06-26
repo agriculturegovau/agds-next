@@ -39,7 +39,7 @@ export const FormExampleMultiStep0 = () => {
 			title="Conditional fork title (H1)"
 			introduction="The introductory paragraph provides context about this page of the form. Use a short paragraph to reduce cognitive load."
 		>
-			<Stack as="form" onSubmit={handleSubmit(onSubmit)} gap={3}>
+			<Stack as="form" gap={3} onSubmit={handleSubmit(onSubmit)} noValidate>
 				<ControlGroup
 					label="Fieldset question?"
 					hint="Hint text"
