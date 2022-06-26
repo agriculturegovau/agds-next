@@ -106,7 +106,7 @@ export const FormExampleSinglePage = () => {
 	}, [isPostalAddressSameAsStreetAddress, trigger, isSubmitted]);
 
 	return (
-		<form onSubmit={handleSubmit(onSubmit, onError)}>
+		<form onSubmit={handleSubmit(onSubmit, onError)} noValidate>
 			<Stack gap={3}>
 				{hasErrors && (
 					<PageAlert
