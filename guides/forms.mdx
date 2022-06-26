@@ -76,9 +76,9 @@ type FormSchema = yup.InferType<typeof formSchema>;
 
 ### 3.3 Handling form state
 
-`react-hook-form` is a performant, flexible and extensible library for handling form state.
+In this step, we will be managing our form state with `react-hook-form`, a performant, flexible and extensible library for handling form state. For more information about `react-hook-form`, please refer to the [official documentation](https://react-hook-form.com/)
 
-For more information about `react-hook-form`, please refer to the [official documentation](https://react-hook-form.com/)
+Since we are already using `yup` for client-side validation, we have added [`noValidate`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form#attr-novalidate) to our form element which disabled native browser validation.
 
 ```tsx
 import { useForm, SubmitHandler } from 'react-hook-form';
