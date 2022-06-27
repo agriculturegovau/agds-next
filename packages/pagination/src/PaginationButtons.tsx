@@ -1,12 +1,19 @@
-import { usePagination, UsePaginationProps } from './usePagination';
+import { usePagination } from './usePagination';
 import { PaginationContainer } from './PaginationContainer';
 import { PaginationItemDirectionButton } from './PaginationItemDirection';
 import { PaginationItemSeparator } from './PaginationItemSeparator';
 import { PaginationItemPageButton } from './PaginationItemPage';
 
-export type PaginationButtonsProps = UsePaginationProps & {
+export type PaginationButtonsProps = {
 	'aria-label'?: string;
+	/** Callback for when a list item is pressed */
 	onChange: (pageNumber: number) => void;
+	/** The current page number */
+	currentPage: number;
+	/** Contols how many list items are shown */
+	windowLimit?: number;
+	/** The total number of pages */
+	totalPages: number;
 };
 
 export function PaginationButtons({
@@ -14,7 +21,7 @@ export function PaginationButtons({
 	onChange,
 	currentPage,
 	totalPages,
-	windowLimit,
+	windowLimit = 3,
 }: PaginationButtonsProps) {
 	const pagination = usePagination({ currentPage, totalPages, windowLimit });
 	return (
@@ -24,7 +31,7 @@ export function PaginationButtons({
 					case 'direction':
 						return (
 							<PaginationItemDirectionButton
-								key={idx}
+								key={item.direction}
 								direction={item.direction}
 								onClick={() => onChange(item.pageNumber)}
 							/>

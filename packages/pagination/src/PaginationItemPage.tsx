@@ -25,6 +25,7 @@ export function PaginationItemPage({
 				alignItems="center"
 				width={BUTTON_SIZE}
 				height={BUTTON_SIZE}
+				fontWeight={isActive ? 'bold' : 'normal'}
 				link
 				focus
 				aria-current={isActive ? 'page' : undefined}
@@ -61,6 +62,7 @@ export function PaginationItemPageButton({
 				alignItems="center"
 				width={BUTTON_SIZE}
 				height={BUTTON_SIZE}
+				fontWeight={isActive ? 'bold' : 'normal'}
 				link
 				focus
 				css={

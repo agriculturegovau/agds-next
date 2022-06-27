@@ -1,5 +1,5 @@
 import { MouseEventHandler } from 'react';
-import { LinkProps } from '@ag.ds-next/core';
+import { LinkProps, mapSpacing } from '@ag.ds-next/core';
 import { DirectionButton, DirectionLink } from '@ag.ds-next/direction-link';
 import { BUTTON_SIZE } from './utils';
 
@@ -12,7 +12,12 @@ export function PaginationItemDirection({
 	href,
 }: PaginationItemDirectionProps) {
 	return (
-		<li>
+		<li
+			css={{
+				marginLeft: direction === 'right' ? mapSpacing(1) : undefined,
+				marginRight: direction === 'left' ? mapSpacing(1) : undefined,
+			}}
+		>
 			<DirectionLink
 				direction={direction}
 				href={href}
@@ -34,7 +39,12 @@ export function PaginationItemDirectionButton({
 	onClick,
 }: PaginationItemDirectionButtonProps) {
 	return (
-		<li>
+		<li
+			css={{
+				marginLeft: direction === 'right' ? mapSpacing(1) : undefined,
+				marginRight: direction === 'left' ? mapSpacing(1) : undefined,
+			}}
+		>
 			<DirectionButton
 				direction={direction}
 				onClick={onClick}
