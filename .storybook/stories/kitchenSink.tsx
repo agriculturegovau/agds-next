@@ -88,7 +88,7 @@ const KitchenSink = ({
 							items={[
 								{
 									subTitle: 'Department of',
-									title: 'Agriculture and Fisheries and Forestry',
+									title: 'Agriculture, Fisheries and Forestry',
 								},
 								{
 									subTitle: 'Department of',

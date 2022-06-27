@@ -1,6 +1,6 @@
 # @ag.ds-next
 
-A new Design-System for the Department of Agriculture and Fisheries and Forestry.
+A new Design-System for the Department of Agriculture, Fisheries and Forestry.
 
 ## Contributing
 
