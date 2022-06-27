@@ -8,7 +8,7 @@ import { Body } from '@ag.ds-next/body';
 import { Stack } from '@ag.ds-next/box';
 import { PageAlert } from '@ag.ds-next/page-alert';
 import { useScrollToField } from '@ag.ds-next/field';
-import { Checkbox } from '@ag.ds-next/control-input';
+import { Checkbox, ControlGroup } from '@ag.ds-next/control-input';
 import { H2 } from '@ag.ds-next/heading';
 import { TextButton } from '@ag.ds-next/text-link';
 import {
@@ -34,9 +34,6 @@ export type FormSchema = yup.InferType<typeof formSchema>;
 export const FormExampleMultiStep4 = () => {
 	const { next, stepFormState, formState, goToStep } =
 		useFormExampleMultiStep();
-	const scrollToField = useScrollToField();
-	const errorRef = useRef<HTMLDivElement>(null);
-	const [focusedError, setFocusedError] = useState(false);
 
 	const {
 		register,
@@ -48,22 +45,8 @@ export const FormExampleMultiStep4 = () => {
 	});
 
 	const onSubmit: SubmitHandler<FormSchema> = (data) => {
-		setFocusedError(false);
 		next(data);
 	};
-
-	const onError: SubmitErrorHandler<FormSchema> = () => {
-		setFocusedError(false);
-	};
-
-	const hasErrors = Boolean(Object.keys(errors).length);
-
-	useEffect(() => {
-		if (hasErrors && !focusedError) {
-			errorRef.current?.focus();
-			setFocusedError(true);
-		}
-	}, [hasErrors, focusedError, errors]);
 
 	return (
 		<FormExampleMultiStepContainer
@@ -159,34 +142,8 @@ export const FormExampleMultiStep4 = () => {
 				</DefinitionList>
 			</Stack>
 			{/** Declaration form */}
-			<Stack
-				as="form"
-				gap={3}
-				onSubmit={handleSubmit(onSubmit, onError)}
-				noValidate
-			>
+			<Stack as="form" gap={3} onSubmit={handleSubmit(onSubmit)} noValidate>
 				<FormStack>
-					{hasErrors && (
-						<PageAlert
-							ref={errorRef}
-							tone="error"
-							title="There is a problem"
-							tabIndex={-1}
-						>
-							<Body>
-								<p>Please correct the following fields and try again</p>
-								<ul>
-									{Object.entries(errors).map(([key, value]) => (
-										<li key={key}>
-											<a href={`#${key}`} onClick={scrollToField}>
-												{value.message}
-											</a>
-										</li>
-									))}
-								</ul>
-							</Body>
-						</PageAlert>
-					)}
 					<Body>
 						<h2>Declaration</h2>
 						<p>I declare that:</p>
@@ -198,14 +155,22 @@ export const FormExampleMultiStep4 = () => {
 							<li>I have read and understood the terms and conditions</li>
 						</ul>
 					</Body>
-					<Checkbox
-						{...register('declaration')}
-						id="declaration"
+					<ControlGroup
+						label="Declaration agreement"
 						invalid={Boolean(errors.declaration?.message)}
+						message={errors.declaration?.message}
+						block
+						required
 					>
-						I confirm that I have read and agree with the above declaration
-						(required)
-					</Checkbox>
+						<Checkbox
+							{...register('declaration')}
+							id="declaration"
+							invalid={Boolean(errors.declaration?.message)}
+						>
+							I confirm that I have read and agree with the above declaration
+							(required)
+						</Checkbox>
+					</ControlGroup>
 				</FormStack>
 				<FormExampleMultiStepActions />
 			</Stack>
