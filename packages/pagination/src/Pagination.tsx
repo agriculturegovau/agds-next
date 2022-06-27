@@ -19,7 +19,7 @@ export type PaginationProps = {
 export function Pagination({
 	'aria-label': ariaLabel = 'pagination',
 	generateHref,
-	windowLimit,
+	windowLimit = 3,
 	currentPage,
 	totalPages,
 }: PaginationProps) {
@@ -31,7 +31,7 @@ export function Pagination({
 					case 'direction':
 						return (
 							<PaginationItemDirection
-								key={idx}
+								key={item.direction}
 								direction={item.direction}
 								href={generateHref(item.pageNumber)}
 							/>

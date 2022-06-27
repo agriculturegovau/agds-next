@@ -2,7 +2,11 @@ import { usePagination } from './usePagination';
 
 describe('usePagination', () => {
 	test('start of list', () => {
-		const result = usePagination({ currentPage: 1, totalPages: 10 });
+		const result = usePagination({
+			currentPage: 1,
+			totalPages: 10,
+			windowLimit: 3,
+		});
 		expect(result).toEqual([
 			{ type: 'page', pageNumber: 1, isActive: true },
 			{ type: 'page', pageNumber: 2, isActive: false },
@@ -13,7 +17,11 @@ describe('usePagination', () => {
 		]);
 	});
 	test('middle of list', () => {
-		const result = usePagination({ currentPage: 5, totalPages: 10 });
+		const result = usePagination({
+			currentPage: 5,
+			totalPages: 10,
+			windowLimit: 3,
+		});
 		expect(result).toEqual([
 			{ type: 'direction', pageNumber: 4, direction: 'left' },
 			{ type: 'page', pageNumber: 1, isActive: false },
@@ -27,7 +35,11 @@ describe('usePagination', () => {
 		]);
 	});
 	test('end of list', () => {
-		const result = usePagination({ currentPage: 10, totalPages: 10 });
+		const result = usePagination({
+			currentPage: 10,
+			totalPages: 10,
+			windowLimit: 3,
+		});
 		expect(result).toEqual([
 			{ type: 'direction', pageNumber: 9, direction: 'left' },
 			{ type: 'page', pageNumber: 1, isActive: false },

@@ -14,7 +14,7 @@ type PaginationElements =
 	  };
 
 export type UsePaginationProps = {
-	windowLimit?: number;
+	windowLimit: number;
 	currentPage: number;
 	totalPages: number;
 };
@@ -22,7 +22,7 @@ export type UsePaginationProps = {
 export function usePagination({
 	currentPage,
 	totalPages,
-	windowLimit = 3,
+	windowLimit,
 }: UsePaginationProps) {
 	const elements: PaginationElements[] = [];
 
