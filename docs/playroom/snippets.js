@@ -310,7 +310,7 @@ items={[
 		name: 'Basic',
 		code: `<KeywordList
     items={[
-      { subTitle: 'Department of', title: 'Agriculture and Water Resources' },
+      { subTitle: 'Department of', title: 'Agriculture and Fisheries and Forestry' },
       { subTitle: 'Department of', title: 'Communications and the Arts' },
     ]}
   />`,
