@@ -1,5 +1,16 @@
 # @ag.ds-next/file-upload
 
+## 4.0.0
+
+### Patch Changes
+
+- 606ee946: Remove dot prefixes from file extensions
+- 606ee946: Update file-level validation messages
+- fe651155: Improve documentation
+- Updated dependencies [cc586fd2]
+- Updated dependencies [724f47ec]
+  - @ag.ds-next/button@9.1.0
+
 ## 3.0.0
 
 ### Major Changes

@@ -1,6 +1,6 @@
 {
 	"name": "@ag.ds-next/breadcrumbs",
-	"version": "11.0.0",
+	"version": "12.0.0",
 	"main": "dist/ag.ds-next-breadcrumbs.cjs.js",
 	"module": "dist/ag.ds-next-breadcrumbs.esm.js",
 	"license": "MIT",
@@ -10,7 +10,7 @@
 		"@ag.ds-next/core": "3.0.0",
 		"@ag.ds-next/icon": "9.0.0",
 		"@ag.ds-next/text": "8.0.0",
-		"@ag.ds-next/text-link": "3.0.0",
+		"@ag.ds-next/text-link": "4.0.0",
 		"@emotion/react": "^11.7.0",
 		"react": "^16.14.0 || ^17.0.0 || ^18.0.0"
 	},

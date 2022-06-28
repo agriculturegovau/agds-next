@@ -1,5 +1,14 @@
 # @ag.ds-next/keyword list
 
+## 7.0.0
+
+### Patch Changes
+
+- 55e17b60: Update examples with new branding
+- Updated dependencies [1c78eebc]
+- Updated dependencies [aac71787]
+  - @ag.ds-next/text-link@4.0.0
+
 ## 6.0.0
 
 ### Patch Changes

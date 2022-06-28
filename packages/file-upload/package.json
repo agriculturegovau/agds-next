@@ -1,6 +1,6 @@
 {
 	"name": "@ag.ds-next/file-upload",
-	"version": "3.0.0",
+	"version": "4.0.0",
 	"main": "dist/ag.ds-next-file-upload.cjs.js",
 	"module": "dist/ag.ds-next-file-upload.esm.js",
 	"license": "MIT",
@@ -10,7 +10,7 @@
 	},
 	"peerDependencies": {
 		"@ag.ds-next/box": "6.0.0",
-		"@ag.ds-next/button": "9.0.0",
+		"@ag.ds-next/button": "9.1.0",
 		"@ag.ds-next/core": "3.0.0",
 		"@ag.ds-next/field": "8.0.0",
 		"@ag.ds-next/icon": "9.0.0",

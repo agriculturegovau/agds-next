@@ -1,12 +1,12 @@
 {
 	"name": "@ag.ds-next/modal",
-	"version": "5.0.0",
+	"version": "6.0.0",
 	"main": "dist/ag.ds-next-modal.cjs.js",
 	"module": "dist/ag.ds-next-modal.esm.js",
 	"license": "MIT",
 	"peerDependencies": {
 		"@ag.ds-next/box": "6.0.0",
-		"@ag.ds-next/button": "9.0.0",
+		"@ag.ds-next/button": "9.1.0",
 		"@ag.ds-next/core": "3.0.0",
 		"@ag.ds-next/icon": "9.0.0",
 		"@ag.ds-next/text": "8.0.0",

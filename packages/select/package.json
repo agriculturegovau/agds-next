@@ -1,6 +1,6 @@
 {
 	"name": "@ag.ds-next/select",
-	"version": "9.0.0",
+	"version": "9.0.1",
 	"main": "dist/ag.ds-next-select.cjs.js",
 	"module": "dist/ag.ds-next-select.esm.js",
 	"license": "MIT",
