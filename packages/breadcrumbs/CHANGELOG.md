@@ -1,5 +1,17 @@
 # @ag.ds-next/breadcrumbs
 
+## 12.0.0
+
+### Minor Changes
+
+- 724f47ec: Removed `target="_blank"` from all links as per accessibility recommendations.
+
+### Patch Changes
+
+- Updated dependencies [1c78eebc]
+- Updated dependencies [aac71787]
+  - @ag.ds-next/text-link@4.0.0
+
 ## 11.0.0
 
 ### Patch Changes

@@ -1,5 +1,11 @@
 # @ag.ds-next/select
 
+## 9.0.1
+
+### Patch Changes
+
+- 5c075955: Explicitly import fragment
+
 ## 9.0.0
 
 ### Minor Changes

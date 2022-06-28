@@ -1,5 +1,16 @@
 # @ag.ds-next/task-list
 
+## 8.0.0
+
+### Patch Changes
+
+- Updated dependencies [cc586fd2]
+- Updated dependencies [1c78eebc]
+- Updated dependencies [aac71787]
+- Updated dependencies [724f47ec]
+  - @ag.ds-next/button@9.1.0
+  - @ag.ds-next/text-link@4.0.0
+
 ## 7.0.0
 
 ### Patch Changes

@@ -1,5 +1,13 @@
 # @ag.ds-next/search-box
 
+## 10.0.0
+
+### Patch Changes
+
+- Updated dependencies [cc586fd2]
+- Updated dependencies [724f47ec]
+  - @ag.ds-next/button@9.1.0
+
 ## 9.0.0
 
 ### Minor Changes

@@ -1,5 +1,14 @@
 # @ag.ds-next/accordion
 
+## 8.0.0
+
+### Patch Changes
+
+- cc586fd2: Updated documentation
+- Updated dependencies [cc586fd2]
+- Updated dependencies [724f47ec]
+  - @ag.ds-next/button@9.1.0
+
 ## 7.0.0
 
 ### Minor Changes

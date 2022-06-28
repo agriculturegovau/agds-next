@@ -1,12 +1,12 @@
 {
 	"name": "@ag.ds-next/skip-link",
-	"version": "6.0.0",
+	"version": "7.0.0",
 	"main": "dist/ag.ds-next-skip-link.cjs.js",
 	"module": "dist/ag.ds-next-skip-link.esm.js",
 	"license": "MIT",
 	"peerDependencies": {
 		"@ag.ds-next/a11y": "1.2.0",
-		"@ag.ds-next/button": "9.0.0",
+		"@ag.ds-next/button": "9.1.0",
 		"@ag.ds-next/core": "3.0.0",
 		"@emotion/react": "^11.7.0",
 		"react": "^16.14.0 || ^17.0.0 || ^18.0.0"

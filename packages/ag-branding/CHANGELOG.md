@@ -1,5 +1,11 @@
 # @ag.ds-next/ag-branding
 
+## 6.1.0
+
+### Minor Changes
+
+- 55e17b60: New Logo for Department of Agriculture, Fisheries and Forestry
+
 ## 6.0.0
 
 ### Minor Changes

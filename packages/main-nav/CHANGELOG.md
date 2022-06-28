@@ -1,5 +1,17 @@
 # @ag.ds-next/main-nav
 
+## 12.0.0
+
+### Minor Changes
+
+- 724f47ec: Removed `target="_blank"` from all links as per accessibility recommendations.
+
+### Patch Changes
+
+- Updated dependencies [cc586fd2]
+- Updated dependencies [724f47ec]
+  - @ag.ds-next/button@9.1.0
+
 ## 11.0.0
 
 ### Minor Changes

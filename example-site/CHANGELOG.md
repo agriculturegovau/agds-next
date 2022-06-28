@@ -1,5 +1,40 @@
 # @ag.ds-next/example-site
 
+## 0.3.0
+
+### Minor Changes
+
+- 724f47ec: Removed `target="_blank"` from all links as per accessibility recommendations.
+
+### Patch Changes
+
+- bb77f99d: Updated sign in form example
+- Updated dependencies [cc586fd2]
+- Updated dependencies [5c075955]
+- Updated dependencies [1c78eebc]
+- Updated dependencies [55e17b60]
+- Updated dependencies [aac71787]
+- Updated dependencies [724f47ec]
+- Updated dependencies [55e17b60]
+  - @ag.ds-next/accordion@8.0.0
+  - @ag.ds-next/button@9.1.0
+  - @ag.ds-next/select@9.0.1
+  - @ag.ds-next/text-link@4.0.0
+  - @ag.ds-next/ag-branding@6.1.0
+  - @ag.ds-next/breadcrumbs@12.0.0
+  - @ag.ds-next/main-nav@12.0.0
+  - @ag.ds-next/keyword-list@7.0.0
+  - @ag.ds-next/call-to-action@8.0.0
+  - @ag.ds-next/direction-link@8.0.0
+  - @ag.ds-next/progress-indicator@10.0.0
+  - @ag.ds-next/search-box@10.0.0
+  - @ag.ds-next/side-nav@11.0.0
+  - @ag.ds-next/skip-link@7.0.0
+  - @ag.ds-next/task-list@8.0.0
+  - @ag.ds-next/inpage-nav@7.0.0
+  - @ag.ds-next/link-list@10.0.0
+  - @ag.ds-next/tags@7.0.0
+
 ## 0.2.2
 
 ### Patch Changes

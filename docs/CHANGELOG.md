@@ -1,5 +1,57 @@
 # @ag.ds-next/docs
 
+## 0.6.0
+
+### Minor Changes
+
+- cc586fd2: New package documentation layout
+- 724f47ec: Removed `target="_blank"` from all links as per accessibility recommendations.
+
+### Patch Changes
+
+- e46ac4e1: Disable scrolling to the top of the page when using `SubNav`
+- 55e17b60: Update examples with new branding
+- bb77f99d: Update template thumbnail generation script to exclude template header from screenshots
+- Updated dependencies [606ee946]
+- Updated dependencies [606ee946]
+- Updated dependencies [3261a916]
+- Updated dependencies [0ee4ad39]
+- Updated dependencies [cc586fd2]
+- Updated dependencies [bdb9ab14]
+- Updated dependencies [777c2f11]
+- Updated dependencies [5c075955]
+- Updated dependencies [1c78eebc]
+- Updated dependencies [55e17b60]
+- Updated dependencies [aac71787]
+- Updated dependencies [fe651155]
+- Updated dependencies [724f47ec]
+- Updated dependencies [55e17b60]
+- Updated dependencies [42a960f1]
+- Updated dependencies [11959839]
+  - @ag.ds-next/file-upload@4.0.0
+  - @ag.ds-next/pagination@1.0.0
+  - @ag.ds-next/switch@1.0.0
+  - @ag.ds-next/accordion@8.0.0
+  - @ag.ds-next/button@9.1.0
+  - @ag.ds-next/sub-nav@1.0.0
+  - @ag.ds-next/select@9.0.1
+  - @ag.ds-next/text-link@4.0.0
+  - @ag.ds-next/ag-branding@6.1.0
+  - @ag.ds-next/breadcrumbs@12.0.0
+  - @ag.ds-next/main-nav@12.0.0
+  - @ag.ds-next/keyword-list@7.0.0
+  - @ag.ds-next/call-to-action@8.0.0
+  - @ag.ds-next/date-picker@6.0.0
+  - @ag.ds-next/direction-link@8.0.0
+  - @ag.ds-next/progress-indicator@10.0.0
+  - @ag.ds-next/search-box@10.0.0
+  - @ag.ds-next/side-nav@11.0.0
+  - @ag.ds-next/skip-link@7.0.0
+  - @ag.ds-next/task-list@8.0.0
+  - @ag.ds-next/inpage-nav@7.0.0
+  - @ag.ds-next/link-list@10.0.0
+  - @ag.ds-next/tags@7.0.0
+
 ## 0.5.2
 
 ### Patch Changes
