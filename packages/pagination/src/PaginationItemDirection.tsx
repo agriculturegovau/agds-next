@@ -21,6 +21,7 @@ export function PaginationItemDirection({
 			<DirectionLink
 				direction={direction}
 				href={href}
+				aria-label={`Go to ${direction == 'left' ? 'previous' : 'next'} page`}
 				css={{ height: BUTTON_SIZE }}
 			>
 				{direction === 'left' ? 'Previous' : 'Next'}
@@ -48,6 +49,7 @@ export function PaginationItemDirectionButton({
 			<DirectionButton
 				direction={direction}
 				onClick={onClick}
+				aria-label={`Go to ${direction == 'left' ? 'previous' : 'next'} page`}
 				css={{ height: BUTTON_SIZE }}
 			>
 				{direction === 'left' ? 'Previous' : 'Next'}
