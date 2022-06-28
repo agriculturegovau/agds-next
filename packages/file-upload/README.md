@@ -1,6 +1,6 @@
 ---
 title: File Upload
-description: Allows a user to insert a file into a form, via drag-and-drop or using the system file browser.
+description: Allows a user to select files for upload, via drag-and-drop or using the system file browser.
 group: Forms
 storybookPath: /story/forms-fileupload--on-light
 ---
