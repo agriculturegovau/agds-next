@@ -1,13 +1,10 @@
-import { useEffect, useRef, useState } from 'react';
-import { useForm, SubmitHandler, SubmitErrorHandler } from 'react-hook-form';
+import { useForm, SubmitHandler } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { FormStack } from '@ag.ds-next/form-stack';
 import { VisuallyHidden } from '@ag.ds-next/a11y';
 import { Body } from '@ag.ds-next/body';
 import { Stack } from '@ag.ds-next/box';
-import { PageAlert } from '@ag.ds-next/page-alert';
-import { useScrollToField } from '@ag.ds-next/field';
 import { Checkbox, ControlGroup } from '@ag.ds-next/control-input';
 import { H2 } from '@ag.ds-next/heading';
 import { TextButton } from '@ag.ds-next/text-link';
@@ -164,11 +161,9 @@ export const FormExampleMultiStep4 = () => {
 					>
 						<Checkbox
 							{...register('declaration')}
-							id="declaration"
 							invalid={Boolean(errors.declaration?.message)}
 						>
 							I confirm that I have read and agree with the above declaration
-							(required)
 						</Checkbox>
 					</ControlGroup>
 				</FormStack>
