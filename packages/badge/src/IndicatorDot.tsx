@@ -1,16 +1,22 @@
+import { boxPalette } from '@ag.ds-next/core';
 import { Box } from '@ag.ds-next/box';
 import { BadgeTone, badgeToneMap } from './utils';
 
 export type IndicatorDotProps = {
 	'aria-label'?: string;
-	tone: BadgeTone;
+	tone: BadgeTone | 'action';
+};
+
+const indicatorDotToneMap = {
+	...badgeToneMap,
+	action: boxPalette.foregroundAction,
 };
 
 export const IndicatorDot = ({
 	'aria-label': ariaLabel,
 	tone = 'info',
 }: IndicatorDotProps) => {
-	const backgroundColor = badgeToneMap[tone];
+	const backgroundColor = indicatorDotToneMap[tone];
 	return (
 		<Box
 			aria-label={ariaLabel}

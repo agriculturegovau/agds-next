@@ -2,7 +2,7 @@ import { forwardRef, ReactNode } from 'react';
 import { Flex } from '@ag.ds-next/box';
 import { mapSpacing } from '@ag.ds-next/core';
 import { IndicatorDot } from './IndicatorDot';
-import { BadgeTone } from './utils';
+import { BadgeTone, badgeToneMap } from './utils';
 
 export type BadgeProps = {
 	label: ReactNode;
@@ -27,7 +27,9 @@ export const Badge = forwardRef<HTMLDivElement, BadgeProps>(function Badge(
 			background="body"
 			color="text"
 			border
-			borderColor="muted"
+			css={{
+				borderColor: badgeToneMap[tone],
+			}}
 		>
 			<IndicatorDot tone={tone} />
 			{label}

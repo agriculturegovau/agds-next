@@ -1,7 +1,7 @@
 import { boxPalette, globalPalette } from '@ag.ds-next/core';
 
 export const badgeToneMap = {
-	action: boxPalette.foregroundAction,
+	neutral: boxPalette.border,
 	success: globalPalette.success,
 	error: globalPalette.error,
 	info: globalPalette.info,
