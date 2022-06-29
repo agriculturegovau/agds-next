@@ -1,6 +1,12 @@
 import { forwardRef, ReactNode } from 'react';
 import { Flex } from '@ag.ds-next/box';
 import { mapSpacing } from '@ag.ds-next/core';
+import {
+	SuccessFilledIcon,
+	AlertFilledIcon,
+	InfoFilledIcon,
+	WarningFilledIcon,
+} from '@ag.ds-next/icon';
 import { IndicatorDot } from './IndicatorDot';
 import { BadgeTone, badgeToneMap } from './utils';
 
@@ -9,8 +15,19 @@ export type StatusBadgeProps = {
 	tone: BadgeTone;
 };
 
+// Icon width is 22px
+const width = '1.375em';
+const iconMap = {
+	neutral: () => <IndicatorDot tone="neutral" />,
+	success: () => <SuccessFilledIcon color="success" css={{ width }} />,
+	error: () => <AlertFilledIcon color="error" css={{ width }} />,
+	info: () => <InfoFilledIcon color="info" css={{ width }} />,
+	warning: () => <WarningFilledIcon color="warning" css={{ width }} />,
+};
+
 export const StatusBadge = forwardRef<HTMLDivElement, StatusBadgeProps>(
 	function Badge({ label, tone }, ref) {
+		const Indicator = iconMap[tone];
 		return (
 			<Flex
 				ref={ref}
@@ -29,7 +46,7 @@ export const StatusBadge = forwardRef<HTMLDivElement, StatusBadgeProps>(
 					borderColor: badgeToneMap[tone],
 				}}
 			>
-				<IndicatorDot tone={tone} />
+				<Indicator />
 				{label}
 			</Flex>
 		);
