@@ -4,7 +4,7 @@ import { boxPalette, usePrefersReducedMotion } from '@ag.ds-next/core';
 import { Box, Flex } from '@ag.ds-next/box';
 import { switchTrackStyles } from './utils';
 
-type SwitchSize = 'sm' | 'md';
+export type SwitchSize = 'sm' | 'md';
 
 type SwitchContainerProps = PropsWithChildren<{
 	size: SwitchSize;

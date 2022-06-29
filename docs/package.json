@@ -3,10 +3,11 @@
 	"version": "0.6.0",
 	"private": true,
 	"scripts": {
-		"dev": "next dev",
+		"dev": "yarn generate-component-props && next dev",
 		"dev:watch": "next-remote-watch ../packages",
+		"generate-component-props": "node scripts/generateComponentProps.js",
 		"generate-template-images": "node scripts/generateTemplateImages.js",
-		"build": "next build && next export",
+		"build": "yarn generate-component-props && next build && next export",
 		"start": "next start",
 		"lint": "next lint",
 		"playroom:dev": "playroom start",
@@ -81,10 +82,10 @@
 		"@emotion/eslint-plugin": "^11.2.0",
 		"eslint": "^7.30.0",
 		"eslint-config-next": "12.0.4",
-		"eslint-config-prettier": "^8.3.0",
 		"eslint-plugin-react": "^7.24.0",
-		"prettier": "^2.4.1",
-		"puppeteer": "^14.1.0"
+		"glob": "^8.0.3",
+		"puppeteer": "^14.1.0",
+		"react-docgen-typescript": "^2.2.2"
 	},
 	"repository": "https://github.com/steelthreads/agds-next/tree/main/docs"
 }

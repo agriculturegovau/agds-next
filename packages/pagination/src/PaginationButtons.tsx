@@ -5,14 +5,15 @@ import { PaginationItemSeparator } from './PaginationItemSeparator';
 import { PaginationItemPageButton } from './PaginationItemPage';
 
 export type PaginationButtonsProps = {
+	/** Describes the navigation element to assistive technologies. */
 	'aria-label'?: string;
-	/** Callback for when a list item is pressed */
+	/** Callback for when a list item is pressed. */
 	onChange: (pageNumber: number) => void;
-	/** The current page number */
+	/** The current page number. */
 	currentPage: number;
-	/** Contols how many list items are shown */
+	/** Contols how many list items are shown. */
 	windowLimit?: number;
-	/** The total number of pages */
+	/** The total number of pages. */
 	totalPages: number;
 };
 

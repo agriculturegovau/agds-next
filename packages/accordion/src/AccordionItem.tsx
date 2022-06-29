@@ -14,17 +14,22 @@ export const useAccordionItemIds = () => {
 };
 
 type AccordionItemProps = PropsWithChildren<{
-	title: AccordionTitleProps['children'];
-	titleHeadingTag?: AccordionTitleProps['tag'];
+	/** If true, the item will initially be rendered in an open state. */
 	isInitiallyOpen?: boolean;
+	/** The current open state. */
 	isOpen?: boolean;
+	/** Handle open/close events. */
 	onToggle?: () => void;
+	/** The title of the accordion item. */
+	title: ReactNode;
+	/** The underlying HTML tag of the title element. */
+	titleHeadingTag?: AccordionTitleProps['tag'];
 }>;
 
 export const AccordionItem = ({
 	children,
 	title,
-	titleHeadingTag,
+	titleHeadingTag = 'h3',
 	isInitiallyOpen = false,
 	isOpen: isOpenProp,
 	onToggle: onToggleProp,

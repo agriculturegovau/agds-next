@@ -38,6 +38,16 @@ export default function PackagesCode({
 				>
 					<Body>
 						<Body id="pkg-content">
+							<h2>Source</h2>
+							<p>
+								You can view the full source code for this package on{' '}
+								<a
+									href={`https://github.com/steelthreads/agds-next/tree/main/packages/${pkg.slug}`}
+								>
+									Github
+								</a>
+								.
+							</p>
 							<MDXRemote {...content} components={mdxComponents} />
 						</Body>
 					</Body>
