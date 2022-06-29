@@ -3,7 +3,7 @@ import { Box, Flex, Stack } from '@ag.ds-next/box';
 import { StatusBadge } from './StatusBadge';
 
 export default {
-	title: 'content/StatusBadge/StatusBadge',
+	title: 'content/Badge/StatusBadge',
 	component: StatusBadge,
 } as ComponentMeta<typeof StatusBadge>;
 
