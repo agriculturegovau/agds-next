@@ -21,13 +21,13 @@ export const Badge = forwardRef<HTMLDivElement, BadgeProps>(function Badge(
 			gap={0.5}
 			height={mapSpacing(2)}
 			paddingX={0.75}
-			rounded
 			fontSize="sm"
 			lineHeight="nospace"
 			background="body"
 			color="text"
 			border
 			css={{
+				borderRadius: mapSpacing(1),
 				borderColor: badgeToneMap[tone],
 			}}
 		>

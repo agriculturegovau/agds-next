@@ -14,6 +14,7 @@ const Template: ComponentStory<typeof NotificationBadge> = (args) => (
 export const OnLight = Template.bind({});
 OnLight.args = {
 	value: 48,
+	tone: 'error',
 };
 
 export const OnDark: ComponentStory<typeof NotificationBadge> = (args) => (
@@ -24,10 +25,12 @@ export const OnDark: ComponentStory<typeof NotificationBadge> = (args) => (
 OnDark.args = {
 	value: 64,
 	max: 99,
+	tone: 'error',
 };
 
 export const Max = Template.bind({});
 Max.args = {
 	value: 100,
 	max: 99,
+	tone: 'error',
 };
