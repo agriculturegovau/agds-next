@@ -112,7 +112,11 @@ import {
 	HeroSubcategoryBannerTitle,
 } from '@ag.ds-next/hero-banner';
 import { LoadingBlanket, LoadingDots } from '@ag.ds-next/loading';
-import { Badge, NotificationBadge, IndicatorDot } from '@ag.ds-next/badge';
+import {
+	StatusBadge,
+	NotificationBadge,
+	IndicatorDot,
+} from '@ag.ds-next/badge';
 
 export const designSystemComponents = {
 	Accordion,
@@ -234,7 +238,7 @@ export const designSystemComponents = {
 	tokens,
 	LoadingBlanket,
 	LoadingDots,
-	Badge,
+	StatusBadge,
 	NotificationBadge,
 	IndicatorDot,
 };

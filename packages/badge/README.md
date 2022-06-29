@@ -1,31 +1,31 @@
 ---
 title: Badge
-description: A badge is a decorative indicator used to either call attention to an item or for communicating non-actionable, supplemental information.
+description: Badges are decorative indicators used to either call attention to an item or for communicating non-actionable, supplemental information.
 group: Content
 storybookPath: /story/content-badge--on-light
 ---
 
-## Badge
+## StatusBadge
 
 Use badges to highlight an item's status for quick recognition.
 
 ```jsx live
-<Badge tone="action" label="Action" />
+<StatusBadge tone="action" label="Action" />
 ```
 
 ### Tones
 
-Choosing a tone for a `Badge` allows the user to understand the importance and severity of the message at a glance.
+Choosing a tone for a `StatusBadge` allows the user to understand the importance and severity of the message at a glance.
 
 The four supported tones are `info`, `success`, `error` and `warning`.
 
 ```jsx live
 <Flex gap={1}>
-	<Badge tone="action" label="Action" />
-	<Badge tone="info" label="In progress" />
-	<Badge tone="success" label="Resolved" />
-	<Badge tone="error" label="Rejected" />
-	<Badge tone="warning" label="Attention" />
+	<StatusBadge tone="action" label="Action" />
+	<StatusBadge tone="info" label="In progress" />
+	<StatusBadge tone="success" label="Resolved" />
+	<StatusBadge tone="error" label="Rejected" />
+	<StatusBadge tone="warning" label="Attention" />
 </Flex>
 ```
 
