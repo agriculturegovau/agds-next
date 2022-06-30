@@ -80,7 +80,7 @@ jobs:
         run: yarn
 
       - name: Generate component props
-        run: yarn generate-component-props
+        run: yarn docs:generate-component-props
 
       - name: Packages
         run: yarn lint:packages
