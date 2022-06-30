@@ -3,7 +3,7 @@ import { MDXRemote } from 'next-mdx-remote';
 import { Body } from '@ag.ds-next/body';
 import { getMarkdownData, serializeMarkdown } from '../../lib/mdxUtils';
 import { getGuideList } from '../../lib/mdx/guides';
-import { mdxComponents } from '../../components/utils';
+import { mdxComponents } from '../../components/mdxComponents';
 import { AppLayout } from '../../components/AppLayout';
 import { DocumentTitle } from '../../components/DocumentTitle';
 import { PageLayout } from '../../components/PageLayout';
