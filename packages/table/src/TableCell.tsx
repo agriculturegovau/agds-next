@@ -1,15 +1,18 @@
 import { PropsWithChildren } from 'react';
 import { Box, BoxProps } from '@ag.ds-next/box';
 
-export type TableCellProps = PropsWithChildren<{
-	textAlign?: 'center' | 'left' | 'right';
-}> &
-	Pick<BoxProps, 'display'>;
+export type TableCellProps = PropsWithChildren<
+	{
+		verticalAlign?: 'top' | 'middle' | 'bottom';
+		textAlign?: 'center' | 'left' | 'right';
+	} & Pick<BoxProps, 'display'>
+>;
 
 export const TableCell = ({
 	children,
+	display,
+	verticalAlign = 'top',
 	textAlign = 'left',
-	...props
 }: TableCellProps) => {
 	return (
 		<Box
@@ -19,8 +22,8 @@ export const TableCell = ({
 			borderColor="muted"
 			color="text"
 			focus
-			css={{ textAlign }}
-			{...props}
+			display={display}
+			css={{ verticalAlign, textAlign }}
 		>
 			{children}
 		</Box>
