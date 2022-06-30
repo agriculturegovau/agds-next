@@ -5,14 +5,15 @@ import { PaginationItemSeparator } from './PaginationItemSeparator';
 import { PaginationItemPage } from './PaginationItemPage';
 
 export type PaginationProps = {
+	/** Describes the navigation element to assistive technologies. */
 	'aria-label'?: string;
-	/** Function to generate a href for each list item */
+	/** Function to generate a href for each list item. */
 	generateHref: (pageNumber: number) => string;
-	/** The current page number */
+	/** The current page number. */
 	currentPage: number;
-	/** Contols how many list items are shown */
+	/** Contols how many list items are shown. */
 	windowLimit?: number;
-	/** The total number of pages */
+	/** The total number of pages. */
 	totalPages: number;
 };
 

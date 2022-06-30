@@ -6,14 +6,18 @@ import {
 	SwitchContainer,
 	SwitchThumb,
 	SwitchTrack,
-	SwitchTrackProps,
+	SwitchSize,
 } from './SwitchTrack';
 
-export type SwitchProps = Omit<SwitchTrackProps, 'size'> & {
-	size?: 'sm' | 'md';
-	label: string;
+export type SwitchProps = {
+	/** The current checked state. */
 	checked: boolean;
+	/** Handle change events. */
 	onChange: (newValue: boolean) => void;
+	/** The size of the switch. */
+	size?: SwitchSize;
+	/** The associated label for the switch. */
+	label: string;
 };
 
 export const Switch = ({

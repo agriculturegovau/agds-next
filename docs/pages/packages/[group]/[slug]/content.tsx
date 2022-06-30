@@ -9,7 +9,7 @@ import {
 	getPkgBreadcrumbs,
 	getPkgDocsContent,
 } from '../../../../lib/mdx/packages';
-import { mdxComponents } from '../../../../components/utils';
+import { mdxComponents } from '../../../../components/mdxComponents';
 import { AppLayout } from '../../../../components/AppLayout';
 import { DocumentTitle } from '../../../../components/DocumentTitle';
 import { PkgLayout } from '../../../../components/PkgLayout';

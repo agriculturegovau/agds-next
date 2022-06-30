@@ -120,6 +120,11 @@ export const bodyClass = css({
 		},
 	},
 
+	[`* + table:not(.${unsetBodyStylesClassname} *)`]: {
+		marginTop: mapSpacing(1.5),
+		' + table': { marginTop: mapSpacing(3) },
+	},
+
 	[`h1${notSelector}`]: {
 		...fontGrid('xxl', 'heading'),
 		marginTop: 0,

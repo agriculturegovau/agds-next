@@ -1,8 +1,9 @@
-// TODO Rename this file `mdxComponents`
 import { AnchorHTMLAttributes, HTMLAttributes, Fragment } from 'react';
 import Link from 'next/link';
 import { slugify } from '../lib/slugify';
+import generatedComponentPropsData from '../__generated__/componentProps.json';
 import { Code } from './Code';
+import { ComponentPropsTable } from './ComponentPropsTable';
 
 // Note: We are using `any` here because of a typescript bug with react v18 and next-mdx-remote v3
 // Upgrading to v4 causes issues with our pre and code inline components. Be careful when upgrading
@@ -30,6 +31,18 @@ export const mdxComponents: Record<string, any> = {
 			<h3 id={children ? slugify(children.toString()) : undefined}>
 				{children}
 			</h3>
+		);
+	},
+	ComponentPropsTable: ({ name }: { name: string }) => {
+		if (!(name in generatedComponentPropsData)) return null;
+		return (
+			<ComponentPropsTable
+				data={
+					generatedComponentPropsData[
+						name as keyof typeof generatedComponentPropsData
+					]
+				}
+			/>
 		);
 	},
 };

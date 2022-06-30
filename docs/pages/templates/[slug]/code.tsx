@@ -10,7 +10,7 @@ import {
 	getTemplateSubNavItems,
 	Template,
 } from '../../../lib/mdx/templates';
-import { mdxComponents } from '../../../components/utils';
+import { mdxComponents } from '../../../components/mdxComponents';
 import { TemplateLayout } from '../../../components/TemplateLayout';
 import { DocumentTitle } from '../../../components/DocumentTitle';
 

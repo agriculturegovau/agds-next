@@ -15,7 +15,26 @@ const DefaultLinkComponent = forwardRef<
 	return <a ref={ref} {...props} />;
 });
 
-export type LinkProps = Omit<AnchorHTMLAttributes<HTMLAnchorElement>, 'color'>;
+type NativeLinkProps = AnchorHTMLAttributes<HTMLAnchorElement>;
+
+export type LinkProps = PropsWithChildren<{
+	/** Describes the anchor element to assistive technologies. */
+	'aria-label'?: string;
+	/** The CSS class name, typically generated from the `css` prop. */
+	className?: string;
+	/** Causes the browser to treat the linked URL as a download. */
+	download?: NativeLinkProps['download'];
+	/** The URL that the hyperlink points to. */
+	href?: string;
+	/** The ID of the hyperlink. */
+	id?: string;
+	/** How much of the referrer to send when following the link. */
+	referrerPolicy?: NativeLinkProps['referrerPolicy'];
+	/** The relationship of the linked URL as space-separated link types. */
+	rel?: string;
+	/** Where to display the linked URL, as the name for a browsing context (a tab, window, or <iframe>). */
+	target?: NativeLinkProps['target'];
+}>;
 
 export const coreContext = createContext({
 	linkComponent: DefaultLinkComponent,

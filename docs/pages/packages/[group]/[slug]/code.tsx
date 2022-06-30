@@ -9,7 +9,7 @@ import {
 	getPkgBreadcrumbs,
 	getPkgDocsContent,
 } from '../../../../lib/mdx/packages';
-import { mdxComponents } from '../../../../components/utils';
+import { mdxComponents } from '../../../../components/mdxComponents';
 import { AppLayout } from '../../../../components/AppLayout';
 import { DocumentTitle } from '../../../../components/DocumentTitle';
 import { PkgLayout } from '../../../../components/PkgLayout';
@@ -38,6 +38,16 @@ export default function PackagesCode({
 				>
 					<Body>
 						<Body id="pkg-content">
+							<h2>Source</h2>
+							<p>
+								You can view the full source code for this package on{' '}
+								<a
+									href={`https://github.com/steelthreads/agds-next/tree/main/packages/${pkg.slug}`}
+								>
+									Github
+								</a>
+								.
+							</p>
 							<MDXRemote {...content} components={mdxComponents} />
 						</Body>
 					</Body>

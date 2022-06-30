@@ -79,6 +79,9 @@ jobs:
       - name: Install dependencies
         run: yarn
 
+      - name: Generate component props
+        run: yarn docs:generate-component-props
+
       - name: Packages
         run: yarn lint:packages
 

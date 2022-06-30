@@ -10,7 +10,7 @@ export type AccordionTitleProps = PropsWithChildren<{
 	ariaControls: string;
 	isOpen?: boolean;
 	onClick?: MouseEventHandler<HTMLButtonElement>;
-	tag?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
+	tag: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
 }>;
 
 const AnimatedIcon = animated(ChevronDownIcon);
@@ -21,7 +21,7 @@ export const AccordionTitle = ({
 	id,
 	isOpen,
 	onClick,
-	tag = 'h3',
+	tag,
 }: AccordionTitleProps) => {
 	const prefersReducedMotion = usePrefersReducedMotion();
 	const style = useSpring({

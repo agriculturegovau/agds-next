@@ -11,7 +11,7 @@ import {
 	getTemplateSubNavItems,
 	Template,
 } from '../../../lib/mdx/templates';
-import { mdxComponents } from '../../../components/utils';
+import { mdxComponents } from '../../../components/mdxComponents';
 import { DocumentTitle } from '../../../components/DocumentTitle';
 
 export default function TemplateContentPage({
