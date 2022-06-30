@@ -9,7 +9,7 @@
 		"generate-template-images": "node scripts/generateTemplateImages.js",
 		"build": "yarn generate-component-props && next build && next export",
 		"start": "next start",
-		"lint": "yarn generate-component-props && next lint",
+		"lint": "next lint",
 		"playroom:dev": "playroom start",
 		"playroom:build": "playroom build"
 	},
