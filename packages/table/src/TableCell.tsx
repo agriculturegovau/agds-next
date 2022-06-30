@@ -1,12 +1,12 @@
 import { PropsWithChildren } from 'react';
-import { Box, BoxProps } from '@ag.ds-next/box';
+import { Box } from '@ag.ds-next/box';
+import { ResponsiveProp } from '@ag.ds-next/core';
 
-export type TableCellProps = PropsWithChildren<
-	{
-		verticalAlign?: 'top' | 'middle' | 'bottom';
-		textAlign?: 'center' | 'left' | 'right';
-	} & Pick<BoxProps, 'display'>
->;
+export type TableCellProps = PropsWithChildren<{
+	display?: ResponsiveProp<'none' | 'table-cell'>;
+	textAlign?: 'center' | 'left' | 'right';
+	verticalAlign?: 'top' | 'middle' | 'bottom';
+}>;
 
 export const TableCell = ({
 	children,
