@@ -19,21 +19,21 @@ import {
 import { BaseButton } from './BaseButton';
 
 type CommonButtonProps = PropsWithChildren<{
-	/** If true, the button will stretch to the fill the width of its container */
+	/** If true, the button will stretch to the fill the width of its container/ */
 	block?: boolean;
 	/** The CSS class name, typically generated from the `css` prop. */
 	className?: string;
-	/** The icon to display before the buttons children */
+	/** The icon to display before the buttons children. */
 	iconBefore?: ComponentType<IconProps>;
-	/** The icon to display after the buttons children */
+	/** The icon to display after the buttons children. */
 	iconAfter?: ComponentType<IconProps>;
-	/** When true, the button will display a loading indicator */
+	/** When true, the button will display a loading indicator. */
 	loading?: boolean;
-	/** Text to read out to assistive technologies when button is loading */
+	/** Text to read out to assistive technologies when button is loading. */
 	loadingLabel?: string;
-	/** The size of the button */
+	/** The size of the button/ */
 	size?: ButtonSize;
-	/** The variant of the button */
+	/** The variant of the button. */
 	variant?: ButtonVariant;
 }>;
 
