@@ -27,6 +27,7 @@
 		"docs:dev": "yarn --cwd docs dev",
 		"docs:build": "yarn --cwd docs build",
 		"docs:generate-template-images": "yarn --cwd docs generate-template-images",
+		"docs:generate-component-props": "yarn --cwd docs generate-component-props",
 		"playroom:dev": "yarn --cwd docs playroom:dev",
 		"playroom:build": "yarn --cwd docs playroom:build",
 		"storybook:dev": "start-storybook -p 6006",
@@ -64,6 +65,7 @@
 		"react": "18.1.0",
 		"react-dom": "18.1.0",
 		"rimraf": "^3.0.2",
+		"swr": "^1.3.0",
 		"ts-jest": "^27.1.2",
 		"typescript": "^4.4.4"
 	},

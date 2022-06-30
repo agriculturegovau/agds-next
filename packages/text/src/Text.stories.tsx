@@ -3,7 +3,7 @@ import { fontGrid } from '@ag.ds-next/core';
 import { Text } from './Text';
 
 export default {
-	title: 'foundations/Text/Text',
+	title: 'foundations/Text',
 	component: Text,
 } as ComponentMeta<typeof Text>;
 

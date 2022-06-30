@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import { useRouter } from 'next/router';
 import { useForm, SubmitHandler, SubmitErrorHandler } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
@@ -11,8 +12,6 @@ import { FormStack } from '@ag.ds-next/form-stack';
 import { Select } from '@ag.ds-next/select';
 import { H2, H3 } from '@ag.ds-next/heading';
 import { TextInput } from '@ag.ds-next/text-input';
-import { Text } from '@ag.ds-next/text';
-import { TextLink } from '@ag.ds-next/text-link';
 import { PageAlert } from '@ag.ds-next/page-alert';
 import { useScrollToField } from '@ag.ds-next/field';
 import { FormDivider } from './FormDivider';
@@ -57,8 +56,9 @@ const formSchema = yup
 type FormSchema = yup.InferType<typeof formSchema>;
 
 export const FormExampleSinglePage = () => {
+	const router = useRouter();
+	const [isSubmitting, setIsSubmitting] = useState(false);
 	const errorPageAlertRef = useRef<HTMLDivElement>(null);
-	const successPageAlertRef = useRef<HTMLDivElement>(null);
 	const [hasFocusedErrorRef, setHasFocusedErrorRef] = useState(false);
 
 	const scrollToField = useScrollToField();
@@ -68,13 +68,18 @@ export const FormExampleSinglePage = () => {
 		handleSubmit,
 		watch,
 		trigger,
-		formState: { errors, isSubmitSuccessful, isSubmitted },
+		formState: { errors, isSubmitted },
 	} = useForm<FormSchema>({
 		resolver: yupResolver(formSchema),
 	});
 
 	const onSubmit: SubmitHandler<FormSchema> = (data) => {
+		setIsSubmitting(true);
 		console.log(data);
+		setTimeout(() => {
+			setIsSubmitting(false);
+			router.push('single-page-form-success');
+		}, 2000);
 	};
 
 	const onError: SubmitErrorHandler<FormSchema> = (errors, event) => {
@@ -100,29 +105,8 @@ export const FormExampleSinglePage = () => {
 		if (isSubmitted) trigger();
 	}, [isPostalAddressSameAsStreetAddress, trigger, isSubmitted]);
 
-	useEffect(() => {
-		if (!isSubmitSuccessful) return;
-		successPageAlertRef.current?.focus();
-	}, [isSubmitSuccessful]);
-
-	if (isSubmitSuccessful) {
-		return (
-			<PageAlert
-				tone="success"
-				title="Thank you"
-				tabIndex={-1}
-				ref={successPageAlertRef}
-			>
-				<Text>
-					The single-page form has been submitted sucessfully. You may now{' '}
-					<TextLink href="/">return home</TextLink>.
-				</Text>
-			</PageAlert>
-		);
-	}
-
 	return (
-		<form onSubmit={handleSubmit(onSubmit, onError)}>
+		<form onSubmit={handleSubmit(onSubmit, onError)} noValidate>
 			<Stack gap={3}>
 				{hasErrors && (
 					<PageAlert
@@ -324,7 +308,9 @@ export const FormExampleSinglePage = () => {
 				</Fieldset>
 				<FormDivider />
 				<ButtonGroup>
-					<Button type="submit">Submit</Button>
+					<Button type="submit" loading={isSubmitting}>
+						Submit
+					</Button>
 					<Button type="button" variant="secondary">
 						Cancel
 					</Button>

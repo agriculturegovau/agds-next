@@ -8,7 +8,7 @@ import {
 	getPkgGroupList,
 	getPkgNavLinks,
 	getGroupBreadCrumbs,
-} from '../../../lib/mdxUtils';
+} from '../../../lib/mdx/packages';
 import { DocumentTitle } from '../../../components/DocumentTitle';
 
 export default function PackagesHome({

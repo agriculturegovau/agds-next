@@ -28,7 +28,6 @@ export const BaseButton = forwardRef<HTMLButtonElement, BaseButtonProps>(
 		return (
 			<button
 				ref={mergeRefs([ref, forwardedRef])}
-				type="button"
 				onClick={onClick}
 				css={{
 					appearance: 'none',
@@ -36,6 +35,7 @@ export const BaseButton = forwardRef<HTMLButtonElement, BaseButtonProps>(
 					cursor: 'pointer',
 					textAlign: 'left',
 					border: 'none',
+					padding: 0,
 					fontFamily: tokens.font.body,
 					fontSize: 'inherit',
 					lineHeight: 'inherit',

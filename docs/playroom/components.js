@@ -7,7 +7,12 @@ export {
 } from '@ag.ds-next/accordion';
 export { Body } from '@ag.ds-next/body';
 export { Box, Flex, Stack } from '@ag.ds-next/box';
-export { BaseButton, Button, ButtonGroup } from '@ag.ds-next/button';
+export {
+	BaseButton,
+	Button,
+	ButtonLink,
+	ButtonGroup,
+} from '@ag.ds-next/button';
 export {
 	Content,
 	ContentBleed,
@@ -22,7 +27,10 @@ export {
 	CardLink,
 	CardList,
 } from '@ag.ds-next/card';
-export { CallToAction } from '@ag.ds-next/call-to-action';
+export {
+	CallToActionLink,
+	CallToActionButton,
+} from '@ag.ds-next/call-to-action';
 export { Callout, CalloutTitle } from '@ag.ds-next/callout';
 export { Columns, Column } from '@ag.ds-next/columns';
 export { Footer, FooterDivider } from '@ag.ds-next/footer';
@@ -31,7 +39,7 @@ export { Header } from '@ag.ds-next/header';
 export { Heading, H1, H2, H3, H4, H5, H6 } from '@ag.ds-next/heading';
 export { Select } from '@ag.ds-next/select';
 export { Text } from '@ag.ds-next/text';
-export { TextLink, TextLinkExternal } from '@ag.ds-next/text-link';
+export { TextLink, TextButton, TextLinkExternal } from '@ag.ds-next/text-link';
 export { TextInput } from '@ag.ds-next/text-input';
 export { Textarea } from '@ag.ds-next/textarea';
 export { Field } from '@ag.ds-next/field';
@@ -48,7 +56,7 @@ export {
 	BreadcrumbsItem,
 } from '@ag.ds-next/breadcrumbs';
 export { MainNav } from '@ag.ds-next/main-nav';
-export { SecondaryNav } from '@ag.ds-next/secondary-nav';
+export { SubNav } from '@ag.ds-next/sub-nav';
 export {
 	SideNav,
 	SideNavContainer,
@@ -56,6 +64,7 @@ export {
 	SideNavGroup,
 	SideNavTitle,
 } from '@ag.ds-next/side-nav';
+export { Switch } from '@ag.ds-next/switch';
 export {
 	AlertIcon,
 	AlertFilledIcon,
@@ -99,7 +108,7 @@ export {
 	InpageNavItemContainer,
 	InpageNavTitle,
 } from '@ag.ds-next/inpage-nav';
-export { DirectionLink } from '@ag.ds-next/direction-link';
+export { DirectionLink, DirectionButton } from '@ag.ds-next/direction-link';
 export { Tags } from '@ag.ds-next/tags';
 export { FormStack } from '@ag.ds-next/form-stack';
 export { TaskList } from '@ag.ds-next/task-list';
@@ -126,3 +135,4 @@ export {
 	HeroSubcategoryBannerTitle,
 } from '@ag.ds-next/hero-banner';
 export { LoadingDots, LoadingBlanket } from '@ag.ds-next/loading';
+export { Pagination, PaginationButtons } from '@ag.ds-next/pagination';

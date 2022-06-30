@@ -171,7 +171,7 @@ export const UploadSingleFileOnSubmit: ComponentStory<typeof FileUpload> = (
 	};
 
 	return (
-		<form onSubmit={handleSubmit(onSubmit, onError)}>
+		<form onSubmit={handleSubmit(onSubmit, onError)} noValidate>
 			<FormStack>
 				<Controller
 					control={control}

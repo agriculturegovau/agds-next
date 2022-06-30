@@ -11,7 +11,7 @@ import {
 	Template,
 } from '../../../lib/mdx/templates';
 import { TemplateLayout } from '../../../components/TemplateLayout';
-import { mdxComponents } from '../../../components/utils';
+import { mdxComponents } from '../../../components/mdxComponents';
 import { DocumentTitle } from '../../../components/DocumentTitle';
 
 export default function TemplateOverviewPage({

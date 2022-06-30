@@ -37,14 +37,6 @@ OnDark.args = {
 
 export const Modular = () => (
 	<BreadcrumbsContainer aria-label="breadcrumb">
-		<BreadcrumbsItem
-			href="https://github.com/steelthreads/agds-next"
-			target="_blank"
-			rel="noopener noreferrer"
-		>
-			External
-		</BreadcrumbsItem>
-		<BreadcrumbsDivider />
 		<BreadcrumbsItem href="#one">One</BreadcrumbsItem>
 		<BreadcrumbsDivider />
 		<BreadcrumbsItem href="#two">Two</BreadcrumbsItem>

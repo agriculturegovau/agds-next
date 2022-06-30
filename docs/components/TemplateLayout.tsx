@@ -1,11 +1,11 @@
 import { PropsWithChildren } from 'react';
 import { useRouter } from 'next/router';
-import { CallToAction } from '@ag.ds-next/call-to-action';
+import { CallToActionLink } from '@ag.ds-next/call-to-action';
 import { SideNavProps } from '@ag.ds-next/side-nav';
 import { SkipLinksProps } from '@ag.ds-next/skip-link';
 import { Text } from '@ag.ds-next/text';
 import { Callout } from '@ag.ds-next/callout';
-import { SecondaryNav } from '@ag.ds-next/secondary-nav';
+import { SubNav } from '@ag.ds-next/sub-nav';
 import type {
 	Template,
 	getTemplateBreadcrumbs,
@@ -52,13 +52,19 @@ export const TemplateLayout = ({
 					introduction={template.data.description}
 					callToAction={
 						template.previewPath && (
-							<CallToAction href={`/example-site${template.previewPath}`}>
+							<CallToActionLink href={`/example-site${template.previewPath}`}>
 								View template preview
-							</CallToAction>
+							</CallToActionLink>
 						)
 					}
 				/>
-				<SecondaryNav activePath={router.asPath} links={subNavItems} />
+				<SubNav
+					activePath={router.asPath}
+					links={subNavItems.map((item) => ({
+						...item,
+						scroll: false,
+					}))}
+				/>
 				{children}
 				<Callout title="Questions or feedback?">
 					<Text as="p">Contact details go here...</Text>

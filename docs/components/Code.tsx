@@ -17,18 +17,12 @@ import {
 	mapSpacing,
 	packs,
 	tokens,
-	useLinkComponent,
 	useToggleState,
 } from '@ag.ds-next/core';
 import { Box, Flex } from '@ag.ds-next/box';
 import { unsetBodyStylesClassname } from '@ag.ds-next/body';
-import { Button } from '@ag.ds-next/button';
-import {
-	CopyIcon,
-	ChevronDownIcon,
-	ChevronUpIcon,
-	ExternalLinkIcon,
-} from '@ag.ds-next/icon';
+import { Button, ButtonLink } from '@ag.ds-next/button';
+import { CopyIcon, ChevronDownIcon, ChevronUpIcon } from '@ag.ds-next/icon';
 import { designSystemComponents } from './design-system-components';
 import { prismTheme } from './prism-theme';
 
@@ -41,7 +35,6 @@ const PlaceholderImage = () => (
 );
 
 const LiveCode = withLive((props: unknown) => {
-	const Link = useLinkComponent();
 	const { query } = useRouter();
 
 	// The types on `withLive` are kind of useless.
@@ -126,19 +119,15 @@ const LiveCode = withLive((props: unknown) => {
 				>
 					Copy code
 				</Button>
-				<Button
-					as={Link}
+				<ButtonLink
 					href={playroomUrl}
-					target="_blank"
-					rel="noopener noreferrer"
 					size="sm"
 					variant="tertiary"
-					iconAfter={ExternalLinkIcon}
 					aria-label="Open code snippet in Playroom"
 				>
 					Open in Playroom
 					<ExternalLinkCallout />
-				</Button>
+				</ButtonLink>
 			</Flex>
 			<Box
 				id={codeId}

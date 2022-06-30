@@ -10,9 +10,8 @@ import { Column, Columns } from '@ag.ds-next/columns';
 import { PageContent, ContentBleed } from '@ag.ds-next/content';
 import { ProgressIndicator } from '@ag.ds-next/progress-indicator';
 import { Stack } from '@ag.ds-next/box';
-import { BaseButton } from '@ag.ds-next/button';
 import { Text } from '@ag.ds-next/text';
-import { DirectionLink } from '@ag.ds-next/direction-link';
+import { DirectionButton } from '@ag.ds-next/direction-link';
 import { AppLayout } from '../AppLayout';
 import {
 	FormExampleMultiStep0,
@@ -34,7 +33,6 @@ import {
 	FormExampleMultiStep4,
 	FormSchema as FormExampleMultiStep4Schema,
 } from './FormExampleMultiStep4';
-import { FormExampleMultiStepSuccess } from './FormExampleMultiStepSuccess';
 
 export const FORM_STEPS = [
 	{
@@ -99,14 +97,13 @@ type FormState = Partial<{
 }>;
 
 export const FormExampleMultiStep = () => {
-	const { push } = useRouter();
-	const [success, setSuccess] = useState(false);
+	const router = useRouter();
 	const [currentStep, setCurrentStep] = useState(0);
 	const [formState, setFormState] = useState<FormState>({});
 
 	const backToHomePage = useCallback(() => {
-		push('/category/subcategory/multi-page-form');
-	}, [push]);
+		router.push('/category/subcategory/multi-page-form');
+	}, [router]);
 
 	/** When called, the user will be taken back to the previous step */
 	const back = useCallback(() => {
@@ -125,13 +122,13 @@ export const FormExampleMultiStep = () => {
 			setTimeout(() => {
 				setIsSubmittingStep(false);
 				if (currentStep === TOTAL_STEPS) {
-					setSuccess(true);
+					router.push('success');
 				} else {
 					setCurrentStep(currentStep + 1);
 				}
 			}, 1500);
 		},
-		[currentStep]
+		[currentStep, router]
 	);
 
 	const [isSavingBeforeExiting, setIsSavingBeforeExiting] = useState(false);
@@ -152,22 +149,6 @@ export const FormExampleMultiStep = () => {
 		const previousStep = currentStep - 1;
 		return Boolean(previousStep in formState);
 	}, [formState, currentStep]);
-
-	if (success) {
-		return (
-			<AppLayout
-				template={{ name: 'Multi-page form', slug: 'multi-page-form' }}
-			>
-				<PageContent>
-					<Columns>
-						<Column columnSpan={{ xs: 12, md: 8 }}>
-							<FormExampleMultiStepSuccess />
-						</Column>
-					</Columns>
-				</PageContent>
-			</AppLayout>
-		);
-	}
 
 	const FormStepComponent = FORM_STEPS[currentStep]?.component;
 
@@ -225,9 +206,9 @@ export const FormExampleMultiStep = () => {
 						</Column>
 						<Column columnSpan={{ xs: 12, md: 8 }} columnStart={{ md: 5 }}>
 							<Stack gap={3} alignItems="flex-start">
-								<DirectionLink as={BaseButton} direction="left" onClick={back}>
+								<DirectionButton direction="left" onClick={back}>
 									Back
-								</DirectionLink>
+								</DirectionButton>
 								{FormStepComponent ? <FormStepComponent /> : null}
 							</Stack>
 						</Column>

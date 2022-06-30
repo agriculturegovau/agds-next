@@ -32,7 +32,7 @@ export const FormExampleMultiStep2 = () => {
 			title="Select date (H1)"
 			introduction="The introductory paragraph provides context about this page of the form. Use a short paragraph to reduce cognitive load."
 		>
-			<Stack as="form" gap={3} onSubmit={handleSubmit(onSubmit)}>
+			<Stack as="form" gap={3} onSubmit={handleSubmit(onSubmit)} noValidate>
 				<Controller
 					control={control}
 					name="date"

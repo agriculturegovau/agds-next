@@ -1,14 +1,13 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { AvatarIcon } from '@ag.ds-next/icon';
-import { BaseButton } from '@ag.ds-next/button';
 import { MainNav } from './MainNav';
-import { MainNavLink } from './MainNavLink';
+import { MainNavButton, MainNavLink } from './MainNavItem';
 import { MainNavBottomBar } from './MainNavBottomBar';
 
 export default {
 	title: 'navigation/MainNav',
 	component: MainNav,
-	subcomponents: { MainNavLink, MainNavBottomBar },
+	subcomponents: { MainNavBottomBar, MainNavButton, MainNavLink },
 } as ComponentMeta<typeof MainNav>;
 
 const NAV_ITEMS = [
@@ -17,12 +16,6 @@ const NAV_ITEMS = [
 	{ href: '#form', label: 'Form page' },
 	{ href: '#', label: 'Simple terms' },
 	{ href: '#', label: 'Distinct from each other' },
-	{
-		href: 'https://steelthreads.github.io/agds-next',
-		label: 'External link',
-		target: '_blank',
-		rel: 'external noreferrer',
-	},
 ];
 
 const defaultArgs = {
@@ -75,8 +68,7 @@ export const HeaderRightButton = Template.bind({});
 HeaderRightButton.args = {
 	...defaultArgs,
 	rightContent: (
-		<MainNavLink
-			as={BaseButton}
+		<MainNavButton
 			onClick={() => console.log('Button press')}
 			label="Sign in"
 			icon={AvatarIcon}
@@ -88,7 +80,13 @@ export const NoLinks = Template.bind({});
 NoLinks.args = {
 	...defaultArgs,
 	links: undefined,
-	rightContent: <MainNavLink href="#login" label="Sign in" icon={AvatarIcon} />,
+	rightContent: (
+		<MainNavButton
+			onClick={() => console.log('Button press')}
+			label="Sign in"
+			icon={AvatarIcon}
+		/>
+	),
 };
 
 export const BottomBar: ComponentStory<typeof MainNavBottomBar> = (args) => (

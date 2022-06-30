@@ -1,21 +1,18 @@
 import { PageContent } from '@ag.ds-next/content';
-import { useLinkComponent } from '@ag.ds-next/core';
 import { Columns, Column } from '@ag.ds-next/columns';
-import { Button } from '@ag.ds-next/button';
+import { ButtonLink } from '@ag.ds-next/button';
 import { Body } from '@ag.ds-next/body';
 import { Breadcrumbs } from '@ag.ds-next/breadcrumbs';
 import { Stack } from '@ag.ds-next/box';
 import { H2 } from '@ag.ds-next/heading';
 import { Text } from '@ag.ds-next/text';
-import { TextLinkExternal } from '@ag.ds-next/text-link';
 import { AppLayout } from '../../../../components/AppLayout';
 import { DocumentTitle } from '../../../../components/DocumentTitle';
-import { FormExampleMultiStepCallout } from '../../../../components/FormExampleMultiStep/FormExampleMultiStepCallout';
+import { FormHelpCallout } from '../../../../components/FormHelpCallout';
 import { PageTitle } from '../../../../components/PageTitle';
 import { FormDivider } from '../../../../components/FormDivider';
 
 export default function FormMultiPageHomePage() {
-	const Link = useLinkComponent();
 	return (
 		<>
 			<DocumentTitle title="Multi-page form example" />
@@ -46,12 +43,9 @@ export default function FormMultiPageHomePage() {
 									<Text as="p">Multi-page form subheading content</Text>
 								</Stack>
 								<div>
-									<Button
-										as={Link}
-										href="/category/subcategory/multi-page-form/form"
-									>
+									<ButtonLink href="/category/subcategory/multi-page-form/form">
 										Start form
-									</Button>
+									</ButtonLink>
 								</div>
 								<FormDivider />
 								<Body>
@@ -59,23 +53,23 @@ export default function FormMultiPageHomePage() {
 									<h3>More information link list heading (H3)</h3>
 									<ul>
 										<li>
-											<TextLinkExternal href="#">
+											<a href="#">
 												Meaningful link label that shows link purpose
-											</TextLinkExternal>
+											</a>
 										</li>
 										<li>
-											<TextLinkExternal href="#">
+											<a href="#">
 												Meaningful link label that shows link purpose
-											</TextLinkExternal>
+											</a>
 										</li>
 										<li>
-											<TextLinkExternal href="#">
+											<a href="#">
 												Meaningful link label that shows link purpose
-											</TextLinkExternal>
+											</a>
 										</li>
 									</ul>
 								</Body>
-								<FormExampleMultiStepCallout />
+								<FormHelpCallout />
 							</Stack>
 						</Column>
 					</Columns>

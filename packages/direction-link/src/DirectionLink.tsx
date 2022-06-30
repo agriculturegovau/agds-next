@@ -1,47 +1,77 @@
-import { PropsWithChildren } from 'react';
-import { forwardRefWithAs, useLinkComponent } from '@ag.ds-next/core';
+import { ButtonHTMLAttributes, ElementType, PropsWithChildren } from 'react';
+import { LinkProps } from '@ag.ds-next/core';
 import { Flex } from '@ag.ds-next/box';
+import { BaseButton } from '@ag.ds-next/button';
 import {
 	ArrowDownIcon,
 	ArrowRightIcon,
 	ArrowLeftIcon,
 	ArrowUpIcon,
 } from '@ag.ds-next/icon';
+import { TextLink } from '@ag.ds-next/text-link';
 
 export type Direction = 'up' | 'right' | 'down' | 'left';
 
-export type DirectionLinkProps = PropsWithChildren<{
+export type DirectionLinkProps = LinkProps & {
 	direction: Direction;
-}>;
+};
 
-export const DirectionLink = forwardRefWithAs<'a', DirectionLinkProps>(
-	function DirectionLink({ as, children, direction, ...props }, ref) {
-		const Link = useLinkComponent();
-		const Icon = ICON_MAP[direction];
-		const iconLeft = direction === 'left';
-		return (
-			<Flex
-				as={as ?? Link}
-				ref={ref}
-				inline
-				gap={0.5}
-				alignItems="center"
-				fontSize="sm"
-				fontWeight="normal"
-				link
-				focus
-				css={{ alignSelf: 'flex-start' }}
-				{...props}
-			>
-				{iconLeft ? <Icon size="sm" /> : null}
-				{children}
-				{!iconLeft ? <Icon size="sm" /> : null}
-			</Flex>
-		);
-	}
+export const DirectionLink = ({ children, ...props }: DirectionLinkProps) => (
+	<BaseDirectionLink as={TextLink} {...props}>
+		{children}
+	</BaseDirectionLink>
 );
 
-const ICON_MAP = {
+export type DirectionButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
+	direction: Direction;
+};
+
+export const DirectionButton = ({
+	children,
+	...props
+}: DirectionButtonProps) => (
+	<BaseDirectionLink as={BaseButton} {...props}>
+		{children}
+	</BaseDirectionLink>
+);
+
+type BaseDirectionLinkProps = PropsWithChildren<{
+	as: ElementType;
+	direction: Direction;
+	className?: string;
+}>;
+
+const BaseDirectionLink = ({
+	as,
+	children,
+	direction,
+	className,
+	...props
+}: BaseDirectionLinkProps) => {
+	const Icon = iconMap[direction];
+	const iconLeft = direction === 'left';
+	return (
+		<Flex
+			as={as}
+			className={className}
+			inline
+			gap={0.5}
+			alignItems="center"
+			fontFamily="body"
+			fontWeight="normal"
+			link
+			focus
+			css={{ alignSelf: 'flex-start' }}
+			{...props}
+		>
+			{iconLeft ? <Icon size="sm" /> : null}
+			{children}
+			{!iconLeft ? <Icon size="sm" /> : null}
+		</Flex>
+	);
+};
+
+const iconMap = {
 	up: ArrowUpIcon,
 	right: ArrowRightIcon,
 	down: ArrowDownIcon,

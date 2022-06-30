@@ -1,5 +1,50 @@
 # @ag.ds-next/link-list
 
+## 10.0.0
+
+### Patch Changes
+
+- Updated dependencies [1c78eebc]
+- Updated dependencies [aac71787]
+  - @ag.ds-next/text-link@4.0.0
+
+## 9.0.0
+
+### Patch Changes
+
+- Updated dependencies [743cd7b5]
+  - @ag.ds-next/text-link@3.0.0
+
+## 8.0.0
+
+### Minor Changes
+
+- 989b45b4: Links that open in a new tab will use show the external link indicator
+
+### Patch Changes
+
+- 6fa3aa60: Fixed small eslint warnings after updating import order rule
+- 0e2cc75b: Updated imports of `text-link`
+- ac551394: Updated documentation
+- Updated dependencies [c248ec2e]
+- Updated dependencies [6c5d1563]
+- Updated dependencies [6fa3aa60]
+- Updated dependencies [0e2cc75b]
+- Updated dependencies [ac551394]
+- Updated dependencies [0e2cc75b]
+- Updated dependencies [c248ec2e]
+- Updated dependencies [0e2cc75b]
+- Updated dependencies [dd4f423d]
+- Updated dependencies [afdc5214]
+- Updated dependencies [8ddb8b61]
+- Updated dependencies [c248ec2e]
+- Updated dependencies [6c5d1563]
+- Updated dependencies [00cbe00f]
+  - @ag.ds-next/core@3.0.0
+  - @ag.ds-next/text-link@1.0.0
+  - @ag.ds-next/box@6.0.0
+  - @ag.ds-next/text@8.0.0
+
 ## 7.0.0
 
 ### Patch Changes

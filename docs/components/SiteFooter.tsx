@@ -4,27 +4,18 @@ import { LinkList } from '@ag.ds-next/link-list';
 import { tokens } from '@ag.ds-next/core';
 
 const footerLinks = [
-	{
-		label: 'Home',
-		href: '/',
-	},
+	{ label: 'Home', href: '/' },
 	{
 		label: 'Storybook',
 		href: 'https://steelthreads.github.io/agds-next/storybook/index.html',
-		target: '_blank',
-		rel: 'noopener noreferrer',
 	},
 	{
 		label: 'Playroom',
 		href: 'https://steelthreads.github.io/agds-next/playroom/index.html',
-		target: '_blank',
-		rel: 'noopener noreferrer',
 	},
 	{
 		label: 'Starter kit',
 		href: 'https://github.com/steelthreads/agds-next-starter-kit',
-		target: '_blank',
-		rel: 'noopener noreferrer',
 	},
 ];
 

@@ -3,8 +3,6 @@ import { Logo } from '@ag.ds-next/ag-branding';
 import { Stack } from '@ag.ds-next/box';
 import { Header } from '@ag.ds-next/header';
 import { MainNav, MainNavLink } from '@ag.ds-next/main-nav';
-import { ExternalLinkIcon } from '@ag.ds-next/icon';
-import { ExternalLinkCallout } from '@ag.ds-next/a11y';
 
 const NAV_LINKS = [
 	{ label: 'Home', href: '/' },
@@ -33,16 +31,8 @@ export const SiteHeader = () => {
 				activePath={router.asPath}
 				rightContent={
 					<MainNavLink
-						label={
-							<>
-								GitHub
-								<ExternalLinkCallout />
-							</>
-						}
+						label="GitHub"
 						href="https://github.com/steelthreads/agds-next"
-						target="_blank"
-						rel="noopener noeferrer"
-						icon={ExternalLinkIcon}
 					/>
 				}
 			/>

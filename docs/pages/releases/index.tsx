@@ -10,7 +10,7 @@ import {
 	getReleaseList,
 	serializeMarkdown,
 } from '../../lib/mdxUtils';
-import { mdxComponents } from '../../components/utils';
+import { mdxComponents } from '../../components/mdxComponents';
 import { AppLayout } from '../../components/AppLayout';
 import { DocumentTitle } from '../../components/DocumentTitle';
 import { PageLayout } from '../../components/PageLayout';

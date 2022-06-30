@@ -1,17 +1,13 @@
-import { useEffect, useRef, useState } from 'react';
-import { useForm, SubmitHandler, SubmitErrorHandler } from 'react-hook-form';
+import { useForm, SubmitHandler } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { FormStack } from '@ag.ds-next/form-stack';
 import { VisuallyHidden } from '@ag.ds-next/a11y';
 import { Body } from '@ag.ds-next/body';
 import { Stack } from '@ag.ds-next/box';
-import { PageAlert } from '@ag.ds-next/page-alert';
-import { useScrollToField } from '@ag.ds-next/field';
-import { Checkbox } from '@ag.ds-next/control-input';
+import { Checkbox, ControlGroup } from '@ag.ds-next/control-input';
 import { H2 } from '@ag.ds-next/heading';
-import { BaseButton } from '@ag.ds-next/button';
-import { TextLink } from '@ag.ds-next/text-link';
+import { TextButton } from '@ag.ds-next/text-link';
 import {
 	DefinitionList,
 	DefinitionListItem,
@@ -35,9 +31,6 @@ export type FormSchema = yup.InferType<typeof formSchema>;
 export const FormExampleMultiStep4 = () => {
 	const { next, stepFormState, formState, goToStep } =
 		useFormExampleMultiStep();
-	const scrollToField = useScrollToField();
-	const errorRef = useRef<HTMLDivElement>(null);
-	const [focusedError, setFocusedError] = useState(false);
 
 	const {
 		register,
@@ -49,22 +42,8 @@ export const FormExampleMultiStep4 = () => {
 	});
 
 	const onSubmit: SubmitHandler<FormSchema> = (data) => {
-		setFocusedError(false);
 		next(data);
 	};
-
-	const onError: SubmitErrorHandler<FormSchema> = () => {
-		setFocusedError(false);
-	};
-
-	const hasErrors = Boolean(Object.keys(errors).length);
-
-	useEffect(() => {
-		if (hasErrors && !focusedError) {
-			errorRef.current?.focus();
-			setFocusedError(true);
-		}
-	}, [hasErrors, focusedError, errors]);
 
 	return (
 		<FormExampleMultiStepContainer
@@ -74,9 +53,7 @@ export const FormExampleMultiStep4 = () => {
 			{/** Summary: Step 0 */}
 			<Stack gap={1.5} alignItems="flex-start">
 				<H2>{FORM_STEPS[0].label}</H2>
-				<TextLink as={BaseButton} onClick={() => goToStep(0)}>
-					Change
-				</TextLink>
+				<TextButton onClick={() => goToStep(0)}>Change</TextButton>
 				<DefinitionList>
 					<DefinitionListItem>
 						<DefinitionTerm>
@@ -93,9 +70,7 @@ export const FormExampleMultiStep4 = () => {
 			{/** Summary: Step 1 */}
 			<Stack gap={1.5} alignItems="flex-start">
 				<H2>{FORM_STEPS[1].label}</H2>
-				<TextLink as={BaseButton} onClick={() => goToStep(1)}>
-					Change
-				</TextLink>
+				<TextButton onClick={() => goToStep(1)}>Change</TextButton>
 				<DefinitionList>
 					<DefinitionListItem>
 						<DefinitionTerm>
@@ -114,7 +89,7 @@ export const FormExampleMultiStep4 = () => {
 						</DefinitionTerm>
 						<DefinitionDescription>
 							<VisuallyHidden>{'Answer '}</VisuallyHidden>
-							{formState[1]?.file.map((file) => file.name).join(', ')}
+							{formState[1]?.files.map(({ name }) => name).join(', ')}
 						</DefinitionDescription>
 					</DefinitionListItem>
 				</DefinitionList>
@@ -122,9 +97,7 @@ export const FormExampleMultiStep4 = () => {
 			{/** Summary: Step 2 */}
 			<Stack gap={1.5} alignItems="flex-start">
 				<H2>{FORM_STEPS[2].label}</H2>
-				<TextLink as={BaseButton} onClick={() => goToStep(2)}>
-					Change
-				</TextLink>
+				<TextButton onClick={() => goToStep(2)}>Change</TextButton>
 				<DefinitionList>
 					<DefinitionListItem>
 						<DefinitionTerm>
@@ -141,9 +114,7 @@ export const FormExampleMultiStep4 = () => {
 			{/** Summary: Step 3 */}
 			<Stack gap={1.5} alignItems="flex-start">
 				<H2>{FORM_STEPS[3].label}</H2>
-				<TextLink as={BaseButton} onClick={() => goToStep(3)}>
-					Change
-				</TextLink>
+				<TextButton onClick={() => goToStep(3)}>Change</TextButton>
 				<DefinitionList>
 					<DefinitionListItem>
 						<DefinitionTerm>
@@ -168,29 +139,8 @@ export const FormExampleMultiStep4 = () => {
 				</DefinitionList>
 			</Stack>
 			{/** Declaration form */}
-			<Stack as="form" gap={3} onSubmit={handleSubmit(onSubmit, onError)}>
+			<Stack as="form" gap={3} onSubmit={handleSubmit(onSubmit)} noValidate>
 				<FormStack>
-					{hasErrors && (
-						<PageAlert
-							ref={errorRef}
-							tone="error"
-							title="There is a problem"
-							tabIndex={-1}
-						>
-							<Body>
-								<p>Please correct the following fields and try again</p>
-								<ul>
-									{Object.entries(errors).map(([key, value]) => (
-										<li key={key}>
-											<a href={`#${key}`} onClick={scrollToField}>
-												{value.message}
-											</a>
-										</li>
-									))}
-								</ul>
-							</Body>
-						</PageAlert>
-					)}
 					<Body>
 						<h2>Declaration</h2>
 						<p>I declare that:</p>
@@ -202,14 +152,20 @@ export const FormExampleMultiStep4 = () => {
 							<li>I have read and understood the terms and conditions</li>
 						</ul>
 					</Body>
-					<Checkbox
-						{...register('declaration')}
-						id="declaration"
+					<ControlGroup
+						label="Declaration agreement"
 						invalid={Boolean(errors.declaration?.message)}
+						message={errors.declaration?.message}
+						block
+						required
 					>
-						I confirm that I have read and agree with the above declaration
-						(required)
-					</Checkbox>
+						<Checkbox
+							{...register('declaration')}
+							invalid={Boolean(errors.declaration?.message)}
+						>
+							I confirm that I have read and agree with the above declaration
+						</Checkbox>
+					</ControlGroup>
 				</FormStack>
 				<FormExampleMultiStepActions />
 			</Stack>

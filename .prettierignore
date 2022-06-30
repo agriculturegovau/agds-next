@@ -8,3 +8,5 @@ example-site/public
 .next
 .changeset
 CHANGELOG.md
+# generated component props data
+__generated__

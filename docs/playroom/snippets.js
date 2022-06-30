@@ -293,6 +293,11 @@ items={[
   </ControlGroup>`,
 	},
 	{
+		group: 'Switch',
+		name: 'Basic',
+		code: `<Switch checked={false} label="Show establishments" />`,
+	},
+	{
 		group: 'Searchbox',
 		name: 'Basic',
 		code: `<SearchBox onSubmit={console.log}>
@@ -305,7 +310,7 @@ items={[
 		name: 'Basic',
 		code: `<KeywordList
     items={[
-      { subTitle: 'Department of', title: 'Agriculture and Water Resources' },
+      { subTitle: 'Department of', title: 'Agriculture, Fisheries and Forestry' },
       { subTitle: 'Department of', title: 'Communications and the Arts' },
     ]}
   />`,
@@ -339,7 +344,12 @@ items={[
 	{
 		group: 'CallToAction',
 		name: 'Link',
-		code: `<CallToAction href="#">Sign up</CallToAction>`,
+		code: `<CallToActionLink href="#">Sign up</CallToActionLink>`,
+	},
+	{
+		group: 'CallToAction',
+		name: 'Button',
+		code: `<CallToActionButton onClick={console.log}>Sign up</CallToActionButton>`,
 	},
 	{
 		group: 'Tags',
@@ -592,9 +602,9 @@ items={[
   </HeroSubcategoryBanner>`,
 	},
 	{
-		group: 'SecondaryNav',
+		group: 'SubNav',
 		name: 'Basic',
-		code: `<SecondaryNav
+		code: `<SubNav
     activePath="#code"
     links={[
       { href: '#usage', label: 'Usage' },
@@ -613,6 +623,12 @@ items={[
 		group: 'TextLinkExternal',
 		name: 'Basic',
 		code: `<TextLinkExternal href="https://steelthreads.github.io/agds-next">External link</TextLinkExternal>`,
+	},
+
+	{
+		group: 'Pagination',
+		name: 'Basic',
+		code: `<Pagination currentPage={5} totalPages={10} generateHref={() => '#'} />`,
 	},
 ];
 

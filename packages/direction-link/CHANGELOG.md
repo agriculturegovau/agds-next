@@ -1,5 +1,59 @@
 # @ag.ds-next/direction-link
 
+## 8.0.0
+
+### Patch Changes
+
+- Updated dependencies [cc586fd2]
+- Updated dependencies [1c78eebc]
+- Updated dependencies [aac71787]
+- Updated dependencies [724f47ec]
+  - @ag.ds-next/button@9.1.0
+  - @ag.ds-next/text-link@4.0.0
+
+## 7.0.0
+
+### Patch Changes
+
+- Updated dependencies [743cd7b5]
+  - @ag.ds-next/text-link@3.0.0
+
+## 6.0.0
+
+### Minor Changes
+
+- 00cbe00f: Applied new `BaseButton` component to fix focus accessibility bug in safari.
+- 8ddb8b61: Add support for React version 18
+
+### Patch Changes
+
+- 6fa3aa60: Fixed small eslint warnings after updating import order rule
+- 0e2cc75b: Updated imports of `text-link`
+- ac551394: Updated documentation
+- Updated dependencies [c248ec2e]
+- Updated dependencies [6c5d1563]
+- Updated dependencies [6fa3aa60]
+- Updated dependencies [0e2cc75b]
+- Updated dependencies [ac551394]
+- Updated dependencies [f8d3f116]
+- Updated dependencies [00cbe00f]
+- Updated dependencies [00cbe00f]
+- Updated dependencies [0e2cc75b]
+- Updated dependencies [c248ec2e]
+- Updated dependencies [0e2cc75b]
+- Updated dependencies [dd4f423d]
+- Updated dependencies [afdc5214]
+- Updated dependencies [8ddb8b61]
+- Updated dependencies [c248ec2e]
+- Updated dependencies [6c5d1563]
+- Updated dependencies [00cbe00f]
+  - @ag.ds-next/core@3.0.0
+  - @ag.ds-next/text-link@1.0.0
+  - @ag.ds-next/box@6.0.0
+  - @ag.ds-next/button@9.0.0
+  - @ag.ds-next/icon@9.0.0
+  - @ag.ds-next/text@8.0.0
+
 ## 5.0.0
 
 ### Patch Changes

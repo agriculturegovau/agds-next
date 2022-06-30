@@ -12,7 +12,7 @@ import { Box, Stack } from '@ag.ds-next/box';
 import { Breadcrumbs } from '@ag.ds-next/breadcrumbs';
 import { Button, ButtonGroup } from '@ag.ds-next/button';
 import { Callout } from '@ag.ds-next/callout';
-import { CallToAction } from '@ag.ds-next/call-to-action';
+import { CallToActionLink } from '@ag.ds-next/call-to-action';
 import { Card, CardInner } from '@ag.ds-next/card';
 import { Columns, Column } from '@ag.ds-next/columns';
 import { PageContent } from '@ag.ds-next/content';
@@ -88,7 +88,7 @@ const KitchenSink = ({
 							items={[
 								{
 									subTitle: 'Department of',
-									title: 'Agriculture and Water Resources',
+									title: 'Agriculture, Fisheries and Forestry',
 								},
 								{
 									subTitle: 'Department of',
@@ -169,7 +169,7 @@ const KitchenSink = ({
 								{ href: '#', label: 'LinkList item 3' },
 							]}
 						/>
-						<CallToAction href="#">Call to action</CallToAction>
+						<CallToActionLink href="#">Call to action</CallToActionLink>
 						<Accordion>
 							<AccordionItem title="Accordion">
 								<AccordionItemContent>

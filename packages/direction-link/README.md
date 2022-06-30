@@ -1,8 +1,8 @@
 ---
-title: Direction link
+title: Direction Link
 description: Direction links are accompanied by arrows to help users move quickly to other parts of the page or through a process.
 group: Navigation
-storybookPath: /story/navigation-directionlink--basic
+storybookPath: /story/navigation-directionlink--on-light
 ---
 
 Use direction links to indicate a physical direction, such as:
@@ -28,23 +28,23 @@ Use direction links to indicate a physical direction, such as:
 </Stack>
 ```
 
-### As button element
+### Buttons
 
-For situations where you need the appearance of a `DirectionLink` but the functionality of a HTML `button` element, you can use `as` prop.
+Sometimes direction is needed inside a form. Buttons offer a way to direct users to the next or previous section inside a form.
 
 ```jsx live
 <Stack gap={2}>
-	<DirectionLink as={BaseButton} onClick={console.log} direction="left">
+	<DirectionButton onClick={console.log} direction="left">
 		Back
-	</DirectionLink>
-	<DirectionLink as={BaseButton} onClick={console.log} direction="right">
+	</DirectionButton>
+	<DirectionButton onClick={console.log} direction="right">
 		Next
-	</DirectionLink>
-	<DirectionLink as={BaseButton} onClick={console.log} direction="up">
+	</DirectionButton>
+	<DirectionButton onClick={console.log} direction="up">
 		Top
-	</DirectionLink>
-	<DirectionLink as={BaseButton} onClick={console.log} direction="down">
+	</DirectionButton>
+	<DirectionButton onClick={console.log} direction="down">
 		Skip to footer
-	</DirectionLink>
+	</DirectionButton>
 </Stack>
 ```

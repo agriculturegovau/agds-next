@@ -4,12 +4,17 @@ import {
 	AccordionItemContent,
 } from '@ag.ds-next/accordion';
 import { Logo } from '@ag.ds-next/ag-branding';
-import { BaseButton, Button, ButtonGroup } from '@ag.ds-next/button';
+import {
+	BaseButton,
+	Button,
+	ButtonLink,
+	ButtonGroup,
+} from '@ag.ds-next/button';
 import { Box, Flex, Stack } from '@ag.ds-next/box';
 import { Body, unsetBodyStylesClassname } from '@ag.ds-next/body';
 import { useTernaryState, tokens } from '@ag.ds-next/core';
 import { Text } from '@ag.ds-next/text';
-import { TextLink, TextLinkExternal } from '@ag.ds-next/text-link';
+import { TextLink, TextButton, TextLinkExternal } from '@ag.ds-next/text-link';
 import { Heading, H1, H2, H3, H4, H5, H6 } from '@ag.ds-next/heading';
 import { LinkList } from '@ag.ds-next/link-list';
 import { Breadcrumbs } from '@ag.ds-next/breadcrumbs';
@@ -22,14 +27,17 @@ import {
 	CardLink,
 	CardList,
 } from '@ag.ds-next/card';
-import { CallToAction } from '@ag.ds-next/call-to-action';
+import {
+	CallToActionLink,
+	CallToActionButton,
+} from '@ag.ds-next/call-to-action';
 import { Callout, CalloutTitle } from '@ag.ds-next/callout';
 import { Header, HeaderBrand, HeaderContainer } from '@ag.ds-next/header';
 import { FileUpload } from '@ag.ds-next/file-upload';
 import { Footer, FooterDivider } from '@ag.ds-next/footer';
 import { FormStack } from '@ag.ds-next/form-stack';
 import { MainNav } from '@ag.ds-next/main-nav';
-import { SecondaryNav } from '@ag.ds-next/secondary-nav';
+import { SubNav } from '@ag.ds-next/sub-nav';
 import {
 	SideNav,
 	SideNavContainer,
@@ -37,6 +45,7 @@ import {
 	SideNavGroup,
 	SideNavTitle,
 } from '@ag.ds-next/side-nav';
+import { Switch } from '@ag.ds-next/switch';
 import {
 	AlertIcon,
 	AlertFilledIcon,
@@ -89,7 +98,7 @@ import {
 	SkipLinkContainer,
 	SkipLinkItem,
 } from '@ag.ds-next/skip-link';
-import { DirectionLink } from '@ag.ds-next/direction-link';
+import { DirectionLink, DirectionButton } from '@ag.ds-next/direction-link';
 import { Tags } from '@ag.ds-next/tags';
 import {
 	Content,
@@ -117,6 +126,7 @@ import {
 	NotificationBadge,
 	IndicatorDot,
 } from '@ag.ds-next/badge';
+import { Pagination, PaginationButtons } from '@ag.ds-next/pagination';
 
 export const designSystemComponents = {
 	Accordion,
@@ -125,12 +135,14 @@ export const designSystemComponents = {
 	AgLogo,
 	BaseButton,
 	Button,
+	ButtonLink,
 	ButtonGroup,
 	Box,
 	Flex,
 	Callout,
 	CalloutTitle,
-	CallToAction,
+	CallToActionLink,
+	CallToActionButton,
 	Card,
 	CardFooter,
 	CardHeader,
@@ -151,6 +163,7 @@ export const designSystemComponents = {
 	TableHead,
 	Text,
 	TextLink,
+	TextButton,
 	TextLinkExternal,
 	Heading,
 	H1,
@@ -169,7 +182,7 @@ export const designSystemComponents = {
 	HeaderBrand,
 	HeaderContainer,
 	MainNav,
-	SecondaryNav,
+	SubNav,
 	Modal,
 	PageAlert,
 	SideNav,
@@ -216,7 +229,9 @@ export const designSystemComponents = {
 	SkipLinks,
 	SkipLinkContainer,
 	SkipLinkItem,
+	Switch,
 	DirectionLink,
+	DirectionButton,
 	Tags,
 	Content,
 	PageContent,
@@ -241,4 +256,6 @@ export const designSystemComponents = {
 	StatusBadge,
 	NotificationBadge,
 	IndicatorDot,
+	Pagination,
+	PaginationButtons,
 };

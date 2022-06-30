@@ -1,5 +1,159 @@
 # @ag.ds-next/docs
 
+## 0.6.0
+
+### Minor Changes
+
+- cc586fd2: New package documentation layout
+- 724f47ec: Removed `target="_blank"` from all links as per accessibility recommendations.
+
+### Patch Changes
+
+- e46ac4e1: Disable scrolling to the top of the page when using `SubNav`
+- 55e17b60: Update examples with new branding
+- bb77f99d: Update template thumbnail generation script to exclude template header from screenshots
+- Updated dependencies [606ee946]
+- Updated dependencies [606ee946]
+- Updated dependencies [3261a916]
+- Updated dependencies [0ee4ad39]
+- Updated dependencies [cc586fd2]
+- Updated dependencies [bdb9ab14]
+- Updated dependencies [777c2f11]
+- Updated dependencies [5c075955]
+- Updated dependencies [1c78eebc]
+- Updated dependencies [55e17b60]
+- Updated dependencies [aac71787]
+- Updated dependencies [fe651155]
+- Updated dependencies [724f47ec]
+- Updated dependencies [55e17b60]
+- Updated dependencies [42a960f1]
+- Updated dependencies [11959839]
+  - @ag.ds-next/file-upload@4.0.0
+  - @ag.ds-next/pagination@1.0.0
+  - @ag.ds-next/switch@1.0.0
+  - @ag.ds-next/accordion@8.0.0
+  - @ag.ds-next/button@9.1.0
+  - @ag.ds-next/sub-nav@1.0.0
+  - @ag.ds-next/select@9.0.1
+  - @ag.ds-next/text-link@4.0.0
+  - @ag.ds-next/ag-branding@6.1.0
+  - @ag.ds-next/breadcrumbs@12.0.0
+  - @ag.ds-next/main-nav@12.0.0
+  - @ag.ds-next/keyword-list@7.0.0
+  - @ag.ds-next/call-to-action@8.0.0
+  - @ag.ds-next/date-picker@6.0.0
+  - @ag.ds-next/direction-link@8.0.0
+  - @ag.ds-next/progress-indicator@10.0.0
+  - @ag.ds-next/search-box@10.0.0
+  - @ag.ds-next/side-nav@11.0.0
+  - @ag.ds-next/skip-link@7.0.0
+  - @ag.ds-next/task-list@8.0.0
+  - @ag.ds-next/inpage-nav@7.0.0
+  - @ag.ds-next/link-list@10.0.0
+  - @ag.ds-next/tags@7.0.0
+
+## 0.5.2
+
+### Patch Changes
+
+- Updated dependencies [743cd7b5]
+  - @ag.ds-next/text-link@3.0.0
+  - @ag.ds-next/breadcrumbs@11.0.0
+  - @ag.ds-next/call-to-action@7.0.0
+  - @ag.ds-next/direction-link@7.0.0
+  - @ag.ds-next/inpage-nav@6.0.0
+  - @ag.ds-next/keyword-list@6.0.0
+  - @ag.ds-next/link-list@9.0.0
+  - @ag.ds-next/progress-indicator@9.0.0
+  - @ag.ds-next/tags@6.0.0
+  - @ag.ds-next/task-list@7.0.0
+
+## 0.5.1
+
+### Patch Changes
+
+- 6fa3aa60: Fixed small eslint warnings after updating import order rule
+- 0e2cc75b: Updated imports of `text-link`
+- c248ec2e: Updated `LinkComponent` example to include `forwardRef`
+- Updated dependencies [c248ec2e]
+- Updated dependencies [6c5d1563]
+- Updated dependencies [33310e30]
+- Updated dependencies [dcf1c2ad]
+- Updated dependencies [6fa3aa60]
+- Updated dependencies [9e94811e]
+- Updated dependencies [57dd916e]
+- Updated dependencies [0e2cc75b]
+- Updated dependencies [ac551394]
+- Updated dependencies [f8d3f116]
+- Updated dependencies [00cbe00f]
+- Updated dependencies [27e26e25]
+- Updated dependencies [8d25d373]
+- Updated dependencies [4d5acb08]
+- Updated dependencies [00cbe00f]
+- Updated dependencies [0e2cc75b]
+- Updated dependencies [27e26e25]
+- Updated dependencies [c248ec2e]
+- Updated dependencies [0e2cc75b]
+- Updated dependencies [5729dc55]
+- Updated dependencies [57ce7d01]
+- Updated dependencies [989b45b4]
+- Updated dependencies [2d964cc7]
+- Updated dependencies [dd4f423d]
+- Updated dependencies [5729dc55]
+- Updated dependencies [1d45cb74]
+- Updated dependencies [7a92bc96]
+- Updated dependencies [afdc5214]
+- Updated dependencies [8ddb8b61]
+- Updated dependencies [c248ec2e]
+- Updated dependencies [6c5d1563]
+- Updated dependencies [d748f7c9]
+- Updated dependencies [00cbe00f]
+- Updated dependencies [bda91113]
+  - @ag.ds-next/core@3.0.0
+  - @ag.ds-next/text-link@1.0.0
+  - @ag.ds-next/accordion@7.0.0
+  - @ag.ds-next/date-picker@5.0.0
+  - @ag.ds-next/a11y@1.2.0
+  - @ag.ds-next/body@7.0.0
+  - @ag.ds-next/box@6.0.0
+  - @ag.ds-next/breadcrumbs@10.0.0
+  - @ag.ds-next/button@9.0.0
+  - @ag.ds-next/call-to-action@6.0.0
+  - @ag.ds-next/callout@5.0.0
+  - @ag.ds-next/card@5.0.0
+  - @ag.ds-next/columns@6.0.0
+  - @ag.ds-next/content@7.0.0
+  - @ag.ds-next/control-input@9.0.0
+  - @ag.ds-next/direction-link@6.0.0
+  - @ag.ds-next/field@8.0.0
+  - @ag.ds-next/fieldset@5.0.0
+  - @ag.ds-next/file-upload@3.0.0
+  - @ag.ds-next/footer@7.0.0
+  - @ag.ds-next/form-stack@4.0.0
+  - @ag.ds-next/header@9.0.0
+  - @ag.ds-next/heading@7.0.0
+  - @ag.ds-next/hero-banner@4.0.0
+  - @ag.ds-next/icon@9.0.0
+  - @ag.ds-next/inpage-nav@5.0.0
+  - @ag.ds-next/keyword-list@5.0.0
+  - @ag.ds-next/link-list@8.0.0
+  - @ag.ds-next/loading@4.0.0
+  - @ag.ds-next/main-nav@11.0.0
+  - @ag.ds-next/progress-indicator@8.0.0
+  - @ag.ds-next/search-box@9.0.0
+  - @ag.ds-next/secondary-nav@2.0.0
+  - @ag.ds-next/select@9.0.0
+  - @ag.ds-next/side-nav@10.0.0
+  - @ag.ds-next/skip-link@6.0.0
+  - @ag.ds-next/table@4.0.0
+  - @ag.ds-next/tags@5.0.0
+  - @ag.ds-next/task-list@6.0.0
+  - @ag.ds-next/text-input@9.0.0
+  - @ag.ds-next/textarea@9.0.0
+  - @ag.ds-next/text@8.0.0
+  - @ag.ds-next/page-alert@5.0.0
+  - @ag.ds-next/ag-branding@6.0.0
+
 ## 0.5.0
 
 ### Minor Changes

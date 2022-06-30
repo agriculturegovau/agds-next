@@ -9,7 +9,10 @@ export default {
 } as ComponentMeta<typeof KeywordList>;
 
 const exampleItems = [
-	{ subTitle: 'Department of', title: 'Agriculture and Water Resources' },
+	{
+		subTitle: 'Department of',
+		title: 'Agriculture, Fisheries and Forestry',
+	},
 	{ subTitle: 'Department of', title: 'Communications and the Arts' },
 ];
 
@@ -33,7 +36,7 @@ const exampleLinks = [
 	{
 		href: '#',
 		subTitle: 'Department of',
-		title: 'Agriculture and Water Resources',
+		title: 'Agriculture, Fisheries and Forestry',
 	},
 	{
 		href: '#',
@@ -54,7 +57,7 @@ export const Modular: ComponentStory<typeof KeywordListContainer> = () => (
 		<KeywordListItem
 			href="#one"
 			title="Department of"
-			subTitle="Agriculture and Water Resources"
+			subTitle="Agriculture, Fisheries and Forestry"
 		/>
 		<KeywordListItem
 			title="Department of"

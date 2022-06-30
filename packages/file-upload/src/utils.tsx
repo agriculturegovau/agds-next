@@ -12,33 +12,33 @@ export const getFilesTotal = (files: { size: number }[]) => {
 };
 
 export const fileTypeMapping = {
-	'application/msword': '.word',
-	'application/pdf': '.pdf',
-	'application/rtf': '.rtf',
-	'application/vnd.ms-excel': '.xlsx',
-	'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet': '.xls',
+	'application/msword': 'word',
+	'application/pdf': 'pdf',
+	'application/rtf': 'rtf',
+	'application/vnd.ms-excel': 'xlsx',
+	'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet': 'xls',
 	'application/vnd.openxmlformats-officedocument.wordprocessingml.document':
-		'.doc',
-	'application/zip': '.zip',
+		'doc',
+	'application/zip': 'zip',
 	'audio/*': 'Any audio file',
-	'audio/mpeg': '.mpeg audio',
-	'audio/wav': '.wav',
+	'audio/mpeg': 'mpeg audio',
+	'audio/wav': 'wav',
 	'image/*': 'Any image',
-	'image/gif': '.gif',
-	'image/heic': '.heic',
-	'image/jpeg': '.jpeg',
-	'image/jpg': '.jpg',
-	'image/png': '.png',
-	'image/svg+xml': '.svg',
-	'image/tiff': '.tiff',
-	'image/webp': '.webp',
+	'image/gif': 'gif',
+	'image/heic': 'heic',
+	'image/jpeg': 'jpeg',
+	'image/jpg': 'jpg',
+	'image/png': 'png',
+	'image/svg+xml': 'svg',
+	'image/tiff': 'tiff',
+	'image/webp': 'webp',
 	'text/*': 'text',
-	'text/csv': '.csv',
-	'text/plain': '.txt',
-	'text/rtf': '.rtf',
+	'text/csv': 'csv',
+	'text/plain': 'txt',
+	'text/rtf': 'rtf',
 	'video/*': 'Anv video file',
-	'video/mp4': '.mp4',
-	'video/mpeg': '.mpeg video',
+	'video/mp4': 'mp4',
+	'video/mpeg': 'mpeg video',
 };
 
 // Accepted MIME types
@@ -79,12 +79,12 @@ export const getErrorSummary = (
 	const firstError = rejections[0].errors[0];
 
 	if (firstError.code === 'too-many-files') {
-		return `Too many files were selected. Up to ${maxFiles} can be picked`;
+		return `You can not select more than ${maxFiles} files`;
 	}
 
 	if (rejections.length === 1) {
 		if (firstError.code === 'file-too-large') {
-			return `Some files exceed ${formattedMaxFileSize}`;
+			return `Each file must be smaller than ${formattedMaxFileSize}`;
 		}
 
 		if (firstError.code === 'file-invalid-type') {
@@ -92,5 +92,5 @@ export const getErrorSummary = (
 		}
 	}
 
-	return 'There was an issue with at least one of the selected files';
+	return 'There’s an issue with one or more of your files';
 };

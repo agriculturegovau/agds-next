@@ -1,5 +1,40 @@
 # @ag.ds-next/date-picker
 
+## 6.0.0
+
+### Patch Changes
+
+- Updated dependencies [cc586fd2]
+- Updated dependencies [724f47ec]
+  - @ag.ds-next/button@9.1.0
+
+## 5.0.0
+
+### Minor Changes
+
+- dcf1c2ad: Fixed bug where the text input would not reflect the `value` prop
+- 8ddb8b61: Add support for React version 18
+
+### Patch Changes
+
+- 6fa3aa60: Fixed small eslint warnings after updating import order rule
+- afdc5214: Fixed small eslint warnings
+- Updated dependencies [c248ec2e]
+- Updated dependencies [6fa3aa60]
+- Updated dependencies [f8d3f116]
+- Updated dependencies [00cbe00f]
+- Updated dependencies [00cbe00f]
+- Updated dependencies [afdc5214]
+- Updated dependencies [8ddb8b61]
+- Updated dependencies [6c5d1563]
+- Updated dependencies [00cbe00f]
+  - @ag.ds-next/core@3.0.0
+  - @ag.ds-next/box@6.0.0
+  - @ag.ds-next/button@9.0.0
+  - @ag.ds-next/field@8.0.0
+  - @ag.ds-next/icon@9.0.0
+  - @ag.ds-next/text-input@9.0.0
+
 ## 4.0.0
 
 ### Patch Changes

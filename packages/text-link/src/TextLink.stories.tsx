@@ -1,9 +1,9 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { BaseButton } from '@ag.ds-next/button';
-import { TextLink } from './TextLink';
+import { TextLink, TextButton } from './TextLink';
 
 export default {
 	title: 'navigation/TextLink',
+	subcomponents: { TextButton },
 	component: TextLink,
 } as ComponentMeta<typeof TextLink>;
 
@@ -14,9 +14,10 @@ const Template: ComponentStory<typeof TextLink> = (args) => {
 export const Basic = Template.bind({});
 Basic.args = { children: 'Internal link', href: '#' };
 
-export const AsButton = Template.bind({});
-AsButton.args = {
-	as: BaseButton,
+export const Button: ComponentStory<typeof TextButton> = (args) => (
+	<TextButton {...args} />
+);
+Button.args = {
 	children: 'Button element',
 	onClick: console.log,
 };
