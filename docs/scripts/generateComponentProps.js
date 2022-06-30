@@ -10,6 +10,9 @@ const outputFolder = path.join((process.cwd(), '__generated__'));
 const outputFile = path.join(outputFolder, 'componentProps.json');
 
 const tsConfigParser = docgen.withCustomConfig('./tsconfig.json', {
+	propFilter: {
+		skipPropsWithName: ['className', 'key'],
+	},
 	skipChildrenPropWithoutDoc: false,
 	savePropValueAsString: true,
 	shouldRemoveUndefinedFromOptional: true,
