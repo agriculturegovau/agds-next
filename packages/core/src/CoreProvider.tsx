@@ -26,20 +26,14 @@ export type LinkProps = PropsWithChildren<{
 	download?: NativeLinkProps['download'];
 	/** The URL that the hyperlink points to. */
 	href?: string;
-	/** Hints at the human language of the linked URL. */
-	hreflang?: string;
 	/** The ID of the hyperlink. */
 	id?: string;
-	/** A space-separated list of URLs. */
-	ping?: string;
 	/** How much of the referrer to send when following the link. */
 	referrerPolicy?: NativeLinkProps['referrerPolicy'];
 	/** The relationship of the linked URL as space-separated link types. */
 	rel?: string;
 	/** Where to display the linked URL, as the name for a browsing context (a tab, window, or <iframe>). */
 	target?: NativeLinkProps['target'];
-	/** Hints at the linked URL's format with a MIME type. No built-in functionality. */
-	type?: string;
 }>;
 
 export const coreContext = createContext({
