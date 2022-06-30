@@ -120,8 +120,9 @@ export const bodyClass = css({
 		},
 	},
 
-	[`* + table`]: {
+	[`* + table:not(.${unsetBodyStylesClassname} *)`]: {
 		marginTop: mapSpacing(1.5),
+		' + table': { marginTop: mapSpacing(3) },
 	},
 
 	[`h1${notSelector}`]: {
