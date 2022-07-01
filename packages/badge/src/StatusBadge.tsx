@@ -2,8 +2,8 @@ import { forwardRef, ReactNode } from 'react';
 import { Flex } from '@ag.ds-next/box';
 import { mapSpacing } from '@ag.ds-next/core';
 import {
-	SuccessFilledIcon,
-	AlertFilledIcon,
+	SuccessIcon,
+	AlertIcon,
 	InfoFilledIcon,
 	WarningFilledIcon,
 } from '@ag.ds-next/icon';
@@ -19,8 +19,8 @@ export type StatusBadgeProps = {
 const width = '1.375em';
 const iconMap = {
 	neutral: () => <IndicatorDot tone="neutral" />,
-	success: () => <SuccessFilledIcon color="success" css={{ width }} />,
-	error: () => <AlertFilledIcon color="error" css={{ width }} />,
+	success: () => <SuccessIcon color="success" css={{ width }} />,
+	error: () => <AlertIcon color="error" css={{ width }} />,
 	info: () => <InfoFilledIcon color="info" css={{ width }} />,
 	warning: () => <WarningFilledIcon color="warning" css={{ width }} />,
 };
