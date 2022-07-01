@@ -97,6 +97,9 @@ jobs:
       - name: Typescript
         run: yarn lint:typescript
 
+      - name: Build Docs
+        run: yarn docs:build && yarn storybook:build && yarn:playroom:build
+
   preconstruct:
     name: Preconstruct
     runs-on: ubuntu-latest
