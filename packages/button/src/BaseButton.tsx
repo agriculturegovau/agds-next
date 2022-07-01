@@ -23,6 +23,8 @@ export type BaseButtonProps = PropsWithChildren<{
 	className?: string;
 	/** When true, prevents onClick from firing. */
 	disabled?: boolean;
+	/** Defines an identifier (ID) which must be unique */
+	id?: string;
 	/** Function to be fired following a click event of the button. */
 	onClick?: NativeButtonProps['onClick'];
 	/** Provide an alternate type if the button is within a form. */
