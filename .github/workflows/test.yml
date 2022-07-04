@@ -130,9 +130,6 @@ jobs:
       - name: Install dependencies
         run: yarn
 
-      # - name: Build packages
-      #   run: yarn build
-
       - name: Build Website
         run: yarn docs:build
 
@@ -144,3 +141,6 @@ jobs:
 
       - name: Build Templates
         run: yarn example:build
+
+      - name: Build packages
+        run: yarn build
