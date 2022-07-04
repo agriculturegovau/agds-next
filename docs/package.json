@@ -60,7 +60,7 @@
 		"@ag.ds-next/text-input": "9.0.0",
 		"@ag.ds-next/text-link": "4.0.0",
 		"@ag.ds-next/textarea": "9.0.0",
-		"@preconstruct/next": "^3.0.1",
+		"@preconstruct/next": "^4.0.0",
 		"@untitled-docs/live-code": "^0.3.0",
 		"clipboard-copy": "^4.0.1",
 		"gray-matter": "^4.0.3",
