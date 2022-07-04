@@ -46,15 +46,17 @@ const snippets = [
 		group: 'Footer',
 		name: 'Basic',
 		code: `<Footer>
-    <LinkList
-      horizontal
-      links={[
-        { href: '#', label: 'Home' },
-        { href: '#', label: 'Terms and conditions' },
-        { href: '#', label: 'Privacy policy' },
-        { href: '#', label: 'A really long link title' },
-      ]}
-    />
+    <nav aria-label="footer">
+      <LinkList
+        horizontal
+        links={[
+          { href: '#', label: 'Home' },
+          { href: '#', label: 'Terms and conditions' },
+          { href: '#', label: 'Privacy policy' },
+          { href: '#', label: 'A really long link title' },
+        ]}
+      />
+    </nav>
     <FooterDivider />
     <Text fontSize="xs" maxWidth={tokens.maxWidth.bodyText}>
       We acknowledge the traditional owners of country throughout Australia and recognise their continuing connection to land, waters and culture. 
