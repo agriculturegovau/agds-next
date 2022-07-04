@@ -10,9 +10,9 @@ import { printTheme } from './printTheme';
 
 export type CoreProps = PropsWithChildren<
 	{
-		/** If true, a CSS reset will be applied */
+		/** If true, a CSS reset will be applied. */
 		applyReset?: boolean;
-		/** Enables overwriting of the default theme */
+		/** Enables overwriting of the default theme. */
 		theme?: Theme;
 	} & CoreProviderProps
 >;
