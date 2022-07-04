@@ -46,28 +46,22 @@ const snippets = [
 		group: 'Footer',
 		name: 'Basic',
 		code: `<Footer>
-    <nav aria-label="footer">
-      <LinkList
-        horizontal
-        links={[
-          { href: '#', label: 'Home' },
-          { href: '#', label: 'Terms and conditions' },
-          { href: '#', label: 'Privacy policy' },
-          { href: '#', label: 'A really long link title' },
-        ]}
-      />
-    </nav>
+    <LinkList
+      horizontal
+      links={[
+        { href: '#', label: 'Home' },
+        { href: '#', label: 'Terms and conditions' },
+        { href: '#', label: 'Privacy policy' },
+        { href: '#', label: 'A really long link title' },
+      ]}
+    />
     <FooterDivider />
-    <Text>
-      <small>
-        &copy; Commonwealth of Australia,{' '}
-        <TextLink
-          href="https://github.com/govau/design-system-components/blob/master/LICENSE.md"
-          rel="external license"
-        >
-          MIT licensed
-        </TextLink>
-      </small>
+    <Text fontSize="xs" maxWidth={tokens.maxWidth.bodyText}>
+      We acknowledge the traditional owners of country throughout Australia and recognise their continuing connection to land, waters and culture. 
+      We pay our respects to their Elders past, present and emerging.
+    </Text>
+    <Text fontSize="xs" maxWidth={tokens.maxWidth.bodyText}>
+      &copy; Department of Agriculture, Fisheries and Forestry
     </Text>
   </Footer>`,
 	},
@@ -133,10 +127,12 @@ const snippets = [
       <Logo />
     </Box>
     <FooterDivider />
-    <Text>
-      <small>
-        &copy; Commonwealth of Australia
-      </small>
+    <Text fontSize="xs" maxWidth={tokens.maxWidth.bodyText}>
+      We acknowledge the traditional owners of country throughout Australia and recognise their continuing connection to land, waters and culture. 
+      We pay our respects to their Elders past, present and emerging.
+    </Text>
+    <Text fontSize="xs" maxWidth={tokens.maxWidth.bodyText}>
+      &copy; Department of Agriculture, Fisheries and Forestry
     </Text>
   </Footer>
   `,
