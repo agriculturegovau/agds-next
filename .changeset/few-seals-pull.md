@@ -3,4 +3,4 @@
 '@ag.ds-next/side-nav': patch
 ---
 
-Improved overflow 
+Improved overflow of mobile version
