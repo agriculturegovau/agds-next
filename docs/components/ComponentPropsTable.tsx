@@ -29,13 +29,13 @@ export const ComponentPropsTable = ({ data }: ComponentPropsTableProps) => (
 		<TableCaption>{data.displayName} Props</TableCaption>
 		<TableHead>
 			<tr>
-				<TableHeader scope="col" width="33%">
+				<TableHeader scope="col" width="25%">
 					Prop
 				</TableHeader>
-				<TableHeader scope="col" width="33%">
+				<TableHeader scope="col" width="35%">
 					Type
 				</TableHeader>
-				<TableHeader scope="col" width="33%">
+				<TableHeader scope="col" width="45%">
 					Description
 				</TableHeader>
 			</tr>
