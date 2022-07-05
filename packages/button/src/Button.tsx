@@ -12,7 +12,7 @@ import {
 import { BaseButton, BaseButtonProps } from './BaseButton';
 
 type CommonButtonProps = {
-	/** If true, the button will stretch to the fill the width of its container/ */
+	/** If true, the button will stretch to the fill the width of its container */
 	block?: boolean;
 	/** The icon to display before the buttons children. */
 	iconBefore?: ComponentType<IconProps>;
@@ -22,7 +22,7 @@ type CommonButtonProps = {
 	loading?: boolean;
 	/** Text to read out to assistive technologies when button is loading. */
 	loadingLabel?: string;
-	/** The size of the button/ */
+	/** The size of the button */
 	size?: ButtonSize;
 	/** The variant of the button. */
 	variant?: ButtonVariant;
