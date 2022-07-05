@@ -3,6 +3,7 @@ import { Box } from '@ag.ds-next/box';
 import { boxPalette } from '@ag.ds-next/core';
 
 export type TableProps = PropsWithChildren<{
+	/** If true, alternating rows will have a different background colour. */
 	striped?: boolean;
 }>;
 
