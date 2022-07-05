@@ -35,7 +35,7 @@ export const ComponentPropsTable = ({ data }: ComponentPropsTableProps) => (
 				<TableHeader scope="col" width="35%">
 					Type
 				</TableHeader>
-				<TableHeader scope="col" width="45%">
+				<TableHeader scope="col" width="40%">
 					Description
 				</TableHeader>
 			</tr>
