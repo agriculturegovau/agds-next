@@ -13,16 +13,18 @@ const AnimatedBox = animated(Box);
 
 type LoadingDotsSizes = keyof typeof loadingDotsSizes;
 
-type HTMLProps = Pick<
-	HTMLAttributes<HTMLDivElement>,
-	'aria-label' | 'aria-live' | 'role'
->;
+type DivProps = HTMLAttributes<HTMLDivElement>;
 
-export type LoadingDotsProps = HTMLProps & {
-	'aria-label'?: string;
-	'aria-live'?: 'off' | 'assertive' | 'polite';
+export type LoadingDotsProps = {
+	/** Describes the loading element to assistive technologies. */
+	'aria-label'?: DivProps['aria-label'];
+	/** Indicates that an element will be updated, and describes the types of updates the user agents, assistive technologies, and user can expect from the live region. */
+	'aria-live'?: DivProps['aria-live'];
+	/** ARIA roles provide semantic meaning to content. */
+	role?: DivProps['role'];
+	/** The CSS class name, typically generated from the `css` prop. */
 	className?: string;
-	/** The size and number of the dots */
+	/** The size and number of the dots. */
 	size?: LoadingDotsSizes;
 };
 
