@@ -29,14 +29,14 @@ export type Options = (Option | OptionGroup)[];
 type NativeSelectProps = SelectHTMLAttributes<HTMLSelectElement>;
 
 type BaseSelectProps = {
-	disabled?: boolean;
-	id?: string;
-	name?: string;
+	disabled?: NativeSelectProps['disabled'];
+	id?: NativeSelectProps['id'];
+	name?: NativeSelectProps['name'];
 	onBlur?: NativeSelectProps['onBlur'];
 	onChange?: NativeSelectProps['onChange'];
 	onFocus?: NativeSelectProps['onFocus'];
-	placeholder?: string;
-	value?: string;
+	placeholder?: NativeSelectProps['placeholder'];
+	value?: NativeSelectProps['value'];
 };
 
 export type SelectProps = BaseSelectProps & {
