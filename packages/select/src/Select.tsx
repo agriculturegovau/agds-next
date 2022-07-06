@@ -28,7 +28,7 @@ export type Options = (Option | OptionGroup)[];
 
 type NativeSelectProps = SelectHTMLAttributes<HTMLSelectElement>;
 
-type BaseProps = {
+type BaseSelectProps = {
 	disabled?: boolean;
 	id?: string;
 	name?: string;
@@ -39,16 +39,25 @@ type BaseProps = {
 	value?: string;
 };
 
-export type SelectProps = BaseProps & {
+export type SelectProps = BaseSelectProps & {
+	/** Describes the purpose of the field. */
 	label: string;
-	required?: boolean;
-	hint?: string;
-	message?: string;
-	invalid?: boolean;
-	valid?: boolean;
-	block?: boolean;
-	maxWidth?: FieldMaxWidth;
+	/** The list of options to display in the drop-down list. */
 	options: Options;
+	/** If false, "(optional)" will be appended to the label. */
+	required?: boolean;
+	/** Provides extra information about the field. */
+	hint?: string;
+	/** Message to show when the field is invalid or valid. */
+	message?: string;
+	/** If true, the invalid state will be rendered. */
+	invalid?: boolean;
+	/** If true, the valid state will be rendered. */
+	valid?: boolean;
+	/** If true, the field will stretch to the fill the width of its container. */
+	block?: boolean;
+	/** The maximum width of the field. */
+	maxWidth?: FieldMaxWidth;
 };
 
 export const Select = forwardRef<HTMLSelectElement, SelectProps>(
