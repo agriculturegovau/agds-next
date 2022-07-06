@@ -4,7 +4,7 @@ import { Flex } from '@ag.ds-next/box';
 type NativeFormProps = FormHTMLAttributes<HTMLFormElement>;
 
 export type SearchBoxProps = PropsWithChildren<{
-	'aria-label': string;
+	'aria-label'?: string;
 	onSubmit: NativeFormProps['onSubmit'];
 }>;
 
