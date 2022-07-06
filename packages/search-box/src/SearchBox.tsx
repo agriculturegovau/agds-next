@@ -5,7 +5,7 @@ type NativeFormProps = FormHTMLAttributes<HTMLFormElement>;
 
 export type SearchBoxProps = PropsWithChildren<{
 	'aria-label'?: string;
-	onSubmit: NativeFormProps['onSubmit'];
+	onSubmit?: NativeFormProps['onSubmit'];
 }>;
 
 export const SearchBox = ({
