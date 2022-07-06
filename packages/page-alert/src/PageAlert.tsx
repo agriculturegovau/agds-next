@@ -1,4 +1,4 @@
-import { forwardRef, PropsWithChildren } from 'react';
+import { forwardRef, HTMLAttributes, PropsWithChildren } from 'react';
 import { Flex } from '@ag.ds-next/box';
 import { globalPalette, tokens } from '@ag.ds-next/core';
 import {
@@ -11,9 +11,11 @@ import { PageAlertTitle } from './PageAlertTitle';
 
 export type PageAlertTone = 'success' | 'error' | 'warning' | 'info';
 
+type DivProps = HTMLAttributes<HTMLDivElement>;
+
 export type PageAlertProps = PropsWithChildren<{
 	id?: string;
-	role?: string;
+	role?: DivProps['role'];
 	tabIndex?: number;
 	title?: string;
 	tone: PageAlertTone;
