@@ -7,6 +7,7 @@ type NativeTextareaProps = TextareaHTMLAttributes<HTMLTextAreaElement>;
 type BaseProps = {
 	disabled?: boolean;
 	id?: string;
+	inputMode?: NativeTextareaProps['inputMode'];
 	name?: string;
 	onBlur?: NativeTextareaProps['onBlur'];
 	onChange?: NativeTextareaProps['onChange'];

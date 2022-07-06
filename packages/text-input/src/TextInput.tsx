@@ -8,7 +8,22 @@ import {
 	tokens,
 } from '@ag.ds-next/core';
 
-export type TextInputProps = InputHTMLAttributes<HTMLInputElement> & {
+type NativeInputProps = InputHTMLAttributes<HTMLInputElement>;
+
+type BaseProps = {
+	disabled?: boolean;
+	id?: string;
+	inputMode?: NativeInputProps['inputMode'];
+	name?: string;
+	onBlur?: NativeInputProps['onBlur'];
+	onChange?: NativeInputProps['onChange'];
+	onFocus?: NativeInputProps['onFocus'];
+	pattern?: NativeInputProps['id'];
+	value?: NativeInputProps['value'];
+	type?: NativeInputProps['type'];
+};
+
+export type TextInputProps = BaseProps & {
 	label: string;
 	required?: boolean;
 	hint?: string;
