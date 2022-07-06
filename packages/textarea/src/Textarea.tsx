@@ -2,7 +2,21 @@ import { forwardRef, TextareaHTMLAttributes } from 'react';
 import { Field, FieldMaxWidth } from '@ag.ds-next/field';
 import { textInputStyles } from '@ag.ds-next/text-input';
 
-export type TextareaProps = TextareaHTMLAttributes<HTMLTextAreaElement> & {
+type NativeTextareaProps = TextareaHTMLAttributes<HTMLTextAreaElement>;
+
+type BaseProps = {
+	disabled?: boolean;
+	id?: string;
+	name?: string;
+	onBlur?: NativeTextareaProps['onBlur'];
+	onChange?: NativeTextareaProps['onChange'];
+	onFocus?: NativeTextareaProps['onFocus'];
+	pattern?: NativeTextareaProps['id'];
+	rows?: NativeTextareaProps['rows'];
+	value?: NativeTextareaProps['value'];
+};
+
+export type TextareaProps = BaseProps & {
 	label: string;
 	required?: boolean;
 	hint?: string;
@@ -36,7 +50,6 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
 			valid,
 			multiline: true,
 		});
-
 		return (
 			<Field
 				label={label}
