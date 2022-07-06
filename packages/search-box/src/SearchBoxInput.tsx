@@ -7,13 +7,13 @@ import { SearchBoxLabel } from './SearchBoxLabel';
 type NativeInputProps = InputHTMLAttributes<HTMLInputElement>;
 
 type BaseSearchBoxInputProps = {
-	id?: string;
-	name?: string;
+	id?: NativeInputProps['id'];
+	name?: NativeInputProps['name'];
 	onBlur?: NativeInputProps['onBlur'];
 	onChange?: NativeInputProps['onChange'];
 	onFocus?: NativeInputProps['onFocus'];
-	placeholder?: string;
-	value?: string;
+	placeholder?: NativeInputProps['placeholder'];
+	value?: NativeInputProps['value'];
 };
 
 export type SearchBoxInputProps = BaseSearchBoxInputProps & {
