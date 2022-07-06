@@ -2,7 +2,7 @@ import { Text } from '@ag.ds-next/text';
 import { visuallyHiddenStyles } from '@ag.ds-next/a11y';
 import { mapSpacing } from '@ag.ds-next/core';
 
-export type SearchBoxLabelprops = {
+export type SearchBoxLabelProps = {
 	children: string;
 	htmlFor: string;
 	visible: boolean;
@@ -12,7 +12,7 @@ export const SearchBoxLabel = ({
 	children,
 	htmlFor,
 	visible,
-}: SearchBoxLabelprops) => {
+}: SearchBoxLabelProps) => {
 	return (
 		<Text
 			as="label"
