@@ -1,0 +1,28 @@
+/*
+object-assign
+(c) Sindre Sorhus
+@license MIT
+*/
+
+/*!
+    localForage -- Offline Storage, Improved
+    Version 1.10.0
+    https://localforage.github.io/localForage
+    (c) 2013-2017 Mozilla, Apache License 2.0
+*/
+
+/**
+	   * @license
+	   * Copyright Google Inc. All Rights Reserved.
+	   *
+	   * Use of this source code is governed by an MIT-style license that can be
+	   * found in the LICENSE file at https://angular.io/license
+	   */
+
+/**
+	 * @license
+	 * Copyright Google Inc. All Rights Reserved.
+	 *
+	 * Use of this source code is governed by an MIT-style license that can be
+	 * found in the LICENSE file at https://angular.io/license
+	 */
