@@ -26,7 +26,20 @@ export type OptionGroup = {
 };
 export type Options = (Option | OptionGroup)[];
 
-export type SelectProps = SelectHTMLAttributes<HTMLSelectElement> & {
+type NativeSelectProps = SelectHTMLAttributes<HTMLSelectElement>;
+
+type BaseProps = {
+	disabled?: boolean;
+	id?: string;
+	name?: string;
+	onBlur?: NativeSelectProps['onBlur'];
+	onChange?: NativeSelectProps['onChange'];
+	onFocus?: NativeSelectProps['onFocus'];
+	placeholder?: string;
+	value?: string;
+};
+
+export type SelectProps = BaseProps & {
 	label: string;
 	required?: boolean;
 	hint?: string;
@@ -35,7 +48,6 @@ export type SelectProps = SelectHTMLAttributes<HTMLSelectElement> & {
 	valid?: boolean;
 	block?: boolean;
 	maxWidth?: FieldMaxWidth;
-	placeholder?: string;
 	options: Options;
 };
 
