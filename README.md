@@ -3,15 +3,16 @@
 A new Design-System for the Department of Agriculture, Fisheries and Forestry.
 
 ## Before you clone this repo...
+
 If you are starting a new project, you should clone the [starter kit](https://github.com/steelthreads/agds-next-starter-kit).
 
 If you are looking to implement AgDS components, you need to [install packages from NPM](https://steelthreads.github.io/agds-next/guides/getting-started#if-youre-implementing-components-in-an-existing-project).
 
 You should clone this repo if you are looking to contribute to it, such as...
+
 - Updating components
 - Creating new components for consideration and feedback
 - Improving documentation
-
 
 ## Contributing
 
