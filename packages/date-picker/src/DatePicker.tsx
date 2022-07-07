@@ -12,17 +12,23 @@ import { Calendar, CalendarProps, CalendarRef } from './Calendar';
 import { DateInput, DateInputProps } from './DatePickerInput';
 import { parseDate, formatDate } from './utils';
 
-type InputProps = Omit<
+type DatePickerInputProps = Omit<
 	DateInputProps,
 	'value' | 'onChange' | 'buttonRef' | 'buttonOnClick'
 >;
 
-export type DatePickerProps = CalendarProps &
-	InputProps & {
-		value: Date | undefined;
-		onChange: (day: Date | undefined) => void;
-		placeholder?: string;
-	};
+type DatePickerCalendarProps = Omit<CalendarProps, 'range'>;
+
+type DatePickerBaseProps = {
+	/** The value of the field. */
+	value: Date | undefined;
+	/** Function to be fired following a change event. */
+	onChange: (day: Date | undefined) => void;
+};
+
+export type DatePickerProps = DatePickerInputProps &
+	DatePickerCalendarProps &
+	DatePickerBaseProps;
 
 export const DatePicker = ({
 	value,

@@ -1,4 +1,4 @@
-import { ButtonHTMLAttributes, forwardRef } from 'react';
+import { forwardRef, PropsWithChildren } from 'react';
 import { Button } from '@ag.ds-next/button';
 import { Box } from '@ag.ds-next/box';
 import { SearchIcon } from '@ag.ds-next/icon';
@@ -9,9 +9,9 @@ import {
 	ResponsiveProp,
 } from '@ag.ds-next/core';
 
-export type SearchBoxButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
+export type SearchBoxButtonProps = PropsWithChildren<{
 	iconOnly?: ResponsiveProp<boolean>;
-};
+}>;
 
 export const SearchBoxButton = forwardRef<
 	HTMLButtonElement,

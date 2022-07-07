@@ -24,13 +24,14 @@ export type DateRange = {
 };
 
 export type DateRangePickerProps = CalendarProps & {
+	/** The value of the field. */
 	value: DateRange;
+	/** Function to be fired following a change event. */
 	onChange: (day: DateRange) => void;
 	disabled?: boolean;
 	fromLabel?: string;
 	toLabel?: string;
 	required?: boolean;
-	placeholder?: string;
 };
 
 export const DateRangePicker = ({

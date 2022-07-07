@@ -4,7 +4,19 @@ import { textInputStyles } from '@ag.ds-next/text-input';
 import { Stack } from '@ag.ds-next/box';
 import { SearchBoxLabel } from './SearchBoxLabel';
 
-export type SearchBoxInputProps = InputHTMLAttributes<HTMLInputElement> & {
+type NativeInputProps = InputHTMLAttributes<HTMLInputElement>;
+
+type BaseSearchBoxInputProps = {
+	id?: NativeInputProps['id'];
+	name?: NativeInputProps['name'];
+	onBlur?: NativeInputProps['onBlur'];
+	onChange?: NativeInputProps['onChange'];
+	onFocus?: NativeInputProps['onFocus'];
+	placeholder?: NativeInputProps['placeholder'];
+	value?: NativeInputProps['value'];
+};
+
+export type SearchBoxInputProps = BaseSearchBoxInputProps & {
 	label?: string;
 	labelVisible?: boolean;
 };
