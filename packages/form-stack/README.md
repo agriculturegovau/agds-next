@@ -1,22 +1,3 @@
----
-title: Form Stack
-description: Use to FormStack component to apply consistent spacing between form elements.
-group: Forms
----
+## @ag.ds-next/form-stack
 
-### Basic
-
-```jsx live
-<form>
-	<FormStack>
-		<TextInput label="Email" type="email" maxWidth="xl" />
-		<TextInput label="Password" type="password" maxWidth="xl" />
-		<ButtonGroup>
-			<Button type="submit">Submit</Button>
-			<Button type="button" variant="secondary">
-				Cancel
-			</Button>
-		</ButtonGroup>
-	</FormStack>
-</form>
-```
+Documentation for this package can be found here: https://steelthreads.github.io/agds-next/packages/forms/form-stack
