@@ -4,8 +4,8 @@ import { mapSpacing } from '@ag.ds-next/core';
 import {
 	SuccessIcon,
 	AlertIcon,
-	InfoFilledIcon,
-	WarningFilledIcon,
+	InfoIcon,
+	WarningIcon,
 } from '@ag.ds-next/icon';
 import { IndicatorDot } from './IndicatorDot';
 import { BadgeTone, badgeToneMap } from './utils';
@@ -21,12 +21,12 @@ const iconMap = {
 	neutral: () => <IndicatorDot tone="neutral" />,
 	success: () => <SuccessIcon color="success" css={{ width }} />,
 	error: () => <AlertIcon color="error" css={{ width }} />,
-	info: () => <InfoFilledIcon color="info" css={{ width }} />,
-	warning: () => <WarningFilledIcon color="warning" css={{ width }} />,
+	info: () => <InfoIcon color="info" css={{ width }} />,
+	warning: () => <WarningIcon color="warning" css={{ width }} />,
 };
 
 export const StatusBadge = forwardRef<HTMLDivElement, StatusBadgeProps>(
-	function Badge({ label, tone }, ref) {
+	function StatusBadge({ label, tone }, ref) {
 		const Indicator = iconMap[tone];
 		return (
 			<Flex

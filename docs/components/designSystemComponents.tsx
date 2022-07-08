@@ -48,6 +48,8 @@ import {
 import { Switch } from '@ag.ds-next/switch';
 import {
 	AlertIcon,
+	InfoIcon,
+	WarningIcon,
 	AlertFilledIcon,
 	ArrowUpIcon,
 	ArrowDownIcon,
@@ -208,6 +210,8 @@ export const designSystemComponents = {
 	MenuIcon,
 	SearchIcon,
 	SuccessIcon,
+	InfoIcon,
+	WarningIcon,
 	SuccessFilledIcon,
 	ProgressTodoIcon,
 	InpageNav,
