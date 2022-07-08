@@ -10,15 +10,7 @@ import {
 import { slugify } from '../slugify';
 
 const PKG_PATH = normalize(`${process.cwd()}/../packages/`);
-
-const pkgReadmePath = (slug: string) => {
-	const legacyLocation = `${PKG_PATH}/${slug}/README.md`;
-	const location = `${PKG_PATH}/${slug}/docs/overview.mdx`;
-	return existsSync(location) ? location : legacyLocation;
-};
-
-const pkgIsLegacyStructure = (slug: string) =>
-	!existsSync(`${PKG_PATH}/${slug}/docs/overview.mdx`);
+const pkgReadmePath = (slug: string) => `${PKG_PATH}/${slug}/docs/overview.mdx`;
 
 const pkgDocsPath = (slug: string) => normalize(`${PKG_PATH}/${slug}/docs/`);
 
@@ -43,7 +35,6 @@ export async function getPkg(slug: string) {
 }
 
 export async function getPkgSubNavItems(slug: string) {
-	if (pkgIsLegacyStructure(slug)) return;
 	return getMarkdownData(pkgReadmePath(slug)).then(({ data }) => {
 		const meta = pkgNavMetaData(slug, data);
 		return [

@@ -58,14 +58,16 @@ export const getStaticProps: GetStaticProps<
 > = async ({ params }) => {
 	const { slug, group } = params ?? {};
 	const pkg = slug ? await getPkg(slug) : undefined;
+	const content = pkg
+		? await getPkgDocsContent(pkg.slug, 'overview.mdx')
+		: null;
 
-	if (!(slug && group && pkg)) {
+	if (!(slug && group && pkg && content)) {
 		return { notFound: true };
 	}
 
-	const content = (await getPkgDocsContent(pkg.slug)) ?? pkg.source;
 	const navLinks = await getPkgNavLinks(group);
-	const breadcrumbs = await getPkgBreadcrumbs(slug);
+	const breadcrumbs = await getPkgBreadcrumbs(slug, 'Overview');
 
 	return {
 		props: {
@@ -79,7 +81,6 @@ export const getStaticProps: GetStaticProps<
 
 export const getStaticPaths = async () => {
 	const packages = await getPkgList();
-
 	return {
 		paths: packages.map(({ group, slug }) => ({
 			params: { group, slug },
