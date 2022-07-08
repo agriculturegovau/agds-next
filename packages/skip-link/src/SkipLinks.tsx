@@ -1,9 +1,9 @@
 import { ReactNode } from 'react';
 import { SkipLinkContainer } from './SkipLinkContainer';
-import { SkipLinkItem, SkipLinkItemProps } from './SkipLinkItem';
+import { SkipLinkItem } from './SkipLinkItem';
 
 export type SkipLinksProps = {
-	links: (Omit<SkipLinkItemProps, 'children'> & { label: ReactNode })[];
+	links: { label: ReactNode; href: string }[];
 	'aria-label'?: string;
 };
 

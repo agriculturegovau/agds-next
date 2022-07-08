@@ -3,8 +3,11 @@ import { Box } from '@ag.ds-next/box';
 import { ResponsiveProp } from '@ag.ds-next/core';
 
 export type TableCellProps = PropsWithChildren<{
+	/** Can be used to conditionally hide or show table cells at different breakpoints. */
 	display?: ResponsiveProp<'none' | 'table-cell'>;
+	/** Sets the horizontal alignment of the content. */
 	textAlign?: 'center' | 'left' | 'right';
+	/** Sets the vertical alignment of the content. */
 	verticalAlign?: 'top' | 'middle' | 'bottom';
 }>;
 

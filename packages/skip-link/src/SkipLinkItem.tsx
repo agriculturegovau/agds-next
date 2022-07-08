@@ -1,15 +1,16 @@
-import { forwardRef, AnchorHTMLAttributes } from 'react';
+import { forwardRef, PropsWithChildren } from 'react';
 import { buttonStyles } from '@ag.ds-next/button';
 import { visuallyHiddenStyles } from '@ag.ds-next/a11y';
 import { mapSpacing } from '@ag.ds-next/core';
 
-export type SkipLinkItemProps = AnchorHTMLAttributes<HTMLAnchorElement>;
+export type SkipLinkItemProps = PropsWithChildren<{ href: string }>;
 
 export const SkipLinkItem = forwardRef<HTMLAnchorElement, SkipLinkItemProps>(
-	function SkipLinkItem({ children, ...props }, ref) {
+	function SkipLinkItem({ children, href }, ref) {
 		return (
 			<a
 				ref={ref}
+				href={href}
 				css={[
 					visuallyHiddenStyles,
 					buttonStyles({ block: false, size: 'md', variant: 'primary' }),
@@ -26,7 +27,6 @@ export const SkipLinkItem = forwardRef<HTMLAnchorElement, SkipLinkItemProps>(
 						},
 					},
 				]}
-				{...props}
 			>
 				{children}
 			</a>

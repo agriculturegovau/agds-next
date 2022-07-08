@@ -8,14 +8,38 @@ import {
 	tokens,
 } from '@ag.ds-next/core';
 
-export type TextInputProps = InputHTMLAttributes<HTMLInputElement> & {
+type NativeInputProps = InputHTMLAttributes<HTMLInputElement>;
+
+type BaseTextInputProps = {
+	disabled?: NativeInputProps['disabled'];
+	id?: NativeInputProps['id'];
+	inputMode?: NativeInputProps['inputMode'];
+	name?: NativeInputProps['name'];
+	onBlur?: NativeInputProps['onBlur'];
+	onChange?: NativeInputProps['onChange'];
+	onFocus?: NativeInputProps['onFocus'];
+	pattern?: NativeInputProps['pattern'];
+	placeholder?: NativeInputProps['placeholder'];
+	value?: NativeInputProps['value'];
+	type?: NativeInputProps['type'];
+};
+
+export type TextInputProps = BaseTextInputProps & {
+	/** Describes the purpose of the field. */
 	label: string;
+	/** If false, "(optional)" will be appended to the label. */
 	required?: boolean;
+	/** Provides extra information about the field. */
 	hint?: string;
+	/** Message to show when the field is invalid or valid. */
 	message?: string;
+	/** If true, the invalid state will be rendered. */
 	invalid?: boolean;
+	/** If true, the valid state will be rendered. */
 	valid?: boolean;
+	/** If true, the field will stretch to the fill the width of its container. */
 	block?: boolean;
+	/** The maximum width of the field. */
 	maxWidth?: FieldMaxWidth;
 };
 

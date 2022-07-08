@@ -5,9 +5,9 @@ import { LoadingBlanketLabel } from './LoadingBlanketLabel';
 import { LoadingDots } from './LoadingDots';
 
 export type LoadingBlanketProps = {
-	/** If true, the blanket will cover the entire screen */
+	/** If true, the blanket will cover the entire screen. */
 	fullScreen?: boolean;
-	/** The text to accompany the dots */
+	/** The text to accompany the dots. */
 	label: ReactNode;
 };
 

@@ -2,18 +2,6 @@ import { ReactNode, SVGAttributes } from 'react';
 import { boxPalette, mapSpacing } from '@ag.ds-next/core';
 import { foregroundColorMap } from '@ag.ds-next/box';
 
-type SvgProps = Omit<
-	SVGAttributes<SVGSVGElement>,
-	| 'width'
-	| 'height'
-	| 'viewBox'
-	| 'fill'
-	| 'fillRule'
-	| 'clipRule'
-	| 'xmlns'
-	| 'color'
->;
-
 export const iconColors = {
 	...foregroundColorMap,
 	border: boxPalette.border,
@@ -29,9 +17,13 @@ const iconSizes = {
 
 type IconSize = keyof typeof iconSizes;
 
-export type IconProps = SvgProps & {
-	size?: IconSize;
+type NativeSvgProps = SVGAttributes<SVGSVGElement>;
+
+export type IconProps = {
+	className?: string;
 	color?: IconColor;
+	size?: IconSize;
+	style?: NativeSvgProps['style'];
 	weight?: 'regular' | 'bold';
 };
 

@@ -55,7 +55,7 @@ export async function getPkgSubNavItems(slug: string) {
 			{
 				label: 'Rationale',
 				href: `/packages/${meta.group}/${meta.slug}/rationale`,
-				path: pkgReadmePath(slug),
+				path: `${pkgDocsPath(slug)}/rationale.mdx`,
 			},
 			{
 				label: 'Content',
@@ -80,10 +80,9 @@ export async function getPkgDocsContent(
 	slug: string,
 	path: string | string = 'overview.mdx'
 ) {
-	if (pkgIsLegacyStructure(slug)) return;
-	const { data, content } = await getMarkdownData(
-		`${pkgDocsPath(slug)}/${path}`
-	);
+	const filePath = `${pkgDocsPath(slug)}/${path}`;
+	if (!existsSync(filePath)) return;
+	const { data, content } = await getMarkdownData(filePath);
 	return await serializeMarkdown(content, data);
 }
 

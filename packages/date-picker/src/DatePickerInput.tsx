@@ -7,7 +7,10 @@ import { Button } from '@ag.ds-next/button';
 import { Field } from '@ag.ds-next/field';
 import { parseDate, formatHumanReadableDate } from './utils';
 
-export type DateInputProps = TextInputProps & {
+export type DateInputProps = Omit<
+	TextInputProps,
+	'inputMode' | 'pattern' | 'type'
+> & {
 	buttonRef: RefObject<HTMLButtonElement>;
 	buttonOnClick: MouseEventHandler<HTMLButtonElement>;
 };
