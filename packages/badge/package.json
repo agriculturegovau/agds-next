@@ -4,6 +4,9 @@
 	"main": "dist/ag.ds-next-badge.cjs.js",
 	"module": "dist/ag.ds-next-badge.esm.js",
 	"license": "MIT",
+	"dependencies": {
+		"@babel/runtime": "^7.4.5"
+	},
 	"peerDependencies": {
 		"@ag.ds-next/box": "5.0.1",
 		"@ag.ds-next/core": "2.2.1",
