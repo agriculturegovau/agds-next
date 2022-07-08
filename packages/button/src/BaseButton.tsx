@@ -32,7 +32,10 @@ export type BaseButtonProps = PropsWithChildren<{
 }>;
 
 export const BaseButton = forwardRef<HTMLButtonElement, BaseButtonProps>(
-	function BaseButton({ onClick: onClickProp, ...props }, forwardedRef) {
+	function BaseButton(
+		{ onClick: onClickProp, type = 'button', ...props },
+		forwardedRef
+	) {
 		const ref = useRef<HTMLButtonElement>(null);
 
 		/**
@@ -50,6 +53,7 @@ export const BaseButton = forwardRef<HTMLButtonElement, BaseButtonProps>(
 		return (
 			<button
 				ref={mergeRefs([ref, forwardedRef])}
+				type={type}
 				onClick={onClick}
 				css={{
 					appearance: 'none',
