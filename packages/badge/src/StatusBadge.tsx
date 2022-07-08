@@ -10,7 +10,9 @@ import {
 import { IndicatorDot } from './IndicatorDot';
 
 export type StatusBadgeProps = {
+	/** The status that is printed in the text label */
 	label: ReactNode;
+	/** The colour tone to apply */
 	tone: StatusBadgeTone;
 };
 

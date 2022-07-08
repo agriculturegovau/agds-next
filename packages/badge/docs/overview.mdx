@@ -7,17 +7,11 @@ storybookPath: /story/content-badge--on-light
 
 ## StatusBadge
 
-Use badges to highlight an item's status for quick recognition.
+Use `StatusBadge` to highlight an item's status for quick recognition.
 
-```jsx live
-<StatusBadge tone="info" label="Info" />
-```
+Choosing a `tone` for StatusBadge allows the user to understand the importance and severity of the message at a glance.
 
-### Tones
-
-Choosing a tone for a `StatusBadge` allows the user to understand the importance and severity of the message at a glance.
-
-The four supported tones are `info`, `success`, `error` and `warning`.
+The five supported tones are `info`, `success`, `error`, `warning` and `neutral`.
 
 ```jsx live
 <Flex gap={1}>
@@ -50,7 +44,7 @@ Use the `max` property where the count is expected to exceed a reasonable number
 
 ## IndicatorDot
 
-A small decorative indicator used to call attention to an item.
+A small decorative indicator used to call attention to an item, such as an unread message.
 
 ```jsx live
 <Flex gap={1}>

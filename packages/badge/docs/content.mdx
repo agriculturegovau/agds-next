@@ -1,0 +1,41 @@
+For general guidance on content, go to the [TFTM content patterns](https://deptagriculture.sharepoint.com/:w:/r/teams/AG-ContCommPrac/_layouts/15/Doc.aspx?sourcedoc=%7BFF2BB919-1F01-45DA-A895-16598D8AB351%7D&file=DAWE%20content%20patterns.docx&action=default&mobileredirect=true&cid=010ddeb8-c2f7-44ad-8fda-5664811f3cb7).
+
+## Label examples
+
+Some common examples of labels for each tone.
+
+```jsx live
+<Flex gap={1}>
+	<Stack gap={0.5} alignItems="flex-start">
+		<StatusBadge tone="success" label="Approved" />
+		<StatusBadge tone="success" label="Accepted" />
+		<StatusBadge tone="success" label="Online" />
+		<StatusBadge tone="success" label="Open" />
+		<StatusBadge tone="success" label="Available" />
+		<StatusBadge tone="success" label="Success" />
+	</Stack>
+
+	<Stack gap={0.5} alignItems="flex-start">
+		<StatusBadge tone="info" label="In progress" />
+		<StatusBadge tone="info" label="Pending" />
+		<StatusBadge tone="info" label="New" />
+	</Stack>
+
+	<Stack gap={0.5} alignItems="flex-start">
+		<StatusBadge tone="warning" label="Due" />
+		<StatusBadge tone="warning" label="Alert" />
+		<StatusBadge tone="warning" label="Attention" />
+	</Stack>
+
+	<Stack gap={0.5} alignItems="flex-start">
+		<StatusBadge tone="error" label="Rejected" />
+		<StatusBadge tone="error" label="Outage" />
+		<StatusBadge tone="error" label="Overdue" />
+		<StatusBadge tone="error" label="Error" />
+	</Stack>
+
+	<Stack gap={0.5} alignItems="flex-start">
+		<StatusBadge tone="neutral" label="Draft" />
+	</Stack>
+</Flex>
+```
