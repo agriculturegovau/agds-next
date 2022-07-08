@@ -1,6 +1,6 @@
-import { forwardRef, ReactNode } from 'react';
+import { ReactNode } from 'react';
 import { Flex } from '@ag.ds-next/box';
-import { mapSpacing } from '@ag.ds-next/core';
+import { boxPalette, globalPalette, mapSpacing } from '@ag.ds-next/core';
 import {
 	SuccessIcon,
 	AlertIcon,
@@ -8,47 +8,61 @@ import {
 	WarningIcon,
 } from '@ag.ds-next/icon';
 import { IndicatorDot } from './IndicatorDot';
-import { BadgeTone, badgeToneMap } from './utils';
 
 export type StatusBadgeProps = {
 	label: ReactNode;
-	tone: BadgeTone;
+	tone: StatusBadgeTone;
+};
+
+export const StatusBadge = ({ label, tone }: StatusBadgeProps) => {
+	const { color, icon: Icon } = toneMap[tone];
+	return (
+		<Flex
+			// ref={ref}
+			display="inline-flex"
+			alignItems="center"
+			gap={0.5}
+			height={mapSpacing(2)}
+			paddingX={0.75}
+			fontSize="sm"
+			lineHeight="nospace"
+			background="body"
+			color="text"
+			border
+			css={{
+				borderRadius: mapSpacing(1),
+				borderColor: color,
+			}}
+		>
+			<Icon />
+			{label}
+		</Flex>
+	);
 };
 
 // Icon width is 22px
 const width = '1.375em';
-const iconMap = {
-	neutral: () => <IndicatorDot tone="neutral" />,
-	success: () => <SuccessIcon color="success" css={{ width }} />,
-	error: () => <AlertIcon color="error" css={{ width }} />,
-	info: () => <InfoIcon color="info" css={{ width }} />,
-	warning: () => <WarningIcon color="warning" css={{ width }} />,
-};
+export type StatusBadgeTone = keyof typeof toneMap;
+const toneMap = {
+	neutral: {
+		color: boxPalette.border,
+		icon: () => <IndicatorDot tone="neutral" />,
+	},
+	success: {
+		color: globalPalette.success,
+		icon: () => <SuccessIcon color="success" css={{ width }} />,
+	},
+	error: {
+		color: globalPalette.error,
+		icon: () => <AlertIcon color="error" css={{ width }} />,
+	},
 
-export const StatusBadge = forwardRef<HTMLDivElement, StatusBadgeProps>(
-	function StatusBadge({ label, tone }, ref) {
-		const Indicator = iconMap[tone];
-		return (
-			<Flex
-				ref={ref}
-				display="inline-flex"
-				alignItems="center"
-				gap={0.5}
-				height={mapSpacing(2)}
-				paddingX={0.75}
-				fontSize="sm"
-				lineHeight="nospace"
-				background="body"
-				color="text"
-				border
-				css={{
-					borderRadius: mapSpacing(1),
-					borderColor: badgeToneMap[tone],
-				}}
-			>
-				<Indicator />
-				{label}
-			</Flex>
-		);
-	}
-);
+	info: {
+		color: globalPalette.info,
+		icon: () => <InfoIcon color="info" css={{ width }} />,
+	},
+	warning: {
+		color: globalPalette.warning,
+		icon: () => <WarningIcon color="warning" css={{ width }} />,
+	},
+} as const;

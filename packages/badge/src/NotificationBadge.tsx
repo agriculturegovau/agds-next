@@ -1,5 +1,4 @@
-import { forwardRef } from 'react';
-import { mapSpacing } from '@ag.ds-next/core';
+import { mapSpacing, boxPalette } from '@ag.ds-next/core';
 import { Text } from '@ag.ds-next/text';
 import { badgeToneMap, BadgeTone } from './utils';
 
@@ -9,15 +8,14 @@ export type NotificationBadgeProps = {
 	tone: BadgeTone;
 };
 
-export const NotificationBadge = forwardRef<
-	HTMLDivElement,
-	NotificationBadgeProps
->(function NotificationBadge({ value, max, tone }, ref) {
+export const NotificationBadge = ({
+	value,
+	max,
+	tone,
+}: NotificationBadgeProps) => {
 	const backgroundColor = badgeToneMap[tone];
 	return (
 		<Text
-			ref={ref}
-			palette="dark"
 			display="inline-flex"
 			alignItems="center"
 			justifyContent="center"
@@ -26,8 +24,8 @@ export const NotificationBadge = forwardRef<
 			rounded
 			fontSize="sm"
 			lineHeight="nospace"
-			color="text"
 			css={{
+				color: boxPalette.backgroundBody,
 				backgroundColor,
 				minWidth: mapSpacing(1.5),
 				borderRadius: mapSpacing(0.75),
@@ -36,4 +34,4 @@ export const NotificationBadge = forwardRef<
 			{max === undefined || value <= max ? value : `${max}+`}
 		</Text>
 	);
-});
+};

@@ -13,7 +13,7 @@ const Template: ComponentStory<typeof IndicatorDot> = (args) => (
 
 export const OnLight = Template.bind({});
 OnLight.args = {
-	tone: 'success',
+	tone: 'neutral',
 };
 
 export const OnDark: ComponentStory<typeof IndicatorDot> = (args) => (
@@ -22,5 +22,5 @@ export const OnDark: ComponentStory<typeof IndicatorDot> = (args) => (
 	</Box>
 );
 OnDark.args = {
-	tone: 'success',
+	tone: 'neutral',
 };
