@@ -81,12 +81,12 @@ export async function getPkgSlugs() {
 	const entries = await readdir(PKG_PATH, { withFileTypes: true });
 	return entries
 		.filter(
-			entry =>
+			(entry) =>
 				!entry.name.startsWith('_') &&
 				!entry.name.startsWith('.') &&
 				entry.isDirectory()
 		)
-		.map(entry => slugify(stripMdxExtension(entry.name)));
+		.map((entry) => slugify(stripMdxExtension(entry.name)));
 }
 
 function pkgNavMetaData(
@@ -102,25 +102,25 @@ function pkgNavMetaData(
 }
 
 export function getPkgList(group?: string) {
-	return getPkgSlugs().then(slugs =>
+	return getPkgSlugs().then((slugs) =>
 		Promise.all(
-			slugs.map(slug =>
+			slugs.map((slug) =>
 				getMarkdownData(pkgReadmePath(slug)).then(({ data }) =>
 					pkgNavMetaData(slug, data)
 				)
 			)
 		)
-			.then(pkgList =>
+			.then((pkgList) =>
 				// filter if group is passed
-				group ? pkgList.filter(pkg => pkg.group === group) : pkgList
+				group ? pkgList.filter((pkg) => pkg.group === group) : pkgList
 			)
-			.then(pkgList => pkgList.sort((a, b) => (a.title > b.title ? 1 : -1)))
+			.then((pkgList) => pkgList.sort((a, b) => (a.title > b.title ? 1 : -1)))
 	);
 }
 
 export function getPkgGroupList() {
-	return getPkgList().then(pkgs => {
-		const uniqueGroups = new Map(pkgs.map(p => [p.group, p.groupName]));
+	return getPkgList().then((pkgs) => {
+		const uniqueGroups = new Map(pkgs.map((p) => [p.group, p.groupName]));
 		return Array.from(uniqueGroups.entries())
 			.map(([slug, title]) => ({
 				slug,
@@ -134,8 +134,8 @@ export function getPkgGroupList() {
 }
 
 export function getGroupBreadCrumbs(groupSlug: string) {
-	return getPkgGroupList().then(groups => {
-		const group = groups.find(g => g.slug === groupSlug);
+	return getPkgGroupList().then((groups) => {
+		const group = groups.find((g) => g.slug === groupSlug);
 		return group
 			? [{ href: '/packages', label: 'Packages' }, { label: group.title }]
 			: undefined;
@@ -164,7 +164,7 @@ export async function getPkgNavLinks(group?: string) {
 	const groupList = await getPkgGroupList();
 	const pkgList = group ? await getPkgList(group) : [];
 
-	return groupList.map(g => {
+	return groupList.map((g) => {
 		return g.slug === group
 			? {
 					...groupNavItem(g),
