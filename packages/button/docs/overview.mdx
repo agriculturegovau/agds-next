@@ -1,13 +1,13 @@
 ---
 title: Button
-description: A button makes an action obvious to the user, as well as making an action faster and easier to perform.
+description: Buttons trigger actions and can communicate the hierarchy of interactions a user can choose.
 group: Forms
 storybookPath: /story/forms-button--on-light
 ---
 
-A button indicates to a user what action will happen next.
+A button communicates an action to a user and indicates what will happen next.
 
-There are 3 visual button weights that convey their order of importance: primary, secondary and tertiary.
+There are 3 visual button weights that convey their visual prominence: primary, secondary and tertiary.
 
 Make sure you include a [meaningful text label](/packages/forms/button/rationale#meaningful-text-label) with or without an icon on a button.
 
@@ -15,52 +15,60 @@ Make sure you include a [meaningful text label](/packages/forms/button/rationale
 
 - Use a button if the user needs to perform an action.
 - [Align buttons left](/packages/forms/button/rationale#align-buttons-left) from the most to least important action.
-- Use one Primary button on a page. You can use more than one Secondary or Tertiary button.
+- Use only one Primary button on a page. You can use more than one Secondary or Tertiary button.
 
 **Dont's**
 
 - Don’t use a button if a user needs to go somewhere. For example, another page. Use a link or a [link that looks like a button](#links) instead.
-- Try to avoid using [Disabled buttons](/packages/forms/button/accessibility).
+- [Don't use disabled buttons](/packages/forms/button/rationale#dont-use-disabled-buttons).
 
-### Primary
+## Primary
 
-The Primary button is the default form of a button. It’s for the main action a user needs to complete on a page or a critical call to action.
+A Primary button uses a solid background and is the most prominent button on a page. A single Primary button should be used for the main action a user needs to complete on a page or a critical call to action.
 
-A Primary button uses a solid background so it’s prominent on a page.
+Some pages won’t have a primary action, instead they’ll have multiple secondary or tertiary actions.
 
-Only include one Primary button on a page.
+Don’t include multiple Primary buttons on a page.
 
 ```jsx live
 <Button variant="primary">Primary button</Button>
 ```
 
-### Secondary
+## Secondary
 
-A Secondary button has a clear background and border and uses a less prominent style than a Primary button. It highlights another common action to the user.
+A Secondary button has a clear background and solid border and uses amaking it less prominent style than a Primary button. Secondary buttons should be used for less important actions than the main action.
 
-A Primary button usually already appears on a screen to use a Secondary button.
+A Secondary button is often paired with a Primary button. Typically it performs the opposite action to the primary button.
 
-You can use more than one Secondary button on a page.
+You can use multiple Secondary buttons on a page.
 
 ```jsx live
 <Button variant="secondary">Secondary button</Button>
 ```
 
-### Tertiary
+## Tertiary
 
-A Tertiary button has no border to make it the least prominent button style. It’s for other minor actions on a screen.
+A Tertiary button has no border or background to make it the least prominent button style. It’s for the least important actions on a screenpage.
 
-A Secondary button usually already appears on a screen to use a Tertiary button. You can use more than one Tertiary button on a page.
+You can use multiple Tertiary buttons on a page.
 
 ```jsx live
 <Button variant="tertiary">Tertiary button</Button>
 ```
 
-### Block
+## Text button
 
-A Block button uses the full width of the container or parent element.
+A [Text button](packages/navigation/text-link#textbutton) is styled like the Tertiary button but has no padding. A Text button should only be used in situations like tables where there is limited space.
 
-Use it to make a button stand out to the user.
+You can use multiple Text buttons on a page.
+
+```jsx live
+<TextButton>Text button</TextButton>
+```
+
+## Block
+
+A Block button spans the full width of the container or parent element.
 
 ```jsx live
 <Button type="submit" block>
@@ -68,9 +76,9 @@ Use it to make a button stand out to the user.
 </Button>
 ```
 
-### Loading
+## Loading
 
-Use the Loading button to let users know their action is being processed.
+Use the loading property to let users know their action is being processed.
 
 ```jsx live
 <Button type="submit" loading>
@@ -78,13 +86,11 @@ Use the Loading button to let users know their action is being processed.
 </Button>
 ```
 
-### Disabled
+## Disabled
 
-A user can’t interact with a Disabled button which is usually greyed out. It indicates the user can’t take an action at that time in their journey.
+A user can’t interact with a disabled button. They’re low contrast to indicate the user can’t take an action at that time in their journey which can cause issues for users with vision impairment.
 
-Avoid using a [Disabled button](/packages/forms/button/accessibility) as much as possible. That is, unless usability testing suggests it’s easier for users to complete a form or other task.
-
-Instead, allow users to interact with a button and receive feedback from the system.
+Avoid using disabled buttons as they can be confusing for many users. Instead, allow users to interact with the button and receive feedback about why the action can’t be completed.
 
 ```jsx live
 <ButtonGroup>
@@ -100,35 +106,31 @@ Instead, allow users to interact with a button and receive feedback from the sys
 </ButtonGroup>
 ```
 
-### Icons
+## Icons
 
-Generally use a button label and icon together not an icon on its own.
+An icon can be used next to a [meaningful text label](/packages/forms/button/rationale#meaningful-text-label) in a button to help users quickly recognise what the button does.
 
-A button should have a [meaningful text label](/packages/forms/button/rationale#meaningful-text-label) with an icon, usually on the left or right of the label. That’s unless, an icon only fits in the space available.
-
-For example, using a magnifying glass icon to indicate to a user they can search for something on mobile.
+Use icons that accurately communicate the label meaning and describe the action. For example, search fields on mobile often use a magnifying glass icon without a label due to space constraints.
 
 ```jsx live
 <ButtonLink iconAfter={AvatarIcon}>Sign out</ButtonLink>
 ```
 
-### Links
+## Links
 
-You can implement [buttons as links](/packages/forms/button/accessibility).
+You can style links to look like buttons to make them more prominent.
 
-Use a button link when you need something with the visual weight and prominence of a button, but functionality of a link.
-
-ButtonLink adopts the Link component from your chosen router framework, which you can set in the Core component.
+`ButtonLink` adopts the Link component from your chosen router framework, which you can set in the [Core component](/packages/foundations/core).
 
 ```jsx live
 <ButtonLink href="/sign-in">Sign in</ButtonLink>
 ```
 
-### Size
+## Size
 
 Size is a property that allows you to adjust the visual weight of a button.
 
-The medium button should be used for most circumstances.
+The medium button should be used in most cases to provide a large click target.
 
 ```jsx live
 <ButtonGroup>
@@ -144,11 +146,11 @@ The medium button should be used for most circumstances.
 </ButtonGroup>
 ```
 
-### Colour
+## Colour
 
-Always use a light-coloured button unless the background fill colour is dark, or the same colour as a light button. For example, using a dark-coloured button on a header component.
+If a button sits inside an interface element that uses the light colour palette, make sure you use the light action colour for the button. If a button sits inside an interface element that uses the dark colour palette, make sure you use the dark action colour for the button.
 
-Don't draw attention to destructive actions by using a red button. For example, to delete something.
+Don't draw attention to destructive actions (like “delete” or “remove”) by using red buttons. For example, to delete something. The colour red is reserved for errors.
 
 ```jsx live
 <Box palette="dark" background="body" padding={1}>
@@ -160,9 +162,11 @@ Don't draw attention to destructive actions by using a red button. For example, 
 </Box>
 ```
 
-### Button groups
+## Button groups
 
-You can use all 3 button forms in a group side-by-side on a line. In mobile, all 3 button types will be stacked in a group and span the full width of a screen.
+For convenience, you can use all 3 button weights in a group side-by-side in a line.
+
+On mobile, buttons will be stacked on top of one another and span the full width of a screen. This ensures they’re easily accessible by both left and right-handed users.
 
 ```jsx live
 <ButtonGroup>

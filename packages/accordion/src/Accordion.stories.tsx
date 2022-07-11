@@ -34,7 +34,7 @@ const AccordionBasicExample: Story<AccordionExampleProps> = ({
 }: AccordionExampleProps) => (
 	<Box padding={1.5} palette={boxPalette} background={boxBackground}>
 		<Accordion>
-			<AccordionItem title="Accordion test">
+			<AccordionItem title="Accordion title">
 				<AccordionItemContent>
 					<Text as="p">This is some text inside an Accordion</Text>
 				</AccordionItemContent>
