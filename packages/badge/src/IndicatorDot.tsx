@@ -4,7 +4,7 @@ import { BadgeTone, badgeToneMap } from './utils';
 export type IndicatorDotProps = {
 	/** The accessible label to read out in screenreaders. */
 	'aria-label'?: string;
-	/** The colour tone to apply */
+	/** The colour tone to apply. */
 	tone: BadgeTone;
 };
 

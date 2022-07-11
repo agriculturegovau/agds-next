@@ -3,11 +3,11 @@ import { Text } from '@ag.ds-next/text';
 import { badgeToneMap, BadgeTone } from './utils';
 
 export type NotificationBadgeProps = {
-	/** The number to show */
+	/** The number to show. */
 	value: number;
-	/** If value exceeds this number, show max+ instead. e.g. "99+" */
+	/** If value exceeds this number, show max+ instead. e.g. "99+". */
 	max?: number;
-	/** The colour tone to apply */
+	/** The colour tone to apply. */
 	tone: BadgeTone;
 };
 

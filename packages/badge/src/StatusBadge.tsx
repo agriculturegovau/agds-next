@@ -10,9 +10,9 @@ import {
 import { IndicatorDot } from './IndicatorDot';
 
 export type StatusBadgeProps = {
-	/** The status that is printed in the text label */
+	/** The status that is printed in the text label. */
 	label: ReactNode;
-	/** The colour tone to apply */
+	/** The colour tone to apply. */
 	tone: StatusBadgeTone;
 };
 
@@ -20,7 +20,6 @@ export const StatusBadge = ({ label, tone }: StatusBadgeProps) => {
 	const { color, icon: Icon } = toneMap[tone];
 	return (
 		<Flex
-			// ref={ref}
 			display="inline-flex"
 			alignItems="center"
 			gap={0.5}
