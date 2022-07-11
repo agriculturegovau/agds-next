@@ -5,6 +5,11 @@ export {
 	AccordionItem,
 	AccordionItemContent,
 } from '@ag.ds-next/accordion';
+export {
+	StatusBadge,
+	NotificationBadge,
+	IndicatorDot,
+} from '@ag.ds-next/badge';
 export { Body } from '@ag.ds-next/body';
 export { Box, Flex, Stack } from '@ag.ds-next/box';
 export {

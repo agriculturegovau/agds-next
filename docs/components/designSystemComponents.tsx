@@ -48,6 +48,8 @@ import {
 import { Switch } from '@ag.ds-next/switch';
 import {
 	AlertIcon,
+	InfoIcon,
+	WarningIcon,
 	AlertFilledIcon,
 	ArrowUpIcon,
 	ArrowDownIcon,
@@ -121,6 +123,11 @@ import {
 	HeroSubcategoryBannerTitle,
 } from '@ag.ds-next/hero-banner';
 import { LoadingBlanket, LoadingDots } from '@ag.ds-next/loading';
+import {
+	StatusBadge,
+	NotificationBadge,
+	IndicatorDot,
+} from '@ag.ds-next/badge';
 import { Pagination, PaginationButtons } from '@ag.ds-next/pagination';
 
 export const designSystemComponents = {
@@ -203,6 +210,8 @@ export const designSystemComponents = {
 	MenuIcon,
 	SearchIcon,
 	SuccessIcon,
+	InfoIcon,
+	WarningIcon,
 	SuccessFilledIcon,
 	ProgressTodoIcon,
 	InpageNav,
@@ -248,6 +257,9 @@ export const designSystemComponents = {
 	tokens,
 	LoadingBlanket,
 	LoadingDots,
+	StatusBadge,
+	NotificationBadge,
+	IndicatorDot,
 	Pagination,
 	PaginationButtons,
 };

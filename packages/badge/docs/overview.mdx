@@ -1,0 +1,54 @@
+---
+title: Badge
+description: Badges are decorative indicators used to either call attention to an item or for communicating non-actionable, supplemental information.
+group: Content
+storybookPath: /story/content-badge--on-light
+---
+
+## StatusBadge
+
+Use `StatusBadge` to highlight an item's status for quick recognition.
+
+Choosing a `tone` for StatusBadge allows the user to understand the importance and severity of the message at a glance.
+
+The five supported tones are `info`, `success`, `error`, `warning` and `neutral`.
+
+```jsx live
+<Flex gap={1}>
+	<StatusBadge tone="info" label="In progress" />
+	<StatusBadge tone="success" label="Resolved" />
+	<StatusBadge tone="error" label="Rejected" />
+	<StatusBadge tone="warning" label="Attention" />
+	<StatusBadge tone="neutral" label="Draft" />
+</Flex>
+```
+
+## NotificationBadge
+
+A notification badge is a visual indicator for numeric values.
+
+```jsx live
+<Flex gap={1}>
+	<NotificationBadge tone="neutral" value={16} />
+	<NotificationBadge tone="action" value={8} />
+</Flex>
+```
+
+### Maximum value
+
+Use the `max` property where the count is expected to exceed a reasonable number, and the exact count is not particularly valuable to the user.
+
+```jsx live
+<NotificationBadge tone="action" max={99} value={123} />
+```
+
+## IndicatorDot
+
+A small decorative indicator used to call attention to an item, such as an unread message.
+
+```jsx live
+<Flex gap={1}>
+	<IndicatorDot tone="neutral" />
+	<IndicatorDot tone="action" />
+</Flex>
+```

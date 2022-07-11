@@ -1,5 +1,6 @@
 import accordion from './accordion.svg';
 import agBranding from './ag-branding.svg';
+import badge from './badge.svg';
 import body from './body.svg';
 import box from './box.svg';
 import breadcrumb from './breadcrumb.svg';
@@ -45,6 +46,7 @@ import textInput from './text-input.svg';
 export const pictograms = {
 	accordion,
 	'ag-branding': agBranding,
+	badge,
 	body,
 	box,
 	breadcrumb,
