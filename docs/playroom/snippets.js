@@ -59,7 +59,7 @@ const snippets = [
     </nav>
     <FooterDivider />
     <Text fontSize="xs" maxWidth={tokens.maxWidth.bodyText}>
-      We acknowledge the traditional owners of country throughout Australia and recognise their continuing connection to land, waters and culture. 
+      We acknowledge the traditional owners of country throughout Australia and recognise their continuing connection to land, waters and culture.
       We pay our respects to their Elders past, present and emerging.
     </Text>
     <Text fontSize="xs" maxWidth={tokens.maxWidth.bodyText}>
@@ -130,7 +130,7 @@ const snippets = [
     </Box>
     <FooterDivider />
     <Text fontSize="xs" maxWidth={tokens.maxWidth.bodyText}>
-      We acknowledge the traditional owners of country throughout Australia and recognise their continuing connection to land, waters and culture. 
+      We acknowledge the traditional owners of country throughout Australia and recognise their continuing connection to land, waters and culture.
       We pay our respects to their Elders past, present and emerging.
     </Text>
     <Text fontSize="xs" maxWidth={tokens.maxWidth.bodyText}>
@@ -627,6 +627,52 @@ items={[
 		group: 'Pagination',
 		name: 'Basic',
 		code: `<Pagination currentPage={5} totalPages={10} generateHref={() => '#'} />`,
+	},
+	{
+		group: 'StatusBadge',
+		name: 'Success',
+		code: '<StatusBadge tone="success" label="Accepted" />',
+	},
+	{
+		group: 'StatusBadge',
+		name: 'Info',
+		code: '<StatusBadge tone="info" label="Pending" />',
+	},
+	{
+		group: 'StatusBadge',
+		name: 'Warning',
+		code: '<StatusBadge tone="warning" label="Alert" />',
+	},
+	{
+		group: 'StatusBadge',
+		name: 'Error',
+		code: '<StatusBadge tone="error" label="Rejected" />',
+	},
+	{
+		group: 'StatusBadge',
+		name: 'Neutral',
+		code: '<StatusBadge tone="neutral" label="Draft" />',
+	},
+	{
+		group: 'NotificationBadge',
+		name: 'Action',
+		code: '	<NotificationBadge tone="action" value={16} max={99} />',
+	},
+
+	{
+		group: 'NotificationBadge',
+		name: 'Neutral',
+		code: '	<NotificationBadge tone="neutral" value={16} max={99} />',
+	},
+	{
+		group: 'IndicatorDot',
+		name: 'Action',
+		code: '	<IndicatorDot tone="action" />',
+	},
+	{
+		group: 'IndicatorDot',
+		name: 'Neutral',
+		code: '	<IndicatorDot tone="neutral" />',
 	},
 ];
 
