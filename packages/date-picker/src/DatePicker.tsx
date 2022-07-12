@@ -134,6 +134,7 @@ export const DatePicker = ({
 					css={{ zIndex: 1 }}
 				>
 					<CalendarSingle
+						initialFocus
 						selected={value}
 						onSelect={onSelect}
 						defaultMonth={initialMonth || value}

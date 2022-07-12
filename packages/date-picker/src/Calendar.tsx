@@ -1,4 +1,3 @@
-import { RefObject } from 'react';
 import FocusLock from 'react-focus-lock';
 import {
 	CustomComponents,
@@ -11,19 +10,14 @@ import { CalendarContainer } from './CalendarContainer';
 
 export type CalendarSingleProps = Omit<
 	DayPickerSingleProps,
-	'mode' | 'initialFocus' | 'components'
+	'mode' | 'components'
 >;
 
 export function CalendarSingle(props: CalendarSingleProps) {
 	return (
 		<FocusLock autoFocus={false} returnFocus>
-			<CalendarContainer range={false}>
-				<DayPicker
-					mode="single"
-					initialFocus={true}
-					components={calendarComponents}
-					{...props}
-				/>
+			<CalendarContainer>
+				<DayPicker mode="single" components={calendarComponents} {...props} />
 			</CalendarContainer>
 		</FocusLock>
 	);
@@ -31,19 +25,14 @@ export function CalendarSingle(props: CalendarSingleProps) {
 
 export type CalendarRangeProps = Omit<
 	DayPickerRangeProps,
-	'mode' | 'initialFocus' | 'components'
+	'mode' | 'components'
 >;
 
 export function CalendarRange(props: CalendarRangeProps) {
 	return (
 		<FocusLock autoFocus={false}>
-			<CalendarContainer range={false}>
-				<DayPicker
-					mode="range"
-					initialFocus={true}
-					components={calendarComponents}
-					{...props}
-				/>
+			<CalendarContainer>
+				<DayPicker mode="range" components={calendarComponents} {...props} />
 			</CalendarContainer>
 		</FocusLock>
 	);
