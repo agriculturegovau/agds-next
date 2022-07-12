@@ -77,7 +77,7 @@ const LiveCode = withLive((props: unknown) => {
 			border
 			rounded
 			borderColor="muted"
-			css={{ '&:not(:first-child)': { marginTop: mapSpacing(1.5) } }}
+			css={{ '&:not(:first-of-type)': { marginTop: mapSpacing(1.5) } }}
 		>
 			<LivePreview
 				aria-label="Rendered code snippet example"
