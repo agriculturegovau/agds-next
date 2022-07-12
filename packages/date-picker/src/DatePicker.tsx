@@ -18,9 +18,19 @@ type DatePickerInputProps = Omit<
 	'value' | 'onChange' | 'buttonRef' | 'buttonOnClick'
 >;
 
+type DisabledDays =
+	// Disable a specific date
+	| Date
+	// Disable a range of dates
+	| { from: Date; to: Date }
+	// Disabled all dates before a specific date
+	| { before: Date }
+	// Disabled all dates after a specific date
+	| { after: Date };
+
 type DatePickerCalendarProps = {
 	initialMonth?: Date;
-	disabledDays?: (Date | { from: Date; to: Date })[];
+	disabledDays?: DisabledDays | DisabledDays[];
 };
 
 type DatePickerBaseProps = {

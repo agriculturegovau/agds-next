@@ -42,9 +42,29 @@ DisablingDays.args = {
 	defaultMonth: new Date(2022, 5, 10),
 	disabled: [
 		new Date(2022, 5, 10),
-		new Date(2022, 5, 12),
-		new Date(2022, 5, 20),
-		{ from: new Date(2022, 4, 18), to: new Date(2022, 4, 29) },
+		new Date(2022, 5, 13),
+		new Date(2022, 5, 16),
+	],
+};
+
+// https://react-day-picker.js.org/basics/modifiers#disabling-days
+export const DisablingDaysRange: ComponentStory<typeof CalendarSingle> = (
+	args
+) => <Template {...args} />;
+DisablingDaysRange.args = {
+	defaultMonth: new Date(2022, 4, 17),
+	disabled: [{ from: new Date(2022, 4, 18), to: new Date(2022, 4, 25) }],
+};
+
+// https://react-day-picker.js.org/basics/modifiers#disabling-days
+export const DisablingDaysBeforeAfter: ComponentStory<typeof CalendarSingle> = (
+	args
+) => <Template {...args} />;
+DisablingDaysBeforeAfter.args = {
+	defaultMonth: new Date(2022, 5, 8),
+	disabled: [
+		{ before: new Date(2022, 5, 3) },
+		{ after: new Date(2022, 5, 28) },
 	],
 };
 

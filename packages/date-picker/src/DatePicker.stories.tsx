@@ -32,7 +32,17 @@ DisabledDays.args = {
 	initialMonth: new Date(2022, 5, 10),
 	disabledDays: [
 		new Date(2022, 5, 10),
-		{ from: new Date(2022, 5, 20), to: new Date(2022, 5, 24) },
+		new Date(2022, 5, 20),
+		new Date(2022, 5, 24),
+	],
+};
+
+export const DisabledDaysMinmax = Template.bind({});
+DisabledDaysMinmax.args = {
+	label: 'Example',
+	initialMonth: new Date(2022, 5, 10),
+	disabledDays: [
+		{ before: new Date(2022, 5, 20), after: new Date(2022, 5, 28) },
 	],
 };
 

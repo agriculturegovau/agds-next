@@ -27,13 +27,22 @@ Disabled.args = {
 	disabled: true,
 };
 
+const today = new Date();
+const last10Days = new Date(
+	today.getFullYear(),
+	today.getMonth(),
+	today.getDate() - 10
+);
+const next10Days = new Date(
+	today.getFullYear(),
+	today.getMonth(),
+	today.getDate() + 10
+);
+
 export const DisabledDays = Template.bind({});
 DisabledDays.args = {
-	// initialMonth: new Date(2022, 5, 10),
-	disabledDays: [
-		new Date(2022, 5, 10),
-		// { from: undefined, to: new Date(2022, 5, 24) },
-	],
+	minDate: last10Days,
+	maxDate: next10Days,
 };
 
 export const Required = Template.bind({});

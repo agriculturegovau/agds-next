@@ -5,6 +5,7 @@ import {
 	useRef,
 	useState,
 	useEffect,
+	useMemo,
 } from 'react';
 import { usePopper } from 'react-popper';
 import { SelectRangeEventHandler } from 'react-day-picker';
@@ -25,19 +26,23 @@ export type DateRange = {
 };
 
 type DateRangePickerCalendarProps = {
-	// initialMonth?: Date;
-	disabledDays?: (Date | { from: Date; to: Date })[];
+	/** If set, any days before this date will not be selectable. */
+	minDate?: Date;
+	/** If set, any days after this date will not be selectable. */
+	maxDate?: Date;
 };
 
 export type DateRangePickerProps = DateRangePickerCalendarProps & {
+	disabled?: boolean;
+	required?: boolean;
 	/** The value of the field. */
 	value: DateRange;
 	/** Function to be fired following a change event. */
 	onChange: (day: DateRange) => void;
-	disabled?: boolean;
+	/** The label above the first input. */
 	fromLabel?: string;
+	/** The label above the second input. */
 	toLabel?: string;
-	required?: boolean;
 };
 
 export const DateRangePicker = ({
@@ -47,7 +52,8 @@ export const DateRangePicker = ({
 	fromLabel = 'Start date',
 	toLabel = 'End date',
 	required,
-	disabledDays,
+	minDate,
+	maxDate,
 }: DateRangePickerProps) => {
 	const [isCalendarOpen, openCalendar, closeCalendar] = useTernaryState(false);
 	const [inputMode, setInputMode] = useState<'from' | 'to'>();
@@ -164,6 +170,15 @@ export const DateRangePicker = ({
 		},
 		[isCalendarOpen, closeCalendar]
 	);
+
+	// Allow consumers to set min/max dates in the calendar
+	const disabledDays = useMemo(() => {
+		if (!(minDate || maxDate)) return;
+		const arr = [];
+		if (minDate) arr.push({ before: minDate });
+		if (maxDate) arr.push({ after: maxDate });
+		return arr;
+	}, [minDate, maxDate]);
 
 	// 2 months visible on desktop, 1 on mobile
 	const { windowWidth = 0 } = useWindowSize();
