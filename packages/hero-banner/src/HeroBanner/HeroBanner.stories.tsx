@@ -5,6 +5,7 @@ import {
 	SearchBoxButton,
 } from '@ag.ds-next/search-box';
 import { Button, ButtonGroup } from '@ag.ds-next/button';
+import { Box } from '@ag.ds-next/box';
 import { HeroBanner, HeroBannerProps } from './HeroBanner';
 import {
 	HeroBannerSubtitle,
@@ -57,28 +58,40 @@ const commonArgs = {
 	),
 };
 
-export const LightVariant = Template.bind({});
-LightVariant.args = {
+export const BodyOnLight = Template.bind({});
+BodyOnLight.args = {
 	...commonArgs,
-	variant: 'light',
+	background: 'body',
 };
 
-export const LightAlt = Template.bind({});
-LightAlt.args = {
+export const BodyAltOnLight = Template.bind({});
+BodyAltOnLight.args = {
 	...commonArgs,
-	variant: 'lightAlt',
+	background: 'bodyAlt',
 };
 
-export const Dark = Template.bind({});
-Dark.args = {
+export const BodyOnDark: Story<
+	HeroBannerProps & { title: string; subtitle: string }
+> = (args) => (
+	<Box palette="dark" padding={1} background="body">
+		<Template {...args} />
+	</Box>
+);
+BodyOnDark.args = {
 	...commonArgs,
-	variant: 'dark',
+	background: 'body',
 };
 
-export const DarkAlt = Template.bind({});
-DarkAlt.args = {
+export const BodyAltOnDark: Story<
+	HeroBannerProps & { title: string; subtitle: string }
+> = (args) => (
+	<Box palette="dark" padding={1} background="body">
+		<Template {...args} />
+	</Box>
+);
+BodyAltOnDark.args = {
 	...commonArgs,
-	variant: 'darkAlt',
+	background: 'bodyAlt',
 };
 
 export const Buttons = Template.bind({});
