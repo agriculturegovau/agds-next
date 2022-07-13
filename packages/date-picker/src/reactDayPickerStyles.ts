@@ -109,11 +109,11 @@ export const reactDayPickerStyles = {
 		margin: '0 1em',
 	},
 
-	'.rdp-month:first-child': {
+	'.rdp-month:first-of-type': {
 		marginLeft: 0,
 	},
 
-	'.rdp-month:last-child': {
+	'.rdp-month:last-of-type': {
 		marginRight: 0,
 	},
 

@@ -1,3 +1,4 @@
+import { RefObject } from 'react';
 import FocusLock from 'react-focus-lock';
 import {
 	CustomComponents,
@@ -26,11 +27,22 @@ export function CalendarSingle(props: CalendarSingleProps) {
 export type CalendarRangeProps = Omit<
 	DayPickerRangeProps,
 	'mode' | 'components'
->;
+> & {
+	returnFocusRef: RefObject<HTMLButtonElement>;
+};
 
-export function CalendarRange(props: CalendarRangeProps) {
+export function CalendarRange({
+	returnFocusRef,
+	...props
+}: CalendarRangeProps) {
 	return (
-		<FocusLock autoFocus={false}>
+		<FocusLock
+			autoFocus={false}
+			onDeactivation={() => {
+				// https://github.com/theKashey/react-focus-lock#unmounting-and-focus-management
+				window.setTimeout(() => returnFocusRef.current?.focus(), 0);
+			}}
+		>
 			<CalendarContainer>
 				<DayPicker mode="range" components={calendarComponents} {...props} />
 			</CalendarContainer>

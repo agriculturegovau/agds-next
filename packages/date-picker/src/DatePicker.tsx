@@ -12,7 +12,7 @@ import { SelectSingleEventHandler } from 'react-day-picker';
 import { useClickOutside, useTernaryState } from '@ag.ds-next/core';
 import { CalendarSingle } from './Calendar';
 import { DateInput, DateInputProps } from './DatePickerInput';
-import { parseDate, formatDate } from './utils';
+import { parseDate, formatDate, constrainDate } from './utils';
 
 type DatePickerInputProps = Omit<
 	DateInputProps,
@@ -78,16 +78,16 @@ export const DatePicker = ({
 		(e: ChangeEvent<HTMLInputElement>) => {
 			const inputValue = e.target.value;
 			setInputValue(inputValue);
-			// Ensure the text entered is a valid date
 			const parsedDate = parseDate(inputValue);
-			onChange(parsedDate);
+			const containedDate = constrainDate(parsedDate, minDate, maxDate);
+			onChange(containedDate);
 		},
-		[onChange]
+		[maxDate, minDate, onChange]
 	);
 
 	// Update the text inputs when the value updates
 	useEffect(() => {
-		setInputValue(value ? formatDate(value) : '');
+		if (value) setInputValue(formatDate(value));
 	}, [value]);
 
 	// Close the calendar when the user clicks outside

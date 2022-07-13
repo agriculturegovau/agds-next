@@ -18,7 +18,12 @@ import {
 } from '@ag.ds-next/core';
 import { CalendarRange } from './Calendar';
 import { DateInput } from './DatePickerInput';
-import { getValidDateRange, parseDate, formatDate } from './utils';
+import {
+	getValidDateRange,
+	parseDate,
+	formatDate,
+	constrainDate,
+} from './utils';
 
 export type DateRange = {
 	from: Date | undefined;
@@ -81,8 +86,6 @@ export const DateRangePicker = ({
 
 	const onSelect = useCallback<SelectRangeEventHandler>(
 		(_, selectedDay, activeModifiers) => {
-			console.log(inputMode);
-
 			if (!inputMode || activeModifiers.disabled) return;
 			const range = getValidDateRange(inputMode, selectedDay, value);
 
@@ -92,6 +95,10 @@ export const DateRangePicker = ({
 
 			if (range.from && range.to) {
 				closeCalendar();
+
+				// https://github.com/theKashey/react-focus-lock#unmounting-and-focus-management
+				setTimeout(() => toTriggerRef.current?.focus(), 0);
+
 				setInputMode(undefined);
 				return;
 			}
@@ -120,9 +127,10 @@ export const DateRangePicker = ({
 			setFromInputValue(inputValue);
 			// Ensure the text entered is a valid date
 			const parsedDate = parseDate(inputValue);
-			onChange({ ...value, from: parsedDate });
+			const containedDate = constrainDate(parsedDate, minDate, maxDate);
+			onChange({ ...value, from: containedDate });
 		},
-		[onChange, value]
+		[maxDate, minDate, onChange, value]
 	);
 
 	// To input state
@@ -136,26 +144,23 @@ export const DateRangePicker = ({
 			setToInputValue(inputValue);
 			// Ensure the text entered is a valid date
 			const parsedDate = parseDate(inputValue);
-			onChange({ ...value, to: parsedDate });
+			const containedDate = constrainDate(parsedDate, minDate, maxDate);
+			onChange({ ...value, to: containedDate });
 		},
-		[onChange, value]
+		[maxDate, minDate, onChange, value]
 	);
 
 	// Update the text inputs when the value updates
 	useEffect(() => {
-		setFromInputValue(value.from ? formatDate(value.from) : '');
-		setToInputValue(value.to ? formatDate(value.to) : '');
+		if (value.from) setFromInputValue(formatDate(value.from));
+		if (value.to) setToInputValue(formatDate(value.to));
 	}, [value]);
 
 	// Close the calendar when the user clicks outside
 	const clickOutsideRef = useRef(popperEl);
 	clickOutsideRef.current = popperEl;
 
-	const handleClickOutside = useCallback(() => {
-		if (isCalendarOpen) closeCalendar();
-	}, [isCalendarOpen, closeCalendar]);
-
-	useClickOutside(clickOutsideRef, handleClickOutside);
+	useClickOutside(clickOutsideRef, closeCalendar);
 
 	// Close the calendar when the user presses escape
 	const handleEscape = useCallback(
@@ -218,11 +223,15 @@ export const DateRangePicker = ({
 					css={{ zIndex: 1 }}
 				>
 					<CalendarRange
-						defaultMonth={inputMode === 'from' ? value.from : value.to}
+						initialFocus
+						defaultMonth={value.from}
 						selected={value}
 						onSelect={onSelect}
 						numberOfMonths={numberOfMonths}
 						disabled={disabledCalendarDays}
+						returnFocusRef={
+							inputMode === 'from' ? fromTriggerRef : toTriggerRef
+						}
 					/>
 				</div>
 			) : null}

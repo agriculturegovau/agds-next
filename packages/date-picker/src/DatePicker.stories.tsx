@@ -36,6 +36,12 @@ MinMaxDates.args = {
 	maxDate: nextWeek,
 };
 
+export const InitialMonth = Template.bind({});
+InitialMonth.args = {
+	label: 'Example',
+	initialMonth: new Date('1999-12-01'),
+};
+
 export const Required = Template.bind({});
 Required.args = {
 	required: true,
@@ -83,14 +89,9 @@ export const ControlledExample = () => {
 	const [value, setValue] = useState<Date>();
 	return (
 		<Stack gap={4} alignItems="flex-start">
-			<DatePicker
-				label="Controlled"
-				initialMonth={new Date('2020-10-10')}
-				value={value}
-				onChange={setValue}
-			/>
+			<DatePicker label="Controlled" value={value} onChange={setValue} />
 			<ButtonGroup>
-				<Button onClick={() => setValue(new Date('2020-12-12'))}>
+				<Button onClick={() => setValue(new Date('1999-12-25'))}>
 					Set pre-defined date
 				</Button>
 				<Button variant="secondary" onClick={() => setValue(undefined)}>
