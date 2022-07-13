@@ -71,6 +71,34 @@ Disabled input elements are unusable and can not be clicked. This prevents a use
 };
 ```
 
+### Minimum and maximum dates
+
+The `minDate` property can be used to disable any days before a specific date
+
+The `maxDate` property can be used to disable any days after a specific date.
+
+If a valid date is entered using the text input but it falls outside the constrained range, the closest valid date will be used.
+
+```jsx live
+() => {
+	const [value, setValue] = React.useState();
+
+	const today = new Date();
+	const lastWeek = new Date(today.getTime() - 7 * 24 * 60 * 60 * 1000);
+	const nextWeek = new Date(today.getTime() + 7 * 24 * 60 * 60 * 1000);
+
+	return (
+		<DatePicker
+			label="Select date"
+			minDate={lastWeek}
+			maxDate={nextWeek}
+			value={value}
+			onChange={setValue}
+		/>
+	);
+};
+```
+
 ## Date Range Picker
 
 `DateRangePicker` is a [controlled component](https://reactjs.org/docs/forms.html#controlled-components).
@@ -106,5 +134,26 @@ Disabled input elements are unusable and can not be clicked. This prevents a use
 () => {
 	const [value, setValue] = React.useState({ from: undefined, to: undefined });
 	return <DateRangePicker value={value} onChange={setValue} disabled />;
+};
+```
+
+### Minimum and maximum dates
+
+```jsx live
+() => {
+	const [value, setValue] = React.useState({ from: undefined, to: undefined });
+
+	const today = new Date();
+	const lastWeek = new Date(today.getTime() - 7 * 24 * 60 * 60 * 1000);
+	const nextWeek = new Date(today.getTime() + 7 * 24 * 60 * 60 * 1000);
+
+	return (
+		<DateRangePicker
+			value={value}
+			onChange={setValue}
+			minDate={lastWeek}
+			maxDate={nextWeek}
+		/>
+	);
 };
 ```
