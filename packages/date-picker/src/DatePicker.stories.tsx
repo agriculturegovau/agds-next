@@ -1,5 +1,6 @@
-import { useState } from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { useState } from 'react';
+import { subDays, addDays } from 'date-fns';
 import { Box, Stack } from '@ag.ds-next/box';
 import { Button, ButtonGroup } from '@ag.ds-next/button';
 import { DatePicker } from './DatePicker';
@@ -25,25 +26,14 @@ Disabled.args = {
 	disabled: true,
 };
 
-// https://react-day-picker.js.org/basics/modifiers#disabling-days
-export const DisabledDays = Template.bind({});
-DisabledDays.args = {
+const today = new Date();
+const lastWeek = subDays(today, 7);
+const nextWeek = addDays(today, 7);
+export const MinMaxDates = Template.bind({});
+MinMaxDates.args = {
 	label: 'Example',
-	initialMonth: new Date(2022, 5, 10),
-	disabledDays: [
-		new Date(2022, 5, 10),
-		new Date(2022, 5, 20),
-		new Date(2022, 5, 24),
-	],
-};
-
-export const DisabledDaysMinmax = Template.bind({});
-DisabledDaysMinmax.args = {
-	label: 'Example',
-	initialMonth: new Date(2022, 5, 10),
-	disabledDays: [
-		{ before: new Date(2022, 5, 20), after: new Date(2022, 5, 28) },
-	],
+	minDate: lastWeek,
+	maxDate: nextWeek,
 };
 
 export const Required = Template.bind({});
@@ -93,7 +83,12 @@ export const ControlledExample = () => {
 	const [value, setValue] = useState<Date>();
 	return (
 		<Stack gap={4} alignItems="flex-start">
-			<DatePicker label="Controlled" value={value} onChange={setValue} />
+			<DatePicker
+				label="Controlled"
+				initialMonth={new Date('2020-10-10')}
+				value={value}
+				onChange={setValue}
+			/>
 			<ButtonGroup>
 				<Button onClick={() => setValue(new Date('2020-12-12'))}>
 					Set pre-defined date

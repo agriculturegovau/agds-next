@@ -171,13 +171,12 @@ export const DateRangePicker = ({
 		[isCalendarOpen, closeCalendar]
 	);
 
-	// Allow consumers to set min/max dates in the calendar
-	const disabledDays = useMemo(() => {
+	const disabledCalendarDays = useMemo(() => {
 		if (!(minDate || maxDate)) return;
-		const arr = [];
-		if (minDate) arr.push({ before: minDate });
-		if (maxDate) arr.push({ after: maxDate });
-		return arr;
+		return [
+			minDate ? { before: minDate } : undefined,
+			maxDate ? { after: maxDate } : undefined,
+		].filter((x): x is NonNullable<typeof x> => Boolean(x));
 	}, [minDate, maxDate]);
 
 	// 2 months visible on desktop, 1 on mobile
@@ -223,7 +222,7 @@ export const DateRangePicker = ({
 						selected={value}
 						onSelect={onSelect}
 						numberOfMonths={numberOfMonths}
-						disabled={disabledDays}
+						disabled={disabledCalendarDays}
 					/>
 				</div>
 			) : null}

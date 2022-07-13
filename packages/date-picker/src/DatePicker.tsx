@@ -3,6 +3,7 @@ import {
 	KeyboardEvent,
 	useCallback,
 	useEffect,
+	useMemo,
 	useRef,
 	useState,
 } from 'react';
@@ -18,19 +19,13 @@ type DatePickerInputProps = Omit<
 	'value' | 'onChange' | 'buttonRef' | 'buttonOnClick'
 >;
 
-type DisabledDays =
-	// Disable a specific date
-	| Date
-	// Disable a range of dates
-	| { from: Date; to: Date }
-	// Disabled all dates before a specific date
-	| { before: Date }
-	// Disabled all dates after a specific date
-	| { after: Date };
-
 type DatePickerCalendarProps = {
+	/** If set, any days before this date will not be selectable. */
+	minDate?: Date;
+	/** If set, any days after this date will not be selectable. */
+	maxDate?: Date;
+	/** The month in the calendar to show initially when no value is set. */
 	initialMonth?: Date;
-	disabledDays?: DisabledDays | DisabledDays[];
 };
 
 type DatePickerBaseProps = {
@@ -47,8 +42,9 @@ export type DatePickerProps = DatePickerInputProps &
 export const DatePicker = ({
 	value,
 	onChange,
+	minDate,
+	maxDate,
 	initialMonth,
-	disabledDays,
 	...props
 }: DatePickerProps) => {
 	const [isCalendarOpen, openCalendar, closeCalendar] = useTernaryState(false);
@@ -117,6 +113,14 @@ export const DatePicker = ({
 		[isCalendarOpen, closeCalendar]
 	);
 
+	const disabledCalendarDays = useMemo(() => {
+		if (!(minDate || maxDate)) return;
+		return [
+			minDate ? { before: minDate } : undefined,
+			maxDate ? { after: maxDate } : undefined,
+		].filter((x): x is NonNullable<typeof x> => Boolean(x));
+	}, [minDate, maxDate]);
+
 	return (
 		<div ref={setRefEl} onKeyDown={handleEscape}>
 			<DateInput
@@ -137,9 +141,9 @@ export const DatePicker = ({
 						initialFocus
 						selected={value}
 						onSelect={onSelect}
-						defaultMonth={initialMonth || value}
+						defaultMonth={value || initialMonth}
 						numberOfMonths={1}
-						disabled={disabledDays}
+						disabled={disabledCalendarDays}
 					/>
 				</div>
 			) : null}

@@ -1,6 +1,7 @@
+import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { useState } from 'react';
 import { DateRange } from 'react-day-picker';
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { subDays, addDays } from 'date-fns';
 import { Box } from '@ag.ds-next/box';
 import { CalendarRange, CalendarSingle, CalendarSingleProps } from './Calendar';
 
@@ -35,36 +36,13 @@ MultipleMonths.args = {
 };
 
 const today = new Date();
-const lastWeek = new Date(
-	today.getFullYear(),
-	today.getMonth(),
-	today.getDate() - 7
-);
-const nextWeek = new Date(
-	today.getFullYear(),
-	today.getMonth(),
-	today.getDate() + 7
-);
-
+const lastWeek = subDays(today, 7);
+const nextWeek = addDays(today, 7);
 // https://react-day-picker.js.org/basics/modifiers#disabling-days
-export const DisablingDays: ComponentStory<typeof CalendarSingle> = (args) => (
+export const MinMaxDates: ComponentStory<typeof CalendarSingle> = (args) => (
 	<Template {...args} />
 );
-DisablingDays.args = {
-	disabled: [lastWeek, nextWeek],
-};
-
-export const DisablingDaysRange: ComponentStory<typeof CalendarSingle> = (
-	args
-) => <Template {...args} />;
-DisablingDaysRange.args = {
-	disabled: [{ from: lastWeek, to: nextWeek }],
-};
-
-export const DisablingDaysBeforeAfter: ComponentStory<typeof CalendarSingle> = (
-	args
-) => <Template {...args} />;
-DisablingDaysBeforeAfter.args = {
+MinMaxDates.args = {
 	disabled: [{ before: lastWeek }, { after: nextWeek }],
 };
 

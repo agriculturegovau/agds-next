@@ -30,7 +30,7 @@ export const reactDayPickerStyles = {
 		display: 'flex',
 		alignItems: 'center',
 		justifyContent: 'center',
-		marginBottom: mapSpacing(1.5),
+		marginBottom: mapSpacing(1),
 	},
 
 	'.rdp-caption_label': {
