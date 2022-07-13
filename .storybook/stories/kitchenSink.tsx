@@ -1,3 +1,4 @@
+import React from 'react';
 import {
 	Accordion,
 	AccordionItem,
@@ -29,6 +30,7 @@ import { SideNav } from '@ag.ds-next/side-nav';
 import { Text } from '@ag.ds-next/text';
 import { Textarea } from '@ag.ds-next/textarea';
 import { TextInput } from '@ag.ds-next/text-input';
+import { DatePicker } from '@ag.ds-next/date-picker';
 
 export default {
 	title: 'Examples/Kitchen Sink',
@@ -189,6 +191,11 @@ const KitchenSink = () => {
 							label="Email"
 							invalid
 							message="An email address is required"
+						/>
+						<DatePicker
+							label="Birth date"
+							value={new Date()}
+							onChange={() => {}}
 						/>
 						<TextInput
 							label="Username"
