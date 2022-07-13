@@ -13,12 +13,11 @@ export const SideNavContainer = ({
 	children,
 	variant,
 }: SideNavContainerProps) => {
-	const { background, hover } = variantMap[variant];
+	const { hover } = variantMap[variant];
 	return (
 		<Box
 			as="aside"
 			aria-label={ariaLabel}
-			background={background}
 			css={mq({
 				...packs.print.hidden,
 				[localPaletteVars.hover]: mapResponsiveProp(

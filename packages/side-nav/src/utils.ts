@@ -38,11 +38,9 @@ export const useSideNavIds = () => {
 
 export const variantMap = {
 	default: {
-		background: 'body',
 		hover: 'shade',
 	},
 	alt: {
-		background: 'bodyAlt',
 		hover: 'shadeAlt',
 	},
 } as const;
