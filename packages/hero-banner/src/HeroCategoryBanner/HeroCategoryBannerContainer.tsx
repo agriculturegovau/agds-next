@@ -10,11 +10,10 @@ export const HeroCategoryBannerContainer = ({
 	children,
 	variant,
 }: HeroCategoryBannerContainerProps) => {
-	const { palette, background } = variantMap[variant];
+	const { background } = variantMap[variant];
 	return (
 		<Box
 			as="section"
-			palette={palette}
 			background={background}
 			css={{ position: 'relative', overflow: 'hidden' }}
 		>
