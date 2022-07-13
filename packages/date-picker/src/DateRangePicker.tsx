@@ -95,10 +95,6 @@ export const DateRangePicker = ({
 
 			if (range.from && range.to) {
 				closeCalendar();
-
-				// https://github.com/theKashey/react-focus-lock#unmounting-and-focus-management
-				setTimeout(() => toTriggerRef.current?.focus(), 0);
-
 				setInputMode(undefined);
 				return;
 			}
