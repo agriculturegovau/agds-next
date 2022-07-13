@@ -17,6 +17,7 @@ import { SideNavVariant, findBestMatch, useSideNavIds } from './utils';
 export type SideNavProps = LinkListProps & {
 	'aria-label'?: string;
 	collapseTitle: string;
+	/** If SideNav is placed on 'bodyAlt' background, please set this to "alt". */
 	variant?: SideNavVariant;
 	title: ReactNode;
 	titleLink: string; // TODO: should this be optional
