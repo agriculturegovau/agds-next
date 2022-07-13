@@ -24,7 +24,7 @@ type DatePickerCalendarProps = {
 	minDate?: Date;
 	/** If set, any days after this date will not be selectable. */
 	maxDate?: Date;
-	/** The month in the calendar to show initially when no value is set. */
+	/** The calendar month to initially show, if no value is set. */
 	initialMonth?: Date;
 };
 

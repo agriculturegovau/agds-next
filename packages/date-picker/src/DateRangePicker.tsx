@@ -44,9 +44,9 @@ export type DateRangePickerProps = DateRangePickerCalendarProps & {
 	value: DateRange;
 	/** Function to be fired following a change event. */
 	onChange: (day: DateRange) => void;
-	/** The label above the first input. */
+	/** The label above the start date text input. */
 	fromLabel?: string;
-	/** The label above the second input. */
+	/** The label above the end date text input. */
 	toLabel?: string;
 };
 
