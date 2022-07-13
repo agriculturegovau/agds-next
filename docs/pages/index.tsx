@@ -19,7 +19,7 @@ export default function Homepage() {
 		<>
 			<DocumentTitle />
 			<AppLayout>
-				<HeroBanner variant="lightAlt">
+				<HeroBanner>
 					<HeroBannerTitleContainer>
 						<HeroBannerTitle>
 							Welcome to the Agriculture Design System (AgDS)
