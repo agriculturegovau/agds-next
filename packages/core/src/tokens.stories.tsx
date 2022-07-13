@@ -2,6 +2,7 @@ import { Box, Flex, Stack } from '@ag.ds-next/box';
 import { Text } from '@ag.ds-next/text';
 import { CardList, Card, CardInner } from '@ag.ds-next/card';
 import { H2 } from '@ag.ds-next/heading';
+import { Body } from '@ag.ds-next/body';
 import { boxPalette } from './boxPalette';
 import { mapSpacing, Spacing } from './tokens';
 import { globalPalette } from './globalPalette';
@@ -73,6 +74,52 @@ export const Color = () => {
 				</CardList>
 			</Stack>
 		</Stack>
+	);
+};
+
+const BackgroundRow = ({ palette }: { palette: 'light' | 'dark' }) => (
+	<Flex palette={palette} width="100%">
+		<Flex padding={2} background="body" flexGrow={1}>
+			<Box flexGrow={1} color="text" paddingY={2} paddingX={1}>
+				backgroundBody
+			</Box>
+			<Box
+				flexGrow={1}
+				color="text"
+				paddingY={2}
+				paddingX={1}
+				background="shade"
+			>
+				backgroundShade
+			</Box>
+		</Flex>
+		<Flex padding={2} background="bodyAlt" flexGrow={1}>
+			<Box flexGrow={1} color="text" paddingY={2} paddingX={1}>
+				backgroundBodyAlt
+			</Box>
+			<Box
+				flexGrow={1}
+				color="text"
+				paddingY={2}
+				paddingX={1}
+				background="shadeAlt"
+			>
+				backgroundShadeAlt
+			</Box>
+		</Flex>
+	</Flex>
+);
+
+export const Backgrounds = () => {
+	return (
+		<>
+			<Body>
+				<h2>Backgrounds</h2>
+				<p>A visualisation of how body and shade backgrounds work together.</p>
+			</Body>
+			<BackgroundRow palette="light" />
+			<BackgroundRow palette="dark" />
+		</>
 	);
 };
 
