@@ -28,7 +28,7 @@ export type CalendarRangeProps = Omit<
 	DayPickerRangeProps,
 	'mode' | 'components'
 > & {
-	returnFocusRef: RefObject<HTMLButtonElement>;
+	returnFocusRef?: RefObject<HTMLButtonElement>;
 };
 
 export function CalendarRange({
@@ -40,6 +40,7 @@ export function CalendarRange({
 			autoFocus={false}
 			onDeactivation={() => {
 				// https://github.com/theKashey/react-focus-lock#unmounting-and-focus-management
+				if (!returnFocusRef) return;
 				window.setTimeout(() => returnFocusRef.current?.focus(), 0);
 			}}
 		>
