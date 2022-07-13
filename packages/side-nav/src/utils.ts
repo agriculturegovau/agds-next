@@ -36,32 +36,14 @@ export const useSideNavIds = () => {
 	};
 };
 
-const defaultStyles = {
-	background: 'body',
-	hover: 'shade',
-} as const;
-
-const altStyles = {
-	background: 'bodyAlt',
-	hover: 'shadeAlt',
-} as const;
-
 export const variantMap = {
-	light: {
-		palette: 'light',
-		...defaultStyles,
+	default: {
+		background: 'body',
+		hover: 'shade',
 	},
-	lightAlt: {
-		palette: 'light',
-		...altStyles,
-	},
-	dark: {
-		palette: 'dark',
-		...defaultStyles,
-	},
-	darkAlt: {
-		palette: 'dark',
-		...altStyles,
+	alt: {
+		background: 'bodyAlt',
+		hover: 'shadeAlt',
 	},
 } as const;
 

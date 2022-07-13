@@ -27,7 +27,7 @@ export function SideNav({
 	activePath,
 	collapseTitle,
 	items,
-	variant = 'light',
+	variant = 'default',
 	titleLink,
 	title,
 }: SideNavProps) {

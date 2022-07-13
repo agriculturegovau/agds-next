@@ -75,32 +75,20 @@ const Template: ComponentStory<typeof SideNav> = (args) => (
 	<SideNav {...args} />
 );
 
-export const LightVariant = Template.bind({});
-LightVariant.args = {
+export const DefaultVariant = Template.bind({});
+DefaultVariant.args = {
 	...defaultArgs,
-	variant: 'light',
+	variant: 'default',
 };
 
-export const LightAltVariant = Template.bind({});
-LightAltVariant.args = {
+export const AltVariant = Template.bind({});
+AltVariant.args = {
 	...defaultArgs,
-	variant: 'lightAlt',
-};
-
-export const DarkVariant = Template.bind({});
-DarkVariant.args = {
-	...defaultArgs,
-	variant: 'dark',
-};
-
-export const DarkAltVariant = Template.bind({});
-DarkAltVariant.args = {
-	...defaultArgs,
-	variant: 'darkAlt',
+	variant: 'alt',
 };
 
 export const Modular = () => (
-	<SideNavContainer variant="light" aria-label="side navigation">
+	<SideNavContainer variant="default" aria-label="side navigation">
 		<SideNavTitle href="#">SideNav Title</SideNavTitle>
 		<SideNavGroup>
 			<SideNavLink href="#one" label="One" />
