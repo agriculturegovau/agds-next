@@ -42,7 +42,6 @@ export const AccordionTitle = ({
 				fontSize="md"
 				lineHeight="heading"
 				fontWeight="bold"
-				background="body"
 				paddingY={1}
 				justifyContent="space-between"
 				alignItems="center"
