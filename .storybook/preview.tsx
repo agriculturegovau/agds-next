@@ -48,14 +48,6 @@ export const globalTypes = {
 			showName: true,
 		},
 	},
-	bg: {
-		name: 'Background',
-		defaultValue: 'body',
-		toolbar: {
-			items: ['body', 'bodyAlt', 'shade', 'shadeAlt'],
-			showName: true,
-		},
-	},
 };
 
 export const parameters = {
@@ -82,7 +74,6 @@ const getTheme = (brand) => {
 const withBrandTheme = (Story, context) => {
 	const brand = getTheme(context.globals.brand);
 	const palette = context.globals.palette;
-	const background = context.globals.bg;
 	return (
 		<Core theme={brand}>
 			<Box
@@ -90,7 +81,7 @@ const withBrandTheme = (Story, context) => {
 				minHeight="100vh"
 				padding={1}
 				palette={palette}
-				background={background}
+				background="body"
 			>
 				<Story />
 			</Box>
