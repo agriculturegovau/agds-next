@@ -1,5 +1,6 @@
 import { ComponentProps } from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { Box } from '@ag.ds-next/box';
 import {
 	SideNav,
 	SideNavContainer,
@@ -71,24 +72,27 @@ const defaultArgs = {
 	activePath: '#in-detail/record-keeping/incorrect-amounts',
 } as ComponentProps<typeof SideNav>;
 
-const Template: ComponentStory<typeof SideNav> = (args) => (
+export const Basic: ComponentStory<typeof SideNav> = (args) => (
 	<SideNav {...args} />
 );
-
-export const DefaultVariant = Template.bind({});
-DefaultVariant.args = {
+Basic.args = {
 	...defaultArgs,
-	variant: 'default',
+	background: 'body',
 };
 
-export const AltVariant = Template.bind({});
-AltVariant.args = {
+export const OnBodyAlt: ComponentStory<typeof SideNav> = (args) => (
+	<Box padding={2} background="bodyAlt">
+		<SideNav {...args} />
+	</Box>
+);
+OnBodyAlt.args = {
 	...defaultArgs,
-	variant: 'alt',
+	background: 'bodyAlt',
 };
+OnBodyAlt.storyName = 'bodyAlt background';
 
 export const Modular = () => (
-	<SideNavContainer variant="default" aria-label="side navigation">
+	<SideNavContainer background="body" aria-label="side navigation">
 		<SideNavTitle href="#">SideNav Title</SideNavTitle>
 		<SideNavGroup>
 			<SideNavLink href="#one" label="One" />
