@@ -1,5 +1,4 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { Box } from '@ag.ds-next/box';
 import {
 	Breadcrumbs,
 	BreadcrumbsDivider,
