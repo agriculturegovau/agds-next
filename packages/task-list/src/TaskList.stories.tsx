@@ -1,5 +1,4 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { Box } from '@ag.ds-next/box';
 import {
 	TaskListContainer,
 	TaskList,
@@ -60,19 +59,10 @@ const exampleOrderedButtonItems = [
 	},
 ];
 
-export const OnLight: ComponentStory<typeof TaskList> = (args) => (
+export const Basic: ComponentStory<typeof TaskList> = (args) => (
 	<TaskList {...args} />
 );
-OnLight.args = {
-	items: exampleOrderedLinkItems,
-};
-
-export const OnDark: ComponentStory<typeof TaskList> = (args) => (
-	<Box palette="dark" background="body" padding={1.5}>
-		<TaskList {...args} />
-	</Box>
-);
-OnDark.args = {
+Basic.args = {
 	items: exampleOrderedLinkItems,
 };
 
