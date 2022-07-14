@@ -19,19 +19,10 @@ const exampleLinks = [
 	{ label: 'Applications' },
 ];
 
-export const OnLight: ComponentStory<typeof Breadcrumbs> = (args) => (
+export const Basic: ComponentStory<typeof Breadcrumbs> = (args) => (
 	<Breadcrumbs {...args} />
 );
-OnLight.args = {
-	links: exampleLinks,
-};
-
-export const OnDark: ComponentStory<typeof Breadcrumbs> = (args) => (
-	<Box palette="dark" background="body" padding={1.5}>
-		<Breadcrumbs {...args} />
-	</Box>
-);
-OnDark.args = {
+Basic.args = {
 	links: exampleLinks,
 };
 
