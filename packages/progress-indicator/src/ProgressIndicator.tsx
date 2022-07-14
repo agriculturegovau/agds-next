@@ -18,6 +18,7 @@ import {
 import { ProgressIndicatorList } from './ProgressIndicatorList';
 
 export type ProgressIndicatorProps = {
+	/** If the ProgressIndicator is placed on a page with 'bodyAlt' background, please set this to "bodyAlt". */
 	background?: 'body' | 'bodyAlt';
 	items: ProgressIndicatorItem[];
 };
