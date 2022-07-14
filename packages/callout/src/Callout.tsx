@@ -4,7 +4,7 @@ import { CalloutTitle } from './CalloutTitle';
 
 export type CalloutProps = PropsWithChildren<{
 	as?: ElementType;
-	background: 'shade' | 'shadeAlt';
+	background?: 'shade' | 'shadeAlt';
 	title?: string;
 }>;
 
