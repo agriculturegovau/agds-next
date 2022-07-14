@@ -6,8 +6,10 @@ export type SubNavProps = PropsWithChildren<{
 	activePath?: string;
 	'aria-label'?: string;
 	id?: string;
+	/** The links SubNav should show */
 	links: SubNavListLink[];
-	variant?: SubNavContainerVariant;
+	/** If the ProgressIndicator is placed on a page with 'bodyAlt' background, please set this to "bodyAlt". */
+	background?: SubNavContainerVariant;
 }>;
 
 export function SubNav({
@@ -15,10 +17,10 @@ export function SubNav({
 	activePath,
 	id,
 	'aria-label': ariaLabel = 'secondary',
-	variant = 'light',
+	background = 'body',
 }: SubNavProps) {
 	return (
-		<SubNavContainer id={id} aria-label={ariaLabel} variant={variant}>
+		<SubNavContainer id={id} aria-label={ariaLabel} background={background}>
 			<SubNavList links={links} activePath={activePath} />
 		</SubNavContainer>
 	);

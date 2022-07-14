@@ -4,25 +4,13 @@ import { boxPalette, packs } from '@ag.ds-next/core';
 import { localPalette, localPaletteVars } from './utils';
 
 const variantMap = {
-	light: {
-		background: 'body',
+	body: {
 		hover: 'shade',
 		bottomBar: boxPalette.backgroundBodyAlt,
 	},
-	lightAlt: {
-		background: 'bodyAlt',
+	bodyAlt: {
 		hover: 'shadeAlt',
-		bottomBar: boxPalette.backgroundBodyAlt,
-	},
-	dark: {
-		background: 'body',
-		hover: 'shade',
-		bottomBar: boxPalette.backgroundBodyAlt,
-	},
-	darkAlt: {
-		background: 'bodyAlt',
-		hover: 'shadeAlt',
-		bottomBar: boxPalette.backgroundBodyAlt,
+		bottomBar: boxPalette.backgroundBody,
 	},
 } as const;
 
@@ -31,16 +19,16 @@ export type SubNavContainerVariant = keyof typeof variantMap;
 export type SubNavContainerProps = PropsWithChildren<{
 	id?: string;
 	'aria-label': string;
-	variant: SubNavContainerVariant;
+	background: SubNavContainerVariant;
 }>;
 
 export function SubNavContainer({
 	id,
 	'aria-label': ariaLabel,
 	children,
-	variant,
+	background,
 }: SubNavContainerProps) {
-	const { bottomBar, background, hover } = variantMap[variant];
+	const { bottomBar, hover } = variantMap[background];
 	return (
 		<Box
 			as="nav"
