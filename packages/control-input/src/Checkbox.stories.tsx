@@ -1,5 +1,4 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { Box } from '@ag.ds-next/box';
 import { Checkbox } from './Checkbox';
 
 export default {
@@ -11,18 +10,8 @@ const Template: ComponentStory<typeof Checkbox> = (args) => (
 	<Checkbox {...args} />
 );
 
-export const OnLight = Template.bind({});
-OnLight.args = {
-	children: 'Example',
-	disabled: false,
-};
-
-export const OnDark: ComponentStory<typeof Checkbox> = (args) => (
-	<Box palette="dark" background="body" padding={1.5}>
-		<Template {...args} />
-	</Box>
-);
-OnDark.args = {
+export const Basic = Template.bind({});
+Basic.args = {
 	children: 'Example',
 	disabled: false,
 };

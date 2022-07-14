@@ -1,5 +1,4 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { Box } from '@ag.ds-next/box';
 import { Radio } from './Radio';
 
 export default {
@@ -9,18 +8,8 @@ export default {
 
 const Template: ComponentStory<typeof Radio> = (args) => <Radio {...args} />;
 
-export const OnLight = Template.bind({});
-OnLight.args = {
-	children: 'Example',
-	checked: true,
-};
-
-export const OnDark: ComponentStory<typeof Radio> = (args) => (
-	<Box palette="dark" background="body" padding={1.5}>
-		<Template {...args} />
-	</Box>
-);
-OnDark.args = {
+export const Basic = Template.bind({});
+Basic.args = {
 	children: 'Example',
 	checked: true,
 };

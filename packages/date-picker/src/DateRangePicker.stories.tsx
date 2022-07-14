@@ -19,15 +19,8 @@ const Template: ComponentStory<typeof DateRangePicker> = (args) => {
 	return <DateRangePicker {...args} value={range} onChange={setRange} />;
 };
 
-export const OnLight = Template.bind({});
-OnLight.args = {};
-
-export const OnDark: ComponentStory<typeof DateRangePicker> = (args) => (
-	<Box background="body" palette="dark" padding={1.5}>
-		<Template {...args} />
-	</Box>
-);
-OnDark.args = {};
+export const Basic = Template.bind({});
+Basic.args = {};
 
 export const Disabled = Template.bind({});
 Disabled.args = {

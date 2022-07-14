@@ -1,6 +1,5 @@
 import { useState, ChangeEvent, FormEvent } from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { Box } from '@ag.ds-next/box';
 import { SearchBox } from './SearchBox';
 import { SearchBoxButton } from './SearchBoxButton';
 import { SearchBoxInput } from './SearchBoxInput';
@@ -11,22 +10,12 @@ export default {
 	subcomponents: { SearchBoxButton, SearchBoxInput },
 } as ComponentMeta<typeof SearchBox>;
 
-const Template: ComponentStory<typeof SearchBox> = () => (
+export const Basic: ComponentStory<typeof SearchBox> = () => (
 	<SearchBox>
 		<SearchBoxInput />
 		<SearchBoxButton>Search</SearchBoxButton>
 	</SearchBox>
 );
-
-export const OnLight = Template.bind({});
-OnLight.args = {};
-
-export const OnDark = () => (
-	<Box palette="dark" background="body" color="text" padding={1.5}>
-		<Template />
-	</Box>
-);
-OnDark.args = {};
 
 export const LabelVisible: ComponentStory<typeof SearchBoxInput> = (args) => (
 	<SearchBox>

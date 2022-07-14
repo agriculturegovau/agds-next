@@ -33,19 +33,10 @@ const Template = (props: LoadingBlanketProps) => (
 	</Box>
 );
 
-export const OnLight: ComponentStory<typeof LoadingBlanket> = (args) => (
+export const Basic: ComponentStory<typeof LoadingBlanket> = (args) => (
 	<Template {...args} />
 );
-OnLight.args = {
-	label: 'Component loading state message',
-};
-
-export const OnDark: ComponentStory<typeof LoadingBlanket> = (args) => (
-	<Box dark>
-		<Template {...args} />
-	</Box>
-);
-OnDark.args = {
+Basic.args = {
 	label: 'Component loading state message',
 };
 
@@ -107,28 +98,13 @@ const FullScreenContent = () => (
 	</Fragment>
 );
 
-export const FullScreenOnLight: ComponentStory<typeof LoadingBlanket> = (
-	args
-) => (
+export const FullScreen: ComponentStory<typeof LoadingBlanket> = (args) => (
 	<Box background="body">
 		<FullScreenContent />
 		<LoadingBlanket {...args} />
 	</Box>
 );
-FullScreenOnLight.args = {
-	fullScreen: true,
-	label: 'Loading state message',
-};
-
-export const FullScreenOnDark: ComponentStory<typeof LoadingBlanket> = (
-	args
-) => (
-	<Box background="body" dark>
-		<FullScreenContent />
-		<LoadingBlanket {...args} />
-	</Box>
-);
-FullScreenOnDark.args = {
+FullScreen.args = {
 	fullScreen: true,
 	label: 'Loading state message',
 };

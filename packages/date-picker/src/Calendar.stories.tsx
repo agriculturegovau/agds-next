@@ -1,7 +1,6 @@
 import { useCallback, useState } from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { DateUtils } from 'react-day-picker';
-import { Box } from '@ag.ds-next/box';
 import { Calendar, CalendarProps } from './Calendar';
 
 export default {
@@ -14,17 +13,10 @@ const Template = (props: CalendarProps) => {
 	return <Calendar selectedDays={value} onDayClick={setValue} {...props} />;
 };
 
-export const OnLight: ComponentStory<typeof Calendar> = (args) => (
+export const Basic: ComponentStory<typeof Calendar> = (args) => (
 	<Template {...args} />
 );
-OnLight.args = {};
-
-export const OnDark: ComponentStory<typeof Calendar> = (args) => (
-	<Box background="body" palette="dark" padding={1.5}>
-		<Template {...args} />
-	</Box>
-);
-OnDark.args = {};
+Basic.args = {};
 
 export const MultipleMonths: ComponentStory<typeof Calendar> = (args) => (
 	<Template {...args} />
