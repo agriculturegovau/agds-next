@@ -5,25 +5,21 @@ import { localPalette, localPaletteVars } from './utils';
 
 const variantMap = {
 	light: {
-		palette: 'light',
 		background: 'body',
 		hover: 'shade',
 		bottomBar: boxPalette.backgroundBodyAlt,
 	},
 	lightAlt: {
-		palette: 'light',
 		background: 'bodyAlt',
 		hover: 'shadeAlt',
 		bottomBar: boxPalette.backgroundBodyAlt,
 	},
 	dark: {
-		palette: 'dark',
 		background: 'body',
 		hover: 'shade',
 		bottomBar: boxPalette.backgroundBodyAlt,
 	},
 	darkAlt: {
-		palette: 'dark',
 		background: 'bodyAlt',
 		hover: 'shadeAlt',
 		bottomBar: boxPalette.backgroundBodyAlt,
@@ -44,11 +40,10 @@ export function SubNavContainer({
 	children,
 	variant,
 }: SubNavContainerProps) {
-	const { palette, bottomBar, background, hover } = variantMap[variant];
+	const { bottomBar, background, hover } = variantMap[variant];
 	return (
 		<Box
 			as="nav"
-			palette={palette}
 			background={background}
 			id={id}
 			aria-label={ariaLabel}

@@ -28,17 +28,3 @@ LightAltVariant.args = {
 	activePath: '#code',
 	links: exampleLinks,
 };
-
-export const DarkVariant = Template.bind({});
-DarkVariant.args = {
-	variant: 'dark',
-	activePath: '#code',
-	links: exampleLinks,
-};
-
-export const DarkAltVariant = Template.bind({});
-DarkAltVariant.args = {
-	variant: 'darkAlt',
-	activePath: '#code',
-	links: exampleLinks,
-};
