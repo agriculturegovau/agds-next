@@ -9,6 +9,7 @@ import {
 } from '@ag.ds-next/icon';
 import { boxPalette, LinkProps, packs } from '@ag.ds-next/core';
 import { BaseButton } from '@ag.ds-next/button';
+import { hoverMapper, ProgressIndicatorBackgroundType } from './utils';
 
 export type ProgressIndicatorItem = (
 	| ProgressIndicatorItemButtonProps
@@ -20,6 +21,7 @@ export type ProgressIndicatorItem = (
 export type ProgressIndicatorItemStatus = 'doing' | 'todo' | 'done';
 
 export type ProgressIndicatorItemLinkProps = LinkProps & {
+	background?: ProgressIndicatorBackgroundType;
 	status: ProgressIndicatorItemStatus;
 };
 
@@ -34,6 +36,7 @@ export const ProgressIndicatorItemLink = ({
 
 export type ProgressIndicatorItemButtonProps =
 	ButtonHTMLAttributes<HTMLButtonElement> & {
+		background?: ProgressIndicatorBackgroundType;
 		status: ProgressIndicatorItemStatus;
 	};
 
@@ -48,12 +51,14 @@ export const ProgressIndicatorItemButton = ({
 
 type ProgressIndicatorItemProps = PropsWithChildren<{
 	as: ElementType;
+	background?: ProgressIndicatorBackgroundType;
 	className?: string;
 	status: ProgressIndicatorItemStatus;
 }>;
 
 const ProgressIndicatorItem = ({
 	as,
+	background = 'body',
 	children,
 	status,
 	className,
@@ -69,6 +74,7 @@ const ProgressIndicatorItem = ({
 				alignItems="center"
 				gap={0.75}
 				padding={0.75}
+				background={background}
 				color="text"
 				fontFamily="body"
 				fontWeight={active ? 'bold' : 'normal'}
@@ -81,7 +87,7 @@ const ProgressIndicatorItem = ({
 					textDecoration: 'none',
 					'&:hover': {
 						...packs.underline,
-						backgroundColor: boxPalette.backgroundShade,
+						backgroundColor: hoverMapper[background],
 					},
 				}}
 				{...props}

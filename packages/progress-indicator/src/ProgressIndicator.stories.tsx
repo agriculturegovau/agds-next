@@ -37,19 +37,20 @@ const exampleButtonItems = [
 	{ onClick: console.log, label: 'Case Studies', status: 'todo' as const },
 ];
 
-export const OnLight: ComponentStory<typeof ProgressIndicator> = (args) => (
+export const Basic: ComponentStory<typeof ProgressIndicator> = (args) => (
 	<ProgressIndicator {...args} />
 );
-OnLight.args = {
+Basic.args = {
 	items: exampleLinkItems,
 };
 
-export const OnDark: ComponentStory<typeof ProgressIndicator> = (args) => (
-	<Box palette="dark" background="body" padding={1.5}>
+export const OnBodyAlt: ComponentStory<typeof ProgressIndicator> = (args) => (
+	<Box background="bodyAlt" padding={1.5}>
 		<ProgressIndicator {...args} />
 	</Box>
 );
-OnDark.args = {
+OnBodyAlt.args = {
+	background: 'bodyAlt',
 	items: exampleLinkItems,
 };
 
