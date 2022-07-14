@@ -4,21 +4,15 @@ import { CalloutTitle } from './CalloutTitle';
 
 export type CalloutProps = PropsWithChildren<{
 	as?: ElementType;
-	background?: 'shade' | 'shadeAlt';
 	title?: string;
 }>;
 
-export const Callout = ({
-	as,
-	background = 'shade',
-	children,
-	title,
-}: CalloutProps) => (
+export const Callout = ({ as, children, title }: CalloutProps) => (
 	<Flex
 		as={as}
 		flexDirection="column"
 		gap={1}
-		background={background}
+		background="shade"
 		padding={1.5}
 		borderLeft
 		borderLeftWidth="xl"
