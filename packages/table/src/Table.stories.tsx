@@ -1,5 +1,4 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { Box } from '@ag.ds-next/box';
 import { TextLink } from '@ag.ds-next/text-link';
 import { Table } from './Table';
 import { TableBody } from './TableBody';
@@ -105,14 +104,8 @@ const Example: ComponentStory<typeof Table> = (args) => {
 	);
 };
 
-export const OnLight: ComponentStory<typeof Table> = (args) => (
+export const Basic: ComponentStory<typeof Table> = (args) => (
 	<Example {...args} />
-);
-
-export const OnDark: ComponentStory<typeof Table> = (args) => (
-	<Box palette="dark" background="body" padding={1.5}>
-		<Example {...args} />
-	</Box>
 );
 
 export const Modular: ComponentStory<typeof Table> = (args) => (
