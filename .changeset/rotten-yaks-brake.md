@@ -2,4 +2,4 @@
 '@ag.ds-next/accordion': patch
 ---
 
-Background should peak through
+Removed background color from `AccordionItem` so page background colour can peek through
