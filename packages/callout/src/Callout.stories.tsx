@@ -26,7 +26,7 @@ export const OnBodyAlt: ComponentStory<typeof Callout> = (args) => (
 		</Callout>
 	</Box>
 );
-OnBodyAlt.storyName = 'on bodyAlt background';
+OnBodyAlt.storyName = 'On bodyAlt background';
 OnBodyAlt.args = {
 	title: 'Callout heading',
 	background: 'shadeAlt',

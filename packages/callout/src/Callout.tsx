@@ -4,7 +4,9 @@ import { CalloutTitle } from './CalloutTitle';
 
 export type CalloutProps = PropsWithChildren<{
 	as?: ElementType;
+	/** If Callout is placed on "bodyAlt" background, please set this to "shadeAlt". */
 	background?: 'shade' | 'shadeAlt';
+	/** Title will appear in bold */
 	title?: string;
 }>;
 
