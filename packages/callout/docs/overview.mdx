@@ -2,7 +2,7 @@
 title: Callout
 description: Callouts are an excerpt of text or an article that has been pulled out and used as a visual clue to draw the eye to the text. They are used to help direct a user's attention to important pieces of information.
 group: Content
-storybookPath: /story/layout-callout--on-light
+storybookPath: /story/content-callout--basic
 ---
 
 ## Default
@@ -50,4 +50,17 @@ Use a calendar callout to notify and alert users of important dates and events.
 		<Text>New Year’s Day</Text>
 	</Flex>
 </Callout>
+```
+
+## Backgrounds
+
+The background of the `Callout` must pair with the background it is being placed on. For example, if `Callout` is placed on a 'bodyAlt' background, please set the `background` prop to `shadeAlt`.
+
+```jsx live
+<Stack background="bodyAlt" padding={3} gap={1}>
+	<Text>An area with `bodyAlt` background</Text>
+	<Callout title="Callout heading" background="shadeAlt">
+		<Text as="p">Description of the callout.</Text>
+	</Callout>
+</Stack>
 ```
