@@ -89,7 +89,7 @@ OnBodyAlt.args = {
 	...defaultArgs,
 	background: 'bodyAlt',
 };
-OnBodyAlt.storyName = 'on bodyAlt background';
+OnBodyAlt.storyName = 'On bodyAlt background';
 
 export const Modular = () => (
 	<SideNavContainer background="body" aria-label="side navigation">
