@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Story, ComponentMeta } from '@storybook/react';
+import { ComponentMeta } from '@storybook/react';
 import { Box, Stack } from '@ag.ds-next/box';
 import { useToggleState } from '@ag.ds-next/core';
 import { Body } from '@ag.ds-next/body';
