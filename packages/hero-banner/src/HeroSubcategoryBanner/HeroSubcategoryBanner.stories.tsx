@@ -19,9 +19,12 @@ export default {
 	},
 } as ComponentMeta<typeof HeroSubcategoryBanner>;
 
-const Template: Story<
-	HeroSubcategoryBannerProps & { title: string; subtitle: string }
-> = (args) => (
+type HeroSubcategoryBannerStoryProps = HeroSubcategoryBannerProps & {
+	title: string;
+	subtitle: string;
+};
+
+const Template: Story<HeroSubcategoryBannerStoryProps> = (args) => (
 	<HeroSubcategoryBanner {...args}>
 		<Breadcrumbs
 			links={[
@@ -38,38 +41,18 @@ const commonArgs = {
 	title: 'Subcategory banner title - xxl/display (H1)',
 };
 
-export const BodyOnLight = Template.bind({});
-BodyOnLight.args = {
+export const Basic = Template.bind({});
+Basic.args = {
 	...commonArgs,
-	background: 'body',
 };
 
-export const BodyAltOnLight = Template.bind({});
-BodyAltOnLight.args = {
-	...commonArgs,
-	background: 'bodyAlt',
-};
-
-export const BodyOnDark: Story<
-	HeroSubcategoryBannerProps & { title: string; subtitle: string }
-> = (args) => (
-	<Box palette="dark" padding={1} background="body">
+export const OnBodyAlt: Story<HeroSubcategoryBannerStoryProps> = (args) => (
+	<Box paddingY={3} background="bodyAlt">
 		<Template {...args} />
 	</Box>
 );
-BodyOnDark.args = {
+OnBodyAlt.storyName = 'On bodyAlt background';
+OnBodyAlt.args = {
 	...commonArgs,
 	background: 'body',
-};
-
-export const BodyAltOnDark: Story<
-	HeroSubcategoryBannerProps & { title: string; subtitle: string }
-> = (args) => (
-	<Box palette="dark" padding={1} background="body">
-		<Template {...args} />
-	</Box>
-);
-BodyAltOnDark.args = {
-	...commonArgs,
-	background: 'bodyAlt',
 };

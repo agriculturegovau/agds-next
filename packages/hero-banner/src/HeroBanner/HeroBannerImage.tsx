@@ -1,7 +1,7 @@
 import { PropsWithChildren } from 'react';
 import { Box } from '@ag.ds-next/box';
 import { boxPalette } from '@ag.ds-next/core';
-import { HeroBannerBackground, variantMap } from '../utils';
+import { HeroBannerBackground, backgroundMap } from '../utils';
 
 export type HeroBannerImageProps = PropsWithChildren<{
 	background: HeroBannerBackground;
@@ -11,7 +11,7 @@ export const HeroBannerImage = ({
 	children,
 	background,
 }: HeroBannerImageProps) => {
-	const backgroundVar = variantMap[background];
+	const backgroundVar = backgroundMap[background];
 	return (
 		<Box
 			display={['none', 'none', 'block']}

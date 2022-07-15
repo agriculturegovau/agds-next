@@ -1,6 +1,6 @@
-export const variantMap = {
+export const backgroundMap = {
 	body: 'backgroundBody',
 	bodyAlt: 'backgroundBodyAlt',
 } as const;
 
-export type HeroBannerBackground = keyof typeof variantMap;
+export type HeroBannerBackground = keyof typeof backgroundMap;
