@@ -1,5 +1,5 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { Box, Stack } from '@ag.ds-next/box';
+import { Stack } from '@ag.ds-next/box';
 import { TextInput } from '@ag.ds-next/text-input';
 import { FormStack } from '@ag.ds-next/form-stack';
 import { H1 } from '@ag.ds-next/heading';
