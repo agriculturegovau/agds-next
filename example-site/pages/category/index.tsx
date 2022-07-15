@@ -16,7 +16,6 @@ export default function CategoryPage() {
 			<DocumentTitle title="Category" />
 			<AppLayout template={{ name: 'Category', slug: 'category' }}>
 				<HeroCategoryBanner
-					variant="lightAlt"
 					image={
 						<img
 							alt="Harvester in a golden field of wheat emptying grain into a chaser bin moving alongside it."

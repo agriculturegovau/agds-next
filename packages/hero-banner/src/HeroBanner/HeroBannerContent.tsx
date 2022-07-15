@@ -1,18 +1,18 @@
 import { PropsWithChildren, ReactNode } from 'react';
 import { Flex, Stack } from '@ag.ds-next/box';
 import { Content } from '@ag.ds-next/content';
-import { HeroBannerVariant } from '../utils';
+import { HeroBannerBackground } from '../utils';
 import { HeroBannerImage } from './HeroBannerImage';
 
 export type HeroBannerContentProps = PropsWithChildren<{
 	image?: ReactNode;
-	variant: HeroBannerVariant;
+	background: HeroBannerBackground;
 }>;
 
 export const HeroBannerContent = ({
 	children,
 	image,
-	variant,
+	background,
 }: HeroBannerContentProps) => {
 	return (
 		<Content>
@@ -27,7 +27,7 @@ export const HeroBannerContent = ({
 					{children}
 				</Stack>
 				{image ? (
-					<HeroBannerImage variant={variant}>{image}</HeroBannerImage>
+					<HeroBannerImage background={background}>{image}</HeroBannerImage>
 				) : null}
 			</Flex>
 		</Content>

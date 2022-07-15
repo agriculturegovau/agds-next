@@ -21,7 +21,6 @@ export default function HomePage() {
 			<DocumentTitle title="Home" />
 			<AppLayout template={{ name: 'Home', slug: 'home' }}>
 				<HeroBanner
-					variant="lightAlt"
 					image={
 						<img
 							alt="Harvester in a golden field of wheat emptying grain into a chaser bin moving alongside it."

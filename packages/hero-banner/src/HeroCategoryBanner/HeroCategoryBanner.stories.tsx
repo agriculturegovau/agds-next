@@ -1,4 +1,5 @@
 import { ComponentMeta, Story } from '@storybook/react';
+import { Box } from '@ag.ds-next/box';
 import {
 	HeroCategoryBanner,
 	HeroCategoryBannerProps,
@@ -21,9 +22,12 @@ export default {
 	},
 } as ComponentMeta<typeof HeroCategoryBanner>;
 
-const Template: Story<
-	HeroCategoryBannerProps & { title: string; subtitle: string }
-> = (args) => (
+type HeroCategoryBannerStoryProps = HeroCategoryBannerProps & {
+	title: string;
+	subtitle: string;
+};
+
+const Template: Story<HeroCategoryBannerStoryProps> = (args) => (
 	<HeroCategoryBanner {...args}>
 		<HeroCategoryBannerTitle>{args.title}</HeroCategoryBannerTitle>
 		<HeroCategoryBannerSubtitle>{args.subtitle}</HeroCategoryBannerSubtitle>
@@ -41,28 +45,20 @@ const commonArgs = {
 	),
 };
 
-export const LightVariant = Template.bind({});
-LightVariant.args = {
+export const Basic = Template.bind({});
+Basic.args = {
 	...commonArgs,
-	variant: 'light',
 };
 
-export const LightAlt = Template.bind({});
-LightAlt.args = {
+export const OnBodyAlt: Story<HeroCategoryBannerStoryProps> = (args) => (
+	<Box paddingY={3} background="bodyAlt">
+		<Template {...args} />
+	</Box>
+);
+OnBodyAlt.storyName = 'On bodyAlt background';
+OnBodyAlt.args = {
 	...commonArgs,
-	variant: 'lightAlt',
-};
-
-export const Dark = Template.bind({});
-Dark.args = {
-	...commonArgs,
-	variant: 'dark',
-};
-
-export const DarkAlt = Template.bind({});
-DarkAlt.args = {
-	...commonArgs,
-	variant: 'darkAlt',
+	background: 'body',
 };
 
 export const Buttons = Template.bind({});
