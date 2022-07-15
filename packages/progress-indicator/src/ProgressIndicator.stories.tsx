@@ -49,7 +49,7 @@ export const OnBodyAlt: ComponentStory<typeof ProgressIndicator> = (args) => (
 		<ProgressIndicator {...args} />
 	</Box>
 );
-OnBodyAlt.storyName = 'on bodyAlt background';
+OnBodyAlt.storyName = 'On bodyAlt background';
 OnBodyAlt.args = {
 	background: 'bodyAlt',
 	items: exampleLinkItems,
