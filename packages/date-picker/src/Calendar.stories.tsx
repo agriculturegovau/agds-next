@@ -2,7 +2,6 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { useState } from 'react';
 import { DateRange } from 'react-day-picker';
 import { subDays, addDays } from 'date-fns';
-import { Box } from '@ag.ds-next/box';
 import { CalendarRange, CalendarSingle, CalendarSingleProps } from './Calendar';
 
 export default {
@@ -15,17 +14,10 @@ const Template = (props: CalendarSingleProps) => {
 	return <CalendarSingle selected={value} onSelect={setValue} {...props} />;
 };
 
-export const OnLight: ComponentStory<typeof CalendarSingle> = (args) => (
+export const Basic: ComponentStory<typeof CalendarSingle> = (args) => (
 	<Template {...args} />
 );
-OnLight.args = {};
-
-export const OnDark: ComponentStory<typeof CalendarSingle> = (args) => (
-	<Box background="body" palette="dark" padding={1.5}>
-		<Template {...args} />
-	</Box>
-);
-OnDark.args = {};
+Basic.args = {};
 
 // https://react-day-picker.js.org/basics/customization#multiple-months
 export const MultipleMonths: ComponentStory<typeof CalendarSingle> = (args) => (
