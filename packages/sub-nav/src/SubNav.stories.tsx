@@ -1,4 +1,5 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { Box } from '@ag.ds-next/box';
 import { SubNav } from './SubNav';
 
 export default {
@@ -13,32 +14,23 @@ const exampleLinks = [
 	{ href: '#accessibility', label: 'Accessibility' },
 ];
 
-const Template: ComponentStory<typeof SubNav> = (args) => <SubNav {...args} />;
-
-export const LightVariant = Template.bind({});
-LightVariant.args = {
-	variant: 'light',
+export const Basic: ComponentStory<typeof SubNav> = (args) => (
+	<SubNav {...args} />
+);
+Basic.args = {
+	background: 'body',
 	activePath: '#code',
 	links: exampleLinks,
 };
 
-export const LightAltVariant = Template.bind({});
-LightAltVariant.args = {
-	variant: 'lightAlt',
-	activePath: '#code',
-	links: exampleLinks,
-};
-
-export const DarkVariant = Template.bind({});
-DarkVariant.args = {
-	variant: 'dark',
-	activePath: '#code',
-	links: exampleLinks,
-};
-
-export const DarkAltVariant = Template.bind({});
-DarkAltVariant.args = {
-	variant: 'darkAlt',
+export const OnBodyAlt: ComponentStory<typeof SubNav> = (args) => (
+	<Box padding={1.5} background="bodyAlt">
+		<SubNav {...args} />
+	</Box>
+);
+OnBodyAlt.storyName = 'On bodyAlt background';
+OnBodyAlt.args = {
+	background: 'bodyAlt',
 	activePath: '#code',
 	links: exampleLinks,
 };
