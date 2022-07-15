@@ -1,5 +1,5 @@
 import { PropsWithChildren } from 'react';
-import { SubNavContainer, SubNavContainerVariant } from './SubNavContainer';
+import { SubNavContainer, SubNavBackground } from './SubNavContainer';
 import { SubNavList, SubNavListLink } from './SubNavList';
 
 export type SubNavProps = PropsWithChildren<{
@@ -9,7 +9,7 @@ export type SubNavProps = PropsWithChildren<{
 	/** The navigation list items. */
 	links: SubNavListLink[];
 	/** If the SubNav is placed on a page with 'bodyAlt' background, please set this to 'bodyAlt'. */
-	background?: SubNavContainerVariant;
+	background?: SubNavBackground;
 }>;
 
 export function SubNav({

@@ -3,7 +3,7 @@ import { backgroundColorMap, Box } from '@ag.ds-next/box';
 import { boxPalette, packs } from '@ag.ds-next/core';
 import { localPalette, localPaletteVars } from './utils';
 
-const variantMap = {
+const backgroundMap = {
 	body: {
 		hover: 'shade',
 		bottomBar: boxPalette.backgroundBodyAlt,
@@ -14,12 +14,12 @@ const variantMap = {
 	},
 } as const;
 
-export type SubNavContainerVariant = keyof typeof variantMap;
+export type SubNavBackground = keyof typeof backgroundMap;
 
 export type SubNavContainerProps = PropsWithChildren<{
 	id?: string;
 	'aria-label': string;
-	background: SubNavContainerVariant;
+	background: SubNavBackground;
 }>;
 
 export function SubNavContainer({
@@ -28,7 +28,7 @@ export function SubNavContainer({
 	children,
 	background,
 }: SubNavContainerProps) {
-	const { bottomBar, hover } = variantMap[background];
+	const { bottomBar, hover } = backgroundMap[background];
 	return (
 		<Box
 			as="nav"
