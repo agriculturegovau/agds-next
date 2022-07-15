@@ -2,7 +2,7 @@
 title: Accordion
 description: An accordion shows or hides sections of content. It lets users see only the content they need.
 group: Layout
-storybookPath: /story/layout-accordion--on-light
+storybookPath: /story/layout-accordion--basic
 ---
 
 ```jsx live
@@ -160,4 +160,24 @@ This text is wrapped in the `AccordionContent` component.
 		</AccordionItemContent>
 	</AccordionItem>
 </Accordion>
+```
+
+## Backgrounds
+
+The background of the `AccordionItem` must pair with the background it is being placed on. For example, if AccordionItem is placed on a 'bodyAlt' background, please set the `background` prop to `bodyAlt`.
+
+```jsx live
+<Stack background="bodyAlt" padding={3} gap={1}>
+	<Text>An area with `bodyAlt` background</Text>
+	<Accordion>
+		<AccordionItem title="Accordion title" background="bodyAlt">
+			<AccordionItemContent>
+				<Text as="p">
+					This AccordionItem has background set to "bodyAlt", so it sits well
+					inside of this area.
+				</Text>
+			</AccordionItemContent>
+		</AccordionItem>
+	</Accordion>
+</Stack>
 ```

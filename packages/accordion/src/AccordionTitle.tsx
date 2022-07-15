@@ -2,11 +2,13 @@ import { MouseEventHandler, PropsWithChildren } from 'react';
 import { animated, useSpring } from '@react-spring/web';
 import { Box, Flex } from '@ag.ds-next/box';
 import { ChevronDownIcon } from '@ag.ds-next/icon';
-import { boxPalette, usePrefersReducedMotion } from '@ag.ds-next/core';
+import { usePrefersReducedMotion } from '@ag.ds-next/core';
 import { BaseButton } from '@ag.ds-next/button/';
+import { hoverColorMap, AccordionBackground } from './utils';
 
 export type AccordionTitleProps = PropsWithChildren<{
 	id: string;
+	background?: AccordionBackground;
 	ariaControls: string;
 	isOpen?: boolean;
 	onClick?: MouseEventHandler<HTMLButtonElement>;
@@ -17,6 +19,7 @@ const AnimatedIcon = animated(ChevronDownIcon);
 
 export const AccordionTitle = ({
 	ariaControls,
+	background = 'body',
 	children,
 	id,
 	isOpen,
@@ -42,6 +45,7 @@ export const AccordionTitle = ({
 				fontSize="md"
 				lineHeight="heading"
 				fontWeight="bold"
+				background={background}
 				paddingY={1}
 				justifyContent="space-between"
 				alignItems="center"
@@ -50,7 +54,7 @@ export const AccordionTitle = ({
 				focus
 				css={{
 					'&:hover': {
-						backgroundColor: boxPalette.backgroundShade,
+						backgroundColor: hoverColorMap[background],
 					},
 				}}
 			>
