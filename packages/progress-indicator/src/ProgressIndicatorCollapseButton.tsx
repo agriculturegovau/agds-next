@@ -5,11 +5,11 @@ import { ChevronDownIcon } from '@ag.ds-next/icon';
 import { tokens, usePrefersReducedMotion } from '@ag.ds-next/core';
 import { BaseButton } from '@ag.ds-next/button';
 import type { ProgressIndicatorItem } from './ProgressIndicatorItem';
-import { hoverMapper, ProgressIndicatorBackgroundType } from './utils';
+import { hoverColorMap, ProgressIndicatorBackground } from './utils';
 
 type ProgressIndicatorCollapseButtonProps = {
 	ariaControls: string;
-	background?: ProgressIndicatorBackgroundType;
+	background?: ProgressIndicatorBackground;
 	id: string;
 	isOpen: boolean;
 	items: ProgressIndicatorItem[];
@@ -60,7 +60,7 @@ export const ProgressIndicatorCollapseButton = ({
 			focus
 			css={{
 				'&:hover': {
-					background: hoverMapper[background],
+					background: hoverColorMap[background],
 				},
 
 				[tokens.mediaQuery.min.md]: {
