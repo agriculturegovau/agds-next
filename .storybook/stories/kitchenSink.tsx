@@ -73,9 +73,21 @@ const sideNavItems = [
 	{ href: '#five', label: 'Why you may receive a tax bill' },
 ];
 
-const KitchenSink = () => {
+const backgroundMapper = {
+	body: {
+		shade: 'shade',
+		opposite: 'bodyAlt',
+	},
+	bodyAlt: {
+		shade: 'shadeAlt',
+		opposite: 'body',
+	},
+} as const;
+
+const KitchenSink = ({ background }: { background: 'body' | 'bodyAlt' }) => {
+	const backgroundSet = backgroundMapper[background];
 	return (
-		<Box>
+		<Box background={background}>
 			<Stack>
 				<Header
 					variant="dark"
@@ -100,7 +112,7 @@ const KitchenSink = () => {
 					}
 				/>
 			</Stack>
-			<HeroBanner>
+			<HeroBanner background={backgroundSet.opposite}>
 				<HeroBannerTitleContainer>
 					<HeroBannerTitle>
 						Website hero banner title - xxxl/display (H1)
@@ -122,6 +134,7 @@ const KitchenSink = () => {
 					<Column columnSpan={{ xs: 12, md: 4 }}>
 						<Stack gap={2}>
 							<SideNav
+								background={background}
 								title="Lodging your tax return"
 								titleLink="#"
 								collapseTitle="In this section"
@@ -129,6 +142,7 @@ const KitchenSink = () => {
 								activePath="#in-detail/record-keeping/incorrect-amounts"
 							/>
 							<ProgressIndicator
+								background={background}
 								items={[
 									{ href: '#', label: 'Introduction', status: 'doing' },
 									{ href: '#', label: 'Business Contacts', status: 'todo' },
@@ -141,6 +155,7 @@ const KitchenSink = () => {
 					<Column columnSpan={{ xs: 12, md: 8 }}>
 						<Stack gap={2}>
 							<SubNav
+								background={background}
 								links={[
 									{ href: '#usage', label: 'Usage' },
 									{ href: '#code', label: 'Code' },
@@ -211,12 +226,12 @@ const KitchenSink = () => {
 								tortor eu, finibus lacinia libero.
 							</Text>
 
-							<Callout title="Callout heading">
+							<Callout title="Callout heading" background={backgroundSet.shade}>
 								<Text as="p">Description of the callout.</Text>
 							</Callout>
 
 							<Accordion>
-								<AccordionItem title="Accordion One">
+								<AccordionItem title="Accordion One" background={background}>
 									<AccordionItemContent>
 										<Text as="p">
 											Lorem ipsum dolor sit amet, consectetur adipiscing elit.
@@ -233,7 +248,7 @@ const KitchenSink = () => {
 										</Text>
 									</AccordionItemContent>
 								</AccordionItem>
-								<AccordionItem title="Accordion Two">
+								<AccordionItem title="Accordion Two" background={background}>
 									<AccordionItemContent>
 										<Text as="p">
 											Lorem ipsum dolor sit amet, consectetur adipiscing elit.
@@ -397,34 +412,10 @@ const KitchenSink = () => {
 	);
 };
 
-export const OnLightBody = () => {
-	return (
-		<Box palette="light" background="body">
-			<KitchenSink />
-		</Box>
-	);
+export const DefaultBackgrounds = () => {
+	return <KitchenSink background="body" />;
 };
 
-export const OnLightBodyAlt = () => {
-	return (
-		<Box palette="light" background="bodyAlt">
-			<KitchenSink />
-		</Box>
-	);
-};
-
-export const OnDarkBody = () => {
-	return (
-		<Box palette="dark" background="body">
-			<KitchenSink />
-		</Box>
-	);
-};
-
-export const OnDarkBodyAlt = () => {
-	return (
-		<Box palette="dark" background="bodyAlt">
-			<KitchenSink />
-		</Box>
-	);
+export const AltBackgrounds = () => {
+	return <KitchenSink background="bodyAlt" />;
 };
