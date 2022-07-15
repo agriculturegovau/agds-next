@@ -29,7 +29,6 @@ export default function ContentPage() {
 								<SideNav
 									collapseTitle="In this section"
 									title="Category 1"
-									variant="light"
 									titleLink="/"
 									activePath="/category/subcategory/content"
 									items={sideNavItems}

@@ -1,24 +1,23 @@
 import type { PropsWithChildren } from 'react';
 import { backgroundColorMap, Box } from '@ag.ds-next/box';
 import { mapResponsiveProp, mq, packs } from '@ag.ds-next/core';
-import { variantMap, SideNavVariant, localPaletteVars } from './utils';
+import { hoverColorMap, SideNavBackground, localPaletteVars } from './utils';
 
 export type SideNavContainerProps = PropsWithChildren<{
 	'aria-label': string;
-	variant: SideNavVariant;
+	background: SideNavBackground;
 }>;
 
 export const SideNavContainer = ({
 	'aria-label': ariaLabel,
 	children,
-	variant,
+	background,
 }: SideNavContainerProps) => {
-	const { palette, background, hover } = variantMap[variant];
+	const hover = hoverColorMap[background];
 	return (
 		<Box
 			as="aside"
 			aria-label={ariaLabel}
-			palette={palette}
 			background={background}
 			css={mq({
 				...packs.print.hidden,

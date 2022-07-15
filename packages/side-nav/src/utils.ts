@@ -36,33 +36,9 @@ export const useSideNavIds = () => {
 	};
 };
 
-const defaultStyles = {
-	background: 'body',
-	hover: 'shade',
+export const hoverColorMap = {
+	body: 'shade',
+	bodyAlt: 'shadeAlt',
 } as const;
 
-const altStyles = {
-	background: 'bodyAlt',
-	hover: 'shadeAlt',
-} as const;
-
-export const variantMap = {
-	light: {
-		palette: 'light',
-		...defaultStyles,
-	},
-	lightAlt: {
-		palette: 'light',
-		...altStyles,
-	},
-	dark: {
-		palette: 'dark',
-		...defaultStyles,
-	},
-	darkAlt: {
-		palette: 'dark',
-		...altStyles,
-	},
-} as const;
-
-export type SideNavVariant = keyof typeof variantMap;
+export type SideNavBackground = keyof typeof hoverColorMap;
