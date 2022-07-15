@@ -14,17 +14,8 @@ const Template: ComponentStory<typeof DatePicker> = (args) => {
 	return <DatePicker {...args} value={value} onChange={setValue} />;
 };
 
-export const OnLight = Template.bind({});
-OnLight.args = {
-	label: 'Example',
-};
-
-export const OnDark: ComponentStory<typeof DatePicker> = (args) => (
-	<Box background="body" palette="dark" padding={1.5}>
-		<Template {...args} />
-	</Box>
-);
-OnDark.args = {
+export const Basic = Template.bind({});
+Basic.args = {
 	label: 'Example',
 };
 

@@ -43,6 +43,7 @@ export const AllIcons: ComponentStory<typeof AlertIcon> = (args) => (
 	</Flex>
 );
 AllIcons.args = {
+	color: 'text',
 	size: 'md',
 	weight: 'regular',
 };

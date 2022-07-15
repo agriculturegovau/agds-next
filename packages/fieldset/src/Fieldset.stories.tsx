@@ -1,5 +1,5 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { Box, Stack } from '@ag.ds-next/box';
+import { Stack } from '@ag.ds-next/box';
 import { TextInput } from '@ag.ds-next/text-input';
 import { FormStack } from '@ag.ds-next/form-stack';
 import { H1 } from '@ag.ds-next/heading';
@@ -24,18 +24,8 @@ const Template: ComponentStory<typeof Fieldset> = (args) => (
 	</Fieldset>
 );
 
-export const OnLight = Template.bind({});
-OnLight.args = {
-	legend: 'What is your address?',
-	hint: 'We will only use this to respond to your requests',
-};
-
-export const OnDark: ComponentStory<typeof Fieldset> = (args) => (
-	<Box palette="dark" background="body" padding={1.5}>
-		<Template {...args} />
-	</Box>
-);
-OnDark.args = {
+export const Basic = Template.bind({});
+Basic.args = {
 	legend: 'What is your address?',
 	hint: 'We will only use this to respond to your requests',
 };

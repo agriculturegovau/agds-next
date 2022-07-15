@@ -1,5 +1,4 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { Box } from '@ag.ds-next/box';
 import { LinkList, LinkListItem, LinkListContainer } from './index';
 
 export default {
@@ -20,28 +19,15 @@ const exampleLinks = [
 	},
 ];
 
-export const OnLight: ComponentStory<typeof LinkList> = (args) => (
-	<Box palette="light" background="body" padding={1.5}>
-		<LinkList {...args} />
-	</Box>
+export const Basic: ComponentStory<typeof LinkList> = (args) => (
+	<LinkList {...args} />
 );
-OnLight.args = {
-	links: exampleLinks,
-};
-
-export const OnDark: ComponentStory<typeof LinkList> = (args) => (
-	<Box palette="dark" background="body" padding={1.5}>
-		<LinkList {...args} />
-	</Box>
-);
-OnDark.args = {
+Basic.args = {
 	links: exampleLinks,
 };
 
 export const Horizontal: ComponentStory<typeof LinkList> = (args) => (
-	<Box palette="light" background="body">
-		<LinkList {...args} />
-	</Box>
+	<LinkList {...args} />
 );
 Horizontal.args = {
 	links: exampleLinks,

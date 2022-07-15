@@ -1,5 +1,5 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { Box, Flex, Stack } from '@ag.ds-next/box';
+import { Flex, Stack } from '@ag.ds-next/box';
 import { StatusBadge } from './StatusBadge';
 
 export default {
@@ -11,18 +11,8 @@ const Template: ComponentStory<typeof StatusBadge> = (args) => (
 	<StatusBadge {...args} />
 );
 
-export const OnLight = Template.bind({});
-OnLight.args = {
-	tone: 'info',
-	label: 'In progress',
-};
-
-export const OnDark: ComponentStory<typeof StatusBadge> = (args) => (
-	<Box palette="dark" background="body" padding={1.5}>
-		<Template {...args} />
-	</Box>
-);
-OnDark.args = {
+export const Basic = Template.bind({});
+Basic.args = {
 	tone: 'info',
 	label: 'In progress',
 };

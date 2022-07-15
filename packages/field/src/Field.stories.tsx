@@ -1,5 +1,4 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { Box } from '@ag.ds-next/box';
 import { Field } from './Field';
 import { FieldContainer } from './FieldContainer';
 import { FieldLabel } from './FieldLabel';
@@ -12,22 +11,12 @@ export default {
 	component: Field,
 } as ComponentMeta<typeof Field>;
 
-export const OnLight: ComponentStory<typeof Field> = (args) => (
+export const Basic: ComponentStory<typeof Field> = (args) => (
 	<Field {...args}>{(a11yProps) => <input {...a11yProps} />}</Field>
 );
-OnLight.args = {
+Basic.args = {
 	label: 'Basic',
 };
-
-export const OnDark: ComponentStory<typeof Field> = (args) => (
-	<Box palette="dark" background="body" padding={1.5}>
-		<Field {...args}>{(a11yProps) => <input {...a11yProps} />}</Field>
-	</Box>
-);
-OnDark.args = {
-	label: 'Basic',
-};
-
 export const Required: ComponentStory<typeof Field> = (args) => (
 	<Field {...args}>{(a11yProps) => <input {...a11yProps} />}</Field>
 );

@@ -1,22 +1,14 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { Box } from '@ag.ds-next/box';
-import { Logo } from './Logo';
+import { Logo as AgLogo } from './Logo';
 
 export default {
-	title: 'Brand/AG Branding/Logo',
-	component: Logo,
-} as ComponentMeta<typeof Logo>;
+	title: 'Brand/AG Branding',
+	component: AgLogo,
+} as ComponentMeta<typeof AgLogo>;
 
-export const OnLight: ComponentStory<typeof Logo> = () => (
-	<Box maxWidth={600}>
-		<Logo />
-	</Box>
-);
-
-export const OnDark: ComponentStory<typeof Logo> = () => (
-	<Box palette="dark" background="body" color="text" padding={1.5}>
-		<Box maxWidth={600}>
-			<Logo />
-		</Box>
+export const Logo: ComponentStory<typeof AgLogo> = () => (
+	<Box maxWidth={600} color="text">
+		<AgLogo />
 	</Box>
 );

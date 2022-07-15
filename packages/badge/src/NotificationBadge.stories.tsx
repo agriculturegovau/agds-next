@@ -1,5 +1,4 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { Box } from '@ag.ds-next/box';
 import { NotificationBadge } from './NotificationBadge';
 
 export default {
@@ -11,20 +10,9 @@ const Template: ComponentStory<typeof NotificationBadge> = (args) => (
 	<NotificationBadge {...args} />
 );
 
-export const OnLight = Template.bind({});
-OnLight.args = {
+export const Basic = Template.bind({});
+Basic.args = {
 	value: 48,
-	tone: 'neutral',
-};
-
-export const OnDark: ComponentStory<typeof NotificationBadge> = (args) => (
-	<Box palette="dark" background="body" padding={1.5}>
-		<Template {...args} />
-	</Box>
-);
-OnDark.args = {
-	value: 64,
-	max: 99,
 	tone: 'neutral',
 };
 

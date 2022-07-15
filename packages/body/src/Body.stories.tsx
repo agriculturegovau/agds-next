@@ -1,13 +1,13 @@
 import { Fragment } from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { Body } from './index';
+import { Body as BodyComponent } from './index';
 
 export default {
 	title: 'content/Body',
-	component: Body,
-} as ComponentMeta<typeof Body>;
+	component: BodyComponent,
+} as ComponentMeta<typeof BodyComponent>;
 
-const Template = () => (
+const UnstyledContent = () => (
 	<Fragment>
 		<h1>Heading level 1. Page heading</h1>
 		<h2>Heading level 2, proceeding H1</h2>
@@ -225,14 +225,8 @@ const Template = () => (
 	</Fragment>
 );
 
-export const OnLight: ComponentStory<typeof Body> = (args) => (
-	<Body {...args}>
-		<Template />
-	</Body>
-);
-
-export const OnDark: ComponentStory<typeof Body> = (args) => (
-	<Body palette="dark" background="body" padding={1.5} {...args}>
-		<Template />
-	</Body>
+export const Body: ComponentStory<typeof BodyComponent> = (args) => (
+	<BodyComponent {...args}>
+		<UnstyledContent />
+	</BodyComponent>
 );

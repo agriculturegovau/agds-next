@@ -1,5 +1,4 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import { Flex } from '@ag.ds-next/box';
 import { allIcons, AvatarIcon } from '@ag.ds-next/icon';
 import { Text } from '@ag.ds-next/text';
 import { Button, ButtonLink } from './Button';
@@ -21,7 +20,7 @@ export default {
 	},
 } as ComponentMeta<typeof Button>;
 
-export const OnLight: ComponentStory<typeof Button> = (args) => (
+export const Basic: ComponentStory<typeof Button> = (args) => (
 	<ButtonGroup>
 		<Button {...args}>Primary</Button>
 		<Button {...args} variant="secondary">
@@ -32,26 +31,7 @@ export const OnLight: ComponentStory<typeof Button> = (args) => (
 		</Button>
 	</ButtonGroup>
 );
-OnLight.args = {
-	block: false,
-	disabled: false,
-	loading: false,
-};
-
-export const OnDark: ComponentStory<typeof Button> = (args) => (
-	<Flex padding={1.5} background="body" palette="dark">
-		<ButtonGroup>
-			<Button {...args}>Primary</Button>
-			<Button {...args} variant="secondary">
-				Secondary
-			</Button>
-			<Button {...args} variant="tertiary">
-				Tertiary
-			</Button>
-		</ButtonGroup>
-	</Flex>
-);
-OnDark.args = {
+Basic.args = {
 	block: false,
 	disabled: false,
 	loading: false,

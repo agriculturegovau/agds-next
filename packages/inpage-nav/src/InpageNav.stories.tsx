@@ -54,24 +54,13 @@ const ExampleContent = () => (
 	</Body>
 );
 
-export const OnLight: ComponentStory<typeof InpageNav> = (args) => (
+export const Basic: ComponentStory<typeof InpageNav> = (args) => (
 	<Stack gap={3}>
 		<InpageNav {...args} />
 		<ExampleContent />
 	</Stack>
 );
-OnLight.args = {
-	title: 'Content',
-	links: exampleLinks,
-};
-
-export const OnDark: ComponentStory<typeof InpageNav> = (args) => (
-	<Stack palette="dark" background="body" gap={3} padding={1.5}>
-		<InpageNav {...args} />
-		<ExampleContent />
-	</Stack>
-);
-OnDark.args = {
+Basic.args = {
 	title: 'Content',
 	links: exampleLinks,
 };

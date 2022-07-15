@@ -1,5 +1,5 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { Box, Stack } from '@ag.ds-next/box';
+import { Stack } from '@ag.ds-next/box';
 import { DirectionLink, DirectionButton } from './index';
 
 export default {
@@ -10,21 +10,10 @@ export default {
 	},
 } as ComponentMeta<typeof DirectionLink>;
 
-export const OnLight: ComponentStory<typeof DirectionLink> = (args) => (
+export const Basic: ComponentStory<typeof DirectionLink> = (args) => (
 	<DirectionLink {...args} />
 );
-OnLight.args = {
-	children: 'Continue',
-	direction: 'right',
-	href: '#',
-};
-
-export const OnDark: ComponentStory<typeof DirectionLink> = (args) => (
-	<Box palette="dark" background="body" padding={1.5}>
-		<DirectionLink {...args} />
-	</Box>
-);
-OnDark.args = {
+Basic.args = {
 	children: 'Continue',
 	direction: 'right',
 	href: '#',

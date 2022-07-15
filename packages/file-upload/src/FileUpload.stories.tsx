@@ -8,7 +8,6 @@ import {
 } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
-import { Box } from '@ag.ds-next/box';
 import { FormStack } from '@ag.ds-next/form-stack';
 import { Button } from '@ag.ds-next/button';
 import { LoadingBlanket } from '@ag.ds-next/loading';
@@ -34,17 +33,8 @@ const TemplateWithValue: ComponentStory<typeof FileUpload> = (args) => {
 	return <FileUpload {...args} value={value} onChange={setValue} />;
 };
 
-export const OnLight = TemplateWithValue.bind({});
-OnLight.args = {
-	label: 'Drivers licence',
-};
-
-export const OnDark: ComponentStory<typeof FileUpload> = (args) => (
-	<Box background="body" palette="dark" padding={1.5}>
-		<TemplateWithValue {...args} />
-	</Box>
-);
-OnDark.args = {
+export const Basic = TemplateWithValue.bind({});
+Basic.args = {
 	label: 'Drivers licence',
 };
 

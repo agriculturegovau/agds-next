@@ -1,5 +1,5 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { Box, Stack } from '@ag.ds-next/box';
+import { Stack } from '@ag.ds-next/box';
 import { TextInput } from './TextInput';
 
 export default {
@@ -7,19 +7,10 @@ export default {
 	component: TextInput,
 } as ComponentMeta<typeof TextInput>;
 
-export const OnLight: ComponentStory<typeof TextInput> = (args) => (
+export const Basic: ComponentStory<typeof TextInput> = (args) => (
 	<TextInput {...args} />
 );
-OnLight.args = {
-	label: 'Example',
-};
-
-export const OnDark: ComponentStory<typeof TextInput> = (args) => (
-	<Box background="body" palette="dark" padding={1.5}>
-		<TextInput {...args} />
-	</Box>
-);
-OnDark.args = {
+Basic.args = {
 	label: 'Example',
 };
 

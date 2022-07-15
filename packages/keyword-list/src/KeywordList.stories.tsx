@@ -1,5 +1,4 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { Box } from '@ag.ds-next/box';
 import { KeywordList, KeywordListItem, KeywordListContainer } from './index';
 
 export default {
@@ -16,19 +15,10 @@ const exampleItems = [
 	{ subTitle: 'Department of', title: 'Communications and the Arts' },
 ];
 
-export const OnLight: ComponentStory<typeof KeywordList> = (args) => (
+export const Basic: ComponentStory<typeof KeywordList> = (args) => (
 	<KeywordList {...args} />
 );
-OnLight.args = {
-	items: exampleItems,
-};
-
-export const OnDark: ComponentStory<typeof KeywordList> = (args) => (
-	<Box palette="dark" background="body" padding={1.5}>
-		<KeywordList {...args} />
-	</Box>
-);
-OnDark.args = {
+Basic.args = {
 	items: exampleItems,
 };
 
