@@ -20,7 +20,7 @@ import {
 	useToggleState,
 } from '@ag.ds-next/core';
 import { Box, Flex } from '@ag.ds-next/box';
-import { unsetBodyStylesClassname } from '@ag.ds-next/body';
+import { unsetBodyStylesClassname, bodyBlockClassname } from '@ag.ds-next/body';
 import { Button, ButtonLink } from '@ag.ds-next/button';
 import { CopyIcon, ChevronDownIcon, ChevronUpIcon } from '@ag.ds-next/icon';
 import { designSystemComponents } from './designSystemComponents';
@@ -34,7 +34,7 @@ const PlaceholderImage = () => (
 	/>
 );
 
-const LiveCode = withLive((props: unknown) => {
+const LiveCode = withLive(function LiveCode(props: unknown) {
 	const { query } = useRouter();
 
 	// The types on `withLive` are kind of useless.
@@ -73,12 +73,7 @@ const LiveCode = withLive((props: unknown) => {
 	const codeId = `live-code-${id}`;
 
 	return (
-		<Box
-			border
-			rounded
-			borderColor="muted"
-			css={{ '&:not(:first-of-type)': { marginTop: mapSpacing(1.5) } }}
-		>
+		<Box border rounded borderColor="muted" className={bodyBlockClassname}>
 			<LivePreview
 				aria-label="Rendered code snippet example"
 				// Prevents body styles from being inherited in live code examples (except for the body example)
