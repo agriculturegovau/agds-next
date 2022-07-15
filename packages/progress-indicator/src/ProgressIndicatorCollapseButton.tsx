@@ -2,12 +2,14 @@ import { useMemo } from 'react';
 import { useSpring, animated } from '@react-spring/web';
 import { Flex } from '@ag.ds-next/box';
 import { ChevronDownIcon } from '@ag.ds-next/icon';
-import { boxPalette, tokens, usePrefersReducedMotion } from '@ag.ds-next/core';
+import { tokens, usePrefersReducedMotion } from '@ag.ds-next/core';
 import { BaseButton } from '@ag.ds-next/button';
 import type { ProgressIndicatorItem } from './ProgressIndicatorItem';
+import { hoverColorMap, ProgressIndicatorBackground } from './utils';
 
 type ProgressIndicatorCollapseButtonProps = {
 	ariaControls: string;
+	background?: ProgressIndicatorBackground;
 	id: string;
 	isOpen: boolean;
 	items: ProgressIndicatorItem[];
@@ -18,6 +20,7 @@ const AnimatedIcon = animated(ChevronDownIcon);
 
 export const ProgressIndicatorCollapseButton = ({
 	ariaControls,
+	background = 'body',
 	id,
 	isOpen,
 	items,
@@ -47,6 +50,7 @@ export const ProgressIndicatorCollapseButton = ({
 			color="action"
 			fontSize="md"
 			lineHeight="heading"
+			background={background}
 			fontWeight="bold"
 			padding={1}
 			justifyContent="space-between"
@@ -56,7 +60,7 @@ export const ProgressIndicatorCollapseButton = ({
 			focus
 			css={{
 				'&:hover': {
-					background: boxPalette.backgroundShade,
+					background: hoverColorMap[background],
 				},
 
 				[tokens.mediaQuery.min.md]: {
