@@ -6,9 +6,9 @@ export type SubNavProps = PropsWithChildren<{
 	activePath?: string;
 	'aria-label'?: string;
 	id?: string;
-	/** The links SubNav should show */
+	/** The navigation list items. */
 	links: SubNavListLink[];
-	/** If the ProgressIndicator is placed on a page with 'bodyAlt' background, please set this to "bodyAlt". */
+	/** If the SubNav is placed on a page with 'bodyAlt' background, please set this to 'bodyAlt'. */
 	background?: SubNavContainerVariant;
 }>;
 
