@@ -8,7 +8,7 @@ export default {
 } as ComponentMeta<typeof AgLogo>;
 
 export const Logo: ComponentStory<typeof AgLogo> = () => (
-	<Box maxWidth={600}>
+	<Box maxWidth={600} background="body" color="text" padding={1.5}>
 		<AgLogo />
 	</Box>
 );
