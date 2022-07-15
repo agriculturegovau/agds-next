@@ -15,7 +15,7 @@ export const useAccordionItemIds = () => {
 };
 
 type AccordionItemProps = PropsWithChildren<{
-	/** If the Accordion is placed on a page with 'bodyAlt' background, please set this to "bodyAlt". */
+	/** If the Accordion is placed on a page with 'bodyAlt' background, please set this to 'bodyAlt'. */
 	background?: AccordionBackground;
 	/** If true, the item will initially be rendered in an open state. */
 	isInitiallyOpen?: boolean;

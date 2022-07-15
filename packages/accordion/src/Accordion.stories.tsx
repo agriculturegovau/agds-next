@@ -42,7 +42,7 @@ Basic.args = {
 	boxBackground: 'body',
 };
 export const OnBodyAlt = AccordionBasicExample.bind({});
-OnBodyAlt.storyName = 'on bodyAlt background';
+OnBodyAlt.storyName = 'On bodyAlt background';
 OnBodyAlt.args = {
 	boxBackground: 'bodyAlt',
 };
