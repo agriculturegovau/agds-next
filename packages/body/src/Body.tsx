@@ -19,6 +19,9 @@ export const Body = forwardRefWithAs<'div', BoxProps>(function Body(
 // Allow consumers to unset body styles from being inherited on specific elements
 export const unsetBodyStylesClassname = 'unset-agds-body-styles';
 
+// Allow consumers to keep vertical rhythm on specific elements
+export const bodyBlockClassname = 'agds-body-block';
+
 // Exclude tags which contain a className (generated from the CSS prop) or are a child of the unset class
 const notSelector = `:not([class]):not(.${unsetBodyStylesClassname} *)`;
 
@@ -33,6 +36,13 @@ export const bodyClass = css({
 		// Font grid
 		fontFamily: tokens.font.body,
 		...fontGrid('sm', 'default'),
+	},
+
+	/**
+	 * Body block
+	 */
+	[`* + .${bodyBlockClassname}:not(.${unsetBodyStylesClassname} *)`]: {
+		marginTop: mapSpacing(1.5),
 	},
 
 	/**
