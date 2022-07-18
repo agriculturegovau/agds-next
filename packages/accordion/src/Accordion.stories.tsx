@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Story, ComponentMeta } from '@storybook/react';
+import { ComponentMeta } from '@storybook/react';
 import { Box, Stack } from '@ag.ds-next/box';
 import { useToggleState } from '@ag.ds-next/core';
 import { Body } from '@ag.ds-next/body';
@@ -11,30 +11,16 @@ import { AccordionItem, AccordionItemContent } from './AccordionItem';
 export default {
 	title: 'Layout/Accordion',
 	component: Accordion,
-	argTypes: {
-		boxBackground: {
-			options: ['body', 'bodyAlt'],
-			control: { type: 'select' },
-		},
-		boxPalette: {
-			options: ['light', 'dark'],
-			control: { type: 'select' },
-		},
-	},
 } as ComponentMeta<typeof Accordion>;
 
 type AccordionExampleProps = {
-	boxBackground: 'body' | 'bodyAlt';
-	boxPalette: 'light' | 'dark';
+	background: 'body' | 'bodyAlt';
 };
 
-const AccordionBasicExample: Story<AccordionExampleProps> = ({
-	boxBackground,
-	boxPalette,
-}: AccordionExampleProps) => (
-	<Box padding={1.5} palette={boxPalette} background={boxBackground}>
+const AccordionBasicExample = ({ background }: AccordionExampleProps) => (
+	<Box padding={1.5} background={background}>
 		<Accordion>
-			<AccordionItem title="Accordion title">
+			<AccordionItem title="Accordion title" background={background}>
 				<AccordionItemContent>
 					<Text as="p">This is some text inside an Accordion</Text>
 				</AccordionItemContent>
@@ -43,29 +29,19 @@ const AccordionBasicExample: Story<AccordionExampleProps> = ({
 	</Box>
 );
 
-export const OnLight = AccordionBasicExample.bind({});
-OnLight.args = {
-	boxBackground: 'body',
-	boxPalette: 'light',
-};
-export const OnDark = AccordionBasicExample.bind({});
-OnDark.args = {
-	boxBackground: 'body',
-	boxPalette: 'dark',
-};
+export const Basic = () => <AccordionBasicExample background="body" />;
+export const OnBodyAlt = () => <AccordionBasicExample background="bodyAlt" />;
+OnBodyAlt.storyName = 'On bodyAlt background';
 
-const AccordionGroupExample: Story<AccordionExampleProps> = ({
-	boxBackground,
-	boxPalette,
-}: AccordionExampleProps) => (
-	<Box padding={1.5} palette={boxPalette} background={boxBackground}>
+const AccordionGroupExample = ({ background }: AccordionExampleProps) => (
+	<Box padding={1.5} background={background}>
 		<Accordion>
-			<AccordionItem title="Accordion 1">
+			<AccordionItem title="Accordion 1" background={background}>
 				<AccordionItemContent>
 					<Text as="p">This is some text inside an Accordion</Text>
 				</AccordionItemContent>
 			</AccordionItem>
-			<AccordionItem title="Accordion 2">
+			<AccordionItem title="Accordion 2" background={background}>
 				<AccordionItemContent>
 					<Body>
 						<p>
@@ -99,7 +75,7 @@ const AccordionGroupExample: Story<AccordionExampleProps> = ({
 					</Body>
 				</AccordionItemContent>
 			</AccordionItem>
-			<AccordionItem title="Accordion 3">
+			<AccordionItem title="Accordion 3" background={background}>
 				<AccordionItemContent>
 					<Text as="p">This is some text inside an Accordion</Text>
 				</AccordionItemContent>
@@ -108,16 +84,11 @@ const AccordionGroupExample: Story<AccordionExampleProps> = ({
 	</Box>
 );
 
-export const GroupOnLight = AccordionGroupExample.bind({});
-GroupOnLight.args = {
-	boxBackground: 'body',
-	boxPalette: 'light',
-};
-export const GroupOnDark = AccordionGroupExample.bind({});
-GroupOnDark.args = {
-	boxBackground: 'body',
-	boxPalette: 'dark',
-};
+export const Group = () => <AccordionGroupExample background="body" />;
+export const GroupOnBodyAlt = () => (
+	<AccordionGroupExample background="bodyAlt" />
+);
+GroupOnBodyAlt.storyName = 'Group on bodyAlt background';
 
 export const Controlled = () => {
 	const [isOpen, onToggle] = useToggleState(false, true);

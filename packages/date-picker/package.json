@@ -5,6 +5,7 @@
 	"module": "dist/ag.ds-next-date-picker.esm.js",
 	"license": "MIT",
 	"peerDependencies": {
+		"@ag.ds-next/a11y": "1.2.0",
 		"@ag.ds-next/box": "6.0.0",
 		"@ag.ds-next/button": "9.1.0",
 		"@ag.ds-next/core": "3.0.0",
@@ -15,6 +16,7 @@
 		"react": "^16.14.0 || ^17.0.0 || ^18.0.0"
 	},
 	"devDependencies": {
+		"@ag.ds-next/a11y": "*",
 		"@ag.ds-next/box": "*",
 		"@ag.ds-next/button": "*",
 		"@ag.ds-next/core": "*",
@@ -28,7 +30,7 @@
 		"@babel/runtime": "^7.4.5",
 		"@popperjs/core": "^2.11.4",
 		"date-fns": "^2.28.0",
-		"react-day-picker": "^7.4.10",
+		"react-day-picker": "^8.0.7",
 		"react-focus-lock": "^2.8.1",
 		"react-popper": "^2.2.5"
 	}

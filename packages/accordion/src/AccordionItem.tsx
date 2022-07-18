@@ -4,6 +4,7 @@ import { Box } from '@ag.ds-next/box';
 import { useToggleState } from '@ag.ds-next/core';
 import { AccordionTitle, AccordionTitleProps } from './AccordionTitle';
 import { AccordionBody } from './AccordionBody';
+import { AccordionBackground } from './utils';
 
 export const useAccordionItemIds = () => {
 	const autoId = useId();
@@ -14,6 +15,8 @@ export const useAccordionItemIds = () => {
 };
 
 type AccordionItemProps = PropsWithChildren<{
+	/** If the Accordion is placed on a page with 'bodyAlt' background, please set this to 'bodyAlt'. */
+	background?: AccordionBackground;
 	/** If true, the item will initially be rendered in an open state. */
 	isInitiallyOpen?: boolean;
 	/** The current open state. */
@@ -27,6 +30,7 @@ type AccordionItemProps = PropsWithChildren<{
 }>;
 
 export const AccordionItem = ({
+	background,
 	children,
 	title,
 	titleHeadingTag = 'h3',
@@ -51,6 +55,7 @@ export const AccordionItem = ({
 	return (
 		<Box borderBottom>
 			<AccordionTitle
+				background={background}
 				tag={titleHeadingTag}
 				id={titleId}
 				ariaControls={bodyId}

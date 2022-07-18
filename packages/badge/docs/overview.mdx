@@ -2,7 +2,7 @@
 title: Badge
 description: Badges are decorative indicators used to either call attention to an item or for communicating non-actionable, supplemental information.
 group: Content
-storybookPath: /story/content-badge--on-light
+storybookPath: /story/content-badge-statusbadge--basic
 ---
 
 ## StatusBadge
@@ -14,7 +14,7 @@ Choosing a `tone` for StatusBadge allows the user to understand the importance a
 The five supported tones are `info`, `success`, `error`, `warning` and `neutral`.
 
 ```jsx live
-<Flex gap={1}>
+<Flex flexWrap="wrap" gap={1}>
 	<StatusBadge tone="info" label="In progress" />
 	<StatusBadge tone="success" label="Resolved" />
 	<StatusBadge tone="error" label="Rejected" />

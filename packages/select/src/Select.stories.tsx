@@ -1,6 +1,6 @@
 import { useState, ChangeEvent } from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { Box, Stack } from '@ag.ds-next/box';
+import { Stack } from '@ag.ds-next/box';
 import { Select } from './Select';
 
 export default {
@@ -14,21 +14,10 @@ const EXAMPLE_OPTIONS = [
 	{ value: 'c', label: 'Option C' },
 ];
 
-export const OnLight: ComponentStory<typeof Select> = (args) => (
+export const Basic: ComponentStory<typeof Select> = (args) => (
 	<Select {...args} />
 );
-OnLight.args = {
-	label: 'Example',
-	placeholder: 'Please select',
-	options: EXAMPLE_OPTIONS,
-};
-
-export const OnDark: ComponentStory<typeof Select> = (args) => (
-	<Box background="body" palette="dark" padding={1.5}>
-		<Select {...args} />
-	</Box>
-);
-OnDark.args = {
+Basic.args = {
 	label: 'Example',
 	placeholder: 'Please select',
 	options: EXAMPLE_OPTIONS,

@@ -2,7 +2,7 @@
 title: Progress Indicator
 description: Progress indicators provide visual feedback to users to let them know and understand their current context at any given time and be assured that they are progressing through the system.
 group: Forms
-storybookPath: /story/forms-progressindicator--on-light
+storybookPath: /story/forms-progressindicator--basic
 ---
 
 Our design system provides a progress indicator for larger tasks that can be completed out of order and returned to at a later date, like doing a tax return or applying for a driver’s licence.
@@ -22,6 +22,8 @@ The individual tasks or steps are shown as either:
 	]}
 />
 ```
+
+The background of the `ProgressIndicator` must match the background it is being placed on. For example, if `ProgressIndicator` is placed on a 'bodyAlt' background, please set the `background` prop to `bodyAlt`.
 
 ### Buttons
 

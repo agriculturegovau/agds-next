@@ -18,10 +18,15 @@ import {
 import { ProgressIndicatorList } from './ProgressIndicatorList';
 
 export type ProgressIndicatorProps = {
+	/** If the ProgressIndicator is placed on a page with 'bodyAlt' background, please set this to "bodyAlt". */
+	background?: 'body' | 'bodyAlt';
 	items: ProgressIndicatorItem[];
 };
 
-export const ProgressIndicator = ({ items }: ProgressIndicatorProps) => {
+export const ProgressIndicator = ({
+	background,
+	items,
+}: ProgressIndicatorProps) => {
 	const { buttonId, bodyId } = useProgressIndicatorIds();
 	const ref = useRef<HTMLUListElement>(null);
 	const [isOpen, onToggle] = useToggleState(false, true);
@@ -50,6 +55,7 @@ export const ProgressIndicator = ({ items }: ProgressIndicatorProps) => {
 	return (
 		<ProgressIndicatorContainer>
 			<ProgressIndicatorCollapseButton
+				background={background}
 				isOpen={isOpen}
 				onClick={onToggle}
 				ariaControls={bodyId}
@@ -74,13 +80,21 @@ export const ProgressIndicator = ({ items }: ProgressIndicatorProps) => {
 					{items.map(({ label, ...props }, index) => {
 						if (isItemLink(props)) {
 							return (
-								<ProgressIndicatorItemLink key={index} {...props}>
+								<ProgressIndicatorItemLink
+									key={index}
+									background={background}
+									{...props}
+								>
 									{label}
 								</ProgressIndicatorItemLink>
 							);
 						}
 						return (
-							<ProgressIndicatorItemButton key={index} {...props}>
+							<ProgressIndicatorItemButton
+								key={index}
+								background={background}
+								{...props}
+							>
 								{label}
 							</ProgressIndicatorItemButton>
 						);

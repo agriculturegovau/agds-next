@@ -5,8 +5,10 @@ import {
 	useRef,
 	useState,
 	useEffect,
+	useMemo,
 } from 'react';
 import { usePopper } from 'react-popper';
+import { SelectRangeEventHandler } from 'react-day-picker';
 import { Flex } from '@ag.ds-next/box';
 import {
 	tokens,
@@ -14,24 +16,38 @@ import {
 	useTernaryState,
 	useWindowSize,
 } from '@ag.ds-next/core';
-import { Calendar, CalendarProps, CalendarRef } from './Calendar';
+import { CalendarRange } from './Calendar';
 import { DateInput } from './DatePickerInput';
-import { getValidDateRange, parseDate, formatDate } from './utils';
+import {
+	getValidDateRange,
+	parseDate,
+	formatDate,
+	constrainDate,
+} from './utils';
 
 export type DateRange = {
 	from: Date | undefined;
 	to: Date | undefined;
 };
 
-export type DateRangePickerProps = CalendarProps & {
+type DateRangePickerCalendarProps = {
+	/** If set, any days before this date will not be selectable. */
+	minDate?: Date;
+	/** If set, any days after this date will not be selectable. */
+	maxDate?: Date;
+};
+
+export type DateRangePickerProps = DateRangePickerCalendarProps & {
+	disabled?: boolean;
+	required?: boolean;
 	/** The value of the field. */
 	value: DateRange;
 	/** Function to be fired following a change event. */
 	onChange: (day: DateRange) => void;
-	disabled?: boolean;
+	/** The label above the start date text input. */
 	fromLabel?: string;
+	/** The label above the end date text input. */
 	toLabel?: string;
-	required?: boolean;
 };
 
 export const DateRangePicker = ({
@@ -41,8 +57,9 @@ export const DateRangePicker = ({
 	fromLabel = 'Start date',
 	toLabel = 'End date',
 	required,
+	minDate,
+	maxDate,
 }: DateRangePickerProps) => {
-	const calendarRef = useRef<CalendarRef>(null);
 	const [isCalendarOpen, openCalendar, closeCalendar] = useTernaryState(false);
 	const [inputMode, setInputMode] = useState<'from' | 'to'>();
 
@@ -62,16 +79,14 @@ export const DateRangePicker = ({
 	// Popper state
 	const [refEl, setRefEl] = useState<HTMLDivElement | null>(null);
 	const [popperEl, setPopperEl] = useState<HTMLDivElement | null>(null);
-	const onFirstUpdate = useCallback(() => calendarRef.current?.focus(), []);
 	const { styles, attributes } = usePopper(refEl, popperEl, {
 		placement: 'bottom-start',
 		modifiers: [{ name: 'offset', options: { offset: [0, 8] } }],
-		onFirstUpdate,
 	});
 
-	const onDayClick = useCallback(
-		(selectedDay: Date) => {
-			if (!inputMode) return;
+	const onSelect = useCallback<SelectRangeEventHandler>(
+		(_, selectedDay, activeModifiers) => {
+			if (!inputMode || activeModifiers.disabled) return;
 			const range = getValidDateRange(inputMode, selectedDay, value);
 
 			onChange(range);
@@ -86,6 +101,11 @@ export const DateRangePicker = ({
 
 			if (inputMode === 'from') {
 				setInputMode('to');
+				return;
+			}
+
+			if (inputMode === 'to' && !range.from) {
+				setInputMode('from');
 				return;
 			}
 		},
@@ -103,9 +123,10 @@ export const DateRangePicker = ({
 			setFromInputValue(inputValue);
 			// Ensure the text entered is a valid date
 			const parsedDate = parseDate(inputValue);
-			onChange({ ...value, from: parsedDate });
+			const containedDate = constrainDate(parsedDate, minDate, maxDate);
+			onChange({ ...value, from: containedDate });
 		},
-		[onChange, value]
+		[maxDate, minDate, onChange, value]
 	);
 
 	// To input state
@@ -119,26 +140,23 @@ export const DateRangePicker = ({
 			setToInputValue(inputValue);
 			// Ensure the text entered is a valid date
 			const parsedDate = parseDate(inputValue);
-			onChange({ ...value, to: parsedDate });
+			const containedDate = constrainDate(parsedDate, minDate, maxDate);
+			onChange({ ...value, to: containedDate });
 		},
-		[onChange, value]
+		[maxDate, minDate, onChange, value]
 	);
 
 	// Update the text inputs when the value updates
 	useEffect(() => {
-		setFromInputValue(value.from ? formatDate(value.from) : '');
-		setToInputValue(value.to ? formatDate(value.to) : '');
+		if (value.from) setFromInputValue(formatDate(value.from));
+		if (value.to) setToInputValue(formatDate(value.to));
 	}, [value]);
 
 	// Close the calendar when the user clicks outside
 	const clickOutsideRef = useRef(popperEl);
 	clickOutsideRef.current = popperEl;
 
-	const handleClickOutside = useCallback(() => {
-		if (isCalendarOpen) closeCalendar();
-	}, [isCalendarOpen, closeCalendar]);
-
-	useClickOutside(clickOutsideRef, handleClickOutside);
+	useClickOutside(clickOutsideRef, closeCalendar);
 
 	// Close the calendar when the user presses escape
 	const handleEscape = useCallback(
@@ -153,6 +171,14 @@ export const DateRangePicker = ({
 		},
 		[isCalendarOpen, closeCalendar]
 	);
+
+	const disabledCalendarDays = useMemo(() => {
+		if (!(minDate || maxDate)) return;
+		return [
+			minDate ? { before: minDate } : undefined,
+			maxDate ? { after: maxDate } : undefined,
+		].filter((x): x is NonNullable<typeof x> => Boolean(x));
+	}, [minDate, maxDate]);
 
 	// 2 months visible on desktop, 1 on mobile
 	const { windowWidth = 0 } = useWindowSize();
@@ -192,14 +218,16 @@ export const DateRangePicker = ({
 					{...attributes.popper}
 					css={{ zIndex: 1 }}
 				>
-					<Calendar
-						ref={calendarRef}
-						initialMonth={inputMode === 'from' ? value.from : value.to}
-						selectedDays={[value.from, value]}
-						onDayClick={onDayClick}
-						modifiers={{ start: value.from, end: value.to }}
+					<CalendarRange
+						initialFocus
+						defaultMonth={value.from}
+						selected={value}
+						onSelect={onSelect}
 						numberOfMonths={numberOfMonths}
-						range
+						disabled={disabledCalendarDays}
+						returnFocusRef={
+							inputMode === 'from' ? fromTriggerRef : toTriggerRef
+						}
 					/>
 				</div>
 			) : null}

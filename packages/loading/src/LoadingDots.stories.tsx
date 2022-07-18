@@ -1,27 +1,15 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { Box } from '@ag.ds-next/box';
-import { LoadingDots } from './index';
+import { LoadingDots as LoadingDotsComp } from './index';
 
 export default {
 	title: 'content/Loading/LoadingDots',
-	component: LoadingDots,
-} as ComponentMeta<typeof LoadingDots>;
+	component: LoadingDotsComp,
+} as ComponentMeta<typeof LoadingDotsComp>;
 
-export const OnLight: ComponentStory<typeof LoadingDots> = (args) => (
-	<LoadingDots {...args} />
+export const LoadingDots: ComponentStory<typeof LoadingDotsComp> = (args) => (
+	<LoadingDotsComp {...args} />
 );
-OnLight.args = {
-	size: 'md',
-	'aria-label': 'Loading',
-	role: 'status',
-};
-
-export const OnDark: ComponentStory<typeof LoadingDots> = (args) => (
-	<Box palette="dark" background="body" color="text" padding={1.5}>
-		<LoadingDots {...args} />
-	</Box>
-);
-OnDark.args = {
+LoadingDots.args = {
 	size: 'md',
 	'aria-label': 'Loading',
 	role: 'status',

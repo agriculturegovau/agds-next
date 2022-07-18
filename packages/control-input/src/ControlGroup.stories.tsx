@@ -1,5 +1,4 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { Box } from '@ag.ds-next/box';
 import { FormStack } from '@ag.ds-next/form-stack';
 import { Checkbox } from './Checkbox';
 import { Radio } from './Radio';
@@ -43,19 +42,10 @@ const Template: ComponentStory<typeof ControlGroup> = (args) => (
 	</FormStack>
 );
 
-export const OnLight: ComponentStory<typeof ControlGroup> = (args) => (
+export const Basic: ComponentStory<typeof ControlGroup> = (args) => (
 	<Template {...args} />
 );
-OnLight.args = {
-	label: 'Choose your interests',
-};
-
-export const OnDark: ComponentStory<typeof ControlGroup> = (args) => (
-	<Box palette="dark" background="body" padding={1.5}>
-		<Template {...args} />
-	</Box>
-);
-OnDark.args = {
+Basic.args = {
 	label: 'Choose your interests',
 };
 

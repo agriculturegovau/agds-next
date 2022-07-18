@@ -12,12 +12,13 @@ import { SideNavTitle } from './SideNavTitle';
 import { SideNavGroup } from './SideNavGroup';
 import { SideNavLink } from './SideNavLink';
 import { SideNavCollapseButton } from './SideNavCollapseButton';
-import { SideNavVariant, findBestMatch, useSideNavIds } from './utils';
+import { SideNavBackground, findBestMatch, useSideNavIds } from './utils';
 
 export type SideNavProps = LinkListProps & {
 	'aria-label'?: string;
 	collapseTitle: string;
-	variant?: SideNavVariant;
+	/** If SideNav is placed on 'bodyAlt' background, please set this to "bodyAlt". */
+	background?: SideNavBackground;
 	title: ReactNode;
 	titleLink: string; // TODO: should this be optional
 };
@@ -27,7 +28,7 @@ export function SideNav({
 	activePath,
 	collapseTitle,
 	items,
-	variant = 'light',
+	background = 'body',
 	titleLink,
 	title,
 }: SideNavProps) {
@@ -57,7 +58,7 @@ export function SideNav({
 	});
 
 	return (
-		<SideNavContainer aria-label={ariaLabel} variant={variant}>
+		<SideNavContainer aria-label={ariaLabel} background={background}>
 			<SideNavCollapseButton
 				isOpen={isOpen}
 				onClick={onToggle}

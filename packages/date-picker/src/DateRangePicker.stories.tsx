@@ -1,5 +1,6 @@
-import { useState } from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { useState } from 'react';
+import { subDays, addDays } from 'date-fns';
 import { Box, Flex, Stack } from '@ag.ds-next/box';
 import { Button, ButtonGroup } from '@ag.ds-next/button';
 import { Select } from '@ag.ds-next/select';
@@ -19,19 +20,21 @@ const Template: ComponentStory<typeof DateRangePicker> = (args) => {
 	return <DateRangePicker {...args} value={range} onChange={setRange} />;
 };
 
-export const OnLight = Template.bind({});
-OnLight.args = {};
-
-export const OnDark: ComponentStory<typeof DateRangePicker> = (args) => (
-	<Box background="body" palette="dark" padding={1.5}>
-		<Template {...args} />
-	</Box>
-);
-OnDark.args = {};
+export const Basic = Template.bind({});
+Basic.args = {};
 
 export const Disabled = Template.bind({});
 Disabled.args = {
 	disabled: true,
+};
+
+const today = new Date();
+const lastWeek = subDays(today, 7);
+const nextWeek = addDays(today, 7);
+export const MinMaxDates = Template.bind({});
+MinMaxDates.args = {
+	minDate: lastWeek,
+	maxDate: nextWeek,
 };
 
 export const Required = Template.bind({});

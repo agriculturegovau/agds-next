@@ -1,5 +1,4 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { Box } from '@ag.ds-next/box';
 import { Text } from '@ag.ds-next/text';
 import { Tags, TagsContainer, TagsList, Tag } from './index';
 
@@ -17,10 +16,8 @@ const exampleLinks = [
 	{ href: '#', label: 'Baz' },
 ];
 
-export const OnLight: ComponentStory<typeof Tags> = (args) => (
-	<Tags {...args} />
-);
-OnLight.args = {
+export const Basic: ComponentStory<typeof Tags> = (args) => <Tags {...args} />;
+Basic.args = {
 	heading: (
 		<Text as="h2" fontWeight="bold">
 			Tags:
@@ -29,38 +26,8 @@ OnLight.args = {
 	items: exampleItems,
 };
 
-export const OnDark: ComponentStory<typeof Tags> = (args) => (
-	<Box palette="dark" background="body" padding={1.5}>
-		<Tags {...args} />
-	</Box>
-);
-OnDark.args = {
-	heading: (
-		<Text as="h2" fontWeight="bold">
-			Tags:
-		</Text>
-	),
-	items: exampleItems,
-};
-
-export const LinksOnLight: ComponentStory<typeof Tags> = (args) => (
-	<Tags {...args} />
-);
-LinksOnLight.args = {
-	heading: (
-		<Text as="h2" fontWeight="bold">
-			Tags:
-		</Text>
-	),
-	items: exampleLinks,
-};
-
-export const LinksOnDark: ComponentStory<typeof Tags> = (args) => (
-	<Box palette="dark" background="body" padding={1.5}>
-		<Tags {...args} />
-	</Box>
-);
-LinksOnDark.args = {
+export const Links: ComponentStory<typeof Tags> = (args) => <Tags {...args} />;
+Links.args = {
 	heading: (
 		<Text as="h2" fontWeight="bold">
 			Tags:

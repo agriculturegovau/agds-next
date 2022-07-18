@@ -7,6 +7,7 @@ import {
 	InfoIcon,
 	WarningIcon,
 } from '@ag.ds-next/icon';
+import { Text } from '@ag.ds-next/text';
 import { IndicatorDot } from './IndicatorDot';
 
 export type StatusBadgeProps = {
@@ -17,53 +18,65 @@ export type StatusBadgeProps = {
 };
 
 export const StatusBadge = ({ label, tone }: StatusBadgeProps) => {
-	const { color, icon: Icon } = toneMap[tone];
+	const { borderColor, icon: Icon } = toneMap[tone];
 	return (
 		<Flex
 			display="inline-flex"
 			alignItems="center"
 			gap={0.5}
-			height={mapSpacing(2)}
+			height={height}
 			paddingX={0.75}
-			fontSize="sm"
-			lineHeight="nospace"
 			background="body"
-			color="text"
 			border
 			css={{
-				borderRadius: mapSpacing(1),
-				borderColor: color,
+				overflow: 'hidden',
+				borderRadius,
+				borderColor,
+				'& svg': {
+					flexShrink: 0,
+					width: iconWidth,
+				},
 			}}
 		>
 			<Icon />
-			{label}
+			<Text
+				as="span"
+				fontSize="sm"
+				lineHeight="nospace"
+				css={{ whiteSpace: 'nowrap' }}
+			>
+				{label}
+			</Text>
 		</Flex>
 	);
 };
 
-// Icon width is 22px
-const width = '1.375em';
+const height = mapSpacing(2); // 32px
+const borderRadius = mapSpacing(1); // 16px
+const iconWidth = '1.375rem'; // 22px
+
 export type StatusBadgeTone = keyof typeof toneMap;
+
 const toneMap = {
 	neutral: {
-		color: boxPalette.border,
+		borderColor: boxPalette.border,
 		icon: () => <IndicatorDot tone="neutral" />,
 	},
 	success: {
-		color: globalPalette.success,
-		icon: () => <SuccessIcon color="success" css={{ width }} />,
+		borderColor: globalPalette.success,
+		icon: () => <SuccessIcon color="success" />,
 	},
 	error: {
-		color: globalPalette.error,
-		icon: () => <AlertIcon color="error" css={{ width }} />,
+		borderColor: globalPalette.error,
+		icon: () => <AlertIcon color="error" />,
 	},
 
 	info: {
-		color: globalPalette.info,
-		icon: () => <InfoIcon color="info" css={{ width }} />,
+		borderColor: globalPalette.info,
+		icon: () => <InfoIcon color="info" />,
 	},
 	warning: {
-		color: globalPalette.warning,
-		icon: () => <WarningIcon color="warning" css={{ width }} />,
+		borderColor: globalPalette.warning,
+		icon: () => <WarningIcon color="warning" />,
 	},
 } as const;

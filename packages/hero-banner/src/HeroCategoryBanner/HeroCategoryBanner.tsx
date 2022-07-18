@@ -1,5 +1,5 @@
 import { PropsWithChildren, ReactNode } from 'react';
-import { HeroBannerVariant } from '../utils';
+import { HeroBannerBackground } from '../utils';
 import { HeroCategoryBannerContent } from './HeroCategoryBannerContent';
 import { HeroCategoryBannerMobileImage } from './HeroCategoryBannerMobileImage';
 import { HeroCategoryBannerContainer } from './HeroCategoryBannerContainer';
@@ -7,20 +7,20 @@ import { HeroCategoryBannerContainer } from './HeroCategoryBannerContainer';
 export type HeroCategoryBannerProps = PropsWithChildren<{
 	/** The hero image */
 	image?: ReactNode;
-	/** The palette of the component */
-	variant?: HeroBannerVariant;
+	/** The background of the component */
+	background?: HeroBannerBackground;
 }>;
 
 export const HeroCategoryBanner = ({
 	children,
 	image,
-	variant = 'lightAlt',
+	background = 'bodyAlt',
 }: HeroCategoryBannerProps) => (
-	<HeroCategoryBannerContainer variant={variant}>
+	<HeroCategoryBannerContainer background={background}>
 		{image ? (
 			<HeroCategoryBannerMobileImage>{image}</HeroCategoryBannerMobileImage>
 		) : null}
-		<HeroCategoryBannerContent variant={variant} image={image}>
+		<HeroCategoryBannerContent background={background} image={image}>
 			{children}
 		</HeroCategoryBannerContent>
 	</HeroCategoryBannerContainer>

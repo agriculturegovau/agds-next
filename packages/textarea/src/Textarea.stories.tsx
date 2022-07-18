@@ -1,5 +1,5 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { Box, Stack } from '@ag.ds-next/box';
+import { Stack } from '@ag.ds-next/box';
 import { Textarea } from './Textarea';
 
 export default {
@@ -7,19 +7,10 @@ export default {
 	component: Textarea,
 } as ComponentMeta<typeof Textarea>;
 
-export const OnLight: ComponentStory<typeof Textarea> = (args) => (
+export const Basic: ComponentStory<typeof Textarea> = (args) => (
 	<Textarea {...args} />
 );
-OnLight.args = {
-	label: 'Example',
-};
-
-export const OnDark: ComponentStory<typeof Textarea> = (args) => (
-	<Box background="body" palette="dark" padding={1.5}>
-		<Textarea {...args} />
-	</Box>
-);
-OnDark.args = {
+Basic.args = {
 	label: 'Example',
 };
 

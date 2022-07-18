@@ -1,13 +1,15 @@
 import { PropsWithChildren } from 'react';
-import { SubNavContainer, SubNavContainerVariant } from './SubNavContainer';
+import { SubNavContainer, SubNavBackground } from './SubNavContainer';
 import { SubNavList, SubNavListLink } from './SubNavList';
 
 export type SubNavProps = PropsWithChildren<{
 	activePath?: string;
 	'aria-label'?: string;
 	id?: string;
+	/** The navigation list items. */
 	links: SubNavListLink[];
-	variant?: SubNavContainerVariant;
+	/** If the SubNav is placed on a page with 'bodyAlt' background, please set this to 'bodyAlt'. */
+	background?: SubNavBackground;
 }>;
 
 export function SubNav({
@@ -15,10 +17,10 @@ export function SubNav({
 	activePath,
 	id,
 	'aria-label': ariaLabel = 'secondary',
-	variant = 'light',
+	background = 'body',
 }: SubNavProps) {
 	return (
-		<SubNavContainer id={id} aria-label={ariaLabel} variant={variant}>
+		<SubNavContainer id={id} aria-label={ariaLabel} background={background}>
 			<SubNavList links={links} activePath={activePath} />
 		</SubNavContainer>
 	);

@@ -5,28 +5,29 @@ import { Callout } from './Callout';
 import { CalloutTitle } from './CalloutTitle';
 
 export default {
-	title: 'layout/Callout',
+	title: 'content/Callout',
 	component: Callout,
 	subcomponents: { CalloutTitle },
 } as ComponentMeta<typeof Callout>;
 
-export const OnLight: ComponentStory<typeof Callout> = (args) => (
+export const Basic: ComponentStory<typeof Callout> = (args) => (
 	<Callout {...args}>
 		<Text as="p">Description of the callout.</Text>
 	</Callout>
 );
-OnLight.args = {
+Basic.args = {
 	title: 'Callout heading',
 };
 
-export const OnDark: ComponentStory<typeof Callout> = (args) => (
-	<Box palette="dark" background="body" padding={1.5}>
+export const OnBodyAlt: ComponentStory<typeof Callout> = (args) => (
+	<Box background="bodyAlt" padding={1.5}>
 		<Callout {...args}>
 			<Text as="p">Description of the callout</Text>
 		</Callout>
 	</Box>
 );
-
-OnDark.args = {
+OnBodyAlt.storyName = 'On bodyAlt background';
+OnBodyAlt.args = {
 	title: 'Callout heading',
+	background: 'shadeAlt',
 };

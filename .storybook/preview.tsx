@@ -1,3 +1,5 @@
+import React from 'react';
+import { Box } from '@ag.ds-next/box';
 import { Core, tokens } from '@ag.ds-next/core';
 import { theme } from '@ag.ds-next/ag-branding';
 
@@ -38,9 +40,18 @@ export const globalTypes = {
 			showName: true,
 		},
 	},
+	palette: {
+		name: 'Palette',
+		defaultValue: 'light',
+		toolbar: {
+			items: ['light', 'dark'],
+			showName: true,
+		},
+	},
 };
 
 export const parameters = {
+	layout: 'fullscreen',
 	actions: { argTypesRegex: '^on[A-Z].*' },
 	controls: {
 		matchers: {
@@ -61,10 +72,19 @@ const getTheme = (brand) => {
 };
 
 const withBrandTheme = (Story, context) => {
-	const palette = getTheme(context.globals.brand);
+	const brand = getTheme(context.globals.brand);
+	const palette = context.globals.palette;
 	return (
-		<Core theme={palette}>
-			<Story />
+		<Core theme={brand}>
+			<Box
+				width="100%"
+				minHeight="100vh"
+				padding={1}
+				palette={palette}
+				background="body"
+			>
+				<Story />
+			</Box>
 		</Core>
 	);
 };

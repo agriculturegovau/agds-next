@@ -11,31 +11,15 @@ const Template: ComponentStory<typeof Box> = (args) => <Box {...args} />;
 /**
  * The Box with a Light palette applied
  */
-export const LightBox = Template.bind({});
-LightBox.args = {
-	children: 'A light box',
+export const Basic = Template.bind({});
+Basic.args = {
+	children: 'Box with a border',
 	background: 'body',
 	color: 'text',
 	padding: 2,
 	border: true,
 	rounded: true,
-	// palette: 'light',
 	light: true,
-};
-
-/**
- * The Box with a Dark palette applied
- */
-export const DarkBox = Template.bind({});
-DarkBox.args = {
-	children: 'Dark box',
-	background: 'body',
-	color: 'text',
-	padding: 2,
-	border: true,
-	rounded: true,
-	// palette: 'dark',
-	dark: true,
 };
 
 /** Responsive props */

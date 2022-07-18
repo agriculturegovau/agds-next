@@ -1,24 +1,6 @@
-export const variantMap = {
-	light: {
-		palette: 'light',
-		background: 'body',
-		backgroundVar: 'backgroundBody',
-	},
-	lightAlt: {
-		palette: 'light',
-		background: 'bodyAlt',
-		backgroundVar: 'backgroundBodyAlt',
-	},
-	dark: {
-		palette: 'dark',
-		background: 'body',
-		backgroundVar: 'backgroundBody',
-	},
-	darkAlt: {
-		palette: 'dark',
-		background: 'bodyAlt',
-		backgroundVar: 'backgroundBodyAlt',
-	},
+export const backgroundMap = {
+	body: 'backgroundBody',
+	bodyAlt: 'backgroundBodyAlt',
 } as const;
 
-export type HeroBannerVariant = keyof typeof variantMap;
+export type HeroBannerBackground = keyof typeof backgroundMap;

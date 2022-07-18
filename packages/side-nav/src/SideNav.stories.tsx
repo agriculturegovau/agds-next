@@ -1,5 +1,6 @@
 import { ComponentProps } from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { Box } from '@ag.ds-next/box';
 import {
 	SideNav,
 	SideNavContainer,
@@ -71,36 +72,27 @@ const defaultArgs = {
 	activePath: '#in-detail/record-keeping/incorrect-amounts',
 } as ComponentProps<typeof SideNav>;
 
-const Template: ComponentStory<typeof SideNav> = (args) => (
+export const Basic: ComponentStory<typeof SideNav> = (args) => (
 	<SideNav {...args} />
 );
-
-export const LightVariant = Template.bind({});
-LightVariant.args = {
+Basic.args = {
 	...defaultArgs,
-	variant: 'light',
+	background: 'body',
 };
 
-export const LightAltVariant = Template.bind({});
-LightAltVariant.args = {
+export const OnBodyAlt: ComponentStory<typeof SideNav> = (args) => (
+	<Box padding={2} background="bodyAlt">
+		<SideNav {...args} />
+	</Box>
+);
+OnBodyAlt.args = {
 	...defaultArgs,
-	variant: 'lightAlt',
+	background: 'bodyAlt',
 };
-
-export const DarkVariant = Template.bind({});
-DarkVariant.args = {
-	...defaultArgs,
-	variant: 'dark',
-};
-
-export const DarkAltVariant = Template.bind({});
-DarkAltVariant.args = {
-	...defaultArgs,
-	variant: 'darkAlt',
-};
+OnBodyAlt.storyName = 'On bodyAlt background';
 
 export const Modular = () => (
-	<SideNavContainer variant="light" aria-label="side navigation">
+	<SideNavContainer background="body" aria-label="side navigation">
 		<SideNavTitle href="#">SideNav Title</SideNavTitle>
 		<SideNavGroup>
 			<SideNavLink href="#one" label="One" />

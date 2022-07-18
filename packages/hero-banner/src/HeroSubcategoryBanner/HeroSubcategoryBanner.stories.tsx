@@ -1,5 +1,6 @@
 import { ComponentMeta, Story } from '@storybook/react';
 import { Breadcrumbs } from '@ag.ds-next/breadcrumbs';
+import { Box } from '@ag.ds-next/box';
 import {
 	HeroSubcategoryBanner,
 	HeroSubcategoryBannerProps,
@@ -18,9 +19,12 @@ export default {
 	},
 } as ComponentMeta<typeof HeroSubcategoryBanner>;
 
-const Template: Story<
-	HeroSubcategoryBannerProps & { title: string; subtitle: string }
-> = (args) => (
+type HeroSubcategoryBannerStoryProps = HeroSubcategoryBannerProps & {
+	title: string;
+	subtitle: string;
+};
+
+const Template: Story<HeroSubcategoryBannerStoryProps> = (args) => (
 	<HeroSubcategoryBanner {...args}>
 		<Breadcrumbs
 			links={[
@@ -33,26 +37,22 @@ const Template: Story<
 	</HeroSubcategoryBanner>
 );
 
-export const LightVariant = Template.bind({});
-LightVariant.args = {
+const commonArgs = {
 	title: 'Subcategory banner title - xxl/display (H1)',
-	variant: 'light',
 };
 
-export const LightAlt = Template.bind({});
-LightAlt.args = {
-	title: 'Subcategory banner title - xxl/display (H1)',
-	variant: 'lightAlt',
+export const Basic = Template.bind({});
+Basic.args = {
+	...commonArgs,
 };
 
-export const Dark = Template.bind({});
-Dark.args = {
-	title: 'Subcategory banner title - xxl/display (H1)',
-	variant: 'dark',
-};
-
-export const DarkAlt = Template.bind({});
-DarkAlt.args = {
-	title: 'Subcategory banner title - xxl/display (H1)',
-	variant: 'darkAlt',
+export const OnBodyAlt: Story<HeroSubcategoryBannerStoryProps> = (args) => (
+	<Box paddingY={3} background="bodyAlt">
+		<Template {...args} />
+	</Box>
+);
+OnBodyAlt.storyName = 'On bodyAlt background';
+OnBodyAlt.args = {
+	...commonArgs,
+	background: 'body',
 };

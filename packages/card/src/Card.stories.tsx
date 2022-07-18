@@ -21,7 +21,7 @@ export default {
 	subcomponents: { CardInner, CardLink, CardList, CardHeader, CardFooter },
 } as ComponentMeta<typeof Card>;
 
-export const OnLight: ComponentStory<typeof Card> = (args) => (
+export const Basic: ComponentStory<typeof Card> = (args) => (
 	<Box maxWidth={300}>
 		<Card {...args}>
 			<CardInner>
@@ -40,30 +40,6 @@ export const OnLight: ComponentStory<typeof Card> = (args) => (
 				</Stack>
 			</CardInner>
 		</Card>
-	</Box>
-);
-
-export const OnDark: ComponentStory<typeof Card> = (args) => (
-	<Box palette="dark" background="body" padding={1.5}>
-		<Box maxWidth={300}>
-			<Card {...args}>
-				<CardInner>
-					<Stack gap={1}>
-						<Heading as="h2" type="h3">
-							Card heading
-						</Heading>
-						<Text as="p">
-							Lorem ipsum dolor, sit amet consectetur adipisicing elit. In,
-							voluptatibus.
-						</Text>
-						<CardLink href="#">
-							Linking out
-							<ChevronRightIcon weight="bold" size="sm" />
-						</CardLink>
-					</Stack>
-				</CardInner>
-			</Card>
-		</Box>
 	</Box>
 );
 
