@@ -27,6 +27,15 @@ Disabled.args = {
 	disabled: true,
 };
 
+export const DisabledDays = Template.bind({});
+DisabledDays.args = {
+	// initialMonth: new Date(2022, 5, 10),
+	disabledDays: [
+		new Date(2022, 5, 10),
+		// { from: undefined, to: new Date(2022, 5, 24) },
+	],
+};
+
 export const Required = Template.bind({});
 Required.args = {
 	required: true,

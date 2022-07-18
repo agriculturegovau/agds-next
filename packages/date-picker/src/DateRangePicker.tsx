@@ -7,6 +7,7 @@ import {
 	useEffect,
 } from 'react';
 import { usePopper } from 'react-popper';
+import { SelectRangeEventHandler } from 'react-day-picker';
 import { Flex } from '@ag.ds-next/box';
 import {
 	tokens,
@@ -14,7 +15,7 @@ import {
 	useTernaryState,
 	useWindowSize,
 } from '@ag.ds-next/core';
-import { Calendar, CalendarProps, CalendarRef } from './Calendar';
+import { CalendarRange } from './Calendar';
 import { DateInput } from './DatePickerInput';
 import { getValidDateRange, parseDate, formatDate } from './utils';
 
@@ -23,7 +24,12 @@ export type DateRange = {
 	to: Date | undefined;
 };
 
-export type DateRangePickerProps = CalendarProps & {
+type DateRangePickerCalendarProps = {
+	// initialMonth?: Date;
+	disabledDays?: (Date | { from: Date; to: Date })[];
+};
+
+export type DateRangePickerProps = DateRangePickerCalendarProps & {
 	/** The value of the field. */
 	value: DateRange;
 	/** Function to be fired following a change event. */
@@ -41,8 +47,8 @@ export const DateRangePicker = ({
 	fromLabel = 'Start date',
 	toLabel = 'End date',
 	required,
+	disabledDays,
 }: DateRangePickerProps) => {
-	const calendarRef = useRef<CalendarRef>(null);
 	const [isCalendarOpen, openCalendar, closeCalendar] = useTernaryState(false);
 	const [inputMode, setInputMode] = useState<'from' | 'to'>();
 
@@ -62,16 +68,16 @@ export const DateRangePicker = ({
 	// Popper state
 	const [refEl, setRefEl] = useState<HTMLDivElement | null>(null);
 	const [popperEl, setPopperEl] = useState<HTMLDivElement | null>(null);
-	const onFirstUpdate = useCallback(() => calendarRef.current?.focus(), []);
 	const { styles, attributes } = usePopper(refEl, popperEl, {
 		placement: 'bottom-start',
 		modifiers: [{ name: 'offset', options: { offset: [0, 8] } }],
-		onFirstUpdate,
 	});
 
-	const onDayClick = useCallback(
-		(selectedDay: Date) => {
-			if (!inputMode) return;
+	const onSelect = useCallback<SelectRangeEventHandler>(
+		(_, selectedDay, activeModifiers) => {
+			console.log(inputMode);
+
+			if (!inputMode || activeModifiers.disabled) return;
 			const range = getValidDateRange(inputMode, selectedDay, value);
 
 			onChange(range);
@@ -86,6 +92,11 @@ export const DateRangePicker = ({
 
 			if (inputMode === 'from') {
 				setInputMode('to');
+				return;
+			}
+
+			if (inputMode === 'to' && !range.from) {
+				setInputMode('from');
 				return;
 			}
 		},
@@ -192,14 +203,12 @@ export const DateRangePicker = ({
 					{...attributes.popper}
 					css={{ zIndex: 1 }}
 				>
-					<Calendar
-						ref={calendarRef}
-						initialMonth={inputMode === 'from' ? value.from : value.to}
-						selectedDays={[value.from, value]}
-						onDayClick={onDayClick}
-						modifiers={{ start: value.from, end: value.to }}
+					<CalendarRange
+						defaultMonth={inputMode === 'from' ? value.from : value.to}
+						selected={value}
+						onSelect={onSelect}
 						numberOfMonths={numberOfMonths}
-						range
+						disabled={disabledDays}
 					/>
 				</div>
 			) : null}

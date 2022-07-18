@@ -1,35 +1,55 @@
-import { forwardRef } from 'react';
-import DayPicker, { DayPickerProps } from 'react-day-picker';
+import { RefObject } from 'react';
 import FocusLock from 'react-focus-lock';
+import {
+	CustomComponents,
+	DayPicker,
+	DayPickerSingleProps,
+	DayPickerRangeProps,
+} from 'react-day-picker';
+import { ChevronLeftIcon, ChevronRightIcon } from '@ag.ds-next/icon';
 import { CalendarContainer } from './CalendarContainer';
-import { CalendarNavbar } from './CalendarNavBar';
 
-export type CalendarProps = Pick<
-	DayPickerProps,
-	| 'selectedDays'
-	| 'onDayClick'
-	| 'initialMonth'
-	| 'numberOfMonths'
-	| 'modifiers'
-> & {
-	range?: boolean;
+export type CalendarSingleProps = Omit<
+	DayPickerSingleProps,
+	'mode' | 'initialFocus' | 'components'
+>;
+
+export function CalendarSingle(props: CalendarSingleProps) {
+	return (
+		<FocusLock autoFocus={false} returnFocus>
+			<CalendarContainer range={false}>
+				<DayPicker
+					mode="single"
+					initialFocus={true}
+					components={calendarComponents}
+					{...props}
+				/>
+			</CalendarContainer>
+		</FocusLock>
+	);
+}
+
+export type CalendarRangeProps = Omit<
+	DayPickerRangeProps,
+	'mode' | 'initialFocus' | 'components'
+>;
+
+export function CalendarRange(props: CalendarRangeProps) {
+	return (
+		<FocusLock autoFocus={false}>
+			<CalendarContainer range={false}>
+				<DayPicker
+					mode="range"
+					initialFocus={true}
+					components={calendarComponents}
+					{...props}
+				/>
+			</CalendarContainer>
+		</FocusLock>
+	);
+}
+
+const calendarComponents: CustomComponents = {
+	IconRight: () => <ChevronRightIcon color="action" weight="bold" />,
+	IconLeft: () => <ChevronLeftIcon color="action" weight="bold" />,
 };
-
-export type CalendarRef = DayPicker;
-
-export const Calendar = forwardRef<CalendarRef, CalendarProps>(
-	function Calendar({ range = false, onDayClick, ...props }, ref) {
-		return (
-			<FocusLock autoFocus={false} returnFocus>
-				<CalendarContainer range={range}>
-					<DayPicker
-						ref={ref}
-						navbarElement={CalendarNavbar}
-						onDayClick={onDayClick}
-						{...props}
-					/>
-				</CalendarContainer>
-			</FocusLock>
-		);
-	}
-);

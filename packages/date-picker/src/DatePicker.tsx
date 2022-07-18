@@ -7,8 +7,9 @@ import {
 	useState,
 } from 'react';
 import { usePopper } from 'react-popper';
+import { SelectSingleEventHandler } from 'react-day-picker';
 import { useClickOutside, useTernaryState } from '@ag.ds-next/core';
-import { Calendar, CalendarProps, CalendarRef } from './Calendar';
+import { CalendarSingle } from './Calendar';
 import { DateInput, DateInputProps } from './DatePickerInput';
 import { parseDate, formatDate } from './utils';
 
@@ -17,7 +18,10 @@ type DatePickerInputProps = Omit<
 	'value' | 'onChange' | 'buttonRef' | 'buttonOnClick'
 >;
 
-type DatePickerCalendarProps = Omit<CalendarProps, 'range'>;
+type DatePickerCalendarProps = {
+	initialMonth?: Date;
+	disabledDays?: (Date | { from: Date; to: Date })[];
+};
 
 type DatePickerBaseProps = {
 	/** The value of the field. */
@@ -34,28 +38,28 @@ export const DatePicker = ({
 	value,
 	onChange,
 	initialMonth,
+	disabledDays,
 	...props
 }: DatePickerProps) => {
-	const calendarRef = useRef<CalendarRef>(null);
 	const [isCalendarOpen, openCalendar, closeCalendar] = useTernaryState(false);
 
 	// Popper state
 	const triggerRef = useRef<HTMLButtonElement>(null);
 	const [refEl, setRefEl] = useState<HTMLDivElement | null>(null);
 	const [popperEl, setPopperEl] = useState<HTMLDivElement | null>(null);
-	const onFirstUpdate = useCallback(() => calendarRef.current?.focus(), []);
 	const { styles, attributes } = usePopper(refEl, popperEl, {
 		placement: 'bottom-start',
 		modifiers: [{ name: 'offset', options: { offset: [0, 8] } }],
-		onFirstUpdate,
 	});
 
-	const onDayClick = useCallback(
-		(day: Date) => {
+	const onSelect = useCallback<SelectSingleEventHandler>(
+		(_, selectedDay, modifiers) => {
+			// If the day is disabled, do nothing
+			if (modifiers.disabled) return;
 			// Update the input field with the selected day
-			setInputValue(formatDate(day));
+			setInputValue(formatDate(selectedDay));
 			// Trigger the callback
-			onChange(day);
+			onChange(selectedDay);
 			// Close the calendar and focus the calendar icon
 			closeCalendar();
 		},
@@ -119,13 +123,12 @@ export const DatePicker = ({
 					{...attributes.popper}
 					css={{ zIndex: 1 }}
 				>
-					<Calendar
-						ref={calendarRef}
-						selectedDays={value}
-						onDayClick={onDayClick}
-						initialMonth={initialMonth || value}
+					<CalendarSingle
+						selected={value}
+						onSelect={onSelect}
+						defaultMonth={initialMonth || value}
 						numberOfMonths={1}
-						range={false}
+						disabled={disabledDays}
 					/>
 				</div>
 			) : null}

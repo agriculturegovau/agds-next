@@ -25,6 +25,17 @@ Disabled.args = {
 	disabled: true,
 };
 
+// https://react-day-picker.js.org/basics/modifiers#disabling-days
+export const DisabledDays = Template.bind({});
+DisabledDays.args = {
+	label: 'Example',
+	initialMonth: new Date(2022, 5, 10),
+	disabledDays: [
+		new Date(2022, 5, 10),
+		{ from: new Date(2022, 5, 20), to: new Date(2022, 5, 24) },
+	],
+};
+
 export const Required = Template.bind({});
 Required.args = {
 	required: true,

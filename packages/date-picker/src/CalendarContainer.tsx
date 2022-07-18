@@ -2,12 +2,12 @@ import { ReactNode } from 'react';
 import {
 	boxPalette,
 	fontGrid,
-	mapResponsiveProp,
 	mapSpacing,
-	mq,
 	packs,
 	tokens,
 } from '@ag.ds-next/core';
+import { visuallyHiddenStyles } from '@ag.ds-next/a11y';
+import { Box } from '@ag.ds-next/box';
 
 const componentTokens = {
 	shadow: '0 1px 1px rgba(0, 0, 0, 0.3)',
@@ -18,149 +18,162 @@ export type CalendarContainerProps = {
 	range: boolean;
 };
 
-export const CalendarContainer = ({
-	children,
-	range,
-}: CalendarContainerProps) => (
-	<div
-		css={mq({
-			'& .DayPicker': {
-				display: `inline-block`,
-				fontSize: `1rem`,
-				backgroundColor: boxPalette.backgroundBody,
-				color: boxPalette.foregroundText,
-				boxShadow: componentTokens.shadow,
-				borderWidth: tokens.borderWidth.sm,
-				borderStyle: 'solid',
-				borderColor: boxPalette.borderMuted,
-				borderRadius: tokens.borderRadius,
-			},
+const cellSize = '2.875rem';
 
-			'& .DayPicker-wrapper': {
-				position: `relative`,
-				flexDirection: `row`,
-				padding: mapResponsiveProp([0.25 as const, 1 as const], mapSpacing),
-				'&:focus': packs.outline,
-			},
+const reactDayPickerStyles = {
+	// Visually hidden
+	'.rdp-vhidden': visuallyHiddenStyles,
 
-			'& .DayPicker-Months': {
-				display: `flex`,
-				flexWrap: `wrap`,
-				justifyContent: `center`,
-				gap: mapSpacing(2),
-			},
+	// Base button
+	'.rdp-button_reset': {
+		appearance: 'none',
+		background: 'none',
+		border: 'none',
+		margin: 0,
+		padding: 0,
+		cursor: 'pointer',
+		color: 'inherit',
+		font: 'inherit',
+	},
 
-			'& .DayPicker-Month': {
-				display: `table`,
-				borderSpacing: 0,
-				borderCollapse: `collapse`,
-				userSelect: `none`,
-			},
+	// Header
+	'.rdp-caption': {
+		display: 'flex',
+		alignItems: 'center',
+		justifyContent: 'center',
+		marginBottom: mapSpacing(1.5),
+	},
 
-			'& .DayPicker-Caption': {
-				display: `table-caption`,
-				marginBottom: mapResponsiveProp(
-					[0.75 as const, 1.5 as const],
-					mapSpacing
-				),
-				textAlign: `center`,
-			},
+	'.rdp-caption_label': {
+		zIndex: 1,
+		whiteSpace: 'nowrap',
+		margin: 0,
+		color: boxPalette.foregroundText,
+		fontWeight: tokens.fontWeight.bold,
+		...fontGrid('lg', 'nospace'),
+	},
 
-			'& .DayPicker-Caption > div': {
-				display: 'flex',
-				alignItems: 'center',
-				justifyContent: 'center',
-				height: '2.875rem',
-				...fontGrid('lg', 'nospace'),
-				fontWeight: tokens.fontWeight.bold,
-			},
+	// Left / right arrows
+	'.rdp-nav_button': {
+		display: 'inline-flex',
+		alignItems: 'center',
+		justifyContent: 'center',
+		borderRadius: tokens.borderRadius,
+	},
 
-			'& .DayPicker-Weekdays': {
-				display: `table-header-group`,
-			},
+	'.rdp-nav_button_previous': {
+		position: 'absolute',
+		top: mapSpacing(1.5),
+		left: mapSpacing(1.5),
+	},
 
-			'& .DayPicker-WeekdaysRow': {
-				display: `table-row`,
-			},
+	'.rdp-nav_button_next': {
+		position: 'absolute',
+		top: mapSpacing(1.5),
+		right: mapSpacing(1.5),
+	},
 
-			'& .DayPicker-Weekday': {
-				display: `table-cell`,
-				textAlign: `center`,
-				...fontGrid('sm', 'heading'),
-				color: boxPalette.foregroundMuted,
-				paddingBottom: mapSpacing(0.75),
-			},
+	// Days of week
+	'.rdp-head_cell': {
+		verticalAlign: 'middle',
+		textAlign: 'center',
+		margin: 0,
+		padding: 0,
+		width: cellSize,
+		height: cellSize,
+		fontWeight: tokens.fontWeight.normal,
+		color: boxPalette.foregroundMuted,
+		...fontGrid('sm', 'default'),
+	},
 
-			'& .DayPicker-Weekday abbr[title]': {
-				borderBottom: `none`,
-				textDecoration: `none`,
-			},
+	// Day button
+	'.rdp-day': {
+		color: boxPalette.foregroundAction,
+	},
 
-			'& .DayPicker-Body': {
-				display: `table-row-group`,
-			},
+	".rdp-button[aria-disabled='true']": {
+		color: boxPalette.foregroundText,
+		opacity: 0.3,
+		pointerEvents: 'none',
+	},
 
-			'& .DayPicker-Week': {
-				display: `table-row`,
-			},
+	".rdp-button:hover:not([aria-disabled='true'])": {
+		backgroundColor: boxPalette.backgroundShade,
+	},
 
-			'& .DayPicker-Day': {
-				display: `table-cell`,
-				verticalAlign: `middle`,
-				borderRadius: tokens.borderRadius,
-				width: '2.875rem',
-				height: '2.875rem',
-				textAlign: `center`,
-				cursor: `pointer`,
-				color: boxPalette.foregroundAction,
-				'&:focus': packs.outline,
-			},
+	'.rdp-button:focus, .rdp-button:active': packs.outline,
 
-			'& .DayPicker-Day--disabled': {
-				opacity: `0.3`,
-				cursor: `not-allowed`,
-			},
+	'.rdp-weeknumber, .rdp-day': {
+		display: 'flex',
+		justifyContent: 'center',
+		alignItems: 'center',
+		width: cellSize,
+		height: cellSize,
+		borderRadius: tokens.borderRadius,
+	},
 
-			'& .DayPicker-Day--selected:not(.DayPicker-Day--outside)': {
-				position: `relative`,
-				backgroundColor: boxPalette.foregroundAction,
-				color: boxPalette.backgroundBody,
-			},
+	'.rdp-months': { display: 'flex' },
+	'.rdp-month': { margin: '0 1em' },
+	'.rdp-month:first-child': { marginLeft: 0 },
+	'.rdp-month:last-child': { marginRight: 0 },
+	'.rdp-table': {
+		margin: 0,
+		maxWidth: 'calc(${cellSize} * 7)',
+		borderCollapse: 'collapse',
+	},
+	'.rdp-with_weeknumber .rdp-table': {
+		maxWidth: 'calc(${cellSize} * 8)',
+		borderCollapse: 'collapse',
+	},
 
-			'& .DayPicker-Day:not(.DayPicker-Day--selected):not(.DayPicker-Day--outside):hover':
-				{
-					backgroundColor: boxPalette.backgroundShade,
-				},
+	'.rdp-tbody': { border: 0 },
+	'.rdp-tfoot': { margin: '0.5em' },
+	'.rdp-cell': {
+		width: cellSize,
+		height: cellSize,
+		padding: 0,
+		textAlign: 'center',
+	},
 
-			...(range && {
-				'.DayPicker-Day--selected.DayPicker-Day--start:not(.DayPicker-Day--outside)':
-					{
-						borderTopLeftRadius: '50%',
-						borderBottomLeftRadius: '50%',
-						borderTopRightRadius: 0,
-						borderBottomRightRadius: 0,
-					},
-				'.DayPicker-Day--selected.DayPicker-Day--end:not(.DayPicker-Day--outside)':
-					{
-						borderTopLeftRadius: 0,
-						borderBottomLeftRadius: 0,
-						borderTopRightRadius: '50%',
-						borderBottomRightRadius: '50%',
-					},
-				'.DayPicker-Day--selected.DayPicker-Day--start:not(.DayPicker-Day--outside).DayPicker-Day--end:not(.DayPicker-Day--outside)':
-					{
-						borderRadius: '50%',
-					},
+	".rdp-day_selected:not([aria-disabled='true']), .rdp-day_selected:focus:not([aria-disabled='true']), .rdp-day_selected:active:not([aria-disabled='true']), .rdp-day_selected:hover:not([aria-disabled='true']), .rdp-day_selected:hover:not([aria-disabled='true'])":
+		{
+			backgroundColor: boxPalette.foregroundAction,
+			color: boxPalette.backgroundBody,
+		},
 
-				'.DayPicker-Day--selected:not(.DayPicker-Day--start):not(.DayPicker-Day--end):not(.DayPicker-Day--outside)':
-					{
-						backgroundColor: boxPalette.backgroundShade,
-						color: boxPalette.foregroundText,
-						borderRadius: 0,
-					},
-			}),
-		})}
-	>
-		{children}
-	</div>
-);
+	".rdp-day_selected:not([aria-disabled='true']).rdp-day_range_middle": {
+		backgroundColor: boxPalette.backgroundShade,
+		color: boxPalette.foregroundText,
+		borderRadius: 0,
+	},
+
+	'.rdp-day_range_start:not(.rdp-day_range_end)': {
+		borderTopRightRadius: 0,
+		borderBottomRightRadius: 0,
+	},
+
+	'.rdp-day_range_end:not(.rdp-day_range_start)': {
+		borderTopLeftRadius: 0,
+		borderBottomLeftRadius: 0,
+	},
+} as const;
+
+export function CalendarContainer({ children }: any) {
+	return (
+		<Box
+			display="inline-block"
+			background="body"
+			padding={1}
+			paddingTop={1.5}
+			border
+			borderColor="muted"
+			rounded
+			css={[
+				reactDayPickerStyles,
+				{ position: 'relative', boxShadow: componentTokens.shadow },
+			]}
+		>
+			{children}
+		</Box>
+	);
+}
