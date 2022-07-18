@@ -1,6 +1,8 @@
+import { Fragment } from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { VisuallyHidden } from '@ag.ds-next/a11y';
 import { Box, Flex, Stack } from '@ag.ds-next/box';
-import { Heading } from '@ag.ds-next/heading';
+import { H1, H2, H3, Heading } from '@ag.ds-next/heading';
 import { ChevronRightIcon } from '@ag.ds-next/icon';
 import { Columns, Column } from '@ag.ds-next/columns';
 import { DirectionLink } from '@ag.ds-next/direction-link';
@@ -8,6 +10,7 @@ import { Tags } from '@ag.ds-next/tags';
 import { Text } from '@ag.ds-next/text';
 import { TextLink } from '@ag.ds-next/text-link';
 import { ExternalLinkIcon } from '@ag.ds-next/icon';
+import { StatusBadge } from '@ag.ds-next/badge';
 import { Card } from './Card';
 import { CardInner } from './CardInner';
 import { CardLink } from './CardLink';
@@ -126,31 +129,77 @@ FeatureFooter.args = {
 	background: 'body',
 };
 
-const ExampleCard = () => (
-	<Card as="li">
-		<CardInner>
-			<Stack gap={1}>
-				<Heading as="h2" type="h3">
-					Card as `li`
-				</Heading>
-				<Text as="p">
-					Lorem ipsum dolor, sit amet consectetur adipisicing elit. In, voluptat
-				</Text>
-				<CardLink href="#">Learn more</CardLink>
-			</Stack>
-		</CardInner>
-	</Card>
-);
+export const CardListStory = () => {
+	const toneMapper = {
+		Closed: 'success',
+		Open: 'warning',
+		Pending: 'info',
+	} as const;
 
-export const CardListStory = () => (
-	<Columns cols={{ xs: 1, sm: 2, md: 3 }}>
-		<ExampleCard />
-		<ExampleCard />
-		<ExampleCard />
-		<ExampleCard />
-		<ExampleCard />
-	</Columns>
-);
+	const listData = [
+		{
+			id: 'RE4321–2201–03',
+			businessName: 'Orange Meat Works',
+			type: 'Record keeping—Minor',
+			status: 'Pending',
+		},
+		{
+			id: 'RE4321–2201–02',
+			businessName: 'Orange Meat Works',
+			type: 'Hygiene—Major',
+			status: 'Open',
+		},
+		{
+			id: 'RE4321–2201–01',
+			businessName: 'Orange Meat Works',
+			type: 'Record keeping—Minor',
+			status: 'Closed',
+		},
+	] as const;
+
+	return (
+		<Stack gap={1}>
+			<H1>Manage corrective action requests (CAR)</H1>
+			<Text>You may now manage your CARs online.</Text>
+			<H2>Active CARs</H2>
+			<Columns as="ul" gap={1} cols={{ xs: 1, sm: 2, md: 3 }}>
+				{listData.map((item) => (
+					<Card shadow clickable as="li" key={item.id}>
+						<CardInner>
+							<Stack gap={1} width="100%" flexWrap="wrap">
+								<Text fontSize="lg" fontWeight="bold">
+									<CardLink href={`#${item.id}`}>{item.businessName}</CardLink>
+								</Text>
+
+								<Flex justifyContent="space-between" alignItems="center">
+									<Text lineHeight="nospace" as="p">
+										<VisuallyHidden>Type: </VisuallyHidden>
+										{item.type}.
+									</Text>
+
+									<StatusBadge
+										tone={toneMapper[item.status]}
+										label={
+											<Fragment>
+												<VisuallyHidden>Status: </VisuallyHidden>
+												{item.status}
+											</Fragment>
+										}
+									/>
+								</Flex>
+
+								<Text color="muted" fontSize="xs">
+									<VisuallyHidden>CAR ID: </VisuallyHidden>
+									{item.id}
+								</Text>
+							</Stack>
+						</CardInner>
+					</Card>
+				))}
+			</Columns>
+		</Stack>
+	);
+};
 CardListStory.storyName = 'List of Cards';
 
 export const Compositions = () => {
