@@ -1,7 +1,7 @@
 import { forwardRefWithAs } from '@ag.ds-next/core';
 import { Box, BoxProps } from '@ag.ds-next/box';
 
-const sizeMap = {
+export const headingFontSizeMap = {
 	h1: 'xxl',
 	h2: 'xl',
 	h3: 'lg',
@@ -10,8 +10,11 @@ const sizeMap = {
 	h6: 'xs',
 } as const;
 
+export type HeadingType = keyof typeof headingFontSizeMap;
+
 export type HeadingProps = {
-	type?: keyof typeof sizeMap;
+	/** The heading level. */
+	type?: HeadingType;
 } & BoxProps;
 
 export const Heading = forwardRefWithAs<'h2', HeadingProps>(function Heading(
@@ -28,7 +31,7 @@ export const Heading = forwardRefWithAs<'h2', HeadingProps>(function Heading(
 	ref
 ) {
 	const Tag = ComponentTag ?? type;
-	const fontSize = __fontSize ?? sizeMap[type];
+	const fontSize = __fontSize ?? headingFontSizeMap[type];
 
 	return (
 		<Box

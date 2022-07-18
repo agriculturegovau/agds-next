@@ -129,6 +129,11 @@ import {
 	IndicatorDot,
 } from '@ag.ds-next/badge';
 import { Pagination, PaginationButtons } from '@ag.ds-next/pagination';
+import {
+	SkeletonText,
+	SkeletonHeading,
+	SkeletonBox,
+} from '@ag.ds-next/skeleton';
 
 export const designSystemComponents = {
 	Accordion,
@@ -262,4 +267,7 @@ export const designSystemComponents = {
 	IndicatorDot,
 	Pagination,
 	PaginationButtons,
+	SkeletonText,
+	SkeletonHeading,
+	SkeletonBox,
 };
