@@ -7,6 +7,7 @@ import {
 	InfoIcon,
 	WarningIcon,
 } from '@ag.ds-next/icon';
+import { Text } from '@ag.ds-next/text';
 import { IndicatorDot } from './IndicatorDot';
 
 export type StatusBadgeProps = {
@@ -25,15 +26,22 @@ export const StatusBadge = ({ label, tone }: StatusBadgeProps) => {
 			gap={0.5}
 			height={height}
 			paddingX={0.75}
-			fontSize="sm"
-			lineHeight="nospace"
 			background="body"
-			color="text"
 			border
-			css={{ borderRadius, borderColor }}
+			css={{
+				overflow: 'hidden',
+				borderRadius,
+				borderColor,
+				'& svg': {
+					flexShrink: 0,
+					width: iconWidth,
+				},
+			}}
 		>
 			<Icon />
-			{label}
+			<Text as="span" fontSize="sm" lineHeight="nospace">
+				{label}
+			</Text>
 		</Flex>
 	);
 };
@@ -51,19 +59,19 @@ const toneMap = {
 	},
 	success: {
 		borderColor: globalPalette.success,
-		icon: () => <SuccessIcon color="success" css={{ width: iconWidth }} />,
+		icon: () => <SuccessIcon color="success" />,
 	},
 	error: {
 		borderColor: globalPalette.error,
-		icon: () => <AlertIcon color="error" css={{ width: iconWidth }} />,
+		icon: () => <AlertIcon color="error" />,
 	},
 
 	info: {
 		borderColor: globalPalette.info,
-		icon: () => <InfoIcon color="info" css={{ width: iconWidth }} />,
+		icon: () => <InfoIcon color="info" />,
 	},
 	warning: {
 		borderColor: globalPalette.warning,
-		icon: () => <WarningIcon color="warning" css={{ width: iconWidth }} />,
+		icon: () => <WarningIcon color="warning" />,
 	},
 } as const;
