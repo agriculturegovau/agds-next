@@ -19,7 +19,7 @@ Basic.args = {
 
 export const LanguageExamples = () => {
 	return (
-		<Flex gap={1}>
+		<Flex flexWrap="wrap" gap={1}>
 			<Stack gap={0.5} alignItems="flex-start">
 				<StatusBadge tone="success" label="Approved" />
 				<StatusBadge tone="success" label="Accepted" />
