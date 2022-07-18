@@ -15,7 +15,7 @@ export function CalendarContainer({ children }: CalendarContainerProps) {
 		<Box
 			display="inline-block"
 			background="body"
-			padding={1}
+			padding={[0.25, 1]}
 			paddingTop={1.5}
 			border
 			borderColor="muted"
