@@ -412,10 +412,10 @@ const KitchenSink = ({ background }: { background: 'body' | 'bodyAlt' }) => {
 	);
 };
 
-export const DefaultBackgrounds = () => {
+export const BodyBackground = () => {
 	return <KitchenSink background="body" />;
 };
 
-export const AltBackgrounds = () => {
+export const BodyAltBackground = () => {
 	return <KitchenSink background="bodyAlt" />;
 };
