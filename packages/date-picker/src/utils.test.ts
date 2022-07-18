@@ -1,5 +1,5 @@
 import { add } from 'date-fns';
-import { getValidDateRange, parseDate } from './utils';
+import { constrainDate, getValidDateRange, parseDate } from './utils';
 
 describe('parseDate', () => {
 	test('works on valid dates', () => {
@@ -14,6 +14,29 @@ describe('parseDate', () => {
 		expect(parseDate('31/01/199')).toEqual(undefined);
 		expect(parseDate('31-01-19')).toEqual(undefined);
 		expect(parseDate('1-2-3')).toEqual(undefined);
+	});
+});
+
+describe('constrainDate', () => {
+	test('works with dates inside of range', () => {
+		const date = new Date(1999, 12, 15);
+		const min = new Date(1999, 12, 10);
+		const max = new Date(1999, 12, 20);
+		expect(constrainDate(date, undefined, undefined)).toEqual(date);
+		expect(constrainDate(date, min, undefined)).toEqual(date);
+		expect(constrainDate(date, undefined, max)).toEqual(date);
+	});
+	test('works with dates before range', () => {
+		const min = new Date(1999, 12, 10);
+		const max = new Date(1999, 12, 20);
+		expect(constrainDate(new Date(1990, 12, 10), min, max)).toEqual(min);
+		expect(constrainDate(min, min, max)).toEqual(min);
+	});
+	test('works with dates after range', () => {
+		const min = new Date(1999, 12, 10);
+		const max = new Date(1999, 12, 20);
+		expect(constrainDate(new Date(2000, 12, 10), min, max)).toEqual(max);
+		expect(constrainDate(max, min, max)).toEqual(max);
 	});
 });
 
