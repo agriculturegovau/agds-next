@@ -39,7 +39,12 @@ export const StatusBadge = ({ label, tone }: StatusBadgeProps) => {
 			}}
 		>
 			<Icon />
-			<Text as="span" fontSize="sm" lineHeight="nospace">
+			<Text
+				as="span"
+				fontSize="sm"
+				lineHeight="nospace"
+				css={{ whiteSpace: 'nowrap' }}
+			>
 				{label}
 			</Text>
 		</Flex>
