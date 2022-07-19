@@ -56,6 +56,7 @@ type FileUploadRejection = {
 	id: string;
 	fileName: string;
 	fileSize: number;
+	code: string;
 	message: string;
 };
 
@@ -83,7 +84,9 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 		const filesPlural = multiple ? 'files' : 'file';
 		const maxSizeBytes = (maxSize || 0) * 1000;
 		const formattedMaxFileSize = formatFileSize(maxSizeBytes);
-		const [fileRejections, setRejections] = useState<FileUploadRejection[]>([]);
+		const [fileRejections, setFileRejections] = useState<FileUploadRejection[]>(
+			[]
+		);
 
 		const handleRemoveFile = (file: FileWithStatus) => {
 			const indexOfFile = value.indexOf(file);
@@ -91,7 +94,7 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 		};
 
 		const handleRemoveRejection = (errId: string) => {
-			setRejections(fileRejections.filter((err) => err.id !== errId));
+			setFileRejections(fileRejections.filter((err) => err.id !== errId));
 		};
 
 		const handleDropAccepted = (acceptedFiles: FileWithStatus[]) => {
@@ -122,7 +125,7 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 		});
 
 		const errorSummary = getErrorSummary(
-			RDrejections,
+			fileRejections,
 			formattedMaxFileSize,
 			maxFiles
 		);
@@ -146,10 +149,11 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 							formattedMaxFileSize,
 							acceptedFilesSummary
 						),
+						code: err.code,
 					})
 				);
 			});
-			setRejections(errs);
+			setFileRejections(errs);
 		}, [RDrejections, formattedMaxFileSize, acceptedFilesSummary]);
 
 		return (

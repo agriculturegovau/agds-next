@@ -1,5 +1,5 @@
 import formatFileSize from 'filesize';
-import type { FileRejection, FileError, FileWithPath } from 'react-dropzone';
+import type { FileError, FileWithPath } from 'react-dropzone';
 
 export type FileStatus = 'none' | 'uploading' | 'success';
 export type FileWithStatus = FileWithPath & {
@@ -69,13 +69,13 @@ export const getFileRejectionErrorMessage = (
 };
 
 export const getErrorSummary = (
-	rejections: FileRejection[] | undefined,
+	rejections: FileError[],
 	formattedMaxFileSize: string,
 	maxFiles: number | undefined
 ) => {
 	if (!rejections?.length) return;
 
-	const firstError = rejections[0].errors[0];
+	const firstError = rejections[0];
 
 	if (firstError.code === 'too-many-files') {
 		return `You can not select more than ${maxFiles} files`;
