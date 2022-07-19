@@ -169,7 +169,7 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 					const { color: _, ...rootProps } = getRootProps();
 
 					return (
-						<Stack gap={1} {...rootProps}>
+						<Stack gap={1.5} {...rootProps}>
 							<Flex
 								gap={1}
 								padding={1.5}
