@@ -1,4 +1,4 @@
-export { tokens, mq } from '@ag.ds-next/core';
+export { tokens, mq, useTernaryState } from '@ag.ds-next/core';
 export { Logo } from '@ag.ds-next/ag-branding';
 export {
 	Accordion,
@@ -43,6 +43,7 @@ export { FileUpload } from '@ag.ds-next/file-upload';
 export { Header } from '@ag.ds-next/header';
 export { Heading, H1, H2, H3, H4, H5, H6 } from '@ag.ds-next/heading';
 export { Select } from '@ag.ds-next/select';
+export { ExternalLinkCallout, VisuallyHidden } from '@ag.ds-next/a11y';
 export { Text } from '@ag.ds-next/text';
 export { TextLink, TextButton, TextLinkExternal } from '@ag.ds-next/text-link';
 export { TextInput } from '@ag.ds-next/text-input';
