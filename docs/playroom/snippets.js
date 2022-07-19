@@ -674,6 +674,21 @@ items={[
 		name: 'Neutral',
 		code: '	<IndicatorDot tone="neutral" />',
 	},
+	{
+		group: 'Skeleton',
+		name: 'SkeletonText',
+		code: '<SkeletonText fontSize="sm" lineHeight="default" />',
+	},
+	{
+		group: 'Skeleton',
+		name: 'SkeletonHeading',
+		code: '<SkeletonHeading type="h2" />',
+	},
+	{
+		group: 'Skeleton',
+		name: 'SkeletonBox',
+		code: '<SkeletonBox width="100px" height="100px" />',
+	},
 ];
 
 export default snippets;
