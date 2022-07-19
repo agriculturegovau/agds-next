@@ -41,6 +41,7 @@ export const SkeletonBox = ({
 
 	return (
 		<AnimatedBox
+			aria-hidden="true"
 			display="block"
 			fontSize={fontSize}
 			lineHeight={lineHeight}
@@ -51,6 +52,7 @@ export const SkeletonBox = ({
 			css={{
 				opacity: opacity.start,
 				backgroundColor: boxPalette.border,
+				cursor: 'progress',
 				'&:before': {
 					content: '"\\00a0"',
 				},

@@ -13,6 +13,7 @@ import { SkeletonText } from '@ag.ds-next/skeleton';
 import { Text } from '@ag.ds-next/text';
 import { PaginationButtons } from '@ag.ds-next/pagination';
 import { PageContent } from '@ag.ds-next/content';
+import { VisuallyHidden } from '@ag.ds-next/a11y';
 
 export default {
 	title: 'Examples/RemoteData',
@@ -81,12 +82,15 @@ export function RemoteDataTable() {
 									<tr key={i}>
 										<TableCell>
 											<SkeletonText />
+											<VisuallyHidden>Loading</VisuallyHidden>
 										</TableCell>
 										<TableCell>
 											<SkeletonText width="50%" />
+											<VisuallyHidden>Loading</VisuallyHidden>
 										</TableCell>
 										<TableCell>
 											<SkeletonText />
+											<VisuallyHidden>Loading</VisuallyHidden>
 										</TableCell>
 									</tr>
 								))}
