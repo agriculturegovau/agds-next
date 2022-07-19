@@ -17,6 +17,6 @@ For new components...
 - [ ] Version number in `package.json` is set to `0.0.1`
 - [ ] Changeset file includes a major
 - [ ] Create empty changelog file (packages/component/CHANGELOG.md)
-- [ ] Export components for docs site and playroom (docs/components/designSystemComponents.tsx)
+- [ ] Export components for docs site and Playroom (docs/components/designSystemComponents.tsx)
 - [ ] Add snippets to Playroom (docs/playroom/snippets.js)
 - [ ] Add pictogram to Docs (docs/components/pictograms/index.tsx)
