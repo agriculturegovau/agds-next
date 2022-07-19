@@ -1,6 +1,6 @@
 module.exports = {
-	title: 'Playroom | Agriculture Design System',
-	components: './playroom/components',
+	title: 'Agriculture Design System',
+	components: './components/designSystemComponents.tsx',
 	snippets: './playroom/snippets.js',
 	outputPath: './public/playroom',
 	frameComponent: './playroom/frame.js',
