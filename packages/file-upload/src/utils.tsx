@@ -1,5 +1,5 @@
 import formatFileSize from 'filesize';
-import type { FileRejection, FileWithPath } from 'react-dropzone';
+import type { FileRejection, FileError, FileWithPath } from 'react-dropzone';
 
 export type FileStatus = 'none' | 'uploading' | 'success';
 export type FileWithStatus = FileWithPath & {
@@ -52,22 +52,20 @@ export const getAcceptedFilesSummary = (accept: FileFormats[] | undefined) => {
 };
 
 export const getFileRejectionErrorMessage = (
-	{ file, errors }: FileRejection,
+	{ code, message }: FileError,
 	formattedMaxFileSize: string,
 	acceptedFilesSummary: string | undefined
 ) => {
-	const { code, message } = errors[0];
 	if (code === 'file-too-large') {
-		return `${file.name} size exceeds ${formattedMaxFileSize}`;
+		return `File size exceeds ${formattedMaxFileSize}`;
 	}
 
 	if (code === 'file-invalid-type') {
-		if (!acceptedFilesSummary)
-			return `${file.name} must be an acceptable format`;
-		return `${file.name} must be one of the following types: ${acceptedFilesSummary}`;
+		if (!acceptedFilesSummary) return `File must be an acceptable format`;
+		return `File must be one of the following types: ${acceptedFilesSummary}`;
 	}
 
-	return `${file.name}: ${message}`;
+	return message;
 };
 
 export const getErrorSummary = (

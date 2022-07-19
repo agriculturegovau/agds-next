@@ -1,4 +1,10 @@
-import { Fragment, forwardRef, InputHTMLAttributes } from 'react';
+import {
+	Fragment,
+	forwardRef,
+	InputHTMLAttributes,
+	useEffect,
+	useState,
+} from 'react';
 import { useDropzone, DropzoneOptions } from 'react-dropzone';
 import formatFileSize from 'filesize';
 import { Flex, Stack } from '@ag.ds-next/box';
@@ -46,6 +52,13 @@ export type FileUploadProps = InputProps & {
 	valid?: boolean;
 };
 
+type FileUploadRejection = {
+	id: string;
+	fileName: string;
+	fileSize: number;
+	message: string;
+};
+
 export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 	function FileUpload(
 		{
@@ -70,10 +83,15 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 		const filesPlural = multiple ? 'files' : 'file';
 		const maxSizeBytes = (maxSize || 0) * 1000;
 		const formattedMaxFileSize = formatFileSize(maxSizeBytes);
+		const [fileRejections, setRejections] = useState<FileUploadRejection[]>([]);
 
 		const handleRemoveFile = (file: FileWithStatus) => {
 			const indexOfFile = value.indexOf(file);
 			onChange(value.filter((_, index) => index !== indexOfFile));
+		};
+
+		const handleRemoveRejection = (errId: string) => {
+			setRejections(fileRejections.filter((err) => err.id !== errId));
 		};
 
 		const handleDropAccepted = (acceptedFiles: FileWithStatus[]) => {
@@ -85,21 +103,26 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 			}
 		};
 
-		const { getRootProps, getInputProps, isDragActive, open, fileRejections } =
-			useDropzone({
-				accept,
-				maxFiles,
-				// converts kB to B
-				maxSize: maxSize && maxSize * 1000,
-				multiple,
-				onDropAccepted: handleDropAccepted,
-				disabled,
-				noClick: true,
-				noKeyboard: true,
-			});
+		const {
+			getRootProps,
+			getInputProps,
+			isDragActive,
+			open,
+			fileRejections: RDrejections,
+		} = useDropzone({
+			accept,
+			maxFiles,
+			// converts kB to B
+			maxSize: maxSize && maxSize * 1000,
+			multiple,
+			onDropAccepted: handleDropAccepted,
+			disabled,
+			noClick: true,
+			noKeyboard: true,
+		});
 
 		const errorSummary = getErrorSummary(
-			fileRejections,
+			RDrejections,
 			formattedMaxFileSize,
 			maxFiles
 		);
@@ -109,6 +132,25 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 			invalid: invalid || !!errorSummary,
 			valid,
 		});
+
+		useEffect(() => {
+			const errs: FileUploadRejection[] = [];
+			RDrejections.forEach(({ file, errors }) => {
+				errors.forEach((err) =>
+					errs.push({
+						id: `${file.name}_${err.code}`,
+						fileName: file.name,
+						fileSize: file.size,
+						message: getFileRejectionErrorMessage(
+							err,
+							formattedMaxFileSize,
+							acceptedFilesSummary
+						),
+					})
+				);
+			});
+			setRejections(errs);
+		}, [RDrejections, formattedMaxFileSize, acceptedFilesSummary]);
 
 		return (
 			<Field
@@ -194,18 +236,15 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 								) : null}
 								{fileRejections.length ? (
 									<Stack as="ul" gap={0.5}>
-										{fileRejections.map((rejection, index) => {
-											const firstError = rejection.errors[0];
-
-											const errorMessage = getFileRejectionErrorMessage(
-												rejection,
-												formattedMaxFileSize,
-												acceptedFilesSummary
-											);
+										{fileRejections.map(({ id, ...rejection }) => {
 											return (
-												<FileRejection key={index}>
-													{errorMessage}
-												</FileRejection>
+												<FileRejection
+													key={id}
+													{...rejection}
+													onRemove={() => {
+														handleRemoveRejection(id);
+													}}
+												/>
 											);
 										})}
 									</Stack>
