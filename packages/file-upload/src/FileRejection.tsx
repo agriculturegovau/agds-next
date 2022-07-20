@@ -1,3 +1,4 @@
+import { MouseEventHandler } from 'react';
 import formatFileSize from 'filesize';
 import { Box, Flex, Stack } from '@ag.ds-next/box';
 import { Button } from '@ag.ds-next/button';
@@ -9,7 +10,7 @@ type FileRejectionProps = {
 	fileName: string;
 	fileSize: number;
 	message: string;
-	onRemove: () => void;
+	onRemove: MouseEventHandler<HTMLButtonElement>;
 };
 
 // TODO: Rename to FileUploadRejectedFile
@@ -41,10 +42,11 @@ export const FileRejection = ({
 					<Text fontWeight="bold" color="error">
 						{message}
 					</Text>
-					<Text>{`${fileName} (${formatFileSize(fileSize)})`}</Text>
+					<Text>
+						{fileName} ({formatFileSize(fileSize)})
+					</Text>
 				</Stack>
 			</Flex>
-
 			<Box flexShrink={0}>
 				<Button variant="tertiary" onClick={onRemove}>
 					Remove error
