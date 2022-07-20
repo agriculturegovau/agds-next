@@ -230,35 +230,37 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 									Select {filesPlural}
 								</Button>
 							</Flex>
-							<Stack gap={0.5}>
-								{value?.length ? (
-									<Fragment>
-										<Text color="muted">{getFilesTotal(value)}</Text>
+							{value.length || fileRejections.length ? (
+								<Stack gap={0.5}>
+									{value.length ? (
+										<Fragment>
+											<Text color="muted">{getFilesTotal(value)}</Text>
+											<Stack as="ul" gap={0.5}>
+												{value.map((file, index) => (
+													<FileUploadFile
+														key={index}
+														name={file.name}
+														size={file.size}
+														status={file.status}
+														onRemove={() => handleRemoveFile(file)}
+													/>
+												))}
+											</Stack>
+										</Fragment>
+									) : null}
+									{fileRejections.length ? (
 										<Stack as="ul" gap={0.5}>
-											{value.map((file, index) => (
-												<FileUploadFile
-													key={index}
-													name={file.name}
-													size={file.size}
-													status={file.status}
-													onRemove={() => handleRemoveFile(file)}
+											{fileRejections.map(({ id, ...rejection }) => (
+												<FileRejection
+													key={id}
+													{...rejection}
+													onRemove={() => handleRemoveRejection(id)}
 												/>
 											))}
 										</Stack>
-									</Fragment>
-								) : null}
-								{fileRejections.length ? (
-									<Stack as="ul" gap={0.5}>
-										{fileRejections.map(({ id, ...rejection }) => (
-											<FileRejection
-												key={id}
-												{...rejection}
-												onRemove={() => handleRemoveRejection(id)}
-											/>
-										))}
-									</Stack>
-								) : null}
-							</Stack>
+									) : null}
+								</Stack>
+							) : null}
 						</Stack>
 					);
 				}}
