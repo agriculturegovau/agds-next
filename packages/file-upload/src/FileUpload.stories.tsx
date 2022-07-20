@@ -64,14 +64,14 @@ Valid.args = {
 	valid: true,
 };
 
-export const Multiple = Template.bind({});
-Multiple.args = {
+export const MultipleFiles = Template.bind({});
+MultipleFiles.args = {
 	label: 'Identity documents',
 	multiple: true,
 };
 
-export const AcceptedFormats = Template.bind({});
-AcceptedFormats.args = {
+export const OnlyAcceptedFormats = Template.bind({});
+OnlyAcceptedFormats.args = {
 	label: 'Identity documents',
 	required: true,
 	hint: 'May include images of your passport, drivers licence etc.',
