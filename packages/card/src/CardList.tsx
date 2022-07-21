@@ -4,14 +4,8 @@ import {
 	cloneElement,
 	PropsWithChildren,
 } from 'react';
-import { Box } from '@ag.ds-next/box';
-import {
-	mapResponsiveProp,
-	mapSpacing,
-	mq,
-	ResponsiveProp,
-	Spacing,
-} from '@ag.ds-next/core';
+import { Columns } from '@ag.ds-next/columns';
+import { ResponsiveProp, Spacing } from '@ag.ds-next/core';
 
 type ColumnRange = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12;
 
@@ -20,33 +14,15 @@ export type CardListProps = PropsWithChildren<{
 	templateColumns: ResponsiveProp<ColumnRange>;
 }>;
 
-export const CardList = ({
-	children,
-	gap = 1.5,
-	templateColumns,
-}: CardListProps) => {
-	const styles = cardListStyles({ templateColumns, gap });
+export const CardList = ({ children, templateColumns }: CardListProps) => {
 	return (
-		<Box as="ul" css={styles}>
+		<Columns as="ul" gap={1.5} gridTemplateColumns={templateColumns}>
 			{Children.map(children, (child) => {
 				if (isValidElement(child)) {
 					return cloneElement(child, { as: 'li' });
 				}
 				return child;
 			})}
-		</Box>
+		</Columns>
 	);
 };
-
-const cardListStyles = ({
-	gap,
-	templateColumns,
-}: Pick<CardListProps, 'gap' | 'templateColumns'>) =>
-	mq({
-		display: 'grid',
-		gridGap: mapResponsiveProp(gap, mapSpacing),
-		gridTemplateColumns: mapResponsiveProp(
-			templateColumns,
-			(v) => `repeat(${v}, 1fr)`
-		),
-	});

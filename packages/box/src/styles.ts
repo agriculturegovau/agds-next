@@ -121,8 +121,6 @@ type LayoutProps = Partial<{
 		| 'inline'
 		| 'inline-block'
 		| 'inline-flex'
-		| 'grid'
-		| 'inline-grid'
 		| 'none'
 		| 'table-row-group'
 		| 'table-header-group'
@@ -139,8 +137,6 @@ type LayoutProps = Partial<{
 	flexWrap: ResponsiveProp<'nowrap' | 'wrap' | 'wrap-reverse'>;
 	flexGrow: ResponsiveProp<number>;
 	flexShrink: ResponsiveProp<number>;
-	gridTemplateColumns: ResponsiveProp<any>;
-	gridTemplateRows: ResponsiveProp<any>;
 	justifyContent: ResponsiveProp<
 		| 'flex-start'
 		| 'flex-end'
@@ -169,8 +165,6 @@ function layoutStyles({
 	flexWrap,
 	flexGrow,
 	flexShrink,
-	gridTemplateColumns,
-	gridTemplateRows,
 	justifyContent,
 	alignItems,
 	gap,
@@ -189,11 +183,6 @@ function layoutStyles({
 		flexWrap: mapResponsiveProp(flexWrap),
 		flexGrow: mapResponsiveProp(flexGrow),
 		flexShrink: mapResponsiveProp(flexShrink),
-		gridTemplateColumns: mapResponsiveProp(gridTemplateColumns),
-		gridTemplateRows: mapResponsiveProp(gridTemplateRows),
-		// gridColumn: mapResponsiveProp(columnSpan, (v) => `span ${v}/span ${v}`),
-		// gridColumnStart: mapResponsiveProp(columnStart),
-		// gridColumnEnd: mapResponsiveProp(columnEnd),
 		justifyContent: mapResponsiveProp(justifyContent),
 		alignItems: mapResponsiveProp(alignItems),
 		gap: mapResponsiveProp(gap, mapSpacing),
@@ -383,8 +372,6 @@ export function boxStyles({
 	flexWrap,
 	flexGrow,
 	flexShrink,
-	gridTemplateColumns,
-	gridTemplateRows,
 	justifyContent,
 	alignItems,
 	gap,
@@ -449,8 +436,6 @@ export function boxStyles({
 					flexWrap,
 					flexGrow,
 					flexShrink,
-					gridTemplateColumns,
-					gridTemplateRows,
 					justifyContent,
 					alignItems,
 					gap,
