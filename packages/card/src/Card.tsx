@@ -23,7 +23,6 @@ export const Card = ({
 	className,
 	shadow,
 	clickable,
-	...props
 }: CardProps) => {
 	return (
 		<Box
@@ -50,7 +49,6 @@ export const Card = ({
 						: undefined,
 				}),
 			}}
-			{...props}
 		>
 			{children}
 		</Box>
