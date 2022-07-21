@@ -52,11 +52,8 @@ export function PkgLayout({
 				}
 			/>
 			{isUnreleased ? (
-				<PageAlert title="Unreleased package" tone="warning">
-					<Text as="p">
-						This package is yet to be released on npm. Ask the Design System
-						team for an ETA if you need this for your product.
-					</Text>
+				<PageAlert tone="warning">
+					<Text as="p">This package is yet to be released on npm.</Text>
 				</PageAlert>
 			) : (
 				<Body>
