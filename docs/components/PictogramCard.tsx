@@ -12,7 +12,7 @@ export const PictogramCard = ({
 	pictogram: string;
 	title: string;
 } & LinkProps) => (
-	<Card clickable shadow>
+	<Card clickable shadow as="li">
 		<Flex
 			alignItems="center"
 			justifyContent="center"

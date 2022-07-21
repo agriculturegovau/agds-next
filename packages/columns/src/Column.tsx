@@ -21,6 +21,7 @@ export const Column = forwardRefWithAs<'div', ColumnProps>(function Column(
 	return <Box ref={ref} css={styles} {...props} />;
 });
 
+// Export for consumption?
 const columnStyles = ({
 	columnSpan,
 	columnStart,

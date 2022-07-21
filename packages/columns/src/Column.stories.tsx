@@ -1,5 +1,8 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { Box } from '@ag.ds-next/box';
+import { Box, Stack } from '@ag.ds-next/box';
+import { Card, CardInner, CardLink } from '@ag.ds-next/card';
+import { Heading } from '@ag.ds-next/heading';
+import { Text } from '@ag.ds-next/text';
 import { Columns, Column } from './index';
 
 export default {
@@ -206,7 +209,7 @@ RowAndColumnGaps.args = {
 export const ThreeColumn: ComponentStory<typeof Columns> = (args) => (
 	<Columns {...args}>
 		<Cell />
-		<Column columnSpan={2}>
+		<Column columnSpan={{ xs: 1, md: 2 }}>
 			<Cell />
 		</Column>
 	</Columns>
