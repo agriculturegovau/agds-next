@@ -202,3 +202,16 @@ RowAndColumnGaps.args = {
 	rowGap: 2,
 	columnGap: 0.5,
 };
+
+export const ThreeColumn: ComponentStory<typeof Columns> = (args) => (
+	<Columns {...args}>
+		<Cell />
+		<Column columnSpan={2}>
+			<Cell />
+		</Column>
+	</Columns>
+);
+ThreeColumn.args = {
+	cols: { xs: 1, md: 3 },
+	gap: 2,
+};
