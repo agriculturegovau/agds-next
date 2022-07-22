@@ -3,37 +3,35 @@ import {
 	forwardRefWithAs,
 	ResponsiveProp,
 	mapResponsiveProp,
-	Spacing,
-	mapSpacing,
 	mq,
 } from '@ag.ds-next/core';
 import { Box, BoxProps } from '@ag.ds-next/box';
+import { ColumnRange } from './utils';
 
-export type ColumnsProps = PropsWithChildren<
-	Pick<BoxProps, 'gap' | 'alignItems'> & {
-		columnGap?: ResponsiveProp<Spacing>;
-		rowGap?: ResponsiveProp<Spacing>;
-	}
->;
+export type ColumnsProps = PropsWithChildren<{
+	gap?: BoxProps['gap'];
+	columnGap?: BoxProps['columnGap'];
+	rowGap?: BoxProps['rowGap'];
+	alignItems?: BoxProps['alignItems'];
+	gridTemplateColumns?: ResponsiveProp<ColumnRange>;
+}>;
 
 export const Columns = forwardRefWithAs<'div', ColumnsProps>(function Columns(
-	{ gap, columnGap, rowGap, ...props },
+	{ gap = 1.5, gridTemplateColumns = 12, ...props },
 	ref
 ) {
-	const styles = columnsStyles({ gap, columnGap, rowGap });
-	return <Box ref={ref} css={styles} {...props} />;
+	const styles = columnsStyles({ gridTemplateColumns });
+	return <Box ref={ref} gap={gap} css={styles} {...props} />;
 });
 
 const columnsStyles = ({
-	gap = 1.5,
-	columnGap,
-	rowGap,
-}: Pick<ColumnsProps, 'gap' | 'columnGap' | 'rowGap'>) => {
+	gridTemplateColumns,
+}: Pick<ColumnsProps, 'gridTemplateColumns'>) => {
 	return mq({
 		display: 'grid',
-		gridTemplateColumns: 'repeat(12, 1fr)',
-		gridGap: mapResponsiveProp(gap, mapSpacing),
-		columnGap: mapResponsiveProp(columnGap, mapSpacing),
-		rowGap: mapResponsiveProp(rowGap, mapSpacing),
+		gridTemplateColumns: mapResponsiveProp(
+			gridTemplateColumns,
+			(val) => `repeat(${val}, 1fr)`
+		),
 	});
 };
