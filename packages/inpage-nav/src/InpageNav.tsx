@@ -5,8 +5,11 @@ import { InpageNavItem, InpageNavItemProps } from './InpageNavItem';
 import { InpageNavTitle } from './InpageNavTitle';
 
 export type InpageNavProps = {
+	/** Describes the navigation element to assistive technologies. */
 	'aria-label'?: string;
+	/** The list of links. */
 	links: (Omit<InpageNavItemProps, 'children'> & { label: ReactNode })[];
+	/** The title to display above the list of links. */
 	title?: string;
 };
 
