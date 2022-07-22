@@ -61,14 +61,14 @@ export const Basic: ComponentStory<typeof InpageNav> = (args) => (
 	</Stack>
 );
 Basic.args = {
-	title: 'Content',
+	title: 'On this page',
 	links: exampleLinks,
 };
 
-export const Modular: ComponentStory<typeof InpageNavContainer> = (args) => (
+export const Modular = () => (
 	<Stack gap={3}>
-		<InpageNavContainer {...args}>
-			<InpageNavTitle>Content</InpageNavTitle>
+		<InpageNavContainer aria-label="In page">
+			<InpageNavTitle>On this page</InpageNavTitle>
 			<InpageNavItemContainer>
 				{exampleLinks.map(({ label, ...props }, index) => (
 					<InpageNavItem key={index} {...props}>
@@ -80,7 +80,3 @@ export const Modular: ComponentStory<typeof InpageNavContainer> = (args) => (
 		<ExampleContent />
 	</Stack>
 );
-
-Modular.args = {
-	'aria-label': 'In page',
-};
