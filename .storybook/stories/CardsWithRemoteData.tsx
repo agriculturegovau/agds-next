@@ -4,7 +4,8 @@ import { Stack } from '@ag.ds-next/box';
 import { SkeletonText } from '@ag.ds-next/skeleton';
 import { Text } from '@ag.ds-next/text';
 import { PageContent } from '@ag.ds-next/content';
-import { Card, CardInner, CardLink, CardList } from '@ag.ds-next/card';
+import { Card, CardInner, CardLink } from '@ag.ds-next/card';
+import { Columns } from '@ag.ds-next/columns';
 import { SkeletonHeading } from '@ag.ds-next/skeleton/src/SkeletonHeading';
 import { Heading } from '@ag.ds-next/heading';
 import { VisuallyHidden } from '@ag.ds-next/a11y';
@@ -36,11 +37,11 @@ export function RemoteDataCards() {
 		<PageContent>
 			<Stack gap={2}>
 				<Heading type="h2">Star wars planets</Heading>
-				<CardList templateColumns={[1, 2]}>
+				<Columns as="ul" cols={[1, 2, 3, 3, 4]}>
 					{!data ? (
 						<Fragment>
 							{[...new Array(10).keys()].map((i) => (
-								<Card key={i} shadow>
+								<Card as="li" key={i} shadow>
 									<CardInner>
 										<Stack gap={1}>
 											<SkeletonHeading type="h3" width="50%" />
@@ -56,7 +57,7 @@ export function RemoteDataCards() {
 							{data.results.map((item) => {
 								const parsedPopulation = parseInt(item.population);
 								return (
-									<Card key={item.name} shadow clickable>
+									<Card as="li" key={item.name} shadow clickable>
 										<CardInner>
 											<Stack gap={1}>
 												<Heading type="h3">
@@ -75,7 +76,7 @@ export function RemoteDataCards() {
 							})}
 						</Fragment>
 					)}
-				</CardList>
+				</Columns>
 			</Stack>
 		</PageContent>
 	);
