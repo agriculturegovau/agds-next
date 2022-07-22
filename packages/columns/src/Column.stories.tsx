@@ -207,7 +207,7 @@ RowAndColumnGaps.args = {
 };
 
 export const ThreeColumn: ComponentStory<typeof Columns> = (args) => (
-	<Columns cols={{ xs: 1, md: 3 }} {...args}>
+	<Columns {...args}>
 		<Cell />
 		<Column columnSpan={2}>
 			<Cell />
@@ -215,6 +215,7 @@ export const ThreeColumn: ComponentStory<typeof Columns> = (args) => (
 	</Columns>
 );
 ThreeColumn.args = {
+	cols: { xs: 1, md: 3 },
 	gap: 2,
 };
 
