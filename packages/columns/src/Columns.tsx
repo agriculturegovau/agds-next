@@ -13,24 +13,22 @@ export type ColumnsProps = PropsWithChildren<{
 	columnGap?: BoxProps['columnGap'];
 	rowGap?: BoxProps['rowGap'];
 	alignItems?: BoxProps['alignItems'];
-	gridTemplateColumns?: ResponsiveProp<ColumnRange>;
+	cols?: ResponsiveProp<ColumnRange>;
 }>;
 
 export const Columns = forwardRefWithAs<'div', ColumnsProps>(function Columns(
-	{ gap = 1.5, gridTemplateColumns = 12, ...props },
+	{ gap = 1.5, cols = 12, ...props },
 	ref
 ) {
-	const styles = columnsStyles({ gridTemplateColumns });
+	const styles = columnsStyles({ cols });
 	return <Box ref={ref} gap={gap} css={styles} {...props} />;
 });
 
-const columnsStyles = ({
-	gridTemplateColumns,
-}: Pick<ColumnsProps, 'gridTemplateColumns'>) => {
+const columnsStyles = ({ cols }: { cols: ResponsiveProp<ColumnRange> }) => {
 	return mq({
 		display: 'grid',
 		gridTemplateColumns: mapResponsiveProp(
-			gridTemplateColumns,
+			cols,
 			(val) => `repeat(${val}, 1fr)`
 		),
 	});

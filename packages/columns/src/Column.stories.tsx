@@ -207,7 +207,7 @@ RowAndColumnGaps.args = {
 };
 
 export const ThreeColumn: ComponentStory<typeof Columns> = (args) => (
-	<Columns gridTemplateColumns={{ xs: 1, md: 3 }} {...args}>
+	<Columns cols={{ xs: 1, md: 3 }} {...args}>
 		<Cell />
 		<Column columnSpan={2}>
 			<Cell />
@@ -238,7 +238,7 @@ export const WebPageWithCards: ComponentStory<typeof Columns> = (args) => (
 	<Columns {...args}>
 		<Cell />
 		<Column columnSpan={{ xs: 1, md: 2 }}>
-			<Columns gridTemplateColumns={{ xs: 1, md: 3 }} gap={1}>
+			<Columns cols={{ xs: 1, md: 3 }} gap={1}>
 				<Card css={{ gridColumnStart: 1, gridColumnEnd: 3 }}>
 					<CardInner>
 						<Stack gap={1}>
@@ -263,5 +263,5 @@ export const WebPageWithCards: ComponentStory<typeof Columns> = (args) => (
 );
 WebPageWithCards.args = {
 	gap: 3,
-	gridTemplateColumns: { xs: 1, md: 3 },
+	cols: { xs: 1, md: 3 },
 };
