@@ -37,7 +37,7 @@
 		"@babel/core": "^7.16.5",
 		"@babel/plugin-transform-runtime": "^7.16.4",
 		"@babel/preset-env": "^7.16.5",
-		"@changesets/cli": "^2.18.0",
+		"@changesets/cli": "^2.23.2",
 		"@emotion/babel-preset-css-prop": "^11.2.0",
 		"@emotion/react": "^11.7.0",
 		"@manypkg/cli": "^0.19.1",
