@@ -5,6 +5,8 @@ import { packs } from '@ag.ds-next/core';
 export type CardProps = PropsWithChildren<{
 	as?: ElementType;
 	background?: 'body' | 'bodyAlt';
+	/** The CSS class name, typically generated from the `css` prop. */
+	className?: string;
 	shadow?: boolean;
 	clickable?: boolean;
 }>;
@@ -18,6 +20,7 @@ export const Card = ({
 	as,
 	background = 'body',
 	children,
+	className,
 	shadow,
 	clickable,
 }: CardProps) => {
@@ -29,6 +32,7 @@ export const Card = ({
 			borderColor="muted"
 			background={background}
 			rounded
+			className={className}
 			css={{
 				position: 'relative',
 				overflow: 'hidden',
