@@ -136,7 +136,7 @@ type LayoutProps = Partial<{
 	flexWrap: ResponsiveProp<'nowrap' | 'wrap' | 'wrap-reverse'>;
 	flexGrow: ResponsiveProp<number>;
 	flexShrink: ResponsiveProp<number>;
-	gridColumnSpan: ResponsiveProp<number>;
+	columnSpan: ResponsiveProp<number>;
 	gridColumnStart: ResponsiveProp<number>;
 	gridColumnEnd: ResponsiveProp<number>;
 	justifyContent: ResponsiveProp<
@@ -167,7 +167,7 @@ function layoutStyles({
 	flexWrap,
 	flexGrow,
 	flexShrink,
-	gridColumnSpan,
+	columnSpan,
 	gridColumnStart,
 	gridColumnEnd,
 	justifyContent,
@@ -188,7 +188,7 @@ function layoutStyles({
 		flexWrap: mapResponsiveProp(flexWrap),
 		flexGrow: mapResponsiveProp(flexGrow),
 		flexShrink: mapResponsiveProp(flexShrink),
-		gridColumn: mapResponsiveProp(gridColumnSpan, (v) => `span ${v}/span ${v}`),
+		gridColumn: mapResponsiveProp(columnSpan, (v) => `span ${v}/span ${v}`),
 		gridColumnStart: mapResponsiveProp(gridColumnStart),
 		gridColumnEnd: mapResponsiveProp(gridColumnEnd),
 		justifyContent: mapResponsiveProp(justifyContent),
@@ -389,7 +389,7 @@ export function boxStyles({
 	flexWrap,
 	flexGrow,
 	flexShrink,
-	gridColumnSpan,
+	columnSpan,
 	gridColumnStart,
 	gridColumnEnd,
 	justifyContent,
@@ -457,7 +457,7 @@ export function boxStyles({
 					flexWrap,
 					flexGrow,
 					flexShrink,
-					gridColumnSpan,
+					columnSpan,
 					gridColumnStart,
 					gridColumnEnd,
 					justifyContent,
