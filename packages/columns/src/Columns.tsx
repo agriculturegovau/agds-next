@@ -9,15 +9,15 @@ import { Box, BoxProps } from '@ag.ds-next/box';
 import { ColumnRange } from './utils';
 
 export type ColumnsProps = PropsWithChildren<{
-	/** The amount of space between each column or row */
+	/** The amount of space between each column or row. */
 	gap?: BoxProps['gap'];
-	/** The amount of space between each column */
+	/** The amount of space between each column. */
 	columnGap?: BoxProps['columnGap'];
-	/** The amount of space between each row */
+	/** The amount of space between each row. */
 	rowGap?: BoxProps['rowGap'];
 	/** Position children within their cell in the Grid. */
 	alignItems?: BoxProps['alignItems'];
-	/** The amount of columns that should be created - Is 12 by default.  */
+	/** The amount of columns that should be created. */
 	cols?: ResponsiveProp<ColumnRange>;
 }>;
 
