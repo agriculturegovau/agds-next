@@ -1,8 +1,5 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { Box, Stack } from '@ag.ds-next/box';
-import { Card, CardInner, CardLink } from '@ag.ds-next/card';
-import { Heading } from '@ag.ds-next/heading';
-import { Text } from '@ag.ds-next/text';
+import { Box } from '@ag.ds-next/box';
 import { Columns, Column } from './index';
 
 export default {
