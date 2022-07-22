@@ -65,7 +65,7 @@ export default function HomePage() {
 					</Stack>
 				</SectionContent>
 
-				<SectionContent background="shade">
+				<SectionContent background="bodyAlt">
 					<Columns>
 						<Column columnSpan={{ xs: 12, md: 6 }}>
 							<Stack gap={2}>
