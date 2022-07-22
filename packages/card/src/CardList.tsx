@@ -16,7 +16,7 @@ export type CardListProps = PropsWithChildren<{
 
 export const CardList = ({ children, templateColumns }: CardListProps) => {
 	return (
-		<Columns as="ul" gap={1.5} gridTemplateColumns={templateColumns}>
+		<Columns as="ul" gap={1.5} cols={templateColumns}>
 			{Children.map(children, (child) => {
 				if (isValidElement(child)) {
 					return cloneElement(child, { as: 'li' });
