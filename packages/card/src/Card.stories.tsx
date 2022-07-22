@@ -11,14 +11,13 @@ import { ExternalLinkIcon } from '@ag.ds-next/icon';
 import { Card } from './Card';
 import { CardInner } from './CardInner';
 import { CardLink } from './CardLink';
-import { CardList } from './CardList';
 import { CardHeader } from './CardHeader';
 import { CardFooter } from './CardFooter';
 
 export default {
 	title: 'layout/Card',
 	component: Card,
-	subcomponents: { CardInner, CardLink, CardList, CardHeader, CardFooter },
+	subcomponents: { CardInner, CardLink, CardHeader, CardFooter },
 } as ComponentMeta<typeof Card>;
 
 export const Basic: ComponentStory<typeof Card> = (args) => (
@@ -127,72 +126,32 @@ FeatureFooter.args = {
 	background: 'body',
 };
 
-export const CardListStory: ComponentStory<typeof CardList> = (args) => (
-	<CardList {...args}>
-		<Card shadow clickable>
-			<CardInner>
-				<Stack gap={1}>
-					<Heading type="h3">Card Title</Heading>
-					<Text as="p">Some content</Text>
-				</Stack>
-			</CardInner>
-		</Card>
-		<Card shadow clickable>
-			<CardInner>
-				<Stack gap={1}>
-					<Heading type="h3">Card Title</Heading>
-					<Text as="p">Some content</Text>
-					<Text as="p">Additional content</Text>
-				</Stack>
-			</CardInner>
-		</Card>
-		<Card shadow clickable>
-			<CardInner>
-				<Stack gap={1}>
-					<Heading type="h3">Card Title</Heading>
-					<Text as="p">Some content</Text>
-				</Stack>
-			</CardInner>
-		</Card>
-		<Card shadow clickable>
-			<CardInner>
-				<Stack gap={1}>
-					<Heading type="h3">Card Title</Heading>
-					<Text as="p">Some content</Text>
-				</Stack>
-			</CardInner>
-		</Card>
-		<Card shadow clickable>
-			<CardInner>
-				<Stack gap={1}>
-					<Heading type="h3">Card Title</Heading>
-					<Text as="p">Some content</Text>
-				</Stack>
-			</CardInner>
-		</Card>
-		<Card shadow clickable>
-			<CardInner>
-				<Stack gap={1}>
-					<Heading type="h3">Card Title</Heading>
-					<Text as="p">Some content</Text>
-				</Stack>
-			</CardInner>
-		</Card>
-		<Card shadow clickable>
-			<CardInner>
-				<Stack gap={1}>
-					<Heading type="h3">Card Title</Heading>
-					<Text as="p">Some content</Text>
-				</Stack>
-			</CardInner>
-		</Card>
-	</CardList>
+const ExampleCard = () => (
+	<Card as="li">
+		<CardInner>
+			<Stack gap={1}>
+				<Heading as="h2" type="h3">
+					Card as `li`
+				</Heading>
+				<Text as="p">
+					Lorem ipsum dolor, sit amet consectetur adipisicing elit. In, voluptat
+				</Text>
+				<CardLink href="#">Learn more</CardLink>
+			</Stack>
+		</CardInner>
+	</Card>
 );
-CardListStory.storyName = 'Card list';
-CardListStory.args = {
-	gap: 1,
-	templateColumns: [1, 2, 4],
-};
+
+export const CardListStory = () => (
+	<Columns cols={{ xs: 1, sm: 2, md: 3 }}>
+		<ExampleCard />
+		<ExampleCard />
+		<ExampleCard />
+		<ExampleCard />
+		<ExampleCard />
+	</Columns>
+);
+CardListStory.storyName = 'List of Cards';
 
 export const Compositions = () => {
 	return (
