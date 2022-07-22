@@ -149,6 +149,8 @@ type LayoutProps = Partial<{
 		'stretch' | 'flex-start' | 'flex-end' | 'center' | 'baseline'
 	>;
 	gap: ResponsiveProp<Spacing>;
+	columnGap: ResponsiveProp<Spacing>;
+	rowGap: ResponsiveProp<Spacing>;
 	width: ResponsiveProp<number | string>;
 	minWidth: ResponsiveProp<number | string>;
 	maxWidth: ResponsiveProp<number | string>;
@@ -166,6 +168,8 @@ function layoutStyles({
 	justifyContent,
 	alignItems,
 	gap,
+	columnGap,
+	rowGap,
 	width,
 	minWidth,
 	maxWidth,
@@ -182,6 +186,8 @@ function layoutStyles({
 		justifyContent: mapResponsiveProp(justifyContent),
 		alignItems: mapResponsiveProp(alignItems),
 		gap: mapResponsiveProp(gap, mapSpacing),
+		columnGap: mapResponsiveProp(columnGap, mapSpacing),
+		rowGap: mapResponsiveProp(rowGap, mapSpacing),
 		width: mapResponsiveProp(width),
 		minWidth: mapResponsiveProp(minWidth),
 		maxWidth: mapResponsiveProp(maxWidth),
@@ -369,6 +375,8 @@ export function boxStyles({
 	justifyContent,
 	alignItems,
 	gap,
+	columnGap,
+	rowGap,
 	width,
 	minWidth,
 	maxWidth,
@@ -431,6 +439,8 @@ export function boxStyles({
 					justifyContent,
 					alignItems,
 					gap,
+					columnGap,
+					rowGap,
 					width,
 					minWidth,
 					maxWidth,
