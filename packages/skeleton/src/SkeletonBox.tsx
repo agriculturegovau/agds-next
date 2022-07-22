@@ -15,7 +15,8 @@ export type SkeletonBoxProps = {
 
 const AnimatedBox = animated(Box);
 
-const opacity = { start: 0.84, end: 0.5 };
+const opacity = { start: 0.84, end: 0.2 };
+const duration = 1200;
 
 export const SkeletonBox = ({
 	fontSize = 'sm',
@@ -34,7 +35,7 @@ export const SkeletonBox = ({
 					from: { opacity: opacity.start },
 					to: { opacity: opacity.end },
 					loop: { reverse: true, delay: 0 },
-					config: { duration: 750 },
+					config: { duration },
 					reset: true,
 			  }
 	);
