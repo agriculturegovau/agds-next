@@ -2,7 +2,7 @@ import { Fragment } from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { VisuallyHidden } from '@ag.ds-next/a11y';
 import { Box, Flex, Stack } from '@ag.ds-next/box';
-import { H1, H2, H3, Heading } from '@ag.ds-next/heading';
+import { H1, H2, Heading } from '@ag.ds-next/heading';
 import { ChevronRightIcon } from '@ag.ds-next/icon';
 import { Columns, Column } from '@ag.ds-next/columns';
 import { DirectionLink } from '@ag.ds-next/direction-link';
