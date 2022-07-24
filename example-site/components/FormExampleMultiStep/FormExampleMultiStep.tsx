@@ -177,7 +177,7 @@ export const FormExampleMultiStep = () => {
 			<PageContent>
 				<context.Provider value={contextValue}>
 					<Columns>
-						<Column columnSpan={{ xs: 12, md: 3 }}>
+						<Column columnSpan={{ xs: 12, md: 4, lg: 3 }}>
 							<ContentBleed visible={{ md: false }}>
 								<Stack gap={0.75}>
 									<Text
@@ -204,7 +204,7 @@ export const FormExampleMultiStep = () => {
 								</Stack>
 							</ContentBleed>
 						</Column>
-						<Column columnSpan={{ xs: 12, md: 8 }} columnStart={{ md: 5 }}>
+						<Column columnSpan={{ xs: 12, md: 8 }} columnStart={{ lg: 5 }}>
 							<Stack gap={3} alignItems="flex-start">
 								<DirectionButton direction="left" onClick={back}>
 									Back
