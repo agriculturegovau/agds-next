@@ -6,7 +6,8 @@ import {
 	HeroCategoryBanner,
 	HeroCategoryBannerTitle,
 } from '@ag.ds-next/hero-banner';
-import { Card, CardInner, CardLink, CardList } from '@ag.ds-next/card';
+import { Card, CardInner, CardLink } from '@ag.ds-next/card';
+import { Columns } from '@ag.ds-next/columns';
 import { AppLayout } from '../../components/AppLayout';
 import { DocumentTitle } from '../../components/DocumentTitle';
 
@@ -30,9 +31,9 @@ export default function CategoryPage() {
 				<SectionContent>
 					<Stack gap={1.5}>
 						<H2>Subcategory pages (H2)</H2>
-						<CardList templateColumns={{ xs: 1, sm: 2, md: 3 }}>
+						<Columns as="ul" cols={{ xs: 1, sm: 2, md: 3 }}>
 							{Array.from(Array(6).keys()).map((idx) => (
-								<Card key={idx} shadow clickable>
+								<Card key={idx} as="li" shadow clickable>
 									<CardInner>
 										<Stack gap={1}>
 											<H3>
@@ -48,7 +49,7 @@ export default function CategoryPage() {
 									</CardInner>
 								</Card>
 							))}
-						</CardList>
+						</Columns>
 					</Stack>
 				</SectionContent>
 			</AppLayout>
