@@ -24,7 +24,7 @@ export default function ContentPage() {
 			<AppLayout template={{ name: 'Content', slug: 'content' }}>
 				<PageContent>
 					<Columns>
-						<Column columnSpan={{ xs: 12, md: 3 }}>
+						<Column columnSpan={{ xs: 12, md: 4, lg: 3 }}>
 							<ContentBleed visible={{ md: false }}>
 								<SideNav
 									collapseTitle="In this section"
@@ -35,7 +35,7 @@ export default function ContentPage() {
 								/>
 							</ContentBleed>
 						</Column>
-						<Column columnSpan={{ xs: 12, md: 8 }} columnStart={{ md: 5 }}>
+						<Column columnSpan={{ xs: 12, md: 8 }} columnStart={{ lg: 5 }}>
 							<Stack gap={3}>
 								<Breadcrumbs
 									links={[
