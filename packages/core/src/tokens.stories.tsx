@@ -1,8 +1,9 @@
 import { Box, Flex, Stack } from '@ag.ds-next/box';
 import { Text } from '@ag.ds-next/text';
-import { CardList, Card, CardInner } from '@ag.ds-next/card';
+import { Card, CardInner } from '@ag.ds-next/card';
 import { H2 } from '@ag.ds-next/heading';
 import { Body } from '@ag.ds-next/body';
+import { Columns } from '@ag.ds-next/columns';
 import { boxPalette } from './boxPalette';
 import { mapSpacing, Spacing } from './tokens';
 import { globalPalette } from './globalPalette';
@@ -34,7 +35,7 @@ export const Color = () => {
 					background="body"
 				>
 					<H2>{palette}</H2>
-					<CardList templateColumns={{ xs: 1, sm: 2, md: 3, lg: 4, xl: 6 }}>
+					<Columns as="ul" cols={{ xs: 1, sm: 2, md: 3, lg: 4, xl: 6 }}>
 						{boxPaletteTokens.map((token) => (
 							<Card key={token} as="li" shadow>
 								<Box
@@ -50,12 +51,12 @@ export const Color = () => {
 								</Box>
 							</Card>
 						))}
-					</CardList>
+					</Columns>
 				</Stack>
 			))}
 			<Stack gap={2} padding={1.5} background="body">
 				<H2>system</H2>
-				<CardList templateColumns={{ xs: 1, sm: 2, md: 3, lg: 4, xl: 6 }}>
+				<Columns cols={{ xs: 1, sm: 2, md: 3, lg: 4, xl: 6 }}>
 					{globalPaletteTokens.map((token) => (
 						<Card key={token} as="li" shadow>
 							<Box
@@ -71,7 +72,7 @@ export const Color = () => {
 							</Box>
 						</Card>
 					))}
-				</CardList>
+				</Columns>
 			</Stack>
 		</Stack>
 	);

@@ -33,7 +33,7 @@ export default function CategoryPage() {
 						<H2>Subcategory pages (H2)</H2>
 						<Columns as="ul" cols={{ xs: 1, sm: 2, md: 3 }}>
 							{Array.from(Array(6).keys()).map((idx) => (
-								<Card key={idx} as="li" shadow clickable>
+								<Card as="li" key={idx} shadow clickable>
 									<CardInner>
 										<Stack gap={1}>
 											<H3>
