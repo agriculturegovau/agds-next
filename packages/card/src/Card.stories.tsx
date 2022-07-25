@@ -2,7 +2,7 @@ import { Fragment } from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { VisuallyHidden } from '@ag.ds-next/a11y';
 import { Box, Flex, Stack } from '@ag.ds-next/box';
-import { H1, H2, Heading } from '@ag.ds-next/heading';
+import { H2, H3, Heading } from '@ag.ds-next/heading';
 import { ChevronRightIcon } from '@ag.ds-next/icon';
 import { Columns, Column } from '@ag.ds-next/columns';
 import { DirectionLink } from '@ag.ds-next/direction-link';
@@ -11,6 +11,7 @@ import { Text } from '@ag.ds-next/text';
 import { TextLink } from '@ag.ds-next/text-link';
 import { ExternalLinkIcon } from '@ag.ds-next/icon';
 import { StatusBadge } from '@ag.ds-next/badge';
+import { PageContent } from '@ag.ds-next/content';
 import { Card } from './Card';
 import { CardInner } from './CardInner';
 import { CardLink } from './CardLink';
@@ -140,64 +141,71 @@ export const CardListStory = () => {
 		{
 			id: 'RE4321–2201–03',
 			businessName: 'Orange Meat Works',
-			type: 'Record keeping—Minor',
+			type: 'Record keeping (Minor)',
 			status: 'Pending',
 		},
 		{
 			id: 'RE4321–2201–02',
 			businessName: 'Orange Meat Works',
-			type: 'Hygiene—Major',
+			type: 'Hygiene (Major)',
 			status: 'Open',
 		},
 		{
 			id: 'RE4321–2201–01',
 			businessName: 'Orange Meat Works',
-			type: 'Record keeping—Minor',
+			type: 'Record keeping (Minor)',
 			status: 'Closed',
 		},
 	] as const;
 
 	return (
-		<Stack gap={1}>
-			<H1>Manage corrective action requests (CAR)</H1>
-			<Text>You may now manage your CARs online.</Text>
-			<H2>Active CARs</H2>
-			<Columns as="ul" gap={1} cols={{ xs: 1, sm: 2, md: 3 }}>
-				{listData.map((item) => (
-					<Card shadow clickable as="li" key={item.id}>
-						<CardInner>
-							<Stack gap={1} width="100%" flexWrap="wrap">
-								<Text fontSize="lg" fontWeight="bold">
-									<CardLink href={`#${item.id}`}>{item.businessName}</CardLink>
-								</Text>
+		<PageContent>
+			<Stack gap={1.5}>
+				<H2>Active CARs</H2>
+				<Text as="p">You may now manage your CARs online.</Text>
+				<Columns as="ul" gap={1} cols={{ xs: 1, sm: 2, lg: 3 }}>
+					{listData.map((item) => (
+						<Card as="li" shadow clickable key={item.id}>
+							<CardInner>
+								<Stack gap={0.5} width="100%" flexWrap="wrap">
+									<H3>
+										<CardLink href={`#${item.id}`}>
+											{item.businessName}
+										</CardLink>
+									</H3>
 
-								<Flex justifyContent="space-between" alignItems="center">
-									<Text lineHeight="nospace" as="p">
+									<Text as="p">
 										<VisuallyHidden>Type: </VisuallyHidden>
-										{item.type}.
+										{item.type}
 									</Text>
 
-									<StatusBadge
-										tone={toneMapper[item.status]}
-										label={
-											<Fragment>
-												<VisuallyHidden>Status: </VisuallyHidden>
-												{item.status}
-											</Fragment>
-										}
-									/>
-								</Flex>
-
-								<Text color="muted" fontSize="xs">
-									<VisuallyHidden>CAR ID: </VisuallyHidden>
-									{item.id}
-								</Text>
-							</Stack>
-						</CardInner>
-					</Card>
-				))}
-			</Columns>
-		</Stack>
+									<Flex
+										gap={0.5}
+										flexWrap="wrap"
+										justifyContent="space-between"
+										alignItems="center"
+									>
+										<Text color="muted" fontSize="xs">
+											<VisuallyHidden>{'CAR ID: '}</VisuallyHidden>
+											{item.id}
+										</Text>
+										<StatusBadge
+											tone={toneMapper[item.status]}
+											label={
+												<Fragment>
+													<VisuallyHidden>{'Status: '}</VisuallyHidden>
+													{item.status}
+												</Fragment>
+											}
+										/>
+									</Flex>
+								</Stack>
+							</CardInner>
+						</Card>
+					))}
+				</Columns>
+			</Stack>
+		</PageContent>
 	);
 };
 CardListStory.storyName = 'List of Cards';
