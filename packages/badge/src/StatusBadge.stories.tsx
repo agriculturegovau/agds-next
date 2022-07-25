@@ -65,7 +65,7 @@ export const LanguageExamples = () => {
 	);
 };
 
-export const InTable: ComponentStory<typeof Table> = (args) => {
+export const InTable = () => {
 	const data = [
 		{
 			id: 'RE4321–2201–03',
@@ -102,7 +102,7 @@ export const InTable: ComponentStory<typeof Table> = (args) => {
 
 	return (
 		<TableWrapper>
-			<Table {...args}>
+			<Table>
 				<TableCaption>Corrective action requests (CAR)</TableCaption>
 				<TableHead>
 					<tr>
