@@ -14,7 +14,7 @@ import { Breadcrumbs } from '@ag.ds-next/breadcrumbs';
 import { Button, ButtonGroup } from '@ag.ds-next/button';
 import { Callout } from '@ag.ds-next/callout';
 import { CallToActionLink } from '@ag.ds-next/call-to-action';
-import { Card, CardInner, CardList } from '@ag.ds-next/card';
+import { Card, CardInner } from '@ag.ds-next/card';
 import { Columns, Column } from '@ag.ds-next/columns';
 import { PageContent } from '@ag.ds-next/content';
 import { ControlGroup, Checkbox, Radio } from '@ag.ds-next/control-input';
@@ -267,7 +267,7 @@ const KitchenSink = ({ background }: { background: 'body' | 'bodyAlt' }) => {
 								</AccordionItem>
 							</Accordion>
 
-							<CardList templateColumns={2}>
+							<Columns cols={2}>
 								<Card background="body">
 									<CardInner>
 										<Stack gap={1}>
@@ -294,7 +294,7 @@ const KitchenSink = ({ background }: { background: 'body' | 'bodyAlt' }) => {
 										</Stack>
 									</CardInner>
 								</Card>
-							</CardList>
+							</Columns>
 
 							<H2>Forms</H2>
 							<FormStack>

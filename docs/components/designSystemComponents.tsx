@@ -30,7 +30,6 @@ export {
 	CardHeader,
 	CardInner,
 	CardLink,
-	CardList,
 } from '@ag.ds-next/card';
 export {
 	CallToActionLink,

@@ -79,7 +79,7 @@ export default function SubcategoryPage() {
 								</CardInner>
 							</Card>
 							{Array.from(Array(3).keys()).map((idx) => (
-								<Card key={idx} as="li" shadow clickable>
+								<Card as="li" key={idx} shadow clickable>
 									<CardInner>
 										<Stack gap={1}>
 											<H3>
