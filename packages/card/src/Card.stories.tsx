@@ -293,24 +293,6 @@ export const Compositions = () => {
 						</CardInner>
 					</Card>
 
-					<Card>
-						<CardInner>
-							<Stack gap={0.5}>
-								<Flex justifyContent="space-between">
-									<Tags items={[{ label: '1034' }]} />
-									<Text color="muted">MEAT</Text>
-								</Flex>
-
-								<Text fontSize="lg" fontWeight="bold">
-									Orange Farmers Market
-								</Text>
-
-								<TextLink>Registrations</TextLink>
-								<TextLink>Insights</TextLink>
-							</Stack>
-						</CardInner>
-					</Card>
-
 					<Card shadow clickable>
 						<CardInner>
 							<Stack gap={1}>
