@@ -4,6 +4,8 @@ import { CallToActionLink } from '@ag.ds-next/call-to-action';
 import { Body } from '@ag.ds-next/body';
 import { SkipLinksProps } from '@ag.ds-next/skip-link';
 import { SubNav } from '@ag.ds-next/sub-nav';
+import { Text } from '@ag.ds-next/text';
+import { PageAlert } from '@ag.ds-next/page-alert';
 import { getPkgBreadcrumbs, getPkgNavLinks, Pkg } from '../lib/mdx/packages';
 import { PageTitle } from './PageTitle';
 import { PageLayout } from './PageLayout';
@@ -23,6 +25,7 @@ export function PkgLayout({
 	editPath?: string;
 }>) {
 	const { asPath } = useRouter();
+	const isUnreleased = pkg.version == '0.0.1';
 	return (
 		<PageLayout
 			sideNav={{
@@ -35,7 +38,7 @@ export function PkgLayout({
 			skipLinks={skipLinks}
 		>
 			<PageTitle
-				pretext={`v${pkg.version}`}
+				pretext={isUnreleased ? 'In development' : `v${pkg.version}`}
 				title={pkg.title}
 				introduction={pkg.data.description}
 				callToAction={
@@ -48,13 +51,19 @@ export function PkgLayout({
 					)
 				}
 			/>
-			<Body>
-				<pre>
-					<code>
-						yarn add {pkg.name}@{pkg.version}
-					</code>
-				</pre>
-			</Body>
+			{isUnreleased ? (
+				<PageAlert tone="warning">
+					<Text as="p">This package is yet to be released on npm.</Text>
+				</PageAlert>
+			) : (
+				<Body>
+					<pre>
+						<code>
+							yarn add {pkg.name}@{pkg.version}
+						</code>
+					</pre>
+				</Body>
+			)}
 			{pkg.subNavItems?.length ? (
 				<SubNav
 					activePath={asPath}
