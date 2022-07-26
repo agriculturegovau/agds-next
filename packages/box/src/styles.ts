@@ -136,7 +136,7 @@ type LayoutProps = Partial<{
 	flexWrap: ResponsiveProp<'nowrap' | 'wrap' | 'wrap-reverse'>;
 	flexGrow: ResponsiveProp<number>;
 	flexShrink: ResponsiveProp<number>;
-	columnSpan: ResponsiveProp<number>;
+	gridColumnSpan: ResponsiveProp<number>;
 	gridColumnStart: ResponsiveProp<number>;
 	gridColumnEnd: ResponsiveProp<number>;
 	justifyContent: ResponsiveProp<
@@ -167,7 +167,7 @@ function layoutStyles({
 	flexWrap,
 	flexGrow,
 	flexShrink,
-	columnSpan,
+	gridColumnSpan,
 	gridColumnStart,
 	gridColumnEnd,
 	justifyContent,
@@ -188,7 +188,7 @@ function layoutStyles({
 		flexWrap: mapResponsiveProp(flexWrap),
 		flexGrow: mapResponsiveProp(flexGrow),
 		flexShrink: mapResponsiveProp(flexShrink),
-		gridColumn: mapResponsiveProp(columnSpan, (v) => `span ${v}/span ${v}`),
+		gridColumn: mapResponsiveProp(gridColumnSpan, (v) => `span ${v}/span ${v}`),
 		gridColumnStart: mapResponsiveProp(gridColumnStart),
 		gridColumnEnd: mapResponsiveProp(gridColumnEnd),
 		justifyContent: mapResponsiveProp(justifyContent),
