@@ -11,42 +11,18 @@ const Cell = () => <Box background="shadeAlt" padding={1} />;
 
 export const Basic: ComponentStory<typeof Columns> = (args) => (
 	<Columns {...args}>
-		<Column columnSpan={1}>
-			<Cell />
-		</Column>
-		<Column columnSpan={1}>
-			<Cell />
-		</Column>
-		<Column columnSpan={1}>
-			<Cell />
-		</Column>
-		<Column columnSpan={1}>
-			<Cell />
-		</Column>
-		<Column columnSpan={1}>
-			<Cell />
-		</Column>
-		<Column columnSpan={1}>
-			<Cell />
-		</Column>
-		<Column columnSpan={1}>
-			<Cell />
-		</Column>
-		<Column columnSpan={1}>
-			<Cell />
-		</Column>
-		<Column columnSpan={1}>
-			<Cell />
-		</Column>
-		<Column columnSpan={1}>
-			<Cell />
-		</Column>
-		<Column columnSpan={1}>
-			<Cell />
-		</Column>
-		<Column columnSpan={1}>
-			<Cell />
-		</Column>
+		<Cell />
+		<Cell />
+		<Cell />
+		<Cell />
+		<Cell />
+		<Cell />
+		<Cell />
+		<Cell />
+		<Cell />
+		<Cell />
+		<Cell />
+		<Cell />{' '}
 	</Columns>
 );
 Basic.args = {};
@@ -152,22 +128,15 @@ ColSpans.args = {};
 export const Gap: ComponentStory<typeof Columns> = (args) => (
 	<Box palette="light" background="body">
 		<Columns {...args}>
-			<Column columnSpan={3}>
-				<Cell />
-			</Column>
-			<Column columnSpan={3}>
-				<Cell />
-			</Column>
-			<Column columnSpan={3}>
-				<Cell />
-			</Column>
-			<Column columnSpan={3}>
-				<Cell />
-			</Column>
+			<Cell />
+			<Cell />
+			<Cell />
+			<Cell />
 		</Columns>
 	</Box>
 );
 Gap.args = {
+	cols: [1, 2, 4],
 	gap: 3,
 };
 
