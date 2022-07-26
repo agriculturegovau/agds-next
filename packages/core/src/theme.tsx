@@ -38,11 +38,12 @@ export const themeVars = {
 export type Theme = Partial<Record<keyof typeof themeVars, string>>;
 
 type ThemeKey = keyof typeof themeVars;
-export function mergeTheme(defaultTheme: Theme, theme: Theme) {
+
+export function mergeTheme(defaultTheme: Theme, theme?: Theme) {
 	return Object.fromEntries(
 		Object.entries(themeVars).map(([key, variableName]) => [
 			variableName,
-			theme[key as ThemeKey] ?? defaultTheme[key as ThemeKey],
+			(theme && theme[key as ThemeKey]) ?? defaultTheme[key as ThemeKey],
 		])
 	);
 }
