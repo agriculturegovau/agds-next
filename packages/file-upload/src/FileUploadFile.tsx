@@ -35,7 +35,9 @@ export const FileUploadFile = ({
 			>
 				<Flex alignItems="center" gap={0.5}>
 					{status == 'success' && (
-						<SuccessFilledIcon color="success" size="md" />
+						<Box flexShrink={1}>
+							<SuccessFilledIcon color="success" size="md" />
+						</Box>
 					)}
 					<Text css={{ wordBreak: 'break-all' }}>
 						{name} ({formatFileSize(size)})
