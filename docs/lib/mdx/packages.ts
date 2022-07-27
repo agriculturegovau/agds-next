@@ -9,10 +9,10 @@ import {
 } from '../mdxUtils';
 import { slugify } from '../slugify';
 
-const PKG_PATH = normalize(`${process.cwd()}/../packages/`);
+const PKG_PATH = normalize(`${process.cwd()}/../packages`);
 const pkgReadmePath = (slug: string) => `${PKG_PATH}/${slug}/docs/overview.mdx`;
 
-const pkgDocsPath = (slug: string) => normalize(`${PKG_PATH}/${slug}/docs/`);
+const pkgDocsPath = (slug: string) => normalize(`${PKG_PATH}/${slug}/docs`);
 
 const pkgJsonPath = (slug: string) =>
 	normalize(`${PKG_PATH}/${slug}/package.json`);

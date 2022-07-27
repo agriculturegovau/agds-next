@@ -7,12 +7,13 @@ import {
 } from '../mdxUtils';
 import { slugify } from '../slugify';
 
-const TEMPLATES_PATH = normalize(`${process.cwd()}/../templates/`);
+const TEMPLATES_PATH = normalize(`${process.cwd()}/../templates`);
 
 const templateOverviewPath = (slug: string) =>
 	normalize(`${TEMPLATES_PATH}/${slug}/index.mdx`);
+
 const templateDocsPath = (slug: string) =>
-	normalize(`${TEMPLATES_PATH}/${slug}/`);
+	normalize(`${TEMPLATES_PATH}/${slug}`);
 
 export async function getTemplate(slug: string) {
 	const { content, data } = await getMarkdownData(templateOverviewPath(slug));
