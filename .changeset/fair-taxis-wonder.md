@@ -1,5 +1,5 @@
 ---
-'@ag.ds-next/prose': patch
+'@ag.ds-next/prose': major
 ---
 
 Created package
