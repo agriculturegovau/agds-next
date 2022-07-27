@@ -66,6 +66,7 @@
 		"@untitled-docs/live-code": "^0.3.0",
 		"clipboard-copy": "^4.0.1",
 		"gray-matter": "^4.0.3",
+		"iframe-resizer": "^4.3.2",
 		"next": "^12.2.0",
 		"next-mdx-remote": "^3.0.4",
 		"next-remote-watch": "^1.0.0",
@@ -74,13 +75,16 @@
 		"prism-react-renderer": "^1.2.1",
 		"react": "18.1.0",
 		"react-dom": "18.1.0",
+		"react-frame-component": "^5.2.3",
 		"react-live": "^2.4.1",
 		"react-simple-code-editor": "^0.11.0",
 		"remark-hint": "^1.0.10",
+		"stylis": "^4.1.1",
 		"yarn": "^1.22.10"
 	},
 	"license": "MIT",
 	"devDependencies": {
+		"@types/stylis": "^4.0.2",
 		"glob": "^8.0.3",
 		"puppeteer": "^14.1.0",
 		"react-docgen-typescript": "^2.2.2"

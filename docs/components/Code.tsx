@@ -1,5 +1,15 @@
-import React, { ReactNode, useState, useCallback, Fragment } from 'react';
-import { useRouter } from 'next/router';
+import React, {
+	ReactNode,
+	useState,
+	useCallback,
+	Fragment,
+	useEffect,
+} from 'react';
+import { prefixer } from 'stylis';
+import { CacheProvider } from '@emotion/react';
+import createCache from '@emotion/cache';
+import weakMemoize from '@emotion/weak-memoize';
+import Frame, { FrameContextConsumer } from 'react-frame-component';
 import {
 	LiveProvider,
 	LiveEditor,
@@ -11,21 +21,19 @@ import { createUrl } from 'playroom/utils';
 import { Language } from 'prism-react-renderer';
 import copy from 'clipboard-copy';
 import { useId } from '@reach/auto-id';
+import { theme } from '@ag.ds-next/ag-branding';
 import { ExternalLinkCallout } from '@ag.ds-next/a11y';
 import {
+	Core,
 	globalPalette,
 	mapSpacing,
 	packs,
-	tokens,
 	useToggleState,
 } from '@ag.ds-next/core';
 import { Box, Flex } from '@ag.ds-next/box';
-import {
-	unsetProseStylesClassname,
-	proseBlockClassname,
-} from '@ag.ds-next/prose';
 import { Button, ButtonLink } from '@ag.ds-next/button';
 import { CopyIcon, ChevronDownIcon, ChevronUpIcon } from '@ag.ds-next/icon';
+import { proseBlockClassname } from '@ag.ds-next/prose';
 import * as designSystemComponents from './designSystemComponents';
 import { prismTheme } from './prism-theme';
 
@@ -38,8 +46,6 @@ const PlaceholderImage = () => (
 );
 
 const LiveCode = withLive(function LiveCode(props: unknown) {
-	const { query } = useRouter();
-
 	// The types on `withLive` are kind of useless.
 	const { live } = props as {
 		live: {
@@ -77,20 +83,9 @@ const LiveCode = withLive(function LiveCode(props: unknown) {
 
 	return (
 		<Box border rounded borderColor="muted" className={proseBlockClassname}>
-			<LivePreview
-				aria-label="Rendered code snippet example"
-				// Prevents prose styles from being inherited in live code examples (except for the prose example)
-				className={
-					query.slug === 'prose' ? undefined : unsetProseStylesClassname
-				}
-				css={{
-					// The mdx codeblock transform wraps the code component in a pre which
-					// applies some weirdness here. This resets back to normal things
-					whiteSpace: 'normal', // other wise text content will not wrap and long lines can break the layout
-					fontFamily: tokens.font.body, // because pre applies gets monospace font.
-					padding: mapSpacing(1.5),
-				}}
-			/>
+			<LiveCodeIFrame>
+				<LivePreview />
+			</LiveCodeIFrame>
 			<Flex
 				flexWrap="wrap"
 				padding={0.5}
@@ -246,4 +241,74 @@ export function Code({ children, live, className }: CodeProps) {
 	}
 
 	return <StaticCode language={language} code={childrenAsString} />;
+}
+
+function LiveCodeIFrame({ children }: { children: ReactNode }) {
+	const [mounted, setMounted] = useState(false);
+	const [frameRef, setFrameRef] = useState<HTMLIFrameElement>();
+	const [frameHeight, setFrameHeight] = useState(0);
+
+	const contentDidMount = useCallback(() => {
+		const frameEl =
+			frameRef?.contentWindow?.document.documentElement.querySelector(
+				'.frame-content'
+			);
+		if (!frameEl) return;
+
+		const observer = new ResizeObserver(function () {
+			setFrameHeight(frameEl.scrollHeight);
+		});
+
+		observer.observe(frameEl);
+	}, [frameRef]);
+
+	useEffect(() => {
+		setMounted(true);
+	}, []);
+
+	if (!mounted) return null;
+
+	return (
+		<Frame
+			title="code example"
+			frameBorder={0}
+			width="100%"
+			height={frameHeight}
+			contentDidMount={contentDidMount}
+			css={{ display: 'block' }}
+			// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+			// @ts-ignore
+			ref={setFrameRef}
+		>
+			<LiveCodeFrameProvider>{children}</LiveCodeFrameProvider>
+		</Frame>
+	);
+}
+
+// https://emotion.sh/docs/@emotion/cache#createcache
+const memoizedCreateCacheWithContainer = weakMemoize((container: HTMLElement) =>
+	createCache({
+		key: 'live-code-preview',
+		container,
+		stylisPlugins: [prefixer],
+	})
+);
+
+export function LiveCodeFrameProvider({ children }: { children: ReactNode }) {
+	return (
+		<FrameContextConsumer>
+			{({ document }) => {
+				if (!document?.head) return null;
+				return (
+					<CacheProvider
+						value={memoizedCreateCacheWithContainer(document.head)}
+					>
+						<Core theme={theme}>
+							<Box padding={1.5}>{children}</Box>
+						</Core>
+					</CacheProvider>
+				);
+			}}
+		</FrameContextConsumer>
+	);
 }
