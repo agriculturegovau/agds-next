@@ -7,37 +7,30 @@ function makeViewports() {
 	const viewports = [
 		{
 			width: 320,
-			type: 'mobile',
 			breakpoint: 'xs',
 		},
 		{
 			width: 375,
-			type: 'mobile',
 			breakpoint: 'xs',
 		},
 		{
 			width: 576,
-			type: 'mobile',
 			breakpoint: 'sm',
 		},
 		{
 			width: 768,
-			type: 'tablet',
 			breakpoint: 'md',
 		},
 		{
 			width: 992,
-			type: 'tablet',
 			breakpoint: 'lg',
 		},
 		{
 			width: 1024,
-			type: 'tablet',
 			breakpoint: 'lg',
 		},
 		{
 			width: 1200,
-			type: 'desktop',
 			breakpoint: 'xl',
 		},
 	];
