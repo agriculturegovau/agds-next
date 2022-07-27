@@ -9,27 +9,27 @@ import {
 } from '@ag.ds-next/core';
 import { Box, BoxProps, linkStyles, focusStyles } from '@ag.ds-next/box';
 
-export const Body = forwardRefWithAs<'div', BoxProps>(function Body(
+export const Prose = forwardRefWithAs<'div', BoxProps>(function Prose(
 	props,
 	ref
 ) {
-	return <Box ref={ref} css={bodyClass} {...props} />;
+	return <Box ref={ref} css={proseClass} {...props} />;
 });
 
-// Allow consumers to unset body styles from being inherited on specific elements
-export const unsetBodyStylesClassname = 'unset-agds-body-styles';
+// Allow consumers to unset prose styles from being inherited on specific elements
+export const unsetProseStylesClassname = 'unset-agds-prose-styles';
 
 // Allow consumers to keep vertical rhythm on specific elements
-export const bodyBlockClassname = 'agds-body-block';
+export const proseBlockClassname = 'agds-prose-block';
 
 // Exclude tags which contain a className (generated from the CSS prop) or are a child of the unset class
-const notSelector = `:not([class]):not(.${unsetBodyStylesClassname} *)`;
+const notSelector = `:not([class]):not(.${unsetProseStylesClassname} *)`;
 
-export const bodyClass = css({
+export const proseClass = css({
 	/**
 	 * Styles applied to the `Box` container
 	 */
-	[`&:not(.${unsetBodyStylesClassname} *)`]: {
+	[`&:not(.${unsetProseStylesClassname} *)`]: {
 		margin: 0,
 		textSizeAdjust: '100%',
 		color: boxPalette.foregroundText,
@@ -39,9 +39,9 @@ export const bodyClass = css({
 	},
 
 	/**
-	 * Body block
+	 * Prose block
 	 */
-	[`* + .${bodyBlockClassname}:not(.${unsetBodyStylesClassname} *)`]: {
+	[`* + .${proseBlockClassname}:not(.${unsetProseStylesClassname} *)`]: {
 		marginTop: mapSpacing(1.5),
 	},
 
@@ -130,7 +130,7 @@ export const bodyClass = css({
 		},
 	},
 
-	[`* + table:not(.${unsetBodyStylesClassname} *)`]: {
+	[`* + table:not(.${unsetProseStylesClassname} *)`]: {
 		marginTop: mapSpacing(1.5),
 		' + table': { marginTop: mapSpacing(3) },
 	},
