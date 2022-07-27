@@ -1,25 +1,46 @@
 import React from 'react';
 import { Box } from '@ag.ds-next/box';
-import { Core, tokens } from '@ag.ds-next/core';
+import { Core } from '@ag.ds-next/core';
 import { theme } from '@ag.ds-next/ag-branding';
 
-const viewportMap = {
-	xs: 'mobile',
-	sm: 'mobile',
-	md: 'tablet',
-	lg: 'laptop',
-	xl: 'desktop',
-};
-
-function makeViewports(breakpoints) {
+function makeViewports() {
+	const viewports = [
+		{
+			width: 320,
+			breakpoint: 'xs',
+		},
+		{
+			width: 375,
+			breakpoint: 'xs',
+		},
+		{
+			width: 576,
+			breakpoint: 'sm',
+		},
+		{
+			width: 768,
+			breakpoint: 'md',
+		},
+		{
+			width: 992,
+			breakpoint: 'lg',
+		},
+		{
+			width: 1024,
+			breakpoint: 'lg',
+		},
+		{
+			width: 1200,
+			breakpoint: 'xl',
+		},
+	];
 	return Object.fromEntries(
-		Object.entries(breakpoints).map(([key, size]) => [
-			key,
+		viewports.map((viewport) => [
+			viewport.width,
 			{
-				name: `${key} ${viewportMap[key]} (${size === 0 ? 320 : size}) `,
-				type: viewportMap[key],
+				name: `${viewport.breakpoint} (${viewport.width}px)`,
 				styles: {
-					width: `${size === 0 ? 320 : size}px`,
+					width: `${viewport.width}px`,
 					height: '100%',
 				},
 			},
@@ -60,7 +81,7 @@ export const parameters = {
 		},
 	},
 	viewport: {
-		viewports: makeViewports(tokens.breakpoint),
+		viewports: makeViewports(),
 	},
 };
 
