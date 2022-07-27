@@ -69,7 +69,6 @@ const CustomLinkList = ({ links, ..props }) => (
 		))}
 	</LinkListGroup>
 );
-
 ```
 
 So components which are a composition of several other components (like `LinkList`) should expose their parts in addition to the main component to enable recomposing the parts in a different way. This lets us maintain a simple API while enabling more complex use cases.
@@ -91,7 +90,7 @@ A better choice here is to take the parts of `Accordion` which are common / reus
 
 This Design-System will likely be adopted either only partially or incrementally. For this reason it is important that we avoid polluting global namespaces and scopes in css and javascript.
 
-This is why the neither `core` or `body` apply a default `fontFamily` or `color` and why the global reset is minimal and optional. For each component in the design system we need to consider whether it is appropriate for the component to apply styling to it's children.
+This is why the neither `core` or `prose` apply a default `fontFamily` or `color` and why the global reset is minimal and optional. For each component in the design system we need to consider whether it is appropriate for the component to apply styling to it's children.
 
 #### Examples:
 

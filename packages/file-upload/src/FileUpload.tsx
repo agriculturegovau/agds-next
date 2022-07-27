@@ -1,4 +1,10 @@
-import { Fragment, forwardRef, InputHTMLAttributes } from 'react';
+import {
+	Fragment,
+	forwardRef,
+	InputHTMLAttributes,
+	useEffect,
+	useState,
+} from 'react';
 import { useDropzone, DropzoneOptions } from 'react-dropzone';
 import formatFileSize from 'filesize';
 import { Flex, Stack } from '@ag.ds-next/box';
@@ -18,12 +24,17 @@ import {
 	FileWithStatus,
 } from './utils';
 
-type InputProps = Pick<
-	InputHTMLAttributes<HTMLInputElement>,
-	'name' | 'onBlur' | 'disabled' | 'id'
->;
+type NativeInputProps = InputHTMLAttributes<HTMLInputElement>;
 
-export type FileUploadProps = InputProps & {
+type BaseInputProps = {
+	disabled?: NativeInputProps['disabled'];
+	id?: NativeInputProps['id'];
+	name?: NativeInputProps['name'];
+	onBlur?: NativeInputProps['onBlur'];
+	onFocus?: NativeInputProps['onFocus'];
+};
+
+export type FileUploadProps = BaseInputProps & {
 	/** List of acceptible file types, e.g.`image/jpeg`, `application/pdf` */
 	accept?: FileFormats[];
 	/** A label that describes the field*/
@@ -36,14 +47,26 @@ export type FileUploadProps = InputProps & {
 	value: FileWithStatus[];
 	/** Callback for when an accepted file is added or removed */
 	onChange: (value: FileWithStatus[]) => void;
-	/** Whether the field is required */
+	/** If false, "(optional)" will be appended to the label. */
 	required?: boolean;
+	/** Provides extra information about the field. */
 	hint?: string;
+	/** Message to show when the field is invalid or valid. */
 	message?: string;
-	/** Whether multiple files are allowed to be selected. False by default. */
+	/** Whether multiple files are allowed to be selected. */
 	multiple?: boolean;
+	/** If true, the invalid state will be rendered. */
 	invalid?: boolean;
+	/** If true, the valid state will be rendered. */
 	valid?: boolean;
+};
+
+type RejectedFile = {
+	id: string;
+	fileName: string;
+	fileSize: number;
+	code: string;
+	message: string;
 };
 
 export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
@@ -71,9 +94,15 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 		const maxSizeBytes = (maxSize || 0) * 1000;
 		const formattedMaxFileSize = formatFileSize(maxSizeBytes);
 
+		const [fileRejections, setFileRejections] = useState<RejectedFile[]>([]);
+
 		const handleRemoveFile = (file: FileWithStatus) => {
 			const indexOfFile = value.indexOf(file);
 			onChange(value.filter((_, index) => index !== indexOfFile));
+		};
+
+		const handleRemoveRejection = (errId: string) => {
+			setFileRejections(fileRejections.filter((err) => err.id !== errId));
 		};
 
 		const handleDropAccepted = (acceptedFiles: FileWithStatus[]) => {
@@ -85,30 +114,57 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 			}
 		};
 
-		const { getRootProps, getInputProps, isDragActive, open, fileRejections } =
-			useDropzone({
-				accept,
-				maxFiles,
-				// converts kB to B
-				maxSize: maxSize && maxSize * 1000,
-				multiple,
-				onDropAccepted: handleDropAccepted,
-				disabled,
-				noClick: true,
-				noKeyboard: true,
-			});
+		const {
+			getRootProps,
+			getInputProps,
+			isDragActive,
+			open,
+			fileRejections: dropzoneFileRejections,
+		} = useDropzone({
+			accept,
+			maxFiles,
+			// converts kB to B
+			maxSize: maxSize && maxSize * 1000,
+			multiple,
+			onDropAccepted: handleDropAccepted,
+			disabled,
+			noClick: true,
+			noKeyboard: true,
+		});
 
 		const errorSummary = getErrorSummary(
 			fileRejections,
 			formattedMaxFileSize,
 			maxFiles
 		);
+
 		const acceptedFilesSummary = getAcceptedFilesSummary(accept);
+
 		const styles = fileInputStyles({
 			disabled,
 			invalid: invalid || !!errorSummary,
 			valid,
 		});
+
+		useEffect(() => {
+			const rejections: RejectedFile[] = [];
+			dropzoneFileRejections.forEach(({ file, errors }) => {
+				errors.forEach((error) =>
+					rejections.push({
+						id: `${file.name}_${error.code}`,
+						fileName: file.name,
+						fileSize: file.size,
+						message: getFileRejectionErrorMessage(
+							error,
+							formattedMaxFileSize,
+							acceptedFilesSummary
+						),
+						code: error.code,
+					})
+				);
+			});
+			setFileRejections(rejections);
+		}, [dropzoneFileRejections, formattedMaxFileSize, acceptedFilesSummary]);
 
 		return (
 			<Field
@@ -125,9 +181,8 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 					// TypeScript errors.
 					// eslint-disable-next-line @typescript-eslint/no-unused-vars
 					const { color: _, ...rootProps } = getRootProps();
-
 					return (
-						<Stack gap={0.5} {...rootProps}>
+						<Stack gap={1.5} {...rootProps}>
 							<Flex
 								gap={1}
 								padding={1.5}
@@ -172,36 +227,40 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 									onClick={open}
 									disabled={disabled}
 								>
-									{`Select ${filesPlural}`}
+									Select {filesPlural}
 								</Button>
 							</Flex>
-							{value?.length ? (
-								<Fragment>
-									<Text color="muted">{getFilesTotal(value)}</Text>
-									<Stack as="ul" gap={0.5}>
-										{value.map((file, index) => (
-											<FileUploadFile
-												file={file}
-												key={index}
-												onRemove={() => handleRemoveFile(file)}
-											/>
-										))}
-									</Stack>
-								</Fragment>
-							) : null}
-							{fileRejections.length ? (
-								<Stack as="ul" gap={0.5}>
-									{fileRejections.map((err, index) => (
-										<FileRejection key={index}>
-											{getFileRejectionErrorMessage(
-												err,
-												formattedMaxFileSize,
-												acceptedFilesSummary
-											)}
-										</FileRejection>
-									))}
+							{value.length || fileRejections.length ? (
+								<Stack gap={0.5}>
+									{value.length ? (
+										<Fragment>
+											<Text color="muted">{getFilesTotal(value)}</Text>
+											<Stack as="ul" gap={0.5}>
+												{value.map((file, index) => (
+													<FileUploadFile
+														key={index}
+														name={file.name}
+														size={file.size}
+														status={file.status}
+														onRemove={() => handleRemoveFile(file)}
+													/>
+												))}
+											</Stack>
+										</Fragment>
+									) : null}
+									{fileRejections.length ? (
+										<Stack as="ul" gap={0.5}>
+											{fileRejections.map(({ id, ...rejection }) => (
+												<FileRejection
+													key={id}
+													{...rejection}
+													onRemove={() => handleRemoveRejection(id)}
+												/>
+											))}
+										</Stack>
+									) : null}
 								</Stack>
-							) : null}{' '}
+							) : null}
 						</Stack>
 					);
 				}}

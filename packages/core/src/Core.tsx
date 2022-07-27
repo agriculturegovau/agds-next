@@ -29,7 +29,7 @@ export function Core({
 				styles={[
 					{
 						':root': {
-							...(theme ? mergeTheme(goldTheme, theme) : goldTheme),
+							...mergeTheme(goldTheme, theme),
 							...generateFontGrid(),
 						},
 						// Reset the global theme in print mode to black & white

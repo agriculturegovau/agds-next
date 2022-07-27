@@ -14,9 +14,9 @@ Include screenshots, photos or links if necessary.
 
 For new components...
 
-- [ ] Version number in package.json is set to 0.0.1
-- [ ] Create changelog file (packages/component/CHANGELOG.md)
-- [ ] Add components to Playroom (docs/playroom/components.js)
+- [ ] Version number in `package.json` is set to `0.0.1`
+- [ ] Changeset file includes a major
+- [ ] Create empty changelog file (packages/component/CHANGELOG.md)
+- [ ] Export components for docs site and Playroom (docs/components/designSystemComponents.tsx)
 - [ ] Add snippets to Playroom (docs/playroom/snippets.js)
-- [ ] Add to Docs for jsx live (docs/components/designSystemComponents.tsx)
 - [ ] Add pictogram to Docs (docs/components/pictograms/index.tsx)

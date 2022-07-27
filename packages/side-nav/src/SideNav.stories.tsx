@@ -91,9 +91,20 @@ OnBodyAlt.args = {
 };
 OnBodyAlt.storyName = 'On bodyAlt background';
 
+export const OptionalTitleLink: ComponentStory<typeof SideNav> = (args) => (
+	<SideNav {...args} />
+);
+OptionalTitleLink.args = {
+	...defaultArgs,
+	titleLink: undefined,
+	background: 'body',
+};
+
 export const Modular = () => (
 	<SideNavContainer background="body" aria-label="side navigation">
-		<SideNavTitle href="#">SideNav Title</SideNavTitle>
+		<SideNavTitle id="side-nav-modular-title" href="#" isCurrentPage={false}>
+			SideNav Title
+		</SideNavTitle>
 		<SideNavGroup>
 			<SideNavLink href="#one" label="One" />
 			<SideNavLink href="#two" label="Two" />

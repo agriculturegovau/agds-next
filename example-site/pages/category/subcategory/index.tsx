@@ -7,7 +7,8 @@ import {
 	HeroSubcategoryBannerTitle,
 } from '@ag.ds-next/hero-banner';
 import { Breadcrumbs } from '@ag.ds-next/breadcrumbs';
-import { Card, CardInner, CardLink, CardList } from '@ag.ds-next/card';
+import { Card, CardInner, CardLink } from '@ag.ds-next/card';
+import { Columns } from '@ag.ds-next/columns';
 import { AppLayout } from '../../../components/AppLayout';
 import { DocumentTitle } from '../../../components/DocumentTitle';
 
@@ -31,8 +32,8 @@ export default function SubcategoryPage() {
 				<SectionContent>
 					<Stack gap={1.5}>
 						<H2>Subcategory content pages (H2)</H2>
-						<CardList templateColumns={{ xs: 1, sm: 2, md: 3 }}>
-							<Card shadow clickable>
+						<Columns as="ul" cols={{ xs: 1, sm: 2, md: 3 }}>
+							<Card as="li" shadow clickable>
 								<CardInner>
 									<Stack gap={1}>
 										<H3>
@@ -47,7 +48,7 @@ export default function SubcategoryPage() {
 									</Stack>
 								</CardInner>
 							</Card>
-							<Card shadow clickable>
+							<Card as="li" shadow clickable>
 								<CardInner>
 									<Stack gap={1}>
 										<H3>
@@ -62,7 +63,7 @@ export default function SubcategoryPage() {
 									</Stack>
 								</CardInner>
 							</Card>
-							<Card shadow clickable>
+							<Card as="li" shadow clickable>
 								<CardInner>
 									<Stack gap={1}>
 										<H3>
@@ -78,7 +79,7 @@ export default function SubcategoryPage() {
 								</CardInner>
 							</Card>
 							{Array.from(Array(3).keys()).map((idx) => (
-								<Card key={idx} shadow clickable>
+								<Card as="li" key={idx} shadow clickable>
 									<CardInner>
 										<Stack gap={1}>
 											<H3>
@@ -94,7 +95,7 @@ export default function SubcategoryPage() {
 									</CardInner>
 								</Card>
 							))}
-						</CardList>
+						</Columns>
 					</Stack>
 				</SectionContent>
 			</AppLayout>

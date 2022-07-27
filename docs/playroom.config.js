@@ -1,6 +1,6 @@
 module.exports = {
-	title: 'Playroom | Agriculture Design System',
-	components: './playroom/components',
+	title: 'Agriculture Design System',
+	components: './components/designSystemComponents.tsx',
 	snippets: './playroom/snippets.js',
 	outputPath: './public/playroom',
 	frameComponent: './playroom/frame.js',
@@ -26,5 +26,5 @@ module.exports = {
 			],
 		},
 	}),
-	widths: [320, 375, 576, 768, 1024, 1400, 1920],
+	widths: [320, 375, 576, 768, 992, 1024, 1200, 1800],
 };

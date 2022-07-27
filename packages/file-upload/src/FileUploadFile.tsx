@@ -6,15 +6,20 @@ import { Text } from '@ag.ds-next/text';
 import { Button } from '@ag.ds-next/button';
 import { LoadingDots } from '@ag.ds-next/loading';
 import { SuccessFilledIcon } from '@ag.ds-next/icon';
-import { FileWithStatus } from './utils';
+import { FileStatus } from './utils';
 
 type FileUploadFileProps = {
-	file: FileWithStatus;
+	name: string;
+	size: number;
+	status?: FileStatus;
 	onRemove: MouseEventHandler<HTMLButtonElement>;
 };
 
+// TODO: Rename to FileUploadAcceptedFile
 export const FileUploadFile = ({
-	file: { status = 'none', size, name },
+	status = 'none',
+	size,
+	name,
 	onRemove,
 }: FileUploadFileProps) => {
 	return (
@@ -30,7 +35,9 @@ export const FileUploadFile = ({
 			>
 				<Flex alignItems="center" gap={0.5}>
 					{status == 'success' && (
-						<SuccessFilledIcon color="success" size="md" />
+						<Box flexShrink={1}>
+							<SuccessFilledIcon color="success" size="md" />
+						</Box>
 					)}
 					<Text css={{ wordBreak: 'break-all' }}>
 						{name} ({formatFileSize(size)})

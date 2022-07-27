@@ -1,9 +1,10 @@
-import { useState } from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { useState } from 'react';
+import { subDays, addDays } from 'date-fns';
 import { Box, Flex, Stack } from '@ag.ds-next/box';
 import { Button, ButtonGroup } from '@ag.ds-next/button';
 import { Select } from '@ag.ds-next/select';
-import { Body } from '@ag.ds-next/body';
+import { Prose } from '@ag.ds-next/prose';
 import { DateRangePicker, DateRange } from './DateRangePicker';
 
 export default {
@@ -25,6 +26,15 @@ Basic.args = {};
 export const Disabled = Template.bind({});
 Disabled.args = {
 	disabled: true,
+};
+
+const today = new Date();
+const lastWeek = subDays(today, 7);
+const nextWeek = addDays(today, 7);
+export const MinMaxDates = Template.bind({});
+MinMaxDates.args = {
+	minDate: lastWeek,
+	maxDate: nextWeek,
 };
 
 export const Required = Template.bind({});
@@ -62,13 +72,13 @@ export const FiltersExample = () => {
 				/>
 				<DateRangePicker value={range} onChange={setRange} />
 			</Flex>
-			<Body>
+			<Prose>
 				<ul>
 					<li>Option: {option || 'Not set'}</li>
 					<li>Date from: {range.from?.toLocaleDateString() || 'Not set'}</li>
 					<li>Date to: {range.to?.toLocaleDateString() || 'Not set'}</li>
 				</ul>
-			</Body>
+			</Prose>
 		</Stack>
 	);
 };

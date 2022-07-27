@@ -1,7 +1,6 @@
 import accordion from './accordion.svg';
 import agBranding from './ag-branding.svg';
 import badge from './badge.svg';
-import body from './body.svg';
 import box from './box.svg';
 import breadcrumb from './breadcrumb.svg';
 import button from './button.svg';
@@ -30,6 +29,7 @@ import modal from './modal.svg';
 import packages from './packages.svg';
 import pageAlert from './page-alert.svg';
 import progressIndicator from './progress-indicator.svg';
+import prose from './prose.svg';
 import searchBox from './search-box.svg';
 import select from './select.svg';
 import sideNav from './side-nav.svg';
@@ -47,7 +47,6 @@ export const pictograms = {
 	accordion,
 	'ag-branding': agBranding,
 	badge,
-	body,
 	box,
 	breadcrumb,
 	breadcrumbs: breadcrumb,
@@ -77,6 +76,7 @@ export const pictograms = {
 	packages,
 	'page-alert': pageAlert,
 	'progress-indicator': progressIndicator,
+	prose,
 	sideNav,
 	'search-box': searchBox,
 	select,

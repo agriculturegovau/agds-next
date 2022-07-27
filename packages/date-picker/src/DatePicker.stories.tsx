@@ -1,5 +1,6 @@
-import { useState } from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { useState } from 'react';
+import { subDays, addDays } from 'date-fns';
 import { Box, Stack } from '@ag.ds-next/box';
 import { Button, ButtonGroup } from '@ag.ds-next/button';
 import { DatePicker } from './DatePicker';
@@ -23,6 +24,22 @@ export const Disabled = Template.bind({});
 Disabled.args = {
 	label: 'Example',
 	disabled: true,
+};
+
+const today = new Date();
+const lastWeek = subDays(today, 7);
+const nextWeek = addDays(today, 7);
+export const MinMaxDates = Template.bind({});
+MinMaxDates.args = {
+	label: 'Example',
+	minDate: lastWeek,
+	maxDate: nextWeek,
+};
+
+export const InitialMonth = Template.bind({});
+InitialMonth.args = {
+	label: 'Example',
+	initialMonth: new Date('1999-12-01'),
 };
 
 export const Required = Template.bind({});
@@ -74,7 +91,7 @@ export const ControlledExample = () => {
 		<Stack gap={4} alignItems="flex-start">
 			<DatePicker label="Controlled" value={value} onChange={setValue} />
 			<ButtonGroup>
-				<Button onClick={() => setValue(new Date('2020-12-12'))}>
+				<Button onClick={() => setValue(new Date('1999-12-25'))}>
 					Set pre-defined date
 				</Button>
 				<Button variant="secondary" onClick={() => setValue(undefined)}>

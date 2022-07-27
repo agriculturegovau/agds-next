@@ -18,6 +18,19 @@ export const parseDate = (value: string) => {
 	return undefined;
 };
 
+// https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/date#min
+// https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/date#max
+export function constrainDate(
+	date: Date | undefined,
+	minDate: Date | undefined,
+	maxDate: Date | undefined
+) {
+	if (!date) return date;
+	if (minDate && isBefore(date, minDate)) return minDate;
+	if (maxDate && isAfter(date, maxDate)) return maxDate;
+	return date;
+}
+
 // Ensure a valid date range is always sent back to the consumer
 export function getValidDateRange(
 	inputMode: 'from' | 'to',

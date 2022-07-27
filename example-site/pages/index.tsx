@@ -1,8 +1,8 @@
 import { Stack } from '@ag.ds-next/box';
 import { ButtonGroup, ButtonLink } from '@ag.ds-next/button';
 import { SectionContent } from '@ag.ds-next/content';
-import { Columns, Column } from '@ag.ds-next/columns';
-import { H2, H3 } from '@ag.ds-next/heading';
+import { Columns } from '@ag.ds-next/columns';
+import { H2, H3, Heading } from '@ag.ds-next/heading';
 import { Text } from '@ag.ds-next/text';
 import { CallToActionLink } from '@ag.ds-next/call-to-action';
 import {
@@ -11,9 +11,9 @@ import {
 	HeroBannerTitle,
 	HeroBannerTitleContainer,
 } from '@ag.ds-next/hero-banner';
+import { Card, CardInner, CardLink } from '@ag.ds-next/card';
 import { AppLayout } from '../components/AppLayout';
 import { DocumentTitle } from '../components/DocumentTitle';
-import { ArticleCard } from '../components/ArticleCard';
 
 export default function HomePage() {
 	return (
@@ -48,58 +48,70 @@ export default function HomePage() {
 				<SectionContent>
 					<Stack gap={1.5}>
 						<H2>Content heading (H2)</H2>
-						<Columns as="ul">
+						<Columns as="ul" cols={{ xs: 1, sm: 2, md: 4 }}>
 							{Array.from(Array(4).keys()).map((idx) => (
-								<Column key={idx} as="li" columnSpan={{ xs: 12, sm: 6, md: 3 }}>
-									<Stack gap={1.5}>
-										<H3>Content heading (H3)</H3>
-										<Text as="p">
-											Short descriptive paragraph designed to fit in this space
-											- sm/default (P). Short descriptive paragraph designed to
-											fit in this space - sm/default (P).
-										</Text>
-									</Stack>
-								</Column>
-							))}
-						</Columns>
-					</Stack>
-				</SectionContent>
-
-				<SectionContent background="shade">
-					<Columns>
-						<Column columnSpan={{ xs: 12, md: 6 }}>
-							<Stack gap={2}>
-								<Stack gap={1.5}>
-									<H2>Highlighted content row heading (H2)</H2>
+								<Stack key={idx} as="li" gap={1.5}>
+									<H3>Content heading (H3)</H3>
 									<Text as="p">
 										Short descriptive paragraph designed to fit in this space -
 										sm/default (P). Short descriptive paragraph designed to fit
 										in this space - sm/default (P).
 									</Text>
 								</Stack>
-								<CallToActionLink href="/category/subcategory/content">
-									Read more
-								</CallToActionLink>
+							))}
+						</Columns>
+					</Stack>
+				</SectionContent>
+
+				<SectionContent background="bodyAlt">
+					<Columns cols={{ xs: 1, md: 2 }}>
+						<Stack gap={2}>
+							<Stack gap={1.5}>
+								<H2>Highlighted content row heading (H2)</H2>
+								<Text as="p">
+									Short descriptive paragraph designed to fit in this space -
+									sm/default (P). Short descriptive paragraph designed to fit in
+									this space - sm/default (P).
+								</Text>
 							</Stack>
-						</Column>
-						<Column columnSpan={{ xs: 12, md: 6 }}>
-							<img
-								src="/agds-next/example-site/placeholder/hero-banner.jpeg"
-								alt="Harvester in a golden field of wheat emptying grain into a chaser bin moving alongside it."
-								css={{ display: 'block', maxWidth: '100%' }}
-							/>
-						</Column>
+							<CallToActionLink href="/category/subcategory/content">
+								Read more
+							</CallToActionLink>
+						</Stack>
+						<img
+							src="/agds-next/example-site/placeholder/hero-banner.jpeg"
+							alt="Harvester in a golden field of wheat emptying grain into a chaser bin moving alongside it."
+							css={{ display: 'block', maxWidth: '100%' }}
+						/>
 					</Columns>
 				</SectionContent>
 
 				<SectionContent>
 					<Stack gap={1.5}>
 						<H2>Articles heading (H2)</H2>
-						<Columns as="ul">
+						<Columns as="ul" cols={{ xs: 1, sm: 2, md: 3 }}>
 							{Array.from(Array(3).keys()).map((idx) => (
-								<Column key={idx} as="li" columnSpan={{ xs: 12, sm: 6, lg: 4 }}>
-									<ArticleCard />
-								</Column>
+								<Card as="li" key={idx} clickable shadow>
+									<img
+										src="/agds-next/example-site/placeholder/hero-banner.jpeg"
+										alt=""
+										css={{ width: '100%' }}
+										role="presentation"
+									/>
+									<CardInner>
+										<Stack gap={1}>
+											<Heading type="h3">
+												<CardLink href="/category/subcategory/content">
+													Title of article (H3)
+												</CardLink>
+											</Heading>
+											<Text as="p">
+												Short descriptive paragraph designed to fit in this
+												space
+											</Text>
+										</Stack>
+									</CardInner>
+								</Card>
 							))}
 						</Columns>
 						<CallToActionLink href="/category">
