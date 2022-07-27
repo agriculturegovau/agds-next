@@ -10,7 +10,7 @@ import { globalPalette } from './globalPalette';
 
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {
-	title: 'core/Tokens',
+	title: 'foundations/Core/Tokens',
 };
 
 export const Color = () => {
