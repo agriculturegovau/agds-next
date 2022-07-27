@@ -249,17 +249,15 @@ function LiveCodeIFrame({ children }: { children: ReactNode }) {
 	const [frameHeight, setFrameHeight] = useState(0);
 
 	const contentDidMount = useCallback(() => {
-		const frameEl =
-			frameRef?.contentWindow?.document.documentElement.querySelector(
-				'.frame-content'
-			);
-		if (!frameEl) return;
-
+		const el = frameRef?.contentWindow?.document.documentElement.querySelector(
+			`#${liveCodeContentId}`
+		);
+		if (!el) return;
 		const observer = new ResizeObserver(function () {
-			setFrameHeight(frameEl.scrollHeight);
+			setFrameHeight(el.scrollHeight);
 		});
-
-		observer.observe(frameEl);
+		observer.observe(el);
+		return () => observer.disconnect();
 	}, [frameRef]);
 
 	useEffect(() => {
@@ -270,7 +268,7 @@ function LiveCodeIFrame({ children }: { children: ReactNode }) {
 
 	return (
 		<Frame
-			title="code example"
+			title="live code example"
 			frameBorder={0}
 			width="100%"
 			height={frameHeight}
@@ -294,6 +292,8 @@ const memoizedCreateCacheWithContainer = weakMemoize((container: HTMLElement) =>
 	})
 );
 
+const liveCodeContentId = 'live-code-content';
+
 export function LiveCodeFrameProvider({ children }: { children: ReactNode }) {
 	return (
 		<FrameContextConsumer>
@@ -304,7 +304,9 @@ export function LiveCodeFrameProvider({ children }: { children: ReactNode }) {
 						value={memoizedCreateCacheWithContainer(document.head)}
 					>
 						<Core theme={theme}>
-							<Box padding={1.5}>{children}</Box>
+							<Box id={liveCodeContentId} padding={1.5}>
+								{children}
+							</Box>
 						</Core>
 					</CacheProvider>
 				);
