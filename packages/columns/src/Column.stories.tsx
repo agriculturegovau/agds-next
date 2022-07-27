@@ -22,7 +22,7 @@ export const Basic: ComponentStory<typeof Columns> = (args) => (
 		<Cell />
 		<Cell />
 		<Cell />
-		<Cell />{' '}
+		<Cell />
 	</Columns>
 );
 Basic.args = {};
