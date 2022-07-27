@@ -9,29 +9,12 @@ This package includes the components `<Columns />` and `<Column />`.
 
 ## Columns
 
-The `Columns` component creates a 12 column grid by default.
+The `Columns` component creates a 12 column grid by default. You can use the `cols` prop to specify how many columns are needed. As a general rule, we prefer layouts to have 1 column for mobile and 2 columns for tablet viewports.
 
 ```jsx live
-<Columns gap={0.5}>
+<Columns gap={1.5} cols={{ xs: 1, sm: 2, md: 3 }}>
 	<Box background="shadeAlt" padding={1} />
 	<Box background="shadeAlt" padding={1} />
-	<Box background="shadeAlt" padding={1} />
-	<Box background="shadeAlt" padding={1} />
-	<Box background="shadeAlt" padding={1} />
-	<Box background="shadeAlt" padding={1} />
-	<Box background="shadeAlt" padding={1} />
-	<Box background="shadeAlt" padding={1} />
-	<Box background="shadeAlt" padding={1} />
-	<Box background="shadeAlt" padding={1} />
-	<Box background="shadeAlt" padding={1} />
-	<Box background="shadeAlt" padding={1} />
-</Columns>
-```
-
-You can use the `cols` prop to specify how many columns are needed.
-
-```jsx live
-<Columns gap={1.5} cols={{ xs: 1, md: 3 }}>
 	<Box background="shadeAlt" padding={1} />
 	<Box background="shadeAlt" padding={1} />
 	<Box background="shadeAlt" padding={1} />
