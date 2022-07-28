@@ -336,7 +336,7 @@ export const proseClass = css({
 		borderRadius: tokens.borderRadius,
 		backgroundColor: boxPalette.backgroundShade,
 		color: boxPalette.foregroundText,
-		whiteSpace: 'normal',
+		overflowX: 'auto',
 	},
 
 	/**
