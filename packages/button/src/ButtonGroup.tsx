@@ -8,7 +8,7 @@ export const ButtonGroup = ({ children }: ButtonGroupProps) => {
 		<Flex
 			gap={1}
 			flexDirection={['column', 'row']}
-			alignItems={['stretch', 'flex-start']}
+			alignItems={['stretch', 'center']}
 		>
 			{children}
 		</Flex>
