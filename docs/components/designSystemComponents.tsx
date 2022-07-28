@@ -44,7 +44,7 @@ export { Heading, H1, H2, H3, H4, H5, H6 } from '@ag.ds-next/heading';
 export { Select } from '@ag.ds-next/select';
 export { ExternalLinkCallout, VisuallyHidden } from '@ag.ds-next/a11y';
 export { Text } from '@ag.ds-next/text';
-export { TextLink, TextButton, TextLinkExternal } from '@ag.ds-next/text-link';
+export { TextLink, TextLinkExternal } from '@ag.ds-next/text-link';
 export { TextInput } from '@ag.ds-next/text-input';
 export { Textarea } from '@ag.ds-next/textarea';
 export { Field } from '@ag.ds-next/field';
