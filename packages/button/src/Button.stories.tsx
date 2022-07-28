@@ -29,6 +29,9 @@ export const Basic: ComponentStory<typeof Button> = (args) => (
 		<Button {...args} variant="tertiary">
 			Tertiary
 		</Button>
+		<Button {...args} variant="text">
+			Text
+		</Button>
 	</ButtonGroup>
 );
 Basic.args = {
@@ -45,6 +48,9 @@ export const Loading: ComponentStory<typeof Button> = (args) => (
 		</Button>
 		<Button {...args} variant="tertiary">
 			Tertiary
+		</Button>
+		<Button {...args} variant="text">
+			Text
 		</Button>
 	</ButtonGroup>
 );

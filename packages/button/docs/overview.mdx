@@ -10,6 +10,7 @@ storybookPath: /story/forms-button--basic
 	<Button variant="primary">Primary</Button>
 	<Button variant="secondary">Secondary</Button>
 	<Button variant="tertiary">Tertiary</Button>
+	<Button variant="text">Text</Button>
 </ButtonGroup>
 ```
 
@@ -64,14 +65,14 @@ You can use multiple Tertiary buttons on a page.
 <Button variant="tertiary">Tertiary button</Button>
 ```
 
-## Text button
+## Text
 
-A [Text button](packages/navigation/text-link#textbutton) is styled like the Tertiary button but has no padding. A Text button should only be used in situations like tables where there is limited space.
+A Text button is styled like the Tertiary button but has no padding. A Text button should only be used in situations like tables where there is limited space.
 
 You can use multiple Text buttons on a page.
 
 ```jsx live
-<TextButton>Text button</TextButton>
+<Button variant="text">Text button</Button>
 ```
 
 ## Block
@@ -109,6 +110,9 @@ Avoid using disabled buttons as they can be confusing for many users. Instead, a
 		Secondary
 	</Button>
 	<Button variant="tertiary" disabled>
+		Tertiary
+	</Button>
+	<Button variant="text" disabled>
 		Tertiary
 	</Button>
 </ButtonGroup>
@@ -151,6 +155,9 @@ The medium button should be used in most cases to provide a large click target.
 	<Button variant="tertiary" size="sm">
 		Tertiary
 	</Button>
+	<Button variant="tertiary" size="sm">
+		Text
+	</Button>
 </ButtonGroup>
 ```
 
@@ -166,6 +173,7 @@ Don't draw attention to destructive actions like “delete” or “remove” by
 		<Button variant="primary">Primary</Button>
 		<Button variant="secondary">Secondary</Button>
 		<Button variant="tertiary">Tertiary</Button>
+		<Button variant="text">Text</Button>
 	</ButtonGroup>
 </Box>
 ```
@@ -181,5 +189,6 @@ On mobile, buttons will be stacked on top of one another and span the full width
 	<Button variant="primary">Primary</Button>
 	<Button variant="secondary">Secondary</Button>
 	<Button variant="tertiary">Tertiary</Button>
+	<Button variant="text">Text</Button>
 </ButtonGroup>
 ```
