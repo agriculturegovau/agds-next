@@ -57,6 +57,12 @@ TextStory.args = {
 	variant: 'text',
 };
 
+export const Disabled = Template.bind({});
+Disabled.args = {
+	children: 'Submit',
+	disabled: true,
+};
+
 export const Loading = Template.bind({});
 Loading.args = {
 	children: 'Submit',
