@@ -1,4 +1,4 @@
-import { Columns, Column } from '@ag.ds-next/columns';
+import { Columns } from '@ag.ds-next/columns';
 import { SectionContent } from '@ag.ds-next/content';
 import { Stack } from '@ag.ds-next/box';
 import { CallToActionLink } from '@ag.ds-next/call-to-action';
