@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { PropsWithChildren } from 'react';
 import { Box } from '@ag.ds-next/box';
 import { reactDayPickerStyles } from './reactDayPickerStyles';
 
@@ -6,11 +6,9 @@ const componentTokens = {
 	shadow: '0 1px 1px rgba(0, 0, 0, 0.3)',
 };
 
-export type CalendarContainerProps = {
-	children: ReactNode;
-};
+export type CalendarContainerProps = PropsWithChildren<{ range: boolean }>;
 
-export function CalendarContainer({ children }: CalendarContainerProps) {
+export function CalendarContainer({ children, range }: CalendarContainerProps) {
 	return (
 		<Box
 			display="inline-block"
@@ -22,7 +20,7 @@ export function CalendarContainer({ children }: CalendarContainerProps) {
 			rounded
 			css={[
 				{ position: 'relative', boxShadow: componentTokens.shadow },
-				reactDayPickerStyles,
+				reactDayPickerStyles(range),
 			]}
 		>
 			{children}
