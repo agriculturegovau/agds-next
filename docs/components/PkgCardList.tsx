@@ -8,7 +8,7 @@ type Pkg = {
 };
 
 export const PkgCardList = ({ items }: { items: Pkg[] }) => (
-	<Columns as="ul" gap={1} cols={{ xs: 1, sm: 2, md: 3 }}>
+	<Columns as="ul" cols={{ xs: 1, sm: 2, md: 3 }}>
 		{items.map(({ title, slug, group }) => (
 			<PictogramCard
 				title={title}
