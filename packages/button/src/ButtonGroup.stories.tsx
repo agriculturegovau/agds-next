@@ -12,6 +12,5 @@ export const Basic: ComponentStory<typeof ButtonGroup> = () => (
 		<Button variant="primary">Primary</Button>
 		<Button variant="secondary">Secondary</Button>
 		<Button variant="tertiary">Tertiary</Button>
-		<Button variant="text">Text</Button>
 	</ButtonGroup>
 );
