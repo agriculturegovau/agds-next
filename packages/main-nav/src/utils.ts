@@ -30,7 +30,7 @@ export const variantMap = {
 	},
 	agriculture: {
 		palette: 'dark',
-		background: 'shade',
+		background: 'bodyAlt',
 		hover: 'body',
 		bottomBar: globalPalette.accent,
 	},
