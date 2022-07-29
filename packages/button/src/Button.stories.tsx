@@ -1,8 +1,6 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { allIcons, AvatarIcon } from '@ag.ds-next/icon';
-import { Text } from '@ag.ds-next/text';
 import { Button, ButtonLink } from './Button';
-import { ButtonGroup } from './ButtonGroup';
 
 export default {
 	title: 'forms/Button',
@@ -20,76 +18,80 @@ export default {
 	},
 } as ComponentMeta<typeof Button>;
 
-export const Basic: ComponentStory<typeof Button> = (args) => (
-	<ButtonGroup>
-		<Button {...args}>Primary</Button>
-		<Button {...args} variant="secondary">
-			Secondary
-		</Button>
-		<Button {...args} variant="tertiary">
-			Tertiary
-		</Button>
-	</ButtonGroup>
+const Template: ComponentStory<typeof Button> = (args) => <Button {...args} />;
+const LinkTemplate: ComponentStory<typeof ButtonLink> = (args) => (
+	<ButtonLink {...args} />
 );
+
+export const Basic = Template.bind({});
 Basic.args = {
 	block: false,
+	children: 'Button',
 	disabled: false,
-	loading: false,
+	loading: true,
+	variant: 'primary',
 };
 
-export const Loading: ComponentStory<typeof Button> = (args) => (
-	<ButtonGroup>
-		<Button {...args}>Primary</Button>
-		<Button {...args} variant="secondary">
-			Secondary
-		</Button>
-		<Button {...args} variant="tertiary">
-			Tertiary
-		</Button>
-	</ButtonGroup>
-);
+export const Primary = Template.bind({});
+Primary.args = {
+	children: 'Primary button',
+	variant: 'primary',
+};
+
+export const Secondary = Template.bind({});
+Secondary.args = {
+	children: 'Secondary button',
+	variant: 'secondary',
+};
+
+export const Tertiary = Template.bind({});
+Tertiary.args = {
+	children: 'Tertiary button',
+	variant: 'tertiary',
+};
+
+export const TextStory = Template.bind({});
+TextStory.storyName = 'Text';
+TextStory.args = {
+	children: 'Text button',
+	variant: 'text',
+};
+
+export const Disabled = Template.bind({});
+Disabled.args = {
+	children: 'Submit',
+	disabled: true,
+};
+
+export const Loading = Template.bind({});
 Loading.args = {
-	block: false,
-	disabled: false,
+	children: 'Submit',
 	loading: true,
 };
 
-export const Block: ComponentStory<typeof Button> = (args) => (
-	<Text>
-		This is some text, with a Button inside.
-		<Button {...args}>Primary</Button>
-	</Text>
-);
+export const Block = Template.bind({});
 Block.args = {
+	children: 'Submit',
 	block: true,
-	disabled: false,
-	loading: false,
 };
 
-export const Size: ComponentStory<typeof Button> = (args) => (
-	<ButtonGroup>
-		<Button {...args} size="sm">
-			Small
-		</Button>
-		<Button {...args}>Medium</Button>
-	</ButtonGroup>
-);
+export const Size = Template.bind({});
+Size.args = {
+	children: 'Button',
+	size: 'sm',
+};
 
-export const ButtonLinkStory: ComponentStory<typeof ButtonLink> = (args) => (
-	<ButtonLink {...args} />
-);
+export const WithIcon = Template.bind({});
+WithIcon.args = {
+	children: 'Sign out',
+	iconAfter: AvatarIcon,
+};
+
+const ButtonLinkStory = LinkTemplate.bind({});
 ButtonLinkStory.storyName = 'ButtonLink';
 ButtonLinkStory.args = {
 	children: 'Button Link',
 	block: false,
 	href: '#',
 	variant: 'primary',
-};
-
-export const ButtonWithIcon: ComponentStory<typeof Button> = (args) => (
-	<Button {...args} />
-);
-ButtonWithIcon.args = {
-	children: 'Sign out',
-	iconAfter: AvatarIcon,
 };

@@ -7,7 +7,7 @@ import { Prose } from '@ag.ds-next/prose';
 import { Stack } from '@ag.ds-next/box';
 import { Checkbox, ControlGroup } from '@ag.ds-next/control-input';
 import { H2 } from '@ag.ds-next/heading';
-import { TextButton } from '@ag.ds-next/text-link';
+import { Button } from '@ag.ds-next/button';
 import {
 	DefinitionList,
 	DefinitionListItem,
@@ -53,7 +53,9 @@ export const FormExampleMultiStep4 = () => {
 			{/** Summary: Step 0 */}
 			<Stack gap={1.5} alignItems="flex-start">
 				<H2>{FORM_STEPS[0].label}</H2>
-				<TextButton onClick={() => goToStep(0)}>Change</TextButton>
+				<Button variant="text" onClick={() => goToStep(0)}>
+					Change
+				</Button>
 				<DefinitionList>
 					<DefinitionListItem>
 						<DefinitionTerm>
@@ -70,7 +72,9 @@ export const FormExampleMultiStep4 = () => {
 			{/** Summary: Step 1 */}
 			<Stack gap={1.5} alignItems="flex-start">
 				<H2>{FORM_STEPS[1].label}</H2>
-				<TextButton onClick={() => goToStep(1)}>Change</TextButton>
+				<Button variant="text" onClick={() => goToStep(1)}>
+					Change
+				</Button>
 				<DefinitionList>
 					<DefinitionListItem>
 						<DefinitionTerm>
@@ -97,7 +101,9 @@ export const FormExampleMultiStep4 = () => {
 			{/** Summary: Step 2 */}
 			<Stack gap={1.5} alignItems="flex-start">
 				<H2>{FORM_STEPS[2].label}</H2>
-				<TextButton onClick={() => goToStep(2)}>Change</TextButton>
+				<Button variant="text" onClick={() => goToStep(2)}>
+					Change
+				</Button>
 				<DefinitionList>
 					<DefinitionListItem>
 						<DefinitionTerm>
@@ -114,7 +120,9 @@ export const FormExampleMultiStep4 = () => {
 			{/** Summary: Step 3 */}
 			<Stack gap={1.5} alignItems="flex-start">
 				<H2>{FORM_STEPS[3].label}</H2>
-				<TextButton onClick={() => goToStep(3)}>Change</TextButton>
+				<Button variant="text" onClick={() => goToStep(3)}>
+					Change
+				</Button>
 				<DefinitionList>
 					<DefinitionListItem>
 						<DefinitionTerm>
