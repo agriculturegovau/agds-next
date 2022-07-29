@@ -327,12 +327,16 @@ export const proseClass = css({
 		fontFamily: tokens.font.monospace,
 		display: 'inline-block',
 		borderRadius: tokens.borderRadius,
-		backgroundColor: boxPalette.backgroundShade, // TODO: Check this did't break Docs code rendering
+		backgroundColor: boxPalette.backgroundShade,
 		color: boxPalette.foregroundText,
 	},
 
 	[`pre${notSelector}`]: {
 		fontFamily: tokens.font.monospace,
+		borderRadius: tokens.borderRadius,
+		backgroundColor: boxPalette.backgroundShade,
+		color: boxPalette.foregroundText,
+		overflowX: 'auto',
 	},
 
 	/**
