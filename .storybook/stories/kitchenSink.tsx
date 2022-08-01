@@ -49,6 +49,16 @@ import {
 	HeroBannerTitle,
 	HeroBannerTitleContainer,
 } from '@ag.ds-next/hero-banner';
+import { SkeletonHeading } from '@ag.ds-next/skeleton';
+import {
+	Table,
+	TableCaption,
+	TableCell,
+	TableHeader,
+	TableHead,
+	TableBody,
+} from '@ag.ds-next/table';
+import { TextLink } from '@ag.ds-next/text-link';
 
 export default {
 	title: 'Examples/Kitchen Sink',
@@ -185,7 +195,9 @@ const KitchenSink = ({ background }: { background: 'body' | 'bodyAlt' }) => {
 
 								<PageAlert tone="error" title="There is a problem">
 									<Text as="p">
-										<a href="#email">Full name must not be empty</a>
+										<TextLink href="#email">
+											Full name must not be empty
+										</TextLink>
 									</Text>
 								</PageAlert>
 
@@ -373,6 +385,59 @@ const KitchenSink = ({ background }: { background: 'body' | 'bodyAlt' }) => {
 								<IndicatorDot tone="neutral" />
 								<IndicatorDot tone="action" />
 							</Flex>
+
+							<Stack gap={1.5}>
+								<SkeletonHeading type="h1" />
+								<SkeletonHeading type="h2" />
+							</Stack>
+
+							<Table striped>
+								<TableCaption>
+									Population of Australian states and territories, December 2015
+								</TableCaption>
+								<TableHead>
+									<tr>
+										<TableHeader scope="col">Location</TableHeader>
+										<TableHeader textAlign="right" scope="col">
+											Population
+										</TableHeader>
+									</tr>
+								</TableHead>
+								<TableBody>
+									<tr>
+										<TableCell>New South Wales</TableCell>
+										<TableCell textAlign="right">7,670,700</TableCell>
+									</tr>
+									<tr>
+										<TableCell>Victoria</TableCell>
+										<TableCell textAlign="right">5,996,400</TableCell>
+									</tr>
+									<tr>
+										<TableCell>Queensland</TableCell>
+										<TableCell textAlign="right">4,808,800</TableCell>
+									</tr>
+									<tr>
+										<TableCell>Western Australia</TableCell>
+										<TableCell textAlign="right">2,603,900</TableCell>
+									</tr>
+									<tr>
+										<TableCell>South Australia</TableCell>
+										<TableCell textAlign="right">1,702,800</TableCell>
+									</tr>
+									<tr>
+										<TableCell>Tasmania</TableCell>
+										<TableCell textAlign="right">517,400</TableCell>
+									</tr>
+									<tr>
+										<TableCell>Nothern Territory</TableCell>
+										<TableCell textAlign="right">244,400</TableCell>
+									</tr>
+									<tr>
+										<TableCell>Australian Capital Territory</TableCell>
+										<TableCell textAlign="right">393,000</TableCell>
+									</tr>
+								</TableBody>
+							</Table>
 						</Stack>
 					</Column>
 				</Columns>
