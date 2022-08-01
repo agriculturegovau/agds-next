@@ -26,7 +26,7 @@ const variantMap = {
 	},
 	agriculture: {
 		palette: 'dark',
-		background: 'body',
+		background: 'bodyAlt',
 		border: globalPalette.accent,
 	},
 } as const;

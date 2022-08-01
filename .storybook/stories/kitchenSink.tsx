@@ -90,7 +90,7 @@ const KitchenSink = ({ background }: { background: 'body' | 'bodyAlt' }) => {
 		<Box background={background}>
 			<Stack>
 				<Header
-					variant="dark"
+					variant="darkAlt"
 					logo={<Logo />}
 					heading="Export Service"
 					subline="Supporting Australian agricultural exports"
