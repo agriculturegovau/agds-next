@@ -49,7 +49,7 @@ import {
 	HeroBannerTitle,
 	HeroBannerTitleContainer,
 } from '@ag.ds-next/hero-banner';
-import { SkeletonHeading } from '@ag.ds-next/skeleton';
+import { SkeletonHeading, SkeletonText } from '@ag.ds-next/skeleton';
 import {
 	Table,
 	TableCaption,
@@ -306,6 +306,22 @@ const KitchenSink = ({ background }: { background: 'body' | 'bodyAlt' }) => {
 										</Stack>
 									</CardInner>
 								</Card>
+								<Card>
+									<CardInner>
+										<Stack gap={1}>
+											<SkeletonHeading type="h3" width="50%" />
+											<SkeletonText fontSize="sm" width="25%" />
+										</Stack>
+									</CardInner>
+								</Card>
+								<Card background="bodyAlt">
+									<CardInner>
+										<Stack gap={1}>
+											<SkeletonHeading type="h3" width="50%" />
+											<SkeletonText fontSize="sm" width="25%" />
+										</Stack>
+									</CardInner>
+								</Card>
 							</Columns>
 
 							<H2>Forms</H2>
@@ -385,11 +401,6 @@ const KitchenSink = ({ background }: { background: 'body' | 'bodyAlt' }) => {
 								<IndicatorDot tone="neutral" />
 								<IndicatorDot tone="action" />
 							</Flex>
-
-							<Stack gap={1.5}>
-								<SkeletonHeading type="h1" />
-								<SkeletonHeading type="h2" />
-							</Stack>
 
 							<Table striped>
 								<TableCaption>
