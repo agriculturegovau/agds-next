@@ -2,7 +2,7 @@ import { Theme } from '@ag.ds-next/core';
 
 export const theme: Theme = {
 	lightForegroundAction: '#00558b',
-	darkBackgroundBody: '#0C1A31',
+	darkBackgroundBody: '#0A1629',
 	darkBackgroundShade: '#122440',
 	darkBackgroundBodyAlt: '#162846',
 	darkBackgroundShadeAlt: '#20365B',
