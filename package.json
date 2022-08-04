@@ -84,5 +84,8 @@
 		"ignoredRules": [
 			"ROOT_HAS_DEV_DEPENDENCIES"
 		]
+	},
+	"dependencies": {
+		"algoliasearch": "^4.14.2"
 	}
 }
