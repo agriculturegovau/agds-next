@@ -166,6 +166,7 @@ const KitchenSink = ({ background }: { background: 'body' | 'bodyAlt' }) => {
 						<Stack gap={2}>
 							<SubNav
 								background={background}
+								activePath="#usage"
 								links={[
 									{ href: '#usage', label: 'Usage' },
 									{ href: '#code', label: 'Code' },
@@ -364,7 +365,7 @@ const KitchenSink = ({ background }: { background: 'body' | 'bodyAlt' }) => {
 									<Radio checked={false}>Tablet</Radio>
 									<Radio checked={true}>Laptop</Radio>
 								</ControlGroup>
-								<Checkbox checked={false}>Label</Checkbox>
+								<Checkbox checked={true}>Label</Checkbox>
 								<ButtonGroup>
 									<Button size="md">Primary</Button>
 									<Button size="md" variant="secondary">
