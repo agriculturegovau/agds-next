@@ -35,7 +35,7 @@ type FooterProps = PropsWithChildren<{
 	variant?: keyof typeof variantMap;
 }>;
 
-export const Footer = ({ variant = 'dark', children }: FooterProps) => {
+export const Footer = ({ variant = 'agriculture', children }: FooterProps) => {
 	return (
 		<Flex
 			as="footer"
