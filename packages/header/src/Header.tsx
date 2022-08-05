@@ -20,7 +20,7 @@ export function Header({
 	heading,
 	rightContent,
 	subline,
-	variant = 'dark',
+	variant = 'darkAlt',
 	href = '/',
 }: HeaderProps) {
 	const hasRightContent = !!rightContent;
