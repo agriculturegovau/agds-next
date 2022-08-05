@@ -1,16 +1,14 @@
 import { PropsWithChildren } from 'react';
 import { backgroundColorMap, Box } from '@ag.ds-next/box';
 import { boxPalette, packs } from '@ag.ds-next/core';
-import { localPalette, localPaletteVars } from './utils';
+import { localPaletteVars } from './utils';
 
 const backgroundMap = {
 	body: {
 		hover: 'shade',
-		bottomBar: boxPalette.backgroundBodyAlt,
 	},
 	bodyAlt: {
 		hover: 'shadeAlt',
-		bottomBar: boxPalette.backgroundBody,
 	},
 } as const;
 
@@ -28,7 +26,7 @@ export function SubNavContainer({
 	children,
 	background,
 }: SubNavContainerProps) {
-	const { bottomBar, hover } = backgroundMap[background];
+	const { hover } = backgroundMap[background];
 	return (
 		<Box
 			as="nav"
@@ -38,7 +36,6 @@ export function SubNavContainer({
 			css={{
 				position: 'relative',
 				[localPaletteVars.linkHoverBg]: backgroundColorMap[hover],
-				[localPaletteVars.bottomBar]: bottomBar,
 				...packs.print.hidden,
 			}}
 		>
@@ -59,7 +56,7 @@ function BottomBar() {
 				left: 0,
 				right: 0,
 				width: '100%',
-				backgroundColor: localPalette.bottomBar,
+				backgroundColor: boxPalette.borderMuted,
 			}}
 		/>
 	);
