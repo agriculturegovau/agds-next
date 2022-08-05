@@ -18,7 +18,7 @@ export const SiteHeader = () => {
 	return (
 		<Stack>
 			<Header
-				variant="dark"
+				variant="darkAlt"
 				logo={<Logo />}
 				heading="Agriculture Design System"
 				subline="Design System for the Export Service"
