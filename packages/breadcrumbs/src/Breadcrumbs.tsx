@@ -14,7 +14,7 @@ export const Breadcrumbs = ({
 }: BreadcrumbsProps) => (
 	<BreadcrumbsContainer aria-label={ariaLabel}>
 		{links.map(({ label, ...props }, index) => (
-			<BreadcrumbsItem key={index} isFirstItem={index === 0} {...props}>
+			<BreadcrumbsItem key={index} {...props}>
 				{label}
 				{index === links.length - 1 ? (
 					<VisuallyHidden> (current page)</VisuallyHidden>
