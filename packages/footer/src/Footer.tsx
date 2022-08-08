@@ -26,7 +26,7 @@ const variantMap = {
 	},
 	agriculture: {
 		palette: 'dark',
-		background: 'body',
+		background: 'bodyAlt',
 		border: globalPalette.accent,
 	},
 } as const;
@@ -35,7 +35,7 @@ type FooterProps = PropsWithChildren<{
 	variant?: keyof typeof variantMap;
 }>;
 
-export const Footer = ({ variant = 'dark', children }: FooterProps) => {
+export const Footer = ({ variant = 'agriculture', children }: FooterProps) => {
 	return (
 		<Flex
 			as="footer"
