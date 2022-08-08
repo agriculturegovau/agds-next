@@ -23,7 +23,7 @@ export const BreadcrumbsContainer = ({
 						display: 'none',
 					},
 				},
-				[tokens.mediaQuery.max.sm]: {
+				[tokens.mediaQuery.max.xs]: {
 					// In mobile, hide all items except the second last item
 					'li:not(:nth-last-of-type(2))': {
 						display: 'none',
