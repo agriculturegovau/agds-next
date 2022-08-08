@@ -13,7 +13,7 @@ export type MainNavProps = PropsWithChildren<{
 }>;
 
 export function MainNav({
-	variant = 'darkAlt',
+	variant = 'agriculture',
 	links,
 	rightContent,
 	activePath,
