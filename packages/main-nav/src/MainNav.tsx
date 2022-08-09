@@ -1,19 +1,20 @@
 import { ReactNode, PropsWithChildren } from 'react';
-import { NavContainer } from './NavContainer';
+import { NavContainer, NavContainerCommonProps } from './NavContainer';
 import { NavList, NavListLink } from './NavList';
-import { findBestMatch, MainNavVariant } from './utils';
+import { findBestMatch } from './utils';
 
-export type MainNavProps = PropsWithChildren<{
-	activePath?: string;
-	'aria-label'?: string;
-	id?: string;
-	links?: NavListLink[];
-	rightContent?: ReactNode;
-	variant: MainNavVariant;
-}>;
+export type MainNavProps = NavContainerCommonProps &
+	PropsWithChildren<{
+		activePath?: string;
+		'aria-label'?: string;
+		id?: string;
+		links?: NavListLink[];
+		rightContent?: ReactNode;
+	}>;
 
 export function MainNav({
-	variant = 'agriculture',
+	background = 'body',
+	palette,
 	links,
 	rightContent,
 	activePath,
@@ -23,7 +24,8 @@ export function MainNav({
 	const bestMatch = findBestMatch(links, activePath);
 	return (
 		<NavContainer
-			variant={variant}
+			palette={palette}
+			background={background}
 			id={id}
 			aria-label={ariaLabel}
 			rightContent={rightContent}

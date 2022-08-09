@@ -21,42 +21,26 @@ const NAV_ITEMS = [
 const defaultArgs = {
 	links: NAV_ITEMS,
 	activePath: '#content',
-	variant: 'agriculture',
+	background: 'body',
 } as const;
 
 const Template: ComponentStory<typeof MainNav> = (args) => (
 	<MainNav {...args} />
 );
 
-export const AgricultureVariant = Template.bind({});
-AgricultureVariant.args = {
+export const Body = Template.bind({});
+Body.args = {
 	...defaultArgs,
-	variant: 'agriculture',
+	background: 'body',
 };
+Body.storyName = 'body background';
 
-export const DarkVariant = Template.bind({});
-DarkVariant.args = {
+export const BodyAlt = Template.bind({});
+BodyAlt.args = {
 	...defaultArgs,
-	variant: 'dark',
+	background: 'bodyAlt',
 };
-
-export const DarkAltVariant = Template.bind({});
-DarkAltVariant.args = {
-	...defaultArgs,
-	variant: 'darkAlt',
-};
-
-export const LightVariant = Template.bind({});
-LightVariant.args = {
-	...defaultArgs,
-	variant: 'light',
-};
-
-export const LightAltVariant = Template.bind({});
-LightAltVariant.args = {
-	...defaultArgs,
-	variant: 'lightAlt',
-};
+BodyAlt.storyName = 'bodyAlt background';
 
 export const HeaderRightLink = Template.bind({});
 HeaderRightLink.args = {

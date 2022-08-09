@@ -1,7 +1,7 @@
 import { PropsWithChildren, ReactNode, MouseEventHandler } from 'react';
 import FocusLock from 'react-focus-lock';
 import { Global } from '@emotion/react';
-import { Box, Flex, backgroundColorMap } from '@ag.ds-next/box';
+import { Box, BoxProps, Flex, backgroundColorMap } from '@ag.ds-next/box';
 import {
 	boxPalette,
 	useTernaryState,
@@ -14,29 +14,35 @@ import {
 	localPalette,
 	localPaletteVars,
 	variantMap,
-	MainNavVariant,
 	bottomBarPadding,
 } from './utils';
 import { CloseButton, OpenButton } from './MenuButtons';
 import { NavListLink } from './NavList';
 
-export type NavContainerProps = PropsWithChildren<{
+export type NavContainerCommonProps = {
+	background?: 'body' | 'bodyAlt';
+	palette?: BoxProps['palette'];
 	id?: string;
-	'aria-label': string;
-	rightContent?: ReactNode;
-	variant: MainNavVariant;
 	links?: NavListLink[];
-}>;
+	rightContent?: ReactNode;
+};
+
+export type NavContainerProps = PropsWithChildren<
+	NavContainerCommonProps & {
+		'aria-label': string;
+	}
+>;
 
 export function NavContainer({
 	id,
 	rightContent,
 	'aria-label': ariaLabel,
 	children,
-	variant,
+	palette,
+	background,
 	links,
 }: NavContainerProps) {
-	const { background, bottomBar, hover, palette } = variantMap[variant];
+	const { bottomBar, hover } = variantMap[variant];
 
 	const { windowWidth } = useWindowSize();
 	const [menuOpen, open, close] = useTernaryState(false);
@@ -52,8 +58,8 @@ export function NavContainer({
 			css={{
 				position: 'relative',
 				[localPaletteVars.linkHoverBg]: backgroundColorMap[hover],
-				[localPaletteVars.linkActiveBg]: backgroundColorMap[background],
-				[localPaletteVars.bottomBar]: bottomBar, // <-- special case
+				[localPaletteVars.linkActiveBg]: background,
+				[localPaletteVars.bottomBar]: bottomBar,
 				...packs.print.hidden,
 			}}
 		>

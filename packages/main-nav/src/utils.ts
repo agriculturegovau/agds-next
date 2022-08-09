@@ -1,39 +1,39 @@
-import { boxPalette, globalPalette } from '@ag.ds-next/core';
+import { globalPalette } from '@ag.ds-next/core';
 import { NavListLink } from './NavList';
 
 export const bottomBarPadding = 0.5;
 
 export const variantMap = {
 	light: {
-		palette: 'light',
 		background: 'body',
 		hover: 'shade',
-		bottomBar: boxPalette.foregroundAction,
+		bottomBar: globalPalette.accent,
 	},
 	lightAlt: {
-		palette: 'light',
 		background: 'bodyAlt',
 		hover: 'shadeAlt',
-		bottomBar: boxPalette.foregroundAction,
+		bottomBar: globalPalette.accent,
 	},
 	dark: {
-		palette: 'dark',
 		background: 'body',
 		hover: 'shade',
-		bottomBar: boxPalette.foregroundAction,
+		bottomBar: globalPalette.accent,
 	},
 	darkAlt: {
-		palette: 'dark',
 		background: 'bodyAlt',
 		hover: 'shadeAlt',
-		bottomBar: boxPalette.foregroundAction,
+		bottomBar: globalPalette.accent,
 	},
 	agriculture: {
-		palette: 'dark',
 		background: 'body',
 		hover: 'bodyAlt',
 		bottomBar: globalPalette.accent,
 	},
+} as const;
+
+export const hoverMap = {
+	body: 'shade',
+	bodyAlt: 'shadeAlt',
 } as const;
 
 export type MainNavVariant = keyof typeof variantMap;
