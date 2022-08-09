@@ -64,9 +64,7 @@ export const getStaticProps: GetStaticProps<
 	const template = slug ? await getTemplate(slug) : undefined;
 	const subNavItems = slug ? await getTemplateSubNavItems(slug) : undefined;
 	const navLinks = await getTemplateNavLinks();
-	const breadcrumbs = slug
-		? await getTemplateBreadcrumbs(slug, 'Overview')
-		: undefined;
+	const breadcrumbs = slug ? await getTemplateBreadcrumbs(slug) : undefined;
 
 	if (!(slug && template && subNavItems && breadcrumbs)) {
 		return { notFound: true };
