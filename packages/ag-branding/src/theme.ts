@@ -2,9 +2,10 @@ import { Theme } from '@ag.ds-next/core';
 
 export const theme: Theme = {
 	lightForegroundAction: '#00558b',
-	lightBackgroundSuccess: '#E8FFF4',
-	lightBackgroundWarning: '#FDF1E6',
-	lightBackgroundInfo: '#E5F5FD',
+	lightBackgroundSuccess: '#E5FFF6',
+	lightBackgroundWarning: '#FFF2E5',
+	lightBackgroundInfo: '#E5F6FF',
+	lightBackgroundError: '#FFF0F0',
 	darkBackgroundBody: '#0A1629',
 	darkBackgroundShade: '#122440',
 	darkBackgroundBodyAlt: '#162846',
