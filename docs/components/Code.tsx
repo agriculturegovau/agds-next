@@ -133,6 +133,7 @@ const LiveCode = withLive(function LiveCode(props: unknown) {
 				id={codeId}
 				display={isCodeVisible ? 'block' : 'none'}
 				css={packs.print.visible}
+				palette="dark"
 			>
 				<LiveEditor
 					theme={prismTheme}
