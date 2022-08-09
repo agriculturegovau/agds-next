@@ -1,5 +1,6 @@
 import { InputHTMLAttributes, forwardRef } from 'react';
 import { useId } from '@reach/auto-id';
+import { globalPalette } from '@ag.ds-next/core';
 import { textInputStyles } from '@ag.ds-next/text-input';
 import { Stack } from '@ag.ds-next/box';
 import { SearchBoxLabel } from './SearchBoxLabel';
@@ -33,7 +34,13 @@ export const SearchBoxInput = forwardRef<HTMLInputElement, SearchBoxInputProps>(
 				<SearchBoxLabel htmlFor={inputId} visible={labelVisible}>
 					{label}
 				</SearchBoxLabel>
-				<input ref={ref} type="search" css={styles} id={inputId} {...props} />
+				<input
+					ref={ref}
+					type="search"
+					css={{ ...styles, background: globalPalette.lightBackgroundBody }}
+					id={inputId}
+					{...props}
+				/>
 			</Stack>
 		);
 	}
