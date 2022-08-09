@@ -36,7 +36,6 @@ export const themeVars = {
 	darkBorder: '--agds-dark-border',
 	darkBorderMuted: '--agds-dark-border-muted',
 	darkBorderInput: '--agds-dark-border-input',
-	// System colors
 	darkAccent: '--agds-dark-accent',
 	darkError: '--agds-dark-error',
 	darkSuccess: '--agds-dark-success',

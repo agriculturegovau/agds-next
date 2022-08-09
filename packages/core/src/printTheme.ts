@@ -21,7 +21,6 @@ export const printTheme = {
 	darkBorder: 'black',
 	darkBorderMuted: 'black',
 	darkBorderInput: 'black',
-	// system colors
 	accent: 'black',
 	error: 'black',
 	errorMuted: 'black',
