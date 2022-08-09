@@ -6,7 +6,6 @@ import { Prose } from '@ag.ds-next/prose';
 import { Columns } from '@ag.ds-next/columns';
 import { boxPalette } from './boxPalette';
 import { mapSpacing, Spacing } from './tokens';
-import { globalPalette } from './globalPalette';
 
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {
@@ -19,10 +18,6 @@ export const Color = () => {
 	const boxPaletteTokens = Object.keys(
 		boxPalette
 	) as (keyof typeof boxPalette)[];
-
-	const globalPaletteTokens = Object.keys(globalPalette).filter(
-		(x) => !(x.startsWith('light') || x.startsWith('dark'))
-	) as (keyof typeof globalPalette)[];
 
 	return (
 		<Stack gap={1.5}>
