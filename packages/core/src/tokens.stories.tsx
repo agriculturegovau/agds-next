@@ -54,26 +54,6 @@ export const Color = () => {
 					</Columns>
 				</Stack>
 			))}
-			<Stack gap={2} padding={1.5} background="body">
-				<H2>system</H2>
-				<Columns cols={{ xs: 1, sm: 2, md: 3, lg: 4, xl: 6 }}>
-					{globalPaletteTokens.map((token) => (
-						<Card key={token} as="li" shadow>
-							<Box
-								width="100%"
-								height="6rem"
-								background="body"
-								css={{ backgroundColor: globalPalette[token] }}
-							/>
-							<Box borderColor="muted" borderTop>
-								<CardInner>
-									<Text fontSize="xs">{token}</Text>
-								</CardInner>
-							</Box>
-						</Card>
-					))}
-				</Columns>
-			</Stack>
 		</Stack>
 	);
 };

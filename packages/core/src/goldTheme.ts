@@ -15,6 +15,11 @@ export const goldTheme = {
 	lightBorder: '#808080',
 	lightBorderMuted: '#D3D3D3',
 	lightBorderInput: '#808080',
+	lightAccent: '#00698f',
+	lightError: '#d60000',
+	lightSuccess: '#0b996c',
+	lightWarning: '#f69900',
+	lightInfo: '#00bfe9',
 	darkForegroundText: '#FFFFFF',
 	darkForegroundAction: '#61daff',
 	darkForegroundFocus: '#c390f9',
@@ -30,10 +35,9 @@ export const goldTheme = {
 	darkBorder: '#95b7bf',
 	darkBorderMuted: '#4D7680',
 	darkBorderInput: '#FFFFFF',
-	// system colors
-	accent: undefined, // accent does not exist in GOLD.
-	error: '#d60000',
-	success: '#0b996c',
-	warning: '#f69900',
-	info: '#00bfe9',
+	darkAccent: '#61daff',
+	darkError: '#d60000',
+	darkSuccess: '#0b996c',
+	darkWarning: '#f69900',
+	darkInfo: '#00bfe9',
 } as const;

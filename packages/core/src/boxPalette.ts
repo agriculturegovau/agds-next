@@ -19,6 +19,11 @@ const boxPaletteVars = {
 	border: '--agds-border',
 	borderMuted: '--agds-border-muted',
 	borderInput: '--agds-border-input',
+	accent: '--agds-accent',
+	error: '--agds-error',
+	success: '--agds-success',
+	warning: '--agds-warning',
+	info: '--agds-info',
 };
 
 export const boxPalettes = {
@@ -38,6 +43,11 @@ export const boxPalettes = {
 		[boxPaletteVars.border]: `var(${themeVars.lightBorder})`,
 		[boxPaletteVars.borderMuted]: `var(${themeVars.lightBorderMuted})`,
 		[boxPaletteVars.borderInput]: `var(${themeVars.lightBorderInput})`,
+		[boxPaletteVars.accent]: `var(${themeVars.lightAccent})`,
+		[boxPaletteVars.error]: `var(${themeVars.lightError})`,
+		[boxPaletteVars.success]: `var(${themeVars.lightSuccess})`,
+		[boxPaletteVars.warning]: `var(${themeVars.lightWarning})`,
+		[boxPaletteVars.info]: `var(${themeVars.lightInfo})`,
 	}),
 	dark: css({
 		[boxPaletteVars.foregroundText]: `var(${themeVars.darkForegroundText})`,
@@ -55,6 +65,11 @@ export const boxPalettes = {
 		[boxPaletteVars.border]: `var(${themeVars.darkBorder})`,
 		[boxPaletteVars.borderMuted]: `var(${themeVars.darkBorderMuted})`,
 		[boxPaletteVars.borderInput]: `var(${themeVars.darkBorderInput})`,
+		[boxPaletteVars.accent]: `var(${themeVars.darkAccent})`,
+		[boxPaletteVars.error]: `var(${themeVars.darkError})`,
+		[boxPaletteVars.success]: `var(${themeVars.darkSuccess})`,
+		[boxPaletteVars.warning]: `var(${themeVars.darkWarning})`,
+		[boxPaletteVars.info]: `var(${themeVars.darkInfo})`,
 	}),
 } as const;
 
@@ -76,4 +91,9 @@ export const boxPalette = {
 	border: `var(${boxPaletteVars.border})`,
 	borderMuted: `var(${boxPaletteVars.borderMuted})`,
 	borderInput: `var(${boxPaletteVars.borderInput})`,
+	accent: `var(${boxPaletteVars.accent})`,
+	error: `var(${boxPaletteVars.error})`,
+	success: `var(${boxPaletteVars.success})`,
+	warning: `var(${boxPaletteVars.warning})`,
+	info: `var(${boxPaletteVars.info})`,
 };

@@ -15,6 +15,11 @@ export const themeVars = {
 	lightBorder: '--agds-light-border',
 	lightBorderMuted: '--agds-light-border-muted',
 	lightBorderInput: '--agds-light-border-input',
+	lightAccent: '--agds-light-accent',
+	lightError: '--agds-light-error',
+	lightSuccess: '--agds-light-success',
+	lightWarning: '--agds-light-warning',
+	lightInfo: '--agds-light-info',
 	// Dark
 	darkForegroundText: '--agds-dark-foreground-text',
 	darkForegroundAction: '--agds-dark-foreground-action',
@@ -32,11 +37,11 @@ export const themeVars = {
 	darkBorderMuted: '--agds-dark-border-muted',
 	darkBorderInput: '--agds-dark-border-input',
 	// System colors
-	accent: '--agds-accent',
-	error: '--agds-error',
-	success: '--agds-success',
-	warning: '--agds-warning',
-	info: '--agds-info',
+	darkAccent: '--agds-dark-accent',
+	darkError: '--agds-dark-error',
+	darkSuccess: '--agds-dark-success',
+	darkWarning: '--agds-dark-warning',
+	darkInfo: '--agds-dark-info',
 } as const;
 
 export type Theme = Partial<Record<keyof typeof themeVars, string>>;
