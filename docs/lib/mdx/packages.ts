@@ -9,10 +9,10 @@ import {
 } from '../mdxUtils';
 import { slugify } from '../slugify';
 
-const PKG_PATH = normalize(`${process.cwd()}/../packages/`);
+const PKG_PATH = normalize(`${process.cwd()}/../packages`);
 const pkgReadmePath = (slug: string) => `${PKG_PATH}/${slug}/docs/overview.mdx`;
 
-const pkgDocsPath = (slug: string) => normalize(`${PKG_PATH}/${slug}/docs/`);
+const pkgDocsPath = (slug: string) => normalize(`${PKG_PATH}/${slug}/docs`);
 
 const pkgJsonPath = (slug: string) =>
 	normalize(`${PKG_PATH}/${slug}/package.json`);
@@ -137,7 +137,11 @@ export function getGroupBreadCrumbs(groupSlug: string) {
 	return getPkgGroupList().then((groups) => {
 		const group = groups.find((g) => g.slug === groupSlug);
 		return group
-			? [{ href: '/packages', label: 'Packages' }, { label: group.title }]
+			? [
+					{ href: '/', label: 'Home' },
+					{ href: '/packages', label: 'Packages' },
+					{ label: group.title },
+			  ]
 			: undefined;
 	});
 }
@@ -146,6 +150,7 @@ export function getPkgBreadcrumbs(slug: string, currentPageName?: string) {
 	return getMarkdownData(pkgReadmePath(slug)).then(({ data }) => {
 		const meta = pkgNavMetaData(slug, data);
 		const baseItems = [
+			{ href: '/', label: 'Home' },
 			{ href: '/packages', label: 'Packages' },
 			{ href: `/packages/${meta.group}`, label: meta.groupName },
 		];

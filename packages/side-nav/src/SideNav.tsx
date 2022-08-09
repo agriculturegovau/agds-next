@@ -14,13 +14,21 @@ import { SideNavLink } from './SideNavLink';
 import { SideNavCollapseButton } from './SideNavCollapseButton';
 import { SideNavBackground, findBestMatch, useSideNavIds } from './utils';
 
-export type SideNavProps = LinkListProps & {
+export type SideNavProps = {
+	/** Describes the navigation element to assistive technologies. */
 	'aria-label'?: string;
+	/** Used for highlighting the active element. */
+	activePath: string;
+	/** Used as the title of the expand/collapse trigger on smaller screen sizes. */
 	collapseTitle: string;
-	/** If SideNav is placed on 'bodyAlt' background, please set this to "bodyAlt". */
+	/** If SideNav is placed on 'bodyAlt' background, please set this to 'bodyAlt'. */
 	background?: SideNavBackground;
+	/** The list of links. */
+	items: SideNavMenuItemType[];
+	/** The title is placed at the top of the list of links. */
 	title: ReactNode;
-	titleLink: string; // TODO: should this be optional
+	/** If provided, the title will be rendered as an anchor element. */
+	titleLink?: string;
 };
 
 export function SideNav({

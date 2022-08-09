@@ -5,8 +5,7 @@ import {
 	mq,
 } from '@ag.ds-next/core';
 import { Box } from '@ag.ds-next/box';
-
-type ColumnRange = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12;
+import { ColumnRange } from './utils';
 
 export type ColumnProps = {
 	columnSpan?: ResponsiveProp<ColumnRange>;

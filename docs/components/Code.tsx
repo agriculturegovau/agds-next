@@ -20,10 +20,13 @@ import {
 	useToggleState,
 } from '@ag.ds-next/core';
 import { Box, Flex } from '@ag.ds-next/box';
-import { unsetBodyStylesClassname, bodyBlockClassname } from '@ag.ds-next/body';
+import {
+	unsetProseStylesClassname,
+	proseBlockClassname,
+} from '@ag.ds-next/prose';
 import { Button, ButtonLink } from '@ag.ds-next/button';
 import { CopyIcon, ChevronDownIcon, ChevronUpIcon } from '@ag.ds-next/icon';
-import { designSystemComponents } from './designSystemComponents';
+import * as designSystemComponents from './designSystemComponents';
 import { prismTheme } from './prism-theme';
 
 const PlaceholderImage = () => (
@@ -73,11 +76,13 @@ const LiveCode = withLive(function LiveCode(props: unknown) {
 	const codeId = `live-code-${id}`;
 
 	return (
-		<Box border rounded borderColor="muted" className={bodyBlockClassname}>
+		<Box border rounded borderColor="muted" className={proseBlockClassname}>
 			<LivePreview
 				aria-label="Rendered code snippet example"
-				// Prevents body styles from being inherited in live code examples (except for the body example)
-				className={query.slug === 'body' ? undefined : unsetBodyStylesClassname}
+				// Prevents prose styles from being inherited in live code examples (except for the prose example)
+				className={
+					query.slug === 'prose' ? undefined : unsetProseStylesClassname
+				}
 				css={{
 					// The mdx codeblock transform wraps the code component in a pre which
 					// applies some weirdness here. This resets back to normal things

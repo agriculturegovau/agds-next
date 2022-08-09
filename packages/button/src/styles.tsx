@@ -40,6 +40,22 @@ const variants = {
 			textDecoration: 'none',
 		},
 	},
+	text: {
+		height: 'auto',
+		paddingLeft: 0,
+		paddingRight: 0,
+		background: 'transparent',
+		borderColor: 'transparent',
+		color: boxPalette.foregroundAction,
+		...packs.underline,
+
+		'&:not(:disabled):hover': {
+			background: 'transparent',
+			borderColor: 'transparent',
+			color: boxPalette.foregroundText,
+			textDecoration: 'none',
+		},
+	},
 } as const;
 
 export type ButtonVariant = keyof typeof variants;
@@ -81,8 +97,8 @@ export function buttonStyles({
 	size: ButtonSize;
 }) {
 	return {
-		...variants[variant],
 		...sizes[size],
+		...variants[variant],
 
 		appearance: 'none',
 		boxSizing: 'border-box',

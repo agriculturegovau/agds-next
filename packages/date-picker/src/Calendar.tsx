@@ -17,7 +17,7 @@ export type CalendarSingleProps = Omit<
 export function CalendarSingle(props: CalendarSingleProps) {
 	return (
 		<FocusLock autoFocus={false} returnFocus>
-			<CalendarContainer>
+			<CalendarContainer range={false}>
 				<DayPicker mode="single" components={calendarComponents} {...props} />
 			</CalendarContainer>
 		</FocusLock>
@@ -44,7 +44,7 @@ export function CalendarRange({
 				window.setTimeout(() => returnFocusRef.current?.focus(), 0);
 			}}
 		>
-			<CalendarContainer>
+			<CalendarContainer range={true}>
 				<DayPicker mode="range" components={calendarComponents} {...props} />
 			</CalendarContainer>
 		</FocusLock>

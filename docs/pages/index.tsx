@@ -1,8 +1,8 @@
-import { Columns, Column } from '@ag.ds-next/columns';
+import { Columns } from '@ag.ds-next/columns';
 import { SectionContent } from '@ag.ds-next/content';
 import { Stack } from '@ag.ds-next/box';
 import { CallToActionLink } from '@ag.ds-next/call-to-action';
-import { Body } from '@ag.ds-next/body';
+import { Prose } from '@ag.ds-next/prose';
 import { TextLink } from '@ag.ds-next/text-link';
 import {
 	HeroBanner,
@@ -36,7 +36,7 @@ export default function Homepage() {
 				</HeroBanner>
 				<SectionContent>
 					<Stack gap={3}>
-						<Body>
+						<Prose>
 							<p>
 								AgDS is based on the{' '}
 								<TextLink href="https://gold.designsystemau.org/">
@@ -56,38 +56,29 @@ export default function Homepage() {
 								do not depend on these components just yet. We&apos;re working
 								hard to get a stable release out as soon as we can.
 							</p>
-						</Body>
-						<Columns gap={1} as="ul">
-							<Column
-								as="li"
-								columnSpan={{ xs: 12, sm: 6, md: 6, lg: 4, xl: 3 }}
-							>
-								<PictogramCard
-									title="Packages"
-									pictogram="packages"
-									href="/packages"
-								/>
-							</Column>
-							<Column
-								as="li"
-								columnSpan={{ xs: 12, sm: 6, md: 6, lg: 4, xl: 3 }}
-							>
-								<PictogramCard
-									title="Guides"
-									pictogram="guides"
-									href="/guides"
-								/>
-							</Column>
-							<Column
-								as="li"
-								columnSpan={{ xs: 12, sm: 6, md: 6, lg: 4, xl: 3 }}
-							>
-								<PictogramCard
-									title="Starter kit"
-									pictogram="starter"
-									href="https://github.com/steelthreads/agds-next-starter-kit"
-								/>
-							</Column>
+						</Prose>
+						<Columns
+							as="ul"
+							cols={{
+								xs: 1,
+								sm: 2,
+								lg: 3,
+								xl: 4,
+							}}
+						>
+							<PictogramCard
+								title="Packages"
+								pictogram="packages"
+								href="/packages"
+							/>
+
+							<PictogramCard title="Guides" pictogram="guides" href="/guides" />
+
+							<PictogramCard
+								title="Starter kit"
+								pictogram="starter"
+								href="https://github.com/steelthreads/agds-next-starter-kit"
+							/>
 						</Columns>
 					</Stack>
 				</SectionContent>

@@ -1,4 +1,4 @@
-import { Columns, Column } from '@ag.ds-next/columns';
+import { Columns } from '@ag.ds-next/columns';
 import { PictogramCard } from './PictogramCard';
 
 type Pkg = {
@@ -8,19 +8,14 @@ type Pkg = {
 };
 
 export const PkgCardList = ({ items }: { items: Pkg[] }) => (
-	<Columns gap={1} as="ul">
+	<Columns as="ul" cols={{ xs: 1, sm: 2, md: 3 }}>
 		{items.map(({ title, slug, group }) => (
-			<Column
+			<PictogramCard
+				title={title}
+				pictogram={slug}
+				href={`/packages/${group}/${slug}`}
 				key={slug}
-				as="li"
-				columnSpan={{ xs: 12, sm: 6, md: 6, lg: 4, xl: 3 }}
-			>
-				<PictogramCard
-					title={title}
-					pictogram={slug}
-					href={`/packages/${group}/${slug}`}
-				/>
-			</Column>
+			/>
 		))}
 	</Columns>
 );

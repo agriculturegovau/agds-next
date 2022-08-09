@@ -7,7 +7,7 @@ import {
 } from '../mdxUtils';
 import { slugify } from '../slugify';
 
-const GUIDE_PATH = normalize(`${process.cwd()}/../guides/`);
+const GUIDE_PATH = normalize(`${process.cwd()}/../guides`);
 const guidePath = (slug: string) => normalize(`${GUIDE_PATH}/${slug}.mdx`);
 
 export async function getGuide(slug: string) {
@@ -64,7 +64,11 @@ function guideNavMetaData(
 export function getGuidesBreadcrumbs(slug: string) {
 	return getMarkdownData(guidePath(slug)).then(({ data }) => {
 		const meta = guideNavMetaData(slug, data);
-		return [{ href: '/guides', label: 'Guides' }, { label: meta.title }];
+		return [
+			{ href: '/', label: 'Home' },
+			{ href: '/guides', label: 'Guides' },
+			{ label: meta.title },
+		];
 	});
 }
 

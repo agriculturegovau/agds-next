@@ -7,12 +7,13 @@ import {
 } from '../mdxUtils';
 import { slugify } from '../slugify';
 
-const TEMPLATES_PATH = normalize(`${process.cwd()}/../templates/`);
+const TEMPLATES_PATH = normalize(`${process.cwd()}/../templates`);
 
 const templateOverviewPath = (slug: string) =>
 	normalize(`${TEMPLATES_PATH}/${slug}/index.mdx`);
+
 const templateDocsPath = (slug: string) =>
-	normalize(`${TEMPLATES_PATH}/${slug}/`);
+	normalize(`${TEMPLATES_PATH}/${slug}`);
 
 export async function getTemplate(slug: string) {
 	const { content, data } = await getMarkdownData(templateOverviewPath(slug));
@@ -93,14 +94,21 @@ function templateNavMetaData(
 	};
 }
 
-export function getTemplateBreadcrumbs(slug: string, currentPageName: string) {
+export function getTemplateBreadcrumbs(slug: string, currentPageName?: string) {
 	return getMarkdownData(templateOverviewPath(slug)).then(({ data }) => {
 		const meta = templateNavMetaData(slug, data);
-		return [
+		const baseItems = [
+			{ href: '/', label: 'Home' },
 			{ href: '/templates', label: 'Templates' },
-			{ href: `/templates/${slug}`, label: meta.title },
-			{ label: currentPageName },
 		];
+		if (currentPageName) {
+			return [
+				...baseItems,
+				{ href: `/templates/${slug}`, label: meta.title },
+				{ label: currentPageName },
+			];
+		}
+		return [...baseItems, { label: meta.title }];
 	});
 }
 

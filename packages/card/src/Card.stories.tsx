@@ -1,6 +1,8 @@
+import { Fragment } from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { VisuallyHidden } from '@ag.ds-next/a11y';
 import { Box, Flex, Stack } from '@ag.ds-next/box';
-import { Heading } from '@ag.ds-next/heading';
+import { H2, H3, Heading } from '@ag.ds-next/heading';
 import { ChevronRightIcon } from '@ag.ds-next/icon';
 import { Columns, Column } from '@ag.ds-next/columns';
 import { DirectionLink } from '@ag.ds-next/direction-link';
@@ -8,17 +10,18 @@ import { Tags } from '@ag.ds-next/tags';
 import { Text } from '@ag.ds-next/text';
 import { TextLink } from '@ag.ds-next/text-link';
 import { ExternalLinkIcon } from '@ag.ds-next/icon';
+import { StatusBadge } from '@ag.ds-next/badge';
+import { PageContent } from '@ag.ds-next/content';
 import { Card } from './Card';
 import { CardInner } from './CardInner';
 import { CardLink } from './CardLink';
-import { CardList } from './CardList';
 import { CardHeader } from './CardHeader';
 import { CardFooter } from './CardFooter';
 
 export default {
 	title: 'layout/Card',
 	component: Card,
-	subcomponents: { CardInner, CardLink, CardList, CardHeader, CardFooter },
+	subcomponents: { CardInner, CardLink, CardHeader, CardFooter },
 } as ComponentMeta<typeof Card>;
 
 export const Basic: ComponentStory<typeof Card> = (args) => (
@@ -127,72 +130,85 @@ FeatureFooter.args = {
 	background: 'body',
 };
 
-export const CardListStory: ComponentStory<typeof CardList> = (args) => (
-	<CardList {...args}>
-		<Card shadow clickable>
-			<CardInner>
-				<Stack gap={1}>
-					<Heading type="h3">Card Title</Heading>
-					<Text as="p">Some content</Text>
-				</Stack>
-			</CardInner>
-		</Card>
-		<Card shadow clickable>
-			<CardInner>
-				<Stack gap={1}>
-					<Heading type="h3">Card Title</Heading>
-					<Text as="p">Some content</Text>
-					<Text as="p">Additional content</Text>
-				</Stack>
-			</CardInner>
-		</Card>
-		<Card shadow clickable>
-			<CardInner>
-				<Stack gap={1}>
-					<Heading type="h3">Card Title</Heading>
-					<Text as="p">Some content</Text>
-				</Stack>
-			</CardInner>
-		</Card>
-		<Card shadow clickable>
-			<CardInner>
-				<Stack gap={1}>
-					<Heading type="h3">Card Title</Heading>
-					<Text as="p">Some content</Text>
-				</Stack>
-			</CardInner>
-		</Card>
-		<Card shadow clickable>
-			<CardInner>
-				<Stack gap={1}>
-					<Heading type="h3">Card Title</Heading>
-					<Text as="p">Some content</Text>
-				</Stack>
-			</CardInner>
-		</Card>
-		<Card shadow clickable>
-			<CardInner>
-				<Stack gap={1}>
-					<Heading type="h3">Card Title</Heading>
-					<Text as="p">Some content</Text>
-				</Stack>
-			</CardInner>
-		</Card>
-		<Card shadow clickable>
-			<CardInner>
-				<Stack gap={1}>
-					<Heading type="h3">Card Title</Heading>
-					<Text as="p">Some content</Text>
-				</Stack>
-			</CardInner>
-		</Card>
-	</CardList>
-);
-CardListStory.storyName = 'Card list';
-CardListStory.args = {
-	gap: 1,
-	templateColumns: [1, 2, 4],
+export const CardListStory = () => {
+	const toneMapper = {
+		Closed: 'success',
+		Open: 'warning',
+		Pending: 'info',
+	} as const;
+
+	const listData = [
+		{
+			id: 'RE4321–2201–03',
+			businessName: 'Orange Meat Works',
+			type: 'Record keeping (Minor)',
+			status: 'Pending',
+		},
+		{
+			id: 'RE4321–2201–02',
+			businessName: 'Orange Meat Works',
+			type: 'Hygiene (Major)',
+			status: 'Open',
+		},
+		{
+			id: 'RE4321–2201–01',
+			businessName: 'Orange Meat Works',
+			type: 'Record keeping (Minor)',
+			status: 'Closed',
+		},
+	] as const;
+
+	return (
+		<PageContent>
+			<Stack gap={1.5}>
+				<H2>Active CARs</H2>
+				<Text as="p">You may now manage your CARs online.</Text>
+				<Columns as="ul" gap={1} cols={{ xs: 1, sm: 2, lg: 3 }}>
+					{listData.map((item) => (
+						<Card as="li" shadow clickable key={item.id}>
+							<CardInner>
+								<Stack gap={0.5} width="100%" flexWrap="wrap">
+									<H3>
+										<CardLink href={`#${item.id}`}>
+											{item.businessName}
+										</CardLink>
+									</H3>
+
+									<Text as="p">
+										<VisuallyHidden>Type: </VisuallyHidden>
+										{item.type}
+									</Text>
+
+									<Flex
+										gap={0.5}
+										flexWrap="wrap"
+										justifyContent="space-between"
+										alignItems="center"
+									>
+										<Text color="muted" fontSize="xs">
+											<VisuallyHidden>{'CAR ID: '}</VisuallyHidden>
+											{item.id}
+										</Text>
+										<StatusBadge
+											tone={toneMapper[item.status]}
+											label={
+												<Fragment>
+													<VisuallyHidden>{'Status: '}</VisuallyHidden>
+													{item.status}
+												</Fragment>
+											}
+										/>
+									</Flex>
+								</Stack>
+							</CardInner>
+						</Card>
+					))}
+				</Columns>
+			</Stack>
+		</PageContent>
+	);
 };
+CardListStory.storyName = 'List of Cards';
 
 export const Compositions = () => {
 	return (
@@ -281,24 +297,6 @@ export const Compositions = () => {
 								<Box fontWeight="bold">
 									<CardLink>Add a commodity, product or operation</CardLink>
 								</Box>
-							</Stack>
-						</CardInner>
-					</Card>
-
-					<Card>
-						<CardInner>
-							<Stack gap={0.5}>
-								<Flex justifyContent="space-between">
-									<Tags items={[{ label: '1034' }]} />
-									<Text color="muted">MEAT</Text>
-								</Flex>
-
-								<Text fontSize="lg" fontWeight="bold">
-									Orange Farmers Market
-								</Text>
-
-								<TextLink>Registrations</TextLink>
-								<TextLink>Insights</TextLink>
 							</Stack>
 						</CardInner>
 					</Card>

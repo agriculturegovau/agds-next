@@ -1,19 +1,23 @@
+import { PropsWithChildren } from 'react';
 import { Box } from '@ag.ds-next/box';
-import { LinkProps, packs, useLinkComponent } from '@ag.ds-next/core';
+import { packs, useLinkComponent } from '@ag.ds-next/core';
 import { localPalette } from './utils';
 
-export type SideNavTitleProps = LinkProps & {
-	isCurrentPage?: boolean;
-};
+export type SideNavTitleProps = PropsWithChildren<{
+	id: string;
+	href?: string;
+	isCurrentPage: boolean;
+}>;
 
-export const SideNavTitle = ({
+export function SideNavTitle({
 	children,
 	id,
 	isCurrentPage,
-	...props
-}: SideNavTitleProps) => {
+	href,
+}: SideNavTitleProps) {
 	const Link = useLinkComponent();
-	return (
+
+	if (href) {
 		<Box as="h2" id={id}>
 			<Box
 				as={Link}
@@ -24,8 +28,8 @@ export const SideNavTitle = ({
 				lineHeight="heading"
 				display="block"
 				focus
+				href={href}
 				aria-current={isCurrentPage ? 'page' : undefined}
-				{...props}
 				css={{
 					textDecoration: 'none',
 					'&:hover': {
@@ -36,6 +40,21 @@ export const SideNavTitle = ({
 			>
 				{children}
 			</Box>
+		</Box>;
+	}
+
+	return (
+		<Box
+			as="h2"
+			id={id}
+			display="block"
+			padding={1}
+			color="text"
+			fontSize="sm"
+			fontWeight="bold"
+			lineHeight="heading"
+		>
+			{children}
 		</Box>
 	);
-};
+}

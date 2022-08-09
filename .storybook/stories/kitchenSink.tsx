@@ -14,7 +14,7 @@ import { Breadcrumbs } from '@ag.ds-next/breadcrumbs';
 import { Button, ButtonGroup } from '@ag.ds-next/button';
 import { Callout } from '@ag.ds-next/callout';
 import { CallToActionLink } from '@ag.ds-next/call-to-action';
-import { Card, CardInner, CardList } from '@ag.ds-next/card';
+import { Card, CardInner } from '@ag.ds-next/card';
 import { Columns, Column } from '@ag.ds-next/columns';
 import { PageContent } from '@ag.ds-next/content';
 import { ControlGroup, Checkbox, Radio } from '@ag.ds-next/control-input';
@@ -49,6 +49,16 @@ import {
 	HeroBannerTitle,
 	HeroBannerTitleContainer,
 } from '@ag.ds-next/hero-banner';
+import { SkeletonHeading, SkeletonText } from '@ag.ds-next/skeleton';
+import {
+	Table,
+	TableCaption,
+	TableCell,
+	TableHeader,
+	TableHead,
+	TableBody,
+} from '@ag.ds-next/table';
+import { TextLink } from '@ag.ds-next/text-link';
 
 export default {
 	title: 'Examples/Kitchen Sink',
@@ -90,7 +100,7 @@ const KitchenSink = ({ background }: { background: 'body' | 'bodyAlt' }) => {
 		<Box background={background}>
 			<Stack>
 				<Header
-					variant="dark"
+					variant="darkAlt"
 					logo={<Logo />}
 					heading="Export Service"
 					subline="Supporting Australian agricultural exports"
@@ -156,6 +166,7 @@ const KitchenSink = ({ background }: { background: 'body' | 'bodyAlt' }) => {
 						<Stack gap={2}>
 							<SubNav
 								background={background}
+								activePath="#usage"
 								links={[
 									{ href: '#usage', label: 'Usage' },
 									{ href: '#code', label: 'Code' },
@@ -185,7 +196,9 @@ const KitchenSink = ({ background }: { background: 'body' | 'bodyAlt' }) => {
 
 								<PageAlert tone="error" title="There is a problem">
 									<Text as="p">
-										<a href="#email">Full name must not be empty</a>
+										<TextLink href="#email">
+											Full name must not be empty
+										</TextLink>
 									</Text>
 								</PageAlert>
 
@@ -203,7 +216,7 @@ const KitchenSink = ({ background }: { background: 'body' | 'bodyAlt' }) => {
 							/>
 
 							<InpageNav
-								title="Content"
+								title="On this page"
 								links={[
 									{ href: '#section-1', label: 'Section 1' },
 									{ href: '#section-2', label: 'Section 2' },
@@ -267,7 +280,7 @@ const KitchenSink = ({ background }: { background: 'body' | 'bodyAlt' }) => {
 								</AccordionItem>
 							</Accordion>
 
-							<CardList templateColumns={2}>
+							<Columns cols={2}>
 								<Card background="body">
 									<CardInner>
 										<Stack gap={1}>
@@ -294,7 +307,23 @@ const KitchenSink = ({ background }: { background: 'body' | 'bodyAlt' }) => {
 										</Stack>
 									</CardInner>
 								</Card>
-							</CardList>
+								<Card>
+									<CardInner>
+										<Stack gap={1}>
+											<SkeletonHeading type="h3" width="50%" />
+											<SkeletonText fontSize="sm" width="25%" />
+										</Stack>
+									</CardInner>
+								</Card>
+								<Card background="bodyAlt">
+									<CardInner>
+										<Stack gap={1}>
+											<SkeletonHeading type="h3" width="50%" />
+											<SkeletonText fontSize="sm" width="25%" />
+										</Stack>
+									</CardInner>
+								</Card>
+							</Columns>
 
 							<H2>Forms</H2>
 							<FormStack>
@@ -336,7 +365,7 @@ const KitchenSink = ({ background }: { background: 'body' | 'bodyAlt' }) => {
 									<Radio checked={false}>Tablet</Radio>
 									<Radio checked={true}>Laptop</Radio>
 								</ControlGroup>
-								<Checkbox checked={false}>Label</Checkbox>
+								<Checkbox checked={true}>Label</Checkbox>
 								<ButtonGroup>
 									<Button size="md">Primary</Button>
 									<Button size="md" variant="secondary">
@@ -373,6 +402,54 @@ const KitchenSink = ({ background }: { background: 'body' | 'bodyAlt' }) => {
 								<IndicatorDot tone="neutral" />
 								<IndicatorDot tone="action" />
 							</Flex>
+
+							<Table striped>
+								<TableCaption>
+									Population of Australian states and territories, December 2015
+								</TableCaption>
+								<TableHead>
+									<tr>
+										<TableHeader scope="col">Location</TableHeader>
+										<TableHeader textAlign="right" scope="col">
+											Population
+										</TableHeader>
+									</tr>
+								</TableHead>
+								<TableBody>
+									<tr>
+										<TableCell>New South Wales</TableCell>
+										<TableCell textAlign="right">7,670,700</TableCell>
+									</tr>
+									<tr>
+										<TableCell>Victoria</TableCell>
+										<TableCell textAlign="right">5,996,400</TableCell>
+									</tr>
+									<tr>
+										<TableCell>Queensland</TableCell>
+										<TableCell textAlign="right">4,808,800</TableCell>
+									</tr>
+									<tr>
+										<TableCell>Western Australia</TableCell>
+										<TableCell textAlign="right">2,603,900</TableCell>
+									</tr>
+									<tr>
+										<TableCell>South Australia</TableCell>
+										<TableCell textAlign="right">1,702,800</TableCell>
+									</tr>
+									<tr>
+										<TableCell>Tasmania</TableCell>
+										<TableCell textAlign="right">517,400</TableCell>
+									</tr>
+									<tr>
+										<TableCell>Nothern Territory</TableCell>
+										<TableCell textAlign="right">244,400</TableCell>
+									</tr>
+									<tr>
+										<TableCell>Australian Capital Territory</TableCell>
+										<TableCell textAlign="right">393,000</TableCell>
+									</tr>
+								</TableBody>
+							</Table>
 						</Stack>
 					</Column>
 				</Columns>

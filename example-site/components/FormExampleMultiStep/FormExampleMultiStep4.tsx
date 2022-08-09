@@ -3,11 +3,11 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { FormStack } from '@ag.ds-next/form-stack';
 import { VisuallyHidden } from '@ag.ds-next/a11y';
-import { Body } from '@ag.ds-next/body';
+import { Prose } from '@ag.ds-next/prose';
 import { Stack } from '@ag.ds-next/box';
 import { Checkbox, ControlGroup } from '@ag.ds-next/control-input';
 import { H2 } from '@ag.ds-next/heading';
-import { TextButton } from '@ag.ds-next/text-link';
+import { Button } from '@ag.ds-next/button';
 import {
 	DefinitionList,
 	DefinitionListItem,
@@ -53,7 +53,9 @@ export const FormExampleMultiStep4 = () => {
 			{/** Summary: Step 0 */}
 			<Stack gap={1.5} alignItems="flex-start">
 				<H2>{FORM_STEPS[0].label}</H2>
-				<TextButton onClick={() => goToStep(0)}>Change</TextButton>
+				<Button variant="text" onClick={() => goToStep(0)}>
+					Change
+				</Button>
 				<DefinitionList>
 					<DefinitionListItem>
 						<DefinitionTerm>
@@ -70,7 +72,9 @@ export const FormExampleMultiStep4 = () => {
 			{/** Summary: Step 1 */}
 			<Stack gap={1.5} alignItems="flex-start">
 				<H2>{FORM_STEPS[1].label}</H2>
-				<TextButton onClick={() => goToStep(1)}>Change</TextButton>
+				<Button variant="text" onClick={() => goToStep(1)}>
+					Change
+				</Button>
 				<DefinitionList>
 					<DefinitionListItem>
 						<DefinitionTerm>
@@ -97,7 +101,9 @@ export const FormExampleMultiStep4 = () => {
 			{/** Summary: Step 2 */}
 			<Stack gap={1.5} alignItems="flex-start">
 				<H2>{FORM_STEPS[2].label}</H2>
-				<TextButton onClick={() => goToStep(2)}>Change</TextButton>
+				<Button variant="text" onClick={() => goToStep(2)}>
+					Change
+				</Button>
 				<DefinitionList>
 					<DefinitionListItem>
 						<DefinitionTerm>
@@ -114,7 +120,9 @@ export const FormExampleMultiStep4 = () => {
 			{/** Summary: Step 3 */}
 			<Stack gap={1.5} alignItems="flex-start">
 				<H2>{FORM_STEPS[3].label}</H2>
-				<TextButton onClick={() => goToStep(3)}>Change</TextButton>
+				<Button variant="text" onClick={() => goToStep(3)}>
+					Change
+				</Button>
 				<DefinitionList>
 					<DefinitionListItem>
 						<DefinitionTerm>
@@ -141,7 +149,7 @@ export const FormExampleMultiStep4 = () => {
 			{/** Declaration form */}
 			<Stack as="form" gap={3} onSubmit={handleSubmit(onSubmit)} noValidate>
 				<FormStack>
-					<Body>
+					<Prose>
 						<h2>Declaration</h2>
 						<p>I declare that:</p>
 						<ul>
@@ -151,7 +159,7 @@ export const FormExampleMultiStep4 = () => {
 							</li>
 							<li>I have read and understood the terms and conditions</li>
 						</ul>
-					</Body>
+					</Prose>
 					<ControlGroup
 						label="Declaration agreement"
 						invalid={Boolean(errors.declaration?.message)}

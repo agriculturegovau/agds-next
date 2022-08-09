@@ -1,7 +1,7 @@
 import { GetStaticProps, InferGetStaticPropsType } from 'next';
 import { MDXRemote } from 'next-mdx-remote';
 import { Box } from '@ag.ds-next/box';
-import { Body } from '@ag.ds-next/body';
+import { Prose } from '@ag.ds-next/prose';
 import {
 	getTemplate,
 	getTemplateBreadcrumbs,
@@ -36,7 +36,7 @@ export default function TemplateOverviewPage({
 					},
 				]}
 			>
-				<Body id="page-content">
+				<Prose id="page-content">
 					<Box border borderColor="muted" css={{ img: { display: 'block' } }}>
 						<img
 							role="presentation"
@@ -45,7 +45,7 @@ export default function TemplateOverviewPage({
 						/>
 					</Box>
 					<MDXRemote {...template.source} components={mdxComponents} />
-				</Body>
+				</Prose>
 			</TemplateLayout>
 		</>
 	);
@@ -64,9 +64,7 @@ export const getStaticProps: GetStaticProps<
 	const template = slug ? await getTemplate(slug) : undefined;
 	const subNavItems = slug ? await getTemplateSubNavItems(slug) : undefined;
 	const navLinks = await getTemplateNavLinks();
-	const breadcrumbs = slug
-		? await getTemplateBreadcrumbs(slug, 'Overview')
-		: undefined;
+	const breadcrumbs = slug ? await getTemplateBreadcrumbs(slug) : undefined;
 
 	if (!(slug && template && subNavItems && breadcrumbs)) {
 		return { notFound: true };
