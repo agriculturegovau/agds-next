@@ -1,11 +1,5 @@
 import { Flex } from '@ag.ds-next/box';
-import {
-	boxPalette,
-	globalPalette,
-	mapSpacing,
-	packs,
-	Spacing,
-} from '@ag.ds-next/core';
+import { boxPalette, mapSpacing, packs, Spacing } from '@ag.ds-next/core';
 import { ControlSize, iconSize } from './utils';
 
 export type CheckboxIndicatorProps = {
@@ -32,7 +26,6 @@ export const CheckboxIndicator = ({
 				borderWidth,
 				borderStyle: 'solid',
 				borderColor: boxPalette.borderInput,
-				backgroundColor: globalPalette.lightBackgroundBody,
 				opacity: disabled ? 0.3 : undefined,
 				...(invalid
 					? {
@@ -66,7 +59,7 @@ const CheckboxIcon = ({ size }: { size: Spacing }) => (
 			width: mapSpacing(size),
 			height: mapSpacing(size),
 			display: 'none',
-			color: globalPalette.lightForegroundText,
+			color: boxPalette.foregroundText,
 			fill: 'none',
 			stroke: 'currentColor',
 		}}
