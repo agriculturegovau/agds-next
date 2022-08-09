@@ -167,7 +167,7 @@ const SelectIcon = ({ disabled }: { disabled?: boolean }) => (
 			transform: 'translateY(-50%)',
 			opacity: disabled ? 0.3 : 1,
 			pointerEvents: 'none',
-			color: globalPalette.lightForegroundAction,
+			color: boxPalette.foregroundAction,
 		}}
 	/>
 );
@@ -188,12 +188,12 @@ const selectStyles = ({
 		paddingLeft: mapSpacing(1),
 		paddingRight: mapSpacing(3),
 		margin: 0,
-		backgroundColor: globalPalette.lightBackgroundBody,
+		background: 'none',
 		borderWidth: tokens.borderWidth.lg,
 		borderStyle: 'solid',
 		borderColor: boxPalette.borderInput,
 		borderRadius: tokens.borderRadius,
-		color: globalPalette.lightForegroundText,
+		color: boxPalette.foregroundText,
 		width: '100%',
 		fontFamily: tokens.font.body,
 		...packs.input.md,
