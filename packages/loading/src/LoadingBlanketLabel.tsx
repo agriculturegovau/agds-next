@@ -1,5 +1,4 @@
 import { ReactNode } from 'react';
-import { globalPalette } from '@ag.ds-next/core';
 import { Text } from '@ag.ds-next/text';
 
 export type LoadingBlanketLabelProps = {
@@ -7,12 +6,7 @@ export type LoadingBlanketLabelProps = {
 };
 
 export const LoadingBlanketLabel = ({ children }: LoadingBlanketLabelProps) => (
-	<Text
-		fontSize="lg"
-		fontWeight="bold"
-		lineHeight="heading"
-		css={{ color: globalPalette.lightForegroundText }}
-	>
+	<Text fontSize="lg" fontWeight="bold" lineHeight="heading">
 		{children}
 	</Text>
 );
