@@ -1,6 +1,6 @@
 import { forwardRef, HTMLAttributes, PropsWithChildren } from 'react';
 import { Flex } from '@ag.ds-next/box';
-import { boxPalette, globalPalette, tokens } from '@ag.ds-next/core';
+import { boxPalette, tokens } from '@ag.ds-next/core';
 import {
 	AlertFilledIcon,
 	InfoFilledIcon,
@@ -57,22 +57,22 @@ export const PageAlert = forwardRef<HTMLDivElement, PageAlertProps>(
 
 const pageAlertToneMap = {
 	success: {
-		fg: globalPalette.success,
+		fg: boxPalette.success,
 		bg: boxPalette.backgroundSuccess,
 		Icon: SuccessFilledIcon,
 	},
 	error: {
-		fg: globalPalette.error,
+		fg: boxPalette.error,
 		bg: boxPalette.backgroundError,
 		Icon: AlertFilledIcon,
 	},
 	info: {
-		fg: globalPalette.info,
+		fg: boxPalette.info,
 		bg: boxPalette.backgroundInfo,
 		Icon: InfoFilledIcon,
 	},
 	warning: {
-		fg: globalPalette.warning,
+		fg: boxPalette.warning,
 		bg: boxPalette.backgroundWarning,
 		Icon: WarningFilledIcon,
 	},

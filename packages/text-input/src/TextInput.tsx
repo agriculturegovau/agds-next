@@ -1,12 +1,6 @@
 import { forwardRef, InputHTMLAttributes } from 'react';
 import { Field, fieldMaxWidth, FieldMaxWidth } from '@ag.ds-next/field';
-import {
-	packs,
-	boxPalette,
-	mapSpacing,
-	globalPalette,
-	tokens,
-} from '@ag.ds-next/core';
+import { packs, boxPalette, mapSpacing, tokens } from '@ag.ds-next/core';
 
 type NativeInputProps = InputHTMLAttributes<HTMLInputElement>;
 
@@ -116,12 +110,12 @@ export const textInputStyles = ({
 		...(invalid
 			? {
 					backgroundColor: boxPalette.backgroundError,
-					borderColor: globalPalette.error,
+					borderColor: boxPalette.error,
 			  }
 			: valid
 			? {
 					backgroundColor: boxPalette.backgroundSuccess,
-					borderColor: globalPalette.success,
+					borderColor: boxPalette.success,
 			  }
 			: undefined),
 

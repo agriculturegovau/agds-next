@@ -9,7 +9,7 @@ import { useDropzone, DropzoneOptions } from 'react-dropzone';
 import formatFileSize from 'filesize';
 import { Flex, Stack } from '@ag.ds-next/box';
 import { Button } from '@ag.ds-next/button';
-import { packs, boxPalette, globalPalette, tokens } from '@ag.ds-next/core';
+import { packs, boxPalette, tokens } from '@ag.ds-next/core';
 import { Field } from '@ag.ds-next/field';
 import { UploadIcon } from '@ag.ds-next/icon';
 import { Text } from '@ag.ds-next/text';
@@ -287,12 +287,12 @@ export const fileInputStyles = ({
 		...(invalid
 			? {
 					backgroundColor: boxPalette.backgroundError,
-					borderColor: globalPalette.error,
+					borderColor: boxPalette.error,
 			  }
 			: valid
 			? {
 					backgroundColor: boxPalette.backgroundSuccess,
-					borderColor: globalPalette.success,
+					borderColor: boxPalette.success,
 			  }
 			: disabled
 			? {

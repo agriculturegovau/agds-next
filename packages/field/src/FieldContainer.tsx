@@ -1,6 +1,6 @@
 import { PropsWithChildren } from 'react';
 import { Stack } from '@ag.ds-next/box';
-import { globalPalette } from '@ag.ds-next/core';
+import { boxPalette } from '@ag.ds-next/core';
 
 export type FieldContainerProps = PropsWithChildren<{
 	invalid?: boolean;
@@ -19,7 +19,7 @@ export const FieldContainer = ({
 		borderLeftWidth="xl"
 		id={id}
 		css={{
-			borderLeftColor: invalid ? globalPalette.error : undefined,
+			borderLeftColor: invalid ? boxPalette.error : undefined,
 		}}
 	>
 		{children}

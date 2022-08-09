@@ -36,12 +36,12 @@ export const CheckboxIndicator = ({
 				opacity: disabled ? 0.3 : undefined,
 				...(invalid
 					? {
-							borderColor: globalPalette.error,
+							borderColor: boxPalette.error,
 							backgroundColor: boxPalette.backgroundError,
 					  }
 					: valid
 					? {
-							borderColor: globalPalette.success,
+							borderColor: boxPalette.success,
 							backgroundColor: boxPalette.backgroundSuccess,
 					  }
 					: undefined),

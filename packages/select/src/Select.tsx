@@ -5,13 +5,7 @@ import {
 	SelectHTMLAttributes,
 } from 'react';
 import { Field, FieldMaxWidth, fieldMaxWidth } from '@ag.ds-next/field';
-import {
-	packs,
-	boxPalette,
-	mapSpacing,
-	globalPalette,
-	tokens,
-} from '@ag.ds-next/core';
+import { packs, boxPalette, mapSpacing, tokens } from '@ag.ds-next/core';
 import { ChevronDownIcon } from '@ag.ds-next/icon';
 
 export type Option = {
@@ -207,12 +201,12 @@ const selectStyles = ({
 		...(invalid
 			? {
 					backgroundColor: boxPalette.backgroundError,
-					borderColor: globalPalette.error,
+					borderColor: boxPalette.error,
 			  }
 			: valid
 			? {
 					backgroundColor: boxPalette.backgroundSuccess,
-					borderColor: globalPalette.success,
+					borderColor: boxPalette.success,
 			  }
 			: undefined),
 
