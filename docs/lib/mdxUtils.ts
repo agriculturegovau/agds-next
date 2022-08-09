@@ -95,7 +95,11 @@ function releaseNavMetaData(
 export function getReleaseBreadcrumbs(slug: string) {
 	return getMarkdownData(releasePath(slug)).then(({ data }) => {
 		const meta = releaseNavMetaData(slug, data);
-		return [{ href: '/releases', label: 'Releases' }, { label: meta.title }];
+		return [
+			{ href: '/', label: 'Home' },
+			{ href: '/releases', label: 'Releases' },
+			{ label: meta.title },
+		];
 	});
 }
 
