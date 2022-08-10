@@ -1,6 +1,5 @@
 import { InputHTMLAttributes, forwardRef } from 'react';
 import { useId } from '@reach/auto-id';
-import { globalPalette } from '@ag.ds-next/core';
 import { textInputStyles } from '@ag.ds-next/text-input';
 import { Stack } from '@ag.ds-next/box';
 import { SearchBoxLabel } from './SearchBoxLabel';
@@ -52,8 +51,6 @@ const inputStyles = () => {
 		borderRightWidth: 0,
 		borderTopRightRadius: 0,
 		borderBottomRightRadius: 0,
-		background: globalPalette.lightBackgroundBody,
-		borderColor: globalPalette.lightBackgroundBody,
 
 		'&::-webkit-search-decoration, &::-webkit-search-cancel-button, &::-webkit-search-results-button, &::-webkit-search-results-decoration':
 			{
