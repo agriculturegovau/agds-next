@@ -44,6 +44,7 @@ export async function getGuideList() {
 			getMarkdownData(guidePath(slug)).then(({ data }) => ({
 				order: data.order as number,
 				title: (data?.title ?? slug) as string,
+				description: (data.description ?? null) as string | null,
 				slug,
 			}))
 		)

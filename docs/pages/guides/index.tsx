@@ -1,6 +1,10 @@
 import { normalize } from 'path';
 import { MDXRemote } from 'next-mdx-remote';
+import { Card, CardInner, CardLink } from '@ag.ds-next/card';
 import { Prose } from '@ag.ds-next/prose';
+import { Stack } from '@ag.ds-next/box';
+import { Heading } from '@ag.ds-next/heading';
+import { Text } from '@ag.ds-next/text';
 import { getMarkdownData, serializeMarkdown } from '../../lib/mdxUtils';
 import { getGuideList } from '../../lib/mdx/guides';
 import { mdxComponents } from '../../components/mdxComponents';
@@ -26,6 +30,20 @@ export default function GuidesHome({ source, guideLinks }: StaticProps) {
 					<Prose>
 						<MDXRemote {...source} components={mdxComponents} />
 					</Prose>
+					<Stack as="ul" gap={1.5}>
+						{guideLinks.map(({ href, label, description }) => (
+							<Card as="li" key={label} clickable shadow>
+								<CardInner>
+									<Stack gap={1}>
+										<Heading type="h3">
+											<CardLink href={href}>{label}</CardLink>
+										</Heading>
+										{description ? <Text as="p">{description}</Text> : null}
+									</Stack>
+								</CardInner>
+							</Card>
+						))}
+					</Stack>
 				</PageLayout>
 			</AppLayout>
 		</>
@@ -38,9 +56,10 @@ export async function getStaticProps() {
 	);
 	const source = await serializeMarkdown(content);
 	const guideList = await getGuideList();
-	const guideLinks = guideList.map(({ slug, title }) => ({
+	const guideLinks = guideList.map(({ slug, title, description }) => ({
 		href: `/guides/${slug}`,
 		label: title,
+		description,
 	}));
 
 	return {
