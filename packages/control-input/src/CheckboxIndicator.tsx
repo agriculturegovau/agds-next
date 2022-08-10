@@ -25,7 +25,7 @@ export const CheckboxIndicator = ({
 			css={{
 				borderWidth,
 				borderStyle: 'solid',
-				borderColor: boxPalette.borderInput,
+				borderColor: boxPalette.border,
 				opacity: disabled ? 0.3 : undefined,
 				...(invalid
 					? {
