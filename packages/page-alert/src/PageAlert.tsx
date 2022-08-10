@@ -37,14 +37,14 @@ export const PageAlert = forwardRef<HTMLDivElement, PageAlertProps>(
 				<Flex
 					padding={0.5}
 					alignItems="center"
-					palette="dark"
 					css={{
 						borderTopLeftRadius: tokens.borderRadius,
 						borderBottomLeftRadius: tokens.borderRadius,
 						backgroundColor: fg,
+						color: boxPalette.backgroundBody,
 					}}
 				>
-					<Icon color="text" />
+					<Icon />
 				</Flex>
 				<Flex padding={1.5} gap={1} flexDirection="column">
 					{title ? <PageAlertTitle>{title}</PageAlertTitle> : null}
