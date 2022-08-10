@@ -34,13 +34,7 @@ export const SearchBoxInput = forwardRef<HTMLInputElement, SearchBoxInputProps>(
 				<SearchBoxLabel htmlFor={inputId} visible={labelVisible}>
 					{label}
 				</SearchBoxLabel>
-				<input
-					ref={ref}
-					type="search"
-					css={{ ...styles, background: globalPalette.lightBackgroundBody }}
-					id={inputId}
-					{...props}
-				/>
+				<input ref={ref} type="search" css={styles} id={inputId} {...props} />
 			</Stack>
 		);
 	}
@@ -58,6 +52,8 @@ const inputStyles = () => {
 		borderRightWidth: 0,
 		borderTopRightRadius: 0,
 		borderBottomRightRadius: 0,
+		background: globalPalette.lightBackgroundBody,
+		borderColor: globalPalette.lightBackgroundBody,
 
 		'&::-webkit-search-decoration, &::-webkit-search-cancel-button, &::-webkit-search-results-button, &::-webkit-search-results-decoration':
 			{
