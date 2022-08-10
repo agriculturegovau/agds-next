@@ -1,33 +1,33 @@
 import type { PropsWithChildren } from 'react';
 import { Flex, Stack } from '@ag.ds-next/box';
-import { tokens, globalPalette, boxPalette } from '@ag.ds-next/core';
+import { tokens, boxPalette } from '@ag.ds-next/core';
 import { localPaletteVars } from './localPalette';
 
 const variantMap = {
 	light: {
 		palette: 'light',
 		background: 'body',
-		border: boxPalette.foregroundAction,
+		border: boxPalette.accent,
 	},
 	lightAlt: {
 		palette: 'light',
 		background: 'bodyAlt',
-		border: boxPalette.foregroundAction,
+		border: boxPalette.accent,
 	},
 	dark: {
 		palette: 'dark',
 		background: 'body',
-		border: boxPalette.foregroundAction,
+		border: boxPalette.accent,
 	},
 	darkAlt: {
 		palette: 'dark',
 		background: 'bodyAlt',
-		border: boxPalette.foregroundAction,
+		border: boxPalette.accent,
 	},
 	agriculture: {
 		palette: 'dark',
 		background: 'bodyAlt',
-		border: globalPalette.accent,
+		border: boxPalette.accent,
 	},
 } as const;
 

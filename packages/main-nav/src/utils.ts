@@ -1,4 +1,4 @@
-import { globalPalette } from '@ag.ds-next/core';
+import { boxPalette } from '@ag.ds-next/core';
 import { NavListLink } from './NavList';
 
 export const bottomBarPadding = 0.5;
@@ -7,27 +7,27 @@ export const variantMap = {
 	light: {
 		background: 'body',
 		hover: 'shade',
-		bottomBar: globalPalette.accent,
+		bottomBar: boxPalette.accent,
 	},
 	lightAlt: {
 		background: 'bodyAlt',
 		hover: 'shadeAlt',
-		bottomBar: globalPalette.accent,
+		bottomBar: boxPalette.accent,
 	},
 	dark: {
 		background: 'body',
 		hover: 'shade',
-		bottomBar: globalPalette.accent,
+		bottomBar: boxPalette.accent,
 	},
 	darkAlt: {
 		background: 'bodyAlt',
 		hover: 'shadeAlt',
-		bottomBar: globalPalette.accent,
+		bottomBar: boxPalette.accent,
 	},
 	agriculture: {
 		background: 'body',
 		hover: 'bodyAlt',
-		bottomBar: globalPalette.accent,
+		bottomBar: boxPalette.accent,
 	},
 } as const;
 

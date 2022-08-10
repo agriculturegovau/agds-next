@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 import { Flex } from '@ag.ds-next/box';
-import { boxPalette, globalPalette, mapSpacing } from '@ag.ds-next/core';
+import { boxPalette, mapSpacing } from '@ag.ds-next/core';
 import {
 	SuccessIcon,
 	AlertIcon,
@@ -63,20 +63,20 @@ const toneMap = {
 		icon: () => <IndicatorDot tone="neutral" />,
 	},
 	success: {
-		borderColor: globalPalette.success,
+		borderColor: boxPalette.systemSuccess,
 		icon: () => <SuccessIcon color="success" />,
 	},
 	error: {
-		borderColor: globalPalette.error,
+		borderColor: boxPalette.systemError,
 		icon: () => <AlertIcon color="error" />,
 	},
 
 	info: {
-		borderColor: globalPalette.info,
+		borderColor: boxPalette.systemInfo,
 		icon: () => <InfoIcon color="info" />,
 	},
 	warning: {
-		borderColor: globalPalette.warning,
+		borderColor: boxPalette.systemWarning,
 		icon: () => <WarningIcon color="warning" />,
 	},
 } as const;

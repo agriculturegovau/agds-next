@@ -11,6 +11,7 @@ export const LoadingBlanketContainer = ({
 	fullScreen,
 }: LoadingBlanketContainerProps) => (
 	<Flex
+		palette="light"
 		flexDirection="column"
 		justifyContent="center"
 		alignItems="center"

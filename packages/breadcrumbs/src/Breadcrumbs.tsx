@@ -1,6 +1,5 @@
-import { Fragment, ReactNode } from 'react';
+import { ReactNode } from 'react';
 import { VisuallyHidden } from '@ag.ds-next/a11y';
-import { BreadcrumbsDivider } from './BreadcrumbsDivider';
 import { BreadcrumbsContainer } from './BreadcrumbsContainer';
 import { BreadcrumbsItem, BreadcrumbsItemProps } from './BreadcrumbsItem';
 
@@ -15,15 +14,12 @@ export const Breadcrumbs = ({
 }: BreadcrumbsProps) => (
 	<BreadcrumbsContainer aria-label={ariaLabel}>
 		{links.map(({ label, ...props }, index) => (
-			<Fragment key={index}>
-				{index == 0 ? null : <BreadcrumbsDivider />}
-				<BreadcrumbsItem {...props}>
-					{label}
-					{index === links.length - 1 ? (
-						<VisuallyHidden> (current page)</VisuallyHidden>
-					) : null}
-				</BreadcrumbsItem>
-			</Fragment>
+			<BreadcrumbsItem key={index} {...props}>
+				{label}
+				{index === links.length - 1 ? (
+					<VisuallyHidden> (current page)</VisuallyHidden>
+				) : null}
+			</BreadcrumbsItem>
 		))}
 	</BreadcrumbsContainer>
 );

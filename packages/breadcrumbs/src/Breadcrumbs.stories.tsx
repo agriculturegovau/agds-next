@@ -9,7 +9,11 @@ import {
 export default {
 	title: 'navigation/Breadcrumbs',
 	component: Breadcrumbs,
-	subcomponents: { BreadcrumbsContainer, BreadcrumbsItem, BreadcrumbsDivider },
+	subcomponents: {
+		BreadcrumbsContainer,
+		BreadcrumbsItem,
+		BreadcrumbsDivider,
+	},
 } as ComponentMeta<typeof Breadcrumbs>;
 
 const exampleLinks = [
@@ -28,9 +32,7 @@ Basic.args = {
 export const Modular = () => (
 	<BreadcrumbsContainer aria-label="breadcrumb">
 		<BreadcrumbsItem href="#one">One</BreadcrumbsItem>
-		<BreadcrumbsDivider />
 		<BreadcrumbsItem href="#two">Two</BreadcrumbsItem>
-		<BreadcrumbsDivider />
 		<BreadcrumbsItem>Three</BreadcrumbsItem>
 	</BreadcrumbsContainer>
 );

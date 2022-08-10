@@ -2,7 +2,7 @@ import { MouseEventHandler } from 'react';
 import formatFileSize from 'filesize';
 import { Box, Flex, Stack } from '@ag.ds-next/box';
 import { Button } from '@ag.ds-next/button';
-import { globalPalette } from '@ag.ds-next/core';
+import { boxPalette } from '@ag.ds-next/core';
 import { AlertFilledIcon } from '@ag.ds-next/icon';
 import { Text } from '@ag.ds-next/text';
 
@@ -31,7 +31,7 @@ export const FileRejection = ({
 			paddingY={1}
 			paddingLeft={1}
 			css={{
-				background: globalPalette.errorMuted,
+				background: boxPalette.systemErrorMuted,
 			}}
 		>
 			<Flex gap={0.5}>

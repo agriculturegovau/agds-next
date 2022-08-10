@@ -5,13 +5,7 @@ import {
 	SelectHTMLAttributes,
 } from 'react';
 import { Field, FieldMaxWidth, fieldMaxWidth } from '@ag.ds-next/field';
-import {
-	packs,
-	boxPalette,
-	mapSpacing,
-	globalPalette,
-	tokens,
-} from '@ag.ds-next/core';
+import { packs, boxPalette, mapSpacing, tokens } from '@ag.ds-next/core';
 import { ChevronDownIcon } from '@ag.ds-next/icon';
 
 export type Option = {
@@ -167,7 +161,7 @@ const SelectIcon = ({ disabled }: { disabled?: boolean }) => (
 			transform: 'translateY(-50%)',
 			opacity: disabled ? 0.3 : 1,
 			pointerEvents: 'none',
-			color: globalPalette.lightForegroundAction,
+			color: boxPalette.foregroundAction,
 		}}
 	/>
 );
@@ -188,12 +182,12 @@ const selectStyles = ({
 		paddingLeft: mapSpacing(1),
 		paddingRight: mapSpacing(3),
 		margin: 0,
-		backgroundColor: globalPalette.lightBackgroundBody,
+		background: 'none',
 		borderWidth: tokens.borderWidth.lg,
 		borderStyle: 'solid',
-		borderColor: boxPalette.borderInput,
+		borderColor: boxPalette.border,
 		borderRadius: tokens.borderRadius,
-		color: globalPalette.lightForegroundText,
+		color: boxPalette.foregroundText,
 		width: '100%',
 		fontFamily: tokens.font.body,
 		...packs.input.md,
@@ -206,13 +200,13 @@ const selectStyles = ({
 
 		...(invalid
 			? {
-					backgroundColor: globalPalette.errorMuted,
-					borderColor: globalPalette.error,
+					backgroundColor: boxPalette.systemErrorMuted,
+					borderColor: boxPalette.systemError,
 			  }
 			: valid
 			? {
-					backgroundColor: globalPalette.successMuted,
-					borderColor: globalPalette.success,
+					backgroundColor: boxPalette.systemSuccessMuted,
+					borderColor: boxPalette.systemSuccess,
 			  }
 			: undefined),
 
