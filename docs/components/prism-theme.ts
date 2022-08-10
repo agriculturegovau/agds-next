@@ -1,5 +1,5 @@
 import { PrismTheme } from 'prism-react-renderer';
-import { globalPalette, tokens, fontGrid } from '@ag.ds-next/core';
+import { boxPalette, globalPalette, tokens, fontGrid } from '@ag.ds-next/core';
 
 export const prismTheme: PrismTheme = {
 	plain: {
@@ -40,7 +40,7 @@ export const prismTheme: PrismTheme = {
 				'attr-value',
 			],
 			style: {
-				color: globalPalette.success,
+				color: boxPalette.systemSuccess,
 			},
 		},
 		{
@@ -56,7 +56,7 @@ export const prismTheme: PrismTheme = {
 				'inserted',
 			],
 			style: {
-				color: globalPalette.warning,
+				color: boxPalette.systemWarning,
 			},
 		},
 		{
@@ -83,7 +83,7 @@ export const prismTheme: PrismTheme = {
 		{
 			types: ['class-name'],
 			style: {
-				color: globalPalette.warning,
+				color: boxPalette.systemWarning,
 			},
 		},
 	],

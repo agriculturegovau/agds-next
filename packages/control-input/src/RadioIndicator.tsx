@@ -1,5 +1,5 @@
 import { Box, Flex } from '@ag.ds-next/box';
-import { boxPalette, globalPalette, packs } from '@ag.ds-next/core';
+import { boxPalette, packs } from '@ag.ds-next/core';
 import { ControlSize } from './utils';
 
 export type RadioIndicatorProps = {
@@ -26,18 +26,17 @@ export const RadioIndicator = ({
 				borderWidth,
 				borderRadius: '100%',
 				borderStyle: 'solid',
-				borderColor: boxPalette.borderInput,
-				backgroundColor: globalPalette.lightBackgroundBody,
+				borderColor: boxPalette.border,
 				opacity: disabled ? 0.3 : undefined,
 				...(invalid
 					? {
-							borderColor: globalPalette.error,
-							backgroundColor: globalPalette.errorMuted,
+							borderColor: boxPalette.systemError,
+							backgroundColor: boxPalette.systemErrorMuted,
 					  }
 					: valid
 					? {
-							borderColor: globalPalette.success,
-							backgroundColor: globalPalette.successMuted,
+							borderColor: boxPalette.systemSuccess,
+							backgroundColor: boxPalette.systemSuccessMuted,
 					  }
 					: undefined),
 			}}
@@ -51,7 +50,7 @@ export const RadioIndicator = ({
 				css={{
 					display: 'none',
 					borderRadius: '100%',
-					background: globalPalette.lightForegroundText,
+					background: boxPalette.foregroundText,
 				}}
 			/>
 		</Flex>
