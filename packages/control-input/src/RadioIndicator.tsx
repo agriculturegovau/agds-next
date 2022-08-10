@@ -30,13 +30,13 @@ export const RadioIndicator = ({
 				opacity: disabled ? 0.3 : undefined,
 				...(invalid
 					? {
-							borderColor: boxPalette.error,
-							backgroundColor: boxPalette.backgroundError,
+							borderColor: boxPalette.systemError,
+							backgroundColor: boxPalette.systemErrorMuted,
 					  }
 					: valid
 					? {
-							borderColor: boxPalette.success,
-							backgroundColor: boxPalette.backgroundSuccess,
+							borderColor: boxPalette.systemSuccess,
+							backgroundColor: boxPalette.systemSuccessMuted,
 					  }
 					: undefined),
 			}}

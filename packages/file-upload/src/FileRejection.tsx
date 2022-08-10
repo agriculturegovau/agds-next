@@ -31,7 +31,7 @@ export const FileRejection = ({
 			paddingY={1}
 			paddingLeft={1}
 			css={{
-				background: boxPalette.backgroundError,
+				background: boxPalette.systemErrorMuted,
 			}}
 		>
 			<Flex gap={0.5}>

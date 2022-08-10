@@ -185,7 +185,7 @@ const selectStyles = ({
 		background: 'none',
 		borderWidth: tokens.borderWidth.lg,
 		borderStyle: 'solid',
-		borderColor: boxPalette.borderInput,
+		borderColor: boxPalette.border,
 		borderRadius: tokens.borderRadius,
 		color: boxPalette.foregroundText,
 		width: '100%',
@@ -200,13 +200,13 @@ const selectStyles = ({
 
 		...(invalid
 			? {
-					backgroundColor: boxPalette.backgroundError,
-					borderColor: boxPalette.error,
+					backgroundColor: boxPalette.systemErrorMuted,
+					borderColor: boxPalette.systemError,
 			  }
 			: valid
 			? {
-					backgroundColor: boxPalette.backgroundSuccess,
-					borderColor: boxPalette.success,
+					backgroundColor: boxPalette.systemSuccessMuted,
+					borderColor: boxPalette.systemSuccess,
 			  }
 			: undefined),
 

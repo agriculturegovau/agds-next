@@ -40,7 +40,7 @@ export const prismTheme: PrismTheme = {
 				'attr-value',
 			],
 			style: {
-				color: boxPalette.success,
+				color: boxPalette.systemSuccess,
 			},
 		},
 		{
@@ -56,7 +56,7 @@ export const prismTheme: PrismTheme = {
 				'inserted',
 			],
 			style: {
-				color: boxPalette.warning,
+				color: boxPalette.systemWarning,
 			},
 		},
 		{
@@ -83,7 +83,7 @@ export const prismTheme: PrismTheme = {
 		{
 			types: ['class-name'],
 			style: {
-				color: boxPalette.warning,
+				color: boxPalette.systemWarning,
 			},
 		},
 	],

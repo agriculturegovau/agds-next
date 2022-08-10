@@ -282,17 +282,17 @@ export const fileInputStyles = ({
 	({
 		borderWidth: tokens.borderWidth.lg,
 		borderStyle: 'dashed',
-		borderColor: boxPalette.borderInput,
+		borderColor: boxPalette.border,
 		backgroundColor: boxPalette.backgroundShade,
 		...(invalid
 			? {
-					backgroundColor: boxPalette.backgroundError,
-					borderColor: boxPalette.error,
+					backgroundColor: boxPalette.systemErrorMuted,
+					borderColor: boxPalette.systemError,
 			  }
 			: valid
 			? {
-					backgroundColor: boxPalette.backgroundSuccess,
-					borderColor: boxPalette.success,
+					backgroundColor: boxPalette.systemSuccessMuted,
+					borderColor: boxPalette.systemSuccess,
 			  }
 			: disabled
 			? {

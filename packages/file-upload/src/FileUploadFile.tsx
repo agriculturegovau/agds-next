@@ -62,5 +62,5 @@ export const FileUploadFile = ({
 const TONE_MAP = {
 	none: boxPalette.backgroundShade,
 	uploading: boxPalette.backgroundShade,
-	success: boxPalette.backgroundSuccess,
+	success: boxPalette.systemSuccessMuted,
 } as const;

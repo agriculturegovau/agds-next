@@ -19,7 +19,7 @@ export const FieldContainer = ({
 		borderLeftWidth="xl"
 		id={id}
 		css={{
-			borderLeftColor: invalid ? boxPalette.error : undefined,
+			borderLeftColor: invalid ? boxPalette.systemError : undefined,
 		}}
 	>
 		{children}

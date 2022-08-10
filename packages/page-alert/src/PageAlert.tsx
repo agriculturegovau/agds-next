@@ -57,23 +57,23 @@ export const PageAlert = forwardRef<HTMLDivElement, PageAlertProps>(
 
 const pageAlertToneMap = {
 	success: {
-		fg: boxPalette.success,
-		bg: boxPalette.backgroundSuccess,
+		fg: boxPalette.systemSuccess,
+		bg: boxPalette.systemSuccessMuted,
 		Icon: SuccessFilledIcon,
 	},
 	error: {
-		fg: boxPalette.error,
-		bg: boxPalette.backgroundError,
+		fg: boxPalette.systemError,
+		bg: boxPalette.systemErrorMuted,
 		Icon: AlertFilledIcon,
 	},
 	info: {
-		fg: boxPalette.info,
-		bg: boxPalette.backgroundInfo,
+		fg: boxPalette.systemInfo,
+		bg: boxPalette.systemInfoMuted,
 		Icon: InfoFilledIcon,
 	},
 	warning: {
-		fg: boxPalette.warning,
-		bg: boxPalette.backgroundWarning,
+		fg: boxPalette.systemWarning,
+		bg: boxPalette.systemWarningMuted,
 		Icon: WarningFilledIcon,
 	},
 };

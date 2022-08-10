@@ -36,10 +36,10 @@ export const foregroundColorMap = {
 	focus: boxPalette.foregroundFocus,
 	muted: boxPalette.foregroundMuted,
 	accent: boxPalette.accent,
-	error: boxPalette.error,
-	success: boxPalette.success,
-	warning: boxPalette.warning,
-	info: boxPalette.info,
+	error: boxPalette.systemError,
+	success: boxPalette.systemSuccess,
+	warning: boxPalette.systemWarning,
+	info: boxPalette.systemInfo,
 	inherit: 'inherit',
 };
 

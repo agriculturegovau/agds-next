@@ -63,20 +63,20 @@ const toneMap = {
 		icon: () => <IndicatorDot tone="neutral" />,
 	},
 	success: {
-		borderColor: boxPalette.success,
+		borderColor: boxPalette.systemSuccess,
 		icon: () => <SuccessIcon color="success" />,
 	},
 	error: {
-		borderColor: boxPalette.error,
+		borderColor: boxPalette.systemError,
 		icon: () => <AlertIcon color="error" />,
 	},
 
 	info: {
-		borderColor: boxPalette.info,
+		borderColor: boxPalette.systemInfo,
 		icon: () => <InfoIcon color="info" />,
 	},
 	warning: {
-		borderColor: boxPalette.warning,
+		borderColor: boxPalette.systemWarning,
 		icon: () => <WarningIcon color="warning" />,
 	},
 } as const;
