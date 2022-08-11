@@ -12,11 +12,7 @@ export default {
 
 const NAV_ITEMS = [
 	{ href: '#home', label: 'Home' },
-	{
-		href: '#content',
-		label: 'Content page',
-		endElement: <NotificationBadge value={20} />,
-	},
+	{ href: '#content', label: 'Content page' },
 	{ href: '#form', label: 'Form page' },
 	{ href: '#simple', label: 'Simple page' },
 ];
@@ -69,12 +65,12 @@ HeaderRightLinks.args = {
 		{
 			href: '#messages',
 			label: 'Messages',
-			endElement: <NotificationBadge value={2} />,
+			endElement: <NotificationBadge tone="action" value={5} />,
 		},
 		{
 			href: '#sign-in',
 			label: 'Sign in',
-			endElement: <AvatarIcon size="md" weight="regular" />,
+			endElement: <AvatarIcon color="action" size="md" weight="regular" />,
 		},
 	],
 };
@@ -86,7 +82,7 @@ HeaderRightButton.args = {
 		{
 			onClick: console.log,
 			label: 'Sign in',
-			endElement: <AvatarIcon size="md" weight="regular" />,
+			endElement: <AvatarIcon color="action" size="md" weight="regular" />,
 		},
 	],
 };
@@ -94,38 +90,29 @@ HeaderRightButton.args = {
 export const NoLinks = Template.bind({});
 NoLinks.args = {
 	...defaultArgs,
+	items: undefined,
 	secondaryItems: [
 		{
-			href: '#sign-in',
+			onClick: console.log,
 			label: 'Sign in',
-			endElement: <AvatarIcon size="md" weight="regular" />,
+			endElement: <AvatarIcon color="action" size="md" weight="regular" />,
 		},
 	],
-	items: undefined,
 };
 
-export const EndElements = Template.bind({});
-EndElements.args = {
+export const EndElement = Template.bind({});
+EndElement.args = {
 	...defaultArgs,
+	activePath: '#issues',
 	items: [
-		{
-			href: '#home',
-			label: 'Home',
-		},
-		{
-			href: '#code',
-			label: 'Code',
-		},
+		{ href: '#home', label: 'Home' },
+		{ href: '#code', label: 'Code' },
 		{
 			href: '#issues',
 			label: 'Issues',
-			endElement: <NotificationBadge value={2} />,
+			endElement: <NotificationBadge tone="action" value={5} />,
 		},
-		{
-			href: '#pull-requests',
-			label: 'Pull requests',
-			endElement: <NotificationBadge value={10} />,
-		},
+		{ href: '#pull-requests', label: 'Pull requests' },
 		{ href: '#security', label: 'Security' },
 		{ href: '#settings', label: 'Settings' },
 	],
