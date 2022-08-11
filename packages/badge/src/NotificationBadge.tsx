@@ -8,7 +8,7 @@ export type NotificationBadgeProps = {
 	/** If value exceeds this number, show max+ instead. e.g. "99+". */
 	max?: number;
 	/** The colour tone to apply. */
-	tone?: BadgeTone;
+	tone: BadgeTone;
 };
 
 export const NotificationBadge = ({
@@ -16,7 +16,7 @@ export const NotificationBadge = ({
 	max,
 	tone,
 }: NotificationBadgeProps) => {
-	const backgroundColor = tone ? badgeToneMap[tone] : 'currentColor';
+	const backgroundColor = badgeToneMap[tone];
 	return (
 		<Text
 			display="inline-flex"
@@ -28,15 +28,13 @@ export const NotificationBadge = ({
 			fontSize="sm"
 			lineHeight="nospace"
 			css={{
-				color: 'inherit',
+				color: boxPalette.backgroundBody,
 				backgroundColor,
 				minWidth: mapSpacing(1.5),
 				borderRadius: mapSpacing(0.75),
 			}}
 		>
-			<span css={{ color: boxPalette.backgroundBody }}>
-				{max === undefined || value <= max ? value : `${max}+`}
-			</span>
+			{max === undefined || value <= max ? value : `${max}+`}
 		</Text>
 	);
 };
