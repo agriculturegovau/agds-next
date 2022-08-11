@@ -18,12 +18,6 @@ const NAV_ITEMS = {
 		{
 			label: 'GitHub',
 			href: 'https://github.com/steelthreads/agds-next',
-			endElement: <AvatarIcon color="currentColor" />,
-		},
-		{
-			label: 'GitHub',
-			href: 'https://github.com/steelthreads/agds-next',
-			endElement: <NotificationBadge value={99} max={50} tone="action" />,
 		},
 	],
 };
