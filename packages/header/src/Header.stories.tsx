@@ -84,6 +84,12 @@ LightAltVariant.args = {
 	variant: 'lightAlt',
 };
 
+export const Small = Template.bind({});
+Small.args = {
+	...defaultArgs,
+	size: 'small',
+};
+
 export const LongSubline = Template.bind({});
 LongSubline.args = {
 	...defaultArgs,
