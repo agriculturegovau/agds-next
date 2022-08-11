@@ -41,24 +41,15 @@ export const WithEndElements: ComponentStory<typeof SubNav> = (args) => (
 );
 WithEndElements.args = {
 	background: 'body',
-	activePath: '#issues',
+	activePath: '#code',
 	links: [
+		{ href: '#usage', label: 'Usage' },
 		{
 			href: '#code',
 			label: 'Code',
+			endElement: <NotificationBadge value={5} tone="action" />,
 		},
-		{
-			href: '#issues',
-			label: 'Issues',
-		},
-		{
-			href: '#pull-requests',
-			label: 'Pull Requests',
-			endElement: <NotificationBadge value={5} tone="inherit" />,
-		},
-		{
-			href: '#user-settings',
-			label: 'User Settings',
-		},
+		{ href: '#content', label: 'Content' },
+		{ href: '#accessibility', label: 'Accessibility' },
 	],
 };
