@@ -9,12 +9,14 @@ type HeaderBrandProps = {
 	heading: string;
 	subline?: string;
 	logo?: JSX.Element;
+	size: keyof typeof logoWidthMap;
 };
 
 export function HeaderBrand({
 	badgeLabel,
 	href = '/',
 	logo,
+	size,
 	heading,
 	subline,
 }: HeaderBrandProps) {
@@ -37,7 +39,7 @@ export function HeaderBrand({
 			{logo ? (
 				<Flex
 					alignItems="flex-start"
-					maxWidth={{ xs: '12rem', sm: '16rem' }}
+					maxWidth={logoWidthMap[size]}
 					css={{
 						' img, svg': { width: '100%' },
 						...packs.print.hidden,
@@ -57,7 +59,7 @@ export function HeaderBrand({
 				<Flex alignItems="flex-start" gap={0.5}>
 					<Text
 						lineHeight="default"
-						fontSize={{ xs: 'md', sm: 'xl' }}
+						fontSize={headingSizeMap[size]}
 						fontWeight="bold"
 					>
 						{heading}
@@ -65,7 +67,7 @@ export function HeaderBrand({
 					{badgeLabel && <HeaderBadge>{badgeLabel}</HeaderBadge>}
 				</Flex>
 				{subline && (
-					<Text color="muted" fontSize={{ xs: 'sm', sm: 'md' }}>
+					<Text color="muted" fontSize={subHeadingSizeMap[size]}>
 						{subline}
 					</Text>
 				)}
@@ -96,4 +98,19 @@ const HeaderBadge = ({ children }: HeaderBadgeProps) => {
 			{children}
 		</Box>
 	);
+};
+
+const logoWidthMap = {
+	small: { xs: '11rem', sm: '11rem' },
+	medium: { xs: '12rem', sm: '16rem' },
+};
+
+const headingSizeMap = {
+	small: 'sm',
+	medium: { xs: 'md', sm: 'xl' },
+};
+
+const subHeadingSizeMap = {
+	small: 'xs',
+	medium: { xs: 'sm', sm: 'md' },
 };
