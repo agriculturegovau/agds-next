@@ -77,22 +77,21 @@ export const ColorTable = ({
 				bodyAlt: { value: theme.lightBackgroundBodyAlt },
 				shade: { value: theme.lightBackgroundShade },
 				shadeAlt: { value: theme.lightBackgroundShadeAlt },
-				successMuted: { value: theme.successMuted },
-				errorMuted: { value: theme.errorMuted },
-				infoMuted: { value: theme.infoMuted },
-				warningMuted: { value: theme.warningMuted },
 			},
 			border: {
 				border: { value: theme.lightBorder },
 				borderMuted: { value: theme.lightBorderMuted },
-				borderInput: { value: theme.lightBorderInput },
 			},
 			system: {
-				accent: { value: theme.accent },
-				success: { value: theme.success },
-				error: { value: theme.error },
-				info: { value: theme.info },
-				warning: { value: theme.warning },
+				accent: { value: theme.lightAccent },
+				systemSuccess: { value: theme.lightSystemSuccess },
+				systemSuccessMuted: { value: theme.lightSystemSuccessMuted },
+				systemError: { value: theme.lightSystemError },
+				systemErrorMuted: { value: theme.lightSystemErrorMuted },
+				systemInfo: { value: theme.lightSystemInfo },
+				systemInfoMuted: { value: theme.lightSystemInfoMuted },
+				systemWarning: { value: theme.lightSystemWarning },
+				systemWarningMuted: { value: theme.lightSystemWarningMuted },
 			},
 		},
 		dark: {
@@ -107,25 +106,26 @@ export const ColorTable = ({
 				bodyAlt: { value: theme.darkBackgroundBodyAlt },
 				shade: { value: theme.darkBackgroundShade },
 				shadeAlt: { value: theme.darkBackgroundShadeAlt },
-				successMuted: { value: theme.successMuted },
-				errorMuted: { value: theme.errorMuted },
-				infoMuted: { value: theme.infoMuted },
-				warningMuted: { value: theme.warningMuted },
 			},
 			border: {
 				border: { value: theme.darkBorder },
 				borderMuted: { value: theme.darkBorderMuted },
-				borderInput: { value: theme.darkBorderInput },
 			},
 			system: {
-				accent: { value: theme.accent },
-				success: { value: theme.success },
-				error: { value: theme.error },
-				info: { value: theme.info },
-				warning: { value: theme.warning },
+				accent: { value: theme.darkAccent },
+				systemSuccess: { value: theme.darkSystemSuccess },
+				systemSuccessMuted: { value: theme.darkSystemSuccessMuted },
+				systemError: { value: theme.darkSystemError },
+				systemErrorMuted: { value: theme.darkSystemErrorMuted },
+				systemInfo: { value: theme.darkSystemInfo },
+				systemInfoMuted: { value: theme.darkSystemInfoMuted },
+				systemWarning: { value: theme.darkSystemWarning },
+				systemWarningMuted: { value: theme.darkSystemWarningMuted },
 			},
 		},
 	} as const;
+
+	console.log({ palettes });
 
 	const cols = { xs: 1, sm: 2, md: 3, lg: 5 } as const;
 
