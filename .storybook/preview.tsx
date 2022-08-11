@@ -103,7 +103,6 @@ const withBrandTheme = (Story, context) => {
 				padding={1}
 				palette={palette}
 				background="body"
-				color="text"
 			>
 				<Story />
 			</Box>

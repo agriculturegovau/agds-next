@@ -2,4 +2,4 @@
 '@ag.ds-next/icon': patch
 ---
 
-Added new `currentColor` colour option
+If no `colour` prop is supplied, the svg colour will now defualt to `currentColor`.
