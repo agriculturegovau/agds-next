@@ -59,6 +59,7 @@ import {
 	TableBody,
 } from '@ag.ds-next/table';
 import { TextLink } from '@ag.ds-next/text-link';
+import { AvatarIcon } from '@ag.ds-next/icon';
 
 export default {
 	title: 'Examples/Kitchen Sink',
@@ -113,7 +114,13 @@ const KitchenSink = ({ background }: { background: 'body' | 'bodyAlt' }) => {
 						{ label: 'Home', href: '#home' },
 						{ label: 'Category', href: '#category' },
 					]}
-					secondaryItems={[{ label: 'Sign in', href: '#sign-in' }]}
+					secondaryItems={[
+						{
+							label: 'Sign in',
+							href: '#sign-in',
+							endElement: <AvatarIcon color="action" />,
+						},
+					]}
 				/>
 			</Stack>
 			<HeroBanner background={backgroundSet.opposite}>

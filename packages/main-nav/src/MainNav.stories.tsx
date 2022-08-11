@@ -70,7 +70,7 @@ HeaderRightLinks.args = {
 		{
 			href: '#sign-in',
 			label: 'Sign in',
-			endElement: <AvatarIcon color="action" size="md" weight="regular" />,
+			endElement: <AvatarIcon color="action" />,
 		},
 	],
 };
@@ -82,7 +82,7 @@ HeaderRightButton.args = {
 		{
 			onClick: console.log,
 			label: 'Sign in',
-			endElement: <AvatarIcon color="action" size="md" weight="regular" />,
+			endElement: <AvatarIcon color="action" />,
 		},
 	],
 };
@@ -95,7 +95,7 @@ NoLinks.args = {
 		{
 			onClick: console.log,
 			label: 'Sign in',
-			endElement: <AvatarIcon color="action" size="md" weight="regular" />,
+			endElement: <AvatarIcon color="action" />,
 		},
 	],
 };
