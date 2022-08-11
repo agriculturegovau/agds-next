@@ -37,6 +37,7 @@ export function NavListItem({ active, children, type }: NavItemProps) {
 								  }),
 						alignItems: 'center',
 						justifyContent: 'space-between',
+						width: '100%',
 						gap: mapSpacing(0.5),
 						color: boxPalette[active ? 'foregroundText' : 'foregroundAction'],
 						padding: mapSpacing(1),
@@ -51,7 +52,10 @@ export function NavListItem({ active, children, type }: NavItemProps) {
 
 						// Underline overlay for active menu item
 						'&:after': {
-							content: mapResponsiveProp({ xs: undefined, lg: '""' }),
+							content:
+								type === 'primary'
+									? mapResponsiveProp({ xs: undefined, lg: '""' })
+									: "''",
 							height: mapSpacing(0.5),
 							position: 'absolute',
 							top: '100%',

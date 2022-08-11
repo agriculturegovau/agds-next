@@ -12,7 +12,11 @@ export default {
 
 const NAV_ITEMS = [
 	{ href: '#home', label: 'Home' },
-	{ href: '#content', label: 'Content page' },
+	{
+		href: '#content',
+		label: 'Content page',
+		endElement: <NotificationBadge value={20} />,
+	},
 	{ href: '#form', label: 'Form page' },
 	{ href: '#simple', label: 'Simple page' },
 ];
@@ -57,11 +61,16 @@ LightAltVariant.args = {
 	variant: 'lightAlt',
 };
 
-export const HeaderRightLink = Template.bind({});
-HeaderRightLink.args = {
+export const HeaderRightLinks = Template.bind({});
+HeaderRightLinks.args = {
 	...defaultArgs,
-	activePath: '#sign-in',
+	activePath: '#messages',
 	secondaryItems: [
+		{
+			href: '#messages',
+			label: 'Messages',
+			endElement: <NotificationBadge value={2} />,
+		},
 		{
 			href: '#sign-in',
 			label: 'Sign in',
@@ -110,12 +119,12 @@ EndElements.args = {
 		{
 			href: '#issues',
 			label: 'Issues',
-			endElement: <NotificationBadge value={2} tone="inherit" />,
+			endElement: <NotificationBadge value={2} />,
 		},
 		{
 			href: '#pull-requests',
 			label: 'Pull requests',
-			endElement: <NotificationBadge value={10} tone="inherit" />,
+			endElement: <NotificationBadge value={10} />,
 		},
 		{ href: '#security', label: 'Security' },
 		{ href: '#settings', label: 'Settings' },
