@@ -31,8 +31,8 @@ export function SubNavList({ links, activePath }: SubNavListProps) {
 							aria-current={active ? 'page' : undefined}
 							{...props}
 						>
-							{label}
-							{/* {endElement} */}
+							<span>{label}</span>
+							{endElement}
 						</Link>
 					</SubNavListItem>
 				);

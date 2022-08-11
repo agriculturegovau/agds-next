@@ -47,12 +47,10 @@ WithEndElements.args = {
 		{
 			href: '#code',
 			label: 'Code',
-			endElement: <NotificationBadge value={100} max={99} tone="action" />,
 		},
 		{
 			href: '#issues',
 			label: 'Issues',
-			endElement: <NotificationBadge value={100} max={99} tone="action" />,
 		},
 		{
 			href: '#pull-requests',
@@ -62,7 +60,6 @@ WithEndElements.args = {
 		{
 			href: '#user-settings',
 			label: 'User Settings',
-			endElement: <AvatarIcon />,
 		},
 	],
 };
