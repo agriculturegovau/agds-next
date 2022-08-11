@@ -13,7 +13,7 @@ const Template: ComponentStory<typeof NotificationBadge> = (args) => (
 export const Basic = Template.bind({});
 Basic.args = {
 	value: 48,
-	// tone: 'neutral',
+	tone: 'neutral',
 };
 
 export const Max = Template.bind({});
