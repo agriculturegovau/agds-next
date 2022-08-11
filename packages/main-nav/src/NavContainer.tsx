@@ -11,16 +11,17 @@ import {
 	packs,
 } from '@ag.ds-next/core';
 import {
+	hoverMap,
+	MainNavBackground,
 	localPalette,
 	localPaletteVars,
-	variantMap,
 	bottomBarPadding,
 } from './utils';
 import { CloseButton, OpenButton } from './MenuButtons';
 import { NavListLink } from './NavList';
 
 export type NavContainerCommonProps = {
-	background?: 'body' | 'bodyAlt';
+	background: MainNavBackground;
 	palette?: BoxProps['palette'];
 	id?: string;
 	links?: NavListLink[];
@@ -39,10 +40,10 @@ export function NavContainer({
 	'aria-label': ariaLabel,
 	children,
 	palette,
-	background,
+	background = 'body',
 	links,
 }: NavContainerProps) {
-	const { bottomBar, hover } = variantMap[variant];
+	const hover = hoverMap[background];
 
 	const { windowWidth } = useWindowSize();
 	const [menuOpen, open, close] = useTernaryState(false);
@@ -59,7 +60,7 @@ export function NavContainer({
 				position: 'relative',
 				[localPaletteVars.linkHoverBg]: backgroundColorMap[hover],
 				[localPaletteVars.linkActiveBg]: background,
-				[localPaletteVars.bottomBar]: bottomBar,
+				[localPaletteVars.bottomBar]: boxPalette.accent,
 				...packs.print.hidden,
 			}}
 		>

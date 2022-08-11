@@ -1,42 +1,13 @@
-import { boxPalette } from '@ag.ds-next/core';
 import { NavListLink } from './NavList';
 
 export const bottomBarPadding = 0.5;
-
-export const variantMap = {
-	light: {
-		background: 'body',
-		hover: 'shade',
-		bottomBar: boxPalette.accent,
-	},
-	lightAlt: {
-		background: 'bodyAlt',
-		hover: 'shadeAlt',
-		bottomBar: boxPalette.accent,
-	},
-	dark: {
-		background: 'body',
-		hover: 'shade',
-		bottomBar: boxPalette.accent,
-	},
-	darkAlt: {
-		background: 'bodyAlt',
-		hover: 'shadeAlt',
-		bottomBar: boxPalette.accent,
-	},
-	agriculture: {
-		background: 'body',
-		hover: 'bodyAlt',
-		bottomBar: boxPalette.accent,
-	},
-} as const;
 
 export const hoverMap = {
 	body: 'shade',
 	bodyAlt: 'shadeAlt',
 } as const;
 
-export type MainNavVariant = keyof typeof variantMap;
+export type MainNavBackground = keyof typeof hoverMap;
 
 export const localPaletteVars = {
 	linkHoverBg: '--nav-linkHoverBg',
