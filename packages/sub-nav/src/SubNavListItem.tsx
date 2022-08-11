@@ -7,7 +7,7 @@ import {
 	packs,
 	tokens,
 } from '@ag.ds-next/core';
-import { Box } from '@ag.ds-next/box';
+import { Flex } from '@ag.ds-next/box';
 import { localPalette } from './utils';
 
 export type SubNavListItemProps = PropsWithChildren<{
@@ -16,7 +16,7 @@ export type SubNavListItemProps = PropsWithChildren<{
 
 export function SubNavListItem({ children, active }: SubNavListItemProps) {
 	return (
-		<Box
+		<Flex
 			as="li"
 			borderBottom
 			css={mq({
@@ -36,7 +36,11 @@ export function SubNavListItem({ children, active }: SubNavListItemProps) {
 				},
 
 				'& a': {
-					display: mapResponsiveProp(['block', 'inline-block']),
+					flex: 1,
+					display: mapResponsiveProp(['flex', 'inline-flex']),
+					alignItems: 'center',
+					justifyContent: 'space-between',
+					gap: mapSpacing(0.5),
 					position: 'relative',
 					color: active
 						? boxPalette.foregroundText
@@ -76,14 +80,15 @@ export function SubNavListItem({ children, active }: SubNavListItemProps) {
 					},
 
 					'&:hover': {
-						...packs.underline,
 						color: boxPalette.foregroundText,
 						backgroundColor: localPalette.linkHoverBg,
+						// Underline the label
+						'& > span:first-of-type': packs.underline,
 					},
 				},
 			})}
 		>
 			{children}
-		</Box>
+		</Flex>
 	);
 }

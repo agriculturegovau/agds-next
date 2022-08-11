@@ -1,4 +1,4 @@
-import type { ReactNode } from 'react';
+import type { PropsWithChildren, ReactNode } from 'react';
 import { Flex } from '@ag.ds-next/box';
 import {
 	boxPalette,
@@ -6,49 +6,80 @@ import {
 	useLinkComponent,
 	LinkProps,
 } from '@ag.ds-next/core';
+import { BaseButton, BaseButtonProps } from '@ag.ds-next/button';
 import { NavListItem } from './NavListItem';
 
-export type NavListLink = Omit<LinkProps, 'children'> & {
+type NavListType = 'primary' | 'secondary';
+
+export type NavListLink = Omit<LinkProps, 'children'>;
+
+export type NavListButton = Omit<BaseButtonProps, 'children'>;
+
+export type NavListItem = (NavListLink | NavListButton) & {
 	label: ReactNode;
+	endElement?: ReactNode;
 };
 
 export type NavListProps = {
-	links?: NavListLink[];
-	activePath?: string;
+	activePath: string;
+	items?: NavListItem[];
+	type: 'primary' | 'secondary';
 };
 
-export function NavList({ links, activePath }: NavListProps) {
+export function NavList({ activePath, items, type }: NavListProps) {
 	const Link = useLinkComponent();
 	return (
-		<Flex
-			as="ul"
-			flexDirection={{ xs: 'column', lg: 'row' }}
-			flexWrap="wrap"
-			alignItems="stretch"
-			css={{
-				[tokens.mediaQuery.max.md]: {
-					'& > li': {
-						borderTopWidth: tokens.borderWidth.sm,
-						borderTopStyle: 'solid',
-						borderTopColor: boxPalette.border,
-					},
-				},
-			}}
-		>
-			{links?.map(({ href, label, ...props }, index) => {
-				const active = href === activePath;
+		<NavListContainer type={type}>
+			{items?.map(({ label, endElement, ...item }, index) => {
+				if ('href' in item) {
+					const active = item.href === activePath;
+					return (
+						<NavListItem key={index} active={active} type={type}>
+							<Link aria-current={active ? 'page' : undefined} {...item}>
+								<span>{label}</span>
+								{endElement}
+							</Link>
+						</NavListItem>
+					);
+				}
 				return (
-					<NavListItem key={index} active={active}>
-						<Link
-							href={href}
-							aria-current={active ? 'page' : undefined}
-							{...props}
-						>
-							{label}
-						</Link>
+					<NavListItem key={index} active={false} type={type}>
+						<BaseButton {...item}>
+							<span>{label}</span>
+							{endElement}
+						</BaseButton>
 					</NavListItem>
 				);
 			})}
-		</Flex>
+		</NavListContainer>
 	);
+}
+
+type NavListContainerProps = PropsWithChildren<{
+	type: NavListType;
+}>;
+
+function NavListContainer({ children, type }: NavListContainerProps) {
+	if (type === 'primary') {
+		return (
+			<Flex
+				as="ul"
+				flexDirection={{ xs: 'column', lg: 'row' }}
+				flexWrap="wrap"
+				alignItems="stretch"
+				css={{
+					[tokens.mediaQuery.max.md]: {
+						'& > li': {
+							borderTopWidth: tokens.borderWidth.sm,
+							borderTopStyle: 'solid',
+							borderTopColor: boxPalette.border,
+						},
+					},
+				}}
+			>
+				{children}
+			</Flex>
+		);
+	}
+	return <Flex as="ul">{children}</Flex>;
 }

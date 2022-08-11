@@ -1,5 +1,5 @@
 import { boxPalette } from '@ag.ds-next/core';
-import { NavListLink } from './NavList';
+import { NavListLink, NavListItem } from './NavList';
 
 export const bottomBarPadding = 0.5;
 
@@ -49,15 +49,17 @@ export const localPalette = {
 	bottomBar: `var(${localPaletteVars.bottomBar})`,
 };
 
-export function findBestMatch(
-	links: NavListLink[] | undefined,
-	activePath?: string
-) {
-	if (!activePath || !links) return '';
+export function findBestMatch(items: NavListItem[], activePath?: string) {
+	if (!activePath) return '';
+
+	const links = items.filter(
+		(item) => 'href' in item && item.href
+	) as (NavListLink & { href: string })[];
+
 	let bestMatch = '';
 
 	for (const link of links) {
-		if (!link.href || link.href === activePath) return link.href;
+		if (link.href === activePath) return link.href;
 		if (
 			activePath?.startsWith(link.href) &&
 			link.href !== '/' &&

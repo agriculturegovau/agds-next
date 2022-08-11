@@ -5,6 +5,7 @@ import { SubNavListItem } from './SubNavListItem';
 
 export type SubNavListLink = Omit<LinkProps, 'children'> & {
 	label: ReactNode;
+	endElement?: ReactNode;
 };
 
 export type SubNavListProps = {
@@ -21,7 +22,7 @@ export function SubNavList({ links, activePath }: SubNavListProps) {
 			flexWrap="wrap"
 			css={{ position: 'relative', zIndex: 1 }}
 		>
-			{links.map(({ href, label, ...props }, index) => {
+			{links.map(({ href, label, endElement, ...props }, index) => {
 				const active = href === activePath;
 				return (
 					<SubNavListItem key={index} active={active}>
@@ -31,6 +32,7 @@ export function SubNavList({ links, activePath }: SubNavListProps) {
 							{...props}
 						>
 							{label}
+							{/* {endElement} */}
 						</Link>
 					</SubNavListItem>
 				);
