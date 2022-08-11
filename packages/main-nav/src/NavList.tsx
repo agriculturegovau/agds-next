@@ -34,7 +34,12 @@ export function NavList({ activePath, items, type }: NavListProps) {
 				if ('href' in item) {
 					const active = item.href === activePath;
 					return (
-						<NavListItem key={index} active={active} type={type}>
+						<NavListItem
+							key={index}
+							active={active}
+							type={type}
+							hasEndElement={Boolean(endElement)}
+						>
 							<Link aria-current={active ? 'page' : undefined} {...item}>
 								<span>{label}</span>
 								{endElement}
@@ -43,7 +48,12 @@ export function NavList({ activePath, items, type }: NavListProps) {
 					);
 				}
 				return (
-					<NavListItem key={index} active={false} type={type}>
+					<NavListItem
+						key={index}
+						active={false}
+						type={type}
+						hasEndElement={Boolean(endElement)}
+					>
 						<BaseButton {...item}>
 							<span>{label}</span>
 							{endElement}
@@ -81,5 +91,9 @@ function NavListContainer({ children, type }: NavListContainerProps) {
 			</Flex>
 		);
 	}
-	return <Flex as="ul">{children}</Flex>;
+	return (
+		<Flex as="ul" height="100%">
+			{children}
+		</Flex>
+	);
 }

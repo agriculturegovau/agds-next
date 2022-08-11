@@ -13,10 +13,16 @@ type NavListType = 'primary' | 'secondary';
 
 export type NavItemProps = PropsWithChildren<{
 	active: boolean;
+	hasEndElement: boolean;
 	type: NavListType;
 }>;
 
-export function NavListItem({ active, children, type }: NavItemProps) {
+export function NavListItem({
+	active,
+	children,
+	hasEndElement,
+	type,
+}: NavItemProps) {
 	return (
 		<Flex
 			as="li"
@@ -26,6 +32,7 @@ export function NavListItem({ active, children, type }: NavItemProps) {
 			css={[
 				mq({
 					' a, button': {
+						boxSizing: 'border-box',
 						position: 'relative',
 						display: 'flex',
 						flexDirection:
@@ -36,7 +43,13 @@ export function NavListItem({ active, children, type }: NavItemProps) {
 										lg: 'row',
 								  }),
 						alignItems: 'center',
-						justifyContent: 'space-between',
+						justifyContent:
+							type === 'primary'
+								? 'space-between'
+								: hasEndElement
+								? 'space-between'
+								: 'center',
+						height: '100%',
 						width: '100%',
 						gap: mapSpacing(0.5),
 						color: boxPalette[active ? 'foregroundText' : 'foregroundAction'],
