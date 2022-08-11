@@ -3,6 +3,8 @@ import { Logo } from '@ag.ds-next/ag-branding';
 import { Stack } from '@ag.ds-next/box';
 import { Header } from '@ag.ds-next/header';
 import { MainNav } from '@ag.ds-next/main-nav';
+import { AvatarIcon } from '@ag.ds-next/icon';
+import { NotificationBadge } from '@ag.ds-next/badge';
 
 const NAV_ITEMS = {
 	primary: [
@@ -16,6 +18,12 @@ const NAV_ITEMS = {
 		{
 			label: 'GitHub',
 			href: 'https://github.com/steelthreads/agds-next',
+			endElement: <AvatarIcon color="currentColor" />,
+		},
+		{
+			label: 'GitHub',
+			href: 'https://github.com/steelthreads/agds-next',
+			endElement: <NotificationBadge value={99} max={50} tone="action" />,
 		},
 	],
 };
@@ -35,8 +43,8 @@ export const SiteHeader = () => {
 				id="main-nav"
 				variant="agriculture"
 				activePath={router.asPath}
-				links={NAV_ITEMS.primary}
-				secondaryLinks={NAV_ITEMS.secondary}
+				items={NAV_ITEMS.primary}
+				secondaryItems={NAV_ITEMS.secondary}
 			/>
 		</Stack>
 	);

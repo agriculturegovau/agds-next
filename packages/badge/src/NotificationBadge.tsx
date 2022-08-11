@@ -28,13 +28,15 @@ export const NotificationBadge = ({
 			fontSize="sm"
 			lineHeight="nospace"
 			css={{
-				color: boxPalette.backgroundBody,
+				color: 'inherit',
 				backgroundColor,
 				minWidth: mapSpacing(1.5),
 				borderRadius: mapSpacing(0.75),
 			}}
 		>
-			{max === undefined || value <= max ? value : `${max}+`}
+			<span css={{ color: boxPalette.backgroundBody }}>
+				{max === undefined || value <= max ? value : `${max}+`}
+			</span>
 		</Text>
 	);
 };

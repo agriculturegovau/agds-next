@@ -1,7 +1,6 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { Box } from '@ag.ds-next/box';
-import { IndicatorDot, NotificationBadge } from '@ag.ds-next/badge';
-import { AvatarIcon } from '@ag.ds-next/icon';
+import { NotificationBadge } from '@ag.ds-next/badge';
 import { SubNav } from './SubNav';
 
 export default {
@@ -55,7 +54,7 @@ WithEndElements.args = {
 		{
 			href: '#pull-requests',
 			label: 'Pull Requests',
-			endElement: <NotificationBadge value={5} tone="action" />,
+			endElement: <NotificationBadge value={5} tone="inherit" />,
 		},
 		{
 			href: '#user-settings',

@@ -39,7 +39,7 @@ import { TextInput } from '@ag.ds-next/text-input';
 import { DatePicker } from '@ag.ds-next/date-picker';
 import { Header } from '@ag.ds-next/header';
 import { Logo } from '@ag.ds-next/ag-branding';
-import { MainNav, MainNavLink } from '@ag.ds-next/main-nav';
+import { MainNav } from '@ag.ds-next/main-nav';
 import { Footer, FooterDivider } from '@ag.ds-next/footer';
 import { LinkList } from '@ag.ds-next/link-list';
 import { tokens } from '@ag.ds-next/core';
@@ -108,18 +108,12 @@ const KitchenSink = ({ background }: { background: 'body' | 'bodyAlt' }) => {
 				<MainNav
 					id="main-nav"
 					variant="agriculture"
-					links={[
-						{ label: 'Home', href: '/' },
-						{ label: 'Category 1', href: '/category' },
+					activePath="#home"
+					items={[
+						{ label: 'Home', href: '#home' },
+						{ label: 'Category', href: '#category' },
 					]}
-					activePath={'/'}
-					rightContent={
-						<MainNavLink
-							label="Sign in"
-							href="/sign-in-form"
-							// icon={AvatarIcon}
-						/>
-					}
+					secondaryItems={[{ label: 'Sign in', href: '#sign-in' }]}
 				/>
 			</Stack>
 			<HeroBanner background={backgroundSet.opposite}>

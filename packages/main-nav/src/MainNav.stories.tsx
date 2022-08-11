@@ -110,12 +110,12 @@ EndElements.args = {
 		{
 			href: '#issues',
 			label: 'Issues',
-			endElement: <NotificationBadge value={2} tone="action" />,
+			endElement: <NotificationBadge value={2} tone="inherit" />,
 		},
 		{
 			href: '#pull-requests',
 			label: 'Pull requests',
-			endElement: <NotificationBadge value={10} tone="action" />,
+			endElement: <NotificationBadge value={10} tone="inherit" />,
 		},
 		{ href: '#security', label: 'Security' },
 		{ href: '#settings', label: 'Settings' },
