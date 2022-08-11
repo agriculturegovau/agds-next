@@ -14,7 +14,7 @@ const NAV_LINKS = [
 export const SiteHeader = ({ focusMode }: { focusMode: boolean }) => {
 	const router = useRouter();
 	return (
-		<Stack>
+		<Stack palette="dark">
 			<Header
 				variant="darkAlt"
 				logo={<Logo />}
@@ -26,7 +26,6 @@ export const SiteHeader = ({ focusMode }: { focusMode: boolean }) => {
 			{!focusMode ? (
 				<MainNav
 					id="main-nav"
-					variant="agriculture"
 					links={NAV_LINKS}
 					activePath={router.asPath}
 					rightContent={
@@ -38,7 +37,7 @@ export const SiteHeader = ({ focusMode }: { focusMode: boolean }) => {
 					}
 				/>
 			) : (
-				<MainNavBottomBar variant="agriculture" />
+				<MainNavBottomBar />
 			)}
 		</Stack>
 	);

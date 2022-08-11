@@ -21,7 +21,7 @@ import { CloseButton, OpenButton } from './MenuButtons';
 import { NavListLink } from './NavList';
 
 export type NavContainerCommonProps = {
-	background: MainNavBackground;
+	background?: MainNavBackground;
 	palette?: BoxProps['palette'];
 	id?: string;
 	links?: NavListLink[];
@@ -59,7 +59,7 @@ export function NavContainer({
 			css={{
 				position: 'relative',
 				[localPaletteVars.linkHoverBg]: backgroundColorMap[hover],
-				[localPaletteVars.linkActiveBg]: background,
+				[localPaletteVars.linkActiveBg]: backgroundColorMap[background],
 				[localPaletteVars.bottomBar]: boxPalette.accent,
 				...packs.print.hidden,
 			}}

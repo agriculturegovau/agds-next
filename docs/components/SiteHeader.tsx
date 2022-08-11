@@ -16,7 +16,7 @@ export const SiteHeader = () => {
 	const router = useRouter();
 
 	return (
-		<Stack>
+		<Stack palette="dark">
 			<Header
 				variant="darkAlt"
 				logo={<Logo />}
@@ -26,7 +26,6 @@ export const SiteHeader = () => {
 			/>
 			<MainNav
 				id="main-nav"
-				variant="agriculture"
 				links={NAV_LINKS}
 				activePath={router.asPath}
 				rightContent={
