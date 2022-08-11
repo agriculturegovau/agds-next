@@ -4,6 +4,7 @@ import { foregroundColorMap } from '@ag.ds-next/box';
 
 export const iconColors = {
 	...foregroundColorMap,
+	currentColor: 'currentColor',
 	border: boxPalette.border,
 };
 
@@ -31,7 +32,7 @@ export const createIcon = (children: ReactNode, name: string) => {
 	const Icon = ({
 		className,
 		size = 'md',
-		color,
+		color = 'currentColor',
 		weight = 'regular',
 		style,
 	}: IconProps) => {
@@ -50,7 +51,7 @@ export const createIcon = (children: ReactNode, name: string) => {
 					width: resolvedSize,
 					height: resolvedSize,
 					fill: 'none',
-					color: color ? iconColors[color] : undefined,
+					color: iconColors[color],
 					stroke: 'currentColor',
 					strokeLinejoin: 'round',
 					strokeLinecap: 'round',
