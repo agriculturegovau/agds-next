@@ -1,6 +1,6 @@
 import { Fragment } from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { Box } from '@ag.ds-next/box';
+import { Box, Stack } from '@ag.ds-next/box';
 import { Header } from '@ag.ds-next/header';
 import { Logo } from '@ag.ds-next/ag-branding/';
 import { MainNav } from '@ag.ds-next/main-nav';
@@ -42,8 +42,10 @@ Basic.args = {
 
 const FullScreenContent = () => (
 	<Fragment>
-		<Header logo={<Logo />} heading="Export Service" />
-		<MainNav links={[{ label: 'Hello', href: '#' }]} variant="agriculture" />
+		<Stack palette="dark">
+			<Header logo={<Logo />} heading="Export Service" />
+			<MainNav links={[{ label: 'Hello', href: '#' }]} />
+		</Stack>
 		<Content>
 			<Prose>
 				<h1>Page heading</h1>

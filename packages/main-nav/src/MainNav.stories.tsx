@@ -73,9 +73,6 @@ NoLinks.args = {
 	),
 };
 
-export const BottomBar: ComponentStory<typeof MainNavBottomBar> = (args) => (
-	<MainNavBottomBar {...args} />
+export const BottomBar: ComponentStory<typeof MainNavBottomBar> = () => (
+	<MainNavBottomBar />
 );
-BottomBar.args = {
-	variant: 'agriculture',
-};
