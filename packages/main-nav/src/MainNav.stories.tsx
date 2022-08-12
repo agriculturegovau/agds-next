@@ -1,27 +1,26 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { AvatarIcon } from '@ag.ds-next/icon';
+import { NotificationBadge } from '@ag.ds-next/badge';
 import { MainNav } from './MainNav';
-import { MainNavButton, MainNavLink } from './MainNavItem';
 import { MainNavBottomBar } from './MainNavBottomBar';
 
 export default {
 	title: 'navigation/MainNav',
 	component: MainNav,
-	subcomponents: { MainNavBottomBar, MainNavButton, MainNavLink },
+	subcomponents: { MainNavBottomBar },
 } as ComponentMeta<typeof MainNav>;
 
 const NAV_ITEMS = [
 	{ href: '#home', label: 'Home' },
 	{ href: '#content', label: 'Content page' },
 	{ href: '#form', label: 'Form page' },
-	{ href: '#', label: 'Simple terms' },
-	{ href: '#', label: 'Distinct from each other' },
+	{ href: '#simple', label: 'Simple page' },
 ];
 
 const defaultArgs = {
-	links: NAV_ITEMS,
-	activePath: '#content',
 	variant: 'agriculture',
+	items: NAV_ITEMS,
+	activePath: '#content',
 } as const;
 
 const Template: ComponentStory<typeof MainNav> = (args) => (
@@ -58,35 +57,65 @@ LightAltVariant.args = {
 	variant: 'lightAlt',
 };
 
-export const HeaderRightLink = Template.bind({});
-HeaderRightLink.args = {
+export const HeaderRightLinks = Template.bind({});
+HeaderRightLinks.args = {
 	...defaultArgs,
-	rightContent: <MainNavLink href="#login" label="Sign in" icon={AvatarIcon} />,
+	activePath: '#messages',
+	secondaryItems: [
+		{
+			href: '#messages',
+			label: 'Messages',
+			endElement: <NotificationBadge tone="action" value={5} />,
+		},
+		{
+			href: '#sign-in',
+			label: 'Sign in',
+			endElement: <AvatarIcon color="action" />,
+		},
+	],
 };
 
 export const HeaderRightButton = Template.bind({});
 HeaderRightButton.args = {
 	...defaultArgs,
-	rightContent: (
-		<MainNavButton
-			onClick={() => console.log('Button press')}
-			label="Sign in"
-			icon={AvatarIcon}
-		/>
-	),
+	secondaryItems: [
+		{
+			onClick: console.log,
+			label: 'Sign in',
+			endElement: <AvatarIcon color="action" />,
+		},
+	],
 };
 
 export const NoLinks = Template.bind({});
 NoLinks.args = {
 	...defaultArgs,
-	links: undefined,
-	rightContent: (
-		<MainNavButton
-			onClick={() => console.log('Button press')}
-			label="Sign in"
-			icon={AvatarIcon}
-		/>
-	),
+	items: undefined,
+	secondaryItems: [
+		{
+			onClick: console.log,
+			label: 'Sign in',
+			endElement: <AvatarIcon color="action" />,
+		},
+	],
+};
+
+export const EndElement = Template.bind({});
+EndElement.args = {
+	...defaultArgs,
+	activePath: '#issues',
+	items: [
+		{ href: '#home', label: 'Home' },
+		{ href: '#code', label: 'Code' },
+		{
+			href: '#issues',
+			label: 'Issues',
+			endElement: <NotificationBadge tone="action" value={5} />,
+		},
+		{ href: '#pull-requests', label: 'Pull requests' },
+		{ href: '#security', label: 'Security' },
+		{ href: '#settings', label: 'Settings' },
+	],
 };
 
 export const BottomBar: ComponentStory<typeof MainNavBottomBar> = (args) => (

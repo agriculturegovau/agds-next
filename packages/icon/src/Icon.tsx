@@ -50,7 +50,7 @@ export const createIcon = (children: ReactNode, name: string) => {
 					width: resolvedSize,
 					height: resolvedSize,
 					fill: 'none',
-					color: color ? iconColors[color] : undefined,
+					color: color ? iconColors[color] : 'currentColor',
 					stroke: 'currentColor',
 					strokeLinejoin: 'round',
 					strokeLinecap: 'round',

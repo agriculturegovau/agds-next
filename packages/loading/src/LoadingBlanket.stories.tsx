@@ -43,7 +43,7 @@ Basic.args = {
 const FullScreenContent = () => (
 	<Fragment>
 		<Header logo={<Logo />} heading="Export Service" />
-		<MainNav links={[{ label: 'Hello', href: '#' }]} variant="agriculture" />
+		<MainNav items={[{ label: 'Hello', href: '#' }]} variant="agriculture" />
 		<Content>
 			<Prose>
 				<h1>Page heading</h1>
