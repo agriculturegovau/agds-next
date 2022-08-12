@@ -14,7 +14,6 @@ export type MainNavProps = NavContainerCommonProps &
 
 export function MainNav({
 	background = 'body',
-	palette,
 	links,
 	rightContent,
 	activePath,
@@ -24,7 +23,6 @@ export function MainNav({
 	const bestMatch = findBestMatch(links, activePath);
 	return (
 		<NavContainer
-			palette={palette}
 			background={background}
 			id={id}
 			aria-label={ariaLabel}

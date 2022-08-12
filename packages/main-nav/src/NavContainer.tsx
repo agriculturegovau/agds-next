@@ -1,7 +1,7 @@
 import { PropsWithChildren, ReactNode, MouseEventHandler } from 'react';
 import FocusLock from 'react-focus-lock';
 import { Global } from '@emotion/react';
-import { Box, BoxProps, Flex, backgroundColorMap } from '@ag.ds-next/box';
+import { Box, Flex, backgroundColorMap } from '@ag.ds-next/box';
 import {
 	boxPalette,
 	useTernaryState,
@@ -22,7 +22,6 @@ import { NavListLink } from './NavList';
 
 export type NavContainerCommonProps = {
 	background?: MainNavBackground;
-	palette?: BoxProps['palette'];
 	id?: string;
 	links?: NavListLink[];
 	rightContent?: ReactNode;
@@ -39,7 +38,6 @@ export function NavContainer({
 	rightContent,
 	'aria-label': ariaLabel,
 	children,
-	palette,
 	background = 'body',
 	links,
 }: NavContainerProps) {
@@ -53,7 +51,6 @@ export function NavContainer({
 	return (
 		<Box
 			id={id}
-			palette={palette}
 			background={background}
 			color="text"
 			css={{
