@@ -1,11 +1,7 @@
 import { HTMLAttributes } from 'react';
 import { useTrail, animated } from '@react-spring/web';
 import { Box, Flex } from '@ag.ds-next/box';
-import {
-	boxPalette,
-	mapSpacing,
-	usePrefersReducedMotion,
-} from '@ag.ds-next/core';
+import { mapSpacing, usePrefersReducedMotion } from '@ag.ds-next/core';
 
 const loadingDotsSizes = {
 	sm: { gap: 0.5, dotSize: mapSpacing(0.5), dots: 3 },
@@ -68,7 +64,7 @@ export const LoadingDots = ({
 					height={dotSize}
 					width={dotSize}
 					style={style}
-					css={{ borderRadius: '50%', background: boxPalette.foregroundText }}
+					css={{ borderRadius: '50%', background: 'currentColor' }}
 				/>
 			))}
 		</Flex>
