@@ -105,14 +105,14 @@ const HeaderBadge = ({ children }: HeaderBadgeProps) => {
 const logoWidthMap = {
 	small: { xs: '12rem', sm: '14rem' },
 	medium: { xs: '12rem', sm: '16rem' },
-};
+} as const;
 
 const headingSizeMap = {
 	small: { xs: 'md', sm: 'lg' },
 	medium: { xs: 'md', sm: 'xl' },
-};
+} as const;
 
 const subHeadingSizeMap = {
 	small: 'sm',
 	medium: { xs: 'sm', sm: 'md' },
-};
+} as const;
