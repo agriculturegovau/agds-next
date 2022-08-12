@@ -44,7 +44,7 @@ const FullScreenContent = () => (
 	<Fragment>
 		<Stack palette="dark">
 			<Header logo={<Logo />} heading="Export Service" />
-			<MainNav links={[{ label: 'Hello', href: '#' }]} />
+			<MainNav items={[{ label: 'Hello', href: '#' }]} />
 		</Stack>
 		<Content>
 			<Prose>

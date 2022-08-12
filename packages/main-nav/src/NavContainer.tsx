@@ -18,18 +18,17 @@ import {
 	bottomBarPadding,
 } from './utils';
 import { CloseButton, OpenButton } from './MenuButtons';
-import { NavListLink } from './NavList';
 
 export type NavContainerCommonProps = {
 	background?: MainNavBackground;
 	id?: string;
-	links?: NavListLink[];
 	rightContent?: ReactNode;
 };
 
 export type NavContainerProps = PropsWithChildren<
 	NavContainerCommonProps & {
 		'aria-label': string;
+		hasItems?: boolean;
 	}
 >;
 
@@ -39,7 +38,7 @@ export function NavContainer({
 	'aria-label': ariaLabel,
 	children,
 	background = 'body',
-	links,
+	hasItems,
 }: NavContainerProps) {
 	const hover = hoverMap[background];
 
@@ -76,7 +75,7 @@ export function NavContainer({
 					width="100%"
 					paddingX={{ xs: 0.75, lg: 2 }}
 				>
-					{links && links.length > 0 ? <OpenButton onClick={open} /> : null}
+					{hasItems ? <OpenButton onClick={open} /> : null}
 					<FocusLock returnFocus disabled={!menuVisiblyOpen}>
 						<div
 							role={menuVisiblyOpen ? 'dialog' : 'none'}

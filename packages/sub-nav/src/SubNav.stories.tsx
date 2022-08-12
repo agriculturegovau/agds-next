@@ -1,5 +1,6 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { Box } from '@ag.ds-next/box';
+import { NotificationBadge } from '@ag.ds-next/badge';
 import { SubNav } from './SubNav';
 
 export default {
@@ -33,4 +34,22 @@ OnBodyAlt.args = {
 	background: 'bodyAlt',
 	activePath: '#code',
 	links: exampleLinks,
+};
+
+export const WithEndElements: ComponentStory<typeof SubNav> = (args) => (
+	<SubNav {...args} />
+);
+WithEndElements.args = {
+	background: 'body',
+	activePath: '#code',
+	links: [
+		{ href: '#usage', label: 'Usage' },
+		{
+			href: '#code',
+			label: 'Code',
+			endElement: <NotificationBadge value={5} tone="action" />,
+		},
+		{ href: '#content', label: 'Content' },
+		{ href: '#accessibility', label: 'Accessibility' },
+	],
 };

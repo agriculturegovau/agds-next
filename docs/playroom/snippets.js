@@ -3,7 +3,7 @@ const snippets = [
 		group: 'Boilerplate',
 		name: 'One',
 		code: `<Header logo={<Logo />} heading="Export Service" />
-    <MainNav links={[{ label: "Hello", href: "#" }]} variant='agriculture' />
+    <MainNav items={[{ label: "Hello", href: "#" }]} variant='agriculture' />
 
     <PageContent as="main">
       <Prose>

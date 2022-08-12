@@ -10,6 +10,7 @@ export type HeaderProps = {
 	logo?: JSX.Element;
 	rightContent?: ReactNode;
 	subline?: string;
+	size?: 'small' | 'medium';
 	variant?: 'light' | 'lightAlt' | 'dark' | 'darkAlt';
 	href?: string;
 };
@@ -20,16 +21,18 @@ export function Header({
 	heading,
 	rightContent,
 	subline,
+	size = 'medium',
 	variant = 'darkAlt',
 	href = '/',
 }: HeaderProps) {
 	const hasRightContent = !!rightContent;
 	return (
-		<HeaderContainer variant={variant}>
+		<HeaderContainer variant={variant} size={size}>
 			<Column columnSpan={{ xs: 12, md: hasRightContent ? 8 : 12 }}>
 				<HeaderBrand
 					badgeLabel={badgeLabel}
 					logo={logo}
+					size={size}
 					href={href}
 					heading={heading}
 					subline={subline}
