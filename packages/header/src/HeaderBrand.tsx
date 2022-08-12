@@ -1,5 +1,6 @@
 import { ReactNode } from 'react';
 import { Box, Flex, Stack } from '@ag.ds-next/box';
+import { tokens } from '@ag.ds-next/core';
 import { Text } from '@ag.ds-next/text';
 import { useLinkComponent, boxPalette, packs } from '@ag.ds-next/core';
 
@@ -9,12 +10,14 @@ type HeaderBrandProps = {
 	heading: string;
 	subline?: string;
 	logo?: JSX.Element;
+	size: keyof typeof logoWidthMap;
 };
 
 export function HeaderBrand({
 	badgeLabel,
 	href = '/',
 	logo,
+	size,
 	heading,
 	subline,
 }: HeaderBrandProps) {
@@ -37,7 +40,7 @@ export function HeaderBrand({
 			{logo ? (
 				<Flex
 					alignItems="flex-start"
-					maxWidth={{ xs: '12rem', sm: '16rem' }}
+					maxWidth={logoWidthMap[size]}
 					css={{
 						' img, svg': { width: '100%' },
 						...packs.print.hidden,
@@ -57,15 +60,16 @@ export function HeaderBrand({
 				<Flex alignItems="flex-start" gap={0.5}>
 					<Text
 						lineHeight="default"
-						fontSize={{ xs: 'md', sm: 'xl' }}
+						fontSize={headingSizeMap[size]}
 						fontWeight="bold"
+						maxWidth={tokens.maxWidth.bodyText}
 					>
 						{heading}
 					</Text>
 					{badgeLabel && <HeaderBadge>{badgeLabel}</HeaderBadge>}
 				</Flex>
 				{subline && (
-					<Text color="muted" fontSize={{ xs: 'sm', sm: 'md' }}>
+					<Text color="muted" fontSize={subHeadingSizeMap[size]}>
 						{subline}
 					</Text>
 				)}
@@ -97,3 +101,18 @@ const HeaderBadge = ({ children }: HeaderBadgeProps) => {
 		</Box>
 	);
 };
+
+const logoWidthMap = {
+	small: { xs: '12rem', sm: '14rem' },
+	medium: { xs: '12rem', sm: '16rem' },
+} as const;
+
+const headingSizeMap = {
+	small: { xs: 'md', sm: 'lg' },
+	medium: { xs: 'md', sm: 'xl' },
+} as const;
+
+const subHeadingSizeMap = {
+	small: 'sm',
+	medium: { xs: 'sm', sm: 'md' },
+} as const;

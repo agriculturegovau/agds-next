@@ -22,18 +22,28 @@ const variantMap = {
 	},
 } as const;
 
+const paddingMap = {
+	small: { xs: 1, md: 1 },
+	medium: { xs: 1, md: 3 },
+} as const;
+
 type HeaderContainerProps = PropsWithChildren<{
 	variant: keyof typeof variantMap;
+	size: 'small' | 'medium';
 }>;
 
-export function HeaderContainer({ variant, children }: HeaderContainerProps) {
+export function HeaderContainer({
+	variant,
+	size,
+	children,
+}: HeaderContainerProps) {
 	return (
 		<Flex
 			as="header"
 			palette={variantMap[variant].palette}
 			background={variantMap[variant].background}
 			color="text"
-			paddingY={{ xs: 1, md: 3 }}
+			paddingY={paddingMap[size]}
 			justifyContent="center"
 		>
 			<Box
