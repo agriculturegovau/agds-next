@@ -1,5 +1,6 @@
 import { ReactNode } from 'react';
 import { Box, Flex, Stack } from '@ag.ds-next/box';
+import { tokens } from '@ag.ds-next/core';
 import { Text } from '@ag.ds-next/text';
 import { useLinkComponent, boxPalette, packs } from '@ag.ds-next/core';
 
@@ -61,6 +62,7 @@ export function HeaderBrand({
 						lineHeight="default"
 						fontSize={headingSizeMap[size]}
 						fontWeight="bold"
+						maxWidth={tokens.maxWidth.bodyText}
 					>
 						{heading}
 					</Text>
@@ -101,16 +103,16 @@ const HeaderBadge = ({ children }: HeaderBadgeProps) => {
 };
 
 const logoWidthMap = {
-	small: { xs: '11rem', sm: '11rem' },
+	small: { xs: '12rem', sm: '14rem' },
 	medium: { xs: '12rem', sm: '16rem' },
 };
 
 const headingSizeMap = {
-	small: 'sm',
+	small: { xs: 'md', sm: 'lg' },
 	medium: { xs: 'md', sm: 'xl' },
 };
 
 const subHeadingSizeMap = {
-	small: 'xs',
+	small: 'sm',
 	medium: { xs: 'sm', sm: 'md' },
 };

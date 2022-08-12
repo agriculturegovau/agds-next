@@ -23,7 +23,7 @@ const variantMap = {
 } as const;
 
 const paddingMap = {
-	small: { xs: 1, md: 0.75 },
+	small: { xs: 1, md: 1 },
 	medium: { xs: 1, md: 3 },
 } as const;
 
