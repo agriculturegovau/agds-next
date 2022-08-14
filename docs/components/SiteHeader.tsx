@@ -3,8 +3,6 @@ import { Logo } from '@ag.ds-next/ag-branding';
 import { Stack } from '@ag.ds-next/box';
 import { Header } from '@ag.ds-next/header';
 import { MainNav } from '@ag.ds-next/main-nav';
-import { AvatarIcon } from '@ag.ds-next/icon';
-import { NotificationBadge } from '@ag.ds-next/badge';
 
 const NAV_ITEMS = {
 	primary: [
@@ -25,9 +23,9 @@ const NAV_ITEMS = {
 export const SiteHeader = () => {
 	const router = useRouter();
 	return (
-		<Stack>
+		<Stack palette="dark">
 			<Header
-				variant="darkAlt"
+				background="bodyAlt"
 				logo={<Logo />}
 				heading="Agriculture Design System"
 				subline="Design System for the Export Service"
