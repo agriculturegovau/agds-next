@@ -1,4 +1,4 @@
-import React from 'react';
+import { DecoratorFn } from '@storybook/react';
 import { Box } from '@ag.ds-next/box';
 import { Core } from '@ag.ds-next/core';
 import { theme } from '@ag.ds-next/ag-branding';
@@ -85,18 +85,18 @@ export const parameters = {
 	},
 };
 
-const getTheme = (brand) => {
+const getTheme = (brand: string) => {
 	return {
 		gold: {},
 		agriculture: theme,
 	}[brand];
 };
 
-const withBrandTheme = (Story, context) => {
-	const brand = getTheme(context.globals.brand);
+const withBrandTheme: DecoratorFn = (Story, context) => {
+	const theme = getTheme(context.globals.brand);
 	const palette = context.globals.palette;
 	return (
-		<Core theme={brand}>
+		<Core theme={theme}>
 			<Box
 				width="100%"
 				minHeight="100vh"

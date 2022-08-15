@@ -1,4 +1,4 @@
-import React, { Fragment, useRef, useState } from 'react';
+import { Fragment, useRef, useState } from 'react';
 import useSWR from 'swr';
 import { Stack } from '@ag.ds-next/box';
 import {
@@ -78,7 +78,7 @@ export function RemoteDataTable() {
 							</Fragment>
 						) : (
 							<Fragment>
-								{[...new Array(10).keys()].map((i) => (
+								{Array.from(Array(10).keys()).map((i) => (
 									<tr key={i}>
 										<TableCell>
 											<SkeletonText />
