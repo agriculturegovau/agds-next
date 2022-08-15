@@ -25,7 +25,7 @@ export const SiteHeader = () => {
 	return (
 		<Stack palette="dark">
 			<Header
-				variant="darkAlt"
+				background="bodyAlt"
 				logo={<Logo />}
 				heading="Agriculture Design System"
 				subline="Design System for the Export Service"

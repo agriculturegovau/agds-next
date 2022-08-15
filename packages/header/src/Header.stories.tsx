@@ -1,18 +1,11 @@
-import {
-	ComponentStory,
-	ComponentMeta,
-	StoryContext,
-	ReactFramework,
-} from '@storybook/react';
+import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { Logo as AgLogo } from '@ag.ds-next/ag-branding';
 import {
 	SearchBox,
 	SearchBoxInput,
 	SearchBoxButton,
 } from '@ag.ds-next/search-box';
-import logoImageLight from '../../../example-site/public/header-logo-agov.png';
-import logoImageDark from '../../../example-site/public/header-logo-agov--dark.png';
-import { Header, HeaderProps } from './Header';
+import { Header } from './Header';
 import { HeaderContainer } from './HeaderContainer';
 import { HeaderBrand } from './HeaderBrand';
 
@@ -21,11 +14,6 @@ import { HeaderBrand } from './HeaderBrand';
  * with `src` and other properties.
  * The image imports here are handled by storybook and resolve to strings.
  */
-
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-const logoLight = <img src={logoImageLight as any as string} alt="Logo" />;
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-const logoDark = <img src={logoImageDark as any as string} alt="Logo" />;
 
 export default {
 	title: 'layout/Header',
@@ -41,47 +29,22 @@ const defaultArgs = {
 	subline: 'Supporting Australian agricultural exports',
 };
 
-function getLogo(
-	context: StoryContext<ReactFramework, HeaderProps>,
-	variant = 'dark'
-) {
-	if (context.globals.brand === 'agriculture') {
-		return <AgLogo />;
-	}
-	return {
-		dark: logoLight,
-		darkAlt: logoLight,
-		light: logoDark,
-		lightAlt: logoDark,
-	}[variant];
-}
-
-const Template: ComponentStory<typeof Header> = (args, context) => (
-	<Header logo={getLogo(context, args.variant)} {...args} />
+const Template: ComponentStory<typeof Header> = (args) => (
+	<Header logo={<AgLogo />} {...args} />
 );
 
-export const DarkVariant = Template.bind({});
-DarkVariant.args = {
+export const BodyBackground = Template.bind({});
+BodyBackground.storyName = 'Body background';
+BodyBackground.args = {
 	...defaultArgs,
-	variant: 'dark',
+	background: 'body',
 };
 
-export const DarkAltVariant = Template.bind({});
-DarkAltVariant.args = {
+export const BodyAltBackground = Template.bind({});
+BodyAltBackground.storyName = 'BodyAlt background';
+BodyAltBackground.args = {
 	...defaultArgs,
-	variant: 'darkAlt',
-};
-
-export const LightVariant = Template.bind({});
-LightVariant.args = {
-	...defaultArgs,
-	variant: 'light',
-};
-
-export const LightAltVariant = Template.bind({});
-LightAltVariant.args = {
-	...defaultArgs,
-	variant: 'lightAlt',
+	background: 'bodyAlt',
 };
 
 export const Small = Template.bind({});
@@ -93,14 +56,12 @@ Small.args = {
 export const LongSubline = Template.bind({});
 LongSubline.args = {
 	...defaultArgs,
-	variant: 'dark',
 	subline: 'Service description that could be a little longer',
 };
 
 export const Badge = Template.bind({});
 Badge.args = {
 	...defaultArgs,
-	variant: 'dark',
 	badgeLabel: 'Beta',
 };
 
@@ -128,7 +89,6 @@ Search.args = {
 export const CoBranded = Template.bind({});
 CoBranded.args = {
 	...defaultArgs,
-	logo: logoLight,
 	heading: 'TODO ...',
 };
 CoBranded.storyName = '🕥 Co-Branded';
@@ -136,7 +96,6 @@ CoBranded.storyName = '🕥 Co-Branded';
 export const Hero = Template.bind({});
 Hero.args = {
 	...defaultArgs,
-	logo: logoLight,
 	heading: 'TODO ...',
 };
 Hero.storyName = '🕥 Header Hero';

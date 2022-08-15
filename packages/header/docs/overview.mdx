@@ -6,13 +6,15 @@ storybookPath: /story/layout-header--dark-variant
 ---
 
 ```jsx live
-<Header
-	heading="Export Service"
-	subline="Supporting Australian agricultural exports"
-	logo={<Logo />}
-	variant="darkAlt"
-	badgeLabel="Beta"
-/>
+<Box palette="dark">
+	<Header
+		heading="Export Service"
+		subline="Supporting Australian agricultural exports"
+		logo={<Logo />}
+		variant="bodyAlt"
+		badgeLabel="Beta"
+	/>
+</Box>
 ```
 
 ## Heading and Subline

@@ -25,7 +25,7 @@ export const SiteHeader = ({ focusMode }: { focusMode: boolean }) => {
 	return (
 		<Stack palette="dark">
 			<Header
-				variant="darkAlt"
+				background="bodyAlt"
 				logo={<Logo />}
 				heading="Export Service"
 				subline="Supporting Australian agricultural exports"
