@@ -25,7 +25,6 @@ export default {
 } as ComponentMeta<typeof Header>;
 
 const defaultArgs = {
-	// logo: AgLogo
 	heading: 'Export Service',
 	subline: 'Supporting Australian agricultural exports',
 };
