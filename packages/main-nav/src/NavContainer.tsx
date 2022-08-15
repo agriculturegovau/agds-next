@@ -19,18 +19,13 @@ import {
 } from './utils';
 import { CloseButton, OpenButton } from './MenuButtons';
 
-export type NavContainerCommonProps = {
+export type NavContainerProps = PropsWithChildren<{
+	'aria-label': string;
 	background?: MainNavBackground;
+	hasItems?: boolean;
 	id?: string;
 	rightContent?: ReactNode;
-};
-
-export type NavContainerProps = PropsWithChildren<
-	NavContainerCommonProps & {
-		'aria-label': string;
-		hasItems?: boolean;
-	}
->;
+}>;
 
 export function NavContainer({
 	id,
