@@ -10,7 +10,7 @@ export type HeaderProps = {
 	logo?: JSX.Element;
 	rightContent?: ReactNode;
 	subline?: string;
-	size?: 'small' | 'medium';
+	size?: 'sm' | 'md';
 	background?: 'body' | 'bodyAlt';
 	href?: string;
 };
@@ -21,7 +21,7 @@ export function Header({
 	heading,
 	rightContent,
 	subline,
-	size = 'medium',
+	size = 'md',
 	background = 'body',
 	href = '/',
 }: HeaderProps) {
