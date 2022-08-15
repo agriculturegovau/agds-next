@@ -50,7 +50,7 @@ BodyAltBackground.args = {
 export const Small = Template.bind({});
 Small.args = {
 	...defaultArgs,
-	size: 'small',
+	size: 'sm',
 };
 
 export const LongSubline = Template.bind({});

@@ -4,13 +4,13 @@ import { tokens } from '@ag.ds-next/core';
 import { Columns } from '@ag.ds-next/columns';
 
 const paddingMap = {
-	small: { xs: 1, md: 1 },
-	medium: { xs: 1, md: 3 },
+	sm: { xs: 1, md: 1 },
+	md: { xs: 1, md: 3 },
 } as const;
 
 type HeaderContainerProps = PropsWithChildren<{
 	background: 'body' | 'bodyAlt';
-	size: 'small' | 'medium';
+	size: keyof typeof paddingMap;
 }>;
 
 export function HeaderContainer({
