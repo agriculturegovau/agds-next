@@ -1,4 +1,4 @@
-import React, { Fragment, useRef } from 'react';
+import { Fragment, useRef } from 'react';
 import useSWR from 'swr';
 import { Stack } from '@ag.ds-next/box';
 import { SkeletonText } from '@ag.ds-next/skeleton';
@@ -40,7 +40,7 @@ export function RemoteDataCards() {
 				<Columns as="ul" cols={[1, 2, 3, 3, 4]}>
 					{!data ? (
 						<Fragment>
-							{[...new Array(10).keys()].map((i) => (
+							{Array.from(Array(10).keys()).map((i) => (
 								<Card as="li" key={i} shadow>
 									<CardInner>
 										<Stack gap={1}>
