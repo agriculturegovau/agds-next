@@ -32,14 +32,14 @@ Body.args = {
 	...defaultArgs,
 	background: 'body',
 };
-Body.storyName = 'body background';
+Body.storyName = 'Body background';
 
 export const BodyAlt = Template.bind({});
 BodyAlt.args = {
 	...defaultArgs,
 	background: 'bodyAlt',
 };
-BodyAlt.storyName = 'bodyAlt background';
+BodyAlt.storyName = 'BodyAlt background';
 
 export const HeaderRightLinks = Template.bind({});
 HeaderRightLinks.args = {
