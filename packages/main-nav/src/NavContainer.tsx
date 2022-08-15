@@ -11,20 +11,20 @@ import {
 	packs,
 } from '@ag.ds-next/core';
 import {
+	hoverMap,
+	MainNavBackground,
 	localPalette,
 	localPaletteVars,
-	variantMap,
-	MainNavVariant,
 	bottomBarPadding,
 } from './utils';
 import { CloseButton, OpenButton } from './MenuButtons';
 
 export type NavContainerProps = PropsWithChildren<{
-	id?: string;
 	'aria-label': string;
-	rightContent?: ReactNode;
-	variant: MainNavVariant;
+	background?: MainNavBackground;
 	hasItems?: boolean;
+	id?: string;
+	rightContent?: ReactNode;
 }>;
 
 export function NavContainer({
@@ -32,10 +32,10 @@ export function NavContainer({
 	rightContent,
 	'aria-label': ariaLabel,
 	children,
-	variant,
+	background = 'body',
 	hasItems,
 }: NavContainerProps) {
-	const { background, bottomBar, hover, palette } = variantMap[variant];
+	const hover = hoverMap[background];
 
 	const { windowWidth } = useWindowSize();
 	const [menuOpen, open, close] = useTernaryState(false);
@@ -45,14 +45,13 @@ export function NavContainer({
 	return (
 		<Box
 			id={id}
-			palette={palette}
 			background={background}
 			color="text"
 			css={{
 				position: 'relative',
 				[localPaletteVars.linkHoverBg]: backgroundColorMap[hover],
 				[localPaletteVars.linkActiveBg]: backgroundColorMap[background],
-				[localPaletteVars.bottomBar]: bottomBar, // <-- special case
+				[localPaletteVars.bottomBar]: boxPalette.accent,
 				...packs.print.hidden,
 			}}
 		>

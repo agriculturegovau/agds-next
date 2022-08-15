@@ -1,11 +1,12 @@
+import { boxPalette } from '@ag.ds-next/core';
 import { Box } from '@ag.ds-next/box';
-import { bottomBarPadding, MainNavVariant, variantMap } from './utils';
+import { bottomBarPadding } from './utils';
 
-export type MainNavBottomBarProps = { variant: MainNavVariant };
-
-export function MainNavBottomBar({ variant }: MainNavBottomBarProps) {
-	const { bottomBar } = variantMap[variant];
+export function MainNavBottomBar() {
 	return (
-		<Box paddingTop={bottomBarPadding} css={{ backgroundColor: bottomBar }} />
+		<Box
+			paddingTop={bottomBarPadding}
+			css={{ backgroundColor: boxPalette.accent }}
+		/>
 	);
 }

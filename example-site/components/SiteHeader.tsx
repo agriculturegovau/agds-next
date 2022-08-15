@@ -35,13 +35,12 @@ export const SiteHeader = ({ focusMode }: { focusMode: boolean }) => {
 			{!focusMode ? (
 				<MainNav
 					id="main-nav"
-					variant="agriculture"
 					activePath={router.asPath}
 					items={NAV_ITEMS.primary}
 					secondaryItems={NAV_ITEMS.secondary}
 				/>
 			) : (
-				<MainNavBottomBar variant="agriculture" />
+				<MainNavBottomBar />
 			)}
 		</Stack>
 	);

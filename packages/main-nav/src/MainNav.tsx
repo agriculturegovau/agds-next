@@ -1,19 +1,19 @@
 import { PropsWithChildren } from 'react';
 import { NavContainer } from './NavContainer';
 import { NavList, NavListItem } from './NavList';
-import { findBestMatch, MainNavVariant } from './utils';
+import { findBestMatch, MainNavBackground } from './utils';
 
 export type MainNavProps = PropsWithChildren<{
 	activePath?: string;
+	background?: MainNavBackground;
 	'aria-label'?: string;
 	id?: string;
 	items?: NavListItem[];
 	secondaryItems?: NavListItem[];
-	variant: MainNavVariant;
 }>;
 
 export function MainNav({
-	variant = 'agriculture',
+	background = 'body',
 	activePath,
 	items,
 	secondaryItems,
@@ -26,7 +26,7 @@ export function MainNav({
 	);
 	return (
 		<NavContainer
-			variant={variant}
+			background={background}
 			id={id}
 			aria-label={ariaLabel}
 			hasItems={items && items.length > 0}

@@ -33,7 +33,6 @@ export const SiteHeader = () => {
 			/>
 			<MainNav
 				id="main-nav"
-				variant="agriculture"
 				activePath={router.asPath}
 				items={NAV_ITEMS.primary}
 				secondaryItems={NAV_ITEMS.secondary}

@@ -18,44 +18,28 @@ const NAV_ITEMS = [
 ];
 
 const defaultArgs = {
-	variant: 'agriculture',
 	items: NAV_ITEMS,
 	activePath: '#content',
+	background: 'body',
 } as const;
 
 const Template: ComponentStory<typeof MainNav> = (args) => (
 	<MainNav {...args} />
 );
 
-export const AgricultureVariant = Template.bind({});
-AgricultureVariant.args = {
+export const Body = Template.bind({});
+Body.args = {
 	...defaultArgs,
-	variant: 'agriculture',
+	background: 'body',
 };
+Body.storyName = 'body background';
 
-export const DarkVariant = Template.bind({});
-DarkVariant.args = {
+export const BodyAlt = Template.bind({});
+BodyAlt.args = {
 	...defaultArgs,
-	variant: 'dark',
+	background: 'bodyAlt',
 };
-
-export const DarkAltVariant = Template.bind({});
-DarkAltVariant.args = {
-	...defaultArgs,
-	variant: 'darkAlt',
-};
-
-export const LightVariant = Template.bind({});
-LightVariant.args = {
-	...defaultArgs,
-	variant: 'light',
-};
-
-export const LightAltVariant = Template.bind({});
-LightAltVariant.args = {
-	...defaultArgs,
-	variant: 'lightAlt',
-};
+BodyAlt.storyName = 'bodyAlt background';
 
 export const HeaderRightLinks = Template.bind({});
 HeaderRightLinks.args = {
@@ -118,9 +102,6 @@ EndElement.args = {
 	],
 };
 
-export const BottomBar: ComponentStory<typeof MainNavBottomBar> = (args) => (
-	<MainNavBottomBar {...args} />
+export const BottomBar: ComponentStory<typeof MainNavBottomBar> = () => (
+	<MainNavBottomBar />
 );
-BottomBar.args = {
-	variant: 'agriculture',
-};
