@@ -4,8 +4,8 @@ import { NavList, NavListItem } from './NavList';
 import { findBestMatch, MainNavBackground } from './utils';
 
 export type MainNavProps = PropsWithChildren<{
-	background?: MainNavBackground;
 	activePath?: string;
+	background?: MainNavBackground;
 	'aria-label'?: string;
 	id?: string;
 	items?: NavListItem[];
