@@ -107,7 +107,6 @@ const KitchenSink = ({ background }: { background: 'body' | 'bodyAlt' }) => {
 				/>
 				<MainNav
 					id="main-nav"
-					variant="agriculture"
 					activePath="#home"
 					items={[
 						{ label: 'Home', href: '#home' },
