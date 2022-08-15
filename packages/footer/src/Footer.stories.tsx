@@ -17,7 +17,7 @@ export default {
 const AgSimpleFooter: ComponentStory<typeof Footer> = (args) => {
 	const year = useMemo(() => new Date().getFullYear(), []);
 	return (
-		<Footer variant={args.variant}>
+		<Footer background={args.background}>
 			<nav aria-label="footer">
 				<LinkList
 					horizontal
@@ -42,35 +42,23 @@ const AgSimpleFooter: ComponentStory<typeof Footer> = (args) => {
 	);
 };
 
-export const AgricultureVariant = AgSimpleFooter.bind({});
-AgricultureVariant.args = {
-	variant: 'agriculture',
-};
-export const LightVariant = AgSimpleFooter.bind({});
-LightVariant.args = {
-	variant: 'light',
+export const BodyBackground = AgSimpleFooter.bind({});
+BodyBackground.storyName = 'Body background';
+BodyBackground.args = {
+	background: 'body',
 };
 
-export const LightAltVariant = AgSimpleFooter.bind({});
-LightAltVariant.args = {
-	variant: 'lightAlt',
-};
-
-export const DarkVariant = AgSimpleFooter.bind({});
-DarkVariant.args = {
-	variant: 'dark',
-};
-
-export const DarkAltVariant = AgSimpleFooter.bind({});
-DarkAltVariant.args = {
-	variant: 'darkAlt',
+export const BodyAltBackground = AgSimpleFooter.bind({});
+BodyAltBackground.storyName = 'BodyAlt background';
+BodyAltBackground.args = {
+	background: 'bodyAlt',
 };
 
 const AgComplexFooter: ComponentStory<typeof Footer> = (args) => {
 	const year = useMemo(() => new Date().getFullYear(), []);
 	const columnSpanning = { xs: 12, sm: 6, lg: 3 } as const;
 	return (
-		<Footer variant={args.variant}>
+		<Footer background={args.background}>
 			<nav aria-label="footer">
 				<Columns>
 					<Column columnSpan={columnSpanning}>
@@ -143,5 +131,5 @@ const AgComplexFooter: ComponentStory<typeof Footer> = (args) => {
 
 export const ComplexContent = AgComplexFooter.bind({});
 ComplexContent.args = {
-	variant: 'agriculture',
+	background: 'bodyAlt',
 };
