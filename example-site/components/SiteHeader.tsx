@@ -23,9 +23,9 @@ const NAV_ITEMS = {
 export const SiteHeader = ({ focusMode }: { focusMode: boolean }) => {
 	const router = useRouter();
 	return (
-		<Stack>
+		<Stack palette="dark">
 			<Header
-				variant="darkAlt"
+				background="bodyAlt"
 				logo={<Logo />}
 				heading="Export Service"
 				subline="Supporting Australian agricultural exports"
