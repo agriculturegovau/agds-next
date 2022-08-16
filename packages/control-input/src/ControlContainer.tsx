@@ -11,7 +11,7 @@ export const ControlContainer = ({
 }: ControlContainerProps) => (
 	<Flex
 		as="label"
-		alignItems="center"
+		alignItems="flex-start"
 		color="text"
 		gap={0.5}
 		inline
