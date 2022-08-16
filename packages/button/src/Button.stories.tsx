@@ -28,7 +28,7 @@ Basic.args = {
 	block: false,
 	children: 'Button',
 	disabled: false,
-	loading: true,
+	loading: false,
 	variant: 'primary',
 };
 
