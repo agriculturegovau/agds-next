@@ -1,4 +1,10 @@
-import { packs, boxPalette, tokens, mapSpacing } from '@ag.ds-next/core';
+import {
+	packs,
+	boxPalette,
+	tokens,
+	mapSpacing,
+	fontGrid,
+} from '@ag.ds-next/core';
 
 const variants = {
 	primary: {
@@ -41,17 +47,18 @@ const variants = {
 		},
 	},
 	text: {
+		// Size does not change between sizes in this variant
+		...fontGrid('sm', 'default'),
 		height: 'auto',
 		paddingLeft: 0,
 		paddingRight: 0,
+		borderWidth: 0,
 		background: 'transparent',
-		borderColor: 'transparent',
 		color: boxPalette.foregroundAction,
 		...packs.underline,
 
 		'&:not(:disabled):hover': {
 			background: 'transparent',
-			borderColor: 'transparent',
 			color: boxPalette.foregroundText,
 			textDecoration: 'none',
 		},
@@ -97,9 +104,6 @@ export function buttonStyles({
 	size: ButtonSize;
 }) {
 	return {
-		...sizes[size],
-		...variants[variant],
-
 		appearance: 'none',
 		boxSizing: 'border-box',
 		position: 'relative',
@@ -124,5 +128,8 @@ export function buttonStyles({
 		},
 
 		'&:focus': packs.outline,
+
+		...sizes[size],
+		...variants[variant],
 	} as const;
 }
