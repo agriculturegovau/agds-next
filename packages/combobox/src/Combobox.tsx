@@ -1,17 +1,19 @@
-import { Fragment, useState, ReactNode } from 'react';
+import { Fragment, useState, ReactNode, useCallback } from 'react';
 import { useId } from '@reach/auto-id';
 import { useCombobox } from 'downshift';
 import { usePopper } from 'react-popper';
 import { textInputStyles } from '@ag.ds-next/text-input';
 import { Field } from '@ag.ds-next/field';
+import { Text } from '@ag.ds-next/text';
 import { ComboboxList } from './ComboboxList';
 import { ComboboxListItem } from './ComboboxListItem';
 import { ComboboxListLoading } from './ComboboxListLoading';
 import { ComboboxListEmptyResults } from './ComboboxListEmptyResults';
-import { DefaultComboboxOption, defaultRenderItem } from './utils';
 import { ComboboxDropdownTrigger } from './ComboboxDropdownTrigger';
+import { ComboboxClearButton } from './ComboboxClearButton';
+import { DefaultComboboxOption, filterOptions, splitLabel } from './utils';
 
-type ComboBoxProps<Option extends DefaultComboboxOption> = {
+export type ComboboxProps<Option extends DefaultComboboxOption> = {
 	/** Describes the purpose of the field. */
 	label: string;
 	/** If false, "(optional)" will be appended to the label. */
@@ -24,18 +26,27 @@ type ComboBoxProps<Option extends DefaultComboboxOption> = {
 	invalid?: boolean;
 	/** If true, the valid state will be rendered. */
 	valid?: boolean;
-	// /** If true, the field will stretch to the fill the width of its container. */
+	/** If true, the field will stretch to the fill the width of its container. */
 	block?: boolean;
-	// /** The maximum width of the field. */
-	// maxWidth?: FieldMax;
 	disabled?: boolean;
 	id?: string;
 	name?: string;
+	/** If true, the selected item can be cleared. Only available when `showDropdownTrigger` is false. */
+	clearable?: boolean;
+	/** If true, the dropdown trigger will be rendered. */
 	showDropdownTrigger?: boolean;
+	/** The list of options to show in the dropdown. */
 	options?: Option[];
-	onChange?: (value: Option) => void;
+	/** Function to be used when options need to be loaded over the newtwork. */
 	loadOptions?: (inputValue: string) => Promise<Option[]>;
+	/** The value of the field. */
+	value?: Option | null;
+	/** Function to be fired following a change event. */
+	onChange?: (value: Option | null) => void;
+	/** Used to override the default item rendering.  */
 	renderItem?: (item: Option, inputValue: string) => ReactNode;
+	/** Message to display when no options match the users search term. */
+	emptyResultsMessage?: string;
 };
 
 export function Combobox<Option extends DefaultComboboxOption>({
@@ -49,14 +60,34 @@ export function Combobox<Option extends DefaultComboboxOption>({
 	disabled,
 	block,
 	showDropdownTrigger = true,
+	clearable = false,
 	options = [],
 	loadOptions,
+	value,
 	onChange,
 	renderItem = defaultRenderItem,
-}: ComboBoxProps<Option>) {
+	emptyResultsMessage = 'No options found',
+}: ComboboxProps<Option>) {
 	const inputId = useComboboxInputId(idProp);
 	const [loading, setLoading] = useState(false);
 	const [inputItems, setInputItems] = useState<Option[]>(options);
+
+	const loadOrFilterOptions = useCallback(
+		async (inputValue?: string) => {
+			inputValue = inputValue?.toLowerCase() ?? '';
+			if (loadOptions) {
+				// Asynchronous
+				setLoading(true);
+				const inputItems = await loadOptions(inputValue);
+				setInputItems(filterOptions(inputItems, inputValue));
+				setLoading(false);
+			} else {
+				// Synchronous
+				setInputItems(filterOptions(options, inputValue));
+			}
+		},
+		[loadOptions, options]
+	);
 
 	const {
 		inputValue,
@@ -67,51 +98,23 @@ export function Combobox<Option extends DefaultComboboxOption>({
 		getComboboxProps,
 		highlightedIndex,
 		getItemProps,
+		selectedItem,
+		reset,
 	} = useCombobox<Option>({
+		selectedItem: value,
 		inputId,
 		items: inputItems,
 		itemToString: (item) => item?.label ?? '',
 		onSelectedItemChange: ({ selectedItem }) => {
-			if (onChange && selectedItem) onChange(selectedItem);
+			if (selectedItem === undefined) selectedItem = null;
+			if (onChange) onChange(selectedItem);
 		},
-		onInputValueChange: async ({ inputValue = '' }) => {
-			inputValue = inputValue.toLowerCase();
-			if (loadOptions) {
-				// Asynchronous
-				setLoading(true);
-				const inputItems = await loadOptions(inputValue);
-				setInputItems(inputItems);
-				setLoading(false);
-			} else {
-				// Synchronous
-				setInputItems(
-					options.filter(
-						({ value, label }) =>
-							value.toLowerCase().includes(inputValue) ||
-							label.toLowerCase().includes(inputValue)
-					)
-				);
-			}
+		onInputValueChange: async ({ inputValue }) => {
+			await loadOrFilterOptions(inputValue);
 		},
-		onIsOpenChange: async ({ isOpen, inputValue = '' }) => {
+		onIsOpenChange: async ({ isOpen, inputValue }) => {
 			if (!isOpen || inputValue) return;
-			inputValue = inputValue.toLowerCase();
-			if (loadOptions) {
-				// Asynchronous
-				setLoading(true);
-				const inputItems = await loadOptions(inputValue);
-				setInputItems(inputItems);
-				setLoading(false);
-			} else {
-				// Synchronous
-				setInputItems(
-					options.filter(
-						({ value, label }) =>
-							value.toLowerCase().includes(inputValue) ||
-							label.toLowerCase().includes(inputValue)
-					)
-				);
-			}
+			await loadOrFilterOptions(inputValue);
 		},
 	});
 
@@ -157,6 +160,9 @@ export function Combobox<Option extends DefaultComboboxOption>({
 								{...getToggleButtonProps()}
 							/>
 						)}
+						{!showDropdownTrigger && clearable && selectedItem && (
+							<ComboboxClearButton disabled={disabled} onClick={reset} />
+						)}
 					</div>
 				)}
 			</Field>
@@ -187,7 +193,7 @@ export function Combobox<Option extends DefaultComboboxOption>({
 											);
 										})
 									) : (
-										<ComboboxListEmptyResults />
+										<ComboboxListEmptyResults message={emptyResultsMessage} />
 									)}
 								</Fragment>
 							)}
@@ -197,6 +203,33 @@ export function Combobox<Option extends DefaultComboboxOption>({
 			</div>
 		</div>
 	);
+}
+
+function defaultRenderItem<Option extends DefaultComboboxOption>(
+	item: Option,
+	inputValue: string
+) {
+	return splitLabel(item.label, inputValue).map((part, index) => {
+		const isHighlighted = part.toLowerCase() === inputValue.toLowerCase();
+		if (isHighlighted) {
+			return (
+				<Text
+					key={index}
+					as="mark"
+					color="action"
+					fontWeight="bold"
+					css={{ background: 'none' }}
+				>
+					{part}
+				</Text>
+			);
+		}
+		return (
+			<Text key={index} as="span" color="action">
+				{part}
+			</Text>
+		);
+	});
 }
 
 function useComboboxInputId(idProp?: string) {

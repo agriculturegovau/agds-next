@@ -692,6 +692,16 @@ items={[
 		name: 'SkeletonBox',
 		code: '<SkeletonBox width="100px" height="100px" />',
 	},
+	{
+		group: 'Autocomplete',
+		name: 'Autocomplete',
+		code: `<Autocomplete label="Find your city" hint="Start typing to see results" loadOptions={() => [{ value: 'a', label: 'Option A' }, { value: 'b', label: 'Option B' }, { value: 'c', label: 'Option C' }]} />`,
+	},
+	{
+		group: 'Combobox',
+		name: 'Combobox',
+		code: `<Combobox label="Select country" options={[{ value: 'a', label: 'Option A' }, { value: 'b', label: 'Option B' }, { value: 'c', label: 'Option C' }]} />`,
+	},
 ];
 
 export default snippets;
