@@ -9,7 +9,6 @@ import { DirectionLink } from '@ag.ds-next/direction-link';
 import { Tags } from '@ag.ds-next/tags';
 import { Text } from '@ag.ds-next/text';
 import { TextLink } from '@ag.ds-next/text-link';
-import { ExternalLinkIcon } from '@ag.ds-next/icon';
 import { StatusBadge } from '@ag.ds-next/badge';
 import { PageContent } from '@ag.ds-next/content';
 import { Card } from './Card';
