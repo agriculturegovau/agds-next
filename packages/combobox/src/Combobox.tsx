@@ -1,21 +1,17 @@
-import { Fragment, useState } from 'react';
+import { Fragment, useState, ReactNode } from 'react';
 import { useId } from '@reach/auto-id';
 import { useCombobox } from 'downshift';
 import { usePopper } from 'react-popper';
 import { textInputStyles } from '@ag.ds-next/text-input';
-import { ChevronDownIcon } from '@ag.ds-next/icon';
-import { Button } from '@ag.ds-next/button';
 import { Field } from '@ag.ds-next/field';
-import { Flex } from '@ag.ds-next/box';
-import { mapSpacing } from '@ag.ds-next/core';
 import { ComboboxList } from './ComboboxList';
 import { ComboboxListItem } from './ComboboxListItem';
 import { ComboboxListLoading } from './ComboboxListLoading';
 import { ComboboxListEmptyResults } from './ComboboxListEmptyResults';
+import { DefaultComboboxOption, defaultRenderItem } from './utils';
+import { ComboboxDropdownTrigger } from './ComboboxDropdownTrigger';
 
-type DefaultOption = { label: string; value: string };
-
-type ComboBoxProps<Option extends DefaultOption> = {
+type ComboBoxProps<Option extends DefaultComboboxOption> = {
 	/** Describes the purpose of the field. */
 	label: string;
 	/** If false, "(optional)" will be appended to the label. */
@@ -29,7 +25,7 @@ type ComboBoxProps<Option extends DefaultOption> = {
 	/** If true, the valid state will be rendered. */
 	valid?: boolean;
 	// /** If true, the field will stretch to the fill the width of its container. */
-	// block?: boolean;
+	block?: boolean;
 	// /** The maximum width of the field. */
 	// maxWidth?: FieldMax;
 	disabled?: boolean;
@@ -39,9 +35,10 @@ type ComboBoxProps<Option extends DefaultOption> = {
 	options?: Option[];
 	onChange?: (value: Option) => void;
 	loadOptions?: (inputValue: string) => Promise<Option[]>;
+	renderItem?: (item: Option, inputValue: string) => ReactNode;
 };
 
-export function Combobox<Option extends DefaultOption>({
+export function Combobox<Option extends DefaultComboboxOption>({
 	label,
 	required,
 	hint,
@@ -50,11 +47,12 @@ export function Combobox<Option extends DefaultOption>({
 	valid,
 	id: idProp,
 	disabled,
-	// block,
+	block,
 	showDropdownTrigger = true,
 	options = [],
 	loadOptions,
 	onChange,
+	renderItem = defaultRenderItem,
 }: ComboBoxProps<Option>) {
 	const inputId = useComboboxInputId(idProp);
 	const [loading, setLoading] = useState(false);
@@ -95,6 +93,26 @@ export function Combobox<Option extends DefaultOption>({
 				);
 			}
 		},
+		onIsOpenChange: async ({ isOpen, inputValue = '' }) => {
+			if (!isOpen || inputValue) return;
+			inputValue = inputValue.toLowerCase();
+			if (loadOptions) {
+				// Asynchronous
+				setLoading(true);
+				const inputItems = await loadOptions(inputValue);
+				setInputItems(inputItems);
+				setLoading(false);
+			} else {
+				// Synchronous
+				setInputItems(
+					options.filter(
+						({ value, label }) =>
+							value.toLowerCase().includes(inputValue) ||
+							label.toLowerCase().includes(inputValue)
+					)
+				);
+			}
+		},
 	});
 
 	// Popper state
@@ -105,22 +123,17 @@ export function Combobox<Option extends DefaultOption>({
 		modifiers: [{ name: 'offset', options: { offset: [0, 8] } }],
 	});
 
-	const inputStyles = {
+	const { maxWidth, ...inputStyles } = {
 		...textInputStyles({
-			block: true,
-			maxWidth: undefined,
-			invalid: false,
-			valid: false,
-		}),
-		...(showDropdownTrigger && {
-			borderRight: 'none',
-			borderTopRightRadius: 0,
-			borderBottomRightRadius: 0,
+			block,
+			maxWidth: 'xl',
+			invalid,
+			valid,
 		}),
 	};
 
 	return (
-		<div css={{ position: 'relative' }} ref={setRefEl}>
+		<div css={{ position: 'relative', maxWidth }} ref={setRefEl}>
 			<Field
 				label={label}
 				required={Boolean(required)}
@@ -131,31 +144,20 @@ export function Combobox<Option extends DefaultOption>({
 				id={inputId}
 			>
 				{(allyProps) => (
-					<Flex alignItems="flex-end" {...getComboboxProps()}>
+					<div css={{ position: 'relative' }} {...getComboboxProps()}>
 						<input
-							css={inputStyles}
+							css={[inputStyles, { width: '100%' }]}
 							disabled={disabled}
 							{...allyProps}
 							{...getInputProps()}
 						/>
 						{showDropdownTrigger && (
-							<Button
-								type="button"
-								variant="secondary"
+							<ComboboxDropdownTrigger
 								disabled={disabled}
-								aria-label="Toggle menu"
 								{...getToggleButtonProps()}
-								css={{
-									borderTopLeftRadius: 0,
-									borderBottomLeftRadius: 0,
-									paddingLeft: mapSpacing(1),
-									paddingRight: mapSpacing(1),
-								}}
-							>
-								<ChevronDownIcon />
-							</Button>
+							/>
 						)}
-					</Flex>
+					</div>
 				)}
 			</Field>
 			<div
@@ -180,15 +182,7 @@ export function Combobox<Option extends DefaultOption>({
 													isActiveItem={isActiveItem}
 													{...getItemProps({ item, index })}
 												>
-													{item.label
-														.split(new RegExp(`(${inputValue})`, 'gi'))
-														.map((part, index) => {
-															if (!part) return null;
-															if (part.toLowerCase() === inputValue) {
-																return <mark key={index}>{part}</mark>;
-															}
-															return part;
-														})}
+													{renderItem(item, inputValue)}
 												</ComboboxListItem>
 											);
 										})

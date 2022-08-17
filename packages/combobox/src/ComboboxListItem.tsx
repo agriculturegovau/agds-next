@@ -15,7 +15,11 @@ export const ComboboxListItem = forwardRef<
 			as="li"
 			background={isActiveItem ? 'shade' : undefined}
 			paddingX={1}
-			paddingY={0.5}
+			paddingY={0.75}
+			borderBottom
+			borderColor="muted"
+			color="action"
+			css={{ cursor: 'pointer', '&:last-of-type': { borderBottom: 'none' } }}
 			{...props}
 		>
 			{children}
