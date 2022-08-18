@@ -29,7 +29,7 @@ const defaultArgs = {
 	subline: 'Supporting Australian agricultural exports',
 	logo: <AgLogo />,
 	background: 'bodyAlt',
-};
+} as const;
 
 const Template: ComponentStory<typeof Header> = (args) => <Header {...args} />;
 
@@ -57,7 +57,10 @@ Small.args = {
 
 export const SmallNoLogo = Template.bind({});
 SmallNoLogo.args = {
+	...defaultArgs,
 	heading: 'Internal application',
+	subline: undefined,
+	logo: undefined,
 	size: 'sm',
 };
 
