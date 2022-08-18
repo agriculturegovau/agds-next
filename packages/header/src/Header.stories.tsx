@@ -49,7 +49,8 @@ BodyAltBackground.args = {
 
 export const Small = Template.bind({});
 Small.args = {
-	...defaultArgs,
+	heading: 'Internal application',
+	subline: undefined,
 	size: 'sm',
 };
 
