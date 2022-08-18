@@ -56,7 +56,7 @@ Small.args = {
 };
 
 export const SmallNoLogo = Template.bind({});
-Small.args = {
+SmallNoLogo.args = {
 	heading: 'Internal application',
 	size: 'sm',
 };
