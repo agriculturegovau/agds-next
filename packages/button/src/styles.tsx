@@ -1,10 +1,4 @@
-import {
-	packs,
-	boxPalette,
-	tokens,
-	mapSpacing,
-	fontGrid,
-} from '@ag.ds-next/core';
+import { packs, boxPalette, tokens, mapSpacing } from '@ag.ds-next/core';
 
 const variants = {
 	primary: {
@@ -47,8 +41,6 @@ const variants = {
 		},
 	},
 	text: {
-		// Size does not change between sizes in this variant
-		...fontGrid('sm', 'default'),
 		height: 'auto',
 		paddingLeft: 0,
 		paddingRight: 0,
