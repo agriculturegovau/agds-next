@@ -18,7 +18,7 @@
 		"lint:packages": "yarn eslint packages/**",
 		"lint:example": "yarn --cwd example-site lint",
 		"lint:docs": "yarn --cwd docs lint",
-		"lint:prettier": "prettier --list-different \"**/*.{js,jsx,json,ts,tsx,md,mdx,yml,yaml}\"",
+		"lint:prettier": "prettier --check \"**/*.{js,jsx,json,ts,tsx,md,mdx,yml,yaml}\"",
 		"lint:typescript": "tsc --noEmit",
 		"test": "jest",
 		"format": "prettier --write \"**/*.{js,jsx,json,ts,tsx,md,mdx}\"",
