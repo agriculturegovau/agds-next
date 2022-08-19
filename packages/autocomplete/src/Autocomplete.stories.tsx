@@ -7,8 +7,8 @@ export default {
 } as ComponentMeta<typeof Autocomplete>;
 
 const defaultArgs = {
-	label: 'Find your city',
-	placeholder: 'Start typing to see results',
+	label: 'Find your state',
+	hint: 'Start typing to see results',
 	loadOptions: async function loadOptions() {
 		// Simulate a slow network connection
 		await new Promise((resolve) => setTimeout(resolve, 3000));

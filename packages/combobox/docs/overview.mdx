@@ -5,44 +5,143 @@ group: Forms
 storybookPath: /story/forms-combobox--basic
 ---
 
+## Basic
+
+By default, the `Combobox` component does not expand to fill the available space.
+
 ```jsx live
 () => {
 	const [value, setValue] = React.useState(null);
 	return (
 		<Combobox
-			label="Select a character"
-			options={[
-				{ label: 'Jake', value: 'jake' },
-				{ label: 'Finn', value: 'finn' },
-				{ label: 'BMO', value: 'bmo' },
-			]}
-			onChange={(value) => setValue(value)}
+			label="Select state"
 			value={value}
+			onChange={(value) => setValue(value)}
+			options={[
+				{ label: 'Australian Capital Territory', value: 'act' },
+				{ label: 'New South Wales', value: 'nsw' },
+				{ label: 'Northern Territory', value: 'nt' },
+				{ label: 'Queensland', value: 'qld' },
+				{ label: 'South Australia', value: 'sa' },
+				{ label: 'Tasmania', value: 'tas' },
+				{ label: 'Victoria', value: 'vic' },
+				{ label: 'Western Australia', value: 'wa' },
+			]}
 		/>
 	);
 };
 ```
 
-## Async options
+## Block
 
-## Auto complete
+Use the `block` prop to expand the component to fill the available space.
 
 ```jsx live
 () => {
 	const [value, setValue] = React.useState(null);
 	return (
 		<Combobox
-			label="Select an address"
-			hint="Start typing to search for results"
-			options={[
-				{ label: 'Jake', value: 'jake' },
-				{ label: 'Finn', value: 'finn' },
-				{ label: 'BMO', value: 'bmo' },
-			]}
-			onChange={(value) => setValue(value)}
+			label="Select state"
+			block
 			value={value}
-			showDropdownTrigger={false}
+			onChange={(value) => setValue(value)}
+			options={[
+				{ label: 'Australian Capital Territory', value: 'act' },
+				{ label: 'New South Wales', value: 'nsw' },
+				{ label: 'Northern Territory', value: 'nt' },
+				{ label: 'Queensland', value: 'qld' },
+				{ label: 'South Australia', value: 'sa' },
+				{ label: 'Tasmania', value: 'tas' },
+				{ label: 'Victoria', value: 'vic' },
+				{ label: 'Western Australia', value: 'wa' },
+			]}
+		/>
+	);
+};
+```
+
+## Async
+
+Use the `loadOptions` prop when you need to populate options from a network request.
+
+```jsx live
+() => {
+	const [value, setValue] = React.useState(null);
+	return (
+		<Combobox
+			label="Select state"
+			value={value}
+			onChange={(value) => setValue(value)}
+			loadOptions={async function loadOptions(inputValue) {
+				// Simulate a slow network call
+				await new Promise((resolve) => setTimeout(resolve, 3000));
+				return [
+					{ label: 'Australian Capital Territory', value: 'act' },
+					{ label: 'New South Wales', value: 'nsw' },
+					{ label: 'Northern Territory', value: 'nt' },
+					{ label: 'Queensland', value: 'qld' },
+					{ label: 'South Australia', value: 'sa' },
+					{ label: 'Tasmania', value: 'tas' },
+					{ label: 'Victoria', value: 'vic' },
+					{ label: 'Western Australia', value: 'wa' },
+				];
+			}}
+		/>
+	);
+};
+```
+
+### Required
+
+The `Combobox` component will always append `(optional)` to the label based on the `required` prop.
+
+```jsx live
+() => {
+	const [value, setValue] = React.useState(null);
+	return (
+		<Combobox
+			label="Select state"
 			required
+			value={value}
+			onChange={(value) => setValue(value)}
+			options={[
+				{ label: 'Australian Capital Territory', value: 'act' },
+				{ label: 'New South Wales', value: 'nsw' },
+				{ label: 'Northern Territory', value: 'nt' },
+				{ label: 'Queensland', value: 'qld' },
+				{ label: 'South Australia', value: 'sa' },
+				{ label: 'Tasmania', value: 'tas' },
+				{ label: 'Victoria', value: 'vic' },
+				{ label: 'Western Australia', value: 'wa' },
+			]}
+		/>
+	);
+};
+```
+
+## Invalid
+
+```jsx live
+() => {
+	const [value, setValue] = React.useState(null);
+	const invalid = !value;
+	return (
+		<Combobox
+			label="Select state"
+			invalid={invalid}
+			message={invalid ? 'City is required' : undefined}
+			value={value}
+			onChange={(value) => setValue(value)}
+			options={[
+				{ label: 'Australian Capital Territory', value: 'act' },
+				{ label: 'New South Wales', value: 'nsw' },
+				{ label: 'Northern Territory', value: 'nt' },
+				{ label: 'Queensland', value: 'qld' },
+				{ label: 'South Australia', value: 'sa' },
+				{ label: 'Tasmania', value: 'tas' },
+				{ label: 'Victoria', value: 'vic' },
+				{ label: 'Western Australia', value: 'wa' },
+			]}
 		/>
 	);
 };

@@ -7,14 +7,14 @@ storybookPath: /story/forms-autocomplete--basic
 
 ## Basic
 
-By default, the `Autocomplete` component does not expand to fill the available space.
+By default, the `Combobox` component does not expand to fill the available space.
 
 ```jsx live
 () => {
 	const [value, setValue] = React.useState(null);
 	return (
 		<Autocomplete
-			label="Find your city"
+			label="Find your state"
 			hint="Start typing to see results"
 			value={value}
 			onChange={(value) => setValue(value)}
@@ -46,7 +46,7 @@ The `Autocomplete` component will always append `(optional)` to the label based 
 	const [value, setValue] = React.useState(null);
 	return (
 		<Autocomplete
-			label="Find your city"
+			label="Find your state"
 			hint="Start typing to see results"
 			required
 			value={value}
@@ -79,7 +79,7 @@ Use the `block` prop to expand the component to fill the available space.
 	const [value, setValue] = React.useState(null);
 	return (
 		<Autocomplete
-			label="Find your city"
+			label="Find your state"
 			hint="Start typing to see results"
 			block
 			value={value}
@@ -111,10 +111,10 @@ Use the `block` prop to expand the component to fill the available space.
 	const invalid = !value;
 	return (
 		<Autocomplete
-			label="Find your city"
+			label="Find your state"
 			hint="Start typing to see results"
 			invalid={invalid}
-			message={invalid ? 'Please select a valid city' : undefined}
+			message={invalid ? 'State is required' : undefined}
 			value={value}
 			onChange={(value) => setValue(value)}
 			loadOptions={async function loadOptions(inputValue) {
