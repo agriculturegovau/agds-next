@@ -4,6 +4,9 @@
 	"main": "dist/ag.ds-next-autocomplete.cjs.js",
 	"module": "dist/ag.ds-next-autocomplete.esm.js",
 	"license": "MIT",
+	"dependencies": {
+		"@babel/runtime": "^7.4.5"
+	},
 	"peerDependencies": {
 		"@ag.ds-next/combobox": "0.0.1",
 		"@emotion/react": "^11.7.0",
