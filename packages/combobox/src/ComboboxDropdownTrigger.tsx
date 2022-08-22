@@ -1,16 +1,17 @@
-import { ButtonHTMLAttributes } from 'react';
+import { ButtonHTMLAttributes, forwardRef } from 'react';
 import { ChevronDownIcon } from '@ag.ds-next/icon';
 import { Button } from '@ag.ds-next/button';
 import { boxPalette, mapSpacing } from '@ag.ds-next/core';
 
 type ComboboxDropdownTriggerProps = ButtonHTMLAttributes<HTMLButtonElement>;
 
-export function ComboboxDropdownTrigger({
-	disabled,
-	...props
-}: ComboboxDropdownTriggerProps) {
+export const ComboboxDropdownTrigger = forwardRef<
+	HTMLButtonElement,
+	ComboboxDropdownTriggerProps
+>(function ComboboxDropdownTrigger({ disabled, ...props }, ref) {
 	return (
 		<Button
+			ref={ref}
 			type="button"
 			variant="text"
 			disabled={disabled}
@@ -28,4 +29,4 @@ export function ComboboxDropdownTrigger({
 			<ChevronDownIcon />
 		</Button>
 	);
-}
+});
