@@ -4,7 +4,7 @@ import {
 	DefaultComboboxOption,
 } from '@ag.ds-next/combobox';
 
-type AutocompleteProps<Option extends DefaultComboboxOption> = Omit<
+export type AutocompleteProps<Option extends DefaultComboboxOption> = Omit<
 	ComboboxProps<Option>,
 	'showDropdownTrigger' | 'clearable' | 'options' | 'emptyResultsMessage'
 >;
@@ -17,7 +17,7 @@ export function Autocomplete<Option extends DefaultComboboxOption>(
 			{...props}
 			showDropdownTrigger={false}
 			clearable={true}
-			emptyResultsMessage="No results found"
+			emptyResultsMessage="No results found."
 		/>
 	);
 }

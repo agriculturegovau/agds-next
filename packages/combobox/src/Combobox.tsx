@@ -1,4 +1,4 @@
-import { Fragment, useState, ReactNode, useCallback } from 'react';
+import { Fragment, useState, ReactNode, useCallback, useRef } from 'react';
 import { useId } from '@reach/auto-id';
 import { useCombobox } from 'downshift';
 import { usePopper } from 'react-popper';
@@ -8,6 +8,7 @@ import { Text } from '@ag.ds-next/text';
 import { ComboboxList } from './ComboboxList';
 import { ComboboxListItem } from './ComboboxListItem';
 import { ComboboxListLoading } from './ComboboxListLoading';
+import { ComboboxListError } from './ComboboxListError';
 import { ComboboxListEmptyResults } from './ComboboxListEmptyResults';
 import { ComboboxDropdownTrigger } from './ComboboxDropdownTrigger';
 import { ComboboxClearButton } from './ComboboxClearButton';
@@ -66,10 +67,11 @@ export function Combobox<Option extends DefaultComboboxOption>({
 	value,
 	onChange,
 	renderItem = defaultRenderItem,
-	emptyResultsMessage = 'No options found',
+	emptyResultsMessage = 'No options found.',
 }: ComboboxProps<Option>) {
 	const inputId = useComboboxInputId(idProp);
 	const [loading, setLoading] = useState(false);
+	const [networkError, setNetworkError] = useState(false);
 	const [inputItems, setInputItems] = useState<Option[]>(options);
 
 	const loadOrFilterOptions = useCallback(
@@ -77,10 +79,15 @@ export function Combobox<Option extends DefaultComboboxOption>({
 			inputValue = inputValue?.toLowerCase() ?? '';
 			if (loadOptions) {
 				// Asynchronous
+				setNetworkError(false);
 				setLoading(true);
-				const inputItems = await loadOptions(inputValue);
-				setInputItems(filterOptions(inputItems, inputValue));
-				setLoading(false);
+				try {
+					const inputItems = await loadOptions(inputValue);
+					setInputItems(filterOptions(inputItems, inputValue));
+					setLoading(false);
+				} catch {
+					setNetworkError(true);
+				}
 			} else {
 				// Synchronous
 				setInputItems(filterOptions(options, inputValue));
@@ -115,6 +122,15 @@ export function Combobox<Option extends DefaultComboboxOption>({
 		onIsOpenChange: async ({ isOpen, inputValue }) => {
 			if (!isOpen || inputValue) return;
 			await loadOrFilterOptions(inputValue);
+		},
+		stateReducer: (state, actionAndChanges) => {
+			const { type: actionAndChangesType, changes } = actionAndChanges;
+			switch (actionAndChangesType) {
+				case useCombobox.stateChangeTypes.InputBlur:
+					return { inputValue: state.selectedItem ? state.inputValue : '' };
+				default:
+					return changes;
+			}
 		},
 	});
 
@@ -177,6 +193,8 @@ export function Combobox<Option extends DefaultComboboxOption>({
 						<Fragment>
 							{loading ? (
 								<ComboboxListLoading />
+							) : networkError ? (
+								<ComboboxListError />
 							) : (
 								<Fragment>
 									{inputItems.length ? (
@@ -186,6 +204,7 @@ export function Combobox<Option extends DefaultComboboxOption>({
 												<ComboboxListItem
 													key={`${item.value}${index}`}
 													isActiveItem={isActiveItem}
+													isInteractive={true}
 													{...getItemProps({ item, index })}
 												>
 													{renderItem(item, inputValue)}
@@ -203,6 +222,26 @@ export function Combobox<Option extends DefaultComboboxOption>({
 			</div>
 		</div>
 	);
+}
+
+function debounce<A = unknown, R = void>(
+	fn: (args: A) => R,
+	ms: number
+): (args: A) => Promise<R> {
+	let timer: NodeJS.Timeout;
+
+	const debouncedFunc = (args: A): Promise<R> =>
+		new Promise((resolve) => {
+			if (timer) {
+				clearTimeout(timer);
+			}
+
+			timer = setTimeout(() => {
+				resolve(fn(args));
+			}, ms);
+		});
+
+	return debouncedFunc;
 }
 
 function defaultRenderItem<Option extends DefaultComboboxOption>(

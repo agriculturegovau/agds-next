@@ -265,3 +265,14 @@ AsyncOptions.args = {
 		return data.results.map(({ name }) => ({ value: name, label: name }));
 	},
 };
+
+export const AsyncOptionsWithError = Template.bind({});
+AsyncOptionsWithError.args = {
+	label: 'Select character',
+	hint: 'Start typing to see results',
+	loadOptions: async function loadOptions() {
+		// Simulate a slow network connection
+		await new Promise((resolve) => setTimeout(resolve, 3000));
+		throw new Error('Something went wrong while fetching options');
+	},
+};

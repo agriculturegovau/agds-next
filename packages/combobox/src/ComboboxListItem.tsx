@@ -1,14 +1,19 @@
-import { PropsWithChildren, forwardRef } from 'react';
+import { forwardRef, HTMLAttributes } from 'react';
 import { Box } from '@ag.ds-next/box';
+import { boxPalette } from '@ag.ds-next/core';
 
-type ComboboxListItemProps = PropsWithChildren<{
+type ComboboxListItemProps = Omit<HTMLAttributes<HTMLLIElement>, 'color'> & {
 	isActiveItem: boolean;
-}>;
+	isInteractive: boolean;
+};
 
 export const ComboboxListItem = forwardRef<
 	HTMLLIElement,
 	ComboboxListItemProps
->(function ComboboxListItem({ children, isActiveItem, ...props }, ref) {
+>(function ComboboxListItem(
+	{ children, isActiveItem, isInteractive = true, ...props },
+	ref
+) {
 	return (
 		<Box
 			ref={ref}
@@ -18,7 +23,15 @@ export const ComboboxListItem = forwardRef<
 			paddingY={0.75}
 			borderBottom
 			borderColor="muted"
-			css={{ cursor: 'pointer', '&:last-of-type': { borderBottom: 'none' } }}
+			css={{
+				cursor: isInteractive ? 'pointer' : undefined,
+				'&:hover': {
+					backgroundColor: isInteractive
+						? boxPalette.backgroundShade
+						: undefined,
+				},
+				'&:last-of-type': { borderBottom: 'none' },
+			}}
 			{...props}
 		>
 			{children}

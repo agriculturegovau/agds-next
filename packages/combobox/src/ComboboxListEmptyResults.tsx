@@ -3,9 +3,8 @@ import { ComboboxListItem } from './ComboboxListItem';
 
 export function ComboboxListEmptyResults({ message }: { message: string }) {
 	return (
-		<ComboboxListItem isActiveItem={false}>
+		<ComboboxListItem isActiveItem={false} isInteractive={false}>
 			<Text>{message}</Text>
-			<Text link>Retry</Text>
 		</ComboboxListItem>
 	);
 }
