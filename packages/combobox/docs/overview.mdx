@@ -70,6 +70,7 @@ Use the `loadOptions` prop when you need to populate options from a network requ
 	return (
 		<Combobox
 			label="Select state"
+			hint="Start typing to see results"
 			value={value}
 			onChange={(value) => setValue(value)}
 			loadOptions={async function loadOptions(inputValue) {
