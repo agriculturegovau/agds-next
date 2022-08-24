@@ -1,5 +1,5 @@
 import { Box, Flex, Stack } from '@ag.ds-next/box';
-import { globalPalette, tokens } from '@ag.ds-next/core';
+import { boxPalette, tokens } from '@ag.ds-next/core';
 import { Card } from '@ag.ds-next/card';
 import { Columns } from '@ag.ds-next/columns';
 import { goldTheme } from '@ag.ds-next/core/src/goldTheme';
@@ -29,23 +29,50 @@ export const BorderChart = () => {
 };
 
 export const SpacingChart = () => {
-	// copied from mapSpacing
-	const tokens = [0, 0.25, 0.5, 0.75, 1, 1.5, 2, 3, 4, 5, 6];
+	// copied from types for mapSpacing
+	const spacingTokens = [0, 0.25, 0.5, 0.75, 1, 1.5, 2, 3, 4, 5, 6];
 	return (
 		<Stack gap={1}>
 			<H2>Spacing</H2>
 			<Stack gap={0.5}>
-				{tokens.map((token) => {
+				{spacingTokens.map((token) => {
 					const label = `${token} (${token * 16}px)`;
 					return (
 						<Flex key={token} gap={0.25}>
 							<Box
 								css={{
-									backgroundColor: globalPalette.accent,
+									backgroundColor: boxPalette.systemInfo,
 									width: token * 16,
 								}}
 							></Box>
 							<Text>{label}</Text>
+						</Flex>
+					);
+				})}
+			</Stack>
+		</Stack>
+	);
+};
+
+export const MaxWidthChart = () => {
+	return (
+		<Stack gap={1}>
+			<H2>MaxWidth</H2>
+			<Stack gap={0.5}>
+				{Object.entries(tokens.maxWidth).map(([token, value]) => {
+					const label = `${token} (${value})`;
+					return (
+						<Flex key={token} gap={0.25}>
+							<Box
+								padding={0.5}
+								css={{
+									backgroundColor: boxPalette.systemInfoMuted,
+									width: '100%',
+									maxWidth: value,
+								}}
+							>
+								<Text>{label}</Text>
+							</Box>
 						</Flex>
 					);
 				})}
@@ -130,7 +157,7 @@ export const ColorTable = ({
 	const cols = { xs: 1, sm: 2, md: 3, lg: 5 } as const;
 
 	return (
-		<Stack gap={3}>
+		<Stack gap={2}>
 			<Stack gap={1}>
 				<H2>Color</H2>
 				<H3>Foreground colors</H3>
@@ -198,7 +225,7 @@ export const ColorTable = ({
 			</Stack>
 
 			<Stack gap={1}>
-				<H3>system</H3>
+				<H3>System</H3>
 				<Columns as="ul" cols={cols}>
 					{Object.keys(palettes[activePalette].system).map((token) => {
 						const color = palettes[activePalette]['system'][token].value;

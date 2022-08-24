@@ -6,7 +6,12 @@ import { PageContent } from '@ag.ds-next/content';
 import { Switch } from '@ag.ds-next/switch';
 import { AppLayout } from '../components/AppLayout';
 import { DocumentTitle } from '../components/DocumentTitle';
-import { BorderChart, ColorTable, SpacingChart } from '../components/Tokens';
+import {
+	BorderChart,
+	ColorTable,
+	MaxWidthChart,
+	SpacingChart,
+} from '../components/Tokens';
 
 export default function TokensPage() {
 	const [isDarkMode, setDarkMode] = useState<boolean>(false);
@@ -16,7 +21,7 @@ export default function TokensPage() {
 			<DocumentTitle title="Tokens" />
 			<AppLayout>
 				<PageContent as="main" id="main-content">
-					<Stack gap={4}>
+					<Stack gap={5}>
 						<Stack gap={1}>
 							<Flex justifyContent="space-between">
 								<H1>Design Tokens</H1>
@@ -34,8 +39,7 @@ export default function TokensPage() {
 						<ColorTable activePalette={isDarkMode ? 'dark' : 'light'} />
 						<BorderChart />
 						<SpacingChart />
-						<H2>MaxWidth</H2>
-						<H2>Borders</H2>
+						<MaxWidthChart />
 						<H2>Shadows</H2>
 					</Stack>
 				</PageContent>
