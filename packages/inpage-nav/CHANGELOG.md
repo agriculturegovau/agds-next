@@ -1,5 +1,17 @@
 # @ag.ds-next/inpage-nav
 
+## 9.0.0
+
+### Patch Changes
+
+- Updated dependencies [aad2cb62d]
+- Updated dependencies [aad2cb62d]
+- Updated dependencies [931a7e7a2]
+  - @ag.ds-next/box@7.0.0
+  - @ag.ds-next/core@4.0.0
+  - @ag.ds-next/text-link@6.0.0
+  - @ag.ds-next/text@10.0.0
+
 ## 8.0.0
 
 ### Patch Changes

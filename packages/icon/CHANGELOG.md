@@ -1,5 +1,16 @@
 # @ag.ds-next/icon
 
+## 11.0.0
+
+### Patch Changes
+
+- 5495984f4: If no `colour` prop is supplied, the svg colour will now defualt to `currentColor`.
+- Updated dependencies [aad2cb62d]
+- Updated dependencies [aad2cb62d]
+  - @ag.ds-next/box@7.0.0
+  - @ag.ds-next/core@4.0.0
+  - @ag.ds-next/text@10.0.0
+
 ## 10.0.0
 
 ### Minor Changes

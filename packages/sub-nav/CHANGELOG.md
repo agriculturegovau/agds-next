@@ -1,5 +1,19 @@
 # @ag.ds-next/sub-nav
 
+## 3.0.0
+
+### Minor Changes
+
+- 5495984f4: Added new `endElement` prop to each item to support for adding icons, notification badges and other decorative elements.
+
+### Patch Changes
+
+- 3af46a46f: Updated bottom bar colour to `borderMuted`
+- Updated dependencies [aad2cb62d]
+- Updated dependencies [aad2cb62d]
+  - @ag.ds-next/box@7.0.0
+  - @ag.ds-next/core@4.0.0
+
 ## 2.0.0
 
 ### Major Changes

@@ -1,5 +1,25 @@
 # @ag.ds-next/footer
 
+## 9.0.0
+
+### Major Changes
+
+- 0f09cd4b5: Replaced `variant` prop with `background`. This component now respects parent colour palette.
+
+  We also make use of the new `accent` token. You must install the latest versions of `@ag.ds-next/core` and `@ag.ds-next/ag-branding` with this update.
+
+### Minor Changes
+
+- aad2cb62d: Update references to colour tokens
+- b56cb0cef: Update to support new dark tokens and set default variant to `agriculture`. Please ensure you are using the new version of the `@ag.ds-next/ag-branding` package.
+
+### Patch Changes
+
+- Updated dependencies [aad2cb62d]
+- Updated dependencies [aad2cb62d]
+  - @ag.ds-next/box@7.0.0
+  - @ag.ds-next/core@4.0.0
+
 ## 8.0.0
 
 ### Patch Changes

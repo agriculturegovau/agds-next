@@ -1,5 +1,19 @@
 # @ag.ds-next/button
 
+## 11.0.0
+
+### Minor Changes
+
+- 931a7e7a2: Created new `text` variant
+
+### Patch Changes
+
+- Updated dependencies [aad2cb62d]
+- Updated dependencies [aad2cb62d]
+  - @ag.ds-next/box@7.0.0
+  - @ag.ds-next/loading@6.0.0
+  - @ag.ds-next/core@4.0.0
+
 ## 10.0.0
 
 ### Patch Changes
