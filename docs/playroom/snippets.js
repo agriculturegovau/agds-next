@@ -551,10 +551,11 @@ items={[
 		name: 'Basic',
 		code: `<HeroBanner
     image={
-        <img
-            alt="Harvester in a golden field of wheat emptying grain into a chaser bin moving alongside it."
-            src="/agds-next/img/placeholder/hero-banner.jpeg"
-        />
+      <img
+        src="/agds-next/img/placeholder/hero-banner.jpeg"
+        role="presentation" 
+        alt=""
+      />
     }
 >
     <HeroBannerTitleContainer>
@@ -573,8 +574,9 @@ items={[
 		code: `<HeroCategoryBanner
     image={
       <img
-        alt="Harvester in a golden field of wheat emptying grain into a chaser bin moving alongside it."
         src="/agds-next/img/placeholder/hero-banner.jpeg"
+        role="presentation" 
+        alt=""
       />
     }
   >
