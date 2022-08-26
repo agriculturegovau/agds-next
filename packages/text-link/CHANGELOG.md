@@ -1,5 +1,20 @@
 # @ag.ds-next/text-link
 
+## 6.0.0
+
+### Major Changes
+
+- 931a7e7a2: Deleted `TextButton` component. Please use `<Button variant="text" />` instead.
+
+### Patch Changes
+
+- Updated dependencies [aad2cb62d]
+- Updated dependencies [aad2cb62d]
+- Updated dependencies [5495984f4]
+  - @ag.ds-next/box@7.0.0
+  - @ag.ds-next/core@4.0.0
+  - @ag.ds-next/icon@11.0.0
+
 ## 5.0.0
 
 ### Patch Changes

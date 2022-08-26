@@ -1,5 +1,16 @@
 # @ag.ds-next/box
 
+## 7.0.0
+
+### Minor Changes
+
+- aad2cb62d: Update references to colour tokens
+
+### Patch Changes
+
+- Updated dependencies [aad2cb62d]
+  - @ag.ds-next/core@4.0.0
+
 ## 6.1.0
 
 ### Minor Changes
