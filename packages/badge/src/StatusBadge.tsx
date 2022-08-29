@@ -59,7 +59,7 @@ export type StatusBadgeTone = keyof typeof toneMap;
 
 const toneMap = {
 	neutral: {
-		borderColor: boxPalette.border,
+		borderColor: boxPalette.foregroundMuted,
 		icon: () => <IndicatorDot tone="neutral" />,
 	},
 	success: {
