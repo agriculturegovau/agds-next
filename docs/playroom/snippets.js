@@ -694,20 +694,16 @@ items={[
 	{
 		group: 'Card',
 		name: 'Basic',
-		code: `<Card>
+		code: `<Card shadow clickable>
     <CardInner>
       <Stack gap={1}>
-        <Heading as="h2" type="h3">
-          Card heading
-        </Heading>
+        <H3>
+          <CardLink href="#">Card heading</CardLink>
+        </H3>
         <Text as="p">
           Lorem ipsum dolor, sit amet consectetur adipisicing elit. In,
           voluptat
         </Text>
-        <CardLink href="#">
-          Linking out
-          <ChevronRightIcon weight="bold" size="sm" />
-        </CardLink>
       </Stack>
     </CardInner>
   </Card>`,
