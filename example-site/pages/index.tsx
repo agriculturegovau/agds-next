@@ -23,8 +23,9 @@ export default function HomePage() {
 				<HeroBanner
 					image={
 						<img
-							alt="Harvester in a golden field of wheat emptying grain into a chaser bin moving alongside it."
 							src="/agds-next/example-site/placeholder/hero-banner.jpeg"
+							role="presentation"
+							alt=""
 						/>
 					}
 				>
@@ -80,7 +81,8 @@ export default function HomePage() {
 						</Stack>
 						<img
 							src="/agds-next/example-site/placeholder/hero-banner.jpeg"
-							alt="Harvester in a golden field of wheat emptying grain into a chaser bin moving alongside it."
+							role="presentation"
+							alt=""
 							css={{ display: 'block', maxWidth: '100%' }}
 						/>
 					</Columns>
@@ -94,9 +96,9 @@ export default function HomePage() {
 								<Card as="li" key={idx} clickable shadow>
 									<img
 										src="/agds-next/example-site/placeholder/hero-banner.jpeg"
+										role="presentation"
 										alt=""
 										css={{ width: '100%' }}
-										role="presentation"
 									/>
 									<CardInner>
 										<Stack gap={1}>
