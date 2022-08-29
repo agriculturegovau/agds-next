@@ -46,7 +46,9 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>(function Radio(
 				size={size}
 				valid={valid}
 			/>
-			<ControlLabel disabled={disabled}>{children}</ControlLabel>
+			<ControlLabel disabled={disabled} size={size}>
+				{children}
+			</ControlLabel>
 		</ControlContainer>
 	);
 });

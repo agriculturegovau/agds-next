@@ -22,6 +22,7 @@ export const CheckboxIndicator = ({
 			alignItems="center"
 			width={width}
 			height={height}
+			flexShrink={0}
 			css={{
 				borderWidth,
 				borderStyle: 'solid',
