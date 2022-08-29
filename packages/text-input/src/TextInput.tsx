@@ -120,10 +120,9 @@ export const textInputStyles = ({
 			: undefined),
 
 		...(multiline && {
-			lineHeight: tokens.lineHeight.default,
 			paddingTop: mapSpacing(0.5),
 			paddingBottom: mapSpacing(0.5),
-			height: 'auto,',
+			height: 'auto',
 			minHeight: '6rem',
 		}),
 

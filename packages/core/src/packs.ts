@@ -19,12 +19,12 @@ const control = {
 
 const input = {
 	sm: {
-		...fontGrid('xs', 'nospace'),
-		height: '2.125rem', // 34 px
+		...fontGrid('sm', 'default'),
+		height: '2rem', // 32 px
 	},
 	md: {
-		...fontGrid('sm', 'nospace'),
-		height: '2.875rem', // 46 px
+		...fontGrid('sm', 'default'),
+		height: '3em', // 48 px
 	},
 };
 
