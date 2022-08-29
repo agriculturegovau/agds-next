@@ -2,9 +2,8 @@ const snippets = [
 	{
 		group: 'Boilerplate',
 		name: 'One',
-		code: `<Header logo={<Logo />} heading="Export Service" />
-    <MainNav items={[{ label: "Hello", href: "#" }]} variant='agriculture' />
-
+		code: `<Box dark><Header background="bodyAlt" logo={<Logo />} heading="Export Service" />
+    <MainNav items={[{ label: "Hello", href: "#" }]} variant='agriculture' /></Box>
     <PageContent as="main">
       <Prose>
         <h1>Page heading</h1>
@@ -45,7 +44,7 @@ const snippets = [
 	{
 		group: 'Footer',
 		name: 'Basic',
-		code: `<Footer>
+		code: `<Box dark><Footer>
     <nav aria-label="footer">
       <LinkList
         horizontal
@@ -65,12 +64,12 @@ const snippets = [
     <Text fontSize="xs" maxWidth={tokens.maxWidth.bodyText}>
       &copy; 2022 Department of Agriculture, Fisheries and Forestry
     </Text>
-  </Footer>`,
+  </Footer></Box>`,
 	},
 	{
 		group: 'Footer',
 		name: 'Complex',
-		code: `<Footer variant="agriculture">
+		code: `<Box dark><Footer variant="agriculture">
     <nav aria-label="footer">
       <Columns>
         <Column columnSpan={{ xs: 12, sm: 6, lg: 3  }}>
@@ -136,7 +135,7 @@ const snippets = [
     <Text fontSize="xs" maxWidth={tokens.maxWidth.bodyText}>
       &copy; 2022 Department of Agriculture, Fisheries and Forestry
     </Text>
-  </Footer>
+  </Footer></Box>
   `,
 	},
 	{
@@ -691,6 +690,27 @@ items={[
 		group: 'Skeleton',
 		name: 'SkeletonBox',
 		code: '<SkeletonBox width="100px" height="100px" />',
+	},
+	{
+		group: 'Card',
+		name: 'Basic',
+		code: `<Card>
+    <CardInner>
+      <Stack gap={1}>
+        <Heading as="h2" type="h3">
+          Card heading
+        </Heading>
+        <Text as="p">
+          Lorem ipsum dolor, sit amet consectetur adipisicing elit. In,
+          voluptat
+        </Text>
+        <CardLink href="#">
+          Linking out
+          <ChevronRightIcon weight="bold" size="sm" />
+        </CardLink>
+      </Stack>
+    </CardInner>
+  </Card>`,
 	},
 ];
 
