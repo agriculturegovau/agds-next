@@ -1,4 +1,10 @@
-import { PropsWithChildren, ReactNode, MouseEventHandler } from 'react';
+import {
+	PropsWithChildren,
+	ReactNode,
+	MouseEventHandler,
+	useCallback,
+	KeyboardEvent,
+} from 'react';
 import FocusLock from 'react-focus-lock';
 import { Global } from '@emotion/react';
 import { Box, Flex, backgroundColorMap } from '@ag.ds-next/box';
@@ -42,6 +48,17 @@ export function NavContainer({
 	const menuVisiblyOpen =
 		menuOpen && (windowWidth || 0) <= tokens.breakpoint.lg - 1;
 
+	const handleEscape = useCallback(
+		(e: KeyboardEvent<HTMLDivElement>) => {
+			if (menuVisiblyOpen && e.code === 'Escape') {
+				e.preventDefault();
+				e.stopPropagation();
+				close();
+			}
+		},
+		[menuVisiblyOpen, close]
+	);
+
 	return (
 		<Box
 			id={id}
@@ -77,6 +94,7 @@ export function NavContainer({
 							aria-label="Main navigation"
 							aria-modal={menuVisiblyOpen ? 'true' : 'false'}
 							id="main-nav-dialog"
+							onKeyDown={handleEscape}
 							css={{
 								[tokens.mediaQuery.max.md]: {
 									zIndex: 200,
@@ -90,6 +108,7 @@ export function NavContainer({
 									maxWidth: tokens.maxWidth.mobileMenu,
 									padding: mapSpacing(1),
 									boxSizing: 'border-box',
+									overflowY: 'auto',
 								},
 							}}
 						>
