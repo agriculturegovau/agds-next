@@ -337,10 +337,16 @@ export const focusStyles = {
 	},
 };
 
+type HighContrastProps = Partial<{ highContrastOutline: boolean }>;
+export const highContrastOutline = {
+	outline: `1px solid transparent`,
+};
+
 export type BoxProps = PaletteProps &
 	ColorProps &
 	BorderProps &
 	FocusProps &
+	HighContrastProps &
 	TypographyProps &
 	LayoutProps &
 	LinkProps &
