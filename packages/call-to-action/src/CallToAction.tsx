@@ -47,7 +47,6 @@ export const CallToAction = ({
 	return (
 		<Flex
 			inline
-			highContrastOutline
 			onMouseEnter={() => setMouseOver(true)}
 			onMouseLeave={() => setMouseOver(false)}
 			css={{ alignSelf: 'flex-start' }}
