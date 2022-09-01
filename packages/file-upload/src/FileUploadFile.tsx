@@ -50,7 +50,11 @@ export const FileUploadFile = ({
 						<LoadingDots />
 					</Box>
 				) : (
-					<Button variant="tertiary" onClick={onRemove}>
+					<Button
+						variant="tertiary"
+						onClick={onRemove}
+						aria-label={`Remove file, ${name}`}
+					>
 						Remove file
 					</Button>
 				)}
