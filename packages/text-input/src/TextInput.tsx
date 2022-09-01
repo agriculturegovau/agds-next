@@ -5,6 +5,7 @@ import { packs, boxPalette, mapSpacing, tokens } from '@ag.ds-next/core';
 type NativeInputProps = InputHTMLAttributes<HTMLInputElement>;
 
 type BaseTextInputProps = {
+	autoComplete?: NativeInputProps['autoComplete'];
 	disabled?: NativeInputProps['disabled'];
 	id?: NativeInputProps['id'];
 	inputMode?: NativeInputProps['inputMode'];
