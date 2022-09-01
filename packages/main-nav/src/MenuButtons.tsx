@@ -44,7 +44,7 @@ export function OpenButton({ onClick }: MainNavButtonProps) {
 			onClick={onClick}
 			aria-controls="main-nav-dialog"
 			aria-expanded="false"
-			aria-label="Menu"
+			aria-label="Open main menu"
 		>
 			<svg
 				width="24"
@@ -70,7 +70,7 @@ export function CloseButton({ onClick }: MainNavButtonProps) {
 			onClick={onClick}
 			aria-controls="main-nav-dialog"
 			aria-expanded="true"
-			aria-label="Close"
+			aria-label="Close main menu"
 		>
 			<svg
 				width="24"
