@@ -337,7 +337,10 @@ export const focusStyles = {
 	},
 };
 
-type HighContrastProps = Partial<{ highContrastOutline: boolean }>;
+type HighContrastProps = Partial<{
+	/** If true, a solid outline will be visible in windows high contrast mode. */
+	highContrastOutline: boolean;
+}>;
 export const highContrastOutline = {
 	outline: `1px solid transparent`,
 };
