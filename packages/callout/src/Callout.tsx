@@ -24,6 +24,7 @@ export const Callout = ({
 		padding={1.5}
 		borderLeft
 		borderLeftWidth="xl"
+		highContrastOutline
 	>
 		{title ? <CalloutTitle>{title}</CalloutTitle> : null}
 		{children}

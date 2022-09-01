@@ -48,6 +48,7 @@ export const SkeletonBox = ({
 			lineHeight={lineHeight}
 			height={height}
 			width={width}
+			highContrastOutline
 			rounded
 			style={style}
 			css={{
