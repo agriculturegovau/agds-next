@@ -30,7 +30,7 @@ export const FileUploadFile = ({
 			paddingY={0.5}
 			paddingLeft={1}
 			justifyContent="space-between"
-			css={{ backgroundColor: TONE_MAP[status], position: 'relative' }}
+			css={{ backgroundColor: TONE_MAP[status] }}
 		>
 			<Flex alignItems="center" gap={0.5}>
 				{status == 'success' && (
