@@ -6,7 +6,6 @@ import { Text } from '@ag.ds-next/text';
 import { Button } from '@ag.ds-next/button';
 import { LoadingDots } from '@ag.ds-next/loading';
 import { SuccessFilledIcon } from '@ag.ds-next/icon';
-import { VisuallyHidden } from '@ag.ds-next/a11y';
 import { FileStatus } from './utils';
 
 type FileUploadFileProps = {
@@ -46,8 +45,7 @@ export const FileUploadFile = ({
 			<Box flexShrink={0}>
 				{status === 'uploading' ? (
 					<Box paddingY={1} paddingX={1.5}>
-						<VisuallyHidden>uploading</VisuallyHidden>
-						<LoadingDots />
+						<LoadingDots aria-label="uploading" />
 					</Box>
 				) : (
 					<Button
