@@ -63,6 +63,7 @@ export const LoadingDots = ({
 					key={idx}
 					height={dotSize}
 					width={dotSize}
+					highContrastOutline
 					style={style}
 					css={{ borderRadius: '50%', background: 'currentColor' }}
 				/>
