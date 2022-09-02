@@ -7,7 +7,7 @@ import { FieldsetContent } from './FieldsetContent';
 
 export type FieldsetProps = PropsWithChildren<{
 	/** Provides extra information about the fieldset. */
-	hint?: string;
+	hint?: ReactNode;
 	/** Describes the purpose of the group of fields. */
 	legend: ReactNode;
 	/** Defines an identifier (ID) which must be unique. */

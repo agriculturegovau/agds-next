@@ -2,7 +2,7 @@ import { PropsWithChildren } from 'react';
 
 export type FieldsetContainerProps = PropsWithChildren<{
 	'aria-describedby'?: string;
-	id: string;
+	id?: string;
 }>;
 
 export const FieldsetContainer = ({
