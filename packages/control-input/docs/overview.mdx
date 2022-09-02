@@ -10,7 +10,7 @@ storybookPath: /story/forms-checkbox--basic
 Check boxes allow users to select one or more items.
 
 ```jsx live
-<ControlGroup>
+<ControlGroup label="Example">
 	<Checkbox checked={false}>Phone</Checkbox>
 	<Checkbox checked={true}>Tablet</Checkbox>
 </ControlGroup>
@@ -21,7 +21,7 @@ Check boxes allow users to select one or more items.
 Radio inputs allow users to select one item at a time.
 
 ```jsx live
-<ControlGroup>
+<ControlGroup label="Example">
 	<Radio checked={false}>Phone</Radio>
 	<Radio checked={true}>Tablet</Radio>
 </ControlGroup>
@@ -32,7 +32,7 @@ Radio inputs allow users to select one item at a time.
 Inline checkbox options can sometimes be difficult to scan. Users may find it challenging to determine with which label the checkbox option corresponds: the one before the checkbox or the one after. Vertical positioning of checkbox, with one choice per line, eliminates this potential cause for confusion.
 
 ```jsx live
-<ControlGroup block>
+<ControlGroup label="Block example" block>
 	<Checkbox checked={false}>Phone</Checkbox>
 	<Checkbox checked={true}>Tablet</Checkbox>
 	<Checkbox checked={true}>Laptop</Checkbox>
@@ -44,7 +44,7 @@ Inline checkbox options can sometimes be difficult to scan. Users may find it ch
 Vertically stacked radio buttons.
 
 ```jsx live
-<ControlGroup block>
+<ControlGroup label="Block example" block>
 	<Radio checked={false}>Phone</Radio>
 	<Radio checked={false}>Tablet</Radio>
 	<Radio checked={true}>Laptop</Radio>
@@ -56,12 +56,29 @@ Vertically stacked radio buttons.
 Add a border around the control inputs to indicate valid or invalid selections.
 
 ```jsx live
-<ControlGroup>
-	<Radio checked={false} valid>
+<ControlGroup label="Invalid example" message="Select an option" invalid>
+	<Radio checked={false} invalid>
 		Phone
 	</Radio>
 	<Radio checked={true} invalid>
 		Tablet
+	</Radio>
+	<Radio checked={false} invalid>
+		Laptop
+	</Radio>
+</ControlGroup>
+```
+
+```jsx live
+<ControlGroup label="Valid example" valid>
+	<Radio checked={false} valid>
+		Phone
+	</Radio>
+	<Radio checked={true} valid>
+		Tablet
+	</Radio>
+	<Radio checked={false} valid>
+		Laptop
 	</Radio>
 </ControlGroup>
 ```
@@ -71,7 +88,7 @@ Add a border around the control inputs to indicate valid or invalid selections.
 Disabled control inputs can be used to indicate inputs that are no longer valid or expired.
 
 ```jsx live
-<ControlGroup>
+<ControlGroup label="Disabled example">
 	<Radio checked={false} disabled>
 		Phone
 	</Radio>
@@ -86,7 +103,7 @@ Disabled control inputs can be used to indicate inputs that are no longer valid 
 Smaller versions of control inputs.
 
 ```jsx live
-<ControlGroup>
+<ControlGroup label="Small example">
 	<Radio checked={false} size="sm">
 		Phone
 	</Radio>

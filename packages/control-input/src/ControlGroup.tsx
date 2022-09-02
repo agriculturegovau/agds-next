@@ -1,4 +1,5 @@
 import { PropsWithChildren } from 'react';
+import { useId } from '@reach/auto-id';
 import { Flex, Stack } from '@ag.ds-next/box';
 import { mapSpacing } from '@ag.ds-next/core';
 import {
@@ -34,28 +35,54 @@ export const ControlGroup = ({
 	label,
 	message,
 	required = false,
-}: ControlGroupProps) => (
-	<FieldContainer invalid={invalid} id={id}>
-		<fieldset css={{ padding: 0, margin: 0, border: 'none' }}>
-			{label ? (
-				<FieldLabel as="legend" required={required}>
-					{label}
-				</FieldLabel>
-			) : null}
-			<Stack gap={0.5} css={{ marginTop: label ? mapSpacing(0.5) : undefined }}>
-				{hint ? <FieldHint>{hint}</FieldHint> : null}
-				{message && invalid ? (
-					<FieldMessage invalid={invalid}>{message}</FieldMessage>
+}: ControlGroupProps) => {
+	const { groupId, hintId, messageId } = useControlGroupIds(id);
+	const describedByIds = [
+		hint ? hintId : null,
+		message ? messageId : null,
+	].filter(Boolean);
+	const describedBy = describedByIds.length
+		? describedByIds.join(' ')
+		: undefined;
+	return (
+		<FieldContainer invalid={invalid} id={groupId}>
+			<fieldset
+				aria-describedby={describedBy}
+				css={{ padding: 0, margin: 0, border: 'none' }}
+			>
+				{label ? (
+					<FieldLabel as="legend" required={required}>
+						{label}
+					</FieldLabel>
 				) : null}
-				<Flex
-					gap={1}
-					flexDirection={block ? 'column' : 'row'}
-					width="100%"
-					paddingTop={0.5}
+				<Stack
+					gap={0.5}
+					css={{ marginTop: label ? mapSpacing(0.5) : undefined }}
 				>
-					{children}
-				</Flex>
-			</Stack>
-		</fieldset>
-	</FieldContainer>
-);
+					{hint ? <FieldHint id={hintId}>{hint}</FieldHint> : null}
+					{message && invalid ? (
+						<FieldMessage invalid={invalid} id={messageId}>
+							{message}
+						</FieldMessage>
+					) : null}
+					<Flex
+						gap={1}
+						flexDirection={block ? 'column' : 'row'}
+						width="100%"
+						paddingTop={0.5}
+					>
+						{children}
+					</Flex>
+				</Stack>
+			</fieldset>
+		</FieldContainer>
+	);
+};
+
+export const useControlGroupIds = (idProp?: string) => {
+	const autoId = useId(idProp);
+	const groupId = idProp ? idProp : `control-group-${autoId}`;
+	const hintId = `control-group-${autoId}-hint`;
+	const messageId = `control-group-${autoId}-message`;
+	return { groupId, hintId, messageId };
+};
