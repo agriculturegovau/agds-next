@@ -1,12 +1,12 @@
 import { PropsWithChildren } from 'react';
 
 export type FieldsetContainerProps = PropsWithChildren<{
-	['aria-describedby']?: string;
+	'aria-describedby'?: string;
 	id: string;
 }>;
 
 export const FieldsetContainer = ({
-	['aria-describedby']: ariaDescribedby,
+	'aria-describedby': ariaDescribedby,
 	children,
 	id,
 }: FieldsetContainerProps) => (
