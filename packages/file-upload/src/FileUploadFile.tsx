@@ -23,39 +23,41 @@ export const FileUploadFile = ({
 	onRemove,
 }: FileUploadFileProps) => {
 	return (
-		<div css={{ position: 'relative' }}>
-			<Flex
-				rounded
-				alignItems="center"
-				as="li"
-				paddingY={0.5}
-				paddingLeft={1}
-				justifyContent="space-between"
-				css={{ backgroundColor: TONE_MAP[status] }}
-			>
-				<Flex alignItems="center" gap={0.5}>
-					{status == 'success' && (
-						<Box flexShrink={1}>
-							<SuccessFilledIcon color="success" size="md" />
-						</Box>
-					)}
-					<Text css={{ wordBreak: 'break-all' }}>
-						{name} ({formatFileSize(size)})
-					</Text>
-				</Flex>
-				<Box flexShrink={0}>
-					{status === 'uploading' ? (
-						<Box paddingY={1} paddingX={1.5}>
-							<LoadingDots />
-						</Box>
-					) : (
-						<Button variant="tertiary" onClick={onRemove}>
-							Remove file
-						</Button>
-					)}
-				</Box>
+		<Flex
+			rounded
+			alignItems="center"
+			as="li"
+			paddingY={0.5}
+			paddingLeft={1}
+			justifyContent="space-between"
+			css={{ backgroundColor: TONE_MAP[status] }}
+		>
+			<Flex alignItems="center" gap={0.5}>
+				{status == 'success' && (
+					<Box flexShrink={1}>
+						<SuccessFilledIcon color="success" size="md" />
+					</Box>
+				)}
+				<Text css={{ wordBreak: 'break-all' }}>
+					{name} ({formatFileSize(size)})
+				</Text>
 			</Flex>
-		</div>
+			<Box flexShrink={0}>
+				{status === 'uploading' ? (
+					<Box paddingY={1} paddingX={1.5}>
+						<LoadingDots aria-label="uploading" />
+					</Box>
+				) : (
+					<Button
+						variant="tertiary"
+						onClick={onRemove}
+						aria-label={`Remove file, ${name}`}
+					>
+						Remove file
+					</Button>
+				)}
+			</Box>
+		</Flex>
 	);
 };
 
