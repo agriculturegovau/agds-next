@@ -5,7 +5,8 @@
 	"module": "dist/ag.ds-next-fieldset.esm.js",
 	"license": "MIT",
 	"dependencies": {
-		"@babel/runtime": "^7.4.5"
+		"@babel/runtime": "^7.4.5",
+		"@reach/auto-id": "^0.16.0"
 	},
 	"peerDependencies": {
 		"@ag.ds-next/box": "7.0.0",
