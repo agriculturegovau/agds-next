@@ -119,7 +119,7 @@ export const reactDayPickerStyles = (range: boolean) =>
 		},
 		".rdp-day_selected:not([aria-disabled='true']), .rdp-day_selected:focus:not([aria-disabled='true']), .rdp-day_selected:active:not([aria-disabled='true']), .rdp-day_selected:hover:not([aria-disabled='true']), .rdp-day_selected:hover:not([aria-disabled='true'])":
 			{
-				...highContrastOutlineStyles,
+				'&:not(:focus)': highContrastOutlineStyles,
 				backgroundColor: boxPalette.foregroundAction,
 				color: boxPalette.backgroundBody,
 			},
