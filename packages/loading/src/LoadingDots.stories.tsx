@@ -11,6 +11,6 @@ export const LoadingDots: ComponentStory<typeof LoadingDotsComp> = (args) => (
 );
 LoadingDots.args = {
 	size: 'md',
-	'aria-label': 'Loading',
+	label: 'loading',
 	role: 'status',
 };

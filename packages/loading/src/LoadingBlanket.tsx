@@ -18,7 +18,7 @@ export const LoadingBlanket = ({
 	<LoadingBlanketContainer fullScreen={fullScreen}>
 		<LoadingBlanketContent>
 			<LoadingDots
-				aria-label="loading"
+				label="loading"
 				role="status"
 				size={fullScreen ? 'lg' : 'md'}
 			/>

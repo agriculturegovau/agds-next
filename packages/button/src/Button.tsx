@@ -113,14 +113,14 @@ const HiddenText = ({ children }: { children: ReactNode }) => (
 );
 
 const CenteredLoading = ({
-	'aria-label': ariaLabel,
+	label,
 	size,
 }: {
-	'aria-label': string;
+	label: string;
 	size: ButtonSize;
 }) => (
 	<LoadingDots
-		aria-label={ariaLabel}
+		label={label}
 		aria-live="assertive"
 		size={loadingSize[size]}
 		css={{
