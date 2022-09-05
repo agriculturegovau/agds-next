@@ -55,7 +55,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 				{loading ? (
 					<Fragment>
 						<HiddenText>{children}</HiddenText>
-						<CenteredLoading aria-label={loadingLabel} size={size} />
+						<CenteredLoading label={loadingLabel} size={size} />
 					</Fragment>
 				) : (
 					children
@@ -95,7 +95,7 @@ export const ButtonLink = forwardRef<HTMLAnchorElement, ButtonLinkProps>(
 				{loading ? (
 					<Fragment>
 						<HiddenText>{children}</HiddenText>
-						<CenteredLoading aria-label={loadingLabel} size={size} />
+						<CenteredLoading label={loadingLabel} size={size} />
 					</Fragment>
 				) : (
 					children
