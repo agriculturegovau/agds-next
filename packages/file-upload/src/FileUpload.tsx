@@ -166,6 +166,16 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 			setFileRejections(rejections);
 		}, [dropzoneFileRejections, formattedMaxFileSize, acceptedFilesSummary]);
 
+		// Avoid passing `color` to the Stack component, which causes
+		// TypeScript errors.
+		const {
+			// We are using an _actual_ button, so we don't need these props
+			role: _unusedRole,
+			tabIndex: _unusedTabIndex,
+			color: _unusedColor,
+			...dropzoneProps
+		} = getRootProps();
+
 		return (
 			<Field
 				label={label}
@@ -177,12 +187,8 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 				id={id}
 			>
 				{(allyProps) => {
-					// Avoid passing `color` to the Stack component, which causes
-					// TypeScript errors.
-					// eslint-disable-next-line @typescript-eslint/no-unused-vars
-					const { color: _, ...rootProps } = getRootProps();
 					return (
-						<Stack gap={1.5} {...rootProps}>
+						<Stack gap={1.5} {...dropzoneProps}>
 							<Flex
 								gap={1}
 								padding={1.5}
