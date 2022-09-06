@@ -166,12 +166,11 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 			setFileRejections(rejections);
 		}, [dropzoneFileRejections, formattedMaxFileSize, acceptedFilesSummary]);
 
-		// Avoid passing `color` to the Stack component, which causes
-		// TypeScript errors.
 		const {
 			// We are using an _actual_ button, so we don't need these props
 			role: _unusedRole,
 			tabIndex: _unusedTabIndex,
+			// Avoid passing `color` to the Stack component, which causes TypeScript errors.
 			color: _unusedColor,
 			...dropzoneProps
 		} = getRootProps();
