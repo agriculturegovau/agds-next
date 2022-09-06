@@ -3,6 +3,7 @@ import { Flex } from '@ag.ds-next/box';
 import { VisuallyHidden } from '@ag.ds-next/a11y';
 import { Text } from '@ag.ds-next/text';
 import { boxPalette } from '@ag.ds-next/core';
+import { TextLink } from '@ag.ds-next/text-link';
 import { IndicatorDot } from './IndicatorDot';
 
 export default {
@@ -22,31 +23,36 @@ export const Example = () => {
 		<Flex flexDirection="column" as="ul">
 			<Flex
 				as="li"
-				alignItems="center"
-				gap={1}
-				paddingY={0.5}
-				paddingX={0.25}
-				borderY
+				aria-selected="false"
 				borderColor="muted"
+				borderY
 				css={{
 					backgroundColor: boxPalette.systemInfoMuted,
 				}}
+				flexDirection="column"
+				gap={0.5}
 				justifyContent="space-between"
-				aria-selected="false"
-				role="option"
+				padding={1.5}
+				width="100%"
 			>
-				<Flex flexDirection="column">
-					<Text fontWeight="bold">Oscar Piastri</Text>
-					<Text>2023 contract</Text>
-					<Text fontSize="xs">
-						Hi Zak. Please find enclosed my signed contract for next year...
+				<Flex justifyContent="space-between">
+					<Text fontSize="md" fontWeight="bold">
+						Action required
 					</Text>
+
+					<Flex alignItems="center" gap={0.5}>
+						<Text color="muted">10:15am</Text>
+						<IndicatorDot tone="action" />
+						<VisuallyHidden>Unread message</VisuallyHidden>
+					</Flex>
 				</Flex>
 
-				<div>
-					<IndicatorDot tone="action" />
-					<VisuallyHidden>Unread message</VisuallyHidden>
-				</div>
+				<Text fontSize="sm">
+					Your application to register establishment X needs more information.
+					Please provide Y by 12 June 2022 to avoid delays.
+				</Text>
+
+				<TextLink href="#details">View details</TextLink>
 			</Flex>
 		</Flex>
 	);
