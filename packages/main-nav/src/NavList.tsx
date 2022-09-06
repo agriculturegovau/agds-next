@@ -21,15 +21,21 @@ export type NavListItem = (NavListLink | NavListButton) & {
 };
 
 export type NavListProps = {
+	'aria-label': string;
 	activePath: string;
 	items?: NavListItem[];
 	type: 'primary' | 'secondary';
 };
 
-export function NavList({ activePath, items, type }: NavListProps) {
+export function NavList({
+	'aria-label': ariaLabel,
+	activePath,
+	items,
+	type,
+}: NavListProps) {
 	const Link = useLinkComponent();
 	return (
-		<NavListContainer type={type}>
+		<NavListContainer aria-label={ariaLabel} type={type}>
 			{items?.map(({ label, endElement, ...item }, index) => {
 				if ('href' in item) {
 					const active = item.href === activePath;
@@ -66,34 +72,49 @@ export function NavList({ activePath, items, type }: NavListProps) {
 }
 
 type NavListContainerProps = PropsWithChildren<{
+	'aria-label': string;
 	type: NavListType;
 }>;
 
-function NavListContainer({ children, type }: NavListContainerProps) {
+function NavListContainer({
+	'aria-label': ariaLabel,
+	children,
+	type,
+}: NavListContainerProps) {
 	if (type === 'primary') {
 		return (
 			<Flex
-				as="ul"
+				as="nav"
+				justifyContent="space-between"
+				width="100%"
 				flexDirection={{ xs: 'column', lg: 'row' }}
-				flexWrap="wrap"
-				alignItems="stretch"
-				css={{
-					[tokens.mediaQuery.max.md]: {
-						'& > li': {
-							borderTopWidth: tokens.borderWidth.sm,
-							borderTopStyle: 'solid',
-							borderTopColor: boxPalette.border,
-						},
-					},
-				}}
+				aria-label={ariaLabel}
 			>
-				{children}
+				<Flex
+					as="ul"
+					flexDirection={{ xs: 'column', lg: 'row' }}
+					flexWrap="wrap"
+					alignItems="stretch"
+					css={{
+						[tokens.mediaQuery.max.md]: {
+							'& > li': {
+								borderTopWidth: tokens.borderWidth.sm,
+								borderTopStyle: 'solid',
+								borderTopColor: boxPalette.border,
+							},
+						},
+					}}
+				>
+					{children}
+				</Flex>
 			</Flex>
 		);
 	}
 	return (
-		<Flex as="ul" height="100%">
-			{children}
+		<Flex as="nav" height="100%" aria-label={ariaLabel}>
+			<Flex as="ul" height="100%">
+				{children}
+			</Flex>
 		</Flex>
 	);
 }

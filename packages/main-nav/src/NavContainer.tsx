@@ -26,7 +26,6 @@ import {
 import { CloseButton, OpenButton } from './MenuButtons';
 
 export type NavContainerProps = PropsWithChildren<{
-	'aria-label': string;
 	background?: MainNavBackground;
 	hasItems?: boolean;
 	id?: string;
@@ -36,7 +35,6 @@ export type NavContainerProps = PropsWithChildren<{
 export function NavContainer({
 	id,
 	rightContent,
-	'aria-label': ariaLabel,
 	children,
 	background = 'body',
 	hasItems,
@@ -74,12 +72,7 @@ export function NavContainer({
 		>
 			{menuVisiblyOpen ? <LockScroll /> : null}
 			<BottomBar />
-			<Flex
-				as="nav"
-				justifyContent="center"
-				css={{ position: 'relative' }}
-				aria-label={ariaLabel}
-			>
+			<Flex justifyContent="center" css={{ position: 'relative' }}>
 				<Flex
 					justifyContent="space-between"
 					alignItems="center"
@@ -90,9 +83,13 @@ export function NavContainer({
 					{hasItems ? <OpenButton onClick={open} /> : null}
 					<FocusLock returnFocus disabled={!menuVisiblyOpen}>
 						<div
-							role={menuVisiblyOpen ? 'dialog' : 'none'}
-							aria-label="Main navigation"
-							aria-modal={menuVisiblyOpen ? 'true' : 'false'}
+							{...(menuVisiblyOpen
+								? {
+										role: 'dialog',
+										'aria-label': 'Main navigation',
+										'aria-modal': 'true',
+								  }
+								: null)}
 							id="main-nav-dialog"
 							onKeyDown={handleEscape}
 							css={{
@@ -113,13 +110,7 @@ export function NavContainer({
 							}}
 						>
 							<CloseButton onClick={close} />
-							<Flex
-								justifyContent="space-between"
-								width="100%"
-								flexDirection={{ xs: 'column', lg: 'row' }}
-							>
-								{children}
-							</Flex>
+							{children}
 						</div>
 					</FocusLock>
 					{rightContent}
