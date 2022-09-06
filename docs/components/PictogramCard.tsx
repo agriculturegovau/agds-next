@@ -19,7 +19,7 @@ export const PictogramCard = ({
 			padding={1}
 			background="shade"
 		>
-			<img src={getPictogram(pictogram).src} alt={`Pictogram of ${title}`} />
+			<img src={getPictogram(pictogram).src} alt="" aria-hidden="true" />
 		</Flex>
 		<CardInner>
 			<CardLink {...props}>
