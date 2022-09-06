@@ -26,7 +26,6 @@ import {
 import { CloseButton, OpenButton } from './MenuButtons';
 
 export type NavContainerProps = PropsWithChildren<{
-	'aria-label': string;
 	background?: MainNavBackground;
 	hasItems?: boolean;
 	id?: string;
@@ -36,7 +35,6 @@ export type NavContainerProps = PropsWithChildren<{
 export function NavContainer({
 	id,
 	rightContent,
-	'aria-label': ariaLabel,
 	children,
 	background = 'body',
 	hasItems,
@@ -112,15 +110,7 @@ export function NavContainer({
 							}}
 						>
 							<CloseButton onClick={close} />
-							<Flex
-								as="nav"
-								aria-label={ariaLabel}
-								justifyContent="space-between"
-								width="100%"
-								flexDirection={{ xs: 'column', lg: 'row' }}
-							>
-								{children}
-							</Flex>
+							{children}
 						</div>
 					</FocusLock>
 					{rightContent}
