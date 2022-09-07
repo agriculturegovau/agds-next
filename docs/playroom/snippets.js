@@ -74,7 +74,7 @@ const snippets = [
       <Columns>
         <Column columnSpan={{ xs: 12, sm: 6, lg: 3  }}>
           <Stack gap={0.5}>
-            <H3>Section</H3>
+            <Heading as="h2" type="h3">Section</Heading>
             <LinkList
               links={[
                 { href: "#", label: "Link 1" },
@@ -86,7 +86,7 @@ const snippets = [
         </Column>
         <Column columnSpan={{ xs: 12, sm: 6, lg: 3 }}>
           <Stack gap={0.5}>
-            <H3>Section</H3>
+            <Heading as="h2" type="h3">Section</Heading>
             <LinkList
               links={[
                 { href: "#", label: "Link 1" },
@@ -98,7 +98,7 @@ const snippets = [
         </Column>
         <Column columnSpan={{ xs: 12, sm: 6, lg: 3 }}>
           <Stack gap={0.5}>
-            <H3>Section</H3>
+            <Heading as="h2" type="h3">Section</Heading>
             <LinkList
               links={[
                 { href: "#", label: "Link 1" },
@@ -110,7 +110,7 @@ const snippets = [
         </Column>
         <Column columnSpan={{ xs: 12, sm: 6, lg: 3 }}>
           <Stack gap={0.5}>
-            <H3>Section</H3>
+            <Heading as="h2" type="h3">Section</Heading>
             <LinkList
               links={[
                 { href: "#", label: "Link 1" },
