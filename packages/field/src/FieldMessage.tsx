@@ -20,7 +20,8 @@ export const FieldMessage = ({
 					color="error"
 					size="md"
 					aria-label="Error"
-					aria-hidden={false}
+					aria-hidden="false"
+					css={{ display: 'block' }}
 				/>
 			</Box>
 		) : null}

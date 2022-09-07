@@ -35,8 +35,14 @@ export const FileRejection = ({
 			}}
 		>
 			<Flex gap={0.5}>
-				<Box flexShrink={1}>
-					<AlertFilledIcon color="error" size="md" />
+				<Box flexShrink={0}>
+					<AlertFilledIcon
+						color="error"
+						size="md"
+						aria-hidden="false"
+						aria-label="Error"
+						css={{ display: 'block' }}
+					/>
 				</Box>
 				<Stack gap={0}>
 					<Text fontWeight="bold" color="error">

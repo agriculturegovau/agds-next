@@ -35,12 +35,13 @@ export const FileUploadFile = ({
 		>
 			<Flex alignItems="center" gap={0.5}>
 				{status == 'success' && (
-					<Box flexShrink={1}>
+					<Box flexShrink={0}>
 						<SuccessFilledIcon
 							color="success"
 							size="md"
 							aria-hidden="false"
-							aria-label="Uploaded file"
+							aria-label="Success"
+							css={{ display: 'block' }}
 						/>
 					</Box>
 				)}
