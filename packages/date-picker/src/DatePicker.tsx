@@ -1,6 +1,5 @@
 import {
 	ChangeEvent,
-	KeyboardEvent,
 	useCallback,
 	useEffect,
 	useMemo,
@@ -100,18 +99,19 @@ export const DatePicker = ({
 
 	useClickOutside(clickOutsideRef, handleClickOutside);
 
-	// Close the calendar when the user presses escape
-	const handleEscape = useCallback(
-		(e: KeyboardEvent<HTMLDivElement>) => {
+	// Close the calendar when the user presses the escape key
+	useEffect(() => {
+		const handleKeyDown = (e: KeyboardEvent) => {
 			if (isCalendarOpen && e.code === 'Escape') {
 				e.preventDefault();
 				e.stopPropagation();
 				// Close the calendar and focus the calendar icon
 				closeCalendar();
 			}
-		},
-		[isCalendarOpen, closeCalendar]
-	);
+		};
+		window.addEventListener('keydown', handleKeyDown);
+		return () => window.removeEventListener('keydown', handleKeyDown);
+	}, [isCalendarOpen, closeCalendar]);
 
 	const disabledCalendarDays = useMemo(() => {
 		if (!(minDate || maxDate)) return;
@@ -122,7 +122,7 @@ export const DatePicker = ({
 	}, [minDate, maxDate]);
 
 	return (
-		<div ref={setRefEl} onKeyDown={handleEscape}>
+		<div ref={setRefEl}>
 			<DateInput
 				{...props}
 				value={inputValue}

@@ -2,8 +2,7 @@ import {
 	PropsWithChildren,
 	ReactNode,
 	MouseEventHandler,
-	useCallback,
-	KeyboardEvent,
+	useEffect,
 } from 'react';
 import FocusLock from 'react-focus-lock';
 import { Global } from '@emotion/react';
@@ -46,16 +45,18 @@ export function NavContainer({
 	const menuVisiblyOpen =
 		menuOpen && (windowWidth || 0) <= tokens.breakpoint.lg - 1;
 
-	const handleEscape = useCallback(
-		(e: KeyboardEvent<HTMLDivElement>) => {
+	// Close the component when the user presses the escape key
+	useEffect(() => {
+		const handleKeyDown = (e: KeyboardEvent) => {
 			if (menuVisiblyOpen && e.code === 'Escape') {
 				e.preventDefault();
 				e.stopPropagation();
 				close();
 			}
-		},
-		[menuVisiblyOpen, close]
-	);
+		};
+		window.addEventListener('keydown', handleKeyDown);
+		return () => window.removeEventListener('keydown', handleKeyDown);
+	}, [menuVisiblyOpen, close]);
 
 	return (
 		<Box
@@ -91,7 +92,6 @@ export function NavContainer({
 								  }
 								: null)}
 							id="main-nav-dialog"
-							onKeyDown={handleEscape}
 							css={{
 								[tokens.mediaQuery.max.md]: {
 									zIndex: 200,

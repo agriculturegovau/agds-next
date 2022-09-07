@@ -1,11 +1,4 @@
-import {
-	Fragment,
-	FunctionComponent,
-	KeyboardEvent,
-	useCallback,
-	useEffect,
-	useRef,
-} from 'react';
+import { Fragment, FunctionComponent, useEffect, useRef } from 'react';
 import { Global } from '@emotion/react';
 import { createPortal } from 'react-dom';
 import { ModalCover } from './ModalCover';
@@ -25,16 +18,17 @@ export const Modal: FunctionComponent<ModalProps> = ({
 	const coverRef = useRef<HTMLDivElement>(null);
 
 	// Close the modal when the user presses the escape key
-	const handleEscape = useCallback(
-		(e: KeyboardEvent<HTMLDivElement>) => {
+	useEffect(() => {
+		const handleKeyDown = (e: KeyboardEvent) => {
 			if (isOpen && e.code === 'Escape') {
 				e.preventDefault();
 				e.stopPropagation();
 				onDismiss();
 			}
-		},
-		[isOpen, onDismiss]
-	);
+		};
+		window.addEventListener('keydown', handleKeyDown);
+		return () => window.removeEventListener('keydown', handleKeyDown);
+	}, [isOpen, onDismiss]);
 
 	// The following `useEffect` will add `aria-hidden="true"` to every direct child of the `body` element when the modal is opened.
 	// This is because `aria-modal` is not yet supported by all browsers (https://a11ysupport.io/tech/aria/aria-modal_attribute).
@@ -73,7 +67,7 @@ export const Modal: FunctionComponent<ModalProps> = ({
 	return createPortal(
 		<Fragment>
 			<LockScroll />
-			<ModalCover ref={coverRef} onKeyDown={handleEscape}>
+			<ModalCover ref={coverRef}>
 				<ModalPanel onDismiss={onDismiss} title={title} actions={actions}>
 					{children}
 				</ModalPanel>

@@ -1,11 +1,9 @@
-import { forwardRef, KeyboardEventHandler, PropsWithChildren } from 'react';
+import { forwardRef, ReactNode } from 'react';
 
-export type ModalCoverProps = PropsWithChildren<{
-	onKeyDown: KeyboardEventHandler<HTMLDivElement>;
-}>;
+export type ModalCoverProps = { children: ReactNode };
 
 export const ModalCover = forwardRef<HTMLDivElement, ModalCoverProps>(
-	function ModalCover({ children, onKeyDown }, ref) {
+	function ModalCover({ children }, ref) {
 		return (
 			<div
 				ref={ref}
@@ -19,7 +17,6 @@ export const ModalCover = forwardRef<HTMLDivElement, ModalCoverProps>(
 					zIndex: 100,
 					overflowY: 'auto',
 				}}
-				onKeyDown={onKeyDown}
 			>
 				{children}
 			</div>
