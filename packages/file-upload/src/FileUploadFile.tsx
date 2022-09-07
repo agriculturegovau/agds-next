@@ -27,6 +27,7 @@ export const FileUploadFile = ({
 			rounded
 			alignItems="center"
 			as="li"
+			aria-label={`${status === 'success' ? 'Uploaded file' : 'File'}. ${name}`}
 			paddingY={0.5}
 			paddingLeft={1}
 			justifyContent="space-between"
@@ -34,8 +35,14 @@ export const FileUploadFile = ({
 		>
 			<Flex alignItems="center" gap={0.5}>
 				{status == 'success' && (
-					<Box flexShrink={1}>
-						<SuccessFilledIcon color="success" size="md" />
+					<Box flexShrink={0}>
+						<SuccessFilledIcon
+							color="success"
+							size="md"
+							aria-hidden="false"
+							aria-label="Success"
+							css={{ display: 'block' }}
+						/>
 					</Box>
 				)}
 				<Text css={{ wordBreak: 'break-all' }}>
