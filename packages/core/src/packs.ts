@@ -24,7 +24,7 @@ const input = {
 	},
 	md: {
 		...fontGrid('sm', 'default'),
-		height: '3em', // 48 px
+		height: '3rem', // 48 px
 	},
 };
 
