@@ -52,7 +52,7 @@ export const FileUploadFile = ({
 			<Box flexShrink={0}>
 				{status === 'uploading' ? (
 					<Box paddingY={1} paddingX={1.5}>
-						<LoadingDots aria-label="uploading" />
+						<LoadingDots label="uploading" />
 					</Box>
 				) : (
 					<Button

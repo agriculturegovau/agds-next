@@ -17,11 +17,7 @@ export const LoadingBlanket = ({
 }: LoadingBlanketProps) => (
 	<LoadingBlanketContainer fullScreen={fullScreen}>
 		<LoadingBlanketContent>
-			<LoadingDots
-				aria-label="loading"
-				role="status"
-				size={fullScreen ? 'lg' : 'md'}
-			/>
+			<LoadingDots size={fullScreen ? 'lg' : 'md'} />
 			<LoadingBlanketLabel>{label}</LoadingBlanketLabel>
 		</LoadingBlanketContent>
 	</LoadingBlanketContainer>
