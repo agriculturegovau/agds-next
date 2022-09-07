@@ -1,4 +1,4 @@
-export { tokens, mq, useTernaryState } from '@ag.ds-next/core';
+export { tokens, mq, useTernaryState, boxPalette } from '@ag.ds-next/core';
 export { Logo } from '@ag.ds-next/ag-branding';
 export {
 	Accordion,

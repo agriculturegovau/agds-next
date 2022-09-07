@@ -52,3 +52,45 @@ A small decorative indicator used to call attention to an item, such as an unrea
 	<IndicatorDot tone="action" />
 </Flex>
 ```
+
+An IndicatorDot should not be used on its own, as it gives no context. It should instead be considered as part of a wider composition.
+
+```jsx live
+<Flex flexDirection="column" as="ul">
+	<Flex
+		as="li"
+		aria-selected="false"
+		borderColor="muted"
+		borderY
+		css={{
+			backgroundColor: boxPalette.systemInfoMuted,
+		}}
+		flexDirection="column"
+		gap={0.5}
+		justifyContent="space-between"
+		padding={1.5}
+		width="100%"
+	>
+		<Flex justifyContent="space-between">
+			<Text fontSize="md" fontWeight="bold">
+				Action required
+			</Text>
+
+			<Flex alignItems="center" gap={0.5}>
+				<Text color="muted">10:15am</Text>
+				<IndicatorDot tone="action" />
+				<VisuallyHidden>Unread message</VisuallyHidden>
+			</Flex>
+		</Flex>
+
+		<Text fontSize="sm">
+			Your application to register establishment Orange Meat Works needs more
+			information. Please provide your ABN/ACN by 12 June 2022 to avoid delays.
+		</Text>
+
+		<div>
+			<TextLink href="#details">View details</TextLink>
+		</div>
+	</Flex>
+</Flex>
+```
