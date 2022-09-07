@@ -1,6 +1,5 @@
 import {
 	ChangeEvent,
-	KeyboardEvent,
 	useCallback,
 	useRef,
 	useState,
@@ -158,9 +157,9 @@ export const DateRangePicker = ({
 
 	useClickOutside(clickOutsideRef, closeCalendar);
 
-	// Close the calendar when the user presses escape
-	const handleEscape = useCallback(
-		(e: KeyboardEvent<HTMLDivElement>) => {
+	// Close the calendar when the user presses the escape key
+	useEffect(() => {
+		const handleKeyDown = (e: KeyboardEvent) => {
 			if (isCalendarOpen && e.code === 'Escape') {
 				e.preventDefault();
 				e.stopPropagation();
@@ -168,9 +167,10 @@ export const DateRangePicker = ({
 				closeCalendar();
 				setInputMode(undefined);
 			}
-		},
-		[isCalendarOpen, closeCalendar]
-	);
+		};
+		window.addEventListener('keydown', handleKeyDown);
+		return () => window.removeEventListener('keydown', handleKeyDown);
+	}, [isCalendarOpen, closeCalendar]);
 
 	const disabledCalendarDays = useMemo(() => {
 		if (!(minDate || maxDate)) return;
@@ -185,7 +185,7 @@ export const DateRangePicker = ({
 	const numberOfMonths = windowWidth > tokens.breakpoint.md ? 2 : 1;
 
 	return (
-		<div onKeyDown={handleEscape}>
+		<div>
 			<Flex
 				ref={setRefEl}
 				flexDirection={{ xs: 'column', sm: 'row' }}
