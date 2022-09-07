@@ -23,7 +23,7 @@ export type PageAlertProps = PropsWithChildren<{
 
 export const PageAlert = forwardRef<HTMLDivElement, PageAlertProps>(
 	function PageAlert({ id, role, children, title, tone, tabIndex }, ref) {
-		const { fg, bg, Icon } = pageAlertToneMap[tone];
+		const { fg, bg, icon } = pageAlertToneMap[tone];
 		return (
 			<Flex
 				ref={ref}
@@ -45,7 +45,7 @@ export const PageAlert = forwardRef<HTMLDivElement, PageAlertProps>(
 						color: boxPalette.backgroundBody,
 					}}
 				>
-					<Icon />
+					{icon}
 				</Flex>
 				<Flex padding={1.5} gap={1} flexDirection="column">
 					{title ? <PageAlertTitle>{title}</PageAlertTitle> : null}
@@ -60,21 +60,21 @@ const pageAlertToneMap = {
 	success: {
 		fg: boxPalette.systemSuccess,
 		bg: boxPalette.systemSuccessMuted,
-		Icon: SuccessFilledIcon,
+		icon: <SuccessFilledIcon aria-hidden="false" aria-label="Success" />,
 	},
 	error: {
 		fg: boxPalette.systemError,
 		bg: boxPalette.systemErrorMuted,
-		Icon: AlertFilledIcon,
+		icon: <AlertFilledIcon aria-hidden="false" aria-label="Error" />,
 	},
 	info: {
 		fg: boxPalette.systemInfo,
 		bg: boxPalette.systemInfoMuted,
-		Icon: InfoFilledIcon,
+		icon: <InfoFilledIcon aria-hidden="false" aria-label="Information" />,
 	},
 	warning: {
 		fg: boxPalette.systemWarning,
 		bg: boxPalette.systemWarningMuted,
-		Icon: WarningFilledIcon,
+		icon: <WarningFilledIcon aria-hidden="false" aria-label="Warning" />,
 	},
 };
