@@ -52,7 +52,9 @@ export const Example = () => {
 					Please provide Y by 12 June 2022 to avoid delays.
 				</Text>
 
-				<TextLink href="#details">View details</TextLink>
+				<div>
+					<TextLink href="#details">View details</TextLink>
+				</div>
 			</Flex>
 		</Flex>
 	);
