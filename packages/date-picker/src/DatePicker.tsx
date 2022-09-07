@@ -99,7 +99,7 @@ export const DatePicker = ({
 
 	useClickOutside(clickOutsideRef, handleClickOutside);
 
-	// Close the calendar when the user presses escape
+	// Close the calendar when the user presses the escape key
 	useEffect(() => {
 		const handleKeyDown = (e: KeyboardEvent) => {
 			if (isCalendarOpen && e.code === 'Escape') {
