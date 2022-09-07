@@ -117,7 +117,7 @@ export const Modular = () => (
 		<LoadingBlanketContainer fullScreen>
 			<LoadingBlanketContent>
 				<LoadingDots size="lg" />
-				<LoadingBlanketLabel role="status">Loading</LoadingBlanketLabel>
+				<LoadingBlanketLabel>Loading</LoadingBlanketLabel>
 			</LoadingBlanketContent>
 		</LoadingBlanketContainer>
 	</Box>

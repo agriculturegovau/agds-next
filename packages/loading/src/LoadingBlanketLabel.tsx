@@ -3,14 +3,10 @@ import { Text } from '@ag.ds-next/text';
 
 export type LoadingBlanketLabelProps = {
 	children: ReactNode;
-	role?: 'status';
 };
 
-export const LoadingBlanketLabel = ({
-	children,
-	role,
-}: LoadingBlanketLabelProps) => (
-	<Text fontSize="lg" fontWeight="bold" lineHeight="heading" role={role}>
+export const LoadingBlanketLabel = ({ children }: LoadingBlanketLabelProps) => (
+	<Text fontSize="lg" fontWeight="bold" lineHeight="heading" role="status">
 		{children}
 	</Text>
 );
