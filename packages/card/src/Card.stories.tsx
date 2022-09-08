@@ -44,10 +44,14 @@ export const Basic: ComponentStory<typeof Card> = (args) => (
 		</Card>
 	</Box>
 );
+Basic.args = {
+	clickable: true,
+	shadow: true,
+};
 
 export const Link: ComponentStory<typeof Card> = (args) => (
 	<Box maxWidth={300}>
-		<Card shadow clickable {...args}>
+		<Card {...args}>
 			<CardInner>
 				<Heading as="h2" type="h3" paddingBottom={1}>
 					Card heading
@@ -60,6 +64,10 @@ export const Link: ComponentStory<typeof Card> = (args) => (
 		</Card>
 	</Box>
 );
+Link.args = {
+	clickable: true,
+	shadow: true,
+};
 
 export const FeatureHeader: ComponentStory<typeof Card> = (args) => (
 	<Columns>
