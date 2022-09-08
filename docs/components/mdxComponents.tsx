@@ -2,8 +2,6 @@ import { AnchorHTMLAttributes, HTMLAttributes, Fragment } from 'react';
 import Link from 'next/link';
 import { proseBlockClassname } from '@ag.ds-next/prose';
 import { PageAlert, PageAlertProps } from '@ag.ds-next/page-alert';
-import { Text } from '@ag.ds-next/text';
-import { TextLink } from '@ag.ds-next/text-link';
 import { slugify } from '../lib/slugify';
 import generatedComponentPropsData from '../__generated__/componentProps.json';
 import { Code } from './Code';
@@ -18,8 +16,6 @@ export const mdxComponents: Record<string, any> = {
 	pre: Fragment,
 	code: Code,
 	Fragment,
-	Text,
-	TextLink,
 	a: ({ href, ...props }: AnchorHTMLAttributes<HTMLAnchorElement>) => {
 		if (!href) return <a {...props} />;
 		return <Link href={href} {...props} />;
