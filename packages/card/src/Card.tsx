@@ -34,7 +34,7 @@ export const Card = ({
 	// This code ensures that when `CardLink` is used, the text within the card is selectable and the entire card is clickable
 	// Please read more about this technique here: https://inclusive-components.design/cards/#theredundantclickevent
 	const onMouseUp = (event: MouseEvent<HTMLDivElement>) => {
-		if (!mousedownTimer.current) return;
+		if (!clickable || !mousedownTimer.current) return;
 
 		const cardLinkEl = event.currentTarget.querySelector(
 			`[${cardLinkDataAttr}]`
