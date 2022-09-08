@@ -6,13 +6,12 @@ export function PaginationItemSeparator() {
 	return (
 		<Flex
 			as="li"
-			aria-hidden="true"
 			width={BUTTON_SIZE}
 			height={BUTTON_SIZE}
 			alignItems="center"
 			justifyContent="center"
 		>
-			<Text>...</Text>
+			<Text>&hellip;</Text>
 		</Flex>
 	);
 }

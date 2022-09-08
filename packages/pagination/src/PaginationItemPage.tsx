@@ -57,6 +57,7 @@ export function PaginationItemPageButton({
 			<Flex
 				as={BaseButton}
 				aria-label={`Go to page ${pageNumber}`}
+				aria-current={isActive ? 'page' : undefined}
 				onClick={onClick}
 				justifyContent="center"
 				alignItems="center"
