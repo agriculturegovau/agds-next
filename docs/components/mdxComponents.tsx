@@ -1,12 +1,7 @@
-import {
-	AnchorHTMLAttributes,
-	HTMLAttributes,
-	Fragment,
-	ReactNode,
-} from 'react';
+import { AnchorHTMLAttributes, HTMLAttributes, Fragment } from 'react';
 import Link from 'next/link';
 import { proseBlockClassname } from '@ag.ds-next/prose';
-import { PageAlert } from '@ag.ds-next/page-alert';
+import { PageAlert, PageAlertProps } from '@ag.ds-next/page-alert';
 import { Text } from '@ag.ds-next/text';
 import { TextLink } from '@ag.ds-next/text-link';
 import { slugify } from '../lib/slugify';
@@ -44,16 +39,12 @@ export const mdxComponents: Record<string, any> = {
 			</h3>
 		);
 	},
-	Info: ({ children }: { children: ReactNode }) => (
+	PageAlert: (props: PageAlertProps) => (
 		<div className={proseBlockClassname}>
-			<PageAlert tone="info">{children}</PageAlert>
+			<PageAlert {...props} />
 		</div>
 	),
-	Warning: ({ children }: { children: ReactNode }) => (
-		<div className={proseBlockClassname}>
-			<PageAlert tone="warning">{children}</PageAlert>
-		</div>
-	),
+
 	ComponentPropsTable: ({ name }: { name: string }) => {
 		if (!(name in generatedComponentPropsData)) {
 			return (
