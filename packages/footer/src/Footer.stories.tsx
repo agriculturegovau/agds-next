@@ -4,7 +4,7 @@ import { tokens } from '@ag.ds-next/core';
 import { Logo } from '@ag.ds-next/ag-branding';
 import { Box, Stack } from '@ag.ds-next/box';
 import { Columns, Column } from '@ag.ds-next/columns';
-import { H3 } from '@ag.ds-next/heading';
+import { Heading } from '@ag.ds-next/heading';
 import { Text } from '@ag.ds-next/text';
 import { LinkList } from '@ag.ds-next/link-list';
 import { Footer, FooterDivider } from './';
@@ -63,7 +63,9 @@ const AgComplexFooter: ComponentStory<typeof Footer> = (args) => {
 				<Columns>
 					<Column columnSpan={columnSpanning}>
 						<Stack gap={0.5}>
-							<H3>Section</H3>
+							<Heading as="h2" type="h3">
+								Section
+							</Heading>
 							<LinkList
 								links={[
 									{ href: '#', label: 'Link 1' },
@@ -75,7 +77,9 @@ const AgComplexFooter: ComponentStory<typeof Footer> = (args) => {
 					</Column>
 					<Column columnSpan={columnSpanning}>
 						<Stack gap={0.5}>
-							<H3>Section</H3>
+							<Heading as="h2" type="h3">
+								Section
+							</Heading>
 							<LinkList
 								links={[
 									{ href: '#', label: 'Link 1' },
@@ -87,7 +91,9 @@ const AgComplexFooter: ComponentStory<typeof Footer> = (args) => {
 					</Column>
 					<Column columnSpan={columnSpanning}>
 						<Stack gap={0.5}>
-							<H3>Section</H3>
+							<Heading as="h2" type="h3">
+								Section
+							</Heading>
 							<LinkList
 								links={[
 									{ href: '#', label: 'Link 1' },
@@ -99,7 +105,9 @@ const AgComplexFooter: ComponentStory<typeof Footer> = (args) => {
 					</Column>
 					<Column columnSpan={columnSpanning}>
 						<Stack gap={0.5}>
-							<H3>Section</H3>
+							<Heading as="h2" type="h3">
+								Section
+							</Heading>
 							<LinkList
 								links={[
 									{ href: '#', label: 'Link 1' },

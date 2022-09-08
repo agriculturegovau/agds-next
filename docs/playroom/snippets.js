@@ -3,7 +3,7 @@ const snippets = [
 		group: 'Boilerplate',
 		name: 'One',
 		code: `<Box dark><Header background="bodyAlt" logo={<Logo />} heading="Export Service" />
-    <MainNav items={[{ label: "Hello", href: "#" }]} variant='agriculture' /></Box>
+    <MainNav items={[{ label: "Hello", href: "#" }]} /></Box>
     <PageContent as="main">
       <Prose>
         <h1>Page heading</h1>
@@ -44,7 +44,7 @@ const snippets = [
 	{
 		group: 'Footer',
 		name: 'Basic',
-		code: `<Box dark><Footer>
+		code: `<Box dark><Footer background="bodyAlt">
     <nav aria-label="footer">
       <LinkList
         horizontal
@@ -69,12 +69,12 @@ const snippets = [
 	{
 		group: 'Footer',
 		name: 'Complex',
-		code: `<Box dark><Footer variant="agriculture">
+		code: `<Box dark><Footer background="bodyAlt">
     <nav aria-label="footer">
       <Columns>
         <Column columnSpan={{ xs: 12, sm: 6, lg: 3  }}>
           <Stack gap={0.5}>
-            <H3>Section</H3>
+            <Heading as="h2" type="h3">Section</Heading>
             <LinkList
               links={[
                 { href: "#", label: "Link 1" },
@@ -86,7 +86,7 @@ const snippets = [
         </Column>
         <Column columnSpan={{ xs: 12, sm: 6, lg: 3 }}>
           <Stack gap={0.5}>
-            <H3>Section</H3>
+            <Heading as="h2" type="h3">Section</Heading>
             <LinkList
               links={[
                 { href: "#", label: "Link 1" },
@@ -98,7 +98,7 @@ const snippets = [
         </Column>
         <Column columnSpan={{ xs: 12, sm: 6, lg: 3 }}>
           <Stack gap={0.5}>
-            <H3>Section</H3>
+            <Heading as="h2" type="h3">Section</Heading>
             <LinkList
               links={[
                 { href: "#", label: "Link 1" },
@@ -110,7 +110,7 @@ const snippets = [
         </Column>
         <Column columnSpan={{ xs: 12, sm: 6, lg: 3 }}>
           <Stack gap={0.5}>
-            <H3>Section</H3>
+            <Heading as="h2" type="h3">Section</Heading>
             <LinkList
               links={[
                 { href: "#", label: "Link 1" },
