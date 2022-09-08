@@ -28,23 +28,21 @@ Use direction links to indicate a physical direction, such as:
 </Stack>
 ```
 
-### Buttons
+### DirectionButton
 
-Sometimes direction is needed inside a form. Buttons offer a way to direct users to the next or previous section inside a form.
+By default, the DirectionLink component renders a HTML anchor link. We strongly recommend using it wherever possible as it the most inclusive and accessible solution for users.
 
-```jsx live
+But using a link may be technically inappropriate for some single-page-app experiences, such as a multi-step form, where navigating to another web page would erase all user-entered form information.
+
+`DirectionButton` offer a way to direct users through sections inside a form or single-page-app, without triggering a page navigation. It looks visually like a DirectionLink, but it renders a button element by default.
+
+```jsx
 <Stack gap={2}>
-	<DirectionButton onClick={console.log} direction="left">
+	<DirectionButton onClick={setCurrentSection(1)} direction="left">
 		Back
 	</DirectionButton>
-	<DirectionButton onClick={console.log} direction="right">
+	<DirectionButton onClick={setCurrentSection(2)} direction="right">
 		Next
-	</DirectionButton>
-	<DirectionButton onClick={console.log} direction="up">
-		Top
-	</DirectionButton>
-	<DirectionButton onClick={console.log} direction="down">
-		Skip to footer
 	</DirectionButton>
 </Stack>
 ```
