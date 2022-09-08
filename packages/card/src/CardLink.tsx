@@ -3,6 +3,8 @@ import { linkStyles } from '@ag.ds-next/box';
 
 export type CardLinkProps = LinkProps;
 
+export const cardLinkDataAttr = 'data-agds-card-link';
+
 export const CardLink = (props: CardLinkProps) => {
 	const Link = useLinkComponent();
 	return (
@@ -16,16 +18,9 @@ export const CardLink = (props: CardLinkProps) => {
 					'&:focus': {
 						outline: 'none',
 					},
-					'&:after': {
-						content: '""',
-						position: 'absolute',
-						top: 0,
-						right: 0,
-						bottom: 0,
-						left: 0,
-					},
 				},
 			]}
+			{...{ [cardLinkDataAttr]: true }}
 			{...props}
 		/>
 	);
