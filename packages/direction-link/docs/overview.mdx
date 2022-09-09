@@ -38,10 +38,10 @@ But using a link may be technically inappropriate for some single-page-app exper
 
 ```jsx
 <Stack gap={2}>
-	<DirectionButton onClick={setCurrentSection(1)} direction="left">
+	<DirectionButton onClick={() => goToPreviousStep()} direction="left">
 		Back
 	</DirectionButton>
-	<DirectionButton onClick={setCurrentSection(2)} direction="right">
+	<DirectionButton onClick={() => goToNextStep()} direction="right">
 		Next
 	</DirectionButton>
 </Stack>
