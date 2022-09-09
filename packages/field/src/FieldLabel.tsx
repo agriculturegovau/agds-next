@@ -1,4 +1,5 @@
 import { ElementType, PropsWithChildren, useMemo } from 'react';
+import { Flex } from '@ag.ds-next/box';
 import { Text } from '@ag.ds-next/text';
 
 export type FieldLabelProps = PropsWithChildren<{
@@ -20,9 +21,15 @@ export const FieldLabel = ({
 		if (!required) return `(optional)`;
 	}, [required, secondaryLabelProp]);
 	return (
-		<Text as={as} htmlFor={htmlFor} display="flex" gap={0.25} fontWeight="bold">
-			{children}
-			{secondaryLabel ? <Text color="muted">{secondaryLabel}</Text> : null}
-		</Text>
+		<Flex as={as} htmlFor={htmlFor} gap={0.25}>
+			<Text as="span" fontWeight="bold">
+				{children}
+			</Text>
+			{secondaryLabel ? (
+				<Text as="span" color="muted">
+					{secondaryLabel}
+				</Text>
+			) : null}
+		</Flex>
 	);
 };
