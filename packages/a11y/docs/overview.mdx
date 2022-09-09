@@ -29,15 +29,25 @@ function Example() {
 
 ## ExternalLinkCallout
 
-Use the `ExternalLinkCallout` component to announce to a screenreader user that a link will open in a new tab.
+`ExternalLinkCallout` announces to a screenreader user that a link will open in a new tab.
 
-```jsx live
+<PageAlert tone="warning">
+	<p>
+		Please use the <strong>TextLinkExternal</strong> component from{' '}
+		<a href="https://steelthreads.github.io/agds-next/packages/navigation/text-link#TextLinkExternal">
+			@ag.ds-next/text
+		</a>{' '}
+		instead.
+	</p>
+</PageAlert>
+
+As a rule, links that open in a new tab should indicate this visually with an icon. This is why we recommend using the [TextLinkExternal](https://steelthreads.github.io/agds-next/packages/navigation/text-link#TextLinkExternal) component instead.
+
+```jsx
+// A screenreader will read this out load as:
+// 'link, "Visit the Design System, opens in a new tab"'
 <TextLink href="#" target="_blank">
 	Visit the Design System
 	<ExternalLinkCallout />
 </TextLink>
 ```
-
-> link, "Visit the Design System, opens in a new tab"
-
-For links in body text, we recommend reaching for the `TextLinkExternal` component in the [Text package](text#TextLinkExternal) instead.

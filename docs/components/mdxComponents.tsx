@@ -1,5 +1,7 @@
 import { AnchorHTMLAttributes, HTMLAttributes, Fragment } from 'react';
 import Link from 'next/link';
+import { proseBlockClassname } from '@ag.ds-next/prose';
+import { PageAlert, PageAlertProps } from '@ag.ds-next/page-alert';
 import { slugify } from '../lib/slugify';
 import generatedComponentPropsData from '../__generated__/componentProps.json';
 import { Code } from './Code';
@@ -33,6 +35,12 @@ export const mdxComponents: Record<string, any> = {
 			</h3>
 		);
 	},
+	PageAlert: (props: PageAlertProps) => (
+		<div className={proseBlockClassname}>
+			<PageAlert {...props} />
+		</div>
+	),
+
 	ComponentPropsTable: ({ name }: { name: string }) => {
 		if (!(name in generatedComponentPropsData)) {
 			return (
