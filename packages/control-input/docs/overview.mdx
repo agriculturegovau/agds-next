@@ -11,8 +11,8 @@ Check boxes allow users to select one or more items.
 
 ```jsx live
 <ControlGroup label="Example">
-	<Checkbox checked={false}>Phone</Checkbox>
-	<Checkbox checked={true}>Tablet</Checkbox>
+	<Checkbox value="phone">Phone</Checkbox>
+	<Checkbox value="tablet">Tablet</Checkbox>
 </ControlGroup>
 ```
 
@@ -21,10 +21,25 @@ Check boxes allow users to select one or more items.
 Radio inputs allow users to select one item at a time.
 
 ```jsx live
-<ControlGroup label="Example">
-	<Radio checked={false}>Phone</Radio>
-	<Radio checked={true}>Tablet</Radio>
-</ControlGroup>
+() => {
+	const [value, setValue] = React.useState();
+	const handlerForKey = React.useCallback((key) => () => setValue(key), []);
+	const isChecked = (key) => key === value;
+
+	return (
+		<ControlGroup label="Example">
+			<Radio checked={isChecked('phone')} onChange={handlerForKey('phone')}>
+				Phone
+			</Radio>
+			<Radio checked={isChecked('tablet')} onChange={handlerForKey('tablet')}>
+				Tablet
+			</Radio>
+			<Radio checked={isChecked('laptop')} onChange={handlerForKey('laptop')}>
+				Laptop
+			</Radio>
+		</ControlGroup>
+	);
+};
 ```
 
 ### Checkbox block
@@ -33,9 +48,9 @@ Inline checkbox options can sometimes be difficult to scan. Users may find it ch
 
 ```jsx live
 <ControlGroup label="Block example" block>
-	<Checkbox checked={false}>Phone</Checkbox>
-	<Checkbox checked={true}>Tablet</Checkbox>
-	<Checkbox checked={true}>Laptop</Checkbox>
+	<Checkbox value="phone">Phone</Checkbox>
+	<Checkbox value="tablet">Tablet</Checkbox>
+	<Checkbox value="laptop">Laptop</Checkbox>
 </ControlGroup>
 ```
 
@@ -44,11 +59,25 @@ Inline checkbox options can sometimes be difficult to scan. Users may find it ch
 Vertically stacked radio buttons.
 
 ```jsx live
-<ControlGroup label="Block example" block>
-	<Radio checked={false}>Phone</Radio>
-	<Radio checked={false}>Tablet</Radio>
-	<Radio checked={true}>Laptop</Radio>
-</ControlGroup>
+() => {
+	const [value, setValue] = React.useState();
+	const handlerForKey = React.useCallback((key) => () => setValue(key), []);
+	const isChecked = (key) => key === value;
+
+	return (
+		<ControlGroup label="Block example" block>
+			<Radio checked={isChecked('phone')} onChange={handlerForKey('phone')}>
+				Phone
+			</Radio>
+			<Radio checked={isChecked('tablet')} onChange={handlerForKey('tablet')}>
+				Tablet
+			</Radio>
+			<Radio checked={isChecked('laptop')} onChange={handlerForKey('laptop')}>
+				Laptop
+			</Radio>
+		</ControlGroup>
+	);
+};
 ```
 
 ### Valid and invalid states
@@ -56,31 +85,71 @@ Vertically stacked radio buttons.
 Add a border around the control inputs to indicate valid or invalid selections.
 
 ```jsx live
-<ControlGroup label="Invalid example" message="Select an option" invalid>
-	<Radio checked={false} invalid>
-		Phone
-	</Radio>
-	<Radio checked={true} invalid>
-		Tablet
-	</Radio>
-	<Radio checked={false} invalid>
-		Laptop
-	</Radio>
-</ControlGroup>
+() => {
+	const [value, setValue] = React.useState();
+	const handlerForKey = React.useCallback((key) => () => setValue(key), []);
+	const isChecked = (key) => key === value;
+
+	return (
+		<ControlGroup label="Invalid example" message="Select an option" invalid>
+			<Radio
+				checked={isChecked('phone')}
+				onChange={handlerForKey('phone')}
+				invalid
+			>
+				Phone
+			</Radio>
+			<Radio
+				checked={isChecked('tablet')}
+				onChange={handlerForKey('tablet')}
+				invalid
+			>
+				Tablet
+			</Radio>
+			<Radio
+				checked={isChecked('laptop')}
+				onChange={handlerForKey('laptop')}
+				invalid
+			>
+				Laptop
+			</Radio>
+		</ControlGroup>
+	);
+};
 ```
 
 ```jsx live
-<ControlGroup label="Valid example" valid>
-	<Radio checked={false} valid>
-		Phone
-	</Radio>
-	<Radio checked={true} valid>
-		Tablet
-	</Radio>
-	<Radio checked={false} valid>
-		Laptop
-	</Radio>
-</ControlGroup>
+() => {
+	const [value, setValue] = React.useState();
+	const handlerForKey = React.useCallback((key) => () => setValue(key), []);
+	const isChecked = (key) => key === value;
+
+	return (
+		<ControlGroup label="Valid example" valid>
+			<Radio
+				checked={isChecked('phone')}
+				onChange={handlerForKey('phone')}
+				valid
+			>
+				Phone
+			</Radio>
+			<Radio
+				checked={isChecked('tablet')}
+				onChange={handlerForKey('tablet')}
+				valid
+			>
+				Tablet
+			</Radio>
+			<Radio
+				checked={isChecked('laptop')}
+				onChange={handlerForKey('laptop')}
+				valid
+			>
+				Laptop
+			</Radio>
+		</ControlGroup>
+	);
+};
 ```
 
 ### Disabled control inputs
@@ -104,11 +173,7 @@ Smaller versions of control inputs.
 
 ```jsx live
 <ControlGroup label="Small example">
-	<Radio checked={false} size="sm">
-		Phone
-	</Radio>
-	<Radio checked={true} size="sm">
-		Tablet
-	</Radio>
+	<Checkbox size="sm">Phone</Checkbox>
+	<Checkbox size="sm">Tablet</Checkbox>
 </ControlGroup>
 ```
