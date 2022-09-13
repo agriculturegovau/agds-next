@@ -4,17 +4,17 @@ import { Stack } from '@ag.ds-next/box';
 import { Header } from '@ag.ds-next/header';
 import { AvatarIcon } from '@ag.ds-next/icon';
 import { MainNav, MainNavBottomBar } from '@ag.ds-next/main-nav';
-import { SiteHeaderSearch } from './SiteHeaderSearch';
 
 const NAV_ITEMS = {
 	primary: [
 		{ label: 'Home', href: '/' },
-		{ label: 'Category 1', href: '/category' },
+		{ label: 'Services', href: '/services' },
 	],
 	secondary: [
 		{
-			label: 'Sign In',
-			href: '/sign-in-form',
+			label: 'Sign out',
+			onClick: () =>
+				window?.alert('Clicking this button does not do anything.'),
 			endElement: <AvatarIcon />,
 		},
 	],
@@ -27,9 +27,8 @@ export const SiteHeader = ({ focusMode }: { focusMode: boolean }) => {
 			<Header
 				background="bodyAlt"
 				logo={<Logo />}
-				heading="Export Service"
-				subline="Supporting Australian agricultural exports"
-				rightContent={<SiteHeaderSearch />}
+				heading="yourGov"
+				subline="Access government services from one place"
 			/>
 
 			{!focusMode ? (

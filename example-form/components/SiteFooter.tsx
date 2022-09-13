@@ -7,18 +7,7 @@ import { Box } from '@ag.ds-next/box';
 
 const footerLinks = [
 	{ label: 'Home', href: '/' },
-	{
-		label: 'Storybook',
-		href: 'https://steelthreads.github.io/agds-next/storybook/index.html',
-	},
-	{
-		label: 'Playroom',
-		href: 'https://steelthreads.github.io/agds-next/playroom/index.html',
-	},
-	{
-		label: 'Starter kit',
-		href: 'https://github.com/steelthreads/agds-next-starter-kit',
-	},
+	{ label: 'Services', href: '/services' },
 ];
 
 export const SiteFooter = () => {
