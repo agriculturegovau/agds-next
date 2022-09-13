@@ -2,23 +2,25 @@ import '@testing-library/jest-dom';
 import 'html-validate/jest';
 import { render, screen } from '@testing-library/react';
 import { TextLink } from '@ag.ds-next/text-link';
-import { ExternalLinkCallout } from './ExternalLinkCallout';
+import { VisuallyHidden } from './VisuallyHidden';
 
 function Example() {
 	return (
-		<TextLink data-testid="example">
-			Visit the Design System
-			<ExternalLinkCallout />
+		<TextLink href="#" data-testid="example">
+			Read more
+			<VisuallyHidden> about how to visually hide content</VisuallyHidden>
 		</TextLink>
 	);
 }
 
-describe('ExternalLinkCallout', () => {
-	it('announces to a screenreader user that a link will open in a new tab', () => {
+describe('VisuallyHidden', () => {
+	it('reads out visually hidden text to a screenreader user', () => {
 		render(<Example />);
 		const el = screen.getByTestId('example');
 		expect(el).toBeInTheDocument();
-		expect(el).toHaveTextContent('Visit the Design System, opens in a new tab');
+		expect(el).toHaveTextContent(
+			'Read more about how to visually hide content'
+		);
 	});
 	it('renders a valid HTML structure', () => {
 		const { container } = render(<Example />);
