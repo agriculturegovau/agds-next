@@ -6,7 +6,7 @@ import { ExternalLinkCallout } from './ExternalLinkCallout';
 
 function Example() {
 	return (
-		<TextLink data-testid="example">
+		<TextLink href="#" data-testid="example">
 			Visit the Design System
 			<ExternalLinkCallout />
 		</TextLink>
