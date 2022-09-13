@@ -12,7 +12,7 @@ export default function SignInFormPage() {
 	return (
 		<>
 			<DocumentTitle title="Sign in" />
-			<AppLayout template={{ name: 'Sign-in form', slug: 'sign-in' }}>
+			<AppLayout>
 				<PageContent>
 					<Columns>
 						<Column columnSpan={{ xs: 12, md: 7 }}>

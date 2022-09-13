@@ -16,7 +16,7 @@ export default function SubcategoryPage() {
 	return (
 		<>
 			<DocumentTitle title="Subcategory" />
-			<AppLayout template={{ name: 'Subcategory', slug: 'subcategory' }}>
+			<AppLayout>
 				<HeroSubcategoryBanner>
 					<Breadcrumbs
 						links={[

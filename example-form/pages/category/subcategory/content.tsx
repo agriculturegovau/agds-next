@@ -21,7 +21,7 @@ export default function ContentPage() {
 	return (
 		<>
 			<DocumentTitle title="Content page example" />
-			<AppLayout template={{ name: 'Content', slug: 'content' }}>
+			<AppLayout>
 				<PageContent>
 					<Columns>
 						<Column columnSpan={{ xs: 12, md: 4, lg: 3 }}>

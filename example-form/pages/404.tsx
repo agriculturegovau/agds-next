@@ -10,7 +10,7 @@ export default function NotFoundPage() {
 	return (
 		<>
 			<DocumentTitle title="Error 404" />
-			<AppLayout template={{ name: '404', slug: '404' }}>
+			<AppLayout>
 				<PageContent as="main" id="main-content">
 					<Stack gap={1.5}>
 						<H1>Page not found</H1>

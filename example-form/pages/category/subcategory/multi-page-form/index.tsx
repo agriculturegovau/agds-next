@@ -16,9 +16,7 @@ export default function FormMultiPageHomePage() {
 	return (
 		<>
 			<DocumentTitle title="Multi-page form example" />
-			<AppLayout
-				template={{ name: 'Multi-page form', slug: 'multi-page-form' }}
-			>
+			<AppLayout>
 				<PageContent>
 					<Columns>
 						<Column columnSpan={{ xs: 12, md: 8 }}>

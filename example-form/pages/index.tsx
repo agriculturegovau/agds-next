@@ -19,7 +19,7 @@ export default function HomePage() {
 	return (
 		<>
 			<DocumentTitle title="Home" />
-			<AppLayout template={{ name: 'Home', slug: 'home' }}>
+			<AppLayout>
 				<HeroBanner
 					image={
 						<img

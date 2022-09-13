@@ -11,9 +11,7 @@ export default function SinglePageFormPage() {
 	return (
 		<>
 			<DocumentTitle title="Single-page form example" />
-			<AppLayout
-				template={{ name: 'Single-page form', slug: 'single-page-form' }}
-			>
+			<AppLayout>
 				<PageContent>
 					<Columns>
 						<Column columnSpan={{ xs: 12, md: 8 }}>

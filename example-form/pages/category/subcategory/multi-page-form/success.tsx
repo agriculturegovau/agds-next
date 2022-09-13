@@ -11,7 +11,7 @@ import { PageTitle } from '../../../../components/PageTitle';
 
 export default function FormMultiPageFormPage() {
 	return (
-		<AppLayout template={{ name: 'Multi-page form', slug: 'multi-page-form' }}>
+		<AppLayout>
 			<PageContent>
 				<Columns>
 					<Column columnSpan={{ xs: 12, md: 8 }}>

@@ -170,10 +170,7 @@ export const FormExampleMultiStep = () => {
 	};
 
 	return (
-		<AppLayout
-			template={{ name: 'Multi-page form', slug: 'multi-page-form' }}
-			focusMode
-		>
+		<AppLayout focusMode>
 			<PageContent>
 				<context.Provider value={contextValue}>
 					<Columns>
