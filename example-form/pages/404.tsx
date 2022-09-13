@@ -15,8 +15,8 @@ export default function NotFoundPage() {
 					<Stack gap={1.5}>
 						<H1>Page not found</H1>
 						<Text as="p" fontSize="md">
-							Check the web address is correct or go back to the{' '}
-							<TextLink href="/">Export Service</TextLink>.
+							Check the web address is correct or go back to{' '}
+							<TextLink href="/">yourGov</TextLink>.
 						</Text>
 						<Text>Error code: 404</Text>
 					</Stack>
