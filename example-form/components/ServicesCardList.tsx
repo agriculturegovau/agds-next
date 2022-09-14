@@ -26,7 +26,8 @@ const items = [
 	{
 		title: 'Housing',
 		slug: '/services/housing',
-		description: 'TODO.',
+		description:
+			'Find help with housing and how to apply for rental assistance..',
 	},
 	{
 		title: 'Waste removal',

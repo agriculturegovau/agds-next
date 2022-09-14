@@ -1,27 +1,43 @@
-import { useForm, SubmitHandler } from 'react-hook-form';
+import { useForm, SubmitHandler, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { Stack } from '@ag.ds-next/box';
-import { ControlGroup, Radio } from '@ag.ds-next/control-input';
-import { useFormExampleMultiStep } from './FormExampleMultiStep';
-import { FormExampleMultiStepActions } from './FormExampleMultiStepActions';
+import { Button } from '@ag.ds-next/button';
+import { FormStack } from '@ag.ds-next/form-stack';
+import { TextInput } from '@ag.ds-next/text-input';
+import { DatePicker } from '@ag.ds-next/date-picker';
+import { H2 } from '@ag.ds-next/heading';
+import { useToggleState } from '@ag.ds-next/core';
+import {
+	DefinitionDescription,
+	DefinitionList,
+	DefinitionListItem,
+	DefinitionTerm,
+} from '../DefinitionList';
 import { FormExampleMultiStepContainer } from './FormExampleMultiStepContainer';
+import { FormExampleMultiStepActions } from './FormExampleMultiStepActions';
+import { useFormExampleMultiStep } from './FormExampleMultiStep';
 
 const formSchema = yup
 	.object({
-		example: yup
+		firstName: yup.string().required('Enter your first name'),
+		lastName: yup.string().required('Enter your first name'),
+		email: yup
 			.string()
-			.typeError('Select an option')
-			.required('Select an option'),
+			.email('Enter a valid email')
+			.required('Enter your email'),
+		dob: yup.date().required('Enter your date of birth'),
 	})
 	.required();
 
 export type FormSchema = yup.InferType<typeof formSchema>;
 
 export const FormExampleMultiStep0 = () => {
+	const [isFormVisibile, toggleFormVisibilty] = useToggleState(false, true);
 	const { next, stepFormState } = useFormExampleMultiStep();
 
 	const {
+		control,
 		register,
 		handleSubmit,
 		formState: { errors },
@@ -36,41 +52,109 @@ export const FormExampleMultiStep0 = () => {
 
 	return (
 		<FormExampleMultiStepContainer
-			title="Conditional fork title (H1)"
-			introduction="The introductory paragraph provides context about this page of the form. Use a short paragraph to reduce cognitive load."
+			title="Personal details"
+			introduction="Confirm if these prefilled details from your account are still correct."
 		>
-			<Stack as="form" gap={3} onSubmit={handleSubmit(onSubmit)} noValidate>
-				<ControlGroup
-					label="Fieldset question?"
-					hint="Hint text"
-					invalid={Boolean(errors.example?.message)}
-					message={errors.example?.message}
-					required
-					block
-				>
-					<Radio
-						{...register('example')}
-						value="A"
-						invalid={Boolean(errors.example?.message)}
-					>
-						Radio label A
-					</Radio>
-					<Radio
-						{...register('example')}
-						value="B"
-						invalid={Boolean(errors.example?.message)}
-					>
-						Radio label B
-					</Radio>
-					<Radio
-						{...register('example')}
-						value="C"
-						invalid={Boolean(errors.example?.message)}
-					>
-						Radio label C
-					</Radio>
-				</ControlGroup>
-				<FormExampleMultiStepActions />
+			<Stack gap={3} alignItems="flex-start">
+				{isFormVisibile ? (
+					<Stack gap={1.5}>
+						<H2>Update personal details</H2>
+						<Stack
+							as="form"
+							gap={3}
+							onSubmit={handleSubmit(onSubmit)}
+							noValidate
+						>
+							<FormStack>
+								<TextInput
+									label="First name"
+									autoComplete="given-name"
+									{...register('firstName')}
+									id="firstName"
+									invalid={Boolean(errors.firstName?.message)}
+									message={errors.firstName?.message}
+									required
+								/>
+								<TextInput
+									label="Last name"
+									autoComplete="family-name"
+									{...register('lastName')}
+									id="lastName"
+									invalid={Boolean(errors.lastName?.message)}
+									message={errors.lastName?.message}
+									required
+								/>
+								<TextInput
+									label="Email"
+									autoComplete="email"
+									{...register('email')}
+									id="email"
+									invalid={Boolean(errors.email?.message)}
+									message={errors.email?.message}
+									type="email"
+									required
+								/>
+								<Controller
+									control={control}
+									name="dob"
+									render={({
+										field: { onChange, onBlur, value, name },
+										fieldState: { invalid, error },
+									}) => (
+										<DatePicker
+											label="Date of birth"
+											value={value}
+											onChange={onChange}
+											onBlur={onBlur}
+											name={name}
+											invalid={invalid}
+											message={error?.message}
+											maxWidth="xl"
+											required
+										/>
+									)}
+								/>
+								<FormExampleMultiStepActions />
+							</FormStack>
+						</Stack>
+					</Stack>
+				) : (
+					<>
+						<Button variant="text">How were my details prefilled?</Button>
+						<Stack gap={1.5} alignItems="flex-start" width="100%">
+							<H2>Check personal details</H2>
+							<DefinitionList>
+								<DefinitionListItem>
+									<DefinitionTerm>First name</DefinitionTerm>
+									<DefinitionDescription>
+										{stepFormState.firstName}
+									</DefinitionDescription>
+								</DefinitionListItem>
+								<DefinitionListItem>
+									<DefinitionTerm>Last name</DefinitionTerm>
+									<DefinitionDescription>
+										{stepFormState.lastName}
+									</DefinitionDescription>
+								</DefinitionListItem>
+								<DefinitionListItem>
+									<DefinitionTerm>Email</DefinitionTerm>
+									<DefinitionDescription>
+										{stepFormState.email}
+									</DefinitionDescription>
+								</DefinitionListItem>
+								<DefinitionListItem>
+									<DefinitionTerm>Date of birth</DefinitionTerm>
+									<DefinitionDescription>
+										{stepFormState.dob}
+									</DefinitionDescription>
+								</DefinitionListItem>
+							</DefinitionList>
+							<Button variant="text" onClick={() => toggleFormVisibilty()}>
+								Change personal details
+							</Button>
+						</Stack>
+					</>
+				)}
 			</Stack>
 		</FormExampleMultiStepContainer>
 	);

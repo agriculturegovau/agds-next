@@ -1,42 +1,40 @@
 import { useEffect, useRef, useState } from 'react';
-import {
-	useForm,
-	SubmitHandler,
-	SubmitErrorHandler,
-	Controller,
-} from 'react-hook-form';
+import { useForm, SubmitHandler, SubmitErrorHandler } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { Prose } from '@ag.ds-next/prose';
-import { FileUpload } from '@ag.ds-next/file-upload';
 import { FormStack } from '@ag.ds-next/form-stack';
-import { LoadingBlanket } from '@ag.ds-next/loading';
 import { PageAlert } from '@ag.ds-next/page-alert';
 import { Stack } from '@ag.ds-next/box';
-import { Textarea } from '@ag.ds-next/textarea';
 import { useScrollToField } from '@ag.ds-next/field';
+import { TextInput } from '@ag.ds-next/text-input';
+import { Select } from '@ag.ds-next/select';
 import { FormExampleMultiStepActions } from './FormExampleMultiStepActions';
 import { useFormExampleMultiStep } from './FormExampleMultiStep';
 import { FormExampleMultiStepContainer } from './FormExampleMultiStepContainer';
 
 const formSchema = yup
 	.object({
-		description: yup.string().required('Describe actions taken'),
-		files: yup.array().of(yup.mixed()).required('Select a file to upload'),
+		streetAddress: yup.string().required('Enter your address'),
+		suburbTownCity: yup.string().required('Enter your suburb'),
+		state: yup.string().required('Enter your state'),
+		postcode: yup
+			.string()
+			.length(4, 'Invalid postcode')
+			.required('Enter your postcode'),
 	})
 	.required();
 
 export type FormSchema = yup.InferType<typeof formSchema>;
 
 export const FormExampleMultiStep1 = () => {
-	const { next, stepFormState, isSubmittingStep } = useFormExampleMultiStep();
+	const { next, stepFormState } = useFormExampleMultiStep();
 	const scrollToField = useScrollToField();
 	const errorRef = useRef<HTMLDivElement>(null);
 	const [focusedError, setFocusedError] = useState(false);
 
 	const {
 		register,
-		control,
 		handleSubmit,
 		formState: { errors },
 	} = useForm<FormSchema>({
@@ -98,43 +96,56 @@ export const FormExampleMultiStep1 = () => {
 							</Prose>
 						</PageAlert>
 					)}
-					<Textarea
-						label="Describe actions taken"
-						hint="Hint text"
-						id="description"
-						{...register('description')}
-						invalid={Boolean(errors.description?.message)}
-						message={errors.description?.message}
+					<TextInput
+						label="Street address"
+						autoComplete="street-address"
+						{...register('streetAddress')}
+						id="streetAddress"
+						invalid={Boolean(errors.streetAddress?.message)}
+						message={errors.streetAddress?.message}
 						required
-						block
+						maxWidth="xl"
 					/>
-					<Controller
-						control={control}
-						name="files"
-						render={({
-							field: { value, onChange, onBlur, name },
-							fieldState: { invalid, error },
-						}) => (
-							<div css={{ position: 'relative' }}>
-								<FileUpload
-									id="file"
-									label="Select file to upload"
-									hint="General hint information"
-									accept={['image/jpeg', 'image/jpg', 'image/png']}
-									maxSize={2000}
-									maxFiles={3}
-									multiple
-									value={value}
-									onChange={onChange}
-									onBlur={onBlur}
-									name={name}
-									invalid={invalid}
-									message={error?.message}
-									required
-								/>
-								{isSubmittingStep && <LoadingBlanket label="Uploading file" />}
-							</div>
-						)}
+					<TextInput
+						label="Suburb, town or city"
+						autoComplete="address-level2"
+						{...register('suburbTownCity')}
+						id="suburbTownCity"
+						invalid={Boolean(errors.suburbTownCity?.message)}
+						message={errors.suburbTownCity?.message}
+						required
+					/>
+					<Select
+						label="State or territory"
+						{...register('state')}
+						id="state"
+						placeholder="Select"
+						options={[
+							{ label: 'NSW', value: 'nsw' },
+							{ label: 'QLD', value: 'qld' },
+							{ label: 'ACT', value: 'act' },
+							{ label: 'VIC', value: 'vic' },
+							{ label: 'TAS', value: 'tas' },
+							{ label: 'NT', value: 'nt' },
+							{ label: 'SA', value: 'sa' },
+							{ label: 'WA', value: 'wa' },
+						]}
+						invalid={Boolean(errors.state?.message)}
+						message={errors.state?.message}
+						required
+						maxWidth="md"
+					/>
+					<TextInput
+						label="Postcode"
+						autoComplete="postal-code"
+						{...register('postcode')}
+						id="postcode"
+						invalid={Boolean(errors.postcode?.message)}
+						message={errors.postcode?.message}
+						maxWidth="sm"
+						inputMode="numeric"
+						pattern="[0-9]*"
+						required
 					/>
 				</FormStack>
 				<FormExampleMultiStepActions />

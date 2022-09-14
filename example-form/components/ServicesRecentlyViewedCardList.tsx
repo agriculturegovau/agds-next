@@ -25,7 +25,8 @@ const items = [
 	{
 		title: 'Register a pet',
 		slug: '/services/registrations/pet',
-		description: 'TODO.',
+		description:
+			'Registering domestic animals is a requirement of pet ownership.',
 	},
 	{
 		title: 'Support',

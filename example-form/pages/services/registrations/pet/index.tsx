@@ -1,15 +1,29 @@
-import { PageContent } from '@ag.ds-next/content';
 import { Columns, Column } from '@ag.ds-next/columns';
-import { Prose } from '@ag.ds-next/prose';
-import { Box, Stack } from '@ag.ds-next/box';
-import { H2 } from '@ag.ds-next/heading';
-import { Text } from '@ag.ds-next/text';
 import { DirectionLink } from '@ag.ds-next/direction-link';
+import { H2 } from '@ag.ds-next/heading';
+import { PageContent } from '@ag.ds-next/content';
+import { Prose } from '@ag.ds-next/prose';
+import { Stack } from '@ag.ds-next/box';
+import { TaskList } from '@ag.ds-next/task-list';
+import { Text } from '@ag.ds-next/text';
 import { AppLayout } from '../../../../components/AppLayout';
 import { DocumentTitle } from '../../../../components/DocumentTitle';
 import { FormHelpCallout } from '../../../../components/FormHelpCallout';
 import { PageTitle } from '../../../../components/PageTitle';
 import { FormDivider } from '../../../../components/FormDivider';
+
+const TASKS = [
+	{
+		label: 'Your personal details',
+		message: 'Provide your personal and contact details',
+		href: '/services/registrations/pet/task-1',
+	},
+	{
+		label: 'Your pets details',
+		message: 'Provide your pet’s details for registration',
+		href: '/services/registrations/pet/task-2',
+	},
+];
 
 export default function FormMultiPageHomePage() {
 	return (
@@ -45,8 +59,12 @@ export default function FormMultiPageHomePage() {
 										</ul>
 									</Prose>
 								</Stack>
-								<Box>TODO</Box>
-								<FormDivider />
+								<TaskList
+									items={TASKS.map((task) => ({
+										...task,
+										status: 'todo',
+									}))}
+								/>
 								<FormHelpCallout />
 							</Stack>
 						</Column>

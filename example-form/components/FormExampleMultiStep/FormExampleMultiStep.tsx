@@ -25,35 +25,19 @@ import {
 	FormExampleMultiStep2,
 	FormSchema as FormExampleMultiStep2Schema,
 } from './FormExampleMultiStep2';
-import {
-	FormExampleMultiStep3,
-	FormSchema as FormExampleMultiStep3Schema,
-} from './FormExampleMultiStep3';
-import {
-	FormExampleMultiStep4,
-	FormSchema as FormExampleMultiStep4Schema,
-} from './FormExampleMultiStep4';
 
 export const FORM_STEPS = [
 	{
-		label: 'Conditional fork',
+		label: 'Personal details',
 		component: FormExampleMultiStep0,
 	},
 	{
-		label: 'Submit evidence',
+		label: 'Address details',
 		component: FormExampleMultiStep1,
 	},
 	{
-		label: 'Select date',
+		label: 'Contact method',
 		component: FormExampleMultiStep2,
-	},
-	{
-		label: 'Conditional reveal',
-		component: FormExampleMultiStep3,
-	},
-	{
-		label: 'Confirm and submit',
-		component: FormExampleMultiStep4,
 	},
 ];
 
@@ -92,8 +76,6 @@ type FormState = Partial<{
 	[0]: FormExampleMultiStep0Schema;
 	[1]: FormExampleMultiStep1Schema;
 	[2]: FormExampleMultiStep2Schema;
-	[3]: FormExampleMultiStep3Schema;
-	[4]: FormExampleMultiStep4Schema;
 }>;
 
 export const FormExampleMultiStep = () => {

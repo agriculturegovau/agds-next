@@ -18,7 +18,7 @@ export const FormExampleMultiStepContainer = ({
 	return (
 		<Stack gap={3}>
 			<PageTitle
-				pretext="Title of multi-page form"
+				pretext="Your personal details"
 				title={title}
 				introduction={introduction}
 			/>

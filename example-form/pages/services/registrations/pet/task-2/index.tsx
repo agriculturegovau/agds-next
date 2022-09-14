@@ -1,0 +1,81 @@
+import { PageContent } from '@ag.ds-next/content';
+import { Columns, Column } from '@ag.ds-next/columns';
+import { Prose } from '@ag.ds-next/prose';
+import { Stack } from '@ag.ds-next/box';
+import { H2 } from '@ag.ds-next/heading';
+import { DirectionLink } from '@ag.ds-next/direction-link';
+import { ButtonLink } from '@ag.ds-next/button';
+import { AppLayout } from '../../../../../components/AppLayout';
+import { DocumentTitle } from '../../../../../components/DocumentTitle';
+import { FormHelpCallout } from '../../../../../components/FormHelpCallout';
+import { PageTitle } from '../../../../../components/PageTitle';
+import { FormDivider } from '../../../../../components/FormDivider';
+
+export default function FormMultiPageHomePage() {
+	return (
+		<>
+			<DocumentTitle title="Your pet's details" />
+			<AppLayout focusMode>
+				<PageContent>
+					<Columns>
+						<Column columnSpan={{ xs: 12, md: 8 }}>
+							<Stack gap={3}>
+								<DirectionLink
+									href="/services/registrations/pet"
+									direction="left"
+								>
+									Back
+								</DirectionLink>
+								<PageTitle
+									title="Your pet's details"
+									introduction="Under state regulation you are required to register any pet living with you in your domestic residence in an urban zone."
+								/>
+								<Stack gap={1.5}>
+									<H2>Registration requirements</H2>
+									<Prose>
+										<p>
+											To speed up the process of registering you pet you will
+											need to provide:
+										</p>
+										<ul>
+											<li>address details</li>
+											<li>current vaccination certificate</li>
+										</ul>
+									</Prose>
+								</Stack>
+								<div>
+									<ButtonLink href="/services/registrations/pet/task-1/form">
+										Get started
+									</ButtonLink>
+								</div>
+								<FormDivider />
+								<Stack gap={1.5}>
+									<H2>Information on pet registration rules and regulations</H2>
+									<Prose>
+										<h2></h2>
+										<ul>
+											<li>
+												<a href="#">State pet registration rules</a>
+											</li>
+											<li>
+												<a href="#">
+													National pet registration legislative framework
+												</a>
+											</li>
+											<li>
+												<a href="#">
+													Meaningful link label that shows link purpose
+												</a>
+											</li>
+										</ul>
+									</Prose>
+								</Stack>
+								<FormHelpCallout />
+							</Stack>
+						</Column>
+					</Columns>
+				</PageContent>
+			</AppLayout>
+		</>
+	);
+}

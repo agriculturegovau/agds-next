@@ -1,15 +1,28 @@
-import { useForm, SubmitHandler, Controller } from 'react-hook-form';
+import { useEffect, useRef, useState } from 'react';
+import { useForm, SubmitHandler } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
-import { Stack } from '@ag.ds-next/box';
-import { DatePicker } from '@ag.ds-next/date-picker';
+import { Prose } from '@ag.ds-next/prose';
+import { Box, Stack } from '@ag.ds-next/box';
+import { ControlGroup, Radio } from '@ag.ds-next/control-input';
+import { FormStack } from '@ag.ds-next/form-stack';
+import { mapSpacing } from '@ag.ds-next/core';
+import { PageAlert } from '@ag.ds-next/page-alert';
+import { TextInput } from '@ag.ds-next/text-input';
+import { useScrollToField } from '@ag.ds-next/field';
 import { useFormExampleMultiStep } from './FormExampleMultiStep';
 import { FormExampleMultiStepActions } from './FormExampleMultiStepActions';
 import { FormExampleMultiStepContainer } from './FormExampleMultiStepContainer';
 
 const formSchema = yup
 	.object({
-		date: yup.date().required('Select a date'),
+		contactMethod: yup.string().required('Select an option'),
+		mobileNumber: yup.string().when('contactMethod', (value, schema) => {
+			if (Array.isArray(value) && value.includes('B')) {
+				return schema.required('Nested field is required');
+			}
+			return schema;
+		}),
 	})
 	.required();
 
@@ -17,42 +30,117 @@ export type FormSchema = yup.InferType<typeof formSchema>;
 
 export const FormExampleMultiStep2 = () => {
 	const { next, stepFormState } = useFormExampleMultiStep();
+	const scrollToField = useScrollToField();
+	const errorRef = useRef<HTMLDivElement>(null);
+	const [focusedError, setFocusedError] = useState(false);
 
-	const { control, handleSubmit } = useForm<FormSchema>({
-		defaultValues: stepFormState,
+	const {
+		watch,
+		register,
+		handleSubmit,
+		trigger,
+		formState: { errors, isSubmitted },
+	} = useForm<FormSchema>({
+		reValidateMode: 'onChange',
+		defaultValues: {},
 		resolver: yupResolver(formSchema),
 	});
 
 	const onSubmit: SubmitHandler<FormSchema> = (data) => {
+		setFocusedError(false);
 		next(data);
 	};
 
+	const onError = () => {
+		setFocusedError(false);
+	};
+
+	// Only show the page alert if there is more than 1 error
+	const hasErrors = Object.keys(errors).length > 1;
+
+	useEffect(() => {
+		if (hasErrors && !focusedError) {
+			errorRef.current?.focus();
+			setFocusedError(true);
+		}
+	}, [hasErrors, focusedError, errors]);
+
+	const showConditionalField = watch('contactMethod') === 'sms';
+
+	useEffect(() => {
+		if (isSubmitted) trigger();
+	}, [trigger, isSubmitted, showConditionalField]);
+
 	return (
 		<FormExampleMultiStepContainer
-			title="Select date (H1)"
-			introduction="The introductory paragraph provides context about this page of the form. Use a short paragraph to reduce cognitive load."
+			title="Preferred contact method"
+			introduction="We may need to contact you to check details of your application."
 		>
-			<Stack as="form" gap={3} onSubmit={handleSubmit(onSubmit)} noValidate>
-				<Controller
-					control={control}
-					name="date"
-					render={({
-						field: { onChange, onBlur, value, name },
-						fieldState: { invalid, error },
-					}) => (
-						<DatePicker
-							label="Select a date"
-							value={value}
-							onChange={onChange}
-							onBlur={onBlur}
-							name={name}
-							invalid={invalid}
-							message={error?.message}
-							maxWidth="xl"
-							required
-						/>
+			<Stack
+				as="form"
+				gap={3}
+				onSubmit={handleSubmit(onSubmit, onError)}
+				noValidate
+			>
+				<FormStack>
+					{hasErrors && (
+						<PageAlert
+							ref={errorRef}
+							tone="error"
+							title="There is a problem"
+							tabIndex={-1}
+						>
+							<Prose>
+								<p>Please correct the following fields and try again</p>
+								<ul>
+									{Object.entries(errors).map(([key, value]) => (
+										<li key={key}>
+											<a href={`#${key}`} onClick={scrollToField}>
+												{value.message}
+											</a>
+										</li>
+									))}
+								</ul>
+							</Prose>
+						</PageAlert>
 					)}
-				/>
+					<ControlGroup
+						id="checkbox"
+						label="Preferred contact method"
+						invalid={Boolean(errors.contactMethod)}
+						message={errors.contactMethod?.message}
+						required
+						block
+					>
+						<Radio {...register('contactMethod')} value="mail">
+							Mail
+						</Radio>
+						<Radio {...register('contactMethod')} value="sms">
+							SMS
+						</Radio>
+						{showConditionalField ? (
+							<Box
+								borderLeft
+								borderLeftWidth="xl"
+								paddingLeft={1.5}
+								css={{ marginLeft: mapSpacing(1) }}
+							>
+								<TextInput
+									id="mobilePhone"
+									type="tel"
+									label="Provide mobile phone number"
+									{...register('mobileNumber')}
+									invalid={Boolean(errors.mobileNumber?.message)}
+									message={errors.mobileNumber?.message}
+									required
+								/>
+							</Box>
+						) : null}
+						<Radio {...register('contactMethod')} value="email">
+							Email
+						</Radio>
+					</ControlGroup>
+				</FormStack>
 				<FormExampleMultiStepActions />
 			</Stack>
 		</FormExampleMultiStepContainer>

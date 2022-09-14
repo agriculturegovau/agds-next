@@ -1,158 +1,143 @@
-import { useEffect, useRef, useState } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
-import { Prose } from '@ag.ds-next/prose';
-import { Box, Stack } from '@ag.ds-next/box';
-import { Checkbox, ControlGroup } from '@ag.ds-next/control-input';
 import { FormStack } from '@ag.ds-next/form-stack';
-import { mapSpacing } from '@ag.ds-next/core';
-import { PageAlert } from '@ag.ds-next/page-alert';
-import { TextInput } from '@ag.ds-next/text-input';
-import { useScrollToField } from '@ag.ds-next/field';
-import { useFormExampleMultiStep } from './FormExampleMultiStep';
-import { FormExampleMultiStepActions } from './FormExampleMultiStepActions';
+import { Prose } from '@ag.ds-next/prose';
+import { Stack } from '@ag.ds-next/box';
+import { Checkbox, ControlGroup } from '@ag.ds-next/control-input';
+import { H2 } from '@ag.ds-next/heading';
+import { Button } from '@ag.ds-next/button';
+import { FormDefinitionList } from '../FormDefinitionList';
+import { FORM_STEPS, useFormExampleMultiStep } from './FormExampleMultiStep';
 import { FormExampleMultiStepContainer } from './FormExampleMultiStepContainer';
+import { FormExampleMultiStepActions } from './FormExampleMultiStepActions';
 
-const checkboxErrorString = 'Please check at least one option';
 const formSchema = yup
 	.object({
-		checkbox: yup
-			.array()
-			.typeError(checkboxErrorString)
-			.of(yup.string())
-			.min(1, checkboxErrorString),
-		conditionalField: yup.string().when('checkbox', (value, schema) => {
-			if (Array.isArray(value) && value.includes('B')) {
-				return schema.required('Nested field is required');
-			}
-			return schema;
-		}),
+		declaration: yup
+			.boolean()
+			.oneOf([true], 'You must read and agree with the declaration'),
 	})
 	.required();
 
 export type FormSchema = yup.InferType<typeof formSchema>;
 
-export const FormExampleMultiStep3 = () => {
-	const { next, stepFormState } = useFormExampleMultiStep();
-	const scrollToField = useScrollToField();
-	const errorRef = useRef<HTMLDivElement>(null);
-	const [focusedError, setFocusedError] = useState(false);
+export const FormExampleMultiStep4 = () => {
+	const { next, stepFormState, formState, goToStep } =
+		useFormExampleMultiStep();
 
 	const {
-		watch,
 		register,
 		handleSubmit,
-		trigger,
-		formState: { errors, isSubmitted },
+		formState: { errors },
 	} = useForm<FormSchema>({
-		reValidateMode: 'onChange',
 		defaultValues: stepFormState,
 		resolver: yupResolver(formSchema),
 	});
 
 	const onSubmit: SubmitHandler<FormSchema> = (data) => {
-		setFocusedError(false);
 		next(data);
 	};
 
-	const onError = () => {
-		setFocusedError(false);
-	};
-
-	// Only show the page alert if there is more than 1 error
-	const hasErrors = Object.keys(errors).length > 1;
-
-	useEffect(() => {
-		if (hasErrors && !focusedError) {
-			errorRef.current?.focus();
-			setFocusedError(true);
-		}
-	}, [hasErrors, focusedError, errors]);
-
-	const checkboxWatch = watch('checkbox');
-	const showConditionalField =
-		Array.isArray(checkboxWatch) && checkboxWatch.includes('B');
-
-	useEffect(() => {
-		if (isSubmitted) trigger();
-	}, [trigger, isSubmitted, showConditionalField]);
-
 	return (
 		<FormExampleMultiStepContainer
-			title="Conditional reveal title (H1)"
+			title="Confirm and submit (H1)"
 			introduction="The introductory paragraph provides context about this page of the form. Use a short paragraph to reduce cognitive load."
 		>
-			<Stack
-				as="form"
-				gap={3}
-				onSubmit={handleSubmit(onSubmit, onError)}
-				noValidate
-			>
+			{/** Summary: Step 0 */}
+			<Stack gap={1.5} alignItems="flex-start">
+				<H2>{FORM_STEPS[0].label}</H2>
+				<Button variant="text" onClick={() => goToStep(0)}>
+					Change
+				</Button>
+				<FormDefinitionList
+					items={[
+						{
+							label: 'First name',
+							value: formState[0]?.firstName,
+						},
+						{
+							label: 'Last name',
+							value: formState[0]?.lastName,
+						},
+						{
+							label: 'Email',
+							value: formState[0]?.email,
+						},
+						{
+							label: 'Date of birth',
+							value: formState[0]?.dob.toLocaleDateString(),
+						},
+					]}
+				/>
+			</Stack>
+			{/** Summary: Step 1 */}
+			<Stack gap={1.5} alignItems="flex-start">
+				<H2>{FORM_STEPS[1].label}</H2>
+				<Button variant="text" onClick={() => goToStep(1)}>
+					Change
+				</Button>
+				<FormDefinitionList
+					items={[
+						{
+							label: 'Street address',
+							value: formState[1]?.streetAddress,
+						},
+						{
+							label: 'Suburb, town or city',
+							value: formState[1]?.suburbTownCity,
+						},
+						{
+							label: 'State',
+							value: formState[1]?.state,
+						},
+						{
+							label: 'Post code',
+							value: formState[1]?.postcode,
+						},
+					]}
+				/>
+			</Stack>
+			<Stack gap={1.5} alignItems="flex-start">
+				<H2>{FORM_STEPS[2].label}</H2>
+				<Button variant="text" onClick={() => goToStep(2)}>
+					Change
+				</Button>
+				<FormDefinitionList
+					items={[
+						{
+							label: 'Preferred contact method',
+							value: formState[2]?.contactMethod,
+						},
+					]}
+				/>
+			</Stack>
+			{/** Declaration form */}
+			<Stack as="form" gap={3} onSubmit={handleSubmit(onSubmit)} noValidate>
 				<FormStack>
-					{hasErrors && (
-						<PageAlert
-							ref={errorRef}
-							tone="error"
-							title="There is a problem"
-							tabIndex={-1}
-						>
-							<Prose>
-								<p>Please correct the following fields and try again</p>
-								<ul>
-									{Object.entries(errors).map(([key, value]) => (
-										<li key={key}>
-											<a href={`#${key}`} onClick={scrollToField}>
-												{Array.isArray(value)
-													? value[0].message
-													: value.message}
-											</a>
-										</li>
-									))}
-								</ul>
-							</Prose>
-						</PageAlert>
-					)}
+					<Prose>
+						<h2>Declaration</h2>
+						<p>I declare that:</p>
+						<ul>
+							<li>
+								The information I have provided on behalf of the applicant is
+								true and accurate
+							</li>
+							<li>I have read and understood the terms and conditions</li>
+						</ul>
+					</Prose>
 					<ControlGroup
-						id="checkbox"
-						label="Checkbox fieldset question?"
-						hint="Provide a hint here"
-						invalid={Boolean(errors.checkbox)}
-						// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-						// @ts-ignore
-						message={errors?.checkbox?.message}
-						required
+						label="Declaration agreement"
+						invalid={Boolean(errors.declaration?.message)}
+						message={errors.declaration?.message}
 						block
+						required
 					>
-						<Checkbox {...register('checkbox')} value="A">
-							Checkbox label A
-						</Checkbox>
-						<Checkbox {...register('checkbox')} value="B">
-							Checkbox label B
-						</Checkbox>
-						{showConditionalField ? (
-							<Box
-								borderLeft
-								borderLeftWidth="xl"
-								paddingLeft={1.5}
-								css={{ marginLeft: mapSpacing(1) }}
-							>
-								<TextInput
-									id="conditionalField"
-									label="Nested field"
-									hint="Hint text"
-									{...register('conditionalField')}
-									invalid={Boolean(errors.conditionalField?.message)}
-									message={errors.conditionalField?.message}
-									required
-								/>
-							</Box>
-						) : null}
-						<Checkbox {...register('checkbox')} value="C">
-							Checkbox label C
-						</Checkbox>
-						<Checkbox {...register('checkbox')} value="D">
-							Checkbox label D
+						<Checkbox
+							{...register('declaration')}
+							invalid={Boolean(errors.declaration?.message)}
+						>
+							I confirm that I have read and agree with the above declaration
 						</Checkbox>
 					</ControlGroup>
 				</FormStack>
