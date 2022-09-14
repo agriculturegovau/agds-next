@@ -7,14 +7,19 @@ import { MainNav, MainNavBottomBar } from '@ag.ds-next/main-nav';
 
 const NAV_ITEMS = {
 	primary: [
-		{ label: 'Home', href: '/' },
-		{ label: 'Services', href: '/services' },
+		{
+			label: 'Home',
+			href: '/',
+		},
+		{
+			label: 'Services',
+			href: '/services',
+		},
 	],
 	secondary: [
 		{
 			label: 'Sign out',
-			onClick: () =>
-				window?.alert('Clicking this button does not do anything.'),
+			href: '/sign-out',
 			endElement: <AvatarIcon />,
 		},
 	],

@@ -1,6 +1,5 @@
 import { PageContent } from '@ag.ds-next/content';
 import { Columns, Column } from '@ag.ds-next/columns';
-import { ButtonLink } from '@ag.ds-next/button';
 import { Prose } from '@ag.ds-next/prose';
 import { Box, Stack } from '@ag.ds-next/box';
 import { H2 } from '@ag.ds-next/heading';
@@ -30,7 +29,7 @@ export default function FormMultiPageHomePage() {
 										introduction="Registering domestic animals is a requirement of pet ownership. Complete the following 3 tasks to register your pet."
 									/>
 									<Text as="p" color="muted">
-										Takes around 10 minutes
+										Takes around 10 minutes.
 									</Text>
 								</Stack>
 								<Stack gap={1.5}>
@@ -40,9 +39,8 @@ export default function FormMultiPageHomePage() {
 											To speed up the process of registering you pet you will
 											need to provide:
 										</p>
-
 										<ul>
-											<li>Address details</li>
+											<li>address details</li>
 											<li>current vaccination certificate</li>
 										</ul>
 									</Prose>

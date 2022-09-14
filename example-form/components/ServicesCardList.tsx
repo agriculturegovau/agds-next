@@ -4,7 +4,7 @@ import { Text } from '@ag.ds-next/text';
 import { Card, CardInner, CardLink } from '@ag.ds-next/card';
 import { Columns } from '@ag.ds-next/columns';
 
-const services = [
+const items = [
 	{
 		title: 'Payments',
 		slug: '/services/payments',
@@ -44,14 +44,14 @@ const services = [
 export function ServicesCardList() {
 	return (
 		<Columns as="ul" cols={{ xs: 1, sm: 2, md: 3 }}>
-			{services.map((service) => (
-				<Card as="li" key={service.slug} shadow clickable>
+			{items.map((item) => (
+				<Card as="li" key={item.slug} shadow clickable>
 					<CardInner>
 						<Stack gap={1}>
 							<H3>
-								<CardLink href={service.slug}>{service.title}</CardLink>
+								<CardLink href={item.slug}>{item.title}</CardLink>
 							</H3>
-							<Text as="p">{service.description}</Text>
+							<Text as="p">{item.description}</Text>
 						</Stack>
 					</CardInner>
 				</Card>
