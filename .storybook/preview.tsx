@@ -1,7 +1,7 @@
 import { DecoratorFn } from '@storybook/react';
 import { Box } from '@ag.ds-next/box';
-import { Core } from '@ag.ds-next/core';
-import { theme as agTheme } from '@ag.ds-next/ag-branding';
+import { AgDSTheme, Core } from '@ag.ds-next/core';
+import { theme as agriculture } from '@ag.ds-next/ag-branding';
 
 function makeViewports() {
 	const viewports = [
@@ -48,9 +48,16 @@ function makeViewports() {
 	);
 }
 
+const agricultureInternal: AgDSTheme = {
+	...agriculture,
+	lightAccent: '#00558b',
+	darkAccent: '#00558b',
+};
+
 const storybookThemes = {
 	gold: {},
-	agriculture: agTheme,
+	agriculture,
+	agricultureInternal,
 } as const;
 
 type StorybookThemes = keyof typeof storybookThemes;
