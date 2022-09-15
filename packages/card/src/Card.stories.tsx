@@ -35,31 +35,30 @@ export const Basic: ComponentStory<typeof Card> = (args) => (
 						Lorem ipsum dolor, sit amet consectetur adipisicing elit. In,
 						voluptat
 					</Text>
-					<CardLink href="#">
-						Linking out
-						<ChevronRightIcon weight="bold" size="sm" />
-					</CardLink>
 				</Stack>
 			</CardInner>
 		</Card>
 	</Box>
 );
-Basic.args = {
-	clickable: true,
-	shadow: true,
-};
+Basic.args = {};
 
 export const Link: ComponentStory<typeof Card> = (args) => (
 	<Box maxWidth={300}>
 		<Card {...args}>
 			<CardInner>
-				<Heading as="h2" type="h3" paddingBottom={1}>
-					Card heading
-				</Heading>
-				<CardLink href="#">
-					Linking out
-					<ChevronRightIcon weight="bold" size="sm" />
-				</CardLink>
+				<Stack gap={1}>
+					<Heading as="h2" type="h3">
+						Card heading
+					</Heading>
+					<Text as="p">
+						Lorem ipsum dolor, sit amet consectetur adipisicing elit. In,
+						voluptat
+					</Text>
+					<CardLink href="#">
+						Linking out
+						<ChevronRightIcon weight="bold" size="sm" />
+					</CardLink>
+				</Stack>
 			</CardInner>
 		</Card>
 	</Box>
