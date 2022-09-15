@@ -91,7 +91,6 @@ export function SideNav({
 				<Box
 					ref={ref}
 					as="nav"
-					role="navigation"
 					aria-labelledby={titleId}
 					id={navId}
 					fontFamily="body"
