@@ -1,6 +1,6 @@
-import { Theme } from '@ag.ds-next/core';
+import { AgDSTheme } from '@ag.ds-next/core';
 
-export const theme: Theme = {
+export const theme: AgDSTheme = {
 	lightForegroundAction: '#00558b',
 	lightAccent: '#F36C52',
 	lightSystemError: '#D10000',

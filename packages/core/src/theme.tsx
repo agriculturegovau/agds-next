@@ -41,11 +41,11 @@ export const themeVars = {
 	darkSystemWarningMuted: '--agds-dark-system-warning-muted',
 } as const;
 
-export type Theme = Partial<Record<keyof typeof themeVars, string>>;
+export type AgDSTheme = Partial<Record<keyof typeof themeVars, string>>;
 
 type ThemeKey = keyof typeof themeVars;
 
-export function mergeTheme(defaultTheme: Theme, theme?: Theme) {
+export function mergeTheme(defaultTheme: AgDSTheme, theme?: AgDSTheme) {
 	return Object.fromEntries(
 		Object.entries(themeVars).map(([key, variableName]) => [
 			variableName,
