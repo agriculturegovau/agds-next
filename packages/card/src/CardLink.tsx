@@ -9,14 +9,13 @@ export const cardLinkDataAttr = 'data-agds-card-link';
 
 export const CardLink = (props: CardLinkProps) => {
 	const Link = useLinkComponent();
-	const { cardRef } = useCardContext();
 	const cardLinkRef = useRef<HTMLAnchorElement>(null);
 
 	// This code ensures that when this component is used, the text within the `Card` component is selectable AND the entire card is clickable
 	// Please read more about this technique here: https://inclusive-components.design/cards/#theredundantclickevent
 	const mousedownTimer = useRef<number>();
 	useEffect(() => {
-		const parentCardEl = cardRef.current;
+		const parentCardEl = cardLinkRef.current?.closest('[data-agds-card]');
 		if (!parentCardEl) return;
 
 		// Set a timer when the user presses the mouse down
@@ -41,7 +40,7 @@ export const CardLink = (props: CardLinkProps) => {
 			parentCardEl.removeEventListener('mousedown', onMouseDown);
 			parentCardEl.removeEventListener('mouseup', onMouseUp);
 		};
-	}, [cardRef]);
+	}, []);
 
 	return (
 		<Link
