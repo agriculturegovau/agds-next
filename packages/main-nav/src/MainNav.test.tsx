@@ -26,6 +26,10 @@ function Example() {
 }
 
 describe('MainNav', () => {
+	it('renders correctly', () => {
+		const { container } = render(<Example />);
+		expect(container).toMatchSnapshot();
+	});
 	it('renders a valid HTML structure', () => {
 		const { container } = render(<Example />);
 		expect(container).toHTMLValidate({
