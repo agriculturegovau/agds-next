@@ -1,0 +1,239 @@
+---
+title: Colours and Theming
+description: How theming works in the React component library
+---
+
+Our Design System has tokens for spacing, typography, borders, and colours. The colours used in our design system come from a **Theme**, which is a structure (schema) of colour tokens that semantically describe how they will be used. A Theme is made up of light and dark **palettes**, which are made up of backgrounds, foregrounds, and system colours. The full schema can be found at the bottom of this page.
+
+In this guide, we will go through how to make a new Theme for AgDS.
+
+## Token usage guidelines
+
+Each foreground, background, border, and system colours has a specific purpose.
+
+### Foreground colours
+
+Foreground colours are designed to sit on top of background colours to ensure contrast ratios meet WCAG 2.1 level AA accessibility requirements.
+
+| Name        | Description                                                                                                                                                                                                                                                                  |
+| ----------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `text`      | Used for primary text like body text, headings, and labels to ensure they’re prominent and legible.                                                                                                                                                                          |
+| `textMuted` | Used for secondary text to make it less prominent.                                                                                                                                                                                                                           |
+| `action`    | Used to indicate interactive components like links and buttons. Don’t use the action colour for non-interactive components as it could confuse users. Also make sure you don’t rely on colour alone to indicate that a component is interactive, use additional visual cues. |
+| `focus`     | Used to highlight interactive components for those navigating via keyboard.                                                                                                                                                                                                  |
+
+### Background colours
+
+Background colours are designed to sit under foreground colours to ensure contrast ratios meet WCAG 2.1 level AA accessibility requirements. Each colour palette has 2 main background colours to choose from, the default background (body) and a darker alternative (body-alt). Shades can be used to help differentiate or highlight content against the body background colours.
+
+| Name       | Description                                                                                                                                                                                 |
+| ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `body`     | Used for the main background.                                                                                                                                                               |
+| `shade`    | Used to help differentiate or highlight interface components that sit on `body` background. For example, hover states for interactive components, callouts, and Zebra stripes on tables.    |
+| `bodyAlt`  | Used as an alternative background.                                                                                                                                                          |
+| `shadeAlt` | Used to help differentiate or highlight interface components that sit on `bodyAlt` background. For example, hover states for interactive components, callouts, and Zebra stripes on tables. |
+
+### Border colours
+
+Each colour palette has 2 border colours.
+
+| Name          | Description                                                                                                                                                                                                                                     |
+| ------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `border`      | Used for borders of non-decorative interface components that require a 3:1 colour contrast ratio. For example, form input field borders are considered non-decorative because if they were removed, form input fields wouldn’t be recognisable. |
+| `borderMuted` | Used for decorative interface components that don’t require a 3:1 colour contrast ratio.                                                                                                                                                        |
+
+### System colours
+
+System colours are used to indicate status. They’re very prominent colours aimed at grabbing the user’s attention. Each system colour has a muted version to be used as a background colour.
+
+| Name           | Description                                                                                                                      |
+| -------------- | -------------------------------------------------------------------------------------------------------------------------------- |
+| `error`        | Used to indicate that something is wrong, or a task has failed and needs urgent attention. For example, a form validation error. |
+| `errorMuted`   | Used as a background for a Component with an `error` tone                                                                        |
+| `success`      | Used to indicate that a task was completed as expected.                                                                          |
+| `successMuted` | Used as a background for a Component with an `success` tone                                                                      |
+| `warning`      | Used to indicate that taking an action could be risky and that a user should be cautious.                                        |
+| `warningMuted` | Used as a background for a Component with an `warning` tone                                                                      |
+| `info`         | Used to provide addition information.                                                                                            |
+| `infoMuted`    | Used as a background for a Component with an `info` tone                                                                         |
+
+## Don’t rely on colour alone to convey meaning
+
+To ensure the colourblind can use our interface, we shouldn’t rely on colour alone to differentiate interface components or convey meaning. Use other visual cues to differentiate interface components. For example, we underline links as well as using the action colour to help differentiate them from other text and clearly indicate they’re interactive.
+
+## Palettes and inheritance
+
+Each Theme has a dark and light palette. These can be used to divide an interface into sections. For example, the header and footer for this website uses the dark palette to make them more prominent, while the content area in between uses the light palette.
+
+Palettes are selected by setting the `palette` prop on a parent `Box`, `Flex` or `Stack`. The palette is _inherited_ by all of that element's children.
+
+In the example below, change the palette prop in the parent Stack to see this behaviour in action.
+
+```jsx live
+<Stack
+	// Change this value from "dark" to "light"
+	// to see how palette inheritance works
+	palette="dark"
+	// the 'body' background token changes with the palette.
+	// So depending on the palette, either the lightBackgroundBody
+	// or darkBackgroundBody token will be used
+	background="body"
+	gap={1}
+	padding={1}
+>
+	<PageAlert tone="info">
+		<Text>
+			Add <code>palette='light'</code> to the parent Stack in this code example,
+			to see how palette inheritance works.
+		</Text>
+	</PageAlert>
+
+	<Card clickable shadow background="bodyAlt">
+		<CardInner>
+			<Stack gap={0.5} width="100%" flexWrap="wrap">
+				<H3>
+					<CardLink href="#">Orange Meat Works</CardLink>
+				</H3>
+				<Text as="p">
+					<VisuallyHidden>Type: </VisuallyHidden>
+					Record keeping (Minor)
+				</Text>
+				<Flex
+					gap={0.5}
+					flexWrap="wrap"
+					justifyContent="space-between"
+					alignItems="center"
+				>
+					<Text color="muted" fontSize="xs">
+						<VisuallyHidden>{'CAR ID: '}</VisuallyHidden>
+						ABC123
+					</Text>
+					<StatusBadge
+						tone="info"
+						label={
+							<Fragment>
+								<VisuallyHidden>{'Status: '}</VisuallyHidden>
+								Pending
+							</Fragment>
+						}
+					/>
+				</Flex>
+			</Stack>
+		</CardInner>
+	</Card>
+</Stack>
+```
+
+**What is actually happinging?** Our tokens are defined using CSS variables. When the palette is set on a container, it changes the css variables within that container. So child components which expect `foregroundText` token will receive `lightForgroundText` or `darkForegroundText` depending on the chosen palette.
+
+## Creating a custom Theme
+
+We will now go through the technical steps of defining a new `AgDSTheme`. We will assume you are implementing this in an existing NextJS application that already uses AgDS.
+
+In your app, create a file called theme.tsx...
+
+```tsx
+// theme.tsx
+import { AgDSTheme } from '@ag.ds-next/core';
+
+export const myTheme: AgDSTheme = {};
+```
+
+..and import that into your application's Core component.
+
+```tsx
+// pages/_app.tsx
+import { Core } from '@ag.ds-next/core';
+import type { AppProps } from 'next/app';
+import { myTheme } from '../theme.tsx';
+
+export default function App({ Component, pageProps }: AppProps) {
+	return (
+		<Core Theme={myTheme}>
+			<Component {...pageProps} />
+		</Core>
+	);
+}
+```
+
+The default them in AgDS is `GOLD`, based on the former Australian Government Design System. If you are building an experience within the Department of Agriculture, Fisheries and Forestry, then you probably want to extend the `ag-Theme`.
+
+```tsx
+// theme.tsx
+import { AgDSTheme } from '@ag.ds-next/core';
+import { Theme as agTheme } from '@ag.ds-next/ag-branding';
+
+export const myTheme: AgDSTheme = {
+	...agTheme,
+};
+```
+
+Now you can define your tokens!
+
+```tsx
+// theme.tsx
+import { AgDSTheme } from '@ag.ds-next/core';
+import { Theme as agTheme } from '@ag.ds-next/ag-branding';
+
+export const myTheme: AgDSTheme = {
+	...agTheme,
+	lightAccent: '#00558b',
+	darkAccent: '#00558b',
+};
+```
+
+Typescript should help you by autocompleting token names, the full list of token names are shown below.
+
+```ts
+import { AgDSTheme } from '@ag.ds-next/core';
+
+export const MyTheme: AgDSTheme = {
+	// light palette colours
+	lightForegroundText: '#313131',
+	lightForegroundAction: '#00558b',
+	lightForegroundFocus: '#9263de',
+	lightForegroundMuted: '#626262',
+	lightBackgroundBody: '#FFFFFF',
+	lightBackgroundShade: '#f5f5f5',
+	lightBackgroundBodyAlt: '#ebebeb',
+	lightBackgroundShadeAlt: '#e0e0e0',
+	lightBorder: '#808080',
+	lightBorderMuted: '#D3D3D3',
+	lightAccent: '#F36C52',
+	lightSystemError: '#D10000',
+	lightSystemErrorMuted: '#FFF0F0',
+	lightSystemSuccess: '#00754E',
+	lightSystemSuccessMuted: '#E5FFF6',
+	lightSystemWarning: '#D16900',
+	lightSystemWarningMuted: '#FFF2E5',
+	lightSystemInfo: '#008BD1',
+	lightSystemInfoMuted: '#E5F6FF',
+
+	// dark palette colours
+	darkForegroundText: '#FFFFFF',
+	darkForegroundAction: '#9EE8FF',
+	darkForegroundFocus: '#c390f9',
+	darkForegroundMuted: '#bdd2d7',
+	darkBackgroundBody: '#0A1629',
+	darkBackgroundShade: '#122440',
+	darkBackgroundBodyAlt: '#162846',
+	darkBackgroundShadeAlt: '#20365B',
+	darkBorder: '#95b7bf',
+	darkBorderMuted: '#4D7680',
+	darkAccent: '#F36C52',
+	darkSystemError: '#FF4F4F',
+	darkSystemErrorMuted: '#422F47',
+	darkSystemSuccess: '#00A36D',
+	darkSystemSuccessMuted: '#133A4B',
+	darkSystemWarning: '#FF9933',
+	darkSystemWarningMuted: '#393942',
+	darkSystemInfo: '#33BAFF',
+	darkSystemInfoMuted: '#193A5B',
+};
+```
+
+### Tips for picking tokens
+
+- Mix of neutrals
+- System colours
+- Contrast
