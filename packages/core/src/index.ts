@@ -1,5 +1,6 @@
 export * from './Core';
 export * from './CoreProvider';
+export * from './ThemeProvider';
 export * from './tokens';
 export * from './packs';
 export * from './utils';

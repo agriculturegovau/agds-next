@@ -3,10 +3,11 @@ import { Global } from '@emotion/react';
 import { goldTheme } from './goldTheme';
 import { CoreProvider, CoreProviderProps } from './CoreProvider';
 import { mergeTheme, Theme } from './theme';
-import { boxPalettes, boxPalette } from './boxPalette';
+import { boxPalette } from './boxPalette';
 import { tokens } from './tokens';
 import { generateFontGrid } from './utils/fontGrid';
 import { printTheme } from './printTheme';
+import { ThemeProvider } from './ThemeProvider';
 
 export type CoreProps = PropsWithChildren<
 	{
@@ -28,19 +29,12 @@ export function Core({
 			<Global
 				styles={[
 					{
-						':root': {
-							...mergeTheme(goldTheme, theme),
-							...generateFontGrid(),
-						},
+						':root': generateFontGrid(),
 						// Reset the global theme in print mode to black & white
 						// Note: Components can also contain print specific styles
 						'@media print': {
 							':root': mergeTheme(goldTheme, printTheme),
 						},
-					},
-					{
-						// Apply the light pallet by default
-						'body,html': boxPalettes.light,
 					},
 					applyReset && {
 						// FIXME: apply the css reset
@@ -53,7 +47,7 @@ export function Core({
 					},
 				]}
 			/>
-			{children}
+			<ThemeProvider theme={theme}>{children}</ThemeProvider>
 		</CoreProvider>
 	);
 }
