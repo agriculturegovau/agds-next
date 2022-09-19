@@ -1,5 +1,5 @@
 ---
-'@ag.ds-next/core': minor
+'@ag.ds-next/core': patch
 ---
 
 Add `ThemeProvider` component to allow multiple themes per page
