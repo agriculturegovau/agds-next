@@ -14,15 +14,7 @@ function render{{componentName}}(props?: Partial<{{componentName}}Props>) {
 const TEST_VALUE = 'test_value';
 
 describe('{{componentName}}', () => {
-  it('should build expected data attribute', () => {
-    const { getByTestId } = render{{componentName}}({
-      data: { testId: TEST_VALUE },
-    });
-    const element = getByTestId(TEST_VALUE);
-    expect(element).toBeInTheDocument();
-  });
-
-  	it('renders a valid HTML structure', () => {
+  it('renders a valid HTML structure', () => {
 		const { container } = render{{componentName}}();
 		expect(container).toHTMLValidate({
 			extends: ['html-validate:recommended'],

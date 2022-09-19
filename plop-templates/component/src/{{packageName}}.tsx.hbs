@@ -1,14 +1,8 @@
 import {Box} from '@ag.ds-next/box'
 
-function {{componentName}}(props: {{componentName}}Props) {
-  return <Box {...props} />;
-}
-
-type {{componentName}}Props = {
-  /** Map of data attributes. */
-  data?: DataAttributeMap;
+export type {{componentName}}Props = {
 };
 
-
-export { {{componentName}} };
-export type { {{componentName}}Props };
+export function {{componentName}}(props: {{componentName}}Props) {
+  return <Box {...props} />;
+}
