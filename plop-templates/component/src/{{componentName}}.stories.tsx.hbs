@@ -1,0 +1,8 @@
+import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { {{componentName}} } from './{{packageName}}';
+import type { {{componentName}}Props } from './{{packageName}}';
+
+export const Basic: ComponentStory<typeof {{componentName}}> = (args) => (
+	<{{componentName}} {...args} />
+);
+Basic.args = {};
