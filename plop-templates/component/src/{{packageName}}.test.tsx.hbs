@@ -11,8 +11,6 @@ function render{{componentName}}(props?: Partial<{{componentName}}Props>) {
   return render(<{{componentName}} {...props} />);
 }
 
-const TEST_VALUE = 'test_value';
-
 describe('{{componentName}}', () => {
   it('renders a valid HTML structure', () => {
 		const { container } = render{{componentName}}();
