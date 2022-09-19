@@ -20,7 +20,7 @@
 		"lint:docs": "yarn --cwd docs lint",
 		"lint:prettier": "prettier --check \"**/*.{js,jsx,json,ts,tsx,md,mdx,yml,yaml}\"",
 		"lint:typescript": "tsc --noEmit",
-		"new:package": "plop --plopfile scripts/plopfile.mjs && yarn format && yarn install",
+		"new:package": "plop --plopfile scripts/plopfile.mjs && yarn format && yarn manypkg fix && yarn install",
 		"test": "jest",
 		"format": "prettier --write \"**/*.{js,jsx,json,ts,tsx,md,mdx}\"",
 		"example:dev": "yarn --cwd example-site dev",
