@@ -50,7 +50,7 @@ export default function newPackage(
 				path: '../docs/package.json',
 				pattern: /"dependencies": {/,
 				template:
-					'"dependencies": {\n"@ag.ds-next/{{packageName}}": "^0.0.0",\n',
+					'"dependencies": {\n"@ag.ds-next/{{packageName}}": "^0.0.1",\n',
 			});
 
 			return actions;
