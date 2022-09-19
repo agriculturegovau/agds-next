@@ -1,0 +1,31 @@
+import '@testing-library/jest-dom';
+import { cleanup, render } from '@testing-library/react';
+
+import { {{componentName}} } from './{{packageName}}';
+import type { {{componentName}}Props } from './{{packageName}}';
+
+afterEach(cleanup);
+
+
+function render{{componentName}}(props?: Partial<{{componentName}}Props>) {
+  return render(<{{componentName}} {...props} />);
+}
+
+const TEST_VALUE = 'test_value';
+
+describe('{{componentName}}', () => {
+  it('should build expected data attribute', () => {
+    const { getByTestId } = render{{componentName}}({
+      data: { testId: TEST_VALUE },
+    });
+    const element = getByTestId(TEST_VALUE);
+    expect(element).toBeInTheDocument();
+  });
+
+  	it('renders a valid HTML structure', () => {
+		const { container } = render{{componentName}}();
+		expect(container).toHTMLValidate({
+			extends: ['html-validate:recommended'],
+		});
+	});
+});
