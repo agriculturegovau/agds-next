@@ -26,9 +26,7 @@ export function Core({
 		<CoreProvider linkComponent={linkComponent}>
 			<Global
 				styles={[
-					{
-						':root': generateFontGrid(),
-					},
+					{ ':root': generateFontGrid() },
 					applyReset && {
 						// FIXME: apply the css reset
 						'body, html': {
