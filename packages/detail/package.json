@@ -17,6 +17,7 @@
 		"react": "18.1.0"
 	},
 	"dependencies": {
+		"@ag.ds-next/icon": "^11.0.0",
 		"@babel/runtime": "^7.4.5"
 	}
 }
