@@ -34,6 +34,7 @@ jobs:
           yarn storybook:build
           yarn playroom:build
           yarn example:build
+          yarn example-form:build
           yarn docs:build
 
       - name: Deploy 🚀
