@@ -63,8 +63,8 @@ export const FormExampleMultiStep1 = () => {
 
 	return (
 		<FormExampleMultiStepContainer
-			title="Submit evidence (H1)"
-			introduction="The introductory paragraph provides context about this page of the form. Use a short paragraph to reduce cognitive load."
+			title="Address details"
+			introduction="Provide address for where pet will be housed"
 		>
 			<Stack
 				as="form"

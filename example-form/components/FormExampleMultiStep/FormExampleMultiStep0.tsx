@@ -17,6 +17,7 @@ import {
 import { FormExampleMultiStepContainer } from './FormExampleMultiStepContainer';
 import { FormExampleMultiStepActions } from './FormExampleMultiStepActions';
 import { useFormExampleMultiStep } from './FormExampleMultiStep';
+import { Prose } from '@ag.ds-next/prose';
 
 const formSchema = yup
 	.object({
@@ -120,7 +121,29 @@ export const FormExampleMultiStep0 = () => {
 					</Stack>
 				) : (
 					<>
-						<Button variant="text">How were my details prefilled?</Button>
+						{/** TODO replace with details/summary. */}
+						<details>
+							<summary>How were my details prefilled?</summary>
+							<Prose>
+								<p>
+									We’re working hard to improve the way we do business with you.
+									This includes making applications and registrations easier to
+									use.
+								</p>
+								<p>
+									If we already have some of the information you need to tell
+									us, we’ll pre-fill it into your applications. This saves you
+									entering all your details yourself.
+								</p>
+								<p>
+									It’s important to check the pre-filled information in your
+									report before you submit it.
+								</p>
+								<p>
+									<a href="#">See your profile and account details</a>
+								</p>
+							</Prose>
+						</details>
 						<Stack gap={1.5} alignItems="flex-start" width="100%">
 							<H2>Check personal details</H2>
 							<DefinitionList>

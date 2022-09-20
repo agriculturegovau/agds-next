@@ -25,6 +25,7 @@ import {
 	FormExampleMultiStep2,
 	FormSchema as FormExampleMultiStep2Schema,
 } from './FormExampleMultiStep2';
+import { FormExampleMultiStep3 } from './FormExampleMultiStep3';
 
 export const FORM_STEPS = [
 	{
@@ -38,6 +39,10 @@ export const FORM_STEPS = [
 	{
 		label: 'Contact method',
 		component: FormExampleMultiStep2,
+	},
+	{
+		label: 'Confirm and submit',
+		component: FormExampleMultiStep3,
 	},
 ];
 
@@ -84,7 +89,8 @@ export const FormExampleMultiStep = () => {
 	const [formState, setFormState] = useState<FormState>({});
 
 	const backToHomePage = useCallback(() => {
-		router.push('/category/subcategory/multi-page-form');
+		console.log('here...');
+		router.push('/services/registrations/pet');
 	}, [router]);
 
 	/** When called, the user will be taken back to the previous step */
