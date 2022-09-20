@@ -29,7 +29,7 @@ const formSchema = yup
 export type FormSchema = yup.InferType<typeof formSchema>;
 
 export const FormExampleMultiStep2 = () => {
-	const { next, stepFormState } = useFormExampleMultiStep();
+	const { next } = useFormExampleMultiStep();
 	const scrollToField = useScrollToField();
 	const errorRef = useRef<HTMLDivElement>(null);
 	const [focusedError, setFocusedError] = useState(false);

@@ -75,7 +75,8 @@ type ContextType = {
 
 const context = createContext<ContextType | undefined>(undefined);
 
-type StepFormState = Record<string, unknown>;
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+type StepFormState = Record<string, any>;
 
 type FormState = Partial<{
 	[0]: FormExampleMultiStep0Schema;

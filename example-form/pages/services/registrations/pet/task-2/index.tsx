@@ -11,7 +11,7 @@ import { FormHelpCallout } from '../../../../../components/FormHelpCallout';
 import { PageTitle } from '../../../../../components/PageTitle';
 import { FormDivider } from '../../../../../components/FormDivider';
 
-export default function FormMultiPageHomePage() {
+export default function FormRegisterPetTask2HomePage() {
 	return (
 		<>
 			<DocumentTitle title="Your pet's details" />

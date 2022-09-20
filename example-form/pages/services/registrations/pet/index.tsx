@@ -10,7 +10,6 @@ import { AppLayout } from '../../../../components/AppLayout';
 import { DocumentTitle } from '../../../../components/DocumentTitle';
 import { FormHelpCallout } from '../../../../components/FormHelpCallout';
 import { PageTitle } from '../../../../components/PageTitle';
-import { FormDivider } from '../../../../components/FormDivider';
 
 const TASKS = [
 	{
@@ -25,7 +24,7 @@ const TASKS = [
 	},
 ];
 
-export default function FormMultiPageHomePage() {
+export default function FormRegisterPetHomePage() {
 	return (
 		<>
 			<DocumentTitle title="Register your pet" />

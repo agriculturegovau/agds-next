@@ -8,6 +8,7 @@ import { TextInput } from '@ag.ds-next/text-input';
 import { DatePicker } from '@ag.ds-next/date-picker';
 import { H2 } from '@ag.ds-next/heading';
 import { useToggleState } from '@ag.ds-next/core';
+import { Prose } from '@ag.ds-next/prose';
 import {
 	DefinitionDescription,
 	DefinitionList,
@@ -17,7 +18,6 @@ import {
 import { FormExampleMultiStepContainer } from './FormExampleMultiStepContainer';
 import { FormExampleMultiStepActions } from './FormExampleMultiStepActions';
 import { useFormExampleMultiStep } from './FormExampleMultiStep';
-import { Prose } from '@ag.ds-next/prose';
 
 const formSchema = yup
 	.object({
