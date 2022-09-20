@@ -14,9 +14,10 @@
 		"fresh": "yarn clean && yarn",
 		"build": "preconstruct build",
 		"publish-changed": "yarn build && yarn changeset publish",
-		"lint": "yarn lint:packages && yarn lint:example && yarn lint:docs && yarn lint:prettier && yarn lint:typescript",
+		"lint": "yarn lint:packages && yarn lint:example && yarn lint:example-form && yarn lint:docs && yarn lint:prettier && yarn lint:typescript",
 		"lint:packages": "yarn eslint packages/**",
 		"lint:example": "yarn --cwd example-site lint",
+		"lint:example-form": "yarn --cwd example-form lint",
 		"lint:docs": "yarn --cwd docs lint",
 		"lint:prettier": "prettier --check \"**/*.{js,jsx,json,ts,tsx,md,mdx,yml,yaml}\"",
 		"lint:typescript": "tsc --noEmit",
@@ -25,6 +26,8 @@
 		"format": "prettier --write \"**/*.{js,jsx,json,ts,tsx,md,mdx}\"",
 		"example:dev": "yarn --cwd example-site dev",
 		"example:build": "yarn --cwd example-site build",
+		"example-form:dev": "yarn --cwd example-form dev",
+		"example-form:build": "yarn --cwd example-form build",
 		"docs:dev": "yarn --cwd docs dev",
 		"docs:build": "yarn --cwd docs build",
 		"docs:generate-template-images": "yarn --cwd docs generate-template-images",
@@ -78,7 +81,8 @@
 	"workspaces": [
 		"packages/*",
 		"docs",
-		"example-site"
+		"example-site",
+		"example-form"
 	],
 	"preconstruct": {
 		"packages": [
