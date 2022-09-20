@@ -5,7 +5,7 @@ import { FormExampleMultiStep } from '../../../../components/FormExampleMultiSte
 export default function FormMultiPageFormPage() {
 	return (
 		<Fragment>
-			<DocumentTitle title="Multi-page form example" />
+			<DocumentTitle title="Register your pet" />
 			<FormExampleMultiStep />
 		</Fragment>
 	);

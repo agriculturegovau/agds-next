@@ -28,7 +28,7 @@ const TASKS = [
 export default function FormMultiPageHomePage() {
 	return (
 		<>
-			<DocumentTitle title="Multi-page form example" />
+			<DocumentTitle title="Register your pet" />
 			<AppLayout focusMode>
 				<PageContent>
 					<Columns>
