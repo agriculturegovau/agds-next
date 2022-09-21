@@ -1,11 +1,13 @@
+import { PropsWithChildren } from 'react';
 import { Box, Flex } from '@ag.ds-next/box';
 import { InfoIcon, ChevronDownIcon } from '@ag.ds-next/icon';
 
-export type DetailProps = {
+export type DetailProps = PropsWithChildren<{
+	/** The label that will be present in the trigger */
 	label: string;
-};
+}>;
 
-export function Detail({ label = 'Details' }: DetailProps) {
+export function Detail({ children, label = 'Details' }: DetailProps) {
 	return (
 		<details
 			css={{
@@ -24,8 +26,10 @@ export function Detail({ label = 'Details' }: DetailProps) {
 				focus
 				alignItems="center"
 				fontWeight="bold"
+				paddingY={0.5}
+				rounded
 			>
-				<InfoIcon size="md" />
+				<InfoIcon size="md" aria-hidden="true" />
 				{label}
 				<ChevronDownIcon weight="bold" size="sm" />
 			</Flex>
@@ -37,7 +41,7 @@ export function Detail({ label = 'Details' }: DetailProps) {
 				borderLeftWidth="xl"
 				highContrastOutline
 			>
-				Something small enough to escape casual notice.
+				{children}
 			</Box>
 		</details>
 	);
