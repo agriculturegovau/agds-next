@@ -1,0 +1,137 @@
+---
+title: Autocomplete
+description: Autocompletes allow users to search through a set of options fetched over the network based on their input
+group: Forms
+storybookPath: /story/forms-autocomplete--basic
+---
+
+## Basic
+
+By default, the `Autocomplete` component does not expand to fill the available space.
+
+```jsx live
+() => {
+	const [value, setValue] = React.useState(null);
+	return (
+		<Autocomplete
+			label="Find your state"
+			hint="Start typing to see results"
+			value={value}
+			onChange={(value) => setValue(value)}
+			loadOptions={async function loadOptions(inputValue) {
+				// Simulate a slow network call
+				await new Promise((resolve) => setTimeout(resolve, 3000));
+				return [
+					{ label: 'Australian Capital Territory', value: 'act' },
+					{ label: 'New South Wales', value: 'nsw' },
+					{ label: 'Northern Territory', value: 'nt' },
+					{ label: 'Queensland', value: 'qld' },
+					{ label: 'South Australia', value: 'sa' },
+					{ label: 'Tasmania', value: 'tas' },
+					{ label: 'Victoria', value: 'vic' },
+					{ label: 'Western Australia', value: 'wa' },
+				];
+			}}
+		/>
+	);
+};
+```
+
+### Required
+
+The `Autocomplete` component will always append `(optional)` to the label based on the `required` prop.
+
+```jsx live
+() => {
+	const [value, setValue] = React.useState(null);
+	return (
+		<Autocomplete
+			label="Find your state"
+			hint="Start typing to see results"
+			required
+			value={value}
+			onChange={(value) => setValue(value)}
+			loadOptions={async function loadOptions(inputValue) {
+				// Simulate a slow network call
+				await new Promise((resolve) => setTimeout(resolve, 3000));
+				return [
+					{ label: 'Australian Capital Territory', value: 'act' },
+					{ label: 'New South Wales', value: 'nsw' },
+					{ label: 'Northern Territory', value: 'nt' },
+					{ label: 'Queensland', value: 'qld' },
+					{ label: 'South Australia', value: 'sa' },
+					{ label: 'Tasmania', value: 'tas' },
+					{ label: 'Victoria', value: 'vic' },
+					{ label: 'Western Australia', value: 'wa' },
+				];
+			}}
+		/>
+	);
+};
+```
+
+## Block
+
+Use the `block` prop to expand the component to fill the available space.
+
+```jsx live
+() => {
+	const [value, setValue] = React.useState(null);
+	return (
+		<Autocomplete
+			label="Find your state"
+			hint="Start typing to see results"
+			block
+			value={value}
+			onChange={(value) => setValue(value)}
+			loadOptions={async function loadOptions(inputValue) {
+				// Simulate a slow network call
+				await new Promise((resolve) => setTimeout(resolve, 3000));
+				return [
+					{ label: 'Australian Capital Territory', value: 'act' },
+					{ label: 'New South Wales', value: 'nsw' },
+					{ label: 'Northern Territory', value: 'nt' },
+					{ label: 'Queensland', value: 'qld' },
+					{ label: 'South Australia', value: 'sa' },
+					{ label: 'Tasmania', value: 'tas' },
+					{ label: 'Victoria', value: 'vic' },
+					{ label: 'Western Australia', value: 'wa' },
+				];
+			}}
+		/>
+	);
+};
+```
+
+## Invalid
+
+```jsx live
+() => {
+	const [value, setValue] = React.useState(null);
+	const invalid = !value;
+	return (
+		<Autocomplete
+			label="Find your state"
+			hint="Start typing to see results"
+			invalid={invalid}
+			message={invalid ? 'State is required' : undefined}
+			value={value}
+			onChange={(value) => setValue(value)}
+			loadOptions={async function loadOptions(inputValue) {
+				// Simulate a slow network call
+				await new Promise((resolve) => setTimeout(resolve, 3000));
+				return [
+					{ label: 'Australian Capital Territory', value: 'act' },
+					{ label: 'New South Wales', value: 'nsw' },
+					{ label: 'Northern Territory', value: 'nt' },
+					{ label: 'Queensland', value: 'qld' },
+					{ label: 'South Australia', value: 'sa' },
+					{ label: 'Tasmania', value: 'tas' },
+					{ label: 'Victoria', value: 'vic' },
+					{ label: 'Western Australia', value: 'wa' },
+				];
+			}}
+		/>
+	);
+};
+```

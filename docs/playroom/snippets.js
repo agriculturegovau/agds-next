@@ -552,7 +552,7 @@ items={[
     image={
       <img
         src="/agds-next/img/placeholder/hero-banner.jpeg"
-        role="presentation" 
+        role="presentation"
         alt=""
       />
     }
@@ -574,7 +574,7 @@ items={[
     image={
       <img
         src="/agds-next/img/placeholder/hero-banner.jpeg"
-        role="presentation" 
+        role="presentation"
         alt=""
       />
     }
@@ -709,6 +709,16 @@ items={[
       </Stack>
     </CardInner>
   </Card>`,
+	},
+	{
+		group: 'Autocomplete',
+		name: 'Autocomplete',
+		code: `<Autocomplete label="Find your city" hint="Start typing to see results" loadOptions={() => [{ value: 'a', label: 'Option A' }, { value: 'b', label: 'Option B' }, { value: 'c', label: 'Option C' }]} />`,
+	},
+	{
+		group: 'Combobox',
+		name: 'Combobox',
+		code: `<Combobox label="Select country" options={[{ value: 'a', label: 'Option A' }, { value: 'b', label: 'Option B' }, { value: 'c', label: 'Option C' }]} />`,
 	},
 ];
 
