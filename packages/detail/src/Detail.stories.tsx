@@ -9,7 +9,7 @@ export default {
 
 export const Basic: ComponentStory<typeof Detail> = (args) => (
 	<Detail {...args}>
-		<Text>
+		<Text as="p">
 			This is a small paragraph of text that is supplimentary to the main page
 			content.
 		</Text>
@@ -19,7 +19,7 @@ Basic.args = { label: 'Details' };
 
 export const WithIcon: ComponentStory<typeof Detail> = (args) => (
 	<Detail {...args}>
-		<Text>
+		<Text as="p">
 			This is a small paragraph of text that is supplimentary to the main page
 			content.
 		</Text>
