@@ -22,6 +22,7 @@ export const CheckboxIndicator = ({
 			alignItems="center"
 			width={width}
 			height={height}
+			flexShrink={0}
 			css={{
 				borderWidth,
 				borderStyle: 'solid',
@@ -59,7 +60,7 @@ const CheckboxIcon = ({ size }: { size: Spacing }) => (
 			width: mapSpacing(size),
 			height: mapSpacing(size),
 			display: 'none',
-			color: boxPalette.foregroundText,
+			color: 'currentcolor',
 			fill: 'none',
 			stroke: 'currentColor',
 		}}

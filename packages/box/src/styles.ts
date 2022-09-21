@@ -337,10 +337,19 @@ export const focusStyles = {
 	},
 };
 
+type HighContrastProps = Partial<{
+	/** If true, a solid outline will be visible in windows high contrast mode. */
+	highContrastOutline: boolean;
+}>;
+export const highContrastOutlineStyles = {
+	outline: '1px solid transparent',
+};
+
 export type BoxProps = PaletteProps &
 	ColorProps &
 	BorderProps &
 	FocusProps &
+	HighContrastProps &
 	TypographyProps &
 	LayoutProps &
 	LinkProps &
@@ -392,9 +401,10 @@ export function boxStyles({
 	fontWeight,
 	fontFamily,
 	fontSize,
+	lineHeight,
 	focus,
 	link,
-	lineHeight,
+	highContrastOutline,
 	...restProps
 }: BoxProps) {
 	return [
@@ -467,6 +477,7 @@ export function boxStyles({
 
 				...(link ? linkStyles : undefined),
 				...(focus ? focusStyles : undefined),
+				...(highContrastOutline ? highContrastOutlineStyles : undefined),
 			}),
 		]),
 		restProps,

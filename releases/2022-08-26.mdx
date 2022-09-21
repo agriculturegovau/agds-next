@@ -1,0 +1,328 @@
+---
+title: 26th August, 2022
+description: Prose component. Text variant for Button. New Header, Footer and MainNav.
+---
+
+> ⚠️ Note: All releases under the `@ag.ds-next` package scope should be considered alpha pre-releases. Expect breaking changes. Once we are happy with the state of the core packages we will migrate all packages to `@ag.ds`.
+
+## New Packages
+
+```sh
+"@ag.ds-next/prose": "1.0.0",
+```
+
+## Breaking Changes
+
+- `@ag.ds-next/ag-branding` new token schema. Please see notes below.
+- `@ag.ds-next/body` is deprecated. Please use the new `Prose` component from `@ag.ds-next/prose`
+- `@ag.ds-next/core`: New token schema. Please see notes below.
+- `@ag.ds-next/footer`: New props API and added support for new tokens. Please see notes below.
+- `@ag.ds-next/header`: New props API and added support for new tokens. Please see notes below.
+- `@ag.ds-next/main-nav`: Remove variant prop. Rename links to items. Please see notes below.
+- `@ag.ds-next/text-link`: Remove `TextButton` component, use `<Button variant="text">` instead.
+
+## Updates
+
+### @ag.ds-next/prose@1.0.0
+
+We've renamed our `Body` component to `Prose` to be more unique.
+
+```diff
+- import { Body } from '@ag.ds-next/body'
++ import { Prose } from '@ag.ds-next/prose'
+```
+
+### @ag.ds-next/ag-branding@7.0.0
+
+We've improved our brand's background and system colours for the dark palette. The token schema matches the same shape as in `@ag.ds-next/core` (see below).
+
+### @ag.ds-next/core@4.0.0
+
+We've significantly improved the colour token schema by giving all system colours a light and dark version.
+
+Going forward, `globalPalette` should be avoided. Use `boxPalette` where possible to apply colour tokens.
+
+```diff
+- globalPalette.success
+- globalPalette.successMuted
+- globalPalette.error
+- globalPalette.errorMuted
+- globalPalette.info
+- globalPalette.infoMuted
+- globalPalette.warning
+- globalPalette.warningMuted
+- globalPalette.accent
++ globalPalette.lightSuccess
++ globalPalette.lightSuccessMuted
++ globalPalette.lightError
++ globalPalette.lightErrorMuted
++ globalPalette.lightInfo
++ globalPalette.lightInfoMuted
++ globalPalette.lightWarning
++ globalPalette.lightWarningMuted
++ globalPalette.lightAccent
++ globalPalette.darkSuccess
++ globalPalette.darkSuccessMuted
++ globalPalette.darkError
++ globalPalette.darkErrorMuted
++ globalPalette.darkInfo
++ globalPalette.darkInfoMuted
++ globalPalette.darkWarning
++ globalPalette.darkWarningMuted
++ globalPalette.darkAccent
++ boxPalette.systemSuccess
++ boxPalette.systemSuccessMuted
++ boxPalette.systemError
++ boxPalette.systemErrorMuted
++ boxPalette.systemInfo
++ boxPalette.systemInfoMuted
++ boxPalette.systemWarning
++ boxPalette.systemWarningMuted
++ boxPalette.accent
+```
+
+### @ag.ds-next/footer@9.0.0
+
+- Replaced `variant` prop with `background`. This component now respects parent colour palette. We also make use of the new accent token in Core.
+- Update to support new dark tokens. Please ensure you are using the latest version of the `@ag.ds-next/ag-branding` package.
+
+In this new version of Footer, we have upgraded the API so that the component is more consistent with the rest of the system. We’ve also included some important fixes to ensure colours are treated correctly with our newly updated Design Tokens.
+
+#### If you are using the `@ag.common/footer` component:
+
+You can wait for the next version of that component, which will be a straight-forward upgrade process.
+
+#### If you’re using @ag.ds-next/main-nav directly in your app:
+
+> We recommend using the `@ag.common/footer` component if your app is part of the external-facing Export Service experience.
+
+Otherwise you **must** follow these steps when upgrading:
+
+1. Install latest version of `@ag.ds-next/ag-branding@7.0.0`, `@ag.ds-next/core@4.0.0` and `@ag.ds-next/footer@9.0.0`
+2. Remove variant prop
+3. Add `background="bodyAlt"` prop
+4. Wrap Footer in a `<Box palette=‘dark’>` to apply dark colours.
+
+#### Old
+
+```jsx
+// Old code
+<>
+	<Footer variant="agriculture">...</Footer>
+</>
+```
+
+#### New
+
+```jsx
+// New code
+<Box palette="dark">
+	<Footer background="bodyAlt">...</Footer>
+</Box>
+```
+
+If you have any questions, please reach out to Jordan Overbye or Nathan Simpson in the Design System team.
+
+### @ag.ds-next/header@11.0.0
+
+- Add background prop and support for parent palettes, remove variant prop.
+- Add small size variant
+- Update to support new dark tokens. Please ensure you are using the latest version of the `@ag.ds-next/ag-branding` package.
+
+In this new version of Header, we have upgraded the API so that the component is more consistent with the rest of the system. We’ve also included a small size, and some important fixes to ensure colours are treated correctly with our newly updated Design Tokens.
+
+#### If you are using the @ag.common/header component:
+
+You can wait for the next version of that component, which will be a straight-forward upgrade process.
+
+#### If you’re using @ag.ds-next/header directly in your app:
+
+> We recommend using the `@ag.common/header` component if your app is part of the external-facing Export Service experience.
+
+Otherwise you **must** follow these steps when upgrading:
+
+1. Install latest version of `@ag.ds-next/ag-branding@7.0.0`, `@ag.ds-next/core@4.0.0` and `@ag.ds-next/header@11.0.0`
+2. Remove variant prop
+3. Add `background="bodyAlt"` prop
+4. Wrap Header and MainNav in a Box with `palette=‘dark’`
+
+#### Old
+
+```jsx
+// Old code
+<>
+	<Header variant="agriculture" />
+	<MainNav variant="agriculture" />
+</>
+```
+
+#### New
+
+```jsx
+// New code
+<Box palette="dark">
+  <Header background="bodyAlt" {...} />
+  <MainNav {...} />
+</Box>
+```
+
+If you have any questions, please reach out to Jordan Overbye or Nathan Simpson in the Design System team.
+
+### @ag.ds-next/main-nav@14.0.0
+
+- Renamed `links` prop to `items`.
+- Replaced `rightContent` prop with `secondaryItems` prop.
+- Added new endElement prop to each item to support for adding icons, notification badges and other decorative elements.
+- Add background prop and support for parent palettes, remove variant prop.
+- Update references to colour tokens.
+- Update to support new dark tokens. Please ensure you are using the latest version of the `@ag.ds-next/ag-branding` package.
+
+In this new version of MainNav, we have upgraded the API so that the component is more consistent with the rest of the system. We’ve also included some important fixes to ensure colours are treated correctly with our newly updated Design Tokens.
+
+#### If you are using the @ag.common/header component:
+
+You can wait for the next version of that component, which will be a straight-forward upgrade process.
+
+#### If you’re using @ag.ds-next/main-nav directly in your app:
+
+> We recommend using the `@ag.common/header` component if your app is part of the external-facing Export Service experience.
+
+Otherwise you **must** follow these steps when upgrading:
+
+1. Install latest version of `@ag.ds-next/ag-branding@7.0.0`, `@ag.ds-next/core@4.0.0` and `@ag.ds-next/main-nav@14.0.0`
+2. Remove variant prop
+3. Rename `links` prop to `items`
+4. Wrap Header and MainNav in a Box with `palette=‘dark’`
+
+#### Old
+
+```jsx
+// Old code
+<>
+  <Header variant="agriculture" />
+  <MainNav links={[ ... ]} rightContent={ ... } variant="agriculture"  />
+</>
+```
+
+#### New
+
+```jsx
+// New code
+<Box palette="dark">
+  <Header background="bodyAlt" {...} />
+  <MainNav items={[ ... ]} secondaryItems={[ ... ]} />
+</Box>
+```
+
+Take a look at [Storybook](https://steelthreads.github.io/agds-next/storybook/index.html?path=/story/navigation-mainnav--header-right-links) and the [Storybook code](https://github.com/steelthreads/agds-next/blob/main/packages/main-nav/src/MainNav.stories.tsx) for more references.
+
+If you have any questions, please reach out to Jordan Overbye or Nathan Simpson in the Design System team.
+
+### @ag.ds-next/breadcrumbs@14.0.0
+
+Added mobile variant which shows a link to the immediate parent.
+
+### @ag.ds-next/button@11.0.0
+
+We've added a new `text` variant to the Button component. It replaces the TextButton component which used to come from `@ag.ds-next/text-link`.
+
+```jsx live
+<Button variant="text">Edit</Button>
+```
+
+### @ag.ds-next/text-link@6.0.0
+
+Deleted `TextButton` component. Please use `<Button variant="text" />` instead (see above).
+
+### @ag.ds-next/sub-nav@3.0.0
+
+Added new `endElement` prop to each item to support for adding icons, notification badges and other decorative elements.
+
+### @ag.ds-next/date-picker@8.0.0
+
+Selected days in range mode now have more rounded borders
+
+### @ag.ds-next/icon@11.0.0
+
+If no `colour` prop is supplied, the svg colour will now defualt to `currentColor`.
+
+### And more...
+
+- `@ag.ds-next/badge@2.0.0`: Update references to colour tokens
+- `@ag.ds-next/box@7.0.0`: Update references to colour tokens
+- `@ag.ds-next/control-input@11.0.0`: Update references to colour tokens
+- `@ag.ds-next/field@10.0.0`: Update references to colour tokens
+- `@ag.ds-next/file-upload@6.0.0`: Update references to colour tokens
+- `@ag.ds-next/loading@6.0.0`: Update references to colour tokens
+- `@ag.ds-next/page-alert@7.0.0`: Update references to colour tokens
+- `@ag.ds-next/search-box@12.0.0`: Update references to colour tokens
+- `@ag.ds-next/select@11.0.0`: Update references to colour tokens
+- `@ag.ds-next/text-input@11.0.0`: Update references to colour tokens
+- `@ag.ds-next/inpage-nav@9.0.0`: Updated dependencies
+- `@ag.ds-next/keyword-list@9.0.0`: Updated dependencies
+- `@ag.ds-next/link-list@12.0.0`: Updated dependencies
+- `@ag.ds-next/modal@8.0.0`: Updated dependencies
+- `@ag.ds-next/pagination@3.0.0`: Updated dependencies
+- `@ag.ds-next/progress-indicator@12.0.0`: Updated dependencies
+- `@ag.ds-next/side-nav@13.0.0`: Updated dependencies
+- `@ag.ds-next/skeleton@2.0.0`: Updated dependencies
+- `@ag.ds-next/skip-link@9.0.0`: Updated dependencies
+- `@ag.ds-next/switch@3.0.0`: Updated dependencies
+- `@ag.ds-next/table@6.0.0`: Updated dependencies
+- `@ag.ds-next/tags@9.0.0`: Updated dependencies
+- `@ag.ds-next/task-list@10.0.0`: Updated dependencies
+- `@ag.ds-next/text@10.0.0`: Updated dependencies
+- `@ag.ds-next/textarea@11.0.0`: Updated dependencies
+
+## Released packages
+
+```sh
+"@ag.ds-next/accordion": "10.0.0",
+"@ag.ds-next/ag-branding": "7.0.0",
+"@ag.ds-next/badge": "2.0.0",
+"@ag.ds-next/box": "7.0.0",
+"@ag.ds-next/breadcrumbs": "14.0.0",
+"@ag.ds-next/button": "11.0.0",
+"@ag.ds-next/call-to-action": "10.0.0",
+"@ag.ds-next/callout": "7.0.0",
+"@ag.ds-next/card": "7.0.0",
+"@ag.ds-next/columns": "8.0.0",
+"@ag.ds-next/content": "9.0.0",
+"@ag.ds-next/control-input": "11.0.0",
+"@ag.ds-next/core": "4.0.0",
+"@ag.ds-next/date-picker": "8.0.0",
+"@ag.ds-next/direction-link": "10.0.0",
+"@ag.ds-next/field": "10.0.0",
+"@ag.ds-next/fieldset": "7.0.0",
+"@ag.ds-next/file-upload": "6.0.0",
+"@ag.ds-next/footer": "9.0.0",
+"@ag.ds-next/form-stack": "6.0.0",
+"@ag.ds-next/header": "11.0.0",
+"@ag.ds-next/heading": "9.0.0",
+"@ag.ds-next/hero-banner": "6.0.0",
+"@ag.ds-next/icon": "11.0.0",
+"@ag.ds-next/inpage-nav": "9.0.0",
+"@ag.ds-next/keyword-list": "9.0.0",
+"@ag.ds-next/link-list": "12.0.0",
+"@ag.ds-next/loading": "6.0.0",
+"@ag.ds-next/main-nav": "14.0.0",
+"@ag.ds-next/modal": "8.0.0",
+"@ag.ds-next/page-alert": "7.0.0",
+"@ag.ds-next/pagination": "3.0.0",
+"@ag.ds-next/progress-indicator": "12.0.0",
+"@ag.ds-next/prose": "1.0.0",
+"@ag.ds-next/search-box": "12.0.0",
+"@ag.ds-next/select": "11.0.0",
+"@ag.ds-next/side-nav": "13.0.0",
+"@ag.ds-next/skeleton": "2.0.0",
+"@ag.ds-next/skip-link": "9.0.0",
+"@ag.ds-next/sub-nav": "3.0.0",
+"@ag.ds-next/switch": "3.0.0",
+"@ag.ds-next/table": "6.0.0",
+"@ag.ds-next/tags": "9.0.0",
+"@ag.ds-next/task-list": "10.0.0",
+"@ag.ds-next/text": "10.0.0",
+"@ag.ds-next/text-input": "11.0.0",
+"@ag.ds-next/text-link": "6.0.0",
+"@ag.ds-next/textarea": "11.0.0",
+```

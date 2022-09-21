@@ -1,0 +1,212 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MainNav renders correctly 1`] = `
+<div>
+  <div
+    class="css-ek7e6t-boxStyles-NavContainer"
+  >
+    <div
+      class="css-51kibj-boxStyles-BottomBar"
+    />
+    <div
+      class="css-zlf9wg-boxStyles-NavContainer"
+    >
+      <div
+        class="css-7k4rge-boxStyles"
+      >
+        <div
+          class="css-1ff37wg-boxStyles"
+        >
+          <button
+            aria-controls="main-nav-dialog"
+            aria-expanded="false"
+            aria-label="Open main menu"
+            class="css-beci8r-BaseButton-boxStyles-MainNavButton"
+            type="button"
+          >
+            <svg
+              aria-hidden="true"
+              fill="currentcolor"
+              focusable="false"
+              height="24"
+              viewBox="0 0 24 24"
+              width="24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <rect
+                height="2"
+                width="16"
+                x="4"
+                y="16"
+              />
+              <rect
+                height="2"
+                width="16"
+                x="4"
+                y="11"
+              />
+              <rect
+                height="2"
+                width="16"
+                x="4"
+                y="6"
+              />
+            </svg>
+            Menu
+          </button>
+        </div>
+        <div
+          data-focus-guard="true"
+          style="width: 1px; height: 0px; padding: 0px; overflow: hidden; position: fixed; top: 1px; left: 1px;"
+          tabindex="-1"
+        />
+        <div
+          data-focus-lock-disabled="disabled"
+        >
+          <div
+            class="css-1h8fjlz-NavContainer"
+            id="main-nav-dialog"
+          >
+            <div
+              class="css-1ff37wg-boxStyles"
+            >
+              <button
+                aria-controls="main-nav-dialog"
+                aria-expanded="true"
+                aria-label="Close main menu"
+                class="css-beci8r-BaseButton-boxStyles-MainNavButton"
+                type="button"
+              >
+                <svg
+                  aria-hidden="true"
+                  fill="currentcolor"
+                  focusable="false"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  width="24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <rect
+                    height="2"
+                    transform="rotate(-45 6 17.3137)"
+                    width="16"
+                    x="6"
+                    y="17.3137"
+                  />
+                  <rect
+                    height="2"
+                    transform="rotate(45 7.41406 6)"
+                    width="16"
+                    x="7.41406"
+                    y="6"
+                  />
+                </svg>
+                Close
+              </button>
+            </div>
+            <nav
+              aria-label="main"
+              class="css-ijor8a-boxStyles"
+            >
+              <ul
+                class="css-5nrt7j-boxStyles-NavListContainer"
+              >
+                <li
+                  class="css-1pszxfd-boxStyles-NavListItem"
+                >
+                  <a
+                    href="#home"
+                  >
+                    <span>
+                      Home
+                    </span>
+                  </a>
+                </li>
+                <li
+                  class="css-32saf7-boxStyles-NavListItem"
+                >
+                  <a
+                    aria-current="page"
+                    href="#content"
+                  >
+                    <span>
+                      Content page
+                    </span>
+                  </a>
+                </li>
+                <li
+                  class="css-1pszxfd-boxStyles-NavListItem"
+                >
+                  <a
+                    href="#form"
+                  >
+                    <span>
+                      Form page
+                    </span>
+                  </a>
+                </li>
+                <li
+                  class="css-1pszxfd-boxStyles-NavListItem"
+                >
+                  <a
+                    href="#simple"
+                  >
+                    <span>
+                      Simple page
+                    </span>
+                  </a>
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+        <div
+          data-focus-guard="true"
+          style="width: 1px; height: 0px; padding: 0px; overflow: hidden; position: fixed; top: 1px; left: 1px;"
+          tabindex="-1"
+        />
+        <nav
+          aria-label="secondary"
+          class="css-1ltfh56-boxStyles"
+        >
+          <ul
+            class="css-1ltfh56-boxStyles"
+          >
+            <li
+              class="css-6lwpn8-boxStyles-NavListItem"
+            >
+              <a
+                href="#sign-in"
+              >
+                <span>
+                  Sign in
+                </span>
+                <svg
+                  aria-hidden="true"
+                  class="css-1pepvcz-Icon"
+                  clip-rule="evenodd"
+                  focusable="false"
+                  height="24"
+                  role="img"
+                  viewBox="0 0 24 24"
+                  width="24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M4.5 19.1773C6.74319 17.9616 9.42279 17.0003 11.9999 17.0003C14.5769 17.0003 17.2567 17.9618 19.4999 19.1775M15.2053 9.95293C15.2036 10.4573 15.0723 10.9535 14.823 11.3977C14.5737 11.842 14.2141 12.2205 13.7759 12.5C13.3377 12.7794 12.8345 12.9511 12.3106 13C11.7867 13.0489 11.2584 12.9733 10.7722 12.7801C10.286 12.5869 9.85698 12.2819 9.52298 11.892C9.18899 11.5022 8.96036 11.0396 8.85721 10.545C8.75406 10.0504 8.7796 9.53905 8.93158 9.05615C9.08357 8.57326 9.35732 8.13367 9.72865 7.77621C10.1769 7.34467 10.7489 7.05056 11.372 6.93123C11.9951 6.81191 12.6412 6.87274 13.2281 7.10602C13.815 7.3393 14.3164 7.73449 14.6684 8.2414C15.0204 8.7483 15.2073 9.34403 15.2053 9.95293Z"
+                  />
+                  <circle
+                    cx="12"
+                    cy="12"
+                    r="10.5"
+                  />
+                </svg>
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+</div>
+`;

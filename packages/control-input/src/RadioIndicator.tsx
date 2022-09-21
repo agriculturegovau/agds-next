@@ -22,6 +22,7 @@ export const RadioIndicator = ({
 			alignItems="center"
 			width={width}
 			height={height}
+			flexShrink={0}
 			css={{
 				borderWidth,
 				borderRadius: '100%',
@@ -47,6 +48,7 @@ export const RadioIndicator = ({
 			<Box
 				width="calc(100% - 0.5rem)"
 				height="calc(100% - 0.5rem)"
+				highContrastOutline
 				css={{
 					display: 'none',
 					borderRadius: '100%',

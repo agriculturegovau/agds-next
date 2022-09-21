@@ -20,6 +20,8 @@ type IconSize = keyof typeof iconSizes;
 type NativeSvgProps = SVGAttributes<SVGSVGElement>;
 
 export type IconProps = {
+	'aria-hidden'?: NativeSvgProps['aria-hidden'];
+	'aria-label'?: NativeSvgProps['aria-label'];
 	className?: string;
 	color?: IconColor;
 	size?: IconSize;
@@ -29,6 +31,8 @@ export type IconProps = {
 
 export const createIcon = (children: ReactNode, name: string) => {
 	const Icon = ({
+		'aria-hidden': ariaHidden = 'true',
+		'aria-label': ariaLabel,
 		className,
 		size = 'md',
 		color,
@@ -38,7 +42,6 @@ export const createIcon = (children: ReactNode, name: string) => {
 		const resolvedSize = mapSpacing(iconSizes[size]);
 		return (
 			<svg
-				aria-hidden="true"
 				// Note the width and height attribute is a fallback for older browsers. This may not be required and could potentially be removed.
 				width="24"
 				height="24"
@@ -59,6 +62,8 @@ export const createIcon = (children: ReactNode, name: string) => {
 				role="img"
 				style={style}
 				className={className}
+				aria-hidden={ariaHidden}
+				aria-label={ariaLabel}
 			>
 				{children}
 			</svg>

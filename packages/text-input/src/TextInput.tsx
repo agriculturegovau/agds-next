@@ -5,6 +5,7 @@ import { packs, boxPalette, mapSpacing, tokens } from '@ag.ds-next/core';
 type NativeInputProps = InputHTMLAttributes<HTMLInputElement>;
 
 type BaseTextInputProps = {
+	autoComplete?: NativeInputProps['autoComplete'];
 	disabled?: NativeInputProps['disabled'];
 	id?: NativeInputProps['id'];
 	inputMode?: NativeInputProps['inputMode'];
@@ -120,10 +121,9 @@ export const textInputStyles = ({
 			: undefined),
 
 		...(multiline && {
-			lineHeight: tokens.lineHeight.default,
 			paddingTop: mapSpacing(0.5),
 			paddingBottom: mapSpacing(0.5),
-			height: 'auto,',
+			height: 'auto',
 			minHeight: '6rem',
 		}),
 

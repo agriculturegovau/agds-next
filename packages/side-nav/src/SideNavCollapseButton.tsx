@@ -35,7 +35,6 @@ export const SideNavCollapseButton = ({
 			as={BaseButton}
 			aria-controls={ariaControls}
 			aria-expanded={isOpen}
-			aria-haspopup="menu"
 			onClick={onClick}
 			id={id}
 			color="action"

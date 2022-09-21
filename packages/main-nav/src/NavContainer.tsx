@@ -1,4 +1,9 @@
-import { PropsWithChildren, ReactNode, MouseEventHandler } from 'react';
+import {
+	PropsWithChildren,
+	ReactNode,
+	MouseEventHandler,
+	useEffect,
+} from 'react';
 import FocusLock from 'react-focus-lock';
 import { Global } from '@emotion/react';
 import { Box, Flex, backgroundColorMap } from '@ag.ds-next/box';
@@ -20,7 +25,6 @@ import {
 import { CloseButton, OpenButton } from './MenuButtons';
 
 export type NavContainerProps = PropsWithChildren<{
-	'aria-label': string;
 	background?: MainNavBackground;
 	hasItems?: boolean;
 	id?: string;
@@ -30,7 +34,6 @@ export type NavContainerProps = PropsWithChildren<{
 export function NavContainer({
 	id,
 	rightContent,
-	'aria-label': ariaLabel,
 	children,
 	background = 'body',
 	hasItems,
@@ -41,6 +44,19 @@ export function NavContainer({
 	const [menuOpen, open, close] = useTernaryState(false);
 	const menuVisiblyOpen =
 		menuOpen && (windowWidth || 0) <= tokens.breakpoint.lg - 1;
+
+	// Close the component when the user presses the escape key
+	useEffect(() => {
+		const handleKeyDown = (e: KeyboardEvent) => {
+			if (menuVisiblyOpen && e.code === 'Escape') {
+				e.preventDefault();
+				e.stopPropagation();
+				close();
+			}
+		};
+		window.addEventListener('keydown', handleKeyDown);
+		return () => window.removeEventListener('keydown', handleKeyDown);
+	}, [menuVisiblyOpen, close]);
 
 	return (
 		<Box
@@ -57,12 +73,7 @@ export function NavContainer({
 		>
 			{menuVisiblyOpen ? <LockScroll /> : null}
 			<BottomBar />
-			<Flex
-				as="nav"
-				justifyContent="center"
-				css={{ position: 'relative' }}
-				aria-label={ariaLabel}
-			>
+			<Flex justifyContent="center" css={{ position: 'relative' }}>
 				<Flex
 					justifyContent="space-between"
 					alignItems="center"
@@ -73,9 +84,13 @@ export function NavContainer({
 					{hasItems ? <OpenButton onClick={open} /> : null}
 					<FocusLock returnFocus disabled={!menuVisiblyOpen}>
 						<div
-							role={menuVisiblyOpen ? 'dialog' : 'none'}
-							aria-label="Main navigation"
-							aria-modal={menuVisiblyOpen ? 'true' : 'false'}
+							{...(menuVisiblyOpen
+								? {
+										role: 'dialog',
+										'aria-label': 'Main navigation',
+										'aria-modal': 'true',
+								  }
+								: null)}
 							id="main-nav-dialog"
 							css={{
 								[tokens.mediaQuery.max.md]: {
@@ -90,17 +105,12 @@ export function NavContainer({
 									maxWidth: tokens.maxWidth.mobileMenu,
 									padding: mapSpacing(1),
 									boxSizing: 'border-box',
+									overflowY: 'auto',
 								},
 							}}
 						>
 							<CloseButton onClick={close} />
-							<Flex
-								justifyContent="space-between"
-								width="100%"
-								flexDirection={{ xs: 'column', lg: 'row' }}
-							>
-								{children}
-							</Flex>
+							{children}
 						</div>
 					</FocusLock>
 					{rightContent}

@@ -2,9 +2,8 @@ const snippets = [
 	{
 		group: 'Boilerplate',
 		name: 'One',
-		code: `<Header logo={<Logo />} heading="Export Service" />
-    <MainNav items={[{ label: "Hello", href: "#" }]} variant='agriculture' />
-
+		code: `<Box dark><Header background="bodyAlt" logo={<Logo />} heading="Export Service" />
+    <MainNav items={[{ label: "Hello", href: "#" }]} /></Box>
     <PageContent as="main">
       <Prose>
         <h1>Page heading</h1>
@@ -45,7 +44,7 @@ const snippets = [
 	{
 		group: 'Footer',
 		name: 'Basic',
-		code: `<Footer>
+		code: `<Box dark><Footer background="bodyAlt">
     <nav aria-label="footer">
       <LinkList
         horizontal
@@ -65,17 +64,17 @@ const snippets = [
     <Text fontSize="xs" maxWidth={tokens.maxWidth.bodyText}>
       &copy; 2022 Department of Agriculture, Fisheries and Forestry
     </Text>
-  </Footer>`,
+  </Footer></Box>`,
 	},
 	{
 		group: 'Footer',
 		name: 'Complex',
-		code: `<Footer variant="agriculture">
+		code: `<Box dark><Footer background="bodyAlt">
     <nav aria-label="footer">
       <Columns>
         <Column columnSpan={{ xs: 12, sm: 6, lg: 3  }}>
           <Stack gap={0.5}>
-            <H3>Section</H3>
+            <Heading as="h2" type="h3">Section</Heading>
             <LinkList
               links={[
                 { href: "#", label: "Link 1" },
@@ -87,7 +86,7 @@ const snippets = [
         </Column>
         <Column columnSpan={{ xs: 12, sm: 6, lg: 3 }}>
           <Stack gap={0.5}>
-            <H3>Section</H3>
+            <Heading as="h2" type="h3">Section</Heading>
             <LinkList
               links={[
                 { href: "#", label: "Link 1" },
@@ -99,7 +98,7 @@ const snippets = [
         </Column>
         <Column columnSpan={{ xs: 12, sm: 6, lg: 3 }}>
           <Stack gap={0.5}>
-            <H3>Section</H3>
+            <Heading as="h2" type="h3">Section</Heading>
             <LinkList
               links={[
                 { href: "#", label: "Link 1" },
@@ -111,7 +110,7 @@ const snippets = [
         </Column>
         <Column columnSpan={{ xs: 12, sm: 6, lg: 3 }}>
           <Stack gap={0.5}>
-            <H3>Section</H3>
+            <Heading as="h2" type="h3">Section</Heading>
             <LinkList
               links={[
                 { href: "#", label: "Link 1" },
@@ -136,7 +135,7 @@ const snippets = [
     <Text fontSize="xs" maxWidth={tokens.maxWidth.bodyText}>
       &copy; 2022 Department of Agriculture, Fisheries and Forestry
     </Text>
-  </Footer>
+  </Footer></Box>
   `,
 	},
 	{
@@ -551,10 +550,11 @@ items={[
 		name: 'Basic',
 		code: `<HeroBanner
     image={
-        <img
-            alt="Harvester in a golden field of wheat emptying grain into a chaser bin moving alongside it."
-            src="/agds-next/img/placeholder/hero-banner.jpeg"
-        />
+      <img
+        src="/agds-next/img/placeholder/hero-banner.jpeg"
+        role="presentation"
+        alt=""
+      />
     }
 >
     <HeroBannerTitleContainer>
@@ -573,8 +573,9 @@ items={[
 		code: `<HeroCategoryBanner
     image={
       <img
-        alt="Harvester in a golden field of wheat emptying grain into a chaser bin moving alongside it."
         src="/agds-next/img/placeholder/hero-banner.jpeg"
+        role="presentation"
+        alt=""
       />
     }
   >
@@ -691,6 +692,23 @@ items={[
 		group: 'Skeleton',
 		name: 'SkeletonBox',
 		code: '<SkeletonBox width="100px" height="100px" />',
+	},
+	{
+		group: 'Card',
+		name: 'Basic',
+		code: `<Card shadow clickable>
+    <CardInner>
+      <Stack gap={1}>
+        <H3>
+          <CardLink href="#">Card heading</CardLink>
+        </H3>
+        <Text as="p">
+          Lorem ipsum dolor, sit amet consectetur adipisicing elit. In,
+          voluptat
+        </Text>
+      </Stack>
+    </CardInner>
+  </Card>`,
 	},
 	{
 		group: 'Autocomplete',

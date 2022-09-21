@@ -16,7 +16,13 @@ export const FieldMessage = ({
 	<Flex gap={0.5} alignItems="center">
 		{invalid ? (
 			<Box flexShrink={0}>
-				<AlertFilledIcon color="error" size="md" />
+				<AlertFilledIcon
+					color="error"
+					size="md"
+					aria-label="Error"
+					aria-hidden="false"
+					css={{ display: 'block' }}
+				/>
 			</Box>
 		) : null}
 		<Text

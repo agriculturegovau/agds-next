@@ -14,14 +14,15 @@ The main navigation component is designed to work closely with the header compon
 Note: Because the main navigation component is a horizontal list, it doesn’t accommodate a large amount of items. If you need more space, consider another navigation component such as the [side nav](/packages/navigation/side-nav).
 
 ```jsx live
-<MainNav
-	variant="agriculture"
-	items={[
-		{ href: '#home', label: 'Home' },
-		{ href: '#content', label: 'Content page' },
-		{ href: '#form', label: 'Form page' },
-		{ href: '#', label: 'Simple terms' },
-		{ href: '#', label: 'Distinct from each other' },
-	]}
-/>
+<Box palette="dark">
+	<MainNav
+		items={[
+			{ href: '#home', label: 'Home' },
+			{ href: '#content', label: 'Content page' },
+			{ href: '#form', label: 'Form page' },
+			{ href: '#', label: 'Simple terms' },
+			{ href: '#', label: 'Distinct from each other' },
+		]}
+	/>
+</Box>
 ```

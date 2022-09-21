@@ -6,7 +6,6 @@ import { findBestMatch, MainNavBackground } from './utils';
 export type MainNavProps = PropsWithChildren<{
 	activePath?: string;
 	background?: MainNavBackground;
-	'aria-label'?: string;
 	id?: string;
 	items?: NavListItem[];
 	secondaryItems?: NavListItem[];
@@ -18,7 +17,6 @@ export function MainNav({
 	items,
 	secondaryItems,
 	id,
-	'aria-label': ariaLabel = 'main',
 }: MainNavProps) {
 	const bestMatch = findBestMatch(
 		[...(items || []), ...(secondaryItems || [])],
@@ -28,17 +26,22 @@ export function MainNav({
 		<NavContainer
 			background={background}
 			id={id}
-			aria-label={ariaLabel}
 			hasItems={items && items.length > 0}
 			rightContent={
 				<NavList
+					aria-label="secondary"
 					items={secondaryItems}
 					activePath={bestMatch}
 					type="secondary"
 				/>
 			}
 		>
-			<NavList items={items} activePath={bestMatch} type="primary" />
+			<NavList
+				aria-label="main"
+				items={items}
+				activePath={bestMatch}
+				type="primary"
+			/>
 		</NavContainer>
 	);
 }

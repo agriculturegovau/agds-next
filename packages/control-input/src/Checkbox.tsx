@@ -52,7 +52,9 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
 					size={size}
 					valid={valid}
 				/>
-				<ControlLabel disabled={disabled}>{children}</ControlLabel>
+				<ControlLabel disabled={disabled} size={size}>
+					{children}
+				</ControlLabel>
 			</ControlContainer>
 		);
 	}

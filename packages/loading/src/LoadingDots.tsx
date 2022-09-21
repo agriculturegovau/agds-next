@@ -2,6 +2,7 @@ import { HTMLAttributes } from 'react';
 import { useTrail, animated } from '@react-spring/web';
 import { Box, Flex } from '@ag.ds-next/box';
 import { mapSpacing, usePrefersReducedMotion } from '@ag.ds-next/core';
+import { VisuallyHidden } from '@ag.ds-next/a11y';
 
 const loadingDotsSizes = {
 	sm: { gap: 0.5, dotSize: mapSpacing(0.5), dots: 3 },
@@ -17,7 +18,7 @@ type DivProps = HTMLAttributes<HTMLDivElement>;
 
 export type LoadingDotsProps = {
 	/** Describes the loading element to assistive technologies. */
-	'aria-label'?: DivProps['aria-label'];
+	label?: string;
 	/** Indicates that an element will be updated, and describes the types of updates the user agents, assistive technologies, and user can expect from the live region. */
 	'aria-live'?: DivProps['aria-live'];
 	/** ARIA roles provide semantic meaning to content. */
@@ -29,7 +30,7 @@ export type LoadingDotsProps = {
 };
 
 export const LoadingDots = ({
-	'aria-label': ariaLabel,
+	label,
 	'aria-live': ariaLive,
 	role,
 	className,
@@ -54,17 +55,20 @@ export const LoadingDots = ({
 		<Flex
 			gap={gap}
 			className={className}
-			aria-label={ariaLabel}
 			aria-live={ariaLive}
+			aria-atomic="false"
 			role={role}
 		>
+			{label && <VisuallyHidden>{label}</VisuallyHidden>}
 			{trail.map((style, idx) => (
 				<AnimatedBox
 					key={idx}
 					height={dotSize}
 					width={dotSize}
+					highContrastOutline
 					style={style}
 					css={{ borderRadius: '50%', background: 'currentColor' }}
+					aria-hidden="true"
 				/>
 			))}
 		</Flex>

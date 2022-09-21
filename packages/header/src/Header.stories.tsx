@@ -27,11 +27,11 @@ export default {
 const defaultArgs = {
 	heading: 'Export Service',
 	subline: 'Supporting Australian agricultural exports',
-};
+	logo: <AgLogo />,
+	background: 'bodyAlt',
+} as const;
 
-const Template: ComponentStory<typeof Header> = (args) => (
-	<Header logo={<AgLogo />} {...args} />
-);
+const Template: ComponentStory<typeof Header> = (args) => <Header {...args} />;
 
 export const BodyBackground = Template.bind({});
 BodyBackground.storyName = 'Body background';
@@ -50,6 +50,17 @@ BodyAltBackground.args = {
 export const Small = Template.bind({});
 Small.args = {
 	...defaultArgs,
+	heading: 'Internal application',
+	subline: undefined,
+	size: 'sm',
+};
+
+export const SmallNoLogo = Template.bind({});
+SmallNoLogo.args = {
+	...defaultArgs,
+	heading: 'Internal application',
+	subline: undefined,
+	logo: undefined,
 	size: 'sm',
 };
 

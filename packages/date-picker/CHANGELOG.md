@@ -1,5 +1,21 @@
 # @ag.ds-next/date-picker
 
+## 8.0.0
+
+### Patch Changes
+
+- 425668432: Selected days in range mode now have more rounded borders
+- Updated dependencies [aad2cb62d]
+- Updated dependencies [aad2cb62d]
+- Updated dependencies [5495984f4]
+- Updated dependencies [931a7e7a2]
+  - @ag.ds-next/box@7.0.0
+  - @ag.ds-next/field@10.0.0
+  - @ag.ds-next/text-input@11.0.0
+  - @ag.ds-next/core@4.0.0
+  - @ag.ds-next/icon@11.0.0
+  - @ag.ds-next/button@11.0.0
+
 ## 7.0.0
 
 ### Minor Changes

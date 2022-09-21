@@ -1,5 +1,60 @@
 # @ag.ds-next/ag-branding
 
+## 7.0.0
+
+### Major Changes
+
+- aad2cb62d: Add support for light/dark values for system colours.
+
+  Old tokens:
+
+  - globalPalette.success
+  - globalPalette.successMuted
+  - globalPalette.error
+  - globalPalette.errorMuted
+  - globalPalette.info
+  - globalPalette.infoMuted
+  - globalPalette.warning
+  - globalPalette.warningMuted
+  - globalPalette.accent
+
+  New tokens:
+
+  - boxPalette.systemSuccess
+  - boxPalette.systemSuccessMuted
+  - boxPalette.systemError
+  - boxPalette.systemErrorMuted
+  - boxPalette.systemInfo
+  - boxPalette.systemInfoMuted
+  - boxPalette.systemWarning
+  - boxPalette.systemWarningMuted
+  - boxPalette.accent
+  - globalPalette.lightSuccess
+  - globalPalette.lightSuccessMuted
+  - globalPalette.lightError
+  - globalPalette.lightErrorMuted
+  - globalPalette.lightInfo
+  - globalPalette.lightInfoMuted
+  - globalPalette.lightWarning
+  - globalPalette.lightWarningMuted
+  - globalPalette.lightAccent
+  - globalPalette.darkSuccess
+  - globalPalette.darkSuccessMuted
+  - globalPalette.darkError
+  - globalPalette.darkErrorMuted
+  - globalPalette.darkInfo
+  - globalPalette.darkInfoMuted
+  - globalPalette.darkWarning
+  - globalPalette.darkWarningMuted
+  - globalPalette.darkAccent
+
+- b56cb0cef: New dark palette background tokens
+
+### Patch Changes
+
+- Updated dependencies [aad2cb62d]
+  - @ag.ds-next/core@4.0.0
+
 ## 6.1.1
 
 ### Patch Changes

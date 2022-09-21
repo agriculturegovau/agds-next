@@ -39,8 +39,8 @@ export default function TemplateOverviewPage({
 				<Prose id="page-content">
 					<Box border borderColor="muted" css={{ img: { display: 'block' } }}>
 						<img
-							role="presentation"
 							src={`/agds-next/img/templates/${template.slug}.png`}
+							role="presentation"
 							alt=""
 						/>
 					</Box>

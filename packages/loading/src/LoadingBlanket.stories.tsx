@@ -116,7 +116,7 @@ export const Modular = () => (
 		<FullScreenContent />
 		<LoadingBlanketContainer fullScreen>
 			<LoadingBlanketContent>
-				<LoadingDots aria-label="loading" role="status" size="lg" />
+				<LoadingDots size="lg" />
 				<LoadingBlanketLabel>Loading</LoadingBlanketLabel>
 			</LoadingBlanketContent>
 		</LoadingBlanketContainer>

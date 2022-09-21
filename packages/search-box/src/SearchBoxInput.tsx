@@ -2,6 +2,7 @@ import { InputHTMLAttributes, forwardRef } from 'react';
 import { useId } from '@reach/auto-id';
 import { textInputStyles } from '@ag.ds-next/text-input';
 import { Stack } from '@ag.ds-next/box';
+import { globalPalette } from '@ag.ds-next/core';
 import { SearchBoxLabel } from './SearchBoxLabel';
 
 type NativeInputProps = InputHTMLAttributes<HTMLInputElement>;
@@ -51,6 +52,8 @@ const inputStyles = () => {
 		borderRightWidth: 0,
 		borderTopRightRadius: 0,
 		borderBottomRightRadius: 0,
+		color: globalPalette.lightForegroundText,
+		background: globalPalette.lightBackgroundBody,
 
 		'&::-webkit-search-decoration, &::-webkit-search-cancel-button, &::-webkit-search-results-button, &::-webkit-search-results-decoration':
 			{

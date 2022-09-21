@@ -54,6 +54,7 @@ export const Switch = ({
 			<SwitchContainer size={size}>
 				<input
 					type="checkbox"
+					role="switch"
 					checked={checked}
 					onChange={() => onChange(!checked)}
 					css={{

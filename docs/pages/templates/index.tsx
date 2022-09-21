@@ -65,8 +65,8 @@ const TemplateCard = ({
 				</CardInner>
 				<img
 					src={`/agds-next/img/templates/${slug}.png`}
-					alt=""
 					role="presentation"
+					alt=""
 					height="auto"
 					width="100%"
 					css={mq({

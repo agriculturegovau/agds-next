@@ -9,7 +9,6 @@ import { DirectionLink } from '@ag.ds-next/direction-link';
 import { Tags } from '@ag.ds-next/tags';
 import { Text } from '@ag.ds-next/text';
 import { TextLink } from '@ag.ds-next/text-link';
-import { ExternalLinkIcon } from '@ag.ds-next/icon';
 import { StatusBadge } from '@ag.ds-next/badge';
 import { PageContent } from '@ag.ds-next/content';
 import { Card } from './Card';
@@ -36,6 +35,25 @@ export const Basic: ComponentStory<typeof Card> = (args) => (
 						Lorem ipsum dolor, sit amet consectetur adipisicing elit. In,
 						voluptat
 					</Text>
+				</Stack>
+			</CardInner>
+		</Card>
+	</Box>
+);
+Basic.args = {};
+
+export const Link: ComponentStory<typeof Card> = (args) => (
+	<Box maxWidth={300}>
+		<Card {...args}>
+			<CardInner>
+				<Stack gap={1}>
+					<Heading as="h2" type="h3">
+						Card heading
+					</Heading>
+					<Text as="p">
+						Lorem ipsum dolor, sit amet consectetur adipisicing elit. In,
+						voluptat
+					</Text>
 					<CardLink href="#">
 						Linking out
 						<ChevronRightIcon weight="bold" size="sm" />
@@ -45,22 +63,10 @@ export const Basic: ComponentStory<typeof Card> = (args) => (
 		</Card>
 	</Box>
 );
-
-export const Link: ComponentStory<typeof Card> = (args) => (
-	<Box maxWidth={300}>
-		<Card shadow clickable {...args}>
-			<CardInner>
-				<Heading as="h2" type="h3" paddingBottom={1}>
-					Card heading
-				</Heading>
-				<CardLink href="#">
-					Linking out
-					<ChevronRightIcon weight="bold" size="sm" />
-				</CardLink>
-			</CardInner>
-		</Card>
-	</Box>
-);
+Link.args = {
+	clickable: true,
+	shadow: true,
+};
 
 export const FeatureHeader: ComponentStory<typeof Card> = (args) => (
 	<Columns>
@@ -212,128 +218,132 @@ CardListStory.storyName = 'List of Cards';
 
 export const Compositions = () => {
 	return (
-		<Columns>
-			<Column columnSpan={4}>
-				<Stack gap={2} width="100%">
-					<Card shadow>
-						<CardInner>
-							<Stack gap={1}>
-								<Heading as="h2" type="h3">
-									Card title
-								</Heading>
-								<Text>
-									Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras
-									non finibus leo.
-								</Text>
-								<DirectionLink direction="right">Learn more</DirectionLink>
-							</Stack>
-						</CardInner>
-					</Card>
+		<PageContent>
+			<Columns cols={{ xs: 1, sm: 2 }}>
+				<Column>
+					<Stack gap={2} width="100%">
+						<Card shadow>
+							<CardInner>
+								<Stack gap={1}>
+									<Heading as="h2" type="h3">
+										Card title
+									</Heading>
+									<Text>
+										Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+										Cras non finibus leo.
+									</Text>
+									<DirectionLink direction="right">Learn more</DirectionLink>
+								</Stack>
+							</CardInner>
+						</Card>
 
-					<Card shadow clickable>
-						<CardInner>
-							<Stack gap={1}>
-								<Box as="h3">
-									<CardLink href="#">Card link</CardLink>
-								</Box>
-								<Text>
-									Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras
-									non finibus leo.
-								</Text>
-							</Stack>
-						</CardInner>
-					</Card>
+						<Card shadow clickable>
+							<CardInner>
+								<Stack gap={1}>
+									<Box as="h3">
+										<CardLink href="#">Card link</CardLink>
+									</Box>
+									<Text>
+										Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+										Cras non finibus leo.
+									</Text>
+								</Stack>
+							</CardInner>
+						</Card>
 
-					<Card shadow clickable>
-						<CardInner>
-							<Stack gap={1}>
-								<Box as="h3">
-									<CardLink href="#">Card link</CardLink>
+						<Card shadow clickable>
+							<CardInner>
+								<Stack gap={1}>
+									<Pictogram />
 
-									<div
-										style={{
-											position: 'absolute',
-											top: 16,
-											right: 16,
-										}}
-									>
-										<ExternalLinkIcon color="action" />
-									</div>
-								</Box>
+									<Box as="h3">
+										<CardLink href="#">Card link</CardLink>
+									</Box>
+									<Text>
+										Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+										Cras non finibus leo.
+									</Text>
+								</Stack>
+							</CardInner>
+						</Card>
+					</Stack>
+				</Column>
 
-								<Text>
-									Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras
-									non finibus leo.
-								</Text>
-							</Stack>
-						</CardInner>
-					</Card>
+				<Column>
+					<Stack gap={2} width="100%">
+						<Card shadow clickable>
+							<CardInner>
+								<Stack gap={0.5}>
+									<Pictogram />
 
-					<Card shadow clickable>
-						<CardInner>
-							<Stack gap={1}>
-								<Pictogram />
+									<Box fontWeight="bold">
+										<CardLink>Add a commodity, product or operation</CardLink>
+									</Box>
+								</Stack>
+							</CardInner>
+						</Card>
 
-								<Box as="h3">
-									<CardLink href="#">Card link</CardLink>
-								</Box>
-								<Text>
-									Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras
-									non finibus leo.
-								</Text>
-							</Stack>
-						</CardInner>
-					</Card>
-				</Stack>
-			</Column>
+						<Card shadow clickable>
+							<CardInner>
+								<Stack gap={1}>
+									<Flex gap={0.5}>
+										<Tags items={[{ label: '1034' }]} />
+										<Text>Meat</Text>
+									</Flex>
 
-			<Column columnSpan={4}>
-				<Stack gap={2} width="100%">
-					<Card shadow clickable>
-						<CardInner>
-							<Stack gap={0.5}>
-								<Pictogram />
+									<Box fontWeight="bold">
+										<CardLink>Orange Farmers Market</CardLink>
+									</Box>
+								</Stack>
+							</CardInner>
+						</Card>
 
-								<Box fontWeight="bold">
-									<CardLink>Add a commodity, product or operation</CardLink>
-								</Box>
-							</Stack>
-						</CardInner>
-					</Card>
+						<Card shadow clickable>
+							<img
+								alt="Placeholder image"
+								src="https://steelthreads.github.io/agds-next/img/placeholder/hero-banner.jpeg"
+								width="100%"
+							/>
+							<CardInner>
+								<Stack gap={1}>
+									<Box as="h3">
+										<CardLink href="#">News item</CardLink>
+									</Box>
+									<Text>
+										Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+										Cras non finibus leo.
+									</Text>
+								</Stack>
+							</CardInner>
+						</Card>
 
-					<Card shadow clickable>
-						<CardInner>
-							<Stack gap={1}>
-								<Tags items={[{ label: '1034' }]} />
-
-								<Box fontWeight="bold">
-									<CardLink>Orange Farmers Market</CardLink>
-								</Box>
-							</Stack>
-						</CardInner>
-					</Card>
-
-					<Card shadow clickable>
-						<img
-							alt="Placeholder image"
-							src="/agds-next/img/placeholder/600X260.png"
-							width="100%"
-						/>
-						<CardInner>
-							<Stack gap={1}>
-								<Box as="h3">
-									<CardLink href="#">News item</CardLink>
-								</Box>
-								<Text>
-									Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras
-									non finibus leo.
-								</Text>
-							</Stack>
-						</CardInner>
-					</Card>
-				</Stack>
-			</Column>
-		</Columns>
+						<Card shadow clickable>
+							<Flex>
+								<img
+									alt="Placeholder image"
+									src="https://steelthreads.github.io/agds-next/img/placeholder/hero-banner.jpeg"
+									css={{
+										width: '50%',
+										objectFit: 'cover',
+									}}
+								/>
+								<CardInner>
+									<Stack gap={1}>
+										<Box as="h3">
+											<CardLink href="#">News item</CardLink>
+										</Box>
+										<Text>
+											Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+											Cras non finibus leo.
+										</Text>
+									</Stack>
+								</CardInner>
+							</Flex>
+						</Card>
+					</Stack>
+				</Column>
+			</Columns>
+		</PageContent>
 	);
 };
 

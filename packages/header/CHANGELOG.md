@@ -1,5 +1,25 @@
 # @ag.ds-next/header
 
+## 11.0.0
+
+### Major Changes
+
+- 77b6e8530: Add background prop and support for parent palettes, remove variant prop.
+
+### Minor Changes
+
+- c5890b78a: Add small size variant
+- b56cb0cef: Default to darkAlt variant to support new dark tokens. If you have set the variant prop in your application, please change it to `darkAlt` when you install the new `ag-branding` package.
+
+### Patch Changes
+
+- Updated dependencies [aad2cb62d]
+- Updated dependencies [aad2cb62d]
+  - @ag.ds-next/box@7.0.0
+  - @ag.ds-next/core@4.0.0
+  - @ag.ds-next/columns@8.0.0
+  - @ag.ds-next/text@10.0.0
+
 ## 10.0.0
 
 ### Patch Changes

@@ -1,5 +1,30 @@
 # @ag.ds-next/main-nav
 
+## 14.0.0
+
+### Major Changes
+
+- 5495984f4: - Renamed `links` prop to `items`
+  - Replaced `rightContent` prop with `secondaryItems` prop
+  - Added new `endElement` prop to each item to support for adding icons, notification badges and other decorative elements
+- 713b6d32b: Add palette and background support, remove variant prop
+
+### Minor Changes
+
+- aad2cb62d: Update references to colour tokens
+- b56cb0cef: Update to support new dark tokens and set default variant to `agriculture`. Please ensure you are using the latest version of the `@ag.ds-next/ag-branding` package.
+
+### Patch Changes
+
+- Updated dependencies [aad2cb62d]
+- Updated dependencies [aad2cb62d]
+- Updated dependencies [5495984f4]
+- Updated dependencies [931a7e7a2]
+  - @ag.ds-next/box@7.0.0
+  - @ag.ds-next/core@4.0.0
+  - @ag.ds-next/icon@11.0.0
+  - @ag.ds-next/button@11.0.0
+
 ## 13.0.0
 
 ### Patch Changes

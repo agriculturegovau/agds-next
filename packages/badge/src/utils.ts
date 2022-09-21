@@ -1,7 +1,7 @@
 import { boxPalette } from '@ag.ds-next/core';
 
 export const badgeToneMap = {
-	neutral: boxPalette.border,
+	neutral: boxPalette.foregroundMuted,
 	action: boxPalette.foregroundAction,
 } as const;
 
