@@ -2,15 +2,15 @@ import { Stack } from '@ag.ds-next/box';
 import { H2 } from '@ag.ds-next/heading';
 import { Button } from '@ag.ds-next/button';
 import { FormDefinitionList } from '../FormDefinitionList';
-import { FORM_STEPS, useFormExampleMultiStep } from './FormExampleMultiStep';
-import { FormExampleMultiStepContainer } from './FormExampleMultiStepContainer';
-import { FormExampleMultiStepActions } from './FormExampleMultiStepActions';
+import { FORM_STEPS, useFormExampleMultiStep } from './FormRegisterPetDetails';
+import { FormRegisterPetDetailsContainer } from './FormRegisterPetDetailsContainer';
+import { FormRegisterPetDetailsActions } from './FormRegisterPetDetailsActions';
 
-export const FormExampleMultiStep3 = () => {
+export const FormRegisterPetDetailsStep4 = () => {
 	const { formState, goToStep } = useFormExampleMultiStep();
 
 	return (
-		<FormExampleMultiStepContainer
+		<FormRegisterPetDetailsContainer
 			title="Confirm and submit"
 			introduction="Check and confirm all details on this page."
 		>
@@ -23,20 +23,8 @@ export const FormExampleMultiStep3 = () => {
 				<FormDefinitionList
 					items={[
 						{
-							label: 'First name',
-							value: formState[0]?.firstName,
-						},
-						{
-							label: 'Last name',
-							value: formState[0]?.lastName,
-						},
-						{
-							label: 'Email',
-							value: formState[0]?.email,
-						},
-						{
-							label: 'Date of birth',
-							value: formState[0]?.dob.toLocaleDateString(),
+							label: 'Type of pet',
+							value: formState[0]?.typeOfPet,
 						},
 					]}
 				/>
@@ -50,20 +38,20 @@ export const FormExampleMultiStep3 = () => {
 				<FormDefinitionList
 					items={[
 						{
-							label: 'Street address',
-							value: formState[1]?.streetAddress,
+							label: 'Pet name',
+							value: formState[1]?.name,
 						},
 						{
-							label: 'Suburb, town or city',
-							value: formState[1]?.suburbTownCity,
+							label: 'Breed',
+							value: formState[1]?.breed,
 						},
 						{
-							label: 'State',
-							value: formState[1]?.state,
+							label: 'Date of birth',
+							value: formState[1]?.dob.toLocaleDateString(),
 						},
 						{
-							label: 'Post code',
-							value: formState[1]?.postcode,
+							label: 'Sex',
+							value: formState[1]?.sex,
 						},
 					]}
 				/>
@@ -76,13 +64,27 @@ export const FormExampleMultiStep3 = () => {
 				<FormDefinitionList
 					items={[
 						{
-							label: 'Preferred contact method',
-							value: formState[2]?.contactMethod,
+							label: 'Vaccination certificate',
+							value: formState[2]?.vaccinationCertificate ? 'Yes' : 'No',
 						},
 					]}
 				/>
 			</Stack>
-			<FormExampleMultiStepActions />
-		</FormExampleMultiStepContainer>
+			<Stack gap={1.5} alignItems="flex-start">
+				<H2>{FORM_STEPS[3].label}</H2>
+				<Button variant="text" onClick={() => goToStep(2)}>
+					Change
+				</Button>
+				<FormDefinitionList
+					items={[
+						{
+							label: 'Registration start date',
+							value: formState[3]?.date.toLocaleDateString(),
+						},
+					]}
+				/>
+			</Stack>
+			<FormRegisterPetDetailsActions />
+		</FormRegisterPetDetailsContainer>
 	);
 };

@@ -3,9 +3,9 @@ import { Stack } from '@ag.ds-next/box';
 import { PageAlert } from '@ag.ds-next/page-alert';
 import { Prose } from '@ag.ds-next/prose';
 import { PageTitle } from '../PageTitle';
-import { useFormExampleMultiStep } from './FormExampleMultiStep';
+import { useFormExampleMultiStep } from './FormRegisterPetDetails';
 
-export const FormExampleMultiStepContainer = ({
+export const FormRegisterPetDetailsContainer = ({
 	children,
 	title,
 	introduction,
@@ -18,7 +18,7 @@ export const FormExampleMultiStepContainer = ({
 	return (
 		<Stack gap={3}>
 			<PageTitle
-				pretext="Your personal details"
+				pretext="Your pet’s details"
 				title={title}
 				introduction={introduction}
 			/>

@@ -9,9 +9,9 @@ import { Stack } from '@ag.ds-next/box';
 import { useScrollToField } from '@ag.ds-next/field';
 import { TextInput } from '@ag.ds-next/text-input';
 import { Select } from '@ag.ds-next/select';
-import { FormExampleMultiStepActions } from './FormExampleMultiStepActions';
-import { useFormExampleMultiStep } from './FormExampleMultiStep';
-import { FormExampleMultiStepContainer } from './FormExampleMultiStepContainer';
+import { FormRegisterPetPersonalDetailsActions } from './FormRegisterPetPersonalDetailsActions';
+import { useFormRegisterPetPersonalDetails } from './FormRegisterPetPersonalDetails';
+import { FormRegisterPetPersonalDetailsContainer } from './FormRegisterPetPersonalDetailsContainer';
 
 const formSchema = yup
 	.object({
@@ -27,8 +27,8 @@ const formSchema = yup
 
 export type FormSchema = yup.InferType<typeof formSchema>;
 
-export const FormExampleMultiStep1 = () => {
-	const { next, stepFormState } = useFormExampleMultiStep();
+export const FormRegisterPetPersonalDetailsStep1 = () => {
+	const { next, stepFormState } = useFormRegisterPetPersonalDetails();
 	const scrollToField = useScrollToField();
 	const errorRef = useRef<HTMLDivElement>(null);
 	const [focusedError, setFocusedError] = useState(false);
@@ -62,7 +62,7 @@ export const FormExampleMultiStep1 = () => {
 	}, [hasErrors, focusedError, errors]);
 
 	return (
-		<FormExampleMultiStepContainer
+		<FormRegisterPetPersonalDetailsContainer
 			title="Address details"
 			introduction="Provide address for where pet will be housed"
 		>
@@ -148,8 +148,8 @@ export const FormExampleMultiStep1 = () => {
 						required
 					/>
 				</FormStack>
-				<FormExampleMultiStepActions />
+				<FormRegisterPetPersonalDetailsActions />
 			</Stack>
-		</FormExampleMultiStepContainer>
+		</FormRegisterPetPersonalDetailsContainer>
 	);
 };

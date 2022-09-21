@@ -44,7 +44,7 @@ export default function FormRegisterPetTask2HomePage() {
 									</Prose>
 								</Stack>
 								<div>
-									<ButtonLink href="/services/registrations/pet/task-1/form">
+									<ButtonLink href="/services/registrations/pet/task-2/form">
 										Get started
 									</ButtonLink>
 								</div>

@@ -1,12 +1,12 @@
 import { Fragment } from 'react';
 import { DocumentTitle } from '../../../../../components/DocumentTitle';
-import { FormExampleMultiStep } from '../../../../../components/FormExampleMultiStep/FormExampleMultiStep';
+import { FormRegisterPetDetails } from '../../../../../components/FormRegisterPetDetails/FormRegisterPetDetails';
 
-export default function FormRegisterPetTask1FormPage() {
+export default function FormRegisterPetTask2FormPage() {
 	return (
 		<Fragment>
 			<DocumentTitle title="Your pet's details" />
-			<FormExampleMultiStep />
+			<FormRegisterPetDetails />
 		</Fragment>
 	);
 }

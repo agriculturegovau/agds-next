@@ -1,25 +1,25 @@
 import { useEffect, useRef, useState } from 'react';
-import { useForm, SubmitHandler } from 'react-hook-form';
+import { useForm, SubmitHandler, SubmitErrorHandler } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
-import { Prose } from '@ag.ds-next/prose';
 import { Box, Stack } from '@ag.ds-next/box';
+import { TextInput } from '@ag.ds-next/text-input';
+import { mapSpacing } from '@ag.ds-next/core';
 import { ControlGroup, Radio } from '@ag.ds-next/control-input';
 import { FormStack } from '@ag.ds-next/form-stack';
-import { mapSpacing } from '@ag.ds-next/core';
-import { PageAlert } from '@ag.ds-next/page-alert';
-import { TextInput } from '@ag.ds-next/text-input';
 import { useScrollToField } from '@ag.ds-next/field';
-import { useFormExampleMultiStep } from './FormExampleMultiStep';
-import { FormExampleMultiStepActions } from './FormExampleMultiStepActions';
-import { FormExampleMultiStepContainer } from './FormExampleMultiStepContainer';
+import { PageAlert } from '@ag.ds-next/page-alert';
+import { Prose } from '@ag.ds-next/prose';
+import { FormRegisterPetDetailsContainer } from './FormRegisterPetDetailsContainer';
+import { FormRegisterPetDetailsActions } from './FormRegisterPetDetailsActions';
+import { useFormExampleMultiStep } from './FormRegisterPetDetails';
 
 const formSchema = yup
 	.object({
-		contactMethod: yup.string().required('Select an option'),
-		mobileNumber: yup.string().when('contactMethod', (value, schema) => {
-			if (Array.isArray(value) && value.includes('B')) {
-				return schema.required('Nested field is required');
+		typeOfPet: yup.string().required('Enter your first name'),
+		otherDetails: yup.string().when('typeOfPet', (value, schema) => {
+			if (value === 'other') {
+				return schema.required('Enter details');
 			}
 			return schema;
 		}),
@@ -28,8 +28,8 @@ const formSchema = yup
 
 export type FormSchema = yup.InferType<typeof formSchema>;
 
-export const FormExampleMultiStep2 = () => {
-	const { next } = useFormExampleMultiStep();
+export const FormRegisterPetDetailsStep0 = () => {
+	const { next, stepFormState } = useFormExampleMultiStep();
 	const scrollToField = useScrollToField();
 	const errorRef = useRef<HTMLDivElement>(null);
 	const [focusedError, setFocusedError] = useState(false);
@@ -38,11 +38,9 @@ export const FormExampleMultiStep2 = () => {
 		watch,
 		register,
 		handleSubmit,
-		trigger,
-		formState: { errors, isSubmitted },
+		formState: { errors },
 	} = useForm<FormSchema>({
-		reValidateMode: 'onChange',
-		defaultValues: {},
+		defaultValues: stepFormState,
 		resolver: yupResolver(formSchema),
 	});
 
@@ -51,7 +49,7 @@ export const FormExampleMultiStep2 = () => {
 		next(data);
 	};
 
-	const onError = () => {
+	const onError: SubmitErrorHandler<FormSchema> = () => {
 		setFocusedError(false);
 	};
 
@@ -65,16 +63,12 @@ export const FormExampleMultiStep2 = () => {
 		}
 	}, [hasErrors, focusedError, errors]);
 
-	const showConditionalField = watch('contactMethod') === 'sms';
-
-	useEffect(() => {
-		if (isSubmitted) trigger();
-	}, [trigger, isSubmitted, showConditionalField]);
+	const showConditionalField = watch('typeOfPet') === 'other';
 
 	return (
-		<FormExampleMultiStepContainer
-			title="Preferred contact method"
-			introduction="We may need to contact you to check details of your application."
+		<FormRegisterPetDetailsContainer
+			title="Type of pet"
+			introduction="Domestic pets living in urban environments need to be registered."
 		>
 			<Stack
 				as="form"
@@ -96,7 +90,9 @@ export const FormExampleMultiStep2 = () => {
 									{Object.entries(errors).map(([key, value]) => (
 										<li key={key}>
 											<a href={`#${key}`} onClick={scrollToField}>
-												{value.message}
+												{Array.isArray(value)
+													? value[0].message
+													: value.message}
 											</a>
 										</li>
 									))}
@@ -106,17 +102,20 @@ export const FormExampleMultiStep2 = () => {
 					)}
 					<ControlGroup
 						id="checkbox"
-						label="Preferred contact method"
-						invalid={Boolean(errors.contactMethod)}
-						message={errors.contactMethod?.message}
+						label="What type of animal are you registering?"
+						invalid={Boolean(errors.typeOfPet)}
+						message={errors.typeOfPet?.message}
 						required
 						block
 					>
-						<Radio {...register('contactMethod')} value="mail">
-							Mail
+						<Radio {...register('typeOfPet')} value="dog">
+							Dog
 						</Radio>
-						<Radio {...register('contactMethod')} value="sms">
-							SMS
+						<Radio {...register('typeOfPet')} value="cat">
+							Cat
+						</Radio>
+						<Radio {...register('typeOfPet')} value="other">
+							Other
 						</Radio>
 						{showConditionalField ? (
 							<Box
@@ -126,23 +125,19 @@ export const FormExampleMultiStep2 = () => {
 								css={{ marginLeft: mapSpacing(1) }}
 							>
 								<TextInput
-									id="mobilePhone"
-									type="tel"
-									label="Provide mobile phone number"
-									{...register('mobileNumber')}
-									invalid={Boolean(errors.mobileNumber?.message)}
-									message={errors.mobileNumber?.message}
+									id="otherDetails"
+									label="Provide details"
+									{...register('otherDetails')}
+									invalid={Boolean(errors.otherDetails?.message)}
+									message={errors.otherDetails?.message}
 									required
 								/>
 							</Box>
 						) : null}
-						<Radio {...register('contactMethod')} value="email">
-							Email
-						</Radio>
 					</ControlGroup>
 				</FormStack>
-				<FormExampleMultiStepActions />
+				<FormRegisterPetDetailsActions />
 			</Stack>
-		</FormExampleMultiStepContainer>
+		</FormRegisterPetDetailsContainer>
 	);
 };
