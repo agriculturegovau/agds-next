@@ -1,4 +1,5 @@
 import '@testing-library/jest-dom';
+import 'html-validate/jest';
 import { cleanup, render } from '@testing-library/react';
 import { Detail } from './Detail';
 import type { DetailProps } from './Detail';
