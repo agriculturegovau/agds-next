@@ -53,6 +53,13 @@ export default function newPackage(
 					'"dependencies": {\n"@ag.ds-next/{{packageName}}": "^0.0.1",\n',
 			});
 
+			actions.push({
+				type: 'append',
+				path: '../docs/components/designSystemComponents.tsx',
+				template:
+					'export { {{componentName}} } from "@ag.ds-next/{{packageName}}"\n',
+			});
+
 			return actions;
 		},
 	});
