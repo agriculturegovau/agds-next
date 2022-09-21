@@ -14,10 +14,7 @@ import {
 	DefinitionDescription,
 	DefinitionTerm,
 } from '../DefinitionList';
-import {
-	FORM_STEPS,
-	useFormExampleMultiStep,
-} from './FormRegisterPetPersonalDetails';
+import { FORM_STEPS, useFormExampleMultiStep } from './FormExampleMultiStep';
 import { FormExampleMultiStepContainer } from './FormExampleMultiStepContainer';
 import { FormExampleMultiStepActions } from './FormExampleMultiStepActions';
 
