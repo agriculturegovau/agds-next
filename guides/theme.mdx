@@ -124,7 +124,7 @@ In the example below, change the palette prop in the parent Stack to see this be
 </Stack>
 ```
 
-**What is actually happinging?** Our tokens are defined using CSS variables. When the palette is set on a container, it changes the css variables within that container. So child components which expect `foregroundText` token will receive `lightForgroundText` or `darkForegroundText` depending on the chosen palette.
+**What is actually happening?** Our tokens are defined using CSS variables. When the palette is set on a container, it overwrites the css variables within that container. So child components which expect `foregroundText` token will receive `lightForgroundText` or `darkForegroundText` depending on the palette chosen within that context.
 
 ## Creating a custom Theme
 
@@ -156,7 +156,7 @@ export default function App({ Component, pageProps }: AppProps) {
 }
 ```
 
-The default them in AgDS is `GOLD`, based on the former Australian Government Design System. If you are building an experience within the Department of Agriculture, Fisheries and Forestry, then you probably want to extend the `ag-Theme`.
+The default theme in AgDS is `GOLD`, based on the former Australian Government Design System. If you are building an experience within the Department of Agriculture, Fisheries and Forestry, then you probably want to extend the `ag-Theme`.
 
 ```tsx
 // theme.tsx
@@ -182,7 +182,17 @@ export const myTheme: AgDSTheme = {
 };
 ```
 
-Typescript should help you by autocompleting token names, the full list of token names are shown below.
+Typescript should help you by autocompleting token names, the full list of token names are shown at the bottom of the page.
+
+### Tips for picking colours
+
+
+- Mix of neutrals
+- System colours
+- Contrast
+
+
+## Theme schema
 
 ```ts
 import { AgDSTheme } from '@ag.ds-next/core';
@@ -231,9 +241,3 @@ export const MyTheme: AgDSTheme = {
 	darkSystemInfoMuted: '#193A5B',
 };
 ```
-
-### Tips for picking tokens
-
-- Mix of neutrals
-- System colours
-- Contrast
