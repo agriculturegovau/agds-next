@@ -4,7 +4,7 @@ import { InfoIcon, ChevronDownIcon } from '@ag.ds-next/icon';
 
 export type DetailProps = PropsWithChildren<{
 	/** The label that will be present in the trigger */
-	label: string;
+	label?: string;
 }>;
 
 export function Detail({ children, label = 'Details' }: DetailProps) {

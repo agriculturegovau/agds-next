@@ -1,9 +1,8 @@
 import { createContext, useContext } from 'react';
 import { ContentSpacing } from './utils';
 
-export const ContentSpacingContext = createContext<ContentSpacing | undefined>(
-	undefined
-);
+export const ContentSpacingContext =
+	createContext<ContentSpacing | undefined>(undefined);
 
 export const useContentSpacing = () => {
 	const value = useContext(ContentSpacingContext);
