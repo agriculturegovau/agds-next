@@ -3,12 +3,13 @@ import { Box, Flex } from '@ag.ds-next/box';
 import { InfoIcon, ChevronDownIcon } from '@ag.ds-next/icon';
 
 export type DetailProps = PropsWithChildren<{
+	iconBefore?: boolean;
 	/** The label that will be present in the trigger */
 	label?: string;
 }>;
 
 export const Detail = forwardRef<HTMLDetailsElement, DetailProps>(
-	function Detail({ children, label = 'Details' }, ref) {
+	function Detail({ children, iconBefore = false, label = 'Details' }, ref) {
 		return (
 			<details
 				ref={ref}
@@ -31,7 +32,7 @@ export const Detail = forwardRef<HTMLDetailsElement, DetailProps>(
 					paddingY={0.5}
 					rounded
 				>
-					<InfoIcon size="md" aria-hidden="true" />
+					{iconBefore && <InfoIcon weight="regular" size="md" />}
 					{label}
 					<ChevronDownIcon weight="bold" size="sm" />
 				</Flex>
