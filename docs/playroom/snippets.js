@@ -720,6 +720,12 @@ items={[
 		name: 'Combobox',
 		code: `<Combobox label="Select country" options={[{ value: 'a', label: 'Option A' }, { value: 'b', label: 'Option B' }, { value: 'c', label: 'Option C' }]} />`,
 	},
+	{
+		group: 'Detail',
+		name: 'Basic',
+		code: `<Detail label="Details"><Text>This is a small paragraph of text that is supplimentary to the main page
+		content.</Text></Detail>`,
+	},
 ];
 
 export default snippets;
