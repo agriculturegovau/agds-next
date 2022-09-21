@@ -15,9 +15,9 @@ import {
 	DefinitionListItem,
 	DefinitionTerm,
 } from '../DefinitionList';
-import { FormExampleMultiStepContainer } from './FormExampleMultiStepContainer';
-import { FormExampleMultiStepActions } from './FormExampleMultiStepActions';
-import { useFormExampleMultiStep } from './FormExampleMultiStep';
+import { FormRegisterPetPersonalDetailsContainer } from './FormRegisterPetPersonalDetailsContainer';
+import { FormRegisterPetPersonalDetailsActions } from './FormRegisterPetPersonalDetailsActions';
+import { useFormRegisterPetPersonalDetails } from './FormRegisterPetPersonalDetails';
 
 const formSchema = yup
 	.object({
@@ -33,9 +33,9 @@ const formSchema = yup
 
 export type FormSchema = yup.InferType<typeof formSchema>;
 
-export const FormExampleMultiStep0 = () => {
+export const FormRegisterPetPersonalDetailsStep0 = () => {
 	const [isFormVisibile, toggleFormVisibilty] = useToggleState(false, true);
-	const { next, stepFormState } = useFormExampleMultiStep();
+	const { next, stepFormState } = useFormRegisterPetPersonalDetails();
 
 	const {
 		control,
@@ -52,7 +52,7 @@ export const FormExampleMultiStep0 = () => {
 	};
 
 	return (
-		<FormExampleMultiStepContainer
+		<FormRegisterPetPersonalDetailsContainer
 			title="Personal details"
 			introduction="Confirm if these prefilled details from your account are still correct."
 		>
@@ -115,7 +115,7 @@ export const FormExampleMultiStep0 = () => {
 										/>
 									)}
 								/>
-								<FormExampleMultiStepActions />
+								<FormRegisterPetPersonalDetailsActions />
 							</FormStack>
 						</Stack>
 					</Stack>
@@ -179,6 +179,6 @@ export const FormExampleMultiStep0 = () => {
 					</>
 				)}
 			</Stack>
-		</FormExampleMultiStepContainer>
+		</FormRegisterPetPersonalDetailsContainer>
 	);
 };

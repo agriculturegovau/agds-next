@@ -3,7 +3,7 @@ import { Stack } from '@ag.ds-next/box';
 import { PageAlert } from '@ag.ds-next/page-alert';
 import { Prose } from '@ag.ds-next/prose';
 import { PageTitle } from '../PageTitle';
-import { useFormExampleMultiStep } from './FormExampleMultiStep';
+import { useFormExampleMultiStep } from './FormRegisterPetPersonalDetails';
 
 export const FormExampleMultiStepContainer = ({
 	children,

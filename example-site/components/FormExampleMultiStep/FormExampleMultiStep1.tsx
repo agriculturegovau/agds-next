@@ -16,7 +16,7 @@ import { Stack } from '@ag.ds-next/box';
 import { Textarea } from '@ag.ds-next/textarea';
 import { useScrollToField } from '@ag.ds-next/field';
 import { FormExampleMultiStepActions } from './FormExampleMultiStepActions';
-import { useFormExampleMultiStep } from './FormExampleMultiStep';
+import { useFormExampleMultiStep } from './FormRegisterPetPersonalDetails';
 import { FormExampleMultiStepContainer } from './FormExampleMultiStepContainer';
 
 const formSchema = yup

@@ -10,9 +10,9 @@ import { mapSpacing } from '@ag.ds-next/core';
 import { PageAlert } from '@ag.ds-next/page-alert';
 import { TextInput } from '@ag.ds-next/text-input';
 import { useScrollToField } from '@ag.ds-next/field';
-import { useFormExampleMultiStep } from './FormExampleMultiStep';
-import { FormExampleMultiStepActions } from './FormExampleMultiStepActions';
-import { FormExampleMultiStepContainer } from './FormExampleMultiStepContainer';
+import { useFormRegisterPetPersonalDetails } from './FormRegisterPetPersonalDetails';
+import { FormRegisterPetPersonalDetailsActions } from './FormRegisterPetPersonalDetailsActions';
+import { FormRegisterPetPersonalDetailsContainer } from './FormRegisterPetPersonalDetailsContainer';
 
 const formSchema = yup
 	.object({
@@ -28,8 +28,8 @@ const formSchema = yup
 
 export type FormSchema = yup.InferType<typeof formSchema>;
 
-export const FormExampleMultiStep2 = () => {
-	const { next } = useFormExampleMultiStep();
+export const FormRegisterPetPersonalDetailsStep2 = () => {
+	const { next } = useFormRegisterPetPersonalDetails();
 	const scrollToField = useScrollToField();
 	const errorRef = useRef<HTMLDivElement>(null);
 	const [focusedError, setFocusedError] = useState(false);
@@ -72,7 +72,7 @@ export const FormExampleMultiStep2 = () => {
 	}, [trigger, isSubmitted, showConditionalField]);
 
 	return (
-		<FormExampleMultiStepContainer
+		<FormRegisterPetPersonalDetailsContainer
 			title="Preferred contact method"
 			introduction="We may need to contact you to check details of your application."
 		>
@@ -141,8 +141,8 @@ export const FormExampleMultiStep2 = () => {
 						</Radio>
 					</ControlGroup>
 				</FormStack>
-				<FormExampleMultiStepActions />
+				<FormRegisterPetPersonalDetailsActions />
 			</Stack>
-		</FormExampleMultiStepContainer>
+		</FormRegisterPetPersonalDetailsContainer>
 	);
 };

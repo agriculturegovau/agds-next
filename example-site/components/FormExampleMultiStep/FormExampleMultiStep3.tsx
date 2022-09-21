@@ -10,7 +10,7 @@ import { mapSpacing } from '@ag.ds-next/core';
 import { PageAlert } from '@ag.ds-next/page-alert';
 import { TextInput } from '@ag.ds-next/text-input';
 import { useScrollToField } from '@ag.ds-next/field';
-import { useFormExampleMultiStep } from './FormExampleMultiStep';
+import { useFormExampleMultiStep } from './FormRegisterPetPersonalDetails';
 import { FormExampleMultiStepActions } from './FormExampleMultiStepActions';
 import { FormExampleMultiStepContainer } from './FormExampleMultiStepContainer';
 

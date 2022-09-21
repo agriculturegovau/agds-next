@@ -22,8 +22,7 @@ export const FormRegisterPetDetailsContainer = ({
 				title={title}
 				introduction={introduction}
 			/>
-			{children}
-			{/* {hasCompletedPreviousSteps ? (
+			{hasCompletedPreviousSteps ? (
 				children
 			) : (
 				<PageAlert
@@ -37,7 +36,7 @@ export const FormRegisterPetDetailsContainer = ({
 						</p>
 					</Prose>
 				</PageAlert>
-			)} */}
+			)}
 		</Stack>
 	);
 };

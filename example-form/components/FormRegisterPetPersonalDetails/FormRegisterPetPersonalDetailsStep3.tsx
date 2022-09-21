@@ -2,15 +2,18 @@ import { Stack } from '@ag.ds-next/box';
 import { H2 } from '@ag.ds-next/heading';
 import { Button } from '@ag.ds-next/button';
 import { FormDefinitionList } from '../FormDefinitionList';
-import { FORM_STEPS, useFormExampleMultiStep } from './FormExampleMultiStep';
-import { FormExampleMultiStepContainer } from './FormExampleMultiStepContainer';
-import { FormExampleMultiStepActions } from './FormExampleMultiStepActions';
+import {
+	FORM_STEPS,
+	useFormRegisterPetPersonalDetails,
+} from './FormRegisterPetPersonalDetails';
+import { FormRegisterPetPersonalDetailsContainer } from './FormRegisterPetPersonalDetailsContainer';
+import { FormRegisterPetPersonalDetailsActions } from './FormRegisterPetPersonalDetailsActions';
 
-export const FormExampleMultiStep3 = () => {
-	const { formState, goToStep } = useFormExampleMultiStep();
+export const FormRegisterPetPersonalDetailsStep3 = () => {
+	const { formState, goToStep } = useFormRegisterPetPersonalDetails();
 
 	return (
-		<FormExampleMultiStepContainer
+		<FormRegisterPetPersonalDetailsContainer
 			title="Confirm and submit"
 			introduction="Check and confirm all details on this page."
 		>
@@ -82,7 +85,7 @@ export const FormExampleMultiStep3 = () => {
 					]}
 				/>
 			</Stack>
-			<FormExampleMultiStepActions />
-		</FormExampleMultiStepContainer>
+			<FormRegisterPetPersonalDetailsActions />
+		</FormRegisterPetPersonalDetailsContainer>
 	);
 };

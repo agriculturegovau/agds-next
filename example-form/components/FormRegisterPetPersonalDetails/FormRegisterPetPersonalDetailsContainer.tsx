@@ -3,9 +3,9 @@ import { Stack } from '@ag.ds-next/box';
 import { PageAlert } from '@ag.ds-next/page-alert';
 import { Prose } from '@ag.ds-next/prose';
 import { PageTitle } from '../PageTitle';
-import { useFormExampleMultiStep } from './FormExampleMultiStep';
+import { useFormRegisterPetPersonalDetails } from './FormRegisterPetPersonalDetails';
 
-export const FormExampleMultiStepContainer = ({
+export const FormRegisterPetPersonalDetailsContainer = ({
 	children,
 	title,
 	introduction,
@@ -14,7 +14,7 @@ export const FormExampleMultiStepContainer = ({
 	title: string;
 	introduction: string;
 }) => {
-	const { hasCompletedPreviousSteps } = useFormExampleMultiStep();
+	const { hasCompletedPreviousSteps } = useFormRegisterPetPersonalDetails();
 	return (
 		<Stack gap={3}>
 			<PageTitle

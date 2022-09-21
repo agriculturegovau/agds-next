@@ -14,35 +14,35 @@ import { Text } from '@ag.ds-next/text';
 import { DirectionButton } from '@ag.ds-next/direction-link';
 import { AppLayout } from '../AppLayout';
 import {
-	FormExampleMultiStep0,
-	FormSchema as FormExampleMultiStep0Schema,
-} from './FormExampleMultiStep0';
+	FormRegisterPetPersonalDetailsStep0,
+	FormSchema as FormRegisterPetPersonalDetailsStep0Schema,
+} from './FormRegisterPetPersonalDetailsStep0';
 import {
-	FormExampleMultiStep1,
-	FormSchema as FormExampleMultiStep1Schema,
-} from './FormExampleMultiStep1';
+	FormRegisterPetPersonalDetailsStep1,
+	FormSchema as FormRegisterPetPersonalDetailsStep1Schema,
+} from './FormRegisterPetPersonalDetailsStep1';
 import {
-	FormExampleMultiStep2,
-	FormSchema as FormExampleMultiStep2Schema,
-} from './FormExampleMultiStep2';
-import { FormExampleMultiStep3 } from './FormExampleMultiStep3';
+	FormRegisterPetPersonalDetailsStep2,
+	FormSchema as FormRegisterPetPersonalDetailsStep2Schema,
+} from './FormRegisterPetPersonalDetailsStep2';
+import { FormRegisterPetPersonalDetailsStep3 } from './FormRegisterPetPersonalDetailsStep3';
 
 export const FORM_STEPS = [
 	{
 		label: 'Personal details',
-		component: FormExampleMultiStep0,
+		component: FormRegisterPetPersonalDetailsStep0,
 	},
 	{
 		label: 'Address details',
-		component: FormExampleMultiStep1,
+		component: FormRegisterPetPersonalDetailsStep1,
 	},
 	{
 		label: 'Contact method',
-		component: FormExampleMultiStep2,
+		component: FormRegisterPetPersonalDetailsStep2,
 	},
 	{
 		label: 'Confirm and submit',
-		component: FormExampleMultiStep3,
+		component: FormRegisterPetPersonalDetailsStep3,
 	},
 ];
 
@@ -79,12 +79,12 @@ const context = createContext<ContextType | undefined>(undefined);
 type StepFormState = Record<string, any>;
 
 type FormState = Partial<{
-	[0]: FormExampleMultiStep0Schema;
-	[1]: FormExampleMultiStep1Schema;
-	[2]: FormExampleMultiStep2Schema;
+	[0]: FormRegisterPetPersonalDetailsStep0Schema;
+	[1]: FormRegisterPetPersonalDetailsStep1Schema;
+	[2]: FormRegisterPetPersonalDetailsStep2Schema;
 }>;
 
-export const FormExampleMultiStep = () => {
+export const FormRegisterPetPersonalDetails = () => {
 	const router = useRouter();
 	const [currentStep, setCurrentStep] = useState(0);
 	const [formState, setFormState] = useState<FormState>({});
@@ -205,7 +205,7 @@ export const FormExampleMultiStep = () => {
 	);
 };
 
-export const useFormExampleMultiStep = () => {
+export const useFormRegisterPetPersonalDetails = () => {
 	const value = useContext(context);
 
 	if (!value) {
