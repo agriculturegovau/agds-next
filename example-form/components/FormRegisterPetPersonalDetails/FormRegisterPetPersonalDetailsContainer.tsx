@@ -9,18 +9,21 @@ export const FormRegisterPetPersonalDetailsContainer = ({
 	children,
 	title,
 	introduction,
+	callToAction,
 }: {
 	children: ReactNode;
 	title: string;
 	introduction: string;
+	callToAction?: ReactNode;
 }) => {
 	const { hasCompletedPreviousSteps } = useFormRegisterPetPersonalDetails();
 	return (
-		<Stack gap={3}>
+		<Stack gap={3} width="100%">
 			<PageTitle
 				pretext="Your personal details"
 				title={title}
 				introduction={introduction}
+				callToAction={callToAction}
 			/>
 			{hasCompletedPreviousSteps ? (
 				children

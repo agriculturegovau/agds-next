@@ -1,15 +1,23 @@
-import { useForm, SubmitHandler, Controller } from 'react-hook-form';
+import { useEffect, useRef, useState } from 'react';
+import {
+	useForm,
+	SubmitHandler,
+	SubmitErrorHandler,
+	Controller,
+} from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
-import { Stack } from '@ag.ds-next/box';
+import { Box, Stack } from '@ag.ds-next/box';
 import { Button } from '@ag.ds-next/button';
 import { FormStack } from '@ag.ds-next/form-stack';
 import { TextInput } from '@ag.ds-next/text-input';
 import { DatePicker } from '@ag.ds-next/date-picker';
 import { H2 } from '@ag.ds-next/heading';
-import { useToggleState } from '@ag.ds-next/core';
 import { Prose } from '@ag.ds-next/prose';
-import { Detail } from '@ag.ds-next/detail';
+import { Details } from '@ag.ds-next/details';
+import { useScrollToField } from '@ag.ds-next/field';
+import { useToggleState } from '@ag.ds-next/core';
+import { PageAlert } from '@ag.ds-next/page-alert';
 import {
 	DefinitionDescription,
 	DefinitionList,
@@ -37,6 +45,9 @@ export type FormSchema = yup.InferType<typeof formSchema>;
 export const FormRegisterPetPersonalDetailsStep0 = () => {
 	const [isFormVisibile, toggleFormVisibilty] = useToggleState(false, true);
 	const { next, stepFormState } = useFormRegisterPetPersonalDetails();
+	const scrollToField = useScrollToField();
+	const errorRef = useRef<HTMLDivElement>(null);
+	const [focusedError, setFocusedError] = useState(false);
 
 	const {
 		control,
@@ -49,25 +60,88 @@ export const FormRegisterPetPersonalDetailsStep0 = () => {
 	});
 
 	const onSubmit: SubmitHandler<FormSchema> = (data) => {
+		setFocusedError(false);
 		next(data);
 	};
+
+	const onError: SubmitErrorHandler<FormSchema> = () => {
+		setFocusedError(false);
+	};
+
+	// Only show the page alert if there is more than 1 error
+	const hasErrors = Object.keys(errors).length > 1;
+
+	useEffect(() => {
+		if (hasErrors && !focusedError) {
+			errorRef.current?.focus();
+			setFocusedError(true);
+		}
+	}, [hasErrors, focusedError, errors]);
 
 	return (
 		<FormRegisterPetPersonalDetailsContainer
 			title="Personal details"
 			introduction="Confirm if these prefilled details from your account are still correct."
+			callToAction={
+				!isFormVisibile && (
+					<Details label="How were my details prefilled?">
+						<Prose>
+							<p>
+								We’re working hard to improve the way we do business with you.
+								This includes making applications and registrations easier to
+								use.
+							</p>
+							<p>
+								If we already have some of the information you need to tell us,
+								we’ll pre-fill it into your applications. This saves you
+								entering all your details yourself.
+							</p>
+							<p>
+								It’s important to check the pre-filled information in your
+								report before you submit it.
+							</p>
+							<p>
+								<a href="#">See your profile and account details</a>
+							</p>
+						</Prose>
+					</Details>
+				)
+			}
 		>
-			<Stack gap={3} alignItems="flex-start">
+			<Stack gap={3} alignItems="flex-start" width="100%">
 				{isFormVisibile ? (
-					<Stack gap={1.5}>
+					<Stack gap={1.5} width="100%">
 						<H2>Update personal details</H2>
 						<Stack
 							as="form"
 							gap={3}
-							onSubmit={handleSubmit(onSubmit)}
+							onSubmit={handleSubmit(onSubmit, onError)}
 							noValidate
 						>
 							<FormStack>
+								{hasErrors && (
+									<PageAlert
+										ref={errorRef}
+										tone="error"
+										title="There is a problem"
+										tabIndex={-1}
+									>
+										<Prose>
+											<p>Please correct the following fields and try again</p>
+											<ul>
+												{Object.entries(errors).map(([key, value]) => (
+													<li key={key}>
+														<a href={`#${key}`} onClick={scrollToField}>
+															{Array.isArray(value)
+																? value[0].message
+																: value.message}
+														</a>
+													</li>
+												))}
+											</ul>
+										</Prose>
+									</PageAlert>
+								)}
 								<TextInput
 									label="First name"
 									autoComplete="given-name"
@@ -75,6 +149,7 @@ export const FormRegisterPetPersonalDetailsStep0 = () => {
 									id="firstName"
 									invalid={Boolean(errors.firstName?.message)}
 									message={errors.firstName?.message}
+									maxWidth="xl"
 									required
 								/>
 								<TextInput
@@ -84,16 +159,18 @@ export const FormRegisterPetPersonalDetailsStep0 = () => {
 									id="lastName"
 									invalid={Boolean(errors.lastName?.message)}
 									message={errors.lastName?.message}
+									maxWidth="xl"
 									required
 								/>
 								<TextInput
 									label="Email"
+									type="email"
 									autoComplete="email"
 									{...register('email')}
 									id="email"
 									invalid={Boolean(errors.email?.message)}
 									message={errors.email?.message}
-									type="email"
+									maxWidth="xl"
 									required
 								/>
 								<Controller
@@ -116,33 +193,12 @@ export const FormRegisterPetPersonalDetailsStep0 = () => {
 										/>
 									)}
 								/>
-								<FormRegisterPetPersonalDetailsActions />
 							</FormStack>
+							<FormRegisterPetPersonalDetailsActions />
 						</Stack>
 					</Stack>
 				) : (
 					<>
-						<Detail label="How were my details prefilled?">
-							<Prose>
-								<p>
-									We’re working hard to improve the way we do business with you.
-									This includes making applications and registrations easier to
-									use.
-								</p>
-								<p>
-									If we already have some of the information you need to tell
-									us, we’ll pre-fill it into your applications. This saves you
-									entering all your details yourself.
-								</p>
-								<p>
-									It’s important to check the pre-filled information in your
-									report before you submit it.
-								</p>
-								<p>
-									<a href="#">See your profile and account details</a>
-								</p>
-							</Prose>
-						</Detail>
 						<Stack gap={1.5} alignItems="flex-start" width="100%">
 							<H2>Check personal details</H2>
 							<DefinitionList>
@@ -167,7 +223,7 @@ export const FormRegisterPetPersonalDetailsStep0 = () => {
 								<DefinitionListItem>
 									<DefinitionTerm>Date of birth</DefinitionTerm>
 									<DefinitionDescription>
-										{stepFormState.dob}
+										{stepFormState.dob.toLocaleDateString()}
 									</DefinitionDescription>
 								</DefinitionListItem>
 							</DefinitionList>
@@ -175,6 +231,9 @@ export const FormRegisterPetPersonalDetailsStep0 = () => {
 								Change personal details
 							</Button>
 						</Stack>
+						<Box as="form" width="100%" onSubmit={handleSubmit(onSubmit)}>
+							<FormRegisterPetPersonalDetailsActions />
+						</Box>
 					</>
 				)}
 			</Stack>

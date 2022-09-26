@@ -71,6 +71,8 @@ type ContextType = {
 	formState: FormState;
 	/** The state of the form of the current step */
 	stepFormState: StepFormState;
+	/** When called, the form will be submitted */
+	completeForm: () => void;
 };
 
 const context = createContext<ContextType | undefined>(undefined);
@@ -87,10 +89,22 @@ type FormState = Partial<{
 export const FormRegisterPetPersonalDetails = () => {
 	const router = useRouter();
 	const [currentStep, setCurrentStep] = useState(0);
-	const [formState, setFormState] = useState<FormState>({});
+	const [formState, setFormState] = useState<FormState>({
+		0: {
+			firstName: 'Alex',
+			lastName: 'Citizen',
+			email: 'alex.citizen@gmail.com',
+			dob: new Date('1999-09-09'),
+		},
+		1: {
+			streetAddress: '21 East Wallaby Way',
+			suburbTownCity: 'Petsville',
+			state: 'nsw',
+			postcode: '2123',
+		},
+	});
 
 	const backToHomePage = useCallback(() => {
-		console.log('here...');
 		router.push('/services/registrations/pet');
 	}, [router]);
 
@@ -119,6 +133,10 @@ export const FormRegisterPetPersonalDetails = () => {
 		},
 		[currentStep, router]
 	);
+
+	const completeForm = () => {
+		backToHomePage();
+	};
 
 	const [isSavingBeforeExiting, setIsSavingBeforeExiting] = useState(false);
 
@@ -156,6 +174,7 @@ export const FormRegisterPetPersonalDetails = () => {
 			(currentStep in formState &&
 				formState[currentStep as keyof typeof formState]) ||
 			{},
+		completeForm,
 	};
 
 	return (

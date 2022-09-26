@@ -1,3 +1,4 @@
+import { FormEvent } from 'react';
 import { Stack } from '@ag.ds-next/box';
 import { H2 } from '@ag.ds-next/heading';
 import { Button } from '@ag.ds-next/button';
@@ -10,7 +11,13 @@ import { FormRegisterPetPersonalDetailsContainer } from './FormRegisterPetPerson
 import { FormRegisterPetPersonalDetailsActions } from './FormRegisterPetPersonalDetailsActions';
 
 export const FormRegisterPetPersonalDetailsStep3 = () => {
-	const { formState, goToStep } = useFormRegisterPetPersonalDetails();
+	const { formState, goToStep, completeForm } =
+		useFormRegisterPetPersonalDetails();
+
+	const onSubmit = (event: FormEvent<HTMLFormElement>) => {
+		event.preventDefault();
+		completeForm();
+	};
 
 	return (
 		<FormRegisterPetPersonalDetailsContainer
@@ -85,7 +92,9 @@ export const FormRegisterPetPersonalDetailsStep3 = () => {
 					]}
 				/>
 			</Stack>
-			<FormRegisterPetPersonalDetailsActions />
+			<form onSubmit={onSubmit}>
+				<FormRegisterPetPersonalDetailsActions />
+			</form>
 		</FormRegisterPetPersonalDetailsContainer>
 	);
 };
