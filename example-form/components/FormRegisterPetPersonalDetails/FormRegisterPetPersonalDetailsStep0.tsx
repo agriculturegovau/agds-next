@@ -83,29 +83,26 @@ export const FormRegisterPetPersonalDetailsStep0 = () => {
 			title="Personal details"
 			introduction="Confirm if these prefilled details from your account are still correct."
 			callToAction={
-				!isFormVisibile && (
-					<Details label="How were my details prefilled?">
-						<Prose>
-							<p>
-								We’re working hard to improve the way we do business with you.
-								This includes making applications and registrations easier to
-								use.
-							</p>
-							<p>
-								If we already have some of the information you need to tell us,
-								we’ll pre-fill it into your applications. This saves you
-								entering all your details yourself.
-							</p>
-							<p>
-								It’s important to check the pre-filled information in your
-								report before you submit it.
-							</p>
-							<p>
-								<a href="#">See your profile and account details</a>
-							</p>
-						</Prose>
-					</Details>
-				)
+				<Details label="How were my details prefilled?">
+					<Prose>
+						<p>
+							We’re working hard to improve the way we do business with you.
+							This includes making applications and registrations easier to use.
+						</p>
+						<p>
+							If we already have some of the information you need to tell us,
+							we’ll pre-fill it into your applications. This saves you entering
+							all your details yourself.
+						</p>
+						<p>
+							It’s important to check the pre-filled information in your report
+							before you submit it.
+						</p>
+						<p>
+							<a href="#">See your profile and account details</a>
+						</p>
+					</Prose>
+				</Details>
 			}
 		>
 			<Stack gap={3} alignItems="flex-start" width="100%">
