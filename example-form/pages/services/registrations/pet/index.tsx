@@ -10,6 +10,7 @@ import { AppLayout } from '../../../../components/AppLayout';
 import { DocumentTitle } from '../../../../components/DocumentTitle';
 import { FormHelpCallout } from '../../../../components/FormHelpCallout';
 import { PageTitle } from '../../../../components/PageTitle';
+import { useFormRegisterPet } from '../../../../components/FormRegisterPetContext';
 
 const TASKS = [
 	{
@@ -25,6 +26,7 @@ const TASKS = [
 ];
 
 export default function FormRegisterPetHomePage() {
+	const { formState } = useFormRegisterPet();
 	return (
 		<>
 			<DocumentTitle title="Register your pet" />
@@ -59,9 +61,9 @@ export default function FormRegisterPetHomePage() {
 									</Prose>
 								</Stack>
 								<TaskList
-									items={TASKS.map((task) => ({
+									items={TASKS.map((task, idx) => ({
 										...task,
-										status: 'todo',
+										status: idx in formState ? 'done' : 'todo',
 									}))}
 								/>
 								<FormHelpCallout />

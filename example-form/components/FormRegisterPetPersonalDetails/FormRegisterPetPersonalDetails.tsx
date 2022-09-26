@@ -13,6 +13,7 @@ import { Stack } from '@ag.ds-next/box';
 import { Text } from '@ag.ds-next/text';
 import { DirectionButton } from '@ag.ds-next/direction-link';
 import { AppLayout } from '../AppLayout';
+import { useFormRegisterPet } from '../FormRegisterPetContext';
 import {
 	FormRegisterPetPersonalDetailsStep0,
 	FormSchema as FormRegisterPetPersonalDetailsStep0Schema,
@@ -52,7 +53,7 @@ type ContextType = {
 	/** When called, the user will be taken back to the previous step */
 	back: () => void;
 	/** When called, the user will be taken forward to the the next step */
-	next: (stepFormState: StepFormState) => void;
+	next: (stepFormState?: StepFormState) => void;
 	/** When called, the user will be taken to the provided step */
 	goToStep: (step: number) => void;
 	/** The current step of the form */
@@ -71,8 +72,6 @@ type ContextType = {
 	formState: FormState;
 	/** The state of the form of the current step */
 	stepFormState: StepFormState;
-	/** When called, the form will be submitted */
-	completeForm: () => void;
 };
 
 const context = createContext<ContextType | undefined>(undefined);
@@ -80,15 +79,17 @@ const context = createContext<ContextType | undefined>(undefined);
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 type StepFormState = Record<string, any>;
 
-type FormState = Partial<{
+export type FormState = Partial<{
 	[0]: FormRegisterPetPersonalDetailsStep0Schema;
 	[1]: FormRegisterPetPersonalDetailsStep1Schema;
 	[2]: FormRegisterPetPersonalDetailsStep2Schema;
 }>;
 
 export const FormRegisterPetPersonalDetails = () => {
+	const { submitStep } = useFormRegisterPet();
 	const router = useRouter();
 	const [currentStep, setCurrentStep] = useState(0);
+
 	const [formState, setFormState] = useState<FormState>({
 		0: {
 			firstName: 'Alex',
@@ -118,25 +119,29 @@ export const FormRegisterPetPersonalDetails = () => {
 
 	/** When called, the user will be taken forward to the the next step */
 	const next = useCallback(
-		(formState: StepFormState) => {
+		(stepFormState?: StepFormState) => {
 			setIsSubmittingStep(true);
-			setFormState((current) => ({ ...current, [currentStep]: formState }));
+
+			if (stepFormState) {
+				setFormState((current) => ({
+					...current,
+					[currentStep]: stepFormState,
+				}));
+			}
+
 			// Using a `setTimeout` to replicate a call to a back-end API
 			setTimeout(() => {
 				setIsSubmittingStep(false);
 				if (currentStep === TOTAL_STEPS) {
-					router.push('success');
+					submitStep(formState);
+					router.push(`/services/registrations/pet/task-2`);
 				} else {
 					setCurrentStep(currentStep + 1);
 				}
 			}, 1500);
 		},
-		[currentStep, router]
+		[currentStep, formState, submitStep, router]
 	);
-
-	const completeForm = () => {
-		backToHomePage();
-	};
 
 	const [isSavingBeforeExiting, setIsSavingBeforeExiting] = useState(false);
 
@@ -174,7 +179,6 @@ export const FormRegisterPetPersonalDetails = () => {
 			(currentStep in formState &&
 				formState[currentStep as keyof typeof formState]) ||
 			{},
-		completeForm,
 	};
 
 	return (

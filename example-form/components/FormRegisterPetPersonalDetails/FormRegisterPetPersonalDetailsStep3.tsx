@@ -11,12 +11,11 @@ import { FormRegisterPetPersonalDetailsContainer } from './FormRegisterPetPerson
 import { FormRegisterPetPersonalDetailsActions } from './FormRegisterPetPersonalDetailsActions';
 
 export const FormRegisterPetPersonalDetailsStep3 = () => {
-	const { formState, goToStep, completeForm } =
-		useFormRegisterPetPersonalDetails();
+	const { formState, goToStep, next } = useFormRegisterPetPersonalDetails();
 
 	const onSubmit = (event: FormEvent<HTMLFormElement>) => {
 		event.preventDefault();
-		completeForm();
+		next();
 	};
 
 	return (
