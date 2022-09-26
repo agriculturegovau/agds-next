@@ -2,14 +2,14 @@ import { forwardRef, PropsWithChildren } from 'react';
 import { Box, Flex } from '@ag.ds-next/box';
 import { InfoIcon, ChevronDownIcon } from '@ag.ds-next/icon';
 
-export type DetailProps = PropsWithChildren<{
+export type DetailsProps = PropsWithChildren<{
 	/** If true, the InfoIcon will be shown */
 	iconBefore?: boolean;
 	/** The label that will be present in the trigger */
 	label: string;
 }>;
 
-export const Details = forwardRef<HTMLDetailsElement, DetailProps>(
+export const Details = forwardRef<HTMLDetailsElement, DetailsProps>(
 	function Details({ children, iconBefore = false, label = 'Details' }, ref) {
 		return (
 			<details

@@ -2,11 +2,11 @@ import '@testing-library/jest-dom';
 import 'html-validate/jest';
 import { cleanup, render } from '@testing-library/react';
 import { Details } from './Details';
-import type { DetailProps } from './Details';
+import type { DetailsProps } from './Details';
 
 afterEach(cleanup);
 
-function renderDetail(props?: Partial<DetailProps>) {
+function renderDetail(props?: Partial<DetailsProps>) {
 	return render(<Details {...props} />);
 }
 
