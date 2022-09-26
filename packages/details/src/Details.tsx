@@ -6,7 +6,7 @@ export type DetailProps = PropsWithChildren<{
 	/** If true, the InfoIcon will be shown */
 	iconBefore?: boolean;
 	/** The label that will be present in the trigger */
-	label?: string;
+	label: string;
 }>;
 
 export const Details = forwardRef<HTMLDetailsElement, DetailProps>(
