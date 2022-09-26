@@ -1,9 +1,9 @@
 {
-	"name": "@ag.ds-next/detail",
+	"name": "@ag.ds-next/details",
 	"version": "0.0.1",
 	"license": "MIT",
-	"main": "dist/ag.ds-next-detail.cjs.js",
-	"module": "dist/ag.ds-next-detail.esm.js",
+	"main": "dist/ag.ds-next-details.cjs.js",
+	"module": "dist/ag.ds-next-details.esm.js",
 	"peerDependencies": {
 		"@ag.ds-next/box": "7.0.0",
 		"@ag.ds-next/core": "4.0.0",
