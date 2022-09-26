@@ -49,7 +49,7 @@ export function RemoteDataTable() {
 	return (
 		<PageContent>
 			<Stack gap={1}>
-				<Table ref={tableRef}>
+				<Table ref={tableRef} tabIndex={-1}>
 					<TableCaption>Star wars planets</TableCaption>
 					<TableHead>
 						<tr>
