@@ -9,6 +9,7 @@ import { DatePicker } from '@ag.ds-next/date-picker';
 import { H2 } from '@ag.ds-next/heading';
 import { useToggleState } from '@ag.ds-next/core';
 import { Prose } from '@ag.ds-next/prose';
+import { Detail } from '@ag.ds-next/detail';
 import {
 	DefinitionDescription,
 	DefinitionList,
@@ -121,9 +122,7 @@ export const FormRegisterPetPersonalDetailsStep0 = () => {
 					</Stack>
 				) : (
 					<>
-						{/** TODO replace with details/summary. */}
-						<details>
-							<summary>How were my details prefilled?</summary>
+						<Detail label="How were my details prefilled?">
 							<Prose>
 								<p>
 									We’re working hard to improve the way we do business with you.
@@ -143,7 +142,7 @@ export const FormRegisterPetPersonalDetailsStep0 = () => {
 									<a href="#">See your profile and account details</a>
 								</p>
 							</Prose>
-						</details>
+						</Detail>
 						<Stack gap={1.5} alignItems="flex-start" width="100%">
 							<H2>Check personal details</H2>
 							<DefinitionList>
