@@ -1,16 +1,16 @@
 import '@testing-library/jest-dom';
 import 'html-validate/jest';
 import { cleanup, render } from '@testing-library/react';
-import { Detail } from './Detail';
-import type { DetailProps } from './Detail';
+import { Details } from './Details';
+import type { DetailProps } from './Details';
 
 afterEach(cleanup);
 
 function renderDetail(props?: Partial<DetailProps>) {
-	return render(<Detail {...props} />);
+	return render(<Details {...props} />);
 }
 
-describe('Detail', () => {
+describe('Details', () => {
 	it('renders a valid HTML structure', () => {
 		const { container } = renderDetail();
 		expect(container).toHTMLValidate({

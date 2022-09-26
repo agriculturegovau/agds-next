@@ -9,8 +9,8 @@ export type DetailProps = PropsWithChildren<{
 	label?: string;
 }>;
 
-export const Detail = forwardRef<HTMLDetailsElement, DetailProps>(
-	function Detail({ children, iconBefore = false, label = 'Details' }, ref) {
+export const Details = forwardRef<HTMLDetailsElement, DetailProps>(
+	function Details({ children, iconBefore = false, label = 'Details' }, ref) {
 		return (
 			<details
 				ref={ref}
