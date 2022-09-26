@@ -1,5 +1,5 @@
 ---
-'@ag.ds-next/detail': major
+'@ag.ds-next/details': major
 ---
 
-Create Detail component
+Create Details component

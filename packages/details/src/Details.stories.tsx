@@ -1,28 +1,28 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { Text } from '@ag.ds-next/text';
-import { Detail } from './Detail';
+import { Details } from './Details';
 
 export default {
-	title: 'Layout/Detail',
-	component: Detail,
-} as ComponentMeta<typeof Detail>;
+	title: 'Layout/Details',
+	component: Details,
+} as ComponentMeta<typeof Details>;
 
-export const Basic: ComponentStory<typeof Detail> = (args) => (
-	<Detail {...args}>
+export const Basic: ComponentStory<typeof Details> = (args) => (
+	<Details {...args}>
 		<Text as="p">
 			This is a small paragraph of text that is supplimentary to the main page
 			content.
 		</Text>
-	</Detail>
+	</Details>
 );
 Basic.args = { label: 'Details' };
 
-export const WithIcon: ComponentStory<typeof Detail> = (args) => (
-	<Detail {...args}>
+export const WithIcon: ComponentStory<typeof Details> = (args) => (
+	<Details {...args}>
 		<Text as="p">
 			This is a small paragraph of text that is supplimentary to the main page
 			content.
 		</Text>
-	</Detail>
+	</Details>
 );
 WithIcon.args = { label: 'Details', iconBefore: true };

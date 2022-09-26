@@ -721,10 +721,10 @@ items={[
 		code: `<Combobox label="Select country" options={[{ value: 'a', label: 'Option A' }, { value: 'b', label: 'Option B' }, { value: 'c', label: 'Option C' }]} />`,
 	},
 	{
-		group: 'Detail',
+		group: 'Details',
 		name: 'Basic',
-		code: `<Detail label="Details"><Text as="p">This is a small paragraph of text that is supplimentary to the main page
-		content.</Text></Detail>`,
+		code: `<Details label="Details"><Text as="p">This is a small paragraph of text that is supplimentary to the main page
+		content.</Text></Details>`,
 	},
 ];
 
