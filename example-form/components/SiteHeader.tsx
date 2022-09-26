@@ -19,7 +19,7 @@ const NAV_ITEMS = {
 	secondary: [
 		{
 			label: 'Sign out',
-			href: '/sign-out',
+			href: '/not-found',
 			endElement: <AvatarIcon />,
 		},
 	],

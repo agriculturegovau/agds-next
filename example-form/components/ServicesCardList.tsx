@@ -7,7 +7,7 @@ import { Columns } from '@ag.ds-next/columns';
 const items = [
 	{
 		title: 'Payments',
-		slug: '/services/payments',
+		slug: '/not-found',
 		description:
 			'Paperless payments can be made at a time and place that suits you.',
 	},
@@ -19,24 +19,24 @@ const items = [
 	},
 	{
 		title: 'Support',
-		slug: '/services/support',
+		slug: '/not-found',
 		description:
 			'Need help? Our support team are availble via phone, email and online chat.',
 	},
 	{
 		title: 'Housing',
-		slug: '/services/housing',
+		slug: '/not-found',
 		description:
 			'Find help with housing and how to apply for rental assistance..',
 	},
 	{
 		title: 'Waste removal',
-		slug: '/services/waste-removal',
+		slug: '/not-found',
 		description: 'Find waste and recycling management facilities near you.',
 	},
 	{
 		title: 'Urban services',
-		slug: '/services/urban-services',
+		slug: '/not-found',
 		description:
 			'Pay a notice, or apply for permits, approvals and certificates.',
 	},
