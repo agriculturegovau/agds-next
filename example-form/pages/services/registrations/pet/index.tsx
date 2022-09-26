@@ -38,15 +38,15 @@ export default function FormRegisterPetHomePage() {
 								<DirectionLink href="/services/registrations" direction="left">
 									Back
 								</DirectionLink>
-								<Stack gap={1.5}>
-									<PageTitle
-										title="Register your pet"
-										introduction="Registering domestic animals is a requirement of pet ownership. Complete the following 3 tasks to register your pet."
-									/>
-									<Text as="p" color="muted">
-										Takes around 10 minutes.
-									</Text>
-								</Stack>
+								<PageTitle
+									title="Register your pet"
+									introduction="Registering domestic animals is a requirement of pet ownership. Complete the following 2 tasks to register your pet."
+									callToAction={
+										<Text as="p" color="muted">
+											Takes around 10 minutes.
+										</Text>
+									}
+								/>
 								<Stack gap={1.5}>
 									<H2>Registration requirements</H2>
 									<Prose>
