@@ -29,6 +29,12 @@ const fetcher = async (url: string) => {
 
 export function RemoteDataTable() {
 	const [currentPage, setCurrentPage] = useState(1);
+	const tableRef = useRef<HTMLTableElement>(null);
+
+	const handlePagination = (page: number) => {
+		setCurrentPage(page);
+		tableRef.current?.focus();
+	};
 
 	const { data, error } = useSWR<{
 		count: number;
@@ -43,7 +49,7 @@ export function RemoteDataTable() {
 	return (
 		<PageContent>
 			<Stack gap={1}>
-				<Table>
+				<Table ref={tableRef}>
 					<TableCaption>Star wars planets</TableCaption>
 					<TableHead>
 						<tr>
@@ -101,7 +107,7 @@ export function RemoteDataTable() {
 				{totalPages.current ? (
 					<PaginationButtons
 						currentPage={currentPage}
-						onChange={setCurrentPage}
+						onChange={handlePagination}
 						totalPages={totalPages.current}
 					/>
 				) : null}
