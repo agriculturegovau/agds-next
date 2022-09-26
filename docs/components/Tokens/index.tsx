@@ -1,7 +1,8 @@
 import { Box, Flex, Stack } from '@ag.ds-next/box';
 import { boxPalette, tokens } from '@ag.ds-next/core';
 import { Card } from '@ag.ds-next/card';
-import { Columns } from '@ag.ds-next/columns';
+import { Columns, Column } from '@ag.ds-next/columns';
+import { Prose, proseBlockClassname } from '@ag.ds-next/prose';
 import { goldTheme } from '@ag.ds-next/core/src/goldTheme';
 import { theme as agTheme } from '@ag.ds-next/ag-branding';
 import { H2, H3 } from '@ag.ds-next/heading';
@@ -9,22 +10,43 @@ import { Text } from '@ag.ds-next/text';
 
 type paletteName = 'light' | 'dark';
 
-export const BorderChart = () => {
+export const BreakpointsChart = () => {
+	return (
+		<Flex gap={0.5} className={proseBlockClassname}>
+			<Text>Coming soon</Text>
+		</Flex>
+	);
+};
+
+export const BorderRadiusChart = () => {
+	return (
+		<Flex gap={0.5} className={proseBlockClassname}>
+			<Text>Coming soon</Text>
+		</Flex>
+	);
+};
+
+export const BorderWidthChart = () => {
 	const borderWidths = tokens.borderWidth as const;
 	return (
-		<Stack gap={1}>
-			<H2>Border Widths</H2>
-			<Flex gap={0.5}>
-				{Object.entries(borderWidths).map(([token, value]) => {
-					const label = `${token} (${value}px)`;
-					return (
-						<Box key={token} padding={0.5} border borderWidth={token}>
-							<Text>{label}</Text>
-						</Box>
-					);
-				})}
-			</Flex>
-		</Stack>
+		<Flex gap={0.5} className={proseBlockClassname}>
+			{Object.entries(borderWidths).map(([token, value]) => {
+				const label = `${token} (${value}px)`;
+				return (
+					<Box key={token} padding={0.5} border borderWidth={token}>
+						<Text>{label}</Text>
+					</Box>
+				);
+			})}
+		</Flex>
+	);
+};
+
+export const ShadowsChart = () => {
+	return (
+		<Flex gap={0.5} className={proseBlockClassname}>
+			<Text>Coming soon</Text>
+		</Flex>
 	);
 };
 
@@ -32,51 +54,45 @@ export const SpacingChart = () => {
 	// copied from types for mapSpacing
 	const spacingTokens = [0, 0.25, 0.5, 0.75, 1, 1.5, 2, 3, 4, 5, 6];
 	return (
-		<Stack gap={1}>
-			<H2>Spacing</H2>
-			<Stack gap={0.5}>
-				{spacingTokens.map((token) => {
-					const label = `${token} (${token * 16}px)`;
-					return (
-						<Flex key={token} gap={0.25}>
-							<Box
-								css={{
-									backgroundColor: boxPalette.systemInfo,
-									width: token * 16,
-								}}
-							></Box>
-							<Text>{label}</Text>
-						</Flex>
-					);
-				})}
-			</Stack>
+		<Stack gap={0.5} className={proseBlockClassname}>
+			{spacingTokens.map((token) => {
+				const label = `${token} (${token * 16}px)`;
+				return (
+					<Flex key={token} gap={0.25}>
+						<Box
+							css={{
+								backgroundColor: boxPalette.systemInfo,
+								width: token * 16,
+							}}
+						></Box>
+						<Text>{label}</Text>
+					</Flex>
+				);
+			})}
 		</Stack>
 	);
 };
 
 export const MaxWidthChart = () => {
 	return (
-		<Stack gap={1}>
-			<H2>MaxWidth</H2>
-			<Stack gap={0.5}>
-				{Object.entries(tokens.maxWidth).map(([token, value]) => {
-					const label = `${token} (${value})`;
-					return (
-						<Flex key={token} gap={0.25}>
-							<Box
-								padding={0.5}
-								css={{
-									backgroundColor: boxPalette.systemInfoMuted,
-									width: '100%',
-									maxWidth: value,
-								}}
-							>
-								<Text>{label}</Text>
-							</Box>
-						</Flex>
-					);
-				})}
-			</Stack>
+		<Stack gap={0.5} className={proseBlockClassname}>
+			{Object.entries(tokens.maxWidth).map(([token, value]) => {
+				const label = `${token} (${value})`;
+				return (
+					<Flex key={token} gap={0.25}>
+						<Box
+							padding={0.5}
+							css={{
+								backgroundColor: boxPalette.systemInfoMuted,
+								width: '100%',
+								maxWidth: value,
+							}}
+						>
+							<Text>{label}</Text>
+						</Box>
+					</Flex>
+				);
+			})}
 		</Stack>
 	);
 };
@@ -152,14 +168,11 @@ export const ColorTable = ({
 		},
 	} as const;
 
-	console.log({ palettes });
-
-	const cols = { xs: 1, sm: 2, md: 3, lg: 5 } as const;
+	const cols = { xs: 1, sm: 2, md: 3, lg: 4 } as const;
 
 	return (
-		<Stack gap={2}>
+		<Stack gap={2} className={proseBlockClassname}>
 			<Stack gap={1}>
-				<H2>Color</H2>
 				<H3>Foreground colors</H3>
 				<Columns as="ul" cols={cols}>
 					{Object.entries(palettes[activePalette].foreground).map(
@@ -255,5 +268,46 @@ const ColorCard = ({ tokenName, varName, color, children }) => {
 				{children}
 			</Stack>
 		</Card>
+	);
+};
+
+export const TypographyChart = () => {
+	return (
+		<Flex gap={1} className={proseBlockClassname}>
+			<Flex flexDirection="column" gap={1}>
+				<Text fontSize="sm" fontWeight="bold">
+					Default
+				</Text>
+				{['xxxl', 'xxl', 'xl', 'lg', 'md', 'sm', 'xs'].map((size) => (
+					<Box key={size} background="shade">
+						<Text fontSize={size}>{size.toUpperCase()}</Text>
+					</Box>
+				))}
+			</Flex>
+			<Flex flexDirection="column" gap={1}>
+				<Text fontSize="sm" fontWeight="bold">
+					Heading
+				</Text>
+				{['xxxl', 'xxl', 'xl', 'lg', 'md', 'sm', 'xs'].map((size) => (
+					<Box key={size} background="shade">
+						<Text fontSize={size} lineHeight="heading">
+							{size.toUpperCase()}
+						</Text>
+					</Box>
+				))}
+			</Flex>
+			<Flex flexDirection="column" gap={1}>
+				<Text fontSize="sm" fontWeight="bold">
+					Nospace
+				</Text>
+				{['xxxl', 'xxl', 'xl', 'lg', 'md', 'sm', 'xs'].map((size) => (
+					<Box key={size} background="shade">
+						<Text fontSize={size} lineHeight="nospace">
+							{size.toUpperCase()}
+						</Text>
+					</Box>
+				))}
+			</Flex>
+		</Flex>
 	);
 };
