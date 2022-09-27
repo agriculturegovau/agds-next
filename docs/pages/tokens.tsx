@@ -62,13 +62,6 @@ export default function TokensPage() {
 
 						<Section id="color">
 							<h2>Color</h2>
-							<div className={proseBlockClassname}>
-								<Switch
-									label="Dark palette"
-									checked={isDarkMode}
-									onChange={setDarkMode}
-								/>
-							</div>
 							<Columns cols={{ xs: 1, md: 3 }} className={proseBlockClassname}>
 								<Column columnSpan={{ xs: 1, md: 2 }}>
 									<p>
@@ -139,6 +132,14 @@ export default function TokensPage() {
 									</ul>
 								</Column>
 							</Columns>
+
+							<div className={proseBlockClassname}>
+								<Switch
+									label="Dark palette"
+									checked={isDarkMode}
+									onChange={setDarkMode}
+								/>
+							</div>
 
 							<ColorTable activePalette={isDarkMode ? 'dark' : 'light'} />
 						</Section>
