@@ -42,7 +42,7 @@ export async function getGuideList() {
 	const list = await Promise.all(
 		slugs.map((slug) =>
 			getMarkdownData(guidePath(slug)).then(({ data }) => ({
-				order: (data.order as number) || 100,
+				order: (data.order as number | null) || 100,
 				title: (data?.title ?? slug) as string,
 				description: (data.description ?? null) as string | null,
 				slug,
