@@ -121,6 +121,7 @@ type LayoutProps = Partial<{
 		| 'inline-block'
 		| 'inline-flex'
 		| 'none'
+		| 'table'
 		| 'table-row-group'
 		| 'table-header-group'
 		| 'table-footer-group'
