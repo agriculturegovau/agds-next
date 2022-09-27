@@ -15,14 +15,13 @@ import { RegistrationsCardList } from '../../../components/RegistrationsCardList
 
 export default function RegistrationsPage() {
 	const pageAlertRef = useRef<HTMLDivElement>(null);
-	const { query } = useRouter();
-
-	const showPageAlert = query.submitted === 'true';
+	const router = useRouter();
+	const registrationId = router.query.registrationId;
 
 	useEffect(() => {
-		if (!showPageAlert) return;
+		if (!registrationId) return;
 		pageAlertRef.current?.focus();
-	}, [showPageAlert]);
+	}, [registrationId]);
 
 	return (
 		<>
@@ -40,14 +39,16 @@ export default function RegistrationsPage() {
 				</HeroSubcategoryBanner>
 				<SectionContent>
 					<Stack gap={1.5}>
-						{showPageAlert && (
+						{registrationId && (
 							<PageAlert
 								ref={pageAlertRef}
 								title="Your pet registration has been submitted"
 								tone="success"
 								tabIndex={-1}
 							>
-								<Text as="p">Registration application number PET123456</Text>
+								<Text as="p">
+									Registration application number {registrationId}
+								</Text>
 							</PageAlert>
 						)}
 						<RegistrationsCardList />
