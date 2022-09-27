@@ -5,6 +5,7 @@ import { textInputStyles } from '@ag.ds-next/text-input';
 type NativeTextareaProps = TextareaHTMLAttributes<HTMLTextAreaElement>;
 
 type BaseTextareaProps = {
+	autoFocus?: NativeTextareaProps['autoFocus'];
 	disabled?: NativeTextareaProps['disabled'];
 	id?: NativeTextareaProps['id'];
 	inputMode?: NativeTextareaProps['inputMode'];
