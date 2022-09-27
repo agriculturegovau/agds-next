@@ -16,7 +16,7 @@ export const FormRegisterPetDetailsContainer = ({
 }) => {
 	const { hasCompletedPreviousSteps } = useFormExampleMultiStep();
 	return (
-		<Stack gap={3}>
+		<Stack gap={3} width="100%">
 			<PageTitle
 				pretext="Your pet’s details"
 				title={title}

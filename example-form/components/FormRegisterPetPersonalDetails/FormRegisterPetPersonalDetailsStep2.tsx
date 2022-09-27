@@ -16,10 +16,13 @@ import { FormRegisterPetPersonalDetailsContainer } from './FormRegisterPetPerson
 
 const formSchema = yup
 	.object({
-		contactMethod: yup.string().required('Select an option'),
+		contactMethod: yup
+			.string()
+			.typeError('Select an option')
+			.required('Select an option'),
 		mobileNumber: yup.string().when('contactMethod', (value, schema) => {
-			if (Array.isArray(value) && value.includes('B')) {
-				return schema.required('Nested field is required');
+			if (value === 'sms') {
+				return schema.required('Mobile number is required');
 			}
 			return schema;
 		}),
@@ -128,6 +131,7 @@ export const FormRegisterPetPersonalDetailsStep2 = () => {
 								<TextInput
 									id="mobilePhone"
 									type="tel"
+									autoComplete="tel"
 									label="Provide mobile phone number"
 									{...register('mobileNumber')}
 									invalid={Boolean(errors.mobileNumber?.message)}

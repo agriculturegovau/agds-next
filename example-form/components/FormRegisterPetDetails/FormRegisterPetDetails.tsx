@@ -13,6 +13,7 @@ import { Stack } from '@ag.ds-next/box';
 import { Text } from '@ag.ds-next/text';
 import { DirectionButton } from '@ag.ds-next/direction-link';
 import { AppLayout } from '../AppLayout';
+import { useFormRegisterPet } from '../FormRegisterPetContext';
 import {
 	FormRegisterPetDetailsStep0,
 	FormSchema as FormRegisterPetDetailsStep0Schema,
@@ -60,7 +61,7 @@ type ContextType = {
 	/** When called, the user will be taken back to the previous step */
 	back: () => void;
 	/** When called, the user will be taken forward to the the next step */
-	next: (stepFormState: StepFormState) => void;
+	next: (stepFormState?: StepFormState) => void;
 	/** When called, the user will be taken to the provided step */
 	goToStep: (step: number) => void;
 	/** The current step of the form */
@@ -86,7 +87,7 @@ const context = createContext<ContextType | undefined>(undefined);
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 type StepFormState = Record<string, any>;
 
-type FormState = Partial<{
+export type FormState = Partial<{
 	[0]: FormRegisterPetDetailsStep0Schema;
 	[1]: FormRegisterPetDetailsStep1Schema;
 	[2]: FormRegisterPetDetailsStep2Schema;
@@ -94,12 +95,13 @@ type FormState = Partial<{
 }>;
 
 export const FormRegisterPetDetails = () => {
+	const { submitStep } = useFormRegisterPet();
+
 	const router = useRouter();
 	const [currentStep, setCurrentStep] = useState(0);
 	const [formState, setFormState] = useState<FormState>({});
 
 	const backToHomePage = useCallback(() => {
-		console.log('here...');
 		router.push('/services/registrations/pet');
 	}, [router]);
 
@@ -113,20 +115,30 @@ export const FormRegisterPetDetails = () => {
 
 	/** When called, the user will be taken forward to the the next step */
 	const next = useCallback(
-		(formState: StepFormState) => {
+		(stepFormState?: StepFormState) => {
 			setIsSubmittingStep(true);
-			setFormState((current) => ({ ...current, [currentStep]: formState }));
+
+			if (stepFormState) {
+				setFormState((current) => ({
+					...current,
+					[currentStep]: stepFormState,
+				}));
+			}
+
 			// Using a `setTimeout` to replicate a call to a back-end API
 			setTimeout(() => {
 				setIsSubmittingStep(false);
 				if (currentStep === TOTAL_STEPS) {
-					router.push('success');
+					submitStep(formState);
+					router.push('/services/registrations', {
+						query: { submitted: true },
+					});
 				} else {
 					setCurrentStep(currentStep + 1);
 				}
 			}, 1500);
 		},
-		[currentStep, router]
+		[currentStep, formState, submitStep, router]
 	);
 
 	const [isSavingBeforeExiting, setIsSavingBeforeExiting] = useState(false);

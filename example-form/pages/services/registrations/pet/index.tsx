@@ -1,15 +1,16 @@
 import { Columns, Column } from '@ag.ds-next/columns';
-import { DirectionLink } from '@ag.ds-next/direction-link';
 import { H2 } from '@ag.ds-next/heading';
 import { PageContent } from '@ag.ds-next/content';
 import { Prose } from '@ag.ds-next/prose';
 import { Stack } from '@ag.ds-next/box';
 import { TaskList } from '@ag.ds-next/task-list';
 import { Text } from '@ag.ds-next/text';
+import { Breadcrumbs } from '@ag.ds-next/breadcrumbs';
 import { AppLayout } from '../../../../components/AppLayout';
 import { DocumentTitle } from '../../../../components/DocumentTitle';
 import { FormHelpCallout } from '../../../../components/FormHelpCallout';
 import { PageTitle } from '../../../../components/PageTitle';
+import { useFormRegisterPet } from '../../../../components/FormRegisterPetContext';
 
 const TASKS = [
 	{
@@ -25,26 +26,32 @@ const TASKS = [
 ];
 
 export default function FormRegisterPetHomePage() {
+	const { formState } = useFormRegisterPet();
 	return (
 		<>
 			<DocumentTitle title="Register your pet" />
-			<AppLayout focusMode>
+			<AppLayout>
 				<PageContent>
 					<Columns>
 						<Column columnSpan={{ xs: 12, md: 8 }}>
 							<Stack gap={3}>
-								<DirectionLink href="/services/registrations" direction="left">
-									Back
-								</DirectionLink>
-								<Stack gap={1.5}>
-									<PageTitle
-										title="Register your pet"
-										introduction="Registering domestic animals is a requirement of pet ownership. Complete the following 3 tasks to register your pet."
-									/>
-									<Text as="p" color="muted">
-										Takes around 10 minutes.
-									</Text>
-								</Stack>
+								<Breadcrumbs
+									links={[
+										{ href: '/', label: 'Home' },
+										{ href: '/services', label: 'Services' },
+										{ href: '/services/registrations', label: 'Registrations' },
+										{ label: 'Register your pet' },
+									]}
+								/>
+								<PageTitle
+									title="Register your pet"
+									introduction="Registering domestic animals is a requirement of pet ownership. Complete the following 2 tasks to register your pet."
+									callToAction={
+										<Text as="p" color="muted">
+											Takes around 10 minutes.
+										</Text>
+									}
+								/>
 								<Stack gap={1.5}>
 									<H2>Registration requirements</H2>
 									<Prose>
@@ -59,9 +66,9 @@ export default function FormRegisterPetHomePage() {
 									</Prose>
 								</Stack>
 								<TaskList
-									items={TASKS.map((task) => ({
+									items={TASKS.map((task, idx) => ({
 										...task,
-										status: 'todo',
+										status: idx in formState ? 'done' : 'todo',
 									}))}
 								/>
 								<FormHelpCallout />

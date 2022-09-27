@@ -7,17 +7,17 @@ import { Columns } from '@ag.ds-next/columns';
 const items = [
 	{
 		title: 'Register your car',
-		slug: '/services/registrations/car',
+		slug: '/not-found',
 		description: 'Register for a parking permit.',
 	},
 	{
 		title: 'Register for a parking permit',
-		slug: '/services/registrations/parking-permit',
+		slug: '/not-found',
 		description: 'Pay for a permit to park in authorised zones in your area.',
 	},
 	{
 		title: 'Register a business',
-		slug: '/services/registrations/business',
+		slug: '/not-found',
 		description: 'Apply for an ABN, and register a business or business name.',
 	},
 	{
@@ -28,13 +28,13 @@ const items = [
 	},
 	{
 		title: 'Register for business vouchers',
-		slug: '/services/registrations/business-vouchers',
+		slug: '/not-found',
 		description:
 			'Find out what vouchers your business may be eligible to offer customers',
 	},
 	{
 		title: 'Register an event',
-		slug: '/services/registrations/event',
+		slug: '/not-found',
 		description:
 			"You'll need to register if your event serves food or alcohol.",
 	},

@@ -2,7 +2,6 @@
 	"name": "agds-next",
 	"version": "0.0.1",
 	"main": "index.js",
-	"author": "Mike Hazell <mikehazell@users.noreply.github.com>",
 	"license": "MIT",
 	"private": true,
 	"engines": {

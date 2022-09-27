@@ -7,18 +7,18 @@ import { Columns } from '@ag.ds-next/columns';
 const items = [
 	{
 		title: 'Fix my street',
-		slug: '/services/fix-my-street',
+		slug: '/not-found',
 		description:
 			'Use our online tool to report an issue and track its progress.',
 	},
 	{
 		title: 'Register for a parking permit',
-		slug: '/services/registrations/parking-permit',
+		slug: '/not-found',
 		description: 'Pay for a permit to park in authorised zones in your area.',
 	},
 	{
 		title: 'Vouchers',
-		slug: '/services/support',
+		slug: '/not-found',
 		description:
 			'Find vouchers your customers can use, and grow your business.',
 	},
@@ -30,13 +30,13 @@ const items = [
 	},
 	{
 		title: 'Support',
-		slug: '/services/support',
+		slug: '/not-found',
 		description:
 			'Find support services and resources available to your business.',
 	},
 	{
 		title: 'Pay a fine',
-		slug: '/services/pay-a-fine',
+		slug: '/not-found',
 		description: 'Manage and pay traffic and parking infringements.',
 	},
 ];

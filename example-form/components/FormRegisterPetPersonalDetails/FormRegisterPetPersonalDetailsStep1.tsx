@@ -2,16 +2,25 @@ import { useEffect, useRef, useState } from 'react';
 import { useForm, SubmitHandler, SubmitErrorHandler } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
-import { Prose } from '@ag.ds-next/prose';
+import { Box, Stack } from '@ag.ds-next/box';
+import { Button } from '@ag.ds-next/button';
 import { FormStack } from '@ag.ds-next/form-stack';
-import { PageAlert } from '@ag.ds-next/page-alert';
-import { Stack } from '@ag.ds-next/box';
-import { useScrollToField } from '@ag.ds-next/field';
 import { TextInput } from '@ag.ds-next/text-input';
+import { H2 } from '@ag.ds-next/heading';
+import { Prose } from '@ag.ds-next/prose';
+import { useScrollToField } from '@ag.ds-next/field';
+import { useToggleState } from '@ag.ds-next/core';
+import { PageAlert } from '@ag.ds-next/page-alert';
 import { Select } from '@ag.ds-next/select';
+import {
+	DefinitionDescription,
+	DefinitionList,
+	DefinitionListItem,
+	DefinitionTerm,
+} from '../DefinitionList';
+import { FormRegisterPetPersonalDetailsContainer } from './FormRegisterPetPersonalDetailsContainer';
 import { FormRegisterPetPersonalDetailsActions } from './FormRegisterPetPersonalDetailsActions';
 import { useFormRegisterPetPersonalDetails } from './FormRegisterPetPersonalDetails';
-import { FormRegisterPetPersonalDetailsContainer } from './FormRegisterPetPersonalDetailsContainer';
 
 const formSchema = yup
 	.object({
@@ -28,6 +37,7 @@ const formSchema = yup
 export type FormSchema = yup.InferType<typeof formSchema>;
 
 export const FormRegisterPetPersonalDetailsStep1 = () => {
+	const [isFormVisibile, toggleFormVisibilty] = useToggleState(false, true);
 	const { next, stepFormState } = useFormRegisterPetPersonalDetails();
 	const scrollToField = useScrollToField();
 	const errorRef = useRef<HTMLDivElement>(null);
@@ -38,7 +48,7 @@ export const FormRegisterPetPersonalDetailsStep1 = () => {
 		handleSubmit,
 		formState: { errors },
 	} = useForm<FormSchema>({
-		defaultValues: stepFormState ?? { files: [] },
+		defaultValues: stepFormState,
 		resolver: yupResolver(formSchema),
 	});
 
@@ -66,89 +76,135 @@ export const FormRegisterPetPersonalDetailsStep1 = () => {
 			title="Address details"
 			introduction="Provide address for where pet will be housed"
 		>
-			<Stack
-				as="form"
-				gap={3}
-				onSubmit={handleSubmit(onSubmit, onError)}
-				noValidate
-			>
-				<FormStack>
-					{hasErrors && (
-						<PageAlert
-							ref={errorRef}
-							tone="error"
-							title="There is a problem"
-							tabIndex={-1}
+			<Stack gap={3} alignItems="flex-start">
+				{isFormVisibile ? (
+					<Stack gap={1.5}>
+						<H2>Update personal details</H2>
+						<Stack
+							as="form"
+							gap={3}
+							onSubmit={handleSubmit(onSubmit, onError)}
+							noValidate
 						>
-							<Prose>
-								<p>Please correct the following fields and try again</p>
-								<ul>
-									{Object.entries(errors).map(([key, value]) => (
-										<li key={key}>
-											<a href={`#${key}`} onClick={scrollToField}>
-												{Array.isArray(value)
-													? value[0].message
-													: value.message}
-											</a>
-										</li>
-									))}
-								</ul>
-							</Prose>
-						</PageAlert>
-					)}
-					<TextInput
-						label="Street address"
-						autoComplete="street-address"
-						{...register('streetAddress')}
-						id="streetAddress"
-						invalid={Boolean(errors.streetAddress?.message)}
-						message={errors.streetAddress?.message}
-						required
-						maxWidth="xl"
-					/>
-					<TextInput
-						label="Suburb, town or city"
-						autoComplete="address-level2"
-						{...register('suburbTownCity')}
-						id="suburbTownCity"
-						invalid={Boolean(errors.suburbTownCity?.message)}
-						message={errors.suburbTownCity?.message}
-						required
-					/>
-					<Select
-						label="State or territory"
-						{...register('state')}
-						id="state"
-						placeholder="Select"
-						options={[
-							{ label: 'NSW', value: 'nsw' },
-							{ label: 'QLD', value: 'qld' },
-							{ label: 'ACT', value: 'act' },
-							{ label: 'VIC', value: 'vic' },
-							{ label: 'TAS', value: 'tas' },
-							{ label: 'NT', value: 'nt' },
-							{ label: 'SA', value: 'sa' },
-							{ label: 'WA', value: 'wa' },
-						]}
-						invalid={Boolean(errors.state?.message)}
-						message={errors.state?.message}
-						required
-						maxWidth="md"
-					/>
-					<TextInput
-						label="Postcode"
-						autoComplete="postal-code"
-						{...register('postcode')}
-						id="postcode"
-						invalid={Boolean(errors.postcode?.message)}
-						message={errors.postcode?.message}
-						maxWidth="sm"
-						inputMode="numeric"
-						pattern="[0-9]*"
-						required
-					/>
-				</FormStack>
-				<FormRegisterPetPersonalDetailsActions />
+							<FormStack>
+								{hasErrors && (
+									<PageAlert
+										ref={errorRef}
+										tone="error"
+										title="There is a problem"
+										tabIndex={-1}
+									>
+										<Prose>
+											<p>Please correct the following fields and try again</p>
+											<ul>
+												{Object.entries(errors).map(([key, value]) => (
+													<li key={key}>
+														<a href={`#${key}`} onClick={scrollToField}>
+															{Array.isArray(value)
+																? value[0].message
+																: value.message}
+														</a>
+													</li>
+												))}
+											</ul>
+										</Prose>
+									</PageAlert>
+								)}
+								<TextInput
+									label="Street address"
+									autoComplete="street-address"
+									{...register('streetAddress')}
+									id="streetAddress"
+									invalid={Boolean(errors.streetAddress?.message)}
+									message={errors.streetAddress?.message}
+									maxWidth="xl"
+									required
+								/>
+								<TextInput
+									label="Suburb, town or city"
+									autoComplete="address-level2"
+									{...register('suburbTownCity')}
+									id="suburbTownCity"
+									invalid={Boolean(errors.suburbTownCity?.message)}
+									message={errors.suburbTownCity?.message}
+									maxWidth="xl"
+									required
+								/>
+								<Select
+									label="State or territory"
+									{...register('state')}
+									id="state"
+									placeholder="Select"
+									options={[
+										{ label: 'NSW', value: 'nsw' },
+										{ label: 'QLD', value: 'qld' },
+										{ label: 'ACT', value: 'act' },
+										{ label: 'VIC', value: 'vic' },
+										{ label: 'TAS', value: 'tas' },
+										{ label: 'NT', value: 'nt' },
+										{ label: 'SA', value: 'sa' },
+										{ label: 'WA', value: 'wa' },
+									]}
+									invalid={Boolean(errors.state?.message)}
+									message={errors.state?.message}
+									maxWidth="md"
+									required
+								/>
+								<TextInput
+									label="Postcode"
+									inputMode="numeric"
+									pattern="[0-9]*"
+									autoComplete="postal-code"
+									{...register('postcode')}
+									id="postcode"
+									invalid={Boolean(errors.postcode?.message)}
+									message={errors.postcode?.message}
+									maxWidth="sm"
+									required
+								/>
+							</FormStack>
+							<FormRegisterPetPersonalDetailsActions />
+						</Stack>
+					</Stack>
+				) : (
+					<>
+						<Stack gap={1.5} alignItems="flex-start" width="100%">
+							<H2>Check address</H2>
+							<DefinitionList>
+								<DefinitionListItem>
+									<DefinitionTerm>Street address</DefinitionTerm>
+									<DefinitionDescription>
+										{stepFormState.streetAddress}
+									</DefinitionDescription>
+								</DefinitionListItem>
+								<DefinitionListItem>
+									<DefinitionTerm>Suburb, town or city</DefinitionTerm>
+									<DefinitionDescription>
+										{stepFormState.suburbTownCity}
+									</DefinitionDescription>
+								</DefinitionListItem>
+								<DefinitionListItem>
+									<DefinitionTerm>State</DefinitionTerm>
+									<DefinitionDescription>
+										{stepFormState.state}
+									</DefinitionDescription>
+								</DefinitionListItem>
+								<DefinitionListItem>
+									<DefinitionTerm>Post code</DefinitionTerm>
+									<DefinitionDescription>
+										{stepFormState.postcode}
+									</DefinitionDescription>
+								</DefinitionListItem>
+							</DefinitionList>
+							<Button variant="text" onClick={() => toggleFormVisibilty()}>
+								Change address
+							</Button>
+						</Stack>
+						<Box as="form" width="100%" onSubmit={handleSubmit(onSubmit)}>
+							<FormRegisterPetPersonalDetailsActions />
+						</Box>
+					</>
+				)}
 			</Stack>
 		</FormRegisterPetPersonalDetailsContainer>
 	);

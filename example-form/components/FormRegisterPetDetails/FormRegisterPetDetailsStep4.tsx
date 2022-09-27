@@ -1,3 +1,4 @@
+import { FormEvent } from 'react';
 import { Stack } from '@ag.ds-next/box';
 import { H2 } from '@ag.ds-next/heading';
 import { Button } from '@ag.ds-next/button';
@@ -7,7 +8,12 @@ import { FormRegisterPetDetailsContainer } from './FormRegisterPetDetailsContain
 import { FormRegisterPetDetailsActions } from './FormRegisterPetDetailsActions';
 
 export const FormRegisterPetDetailsStep4 = () => {
-	const { formState, goToStep } = useFormExampleMultiStep();
+	const { formState, goToStep, next } = useFormExampleMultiStep();
+
+	const onSubmit = (event: FormEvent<HTMLFormElement>) => {
+		event.preventDefault();
+		next();
+	};
 
 	return (
 		<FormRegisterPetDetailsContainer
@@ -84,7 +90,9 @@ export const FormRegisterPetDetailsStep4 = () => {
 					]}
 				/>
 			</Stack>
-			<FormRegisterPetDetailsActions />
+			<form onSubmit={onSubmit}>
+				<FormRegisterPetDetailsActions />
+			</form>
 		</FormRegisterPetDetailsContainer>
 	);
 };
