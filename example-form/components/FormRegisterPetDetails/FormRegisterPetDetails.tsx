@@ -130,9 +130,7 @@ export const FormRegisterPetDetails = () => {
 				setIsSubmittingStep(false);
 				if (currentStep === TOTAL_STEPS) {
 					submitStep(formState);
-					router.push('/services/registrations', {
-						query: { submitted: true },
-					});
+					router.push('/services/registrations?registrationId=PET123456');
 				} else {
 					setCurrentStep(currentStep + 1);
 				}
