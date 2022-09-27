@@ -1,6 +1,5 @@
 import { PropsWithChildren, useState } from 'react';
 import { Box, Flex, Stack } from '@ag.ds-next/box';
-import { H2 } from '@ag.ds-next/heading';
 import { PageContent } from '@ag.ds-next/content';
 import { Prose, proseBlockClassname } from '@ag.ds-next/prose';
 import { InpageNav } from '@ag.ds-next/inpage-nav';
@@ -59,10 +58,10 @@ export const SectionColor = ({ isDarkMode }: { isDarkMode: boolean }) => {
 							<strong>Do</strong> pair foreground and background colours.
 						</li>
 						<li>
-							<strong>Don't</strong> mix light and dark variables.
+							<strong>Don&apos;t</strong> mix light and dark variables.
 						</li>
 						<li>
-							<strong>Don't</strong> pair foreground with foreground or
+							<strong>Don&apos;t</strong> pair foreground with foreground or
 							background with background.
 						</li>
 					</ul>
