@@ -1,11 +1,11 @@
 import { Columns, Column } from '@ag.ds-next/columns';
-import { DirectionLink } from '@ag.ds-next/direction-link';
 import { H2 } from '@ag.ds-next/heading';
 import { PageContent } from '@ag.ds-next/content';
 import { Prose } from '@ag.ds-next/prose';
 import { Stack } from '@ag.ds-next/box';
 import { TaskList } from '@ag.ds-next/task-list';
 import { Text } from '@ag.ds-next/text';
+import { Breadcrumbs } from '@ag.ds-next/breadcrumbs';
 import { AppLayout } from '../../../../components/AppLayout';
 import { DocumentTitle } from '../../../../components/DocumentTitle';
 import { FormHelpCallout } from '../../../../components/FormHelpCallout';
@@ -30,14 +30,19 @@ export default function FormRegisterPetHomePage() {
 	return (
 		<>
 			<DocumentTitle title="Register your pet" />
-			<AppLayout focusMode>
+			<AppLayout>
 				<PageContent>
 					<Columns>
 						<Column columnSpan={{ xs: 12, md: 8 }}>
 							<Stack gap={3}>
-								<DirectionLink href="/services/registrations" direction="left">
-									Back
-								</DirectionLink>
+								<Breadcrumbs
+									links={[
+										{ href: '/', label: 'Home' },
+										{ href: '/services', label: 'Services' },
+										{ href: '/services/registrations', label: 'Registrations' },
+										{ label: 'Register your pet' },
+									]}
+								/>
 								<PageTitle
 									title="Register your pet"
 									introduction="Registering domestic animals is a requirement of pet ownership. Complete the following 2 tasks to register your pet."
