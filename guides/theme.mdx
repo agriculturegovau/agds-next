@@ -11,51 +11,7 @@ In this guide, we will go through how to make a new Theme for AgDS.
 
 Each foreground, background, border, and system colours has a specific purpose.
 
-### Foreground colours
-
-Foreground colours are designed to sit on top of background colours to ensure contrast ratios meet WCAG 2.1 level AA accessibility requirements.
-
-| Name        | Description                                                                                                                                                                                                                                                                  |
-| ----------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `text`      | Used for primary text like body text, headings, and labels to ensure they’re prominent and legible.                                                                                                                                                                          |
-| `textMuted` | Used for secondary text to make it less prominent.                                                                                                                                                                                                                           |
-| `action`    | Used to indicate interactive components like links and buttons. Don’t use the action colour for non-interactive components as it could confuse users. Also make sure you don’t rely on colour alone to indicate that a component is interactive, use additional visual cues. |
-| `focus`     | Used to highlight interactive components for those navigating via keyboard.                                                                                                                                                                                                  |
-
-### Background colours
-
-Background colours are designed to sit under foreground colours to ensure contrast ratios meet WCAG 2.1 level AA accessibility requirements. Each colour palette has 2 main background colours to choose from, the default background (body) and a darker alternative (body-alt). Shades can be used to help differentiate or highlight content against the body background colours.
-
-| Name       | Description                                                                                                                                                                                 |
-| ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `body`     | Used for the main background.                                                                                                                                                               |
-| `shade`    | Used to help differentiate or highlight interface components that sit on `body` background. For example, hover states for interactive components, callouts, and Zebra stripes on tables.    |
-| `bodyAlt`  | Used as an alternative background.                                                                                                                                                          |
-| `shadeAlt` | Used to help differentiate or highlight interface components that sit on `bodyAlt` background. For example, hover states for interactive components, callouts, and Zebra stripes on tables. |
-
-### Border colours
-
-Each colour palette has 2 border colours.
-
-| Name          | Description                                                                                                                                                                                                                                     |
-| ------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `border`      | Used for borders of non-decorative interface components that require a 3:1 colour contrast ratio. For example, form input field borders are considered non-decorative because if they were removed, form input fields wouldn’t be recognisable. |
-| `borderMuted` | Used for decorative interface components that don’t require a 3:1 colour contrast ratio.                                                                                                                                                        |
-
-### System colours
-
-System colours are used to indicate status. They’re very prominent colours aimed at grabbing the user’s attention. Each system colour has a muted version to be used as a background colour.
-
-| Name           | Description                                                                                                                      |
-| -------------- | -------------------------------------------------------------------------------------------------------------------------------- |
-| `error`        | Used to indicate that something is wrong, or a task has failed and needs urgent attention. For example, a form validation error. |
-| `errorMuted`   | Used as a background for a Component with an `error` tone                                                                        |
-| `success`      | Used to indicate that a task was completed as expected.                                                                          |
-| `successMuted` | Used as a background for a Component with an `success` tone                                                                      |
-| `warning`      | Used to indicate that taking an action could be risky and that a user should be cautious.                                        |
-| `warningMuted` | Used as a background for a Component with an `warning` tone                                                                      |
-| `info`         | Used to provide addition information.                                                                                            |
-| `infoMuted`    | Used as a background for a Component with an `info` tone                                                                         |
+To learn more about how to use these colours, see the [Tokens](/agds-next/tokens) page.
 
 ## Don’t rely on colour alone to convey meaning
 
@@ -186,11 +142,9 @@ Typescript should help you by autocompleting token names, the full list of token
 
 ### Tips for picking colours
 
-
 - Mix of neutrals
 - System colours
 - Contrast
-
 
 ## Theme schema
 

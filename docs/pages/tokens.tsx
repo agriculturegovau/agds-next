@@ -58,15 +58,17 @@ export default function TokensPage() {
 									{ href: '#typography', label: 'Typography' },
 								]}
 							/>
-							<Switch
-								label="Dark palette"
-								checked={isDarkMode}
-								onChange={setDarkMode}
-							/>
 						</Stack>
 
 						<Section id="color">
 							<h2>Color</h2>
+							<div className={proseBlockClassname}>
+								<Switch
+									label="Dark palette"
+									checked={isDarkMode}
+									onChange={setDarkMode}
+								/>
+							</div>
 							<Columns cols={{ xs: 1, md: 3 }} className={proseBlockClassname}>
 								<Column columnSpan={{ xs: 1, md: 2 }}>
 									<p>
@@ -83,6 +85,41 @@ export default function TokensPage() {
 										tested to pass accessibility contrast ratios when used with
 										all background colours within a theme and vice versa.
 									</p>
+
+									<p>
+										Each foreground, background, border, and system colours has
+										a specific purpose...
+									</p>
+
+									<ul>
+										<li>
+											<strong>Foreground colors</strong>: Designed to sit on top
+											of background colours to ensure contrast ratios meet WCAG
+											2.1 level AA accessibility requirements.
+										</li>
+
+										<li>
+											<strong>Background colors</strong>: Designed to sit under
+											foreground colours to ensure contrast ratios meet WCAG 2.1
+											level AA accessibility requirements. Each colour palette
+											has 2 main background colours to choose from, the default
+											background (body) and a darker alternative (body-alt).
+											Shades can be used to help differentiate or highlight
+											content against the body background colours.
+										</li>
+
+										<li>
+											<strong>Border colors</strong>: Each colour palette has 2
+											border colours.
+										</li>
+
+										<li>
+											<strong>System colors</strong>: System colours are used to
+											indicate status. They’re very prominent colours aimed at
+											grabbing the user’s attention. Each system colour has a
+											muted version to be used as a background colour.
+										</li>
+									</ul>
 								</Column>
 
 								<Column>
