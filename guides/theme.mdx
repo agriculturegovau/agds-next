@@ -84,15 +84,15 @@ In the example below, change the palette prop in the parent Stack to see this be
 
 ## Creating a custom Theme
 
-We will now go through the technical steps of defining a new `AgDSTheme`. We will assume you are implementing this in an existing NextJS application that already uses AgDS.
+We will now go through the technical steps of defining a new `Theme`. We will assume you are implementing this in an existing NextJS application that already uses AgDS.
 
 In your app, create a file called theme.tsx...
 
 ```tsx
 // theme.tsx
-import { AgDSTheme } from '@ag.ds-next/core';
+import { Theme } from '@ag.ds-next/core';
 
-export const myTheme: AgDSTheme = {};
+export const myTheme: Theme = {};
 ```
 
 ..and import that into your application's Core component.
@@ -116,10 +116,10 @@ The default theme in AgDS is `GOLD`, based on the former Australian Government D
 
 ```tsx
 // theme.tsx
-import { AgDSTheme } from '@ag.ds-next/core';
+import { Theme } from '@ag.ds-next/core';
 import { Theme as agTheme } from '@ag.ds-next/ag-branding';
 
-export const myTheme: AgDSTheme = {
+export const myTheme: Theme = {
 	...agTheme,
 };
 ```
@@ -128,10 +128,10 @@ Now you can define your tokens!
 
 ```tsx
 // theme.tsx
-import { AgDSTheme } from '@ag.ds-next/core';
+import { Theme } from '@ag.ds-next/core';
 import { Theme as agTheme } from '@ag.ds-next/ag-branding';
 
-export const myTheme: AgDSTheme = {
+export const myTheme: Theme = {
 	...agTheme,
 	lightAccent: '#00558b',
 	darkAccent: '#00558b',
@@ -149,9 +149,9 @@ Typescript should help you by autocompleting token names, the full list of token
 ## Theme schema
 
 ```ts
-import { AgDSTheme } from '@ag.ds-next/core';
+import { Theme } from '@ag.ds-next/core';
 
-export const MyTheme: AgDSTheme = {
+export const MyTheme: Theme = {
 	// light palette colours
 	lightForegroundText: '#313131',
 	lightForegroundAction: '#00558b',

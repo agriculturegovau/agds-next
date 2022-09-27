@@ -2,7 +2,7 @@ import { PropsWithChildren } from 'react';
 import { Global } from '@emotion/react';
 import { goldTheme } from './goldTheme';
 import { CoreProvider, CoreProviderProps } from './CoreProvider';
-import { mergeTheme, AgDSTheme } from './theme';
+import { mergeTheme, Theme } from './theme';
 import { boxPalettes, boxPalette } from './boxPalette';
 import { tokens } from './tokens';
 import { generateFontGrid } from './utils/fontGrid';
@@ -13,7 +13,7 @@ export type CoreProps = PropsWithChildren<
 		/** If true, a CSS reset will be applied. */
 		applyReset?: boolean;
 		/** Enables overwriting of the default theme. */
-		theme?: AgDSTheme;
+		theme?: Theme;
 	} & CoreProviderProps
 >;
 
