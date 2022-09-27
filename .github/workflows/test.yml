@@ -144,3 +144,6 @@ jobs:
 
       - name: Build Templates
         run: yarn example:build
+
+      - name: Build Example Form
+        run: yarn example-form:build
