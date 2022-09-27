@@ -1,5 +1,5 @@
 import { Box, Flex, Stack } from '@ag.ds-next/box';
-import { boxPalette, tokens } from '@ag.ds-next/core';
+import { boxPalette, tokens, Spacing } from '@ag.ds-next/core';
 import { proseBlockClassname } from '@ag.ds-next/prose';
 import { Text } from '@ag.ds-next/text';
 
@@ -42,7 +42,7 @@ export const BorderWidthChart = () => {
 
 export const SpacingChart = () => {
 	// copied from types for mapSpacing
-	const spacingTokens = [0, 0.25, 0.5, 0.75, 1, 1.5, 2, 3, 4, 5, 6];
+	const spacingTokens: Spacing[] = [0, 0.25, 0.5, 0.75, 1, 1.5, 2, 3, 4, 5, 6];
 
 	return (
 		<Stack gap={0.5} className={proseBlockClassname}>
@@ -52,7 +52,7 @@ export const SpacingChart = () => {
 					<Flex key={token} gap={0.25}>
 						<Box
 							css={{
-								backgroundColor: boxPalette.systemInfo,
+								backgroundColor: boxPalette.systemInfoMuted,
 								width: token * 16,
 							}}
 						></Box>

@@ -30,90 +30,8 @@ const Section = ({
 	);
 };
 
-export const SectionColor = ({ isDarkMode }: { isDarkMode: boolean }) => {
-	return (
-		<Section id="color">
-			<h2>Color</h2>
-			<Columns cols={{ xs: 1, md: 3 }} className={proseBlockClassname}>
-				<Column columnSpan={{ xs: 1, md: 2 }}>
-					<p>
-						The colour palette is designed and tested to provide colour pairings
-						that pass accessibility contrast ratios while still being easy to
-						implement. This means that designers and developers using the system
-						do not need to be concerned about if a colour will pass WCAG
-						requirements in a particular circumstance.
-					</p>
-					<p>
-						We use semantic naming so that all colours labeled as foreground
-						colours in a theme. These colours are manually tested to pass
-						accessibility contrast ratios when used with all background colours
-						within a theme and vice versa.
-					</p>
-				</Column>
-
-				<Column>
-					<h3>Tips</h3>
-					<ul>
-						<li>
-							<strong>Do</strong> pair foreground and background colours.
-						</li>
-						<li>
-							<strong>Don&apos;t</strong> mix light and dark variables.
-						</li>
-						<li>
-							<strong>Don&apos;t</strong> pair foreground with foreground or
-							background with background.
-						</li>
-					</ul>
-				</Column>
-			</Columns>
-
-			<ColorTable activePalette={isDarkMode ? 'dark' : 'light'} />
-		</Section>
-	);
-};
-
-export const SectionTypography = () => {
-	return (
-		<Section id="typography">
-			<h2>Typography</h2>
-			<p>
-				A typographic scale was used to create a set of font-size and
-				line-height values which have been designed for legibility and can be
-				easily be implemented by designers or developers with a predictable
-				output.
-			</p>
-
-			<p>
-				Using the design system&apos;s typography values means any object
-				containing text is more likely to align with another element. This
-				appearance of a baseline grid is created by automatically rounding the
-				line-heights to the nearest grid value 4px, then converting them back to
-				a unit-less value.
-			</p>
-
-			<p>
-				To ensure consistency with other components in the system,{' '}
-				<strong>Designers</strong> can use font-size and line-height values from
-				the typographic scale. <strong>Developers</strong> can use the
-				`fontSize` and `lineHeight` props available on typographic components
-				which use of the `fontGrid` function.
-			</p>
-
-			<p>We have individual tokens for...</p>
-			<ul>
-				<li>font</li>
-				<li>fontSize</li>
-				<li>fontWeight</li>
-				<li>lineHeight</li>
-			</ul>
-			<TypographyChart />
-		</Section>
-	);
-};
-
 export default function TokensPage() {
-	const [isDarkMode, setDarkMode] = useState<boolean>(false);
+	const [isDarkMode, setDarkMode] = useState(false);
 
 	return (
 		<Box palette={isDarkMode ? 'dark' : 'light'} background="body">
@@ -124,7 +42,7 @@ export default function TokensPage() {
 						<Stack gap={2}>
 							<PageTitle
 								title="Design Tokens"
-								introduction="Our Design Tokens are...."
+								introduction="Our Design Tokens are the foundation of our design system. They are the building blocks of our components and are used to create a consistent look and feel across all of our products."
 							/>
 
 							<InpageNav
@@ -147,7 +65,46 @@ export default function TokensPage() {
 							/>
 						</Stack>
 
-						<SectionColor isDarkMode={isDarkMode} />
+						<Section id="color">
+							<h2>Color</h2>
+							<Columns cols={{ xs: 1, md: 3 }} className={proseBlockClassname}>
+								<Column columnSpan={{ xs: 1, md: 2 }}>
+									<p>
+										The colour palette is designed and tested to provide colour
+										pairings that pass accessibility contrast ratios while still
+										being easy to implement. This means that designers and
+										developers using the system do not need to be concerned
+										about if a colour will pass WCAG requirements in a
+										particular circumstance.
+									</p>
+									<p>
+										We use semantic naming so that all colours labeled as
+										foreground colours in a theme. These colours are manually
+										tested to pass accessibility contrast ratios when used with
+										all background colours within a theme and vice versa.
+									</p>
+								</Column>
+
+								<Column>
+									<h3>Tips</h3>
+									<ul>
+										<li>
+											<strong>Do</strong> pair foreground and background
+											colours.
+										</li>
+										<li>
+											<strong>Don&apos;t</strong> mix light and dark variables.
+										</li>
+										<li>
+											<strong>Don&apos;t</strong> pair foreground with
+											foreground or background with background.
+										</li>
+									</ul>
+								</Column>
+							</Columns>
+
+							<ColorTable activePalette={isDarkMode ? 'dark' : 'light'} />
+						</Section>
 
 						<Section id="borderRadius">
 							<h2>Border Radius</h2>
@@ -193,7 +150,40 @@ export default function TokensPage() {
 							<SpacingChart />
 						</Section>
 
-						<SectionTypography />
+						<Section id="typography">
+							<h2>Typography</h2>
+							<p>
+								A typographic scale was used to create a set of font-size and
+								line-height values which have been designed for legibility and
+								can be easily be implemented by designers or developers with a
+								predictable output.
+							</p>
+
+							<p>
+								Using the design system&apos;s typography values means any
+								object containing text is more likely to align with another
+								element. This appearance of a baseline grid is created by
+								automatically rounding the line-heights to the nearest grid
+								value 4px, then converting them back to a unit-less value.
+							</p>
+
+							<p>
+								To ensure consistency with other components in the system,{' '}
+								<strong>Designers</strong> can use font-size and line-height
+								values from the typographic scale. <strong>Developers</strong>{' '}
+								can use the `fontSize` and `lineHeight` props available on
+								typographic components which use of the `fontGrid` function.
+							</p>
+
+							<p>We have individual tokens for...</p>
+							<ul>
+								<li>font</li>
+								<li>fontSize</li>
+								<li>fontWeight</li>
+								<li>lineHeight</li>
+							</ul>
+							<TypographyChart />
+						</Section>
 					</Stack>
 				</PageContent>
 			</AppLayout>
