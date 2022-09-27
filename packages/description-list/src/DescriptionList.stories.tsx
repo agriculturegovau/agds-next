@@ -1,9 +1,9 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import {
-	DescriptionDescription,
+	Term,
+	Description,
 	DescriptionList,
 	DescriptionListItem,
-	DescriptionTerm,
 } from './DescriptionList';
 
 export default {
@@ -12,22 +12,22 @@ export default {
 } as ComponentMeta<typeof DescriptionList>;
 
 export const Basic: ComponentStory<typeof DescriptionList> = (args) => (
-	<DescriptionList>
+	<DescriptionList {...args}>
 		<DescriptionListItem>
-			<DescriptionTerm>First name</DescriptionTerm>
-			<DescriptionDescription>Will</DescriptionDescription>
+			<Term>First name</Term>
+			<Description>Will</Description>
 		</DescriptionListItem>
 		<DescriptionListItem>
-			<DescriptionTerm>Last name</DescriptionTerm>
-			<DescriptionDescription>Power</DescriptionDescription>
+			<Term>Last name</Term>
+			<Description>Power</Description>
 		</DescriptionListItem>
 		<DescriptionListItem>
-			<DescriptionTerm>Email</DescriptionTerm>
-			<DescriptionDescription>will.power@example.com</DescriptionDescription>
+			<Term>Email</Term>
+			<Description>will.power@example.com</Description>
 		</DescriptionListItem>
 		<DescriptionListItem>
-			<DescriptionTerm>Date of birth</DescriptionTerm>
-			<DescriptionDescription>09/06/1995</DescriptionDescription>
+			<Term>Date of birth</Term>
+			<Description>09/06/1995</Description>
 		</DescriptionListItem>
 	</DescriptionList>
 );

@@ -7,13 +7,13 @@ type PropsWithOnlyChildren = {
 	children: ReactNode;
 };
 
-export const DescriptionTerm = ({ children }: PropsWithOnlyChildren) => (
+export const Term = ({ children }: PropsWithOnlyChildren) => (
 	<Box as="dt" fontWeight="bold" width={['100%', '50%']}>
 		{children}
 	</Box>
 );
 
-export const DescriptionDescription = ({ children }: PropsWithOnlyChildren) => (
+export const Description = ({ children }: PropsWithOnlyChildren) => (
 	<Box as="dd">{children}</Box>
 );
 
