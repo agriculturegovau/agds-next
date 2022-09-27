@@ -2,10 +2,12 @@ import { AnchorHTMLAttributes, HTMLAttributes, Fragment } from 'react';
 import Link from 'next/link';
 import { proseBlockClassname } from '@ag.ds-next/prose';
 import { PageAlert, PageAlertProps } from '@ag.ds-next/page-alert';
+import { ButtonLink } from '@ag.ds-next/button';
 import { slugify } from '../lib/slugify';
 import generatedComponentPropsData from '../__generated__/componentProps.json';
 import { Code } from './Code';
 import { ComponentPropsTable } from './ComponentPropsTable';
+import { FigmaLogo } from './FigmaLogo';
 
 // Note: We are using `any` here because of a typescript bug with react v18 and next-mdx-remote v3
 // Upgrading to v4 causes issues with our pre and code inline components. Be careful when upgrading
@@ -16,6 +18,8 @@ export const mdxComponents: Record<string, any> = {
 	pre: Fragment,
 	code: Code,
 	Fragment,
+	ButtonLink,
+	FigmaLogo,
 	a: ({ href, ...props }: AnchorHTMLAttributes<HTMLAnchorElement>) => {
 		if (!href) return <a {...props} />;
 		return <Link href={href} {...props} />;
