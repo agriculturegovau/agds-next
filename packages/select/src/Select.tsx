@@ -23,6 +23,7 @@ export type Options = (Option | OptionGroup)[];
 type NativeSelectProps = SelectHTMLAttributes<HTMLSelectElement>;
 
 type BaseSelectProps = {
+	autoFocus?: NativeSelectProps['autoFocus'];
 	disabled?: NativeSelectProps['disabled'];
 	id?: NativeSelectProps['id'];
 	name?: NativeSelectProps['name'];

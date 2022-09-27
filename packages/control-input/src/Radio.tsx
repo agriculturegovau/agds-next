@@ -9,6 +9,7 @@ type NativeRadioProps = InputHTMLAttributes<HTMLInputElement>;
 
 type BaseCheckboxProps = PropsWithChildren<{
 	'aria-required'?: NativeRadioProps['aria-required'];
+	autoFocus?: NativeRadioProps['autoFocus'];
 	disabled?: NativeRadioProps['disabled'];
 	checked?: NativeRadioProps['checked'];
 	id?: NativeRadioProps['id'];

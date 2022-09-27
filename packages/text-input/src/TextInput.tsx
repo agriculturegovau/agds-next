@@ -6,6 +6,7 @@ type NativeInputProps = InputHTMLAttributes<HTMLInputElement>;
 
 type BaseTextInputProps = {
 	autoComplete?: NativeInputProps['autoComplete'];
+	autoFocus?: NativeInputProps['autoFocus'];
 	disabled?: NativeInputProps['disabled'];
 	id?: NativeInputProps['id'];
 	inputMode?: NativeInputProps['inputMode'];

@@ -9,6 +9,7 @@ type NativeCheckboxProps = InputHTMLAttributes<HTMLInputElement>;
 
 type BaseCheckboxProps = PropsWithChildren<{
 	'aria-required'?: NativeCheckboxProps['aria-required'];
+	autoFocus?: NativeCheckboxProps['autoFocus'];
 	disabled?: NativeCheckboxProps['disabled'];
 	checked?: NativeCheckboxProps['checked'];
 	id?: NativeCheckboxProps['id'];
