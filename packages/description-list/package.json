@@ -1,0 +1,22 @@
+{
+	"name": "@ag.ds-next/description-list",
+	"version": "0.0.1",
+	"license": "MIT",
+	"main": "dist/ag.ds-next-description-list.cjs.js",
+	"module": "dist/ag.ds-next-description-list.esm.js",
+	"peerDependencies": {
+		"@ag.ds-next/box": "7.0.0",
+		"@ag.ds-next/core": "4.0.0",
+		"@emotion/react": "^11.7.0",
+		"react": "^16.14.0 || ^17.0.0 || ^18.0.0"
+	},
+	"devDependencies": {
+		"@ag.ds-next/box": "*",
+		"@ag.ds-next/core": "*",
+		"@emotion/react": "^11.7.0",
+		"react": "18.1.0"
+	},
+	"dependencies": {
+		"@babel/runtime": "^7.4.5"
+	}
+}
