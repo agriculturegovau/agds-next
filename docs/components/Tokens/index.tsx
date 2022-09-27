@@ -5,6 +5,10 @@ import { Text } from '@ag.ds-next/text';
 
 export { ColorTable } from './color';
 
+type Entries<T> = {
+	[K in keyof T]: [K, T[K]];
+}[keyof T][];
+
 export const BreakpointsChart = () => {
 	const breakpoints = tokens.breakpoint;
 	return (
@@ -18,17 +22,20 @@ export const BreakpointsChart = () => {
 };
 
 export const BorderWidthChart = () => {
-	const borderWidths = tokens.borderWidth as const;
+	const borderWidths = tokens.borderWidth;
+
 	return (
 		<Flex gap={0.5} className={proseBlockClassname}>
-			{Object.entries(borderWidths).map(([token, value]) => {
-				const label = `${token} (${value}px)`;
-				return (
-					<Box key={token} padding={0.5} border borderWidth={token}>
-						<Text>{label}</Text>
-					</Box>
-				);
-			})}
+			{(Object.entries(borderWidths) as Entries<typeof borderWidths>).map(
+				([token, value]) => {
+					const label = `${token} (${value}px)`;
+					return (
+						<Box key={token} padding={0.5} border borderWidth={token}>
+							<Text>{label}</Text>
+						</Box>
+					);
+				}
+			)}
 		</Flex>
 	);
 };
@@ -36,6 +43,7 @@ export const BorderWidthChart = () => {
 export const SpacingChart = () => {
 	// copied from types for mapSpacing
 	const spacingTokens = [0, 0.25, 0.5, 0.75, 1, 1.5, 2, 3, 4, 5, 6];
+
 	return (
 		<Stack gap={0.5} className={proseBlockClassname}>
 			{spacingTokens.map((token) => {
@@ -81,13 +89,15 @@ export const MaxWidthChart = () => {
 };
 
 export const TypographyChart = () => {
+	const fontSizes = ['xxxl', 'xxl', 'xl', 'lg', 'md', 'sm', 'xs'] as const;
+
 	return (
 		<Flex gap={1} className={proseBlockClassname}>
 			<Flex flexDirection="column" gap={1}>
 				<Text fontSize="sm" fontWeight="bold">
 					Default
 				</Text>
-				{['xxxl', 'xxl', 'xl', 'lg', 'md', 'sm', 'xs'].map((size) => (
+				{fontSizes.map((size) => (
 					<Box key={size} background="shade">
 						<Text fontSize={size}>{size.toUpperCase()}</Text>
 					</Box>
@@ -97,7 +107,7 @@ export const TypographyChart = () => {
 				<Text fontSize="sm" fontWeight="bold">
 					Heading
 				</Text>
-				{['xxxl', 'xxl', 'xl', 'lg', 'md', 'sm', 'xs'].map((size) => (
+				{fontSizes.map((size) => (
 					<Box key={size} background="shade">
 						<Text fontSize={size} lineHeight="heading">
 							{size.toUpperCase()}
@@ -109,7 +119,7 @@ export const TypographyChart = () => {
 				<Text fontSize="sm" fontWeight="bold">
 					Nospace
 				</Text>
-				{['xxxl', 'xxl', 'xl', 'lg', 'md', 'sm', 'xs'].map((size) => (
+				{fontSizes.map((size) => (
 					<Box key={size} background="shade">
 						<Text fontSize={size} lineHeight="nospace">
 							{size.toUpperCase()}

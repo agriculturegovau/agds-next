@@ -1,5 +1,5 @@
 import { PropsWithChildren, useState } from 'react';
-import { Box, Flex, Stack } from '@ag.ds-next/box';
+import { Box, Stack } from '@ag.ds-next/box';
 import { PageContent } from '@ag.ds-next/content';
 import { Prose, proseBlockClassname } from '@ag.ds-next/prose';
 import { InpageNav } from '@ag.ds-next/inpage-nav';
@@ -85,11 +85,11 @@ export const SectionTypography = () => {
 			</p>
 
 			<p>
-				Using the design system's typography values means any object containing
-				text is more likely to align with another element. This appearance of a
-				baseline grid is created by automatically rounding the line-heights to
-				the nearest grid value 4px, then converting them back to a unit-less
-				value.
+				Using the design system&apos;s typography values means any object
+				containing text is more likely to align with another element. This
+				appearance of a baseline grid is created by automatically rounding the
+				line-heights to the nearest grid value 4px, then converting them back to
+				a unit-less value.
 			</p>
 
 			<p>
@@ -121,34 +121,31 @@ export default function TokensPage() {
 			<AppLayout>
 				<PageContent as="main" id="main-content">
 					<Stack gap={5}>
-						<Flex justifyContent="space-between" alignItems="flex-start">
-							<Stack gap={2}>
-								<PageTitle
-									title="Design Tokens"
-									introduction="Our Design Tokens are...."
-								/>
+						<Stack gap={2}>
+							<PageTitle
+								title="Design Tokens"
+								introduction="Our Design Tokens are...."
+							/>
 
-								<InpageNav
-									title="On this page"
-									links={[
-										{ href: '#color', label: 'Color' },
-										{ href: '#section-2', label: 'Breakpoints' },
-										{ href: '#section-2', label: 'Border Radius' },
-										{ href: '#section-2', label: 'Border Widths' },
-										{ href: '#section-1', label: 'Max Width' },
-										{ href: '#section-1', label: 'Shadows' },
-										{ href: '#section-1', label: 'Spacing' },
-										{ href: '#typography', label: 'Typography' },
-									]}
-								/>
-							</Stack>
-
+							<InpageNav
+								title="On this page"
+								links={[
+									{ href: '#color', label: 'Color' },
+									{ href: '#section-2', label: 'Breakpoints' },
+									{ href: '#section-2', label: 'Border Radius' },
+									{ href: '#section-2', label: 'Border Widths' },
+									{ href: '#section-1', label: 'Max Width' },
+									{ href: '#section-1', label: 'Shadows' },
+									{ href: '#section-1', label: 'Spacing' },
+									{ href: '#typography', label: 'Typography' },
+								]}
+							/>
 							<Switch
 								label="Dark palette"
 								checked={isDarkMode}
 								onChange={setDarkMode}
 							/>
-						</Flex>
+						</Stack>
 
 						<SectionColor isDarkMode={isDarkMode} />
 

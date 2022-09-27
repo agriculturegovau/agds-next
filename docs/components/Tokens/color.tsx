@@ -1,6 +1,7 @@
+import { PropsWithChildren } from 'react';
 import { Stack } from '@ag.ds-next/box';
 import { Card } from '@ag.ds-next/card';
-import { Columns } from '@ag.ds-next/columns';
+import { Columns, Column } from '@ag.ds-next/columns';
 import { Prose, proseBlockClassname } from '@ag.ds-next/prose';
 import { goldTheme } from '@ag.ds-next/core/src/goldTheme';
 import { theme as agTheme } from '@ag.ds-next/ag-branding';
@@ -17,65 +18,72 @@ const theme = {
 const palettes = {
 	light: {
 		foreground: {
-			text: { value: theme.lightForegroundText },
-			muted: { value: theme.lightForegroundMuted },
-			action: { value: theme.lightForegroundAction },
-			focus: { value: theme.lightForegroundFocus },
+			text: theme.lightForegroundText,
+			muted: theme.lightForegroundMuted,
+			action: theme.lightForegroundAction,
+			focus: theme.lightForegroundFocus,
 		},
 		background: {
-			body: { value: theme.lightBackgroundBody },
-			bodyAlt: { value: theme.lightBackgroundBodyAlt },
-			shade: { value: theme.lightBackgroundShade },
-			shadeAlt: { value: theme.lightBackgroundShadeAlt },
+			body: theme.lightBackgroundBody,
+			bodyAlt: theme.lightBackgroundBodyAlt,
+			shade: theme.lightBackgroundShade,
+			shadeAlt: theme.lightBackgroundShadeAlt,
 		},
 		border: {
-			border: { value: theme.lightBorder },
-			borderMuted: { value: theme.lightBorderMuted },
+			border: theme.lightBorder,
+			borderMuted: theme.lightBorderMuted,
 		},
 		system: {
-			accent: { value: theme.lightAccent },
-			systemSuccess: { value: theme.lightSystemSuccess },
-			systemSuccessMuted: { value: theme.lightSystemSuccessMuted },
-			systemError: { value: theme.lightSystemError },
-			systemErrorMuted: { value: theme.lightSystemErrorMuted },
-			systemInfo: { value: theme.lightSystemInfo },
-			systemInfoMuted: { value: theme.lightSystemInfoMuted },
-			systemWarning: { value: theme.lightSystemWarning },
-			systemWarningMuted: { value: theme.lightSystemWarningMuted },
+			accent: theme.lightAccent,
+			systemSuccess: theme.lightSystemSuccess,
+			systemSuccessMuted: theme.lightSystemSuccessMuted,
+			systemError: theme.lightSystemError,
+			systemErrorMuted: theme.lightSystemErrorMuted,
+			systemInfo: theme.lightSystemInfo,
+			systemInfoMuted: theme.lightSystemInfoMuted,
+			systemWarning: theme.lightSystemWarning,
+			systemWarningMuted: theme.lightSystemWarningMuted,
 		},
 	},
 	dark: {
 		foreground: {
-			text: { value: theme.darkForegroundText },
-			muted: { value: theme.darkForegroundMuted },
-			action: { value: theme.darkForegroundAction },
-			focus: { value: theme.darkForegroundFocus },
+			text: theme.darkForegroundText,
+			muted: theme.darkForegroundMuted,
+			action: theme.darkForegroundAction,
+			focus: theme.darkForegroundFocus,
 		},
 		background: {
-			body: { value: theme.darkBackgroundBody },
-			bodyAlt: { value: theme.darkBackgroundBodyAlt },
-			shade: { value: theme.darkBackgroundShade },
-			shadeAlt: { value: theme.darkBackgroundShadeAlt },
+			body: theme.darkBackgroundBody,
+			bodyAlt: theme.darkBackgroundBodyAlt,
+			shade: theme.darkBackgroundShade,
+			shadeAlt: theme.darkBackgroundShadeAlt,
 		},
 		border: {
-			border: { value: theme.darkBorder },
-			borderMuted: { value: theme.darkBorderMuted },
+			border: theme.darkBorder,
+			borderMuted: theme.darkBorderMuted,
 		},
 		system: {
-			accent: { value: theme.darkAccent },
-			systemSuccess: { value: theme.darkSystemSuccess },
-			systemSuccessMuted: { value: theme.darkSystemSuccessMuted },
-			systemError: { value: theme.darkSystemError },
-			systemErrorMuted: { value: theme.darkSystemErrorMuted },
-			systemInfo: { value: theme.darkSystemInfo },
-			systemInfoMuted: { value: theme.darkSystemInfoMuted },
-			systemWarning: { value: theme.darkSystemWarning },
-			systemWarningMuted: { value: theme.darkSystemWarningMuted },
+			accent: theme.darkAccent,
+			systemSuccess: theme.darkSystemSuccess,
+			systemSuccessMuted: theme.darkSystemSuccessMuted,
+			systemError: theme.darkSystemError,
+			systemErrorMuted: theme.darkSystemErrorMuted,
+			systemInfo: theme.darkSystemInfo,
+			systemInfoMuted: theme.darkSystemInfoMuted,
+			systemWarning: theme.darkSystemWarning,
+			systemWarningMuted: theme.darkSystemWarningMuted,
 		},
 	},
 } as const;
 
-const ColorCard = ({ tokenName, varName, color, children }) => {
+const ColorCard = ({
+	tokenName,
+	color,
+	children,
+}: PropsWithChildren<{
+	tokenName: string;
+	color: string;
+}>) => {
 	return (
 		<Card
 			as="li"
@@ -88,7 +96,6 @@ const ColorCard = ({ tokenName, varName, color, children }) => {
 				<Text fontWeight="bold" fontSize="xs">
 					{tokenName}
 				</Text>
-				<Text>{varName}</Text>
 				<Text>{color}</Text>
 				{children}
 			</Stack>
@@ -116,14 +123,14 @@ export const ColorTable = ({
 									key={tokenName}
 									shadow
 									css={{
-										'--agds-foreground-text': color.value,
+										'--agds-foreground-text': color,
 									}}
 								>
 									<Stack width="100%" padding={1}>
 										<Text fontWeight="bold" fontSize="xs">
 											{tokenName}
 										</Text>
-										<Text>{color.value}</Text>
+										<Text>{color}</Text>
 									</Stack>
 								</Card>
 							);
@@ -137,7 +144,7 @@ export const ColorTable = ({
 				<Columns as="ul" cols={cols}>
 					{Object.entries(palettes[activePalette].background).map(
 						([token, color]) => (
-							<ColorCard tokenName={token} color={color.value} key={token} />
+							<ColorCard tokenName={token} color={color} key={token} />
 						)
 					)}
 				</Columns>
@@ -146,10 +153,8 @@ export const ColorTable = ({
 			<Stack gap={1}>
 				<H3>Border colors</H3>
 				<Columns as="ul" cols={cols}>
-					{Object.keys(palettes[activePalette].border).map((tokenName) => {
-						const color = palettes[activePalette]['border'][tokenName].value;
-
-						return (
+					{Object.entries(palettes[activePalette].border).map(
+						([tokenName, color]) => (
 							<Card
 								as="li"
 								key={tokenName}
@@ -165,18 +170,25 @@ export const ColorTable = ({
 									<Text>{color}</Text>
 								</Stack>
 							</Card>
-						);
-					})}
+						)
+					)}
 				</Columns>
 			</Stack>
 
 			<Stack gap={1}>
 				<H3>System</H3>
 				<Columns as="ul" cols={cols}>
-					{Object.keys(palettes[activePalette].system).map((token) => {
-						const color = palettes[activePalette]['system'][token].value;
-						return <ColorCard key={token} tokenName={token} color={color} />;
-					})}
+					{Object.entries(palettes[activePalette].system).map(
+						([tokenName, color]) => {
+							return (
+								<ColorCard
+									key={tokenName}
+									tokenName={tokenName}
+									color={color}
+								/>
+							);
+						}
+					)}
 				</Columns>
 			</Stack>
 		</Stack>
