@@ -1,0 +1,233 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SideNav renders correctly 1`] = `
+<div>
+  <aside
+    aria-label="side navigation"
+    class="css-d977xg-boxStyles-SideNavContainer"
+  >
+    <button
+      aria-controls="sideNav-1-body"
+      aria-expanded="false"
+      class="css-10gm9gu-BaseButton-boxStyles-SideNavCollapseButton"
+      id="sideNav-1-button"
+      type="button"
+    >
+      In this section
+      <svg
+        aria-hidden="true"
+        class="css-5ae1oq-Icon"
+        clip-rule="evenodd"
+        focusable="false"
+        height="24"
+        role="img"
+        style="transform: rotate(0deg);"
+        viewBox="0 0 24 24"
+        width="24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M21 8L12 17L3 8"
+        />
+      </svg>
+    </button>
+    <div
+      aria-labelledby="sideNav-1-button"
+      class="css-1wh7zb4-SideNav"
+      id="sideNav-1-body"
+      style="display: none; height: 0px; overflow: hidden;"
+    >
+      <nav
+        aria-labelledby="sideNav-1-title"
+        class="css-zipzg2-boxStyles"
+        id="sideNav-1-nav"
+      >
+        <h2
+          class="css-79i25n-boxStyles"
+          id="sideNav-1-title"
+        >
+          <a
+            class="css-1qbo8fu-boxStyles-SideNavTitle"
+            href="#"
+          >
+            Lodging your tax return
+          </a>
+        </h2>
+        <ul
+          class="css-14adt79-boxStyles"
+        >
+          <li
+            class="css-fd5tyf-boxStyles-SideNavLink"
+          >
+            <div
+              class="css-19haykt-boxStyles-SideNavLink"
+            >
+              <a
+                href="#welcome"
+              >
+                Welcome
+              </a>
+            </div>
+          </li>
+          <li
+            class="css-fd5tyf-boxStyles-SideNavLink"
+          >
+            <div
+              class="css-19haykt-boxStyles-SideNavLink"
+            >
+              <a
+                href="#one"
+              >
+                Do you need to lodge a tax return?
+              </a>
+            </div>
+          </li>
+          <li
+            class="css-fd5tyf-boxStyles-SideNavLink"
+          >
+            <div
+              class="css-19haykt-boxStyles-SideNavLink"
+            >
+              <a
+                href="#two"
+              >
+                Lodge online
+              </a>
+            </div>
+            <ul
+              class="css-177bf21-boxStyles"
+            >
+              <li
+                class="css-mhq1wj-boxStyles-SideNavLink"
+              >
+                <div
+                  class="css-k4fnzz-boxStyles-SideNavLink"
+                >
+                  <a
+                    href="#three"
+                  >
+                    Pre-filling your online tax return
+                  </a>
+                </div>
+              </li>
+            </ul>
+          </li>
+          <li
+            class="css-fd5tyf-boxStyles-SideNavLink"
+          >
+            <div
+              class="css-19haykt-boxStyles-SideNavLink"
+            >
+              <a
+                href="#four"
+              >
+                What's new for individuals
+              </a>
+            </div>
+          </li>
+          <li
+            class="css-fd5tyf-boxStyles-SideNavLink"
+          >
+            <div
+              class="css-19haykt-boxStyles-SideNavLink"
+            >
+              <a
+                href="#five"
+              >
+                Why you may receive a tax bill
+              </a>
+            </div>
+          </li>
+          <li
+            class="css-fd5tyf-boxStyles-SideNavLink"
+          >
+            <div
+              class="css-syw32z-boxStyles-SideNavLink"
+            >
+              <a
+                href="#in-detail"
+              >
+                In detail
+              </a>
+            </div>
+            <ul
+              class="css-177bf21-boxStyles"
+            >
+              <li
+                class="css-mhq1wj-boxStyles-SideNavLink"
+              >
+                <div
+                  class="css-1dmpret-boxStyles-SideNavLink"
+                >
+                  <a
+                    href="#in-detail/record-keeping"
+                  >
+                    Record keeping
+                  </a>
+                </div>
+                <ul
+                  class="css-177bf21-boxStyles"
+                >
+                  <li
+                    class="css-mhq1wj-boxStyles-SideNavLink"
+                  >
+                    <div
+                      class="css-vdok3f-boxStyles-SideNavLink"
+                    >
+                      <a
+                        href="#in-detail/record-keeping/tax"
+                      >
+                        Keeping your tax records
+                      </a>
+                    </div>
+                  </li>
+                  <li
+                    class="css-mhq1wj-boxStyles-SideNavLink"
+                  >
+                    <div
+                      class="css-beseta-boxStyles-SideNavLink"
+                    >
+                      <a
+                        aria-current="page"
+                        href="#in-detail/record-keeping/incorrect-amounts"
+                      >
+                        Incorrect amounts
+                      </a>
+                    </div>
+                  </li>
+                </ul>
+              </li>
+              <li
+                class="css-mhq1wj-boxStyles-SideNavLink"
+              >
+                <div
+                  class="css-k4fnzz-boxStyles-SideNavLink"
+                >
+                  <a
+                    href="#ten"
+                  >
+                    Tax receipt
+                  </a>
+                </div>
+              </li>
+              <li
+                class="css-mhq1wj-boxStyles-SideNavLink"
+              >
+                <div
+                  class="css-k4fnzz-boxStyles-SideNavLink"
+                >
+                  <a
+                    href="#eleven"
+                  >
+                    Pre-fill availability
+                  </a>
+                </div>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </aside>
+</div>
+`;
