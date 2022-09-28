@@ -1,6 +1,8 @@
 import '@testing-library/jest-dom';
 import 'html-validate/jest';
-import { render } from '@testing-library/react';
+import '@testing-library/jest-dom';
+import 'html-validate/jest';
+import { render, screen } from '@testing-library/react';
 import { SideNav } from './SideNav';
 
 function Example() {
@@ -71,5 +73,12 @@ describe('SideNav', () => {
 			extends: ['html-validate:recommended'],
 			rules: { 'no-inline-style': 'off' },
 		});
+	});
+	it('renders the title link correctly', () => {
+		render(<Example />);
+		const el = screen.getByText('Lodging your tax return');
+		expect(el.tagName).toBe('A');
+		expect(el).toHaveAttribute('href', '#');
+		expect(el).toHaveAccessibleName('Lodging your tax return');
 	});
 });
