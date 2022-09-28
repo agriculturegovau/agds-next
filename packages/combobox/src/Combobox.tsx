@@ -1,4 +1,12 @@
-import { Fragment, useState, ReactNode, useCallback } from 'react';
+import {
+	Fragment,
+	useState,
+	ReactNode,
+	useCallback,
+	HTMLAttributes,
+	InputHTMLAttributes,
+	FocusEventHandler,
+} from 'react';
 import { useId } from '@reach/auto-id';
 import { useCombobox } from 'downshift';
 import { usePopper } from 'react-popper';
@@ -44,6 +52,8 @@ export type ComboboxProps<Option extends DefaultComboboxOption> = {
 	value?: Option | null;
 	/** Function to be fired following a change event. */
 	onChange?: (value: Option | null) => void;
+	/** Function to be fired following a blur event. */
+	onBlur?: () => void;
 	/** Used to override the default item rendering.  */
 	renderItem?: (item: Option, inputValue: string) => ReactNode;
 	/** Message to display when no options match the users search term. */
@@ -66,6 +76,7 @@ export function Combobox<Option extends DefaultComboboxOption>({
 	loadOptions,
 	value,
 	onChange,
+	onBlur,
 	renderItem = defaultRenderItem,
 	emptyResultsMessage = 'No options found.',
 }: ComboboxProps<Option>) {
@@ -127,6 +138,7 @@ export function Combobox<Option extends DefaultComboboxOption>({
 			const { type: actionAndChangesType, changes } = actionAndChanges;
 			switch (actionAndChangesType) {
 				case useCombobox.stateChangeTypes.InputBlur:
+					onBlur?.();
 					return { inputValue: state.selectedItem ? state.inputValue : '' };
 				default:
 					return changes;
