@@ -1,5 +1,7 @@
+import { Theme } from './theme';
+
 // Default theme from GOLD.
-export const goldTheme = {
+export const goldTheme: Theme = {
 	lightForegroundText: '#313131',
 	lightForegroundAction: '#00698f',
 	lightForegroundFocus: '#9263de',

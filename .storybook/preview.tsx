@@ -1,7 +1,7 @@
 import { DecoratorFn } from '@storybook/react';
 import { Box } from '@ag.ds-next/box';
 import { Core } from '@ag.ds-next/core';
-import { theme } from '@ag.ds-next/ag-branding';
+import { theme as agriculture } from '@ag.ds-next/ag-branding';
 
 function makeViewports() {
 	const viewports = [
@@ -48,6 +48,17 @@ function makeViewports() {
 	);
 }
 
+const storybookThemes = {
+	gold: {},
+	agriculture,
+} as const;
+
+type StorybookThemes = keyof typeof storybookThemes;
+
+const getTheme = (brand: StorybookThemes) => {
+	return storybookThemes[brand];
+};
+
 export const globalTypes = {
 	brand: {
 		name: 'Brand',
@@ -56,7 +67,7 @@ export const globalTypes = {
 		toolbar: {
 			icon: 'circlehollow',
 			// Array of plain string values or MenuItem shape (see below)
-			items: ['gold', 'agriculture'],
+			items: Object.keys(storybookThemes),
 			// Property that specifies if the name of the item will be displayed
 			showName: true,
 		},
@@ -83,13 +94,6 @@ export const parameters = {
 	viewport: {
 		viewports: makeViewports(),
 	},
-};
-
-const getTheme = (brand: string) => {
-	return {
-		gold: {},
-		agriculture: theme,
-	}[brand];
 };
 
 const withBrandTheme: DecoratorFn = (Story, context) => {

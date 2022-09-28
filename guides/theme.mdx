@@ -1,0 +1,149 @@
+---
+title: Colours and Theming
+description: How theming works in the React component library
+---
+
+Our Design System has tokens for spacing, typography, borders, and colours. The colours used in our design system come from a **Theme**, which is a structure (schema) of colour tokens that semantically describe how they will be used. A Theme is made up of light and dark **palettes**, which are made up of backgrounds, foregrounds, and system colours. The full schema can be found at the bottom of this page.
+
+In this guide, we will go through how to make a new Theme for AgDS.
+
+## Token usage guidelines
+
+Each foreground, background, border, and system colours has a specific purpose. To learn more about how to use these colours, see the [Tokens](/tokens) page.
+
+## Don’t rely on colour alone to convey meaning
+
+To ensure the colourblind can use our interface, we shouldn’t rely on colour alone to differentiate interface components or convey meaning. Use other visual cues to differentiate interface components. For example, we underline links as well as using the action colour to help differentiate them from other text and clearly indicate they’re interactive.
+
+## Palettes and inheritance
+
+Each Theme has a dark and light palette. These can be used to divide an interface into sections. For example, the header and footer for this website uses the dark palette to make them more prominent, while the content area in between uses the light palette.
+
+Palettes are selected by setting the `palette` prop on a parent `Box`, `Flex` or `Stack`. The palette is _inherited_ by all of that element's children.
+
+In the example below, change the palette prop in the parent Stack to see this behaviour in action.
+
+```jsx live
+<Stack
+	// Change this value from "dark" to "light"
+	// to see how palette inheritance works
+	palette="dark"
+	// the 'body' background token changes with the palette.
+	// So depending on the palette, either the lightBackgroundBody
+	// or darkBackgroundBody token will be used
+	background="body"
+	gap={1}
+	padding={1}
+>
+	<PageAlert tone="info">
+		<Text>
+			Add <code>palette='light'</code> to the parent Stack in this code example,
+			to see how palette inheritance works.
+		</Text>
+	</PageAlert>
+
+	<Card clickable shadow background="bodyAlt">
+		<CardInner>
+			<Stack gap={0.5} width="100%" flexWrap="wrap">
+				<H3>
+					<CardLink href="#">Orange Meat Works</CardLink>
+				</H3>
+				<Text as="p">
+					<VisuallyHidden>Type: </VisuallyHidden>
+					Record keeping (Minor)
+				</Text>
+				<Flex
+					gap={0.5}
+					flexWrap="wrap"
+					justifyContent="space-between"
+					alignItems="center"
+				>
+					<Text color="muted" fontSize="xs">
+						<VisuallyHidden>{'CAR ID: '}</VisuallyHidden>
+						ABC123
+					</Text>
+					<StatusBadge
+						tone="info"
+						label={
+							<Fragment>
+								<VisuallyHidden>{'Status: '}</VisuallyHidden>
+								Pending
+							</Fragment>
+						}
+					/>
+				</Flex>
+			</Stack>
+		</CardInner>
+	</Card>
+</Stack>
+```
+
+**What is actually happening?** Our tokens are defined using CSS variables. When the palette is set on a container, it overwrites the css variables within that container. So child components which expect `foregroundText` token will receive `lightForgroundText` or `darkForegroundText` depending on the palette chosen within that context.
+
+## Creating a custom Theme
+
+We will now go through the technical steps of defining a new `Theme`. We will assume you are implementing this in an existing NextJS application that already uses AgDS.
+
+In your app, create a file called theme.tsx...
+
+```tsx
+// theme.tsx
+import { Theme } from '@ag.ds-next/core';
+
+export const myTheme: Theme = {};
+```
+
+..and import that into your application's Core component.
+
+```tsx
+// pages/_app.tsx
+import { Core } from '@ag.ds-next/core';
+import type { AppProps } from 'next/app';
+import { myTheme } from '../theme.tsx';
+
+export default function App({ Component, pageProps }: AppProps) {
+	return (
+		<Core Theme={myTheme}>
+			<Component {...pageProps} />
+		</Core>
+	);
+}
+```
+
+The default theme in AgDS is `GOLD`, based on the former Australian Government Design System. If you are building an experience within the Department of Agriculture, Fisheries and Forestry, then you probably want to extend the `ag-Theme`.
+
+```tsx
+// theme.tsx
+import { Theme } from '@ag.ds-next/core';
+import { Theme as agTheme } from '@ag.ds-next/ag-branding';
+
+export const myTheme: Theme = {
+	...agTheme,
+};
+```
+
+Now you can define your tokens!
+
+```tsx
+// theme.tsx
+import { Theme } from '@ag.ds-next/core';
+import { Theme as agTheme } from '@ag.ds-next/ag-branding';
+
+export const myTheme: Theme = {
+	...agTheme,
+	lightAccent: '#00558b',
+	darkAccent: '#00558b',
+};
+```
+
+Typescript should help you by autocompleting token names, the full list of token names are shown at the bottom of the page.
+
+### Tips for picking colours
+
+- Mix of neutrals
+- System colours
+- Contrast
+
+## Theme schema
+
+Go to the [GOLD Theme](https://github.com/steelthreads/agds-next/blob/main/packages/core/src/goldTheme.ts) to see our theme schema.

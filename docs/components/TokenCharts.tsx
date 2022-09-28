@@ -3,8 +3,6 @@ import { boxPalette, tokens, Spacing } from '@ag.ds-next/core';
 import { proseBlockClassname } from '@ag.ds-next/prose';
 import { Text } from '@ag.ds-next/text';
 
-export { ColorTable } from './color';
-
 type Entries<T> = {
 	[K in keyof T]: [K, T[K]];
 }[keyof T][];
@@ -90,7 +88,6 @@ export const MaxWidthChart = () => {
 
 export const TypographyChart = () => {
 	const fontSizes = ['xxxl', 'xxl', 'xl', 'lg', 'md', 'sm', 'xs'] as const;
-
 	return (
 		<Flex gap={1} className={proseBlockClassname}>
 			<Flex flexDirection="column" gap={1}>
