@@ -1,6 +1,6 @@
 import { DecoratorFn } from '@storybook/react';
 import { Box } from '@ag.ds-next/box';
-import { Theme, Core } from '@ag.ds-next/core';
+import { Core } from '@ag.ds-next/core';
 import { theme as agriculture } from '@ag.ds-next/ag-branding';
 
 function makeViewports() {
@@ -48,16 +48,9 @@ function makeViewports() {
 	);
 }
 
-const agricultureInternal: Theme = {
-	...agriculture,
-	lightAccent: '#00558b',
-	darkAccent: '#00558b',
-};
-
 const storybookThemes = {
 	gold: {},
 	agriculture,
-	agricultureInternal,
 } as const;
 
 type StorybookThemes = keyof typeof storybookThemes;
