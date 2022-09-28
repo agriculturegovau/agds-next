@@ -1,4 +1,3 @@
-import { PropsWithChildren } from 'react';
 import { Flex, Stack } from '@ag.ds-next/box';
 import { Columns, Column } from '@ag.ds-next/columns';
 import { Prose, proseBlockClassname } from '@ag.ds-next/prose';
