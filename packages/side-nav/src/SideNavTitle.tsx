@@ -18,29 +18,31 @@ export function SideNavTitle({
 	const Link = useLinkComponent();
 
 	if (href) {
-		<Box as="h2" id={id}>
-			<Box
-				as={Link}
-				padding={1}
-				color="text"
-				fontSize="sm"
-				fontWeight="bold"
-				lineHeight="heading"
-				display="block"
-				focus
-				href={href}
-				aria-current={isCurrentPage ? 'page' : undefined}
-				css={{
-					textDecoration: 'none',
-					'&:hover': {
-						...packs.underline,
-						backgroundColor: localPalette.hover,
-					},
-				}}
-			>
-				{children}
+		return (
+			<Box as="h2" id={id}>
+				<Box
+					as={Link}
+					padding={1}
+					color="text"
+					fontSize="sm"
+					fontWeight="bold"
+					lineHeight="heading"
+					display="block"
+					focus
+					href={href}
+					aria-current={isCurrentPage ? 'page' : undefined}
+					css={{
+						textDecoration: 'none',
+						'&:hover': {
+							...packs.underline,
+							backgroundColor: localPalette.hover,
+						},
+					}}
+				>
+					{children}
+				</Box>
 			</Box>
-		</Box>;
+		);
 	}
 
 	return (
