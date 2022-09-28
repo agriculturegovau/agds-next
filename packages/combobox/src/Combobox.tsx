@@ -1,12 +1,4 @@
-import {
-	Fragment,
-	useState,
-	ReactNode,
-	useCallback,
-	HTMLAttributes,
-	InputHTMLAttributes,
-	FocusEventHandler,
-} from 'react';
+import { Fragment, useState, ReactNode, useCallback } from 'react';
 import { useId } from '@reach/auto-id';
 import { useCombobox } from 'downshift';
 import { usePopper } from 'react-popper';
