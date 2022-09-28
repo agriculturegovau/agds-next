@@ -11,7 +11,7 @@ import { Stack } from '@ag.ds-next/box';
 import { FormStack } from '@ag.ds-next/form-stack';
 import { TextInput } from '@ag.ds-next/text-input';
 import { DatePicker } from '@ag.ds-next/date-picker';
-import { Select } from '@ag.ds-next/select';
+import { Combobox } from '@ag.ds-next/combobox';
 import { ControlGroup, Radio } from '@ag.ds-next/control-input';
 import { useScrollToField } from '@ag.ds-next/field';
 import { PageAlert } from '@ag.ds-next/page-alert';
@@ -23,7 +23,12 @@ import { useFormExampleMultiStep } from './FormRegisterPetDetails';
 const formSchema = yup
 	.object({
 		name: yup.string().required("Enter your pet's name"),
-		breed: yup.string().required("Enter your pet's breed"),
+		breed: yup
+			.object({
+				label: yup.string(),
+				value: yup.string(),
+			})
+			.required("Enter your pet's breed"),
 		dob: yup.date().required("Enter your pet's date of birth"),
 		sex: yup
 			.string()
@@ -55,7 +60,8 @@ export const FormRegisterPetDetailsStep1 = () => {
 		next(data);
 	};
 
-	const onError: SubmitErrorHandler<FormSchema> = () => {
+	const onError: SubmitErrorHandler<FormSchema> = (errors, event) => {
+		console.log(errors, event);
 		setFocusedError(false);
 	};
 
@@ -91,15 +97,16 @@ export const FormRegisterPetDetailsStep1 = () => {
 							<Prose>
 								<p>Please correct the following fields and try again</p>
 								<ul>
-									{Object.entries(errors).map(([key, value]) => (
-										<li key={key}>
-											<a href={`#${key}`} onClick={scrollToField}>
-												{Array.isArray(value)
-													? value[0].message
-													: value.message}
-											</a>
-										</li>
-									))}
+									{Object.entries(errors).map(([key, value]) => {
+										if (!('message' in value)) return null;
+										return (
+											<li key={key}>
+												<a href={`#${key}`} onClick={scrollToField}>
+													{value.message}
+												</a>
+											</li>
+										);
+									})}
 								</ul>
 							</Prose>
 						</PageAlert>
@@ -113,16 +120,26 @@ export const FormRegisterPetDetailsStep1 = () => {
 						maxWidth="xl"
 						required
 					/>
-					<Select
-						label="Breed"
-						{...register('breed')}
-						id="breed"
-						invalid={Boolean(errors.breed?.message)}
-						message={errors.breed?.message}
-						required
-						placeholder="Please select"
-						options={DOG_BREED_OPTIONS}
-						maxWidth="xl"
+					<Controller
+						control={control}
+						name="breed"
+						render={({
+							field: { onChange, onBlur, value, name },
+							fieldState: { invalid, error },
+						}) => (
+							<Combobox
+								label="Breed"
+								id="breed"
+								value={value}
+								onChange={onChange}
+								onBlur={onBlur}
+								name={name}
+								invalid={invalid}
+								message={error?.message}
+								options={DOG_BREED_OPTIONS}
+								required
+							/>
+						)}
 					/>
 					<Controller
 						control={control}
@@ -152,10 +169,10 @@ export const FormRegisterPetDetailsStep1 = () => {
 						required
 						block
 					>
-						<Radio {...register('sex')} value="male">
+						<Radio {...register('sex')} value="Male">
 							Male
 						</Radio>
-						<Radio {...register('sex')} value="female">
+						<Radio {...register('sex')} value="Female">
 							Female
 						</Radio>
 					</ControlGroup>

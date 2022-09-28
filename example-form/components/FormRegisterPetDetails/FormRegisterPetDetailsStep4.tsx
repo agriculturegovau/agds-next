@@ -49,7 +49,7 @@ export const FormRegisterPetDetailsStep4 = () => {
 						},
 						{
 							label: 'Breed',
-							value: formState[1]?.breed,
+							value: formState[1]?.breed.label,
 						},
 						{
 							label: 'Date of birth',
