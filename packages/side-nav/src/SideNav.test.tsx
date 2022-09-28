@@ -69,6 +69,10 @@ function renderSideNav(props: SideNavProps) {
 }
 
 describe('SideNav', () => {
+	it('renders correctly', () => {
+		const { container } = renderSideNav(exampleProps);
+		expect(container).toMatchSnapshot();
+	});
 	it('renders a valid HTML structure', () => {
 		const { container } = renderSideNav(exampleProps);
 		expect(container).toHTMLValidate({
