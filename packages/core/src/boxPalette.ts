@@ -1,9 +1,11 @@
 import { css } from '@emotion/react';
+import { RefObject, useEffect, useState } from 'react';
 import { themeVars } from './theme';
 
 // Box Palette
 
 const boxPaletteVars = {
+	palette: '--agds-palette',
 	foregroundText: '--agds-foreground-text',
 	foregroundAction: '--agds-foreground-action',
 	foregroundFocus: '--agds-foreground-focus',
@@ -27,6 +29,7 @@ const boxPaletteVars = {
 
 export const boxPalettes = {
 	light: css({
+		[boxPaletteVars.palette]: 'light',
 		[boxPaletteVars.foregroundText]: `var(${themeVars.lightForegroundText})`,
 		[boxPaletteVars.foregroundAction]: `var(${themeVars.lightForegroundAction})`,
 		[boxPaletteVars.foregroundFocus]: `var(${themeVars.lightForegroundFocus})`,
@@ -48,6 +51,7 @@ export const boxPalettes = {
 		[boxPaletteVars.systemInfoMuted]: `var(${themeVars.lightSystemInfoMuted})`,
 	}),
 	dark: css({
+		[boxPaletteVars.palette]: 'dark',
 		[boxPaletteVars.foregroundText]: `var(${themeVars.darkForegroundText})`,
 		[boxPaletteVars.foregroundAction]: `var(${themeVars.darkForegroundAction})`,
 		[boxPaletteVars.foregroundFocus]: `var(${themeVars.darkForegroundFocus})`,
@@ -93,3 +97,27 @@ export const boxPalette = {
 	systemInfo: `var(${boxPaletteVars.systemInfo})`,
 	systemInfoMuted: `var(${boxPaletteVars.systemInfoMuted})`,
 };
+
+/**
+ * Returns the current palette for a specifc DOM element
+ * Note: As this function relies on CSS vars, the value returned will not be available on the server
+ */
+export function useBoxPalette(element: RefObject<HTMLElement>) {
+	const [value, setValue] = useState<BoxPalette>();
+
+	useEffect(() => {
+		if (!element.current) return;
+		setValue(getInheritedProperty(element.current));
+	}, [element]);
+
+	return value;
+}
+
+function getInheritedProperty(el: HTMLElement): BoxPalette | undefined {
+	const value = getComputedStyle(el).getPropertyValue(boxPaletteVars.palette);
+	if (value === 'light') return 'light';
+	if (value === 'dark') return 'dark';
+	// Walk up the DOM tree until we find the closest value
+	if (el.parentElement) return getInheritedProperty(el.parentElement);
+	return undefined;
+}
