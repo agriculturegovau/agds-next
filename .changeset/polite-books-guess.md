@@ -1,5 +1,4 @@
 ---
-'@ag.ds-next/box': minor
 '@ag.ds-next/core': minor
 ---
 
