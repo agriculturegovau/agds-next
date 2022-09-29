@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Prose, proseBlockClassname } from '@ag.ds-next/prose';
 import { Switch } from '@ag.ds-next/switch';
 import { Box } from '@ag.ds-next/box';
+import { PageAlert } from '@ag.ds-next/page-alert';
 import { DocumentTitle } from '../../components/DocumentTitle';
 import { ColorTable } from '../../components/TokenColorTable';
 import { TokenLayout } from '../../components/TokenLayout';
@@ -14,7 +15,7 @@ export default function TokensColorPage() {
 			<DocumentTitle title="Color tokens" />
 			<TokenLayout
 				title="Color tokens"
-				description="How to do colour"
+				description="Our Design System's colour palette."
 				editPath="/docs/pages/tokens/color.tsx"
 			>
 				<Prose>
@@ -68,11 +69,15 @@ export default function TokensColorPage() {
 					</ul>
 
 					<div className={proseBlockClassname}>
-						<Switch
-							label="Dark palette"
-							checked={isDarkMode}
-							onChange={setDarkMode}
-						/>
+						<PageAlert tone="info">
+							<p>Toggle this Switch to see the colour palette in dark mode.</p>
+
+							<Switch
+								label="Enable dark palette"
+								checked={isDarkMode}
+								onChange={setDarkMode}
+							/>
+						</PageAlert>
 					</div>
 
 					<ColorTable activePalette={isDarkMode ? 'dark' : 'light'} />

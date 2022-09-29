@@ -20,7 +20,7 @@ const theme = {
 	...agTheme,
 };
 
-const palettes = {
+const colourTokens = {
 	foreground: {
 		text: {
 			light: theme.lightForegroundText,
@@ -142,7 +142,7 @@ export const ColorTable = ({
 						</tr>
 					</TableHead>
 					<TableBody>
-						{Object.entries(palettes.foreground).map(
+						{Object.entries(colourTokens.foreground).map(
 							([tokenName, { [activePalette]: color, desc }]) => {
 								return (
 									<tr key={tokenName}>
@@ -182,7 +182,7 @@ export const ColorTable = ({
 						</tr>
 					</TableHead>
 					<TableBody>
-						{Object.entries(palettes.background).map(
+						{Object.entries(colourTokens.background).map(
 							([tokenName, { [activePalette]: color, desc }]) => {
 								return (
 									<tr key={tokenName}>
@@ -222,7 +222,7 @@ export const ColorTable = ({
 						</tr>
 					</TableHead>
 					<TableBody>
-						{Object.entries(palettes.border).map(
+						{Object.entries(colourTokens.border).map(
 							([tokenName, { [activePalette]: color, desc }]) => {
 								return (
 									<tr key={tokenName}>
@@ -262,7 +262,7 @@ export const ColorTable = ({
 						</tr>
 					</TableHead>
 					<TableBody>
-						{Object.entries(palettes.system).map(
+						{Object.entries(colourTokens.system).map(
 							([tokenName, { [activePalette]: color, desc }]) => {
 								return (
 									<tr key={tokenName}>
