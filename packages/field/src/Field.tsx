@@ -79,7 +79,7 @@ export const useFieldIds = (idProp?: string) => {
 type A11yProps = {
 	'aria-required': boolean;
 	'aria-invalid': boolean;
-	'aria-describedby': string;
+	'aria-describedby': string | undefined;
 	id: string;
 };
 
@@ -99,11 +99,18 @@ export const useFieldA11yProps = ({
 	hint?: string;
 	hintId: string;
 	invalid?: boolean;
-}): A11yProps => ({
-	'aria-required': Boolean(required),
-	'aria-invalid': Boolean(invalid),
-	'aria-describedby': [message ? messageId : null, hint ? hintId : null]
-		.filter(Boolean)
-		.join(' '),
-	id: fieldId,
-});
+}): A11yProps => {
+	const describedByIds = [
+		message ? messageId : null,
+		hint ? hintId : null,
+	].filter(Boolean);
+	const describedBy = describedByIds.length
+		? describedByIds.join(' ')
+		: undefined;
+	return {
+		'aria-required': Boolean(required),
+		'aria-invalid': Boolean(invalid),
+		'aria-describedby': describedBy,
+		id: fieldId,
+	};
+};
