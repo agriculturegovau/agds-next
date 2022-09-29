@@ -16,7 +16,7 @@ export default function FormMultiPageFormPage() {
 				<Columns>
 					<Column columnSpan={{ xs: 12, md: 8 }}>
 						<Stack gap={3}>
-							<DocumentTitle title="Multi-page form example" />
+							<DocumentTitle title="Success | Multi-page form example" />
 							<Breadcrumbs
 								links={[
 									{ href: '/', label: 'Home' },

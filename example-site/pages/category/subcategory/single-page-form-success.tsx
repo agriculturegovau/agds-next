@@ -12,7 +12,7 @@ import { FormHelpCallout } from '../../../components/FormHelpCallout';
 export default function SinglePageFormSuccessPage() {
 	return (
 		<>
-			<DocumentTitle title="Single-page form example" />
+			<DocumentTitle title="Success | Single-page form example" />
 			<AppLayout
 				template={{ name: 'Single-page form', slug: 'single-page-form' }}
 			>
