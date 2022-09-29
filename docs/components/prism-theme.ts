@@ -1,4 +1,5 @@
 import { PrismTheme } from 'prism-react-renderer';
+import dracula from 'prism-react-renderer/themes/dracula';
 import { boxPalette, globalPalette, tokens, fontGrid } from '@ag.ds-next/core';
 
 const blue = '#79c0ff';
@@ -10,120 +11,93 @@ export const prismTheme: PrismTheme = {
 	plain: {
 		fontFamily: tokens.font.monospace,
 		...fontGrid('xs', 'default'),
-		color: boxPalette.foregroundMuted,
-		backgroundColor: boxPalette.backgroundShade,
+		color: boxPalette.foregroundText,
+		backgroundColor: boxPalette.backgroundBodyAlt,
 	},
 	styles: [
-		{
-			types: ['prolog', 'constant', 'builtin'],
-			style: {
-				// color: blue,
-			},
-		},
-		// {
-		// 	types: ['inserted', 'function'],
-		// 	style: {
-		// 		color: 'rgb(80, 250, 123)',
-		// 	},
-		// },
-		// {
-		// 	types: ['deleted'],
-		// 	style: {
-		// 		color: 'rgb(255, 85, 85)',
-		// 	},
-		// },
-		// {
-		// 	types: ['changed'],
-		// 	style: {
-		// 		color: 'rgb(255, 184, 108)',
-		// 	},
-		// },
-		{
-			types: ['punctuation', 'symbol'],
-			style: {
-				color: blue,
-			},
-		},
-		{
-			types: ['tag'],
-			style: {
-				// color: blue,
-			},
-		},
-		{
-			types: ['string', 'char', 'selector'],
-			style: {
-				color: globalPalette.accent,
-			},
-		},
-
-		// {
-		// 	types: ['keyword', 'variable'],
-		// 	style: {
-		// 		color: 'rgb(189, 147, 249)',
-		// 		fontStyle: 'italic',
-		// 	},
-		// },
-		// {
-		// 	types: ['comment'],
-		// 	style: {
-		// 		color: boxPalette.foregroundText,
-		// 	},
-		// },
-		{
-			types: ['attr-value'],
-			style: {
-				color: blue,
-			},
-		},
-		{
-			types: ['attr-name'],
-			style: {
-				color: boxPalette.systemSuccess,
-			},
-		},
+		// ...dracula.styles,
 		{
 			types: [
+				'string',
+				'attr-value',
+				'entity',
 				'url',
 				'symbol',
 				'number',
 				'boolean',
 				'variable',
+				'tag',
+
+				'builtin',
+				'char',
+				'class-name',
+			],
+			style: {
+				color: blue,
+			},
+		},
+		{
+			types: ['inserted'],
+			style: {
+				color: 'rgb(80, 250, 123)',
+			},
+		},
+		{
+			types: [
+				'selector',
 				'constant',
 				'property',
 				'regex',
-				'inserted',
+				'.language-autohotkey',
+				'keyword',
+				'deleted',
 			],
 			style: {
-				color: boxPalette.systemWarning,
+				color: '#f55d70',
 			},
 		},
 		{
-			types: ['keyword'],
+			types: ['comment', 'prolog', 'doctype', 'cdata'],
 			style: {
-				color: globalPalette.lightForegroundFocus,
+				color: boxPalette.foregroundMuted,
+				font: 'italic',
 			},
 		},
 		{
-			types: ['function'],
+			types: ['operator', 'punctuation'],
 			style: {
-				color: globalPalette.lightForegroundAction,
-				fontWeight: 'bold',
-				opacity: 0.8,
+				color: boxPalette.foregroundText,
 			},
 		},
 		{
-			types: ['deleted', 'tag', 'atrule', 'attr-name'],
+			types: ['atrule', 'attr-name', 'function'],
 			style: {
-				color: globalPalette.lightForegroundAction,
-				opacity: 0.8,
+				color: purple,
 			},
 		},
 		{
-			types: ['class-name'],
+			types: ['changed'],
 			style: {
-				color: boxPalette.systemWarning,
+				color: '#fd9a5e',
 			},
 		},
 	],
 };
+
+/**
+
+
+namespace {
+	opacity: .7;
+}
+
+
+
+
+important,
+function,
+bold {
+	font-weight: bold;
+}
+
+ */
