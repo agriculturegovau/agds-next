@@ -1,0 +1,6 @@
+---
+'@ag.ds-next/box': minor
+'@ag.ds-next/core': minor
+---
+
+Added new hook `useBoxPalette` which returns the current palette for a specifc DOM element
