@@ -129,7 +129,7 @@ export const ColorTable = ({
 }) => {
 	return (
 		<>
-			<h3>Foreground colors</h3>
+			<h3 id="foreground">Foreground colors</h3>
 			<p>
 				Designed to sit on top of background colours to ensure contrast ratios
 				meet WCAG 2.1 level AA accessibility requirements.
@@ -177,7 +177,7 @@ export const ColorTable = ({
 				</TableWrapper>
 			</div>
 
-			<h3>Background colors</h3>
+			<h3 id="background">Background colors</h3>
 			<p>
 				Designed to sit under foreground colours to ensure contrast ratios meet
 				WCAG 2.1 level AA accessibility requirements. Each colour palette has 2
@@ -228,7 +228,7 @@ export const ColorTable = ({
 				</TableWrapper>
 			</div>
 
-			<h3>Border colors</h3>
+			<h3 id="border">Border colors</h3>
 			<p>Each colour palette has 2 border colours.</p>
 			<div className={proseBlockClassname}>
 				<TableWrapper>
@@ -272,7 +272,7 @@ export const ColorTable = ({
 				</TableWrapper>
 			</div>
 
-			<h3>System colors</h3>
+			<h3 id="system">System colors</h3>
 			<p>
 				System colours are used to indicate status. They’re very prominent
 				colours aimed at grabbing the user’s attention. Each system colour has a

@@ -50,13 +50,13 @@ export default function TokensColorPage() {
 					>
 						<h3>Light vs dark palette</h3>
 						<p>Toggle the dark palette colour tokens via the switch below.</p>
-						<box className={proseBlockClassname}>
+						<div className={proseBlockClassname}>
 							<Switch
 								label="Enable dark palette"
 								checked={isDarkMode}
 								onChange={setDarkMode}
 							/>
-						</box>
+						</div>
 					</Box>
 
 					<ColorTable activePalette={isDarkMode ? 'dark' : 'light'} />
