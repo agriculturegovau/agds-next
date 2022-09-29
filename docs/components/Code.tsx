@@ -133,6 +133,7 @@ const LiveCode = withLive(function LiveCode(props: unknown) {
 				id={codeId}
 				display={isCodeVisible ? 'block' : 'none'}
 				css={packs.print.visible}
+				palette="dark"
 			>
 				<LiveEditor
 					theme={prismTheme}
@@ -192,12 +193,14 @@ const StaticCode = ({
 				},
 			}}
 		>
-			<StaticEditor
-				code={code}
-				theme={prismTheme}
-				language={language}
-				disabled
-			/>
+			<Box dark>
+				<StaticEditor
+					code={code}
+					theme={prismTheme}
+					language={language}
+					disabled
+				/>
+			</Box>
 			<Flex padding={0.5}>
 				<Button
 					size="sm"

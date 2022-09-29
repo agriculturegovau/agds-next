@@ -1,89 +1,77 @@
 import { PrismTheme } from 'prism-react-renderer';
-import { boxPalette, globalPalette, tokens, fontGrid } from '@ag.ds-next/core';
+import { boxPalette, tokens, fontGrid } from '@ag.ds-next/core';
 
 export const prismTheme: PrismTheme = {
 	plain: {
 		fontFamily: tokens.font.monospace,
 		...fontGrid('xs', 'default'),
-		color: globalPalette.lightForegroundText,
-		backgroundColor: globalPalette.lightBackgroundShade,
+		color: boxPalette.foregroundText,
+		backgroundColor: boxPalette.backgroundBodyAlt,
 	},
 	styles: [
 		{
-			types: ['comment', 'prolog', 'cdata'],
-			style: {
-				color: globalPalette.lightForegroundMuted,
-				opacity: 0.5,
-			},
-		},
-		{
-			types: ['punctuation', 'entity'],
-			style: {
-				color: globalPalette.lightForegroundMuted,
-			},
-		},
-		{
-			types: ['operator', 'doctype'],
-			style: {
-				color: globalPalette.lightForegroundMuted,
-				opacity: 0.7,
-			},
-		},
-		{
 			types: [
-				'selector',
 				'string',
-				'char',
-				'builtin',
-				'inserted',
-				'regex',
 				'attr-value',
-			],
-			style: {
-				color: boxPalette.systemSuccess,
-			},
-		},
-		{
-			types: [
+				'entity',
 				'url',
 				'symbol',
 				'number',
 				'boolean',
 				'variable',
+				'tag',
+
+				'builtin',
+				'char',
+				'class-name',
+			],
+			style: {
+				color: '#79c0ff',
+			},
+		},
+		{
+			types: ['inserted'],
+			style: {
+				color: 'rgb(80, 250, 123)',
+			},
+		},
+		{
+			types: [
+				'selector',
 				'constant',
 				'property',
 				'regex',
-				'inserted',
+				'.language-autohotkey',
+				'keyword',
+				'deleted',
 			],
 			style: {
-				color: boxPalette.systemWarning,
+				color: '#f55d70',
 			},
 		},
 		{
-			types: ['keyword'],
+			types: ['comment', 'prolog', 'doctype', 'cdata'],
 			style: {
-				color: globalPalette.lightForegroundFocus,
+				color: boxPalette.foregroundMuted,
+				font: 'italic',
 			},
 		},
 		{
-			types: ['function'],
+			types: ['operator', 'punctuation'],
 			style: {
-				color: globalPalette.lightForegroundAction,
-				fontWeight: 'bold',
-				opacity: 0.8,
+				color: boxPalette.foregroundText,
 			},
 		},
 		{
-			types: ['deleted', 'tag', 'atrule', 'attr-name'],
+			types: ['atrule', 'attr-name', 'function'],
 			style: {
-				color: globalPalette.lightForegroundAction,
-				opacity: 0.8,
+				color: '#d2a8ff',
 			},
 		},
 		{
-			types: ['class-name'],
+			types: ['changed'],
 			style: {
-				color: boxPalette.systemWarning,
+				color: '#fd9a5e',
 			},
 		},
 	],
