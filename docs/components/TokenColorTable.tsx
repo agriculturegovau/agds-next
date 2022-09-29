@@ -128,167 +128,198 @@ export const ColorTable = ({
 	activePalette: paletteName;
 }) => {
 	return (
-		<Stack gap={2} className={proseBlockClassname}>
-			<TableWrapper>
-				<Table>
-					<TableCaption>Foreground colors</TableCaption>
-					<TableHead>
-						<tr>
-							<TableHeader scope="col">Name</TableHeader>
-							<TableHeader scope="col">Value</TableHeader>
-							<TableHeader width="50%" scope="col">
-								Description
-							</TableHeader>
-						</tr>
-					</TableHead>
-					<TableBody>
-						{Object.entries(colourTokens.foreground).map(
-							([tokenName, { [activePalette]: color, desc }]) => {
-								return (
-									<tr key={tokenName}>
-										<TableCell>{tokenName}</TableCell>
-										<TableCell>
-											<Flex gap={0.5} alignItems="center">
-												<div
-													css={{
-														width: 32,
-														height: 32,
-														backgroundColor: color,
-													}}
-												/>
+		<>
+			<h3>Foreground colors</h3>
+			<p>
+				Designed to sit on top of background colours to ensure contrast ratios
+				meet WCAG 2.1 level AA accessibility requirements.
+			</p>
 
-												{color}
-											</Flex>
-										</TableCell>
-										<TableCell>{desc}</TableCell>
-									</tr>
-								);
-							}
-						)}
-					</TableBody>
-				</Table>
-			</TableWrapper>
+			<div className={proseBlockClassname}>
+				<TableWrapper>
+					<Table>
+						<TableCaption>Foreground tokens</TableCaption>
+						<TableHead>
+							<tr>
+								<TableHeader scope="col">Name</TableHeader>
+								<TableHeader scope="col">Value</TableHeader>
+								<TableHeader width="50%" scope="col">
+									Description
+								</TableHeader>
+							</tr>
+						</TableHead>
+						<TableBody>
+							{Object.entries(colourTokens.foreground).map(
+								([tokenName, { [activePalette]: color, desc }]) => {
+									return (
+										<tr key={tokenName}>
+											<TableCell>{tokenName}</TableCell>
+											<TableCell>
+												<Flex gap={0.5} alignItems="center">
+													<div
+														css={{
+															width: 32,
+															height: 32,
+															backgroundColor: color,
+														}}
+													/>
 
-			<TableWrapper>
-				<Table>
-					<TableCaption>Background colors</TableCaption>
-					<TableHead>
-						<tr>
-							<TableHeader scope="col">Name</TableHeader>
-							<TableHeader scope="col">Value</TableHeader>
-							<TableHeader width="50%" scope="col">
-								Description
-							</TableHeader>
-						</tr>
-					</TableHead>
-					<TableBody>
-						{Object.entries(colourTokens.background).map(
-							([tokenName, { [activePalette]: color, desc }]) => {
-								return (
-									<tr key={tokenName}>
-										<TableCell>{tokenName}</TableCell>
-										<TableCell>
-											<Flex gap={0.5} alignItems="center">
-												<div
-													css={{
-														width: 32,
-														height: 32,
-														backgroundColor: color,
-													}}
-												/>
+													{color}
+												</Flex>
+											</TableCell>
+											<TableCell>{desc}</TableCell>
+										</tr>
+									);
+								}
+							)}
+						</TableBody>
+					</Table>
+				</TableWrapper>
+			</div>
 
-												{color}
-											</Flex>
-										</TableCell>
-										<TableCell>{desc}</TableCell>
-									</tr>
-								);
-							}
-						)}
-					</TableBody>
-				</Table>
-			</TableWrapper>
+			<h3>Background colors</h3>
+			<p>
+				Designed to sit under foreground colours to ensure contrast ratios meet
+				WCAG 2.1 level AA accessibility requirements. Each colour palette has 2
+				main background colours to choose from, the default background (body)
+				and a darker alternative (body-alt). Shades can be used to help
+				differentiate or highlight content against the body background colours.
+			</p>
 
-			<TableWrapper>
-				<Table>
-					<TableCaption>Border colors</TableCaption>
-					<TableHead>
-						<tr>
-							<TableHeader scope="col">Name</TableHeader>
-							<TableHeader scope="col">Value</TableHeader>
-							<TableHeader width="50%" scope="col">
-								Description
-							</TableHeader>
-						</tr>
-					</TableHead>
-					<TableBody>
-						{Object.entries(colourTokens.border).map(
-							([tokenName, { [activePalette]: color, desc }]) => {
-								return (
-									<tr key={tokenName}>
-										<TableCell>{tokenName}</TableCell>
-										<TableCell>
-											<Flex gap={0.5} alignItems="center">
-												<div
-													css={{
-														width: 32,
-														height: 32,
-														backgroundColor: color,
-													}}
-												/>
+			<div className={proseBlockClassname}>
+				<TableWrapper>
+					<Table>
+						<TableCaption>All background colors</TableCaption>
+						<TableHead>
+							<tr>
+								<TableHeader scope="col">Name</TableHeader>
+								<TableHeader scope="col">Value</TableHeader>
+								<TableHeader width="50%" scope="col">
+									Description
+								</TableHeader>
+							</tr>
+						</TableHead>
+						<TableBody>
+							{Object.entries(colourTokens.background).map(
+								([tokenName, { [activePalette]: color, desc }]) => {
+									return (
+										<tr key={tokenName}>
+											<TableCell>{tokenName}</TableCell>
+											<TableCell>
+												<Flex gap={0.5} alignItems="center">
+													<div
+														css={{
+															width: 32,
+															height: 32,
+															backgroundColor: color,
+														}}
+													/>
 
-												{color}
-											</Flex>
-										</TableCell>
-										<TableCell>{desc}</TableCell>
-									</tr>
-								);
-							}
-						)}
-					</TableBody>
-				</Table>
-			</TableWrapper>
+													{color}
+												</Flex>
+											</TableCell>
+											<TableCell>{desc}</TableCell>
+										</tr>
+									);
+								}
+							)}
+						</TableBody>
+					</Table>
+				</TableWrapper>
+			</div>
 
-			<TableWrapper>
-				<Table>
-					<TableCaption>System colors</TableCaption>
-					<TableHead>
-						<tr>
-							<TableHeader scope="col">Name</TableHeader>
-							<TableHeader scope="col">Value</TableHeader>
-							<TableHeader width="50%" scope="col">
-								Description
-							</TableHeader>
-						</tr>
-					</TableHead>
-					<TableBody>
-						{Object.entries(colourTokens.system).map(
-							([tokenName, { [activePalette]: color, desc }]) => {
-								return (
-									<tr key={tokenName}>
-										<TableCell>{tokenName}</TableCell>
-										<TableCell>
-											<Flex gap={0.5} alignItems="center">
-												<div
-													css={{
-														width: 32,
-														height: 32,
-														backgroundColor: color,
-													}}
-												/>
+			<h3>Border colors</h3>
+			<p>Each colour palette has 2 border colours.</p>
+			<div className={proseBlockClassname}>
+				<TableWrapper>
+					<Table>
+						<TableCaption>Border colors</TableCaption>
+						<TableHead>
+							<tr>
+								<TableHeader scope="col">Name</TableHeader>
+								<TableHeader scope="col">Value</TableHeader>
+								<TableHeader width="50%" scope="col">
+									Description
+								</TableHeader>
+							</tr>
+						</TableHead>
+						<TableBody>
+							{Object.entries(colourTokens.border).map(
+								([tokenName, { [activePalette]: color, desc }]) => {
+									return (
+										<tr key={tokenName}>
+											<TableCell>{tokenName}</TableCell>
+											<TableCell>
+												<Flex gap={0.5} alignItems="center">
+													<div
+														css={{
+															width: 32,
+															height: 32,
+															backgroundColor: color,
+														}}
+													/>
 
-												{color}
-											</Flex>
-										</TableCell>
-										<TableCell>{desc}</TableCell>
-									</tr>
-								);
-							}
-						)}
-					</TableBody>
-				</Table>
-			</TableWrapper>
-		</Stack>
+													{color}
+												</Flex>
+											</TableCell>
+											<TableCell>{desc}</TableCell>
+										</tr>
+									);
+								}
+							)}
+						</TableBody>
+					</Table>
+				</TableWrapper>
+			</div>
+
+			<h3>System colors</h3>
+			<p>
+				System colours are used to indicate status. They’re very prominent
+				colours aimed at grabbing the user’s attention. Each system colour has a
+				muted version to be used as a background colour.
+			</p>
+			<div className={proseBlockClassname}>
+				<TableWrapper>
+					<Table>
+						<TableCaption>System colors</TableCaption>
+						<TableHead>
+							<tr>
+								<TableHeader scope="col">Name</TableHeader>
+								<TableHeader scope="col">Value</TableHeader>
+								<TableHeader width="50%" scope="col">
+									Description
+								</TableHeader>
+							</tr>
+						</TableHead>
+						<TableBody>
+							{Object.entries(colourTokens.system).map(
+								([tokenName, { [activePalette]: color, desc }]) => {
+									return (
+										<tr key={tokenName}>
+											<TableCell>{tokenName}</TableCell>
+											<TableCell>
+												<Flex gap={0.5} alignItems="center">
+													<div
+														css={{
+															width: 32,
+															height: 32,
+															backgroundColor: color,
+														}}
+													/>
+
+													{color}
+												</Flex>
+											</TableCell>
+											<TableCell>{desc}</TableCell>
+										</tr>
+									);
+								}
+							)}
+						</TableBody>
+					</Table>
+				</TableWrapper>
+			</div>
+		</>
 	);
 };
 
