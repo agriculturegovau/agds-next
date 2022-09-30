@@ -3,10 +3,10 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { Stack } from '@ag.ds-next/box';
 import { DatePicker } from '@ag.ds-next/date-picker';
+import { FormRequiredFieldsMessage } from '../FormRequiredFieldsMessage';
 import { useFormExampleMultiStep } from './FormRegisterPetDetails';
 import { FormRegisterPetDetailsActions } from './FormRegisterPetDetailsActions';
 import { FormRegisterPetDetailsContainer } from './FormRegisterPetDetailsContainer';
-import { FormRequiredFieldsMessage } from '../FormRequiredFieldsMessage';
 
 const formSchema = yup
 	.object({
