@@ -1,14 +1,8 @@
 import React, { ReactNode, useState, useCallback, Fragment } from 'react';
 import { useRouter } from 'next/router';
-import {
-	LiveProvider,
-	LiveEditor,
-	LivePreview,
-	Editor as StaticEditor,
-	withLive,
-} from 'react-live';
+import { LiveProvider, LiveEditor, LivePreview, withLive } from 'react-live';
 import { createUrl } from 'playroom/utils';
-import { Language } from 'prism-react-renderer';
+import Highlight, { defaultProps, Language } from 'prism-react-renderer';
 import copy from 'clipboard-copy';
 import { useId } from '@reach/auto-id';
 import { ExternalLinkCallout } from '@ag.ds-next/a11y';
@@ -183,8 +177,9 @@ const StaticCode = ({
 				overflow: 'hidden',
 				marginTop: mapSpacing(1.5),
 
-				'textarea, pre': {
+				pre: {
 					padding: `${mapSpacing(1.5)} !important`,
+					overflowX: 'auto',
 				},
 
 				'& ::selection': {
@@ -194,12 +189,32 @@ const StaticCode = ({
 			}}
 		>
 			<Box dark>
-				<StaticEditor
+				<Highlight
+					{...defaultProps}
 					code={code}
 					theme={prismTheme}
 					language={language}
-					disabled
-				/>
+				>
+					{({ className, style, tokens, getLineProps, getTokenProps }) => (
+						<pre
+							className={[className, unsetProseStylesClassname].join(' ')}
+							style={style}
+						>
+							<code>
+								{tokens.map((line, lineKey) => (
+									<div key={lineKey} {...getLineProps({ line, key: lineKey })}>
+										{line.map((token, tokenKey) => (
+											<span
+												key={tokenKey}
+												{...getTokenProps({ token, key: tokenKey })}
+											/>
+										))}
+									</div>
+								))}
+							</code>
+						</pre>
+					)}
+				</Highlight>
 			</Box>
 			<Flex padding={0.5}>
 				<Button
