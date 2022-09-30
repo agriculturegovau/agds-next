@@ -177,8 +177,9 @@ const StaticCode = ({
 				overflow: 'hidden',
 				marginTop: mapSpacing(1.5),
 
-				'textarea, pre': {
+				pre: {
 					padding: `${mapSpacing(1.5)} !important`,
+					overflowX: 'auto',
 				},
 
 				'& ::selection': {
@@ -196,19 +197,21 @@ const StaticCode = ({
 				>
 					{({ className, style, tokens, getLineProps, getTokenProps }) => (
 						<pre
-							className={className}
-							style={{
-								...style,
-								overflowX: 'auto',
-							}}
+							className={[className, unsetProseStylesClassname].join(' ')}
+							style={style}
 						>
-							{tokens.map((line, i) => (
-								<div key={i} {...getLineProps({ line, key: i })}>
-									{line.map((token, key) => (
-										<span key={key} {...getTokenProps({ token, key })} />
-									))}
-								</div>
-							))}
+							<code>
+								{tokens.map((line, lineKey) => (
+									<div key={lineKey} {...getLineProps({ line, key: lineKey })}>
+										{line.map((token, tokenKey) => (
+											<span
+												key={tokenKey}
+												{...getTokenProps({ token, key: tokenKey })}
+											/>
+										))}
+									</div>
+								))}
+							</code>
 						</pre>
 					)}
 				</Highlight>
