@@ -1,6 +1,7 @@
 import {
 	ChangeEvent,
 	useCallback,
+	Ref,
 	useRef,
 	useState,
 	useEffect,
@@ -47,6 +48,10 @@ export type DateRangePickerProps = DateRangePickerCalendarProps & {
 	fromLabel?: string;
 	/** The label above the end date text input. */
 	toLabel?: string;
+	/** Ref to the start input element. */
+	fromInputRef?: Ref<HTMLInputElement>;
+	/** Ref to the end input element. */
+	toInputRef?: Ref<HTMLInputElement>;
 };
 
 export const DateRangePicker = ({
@@ -58,6 +63,8 @@ export const DateRangePicker = ({
 	required,
 	minDate,
 	maxDate,
+	fromInputRef,
+	toInputRef,
 }: DateRangePickerProps) => {
 	const [isCalendarOpen, openCalendar, closeCalendar] = useTernaryState(false);
 	const [inputMode, setInputMode] = useState<'from' | 'to'>();
@@ -193,6 +200,7 @@ export const DateRangePicker = ({
 				gap={1}
 			>
 				<DateInput
+					ref={fromInputRef}
 					label={fromLabel}
 					value={fromInputValue}
 					onChange={onFromInputChange}
@@ -202,6 +210,7 @@ export const DateRangePicker = ({
 					required={required}
 				/>
 				<DateInput
+					ref={toInputRef}
 					label={toLabel}
 					value={toInputValue}
 					onChange={onToInputChange}

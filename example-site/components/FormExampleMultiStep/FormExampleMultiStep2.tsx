@@ -37,10 +37,11 @@ export const FormExampleMultiStep2 = () => {
 					control={control}
 					name="date"
 					render={({
-						field: { onChange, onBlur, value, name },
+						field: { onChange, onBlur, value, name, ref },
 						fieldState: { invalid, error },
 					}) => (
 						<DatePicker
+							inputRef={ref}
 							label="Select a date"
 							value={value}
 							onChange={onChange}

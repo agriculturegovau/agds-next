@@ -1,5 +1,6 @@
 import {
 	ChangeEvent,
+	Ref,
 	useCallback,
 	useEffect,
 	useMemo,
@@ -32,6 +33,8 @@ type DatePickerBaseProps = {
 	value: Date | undefined;
 	/** Function to be fired following a change event. */
 	onChange: (day: Date | undefined) => void;
+	/** Ref to the input element. */
+	inputRef?: Ref<HTMLInputElement>;
 };
 
 export type DatePickerProps = DatePickerInputProps &
@@ -44,6 +47,7 @@ export const DatePicker = ({
 	minDate,
 	maxDate,
 	initialMonth,
+	inputRef,
 	...props
 }: DatePickerProps) => {
 	const [isCalendarOpen, openCalendar, closeCalendar] = useTernaryState(false);
@@ -125,6 +129,7 @@ export const DatePicker = ({
 		<div ref={setRefEl}>
 			<DateInput
 				{...props}
+				ref={inputRef}
 				value={inputValue}
 				onChange={onInputChange}
 				buttonRef={triggerRef}
