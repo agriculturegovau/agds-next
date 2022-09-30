@@ -2,6 +2,7 @@ import { ReactNode } from 'react';
 import { Stack } from '@ag.ds-next/box';
 import { PageAlert } from '@ag.ds-next/page-alert';
 import { Prose } from '@ag.ds-next/prose';
+import { Text } from '@ag.ds-next/text';
 import { PageTitle } from '../PageTitle';
 import { useFormExampleMultiStep } from './FormExampleMultiStep';
 
@@ -22,6 +23,9 @@ export const FormExampleMultiStepContainer = ({
 				title={title}
 				introduction={introduction}
 			/>
+			<Text fontSize="xs" color="muted">
+				All fields are required unless marked optional.
+			</Text>
 			{hasCompletedPreviousSteps ? (
 				children
 			) : (
