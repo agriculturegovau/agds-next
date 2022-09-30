@@ -48,9 +48,9 @@ export type DateRangePickerProps = DateRangePickerCalendarProps & {
 	fromLabel?: string;
 	/** The label above the end date text input. */
 	toLabel?: string;
-	/** Ref to the from input element. */
-	fromInputRef?: Ref<HTMLInputElement>;
 	/** Ref to the start input element. */
+	fromInputRef?: Ref<HTMLInputElement>;
+	/** Ref to the end input element. */
 	toInputRef?: Ref<HTMLInputElement>;
 };
 
