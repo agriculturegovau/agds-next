@@ -14,7 +14,7 @@ import { FormDivider } from '../../../../../components/FormDivider';
 export default function FormRegisterPetTask1HomePage() {
 	return (
 		<>
-			<DocumentTitle title="Your personal details" />
+			<DocumentTitle title="Your personal details | Register a pet" />
 			<AppLayout focusMode>
 				<PageContent>
 					<Columns>
@@ -28,7 +28,7 @@ export default function FormRegisterPetTask1HomePage() {
 								</DirectionLink>
 								<PageTitle
 									title="Your personal details"
-									introduction="To complete this process you can check, update and confirm your current contact and address details"
+									introduction="To complete this process you can check, update and confirm your current contact and address details."
 								/>
 								<Stack gap={1.5}>
 									<H2>Registration requirements</H2>

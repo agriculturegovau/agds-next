@@ -29,7 +29,7 @@ export default function FormRegisterPetHomePage() {
 	const { formState } = useFormRegisterPet();
 	return (
 		<>
-			<DocumentTitle title="Register your pet" />
+			<DocumentTitle title="Register a pet" />
 			<AppLayout>
 				<PageContent>
 					<Columns>
@@ -40,12 +40,12 @@ export default function FormRegisterPetHomePage() {
 										{ href: '/', label: 'Home' },
 										{ href: '/services', label: 'Services' },
 										{ href: '/services/registrations', label: 'Registrations' },
-										{ label: 'Register your pet' },
+										{ label: 'Register a pet' },
 									]}
 								/>
 								<PageTitle
-									title="Register your pet"
-									introduction="Registering domestic animals is a requirement of pet ownership. Complete the following 2 tasks to register your pet."
+									title="Register a pet"
+									introduction="Registering domestic animals is a requirement of pet ownership. Complete the following 2 tasks to register a pet."
 									callToAction={
 										<Text as="p" color="muted">
 											Takes around 10 minutes.

@@ -45,7 +45,7 @@ export function ServicesRecentlyViewedCardList() {
 	return (
 		<Columns as="ul" cols={{ xs: 1, sm: 2, md: 3 }}>
 			{items.map((item) => (
-				<Card as="li" key={item.slug} shadow clickable>
+				<Card as="li" key={item.title} shadow clickable>
 					<CardInner>
 						<Stack gap={1}>
 							<H3>

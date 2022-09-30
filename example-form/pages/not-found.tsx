@@ -17,7 +17,10 @@ export default function NotFoundPage() {
 						<H1>Oops! This page does not exist.</H1>
 						<Text as="p" fontSize="md">
 							You have reached a page which is not part of the testing process.
-							Go back to the <TextLink href="/">yourGov home page</TextLink>.
+						</Text>
+						<Text as="p">
+							Please go back to the{' '}
+							<TextLink href="/">yourGov home page</TextLink>.
 						</Text>
 					</Stack>
 				</PageContent>

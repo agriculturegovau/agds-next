@@ -14,6 +14,7 @@ import { LoadingBlanket } from '@ag.ds-next/loading';
 import { PageAlert } from '@ag.ds-next/page-alert';
 import { Stack } from '@ag.ds-next/box';
 import { useScrollToField } from '@ag.ds-next/field';
+import { FormRequiredFieldsMessage } from '../FormRequiredFieldsMessage';
 import { FormRegisterPetDetailsContainer } from './FormRegisterPetDetailsContainer';
 import { FormRegisterPetDetailsActions } from './FormRegisterPetDetailsActions';
 import { useFormExampleMultiStep } from './FormRegisterPetDetails';
@@ -67,6 +68,7 @@ export const FormRegisterPetDetailsStep2 = () => {
 		<FormRegisterPetDetailsContainer
 			title="Provide proof of vaccination"
 			introduction="If you have avaccination certificate provie here."
+			callToAction={<FormRequiredFieldsMessage />}
 		>
 			<Stack
 				as="form"

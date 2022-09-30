@@ -24,6 +24,7 @@ import {
 	DefinitionListItem,
 	DefinitionTerm,
 } from '../DefinitionList';
+import { FormRequiredFieldsMessage } from '../FormRequiredFieldsMessage';
 import { FormRegisterPetPersonalDetailsContainer } from './FormRegisterPetPersonalDetailsContainer';
 import { FormRegisterPetPersonalDetailsActions } from './FormRegisterPetPersonalDetailsActions';
 import { useFormRegisterPetPersonalDetails } from './FormRegisterPetPersonalDetails';
@@ -109,6 +110,7 @@ export const FormRegisterPetPersonalDetailsStep0 = () => {
 				{isFormVisibile ? (
 					<Stack gap={1.5} width="100%">
 						<H2>Update personal details</H2>
+						<FormRequiredFieldsMessage />
 						<Stack
 							as="form"
 							gap={3}
@@ -147,6 +149,7 @@ export const FormRegisterPetPersonalDetailsStep0 = () => {
 									invalid={Boolean(errors.firstName?.message)}
 									message={errors.firstName?.message}
 									maxWidth="xl"
+									autoFocus
 									required
 								/>
 								<TextInput
@@ -174,10 +177,11 @@ export const FormRegisterPetPersonalDetailsStep0 = () => {
 									control={control}
 									name="dob"
 									render={({
-										field: { onChange, onBlur, value, name },
+										field: { onChange, onBlur, value, name, ref },
 										fieldState: { invalid, error },
 									}) => (
 										<DatePicker
+											inputRef={ref}
 											label="Date of birth"
 											value={value}
 											onChange={onChange}

@@ -1,11 +1,10 @@
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
-import { Box, Stack } from '@ag.ds-next/box';
-import { TextInput } from '@ag.ds-next/text-input';
-import { mapSpacing } from '@ag.ds-next/core';
+import { Stack } from '@ag.ds-next/box';
 import { ControlGroup, Radio } from '@ag.ds-next/control-input';
 import { FormStack } from '@ag.ds-next/form-stack';
+import { FormRequiredFieldsMessage } from '../FormRequiredFieldsMessage';
 import { FormRegisterPetDetailsContainer } from './FormRegisterPetDetailsContainer';
 import { FormRegisterPetDetailsActions } from './FormRegisterPetDetailsActions';
 import { useFormExampleMultiStep } from './FormRegisterPetDetails';
@@ -15,13 +14,8 @@ const formSchema = yup
 		typeOfPet: yup
 			.string()
 			.typeError('Select an option')
-			.required('Select an option'),
-		otherDetails: yup.string().when('typeOfPet', (value, schema) => {
-			if (value === 'other') {
-				return schema.required('Enter details');
-			}
-			return schema;
-		}),
+			.required('Select an option')
+			.matches(/(Dog)/, 'You must select "Dog" to proceed'),
 	})
 	.required();
 
@@ -31,7 +25,6 @@ export const FormRegisterPetDetailsStep0 = () => {
 	const { next, stepFormState } = useFormExampleMultiStep();
 
 	const {
-		watch,
 		register,
 		handleSubmit,
 		formState: { errors },
@@ -44,12 +37,11 @@ export const FormRegisterPetDetailsStep0 = () => {
 		next(data);
 	};
 
-	const showConditionalField = watch('typeOfPet') === 'other';
-
 	return (
 		<FormRegisterPetDetailsContainer
 			title="Type of pet"
 			introduction="Domestic pets living in urban environments need to be registered."
+			callToAction={<FormRequiredFieldsMessage />}
 		>
 			<Stack as="form" gap={3} onSubmit={handleSubmit(onSubmit)} noValidate>
 				<FormStack>
@@ -61,32 +53,15 @@ export const FormRegisterPetDetailsStep0 = () => {
 						required
 						block
 					>
-						<Radio {...register('typeOfPet')} value="dog">
+						<Radio {...register('typeOfPet')} value="Dog">
 							Dog
 						</Radio>
-						<Radio {...register('typeOfPet')} value="cat">
+						<Radio {...register('typeOfPet')} value="Cat">
 							Cat
 						</Radio>
-						<Radio {...register('typeOfPet')} value="other">
+						<Radio {...register('typeOfPet')} value="Other">
 							Other
 						</Radio>
-						{showConditionalField ? (
-							<Box
-								borderLeft
-								borderLeftWidth="xl"
-								paddingLeft={1.5}
-								css={{ marginLeft: mapSpacing(1) }}
-							>
-								<TextInput
-									id="otherDetails"
-									label="Provide details"
-									{...register('otherDetails')}
-									invalid={Boolean(errors.otherDetails?.message)}
-									message={errors.otherDetails?.message}
-									required
-								/>
-							</Box>
-						) : null}
 					</ControlGroup>
 				</FormStack>
 				<FormRegisterPetDetailsActions />
