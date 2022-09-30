@@ -10,6 +10,7 @@ import { mapSpacing } from '@ag.ds-next/core';
 import { PageAlert } from '@ag.ds-next/page-alert';
 import { TextInput } from '@ag.ds-next/text-input';
 import { useScrollToField } from '@ag.ds-next/field';
+import { FormRequiredFieldsMessage } from '../FormRequiredFieldsMessage';
 import { useFormRegisterPetPersonalDetails } from './FormRegisterPetPersonalDetails';
 import { FormRegisterPetPersonalDetailsActions } from './FormRegisterPetPersonalDetailsActions';
 import { FormRegisterPetPersonalDetailsContainer } from './FormRegisterPetPersonalDetailsContainer';
@@ -78,6 +79,7 @@ export const FormRegisterPetPersonalDetailsStep2 = () => {
 		<FormRegisterPetPersonalDetailsContainer
 			title="Preferred contact method"
 			introduction="We may need to contact you to check details of your application."
+			callToAction={<FormRequiredFieldsMessage />}
 		>
 			<Stack
 				as="form"

@@ -16,6 +16,7 @@ import { ControlGroup, Radio } from '@ag.ds-next/control-input';
 import { useScrollToField } from '@ag.ds-next/field';
 import { PageAlert } from '@ag.ds-next/page-alert';
 import { Prose } from '@ag.ds-next/prose';
+import { FormRequiredFieldsMessage } from '../FormRequiredFieldsMessage';
 import { FormRegisterPetDetailsContainer } from './FormRegisterPetDetailsContainer';
 import { FormRegisterPetDetailsActions } from './FormRegisterPetDetailsActions';
 import { useFormExampleMultiStep } from './FormRegisterPetDetails';
@@ -23,7 +24,7 @@ import { useFormExampleMultiStep } from './FormRegisterPetDetails';
 const formSchema = yup
 	.object({
 		name: yup.string().required("Enter your pet's name"),
-		breed: yup.string().required("Enter your pet's breed"),
+		breed: yup.string().required("Select your pet's breed"),
 		dob: yup.date().required("Enter your pet's date of birth"),
 		sex: yup
 			.string()
@@ -73,6 +74,7 @@ export const FormRegisterPetDetailsStep1 = () => {
 		<FormRegisterPetDetailsContainer
 			title="Pet details"
 			introduction="Domestic pets living in urban environments need to be registered."
+			callToAction={<FormRequiredFieldsMessage />}
 		>
 			<Stack
 				as="form"
@@ -128,10 +130,11 @@ export const FormRegisterPetDetailsStep1 = () => {
 						control={control}
 						name="dob"
 						render={({
-							field: { onChange, onBlur, value, name },
+							field: { onChange, onBlur, value, name, ref },
 							fieldState: { invalid, error },
 						}) => (
 							<DatePicker
+								inputRef={ref}
 								label="Date of birth"
 								value={value}
 								onChange={onChange}
@@ -152,10 +155,10 @@ export const FormRegisterPetDetailsStep1 = () => {
 						required
 						block
 					>
-						<Radio {...register('sex')} value="male">
+						<Radio {...register('sex')} value="Male">
 							Male
 						</Radio>
-						<Radio {...register('sex')} value="female">
+						<Radio {...register('sex')} value="Female">
 							Female
 						</Radio>
 					</ControlGroup>
@@ -473,6 +476,7 @@ const DOG_BREEDS = [
 	'Old English Terrier',
 	'Old German Shepherd Dog',
 	'Olde English Bulldogge',
+	'Other',
 	'Otterhound',
 	'Pachon Navarro',
 	'Paisley Terrier',

@@ -5,7 +5,7 @@ import { FormRegisterPetDetails } from '../../../../../components/FormRegisterPe
 export default function FormRegisterPetTask2FormPage() {
 	return (
 		<Fragment>
-			<DocumentTitle title="Your pet's details" />
+			<DocumentTitle title="Your pet's details | Register a pet" />
 			<FormRegisterPetDetails />
 		</Fragment>
 	);

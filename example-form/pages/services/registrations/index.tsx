@@ -25,7 +25,11 @@ export default function RegistrationsPage() {
 
 	return (
 		<>
-			<DocumentTitle title="Registrations" />
+			<DocumentTitle
+				title={
+					registrationId ? 'Successfully registered pet ' : 'Registrations'
+				}
+			/>
 			<AppLayout>
 				<HeroSubcategoryBanner>
 					<Breadcrumbs

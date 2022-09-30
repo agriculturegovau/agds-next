@@ -18,6 +18,7 @@ import {
 	DefinitionListItem,
 	DefinitionTerm,
 } from '../DefinitionList';
+import { FormRequiredFieldsMessage } from '../FormRequiredFieldsMessage';
 import { FormRegisterPetPersonalDetailsContainer } from './FormRegisterPetPersonalDetailsContainer';
 import { FormRegisterPetPersonalDetailsActions } from './FormRegisterPetPersonalDetailsActions';
 import { useFormRegisterPetPersonalDetails } from './FormRegisterPetPersonalDetails';
@@ -74,12 +75,13 @@ export const FormRegisterPetPersonalDetailsStep1 = () => {
 	return (
 		<FormRegisterPetPersonalDetailsContainer
 			title="Address details"
-			introduction="Provide address for where pet will be housed"
+			introduction="Provide the address details for where pet will be housed."
 		>
 			<Stack gap={3} alignItems="flex-start">
 				{isFormVisibile ? (
 					<Stack gap={1.5}>
-						<H2>Update personal details</H2>
+						<H2>Update address details</H2>
+						<FormRequiredFieldsMessage />
 						<Stack
 							as="form"
 							gap={3}
@@ -118,6 +120,7 @@ export const FormRegisterPetPersonalDetailsStep1 = () => {
 									invalid={Boolean(errors.streetAddress?.message)}
 									message={errors.streetAddress?.message}
 									maxWidth="xl"
+									autoFocus
 									required
 								/>
 								<TextInput
@@ -169,7 +172,7 @@ export const FormRegisterPetPersonalDetailsStep1 = () => {
 				) : (
 					<>
 						<Stack gap={1.5} alignItems="flex-start" width="100%">
-							<H2>Check address</H2>
+							<H2>Check address details</H2>
 							<DefinitionList>
 								<DefinitionListItem>
 									<DefinitionTerm>Street address</DefinitionTerm>

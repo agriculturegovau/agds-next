@@ -9,10 +9,12 @@ export const FormRegisterPetDetailsContainer = ({
 	children,
 	title,
 	introduction,
+	callToAction,
 }: {
 	children: ReactNode;
 	title: string;
 	introduction: string;
+	callToAction?: ReactNode;
 }) => {
 	const { hasCompletedPreviousSteps } = useFormExampleMultiStep();
 	return (
@@ -21,6 +23,7 @@ export const FormRegisterPetDetailsContainer = ({
 				pretext="Your pet’s details"
 				title={title}
 				introduction={introduction}
+				callToAction={hasCompletedPreviousSteps ? callToAction : undefined}
 			/>
 			{hasCompletedPreviousSteps ? (
 				children
