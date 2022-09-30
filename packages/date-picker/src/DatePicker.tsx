@@ -1,7 +1,6 @@
 import {
 	ChangeEvent,
-	forwardRef,
-	RefObject,
+	Ref,
 	useCallback,
 	useEffect,
 	useMemo,
@@ -35,7 +34,7 @@ type DatePickerBaseProps = {
 	/** Function to be fired following a change event. */
 	onChange: (day: Date | undefined) => void;
 	/** Ref to the input element. */
-	inputRef?: RefObject<HTMLInputElement>;
+	inputRef?: Ref<HTMLInputElement>;
 };
 
 export type DatePickerProps = DatePickerInputProps &

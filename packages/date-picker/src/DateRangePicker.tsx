@@ -1,11 +1,11 @@
 import {
 	ChangeEvent,
 	useCallback,
+	Ref,
 	useRef,
 	useState,
 	useEffect,
 	useMemo,
-	RefObject,
 } from 'react';
 import { usePopper } from 'react-popper';
 import { SelectRangeEventHandler } from 'react-day-picker';
@@ -49,9 +49,9 @@ export type DateRangePickerProps = DateRangePickerCalendarProps & {
 	/** The label above the end date text input. */
 	toLabel?: string;
 	/** Ref to the from input element. */
-	fromInputRef?: RefObject<HTMLInputElement>;
+	fromInputRef?: Ref<HTMLInputElement>;
 	/** Ref to the start input element. */
-	toInputRef?: RefObject<HTMLInputElement>;
+	toInputRef?: Ref<HTMLInputElement>;
 };
 
 export const DateRangePicker = ({
@@ -64,7 +64,7 @@ export const DateRangePicker = ({
 	minDate,
 	maxDate,
 	fromInputRef,
-	endInputRef,
+	toInputRef,
 }: DateRangePickerProps) => {
 	const [isCalendarOpen, openCalendar, closeCalendar] = useTernaryState(false);
 	const [inputMode, setInputMode] = useState<'from' | 'to'>();
@@ -210,7 +210,7 @@ export const DateRangePicker = ({
 					required={required}
 				/>
 				<DateInput
-					ref={endInputRef}
+					ref={toInputRef}
 					label={toLabel}
 					value={toInputValue}
 					onChange={onToInputChange}
