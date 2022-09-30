@@ -5,7 +5,7 @@ import { Stack } from '@ag.ds-next/box';
 import { Text } from '@ag.ds-next/text';
 import { useTernaryState } from '@ag.ds-next/core';
 import { FormDivider } from '../FormDivider';
-import { useFormExampleMultiStep } from './FormRegisterPetDetails';
+import { useFormRegisterPetDetails } from './FormRegisterPetDetails';
 
 export const FormRegisterPetDetailsActions = () => {
 	const [isModalOpen, openModal, closeModal] = useTernaryState(false);
@@ -16,7 +16,7 @@ export const FormRegisterPetDetailsActions = () => {
 		saveAndExit,
 		isSavingBeforeExiting,
 		cancel,
-	} = useFormExampleMultiStep();
+	} = useFormRegisterPetDetails();
 
 	return (
 		<Fragment>

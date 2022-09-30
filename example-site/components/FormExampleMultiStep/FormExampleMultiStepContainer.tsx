@@ -1,4 +1,5 @@
-import { ReactNode } from 'react';
+import { ReactNode, useEffect, useRef } from 'react';
+import { H1 } from '@ag.ds-next/heading';
 import { Stack } from '@ag.ds-next/box';
 import { PageAlert } from '@ag.ds-next/page-alert';
 import { Prose } from '@ag.ds-next/prose';
@@ -15,12 +16,23 @@ export const FormExampleMultiStepContainer = ({
 	title: string;
 	introduction: string;
 }) => {
-	const { hasCompletedPreviousSteps } = useFormExampleMultiStep();
+	const titleRef = useRef<HTMLHeadingElement>(null);
+	const { hasCompletedPreviousSteps, currentStep } = useFormExampleMultiStep();
+
+	// Focus the title of the current step as the user navigates between form steps
+	useEffect(() => {
+		titleRef.current?.focus();
+	}, [currentStep]);
+
 	return (
 		<Stack gap={3}>
 			<PageTitle
 				pretext="Title of multi-page form"
-				title={title}
+				title={
+					<H1 ref={titleRef} tabIndex={-1} focus>
+						{title}
+					</H1>
+				}
 				introduction={introduction}
 				callToAction={
 					hasCompletedPreviousSteps ? (

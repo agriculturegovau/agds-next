@@ -1,11 +1,12 @@
-import { ReactNode } from 'react';
+import { ReactNode, useEffect, useRef } from 'react';
 import { Stack } from '@ag.ds-next/box';
 import { PageAlert } from '@ag.ds-next/page-alert';
-import { Prose } from '@ag.ds-next/prose';
+import { H1 } from '@ag.ds-next/heading';
+import { Text } from '@ag.ds-next/text';
 import { PageTitle } from '../PageTitle';
-import { useFormExampleMultiStep } from './FormRegisterPetDetails';
+import { useFormRegisterPetDetails } from './FormRegisterPetDetails';
 
-export const FormRegisterPetDetailsContainer = ({
+export const FormRegisterPetPersonalDetailsContainer = ({
 	children,
 	title,
 	introduction,
@@ -16,12 +17,24 @@ export const FormRegisterPetDetailsContainer = ({
 	introduction: string;
 	callToAction?: ReactNode;
 }) => {
-	const { hasCompletedPreviousSteps } = useFormExampleMultiStep();
+	const titleRef = useRef<HTMLHeadingElement>(null);
+	const { hasCompletedPreviousSteps, currentStep } =
+		useFormRegisterPetDetails();
+
+	// Focus the title of the current step as the user navigates between form steps
+	useEffect(() => {
+		titleRef.current?.focus();
+	}, [currentStep]);
+
 	return (
 		<Stack gap={3} width="100%">
 			<PageTitle
 				pretext="Your pet’s details"
-				title={title}
+				title={
+					<H1 ref={titleRef} tabIndex={-1} focus>
+						{title}
+					</H1>
+				}
 				introduction={introduction}
 				callToAction={hasCompletedPreviousSteps ? callToAction : undefined}
 			/>
@@ -32,12 +45,10 @@ export const FormRegisterPetDetailsContainer = ({
 					tone="warning"
 					title="This section of the form is not ready to be completed"
 				>
-					<Prose>
-						<p>
-							Before starting this part of the form, you will need to go back
-							and complete all of the previous sections.
-						</p>
-					</Prose>
+					<Text as="p">
+						Before starting this part of the form, you will need to go back and
+						complete all of the previous sections.
+					</Text>
 				</PageAlert>
 			)}
 		</Stack>

@@ -4,7 +4,7 @@ import * as yup from 'yup';
 import { Stack } from '@ag.ds-next/box';
 import { DatePicker } from '@ag.ds-next/date-picker';
 import { FormRequiredFieldsMessage } from '../FormRequiredFieldsMessage';
-import { useFormExampleMultiStep } from './FormRegisterPetDetails';
+import { useFormRegisterPetDetails } from './FormRegisterPetDetails';
 import { FormRegisterPetDetailsActions } from './FormRegisterPetDetailsActions';
 import { FormRegisterPetDetailsContainer } from './FormRegisterPetDetailsContainer';
 
@@ -17,7 +17,7 @@ const formSchema = yup
 export type FormSchema = yup.InferType<typeof formSchema>;
 
 export const FormRegisterPetDetailsStep3 = () => {
-	const { next, stepFormState } = useFormExampleMultiStep();
+	const { next, stepFormState } = useFormRegisterPetDetails();
 
 	const { control, handleSubmit } = useForm<FormSchema>({
 		defaultValues: stepFormState,

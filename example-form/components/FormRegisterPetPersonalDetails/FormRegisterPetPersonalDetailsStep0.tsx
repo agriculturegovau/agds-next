@@ -176,19 +176,13 @@ export const FormRegisterPetPersonalDetailsStep0 = () => {
 								<Controller
 									control={control}
 									name="dob"
-									render={({
-										field: { onChange, onBlur, value, name, ref },
-										fieldState: { invalid, error },
-									}) => (
+									render={({ field: { ref, ...field } }) => (
 										<DatePicker
 											inputRef={ref}
 											label="Date of birth"
-											value={value}
-											onChange={onChange}
-											onBlur={onBlur}
-											name={name}
-											invalid={invalid}
-											message={error?.message}
+											{...field}
+											invalid={Boolean(errors.dob?.message)}
+											message={errors.dob?.message}
 											maxWidth="xl"
 											required
 										/>
