@@ -22,10 +22,14 @@ export const FormExampleMultiStepContainer = ({
 				pretext="Title of multi-page form"
 				title={title}
 				introduction={introduction}
+				callToAction={
+					hasCompletedPreviousSteps ? (
+						<Text fontSize="xs" color="muted">
+							All fields are required unless marked optional.
+						</Text>
+					) : null
+				}
 			/>
-			<Text fontSize="xs" color="muted">
-				All fields are required unless marked optional.
-			</Text>
 			{hasCompletedPreviousSteps ? (
 				children
 			) : (
