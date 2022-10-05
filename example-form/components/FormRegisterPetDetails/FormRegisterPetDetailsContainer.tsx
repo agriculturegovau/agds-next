@@ -6,7 +6,7 @@ import { Text } from '@ag.ds-next/text';
 import { PageTitle } from '../PageTitle';
 import { useFormRegisterPetDetails } from './FormRegisterPetDetails';
 
-export const FormRegisterPetPersonalDetailsContainer = ({
+export const FormRegisterPetDetailsContainer = ({
 	children,
 	title,
 	introduction,
