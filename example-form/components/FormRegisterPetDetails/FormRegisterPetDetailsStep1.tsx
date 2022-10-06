@@ -19,7 +19,7 @@ import { Prose } from '@ag.ds-next/prose';
 import { FormRequiredFieldsMessage } from '../FormRequiredFieldsMessage';
 import { FormRegisterPetDetailsContainer } from './FormRegisterPetDetailsContainer';
 import { FormRegisterPetDetailsActions } from './FormRegisterPetDetailsActions';
-import { useFormExampleMultiStep } from './FormRegisterPetDetails';
+import { useFormRegisterPetDetails } from './FormRegisterPetDetails';
 
 const formSchema = yup
 	.object({
@@ -36,7 +36,7 @@ const formSchema = yup
 export type FormSchema = yup.InferType<typeof formSchema>;
 
 export const FormRegisterPetDetailsStep1 = () => {
-	const { next, stepFormState } = useFormExampleMultiStep();
+	const { next, stepFormState } = useFormRegisterPetDetails();
 	const scrollToField = useScrollToField();
 	const errorRef = useRef<HTMLDivElement>(null);
 	const [focusedError, setFocusedError] = useState(false);
@@ -129,19 +129,13 @@ export const FormRegisterPetDetailsStep1 = () => {
 					<Controller
 						control={control}
 						name="dob"
-						render={({
-							field: { onChange, onBlur, value, name, ref },
-							fieldState: { invalid, error },
-						}) => (
+						render={({ field: { ref, ...field } }) => (
 							<DatePicker
 								inputRef={ref}
 								label="Date of birth"
-								value={value}
-								onChange={onChange}
-								onBlur={onBlur}
-								name={name}
-								invalid={invalid}
-								message={error?.message}
+								{...field}
+								invalid={Boolean(errors.dob?.message)}
+								message={errors.dob?.message}
 								maxWidth="xl"
 								required
 							/>

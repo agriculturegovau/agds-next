@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { isValidElement, ReactNode } from 'react';
 import { Stack } from '@ag.ds-next/box';
 import { H1 } from '@ag.ds-next/heading';
 import { Text } from '@ag.ds-next/text';
@@ -28,7 +28,7 @@ export const PageTitle = ({
 					{pretext}
 				</Text>
 			) : null}
-			<H1>{title}</H1>
+			{isValidElement(title) ? title : <H1>{title}</H1>}
 		</Stack>
 		{introduction ? (
 			<Text as="p" fontSize="md" color="muted">

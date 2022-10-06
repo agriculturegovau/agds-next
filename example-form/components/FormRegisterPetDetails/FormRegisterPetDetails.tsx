@@ -224,7 +224,7 @@ export const FormRegisterPetDetails = () => {
 	);
 };
 
-export const useFormExampleMultiStep = () => {
+export const useFormRegisterPetDetails = () => {
 	const value = useContext(context);
 
 	if (!value) {

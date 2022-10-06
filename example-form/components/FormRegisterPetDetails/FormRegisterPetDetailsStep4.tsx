@@ -3,12 +3,15 @@ import { Stack } from '@ag.ds-next/box';
 import { H2 } from '@ag.ds-next/heading';
 import { Button } from '@ag.ds-next/button';
 import { FormDefinitionList } from '../FormDefinitionList';
-import { FORM_STEPS, useFormExampleMultiStep } from './FormRegisterPetDetails';
+import {
+	FORM_STEPS,
+	useFormRegisterPetDetails,
+} from './FormRegisterPetDetails';
 import { FormRegisterPetDetailsContainer } from './FormRegisterPetDetailsContainer';
 import { FormRegisterPetDetailsActions } from './FormRegisterPetDetailsActions';
 
 export const FormRegisterPetDetailsStep4 = () => {
-	const { formState, goToStep, next } = useFormExampleMultiStep();
+	const { formState, goToStep, next } = useFormRegisterPetDetails();
 
 	const onSubmit = (event: FormEvent<HTMLFormElement>) => {
 		event.preventDefault();
