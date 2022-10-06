@@ -19,7 +19,11 @@ export type FormSchema = yup.InferType<typeof formSchema>;
 export const FormRegisterPetDetailsStep3 = () => {
 	const { next, stepFormState } = useFormRegisterPetDetails();
 
-	const { control, handleSubmit } = useForm<FormSchema>({
+	const {
+		control,
+		handleSubmit,
+		formState: { errors },
+	} = useForm<FormSchema>({
 		defaultValues: stepFormState,
 		resolver: yupResolver(formSchema),
 	});
@@ -38,19 +42,13 @@ export const FormRegisterPetDetailsStep3 = () => {
 				<Controller
 					control={control}
 					name="date"
-					render={({
-						field: { onChange, onBlur, value, name, ref },
-						fieldState: { invalid, error },
-					}) => (
+					render={({ field: { ref, ...field } }) => (
 						<DatePicker
 							inputRef={ref}
 							label="Select a date"
-							value={value}
-							onChange={onChange}
-							onBlur={onBlur}
-							name={name}
-							invalid={invalid}
-							message={error?.message}
+							{...field}
+							invalid={Boolean(errors.date?.message)}
+							message={errors.date?.message}
 							maxWidth="xl"
 							required
 						/>
