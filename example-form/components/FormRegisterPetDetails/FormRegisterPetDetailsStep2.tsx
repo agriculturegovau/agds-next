@@ -66,8 +66,8 @@ export const FormRegisterPetDetailsStep2 = () => {
 
 	return (
 		<FormRegisterPetDetailsContainer
-			title="Provide proof of vaccination"
-			introduction="If you have avaccination certificate provie here."
+			title="Proof of vaccination"
+			introduction="If you have a vaccination certificate provide it here."
 			callToAction={<FormRequiredFieldsMessage />}
 		>
 			<Stack
