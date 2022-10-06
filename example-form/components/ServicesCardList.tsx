@@ -21,13 +21,13 @@ const items = [
 		title: 'Support',
 		slug: '/not-found',
 		description:
-			'Need help? Our support team are availble via phone, email and online chat.',
+			'Need help? Our support team are available via phone, email and online chat.',
 	},
 	{
 		title: 'Housing',
 		slug: '/not-found',
 		description:
-			'Find help with housing and how to apply for rental assistance..',
+			'Find help with housing and how to apply for rental assistance.',
 	},
 	{
 		title: 'Waste removal',
