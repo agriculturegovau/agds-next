@@ -53,9 +53,7 @@ export const FormRegisterPetDetailsActions = () => {
 				}
 			>
 				<Text as="p">
-					This is the Modal Body paragraph, it provides detailed instruction and
-					context for the the modal action. It can also span lines but long form
-					content should be avoided.
+					If you cancel, you will lose all information entered.
 				</Text>
 			</Modal>
 		</Fragment>
