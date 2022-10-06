@@ -84,9 +84,9 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(
 				valid={valid}
 				id={id}
 			>
-				{(allyProps) => (
+				{(a11yProps) => (
 					<SelectContainer block={block} maxWidth={maxWidth}>
-						<select ref={ref} css={styles} {...allyProps} {...props}>
+						<select ref={ref} css={styles} {...a11yProps} {...props}>
 							<SelectOptions options={options} placeholder={placeholder} />
 						</select>
 						<SelectIcon disabled={props.disabled} />

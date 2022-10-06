@@ -61,12 +61,12 @@ export const DateInput = forwardRef<HTMLInputElement, DateInputProps>(
 				valid={valid}
 				id={id}
 			>
-				{(allyProps) => (
+				{(a11yProps) => (
 					<Flex alignItems="flex-end" css={{ maxWidth }}>
 						<input
 							ref={ref}
 							css={{ ...styles, maxWidth: 'unset' }}
-							{...allyProps}
+							{...a11yProps}
 							{...props}
 							value={value}
 							disabled={disabled}

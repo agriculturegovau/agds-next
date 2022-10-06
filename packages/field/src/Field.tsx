@@ -6,7 +6,7 @@ import { FieldHint } from './FieldHint';
 import { FieldMessage } from './FieldMessage';
 
 export type FieldProps = {
-	children: ((allyProps: A11yProps) => ReactNode) | ReactNode;
+	children: ((a11yProps: A11yProps) => ReactNode) | ReactNode;
 	/** Provides extra information about the field. */
 	hint: string | undefined;
 	/** Defines an identifier (ID) which must be unique. */

@@ -162,12 +162,12 @@ export function Combobox<Option extends DefaultComboboxOption>({
 				valid={valid}
 				id={inputId}
 			>
-				{(allyProps) => (
+				{(a11yProps) => (
 					<div css={{ position: 'relative' }} {...getComboboxProps()}>
 						<input
 							css={[inputStyles, { width: '100%' }]}
 							disabled={disabled}
-							{...allyProps}
+							{...a11yProps}
 							{...getInputProps()}
 						/>
 						{showDropdownTrigger && (

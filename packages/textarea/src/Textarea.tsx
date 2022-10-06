@@ -70,8 +70,8 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
 				valid={valid}
 				id={id}
 			>
-				{(allyProps) => (
-					<textarea ref={ref} css={styles} {...allyProps} {...props} />
+				{(a11yProps) => (
+					<textarea ref={ref} css={styles} {...a11yProps} {...props} />
 				)}
 			</Field>
 		);
