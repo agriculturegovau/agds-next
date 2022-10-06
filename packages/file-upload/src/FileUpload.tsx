@@ -185,7 +185,7 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 				valid={valid}
 				id={id}
 			>
-				{(allyProps) => {
+				{(a11yProps) => {
 					return (
 						<Stack gap={1.5} {...dropzoneProps}>
 							<Flex
@@ -201,7 +201,7 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 								<input
 									ref={ref}
 									{...getInputProps()}
-									{...allyProps}
+									{...a11yProps}
 									{...props}
 								/>
 								<Flex
