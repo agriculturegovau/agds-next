@@ -18,6 +18,7 @@ export const RadioIndicator = ({
 	const { width, height, borderWidth } = packs.control[size];
 	return (
 		<Flex
+			as="span"
 			justifyContent="center"
 			alignItems="center"
 			width={width}
@@ -46,6 +47,7 @@ export const RadioIndicator = ({
 			rounded
 		>
 			<Box
+				as="span"
 				width="calc(100% - 0.5rem)"
 				height="calc(100% - 0.5rem)"
 				highContrastOutline
