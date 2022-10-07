@@ -218,7 +218,7 @@ export const FormRegisterPetPersonalDetailsStep0 = () => {
 								<DefinitionListItem>
 									<DefinitionTerm>Date of birth</DefinitionTerm>
 									<DefinitionDescription>
-										{stepFormState.dob.toLocaleDateString()}
+										{stepFormState.dob?.toLocaleDateString()}
 									</DefinitionDescription>
 								</DefinitionListItem>
 							</DefinitionList>
