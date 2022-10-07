@@ -18,7 +18,7 @@ export const FormRegisterPetPersonalDetailsContainer = ({
 	callToAction?: ReactNode;
 }) => {
 	const titleRef = useRef<HTMLHeadingElement>(null);
-	const { hasCompletedPreviousSteps, currentStep } =
+	const { hasCompletedPreviousStep, currentStep } =
 		useFormRegisterPetPersonalDetails();
 
 	// Focus the title of the current step as the user navigates between form steps
@@ -38,7 +38,7 @@ export const FormRegisterPetPersonalDetailsContainer = ({
 				introduction={introduction}
 				callToAction={callToAction}
 			/>
-			{hasCompletedPreviousSteps ? (
+			{hasCompletedPreviousStep ? (
 				children
 			) : (
 				<PageAlert

@@ -19,7 +19,7 @@ import { FormRegisterPetDetailsContainer } from './FormRegisterPetDetailsContain
 import { FormRegisterPetDetailsActions } from './FormRegisterPetDetailsActions';
 import { useFormRegisterPetDetails } from './FormRegisterPetDetails';
 
-const formSchema = yup
+export const formSchema = yup
 	.object({
 		vaccinationCertificate: yup.mixed(),
 	})

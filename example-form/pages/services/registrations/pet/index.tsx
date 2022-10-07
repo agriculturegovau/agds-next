@@ -16,17 +16,15 @@ const TASKS = [
 	{
 		label: 'Your personal details',
 		message: 'Provide your personal and contact details',
-		href: '/services/registrations/pet/task-1',
 	},
 	{
 		label: 'Your pets details',
 		message: 'Provide your pet’s details for registration',
-		href: '/services/registrations/pet/task-2',
 	},
 ];
 
 export default function FormRegisterPetHomePage() {
-	const { formState } = useFormRegisterPet();
+	const { goToTask, getTaskStatus } = useFormRegisterPet();
 	return (
 		<>
 			<DocumentTitle title="Register a pet" />
@@ -68,7 +66,8 @@ export default function FormRegisterPetHomePage() {
 								<TaskList
 									items={TASKS.map((task, idx) => ({
 										...task,
-										status: idx in formState ? 'done' : 'todo',
+										onClick: () => goToTask(idx),
+										status: getTaskStatus(idx),
 									}))}
 								/>
 								<FormHelpCallout />

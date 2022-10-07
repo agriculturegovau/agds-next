@@ -29,7 +29,7 @@ import { FormRegisterPetPersonalDetailsContainer } from './FormRegisterPetPerson
 import { FormRegisterPetPersonalDetailsActions } from './FormRegisterPetPersonalDetailsActions';
 import { useFormRegisterPetPersonalDetails } from './FormRegisterPetPersonalDetails';
 
-const formSchema = yup
+export const formSchema = yup
 	.object({
 		firstName: yup.string().required('Enter your first name'),
 		lastName: yup.string().required('Enter your first name'),
@@ -218,7 +218,7 @@ export const FormRegisterPetPersonalDetailsStep0 = () => {
 								<DefinitionListItem>
 									<DefinitionTerm>Date of birth</DefinitionTerm>
 									<DefinitionDescription>
-										{stepFormState.dob.toLocaleDateString()}
+										{stepFormState.dob?.toLocaleDateString()}
 									</DefinitionDescription>
 								</DefinitionListItem>
 							</DefinitionList>

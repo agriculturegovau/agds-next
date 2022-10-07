@@ -21,7 +21,7 @@ import { FormRegisterPetDetailsContainer } from './FormRegisterPetDetailsContain
 import { FormRegisterPetDetailsActions } from './FormRegisterPetDetailsActions';
 import { useFormRegisterPetDetails } from './FormRegisterPetDetails';
 
-const formSchema = yup
+export const formSchema = yup
 	.object({
 		name: yup.string().required("Enter your pet's name"),
 		breed: yup.string().required("Select your pet's breed"),

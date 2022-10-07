@@ -8,7 +8,7 @@ import { useFormRegisterPetDetails } from './FormRegisterPetDetails';
 import { FormRegisterPetDetailsActions } from './FormRegisterPetDetailsActions';
 import { FormRegisterPetDetailsContainer } from './FormRegisterPetDetailsContainer';
 
-const formSchema = yup
+export const formSchema = yup
 	.object({
 		date: yup.date().required('Select a date'),
 	})

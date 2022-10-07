@@ -16,7 +16,7 @@ export const FormExampleMultiStepContainer = ({
 	introduction: string;
 }) => {
 	const titleRef = useRef<HTMLHeadingElement>(null);
-	const { hasCompletedPreviousSteps, currentStep } = useFormExampleMultiStep();
+	const { hasCompletedPreviousStep, currentStep } = useFormExampleMultiStep();
 
 	// Focus the title of the current step as the user navigates between form steps
 	useEffect(() => {
@@ -34,14 +34,14 @@ export const FormExampleMultiStepContainer = ({
 				}
 				introduction={introduction}
 				callToAction={
-					hasCompletedPreviousSteps ? (
+					hasCompletedPreviousStep ? (
 						<Text fontSize="xs" color="muted">
 							All fields are required unless marked optional.
 						</Text>
 					) : null
 				}
 			/>
-			{hasCompletedPreviousSteps ? (
+			{hasCompletedPreviousStep ? (
 				children
 			) : (
 				<PageAlert

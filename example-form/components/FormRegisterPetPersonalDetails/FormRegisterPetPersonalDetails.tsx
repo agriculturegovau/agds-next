@@ -6,6 +6,7 @@ import {
 	useState,
 } from 'react';
 import { useRouter } from 'next/router';
+import * as yup from 'yup';
 import { Column, Columns } from '@ag.ds-next/columns';
 import { PageContent, ContentBleed } from '@ag.ds-next/content';
 import { ProgressIndicator } from '@ag.ds-next/progress-indicator';
@@ -16,14 +17,17 @@ import { AppLayout } from '../AppLayout';
 import { useFormRegisterPet } from '../FormRegisterPetContext';
 import {
 	FormRegisterPetPersonalDetailsStep0,
+	formSchema as formRegisterPetPersonalDetailsStep0Schema,
 	FormSchema as FormRegisterPetPersonalDetailsStep0Schema,
 } from './FormRegisterPetPersonalDetailsStep0';
 import {
 	FormRegisterPetPersonalDetailsStep1,
+	formSchema as formRegisterPetPersonalDetailsStep1Schema,
 	FormSchema as FormRegisterPetPersonalDetailsStep1Schema,
 } from './FormRegisterPetPersonalDetailsStep1';
 import {
 	FormRegisterPetPersonalDetailsStep2,
+	formSchema as formRegisterPetPersonalDetailsStep2Schema,
 	FormSchema as FormRegisterPetPersonalDetailsStep2Schema,
 } from './FormRegisterPetPersonalDetailsStep2';
 import { FormRegisterPetPersonalDetailsStep3 } from './FormRegisterPetPersonalDetailsStep3';
@@ -59,7 +63,7 @@ type ContextType = {
 	/** The current step of the form */
 	currentStep: number;
 	/** If true, the user has completed the previous step of the form */
-	hasCompletedPreviousSteps: boolean;
+	hasCompletedPreviousStep: boolean;
 	/** If true, the current from step is being submitted */
 	isSubmittingStep: boolean;
 	/** When called, the users progress will be saved and they will be taken to the home page */
@@ -80,30 +84,22 @@ const context = createContext<ContextType | undefined>(undefined);
 type StepFormState = Record<string, any>;
 
 export type FormState = Partial<{
-	[0]: FormRegisterPetPersonalDetailsStep0Schema;
-	[1]: FormRegisterPetPersonalDetailsStep1Schema;
-	[2]: FormRegisterPetPersonalDetailsStep2Schema;
+	[0]: FormRegisterPetPersonalDetailsStep0Schema & { completed: boolean };
+	[1]: FormRegisterPetPersonalDetailsStep1Schema & { completed: boolean };
+	[2]: FormRegisterPetPersonalDetailsStep2Schema & { completed: boolean };
 }>;
 
+export const formSchema = yup.object({
+	[0]: formRegisterPetPersonalDetailsStep0Schema,
+	[1]: formRegisterPetPersonalDetailsStep1Schema,
+	[2]: formRegisterPetPersonalDetailsStep2Schema,
+});
+
 export const FormRegisterPetPersonalDetails = () => {
-	const { submitStep } = useFormRegisterPet();
+	const { submitTask1, taskFormState } = useFormRegisterPet();
 	const router = useRouter();
 	const [currentStep, setCurrentStep] = useState(0);
-
-	const [formState, setFormState] = useState<FormState>({
-		0: {
-			firstName: 'Alex',
-			lastName: 'Citizen',
-			email: 'alex.citizen@gmail.com',
-			dob: new Date('1999-09-09'),
-		},
-		1: {
-			streetAddress: '21 East Wallaby Way',
-			suburbTownCity: 'Petsville',
-			state: 'nsw',
-			postcode: '2123',
-		},
-	});
+	const [formState, setFormState] = useState<FormState>(taskFormState);
 
 	const backToHomePage = useCallback(() => {
 		router.push('/services/registrations/pet');
@@ -125,7 +121,7 @@ export const FormRegisterPetPersonalDetails = () => {
 			if (stepFormState) {
 				setFormState((current) => ({
 					...current,
-					[currentStep]: stepFormState,
+					[currentStep]: { ...stepFormState, completed: true },
 				}));
 			}
 
@@ -133,14 +129,13 @@ export const FormRegisterPetPersonalDetails = () => {
 			setTimeout(() => {
 				setIsSubmittingStep(false);
 				if (currentStep === TOTAL_STEPS) {
-					submitStep(formState);
-					router.push(`/services/registrations/pet/task-2`);
+					submitTask1(formState);
 				} else {
 					setCurrentStep(currentStep + 1);
 				}
 			}, 1500);
 		},
-		[currentStep, formState, submitStep, router]
+		[currentStep, formState, submitTask1]
 	);
 
 	const [isSavingBeforeExiting, setIsSavingBeforeExiting] = useState(false);
@@ -155,12 +150,31 @@ export const FormRegisterPetPersonalDetails = () => {
 		}, 1500);
 	}, [backToHomePage]);
 
+	const hasCompletedStep = useCallback(
+		(idx: number) => {
+			if (idx in formState) {
+				return formState[idx as keyof typeof formState]?.completed || false;
+			}
+			return false;
+		},
+		[formState]
+	);
+
 	/** If true, the user has completed the previous step of the form */
-	const hasCompletedPreviousSteps = useMemo(() => {
+	const hasCompletedPreviousStep = useMemo(() => {
 		if (currentStep === 0) return true;
 		const previousStep = currentStep - 1;
-		return Boolean(previousStep in formState);
-	}, [formState, currentStep]);
+		return hasCompletedStep(previousStep);
+	}, [currentStep, hasCompletedStep]);
+
+	const getStepStatus = useCallback(
+		(idx: number) => {
+			if (idx === currentStep) return 'doing';
+			if (hasCompletedStep(idx)) return 'done';
+			return 'todo';
+		},
+		[currentStep, hasCompletedStep]
+	);
 
 	const FormStepComponent = FORM_STEPS[currentStep]?.component;
 
@@ -173,7 +187,7 @@ export const FormRegisterPetPersonalDetails = () => {
 		saveAndExit,
 		isSavingBeforeExiting,
 		cancel: backToHomePage,
-		hasCompletedPreviousSteps,
+		hasCompletedPreviousStep,
 		formState,
 		stepFormState:
 			(currentStep in formState &&
@@ -201,12 +215,7 @@ export const FormRegisterPetPersonalDetails = () => {
 									<ProgressIndicator
 										items={FORM_STEPS.map(({ label }, idx) => ({
 											label,
-											status:
-												idx === currentStep
-													? 'doing'
-													: idx in formState
-													? 'done'
-													: 'todo',
+											status: getStepStatus(idx),
 											onClick: () => setCurrentStep(idx),
 										}))}
 									/>
