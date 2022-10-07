@@ -20,7 +20,7 @@ type ContextType = {
 	/** The form state of the current task. */
 	taskFormState: TaskFormState;
 	/** Function to be called to start a task */
-	goToTask: (taskIdx: number) => void;
+	startTask: (taskIdx: number) => void;
 	/** Function to get the status of a task. */
 	getTaskStatus: (taskIndex: number) => ProgressIndicatorItemStatus;
 	/** Function to be called at the end of task 1 (personal details). */
@@ -39,7 +39,7 @@ type FormState = {
 	[1]: Task2FormState & { completed: boolean };
 };
 
-const defaultFormState = {
+const defaultFormState: FormState = {
 	// Task 1
 	0: {
 		0: {
@@ -127,16 +127,12 @@ export const FormRegisterPetContext = ({
 		[currentTaskIdx, formState]
 	);
 
-	const goToTask = useCallback(
-		(taskIdx: number) => {
-			setCurrentTaskIdx(taskIdx);
-			router.push(`/services/registrations/pet/task-${taskIdx + 1}`);
-		},
-		[router]
-	);
+	const startTask = useCallback((taskIdx: number) => {
+		setCurrentTaskIdx(taskIdx);
+	}, []);
 
 	const contextValue = {
-		goToTask,
+		startTask,
 		getTaskStatus,
 		submitTask1,
 		submitTask2,
