@@ -23,12 +23,19 @@ describe('Checkbox', () => {
 		expect(el).not.toBeChecked();
 		expect(el).toHaveAccessibleName('My checkbox');
 	});
+
 	it('renders a valid HTML structure', () => {
 		const { container } = render(<CheckboxExample />);
 		expect(container).toHTMLValidate({
 			extends: ['html-validate:recommended'],
 		});
 	});
+
+	it('renders correctly', () => {
+		const { container } = render(<CheckboxExample />);
+		expect(container).toMatchSnapshot();
+	});
+
 	it('responds to a change event', async () => {
 		render(<CheckboxExample />);
 		await userEvent.click(screen.getByTestId('example'));

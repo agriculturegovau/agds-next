@@ -23,12 +23,19 @@ describe('Radio', () => {
 		expect(el).not.toBeChecked();
 		expect(el).toHaveAccessibleName('My Radio');
 	});
+
+	it('renders correctly', () => {
+		const { container } = render(<RadioExample />);
+		expect(container).toMatchSnapshot();
+	});
+
 	it('renders a valid HTML structure', () => {
 		const { container } = render(<RadioExample />);
 		expect(container).toHTMLValidate({
 			extends: ['html-validate:recommended'],
 		});
 	});
+
 	it('responds to a change event', async () => {
 		render(<RadioExample />);
 		await userEvent.click(screen.getByTestId('example'));
