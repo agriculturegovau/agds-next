@@ -99,9 +99,6 @@ export const FormRegisterPetPersonalDetailsStep0 = () => {
 							It’s important to check the pre-filled information in your report
 							before you submit it.
 						</p>
-						<p>
-							<a href="#">See your profile and account details</a>
-						</p>
 					</Prose>
 				</Details>
 			}
