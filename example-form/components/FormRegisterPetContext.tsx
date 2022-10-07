@@ -114,7 +114,7 @@ export const FormRegisterPetContext = ({
 	const getTaskStatus = useCallback(
 		(idx: number) => {
 			if (idx in formState) {
-				if ('completed' in formState[idx as keyof typeof formState]) {
+				if (formState[idx as keyof typeof formState].completed) {
 					return 'done';
 				}
 			}

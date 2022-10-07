@@ -153,7 +153,7 @@ export const FormRegisterPetPersonalDetails = () => {
 	const hasCompletedStep = useCallback(
 		(idx: number) => {
 			if (idx in formState) {
-				return formState[idx as keyof typeof formState]?.completed;
+				return formState[idx as keyof typeof formState]?.completed || false;
 			}
 			return false;
 		},
