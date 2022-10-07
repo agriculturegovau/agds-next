@@ -35,7 +35,6 @@ export const SiteHeader = ({ focusMode }: { focusMode: boolean }) => {
 				heading="yourGov"
 				subline="Access government services from one place"
 			/>
-
 			{!focusMode ? (
 				<MainNav
 					id="main-nav"
