@@ -69,7 +69,7 @@ type ContextType = {
 	/** The current step of the form */
 	currentStep: number;
 	/** If true, the user has completed the previous step of the form */
-	hasCompletedPreviousSteps: boolean;
+	hasCompletedPreviousStep: boolean;
 	/** If true, the current from step is being submitted */
 	isSubmittingStep: boolean;
 	/** When called, the users progress will be saved and they will be taken to the home page */
@@ -144,7 +144,7 @@ export const FormExampleMultiStep = () => {
 	}, [backToHomePage]);
 
 	/** If true, the user has completed the previous step of the form */
-	const hasCompletedPreviousSteps = useMemo(() => {
+	const hasCompletedPreviousStep = useMemo(() => {
 		if (currentStep === 0) return true;
 		const previousStep = currentStep - 1;
 		return Boolean(previousStep in formState);
@@ -161,7 +161,7 @@ export const FormExampleMultiStep = () => {
 		saveAndExit,
 		isSavingBeforeExiting,
 		cancel: backToHomePage,
-		hasCompletedPreviousSteps,
+		hasCompletedPreviousStep,
 		formState,
 		stepFormState:
 			(currentStep in formState &&
