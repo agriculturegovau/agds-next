@@ -77,7 +77,7 @@ export const FormRegisterPetContext = ({
 		// Show the success message
 		router.push('/services/registrations?registrationId=PET123456');
 		// "Reset" the form
-		setCurrentTaskIdx(0);
+		setCurrentTaskIdx(undefined);
 		setFormState(defaultFormState);
 	}, [router]);
 
