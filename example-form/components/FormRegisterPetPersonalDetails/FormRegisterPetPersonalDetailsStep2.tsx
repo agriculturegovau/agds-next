@@ -15,7 +15,7 @@ import { useFormRegisterPetPersonalDetails } from './FormRegisterPetPersonalDeta
 import { FormRegisterPetPersonalDetailsActions } from './FormRegisterPetPersonalDetailsActions';
 import { FormRegisterPetPersonalDetailsContainer } from './FormRegisterPetPersonalDetailsContainer';
 
-const formSchema = yup
+export const formSchema = yup
 	.object({
 		contactMethod: yup
 			.string()

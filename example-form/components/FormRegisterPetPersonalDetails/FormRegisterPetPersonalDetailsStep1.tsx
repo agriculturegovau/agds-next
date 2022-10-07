@@ -23,7 +23,7 @@ import { FormRegisterPetPersonalDetailsContainer } from './FormRegisterPetPerson
 import { FormRegisterPetPersonalDetailsActions } from './FormRegisterPetPersonalDetailsActions';
 import { useFormRegisterPetPersonalDetails } from './FormRegisterPetPersonalDetails';
 
-const formSchema = yup
+export const formSchema = yup
 	.object({
 		streetAddress: yup.string().required('Enter your address'),
 		suburbTownCity: yup.string().required('Enter your suburb'),
