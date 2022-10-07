@@ -18,6 +18,7 @@ export const CheckboxIndicator = ({
 	const { width, height, borderWidth } = packs.control[size];
 	return (
 		<Flex
+			as="span"
 			justifyContent="center"
 			alignItems="center"
 			width={width}

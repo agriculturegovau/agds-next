@@ -12,9 +12,9 @@ export const ControlInput = forwardRef<HTMLInputElement, ControlInputProps>(
 				css={{
 					...visuallyHiddenStyles,
 					// When this component is focused, outline the indicator (`RadioIndicator` and `CheckboxIndicator`)
-					'&:focus ~ div': packs.outline,
+					'&:focus ~ span:first-of-type': packs.outline,
 					// When this component is checked, show the indicators active state
-					'&:checked ~ div > *': { display: 'block' },
+					'&:checked ~ span > *': { display: 'block' },
 				}}
 				{...props}
 			/>
