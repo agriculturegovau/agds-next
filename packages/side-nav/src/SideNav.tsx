@@ -32,7 +32,7 @@ export type SideNavProps = {
 };
 
 export function SideNav({
-	'aria-label': ariaLabel = 'side navigation',
+	'aria-label': ariaLabel = 'section navigation',
 	activePath,
 	collapseTitle,
 	items,

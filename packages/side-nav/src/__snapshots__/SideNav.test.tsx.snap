@@ -3,7 +3,7 @@
 exports[`SideNav renders correctly 1`] = `
 <div>
   <aside
-    aria-label="side navigation"
+    aria-label="section navigation"
     class="css-d977xg-boxStyles-SideNavContainer"
   >
     <button

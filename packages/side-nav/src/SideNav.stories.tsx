@@ -101,7 +101,7 @@ OptionalTitleLink.args = {
 };
 
 export const Modular = () => (
-	<SideNavContainer background="body" aria-label="side navigation">
+	<SideNavContainer background="body" aria-label="section navigation">
 		<SideNavTitle id="side-nav-modular-title" href="#" isCurrentPage={false}>
 			SideNav Title
 		</SideNavTitle>
