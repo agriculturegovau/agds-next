@@ -4,12 +4,10 @@ import { mapResponsiveProp, mq, packs } from '@ag.ds-next/core';
 import { hoverColorMap, SideNavBackground, localPaletteVars } from './utils';
 
 export type SideNavContainerProps = PropsWithChildren<{
-	'aria-label': string;
 	background: SideNavBackground;
 }>;
 
 export const SideNavContainer = ({
-	'aria-label': ariaLabel,
 	children,
 	background,
 }: SideNavContainerProps) => {
@@ -17,7 +15,6 @@ export const SideNavContainer = ({
 	return (
 		<Box
 			as="aside"
-			aria-label={ariaLabel}
 			background={background}
 			css={mq({
 				...packs.print.hidden,
