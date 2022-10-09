@@ -15,8 +15,6 @@ import { SideNavCollapseButton } from './SideNavCollapseButton';
 import { SideNavBackground, findBestMatch, useSideNavIds } from './utils';
 
 export type SideNavProps = {
-	/** Describes the navigation element to assistive technologies. */
-	'aria-label'?: string;
 	/** Used for highlighting the active element. */
 	activePath: string;
 	/** Used as the title of the expand/collapse trigger on smaller screen sizes. */
@@ -32,7 +30,6 @@ export type SideNavProps = {
 };
 
 export function SideNav({
-	'aria-label': ariaLabel = 'section navigation',
 	activePath,
 	collapseTitle,
 	items,
@@ -66,7 +63,7 @@ export function SideNav({
 	});
 
 	return (
-		<SideNavContainer aria-label={ariaLabel} background={background}>
+		<SideNavContainer background={background}>
 			<SideNavCollapseButton
 				isOpen={isOpen}
 				onClick={onToggle}
