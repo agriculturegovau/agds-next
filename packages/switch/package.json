@@ -1,16 +1,12 @@
 {
 	"name": "@ag.ds-next/switch",
 	"version": "3.0.0",
+	"license": "MIT",
 	"main": "dist/ag.ds-next-switch.cjs.js",
 	"module": "dist/ag.ds-next-switch.esm.js",
-	"license": "MIT",
-	"peerDependencies": {
-		"@ag.ds-next/a11y": "1.2.1",
-		"@ag.ds-next/box": "7.0.0",
-		"@ag.ds-next/core": "4.0.0",
-		"@ag.ds-next/text": "10.0.0",
-		"@emotion/react": "^11.7.0",
-		"react": "^16.14.0 || ^17.0.0 || ^18.0.0"
+	"dependencies": {
+		"@babel/runtime": "^7.4.5",
+		"@react-spring/web": "^9.4.5"
 	},
 	"devDependencies": {
 		"@ag.ds-next/a11y": "*",
@@ -20,8 +16,12 @@
 		"@emotion/react": "^11.7.0",
 		"react": "18.1.0"
 	},
-	"dependencies": {
-		"@babel/runtime": "^7.4.5",
-		"@react-spring/web": "^9.4.5"
+	"peerDependencies": {
+		"@ag.ds-next/a11y": "1.2.1",
+		"@ag.ds-next/box": "7.0.0",
+		"@ag.ds-next/core": "4.0.0",
+		"@ag.ds-next/text": "10.0.0",
+		"@emotion/react": "^11.7.0",
+		"react": "^16.14.0 || ^17.0.0 || ^18.0.0"
 	}
 }

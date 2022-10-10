@@ -1,19 +1,12 @@
 {
 	"name": "@ag.ds-next/fieldset",
 	"version": "7.0.0",
+	"license": "MIT",
 	"main": "dist/ag.ds-next-fieldset.cjs.js",
 	"module": "dist/ag.ds-next-fieldset.esm.js",
-	"license": "MIT",
 	"dependencies": {
 		"@babel/runtime": "^7.4.5",
 		"@reach/auto-id": "^0.16.0"
-	},
-	"peerDependencies": {
-		"@ag.ds-next/box": "7.0.0",
-		"@ag.ds-next/core": "4.0.0",
-		"@ag.ds-next/text": "10.0.0",
-		"@emotion/react": "^11.7.0",
-		"react": "^16.14.0 || ^17.0.0 || ^18.0.0"
 	},
 	"devDependencies": {
 		"@ag.ds-next/box": "*",
@@ -21,5 +14,12 @@
 		"@ag.ds-next/text": "*",
 		"@emotion/react": "^11.7.0",
 		"react": "18.1.0"
+	},
+	"peerDependencies": {
+		"@ag.ds-next/box": "7.0.0",
+		"@ag.ds-next/core": "4.0.0",
+		"@ag.ds-next/text": "10.0.0",
+		"@emotion/react": "^11.7.0",
+		"react": "^16.14.0 || ^17.0.0 || ^18.0.0"
 	}
 }

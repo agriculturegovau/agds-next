@@ -1,17 +1,14 @@
 {
 	"name": "@ag.ds-next/example-site",
 	"version": "0.3.2",
-	"main": "index.js",
-	"license": "MIT",
 	"private": true,
-	"engines": {
-		"node": "16"
-	},
+	"license": "MIT",
+	"main": "index.js",
 	"scripts": {
-		"dev": "next dev",
 		"build": "next build && next export -o ../docs/public/example-site",
-		"start": "next start",
-		"lint": "next lint"
+		"dev": "next dev",
+		"lint": "next lint",
+		"start": "next start"
 	},
 	"dependencies": {
 		"@ag.ds-next/a11y": "^1.2.1",
@@ -60,5 +57,8 @@
 		"react-dom": "18.1.0",
 		"react-hook-form": "^7.27.1",
 		"yup": "^0.32.11"
+	},
+	"engines": {
+		"node": "16"
 	}
 }
