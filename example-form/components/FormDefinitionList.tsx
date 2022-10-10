@@ -1,5 +1,4 @@
 import { ReactNode } from 'react';
-import { VisuallyHidden } from '@ag.ds-next/a11y';
 import {
 	DefinitionList,
 	DefinitionListItem,
@@ -16,14 +15,8 @@ export function FormDefinitionList({
 		<DefinitionList>
 			{items.map((item, idx) => (
 				<DefinitionListItem key={`${item.label}-${idx}`}>
-					<DefinitionTerm>
-						<VisuallyHidden>{'Question '}</VisuallyHidden>
-						{item.label}
-					</DefinitionTerm>
-					<DefinitionDescription>
-						<VisuallyHidden>{'Answer '}</VisuallyHidden>
-						{item.value}
-					</DefinitionDescription>
+					<DefinitionTerm>{item.label}</DefinitionTerm>
+					<DefinitionDescription>{item.value}</DefinitionDescription>
 				</DefinitionListItem>
 			))}
 		</DefinitionList>
