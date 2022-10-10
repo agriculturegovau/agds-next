@@ -107,11 +107,11 @@ export const formSchema = yup.object({
 });
 
 export const FormRegisterPetDetails = () => {
-	const { submitTask2, taskFormState } = useFormRegisterPet();
+	const { submitTask2, task2FormState } = useFormRegisterPet();
 
 	const router = useRouter();
 	const [currentStep, setCurrentStep] = useState(0);
-	const [formState, setFormState] = useState<FormState>(taskFormState);
+	const [formState, setFormState] = useState<FormState>(task2FormState);
 
 	const backToHomePage = useCallback(() => {
 		router.push('/services/registrations/pet');
