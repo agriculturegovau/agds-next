@@ -31,7 +31,6 @@ exports[`SideNav renders correctly 1`] = `
       </svg>
     </button>
     <div
-      aria-labelledby="sideNav-1-button"
       class="css-1wh7zb4-SideNav"
       id="sideNav-1-body"
       style="display: none; height: 0px; overflow: hidden;"
