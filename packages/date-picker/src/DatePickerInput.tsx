@@ -85,7 +85,7 @@ export const DateInput = forwardRef<HTMLInputElement, DateInputProps>(
 								paddingRight: mapSpacing(1),
 							}}
 						>
-							<CalendarIcon size="md" />
+							<CalendarIcon size="md" css={{ display: 'block' }} />
 						</Button>
 					</Flex>
 				)}
