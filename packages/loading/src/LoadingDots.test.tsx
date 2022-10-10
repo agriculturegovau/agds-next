@@ -12,7 +12,7 @@ describe('LoadingDots', () => {
 		render(<LoadingDotsExample />);
 		const el = screen.getByTestId('example');
 		expect(el).toBeInTheDocument();
-		expect(el.tagName).toBe('DIV');
+		expect(el.tagName).toBe('SPAN');
 		expect(el).toHaveAccessibleName('Busy');
 	});
 	it('renders a valid HTML structure', () => {
