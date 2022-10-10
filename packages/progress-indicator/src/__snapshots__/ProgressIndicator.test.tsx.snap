@@ -1,0 +1,341 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ProgressIndicator With anchors renders correctly 1`] = `
+<div>
+  <section
+    class="css-1slslyo-boxStyles-ProgressIndicatorContainer"
+  >
+    <button
+      aria-controls="progress-indicator-1-body"
+      aria-expanded="false"
+      class="css-1rwe9m2-BaseButton-boxStyles-ProgressIndicatorCollapseButton"
+      id="progress-indicator-1-button"
+      type="button"
+    >
+      Doing step 2 of 3
+      <svg
+        aria-hidden="true"
+        class="css-5ae1oq-Icon"
+        clip-rule="evenodd"
+        focusable="false"
+        height="24"
+        role="img"
+        style="transform: rotate(0deg);"
+        viewBox="0 0 24 24"
+        width="24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M21 8L12 17L3 8"
+        />
+      </svg>
+    </button>
+    <div
+      class="css-fmb23f-ProgressIndicator"
+      id="progress-indicator-1-body"
+      style="display: none; height: 0px; overflow: hidden;"
+    >
+      <ul
+        class="css-14adt79-boxStyles"
+      >
+        <li
+          class="css-td3mpi-boxStyles"
+        >
+          <a
+            class="css-s94ve8-TextLink-boxStyles-ProgressIndicatorItem"
+            href="#"
+          >
+            <svg
+              aria-hidden="true"
+              class="css-1pepvcz-Icon"
+              clip-rule="evenodd"
+              focusable="false"
+              height="24"
+              role="img"
+              viewBox="0 0 24 24"
+              width="24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <circle
+                cx="12"
+                cy="12"
+                r="10.5"
+              />
+              <path
+                d="M7 13L10 16L17 9"
+              />
+            </svg>
+            <span
+              class="css-1r1fnqp-boxStyles"
+            >
+              <span
+                class="css-1f7oqqc-boxStyles-Text"
+              >
+                Done
+              </span>
+              Introduction
+            </span>
+          </a>
+        </li>
+        <li
+          class="css-td3mpi-boxStyles"
+        >
+          <a
+            class="css-1htfcbp-TextLink-boxStyles-ProgressIndicatorItem"
+            href="#"
+          >
+            <svg
+              aria-hidden="true"
+              class="css-1pepvcz-Icon"
+              clip-rule="evenodd"
+              focusable="false"
+              height="24"
+              role="img"
+              viewBox="0 0 24 24"
+              width="24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M6.5 13.5C7.32843 13.5 8 12.8284 8 12C8 11.1716 7.32843 10.5 6.5 10.5C5.67157 10.5 5 11.1716 5 12C5 12.8284 5.67157 13.5 6.5 13.5Z"
+                fill="currentColor"
+                stroke="none"
+              />
+              <path
+                d="M12 13.5C12.8284 13.5 13.5 12.8284 13.5 12C13.5 11.1716 12.8284 10.5 12 10.5C11.1716 10.5 10.5 11.1716 10.5 12C10.5 12.8284 11.1716 13.5 12 13.5Z"
+                fill="currentColor"
+                stroke="none"
+              />
+              <path
+                d="M17.5 13.5C18.3284 13.5 19 12.8284 19 12C19 11.1716 18.3284 10.5 17.5 10.5C16.6716 10.5 16 11.1716 16 12C16 12.8284 16.6716 13.5 17.5 13.5Z"
+                fill="currentColor"
+                stroke="none"
+              />
+              <circle
+                cx="12"
+                cy="12"
+                r="10.5"
+              />
+            </svg>
+            <span
+              class="css-1r1fnqp-boxStyles"
+            >
+              <span
+                class="css-1f7oqqc-boxStyles-Text"
+              >
+                Doing
+              </span>
+              Business Contacts
+            </span>
+          </a>
+        </li>
+        <li
+          class="css-td3mpi-boxStyles"
+        >
+          <a
+            class="css-s94ve8-TextLink-boxStyles-ProgressIndicatorItem"
+            href="#"
+          >
+            <svg
+              aria-hidden="true"
+              class="css-1pepvcz-Icon"
+              clip-rule="evenodd"
+              focusable="false"
+              height="24"
+              role="img"
+              viewBox="0 0 24 24"
+              width="24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <circle
+                cx="12"
+                cy="12"
+                r="10.5"
+              />
+            </svg>
+            <span
+              class="css-1r1fnqp-boxStyles"
+            >
+              <span
+                class="css-1f7oqqc-boxStyles-Text"
+              >
+                To do
+              </span>
+              Case Studies
+            </span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </section>
+</div>
+`;
+
+exports[`ProgressIndicator With buttons renders correctly 1`] = `
+<div>
+  <section
+    class="css-1slslyo-boxStyles-ProgressIndicatorContainer"
+  >
+    <button
+      aria-controls="progress-indicator-6-body"
+      aria-expanded="false"
+      class="css-1rwe9m2-BaseButton-boxStyles-ProgressIndicatorCollapseButton"
+      id="progress-indicator-6-button"
+      type="button"
+    >
+      Doing step 2 of 3
+      <svg
+        aria-hidden="true"
+        class="css-5ae1oq-Icon"
+        clip-rule="evenodd"
+        focusable="false"
+        height="24"
+        role="img"
+        style="transform: rotate(0deg);"
+        viewBox="0 0 24 24"
+        width="24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M21 8L12 17L3 8"
+        />
+      </svg>
+    </button>
+    <div
+      class="css-fmb23f-ProgressIndicator"
+      id="progress-indicator-6-body"
+      style="display: none; height: 0px; overflow: hidden;"
+    >
+      <ul
+        class="css-14adt79-boxStyles"
+      >
+        <li
+          class="css-td3mpi-boxStyles"
+        >
+          <button
+            class="css-6883ks-BaseButton-boxStyles-ProgressIndicatorItem"
+            type="button"
+          >
+            <svg
+              aria-hidden="true"
+              class="css-1pepvcz-Icon"
+              clip-rule="evenodd"
+              focusable="false"
+              height="24"
+              role="img"
+              viewBox="0 0 24 24"
+              width="24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <circle
+                cx="12"
+                cy="12"
+                r="10.5"
+              />
+              <path
+                d="M7 13L10 16L17 9"
+              />
+            </svg>
+            <span
+              class="css-1r1fnqp-boxStyles"
+            >
+              <span
+                class="css-1f7oqqc-boxStyles-Text"
+              >
+                Done
+              </span>
+              Introduction
+            </span>
+          </button>
+        </li>
+        <li
+          class="css-td3mpi-boxStyles"
+        >
+          <button
+            class="css-wr6cvo-BaseButton-boxStyles-ProgressIndicatorItem"
+            type="button"
+          >
+            <svg
+              aria-hidden="true"
+              class="css-1pepvcz-Icon"
+              clip-rule="evenodd"
+              focusable="false"
+              height="24"
+              role="img"
+              viewBox="0 0 24 24"
+              width="24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M6.5 13.5C7.32843 13.5 8 12.8284 8 12C8 11.1716 7.32843 10.5 6.5 10.5C5.67157 10.5 5 11.1716 5 12C5 12.8284 5.67157 13.5 6.5 13.5Z"
+                fill="currentColor"
+                stroke="none"
+              />
+              <path
+                d="M12 13.5C12.8284 13.5 13.5 12.8284 13.5 12C13.5 11.1716 12.8284 10.5 12 10.5C11.1716 10.5 10.5 11.1716 10.5 12C10.5 12.8284 11.1716 13.5 12 13.5Z"
+                fill="currentColor"
+                stroke="none"
+              />
+              <path
+                d="M17.5 13.5C18.3284 13.5 19 12.8284 19 12C19 11.1716 18.3284 10.5 17.5 10.5C16.6716 10.5 16 11.1716 16 12C16 12.8284 16.6716 13.5 17.5 13.5Z"
+                fill="currentColor"
+                stroke="none"
+              />
+              <circle
+                cx="12"
+                cy="12"
+                r="10.5"
+              />
+            </svg>
+            <span
+              class="css-1r1fnqp-boxStyles"
+            >
+              <span
+                class="css-1f7oqqc-boxStyles-Text"
+              >
+                Doing
+              </span>
+              Business Contacts
+            </span>
+          </button>
+        </li>
+        <li
+          class="css-td3mpi-boxStyles"
+        >
+          <button
+            class="css-6883ks-BaseButton-boxStyles-ProgressIndicatorItem"
+            type="button"
+          >
+            <svg
+              aria-hidden="true"
+              class="css-1pepvcz-Icon"
+              clip-rule="evenodd"
+              focusable="false"
+              height="24"
+              role="img"
+              viewBox="0 0 24 24"
+              width="24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <circle
+                cx="12"
+                cy="12"
+                r="10.5"
+              />
+            </svg>
+            <span
+              class="css-1r1fnqp-boxStyles"
+            >
+              <span
+                class="css-1f7oqqc-boxStyles-Text"
+              >
+                To do
+              </span>
+              Case Studies
+            </span>
+          </button>
+        </li>
+      </ul>
+    </div>
+  </section>
+</div>
+`;
