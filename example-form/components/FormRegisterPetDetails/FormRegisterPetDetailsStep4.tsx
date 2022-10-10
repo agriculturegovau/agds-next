@@ -72,7 +72,8 @@ export const FormRegisterPetDetailsStep4 = () => {
 						{
 							label: 'Vaccination certificate',
 							value:
-								formState[2]?.vaccinationCertificate[0].name ?? 'Not supplied',
+								formState[2]?.vaccinationCertificate?.[0].name ??
+								'Not supplied',
 						},
 					]}
 				/>
