@@ -187,7 +187,7 @@ export const UploadSingleFileOnSubmit: ComponentStory<typeof FileUpload> = (
 							/>
 
 							{
-								// We use a LoadingBlanket to communucate that this field is causing the form
+								// We use a LoadingBlanket to communicate that this field is causing the form
 								// to take longer than usual to submit
 								isSubmitting && <LoadingBlanket label="Uploading file" />
 							}

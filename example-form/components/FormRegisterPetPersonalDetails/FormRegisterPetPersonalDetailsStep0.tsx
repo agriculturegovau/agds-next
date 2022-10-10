@@ -178,6 +178,7 @@ export const FormRegisterPetPersonalDetailsStep0 = () => {
 											inputRef={ref}
 											label="Date of birth"
 											{...field}
+											id="dob"
 											invalid={Boolean(errors.dob?.message)}
 											message={errors.dob?.message}
 											maxWidth="xl"
