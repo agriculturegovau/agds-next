@@ -84,7 +84,7 @@ export const FormRegisterPetPersonalDetailsStep0 = () => {
 			title="Personal details"
 			introduction="Confirm if these prefilled details from your account are still correct."
 			callToAction={
-				<Details label="How were my details prefilled?">
+				<Details label="How were my details prefilled?" iconBefore>
 					<Prose>
 						<p>
 							We’re working hard to improve the way we do business with you.
