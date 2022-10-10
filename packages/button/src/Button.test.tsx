@@ -40,7 +40,7 @@ describe('Button with loading', () => {
 		const el = screen.getByTestId('example');
 		expect(el).toBeInTheDocument();
 		expect(el.tagName).toBe('BUTTON');
-		expect(el).toHaveAccessibleName('Busy');
+		expect(el).toHaveAccessibleName('My button Busy');
 	});
 	it('renders a valid HTML structure', () => {
 		const { container } = render(<ButtonExample loading />);
