@@ -50,6 +50,7 @@ export const FormExampleMultiStep2 = () => {
 							inputRef={ref}
 							label="Select a date"
 							{...field}
+							id="date"
 							invalid={Boolean(errors.date?.message)}
 							message={errors.date?.message}
 							maxWidth="xl"
