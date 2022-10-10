@@ -34,8 +34,8 @@ export default function FormRegisterPetTask1HomePage() {
 									<H2>Registration requirements</H2>
 									<Prose>
 										<p>
-											To speed up the process of registering you pet you will
-											need to provide:
+											To speed up the process of registering a pet you will need
+											to provide:
 										</p>
 										<ul>
 											<li>Personal details</li>
