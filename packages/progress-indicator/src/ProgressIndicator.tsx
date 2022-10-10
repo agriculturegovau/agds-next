@@ -6,6 +6,7 @@ import {
 	tokens,
 	usePrefersReducedMotion,
 	useToggleState,
+	useWindowSize,
 } from '@ag.ds-next/core';
 import { ProgressIndicatorCollapseButton } from './ProgressIndicatorCollapseButton';
 import { ProgressIndicatorContainer } from './ProgressIndicatorContainer';
@@ -52,6 +53,9 @@ export const ProgressIndicator = ({
 		},
 	});
 
+	const { windowWidth } = useWindowSize();
+	const isMobile = (windowWidth || 0) <= tokens.breakpoint.lg - 1;
+
 	return (
 		<ProgressIndicatorContainer>
 			<ProgressIndicatorCollapseButton
@@ -64,7 +68,8 @@ export const ProgressIndicator = ({
 			/>
 			<animated.div
 				id={bodyId}
-				aria-labelledby={buttonId}
+				// As this component looks similar to an accordion in smaller screen sizes, we need to conditionally add some aria attributes
+				{...(isMobile && { role: 'region', 'aria-labelledby': buttonId })}
 				style={animatedHeight}
 				css={{
 					// Overwrite the animated height for tablet/desktop sizes.
