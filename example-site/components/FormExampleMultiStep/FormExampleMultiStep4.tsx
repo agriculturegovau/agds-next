@@ -2,7 +2,6 @@ import { useForm, SubmitHandler } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { FormStack } from '@ag.ds-next/form-stack';
-import { VisuallyHidden } from '@ag.ds-next/a11y';
 import { Prose } from '@ag.ds-next/prose';
 import { Stack } from '@ag.ds-next/box';
 import { Checkbox, ControlGroup } from '@ag.ds-next/control-input';
@@ -55,12 +54,8 @@ export const FormExampleMultiStep4 = () => {
 				<H2>{FORM_STEPS[0].label}</H2>
 				<DefinitionList>
 					<DefinitionListItem>
-						<DefinitionTerm>
-							<VisuallyHidden>{'Question '}</VisuallyHidden>
-							Fieldset question?
-						</DefinitionTerm>
+						<DefinitionTerm>Fieldset question?</DefinitionTerm>
 						<DefinitionDescription>
-							<VisuallyHidden>{'Answer '}</VisuallyHidden>
 							{formState[0]?.example}
 						</DefinitionDescription>
 					</DefinitionListItem>
@@ -74,22 +69,14 @@ export const FormExampleMultiStep4 = () => {
 				<H2>{FORM_STEPS[1].label}</H2>
 				<DefinitionList>
 					<DefinitionListItem>
-						<DefinitionTerm>
-							<VisuallyHidden>{'Question '}</VisuallyHidden>
-							Describe actions taken
-						</DefinitionTerm>
+						<DefinitionTerm>Describe actions taken</DefinitionTerm>
 						<DefinitionDescription>
-							<VisuallyHidden>{'Answer '}</VisuallyHidden>
 							{formState[1]?.description}
 						</DefinitionDescription>
 					</DefinitionListItem>
 					<DefinitionListItem>
-						<DefinitionTerm>
-							<VisuallyHidden>{'Question '}</VisuallyHidden>
-							Uploaded file
-						</DefinitionTerm>
+						<DefinitionTerm>Uploaded file</DefinitionTerm>
 						<DefinitionDescription>
-							<VisuallyHidden>{'Answer '}</VisuallyHidden>
 							{formState[1]?.files.map(({ name }) => name).join(', ')}
 						</DefinitionDescription>
 					</DefinitionListItem>
@@ -103,12 +90,8 @@ export const FormExampleMultiStep4 = () => {
 				<H2>{FORM_STEPS[2].label}</H2>
 				<DefinitionList>
 					<DefinitionListItem>
-						<DefinitionTerm>
-							<VisuallyHidden>{'Question '}</VisuallyHidden>
-							Select a date
-						</DefinitionTerm>
+						<DefinitionTerm>Select a date</DefinitionTerm>
 						<DefinitionDescription>
-							<VisuallyHidden>{'Answer '}</VisuallyHidden>
 							{formState[2]?.date.toLocaleDateString()}
 						</DefinitionDescription>
 					</DefinitionListItem>
@@ -122,22 +105,14 @@ export const FormExampleMultiStep4 = () => {
 				<H2>{FORM_STEPS[3].label}</H2>
 				<DefinitionList>
 					<DefinitionListItem>
-						<DefinitionTerm>
-							<VisuallyHidden>{'Question '}</VisuallyHidden>
-							Checkbox fieldset question?
-						</DefinitionTerm>
+						<DefinitionTerm>Checkbox fieldset question?</DefinitionTerm>
 						<DefinitionDescription>
-							<VisuallyHidden>{'Answer '}</VisuallyHidden>
 							{formState[3]?.checkbox?.join(', ')}
 						</DefinitionDescription>
 					</DefinitionListItem>
 					<DefinitionListItem>
-						<DefinitionTerm>
-							<VisuallyHidden>{'Question '}</VisuallyHidden>
-							Nested field
-						</DefinitionTerm>
+						<DefinitionTerm>Nested field</DefinitionTerm>
 						<DefinitionDescription>
-							<VisuallyHidden>{'Answer '}</VisuallyHidden>
 							{formState[3]?.conditionalField}
 						</DefinitionDescription>
 					</DefinitionListItem>
