@@ -1,8 +1,7 @@
 import { InputHTMLAttributes, forwardRef } from 'react';
-import { useId } from '@reach/auto-id';
 import { textInputStyles } from '@ag.ds-next/text-input';
 import { Stack } from '@ag.ds-next/box';
-import { globalPalette } from '@ag.ds-next/core';
+import { globalPalette, useId } from '@ag.ds-next/core';
 import { SearchBoxLabel } from './SearchBoxLabel';
 
 type NativeInputProps = InputHTMLAttributes<HTMLInputElement>;

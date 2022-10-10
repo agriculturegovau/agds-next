@@ -1,9 +1,9 @@
 import { useRef } from 'react';
-import { useId } from '@reach/auto-id';
 import { useSpring, animated } from '@react-spring/web';
 import {
 	packs,
 	tokens,
+	useId,
 	usePrefersReducedMotion,
 	useToggleState,
 	useWindowSize,

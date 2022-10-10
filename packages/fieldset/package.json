@@ -5,8 +5,7 @@
 	"main": "dist/ag.ds-next-fieldset.cjs.js",
 	"module": "dist/ag.ds-next-fieldset.esm.js",
 	"dependencies": {
-		"@babel/runtime": "^7.4.5",
-		"@reach/auto-id": "^0.16.0"
+		"@babel/runtime": "^7.4.5"
 	},
 	"devDependencies": {
 		"@ag.ds-next/box": "*",

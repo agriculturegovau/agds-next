@@ -4,13 +4,13 @@ import { LiveProvider, LiveEditor, LivePreview, withLive } from 'react-live';
 import { createUrl } from 'playroom/utils';
 import Highlight, { defaultProps, Language } from 'prism-react-renderer';
 import copy from 'clipboard-copy';
-import { useId } from '@reach/auto-id';
 import { ExternalLinkCallout } from '@ag.ds-next/a11y';
 import {
 	globalPalette,
 	mapSpacing,
 	packs,
 	tokens,
+	useId,
 	useToggleState,
 } from '@ag.ds-next/core';
 import { Box, Flex } from '@ag.ds-next/box';

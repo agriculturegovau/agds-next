@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import { useId } from '@reach/auto-id';
+import { useId } from '@ag.ds-next/core';
 import { FieldContainer } from './FieldContainer';
 import { FieldLabel } from './FieldLabel';
 import { FieldHint } from './FieldHint';

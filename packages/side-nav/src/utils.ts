@@ -1,5 +1,4 @@
-import { useId } from '@reach/auto-id';
-import { LinkProps } from '@ag.ds-next/core';
+import { LinkProps, useId } from '@ag.ds-next/core';
 
 export function findBestMatch(items: LinkProps[], activePath?: string) {
 	if (!activePath) return '';

@@ -1,5 +1,5 @@
 import { PropsWithChildren, ReactNode } from 'react';
-import { useId } from '@reach/auto-id';
+import { useId } from '@ag.ds-next/core';
 import { FieldsetContainer } from './FieldsetContainer';
 import { FieldsetLegend } from './FieldsetLegend';
 import { FieldsetHint } from './FieldsetHint';
