@@ -22,7 +22,7 @@ export const formSchema = yup
 			.typeError('Select an option')
 			.required('Select an option'),
 		mobileNumber: yup.string().when('contactMethod', (value, schema) => {
-			if (value === 'sms') {
+			if (value === 'SMS') {
 				return schema.required('Mobile number is required');
 			}
 			return schema;
@@ -69,7 +69,7 @@ export const FormRegisterPetPersonalDetailsStep2 = () => {
 		}
 	}, [hasErrors, focusedError, errors]);
 
-	const showConditionalField = watch('contactMethod') === 'sms';
+	const showConditionalField = watch('contactMethod') === 'SMS';
 
 	useEffect(() => {
 		if (isSubmitted) trigger();
@@ -117,10 +117,10 @@ export const FormRegisterPetPersonalDetailsStep2 = () => {
 						required
 						block
 					>
-						<Radio {...register('contactMethod')} value="mail">
+						<Radio {...register('contactMethod')} value="Mail">
 							Mail
 						</Radio>
-						<Radio {...register('contactMethod')} value="sms">
+						<Radio {...register('contactMethod')} value="SMS">
 							SMS
 						</Radio>
 						{showConditionalField ? (
@@ -142,7 +142,7 @@ export const FormRegisterPetPersonalDetailsStep2 = () => {
 								/>
 							</Box>
 						) : null}
-						<Radio {...register('contactMethod')} value="email">
+						<Radio {...register('contactMethod')} value="Email">
 							Email
 						</Radio>
 					</ControlGroup>
