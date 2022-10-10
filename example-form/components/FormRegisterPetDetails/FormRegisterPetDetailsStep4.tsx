@@ -26,9 +26,6 @@ export const FormRegisterPetDetailsStep4 = () => {
 			{/** Summary: Step 0 */}
 			<Stack gap={1.5} alignItems="flex-start">
 				<H2>{FORM_STEPS[0].label}</H2>
-				<Button variant="text" onClick={() => goToStep(0)}>
-					Change
-				</Button>
 				<FormDefinitionList
 					items={[
 						{
@@ -37,13 +34,13 @@ export const FormRegisterPetDetailsStep4 = () => {
 						},
 					]}
 				/>
+				<Button variant="text" onClick={() => goToStep(0)}>
+					Change type of pet
+				</Button>
 			</Stack>
 			{/** Summary: Step 1 */}
 			<Stack gap={1.5} alignItems="flex-start">
 				<H2>{FORM_STEPS[1].label}</H2>
-				<Button variant="text" onClick={() => goToStep(1)}>
-					Change
-				</Button>
 				<FormDefinitionList
 					items={[
 						{
@@ -64,26 +61,27 @@ export const FormRegisterPetDetailsStep4 = () => {
 						},
 					]}
 				/>
+				<Button variant="text" onClick={() => goToStep(1)}>
+					Change pet details
+				</Button>
 			</Stack>
 			<Stack gap={1.5} alignItems="flex-start">
 				<H2>{FORM_STEPS[2].label}</H2>
-				<Button variant="text" onClick={() => goToStep(2)}>
-					Change
-				</Button>
 				<FormDefinitionList
 					items={[
 						{
 							label: 'Vaccination certificate',
-							value: formState[2]?.vaccinationCertificate ? 'Yes' : 'No',
+							value:
+								formState[2]?.vaccinationCertificate[0].name ?? 'Not supplied',
 						},
 					]}
 				/>
+				<Button variant="text" onClick={() => goToStep(2)}>
+					Change proof of vaccination
+				</Button>
 			</Stack>
 			<Stack gap={1.5} alignItems="flex-start">
 				<H2>{FORM_STEPS[3].label}</H2>
-				<Button variant="text" onClick={() => goToStep(2)}>
-					Change
-				</Button>
 				<FormDefinitionList
 					items={[
 						{
@@ -92,6 +90,9 @@ export const FormRegisterPetDetailsStep4 = () => {
 						},
 					]}
 				/>
+				<Button variant="text" onClick={() => goToStep(3)}>
+					Change registration start date
+				</Button>
 			</Stack>
 			<form onSubmit={onSubmit}>
 				<FormRegisterPetDetailsActions />

@@ -26,9 +26,6 @@ export const FormRegisterPetPersonalDetailsStep3 = () => {
 			{/** Summary: Step 0 */}
 			<Stack gap={1.5} alignItems="flex-start">
 				<H2>{FORM_STEPS[0].label}</H2>
-				<Button variant="text" onClick={() => goToStep(0)}>
-					Change
-				</Button>
 				<FormDefinitionList
 					items={[
 						{
@@ -49,13 +46,13 @@ export const FormRegisterPetPersonalDetailsStep3 = () => {
 						},
 					]}
 				/>
+				<Button variant="text" onClick={() => goToStep(0)}>
+					Change personal details
+				</Button>
 			</Stack>
 			{/** Summary: Step 1 */}
 			<Stack gap={1.5} alignItems="flex-start">
 				<H2>{FORM_STEPS[1].label}</H2>
-				<Button variant="text" onClick={() => goToStep(1)}>
-					Change
-				</Button>
 				<FormDefinitionList
 					items={[
 						{
@@ -76,12 +73,12 @@ export const FormRegisterPetPersonalDetailsStep3 = () => {
 						},
 					]}
 				/>
+				<Button variant="text" onClick={() => goToStep(1)}>
+					Change address details
+				</Button>
 			</Stack>
 			<Stack gap={1.5} alignItems="flex-start">
 				<H2>{FORM_STEPS[2].label}</H2>
-				<Button variant="text" onClick={() => goToStep(2)}>
-					Change
-				</Button>
 				<FormDefinitionList
 					items={[
 						{
@@ -90,6 +87,9 @@ export const FormRegisterPetPersonalDetailsStep3 = () => {
 						},
 					]}
 				/>
+				<Button variant="text" onClick={() => goToStep(2)}>
+					Change contact method
+				</Button>
 			</Stack>
 			<form onSubmit={onSubmit}>
 				<FormRegisterPetPersonalDetailsActions />

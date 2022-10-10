@@ -53,9 +53,6 @@ export const FormExampleMultiStep4 = () => {
 			{/** Summary: Step 0 */}
 			<Stack gap={1.5} alignItems="flex-start">
 				<H2>{FORM_STEPS[0].label}</H2>
-				<Button variant="text" onClick={() => goToStep(0)}>
-					Change
-				</Button>
 				<DefinitionList>
 					<DefinitionListItem>
 						<DefinitionTerm>
@@ -68,13 +65,13 @@ export const FormExampleMultiStep4 = () => {
 						</DefinitionDescription>
 					</DefinitionListItem>
 				</DefinitionList>
+				<Button variant="text" onClick={() => goToStep(0)}>
+					Change
+				</Button>
 			</Stack>
 			{/** Summary: Step 1 */}
 			<Stack gap={1.5} alignItems="flex-start">
 				<H2>{FORM_STEPS[1].label}</H2>
-				<Button variant="text" onClick={() => goToStep(1)}>
-					Change
-				</Button>
 				<DefinitionList>
 					<DefinitionListItem>
 						<DefinitionTerm>
@@ -97,13 +94,13 @@ export const FormExampleMultiStep4 = () => {
 						</DefinitionDescription>
 					</DefinitionListItem>
 				</DefinitionList>
+				<Button variant="text" onClick={() => goToStep(1)}>
+					Change
+				</Button>
 			</Stack>
 			{/** Summary: Step 2 */}
 			<Stack gap={1.5} alignItems="flex-start">
 				<H2>{FORM_STEPS[2].label}</H2>
-				<Button variant="text" onClick={() => goToStep(2)}>
-					Change
-				</Button>
 				<DefinitionList>
 					<DefinitionListItem>
 						<DefinitionTerm>
@@ -116,13 +113,13 @@ export const FormExampleMultiStep4 = () => {
 						</DefinitionDescription>
 					</DefinitionListItem>
 				</DefinitionList>
+				<Button variant="text" onClick={() => goToStep(2)}>
+					Change
+				</Button>
 			</Stack>
 			{/** Summary: Step 3 */}
 			<Stack gap={1.5} alignItems="flex-start">
 				<H2>{FORM_STEPS[3].label}</H2>
-				<Button variant="text" onClick={() => goToStep(3)}>
-					Change
-				</Button>
 				<DefinitionList>
 					<DefinitionListItem>
 						<DefinitionTerm>
@@ -145,6 +142,9 @@ export const FormExampleMultiStep4 = () => {
 						</DefinitionDescription>
 					</DefinitionListItem>
 				</DefinitionList>
+				<Button variant="text" onClick={() => goToStep(3)}>
+					Change
+				</Button>
 			</Stack>
 			{/** Declaration form */}
 			<Stack as="form" gap={3} onSubmit={handleSubmit(onSubmit)} noValidate>
