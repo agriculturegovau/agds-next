@@ -17,7 +17,7 @@ import {
 } from './FormRegisterPetDetails/FormRegisterPetDetails';
 
 type ContextType = {
-	/** The form state of the current task. */
+	/** The task form state. */
 	task1FormState: FormState[0];
 	task2FormState: FormState[1];
 	/** Function to be called to start a task */
