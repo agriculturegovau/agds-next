@@ -17,8 +17,9 @@ import {
 } from './FormRegisterPetDetails/FormRegisterPetDetails';
 
 type ContextType = {
-	/** The form state of the current task. */
-	taskFormState: TaskFormState;
+	/** The task form state. */
+	task1FormState: FormState[0];
+	task2FormState: FormState[1];
 	/** Function to be called to start a task */
 	startTask: (taskIdx: number) => void;
 	/** Function to get the status of a task. */
@@ -136,11 +137,8 @@ export const FormRegisterPetContext = ({
 		getTaskStatus,
 		submitTask1,
 		submitTask2,
-		taskFormState:
-			(typeof currentTaskIdx === 'number' &&
-				currentTaskIdx in formState &&
-				formState[currentTaskIdx as keyof typeof formState]) ||
-			{},
+		task1FormState: formState[0],
+		task2FormState: formState[1],
 	};
 
 	return <context.Provider value={contextValue}>{children}</context.Provider>;
