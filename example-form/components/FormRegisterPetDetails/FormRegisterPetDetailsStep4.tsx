@@ -67,7 +67,6 @@ export const FormRegisterPetDetailsStep4 = () => {
 			</Stack>
 			<Stack gap={1.5} alignItems="flex-start">
 				<H2>{FORM_STEPS[2].label}</H2>
-				{console.log(formState[2]?.vaccinationCertificate)}
 				<FormDefinitionList
 					items={[
 						{
