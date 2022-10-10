@@ -1,15 +1,12 @@
 import { mapSpacing, Spacing, tokens } from './tokens';
-import { mapResponsiveProp, mq, ResponsiveProp } from './responsive';
+import { mapResponsiveProp, mq } from './responsive';
 
 describe('responsive prop style generation', () => {
 	test('array syntax', () => {
 		expect(
 			mq({
 				display: mapResponsiveProp(['none', 'block', null, 'flex']),
-				gap: mapResponsiveProp(
-					[0, 1, null, 2] as ResponsiveProp<Spacing>,
-					mapSpacing
-				),
+				gap: mapResponsiveProp<Spacing>([0, 1, null, 2], mapSpacing),
 			})
 		).toEqual([
 			{
@@ -24,10 +21,7 @@ describe('responsive prop style generation', () => {
 		expect(
 			mq({
 				display: mapResponsiveProp({ xs: 'none', sm: 'block', lg: 'flex' }),
-				gap: mapResponsiveProp(
-					{ xs: 0, sm: 1, lg: 2 } as ResponsiveProp<Spacing>,
-					mapSpacing
-				),
+				gap: mapResponsiveProp<Spacing>({ xs: 0, sm: 1, lg: 2 }, mapSpacing),
 			})
 		).toEqual([
 			{
