@@ -117,7 +117,7 @@ export const FormExampleMultiStep1 = () => {
 						}) => (
 							<div css={{ position: 'relative' }}>
 								<FileUpload
-									id="file"
+									id="files"
 									label="Select file to upload"
 									hint="General hint information"
 									accept={['image/jpeg', 'image/jpg', 'image/png']}
