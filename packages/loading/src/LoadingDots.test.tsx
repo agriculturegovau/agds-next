@@ -13,7 +13,7 @@ describe('LoadingDots', () => {
 		const el = screen.getByTestId('example');
 		expect(el).toBeInTheDocument();
 		expect(el.tagName).toBe('SPAN');
-		expect(el).toHaveAccessibleName('Busy');
+		expect(el).toHaveTextContent('Busy');
 	});
 	it('renders a valid HTML structure', () => {
 		const { container } = render(<LoadingDotsExample />);
