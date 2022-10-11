@@ -4,7 +4,7 @@ import { Text } from '@ag.ds-next/text';
 import { TextLink } from '@ag.ds-next/text-link';
 import {
 	ProgressDoingIcon,
-	ProgressDoneIcon,
+	SuccessFilledIcon,
 	ProgressTodoIcon,
 } from '@ag.ds-next/icon';
 import { boxPalette, LinkProps, packs } from '@ag.ds-next/core';
@@ -97,7 +97,7 @@ const TaskListItem = ({
 			>
 				<Icon
 					size="md"
-					color="action"
+					color={status === 'done' ? 'success' : 'action'}
 					css={{
 						// Use padding to ensure the icon is aligned centered with the status label and title
 						paddingTop: '0.75rem',
@@ -135,7 +135,7 @@ const TaskListItem = ({
 const statusIconMap = {
 	doing: ProgressDoingIcon,
 	todo: ProgressTodoIcon,
-	done: ProgressDoneIcon,
+	done: SuccessFilledIcon,
 } as const;
 
 const statusLabelMap = {
