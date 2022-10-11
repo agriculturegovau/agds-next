@@ -4,7 +4,7 @@ import { Text } from '@ag.ds-next/text';
 import { TextLink } from '@ag.ds-next/text-link';
 import {
 	ProgressDoingIcon,
-	ProgressDoneIcon,
+	SuccessFilledIcon,
 	ProgressTodoIcon,
 } from '@ag.ds-next/icon';
 import { boxPalette, LinkProps, packs } from '@ag.ds-next/core';
@@ -92,7 +92,7 @@ const ProgressIndicatorItem = ({
 				}}
 				{...props}
 			>
-				<Icon size="md" color="action" />
+				<Icon size="md" color={status === 'done' ? 'success' : 'action'} />
 				<Flex as="span" flexDirection="column" gap={0}>
 					<Text color="muted" fontSize="xs" lineHeight="nospace">
 						{statusLabelMap[status]}
@@ -107,7 +107,7 @@ const ProgressIndicatorItem = ({
 const statusIconMap = {
 	doing: ProgressDoingIcon,
 	todo: ProgressTodoIcon,
-	done: ProgressDoneIcon,
+	done: SuccessFilledIcon,
 } as const;
 
 const statusLabelMap = {
