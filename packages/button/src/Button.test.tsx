@@ -34,6 +34,25 @@ describe('Button', () => {
 	});
 });
 
+describe('Button with loading', () => {
+	it('renders correctly with minimal props', () => {
+		render(<ButtonExample loading />);
+		const el = screen.getByTestId('example');
+		expect(el).toBeInTheDocument();
+		expect(el.tagName).toBe('BUTTON');
+		expect(el).toHaveAccessibleName('My button Busy');
+	});
+	it('renders a valid HTML structure', () => {
+		const { container } = render(<ButtonExample loading />);
+		expect(container).toHTMLValidate({
+			extends: ['html-validate:recommended'],
+			rules: {
+				'no-inline-style': 'off',
+			},
+		});
+	});
+});
+
 function ButtonLinkExample() {
 	return (
 		<ButtonLink href="#" data-testid="example">

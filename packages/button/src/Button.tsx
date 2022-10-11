@@ -1,4 +1,4 @@
-import { ComponentType, forwardRef, Fragment, ReactNode } from 'react';
+import { ComponentType, forwardRef } from 'react';
 import { LinkProps, useLinkComponent } from '@ag.ds-next/core';
 import { IconProps } from '@ag.ds-next/icon';
 import { LoadingDots } from '@ag.ds-next/loading';
@@ -52,14 +52,14 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 				{IconBefore ? (
 					<IconBefore size={iconSize[size]} weight="regular" />
 				) : null}
-				{loading ? (
-					<Fragment>
-						<HiddenText>{children}</HiddenText>
-						<CenteredLoading label={loadingLabel} size={size} />
-					</Fragment>
-				) : (
-					children
-				)}
+				<span>
+					<span css={{ opacity: loading ? 0 : 1 }}>{children}</span>
+					<ButtonLoadingDots
+						loading={loading}
+						label={loadingLabel}
+						size={size}
+					/>
+				</span>
 				{IconAfter ? (
 					<IconAfter size={iconSize[size]} weight="regular" />
 				) : null}
@@ -92,14 +92,14 @@ export const ButtonLink = forwardRef<HTMLAnchorElement, ButtonLinkProps>(
 				{IconBefore ? (
 					<IconBefore size={iconSize[size]} weight="regular" />
 				) : null}
-				{loading ? (
-					<Fragment>
-						<HiddenText>{children}</HiddenText>
-						<CenteredLoading label={loadingLabel} size={size} />
-					</Fragment>
-				) : (
-					children
-				)}
+				<span>
+					<span css={{ opacity: loading ? 0 : 1 }}>{children}</span>
+					<ButtonLoadingDots
+						loading={loading}
+						label={loadingLabel}
+						size={size}
+					/>
+				</span>
 				{IconAfter ? (
 					<IconAfter size={iconSize[size]} weight="regular" />
 				) : null}
@@ -108,26 +108,30 @@ export const ButtonLink = forwardRef<HTMLAnchorElement, ButtonLinkProps>(
 	}
 );
 
-const HiddenText = ({ children }: { children: ReactNode }) => (
-	<span css={{ visibility: 'hidden' }}>{children}</span>
-);
-
-const CenteredLoading = ({
+const ButtonLoadingDots = ({
 	label,
+	loading,
 	size,
 }: {
 	label: string;
+	loading?: boolean;
 	size: ButtonSize;
-}) => (
-	<LoadingDots
-		label={label}
-		aria-live="assertive"
-		size={loadingSize[size]}
-		css={{
-			position: 'absolute',
-			left: '50%',
-			top: '50%',
-			transform: 'translate(-50%, -50%)',
-		}}
-	/>
-);
+}) => {
+	// aria-live container must be present in the DOM before the loading dots are added
+	return (
+		<span aria-live="assertive">
+			{loading ? (
+				<LoadingDots
+					label={label}
+					size={loadingSize[size]}
+					css={{
+						position: 'absolute',
+						left: '50%',
+						top: '50%',
+						transform: 'translate(-50%, -50%)',
+					}}
+				/>
+			) : null}
+		</span>
+	);
+};

@@ -35,6 +35,7 @@ export const LoadingDots = ({
 	role,
 	className,
 	size = 'md',
+	...props
 }: LoadingDotsProps) => {
 	const { gap, dots, dotSize } = loadingDotsSizes[size];
 
@@ -53,15 +54,18 @@ export const LoadingDots = ({
 
 	return (
 		<Flex
+			as="span"
 			gap={gap}
 			className={className}
 			aria-live={ariaLive}
 			aria-atomic="false"
 			role={role}
+			{...props}
 		>
 			{label && <VisuallyHidden>{label}</VisuallyHidden>}
 			{trail.map((style, idx) => (
 				<AnimatedBox
+					as="span"
 					key={idx}
 					height={dotSize}
 					width={dotSize}
