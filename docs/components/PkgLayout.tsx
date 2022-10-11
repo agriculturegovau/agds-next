@@ -1,14 +1,16 @@
-import { PropsWithChildren } from 'react';
 import { useRouter } from 'next/router';
-import { CallToActionLink } from '@ag.ds-next/call-to-action';
-import { Prose } from '@ag.ds-next/prose';
-import { SkipLinksProps } from '@ag.ds-next/skip-link';
-import { SubNav } from '@ag.ds-next/sub-nav';
-import { Text } from '@ag.ds-next/text';
-import { PageAlert } from '@ag.ds-next/page-alert';
+import { PropsWithChildren } from 'react';
+import {
+	CallToActionLink,
+	PageAlert,
+	Prose,
+	SkipLinksProps,
+	SubNav,
+	Text,
+} from '@ag.ds-next/design-system';
 import { getPkgBreadcrumbs, getPkgNavLinks, Pkg } from '../lib/mdx/packages';
-import { PageTitle } from './PageTitle';
 import { PageLayout } from './PageLayout';
+import { PageTitle } from './PageTitle';
 
 export function PkgLayout({
 	children,

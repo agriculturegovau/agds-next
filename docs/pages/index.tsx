@@ -1,18 +1,18 @@
-import { Columns } from '@ag.ds-next/columns';
-import { SectionContent } from '@ag.ds-next/content';
-import { Stack } from '@ag.ds-next/box';
-import { CallToActionLink } from '@ag.ds-next/call-to-action';
-import { Prose } from '@ag.ds-next/prose';
-import { TextLink } from '@ag.ds-next/text-link';
 import {
+	CallToActionLink,
+	Columns,
 	HeroBanner,
-	HeroBannerTitleContainer,
-	HeroBannerTitle,
 	HeroBannerSubtitle,
-} from '@ag.ds-next/hero-banner';
+	HeroBannerTitle,
+	HeroBannerTitleContainer,
+	Prose,
+	SectionContent,
+	Stack,
+	TextLink,
+} from '@ag.ds-next/design-system';
 import { AppLayout } from '../components/AppLayout';
-import { PictogramCard } from '../components/PictogramCard';
 import { DocumentTitle } from '../components/DocumentTitle';
+import { PictogramCard } from '../components/PictogramCard';
 
 export default function Homepage() {
 	return (

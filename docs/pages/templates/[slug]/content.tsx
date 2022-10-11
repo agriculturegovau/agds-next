@@ -1,6 +1,8 @@
 import { GetStaticProps, InferGetStaticPropsType } from 'next';
 import { MDXRemote } from 'next-mdx-remote';
-import { Prose } from '@ag.ds-next/prose';
+import { Prose } from '@ag.ds-next/design-system';
+import { DocumentTitle } from '../../../components/DocumentTitle';
+import { mdxComponents } from '../../../components/mdxComponents';
 import { TemplateLayout } from '../../../components/TemplateLayout';
 import {
 	getTemplate,
@@ -11,8 +13,6 @@ import {
 	getTemplateSubNavItems,
 	Template,
 } from '../../../lib/mdx/templates';
-import { mdxComponents } from '../../../components/mdxComponents';
-import { DocumentTitle } from '../../../components/DocumentTitle';
 
 export default function TemplateContentPage({
 	breadcrumbs,

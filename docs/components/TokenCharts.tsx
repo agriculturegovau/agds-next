@@ -1,7 +1,13 @@
-import { Box, Flex, Stack } from '@ag.ds-next/box';
-import { boxPalette, tokens, Spacing } from '@ag.ds-next/core';
-import { proseBlockClassname } from '@ag.ds-next/prose';
-import { Text } from '@ag.ds-next/text';
+import {
+	Box,
+	boxPalette,
+	Flex,
+	proseBlockClassname,
+	Spacing,
+	Stack,
+	Text,
+	tokens,
+} from '@ag.ds-next/design-system';
 
 type Entries<T> = {
 	[K in keyof T]: [K, T[K]];

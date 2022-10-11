@@ -1,7 +1,10 @@
 import { GetStaticProps, InferGetStaticPropsType } from 'next';
 import { MDXRemote } from 'next-mdx-remote';
-import { H1 } from '@ag.ds-next/heading';
-import { Prose } from '@ag.ds-next/prose';
+import { H1, Prose } from '@ag.ds-next/design-system';
+import { AppLayout } from '../../components/AppLayout';
+import { DocumentTitle } from '../../components/DocumentTitle';
+import { mdxComponents } from '../../components/mdxComponents';
+import { PageLayout } from '../../components/PageLayout';
 import {
 	getRelease,
 	getReleaseBreadcrumbs,
@@ -9,10 +12,6 @@ import {
 	getReleaseSlugs,
 	Release,
 } from '../../lib/mdxUtils';
-import { mdxComponents } from '../../components/mdxComponents';
-import { AppLayout } from '../../components/AppLayout';
-import { DocumentTitle } from '../../components/DocumentTitle';
-import { PageLayout } from '../../components/PageLayout';
 
 export default function Releases({
 	release,

@@ -1,8 +1,11 @@
-import { AnchorHTMLAttributes, HTMLAttributes, Fragment } from 'react';
 import Link from 'next/link';
-import { proseBlockClassname } from '@ag.ds-next/prose';
-import { PageAlert, PageAlertProps } from '@ag.ds-next/page-alert';
-import { ButtonLink } from '@ag.ds-next/button';
+import { AnchorHTMLAttributes, Fragment, HTMLAttributes } from 'react';
+import {
+	ButtonLink,
+	PageAlert,
+	PageAlertProps,
+	proseBlockClassname,
+} from '@ag.ds-next/design-system';
 import { slugify } from '../lib/slugify';
 import generatedComponentPropsData from '../__generated__/componentProps.json';
 import { Code } from './Code';

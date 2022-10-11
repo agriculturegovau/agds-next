@@ -1,4 +1,4 @@
-import { TextLink } from '@ag.ds-next/text-link';
+import { TextLink } from '@ag.ds-next/design-system';
 
 const ORG = 'steelthreads';
 const REPO = 'agds-next';

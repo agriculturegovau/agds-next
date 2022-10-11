@@ -1,18 +1,24 @@
 import { normalize } from 'path';
 import { MDXRemote } from 'next-mdx-remote';
-import { Prose } from '@ag.ds-next/prose';
-import { boxPalette } from '@ag.ds-next/core';
-import { Box, Flex, Stack } from '@ag.ds-next/box';
-import { Card, CardLink, CardInner } from '@ag.ds-next/card';
-import { Columns } from '@ag.ds-next/columns';
-import { mq } from '@ag.ds-next/core';
-import { Text } from '@ag.ds-next/text';
-import { getMarkdownData, serializeMarkdown } from '../../lib/mdxUtils';
-import { getTemplateList } from '../../lib/mdx/templates';
-import { mdxComponents } from '../../components/mdxComponents';
+import {
+	Box,
+	boxPalette,
+	Card,
+	CardInner,
+	CardLink,
+	Columns,
+	Flex,
+	mq,
+	Prose,
+	Stack,
+	Text,
+} from '@ag.ds-next/design-system';
 import { AppLayout } from '../../components/AppLayout';
-import { PageLayout } from '../../components/PageLayout';
 import { DocumentTitle } from '../../components/DocumentTitle';
+import { mdxComponents } from '../../components/mdxComponents';
+import { PageLayout } from '../../components/PageLayout';
+import { getTemplateList } from '../../lib/mdx/templates';
+import { getMarkdownData, serializeMarkdown } from '../../lib/mdxUtils';
 
 type StaticProps = Awaited<ReturnType<typeof getStaticProps>>['props'];
 

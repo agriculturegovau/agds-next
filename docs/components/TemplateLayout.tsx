@@ -1,15 +1,17 @@
-import { PropsWithChildren } from 'react';
 import { useRouter } from 'next/router';
-import { CallToActionLink } from '@ag.ds-next/call-to-action';
-import { SideNavProps } from '@ag.ds-next/side-nav';
-import { SkipLinksProps } from '@ag.ds-next/skip-link';
-import { Text } from '@ag.ds-next/text';
-import { Callout } from '@ag.ds-next/callout';
-import { SubNav } from '@ag.ds-next/sub-nav';
+import { PropsWithChildren } from 'react';
+import {
+	Callout,
+	CallToActionLink,
+	SideNavProps,
+	SkipLinksProps,
+	SubNav,
+	Text,
+} from '@ag.ds-next/design-system';
 import type {
-	Template,
 	getTemplateBreadcrumbs,
 	getTemplateSubNavItems,
+	Template,
 } from '../lib/mdx/templates';
 import { AppLayout } from './AppLayout';
 import { PageLayout } from './PageLayout';

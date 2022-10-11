@@ -1,4 +1,4 @@
-import { Columns } from '@ag.ds-next/columns';
+import { Columns } from '@ag.ds-next/design-system';
 import { PictogramCard } from './PictogramCard';
 
 type Pkg = {

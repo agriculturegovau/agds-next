@@ -1,6 +1,11 @@
 import { GetStaticProps, InferGetStaticPropsType } from 'next';
 import { MDXRemote } from 'next-mdx-remote';
-import { Prose } from '@ag.ds-next/prose';
+import { Prose } from '@ag.ds-next/design-system';
+import { AppLayout } from '../../components/AppLayout';
+import { DocumentTitle } from '../../components/DocumentTitle';
+import { mdxComponents } from '../../components/mdxComponents';
+import { PageLayout } from '../../components/PageLayout';
+import { PageTitle } from '../../components/PageTitle';
 import {
 	getGuide,
 	getGuideList,
@@ -8,11 +13,6 @@ import {
 	getGuideSlugs,
 	Guide,
 } from '../../lib/mdx/guides';
-import { mdxComponents } from '../../components/mdxComponents';
-import { AppLayout } from '../../components/AppLayout';
-import { DocumentTitle } from '../../components/DocumentTitle';
-import { PageLayout } from '../../components/PageLayout';
-import { PageTitle } from '../../components/PageTitle';
 
 export default function Guides({
 	guide,

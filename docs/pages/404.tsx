@@ -1,8 +1,10 @@
-import { H1 } from '@ag.ds-next/heading';
-import { Text } from '@ag.ds-next/text';
-import { TextLink } from '@ag.ds-next/text-link';
-import { PageContent } from '@ag.ds-next/content';
-import { Stack } from '@ag.ds-next/box';
+import {
+	H1,
+	PageContent,
+	Stack,
+	Text,
+	TextLink,
+} from '@ag.ds-next/design-system';
 import { AppLayout } from '../components/AppLayout';
 import { DocumentTitle } from '../components/DocumentTitle';
 

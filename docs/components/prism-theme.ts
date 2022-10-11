@@ -1,5 +1,5 @@
 import { PrismTheme } from 'prism-react-renderer';
-import { boxPalette, tokens, fontGrid } from '@ag.ds-next/core';
+import { boxPalette, fontGrid, tokens } from '@ag.ds-next/design-system';
 
 export const prismTheme: PrismTheme = {
 	plain: {

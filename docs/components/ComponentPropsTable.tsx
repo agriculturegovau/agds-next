@@ -1,11 +1,11 @@
 import {
 	Table,
+	TableBody,
+	TableCaption,
+	TableCell,
 	TableHead,
 	TableHeader,
-	TableBody,
-	TableCell,
-	TableCaption,
-} from '@ag.ds-next/table';
+} from '@ag.ds-next/design-system';
 
 export type ComponentPropsTableProps = {
 	data: {
