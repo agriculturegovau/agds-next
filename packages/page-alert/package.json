@@ -1,19 +1,11 @@
 {
 	"name": "@ag.ds-next/page-alert",
 	"version": "7.0.0",
+	"license": "MIT",
 	"main": "dist/ag.ds-next-page-alert.cjs.js",
 	"module": "dist/ag.ds-next-page-alert.esm.js",
-	"license": "MIT",
 	"dependencies": {
 		"@babel/runtime": "^7.4.5"
-	},
-	"peerDependencies": {
-		"@ag.ds-next/box": "7.0.0",
-		"@ag.ds-next/core": "4.0.0",
-		"@ag.ds-next/icon": "11.0.0",
-		"@ag.ds-next/text": "10.0.0",
-		"@emotion/react": "^11.7.0",
-		"react": "^16.14.0 || ^17.0.0 || ^18.0.0"
 	},
 	"devDependencies": {
 		"@ag.ds-next/box": "*",
@@ -22,5 +14,13 @@
 		"@ag.ds-next/text": "*",
 		"@emotion/react": "^11.7.0",
 		"react": "18.1.0"
+	},
+	"peerDependencies": {
+		"@ag.ds-next/box": "7.0.0",
+		"@ag.ds-next/core": "4.0.0",
+		"@ag.ds-next/icon": "11.0.0",
+		"@ag.ds-next/text": "10.0.0",
+		"@emotion/react": "^11.7.0",
+		"react": "^16.14.0 || ^17.0.0 || ^18.0.0"
 	}
 }

@@ -2,16 +2,18 @@
 	"name": "@ag.ds-next/docs",
 	"version": "0.6.2",
 	"private": true,
+	"repository": "https://github.com/steelthreads/agds-next/tree/main/docs",
+	"license": "MIT",
 	"scripts": {
+		"build": "yarn generate-component-props && next build && next export",
 		"dev": "yarn generate-component-props && next dev",
 		"dev:watch": "next-remote-watch ../packages",
 		"generate-component-props": "node scripts/generateComponentProps.js",
 		"generate-template-images": "node scripts/generateTemplateImages.js",
-		"build": "yarn generate-component-props && next build && next export",
-		"start": "next start",
 		"lint": "next lint",
+		"playroom:build": "playroom build",
 		"playroom:dev": "playroom start",
-		"playroom:build": "playroom build"
+		"start": "next start"
 	},
 	"dependencies": {
 		"@ag.ds-next/a11y": "^1.2.1",
@@ -82,11 +84,9 @@
 		"remark-hint": "^1.0.10",
 		"yarn": "^1.22.10"
 	},
-	"license": "MIT",
 	"devDependencies": {
 		"glob": "^8.0.3",
 		"puppeteer": "^14.1.0",
 		"react-docgen-typescript": "^2.2.2"
-	},
-	"repository": "https://github.com/steelthreads/agds-next/tree/main/docs"
+	}
 }

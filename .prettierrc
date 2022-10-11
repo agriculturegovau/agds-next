@@ -2,5 +2,6 @@
 	"proseWrap": "preserve",
 	"singleQuote": true,
 	"trailingComma": "es5",
-	"useTabs": true
+	"useTabs": true,
+	"plugins": ["prettier-plugin-packagejson"]
 }

@@ -1,19 +1,16 @@
 {
 	"name": "@ag.ds-next/date-picker",
 	"version": "8.0.0",
+	"license": "MIT",
 	"main": "dist/ag.ds-next-date-picker.cjs.js",
 	"module": "dist/ag.ds-next-date-picker.esm.js",
-	"license": "MIT",
-	"peerDependencies": {
-		"@ag.ds-next/a11y": "1.2.1",
-		"@ag.ds-next/box": "7.0.0",
-		"@ag.ds-next/button": "11.0.0",
-		"@ag.ds-next/core": "4.0.0",
-		"@ag.ds-next/field": "10.0.0",
-		"@ag.ds-next/icon": "11.0.0",
-		"@ag.ds-next/text-input": "11.0.0",
-		"@emotion/react": "^11.7.0",
-		"react": "^16.14.0 || ^17.0.0 || ^18.0.0"
+	"dependencies": {
+		"@babel/runtime": "^7.4.5",
+		"@popperjs/core": "^2.11.4",
+		"date-fns": "^2.28.0",
+		"react-day-picker": "^8.0.7",
+		"react-focus-lock": "^2.8.1",
+		"react-popper": "^2.2.5"
 	},
 	"devDependencies": {
 		"@ag.ds-next/a11y": "*",
@@ -26,12 +23,15 @@
 		"@emotion/react": "^11.7.0",
 		"react": "18.1.0"
 	},
-	"dependencies": {
-		"@babel/runtime": "^7.4.5",
-		"@popperjs/core": "^2.11.4",
-		"date-fns": "^2.28.0",
-		"react-day-picker": "^8.0.7",
-		"react-focus-lock": "^2.8.1",
-		"react-popper": "^2.2.5"
+	"peerDependencies": {
+		"@ag.ds-next/a11y": "1.2.1",
+		"@ag.ds-next/box": "7.0.0",
+		"@ag.ds-next/button": "11.0.0",
+		"@ag.ds-next/core": "4.0.0",
+		"@ag.ds-next/field": "10.0.0",
+		"@ag.ds-next/icon": "11.0.0",
+		"@ag.ds-next/text-input": "11.0.0",
+		"@emotion/react": "^11.7.0",
+		"react": "^16.14.0 || ^17.0.0 || ^18.0.0"
 	}
 }

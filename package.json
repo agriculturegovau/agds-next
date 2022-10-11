@@ -1,40 +1,43 @@
 {
 	"name": "agds-next",
 	"version": "0.0.1",
-	"main": "index.js",
-	"license": "MIT",
 	"private": true,
-	"engines": {
-		"node": "16"
-	},
+	"license": "MIT",
+	"main": "index.js",
+	"workspaces": [
+		"packages/*",
+		"docs",
+		"example-site",
+		"example-form"
+	],
 	"scripts": {
-		"postinstall": "manypkg check && preconstruct dev",
-		"clean": "rimraf \"**/node_modules\" \"**/yarn-error.log\" \"**/out.log\" \"**/.DS_Store\" \"**/dist\" \"**/out\" \"**/.next\"",
-		"fresh": "yarn clean && yarn",
 		"build": "preconstruct build",
-		"publish-changed": "yarn build && yarn changeset publish",
+		"clean": "rimraf \"**/node_modules\" \"**/yarn-error.log\" \"**/out.log\" \"**/.DS_Store\" \"**/dist\" \"**/out\" \"**/.next\"",
+		"docs:build": "yarn --cwd docs build",
+		"docs:dev": "yarn --cwd docs dev",
+		"docs:generate-component-props": "yarn --cwd docs generate-component-props",
+		"docs:generate-template-images": "yarn --cwd docs generate-template-images",
+		"example-form:build": "yarn --cwd example-form build",
+		"example-form:dev": "yarn --cwd example-form dev",
+		"example:build": "yarn --cwd example-site build",
+		"example:dev": "yarn --cwd example-site dev",
+		"format": "prettier --write \"**/*.{js,jsx,json,ts,tsx,md,mdx}\"",
+		"fresh": "yarn clean && yarn",
+		"postinstall": "manypkg check && preconstruct dev",
 		"lint": "yarn lint:packages && yarn lint:example && yarn lint:example-form && yarn lint:docs && yarn lint:prettier && yarn lint:typescript",
-		"lint:packages": "yarn eslint packages/**",
+		"lint:docs": "yarn --cwd docs lint",
 		"lint:example": "yarn --cwd example-site lint",
 		"lint:example-form": "yarn --cwd example-form lint",
-		"lint:docs": "yarn --cwd docs lint",
+		"lint:packages": "yarn eslint packages/**",
 		"lint:prettier": "prettier --check \"**/*.{js,jsx,json,ts,tsx,md,mdx,yml,yaml}\"",
 		"lint:typescript": "tsc --noEmit",
 		"new:package": "plop --plopfile scripts/plopfile.mjs && yarn format && yarn manypkg fix && yarn install",
-		"test": "jest",
-		"format": "prettier --write \"**/*.{js,jsx,json,ts,tsx,md,mdx}\"",
-		"example:dev": "yarn --cwd example-site dev",
-		"example:build": "yarn --cwd example-site build",
-		"example-form:dev": "yarn --cwd example-form dev",
-		"example-form:build": "yarn --cwd example-form build",
-		"docs:dev": "yarn --cwd docs dev",
-		"docs:build": "yarn --cwd docs build",
-		"docs:generate-template-images": "yarn --cwd docs generate-template-images",
-		"docs:generate-component-props": "yarn --cwd docs generate-component-props",
-		"playroom:dev": "yarn --cwd docs playroom:dev",
 		"playroom:build": "yarn --cwd docs playroom:build",
+		"playroom:dev": "yarn --cwd docs playroom:dev",
+		"publish-changed": "yarn build && yarn changeset publish",
+		"storybook:build": "build-storybook -o docs/public/storybook",
 		"storybook:dev": "start-storybook -p 6006",
-		"storybook:build": "build-storybook -o docs/public/storybook"
+		"test": "jest"
 	},
 	"devDependencies": {
 		"@babel/core": "^7.16.5",
@@ -70,6 +73,7 @@
 		"jest": "^27.4.5",
 		"plop": "^3.1.1",
 		"prettier": "^2.7.1",
+		"prettier-plugin-packagejson": "^2.3.0",
 		"react": "18.1.0",
 		"react-dom": "18.1.0",
 		"rimraf": "^3.0.2",
@@ -77,21 +81,18 @@
 		"ts-jest": "^27.1.2",
 		"typescript": "^4.7.4"
 	},
-	"workspaces": [
-		"packages/*",
-		"docs",
-		"example-site",
-		"example-form"
-	],
-	"preconstruct": {
-		"packages": [
-			"packages/*"
-		]
+	"engines": {
+		"node": "16"
 	},
 	"manypkg": {
 		"defaultBranch": "main",
 		"ignoredRules": [
 			"ROOT_HAS_DEV_DEPENDENCIES"
+		]
+	},
+	"preconstruct": {
+		"packages": [
+			"packages/*"
 		]
 	}
 }
