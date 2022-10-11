@@ -3,7 +3,7 @@ import { useForm, SubmitHandler, SubmitErrorHandler } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { Box, Stack } from '@ag.ds-next/box';
-import { Button } from '@ag.ds-next/button';
+import { Button, ButtonGroup } from '@ag.ds-next/button';
 import { FormStack } from '@ag.ds-next/form-stack';
 import { TextInput } from '@ag.ds-next/text-input';
 import { H2 } from '@ag.ds-next/heading';
@@ -47,15 +47,28 @@ export const FormRegisterPetPersonalDetailsStep1 = () => {
 	const {
 		register,
 		handleSubmit,
+		reset,
 		formState: { errors },
 	} = useForm<FormSchema>({
 		defaultValues: stepFormState,
 		resolver: yupResolver(formSchema),
 	});
 
-	const onSubmit: SubmitHandler<FormSchema> = (data) => {
+	const [localFormState, setLocalFormState] = useState(stepFormState);
+
+	const onSave: SubmitHandler<FormSchema> = (data) => {
 		setFocusedError(false);
-		next(data);
+		setLocalFormState(data);
+		toggleFormVisibilty();
+	};
+
+	const onDiscardChangesClick = () => {
+		reset();
+		toggleFormVisibilty();
+	};
+
+	const onSubmit: SubmitHandler<FormSchema> = () => {
+		next(localFormState);
 	};
 
 	const onError: SubmitErrorHandler<FormSchema> = () => {
@@ -85,7 +98,7 @@ export const FormRegisterPetPersonalDetailsStep1 = () => {
 						<Stack
 							as="form"
 							gap={3}
-							onSubmit={handleSubmit(onSubmit, onError)}
+							onSubmit={handleSubmit(onSave, onError)}
 							noValidate
 						>
 							<FormStack>
@@ -166,7 +179,12 @@ export const FormRegisterPetPersonalDetailsStep1 = () => {
 									required
 								/>
 							</FormStack>
-							<FormRegisterPetPersonalDetailsActions />
+							<ButtonGroup>
+								<Button type="submit">Save changes</Button>
+								<Button variant="tertiary" onClick={onDiscardChangesClick}>
+									Discard changes
+								</Button>
+							</ButtonGroup>
 						</Stack>
 					</Stack>
 				) : (
@@ -177,25 +195,25 @@ export const FormRegisterPetPersonalDetailsStep1 = () => {
 								<DefinitionListItem>
 									<DefinitionTerm>Street address</DefinitionTerm>
 									<DefinitionDescription>
-										{stepFormState.streetAddress}
+										{localFormState.streetAddress}
 									</DefinitionDescription>
 								</DefinitionListItem>
 								<DefinitionListItem>
 									<DefinitionTerm>Suburb, town or city</DefinitionTerm>
 									<DefinitionDescription>
-										{stepFormState.suburbTownCity}
+										{localFormState.suburbTownCity}
 									</DefinitionDescription>
 								</DefinitionListItem>
 								<DefinitionListItem>
 									<DefinitionTerm>State</DefinitionTerm>
 									<DefinitionDescription>
-										{stepFormState.state}
+										{localFormState.state}
 									</DefinitionDescription>
 								</DefinitionListItem>
 								<DefinitionListItem>
 									<DefinitionTerm>Post code</DefinitionTerm>
 									<DefinitionDescription>
-										{stepFormState.postcode}
+										{localFormState.postcode}
 									</DefinitionDescription>
 								</DefinitionListItem>
 							</DefinitionList>

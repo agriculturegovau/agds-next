@@ -8,7 +8,7 @@ import {
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { Box, Stack } from '@ag.ds-next/box';
-import { Button } from '@ag.ds-next/button';
+import { Button, ButtonGroup } from '@ag.ds-next/button';
 import { FormStack } from '@ag.ds-next/form-stack';
 import { TextInput } from '@ag.ds-next/text-input';
 import { DatePicker } from '@ag.ds-next/date-picker';
@@ -54,15 +54,28 @@ export const FormRegisterPetPersonalDetailsStep0 = () => {
 		control,
 		register,
 		handleSubmit,
+		reset,
 		formState: { errors },
 	} = useForm<FormSchema>({
 		defaultValues: stepFormState,
 		resolver: yupResolver(formSchema),
 	});
 
-	const onSubmit: SubmitHandler<FormSchema> = (data) => {
+	const [localFormState, setLocalFormState] = useState(stepFormState);
+
+	const onSave: SubmitHandler<FormSchema> = (data) => {
 		setFocusedError(false);
-		next(data);
+		setLocalFormState(data);
+		toggleFormVisibilty();
+	};
+
+	const onDiscardChangesClick = () => {
+		reset();
+		toggleFormVisibilty();
+	};
+
+	const onSubmit: SubmitHandler<FormSchema> = () => {
+		next(localFormState);
 	};
 
 	const onError: SubmitErrorHandler<FormSchema> = () => {
@@ -111,7 +124,7 @@ export const FormRegisterPetPersonalDetailsStep0 = () => {
 						<Stack
 							as="form"
 							gap={3}
-							onSubmit={handleSubmit(onSubmit, onError)}
+							onSubmit={handleSubmit(onSave, onError)}
 							noValidate
 						>
 							<FormStack>
@@ -187,7 +200,12 @@ export const FormRegisterPetPersonalDetailsStep0 = () => {
 									)}
 								/>
 							</FormStack>
-							<FormRegisterPetPersonalDetailsActions />
+							<ButtonGroup>
+								<Button type="submit">Save changes</Button>
+								<Button variant="tertiary" onClick={onDiscardChangesClick}>
+									Discard changes
+								</Button>
+							</ButtonGroup>
 						</Stack>
 					</Stack>
 				) : (
@@ -198,25 +216,25 @@ export const FormRegisterPetPersonalDetailsStep0 = () => {
 								<DefinitionListItem>
 									<DefinitionTerm>First name</DefinitionTerm>
 									<DefinitionDescription>
-										{stepFormState.firstName}
+										{localFormState.firstName}
 									</DefinitionDescription>
 								</DefinitionListItem>
 								<DefinitionListItem>
 									<DefinitionTerm>Last name</DefinitionTerm>
 									<DefinitionDescription>
-										{stepFormState.lastName}
+										{localFormState.lastName}
 									</DefinitionDescription>
 								</DefinitionListItem>
 								<DefinitionListItem>
 									<DefinitionTerm>Email</DefinitionTerm>
 									<DefinitionDescription>
-										{stepFormState.email}
+										{localFormState.email}
 									</DefinitionDescription>
 								</DefinitionListItem>
 								<DefinitionListItem>
 									<DefinitionTerm>Date of birth</DefinitionTerm>
 									<DefinitionDescription>
-										{stepFormState.dob?.toLocaleDateString()}
+										{localFormState.dob?.toLocaleDateString()}
 									</DefinitionDescription>
 								</DefinitionListItem>
 							</DefinitionList>
