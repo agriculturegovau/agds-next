@@ -90,6 +90,8 @@ export {
 	SearchIcon,
 	SuccessIcon,
 	SuccessFilledIcon,
+	ThumbsDownIcon,
+	ThumbsUpIcon,
 	ProgressTodoIcon,
 } from '@ag.ds-next/icon';
 export { ProgressIndicator } from '@ag.ds-next/progress-indicator';
