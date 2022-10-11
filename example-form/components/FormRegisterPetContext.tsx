@@ -82,24 +82,26 @@ export const FormRegisterPetContext = ({
 		setFormState(defaultFormState);
 	}, [router]);
 
+	const backToTaskList = useCallback(() => {
+		router.push('/services/registrations/pet');
+	}, [router]);
+
 	const submitTask1 = useCallback(
 		(taskFormState: TaskFormState) => {
-			setCurrentTaskIdx(1);
+			setCurrentTaskIdx(undefined);
 			setFormState((current) => ({
 				...current,
 				[0]: { ...taskFormState, completed: true },
 			}));
 			const hasCompletedTask2 = task2FormSchema.isValidSync(formState[1]);
-			hasCompletedTask2
-				? completeForm()
-				: router.push('/services/registrations/pet/task-2');
+			hasCompletedTask2 ? completeForm() : backToTaskList();
 		},
-		[formState, completeForm, router]
+		[formState, completeForm, backToTaskList]
 	);
 
 	const submitTask2 = useCallback(
 		(taskFormState: TaskFormState) => {
-			setCurrentTaskIdx(0);
+			setCurrentTaskIdx(undefined);
 			setFormState((current) => ({
 				...current,
 				[1]: { ...taskFormState, completed: true },
@@ -107,11 +109,9 @@ export const FormRegisterPetContext = ({
 			const hasAlreadyCompletedTask1 = task1FormSchema.isValidSync(
 				formState[0]
 			);
-			hasAlreadyCompletedTask1
-				? completeForm()
-				: router.push('/services/registrations/pet/task-1');
+			hasAlreadyCompletedTask1 ? completeForm() : backToTaskList();
 		},
-		[formState, completeForm, router]
+		[formState, completeForm, backToTaskList]
 	);
 
 	const getTaskStatus = useCallback(
