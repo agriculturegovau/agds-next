@@ -138,7 +138,7 @@ export const ColorTable = ({
 			<div className={proseBlockClassname}>
 				<TableWrapper>
 					<Table>
-						<TableCaption>Foreground tokens</TableCaption>
+						<TableCaption>All Foreground tokens</TableCaption>
 						<TableHead>
 							<tr>
 								<TableHeader scope="col">Name</TableHeader>
@@ -189,7 +189,7 @@ export const ColorTable = ({
 			<div className={proseBlockClassname}>
 				<TableWrapper>
 					<Table>
-						<TableCaption>All background colors</TableCaption>
+						<TableCaption>All Background tokens</TableCaption>
 						<TableHead>
 							<tr>
 								<TableHeader scope="col">Name</TableHeader>
@@ -233,7 +233,7 @@ export const ColorTable = ({
 			<div className={proseBlockClassname}>
 				<TableWrapper>
 					<Table>
-						<TableCaption>Border colors</TableCaption>
+						<TableCaption>All Border tokens</TableCaption>
 						<TableHead>
 							<tr>
 								<TableHeader scope="col">Name</TableHeader>
@@ -281,7 +281,7 @@ export const ColorTable = ({
 			<div className={proseBlockClassname}>
 				<TableWrapper>
 					<Table>
-						<TableCaption>System colors</TableCaption>
+						<TableCaption>All System tokens</TableCaption>
 						<TableHead>
 							<tr>
 								<TableHeader scope="col">Name</TableHeader>
