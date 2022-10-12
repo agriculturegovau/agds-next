@@ -56,23 +56,21 @@ export const FormRegisterPetPersonalDetailsStep1 = () => {
 	});
 
 	const [localFormState, setLocalFormState] = useState(stepFormState);
-	const [isSubmitting, setSubmitting] = useState(false);
+	const [isSaving, setIsSaving] = useState(false);
 
 	const onSave: SubmitHandler<FormSchema> = (data) => {
 		setFocusedError(false);
-		setSubmitting(true);
+		setIsSaving(true);
 		setLocalFormState(data);
 		// Using a `setTimeout` to replicate a call to a back-end API
 		setTimeout(() => {
-			setSubmitting(false);
+			setIsSaving(false);
 			toggleFormVisibilty();
 		}, 1500);
 	};
 
 	useEffect(() => {
-		if (isFormVisibile) return;
-		if (!isSubmitSuccessful) return;
-		console.log('ref', headingRef);
+		if (isFormVisibile || !isSubmitSuccessful) return;
 		headingRef.current?.focus();
 	}, [headingRef, isFormVisibile, isSubmitSuccessful]);
 
@@ -194,7 +192,7 @@ export const FormRegisterPetPersonalDetailsStep1 = () => {
 								/>
 							</FormStack>
 							<ButtonGroup>
-								<Button type="submit" loading={isSubmitting}>
+								<Button type="submit" loading={isSaving}>
 									Save changes
 								</Button>
 								<Button variant="tertiary" onClick={onDiscardChangesClick}>
