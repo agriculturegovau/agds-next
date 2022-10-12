@@ -43,7 +43,7 @@ const getButtonStyles = ({
 		paddingLeft: mapSpacing(1),
 		paddingRight: mapSpacing(1),
 
-		'& > span > span > span': {
+		'& span > span > span': {
 			display: mapResponsiveProp(iconOnly, (value) =>
 				value ? 'none' : 'block'
 			),
