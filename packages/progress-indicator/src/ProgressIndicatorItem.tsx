@@ -4,7 +4,7 @@ import { Text } from '@ag.ds-next/text';
 import { TextLink } from '@ag.ds-next/text-link';
 import {
 	ProgressDoingIcon,
-	SuccessFilledIcon,
+	ProgressDoneIcon,
 	ProgressTodoIcon,
 } from '@ag.ds-next/icon';
 import { boxPalette, LinkProps, packs } from '@ag.ds-next/core';
@@ -107,7 +107,7 @@ const ProgressIndicatorItem = ({
 const statusIconMap = {
 	doing: ProgressDoingIcon,
 	todo: ProgressTodoIcon,
-	done: SuccessFilledIcon,
+	done: ProgressDoneIcon,
 } as const;
 
 const statusLabelMap = {
