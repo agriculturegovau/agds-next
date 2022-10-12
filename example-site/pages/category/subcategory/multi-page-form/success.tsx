@@ -33,7 +33,7 @@ export default function FormMultiPageFormPage() {
 								title="Multi-page form title (H1)"
 							/>
 
-							<PageAlert tone="success">
+							<PageAlert tone="success" tabIndex={-1}>
 								<PageAlertTitle as="h2">
 									Descriptive success message (H2)
 								</PageAlertTitle>

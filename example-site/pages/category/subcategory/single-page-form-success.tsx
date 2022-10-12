@@ -32,7 +32,7 @@ export default function SinglePageFormSuccessPage() {
 									]}
 								/>
 								<PageTitle title="Single-page form (multi-question) xxl/display (H1)" />
-								<PageAlert tone="success">
+								<PageAlert tone="success" tabIndex={-1}>
 									<PageAlertTitle as="h2">
 										Descriptive success message (H2)
 									</PageAlertTitle>
