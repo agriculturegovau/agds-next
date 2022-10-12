@@ -49,12 +49,13 @@ export const FormRegisterPetPersonalDetailsStep1 = () => {
 		register,
 		handleSubmit,
 		reset,
-		formState: { errors, isSubmitSuccessful },
+		formState: { errors },
 	} = useForm<FormSchema>({
 		defaultValues: stepFormState,
 		resolver: yupResolver(formSchema),
 	});
 
+	const [hasClosedForm, setHasClosedForm] = useState(false);
 	const [localFormState, setLocalFormState] = useState(stepFormState);
 	const [isSaving, setIsSaving] = useState(false);
 
@@ -66,18 +67,21 @@ export const FormRegisterPetPersonalDetailsStep1 = () => {
 		setTimeout(() => {
 			setIsSaving(false);
 			toggleFormVisibilty();
+			setHasClosedForm(true);
 		}, 1500);
 	};
-
-	useEffect(() => {
-		if (isFormVisibile || !isSubmitSuccessful) return;
-		headingRef.current?.focus();
-	}, [headingRef, isFormVisibile, isSubmitSuccessful]);
 
 	const onDiscardChangesClick = () => {
 		reset();
 		toggleFormVisibilty();
+		setHasClosedForm(true);
 	};
+
+	useEffect(() => {
+		if (!hasClosedForm) return;
+		headingRef.current?.focus();
+		setHasClosedForm(false);
+	}, [hasClosedForm]);
 
 	const onSubmit: SubmitHandler<FormSchema> = () => {
 		next(localFormState);
