@@ -1,7 +1,7 @@
 import { Fragment, useState, ReactNode, useCallback } from 'react';
-import { useId } from '@reach/auto-id';
 import { useCombobox } from 'downshift';
 import { usePopper } from 'react-popper';
+import { useId } from '@ag.ds-next/core';
 import { textInputStyles } from '@ag.ds-next/text-input';
 import { Field } from '@ag.ds-next/field';
 import { Text } from '@ag.ds-next/text';

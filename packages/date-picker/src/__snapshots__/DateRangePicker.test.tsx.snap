@@ -11,7 +11,7 @@ exports[`DateRangePicker renders correctly 1`] = `
       >
         <label
           class="css-n7rdvo-boxStyles"
-          for="field-1"
+          for="field-mockId"
         >
           <span
             class="css-433uqb-boxStyles-Text"
@@ -31,7 +31,7 @@ exports[`DateRangePicker renders correctly 1`] = `
             aria-invalid="false"
             aria-required="false"
             class="css-qcwla-DateInput"
-            id="field-1"
+            id="field-mockId"
             value="01/01/2000"
           />
           <button
@@ -83,7 +83,7 @@ exports[`DateRangePicker renders correctly 1`] = `
       >
         <label
           class="css-n7rdvo-boxStyles"
-          for="field-2"
+          for="field-mockId"
         >
           <span
             class="css-433uqb-boxStyles-Text"
@@ -103,7 +103,7 @@ exports[`DateRangePicker renders correctly 1`] = `
             aria-invalid="false"
             aria-required="false"
             class="css-qcwla-DateInput"
-            id="field-2"
+            id="field-mockId"
             value="02/01/2000"
           />
           <button

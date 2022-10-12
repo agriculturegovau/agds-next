@@ -1,4 +1,4 @@
-import { useId } from '@reach/auto-id';
+import { useId } from '@ag.ds-next/core';
 
 export const useModalId = () => {
 	const id = useId();

@@ -6,10 +6,10 @@ exports[`SideNav renders correctly 1`] = `
     class="css-d977xg-boxStyles-SideNavContainer"
   >
     <button
-      aria-controls="sideNav-1-body"
+      aria-controls="sideNav-mockId-body"
       aria-expanded="false"
       class="css-10gm9gu-BaseButton-boxStyles-SideNavCollapseButton"
-      id="sideNav-1-button"
+      id="sideNav-mockId-button"
       type="button"
     >
       In this section
@@ -32,17 +32,17 @@ exports[`SideNav renders correctly 1`] = `
     </button>
     <div
       class="css-1wh7zb4-SideNav"
-      id="sideNav-1-body"
+      id="sideNav-mockId-body"
       style="display: none; height: 0px; overflow: hidden;"
     >
       <nav
-        aria-labelledby="sideNav-1-title"
+        aria-labelledby="sideNav-mockId-title"
         class="css-zipzg2-boxStyles"
-        id="sideNav-1-nav"
+        id="sideNav-mockId-nav"
       >
         <h2
           class="css-79i25n-boxStyles"
-          id="sideNav-1-title"
+          id="sideNav-mockId-title"
         >
           <a
             class="css-1qbo8fu-boxStyles-SideNavTitle"

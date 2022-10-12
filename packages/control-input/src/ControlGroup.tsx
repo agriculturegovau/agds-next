@@ -1,7 +1,6 @@
 import { PropsWithChildren } from 'react';
-import { useId } from '@reach/auto-id';
 import { Flex, Stack } from '@ag.ds-next/box';
-import { mapSpacing } from '@ag.ds-next/core';
+import { mapSpacing, useId } from '@ag.ds-next/core';
 import {
 	FieldContainer,
 	FieldHint,
