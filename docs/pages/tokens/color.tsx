@@ -39,7 +39,6 @@ export default function TokensColorPage() {
 							<a href="#system">System colors</a>
 						</li>
 					</ul>
-
 					<Box
 						borderTop
 						borderBottom
@@ -58,9 +57,17 @@ export default function TokensColorPage() {
 							/>
 						</div>
 					</Box>
-
 					<ColorTable activePalette={isDarkMode ? 'dark' : 'light'} />
-
+					<h2>Usage guidelines</h2>
+					<h3>Don’t rely on colour alone to convey meaning</h3>
+					<p>
+						To ensure the colourblind can use our interface, we shouldn’t rely
+						on colour alone to differentiate interface components or convey
+						meaning. Use other visual cues to differentiate interface
+						components. For example, we underline links as well as using the
+						action colour to help differentiate them from other text and clearly
+						indicate they’re interactive.
+					</p>
 					<h2>Tips</h2>
 					<ul>
 						<li>
