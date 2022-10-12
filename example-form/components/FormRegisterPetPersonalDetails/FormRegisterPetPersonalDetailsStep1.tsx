@@ -3,7 +3,7 @@ import { useForm, SubmitHandler, SubmitErrorHandler } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { Box, Stack } from '@ag.ds-next/box';
-import { Button } from '@ag.ds-next/button';
+import { Button, ButtonGroup } from '@ag.ds-next/button';
 import { FormStack } from '@ag.ds-next/form-stack';
 import { TextInput } from '@ag.ds-next/text-input';
 import { H2 } from '@ag.ds-next/heading';
@@ -42,20 +42,49 @@ export const FormRegisterPetPersonalDetailsStep1 = () => {
 	const { next, stepFormState } = useFormRegisterPetPersonalDetails();
 	const scrollToField = useScrollToField();
 	const errorRef = useRef<HTMLDivElement>(null);
+	const headingRef = useRef<HTMLHeadingElement>(null);
 	const [focusedError, setFocusedError] = useState(false);
 
 	const {
 		register,
 		handleSubmit,
+		reset,
 		formState: { errors },
 	} = useForm<FormSchema>({
 		defaultValues: stepFormState,
 		resolver: yupResolver(formSchema),
 	});
 
-	const onSubmit: SubmitHandler<FormSchema> = (data) => {
+	const [hasClosedForm, setHasClosedForm] = useState(false);
+	const [localFormState, setLocalFormState] = useState(stepFormState);
+	const [isSaving, setIsSaving] = useState(false);
+
+	const onSave: SubmitHandler<FormSchema> = (data) => {
 		setFocusedError(false);
-		next(data);
+		setIsSaving(true);
+		setLocalFormState(data);
+		// Using a `setTimeout` to replicate a call to a back-end API
+		setTimeout(() => {
+			setIsSaving(false);
+			toggleFormVisibilty();
+			setHasClosedForm(true);
+		}, 1500);
+	};
+
+	const onDiscardChangesClick = () => {
+		reset();
+		toggleFormVisibilty();
+		setHasClosedForm(true);
+	};
+
+	useEffect(() => {
+		if (!hasClosedForm) return;
+		headingRef.current?.focus();
+		setHasClosedForm(false);
+	}, [hasClosedForm]);
+
+	const onSubmit: SubmitHandler<FormSchema> = () => {
+		next(localFormState);
 	};
 
 	const onError: SubmitErrorHandler<FormSchema> = () => {
@@ -85,7 +114,7 @@ export const FormRegisterPetPersonalDetailsStep1 = () => {
 						<Stack
 							as="form"
 							gap={3}
-							onSubmit={handleSubmit(onSubmit, onError)}
+							onSubmit={handleSubmit(onSave, onError)}
 							noValidate
 						>
 							<FormStack>
@@ -166,36 +195,45 @@ export const FormRegisterPetPersonalDetailsStep1 = () => {
 									required
 								/>
 							</FormStack>
-							<FormRegisterPetPersonalDetailsActions />
+							<ButtonGroup>
+								<Button type="submit" loading={isSaving}>
+									Save changes
+								</Button>
+								<Button variant="tertiary" onClick={onDiscardChangesClick}>
+									Discard changes
+								</Button>
+							</ButtonGroup>
 						</Stack>
 					</Stack>
 				) : (
 					<>
 						<Stack gap={1.5} alignItems="flex-start" width="100%">
-							<H2>Check address details</H2>
+							<H2 ref={headingRef} tabIndex={-1} focus>
+								Check address details
+							</H2>
 							<DefinitionList>
 								<DefinitionListItem>
 									<DefinitionTerm>Street address</DefinitionTerm>
 									<DefinitionDescription>
-										{stepFormState.streetAddress}
+										{localFormState.streetAddress}
 									</DefinitionDescription>
 								</DefinitionListItem>
 								<DefinitionListItem>
 									<DefinitionTerm>Suburb, town or city</DefinitionTerm>
 									<DefinitionDescription>
-										{stepFormState.suburbTownCity}
+										{localFormState.suburbTownCity}
 									</DefinitionDescription>
 								</DefinitionListItem>
 								<DefinitionListItem>
 									<DefinitionTerm>State</DefinitionTerm>
 									<DefinitionDescription>
-										{stepFormState.state}
+										{localFormState.state}
 									</DefinitionDescription>
 								</DefinitionListItem>
 								<DefinitionListItem>
 									<DefinitionTerm>Post code</DefinitionTerm>
 									<DefinitionDescription>
-										{stepFormState.postcode}
+										{localFormState.postcode}
 									</DefinitionDescription>
 								</DefinitionListItem>
 							</DefinitionList>
