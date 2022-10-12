@@ -1,18 +1,18 @@
 import { GetStaticProps, InferGetStaticPropsType } from 'next';
 import { MDXRemote } from 'next-mdx-remote';
-import { Prose } from '@ag.ds-next/prose';
-import {
-	getPkgList,
-	getPkg,
-	Pkg,
-	getPkgNavLinks,
-	getPkgBreadcrumbs,
-	getPkgDocsContent,
-} from '../../../../lib/mdx/packages';
-import { mdxComponents } from '../../../../components/mdxComponents';
+import { Prose } from '@ag.ds-next/design-system';
 import { AppLayout } from '../../../../components/AppLayout';
 import { DocumentTitle } from '../../../../components/DocumentTitle';
+import { mdxComponents } from '../../../../components/mdxComponents';
 import { PkgLayout } from '../../../../components/PkgLayout';
+import {
+	getPkg,
+	getPkgBreadcrumbs,
+	getPkgDocsContent,
+	getPkgList,
+	getPkgNavLinks,
+	Pkg,
+} from '../../../../lib/mdx/packages';
 
 export default function Packages({
 	pkg,

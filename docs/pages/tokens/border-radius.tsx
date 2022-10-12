@@ -1,4 +1,4 @@
-import { Prose } from '@ag.ds-next/prose';
+import { Prose } from '@ag.ds-next/design-system';
 import { DocumentTitle } from '../../components/DocumentTitle';
 import { TokenLayout } from '../../components/TokenLayout';
 

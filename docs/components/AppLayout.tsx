@@ -1,8 +1,7 @@
 import { ReactNode } from 'react';
-import { Box, Flex } from '@ag.ds-next/box';
-import { SkipLinks } from '@ag.ds-next/skip-link';
-import { SiteHeader } from './SiteHeader';
+import { Box, Flex, SkipLinks } from '@ag.ds-next/design-system';
 import { SiteFooter } from './SiteFooter';
+import { SiteHeader } from './SiteHeader';
 
 type AppLayoutProps = {
 	children?: ReactNode;

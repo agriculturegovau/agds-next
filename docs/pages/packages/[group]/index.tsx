@@ -1,15 +1,15 @@
 import type { GetStaticProps, InferGetStaticPropsType } from 'next';
-import { H1 } from '@ag.ds-next/heading';
+import { H1 } from '@ag.ds-next/design-system';
 import { AppLayout } from '../../../components/AppLayout';
+import { DocumentTitle } from '../../../components/DocumentTitle';
 import { PageLayout } from '../../../components/PageLayout';
 import { PkgCardList } from '../../../components/PkgCardList';
 import {
-	getPkgList,
-	getPkgGroupList,
-	getPkgNavLinks,
 	getGroupBreadCrumbs,
+	getPkgGroupList,
+	getPkgList,
+	getPkgNavLinks,
 } from '../../../lib/mdx/packages';
-import { DocumentTitle } from '../../../components/DocumentTitle';
 
 export default function PackagesHome({
 	group,
