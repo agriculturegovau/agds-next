@@ -48,6 +48,7 @@ export const FormRegisterPetPersonalDetailsStep0 = () => {
 	const { next, stepFormState } = useFormRegisterPetPersonalDetails();
 	const scrollToField = useScrollToField();
 	const errorRef = useRef<HTMLDivElement>(null);
+	const headingRef = useRef<HTMLHeadingElement>(null);
 	const [focusedError, setFocusedError] = useState(false);
 
 	const {
@@ -55,19 +56,32 @@ export const FormRegisterPetPersonalDetailsStep0 = () => {
 		register,
 		handleSubmit,
 		reset,
-		formState: { errors },
+		formState: { errors, isSubmitSuccessful },
 	} = useForm<FormSchema>({
 		defaultValues: stepFormState,
 		resolver: yupResolver(formSchema),
 	});
 
 	const [localFormState, setLocalFormState] = useState(stepFormState);
+	const [isSubmitting, setSubmitting] = useState(false);
 
 	const onSave: SubmitHandler<FormSchema> = (data) => {
 		setFocusedError(false);
+		setSubmitting(true);
 		setLocalFormState(data);
-		toggleFormVisibilty();
+		// Using a `setTimeout` to replicate a call to a back-end API
+		setTimeout(() => {
+			setSubmitting(false);
+			toggleFormVisibilty();
+		}, 1500);
 	};
+
+	useEffect(() => {
+		if (isFormVisibile) return;
+		if (!isSubmitSuccessful) return;
+		console.log('ref', headingRef);
+		headingRef.current?.focus();
+	}, [headingRef, isFormVisibile, isSubmitSuccessful]);
 
 	const onDiscardChangesClick = () => {
 		reset();
@@ -201,7 +215,9 @@ export const FormRegisterPetPersonalDetailsStep0 = () => {
 								/>
 							</FormStack>
 							<ButtonGroup>
-								<Button type="submit">Save changes</Button>
+								<Button type="submit" loading={isSubmitting}>
+									Save changes
+								</Button>
 								<Button variant="tertiary" onClick={onDiscardChangesClick}>
 									Discard changes
 								</Button>
@@ -211,7 +227,9 @@ export const FormRegisterPetPersonalDetailsStep0 = () => {
 				) : (
 					<>
 						<Stack gap={1.5} alignItems="flex-start" width="100%">
-							<H2>Check personal details</H2>
+							<H2 ref={headingRef} tabIndex={-1} focus>
+								Check personal details
+							</H2>
 							<DefinitionList>
 								<DefinitionListItem>
 									<DefinitionTerm>First name</DefinitionTerm>
