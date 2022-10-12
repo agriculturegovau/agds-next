@@ -47,7 +47,7 @@ exports[`ProgressIndicator With anchors renders correctly 1`] = `
           >
             <svg
               aria-hidden="true"
-              class="css-1pepvcz-Icon"
+              class="css-19ui18a-Icon"
               clip-rule="evenodd"
               focusable="false"
               height="24"
@@ -217,7 +217,7 @@ exports[`ProgressIndicator With buttons renders correctly 1`] = `
           >
             <svg
               aria-hidden="true"
-              class="css-1pepvcz-Icon"
+              class="css-19ui18a-Icon"
               clip-rule="evenodd"
               focusable="false"
               height="24"
