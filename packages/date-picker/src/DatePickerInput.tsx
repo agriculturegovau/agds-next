@@ -44,10 +44,10 @@ export const DateInput = forwardRef<HTMLInputElement, DateInputProps>(
 		};
 
 		const ariaLabel = useMemo(() => {
-			if (typeof value !== 'string') return 'Choose date';
+			if (typeof value !== 'string') return 'Open calendar picker';
 			const parsed = parseDate(value);
-			if (!parsed) return 'Choose date';
-			return `Change Date, ${formatHumanReadableDate(parsed)}`;
+			if (!parsed) return 'Open calendar picker';
+			return `Open calendar picker, ${formatHumanReadableDate(parsed)}`;
 		}, [value]);
 
 		return (
