@@ -1,0 +1,52 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SearchBox renders correctly 1`] = `
+<div>
+  <form
+    aria-label="sitewide"
+    role="search"
+  >
+    <div
+      class="css-vfcxlf-boxStyles"
+    >
+      <div
+        class="css-12in0u0-boxStyles"
+      >
+        <label
+          class="css-1dixsb6-boxStyles-Text-SearchBoxLabel"
+          for="search-1"
+        >
+          Search
+        </label>
+        <input
+          class="css-i4ov2d-SearchBoxInput"
+          id="search-1"
+          type="search"
+        />
+      </div>
+      <div
+        class="css-7ymq3t-boxStyles-SearchBoxButton"
+      >
+        <button
+          aria-label="Search"
+          class="css-4oabtj-BaseButton-SearchBoxButton"
+          type="submit"
+        >
+          <span>
+            <span
+              class="css-oobk4c-Button"
+            >
+              <span>
+                Search
+              </span>
+            </span>
+            <span
+              aria-live="assertive"
+            />
+          </span>
+        </button>
+      </div>
+    </div>
+  </form>
+</div>
+`;
