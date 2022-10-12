@@ -7,6 +7,7 @@ Include screenshots, photos or links if necessary.
 - [ ] Read and check your code before tagging someone for review.
 - [ ] Run `yarn format`
 - [ ] Run `yarn lint` in the root of the repository to ensure tests are passing
+- [ ] Run `yarn test` to ensure tests are passing. Run `yarn test -u` to update any snapshots tests.
 - [ ] Add necessary tests
 - [ ] Run `yarn changeset` to create a changeset file
 - [ ] Write documentation (README.md)
