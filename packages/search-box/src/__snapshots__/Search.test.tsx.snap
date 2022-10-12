@@ -14,13 +14,13 @@ exports[`SearchBox renders correctly 1`] = `
       >
         <label
           class="css-1dixsb6-boxStyles-Text-SearchBoxLabel"
-          for="search-1"
+          for="search-mockId"
         >
           Search
         </label>
         <input
           class="css-i4ov2d-SearchBoxInput"
-          id="search-1"
+          id="search-mockId"
           type="search"
         />
       </div>
@@ -29,7 +29,7 @@ exports[`SearchBox renders correctly 1`] = `
       >
         <button
           aria-label="Search"
-          class="css-4oabtj-BaseButton-SearchBoxButton"
+          class="css-1bk1du9-BaseButton-SearchBoxButton"
           type="submit"
         >
           <span>
