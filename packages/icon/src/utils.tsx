@@ -21,6 +21,8 @@ import { ProgressTodoIcon } from './icons/ProgressTodoIcon';
 import { SearchIcon } from './icons/SearchIcon';
 import { SuccessFilledIcon } from './icons/SuccessFilledIcon';
 import { SuccessIcon } from './icons/SuccessIcon';
+import { ThumbsDownIcon } from './icons/ThumbsDownIcon';
+import { ThumbsUpIcon } from './icons/ThumbsUpIcon';
 import { UploadIcon } from './icons/UploadIcon';
 import { WarningIcon } from './icons/WarningIcon';
 import { WarningFilledIcon } from './icons/WarningFilledIcon';
@@ -49,6 +51,8 @@ export const allIcons = {
 	SearchIcon,
 	SuccessFilledIcon,
 	SuccessIcon,
+	ThumbsDownIcon,
+	ThumbsUpIcon,
 	UploadIcon,
 	WarningIcon,
 	WarningFilledIcon,

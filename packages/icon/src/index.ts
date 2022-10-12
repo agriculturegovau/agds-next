@@ -26,6 +26,8 @@ export { MenuIcon } from './icons/MenuIcon';
 export { SearchIcon } from './icons/SearchIcon';
 export { SuccessIcon } from './icons/SuccessIcon';
 export { SuccessFilledIcon } from './icons/SuccessFilledIcon';
+export { ThumbsDownIcon } from './icons/ThumbsDownIcon';
+export { ThumbsUpIcon } from './icons/ThumbsUpIcon';
 export { ProgressTodoIcon } from './icons/ProgressTodoIcon';
 export { UploadIcon } from './icons/UploadIcon';
 export { WarningIcon } from './icons/WarningIcon';
