@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Prose, proseBlockClassname } from '@ag.ds-next/prose';
 import { Switch } from '@ag.ds-next/switch';
 import { Box } from '@ag.ds-next/box';
+import { InpageNav } from '@ag.ds-next/inpage-nav';
 import { DocumentTitle } from '../../components/DocumentTitle';
 import { ColorTable } from '../../components/TokenColorTable';
 import { TokenLayout } from '../../components/TokenLayout';
@@ -24,20 +25,20 @@ export default function TokensColorPage() {
 						divided into foreground, background, border, and system colours
 						which all have a specific purpose:
 					</p>
-					<ul>
-						<li>
-							<a href="#foreground">Foreground colors</a>
-						</li>
-						<li>
-							<a href="#background">Background colors</a>
-						</li>
-						<li>
-							<a href="#border">Border colors</a>
-						</li>
-						<li>
-							<a href="#system">System colors</a>
-						</li>
-					</ul>
+					<div className={proseBlockClassname}>
+						<InpageNav
+							title="In this section"
+							links={[
+								{ href: '#foreground', label: 'Foreground colors' },
+
+								{ href: '#background', label: 'Background colors' },
+
+								{ href: '#border', label: 'Border colors' },
+
+								{ href: '#system', label: 'System colors' },
+							]}
+						/>
+					</div>
 					<Box
 						borderTop
 						borderBottom
@@ -67,7 +68,7 @@ export default function TokensColorPage() {
 						action colour to help differentiate them from other text and clearly
 						indicate they’re interactive.
 					</p>
-					<h2>Tips</h2>
+					<h3>More tips</h3>
 					<ul>
 						<li>
 							<strong>Do</strong> pair foreground and background colours.
