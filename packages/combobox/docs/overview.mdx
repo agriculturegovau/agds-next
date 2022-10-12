@@ -10,26 +10,24 @@ storybookPath: /story/forms-combobox--basic
 By default, the `Combobox` component does not expand to fill the available space.
 
 ```jsx live
-() => {
-	const [value, setValue] = React.useState(null);
-	return (
-		<Combobox
-			label="Select state"
-			value={value}
-			onChange={(value) => setValue(value)}
-			options={[
-				{ label: 'Australian Capital Territory', value: 'act' },
-				{ label: 'New South Wales', value: 'nsw' },
-				{ label: 'Northern Territory', value: 'nt' },
-				{ label: 'Queensland', value: 'qld' },
-				{ label: 'South Australia', value: 'sa' },
-				{ label: 'Tasmania', value: 'tas' },
-				{ label: 'Victoria', value: 'vic' },
-				{ label: 'Western Australia', value: 'wa' },
-			]}
-		/>
-	);
-};
+const [value, setValue] = React.useState(null);
+return (
+	<Combobox
+		label="Select state"
+		value={value}
+		onChange={(value) => setValue(value)}
+		options={[
+			{ label: 'Australian Capital Territory', value: 'act' },
+			{ label: 'New South Wales', value: 'nsw' },
+			{ label: 'Northern Territory', value: 'nt' },
+			{ label: 'Queensland', value: 'qld' },
+			{ label: 'South Australia', value: 'sa' },
+			{ label: 'Tasmania', value: 'tas' },
+			{ label: 'Victoria', value: 'vic' },
+			{ label: 'Western Australia', value: 'wa' },
+		]}
+	/>
+);
 ```
 
 ## Block
@@ -37,27 +35,25 @@ By default, the `Combobox` component does not expand to fill the available space
 Use the `block` prop to expand the component to fill the available space.
 
 ```jsx live
-() => {
-	const [value, setValue] = React.useState(null);
-	return (
-		<Combobox
-			label="Select state"
-			block
-			value={value}
-			onChange={(value) => setValue(value)}
-			options={[
-				{ label: 'Australian Capital Territory', value: 'act' },
-				{ label: 'New South Wales', value: 'nsw' },
-				{ label: 'Northern Territory', value: 'nt' },
-				{ label: 'Queensland', value: 'qld' },
-				{ label: 'South Australia', value: 'sa' },
-				{ label: 'Tasmania', value: 'tas' },
-				{ label: 'Victoria', value: 'vic' },
-				{ label: 'Western Australia', value: 'wa' },
-			]}
-		/>
-	);
-};
+const [value, setValue] = React.useState(null);
+return (
+	<Combobox
+		label="Select state"
+		block
+		value={value}
+		onChange={(value) => setValue(value)}
+		options={[
+			{ label: 'Australian Capital Territory', value: 'act' },
+			{ label: 'New South Wales', value: 'nsw' },
+			{ label: 'Northern Territory', value: 'nt' },
+			{ label: 'Queensland', value: 'qld' },
+			{ label: 'South Australia', value: 'sa' },
+			{ label: 'Tasmania', value: 'tas' },
+			{ label: 'Victoria', value: 'vic' },
+			{ label: 'Western Australia', value: 'wa' },
+		]}
+	/>
+);
 ```
 
 ## Async
@@ -65,31 +61,29 @@ Use the `block` prop to expand the component to fill the available space.
 Use the `loadOptions` prop when you need to populate options from a network request.
 
 ```jsx live
-() => {
-	const [value, setValue] = React.useState(null);
-	return (
-		<Combobox
-			label="Select state"
-			hint="Start typing to see results"
-			value={value}
-			onChange={(value) => setValue(value)}
-			loadOptions={async function loadOptions(inputValue) {
-				// Simulate a slow network call
-				await new Promise((resolve) => setTimeout(resolve, 3000));
-				return [
-					{ label: 'Australian Capital Territory', value: 'act' },
-					{ label: 'New South Wales', value: 'nsw' },
-					{ label: 'Northern Territory', value: 'nt' },
-					{ label: 'Queensland', value: 'qld' },
-					{ label: 'South Australia', value: 'sa' },
-					{ label: 'Tasmania', value: 'tas' },
-					{ label: 'Victoria', value: 'vic' },
-					{ label: 'Western Australia', value: 'wa' },
-				];
-			}}
-		/>
-	);
-};
+const [value, setValue] = React.useState(null);
+return (
+	<Combobox
+		label="Select state"
+		hint="Start typing to see results"
+		value={value}
+		onChange={(value) => setValue(value)}
+		loadOptions={async function loadOptions(inputValue) {
+			// Simulate a slow network call
+			await new Promise((resolve) => setTimeout(resolve, 3000));
+			return [
+				{ label: 'Australian Capital Territory', value: 'act' },
+				{ label: 'New South Wales', value: 'nsw' },
+				{ label: 'Northern Territory', value: 'nt' },
+				{ label: 'Queensland', value: 'qld' },
+				{ label: 'South Australia', value: 'sa' },
+				{ label: 'Tasmania', value: 'tas' },
+				{ label: 'Victoria', value: 'vic' },
+				{ label: 'Western Australia', value: 'wa' },
+			];
+		}}
+	/>
+);
 ```
 
 ### Required
@@ -97,53 +91,49 @@ Use the `loadOptions` prop when you need to populate options from a network requ
 The `Combobox` component will always append `(optional)` to the label based on the `required` prop.
 
 ```jsx live
-() => {
-	const [value, setValue] = React.useState(null);
-	return (
-		<Combobox
-			label="Select state"
-			required
-			value={value}
-			onChange={(value) => setValue(value)}
-			options={[
-				{ label: 'Australian Capital Territory', value: 'act' },
-				{ label: 'New South Wales', value: 'nsw' },
-				{ label: 'Northern Territory', value: 'nt' },
-				{ label: 'Queensland', value: 'qld' },
-				{ label: 'South Australia', value: 'sa' },
-				{ label: 'Tasmania', value: 'tas' },
-				{ label: 'Victoria', value: 'vic' },
-				{ label: 'Western Australia', value: 'wa' },
-			]}
-		/>
-	);
-};
+const [value, setValue] = React.useState(null);
+return (
+	<Combobox
+		label="Select state"
+		required
+		value={value}
+		onChange={(value) => setValue(value)}
+		options={[
+			{ label: 'Australian Capital Territory', value: 'act' },
+			{ label: 'New South Wales', value: 'nsw' },
+			{ label: 'Northern Territory', value: 'nt' },
+			{ label: 'Queensland', value: 'qld' },
+			{ label: 'South Australia', value: 'sa' },
+			{ label: 'Tasmania', value: 'tas' },
+			{ label: 'Victoria', value: 'vic' },
+			{ label: 'Western Australia', value: 'wa' },
+		]}
+	/>
+);
 ```
 
 ## Invalid
 
 ```jsx live
-() => {
-	const [value, setValue] = React.useState(null);
-	const invalid = !value;
-	return (
-		<Combobox
-			label="Select state"
-			invalid={invalid}
-			message={invalid ? 'City is required' : undefined}
-			value={value}
-			onChange={(value) => setValue(value)}
-			options={[
-				{ label: 'Australian Capital Territory', value: 'act' },
-				{ label: 'New South Wales', value: 'nsw' },
-				{ label: 'Northern Territory', value: 'nt' },
-				{ label: 'Queensland', value: 'qld' },
-				{ label: 'South Australia', value: 'sa' },
-				{ label: 'Tasmania', value: 'tas' },
-				{ label: 'Victoria', value: 'vic' },
-				{ label: 'Western Australia', value: 'wa' },
-			]}
-		/>
-	);
-};
+const [value, setValue] = React.useState(null);
+const invalid = !value;
+return (
+	<Combobox
+		label="Select state"
+		invalid={invalid}
+		message={invalid ? 'City is required' : undefined}
+		value={value}
+		onChange={(value) => setValue(value)}
+		options={[
+			{ label: 'Australian Capital Territory', value: 'act' },
+			{ label: 'New South Wales', value: 'nsw' },
+			{ label: 'Northern Territory', value: 'nt' },
+			{ label: 'Queensland', value: 'qld' },
+			{ label: 'South Australia', value: 'sa' },
+			{ label: 'Tasmania', value: 'tas' },
+			{ label: 'Victoria', value: 'vic' },
+			{ label: 'Western Australia', value: 'wa' },
+		]}
+	/>
+);
 ```

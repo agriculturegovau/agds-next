@@ -12,16 +12,14 @@ A Switch should not be used in Forms, or where a submit button is needed. Instea
 `Switch` is a [controlled component](https://reactjs.org/docs/forms.html#controlled-components).
 
 ```jsx live
-() => {
-	const [isChecked, setChecked] = React.useState(false);
-	return (
-		<Switch
-			label="Show establishments"
-			checked={isChecked}
-			onChange={setChecked}
-		/>
-	);
-};
+const [isChecked, setChecked] = React.useState(false);
+return (
+	<Switch
+		label="Show establishments"
+		checked={isChecked}
+		onChange={setChecked}
+	/>
+);
 ```
 
 ## Size
@@ -29,15 +27,13 @@ A Switch should not be used in Forms, or where a submit button is needed. Instea
 Control size can be changed using the `size` prop.
 
 ```jsx live
-() => {
-	const [isChecked, setChecked] = React.useState(false);
-	return (
-		<Switch
-			label="Small Switch"
-			checked={isChecked}
-			onChange={setChecked}
-			size="sm"
-		/>
-	);
-};
+const [isChecked, setChecked] = React.useState(false);
+return (
+	<Switch
+		label="Small Switch"
+		checked={isChecked}
+		onChange={setChecked}
+		size="sm"
+	/>
+);
 ```

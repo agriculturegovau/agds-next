@@ -28,14 +28,12 @@ This requires you to manage the state of the current page in the URL, which usua
 `PaginationButtons` renders a button element for each list item which makes it possible to manage the state outside of the URL, e.g. `React.useState`.
 
 ```jsx live
-() => {
-	const [currentPage, setCurrentPage] = React.useState(5);
-	return (
-		<PaginationButtons
-			currentPage={currentPage}
-			onChange={setCurrentPage}
-			totalPages={10}
-		/>
-	);
-};
+const [currentPage, setCurrentPage] = React.useState(5);
+return (
+	<PaginationButtons
+		currentPage={currentPage}
+		onChange={setCurrentPage}
+		totalPages={10}
+	/>
+);
 ```

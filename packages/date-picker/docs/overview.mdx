@@ -12,10 +12,8 @@ storybookPath: /story/forms-datepicker-datepicker--basic
 ### Basic
 
 ```jsx live
-() => {
-	const [value, setValue] = React.useState();
-	return <DatePicker label="Select date" value={value} onChange={setValue} />;
-};
+const [value, setValue] = React.useState();
+return <DatePicker label="Select date" value={value} onChange={setValue} />;
 ```
 
 ### Block
@@ -23,12 +21,10 @@ storybookPath: /story/forms-datepicker-datepicker--basic
 Use the `block` prop to expand the component to fill the available space.
 
 ```jsx live
-() => {
-	const [value, setValue] = React.useState();
-	return (
-		<DatePicker label="Select date" value={value} onChange={setValue} block />
-	);
-};
+const [value, setValue] = React.useState();
+return (
+	<DatePicker label="Select date" value={value} onChange={setValue} block />
+);
 ```
 
 ### Valid and invalid inputs
@@ -36,21 +32,19 @@ Use the `block` prop to expand the component to fill the available space.
 Use the `invalid` and `valid` props to indicate whether user input is valid (validates according to the elements settings) or invalid (does not validate according to the elements settings).
 
 ```jsx live
-() => {
-	const [value, setValue] = React.useState();
-	return (
-		<Stack gap={1}>
-			<DatePicker
-				label="Invalid"
-				invalid
-				message="This input is invalid"
-				value={value}
-				onChange={setValue}
-			/>
-			<DatePicker label="Valid" valid value={value} onChange={setValue} />
-		</Stack>
-	);
-};
+const [value, setValue] = React.useState();
+return (
+	<Stack gap={1}>
+		<DatePicker
+			label="Invalid"
+			invalid
+			message="This input is invalid"
+			value={value}
+			onChange={setValue}
+		/>
+		<DatePicker label="Valid" valid value={value} onChange={setValue} />
+	</Stack>
+);
 ```
 
 ### Disabled
@@ -58,17 +52,10 @@ Use the `invalid` and `valid` props to indicate whether user input is valid (val
 Disabled input elements are unusable and can not be clicked. This prevents a user from interacting with the input element until another action is complete.
 
 ```jsx live
-() => {
-	const [value, setValue] = React.useState();
-	return (
-		<DatePicker
-			label="Select date"
-			value={value}
-			onChange={setValue}
-			disabled
-		/>
-	);
-};
+const [value, setValue] = React.useState();
+return (
+	<DatePicker label="Select date" value={value} onChange={setValue} disabled />
+);
 ```
 
 ### Minimum and maximum dates
@@ -80,23 +67,21 @@ The `maxDate` property can be used to disable any days after a specific date.
 If a valid date is entered using the text input but it falls outside the constrained range, the closest valid date will be used.
 
 ```jsx live
-() => {
-	const [value, setValue] = React.useState();
+const [value, setValue] = React.useState();
 
-	const today = new Date();
-	const lastWeek = new Date(today.getTime() - 7 * 24 * 60 * 60 * 1000);
-	const nextWeek = new Date(today.getTime() + 7 * 24 * 60 * 60 * 1000);
+const today = new Date();
+const lastWeek = new Date(today.getTime() - 7 * 24 * 60 * 60 * 1000);
+const nextWeek = new Date(today.getTime() + 7 * 24 * 60 * 60 * 1000);
 
-	return (
-		<DatePicker
-			label="Select date"
-			minDate={lastWeek}
-			maxDate={nextWeek}
-			value={value}
-			onChange={setValue}
-		/>
-	);
-};
+return (
+	<DatePicker
+		label="Select date"
+		minDate={lastWeek}
+		maxDate={nextWeek}
+		value={value}
+		onChange={setValue}
+	/>
+);
 ```
 
 ## Date Range Picker
@@ -106,54 +91,46 @@ If a valid date is entered using the text input but it falls outside the constra
 ### Basic
 
 ```jsx live
-() => {
-	const [value, setValue] = React.useState({ from: undefined, to: undefined });
-	return <DateRangePicker value={value} onChange={setValue} />;
-};
+const [value, setValue] = React.useState({ from: undefined, to: undefined });
+return <DateRangePicker value={value} onChange={setValue} />;
 ```
 
 ### Labels
 
 ```jsx live
-() => {
-	const [value, setValue] = React.useState({ from: undefined, to: undefined });
-	return (
-		<DateRangePicker
-			value={value}
-			onChange={setValue}
-			fromLabel="From"
-			toLabel="To"
-		/>
-	);
-};
+const [value, setValue] = React.useState({ from: undefined, to: undefined });
+return (
+	<DateRangePicker
+		value={value}
+		onChange={setValue}
+		fromLabel="From"
+		toLabel="To"
+	/>
+);
 ```
 
 ### Disabled
 
 ```jsx live
-() => {
-	const [value, setValue] = React.useState({ from: undefined, to: undefined });
-	return <DateRangePicker value={value} onChange={setValue} disabled />;
-};
+const [value, setValue] = React.useState({ from: undefined, to: undefined });
+return <DateRangePicker value={value} onChange={setValue} disabled />;
 ```
 
 ### Minimum and maximum dates
 
 ```jsx live
-() => {
-	const [value, setValue] = React.useState({ from: undefined, to: undefined });
+const [value, setValue] = React.useState({ from: undefined, to: undefined });
 
-	const today = new Date();
-	const lastWeek = new Date(today.getTime() - 7 * 24 * 60 * 60 * 1000);
-	const nextWeek = new Date(today.getTime() + 7 * 24 * 60 * 60 * 1000);
+const today = new Date();
+const lastWeek = new Date(today.getTime() - 7 * 24 * 60 * 60 * 1000);
+const nextWeek = new Date(today.getTime() + 7 * 24 * 60 * 60 * 1000);
 
-	return (
-		<DateRangePicker
-			value={value}
-			onChange={setValue}
-			minDate={lastWeek}
-			maxDate={nextWeek}
-		/>
-	);
-};
+return (
+	<DateRangePicker
+		value={value}
+		onChange={setValue}
+		minDate={lastWeek}
+		maxDate={nextWeek}
+	/>
+);
 ```

@@ -1,10 +1,16 @@
-import React, { ReactNode, useState, useCallback, Fragment } from 'react';
-import { useRouter } from 'next/router';
-import { LiveProvider, LiveEditor, LivePreview, withLive } from 'react-live';
-import { createUrl } from 'playroom/utils';
-import Highlight, { defaultProps, Language } from 'prism-react-renderer';
+import { useLiveCode } from '@untitled-docs/live-code';
 import copy from 'clipboard-copy';
-import { ExternalLinkCallout } from '@ag.ds-next/a11y';
+import { useRouter } from 'next/router';
+import { createUrl } from 'playroom/utils';
+import PrismHighlight, { defaultProps, Language } from 'prism-react-renderer';
+import React, { Fragment, ReactNode, useState } from 'react';
+import { LiveProvider, withLive } from 'react-live';
+import LiveEditor from 'react-simple-code-editor';
+import {
+	proseBlockClassname,
+	unsetProseStylesClassname,
+} from '@ag.ds-next/prose';
+import { ChevronDownIcon, ChevronUpIcon, CopyIcon } from '@ag.ds-next/icon';
 import {
 	globalPalette,
 	mapSpacing,
@@ -13,29 +19,18 @@ import {
 	useId,
 	useToggleState,
 } from '@ag.ds-next/core';
-import { Box, Flex } from '@ag.ds-next/box';
-import {
-	unsetProseStylesClassname,
-	proseBlockClassname,
-} from '@ag.ds-next/prose';
 import { Button, ButtonLink } from '@ag.ds-next/button';
-import { CopyIcon, ChevronDownIcon, ChevronUpIcon } from '@ag.ds-next/icon';
+import { Box, Flex } from '@ag.ds-next/box';
+import { ExternalLinkCallout } from '@ag.ds-next/a11y';
 import * as designSystemComponents from './designSystemComponents';
 import { prismTheme } from './prism-theme';
-
-const PlaceholderImage = () => (
-	<img
-		src="/agds-next/img/placeholder/600X260.png"
-		alt="Grey placeholder image"
-		css={{ width: '100%' }}
-	/>
-);
+import { Highlight } from './Highlight';
 
 const LiveCode = withLive(function LiveCode(props: unknown) {
 	const { query } = useRouter();
 
 	// The types on `withLive` are kind of useless.
-	const { live } = props as {
+	const { live, initialCompiledResult } = props as {
 		live: {
 			code: string;
 			error: string | undefined;
@@ -43,35 +38,24 @@ const LiveCode = withLive(function LiveCode(props: unknown) {
 			disabled: boolean;
 			onChange: (code: string) => void;
 		};
+		initialCompiledResult: string;
+		metastring?: string;
 	};
 
-	const liveOnChange = live.onChange;
-	const [localCopy, setLocalCopy] = useState<string>(live.code);
-	const [isCodeVisible, toggleIsCodeVisible] = useToggleState(false, true);
-
-	const copyLiveCode = useCallback(() => {
-		copy(localCopy);
-	}, [localCopy]);
-
-	const handleChange = useCallback(
-		(code: string) => {
-			liveOnChange(code);
-			setLocalCopy(code);
-		},
-		[liveOnChange]
-	);
-
-	const playroomUrl = createUrl({
-		baseUrl: 'https://steelthreads.github.io/agds-next/playroom',
+	const { element, error, latestSuccessfulCompiledResult } = useLiveCode({
 		code: live.code,
+		scope: LIVE_SCOPE,
+		initialCompiledResult: () => JSON.parse(initialCompiledResult),
 	});
 
-	const id = useId();
-	const codeId = `live-code-${id}`;
+	const [liveCode, setLiveCode] = useState(live.code);
+	const [isCodeVisible, toggleIsCodeVisible] = useToggleState(false, true);
+
+	const codeId = `live-code-${useId}`;
 
 	return (
 		<Box border rounded borderColor="muted" className={proseBlockClassname}>
-			<LivePreview
+			<Box
 				aria-label="Rendered code snippet example"
 				// Prevents prose styles from being inherited in live code examples (except for the prose example)
 				className={
@@ -84,58 +68,30 @@ const LiveCode = withLive(function LiveCode(props: unknown) {
 					fontFamily: tokens.font.body, // because pre applies gets monospace font.
 					padding: mapSpacing(1.5),
 				}}
-			/>
-			<Flex
-				flexWrap="wrap"
-				padding={0.5}
-				gap={0.5}
-				borderTop
-				borderColor="muted"
-				css={packs.print.hidden}
 			>
-				<Button
-					size="sm"
-					variant="tertiary"
-					onClick={toggleIsCodeVisible}
-					iconAfter={isCodeVisible ? ChevronUpIcon : ChevronDownIcon}
-					aria-expanded={isCodeVisible}
-					aria-label={isCodeVisible ? 'Hide code snippet' : 'Show code snippet'}
-					aria-controls={codeId}
-				>
-					{isCodeVisible ? 'Hide live code' : 'Show live code'}
-				</Button>
-				<Button
-					size="sm"
-					variant="tertiary"
-					onClick={copyLiveCode}
-					iconAfter={CopyIcon}
-					aria-label="Copy code snippet to clipboard"
-				>
-					Copy code
-				</Button>
-				<ButtonLink
-					href={playroomUrl}
-					size="sm"
-					variant="tertiary"
-					aria-label="Open code snippet in Playroom"
-				>
-					Open in Playroom
-					<ExternalLinkCallout />
-				</ButtonLink>
-			</Flex>
+				{element}
+			</Box>
+			{latestSuccessfulCompiledResult && (
+				<Controls
+					code={live.code}
+					codeId={codeId}
+					exampleType={latestSuccessfulCompiledResult.exampleType}
+					isCodeVisible={isCodeVisible}
+					toggleIsCodeVisible={toggleIsCodeVisible}
+				/>
+			)}
 			<Box
-				id={codeId}
-				display={isCodeVisible ? 'block' : 'none'}
 				css={packs.print.visible}
+				display={isCodeVisible ? 'block' : 'none'}
+				id={codeId}
 				palette="dark"
 			>
 				<LiveEditor
-					theme={prismTheme}
-					code={live.code}
-					language={live.language}
-					disabled={live.disabled}
-					onChange={handleChange}
+					value={liveCode}
+					highlight={(code: string) => <Highlight code={code} language="jsx" />}
+					onValueChange={setLiveCode}
 					css={{
+						background: globalPalette.darkBackgroundBody,
 						'textarea, pre': {
 							padding: `${mapSpacing(1.5)} !important`,
 						},
@@ -146,7 +102,7 @@ const LiveCode = withLive(function LiveCode(props: unknown) {
 					}}
 				/>
 			</Box>
-			{live.error ? (
+			{error && (
 				<Box
 					fontFamily="monospace"
 					fontSize="xs"
@@ -154,20 +110,84 @@ const LiveCode = withLive(function LiveCode(props: unknown) {
 					color="error"
 					background="shade"
 				>
-					{live.error}
+					{error}
 				</Box>
-			) : null}
+			)}
 		</Box>
 	);
 });
 
-const StaticCode = ({
+function Controls({
 	code,
-	language,
+	codeId,
+	exampleType,
+	isCodeVisible,
+	toggleIsCodeVisible,
 }: {
 	code: string;
-	language: Language;
-}) => {
+	codeId: string;
+	exampleType: 'jsx' | 'function';
+	isCodeVisible: boolean;
+	toggleIsCodeVisible: () => void;
+}) {
+	const playroomUrl = createUrl({
+		baseUrl:
+			process.env.NODE_ENV === 'production'
+				? 'https://steelthreads.github.io/agds-next/playroom'
+				: 'http://localhost:9000/',
+		code:
+			exampleType === 'jsx'
+				? code
+				: `<Render>\n  {() => {\n    ${code
+						.split('\n')
+						.join('\n    ')}\n  }}\n</Render>`,
+	});
+
+	const copyLiveCode = () => copy(code);
+
+	return (
+		<Flex
+			flexWrap="wrap"
+			padding={0.5}
+			gap={0.5}
+			borderTop
+			borderColor="muted"
+			css={packs.print.hidden}
+		>
+			<Button
+				size="sm"
+				variant="tertiary"
+				onClick={toggleIsCodeVisible}
+				iconAfter={isCodeVisible ? ChevronUpIcon : ChevronDownIcon}
+				aria-expanded={isCodeVisible}
+				aria-label={isCodeVisible ? 'Hide code snippet' : 'Show code snippet'}
+				aria-controls={codeId}
+			>
+				{isCodeVisible ? 'Hide live code' : 'Show live code'}
+			</Button>
+			<Button
+				size="sm"
+				variant="tertiary"
+				onClick={copyLiveCode}
+				iconAfter={CopyIcon}
+				aria-label="Copy code snippet to clipboard"
+			>
+				Copy code
+			</Button>
+			<ButtonLink
+				href={playroomUrl}
+				size="sm"
+				variant="tertiary"
+				aria-label="Open code snippet in Playroom"
+			>
+				Open in Playroom
+				<ExternalLinkCallout />
+			</ButtonLink>
+		</Flex>
+	);
+}
+
+function StaticCode({ code, language }: { code: string; language: Language }) {
 	return (
 		<Box
 			border
@@ -189,7 +209,7 @@ const StaticCode = ({
 			}}
 		>
 			<Box dark>
-				<Highlight
+				<PrismHighlight
 					{...defaultProps}
 					code={code}
 					theme={prismTheme}
@@ -214,7 +234,7 @@ const StaticCode = ({
 							</code>
 						</pre>
 					)}
-				</Highlight>
+				</PrismHighlight>
 			</Box>
 			<Flex padding={0.5}>
 				<Button
@@ -229,15 +249,7 @@ const StaticCode = ({
 			</Flex>
 		</Box>
 	);
-};
-
-const LIVE_SCOPE = {
-	...designSystemComponents,
-	PlaceholderImage,
-	useState,
-	Fragment,
-	React,
-};
+}
 
 type CodeProps = {
 	children?: ReactNode;
@@ -245,7 +257,7 @@ type CodeProps = {
 	live?: boolean;
 };
 
-export function Code({ children, live, className }: CodeProps) {
+export function Code({ children, live, className, ...mdxProps }: CodeProps) {
 	const childrenAsString = children?.toString().trim();
 	const language = className?.replace(/language-/, '') as Language;
 
@@ -258,10 +270,26 @@ export function Code({ children, live, className }: CodeProps) {
 				scope={LIVE_SCOPE}
 				language={language}
 			>
-				<LiveCode />
+				<LiveCode {...mdxProps} />
 			</LiveProvider>
 		);
 	}
 
 	return <StaticCode language={language} code={childrenAsString} />;
 }
+
+const PlaceholderImage = () => (
+	<img
+		src="/agds-next/img/placeholder/600X260.png"
+		alt="Grey placeholder image"
+		css={{ width: '100%' }}
+	/>
+);
+
+const LIVE_SCOPE = {
+	...designSystemComponents,
+	PlaceholderImage,
+	useState,
+	Fragment,
+	React,
+};
