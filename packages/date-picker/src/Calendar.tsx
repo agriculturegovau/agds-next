@@ -1,7 +1,9 @@
 import { RefObject } from 'react';
+import format from 'date-fns/format';
 import FocusLock from 'react-focus-lock';
 import {
 	CustomComponents,
+	Labels,
 	DayPicker,
 	DayPickerSingleProps,
 	DayPickerRangeProps,
@@ -18,7 +20,7 @@ export function CalendarSingle(props: CalendarSingleProps) {
 	return (
 		<FocusLock autoFocus={false} returnFocus>
 			<CalendarContainer range={false}>
-				<DayPicker mode="single" components={calendarComponents} {...props} />
+				<DayPicker mode="single" {...defaultDayPickerProps} {...props} />
 			</CalendarContainer>
 		</FocusLock>
 	);
@@ -45,13 +47,24 @@ export function CalendarRange({
 			}}
 		>
 			<CalendarContainer range={true}>
-				<DayPicker mode="range" components={calendarComponents} {...props} />
+				<DayPicker mode="range" {...defaultDayPickerProps} {...props} />
 			</CalendarContainer>
 		</FocusLock>
 	);
 }
 
+const calendarLabels: Partial<Labels> = {
+	labelDay: (day, _, options) => {
+		return format(day, 'do MMMM yyyy (EEEE)', options);
+	},
+};
+
 const calendarComponents: CustomComponents = {
 	IconRight: () => <ChevronRightIcon color="action" weight="bold" />,
 	IconLeft: () => <ChevronLeftIcon color="action" weight="bold" />,
+};
+
+const defaultDayPickerProps = {
+	components: calendarComponents,
+	labels: calendarLabels,
 };
