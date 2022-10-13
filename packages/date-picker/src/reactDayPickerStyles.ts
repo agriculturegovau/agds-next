@@ -73,12 +73,12 @@ export const reactDayPickerStyles = (range: boolean) =>
 		'.rdp-day': {
 			color: boxPalette.foregroundAction,
 		},
-		".rdp-button[aria-disabled='true']": {
+		'.rdp-button[disabled]': {
 			color: boxPalette.foregroundText,
 			opacity: 0.3,
-			pointerEvents: 'none',
+			cursor: 'not-allowed',
 		},
-		".rdp-button:hover:not([aria-disabled='true'])": {
+		'.rdp-button:hover:not([disabled])': {
 			backgroundColor: boxPalette.backgroundShade,
 		},
 		'.rdp-button:focus, .rdp-button:active': packs.outline,
@@ -117,13 +117,13 @@ export const reactDayPickerStyles = (range: boolean) =>
 			padding: 0,
 			textAlign: 'center',
 		},
-		".rdp-day_selected:not([aria-disabled='true']), .rdp-day_selected:focus:not([aria-disabled='true']), .rdp-day_selected:active:not([aria-disabled='true']), .rdp-day_selected:hover:not([aria-disabled='true']), .rdp-day_selected:hover:not([aria-disabled='true'])":
+		'.rdp-day_selected:not([disabled]), .rdp-day_selected:focus:not([disabled]), .rdp-day_selected:active:not([disabled]), .rdp-day_selected:hover:not([disabled]), .rdp-day_selected:hover:not([disabled])':
 			{
 				'&:not(:focus)': highContrastOutlineStyles,
 				backgroundColor: boxPalette.foregroundAction,
 				color: boxPalette.backgroundBody,
 			},
-		".rdp-day_selected:not([aria-disabled='true']).rdp-day_range_middle": {
+		'.rdp-day_selected:not([disabled]).rdp-day_range_middle': {
 			backgroundColor: boxPalette.backgroundShade,
 			color: boxPalette.foregroundText,
 			borderRadius: 0,
