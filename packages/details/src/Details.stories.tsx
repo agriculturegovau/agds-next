@@ -10,7 +10,7 @@ export default {
 export const Basic: ComponentStory<typeof Details> = (args) => (
 	<Details {...args}>
 		<Text as="p">
-			This is a small paragraph of text that is supplimentary to the main page
+			This is a small paragraph of text that is supplementary to the main page
 			content.
 		</Text>
 	</Details>
@@ -20,7 +20,7 @@ Basic.args = { label: 'Details' };
 export const WithIcon: ComponentStory<typeof Details> = (args) => (
 	<Details {...args}>
 		<Text as="p">
-			This is a small paragraph of text that is supplimentary to the main page
+			This is a small paragraph of text that is supplementary to the main page
 			content.
 		</Text>
 	</Details>

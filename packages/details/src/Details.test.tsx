@@ -12,16 +12,21 @@ function renderDetail(props: DetailsProps) {
 }
 
 describe('Details', () => {
+	const { container } = renderDetail({
+		label: 'Details',
+		children: (
+			<Text as="p">
+				This is a small paragraph of text that is supplementary to the main page
+				content.
+			</Text>
+		),
+	});
+
+	it('renders correctly', () => {
+		expect(container).toMatchSnapshot();
+	});
+
 	it('renders a valid HTML structure', () => {
-		const { container } = renderDetail({
-			label: 'Details',
-			children: (
-				<Text as="p">
-					This is a small paragraph of text that is supplimentary to the main
-					page content.
-				</Text>
-			),
-		});
 		expect(container).toHTMLValidate({
 			extends: ['html-validate:recommended'],
 		});

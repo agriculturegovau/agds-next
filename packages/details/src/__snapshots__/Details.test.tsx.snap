@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Details renders correctly 1`] = `
+<div>
+  <details
+    class="css-jx8h3p-Details"
+  >
+    <summary
+      class="css-16s1ql8-boxStyles"
+    >
+      Details
+      <svg
+        aria-hidden="true"
+        class="css-5ae1oq-Icon"
+        clip-rule="evenodd"
+        focusable="false"
+        height="24"
+        role="img"
+        viewBox="0 0 24 24"
+        width="24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M21 8L12 17L3 8"
+        />
+      </svg>
+    </summary>
+    <div
+      class="css-725nwa-boxStyles"
+    >
+      <p
+        class="css-6j1v6l-boxStyles-Text"
+      >
+        This is a small paragraph of text that is supplementary to the main page content.
+      </p>
+    </div>
+  </details>
+</div>
+`;

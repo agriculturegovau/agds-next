@@ -723,7 +723,7 @@ items={[
 	{
 		group: 'Details',
 		name: 'Basic',
-		code: `<Details label="Details"><Text as="p">This is a small paragraph of text that is supplimentary to the main page
+		code: `<Details label="Details"><Text as="p">This is a small paragraph of text that is supplementary to the main page
 		content.</Text></Details>`,
 	},
 ];
