@@ -17,6 +17,7 @@ function renderCalendarSingle(props: CalendarSingleProps) {
 describe('Calendar Single', () => {
 	it('renders correctly', () => {
 		const { container } = renderCalendarSingle({
+			defaultMonth: new Date(2022, 10, 1),
 			selected: new Date(2022, 10, 1),
 		});
 		expect(container).toMatchSnapshot();
@@ -24,6 +25,7 @@ describe('Calendar Single', () => {
 
 	it('renders a valid HTML structure', () => {
 		const { container } = renderCalendarSingle({
+			defaultMonth: new Date(2022, 10, 1),
 			selected: new Date(2022, 10, 1),
 		});
 		expect(container).toHTMLValidate({
@@ -40,20 +42,16 @@ function renderCalendarRange(props: CalendarRangeProps) {
 describe('Calendar Range', () => {
 	it('renders correctly', () => {
 		const { container } = renderCalendarRange({
-			selected: {
-				from: new Date(2022, 10, 1),
-				to: new Date(2022, 10, 7),
-			},
+			defaultMonth: new Date(2022, 10, 1),
+			selected: { from: new Date(2022, 10, 1), to: new Date(2022, 10, 7) },
 		});
 		expect(container).toMatchSnapshot();
 	});
 
 	it('renders a valid HTML structure', () => {
 		const { container } = renderCalendarRange({
-			selected: {
-				from: new Date(2022, 10, 1),
-				to: new Date(2022, 10, 7),
-			},
+			defaultMonth: new Date(2022, 10, 1),
+			selected: { from: new Date(2022, 10, 1), to: new Date(2022, 10, 7) },
 		});
 		expect(container).toHTMLValidate({
 			extends: ['html-validate:recommended'],
