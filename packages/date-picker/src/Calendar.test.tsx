@@ -61,8 +61,11 @@ describe('Calendar Range', () => {
 		});
 		expect(container).toHTMLValidate({
 			extends: ['html-validate:recommended'],
-			// This is turned off as `react-day-picker` have some invalid IDs
-			rules: { 'no-inline-style': 'off' },
+			rules: {
+				'no-inline-style': 'off',
+				// This is turned off as `react-day-picker` have some invalid IDs
+				'valid-id': 'off',
+			},
 		});
 	});
 });
