@@ -11,10 +11,10 @@ exports[`Calendar Range renders correctly 1`] = `
     data-focus-lock-disabled="false"
   >
     <div
-      class="css-1r2juoh-boxStyles-CalendarContainer"
+      class="css-hccpmr-boxStyles-CalendarContainer"
     >
       <div
-        class="rdp"
+        class="rdp "
       >
         <div
           class="rdp-months"
@@ -29,7 +29,7 @@ exports[`Calendar Range renders correctly 1`] = `
                 aria-atomic="true"
                 aria-live="polite"
                 class="rdp-caption_label"
-                id="4"
+                id="react-day-picker-4"
               >
                 October 2022
               </h2>
@@ -37,9 +37,9 @@ exports[`Calendar Range renders correctly 1`] = `
                 class="rdp-nav"
               >
                 <button
-                  aria-disabled="false"
                   aria-label="Go to previous month"
                   class="rdp-button_reset rdp-button rdp-nav_button rdp-nav_button_previous"
+                  name="previous-month"
                   type="button"
                 >
                   <svg
@@ -59,9 +59,9 @@ exports[`Calendar Range renders correctly 1`] = `
                   </svg>
                 </button>
                 <button
-                  aria-disabled="false"
                   aria-label="Go to next month"
                   class="rdp-button_reset rdp-button rdp-nav_button rdp-nav_button_next"
+                  name="next-month"
                   type="button"
                 >
                   <svg
@@ -83,7 +83,7 @@ exports[`Calendar Range renders correctly 1`] = `
               </div>
             </div>
             <table
-              aria-labelledby="4"
+              aria-labelledby="react-day-picker-4"
               class="rdp-table"
               role="grid"
             >
@@ -228,20 +228,13 @@ exports[`Calendar Range renders correctly 1`] = `
                     class="rdp-cell"
                   >
                     <button
+                      aria-label="1st October 2022 (Saturday)"
                       class="rdp-button_reset rdp-button rdp-day"
+                      name="day"
                       tabindex="-1"
                       type="button"
                     >
-                      <span
-                        aria-hidden="true"
-                      >
-                        1
-                      </span>
-                      <span
-                        class="rdp-vhidden"
-                      >
-                        1st October 2022 (Saturday)
-                      </span>
+                      1
                     </button>
                   </td>
                 </tr>
@@ -252,140 +245,91 @@ exports[`Calendar Range renders correctly 1`] = `
                     class="rdp-cell"
                   >
                     <button
+                      aria-label="2nd October 2022 (Sunday)"
                       class="rdp-button_reset rdp-button rdp-day"
+                      name="day"
                       tabindex="-1"
                       type="button"
                     >
-                      <span
-                        aria-hidden="true"
-                      >
-                        2
-                      </span>
-                      <span
-                        class="rdp-vhidden"
-                      >
-                        2nd October 2022 (Sunday)
-                      </span>
+                      2
                     </button>
                   </td>
                   <td
                     class="rdp-cell"
                   >
                     <button
+                      aria-label="3rd October 2022 (Monday)"
                       class="rdp-button_reset rdp-button rdp-day"
+                      name="day"
                       tabindex="-1"
                       type="button"
                     >
-                      <span
-                        aria-hidden="true"
-                      >
-                        3
-                      </span>
-                      <span
-                        class="rdp-vhidden"
-                      >
-                        3rd October 2022 (Monday)
-                      </span>
+                      3
                     </button>
                   </td>
                   <td
                     class="rdp-cell"
                   >
                     <button
+                      aria-label="4th October 2022 (Tuesday)"
                       class="rdp-button_reset rdp-button rdp-day"
+                      name="day"
                       tabindex="-1"
                       type="button"
                     >
-                      <span
-                        aria-hidden="true"
-                      >
-                        4
-                      </span>
-                      <span
-                        class="rdp-vhidden"
-                      >
-                        4th October 2022 (Tuesday)
-                      </span>
+                      4
                     </button>
                   </td>
                   <td
                     class="rdp-cell"
                   >
                     <button
+                      aria-label="5th October 2022 (Wednesday)"
                       class="rdp-button_reset rdp-button rdp-day"
+                      name="day"
                       tabindex="-1"
                       type="button"
                     >
-                      <span
-                        aria-hidden="true"
-                      >
-                        5
-                      </span>
-                      <span
-                        class="rdp-vhidden"
-                      >
-                        5th October 2022 (Wednesday)
-                      </span>
+                      5
                     </button>
                   </td>
                   <td
                     class="rdp-cell"
                   >
                     <button
+                      aria-label="6th October 2022 (Thursday)"
                       class="rdp-button_reset rdp-button rdp-day"
+                      name="day"
                       tabindex="-1"
                       type="button"
                     >
-                      <span
-                        aria-hidden="true"
-                      >
-                        6
-                      </span>
-                      <span
-                        class="rdp-vhidden"
-                      >
-                        6th October 2022 (Thursday)
-                      </span>
+                      6
                     </button>
                   </td>
                   <td
                     class="rdp-cell"
                   >
                     <button
+                      aria-label="7th October 2022 (Friday)"
                       class="rdp-button_reset rdp-button rdp-day"
+                      name="day"
                       tabindex="-1"
                       type="button"
                     >
-                      <span
-                        aria-hidden="true"
-                      >
-                        7
-                      </span>
-                      <span
-                        class="rdp-vhidden"
-                      >
-                        7th October 2022 (Friday)
-                      </span>
+                      7
                     </button>
                   </td>
                   <td
                     class="rdp-cell"
                   >
                     <button
+                      aria-label="8th October 2022 (Saturday)"
                       class="rdp-button_reset rdp-button rdp-day"
+                      name="day"
                       tabindex="-1"
                       type="button"
                     >
-                      <span
-                        aria-hidden="true"
-                      >
-                        8
-                      </span>
-                      <span
-                        class="rdp-vhidden"
-                      >
-                        8th October 2022 (Saturday)
-                      </span>
+                      8
                     </button>
                   </td>
                 </tr>
@@ -396,140 +340,91 @@ exports[`Calendar Range renders correctly 1`] = `
                     class="rdp-cell"
                   >
                     <button
+                      aria-label="9th October 2022 (Sunday)"
                       class="rdp-button_reset rdp-button rdp-day"
+                      name="day"
                       tabindex="-1"
                       type="button"
                     >
-                      <span
-                        aria-hidden="true"
-                      >
-                        9
-                      </span>
-                      <span
-                        class="rdp-vhidden"
-                      >
-                        9th October 2022 (Sunday)
-                      </span>
+                      9
                     </button>
                   </td>
                   <td
                     class="rdp-cell"
                   >
                     <button
+                      aria-label="10th October 2022 (Monday)"
                       class="rdp-button_reset rdp-button rdp-day"
+                      name="day"
                       tabindex="-1"
                       type="button"
                     >
-                      <span
-                        aria-hidden="true"
-                      >
-                        10
-                      </span>
-                      <span
-                        class="rdp-vhidden"
-                      >
-                        10th October 2022 (Monday)
-                      </span>
+                      10
                     </button>
                   </td>
                   <td
                     class="rdp-cell"
                   >
                     <button
+                      aria-label="11th October 2022 (Tuesday)"
                       class="rdp-button_reset rdp-button rdp-day"
+                      name="day"
                       tabindex="-1"
                       type="button"
                     >
-                      <span
-                        aria-hidden="true"
-                      >
-                        11
-                      </span>
-                      <span
-                        class="rdp-vhidden"
-                      >
-                        11th October 2022 (Tuesday)
-                      </span>
+                      11
                     </button>
                   </td>
                   <td
                     class="rdp-cell"
                   >
                     <button
+                      aria-label="12th October 2022 (Wednesday)"
                       class="rdp-button_reset rdp-button rdp-day"
+                      name="day"
                       tabindex="-1"
                       type="button"
                     >
-                      <span
-                        aria-hidden="true"
-                      >
-                        12
-                      </span>
-                      <span
-                        class="rdp-vhidden"
-                      >
-                        12th October 2022 (Wednesday)
-                      </span>
+                      12
                     </button>
                   </td>
                   <td
                     class="rdp-cell"
                   >
                     <button
+                      aria-label="13th October 2022 (Thursday)"
                       class="rdp-button_reset rdp-button rdp-day rdp-day_today"
+                      name="day"
                       tabindex="0"
                       type="button"
                     >
-                      <span
-                        aria-hidden="true"
-                      >
-                        13
-                      </span>
-                      <span
-                        class="rdp-vhidden"
-                      >
-                        13th October 2022 (Thursday)
-                      </span>
+                      13
                     </button>
                   </td>
                   <td
                     class="rdp-cell"
                   >
                     <button
+                      aria-label="14th October 2022 (Friday)"
                       class="rdp-button_reset rdp-button rdp-day"
+                      name="day"
                       tabindex="-1"
                       type="button"
                     >
-                      <span
-                        aria-hidden="true"
-                      >
-                        14
-                      </span>
-                      <span
-                        class="rdp-vhidden"
-                      >
-                        14th October 2022 (Friday)
-                      </span>
+                      14
                     </button>
                   </td>
                   <td
                     class="rdp-cell"
                   >
                     <button
+                      aria-label="15th October 2022 (Saturday)"
                       class="rdp-button_reset rdp-button rdp-day"
+                      name="day"
                       tabindex="-1"
                       type="button"
                     >
-                      <span
-                        aria-hidden="true"
-                      >
-                        15
-                      </span>
-                      <span
-                        class="rdp-vhidden"
-                      >
-                        15th October 2022 (Saturday)
-                      </span>
+                      15
                     </button>
                   </td>
                 </tr>
@@ -540,140 +435,91 @@ exports[`Calendar Range renders correctly 1`] = `
                     class="rdp-cell"
                   >
                     <button
+                      aria-label="16th October 2022 (Sunday)"
                       class="rdp-button_reset rdp-button rdp-day"
+                      name="day"
                       tabindex="-1"
                       type="button"
                     >
-                      <span
-                        aria-hidden="true"
-                      >
-                        16
-                      </span>
-                      <span
-                        class="rdp-vhidden"
-                      >
-                        16th October 2022 (Sunday)
-                      </span>
+                      16
                     </button>
                   </td>
                   <td
                     class="rdp-cell"
                   >
                     <button
+                      aria-label="17th October 2022 (Monday)"
                       class="rdp-button_reset rdp-button rdp-day"
+                      name="day"
                       tabindex="-1"
                       type="button"
                     >
-                      <span
-                        aria-hidden="true"
-                      >
-                        17
-                      </span>
-                      <span
-                        class="rdp-vhidden"
-                      >
-                        17th October 2022 (Monday)
-                      </span>
+                      17
                     </button>
                   </td>
                   <td
                     class="rdp-cell"
                   >
                     <button
+                      aria-label="18th October 2022 (Tuesday)"
                       class="rdp-button_reset rdp-button rdp-day"
+                      name="day"
                       tabindex="-1"
                       type="button"
                     >
-                      <span
-                        aria-hidden="true"
-                      >
-                        18
-                      </span>
-                      <span
-                        class="rdp-vhidden"
-                      >
-                        18th October 2022 (Tuesday)
-                      </span>
+                      18
                     </button>
                   </td>
                   <td
                     class="rdp-cell"
                   >
                     <button
+                      aria-label="19th October 2022 (Wednesday)"
                       class="rdp-button_reset rdp-button rdp-day"
+                      name="day"
                       tabindex="-1"
                       type="button"
                     >
-                      <span
-                        aria-hidden="true"
-                      >
-                        19
-                      </span>
-                      <span
-                        class="rdp-vhidden"
-                      >
-                        19th October 2022 (Wednesday)
-                      </span>
+                      19
                     </button>
                   </td>
                   <td
                     class="rdp-cell"
                   >
                     <button
+                      aria-label="20th October 2022 (Thursday)"
                       class="rdp-button_reset rdp-button rdp-day"
+                      name="day"
                       tabindex="-1"
                       type="button"
                     >
-                      <span
-                        aria-hidden="true"
-                      >
-                        20
-                      </span>
-                      <span
-                        class="rdp-vhidden"
-                      >
-                        20th October 2022 (Thursday)
-                      </span>
+                      20
                     </button>
                   </td>
                   <td
                     class="rdp-cell"
                   >
                     <button
+                      aria-label="21st October 2022 (Friday)"
                       class="rdp-button_reset rdp-button rdp-day"
+                      name="day"
                       tabindex="-1"
                       type="button"
                     >
-                      <span
-                        aria-hidden="true"
-                      >
-                        21
-                      </span>
-                      <span
-                        class="rdp-vhidden"
-                      >
-                        21st October 2022 (Friday)
-                      </span>
+                      21
                     </button>
                   </td>
                   <td
                     class="rdp-cell"
                   >
                     <button
+                      aria-label="22nd October 2022 (Saturday)"
                       class="rdp-button_reset rdp-button rdp-day"
+                      name="day"
                       tabindex="-1"
                       type="button"
                     >
-                      <span
-                        aria-hidden="true"
-                      >
-                        22
-                      </span>
-                      <span
-                        class="rdp-vhidden"
-                      >
-                        22nd October 2022 (Saturday)
-                      </span>
+                      22
                     </button>
                   </td>
                 </tr>
@@ -684,140 +530,91 @@ exports[`Calendar Range renders correctly 1`] = `
                     class="rdp-cell"
                   >
                     <button
+                      aria-label="23rd October 2022 (Sunday)"
                       class="rdp-button_reset rdp-button rdp-day"
+                      name="day"
                       tabindex="-1"
                       type="button"
                     >
-                      <span
-                        aria-hidden="true"
-                      >
-                        23
-                      </span>
-                      <span
-                        class="rdp-vhidden"
-                      >
-                        23rd October 2022 (Sunday)
-                      </span>
+                      23
                     </button>
                   </td>
                   <td
                     class="rdp-cell"
                   >
                     <button
+                      aria-label="24th October 2022 (Monday)"
                       class="rdp-button_reset rdp-button rdp-day"
+                      name="day"
                       tabindex="-1"
                       type="button"
                     >
-                      <span
-                        aria-hidden="true"
-                      >
-                        24
-                      </span>
-                      <span
-                        class="rdp-vhidden"
-                      >
-                        24th October 2022 (Monday)
-                      </span>
+                      24
                     </button>
                   </td>
                   <td
                     class="rdp-cell"
                   >
                     <button
+                      aria-label="25th October 2022 (Tuesday)"
                       class="rdp-button_reset rdp-button rdp-day"
+                      name="day"
                       tabindex="-1"
                       type="button"
                     >
-                      <span
-                        aria-hidden="true"
-                      >
-                        25
-                      </span>
-                      <span
-                        class="rdp-vhidden"
-                      >
-                        25th October 2022 (Tuesday)
-                      </span>
+                      25
                     </button>
                   </td>
                   <td
                     class="rdp-cell"
                   >
                     <button
+                      aria-label="26th October 2022 (Wednesday)"
                       class="rdp-button_reset rdp-button rdp-day"
+                      name="day"
                       tabindex="-1"
                       type="button"
                     >
-                      <span
-                        aria-hidden="true"
-                      >
-                        26
-                      </span>
-                      <span
-                        class="rdp-vhidden"
-                      >
-                        26th October 2022 (Wednesday)
-                      </span>
+                      26
                     </button>
                   </td>
                   <td
                     class="rdp-cell"
                   >
                     <button
+                      aria-label="27th October 2022 (Thursday)"
                       class="rdp-button_reset rdp-button rdp-day"
+                      name="day"
                       tabindex="-1"
                       type="button"
                     >
-                      <span
-                        aria-hidden="true"
-                      >
-                        27
-                      </span>
-                      <span
-                        class="rdp-vhidden"
-                      >
-                        27th October 2022 (Thursday)
-                      </span>
+                      27
                     </button>
                   </td>
                   <td
                     class="rdp-cell"
                   >
                     <button
+                      aria-label="28th October 2022 (Friday)"
                       class="rdp-button_reset rdp-button rdp-day"
+                      name="day"
                       tabindex="-1"
                       type="button"
                     >
-                      <span
-                        aria-hidden="true"
-                      >
-                        28
-                      </span>
-                      <span
-                        class="rdp-vhidden"
-                      >
-                        28th October 2022 (Friday)
-                      </span>
+                      28
                     </button>
                   </td>
                   <td
                     class="rdp-cell"
                   >
                     <button
+                      aria-label="29th October 2022 (Saturday)"
                       class="rdp-button_reset rdp-button rdp-day"
+                      name="day"
                       tabindex="-1"
                       type="button"
                     >
-                      <span
-                        aria-hidden="true"
-                      >
-                        29
-                      </span>
-                      <span
-                        class="rdp-vhidden"
-                      >
-                        29th October 2022 (Saturday)
-                      </span>
+                      29
                     </button>
                   </td>
                 </tr>
@@ -828,40 +625,26 @@ exports[`Calendar Range renders correctly 1`] = `
                     class="rdp-cell"
                   >
                     <button
+                      aria-label="30th October 2022 (Sunday)"
                       class="rdp-button_reset rdp-button rdp-day"
+                      name="day"
                       tabindex="-1"
                       type="button"
                     >
-                      <span
-                        aria-hidden="true"
-                      >
-                        30
-                      </span>
-                      <span
-                        class="rdp-vhidden"
-                      >
-                        30th October 2022 (Sunday)
-                      </span>
+                      30
                     </button>
                   </td>
                   <td
                     class="rdp-cell"
                   >
                     <button
+                      aria-label="31st October 2022 (Monday)"
                       class="rdp-button_reset rdp-button rdp-day"
+                      name="day"
                       tabindex="-1"
                       type="button"
                     >
-                      <span
-                        aria-hidden="true"
-                      >
-                        31
-                      </span>
-                      <span
-                        class="rdp-vhidden"
-                      >
-                        31st October 2022 (Monday)
-                      </span>
+                      31
                     </button>
                   </td>
                   <td
@@ -906,10 +689,10 @@ exports[`Calendar Single renders correctly 1`] = `
     data-focus-lock-disabled="false"
   >
     <div
-      class="css-v2w0fb-boxStyles-CalendarContainer"
+      class="css-11lmxmu-boxStyles-CalendarContainer"
     >
       <div
-        class="rdp"
+        class="rdp "
       >
         <div
           class="rdp-months"
@@ -924,7 +707,7 @@ exports[`Calendar Single renders correctly 1`] = `
                 aria-atomic="true"
                 aria-live="polite"
                 class="rdp-caption_label"
-                id="1"
+                id="react-day-picker-1"
               >
                 October 2022
               </h2>
@@ -932,9 +715,9 @@ exports[`Calendar Single renders correctly 1`] = `
                 class="rdp-nav"
               >
                 <button
-                  aria-disabled="false"
                   aria-label="Go to previous month"
                   class="rdp-button_reset rdp-button rdp-nav_button rdp-nav_button_previous"
+                  name="previous-month"
                   type="button"
                 >
                   <svg
@@ -954,9 +737,9 @@ exports[`Calendar Single renders correctly 1`] = `
                   </svg>
                 </button>
                 <button
-                  aria-disabled="false"
                   aria-label="Go to next month"
                   class="rdp-button_reset rdp-button rdp-nav_button rdp-nav_button_next"
+                  name="next-month"
                   type="button"
                 >
                   <svg
@@ -978,7 +761,7 @@ exports[`Calendar Single renders correctly 1`] = `
               </div>
             </div>
             <table
-              aria-labelledby="1"
+              aria-labelledby="react-day-picker-1"
               class="rdp-table"
               role="grid"
             >
@@ -1123,20 +906,13 @@ exports[`Calendar Single renders correctly 1`] = `
                     class="rdp-cell"
                   >
                     <button
+                      aria-label="1st October 2022 (Saturday)"
                       class="rdp-button_reset rdp-button rdp-day"
+                      name="day"
                       tabindex="-1"
                       type="button"
                     >
-                      <span
-                        aria-hidden="true"
-                      >
-                        1
-                      </span>
-                      <span
-                        class="rdp-vhidden"
-                      >
-                        1st October 2022 (Saturday)
-                      </span>
+                      1
                     </button>
                   </td>
                 </tr>
@@ -1147,140 +923,91 @@ exports[`Calendar Single renders correctly 1`] = `
                     class="rdp-cell"
                   >
                     <button
+                      aria-label="2nd October 2022 (Sunday)"
                       class="rdp-button_reset rdp-button rdp-day"
+                      name="day"
                       tabindex="-1"
                       type="button"
                     >
-                      <span
-                        aria-hidden="true"
-                      >
-                        2
-                      </span>
-                      <span
-                        class="rdp-vhidden"
-                      >
-                        2nd October 2022 (Sunday)
-                      </span>
+                      2
                     </button>
                   </td>
                   <td
                     class="rdp-cell"
                   >
                     <button
+                      aria-label="3rd October 2022 (Monday)"
                       class="rdp-button_reset rdp-button rdp-day"
+                      name="day"
                       tabindex="-1"
                       type="button"
                     >
-                      <span
-                        aria-hidden="true"
-                      >
-                        3
-                      </span>
-                      <span
-                        class="rdp-vhidden"
-                      >
-                        3rd October 2022 (Monday)
-                      </span>
+                      3
                     </button>
                   </td>
                   <td
                     class="rdp-cell"
                   >
                     <button
+                      aria-label="4th October 2022 (Tuesday)"
                       class="rdp-button_reset rdp-button rdp-day"
+                      name="day"
                       tabindex="-1"
                       type="button"
                     >
-                      <span
-                        aria-hidden="true"
-                      >
-                        4
-                      </span>
-                      <span
-                        class="rdp-vhidden"
-                      >
-                        4th October 2022 (Tuesday)
-                      </span>
+                      4
                     </button>
                   </td>
                   <td
                     class="rdp-cell"
                   >
                     <button
+                      aria-label="5th October 2022 (Wednesday)"
                       class="rdp-button_reset rdp-button rdp-day"
+                      name="day"
                       tabindex="-1"
                       type="button"
                     >
-                      <span
-                        aria-hidden="true"
-                      >
-                        5
-                      </span>
-                      <span
-                        class="rdp-vhidden"
-                      >
-                        5th October 2022 (Wednesday)
-                      </span>
+                      5
                     </button>
                   </td>
                   <td
                     class="rdp-cell"
                   >
                     <button
+                      aria-label="6th October 2022 (Thursday)"
                       class="rdp-button_reset rdp-button rdp-day"
+                      name="day"
                       tabindex="-1"
                       type="button"
                     >
-                      <span
-                        aria-hidden="true"
-                      >
-                        6
-                      </span>
-                      <span
-                        class="rdp-vhidden"
-                      >
-                        6th October 2022 (Thursday)
-                      </span>
+                      6
                     </button>
                   </td>
                   <td
                     class="rdp-cell"
                   >
                     <button
+                      aria-label="7th October 2022 (Friday)"
                       class="rdp-button_reset rdp-button rdp-day"
+                      name="day"
                       tabindex="-1"
                       type="button"
                     >
-                      <span
-                        aria-hidden="true"
-                      >
-                        7
-                      </span>
-                      <span
-                        class="rdp-vhidden"
-                      >
-                        7th October 2022 (Friday)
-                      </span>
+                      7
                     </button>
                   </td>
                   <td
                     class="rdp-cell"
                   >
                     <button
+                      aria-label="8th October 2022 (Saturday)"
                       class="rdp-button_reset rdp-button rdp-day"
+                      name="day"
                       tabindex="-1"
                       type="button"
                     >
-                      <span
-                        aria-hidden="true"
-                      >
-                        8
-                      </span>
-                      <span
-                        class="rdp-vhidden"
-                      >
-                        8th October 2022 (Saturday)
-                      </span>
+                      8
                     </button>
                   </td>
                 </tr>
@@ -1291,140 +1018,91 @@ exports[`Calendar Single renders correctly 1`] = `
                     class="rdp-cell"
                   >
                     <button
+                      aria-label="9th October 2022 (Sunday)"
                       class="rdp-button_reset rdp-button rdp-day"
+                      name="day"
                       tabindex="-1"
                       type="button"
                     >
-                      <span
-                        aria-hidden="true"
-                      >
-                        9
-                      </span>
-                      <span
-                        class="rdp-vhidden"
-                      >
-                        9th October 2022 (Sunday)
-                      </span>
+                      9
                     </button>
                   </td>
                   <td
                     class="rdp-cell"
                   >
                     <button
+                      aria-label="10th October 2022 (Monday)"
                       class="rdp-button_reset rdp-button rdp-day"
+                      name="day"
                       tabindex="-1"
                       type="button"
                     >
-                      <span
-                        aria-hidden="true"
-                      >
-                        10
-                      </span>
-                      <span
-                        class="rdp-vhidden"
-                      >
-                        10th October 2022 (Monday)
-                      </span>
+                      10
                     </button>
                   </td>
                   <td
                     class="rdp-cell"
                   >
                     <button
+                      aria-label="11th October 2022 (Tuesday)"
                       class="rdp-button_reset rdp-button rdp-day"
+                      name="day"
                       tabindex="-1"
                       type="button"
                     >
-                      <span
-                        aria-hidden="true"
-                      >
-                        11
-                      </span>
-                      <span
-                        class="rdp-vhidden"
-                      >
-                        11th October 2022 (Tuesday)
-                      </span>
+                      11
                     </button>
                   </td>
                   <td
                     class="rdp-cell"
                   >
                     <button
+                      aria-label="12th October 2022 (Wednesday)"
                       class="rdp-button_reset rdp-button rdp-day"
+                      name="day"
                       tabindex="-1"
                       type="button"
                     >
-                      <span
-                        aria-hidden="true"
-                      >
-                        12
-                      </span>
-                      <span
-                        class="rdp-vhidden"
-                      >
-                        12th October 2022 (Wednesday)
-                      </span>
+                      12
                     </button>
                   </td>
                   <td
                     class="rdp-cell"
                   >
                     <button
+                      aria-label="13th October 2022 (Thursday)"
                       class="rdp-button_reset rdp-button rdp-day rdp-day_today"
+                      name="day"
                       tabindex="0"
                       type="button"
                     >
-                      <span
-                        aria-hidden="true"
-                      >
-                        13
-                      </span>
-                      <span
-                        class="rdp-vhidden"
-                      >
-                        13th October 2022 (Thursday)
-                      </span>
+                      13
                     </button>
                   </td>
                   <td
                     class="rdp-cell"
                   >
                     <button
+                      aria-label="14th October 2022 (Friday)"
                       class="rdp-button_reset rdp-button rdp-day"
+                      name="day"
                       tabindex="-1"
                       type="button"
                     >
-                      <span
-                        aria-hidden="true"
-                      >
-                        14
-                      </span>
-                      <span
-                        class="rdp-vhidden"
-                      >
-                        14th October 2022 (Friday)
-                      </span>
+                      14
                     </button>
                   </td>
                   <td
                     class="rdp-cell"
                   >
                     <button
+                      aria-label="15th October 2022 (Saturday)"
                       class="rdp-button_reset rdp-button rdp-day"
+                      name="day"
                       tabindex="-1"
                       type="button"
                     >
-                      <span
-                        aria-hidden="true"
-                      >
-                        15
-                      </span>
-                      <span
-                        class="rdp-vhidden"
-                      >
-                        15th October 2022 (Saturday)
-                      </span>
+                      15
                     </button>
                   </td>
                 </tr>
@@ -1435,140 +1113,91 @@ exports[`Calendar Single renders correctly 1`] = `
                     class="rdp-cell"
                   >
                     <button
+                      aria-label="16th October 2022 (Sunday)"
                       class="rdp-button_reset rdp-button rdp-day"
+                      name="day"
                       tabindex="-1"
                       type="button"
                     >
-                      <span
-                        aria-hidden="true"
-                      >
-                        16
-                      </span>
-                      <span
-                        class="rdp-vhidden"
-                      >
-                        16th October 2022 (Sunday)
-                      </span>
+                      16
                     </button>
                   </td>
                   <td
                     class="rdp-cell"
                   >
                     <button
+                      aria-label="17th October 2022 (Monday)"
                       class="rdp-button_reset rdp-button rdp-day"
+                      name="day"
                       tabindex="-1"
                       type="button"
                     >
-                      <span
-                        aria-hidden="true"
-                      >
-                        17
-                      </span>
-                      <span
-                        class="rdp-vhidden"
-                      >
-                        17th October 2022 (Monday)
-                      </span>
+                      17
                     </button>
                   </td>
                   <td
                     class="rdp-cell"
                   >
                     <button
+                      aria-label="18th October 2022 (Tuesday)"
                       class="rdp-button_reset rdp-button rdp-day"
+                      name="day"
                       tabindex="-1"
                       type="button"
                     >
-                      <span
-                        aria-hidden="true"
-                      >
-                        18
-                      </span>
-                      <span
-                        class="rdp-vhidden"
-                      >
-                        18th October 2022 (Tuesday)
-                      </span>
+                      18
                     </button>
                   </td>
                   <td
                     class="rdp-cell"
                   >
                     <button
+                      aria-label="19th October 2022 (Wednesday)"
                       class="rdp-button_reset rdp-button rdp-day"
+                      name="day"
                       tabindex="-1"
                       type="button"
                     >
-                      <span
-                        aria-hidden="true"
-                      >
-                        19
-                      </span>
-                      <span
-                        class="rdp-vhidden"
-                      >
-                        19th October 2022 (Wednesday)
-                      </span>
+                      19
                     </button>
                   </td>
                   <td
                     class="rdp-cell"
                   >
                     <button
+                      aria-label="20th October 2022 (Thursday)"
                       class="rdp-button_reset rdp-button rdp-day"
+                      name="day"
                       tabindex="-1"
                       type="button"
                     >
-                      <span
-                        aria-hidden="true"
-                      >
-                        20
-                      </span>
-                      <span
-                        class="rdp-vhidden"
-                      >
-                        20th October 2022 (Thursday)
-                      </span>
+                      20
                     </button>
                   </td>
                   <td
                     class="rdp-cell"
                   >
                     <button
+                      aria-label="21st October 2022 (Friday)"
                       class="rdp-button_reset rdp-button rdp-day"
+                      name="day"
                       tabindex="-1"
                       type="button"
                     >
-                      <span
-                        aria-hidden="true"
-                      >
-                        21
-                      </span>
-                      <span
-                        class="rdp-vhidden"
-                      >
-                        21st October 2022 (Friday)
-                      </span>
+                      21
                     </button>
                   </td>
                   <td
                     class="rdp-cell"
                   >
                     <button
+                      aria-label="22nd October 2022 (Saturday)"
                       class="rdp-button_reset rdp-button rdp-day"
+                      name="day"
                       tabindex="-1"
                       type="button"
                     >
-                      <span
-                        aria-hidden="true"
-                      >
-                        22
-                      </span>
-                      <span
-                        class="rdp-vhidden"
-                      >
-                        22nd October 2022 (Saturday)
-                      </span>
+                      22
                     </button>
                   </td>
                 </tr>
@@ -1579,140 +1208,91 @@ exports[`Calendar Single renders correctly 1`] = `
                     class="rdp-cell"
                   >
                     <button
+                      aria-label="23rd October 2022 (Sunday)"
                       class="rdp-button_reset rdp-button rdp-day"
+                      name="day"
                       tabindex="-1"
                       type="button"
                     >
-                      <span
-                        aria-hidden="true"
-                      >
-                        23
-                      </span>
-                      <span
-                        class="rdp-vhidden"
-                      >
-                        23rd October 2022 (Sunday)
-                      </span>
+                      23
                     </button>
                   </td>
                   <td
                     class="rdp-cell"
                   >
                     <button
+                      aria-label="24th October 2022 (Monday)"
                       class="rdp-button_reset rdp-button rdp-day"
+                      name="day"
                       tabindex="-1"
                       type="button"
                     >
-                      <span
-                        aria-hidden="true"
-                      >
-                        24
-                      </span>
-                      <span
-                        class="rdp-vhidden"
-                      >
-                        24th October 2022 (Monday)
-                      </span>
+                      24
                     </button>
                   </td>
                   <td
                     class="rdp-cell"
                   >
                     <button
+                      aria-label="25th October 2022 (Tuesday)"
                       class="rdp-button_reset rdp-button rdp-day"
+                      name="day"
                       tabindex="-1"
                       type="button"
                     >
-                      <span
-                        aria-hidden="true"
-                      >
-                        25
-                      </span>
-                      <span
-                        class="rdp-vhidden"
-                      >
-                        25th October 2022 (Tuesday)
-                      </span>
+                      25
                     </button>
                   </td>
                   <td
                     class="rdp-cell"
                   >
                     <button
+                      aria-label="26th October 2022 (Wednesday)"
                       class="rdp-button_reset rdp-button rdp-day"
+                      name="day"
                       tabindex="-1"
                       type="button"
                     >
-                      <span
-                        aria-hidden="true"
-                      >
-                        26
-                      </span>
-                      <span
-                        class="rdp-vhidden"
-                      >
-                        26th October 2022 (Wednesday)
-                      </span>
+                      26
                     </button>
                   </td>
                   <td
                     class="rdp-cell"
                   >
                     <button
+                      aria-label="27th October 2022 (Thursday)"
                       class="rdp-button_reset rdp-button rdp-day"
+                      name="day"
                       tabindex="-1"
                       type="button"
                     >
-                      <span
-                        aria-hidden="true"
-                      >
-                        27
-                      </span>
-                      <span
-                        class="rdp-vhidden"
-                      >
-                        27th October 2022 (Thursday)
-                      </span>
+                      27
                     </button>
                   </td>
                   <td
                     class="rdp-cell"
                   >
                     <button
+                      aria-label="28th October 2022 (Friday)"
                       class="rdp-button_reset rdp-button rdp-day"
+                      name="day"
                       tabindex="-1"
                       type="button"
                     >
-                      <span
-                        aria-hidden="true"
-                      >
-                        28
-                      </span>
-                      <span
-                        class="rdp-vhidden"
-                      >
-                        28th October 2022 (Friday)
-                      </span>
+                      28
                     </button>
                   </td>
                   <td
                     class="rdp-cell"
                   >
                     <button
+                      aria-label="29th October 2022 (Saturday)"
                       class="rdp-button_reset rdp-button rdp-day"
+                      name="day"
                       tabindex="-1"
                       type="button"
                     >
-                      <span
-                        aria-hidden="true"
-                      >
-                        29
-                      </span>
-                      <span
-                        class="rdp-vhidden"
-                      >
-                        29th October 2022 (Saturday)
-                      </span>
+                      29
                     </button>
                   </td>
                 </tr>
@@ -1723,40 +1303,26 @@ exports[`Calendar Single renders correctly 1`] = `
                     class="rdp-cell"
                   >
                     <button
+                      aria-label="30th October 2022 (Sunday)"
                       class="rdp-button_reset rdp-button rdp-day"
+                      name="day"
                       tabindex="-1"
                       type="button"
                     >
-                      <span
-                        aria-hidden="true"
-                      >
-                        30
-                      </span>
-                      <span
-                        class="rdp-vhidden"
-                      >
-                        30th October 2022 (Sunday)
-                      </span>
+                      30
                     </button>
                   </td>
                   <td
                     class="rdp-cell"
                   >
                     <button
+                      aria-label="31st October 2022 (Monday)"
                       class="rdp-button_reset rdp-button rdp-day"
+                      name="day"
                       tabindex="-1"
                       type="button"
                     >
-                      <span
-                        aria-hidden="true"
-                      >
-                        31
-                      </span>
-                      <span
-                        class="rdp-vhidden"
-                      >
-                        31st October 2022 (Monday)
-                      </span>
+                      31
                     </button>
                   </td>
                   <td

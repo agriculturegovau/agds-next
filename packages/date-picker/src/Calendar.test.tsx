@@ -28,11 +28,7 @@ describe('Calendar Single', () => {
 		});
 		expect(container).toHTMLValidate({
 			extends: ['html-validate:recommended'],
-			rules: {
-				'no-inline-style': 'off',
-				// This is turned off as `react-day-picker` have some invalid IDs
-				'valid-id': 'off',
-			},
+			rules: { 'no-inline-style': 'off' },
 		});
 	});
 });
@@ -61,11 +57,7 @@ describe('Calendar Range', () => {
 		});
 		expect(container).toHTMLValidate({
 			extends: ['html-validate:recommended'],
-			rules: {
-				'no-inline-style': 'off',
-				// This is turned off as `react-day-picker` have some invalid IDs
-				'valid-id': 'off',
-			},
+			rules: { 'no-inline-style': 'off' },
 		});
 	});
 });
