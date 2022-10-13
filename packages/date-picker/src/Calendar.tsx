@@ -54,7 +54,7 @@ export function CalendarRange({
 }
 
 const calendarLabels: Partial<Labels> = {
-	// This improves the `aria-label` for each day button
+	// This improves the aria label for each day button
 	// More info: https://github.com/gpbl/react-day-picker/pull/1582
 	labelDay: (day, _, options) => {
 		return format(day, 'do MMMM yyyy (EEEE)', options);
