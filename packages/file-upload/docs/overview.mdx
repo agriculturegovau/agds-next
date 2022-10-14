@@ -52,30 +52,28 @@ In this example, the file is instantly uploaded to a file hosting service, and t
 `FileUpload` component allows you to indicate the status of an upload via a `file.status` property.
 
 ```jsx live
-() => {
-	const uploadingFile = new File(['this is an example file'], 'example.jpg', {
+const uploadingFile = new File(['this is an example file'], 'example.jpg', {
+	type: 'image/jpg',
+});
+uploadingFile.status = 'uploading';
+const uploadedFile = new File(
+	['this is another example file that has uploaded'],
+	'example.jpg',
+	{
 		type: 'image/jpg',
-	});
-	uploadingFile.status = 'uploading';
-	const uploadedFile = new File(
-		['this is another example file that has uploaded'],
-		'example.jpg',
-		{
-			type: 'image/jpg',
-		}
-	);
-	uploadedFile.status = 'success';
-	return (
-		<FileUpload
-			label="Avatar image"
-			hint="Formats accepted: .png, .jpg."
-			multiple={false}
-			accept={['image/jpeg', 'image/jpg', 'image/png']}
-			value={[uploadedFile, uploadingFile]}
-			onChange={console.log}
-		/>
-	);
-};
+	}
+);
+uploadedFile.status = 'success';
+return (
+	<FileUpload
+		label="Avatar image"
+		hint="Formats accepted: .png, .jpg."
+		multiple={false}
+		accept={['image/jpeg', 'image/jpg', 'image/png']}
+		value={[uploadedFile, uploadingFile]}
+		onChange={console.log}
+	/>
+);
 ```
 
 ---
