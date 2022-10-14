@@ -10,17 +10,21 @@ function renderDetail(props: DatePickerProps) {
 }
 
 describe('DatePicker', () => {
-	const { container } = renderDetail({
-		label: 'Example',
-		value: new Date('2000-01-01'),
-		onChange: console.log,
-	});
-
 	it('renders correctly', () => {
+		const { container } = renderDetail({
+			label: 'Example',
+			value: new Date('2000-01-01'),
+			onChange: console.log,
+		});
 		expect(container).toMatchSnapshot();
 	});
 
 	it('renders a valid HTML structure', () => {
+		const { container } = renderDetail({
+			label: 'Example',
+			value: new Date('2000-01-01'),
+			onChange: console.log,
+		});
 		expect(container).toHTMLValidate({
 			extends: ['html-validate:recommended'],
 		});

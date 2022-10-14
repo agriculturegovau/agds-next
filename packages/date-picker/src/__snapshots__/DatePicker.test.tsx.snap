@@ -29,6 +29,7 @@ exports[`DatePicker renders correctly 1`] = `
           aria-required="false"
           class="css-qcwla-DateInput"
           id="field-mockId"
+          type="text"
           value="01/01/2000"
         />
         <button

@@ -65,6 +65,7 @@ export const DateInput = forwardRef<HTMLInputElement, DateInputProps>(
 					<Flex alignItems="flex-end" css={{ maxWidth }}>
 						<input
 							ref={ref}
+							type="text"
 							css={{ ...styles, maxWidth: 'unset' }}
 							{...a11yProps}
 							{...props}
