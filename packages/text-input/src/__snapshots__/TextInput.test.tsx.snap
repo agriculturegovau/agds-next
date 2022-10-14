@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Field renders correctly 1`] = `
+exports[`TextInput renders correctly 1`] = `
 <div>
   <div
     class="css-1n67ua0-boxStyles-FieldContainer"
@@ -13,6 +13,11 @@ exports[`Field renders correctly 1`] = `
         class="css-433uqb-boxStyles-Text"
       >
         Name
+      </span>
+      <span
+        class="css-1rpt3h8-boxStyles-Text"
+      >
+        (optional)
       </span>
     </label>
     <span
@@ -58,8 +63,8 @@ exports[`Field renders correctly 1`] = `
     <input
       aria-describedby="field-mockId-message field-mockId-hint"
       aria-invalid="true"
-      aria-required="true"
-      data-testid="example-input"
+      aria-required="false"
+      class="css-b9h5aa-Field"
       id="field-mockId"
       type="text"
     />

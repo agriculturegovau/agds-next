@@ -17,13 +17,14 @@ function renderSearch() {
 }
 
 describe('SearchBox', () => {
-	const { container } = renderSearch();
-
 	it('renders correctly', () => {
+		const { container } = renderSearch();
 		expect(container).toMatchSnapshot();
 	});
 
 	it('renders a valid HTML structure', () => {
+		const { container } = renderSearch();
+
 		expect(container).toHTMLValidate({
 			extends: ['html-validate:recommended'],
 		});

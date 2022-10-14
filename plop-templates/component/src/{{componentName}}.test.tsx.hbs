@@ -12,7 +12,11 @@ function render{{componentName}}(props?: Partial<{{componentName}}Props>) {
 }
 
 describe('{{componentName}}', () => {
-  it('renders a valid HTML structure', () => {
+	it('renders correctly', () => {
+		const { container } = render{{componentName}}();
+		expect(container).toMatchSnapshot();
+	});
+	it('renders a valid HTML structure', () => {
 		const { container } = render{{componentName}}();
 		expect(container).toHTMLValidate({
 			extends: ['html-validate:recommended'],
