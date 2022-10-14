@@ -66,6 +66,7 @@ exports[`TextInput renders correctly 1`] = `
       aria-required="false"
       class="css-b9h5aa-Field"
       id="field-mockId"
+      type="text"
     />
   </div>
 </div>
