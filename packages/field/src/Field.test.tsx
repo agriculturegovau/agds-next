@@ -57,11 +57,10 @@ describe('Field', () => {
 
 	it('automatically generates an ID if no ID is provided', () => {
 		renderField({});
-		const id = screen.getByTestId('example-input').id;
-		const labelEl = screen.getByText('Name').parentElement as HTMLLabelElement;
 		const inputEl = screen.getByTestId('example-input');
+		const labelEl = screen.getByText('Name').parentElement as HTMLLabelElement;
+		const id = inputEl.id;
 		expect(labelEl.htmlFor).toBe(id);
-		expect(inputEl.id).toBe(id);
 	});
 
 	it('uses ID prop if provided ', () => {
