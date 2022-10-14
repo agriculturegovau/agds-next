@@ -1,0 +1,114 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Accordion renders correctly 1`] = `
+<div>
+  <div
+    class="css-xgo9nn-boxStyles"
+  >
+    <div
+      class="css-td3mpi-boxStyles"
+    >
+      <h3
+        class="css-79i25n-boxStyles"
+      >
+        <button
+          aria-controls="accordion-mockId-body"
+          aria-expanded="false"
+          class="css-1c9c7xg-BaseButton-boxStyles-AccordionTitle"
+          id="accordion-mockId-title"
+          type="button"
+        >
+          Accordion 1
+          <svg
+            aria-hidden="true"
+            class="css-5ae1oq-Icon"
+            clip-rule="evenodd"
+            focusable="false"
+            height="24"
+            role="img"
+            style="transform: rotate(0deg);"
+            viewBox="0 0 24 24"
+            width="24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M21 8L12 17L3 8"
+            />
+          </svg>
+        </button>
+      </h3>
+      <div
+        aria-labelledby="accordion-mockId-title"
+        class="css-1g0zzsa-AccordionBody"
+        id="accordion-mockId-body"
+        role="region"
+        style="display: none; height: 0px;"
+      >
+        <div>
+          <div
+            class="css-1u803sw-boxStyles"
+          >
+            <p
+              class="css-6j1v6l-boxStyles-Text"
+            >
+              Accordion 1 text content.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="css-td3mpi-boxStyles"
+    >
+      <h3
+        class="css-79i25n-boxStyles"
+      >
+        <button
+          aria-controls="accordion-mockId-body"
+          aria-expanded="false"
+          class="css-1c9c7xg-BaseButton-boxStyles-AccordionTitle"
+          id="accordion-mockId-title"
+          type="button"
+        >
+          Accordion 2
+          <svg
+            aria-hidden="true"
+            class="css-5ae1oq-Icon"
+            clip-rule="evenodd"
+            focusable="false"
+            height="24"
+            role="img"
+            style="transform: rotate(0deg);"
+            viewBox="0 0 24 24"
+            width="24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M21 8L12 17L3 8"
+            />
+          </svg>
+        </button>
+      </h3>
+      <div
+        aria-labelledby="accordion-mockId-title"
+        class="css-1g0zzsa-AccordionBody"
+        id="accordion-mockId-body"
+        role="region"
+        style="display: none; height: 0px;"
+      >
+        <div>
+          <div
+            class="css-1u803sw-boxStyles"
+          >
+            <p
+              class="css-6j1v6l-boxStyles-Text"
+            >
+              Accordion 2 text content.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
