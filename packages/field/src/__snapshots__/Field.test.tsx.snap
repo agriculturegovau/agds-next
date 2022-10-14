@@ -59,6 +59,7 @@ exports[`Field renders correctly 1`] = `
       aria-describedby="field-mockId-message field-mockId-hint"
       aria-invalid="true"
       aria-required="true"
+      data-testid="example-input"
       id="field-mockId"
       type="text"
     />
