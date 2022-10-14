@@ -51,6 +51,7 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
 			block,
 			maxWidth,
 			id,
+			type = 'text',
 			...props
 		},
 		ref
@@ -67,7 +68,7 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
 				id={id}
 			>
 				{(a11yProps) => (
-					<input ref={ref} css={styles} {...a11yProps} {...props} />
+					<input ref={ref} css={styles} {...a11yProps} type={type} {...props} />
 				)}
 			</Field>
 		);
