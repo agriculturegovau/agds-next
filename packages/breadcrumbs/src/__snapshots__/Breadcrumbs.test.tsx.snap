@@ -1,0 +1,93 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Breadcrumbs renders correctly 1`] = `
+<div>
+  <nav
+    aria-label="breadcrumb"
+  >
+    <ol
+      class="css-1v3a3t5-boxStyles-BreadcrumbsContainer"
+    >
+      <li
+        class="css-1xkbxzi-boxStyles"
+      >
+        <svg
+          aria-hidden="true"
+          class="css-13n0gr8-Icon-BreadcrumbsDivider"
+          clip-rule="evenodd"
+          focusable="false"
+          height="24"
+          role="img"
+          viewBox="0 0 24 24"
+          width="24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M8 3L17 12L8 21"
+          />
+        </svg>
+        <a
+          class="css-38ppen-TextLink"
+          href="#home"
+        >
+          Home
+        </a>
+      </li>
+      <li
+        class="css-1xkbxzi-boxStyles"
+      >
+        <svg
+          aria-hidden="true"
+          class="css-13n0gr8-Icon-BreadcrumbsDivider"
+          clip-rule="evenodd"
+          focusable="false"
+          height="24"
+          role="img"
+          viewBox="0 0 24 24"
+          width="24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M8 3L17 12L8 21"
+          />
+        </svg>
+        <a
+          class="css-38ppen-TextLink"
+          href="#establishments"
+        >
+          Establishments
+        </a>
+      </li>
+      <li
+        class="css-1xkbxzi-boxStyles"
+      >
+        <svg
+          aria-hidden="true"
+          class="css-13n0gr8-Icon-BreadcrumbsDivider"
+          clip-rule="evenodd"
+          focusable="false"
+          height="24"
+          role="img"
+          viewBox="0 0 24 24"
+          width="24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M8 3L17 12L8 21"
+          />
+        </svg>
+        <span
+          class="css-6j1v6l-boxStyles-Text"
+        >
+          Applications
+          <span
+            class="css-avudkd-VisuallyHidden"
+          >
+             (current page)
+          </span>
+        </span>
+      </li>
+    </ol>
+  </nav>
+</div>
+`;
