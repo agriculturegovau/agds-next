@@ -9,10 +9,11 @@ import { useDropzone, DropzoneOptions } from 'react-dropzone';
 import formatFileSize from 'filesize';
 import { Flex, Stack } from '@ag.ds-next/box';
 import { Button } from '@ag.ds-next/button';
-import { packs, boxPalette, tokens } from '@ag.ds-next/core';
+import { packs, boxPalette, tokens, mergeRefs } from '@ag.ds-next/core';
 import { Field } from '@ag.ds-next/field';
 import { UploadIcon } from '@ag.ds-next/icon';
 import { Text } from '@ag.ds-next/text';
+import { visuallyHiddenStyles } from '@ag.ds-next/a11y';
 import { FileRejection } from './FileRejection';
 import { FileUploadFile } from './FileUploadFile';
 import {
@@ -86,9 +87,9 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 			invalid,
 			valid,
 			id,
-			...props
+			...consumerProps
 		},
-		ref
+		forwardedRef
 	) {
 		const filesPlural = multiple ? 'files' : 'file';
 		const maxSizeBytes = (maxSize || 0) * 1000;
@@ -175,6 +176,13 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 			...dropzoneProps
 		} = getRootProps();
 
+		const {
+			ref: dropzoneInputRef,
+			// We don't want the input to be `display: none`, as we are using visuallyHiddenStyles instead.
+			style: _unusedStyleProps,
+			...dropzoneInputProps
+		} = getInputProps();
+
 		return (
 			<Field
 				label={label}
@@ -199,10 +207,16 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 							>
 								<UploadIcon size="lg" color="muted" />
 								<input
-									ref={ref}
-									{...getInputProps()}
+									{...dropzoneInputProps}
 									{...a11yProps}
-									{...props}
+									{...consumerProps}
+									/**
+									 * Dropzone needs to set a ref to the input, but we _also_
+									 * need to forward a ref to the input so consumers can use it.
+									 * The mergeRef utility allows us to do this.
+									 */
+									ref={mergeRefs([forwardedRef, dropzoneInputRef])}
+									css={visuallyHiddenStyles}
 								/>
 								<Flex
 									flexDirection="column"
