@@ -5,13 +5,13 @@ import { DatePicker, DatePickerProps } from './DatePicker';
 
 afterEach(cleanup);
 
-function renderDetail(props: DatePickerProps) {
+function renderDatePicker(props: DatePickerProps) {
 	return render(<DatePicker {...props} />);
 }
 
 describe('DatePicker', () => {
 	it('renders correctly', () => {
-		const { container } = renderDetail({
+		const { container } = renderDatePicker({
 			label: 'Example',
 			value: new Date('2000-01-01'),
 			onChange: console.log,
@@ -20,7 +20,7 @@ describe('DatePicker', () => {
 	});
 
 	it('renders a valid HTML structure', () => {
-		const { container } = renderDetail({
+		const { container } = renderDatePicker({
 			label: 'Example',
 			value: new Date('2000-01-01'),
 			onChange: console.log,

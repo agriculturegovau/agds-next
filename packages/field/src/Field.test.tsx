@@ -89,7 +89,7 @@ describe('Field', () => {
 	});
 
 	describe('FieldLabel', () => {
-		it.only('renders correctly when optional', () => {
+		it('renders correctly when optional', () => {
 			renderField({ required: false });
 			const labelEl = screen.getByText('Name')
 				.parentElement as HTMLLabelElement;

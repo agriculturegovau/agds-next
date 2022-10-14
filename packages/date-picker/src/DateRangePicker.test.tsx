@@ -5,13 +5,13 @@ import { DateRangePicker, DateRangePickerProps } from './DateRangePicker';
 
 afterEach(cleanup);
 
-function renderDetail(props: DateRangePickerProps) {
+function renderDateRangePicker(props: DateRangePickerProps) {
 	return render(<DateRangePicker {...props} />);
 }
 
 describe('DateRangePicker', () => {
 	it('renders correctly', () => {
-		const { container } = renderDetail({
+		const { container } = renderDateRangePicker({
 			value: { from: new Date('2000-01-01'), to: new Date('2000-01-02') },
 			onChange: console.log,
 		});
@@ -19,7 +19,7 @@ describe('DateRangePicker', () => {
 	});
 
 	it('renders a valid HTML structure', () => {
-		const { container } = renderDetail({
+		const { container } = renderDateRangePicker({
 			value: { from: new Date('2000-01-01'), to: new Date('2000-01-02') },
 			onChange: console.log,
 		});
