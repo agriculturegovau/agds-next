@@ -1,0 +1,105 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Modal renders correctly 1`] = `
+<body>
+  <div
+    aria-hidden="true"
+  />
+  <div
+    class="css-5exj1b-ModalCover"
+  >
+    <div
+      data-focus-guard="true"
+      style="width: 1px; height: 0px; padding: 0px; overflow: hidden; position: fixed; top: 1px; left: 1px;"
+      tabindex="0"
+    />
+    <div
+      data-focus-lock-disabled="false"
+    >
+      <div
+        aria-labelledby="modal-:r0:-title"
+        aria-modal="true"
+        class="css-1rzg5w1-boxStyles-ModalPanel"
+        role="dialog"
+        style="opacity: 0; transform: translate3d(0,20px,0);"
+      >
+        <h2
+          class="css-n64ezu-boxStyles-Text"
+          data-autofocus="true"
+          id="modal-:r0:-title"
+          tabindex="-1"
+        >
+          Modal title
+        </h2>
+        <div
+          class="css-79i25n-boxStyles"
+        >
+          <p
+            class="css-6j1v6l-boxStyles-Text"
+          >
+            This is the Modal Body paragraph.
+          </p>
+        </div>
+        <div
+          class="css-1i9i114-boxStyles-ModalPanel"
+        >
+          <button
+            class="css-3jmmp1-BaseButton-Button"
+            type="button"
+          >
+            <span>
+              <span
+                class="css-oobk4c-Button"
+              >
+                Close modal
+              </span>
+              <span
+                aria-live="assertive"
+              />
+            </span>
+          </button>
+        </div>
+        <button
+          aria-label="Close modal"
+          class="css-1b8gcds-BaseButton-ModalPanel"
+          type="button"
+        >
+          <span>
+            <span
+              class="css-oobk4c-Button"
+            >
+              Close
+            </span>
+            <span
+              aria-live="assertive"
+            />
+          </span>
+          <svg
+            aria-hidden="true"
+            class="css-4ah0i8-Icon"
+            clip-rule="evenodd"
+            focusable="false"
+            height="24"
+            role="img"
+            viewBox="0 0 24 24"
+            width="24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M5 19L19 5"
+            />
+            <path
+              d="M19 19L5 5"
+            />
+          </svg>
+        </button>
+      </div>
+    </div>
+    <div
+      data-focus-guard="true"
+      style="width: 1px; height: 0px; padding: 0px; overflow: hidden; position: fixed; top: 1px; left: 1px;"
+      tabindex="0"
+    />
+  </div>
+</body>
+`;
