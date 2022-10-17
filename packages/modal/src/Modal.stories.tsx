@@ -18,7 +18,7 @@ export const Basic = () => {
 			<Modal
 				isOpen={isModalOpen}
 				onDismiss={closeModal}
-				title="This is the title of the modal dialogue, it can span lines but should not be too long."
+				title="This is the title of the modal dialog, it can span lines but should not be too long."
 				actions={
 					<ButtonGroup>
 						<Button onClick={closeModal}>Primary button</Button>
