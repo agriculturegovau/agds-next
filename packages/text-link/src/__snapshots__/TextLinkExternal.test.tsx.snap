@@ -1,0 +1,44 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TextLinkExternal renders correctly 1`] = `
+<div>
+  <a
+    class="css-38ppen-TextLink"
+    data-testid="example"
+    href="https://steelthreads.github.io/agds-next"
+    rel="noopener noreferrer"
+    target="_blank"
+  >
+    External link
+    <span
+      class="css-avudkd-VisuallyHidden"
+    >
+      , opens in a new tab
+    </span>
+    <svg
+      aria-hidden="true"
+      class="css-10db309-Icon-TextLinkExternal"
+      clip-rule="evenodd"
+      focusable="false"
+      height="24"
+      role="img"
+      viewBox="0 0 24 24"
+      width="24"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M9 15L21 3"
+      />
+      <path
+        d="M15 3H21"
+      />
+      <path
+        d="M21 9V3"
+      />
+      <path
+        d="M7 2.99969H4.08981C3.80891 2.99457 3.53726 3.10042 3.3334 3.29442C3.12953 3.48842 3.00981 3.75503 3 4.0368V19.9345C3.00245 20.2163 3.1151 20.4858 3.31367 20.6851C3.51224 20.8844 3.78085 20.9974 4.06166 20.9999H19.9383C20.2192 20.9974 20.4878 20.8844 20.6863 20.6851C20.8849 20.4858 20.9975 20.2163 21 19.9345V16.9999"
+      />
+    </svg>
+  </a>
+</div>
+`;
