@@ -9,7 +9,12 @@ import { Modal } from './Modal';
 
 function renderBaseModal() {
 	return render(
-		<Modal isOpen title="Modal title" actions={<Button>Close modal</Button>}>
+		<Modal
+			isOpen
+			onDismiss={() => undefined}
+			title="Modal title"
+			actions={<Button>Close modal</Button>}
+		>
 			<Text as="p">This is the Modal Body paragraph.</Text>
 		</Modal>
 	);
