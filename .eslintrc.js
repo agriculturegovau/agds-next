@@ -41,12 +41,15 @@ module.exports = {
 	},
 	overrides: [
 		{
-			// Both of these sites are hosted using GitHub pages
-			// which is incompatible with @next/image
+			// These sites are hosted using GitHub pages which is incompatible with @next/image
 			files: ['docs/**/*', 'example-site/**/*', 'packages/**/*'],
 			rules: {
 				'@next/next/no-img-element': 'off',
 			},
+		},
+		{
+			files: ['packages/**/*'],
+			rules: { '@next/next/no-html-link-for-pages': 'off' },
 		},
 	],
 };
