@@ -12,4 +12,4 @@
 '@ag.ds-next/side-nav': patch
 ---
 
-Replace useId from `@reach/auto-id` with `@react-aria/utils` to ensure that HTML is valid before hydration.
+Upgraded `@reach/auto-id` 
