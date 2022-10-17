@@ -52,6 +52,8 @@ describe('Field', () => {
 		});
 		expect(container).toHTMLValidate({
 			extends: ['html-validate:recommended'],
+			// react 18s `useId` break this rule
+			rules: { 'valid-id': 'off' },
 		});
 	});
 

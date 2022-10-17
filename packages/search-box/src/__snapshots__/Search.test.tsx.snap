@@ -14,13 +14,13 @@ exports[`SearchBox renders correctly 1`] = `
       >
         <label
           class="css-1dixsb6-boxStyles-Text-SearchBoxLabel"
-          for="search-mockId"
+          for="search-:r0:"
         >
           Search
         </label>
         <input
           class="css-i4ov2d-SearchBoxInput"
-          id="search-mockId"
+          id="search-:r0:"
           type="search"
         />
       </div>

@@ -5,8 +5,6 @@ import {
 	PropsWithChildren,
 	AnchorHTMLAttributes,
 } from 'react';
-import { SSRProvider, useIsSSR } from '@react-aria/ssr';
-export { useId } from '@react-aria/utils';
 
 const DefaultLinkComponent = forwardRef<
 	HTMLAnchorElement,
@@ -51,15 +49,13 @@ export type CoreProviderProps = PropsWithChildren<{
 
 export function CoreProvider({ linkComponent, children }: CoreProviderProps) {
 	return (
-		<SSRProvider>
-			<coreContext.Provider
-				value={{
-					linkComponent: linkComponent ?? DefaultLinkComponent,
-				}}
-			>
-				{children}
-			</coreContext.Provider>
-		</SSRProvider>
+		<coreContext.Provider
+			value={{
+				linkComponent: linkComponent ?? DefaultLinkComponent,
+			}}
+		>
+			{children}
+		</coreContext.Provider>
 	);
 }
 
@@ -67,5 +63,3 @@ export function useLinkComponent() {
 	const { linkComponent } = useContext(coreContext);
 	return linkComponent;
 }
-
-export { useIsSSR };

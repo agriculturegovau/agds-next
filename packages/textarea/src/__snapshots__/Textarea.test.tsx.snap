@@ -7,7 +7,7 @@ exports[`Textarea renders correctly 1`] = `
   >
     <label
       class="css-n7rdvo-boxStyles"
-      for="field-mockId"
+      for="field-:r0:"
     >
       <span
         class="css-433uqb-boxStyles-Text"
@@ -22,7 +22,7 @@ exports[`Textarea renders correctly 1`] = `
     </label>
     <span
       class="css-lw0v8u-boxStyles-Text"
-      id="field-mockId-hint"
+      id="field-:r0:-hint"
     >
       Hint text
     </span>
@@ -55,17 +55,17 @@ exports[`Textarea renders correctly 1`] = `
       </div>
       <span
         class="css-tfsyf8-boxStyles-Text"
-        id="field-mockId-message"
+        id="field-:r0:-message"
       >
         This field is required
       </span>
     </div>
     <textarea
-      aria-describedby="field-mockId-message field-mockId-hint"
+      aria-describedby="field-:r0:-message field-:r0:-hint"
       aria-invalid="true"
       aria-required="false"
       class="css-xktc3q-Field"
-      id="field-mockId"
+      id="field-:r0:"
     />
   </div>
 </div>

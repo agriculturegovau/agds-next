@@ -6,10 +6,10 @@ exports[`ProgressIndicator With anchors renders correctly 1`] = `
     class="css-1slslyo-boxStyles-ProgressIndicatorContainer"
   >
     <button
-      aria-controls="progress-indicator-mockId-body"
+      aria-controls="progress-indicator-:r0:-body"
       aria-expanded="false"
       class="css-1rwe9m2-BaseButton-boxStyles-ProgressIndicatorCollapseButton"
-      id="progress-indicator-mockId-button"
+      id="progress-indicator-:r0:-button"
       type="button"
     >
       Doing step 2 of 3
@@ -32,7 +32,7 @@ exports[`ProgressIndicator With anchors renders correctly 1`] = `
     </button>
     <div
       class="css-fmb23f-ProgressIndicator"
-      id="progress-indicator-mockId-body"
+      id="progress-indicator-:r0:-body"
       style="display: none; height: 0px; overflow: hidden;"
     >
       <ul
@@ -176,10 +176,10 @@ exports[`ProgressIndicator With buttons renders correctly 1`] = `
     class="css-1slslyo-boxStyles-ProgressIndicatorContainer"
   >
     <button
-      aria-controls="progress-indicator-mockId-body"
+      aria-controls="progress-indicator-:r2:-body"
       aria-expanded="false"
       class="css-1rwe9m2-BaseButton-boxStyles-ProgressIndicatorCollapseButton"
-      id="progress-indicator-mockId-button"
+      id="progress-indicator-:r2:-button"
       type="button"
     >
       Doing step 2 of 3
@@ -202,7 +202,7 @@ exports[`ProgressIndicator With buttons renders correctly 1`] = `
     </button>
     <div
       class="css-fmb23f-ProgressIndicator"
-      id="progress-indicator-mockId-body"
+      id="progress-indicator-:r2:-body"
       style="display: none; height: 0px; overflow: hidden;"
     >
       <ul

@@ -8,7 +8,7 @@ exports[`DatePicker renders correctly 1`] = `
     >
       <label
         class="css-n7rdvo-boxStyles"
-        for="field-mockId"
+        for="field-:r0:"
       >
         <span
           class="css-433uqb-boxStyles-Text"
@@ -28,7 +28,7 @@ exports[`DatePicker renders correctly 1`] = `
           aria-invalid="false"
           aria-required="false"
           class="css-qcwla-DateInput"
-          id="field-mockId"
+          id="field-:r0:"
           type="text"
           value="01/01/2000"
         />

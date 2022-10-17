@@ -25,8 +25,10 @@ describe('DateRangePicker', () => {
 		});
 		expect(container).toHTMLValidate({
 			extends: ['html-validate:recommended'],
-			// We use a deterministic mock ID in tests
-			rules: { 'no-dup-id': 'off' },
+			rules: {
+				// react 18s `useId` break this rule
+				'valid-id': 'off',
+			},
 		});
 	});
 });
