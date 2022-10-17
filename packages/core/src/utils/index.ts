@@ -1,3 +1,4 @@
+export { useId } from './useId';
 export { useTernaryState } from './useTernaryState';
 export { useToggleState } from './useToggleState';
 export { useElementSize } from './useElementSize';

@@ -39,8 +39,8 @@ describe('Accordion', () => {
 				'no-inline-style': 'off',
 				// Our HTML is based off ARIA APG https://www.w3.org/WAI/ARIA/apg/example-index/accordion/accordion.html
 				'prefer-native-element': 'off',
-				// We use a deterministic mock ID in tests
-				'no-dup-id': 'off',
+				// react 18s `useId` break this rule
+				'valid-id': 'off',
 			},
 		});
 	});
