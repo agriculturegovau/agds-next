@@ -3,29 +3,29 @@ import { Text } from '@ag.ds-next/text';
 import { TextLink } from '@ag.ds-next/text-link';
 import { Stack } from '@ag.ds-next/box';
 import {
+	SummaryList,
+	SummaryListItem,
 	Term,
 	Description,
-	DescriptionList,
-	DescriptionListItem,
 	Action,
-} from './DescriptionList';
+} from './SummaryList';
 
 export default {
-	title: 'Content/DescriptionList',
-	component: DescriptionList,
-} as ComponentMeta<typeof DescriptionList>;
+	title: 'Content/SummaryList',
+	component: SummaryList,
+} as ComponentMeta<typeof SummaryList>;
 
-export const Basic: ComponentStory<typeof DescriptionList> = (args) => (
-	<DescriptionList {...args}>
-		<DescriptionListItem>
+export const Basic: ComponentStory<typeof SummaryList> = (args) => (
+	<SummaryList {...args}>
+		<SummaryListItem>
 			<Term>First name</Term>
 			<Description>Will</Description>
-		</DescriptionListItem>
-		<DescriptionListItem>
+		</SummaryListItem>
+		<SummaryListItem>
 			<Term>Last name</Term>
 			<Description>Power</Description>
-		</DescriptionListItem>
-		<DescriptionListItem>
+		</SummaryListItem>
+		<SummaryListItem>
 			<Term>Contact information</Term>
 			<Description>
 				<Stack>
@@ -33,32 +33,32 @@ export const Basic: ComponentStory<typeof DescriptionList> = (args) => (
 					<Text>will.power@example.com</Text>
 				</Stack>
 			</Description>
-		</DescriptionListItem>
-		<DescriptionListItem>
+		</SummaryListItem>
+		<SummaryListItem>
 			<Term>Date of birth</Term>
 			<Description>09/06/1995</Description>
-		</DescriptionListItem>
-	</DescriptionList>
+		</SummaryListItem>
+	</SummaryList>
 );
 Basic.args = {};
 
-export const Updatable: ComponentStory<typeof DescriptionList> = (args) => (
-	<DescriptionList {...args}>
-		<DescriptionListItem>
+export const Updatable: ComponentStory<typeof SummaryList> = (args) => (
+	<SummaryList {...args}>
+		<SummaryListItem>
 			<Term>First name</Term>
 			<Description>Will</Description>
 			<Action>
 				<TextLink href="#">Change</TextLink>
 			</Action>
-		</DescriptionListItem>
-		<DescriptionListItem>
+		</SummaryListItem>
+		<SummaryListItem>
 			<Term>Last name</Term>
 			<Description>Power</Description>
 			<Action>
 				<TextLink href="#">Change</TextLink>
 			</Action>
-		</DescriptionListItem>
-		<DescriptionListItem>
+		</SummaryListItem>
+		<SummaryListItem>
 			<Term>Contact information</Term>
 			<Description>
 				<Stack>
@@ -69,14 +69,14 @@ export const Updatable: ComponentStory<typeof DescriptionList> = (args) => (
 			<Action>
 				<TextLink href="#">Change</TextLink>
 			</Action>
-		</DescriptionListItem>
-		<DescriptionListItem>
+		</SummaryListItem>
+		<SummaryListItem>
 			<Term>Date of birth</Term>
 			<Description>09/06/1995</Description>
 			<Action>
 				<TextLink href="#">Change</TextLink>
 			</Action>
-		</DescriptionListItem>
-	</DescriptionList>
+		</SummaryListItem>
+	</SummaryList>
 );
 Updatable.args = {};
