@@ -10,9 +10,7 @@ export const TableHead = ({ children }: TableHeadProps) => {
 			borderBottom
 			borderBottomWidth="xl"
 			borderColor="muted"
-			css={{
-				display: 'table-header-group',
-			}}
+			display="table-header-group"
 		>
 			{children}
 		</Box>

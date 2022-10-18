@@ -5,7 +5,7 @@ export type TableBodyProps = { children: ReactNode };
 
 export const TableBody = ({ children }: TableBodyProps) => {
 	return (
-		<Box as="tbody" css={{ display: 'table-row-group' }}>
+		<Box as="tbody" display="table-row-group">
 			{children}
 		</Box>
 	);

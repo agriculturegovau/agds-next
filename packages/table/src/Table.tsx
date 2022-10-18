@@ -21,6 +21,7 @@ export const Table = forwardRef<HTMLTableElement, TableProps>(function Table(
 			fontSize="sm"
 			focus
 			width="100%"
+			display="table"
 			css={{
 				borderCollapse: 'collapse',
 				borderSpacing: 0,
