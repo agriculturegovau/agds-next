@@ -440,7 +440,7 @@ const KitchenSink = ({ background }: { background: 'body' | 'bodyAlt' }) => {
 										<TableCell textAlign="right">517,400</TableCell>
 									</tr>
 									<tr>
-										<TableCell>Nothern Territory</TableCell>
+										<TableCell>Northern Territory</TableCell>
 										<TableCell textAlign="right">244,400</TableCell>
 									</tr>
 									<tr>

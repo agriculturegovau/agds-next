@@ -167,7 +167,7 @@ export const Modular: ComponentStory<typeof Table> = (args) => (
 				<TableCell textAlign="right">5.3%</TableCell>
 			</tr>
 			<tr>
-				<TableCell>Nothern Territory</TableCell>
+				<TableCell>Northern Territory</TableCell>
 				<TableCell textAlign="right">244,400</TableCell>
 				<TableCell textAlign="right">1.2%</TableCell>
 				<TableCell textAlign="right">4.5%</TableCell>
