@@ -36,7 +36,7 @@ type BaseInputProps = {
 };
 
 export type FileUploadProps = BaseInputProps & {
-	/** List of acceptible file types, e.g.`image/jpeg`, `application/pdf` */
+	/** List of acceptable file types, e.g.`image/jpeg`, `application/pdf` */
 	accept?: FileFormats[];
 	/** A label that describes the field*/
 	label: string;
