@@ -315,8 +315,5 @@ export const fileInputStyles = ({
 			  }
 			: undefined),
 
-		...(disabled && {
-			background: 'none',
-			...packs.disabled,
-		}),
+		...(disabled && packs.disabled),
 	} as const);
