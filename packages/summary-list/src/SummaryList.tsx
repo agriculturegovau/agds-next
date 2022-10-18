@@ -9,7 +9,7 @@ export type SummaryListProps = PropsWithOnlyChildren;
 
 /** SummaryListItemTerm should be nested as the first child of SummaryListItem */
 export const SummaryListItemTerm = ({ children }: PropsWithOnlyChildren) => (
-	<Flex as="dt" fontWeight="bold" width={['100%', '30%']}>
+	<Flex as="dt" fontWeight="bold" width={['100%', '30%']} minWidth="200px">
 		{children}
 	</Flex>
 );

@@ -10,29 +10,32 @@ SummaryList displays a list of terms and descriptions as key value pairs. It is 
 Common uses for this component are to implement a glossary or to display metadata.
 
 ```jsx live
-<SummaryList>
-	<SummaryListItem>
-		<SummaryListItemTerm>First name</SummaryListItemTerm>
-		<SummaryListItemDescription>Will</SummaryListItemDescription>
-	</SummaryListItem>
-	<SummaryListItem>
-		<SummaryListItemTerm>Last name</SummaryListItemTerm>
-		<SummaryListItemDescription>Power</SummaryListItemDescription>
-	</SummaryListItem>
-	<SummaryListItem>
-		<SummaryListItemTerm>Contact information</SummaryListItemTerm>
-		<SummaryListItemDescription>
-			<Stack>
-				<Text>+61 9912 3456</Text>
-				<Text>will.power@example.com</Text>
-			</Stack>
-		</SummaryListItemDescription>
-	</SummaryListItem>
-	<SummaryListItem>
-		<SummaryListItemTerm>Date of birth</SummaryListItemTerm>
-		<SummaryListItemDescription>09/06/1995</SummaryListItemDescription>
-	</SummaryListItem>
-</SummaryList>
+<Stack gap={1.5}>
+	<SummaryList>
+		<SummaryListItem>
+			<SummaryListItemTerm>First name</SummaryListItemTerm>
+			<SummaryListItemDescription>Will</SummaryListItemDescription>
+		</SummaryListItem>
+		<SummaryListItem>
+			<SummaryListItemTerm>Last name</SummaryListItemTerm>
+			<SummaryListItemDescription>Power</SummaryListItemDescription>
+		</SummaryListItem>
+		<SummaryListItem>
+			<SummaryListItemTerm>Contact information</SummaryListItemTerm>
+			<SummaryListItemDescription>
+				<Stack>
+					<Text>+61 9912 3456</Text>
+					<Text>will.power@example.com</Text>
+				</Stack>
+			</SummaryListItemDescription>
+		</SummaryListItem>
+		<SummaryListItem>
+			<SummaryListItemTerm>Date of birth</SummaryListItemTerm>
+			<SummaryListItemDescription>09/06/1995</SummaryListItemDescription>
+		</SummaryListItem>
+	</SummaryList>
+	<TextLink href="#">Change all</TextLink>
+</Stack>
 ```
 
 ## Actions

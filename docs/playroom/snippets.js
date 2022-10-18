@@ -729,29 +729,32 @@ items={[
 	{
 		group: 'SummaryList',
 		name: 'Basic',
-		code: `<SummaryList>
-      <SummaryListItem>
+		code: `<Stack gap={1.5}>
+      <SummaryList>
+        <SummaryListItem>
           <SummaryListItemTerm>First name</SummaryListItemTerm>
           <SummaryListItemDescription>Will</SummaryListItemDescription>
-      </SummaryListItem>
-      <SummaryListItem>
+        </SummaryListItem>
+        <SummaryListItem>
           <SummaryListItemTerm>Last name</SummaryListItemTerm>
           <SummaryListItemDescription>Power</SummaryListItemDescription>
-      </SummaryListItem>
-      <SummaryListItem>
+        </SummaryListItem>
+        <SummaryListItem>
           <SummaryListItemTerm>Contact information</SummaryListItemTerm>
           <SummaryListItemDescription>
-              <Stack>
-                  <Text>+61 9912 3456</Text>
-                  <Text>will.power@example.com</Text>
-              </Stack>
+            <Stack>
+              <Text>+61 9912 3456</Text>
+              <Text>will.power@example.com</Text>
+            </Stack>
           </SummaryListItemDescription>
-      </SummaryListItem>
-      <SummaryListItem>
+        </SummaryListItem>
+        <SummaryListItem>
           <SummaryListItemTerm>Date of birth</SummaryListItemTerm>
           <SummaryListItemDescription>09/06/1995</SummaryListItemDescription>
-      </SummaryListItem>
-  </SummaryList>`,
+        </SummaryListItem>
+      </SummaryList>
+      <TextLink href="#">Change all</TextLink>
+    </Stack>`,
 	},
 	{
 		group: 'SummaryList',
