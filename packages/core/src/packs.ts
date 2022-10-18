@@ -42,7 +42,7 @@ const outline = {
 const underline = {
 	textDecoration: 'underline',
 	textDecorationSkipInk: 'auto',
-};
+} as const;
 
 /* Used for styling disabling form elements */
 const disabled = {
