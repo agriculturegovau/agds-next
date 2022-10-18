@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import { Box, Flex } from '@ag.ds-next/box';
+import { Flex } from '@ag.ds-next/box';
 
 export type DescriptionListProps = {};
 
@@ -8,52 +8,41 @@ type PropsWithOnlyChildren = {
 };
 
 export const Term = ({ children }: PropsWithOnlyChildren) => (
-	<Box
-		as="dt"
-		paddingY={0.75}
-		fontWeight="bold"
-		width={['100%', '30%']}
-		display="table-cell"
-	>
+	<Flex as="dt" fontWeight="bold" width={['100%', '30%']}>
 		{children}
-	</Box>
+	</Flex>
 );
 
 export const Description = ({ children }: PropsWithOnlyChildren) => (
-	<Box as="dd" paddingY={0.75} display="table-cell">
+	<Flex as="dd" flexGrow={1}>
 		{children}
-	</Box>
+	</Flex>
 );
 
 export const Action = ({ children }: PropsWithOnlyChildren) => (
-	<Box
-		as="dd"
-		paddingY={0.75}
-		display="table-cell"
-		css={{ textAlign: 'right' }}
-		width={['100%', '20%']}
-	>
-		{children}
-	</Box>
+	<Flex as="dd">{children}</Flex>
 );
 
 export const DescriptionList = ({ children }: PropsWithOnlyChildren) => (
-	<Box
+	<Flex
 		as="dl"
 		width="100%"
 		borderTop
 		borderColor="muted"
-		display="table"
-		css={{
-			borderCollapse: 'collapse',
-		}}
+		flexDirection="column"
 	>
 		{children}
-	</Box>
+	</Flex>
 );
 
 export const DescriptionListItem = ({ children }: PropsWithOnlyChildren) => (
-	<Box display="table-row" borderBottom borderColor="muted">
+	<Flex
+		borderBottom
+		borderColor="muted"
+		flexDirection={['column', 'row']}
+		gap={0.5}
+		paddingY={0.75}
+	>
 		{children}
-	</Box>
+	</Flex>
 );

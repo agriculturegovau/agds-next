@@ -26,7 +26,7 @@ export const Basic: ComponentStory<typeof DescriptionList> = (args) => (
 			<Description>Power</Description>
 		</DescriptionListItem>
 		<DescriptionListItem>
-			<Term>Email</Term>
+			<Term>Contact information</Term>
 			<Description>
 				<Stack>
 					<Text>+61 9912 3456</Text>
@@ -59,8 +59,13 @@ export const Updatable: ComponentStory<typeof DescriptionList> = (args) => (
 			</Action>
 		</DescriptionListItem>
 		<DescriptionListItem>
-			<Term>Email</Term>
-			<Description>will.power@example.com</Description>
+			<Term>Contact information</Term>
+			<Description>
+				<Stack>
+					<Text>+61 9912 3456</Text>
+					<Text>will.power@example.com</Text>
+				</Stack>
+			</Description>
 			<Action>
 				<TextLink href="#">Change</TextLink>
 			</Action>
