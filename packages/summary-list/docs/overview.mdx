@@ -4,3 +4,75 @@ description: Description of SummaryList
 group: Content
 storybookPath: /story/Content-SummaryList--basic
 ---
+
+SummaryList displays a list of terms and descriptions as key value pairs. It is similar to a two-column table, but renders a HTML Description List (`<dl>`) element.
+
+Common uses for this component are to implement a glossary or to display metadata.
+
+```jsx live
+<SummaryList>
+	<SummaryListItem>
+		<SummaryListItemTerm>First name</SummaryListItemTerm>
+		<SummaryListItemDescription>Will</SummaryListItemDescription>
+	</SummaryListItem>
+	<SummaryListItem>
+		<SummaryListItemTerm>Last name</SummaryListItemTerm>
+		<SummaryListItemDescription>Power</SummaryListItemDescription>
+	</SummaryListItem>
+	<SummaryListItem>
+		<SummaryListItemTerm>Contact information</SummaryListItemTerm>
+		<SummaryListItemDescription>
+			<Stack>
+				<Text>+61 9912 3456</Text>
+				<Text>will.power@example.com</Text>
+			</Stack>
+		</SummaryListItemDescription>
+	</SummaryListItem>
+	<SummaryListItem>
+		<SummaryListItemTerm>Date of birth</SummaryListItemTerm>
+		<SummaryListItemDescription>09/06/1995</SummaryListItemDescription>
+	</SummaryListItem>
+</SummaryList>
+```
+
+## Actions
+
+You can add actions to the end of a SummaryList by nesting `SummaryListItemAction` components.
+
+```jsx live
+<SummaryList>
+	<SummaryListItem>
+		<SummaryListItemTerm>First name</SummaryListItemTerm>
+		<SummaryListItemDescription>Will</SummaryListItemDescription>
+		<SummaryListItemAction>
+			<TextLink href="#">Change</TextLink>
+		</SummaryListItemAction>
+	</SummaryListItem>
+	<SummaryListItem>
+		<SummaryListItemTerm>Last name</SummaryListItemTerm>
+		<SummaryListItemDescription>Power</SummaryListItemDescription>
+		<SummaryListItemAction>
+			<TextLink href="#">Change</TextLink>
+		</SummaryListItemAction>
+	</SummaryListItem>
+	<SummaryListItem>
+		<SummaryListItemTerm>Contact information</SummaryListItemTerm>
+		<SummaryListItemDescription>
+			<Stack>
+				<Text>+61 9912 3456</Text>
+				<Text>will.power@example.com</Text>
+			</Stack>
+		</SummaryListItemDescription>
+		<SummaryListItemAction>
+			<TextLink href="#">Change</TextLink>
+		</SummaryListItemAction>
+	</SummaryListItem>
+	<SummaryListItem>
+		<SummaryListItemTerm>Date of birth</SummaryListItemTerm>
+		<SummaryListItemDescription>09/06/1995</SummaryListItemDescription>
+		<SummaryListItemAction>
+			<TextLink href="#">Change</TextLink>
+		</SummaryListItemAction>
+	</SummaryListItem>
+</SummaryList>
+```
