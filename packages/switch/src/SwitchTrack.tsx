@@ -14,12 +14,10 @@ export const SwitchContainer = ({ children, size }: SwitchContainerProps) => {
 	const { width, height } = switchTrackStyles[size];
 	return (
 		<Box
-			css={{
-				flexShrink: 0,
-				width,
-				height,
-				position: 'relative',
-			}}
+			as="span"
+			width={width}
+			height={height}
+			css={{ position: 'relative', flexShrink: 0 }}
 		>
 			{children}
 		</Box>
@@ -32,6 +30,7 @@ export const SwitchTrack = ({ checked, size }: SwitchTrackProps) => {
 	const { borderWidth, height } = switchTrackStyles[size];
 	return (
 		<Box
+			as="span"
 			css={{
 				borderWidth,
 				borderStyle: 'solid',
@@ -75,6 +74,7 @@ export const SwitchThumb = ({ checked, size }: SwitchThumbProps) => {
 
 	return (
 		<AnimatedFlex
+			as="span"
 			alignItems="center"
 			justifyContent="center"
 			style={animationStyles}
@@ -94,7 +94,7 @@ export const SwitchThumb = ({ checked, size }: SwitchThumbProps) => {
 	);
 };
 
-const switchThumbIconsizeMap = {
+const switchThumbIconSizeMap = {
 	md: {
 		width: 18,
 		height: 14,
@@ -107,17 +107,14 @@ const switchThumbIconsizeMap = {
 	},
 };
 const SwitchThumbIcon = ({ size }: { size: SwitchSize }) => {
-	const { height, width, stroke } = switchThumbIconsizeMap[size];
+	const { height, width, stroke } = switchThumbIconSizeMap[size];
 	return (
 		<svg
 			width="18"
 			height="14"
 			viewBox="0 0 18 14"
 			fill="none"
-			css={{
-				width,
-				height,
-			}}
+			css={{ width, height }}
 			stroke={boxPalette.foregroundAction}
 			strokeWidth={stroke}
 			strokeLinecap="round"
