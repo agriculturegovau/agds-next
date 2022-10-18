@@ -2,6 +2,7 @@ import { Fragment, useRef, useState } from 'react';
 import useSWR from 'swr';
 import { Stack } from '@ag.ds-next/box';
 import {
+	TableWrapper,
 	Table,
 	TableCaption,
 	TableCell,
@@ -43,61 +44,63 @@ export function RemoteDataTable() {
 	return (
 		<PageContent>
 			<Stack gap={1}>
-				<Table>
-					<TableCaption>Star wars planets</TableCaption>
-					<TableHead>
-						<tr>
-							<TableHeader width="20%" scope="col">
-								Name
-							</TableHeader>
-							<TableHeader width="60%" scope="col">
-								Climate
-							</TableHeader>
-							<TableHeader width="20%" textAlign="right" scope="col">
-								Population
-							</TableHeader>
-						</tr>
-					</TableHead>
-					<TableBody>
-						{data ? (
-							<Fragment>
-								{data.results.map((item) => {
-									const parsedPopulation = parseInt(item.population);
-									return (
-										<tr key={item.name}>
-											<TableCell>{item.name}</TableCell>
-											<TableCell>{item.climate}</TableCell>
-											<TableCell textAlign="right">
-												{isNaN(parsedPopulation)
-													? 'Unknown'
-													: numberFormatter.format(parsedPopulation)}
+				<TableWrapper>
+					<Table>
+						<TableCaption>Star wars planets</TableCaption>
+						<TableHead>
+							<tr>
+								<TableHeader width="20%" scope="col">
+									Name
+								</TableHeader>
+								<TableHeader width="60%" scope="col">
+									Climate
+								</TableHeader>
+								<TableHeader width="20%" textAlign="right" scope="col">
+									Population
+								</TableHeader>
+							</tr>
+						</TableHead>
+						<TableBody>
+							{data ? (
+								<Fragment>
+									{data.results.map((item) => {
+										const parsedPopulation = parseInt(item.population);
+										return (
+											<tr key={item.name}>
+												<TableCell>{item.name}</TableCell>
+												<TableCell>{item.climate}</TableCell>
+												<TableCell textAlign="right">
+													{isNaN(parsedPopulation)
+														? 'Unknown'
+														: numberFormatter.format(parsedPopulation)}
+												</TableCell>
+											</tr>
+										);
+									})}
+								</Fragment>
+							) : (
+								<Fragment>
+									{Array.from(Array(10).keys()).map((i) => (
+										<tr key={i}>
+											<TableCell>
+												<SkeletonText />
+												<VisuallyHidden>Loading</VisuallyHidden>
+											</TableCell>
+											<TableCell>
+												<SkeletonText width="50%" />
+												<VisuallyHidden>Loading</VisuallyHidden>
+											</TableCell>
+											<TableCell>
+												<SkeletonText />
+												<VisuallyHidden>Loading</VisuallyHidden>
 											</TableCell>
 										</tr>
-									);
-								})}
-							</Fragment>
-						) : (
-							<Fragment>
-								{Array.from(Array(10).keys()).map((i) => (
-									<tr key={i}>
-										<TableCell>
-											<SkeletonText />
-											<VisuallyHidden>Loading</VisuallyHidden>
-										</TableCell>
-										<TableCell>
-											<SkeletonText width="50%" />
-											<VisuallyHidden>Loading</VisuallyHidden>
-										</TableCell>
-										<TableCell>
-											<SkeletonText />
-											<VisuallyHidden>Loading</VisuallyHidden>
-										</TableCell>
-									</tr>
-								))}
-							</Fragment>
-						)}
-					</TableBody>
-				</Table>
+									))}
+								</Fragment>
+							)}
+						</TableBody>
+					</Table>
+				</TableWrapper>
 				{totalPages.current ? (
 					<PaginationButtons
 						currentPage={currentPage}
