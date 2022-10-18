@@ -11,7 +11,7 @@ import { TableWrapper } from './TableWrapper';
 
 afterEach(cleanup);
 
-function renderDetail() {
+function renderTable() {
 	return render(
 		<TableWrapper>
 			<Table>
@@ -91,12 +91,12 @@ function renderDetail() {
 
 describe('Table', () => {
 	it('renders correctly', () => {
-		const { container } = renderDetail();
+		const { container } = renderTable();
 		expect(container).toMatchSnapshot();
 	});
 
 	it('renders a valid HTML structure', () => {
-		const { container } = renderDetail();
+		const { container } = renderTable();
 		expect(container).toHTMLValidate({
 			extends: ['html-validate:recommended'],
 		});
