@@ -211,10 +211,7 @@ const selectStyles = ({
 			  }
 			: undefined),
 
-		'&:disabled': {
-			cursor: 'not-allowed',
-			opacity: 0.3,
-		},
+		'&:disabled': packs.disabled,
 
 		'&:focus': packs.outline,
 	} as const);

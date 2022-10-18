@@ -74,9 +74,8 @@ export const reactDayPickerStyles = (range: boolean) =>
 			color: boxPalette.foregroundAction,
 		},
 		'.rdp-button[disabled]': {
+			...packs.disabled,
 			color: boxPalette.foregroundText,
-			opacity: 0.3,
-			cursor: 'not-allowed',
 		},
 		'.rdp-button:hover:not([disabled])': {
 			backgroundColor: boxPalette.backgroundShade,

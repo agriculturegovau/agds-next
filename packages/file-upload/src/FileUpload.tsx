@@ -9,7 +9,7 @@ import { useDropzone, DropzoneOptions } from 'react-dropzone';
 import formatFileSize from 'filesize';
 import { Flex, Stack } from '@ag.ds-next/box';
 import { Button } from '@ag.ds-next/button';
-import { packs, boxPalette, tokens, mergeRefs } from '@ag.ds-next/core';
+import { packs, boxPalette, mergeRefs } from '@ag.ds-next/core';
 import { Field } from '@ag.ds-next/field';
 import { UploadIcon } from '@ag.ds-next/icon';
 import { Text } from '@ag.ds-next/text';
@@ -202,6 +202,7 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 								alignItems="center"
 								flexDirection="column"
 								border
+								borderWidth="lg"
 								rounded
 								css={styles}
 							>
@@ -299,10 +300,9 @@ export const fileInputStyles = ({
 	multiline?: boolean;
 }) =>
 	({
-		borderWidth: tokens.borderWidth.lg,
 		borderStyle: 'dashed',
-		borderColor: boxPalette.border,
 		backgroundColor: boxPalette.backgroundShade,
+
 		...(invalid
 			? {
 					backgroundColor: boxPalette.systemErrorMuted,
@@ -313,13 +313,10 @@ export const fileInputStyles = ({
 					backgroundColor: boxPalette.systemSuccessMuted,
 					borderColor: boxPalette.systemSuccess,
 			  }
-			: disabled
-			? {
-					cursor: 'not-allowed',
-					opacity: 0.3,
-					background: 'none',
-			  }
 			: undefined),
 
-		'&:focus': packs.outline,
+		...(disabled && {
+			background: 'none',
+			...packs.disabled,
+		}),
 	} as const);
