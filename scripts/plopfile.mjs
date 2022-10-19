@@ -60,6 +60,13 @@ export default function newPackage(
 					'export { {{componentName}} } from "@ag.ds-next/{{packageName}}"\n',
 			});
 
+			actions.push({
+				type: 'add',
+				path: '../.changeset/plop-create-{{packageName}}.md',
+				template:
+					"---\n'@ag.ds-next/{{packageName}}': major\n---\n\nCreate package",
+			});
+
 			return actions;
 		},
 	});
