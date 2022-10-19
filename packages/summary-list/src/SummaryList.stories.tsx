@@ -41,7 +41,7 @@ export const Basic = () => (
 	</SummaryList>
 );
 
-export const withChangeLink: ComponentStory<typeof SummaryList> = (args) => (
+export const WithChangeLink: ComponentStory<typeof SummaryList> = (args) => (
 	<Stack gap={1.5}>
 		<SummaryList {...args}>
 			<SummaryListItem>
@@ -69,11 +69,10 @@ export const withChangeLink: ComponentStory<typeof SummaryList> = (args) => (
 		<TextLink href="#">Change all</TextLink>
 	</Stack>
 );
-withChangeLink.args = {};
-withChangeLink.storyName = 'With "Change all" action';
+WithChangeLink.storyName = 'With "Change all" action';
 
-export const Updatable = () => (
-	<SummaryList {...args}>
+export const WithItemChangeLink = () => (
+	<SummaryList>
 		<SummaryListItem>
 			<SummaryListItemTerm>First name</SummaryListItemTerm>
 			<SummaryListItemDescription>Will</SummaryListItemDescription>
@@ -109,4 +108,4 @@ export const Updatable = () => (
 		</SummaryListItem>
 	</SummaryList>
 );
-Updatable.storyName = 'With individual "Change" actions';
+WithItemChangeLink.storyName = 'With individual "Change" actions';
