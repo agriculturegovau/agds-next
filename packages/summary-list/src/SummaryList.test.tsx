@@ -1,8 +1,6 @@
 import '@testing-library/jest-dom';
 import 'html-validate/jest';
 import { cleanup, render } from '@testing-library/react';
-import { Stack } from '@ag.ds-next/box';
-import { Text } from '@ag.ds-next/text';
 import { TextLink } from '@ag.ds-next/text-link';
 import {
 	SummaryList,
@@ -35,10 +33,9 @@ function renderSummaryList(props?: Partial<SummaryListProps>) {
 			<SummaryListItem>
 				<SummaryListItemTerm>Contact information</SummaryListItemTerm>
 				<SummaryListItemDescription>
-					<Stack>
-						<Text>+61 9912 3456</Text>
-						<Text>will.power@example.com</Text>
-					</Stack>
+					+61 9912 3456
+					<br />
+					will.power@example.com
 				</SummaryListItemDescription>
 				<SummaryListItemAction>
 					<TextLink href="#">Change</TextLink>

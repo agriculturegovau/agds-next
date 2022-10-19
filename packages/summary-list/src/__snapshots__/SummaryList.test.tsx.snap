@@ -64,20 +64,9 @@ exports[`SummaryList renders correctly 1`] = `
       <dd
         class="css-yup5oz-boxStyles"
       >
-        <div
-          class="css-o80hmi-boxStyles"
-        >
-          <span
-            class="css-6j1v6l-boxStyles-Text"
-          >
-            +61 9912 3456
-          </span>
-          <span
-            class="css-6j1v6l-boxStyles-Text"
-          >
-            will.power@example.com
-          </span>
-        </div>
+        +61 9912 3456
+        <br />
+        will.power@example.com
       </dd>
       <dd
         class="css-1jhrbpg-boxStyles"
