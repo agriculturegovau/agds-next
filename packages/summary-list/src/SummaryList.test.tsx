@@ -57,7 +57,7 @@ function renderSummaryList(props?: Partial<SummaryListProps>) {
 
 describe('SummaryList', () => {
 	it('renders correctly', () => {
-		const { container } = renderSummaryList()
+		const { container } = renderSummaryList();
 		expect(container).toMatchSnapshot();
 	});
 
