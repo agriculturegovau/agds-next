@@ -56,6 +56,11 @@ function renderSummaryList(props?: Partial<SummaryListProps>) {
 }
 
 describe('SummaryList', () => {
+	it('renders correctly', () => {
+		const { container } = renderSummaryList()
+		expect(container).toMatchSnapshot();
+	});
+
 	it('renders a valid HTML structure', () => {
 		const { container } = renderSummaryList();
 		expect(container).toHTMLValidate({

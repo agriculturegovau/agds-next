@@ -15,8 +15,8 @@ export default {
 	component: SummaryList,
 } as ComponentMeta<typeof SummaryList>;
 
-export const Basic: ComponentStory<typeof SummaryList> = (args) => (
-	<SummaryList {...args}>
+export const Basic = () => (
+	<SummaryList>
 		<SummaryListItem>
 			<SummaryListItemTerm>First name</SummaryListItemTerm>
 			<SummaryListItemDescription>Will</SummaryListItemDescription>
@@ -40,7 +40,6 @@ export const Basic: ComponentStory<typeof SummaryList> = (args) => (
 		</SummaryListItem>
 	</SummaryList>
 );
-Basic.args = {};
 
 export const withChangeLink: ComponentStory<typeof SummaryList> = (args) => (
 	<Stack gap={1.5}>
@@ -73,7 +72,7 @@ export const withChangeLink: ComponentStory<typeof SummaryList> = (args) => (
 withChangeLink.args = {};
 withChangeLink.storyName = 'With "Change all" action';
 
-export const Updatable: ComponentStory<typeof SummaryList> = (args) => (
+export const Updatable = () => (
 	<SummaryList {...args}>
 		<SummaryListItem>
 			<SummaryListItemTerm>First name</SummaryListItemTerm>
@@ -110,5 +109,4 @@ export const Updatable: ComponentStory<typeof SummaryList> = (args) => (
 		</SummaryListItem>
 	</SummaryList>
 );
-Updatable.args = {};
 Updatable.storyName = 'With individual "Change" actions';
