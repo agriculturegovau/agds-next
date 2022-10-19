@@ -1,0 +1,23 @@
+## Composition
+
+It is important that this component is composed correctly to ensure the correct semantics are conveyed to assistive technology.
+
+```jsx
+<SummaryList>
+	<SummaryListItem>
+		<SummaryListItemTerm>First name</SummaryListItemTerm>
+		<SummaryListItemDescription>Will</SummaryListItemDescription>
+		<SummaryListItemAction>
+			<TextLink href="#">Change</TextLink>
+		</SummaryListItemAction>
+	</SummaryListItem>
+</SummaryList>
+```
+
+## Props
+
+<ComponentPropsTable name="SummaryList" />
+<ComponentPropsTable name="SummaryListItem" />
+<ComponentPropsTable name="SummaryListItemTerm" />
+<ComponentPropsTable name="SummaryListItemDescription" />
+<ComponentPropsTable name="SummaryListItemAction" />

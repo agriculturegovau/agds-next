@@ -726,6 +726,75 @@ items={[
 		code: `<Details label="Details"><Text as="p">This is a small paragraph of text that is supplementary to the main page
 		content.</Text></Details>`,
 	},
+	{
+		group: 'SummaryList',
+		name: 'Basic',
+		code: `<Stack gap={1.5}>
+      <SummaryList>
+        <SummaryListItem>
+          <SummaryListItemTerm>First name</SummaryListItemTerm>
+          <SummaryListItemDescription>Will</SummaryListItemDescription>
+        </SummaryListItem>
+        <SummaryListItem>
+          <SummaryListItemTerm>Last name</SummaryListItemTerm>
+          <SummaryListItemDescription>Power</SummaryListItemDescription>
+        </SummaryListItem>
+        <SummaryListItem>
+          <SummaryListItemTerm>Contact information</SummaryListItemTerm>
+          <SummaryListItemDescription>
+            <Stack>
+              <Text>+61 9912 3456</Text>
+              <Text>will.power@example.com</Text>
+            </Stack>
+          </SummaryListItemDescription>
+        </SummaryListItem>
+        <SummaryListItem>
+          <SummaryListItemTerm>Date of birth</SummaryListItemTerm>
+          <SummaryListItemDescription>09/06/1995</SummaryListItemDescription>
+        </SummaryListItem>
+      </SummaryList>
+      <TextLink href="#">Change all</TextLink>
+    </Stack>`,
+	},
+	{
+		group: 'SummaryList',
+		name: 'With actions',
+		code: `<SummaryList>
+      <SummaryListItem>
+          <SummaryListItemTerm>First name</SummaryListItemTerm>
+          <SummaryListItemDescription>Will</SummaryListItemDescription>
+          <SummaryListItemAction>
+              <TextLink href="#">Change</TextLink>
+          </SummaryListItemAction>
+      </SummaryListItem>
+      <SummaryListItem>
+          <SummaryListItemTerm>Last name</SummaryListItemTerm>
+          <SummaryListItemDescription>Power</SummaryListItemDescription>
+          <SummaryListItemAction>
+              <TextLink href="#">Change</TextLink>
+          </SummaryListItemAction>
+      </SummaryListItem>
+      <SummaryListItem>
+          <SummaryListItemTerm>Contact information</SummaryListItemTerm>
+          <SummaryListItemDescription>
+              <Stack>
+                  <Text>+61 9912 3456</Text>
+                  <Text>will.power@example.com</Text>
+              </Stack>
+          </SummaryListItemDescription>
+          <SummaryListItemAction>
+              <TextLink href="#">Change</TextLink>
+          </SummaryListItemAction>
+      </SummaryListItem>
+      <SummaryListItem>
+          <SummaryListItemTerm>Date of birth</SummaryListItemTerm>
+          <SummaryListItemDescription>09/06/1995</SummaryListItemDescription>
+          <SummaryListItemAction>
+              <TextLink href="#">Change</TextLink>
+          </SummaryListItemAction>
+      </SummaryListItem>
+    </SummaryList>`,
+	},
 ];
 
 export default snippets;

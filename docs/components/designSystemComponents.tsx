@@ -151,3 +151,10 @@ export {
 export { Autocomplete } from '@ag.ds-next/autocomplete';
 export { Combobox } from '@ag.ds-next/combobox';
 export { Details } from '@ag.ds-next/details';
+export {
+	SummaryList,
+	SummaryListItem,
+	SummaryListItemTerm,
+	SummaryListItemDescription,
+	SummaryListItemAction,
+} from '@ag.ds-next/summary-list';
