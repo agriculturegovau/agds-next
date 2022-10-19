@@ -19,11 +19,11 @@ import { useScrollToField } from '@ag.ds-next/field';
 import { useToggleState } from '@ag.ds-next/core';
 import { PageAlert } from '@ag.ds-next/page-alert';
 import {
-	DefinitionDescription,
-	DefinitionList,
-	DefinitionListItem,
-	DefinitionTerm,
-} from '../DefinitionList';
+	SummaryList,
+	SummaryListItem,
+	SummaryListItemDescription,
+	SummaryListItemTerm,
+} from '@ag.ds-next/summary-list';
 import { FormRequiredFieldsMessage } from '../FormRequiredFieldsMessage';
 import { FormRegisterPetPersonalDetailsContainer } from './FormRegisterPetPersonalDetailsContainer';
 import { FormRegisterPetPersonalDetailsActions } from './FormRegisterPetPersonalDetailsActions';
@@ -232,32 +232,32 @@ export const FormRegisterPetPersonalDetailsStep0 = () => {
 							<H2 ref={headingRef} tabIndex={-1} focus>
 								Check personal details
 							</H2>
-							<DefinitionList>
-								<DefinitionListItem>
-									<DefinitionTerm>First name</DefinitionTerm>
-									<DefinitionDescription>
+							<SummaryList>
+								<SummaryListItem>
+									<SummaryListItemTerm>First name</SummaryListItemTerm>
+									<SummaryListItemDescription>
 										{localFormState.firstName}
-									</DefinitionDescription>
-								</DefinitionListItem>
-								<DefinitionListItem>
-									<DefinitionTerm>Last name</DefinitionTerm>
-									<DefinitionDescription>
+									</SummaryListItemDescription>
+								</SummaryListItem>
+								<SummaryListItem>
+									<SummaryListItemTerm>Last name</SummaryListItemTerm>
+									<SummaryListItemDescription>
 										{localFormState.lastName}
-									</DefinitionDescription>
-								</DefinitionListItem>
-								<DefinitionListItem>
-									<DefinitionTerm>Email</DefinitionTerm>
-									<DefinitionDescription>
+									</SummaryListItemDescription>
+								</SummaryListItem>
+								<SummaryListItem>
+									<SummaryListItemTerm>Email</SummaryListItemTerm>
+									<SummaryListItemDescription>
 										{localFormState.email}
-									</DefinitionDescription>
-								</DefinitionListItem>
-								<DefinitionListItem>
-									<DefinitionTerm>Date of birth</DefinitionTerm>
-									<DefinitionDescription>
+									</SummaryListItemDescription>
+								</SummaryListItem>
+								<SummaryListItem>
+									<SummaryListItemTerm>Date of birth</SummaryListItemTerm>
+									<SummaryListItemDescription>
 										{localFormState.dob?.toLocaleDateString()}
-									</DefinitionDescription>
-								</DefinitionListItem>
-							</DefinitionList>
+									</SummaryListItemDescription>
+								</SummaryListItem>
+							</SummaryList>
 							<Button variant="text" onClick={() => toggleFormVisibilty()}>
 								Change personal details
 							</Button>

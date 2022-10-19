@@ -1,10 +1,10 @@
 import { ReactNode } from 'react';
 import {
-	DefinitionList,
-	DefinitionListItem,
-	DefinitionDescription,
-	DefinitionTerm,
-} from './DefinitionList';
+	SummaryList,
+	SummaryListItem,
+	SummaryListItemDescription,
+	SummaryListItemTerm,
+} from '@ag.ds-next/summary-list';
 
 export function FormDefinitionList({
 	items,
@@ -12,13 +12,13 @@ export function FormDefinitionList({
 	items: { label: string; value: ReactNode }[];
 }) {
 	return (
-		<DefinitionList>
+		<SummaryList>
 			{items.map((item, idx) => (
-				<DefinitionListItem key={`${item.label}-${idx}`}>
-					<DefinitionTerm>{item.label}</DefinitionTerm>
-					<DefinitionDescription>{item.value}</DefinitionDescription>
-				</DefinitionListItem>
+				<SummaryListItem key={`${item.label}-${idx}`}>
+					<SummaryListItemTerm>{item.label}</SummaryListItemTerm>
+					<SummaryListItemDescription>{item.value}</SummaryListItemDescription>
+				</SummaryListItem>
 			))}
-		</DefinitionList>
+		</SummaryList>
 	);
 }

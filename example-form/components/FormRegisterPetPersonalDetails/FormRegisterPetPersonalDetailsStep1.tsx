@@ -13,11 +13,11 @@ import { useToggleState } from '@ag.ds-next/core';
 import { PageAlert } from '@ag.ds-next/page-alert';
 import { Select } from '@ag.ds-next/select';
 import {
-	DefinitionDescription,
-	DefinitionList,
-	DefinitionListItem,
-	DefinitionTerm,
-} from '../DefinitionList';
+	SummaryList,
+	SummaryListItem,
+	SummaryListItemDescription,
+	SummaryListItemTerm,
+} from '@ag.ds-next/summary-list';
 import { FormRequiredFieldsMessage } from '../FormRequiredFieldsMessage';
 import { FormRegisterPetPersonalDetailsContainer } from './FormRegisterPetPersonalDetailsContainer';
 import { FormRegisterPetPersonalDetailsActions } from './FormRegisterPetPersonalDetailsActions';
@@ -211,32 +211,34 @@ export const FormRegisterPetPersonalDetailsStep1 = () => {
 							<H2 ref={headingRef} tabIndex={-1} focus>
 								Check address details
 							</H2>
-							<DefinitionList>
-								<DefinitionListItem>
-									<DefinitionTerm>Street address</DefinitionTerm>
-									<DefinitionDescription>
+							<SummaryList>
+								<SummaryListItem>
+									<SummaryListItemTerm>Street address</SummaryListItemTerm>
+									<SummaryListItemDescription>
 										{localFormState.streetAddress}
-									</DefinitionDescription>
-								</DefinitionListItem>
-								<DefinitionListItem>
-									<DefinitionTerm>Suburb, town or city</DefinitionTerm>
-									<DefinitionDescription>
+									</SummaryListItemDescription>
+								</SummaryListItem>
+								<SummaryListItem>
+									<SummaryListItemTerm>
+										Suburb, town or city
+									</SummaryListItemTerm>
+									<SummaryListItemDescription>
 										{localFormState.suburbTownCity}
-									</DefinitionDescription>
-								</DefinitionListItem>
-								<DefinitionListItem>
-									<DefinitionTerm>State</DefinitionTerm>
-									<DefinitionDescription>
+									</SummaryListItemDescription>
+								</SummaryListItem>
+								<SummaryListItem>
+									<SummaryListItemTerm>State</SummaryListItemTerm>
+									<SummaryListItemDescription>
 										{localFormState.state}
-									</DefinitionDescription>
-								</DefinitionListItem>
-								<DefinitionListItem>
-									<DefinitionTerm>Post code</DefinitionTerm>
-									<DefinitionDescription>
+									</SummaryListItemDescription>
+								</SummaryListItem>
+								<SummaryListItem>
+									<SummaryListItemTerm>Post code</SummaryListItemTerm>
+									<SummaryListItemDescription>
 										{localFormState.postcode}
-									</DefinitionDescription>
-								</DefinitionListItem>
-							</DefinitionList>
+									</SummaryListItemDescription>
+								</SummaryListItem>
+							</SummaryList>
 							<Button variant="text" onClick={() => toggleFormVisibilty()}>
 								Change address
 							</Button>
