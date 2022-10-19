@@ -1,7 +1,6 @@
 {
 	"name": "@ag.ds-next/summary-list",
 	"version": "0.0.1",
-	"description": "SummaryList displays a list of terms and descriptions as key value pairs. It is similar to a two-column table, but renders a HTML Description List (<dl>) element.",
 	"license": "MIT",
 	"main": "dist/ag.ds-next-summary-list.cjs.js",
 	"module": "dist/ag.ds-next-summary-list.esm.js",

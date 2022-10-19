@@ -5,28 +5,38 @@ type PropsWithOnlyChildren = {
 	children: ReactNode;
 };
 
-export type SummaryListProps = PropsWithOnlyChildren;
+export type SummaryListItemTermProps = PropsWithOnlyChildren;
 
 /** SummaryListItemTerm should be nested as the first child of SummaryListItem */
-export const SummaryListItemTerm = ({ children }: PropsWithOnlyChildren) => (
-	<Flex as="dt" fontWeight="bold" width={['100%', '30%']} minWidth="200px">
-		{children}
-	</Flex>
-);
+export function SummaryListItemTerm({ children }: SummaryListItemTermProps) {
+	return (
+		<Flex as="dt" fontWeight="bold" width={['100%', '30%']} minWidth="200px">
+			{children}
+		</Flex>
+	);
+}
+
+export type SummaryListItemDescriptionProps = PropsWithOnlyChildren;
 
 /** SummaryListItemTerm should be nested as the second child of SummaryListItem, after SummaryListItemTerm */
-export const SummaryListItemDescription = ({
+export function SummaryListItemDescription({
 	children,
-}: PropsWithOnlyChildren) => (
-	<Flex as="dd" flexGrow={1}>
-		{children}
-	</Flex>
-);
+}: SummaryListItemDescriptionProps) {
+	return (
+		<Flex as="dd" flexGrow={1}>
+			{children}
+		</Flex>
+	);
+}
+
+export type SummaryListItemAction = PropsWithOnlyChildren;
 
 /** SummaryListItemAction should be nested as the last child of SummaryListItem, and should wrap a Link component */
-export const SummaryListItemAction = ({ children }: PropsWithOnlyChildren) => (
-	<Flex as="dd">{children}</Flex>
-);
+export function SummaryListItemAction({ children }: SummaryListItemAction) {
+	return <Flex as="dd">{children}</Flex>;
+}
+
+export type SummaryListProps = PropsWithOnlyChildren;
 
 /**
  * SummaryList displays a list of terms and descriptions as key value pairs.
@@ -46,15 +56,19 @@ export function SummaryList({ children }: SummaryListProps) {
 	);
 }
 
+export type SummaryListItemProps = PropsWithOnlyChildren;
+
 /** SummaryListItem should be nested as a child of SummaryList */
-export const SummaryListItem = ({ children }: PropsWithOnlyChildren) => (
-	<Flex
-		borderBottom
-		borderColor="muted"
-		flexDirection={['column', 'row']}
-		gap={0.5}
-		paddingY={0.75}
-	>
-		{children}
-	</Flex>
-);
+export function SummaryListItem({ children }: SummaryListItemProps) {
+	return (
+		<Flex
+			borderBottom
+			borderColor="muted"
+			flexDirection={['column', 'row']}
+			gap={0.5}
+			paddingY={0.75}
+		>
+			{children}
+		</Flex>
+	);
+}
