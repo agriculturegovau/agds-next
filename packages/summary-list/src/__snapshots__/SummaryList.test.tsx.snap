@@ -1,0 +1,119 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SummaryList renders correctly 1`] = `
+<div>
+  <dl
+    class="css-11haoc9-boxStyles"
+  >
+    <div
+      class="css-balq7b-boxStyles"
+    >
+      <dt
+        class="css-5k7ugu-boxStyles"
+      >
+        First name
+      </dt>
+      <dd
+        class="css-yup5oz-boxStyles"
+      >
+        Will
+      </dd>
+      <dd
+        class="css-1jhrbpg-boxStyles"
+      >
+        <a
+          class="css-38ppen-TextLink"
+          href="#"
+        >
+          Change
+        </a>
+      </dd>
+    </div>
+    <div
+      class="css-balq7b-boxStyles"
+    >
+      <dt
+        class="css-5k7ugu-boxStyles"
+      >
+        Last name
+      </dt>
+      <dd
+        class="css-yup5oz-boxStyles"
+      >
+        Power
+      </dd>
+      <dd
+        class="css-1jhrbpg-boxStyles"
+      >
+        <a
+          class="css-38ppen-TextLink"
+          href="#"
+        >
+          Change
+        </a>
+      </dd>
+    </div>
+    <div
+      class="css-balq7b-boxStyles"
+    >
+      <dt
+        class="css-5k7ugu-boxStyles"
+      >
+        Contact information
+      </dt>
+      <dd
+        class="css-yup5oz-boxStyles"
+      >
+        <div
+          class="css-o80hmi-boxStyles"
+        >
+          <span
+            class="css-6j1v6l-boxStyles-Text"
+          >
+            +61 9912 3456
+          </span>
+          <span
+            class="css-6j1v6l-boxStyles-Text"
+          >
+            will.power@example.com
+          </span>
+        </div>
+      </dd>
+      <dd
+        class="css-1jhrbpg-boxStyles"
+      >
+        <a
+          class="css-38ppen-TextLink"
+          href="#"
+        >
+          Change
+        </a>
+      </dd>
+    </div>
+    <div
+      class="css-balq7b-boxStyles"
+    >
+      <dt
+        class="css-5k7ugu-boxStyles"
+      >
+        Date of birth
+      </dt>
+      <dd
+        class="css-yup5oz-boxStyles"
+      >
+        09/06/1995
+      </dd>
+      <dd
+        class="css-1jhrbpg-boxStyles"
+      >
+        <a
+          class="css-38ppen-TextLink"
+          href="#"
+        >
+          Change
+        </a>
+      </dd>
+    </div>
+  </dl>
+</div>
+`;
