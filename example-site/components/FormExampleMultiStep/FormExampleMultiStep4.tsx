@@ -8,11 +8,11 @@ import { Checkbox, ControlGroup } from '@ag.ds-next/control-input';
 import { H2 } from '@ag.ds-next/heading';
 import { Button } from '@ag.ds-next/button';
 import {
-	DefinitionList,
-	DefinitionListItem,
-	DefinitionDescription,
-	DefinitionTerm,
-} from '../DefinitionList';
+	SummaryList,
+	SummaryListItem,
+	SummaryListItemDescription,
+	SummaryListItemTerm,
+} from '@ag.ds-next/summary-list';
 import { FORM_STEPS, useFormExampleMultiStep } from './FormExampleMultiStep';
 import { FormExampleMultiStepContainer } from './FormExampleMultiStepContainer';
 import { FormExampleMultiStepActions } from './FormExampleMultiStepActions';
@@ -52,14 +52,14 @@ export const FormExampleMultiStep4 = () => {
 			{/** Summary: Step 0 */}
 			<Stack gap={1.5} alignItems="flex-start">
 				<H2>{FORM_STEPS[0].label}</H2>
-				<DefinitionList>
-					<DefinitionListItem>
-						<DefinitionTerm>Fieldset question?</DefinitionTerm>
-						<DefinitionDescription>
+				<SummaryList>
+					<SummaryListItem>
+						<SummaryListItemTerm>Fieldset question?</SummaryListItemTerm>
+						<SummaryListItemDescription>
 							{formState[0]?.example}
-						</DefinitionDescription>
-					</DefinitionListItem>
-				</DefinitionList>
+						</SummaryListItemDescription>
+					</SummaryListItem>
+				</SummaryList>
 				<Button variant="text" onClick={() => goToStep(0)}>
 					Change
 				</Button>
@@ -67,20 +67,20 @@ export const FormExampleMultiStep4 = () => {
 			{/** Summary: Step 1 */}
 			<Stack gap={1.5} alignItems="flex-start">
 				<H2>{FORM_STEPS[1].label}</H2>
-				<DefinitionList>
-					<DefinitionListItem>
-						<DefinitionTerm>Describe actions taken</DefinitionTerm>
-						<DefinitionDescription>
+				<SummaryList>
+					<SummaryListItem>
+						<SummaryListItemTerm>Describe actions taken</SummaryListItemTerm>
+						<SummaryListItemDescription>
 							{formState[1]?.description}
-						</DefinitionDescription>
-					</DefinitionListItem>
-					<DefinitionListItem>
-						<DefinitionTerm>Uploaded file</DefinitionTerm>
-						<DefinitionDescription>
+						</SummaryListItemDescription>
+					</SummaryListItem>
+					<SummaryListItem>
+						<SummaryListItemTerm>Uploaded file</SummaryListItemTerm>
+						<SummaryListItemDescription>
 							{formState[1]?.files.map(({ name }) => name).join(', ')}
-						</DefinitionDescription>
-					</DefinitionListItem>
-				</DefinitionList>
+						</SummaryListItemDescription>
+					</SummaryListItem>
+				</SummaryList>
 				<Button variant="text" onClick={() => goToStep(1)}>
 					Change
 				</Button>
@@ -88,14 +88,14 @@ export const FormExampleMultiStep4 = () => {
 			{/** Summary: Step 2 */}
 			<Stack gap={1.5} alignItems="flex-start">
 				<H2>{FORM_STEPS[2].label}</H2>
-				<DefinitionList>
-					<DefinitionListItem>
-						<DefinitionTerm>Select a date</DefinitionTerm>
-						<DefinitionDescription>
+				<SummaryList>
+					<SummaryListItem>
+						<SummaryListItemTerm>Select a date</SummaryListItemTerm>
+						<SummaryListItemDescription>
 							{formState[2]?.date.toLocaleDateString()}
-						</DefinitionDescription>
-					</DefinitionListItem>
-				</DefinitionList>
+						</SummaryListItemDescription>
+					</SummaryListItem>
+				</SummaryList>
 				<Button variant="text" onClick={() => goToStep(2)}>
 					Change
 				</Button>
@@ -103,20 +103,22 @@ export const FormExampleMultiStep4 = () => {
 			{/** Summary: Step 3 */}
 			<Stack gap={1.5} alignItems="flex-start">
 				<H2>{FORM_STEPS[3].label}</H2>
-				<DefinitionList>
-					<DefinitionListItem>
-						<DefinitionTerm>Checkbox fieldset question?</DefinitionTerm>
-						<DefinitionDescription>
+				<SummaryList>
+					<SummaryListItem>
+						<SummaryListItemTerm>
+							Checkbox fieldset question?
+						</SummaryListItemTerm>
+						<SummaryListItemDescription>
 							{formState[3]?.checkbox?.join(', ')}
-						</DefinitionDescription>
-					</DefinitionListItem>
-					<DefinitionListItem>
-						<DefinitionTerm>Nested field</DefinitionTerm>
-						<DefinitionDescription>
+						</SummaryListItemDescription>
+					</SummaryListItem>
+					<SummaryListItem>
+						<SummaryListItemTerm>Nested field</SummaryListItemTerm>
+						<SummaryListItemDescription>
 							{formState[3]?.conditionalField}
-						</DefinitionDescription>
-					</DefinitionListItem>
-				</DefinitionList>
+						</SummaryListItemDescription>
+					</SummaryListItem>
+				</SummaryList>
 				<Button variant="text" onClick={() => goToStep(3)}>
 					Change
 				</Button>
