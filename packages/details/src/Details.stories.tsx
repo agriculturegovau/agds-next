@@ -3,7 +3,7 @@ import { Text } from '@ag.ds-next/text';
 import { Details } from './Details';
 
 export default {
-	title: 'Layout/Details',
+	title: 'content/Details',
 	component: Details,
 } as ComponentMeta<typeof Details>;
 
