@@ -73,7 +73,7 @@ export function SummaryListItem({ children }: SummaryListItemProps) {
 			borderBottom
 			borderColor="muted"
 			flexDirection={['column', 'row']}
-			gap={[null, 0.5]}
+			gap={0.25}
 			paddingY={0.75}
 		>
 			{children}
