@@ -3,9 +3,9 @@ import { Box, Flex } from '@ag.ds-next/box';
 import { InfoIcon, ChevronDownIcon } from '@ag.ds-next/icon';
 
 export type DetailsProps = PropsWithChildren<{
-	/** If true, the InfoIcon will be shown */
+	/** If true, the InfoIcon will be shown. */
 	iconBefore?: boolean;
-	/** The label that will be present in the trigger */
+	/** The label that will be present in the trigger. */
 	label: string;
 }>;
 
