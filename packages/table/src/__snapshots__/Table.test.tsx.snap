@@ -6,15 +6,15 @@ exports[`Table renders correctly 1`] = `
     class="css-2ebmvj-TableWrapper"
   >
     <table
-      class="css-1f8md34-boxStyles-Table"
+      class="css-57emj1-boxStyles-Table"
     >
       <caption
-        class="css-ixb58r-boxStyles-Text-TableCaption"
+        class="css-qt4zh6-boxStyles-Text-TableCaption"
       >
         Population of Australian states and territories, December 2015
       </caption>
       <thead
-        class="css-1gsc9xm-boxStyles-TableHead"
+        class="css-11khhn7-boxStyles"
       >
         <tr>
           <th
@@ -44,7 +44,7 @@ exports[`Table renders correctly 1`] = `
         </tr>
       </thead>
       <tbody
-        class="css-3y8sel-boxStyles-TableBody"
+        class="css-8u32cd-boxStyles"
       >
         <tr>
           <td
