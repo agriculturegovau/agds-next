@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Switch renders correctly 1`] = `
+<div>
+  <label
+    class="css-9rj97c-boxStyles-Switch"
+  >
+    <span
+      class="css-o9fx7j-boxStyles-SwitchContainer"
+    >
+      <input
+        class="css-1kwkge7-Switch"
+        role="switch"
+        type="checkbox"
+      />
+      <span
+        class="css-k2d2eq-boxStyles-SwitchTrack"
+      />
+      <span
+        class="css-3bm08u-boxStyles-SwitchThumb"
+        style="left: 0rem;"
+      />
+    </span>
+    <span
+      class="css-6j1v6l-boxStyles-Text"
+    >
+      Show establishments
+    </span>
+  </label>
+</div>
+`;
