@@ -1,7 +1,143 @@
 import { Prose } from '@ag.ds-next/prose';
+import {
+	TableHead,
+	TableWrapper,
+	Table,
+	TableCaption,
+	TableBody,
+	TableHeader,
+	TableCell,
+} from '@ag.ds-next/table';
+import { Text } from '@ag.ds-next/text';
+import { tokens } from '@ag.ds-next/core';
+import { Stack } from '@ag.ds-next/box';
 import { DocumentTitle } from '../../components/DocumentTitle';
 import { TokenLayout } from '../../components/TokenLayout';
 import { TypographyChart } from '../../components/TokenCharts';
+import { SegmentedControl } from '../../components/SegmentedControl';
+
+function FontFamilyTable() {
+	const { font } = tokens;
+
+	const fontDescriptions = {
+		body: 'Used as the default font for all text',
+		monospace: 'Used for code and other monospaced text',
+	};
+
+	return (
+		<TableWrapper>
+			<Table>
+				<TableCaption>Font family tokens</TableCaption>
+				<TableHead>
+					<tr>
+						<TableHeader scope="col">Token</TableHeader>
+						<TableHeader scope="col">Value</TableHeader>
+						<TableHeader scope="col">Description</TableHeader>
+					</tr>
+				</TableHead>
+				<TableBody>
+					{Object.entries(font).map(([key, value]) => (
+						<tr key={key}>
+							<TableCell>
+								<Text as="span" fontFamily={key}>
+									{key}
+								</Text>
+							</TableCell>
+							<TableCell>{value}</TableCell>
+							<TableCell>{fontDescriptions[key]}</TableCell>
+						</tr>
+					))}
+				</TableBody>
+			</Table>
+		</TableWrapper>
+	);
+}
+function FontSizeTable() {
+	const { fontSize } = tokens;
+	const xs = fontSize.xs;
+	const sm = fontSize.sm;
+
+	return (
+		<Stack>
+			<SegmentedControl options={['xs', 'sm']} selected="sm" />
+			<TableWrapper>
+				<Table>
+					<TableCaption>Font size tokens</TableCaption>
+					<TableHead>
+						<tr>
+							<TableHeader scope="col">Token</TableHeader>
+							<TableHeader scope="col">Value</TableHeader>
+							<TableHeader scope="col">Description</TableHeader>
+						</tr>
+					</TableHead>
+					<TableBody>
+						{Object.entries(sm).map(([key, value]) => (
+							<tr key={key}>
+								<TableCell>
+									<Text as="span" fontSize={key}>
+										{key}
+									</Text>
+								</TableCell>
+								<TableCell>{`${value}rem (${value * 16}px)`}</TableCell>
+								{/* <TableCell>{fontDescriptions[key]}</TableCell> */}
+							</tr>
+						))}
+					</TableBody>
+				</Table>
+			</TableWrapper>
+		</Stack>
+	);
+}
+function FontWeightTable() {
+	return (
+		<TableWrapper>
+			<Table>
+				<TableCaption>
+					Population of Australian states and territories, December 2015
+				</TableCaption>
+				<TableHead>
+					<tr>
+						<TableHeader scope="col">Token</TableHeader>
+						<TableHeader scope="col">Value</TableHeader>
+						<TableHeader scope="col">Description</TableHeader>
+					</tr>
+				</TableHead>
+				<TableBody>
+					<tr>
+						<TableCell>One</TableCell>
+						<TableCell>7,670,700</TableCell>
+						<TableCell>Some explainer text here</TableCell>
+					</tr>
+				</TableBody>
+			</Table>
+		</TableWrapper>
+	);
+}
+function LineHeightTable() {
+	return (
+		<TableWrapper>
+			<Table>
+				<TableCaption>
+					Population of Australian states and territories, December 2015
+				</TableCaption>
+				<TableHead>
+					<tr>
+						<TableHeader scope="col">Token</TableHeader>
+						<TableHeader scope="col">Value</TableHeader>
+						<TableHeader scope="col">Description</TableHeader>
+					</tr>
+				</TableHead>
+				<TableBody>
+					<tr>
+						<TableCell>One</TableCell>
+						<TableCell>7,670,700</TableCell>
+						<TableCell>Some explainer text here</TableCell>
+					</tr>
+				</TableBody>
+			</Table>
+		</TableWrapper>
+	);
+}
 
 export default function TokensTypographyPage() {
 	return (
@@ -41,6 +177,15 @@ export default function TokensTypographyPage() {
 						<li>lineHeight</li>
 					</ul>
 					<TypographyChart />
+
+					<h2>font</h2>
+					<FontFamilyTable />
+					<h2>fontSize</h2>
+					<FontSizeTable />
+					<h2>fontWeight</h2>
+					<FontWeightTable />
+					<h2>lineHeight</h2>
+					<LineHeightTable />
 				</Prose>
 			</TokenLayout>
 		</>
