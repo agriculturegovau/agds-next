@@ -86,6 +86,7 @@
 		"yarn": "^1.22.10"
 	},
 	"devDependencies": {
+		"@types/gtag.js": "^0.0.12",
 		"glob": "^8.0.3",
 		"puppeteer": "^14.1.0",
 		"react-docgen-typescript": "^2.2.2"

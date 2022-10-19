@@ -59,6 +59,9 @@
 		"react-hook-form": "^7.27.1",
 		"yup": "^0.32.11"
 	},
+	"devDependencies": {
+		"@types/gtag.js": "^0.0.12"
+	},
 	"engines": {
 		"node": "16"
 	}

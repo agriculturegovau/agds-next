@@ -36,6 +36,8 @@ jobs:
           yarn example:build
           yarn example-form:build
           yarn docs:build
+        env:
+          NEXT_PUBLIC_GA_MEASUREMENT_ID: ${{ secrets.NEXT_PUBLIC_GA_MEASUREMENT_ID }}
 
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@4.1.7

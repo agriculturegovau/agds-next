@@ -135,15 +135,19 @@ jobs:
 
       - name: Build Website
         run: yarn docs:build
+        env:
+          NEXT_PUBLIC_GA_MEASUREMENT_ID: ${{ secrets.NEXT_PUBLIC_GA_MEASUREMENT_ID }}
+
+      - name: Build Templates
+        run: yarn example:build
+        env:
+          NEXT_PUBLIC_GA_MEASUREMENT_ID: ${{ secrets.NEXT_PUBLIC_GA_MEASUREMENT_ID }}
+
+      - name: Build Example Form
+        run: yarn example-form:build
 
       - name: Build Storybook
         run: yarn storybook:build
 
       - name: Build Playroom
         run: yarn playroom:build
-
-      - name: Build Templates
-        run: yarn example:build
-
-      - name: Build Example Form
-        run: yarn example-form:build
