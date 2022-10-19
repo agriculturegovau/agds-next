@@ -10,7 +10,13 @@ export type SummaryListItemTermProps = PropsWithOnlyChildren;
 /** SummaryListItemTerm should be nested as the first child of SummaryListItem */
 export function SummaryListItemTerm({ children }: SummaryListItemTermProps) {
 	return (
-		<Flex as="dt" fontWeight="bold" width={['100%', '30%']} minWidth="200px">
+		<Flex
+			as="dt"
+			fontWeight="bold"
+			width={['100%', '30%']}
+			minWidth="200px"
+			fontSize="sm"
+		>
 			{children}
 		</Flex>
 	);
@@ -23,16 +29,18 @@ export function SummaryListItemDescription({
 	children,
 }: SummaryListItemDescriptionProps) {
 	return (
-		<Flex as="dd" flexGrow={1}>
+		<Flex as="dd" flexGrow={1} fontSize="sm">
 			{children}
 		</Flex>
 	);
 }
 
-export type SummaryListItemAction = PropsWithOnlyChildren;
+export type SummaryListItemActionProps = PropsWithOnlyChildren;
 
 /** SummaryListItemAction should be nested as the last child of SummaryListItem, and should wrap a Link component */
-export function SummaryListItemAction({ children }: SummaryListItemAction) {
+export function SummaryListItemAction({
+	children,
+}: SummaryListItemActionProps) {
 	return <Flex as="dd">{children}</Flex>;
 }
 
@@ -65,7 +73,7 @@ export function SummaryListItem({ children }: SummaryListItemProps) {
 			borderBottom
 			borderColor="muted"
 			flexDirection={['column', 'row']}
-			gap={0.5}
+			gap={0.25}
 			paddingY={0.75}
 		>
 			{children}

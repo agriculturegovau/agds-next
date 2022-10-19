@@ -742,10 +742,9 @@ items={[
         <SummaryListItem>
           <SummaryListItemTerm>Contact information</SummaryListItemTerm>
           <SummaryListItemDescription>
-            <Stack>
-              <Text>+61 9912 3456</Text>
-              <Text>will.power@example.com</Text>
-            </Stack>
+            +61 9912 3456
+					  <br />
+					  will.power@example.com
           </SummaryListItemDescription>
         </SummaryListItem>
         <SummaryListItem>
@@ -777,10 +776,9 @@ items={[
       <SummaryListItem>
           <SummaryListItemTerm>Contact information</SummaryListItemTerm>
           <SummaryListItemDescription>
-              <Stack>
-                  <Text>+61 9912 3456</Text>
-                  <Text>will.power@example.com</Text>
-              </Stack>
+            +61 9912 3456
+					  <br />
+					  will.power@example.com
           </SummaryListItemDescription>
           <SummaryListItemAction>
               <TextLink href="#">Change</TextLink>

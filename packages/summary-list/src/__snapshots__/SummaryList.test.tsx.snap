@@ -6,15 +6,15 @@ exports[`SummaryList renders correctly 1`] = `
     class="css-11haoc9-boxStyles"
   >
     <div
-      class="css-balq7b-boxStyles"
+      class="css-1gkaq3c-boxStyles"
     >
       <dt
-        class="css-5k7ugu-boxStyles"
+        class="css-1py73rt-boxStyles"
       >
         First name
       </dt>
       <dd
-        class="css-yup5oz-boxStyles"
+        class="css-12qraxj-boxStyles"
       >
         Will
       </dd>
@@ -30,15 +30,15 @@ exports[`SummaryList renders correctly 1`] = `
       </dd>
     </div>
     <div
-      class="css-balq7b-boxStyles"
+      class="css-1gkaq3c-boxStyles"
     >
       <dt
-        class="css-5k7ugu-boxStyles"
+        class="css-1py73rt-boxStyles"
       >
         Last name
       </dt>
       <dd
-        class="css-yup5oz-boxStyles"
+        class="css-12qraxj-boxStyles"
       >
         Power
       </dd>
@@ -54,30 +54,19 @@ exports[`SummaryList renders correctly 1`] = `
       </dd>
     </div>
     <div
-      class="css-balq7b-boxStyles"
+      class="css-1gkaq3c-boxStyles"
     >
       <dt
-        class="css-5k7ugu-boxStyles"
+        class="css-1py73rt-boxStyles"
       >
         Contact information
       </dt>
       <dd
-        class="css-yup5oz-boxStyles"
+        class="css-12qraxj-boxStyles"
       >
-        <div
-          class="css-o80hmi-boxStyles"
-        >
-          <span
-            class="css-6j1v6l-boxStyles-Text"
-          >
-            +61 9912 3456
-          </span>
-          <span
-            class="css-6j1v6l-boxStyles-Text"
-          >
-            will.power@example.com
-          </span>
-        </div>
+        +61 9912 3456
+        <br />
+        will.power@example.com
       </dd>
       <dd
         class="css-1jhrbpg-boxStyles"
@@ -91,15 +80,15 @@ exports[`SummaryList renders correctly 1`] = `
       </dd>
     </div>
     <div
-      class="css-balq7b-boxStyles"
+      class="css-1gkaq3c-boxStyles"
     >
       <dt
-        class="css-5k7ugu-boxStyles"
+        class="css-1py73rt-boxStyles"
       >
         Date of birth
       </dt>
       <dd
-        class="css-yup5oz-boxStyles"
+        class="css-12qraxj-boxStyles"
       >
         09/06/1995
       </dd>
