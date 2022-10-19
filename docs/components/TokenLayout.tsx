@@ -6,8 +6,7 @@ import { PageTitle } from './PageTitle';
 export const navLinks = [
 	{ href: '/tokens/color', label: 'Color' },
 	{ href: '/tokens/breakpoints', label: 'Breakpoints' },
-	{ href: '/tokens/border-radius', label: 'Border Radius' },
-	{ href: '/tokens/border-width', label: 'Border Widths' },
+	{ href: '/tokens/border', label: 'Border' },
 	{ href: '/tokens/max-width', label: 'Max Width' },
 	{ href: '/tokens/spacing', label: 'Spacing' },
 	{ href: '/tokens/typography', label: 'Typography' },
