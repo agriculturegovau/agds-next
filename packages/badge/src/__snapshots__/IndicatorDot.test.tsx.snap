@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`IndicatorDot tone: action renders correctly 1`] = `
+<div>
+  <div
+    class="css-h9c2dm-boxStyles-IndicatorDot"
+  />
+</div>
+`;
+
+exports[`IndicatorDot tone: neutral renders correctly 1`] = `
+<div>
+  <div
+    class="css-1dq4bau-boxStyles-IndicatorDot"
+  />
+</div>
+`;
