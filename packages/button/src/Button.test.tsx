@@ -41,6 +41,12 @@ describe('Button', () => {
 		expect(onClick).toHaveBeenCalledTimes(1);
 	});
 
+	it('renders an empty aria-live container', () => {
+		const { container } = renderButton();
+		const liveRegion = container.querySelector('[aria-live]');
+		expect(liveRegion?.childElementCount).toBe(0);
+	});
+
 	describe('Loading', () => {
 		it('renders correctly', () => {
 			const { container } = renderButton({ loading: true });
@@ -61,6 +67,21 @@ describe('Button', () => {
 				extends: ['html-validate:recommended'],
 				rules: { 'no-inline-style': 'off' },
 			});
+		});
+
+		it('announces loading label correctly', () => {
+			const { container } = renderButton({
+				loading: true,
+				loadingLabel: 'Processing action',
+			});
+			const liveRegion = container.querySelector('[aria-live]');
+			expect(liveRegion).toHaveTextContent('Processing action');
+		});
+
+		it('announces default loadingLabel correctly', () => {
+			const { container } = renderButton({ loading: true });
+			const liveRegion = container.querySelector('[aria-live]');
+			expect(liveRegion).toHaveTextContent('Busy');
 		});
 	});
 });
