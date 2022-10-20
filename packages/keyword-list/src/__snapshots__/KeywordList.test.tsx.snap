@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`KeywordList renders correctly 1`] = `
+<div>
+  <ul
+    class="css-1lvzxao-boxStyles"
+  >
+    <li
+      class="css-17mdpk1-boxStyles"
+    >
+      <span
+        class="css-14lzd2a-boxStyles"
+      >
+        <small
+          class="css-1xvzgim-boxStyles-Text"
+        >
+          Department of
+        </small>
+        Agriculture, Fisheries and Forestry
+      </span>
+    </li>
+    <li
+      class="css-17mdpk1-boxStyles"
+    >
+      <span
+        class="css-14lzd2a-boxStyles"
+      >
+        <small
+          class="css-1xvzgim-boxStyles-Text"
+        >
+          Department of
+        </small>
+        Communications and the Arts
+      </span>
+    </li>
+  </ul>
+</div>
+`;
