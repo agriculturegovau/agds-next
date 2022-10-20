@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NotificationBadge tone: action renders correctly 1`] = `
+<div>
+  <span
+    class="css-uouzcn-boxStyles-Text-NotificationBadge"
+  >
+    5
+  </span>
+</div>
+`;
+
+exports[`NotificationBadge tone: neutral renders correctly 1`] = `
+<div>
+  <span
+    class="css-1olmu3e-boxStyles-Text-NotificationBadge"
+  >
+    5
+  </span>
+</div>
+`;
