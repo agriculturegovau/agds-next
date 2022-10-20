@@ -22,21 +22,22 @@ describe('Icon', () => {
 				});
 			});
 
-			it('renders correct default aria attributes', () => {
+			it('renders correct default attributes', () => {
 				const { container } = render(<IconComponent />);
 				const el = container.querySelector('svg');
+				expect(el).toHaveAttribute('viewBox', '0 0 24 24');
 				expect(el).toHaveAttribute('role', 'img');
 				expect(el).toHaveAttribute('aria-hidden', 'true');
 				expect(el).toHaveAttribute('focusable', 'false');
 			});
 
-			it('supports aria labels', () => {
+			it('supports aria-labels', () => {
 				const { container } = render(
 					<IconComponent aria-hidden="false" aria-label="Hello world" />
 				);
 				const el = container.querySelector('svg');
-				expect(el).toHaveAttribute('role', 'img');
 				expect(el).toHaveAttribute('aria-hidden', 'false');
+				expect(el).toHaveAttribute('focusable', 'true');
 				expect(el).toHaveAttribute('aria-label', 'Hello world');
 			});
 		});
