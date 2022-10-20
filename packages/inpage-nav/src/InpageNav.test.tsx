@@ -20,7 +20,7 @@ function renderInpageNav(props?: Partial<InpageNavProps>) {
 	);
 }
 
-describe('Inpage Nav', () => {
+describe('InpageNav', () => {
 	it('renders correctly', () => {
 		const { container } = renderInpageNav();
 		expect(container).toMatchSnapshot();

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Inpage Nav renders correctly 1`] = `
+exports[`LinkList renders correctly 1`] = `
 <div>
   <ul
     class="css-pa8edo-boxStyles"

@@ -24,7 +24,7 @@ function renderLinkList(props?: Partial<LinkListProps>) {
 	);
 }
 
-describe('Inpage Nav', () => {
+describe('LinkList', () => {
 	it('renders correctly', () => {
 		const { container } = renderLinkList();
 		expect(container).toMatchSnapshot();

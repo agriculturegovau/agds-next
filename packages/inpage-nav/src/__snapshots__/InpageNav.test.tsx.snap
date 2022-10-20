@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Inpage Nav renders correctly 1`] = `
+exports[`InpageNav renders correctly 1`] = `
 <div>
   <nav
     aria-label="in page"
