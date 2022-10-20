@@ -18,17 +18,22 @@ type CommonButtonProps = {
 	iconBefore?: ComponentType<IconProps>;
 	/** The icon to display after the buttons children. */
 	iconAfter?: ComponentType<IconProps>;
-	/** When true, the button will display a loading indicator. */
-	loading?: boolean;
-	/** Text to read out to assistive technologies when button is loading. */
-	loadingLabel?: string;
 	/** The size of the button. */
 	size?: ButtonSize;
 	/** The variant of the button. */
 	variant?: ButtonVariant;
 };
 
-export type ButtonProps = CommonButtonProps & BaseButtonProps;
+type LoadingButtonProps = {
+	/** When true, the button will display a loading indicator. */
+	loading?: boolean;
+	/** Text to read out to assistive technologies when button is loading. */
+	loadingLabel?: string;
+};
+
+export type ButtonProps = CommonButtonProps &
+	LoadingButtonProps &
+	BaseButtonProps;
 
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 	function Button(
@@ -78,8 +83,6 @@ export const ButtonLink = forwardRef<HTMLAnchorElement, ButtonLinkProps>(
 			iconBefore: IconBefore,
 			iconAfter: IconAfter,
 			size = 'md',
-			loading,
-			loadingLabel = 'Busy',
 			variant = 'primary',
 			...props
 		},
@@ -92,14 +95,7 @@ export const ButtonLink = forwardRef<HTMLAnchorElement, ButtonLinkProps>(
 				{IconBefore ? (
 					<IconBefore size={iconSize[size]} weight="regular" />
 				) : null}
-				<span>
-					<span css={{ opacity: loading ? 0 : 1 }}>{children}</span>
-					<ButtonLoadingDots
-						loading={loading}
-						label={loadingLabel}
-						size={size}
-					/>
-				</span>
+				{children}
 				{IconAfter ? (
 					<IconAfter size={iconSize[size]} weight="regular" />
 				) : null}
