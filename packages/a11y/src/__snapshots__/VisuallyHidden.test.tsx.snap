@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`VisuallyHidden renders correctly 1`] = `
+<div>
+  <a
+    class="css-38ppen-TextLink"
+    data-testid="example"
+    href="#"
+  >
+    Read more
+    <span
+      class="css-avudkd-VisuallyHidden"
+    >
+       about how to visually hide content
+    </span>
+  </a>
+</div>
+`;

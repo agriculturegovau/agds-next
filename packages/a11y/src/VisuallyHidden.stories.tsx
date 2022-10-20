@@ -15,7 +15,7 @@ export const Basic = () => (
 		<H1>VisuallyHidden</H1>
 		<Text>
 			Interact with the link in this example using Apple VoiceOver or your
-			chosen screenreader.
+			chosen screen reader.
 		</Text>
 
 		<TextLink href="#">

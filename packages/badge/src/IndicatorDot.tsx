@@ -2,7 +2,7 @@ import { Box } from '@ag.ds-next/box';
 import { BadgeTone, badgeToneMap } from './utils';
 
 export type IndicatorDotProps = {
-	/** The accessible label to read out in screenreaders. */
+	/** The accessible label to read out in screen readers. */
 	'aria-label'?: string;
 	/** The colour tone to apply. */
 	tone: BadgeTone;
