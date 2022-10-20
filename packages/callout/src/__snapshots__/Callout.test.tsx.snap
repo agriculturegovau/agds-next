@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Callout renders correctly 1`] = `
+<div>
+  <div
+    class="css-11w0n76-boxStyles"
+  >
+    <h2
+      class="css-ixats2-boxStyles-Text"
+    >
+      Callout heading
+    </h2>
+    <p
+      class="css-6j1v6l-boxStyles-Text"
+    >
+      Description of the callout.
+    </p>
+  </div>
+</div>
+`;
