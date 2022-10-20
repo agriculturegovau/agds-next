@@ -40,6 +40,8 @@ export const createIcon = (children: ReactNode, name: string) => {
 		style,
 	}: IconProps) => {
 		const resolvedSize = mapSpacing(iconSizes[size]);
+		// Focusable is the opposite of `aria-hidden`
+		const focusable = [true, 'true'].includes(ariaHidden) ? 'false' : 'true';
 		return (
 			<svg
 				// Note the width and height attribute is a fallback for older browsers. This may not be required and could potentially be removed.
@@ -48,7 +50,6 @@ export const createIcon = (children: ReactNode, name: string) => {
 				viewBox="0 0 24 24"
 				clipRule="evenodd"
 				xmlns="http://www.w3.org/2000/svg"
-				focusable="false"
 				css={{
 					width: resolvedSize,
 					height: resolvedSize,
@@ -62,6 +63,7 @@ export const createIcon = (children: ReactNode, name: string) => {
 				role="img"
 				style={style}
 				className={className}
+				focusable={focusable}
 				aria-hidden={ariaHidden}
 				aria-label={ariaLabel}
 			>

@@ -1,6 +1,7 @@
 import type { IconProps as _IconProps } from './Icon';
 export type IconProps = _IconProps;
 
+export { createIcon } from './Icon';
 export * from './utils';
 
 export { AlertIcon } from './icons/AlertIcon';
