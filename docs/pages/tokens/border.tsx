@@ -1,10 +1,8 @@
-import { Prose } from '@ag.ds-next/prose';
+import { Prose, proseBlockClassname } from '@ag.ds-next/prose';
+import { Box } from '@ag.ds-next/box';
 import { DocumentTitle } from '../../components/DocumentTitle';
 import { TokenLayout } from '../../components/TokenLayout';
-import {
-	BorderWidthChart,
-	BorderRadiusChart,
-} from '../../components/TokenCharts';
+import { BorderWidthChart } from '../../components/TokenCharts';
 
 export default function TokensBorderWidthPage() {
 	return (
@@ -26,7 +24,9 @@ export default function TokensBorderWidthPage() {
 						setting <code>rounded</code> on the <code>Box</code> component.
 					</p>
 
-					<BorderRadiusChart />
+					<Box border rounded padding={0.5} className={proseBlockClassname}>
+						A Box with rounded corners
+					</Box>
 				</Prose>
 			</TokenLayout>
 		</>

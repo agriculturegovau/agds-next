@@ -38,14 +38,6 @@ export const BorderWidthChart = () => {
 	);
 };
 
-export const BorderRadiusChart = () => {
-	return (
-		<Box border rounded padding={0.5} className={proseBlockClassname}>
-			A Box with rounded corners
-		</Box>
-	);
-};
-
 export const SpacingChart = () => {
 	// copied from types for mapSpacing
 	const spacingTokens: Spacing[] = [0, 0.25, 0.5, 0.75, 1, 1.5, 2, 3, 4, 5, 6];
