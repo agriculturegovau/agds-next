@@ -1,0 +1,73 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`HeroBanner renders correctly 1`] = `
+<div>
+  <section
+    class="css-um3mzy-boxStyles-HeroBannerContainer"
+  >
+    <div
+      class="css-1l77tz3-boxStyles-HeroBannerMobileImage"
+    >
+      <img
+        alt=""
+        role="presentation"
+        src="/agds-next/img/placeholder/hero-banner.jpeg"
+      />
+    </div>
+    <div
+      class="css-ou39vu-boxStyles"
+    >
+      <div
+        class="css-1rhmzip-boxStyles"
+      >
+        <div
+          class="css-1jhrbpg-boxStyles"
+        >
+          <div
+            class="css-1u6uxdt-boxStyles-HeroBannerContent"
+          >
+            <div
+              class="css-1mxr31d-boxStyles"
+            >
+              <h1
+                class="css-1wl1hqt-boxStyles"
+              >
+                Website hero banner title
+              </h1>
+              <p
+                class="css-kvrtyp-boxStyles-Text"
+              >
+                Short hero banner sentence
+              </p>
+            </div>
+            <button
+              class="css-3jmmp1-BaseButton-Button"
+              type="button"
+            >
+              <span>
+                <span
+                  class="css-oobk4c-Button"
+                >
+                  Primary action
+                </span>
+                <span
+                  aria-live="assertive"
+                />
+              </span>
+            </button>
+          </div>
+          <div
+            class="css-u86tm4-boxStyles-HeroBannerImage"
+          >
+            <img
+              alt=""
+              role="presentation"
+              src="/agds-next/img/placeholder/hero-banner.jpeg"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+`;
