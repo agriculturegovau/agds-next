@@ -1,0 +1,94 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Tags With links renders correctly 1`] = `
+<div>
+  <div
+    class="css-1i7cdx8-boxStyles"
+  >
+    <h2
+      class="css-433uqb-boxStyles-Text"
+    >
+      Tags:
+    </h2>
+    <ul
+      class="css-1xkbxzi-boxStyles"
+    >
+      <li
+        class="css-79i25n-boxStyles"
+      >
+        <a
+          class="css-kx40q4-TextLink-boxStyles-Tag"
+          href="#"
+        >
+          Foo
+        </a>
+      </li>
+      <li
+        class="css-79i25n-boxStyles"
+      >
+        <a
+          class="css-kx40q4-TextLink-boxStyles-Tag"
+          href="#"
+        >
+          Bar
+        </a>
+      </li>
+      <li
+        class="css-79i25n-boxStyles"
+      >
+        <a
+          class="css-kx40q4-TextLink-boxStyles-Tag"
+          href="#"
+        >
+          Baz
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>
+`;
+
+exports[`Tags Without links renders correctly 1`] = `
+<div>
+  <div
+    class="css-1i7cdx8-boxStyles"
+  >
+    <h2
+      class="css-433uqb-boxStyles-Text"
+    >
+      Tags:
+    </h2>
+    <ul
+      class="css-1xkbxzi-boxStyles"
+    >
+      <li
+        class="css-79i25n-boxStyles"
+      >
+        <span
+          class="css-zxf6qz-boxStyles-Tag"
+        >
+          Foo
+        </span>
+      </li>
+      <li
+        class="css-79i25n-boxStyles"
+      >
+        <span
+          class="css-zxf6qz-boxStyles-Tag"
+        >
+          Bar
+        </span>
+      </li>
+      <li
+        class="css-79i25n-boxStyles"
+      >
+        <span
+          class="css-zxf6qz-boxStyles-Tag"
+        >
+          Baz
+        </span>
+      </li>
+    </ul>
+  </div>
+</div>
+`;
