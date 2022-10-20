@@ -1,6 +1,6 @@
 import '@testing-library/jest-dom';
 import 'html-validate/jest';
-import { render } from '@testing-library/react';
+import { render, cleanup } from '@testing-library/react';
 import { Stack } from '@ag.ds-next/box';
 import { Heading } from '@ag.ds-next/heading';
 import { Text } from '@ag.ds-next/text';
@@ -8,6 +8,8 @@ import { ChevronRightIcon } from '@ag.ds-next/icon';
 import { Card } from './Card';
 import { CardInner } from './CardInner';
 import { CardLink } from './CardLink';
+
+afterEach(cleanup);
 
 function CardExample() {
 	return (
@@ -51,6 +53,10 @@ function CardLinkExample() {
 
 describe('Card', () => {
 	describe('Basic', () => {
+		it('renders correctly', () => {
+			const { container } = render(<CardExample />);
+			expect(container).toMatchSnapshot();
+		});
 		it('renders a valid HTML structure', () => {
 			const { container } = render(<CardExample />);
 			expect(container).toHTMLValidate({
@@ -58,7 +64,12 @@ describe('Card', () => {
 			});
 		});
 	});
+
 	describe('With link', () => {
+		it('renders correctly', () => {
+			const { container } = render(<CardLinkExample />);
+			expect(container).toMatchSnapshot();
+		});
 		it('renders a valid HTML structure', () => {
 			const { container } = render(<CardLinkExample />);
 			expect(container).toHTMLValidate({

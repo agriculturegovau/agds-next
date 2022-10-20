@@ -1,0 +1,77 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Card Basic renders correctly 1`] = `
+<div>
+  <div
+    class="css-1yrx9yp-boxStyles-Card"
+  >
+    <div
+      class="css-z5u98n-boxStyles"
+    >
+      <div
+        class="css-1lvzxao-boxStyles"
+      >
+        <h2
+          class="css-e6rsgj-boxStyles"
+        >
+          Card heading
+        </h2>
+        <p
+          class="css-6j1v6l-boxStyles-Text"
+        >
+          Lorem ipsum dolor, sit amet consectetur adipisicing elit. In, voluptat
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Card With link renders correctly 1`] = `
+<div>
+  <div
+    class="css-bfsv4q-boxStyles-Card"
+  >
+    <div
+      class="css-z5u98n-boxStyles"
+    >
+      <div
+        class="css-1lvzxao-boxStyles"
+      >
+        <h2
+          class="css-e6rsgj-boxStyles"
+        >
+          Card heading
+        </h2>
+        <p
+          class="css-6j1v6l-boxStyles-Text"
+        >
+          Lorem ipsum dolor, sit amet consectetur adipisicing elit. In, voluptat
+        </p>
+        <a
+          class="css-1ytze9p-CardLink"
+          data-agds-card-link="true"
+          href="#"
+        >
+          Linking out
+          <svg
+            aria-hidden="true"
+            class="css-5ae1oq-Icon"
+            clip-rule="evenodd"
+            focusable="false"
+            height="24"
+            role="img"
+            viewBox="0 0 24 24"
+            width="24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M8 3L17 12L8 21"
+            />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+`;
