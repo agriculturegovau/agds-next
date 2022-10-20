@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Flex renders correctly 1`] = `
+<div>
+  <div
+    class="css-1jhrbpg-boxStyles"
+  >
+    Flex element
+  </div>
+</div>
+`;
