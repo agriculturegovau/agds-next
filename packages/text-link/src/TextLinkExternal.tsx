@@ -10,7 +10,7 @@ export const TextLinkExternal = ({
 	...props
 }: TextLinkExternalProps) => {
 	return (
-		<TextLink target="_blank" rel="noopener noreferrer" {...props}>
+		<TextLink target="_blank" rel="noopener" {...props}>
 			{children}
 			<ExternalLinkCallout />
 			<ExternalLinkIcon
