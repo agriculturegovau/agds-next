@@ -1,7 +1,7 @@
 import '@testing-library/jest-dom';
 import 'html-validate/jest';
-import { cleanup, render } from '@testing-library/react';
 import { Button } from '@ag.ds-next/button';
+import { cleanup, render } from '../../../../test-utils';
 import { HeroBanner } from './HeroBanner';
 import {
 	HeroBannerTitleContainer,

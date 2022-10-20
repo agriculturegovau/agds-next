@@ -1,9 +1,9 @@
 import '@testing-library/jest-dom';
 import 'html-validate/jest';
-import { render, cleanup } from '@testing-library/react';
 import { tokens } from '@ag.ds-next/core';
 import { Text } from '@ag.ds-next/text';
 import { LinkList } from '@ag.ds-next/link-list';
+import { render, cleanup } from '../../../test-utils';
 import { Footer, FooterProps } from './Footer';
 import { FooterDivider } from './FooterDivider';
 

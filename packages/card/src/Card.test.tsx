@@ -1,10 +1,10 @@
 import '@testing-library/jest-dom';
 import 'html-validate/jest';
-import { render, cleanup } from '@testing-library/react';
 import { Stack } from '@ag.ds-next/box';
 import { Heading } from '@ag.ds-next/heading';
 import { Text } from '@ag.ds-next/text';
 import { ChevronRightIcon } from '@ag.ds-next/icon';
+import { render, cleanup } from '../../../test-utils';
 import { Card } from './Card';
 import { CardInner } from './CardInner';
 import { CardLink } from './CardLink';

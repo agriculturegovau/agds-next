@@ -1,6 +1,6 @@
 import '@testing-library/jest-dom';
 import 'html-validate/jest';
-import { cleanup, render } from '@testing-library/react';
+import { cleanup, render } from '../../../../test-utils';
 import { HeroCategoryBanner } from './HeroCategoryBanner';
 import {
 	HeroCategoryBannerTitle,

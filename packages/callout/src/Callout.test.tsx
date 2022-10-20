@@ -1,9 +1,8 @@
 import '@testing-library/jest-dom';
 import 'html-validate/jest';
-import { cleanup, render, screen } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
 import { Text } from '@ag.ds-next/text';
-import { Callout } from './Callout';
+import { cleanup, render } from '../../../test-utils';
+import { Callout, CalloutProps } from './Callout';
 
 afterEach(cleanup);
 

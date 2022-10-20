@@ -1,8 +1,10 @@
 import '@testing-library/jest-dom';
 import 'html-validate/jest';
-import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import { render, screen, cleanup } from '../../../test-utils';
 import { Checkbox, CheckboxProps } from './Checkbox';
+
+afterEach(cleanup);
 
 function CheckboxExample(props: CheckboxProps) {
 	return (

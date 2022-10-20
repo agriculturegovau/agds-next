@@ -1,8 +1,8 @@
 import '@testing-library/jest-dom';
 import 'html-validate/jest';
-import { cleanup, render, screen } from '@testing-library/react';
 import { Text } from '@ag.ds-next/text';
 import { Prose } from '@ag.ds-next/prose';
+import { cleanup, render, screen } from '../../../test-utils';
 import { PageAlert, PageAlertProps } from './PageAlert';
 import { PageAlertTitle } from './PageAlertTitle';
 

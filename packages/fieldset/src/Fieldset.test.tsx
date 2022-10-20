@@ -1,10 +1,10 @@
 import '@testing-library/jest-dom';
 import 'html-validate/jest';
-import { cleanup, render, screen } from '@testing-library/react';
 import { FormStack } from '@ag.ds-next/form-stack';
 import { TextInput } from '@ag.ds-next/text-input';
 import { H1 } from '@ag.ds-next/heading';
 import { Text } from '@ag.ds-next/text';
+import { cleanup, render, screen } from '../../../test-utils';
 import { Fieldset } from './Fieldset';
 
 afterEach(cleanup);

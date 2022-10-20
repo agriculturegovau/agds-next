@@ -1,11 +1,13 @@
 import '@testing-library/jest-dom';
 import 'html-validate/jest';
-import { cleanup, render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { useTernaryState } from '@ag.ds-next/core';
 import { Button } from '@ag.ds-next/button';
 import { Text } from '@ag.ds-next/text';
+import { render, screen, cleanup } from '../../../test-utils';
 import { Modal } from './Modal';
+
+afterEach(cleanup);
 
 function renderBaseModal() {
 	return render(
@@ -20,7 +22,7 @@ function renderBaseModal() {
 	);
 }
 
-function ModalTest() {
+function ModalExample() {
 	const [isModalOpen, openModal, closeModal] = useTernaryState(false);
 	return (
 		<div>
@@ -44,10 +46,8 @@ function ModalTest() {
 }
 
 function renderModal() {
-	return render(<ModalTest />);
+	return render(<ModalExample />);
 }
-
-afterEach(cleanup);
 
 describe('Modal', () => {
 	it('renders correctly', () => {

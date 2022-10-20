@@ -2,7 +2,7 @@ import '@testing-library/jest-dom';
 import 'html-validate/jest';
 import '@testing-library/jest-dom';
 import 'html-validate/jest';
-import { render, cleanup } from '@testing-library/react';
+import { render, cleanup } from '../../../test-utils';
 import { SkeletonHeading, SkeletonHeadingProps } from './SkeletonHeading';
 
 afterEach(cleanup);

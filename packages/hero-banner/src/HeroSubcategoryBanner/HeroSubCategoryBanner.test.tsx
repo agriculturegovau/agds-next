@@ -1,7 +1,7 @@
 import '@testing-library/jest-dom';
 import 'html-validate/jest';
-import { cleanup, render } from '@testing-library/react';
 import { Breadcrumbs } from '@ag.ds-next/breadcrumbs';
+import { cleanup, render } from '../../../../test-utils';
 import { HeroSubcategoryBanner } from './HeroSubcategoryBanner';
 import { HeroSubcategoryBannerTitle } from './HeroSubcategoryBannerTitle';
 

@@ -1,6 +1,6 @@
 import '@testing-library/jest-dom';
 import 'html-validate/jest';
-import { cleanup, render } from '@testing-library/react';
+import { cleanup, render } from '../../../test-utils';
 import { TextInput, TextInputProps } from './TextInput';
 
 afterEach(cleanup);

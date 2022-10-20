@@ -1,7 +1,7 @@
 import '@testing-library/jest-dom';
 import 'html-validate/jest';
-import { cleanup, render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import { cleanup, render, screen } from '../../../test-utils';
 import {
 	CallToActionLink,
 	CallToActionLinkProps,

@@ -1,8 +1,10 @@
 import '@testing-library/jest-dom';
 import 'html-validate/jest';
-import { render, screen } from '@testing-library/react';
 import { TextLink } from '@ag.ds-next/text-link';
+import { render, screen, cleanup } from '../../../test-utils';
 import { VisuallyHidden } from './VisuallyHidden';
+
+afterEach(cleanup);
 
 function VisuallyHiddenExample() {
 	return (

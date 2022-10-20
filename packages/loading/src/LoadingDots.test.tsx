@@ -1,7 +1,9 @@
 import '@testing-library/jest-dom';
 import 'html-validate/jest';
-import { render, screen } from '@testing-library/react';
+import { render, screen, cleanup } from '../../../test-utils';
 import { LoadingDots, LoadingDotsProps } from './LoadingDots';
+
+afterEach(cleanup);
 
 function LoadingDotsExample(props: LoadingDotsProps) {
 	return <LoadingDots data-testid="example" label="Busy" {...props} />;

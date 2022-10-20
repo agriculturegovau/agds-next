@@ -1,0 +1,148 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FileUpload Basic renders correctly 1`] = `
+<div>
+  <div
+    class="css-1904cz9-boxStyles-FieldContainer"
+  >
+    <label
+      class="css-n7rdvo-boxStyles"
+      for="field-:r0:"
+    >
+      <span
+        class="css-433uqb-boxStyles-Text"
+      >
+        Upload file
+      </span>
+      <span
+        class="css-1rpt3h8-boxStyles-Text"
+      >
+        (optional)
+      </span>
+    </label>
+    <span
+      class="css-lw0v8u-boxStyles-Text"
+      id="field-:r0:-hint"
+    >
+      General hint information
+    </span>
+    <div
+      class="css-1mxr31d-boxStyles"
+    >
+      <div
+        class="css-ckw7x9-boxStyles-Field"
+      >
+        <svg
+          aria-hidden="true"
+          class="css-sildeq-Icon"
+          clip-rule="evenodd"
+          focusable="false"
+          height="24"
+          role="img"
+          viewBox="0 0 24 24"
+          width="24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M12 15L12 3"
+          />
+          <path
+            d="M8 7L12.0002 3.00024"
+          />
+          <path
+            d="M16 7L12 3"
+          />
+          <path
+            d="M21 16V19.6682C20.9975 20.0205 20.8849 20.3575 20.6863 20.6065C20.4878 20.8556 20.2192 20.9969 19.9383 21H4.06166C3.78085 20.9969 3.51224 20.8556 3.31367 20.6065C3.1151 20.3575 3.00245 20.0205 3 19.6682V16"
+          />
+        </svg>
+        <input
+          aria-describedby="field-:r0:-hint"
+          aria-invalid="false"
+          aria-required="false"
+          autocomplete="off"
+          class="css-1qmg1ry-Field"
+          id="field-:r0:"
+          tabindex="-1"
+          type="file"
+        />
+        <div
+          class="css-107qz7x-boxStyles-FileUpload"
+        >
+          <span
+            class="css-1rpt3h8-boxStyles-Text"
+          >
+            Drag and drop file here or select file to upload.
+          </span>
+        </div>
+        <button
+          class="css-tgu3ek-BaseButton-Button"
+          type="button"
+        >
+          <span>
+            <span
+              class="css-oobk4c-Button"
+            >
+              Select 
+              file
+            </span>
+            <span
+              aria-live="assertive"
+            />
+          </span>
+        </button>
+      </div>
+      <div
+        class="css-1wcx0lf-boxStyles"
+      >
+        <span
+          class="css-1rpt3h8-boxStyles-Text"
+        >
+          1 file selected (23 B)
+        </span>
+        <ul
+          class="css-1wcx0lf-boxStyles"
+        >
+          <li
+            aria-label="File. example.jpg"
+            class="css-ckdkoy-boxStyles-FileUploadFile"
+          >
+            <div
+              class="css-1xkbxzi-boxStyles"
+            >
+              <span
+                class="css-1fikbx5-boxStyles-Text-FileUploadFile"
+              >
+                example.jpg
+                 (
+                23 B
+                )
+              </span>
+            </div>
+            <div
+              class="css-1ldvxqr-boxStyles"
+            >
+              <button
+                aria-label="Remove file, example.jpg"
+                class="css-i35hqt-BaseButton-Button"
+                type="button"
+              >
+                <span>
+                  <span
+                    class="css-oobk4c-Button"
+                  >
+                    Remove file
+                  </span>
+                  <span
+                    aria-live="assertive"
+                  />
+                </span>
+              </button>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+`;

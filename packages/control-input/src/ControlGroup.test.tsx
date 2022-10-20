@@ -1,11 +1,10 @@
 import '@testing-library/jest-dom';
 import 'html-validate/jest';
-import { render, screen } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
+import { render } from '../../../test-utils';
 import { ControlGroup, ControlGroupProps } from './ControlGroup';
 import { Checkbox } from './Checkbox';
 
-function renderControlGroup(props?: Partial<CalloutProps>) {
+function renderControlGroup(props?: Partial<ControlGroupProps>) {
 	return render(
 		<ControlGroup {...props}>
 			<Checkbox>Option A</Checkbox>

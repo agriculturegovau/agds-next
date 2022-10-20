@@ -1,7 +1,9 @@
 import '@testing-library/jest-dom';
 import 'html-validate/jest';
-import { render } from '@testing-library/react';
+import { render, cleanup } from '../../../test-utils';
 import { Logo } from './Logo';
+
+afterEach(cleanup);
 
 describe('Logo', () => {
 	it('renders correctly', () => {

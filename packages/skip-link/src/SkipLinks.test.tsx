@@ -1,6 +1,6 @@
 import '@testing-library/jest-dom';
 import 'html-validate/jest';
-import { cleanup, render } from '@testing-library/react';
+import { cleanup, render } from '../../../test-utils';
 import { SkipLinks, SkipLinksProps } from './SkipLinks';
 
 afterEach(cleanup);

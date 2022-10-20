@@ -1,7 +1,9 @@
 import '@testing-library/jest-dom';
 import 'html-validate/jest';
-import { cleanup, render, screen } from '@testing-library/react';
+import { cleanup, render, screen } from '../../../test-utils';
 import { Field, FieldProps } from './Field';
+
+afterEach(cleanup);
 
 function renderField({
 	label = 'Name',
@@ -29,8 +31,6 @@ function renderField({
 		</Field>
 	);
 }
-
-afterEach(cleanup);
 
 describe('Field', () => {
 	it('renders correctly', () => {
