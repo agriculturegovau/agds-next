@@ -58,6 +58,7 @@ describe('Button', () => {
 			const el = screen.getByTestId('example');
 			expect(el).toBeInTheDocument();
 			expect(el.tagName).toBe('BUTTON');
+			expect(el).toHaveAttribute('type', 'button');
 			expect(el).toHaveAccessibleName('My button Busy');
 		});
 
