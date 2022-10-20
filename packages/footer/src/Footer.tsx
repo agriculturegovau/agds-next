@@ -3,7 +3,7 @@ import { Flex, Stack } from '@ag.ds-next/box';
 import { tokens, boxPalette } from '@ag.ds-next/core';
 import { localPaletteVars } from './localPalette';
 
-type FooterProps = PropsWithChildren<{
+export type FooterProps = PropsWithChildren<{
 	background?: 'body' | 'bodyAlt';
 }>;
 

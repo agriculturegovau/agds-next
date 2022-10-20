@@ -1,0 +1,76 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Footer renders correctly 1`] = `
+<div>
+  <footer
+    class="css-12z2cqh-boxStyles-Footer"
+  >
+    <div
+      class="css-1qpkcxh-boxStyles"
+    >
+      <nav
+        aria-label="footer"
+      >
+        <ul
+          class="css-u0m30q-boxStyles"
+        >
+          <li
+            class="css-79i25n-boxStyles"
+          >
+            <a
+              class="css-38ppen-TextLink"
+              href="#"
+            >
+              Home
+            </a>
+          </li>
+          <li
+            class="css-79i25n-boxStyles"
+          >
+            <a
+              class="css-38ppen-TextLink"
+              href="#"
+            >
+              Terms and conditions
+            </a>
+          </li>
+          <li
+            class="css-79i25n-boxStyles"
+          >
+            <a
+              class="css-38ppen-TextLink"
+              href="#"
+            >
+              Privacy policy
+            </a>
+          </li>
+          <li
+            class="css-79i25n-boxStyles"
+          >
+            <a
+              class="css-38ppen-TextLink"
+              href="#"
+            >
+              A really long link title
+            </a>
+          </li>
+        </ul>
+      </nav>
+      <hr
+        aria-hidden="true"
+        class="css-m1ii31-FooterDivider"
+      />
+      <span
+        class="css-1sbhbx-boxStyles-Text"
+      >
+        We acknowledge the traditional owners of country throughout Australia and recognise their continuing connection to land, waters and culture. We pay our respects to their Elders past, present and emerging.
+      </span>
+      <span
+        class="css-1sbhbx-boxStyles-Text"
+      >
+        © 2022 Department of Agriculture, Fisheries and Forestry
+      </span>
+    </div>
+  </footer>
+</div>
+`;
