@@ -15,7 +15,7 @@ const exampleLinks = [
 		href: 'https://steelthreads.github.io/agds-next',
 		label: 'External link',
 		target: '_blank',
-		rel: 'external noreferrer',
+		rel: 'noopener',
 	},
 ];
 

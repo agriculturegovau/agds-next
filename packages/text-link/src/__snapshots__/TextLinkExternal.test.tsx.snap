@@ -6,7 +6,7 @@ exports[`TextLinkExternal renders correctly 1`] = `
     class="css-38ppen-TextLink"
     data-testid="example"
     href="https://steelthreads.github.io/agds-next"
-    rel="noopener noreferrer"
+    rel="noopener"
     target="_blank"
   >
     External link

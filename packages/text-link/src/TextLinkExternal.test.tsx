@@ -33,7 +33,7 @@ describe('TextLinkExternal', () => {
 		renderTextLinkExternal();
 		const el = screen.getByTestId('example');
 		expect(el).toHaveAttribute('target', '_blank');
-		expect(el).toHaveAttribute('rel', 'noopener noreferrer');
+		expect(el).toHaveAttribute('rel', 'noopener');
 	});
 
 	it('announces to a screen reader that the link will open in a new tab', () => {

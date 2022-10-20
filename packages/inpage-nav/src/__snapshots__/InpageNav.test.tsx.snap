@@ -1,0 +1,65 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Inpage Nav renders correctly 1`] = `
+<div>
+  <nav
+    aria-label="in page"
+    class="css-1hxu0qr-boxStyles-InpageNavContainer"
+  >
+    <ul
+      class="css-1wcx0lf-boxStyles"
+    >
+      <li
+        class="css-79i25n-boxStyles"
+      >
+        <a
+          class="css-38ppen-TextLink"
+          href="#section-1"
+        >
+          Section 1
+        </a>
+      </li>
+      <li
+        class="css-79i25n-boxStyles"
+      >
+        <a
+          class="css-38ppen-TextLink"
+          href="#section-2"
+        >
+          Section 2
+        </a>
+      </li>
+      <li
+        class="css-79i25n-boxStyles"
+      >
+        <a
+          class="css-38ppen-TextLink"
+          href="#section-3"
+        >
+          Section 3
+        </a>
+      </li>
+      <li
+        class="css-79i25n-boxStyles"
+      >
+        <a
+          class="css-38ppen-TextLink"
+          href="#section-4"
+        >
+          Section 4
+        </a>
+      </li>
+      <li
+        class="css-79i25n-boxStyles"
+      >
+        <a
+          class="css-38ppen-TextLink"
+          href="#section-5"
+        >
+          Section 5
+        </a>
+      </li>
+    </ul>
+  </nav>
+</div>
+`;
