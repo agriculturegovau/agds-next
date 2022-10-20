@@ -29,7 +29,7 @@ type CallToActionProps = PropsWithChildren<{
 
 const AnimatedChevronRightIcon = animated(ChevronRightIcon);
 
-export const CallToAction = ({
+const CallToAction = ({
 	as,
 	children,
 	className,
