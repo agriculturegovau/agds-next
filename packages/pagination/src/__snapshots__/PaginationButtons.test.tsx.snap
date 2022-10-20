@@ -1,0 +1,136 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PaginationButtons renders correctly 1`] = `
+<div>
+  <nav
+    aria-label="pagination"
+  >
+    <ol
+      class="css-1cc1bme-boxStyles"
+    >
+      <li
+        class="css-106mr6y-PaginationItemDirectionButton"
+      >
+        <button
+          aria-label="Go to previous page"
+          class="css-1d2ughx-BaseButton-boxStyles-BaseDirectionLink-PaginationItemDirectionButton"
+          type="button"
+        >
+          <svg
+            aria-hidden="true"
+            class="css-10t8zfr-Icon"
+            clip-rule="evenodd"
+            focusable="false"
+            height="24"
+            role="img"
+            viewBox="0 0 24 24"
+            width="24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M21 12L4 12"
+            />
+            <path
+              d="M8 17L3 12L8 7"
+            />
+          </svg>
+          Previous
+        </button>
+      </li>
+      <li>
+        <button
+          aria-label="Go to page 1"
+          class="css-1qrtn8h-BaseButton-boxStyles"
+          type="button"
+        >
+          1
+        </button>
+      </li>
+      <li
+        class="css-ugsfbz-boxStyles"
+      >
+        <span
+          class="css-6j1v6l-boxStyles-Text"
+        >
+          …
+        </span>
+      </li>
+      <li>
+        <button
+          aria-label="Go to page 4"
+          class="css-1qrtn8h-BaseButton-boxStyles"
+          type="button"
+        >
+          4
+        </button>
+      </li>
+      <li>
+        <button
+          aria-current="page"
+          aria-label="Go to page 5"
+          class="css-1ku539t-BaseButton-boxStyles-PaginationItemPageButton"
+          type="button"
+        >
+          5
+        </button>
+      </li>
+      <li>
+        <button
+          aria-label="Go to page 6"
+          class="css-1qrtn8h-BaseButton-boxStyles"
+          type="button"
+        >
+          6
+        </button>
+      </li>
+      <li
+        class="css-ugsfbz-boxStyles"
+      >
+        <span
+          class="css-6j1v6l-boxStyles-Text"
+        >
+          …
+        </span>
+      </li>
+      <li>
+        <button
+          aria-label="Go to page 10"
+          class="css-1qrtn8h-BaseButton-boxStyles"
+          type="button"
+        >
+          10
+        </button>
+      </li>
+      <li
+        class="css-5p8a11-PaginationItemDirectionButton"
+      >
+        <button
+          aria-label="Go to next page"
+          class="css-1d2ughx-BaseButton-boxStyles-BaseDirectionLink-PaginationItemDirectionButton"
+          type="button"
+        >
+          Next
+          <svg
+            aria-hidden="true"
+            class="css-10t8zfr-Icon"
+            clip-rule="evenodd"
+            focusable="false"
+            height="24"
+            role="img"
+            viewBox="0 0 24 24"
+            width="24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M3 12L20 12"
+            />
+            <path
+              d="M16 7L21 12L16 17"
+            />
+          </svg>
+        </button>
+      </li>
+    </ol>
+  </nav>
+</div>
+`;
