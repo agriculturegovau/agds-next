@@ -1,0 +1,65 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CallToActionButton renders correctly 1`] = `
+<div>
+  <div
+    class="css-zce95a-boxStyles-CallToAction"
+  >
+    <button
+      class="css-t28hm-BaseButton-boxStyles"
+      data-testid="example"
+      type="button"
+    >
+      Sign up
+      <svg
+        aria-hidden="true"
+        class="css-5ae1oq-Icon"
+        clip-rule="evenodd"
+        focusable="false"
+        height="24"
+        role="img"
+        style="padding-left: 0rem;"
+        viewBox="0 0 24 24"
+        width="24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M8 3L17 12L8 21"
+        />
+      </svg>
+    </button>
+  </div>
+</div>
+`;
+
+exports[`CallToActionLink renders correctly 1`] = `
+<div>
+  <div
+    class="css-zce95a-boxStyles-CallToAction"
+  >
+    <a
+      class="css-mzhcw2-TextLink-boxStyles"
+      data-testid="example"
+      href="#"
+    >
+      Sign up
+      <svg
+        aria-hidden="true"
+        class="css-5ae1oq-Icon"
+        clip-rule="evenodd"
+        focusable="false"
+        height="24"
+        role="img"
+        style="padding-left: 0rem;"
+        viewBox="0 0 24 24"
+        width="24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M8 3L17 12L8 21"
+        />
+      </svg>
+    </a>
+  </div>
+</div>
+`;
