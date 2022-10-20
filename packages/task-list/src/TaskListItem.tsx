@@ -103,8 +103,8 @@ const TaskListItem = ({
 						paddingTop: '0.75rem',
 					}}
 				/>
-				<Flex flexDirection="column" gap={0.25}>
-					<Text color="muted" fontSize="xs" lineHeight="nospace">
+				<Flex as="span" flexDirection="column" gap={0.25}>
+					<Text as="span" color="muted" fontSize="xs" lineHeight="nospace">
 						{statusLabelMap[status]}
 					</Text>
 					<Text
