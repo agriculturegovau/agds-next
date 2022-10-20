@@ -1,4 +1,4 @@
-import { Prose } from '@ag.ds-next/prose';
+import { Prose, proseBlockClassname } from '@ag.ds-next/prose';
 import {
 	TableHead,
 	TableWrapper,
@@ -9,12 +9,17 @@ import {
 	TableCell,
 } from '@ag.ds-next/table';
 import { Text } from '@ag.ds-next/text';
-import { tokens } from '@ag.ds-next/core';
+import { tokens, FontSize, Font } from '@ag.ds-next/core';
 import { Stack } from '@ag.ds-next/box';
+import {
+	SummaryList,
+	SummaryListItem,
+	SummaryListItemDescription,
+	SummaryListItemTerm,
+} from '@ag.ds-next/summary-list';
 import { DocumentTitle } from '../../components/DocumentTitle';
 import { TokenLayout } from '../../components/TokenLayout';
-import { TypographyChart } from '../../components/TokenCharts';
-import { SegmentedControl } from '../../components/SegmentedControl';
+import { LineHeightChart } from '../../components/TokenCharts';
 
 function FontFamilyTable() {
 	const { font } = tokens;
@@ -25,44 +30,10 @@ function FontFamilyTable() {
 	};
 
 	return (
-		<TableWrapper>
-			<Table>
-				<TableCaption>Font family tokens</TableCaption>
-				<TableHead>
-					<tr>
-						<TableHeader scope="col">Token</TableHeader>
-						<TableHeader scope="col">Value</TableHeader>
-						<TableHeader scope="col">Description</TableHeader>
-					</tr>
-				</TableHead>
-				<TableBody>
-					{Object.entries(font).map(([key, value]) => (
-						<tr key={key}>
-							<TableCell>
-								<Text as="span" fontFamily={key}>
-									{key}
-								</Text>
-							</TableCell>
-							<TableCell>{value}</TableCell>
-							<TableCell>{fontDescriptions[key]}</TableCell>
-						</tr>
-					))}
-				</TableBody>
-			</Table>
-		</TableWrapper>
-	);
-}
-function FontSizeTable() {
-	const { fontSize } = tokens;
-	const xs = fontSize.xs;
-	const sm = fontSize.sm;
-
-	return (
-		<Stack>
-			<SegmentedControl options={['xs', 'sm']} selected="sm" />
+		<div className={proseBlockClassname}>
 			<TableWrapper>
 				<Table>
-					<TableCaption>Font size tokens</TableCaption>
+					<TableCaption>Font family tokens</TableCaption>
 					<TableHead>
 						<tr>
 							<TableHeader scope="col">Token</TableHeader>
@@ -71,71 +42,60 @@ function FontSizeTable() {
 						</tr>
 					</TableHead>
 					<TableBody>
-						{Object.entries(sm).map(([key, value]) => (
-							<tr key={key}>
-								<TableCell>
-									<Text as="span" fontSize={key}>
-										{key}
-									</Text>
-								</TableCell>
-								<TableCell>{`${value}rem (${value * 16}px)`}</TableCell>
-								{/* <TableCell>{fontDescriptions[key]}</TableCell> */}
-							</tr>
-						))}
+						{(Object.entries(font) as [key: Font, value: string][]).map(
+							([key, value]) => (
+								<tr key={key}>
+									<TableCell>
+										<Text as="span" fontFamily={key}>
+											{key}
+										</Text>
+									</TableCell>
+									<TableCell>{value}</TableCell>
+									<TableCell>{fontDescriptions[key]}</TableCell>
+								</tr>
+							)
+						)}
+					</TableBody>
+				</Table>
+			</TableWrapper>
+		</div>
+	);
+}
+function FontSizeTable() {
+	const { fontSize } = tokens;
+
+	return (
+		<Stack className={proseBlockClassname}>
+			<TableWrapper>
+				<Table>
+					<TableCaption>Font size tokens</TableCaption>
+					<TableHead>
+						<tr>
+							<TableHeader scope="col">Token</TableHeader>
+							<TableHeader scope="col">Value</TableHeader>
+							<TableHeader scope="col">Value (mobile viewports)</TableHeader>
+						</tr>
+					</TableHead>
+					<TableBody>
+						{(Object.keys(fontSize.sm) as FontSize[]).map((token) => {
+							const xs = fontSize.xs[token];
+							const sm = fontSize.sm[token];
+							return (
+								<tr key={token}>
+									<TableCell>
+										<Text as="span" fontSize={token}>
+											{token}
+										</Text>
+									</TableCell>
+									<TableCell>{`${sm}rem (${sm * 16}px)`}</TableCell>
+									<TableCell>{`${xs}rem (${xs * 16}px)`}</TableCell>
+								</tr>
+							);
+						})}
 					</TableBody>
 				</Table>
 			</TableWrapper>
 		</Stack>
-	);
-}
-function FontWeightTable() {
-	return (
-		<TableWrapper>
-			<Table>
-				<TableCaption>
-					Population of Australian states and territories, December 2015
-				</TableCaption>
-				<TableHead>
-					<tr>
-						<TableHeader scope="col">Token</TableHeader>
-						<TableHeader scope="col">Value</TableHeader>
-						<TableHeader scope="col">Description</TableHeader>
-					</tr>
-				</TableHead>
-				<TableBody>
-					<tr>
-						<TableCell>One</TableCell>
-						<TableCell>7,670,700</TableCell>
-						<TableCell>Some explainer text here</TableCell>
-					</tr>
-				</TableBody>
-			</Table>
-		</TableWrapper>
-	);
-}
-function LineHeightTable() {
-	return (
-		<TableWrapper>
-			<Table>
-				<TableCaption>
-					Population of Australian states and territories, December 2015
-				</TableCaption>
-				<TableHead>
-					<tr>
-						<TableHeader scope="col">Token</TableHeader>
-						<TableHeader scope="col">Value</TableHeader>
-						<TableHeader scope="col">Description</TableHeader>
-					</tr>
-				</TableHead>
-				<TableBody>
-					<tr>
-						<TableCell>One</TableCell>
-						<TableCell>7,670,700</TableCell>
-						<TableCell>Some explainer text here</TableCell>
-					</tr>
-				</TableBody>
-			</Table>
-		</TableWrapper>
 	);
 }
 
@@ -171,21 +131,38 @@ export default function TokensTypographyPage() {
 					</p>
 					<p>We have individual tokens for...</p>
 					<ul>
-						<li>font</li>
 						<li>fontSize</li>
-						<li>fontWeight</li>
 						<li>lineHeight</li>
+						<li>font</li>
+						<li>fontWeight</li>
 					</ul>
-					<TypographyChart />
 
-					<h2>font</h2>
-					<FontFamilyTable />
 					<h2>fontSize</h2>
 					<FontSizeTable />
-					<h2>fontWeight</h2>
-					<FontWeightTable />
 					<h2>lineHeight</h2>
-					<LineHeightTable />
+					<LineHeightChart />
+
+					<h2>font</h2>
+					<p>A collection of tokens for font family groupings.</p>
+					<FontFamilyTable />
+
+					<h2>fontWeight</h2>
+					<div className={proseBlockClassname}>
+						<SummaryList>
+							<SummaryListItem>
+								<SummaryListItemTerm>normal</SummaryListItemTerm>
+								<SummaryListItemDescription>
+									Used for the majority of body text
+								</SummaryListItemDescription>
+							</SummaryListItem>
+							<SummaryListItem>
+								<SummaryListItemTerm>bold</SummaryListItemTerm>
+								<SummaryListItemDescription>
+									Used to draw emphasis
+								</SummaryListItemDescription>
+							</SummaryListItem>
+						</SummaryList>
+					</div>
 				</Prose>
 			</TokenLayout>
 		</>
