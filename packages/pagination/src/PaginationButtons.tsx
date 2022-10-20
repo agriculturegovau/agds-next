@@ -11,7 +11,7 @@ export type PaginationButtonsProps = {
 	onChange: (pageNumber: number) => void;
 	/** The current page number. */
 	currentPage: number;
-	/** Contols how many list items are shown. */
+	/** Controls how many list items are shown. */
 	windowLimit?: number;
 	/** The total number of pages. */
 	totalPages: number;
