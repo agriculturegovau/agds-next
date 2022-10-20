@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SkeletonText renders correctly 1`] = `
+<div>
+  <div
+    aria-hidden="true"
+    class="css-wsym5b-boxStyles-SkeletonBox"
+    style="opacity: 0.84;"
+  />
+</div>
+`;
