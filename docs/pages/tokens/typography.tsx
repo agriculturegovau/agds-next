@@ -11,12 +11,6 @@ import {
 import { Text } from '@ag.ds-next/text';
 import { tokens, FontSize, Font } from '@ag.ds-next/core';
 import { Stack } from '@ag.ds-next/box';
-import {
-	SummaryList,
-	SummaryListItem,
-	SummaryListItemDescription,
-	SummaryListItemTerm,
-} from '@ag.ds-next/summary-list';
 import { DocumentTitle } from '../../components/DocumentTitle';
 import { TokenLayout } from '../../components/TokenLayout';
 import { LineHeightChart } from '../../components/TokenCharts';
@@ -99,6 +93,39 @@ function FontSizeTable() {
 	);
 }
 
+export function FontWeightTable() {
+	return (
+		<div className={proseBlockClassname}>
+			<TableWrapper>
+				<Table>
+					<TableCaption>Font weight tokens</TableCaption>
+					<TableHead>
+						<tr>
+							<TableHeader scope="col">Token</TableHeader>
+							<TableHeader scope="col">Value</TableHeader>
+							<TableHeader scope="col" width="75%">
+								Description
+							</TableHeader>
+						</tr>
+					</TableHead>
+					<TableBody>
+						<tr>
+							<TableCell>Normal</TableCell>
+							<TableCell>normal</TableCell>
+							<TableCell>Used for the majority of body text</TableCell>
+						</tr>
+						<tr>
+							<TableCell>Bold</TableCell>
+							<TableCell>bold</TableCell>
+							<TableCell>Used to draw emphasis</TableCell>
+						</tr>
+					</TableBody>
+				</Table>
+			</TableWrapper>
+		</div>
+	);
+}
+
 export default function TokensTypographyPage() {
 	return (
 		<>
@@ -125,44 +152,29 @@ export default function TokensTypographyPage() {
 					<p>
 						To ensure consistency with other components in the system,{' '}
 						<strong>Designers</strong> can use font-size and line-height values
-						from the typographic scale. <strong>Developers</strong> can use the
-						`fontSize` and `lineHeight` props available on typographic
-						components which use of the `fontGrid` function.
+						from the typographic scale. <strong>Developers</strong> can use the{' '}
+						<code>fontSize</code> and <code>lineHeight</code> props available on
+						typographic components which use of the `fontGrid` function.
 					</p>
 					<p>We have individual tokens for...</p>
 					<ul>
-						<li>fontSize</li>
-						<li>lineHeight</li>
-						<li>font</li>
-						<li>fontWeight</li>
+						<li>Font size</li>
+						<li>Line height</li>
+						<li>Font family</li>
+						<li>Font weight</li>
 					</ul>
 
-					<h2>fontSize</h2>
+					<h2>Font size</h2>
 					<FontSizeTable />
-					<h2>lineHeight</h2>
+					<h2>Line height</h2>
 					<LineHeightChart />
 
-					<h2>font</h2>
+					<h2>Font family</h2>
 					<p>A collection of tokens for font family groupings.</p>
 					<FontFamilyTable />
 
-					<h2>fontWeight</h2>
-					<div className={proseBlockClassname}>
-						<SummaryList>
-							<SummaryListItem>
-								<SummaryListItemTerm>normal</SummaryListItemTerm>
-								<SummaryListItemDescription>
-									Used for the majority of body text
-								</SummaryListItemDescription>
-							</SummaryListItem>
-							<SummaryListItem>
-								<SummaryListItemTerm>bold</SummaryListItemTerm>
-								<SummaryListItemDescription>
-									Used to draw emphasis
-								</SummaryListItemDescription>
-							</SummaryListItem>
-						</SummaryList>
-					</div>
+					<h2>Font weight</h2>
+					<FontWeightTable />
 				</Prose>
 			</TokenLayout>
 		</>
