@@ -6,7 +6,7 @@ import { badgeToneMap, BadgeTone } from './utils';
 
 afterEach(cleanup);
 
-function renderIndicatorDot(props?: Partial<IndicatorDotProps>) {
+function renderIndicatorDot(props: IndicatorDotProps) {
 	return render(<IndicatorDot {...props} />);
 }
 

@@ -6,7 +6,7 @@ import { badgeToneMap, BadgeTone } from './utils';
 
 afterEach(cleanup);
 
-function renderNotificationBadge(props?: Partial<NotificationBadgeProps>) {
+function renderNotificationBadge(props: NotificationBadgeProps) {
 	return render(<NotificationBadge {...props} />);
 }
 
@@ -36,7 +36,7 @@ describe('NotificationBadge', () => {
 	});
 
 	describe(`shows max+ instead of value`, () => {
-		renderNotificationBadge({ value: 100, max: 99 });
+		renderNotificationBadge({ tone: 'neutral', value: 100, max: 99 });
 		expect(screen.getByText('99+')).toBeInTheDocument();
 	});
 });

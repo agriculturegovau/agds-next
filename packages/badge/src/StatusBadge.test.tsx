@@ -5,7 +5,7 @@ import { StatusBadge, StatusBadgeProps, StatusBadgeTone } from './StatusBadge';
 
 afterEach(cleanup);
 
-function renderStatusBadge(props?: Partial<StatusBadgeProps>) {
+function renderStatusBadge(props: StatusBadgeProps) {
 	return render(<StatusBadge {...props} />);
 }
 
