@@ -1,0 +1,81 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Button Loading renders correctly 1`] = `
+<div>
+  <button
+    class="css-3jmmp1-BaseButton-Button"
+    data-testid="example"
+    type="button"
+  >
+    <span>
+      <span
+        class="css-17k4jap-Button"
+      >
+        My button
+      </span>
+      <span
+        aria-live="assertive"
+      >
+        <span
+          aria-atomic="false"
+          class="css-zovuvr-boxStyles-ButtonLoadingDots"
+        >
+          <span
+            class="css-avudkd-VisuallyHidden"
+          >
+            Busy
+          </span>
+          <span
+            aria-hidden="true"
+            class="css-3a1w1j-boxStyles-LoadingDots"
+            style="opacity: 0;"
+          />
+          <span
+            aria-hidden="true"
+            class="css-3a1w1j-boxStyles-LoadingDots"
+            style="opacity: 0;"
+          />
+          <span
+            aria-hidden="true"
+            class="css-3a1w1j-boxStyles-LoadingDots"
+            style="opacity: 0;"
+          />
+        </span>
+      </span>
+    </span>
+  </button>
+</div>
+`;
+
+exports[`Button renders correctly 1`] = `
+<div>
+  <button
+    class="css-3jmmp1-BaseButton-Button"
+    data-testid="example"
+    type="button"
+  >
+    <span>
+      <span
+        class="css-oobk4c-Button"
+      >
+        My button
+      </span>
+      <span
+        aria-live="assertive"
+      />
+    </span>
+  </button>
+</div>
+`;
+
+exports[`ButtonLink renders correctly 1`] = `
+<div>
+  <a
+    class="css-1wxekme-ButtonLink"
+    data-testid="example"
+    href="#"
+  >
+    My button link
+  </a>
+</div>
+`;
