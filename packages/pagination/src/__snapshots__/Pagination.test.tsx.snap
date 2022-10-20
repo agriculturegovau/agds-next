@@ -1,0 +1,136 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Pagination renders correctly 1`] = `
+<div>
+  <nav
+    aria-label="pagination"
+  >
+    <ol
+      class="css-1cc1bme-boxStyles"
+    >
+      <li
+        class="css-5zbwzc-PaginationItemDirection"
+      >
+        <a
+          aria-label="Go to previous page"
+          class="css-1rgqr5t-TextLink-boxStyles-BaseDirectionLink-PaginationItemDirection"
+          href="page-4"
+        >
+          <svg
+            aria-hidden="true"
+            class="css-10t8zfr-Icon"
+            clip-rule="evenodd"
+            focusable="false"
+            height="24"
+            role="img"
+            viewBox="0 0 24 24"
+            width="24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M21 12L4 12"
+            />
+            <path
+              d="M8 17L3 12L8 7"
+            />
+          </svg>
+          Previous
+        </a>
+      </li>
+      <li>
+        <a
+          aria-label="Go to page 1"
+          class="css-14z0vnm-boxStyles"
+          href="page-1"
+        >
+          1
+        </a>
+      </li>
+      <li
+        class="css-ugsfbz-boxStyles"
+      >
+        <span
+          class="css-6j1v6l-boxStyles-Text"
+        >
+          …
+        </span>
+      </li>
+      <li>
+        <a
+          aria-label="Go to page 4"
+          class="css-14z0vnm-boxStyles"
+          href="page-4"
+        >
+          4
+        </a>
+      </li>
+      <li>
+        <a
+          aria-current="page"
+          aria-label="Go to page 5"
+          class="css-19im9ov-boxStyles-PaginationItemPage"
+          href="page-5"
+        >
+          5
+        </a>
+      </li>
+      <li>
+        <a
+          aria-label="Go to page 6"
+          class="css-14z0vnm-boxStyles"
+          href="page-6"
+        >
+          6
+        </a>
+      </li>
+      <li
+        class="css-ugsfbz-boxStyles"
+      >
+        <span
+          class="css-6j1v6l-boxStyles-Text"
+        >
+          …
+        </span>
+      </li>
+      <li>
+        <a
+          aria-label="Go to page 10"
+          class="css-14z0vnm-boxStyles"
+          href="page-10"
+        >
+          10
+        </a>
+      </li>
+      <li
+        class="css-19ckcqr-PaginationItemDirection"
+      >
+        <a
+          aria-label="Go to next page"
+          class="css-1rgqr5t-TextLink-boxStyles-BaseDirectionLink-PaginationItemDirection"
+          href="page-6"
+        >
+          Next
+          <svg
+            aria-hidden="true"
+            class="css-10t8zfr-Icon"
+            clip-rule="evenodd"
+            focusable="false"
+            height="24"
+            role="img"
+            viewBox="0 0 24 24"
+            width="24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M3 12L20 12"
+            />
+            <path
+              d="M16 7L21 12L16 17"
+            />
+          </svg>
+        </a>
+      </li>
+    </ol>
+  </nav>
+</div>
+`;
