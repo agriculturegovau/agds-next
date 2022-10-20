@@ -105,7 +105,7 @@ export default function TokensTypographyPage() {
 			<DocumentTitle title="Typography tokens" />
 			<TokenLayout
 				title="Typography tokens"
-				description="How to do typography"
+				description="Guidelines using typography across the Design System."
 				editPath="/docs/pages/tokens/typography.tsx"
 			>
 				<Prose>

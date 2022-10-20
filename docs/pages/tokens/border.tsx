@@ -10,7 +10,7 @@ export default function TokensBorderWidthPage() {
 			<DocumentTitle title="Border tokens" />
 			<TokenLayout
 				title="Border tokens"
-				description="All tokens related to borders"
+				description="Guidelines for using borders across the Design System"
 				editPath="/docs/pages/tokens/border.tsx"
 			>
 				<Prose>
