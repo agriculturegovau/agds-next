@@ -9,7 +9,7 @@ export default function TokensSpacingPage() {
 			<DocumentTitle title="Spacing tokens" />
 			<TokenLayout
 				title="Spacing tokens"
-				description="How to do spacing"
+				description="Guidelines for using spacing consistently across the Design System."
 				editPath="/docs/pages/tokens/spacing.tsx"
 			>
 				<Prose>

@@ -86,7 +86,7 @@ export const MaxWidthChart = () => {
 	);
 };
 
-export const TypographyChart = () => {
+export const LineHeightChart = () => {
 	const fontSizes = ['xxxl', 'xxl', 'xl', 'lg', 'md', 'sm', 'xs'] as const;
 	return (
 		<Flex gap={1} className={proseBlockClassname}>

@@ -122,6 +122,18 @@ const colourTokens = {
 	},
 } as const;
 
+function ColorSquare({ color }: { color?: string }) {
+	return (
+		<div
+			css={{
+				width: 32,
+				height: 32,
+				backgroundColor: color,
+			}}
+		/>
+	);
+}
+
 export const ColorTable = ({
 	activePalette,
 }: {
@@ -141,8 +153,12 @@ export const ColorTable = ({
 						<TableCaption>All Foreground tokens</TableCaption>
 						<TableHead>
 							<tr>
-								<TableHeader scope="col">Name</TableHeader>
-								<TableHeader scope="col">Value</TableHeader>
+								<TableHeader width="25%" scope="col">
+									Name
+								</TableHeader>
+								<TableHeader width="25%" scope="col">
+									Value
+								</TableHeader>
 								<TableHeader width="50%" scope="col">
 									Description
 								</TableHeader>
@@ -153,20 +169,13 @@ export const ColorTable = ({
 								([tokenName, { [activePalette]: color, desc }]) => {
 									return (
 										<tr key={tokenName}>
-											<TableCell>{tokenName}</TableCell>
 											<TableCell>
 												<Flex gap={0.5} alignItems="center">
-													<div
-														css={{
-															width: 32,
-															height: 32,
-															backgroundColor: color,
-														}}
-													/>
-
-													{color}
+													<ColorSquare color={color} />
+													{tokenName}
 												</Flex>
 											</TableCell>
+											<TableCell>{color}</TableCell>
 											<TableCell>{desc}</TableCell>
 										</tr>
 									);
@@ -192,8 +201,12 @@ export const ColorTable = ({
 						<TableCaption>All Background tokens</TableCaption>
 						<TableHead>
 							<tr>
-								<TableHeader scope="col">Name</TableHeader>
-								<TableHeader scope="col">Value</TableHeader>
+								<TableHeader width="25%" scope="col">
+									Name
+								</TableHeader>
+								<TableHeader width="25%" scope="col">
+									Value
+								</TableHeader>
 								<TableHeader width="50%" scope="col">
 									Description
 								</TableHeader>
@@ -204,20 +217,13 @@ export const ColorTable = ({
 								([tokenName, { [activePalette]: color, desc }]) => {
 									return (
 										<tr key={tokenName}>
-											<TableCell>{tokenName}</TableCell>
 											<TableCell>
 												<Flex gap={0.5} alignItems="center">
-													<div
-														css={{
-															width: 32,
-															height: 32,
-															backgroundColor: color,
-														}}
-													/>
-
-													{color}
+													<ColorSquare color={color} />
+													{tokenName}
 												</Flex>
 											</TableCell>
+											<TableCell>{color}</TableCell>
 											<TableCell>{desc}</TableCell>
 										</tr>
 									);
@@ -236,8 +242,12 @@ export const ColorTable = ({
 						<TableCaption>All Border tokens</TableCaption>
 						<TableHead>
 							<tr>
-								<TableHeader scope="col">Name</TableHeader>
-								<TableHeader scope="col">Value</TableHeader>
+								<TableHeader width="25%" scope="col">
+									Name
+								</TableHeader>
+								<TableHeader width="25%" scope="col">
+									Value
+								</TableHeader>
 								<TableHeader width="50%" scope="col">
 									Description
 								</TableHeader>
@@ -248,20 +258,13 @@ export const ColorTable = ({
 								([tokenName, { [activePalette]: color, desc }]) => {
 									return (
 										<tr key={tokenName}>
-											<TableCell>{tokenName}</TableCell>
 											<TableCell>
 												<Flex gap={0.5} alignItems="center">
-													<div
-														css={{
-															width: 32,
-															height: 32,
-															backgroundColor: color,
-														}}
-													/>
-
-													{color}
+													<ColorSquare color={color} />
+													{tokenName}
 												</Flex>
 											</TableCell>
+											<TableCell>{color}</TableCell>
 											<TableCell>{desc}</TableCell>
 										</tr>
 									);
@@ -284,8 +287,12 @@ export const ColorTable = ({
 						<TableCaption>All System tokens</TableCaption>
 						<TableHead>
 							<tr>
-								<TableHeader scope="col">Name</TableHeader>
-								<TableHeader scope="col">Value</TableHeader>
+								<TableHeader width="25%" scope="col">
+									Name
+								</TableHeader>
+								<TableHeader width="25%" scope="col">
+									Value
+								</TableHeader>
 								<TableHeader width="50%" scope="col">
 									Description
 								</TableHeader>
@@ -296,20 +303,13 @@ export const ColorTable = ({
 								([tokenName, { [activePalette]: color, desc }]) => {
 									return (
 										<tr key={tokenName}>
-											<TableCell>{tokenName}</TableCell>
 											<TableCell>
 												<Flex gap={0.5} alignItems="center">
-													<div
-														css={{
-															width: 32,
-															height: 32,
-															backgroundColor: color,
-														}}
-													/>
-
-													{color}
+													<ColorSquare color={color} />
+													{tokenName}
 												</Flex>
 											</TableCell>
+											<TableCell>{color}</TableCell>
 											<TableCell>{desc}</TableCell>
 										</tr>
 									);
