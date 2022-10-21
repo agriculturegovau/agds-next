@@ -1,14 +1,22 @@
 ---
-order: 4
+order: 5
 title: Technical Overview
 description: Explaining technical decisions in the AgDS Component library
 ---
 
+## React
+
+The AgDS Component library is built using React. React is a JavaScript library for building user interfaces. It is maintained by Facebook and a community of individual developers and companies.
+
+React uses a component-based model for defining UI elements, which is fantastic for building Design Systems and scalable UI generally.
+
+## TypeScript
+
+All of the AgDS components are built using Typescript, a typed superset of JavaScript that compiles to plain JavaScript. Typing component props is a great way of documenting them, and ensure they are easy to use and free of bugs.
+
 ## Emotion
 
-Emotion is a framework that enables writing styling (CSS) within JavaScript components.
-
-## Monorepos
+Emotion is a framework that enables writing styling (CSS) within JavaScript components. As opposed to writing CSS stylesheets, the style code is written alongside the component code, making it easier to maintain and reason.
 
 ## Next.JS
 
@@ -18,6 +26,6 @@ We use Next.JS to build our documentation site, templates, and internal test app
 
 Using Next.JS massively improves our productivity, because it has built-in solutions for routing, static and server rendering, API routes and more. That means we spend less time on configuration and we can focus on building application logic and layouts.
 
-Unless you have strong technical reasons to use something else, we strongly recommend you clone our Next.JS-based [Starter Kit]() for your next project.
+Unless you have strong technical reasons to use something else, we strongly recommend you clone our Next.JS-based [Starter Kit](https://github.com/steelthreads/agds-next-starter-kit) for your next project.
 
 [Learn more about Next.JS](https://nextjs.org/)
