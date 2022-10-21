@@ -151,7 +151,7 @@ const LiveCode = withLive(function LiveCode(props: unknown) {
 			>
 				<LiveEditor
 					tabIndex={-1}
-					aria-label="Live code editor. Press the escape key to leave the editor."
+					aria-label="Live code editor, press the escape key to leave the editor"
 					theme={prismTheme}
 					code={live.code}
 					language={live.language}
