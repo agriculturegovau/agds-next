@@ -6,7 +6,10 @@ import { tokens } from '@ag.ds-next/core';
 import { Box } from '@ag.ds-next/box';
 
 const footerLinks = [
-	{ label: 'Home', href: '/' },
+	{
+		label: 'Home',
+		href: '/',
+	},
 	{
 		label: 'Storybook',
 		href: 'https://steelthreads.github.io/agds-next/storybook/index.html',
@@ -18,6 +21,10 @@ const footerLinks = [
 	{
 		label: 'Starter kit',
 		href: 'https://github.com/steelthreads/agds-next-starter-kit',
+	},
+	{
+		label: 'Accessibility statement',
+		href: '/accessibility',
 	},
 ];
 
