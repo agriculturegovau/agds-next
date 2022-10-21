@@ -10,9 +10,23 @@ The AgDS Component library is built using React. React is a JavaScript library f
 
 React uses a component-based model for defining UI elements, which is fantastic for building Design Systems and scalable UI generally.
 
+## NPM Packages
+
+The delivery method for the AgDS Component library is via NPM packages. NPM is the package manager for JavaScript and the world’s largest software registry.
+
+Each component is an individual package. This allows consumers to only install the components they need, and avoid installing unnecessary dependencies and huge bundles for users.
+
+```zsh
+yarn add @agds-next/button
+```
+
+The trade off is that dependency versions need to be managed carefully. Our [release notes](https://steelthreads.github.io/agds-next/releases) include a list of the latest versions of packages, and any breaking changes that need to be managed with a release.
+
 ## TypeScript
 
 All of the AgDS components are built using Typescript, a typed superset of JavaScript that compiles to plain JavaScript. Typing component props is a great way of documenting them, and ensure they are easy to use and free of bugs.
+
+You don't need to use Typescript to use AgDS components, but it is recommended.
 
 ## Emotion
 
