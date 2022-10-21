@@ -1,5 +1,37 @@
 # @ag.ds-next/main-nav
 
+## 15.0.0
+
+### Patch Changes
+
+- 846946d51: Improved handling of pressing `Escape` to close the component
+- e7f877f2a: Improved a11y by updating aria labels for the open and close buttons
+- 8bae0bec4: - Close the modal when the user presses the escape key
+  - Added vertical scrolling to the modal to prevent content from being cut off
+- def4b6687: Sort package.json files
+- e73c1c8ba: - Accessibility improvements: List contains invalid elements (DAGR-95)
+  - Removed `aria-label` prop as this is now baked into the component
+- e4c7ceb5f: Improved accessibility
+- Updated dependencies [3f1a09f96]
+- Updated dependencies [0ba460044]
+- Updated dependencies [30726c674]
+- Updated dependencies [ad9dcc4e1]
+- Updated dependencies [e4c7ceb5f]
+- Updated dependencies [def4b6687]
+- Updated dependencies [74ca5f4c6]
+- Updated dependencies [70aa65c52]
+- Updated dependencies [c128d8632]
+- Updated dependencies [64f7174ea]
+- Updated dependencies [74ca5f4c6]
+- Updated dependencies [802d24085]
+- Updated dependencies [e11d39fc0]
+- Updated dependencies [dfe7f8c99]
+- Updated dependencies [355806633]
+  - @ag.ds-next/button@12.0.0
+  - @ag.ds-next/box@8.0.0
+  - @ag.ds-next/core@4.1.0
+  - @ag.ds-next/icon@12.0.0
+
 ## 14.0.0
 
 ### Major Changes

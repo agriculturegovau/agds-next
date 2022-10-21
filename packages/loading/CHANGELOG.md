@@ -1,5 +1,32 @@
 # @ag.ds-next/loading
 
+## 7.0.0
+
+### Minor Changes
+
+- ad9dcc4e1: New `label` prop. Replaces `aria-label`.
+
+### Patch Changes
+
+- 3f1a09f96: Render spans instead of divs
+- def4b6687: Sort package.json files
+- 30726c674: Improved a11y in windows high contrast mode
+- Updated dependencies [4f0759ad3]
+- Updated dependencies [38f4a514d]
+- Updated dependencies [0ba460044]
+- Updated dependencies [30726c674]
+- Updated dependencies [e4c7ceb5f]
+- Updated dependencies [def4b6687]
+- Updated dependencies [70aa65c52]
+- Updated dependencies [c128d8632]
+- Updated dependencies [74ca5f4c6]
+- Updated dependencies [355806633]
+  - @ag.ds-next/a11y@1.2.2
+  - @ag.ds-next/content@10.0.0
+  - @ag.ds-next/box@8.0.0
+  - @ag.ds-next/core@4.1.0
+  - @ag.ds-next/text@11.0.0
+
 ## 6.0.0
 
 ### Minor Changes

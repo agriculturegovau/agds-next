@@ -1,5 +1,18 @@
 # @ag.ds-next/core
 
+## 4.1.0
+
+### Minor Changes
+
+- e4c7ceb5f: Added new hook `useBoxPalette` which returns the current palette for a specific DOM element
+
+### Patch Changes
+
+- def4b6687: Sort package.json files
+- c128d8632: Upgraded `@reach/auto-id`
+- 74ca5f4c6: Adjusted height and line-height of buttons and text inputs to align better to an 8px baseline grid.
+- 355806633: Change input height from `em` to `rem`
+
 ## 4.0.0
 
 ### Major Changes

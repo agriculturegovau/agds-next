@@ -1,5 +1,32 @@
 # @ag.ds-next/select
 
+## 12.0.0
+
+### Patch Changes
+
+- bff0bf355: Added `autoFocus` prop
+- 02b265c75: Fixed small typo in code
+- def4b6687: Sort package.json files
+- Updated dependencies [e11d39fc0]
+- Updated dependencies [02b265c75]
+- Updated dependencies [0ba460044]
+- Updated dependencies [30726c674]
+- Updated dependencies [e4c7ceb5f]
+- Updated dependencies [def4b6687]
+- Updated dependencies [70aa65c52]
+- Updated dependencies [c128d8632]
+- Updated dependencies [64f7174ea]
+- Updated dependencies [74ca5f4c6]
+- Updated dependencies [6f06cd8cc]
+- Updated dependencies [77ff925b0]
+- Updated dependencies [802d24085]
+- Updated dependencies [e11d39fc0]
+- Updated dependencies [355806633]
+  - @ag.ds-next/field@11.0.0
+  - @ag.ds-next/box@8.0.0
+  - @ag.ds-next/core@4.1.0
+  - @ag.ds-next/icon@12.0.0
+
 ## 11.0.0
 
 ### Minor Changes

@@ -1,5 +1,26 @@
 # @ag.ds-next/hero-banner
 
+## 7.0.0
+
+### Patch Changes
+
+- db9f1ff26: Improved a11y in examples by setting example image to be decorative.
+- def4b6687: Sort package.json files
+- Updated dependencies [38f4a514d]
+- Updated dependencies [0ba460044]
+- Updated dependencies [30726c674]
+- Updated dependencies [e4c7ceb5f]
+- Updated dependencies [def4b6687]
+- Updated dependencies [70aa65c52]
+- Updated dependencies [c128d8632]
+- Updated dependencies [74ca5f4c6]
+- Updated dependencies [355806633]
+  - @ag.ds-next/content@10.0.0
+  - @ag.ds-next/box@8.0.0
+  - @ag.ds-next/core@4.1.0
+  - @ag.ds-next/heading@10.0.0
+  - @ag.ds-next/text@11.0.0
+
 ## 6.0.0
 
 ### Patch Changes

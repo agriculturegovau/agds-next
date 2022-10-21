@@ -1,5 +1,12 @@
 # @ag.ds-next/a11y
 
+## 1.2.2
+
+### Patch Changes
+
+- 4f0759ad3: Improved a11y of `ExternalLinkCallout` by updating screen reader text.
+- def4b6687: Sort package.json files
+
 ## 1.2.1
 
 ### Patch Changes
