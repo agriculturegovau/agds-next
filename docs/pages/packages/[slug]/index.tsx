@@ -8,11 +8,11 @@ import {
 	getPkgNavLinks,
 	getPkgBreadcrumbs,
 	getPkgDocsContent,
-} from '../../../../lib/mdx/packages';
-import { mdxComponents } from '../../../../components/mdxComponents';
-import { AppLayout } from '../../../../components/AppLayout';
-import { DocumentTitle } from '../../../../components/DocumentTitle';
-import { PkgLayout } from '../../../../components/PkgLayout';
+} from '../../../lib/mdx/packages';
+import { mdxComponents } from '../../../components/mdxComponents';
+import { AppLayout } from '../../../components/AppLayout';
+import { DocumentTitle } from '../../../components/DocumentTitle';
+import { PkgLayout } from '../../../components/PkgLayout';
 
 export default function Packages({
 	pkg,
@@ -52,19 +52,19 @@ export const getStaticProps: GetStaticProps<
 		breadcrumbs: Awaited<ReturnType<typeof getPkgBreadcrumbs>>;
 		content: NonNullable<Awaited<ReturnType<typeof getPkgDocsContent>>>;
 	},
-	{ slug: string; group: string }
+	{ slug: string }
 > = async ({ params }) => {
-	const { slug, group } = params ?? {};
+	const { slug } = params ?? {};
 	const pkg = slug ? await getPkg(slug) : undefined;
 	const content = pkg
 		? await getPkgDocsContent(pkg.slug, 'overview.mdx')
 		: null;
 
-	if (!(slug && group && pkg && content)) {
+	if (!(slug && pkg && content)) {
 		return { notFound: true };
 	}
 
-	const navLinks = await getPkgNavLinks(group);
+	const navLinks = await getPkgNavLinks();
 	const breadcrumbs = await getPkgBreadcrumbs(slug);
 
 	return {

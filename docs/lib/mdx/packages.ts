@@ -40,27 +40,27 @@ export async function getPkgSubNavItems(slug: string) {
 		return [
 			{
 				label: 'Overview',
-				href: `/packages/${meta.group}/${meta.slug}`,
+				href: `/packages/${meta.slug}`,
 				path: pkgReadmePath(slug),
 			},
 			{
 				label: 'Rationale',
-				href: `/packages/${meta.group}/${meta.slug}/rationale`,
+				href: `/packages/${meta.slug}/rationale`,
 				path: `${pkgDocsPath(slug)}/rationale.mdx`,
 			},
 			{
 				label: 'Content',
-				href: `/packages/${meta.group}/${meta.slug}/content`,
+				href: `/packages/${meta.slug}/content`,
 				path: `${pkgDocsPath(slug)}/content.mdx`,
 			},
 			{
 				label: 'Code',
-				href: `/packages/${meta.group}/${meta.slug}/code`,
+				href: `/packages/${meta.slug}/code`,
 				path: `${pkgDocsPath(slug)}/code.mdx`,
 			},
 			{
 				label: 'Accessibility',
-				href: `/packages/${meta.group}/${meta.slug}/accessibility`,
+				href: `/packages/${meta.slug}/accessibility`,
 				path: `${pkgDocsPath(slug)}/accessibility.mdx`,
 			},
 		].filter(({ path }) => existsSync(path));
@@ -101,7 +101,7 @@ function pkgNavMetaData(
 	};
 }
 
-export function getPkgList(group?: string) {
+export function getPkgList() {
 	return getPkgSlugs().then((slugs) =>
 		Promise.all(
 			slugs.map((slug) =>
@@ -109,12 +109,7 @@ export function getPkgList(group?: string) {
 					pkgNavMetaData(slug, data)
 				)
 			)
-		)
-			.then((pkgList) =>
-				// filter if group is passed
-				group ? pkgList.filter((pkg) => pkg.group === group) : pkgList
-			)
-			.then((pkgList) => pkgList.sort((a, b) => (a.title > b.title ? 1 : -1)))
+		).then((pkgList) => pkgList.sort((a, b) => (a.title > b.title ? 1 : -1)))
 	);
 }
 
@@ -152,12 +147,11 @@ export function getPkgBreadcrumbs(slug: string, currentPageName?: string) {
 		const baseItems = [
 			{ href: '/', label: 'Home' },
 			{ href: '/packages', label: 'Packages' },
-			{ href: `/packages/${meta.group}`, label: meta.groupName },
 		];
 		if (currentPageName) {
 			return [
 				...baseItems,
-				{ href: `/packages/${meta.group}/${meta.slug}`, label: meta.title },
+				{ href: `/packages/${meta.slug}`, label: meta.title },
 				{ label: currentPageName },
 			];
 		}
@@ -165,31 +159,14 @@ export function getPkgBreadcrumbs(slug: string, currentPageName?: string) {
 	});
 }
 
-export async function getPkgNavLinks(group?: string) {
-	const groupList = await getPkgGroupList();
-	const pkgList = group ? await getPkgList(group) : [];
-
-	return groupList.map((g) => {
-		return g.slug === group
-			? {
-					...groupNavItem(g),
-					items: pkgList.map(pkgNavItem),
-			  }
-			: groupNavItem(g);
-	});
+export async function getPkgNavLinks() {
+	return await (await getPkgList()).map(pkgNavItem);
 }
 
-export function groupNavItem(g: { title: string; slug: string }) {
-	return {
-		label: g.title,
-		href: `/packages/${g.slug}`,
-	};
-}
-
-export function pkgNavItem(p: { title: string; group: string; slug: string }) {
+export function pkgNavItem(p: { title: string; slug: string }) {
 	return {
 		label: p.title,
-		href: `/packages/${p.group}/${p.slug}`,
+		href: `/packages/${p.slug}`,
 	};
 }
 

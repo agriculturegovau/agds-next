@@ -8,13 +8,13 @@ import {
 	getPkgNavLinks,
 	getPkgBreadcrumbs,
 	getPkgDocsContent,
-} from '../../../../lib/mdx/packages';
-import { mdxComponents } from '../../../../components/mdxComponents';
-import { AppLayout } from '../../../../components/AppLayout';
-import { DocumentTitle } from '../../../../components/DocumentTitle';
-import { PkgLayout } from '../../../../components/PkgLayout';
+} from '../../../lib/mdx/packages';
+import { mdxComponents } from '../../../components/mdxComponents';
+import { AppLayout } from '../../../components/AppLayout';
+import { DocumentTitle } from '../../../components/DocumentTitle';
+import { PkgLayout } from '../../../components/PkgLayout';
 
-export default function PackagesAccessibility({
+export default function PackagesCode({
 	pkg,
 	navLinks,
 	breadcrumbs,
@@ -22,7 +22,7 @@ export default function PackagesAccessibility({
 }: InferGetStaticPropsType<typeof getStaticProps>) {
 	return (
 		<>
-			<DocumentTitle title={`${pkg.title} Accessibility`} />
+			<DocumentTitle title={`${pkg.title} Code`} />
 			<AppLayout>
 				<PkgLayout
 					pkg={pkg}
@@ -30,13 +30,23 @@ export default function PackagesAccessibility({
 					breadcrumbs={breadcrumbs}
 					skipLinks={[
 						{
-							label: `Skip to ${pkg.title} accessibility`,
+							label: `Skip to ${pkg.title} code`,
 							href: '#pkg-content',
 						},
 					]}
-					editPath={`/packages/${pkg.slug}/docs/accessibility.mdx`}
+					editPath={`/packages/${pkg.slug}/docs/code.mdx`}
 				>
 					<Prose id="pkg-content">
+						<h2>Source</h2>
+						<p>
+							You can view the full source code for this package on{' '}
+							<a
+								href={`https://github.com/steelthreads/agds-next/tree/main/packages/${pkg.slug}`}
+							>
+								Github
+							</a>
+							.
+						</p>
 						<MDXRemote {...content} components={mdxComponents} />
 					</Prose>
 				</PkgLayout>
@@ -56,16 +66,14 @@ export const getStaticProps: GetStaticProps<
 > = async ({ params }) => {
 	const { slug, group } = params ?? {};
 	const pkg = slug ? await getPkg(slug) : undefined;
-	const content = pkg
-		? await getPkgDocsContent(pkg.slug, 'accessibility.mdx')
-		: null;
+	const content = pkg ? await getPkgDocsContent(pkg.slug, 'code.mdx') : null;
 
 	if (!(slug && group && pkg && content)) {
 		return { notFound: true };
 	}
 
 	const navLinks = await getPkgNavLinks(group);
-	const breadcrumbs = await getPkgBreadcrumbs(slug, 'Accessibility');
+	const breadcrumbs = await getPkgBreadcrumbs(slug, 'Code');
 
 	return {
 		props: {

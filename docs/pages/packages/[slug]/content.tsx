@@ -8,13 +8,13 @@ import {
 	getPkgNavLinks,
 	getPkgBreadcrumbs,
 	getPkgDocsContent,
-} from '../../../../lib/mdx/packages';
-import { mdxComponents } from '../../../../components/mdxComponents';
-import { AppLayout } from '../../../../components/AppLayout';
-import { DocumentTitle } from '../../../../components/DocumentTitle';
-import { PkgLayout } from '../../../../components/PkgLayout';
+} from '../../../lib/mdx/packages';
+import { mdxComponents } from '../../../components/mdxComponents';
+import { AppLayout } from '../../../components/AppLayout';
+import { DocumentTitle } from '../../../components/DocumentTitle';
+import { PkgLayout } from '../../../components/PkgLayout';
 
-export default function PackagesRationale({
+export default function PackagesContent({
 	pkg,
 	navLinks,
 	breadcrumbs,
@@ -22,7 +22,7 @@ export default function PackagesRationale({
 }: InferGetStaticPropsType<typeof getStaticProps>) {
 	return (
 		<>
-			<DocumentTitle title={`${pkg.title} Rationale`} />
+			<DocumentTitle title={`${pkg.title} Content`} />
 			<AppLayout>
 				<PkgLayout
 					pkg={pkg}
@@ -30,11 +30,11 @@ export default function PackagesRationale({
 					breadcrumbs={breadcrumbs}
 					skipLinks={[
 						{
-							label: `Skip to ${pkg.title} rationale`,
+							label: `Skip to ${pkg.title} content`,
 							href: '#pkg-content',
 						},
 					]}
-					editPath={`/packages/${pkg.slug}/docs/rationale.mdx`}
+					editPath={`/packages/${pkg.slug}/docs/content.mdx`}
 				>
 					<Prose id="pkg-content">
 						<MDXRemote {...content} components={mdxComponents} />
@@ -56,16 +56,14 @@ export const getStaticProps: GetStaticProps<
 > = async ({ params }) => {
 	const { slug, group } = params ?? {};
 	const pkg = slug ? await getPkg(slug) : undefined;
-	const content = pkg
-		? await getPkgDocsContent(pkg.slug, 'rationale.mdx')
-		: null;
+	const content = pkg ? await getPkgDocsContent(pkg.slug, 'content.mdx') : null;
 
 	if (!(slug && group && pkg && content)) {
 		return { notFound: true };
 	}
 
 	const navLinks = await getPkgNavLinks(group);
-	const breadcrumbs = await getPkgBreadcrumbs(slug, 'Rationale');
+	const breadcrumbs = await getPkgBreadcrumbs(slug, 'Content');
 
 	return {
 		props: {

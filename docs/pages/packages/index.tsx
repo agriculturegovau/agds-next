@@ -3,7 +3,6 @@ import { MDXRemote } from 'next-mdx-remote';
 import { Stack } from '@ag.ds-next/box';
 import { Prose } from '@ag.ds-next/prose';
 import { H2 } from '@ag.ds-next/heading';
-import { TextLink } from '@ag.ds-next/text-link';
 import { getMarkdownData, serializeMarkdown } from '../../lib/mdxUtils';
 import {
 	getPkgGroupList,
@@ -42,9 +41,7 @@ export default function PackagesHome({
 					<Stack gap={2}>
 						{groupList.map((group) => (
 							<Stack gap={1} key={group.slug}>
-								<TextLink href={`/packages/${group.slug}`}>
-									<H2 color="inherit">{group.title}</H2>
-								</TextLink>
+								<H2>{group.title}</H2>
 								<PkgCardList
 									items={pkgList.filter((p) => p.group === group.slug)}
 								/>
@@ -64,7 +61,6 @@ export async function getStaticProps() {
 	const source = await serializeMarkdown(content);
 	const navLinks = await getPkgNavLinks();
 	const groupList = await getPkgGroupList();
-
 	const pkgList = await getPkgList();
 
 	return {
