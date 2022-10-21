@@ -1,4 +1,11 @@
-import React, { ReactNode, useState, useCallback, Fragment } from 'react';
+import React, {
+	ReactNode,
+	useState,
+	useCallback,
+	Fragment,
+	useRef,
+	KeyboardEvent,
+} from 'react';
 import { useRouter } from 'next/router';
 import { LiveProvider, LiveEditor, LivePreview, withLive } from 'react-live';
 import { createUrl } from 'playroom/utils';
@@ -32,6 +39,7 @@ const PlaceholderImage = () => (
 );
 
 const LiveCode = withLive(function LiveCode(props: unknown) {
+	const liveCodeToggleButton = useRef<HTMLButtonElement>(null);
 	const { query } = useRouter();
 
 	// The types on `withLive` are kind of useless.
@@ -69,6 +77,16 @@ const LiveCode = withLive(function LiveCode(props: unknown) {
 	const id = useId();
 	const codeId = `live-code-${id}`;
 
+	const onLiveEditorContainerKeyDown = useCallback(
+		(event: KeyboardEvent<HTMLDivElement>) => {
+			if (event.code === 'Escape') {
+				toggleIsCodeVisible();
+				liveCodeToggleButton.current?.focus();
+			}
+		},
+		[toggleIsCodeVisible]
+	);
+
 	return (
 		<Box border rounded borderColor="muted" className={proseBlockClassname}>
 			<LivePreview
@@ -94,6 +112,7 @@ const LiveCode = withLive(function LiveCode(props: unknown) {
 				css={packs.print.hidden}
 			>
 				<Button
+					ref={liveCodeToggleButton}
 					size="sm"
 					variant="tertiary"
 					onClick={toggleIsCodeVisible}
@@ -128,14 +147,18 @@ const LiveCode = withLive(function LiveCode(props: unknown) {
 				display={isCodeVisible ? 'block' : 'none'}
 				css={packs.print.visible}
 				palette="dark"
+				onKeyDown={onLiveEditorContainerKeyDown}
 			>
 				<LiveEditor
+					tabIndex={-1}
+					aria-label="Live code editor, press the escape key to leave the editor"
 					theme={prismTheme}
 					code={live.code}
 					language={live.language}
 					disabled={live.disabled}
 					onChange={handleChange}
 					css={{
+						'&:focus-within': packs.outline,
 						'textarea, pre': {
 							padding: `${mapSpacing(1.5)} !important`,
 						},
