@@ -18,6 +18,7 @@ type BaseContentComponentProps = BaseContentProps & {
 
 export function BaseContent({
 	as = 'section',
+	id,
 	className,
 	palette,
 	background,
@@ -31,6 +32,7 @@ export function BaseContent({
 				justifyContent="center"
 				palette={palette}
 				background={background}
+				id={id}
 				className={className}
 			>
 				<Box
