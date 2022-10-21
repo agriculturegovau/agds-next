@@ -1,10 +1,12 @@
 import '@testing-library/jest-dom';
 import 'html-validate/jest';
-import { render, screen } from '@testing-library/react';
 import { TextLink } from '@ag.ds-next/text-link';
+import { render, screen, cleanup } from '../../../test-utils';
 import { VisuallyHidden } from './VisuallyHidden';
 
-function Example() {
+afterEach(cleanup);
+
+function VisuallyHiddenExample() {
 	return (
 		<TextLink href="#" data-testid="example">
 			Read more
@@ -14,18 +16,24 @@ function Example() {
 }
 
 describe('VisuallyHidden', () => {
-	it('reads out visually hidden text to a screenreader user', () => {
-		render(<Example />);
+	it('renders correctly', () => {
+		const { container } = render(<VisuallyHiddenExample />);
+		expect(container).toMatchSnapshot();
+	});
+
+	it('renders a valid HTML structure', () => {
+		const { container } = render(<VisuallyHiddenExample />);
+		expect(container).toHTMLValidate({
+			extends: ['html-validate:recommended'],
+		});
+	});
+
+	it('reads out visually hidden text to a screen reader user', () => {
+		render(<VisuallyHiddenExample />);
 		const el = screen.getByTestId('example');
 		expect(el).toBeInTheDocument();
 		expect(el).toHaveTextContent(
 			'Read more about how to visually hide content'
 		);
-	});
-	it('renders a valid HTML structure', () => {
-		const { container } = render(<Example />);
-		expect(container).toHTMLValidate({
-			extends: ['html-validate:recommended'],
-		});
 	});
 });

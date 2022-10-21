@@ -1,7 +1,7 @@
 import '@testing-library/jest-dom';
 import 'html-validate/jest';
-import { cleanup, render } from '@testing-library/react';
 import { TextLink } from '@ag.ds-next/text-link';
+import { cleanup, render } from '../../../test-utils';
 import {
 	SummaryList,
 	SummaryListItem,

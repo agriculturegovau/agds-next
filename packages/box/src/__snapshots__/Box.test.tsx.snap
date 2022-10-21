@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Box renders correctly 1`] = `
+<div>
+  <div
+    class="css-79i25n-boxStyles"
+  >
+    Box element
+  </div>
+</div>
+`;

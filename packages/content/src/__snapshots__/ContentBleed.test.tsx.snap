@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ContentBleed renders correctly 1`] = `
+<div>
+  <div
+    class="css-ou39vu-boxStyles"
+  >
+    <div
+      class="css-1rhmzip-boxStyles"
+    >
+      <div
+        class="css-z8uqwp-ContentBleed"
+      >
+        <p>
+          Content bleed content
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+`;

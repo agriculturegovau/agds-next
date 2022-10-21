@@ -1,7 +1,7 @@
 import '@testing-library/jest-dom';
 import 'html-validate/jest';
-import { cleanup, render } from '@testing-library/react';
 import { Text } from '@ag.ds-next/text';
+import { cleanup, render } from '../../../test-utils';
 import { Details } from './Details';
 import type { DetailsProps } from './Details';
 

@@ -101,7 +101,7 @@
 
 ### Minor Changes
 
-- 15788496: Fix bug with screenreaders. ModalTitle is now auto-focused
+- 15788496: Fix bug with screen readers. ModalTitle is now auto-focused
 
 ### Patch Changes
 

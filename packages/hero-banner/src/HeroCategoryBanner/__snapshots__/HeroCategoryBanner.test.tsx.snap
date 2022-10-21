@@ -1,0 +1,54 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`HeroCategoryBanner renders correctly 1`] = `
+<div>
+  <section
+    class="css-1p0zx3h-boxStyles-HeroCategoryBannerContainer"
+  >
+    <div
+      class="css-1g5msad-boxStyles-HeroCategoryBannerMobileImage"
+    >
+      <img
+        alt=""
+        role="presentation"
+        src="/agds-next/img/placeholder/hero-banner.jpeg"
+      />
+    </div>
+    <div
+      class="css-ou39vu-boxStyles"
+    >
+      <div
+        class="css-1rhmzip-boxStyles"
+      >
+        <div
+          class="css-1jhrbpg-boxStyles"
+        >
+          <div
+            class="css-10v19du-boxStyles-HeroCategoryBannerContent"
+          >
+            <h1
+              class="css-18pa81a-boxStyles"
+            >
+              Website hero banner title
+            </h1>
+            <p
+              class="css-kvrtyp-boxStyles-Text"
+            >
+              Hero banner sub title
+            </p>
+          </div>
+          <div
+            class="css-uhwge9-boxStyles-HeroCategoryBannerImage"
+          >
+            <img
+              alt=""
+              role="presentation"
+              src="/agds-next/img/placeholder/hero-banner.jpeg"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+`;

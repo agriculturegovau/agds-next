@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ExternalLinkCallout renders correctly 1`] = `
+<div>
+  <a
+    class="css-38ppen-TextLink"
+    data-testid="example"
+    href="#"
+  >
+    Visit the Design System
+    <span
+      class="css-avudkd-VisuallyHidden"
+    >
+      , opens in a new tab
+    </span>
+  </a>
+</div>
+`;

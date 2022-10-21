@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Content renders correctly 1`] = `
+<div>
+  <div
+    class="css-ou39vu-boxStyles"
+  >
+    <div
+      class="css-1rhmzip-boxStyles"
+    >
+      <p>
+        Section content
+      </p>
+    </div>
+  </div>
+</div>
+`;

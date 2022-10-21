@@ -1,0 +1,63 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SubNav renders correctly 1`] = `
+<div>
+  <nav
+    aria-label="secondary"
+    class="css-29r04f-boxStyles-SubNavContainer"
+  >
+    <ul
+      class="css-1m8vze-boxStyles-SubNavList"
+    >
+      <li
+        class="css-1nm17kl-boxStyles-SubNavListItem"
+      >
+        <a
+          href="#usage"
+        >
+          <span>
+            Usage
+          </span>
+        </a>
+      </li>
+      <li
+        class="css-e3viqj-boxStyles-SubNavListItem"
+      >
+        <a
+          aria-current="page"
+          href="#code"
+        >
+          <span>
+            Code
+          </span>
+        </a>
+      </li>
+      <li
+        class="css-1nm17kl-boxStyles-SubNavListItem"
+      >
+        <a
+          href="#content"
+        >
+          <span>
+            Content
+          </span>
+        </a>
+      </li>
+      <li
+        class="css-1nm17kl-boxStyles-SubNavListItem"
+      >
+        <a
+          href="#accessibility"
+        >
+          <span>
+            Accessibility
+          </span>
+        </a>
+      </li>
+    </ul>
+    <div
+      class="css-1q0n83-boxStyles-BottomBar"
+    />
+  </nav>
+</div>
+`;

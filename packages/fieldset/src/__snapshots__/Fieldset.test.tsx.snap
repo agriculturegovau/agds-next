@@ -1,0 +1,151 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Fieldset Basic renders correctly 1`] = `
+<div>
+  <fieldset
+    aria-describedby="fieldset-:r0:-hint"
+    class="css-1ceugzq-FieldsetContainer"
+    id="fieldset-:r0:"
+  >
+    <legend
+      class="css-5k6djv-boxStyles-Text"
+    >
+      What is your name?
+    </legend>
+    <span
+      class="css-1jadulg-boxStyles-Text-FieldsetHint"
+      id="fieldset-:r0:-hint"
+    >
+      We will only use this to respond to your requests
+    </span>
+    <div
+      class="css-1dnalsd-FieldsetContent"
+    >
+      <div
+        class="css-h0krvw-boxStyles"
+      >
+        <div
+          class="css-1904cz9-boxStyles-FieldContainer"
+        >
+          <label
+            class="css-n7rdvo-boxStyles"
+            for="field-:r1:"
+          >
+            <span
+              class="css-433uqb-boxStyles-Text"
+            >
+              First name
+            </span>
+          </label>
+          <input
+            aria-invalid="false"
+            aria-required="true"
+            class="css-1bu2krz-Field"
+            id="field-:r1:"
+            type="text"
+          />
+        </div>
+        <div
+          class="css-1904cz9-boxStyles-FieldContainer"
+        >
+          <label
+            class="css-n7rdvo-boxStyles"
+            for="field-:r2:"
+          >
+            <span
+              class="css-433uqb-boxStyles-Text"
+            >
+              Last name
+            </span>
+          </label>
+          <input
+            aria-invalid="false"
+            aria-required="true"
+            class="css-1bu2krz-Field"
+            id="field-:r2:"
+            type="text"
+          />
+        </div>
+      </div>
+    </div>
+  </fieldset>
+</div>
+`;
+
+exports[`Fieldset Legend as page heading renders correctly 1`] = `
+<div>
+  <fieldset
+    aria-describedby="fieldset-:r9:-hint"
+    class="css-1ceugzq-FieldsetContainer"
+    id="fieldset-:r9:"
+  >
+    <legend>
+      <h1
+        class="css-18pa81a-boxStyles"
+      >
+        What is your name?
+      </h1>
+    </legend>
+    <div
+      class="css-uw4i6o-FieldsetHint"
+      id="fieldset-:r9:-hint"
+    >
+      <span
+        class="css-1xaqzgm-boxStyles-Text"
+      >
+        We will only use this to respond to your requests
+      </span>
+    </div>
+    <div
+      class="css-1dnalsd-FieldsetContent"
+    >
+      <div
+        class="css-h0krvw-boxStyles"
+      >
+        <div
+          class="css-1904cz9-boxStyles-FieldContainer"
+        >
+          <label
+            class="css-n7rdvo-boxStyles"
+            for="field-:ra:"
+          >
+            <span
+              class="css-433uqb-boxStyles-Text"
+            >
+              First name
+            </span>
+          </label>
+          <input
+            aria-invalid="false"
+            aria-required="true"
+            class="css-1bu2krz-Field"
+            id="field-:ra:"
+            type="text"
+          />
+        </div>
+        <div
+          class="css-1904cz9-boxStyles-FieldContainer"
+        >
+          <label
+            class="css-n7rdvo-boxStyles"
+            for="field-:rb:"
+          >
+            <span
+              class="css-433uqb-boxStyles-Text"
+            >
+              Last name
+            </span>
+          </label>
+          <input
+            aria-invalid="false"
+            aria-required="true"
+            class="css-1bu2krz-Field"
+            id="field-:rb:"
+            type="text"
+          />
+        </div>
+      </div>
+    </div>
+  </fieldset>
+</div>
+`;

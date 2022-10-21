@@ -148,7 +148,7 @@
 ### Major Changes
 
 - 1c2bd6b3: - Move collapse logic outside of SideNavContainer.
-  - Improve accessibility for screenreader users.
+  - Improve accessibility for screen reader users.
 
 ### Patch Changes
 

@@ -1,0 +1,409 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TaskList With anchors renders correctly 1`] = `
+<div>
+  <ol
+    class="css-vcugan-boxStyles-TaskListContainer"
+  >
+    <li
+      class="css-16jufl0-TaskListItem"
+    >
+      <a
+        class="css-n0v8bk-TextLink-boxStyles-TaskListItem"
+        href="#"
+      >
+        <svg
+          aria-hidden="true"
+          class="css-h1n08a-Icon-TaskListItem"
+          clip-rule="evenodd"
+          focusable="false"
+          height="24"
+          role="img"
+          viewBox="0 0 24 24"
+          width="24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <circle
+            cx="12"
+            cy="12"
+            r="10.5"
+          />
+          <path
+            d="M7 13L10 16L17 9"
+          />
+        </svg>
+        <span
+          class="css-1i7cdx8-boxStyles"
+        >
+          <span
+            class="css-1f7oqqc-boxStyles-Text"
+          >
+            Done
+          </span>
+          <span
+            class="css-msykz1-boxStyles-Text-TaskListItem"
+          >
+            Check eligibility
+          </span>
+          <span
+            class="css-1lp7dl8-boxStyles-Text"
+          />
+        </span>
+      </a>
+    </li>
+    <li
+      class="css-16jufl0-TaskListItem"
+    >
+      <a
+        class="css-n0v8bk-TextLink-boxStyles-TaskListItem"
+        href="#"
+      >
+        <svg
+          aria-hidden="true"
+          class="css-h1n08a-Icon-TaskListItem"
+          clip-rule="evenodd"
+          focusable="false"
+          height="24"
+          role="img"
+          viewBox="0 0 24 24"
+          width="24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <circle
+            cx="12"
+            cy="12"
+            r="10.5"
+          />
+          <path
+            d="M7 13L10 16L17 9"
+          />
+        </svg>
+        <span
+          class="css-1i7cdx8-boxStyles"
+        >
+          <span
+            class="css-1f7oqqc-boxStyles-Text"
+          >
+            Done
+          </span>
+          <span
+            class="css-msykz1-boxStyles-Text-TaskListItem"
+          >
+            Lorem ipsum dolor sit amet
+          </span>
+          <span
+            class="css-1lp7dl8-boxStyles-Text"
+          />
+        </span>
+      </a>
+    </li>
+    <li
+      class="css-16jufl0-TaskListItem"
+    >
+      <a
+        class="css-nafnpt-TextLink-boxStyles-TaskListItem"
+        href="#"
+      >
+        <svg
+          aria-hidden="true"
+          class="css-h1n08a-Icon-TaskListItem"
+          clip-rule="evenodd"
+          focusable="false"
+          height="24"
+          role="img"
+          viewBox="0 0 24 24"
+          width="24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M6.5 13.5C7.32843 13.5 8 12.8284 8 12C8 11.1716 7.32843 10.5 6.5 10.5C5.67157 10.5 5 11.1716 5 12C5 12.8284 5.67157 13.5 6.5 13.5Z"
+            fill="currentColor"
+            stroke="none"
+          />
+          <path
+            d="M12 13.5C12.8284 13.5 13.5 12.8284 13.5 12C13.5 11.1716 12.8284 10.5 12 10.5C11.1716 10.5 10.5 11.1716 10.5 12C10.5 12.8284 11.1716 13.5 12 13.5Z"
+            fill="currentColor"
+            stroke="none"
+          />
+          <path
+            d="M17.5 13.5C18.3284 13.5 19 12.8284 19 12C19 11.1716 18.3284 10.5 17.5 10.5C16.6716 10.5 16 11.1716 16 12C16 12.8284 16.6716 13.5 17.5 13.5Z"
+            fill="currentColor"
+            stroke="none"
+          />
+          <circle
+            cx="12"
+            cy="12"
+            r="10.5"
+          />
+        </svg>
+        <span
+          class="css-1i7cdx8-boxStyles"
+        >
+          <span
+            class="css-1f7oqqc-boxStyles-Text"
+          >
+            Doing
+          </span>
+          <span
+            class="css-msykz1-boxStyles-Text-TaskListItem"
+          >
+            Case Studies
+          </span>
+          <span
+            class="css-1lp7dl8-boxStyles-Text"
+          />
+        </span>
+      </a>
+    </li>
+    <li
+      class="css-16jufl0-TaskListItem"
+    >
+      <a
+        class="css-n0v8bk-TextLink-boxStyles-TaskListItem"
+        href="#"
+      >
+        <svg
+          aria-hidden="true"
+          class="css-h1n08a-Icon-TaskListItem"
+          clip-rule="evenodd"
+          focusable="false"
+          height="24"
+          role="img"
+          viewBox="0 0 24 24"
+          width="24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <circle
+            cx="12"
+            cy="12"
+            r="10.5"
+          />
+        </svg>
+        <span
+          class="css-1i7cdx8-boxStyles"
+        >
+          <span
+            class="css-1f7oqqc-boxStyles-Text"
+          >
+            To do
+          </span>
+          <span
+            class="css-msykz1-boxStyles-Text-TaskListItem"
+          >
+            Review and submit
+          </span>
+          <span
+            class="css-1lp7dl8-boxStyles-Text"
+          >
+            Not available until previous tasks are done
+          </span>
+        </span>
+      </a>
+    </li>
+  </ol>
+</div>
+`;
+
+exports[`TaskList With buttons renders correctly 1`] = `
+<div>
+  <ol
+    class="css-vcugan-boxStyles-TaskListContainer"
+  >
+    <li
+      class="css-16jufl0-TaskListItem"
+    >
+      <button
+        class="css-1rrnib1-BaseButton-boxStyles-TaskListItem"
+        type="button"
+      >
+        <svg
+          aria-hidden="true"
+          class="css-h1n08a-Icon-TaskListItem"
+          clip-rule="evenodd"
+          focusable="false"
+          height="24"
+          role="img"
+          viewBox="0 0 24 24"
+          width="24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <circle
+            cx="12"
+            cy="12"
+            r="10.5"
+          />
+          <path
+            d="M7 13L10 16L17 9"
+          />
+        </svg>
+        <span
+          class="css-1i7cdx8-boxStyles"
+        >
+          <span
+            class="css-1f7oqqc-boxStyles-Text"
+          >
+            Done
+          </span>
+          <span
+            class="css-msykz1-boxStyles-Text-TaskListItem"
+          >
+            Check eligibility
+          </span>
+          <span
+            class="css-1lp7dl8-boxStyles-Text"
+          />
+        </span>
+      </button>
+    </li>
+    <li
+      class="css-16jufl0-TaskListItem"
+    >
+      <button
+        class="css-1rrnib1-BaseButton-boxStyles-TaskListItem"
+        type="button"
+      >
+        <svg
+          aria-hidden="true"
+          class="css-h1n08a-Icon-TaskListItem"
+          clip-rule="evenodd"
+          focusable="false"
+          height="24"
+          role="img"
+          viewBox="0 0 24 24"
+          width="24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <circle
+            cx="12"
+            cy="12"
+            r="10.5"
+          />
+          <path
+            d="M7 13L10 16L17 9"
+          />
+        </svg>
+        <span
+          class="css-1i7cdx8-boxStyles"
+        >
+          <span
+            class="css-1f7oqqc-boxStyles-Text"
+          >
+            Done
+          </span>
+          <span
+            class="css-msykz1-boxStyles-Text-TaskListItem"
+          >
+            Lorem ipsum dolor sit amet
+          </span>
+          <span
+            class="css-1lp7dl8-boxStyles-Text"
+          />
+        </span>
+      </button>
+    </li>
+    <li
+      class="css-16jufl0-TaskListItem"
+    >
+      <button
+        class="css-1u344cx-BaseButton-boxStyles-TaskListItem"
+        type="button"
+      >
+        <svg
+          aria-hidden="true"
+          class="css-h1n08a-Icon-TaskListItem"
+          clip-rule="evenodd"
+          focusable="false"
+          height="24"
+          role="img"
+          viewBox="0 0 24 24"
+          width="24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M6.5 13.5C7.32843 13.5 8 12.8284 8 12C8 11.1716 7.32843 10.5 6.5 10.5C5.67157 10.5 5 11.1716 5 12C5 12.8284 5.67157 13.5 6.5 13.5Z"
+            fill="currentColor"
+            stroke="none"
+          />
+          <path
+            d="M12 13.5C12.8284 13.5 13.5 12.8284 13.5 12C13.5 11.1716 12.8284 10.5 12 10.5C11.1716 10.5 10.5 11.1716 10.5 12C10.5 12.8284 11.1716 13.5 12 13.5Z"
+            fill="currentColor"
+            stroke="none"
+          />
+          <path
+            d="M17.5 13.5C18.3284 13.5 19 12.8284 19 12C19 11.1716 18.3284 10.5 17.5 10.5C16.6716 10.5 16 11.1716 16 12C16 12.8284 16.6716 13.5 17.5 13.5Z"
+            fill="currentColor"
+            stroke="none"
+          />
+          <circle
+            cx="12"
+            cy="12"
+            r="10.5"
+          />
+        </svg>
+        <span
+          class="css-1i7cdx8-boxStyles"
+        >
+          <span
+            class="css-1f7oqqc-boxStyles-Text"
+          >
+            Doing
+          </span>
+          <span
+            class="css-msykz1-boxStyles-Text-TaskListItem"
+          >
+            Case Studies
+          </span>
+          <span
+            class="css-1lp7dl8-boxStyles-Text"
+          />
+        </span>
+      </button>
+    </li>
+    <li
+      class="css-16jufl0-TaskListItem"
+    >
+      <button
+        class="css-1rrnib1-BaseButton-boxStyles-TaskListItem"
+        type="button"
+      >
+        <svg
+          aria-hidden="true"
+          class="css-h1n08a-Icon-TaskListItem"
+          clip-rule="evenodd"
+          focusable="false"
+          height="24"
+          role="img"
+          viewBox="0 0 24 24"
+          width="24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <circle
+            cx="12"
+            cy="12"
+            r="10.5"
+          />
+        </svg>
+        <span
+          class="css-1i7cdx8-boxStyles"
+        >
+          <span
+            class="css-1f7oqqc-boxStyles-Text"
+          >
+            To do
+          </span>
+          <span
+            class="css-msykz1-boxStyles-Text-TaskListItem"
+          >
+            Review and submit
+          </span>
+          <span
+            class="css-1lp7dl8-boxStyles-Text"
+          >
+            Not available until previous tasks are done
+          </span>
+        </span>
+      </button>
+    </li>
+  </ol>
+</div>
+`;

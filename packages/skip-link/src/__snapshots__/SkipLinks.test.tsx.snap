@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SkipLinks renders correctly 1`] = `
+<div>
+  <nav
+    aria-label="skip links"
+  >
+    <a
+      class="css-1b9t6bl-SkipLinkItem"
+      href="#main-content"
+    >
+      Skip to main content
+    </a>
+    <a
+      class="css-1b9t6bl-SkipLinkItem"
+      href="#main-nav"
+    >
+      Skip to main navigation
+    </a>
+  </nav>
+</div>
+`;

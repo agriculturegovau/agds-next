@@ -1,6 +1,6 @@
 import '@testing-library/jest-dom';
 import 'html-validate/jest';
-import { cleanup, render, screen } from '@testing-library/react';
+import { cleanup, render, screen } from '../../../test-utils';
 import { Breadcrumbs } from './Breadcrumbs';
 import type { BreadcrumbsProps } from './Breadcrumbs';
 

@@ -2,4 +2,4 @@
 '@ag.ds-next/control-input': patch
 ---
 
-Fix invalid HTML
+Fixed invalid HTML

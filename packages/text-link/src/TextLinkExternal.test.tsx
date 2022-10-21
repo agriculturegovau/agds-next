@@ -1,6 +1,6 @@
 import '@testing-library/jest-dom';
 import 'html-validate/jest';
-import { cleanup, render, screen } from '@testing-library/react';
+import { cleanup, render, screen } from '../../../test-utils';
 import { TextLinkExternal } from './TextLinkExternal';
 
 afterEach(cleanup);

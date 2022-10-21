@@ -123,7 +123,7 @@
 
 ### Minor Changes
 
-- cd053653: Improve accessibility for screenreader users
+- cd053653: Improve accessibility for screen reader users
 
 ### Patch Changes
 

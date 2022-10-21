@@ -1,6 +1,6 @@
 import '@testing-library/jest-dom';
 import 'html-validate/jest';
-import { render, cleanup, screen } from '@testing-library/react';
+import { render, cleanup, screen } from '../../../test-utils';
 import { InpageNav, InpageNavProps } from './InpageNav';
 
 afterEach(cleanup);

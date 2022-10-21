@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Stack renders correctly 1`] = `
+<div>
+  <div
+    class="css-o80hmi-boxStyles"
+  >
+    Stack element
+  </div>
+</div>
+`;

@@ -1,10 +1,12 @@
 import '@testing-library/jest-dom';
 import 'html-validate/jest';
-import { render } from '@testing-library/react';
 import { AvatarIcon } from '@ag.ds-next/icon';
+import { render, cleanup } from '../../../test-utils';
 import { MainNav } from './MainNav';
 
-function Example() {
+afterEach(cleanup);
+
+function MainNavExample() {
 	return (
 		<MainNav
 			items={[
@@ -27,11 +29,11 @@ function Example() {
 
 describe('MainNav', () => {
 	it('renders correctly', () => {
-		const { container } = render(<Example />);
+		const { container } = render(<MainNavExample />);
 		expect(container).toMatchSnapshot();
 	});
 	it('renders a valid HTML structure', () => {
-		const { container } = render(<Example />);
+		const { container } = render(<MainNavExample />);
 		expect(container).toHTMLValidate({
 			extends: ['html-validate:recommended'],
 			rules: { 'no-inline-style': 'off' },

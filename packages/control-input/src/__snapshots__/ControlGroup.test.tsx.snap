@@ -1,0 +1,169 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ControlGroup renders correctly 1`] = `
+<div>
+  <div
+    class="css-1904cz9-boxStyles-FieldContainer"
+    id="control-group-:r0:"
+  >
+    <fieldset
+      class="css-faxsk2-ControlGroup"
+    >
+      <legend
+        class="css-n7rdvo-boxStyles"
+      >
+        <span
+          class="css-433uqb-boxStyles-Text"
+        >
+          Control group label
+        </span>
+        <span
+          class="css-1rpt3h8-boxStyles-Text"
+        >
+          (optional)
+        </span>
+      </legend>
+      <div
+        class="css-1ypnbyi-boxStyles-ControlGroup"
+      >
+        <div
+          class="css-1n3rct3-boxStyles"
+        >
+          <label
+            class="css-kwvgrg-boxStyles-ControlContainer"
+          >
+            <input
+              class="css-poh1fz-ControlInput"
+              type="checkbox"
+            />
+            <span
+              class="css-gjetbs-boxStyles-CheckboxIndicator"
+            >
+              <svg
+                aria-hidden="true"
+                class="css-umoisd-CheckboxIcon"
+                clip-rule="evenodd"
+                focusable="false"
+                role="img"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M3 13.4286L8.4 19L21 6"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="3"
+                />
+              </svg>
+            </span>
+            <span
+              class="css-1g33cu8-boxStyles-Text-ControlLabel"
+            >
+              Option A
+            </span>
+          </label>
+          <label
+            class="css-kwvgrg-boxStyles-ControlContainer"
+          >
+            <input
+              class="css-poh1fz-ControlInput"
+              type="checkbox"
+            />
+            <span
+              class="css-gjetbs-boxStyles-CheckboxIndicator"
+            >
+              <svg
+                aria-hidden="true"
+                class="css-umoisd-CheckboxIcon"
+                clip-rule="evenodd"
+                focusable="false"
+                role="img"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M3 13.4286L8.4 19L21 6"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="3"
+                />
+              </svg>
+            </span>
+            <span
+              class="css-1g33cu8-boxStyles-Text-ControlLabel"
+            >
+              Option B
+            </span>
+          </label>
+          <label
+            class="css-kwvgrg-boxStyles-ControlContainer"
+          >
+            <input
+              class="css-poh1fz-ControlInput"
+              type="checkbox"
+            />
+            <span
+              class="css-gjetbs-boxStyles-CheckboxIndicator"
+            >
+              <svg
+                aria-hidden="true"
+                class="css-umoisd-CheckboxIcon"
+                clip-rule="evenodd"
+                focusable="false"
+                role="img"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M3 13.4286L8.4 19L21 6"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="3"
+                />
+              </svg>
+            </span>
+            <span
+              class="css-1g33cu8-boxStyles-Text-ControlLabel"
+            >
+              Option C
+            </span>
+          </label>
+          <label
+            class="css-kwvgrg-boxStyles-ControlContainer"
+          >
+            <input
+              class="css-poh1fz-ControlInput"
+              type="checkbox"
+            />
+            <span
+              class="css-gjetbs-boxStyles-CheckboxIndicator"
+            >
+              <svg
+                aria-hidden="true"
+                class="css-umoisd-CheckboxIcon"
+                clip-rule="evenodd"
+                focusable="false"
+                role="img"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M3 13.4286L8.4 19L21 6"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="3"
+                />
+              </svg>
+            </span>
+            <span
+              class="css-1g33cu8-boxStyles-Text-ControlLabel"
+            >
+              Option D
+            </span>
+          </label>
+        </div>
+      </div>
+    </fieldset>
+  </div>
+</div>
+`;

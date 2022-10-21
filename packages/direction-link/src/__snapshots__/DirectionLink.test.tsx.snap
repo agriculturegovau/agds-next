@@ -1,0 +1,229 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DirectionButton direction: down renders correctly 1`] = `
+<div>
+  <button
+    class="css-1gdmbk7-BaseButton-boxStyles-BaseDirectionLink"
+    type="button"
+  >
+    Skip to footer
+    <svg
+      aria-hidden="true"
+      class="css-10t8zfr-Icon"
+      clip-rule="evenodd"
+      focusable="false"
+      height="24"
+      role="img"
+      viewBox="0 0 24 24"
+      width="24"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M12 3L12 20"
+      />
+      <path
+        d="M17 16L12 21L7 16"
+      />
+    </svg>
+  </button>
+</div>
+`;
+
+exports[`DirectionButton direction: left renders correctly 1`] = `
+<div>
+  <button
+    class="css-1gdmbk7-BaseButton-boxStyles-BaseDirectionLink"
+    type="button"
+  >
+    <svg
+      aria-hidden="true"
+      class="css-10t8zfr-Icon"
+      clip-rule="evenodd"
+      focusable="false"
+      height="24"
+      role="img"
+      viewBox="0 0 24 24"
+      width="24"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M21 12L4 12"
+      />
+      <path
+        d="M8 17L3 12L8 7"
+      />
+    </svg>
+    Back
+  </button>
+</div>
+`;
+
+exports[`DirectionButton direction: right renders correctly 1`] = `
+<div>
+  <button
+    class="css-1gdmbk7-BaseButton-boxStyles-BaseDirectionLink"
+    type="button"
+  >
+    Next
+    <svg
+      aria-hidden="true"
+      class="css-10t8zfr-Icon"
+      clip-rule="evenodd"
+      focusable="false"
+      height="24"
+      role="img"
+      viewBox="0 0 24 24"
+      width="24"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M3 12L20 12"
+      />
+      <path
+        d="M16 7L21 12L16 17"
+      />
+    </svg>
+  </button>
+</div>
+`;
+
+exports[`DirectionButton direction: up renders correctly 1`] = `
+<div>
+  <button
+    class="css-1gdmbk7-BaseButton-boxStyles-BaseDirectionLink"
+    type="button"
+  >
+    Top
+    <svg
+      aria-hidden="true"
+      class="css-10t8zfr-Icon"
+      clip-rule="evenodd"
+      focusable="false"
+      height="24"
+      role="img"
+      viewBox="0 0 24 24"
+      width="24"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M12 21V4"
+      />
+      <path
+        d="M7 8L12 3L17 8"
+      />
+    </svg>
+  </button>
+</div>
+`;
+
+exports[`DirectionLink direction: down renders correctly 1`] = `
+<div>
+  <a
+    class="css-63a3ig-TextLink-boxStyles-BaseDirectionLink"
+  >
+    Skip to footer
+    <svg
+      aria-hidden="true"
+      class="css-10t8zfr-Icon"
+      clip-rule="evenodd"
+      focusable="false"
+      height="24"
+      role="img"
+      viewBox="0 0 24 24"
+      width="24"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M12 3L12 20"
+      />
+      <path
+        d="M17 16L12 21L7 16"
+      />
+    </svg>
+  </a>
+</div>
+`;
+
+exports[`DirectionLink direction: left renders correctly 1`] = `
+<div>
+  <a
+    class="css-63a3ig-TextLink-boxStyles-BaseDirectionLink"
+  >
+    <svg
+      aria-hidden="true"
+      class="css-10t8zfr-Icon"
+      clip-rule="evenodd"
+      focusable="false"
+      height="24"
+      role="img"
+      viewBox="0 0 24 24"
+      width="24"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M21 12L4 12"
+      />
+      <path
+        d="M8 17L3 12L8 7"
+      />
+    </svg>
+    Back
+  </a>
+</div>
+`;
+
+exports[`DirectionLink direction: right renders correctly 1`] = `
+<div>
+  <a
+    class="css-63a3ig-TextLink-boxStyles-BaseDirectionLink"
+  >
+    Next
+    <svg
+      aria-hidden="true"
+      class="css-10t8zfr-Icon"
+      clip-rule="evenodd"
+      focusable="false"
+      height="24"
+      role="img"
+      viewBox="0 0 24 24"
+      width="24"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M3 12L20 12"
+      />
+      <path
+        d="M16 7L21 12L16 17"
+      />
+    </svg>
+  </a>
+</div>
+`;
+
+exports[`DirectionLink direction: up renders correctly 1`] = `
+<div>
+  <a
+    class="css-63a3ig-TextLink-boxStyles-BaseDirectionLink"
+  >
+    Top
+    <svg
+      aria-hidden="true"
+      class="css-10t8zfr-Icon"
+      clip-rule="evenodd"
+      focusable="false"
+      height="24"
+      role="img"
+      viewBox="0 0 24 24"
+      width="24"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M12 21V4"
+      />
+      <path
+        d="M7 8L12 3L17 8"
+      />
+    </svg>
+  </a>
+</div>
+`;

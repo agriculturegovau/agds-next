@@ -2,8 +2,14 @@ import '@testing-library/jest-dom';
 import 'html-validate/jest';
 import '@testing-library/jest-dom';
 import 'html-validate/jest';
-import { render, screen, cleanup } from '@testing-library/react';
+import { render, screen, cleanup } from '../../../test-utils';
 import { SideNav, SideNavProps } from './SideNav';
+
+afterEach(cleanup);
+
+function renderSideNav(props: SideNavProps) {
+	return render(<SideNav {...props} />);
+}
 
 const exampleProps = {
 	title: 'Lodging your tax return',
@@ -61,12 +67,6 @@ const exampleProps = {
 	],
 	activePath: '#in-detail/record-keeping/incorrect-amounts',
 };
-
-afterEach(cleanup);
-
-function renderSideNav(props: SideNavProps) {
-	return render(<SideNav {...props} />);
-}
 
 describe('SideNav', () => {
 	it('renders correctly', () => {
