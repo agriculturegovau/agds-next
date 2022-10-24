@@ -44,7 +44,7 @@ export function PkgLayout({
 				callToAction={
 					pkg.storybookPath && (
 						<CallToActionLink
-							href={`http://localhost:6006/index.html?path=${pkg.storybookPath}`}
+							href={`https://steelthreads.github.io/agds-next/storybook/index.html?path=${pkg.storybookPath}`}
 						>
 							View in Storybook
 						</CallToActionLink>
