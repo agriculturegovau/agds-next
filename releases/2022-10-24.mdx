@@ -1,0 +1,299 @@
+---
+title: 24th October, 2022
+description: Improved accessibility of our components after a professional external audit. New components Details, SummaryList, and more.
+---
+
+> ⚠️ Note: All releases under the `@ag.ds-next` package scope should be considered alpha pre-releases. Expect breaking changes. Once we are happy with the state of the core packages we will migrate all packages to `@ag.ds`.
+
+## New Packages
+
+```sh
+"@ag.ds-next/autocomplete": "1.0.0",
+"@ag.ds-next/combobox": "1.0.0",
+"@ag.ds-next/details": "1.0.0",
+"@ag.ds-next/summary-list": "1.0.0"
+```
+
+### @ag.ds-next/details@1.0.0
+
+Details is a disclosure widget for supplimental information that explains a component, section or flow.
+
+You can [learn more about Details in the component docs](https://steelthreads.github.io/agds-next/packages/content/details).
+
+```jsx live
+<Details label="Details" iconBefore>
+	<Text as="p">
+		This is a small paragraph of text that is supplementary to the main page
+		content.
+	</Text>
+</Details>
+```
+
+### @ag.ds-next/summary-list@1.0.0
+
+SummaryList displays a list of terms and descriptions as key value pairs. It is similar to a two-column table, but renders a HTML Description List (`<dl>`) element.
+
+You can [learn more about SummaryList in the component docs](https://steelthreads.github.io/agds-next/packages/content/summary-list).
+
+```jsx live
+<Stack gap={1.5}>
+	<SummaryList>
+		<SummaryListItem>
+			<SummaryListItemTerm>First name</SummaryListItemTerm>
+			<SummaryListItemDescription>Will</SummaryListItemDescription>
+		</SummaryListItem>
+		<SummaryListItem>
+			<SummaryListItemTerm>Last name</SummaryListItemTerm>
+			<SummaryListItemDescription>Power</SummaryListItemDescription>
+		</SummaryListItem>
+		<SummaryListItem>
+			<SummaryListItemTerm>Contact information</SummaryListItemTerm>
+			<SummaryListItemDescription>
+				+61 9912 3456
+				<br />
+				will.power@example.com
+			</SummaryListItemDescription>
+		</SummaryListItem>
+		<SummaryListItem>
+			<SummaryListItemTerm>Date of birth</SummaryListItemTerm>
+			<SummaryListItemDescription>09/06/1995</SummaryListItemDescription>
+		</SummaryListItem>
+	</SummaryList>
+	<TextLink href="#">Change all</TextLink>
+</Stack>
+```
+
+## Updates
+
+### @ag.ds-next/button@12.0.0
+
+- Removed `loading` and `loadingLabel` prop from `ButtonLink`. If you are using these props, you should be using `Button` instead.
+- Improved accessibility by adding an always-present `aria-live` container for `LoadingDots`
+- Adjusted `text` variant styles
+
+### @ag.ds-next/core@4.1.0
+
+- Upgraded `@reach/auto-id`
+- Added new hook `useBoxPalette` which returns the current palette for a specific DOM element
+- Adjusted height and line-height of buttons and text inputs to align better to an 8px baseline grid
+- Change input height from `em` to `rem`
+
+### @ag.ds-next/icon@12.0.0
+
+- Added new components: `ThumbsUpIcon` and `ThumbsDownIcon`
+- Exported `createIcon` function
+- Fixed bug with `focusable` prop
+- Added support for `aria-label` and `aria-hidden` props
+
+### @ag.ds-next/loading@7.0.0
+
+- Replaced `aria-label` prop with `label`
+- Improved HTML by rendering spans instead of divs
+- Improved accessibility in windows high contrast mode
+
+### @ag.ds-next/modal@9.0.0
+
+- Fixed focus trapping accessibilty bug in VoiceOver iOS
+- Improved handling of pressing `Escape` to close the component
+
+### @ag.ds-next/a11y@1.2.2
+
+- Improved accessibility of `ExternalLinkCallout` by updating screen reader text
+
+### @ag.ds-next/ag-branding@8.0.0
+
+- Improved accessibility by updating logo aria label
+- Optimised logo SVG for smaller bundle size
+
+### @ag.ds-next/badge@3.0.0
+
+- Improved accessibility in windows high contrast mode
+- Updated colours in `neutral` variants
+
+### @ag.ds-next/box@8.0.0
+
+- Added `table`, `grid` and `inline-grid` display types
+- Added new prop `highContrastOutline`
+- Added `gridColumnSpan`, `gridColumnStart` and `gridColumnEnd` props
+
+### @ag.ds-next/callout@8.0.0
+
+- Improved accessibility in windows high contrast mode
+- Improved accessibility when using `CardLink`
+
+### @ag.ds-next/content@10.0.0
+
+- Fixed bug in `BaseContent` component where the `id` prop was not being rendered
+
+### @ag.ds-next/control-input@12.0.0
+
+- Improved accessibility in windows high contrast mode
+- Improved accessibilty by fixing minor invalid HTML
+- Improve accessibilty by connecting the `hint` and `message` via `aria-describedby`.
+- Added `autoFocus` prop
+- Prevented the checkbox and radio indicator for shrinking
+- Updated alignment of labels to ensure multi-line labels are aligned vertically
+
+### @ag.ds-next/date-picker@9.0.0
+
+- Improve accessibility by updating the aria label for each calendar day button
+- Upgraded `react-day-picker` dependency
+- Improved handling of pressing `Escape` to close the component
+- `DatePicker`: Added new prop `inputRef`
+- `DateRangePicker`: Added new props `fromInputRef` and `toInputRef`
+- Improved accessibility in windows high contrast mode
+
+### @ag.ds-next/field@11.0.0
+
+- Add `aria-label` to error icons
+- Improved screen reader experience when using `secondaryLabel`
+- Improved accessibility by ensuring `aria-describedby` is only rendered when there is a value
+
+### @ag.ds-next/fieldset@8.0.0
+
+- Improved accessibilty by connecting the `hint` via `aria-describedby`.
+
+### @ag.ds-next/file-upload@7.0.0
+
+- Accessibility improvements
+
+  - Added `aria-label` to icons
+  - Removed invalid elements from list
+  - Loading indicators do not have a text alternative
+  - Added accessible label to "Remove file" button
+  - Update internal usage of `LoadingDots`
+
+- Merge consumer ref with dropzone ref before forwarding to input and use `visuallyHiddenStyles` instead of `display: none`
+
+### @ag.ds-next/footer@10.0.0
+
+- Exported `FooterProps` type
+
+### @ag.ds-next/hero-banner@7.0.0
+
+- Improved accessibility in examples by setting example image to be decorative
+
+### @ag.ds-next/main-nav@15.0.0
+
+- Close the modal when the user presses the escape key
+- Added vertical scrolling to the modal to prevent content from being cut off
+- Improved accessibility by updating aria labels for the open and close buttons
+- Removed `aria-label` prop as this is now baked into the component
+- Improved accessibility
+
+### @ag.ds-next/page-alert@8.0.0
+
+- Improved accessibility by adding `aria-label` to icons
+- Improved accessibility in windows high contrast mode
+
+### @ag.ds-next/pagination@4.0.0
+
+- Improved accessibilty by rading out 'current page' in `PaginationItemPageButton`
+- Improved accessibilty by rading out 'ellipsis' in `PaginationItemSeperator`
+
+### @ag.ds-next/progress-indicator@13.0.0
+
+- Improved HTML for larger screen sizes
+
+### @ag.ds-next/search-box@13.0.0
+
+- Update visual style
+- Added accessible name to `SearchBoxButton`
+
+### @ag.ds-next/select@12.0.0
+
+- Added `autoFocus` prop
+
+### @ag.ds-next/side-nav@14.0.0
+
+- Improved HTML for larger screen sizes
+- Removed `aria-haspopup="menu"` to convert the ARIA Menu Button to a simple disclosure widget
+- Removed `role="menu"` from the `<ul>` as this was only partially implemented
+- Fixed bug where `titleLink` would not render an anchor tag
+- Fixed minor HTML validation issue
+- Removed `aria-label` prop
+
+### @ag.ds-next/skeleton@3.0.0
+
+- Improved accessibility in windows high contrast mode
+
+### @ag.ds-next/switch@4.0.0
+
+- Improved accessibility by adding `role="switch"` to main input
+
+### @ag.ds-next/table@7.0.0
+
+- Added `ref` and `tabIndex` props
+- Update usage of CSS display properties
+
+### @ag.ds-next/task-list@11.0.0
+
+- Improved accessibilty by fixing minor invalid HTML
+- Fixed small typo
+
+### @ag.ds-next/text-input@12.0.0
+
+- Added `autoFocus` and `autoComplete` props
+- Set a default value of the `type` prop to `text`
+
+### @ag.ds-next/textarea@12.0.0
+
+- Added `autoFocus` prop
+
+## Released packages
+
+```sh
+"@ag.ds-next/a11y": "1.2.2",
+"@ag.ds-next/accordion": "11.0.0",
+"@ag.ds-next/ag-branding": "8.0.0",
+"@ag.ds-next/autocomplete": "1.0.0",
+"@ag.ds-next/badge": "3.0.0",
+"@ag.ds-next/box": "8.0.0",
+"@ag.ds-next/breadcrumbs": "15.0.0",
+"@ag.ds-next/button": "12.0.0",
+"@ag.ds-next/call-to-action": "11.0.0",
+"@ag.ds-next/callout": "8.0.0",
+"@ag.ds-next/card": "8.0.0",
+"@ag.ds-next/columns": "9.0.0",
+"@ag.ds-next/combobox": "1.0.0",
+"@ag.ds-next/content": "10.0.0",
+"@ag.ds-next/control-input": "12.0.0",
+"@ag.ds-next/core": "4.1.0",
+"@ag.ds-next/date-picker": "9.0.0",
+"@ag.ds-next/details": "1.0.0",
+"@ag.ds-next/direction-link": "11.0.0",
+"@ag.ds-next/field": "11.0.0",
+"@ag.ds-next/fieldset": "8.0.0",
+"@ag.ds-next/file-upload": "7.0.0",
+"@ag.ds-next/footer": "10.0.0",
+"@ag.ds-next/form-stack": "7.0.0",
+"@ag.ds-next/header": "12.0.0",
+"@ag.ds-next/heading": "10.0.0",
+"@ag.ds-next/hero-banner": "7.0.0",
+"@ag.ds-next/icon": "12.0.0",
+"@ag.ds-next/inpage-nav": "10.0.0",
+"@ag.ds-next/keyword-list": "10.0.0",
+"@ag.ds-next/link-list": "13.0.0",
+"@ag.ds-next/loading": "7.0.0",
+"@ag.ds-next/main-nav": "15.0.0",
+"@ag.ds-next/modal": "9.0.0",
+"@ag.ds-next/page-alert": "8.0.0",
+"@ag.ds-next/pagination": "4.0.0",
+"@ag.ds-next/progress-indicator": "13.0.0",
+"@ag.ds-next/prose": "2.0.0",
+"@ag.ds-next/search-box": "13.0.0",
+"@ag.ds-next/select": "12.0.0",
+"@ag.ds-next/side-nav": "14.0.0",
+"@ag.ds-next/skeleton": "3.0.0",
+"@ag.ds-next/skip-link": "10.0.0",
+"@ag.ds-next/sub-nav": "4.0.0",
+"@ag.ds-next/summary-list": "1.0.0",
+"@ag.ds-next/switch": "4.0.0",
+"@ag.ds-next/table": "7.0.0",
+"@ag.ds-next/tags": "10.0.0",
+"@ag.ds-next/task-list": "11.0.0",
+"@ag.ds-next/text": "11.0.0",
+"@ag.ds-next/text-input": "12.0.0",
+"@ag.ds-next/text-link": "7.0.0",
+"@ag.ds-next/textarea": "12.0.0"
+```
