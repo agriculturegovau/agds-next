@@ -161,6 +161,7 @@ const LiveCode = withLive(function LiveCode(props: unknown) {
 						'&:focus-within': packs.outline,
 						'textarea, pre': {
 							padding: `${mapSpacing(1.5)} !important`,
+							tabSize: 4,
 						},
 						'& ::selection': {
 							color: globalPalette.darkBackgroundBody,
@@ -203,6 +204,7 @@ const StaticCode = ({
 				pre: {
 					padding: `${mapSpacing(1.5)} !important`,
 					overflowX: 'auto',
+					tabSize: 4,
 				},
 
 				'& ::selection': {

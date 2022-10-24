@@ -69,12 +69,11 @@
 		"@ag.ds-next/text-link": "7.0.0",
 		"@ag.ds-next/textarea": "12.0.0",
 		"@preconstruct/next": "^4.0.0",
-		"@untitled-docs/live-code": "^0.3.0",
 		"clipboard-copy": "^4.0.1",
 		"gray-matter": "^4.0.3",
 		"next": "^12.3.0",
-		"next-mdx-remote": "^3.0.4",
-		"next-remote-watch": "^1.0.0",
+		"next-mdx-remote": "^4.1.0",
+		"next-remote-watch": "^2.0.0",
 		"parse-numeric-range": "^1.2.0",
 		"playroom": "^0.27.9",
 		"prism-react-renderer": "^1.2.1",
@@ -83,6 +82,7 @@
 		"react-live": "^2.4.1",
 		"react-simple-code-editor": "^0.11.0",
 		"remark-hint": "^1.0.10",
+		"remark-mdx-code-meta": "^2.0.0",
 		"yarn": "^1.22.10"
 	},
 	"devDependencies": {

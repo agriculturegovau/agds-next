@@ -1,4 +1,10 @@
-import { AnchorHTMLAttributes, HTMLAttributes, Fragment } from 'react';
+import {
+	isValidElement,
+	AnchorHTMLAttributes,
+	HTMLAttributes,
+	Fragment,
+	Children,
+} from 'react';
 import Link from 'next/link';
 import { proseBlockClassname } from '@ag.ds-next/prose';
 import { PageAlert, PageAlertProps } from '@ag.ds-next/page-alert';
@@ -9,15 +15,17 @@ import { Code } from './Code';
 import { ComponentPropsTable } from './ComponentPropsTable';
 import { FigmaLogo } from './FigmaLogo';
 
-// Note: We are using `any` here because of a typescript bug with react v18 and next-mdx-remote v3
-// Upgrading to v4 causes issues with our pre and code inline components. Be careful when upgrading
-
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export const mdxComponents: Record<string, any> = {
-	// avoid wrapping live examples in pre tag
-	pre: Fragment,
-	code: Code,
+export const mdxComponents = {
 	Fragment,
+	pre: ({
+		children,
+		live,
+	}: HTMLAttributes<HTMLPreElement> & { live?: boolean }) => {
+		return Children.map(children, (element) => {
+			if (!isValidElement(element)) return;
+			return <Code key={element.key} live={live} {...element.props} />;
+		});
+	},
 	ButtonLink,
 	FigmaLogo,
 	a: ({ href, ...props }: AnchorHTMLAttributes<HTMLAnchorElement>) => {

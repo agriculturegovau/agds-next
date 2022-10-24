@@ -1,8 +1,8 @@
 // TODO: Rename me to lib/mdx/utils.ts
 import { readdir, readFile } from 'fs/promises';
 import { normalize } from 'path';
-import { plugin } from '@untitled-docs/live-code/rehype';
 import { serialize } from 'next-mdx-remote/serialize';
+import remarkMdxCodeMeta from 'remark-mdx-code-meta';
 import remarkHint from 'remark-hint';
 import matter from 'gray-matter';
 import { slugify } from './slugify';
@@ -31,8 +31,8 @@ export function serializeMarkdown(
 ) {
 	return serialize(source, {
 		mdxOptions: {
-			remarkPlugins: [remarkHint],
-			rehypePlugins: [plugin],
+			remarkPlugins: [remarkHint, remarkMdxCodeMeta],
+			rehypePlugins: [],
 		},
 		scope,
 	});
@@ -44,7 +44,6 @@ export function serializeMarkdown(
 export async function getRelease(slug: string) {
 	const { content, data } = await getMarkdownData(releasePath(slug));
 	const source = await serializeMarkdown(content, data);
-
 	return {
 		slug,
 		source,
