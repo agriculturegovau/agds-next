@@ -1,6 +1,6 @@
 {
 	"name": "@ag.ds-next/summary-list",
-	"version": "0.0.1",
+	"version": "1.0.0",
 	"license": "MIT",
 	"main": "dist/ag.ds-next-summary-list.cjs.js",
 	"module": "dist/ag.ds-next-summary-list.esm.js",
@@ -14,8 +14,8 @@
 		"react": "18.1.0"
 	},
 	"peerDependencies": {
-		"@ag.ds-next/box": "7.0.0",
-		"@ag.ds-next/core": "4.0.0",
+		"@ag.ds-next/box": "8.0.0",
+		"@ag.ds-next/core": "4.1.0",
 		"@emotion/react": "^11.7.0",
 		"react": "^16.14.0 || ^17.0.0 || ^18.0.0"
 	}

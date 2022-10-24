@@ -1,5 +1,53 @@
 # @ag.ds-next/file-upload
 
+## 7.0.0
+
+### Patch Changes
+
+- 02b265c75: Fixed small typo in code
+- 18f47809c: Accessibility improvements
+
+  - List contains invalid elements (DAGR-78)
+  - Loading indicators do not have a text alternative (DAGR-81)
+  - Add accessible label to Remove file button (DAGR-80)
+
+- ad9dcc4e1: Update internal usage of LoadingDots
+- def4b6687: Sort package.json files
+- 1c2002935: Merge consumer ref with dropzone ref before forwarding to input and use `visuallyHiddenStyles` instead of `display: none`
+- e11d39fc0: Add `aria-label` to icons (DAGR-81)
+- c3de35634: Accessibility improvements
+- Updated dependencies [4f0759ad3]
+- Updated dependencies [e11d39fc0]
+- Updated dependencies [3f1a09f96]
+- Updated dependencies [ad9dcc4e1]
+- Updated dependencies [02b265c75]
+- Updated dependencies [3f1a09f96]
+- Updated dependencies [0ba460044]
+- Updated dependencies [30726c674]
+- Updated dependencies [ad9dcc4e1]
+- Updated dependencies [e4c7ceb5f]
+- Updated dependencies [def4b6687]
+- Updated dependencies [74ca5f4c6]
+- Updated dependencies [70aa65c52]
+- Updated dependencies [c128d8632]
+- Updated dependencies [64f7174ea]
+- Updated dependencies [30726c674]
+- Updated dependencies [74ca5f4c6]
+- Updated dependencies [6f06cd8cc]
+- Updated dependencies [77ff925b0]
+- Updated dependencies [802d24085]
+- Updated dependencies [e11d39fc0]
+- Updated dependencies [dfe7f8c99]
+- Updated dependencies [355806633]
+  - @ag.ds-next/a11y@1.2.2
+  - @ag.ds-next/field@11.0.0
+  - @ag.ds-next/button@12.0.0
+  - @ag.ds-next/loading@7.0.0
+  - @ag.ds-next/box@8.0.0
+  - @ag.ds-next/core@4.1.0
+  - @ag.ds-next/icon@12.0.0
+  - @ag.ds-next/text@11.0.0
+
 ## 6.0.0
 
 ### Minor Changes

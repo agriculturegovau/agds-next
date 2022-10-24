@@ -1,5 +1,37 @@
 # @ag.ds-next/side-nav
 
+## 14.0.0
+
+### Patch Changes
+
+- f0d750313: Improved HTML for larger screen sizes (DAGR-114)
+- 2fc77cfe8: - Removed `aria-haspopup="menu"` to convert the ARIA Menu Button to a simple disclosure widget
+  - Removed `role="menu"` from the `<ul>` as this was only partially implemented
+- def4b6687: Sort package.json files
+- c128d8632: Upgraded `@reach/auto-id`
+- ae84b2ca2: Fixed bug where `titleLink` would not render an anchor tag
+- 77e81b8d9: Fixed minor HTML validation issue
+- 5b2b62af9: Rename `aria-label` prop
+- Updated dependencies [3f1a09f96]
+- Updated dependencies [0ba460044]
+- Updated dependencies [30726c674]
+- Updated dependencies [ad9dcc4e1]
+- Updated dependencies [e4c7ceb5f]
+- Updated dependencies [def4b6687]
+- Updated dependencies [74ca5f4c6]
+- Updated dependencies [70aa65c52]
+- Updated dependencies [c128d8632]
+- Updated dependencies [64f7174ea]
+- Updated dependencies [74ca5f4c6]
+- Updated dependencies [802d24085]
+- Updated dependencies [e11d39fc0]
+- Updated dependencies [dfe7f8c99]
+- Updated dependencies [355806633]
+  - @ag.ds-next/button@12.0.0
+  - @ag.ds-next/box@8.0.0
+  - @ag.ds-next/core@4.1.0
+  - @ag.ds-next/icon@12.0.0
+
 ## 13.0.0
 
 ### Patch Changes

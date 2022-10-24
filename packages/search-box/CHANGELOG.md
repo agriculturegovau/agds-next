@@ -1,5 +1,43 @@
 # @ag.ds-next/search-box
 
+## 13.0.0
+
+### Patch Changes
+
+- 2f51df9f4: Update visual style
+- 10b37b586: Added accessible name to `SearchBoxButton`
+- def4b6687: Sort package.json files
+- c128d8632: Upgraded `@reach/auto-id`
+- 1b41cc56d: Fixed visual bug in icon only version
+- Updated dependencies [4f0759ad3]
+- Updated dependencies [3f1a09f96]
+- Updated dependencies [bff0bf355]
+- Updated dependencies [02b265c75]
+- Updated dependencies [0ba460044]
+- Updated dependencies [30726c674]
+- Updated dependencies [ad9dcc4e1]
+- Updated dependencies [1be68516e]
+- Updated dependencies [e4c7ceb5f]
+- Updated dependencies [74ca5f4c6]
+- Updated dependencies [def4b6687]
+- Updated dependencies [74ca5f4c6]
+- Updated dependencies [70aa65c52]
+- Updated dependencies [c128d8632]
+- Updated dependencies [64f7174ea]
+- Updated dependencies [1ed62efe7]
+- Updated dependencies [74ca5f4c6]
+- Updated dependencies [802d24085]
+- Updated dependencies [e11d39fc0]
+- Updated dependencies [dfe7f8c99]
+- Updated dependencies [355806633]
+  - @ag.ds-next/a11y@1.2.2
+  - @ag.ds-next/button@12.0.0
+  - @ag.ds-next/text-input@12.0.0
+  - @ag.ds-next/box@8.0.0
+  - @ag.ds-next/core@4.1.0
+  - @ag.ds-next/icon@12.0.0
+  - @ag.ds-next/text@11.0.0
+
 ## 12.0.0
 
 ### Minor Changes

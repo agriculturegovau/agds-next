@@ -1,12 +1,14 @@
-# @ag.ds-next/badge
+# @ag.ds-next/details
 
-## 3.0.0
+## 1.0.0
+
+### Major Changes
+
+- d6a3bee6a: Create Details component
 
 ### Patch Changes
 
 - def4b6687: Sort package.json files
-- 30726c674: Improved a11y in windows high contrast mode
-- 74823f460: Updated colours in `neutral` variants
 - Updated dependencies [0ba460044]
 - Updated dependencies [30726c674]
 - Updated dependencies [e4c7ceb5f]
@@ -21,20 +23,3 @@
   - @ag.ds-next/box@8.0.0
   - @ag.ds-next/core@4.1.0
   - @ag.ds-next/icon@12.0.0
-  - @ag.ds-next/text@11.0.0
-
-## 2.0.0
-
-### Minor Changes
-
-- aad2cb62d: Update references to colour tokens
-
-### Patch Changes
-
-- Updated dependencies [aad2cb62d]
-- Updated dependencies [aad2cb62d]
-- Updated dependencies [5495984f4]
-  - @ag.ds-next/box@7.0.0
-  - @ag.ds-next/core@4.0.0
-  - @ag.ds-next/icon@11.0.0
-  - @ag.ds-next/text@10.0.0

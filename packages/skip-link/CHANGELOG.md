@@ -1,5 +1,24 @@
 # @ag.ds-next/skip-link
 
+## 10.0.0
+
+### Patch Changes
+
+- def4b6687: Sort package.json files
+- Updated dependencies [4f0759ad3]
+- Updated dependencies [3f1a09f96]
+- Updated dependencies [ad9dcc4e1]
+- Updated dependencies [e4c7ceb5f]
+- Updated dependencies [def4b6687]
+- Updated dependencies [74ca5f4c6]
+- Updated dependencies [c128d8632]
+- Updated dependencies [74ca5f4c6]
+- Updated dependencies [dfe7f8c99]
+- Updated dependencies [355806633]
+  - @ag.ds-next/a11y@1.2.2
+  - @ag.ds-next/button@12.0.0
+  - @ag.ds-next/core@4.1.0
+
 ## 9.0.0
 
 ### Patch Changes

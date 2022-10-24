@@ -1,5 +1,32 @@
 # @ag.ds-next/button
 
+## 12.0.0
+
+### Minor Changes
+
+- dfe7f8c99: Removed `loading` and `loadingLabel` prop from `ButtonLink`. If you are using these props, you should be using `Button` instead.
+
+### Patch Changes
+
+- 3f1a09f96: Add always-present aria-live container for LoadingDots
+- ad9dcc4e1: Update internal usage of LoadingDots
+- def4b6687: Sort package.json files
+- 74ca5f4c6: Adjusted `text` variant styles
+- Updated dependencies [ad9dcc4e1]
+- Updated dependencies [3f1a09f96]
+- Updated dependencies [0ba460044]
+- Updated dependencies [30726c674]
+- Updated dependencies [e4c7ceb5f]
+- Updated dependencies [def4b6687]
+- Updated dependencies [70aa65c52]
+- Updated dependencies [c128d8632]
+- Updated dependencies [30726c674]
+- Updated dependencies [74ca5f4c6]
+- Updated dependencies [355806633]
+  - @ag.ds-next/loading@7.0.0
+  - @ag.ds-next/box@8.0.0
+  - @ag.ds-next/core@4.1.0
+
 ## 11.0.0
 
 ### Minor Changes

@@ -1,5 +1,19 @@
 # @ag.ds-next/ag-branding
 
+## 8.0.0
+
+### Patch Changes
+
+- be45db31f: Improved a11y by updating logo aria label
+- 4d69e2720: Optimised logo SVG for smaller bundle size
+- def4b6687: Sort package.json files
+- Updated dependencies [e4c7ceb5f]
+- Updated dependencies [def4b6687]
+- Updated dependencies [c128d8632]
+- Updated dependencies [74ca5f4c6]
+- Updated dependencies [355806633]
+  - @ag.ds-next/core@4.1.0
+
 ## 7.0.0
 
 ### Major Changes

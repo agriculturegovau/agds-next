@@ -1,10 +1,13 @@
-# @ag.ds-next/prose
+# @ag.ds-next/summary-list
 
-## 2.0.0
+## 1.0.0
+
+### Major Changes
+
+- 2a22f30f2: Created package
 
 ### Patch Changes
 
-- def4b6687: Sort package.json files
 - Updated dependencies [0ba460044]
 - Updated dependencies [30726c674]
 - Updated dependencies [e4c7ceb5f]
