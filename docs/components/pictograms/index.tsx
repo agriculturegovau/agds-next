@@ -36,6 +36,7 @@ import prose from './prose.svg';
 import searchBox from './search-box.svg';
 import select from './select.svg';
 import sideNav from './side-nav.svg';
+import skeleton from './skeleton.svg';
 import skipLink from './skip-link.svg';
 import starter from './starter.svg';
 import summaryList from './summary-list.svg';
@@ -91,6 +92,7 @@ export const pictograms = {
 	'search-box': searchBox,
 	select,
 	'side-nav': sideNav,
+	skeleton,
 	'skip-link': skipLink,
 	starter,
 	'summary-list': summaryList,
