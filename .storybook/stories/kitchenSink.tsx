@@ -469,7 +469,7 @@ const KitchenSink = ({ background }: { background: 'body' | 'bodyAlt' }) => {
 								},
 								{
 									label: 'Starter kit',
-									href: 'https://github.com/steelthreads/agds-next-starter-kit',
+									href: 'https://github.com/steelthreads/agds-starter-kit',
 								},
 							]}
 							horizontal
