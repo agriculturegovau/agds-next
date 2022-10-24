@@ -122,7 +122,6 @@ export function getPkgGroupList() {
 				title,
 			}))
 			.sort((a, b) => {
-				if (a.slug === 'foundations') return -1;
 				return a.title > b.title ? 1 : -1;
 			});
 	});

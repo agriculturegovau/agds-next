@@ -80,8 +80,8 @@ export const getStaticProps: GetStaticProps<
 export const getStaticPaths = async () => {
 	const packages = await getPkgList();
 	return {
-		paths: packages.map(({ group, slug }) => ({
-			params: { group, slug },
+		paths: packages.map(({ slug }) => ({
+			params: { slug },
 		})),
 		fallback: false,
 	};
