@@ -5,7 +5,7 @@ import { MainNav } from './MainNav';
 import { MainNavBottomBar } from './MainNavBottomBar';
 
 export default {
-	title: 'navigation/MainNav',
+	title: 'Components/MainNav',
 	component: MainNav,
 	subcomponents: { MainNavBottomBar },
 } as ComponentMeta<typeof MainNav>;

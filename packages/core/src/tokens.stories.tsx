@@ -9,7 +9,7 @@ import { mapSpacing, Spacing } from './tokens';
 
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {
-	title: 'foundations/Core/Tokens',
+	title: 'Components/Core/Tokens',
 };
 
 export const Color = () => {

@@ -3,7 +3,7 @@ import { Stack } from '@ag.ds-next/box';
 import { Textarea } from './Textarea';
 
 export default {
-	title: 'forms/Textarea',
+	title: 'Components/Textarea',
 	component: Textarea,
 } as ComponentMeta<typeof Textarea>;
 

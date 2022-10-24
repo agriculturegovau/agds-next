@@ -13,7 +13,7 @@ import { TextLink } from '@ag.ds-next/text-link';
 import { StatusBadge } from './StatusBadge';
 
 export default {
-	title: 'content/Badge/StatusBadge',
+	title: 'Components/Badge/StatusBadge',
 	component: StatusBadge,
 } as ComponentMeta<typeof StatusBadge>;
 

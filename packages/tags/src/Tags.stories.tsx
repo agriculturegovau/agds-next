@@ -3,7 +3,7 @@ import { Text } from '@ag.ds-next/text';
 import { Tags, TagsContainer, TagsList, Tag } from './index';
 
 export default {
-	title: 'content/Tags',
+	title: 'Components/Tags',
 	component: Tags,
 	subcomponents: { TagsContainer, TagsList, Tag },
 } as ComponentMeta<typeof Tags>;

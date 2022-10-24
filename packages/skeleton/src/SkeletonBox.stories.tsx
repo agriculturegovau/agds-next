@@ -2,7 +2,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { SkeletonBox } from './SkeletonBox';
 
 export default {
-	title: 'content/Skeleton/SkeletonBox',
+	title: 'Components/Skeleton/SkeletonBox',
 	component: SkeletonBox,
 } as ComponentMeta<typeof SkeletonBox>;
 

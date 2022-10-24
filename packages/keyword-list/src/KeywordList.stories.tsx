@@ -2,7 +2,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { KeywordList, KeywordListItem, KeywordListContainer } from './index';
 
 export default {
-	title: 'content/KeywordList',
+	title: 'Components/KeywordList',
 	component: KeywordList,
 	subcomponents: { KeywordListContainer, KeywordListItem },
 } as ComponentMeta<typeof KeywordList>;

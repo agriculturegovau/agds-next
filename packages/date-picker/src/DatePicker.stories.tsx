@@ -6,7 +6,7 @@ import { Button, ButtonGroup } from '@ag.ds-next/button';
 import { DatePicker } from './DatePicker';
 
 export default {
-	title: 'forms/DatePicker/DatePicker',
+	title: 'Components/DatePicker/DatePicker',
 	component: DatePicker,
 } as ComponentMeta<typeof DatePicker>;
 

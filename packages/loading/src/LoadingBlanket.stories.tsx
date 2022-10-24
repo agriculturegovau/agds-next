@@ -16,7 +16,7 @@ import {
 } from './index';
 
 export default {
-	title: 'content/Loading/LoadingBlanket',
+	title: 'Components/Loading/LoadingBlanket',
 	component: LoadingBlanket,
 } as ComponentMeta<typeof LoadingBlanket>;
 

@@ -5,7 +5,7 @@ import { Text } from '@ag.ds-next/text';
 import { Modal } from './Modal';
 
 export default {
-	title: 'content/Modal',
+	title: 'Components/Modal',
 	component: Modal,
 } as ComponentMeta<typeof Modal>;
 

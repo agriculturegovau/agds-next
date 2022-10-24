@@ -4,7 +4,7 @@ import { NotificationBadge } from '@ag.ds-next/badge';
 import { SubNav } from './SubNav';
 
 export default {
-	title: 'navigation/SubNav',
+	title: 'Components/SubNav',
 	component: SubNav,
 } as ComponentMeta<typeof SubNav>;
 

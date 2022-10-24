@@ -18,7 +18,7 @@ import { CardHeader } from './CardHeader';
 import { CardFooter } from './CardFooter';
 
 export default {
-	title: 'layout/Card',
+	title: 'Components/Card',
 	component: Card,
 	subcomponents: { CardInner, CardLink, CardHeader, CardFooter },
 } as ComponentMeta<typeof Card>;

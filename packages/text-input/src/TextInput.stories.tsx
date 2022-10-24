@@ -3,7 +3,7 @@ import { Stack } from '@ag.ds-next/box';
 import { TextInput } from './TextInput';
 
 export default {
-	title: 'forms/TextInput',
+	title: 'Components/TextInput',
 	component: TextInput,
 } as ComponentMeta<typeof TextInput>;
 

@@ -7,7 +7,7 @@ import { FieldHint } from './FieldHint';
 import { useFieldA11yProps, useFieldIds } from './index';
 
 export default {
-	title: 'forms/Field',
+	title: 'Components/Field',
 	component: Field,
 } as ComponentMeta<typeof Field>;
 

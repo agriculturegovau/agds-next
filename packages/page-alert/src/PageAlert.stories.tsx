@@ -3,7 +3,7 @@ import { Text } from '@ag.ds-next/text';
 import { PageAlert } from './PageAlert';
 
 export default {
-	title: 'content/Page Alert',
+	title: 'Components/Page Alert',
 	component: PageAlert,
 } as ComponentMeta<typeof PageAlert>;
 

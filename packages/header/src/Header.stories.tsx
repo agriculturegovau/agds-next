@@ -16,7 +16,7 @@ import { HeaderBrand } from './HeaderBrand';
  */
 
 export default {
-	title: 'layout/Header',
+	title: 'Components/Header',
 	component: Header,
 	subcomponents: {
 		HeaderContainer,

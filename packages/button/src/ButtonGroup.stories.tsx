@@ -3,7 +3,7 @@ import { ButtonGroup } from './ButtonGroup';
 import { Button } from './Button';
 
 export default {
-	title: 'forms/Button/ButtonGroup',
+	title: 'Components/Button/ButtonGroup',
 	component: ButtonGroup,
 } as ComponentMeta<typeof Button>;
 

@@ -7,7 +7,7 @@ import {
 } from './index';
 
 export default {
-	title: 'navigation/Breadcrumbs',
+	title: 'Components/Breadcrumbs',
 	component: Breadcrumbs,
 	subcomponents: {
 		BreadcrumbsContainer,

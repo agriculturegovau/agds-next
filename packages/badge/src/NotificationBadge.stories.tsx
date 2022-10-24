@@ -2,7 +2,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { NotificationBadge } from './NotificationBadge';
 
 export default {
-	title: 'content/Badge/NotificationBadge',
+	title: 'Components/Badge/NotificationBadge',
 	component: NotificationBadge,
 } as ComponentMeta<typeof NotificationBadge>;
 

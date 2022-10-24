@@ -4,7 +4,7 @@ import { Box } from '@ag.ds-next/box';
 import { PaginationButtons } from './PaginationButtons';
 
 export default {
-	title: 'navigation/Pagination/PaginationButtons',
+	title: 'Components/Pagination/PaginationButtons',
 	component: PaginationButtons,
 } as ComponentMeta<typeof PaginationButtons>;
 

@@ -8,7 +8,7 @@ import { Prose } from '@ag.ds-next/prose';
 import { DateRangePicker, DateRange } from './DateRangePicker';
 
 export default {
-	title: 'forms/DatePicker/DateRangePicker',
+	title: 'Components/DatePicker/DateRangePicker',
 	component: DateRangePicker,
 } as ComponentMeta<typeof DateRangePicker>;
 

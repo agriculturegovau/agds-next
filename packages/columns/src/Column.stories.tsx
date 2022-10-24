@@ -3,7 +3,7 @@ import { Box } from '@ag.ds-next/box';
 import { Columns, Column } from './index';
 
 export default {
-	title: 'layout/Columns',
+	title: 'Components/Columns',
 	component: Columns,
 } as ComponentMeta<typeof Columns>;
 

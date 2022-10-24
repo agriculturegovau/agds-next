@@ -15,7 +15,7 @@ import { FileUpload } from './FileUpload';
 import { FileWithStatus } from './utils';
 
 export default {
-	title: 'forms/FileUpload',
+	title: 'Components/FileUpload',
 	component: FileUpload,
 } as ComponentMeta<typeof FileUpload>;
 

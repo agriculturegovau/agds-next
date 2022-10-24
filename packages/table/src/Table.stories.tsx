@@ -9,7 +9,7 @@ import { TableHead } from './TableHead';
 import { TableWrapper } from './TableWrapper';
 
 export default {
-	title: 'content/Table',
+	title: 'Components/Table',
 	component: Table,
 	subcomponents: {
 		TableBody,

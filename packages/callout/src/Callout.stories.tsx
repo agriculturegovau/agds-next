@@ -5,7 +5,7 @@ import { Callout } from './Callout';
 import { CalloutTitle } from './CalloutTitle';
 
 export default {
-	title: 'content/Callout',
+	title: 'Components/Callout',
 	component: Callout,
 	subcomponents: { CalloutTitle },
 } as ComponentMeta<typeof Callout>;

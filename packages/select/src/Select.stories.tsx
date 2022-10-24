@@ -4,7 +4,7 @@ import { Stack } from '@ag.ds-next/box';
 import { Select } from './Select';
 
 export default {
-	title: 'forms/Select',
+	title: 'Components/Select',
 	component: Select,
 } as ComponentMeta<typeof Select>;
 

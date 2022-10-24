@@ -6,7 +6,7 @@ import { iconColors } from './Icon';
 import { allIcons } from './utils';
 
 export default {
-	title: 'foundations/Icon',
+	title: 'Components/Icon',
 	component: AlertIcon,
 	argTypes: {
 		color: {

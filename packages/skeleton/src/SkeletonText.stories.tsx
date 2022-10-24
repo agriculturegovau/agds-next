@@ -6,7 +6,7 @@ import { Columns, Column } from '@ag.ds-next/columns';
 import { SkeletonText } from './SkeletonText';
 
 export default {
-	title: 'content/Skeleton/SkeletonText',
+	title: 'Components/Skeleton/SkeletonText',
 	component: SkeletonText,
 } as ComponentMeta<typeof SkeletonText>;
 

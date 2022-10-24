@@ -11,7 +11,7 @@ import {
 } from './index';
 
 export default {
-	title: 'navigation/InpageNav',
+	title: 'Components/InpageNav',
 	component: InpageNav,
 	subcomponents: {
 		InpageNavContainer,

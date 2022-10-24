@@ -5,7 +5,7 @@ import { SearchBoxButton } from './SearchBoxButton';
 import { SearchBoxInput } from './SearchBoxInput';
 
 export default {
-	title: 'forms/SearchBox',
+	title: 'Components/SearchBox',
 	component: SearchBox,
 	subcomponents: { SearchBoxButton, SearchBoxInput },
 } as ComponentMeta<typeof SearchBox>;

@@ -5,7 +5,7 @@ import { Heading } from '@ag.ds-next/heading';
 import { SkeletonHeading } from './SkeletonHeading';
 
 export default {
-	title: 'content/Skeleton/SkeletonHeading',
+	title: 'Components/Skeleton/SkeletonHeading',
 	component: SkeletonHeading,
 } as ComponentMeta<typeof SkeletonHeading>;
 

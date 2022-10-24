@@ -9,7 +9,7 @@ import { Accordion } from './Accordion';
 import { AccordionItem, AccordionItemContent } from './AccordionItem';
 
 export default {
-	title: 'Layout/Accordion',
+	title: 'Components/Accordion',
 	component: Accordion,
 } as ComponentMeta<typeof Accordion>;
 

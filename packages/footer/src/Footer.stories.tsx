@@ -10,7 +10,7 @@ import { LinkList } from '@ag.ds-next/link-list';
 import { Footer, FooterDivider } from './';
 
 export default {
-	title: 'layout/Footer',
+	title: 'Components/Footer',
 	component: Footer,
 } as ComponentMeta<typeof Footer>;
 

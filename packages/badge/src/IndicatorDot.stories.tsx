@@ -7,7 +7,7 @@ import { TextLink } from '@ag.ds-next/text-link';
 import { IndicatorDot } from './IndicatorDot';
 
 export default {
-	title: 'content/Badge/IndicatorDot',
+	title: 'Components/Badge/IndicatorDot',
 	component: IndicatorDot,
 } as ComponentMeta<typeof IndicatorDot>;
 

@@ -2,7 +2,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { LoadingDots as LoadingDotsComp } from './index';
 
 export default {
-	title: 'content/Loading/LoadingDots',
+	title: 'Components/Loading/LoadingDots',
 	component: LoadingDotsComp,
 } as ComponentMeta<typeof LoadingDotsComp>;
 

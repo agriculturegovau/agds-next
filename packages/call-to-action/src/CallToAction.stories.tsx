@@ -2,7 +2,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { CallToActionLink, CallToActionButton } from './index';
 
 export default {
-	title: 'navigation/CallToAction',
+	title: 'Components/CallToAction',
 	component: CallToActionLink,
 	subcomponents: { CallToActionButton },
 } as ComponentMeta<typeof CallToActionLink>;

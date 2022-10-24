@@ -10,7 +10,7 @@ import {
 } from './index';
 
 export default {
-	title: 'forms/ProgressIndicator',
+	title: 'Components/ProgressIndicator',
 	component: ProgressIndicator,
 	subcomponents: {
 		ProgressIndicatorCollapseButton,

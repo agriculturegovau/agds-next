@@ -7,7 +7,7 @@ import {
 } from './index';
 
 export default {
-	title: 'forms/TaskList',
+	title: 'Components/TaskList',
 	component: TaskList,
 	subcomponents: {
 		TaskListContainer,

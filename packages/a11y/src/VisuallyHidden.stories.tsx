@@ -6,7 +6,7 @@ import { H1 } from '@ag.ds-next/heading';
 import { VisuallyHidden, visuallyHiddenStyles } from './VisuallyHidden';
 
 export default {
-	title: 'foundations/A11y/VisuallyHidden',
+	title: 'Components/A11y/VisuallyHidden',
 	component: VisuallyHidden,
 } as ComponentMeta<typeof VisuallyHidden>;
 

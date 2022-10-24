@@ -6,7 +6,7 @@ import { H1 } from '@ag.ds-next/heading';
 import { ExternalLinkCallout } from './ExternalLinkCallout';
 
 export default {
-	title: 'foundations/A11y/ExternalLinkCallout',
+	title: 'Components/A11y/ExternalLinkCallout',
 	component: ExternalLinkCallout,
 } as ComponentMeta<typeof ExternalLinkCallout>;
 

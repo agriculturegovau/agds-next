@@ -3,7 +3,7 @@ import { Stack } from '@ag.ds-next/box';
 import { DirectionLink, DirectionButton } from './index';
 
 export default {
-	title: 'navigation/DirectionLink',
+	title: 'Components/DirectionLink',
 	component: DirectionLink,
 	subcomponents: {
 		DirectionButton,

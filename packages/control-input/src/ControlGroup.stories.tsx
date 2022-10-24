@@ -5,7 +5,7 @@ import { Radio } from './Radio';
 import { ControlGroup } from './ControlGroup';
 
 export default {
-	title: 'forms/ControlGroup',
+	title: 'Components/ControlGroup',
 	component: ControlGroup,
 } as ComponentMeta<typeof ControlGroup>;
 

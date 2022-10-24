@@ -3,7 +3,7 @@ import { ComponentMeta } from '@storybook/react';
 import { Prose } from './index';
 
 export default {
-	title: 'content/Prose',
+	title: 'Components/Prose',
 	component: Prose,
 } as ComponentMeta<typeof Prose>;
 

@@ -2,7 +2,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { Autocomplete } from './Autocomplete';
 
 export default {
-	title: 'forms/Autocomplete',
+	title: 'Components/Autocomplete',
 	component: Autocomplete,
 } as ComponentMeta<typeof Autocomplete>;
 

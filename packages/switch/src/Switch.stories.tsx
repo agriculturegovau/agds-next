@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { Switch } from './Switch';
 
 export default {
-	title: 'forms/Switch',
+	title: 'Components/Switch',
 	component: Switch,
 } as ComponentMeta<typeof Switch>;
 

@@ -2,7 +2,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { LinkList, LinkListItem, LinkListContainer } from './index';
 
 export default {
-	title: 'navigation/LinkList',
+	title: 'Components/LinkList',
 	component: LinkList,
 	subcomponents: { LinkListContainer, LinkListItem },
 } as ComponentMeta<typeof LinkList>;

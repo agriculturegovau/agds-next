@@ -10,7 +10,7 @@ import {
 } from './SummaryList';
 
 export default {
-	title: 'Content/SummaryList',
+	title: 'Components/SummaryList',
 	component: SummaryList,
 } as ComponentMeta<typeof SummaryList>;
 

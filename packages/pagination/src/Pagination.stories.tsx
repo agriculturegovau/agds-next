@@ -3,7 +3,7 @@ import { Box } from '@ag.ds-next/box';
 import { Pagination } from './Pagination';
 
 export default {
-	title: 'navigation/Pagination',
+	title: 'Components/Pagination',
 	component: Pagination,
 } as ComponentMeta<typeof Pagination>;
 

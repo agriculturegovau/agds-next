@@ -3,7 +3,7 @@ import { allIcons, AvatarIcon } from '@ag.ds-next/icon';
 import { Button, ButtonLink } from './Button';
 
 export default {
-	title: 'forms/Button',
+	title: 'Components/Button',
 	component: Button,
 	subcomponents: { ButtonLink },
 	argTypes: {

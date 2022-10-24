@@ -5,7 +5,7 @@ import { Stack } from './Stack';
 import { Box } from './Box';
 
 export default {
-	title: 'foundations/Flex',
+	title: 'Components/Flex',
 	component: Flex,
 } as ComponentMeta<typeof Flex>;
 

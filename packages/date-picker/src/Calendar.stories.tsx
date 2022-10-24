@@ -5,7 +5,7 @@ import { subDays, addDays } from 'date-fns';
 import { CalendarRange, CalendarSingle, CalendarSingleProps } from './Calendar';
 
 export default {
-	title: 'forms/DatePicker/Calendar',
+	title: 'Components/DatePicker/Calendar',
 	component: CalendarSingle,
 } as ComponentMeta<typeof CalendarSingle>;
 

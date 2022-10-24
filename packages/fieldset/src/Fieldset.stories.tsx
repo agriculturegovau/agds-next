@@ -8,7 +8,7 @@ import { FieldsetHint } from './FieldsetHint';
 import { Fieldset, FieldsetContainer, FieldsetLegend } from './index';
 
 export default {
-	title: 'forms/Fieldset',
+	title: 'Components/Fieldset',
 	component: Fieldset,
 	subcomponents: { FieldsetContainer, FieldsetLegend, FieldsetHint },
 } as ComponentMeta<typeof Fieldset>;

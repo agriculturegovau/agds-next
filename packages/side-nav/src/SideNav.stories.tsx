@@ -10,7 +10,7 @@ import {
 } from './index';
 
 export default {
-	title: 'navigation/SideNav',
+	title: 'Components/SideNav',
 	component: SideNav,
 	subcomponents: { SideNavContainer, SideNavTitle, SideNavGroup, SideNavLink },
 } as ComponentMeta<typeof SideNav>;

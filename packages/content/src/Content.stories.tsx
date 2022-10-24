@@ -3,7 +3,7 @@ import { Prose } from '@ag.ds-next/prose';
 import { Content } from './Content';
 
 export default {
-	title: 'layout/Content/Content',
+	title: 'Components/Content/Content',
 	component: Content,
 } as ComponentMeta<typeof Content>;
 

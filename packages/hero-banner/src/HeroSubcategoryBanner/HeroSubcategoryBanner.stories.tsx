@@ -8,7 +8,7 @@ import {
 import { HeroSubcategoryBannerTitle } from './HeroSubcategoryBannerTitle';
 
 export default {
-	title: 'layout/HeroBanner/HeroSubcategoryBanner',
+	title: 'Components/HeroBanner/HeroSubcategoryBanner',
 	component: HeroSubcategoryBanner,
 	subcomponents: {
 		HeroSubcategoryBannerTitle,
