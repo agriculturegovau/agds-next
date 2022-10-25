@@ -1,3 +1,4 @@
+import a11y from './a11y.svg';
 import accordion from './accordion.svg';
 import agBranding from './ag-branding.svg';
 import badge from './badge.svg';
@@ -22,6 +23,7 @@ import formStack from './form-stack.svg';
 import guides from './guides.svg';
 import header from './header.svg';
 import heading from './heading.svg';
+import herobanner from './hero-banner.svg';
 import icon from './icon.svg';
 import inpageNav from './inpage-nav.svg';
 import keywordList from './keyword-list.svg';
@@ -31,6 +33,7 @@ import mainNav from './main-nav.svg';
 import modal from './modal.svg';
 import packages from './packages.svg';
 import pageAlert from './page-alert.svg';
+import pagination from './pagination.svg';
 import progressIndicator from './progress-indicator.svg';
 import prose from './prose.svg';
 import searchBox from './search-box.svg';
@@ -39,6 +42,7 @@ import sideNav from './side-nav.svg';
 import skeleton from './skeleton.svg';
 import skipLink from './skip-link.svg';
 import starter from './starter.svg';
+import subnav from './sub-nav.svg';
 import summaryList from './summary-list.svg';
 import switchPictogram from './switch.svg';
 import table from './table.svg';
@@ -50,6 +54,7 @@ import textLink from './text-link.svg';
 import textInput from './text-input.svg';
 
 export const pictograms = {
+	a11y,
 	accordion,
 	autocomplete: select,
 	'ag-branding': agBranding,
@@ -77,6 +82,7 @@ export const pictograms = {
 	guides,
 	header,
 	heading,
+	'hero-banner': herobanner,
 	icon,
 	'inpage-nav': inpageNav,
 	'keyword-list': keywordList,
@@ -86,6 +92,7 @@ export const pictograms = {
 	modal,
 	packages,
 	'page-alert': pageAlert,
+	pagination,
 	'progress-indicator': progressIndicator,
 	prose,
 	sideNav,
@@ -95,6 +102,7 @@ export const pictograms = {
 	skeleton,
 	'skip-link': skipLink,
 	starter,
+	'sub-nav': subnav,
 	'summary-list': summaryList,
 	switch: switchPictogram,
 	table,
