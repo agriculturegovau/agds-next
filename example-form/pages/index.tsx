@@ -7,7 +7,7 @@ import {
 	HeroBannerTitle,
 	HeroBannerTitleContainer,
 } from '@ag.ds-next/hero-banner';
-import { CallToActionLink } from '../../packages/call-to-action/src';
+import { CallToActionLink } from '@ag.ds-next/call-to-action';
 import { AppLayout } from '../components/AppLayout';
 import { DocumentTitle } from '../components/DocumentTitle';
 import { ServicesRecentlyViewedCardList } from '../components/ServicesRecentlyViewedCardList';

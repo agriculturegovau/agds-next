@@ -12,7 +12,7 @@ export const PkgCardList = ({ items }: { items: Pkg[] }) => (
 			<PictogramCard
 				title={title}
 				pictogram={slug}
-				href={`/packages/${slug}`}
+				href={`/components/${slug}`}
 				key={slug}
 			/>
 		))}

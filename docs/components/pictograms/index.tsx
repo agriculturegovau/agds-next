@@ -9,6 +9,7 @@ import callToAction from './call-to-action.svg';
 import callout from './callout.svg';
 import card from './card.svg';
 import columns from './columns.svg';
+import components from './components.svg';
 import content from './content.svg';
 import controlInput from './control-input.svg';
 import core from './core.svg';
@@ -31,7 +32,6 @@ import loading from './loading.svg';
 import linkList from './link-list.svg';
 import mainNav from './main-nav.svg';
 import modal from './modal.svg';
-import packages from './packages.svg';
 import pageAlert from './page-alert.svg';
 import pagination from './pagination.svg';
 import progressIndicator from './progress-indicator.svg';
@@ -68,6 +68,7 @@ export const pictograms = {
 	card,
 	columns,
 	combobox: select,
+	components,
 	content,
 	'control-input': controlInput,
 	core,
@@ -90,7 +91,6 @@ export const pictograms = {
 	loading,
 	'main-nav': mainNav,
 	modal,
-	packages,
 	'page-alert': pageAlert,
 	pagination,
 	'progress-indicator': progressIndicator,
