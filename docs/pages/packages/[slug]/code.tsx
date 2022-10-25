@@ -8,13 +8,13 @@ import {
 	getPkgNavLinks,
 	getPkgBreadcrumbs,
 	getPkgDocsContent,
-} from '../../../../lib/mdx/packages';
-import { mdxComponents } from '../../../../components/mdxComponents';
-import { AppLayout } from '../../../../components/AppLayout';
-import { DocumentTitle } from '../../../../components/DocumentTitle';
-import { PkgLayout } from '../../../../components/PkgLayout';
+} from '../../../lib/mdx/packages';
+import { mdxComponents } from '../../../components/mdxComponents';
+import { AppLayout } from '../../../components/AppLayout';
+import { DocumentTitle } from '../../../components/DocumentTitle';
+import { PkgLayout } from '../../../components/PkgLayout';
 
-export default function PackagesRationale({
+export default function PackagesCode({
 	pkg,
 	navLinks,
 	breadcrumbs,
@@ -22,7 +22,7 @@ export default function PackagesRationale({
 }: InferGetStaticPropsType<typeof getStaticProps>) {
 	return (
 		<>
-			<DocumentTitle title={`${pkg.title} Rationale`} />
+			<DocumentTitle title={`${pkg.title} Code`} />
 			<AppLayout>
 				<PkgLayout
 					pkg={pkg}
@@ -30,13 +30,23 @@ export default function PackagesRationale({
 					breadcrumbs={breadcrumbs}
 					skipLinks={[
 						{
-							label: `Skip to ${pkg.title} rationale`,
+							label: `Skip to ${pkg.title} code`,
 							href: '#pkg-content',
 						},
 					]}
-					editPath={`/packages/${pkg.slug}/docs/rationale.mdx`}
+					editPath={`/packages/${pkg.slug}/docs/code.mdx`}
 				>
 					<Prose id="pkg-content">
+						<h2>Source</h2>
+						<p>
+							You can view the full source code for this package on{' '}
+							<a
+								href={`https://github.com/steelthreads/agds-next/tree/main/packages/${pkg.slug}`}
+							>
+								Github
+							</a>
+							.
+						</p>
 						<MDXRemote {...content} components={mdxComponents} />
 					</Prose>
 				</PkgLayout>
@@ -52,20 +62,18 @@ export const getStaticProps: GetStaticProps<
 		breadcrumbs: Awaited<ReturnType<typeof getPkgBreadcrumbs>>;
 		content: NonNullable<Awaited<ReturnType<typeof getPkgDocsContent>>>;
 	},
-	{ slug: string; group: string }
+	{ slug: string }
 > = async ({ params }) => {
-	const { slug, group } = params ?? {};
+	const { slug } = params ?? {};
 	const pkg = slug ? await getPkg(slug) : undefined;
-	const content = pkg
-		? await getPkgDocsContent(pkg.slug, 'rationale.mdx')
-		: null;
+	const content = pkg ? await getPkgDocsContent(pkg.slug, 'code.mdx') : null;
 
-	if (!(slug && group && pkg && content)) {
+	if (!(slug && pkg && content)) {
 		return { notFound: true };
 	}
 
-	const navLinks = await getPkgNavLinks(group);
-	const breadcrumbs = await getPkgBreadcrumbs(slug, 'Rationale');
+	const navLinks = await getPkgNavLinks();
+	const breadcrumbs = await getPkgBreadcrumbs(slug, 'Code');
 
 	return {
 		props: {
@@ -81,8 +89,8 @@ export const getStaticPaths = async () => {
 	const packages = await getPkgList();
 
 	return {
-		paths: packages.map(({ group, slug }) => ({
-			params: { group, slug },
+		paths: packages.map(({ slug }) => ({
+			params: { slug },
 		})),
 		fallback: false,
 	};
