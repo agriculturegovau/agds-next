@@ -1,3 +1,3 @@
 ## @ag.ds-next/autocomplete
 
-Documentation for this package can be found here: https://steelthreads.github.io/agds-next/packages/autocomplete
+Documentation for this package can be found here: https://steelthreads.github.io/agds-next/components/autocomplete
