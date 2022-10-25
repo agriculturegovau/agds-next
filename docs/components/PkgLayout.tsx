@@ -29,8 +29,8 @@ export function PkgLayout({
 	return (
 		<PageLayout
 			sideNav={{
-				title: 'Packages',
-				titleLink: '/packages',
+				title: 'Components',
+				titleLink: '/components',
 				items: navLinks,
 			}}
 			editPath={editPath}

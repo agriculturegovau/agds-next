@@ -40,27 +40,27 @@ export async function getPkgSubNavItems(slug: string) {
 		return [
 			{
 				label: 'Overview',
-				href: `/packages/${meta.slug}`,
+				href: `/components/${meta.slug}`,
 				path: pkgReadmePath(slug),
 			},
 			{
 				label: 'Rationale',
-				href: `/packages/${meta.slug}/rationale`,
+				href: `/components/${meta.slug}/rationale`,
 				path: `${pkgDocsPath(slug)}/rationale.mdx`,
 			},
 			{
 				label: 'Content',
-				href: `/packages/${meta.slug}/content`,
+				href: `/components/${meta.slug}/content`,
 				path: `${pkgDocsPath(slug)}/content.mdx`,
 			},
 			{
 				label: 'Code',
-				href: `/packages/${meta.slug}/code`,
+				href: `/components/${meta.slug}/code`,
 				path: `${pkgDocsPath(slug)}/code.mdx`,
 			},
 			{
 				label: 'Accessibility',
-				href: `/packages/${meta.slug}/accessibility`,
+				href: `/components/${meta.slug}/accessibility`,
 				path: `${pkgDocsPath(slug)}/accessibility.mdx`,
 			},
 		].filter(({ path }) => existsSync(path));
@@ -145,12 +145,12 @@ export function getPkgBreadcrumbs(slug: string, currentPageName?: string) {
 		const meta = pkgNavMetaData(slug, data);
 		const baseItems = [
 			{ href: '/', label: 'Home' },
-			{ href: '/packages', label: 'Packages' },
+			{ href: '/components', label: 'Components' },
 		];
 		if (currentPageName) {
 			return [
 				...baseItems,
-				{ href: `/packages/${meta.slug}`, label: meta.title },
+				{ href: `/components/${meta.slug}`, label: meta.title },
 				{ label: currentPageName },
 			];
 		}
@@ -165,7 +165,7 @@ export async function getPkgNavLinks() {
 export function pkgNavItem(p: { title: string; slug: string }) {
 	return {
 		label: p.title,
-		href: `/packages/${p.slug}`,
+		href: `/components/${p.slug}`,
 	};
 }
 

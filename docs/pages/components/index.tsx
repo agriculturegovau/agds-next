@@ -25,12 +25,12 @@ export default function PackagesHome({
 }: StaticProps) {
 	return (
 		<>
-			<DocumentTitle title="Packages" />
+			<DocumentTitle title="Components" />
 			<AppLayout>
 				<PageLayout
 					sideNav={{
-						title: 'Packages',
-						titleLink: '/packages',
+						title: 'Components',
+						titleLink: '/components',
 						items: navLinks,
 					}}
 					editPath="/packages/README.md"

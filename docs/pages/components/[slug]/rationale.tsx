@@ -14,7 +14,7 @@ import { AppLayout } from '../../../components/AppLayout';
 import { DocumentTitle } from '../../../components/DocumentTitle';
 import { PkgLayout } from '../../../components/PkgLayout';
 
-export default function Packages({
+export default function PackagesRationale({
 	pkg,
 	navLinks,
 	breadcrumbs,
@@ -22,7 +22,7 @@ export default function Packages({
 }: InferGetStaticPropsType<typeof getStaticProps>) {
 	return (
 		<>
-			<DocumentTitle title={pkg.title} />
+			<DocumentTitle title={`${pkg.title} Rationale`} />
 			<AppLayout>
 				<PkgLayout
 					pkg={pkg}
@@ -30,11 +30,11 @@ export default function Packages({
 					breadcrumbs={breadcrumbs}
 					skipLinks={[
 						{
-							label: `Skip to ${pkg.title} overview`,
+							label: `Skip to ${pkg.title} rationale`,
 							href: '#pkg-content',
 						},
 					]}
-					editPath={`/packages/${pkg.slug}/docs/overview.mdx`}
+					editPath={`/components/${pkg.slug}/docs/rationale.mdx`}
 				>
 					<Prose id="pkg-content">
 						<MDXRemote {...content} components={mdxComponents} />
@@ -57,7 +57,7 @@ export const getStaticProps: GetStaticProps<
 	const { slug } = params ?? {};
 	const pkg = slug ? await getPkg(slug) : undefined;
 	const content = pkg
-		? await getPkgDocsContent(pkg.slug, 'overview.mdx')
+		? await getPkgDocsContent(pkg.slug, 'rationale.mdx')
 		: null;
 
 	if (!(slug && pkg && content)) {
@@ -65,7 +65,7 @@ export const getStaticProps: GetStaticProps<
 	}
 
 	const navLinks = await getPkgNavLinks();
-	const breadcrumbs = await getPkgBreadcrumbs(slug);
+	const breadcrumbs = await getPkgBreadcrumbs(slug, 'Rationale');
 
 	return {
 		props: {
@@ -79,6 +79,7 @@ export const getStaticProps: GetStaticProps<
 
 export const getStaticPaths = async () => {
 	const packages = await getPkgList();
+
 	return {
 		paths: packages.map(({ slug }) => ({
 			params: { slug },

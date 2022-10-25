@@ -1,3 +1,3 @@
 ## @ag.ds-next/date-picker
 
-Documentation for this package can be found here: https://steelthreads.github.io/agds-next/packages/date-picker
+Documentation for this package can be found here: https://steelthreads.github.io/agds-next/components/date-picker

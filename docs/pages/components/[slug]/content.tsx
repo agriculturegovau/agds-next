@@ -14,7 +14,7 @@ import { AppLayout } from '../../../components/AppLayout';
 import { DocumentTitle } from '../../../components/DocumentTitle';
 import { PkgLayout } from '../../../components/PkgLayout';
 
-export default function PackagesCode({
+export default function PackagesContent({
 	pkg,
 	navLinks,
 	breadcrumbs,
@@ -22,7 +22,7 @@ export default function PackagesCode({
 }: InferGetStaticPropsType<typeof getStaticProps>) {
 	return (
 		<>
-			<DocumentTitle title={`${pkg.title} Code`} />
+			<DocumentTitle title={`${pkg.title} Content`} />
 			<AppLayout>
 				<PkgLayout
 					pkg={pkg}
@@ -30,23 +30,13 @@ export default function PackagesCode({
 					breadcrumbs={breadcrumbs}
 					skipLinks={[
 						{
-							label: `Skip to ${pkg.title} code`,
+							label: `Skip to ${pkg.title} content`,
 							href: '#pkg-content',
 						},
 					]}
-					editPath={`/packages/${pkg.slug}/docs/code.mdx`}
+					editPath={`/components/${pkg.slug}/docs/content.mdx`}
 				>
 					<Prose id="pkg-content">
-						<h2>Source</h2>
-						<p>
-							You can view the full source code for this package on{' '}
-							<a
-								href={`https://github.com/steelthreads/agds-next/tree/main/packages/${pkg.slug}`}
-							>
-								Github
-							</a>
-							.
-						</p>
 						<MDXRemote {...content} components={mdxComponents} />
 					</Prose>
 				</PkgLayout>
@@ -66,14 +56,14 @@ export const getStaticProps: GetStaticProps<
 > = async ({ params }) => {
 	const { slug } = params ?? {};
 	const pkg = slug ? await getPkg(slug) : undefined;
-	const content = pkg ? await getPkgDocsContent(pkg.slug, 'code.mdx') : null;
+	const content = pkg ? await getPkgDocsContent(pkg.slug, 'content.mdx') : null;
 
 	if (!(slug && pkg && content)) {
 		return { notFound: true };
 	}
 
 	const navLinks = await getPkgNavLinks();
-	const breadcrumbs = await getPkgBreadcrumbs(slug, 'Code');
+	const breadcrumbs = await getPkgBreadcrumbs(slug, 'Content');
 
 	return {
 		props: {

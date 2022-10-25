@@ -19,7 +19,7 @@ const GithubIcon = () => (
 const NAV_ITEMS = {
 	primary: [
 		{ label: 'Home', href: '/' },
-		{ label: 'Packages', href: '/packages' },
+		{ label: 'Components', href: '/components' },
 		{ label: 'Templates', href: '/templates' },
 		{ label: 'Guides', href: '/guides' },
 		{ label: 'Releases', href: '/releases' },

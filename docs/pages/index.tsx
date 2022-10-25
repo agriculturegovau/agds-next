@@ -68,17 +68,15 @@ export default function Homepage() {
 								}}
 							>
 								<PictogramCard
-									title="Packages"
-									pictogram="packages"
-									href="/packages"
+									title="Components"
+									pictogram="components"
+									href="/components"
 								/>
-
 								<PictogramCard
 									title="Guides"
 									pictogram="guides"
 									href="/guides"
 								/>
-
 								<PictogramCard
 									title="Starter kit"
 									pictogram="starter"
