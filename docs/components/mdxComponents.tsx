@@ -57,7 +57,6 @@ export const mdxComponents: MDXRemoteProps['components'] = {
 			<PageAlert {...props} />
 		</div>
 	),
-
 	ComponentPropsTable: ({ name }: { name: string }) => {
 		if (!(name in generatedComponentPropsData)) {
 			return (
