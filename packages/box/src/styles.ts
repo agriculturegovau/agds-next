@@ -260,10 +260,6 @@ function borderStyles({
 		borderBottom ||
 		borderX ||
 		borderY;
-	const color = mapResponsiveProp(
-		borderColor,
-		(t) => boxPalette[borderColorMap[t]]
-	);
 	return {
 		borderWidth: 0,
 		borderLeftWidth:
@@ -282,7 +278,9 @@ function borderStyles({
 			border ?? borderY ?? borderBottom
 				? mapBorderWidth(borderBottomWidth || borderWidth)
 				: undefined,
-		borderColor: anyBorder ? color : undefined,
+		borderColor: anyBorder
+			? mapResponsiveProp(borderColor, (t) => boxPalette[borderColorMap[t]])
+			: undefined,
 		borderStyle: anyBorder ? 'solid' : undefined,
 		borderRadius: rounded ? tokens.borderRadius : undefined,
 	};
