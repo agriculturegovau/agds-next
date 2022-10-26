@@ -1,6 +1,6 @@
 import { Fragment, useRef, useState } from 'react';
 import useSWR from 'swr';
-import { Stack } from '@ag.ds-next/box';
+import { Stack } from '@ag.ds-next/react';
 import {
 	TableWrapper,
 	Table,
@@ -9,12 +9,12 @@ import {
 	TableHeader,
 	TableHead,
 	TableBody,
-} from '@ag.ds-next/table';
-import { SkeletonText } from '@ag.ds-next/skeleton';
-import { Text } from '@ag.ds-next/text';
-import { PaginationButtons } from '@ag.ds-next/pagination';
-import { PageContent } from '@ag.ds-next/content';
-import { VisuallyHidden } from '@ag.ds-next/a11y';
+} from '@ag.ds-next/react';
+import { SkeletonText } from '@ag.ds-next/react';
+import { Text } from '@ag.ds-next/react';
+import { PaginationButtons } from '@ag.ds-next/react';
+import { PageContent } from '@ag.ds-next/react';
+import { VisuallyHidden } from '@ag.ds-next/react';
 
 export default {
 	title: 'Examples/RemoteData',

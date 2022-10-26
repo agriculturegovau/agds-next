@@ -1,9 +1,5 @@
 import { useForm, SubmitHandler } from 'react-hook-form';
-import {
-	SearchBox,
-	SearchBoxInput,
-	SearchBoxButton,
-} from '@ag.ds-next/search-box';
+import { SearchBox, SearchBoxInput, SearchBoxButton } from '@ag.ds-next/react';
 
 type SearchFormInput = {
 	search: string;

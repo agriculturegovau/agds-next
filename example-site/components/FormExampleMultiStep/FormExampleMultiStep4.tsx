@@ -1,18 +1,19 @@
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
-import { FormStack } from '@ag.ds-next/form-stack';
-import { Prose } from '@ag.ds-next/prose';
-import { Stack } from '@ag.ds-next/box';
-import { Checkbox, ControlGroup } from '@ag.ds-next/control-input';
-import { H2 } from '@ag.ds-next/heading';
-import { Button } from '@ag.ds-next/button';
 import {
+	FormStack,
+	Prose,
+	Stack,
+	Checkbox,
+	ControlGroup,
+	H2,
+	Button,
 	SummaryList,
 	SummaryListItem,
 	SummaryListItemDescription,
 	SummaryListItemTerm,
-} from '@ag.ds-next/summary-list';
+} from '@ag.ds-next/react';
 import { FORM_STEPS, useFormExampleMultiStep } from './FormExampleMultiStep';
 import { FormExampleMultiStepContainer } from './FormExampleMultiStepContainer';
 import { FormExampleMultiStepActions } from './FormExampleMultiStepActions';

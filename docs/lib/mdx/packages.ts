@@ -5,29 +5,28 @@ import {
 	getMarkdownData,
 	serializeMarkdown,
 	stripMdxExtension,
-	getJSONData,
+	// getJSONData,
 } from '../mdxUtils';
 import { slugify } from '../slugify';
 
-const PKG_PATH = normalize(`${process.cwd()}/../packages`);
-const pkgReadmePath = (slug: string) => `${PKG_PATH}/${slug}/docs/overview.mdx`;
+const PKG_PATH = normalize(`${process.cwd()}/../packages/react/src/components`);
+
+const pkgOverviewPath = (slug: string) =>
+	`${PKG_PATH}/${slug}/docs/overview.mdx`;
 
 const pkgDocsPath = (slug: string) => normalize(`${PKG_PATH}/${slug}/docs`);
 
-const pkgJsonPath = (slug: string) =>
-	normalize(`${PKG_PATH}/${slug}/package.json`);
-
 export async function getPkg(slug: string) {
-	const { name, version } = await getJSONData(pkgJsonPath(slug));
-	const { data, content } = await getMarkdownData(pkgReadmePath(slug));
+	// const { name, version } = await getJSONData(pkgJsonPath(slug));
+	const { data, content } = await getMarkdownData(pkgOverviewPath(slug));
 	const source = await serializeMarkdown(content, data);
 	const subNavItems = await getPkgSubNavItems(slug);
 	return {
 		slug,
 		source,
 		data,
-		name: name as string,
-		version: version as string,
+		name: slug as string,
+		// version: version as string,
 		title: (data.title ?? slug) as string,
 		storybookPath: (data.storybookPath ?? null) as string | null,
 		subNavItems: subNavItems ?? null,
@@ -35,13 +34,13 @@ export async function getPkg(slug: string) {
 }
 
 export async function getPkgSubNavItems(slug: string) {
-	return getMarkdownData(pkgReadmePath(slug)).then(({ data }) => {
+	return getMarkdownData(pkgOverviewPath(slug)).then(({ data }) => {
 		const meta = pkgNavMetaData(slug, data);
 		return [
 			{
 				label: 'Overview',
 				href: `/components/${meta.slug}`,
-				path: pkgReadmePath(slug),
+				path: pkgOverviewPath(slug),
 			},
 			{
 				label: 'Rationale',
@@ -105,7 +104,7 @@ export function getPkgList() {
 	return getPkgSlugs().then((slugs) =>
 		Promise.all(
 			slugs.map((slug) =>
-				getMarkdownData(pkgReadmePath(slug)).then(({ data }) =>
+				getMarkdownData(pkgOverviewPath(slug)).then(({ data }) =>
 					pkgNavMetaData(slug, data)
 				)
 			)
@@ -141,7 +140,7 @@ export function getGroupBreadCrumbs(groupSlug: string) {
 }
 
 export function getPkgBreadcrumbs(slug: string, currentPageName?: string) {
-	return getMarkdownData(pkgReadmePath(slug)).then(({ data }) => {
+	return getMarkdownData(pkgOverviewPath(slug)).then(({ data }) => {
 		const meta = pkgNavMetaData(slug, data);
 		const baseItems = [
 			{ href: '/', label: 'Home' },

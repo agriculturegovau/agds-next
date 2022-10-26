@@ -1,14 +1,17 @@
-import { Stack } from '@ag.ds-next/box';
-import { SectionContent } from '@ag.ds-next/content';
-import { H2, H3 } from '@ag.ds-next/heading';
-import { Text } from '@ag.ds-next/text';
 import {
+	Stack,
+	SectionContent,
+	H2,
+	H3,
+	Text,
 	HeroSubcategoryBanner,
 	HeroSubcategoryBannerTitle,
-} from '@ag.ds-next/hero-banner';
-import { Breadcrumbs } from '@ag.ds-next/breadcrumbs';
-import { Card, CardInner, CardLink } from '@ag.ds-next/card';
-import { Columns } from '@ag.ds-next/columns';
+	Breadcrumbs,
+	Card,
+	CardInner,
+	CardLink,
+	Columns,
+} from '@ag.ds-next/react';
 import { AppLayout } from '../../../components/AppLayout';
 import { DocumentTitle } from '../../../components/DocumentTitle';
 

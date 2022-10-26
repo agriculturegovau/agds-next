@@ -1,8 +1,7 @@
 import { useForm, SubmitHandler, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
-import { Stack } from '@ag.ds-next/box';
-import { DatePicker } from '@ag.ds-next/date-picker';
+import { Stack, DatePicker } from '@ag.ds-next/react';
 import { FormRequiredFieldsMessage } from '../FormRequiredFieldsMessage';
 import { useFormRegisterPetDetails } from './FormRegisterPetDetails';
 import { FormRegisterPetDetailsActions } from './FormRegisterPetDetailsActions';

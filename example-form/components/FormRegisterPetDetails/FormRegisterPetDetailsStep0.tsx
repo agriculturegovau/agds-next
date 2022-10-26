@@ -1,9 +1,7 @@
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
-import { Stack } from '@ag.ds-next/box';
-import { ControlGroup, Radio } from '@ag.ds-next/control-input';
-import { FormStack } from '@ag.ds-next/form-stack';
+import { Stack, ControlGroup, Radio, FormStack } from '@ag.ds-next/react';
 import { FormRequiredFieldsMessage } from '../FormRequiredFieldsMessage';
 import { FormRegisterPetDetailsContainer } from './FormRegisterPetDetailsContainer';
 import { FormRegisterPetDetailsActions } from './FormRegisterPetDetailsActions';

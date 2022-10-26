@@ -1,9 +1,13 @@
-import { Prose } from '@ag.ds-next/prose';
-import { Stack } from '@ag.ds-next/box';
-import { Breadcrumbs } from '@ag.ds-next/breadcrumbs';
-import { Column, Columns } from '@ag.ds-next/columns';
-import { PageContent } from '@ag.ds-next/content';
-import { PageAlert, PageAlertTitle } from '@ag.ds-next/page-alert';
+import {
+	Prose,
+	Stack,
+	Breadcrumbs,
+	Column,
+	Columns,
+	PageContent,
+	PageAlert,
+	PageAlertTitle,
+} from '@ag.ds-next/react';
 import { AppLayout } from '../../../../components/AppLayout';
 import { DocumentTitle } from '../../../../components/DocumentTitle';
 import { FormHelpCallout } from '../../../../components/FormHelpCallout';

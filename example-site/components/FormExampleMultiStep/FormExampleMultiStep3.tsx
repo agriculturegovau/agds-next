@@ -2,14 +2,18 @@ import { useEffect, useRef, useState } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
-import { Prose } from '@ag.ds-next/prose';
-import { Box, Stack } from '@ag.ds-next/box';
-import { Checkbox, ControlGroup } from '@ag.ds-next/control-input';
-import { FormStack } from '@ag.ds-next/form-stack';
-import { mapSpacing } from '@ag.ds-next/core';
-import { PageAlert } from '@ag.ds-next/page-alert';
-import { TextInput } from '@ag.ds-next/text-input';
-import { useScrollToField } from '@ag.ds-next/field';
+import {
+	Prose,
+	Box,
+	Stack,
+	Checkbox,
+	ControlGroup,
+	FormStack,
+	mapSpacing,
+	PageAlert,
+	TextInput,
+	useScrollToField,
+} from '@ag.ds-next/react';
 import { useFormExampleMultiStep } from './FormExampleMultiStep';
 import { FormExampleMultiStepActions } from './FormExampleMultiStepActions';
 import { FormExampleMultiStepContainer } from './FormExampleMultiStepContainer';

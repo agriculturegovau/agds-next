@@ -1,5 +1,4 @@
-import { Prose } from '@ag.ds-next/prose';
-import { Callout } from '@ag.ds-next/callout';
+import { Prose, Callout } from '@ag.ds-next/react';
 
 export const FormHelpCallout = () => {
 	return (

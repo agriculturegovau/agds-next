@@ -1,4 +1,4 @@
-import { boxPalette, tokens } from '@ag.ds-next/core';
+import { boxPalette, tokens } from '@ag.ds-next/react';
 
 export const FormDivider = () => (
 	<hr

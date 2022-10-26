@@ -1,6 +1,4 @@
-import { Flex } from '@ag.ds-next/box';
-import { Text } from '@ag.ds-next/text';
-import { DirectionLink } from '@ag.ds-next/direction-link';
+import { Flex, Text, DirectionLink } from '@ag.ds-next/react';
 
 export type TemplateBannerProps = {
 	/** Pretty name of template: e.g. Multi-page form */

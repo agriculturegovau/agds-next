@@ -1,10 +1,13 @@
-import { PageContent } from '@ag.ds-next/content';
-import { Columns, Column } from '@ag.ds-next/columns';
-import { Prose } from '@ag.ds-next/prose';
-import { Stack } from '@ag.ds-next/box';
-import { H2 } from '@ag.ds-next/heading';
-import { DirectionLink } from '@ag.ds-next/direction-link';
-import { ButtonLink } from '@ag.ds-next/button';
+import {
+	PageContent,
+	Columns,
+	Column,
+	Prose,
+	Stack,
+	H2,
+	DirectionLink,
+	ButtonLink,
+} from '@ag.ds-next/react';
 import { AppLayout } from '../../../../../components/AppLayout';
 import { DocumentTitle } from '../../../../../components/DocumentTitle';
 import { FormHelpCallout } from '../../../../../components/FormHelpCallout';

@@ -1,8 +1,11 @@
 import { useState } from 'react';
-import { Prose, proseBlockClassname } from '@ag.ds-next/prose';
-import { Switch } from '@ag.ds-next/switch';
-import { Box } from '@ag.ds-next/box';
-import { InpageNav } from '@ag.ds-next/inpage-nav';
+import {
+	Prose,
+	proseBlockClassname,
+	Switch,
+	Box,
+	InpageNav,
+} from '@ag.ds-next/react';
 import { DocumentTitle } from '../../components/DocumentTitle';
 import { ColorTable } from '../../components/TokenColorTable';
 import { TokenLayout } from '../../components/TokenLayout';

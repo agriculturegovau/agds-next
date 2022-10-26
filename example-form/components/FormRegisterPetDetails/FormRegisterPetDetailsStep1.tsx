@@ -7,15 +7,18 @@ import {
 } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
-import { Stack } from '@ag.ds-next/box';
-import { FormStack } from '@ag.ds-next/form-stack';
-import { TextInput } from '@ag.ds-next/text-input';
-import { DatePicker } from '@ag.ds-next/date-picker';
-import { Select } from '@ag.ds-next/select';
-import { ControlGroup, Radio } from '@ag.ds-next/control-input';
-import { useScrollToField } from '@ag.ds-next/field';
-import { PageAlert } from '@ag.ds-next/page-alert';
-import { Prose } from '@ag.ds-next/prose';
+import {
+	Stack,
+	FormStack,
+	TextInput,
+	DatePicker,
+	Select,
+	ControlGroup,
+	Radio,
+	useScrollToField,
+	PageAlert,
+	Prose,
+} from '@ag.ds-next/react';
 import { FormRequiredFieldsMessage } from '../FormRequiredFieldsMessage';
 import { FormRegisterPetDetailsContainer } from './FormRegisterPetDetailsContainer';
 import { FormRegisterPetDetailsActions } from './FormRegisterPetDetailsActions';

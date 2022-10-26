@@ -1,11 +1,14 @@
-import { Columns, Column } from '@ag.ds-next/columns';
-import { H2 } from '@ag.ds-next/heading';
-import { PageContent } from '@ag.ds-next/content';
-import { Prose } from '@ag.ds-next/prose';
-import { Stack } from '@ag.ds-next/box';
-import { TaskList } from '@ag.ds-next/task-list';
-import { Text } from '@ag.ds-next/text';
-import { Breadcrumbs } from '@ag.ds-next/breadcrumbs';
+import {
+	Columns,
+	Column,
+	H2,
+	PageContent,
+	Prose,
+	Stack,
+	TaskList,
+	Text,
+	Breadcrumbs,
+} from '@ag.ds-next/react';
 import { AppLayout } from '../../../../components/AppLayout';
 import { DocumentTitle } from '../../../../components/DocumentTitle';
 import { FormHelpCallout } from '../../../../components/FormHelpCallout';

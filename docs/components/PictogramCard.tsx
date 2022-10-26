@@ -1,7 +1,11 @@
-import { Card, CardInner, CardLink } from '@ag.ds-next/card';
-import { Flex } from '@ag.ds-next/box';
-import { ChevronRightIcon } from '@ag.ds-next/icon';
-import { LinkProps } from '@ag.ds-next/core';
+import {
+	Card,
+	CardInner,
+	CardLink,
+	Flex,
+	ChevronRightIcon,
+	LinkProps,
+} from '@ag.ds-next/react';
 import { getPictogram } from './pictograms';
 
 export const PictogramCard = ({

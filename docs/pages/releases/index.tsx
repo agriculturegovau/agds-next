@@ -1,10 +1,14 @@
 import { normalize } from 'path';
 import { MDXRemote } from 'next-mdx-remote';
-import { Card, CardInner, CardLink } from '@ag.ds-next/card';
-import { Prose } from '@ag.ds-next/prose';
-import { Stack } from '@ag.ds-next/box';
-import { Heading } from '@ag.ds-next/heading';
-import { Text } from '@ag.ds-next/text';
+import {
+	Card,
+	CardInner,
+	CardLink,
+	Prose,
+	Stack,
+	Heading,
+	Text,
+} from '@ag.ds-next/react';
 import {
 	getMarkdownData,
 	getReleaseList,

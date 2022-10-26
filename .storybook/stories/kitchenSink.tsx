@@ -2,53 +2,49 @@ import {
 	Accordion,
 	AccordionItem,
 	AccordionItemContent,
-} from '@ag.ds-next/accordion';
-import {
-	SearchBox,
-	SearchBoxButton,
-	SearchBoxInput,
-} from '@ag.ds-next/search-box';
-import { Box, Flex, Stack } from '@ag.ds-next/box';
-import { Breadcrumbs } from '@ag.ds-next/breadcrumbs';
-import { Button, ButtonGroup } from '@ag.ds-next/button';
-import { Callout } from '@ag.ds-next/callout';
-import { CallToActionLink } from '@ag.ds-next/call-to-action';
-import { Card, CardInner } from '@ag.ds-next/card';
-import { Columns, Column } from '@ag.ds-next/columns';
-import { PageContent } from '@ag.ds-next/content';
-import { ControlGroup, Checkbox, Radio } from '@ag.ds-next/control-input';
-import { DirectionLink } from '@ag.ds-next/direction-link';
-import { Heading, H1, H2 } from '@ag.ds-next/heading';
-import { InpageNav } from '@ag.ds-next/inpage-nav';
-import { FormStack } from '@ag.ds-next/form-stack';
-import { FileUpload } from '@ag.ds-next/file-upload';
-import { ProgressIndicator } from '@ag.ds-next/progress-indicator';
-import { PageAlert } from '@ag.ds-next/page-alert';
-import { Select } from '@ag.ds-next/select';
-import { SubNav } from '@ag.ds-next/sub-nav';
+} from '@ag.ds-next/react';
+import { SearchBox, SearchBoxButton, SearchBoxInput } from '@ag.ds-next/react';
+import { Box, Flex, Stack } from '@ag.ds-next/react';
+import { Breadcrumbs } from '@ag.ds-next/react';
+import { Button, ButtonGroup } from '@ag.ds-next/react';
+import { Callout } from '@ag.ds-next/react';
+import { CallToActionLink } from '@ag.ds-next/react';
+import { Card, CardInner } from '@ag.ds-next/react';
+import { Columns, Column } from '@ag.ds-next/react';
+import { PageContent } from '@ag.ds-next/react';
+import { ControlGroup, Checkbox, Radio } from '@ag.ds-next/react';
+import { DirectionLink } from '@ag.ds-next/react';
+import { Heading, H1, H2 } from '@ag.ds-next/react';
+import { InpageNav } from '@ag.ds-next/react';
+import { FormStack } from '@ag.ds-next/react';
+import { FileUpload } from '@ag.ds-next/react';
+import { ProgressIndicator } from '@ag.ds-next/react';
+import { PageAlert } from '@ag.ds-next/react';
+import { Select } from '@ag.ds-next/react';
+import { SubNav } from '@ag.ds-next/react';
 import {
 	StatusBadge,
 	NotificationBadge,
 	IndicatorDot,
-} from '@ag.ds-next/badge';
-import { SideNav } from '@ag.ds-next/side-nav';
-import { Text } from '@ag.ds-next/text';
-import { Textarea } from '@ag.ds-next/textarea';
-import { TextInput } from '@ag.ds-next/text-input';
-import { DatePicker } from '@ag.ds-next/date-picker';
-import { Header } from '@ag.ds-next/header';
-import { Logo } from '@ag.ds-next/ag-branding';
-import { MainNav } from '@ag.ds-next/main-nav';
-import { Footer, FooterDivider } from '@ag.ds-next/footer';
-import { LinkList } from '@ag.ds-next/link-list';
-import { tokens } from '@ag.ds-next/core';
+} from '@ag.ds-next/react';
+import { SideNav } from '@ag.ds-next/react';
+import { Text } from '@ag.ds-next/react';
+import { Textarea } from '@ag.ds-next/react';
+import { TextInput } from '@ag.ds-next/react';
+import { DatePicker } from '@ag.ds-next/react';
+import { Header } from '@ag.ds-next/react';
+import { Logo } from '@ag.ds-next/react';
+import { MainNav } from '@ag.ds-next/react';
+import { Footer, FooterDivider } from '@ag.ds-next/react';
+import { LinkList } from '@ag.ds-next/react';
+import { tokens } from '@ag.ds-next/react';
 import {
 	HeroBanner,
 	HeroBannerSubtitle,
 	HeroBannerTitle,
 	HeroBannerTitleContainer,
-} from '@ag.ds-next/hero-banner';
-import { SkeletonHeading, SkeletonText } from '@ag.ds-next/skeleton';
+} from '@ag.ds-next/react';
+import { SkeletonHeading, SkeletonText } from '@ag.ds-next/react';
 import {
 	Table,
 	TableCaption,
@@ -56,9 +52,9 @@ import {
 	TableHeader,
 	TableHead,
 	TableBody,
-} from '@ag.ds-next/table';
-import { TextLink } from '@ag.ds-next/text-link';
-import { AvatarIcon } from '@ag.ds-next/icon';
+} from '@ag.ds-next/react';
+import { TextLink } from '@ag.ds-next/react';
+import { AvatarIcon } from '@ag.ds-next/react';
 
 export default {
 	title: 'Examples/Kitchen Sink',

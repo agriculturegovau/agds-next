@@ -1,17 +1,22 @@
-import { Stack } from '@ag.ds-next/box';
-import { ButtonGroup, ButtonLink } from '@ag.ds-next/button';
-import { SectionContent } from '@ag.ds-next/content';
-import { Columns } from '@ag.ds-next/columns';
-import { H2, H3, Heading } from '@ag.ds-next/heading';
-import { Text } from '@ag.ds-next/text';
-import { CallToActionLink } from '@ag.ds-next/call-to-action';
 import {
+	Stack,
+	ButtonGroup,
+	ButtonLink,
+	SectionContent,
+	Columns,
+	H2,
+	H3,
+	Heading,
+	Text,
+	CallToActionLink,
 	HeroBanner,
 	HeroBannerSubtitle,
 	HeroBannerTitle,
 	HeroBannerTitleContainer,
-} from '@ag.ds-next/hero-banner';
-import { Card, CardInner, CardLink } from '@ag.ds-next/card';
+	Card,
+	CardInner,
+	CardLink,
+} from '@ag.ds-next/react';
 import { AppLayout } from '../components/AppLayout';
 import { DocumentTitle } from '../components/DocumentTitle';
 

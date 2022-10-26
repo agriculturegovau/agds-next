@@ -3,17 +3,21 @@ import { useRouter } from 'next/router';
 import { useForm, SubmitHandler, SubmitErrorHandler } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
-import { Button, ButtonGroup } from '@ag.ds-next/button';
-import { Checkbox } from '@ag.ds-next/control-input';
-import { Prose } from '@ag.ds-next/prose';
-import { Stack } from '@ag.ds-next/box';
-import { Fieldset } from '@ag.ds-next/fieldset';
-import { FormStack } from '@ag.ds-next/form-stack';
-import { Select } from '@ag.ds-next/select';
-import { H2, H3 } from '@ag.ds-next/heading';
-import { TextInput } from '@ag.ds-next/text-input';
-import { PageAlert } from '@ag.ds-next/page-alert';
-import { useScrollToField } from '@ag.ds-next/field';
+import {
+	Button,
+	ButtonGroup,
+	Checkbox,
+	Prose,
+	Stack,
+	Fieldset,
+	FormStack,
+	Select,
+	H2,
+	H3,
+	TextInput,
+	PageAlert,
+	useScrollToField,
+} from '@ag.ds-next/react';
 import { FormDivider } from './FormDivider';
 
 const formSchema = yup

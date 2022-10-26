@@ -1,18 +1,20 @@
-import { Prose } from '@ag.ds-next/prose';
-import { PageContent, ContentBleed } from '@ag.ds-next/content';
-import { Columns, Column } from '@ag.ds-next/columns';
-import { SideNav } from '@ag.ds-next/side-nav';
-import { Breadcrumbs } from '@ag.ds-next/breadcrumbs';
-import { Stack } from '@ag.ds-next/box';
-import { InpageNav } from '@ag.ds-next/inpage-nav';
-import { DirectionLink } from '@ag.ds-next/direction-link';
-import { Callout } from '@ag.ds-next/callout';
-import { Text } from '@ag.ds-next/text';
 import {
+	Prose,
+	PageContent,
+	ContentBleed,
+	Columns,
+	Column,
+	SideNav,
+	Breadcrumbs,
+	Stack,
+	InpageNav,
+	DirectionLink,
+	Callout,
+	Text,
 	Accordion,
 	AccordionItem,
 	AccordionItemContent,
-} from '@ag.ds-next/accordion';
+} from '@ag.ds-next/react';
 import { PageTitle } from '../../../components/PageTitle';
 import { DocumentTitle } from '../../../components/DocumentTitle';
 import { AppLayout } from '../../../components/AppLayout';

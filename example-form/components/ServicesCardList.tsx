@@ -1,8 +1,12 @@
-import { Stack } from '@ag.ds-next/box';
-import { H3 } from '@ag.ds-next/heading';
-import { Text } from '@ag.ds-next/text';
-import { Card, CardInner, CardLink } from '@ag.ds-next/card';
-import { Columns } from '@ag.ds-next/columns';
+import {
+	Stack,
+	H3,
+	Text,
+	Card,
+	CardInner,
+	CardLink,
+	Columns,
+} from '@ag.ds-next/react';
 
 const items = [
 	{

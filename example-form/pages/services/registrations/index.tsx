@@ -1,14 +1,14 @@
 import { useEffect, useRef } from 'react';
 import { useRouter } from 'next/router';
-import { SectionContent } from '@ag.ds-next/content';
 import {
+	SectionContent,
 	HeroSubcategoryBanner,
 	HeroSubcategoryBannerTitle,
-} from '@ag.ds-next/hero-banner';
-import { PageAlert } from '@ag.ds-next/page-alert';
-import { Text } from '@ag.ds-next/text';
-import { Breadcrumbs } from '@ag.ds-next/breadcrumbs';
-import { Stack } from '@ag.ds-next/box';
+	PageAlert,
+	Text,
+	Breadcrumbs,
+	Stack,
+} from '@ag.ds-next/react';
 import { AppLayout } from '../../../components/AppLayout';
 import { DocumentTitle } from '../../../components/DocumentTitle';
 import { RegistrationsCardList } from '../../../components/RegistrationsCardList';

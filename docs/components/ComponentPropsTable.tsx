@@ -5,7 +5,7 @@ import {
 	TableBody,
 	TableCell,
 	TableCaption,
-} from '@ag.ds-next/table';
+} from '@ag.ds-next/react';
 
 export type ComponentPropsTableProps = {
 	data: {

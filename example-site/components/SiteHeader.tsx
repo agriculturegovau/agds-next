@@ -1,9 +1,12 @@
 import { useRouter } from 'next/router';
-import { Logo } from '@ag.ds-next/ag-branding';
-import { Stack } from '@ag.ds-next/box';
-import { Header } from '@ag.ds-next/header';
-import { AvatarIcon } from '@ag.ds-next/icon';
-import { MainNav, MainNavBottomBar } from '@ag.ds-next/main-nav';
+import {
+	Logo,
+	Stack,
+	Header,
+	AvatarIcon,
+	MainNav,
+	MainNavBottomBar,
+} from '@ag.ds-next/react';
 import { SiteHeaderSearch } from './SiteHeaderSearch';
 
 const NAV_ITEMS = {

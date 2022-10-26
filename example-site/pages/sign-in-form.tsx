@@ -1,7 +1,4 @@
-import { Stack } from '@ag.ds-next/box';
-import { PageContent } from '@ag.ds-next/content';
-import { Prose } from '@ag.ds-next/prose';
-import { Columns, Column } from '@ag.ds-next/columns';
+import { Stack, PageContent, Prose, Columns, Column } from '@ag.ds-next/react';
 import { AppLayout } from '../components/AppLayout';
 import { DocumentTitle } from '../components/DocumentTitle';
 import { FormExampleSignIn } from '../components/FormExampleSignIn';

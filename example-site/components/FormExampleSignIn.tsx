@@ -2,14 +2,16 @@ import { useEffect, useRef, useState } from 'react';
 import { useForm, SubmitHandler, SubmitErrorHandler } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
-import { Button } from '@ag.ds-next/button';
-import { FormStack } from '@ag.ds-next/form-stack';
-import { TextInput } from '@ag.ds-next/text-input';
-import { Stack } from '@ag.ds-next/box';
-import { PageAlert } from '@ag.ds-next/page-alert';
-import { Prose } from '@ag.ds-next/prose';
-import { useScrollToField } from '@ag.ds-next/field';
-import { TextLink } from '@ag.ds-next/text-link';
+import {
+	Button,
+	FormStack,
+	TextInput,
+	Stack,
+	PageAlert,
+	Prose,
+	useScrollToField,
+	TextLink,
+} from '@ag.ds-next/react';
 
 const formSchema = yup
 	.object({

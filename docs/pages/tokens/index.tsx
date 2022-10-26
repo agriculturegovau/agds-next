@@ -1,7 +1,11 @@
-import { Stack } from '@ag.ds-next/box';
-import { Card, CardInner, CardLink } from '@ag.ds-next/card';
-import { Columns } from '@ag.ds-next/columns';
-import { H3 } from '@ag.ds-next/heading';
+import {
+	Stack,
+	Card,
+	CardInner,
+	CardLink,
+	Columns,
+	H3,
+} from '@ag.ds-next/react';
 import { DocumentTitle } from '../../components/DocumentTitle';
 import { TokenLayout, navLinks } from '../../components/TokenLayout';
 

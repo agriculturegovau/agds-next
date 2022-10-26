@@ -1,8 +1,5 @@
 import { ReactNode, useEffect, useRef } from 'react';
-import { H1 } from '@ag.ds-next/heading';
-import { Stack } from '@ag.ds-next/box';
-import { PageAlert } from '@ag.ds-next/page-alert';
-import { Text } from '@ag.ds-next/text';
+import { H1, Stack, PageAlert, Text } from '@ag.ds-next/react';
 import { PageTitle } from '../PageTitle';
 import { useFormExampleMultiStep } from './FormExampleMultiStep';
 

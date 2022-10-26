@@ -7,13 +7,15 @@ import {
 } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
-import { Prose } from '@ag.ds-next/prose';
-import { FileUpload } from '@ag.ds-next/file-upload';
-import { FormStack } from '@ag.ds-next/form-stack';
-import { LoadingBlanket } from '@ag.ds-next/loading';
-import { PageAlert } from '@ag.ds-next/page-alert';
-import { Stack } from '@ag.ds-next/box';
-import { useScrollToField } from '@ag.ds-next/field';
+import {
+	Prose,
+	FileUpload,
+	FormStack,
+	LoadingBlanket,
+	PageAlert,
+	Stack,
+	useScrollToField,
+} from '@ag.ds-next/react';
 import { FormRequiredFieldsMessage } from '../FormRequiredFieldsMessage';
 import { FormRegisterPetDetailsContainer } from './FormRegisterPetDetailsContainer';
 import { FormRegisterPetDetailsActions } from './FormRegisterPetDetailsActions';

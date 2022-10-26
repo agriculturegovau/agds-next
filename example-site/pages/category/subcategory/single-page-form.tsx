@@ -1,8 +1,11 @@
-import { Stack } from '@ag.ds-next/box';
-import { Breadcrumbs } from '@ag.ds-next/breadcrumbs';
-import { PageContent } from '@ag.ds-next/content';
-import { Text } from '@ag.ds-next/text';
-import { Columns, Column } from '@ag.ds-next/columns';
+import {
+	Stack,
+	Breadcrumbs,
+	PageContent,
+	Text,
+	Columns,
+	Column,
+} from '@ag.ds-next/react';
 import { AppLayout } from '../../../components/AppLayout';
 import { DocumentTitle } from '../../../components/DocumentTitle';
 import { FormExampleSinglePage } from '../../../components/FormExampleSinglePage';

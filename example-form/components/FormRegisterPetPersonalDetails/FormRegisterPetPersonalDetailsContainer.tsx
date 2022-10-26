@@ -1,8 +1,5 @@
 import { ReactNode, useEffect, useRef } from 'react';
-import { Stack } from '@ag.ds-next/box';
-import { PageAlert } from '@ag.ds-next/page-alert';
-import { H1 } from '@ag.ds-next/heading';
-import { Text } from '@ag.ds-next/text';
+import { Stack, PageAlert, H1, Text } from '@ag.ds-next/react';
 import { PageTitle } from '../PageTitle';
 import { useFormRegisterPetPersonalDetails } from './FormRegisterPetPersonalDetails';
 

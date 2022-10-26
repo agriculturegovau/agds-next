@@ -1,14 +1,14 @@
 import { Fragment, useRef } from 'react';
 import useSWR from 'swr';
-import { Stack } from '@ag.ds-next/box';
-import { SkeletonText } from '@ag.ds-next/skeleton';
-import { Text } from '@ag.ds-next/text';
-import { PageContent } from '@ag.ds-next/content';
-import { Card, CardInner, CardLink } from '@ag.ds-next/card';
-import { Columns } from '@ag.ds-next/columns';
-import { SkeletonHeading } from '@ag.ds-next/skeleton/src/SkeletonHeading';
-import { Heading } from '@ag.ds-next/heading';
-import { VisuallyHidden } from '@ag.ds-next/a11y';
+import { Stack } from '@ag.ds-next/react';
+import { SkeletonText } from '@ag.ds-next/react';
+import { Text } from '@ag.ds-next/react';
+import { PageContent } from '@ag.ds-next/react';
+import { Card, CardInner, CardLink } from '@ag.ds-next/react';
+import { Columns } from '@ag.ds-next/react';
+import { SkeletonHeading } from '@ag.ds-next/react';
+import { Heading } from '@ag.ds-next/react';
+import { VisuallyHidden } from '@ag.ds-next/react';
 
 export default {
 	title: 'Examples/RemoteData',

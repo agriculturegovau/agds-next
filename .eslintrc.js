@@ -27,6 +27,7 @@ module.exports = {
 				vars: 'all',
 			},
 		],
+		'import/no-duplicates': 'error',
 		'import/order': [
 			'error',
 			{

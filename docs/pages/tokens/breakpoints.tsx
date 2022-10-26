@@ -1,4 +1,4 @@
-import { Prose } from '@ag.ds-next/prose';
+import { Prose } from '@ag.ds-next/react';
 import { DocumentTitle } from '../../components/DocumentTitle';
 import { BreakpointsChart } from '../../components/TokenCharts';
 import { TokenLayout } from '../../components/TokenLayout';
