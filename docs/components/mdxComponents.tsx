@@ -1,10 +1,11 @@
 import {
-	isValidElement,
-	AnchorHTMLAttributes,
-	HTMLAttributes,
 	Fragment,
 	Children,
+	isValidElement,
+	HTMLAttributes,
+	AnchorHTMLAttributes,
 } from 'react';
+import type { MDXRemoteProps } from 'next-mdx-remote';
 import Link from 'next/link';
 import { proseBlockClassname } from '@ag.ds-next/prose';
 import { PageAlert, PageAlertProps } from '@ag.ds-next/page-alert';
@@ -15,16 +16,20 @@ import { Code } from './Code';
 import { ComponentPropsTable } from './ComponentPropsTable';
 import { FigmaLogo } from './FigmaLogo';
 
-export const mdxComponents = {
+export const mdxComponents: MDXRemoteProps['components'] = {
 	Fragment,
 	pre: ({
 		children,
 		live,
 	}: HTMLAttributes<HTMLPreElement> & { live?: boolean }) => {
-		return Children.map(children, (element) => {
-			if (!isValidElement(element)) return;
-			return <Code key={element.key} live={live} {...element.props} />;
-		});
+		return (
+			<Fragment>
+				{Children.map(children, (element) => {
+					if (!isValidElement(element)) return null;
+					return <Code key={element.key} live={live} {...element.props} />;
+				})}
+			</Fragment>
+		);
 	},
 	ButtonLink,
 	FigmaLogo,
