@@ -1,5 +1,6 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import { allIcons, AvatarIcon } from '../../icon/src';
+import { AvatarIcon } from '../../icon/src';
+import { allIcons } from '../../icon/src/utils';
 import { Button, ButtonLink } from './Button';
 
 export default {
