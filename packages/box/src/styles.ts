@@ -216,21 +216,25 @@ const borderColorMap = {
 type BorderColor = keyof typeof borderColorMap;
 
 type BorderProps = Partial<{
-	border: boolean;
-	borderWidth: BorderWidth;
-	borderColor: BorderColor;
-	borderLeft: boolean;
-	borderLeftWidth: BorderWidth;
-	borderRight: boolean;
-	borderRightWidth: BorderWidth;
-	borderTop: boolean;
-	borderTopWidth: BorderWidth;
-	borderBottom: boolean;
-	borderBottomWidth: BorderWidth;
-	borderX: boolean;
-	borderY: boolean;
+	border: ResponsiveProp<boolean>;
+	borderWidth: ResponsiveProp<BorderWidth>;
+	borderColor: ResponsiveProp<BorderColor>;
+	borderLeft: ResponsiveProp<boolean>;
+	borderLeftWidth: ResponsiveProp<BorderWidth>;
+	borderRight: ResponsiveProp<boolean>;
+	borderRightWidth: ResponsiveProp<BorderWidth>;
+	borderTop: ResponsiveProp<boolean>;
+	borderTopWidth: ResponsiveProp<BorderWidth>;
+	borderBottom: ResponsiveProp<boolean>;
+	borderBottomWidth: ResponsiveProp<BorderWidth>;
+	borderX: ResponsiveProp<boolean>;
+	borderY: ResponsiveProp<boolean>;
 	rounded: boolean;
 }>;
+
+function mapBorderWidth(width: ResponsiveProp<BorderWidth>) {
+	return mapResponsiveProp(width, (t) => tokens.borderWidth[t]);
+}
 
 function borderStyles({
 	border,
@@ -260,22 +264,22 @@ function borderStyles({
 		borderWidth: 0,
 		borderLeftWidth:
 			border ?? borderX ?? borderLeft
-				? tokens.borderWidth[borderLeftWidth || borderWidth]
+				? mapBorderWidth(borderLeftWidth || borderWidth)
 				: undefined,
 		borderRightWidth:
 			border ?? borderX ?? borderRight
-				? tokens.borderWidth[borderRightWidth || borderWidth]
+				? mapBorderWidth(borderRightWidth || borderWidth)
 				: undefined,
 		borderTopWidth:
 			border ?? borderY ?? borderTop
-				? tokens.borderWidth[borderTopWidth || borderWidth]
+				? mapBorderWidth(borderTopWidth || borderWidth)
 				: undefined,
 		borderBottomWidth:
 			border ?? borderY ?? borderBottom
-				? tokens.borderWidth[borderBottomWidth || borderWidth]
+				? mapBorderWidth(borderBottomWidth || borderWidth)
 				: undefined,
 		borderColor: anyBorder
-			? boxPalette[borderColorMap[borderColor]]
+			? mapResponsiveProp(borderColor, (t) => boxPalette[borderColorMap[t]])
 			: undefined,
 		borderStyle: anyBorder ? 'solid' : undefined,
 		borderRadius: rounded ? tokens.borderRadius : undefined,
