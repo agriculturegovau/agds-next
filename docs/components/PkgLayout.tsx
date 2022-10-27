@@ -4,8 +4,8 @@ import { CallToActionLink } from '@ag.ds-next/react/call-to-action';
 import { Prose } from '@ag.ds-next/react/prose';
 import { SkipLinksProps } from '@ag.ds-next/react/skip-link';
 import { SubNav } from '@ag.ds-next/react/sub-nav';
-import { Text } from '@ag.ds-next/react/text';
-import { PageAlert } from '@ag.ds-next/react/page-alert';
+// import { Text } from '@ag.ds-next/react/text';
+// import { PageAlert } from '@ag.ds-next/react/page-alert';
 import { getPkgBreadcrumbs, getPkgNavLinks, Pkg } from '../lib/mdx/packages';
 import { PageTitle } from './PageTitle';
 import { PageLayout } from './PageLayout';
@@ -25,7 +25,6 @@ export function PkgLayout({
 	editPath?: string;
 }>) {
 	const { asPath } = useRouter();
-	const isUnreleased = pkg.version == '0.0.1';
 	return (
 		<PageLayout
 			sideNav={{
@@ -38,7 +37,7 @@ export function PkgLayout({
 			skipLinks={skipLinks}
 		>
 			<PageTitle
-				pretext={isUnreleased ? 'In development' : `v${pkg.version}`}
+				// pretext={isUnreleased ? 'In development' : `v${pkg.version}`}
 				title={pkg.title}
 				introduction={pkg.data.description}
 				callToAction={
@@ -51,19 +50,17 @@ export function PkgLayout({
 					)
 				}
 			/>
-			{isUnreleased ? (
+			{/* {isUnreleased ? (
 				<PageAlert tone="warning">
 					<Text as="p">This package is yet to be released on npm.</Text>
 				</PageAlert>
-			) : (
-				<Prose>
-					<pre>
-						<code>
-							yarn add {pkg.name}@{pkg.version}
-						</code>
-					</pre>
-				</Prose>
-			)}
+			) : ( */}
+			<Prose>
+				<pre>
+					<code>{`import { ... } from '@ag.ds-next/react/${pkg.slug}';`}</code>
+				</pre>
+			</Prose>
+			{/* )} */}
 			{pkg.subNavItems?.length ? (
 				<SubNav
 					activePath={asPath}

@@ -5,20 +5,18 @@ import {
 	getMarkdownData,
 	serializeMarkdown,
 	stripMdxExtension,
-	getJSONData,
 } from '../mdxUtils';
 import { slugify } from '../slugify';
 
-const PKG_PATH = normalize(`${process.cwd()}/../packages`);
+// TODO All of this should be renamed to `components` instead of `packages`
+
+const PKG_PATH = normalize(`${process.cwd()}/../packages/react/src`);
+
 const pkgReadmePath = (slug: string) => `${PKG_PATH}/${slug}/docs/overview.mdx`;
 
 const pkgDocsPath = (slug: string) => normalize(`${PKG_PATH}/${slug}/docs`);
 
-const pkgJsonPath = (slug: string) =>
-	normalize(`${PKG_PATH}/${slug}/package.json`);
-
 export async function getPkg(slug: string) {
-	const { name, version } = await getJSONData(pkgJsonPath(slug));
 	const { data, content } = await getMarkdownData(pkgReadmePath(slug));
 	const source = await serializeMarkdown(content, data);
 	const subNavItems = await getPkgSubNavItems(slug);
@@ -26,8 +24,6 @@ export async function getPkg(slug: string) {
 		slug,
 		source,
 		data,
-		name: name as string,
-		version: version as string,
 		title: (data.title ?? slug) as string,
 		storybookPath: (data.storybookPath ?? null) as string | null,
 		subNavItems: subNavItems ?? null,
