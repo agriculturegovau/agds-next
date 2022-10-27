@@ -17,5 +17,5 @@
 		"incremental": true
 	},
 	"include": ["**/*", ".storybook/**/*"],
-	"exclude": ["node_modules", "packages/*/dist"]
+	"exclude": ["node_modules", "packages/**/**/dist"]
 }
