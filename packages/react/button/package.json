@@ -1,3 +1,4 @@
 {
-	"main": "dist/ag.ds-next-react-button.cjs.js"
+	"main": "dist/ag.ds-next-react-button.cjs.js",
+	"module": "dist/ag.ds-next-react-button.esm.js"
 }

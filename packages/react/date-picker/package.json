@@ -1,3 +1,4 @@
 {
-	"main": "dist/ag.ds-next-react-date-picker.cjs.js"
+	"main": "dist/ag.ds-next-react-date-picker.cjs.js",
+	"module": "dist/ag.ds-next-react-date-picker.esm.js"
 }
