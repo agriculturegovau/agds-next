@@ -4,7 +4,7 @@ import userEvent from '@testing-library/user-event';
 import { useTernaryState } from '../core';
 import { Button } from '../button';
 import { Text } from '../text';
-import { render, screen, cleanup } from '../../../test-utils';
+import { render, screen, cleanup } from '../../../../test-utils';
 import { Modal } from './Modal';
 
 afterEach(cleanup);

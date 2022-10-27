@@ -2,7 +2,7 @@ import '@testing-library/jest-dom';
 import 'html-validate/jest';
 import { Text } from '../text';
 import { Prose } from '../prose';
-import { cleanup, render, screen } from '../../../test-utils';
+import { cleanup, render, screen } from '../../../../test-utils';
 import { PageAlert, PageAlertProps } from './PageAlert';
 import { PageAlertTitle } from './PageAlertTitle';
 

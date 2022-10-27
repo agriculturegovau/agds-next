@@ -1,9 +1,9 @@
 import { useRouter } from 'next/router';
-import { Logo } from '@ag.ds-next/ag-branding';
-import { Stack } from '@ag.ds-next/box';
-import { Header } from '@ag.ds-next/header';
-import { AvatarIcon } from '@ag.ds-next/icon';
-import { MainNav, MainNavBottomBar } from '@ag.ds-next/main-nav';
+import { Logo } from '@ag.ds-next/react/ag-branding';
+import { Stack } from '@ag.ds-next/react/box';
+import { Header } from '@ag.ds-next/react/header';
+import { AvatarIcon } from '@ag.ds-next/react/icon';
+import { MainNav, MainNavBottomBar } from '@ag.ds-next/react/main-nav';
 import { SiteHeaderSearch } from './SiteHeaderSearch';
 
 const NAV_ITEMS = {

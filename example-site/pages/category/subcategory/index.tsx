@@ -1,14 +1,14 @@
-import { Stack } from '@ag.ds-next/box';
-import { SectionContent } from '@ag.ds-next/content';
-import { H2, H3 } from '@ag.ds-next/heading';
-import { Text } from '@ag.ds-next/text';
+import { Stack } from '@ag.ds-next/react/box';
+import { SectionContent } from '@ag.ds-next/react/content';
+import { H2, H3 } from '@ag.ds-next/react/heading';
+import { Text } from '@ag.ds-next/react/text';
 import {
 	HeroSubcategoryBanner,
 	HeroSubcategoryBannerTitle,
-} from '@ag.ds-next/hero-banner';
-import { Breadcrumbs } from '@ag.ds-next/breadcrumbs';
-import { Card, CardInner, CardLink } from '@ag.ds-next/card';
-import { Columns } from '@ag.ds-next/columns';
+} from '@ag.ds-next/react/hero-banner';
+import { Breadcrumbs } from '@ag.ds-next/react/breadcrumbs';
+import { Card, CardInner, CardLink } from '@ag.ds-next/react/card';
+import { Columns } from '@ag.ds-next/react/columns';
 import { AppLayout } from '../../../components/AppLayout';
 import { DocumentTitle } from '../../../components/DocumentTitle';
 

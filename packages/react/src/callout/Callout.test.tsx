@@ -1,7 +1,7 @@
 import '@testing-library/jest-dom';
 import 'html-validate/jest';
 import { Text } from '../text';
-import { cleanup, render } from '../../../test-utils';
+import { cleanup, render } from '../../../../test-utils';
 import { Callout, CalloutProps } from './Callout';
 
 afterEach(cleanup);

@@ -4,7 +4,7 @@ import { FormStack } from '../form-stack';
 import { TextInput } from '../text-input';
 import { H1 } from '../heading';
 import { Text } from '../text';
-import { cleanup, render, screen } from '../../../test-utils';
+import { cleanup, render, screen } from '../../../../test-utils';
 import { Fieldset } from './Fieldset';
 
 afterEach(cleanup);

@@ -1,7 +1,7 @@
 import '@testing-library/jest-dom';
 import 'html-validate/jest';
 import { AvatarIcon } from '../icon';
-import { render, cleanup } from '../../../test-utils';
+import { render, cleanup } from '../../../../test-utils';
 import { MainNav } from './MainNav';
 
 afterEach(cleanup);

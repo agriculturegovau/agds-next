@@ -1,7 +1,7 @@
 import '@testing-library/jest-dom';
 import 'html-validate/jest';
 import { useState } from 'react';
-import { cleanup, render } from '../../../test-utils';
+import { cleanup, render } from '../../../../test-utils';
 import { FileWithStatus } from './utils';
 import { FileUpload, FileUploadProps } from './FileUpload';
 

@@ -1,6 +1,6 @@
 import '@testing-library/jest-dom';
 import 'html-validate/jest';
-import { render, screen, cleanup } from '../../../test-utils';
+import { render, screen, cleanup } from '../../../../test-utils';
 import { LoadingDots, LoadingDotsProps } from './LoadingDots';
 
 afterEach(cleanup);

@@ -1,8 +1,8 @@
 import { normalize } from 'path';
 import { MDXRemote } from 'next-mdx-remote';
-import { Stack } from '@ag.ds-next/box';
-import { Prose } from '@ag.ds-next/prose';
-import { H2 } from '@ag.ds-next/heading';
+import { Stack } from '@ag.ds-next/react/box';
+import { Prose } from '@ag.ds-next/react/prose';
+import { H2 } from '@ag.ds-next/react/heading';
 import { getMarkdownData, serializeMarkdown } from '../../lib/mdxUtils';
 import {
 	getPkgGroupList,

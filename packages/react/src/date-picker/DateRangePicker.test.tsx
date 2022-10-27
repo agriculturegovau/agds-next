@@ -1,6 +1,6 @@
 import '@testing-library/jest-dom';
 import 'html-validate/jest';
-import { cleanup, render } from '../../../test-utils';
+import { cleanup, render } from '../../../../test-utils';
 import { DateRangePicker, DateRangePickerProps } from './DateRangePicker';
 
 afterEach(cleanup);

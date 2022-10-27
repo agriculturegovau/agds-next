@@ -1,7 +1,7 @@
 import '@testing-library/jest-dom';
 import 'html-validate/jest';
 import { TextLink } from '../text-link';
-import { render, screen, cleanup } from '../../../test-utils';
+import { render, screen, cleanup } from '../../../../test-utils';
 import { VisuallyHidden } from './VisuallyHidden';
 
 afterEach(cleanup);

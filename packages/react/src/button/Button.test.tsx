@@ -1,7 +1,7 @@
 import '@testing-library/jest-dom';
 import 'html-validate/jest';
 import userEvent from '@testing-library/user-event';
-import { render, screen, cleanup } from '../../../test-utils';
+import { render, screen, cleanup } from '../../../../test-utils';
 import { Button, ButtonLink, ButtonLinkProps, ButtonProps } from './Button';
 
 afterEach(cleanup);

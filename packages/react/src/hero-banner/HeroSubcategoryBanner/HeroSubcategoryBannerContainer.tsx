@@ -1,6 +1,6 @@
 import { PropsWithChildren } from 'react';
 import { Box } from '../../box';
-import { HeroBannerBackground } from '../../utils';
+import { HeroBannerBackground } from '../utils';
 
 export type HeroSubcategoryBannerContainerProps = PropsWithChildren<{
 	background: HeroBannerBackground;

@@ -1,6 +1,6 @@
 import '@testing-library/jest-dom';
 import 'html-validate/jest';
-import { render } from '../../../test-utils';
+import { render } from '../../../../test-utils';
 import { ControlGroup, ControlGroupProps } from './ControlGroup';
 import { Checkbox } from './Checkbox';
 

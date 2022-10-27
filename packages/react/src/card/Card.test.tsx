@@ -4,7 +4,7 @@ import { Stack } from '../box';
 import { Heading } from '../heading';
 import { Text } from '../text';
 import { ChevronRightIcon } from '../icon';
-import { render, cleanup } from '../../../test-utils';
+import { render, cleanup } from '../../../../test-utils';
 import { Card } from './Card';
 import { CardInner } from './CardInner';
 import { CardLink } from './CardLink';

@@ -1,6 +1,6 @@
 import '@testing-library/jest-dom';
 import 'html-validate/jest';
-import { cleanup, render } from '../../../test-utils';
+import { cleanup, render } from '../../../../test-utils';
 import { IndicatorDot, IndicatorDotProps } from './IndicatorDot';
 import { badgeToneMap, BadgeTone } from './utils';
 

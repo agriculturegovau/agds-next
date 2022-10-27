@@ -1,6 +1,6 @@
 import { GetStaticProps, InferGetStaticPropsType } from 'next';
 import { MDXRemote } from 'next-mdx-remote';
-import { Prose } from '@ag.ds-next/prose';
+import { Prose } from '@ag.ds-next/react/prose';
 import {
 	getRelease,
 	getReleaseBreadcrumbs,

@@ -1,7 +1,7 @@
-import { Stack } from '@ag.ds-next/box';
-import { PageContent } from '@ag.ds-next/content';
-import { Prose } from '@ag.ds-next/prose';
-import { Columns, Column } from '@ag.ds-next/columns';
+import { Stack } from '@ag.ds-next/react/box';
+import { PageContent } from '@ag.ds-next/react/content';
+import { Prose } from '@ag.ds-next/react/prose';
+import { Columns, Column } from '@ag.ds-next/react/columns';
 import { AppLayout } from '../components/AppLayout';
 import { DocumentTitle } from '../components/DocumentTitle';
 import { FormExampleSignIn } from '../components/FormExampleSignIn';

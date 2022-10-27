@@ -1,7 +1,7 @@
 import '@testing-library/jest-dom';
 import 'html-validate/jest';
 import userEvent from '@testing-library/user-event';
-import { render, screen, cleanup } from '../../../test-utils';
+import { render, screen, cleanup } from '../../../../test-utils';
 import { Radio, RadioProps } from './Radio';
 
 afterEach(cleanup);

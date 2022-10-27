@@ -1,5 +1,5 @@
 import { PropsWithChildren, ReactNode } from 'react';
-import { HeroBannerBackground } from '../../utils';
+import { HeroBannerBackground } from '../utils';
 import { HeroCategoryBannerContent } from './HeroCategoryBannerContent';
 import { HeroCategoryBannerMobileImage } from './HeroCategoryBannerMobileImage';
 import { HeroCategoryBannerContainer } from './HeroCategoryBannerContainer';

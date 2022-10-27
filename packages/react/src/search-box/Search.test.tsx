@@ -1,6 +1,6 @@
 import '@testing-library/jest-dom';
 import 'html-validate/jest';
-import { cleanup, render } from '../../../test-utils';
+import { cleanup, render } from '../../../../test-utils';
 import { SearchBox } from './SearchBox';
 import { SearchBoxInput } from './SearchBoxInput';
 import { SearchBoxButton } from './SearchBoxButton';

@@ -1,6 +1,6 @@
 import '@testing-library/jest-dom';
 import 'html-validate/jest';
-import { render, cleanup, screen } from '../../../test-utils';
+import { render, cleanup, screen } from '../../../../test-utils';
 import { Stack, StackProps } from './Stack';
 
 afterEach(cleanup);

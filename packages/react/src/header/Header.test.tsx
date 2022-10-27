@@ -1,7 +1,7 @@
 import '@testing-library/jest-dom';
 import 'html-validate/jest';
 import { Logo as AgLogo } from '../ag-branding';
-import { render, cleanup } from '../../../test-utils';
+import { render, cleanup } from '../../../../test-utils';
 import { Header, HeaderProps } from './Header';
 
 afterEach(cleanup);

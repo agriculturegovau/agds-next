@@ -2,7 +2,7 @@ import '@testing-library/jest-dom';
 import 'html-validate/jest';
 import userEvent from '@testing-library/user-event';
 import { Text } from '../text';
-import { cleanup, render, screen } from '../../../test-utils';
+import { cleanup, render, screen } from '../../../../test-utils';
 import { Accordion } from './Accordion';
 import { AccordionItem, AccordionItemContent } from './AccordionItem';
 

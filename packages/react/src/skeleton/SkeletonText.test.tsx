@@ -2,7 +2,7 @@ import '@testing-library/jest-dom';
 import 'html-validate/jest';
 import '@testing-library/jest-dom';
 import 'html-validate/jest';
-import { render, cleanup } from '../../../test-utils';
+import { render, cleanup } from '../../../../test-utils';
 import { SkeletonText, SkeletonTextProps } from './SkeletonText';
 
 afterEach(cleanup);

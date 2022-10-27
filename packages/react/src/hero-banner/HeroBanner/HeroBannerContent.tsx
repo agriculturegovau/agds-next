@@ -1,7 +1,7 @@
 import { PropsWithChildren, ReactNode } from 'react';
 import { Flex, Stack } from '../../box';
 import { Content } from '../../content';
-import { HeroBannerBackground } from '../../utils';
+import { HeroBannerBackground } from '../utils';
 import { HeroBannerImage } from './HeroBannerImage';
 
 export type HeroBannerContentProps = PropsWithChildren<{

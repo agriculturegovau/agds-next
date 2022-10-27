@@ -3,7 +3,7 @@ import 'html-validate/jest';
 import { tokens } from '../core';
 import { Text } from '../text';
 import { LinkList } from '../link-list';
-import { render, cleanup } from '../../../test-utils';
+import { render, cleanup } from '../../../../test-utils';
 import { Footer, FooterProps } from './Footer';
 import { FooterDivider } from './FooterDivider';
 

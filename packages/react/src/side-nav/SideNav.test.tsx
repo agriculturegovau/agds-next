@@ -2,7 +2,7 @@ import '@testing-library/jest-dom';
 import 'html-validate/jest';
 import '@testing-library/jest-dom';
 import 'html-validate/jest';
-import { render, screen, cleanup } from '../../../test-utils';
+import { render, screen, cleanup } from '../../../../test-utils';
 import { SideNav, SideNavProps } from './SideNav';
 
 afterEach(cleanup);

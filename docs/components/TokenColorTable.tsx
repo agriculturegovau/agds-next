@@ -1,8 +1,8 @@
-import { Flex, Stack } from '@ag.ds-next/box';
-import { Columns, Column } from '@ag.ds-next/columns';
-import { Prose, proseBlockClassname } from '@ag.ds-next/prose';
-import { goldTheme } from '@ag.ds-next/core/src/goldTheme';
-import { theme as agTheme } from '@ag.ds-next/ag-branding';
+import { Flex, Stack } from '@ag.ds-next/react/box';
+import { Columns, Column } from '@ag.ds-next/react/columns';
+import { Prose, proseBlockClassname } from '@ag.ds-next/react/prose';
+import { goldTheme } from '@ag.ds-next/react/core';
+import { theme as agTheme } from '@ag.ds-next/react/ag-branding';
 import {
 	Table,
 	TableBody,
@@ -11,7 +11,7 @@ import {
 	TableHead,
 	TableHeader,
 	TableWrapper,
-} from '@ag.ds-next/table';
+} from '@ag.ds-next/react/table';
 
 type paletteName = 'light' | 'dark';
 

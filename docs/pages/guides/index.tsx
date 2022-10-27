@@ -1,10 +1,10 @@
 import { normalize } from 'path';
 import { MDXRemote } from 'next-mdx-remote';
-import { Card, CardInner, CardLink } from '@ag.ds-next/card';
-import { Prose } from '@ag.ds-next/prose';
-import { Stack } from '@ag.ds-next/box';
-import { Heading } from '@ag.ds-next/heading';
-import { Text } from '@ag.ds-next/text';
+import { Card, CardInner, CardLink } from '@ag.ds-next/react/card';
+import { Prose } from '@ag.ds-next/react/prose';
+import { Stack } from '@ag.ds-next/react/box';
+import { Heading } from '@ag.ds-next/react/heading';
+import { Text } from '@ag.ds-next/react/text';
 import { getMarkdownData, serializeMarkdown } from '../../lib/mdxUtils';
 import { getGuideList } from '../../lib/mdx/guides';
 import { mdxComponents } from '../../components/mdxComponents';
