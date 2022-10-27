@@ -96,10 +96,6 @@
 	"preconstruct": {
 		"packages": [
 			"packages/*"
-		],
-		"exports": true,
-		"___experimentalFlags_WILL_CHANGE_IN_PATCH": {
-			"exports": true
-		}
+		]
 	}
 }
