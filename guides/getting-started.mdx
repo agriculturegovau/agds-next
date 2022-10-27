@@ -78,10 +78,10 @@ Fore more information about using emotion with typescript, please refer to the [
 
 ### 2. Install base AgDS packages
 
-Install the following packages, and any other AgDS packages you need, by running the following command in your terminal:
+Install the following packages by running the following command in your terminal:
 
 ```sh
-yarn add @ag.ds-next/core @ag.ds-next/ag-branding @ag.ds-next/box @ag.ds-next/text
+yarn add @ag.ds-next/react
 ```
 
 ### 3. Wrap your application in our `Core` component
@@ -92,8 +92,8 @@ The `Core` component needs to wrap your entire application and it is where you c
 // This example assumes you are using NextJS
 // This is an example of `_app.tsx`
 
-import { Core } from '@ag.ds-next/core';
-import { theme } from '@ag.ds-next/ag-branding';
+import { Core } from '@ag.ds-next/react/core';
+import { theme } from '@ag.ds-next/react/ag-branding';
 
 // Note: You will need to create this import
 import { LinkComponent } from './LinkComponent';

@@ -17,7 +17,7 @@ A simple example of this is the `LinkList` component.
 In it's simplest and most easy to use form, the component takes a `links` prop which is a list of the `href` and text `label` for each link.
 
 ```jsx
-import { LinkList } from '@ag.ds-next/link-list';
+import { LinkList } from '@ag.ds-next/react/link-list';
 <LinkList
 	links={[
 		{ href: '/', label: 'Home' },
@@ -29,7 +29,7 @@ import { LinkList } from '@ag.ds-next/link-list';
 If you wanted however to add an Icon to one or more of the links, this can be easily achieved by passing a react node as the `label` instead of a string.
 
 ```jsx
-import { LinkList } from '@ag.ds-next/link-list';
+import { LinkList } from '@ag.ds-next/react/link-list';
 <LinkList
 	links={[
 		{
@@ -56,7 +56,7 @@ If you wanted to do something more complex you can pick and choose the parts of 
 
 ```tsx
 // In this example, we create a LinkList component which can highlight external links
-import { LinkListGroup, LinkListItem } from '@ag.ds-next/link-list';
+import { LinkListGroup, LinkListItem } from '@ag.ds-next/react/link-list';
 
 const isExternal = (href: string) => href.startsWith('http');
 

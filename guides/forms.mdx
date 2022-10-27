@@ -11,7 +11,7 @@ description: Web forms are one of the main points of interaction between a user 
 Install the following packages by running the following command in your terminal:
 
 ```sh
-yarn add @ag.ds-next/field @ag.ds-next/icon @ag.ds-next/text-input @ag.ds-next/button @ag.ds-next/form-stack @ag.ds-next/page-alert
+yarn add @ag.ds-next/react
 ```
 
 ## 2. Compose the user interface
@@ -19,9 +19,9 @@ yarn add @ag.ds-next/field @ag.ds-next/icon @ag.ds-next/text-input @ag.ds-next/b
 Using the `TextInput`, `FormStack` and `Button` components, we can quickly compose the user interface for the form.
 
 ```tsx
-import { Button, ButtonGroup } from '@ag.ds-next/button';
-import { FormStack } from '@ag.ds-next/form-stack';
-import { TextInput } from '@ag.ds-next/text-input';
+import { Button, ButtonGroup } from '@ag.ds-next/react/button';
+import { FormStack } from '@ag.ds-next/react/form-stack';
+import { TextInput } from '@ag.ds-next/react/text-input';
 
 function FormExampleSignIn() {
 	return (
@@ -84,9 +84,9 @@ Since we are already using `yup` for client-side validation, we have added [`noV
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
-import { Button, ButtonGroup } from '@ag.ds-next/button';
-import { FormStack } from '@ag.ds-next/form-stack';
-import { TextInput } from '@ag.ds-next/text-input';
+import { Button, ButtonGroup } from '@ag.ds-next/react/button';
+import { FormStack } from '@ag.ds-next/react/form-stack';
+import { TextInput } from '@ag.ds-next/react/text-input';
 
 const formSchema = yup
 	.object({
@@ -150,13 +150,13 @@ import { useEffect, useRef, useState } from 'react';
 import { useForm, SubmitHandler, SubmitErrorHandler } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
-import { Button, ButtonGroup } from '@ag.ds-next/button';
-import { Stack } from '@ag.ds-next/box';
-import { FormStack } from '@ag.ds-next/form-stack';
-import { TextInput } from '@ag.ds-next/text-input';
-import { useScrollToField } from '@ag.ds-next/field';
-import { PageAlert } from '@ag.ds-next/page-alert';
-import { Prose } from '@ag.ds-next/prose';
+import { Button, ButtonGroup } from '@ag.ds-next/react/button';
+import { Stack } from '@ag.ds-next/react/box';
+import { FormStack } from '@ag.ds-next/react/form-stack';
+import { TextInput } from '@ag.ds-next/react/text-input';
+import { useScrollToField } from '@ag.ds-next/react/field';
+import { PageAlert } from '@ag.ds-next/react/page-alert';
+import { Prose } from '@ag.ds-next/react/prose';
 
 const formSchema = yup
 	.object({
