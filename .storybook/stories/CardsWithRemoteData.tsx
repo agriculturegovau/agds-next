@@ -6,7 +6,7 @@ import { Text } from '@ag.ds-next/react/text';
 import { PageContent } from '@ag.ds-next/react/content';
 import { Card, CardInner, CardLink } from '@ag.ds-next/react/card';
 import { Columns } from '@ag.ds-next/react/columns';
-import { SkeletonHeading } from '@ag.ds-next/react/skeleton/src/SkeletonHeading';
+import { SkeletonHeading } from '@ag.ds-next/react/skeleton';
 import { Heading } from '@ag.ds-next/react/heading';
 import { VisuallyHidden } from '@ag.ds-next/react/a11y';
 
