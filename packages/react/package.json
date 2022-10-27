@@ -29,8 +29,7 @@
 	},
 	"preconstruct": {
 		"entrypoints": [
-			"*/index.ts",
-			"*/index.tsx"
+			"*/index.ts"
 		]
 	},
 	"exports": {
