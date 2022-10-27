@@ -1,19 +1,15 @@
-import { normalize } from 'path';
-import { MDXRemote } from 'next-mdx-remote';
 import { Stack } from '@ag.ds-next/react/box';
-import { Prose } from '@ag.ds-next/react/prose';
 import { H2 } from '@ag.ds-next/react/heading';
-import { getMarkdownData, serializeMarkdown } from '../../lib/mdxUtils';
 import {
 	getPkgGroupList,
 	getPkgList,
 	getPkgNavLinks,
 } from '../../lib/mdx/packages';
-import { mdxComponents } from '../../components/mdxComponents';
 import { AppLayout } from '../../components/AppLayout';
 import { DocumentTitle } from '../../components/DocumentTitle';
 import { PageLayout } from '../../components/PageLayout';
 import { PkgCardList } from '../../components/PkgCardList';
+import { PageTitle } from '../../components/PageTitle';
 
 type StaticProps = Awaited<ReturnType<typeof getStaticProps>>['props'];
 
@@ -21,7 +17,6 @@ export default function PackagesHome({
 	navLinks,
 	groupList,
 	pkgList,
-	source,
 }: StaticProps) {
 	return (
 		<>
@@ -33,11 +28,16 @@ export default function PackagesHome({
 						titleLink: '/components',
 						items: navLinks,
 					}}
-					editPath="/packages/README.md"
+					editPath="/docs/pages/components/index.tsx"
 				>
-					<Prose>
-						<MDXRemote {...source} components={mdxComponents} />
-					</Prose>
+					<PageTitle
+						title="Components"
+						introduction="Discover all the Agriculture Design System components here
+						including visual examples, props, and code examples. In future we
+						will include findings we’ve collected from performing user
+						research as well as documentation to help teams adopt the design
+						system for their projects."
+					/>
 					<Stack gap={2}>
 						{groupList.map((group) => (
 							<Stack gap={1} key={group.slug}>
@@ -55,17 +55,12 @@ export default function PackagesHome({
 }
 
 export async function getStaticProps() {
-	const { content } = await getMarkdownData(
-		normalize(`${process.cwd()}/../packages/README.md`)
-	);
-	const source = await serializeMarkdown(content);
 	const navLinks = await getPkgNavLinks();
 	const groupList = await getPkgGroupList();
 	const pkgList = await getPkgList();
 
 	return {
 		props: {
-			source,
 			navLinks,
 			groupList,
 			pkgList,

@@ -8,7 +8,7 @@ import {
 } from '../mdxUtils';
 import { slugify } from '../slugify';
 
-// TODO All of this should be renamed to `components` instead of `packages`
+// TODO All of these functions should be renamed from `packages` to `components`
 
 const PKG_PATH = normalize(`${process.cwd()}/../packages/react/src`);
 

@@ -34,7 +34,7 @@ export default function PackagesContent({
 							href: '#pkg-content',
 						},
 					]}
-					editPath={`/components/${pkg.slug}/docs/content.mdx`}
+					editPath={`packages/react/src/${pkg.slug}/docs/content.mdx`}
 				>
 					<Prose id="pkg-content">
 						<MDXRemote {...content} components={mdxComponents} />

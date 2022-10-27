@@ -1,7 +1,6 @@
 import { PropsWithChildren } from 'react';
 import { useRouter } from 'next/router';
 import { CallToActionLink } from '@ag.ds-next/react/call-to-action';
-import { Prose } from '@ag.ds-next/react/prose';
 import { SkipLinksProps } from '@ag.ds-next/react/skip-link';
 import { SubNav } from '@ag.ds-next/react/sub-nav';
 // import { Text } from '@ag.ds-next/react/text';
@@ -54,13 +53,7 @@ export function PkgLayout({
 				<PageAlert tone="warning">
 					<Text as="p">This package is yet to be released on npm.</Text>
 				</PageAlert>
-			) : ( */}
-			<Prose>
-				<pre>
-					<code>{`import { ... } from '@ag.ds-next/react/${pkg.slug}';`}</code>
-				</pre>
-			</Prose>
-			{/* )} */}
+			) : null} */}
 			{pkg.subNavItems?.length ? (
 				<SubNav
 					activePath={asPath}
