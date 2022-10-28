@@ -9,6 +9,8 @@ import { getPkgBreadcrumbs, getPkgNavLinks, Pkg } from '../lib/mdx/packages';
 import { PageTitle } from './PageTitle';
 import { PageLayout } from './PageLayout';
 
+// TODO Look into display "unreleased" components here (we had this before moving everything to `@ag.ds-next/react`)
+
 export function PkgLayout({
 	children,
 	pkg,
@@ -36,7 +38,6 @@ export function PkgLayout({
 			skipLinks={skipLinks}
 		>
 			<PageTitle
-				// pretext={isUnreleased ? 'In development' : `v${pkg.version}`}
 				title={pkg.title}
 				introduction={pkg.data.description}
 				callToAction={
