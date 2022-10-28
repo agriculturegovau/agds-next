@@ -34,7 +34,7 @@ export default function PackagesCode({
 							href: '#pkg-content',
 						},
 					]}
-					editPath={`packages/react/src/${pkg.slug}/docs/code.mdx`}
+					editPath={`/packages/react/src/${pkg.slug}/docs/code.mdx`}
 				>
 					<Prose id="pkg-content">
 						<h2>Usage</h2>
