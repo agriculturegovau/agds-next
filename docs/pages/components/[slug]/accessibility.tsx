@@ -34,7 +34,7 @@ export default function PackagesAccessibility({
 							href: '#pkg-content',
 						},
 					]}
-					editPath={`packages/react/src/${pkg.slug}/docs/accessibility.mdx`}
+					editPath={`/packages/react/src/${pkg.slug}/docs/accessibility.mdx`}
 				>
 					<Prose id="pkg-content">
 						<MDXRemote {...content} components={mdxComponents} />
