@@ -1,0 +1,4 @@
+{
+	"main": "dist/ag.ds-next-react-box.cjs.js",
+	"module": "dist/ag.ds-next-react-box.esm.js"
+}

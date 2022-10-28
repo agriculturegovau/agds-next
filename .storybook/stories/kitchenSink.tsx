@@ -2,53 +2,53 @@ import {
 	Accordion,
 	AccordionItem,
 	AccordionItemContent,
-} from '@ag.ds-next/accordion';
+} from '@ag.ds-next/react/accordion';
 import {
 	SearchBox,
 	SearchBoxButton,
 	SearchBoxInput,
-} from '@ag.ds-next/search-box';
-import { Box, Flex, Stack } from '@ag.ds-next/box';
-import { Breadcrumbs } from '@ag.ds-next/breadcrumbs';
-import { Button, ButtonGroup } from '@ag.ds-next/button';
-import { Callout } from '@ag.ds-next/callout';
-import { CallToActionLink } from '@ag.ds-next/call-to-action';
-import { Card, CardInner } from '@ag.ds-next/card';
-import { Columns, Column } from '@ag.ds-next/columns';
-import { PageContent } from '@ag.ds-next/content';
-import { ControlGroup, Checkbox, Radio } from '@ag.ds-next/control-input';
-import { DirectionLink } from '@ag.ds-next/direction-link';
-import { Heading, H1, H2 } from '@ag.ds-next/heading';
-import { InpageNav } from '@ag.ds-next/inpage-nav';
-import { FormStack } from '@ag.ds-next/form-stack';
-import { FileUpload } from '@ag.ds-next/file-upload';
-import { ProgressIndicator } from '@ag.ds-next/progress-indicator';
-import { PageAlert } from '@ag.ds-next/page-alert';
-import { Select } from '@ag.ds-next/select';
-import { SubNav } from '@ag.ds-next/sub-nav';
+} from '@ag.ds-next/react/search-box';
+import { Box, Flex, Stack } from '@ag.ds-next/react/box';
+import { Breadcrumbs } from '@ag.ds-next/react/breadcrumbs';
+import { Button, ButtonGroup } from '@ag.ds-next/react/button';
+import { Callout } from '@ag.ds-next/react/callout';
+import { CallToActionLink } from '@ag.ds-next/react/call-to-action';
+import { Card, CardInner } from '@ag.ds-next/react/card';
+import { Columns, Column } from '@ag.ds-next/react/columns';
+import { PageContent } from '@ag.ds-next/react/content';
+import { ControlGroup, Checkbox, Radio } from '@ag.ds-next/react/control-input';
+import { DirectionLink } from '@ag.ds-next/react/direction-link';
+import { Heading, H1, H2 } from '@ag.ds-next/react/heading';
+import { InpageNav } from '@ag.ds-next/react/inpage-nav';
+import { FormStack } from '@ag.ds-next/react/form-stack';
+import { FileUpload } from '@ag.ds-next/react/file-upload';
+import { ProgressIndicator } from '@ag.ds-next/react/progress-indicator';
+import { PageAlert } from '@ag.ds-next/react/page-alert';
+import { Select } from '@ag.ds-next/react/select';
+import { SubNav } from '@ag.ds-next/react/sub-nav';
 import {
 	StatusBadge,
 	NotificationBadge,
 	IndicatorDot,
-} from '@ag.ds-next/badge';
-import { SideNav } from '@ag.ds-next/side-nav';
-import { Text } from '@ag.ds-next/text';
-import { Textarea } from '@ag.ds-next/textarea';
-import { TextInput } from '@ag.ds-next/text-input';
-import { DatePicker } from '@ag.ds-next/date-picker';
-import { Header } from '@ag.ds-next/header';
-import { Logo } from '@ag.ds-next/ag-branding';
-import { MainNav } from '@ag.ds-next/main-nav';
-import { Footer, FooterDivider } from '@ag.ds-next/footer';
-import { LinkList } from '@ag.ds-next/link-list';
-import { tokens } from '@ag.ds-next/core';
+} from '@ag.ds-next/react/badge';
+import { SideNav } from '@ag.ds-next/react/side-nav';
+import { Text } from '@ag.ds-next/react/text';
+import { Textarea } from '@ag.ds-next/react/textarea';
+import { TextInput } from '@ag.ds-next/react/text-input';
+import { DatePicker } from '@ag.ds-next/react/date-picker';
+import { Header } from '@ag.ds-next/react/header';
+import { Logo } from '@ag.ds-next/react/ag-branding';
+import { MainNav } from '@ag.ds-next/react/main-nav';
+import { Footer, FooterDivider } from '@ag.ds-next/react/footer';
+import { LinkList } from '@ag.ds-next/react/link-list';
+import { tokens } from '@ag.ds-next/react/core';
 import {
 	HeroBanner,
 	HeroBannerSubtitle,
 	HeroBannerTitle,
 	HeroBannerTitleContainer,
-} from '@ag.ds-next/hero-banner';
-import { SkeletonHeading, SkeletonText } from '@ag.ds-next/skeleton';
+} from '@ag.ds-next/react/hero-banner';
+import { SkeletonHeading, SkeletonText } from '@ag.ds-next/react/skeleton';
 import {
 	Table,
 	TableCaption,
@@ -56,9 +56,9 @@ import {
 	TableHeader,
 	TableHead,
 	TableBody,
-} from '@ag.ds-next/table';
-import { TextLink } from '@ag.ds-next/text-link';
-import { AvatarIcon } from '@ag.ds-next/icon';
+} from '@ag.ds-next/react/table';
+import { TextLink } from '@ag.ds-next/react/text-link';
+import { AvatarIcon } from '@ag.ds-next/react/icon';
 
 export default {
 	title: 'Examples/Kitchen Sink',

@@ -1,0 +1,4 @@
+{
+	"main": "dist/ag.ds-next-react-select.cjs.js",
+	"module": "dist/ag.ds-next-react-select.esm.js"
+}

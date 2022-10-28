@@ -1,0 +1,4 @@
+{
+	"main": "dist/ag.ds-next-react-callout.cjs.js",
+	"module": "dist/ag.ds-next-react-callout.esm.js"
+}

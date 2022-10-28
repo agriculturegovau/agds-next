@@ -1,0 +1,4 @@
+{
+	"main": "dist/ag.ds-next-react-breadcrumbs.cjs.js",
+	"module": "dist/ag.ds-next-react-breadcrumbs.esm.js"
+}

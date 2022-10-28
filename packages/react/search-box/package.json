@@ -1,0 +1,4 @@
+{
+	"main": "dist/ag.ds-next-react-search-box.cjs.js",
+	"module": "dist/ag.ds-next-react-search-box.esm.js"
+}

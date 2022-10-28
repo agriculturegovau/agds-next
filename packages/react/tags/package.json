@@ -1,0 +1,4 @@
+{
+	"main": "dist/ag.ds-next-react-tags.cjs.js",
+	"module": "dist/ag.ds-next-react-tags.esm.js"
+}

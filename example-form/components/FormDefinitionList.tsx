@@ -4,7 +4,7 @@ import {
 	SummaryListItem,
 	SummaryListItemDescription,
 	SummaryListItemTerm,
-} from '@ag.ds-next/summary-list';
+} from '@ag.ds-next/react/summary-list';
 
 export function FormDefinitionList({
 	items,

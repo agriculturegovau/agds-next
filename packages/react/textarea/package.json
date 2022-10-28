@@ -1,0 +1,4 @@
+{
+	"main": "dist/ag.ds-next-react-textarea.cjs.js",
+	"module": "dist/ag.ds-next-react-textarea.esm.js"
+}

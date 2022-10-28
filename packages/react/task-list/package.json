@@ -1,0 +1,4 @@
+{
+	"main": "dist/ag.ds-next-react-task-list.cjs.js",
+	"module": "dist/ag.ds-next-react-task-list.esm.js"
+}

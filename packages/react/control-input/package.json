@@ -1,0 +1,4 @@
+{
+	"main": "dist/ag.ds-next-react-control-input.cjs.js",
+	"module": "dist/ag.ds-next-react-control-input.esm.js"
+}

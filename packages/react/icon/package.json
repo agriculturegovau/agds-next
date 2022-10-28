@@ -1,0 +1,4 @@
+{
+	"main": "dist/ag.ds-next-react-icon.cjs.js",
+	"module": "dist/ag.ds-next-react-icon.esm.js"
+}

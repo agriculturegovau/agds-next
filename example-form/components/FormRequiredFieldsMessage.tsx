@@ -1,4 +1,4 @@
-import { Text } from '@ag.ds-next/text';
+import { Text } from '@ag.ds-next/react/text';
 
 export const FormRequiredFieldsMessage = () => {
 	return (

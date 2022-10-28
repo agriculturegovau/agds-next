@@ -1,9 +1,9 @@
-import { Stack } from '@ag.ds-next/box';
-import { Breadcrumbs } from '@ag.ds-next/breadcrumbs';
-import { PageContent } from '@ag.ds-next/content';
-import { Columns, Column } from '@ag.ds-next/columns';
-import { PageAlert, PageAlertTitle } from '@ag.ds-next/page-alert';
-import { Prose } from '@ag.ds-next/prose';
+import { Stack } from '@ag.ds-next/react/box';
+import { Breadcrumbs } from '@ag.ds-next/react/breadcrumbs';
+import { PageContent } from '@ag.ds-next/react/content';
+import { Columns, Column } from '@ag.ds-next/react/columns';
+import { PageAlert, PageAlertTitle } from '@ag.ds-next/react/page-alert';
+import { Prose } from '@ag.ds-next/react/prose';
 import { AppLayout } from '../../../components/AppLayout';
 import { DocumentTitle } from '../../../components/DocumentTitle';
 import { PageTitle } from '../../../components/PageTitle';

@@ -1,6 +1,6 @@
 import { GetStaticProps, InferGetStaticPropsType } from 'next';
 import { MDXRemote } from 'next-mdx-remote';
-import { Prose } from '@ag.ds-next/prose';
+import { Prose } from '@ag.ds-next/react/prose';
 import {
 	getPkgList,
 	getPkg,
@@ -34,9 +34,13 @@ export default function PackagesCode({
 							href: '#pkg-content',
 						},
 					]}
-					editPath={`/components/${pkg.slug}/docs/code.mdx`}
+					editPath={`/packages/react/src/${pkg.slug}/docs/code.mdx`}
 				>
 					<Prose id="pkg-content">
+						<h2>Usage</h2>
+						<pre>
+							<code>{`import { ... } from '@ag.ds-next/react/${pkg.slug}';`}</code>
+						</pre>
 						<h2>Source</h2>
 						<p>
 							You can view the full source code for this package on{' '}
