@@ -1,45 +1,36 @@
 ---
-order: 5
-title: Technical Overview
-description: Explaining technical decisions in the AgDS Component library
+title: Technical overview
+description: Explaining technical decisions in the AgDS component library
 ---
 
 ## React
 
-The AgDS Component library is built using [React](https://reactjs.org/). React is a JavaScript library for building user interfaces. It is maintained by Facebook and a community of individual developers and companies.
+The AgDS component library has been built using [React](https://reactjs.org/). React is a JavaScript library for building user interfaces and uses a component based model for defining user interface elements.
 
-React uses a component-based model for defining UI elements, which is fantastic for building Design Systems and scalable UI generally.
+AgDS makes use of [React hooks](https://reactjs.org/docs/hooks-intro.html) so your project will need to use `v16.8.0` at a minimum.
 
 ## NPM Packages
 
-The delivery method for the AgDS Component library is via [NPM](https://www.npmjs.com/) packages. NPM is the package manager for JavaScript and the world’s largest software registry.
+The delivery method for the AgDS component library is via a single [NPM](https://www.npmjs.com/) package. NPM is the package manager for JavaScript and the world's largest software registry.
 
-Each component is an individual package. This allows consumers to only install the components they need, and avoid installing unnecessary dependencies and huge bundles for users.
-
-```zsh
-yarn add @agds-next/button
-```
-
-The trade off is that dependency versions need to be managed carefully. Our [release notes](https://steelthreads.github.io/agds-next/releases) include a list of the latest versions of packages, and any breaking changes that need to be managed with a release.
+Every component in the AgDS component library has an individual entry point in the `@ag.ds-next/react` package. This keeps application bundles small and avoids end users downloading unnecessary dependencies.
 
 ## TypeScript
 
 All of the AgDS components are built using [Typescript](https://www.typescriptlang.org/), a typed superset of JavaScript that compiles to plain JavaScript.
 
-You don't need to use Typescript to use AgDS components, but it is recommended.
+You don't need to using Typescript in order to use the AgDS componentg library, but it is highly recommended.
 
 ## Emotion
 
-[Emotion](https://emotion.sh/docs/introduction) is a library that enables writing CSS styles within JavaScript files. As opposed to writing separate CSS stylesheets, the CSS is written alongside the component code, making it easier to maintain and reason.
+[Emotion](https://emotion.sh/docs/introduction) is library designed for writing CSS styles with JavaScript. We use CSS-in-JS as it allows us to easily define and scope the styles for a component alongside it's definiton.
 
-## Next.JS
+## NextJS
 
-[Next.JS](https://nextjs.org/) is a popular framework for building React-based web applications. Describes as 'the SDK for the web', it handles the tooling and configuration needed for a React app, and provides additional structure, features, and optimizations for your application. It also has fantastic documentation and developer experience.
+[NextJS](https://nextjs.org/) is a popular framework for building web applications with [React](https://reactjs.org/).
 
-We use Next.JS to build our documentation site, templates, and internal test applications.
+Described as 'the SDK for the web', it handles the tooling and configuration needed for a React app, and provides additional structure, features, and optimizations for your application. It also has fantastic documentation and developer experience.
 
-Using Next.JS massively improves our productivity due to it's built-in solutions for routing, static and server rendering, API routes and more. That means we spend less time on configuration and we can focus on building application logic and layouts.
+We use NextJS to build our documentation site, templates and internal test applications.
 
-Unless you have strong technical reasons to use something else, we strongly recommend you clone our Next.JS-based [Starter Kit](https://github.com/steelthreads/agds-next-starter-kit) for your next project.
-
-[Learn more about Next.JS](https://nextjs.org/)
+Unless you have strong technical reasons to use another framework, we highly recommend you clone our NextJS based [Starter Kit](https://github.com/steelthreads/agds-starter-kit) as the starting point for your next project.
