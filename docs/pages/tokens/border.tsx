@@ -1,5 +1,5 @@
-import { Prose, proseBlockClassname } from '@ag.ds-next/react/prose';
-import { Box } from '@ag.ds-next/react/box';
+import { Prose, proseBlockClassname } from '@ag.ds-next/prose';
+import { Box } from '@ag.ds-next/box';
 import { DocumentTitle } from '../../components/DocumentTitle';
 import { TokenLayout } from '../../components/TokenLayout';
 import { BorderWidthChart } from '../../components/TokenCharts';

@@ -1,15 +1,15 @@
-import { Columns } from '@ag.ds-next/react/columns';
-import { SectionContent } from '@ag.ds-next/react/content';
-import { Stack } from '@ag.ds-next/react/box';
-import { CallToActionLink } from '@ag.ds-next/react/call-to-action';
-import { Prose } from '@ag.ds-next/react/prose';
-import { TextLink } from '@ag.ds-next/react/text-link';
+import { Columns } from '@ag.ds-next/columns';
+import { SectionContent } from '@ag.ds-next/content';
+import { Stack } from '@ag.ds-next/box';
+import { CallToActionLink } from '@ag.ds-next/call-to-action';
+import { Prose } from '@ag.ds-next/prose';
+import { TextLink } from '@ag.ds-next/text-link';
 import {
 	HeroBanner,
 	HeroBannerTitleContainer,
 	HeroBannerTitle,
 	HeroBannerSubtitle,
-} from '@ag.ds-next/react/hero-banner';
+} from '@ag.ds-next/hero-banner';
 import { AppLayout } from '../components/AppLayout';
 import { PictogramCard } from '../components/PictogramCard';
 import { DocumentTitle } from '../components/DocumentTitle';

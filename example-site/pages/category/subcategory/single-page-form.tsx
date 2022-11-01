@@ -1,8 +1,8 @@
-import { Stack } from '@ag.ds-next/react/box';
-import { Breadcrumbs } from '@ag.ds-next/react/breadcrumbs';
-import { PageContent } from '@ag.ds-next/react/content';
-import { Text } from '@ag.ds-next/react/text';
-import { Columns, Column } from '@ag.ds-next/react/columns';
+import { Stack } from '@ag.ds-next/box';
+import { Breadcrumbs } from '@ag.ds-next/breadcrumbs';
+import { PageContent } from '@ag.ds-next/content';
+import { Text } from '@ag.ds-next/text';
+import { Columns, Column } from '@ag.ds-next/columns';
 import { AppLayout } from '../../../components/AppLayout';
 import { DocumentTitle } from '../../../components/DocumentTitle';
 import { FormExampleSinglePage } from '../../../components/FormExampleSinglePage';

@@ -3,7 +3,7 @@ import {
 	SearchBox,
 	SearchBoxInput,
 	SearchBoxButton,
-} from '@ag.ds-next/react/search-box';
+} from '@ag.ds-next/search-box';
 
 type SearchFormInput = {
 	search: string;

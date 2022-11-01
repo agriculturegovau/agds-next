@@ -1,4 +1,4 @@
-import { Prose } from '@ag.ds-next/react/prose';
+import { Prose } from '@ag.ds-next/prose';
 import { DocumentTitle } from '../../components/DocumentTitle';
 import { MaxWidthChart } from '../../components/TokenCharts';
 import { TokenLayout } from '../../components/TokenLayout';

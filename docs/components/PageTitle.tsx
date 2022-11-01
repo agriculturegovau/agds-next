@@ -1,7 +1,7 @@
 import { ReactNode } from 'react';
-import { Stack } from '@ag.ds-next/react/box';
-import { H1 } from '@ag.ds-next/react/heading';
-import { Text } from '@ag.ds-next/react/text';
+import { Stack } from '@ag.ds-next/box';
+import { H1 } from '@ag.ds-next/heading';
+import { Text } from '@ag.ds-next/text';
 
 export type PageTitleProps = {
 	pretext?: ReactNode;
