@@ -1,4 +1,0 @@
-{
-	"main": "dist/ag.ds-next-react-content.cjs.js",
-	"module": "dist/ag.ds-next-react-content.esm.js"
-}

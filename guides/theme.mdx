@@ -84,7 +84,7 @@ In your app, create a file called theme.tsx...
 
 ```tsx
 // theme.tsx
-import { Theme } from '@ag.ds-next/react/core';
+import { Theme } from '@ag.ds-next/core';
 
 export const myTheme: Theme = {};
 ```
@@ -93,7 +93,7 @@ export const myTheme: Theme = {};
 
 ```tsx
 // pages/_app.tsx
-import { Core } from '@ag.ds-next/react/core';
+import { Core } from '@ag.ds-next/core';
 import type { AppProps } from 'next/app';
 import { myTheme } from '../theme.tsx';
 
@@ -110,8 +110,8 @@ The default theme in AgDS is `GOLD`, based on the former Australian Government D
 
 ```tsx
 // theme.tsx
-import { Theme } from '@ag.ds-next/react/core';
-import { Theme as agTheme } from '@ag.ds-next/react/ag-branding';
+import { Theme } from '@ag.ds-next/core';
+import { Theme as agTheme } from '@ag.ds-next/ag-branding';
 
 export const myTheme: Theme = {
 	...agTheme,
@@ -122,8 +122,8 @@ Now you can define your tokens!
 
 ```tsx
 // theme.tsx
-import { Theme } from '@ag.ds-next/react/core';
-import { Theme as agTheme } from '@ag.ds-next/react/ag-branding';
+import { Theme } from '@ag.ds-next/core';
+import { Theme as agTheme } from '@ag.ds-next/ag-branding';
 
 export const myTheme: Theme = {
 	...agTheme,

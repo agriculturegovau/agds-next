@@ -1,7 +1,7 @@
 import { DecoratorFn } from '@storybook/react';
-import { Box } from '@ag.ds-next/react/box';
-import { Core } from '@ag.ds-next/react/core';
-import { theme as agriculture } from '@ag.ds-next/react/ag-branding';
+import { Box } from '@ag.ds-next/box';
+import { Core } from '@ag.ds-next/core';
+import { theme as agriculture } from '@ag.ds-next/ag-branding';
 
 function makeViewports() {
 	const viewports = [

@@ -1,4 +1,4 @@
-import { Columns } from '@ag.ds-next/react/columns';
+import { Columns } from '@ag.ds-next/columns';
 import { PictogramCard } from './PictogramCard';
 
 type Pkg = {

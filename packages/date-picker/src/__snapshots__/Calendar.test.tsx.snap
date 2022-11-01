@@ -1,0 +1,1295 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Calendar Range renders correctly 1`] = `
+<div>
+  <div
+    data-focus-guard="true"
+    style="width: 1px; height: 0px; padding: 0px; overflow: hidden; position: fixed; top: 1px; left: 1px;"
+    tabindex="0"
+  />
+  <div
+    data-focus-lock-disabled="false"
+  >
+    <div
+      class="css-hccpmr-boxStyles-CalendarContainer"
+    >
+      <div
+        class="rdp "
+      >
+        <div
+          class="rdp-months"
+        >
+          <div
+            class="rdp-month rdp-caption_start rdp-caption_end"
+          >
+            <div
+              class="rdp-caption"
+            >
+              <h2
+                aria-atomic="true"
+                aria-live="polite"
+                class="rdp-caption_label"
+                id="react-day-picker-4"
+              >
+                November 2022
+              </h2>
+              <div
+                class="rdp-nav"
+              >
+                <button
+                  aria-label="Go to previous month"
+                  class="rdp-button_reset rdp-button rdp-nav_button rdp-nav_button_previous"
+                  name="previous-month"
+                  type="button"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="css-1cjetzb-Icon"
+                    clip-rule="evenodd"
+                    focusable="false"
+                    height="24"
+                    role="img"
+                    viewBox="0 0 24 24"
+                    width="24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M16 21L7 12L16 3"
+                    />
+                  </svg>
+                </button>
+                <button
+                  aria-label="Go to next month"
+                  class="rdp-button_reset rdp-button rdp-nav_button rdp-nav_button_next"
+                  name="next-month"
+                  type="button"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="css-1cjetzb-Icon"
+                    clip-rule="evenodd"
+                    focusable="false"
+                    height="24"
+                    role="img"
+                    viewBox="0 0 24 24"
+                    width="24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M8 3L17 12L8 21"
+                    />
+                  </svg>
+                </button>
+              </div>
+            </div>
+            <table
+              aria-labelledby="react-day-picker-4"
+              class="rdp-table"
+              role="grid"
+            >
+              <thead
+                class="rdp-head"
+              >
+                <tr
+                  class="rdp-head_row"
+                >
+                  <th
+                    class="rdp-head_cell"
+                    scope="col"
+                  >
+                    <span
+                      aria-hidden="true"
+                    >
+                      Su
+                    </span>
+                    <span
+                      class="rdp-vhidden"
+                    >
+                      Sunday
+                    </span>
+                  </th>
+                  <th
+                    class="rdp-head_cell"
+                    scope="col"
+                  >
+                    <span
+                      aria-hidden="true"
+                    >
+                      Mo
+                    </span>
+                    <span
+                      class="rdp-vhidden"
+                    >
+                      Monday
+                    </span>
+                  </th>
+                  <th
+                    class="rdp-head_cell"
+                    scope="col"
+                  >
+                    <span
+                      aria-hidden="true"
+                    >
+                      Tu
+                    </span>
+                    <span
+                      class="rdp-vhidden"
+                    >
+                      Tuesday
+                    </span>
+                  </th>
+                  <th
+                    class="rdp-head_cell"
+                    scope="col"
+                  >
+                    <span
+                      aria-hidden="true"
+                    >
+                      We
+                    </span>
+                    <span
+                      class="rdp-vhidden"
+                    >
+                      Wednesday
+                    </span>
+                  </th>
+                  <th
+                    class="rdp-head_cell"
+                    scope="col"
+                  >
+                    <span
+                      aria-hidden="true"
+                    >
+                      Th
+                    </span>
+                    <span
+                      class="rdp-vhidden"
+                    >
+                      Thursday
+                    </span>
+                  </th>
+                  <th
+                    class="rdp-head_cell"
+                    scope="col"
+                  >
+                    <span
+                      aria-hidden="true"
+                    >
+                      Fr
+                    </span>
+                    <span
+                      class="rdp-vhidden"
+                    >
+                      Friday
+                    </span>
+                  </th>
+                  <th
+                    class="rdp-head_cell"
+                    scope="col"
+                  >
+                    <span
+                      aria-hidden="true"
+                    >
+                      Sa
+                    </span>
+                    <span
+                      class="rdp-vhidden"
+                    >
+                      Saturday
+                    </span>
+                  </th>
+                </tr>
+              </thead>
+              <tbody
+                class="rdp-tbody"
+              >
+                <tr
+                  class="rdp-row"
+                >
+                  <td
+                    class="rdp-cell"
+                  />
+                  <td
+                    class="rdp-cell"
+                  />
+                  <td
+                    class="rdp-cell"
+                  >
+                    <button
+                      aria-label="1st November 2022 (Tuesday)"
+                      aria-pressed="true"
+                      class="rdp-button_reset rdp-button rdp-day rdp-day_selected rdp-day_today rdp-day_range_start"
+                      name="day"
+                      tabindex="0"
+                      type="button"
+                    >
+                      1
+                    </button>
+                  </td>
+                  <td
+                    class="rdp-cell"
+                  >
+                    <button
+                      aria-label="2nd November 2022 (Wednesday)"
+                      aria-pressed="true"
+                      class="rdp-button_reset rdp-button rdp-day rdp-day_selected rdp-day_range_middle"
+                      name="day"
+                      tabindex="-1"
+                      type="button"
+                    >
+                      2
+                    </button>
+                  </td>
+                  <td
+                    class="rdp-cell"
+                  >
+                    <button
+                      aria-label="3rd November 2022 (Thursday)"
+                      aria-pressed="true"
+                      class="rdp-button_reset rdp-button rdp-day rdp-day_selected rdp-day_range_middle"
+                      name="day"
+                      tabindex="-1"
+                      type="button"
+                    >
+                      3
+                    </button>
+                  </td>
+                  <td
+                    class="rdp-cell"
+                  >
+                    <button
+                      aria-label="4th November 2022 (Friday)"
+                      aria-pressed="true"
+                      class="rdp-button_reset rdp-button rdp-day rdp-day_selected rdp-day_range_middle"
+                      name="day"
+                      tabindex="-1"
+                      type="button"
+                    >
+                      4
+                    </button>
+                  </td>
+                  <td
+                    class="rdp-cell"
+                  >
+                    <button
+                      aria-label="5th November 2022 (Saturday)"
+                      aria-pressed="true"
+                      class="rdp-button_reset rdp-button rdp-day rdp-day_selected rdp-day_range_middle"
+                      name="day"
+                      tabindex="-1"
+                      type="button"
+                    >
+                      5
+                    </button>
+                  </td>
+                </tr>
+                <tr
+                  class="rdp-row"
+                >
+                  <td
+                    class="rdp-cell"
+                  >
+                    <button
+                      aria-label="6th November 2022 (Sunday)"
+                      aria-pressed="true"
+                      class="rdp-button_reset rdp-button rdp-day rdp-day_selected rdp-day_range_middle"
+                      name="day"
+                      tabindex="-1"
+                      type="button"
+                    >
+                      6
+                    </button>
+                  </td>
+                  <td
+                    class="rdp-cell"
+                  >
+                    <button
+                      aria-label="7th November 2022 (Monday)"
+                      aria-pressed="true"
+                      class="rdp-button_reset rdp-button rdp-day rdp-day_selected rdp-day_range_end"
+                      name="day"
+                      tabindex="-1"
+                      type="button"
+                    >
+                      7
+                    </button>
+                  </td>
+                  <td
+                    class="rdp-cell"
+                  >
+                    <button
+                      aria-label="8th November 2022 (Tuesday)"
+                      class="rdp-button_reset rdp-button rdp-day"
+                      name="day"
+                      tabindex="-1"
+                      type="button"
+                    >
+                      8
+                    </button>
+                  </td>
+                  <td
+                    class="rdp-cell"
+                  >
+                    <button
+                      aria-label="9th November 2022 (Wednesday)"
+                      class="rdp-button_reset rdp-button rdp-day"
+                      name="day"
+                      tabindex="-1"
+                      type="button"
+                    >
+                      9
+                    </button>
+                  </td>
+                  <td
+                    class="rdp-cell"
+                  >
+                    <button
+                      aria-label="10th November 2022 (Thursday)"
+                      class="rdp-button_reset rdp-button rdp-day"
+                      name="day"
+                      tabindex="-1"
+                      type="button"
+                    >
+                      10
+                    </button>
+                  </td>
+                  <td
+                    class="rdp-cell"
+                  >
+                    <button
+                      aria-label="11th November 2022 (Friday)"
+                      class="rdp-button_reset rdp-button rdp-day"
+                      name="day"
+                      tabindex="-1"
+                      type="button"
+                    >
+                      11
+                    </button>
+                  </td>
+                  <td
+                    class="rdp-cell"
+                  >
+                    <button
+                      aria-label="12th November 2022 (Saturday)"
+                      class="rdp-button_reset rdp-button rdp-day"
+                      name="day"
+                      tabindex="-1"
+                      type="button"
+                    >
+                      12
+                    </button>
+                  </td>
+                </tr>
+                <tr
+                  class="rdp-row"
+                >
+                  <td
+                    class="rdp-cell"
+                  >
+                    <button
+                      aria-label="13th November 2022 (Sunday)"
+                      class="rdp-button_reset rdp-button rdp-day"
+                      name="day"
+                      tabindex="-1"
+                      type="button"
+                    >
+                      13
+                    </button>
+                  </td>
+                  <td
+                    class="rdp-cell"
+                  >
+                    <button
+                      aria-label="14th November 2022 (Monday)"
+                      class="rdp-button_reset rdp-button rdp-day"
+                      name="day"
+                      tabindex="-1"
+                      type="button"
+                    >
+                      14
+                    </button>
+                  </td>
+                  <td
+                    class="rdp-cell"
+                  >
+                    <button
+                      aria-label="15th November 2022 (Tuesday)"
+                      class="rdp-button_reset rdp-button rdp-day"
+                      name="day"
+                      tabindex="-1"
+                      type="button"
+                    >
+                      15
+                    </button>
+                  </td>
+                  <td
+                    class="rdp-cell"
+                  >
+                    <button
+                      aria-label="16th November 2022 (Wednesday)"
+                      class="rdp-button_reset rdp-button rdp-day"
+                      name="day"
+                      tabindex="-1"
+                      type="button"
+                    >
+                      16
+                    </button>
+                  </td>
+                  <td
+                    class="rdp-cell"
+                  >
+                    <button
+                      aria-label="17th November 2022 (Thursday)"
+                      class="rdp-button_reset rdp-button rdp-day"
+                      name="day"
+                      tabindex="-1"
+                      type="button"
+                    >
+                      17
+                    </button>
+                  </td>
+                  <td
+                    class="rdp-cell"
+                  >
+                    <button
+                      aria-label="18th November 2022 (Friday)"
+                      class="rdp-button_reset rdp-button rdp-day"
+                      name="day"
+                      tabindex="-1"
+                      type="button"
+                    >
+                      18
+                    </button>
+                  </td>
+                  <td
+                    class="rdp-cell"
+                  >
+                    <button
+                      aria-label="19th November 2022 (Saturday)"
+                      class="rdp-button_reset rdp-button rdp-day"
+                      name="day"
+                      tabindex="-1"
+                      type="button"
+                    >
+                      19
+                    </button>
+                  </td>
+                </tr>
+                <tr
+                  class="rdp-row"
+                >
+                  <td
+                    class="rdp-cell"
+                  >
+                    <button
+                      aria-label="20th November 2022 (Sunday)"
+                      class="rdp-button_reset rdp-button rdp-day"
+                      name="day"
+                      tabindex="-1"
+                      type="button"
+                    >
+                      20
+                    </button>
+                  </td>
+                  <td
+                    class="rdp-cell"
+                  >
+                    <button
+                      aria-label="21st November 2022 (Monday)"
+                      class="rdp-button_reset rdp-button rdp-day"
+                      name="day"
+                      tabindex="-1"
+                      type="button"
+                    >
+                      21
+                    </button>
+                  </td>
+                  <td
+                    class="rdp-cell"
+                  >
+                    <button
+                      aria-label="22nd November 2022 (Tuesday)"
+                      class="rdp-button_reset rdp-button rdp-day"
+                      name="day"
+                      tabindex="-1"
+                      type="button"
+                    >
+                      22
+                    </button>
+                  </td>
+                  <td
+                    class="rdp-cell"
+                  >
+                    <button
+                      aria-label="23rd November 2022 (Wednesday)"
+                      class="rdp-button_reset rdp-button rdp-day"
+                      name="day"
+                      tabindex="-1"
+                      type="button"
+                    >
+                      23
+                    </button>
+                  </td>
+                  <td
+                    class="rdp-cell"
+                  >
+                    <button
+                      aria-label="24th November 2022 (Thursday)"
+                      class="rdp-button_reset rdp-button rdp-day"
+                      name="day"
+                      tabindex="-1"
+                      type="button"
+                    >
+                      24
+                    </button>
+                  </td>
+                  <td
+                    class="rdp-cell"
+                  >
+                    <button
+                      aria-label="25th November 2022 (Friday)"
+                      class="rdp-button_reset rdp-button rdp-day"
+                      name="day"
+                      tabindex="-1"
+                      type="button"
+                    >
+                      25
+                    </button>
+                  </td>
+                  <td
+                    class="rdp-cell"
+                  >
+                    <button
+                      aria-label="26th November 2022 (Saturday)"
+                      class="rdp-button_reset rdp-button rdp-day"
+                      name="day"
+                      tabindex="-1"
+                      type="button"
+                    >
+                      26
+                    </button>
+                  </td>
+                </tr>
+                <tr
+                  class="rdp-row"
+                >
+                  <td
+                    class="rdp-cell"
+                  >
+                    <button
+                      aria-label="27th November 2022 (Sunday)"
+                      class="rdp-button_reset rdp-button rdp-day"
+                      name="day"
+                      tabindex="-1"
+                      type="button"
+                    >
+                      27
+                    </button>
+                  </td>
+                  <td
+                    class="rdp-cell"
+                  >
+                    <button
+                      aria-label="28th November 2022 (Monday)"
+                      class="rdp-button_reset rdp-button rdp-day"
+                      name="day"
+                      tabindex="-1"
+                      type="button"
+                    >
+                      28
+                    </button>
+                  </td>
+                  <td
+                    class="rdp-cell"
+                  >
+                    <button
+                      aria-label="29th November 2022 (Tuesday)"
+                      class="rdp-button_reset rdp-button rdp-day"
+                      name="day"
+                      tabindex="-1"
+                      type="button"
+                    >
+                      29
+                    </button>
+                  </td>
+                  <td
+                    class="rdp-cell"
+                  >
+                    <button
+                      aria-label="30th November 2022 (Wednesday)"
+                      class="rdp-button_reset rdp-button rdp-day"
+                      name="day"
+                      tabindex="-1"
+                      type="button"
+                    >
+                      30
+                    </button>
+                  </td>
+                  <td
+                    class="rdp-cell"
+                  />
+                  <td
+                    class="rdp-cell"
+                  />
+                  <td
+                    class="rdp-cell"
+                  />
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    data-focus-guard="true"
+    style="width: 1px; height: 0px; padding: 0px; overflow: hidden; position: fixed; top: 1px; left: 1px;"
+    tabindex="0"
+  />
+</div>
+`;
+
+exports[`Calendar Single renders correctly 1`] = `
+<div>
+  <div
+    data-focus-guard="true"
+    style="width: 1px; height: 0px; padding: 0px; overflow: hidden; position: fixed; top: 1px; left: 1px;"
+    tabindex="0"
+  />
+  <div
+    data-focus-lock-disabled="false"
+  >
+    <div
+      class="css-11lmxmu-boxStyles-CalendarContainer"
+    >
+      <div
+        class="rdp "
+      >
+        <div
+          class="rdp-months"
+        >
+          <div
+            class="rdp-month rdp-caption_start rdp-caption_end"
+          >
+            <div
+              class="rdp-caption"
+            >
+              <h2
+                aria-atomic="true"
+                aria-live="polite"
+                class="rdp-caption_label"
+                id="react-day-picker-1"
+              >
+                November 2022
+              </h2>
+              <div
+                class="rdp-nav"
+              >
+                <button
+                  aria-label="Go to previous month"
+                  class="rdp-button_reset rdp-button rdp-nav_button rdp-nav_button_previous"
+                  name="previous-month"
+                  type="button"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="css-1cjetzb-Icon"
+                    clip-rule="evenodd"
+                    focusable="false"
+                    height="24"
+                    role="img"
+                    viewBox="0 0 24 24"
+                    width="24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M16 21L7 12L16 3"
+                    />
+                  </svg>
+                </button>
+                <button
+                  aria-label="Go to next month"
+                  class="rdp-button_reset rdp-button rdp-nav_button rdp-nav_button_next"
+                  name="next-month"
+                  type="button"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="css-1cjetzb-Icon"
+                    clip-rule="evenodd"
+                    focusable="false"
+                    height="24"
+                    role="img"
+                    viewBox="0 0 24 24"
+                    width="24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M8 3L17 12L8 21"
+                    />
+                  </svg>
+                </button>
+              </div>
+            </div>
+            <table
+              aria-labelledby="react-day-picker-1"
+              class="rdp-table"
+              role="grid"
+            >
+              <thead
+                class="rdp-head"
+              >
+                <tr
+                  class="rdp-head_row"
+                >
+                  <th
+                    class="rdp-head_cell"
+                    scope="col"
+                  >
+                    <span
+                      aria-hidden="true"
+                    >
+                      Su
+                    </span>
+                    <span
+                      class="rdp-vhidden"
+                    >
+                      Sunday
+                    </span>
+                  </th>
+                  <th
+                    class="rdp-head_cell"
+                    scope="col"
+                  >
+                    <span
+                      aria-hidden="true"
+                    >
+                      Mo
+                    </span>
+                    <span
+                      class="rdp-vhidden"
+                    >
+                      Monday
+                    </span>
+                  </th>
+                  <th
+                    class="rdp-head_cell"
+                    scope="col"
+                  >
+                    <span
+                      aria-hidden="true"
+                    >
+                      Tu
+                    </span>
+                    <span
+                      class="rdp-vhidden"
+                    >
+                      Tuesday
+                    </span>
+                  </th>
+                  <th
+                    class="rdp-head_cell"
+                    scope="col"
+                  >
+                    <span
+                      aria-hidden="true"
+                    >
+                      We
+                    </span>
+                    <span
+                      class="rdp-vhidden"
+                    >
+                      Wednesday
+                    </span>
+                  </th>
+                  <th
+                    class="rdp-head_cell"
+                    scope="col"
+                  >
+                    <span
+                      aria-hidden="true"
+                    >
+                      Th
+                    </span>
+                    <span
+                      class="rdp-vhidden"
+                    >
+                      Thursday
+                    </span>
+                  </th>
+                  <th
+                    class="rdp-head_cell"
+                    scope="col"
+                  >
+                    <span
+                      aria-hidden="true"
+                    >
+                      Fr
+                    </span>
+                    <span
+                      class="rdp-vhidden"
+                    >
+                      Friday
+                    </span>
+                  </th>
+                  <th
+                    class="rdp-head_cell"
+                    scope="col"
+                  >
+                    <span
+                      aria-hidden="true"
+                    >
+                      Sa
+                    </span>
+                    <span
+                      class="rdp-vhidden"
+                    >
+                      Saturday
+                    </span>
+                  </th>
+                </tr>
+              </thead>
+              <tbody
+                class="rdp-tbody"
+              >
+                <tr
+                  class="rdp-row"
+                >
+                  <td
+                    class="rdp-cell"
+                  />
+                  <td
+                    class="rdp-cell"
+                  />
+                  <td
+                    class="rdp-cell"
+                  >
+                    <button
+                      aria-label="1st November 2022 (Tuesday)"
+                      aria-pressed="true"
+                      class="rdp-button_reset rdp-button rdp-day rdp-day_selected rdp-day_today"
+                      name="day"
+                      tabindex="0"
+                      type="button"
+                    >
+                      1
+                    </button>
+                  </td>
+                  <td
+                    class="rdp-cell"
+                  >
+                    <button
+                      aria-label="2nd November 2022 (Wednesday)"
+                      class="rdp-button_reset rdp-button rdp-day"
+                      name="day"
+                      tabindex="-1"
+                      type="button"
+                    >
+                      2
+                    </button>
+                  </td>
+                  <td
+                    class="rdp-cell"
+                  >
+                    <button
+                      aria-label="3rd November 2022 (Thursday)"
+                      class="rdp-button_reset rdp-button rdp-day"
+                      name="day"
+                      tabindex="-1"
+                      type="button"
+                    >
+                      3
+                    </button>
+                  </td>
+                  <td
+                    class="rdp-cell"
+                  >
+                    <button
+                      aria-label="4th November 2022 (Friday)"
+                      class="rdp-button_reset rdp-button rdp-day"
+                      name="day"
+                      tabindex="-1"
+                      type="button"
+                    >
+                      4
+                    </button>
+                  </td>
+                  <td
+                    class="rdp-cell"
+                  >
+                    <button
+                      aria-label="5th November 2022 (Saturday)"
+                      class="rdp-button_reset rdp-button rdp-day"
+                      name="day"
+                      tabindex="-1"
+                      type="button"
+                    >
+                      5
+                    </button>
+                  </td>
+                </tr>
+                <tr
+                  class="rdp-row"
+                >
+                  <td
+                    class="rdp-cell"
+                  >
+                    <button
+                      aria-label="6th November 2022 (Sunday)"
+                      class="rdp-button_reset rdp-button rdp-day"
+                      name="day"
+                      tabindex="-1"
+                      type="button"
+                    >
+                      6
+                    </button>
+                  </td>
+                  <td
+                    class="rdp-cell"
+                  >
+                    <button
+                      aria-label="7th November 2022 (Monday)"
+                      class="rdp-button_reset rdp-button rdp-day"
+                      name="day"
+                      tabindex="-1"
+                      type="button"
+                    >
+                      7
+                    </button>
+                  </td>
+                  <td
+                    class="rdp-cell"
+                  >
+                    <button
+                      aria-label="8th November 2022 (Tuesday)"
+                      class="rdp-button_reset rdp-button rdp-day"
+                      name="day"
+                      tabindex="-1"
+                      type="button"
+                    >
+                      8
+                    </button>
+                  </td>
+                  <td
+                    class="rdp-cell"
+                  >
+                    <button
+                      aria-label="9th November 2022 (Wednesday)"
+                      class="rdp-button_reset rdp-button rdp-day"
+                      name="day"
+                      tabindex="-1"
+                      type="button"
+                    >
+                      9
+                    </button>
+                  </td>
+                  <td
+                    class="rdp-cell"
+                  >
+                    <button
+                      aria-label="10th November 2022 (Thursday)"
+                      class="rdp-button_reset rdp-button rdp-day"
+                      name="day"
+                      tabindex="-1"
+                      type="button"
+                    >
+                      10
+                    </button>
+                  </td>
+                  <td
+                    class="rdp-cell"
+                  >
+                    <button
+                      aria-label="11th November 2022 (Friday)"
+                      class="rdp-button_reset rdp-button rdp-day"
+                      name="day"
+                      tabindex="-1"
+                      type="button"
+                    >
+                      11
+                    </button>
+                  </td>
+                  <td
+                    class="rdp-cell"
+                  >
+                    <button
+                      aria-label="12th November 2022 (Saturday)"
+                      class="rdp-button_reset rdp-button rdp-day"
+                      name="day"
+                      tabindex="-1"
+                      type="button"
+                    >
+                      12
+                    </button>
+                  </td>
+                </tr>
+                <tr
+                  class="rdp-row"
+                >
+                  <td
+                    class="rdp-cell"
+                  >
+                    <button
+                      aria-label="13th November 2022 (Sunday)"
+                      class="rdp-button_reset rdp-button rdp-day"
+                      name="day"
+                      tabindex="-1"
+                      type="button"
+                    >
+                      13
+                    </button>
+                  </td>
+                  <td
+                    class="rdp-cell"
+                  >
+                    <button
+                      aria-label="14th November 2022 (Monday)"
+                      class="rdp-button_reset rdp-button rdp-day"
+                      name="day"
+                      tabindex="-1"
+                      type="button"
+                    >
+                      14
+                    </button>
+                  </td>
+                  <td
+                    class="rdp-cell"
+                  >
+                    <button
+                      aria-label="15th November 2022 (Tuesday)"
+                      class="rdp-button_reset rdp-button rdp-day"
+                      name="day"
+                      tabindex="-1"
+                      type="button"
+                    >
+                      15
+                    </button>
+                  </td>
+                  <td
+                    class="rdp-cell"
+                  >
+                    <button
+                      aria-label="16th November 2022 (Wednesday)"
+                      class="rdp-button_reset rdp-button rdp-day"
+                      name="day"
+                      tabindex="-1"
+                      type="button"
+                    >
+                      16
+                    </button>
+                  </td>
+                  <td
+                    class="rdp-cell"
+                  >
+                    <button
+                      aria-label="17th November 2022 (Thursday)"
+                      class="rdp-button_reset rdp-button rdp-day"
+                      name="day"
+                      tabindex="-1"
+                      type="button"
+                    >
+                      17
+                    </button>
+                  </td>
+                  <td
+                    class="rdp-cell"
+                  >
+                    <button
+                      aria-label="18th November 2022 (Friday)"
+                      class="rdp-button_reset rdp-button rdp-day"
+                      name="day"
+                      tabindex="-1"
+                      type="button"
+                    >
+                      18
+                    </button>
+                  </td>
+                  <td
+                    class="rdp-cell"
+                  >
+                    <button
+                      aria-label="19th November 2022 (Saturday)"
+                      class="rdp-button_reset rdp-button rdp-day"
+                      name="day"
+                      tabindex="-1"
+                      type="button"
+                    >
+                      19
+                    </button>
+                  </td>
+                </tr>
+                <tr
+                  class="rdp-row"
+                >
+                  <td
+                    class="rdp-cell"
+                  >
+                    <button
+                      aria-label="20th November 2022 (Sunday)"
+                      class="rdp-button_reset rdp-button rdp-day"
+                      name="day"
+                      tabindex="-1"
+                      type="button"
+                    >
+                      20
+                    </button>
+                  </td>
+                  <td
+                    class="rdp-cell"
+                  >
+                    <button
+                      aria-label="21st November 2022 (Monday)"
+                      class="rdp-button_reset rdp-button rdp-day"
+                      name="day"
+                      tabindex="-1"
+                      type="button"
+                    >
+                      21
+                    </button>
+                  </td>
+                  <td
+                    class="rdp-cell"
+                  >
+                    <button
+                      aria-label="22nd November 2022 (Tuesday)"
+                      class="rdp-button_reset rdp-button rdp-day"
+                      name="day"
+                      tabindex="-1"
+                      type="button"
+                    >
+                      22
+                    </button>
+                  </td>
+                  <td
+                    class="rdp-cell"
+                  >
+                    <button
+                      aria-label="23rd November 2022 (Wednesday)"
+                      class="rdp-button_reset rdp-button rdp-day"
+                      name="day"
+                      tabindex="-1"
+                      type="button"
+                    >
+                      23
+                    </button>
+                  </td>
+                  <td
+                    class="rdp-cell"
+                  >
+                    <button
+                      aria-label="24th November 2022 (Thursday)"
+                      class="rdp-button_reset rdp-button rdp-day"
+                      name="day"
+                      tabindex="-1"
+                      type="button"
+                    >
+                      24
+                    </button>
+                  </td>
+                  <td
+                    class="rdp-cell"
+                  >
+                    <button
+                      aria-label="25th November 2022 (Friday)"
+                      class="rdp-button_reset rdp-button rdp-day"
+                      name="day"
+                      tabindex="-1"
+                      type="button"
+                    >
+                      25
+                    </button>
+                  </td>
+                  <td
+                    class="rdp-cell"
+                  >
+                    <button
+                      aria-label="26th November 2022 (Saturday)"
+                      class="rdp-button_reset rdp-button rdp-day"
+                      name="day"
+                      tabindex="-1"
+                      type="button"
+                    >
+                      26
+                    </button>
+                  </td>
+                </tr>
+                <tr
+                  class="rdp-row"
+                >
+                  <td
+                    class="rdp-cell"
+                  >
+                    <button
+                      aria-label="27th November 2022 (Sunday)"
+                      class="rdp-button_reset rdp-button rdp-day"
+                      name="day"
+                      tabindex="-1"
+                      type="button"
+                    >
+                      27
+                    </button>
+                  </td>
+                  <td
+                    class="rdp-cell"
+                  >
+                    <button
+                      aria-label="28th November 2022 (Monday)"
+                      class="rdp-button_reset rdp-button rdp-day"
+                      name="day"
+                      tabindex="-1"
+                      type="button"
+                    >
+                      28
+                    </button>
+                  </td>
+                  <td
+                    class="rdp-cell"
+                  >
+                    <button
+                      aria-label="29th November 2022 (Tuesday)"
+                      class="rdp-button_reset rdp-button rdp-day"
+                      name="day"
+                      tabindex="-1"
+                      type="button"
+                    >
+                      29
+                    </button>
+                  </td>
+                  <td
+                    class="rdp-cell"
+                  >
+                    <button
+                      aria-label="30th November 2022 (Wednesday)"
+                      class="rdp-button_reset rdp-button rdp-day"
+                      name="day"
+                      tabindex="-1"
+                      type="button"
+                    >
+                      30
+                    </button>
+                  </td>
+                  <td
+                    class="rdp-cell"
+                  />
+                  <td
+                    class="rdp-cell"
+                  />
+                  <td
+                    class="rdp-cell"
+                  />
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    data-focus-guard="true"
+    style="width: 1px; height: 0px; padding: 0px; overflow: hidden; position: fixed; top: 1px; left: 1px;"
+    tabindex="0"
+  />
+</div>
+`;

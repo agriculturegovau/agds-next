@@ -1,7 +1,7 @@
-import { Box, Flex, Stack } from '@ag.ds-next/react/box';
-import { boxPalette, tokens, Spacing } from '@ag.ds-next/react/core';
-import { proseBlockClassname } from '@ag.ds-next/react/prose';
-import { Text } from '@ag.ds-next/react/text';
+import { Box, Flex, Stack } from '@ag.ds-next/box';
+import { boxPalette, tokens, Spacing } from '@ag.ds-next/core';
+import { proseBlockClassname } from '@ag.ds-next/prose';
+import { Text } from '@ag.ds-next/text';
 
 type Entries<T> = {
 	[K in keyof T]: [K, T[K]];

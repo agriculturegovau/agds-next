@@ -7,9 +7,9 @@ import {
 } from 'react';
 import type { MDXRemoteProps } from 'next-mdx-remote';
 import Link from 'next/link';
-import { proseBlockClassname } from '@ag.ds-next/react/prose';
-import { PageAlert, PageAlertProps } from '@ag.ds-next/react/page-alert';
-import { ButtonLink } from '@ag.ds-next/react/button';
+import { proseBlockClassname } from '@ag.ds-next/prose';
+import { PageAlert, PageAlertProps } from '@ag.ds-next/page-alert';
+import { ButtonLink } from '@ag.ds-next/button';
 import { slugify } from '../lib/slugify';
 import generatedComponentPropsData from '../__generated__/componentProps.json';
 import { Code } from './Code';

@@ -1,7 +1,7 @@
 import { GetStaticProps, InferGetStaticPropsType } from 'next';
 import { MDXRemote } from 'next-mdx-remote';
-import { Box } from '@ag.ds-next/react/box';
-import { Prose } from '@ag.ds-next/react/prose';
+import { Box } from '@ag.ds-next/box';
+import { Prose } from '@ag.ds-next/prose';
 import {
 	getTemplate,
 	getTemplateBreadcrumbs,

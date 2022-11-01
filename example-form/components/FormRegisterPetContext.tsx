@@ -6,7 +6,7 @@ import {
 	useState,
 } from 'react';
 import { useRouter } from 'next/router';
-import { ProgressIndicatorItemStatus } from '@ag.ds-next/react/progress-indicator';
+import { ProgressIndicatorItemStatus } from '@ag.ds-next/progress-indicator';
 import {
 	FormState as Task1FormState,
 	formSchema as task1FormSchema,
