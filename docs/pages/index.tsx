@@ -1,6 +1,6 @@
 import { Columns } from '@ag.ds-next/columns';
 import { SectionContent } from '@ag.ds-next/content';
-import { Stack } from '@ag.ds-next/box';
+import { Box, Stack } from '@ag.ds-next/box';
 import { CallToActionLink } from '@ag.ds-next/call-to-action';
 import { Prose } from '@ag.ds-next/prose';
 import { TextLink } from '@ag.ds-next/text-link';
@@ -19,7 +19,7 @@ export default function Homepage() {
 		<>
 			<DocumentTitle />
 			<AppLayout>
-				<main id="main-content">
+				<Box as="main" focus id="main-content" tabIndex={-1}>
 					<HeroBanner>
 						<HeroBannerTitleContainer>
 							<HeroBannerTitle>
@@ -85,7 +85,7 @@ export default function Homepage() {
 							</Columns>
 						</Stack>
 					</SectionContent>
-				</main>
+				</Box>
 			</AppLayout>
 		</>
 	);
