@@ -14,7 +14,7 @@ export default function TokensColorPage() {
 		<Box palette={isDarkMode ? 'dark' : 'light'} background="body">
 			<DocumentTitle title="Color tokens" />
 			<TokenLayout
-				title="Color tokens"
+				title="Colour tokens"
 				description="How to use colour to design consistent, purposeful, and accessible products."
 				editPath="/docs/pages/tokens/color.tsx"
 			>
