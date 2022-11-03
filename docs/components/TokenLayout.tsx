@@ -4,7 +4,7 @@ import { PageLayout } from './PageLayout';
 import { PageTitle } from './PageTitle';
 
 export const navLinks = [
-	{ href: '/tokens/color', label: 'Color' },
+	{ href: '/tokens/colour', label: 'Colour' },
 	{ href: '/tokens/breakpoints', label: 'Breakpoints' },
 	{ href: '/tokens/border', label: 'Border' },
 	{ href: '/tokens/max-width', label: 'Max Width' },
