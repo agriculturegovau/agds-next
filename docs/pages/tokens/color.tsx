@@ -23,11 +23,11 @@ export default function TokensColorPage() {
 					<p>
 						There are 2 colour palettes, light and dark. Each colour palette is
 						divided into foreground, background, border, and system colours
-						which all have a specific purpose:
+						which all have a specific purpose.
 					</p>
 					<div className={proseBlockClassname}>
 						<InpageNav
-							title="In this section"
+							title="On this page"
 							links={[
 								{ href: '#foreground', label: 'Foreground colors' },
 
