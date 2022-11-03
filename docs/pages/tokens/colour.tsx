@@ -7,7 +7,6 @@ import { DocumentTitle } from '../../components/DocumentTitle';
 import { ColorTable } from '../../components/TokenColorTable';
 import { TokenLayout } from '../../components/TokenLayout';
 import { LinkComponent } from '../../components/LinkComponent';
-import { Code } from '../../components/Code';
 
 export default function TokensColorPage() {
 	const [isDarkMode, setDarkMode] = useState(false);
@@ -81,8 +80,10 @@ export default function TokensColorPage() {
 						sections of an interface use the dark colour palette.
 					</p>
 					<p>
-						<a href="/guides/custom-theme">See the theming guide</a> for more on
-						how this works in code.
+						<LinkComponent href="/guides/custom-theme">
+							See the theming guide
+						</LinkComponent>{' '}
+						for more on how this works in code.
 					</p>
 
 					<h3>Don’t rely on colour alone to convey meaning</h3>
