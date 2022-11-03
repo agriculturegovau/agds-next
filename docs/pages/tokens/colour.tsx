@@ -6,6 +6,7 @@ import { InpageNav } from '@ag.ds-next/inpage-nav';
 import { DocumentTitle } from '../../components/DocumentTitle';
 import { ColorTable } from '../../components/TokenColorTable';
 import { TokenLayout } from '../../components/TokenLayout';
+import { LinkComponent } from '../../components/LinkComponent';
 
 export default function TokensColorPage() {
 	const [isDarkMode, setDarkMode] = useState(false);
@@ -23,11 +24,11 @@ export default function TokensColorPage() {
 					<p>
 						There are 2 colour palettes, light and dark. Each colour palette is
 						divided into foreground, background, border, and system colours
-						which all have a specific purpose:
+						which all have a specific purpose.
 					</p>
 					<div className={proseBlockClassname}>
 						<InpageNav
-							title="In this section"
+							title="On this page"
 							links={[
 								{ href: '#foreground', label: 'Foreground colors' },
 
@@ -48,7 +49,10 @@ export default function TokensColorPage() {
 						className={proseBlockClassname}
 					>
 						<h3>Light vs dark palette</h3>
-						<p>Toggle the dark palette colour tokens via the switch below.</p>
+						<p>
+							Toggle the dark palette colour tokens for the whole page via the
+							switch below. <a href="#palettes">Learn more about palettes</a>.
+						</p>
 						<div className={proseBlockClassname}>
 							<Switch
 								label="Enable dark palette"
@@ -59,6 +63,29 @@ export default function TokensColorPage() {
 					</Box>
 					<ColorTable activePalette={isDarkMode ? 'dark' : 'light'} />
 					<h2>Usage guidelines</h2>
+					<h3 id="palettes">Use palettes to divide sections</h3>
+					<p>
+						An interface can be divided into rows or sections that span the full
+						width of a screen. A section can use either the light or dark colour
+						palette.
+					</p>
+					<p>
+						For example, the website header and footer might use the dark
+						palette to make them more prominent, while the content area in
+						between uses the light palette.
+					</p>
+					<p>
+						Components that sit inside light sections of an interface use the
+						light colour palette. Similarly, components that sit inside dark
+						sections of an interface use the dark colour palette.
+					</p>
+					<p>
+						<LinkComponent href="/guides/custom-theme">
+							See the theming guide
+						</LinkComponent>{' '}
+						for more on how this works in code.
+					</p>
+
 					<h3>Don’t rely on colour alone to convey meaning</h3>
 					<p>
 						To ensure the colourblind can use our interface, we shouldn’t rely
