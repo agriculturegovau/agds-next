@@ -1,6 +1,6 @@
 ---
-title: Colours and Theming
-description: How theming works in the React component library
+title: Creating a custom theme
+description: How to create theme for your brand in the React component library.
 ---
 
 Our Design System has tokens for spacing, typography, borders, and colours. The colours used in our design system come from a **Theme**, which is a structure (schema) of colour tokens that semantically describe how they will be used. A Theme is made up of light and dark **palettes**, which are made up of backgrounds, foregrounds, and system colours. The full schema can be found at the bottom of this page.
@@ -132,14 +132,12 @@ export const myTheme: Theme = {
 };
 ```
 
-Typescript should help you by autocompleting token names, the full list of token names are shown at the bottom of the page.
+Typescript should help you by autocompleting token names. [The full schema is visible here](https://github.com/steelthreads/agds-next/blob/main/packages/core/src/goldTheme.ts).
 
 ### Tips for picking colours
 
-- Mix of neutrals
-- System colours
-- Contrast
+A Theme should include a range of neutrals for foreground (text), background, and borders. These should be used to create contrast between elements. For example, a dark background with a light foreground, or a light background with a dark foreground.
 
-## Theme schema
+You need to make sure all colours have the correct levels of contrast between foreground and background colours. They should meet the [WCAG 2.1 AA](https://www.w3.org/TR/WCAG21/) contrast guidelines. You can use the [WebAIM Contrast Checker](https://webaim.org/resources/contrastchecker/) to check your colours.
 
-Go to the [GOLD Theme](https://github.com/steelthreads/agds-next/blob/main/packages/core/src/goldTheme.ts) to see our theme schema.
+We recommend referencing our [Colour tokens](/tokens/colour) page to see our colours and how they are used in AgDS.
