@@ -6,7 +6,9 @@ import { Columns, Column } from '@ag.ds-next/columns';
 import { SideNav } from '@ag.ds-next/side-nav';
 import { SkipLinks, SkipLinksProps } from '@ag.ds-next/skip-link';
 import { Breadcrumbs } from '@ag.ds-next/breadcrumbs';
+import { MAIN_ID } from '../lib/constants';
 import { EditPage } from './EditPage';
+import { PseudoFocusRing, pseudoFocusRingStyles } from './PseudoFocusRing';
 
 export function PageLayout({
 	sideNav,
@@ -45,7 +47,9 @@ export function PageLayout({
 					columnSpan={{ xs: 12, md: 8 }}
 					columnStart={{ lg: sideNav ? 5 : 1 }}
 					as="main"
-					id="main-content"
+					id={MAIN_ID}
+					css={pseudoFocusRingStyles}
+					tabIndex={-1}
 				>
 					{skipLinks?.length ? <SkipLinks links={skipLinks} /> : null}
 					<Stack flexGrow={1} gap={3}>
@@ -57,6 +61,7 @@ export function PageLayout({
 							</Flex>
 						)}
 					</Stack>
+					<PseudoFocusRing />
 				</Column>
 			</Columns>
 		</PageContent>

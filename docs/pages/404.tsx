@@ -5,13 +5,23 @@ import { PageContent } from '@ag.ds-next/content';
 import { Stack } from '@ag.ds-next/box';
 import { AppLayout } from '../components/AppLayout';
 import { DocumentTitle } from '../components/DocumentTitle';
+import { MAIN_ID } from '../lib/constants';
+import {
+	PseudoFocusRing,
+	pseudoFocusRingStyles,
+} from '../components/PseudoFocusRing';
 
 export default function NotFoundPage() {
 	return (
 		<>
 			<DocumentTitle title="Error 404" />
 			<AppLayout>
-				<PageContent as="main" id="main-content">
+				<PageContent
+					as="main"
+					id={MAIN_ID}
+					css={pseudoFocusRingStyles}
+					tabIndex={-1}
+				>
 					<Stack gap={1.5}>
 						<H1>Page not found</H1>
 						<Text as="p" fontSize="md">
@@ -20,6 +30,7 @@ export default function NotFoundPage() {
 						</Text>
 						<Text>Error code: 404</Text>
 					</Stack>
+					<PseudoFocusRing />
 				</PageContent>
 			</AppLayout>
 		</>

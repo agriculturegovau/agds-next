@@ -1,6 +1,6 @@
 import { Columns } from '@ag.ds-next/columns';
 import { SectionContent } from '@ag.ds-next/content';
-import { Stack } from '@ag.ds-next/box';
+import { Box, Stack } from '@ag.ds-next/box';
 import { CallToActionLink } from '@ag.ds-next/call-to-action';
 import { Prose } from '@ag.ds-next/prose';
 import { TextLink } from '@ag.ds-next/text-link';
@@ -13,13 +13,18 @@ import {
 import { AppLayout } from '../components/AppLayout';
 import { PictogramCard } from '../components/PictogramCard';
 import { DocumentTitle } from '../components/DocumentTitle';
+import { MAIN_ID } from '../lib/constants';
+import {
+	pseudoFocusRingStyles,
+	PseudoFocusRing,
+} from '../components/PseudoFocusRing';
 
 export default function Homepage() {
 	return (
 		<>
 			<DocumentTitle />
 			<AppLayout>
-				<main id="main-content">
+				<Box as="main" css={pseudoFocusRingStyles} id={MAIN_ID} tabIndex={-1}>
 					<HeroBanner>
 						<HeroBannerTitleContainer>
 							<HeroBannerTitle>
@@ -85,7 +90,8 @@ export default function Homepage() {
 							</Columns>
 						</Stack>
 					</SectionContent>
-				</main>
+					<PseudoFocusRing />
+				</Box>
 			</AppLayout>
 		</>
 	);

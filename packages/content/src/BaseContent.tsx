@@ -9,6 +9,7 @@ export type BaseContentProps = PropsWithChildren<
 		as?: ElementType;
 		id?: string;
 		className?: string;
+		tabIndex?: number;
 	} & Pick<BoxProps, 'background' | 'palette'>
 >;
 
@@ -24,6 +25,7 @@ export function BaseContent({
 	background,
 	children,
 	paddingY,
+	tabIndex,
 }: BaseContentComponentProps) {
 	return (
 		<ContentSpacingContext.Provider value={paddingY}>
@@ -34,6 +36,7 @@ export function BaseContent({
 				background={background}
 				id={id}
 				className={className}
+				tabIndex={tabIndex}
 			>
 				<Box
 					width="100%"

@@ -1,6 +1,7 @@
 import { ReactNode } from 'react';
 import { Box, Flex } from '@ag.ds-next/box';
 import { SkipLinks } from '@ag.ds-next/skip-link';
+import { MAIN_ID } from '../lib/constants';
 import { SiteHeader } from './SiteHeader';
 import { SiteFooter } from './SiteFooter';
 
@@ -13,7 +14,7 @@ export const AppLayout = ({ children }: AppLayoutProps) => {
 		<>
 			<SkipLinks
 				links={[
-					{ href: '#main-content', label: 'Skip to main content' },
+					{ href: `#${MAIN_ID}`, label: 'Skip to main content' },
 					{ href: '#main-nav', label: 'Skip to main navigation' },
 				]}
 			/>
