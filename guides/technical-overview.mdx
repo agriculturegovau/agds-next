@@ -1,0 +1,34 @@
+---
+title: Technical overview
+description: Explaining technical decisions in the AgDS component library
+---
+
+## React
+
+The AgDS component library has been built using [React](https://reactjs.org/). React is a JavaScript library for building user interfaces and uses a component based model for defining user interface elements.
+
+## NPM Packages
+
+The delivery method for the AgDS component library is via a single [NPM](https://www.npmjs.com/) package. NPM is the package manager for JavaScript and the world's largest software registry.
+
+Every component in the AgDS component library has an individual entry point in the `@ag.ds-next/react` package. This keeps application bundles small and avoids end users downloading unnecessary dependencies.
+
+## TypeScript
+
+All of the AgDS components are built using [Typescript](https://www.typescriptlang.org/), a typed superset of JavaScript that compiles to plain JavaScript.
+
+You don't need to be using Typescript in order to use the AgDS component library, but it is highly recommended.
+
+## Emotion
+
+[Emotion](https://emotion.sh/docs/introduction) is library designed for writing CSS styles with JavaScript. We use CSS-in-JS as it allows us to easily define and scope the styles for a component alongside it's definiton.
+
+## NextJS
+
+[NextJS](https://nextjs.org/) is a popular framework for building web applications with [React](https://reactjs.org/).
+
+Described as 'the SDK for the web', it handles the tooling and configuration needed for a React app, and provides additional structure, features, and optimizations for your application. It also has fantastic documentation and developer experience.
+
+We use NextJS to build our documentation site, templates and internal test applications.
+
+Unless you have strong technical reasons to use another framework, we highly recommend you clone our NextJS based [Starter Kit](https://github.com/steelthreads/agds-starter-kit) as the starting point for your next project.
