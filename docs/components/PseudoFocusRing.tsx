@@ -22,6 +22,7 @@ export function PseudoFocusRing() {
 export const pseudoFocusRingStyles = {
 	position: 'relative',
 	[`:focus > [${focusAttribute}]`]: {
+		// Removes the offset from our default focus ring
 		border: `${packs.outline.outlineWidth} ${packs.outline.outlineStyle} ${packs.outline.outlineColor}`,
 	},
 } as const;
