@@ -42,7 +42,7 @@ export const Example = () => {
 
 					<Flex alignItems="center" gap={0.5}>
 						<Text color="muted">10:15am</Text>
-						<IndicatorDot tone="action" />
+						<IndicatorDot />
 						<VisuallyHidden>Unread message</VisuallyHidden>
 					</Flex>
 				</Flex>

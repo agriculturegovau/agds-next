@@ -81,7 +81,7 @@ exports[`StatusBadge tone: neutral renders correctly 1`] = `
     class="css-13gpbg6-boxStyles-StatusBadge"
   >
     <div
-      class="css-1dq4bau-boxStyles-IndicatorDot"
+      class="css-1ttchuf-boxStyles-NeutralDot"
     />
     <span
       class="css-10dvol5-boxStyles-Text-StatusBadge"
