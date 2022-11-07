@@ -397,10 +397,7 @@ const KitchenSink = ({ background }: { background: 'body' | 'bodyAlt' }) => {
 								<NotificationBadge tone="action" value={8} />
 							</Flex>
 
-							<Flex gap={0.5}>
-								<IndicatorDot tone="neutral" />
-								<IndicatorDot tone="action" />
-							</Flex>
+							<IndicatorDot />
 
 							<Table striped>
 								<TableCaption>

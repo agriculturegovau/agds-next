@@ -14,9 +14,6 @@ export default {
 export const Basic: ComponentStory<typeof IndicatorDot> = (args) => (
 	<IndicatorDot {...args} />
 );
-Basic.args = {
-	tone: 'neutral',
-};
 
 export const Example = () => {
 	return (
