@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import { Flex } from '@ag.ds-next/box';
+import { Box, Flex } from '@ag.ds-next/box';
 import { boxPalette, mapSpacing } from '@ag.ds-next/core';
 import {
 	SuccessIcon,
@@ -8,7 +8,6 @@ import {
 	WarningIcon,
 } from '@ag.ds-next/icon';
 import { Text } from '@ag.ds-next/text';
-import { IndicatorDot } from './IndicatorDot';
 
 export type StatusBadgeProps = {
 	/** The status that is printed in the text label. */
@@ -57,10 +56,22 @@ const iconWidth = '1.375rem'; // 22px
 
 export type StatusBadgeTone = keyof typeof toneMap;
 
+const NeutralDot = () => (
+	<Box
+		highContrastOutline
+		css={{
+			width: 8,
+			height: 8,
+			borderRadius: 4,
+			backgroundColor: boxPalette.foregroundMuted,
+		}}
+	/>
+);
+
 const toneMap = {
 	neutral: {
 		borderColor: boxPalette.border,
-		icon: () => <IndicatorDot tone="neutral" />,
+		icon: () => <NeutralDot />,
 	},
 	success: {
 		borderColor: boxPalette.systemSuccess,

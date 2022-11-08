@@ -14,9 +14,6 @@ export default {
 export const Basic: ComponentStory<typeof IndicatorDot> = (args) => (
 	<IndicatorDot {...args} />
 );
-Basic.args = {
-	tone: 'neutral',
-};
 
 export const Example = () => {
 	return (
@@ -42,7 +39,7 @@ export const Example = () => {
 
 					<Flex alignItems="center" gap={0.5}>
 						<Text color="muted">10:15am</Text>
-						<IndicatorDot tone="action" />
+						<IndicatorDot />
 						<VisuallyHidden>Unread message</VisuallyHidden>
 					</Flex>
 				</Flex>
