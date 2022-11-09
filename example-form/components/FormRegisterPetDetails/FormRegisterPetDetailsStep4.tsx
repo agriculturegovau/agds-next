@@ -25,7 +25,7 @@ export const FormRegisterPetDetailsStep4 = () => {
 		>
 			{/** Summary: Step 0 */}
 			<Stack gap={1.5} alignItems="flex-start">
-				<H2>{FORM_STEPS[0].label}</H2>
+				<H2 as="h3">{FORM_STEPS[0].label}</H2>
 				<FormDefinitionList
 					items={[
 						{
@@ -40,7 +40,7 @@ export const FormRegisterPetDetailsStep4 = () => {
 			</Stack>
 			{/** Summary: Step 1 */}
 			<Stack gap={1.5} alignItems="flex-start">
-				<H2>{FORM_STEPS[1].label}</H2>
+				<H2 as="h3">{FORM_STEPS[1].label}</H2>
 				<FormDefinitionList
 					items={[
 						{
@@ -66,7 +66,7 @@ export const FormRegisterPetDetailsStep4 = () => {
 				</Button>
 			</Stack>
 			<Stack gap={1.5} alignItems="flex-start">
-				<H2>{FORM_STEPS[2].label}</H2>
+				<H2 as="h3">{FORM_STEPS[2].label}</H2>
 				<FormDefinitionList
 					items={[
 						{
@@ -82,7 +82,7 @@ export const FormRegisterPetDetailsStep4 = () => {
 				</Button>
 			</Stack>
 			<Stack gap={1.5} alignItems="flex-start">
-				<H2>{FORM_STEPS[3].label}</H2>
+				<H2 as="h3">{FORM_STEPS[3].label}</H2>
 				<FormDefinitionList
 					items={[
 						{
