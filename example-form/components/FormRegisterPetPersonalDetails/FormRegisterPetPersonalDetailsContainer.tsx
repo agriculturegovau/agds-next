@@ -3,7 +3,7 @@ import { Stack } from '@ag.ds-next/box';
 import { PageAlert } from '@ag.ds-next/page-alert';
 import { H1 } from '@ag.ds-next/heading';
 import { Text } from '@ag.ds-next/text';
-import { PageTitle } from '../PageTitle';
+import { FormStepTitle } from '../FormStepTitle';
 import { useFormRegisterPetPersonalDetails } from './FormRegisterPetPersonalDetails';
 
 export const FormRegisterPetPersonalDetailsContainer = ({
@@ -28,10 +28,10 @@ export const FormRegisterPetPersonalDetailsContainer = ({
 
 	return (
 		<Stack gap={3} width="100%">
-			<PageTitle
-				pretext="Your personal details"
-				title={
-					<H1 ref={titleRef} tabIndex={-1} focus>
+			<FormStepTitle
+				sectionTitle="Your personal details"
+				pageTitle={
+					<H1 as="h2" ref={titleRef} tabIndex={-1} focus>
 						{title}
 					</H1>
 				}
