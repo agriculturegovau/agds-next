@@ -28,7 +28,7 @@ export function Header({
 	const hasRightContent = !!rightContent;
 	return (
 		<HeaderContainer background={background} size={size}>
-			<Column columnSpan={{ xs: 12, md: hasRightContent ? 8 : 12 }}>
+			<Column columnSpan={{ xs: 12, lg: hasRightContent ? 8 : 12 }}>
 				<HeaderBrand
 					badgeLabel={badgeLabel}
 					logo={logo}
@@ -39,7 +39,7 @@ export function Header({
 				/>
 			</Column>
 			{hasRightContent && (
-				<Column columnSpan={{ xs: 12, md: 4 }} css={packs.print.hidden}>
+				<Column columnSpan={{ xs: 12, lg: 4 }} css={packs.print.hidden}>
 					{rightContent}
 				</Column>
 			)}
