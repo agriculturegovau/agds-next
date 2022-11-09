@@ -5,6 +5,8 @@ import {
 	SearchBoxInput,
 	SearchBoxButton,
 } from '@ag.ds-next/search-box';
+import { Box } from '@ag.ds-next/box';
+import { MainNav } from '@ag.ds-next/main-nav';
 import { Header } from './Header';
 import { HeaderContainer } from './HeaderContainer';
 import { HeaderBrand } from './HeaderBrand';
