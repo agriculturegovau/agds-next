@@ -103,10 +103,3 @@ CoBranded.args = {
 	heading: 'TODO ...',
 };
 CoBranded.storyName = '🕥 Co-Branded';
-
-export const Hero = Template.bind({});
-Hero.args = {
-	...defaultArgs,
-	heading: 'TODO ...',
-};
-Hero.storyName = '🕥 Header Hero';
