@@ -48,6 +48,7 @@ export const ControlGroup = ({
 			<fieldset
 				aria-describedby={describedBy}
 				css={{ padding: 0, margin: 0, border: 'none' }}
+				{...(invalid && { 'aria-invalid': true })}
 			>
 				{label ? (
 					<FieldLabel as="legend" required={required}>
