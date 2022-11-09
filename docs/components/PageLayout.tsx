@@ -8,7 +8,6 @@ import { SkipLinks, SkipLinksProps } from '@ag.ds-next/skip-link';
 import { Breadcrumbs } from '@ag.ds-next/breadcrumbs';
 import { MAIN_ID } from '../lib/constants';
 import { EditPage } from './EditPage';
-import { PseudoFocusRing, pseudoFocusRingStyles } from './PseudoFocusRing';
 
 export function PageLayout({
 	sideNav,
@@ -47,8 +46,8 @@ export function PageLayout({
 					columnSpan={{ xs: 12, md: 8 }}
 					columnStart={{ lg: sideNav ? 5 : 1 }}
 					as="main"
+					focus
 					id={MAIN_ID}
-					css={pseudoFocusRingStyles}
 					tabIndex={-1}
 				>
 					{skipLinks?.length ? <SkipLinks links={skipLinks} /> : null}
@@ -61,7 +60,6 @@ export function PageLayout({
 							</Flex>
 						)}
 					</Stack>
-					<PseudoFocusRing />
 				</Column>
 			</Columns>
 		</PageContent>

@@ -10,7 +10,7 @@ export type BaseContentProps = PropsWithChildren<
 		id?: string;
 		className?: string;
 		tabIndex?: number;
-	} & Pick<BoxProps, 'background' | 'palette'>
+	} & Pick<BoxProps, 'background' | 'palette' | 'focus'>
 >;
 
 type BaseContentComponentProps = BaseContentProps & {
@@ -26,19 +26,17 @@ export function BaseContent({
 	children,
 	paddingY,
 	tabIndex,
+	focus,
 }: BaseContentComponentProps) {
 	return (
 		<ContentSpacingContext.Provider value={paddingY}>
-			<Flex
-				as={as}
-				justifyContent="center"
-				palette={palette}
-				background={background}
-				id={id}
-				className={className}
-				tabIndex={tabIndex}
-			>
+			<Flex justifyContent="center" palette={palette} background={background}>
 				<Box
+					as={as}
+					id={id}
+					className={className}
+					tabIndex={tabIndex}
+					focus={focus}
 					width="100%"
 					maxWidth={tokens.maxWidth.container}
 					paddingTop={paddingYMap[paddingY].top}
