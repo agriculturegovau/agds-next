@@ -45,6 +45,7 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
 					ref={ref}
 					type="checkbox"
 					disabled={disabled}
+					{...(invalid && { 'aria-invalid': true })}
 					{...props}
 				/>
 				<CheckboxIndicator

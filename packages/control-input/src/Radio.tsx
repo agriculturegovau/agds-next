@@ -40,7 +40,13 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>(function Radio(
 ) {
 	return (
 		<ControlContainer disabled={disabled}>
-			<ControlInput ref={ref} type="radio" disabled={disabled} {...props} />
+			<ControlInput
+				ref={ref}
+				type="radio"
+				disabled={disabled}
+				{...(invalid && { 'aria-invalid': true })}
+				{...props}
+			/>
 			<RadioIndicator
 				disabled={disabled}
 				invalid={invalid}
