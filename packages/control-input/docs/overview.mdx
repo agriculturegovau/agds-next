@@ -89,17 +89,22 @@ Add a border around the control inputs to indicate valid or invalid selections.
 	const [value, setValue] = React.useState();
 	const handlerForKey = React.useCallback((key) => () => setValue(key), []);
 	const isChecked = (key) => key === value;
+	const checkboxGroupId = 'contact-method';
+	const { messageId: checkboxGroupMessageId } =
+		useControlGroupIds(checkboxGroupId);
 
 	return (
 		<ControlGroup
 			label="Invalid example"
 			message="Please choose an option"
 			invalid
+			id={checkboxGroupId}
 		>
 			<Radio
 				checked={isChecked('phone')}
 				onChange={handlerForKey('phone')}
 				invalid
+				aria-describedby={checkboxGroupMessageId}
 			>
 				Phone
 			</Radio>
@@ -107,6 +112,7 @@ Add a border around the control inputs to indicate valid or invalid selections.
 				checked={isChecked('tablet')}
 				onChange={handlerForKey('tablet')}
 				invalid
+				aria-describedby={checkboxGroupMessageId}
 			>
 				Tablet
 			</Radio>
@@ -114,6 +120,7 @@ Add a border around the control inputs to indicate valid or invalid selections.
 				checked={isChecked('laptop')}
 				onChange={handlerForKey('laptop')}
 				invalid
+				aria-describedby={checkboxGroupMessageId}
 			>
 				Laptop
 			</Radio>
@@ -129,7 +136,7 @@ Add a border around the control inputs to indicate valid or invalid selections.
 	const isChecked = (key) => key === value;
 
 	return (
-		<ControlGroup label="Valid example" valid>
+		<ControlGroup label="Valid example" valid message="Correct!">
 			<Radio
 				checked={isChecked('phone')}
 				onChange={handlerForKey('phone')}
