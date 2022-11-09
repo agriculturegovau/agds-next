@@ -91,7 +91,11 @@ Add a border around the control inputs to indicate valid or invalid selections.
 	const isChecked = (key) => key === value;
 
 	return (
-		<ControlGroup label="Invalid example" message="Select an option" invalid>
+		<ControlGroup
+			label="Invalid example"
+			message="Please choose an option"
+			invalid
+		>
 			<Radio
 				checked={isChecked('phone')}
 				onChange={handlerForKey('phone')}
