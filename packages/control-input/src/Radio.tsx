@@ -3,11 +3,12 @@ import { RadioIndicator } from './RadioIndicator';
 import { ControlInput } from './ControlInput';
 import { ControlContainer } from './ControlContainer';
 import { ControlLabel } from './ControlLabel';
-import { ControlSize } from './utils';
+import { ControlSize, useControlGroupContext } from './utils';
 
 type NativeRadioProps = InputHTMLAttributes<HTMLInputElement>;
 
 type BaseCheckboxProps = PropsWithChildren<{
+	'aria-describedby'?: NativeRadioProps['aria-describedby'];
 	'aria-required'?: NativeRadioProps['aria-required'];
 	autoFocus?: NativeRadioProps['autoFocus'];
 	disabled?: NativeRadioProps['disabled'];
@@ -38,6 +39,12 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>(function Radio(
 	{ children, disabled, invalid, valid, size = 'md', ...props },
 	ref
 ) {
+	const { groupMessageId } = useControlGroupContext();
+	const describedByIds = [
+		groupMessageId || null,
+		props['aria-describedby'] || null,
+	].filter(Boolean);
+
 	return (
 		<ControlContainer disabled={disabled}>
 			<ControlInput
@@ -46,6 +53,9 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>(function Radio(
 				disabled={disabled}
 				{...(invalid && { 'aria-invalid': true })}
 				{...props}
+				aria-describedby={
+					describedByIds.length ? describedByIds.join(' ') : undefined
+				}
 			/>
 			<RadioIndicator
 				disabled={disabled}

@@ -7,6 +7,7 @@ import {
 	FieldLabel,
 	FieldMessage,
 } from '@ag.ds-next/field';
+import { ControlGroupContext } from './utils';
 
 export type ControlGroupProps = PropsWithChildren<{
 	/** If true, children will be stacked vertically. */
@@ -37,45 +38,49 @@ export const ControlGroup = ({
 }: ControlGroupProps) => {
 	const { groupId, hintId, messageId } = useControlGroupIds(id);
 	const describedByIds = [
-		hint ? hintId : null,
 		message ? messageId : null,
+		hint ? hintId : null,
 	].filter(Boolean);
-	const describedBy = describedByIds.length
+	const describedByIdString = describedByIds.length
 		? describedByIds.join(' ')
 		: undefined;
 	return (
-		<FieldContainer invalid={invalid} id={groupId}>
-			<fieldset
-				aria-describedby={describedBy}
-				css={{ padding: 0, margin: 0, border: 'none' }}
-				{...(invalid && { 'aria-invalid': true })}
-			>
-				{label ? (
-					<FieldLabel as="legend" required={required}>
-						{label}
-					</FieldLabel>
-				) : null}
-				<Stack
-					gap={0.5}
-					css={{ marginTop: label ? mapSpacing(0.5) : undefined }}
+		<ControlGroupContext.Provider
+			value={{ groupMessageId: describedByIdString }}
+		>
+			<FieldContainer invalid={invalid} id={groupId}>
+				<fieldset
+					aria-describedby={describedByIdString}
+					css={{ padding: 0, margin: 0, border: 'none' }}
+					{...(invalid && { 'aria-invalid': true })}
 				>
-					{hint ? <FieldHint id={hintId}>{hint}</FieldHint> : null}
-					{message && invalid ? (
-						<FieldMessage invalid={invalid} id={messageId}>
-							{message}
-						</FieldMessage>
+					{label ? (
+						<FieldLabel as="legend" required={required}>
+							{label}
+						</FieldLabel>
 					) : null}
-					<Flex
-						gap={1}
-						flexDirection={block ? 'column' : 'row'}
-						width="100%"
-						paddingTop={0.5}
+					<Stack
+						gap={0.5}
+						css={{ marginTop: label ? mapSpacing(0.5) : undefined }}
 					>
-						{children}
-					</Flex>
-				</Stack>
-			</fieldset>
-		</FieldContainer>
+						{hint ? <FieldHint id={hintId}>{hint}</FieldHint> : null}
+						{message && invalid ? (
+							<FieldMessage invalid={invalid} id={messageId}>
+								{message}
+							</FieldMessage>
+						) : null}
+						<Flex
+							gap={1}
+							flexDirection={block ? 'column' : 'row'}
+							width="100%"
+							paddingTop={0.5}
+						>
+							{children}
+						</Flex>
+					</Stack>
+				</fieldset>
+			</FieldContainer>
+		</ControlGroupContext.Provider>
 	);
 };
 
