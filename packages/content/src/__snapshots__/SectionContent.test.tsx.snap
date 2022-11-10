@@ -2,16 +2,16 @@
 
 exports[`SectionContent renders correctly 1`] = `
 <div>
-  <section
+  <div
     class="css-ou39vu-boxStyles"
   >
-    <div
+    <section
       class="css-23dohf-boxStyles"
     >
       <p>
         Section content
       </p>
-    </div>
-  </section>
+    </section>
+  </div>
 </div>
 `;

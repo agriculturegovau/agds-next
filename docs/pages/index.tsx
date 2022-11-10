@@ -14,17 +14,19 @@ import { AppLayout } from '../components/AppLayout';
 import { PictogramCard } from '../components/PictogramCard';
 import { DocumentTitle } from '../components/DocumentTitle';
 import { MAIN_ID } from '../lib/constants';
-import {
-	pseudoFocusRingStyles,
-	PseudoFocusRing,
-} from '../components/PseudoFocusRing';
+import { fullWidthFocusRingStyles } from '../lib/fullWidthFocusRing';
 
 export default function Homepage() {
 	return (
 		<>
 			<DocumentTitle />
 			<AppLayout>
-				<Box as="main" css={pseudoFocusRingStyles} id={MAIN_ID} tabIndex={-1}>
+				<Box
+					as="main"
+					css={fullWidthFocusRingStyles}
+					id={MAIN_ID}
+					tabIndex={-1}
+				>
 					<HeroBanner>
 						<HeroBannerTitleContainer>
 							<HeroBannerTitle>
@@ -90,7 +92,6 @@ export default function Homepage() {
 							</Columns>
 						</Stack>
 					</SectionContent>
-					<PseudoFocusRing />
 				</Box>
 			</AppLayout>
 		</>
