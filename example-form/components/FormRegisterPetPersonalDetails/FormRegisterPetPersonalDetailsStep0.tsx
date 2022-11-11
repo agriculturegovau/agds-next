@@ -135,7 +135,7 @@ export const FormRegisterPetPersonalDetailsStep0 = () => {
 			<Stack gap={3} alignItems="flex-start" width="100%">
 				{isFormVisibile ? (
 					<Stack gap={1.5} width="100%">
-						<H2 as="h3">Update personal details</H2>
+						<H2>Update personal details</H2>
 						<FormRequiredFieldsMessage />
 						<Stack
 							as="form"
@@ -229,7 +229,7 @@ export const FormRegisterPetPersonalDetailsStep0 = () => {
 				) : (
 					<>
 						<Stack gap={1.5} alignItems="flex-start" width="100%">
-							<H2 as="h3" ref={headingRef} tabIndex={-1} focus>
+							<H2 ref={headingRef} tabIndex={-1} focus>
 								Check personal details
 							</H2>
 							<SummaryList>
