@@ -2,6 +2,7 @@ import { forwardRef, ReactNode } from 'react';
 import { Stack } from '@ag.ds-next/box';
 import { H1 } from '@ag.ds-next/heading';
 import { Text } from '@ag.ds-next/text';
+import { VisuallyHidden } from '@ag.ds-next/a11y';
 
 export type FormStepTitleProps = {
 	sectionTitle?: string;
@@ -28,6 +29,7 @@ export const FormStepTitle = forwardRef<HTMLHeadingElement, FormStepTitleProps>(
 							lineHeight="heading"
 						>
 							{sectionTitle}
+							<VisuallyHidden>{' form.'}</VisuallyHidden>
 						</Text>
 
 						{pageTitle}
