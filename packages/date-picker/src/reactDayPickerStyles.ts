@@ -122,20 +122,24 @@ export const reactDayPickerStyles = (range: boolean) =>
 				'&:not(:focus)': highContrastOutlineStyles,
 				backgroundColor: boxPalette.foregroundAction,
 				color: boxPalette.backgroundBody,
+				fontWeight: tokens.fontWeight.bold,
 			},
 		'.rdp-day_selected:not([disabled]).rdp-day_range_middle': {
 			backgroundColor: boxPalette.backgroundShade,
 			color: boxPalette.foregroundText,
+			fontWeight: tokens.fontWeight.bold,
 			borderRadius: 0,
 		},
 		// Selected days have more rounded borders in range mode
 		...(range && {
 			'.rdp-day_range_start': {
+				fontWeight: tokens.fontWeight.bold,
 				borderRadius: 0,
 				borderTopLeftRadius: '50%',
 				borderBottomLeftRadius: '50%',
 			},
 			'.rdp-day_range_end:not(.rdp-day_range_start)': {
+				fontWeight: tokens.fontWeight.bold,
 				borderRadius: 0,
 				borderTopRightRadius: '50%',
 				borderBottomRightRadius: '50%',
