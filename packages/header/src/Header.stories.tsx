@@ -5,6 +5,8 @@ import {
 	SearchBoxInput,
 	SearchBoxButton,
 } from '@ag.ds-next/search-box';
+import { Box } from '@ag.ds-next/box';
+import { MainNav } from '@ag.ds-next/main-nav';
 import { Header } from './Header';
 import { HeaderContainer } from './HeaderContainer';
 import { HeaderBrand } from './HeaderBrand';
@@ -94,8 +96,59 @@ Search.args = {
 		</SearchBox>
 	),
 };
+Search.storyName = 'With SearchBox';
 
-// TODO
+const TemplateWithMainNav: ComponentStory<typeof Header> = (args) => {
+	return (
+		<Box>
+			<Header {...args} />
+			<MainNav
+				items={[
+					{
+						href: '#account',
+						label: 'Home',
+					},
+					{
+						href: '#establishments',
+						label: 'Establishments',
+					},
+					{
+						href: '#intelligence',
+						label: 'Data and insights',
+					},
+					{
+						href: '#compliance',
+						label: 'Compliance',
+					},
+				]}
+				activePath="#account"
+				background="body"
+			/>
+		</Box>
+	);
+};
+
+export const WithMainNav = TemplateWithMainNav.bind({});
+WithMainNav.storyName = 'With MainNav';
+WithMainNav.args = {
+	...defaultArgs,
+	background: 'bodyAlt',
+};
+
+export const WithMainNavAndSearch = TemplateWithMainNav.bind({});
+WithMainNavAndSearch.storyName = 'With MainNav and SearchBox';
+WithMainNavAndSearch.args = {
+	...defaultArgs,
+	rightContent: (
+		<SearchBox onSubmit={console.log}>
+			<SearchBoxInput label="Search this website" />
+			<SearchBoxButton iconOnly={{ xs: true, md: false }}>
+				Search
+			</SearchBoxButton>
+		</SearchBox>
+	),
+	background: 'bodyAlt',
+};
 
 export const CoBranded = Template.bind({});
 CoBranded.args = {
@@ -103,10 +156,3 @@ CoBranded.args = {
 	heading: 'TODO ...',
 };
 CoBranded.storyName = '🕥 Co-Branded';
-
-export const Hero = Template.bind({});
-Hero.args = {
-	...defaultArgs,
-	heading: 'TODO ...',
-};
-Hero.storyName = '🕥 Header Hero';
