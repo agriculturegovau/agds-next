@@ -70,7 +70,7 @@ const LiveCode = withLive(function LiveCode(props: unknown) {
 	);
 
 	const playroomUrl = createUrl({
-		baseUrl: 'https://steelthreads.github.io/agds-next/playroom',
+		baseUrl: process.env.NEXT_PUBLIC_PLAYROOM_URL,
 		code: live.code.startsWith('<')
 			? live.code
 			: `<Render>\n    {${live.code
