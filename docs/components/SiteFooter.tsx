@@ -9,11 +9,11 @@ const footerLinks = [
 	{ label: 'Home', href: '/' },
 	{
 		label: 'Storybook',
-		href: 'https://steelthreads.github.io/agds-next/storybook/index.html',
+		href: process.env.NEXT_PUBLIC_STORYBOOK_URL,
 	},
 	{
 		label: 'Playroom',
-		href: 'https://steelthreads.github.io/agds-next/playroom/index.html',
+		href: process.env.NEXT_PUBLIC_PLAYROOM_URL,
 	},
 	{
 		label: 'Starter kit',
