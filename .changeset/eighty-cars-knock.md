@@ -2,4 +2,4 @@
 '@ag.ds-next/header': patch
 ---
 
-Adjust responsive behavior to better support searchbox
+Adjust responsive behaviour to better support `SearchBox`
