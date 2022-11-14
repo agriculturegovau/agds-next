@@ -26,6 +26,12 @@ describe('Checkbox', () => {
 		expect(el).toHaveAccessibleName('My checkbox');
 	});
 
+	it('renders correctly when invalid ', () => {
+		render(<CheckboxExample invalid />);
+		const el = screen.getByTestId('example');
+		expect(el).toHaveAttribute('aria-invalid', 'true');
+	});
+
 	it('renders a valid HTML structure', () => {
 		const { container } = render(<CheckboxExample />);
 		expect(container).toHTMLValidate({

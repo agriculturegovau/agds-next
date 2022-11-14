@@ -26,6 +26,12 @@ describe('Radio', () => {
 		expect(el).toHaveAccessibleName('My Radio');
 	});
 
+	it('renders correctly when invalid ', () => {
+		render(<RadioExample invalid />);
+		const el = screen.getByTestId('example');
+		expect(el).toHaveAttribute('aria-invalid', 'true');
+	});
+
 	it('renders correctly', () => {
 		const { container } = render(<RadioExample />);
 		expect(container).toMatchSnapshot();
