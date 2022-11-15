@@ -3,7 +3,8 @@
 exports[`MainNav renders correctly 1`] = `
 <div>
   <div
-    class="css-ek7e6t-boxStyles-NavContainer"
+    class="css-1yqb0ov-boxStyles-NavContainer"
+    tabindex="-1"
   >
     <div
       class="css-51kibj-boxStyles-BottomBar"
