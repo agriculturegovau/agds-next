@@ -16,7 +16,7 @@ const CheckboxTemplate: ComponentStory<typeof ControlGroup> = (args) => {
 			<ControlGroup {...args}>
 				<Checkbox checked>SMS</Checkbox>
 				<Checkbox checked={false}>Phone call</Checkbox>
-				<Checkbox>Email</Checkbox>
+				<Checkbox checked={false}>Email</Checkbox>
 				<Checkbox checked={false}>Mail</Checkbox>
 			</ControlGroup>
 		</FormStack>
@@ -66,7 +66,9 @@ const RadioTemplate: ComponentStory<typeof ControlGroup> = (args) => {
 				<Radio checked>Dog</Radio>
 				<Radio checked={false}>Cat</Radio>
 				<Radio checked={false}>Cow</Radio>
-				<Radio disabled>Other</Radio>
+				<Radio checked={false} disabled>
+					Other
+				</Radio>
 			</ControlGroup>
 		</FormStack>
 	);
