@@ -338,12 +338,6 @@ const KitchenSink = ({ background }: { background: 'body' | 'bodyAlt' }) => {
 									value={new Date()}
 									onChange={() => {}}
 								/>
-								<TextInput
-									label="Username"
-									value="example"
-									valid
-									message="This username is available"
-								/>
 								<Select
 									label="Example"
 									placeholder="Please select"

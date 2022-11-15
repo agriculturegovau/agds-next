@@ -35,10 +35,3 @@ Invalid.args = {
 	invalid: true,
 	disabled: false,
 };
-
-export const Valid = Template.bind({});
-Valid.args = {
-	children: 'Valid',
-	valid: true,
-	disabled: false,
-};

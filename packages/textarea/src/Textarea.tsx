@@ -25,12 +25,10 @@ export type TextareaProps = BaseTextareaProps & {
 	required?: boolean;
 	/** Provides extra information about the field. */
 	hint?: string;
-	/** Message to show when the field is invalid or valid. */
+	/** Message to show when the field is invalid. */
 	message?: string;
 	/** If true, the invalid state will be rendered. */
 	invalid?: boolean;
-	/** If true, the valid state will be rendered. */
-	valid?: boolean;
 	/** If true, the field will stretch to the fill the width of its container. */
 	block?: boolean;
 	/** The maximum width of the field. */
@@ -39,25 +37,13 @@ export type TextareaProps = BaseTextareaProps & {
 
 export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
 	function Textarea(
-		{
-			label,
-			required,
-			hint,
-			message,
-			invalid,
-			valid,
-			block,
-			maxWidth,
-			id,
-			...props
-		},
+		{ label, required, hint, message, invalid, block, maxWidth, id, ...props },
 		ref
 	) {
 		const styles = textInputStyles({
 			block,
 			maxWidth,
 			invalid,
-			valid,
 			multiline: true,
 		});
 		return (
@@ -67,7 +53,6 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
 				hint={hint}
 				message={message}
 				invalid={invalid}
-				valid={valid}
 				id={id}
 			>
 				{(a11yProps) => (

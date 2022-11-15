@@ -41,17 +41,6 @@ Invalid.args = {
 	invalid: true,
 };
 
-export const Valid: ComponentStory<typeof TextInput> = (args) => (
-	<TextInput {...args} />
-);
-Valid.args = {
-	type: 'email',
-	label: 'Email',
-	message: 'The email address you have entered is valid',
-	value: 'hello@example.com',
-	valid: true,
-};
-
 export const Hint: ComponentStory<typeof TextInput> = (args) => (
 	<TextInput {...args} />
 );

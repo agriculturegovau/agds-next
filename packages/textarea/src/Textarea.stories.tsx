@@ -40,16 +40,6 @@ Invalid.args = {
 	invalid: true,
 };
 
-export const Valid: ComponentStory<typeof Textarea> = (args) => (
-	<Textarea {...args} />
-);
-Valid.args = {
-	label: 'Message',
-	message: 'The message you have entered is valid',
-	value: 'Lorem ipsum dolar',
-	valid: true,
-};
-
 export const Hint: ComponentStory<typeof Textarea> = (args) => (
 	<Textarea {...args} />
 );

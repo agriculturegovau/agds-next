@@ -65,9 +65,7 @@ export const ControlGroup = ({
 					>
 						{hint ? <FieldHint id={hintId}>{hint}</FieldHint> : null}
 						{message && invalid ? (
-							<FieldMessage invalid={invalid} id={messageId}>
-								{message}
-							</FieldMessage>
+							<FieldMessage id={messageId}>{message}</FieldMessage>
 						) : null}
 						<Flex
 							gap={1}

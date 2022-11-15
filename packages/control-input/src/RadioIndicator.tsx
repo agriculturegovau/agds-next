@@ -6,14 +6,12 @@ export type RadioIndicatorProps = {
 	disabled?: boolean;
 	invalid?: boolean;
 	size: ControlSize;
-	valid?: boolean;
 };
 
 export const RadioIndicator = ({
 	disabled,
 	invalid,
 	size,
-	valid,
 }: RadioIndicatorProps) => {
 	const { width, height, borderWidth } = packs.control[size];
 	return (
@@ -30,17 +28,10 @@ export const RadioIndicator = ({
 				borderStyle: 'solid',
 				borderColor: boxPalette.border,
 				opacity: disabled ? 0.3 : undefined,
-				...(invalid
-					? {
-							borderColor: boxPalette.systemError,
-							backgroundColor: boxPalette.systemErrorMuted,
-					  }
-					: valid
-					? {
-							borderColor: boxPalette.systemSuccess,
-							backgroundColor: boxPalette.systemSuccessMuted,
-					  }
-					: undefined),
+				...(invalid && {
+					borderColor: boxPalette.systemError,
+					backgroundColor: boxPalette.systemErrorMuted,
+				}),
 			}}
 			background="body"
 			color="text"

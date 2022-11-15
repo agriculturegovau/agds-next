@@ -80,9 +80,9 @@ Vertically stacked radio buttons.
 };
 ```
 
-### Valid and invalid states
+### Invalid
 
-Add a border around the control inputs to indicate valid or invalid selections.
+Use the `invalid` prop to indicate if the user input is invalid (does not validate according to the elements settings).
 
 ```jsx live
 () => {
@@ -103,40 +103,6 @@ Add a border around the control inputs to indicate valid or invalid selections.
 				Tablet
 			</Radio>
 			<Radio checked={isChecked('laptop')} onChange={handlerForKey('laptop')}>
-				Laptop
-			</Radio>
-		</ControlGroup>
-	);
-};
-```
-
-```jsx live
-() => {
-	const [value, setValue] = React.useState();
-	const handlerForKey = React.useCallback((key) => () => setValue(key), []);
-	const isChecked = (key) => key === value;
-
-	return (
-		<ControlGroup label="Valid example" valid>
-			<Radio
-				checked={isChecked('phone')}
-				onChange={handlerForKey('phone')}
-				valid
-			>
-				Phone
-			</Radio>
-			<Radio
-				checked={isChecked('tablet')}
-				onChange={handlerForKey('tablet')}
-				valid
-			>
-				Tablet
-			</Radio>
-			<Radio
-				checked={isChecked('laptop')}
-				onChange={handlerForKey('laptop')}
-				valid
-			>
 				Laptop
 			</Radio>
 		</ControlGroup>

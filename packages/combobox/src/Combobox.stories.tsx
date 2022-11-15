@@ -238,13 +238,6 @@ Invalid.args = {
 	message: 'Country is required',
 };
 
-export const Valid = Template.bind({});
-Valid.args = {
-	...defaultArgs,
-	valid: true,
-	message: 'Country is valid',
-};
-
 export const Block = Template.bind({});
 Block.args = {
 	...defaultArgs,

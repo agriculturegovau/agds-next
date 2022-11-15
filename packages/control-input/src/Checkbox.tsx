@@ -28,15 +28,13 @@ type BaseCheckboxProps = PropsWithChildren<{
 export type CheckboxProps = BaseCheckboxProps & {
 	/** If true, the invalid state will be rendered. */
 	invalid?: boolean;
-	/** If true,  the valid state will be rendered. */
-	valid?: boolean;
 	/** The size of the input. */
 	size?: ControlSize;
 };
 
 export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
 	function Checkbox(
-		{ children, disabled, invalid: invalidProp, valid, size = 'md', ...props },
+		{ children, disabled, invalid: invalidProp, size = 'md', ...props },
 		ref
 	) {
 		const controlGroupContext = useControlGroupContext();
@@ -53,12 +51,7 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
 					}
 					{...props}
 				/>
-				<CheckboxIndicator
-					disabled={disabled}
-					invalid={invalid}
-					size={size}
-					valid={valid}
-				/>
+				<CheckboxIndicator disabled={disabled} invalid={invalid} size={size} />
 				<ControlLabel disabled={disabled} size={size}>
 					{children}
 				</ControlLabel>

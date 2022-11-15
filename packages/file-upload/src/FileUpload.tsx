@@ -36,7 +36,7 @@ type BaseInputProps = {
 };
 
 export type FileUploadProps = BaseInputProps & {
-	/** List of acceptible file types, e.g.`image/jpeg`, `application/pdf` */
+	/** List of acceptable file types, e.g.`image/jpeg`, `application/pdf` */
 	accept?: FileFormats[];
 	/** A label that describes the field*/
 	label: string;
@@ -52,14 +52,12 @@ export type FileUploadProps = BaseInputProps & {
 	required?: boolean;
 	/** Provides extra information about the field. */
 	hint?: string;
-	/** Message to show when the field is invalid or valid. */
+	/** Message to show when the field is invalid. */
 	message?: string;
 	/** Whether multiple files are allowed to be selected. */
 	multiple?: boolean;
 	/** If true, the invalid state will be rendered. */
 	invalid?: boolean;
-	/** If true, the valid state will be rendered. */
-	valid?: boolean;
 };
 
 type RejectedFile = {
@@ -85,7 +83,6 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 			hint,
 			message,
 			invalid,
-			valid,
 			id,
 			...consumerProps
 		},
@@ -144,7 +141,6 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 		const styles = fileInputStyles({
 			disabled,
 			invalid: invalid || !!errorSummary,
-			valid,
 		});
 
 		useEffect(() => {
@@ -190,7 +186,6 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 				hint={hint}
 				message={message || errorSummary}
 				invalid={invalid || !!errorSummary}
-				valid={valid}
 				id={id}
 			>
 				{(a11yProps) => {
@@ -291,11 +286,9 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 export const fileInputStyles = ({
 	disabled,
 	invalid,
-	valid,
 }: {
 	disabled?: boolean;
 	invalid?: boolean;
-	valid?: boolean;
 	multiline?: boolean;
 }) =>
 	({
@@ -303,23 +296,17 @@ export const fileInputStyles = ({
 		borderStyle: 'dashed',
 		borderColor: boxPalette.border,
 		backgroundColor: boxPalette.backgroundShade,
-		...(invalid
-			? {
-					backgroundColor: boxPalette.systemErrorMuted,
-					borderColor: boxPalette.systemError,
-			  }
-			: valid
-			? {
-					backgroundColor: boxPalette.systemSuccessMuted,
-					borderColor: boxPalette.systemSuccess,
-			  }
-			: disabled
-			? {
-					cursor: 'not-allowed',
-					opacity: 0.3,
-					background: 'none',
-			  }
-			: undefined),
+
+		...(invalid && {
+			backgroundColor: boxPalette.systemErrorMuted,
+			borderColor: boxPalette.systemError,
+		}),
+
+		...(disabled && {
+			cursor: 'not-allowed',
+			opacity: 0.3,
+			background: 'none',
+		}),
 
 		'&:focus': packs.outline,
 	} as const);

@@ -17,12 +17,10 @@ export type FieldProps = {
 	label: string;
 	/** Override the default secondary label. */
 	secondaryLabel?: string;
-	/** Message to show when the field is invalid or valid. */
+	/** Message to show when the field is invalid. */
 	message: string | undefined;
 	/** If false, "(optional)" will be appended to the label. */
 	required: boolean;
-	/** If true, the valid state will be rendered. */
-	valid?: boolean;
 };
 
 export const Field = ({
@@ -34,7 +32,6 @@ export const Field = ({
 	secondaryLabel,
 	message,
 	required,
-	valid,
 }: FieldProps) => {
 	const { fieldId, hintId, messageId } = useFieldIds(id);
 
@@ -58,10 +55,8 @@ export const Field = ({
 				{label}
 			</FieldLabel>
 			{hint ? <FieldHint id={hintId}>{hint}</FieldHint> : null}
-			{message && (invalid || valid) ? (
-				<FieldMessage id={messageId} invalid={invalid} valid={valid}>
-					{message}
-				</FieldMessage>
+			{message && invalid ? (
+				<FieldMessage id={messageId}>{message}</FieldMessage>
 			) : null}
 			{typeof children === 'function' ? children(a11yProps) : children}
 		</FieldContainer>

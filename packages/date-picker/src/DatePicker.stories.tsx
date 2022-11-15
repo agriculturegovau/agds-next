@@ -55,13 +55,6 @@ Invalid.args = {
 	invalid: true,
 };
 
-export const Valid = Template.bind({});
-Valid.args = {
-	label: 'Example',
-	message: 'The date you have entered is valid',
-	valid: true,
-};
-
 export const Hint = Template.bind({});
 Hint.args = {
 	label: 'Example',

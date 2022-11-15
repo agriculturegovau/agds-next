@@ -27,12 +27,10 @@ export type TextInputProps = BaseTextInputProps & {
 	required?: boolean;
 	/** Provides extra information about the field. */
 	hint?: string;
-	/** Message to show when the field is invalid or valid. */
+	/** Message to show when the field is invalid. */
 	message?: string;
 	/** If true, the invalid state will be rendered. */
 	invalid?: boolean;
-	/** If true, the valid state will be rendered. */
-	valid?: boolean;
 	/** If true, the field will stretch to the fill the width of its container. */
 	block?: boolean;
 	/** The maximum width of the field. */
@@ -47,7 +45,6 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
 			hint,
 			message,
 			invalid,
-			valid,
 			block,
 			maxWidth,
 			id,
@@ -56,7 +53,7 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
 		},
 		ref
 	) {
-		const styles = textInputStyles({ block, maxWidth, invalid, valid });
+		const styles = textInputStyles({ block, maxWidth, invalid });
 		return (
 			<Field
 				label={label}
@@ -64,7 +61,6 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
 				hint={hint}
 				message={message}
 				invalid={invalid}
-				valid={valid}
 				id={id}
 			>
 				{(a11yProps) => (
@@ -79,13 +75,11 @@ export const textInputStyles = ({
 	block,
 	maxWidth,
 	invalid,
-	valid,
 	multiline,
 }: {
 	block?: boolean;
 	maxWidth?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
 	invalid?: boolean;
-	valid?: boolean;
 	multiline?: boolean;
 }) =>
 	({
@@ -110,17 +104,10 @@ export const textInputStyles = ({
 			width: '100%',
 		}),
 
-		...(invalid
-			? {
-					backgroundColor: boxPalette.systemErrorMuted,
-					borderColor: boxPalette.systemError,
-			  }
-			: valid
-			? {
-					backgroundColor: boxPalette.systemSuccessMuted,
-					borderColor: boxPalette.systemSuccess,
-			  }
-			: undefined),
+		...(invalid && {
+			backgroundColor: boxPalette.systemErrorMuted,
+			borderColor: boxPalette.systemError,
+		}),
 
 		...(multiline && {
 			paddingTop: mapSpacing(0.5),
