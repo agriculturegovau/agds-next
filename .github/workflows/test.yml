@@ -136,14 +136,14 @@ jobs:
       - name: Build Website
         run: yarn docs:build
 
-      - name: Build Templates
-        run: yarn example:build
-
-      - name: Build Example Form
-        run: yarn example-form:build
-
       - name: Build Storybook
         run: yarn storybook:build
 
       - name: Build Playroom
         run: yarn playroom:build
+
+      - name: Build Templates
+        run: yarn example:build
+
+      - name: Build Example Form
+        run: yarn example-form:build
