@@ -14,6 +14,7 @@ export function SummaryListItemTerm({ children }: SummaryListItemTermProps) {
 			as="dt"
 			fontWeight="bold"
 			width={['100%', '30%']}
+			flexShrink={0}
 			minWidth="200px"
 			fontSize="sm"
 		>
