@@ -3,12 +3,12 @@ import { CheckboxIndicator } from './CheckboxIndicator';
 import { ControlInput } from './ControlInput';
 import { ControlContainer } from './ControlContainer';
 import { ControlLabel } from './ControlLabel';
+import { useControlGroupContext } from './ControlGroupProvider';
 import { ControlSize } from './utils';
 
 type NativeCheckboxProps = InputHTMLAttributes<HTMLInputElement>;
 
 type BaseCheckboxProps = PropsWithChildren<{
-	'aria-required'?: NativeCheckboxProps['aria-required'];
 	autoFocus?: NativeCheckboxProps['autoFocus'];
 	disabled?: NativeCheckboxProps['disabled'];
 	checked?: NativeCheckboxProps['checked'];
@@ -36,15 +36,21 @@ export type CheckboxProps = BaseCheckboxProps & {
 
 export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
 	function Checkbox(
-		{ children, disabled, invalid, valid, size = 'md', ...props },
+		{ children, disabled, invalid: invalidProp, valid, size = 'md', ...props },
 		ref
 	) {
+		const controlGroupContext = useControlGroupContext();
+		const invalid = invalidProp || controlGroupContext?.invalid;
 		return (
 			<ControlContainer disabled={disabled}>
 				<ControlInput
 					ref={ref}
 					type="checkbox"
 					disabled={disabled}
+					aria-invalid={invalid ? 'true' : undefined}
+					aria-describedby={
+						invalid ? controlGroupContext?.messageId : undefined
+					}
 					{...props}
 				/>
 				<CheckboxIndicator

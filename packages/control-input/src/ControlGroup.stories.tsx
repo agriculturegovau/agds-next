@@ -9,71 +9,101 @@ export default {
 	component: ControlGroup,
 } as ComponentMeta<typeof ControlGroup>;
 
-const Template: ComponentStory<typeof ControlGroup> = (args) => (
-	<FormStack>
-		<ControlGroup {...args}>
-			<Checkbox invalid={args.invalid} checked>
-				Coding
-			</Checkbox>
-			<Checkbox invalid={args.invalid} checked={false}>
-				Art
-			</Checkbox>
-			<Checkbox invalid={args.invalid} checked disabled>
-				Cooking
-			</Checkbox>
-			<Checkbox invalid={args.invalid} checked={false} disabled>
-				Reading
-			</Checkbox>
-		</ControlGroup>
-		<ControlGroup {...args}>
-			<Radio invalid={args.invalid} checked>
-				Coding
-			</Radio>
-			<Radio invalid={args.invalid} checked={false}>
-				Music
-			</Radio>
-			<Radio invalid={args.invalid} checked={false} disabled>
-				Cooking
-			</Radio>
-			<Radio invalid={args.invalid} disabled>
-				Reading
-			</Radio>
-		</ControlGroup>
-	</FormStack>
-);
-
-export const Basic: ComponentStory<typeof ControlGroup> = (args) => (
-	<Template {...args} />
-);
-Basic.args = {
-	label: 'Choose your interests',
+// Checkbox group
+const CheckboxTemplate: ComponentStory<typeof ControlGroup> = (args) => {
+	return (
+		<FormStack>
+			<ControlGroup {...args}>
+				<Checkbox checked>SMS</Checkbox>
+				<Checkbox checked={false}>Phone call</Checkbox>
+				<Checkbox checked={false}>Email</Checkbox>
+				<Checkbox checked={false}>Mail</Checkbox>
+			</ControlGroup>
+		</FormStack>
+	);
 };
 
-export const Block = Template.bind({});
-Block.args = {
-	label: 'Choose your interests',
+const checkboxDefaultArgs = {
+	label: 'Choose your contact preferences',
+	hint: 'Select all that apply',
 	block: true,
 };
 
-export const Required = Template.bind({});
-Required.args = {
-	label: 'Choose your interests',
-	block: true,
+export const CheckboxGroupInline = CheckboxTemplate.bind({});
+CheckboxGroupInline.args = {
+	...checkboxDefaultArgs,
+	block: false,
+};
+CheckboxGroupInline.storyName = 'Checkbox group inline';
+
+export const CheckboxGroupBlock = CheckboxTemplate.bind({});
+CheckboxGroupBlock.args = {
+	...checkboxDefaultArgs,
+};
+CheckboxGroupBlock.storyName = 'Checkbox group block';
+
+export const CheckboxGroupRequired = CheckboxTemplate.bind({});
+CheckboxGroupRequired.args = {
+	...checkboxDefaultArgs,
+
 	required: true,
 };
+CheckboxGroupRequired.storyName = 'Checkbox group required';
 
-export const Hint = Template.bind({});
-Hint.args = {
-	label: 'Choose your interests',
-	hint: 'This is a hint',
-	block: true,
-};
-
-export const Invalid = Template.bind({});
-Invalid.args = {
-	label: 'Choose your interests',
+export const CheckboxGroupInvalid = CheckboxTemplate.bind({});
+CheckboxGroupInvalid.args = {
+	...checkboxDefaultArgs,
 	message: 'Please select an interest',
 	required: true,
+	invalid: true,
+};
+
+// Radio group
+const RadioTemplate: ComponentStory<typeof ControlGroup> = (args) => {
+	return (
+		<FormStack>
+			<ControlGroup {...args}>
+				<Radio checked>Dog</Radio>
+				<Radio checked={false}>Cat</Radio>
+				<Radio checked={false}>Cow</Radio>
+				<Radio checked={false} disabled>
+					Other
+				</Radio>
+			</ControlGroup>
+		</FormStack>
+	);
+};
+
+const radioDefaultArgs = {
+	label: 'What type of pet do you have?',
+	hint: 'Select all that apply',
 	block: true,
+};
+
+export const RadioGroupInline = RadioTemplate.bind({});
+RadioGroupInline.args = {
+	...radioDefaultArgs,
+	block: false,
+};
+RadioGroupInline.storyName = 'Radio group inline';
+
+export const RadioGroupBlock = RadioTemplate.bind({});
+RadioGroupBlock.args = {
+	...radioDefaultArgs,
+};
+RadioGroupBlock.storyName = 'Radio group block';
+
+export const RadioGroupRequired = RadioTemplate.bind({});
+RadioGroupRequired.args = {
+	...radioDefaultArgs,
+	required: true,
+};
+RadioGroupRequired.storyName = 'Radio group required';
+
+export const RadioGroupInvalid = RadioTemplate.bind({});
+RadioGroupInvalid.args = {
+	...radioDefaultArgs,
+	message: 'You must choose at least one option',
+	required: true,
 	invalid: true,
 };
