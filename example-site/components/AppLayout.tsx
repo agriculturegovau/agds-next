@@ -32,7 +32,13 @@ export const AppLayout = ({
 			>
 				{template ? <TemplateBanner {...template} /> : null}
 				<SiteHeader focusMode={focusMode} />
-				<Box as="main" id="main-content" flexGrow={1}>
+				<Box
+					as="main"
+					id="main-content"
+					flexGrow={1}
+					tabIndex={-1}
+					css={{ '&:focus': { outline: 'none' } }}
+				>
 					{children}
 				</Box>
 				<SiteFooter />

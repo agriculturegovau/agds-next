@@ -46,6 +46,8 @@ export function PageLayout({
 					columnStart={{ lg: sideNav ? 5 : 1 }}
 					as="main"
 					id="main-content"
+					tabIndex={-1}
+					css={{ '&:focus': { outline: 'none' } }}
 				>
 					{skipLinks?.length ? <SkipLinks links={skipLinks} /> : null}
 					<Stack flexGrow={1} gap={3}>

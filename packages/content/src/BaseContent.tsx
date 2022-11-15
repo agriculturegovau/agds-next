@@ -9,6 +9,7 @@ export type BaseContentProps = PropsWithChildren<
 		as?: ElementType;
 		id?: string;
 		className?: string;
+		tabIndex?: number;
 	} & Pick<BoxProps, 'background' | 'palette'>
 >;
 
@@ -20,6 +21,7 @@ export function BaseContent({
 	as = 'section',
 	id,
 	className,
+	tabIndex,
 	palette,
 	background,
 	children,
@@ -34,6 +36,7 @@ export function BaseContent({
 				background={background}
 				id={id}
 				className={className}
+				tabIndex={tabIndex}
 			>
 				<Box
 					width="100%"

@@ -12,7 +12,12 @@ export default function NotFoundPage() {
 		<>
 			<DocumentTitle title="Page not found" />
 			<AppLayout>
-				<PageContent as="main" id="main-content">
+				<PageContent
+					as="main"
+					id="main-content"
+					tabIndex={-1}
+					css={{ '&:focus': { outline: 'none' } }}
+				>
 					<Stack gap={1.5} maxWidth={tokens.maxWidth.bodyText}>
 						<H1>Oops! This page does not exist.</H1>
 						<Text as="p" fontSize="md">

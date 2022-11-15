@@ -57,11 +57,13 @@ export function NavContainer({
 	return (
 		<Box
 			id={id}
+			tabIndex={-1}
 			ref={containerRef}
 			background={background}
 			color="text"
 			css={{
 				position: 'relative',
+				'&:focus': { outline: 'none' },
 				[localPaletteVars.linkHoverBg]: backgroundColorMap[hover],
 				[localPaletteVars.linkActiveBg]: backgroundColorMap[background],
 				[localPaletteVars.bottomBar]: boxPalette.accent,
