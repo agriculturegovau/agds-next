@@ -7,7 +7,7 @@ export const FieldMessage = ({
 	id,
 }: {
 	children: string;
-	id?: string;
+	id: string;
 }) => (
 	<Flex gap={0.5} alignItems="center">
 		<Box flexShrink={0}>
