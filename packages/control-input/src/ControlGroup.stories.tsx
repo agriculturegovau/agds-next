@@ -2,7 +2,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { FormStack } from '@ag.ds-next/form-stack';
 import { Checkbox } from './Checkbox';
 import { Radio } from './Radio';
-import { ControlGroup, useControlGroupIds } from './ControlGroup';
+import { ControlGroup } from './ControlGroup';
 
 export default {
 	title: 'forms/ControlGroup',
@@ -11,40 +11,13 @@ export default {
 
 // Checkbox group
 const CheckboxTemplate: ComponentStory<typeof ControlGroup> = (args) => {
-	const checkboxGroupId = 'contact-method';
-	const { messageId: checkboxGroupMessageId } =
-		useControlGroupIds(checkboxGroupId);
-
 	return (
 		<FormStack>
-			<ControlGroup {...args} id={checkboxGroupId}>
-				<Checkbox
-					invalid={args.invalid}
-					checked
-					aria-describedby={checkboxGroupMessageId}
-				>
-					SMS
-				</Checkbox>
-				<Checkbox
-					invalid={args.invalid}
-					checked={false}
-					aria-describedby={checkboxGroupMessageId}
-				>
-					Phone call
-				</Checkbox>
-				<Checkbox
-					invalid={args.invalid}
-					aria-describedby={checkboxGroupMessageId}
-				>
-					Email
-				</Checkbox>
-				<Checkbox
-					invalid={args.invalid}
-					checked={false}
-					aria-describedby={checkboxGroupMessageId}
-				>
-					Mail
-				</Checkbox>
+			<ControlGroup {...args}>
+				<Checkbox checked>SMS</Checkbox>
+				<Checkbox checked={false}>Phone call</Checkbox>
+				<Checkbox>Email</Checkbox>
+				<Checkbox checked={false}>Mail</Checkbox>
 			</ControlGroup>
 		</FormStack>
 	);
@@ -88,39 +61,13 @@ CheckboxGroupInvalid.args = {
 
 // Radio group
 const RadioTemplate: ComponentStory<typeof ControlGroup> = (args) => {
-	const radioGroupId = 'species';
-	const { messageId: radioGroupMessageId } = useControlGroupIds(radioGroupId);
 	return (
 		<FormStack>
-			<ControlGroup {...args} id={radioGroupId}>
-				<Radio
-					invalid={args.invalid}
-					checked
-					aria-describedby={radioGroupMessageId}
-				>
-					Dog
-				</Radio>
-				<Radio
-					invalid={args.invalid}
-					checked={false}
-					aria-describedby={radioGroupMessageId}
-				>
-					Cat
-				</Radio>
-				<Radio
-					invalid={args.invalid}
-					checked={false}
-					aria-describedby={radioGroupMessageId}
-				>
-					Cow
-				</Radio>
-				<Radio
-					invalid={args.invalid}
-					aria-describedby={radioGroupMessageId}
-					disabled
-				>
-					Other
-				</Radio>
+			<ControlGroup {...args}>
+				<Radio checked>Dog</Radio>
+				<Radio checked={false}>Cat</Radio>
+				<Radio checked={false}>Cow</Radio>
+				<Radio disabled>Other</Radio>
 			</ControlGroup>
 		</FormStack>
 	);

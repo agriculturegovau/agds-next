@@ -96,25 +96,13 @@ Add a border around the control inputs to indicate valid or invalid selections.
 			message="Please choose an option"
 			invalid
 		>
-			<Radio
-				checked={isChecked('phone')}
-				onChange={handlerForKey('phone')}
-				invalid
-			>
+			<Radio checked={isChecked('phone')} onChange={handlerForKey('phone')}>
 				Phone
 			</Radio>
-			<Radio
-				checked={isChecked('tablet')}
-				onChange={handlerForKey('tablet')}
-				invalid
-			>
+			<Radio checked={isChecked('tablet')} onChange={handlerForKey('tablet')}>
 				Tablet
 			</Radio>
-			<Radio
-				checked={isChecked('laptop')}
-				onChange={handlerForKey('laptop')}
-				invalid
-			>
+			<Radio checked={isChecked('laptop')} onChange={handlerForKey('laptop')}>
 				Laptop
 			</Radio>
 		</ControlGroup>
@@ -130,25 +118,13 @@ Add a border around the control inputs to indicate valid or invalid selections.
 
 	return (
 		<ControlGroup label="Valid example" valid message="Correct!">
-			<Radio
-				checked={isChecked('phone')}
-				onChange={handlerForKey('phone')}
-				valid
-			>
+			<Radio checked={isChecked('phone')} onChange={handlerForKey('phone')}>
 				Phone
 			</Radio>
-			<Radio
-				checked={isChecked('tablet')}
-				onChange={handlerForKey('tablet')}
-				valid
-			>
+			<Radio checked={isChecked('tablet')} onChange={handlerForKey('tablet')}>
 				Tablet
 			</Radio>
-			<Radio
-				checked={isChecked('laptop')}
-				onChange={handlerForKey('laptop')}
-				valid
-			>
+			<Radio checked={isChecked('laptop')} onChange={handlerForKey('laptop')}>
 				Laptop
 			</Radio>
 		</ControlGroup>

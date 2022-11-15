@@ -13,12 +13,13 @@ export const iconSize = {
 	md: 1.5,
 } as const;
 
-export const ControlGroupContext = createContext<{
-	groupMessageId?: string;
-}>({
-	groupMessageId: undefined,
-});
-
-export const useControlGroupContext = () => {
-	return useContext(ControlGroupContext);
+type ControlGroupContextType = {
+	describedBy?: string;
+	invalid?: boolean;
 };
+
+export const ControlGroupContext = createContext<
+	ControlGroupContextType | undefined
+>(undefined);
+
+export const useControlGroupContext = () => useContext(ControlGroupContext);

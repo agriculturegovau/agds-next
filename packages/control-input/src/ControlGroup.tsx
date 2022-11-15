@@ -41,18 +41,15 @@ export const ControlGroup = ({
 		message ? messageId : null,
 		hint ? hintId : null,
 	].filter(Boolean);
-	const describedByIdString = describedByIds.length
+	const describedBy = describedByIds.length
 		? describedByIds.join(' ')
 		: undefined;
 	return (
-		<ControlGroupContext.Provider
-			value={{ groupMessageId: describedByIdString }}
-		>
+		<ControlGroupContext.Provider value={{ describedBy, invalid }}>
 			<FieldContainer invalid={invalid} id={groupId}>
 				<fieldset
-					aria-describedby={describedByIdString}
+					aria-describedby={describedBy}
 					css={{ padding: 0, margin: 0, border: 'none' }}
-					{...(invalid && { 'aria-invalid': true })}
 				>
 					{label ? (
 						<FieldLabel as="legend" required={required}>

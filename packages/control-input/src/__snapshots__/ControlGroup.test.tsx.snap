@@ -175,8 +175,7 @@ exports[`ControlGroup with Checkboxes renders correctly with invalid state 1`] =
     id="control-group-:r1:"
   >
     <fieldset
-      aria-describedby="control-group-:r1:-hint control-group-:r1:-message"
-      aria-invalid="true"
+      aria-describedby="control-group-:r1:-message control-group-:r1:-hint"
       class="css-faxsk2-ControlGroup"
     >
       <legend
@@ -243,7 +242,7 @@ exports[`ControlGroup with Checkboxes renders correctly with invalid state 1`] =
             class="css-kwvgrg-boxStyles-ControlContainer"
           >
             <input
-              aria-describedby="control-group-:r1:-hint control-group-:r1:-message"
+              aria-describedby="control-group-:r1:-message control-group-:r1:-hint"
               class="css-poh1fz-ControlInput"
               type="checkbox"
             />
@@ -277,7 +276,7 @@ exports[`ControlGroup with Checkboxes renders correctly with invalid state 1`] =
             class="css-kwvgrg-boxStyles-ControlContainer"
           >
             <input
-              aria-describedby="control-group-:r1:-hint control-group-:r1:-message"
+              aria-describedby="control-group-:r1:-message control-group-:r1:-hint"
               class="css-poh1fz-ControlInput"
               type="checkbox"
             />
@@ -311,7 +310,7 @@ exports[`ControlGroup with Checkboxes renders correctly with invalid state 1`] =
             class="css-kwvgrg-boxStyles-ControlContainer"
           >
             <input
-              aria-describedby="control-group-:r1:-hint control-group-:r1:-message"
+              aria-describedby="control-group-:r1:-message control-group-:r1:-hint"
               class="css-poh1fz-ControlInput"
               type="checkbox"
             />
@@ -345,7 +344,7 @@ exports[`ControlGroup with Checkboxes renders correctly with invalid state 1`] =
             class="css-kwvgrg-boxStyles-ControlContainer"
           >
             <input
-              aria-describedby="control-group-:r1:-hint control-group-:r1:-message"
+              aria-describedby="control-group-:r1:-message control-group-:r1:-hint"
               class="css-poh1fz-ControlInput"
               type="checkbox"
             />
@@ -505,8 +504,7 @@ exports[`ControlGroup with Radios renders correctly with invalid state 1`] = `
     id="control-group-:r3:"
   >
     <fieldset
-      aria-describedby="control-group-:r3:-hint control-group-:r3:-message"
-      aria-invalid="true"
+      aria-describedby="control-group-:r3:-message control-group-:r3:-hint"
       class="css-faxsk2-ControlGroup"
     >
       <legend
@@ -573,7 +571,7 @@ exports[`ControlGroup with Radios renders correctly with invalid state 1`] = `
             class="css-kwvgrg-boxStyles-ControlContainer"
           >
             <input
-              aria-describedby="control-group-:r3:-hint control-group-:r3:-message"
+              aria-describedby="control-group-:r3:-message control-group-:r3:-hint"
               class="css-poh1fz-ControlInput"
               type="radio"
             />
@@ -594,7 +592,7 @@ exports[`ControlGroup with Radios renders correctly with invalid state 1`] = `
             class="css-kwvgrg-boxStyles-ControlContainer"
           >
             <input
-              aria-describedby="control-group-:r3:-hint control-group-:r3:-message"
+              aria-describedby="control-group-:r3:-message control-group-:r3:-hint"
               class="css-poh1fz-ControlInput"
               type="radio"
             />
@@ -615,7 +613,7 @@ exports[`ControlGroup with Radios renders correctly with invalid state 1`] = `
             class="css-kwvgrg-boxStyles-ControlContainer"
           >
             <input
-              aria-describedby="control-group-:r3:-hint control-group-:r3:-message"
+              aria-describedby="control-group-:r3:-message control-group-:r3:-hint"
               class="css-poh1fz-ControlInput"
               type="radio"
             />
@@ -636,7 +634,7 @@ exports[`ControlGroup with Radios renders correctly with invalid state 1`] = `
             class="css-kwvgrg-boxStyles-ControlContainer"
           >
             <input
-              aria-describedby="control-group-:r3:-hint control-group-:r3:-message"
+              aria-describedby="control-group-:r3:-message control-group-:r3:-hint"
               class="css-poh1fz-ControlInput"
               type="radio"
             />
