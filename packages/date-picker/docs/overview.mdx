@@ -31,24 +31,21 @@ Use the `block` prop to expand the component to fill the available space.
 };
 ```
 
-### Valid and invalid inputs
+### Invalid
 
-Use the `invalid` and `valid` props to indicate whether user input is valid (validates according to the elements settings) or invalid (does not validate according to the elements settings).
+Use the `invalid` prop to indicate if the user input is invalid (does not validate according to the elements settings).
 
 ```jsx live
 () => {
 	const [value, setValue] = React.useState();
 	return (
-		<Stack gap={1}>
-			<DatePicker
-				label="Invalid"
-				invalid
-				message="This input is invalid"
-				value={value}
-				onChange={setValue}
-			/>
-			<DatePicker label="Valid" valid value={value} onChange={setValue} />
-		</Stack>
+		<DatePicker
+			label="Invalid"
+			invalid
+			message="This input is invalid"
+			value={value}
+			onChange={setValue}
+		/>
 	);
 };
 ```

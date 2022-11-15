@@ -23,7 +23,6 @@ export const DateInput = forwardRef<HTMLInputElement, DateInputProps>(
 			hint,
 			message,
 			invalid,
-			valid,
 			block,
 			id,
 			buttonRef,
@@ -36,7 +35,7 @@ export const DateInput = forwardRef<HTMLInputElement, DateInputProps>(
 		ref
 	) {
 		const { maxWidth, ...styles } = {
-			...textInputStyles({ block, invalid, maxWidth: maxWidthProp, valid }),
+			...textInputStyles({ block, invalid, maxWidth: maxWidthProp }),
 			width: '100%',
 			borderRight: 'none',
 			borderTopRightRadius: 0,
@@ -58,7 +57,6 @@ export const DateInput = forwardRef<HTMLInputElement, DateInputProps>(
 				hint={hint}
 				message={message}
 				invalid={invalid}
-				valid={valid}
 				id={id}
 			>
 				{(a11yProps) => (

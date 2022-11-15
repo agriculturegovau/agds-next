@@ -78,34 +78,22 @@ The `Select` component will always append `(optional)` to the label based on the
 </Stack>
 ```
 
-### Valid and invalid selects
+### Invalid
 
-Use the `invalid` and `valid` props to indicate whether user select is valid (validates according to the elements settings) or invalid (does not validate according to the elements settings).
+Use the `invalid` prop to indicate if the user input is invalid (does not validate according to the elements settings).
 
 ```jsx live
-<Stack gap={1}>
-	<Select
-		label="Invalid"
-		placeholder="Please select"
-		invalid
-		message="This select is invalid"
-		options={[
-			{ value: 'a', label: 'Option A' },
-			{ value: 'b', label: 'Option B' },
-			{ value: 'c', label: 'Option C' },
-		]}
-	/>
-	<Select
-		label="Valid"
-		placeholder="Please select"
-		valid
-		options={[
-			{ value: 'a', label: 'Option A' },
-			{ value: 'b', label: 'Option B' },
-			{ value: 'c', label: 'Option C' },
-		]}
-	/>
-</Stack>
+<Select
+	label="Invalid"
+	placeholder="Please select"
+	invalid
+	message="This select is invalid"
+	options={[
+		{ value: 'a', label: 'Option A' },
+		{ value: 'b', label: 'Option B' },
+		{ value: 'c', label: 'Option C' },
+	]}
+/>
 ```
 
 ### Disabled

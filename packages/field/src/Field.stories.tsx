@@ -34,20 +34,11 @@ Invalid.args = {
 	invalid: true,
 };
 
-export const Valid: ComponentStory<typeof Field> = (args) => (
-	<Field {...args}>{(a11yProps) => <input {...a11yProps} />}</Field>
-);
-Valid.args = {
-	label: 'Valid',
-	message: 'This field is valid',
-	valid: true,
-};
-
 export const SecondaryLabel: ComponentStory<typeof Field> = (args) => (
 	<Field {...args}>{(a11yProps) => <input {...a11yProps} />}</Field>
 );
 SecondaryLabel.args = {
-	label: 'Valid',
+	label: 'Label',
 	secondaryLabel: '(dd/mm/yyy)',
 };
 
@@ -78,7 +69,9 @@ export const Modular: ComponentStory<typeof Field> = ({
 				{label}
 			</FieldLabel>
 			{hint ? <FieldHint id={hintId}>{hint}</FieldHint> : null}
-			{message ? <FieldMessage id={messageId}>{message}</FieldMessage> : null}
+			{message && invalid ? (
+				<FieldMessage id={messageId}>{message}</FieldMessage>
+			) : null}
 			<input {...a11yProps} />
 		</FieldContainer>
 	);

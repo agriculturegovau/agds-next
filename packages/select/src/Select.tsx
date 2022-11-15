@@ -43,12 +43,10 @@ export type SelectProps = BaseSelectProps & {
 	required?: boolean;
 	/** Provides extra information about the field. */
 	hint?: string;
-	/** Message to show when the field is invalid or valid. */
+	/** Message to show when the field is invalid. */
 	message?: string;
 	/** If true, the invalid state will be rendered. */
 	invalid?: boolean;
-	/** If true, the valid state will be rendered. */
-	valid?: boolean;
 	/** If true, the field will stretch to the fill the width of its container. */
 	block?: boolean;
 	/** The maximum width of the field. */
@@ -63,7 +61,6 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(
 			hint,
 			message,
 			invalid,
-			valid,
 			block,
 			maxWidth,
 			options,
@@ -73,7 +70,7 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(
 		},
 		ref
 	) {
-		const styles = selectStyles({ block, invalid, valid });
+		const styles = selectStyles({ block, invalid });
 		return (
 			<Field
 				label={label}
@@ -81,7 +78,6 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(
 				hint={hint}
 				message={message}
 				invalid={invalid}
-				valid={valid}
 				id={id}
 			>
 				{(a11yProps) => (
@@ -170,11 +166,9 @@ const SelectIcon = ({ disabled }: { disabled?: boolean }) => (
 const selectStyles = ({
 	block,
 	invalid,
-	valid,
 }: {
 	block?: boolean;
 	invalid?: boolean;
-	valid?: boolean;
 }) =>
 	({
 		position: 'relative',
@@ -199,17 +193,10 @@ const selectStyles = ({
 			display: 'block',
 		}),
 
-		...(invalid
-			? {
-					backgroundColor: boxPalette.systemErrorMuted,
-					borderColor: boxPalette.systemError,
-			  }
-			: valid
-			? {
-					backgroundColor: boxPalette.systemSuccessMuted,
-					borderColor: boxPalette.systemSuccess,
-			  }
-			: undefined),
+		...(invalid && {
+			backgroundColor: boxPalette.systemErrorMuted,
+			borderColor: boxPalette.systemError,
+		}),
 
 		'&:disabled': {
 			cursor: 'not-allowed',

@@ -11,7 +11,6 @@ function renderField({
 	message = undefined,
 	required = true,
 	invalid = true,
-	valid = undefined,
 	children = (a11yProps) => (
 		<input data-testid="example-input" type="text" {...a11yProps} />
 	),
@@ -24,7 +23,6 @@ function renderField({
 			message={message}
 			required={required}
 			invalid={invalid}
-			valid={valid}
 			{...props}
 		>
 			{children}

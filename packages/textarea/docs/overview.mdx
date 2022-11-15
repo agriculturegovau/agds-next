@@ -33,15 +33,12 @@ The `Textarea` component will always append `(optional)` to the label based on t
 </Stack>
 ```
 
-### Valid and invalid textareas
+### Invalid
 
-Use the `invalid` and `valid` props to indicate whether user input is valid (validates according to the elements settings) or invalid (does not validate according to the elements settings).
+Use the `invalid` prop to indicate if the user input is invalid (does not validate according to the elements settings).
 
 ```jsx live
-<Stack gap={1}>
-	<Textarea label="Invalid" invalid message="This field is invalid" />
-	<Textarea label="Valid" valid message="This field is valid" />
-</Stack>
+<Textarea label="Invalid" invalid message="This field is invalid" />
 ```
 
 ### Disabled

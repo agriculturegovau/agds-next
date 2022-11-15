@@ -77,19 +77,6 @@ Invalid.args = {
 	options: EXAMPLE_OPTIONS,
 };
 
-export const Valid: ComponentStory<typeof Select> = (args) => (
-	<Select {...args} />
-);
-Valid.args = {
-	label: 'Example',
-	placeholder: 'Please select',
-	message: 'This select is valid',
-	required: true,
-	valid: true,
-	options: EXAMPLE_OPTIONS,
-	value: EXAMPLE_OPTIONS[0].value,
-};
-
 export const Hint: ComponentStory<typeof Select> = (args) => (
 	<Select {...args} />
 );

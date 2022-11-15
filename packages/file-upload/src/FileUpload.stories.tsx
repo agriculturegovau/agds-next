@@ -57,13 +57,6 @@ Invalid.args = {
 	invalid: true,
 };
 
-export const Valid = TemplateWithValue.bind({});
-Valid.args = {
-	label: 'Drivers licence',
-	message: 'The file you have submitted is valid',
-	valid: true,
-};
-
 export const MultipleFiles = Template.bind({});
 MultipleFiles.args = {
 	label: 'Identity documents',

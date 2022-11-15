@@ -21,12 +21,10 @@ export type ComboboxProps<Option extends DefaultComboboxOption> = {
 	required?: boolean;
 	/** Provides extra information about the field. */
 	hint?: string;
-	/** Message to show when the field is invalid or valid. */
+	/** Message to show when the field is invalid. */
 	message?: string;
 	/** If true, the invalid state will be rendered. */
 	invalid?: boolean;
-	/** If true, the valid state will be rendered. */
-	valid?: boolean;
 	/** If true, the field will stretch to the fill the width of its container. */
 	block?: boolean;
 	disabled?: boolean;
@@ -38,7 +36,7 @@ export type ComboboxProps<Option extends DefaultComboboxOption> = {
 	showDropdownTrigger?: boolean;
 	/** The list of options to show in the dropdown. */
 	options?: Option[];
-	/** Function to be used when options need to be loaded over the newtwork. */
+	/** Function to be used when options need to be loaded over the network. */
 	loadOptions?: (inputValue: string) => Promise<Option[]>;
 	/** The value of the field. */
 	value?: Option | null;
@@ -56,7 +54,6 @@ export function Combobox<Option extends DefaultComboboxOption>({
 	hint,
 	message,
 	invalid,
-	valid,
 	id: idProp,
 	disabled,
 	block,
@@ -147,7 +144,6 @@ export function Combobox<Option extends DefaultComboboxOption>({
 			block,
 			maxWidth: 'xl',
 			invalid,
-			valid,
 		}),
 	};
 
@@ -159,7 +155,6 @@ export function Combobox<Option extends DefaultComboboxOption>({
 				hint={hint}
 				message={message}
 				invalid={invalid}
-				valid={valid}
 				id={inputId}
 			>
 				{(a11yProps) => (

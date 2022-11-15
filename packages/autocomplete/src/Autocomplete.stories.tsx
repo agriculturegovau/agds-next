@@ -53,13 +53,6 @@ Invalid.args = {
 	message: 'City is required',
 };
 
-export const Valid = Template.bind({});
-Valid.args = {
-	...defaultArgs,
-	valid: true,
-	message: 'City is valid',
-};
-
 export const Block = Template.bind({});
 Block.args = {
 	...defaultArgs,
