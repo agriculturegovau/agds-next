@@ -1,4 +1,3 @@
-import { createContext, useContext } from 'react';
 import { packs } from '@ag.ds-next/core';
 
 const sizes = {
@@ -12,14 +11,3 @@ export const iconSize = {
 	sm: 1,
 	md: 1.5,
 } as const;
-
-type ControlGroupContextType = {
-	describedBy?: string;
-	invalid?: boolean;
-};
-
-export const ControlGroupContext = createContext<
-	ControlGroupContextType | undefined
->(undefined);
-
-export const useControlGroupContext = () => useContext(ControlGroupContext);

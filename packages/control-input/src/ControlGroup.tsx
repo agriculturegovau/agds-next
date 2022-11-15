@@ -7,7 +7,7 @@ import {
 	FieldLabel,
 	FieldMessage,
 } from '@ag.ds-next/field';
-import { ControlGroupContext } from './utils';
+import { ControlGroupContext } from './ControlGroupProvider';
 
 export type ControlGroupProps = PropsWithChildren<{
 	/** If true, children will be stacked vertically. */

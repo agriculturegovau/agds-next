@@ -118,13 +118,25 @@ Add a border around the control inputs to indicate valid or invalid selections.
 
 	return (
 		<ControlGroup label="Valid example" valid message="Correct!">
-			<Radio checked={isChecked('phone')} onChange={handlerForKey('phone')}>
+			<Radio
+				checked={isChecked('phone')}
+				onChange={handlerForKey('phone')}
+				valid
+			>
 				Phone
 			</Radio>
-			<Radio checked={isChecked('tablet')} onChange={handlerForKey('tablet')}>
+			<Radio
+				checked={isChecked('tablet')}
+				onChange={handlerForKey('tablet')}
+				valid
+			>
 				Tablet
 			</Radio>
-			<Radio checked={isChecked('laptop')} onChange={handlerForKey('laptop')}>
+			<Radio
+				checked={isChecked('laptop')}
+				onChange={handlerForKey('laptop')}
+				valid
+			>
 				Laptop
 			</Radio>
 		</ControlGroup>

@@ -3,7 +3,8 @@ import { CheckboxIndicator } from './CheckboxIndicator';
 import { ControlInput } from './ControlInput';
 import { ControlContainer } from './ControlContainer';
 import { ControlLabel } from './ControlLabel';
-import { ControlSize, useControlGroupContext } from './utils';
+import { useControlGroupContext } from './ControlGroupProvider';
+import { ControlSize } from './utils';
 
 type NativeCheckboxProps = InputHTMLAttributes<HTMLInputElement>;
 

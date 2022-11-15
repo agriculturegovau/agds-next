@@ -55,7 +55,6 @@ CheckboxGroupInvalid.args = {
 	...checkboxDefaultArgs,
 	message: 'Please select an interest',
 	required: true,
-
 	invalid: true,
 };
 

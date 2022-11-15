@@ -96,12 +96,7 @@ export {
 } from '@ag.ds-next/icon';
 export { ProgressIndicator } from '@ag.ds-next/progress-indicator';
 export { PageAlert } from '@ag.ds-next/page-alert';
-export {
-	ControlGroup,
-	Checkbox,
-	Radio,
-	useControlGroupIds,
-} from '@ag.ds-next/control-input';
+export { ControlGroup, Checkbox, Radio } from '@ag.ds-next/control-input';
 export {
 	SearchBox,
 	SearchBoxInput,
