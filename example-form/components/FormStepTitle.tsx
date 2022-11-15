@@ -29,7 +29,7 @@ export const FormStepTitle = forwardRef<HTMLHeadingElement, FormStepTitleProps>(
 							lineHeight="heading"
 						>
 							{sectionTitle}
-							<VisuallyHidden>{' form.'}</VisuallyHidden>
+							<VisuallyHidden>{' form:'}</VisuallyHidden>
 						</Text>
 
 						{pageTitle}
