@@ -9,7 +9,7 @@ exports[`SummaryList renders correctly 1`] = `
       class="css-1gkaq3c-boxStyles"
     >
       <dt
-        class="css-1py73rt-boxStyles"
+        class="css-y9ojh3-boxStyles"
       >
         First name
       </dt>
@@ -33,7 +33,7 @@ exports[`SummaryList renders correctly 1`] = `
       class="css-1gkaq3c-boxStyles"
     >
       <dt
-        class="css-1py73rt-boxStyles"
+        class="css-y9ojh3-boxStyles"
       >
         Last name
       </dt>
@@ -57,7 +57,7 @@ exports[`SummaryList renders correctly 1`] = `
       class="css-1gkaq3c-boxStyles"
     >
       <dt
-        class="css-1py73rt-boxStyles"
+        class="css-y9ojh3-boxStyles"
       >
         Contact information
       </dt>
@@ -83,7 +83,7 @@ exports[`SummaryList renders correctly 1`] = `
       class="css-1gkaq3c-boxStyles"
     >
       <dt
-        class="css-1py73rt-boxStyles"
+        class="css-y9ojh3-boxStyles"
       >
         Date of birth
       </dt>
