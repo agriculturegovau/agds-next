@@ -48,7 +48,7 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>(function Radio(
 				type="radio"
 				disabled={disabled}
 				aria-invalid={invalid ? 'true' : undefined}
-				aria-describedby={controlGroupContext?.describedBy}
+				aria-describedby={invalid ? controlGroupContext?.messageId : undefined}
 				{...props}
 			/>
 			<RadioIndicator

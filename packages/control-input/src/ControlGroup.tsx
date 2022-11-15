@@ -7,7 +7,7 @@ import {
 	FieldLabel,
 	FieldMessage,
 } from '@ag.ds-next/field';
-import { ControlGroupContext } from './ControlGroupProvider';
+import { ControlGroupProvider } from './ControlGroupProvider';
 
 export type ControlGroupProps = PropsWithChildren<{
 	/** If true, children will be stacked vertically. */
@@ -38,14 +38,17 @@ export const ControlGroup = ({
 }: ControlGroupProps) => {
 	const { groupId, hintId, messageId } = useControlGroupIds(id);
 	const describedByIds = [
-		message ? messageId : null,
+		invalid && message ? messageId : null,
 		hint ? hintId : null,
 	].filter(Boolean);
 	const describedBy = describedByIds.length
 		? describedByIds.join(' ')
 		: undefined;
 	return (
-		<ControlGroupContext.Provider value={{ describedBy, invalid }}>
+		<ControlGroupProvider
+			messageId={invalid && message ? messageId : undefined}
+			invalid={invalid}
+		>
 			<FieldContainer invalid={invalid} id={groupId}>
 				<fieldset
 					aria-describedby={describedBy}
@@ -77,7 +80,7 @@ export const ControlGroup = ({
 					</Stack>
 				</fieldset>
 			</FieldContainer>
-		</ControlGroupContext.Provider>
+		</ControlGroupProvider>
 	);
 };
 

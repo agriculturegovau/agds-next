@@ -48,7 +48,9 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
 					type="checkbox"
 					disabled={disabled}
 					aria-invalid={invalid ? 'true' : undefined}
-					aria-describedby={controlGroupContext?.describedBy}
+					aria-describedby={
+						invalid ? controlGroupContext?.messageId : undefined
+					}
 					{...props}
 				/>
 				<CheckboxIndicator
