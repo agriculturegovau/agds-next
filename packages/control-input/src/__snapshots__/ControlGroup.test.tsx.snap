@@ -34,6 +34,7 @@ exports[`ControlGroup  With Checkboxes renders correctly 1`] = `
           >
             <input
               class="css-poh1fz-ControlInput"
+              data-testid="option-a"
               type="checkbox"
             />
             <span
@@ -67,6 +68,7 @@ exports[`ControlGroup  With Checkboxes renders correctly 1`] = `
           >
             <input
               class="css-poh1fz-ControlInput"
+              data-testid="option-b"
               type="checkbox"
             />
             <span
@@ -100,6 +102,7 @@ exports[`ControlGroup  With Checkboxes renders correctly 1`] = `
           >
             <input
               class="css-poh1fz-ControlInput"
+              data-testid="option-c"
               type="checkbox"
             />
             <span
@@ -133,6 +136,7 @@ exports[`ControlGroup  With Checkboxes renders correctly 1`] = `
           >
             <input
               class="css-poh1fz-ControlInput"
+              data-testid="option-d"
               type="checkbox"
             />
             <span
@@ -245,6 +249,7 @@ exports[`ControlGroup  With Checkboxes renders correctly when invalid 1`] = `
               aria-describedby="control-group-:r2:-message"
               aria-invalid="true"
               class="css-poh1fz-ControlInput"
+              data-testid="option-a"
               type="checkbox"
             />
             <span
@@ -280,6 +285,7 @@ exports[`ControlGroup  With Checkboxes renders correctly when invalid 1`] = `
               aria-describedby="control-group-:r2:-message"
               aria-invalid="true"
               class="css-poh1fz-ControlInput"
+              data-testid="option-b"
               type="checkbox"
             />
             <span
@@ -315,6 +321,7 @@ exports[`ControlGroup  With Checkboxes renders correctly when invalid 1`] = `
               aria-describedby="control-group-:r2:-message"
               aria-invalid="true"
               class="css-poh1fz-ControlInput"
+              data-testid="option-c"
               type="checkbox"
             />
             <span
@@ -350,6 +357,7 @@ exports[`ControlGroup  With Checkboxes renders correctly when invalid 1`] = `
               aria-describedby="control-group-:r2:-message"
               aria-invalid="true"
               class="css-poh1fz-ControlInput"
+              data-testid="option-d"
               type="checkbox"
             />
             <span
@@ -389,7 +397,7 @@ exports[`ControlGroup  With Radios renders correctly 1`] = `
 <div>
   <div
     class="css-1904cz9-boxStyles-FieldContainer"
-    id="control-group-:r4:"
+    id="control-group-:r5:"
   >
     <fieldset
       class="css-faxsk2-ControlGroup"
@@ -419,6 +427,7 @@ exports[`ControlGroup  With Radios renders correctly 1`] = `
           >
             <input
               class="css-poh1fz-ControlInput"
+              data-testid="option-a"
               type="radio"
             />
             <span
@@ -439,6 +448,7 @@ exports[`ControlGroup  With Radios renders correctly 1`] = `
           >
             <input
               class="css-poh1fz-ControlInput"
+              data-testid="option-b"
               type="radio"
             />
             <span
@@ -459,6 +469,7 @@ exports[`ControlGroup  With Radios renders correctly 1`] = `
           >
             <input
               class="css-poh1fz-ControlInput"
+              data-testid="option-c"
               type="radio"
             />
             <span
@@ -479,6 +490,7 @@ exports[`ControlGroup  With Radios renders correctly 1`] = `
           >
             <input
               class="css-poh1fz-ControlInput"
+              data-testid="option-d"
               type="radio"
             />
             <span
@@ -505,10 +517,10 @@ exports[`ControlGroup  With Radios renders correctly when invalid 1`] = `
 <div>
   <div
     class="css-1n67ua0-boxStyles-FieldContainer"
-    id="control-group-:r6:"
+    id="control-group-:r7:"
   >
     <fieldset
-      aria-describedby="control-group-:r6:-message control-group-:r6:-hint"
+      aria-describedby="control-group-:r7:-message control-group-:r7:-hint"
       class="css-faxsk2-ControlGroup"
     >
       <legend
@@ -530,7 +542,7 @@ exports[`ControlGroup  With Radios renders correctly when invalid 1`] = `
       >
         <span
           class="css-lw0v8u-boxStyles-Text"
-          id="control-group-:r6:-hint"
+          id="control-group-:r7:-hint"
         >
           Hint text
         </span>
@@ -563,7 +575,7 @@ exports[`ControlGroup  With Radios renders correctly when invalid 1`] = `
           </div>
           <span
             class="css-tfsyf8-boxStyles-Text"
-            id="control-group-:r6:-message"
+            id="control-group-:r7:-message"
           >
             Error message
           </span>
@@ -575,9 +587,10 @@ exports[`ControlGroup  With Radios renders correctly when invalid 1`] = `
             class="css-kwvgrg-boxStyles-ControlContainer"
           >
             <input
-              aria-describedby="control-group-:r6:-message"
+              aria-describedby="control-group-:r7:-message"
               aria-invalid="true"
               class="css-poh1fz-ControlInput"
+              data-testid="option-a"
               type="radio"
             />
             <span
@@ -597,9 +610,10 @@ exports[`ControlGroup  With Radios renders correctly when invalid 1`] = `
             class="css-kwvgrg-boxStyles-ControlContainer"
           >
             <input
-              aria-describedby="control-group-:r6:-message"
+              aria-describedby="control-group-:r7:-message"
               aria-invalid="true"
               class="css-poh1fz-ControlInput"
+              data-testid="option-b"
               type="radio"
             />
             <span
@@ -619,9 +633,10 @@ exports[`ControlGroup  With Radios renders correctly when invalid 1`] = `
             class="css-kwvgrg-boxStyles-ControlContainer"
           >
             <input
-              aria-describedby="control-group-:r6:-message"
+              aria-describedby="control-group-:r7:-message"
               aria-invalid="true"
               class="css-poh1fz-ControlInput"
+              data-testid="option-c"
               type="radio"
             />
             <span
@@ -641,9 +656,10 @@ exports[`ControlGroup  With Radios renders correctly when invalid 1`] = `
             class="css-kwvgrg-boxStyles-ControlContainer"
           >
             <input
-              aria-describedby="control-group-:r6:-message"
+              aria-describedby="control-group-:r7:-message"
               aria-invalid="true"
               class="css-poh1fz-ControlInput"
+              data-testid="option-d"
               type="radio"
             />
             <span

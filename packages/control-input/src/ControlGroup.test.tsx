@@ -1,6 +1,6 @@
 import '@testing-library/jest-dom';
 import 'html-validate/jest';
-import { render, cleanup } from '../../../test-utils';
+import { render, cleanup, screen } from '../../../test-utils';
 import { ControlGroup, ControlGroupProps } from './ControlGroup';
 import { Checkbox } from './Checkbox';
 import { Radio } from './Radio';
@@ -10,10 +10,10 @@ afterEach(cleanup);
 function renderCheckboxGroup(props?: Partial<ControlGroupProps>) {
 	return render(
 		<ControlGroup {...props}>
-			<Checkbox>Option A</Checkbox>
-			<Checkbox>Option B</Checkbox>
-			<Checkbox>Option C</Checkbox>
-			<Checkbox>Option D</Checkbox>
+			<Checkbox data-testid="option-a">Option A</Checkbox>
+			<Checkbox data-testid="option-b">Option B</Checkbox>
+			<Checkbox data-testid="option-c">Option C</Checkbox>
+			<Checkbox data-testid="option-d">Option D</Checkbox>
 		</ControlGroup>
 	);
 }
@@ -21,10 +21,10 @@ function renderCheckboxGroup(props?: Partial<ControlGroupProps>) {
 function renderRadioGroup(props?: Partial<ControlGroupProps>) {
 	return render(
 		<ControlGroup {...props}>
-			<Radio>Option A</Radio>
-			<Radio>Option B</Radio>
-			<Radio>Option C</Radio>
-			<Radio>Option D</Radio>
+			<Radio data-testid="option-a">Option A</Radio>
+			<Radio data-testid="option-b">Option B</Radio>
+			<Radio data-testid="option-c">Option C</Radio>
+			<Radio data-testid="option-d">Option D</Radio>
 		</ControlGroup>
 	);
 }
@@ -59,6 +59,25 @@ describe('ControlGroup ', () => {
 				invalid: true,
 			});
 			expect(container).toMatchSnapshot();
+		});
+
+		it('renders correct aria attributes when invalid', () => {
+			renderCheckboxGroup({
+				label: 'Control group label',
+				hint: 'Hint text',
+				message: 'Error message',
+				invalid: true,
+			});
+			const messageId = screen.getByText('Error message').getAttribute('id');
+			[
+				screen.getByTestId('option-a'),
+				screen.getByTestId('option-b'),
+				screen.getByTestId('option-c'),
+				screen.getByTestId('option-d'),
+			].forEach((option) => {
+				expect(option).toHaveAttribute('aria-describedby', messageId);
+				expect(option).toHaveAttribute('aria-invalid', 'true');
+			});
 		});
 
 		it('renders a valid HTML structure when invalid', () => {
@@ -103,6 +122,25 @@ describe('ControlGroup ', () => {
 				invalid: true,
 			});
 			expect(container).toMatchSnapshot();
+		});
+
+		it('renders correct aria attributes when invalid', () => {
+			renderRadioGroup({
+				label: 'Control group label',
+				hint: 'Hint text',
+				message: 'Error message',
+				invalid: true,
+			});
+			const messageId = screen.getByText('Error message').getAttribute('id');
+			[
+				screen.getByTestId('option-a'),
+				screen.getByTestId('option-b'),
+				screen.getByTestId('option-c'),
+				screen.getByTestId('option-d'),
+			].forEach((option) => {
+				expect(option).toHaveAttribute('aria-describedby', messageId);
+				expect(option).toHaveAttribute('aria-invalid', 'true');
+			});
 		});
 
 		it('renders a valid HTML structure invalid', () => {
