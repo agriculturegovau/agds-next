@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ControlGroup with Checkboxes renders correctly 1`] = `
+exports[`ControlGroup  With Checkboxes renders correctly 1`] = `
 <div>
   <div
     class="css-1904cz9-boxStyles-FieldContainer"
@@ -168,226 +168,230 @@ exports[`ControlGroup with Checkboxes renders correctly 1`] = `
 </div>
 `;
 
-exports[`ControlGroup with Checkboxes renders correctly with invalid state 1`] = `
+exports[`ControlGroup  With Checkboxes renders correctly when invalid 1`] = `
 <div>
   <div
     class="css-1n67ua0-boxStyles-FieldContainer"
-    id="control-group-:r1:"
-  >
-    <fieldset
-      aria-describedby="control-group-:r1:-message control-group-:r1:-hint"
-      class="css-faxsk2-ControlGroup"
-    >
-      <legend
-        class="css-n7rdvo-boxStyles"
-      >
-        <span
-          class="css-433uqb-boxStyles-Text"
-        >
-          Control group label
-        </span>
-        <span
-          class="css-1rpt3h8-boxStyles-Text"
-        >
-          (optional)
-        </span>
-      </legend>
-      <div
-        class="css-1ypnbyi-boxStyles-ControlGroup"
-      >
-        <span
-          class="css-lw0v8u-boxStyles-Text"
-          id="control-group-:r1:-hint"
-        >
-          This is a hint
-        </span>
-        <div
-          class="css-1xkbxzi-boxStyles"
-        >
-          <div
-            class="css-1ldvxqr-boxStyles"
-          >
-            <svg
-              aria-hidden="false"
-              aria-label="Error"
-              class="css-vnv4i8-Icon-FieldMessage"
-              clip-rule="evenodd"
-              focusable="true"
-              height="24"
-              role="img"
-              viewBox="0 0 24 24"
-              width="24"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                clip-rule="evenodd"
-                d="M16.4661 0.5C16.7332 0.5 16.9893 0.6069 17.1771 0.796862L23.2111 6.89871C23.3962 7.08591 23.5 7.33857 23.5 7.60185V16.3935C23.5 16.6595 23.394 16.9146 23.2055 17.1023L17.0712 23.2087C16.8838 23.3953 16.6301 23.5 16.3657 23.5H7.63889C7.37177 23.5 7.11576 23.3931 6.92792 23.2032L0.789033 16.9968C0.60386 16.8095 0.5 16.5569 0.5 16.2935V7.60646C0.5 7.34045 0.605983 7.08541 0.794505 6.89774L6.92885 0.791284C7.11625 0.604732 7.36991 0.5 7.63434 0.5H16.4661ZM16.7071 7.29289C17.0976 7.68342 17.0976 8.31658 16.7071 8.70711L13.4142 12L16.7071 15.2929C17.0976 15.6834 17.0976 16.3166 16.7071 16.7071C16.3166 17.0976 15.6834 17.0976 15.2929 16.7071L12 13.4142L8.70711 16.7071C8.31658 17.0976 7.68342 17.0976 7.29289 16.7071C6.90237 16.3166 6.90237 15.6834 7.29289 15.2929L10.5858 12L7.29289 8.70711C6.90237 8.31658 6.90237 7.68342 7.29289 7.29289C7.68342 6.90237 8.31658 6.90237 8.70711 7.29289L12 10.5858L15.2929 7.29289C15.6834 6.90237 16.3166 6.90237 16.7071 7.29289Z"
-                fill="currentColor"
-                fill-rule="evenodd"
-                stroke="none"
-              />
-            </svg>
-          </div>
-          <span
-            class="css-tfsyf8-boxStyles-Text"
-            id="control-group-:r1:-message"
-          >
-            This is an error message
-          </span>
-        </div>
-        <div
-          class="css-1n3rct3-boxStyles"
-        >
-          <label
-            class="css-kwvgrg-boxStyles-ControlContainer"
-          >
-            <input
-              aria-describedby="control-group-:r1:-message control-group-:r1:-hint"
-              class="css-poh1fz-ControlInput"
-              type="checkbox"
-            />
-            <span
-              class="css-gjetbs-boxStyles-CheckboxIndicator"
-            >
-              <svg
-                aria-hidden="true"
-                class="css-umoisd-CheckboxIcon"
-                clip-rule="evenodd"
-                focusable="false"
-                role="img"
-                viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M3 13.4286L8.4 19L21 6"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="3"
-                />
-              </svg>
-            </span>
-            <span
-              class="css-1g33cu8-boxStyles-Text-ControlLabel"
-            >
-              Option A
-            </span>
-          </label>
-          <label
-            class="css-kwvgrg-boxStyles-ControlContainer"
-          >
-            <input
-              aria-describedby="control-group-:r1:-message control-group-:r1:-hint"
-              class="css-poh1fz-ControlInput"
-              type="checkbox"
-            />
-            <span
-              class="css-gjetbs-boxStyles-CheckboxIndicator"
-            >
-              <svg
-                aria-hidden="true"
-                class="css-umoisd-CheckboxIcon"
-                clip-rule="evenodd"
-                focusable="false"
-                role="img"
-                viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M3 13.4286L8.4 19L21 6"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="3"
-                />
-              </svg>
-            </span>
-            <span
-              class="css-1g33cu8-boxStyles-Text-ControlLabel"
-            >
-              Option B
-            </span>
-          </label>
-          <label
-            class="css-kwvgrg-boxStyles-ControlContainer"
-          >
-            <input
-              aria-describedby="control-group-:r1:-message control-group-:r1:-hint"
-              class="css-poh1fz-ControlInput"
-              type="checkbox"
-            />
-            <span
-              class="css-gjetbs-boxStyles-CheckboxIndicator"
-            >
-              <svg
-                aria-hidden="true"
-                class="css-umoisd-CheckboxIcon"
-                clip-rule="evenodd"
-                focusable="false"
-                role="img"
-                viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M3 13.4286L8.4 19L21 6"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="3"
-                />
-              </svg>
-            </span>
-            <span
-              class="css-1g33cu8-boxStyles-Text-ControlLabel"
-            >
-              Option C
-            </span>
-          </label>
-          <label
-            class="css-kwvgrg-boxStyles-ControlContainer"
-          >
-            <input
-              aria-describedby="control-group-:r1:-message control-group-:r1:-hint"
-              class="css-poh1fz-ControlInput"
-              type="checkbox"
-            />
-            <span
-              class="css-gjetbs-boxStyles-CheckboxIndicator"
-            >
-              <svg
-                aria-hidden="true"
-                class="css-umoisd-CheckboxIcon"
-                clip-rule="evenodd"
-                focusable="false"
-                role="img"
-                viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M3 13.4286L8.4 19L21 6"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="3"
-                />
-              </svg>
-            </span>
-            <span
-              class="css-1g33cu8-boxStyles-Text-ControlLabel"
-            >
-              Option D
-            </span>
-          </label>
-        </div>
-      </div>
-    </fieldset>
-  </div>
-</div>
-`;
-
-exports[`ControlGroup with Radios renders correctly 1`] = `
-<div>
-  <div
-    class="css-1904cz9-boxStyles-FieldContainer"
     id="control-group-:r2:"
   >
     <fieldset
+      aria-describedby="control-group-:r2:-message control-group-:r2:-hint"
+      class="css-faxsk2-ControlGroup"
+    >
+      <legend
+        class="css-n7rdvo-boxStyles"
+      >
+        <span
+          class="css-433uqb-boxStyles-Text"
+        >
+          Control group label
+        </span>
+        <span
+          class="css-1rpt3h8-boxStyles-Text"
+        >
+          (optional)
+        </span>
+      </legend>
+      <div
+        class="css-1ypnbyi-boxStyles-ControlGroup"
+      >
+        <span
+          class="css-lw0v8u-boxStyles-Text"
+          id="control-group-:r2:-hint"
+        >
+          Hint text
+        </span>
+        <div
+          class="css-1xkbxzi-boxStyles"
+        >
+          <div
+            class="css-1ldvxqr-boxStyles"
+          >
+            <svg
+              aria-hidden="false"
+              aria-label="Error"
+              class="css-vnv4i8-Icon-FieldMessage"
+              clip-rule="evenodd"
+              focusable="true"
+              height="24"
+              role="img"
+              viewBox="0 0 24 24"
+              width="24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                clip-rule="evenodd"
+                d="M16.4661 0.5C16.7332 0.5 16.9893 0.6069 17.1771 0.796862L23.2111 6.89871C23.3962 7.08591 23.5 7.33857 23.5 7.60185V16.3935C23.5 16.6595 23.394 16.9146 23.2055 17.1023L17.0712 23.2087C16.8838 23.3953 16.6301 23.5 16.3657 23.5H7.63889C7.37177 23.5 7.11576 23.3931 6.92792 23.2032L0.789033 16.9968C0.60386 16.8095 0.5 16.5569 0.5 16.2935V7.60646C0.5 7.34045 0.605983 7.08541 0.794505 6.89774L6.92885 0.791284C7.11625 0.604732 7.36991 0.5 7.63434 0.5H16.4661ZM16.7071 7.29289C17.0976 7.68342 17.0976 8.31658 16.7071 8.70711L13.4142 12L16.7071 15.2929C17.0976 15.6834 17.0976 16.3166 16.7071 16.7071C16.3166 17.0976 15.6834 17.0976 15.2929 16.7071L12 13.4142L8.70711 16.7071C8.31658 17.0976 7.68342 17.0976 7.29289 16.7071C6.90237 16.3166 6.90237 15.6834 7.29289 15.2929L10.5858 12L7.29289 8.70711C6.90237 8.31658 6.90237 7.68342 7.29289 7.29289C7.68342 6.90237 8.31658 6.90237 8.70711 7.29289L12 10.5858L15.2929 7.29289C15.6834 6.90237 16.3166 6.90237 16.7071 7.29289Z"
+                fill="currentColor"
+                fill-rule="evenodd"
+                stroke="none"
+              />
+            </svg>
+          </div>
+          <span
+            class="css-tfsyf8-boxStyles-Text"
+            id="control-group-:r2:-message"
+          >
+            Error message
+          </span>
+        </div>
+        <div
+          class="css-1n3rct3-boxStyles"
+        >
+          <label
+            class="css-kwvgrg-boxStyles-ControlContainer"
+          >
+            <input
+              aria-describedby="control-group-:r2:-message"
+              aria-invalid="true"
+              class="css-poh1fz-ControlInput"
+              type="checkbox"
+            />
+            <span
+              class="css-lv3v0c-boxStyles-CheckboxIndicator"
+            >
+              <svg
+                aria-hidden="true"
+                class="css-umoisd-CheckboxIcon"
+                clip-rule="evenodd"
+                focusable="false"
+                role="img"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M3 13.4286L8.4 19L21 6"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="3"
+                />
+              </svg>
+            </span>
+            <span
+              class="css-1g33cu8-boxStyles-Text-ControlLabel"
+            >
+              Option A
+            </span>
+          </label>
+          <label
+            class="css-kwvgrg-boxStyles-ControlContainer"
+          >
+            <input
+              aria-describedby="control-group-:r2:-message"
+              aria-invalid="true"
+              class="css-poh1fz-ControlInput"
+              type="checkbox"
+            />
+            <span
+              class="css-lv3v0c-boxStyles-CheckboxIndicator"
+            >
+              <svg
+                aria-hidden="true"
+                class="css-umoisd-CheckboxIcon"
+                clip-rule="evenodd"
+                focusable="false"
+                role="img"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M3 13.4286L8.4 19L21 6"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="3"
+                />
+              </svg>
+            </span>
+            <span
+              class="css-1g33cu8-boxStyles-Text-ControlLabel"
+            >
+              Option B
+            </span>
+          </label>
+          <label
+            class="css-kwvgrg-boxStyles-ControlContainer"
+          >
+            <input
+              aria-describedby="control-group-:r2:-message"
+              aria-invalid="true"
+              class="css-poh1fz-ControlInput"
+              type="checkbox"
+            />
+            <span
+              class="css-lv3v0c-boxStyles-CheckboxIndicator"
+            >
+              <svg
+                aria-hidden="true"
+                class="css-umoisd-CheckboxIcon"
+                clip-rule="evenodd"
+                focusable="false"
+                role="img"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M3 13.4286L8.4 19L21 6"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="3"
+                />
+              </svg>
+            </span>
+            <span
+              class="css-1g33cu8-boxStyles-Text-ControlLabel"
+            >
+              Option C
+            </span>
+          </label>
+          <label
+            class="css-kwvgrg-boxStyles-ControlContainer"
+          >
+            <input
+              aria-describedby="control-group-:r2:-message"
+              aria-invalid="true"
+              class="css-poh1fz-ControlInput"
+              type="checkbox"
+            />
+            <span
+              class="css-lv3v0c-boxStyles-CheckboxIndicator"
+            >
+              <svg
+                aria-hidden="true"
+                class="css-umoisd-CheckboxIcon"
+                clip-rule="evenodd"
+                focusable="false"
+                role="img"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M3 13.4286L8.4 19L21 6"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="3"
+                />
+              </svg>
+            </span>
+            <span
+              class="css-1g33cu8-boxStyles-Text-ControlLabel"
+            >
+              Option D
+            </span>
+          </label>
+        </div>
+      </div>
+    </fieldset>
+  </div>
+</div>
+`;
+
+exports[`ControlGroup  With Radios renders correctly 1`] = `
+<div>
+  <div
+    class="css-1904cz9-boxStyles-FieldContainer"
+    id="control-group-:r4:"
+  >
+    <fieldset
       class="css-faxsk2-ControlGroup"
     >
       <legend
@@ -497,14 +501,14 @@ exports[`ControlGroup with Radios renders correctly 1`] = `
 </div>
 `;
 
-exports[`ControlGroup with Radios renders correctly with invalid state 1`] = `
+exports[`ControlGroup  With Radios renders correctly when invalid 1`] = `
 <div>
   <div
     class="css-1n67ua0-boxStyles-FieldContainer"
-    id="control-group-:r3:"
+    id="control-group-:r6:"
   >
     <fieldset
-      aria-describedby="control-group-:r3:-message control-group-:r3:-hint"
+      aria-describedby="control-group-:r6:-message control-group-:r6:-hint"
       class="css-faxsk2-ControlGroup"
     >
       <legend
@@ -526,9 +530,9 @@ exports[`ControlGroup with Radios renders correctly with invalid state 1`] = `
       >
         <span
           class="css-lw0v8u-boxStyles-Text"
-          id="control-group-:r3:-hint"
+          id="control-group-:r6:-hint"
         >
-          This is a hint
+          Hint text
         </span>
         <div
           class="css-1xkbxzi-boxStyles"
@@ -559,9 +563,9 @@ exports[`ControlGroup with Radios renders correctly with invalid state 1`] = `
           </div>
           <span
             class="css-tfsyf8-boxStyles-Text"
-            id="control-group-:r3:-message"
+            id="control-group-:r6:-message"
           >
-            This is an error message
+            Error message
           </span>
         </div>
         <div
@@ -571,12 +575,13 @@ exports[`ControlGroup with Radios renders correctly with invalid state 1`] = `
             class="css-kwvgrg-boxStyles-ControlContainer"
           >
             <input
-              aria-describedby="control-group-:r3:-message control-group-:r3:-hint"
+              aria-describedby="control-group-:r6:-message"
+              aria-invalid="true"
               class="css-poh1fz-ControlInput"
               type="radio"
             />
             <span
-              class="css-rz5sks-boxStyles-RadioIndicator"
+              class="css-zot1ri-boxStyles-RadioIndicator"
             >
               <span
                 class="css-1mjlqey-boxStyles-RadioIndicator"
@@ -592,12 +597,13 @@ exports[`ControlGroup with Radios renders correctly with invalid state 1`] = `
             class="css-kwvgrg-boxStyles-ControlContainer"
           >
             <input
-              aria-describedby="control-group-:r3:-message control-group-:r3:-hint"
+              aria-describedby="control-group-:r6:-message"
+              aria-invalid="true"
               class="css-poh1fz-ControlInput"
               type="radio"
             />
             <span
-              class="css-rz5sks-boxStyles-RadioIndicator"
+              class="css-zot1ri-boxStyles-RadioIndicator"
             >
               <span
                 class="css-1mjlqey-boxStyles-RadioIndicator"
@@ -613,12 +619,13 @@ exports[`ControlGroup with Radios renders correctly with invalid state 1`] = `
             class="css-kwvgrg-boxStyles-ControlContainer"
           >
             <input
-              aria-describedby="control-group-:r3:-message control-group-:r3:-hint"
+              aria-describedby="control-group-:r6:-message"
+              aria-invalid="true"
               class="css-poh1fz-ControlInput"
               type="radio"
             />
             <span
-              class="css-rz5sks-boxStyles-RadioIndicator"
+              class="css-zot1ri-boxStyles-RadioIndicator"
             >
               <span
                 class="css-1mjlqey-boxStyles-RadioIndicator"
@@ -634,12 +641,13 @@ exports[`ControlGroup with Radios renders correctly with invalid state 1`] = `
             class="css-kwvgrg-boxStyles-ControlContainer"
           >
             <input
-              aria-describedby="control-group-:r3:-message control-group-:r3:-hint"
+              aria-describedby="control-group-:r6:-message"
+              aria-invalid="true"
               class="css-poh1fz-ControlInput"
               type="radio"
             />
             <span
-              class="css-rz5sks-boxStyles-RadioIndicator"
+              class="css-zot1ri-boxStyles-RadioIndicator"
             >
               <span
                 class="css-1mjlqey-boxStyles-RadioIndicator"
