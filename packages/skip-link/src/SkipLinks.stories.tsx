@@ -26,7 +26,7 @@ export const Basic = () => (
 
 export const Modular = () => (
 	<Fragment>
-		<SkipLinkContainer aria-label="skip links navigation">
+		<SkipLinkContainer aria-label="skip links">
 			<SkipLinkItem href="#main-content">Skip to main content</SkipLinkItem>
 			<SkipLinkItem href="#main-nav">Skip to main navigation</SkipLinkItem>
 		</SkipLinkContainer>
