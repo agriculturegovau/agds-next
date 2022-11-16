@@ -1,9 +1,8 @@
 import { ReactNode, useEffect, useRef } from 'react';
 import { Stack } from '@ag.ds-next/box';
 import { PageAlert } from '@ag.ds-next/page-alert';
-import { H1 } from '@ag.ds-next/heading';
 import { Text } from '@ag.ds-next/text';
-import { PageTitle } from '../PageTitle';
+import { FormStepTitle } from '../FormStepTitle';
 import { useFormRegisterPetDetails } from './FormRegisterPetDetails';
 
 export const FormRegisterPetDetailsContainer = ({
@@ -27,13 +26,10 @@ export const FormRegisterPetDetailsContainer = ({
 
 	return (
 		<Stack gap={3} width="100%">
-			<PageTitle
-				pretext="Your pet’s details"
-				title={
-					<H1 ref={titleRef} tabIndex={-1} focus>
-						{title}
-					</H1>
-				}
+			<FormStepTitle
+				titleRef={titleRef}
+				formTitle="Your pet’s details"
+				stepTitle={title}
 				introduction={introduction}
 				callToAction={hasCompletedPreviousStep ? callToAction : undefined}
 			/>
