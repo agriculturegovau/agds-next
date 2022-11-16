@@ -5,7 +5,6 @@ import { Button } from '@ag.ds-next/button';
 import { boxPalette } from '@ag.ds-next/core';
 import { AlertFilledIcon } from '@ag.ds-next/icon';
 import { Text } from '@ag.ds-next/text';
-import { Prose } from '@ag.ds-next/prose';
 
 type FileUploadRejectedFileProps = {
 	fileName: string;
@@ -48,13 +47,23 @@ export const FileUploadRejectedFile = ({
 					<Text fontWeight="bold" color="error">
 						{fileName} ({formatFileSize(fileSize)}) could not be selected
 					</Text>
-					<Prose>
-						<ul>
-							{errors.map(({ message }, index) => (
-								<li key={index}>{message}</li>
-							))}
-						</ul>
-					</Prose>
+					<ul
+						css={{
+							padding: 0,
+						}}
+					>
+						{errors.map(({ message }, index) => (
+							<Text
+								as="li"
+								key={index}
+								css={{
+									listStyle: 'initial',
+								}}
+							>
+								{message}
+							</Text>
+						))}
+					</ul>
 				</Stack>
 			</Flex>
 			<Box flexShrink={0}>
