@@ -59,7 +59,7 @@ export const FileUploadRejectedFile = ({
 			</Flex>
 			<Box flexShrink={0}>
 				<Button variant="tertiary" onClick={onRemove}>
-					Remove error
+					Remove file
 				</Button>
 			</Box>
 		</Flex>

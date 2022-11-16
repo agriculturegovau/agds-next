@@ -23,5 +23,5 @@ Basic.args = {
 			type: 'image/jpg',
 		}),
 	],
-	onRemove: () => {},
+	onRemove: (id) => console.log(id),
 };
