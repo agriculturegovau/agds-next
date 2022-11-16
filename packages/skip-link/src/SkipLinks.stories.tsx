@@ -26,7 +26,7 @@ export const Basic = () => (
 
 export const Modular = () => (
 	<Fragment>
-		<SkipLinkContainer aria-label="skip links navigation">
+		<SkipLinkContainer aria-label="skip links">
 			<SkipLinkItem href="#main-content">Skip to main content</SkipLinkItem>
 			<SkipLinkItem href="#main-nav">Skip to main navigation</SkipLinkItem>
 		</SkipLinkContainer>
@@ -38,14 +38,18 @@ const ExampleContent = () => (
 	<Prose>
 		<Stack gap={4}>
 			<p>This example space contains a visually hidden feature.</p>
-			<nav id="main-nav">
+			<nav id="main-nav" tabIndex={-1} css={{ '&:focus': { outline: 'none' } }}>
 				<ul>
 					<li>
 						<a href="#">Some navigation</a>
 					</li>
 				</ul>
 			</nav>
-			<main id="main-content">
+			<main
+				id="main-content"
+				tabIndex={-1}
+				css={{ '&:focus': { outline: 'none' } }}
+			>
 				Some content here with <a href="#">an example link</a>
 			</main>
 		</Stack>

@@ -16,7 +16,7 @@ Skip links are not visual until they receive focus. Include skip links after the
 		]}
 	/>
 	<MainNav id="main-nav" ... />
-	<main id="main-content">
+	<main id="main-content" tabIndex={-1} css={{ '&:focus': { outline: 'none' } }}>
 		...
 	</main>
 </React.Fragment>

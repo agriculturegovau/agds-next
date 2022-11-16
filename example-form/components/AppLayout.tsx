@@ -28,7 +28,13 @@ export const AppLayout = ({
 				minHeight="100vh"
 			>
 				<SiteHeader focusMode={focusMode} />
-				<Box as="main" id="main-content" flexGrow={1}>
+				<Box
+					as="main"
+					id="main-content"
+					flexGrow={1}
+					tabIndex={-1}
+					css={{ '&:focus': { outline: 'none' } }}
+				>
 					{children}
 				</Box>
 				<SiteFooter />

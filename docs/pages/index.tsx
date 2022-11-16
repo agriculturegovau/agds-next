@@ -19,7 +19,11 @@ export default function Homepage() {
 		<>
 			<DocumentTitle />
 			<AppLayout>
-				<main id="main-content">
+				<main
+					id="main-content"
+					tabIndex={-1}
+					css={{ '&:focus': { outline: 'none' } }}
+				>
 					<HeroBanner>
 						<HeroBannerTitleContainer>
 							<HeroBannerTitle>
