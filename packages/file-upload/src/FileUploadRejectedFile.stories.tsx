@@ -1,13 +1,13 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { FileRejection } from './FileRejection';
+import { FileUploadRejectedFile } from './FileUploadRejectedFile';
 
 export default {
-	title: 'forms/FileUpload/FileRejection',
-	component: FileRejection,
-} as ComponentMeta<typeof FileRejection>;
+	title: 'forms/FileUpload/FileUploadRejectedFile',
+	component: FileUploadRejectedFile,
+} as ComponentMeta<typeof FileUploadRejectedFile>;
 
-const Template: ComponentStory<typeof FileRejection> = (args) => {
-	return <FileRejection {...args} />;
+const Template: ComponentStory<typeof FileUploadRejectedFile> = (args) => {
+	return <FileUploadRejectedFile {...args} />;
 };
 
 export const FileSize = Template.bind({});

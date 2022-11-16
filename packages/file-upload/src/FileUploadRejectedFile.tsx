@@ -6,20 +6,19 @@ import { boxPalette } from '@ag.ds-next/core';
 import { AlertFilledIcon } from '@ag.ds-next/icon';
 import { Text } from '@ag.ds-next/text';
 
-type FileRejectionProps = {
+type FileUploadRejectedFileProps = {
 	fileName: string;
 	fileSize: number;
 	message: string;
 	onRemove: MouseEventHandler<HTMLButtonElement>;
 };
 
-// TODO: Rename to FileUploadRejectedFile
-export const FileRejection = ({
+export const FileUploadRejectedFile = ({
 	fileName,
 	fileSize,
 	message,
 	onRemove,
-}: FileRejectionProps) => {
+}: FileUploadRejectedFileProps) => {
 	return (
 		<Flex
 			as="li"

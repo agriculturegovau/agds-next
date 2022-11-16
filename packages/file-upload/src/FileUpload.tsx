@@ -1,10 +1,4 @@
-import {
-	Fragment,
-	forwardRef,
-	InputHTMLAttributes,
-	useEffect,
-	useState,
-} from 'react';
+import { forwardRef, InputHTMLAttributes, useEffect, useState } from 'react';
 import { useDropzone, DropzoneOptions } from 'react-dropzone';
 import formatFileSize from 'filesize';
 import { Flex, Stack } from '@ag.ds-next/box';
@@ -14,16 +8,18 @@ import { Field } from '@ag.ds-next/field';
 import { UploadIcon } from '@ag.ds-next/icon';
 import { Text } from '@ag.ds-next/text';
 import { visuallyHiddenStyles } from '@ag.ds-next/a11y';
-import { FileRejection } from './FileRejection';
-import { FileUploadFile } from './FileUploadFile';
 import {
-	getFilesTotal,
+	FileUploadRejectedFileList,
+	RejectedFile,
+} from './FileUploadRejectedFileList';
+import {
 	getAcceptedFilesSummary,
 	FileFormats,
 	getFileRejectionErrorMessage,
 	getErrorSummary,
 	FileWithStatus,
 } from './utils';
+import { FileUploadFileList } from './FileUploadFIleList';
 
 type NativeInputProps = InputHTMLAttributes<HTMLInputElement>;
 
@@ -58,14 +54,6 @@ export type FileUploadProps = BaseInputProps & {
 	multiple?: boolean;
 	/** If true, the invalid state will be rendered. */
 	invalid?: boolean;
-};
-
-type RejectedFile = {
-	id: string;
-	fileName: string;
-	fileSize: number;
-	code: string;
-	message: string;
 };
 
 export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
@@ -249,35 +237,16 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 									Select {filesPlural}
 								</Button>
 							</Flex>
-							{value.length || fileRejections.length ? (
+							{[...value, ...fileRejections].length ? (
 								<Stack gap={0.5}>
-									{value.length ? (
-										<Fragment>
-											<Text color="muted">{getFilesTotal(value)}</Text>
-											<Stack as="ul" gap={0.5}>
-												{value.map((file, index) => (
-													<FileUploadFile
-														key={index}
-														name={file.name}
-														size={file.size}
-														status={file.status}
-														onRemove={() => handleRemoveFile(file)}
-													/>
-												))}
-											</Stack>
-										</Fragment>
-									) : null}
-									{fileRejections.length ? (
-										<Stack as="ul" gap={0.5}>
-											{fileRejections.map(({ id, ...rejection }) => (
-												<FileRejection
-													key={id}
-													{...rejection}
-													onRemove={() => handleRemoveRejection(id)}
-												/>
-											))}
-										</Stack>
-									) : null}
+									<FileUploadFileList
+										files={value}
+										onRemove={handleRemoveFile}
+									/>
+									<FileUploadRejectedFileList
+										fileRejections={fileRejections}
+										handleRemoveRejection={handleRemoveRejection}
+									/>
 								</Stack>
 							) : null}
 						</Stack>
