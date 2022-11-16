@@ -139,6 +139,7 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 		const acceptedFilesSummary = getAcceptedFilesSummary(accept);
 
 		const styles = fileInputStyles({
+			isDragActive,
 			disabled,
 			invalid: invalid || !!errorSummary,
 		});
@@ -286,9 +287,11 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 export const fileInputStyles = ({
 	disabled,
 	invalid,
+	isDragActive,
 }: {
 	disabled?: boolean;
 	invalid?: boolean;
+	isDragActive?: boolean;
 	multiline?: boolean;
 }) =>
 	({
@@ -306,6 +309,11 @@ export const fileInputStyles = ({
 			cursor: 'not-allowed',
 			opacity: 0.3,
 			background: 'none',
+		}),
+
+		...(isDragActive && {
+			borderColor: boxPalette.foregroundAction,
+			backgroundColor: boxPalette.backgroundShadeAlt,
 		}),
 
 		'&:focus': packs.outline,
