@@ -27,9 +27,9 @@ export const FormRegisterPetDetailsContainer = ({
 	return (
 		<Stack gap={3} width="100%">
 			<FormStepTitle
-				sectionTitle="Your pet’s details"
-				pageTitle={title}
-				ref={titleRef}
+				titleRef={titleRef}
+				formTitle="Your pet’s details"
+				stepTitle={title}
 				introduction={introduction}
 				callToAction={hasCompletedPreviousStep ? callToAction : undefined}
 			/>
