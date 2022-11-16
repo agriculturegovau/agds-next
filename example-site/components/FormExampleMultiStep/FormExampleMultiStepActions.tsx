@@ -24,7 +24,7 @@ export const FormExampleMultiStepActions = () => {
 				<FormDivider />
 				<ButtonGroup>
 					<Button type="submit" variant="primary" loading={isSubmittingStep}>
-						{currentStep === 4 ? 'Submit task' : 'Save and continue'}
+						{currentStep === 4 ? 'Submit form' : 'Save and continue'}
 					</Button>
 					<Button
 						type="button"

@@ -309,7 +309,7 @@ export const FormExampleSinglePage = () => {
 				<FormDivider />
 				<ButtonGroup>
 					<Button type="submit" loading={isSubmitting}>
-						Submit
+						Submit form
 					</Button>
 					<Button type="button" variant="secondary">
 						Cancel
