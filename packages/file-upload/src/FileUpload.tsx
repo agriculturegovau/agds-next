@@ -87,8 +87,10 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 			onChange(value.filter((_, index) => index !== indexOfFile));
 		};
 
-		const handleRemoveRejection = (errId: string) => {
-			setFileRejections(fileRejections.filter((err) => err.id !== errId));
+		const handleRemoveRejection = (fileName: string) => {
+			setFileRejections(
+				fileRejections.filter((err) => err.fileName !== fileName)
+			);
 		};
 
 		const handleDropAccepted = (acceptedFiles: FileWithStatus[]) => {
@@ -135,19 +137,18 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 		useEffect(() => {
 			const rejections: RejectedFile[] = [];
 			dropzoneFileRejections.forEach(({ file, errors }) => {
-				errors.forEach((error) =>
-					rejections.push({
-						id: `${file.name}_${error.code}`,
-						fileName: file.name,
-						fileSize: file.size,
+				rejections.push({
+					fileName: file.name,
+					fileSize: file.size,
+					errors: errors.map((error) => ({
+						code: error.code,
 						message: getFileRejectionErrorMessage(
 							error,
 							formattedMaxFileSize,
 							acceptedFilesSummary
 						),
-						code: error.code,
-					})
-				);
+					})),
+				});
 			});
 			setFileRejections(rejections);
 		}, [dropzoneFileRejections, formattedMaxFileSize, acceptedFilesSummary]);

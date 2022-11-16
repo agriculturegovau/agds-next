@@ -2,11 +2,9 @@ import { Stack } from '@ag.ds-next/box';
 import { FileUploadRejectedFile } from './FileUploadRejectedFile';
 
 export type RejectedFile = {
-	id: string;
 	fileName: string;
 	fileSize: number;
-	code: string;
-	message: string;
+	errors: { message: string; code: string }[];
 };
 
 export const FileUploadRejectedFileList = ({
@@ -14,17 +12,17 @@ export const FileUploadRejectedFileList = ({
 	handleRemoveRejection,
 }: {
 	fileRejections: RejectedFile[];
-	handleRemoveRejection: (id: string) => void;
+	handleRemoveRejection: (fileName: string) => void;
 }) => {
 	if (fileRejections.length === 0) return null;
 
 	return (
 		<Stack as="ul" gap={0.5}>
-			{fileRejections.map(({ id, ...rejection }) => (
+			{fileRejections.map((rejection) => (
 				<FileUploadRejectedFile
-					key={id}
+					key={rejection.fileName}
 					{...rejection}
-					onRemove={() => handleRemoveRejection(id)}
+					onRemove={() => handleRemoveRejection(rejection.fileName)}
 				/>
 			))}
 		</Stack>

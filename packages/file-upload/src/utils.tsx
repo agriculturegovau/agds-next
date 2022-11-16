@@ -1,5 +1,6 @@
 import formatFileSize from 'filesize';
 import type { FileError, FileWithPath } from 'react-dropzone';
+import { RejectedFile } from './FileUploadRejectedFileList';
 
 export type FileStatus = 'none' | 'uploading' | 'success';
 export type FileWithStatus = FileWithPath & {
@@ -69,24 +70,31 @@ export const getFileRejectionErrorMessage = (
 };
 
 export const getErrorSummary = (
-	rejections: FileError[],
+	rejections: RejectedFile[],
 	formattedMaxFileSize: string,
 	maxFiles: number | undefined
 ) => {
 	if (!rejections?.length) return;
 
-	const firstError = rejections[0];
+	const allErrorCodes = rejections
+		.reduce((acc, { errors }) => [...acc, ...errors], [] as FileError[])
+		.map(({ code }) => code)
+		.filter((value, index, self) => {
+			return self.indexOf(value) === index;
+		});
 
-	if (firstError.code === 'too-many-files') {
+	const firstError = allErrorCodes[0];
+
+	if (firstError === 'too-many-files') {
 		return `You can not select more than ${maxFiles} files`;
 	}
 
-	if (rejections.length === 1) {
-		if (firstError.code === 'file-too-large') {
+	if (allErrorCodes.length === 1) {
+		if (firstError === 'file-too-large') {
 			return `Each file must be smaller than ${formattedMaxFileSize}`;
 		}
 
-		if (firstError.code === 'file-invalid-type') {
+		if (firstError === 'file-invalid-type') {
 			return `Some files are not of the correct format`;
 		}
 	}
