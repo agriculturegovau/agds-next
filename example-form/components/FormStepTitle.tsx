@@ -2,7 +2,6 @@ import { ReactNode, Ref } from 'react';
 import { Stack } from '@ag.ds-next/box';
 import { H1 } from '@ag.ds-next/heading';
 import { Text } from '@ag.ds-next/text';
-import { VisuallyHidden } from '@ag.ds-next/a11y';
 
 export type FormStepTitleProps = {
 	titleRef: Ref<HTMLHeadingElement>;
@@ -22,7 +21,12 @@ export function FormStepTitle({
 }: FormStepTitleProps) {
 	return (
 		<Stack gap={1.5}>
-			<H1 ref={titleRef} tabIndex={-1} focus>
+			<H1
+				ref={titleRef}
+				tabIndex={-1}
+				focus
+				aria-label={`${formTitle} form, ${stepTitle}`}
+			>
 				<Text
 					display="block"
 					fontSize="sm"
@@ -31,7 +35,6 @@ export function FormStepTitle({
 					lineHeight="heading"
 				>
 					{formTitle}
-					<VisuallyHidden>{' form'}</VisuallyHidden>
 				</Text>
 				{stepTitle}
 			</H1>
