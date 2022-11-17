@@ -312,6 +312,7 @@ export const fileInputStyles = ({
 		}),
 
 		...(isDragActive && {
+			borderStyle: 'solid',
 			borderColor: boxPalette.foregroundAction,
 			backgroundColor: boxPalette.backgroundShadeAlt,
 		}),
