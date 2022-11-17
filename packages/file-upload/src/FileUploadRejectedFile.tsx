@@ -43,12 +43,13 @@ export const FileUploadRejectedFile = ({
 						css={{ display: 'block' }}
 					/>
 				</Box>
-				<Stack gap={0}>
+				<Stack gap={0.5}>
 					<Text fontWeight="bold" color="error">
 						{fileName} ({formatFileSize(fileSize)}) could not be selected
 					</Text>
 					<ul
 						css={{
+							margin: 0,
 							padding: 0,
 						}}
 					>
