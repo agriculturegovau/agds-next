@@ -24,7 +24,7 @@ export const FormRegisterPetDetailsActions = () => {
 				<FormDivider />
 				<ButtonGroup>
 					<Button type="submit" variant="primary" loading={isSubmittingStep}>
-						{currentStep === 4 ? 'Submit form' : 'Continue'}
+						{currentStep === 4 ? 'Submit task' : 'Save and continue'}
 					</Button>
 					<Button
 						type="button"
