@@ -290,9 +290,8 @@ export const fileInputStyles = ({
 	isDragActive,
 }: {
 	disabled?: boolean;
-	invalid?: boolean;
-	isDragActive?: boolean;
-	multiline?: boolean;
+	invalid: boolean;
+	isDragActive: boolean;
 }) =>
 	({
 		borderWidth: tokens.borderWidth.lg,
