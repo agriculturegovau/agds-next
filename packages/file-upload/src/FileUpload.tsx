@@ -284,7 +284,7 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 	}
 );
 
-export const fileInputStyles = ({
+const fileInputStyles = ({
 	disabled,
 	invalid,
 	isDragActive,
