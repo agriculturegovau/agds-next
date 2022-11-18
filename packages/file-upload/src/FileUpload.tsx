@@ -224,8 +224,9 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 										fontWeight="bold"
 									>
 										{isDragActive
-											? `Drop ${filesPlural} here...`
+											? `Drop ${filesPlural} here`
 											: `Drag and drop ${filesPlural} here or select ${filesPlural} to upload.`}
+										{isDragActive ? <>&hellip;</> : null}
 									</Text>
 									{maxSize ? (
 										<Text color="muted">
