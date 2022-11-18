@@ -101,6 +101,7 @@ exports[`FileUpload Basic renders correctly 1`] = `
           1 file selected (23 B)
         </span>
         <ul
+          aria-label="Selected files"
           class="css-1wcx0lf-boxStyles"
         >
           <li

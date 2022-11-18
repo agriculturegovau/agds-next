@@ -15,7 +15,6 @@ type FileUploadFileProps = {
 	onRemove: MouseEventHandler<HTMLButtonElement>;
 };
 
-// TODO: Rename to FileUploadAcceptedFile
 export const FileUploadFile = ({
 	status = 'none',
 	size,

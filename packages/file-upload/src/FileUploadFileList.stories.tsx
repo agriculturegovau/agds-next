@@ -1,5 +1,6 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { FileUploadFileList } from './FileUploadFIleList';
+import { FileUploadFileList } from './FileUploadFileList';
+import { FileStatus, FileWithStatus } from './utils';
 
 export default {
 	title: 'forms/FileUpload/Primitives/FileUploadFileList',
@@ -10,18 +11,22 @@ const Template: ComponentStory<typeof FileUploadFileList> = (args) => {
 	return <FileUploadFileList {...args} />;
 };
 
+function createExampleFile(status?: FileStatus) {
+	const file: FileWithStatus = new File(['example'], 'example.jpg', {
+		type: 'image/jpg',
+	});
+	file.status = status;
+	return file;
+}
+
 export const Basic = Template.bind({});
 Basic.args = {
-	files: [
-		new File(['this is an example file'], 'example1.jpg', {
-			type: 'image/jpg',
-		}),
-		new File(['this is an example file'], 'example2.jpg', {
-			type: 'image/jpg',
-		}),
-		new File(['this is an example file'], 'example3.jpg', {
-			type: 'image/jpg',
-		}),
-	],
+	files: [createExampleFile(), createExampleFile(), createExampleFile()],
+	onRemove: (id) => console.log(id),
+};
+
+export const Uploading = Template.bind({});
+Uploading.args = {
+	files: [createExampleFile('uploading'), createExampleFile('success')],
 	onRemove: (id) => console.log(id),
 };

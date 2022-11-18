@@ -15,7 +15,7 @@ export const FileUploadRejectedFileList = ({
 	handleRemoveRejection: (fileName: string) => void;
 }) => {
 	return (
-		<Stack as="ul" gap={0.5}>
+		<Stack as="ul" aria-label="Invalid files" gap={0.5}>
 			{fileRejections.map((rejection) => (
 				<FileUploadRejectedFile
 					key={rejection.fileName}

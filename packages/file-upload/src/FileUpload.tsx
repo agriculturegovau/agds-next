@@ -20,7 +20,7 @@ import {
 	FileWithStatus,
 	getFilesTotal,
 } from './utils';
-import { FileUploadFileList } from './FileUploadFIleList';
+import { FileUploadFileList } from './FileUploadFileList';
 
 type NativeInputProps = InputHTMLAttributes<HTMLInputElement>;
 
