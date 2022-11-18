@@ -58,7 +58,7 @@ export const FileUploadRejectedFile = ({
 								as="li"
 								key={index}
 								css={{
-									listStyle: 'initial',
+									listStyle: 'inside',
 								}}
 							>
 								{message}
