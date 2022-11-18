@@ -219,7 +219,10 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 									alignItems="center"
 									css={{ textAlign: 'center' }}
 								>
-									<Text color="muted">
+									<Text
+										color={isDragActive ? 'action' : 'muted'}
+										fontWeight="bold"
+									>
 										{isDragActive
 											? `Drop ${filesPlural} here...`
 											: `Drag and drop ${filesPlural} here or select ${filesPlural} to upload.`}
@@ -297,7 +300,7 @@ const fileInputStyles = ({
 		borderWidth: tokens.borderWidth.lg,
 		borderStyle: 'dashed',
 		borderColor: boxPalette.border,
-		backgroundColor: boxPalette.backgroundShade,
+		backgroundColor: boxPalette.backgroundBody,
 
 		...(invalid && {
 			backgroundColor: boxPalette.systemErrorMuted,
@@ -311,9 +314,8 @@ const fileInputStyles = ({
 		}),
 
 		...(isDragActive && {
-			borderStyle: 'solid',
 			borderColor: boxPalette.foregroundAction,
-			backgroundColor: boxPalette.backgroundShadeAlt,
+			backgroundColor: boxPalette.backgroundShade,
 		}),
 
 		'&:focus': packs.outline,
