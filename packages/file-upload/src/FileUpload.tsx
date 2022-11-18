@@ -139,6 +139,7 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 		const acceptedFilesSummary = getAcceptedFilesSummary(accept);
 
 		const styles = fileInputStyles({
+			isDragActive,
 			disabled,
 			invalid: invalid || !!errorSummary,
 		});
@@ -218,10 +219,14 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 									alignItems="center"
 									css={{ textAlign: 'center' }}
 								>
-									<Text color="muted">
+									<Text
+										color={isDragActive ? 'action' : 'muted'}
+										fontWeight="bold"
+									>
 										{isDragActive
-											? `Drop ${filesPlural} here...`
+											? `Drop ${filesPlural} here`
 											: `Drag and drop ${filesPlural} here or select ${filesPlural} to upload.`}
+										{isDragActive ? <>&hellip;</> : null}
 									</Text>
 									{maxSize ? (
 										<Text color="muted">
@@ -283,19 +288,20 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 	}
 );
 
-export const fileInputStyles = ({
+const fileInputStyles = ({
 	disabled,
 	invalid,
+	isDragActive,
 }: {
 	disabled?: boolean;
-	invalid?: boolean;
-	multiline?: boolean;
+	invalid: boolean;
+	isDragActive: boolean;
 }) =>
 	({
 		borderWidth: tokens.borderWidth.lg,
 		borderStyle: 'dashed',
 		borderColor: boxPalette.border,
-		backgroundColor: boxPalette.backgroundShade,
+		backgroundColor: boxPalette.backgroundBody,
 
 		...(invalid && {
 			backgroundColor: boxPalette.systemErrorMuted,
@@ -306,6 +312,11 @@ export const fileInputStyles = ({
 			cursor: 'not-allowed',
 			opacity: 0.3,
 			background: 'none',
+		}),
+
+		...(isDragActive && {
+			borderColor: boxPalette.foregroundAction,
+			backgroundColor: boxPalette.backgroundShade,
 		}),
 
 		'&:focus': packs.outline,
