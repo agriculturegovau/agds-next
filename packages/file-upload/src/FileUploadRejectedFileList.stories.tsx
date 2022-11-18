@@ -5,7 +5,7 @@ import {
 } from './FileUploadRejectedFileList';
 
 export default {
-	title: 'forms/FileUpload/FileUploadRejectedFileList',
+	title: 'forms/FileUpload/Primitives/FileUploadRejectedFileList',
 	component: FileUploadRejectedFileList,
 	argTypes: { handleRemoveRejection: { action: 'clicked' } },
 } as ComponentMeta<typeof FileUploadRejectedFileList>;

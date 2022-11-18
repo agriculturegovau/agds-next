@@ -2,7 +2,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { FileUploadRejectedFile } from './FileUploadRejectedFile';
 
 export default {
-	title: 'forms/FileUpload/FileUploadRejectedFile',
+	title: 'forms/FileUpload/Primitives/FileUploadRejectedFile',
 	component: FileUploadRejectedFile,
 } as ComponentMeta<typeof FileUploadRejectedFile>;
 

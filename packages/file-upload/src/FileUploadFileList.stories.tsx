@@ -2,7 +2,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { FileUploadFileList } from './FileUploadFIleList';
 
 export default {
-	title: 'forms/FileUpload/FileUploadFileList',
+	title: 'forms/FileUpload/Primitives/FileUploadFileList',
 	component: FileUploadFileList,
 } as ComponentMeta<typeof FileUploadFileList>;
 
