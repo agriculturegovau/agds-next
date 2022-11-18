@@ -30,7 +30,7 @@ exports[`FileUpload Basic renders correctly 1`] = `
       class="css-1mxr31d-boxStyles"
     >
       <div
-        class="css-ckw7x9-boxStyles-Field"
+        class="css-1vwhuhv-boxStyles-Field"
       >
         <svg
           aria-hidden="true"
@@ -70,7 +70,7 @@ exports[`FileUpload Basic renders correctly 1`] = `
           class="css-107qz7x-boxStyles-FileUpload"
         >
           <span
-            class="css-1rpt3h8-boxStyles-Text"
+            class="css-g6olve-boxStyles-Text"
           >
             Drag and drop file here or select file to upload.
           </span>
