@@ -76,25 +76,24 @@ export const getErrorSummary = (
 ) => {
 	if (!rejections?.length) return;
 
-	const allErrorCodes = rejections
-		.reduce((acc, { errors }) => [...acc, ...errors], [] as FileError[])
-		.map(({ code }) => code)
-		.filter((value, index, self) => {
-			return self.indexOf(value) === index;
-		});
+	const uniqueErrorCodes = Array.from(
+		new Set(
+			rejections.map(({ errors }) => errors.map(({ code }) => code)).flat()
+		)
+	);
 
-	const firstError = allErrorCodes[0];
+	const firstErrorCode = uniqueErrorCodes[0];
 
-	if (firstError === 'too-many-files') {
+	if (firstErrorCode === 'too-many-files') {
 		return `You can not select more than ${maxFiles} files`;
 	}
 
-	if (allErrorCodes.length === 1) {
-		if (firstError === 'file-too-large') {
+	if (uniqueErrorCodes.length === 1) {
+		if (firstErrorCode === 'file-too-large') {
 			return `Each file must be smaller than ${formattedMaxFileSize}`;
 		}
 
-		if (firstError === 'file-invalid-type') {
+		if (firstErrorCode === 'file-invalid-type') {
 			return `Some files are not of the correct format`;
 		}
 	}

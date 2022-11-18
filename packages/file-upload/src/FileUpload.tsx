@@ -18,6 +18,7 @@ import {
 	getFileRejectionErrorMessage,
 	getErrorSummary,
 	FileWithStatus,
+	getFilesTotal,
 } from './utils';
 import { FileUploadFileList } from './FileUploadFIleList';
 
@@ -135,22 +136,22 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 		});
 
 		useEffect(() => {
-			const rejections: RejectedFile[] = [];
-			dropzoneFileRejections.forEach(({ file, errors }) => {
-				rejections.push({
-					fileName: file.name,
-					fileSize: file.size,
-					errors: errors.map((error) => ({
-						code: error.code,
-						message: getFileRejectionErrorMessage(
-							error,
-							formattedMaxFileSize,
-							acceptedFilesSummary
-						),
-					})),
-				});
-			});
-			setFileRejections(rejections);
+			setFileRejections(
+				dropzoneFileRejections.map(({ file, errors }) => {
+					return {
+						fileName: file.name,
+						fileSize: file.size,
+						errors: errors.map((error) => ({
+							code: error.code,
+							message: getFileRejectionErrorMessage(
+								error,
+								formattedMaxFileSize,
+								acceptedFilesSummary
+							),
+						})),
+					};
+				})
+			);
 		}, [dropzoneFileRejections, formattedMaxFileSize, acceptedFilesSummary]);
 
 		const {
@@ -238,16 +239,21 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 									Select {filesPlural}
 								</Button>
 							</Flex>
-							{[...value, ...fileRejections].length ? (
+							{value.length || fileRejections.length ? (
 								<Stack gap={0.5}>
-									<FileUploadFileList
-										files={value}
-										onRemove={handleRemoveFile}
-									/>
-									<FileUploadRejectedFileList
-										fileRejections={fileRejections}
-										handleRemoveRejection={handleRemoveRejection}
-									/>
+									<Text color="muted">{getFilesTotal(value)}</Text>
+									{value.length ? (
+										<FileUploadFileList
+											files={value}
+											onRemove={handleRemoveFile}
+										/>
+									) : null}
+									{fileRejections.length ? (
+										<FileUploadRejectedFileList
+											fileRejections={fileRejections}
+											handleRemoveRejection={handleRemoveRejection}
+										/>
+									) : null}
 								</Stack>
 							) : null}
 						</Stack>

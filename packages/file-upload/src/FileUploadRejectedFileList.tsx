@@ -14,8 +14,6 @@ export const FileUploadRejectedFileList = ({
 	fileRejections: RejectedFile[];
 	handleRemoveRejection: (fileName: string) => void;
 }) => {
-	if (fileRejections.length === 0) return null;
-
 	return (
 		<Stack as="ul" gap={0.5}>
 			{fileRejections.map((rejection) => (
