@@ -2,4 +2,4 @@
 '@ag.ds-next/file-upload': patch
 ---
 
-Visual updates when a file is being dropped
+Updated visual styles for default and active drag state
