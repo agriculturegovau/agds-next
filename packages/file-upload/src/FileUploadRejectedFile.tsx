@@ -47,20 +47,9 @@ export const FileUploadRejectedFile = ({
 					<Text fontWeight="bold" color="error">
 						{fileName} ({formatFileSize(fileSize)}) could not be selected
 					</Text>
-					<ul
-						css={{
-							margin: 0,
-							padding: 0,
-						}}
-					>
+					<ul css={{ margin: 0, padding: 0 }}>
 						{errors.map(({ message }, index) => (
-							<Text
-								as="li"
-								key={index}
-								css={{
-									listStyle: 'inside',
-								}}
-							>
+							<Text as="li" key={index} css={{ listStyle: 'inside' }}>
 								{message}
 							</Text>
 						))}

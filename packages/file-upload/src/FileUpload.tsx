@@ -8,16 +8,14 @@ import { Field } from '@ag.ds-next/field';
 import { UploadIcon } from '@ag.ds-next/icon';
 import { Text } from '@ag.ds-next/text';
 import { visuallyHiddenStyles } from '@ag.ds-next/a11y';
-import {
-	FileUploadRejectedFileList,
-	RejectedFile,
-} from './FileUploadRejectedFileList';
+import { FileUploadRejectedFileList } from './FileUploadRejectedFileList';
 import {
 	getAcceptedFilesSummary,
 	FileFormats,
 	getFileRejectionErrorMessage,
 	getErrorSummary,
 	FileWithStatus,
+	RejectedFile,
 	getFilesTotal,
 } from './utils';
 import { FileUploadFileList } from './FileUploadFileList';
@@ -137,20 +135,18 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 
 		useEffect(() => {
 			setFileRejections(
-				dropzoneFileRejections.map(({ file, errors }) => {
-					return {
-						fileName: file.name,
-						fileSize: file.size,
-						errors: errors.map((error) => ({
-							code: error.code,
-							message: getFileRejectionErrorMessage(
-								error,
-								formattedMaxFileSize,
-								acceptedFilesSummary
-							),
-						})),
-					};
-				})
+				dropzoneFileRejections.map(({ file, errors }) => ({
+					fileName: file.name,
+					fileSize: file.size,
+					errors: errors.map((error) => ({
+						code: error.code,
+						message: getFileRejectionErrorMessage(
+							error,
+							formattedMaxFileSize,
+							acceptedFilesSummary
+						),
+					})),
+				}))
 			);
 		}, [dropzoneFileRejections, formattedMaxFileSize, acceptedFilesSummary]);
 

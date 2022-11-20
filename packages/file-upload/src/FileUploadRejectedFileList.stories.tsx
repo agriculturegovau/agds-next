@@ -1,8 +1,6 @@
 import { ComponentMeta } from '@storybook/react';
-import {
-	FileUploadRejectedFileList,
-	RejectedFile,
-} from './FileUploadRejectedFileList';
+import { FileUploadRejectedFileList } from './FileUploadRejectedFileList';
+import type { RejectedFile } from './utils';
 
 export default {
 	title: 'forms/FileUpload/Primitives/FileUploadRejectedFileList',

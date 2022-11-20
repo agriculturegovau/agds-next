@@ -1,19 +1,16 @@
 import { Stack } from '@ag.ds-next/box';
 import { FileUploadRejectedFile } from './FileUploadRejectedFile';
+import type { RejectedFile } from './utils';
 
-export type RejectedFile = {
-	fileName: string;
-	fileSize: number;
-	errors: { message: string; code: string }[];
+type FileUploadRejectedFileListProps = {
+	fileRejections: RejectedFile[];
+	handleRemoveRejection: (fileName: string) => void;
 };
 
 export const FileUploadRejectedFileList = ({
 	fileRejections,
 	handleRemoveRejection,
-}: {
-	fileRejections: RejectedFile[];
-	handleRemoveRejection: (fileName: string) => void;
-}) => {
+}: FileUploadRejectedFileListProps) => {
 	return (
 		<Stack as="ul" aria-label="Invalid files" gap={0.5}>
 			{fileRejections.map((rejection) => (
