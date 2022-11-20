@@ -1,10 +1,4 @@
-import {
-	Fragment,
-	forwardRef,
-	InputHTMLAttributes,
-	useEffect,
-	useState,
-} from 'react';
+import { forwardRef, InputHTMLAttributes, useEffect, useState } from 'react';
 import { useDropzone, DropzoneOptions } from 'react-dropzone';
 import formatFileSize from 'filesize';
 import { Flex, Stack } from '@ag.ds-next/box';
@@ -14,16 +8,17 @@ import { Field } from '@ag.ds-next/field';
 import { UploadIcon } from '@ag.ds-next/icon';
 import { Text } from '@ag.ds-next/text';
 import { visuallyHiddenStyles } from '@ag.ds-next/a11y';
-import { FileRejection } from './FileRejection';
-import { FileUploadFile } from './FileUploadFile';
+import { FileUploadRejectedFileList } from './FileUploadRejectedFileList';
 import {
-	getFilesTotal,
 	getAcceptedFilesSummary,
 	FileFormats,
 	getFileRejectionErrorMessage,
 	getErrorSummary,
 	FileWithStatus,
+	RejectedFile,
+	getFilesTotal,
 } from './utils';
+import { FileUploadFileList } from './FileUploadFileList';
 
 type NativeInputProps = InputHTMLAttributes<HTMLInputElement>;
 
@@ -60,14 +55,6 @@ export type FileUploadProps = BaseInputProps & {
 	invalid?: boolean;
 };
 
-type RejectedFile = {
-	id: string;
-	fileName: string;
-	fileSize: number;
-	code: string;
-	message: string;
-};
-
 export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 	function FileUpload(
 		{
@@ -99,8 +86,10 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 			onChange(value.filter((_, index) => index !== indexOfFile));
 		};
 
-		const handleRemoveRejection = (errId: string) => {
-			setFileRejections(fileRejections.filter((err) => err.id !== errId));
+		const handleRemoveRejection = (fileName: string) => {
+			setFileRejections(
+				fileRejections.filter((err) => err.fileName !== fileName)
+			);
 		};
 
 		const handleDropAccepted = (acceptedFiles: FileWithStatus[]) => {
@@ -145,23 +134,20 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 		});
 
 		useEffect(() => {
-			const rejections: RejectedFile[] = [];
-			dropzoneFileRejections.forEach(({ file, errors }) => {
-				errors.forEach((error) =>
-					rejections.push({
-						id: `${file.name}_${error.code}`,
-						fileName: file.name,
-						fileSize: file.size,
+			setFileRejections(
+				dropzoneFileRejections.map(({ file, errors }) => ({
+					fileName: file.name,
+					fileSize: file.size,
+					errors: errors.map((error) => ({
+						code: error.code,
 						message: getFileRejectionErrorMessage(
 							error,
 							formattedMaxFileSize,
 							acceptedFilesSummary
 						),
-						code: error.code,
-					})
-				);
-			});
-			setFileRejections(rejections);
+					})),
+				}))
+			);
 		}, [dropzoneFileRejections, formattedMaxFileSize, acceptedFilesSummary]);
 
 		const {
@@ -251,32 +237,18 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 							</Flex>
 							{value.length || fileRejections.length ? (
 								<Stack gap={0.5}>
+									<Text color="muted">{getFilesTotal(value)}</Text>
 									{value.length ? (
-										<Fragment>
-											<Text color="muted">{getFilesTotal(value)}</Text>
-											<Stack as="ul" gap={0.5}>
-												{value.map((file, index) => (
-													<FileUploadFile
-														key={index}
-														name={file.name}
-														size={file.size}
-														status={file.status}
-														onRemove={() => handleRemoveFile(file)}
-													/>
-												))}
-											</Stack>
-										</Fragment>
+										<FileUploadFileList
+											files={value}
+											onRemove={handleRemoveFile}
+										/>
 									) : null}
 									{fileRejections.length ? (
-										<Stack as="ul" gap={0.5}>
-											{fileRejections.map(({ id, ...rejection }) => (
-												<FileRejection
-													key={id}
-													{...rejection}
-													onRemove={() => handleRemoveRejection(id)}
-												/>
-											))}
-										</Stack>
+										<FileUploadRejectedFileList
+											fileRejections={fileRejections}
+											handleRemoveRejection={handleRemoveRejection}
+										/>
 									) : null}
 								</Stack>
 							) : null}

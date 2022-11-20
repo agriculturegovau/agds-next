@@ -6,20 +6,19 @@ import { boxPalette } from '@ag.ds-next/core';
 import { AlertFilledIcon } from '@ag.ds-next/icon';
 import { Text } from '@ag.ds-next/text';
 
-type FileRejectionProps = {
+type FileUploadRejectedFileProps = {
 	fileName: string;
 	fileSize: number;
-	message: string;
+	errors: { message: string; code: string }[];
 	onRemove: MouseEventHandler<HTMLButtonElement>;
 };
 
-// TODO: Rename to FileUploadRejectedFile
-export const FileRejection = ({
+export const FileUploadRejectedFile = ({
 	fileName,
 	fileSize,
-	message,
+	errors,
 	onRemove,
-}: FileRejectionProps) => {
+}: FileUploadRejectedFileProps) => {
 	return (
 		<Flex
 			as="li"
@@ -44,18 +43,22 @@ export const FileRejection = ({
 						css={{ display: 'block' }}
 					/>
 				</Box>
-				<Stack gap={0}>
+				<Stack gap={0.5}>
 					<Text fontWeight="bold" color="error">
-						{message}
+						{fileName} ({formatFileSize(fileSize)}) could not be selected
 					</Text>
-					<Text>
-						{fileName} ({formatFileSize(fileSize)})
-					</Text>
+					<ul css={{ margin: 0, padding: 0 }}>
+						{errors.map(({ message }, index) => (
+							<Text as="li" key={index} css={{ listStyle: 'inside' }}>
+								{message}
+							</Text>
+						))}
+					</ul>
 				</Stack>
 			</Flex>
 			<Box flexShrink={0}>
 				<Button variant="tertiary" onClick={onRemove}>
-					Remove error
+					Remove file
 				</Button>
 			</Box>
 		</Flex>
