@@ -7,7 +7,7 @@ import {
 } from '../mdxUtils';
 import { slugify } from '../slugify';
 
-const GUIDE_PATH = normalize(`${process.cwd()}/../guides`);
+export const GUIDE_PATH = normalize(`${process.cwd()}/content/guides`);
 const guidePath = (slug: string) => normalize(`${GUIDE_PATH}/${slug}.mdx`);
 
 export async function getGuide(slug: string) {

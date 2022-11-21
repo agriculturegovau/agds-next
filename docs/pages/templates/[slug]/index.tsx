@@ -28,7 +28,7 @@ export default function TemplateOverviewPage({
 				breadcrumbs={breadcrumbs}
 				subNavItems={subNavItems}
 				navLinks={navLinks}
-				editPath={`/templates/${template.slug}/index.mdx`}
+				editPath={`/docs/content/templates/${template.slug}/index.mdx`}
 				skipLinks={[
 					{
 						label: `Skip to ${template.data.title} template overview`,

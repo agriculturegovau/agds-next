@@ -8,6 +8,7 @@ import { Text } from '@ag.ds-next/text';
 import {
 	getMarkdownData,
 	getReleaseList,
+	RELEASE_PATH,
 	serializeMarkdown,
 } from '../../lib/mdxUtils';
 import { mdxComponents } from '../../components/mdxComponents';
@@ -28,7 +29,7 @@ export default function ReleasesHome({ source, releaseLinks }: StaticProps) {
 						titleLink: '/releases',
 						items: releaseLinks,
 					}}
-					editPath="/releases/index.mdx"
+					editPath="/docs/content/releases/index.mdx"
 				>
 					<Prose>
 						<MDXRemote {...source} components={mdxComponents} />
@@ -55,7 +56,7 @@ export default function ReleasesHome({ source, releaseLinks }: StaticProps) {
 
 export async function getStaticProps() {
 	const { content } = await getMarkdownData(
-		normalize(`${process.cwd()}/../releases/index.mdx`)
+		normalize(`${RELEASE_PATH}/index.mdx`)
 	);
 	const source = await serializeMarkdown(content);
 	const releaseList = await getReleaseList();

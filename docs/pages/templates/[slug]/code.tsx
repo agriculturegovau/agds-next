@@ -29,7 +29,7 @@ export default function TemplateCodePage({
 				breadcrumbs={breadcrumbs}
 				navLinks={navLinks}
 				subNavItems={subNavItems}
-				editPath={`/templates/${template.slug}/code.mdx`}
+				editPath={`/docs/content/templates/${template.slug}/code.mdx`}
 				skipLinks={[
 					{
 						label: `Skip to ${template.data.title} template code`,

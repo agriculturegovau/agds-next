@@ -29,7 +29,7 @@ export default function Releases({
 						titleLink: '/releases',
 						items: releaseLinks,
 					}}
-					editPath={`/releases/${release.slug}.mdx`}
+					editPath={`/docs/content/releases/${release.slug}.mdx`}
 					breadcrumbs={breadcrumbs}
 				>
 					<PageTitle

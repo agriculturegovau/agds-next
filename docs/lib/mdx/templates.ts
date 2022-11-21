@@ -7,7 +7,7 @@ import {
 } from '../mdxUtils';
 import { slugify } from '../slugify';
 
-const TEMPLATES_PATH = normalize(`${process.cwd()}/../templates`);
+export const TEMPLATES_PATH = normalize(`${process.cwd()}/content/templates`);
 
 const templateOverviewPath = (slug: string) =>
 	normalize(`${TEMPLATES_PATH}/${slug}/index.mdx`);

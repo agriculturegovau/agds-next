@@ -29,7 +29,7 @@ export default function Guides({
 						titleLink: '/guides',
 						items: guideLinks,
 					}}
-					editPath={`/guides/${guide.slug}.mdx`}
+					editPath={`/docs/content/guides/${guide.slug}.mdx`}
 					breadcrumbs={breadcrumbs}
 				>
 					<PageTitle title={guide.title} introduction={guide.description} />

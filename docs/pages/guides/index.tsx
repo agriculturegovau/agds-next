@@ -6,7 +6,7 @@ import { Stack } from '@ag.ds-next/box';
 import { Heading } from '@ag.ds-next/heading';
 import { Text } from '@ag.ds-next/text';
 import { getMarkdownData, serializeMarkdown } from '../../lib/mdxUtils';
-import { getGuideList } from '../../lib/mdx/guides';
+import { getGuideList, GUIDE_PATH } from '../../lib/mdx/guides';
 import { mdxComponents } from '../../components/mdxComponents';
 import { AppLayout } from '../../components/AppLayout';
 import { DocumentTitle } from '../../components/DocumentTitle';
@@ -25,7 +25,7 @@ export default function GuidesHome({ source, guideLinks }: StaticProps) {
 						titleLink: '/guides',
 						items: guideLinks,
 					}}
-					editPath="/guides/index.mdx"
+					editPath="/docs/content/guides/index.mdx"
 				>
 					<Prose>
 						<MDXRemote {...source} components={mdxComponents} />
@@ -52,7 +52,7 @@ export default function GuidesHome({ source, guideLinks }: StaticProps) {
 
 export async function getStaticProps() {
 	const { content } = await getMarkdownData(
-		normalize(`${process.cwd()}/../guides/index.mdx`)
+		normalize(`${GUIDE_PATH}/index.mdx`)
 	);
 	const source = await serializeMarkdown(content);
 	const guideList = await getGuideList();

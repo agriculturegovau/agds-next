@@ -7,10 +7,6 @@ import remarkHint from 'remark-hint';
 import matter from 'gray-matter';
 import { slugify } from './slugify';
 
-const RELEASE_PATH = normalize(`${process.cwd()}/../releases/`);
-
-const releasePath = (slug: string) => normalize(`${RELEASE_PATH}/${slug}.mdx`);
-
 export function stripMdxExtension(filename: string) {
 	return filename.replace(/\.mdx?$/gi, '');
 }
@@ -40,6 +36,8 @@ export function serializeMarkdown(
 
 // Releases
 //TODO move this into `./mdx/releases.ts`
+export const RELEASE_PATH = normalize(`${process.cwd()}/content/releases`);
+const releasePath = (slug: string) => normalize(`${RELEASE_PATH}/${slug}.mdx`);
 
 export async function getRelease(slug: string) {
 	const { content, data } = await getMarkdownData(releasePath(slug));
