@@ -2,6 +2,7 @@ import {
 	createContext,
 	useCallback,
 	useContext,
+	useEffect,
 	useMemo,
 	useState,
 } from 'react';
@@ -107,11 +108,16 @@ export const formSchema = yup.object({
 });
 
 export const FormRegisterPetDetails = () => {
-	const { submitTask2, task2FormState } = useFormRegisterPet();
+	const { startTask, submitTask2, task2FormState } = useFormRegisterPet();
 
 	const router = useRouter();
 	const [currentStep, setCurrentStep] = useState(0);
 	const [formState, setFormState] = useState<FormState>(task2FormState);
+
+	/** Call `startTask` when the user first visits this task */
+	useEffect(() => {
+		startTask(2);
+	}, [startTask]);
 
 	const backToHomePage = useCallback(() => {
 		router.push('/services/registrations/pet');

@@ -26,7 +26,7 @@ const TASKS = [
 ];
 
 export default function FormRegisterPetHomePage() {
-	const { startTask, getTaskStatus } = useFormRegisterPet();
+	const { getTaskStatus } = useFormRegisterPet();
 	return (
 		<>
 			<DocumentTitle title="Register a pet" />
@@ -68,7 +68,6 @@ export default function FormRegisterPetHomePage() {
 								<TaskList
 									items={TASKS.map((task, idx) => ({
 										...task,
-										onClick: () => startTask(idx),
 										status: getTaskStatus(idx),
 									}))}
 								/>
