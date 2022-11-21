@@ -20,8 +20,8 @@ type ContextType = {
 	/** The task form state. */
 	task1FormState: FormState[0];
 	task2FormState: FormState[1];
-	/** Function to be called to start a task */
-	startTask: (taskIdx: number) => void;
+	/** Function to be called to start a task. Ensures the statuses on the home page task list is updated correctly. */
+	startTask: (taskNumber: number) => void;
 	/** Function to get the status of a task. */
 	getTaskStatus: (taskIndex: number) => ProgressIndicatorItemStatus;
 	/** Function to be called at the end of task 1 (personal details). */
@@ -128,8 +128,8 @@ export const FormRegisterPetContext = ({
 		[currentTaskIdx, formState]
 	);
 
-	const startTask = useCallback((taskIdx: number) => {
-		setCurrentTaskIdx(taskIdx);
+	const startTask = useCallback((taskNumber: number) => {
+		setCurrentTaskIdx(taskNumber - 1);
 	}, []);
 
 	const contextValue = {
