@@ -97,6 +97,60 @@ exports[`TextInput Invalid renders correctly 1`] = `
 </div>
 `;
 
+exports[`TextInput Search input renders correctly 1`] = `
+<div>
+  <div
+    class="css-1904cz9-boxStyles-FieldContainer"
+  >
+    <label
+      class="css-n7rdvo-boxStyles"
+      for="field-:ra:"
+    >
+      <span
+        class="css-433uqb-boxStyles-Text"
+      >
+        Search
+      </span>
+      <span
+        class="css-1rpt3h8-boxStyles-Text"
+      >
+        (optional)
+      </span>
+    </label>
+    <svg
+      aria-hidden="true"
+      class="css-1pmetab-Icon-SearchInputIcon"
+      clip-rule="evenodd"
+      focusable="false"
+      height="24"
+      role="img"
+      viewBox="0 0 24 24"
+      width="24"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <line
+        x1="15.5568"
+        x2="21.9208"
+        y1="15.5562"
+        y2="21.9201"
+      />
+      <circle
+        cx="9.8995"
+        cy="9.89941"
+        r="7"
+      />
+    </svg>
+    <input
+      aria-invalid="false"
+      aria-required="false"
+      class="css-1f4pb6k-Field"
+      id="field-:ra:"
+      type="search"
+    />
+  </div>
+</div>
+`;
+
 exports[`TextInput With hint renders correctly 1`] = `
 <div>
   <div

@@ -1,6 +1,7 @@
-import { forwardRef, InputHTMLAttributes } from 'react';
+import { forwardRef, Fragment, InputHTMLAttributes } from 'react';
 import { Field, fieldMaxWidth, FieldMaxWidth } from '@ag.ds-next/field';
 import { packs, boxPalette, mapSpacing, tokens } from '@ag.ds-next/core';
+import { SearchIcon } from '@ag.ds-next/icon';
 
 type NativeInputProps = InputHTMLAttributes<HTMLInputElement>;
 
@@ -49,11 +50,17 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
 			maxWidth,
 			id,
 			type = 'text',
+			disabled,
 			...props
 		},
 		ref
 	) {
-		const styles = textInputStyles({ block, maxWidth, invalid });
+		const styles = textInputStyles({
+			block,
+			maxWidth,
+			invalid,
+			type,
+		});
 		return (
 			<Field
 				label={label}
@@ -64,23 +71,53 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
 				id={id}
 			>
 				{(a11yProps) => (
-					<input ref={ref} css={styles} {...a11yProps} type={type} {...props} />
+					<Fragment>
+						{type === 'search' ? <SearchInputIcon disabled={disabled} /> : null}
+						<input
+							ref={ref}
+							type={type}
+							disabled={disabled}
+							css={styles}
+							{...a11yProps}
+							{...props}
+						/>
+					</Fragment>
 				)}
 			</Field>
 		);
 	}
 );
 
+function SearchInputIcon({ disabled }: { disabled?: boolean }) {
+	return (
+		<SearchIcon
+			size="md"
+			weight="regular"
+			color="muted"
+			css={{
+				position: 'absolute',
+				top: '50%',
+				transform: 'translateY(-50%)',
+				pointerEvents: 'none',
+				left: mapSpacing(1),
+				opacity: disabled ? 0.3 : undefined,
+			}}
+		/>
+	);
+}
+
 export const textInputStyles = ({
 	block,
 	maxWidth,
 	invalid,
 	multiline,
+	type,
 }: {
 	block?: boolean;
 	maxWidth?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
 	invalid?: boolean;
 	multiline?: boolean;
+	type?: string;
 }) =>
 	({
 		appearance: 'none',
@@ -114,6 +151,14 @@ export const textInputStyles = ({
 			paddingBottom: mapSpacing(0.5),
 			height: 'auto',
 			minHeight: '6rem',
+		}),
+
+		...(type === 'search' && {
+			paddingLeft: mapSpacing(3),
+			'&::-webkit-search-decoration, &::-webkit-search-cancel-button, &::-webkit-search-results-button, &::-webkit-search-results-decoration':
+				{
+					display: 'none',
+				},
 		}),
 
 		'&:disabled': {

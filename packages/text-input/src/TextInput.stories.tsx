@@ -1,5 +1,6 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { Stack } from '@ag.ds-next/box';
+import { SearchIcon } from '@ag.ds-next/icon';
 import { TextInput } from './TextInput';
 
 export default {
@@ -79,4 +80,12 @@ Password.args = {
 	label: 'Password',
 	type: 'password',
 	required: true,
+};
+
+export const Search: ComponentStory<typeof TextInput> = (args) => (
+	<TextInput {...args} />
+);
+Search.args = {
+	label: 'Search',
+	type: 'search',
 };
