@@ -1,5 +1,5 @@
 import { ReactNode, SVGAttributes } from 'react';
-import { boxPalette, mapSpacing } from '@ag.ds-next/core';
+import { boxPalette } from '@ag.ds-next/core';
 import { foregroundColorMap } from '@ag.ds-next/box';
 
 export const iconColors = {
@@ -10,9 +10,10 @@ export const iconColors = {
 type IconColor = keyof typeof iconColors;
 
 const iconSizes = {
-	sm: 1,
-	md: 1.5,
-	lg: 2,
+	sm: 1, // 16px
+	md: 1.5, // 24px
+	lg: 2, // 32px
+	xl: 2.5, // 40px
 } as const;
 
 type IconSize = keyof typeof iconSizes;
@@ -34,12 +35,12 @@ export const createIcon = (children: ReactNode, name: string) => {
 		'aria-hidden': ariaHidden = 'true',
 		'aria-label': ariaLabel,
 		className,
-		size = 'md',
 		color,
-		weight = 'regular',
+		size = 'md',
 		style,
+		weight = 'regular',
 	}: IconProps) => {
-		const resolvedSize = mapSpacing(iconSizes[size]);
+		const resolvedSize = `${iconSizes[size]}rem`;
 		// Focusable is the opposite of `aria-hidden`
 		const focusable = [true, 'true'].includes(ariaHidden) ? 'false' : 'true';
 		return (
