@@ -24,8 +24,8 @@ const iconWeights = {
 		xl: 2,
 	},
 	bold: {
-		// enables a visible difference between regular and bold icons
-		// for small sizes.
+		// enables a visible difference between regular
+		// and bold icons for small sizes.
 		sm: 4,
 		md: 3,
 		lg: 3,
