@@ -62,11 +62,6 @@ OnBodyAlt.args = {
 	background: 'body',
 };
 
-export const Buttons = Template.bind({});
-Buttons.args = {
-	...commonArgs,
-};
-
 export const WithoutImage = Template.bind({});
 WithoutImage.args = {
 	...commonArgs,
