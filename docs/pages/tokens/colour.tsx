@@ -93,7 +93,7 @@ export default function TokensColorPage() {
 
 						<Box paddingTop={[1, 0]}>
 							<img
-								src="/agds-next/public/img/guides/homepage.jpg"
+								src="/agds-next/img/guides/homepage.jpg"
 								alt="Screenshot of a successful usage of palettes"
 							/>
 						</Box>
