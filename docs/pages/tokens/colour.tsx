@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import Image from 'next/image';
 import { Prose, proseBlockClassname } from '@ag.ds-next/prose';
 import { Switch } from '@ag.ds-next/switch';
 import { Box } from '@ag.ds-next/box';
@@ -9,7 +8,6 @@ import { DocumentTitle } from '../../components/DocumentTitle';
 import { ColorTable } from '../../components/TokenColorTable';
 import { TokenLayout } from '../../components/TokenLayout';
 import { LinkComponent } from '../../components/LinkComponent';
-import homeImg from '../../public/img/guides/homepage.jpg';
 
 export default function TokensColorPage() {
 	const [isDarkMode, setDarkMode] = useState(false);
@@ -94,8 +92,8 @@ export default function TokensColorPage() {
 						</Column>
 
 						<Box paddingTop={[1, 0]}>
-							<Image
-								src={homeImg}
+							<img
+								src="/agds-next/public/img/guides/homepage.jpg"
 								alt="Screenshot of a successful usage of palettes"
 							/>
 						</Box>
