@@ -37,6 +37,8 @@ type BaseSelectProps = {
 export type SelectProps = BaseSelectProps & {
 	/** Describes the purpose of the field. */
 	label: string;
+	/** If null, "(optional)" will be not be appended to the label (even if required). */
+	secondaryLabel?: null;
 	/** The list of options to display in the drop-down list. */
 	options: Options;
 	/** If false, "(optional)" will be appended to the label. */
@@ -57,6 +59,7 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(
 	function Select(
 		{
 			label,
+			secondaryLabel,
 			required,
 			hint,
 			message,
@@ -74,6 +77,7 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(
 		return (
 			<Field
 				label={label}
+				secondaryLabel={secondaryLabel}
 				required={Boolean(required)}
 				hint={hint}
 				message={message}

@@ -157,3 +157,13 @@ GroupedOptions.args = {
 		},
 	],
 };
+
+export const NoSecondaryLabel: ComponentStory<typeof Select> = (args) => (
+	<Select {...args} />
+);
+NoSecondaryLabel.args = {
+	label: 'Example',
+	placeholder: 'Please select',
+	options: EXAMPLE_OPTIONS,
+	secondaryLabel: null,
+};

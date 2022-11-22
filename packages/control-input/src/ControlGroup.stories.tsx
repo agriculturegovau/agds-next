@@ -58,6 +58,12 @@ CheckboxGroupInvalid.args = {
 	invalid: true,
 };
 
+export const CheckboxGroupInvalidNoSecondaryLabel = CheckboxTemplate.bind({});
+CheckboxGroupInvalidNoSecondaryLabel.args = {
+	...checkboxDefaultArgs,
+	secondaryLabel: null,
+};
+
 // Radio group
 const RadioTemplate: ComponentStory<typeof ControlGroup> = (args) => {
 	return (
@@ -106,4 +112,10 @@ RadioGroupInvalid.args = {
 	message: 'You must choose at least one option',
 	required: true,
 	invalid: true,
+};
+
+export const RadioGroupInvalidNoSecondaryLabel = RadioTemplate.bind({});
+RadioGroupInvalidNoSecondaryLabel.args = {
+	...radioDefaultArgs,
+	secondaryLabel: null,
 };

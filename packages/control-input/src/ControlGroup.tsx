@@ -20,6 +20,8 @@ export type ControlGroupProps = PropsWithChildren<{
 	invalid?: boolean;
 	/** Describes the purpose of the field. */
 	label?: string;
+	/** If null, "(optional)" will be not be appended to the label (even if required). */
+	secondaryLabel?: null;
 	/** Message to show when the field is invalid. */
 	message?: string;
 	/** If false, "(optional)" will be appended to the label. */
@@ -33,6 +35,7 @@ export const ControlGroup = ({
 	id,
 	invalid = false,
 	label,
+	secondaryLabel,
 	message,
 	required = false,
 }: ControlGroupProps) => {
@@ -55,7 +58,11 @@ export const ControlGroup = ({
 					css={{ padding: 0, margin: 0, border: 'none' }}
 				>
 					{label ? (
-						<FieldLabel as="legend" required={required}>
+						<FieldLabel
+							as="legend"
+							required={required}
+							secondaryLabel={secondaryLabel}
+						>
 							{label}
 						</FieldLabel>
 					) : null}

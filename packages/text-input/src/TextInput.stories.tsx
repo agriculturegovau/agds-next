@@ -88,3 +88,11 @@ Search.args = {
 	label: 'Search',
 	type: 'search',
 };
+
+export const NoSecondaryLabel: ComponentStory<typeof TextInput> = (args) => (
+	<TextInput {...args} />
+);
+NoSecondaryLabel.args = {
+	label: 'Example',
+	secondaryLabel: null,
+};

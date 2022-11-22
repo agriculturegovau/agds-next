@@ -65,3 +65,11 @@ export const MaxWidths: ComponentStory<typeof Textarea> = (args) => (
 	</Stack>
 );
 MaxWidths.args = {};
+
+export const NoSecondaryLabel: ComponentStory<typeof Textarea> = (args) => (
+	<Textarea {...args} />
+);
+NoSecondaryLabel.args = {
+	label: 'Example',
+	secondaryLabel: null,
+};

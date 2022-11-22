@@ -269,3 +269,9 @@ AsyncOptionsWithError.args = {
 		throw new Error('Something went wrong while fetching options');
 	},
 };
+
+export const NoSecondaryLabel = Template.bind({});
+NoSecondaryLabel.args = {
+	...defaultArgs,
+	secondaryLabel: null,
+};

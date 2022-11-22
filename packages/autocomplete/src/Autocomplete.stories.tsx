@@ -58,3 +58,9 @@ Block.args = {
 	...defaultArgs,
 	block: true,
 };
+
+export const NoSecondaryLabel = Template.bind({});
+NoSecondaryLabel.args = {
+	...defaultArgs,
+	secondaryLabel: null,
+};
