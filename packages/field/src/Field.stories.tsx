@@ -42,6 +42,14 @@ SecondaryLabel.args = {
 	secondaryLabel: '(dd/mm/yyy)',
 };
 
+export const NoSecondaryLabel: ComponentStory<typeof Field> = (args) => (
+	<Field {...args}>{(a11yProps) => <input {...a11yProps} />}</Field>
+);
+NoSecondaryLabel.args = {
+	label: 'Label',
+	secondaryLabel: null,
+};
+
 export const Modular: ComponentStory<typeof Field> = ({
 	label,
 	secondaryLabel,

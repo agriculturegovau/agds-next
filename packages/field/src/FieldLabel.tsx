@@ -6,7 +6,7 @@ export type FieldLabelProps = PropsWithChildren<{
 	as?: ElementType;
 	htmlFor?: string;
 	required?: boolean;
-	secondaryLabel?: string;
+	secondaryLabel?: string | null;
 }>;
 
 export const FieldLabel = ({
@@ -17,6 +17,7 @@ export const FieldLabel = ({
 	secondaryLabel: secondaryLabelProp,
 }: FieldLabelProps) => {
 	const secondaryLabel = useMemo(() => {
+		if (secondaryLabelProp === null) return null;
 		if (secondaryLabelProp) return secondaryLabelProp;
 		if (!required) return `(optional)`;
 	}, [required, secondaryLabelProp]);

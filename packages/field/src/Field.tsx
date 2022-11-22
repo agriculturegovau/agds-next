@@ -16,7 +16,7 @@ export type FieldProps = {
 	/** Describes the purpose of the field. */
 	label: string;
 	/** Override the default secondary label. */
-	secondaryLabel?: string;
+	secondaryLabel?: string | null;
 	/** Message to show when the field is invalid. */
 	message: string | undefined;
 	/** If false, "(optional)" will be appended to the label. */

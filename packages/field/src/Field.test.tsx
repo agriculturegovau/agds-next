@@ -88,19 +88,34 @@ describe('Field', () => {
 	});
 
 	describe('FieldLabel', () => {
-		it('renders correctly when optional', () => {
-			renderField({ required: false });
-			const labelEl = screen.getByText('Name')
-				.parentElement as HTMLLabelElement;
-			expect(labelEl).toBeInTheDocument();
-			expect(labelEl).toHaveTextContent('Name(optional)');
+		describe('optional', () => {
+			it('renders correctly', () => {
+				renderField({ required: false });
+				const labelEl = document.querySelector('label');
+				expect(labelEl).toBeInTheDocument();
+				expect(labelEl).toHaveTextContent('Name(optional)');
+			});
+			it('renders correctly when secondaryLabel is null', () => {
+				renderField({ required: false, secondaryLabel: null });
+				const labelEl = document.querySelector('label');
+				expect(labelEl).toBeInTheDocument();
+				expect(labelEl).toHaveTextContent('Name');
+			});
 		});
-		it('renders correctly when required', () => {
-			renderField({ required: true });
-			const labelEl = screen.getByText('Name')
-				.parentElement as HTMLLabelElement;
-			expect(labelEl).toBeInTheDocument();
-			expect(labelEl).toHaveTextContent('Name');
+
+		describe('required', () => {
+			it('renders correctly', () => {
+				renderField({ required: true });
+				const labelEl = document.querySelector('label');
+				expect(labelEl).toBeInTheDocument();
+				expect(labelEl).toHaveTextContent('Name');
+			});
+			it('renders correctly when secondaryLabel is null', () => {
+				renderField({ required: true, secondaryLabel: null });
+				const labelEl = document.querySelector('label');
+				expect(labelEl).toBeInTheDocument();
+				expect(labelEl).toHaveTextContent('Name');
+			});
 		});
 	});
 
