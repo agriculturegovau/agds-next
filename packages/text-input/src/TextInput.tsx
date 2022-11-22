@@ -1,4 +1,4 @@
-import { forwardRef, Fragment, InputHTMLAttributes } from 'react';
+import { forwardRef, InputHTMLAttributes } from 'react';
 import { Field, fieldMaxWidth, FieldMaxWidth } from '@ag.ds-next/field';
 import { packs, boxPalette, mapSpacing, tokens } from '@ag.ds-next/core';
 import { SearchIcon } from '@ag.ds-next/icon';
@@ -70,9 +70,8 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
 				invalid={invalid}
 				id={id}
 			>
-				{(a11yProps) => (
-					<Fragment>
-						{type === 'search' ? <SearchInputIcon disabled={disabled} /> : null}
+				{(a11yProps) => {
+					const inputElement = (
 						<input
 							ref={ref}
 							type={type}
@@ -81,8 +80,17 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
 							{...a11yProps}
 							{...props}
 						/>
-					</Fragment>
-				)}
+					);
+					if (type === 'search') {
+						return (
+							<div css={{ position: 'relative' }}>
+								<SearchInputIcon disabled={disabled} />
+								{inputElement}
+							</div>
+						);
+					}
+					return inputElement;
+				}}
 			</Field>
 		);
 	}
@@ -97,9 +105,9 @@ function SearchInputIcon({ disabled }: { disabled?: boolean }) {
 			css={{
 				position: 'absolute',
 				top: '50%',
+				left: `calc(${mapSpacing(1)} + ${tokens.borderWidth.lg}px)`, // Align from the inner border
 				transform: 'translateY(-50%)',
 				pointerEvents: 'none',
-				left: mapSpacing(1),
 				opacity: disabled ? 0.3 : undefined,
 			}}
 		/>
@@ -154,7 +162,7 @@ export const textInputStyles = ({
 		}),
 
 		...(type === 'search' && {
-			paddingLeft: mapSpacing(3),
+			paddingLeft: '3rem',
 			'&::-webkit-search-decoration, &::-webkit-search-cancel-button, &::-webkit-search-results-button, &::-webkit-search-results-decoration':
 				{
 					display: 'none',

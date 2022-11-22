@@ -1,6 +1,5 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { Stack } from '@ag.ds-next/box';
-import { SearchIcon } from '@ag.ds-next/icon';
 import { TextInput } from './TextInput';
 
 export default {

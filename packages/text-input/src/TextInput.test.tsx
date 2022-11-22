@@ -1,6 +1,5 @@
 import '@testing-library/jest-dom';
 import 'html-validate/jest';
-import { SearchIcon } from '@ag.ds-next/icon';
 import { cleanup, render } from '../../../test-utils';
 import { TextInput, TextInputProps } from './TextInput';
 
