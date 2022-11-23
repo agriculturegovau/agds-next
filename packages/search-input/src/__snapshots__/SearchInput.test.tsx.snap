@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`TextInput Basic renders correctly 1`] = `
+exports[`SearchInput Basic renders correctly 1`] = `
 <div>
   <div
     class="css-1904cz9-boxStyles-FieldContainer"
@@ -12,7 +12,7 @@ exports[`TextInput Basic renders correctly 1`] = `
       <span
         class="css-433uqb-boxStyles-Text"
       >
-        Name
+        Search
       </span>
       <span
         class="css-1rpt3h8-boxStyles-Text"
@@ -20,18 +20,46 @@ exports[`TextInput Basic renders correctly 1`] = `
         (optional)
       </span>
     </label>
-    <input
-      aria-invalid="false"
-      aria-required="false"
-      class="css-1bu2krz-Field"
-      id="field-:r0:"
-      type="text"
-    />
+    <div
+      class="css-1mmi5kq-SearchInputContainer"
+    >
+      <svg
+        aria-hidden="true"
+        class="css-1jixeje-Icon-SearchInputIcon"
+        clip-rule="evenodd"
+        focusable="false"
+        height="24"
+        role="img"
+        viewBox="0 0 24 24"
+        width="24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <line
+          x1="15.5568"
+          x2="21.9208"
+          y1="15.5562"
+          y2="21.9201"
+        />
+        <circle
+          cx="9.8995"
+          cy="9.89941"
+          r="7"
+        />
+      </svg>
+      <input
+        aria-invalid="false"
+        aria-required="false"
+        class="css-1bfqvdy-SearchInput"
+        id="field-:r0:"
+        type="search"
+        value=""
+      />
+    </div>
   </div>
 </div>
 `;
 
-exports[`TextInput Invalid renders correctly 1`] = `
+exports[`SearchInput Invalid renders correctly 1`] = `
 <div>
   <div
     class="css-1n67ua0-boxStyles-FieldContainer"
@@ -43,7 +71,7 @@ exports[`TextInput Invalid renders correctly 1`] = `
       <span
         class="css-433uqb-boxStyles-Text"
       >
-        Name
+        Search
       </span>
       <span
         class="css-1rpt3h8-boxStyles-Text"
@@ -82,22 +110,50 @@ exports[`TextInput Invalid renders correctly 1`] = `
         class="css-tfsyf8-boxStyles-Text"
         id="field-:r4:-message"
       >
-        This field is required
+        A search term is required to see results
       </span>
     </div>
-    <input
-      aria-describedby="field-:r4:-message"
-      aria-invalid="true"
-      aria-required="false"
-      class="css-b9h5aa-Field"
-      id="field-:r4:"
-      type="text"
-    />
+    <div
+      class="css-1mmi5kq-SearchInputContainer"
+    >
+      <svg
+        aria-hidden="true"
+        class="css-1jixeje-Icon-SearchInputIcon"
+        clip-rule="evenodd"
+        focusable="false"
+        height="24"
+        role="img"
+        viewBox="0 0 24 24"
+        width="24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <line
+          x1="15.5568"
+          x2="21.9208"
+          y1="15.5562"
+          y2="21.9201"
+        />
+        <circle
+          cx="9.8995"
+          cy="9.89941"
+          r="7"
+        />
+      </svg>
+      <input
+        aria-describedby="field-:r4:-message"
+        aria-invalid="true"
+        aria-required="false"
+        class="css-1llyiy6-SearchInput"
+        id="field-:r4:"
+        type="search"
+        value=""
+      />
+    </div>
   </div>
 </div>
 `;
 
-exports[`TextInput With hint renders correctly 1`] = `
+exports[`SearchInput With hint renders correctly 1`] = `
 <div>
   <div
     class="css-1904cz9-boxStyles-FieldContainer"
@@ -109,7 +165,7 @@ exports[`TextInput With hint renders correctly 1`] = `
       <span
         class="css-433uqb-boxStyles-Text"
       >
-        Name
+        Search
       </span>
       <span
         class="css-1rpt3h8-boxStyles-Text"
@@ -123,14 +179,42 @@ exports[`TextInput With hint renders correctly 1`] = `
     >
       Hint text
     </span>
-    <input
-      aria-describedby="field-:r2:-hint"
-      aria-invalid="false"
-      aria-required="false"
-      class="css-1bu2krz-Field"
-      id="field-:r2:"
-      type="text"
-    />
+    <div
+      class="css-1mmi5kq-SearchInputContainer"
+    >
+      <svg
+        aria-hidden="true"
+        class="css-1jixeje-Icon-SearchInputIcon"
+        clip-rule="evenodd"
+        focusable="false"
+        height="24"
+        role="img"
+        viewBox="0 0 24 24"
+        width="24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <line
+          x1="15.5568"
+          x2="21.9208"
+          y1="15.5562"
+          y2="21.9201"
+        />
+        <circle
+          cx="9.8995"
+          cy="9.89941"
+          r="7"
+        />
+      </svg>
+      <input
+        aria-describedby="field-:r2:-hint"
+        aria-invalid="false"
+        aria-required="false"
+        class="css-1bfqvdy-SearchInput"
+        id="field-:r2:"
+        type="search"
+        value=""
+      />
+    </div>
   </div>
 </div>
 `;

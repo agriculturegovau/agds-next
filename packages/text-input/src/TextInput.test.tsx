@@ -122,37 +122,4 @@ describe('TextInput', () => {
 			expect(el).toHaveAttribute('autocomplete', 'given-name');
 		});
 	});
-
-	describe('Search input', () => {
-		it('renders correctly', () => {
-			const { container } = renderTextInput({
-				label: 'Search',
-				type: 'search',
-			});
-			expect(container).toMatchSnapshot();
-		});
-
-		it('renders a valid HTML structure', () => {
-			const { container } = renderTextInput({
-				label: 'Search',
-				type: 'search',
-			});
-			expect(container).toHTMLValidate({
-				extends: ['html-validate:recommended'],
-				// react 18s `useId` break this rule
-				rules: { 'valid-id': 'off' },
-			});
-		});
-
-		it('hides the icon from screen readers', () => {
-			const { container } = renderTextInput({
-				label: 'Search',
-				type: 'search',
-			});
-			const el = container.querySelector('svg');
-			expect(el).toBeInTheDocument();
-			expect(el).toHaveAttribute('aria-hidden', 'true');
-			expect(el).toHaveAttribute('focusable', 'false');
-		});
-	});
 });

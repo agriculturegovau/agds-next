@@ -80,11 +80,3 @@ Password.args = {
 	type: 'password',
 	required: true,
 };
-
-export const Search: ComponentStory<typeof TextInput> = (args) => (
-	<TextInput {...args} />
-);
-Search.args = {
-	label: 'Search',
-	type: 'search',
-};

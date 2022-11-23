@@ -1,6 +1,6 @@
 ---
-title: Text Input
-description: Text inputs are input fields typically used in forms that allow the user to enter text data in a structured format.
+title: Search Input
+description: TODO
 group: Forms
 storybookPath: /story/forms-textinput--basic
 ---
@@ -47,20 +47,4 @@ Disabled input elements are unusable and can not be clicked. This prevents a use
 
 ```jsx live
 <TextInput label="Name" disabled />
-```
-
-## Maximum widths
-
-The width of a text input field should indicate the amount of information expected to be entered into the field. The size of the text input acts as a visual constraint for the end user.
-
-As an example, input fields for postcodes should have a smaller width than fields for emails.
-
-```jsx live
-<Stack gap={1}>
-	<TextInput label="xs input" maxWidth="xs" />
-	<TextInput label="sm input" maxWidth="sm" />
-	<TextInput label="md input" maxWidth="md" />
-	<TextInput label="lg input" maxWidth="lg" />
-	<TextInput label="xl input" maxWidth="xl" />
-</Stack>
 ```

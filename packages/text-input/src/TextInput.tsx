@@ -1,7 +1,6 @@
 import { forwardRef, InputHTMLAttributes } from 'react';
 import { Field, fieldMaxWidth, FieldMaxWidth } from '@ag.ds-next/field';
 import { packs, boxPalette, mapSpacing, tokens } from '@ag.ds-next/core';
-import { SearchIcon } from '@ag.ds-next/icon';
 
 type NativeInputProps = InputHTMLAttributes<HTMLInputElement>;
 
@@ -59,7 +58,6 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
 			block,
 			maxWidth,
 			invalid,
-			type,
 		});
 		return (
 			<Field
@@ -70,62 +68,31 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
 				invalid={invalid}
 				id={id}
 			>
-				{(a11yProps) => {
-					const inputElement = (
-						<input
-							ref={ref}
-							type={type}
-							disabled={disabled}
-							css={styles}
-							{...a11yProps}
-							{...props}
-						/>
-					);
-					if (type === 'search') {
-						return (
-							<div css={{ position: 'relative' }}>
-								<SearchInputIcon disabled={disabled} />
-								{inputElement}
-							</div>
-						);
-					}
-					return inputElement;
-				}}
+				{(a11yProps) => (
+					<input
+						ref={ref}
+						type={type}
+						disabled={disabled}
+						css={styles}
+						{...a11yProps}
+						{...props}
+					/>
+				)}
 			</Field>
 		);
 	}
 );
-
-function SearchInputIcon({ disabled }: { disabled?: boolean }) {
-	return (
-		<SearchIcon
-			size="md"
-			weight="regular"
-			color="muted"
-			css={{
-				position: 'absolute',
-				top: '50%',
-				left: `calc(${mapSpacing(1)} + ${tokens.borderWidth.lg}px)`, // Align from the inner border
-				transform: 'translateY(-50%)',
-				pointerEvents: 'none',
-				opacity: disabled ? 0.3 : undefined,
-			}}
-		/>
-	);
-}
 
 export const textInputStyles = ({
 	block,
 	maxWidth,
 	invalid,
 	multiline,
-	type,
 }: {
 	block?: boolean;
 	maxWidth?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
 	invalid?: boolean;
 	multiline?: boolean;
-	type?: string;
 }) =>
 	({
 		appearance: 'none',
@@ -159,14 +126,6 @@ export const textInputStyles = ({
 			paddingBottom: mapSpacing(0.5),
 			height: 'auto',
 			minHeight: '6rem',
-		}),
-
-		...(type === 'search' && {
-			paddingLeft: '3rem',
-			'&::-webkit-search-decoration, &::-webkit-search-cancel-button, &::-webkit-search-results-button, &::-webkit-search-results-decoration':
-				{
-					display: 'none',
-				},
 		}),
 
 		'&:disabled': {
