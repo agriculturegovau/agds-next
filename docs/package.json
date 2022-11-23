@@ -9,6 +9,7 @@
 		"dev": "yarn generate-component-props && next dev",
 		"dev:watch": "next-remote-watch ../packages",
 		"generate-component-props": "node scripts/generateComponentProps.js",
+		"generate-guide-images": "node scripts/generateGuideImages.js",
 		"generate-template-images": "node scripts/generateTemplateImages.js",
 		"lint": "next lint",
 		"playroom:build": "playroom build",
@@ -88,7 +89,8 @@
 	},
 	"devDependencies": {
 		"glob": "^8.0.3",
-		"puppeteer": "^14.1.0",
-		"react-docgen-typescript": "^2.2.2"
+		"puppeteer": "^19.2.2",
+		"react-docgen-typescript": "^2.2.2",
+		"sharp": "0.31.2"
 	}
 }
