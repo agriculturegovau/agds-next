@@ -15,6 +15,7 @@ import { ExternalLinkIcon } from './icons/ExternalLinkIcon';
 import { InfoIcon } from './icons/InfoIcon';
 import { InfoFilledIcon } from './icons/InfoFilledIcon';
 import { MenuIcon } from './icons/MenuIcon';
+import { ProgressBlockedIcon } from './icons/ProgressBlockedIcon';
 import { ProgressDoingIcon } from './icons/ProgressDoingIcon';
 import { ProgressTodoIcon } from './icons/ProgressTodoIcon';
 import { SearchIcon } from './icons/SearchIcon';
@@ -44,6 +45,7 @@ export const allIcons = {
 	InfoIcon,
 	InfoFilledIcon,
 	MenuIcon,
+	ProgressBlockedIcon,
 	ProgressDoingIcon,
 	ProgressTodoIcon,
 	SearchIcon,

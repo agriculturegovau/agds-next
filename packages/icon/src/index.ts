@@ -20,6 +20,7 @@ export { CloseIcon } from './icons/CloseIcon';
 export { CopyIcon } from './icons/CopyIcon';
 export { InfoIcon } from './icons/InfoIcon';
 export { InfoFilledIcon } from './icons/InfoFilledIcon';
+export { ProgressBlockedIcon } from './icons/ProgressBlockedIcon';
 export { ProgressDoingIcon } from './icons/ProgressDoingIcon';
 export { ExternalLinkIcon } from './icons/ExternalLinkIcon';
 export { MenuIcon } from './icons/MenuIcon';

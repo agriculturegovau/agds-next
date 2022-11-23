@@ -3,6 +3,7 @@ import { Box, Flex } from '@ag.ds-next/box';
 import { Text } from '@ag.ds-next/text';
 import { TextLink } from '@ag.ds-next/text-link';
 import {
+	ProgressBlockedIcon,
 	ProgressDoingIcon,
 	SuccessFilledIcon,
 	ProgressTodoIcon,
@@ -18,7 +19,7 @@ export type ProgressIndicatorItem = (
 	label: string;
 };
 
-export type ProgressIndicatorItemStatus = 'doing' | 'todo' | 'done';
+export type ProgressIndicatorItemStatus = keyof typeof statusMap;
 
 export type ProgressIndicatorItemLinkProps = LinkProps & {
 	background?: ProgressIndicatorBackground;
@@ -65,7 +66,7 @@ const ProgressIndicatorItem = ({
 	...props
 }: ProgressIndicatorItemProps) => {
 	const active = status === 'doing';
-	const { Icon, color } = statusIconMap[status];
+	const { Icon, color, label } = statusMap[status];
 	return (
 		<Box as="li" borderBottom>
 			<Flex
@@ -95,7 +96,7 @@ const ProgressIndicatorItem = ({
 				<Icon size="md" color={color} />
 				<Flex as="span" flexDirection="column" gap={0}>
 					<Text color="muted" fontSize="xs" lineHeight="nospace">
-						{statusLabelMap[status]}
+						{label}
 					</Text>
 					{children}
 				</Flex>
@@ -104,14 +105,13 @@ const ProgressIndicatorItem = ({
 	);
 };
 
-const statusIconMap = {
-	doing: { Icon: ProgressDoingIcon, color: 'action' },
-	todo: { Icon: ProgressTodoIcon, color: 'border' },
-	done: { Icon: SuccessFilledIcon, color: 'success' },
-} as const;
-
-const statusLabelMap = {
-	doing: 'In progress',
-	todo: 'Not started',
-	done: 'Completed',
+const statusMap = {
+	blocked: {
+		Icon: ProgressBlockedIcon,
+		color: 'muted',
+		label: 'Cannot start yet',
+	},
+	doing: { Icon: ProgressDoingIcon, label: 'In progress', color: 'action' },
+	todo: { Icon: ProgressTodoIcon, label: 'Not started', color: 'action' },
+	done: { Icon: SuccessFilledIcon, label: 'Completed', color: 'success' },
 } as const;

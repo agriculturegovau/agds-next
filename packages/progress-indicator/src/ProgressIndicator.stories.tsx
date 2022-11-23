@@ -25,6 +25,7 @@ const exampleLinkItems = [
 	{ href: '#', label: 'Introduction', status: 'done' as const },
 	{ href: '#', label: 'Business Contacts', status: 'doing' as const },
 	{ href: '#', label: 'Case Studies', status: 'todo' as const },
+	{ href: '#', label: 'Attachments', status: 'blocked' as const },
 ];
 
 const exampleButtonItems = [

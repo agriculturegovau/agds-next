@@ -16,23 +16,17 @@ export default {
 	},
 } as ComponentMeta<typeof TaskList>;
 
-const exampleOrderedLinkItems = [
+const exampleLinkItems = [
 	{ href: '#', label: 'Check eligibility', status: 'done' as const },
-	{ href: '#', label: 'Lorem ipsum dolor sit amet', status: 'done' as const },
-	{ href: '#', label: 'Case Studies', status: 'doing' as const },
+	{ href: '#', label: 'Personal details', status: 'doing' as const },
+	{ href: '#', label: 'Business details', status: 'todo' as const },
+	{ href: '#', label: 'Export', status: 'todo' as const },
 	{
 		href: '#',
 		label: 'Review and submit',
 		message: 'Not available until previous tasks are done',
-		status: 'todo' as const,
+		status: 'blocked' as const,
 	},
-];
-
-const exampleUnorderedLinkItems = [
-	{ href: '#', label: 'Check eligibility', status: 'done' as const },
-	{ href: '#', label: 'Lorem ipsum dolor sit amet', status: 'done' as const },
-	{ href: '#', label: 'Case Studies', status: 'doing' as const },
-	{ href: '#', label: 'Review and submit', status: 'todo' as const },
 ];
 
 const exampleOrderedButtonItems = [
@@ -43,47 +37,54 @@ const exampleOrderedButtonItems = [
 	},
 	{
 		onClick: console.log,
-		label: 'Lorem ipsum dolor sit amet',
+		label: 'Personal details',
 		status: 'done' as const,
 	},
 	{
 		onClick: console.log,
-		label: 'Case Studies',
+		label: 'Business details',
 		status: 'doing' as const,
+	},
+	{
+		onClick: console.log,
+		label: 'Export',
+		status: 'todo' as const,
 	},
 	{
 		onClick: console.log,
 		label: 'Review and submit',
 		message: 'Not available until previous tasks are done',
-		status: 'todo' as const,
+		status: 'blocked' as const,
 	},
 ];
-
-export const Basic: ComponentStory<typeof TaskList> = (args) => (
-	<TaskList {...args} />
-);
-Basic.args = {
-	items: exampleOrderedLinkItems,
-};
 
 export const Unordered: ComponentStory<typeof TaskList> = (args) => (
 	<TaskList {...args} />
 );
 Unordered.args = {
 	ordered: false,
-	items: exampleUnorderedLinkItems,
+	items: exampleLinkItems,
+};
+
+export const Ordered: ComponentStory<typeof TaskList> = (args) => (
+	<TaskList {...args} />
+);
+Ordered.args = {
+	ordered: true,
+	items: exampleLinkItems,
 };
 
 export const Button: ComponentStory<typeof TaskList> = (args) => (
 	<TaskList {...args} />
 );
 Button.args = {
+	ordered: false,
 	items: exampleOrderedButtonItems,
 };
 
 export const ModularLinks = () => (
 	<TaskListContainer>
-		{exampleOrderedLinkItems.map(({ label, ...props }, index) => (
+		{exampleLinkItems.map(({ label, ...props }, index) => (
 			<TaskListItemLink key={index} {...props}>
 				{label}
 			</TaskListItemLink>
