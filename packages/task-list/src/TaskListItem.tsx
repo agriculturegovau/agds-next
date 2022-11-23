@@ -108,7 +108,7 @@ const TaskListItem = ({
 						{statusLabelMap[status]}
 					</Text>
 					<Text
-						fontSize="md"
+						fontSize="lg"
 						lineHeight="heading"
 						fontWeight="bold"
 						color="action"
