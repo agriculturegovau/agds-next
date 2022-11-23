@@ -1,5 +1,5 @@
 import { ButtonHTMLAttributes, ElementType, PropsWithChildren } from 'react';
-import { Box, Flex } from '@ag.ds-next/box';
+import { Flex } from '@ag.ds-next/box';
 import { Text } from '@ag.ds-next/text';
 import { TextLink } from '@ag.ds-next/text-link';
 import {
@@ -57,6 +57,39 @@ type ProgressIndicatorItemProps = PropsWithChildren<{
 	status: ProgressIndicatorItemStatus;
 }>;
 
+const ProgressIndicatorItemTimeline = () => (
+	<div
+		css={{
+			width: 2,
+			backgroundColor: boxPalette.border,
+			position: 'relative',
+			height: '35%',
+			left: 0,
+			top: 0,
+		}}
+	/>
+);
+
+const ProgressIndicatorItemIcon = ({
+	status,
+}: {
+	status: ProgressIndicatorItemStatus;
+}) => {
+	const { icon: Icon, iconColor } = statusMap[status];
+	return (
+		<Flex
+			flexDirection="column"
+			alignItems="center"
+			justifyContent="center"
+			width="46px"
+		>
+			<ProgressIndicatorItemTimeline />
+			<Icon size="md" color={iconColor} />
+			<ProgressIndicatorItemTimeline />
+		</Flex>
+	);
+};
+
 const ProgressIndicatorItem = ({
 	as,
 	background = 'body',
@@ -66,42 +99,50 @@ const ProgressIndicatorItem = ({
 	...props
 }: ProgressIndicatorItemProps) => {
 	const active = status === 'doing';
-	const { icon: Icon, iconColor, label } = statusMap[status];
+	const { label } = statusMap[status];
 	return (
-		<Box as="li" borderBottom>
+		<Flex as="li">
+			<ProgressIndicatorItemIcon status={status} />
 			<Flex
 				as={as}
 				className={className}
 				alignItems="center"
 				gap={0.75}
-				padding={0.75}
+				paddingY={0.75}
 				background={background}
 				color="text"
 				fontFamily="body"
 				fontWeight={active ? 'bold' : 'normal'}
-				borderLeft
-				borderLeftWidth="xl"
+				borderBottom
 				width="100%"
 				focus
 				css={{
-					borderLeftColor: active ? boxPalette.foregroundAction : 'transparent',
-					textDecoration: 'none',
-					'&:hover': {
+					'.title': {
 						...packs.underline,
+					},
+					'&:hover': {
 						backgroundColor: hoverColorMap[background],
+						'.title': {
+							textDecoration: 'none',
+						},
 					},
 				}}
 				{...props}
 			>
-				<Icon size="md" color={iconColor} />
 				<Flex as="span" flexDirection="column" gap={0}>
 					<Text color="muted" fontSize="xs" lineHeight="nospace">
 						{label}
 					</Text>
-					{children}
+					<Text
+						className="title"
+						color="action"
+						fontWeight={active ? 'bold' : 'normal'}
+					>
+						{children}
+					</Text>
 				</Flex>
 			</Flex>
-		</Box>
+		</Flex>
 	);
 };
 
