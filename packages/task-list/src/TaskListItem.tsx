@@ -109,7 +109,7 @@ const TaskListItem = ({
 						{label}
 					</Text>
 					<Text
-						fontSize="md"
+						fontSize="lg"
 						lineHeight="heading"
 						fontWeight="bold"
 						color="action"
