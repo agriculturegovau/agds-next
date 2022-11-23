@@ -6,7 +6,7 @@ import { SearchInput, SearchInputProps } from './SearchInput';
 
 afterEach(cleanup);
 
-function renderSearchInput(props: Partial<SearchInputProps>) {
+function renderSearchInput(props: SearchInputProps) {
 	return render(<SearchInput {...props} />);
 }
 
@@ -74,42 +74,46 @@ describe('SearchInput', () => {
 		});
 	});
 
-	describe('Clear search button', () => {
-		it('clears input when button is pressed', async () => {
-			renderSearchInput({ label: 'Search' });
+	it('Clears input when clear button is pressed', async () => {
+		const onClear = jest.fn();
+		renderSearchInput({ label: 'Search', onClear });
 
-			const input = document.querySelector('input');
-			let clearButton = document.querySelector('button');
+		const input = document.querySelector('input');
+		let clearButton = document.querySelector('button');
 
-			expect(input).toHaveValue('');
-			expect(clearButton).not.toBeInTheDocument();
+		expect(input).toHaveValue('');
+		expect(clearButton).not.toBeInTheDocument();
 
-			await input?.focus();
-			await userEvent.keyboard('Hello world');
+		await input?.focus();
+		await userEvent.keyboard('Hello world');
 
-			clearButton = document.querySelector('button');
+		clearButton = document.querySelector('button');
 
-			expect(input).toHaveValue('Hello world');
-			expect(clearButton).toBeInTheDocument();
-			expect(clearButton).toHaveAccessibleName('Clear search input');
+		expect(input).toHaveValue('Hello world');
+		expect(clearButton).toBeInTheDocument();
+		expect(clearButton).toHaveAccessibleName('Clear input');
 
-			if (clearButton) await userEvent.click(clearButton);
+		if (clearButton) await userEvent.click(clearButton);
 
-			expect(input).toHaveFocus();
-			expect(input).toHaveValue('');
-		});
+		expect(input).toHaveFocus();
+		expect(input).toHaveValue('');
+		expect(onClear).toHaveBeenCalledTimes(1);
 	});
 
-	it('renders a valid HTML structure', () => {
-		const { container } = renderSearchInput({
-			label: 'Search',
-			value: 'Hello world',
-			onClear: () => undefined,
-		});
-		expect(container).toHTMLValidate({
-			extends: ['html-validate:recommended'],
-			// react 18s `useId` break this rule
-			rules: { 'valid-id': 'off' },
-		});
+	it('Clears input when escape is pressed', async () => {
+		const onClear = jest.fn();
+		renderSearchInput({ label: 'Search', onClear });
+		const input = document.querySelector('input');
+
+		await input?.focus();
+		await userEvent.keyboard('Hello world');
+		expect(input).toHaveValue('Hello world');
+
+		await input?.focus();
+		await userEvent.keyboard('{Escape}');
+
+		expect(input).toHaveFocus();
+		expect(input).toHaveValue('');
+		expect(onClear).toHaveBeenCalledTimes(1);
 	});
 });

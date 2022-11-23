@@ -1,18 +1,17 @@
+import { CSSObject } from '@emotion/react';
 import {
-	ButtonHTMLAttributes,
 	forwardRef,
 	InputHTMLAttributes,
 	KeyboardEvent,
-	PropsWithChildren,
 	useRef,
 	useState,
 } from 'react';
-import { BaseButton } from '@ag.ds-next/button';
-import { CloseIcon, SearchIcon } from '@ag.ds-next/icon';
 import { Field } from '@ag.ds-next/field';
-import { Flex } from '@ag.ds-next/box';
-import { mapSpacing, mergeRefs, tokens } from '@ag.ds-next/core';
+import { mergeRefs } from '@ag.ds-next/core';
 import { textInputStyles } from '@ag.ds-next/text-input';
+import { SearchInputContainer } from './SearchInputContainer';
+import { SearchInputClearButton } from './SearchInputClearButton';
+import { SearchInputIcon } from './SearchInputIcon';
 
 type NativeInputProps = InputHTMLAttributes<HTMLInputElement>;
 
@@ -88,8 +87,7 @@ export const SearchInput = forwardRef<HTMLInputElement, SearchInputProps>(
 
 		const showClearButton = Boolean(value);
 
-		const styles = searchInputStyles({
-			block,
+		const [maxWidth, styles] = searchInputStyles({
 			invalid,
 			showClearButton,
 		});
@@ -104,7 +102,7 @@ export const SearchInput = forwardRef<HTMLInputElement, SearchInputProps>(
 				id={id}
 			>
 				{(a11yProps) => (
-					<SearchInputContainer maxWidth={styles.maxWidth}>
+					<SearchInputContainer maxWidth={maxWidth}>
 						<SearchInputIcon disabled={disabled} />
 						<input
 							ref={mergeRefs([internalRef, forwardedRef])}
@@ -113,7 +111,7 @@ export const SearchInput = forwardRef<HTMLInputElement, SearchInputProps>(
 							value={value}
 							onChange={(e) => onChange(e.target.value)}
 							onKeyDown={onKeyDown}
-							css={{ ...styles, maxWidth: undefined }}
+							css={styles}
 							{...a11yProps}
 							{...props}
 						/>
@@ -130,58 +128,7 @@ export const SearchInput = forwardRef<HTMLInputElement, SearchInputProps>(
 	}
 );
 
-function SearchInputContainer({
-	children,
-	maxWidth,
-}: PropsWithChildren<{ maxWidth: string }>) {
-	return <div css={{ position: 'relative', maxWidth }}>{children}</div>;
-}
-
-function SearchInputIcon({ disabled }: { disabled?: boolean }) {
-	return (
-		<SearchIcon
-			size="md"
-			weight="regular"
-			color="muted"
-			css={{
-				position: 'absolute',
-				top: '50%',
-				left: `calc(${mapSpacing(1)} + ${tokens.borderWidth.lg}px)`, // Align from the inner border
-				transform: 'translateY(-50%)',
-				pointerEvents: 'none',
-				opacity: disabled ? 0.3 : undefined,
-			}}
-		/>
-	);
-}
-
-function SearchInputClearButton({
-	disabled,
-	onClick,
-}: Pick<ButtonHTMLAttributes<HTMLButtonElement>, 'disabled' | 'onClick'>) {
-	return (
-		<Flex
-			as={BaseButton}
-			alignItems="center"
-			justifyContent="center"
-			disabled={disabled}
-			aria-label="Clear search input"
-			onClick={onClick}
-			focus
-			css={{
-				position: 'absolute',
-				top: '50%',
-				right: `calc(${mapSpacing(1)} + ${tokens.borderWidth.lg}px)`, // Align from the inner border
-				transform: 'translateY(-50%)',
-				opacity: disabled ? 0.3 : 1,
-			}}
-		>
-			<CloseIcon size="md" weight="regular" color="muted" />
-		</Flex>
-	);
-}
-
-const searchInputStyles = ({
+function searchInputStyles({
 	block,
 	invalid,
 	showClearButton,
@@ -189,16 +136,19 @@ const searchInputStyles = ({
 	block?: boolean;
 	invalid?: boolean;
 	showClearButton: boolean;
-}) =>
-	({
-		...textInputStyles({ block, invalid }),
-		width: '100%',
-		paddingLeft: '3rem',
-		...(showClearButton && {
-			paddingRight: '3rem',
-		}),
-		'&::-webkit-search-decoration, &::-webkit-search-cancel-button, &::-webkit-search-results-button, &::-webkit-search-results-decoration':
-			{
-				display: 'none',
-			},
-	} as const);
+}) {
+	const { maxWidth, ...baseStyles } = textInputStyles({ block, invalid });
+	return [
+		maxWidth,
+		{
+			...baseStyles,
+			maxWidth: undefined,
+
+			paddingLeft: '3rem',
+			...(showClearButton && { paddingRight: '3rem' }),
+
+			'&::-webkit-search-decoration, &::-webkit-search-cancel-button, &::-webkit-search-results-button, &::-webkit-search-results-decoration':
+				{ display: 'none' },
+		},
+	] as const;
+}
