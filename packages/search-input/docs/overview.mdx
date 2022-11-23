@@ -1,16 +1,14 @@
 ---
 title: Search Input
-description: TODO
+description: Search enables users to specify a word or a phrase to find relevant pieces of content without the use of navigation.
 group: Forms
-storybookPath: /story/forms-textinput--basic
+storybookPath: /story/forms-searchinput--basic
 ---
 
-## Default
-
-By default, the `TextInput` component does not expand to fill the available space.
+By default, the `SearchInput` component does not expand to fill the available space.
 
 ```jsx live
-<TextInput label="Name" />
+<SearchInput label="Search" />
 ```
 
 ## Block
@@ -18,18 +16,18 @@ By default, the `TextInput` component does not expand to fill the available spac
 Use the `block` prop to expand the component to fill the available space.
 
 ```jsx live
-<TextInput label="Name" block />
+<SearchInput label="Search" block />
 ```
 
 ## Required
 
-The `TextInput` component will always append `(optional)` to the label based on the `required` prop.
+The `SearchInput` component will always append `(optional)` to the label based on the `required` prop.
 
 ```jsx live
 <Stack gap={1}>
-	<TextInput label="Default" />
-	<TextInput label="Required" required />
-	<TextInput label="Optional" required={false} />
+	<SearchInput label="Default" />
+	<SearchInput label="Required" required />
+	<SearchInput label="Optional" required={false} />
 </Stack>
 ```
 
@@ -38,13 +36,17 @@ The `TextInput` component will always append `(optional)` to the label based on 
 Use the `invalid` prop to indicate if the user input is invalid (does not validate according to the elements settings).
 
 ```jsx live
-<TextInput label="Invalid" invalid message="This input is invalid" />
+<SearchInput
+	label="Invalid"
+	invalid
+	message="A search term is required to see results"
+/>
 ```
 
 ## Disabled
 
-Disabled input elements are unusable and can not be clicked. This prevents a user from interacting with the input element until another action is complete. Disabled input elements in a form will not be submitted.
+Disabled input elements are unusable and can not be clicked. This prevents a user from interacting with the input element until another action is complete.
 
 ```jsx live
-<TextInput label="Name" disabled />
+<SearchInput label="Search" disabled />
 ```

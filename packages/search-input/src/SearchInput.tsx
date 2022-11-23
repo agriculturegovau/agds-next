@@ -1,14 +1,19 @@
 import {
 	ButtonHTMLAttributes,
+	ChangeEvent,
 	forwardRef,
 	InputHTMLAttributes,
+	KeyboardEvent,
 	PropsWithChildren,
+	useCallback,
+	useRef,
+	useState,
 } from 'react';
 import { BaseButton } from '@ag.ds-next/button';
 import { CloseIcon, SearchIcon } from '@ag.ds-next/icon';
 import { Field } from '@ag.ds-next/field';
 import { Flex } from '@ag.ds-next/box';
-import { mapSpacing, tokens } from '@ag.ds-next/core';
+import { mapSpacing, mergeRefs, tokens } from '@ag.ds-next/core';
 import { textInputStyles } from '@ag.ds-next/text-input';
 
 type NativeInputProps = InputHTMLAttributes<HTMLInputElement>;
@@ -20,6 +25,8 @@ type BaseSearchInputProps = {
 	name?: NativeInputProps['name'];
 	onBlur?: NativeInputProps['onBlur'];
 	onFocus?: NativeInputProps['onFocus'];
+	onChange?: NativeInputProps['onChange'];
+	value?: NativeInputProps['value'];
 };
 
 export type SearchInputProps = BaseSearchInputProps & {
@@ -35,9 +42,7 @@ export type SearchInputProps = BaseSearchInputProps & {
 	invalid?: boolean;
 	/** If true, the field will stretch to the fill the width of its container. */
 	block?: boolean;
-	/** The value of the input. */
-	value: string;
-	onChange: (value: string) => void;
+	/** Function to be called when the input is cleared. */
 	onClear?: () => void;
 };
 
@@ -52,14 +57,52 @@ export const SearchInput = forwardRef<HTMLInputElement, SearchInputProps>(
 			block,
 			id,
 			disabled,
-			value,
-			onChange,
+			value: valueProp,
+			onChange: onChangeProp,
 			onClear,
 			...props
 		},
-		ref
+		forwardedRef
 	) {
-		const showClearButton = Boolean(value && onClear);
+		const ref = useRef<HTMLInputElement>(null);
+		const [internalValue, setInternalValue] = useState(valueProp || '');
+
+		const value = typeof valueProp === 'string' ? valueProp : internalValue;
+
+		const onChange = useCallback(
+			(event: ChangeEvent<HTMLInputElement>) => {
+				onChangeProp?.(event);
+				setInternalValue(event.target.value);
+			},
+			[onChangeProp]
+		);
+
+		// Clears the input while also triggering the `onChange` event to consumers
+		// Note: There may be a better way to do this in the future, but this keeps the API similar to other text field components
+		// https://github.com/carbon-design-system/carbon/blob/main/packages/react/src/components/Search/Search.js
+		const clearInput = useCallback(() => {
+			if (!value) return;
+			if (!ref?.current) return;
+			// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+			// @ts-ignore
+			onChange({
+				target: Object.assign({}, ref?.current, { value: '' }),
+				type: 'change',
+			});
+			ref?.current?.focus();
+			onClear?.();
+		}, [value, onChange, onClear]);
+
+		// Clear the input if the user presses the escape key
+		const onKeyDown = useCallback(
+			(e: KeyboardEvent<HTMLInputElement>) => {
+				if (e.code !== 'Escape') return;
+				clearInput();
+			},
+			[clearInput]
+		);
+
+		const showClearButton = Boolean(value);
 
 		const styles = searchInputStyles({
 			block,
@@ -80,17 +123,21 @@ export const SearchInput = forwardRef<HTMLInputElement, SearchInputProps>(
 					<SearchInputContainer maxWidth={styles.maxWidth}>
 						<SearchInputIcon disabled={disabled} />
 						<input
-							ref={ref}
+							ref={mergeRefs([ref, forwardedRef])}
 							type="search"
 							disabled={disabled}
 							value={value}
-							onChange={(event) => onChange(event.target.value)}
+							onChange={onChange}
 							css={{ ...styles, maxWidth: undefined }}
+							onKeyDown={onKeyDown}
 							{...a11yProps}
 							{...props}
 						/>
 						{showClearButton ? (
-							<SearchInputClearButton disabled={disabled} onClick={onClear} />
+							<SearchInputClearButton
+								disabled={disabled}
+								onClick={clearInput}
+							/>
 						) : null}
 					</SearchInputContainer>
 				)}
@@ -134,7 +181,7 @@ function SearchInputClearButton({
 			alignItems="center"
 			justifyContent="center"
 			disabled={disabled}
-			aria-label="Clear search"
+			aria-label="Clear search input"
 			onClick={onClick}
 			focus
 			css={{

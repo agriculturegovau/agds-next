@@ -8,13 +8,16 @@ export default {
 } as ComponentMeta<typeof SearchInput>;
 
 const Template: ComponentStory<typeof SearchInput> = (args) => {
+	return <SearchInput {...args} />;
+};
+
+const ControlledTemplate: ComponentStory<typeof SearchInput> = (args) => {
 	const [value, setValue] = useState('');
 	return (
 		<SearchInput
 			{...args}
 			value={value}
-			onChange={setValue}
-			onClear={() => setValue('')}
+			onChange={(event) => setValue(event.target.value)}
 		/>
 	);
 };
@@ -27,6 +30,7 @@ Basic.args = {
 export const Required = Template.bind({});
 Required.args = {
 	label: 'Search',
+	required: true,
 };
 
 export const Disabled = Template.bind({});
@@ -51,6 +55,12 @@ Hint.args = {
 
 export const Block = Template.bind({});
 Block.args = {
+	label: 'Search',
+	block: true,
+};
+
+export const Controlled = ControlledTemplate.bind({});
+Controlled.args = {
 	label: 'Search',
 	block: true,
 };

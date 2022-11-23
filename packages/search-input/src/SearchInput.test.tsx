@@ -1,5 +1,6 @@
 import '@testing-library/jest-dom';
 import 'html-validate/jest';
+import userEvent from '@testing-library/user-event';
 import { cleanup, render } from '../../../test-utils';
 import { SearchInput, SearchInputProps } from './SearchInput';
 
@@ -17,6 +18,7 @@ describe('SearchInput', () => {
 			});
 			expect(container).toMatchSnapshot();
 		});
+
 		it('renders a valid HTML structure', () => {
 			const { container } = renderSearchInput({ label: 'Search' });
 			expect(container).toHTMLValidate({
@@ -69,6 +71,45 @@ describe('SearchInput', () => {
 				// react 18s `useId` break this rule
 				rules: { 'valid-id': 'off' },
 			});
+		});
+	});
+
+	describe('Clear search button', () => {
+		it('clears input when button is pressed', async () => {
+			renderSearchInput({ label: 'Search' });
+
+			const input = document.querySelector('input');
+			let clearButton = document.querySelector('button');
+
+			expect(input).toHaveValue('');
+			expect(clearButton).not.toBeInTheDocument();
+
+			await input?.focus();
+			await userEvent.keyboard('Hello world');
+
+			clearButton = document.querySelector('button');
+
+			expect(input).toHaveValue('Hello world');
+			expect(clearButton).toBeInTheDocument();
+			expect(clearButton).toHaveAccessibleName('Clear search input');
+
+			if (clearButton) await userEvent.click(clearButton);
+
+			expect(input).toHaveFocus();
+			expect(input).toHaveValue('');
+		});
+	});
+
+	it('renders a valid HTML structure', () => {
+		const { container } = renderSearchInput({
+			label: 'Search',
+			value: 'Hello world',
+			onClear: () => undefined,
+		});
+		expect(container).toHTMLValidate({
+			extends: ['html-validate:recommended'],
+			// react 18s `useId` break this rule
+			rules: { 'valid-id': 'off' },
 		});
 	});
 });

@@ -102,6 +102,7 @@ export {
 	SearchBoxInput,
 	SearchBoxButton,
 } from '@ag.ds-next/search-box';
+export { SearchInput } from '@ag.ds-next/search-input';
 export { KeywordList } from '@ag.ds-next/keyword-list';
 export {
 	SkipLinks,
