@@ -21,7 +21,6 @@ export { CopyIcon } from './icons/CopyIcon';
 export { InfoIcon } from './icons/InfoIcon';
 export { InfoFilledIcon } from './icons/InfoFilledIcon';
 export { ProgressDoingIcon } from './icons/ProgressDoingIcon';
-export { ProgressDoneIcon } from './icons/ProgressDoneIcon';
 export { ExternalLinkIcon } from './icons/ExternalLinkIcon';
 export { MenuIcon } from './icons/MenuIcon';
 export { SearchIcon } from './icons/SearchIcon';

@@ -84,7 +84,6 @@ export {
 	ChevronRightIcon,
 	CloseIcon,
 	ProgressDoingIcon,
-	ProgressDoneIcon,
 	ExternalLinkIcon,
 	MenuIcon,
 	SearchIcon,

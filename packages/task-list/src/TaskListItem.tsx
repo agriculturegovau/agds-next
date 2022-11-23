@@ -4,7 +4,7 @@ import { Text } from '@ag.ds-next/text';
 import { TextLink } from '@ag.ds-next/text-link';
 import {
 	ProgressDoingIcon,
-	ProgressDoneIcon,
+	SuccessFilledIcon,
 	ProgressTodoIcon,
 } from '@ag.ds-next/icon';
 import { boxPalette, LinkProps, packs } from '@ag.ds-next/core';
@@ -70,7 +70,7 @@ const TaskListItem = ({
 	...props
 }: TaskListItemProps) => {
 	const active = status === 'doing';
-	const Icon = statusIconMap[status];
+	const { Icon, color } = statusIconMap[status];
 	return (
 		<li css={{ counterIncrement: 'task-count' }}>
 			<Flex
@@ -96,8 +96,8 @@ const TaskListItem = ({
 				{...props}
 			>
 				<Icon
-					size="md"
-					color="action"
+					size="xl"
+					color={color}
 					css={{
 						// Use padding to ensure the icon is aligned centered with the status label and title
 						paddingTop: '0.75rem',
@@ -133,13 +133,13 @@ const TaskListItem = ({
 };
 
 const statusIconMap = {
-	doing: ProgressDoingIcon,
-	todo: ProgressTodoIcon,
-	done: ProgressDoneIcon,
+	doing: { Icon: ProgressDoingIcon, color: 'action' },
+	todo: { Icon: ProgressTodoIcon, color: 'muted' },
+	done: { Icon: SuccessFilledIcon, color: 'success' },
 } as const;
 
 const statusLabelMap = {
-	doing: 'Doing',
-	todo: 'To do',
-	done: 'Done',
+	doing: 'In progress',
+	todo: 'Not started',
+	done: 'Completed',
 } as const;
