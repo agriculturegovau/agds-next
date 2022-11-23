@@ -134,7 +134,7 @@ const TaskListItem = ({
 
 const statusIconMap = {
 	doing: { Icon: ProgressDoingIcon, color: 'action' },
-	todo: { Icon: ProgressTodoIcon, color: 'muted' },
+	todo: { Icon: ProgressTodoIcon, color: 'action' },
 	done: { Icon: SuccessFilledIcon, color: 'success' },
 } as const;
 
