@@ -7,6 +7,7 @@ import { Column, Columns } from '@ag.ds-next/columns';
 import { DocumentTitle } from '../../components/DocumentTitle';
 import { ColorTable } from '../../components/TokenColorTable';
 import { TokenLayout } from '../../components/TokenLayout';
+import { LinkComponent } from '../../components/LinkComponent';
 
 export default function TokensColorPage() {
 	const [isDarkMode, setDarkMode] = useState(false);
@@ -83,8 +84,10 @@ export default function TokensColorPage() {
 								dark sections of an interface use the dark colour palette.
 							</p>
 							<p>
-								<a href="/guides/custom-theme">See the theming guide</a> for
-								more on how this works in code.
+								<LinkComponent href="/guides/custom-theme">
+									See the theming guide
+								</LinkComponent>{' '}
+								for more on how this works in code.
 							</p>
 						</Column>
 
