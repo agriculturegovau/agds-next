@@ -3,6 +3,7 @@ const { normalize } = require('path');
 const { readdir, readFile } = require('fs/promises');
 const puppeteer = require('puppeteer');
 const matter = require('gray-matter');
+const sharp = require('sharp');
 
 const BASE_URL = `http://localhost:3000/agds-next/example-site`;
 const OUTPUT_DIR = `public/img/templates/`;
@@ -61,34 +62,38 @@ function getTemplateList() {
 
 (async () => {
 	console.info('Starting');
-	console.log(`Screenshoting ${BASE_URL}`);
-	console.info(`Outputing images to ${OUTPUT_DIR}`);
+	console.log(`Screen shotting ${BASE_URL}`);
+	console.info(`Outputting images to ${OUTPUT_DIR}`);
 
-	const templates = await getTemplateList();
 	const browser = await puppeteer.launch();
+	const templates = await getTemplateList();
 
 	await Promise.all(
 		templates.map(async ({ slug, previewPath }, idx) => {
 			try {
 				console.log(`Generating ${idx + 1} of ${templates.length}`);
+
 				const url = BASE_URL + previewPath;
-				const destination = OUTPUT_DIR + `/${slug}.png`;
+				const destination = OUTPUT_DIR + `/${slug}.webp`;
+
 				const page = await browser.newPage();
+				await page.goto(url);
+
 				await page.setViewport({
 					width: 1280,
 					height: 720,
 					deviceScaleFactor: 1,
 				});
-				await page.goto(url);
 
 				// Scroll past the template banner
+				await page.waitForSelector('header');
 				await page.evaluate(() => {
-					const header = document.querySelector('header');
-					const headerRect = header.getBoundingClientRect();
-					window.scrollTo(0, headerRect.top);
+					document.querySelector('header').scrollIntoView();
 				});
 
-				await page.screenshot({ path: destination });
+				// Convert the screenshot into a webp image
+				const screenshotBuffer = await page.screenshot();
+				sharp(screenshotBuffer).webp().toFile(destination);
 			} catch (error) {
 				console.log(`Error with "${slug}"`);
 				console.error(error.message);

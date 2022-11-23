@@ -3,6 +3,7 @@ import { Prose, proseBlockClassname } from '@ag.ds-next/prose';
 import { Switch } from '@ag.ds-next/switch';
 import { Box } from '@ag.ds-next/box';
 import { InpageNav } from '@ag.ds-next/inpage-nav';
+import { Column, Columns } from '@ag.ds-next/columns';
 import { DocumentTitle } from '../../components/DocumentTitle';
 import { ColorTable } from '../../components/TokenColorTable';
 import { TokenLayout } from '../../components/TokenLayout';
@@ -63,28 +64,40 @@ export default function TokensColorPage() {
 					</Box>
 					<ColorTable activePalette={isDarkMode ? 'dark' : 'light'} />
 					<h2>Usage guidelines</h2>
-					<h3 id="palettes">Use palettes to divide sections</h3>
-					<p>
-						An interface can be divided into rows or sections that span the full
-						width of a screen. A section can use either the light or dark colour
-						palette.
-					</p>
-					<p>
-						For example, the website header and footer might use the dark
-						palette to make them more prominent, while the content area in
-						between uses the light palette.
-					</p>
-					<p>
-						Components that sit inside light sections of an interface use the
-						light colour palette. Similarly, components that sit inside dark
-						sections of an interface use the dark colour palette.
-					</p>
-					<p>
-						<LinkComponent href="/guides/custom-theme">
-							See the theming guide
-						</LinkComponent>{' '}
-						for more on how this works in code.
-					</p>
+
+					<Columns cols={[1, 3]} className={proseBlockClassname}>
+						<Column columnSpan={[1, 2]}>
+							<h3 id="palettes">Use palettes to divide sections</h3>
+							<p>
+								An interface can be divided into rows or sections that span the
+								full width of a screen. A section can use either the light or
+								dark colour palette.
+							</p>
+							<p>
+								For example, the website header and footer might use the dark
+								palette to make them more prominent, while the content area in
+								between uses the light palette.
+							</p>
+							<p>
+								Components that sit inside light sections of an interface use
+								the light colour palette. Similarly, components that sit inside
+								dark sections of an interface use the dark colour palette.
+							</p>
+							<p>
+								<LinkComponent href="/guides/custom-theme">
+									See the theming guide
+								</LinkComponent>{' '}
+								for more on how this works in code.
+							</p>
+						</Column>
+
+						<Box paddingTop={[1, 0]}>
+							<img
+								src="/agds-next/img/guides/home.webp"
+								alt="Screenshot of a successful usage of palettes"
+							/>
+						</Box>
+					</Columns>
 
 					<h3>Don’t rely on colour alone to convey meaning</h3>
 					<p>
