@@ -1,11 +1,9 @@
 import {
 	ButtonHTMLAttributes,
-	ChangeEvent,
 	forwardRef,
 	InputHTMLAttributes,
 	KeyboardEvent,
 	PropsWithChildren,
-	useCallback,
 	useRef,
 	useState,
 } from 'react';
@@ -25,7 +23,7 @@ type BaseSearchInputProps = {
 	name?: NativeInputProps['name'];
 	onBlur?: NativeInputProps['onBlur'];
 	onFocus?: NativeInputProps['onFocus'];
-	onChange?: NativeInputProps['onChange'];
+	onChange?: (value: string) => void;
 	value?: NativeInputProps['value'];
 };
 
@@ -64,43 +62,29 @@ export const SearchInput = forwardRef<HTMLInputElement, SearchInputProps>(
 		},
 		forwardedRef
 	) {
-		const ref = useRef<HTMLInputElement>(null);
+		const internalRef = useRef<HTMLInputElement>(null);
 		const [internalValue, setInternalValue] = useState(valueProp || '');
 
 		const value = typeof valueProp === 'string' ? valueProp : internalValue;
 
-		const onChange = useCallback(
-			(event: ChangeEvent<HTMLInputElement>) => {
-				onChangeProp?.(event);
-				setInternalValue(event.target.value);
-			},
-			[onChangeProp]
-		);
+		const onChange = (value: string) => {
+			onChangeProp?.(value);
+			setInternalValue(value);
+		};
 
 		// Clears the input while also triggering the `onChange` event to consumers
-		// Note: There may be a better way to do this in the future, but this keeps the API similar to other text field components
-		// https://github.com/carbon-design-system/carbon/blob/main/packages/react/src/components/Search/Search.js
-		const clearInput = useCallback(() => {
+		const clearInput = () => {
 			if (!value) return;
-			if (!ref?.current) return;
-			// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-			// @ts-ignore
-			onChange({
-				target: Object.assign({}, ref?.current, { value: '' }),
-				type: 'change',
-			});
-			ref?.current?.focus();
+			onChange('');
 			onClear?.();
-		}, [value, onChange, onClear]);
+			internalRef.current?.focus();
+		};
 
 		// Clear the input if the user presses the escape key
-		const onKeyDown = useCallback(
-			(e: KeyboardEvent<HTMLInputElement>) => {
-				if (e.code !== 'Escape') return;
-				clearInput();
-			},
-			[clearInput]
-		);
+		const onKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
+			if (e.code !== 'Escape') return;
+			clearInput();
+		};
 
 		const showClearButton = Boolean(value);
 
@@ -123,13 +107,13 @@ export const SearchInput = forwardRef<HTMLInputElement, SearchInputProps>(
 					<SearchInputContainer maxWidth={styles.maxWidth}>
 						<SearchInputIcon disabled={disabled} />
 						<input
-							ref={mergeRefs([ref, forwardedRef])}
+							ref={mergeRefs([internalRef, forwardedRef])}
 							type="search"
 							disabled={disabled}
 							value={value}
-							onChange={onChange}
-							css={{ ...styles, maxWidth: undefined }}
+							onChange={(e) => onChange(e.target.value)}
 							onKeyDown={onKeyDown}
+							css={{ ...styles, maxWidth: undefined }}
 							{...a11yProps}
 							{...props}
 						/>

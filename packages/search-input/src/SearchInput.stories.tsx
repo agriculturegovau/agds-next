@@ -13,13 +13,7 @@ const Template: ComponentStory<typeof SearchInput> = (args) => {
 
 const ControlledTemplate: ComponentStory<typeof SearchInput> = (args) => {
 	const [value, setValue] = useState('');
-	return (
-		<SearchInput
-			{...args}
-			value={value}
-			onChange={(event) => setValue(event.target.value)}
-		/>
-	);
+	return <SearchInput {...args} value={value} onChange={setValue} />;
 };
 
 export const Basic = Template.bind({});
