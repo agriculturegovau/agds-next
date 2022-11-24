@@ -16,6 +16,10 @@ const iconSizes = {
 	xl: 2.5, // 40px
 } as const;
 
+type IconSize = keyof typeof iconSizes;
+
+// enables a visible difference between regular
+// and bold icons for small sizes.
 const iconWeights = {
 	regular: {
 		sm: 2,
@@ -24,8 +28,6 @@ const iconWeights = {
 		xl: 2,
 	},
 	bold: {
-		// enables a visible difference between regular
-		// and bold icons for small sizes.
 		sm: 4,
 		md: 3,
 		lg: 3,
@@ -33,7 +35,6 @@ const iconWeights = {
 	},
 };
 
-type IconSize = keyof typeof iconSizes;
 type IconWeight = keyof typeof iconWeights;
 
 type NativeSvgProps = SVGAttributes<SVGSVGElement>;
