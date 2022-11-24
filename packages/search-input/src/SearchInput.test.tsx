@@ -1,7 +1,7 @@
 import '@testing-library/jest-dom';
 import 'html-validate/jest';
 import userEvent from '@testing-library/user-event';
-import { cleanup, render } from '../../../test-utils';
+import { cleanup, render, screen } from '../../../test-utils';
 import { SearchInput, SearchInputProps } from './SearchInput';
 
 afterEach(cleanup);
@@ -79,7 +79,7 @@ describe('SearchInput', () => {
 		renderSearchInput({ label: 'Search', onClear });
 
 		const input = document.querySelector('input');
-		let clearButton = document.querySelector('button');
+		let clearButton = document.querySelector('[role="button"]');
 
 		expect(input).toHaveValue('');
 		expect(clearButton).not.toBeInTheDocument();
@@ -87,7 +87,7 @@ describe('SearchInput', () => {
 		await input?.focus();
 		await userEvent.keyboard('Hello world');
 
-		clearButton = document.querySelector('button');
+		clearButton = document.querySelector('[role="button"]');
 
 		expect(input).toHaveValue('Hello world');
 		expect(clearButton).toBeInTheDocument();

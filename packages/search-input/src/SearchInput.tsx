@@ -141,6 +141,7 @@ function searchInputStyles({
 		maxWidth,
 		{
 			...baseStyles,
+			width: '100%',
 			maxWidth: undefined,
 
 			paddingLeft: '3rem',
