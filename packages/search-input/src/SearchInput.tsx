@@ -1,4 +1,3 @@
-import { CSSObject } from '@emotion/react';
 import {
 	forwardRef,
 	InputHTMLAttributes,
