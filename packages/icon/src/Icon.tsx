@@ -18,6 +18,25 @@ const iconSizes = {
 
 type IconSize = keyof typeof iconSizes;
 
+// enables a visible difference between regular
+// and bold icons for small sizes.
+const iconWeights = {
+	regular: {
+		sm: 2,
+		md: 2,
+		lg: 2,
+		xl: 2,
+	},
+	bold: {
+		sm: 4,
+		md: 3,
+		lg: 3,
+		xl: 3,
+	},
+};
+
+type IconWeight = keyof typeof iconWeights;
+
 type NativeSvgProps = SVGAttributes<SVGSVGElement>;
 
 export type IconProps = {
@@ -27,7 +46,7 @@ export type IconProps = {
 	color?: IconColor;
 	size?: IconSize;
 	style?: NativeSvgProps['style'];
-	weight?: 'regular' | 'bold';
+	weight?: IconWeight;
 };
 
 export const createIcon = (children: ReactNode, name: string) => {
@@ -41,6 +60,7 @@ export const createIcon = (children: ReactNode, name: string) => {
 		weight = 'regular',
 	}: IconProps) => {
 		const resolvedSize = `${iconSizes[size]}rem`;
+		const resolvedWeight = iconWeights[weight][size];
 		// Focusable is the opposite of `aria-hidden`
 		const focusable = [true, 'true'].includes(ariaHidden) ? 'false' : 'true';
 		return (
@@ -59,7 +79,7 @@ export const createIcon = (children: ReactNode, name: string) => {
 					stroke: 'currentColor',
 					strokeLinejoin: 'round',
 					strokeLinecap: 'round',
-					strokeWidth: weight === 'bold' ? 3 : 2,
+					strokeWidth: resolvedWeight,
 				}}
 				role="img"
 				style={style}
