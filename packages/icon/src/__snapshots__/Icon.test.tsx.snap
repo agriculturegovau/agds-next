@@ -407,6 +407,36 @@ exports[`Icon MenuIcon renders correctly 1`] = `
 </div>
 `;
 
+exports[`Icon ProgressBlockedIcon renders correctly 1`] = `
+<div>
+  <svg
+    aria-hidden="true"
+    class="css-4ah0i8-Icon"
+    clip-rule="evenodd"
+    focusable="false"
+    height="24"
+    role="img"
+    viewBox="0 0 24 24"
+    width="24"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <circle
+      cx="12"
+      cy="12"
+      r="10.5"
+    />
+    ,
+    <line
+      stroke-linecap="round"
+      x1="7"
+      x2="17"
+      y1="12"
+      y2="12"
+    />
+  </svg>
+</div>
+`;
+
 exports[`Icon ProgressDoingIcon renders correctly 1`] = `
 <div>
   <svg
@@ -421,49 +451,11 @@ exports[`Icon ProgressDoingIcon renders correctly 1`] = `
     xmlns="http://www.w3.org/2000/svg"
   >
     <path
-      d="M6.5 13.5C7.32843 13.5 8 12.8284 8 12C8 11.1716 7.32843 10.5 6.5 10.5C5.67157 10.5 5 11.1716 5 12C5 12.8284 5.67157 13.5 6.5 13.5Z"
+      clip-rule="evenodd"
+      d="M12 24C18.6274 24 24 18.6274 24 12C24 5.37258 18.6274 0 12 0C5.37258 0 0 5.37258 0 12C0 18.6274 5.37258 24 12 24ZM6.85714 13.7143C7.61456 13.7143 8.22857 13.1003 8.22857 12.3429C8.22857 11.5854 7.61456 10.9714 6.85714 10.9714C6.09972 10.9714 5.48571 11.5854 5.48571 12.3429C5.48571 13.1003 6.09972 13.7143 6.85714 13.7143ZM13.7143 12.3429C13.7143 13.1003 13.1003 13.7143 12.3429 13.7143C11.5854 13.7143 10.9714 13.1003 10.9714 12.3429C10.9714 11.5854 11.5854 10.9714 12.3429 10.9714C13.1003 10.9714 13.7143 11.5854 13.7143 12.3429ZM17.8286 13.7143C18.586 13.7143 19.2 13.1003 19.2 12.3429C19.2 11.5854 18.586 10.9714 17.8286 10.9714C17.0712 10.9714 16.4571 11.5854 16.4571 12.3429C16.4571 13.1003 17.0712 13.7143 17.8286 13.7143Z"
       fill="currentColor"
+      fill-rule="evenodd"
       stroke="none"
-    />
-    <path
-      d="M12 13.5C12.8284 13.5 13.5 12.8284 13.5 12C13.5 11.1716 12.8284 10.5 12 10.5C11.1716 10.5 10.5 11.1716 10.5 12C10.5 12.8284 11.1716 13.5 12 13.5Z"
-      fill="currentColor"
-      stroke="none"
-    />
-    <path
-      d="M17.5 13.5C18.3284 13.5 19 12.8284 19 12C19 11.1716 18.3284 10.5 17.5 10.5C16.6716 10.5 16 11.1716 16 12C16 12.8284 16.6716 13.5 17.5 13.5Z"
-      fill="currentColor"
-      stroke="none"
-    />
-    <circle
-      cx="12"
-      cy="12"
-      r="10.5"
-    />
-  </svg>
-</div>
-`;
-
-exports[`Icon ProgressDoneIcon renders correctly 1`] = `
-<div>
-  <svg
-    aria-hidden="true"
-    class="css-4ah0i8-Icon"
-    clip-rule="evenodd"
-    focusable="false"
-    height="24"
-    role="img"
-    viewBox="0 0 24 24"
-    width="24"
-    xmlns="http://www.w3.org/2000/svg"
-  >
-    <circle
-      cx="12"
-      cy="12"
-      r="10.5"
-    />
-    <path
-      d="M7 13L10 16L17 9"
     />
   </svg>
 </div>
@@ -486,6 +478,8 @@ exports[`Icon ProgressTodoIcon renders correctly 1`] = `
       cx="12"
       cy="12"
       r="10.5"
+      stroke-dasharray="4 4"
+      stroke-linecap="round"
     />
   </svg>
 </div>

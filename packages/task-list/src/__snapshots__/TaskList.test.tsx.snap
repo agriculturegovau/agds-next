@@ -14,7 +14,7 @@ exports[`TaskList With anchors renders correctly 1`] = `
       >
         <svg
           aria-hidden="true"
-          class="css-h1n08a-Icon-TaskListItem"
+          class="css-c235v9-Icon-TaskListItem"
           clip-rule="evenodd"
           focusable="false"
           height="24"
@@ -23,25 +23,24 @@ exports[`TaskList With anchors renders correctly 1`] = `
           width="24"
           xmlns="http://www.w3.org/2000/svg"
         >
-          <circle
-            cx="12"
-            cy="12"
-            r="10.5"
-          />
           <path
-            d="M7 13L10 16L17 9"
+            clip-rule="evenodd"
+            d="M12 24C18.6274 24 24 18.6274 24 12C24 5.37258 18.6274 0 12 0C5.37258 0 0 5.37258 0 12C0 18.6274 5.37258 24 12 24ZM17.7071 9.70711C18.0976 9.31658 18.0976 8.68342 17.7071 8.29289C17.3166 7.90237 16.6834 7.90237 16.2929 8.29289L10 14.5858L7.70711 12.2929C7.31658 11.9024 6.68342 11.9024 6.29289 12.2929C5.90237 12.6834 5.90237 13.3166 6.29289 13.7071L9.29289 16.7071C9.68342 17.0976 10.3166 17.0976 10.7071 16.7071L17.7071 9.70711Z"
+            fill="currentColor"
+            fill-rule="evenodd"
+            stroke="none"
           />
         </svg>
         <span
           class="css-1i7cdx8-boxStyles"
         >
           <span
-            class="css-1f7oqqc-boxStyles-Text"
+            class="css-d605vf-boxStyles-Text"
           >
-            Done
+            Completed
           </span>
           <span
-            class="css-msykz1-boxStyles-Text-TaskListItem"
+            class="css-1gjfalk-boxStyles-Text-TaskListItem"
           >
             Check eligibility
           </span>
@@ -60,7 +59,7 @@ exports[`TaskList With anchors renders correctly 1`] = `
       >
         <svg
           aria-hidden="true"
-          class="css-h1n08a-Icon-TaskListItem"
+          class="css-c235v9-Icon-TaskListItem"
           clip-rule="evenodd"
           focusable="false"
           height="24"
@@ -69,25 +68,24 @@ exports[`TaskList With anchors renders correctly 1`] = `
           width="24"
           xmlns="http://www.w3.org/2000/svg"
         >
-          <circle
-            cx="12"
-            cy="12"
-            r="10.5"
-          />
           <path
-            d="M7 13L10 16L17 9"
+            clip-rule="evenodd"
+            d="M12 24C18.6274 24 24 18.6274 24 12C24 5.37258 18.6274 0 12 0C5.37258 0 0 5.37258 0 12C0 18.6274 5.37258 24 12 24ZM17.7071 9.70711C18.0976 9.31658 18.0976 8.68342 17.7071 8.29289C17.3166 7.90237 16.6834 7.90237 16.2929 8.29289L10 14.5858L7.70711 12.2929C7.31658 11.9024 6.68342 11.9024 6.29289 12.2929C5.90237 12.6834 5.90237 13.3166 6.29289 13.7071L9.29289 16.7071C9.68342 17.0976 10.3166 17.0976 10.7071 16.7071L17.7071 9.70711Z"
+            fill="currentColor"
+            fill-rule="evenodd"
+            stroke="none"
           />
         </svg>
         <span
           class="css-1i7cdx8-boxStyles"
         >
           <span
-            class="css-1f7oqqc-boxStyles-Text"
+            class="css-d605vf-boxStyles-Text"
           >
-            Done
+            Completed
           </span>
           <span
-            class="css-msykz1-boxStyles-Text-TaskListItem"
+            class="css-1gjfalk-boxStyles-Text-TaskListItem"
           >
             Lorem ipsum dolor sit amet
           </span>
@@ -106,7 +104,7 @@ exports[`TaskList With anchors renders correctly 1`] = `
       >
         <svg
           aria-hidden="true"
-          class="css-h1n08a-Icon-TaskListItem"
+          class="css-d3slqv-Icon-TaskListItem"
           clip-rule="evenodd"
           focusable="false"
           height="24"
@@ -116,36 +114,23 @@ exports[`TaskList With anchors renders correctly 1`] = `
           xmlns="http://www.w3.org/2000/svg"
         >
           <path
-            d="M6.5 13.5C7.32843 13.5 8 12.8284 8 12C8 11.1716 7.32843 10.5 6.5 10.5C5.67157 10.5 5 11.1716 5 12C5 12.8284 5.67157 13.5 6.5 13.5Z"
+            clip-rule="evenodd"
+            d="M12 24C18.6274 24 24 18.6274 24 12C24 5.37258 18.6274 0 12 0C5.37258 0 0 5.37258 0 12C0 18.6274 5.37258 24 12 24ZM6.85714 13.7143C7.61456 13.7143 8.22857 13.1003 8.22857 12.3429C8.22857 11.5854 7.61456 10.9714 6.85714 10.9714C6.09972 10.9714 5.48571 11.5854 5.48571 12.3429C5.48571 13.1003 6.09972 13.7143 6.85714 13.7143ZM13.7143 12.3429C13.7143 13.1003 13.1003 13.7143 12.3429 13.7143C11.5854 13.7143 10.9714 13.1003 10.9714 12.3429C10.9714 11.5854 11.5854 10.9714 12.3429 10.9714C13.1003 10.9714 13.7143 11.5854 13.7143 12.3429ZM17.8286 13.7143C18.586 13.7143 19.2 13.1003 19.2 12.3429C19.2 11.5854 18.586 10.9714 17.8286 10.9714C17.0712 10.9714 16.4571 11.5854 16.4571 12.3429C16.4571 13.1003 17.0712 13.7143 17.8286 13.7143Z"
             fill="currentColor"
+            fill-rule="evenodd"
             stroke="none"
-          />
-          <path
-            d="M12 13.5C12.8284 13.5 13.5 12.8284 13.5 12C13.5 11.1716 12.8284 10.5 12 10.5C11.1716 10.5 10.5 11.1716 10.5 12C10.5 12.8284 11.1716 13.5 12 13.5Z"
-            fill="currentColor"
-            stroke="none"
-          />
-          <path
-            d="M17.5 13.5C18.3284 13.5 19 12.8284 19 12C19 11.1716 18.3284 10.5 17.5 10.5C16.6716 10.5 16 11.1716 16 12C16 12.8284 16.6716 13.5 17.5 13.5Z"
-            fill="currentColor"
-            stroke="none"
-          />
-          <circle
-            cx="12"
-            cy="12"
-            r="10.5"
           />
         </svg>
         <span
           class="css-1i7cdx8-boxStyles"
         >
           <span
-            class="css-1f7oqqc-boxStyles-Text"
+            class="css-d605vf-boxStyles-Text"
           >
-            Doing
+            In progress
           </span>
           <span
-            class="css-msykz1-boxStyles-Text-TaskListItem"
+            class="css-1gjfalk-boxStyles-Text-TaskListItem"
           >
             Case Studies
           </span>
@@ -164,7 +149,7 @@ exports[`TaskList With anchors renders correctly 1`] = `
       >
         <svg
           aria-hidden="true"
-          class="css-h1n08a-Icon-TaskListItem"
+          class="css-d3slqv-Icon-TaskListItem"
           clip-rule="evenodd"
           focusable="false"
           height="24"
@@ -177,18 +162,20 @@ exports[`TaskList With anchors renders correctly 1`] = `
             cx="12"
             cy="12"
             r="10.5"
+            stroke-dasharray="4 4"
+            stroke-linecap="round"
           />
         </svg>
         <span
           class="css-1i7cdx8-boxStyles"
         >
           <span
-            class="css-1f7oqqc-boxStyles-Text"
+            class="css-d605vf-boxStyles-Text"
           >
-            To do
+            Not started
           </span>
           <span
-            class="css-msykz1-boxStyles-Text-TaskListItem"
+            class="css-1gjfalk-boxStyles-Text-TaskListItem"
           >
             Review and submit
           </span>
@@ -218,7 +205,7 @@ exports[`TaskList With buttons renders correctly 1`] = `
       >
         <svg
           aria-hidden="true"
-          class="css-h1n08a-Icon-TaskListItem"
+          class="css-c235v9-Icon-TaskListItem"
           clip-rule="evenodd"
           focusable="false"
           height="24"
@@ -227,25 +214,24 @@ exports[`TaskList With buttons renders correctly 1`] = `
           width="24"
           xmlns="http://www.w3.org/2000/svg"
         >
-          <circle
-            cx="12"
-            cy="12"
-            r="10.5"
-          />
           <path
-            d="M7 13L10 16L17 9"
+            clip-rule="evenodd"
+            d="M12 24C18.6274 24 24 18.6274 24 12C24 5.37258 18.6274 0 12 0C5.37258 0 0 5.37258 0 12C0 18.6274 5.37258 24 12 24ZM17.7071 9.70711C18.0976 9.31658 18.0976 8.68342 17.7071 8.29289C17.3166 7.90237 16.6834 7.90237 16.2929 8.29289L10 14.5858L7.70711 12.2929C7.31658 11.9024 6.68342 11.9024 6.29289 12.2929C5.90237 12.6834 5.90237 13.3166 6.29289 13.7071L9.29289 16.7071C9.68342 17.0976 10.3166 17.0976 10.7071 16.7071L17.7071 9.70711Z"
+            fill="currentColor"
+            fill-rule="evenodd"
+            stroke="none"
           />
         </svg>
         <span
           class="css-1i7cdx8-boxStyles"
         >
           <span
-            class="css-1f7oqqc-boxStyles-Text"
+            class="css-d605vf-boxStyles-Text"
           >
-            Done
+            Completed
           </span>
           <span
-            class="css-msykz1-boxStyles-Text-TaskListItem"
+            class="css-1gjfalk-boxStyles-Text-TaskListItem"
           >
             Check eligibility
           </span>
@@ -264,7 +250,7 @@ exports[`TaskList With buttons renders correctly 1`] = `
       >
         <svg
           aria-hidden="true"
-          class="css-h1n08a-Icon-TaskListItem"
+          class="css-c235v9-Icon-TaskListItem"
           clip-rule="evenodd"
           focusable="false"
           height="24"
@@ -273,25 +259,24 @@ exports[`TaskList With buttons renders correctly 1`] = `
           width="24"
           xmlns="http://www.w3.org/2000/svg"
         >
-          <circle
-            cx="12"
-            cy="12"
-            r="10.5"
-          />
           <path
-            d="M7 13L10 16L17 9"
+            clip-rule="evenodd"
+            d="M12 24C18.6274 24 24 18.6274 24 12C24 5.37258 18.6274 0 12 0C5.37258 0 0 5.37258 0 12C0 18.6274 5.37258 24 12 24ZM17.7071 9.70711C18.0976 9.31658 18.0976 8.68342 17.7071 8.29289C17.3166 7.90237 16.6834 7.90237 16.2929 8.29289L10 14.5858L7.70711 12.2929C7.31658 11.9024 6.68342 11.9024 6.29289 12.2929C5.90237 12.6834 5.90237 13.3166 6.29289 13.7071L9.29289 16.7071C9.68342 17.0976 10.3166 17.0976 10.7071 16.7071L17.7071 9.70711Z"
+            fill="currentColor"
+            fill-rule="evenodd"
+            stroke="none"
           />
         </svg>
         <span
           class="css-1i7cdx8-boxStyles"
         >
           <span
-            class="css-1f7oqqc-boxStyles-Text"
+            class="css-d605vf-boxStyles-Text"
           >
-            Done
+            Completed
           </span>
           <span
-            class="css-msykz1-boxStyles-Text-TaskListItem"
+            class="css-1gjfalk-boxStyles-Text-TaskListItem"
           >
             Lorem ipsum dolor sit amet
           </span>
@@ -310,7 +295,7 @@ exports[`TaskList With buttons renders correctly 1`] = `
       >
         <svg
           aria-hidden="true"
-          class="css-h1n08a-Icon-TaskListItem"
+          class="css-d3slqv-Icon-TaskListItem"
           clip-rule="evenodd"
           focusable="false"
           height="24"
@@ -320,36 +305,23 @@ exports[`TaskList With buttons renders correctly 1`] = `
           xmlns="http://www.w3.org/2000/svg"
         >
           <path
-            d="M6.5 13.5C7.32843 13.5 8 12.8284 8 12C8 11.1716 7.32843 10.5 6.5 10.5C5.67157 10.5 5 11.1716 5 12C5 12.8284 5.67157 13.5 6.5 13.5Z"
+            clip-rule="evenodd"
+            d="M12 24C18.6274 24 24 18.6274 24 12C24 5.37258 18.6274 0 12 0C5.37258 0 0 5.37258 0 12C0 18.6274 5.37258 24 12 24ZM6.85714 13.7143C7.61456 13.7143 8.22857 13.1003 8.22857 12.3429C8.22857 11.5854 7.61456 10.9714 6.85714 10.9714C6.09972 10.9714 5.48571 11.5854 5.48571 12.3429C5.48571 13.1003 6.09972 13.7143 6.85714 13.7143ZM13.7143 12.3429C13.7143 13.1003 13.1003 13.7143 12.3429 13.7143C11.5854 13.7143 10.9714 13.1003 10.9714 12.3429C10.9714 11.5854 11.5854 10.9714 12.3429 10.9714C13.1003 10.9714 13.7143 11.5854 13.7143 12.3429ZM17.8286 13.7143C18.586 13.7143 19.2 13.1003 19.2 12.3429C19.2 11.5854 18.586 10.9714 17.8286 10.9714C17.0712 10.9714 16.4571 11.5854 16.4571 12.3429C16.4571 13.1003 17.0712 13.7143 17.8286 13.7143Z"
             fill="currentColor"
+            fill-rule="evenodd"
             stroke="none"
-          />
-          <path
-            d="M12 13.5C12.8284 13.5 13.5 12.8284 13.5 12C13.5 11.1716 12.8284 10.5 12 10.5C11.1716 10.5 10.5 11.1716 10.5 12C10.5 12.8284 11.1716 13.5 12 13.5Z"
-            fill="currentColor"
-            stroke="none"
-          />
-          <path
-            d="M17.5 13.5C18.3284 13.5 19 12.8284 19 12C19 11.1716 18.3284 10.5 17.5 10.5C16.6716 10.5 16 11.1716 16 12C16 12.8284 16.6716 13.5 17.5 13.5Z"
-            fill="currentColor"
-            stroke="none"
-          />
-          <circle
-            cx="12"
-            cy="12"
-            r="10.5"
           />
         </svg>
         <span
           class="css-1i7cdx8-boxStyles"
         >
           <span
-            class="css-1f7oqqc-boxStyles-Text"
+            class="css-d605vf-boxStyles-Text"
           >
-            Doing
+            In progress
           </span>
           <span
-            class="css-msykz1-boxStyles-Text-TaskListItem"
+            class="css-1gjfalk-boxStyles-Text-TaskListItem"
           >
             Case Studies
           </span>
@@ -368,7 +340,7 @@ exports[`TaskList With buttons renders correctly 1`] = `
       >
         <svg
           aria-hidden="true"
-          class="css-h1n08a-Icon-TaskListItem"
+          class="css-d3slqv-Icon-TaskListItem"
           clip-rule="evenodd"
           focusable="false"
           height="24"
@@ -381,18 +353,20 @@ exports[`TaskList With buttons renders correctly 1`] = `
             cx="12"
             cy="12"
             r="10.5"
+            stroke-dasharray="4 4"
+            stroke-linecap="round"
           />
         </svg>
         <span
           class="css-1i7cdx8-boxStyles"
         >
           <span
-            class="css-1f7oqqc-boxStyles-Text"
+            class="css-d605vf-boxStyles-Text"
           >
-            To do
+            Not started
           </span>
           <span
-            class="css-msykz1-boxStyles-Text-TaskListItem"
+            class="css-1gjfalk-boxStyles-Text-TaskListItem"
           >
             Review and submit
           </span>
