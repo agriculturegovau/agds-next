@@ -97,7 +97,7 @@ const TaskListItem = ({
 				{...props}
 			>
 				<Icon
-					size="xl"
+					size="md"
 					color={color}
 					css={{
 						// Use padding to ensure the icon is aligned centered with the status label and title
