@@ -8,7 +8,7 @@ import { Columns } from '@ag.ds-next/columns';
 import { mq } from '@ag.ds-next/core';
 import { Text } from '@ag.ds-next/text';
 import { getMarkdownData, serializeMarkdown } from '../../lib/mdxUtils';
-import { getTemplateList } from '../../lib/mdx/templates';
+import { getTemplateList, TEMPLATES_PATH } from '../../lib/mdx/templates';
 import { mdxComponents } from '../../components/mdxComponents';
 import { AppLayout } from '../../components/AppLayout';
 import { PageLayout } from '../../components/PageLayout';
@@ -27,7 +27,7 @@ export default function TemplatesPage({ source, templateLinks }: StaticProps) {
 						titleLink: '/templates',
 						items: templateLinks,
 					}}
-					editPath="/templates/index.mdx"
+					editPath="/docs/content/templates/index.mdx"
 				>
 					<Prose>
 						<MDXRemote {...source} components={mdxComponents} />
@@ -81,7 +81,7 @@ const TemplateCard = ({
 
 export async function getStaticProps() {
 	const { content } = await getMarkdownData(
-		normalize(`${process.cwd()}/../templates/index.mdx`)
+		normalize(`${TEMPLATES_PATH}/index.mdx`)
 	);
 	const source = await serializeMarkdown(content);
 	const templateList = await getTemplateList();
