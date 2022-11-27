@@ -9,7 +9,7 @@ function renderTextLinkExternal() {
 	return render(
 		<TextLinkExternal
 			data-testid="example"
-			href="https://steelthreads.github.io/agds-next"
+			href="https://design-system.agriculture.gov.au"
 		>
 			External link
 		</TextLinkExternal>

@@ -2,7 +2,7 @@ export default function newPackage(
 	/** @type {import('plop').NodePlopAPI} */
 	plop
 ) {
-	plop.setHelper('website', () => 'https://steelthreads.github.io/agds-next');
+	plop.setHelper('website', () => 'https://design-system.agriculture.gov.au');
 
 	plop.setGenerator('component', {
 		description: 'Add new component',

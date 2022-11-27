@@ -5,7 +5,7 @@ exports[`TextLinkExternal renders correctly 1`] = `
   <a
     class="css-38ppen-TextLink"
     data-testid="example"
-    href="https://steelthreads.github.io/agds-next"
+    href="https://design-system.agriculture.gov.au"
     rel="noopener"
     target="_blank"
   >

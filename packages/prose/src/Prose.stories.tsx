@@ -186,10 +186,7 @@ const UnstyledContent = () => (
 		</figure>
 
 		<figure>
-			<img
-				src="/agds-next/img/placeholder/600X260.png"
-				alt="Placeholder image"
-			/>
+			<img src="/img/placeholder/600X260.png" alt="Placeholder image" />
 			<figcaption>Placeholder caption</figcaption>
 		</figure>
 

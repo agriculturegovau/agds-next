@@ -13,5 +13,5 @@ const Template: ComponentStory<typeof TextLinkExternal> = (args) => {
 export const Basic = Template.bind({});
 Basic.args = {
 	children: 'External link',
-	href: 'https://steelthreads.github.io/agds-next',
+	href: 'https://design-system.agriculture.gov.au',
 };

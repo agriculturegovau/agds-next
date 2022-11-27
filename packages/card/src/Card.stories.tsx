@@ -301,7 +301,7 @@ export const Compositions = () => {
 						<Card shadow clickable>
 							<img
 								alt="Placeholder image"
-								src="https://steelthreads.github.io/agds-next/img/placeholder/hero-banner.jpeg"
+								src="https://design-system.agriculture.gov.au/img/placeholder/hero-banner.jpeg"
 								width="100%"
 							/>
 							<CardInner>
@@ -321,7 +321,7 @@ export const Compositions = () => {
 							<Flex>
 								<img
 									alt="Placeholder image"
-									src="https://steelthreads.github.io/agds-next/img/placeholder/hero-banner.jpeg"
+									src="https://design-system.agriculture.gov.au/img/placeholder/hero-banner.jpeg"
 									css={{
 										width: '50%',
 										objectFit: 'cover',

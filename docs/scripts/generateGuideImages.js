@@ -2,7 +2,7 @@
 const puppeteer = require('puppeteer');
 const sharp = require('sharp');
 
-const BASE_URL = `http://localhost:3000/agds-next/example-site`;
+const BASE_URL = `http://localhost:3000/example-site`;
 const OUTPUT_DIR = `public/img/guides/`;
 
 (async () => {

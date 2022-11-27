@@ -1,3 +1,3 @@
 ## @ag.ds-next/modal
 
-Documentation for this package can be found here: https://steelthreads.github.io/agds-next/components/modal
+Documentation for this package can be found here: https://design-system.agriculture.gov.au/components/modal

@@ -256,7 +256,7 @@ export const EdgeToEdgeImage = () => (
 		<AccordionItem title="Edge-to-edge image">
 			<img
 				alt="Placeholder image"
-				src="/agds-next/img/placeholder/600X260.png"
+				src="/img/placeholder/600X260.png"
 				width="100%"
 			/>
 			<AccordionItemContent>
