@@ -11,7 +11,7 @@ exports[`HeroCategoryBanner renders correctly 1`] = `
       <img
         alt=""
         role="presentation"
-        src="/agds-next/img/placeholder/hero-banner.jpeg"
+        src="/img/placeholder/hero-banner.jpeg"
       />
     </div>
     <div
@@ -43,7 +43,7 @@ exports[`HeroCategoryBanner renders correctly 1`] = `
             <img
               alt=""
               role="presentation"
-              src="/agds-next/img/placeholder/hero-banner.jpeg"
+              src="/img/placeholder/hero-banner.jpeg"
             />
           </div>
         </div>

@@ -452,11 +452,11 @@ const KitchenSink = ({ background }: { background: 'body' | 'bodyAlt' }) => {
 								{ label: 'Home', href: '/' },
 								{
 									label: 'Storybook',
-									href: 'https://steelthreads.github.io/agds-next/storybook/index.html',
+									href: 'https://design-system.agriculture.gov.au/storybook/index.html',
 								},
 								{
 									label: 'Playroom',
-									href: 'https://steelthreads.github.io/agds-next/playroom/index.html',
+									href: 'https://design-system.agriculture.gov.au/playroom/index.html',
 								},
 								{
 									label: 'Starter kit',

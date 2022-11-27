@@ -19,7 +19,7 @@ export default function CategoryPage() {
 				<HeroCategoryBanner
 					image={
 						<img
-							src="/agds-next/example-site/placeholder/hero-banner.jpeg"
+							src="/example-site/placeholder/hero-banner.jpeg"
 							role="presentation"
 							alt=""
 						/>

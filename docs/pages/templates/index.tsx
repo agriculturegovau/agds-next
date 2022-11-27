@@ -64,7 +64,7 @@ const TemplateCard = ({
 					</Stack>
 				</CardInner>
 				<img
-					src={`/agds-next/img/templates/${slug}.webp`}
+					src={`/img/templates/${slug}.webp`}
 					role="presentation"
 					alt=""
 					height="auto"

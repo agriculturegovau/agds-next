@@ -20,7 +20,7 @@ export const Basic = () => (
 
 		<Text>
 			Experiment with all of our Design System components in{' '}
-			<TextLink href="https://steelthreads.github.io/agds-next/playroom/index.html">
+			<TextLink href="https://design-system.agriculture.gov.au/playroom/index.html">
 				Playroom
 				<ExternalLinkCallout />
 			</TextLink>

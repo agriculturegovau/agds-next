@@ -1,3 +1,3 @@
 ## @ag.ds-next/callout
 
-Documentation for this package can be found here: https://steelthreads.github.io/agds-next/components/callout
+Documentation for this package can be found here: https://design-system.agriculture.gov.au/components/callout

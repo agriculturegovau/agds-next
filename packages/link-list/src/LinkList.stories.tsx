@@ -12,7 +12,7 @@ const exampleLinks = [
 	{ href: '#', label: 'Establishments' },
 	{ href: '#', label: 'Applications' },
 	{
-		href: 'https://steelthreads.github.io/agds-next',
+		href: 'https://design-system.agriculture.gov.au',
 		label: 'External link',
 		target: '_blank',
 		rel: 'noopener',

@@ -23,7 +23,7 @@ export default function HomePage() {
 				<HeroBanner
 					image={
 						<img
-							src="/agds-next/example-site/placeholder/hero-banner.jpeg"
+							src="/example-site/placeholder/hero-banner.jpeg"
 							role="presentation"
 							alt=""
 						/>
@@ -80,7 +80,7 @@ export default function HomePage() {
 							</CallToActionLink>
 						</Stack>
 						<img
-							src="/agds-next/example-site/placeholder/hero-banner.jpeg"
+							src="/example-site/placeholder/hero-banner.jpeg"
 							role="presentation"
 							alt=""
 							css={{ display: 'block', maxWidth: '100%' }}
@@ -95,7 +95,7 @@ export default function HomePage() {
 							{Array.from(Array(3).keys()).map((idx) => (
 								<Card as="li" key={idx} clickable shadow>
 									<img
-										src="/agds-next/example-site/placeholder/hero-banner.jpeg"
+										src="/example-site/placeholder/hero-banner.jpeg"
 										role="presentation"
 										alt=""
 										css={{ width: '100%' }}

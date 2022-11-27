@@ -47,7 +47,7 @@ const commonArgs = {
 	subtitle: 'Short hero banner sentence - md/default (P)',
 	image: (
 		<img
-			src="https://steelthreads.github.io/agds-next/img/placeholder/hero-banner.jpeg"
+			src="https://design-system.agriculture.gov.au/img/placeholder/hero-banner.jpeg"
 			role="presentation"
 			alt=""
 		/>

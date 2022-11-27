@@ -20,7 +20,7 @@ export const TemplateBanner = ({ name, slug }: TemplateBannerProps) => {
 		>
 			<DirectionLink
 				direction="left"
-				href={`https://steelthreads.github.io/agds-next/templates/${slug}`}
+				href={`https://design-system.agriculture.gov.au/templates/${slug}`}
 			>
 				View {name} template overview
 			</DirectionLink>

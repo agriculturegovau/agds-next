@@ -14,7 +14,7 @@ function renderHeroCategoryBanner() {
 		<HeroCategoryBanner
 			image={
 				<img
-					src="/agds-next/img/placeholder/hero-banner.jpeg"
+					src="/img/placeholder/hero-banner.jpeg"
 					role="presentation"
 					alt=""
 				/>

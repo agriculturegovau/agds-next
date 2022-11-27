@@ -551,7 +551,7 @@ items={[
 		code: `<HeroBanner
     image={
       <img
-        src="/agds-next/img/placeholder/hero-banner.jpeg"
+        src="/img/placeholder/hero-banner.jpeg"
         role="presentation"
         alt=""
       />
@@ -573,7 +573,7 @@ items={[
 		code: `<HeroCategoryBanner
     image={
       <img
-        src="/agds-next/img/placeholder/hero-banner.jpeg"
+        src="/img/placeholder/hero-banner.jpeg"
         role="presentation"
         alt=""
       />
@@ -624,7 +624,7 @@ items={[
 	{
 		group: 'TextLinkExternal',
 		name: 'Basic',
-		code: `<TextLinkExternal href="https://steelthreads.github.io/agds-next">External link</TextLinkExternal>`,
+		code: `<TextLinkExternal href="https://design-system.agriculture.gov.au">External link</TextLinkExternal>`,
 	},
 
 	{

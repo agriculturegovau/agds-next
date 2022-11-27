@@ -32,7 +32,7 @@ import { prismTheme } from './prism-theme';
 
 const PlaceholderImage = () => (
 	<img
-		src="/agds-next/img/placeholder/600X260.png"
+		src="/img/placeholder/600X260.png"
 		alt="Grey placeholder image"
 		css={{ width: '100%' }}
 	/>
