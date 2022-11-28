@@ -14,7 +14,7 @@ exports[`TaskList With anchors renders correctly 1`] = `
       >
         <svg
           aria-hidden="true"
-          class="css-kcmlov-Icon-TaskListItem"
+          class="css-139x5bx-TaskListItem"
           clip-rule="evenodd"
           focusable="false"
           height="24"
@@ -59,7 +59,7 @@ exports[`TaskList With anchors renders correctly 1`] = `
       >
         <svg
           aria-hidden="true"
-          class="css-kcmlov-Icon-TaskListItem"
+          class="css-139x5bx-TaskListItem"
           clip-rule="evenodd"
           focusable="false"
           height="24"
@@ -104,7 +104,7 @@ exports[`TaskList With anchors renders correctly 1`] = `
       >
         <svg
           aria-hidden="true"
-          class="css-h1n08a-Icon-TaskListItem"
+          class="css-1vre6jb-TaskListItem"
           clip-rule="evenodd"
           focusable="false"
           height="24"
@@ -162,7 +162,7 @@ exports[`TaskList With anchors renders correctly 1`] = `
       >
         <svg
           aria-hidden="true"
-          class="css-h1n08a-Icon-TaskListItem"
+          class="css-1vre6jb-TaskListItem"
           clip-rule="evenodd"
           focusable="false"
           height="24"
@@ -218,7 +218,7 @@ exports[`TaskList With buttons renders correctly 1`] = `
       >
         <svg
           aria-hidden="true"
-          class="css-kcmlov-Icon-TaskListItem"
+          class="css-139x5bx-TaskListItem"
           clip-rule="evenodd"
           focusable="false"
           height="24"
@@ -263,7 +263,7 @@ exports[`TaskList With buttons renders correctly 1`] = `
       >
         <svg
           aria-hidden="true"
-          class="css-kcmlov-Icon-TaskListItem"
+          class="css-139x5bx-TaskListItem"
           clip-rule="evenodd"
           focusable="false"
           height="24"
@@ -308,7 +308,7 @@ exports[`TaskList With buttons renders correctly 1`] = `
       >
         <svg
           aria-hidden="true"
-          class="css-h1n08a-Icon-TaskListItem"
+          class="css-1vre6jb-TaskListItem"
           clip-rule="evenodd"
           focusable="false"
           height="24"
@@ -366,7 +366,7 @@ exports[`TaskList With buttons renders correctly 1`] = `
       >
         <svg
           aria-hidden="true"
-          class="css-h1n08a-Icon-TaskListItem"
+          class="css-1vre6jb-TaskListItem"
           clip-rule="evenodd"
           focusable="false"
           height="24"

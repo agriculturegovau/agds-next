@@ -25,7 +25,7 @@ exports[`HeroSubcategoryBanner renders correctly 1`] = `
               >
                 <svg
                   aria-hidden="true"
-                  class="css-13n0gr8-Icon-BreadcrumbsDivider"
+                  class="css-aovx2f-BreadcrumbsDivider"
                   clip-rule="evenodd"
                   focusable="false"
                   height="24"
@@ -50,7 +50,7 @@ exports[`HeroSubcategoryBanner renders correctly 1`] = `
               >
                 <svg
                   aria-hidden="true"
-                  class="css-13n0gr8-Icon-BreadcrumbsDivider"
+                  class="css-aovx2f-BreadcrumbsDivider"
                   clip-rule="evenodd"
                   focusable="false"
                   height="24"
@@ -75,7 +75,7 @@ exports[`HeroSubcategoryBanner renders correctly 1`] = `
               >
                 <svg
                   aria-hidden="true"
-                  class="css-13n0gr8-Icon-BreadcrumbsDivider"
+                  class="css-aovx2f-BreadcrumbsDivider"
                   clip-rule="evenodd"
                   focusable="false"
                   height="24"

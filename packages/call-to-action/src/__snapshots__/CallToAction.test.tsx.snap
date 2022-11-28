@@ -13,7 +13,7 @@ exports[`CallToActionButton renders correctly 1`] = `
       Sign up
       <svg
         aria-hidden="true"
-        class="css-iv9u8h-Icon"
+        class="css-ev4uvt-Icon"
         clip-rule="evenodd"
         focusable="false"
         height="24"
@@ -45,7 +45,7 @@ exports[`CallToActionLink renders correctly 1`] = `
       Sign up
       <svg
         aria-hidden="true"
-        class="css-iv9u8h-Icon"
+        class="css-ev4uvt-Icon"
         clip-rule="evenodd"
         focusable="false"
         height="24"

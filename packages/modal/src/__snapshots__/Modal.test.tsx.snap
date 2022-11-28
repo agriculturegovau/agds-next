@@ -76,7 +76,7 @@ exports[`Modal renders correctly 1`] = `
           </span>
           <svg
             aria-hidden="true"
-            class="css-4ah0i8-Icon"
+            class="css-x7nevx-Icon"
             clip-rule="evenodd"
             focusable="false"
             height="24"

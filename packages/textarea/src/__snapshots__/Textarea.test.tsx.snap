@@ -59,7 +59,7 @@ exports[`Textarea Invalid renders correctly 1`] = `
         <svg
           aria-hidden="false"
           aria-label="Error"
-          class="css-vnv4i8-Icon-FieldMessage"
+          class="css-18ubbdq-FieldMessage"
           clip-rule="evenodd"
           focusable="true"
           height="24"
