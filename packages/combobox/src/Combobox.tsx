@@ -18,7 +18,7 @@ export type ComboboxProps<Option extends DefaultComboboxOption> = {
 	/** Describes the purpose of the field. */
 	label: string;
 	/** If true, the secondary label will not be rendered.  */
-	hideOptionalText?: boolean;
+	hideOptionalLabel?: boolean;
 	/** If false, "(optional)" will be appended to the label. */
 	required?: boolean;
 	/** Provides extra information about the field. */
@@ -52,7 +52,7 @@ export type ComboboxProps<Option extends DefaultComboboxOption> = {
 
 export function Combobox<Option extends DefaultComboboxOption>({
 	label,
-	hideOptionalText,
+	hideOptionalLabel,
 	required,
 	hint,
 	message,
@@ -154,7 +154,7 @@ export function Combobox<Option extends DefaultComboboxOption>({
 		<div css={{ position: 'relative', maxWidth }} ref={setRefEl}>
 			<Field
 				label={label}
-				disableSecondaryLabel={Boolean(hideOptionalText)}
+				hideOptionalLabel={Boolean(hideOptionalLabel)}
 				required={Boolean(required)}
 				hint={hint}
 				message={message}

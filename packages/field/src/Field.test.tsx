@@ -6,12 +6,12 @@ import { Field, FieldProps } from './Field';
 afterEach(cleanup);
 
 function renderField({
-	label = 'Name',
+	label = '',
 	hint = undefined,
 	message = undefined,
 	required = true,
 	invalid = true,
-	disableSecondaryLabel = false,
+	hideOptionalLabel = false,
 	children = (a11yProps) => (
 		<input data-testid="example-input" type="text" {...a11yProps} />
 	),
@@ -24,7 +24,7 @@ function renderField({
 			message={message}
 			required={required}
 			invalid={invalid}
-			disableSecondaryLabel={disableSecondaryLabel}
+			hideOptionalLabel={hideOptionalLabel}
 			{...props}
 		>
 			{children}
@@ -32,43 +32,87 @@ function renderField({
 	);
 }
 
+function getLabelElement() {
+	return screen.getByText('Name').parentElement as HTMLLabelElement;
+}
+
+function getInputElement() {
+	return screen.getByTestId('example-input');
+}
+
 describe('Field', () => {
-	it('renders correctly', () => {
-		const { container } = renderField({
-			label: 'Name',
-			hint: 'Hint text',
-			message: 'This field is required',
-			invalid: true,
+	describe('Basic', () => {
+		it('renders correctly', () => {
+			const { container } = renderField({ label: 'Name' });
+			expect(container).toMatchSnapshot();
 		});
-		expect(container).toMatchSnapshot();
+		it('renders a valid HTML structure', () => {
+			const { container } = renderField({ label: 'Name' });
+			expect(container).toHTMLValidate({
+				extends: ['html-validate:recommended'],
+				// react 18s `useId` break this rule
+				rules: { 'valid-id': 'off' },
+			});
+		});
 	});
 
-	it('renders a valid HTML structure', () => {
-		const { container } = renderField({
-			label: 'Name',
-			hint: 'Hint text',
-			message: 'This field is required',
-			invalid: true,
+	describe('With hint', () => {
+		it('renders correctly', () => {
+			const { container } = renderField({
+				label: 'Name',
+				hint: 'Hint text',
+			});
+			expect(container).toMatchSnapshot();
 		});
-		expect(container).toHTMLValidate({
-			extends: ['html-validate:recommended'],
-			// react 18s `useId` break this rule
-			rules: { 'valid-id': 'off' },
+		it('renders a valid HTML structure', () => {
+			const { container } = renderField({
+				label: 'Name',
+				hint: 'Hint text',
+			});
+			expect(container).toHTMLValidate({
+				extends: ['html-validate:recommended'],
+				// react 18s `useId` break this rule
+				rules: { 'valid-id': 'off' },
+			});
+		});
+	});
+
+	describe('Invalid', () => {
+		it('renders correctly', () => {
+			const { container } = renderField({
+				label: 'Name',
+				message: 'This field is required',
+				invalid: true,
+			});
+			expect(container).toMatchSnapshot();
+		});
+
+		it('renders a valid HTML structure', () => {
+			const { container } = renderField({
+				label: 'Name',
+				message: 'This field is required',
+				invalid: true,
+			});
+			expect(container).toHTMLValidate({
+				extends: ['html-validate:recommended'],
+				// react 18s `useId` break this rule
+				rules: { 'valid-id': 'off' },
+			});
 		});
 	});
 
 	it('automatically generates an ID if no ID is provided', () => {
-		renderField({});
-		const inputEl = screen.getByTestId('example-input');
-		const labelEl = screen.getByText('Name').parentElement as HTMLLabelElement;
+		renderField({ label: 'Name' });
+		const inputEl = getInputElement();
+		const labelEl = getLabelElement();
 		const id = inputEl.id;
 		expect(labelEl.htmlFor).toBe(id);
 	});
 
 	it('uses ID prop if provided ', () => {
-		renderField({ id: 'name' });
-		const labelEl = screen.getByText('Name').parentElement as HTMLLabelElement;
-		const inputEl = screen.getByTestId('example-input');
+		renderField({ label: 'Name', id: 'name' });
+		const labelEl = getLabelElement();
+		const inputEl = getInputElement();
 		expect(labelEl.htmlFor).toBe('name');
 		expect(inputEl.id).toBe('name');
 	});
@@ -92,25 +136,32 @@ describe('Field', () => {
 	describe('FieldLabel', () => {
 		describe('Optional', () => {
 			it('renders correctly', () => {
-				renderField({ required: false });
+				renderField({ label: 'Name', required: false });
 				const labelEl = document.querySelector('label');
 				expect(labelEl?.textContent).toBe('Name(optional)');
 			});
-			it('renders correctly when secondary label is disabled', () => {
-				renderField({ required: false, disableSecondaryLabel: true });
+			it('renders correctly when optional label is hidden', () => {
+				renderField({
+					label: 'Name',
+					required: false,
+					hideOptionalLabel: true,
+				});
 				const labelEl = document.querySelector('label');
 				expect(labelEl?.textContent).toBe('Name');
 			});
 		});
-
 		describe('Required', () => {
 			it('renders correctly', () => {
-				renderField({ required: true });
+				renderField({ label: 'Name', required: true });
 				const labelEl = document.querySelector('label');
 				expect(labelEl?.textContent).toBe('Name');
 			});
-			it('renders correctly when secondary label is disabled', () => {
-				renderField({ required: false, disableSecondaryLabel: true });
+			it('renders correctly when optional label is hidden', () => {
+				renderField({
+					label: 'Name',
+					required: false,
+					hideOptionalLabel: true,
+				});
 				const labelEl = document.querySelector('label');
 				expect(labelEl?.textContent).toBe('Name');
 			});
@@ -120,7 +171,7 @@ describe('Field', () => {
 	describe('FieldHint', () => {
 		it('renders correctly', () => {
 			const hint = 'Hint text';
-			renderField({ hint });
+			renderField({ label: 'Name', hint });
 			const hintEl = screen.getByText(hint);
 			const inputEl = screen.getByTestId('example-input');
 			expect(hintEl).toBeInTheDocument();
@@ -132,7 +183,7 @@ describe('Field', () => {
 	describe('FieldMessage', () => {
 		it('renders correctly', () => {
 			const message = 'This field is required';
-			renderField({ message, invalid: true });
+			renderField({ label: 'Name', message, invalid: true });
 			const messageEl = screen.getByText(message);
 			const inputEl = screen.getByTestId('example-input');
 			expect(messageEl).toBeInTheDocument();

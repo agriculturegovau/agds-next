@@ -17,8 +17,8 @@ export type FieldProps = {
 	label: string;
 	/** Override the default secondary label. */
 	secondaryLabel?: string;
-	/** If true, the secondary label will not be rendered. */
-	disableSecondaryLabel?: boolean;
+	/** If true, "(optional)" will never be appended to the label even when `required` is `false`. */
+	hideOptionalLabel: boolean;
 	/** Message to show when the field is invalid. */
 	message: string | undefined;
 	/** If false, "(optional)" will be appended to the label. */
@@ -32,7 +32,7 @@ export const Field = ({
 	invalid,
 	label,
 	secondaryLabel,
-	disableSecondaryLabel = false,
+	hideOptionalLabel,
 	message,
 	required,
 }: FieldProps) => {
@@ -53,7 +53,7 @@ export const Field = ({
 			<FieldLabel
 				htmlFor={fieldId}
 				secondaryLabel={secondaryLabel}
-				disableSecondaryLabel={disableSecondaryLabel}
+				hideOptionalLabel={hideOptionalLabel}
 				required={required}
 			>
 				{label}

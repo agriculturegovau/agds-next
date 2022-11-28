@@ -22,7 +22,7 @@ export type TextareaProps = BaseTextareaProps & {
 	/** Describes the purpose of the field. */
 	label: string;
 	/** If true, the secondary label will not be rendered.  */
-	hideOptionalText?: boolean;
+	hideOptionalLabel?: boolean;
 	/** If false, "(optional)" will be appended to the label. */
 	required?: boolean;
 	/** Provides extra information about the field. */
@@ -41,7 +41,7 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
 	function Textarea(
 		{
 			label,
-			hideOptionalText,
+			hideOptionalLabel,
 			required,
 			hint,
 			message,
@@ -62,7 +62,7 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
 		return (
 			<Field
 				label={label}
-				disableSecondaryLabel={Boolean(hideOptionalText)}
+				hideOptionalLabel={Boolean(hideOptionalLabel)}
 				required={Boolean(required)}
 				hint={hint}
 				message={message}

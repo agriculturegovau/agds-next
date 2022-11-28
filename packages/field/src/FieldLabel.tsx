@@ -7,7 +7,7 @@ export type FieldLabelProps = PropsWithChildren<{
 	htmlFor: string;
 	required: boolean;
 	secondaryLabel?: string;
-	disableSecondaryLabel?: boolean;
+	hideOptionalLabel?: boolean;
 }>;
 
 export const FieldLabel = ({
@@ -16,13 +16,13 @@ export const FieldLabel = ({
 	htmlFor,
 	required,
 	secondaryLabel: secondaryLabelProp,
-	disableSecondaryLabel,
+	hideOptionalLabel,
 }: FieldLabelProps) => {
 	const secondaryLabel = useMemo(() => {
-		if (disableSecondaryLabel) return null;
+		if (hideOptionalLabel) return null;
 		if (secondaryLabelProp) return secondaryLabelProp;
 		if (!required) return `(optional)`;
-	}, [required, secondaryLabelProp, disableSecondaryLabel]);
+	}, [required, secondaryLabelProp, hideOptionalLabel]);
 	return (
 		<Flex as={as} htmlFor={htmlFor} gap={0.25}>
 			<Text as="span" fontWeight="bold">

@@ -21,7 +21,7 @@ export type ControlGroupProps = PropsWithChildren<{
 	/** Describes the purpose of the field. */
 	label?: string;
 	/** If true, the secondary label will not be rendered.  */
-	hideOptionalText?: boolean;
+	hideOptionalLabel?: boolean;
 	/** Message to show when the field is invalid. */
 	message?: string;
 	/** If false, "(optional)" will be appended to the label. */
@@ -35,7 +35,7 @@ export const ControlGroup = ({
 	id,
 	invalid = false,
 	label,
-	hideOptionalText,
+	hideOptionalLabel,
 	message,
 	required = false,
 }: ControlGroupProps) => {
@@ -61,7 +61,7 @@ export const ControlGroup = ({
 						<FieldLabel
 							as="legend"
 							required={required}
-							disableSecondaryLabel={Boolean(hideOptionalText)}
+							hideOptionalLabel={Boolean(hideOptionalLabel)}
 						>
 							{label}
 						</FieldLabel>
