@@ -1,0 +1,58 @@
+---
+title: Search Input
+description: Search enables users to specify a word or a phrase to find relevant pieces of content.
+group: Forms
+storybookPath: /story/forms-searchinput--basic
+---
+
+The `SearchInput` component can be used as a filter to aid the user in finding content that has already been loaded on the page.
+
+For use cases where you need a search form with a submit button, the [Search Box](/components/search-box) component can be used instead.
+
+## Default
+
+By default, the `SearchInput` component does not expand to fill the available space.
+
+```jsx live
+<SearchInput label="Search" />
+```
+
+## Block
+
+Use the `block` prop to expand the component to fill the available space.
+
+```jsx live
+<SearchInput label="Search" block />
+```
+
+## Required
+
+The `SearchInput` component will always append `(optional)` to the label based on the `required` prop.
+
+```jsx live
+<Stack gap={1}>
+	<SearchInput label="Default" />
+	<SearchInput label="Required" required />
+	<SearchInput label="Optional" required={false} />
+</Stack>
+```
+
+## Invalid
+
+Use the `invalid` prop to indicate if the user input is invalid (does not validate according to the elements settings).
+
+```jsx live
+<SearchInput
+	label="Invalid"
+	invalid
+	message="A search term is required to see results"
+/>
+```
+
+## Disabled
+
+Disabled input elements are unusable and can not be clicked. This prevents a user from interacting with the input element until another action is complete.
+
+```jsx live
+<SearchInput label="Search" disabled />
+```

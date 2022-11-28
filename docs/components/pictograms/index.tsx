@@ -97,6 +97,7 @@ export const pictograms = {
 	prose,
 	sideNav,
 	'search-box': searchBox,
+	'search-input': searchBox,
 	select,
 	'side-nav': sideNav,
 	skeleton,
