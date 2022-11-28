@@ -5,12 +5,8 @@ import { Prose } from '@ag.ds-next/prose';
 import { Stack } from '@ag.ds-next/box';
 import { Heading } from '@ag.ds-next/heading';
 import { Text } from '@ag.ds-next/text';
-import {
-	getMarkdownData,
-	getReleaseList,
-	RELEASE_PATH,
-	serializeMarkdown,
-} from '../../lib/mdxUtils';
+import { getUpdatesList, UPDATE_PATH } from '../../lib/mdx/updates';
+import { getMarkdownData, serializeMarkdown } from '../../lib/mdxUtils';
 import { mdxComponents } from '../../components/mdxComponents';
 import { AppLayout } from '../../components/AppLayout';
 import { DocumentTitle } from '../../components/DocumentTitle';
@@ -18,24 +14,24 @@ import { PageLayout } from '../../components/PageLayout';
 
 type StaticProps = Awaited<ReturnType<typeof getStaticProps>>['props'];
 
-export default function ReleasesHome({ source, releaseLinks }: StaticProps) {
+export default function UpdatesHome({ source, updateLinks }: StaticProps) {
 	return (
 		<>
-			<DocumentTitle title="Releases" />
+			<DocumentTitle title="Updates" />
 			<AppLayout>
 				<PageLayout
 					sideNav={{
-						title: 'Releases',
-						titleLink: '/releases',
-						items: releaseLinks,
+						title: 'Updates',
+						titleLink: '/updates',
+						items: updateLinks,
 					}}
-					editPath="/docs/content/releases/index.mdx"
+					editPath="/docs/content/updates/index.mdx"
 				>
 					<Prose>
 						<MDXRemote {...source} components={mdxComponents} />
 					</Prose>
 					<Stack as="ul" gap={1.5}>
-						{releaseLinks.map(({ href, label, description }) => (
+						{updateLinks.map(({ href, label, description }) => (
 							<Card as="li" key={label} clickable shadow>
 								<CardInner>
 									<Stack gap={1}>
@@ -56,13 +52,12 @@ export default function ReleasesHome({ source, releaseLinks }: StaticProps) {
 
 export async function getStaticProps() {
 	const { content } = await getMarkdownData(
-		normalize(`${RELEASE_PATH}/index.mdx`)
+		normalize(`${UPDATE_PATH}/index.mdx`)
 	);
 	const source = await serializeMarkdown(content);
-	const releaseList = await getReleaseList();
-
-	const releaseLinks = releaseList.map(({ slug, title, description }) => ({
-		href: `/releases/${slug}`,
+	const updatesList = await getUpdatesList();
+	const updateLinks = updatesList.map(({ slug, title, description }) => ({
+		href: `/updates/${slug}`,
 		label: title,
 		description,
 	}));
@@ -70,7 +65,7 @@ export async function getStaticProps() {
 	return {
 		props: {
 			source,
-			releaseLinks,
+			updateLinks,
 		},
 	};
 }
