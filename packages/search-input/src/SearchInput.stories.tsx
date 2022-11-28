@@ -1,5 +1,6 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { useState } from 'react';
+import { Stack } from '@ag.ds-next/box';
 import { SearchInput } from './SearchInput';
 
 export default {
@@ -58,3 +59,17 @@ Controlled.args = {
 	label: 'Search',
 	block: true,
 };
+
+export const MaxWidths: ComponentStory<typeof SearchInput> = (args) => (
+	<Stack gap={1}>
+		{(['md', 'lg', 'xl'] as const).map((size) => (
+			<SearchInput
+				key={size}
+				{...args}
+				label={`SearchInput max width ${size}`}
+				maxWidth={size}
+			/>
+		))}
+	</Stack>
+);
+MaxWidths.args = {};

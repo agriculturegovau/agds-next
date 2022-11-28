@@ -5,7 +5,7 @@ import {
 	useRef,
 	useState,
 } from 'react';
-import { Field } from '@ag.ds-next/field';
+import { Field, FieldMaxWidth } from '@ag.ds-next/field';
 import { mergeRefs } from '@ag.ds-next/core';
 import { textInputStyles } from '@ag.ds-next/text-input';
 import { SearchInputContainer } from './SearchInputContainer';
@@ -38,6 +38,8 @@ export type SearchInputProps = BaseSearchInputProps & {
 	invalid?: boolean;
 	/** If true, the field will stretch to the fill the width of its container. */
 	block?: boolean;
+	/** The maximum width of the field. */
+	maxWidth?: Extract<FieldMaxWidth, 'md' | 'lg' | 'xl'>;
 	/** Function to be called when the input is cleared. */
 	onClear?: () => void;
 };
@@ -51,6 +53,7 @@ export const SearchInput = forwardRef<HTMLInputElement, SearchInputProps>(
 			message,
 			invalid,
 			block,
+			maxWidth: maxWidthProp,
 			id,
 			disabled,
 			value: valueProp,
@@ -87,6 +90,8 @@ export const SearchInput = forwardRef<HTMLInputElement, SearchInputProps>(
 		const showClearButton = Boolean(value);
 
 		const [maxWidth, styles] = searchInputStyles({
+			block,
+			maxWidth: maxWidthProp,
 			invalid,
 			showClearButton,
 		});
@@ -129,14 +134,20 @@ export const SearchInput = forwardRef<HTMLInputElement, SearchInputProps>(
 
 function searchInputStyles({
 	block,
+	maxWidth: maxWidthProp,
 	invalid,
 	showClearButton,
 }: {
 	block?: boolean;
+	maxWidth?: SearchInputProps['maxWidth'];
 	invalid?: boolean;
 	showClearButton: boolean;
 }) {
-	const { maxWidth, ...baseStyles } = textInputStyles({ block, invalid });
+	const { maxWidth, ...baseStyles } = textInputStyles({
+		block,
+		maxWidth: maxWidthProp,
+		invalid,
+	});
 	return [
 		maxWidth,
 		{
