@@ -60,7 +60,7 @@ exports[`TextInput Invalid renders correctly 1`] = `
         <svg
           aria-hidden="false"
           aria-label="Error"
-          class="css-vnv4i8-Icon-FieldMessage"
+          class="css-1cvvs16-FieldMessage"
           clip-rule="evenodd"
           focusable="true"
           height="24"

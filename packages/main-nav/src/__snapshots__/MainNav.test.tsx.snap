@@ -184,7 +184,7 @@ exports[`MainNav renders correctly 1`] = `
                 </span>
                 <svg
                   aria-hidden="true"
-                  class="css-1pepvcz-Icon"
+                  class="css-dgj9fa-Icon"
                   clip-rule="evenodd"
                   focusable="false"
                   height="24"

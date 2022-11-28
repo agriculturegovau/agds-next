@@ -1,5 +1,10 @@
 import { ReactNode, SVGAttributes } from 'react';
-import { boxPalette } from '@ag.ds-next/core';
+import {
+	boxPalette,
+	ResponsiveProp,
+	mq,
+	mapResponsiveProp,
+} from '@ag.ds-next/core';
 import { foregroundColorMap } from '@ag.ds-next/box';
 
 export const iconColors = {
@@ -44,7 +49,7 @@ export type IconProps = {
 	'aria-label'?: NativeSvgProps['aria-label'];
 	className?: string;
 	color?: IconColor;
-	size?: IconSize;
+	size?: ResponsiveProp<IconSize>;
 	style?: NativeSvgProps['style'];
 	weight?: IconWeight;
 };
@@ -59,28 +64,32 @@ export const createIcon = (children: ReactNode, name: string) => {
 		style,
 		weight = 'regular',
 	}: IconProps) => {
-		const resolvedSize = `${iconSizes[size]}rem`;
-		const resolvedWeight = iconWeights[weight][size];
+		const resolvedSize = mapResponsiveProp(size, (s) => `${iconSizes[s]}rem`);
+		const resolvedWeight = mapResponsiveProp(
+			size,
+			(s) => iconWeights[weight][s]
+		);
 		// Focusable is the opposite of `aria-hidden`
 		const focusable = [true, 'true'].includes(ariaHidden) ? 'false' : 'true';
 		return (
 			<svg
-				// Note the width and height attribute is a fallback for older browsers. This may not be required and could potentially be removed.
+				// Note the width and height attribute is a fallback for older browsers.
+				// This may not be required and could potentially be removed.
 				width="24"
 				height="24"
 				viewBox="0 0 24 24"
 				clipRule="evenodd"
 				xmlns="http://www.w3.org/2000/svg"
-				css={{
+				css={mq({
 					width: resolvedSize,
 					height: resolvedSize,
 					fill: 'none',
-					color: color ? iconColors[color] : 'currentColor',
-					stroke: 'currentColor',
+					color: color ? iconColors[color] : 'currentcolor',
+					stroke: 'currentcolor',
 					strokeLinejoin: 'round',
 					strokeLinecap: 'round',
 					strokeWidth: resolvedWeight,
-				}}
+				})}
 				role="img"
 				style={style}
 				className={className}

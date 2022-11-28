@@ -46,7 +46,7 @@ exports[`DateRangePicker renders correctly 1`] = `
               >
                 <svg
                   aria-hidden="true"
-                  class="css-mz6m4-Icon-DateInput"
+                  class="css-1aretzv-DateInput"
                   clip-rule="evenodd"
                   focusable="false"
                   height="24"
@@ -119,7 +119,7 @@ exports[`DateRangePicker renders correctly 1`] = `
               >
                 <svg
                   aria-hidden="true"
-                  class="css-mz6m4-Icon-DateInput"
+                  class="css-1aretzv-DateInput"
                   clip-rule="evenodd"
                   focusable="false"
                   height="24"

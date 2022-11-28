@@ -15,7 +15,7 @@ exports[`ProgressIndicator With anchors renders correctly 1`] = `
       Doing step 2 of 3
       <svg
         aria-hidden="true"
-        class="css-iv9u8h-Icon"
+        class="css-u8huve-Icon"
         clip-rule="evenodd"
         focusable="false"
         height="24"
@@ -47,7 +47,7 @@ exports[`ProgressIndicator With anchors renders correctly 1`] = `
           >
             <svg
               aria-hidden="true"
-              class="css-19ui18a-Icon"
+              class="css-1esj8rc-Icon"
               clip-rule="evenodd"
               focusable="false"
               height="24"
@@ -85,7 +85,7 @@ exports[`ProgressIndicator With anchors renders correctly 1`] = `
           >
             <svg
               aria-hidden="true"
-              class="css-1pepvcz-Icon"
+              class="css-dgj9fa-Icon"
               clip-rule="evenodd"
               focusable="false"
               height="24"
@@ -136,7 +136,7 @@ exports[`ProgressIndicator With anchors renders correctly 1`] = `
           >
             <svg
               aria-hidden="true"
-              class="css-dotjzy-Icon"
+              class="css-1ilzd8v-Icon"
               clip-rule="evenodd"
               focusable="false"
               height="24"
@@ -186,7 +186,7 @@ exports[`ProgressIndicator With buttons renders correctly 1`] = `
       Doing step 2 of 3
       <svg
         aria-hidden="true"
-        class="css-iv9u8h-Icon"
+        class="css-u8huve-Icon"
         clip-rule="evenodd"
         focusable="false"
         height="24"
@@ -218,7 +218,7 @@ exports[`ProgressIndicator With buttons renders correctly 1`] = `
           >
             <svg
               aria-hidden="true"
-              class="css-19ui18a-Icon"
+              class="css-1esj8rc-Icon"
               clip-rule="evenodd"
               focusable="false"
               height="24"
@@ -256,7 +256,7 @@ exports[`ProgressIndicator With buttons renders correctly 1`] = `
           >
             <svg
               aria-hidden="true"
-              class="css-1pepvcz-Icon"
+              class="css-dgj9fa-Icon"
               clip-rule="evenodd"
               focusable="false"
               height="24"
@@ -307,7 +307,7 @@ exports[`ProgressIndicator With buttons renders correctly 1`] = `
           >
             <svg
               aria-hidden="true"
-              class="css-dotjzy-Icon"
+              class="css-1ilzd8v-Icon"
               clip-rule="evenodd"
               focusable="false"
               height="24"

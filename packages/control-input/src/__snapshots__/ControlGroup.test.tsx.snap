@@ -214,7 +214,7 @@ exports[`ControlGroup  With Checkboxes renders correctly when invalid 1`] = `
             <svg
               aria-hidden="false"
               aria-label="Error"
-              class="css-vnv4i8-Icon-FieldMessage"
+              class="css-1cvvs16-FieldMessage"
               clip-rule="evenodd"
               focusable="true"
               height="24"
@@ -555,7 +555,7 @@ exports[`ControlGroup  With Radios renders correctly when invalid 1`] = `
             <svg
               aria-hidden="false"
               aria-label="Error"
-              class="css-vnv4i8-Icon-FieldMessage"
+              class="css-1cvvs16-FieldMessage"
               clip-rule="evenodd"
               focusable="true"
               height="24"

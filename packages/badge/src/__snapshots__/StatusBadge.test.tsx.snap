@@ -7,7 +7,7 @@ exports[`StatusBadge tone: error renders correctly 1`] = `
   >
     <svg
       aria-hidden="true"
-      class="css-18q4q0a-Icon"
+      class="css-1h89p7b-Icon"
       clip-rule="evenodd"
       focusable="false"
       height="24"
@@ -42,7 +42,7 @@ exports[`StatusBadge tone: info renders correctly 1`] = `
   >
     <svg
       aria-hidden="true"
-      class="css-11zssf9-Icon"
+      class="css-1curl5b-Icon"
       clip-rule="evenodd"
       focusable="false"
       height="24"
@@ -99,7 +99,7 @@ exports[`StatusBadge tone: success renders correctly 1`] = `
   >
     <svg
       aria-hidden="true"
-      class="css-19ui18a-Icon"
+      class="css-1esj8rc-Icon"
       clip-rule="evenodd"
       focusable="false"
       height="24"
@@ -133,7 +133,7 @@ exports[`StatusBadge tone: warning renders correctly 1`] = `
   >
     <svg
       aria-hidden="true"
-      class="css-eg6jm4-Icon"
+      class="css-qz15ef-Icon"
       clip-rule="evenodd"
       focusable="false"
       height="24"

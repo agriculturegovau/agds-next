@@ -44,7 +44,7 @@ exports[`Calendar Range renders correctly 1`] = `
                 >
                   <svg
                     aria-hidden="true"
-                    class="css-1cjetzb-Icon"
+                    class="css-1t4it9i-Icon"
                     clip-rule="evenodd"
                     focusable="false"
                     height="24"
@@ -66,7 +66,7 @@ exports[`Calendar Range renders correctly 1`] = `
                 >
                   <svg
                     aria-hidden="true"
-                    class="css-1cjetzb-Icon"
+                    class="css-1t4it9i-Icon"
                     clip-rule="evenodd"
                     focusable="false"
                     height="24"
@@ -694,7 +694,7 @@ exports[`Calendar Single renders correctly 1`] = `
                 >
                   <svg
                     aria-hidden="true"
-                    class="css-1cjetzb-Icon"
+                    class="css-1t4it9i-Icon"
                     clip-rule="evenodd"
                     focusable="false"
                     height="24"
@@ -716,7 +716,7 @@ exports[`Calendar Single renders correctly 1`] = `
                 >
                   <svg
                     aria-hidden="true"
-                    class="css-1cjetzb-Icon"
+                    class="css-1t4it9i-Icon"
                     clip-rule="evenodd"
                     focusable="false"
                     height="24"

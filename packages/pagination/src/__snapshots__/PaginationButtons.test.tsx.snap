@@ -18,7 +18,7 @@ exports[`PaginationButtons renders correctly 1`] = `
         >
           <svg
             aria-hidden="true"
-            class="css-10t8zfr-Icon"
+            class="css-1krnro2-Icon"
             clip-rule="evenodd"
             focusable="false"
             height="24"
@@ -112,7 +112,7 @@ exports[`PaginationButtons renders correctly 1`] = `
           Next
           <svg
             aria-hidden="true"
-            class="css-10t8zfr-Icon"
+            class="css-1krnro2-Icon"
             clip-rule="evenodd"
             focusable="false"
             height="24"
