@@ -21,6 +21,8 @@ type BaseTextareaProps = {
 export type TextareaProps = BaseTextareaProps & {
 	/** Describes the purpose of the field. */
 	label: string;
+	/** If true, the secondary label will not be rendered.  */
+	hideOptionalText?: boolean;
 	/** If false, "(optional)" will be appended to the label. */
 	required?: boolean;
 	/** Provides extra information about the field. */
@@ -37,7 +39,18 @@ export type TextareaProps = BaseTextareaProps & {
 
 export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
 	function Textarea(
-		{ label, required, hint, message, invalid, block, maxWidth, id, ...props },
+		{
+			label,
+			hideOptionalText,
+			required,
+			hint,
+			message,
+			invalid,
+			block,
+			maxWidth,
+			id,
+			...props
+		},
 		ref
 	) {
 		const styles = textInputStyles({
@@ -49,6 +62,7 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
 		return (
 			<Field
 				label={label}
+				disableSecondaryLabel={Boolean(hideOptionalText)}
 				required={Boolean(required)}
 				hint={hint}
 				message={message}

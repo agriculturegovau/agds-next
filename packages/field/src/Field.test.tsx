@@ -11,6 +11,7 @@ function renderField({
 	message = undefined,
 	required = true,
 	invalid = true,
+	disableSecondaryLabel = false,
 	children = (a11yProps) => (
 		<input data-testid="example-input" type="text" {...a11yProps} />
 	),
@@ -23,6 +24,7 @@ function renderField({
 			message={message}
 			required={required}
 			invalid={invalid}
+			disableSecondaryLabel={disableSecondaryLabel}
 			{...props}
 		>
 			{children}
@@ -88,19 +90,30 @@ describe('Field', () => {
 	});
 
 	describe('FieldLabel', () => {
-		it('renders correctly when optional', () => {
-			renderField({ required: false });
-			const labelEl = screen.getByText('Name')
-				.parentElement as HTMLLabelElement;
-			expect(labelEl).toBeInTheDocument();
-			expect(labelEl).toHaveTextContent('Name(optional)');
+		describe('Optional', () => {
+			it('renders correctly', () => {
+				renderField({ required: false });
+				const labelEl = document.querySelector('label');
+				expect(labelEl?.textContent).toBe('Name(optional)');
+			});
+			it('renders correctly when secondary label is disabled', () => {
+				renderField({ required: false, disableSecondaryLabel: true });
+				const labelEl = document.querySelector('label');
+				expect(labelEl?.textContent).toBe('Name');
+			});
 		});
-		it('renders correctly when required', () => {
-			renderField({ required: true });
-			const labelEl = screen.getByText('Name')
-				.parentElement as HTMLLabelElement;
-			expect(labelEl).toBeInTheDocument();
-			expect(labelEl).toHaveTextContent('Name');
+
+		describe('Required', () => {
+			it('renders correctly', () => {
+				renderField({ required: true });
+				const labelEl = document.querySelector('label');
+				expect(labelEl?.textContent).toBe('Name');
+			});
+			it('renders correctly when secondary label is disabled', () => {
+				renderField({ required: false, disableSecondaryLabel: true });
+				const labelEl = document.querySelector('label');
+				expect(labelEl?.textContent).toBe('Name');
+			});
 		});
 	});
 
