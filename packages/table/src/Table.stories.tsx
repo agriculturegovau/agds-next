@@ -1,5 +1,12 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { TextLink } from '@ag.ds-next/text-link';
+import { Flex, Stack } from '@ag.ds-next/box';
+import { Pagination } from '@ag.ds-next/pagination';
+import { Select } from '@ag.ds-next/select';
+import { TextInput } from '@ag.ds-next/text-input';
+import { Text } from '@ag.ds-next/text';
+import { Button } from '@ag.ds-next/button';
+import { StatusBadge } from '@ag.ds-next/badge';
 import { Table } from './Table';
 import { TableBody } from './TableBody';
 import { TableCaption } from './TableCaption';
@@ -21,15 +28,22 @@ export default {
 	},
 } as ComponentMeta<typeof Table>;
 
+const toneMapper = {
+	Cancelled: 'error',
+	Registered: 'success',
+};
+
 const Example: ComponentStory<typeof Table> = (args) => {
 	const data = [
 		{
 			submissionDate: undefined,
+			status: 'draft',
 			id: '4f690575-8b96-4dbb-b9d6-a248088782f8',
 			type: 'Establishment registration',
 		},
 		{
 			submissionDate: undefined,
+			status: 'draft',
 			id: '0c8eaf7b-b9d3-4221-9e5b-87871c8442e2',
 			type: 'Establishment registration',
 		},
@@ -40,6 +54,7 @@ const Example: ComponentStory<typeof Table> = (args) => {
 		},
 		{
 			submissionDate: undefined,
+			status: 'draft',
 			id: 'aef2fa47-c431-472b-ab9f-f0a8a5d37f56',
 			type: 'Establishment registration',
 		},
@@ -55,6 +70,7 @@ const Example: ComponentStory<typeof Table> = (args) => {
 		},
 		{
 			submissionDate: undefined,
+			status: 'draft',
 			id: '89bf7ea4-d68f-4b6c-bae6-99d29e70811d',
 			type: 'Establishment registration',
 		},
@@ -73,8 +89,9 @@ const Example: ComponentStory<typeof Table> = (args) => {
 				</TableCaption>
 				<TableHead>
 					<tr>
-						<TableHeader>Date submitted</TableHeader>
 						<TableHeader>Name</TableHeader>
+						<TableHeader>Status</TableHeader>
+						<TableHeader>Date submitted</TableHeader>
 						<TableHeader display={{ xs: 'none', md: 'table-cell' }}>
 							Application type
 						</TableHeader>
@@ -84,10 +101,13 @@ const Example: ComponentStory<typeof Table> = (args) => {
 				<TableBody>
 					{data.map(({ id, submissionDate, type }) => (
 						<tr key={id}>
-							<TableCell>{submissionDate || 'Not yet submitted'}</TableCell>
 							<TableCell>
 								<TextLink href={`#${id}`}>{id}</TextLink>
 							</TableCell>
+							<TableCell>
+								<StatusBadge label="In progress" tone="success" />
+							</TableCell>
+							<TableCell>{submissionDate || 'Not yet submitted'}</TableCell>
 							<TableCell display={{ xs: 'none', md: 'table-cell' }}>
 								{type}
 							</TableCell>
@@ -183,3 +203,134 @@ export const Modular: ComponentStory<typeof Table> = (args) => (
 		</Table>
 	</TableWrapper>
 );
+
+export const Filtering: ComponentStory<typeof Table> = (args) => {
+	const data = [
+		{
+			submissionDate: undefined,
+			id: 'AA4F690575',
+			type: 'Establishment registration',
+			status: 'Cancelled',
+		},
+		{
+			submissionDate: undefined,
+			id: 'AA0C8EAF7B',
+			type: 'Establishment registration',
+			status: 'Registered',
+		},
+		{
+			submissionDate: 'Tuesday 22 March 2022',
+			id: 'AA4DEA2AF2',
+			type: 'Establishment registration',
+			status: 'Cancelled',
+		},
+		{
+			submissionDate: undefined,
+			id: 'AAAEF2FA47',
+			type: 'Establishment registration',
+			status: 'Registered',
+		},
+		{
+			submissionDate: 'Tuesday 22 March 2022',
+			id: 'AA04BC33AC',
+			type: 'Establishment registration',
+			status: 'Cancelled',
+		},
+		{
+			submissionDate: 'Tuesday 22 March 2022',
+			id: 'AA4B8FECDF',
+			type: 'Establishment registration',
+			status: 'Cancelled',
+		},
+		{
+			submissionDate: undefined,
+			id: 'AA89BF7EA4',
+			type: 'Establishment registration',
+			status: 'Cancelled',
+		},
+		{
+			submissionDate: 'Tuesday 22 March 2022',
+			id: 'AAF2342620',
+			type: 'Establishment registration',
+			status: 'Registered',
+		},
+	] as const;
+
+	return (
+		<Stack gap={1}>
+			<Flex
+				background="shade"
+				rounded
+				border
+				padding={1}
+				alignItems="flex-end"
+				gap={1}
+				justifyContent="space-between"
+			>
+				<Flex gap={1}>
+					<TextInput label="Postcode" />
+					<Select
+						label="Assignment type"
+						options={[{ label: 'All', value: 'all' }]}
+					/>
+
+					<TextInput label="Search text" />
+
+					<Select
+						label="Show number of rows"
+						options={[{ label: '10 rows', value: 10 }]}
+					/>
+				</Flex>
+
+				{/* <Switch checked={false} label="Only these ones" onChange={() => {}} /> */}
+
+				<Flex gap={1}>
+					<Button>Search</Button>
+					<Button variant="secondary">Reset</Button>
+				</Flex>
+			</Flex>
+
+			<TableWrapper>
+				<Table {...args}>
+					<TableCaption>
+						Your establishment registration applications
+					</TableCaption>
+					<TableHead>
+						<tr>
+							<TableHeader>AA number</TableHeader>
+							<TableHeader>Date submitted</TableHeader>
+							<TableHeader display={{ xs: 'none', md: 'table-cell' }}>
+								Application type
+							</TableHeader>
+							<TableHeader>Status</TableHeader>
+						</tr>
+					</TableHead>
+					<TableBody>
+						{data.map(({ id, submissionDate, status, type }) => (
+							<tr key={id}>
+								<TableCell>
+									<TextLink href={`#${id}`}>{id}</TextLink>
+								</TableCell>
+								<TableCell>{submissionDate || 'Not yet submitted'}</TableCell>
+								<TableCell display={{ xs: 'none', md: 'table-cell' }}>
+									{type}
+								</TableCell>
+								<TableCell>
+									<StatusBadge tone={toneMapper[status]} label={status} />
+								</TableCell>
+							</tr>
+						))}
+					</TableBody>
+				</Table>
+			</TableWrapper>
+
+			<Text color="muted">Showing 1-10 of 120 items</Text>
+
+			<Pagination
+				generateHref={(pageNumber) => `#${pageNumber}`}
+				currentPage={5}
+				totalPages={10}
+			/>
+		</Stack>
+	);
+};
