@@ -62,10 +62,7 @@ const ProgressIndicatorItemTimeline = () => (
 		css={{
 			width: 2,
 			backgroundColor: boxPalette.border,
-			position: 'relative',
-			height: '35%',
-			left: 0,
-			top: 0,
+			flex: 1,
 		}}
 	/>
 );
@@ -101,7 +98,25 @@ const ProgressIndicatorItem = ({
 	const active = status === 'doing';
 	const { label } = statusMap[status];
 	return (
-		<Flex as="li">
+		<Flex
+			as="li"
+			background={background}
+			css={{
+				'&:first-of-type ': {
+					'> div:first-of-type > div:first-of-type': {
+						opacity: 0,
+					},
+				},
+				'&:last-of-type': {
+					'> div:first-of-type > div:last-of-type': {
+						opacity: 0,
+					},
+					'> button, &:last-of-type > a': {
+						borderBottomWidth: 0,
+					},
+				},
+			}}
+		>
 			<ProgressIndicatorItemIcon status={status} />
 			<Flex
 				as={as}
@@ -109,7 +124,6 @@ const ProgressIndicatorItem = ({
 				alignItems="center"
 				gap={0.75}
 				paddingY={0.75}
-				background={background}
 				color="text"
 				fontFamily="body"
 				fontWeight={active ? 'bold' : 'normal'}
