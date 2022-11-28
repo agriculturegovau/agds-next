@@ -4,13 +4,14 @@ import { Text } from '@ag.ds-next/text';
 import { TextLink } from '@ag.ds-next/text-link';
 import {
 	ProgressDoingIcon,
-	ProgressDoneIcon,
+	SuccessFilledIcon,
 	ProgressTodoIcon,
+	ProgressBlockedIcon,
 } from '@ag.ds-next/icon';
 import { boxPalette, LinkProps, packs } from '@ag.ds-next/core';
 import { BaseButton } from '@ag.ds-next/button';
 
-export type TaskListItemStatus = 'doing' | 'todo' | 'done';
+export type TaskListItemStatus = keyof typeof statusMap;
 
 export type TaskListItemLinkProps = LinkProps & {
 	status: TaskListItemStatus;
@@ -70,7 +71,7 @@ const TaskListItem = ({
 	...props
 }: TaskListItemProps) => {
 	const active = status === 'doing';
-	const Icon = statusIconMap[status];
+	const { icon: Icon, iconColor, label } = statusMap[status];
 	return (
 		<li css={{ counterIncrement: 'task-count' }}>
 			<Flex
@@ -97,7 +98,7 @@ const TaskListItem = ({
 			>
 				<Icon
 					size="md"
-					color="action"
+					color={iconColor}
 					css={{
 						// Use padding to ensure the icon is aligned centered with the status label and title
 						paddingTop: '0.75rem',
@@ -105,7 +106,7 @@ const TaskListItem = ({
 				/>
 				<Flex as="span" flexDirection="column" gap={0.25}>
 					<Text as="span" color="muted" fontSize="xs" lineHeight="nospace">
-						{statusLabelMap[status]}
+						{label}
 					</Text>
 					<Text
 						fontSize="md"
@@ -132,14 +133,25 @@ const TaskListItem = ({
 	);
 };
 
-const statusIconMap = {
-	doing: ProgressDoingIcon,
-	todo: ProgressTodoIcon,
-	done: ProgressDoneIcon,
-} as const;
-
-const statusLabelMap = {
-	doing: 'Doing',
-	todo: 'To do',
-	done: 'Done',
+const statusMap = {
+	blocked: {
+		label: 'Cannot start yet',
+		icon: ProgressBlockedIcon,
+		iconColor: 'border',
+	},
+	doing: {
+		label: 'In progress',
+		icon: ProgressDoingIcon,
+		iconColor: 'action',
+	},
+	todo: {
+		label: 'Not started',
+		icon: ProgressTodoIcon,
+		iconColor: 'action',
+	},
+	done: {
+		label: 'Completed',
+		icon: SuccessFilledIcon,
+		iconColor: 'success',
+	},
 } as const;

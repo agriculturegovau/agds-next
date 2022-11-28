@@ -407,6 +407,36 @@ exports[`Icon MenuIcon renders correctly 1`] = `
 </div>
 `;
 
+exports[`Icon ProgressBlockedIcon renders correctly 1`] = `
+<div>
+  <svg
+    aria-hidden="true"
+    class="css-4ah0i8-Icon"
+    clip-rule="evenodd"
+    focusable="false"
+    height="24"
+    role="img"
+    viewBox="0 0 24 24"
+    width="24"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <circle
+      cx="12"
+      cy="12"
+      r="10.5"
+    />
+    ,
+    <line
+      stroke-linecap="round"
+      x1="7"
+      x2="17"
+      y1="12"
+      y2="12"
+    />
+  </svg>
+</div>
+`;
+
 exports[`Icon ProgressDoingIcon renders correctly 1`] = `
 <div>
   <svg
@@ -444,31 +474,6 @@ exports[`Icon ProgressDoingIcon renders correctly 1`] = `
 </div>
 `;
 
-exports[`Icon ProgressDoneIcon renders correctly 1`] = `
-<div>
-  <svg
-    aria-hidden="true"
-    class="css-4ah0i8-Icon"
-    clip-rule="evenodd"
-    focusable="false"
-    height="24"
-    role="img"
-    viewBox="0 0 24 24"
-    width="24"
-    xmlns="http://www.w3.org/2000/svg"
-  >
-    <circle
-      cx="12"
-      cy="12"
-      r="10.5"
-    />
-    <path
-      d="M7 13L10 16L17 9"
-    />
-  </svg>
-</div>
-`;
-
 exports[`Icon ProgressTodoIcon renders correctly 1`] = `
 <div>
   <svg
@@ -486,6 +491,8 @@ exports[`Icon ProgressTodoIcon renders correctly 1`] = `
       cx="12"
       cy="12"
       r="10.5"
+      stroke-dasharray="4 4"
+      stroke-linecap="round"
     />
   </svg>
 </div>
