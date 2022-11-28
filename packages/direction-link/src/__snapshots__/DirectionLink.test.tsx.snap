@@ -9,7 +9,7 @@ exports[`DirectionButton direction: down renders correctly 1`] = `
     Skip to footer
     <svg
       aria-hidden="true"
-      class="css-urp92d-Icon"
+      class="css-1krnro2-Icon"
       clip-rule="evenodd"
       focusable="false"
       height="24"
@@ -37,7 +37,7 @@ exports[`DirectionButton direction: left renders correctly 1`] = `
   >
     <svg
       aria-hidden="true"
-      class="css-urp92d-Icon"
+      class="css-1krnro2-Icon"
       clip-rule="evenodd"
       focusable="false"
       height="24"
@@ -67,7 +67,7 @@ exports[`DirectionButton direction: right renders correctly 1`] = `
     Next
     <svg
       aria-hidden="true"
-      class="css-urp92d-Icon"
+      class="css-1krnro2-Icon"
       clip-rule="evenodd"
       focusable="false"
       height="24"
@@ -96,7 +96,7 @@ exports[`DirectionButton direction: up renders correctly 1`] = `
     Top
     <svg
       aria-hidden="true"
-      class="css-urp92d-Icon"
+      class="css-1krnro2-Icon"
       clip-rule="evenodd"
       focusable="false"
       height="24"
@@ -124,7 +124,7 @@ exports[`DirectionLink direction: down renders correctly 1`] = `
     Skip to footer
     <svg
       aria-hidden="true"
-      class="css-urp92d-Icon"
+      class="css-1krnro2-Icon"
       clip-rule="evenodd"
       focusable="false"
       height="24"
@@ -151,7 +151,7 @@ exports[`DirectionLink direction: left renders correctly 1`] = `
   >
     <svg
       aria-hidden="true"
-      class="css-urp92d-Icon"
+      class="css-1krnro2-Icon"
       clip-rule="evenodd"
       focusable="false"
       height="24"
@@ -180,7 +180,7 @@ exports[`DirectionLink direction: right renders correctly 1`] = `
     Next
     <svg
       aria-hidden="true"
-      class="css-urp92d-Icon"
+      class="css-1krnro2-Icon"
       clip-rule="evenodd"
       focusable="false"
       height="24"
@@ -208,7 +208,7 @@ exports[`DirectionLink direction: up renders correctly 1`] = `
     Top
     <svg
       aria-hidden="true"
-      class="css-urp92d-Icon"
+      class="css-1krnro2-Icon"
       clip-rule="evenodd"
       focusable="false"
       height="24"

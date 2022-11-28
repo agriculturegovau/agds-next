@@ -13,7 +13,7 @@ exports[`Breadcrumbs renders correctly 1`] = `
       >
         <svg
           aria-hidden="true"
-          class="css-aovx2f-BreadcrumbsDivider"
+          class="css-1kvtdkq-BreadcrumbsDivider"
           clip-rule="evenodd"
           focusable="false"
           height="24"
@@ -38,7 +38,7 @@ exports[`Breadcrumbs renders correctly 1`] = `
       >
         <svg
           aria-hidden="true"
-          class="css-aovx2f-BreadcrumbsDivider"
+          class="css-1kvtdkq-BreadcrumbsDivider"
           clip-rule="evenodd"
           focusable="false"
           height="24"
@@ -63,7 +63,7 @@ exports[`Breadcrumbs renders correctly 1`] = `
       >
         <svg
           aria-hidden="true"
-          class="css-aovx2f-BreadcrumbsDivider"
+          class="css-1kvtdkq-BreadcrumbsDivider"
           clip-rule="evenodd"
           focusable="false"
           height="24"
