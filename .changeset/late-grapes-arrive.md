@@ -2,6 +2,6 @@
 '@ag.ds-next/icon': major
 ---
 
-- Removed `ProgressDoneIcon` 
+- Removed `ProgressDoneIcon`
 - Added `ProgressBlockedIcon`
-- Updated `ProgressDoingIcon `and `ProgressTodoIcon`
+- Updated `ProgressTodoIcon`
