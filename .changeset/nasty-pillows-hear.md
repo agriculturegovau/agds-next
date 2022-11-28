@@ -3,4 +3,4 @@
 '@ag.ds-next/task-list': minor
 ---
 
-Add a 'cannot start yet'
+Added new status option `blocked`

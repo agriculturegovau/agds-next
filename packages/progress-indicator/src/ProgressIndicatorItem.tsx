@@ -66,7 +66,7 @@ const ProgressIndicatorItem = ({
 	...props
 }: ProgressIndicatorItemProps) => {
 	const active = status === 'doing';
-	const { Icon, color, label } = statusMap[status];
+	const { icon: Icon, iconColor, label } = statusMap[status];
 	return (
 		<Box as="li" borderBottom>
 			<Flex
@@ -93,7 +93,7 @@ const ProgressIndicatorItem = ({
 				}}
 				{...props}
 			>
-				<Icon size="md" color={color} />
+				<Icon size="md" color={iconColor} />
 				<Flex as="span" flexDirection="column" gap={0}>
 					<Text color="muted" fontSize="xs" lineHeight="nospace">
 						{label}
@@ -107,11 +107,23 @@ const ProgressIndicatorItem = ({
 
 const statusMap = {
 	blocked: {
-		Icon: ProgressBlockedIcon,
-		color: 'muted',
 		label: 'Cannot start yet',
+		icon: ProgressBlockedIcon,
+		iconColor: 'muted',
 	},
-	doing: { Icon: ProgressDoingIcon, label: 'In progress', color: 'action' },
-	todo: { Icon: ProgressTodoIcon, label: 'Not started', color: 'action' },
-	done: { Icon: SuccessFilledIcon, label: 'Completed', color: 'success' },
+	doing: {
+		label: 'In progress',
+		icon: ProgressDoingIcon,
+		iconColor: 'action',
+	},
+	todo: {
+		label: 'Not started',
+		icon: ProgressTodoIcon,
+		iconColor: 'action',
+	},
+	done: {
+		label: 'Completed',
+		icon: SuccessFilledIcon,
+		iconColor: 'success',
+	},
 } as const;

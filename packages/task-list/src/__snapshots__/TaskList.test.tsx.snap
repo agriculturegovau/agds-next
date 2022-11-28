@@ -35,12 +35,12 @@ exports[`TaskList With anchors renders correctly 1`] = `
           class="css-1i7cdx8-boxStyles"
         >
           <span
-            class="css-d605vf-boxStyles-Text"
+            class="css-1f7oqqc-boxStyles-Text"
           >
             Completed
           </span>
           <span
-            class="css-1gjfalk-boxStyles-Text-TaskListItem"
+            class="css-msykz1-boxStyles-Text-TaskListItem"
           >
             Check eligibility
           </span>
@@ -80,12 +80,12 @@ exports[`TaskList With anchors renders correctly 1`] = `
           class="css-1i7cdx8-boxStyles"
         >
           <span
-            class="css-d605vf-boxStyles-Text"
+            class="css-1f7oqqc-boxStyles-Text"
           >
             Completed
           </span>
           <span
-            class="css-1gjfalk-boxStyles-Text-TaskListItem"
+            class="css-msykz1-boxStyles-Text-TaskListItem"
           >
             Lorem ipsum dolor sit amet
           </span>
@@ -125,12 +125,12 @@ exports[`TaskList With anchors renders correctly 1`] = `
           class="css-1i7cdx8-boxStyles"
         >
           <span
-            class="css-d605vf-boxStyles-Text"
+            class="css-1f7oqqc-boxStyles-Text"
           >
             In progress
           </span>
           <span
-            class="css-1gjfalk-boxStyles-Text-TaskListItem"
+            class="css-msykz1-boxStyles-Text-TaskListItem"
           >
             Case Studies
           </span>
@@ -170,12 +170,12 @@ exports[`TaskList With anchors renders correctly 1`] = `
           class="css-1i7cdx8-boxStyles"
         >
           <span
-            class="css-d605vf-boxStyles-Text"
+            class="css-1f7oqqc-boxStyles-Text"
           >
             Not started
           </span>
           <span
-            class="css-1gjfalk-boxStyles-Text-TaskListItem"
+            class="css-msykz1-boxStyles-Text-TaskListItem"
           >
             Review and submit
           </span>
@@ -226,12 +226,12 @@ exports[`TaskList With buttons renders correctly 1`] = `
           class="css-1i7cdx8-boxStyles"
         >
           <span
-            class="css-d605vf-boxStyles-Text"
+            class="css-1f7oqqc-boxStyles-Text"
           >
             Completed
           </span>
           <span
-            class="css-1gjfalk-boxStyles-Text-TaskListItem"
+            class="css-msykz1-boxStyles-Text-TaskListItem"
           >
             Check eligibility
           </span>
@@ -271,12 +271,12 @@ exports[`TaskList With buttons renders correctly 1`] = `
           class="css-1i7cdx8-boxStyles"
         >
           <span
-            class="css-d605vf-boxStyles-Text"
+            class="css-1f7oqqc-boxStyles-Text"
           >
             Completed
           </span>
           <span
-            class="css-1gjfalk-boxStyles-Text-TaskListItem"
+            class="css-msykz1-boxStyles-Text-TaskListItem"
           >
             Lorem ipsum dolor sit amet
           </span>
@@ -316,12 +316,12 @@ exports[`TaskList With buttons renders correctly 1`] = `
           class="css-1i7cdx8-boxStyles"
         >
           <span
-            class="css-d605vf-boxStyles-Text"
+            class="css-1f7oqqc-boxStyles-Text"
           >
             In progress
           </span>
           <span
-            class="css-1gjfalk-boxStyles-Text-TaskListItem"
+            class="css-msykz1-boxStyles-Text-TaskListItem"
           >
             Case Studies
           </span>
@@ -361,12 +361,12 @@ exports[`TaskList With buttons renders correctly 1`] = `
           class="css-1i7cdx8-boxStyles"
         >
           <span
-            class="css-d605vf-boxStyles-Text"
+            class="css-1f7oqqc-boxStyles-Text"
           >
             Not started
           </span>
           <span
-            class="css-1gjfalk-boxStyles-Text-TaskListItem"
+            class="css-msykz1-boxStyles-Text-TaskListItem"
           >
             Review and submit
           </span>
