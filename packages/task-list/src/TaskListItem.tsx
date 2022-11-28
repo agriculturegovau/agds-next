@@ -147,7 +147,7 @@ const statusMap = {
 	todo: {
 		label: 'Not started',
 		icon: ProgressTodoIcon,
-		iconColor: 'border',
+		iconColor: 'action',
 	},
 	done: {
 		label: 'Completed',
