@@ -70,7 +70,7 @@ Use the template below and update the following details:
 
 > ⚠️ Note: All releases under the `@ag.ds-next` package scope should be considered alpha pre-releases. Expect breaking changes. Once we are happy with the state of the core packages we will migrate all packages to `@ag.ds`.
 
-### **View the [complete release notes on the AG DS website](https://design-system.agriculture.gov.au/releases/YYYY-MM-DD)**.
+### **View the [complete release notes on the AG DS website](https://design-system.agriculture.gov.au/updates/YYYY-MM-DD)**.
 
 ```sh
 "@ag.ds-next/core": "x.x.x"
@@ -79,7 +79,7 @@ Use the template below and update the following details:
 
 ## Changelog
 
-Aside from the [complete release notes on the @ag.ds-next website](https://design-system.agriculture.gov.au/releases/YYYY-MM-DD), you can also view the [verbose change log](https://github.com/steelthreads/agds-next/pull/XXXX) in the related PR (https://github.com/steelthreads/agds-next/pull/XXXX) for this release.
+Aside from the [complete release notes on the @ag.ds-next website](https://design-system.agriculture.gov.au/updates/YYYY-MM-DD), you can also view the [verbose change log](https://github.com/steelthreads/agds-next/pull/XXXX) in the related PR (https://github.com/steelthreads/agds-next/pull/XXXX) for this release.
 
 ---
 

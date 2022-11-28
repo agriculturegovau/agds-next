@@ -22,7 +22,7 @@ const NAV_ITEMS = {
 		{ label: 'Components', href: '/components' },
 		{ label: 'Templates', href: '/templates' },
 		{ label: 'Guides', href: '/guides' },
-		{ label: 'Releases', href: '/releases' },
+		{ label: 'Updates', href: '/updates' },
 	],
 	secondary: [
 		{
