@@ -1,7 +1,7 @@
 import '@testing-library/jest-dom';
 import 'html-validate/jest';
 import userEvent from '@testing-library/user-event';
-import { cleanup, render, screen } from '../../../test-utils';
+import { cleanup, render } from '../../../test-utils';
 import { SearchInput, SearchInputProps } from './SearchInput';
 
 afterEach(cleanup);

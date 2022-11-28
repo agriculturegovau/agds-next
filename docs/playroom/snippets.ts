@@ -793,6 +793,11 @@ items={[
       </SummaryListItem>
     </SummaryList>`,
 	},
+	{
+		group: 'SearchInput',
+		name: 'Basic',
+		code: `<SearchInput label="Search" />`,
+	},
 ];
 
 export default snippets;
