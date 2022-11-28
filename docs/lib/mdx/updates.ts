@@ -50,7 +50,7 @@ export function getUpdatesList() {
 	);
 }
 
-function updateNavMetaData(
+function getUpdateNavMetaData(
 	slug: string,
 	data: Awaited<ReturnType<typeof getMarkdownData>>['data']
 ) {
@@ -62,7 +62,7 @@ function updateNavMetaData(
 
 export function getUpdateBreadcrumbs(slug: string) {
 	return getMarkdownData(updatePath(slug)).then(({ data }) => {
-		const meta = updateNavMetaData(slug, data);
+		const meta = getUpdateNavMetaData(slug, data);
 		return [
 			{ href: '/', label: 'Home' },
 			{ href: '/updates', label: 'Updates' },
