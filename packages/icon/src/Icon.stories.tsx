@@ -47,3 +47,5 @@ AllIcons.args = {
 	size: 'md',
 	weight: 'regular',
 };
+
+export const ResponsiveSizes = () => <AlertIcon size={['sm', 'lg']} />;
