@@ -71,7 +71,7 @@ const TaskListItem = ({
 	...props
 }: TaskListItemProps) => {
 	const active = status === 'doing';
-	const { Icon, color, label } = statusMap[status];
+	const { icon: Icon, iconColor, label } = statusMap[status];
 	return (
 		<li css={{ counterIncrement: 'task-count' }}>
 			<Flex
@@ -98,7 +98,7 @@ const TaskListItem = ({
 			>
 				<Icon
 					size="md"
-					color={color}
+					color={iconColor}
 					css={{
 						// Use padding to ensure the icon is aligned centered with the status label and title
 						paddingTop: '0.75rem',
@@ -135,11 +135,23 @@ const TaskListItem = ({
 
 const statusMap = {
 	blocked: {
-		Icon: ProgressBlockedIcon,
-		color: 'muted',
 		label: 'Cannot start yet',
+		icon: ProgressBlockedIcon,
+		iconColor: 'muted',
 	},
-	doing: { Icon: ProgressDoingIcon, label: 'In progress', color: 'action' },
-	todo: { Icon: ProgressTodoIcon, label: 'Not started', color: 'action' },
-	done: { Icon: SuccessFilledIcon, label: 'Completed', color: 'success' },
+	doing: {
+		label: 'In progress',
+		icon: ProgressDoingIcon,
+		iconColor: 'action',
+	},
+	todo: {
+		label: 'Not started',
+		icon: ProgressTodoIcon,
+		iconColor: 'action',
+	},
+	done: {
+		label: 'Completed',
+		icon: SuccessFilledIcon,
+		iconColor: 'success',
+	},
 } as const;
