@@ -109,7 +109,7 @@ const statusMap = {
 	blocked: {
 		label: 'Cannot start yet',
 		icon: ProgressBlockedIcon,
-		iconColor: 'muted',
+		iconColor: 'border',
 	},
 	doing: {
 		label: 'In progress',
@@ -119,7 +119,7 @@ const statusMap = {
 	todo: {
 		label: 'Not started',
 		icon: ProgressTodoIcon,
-		iconColor: 'action',
+		iconColor: 'border',
 	},
 	done: {
 		label: 'Completed',
