@@ -40,6 +40,12 @@ Required.args = {
 	required: true,
 };
 
+export const HideOptionalLabel = Template.bind({});
+HideOptionalLabel.args = {
+	...defaultArgs,
+	hideOptionalLabel: true,
+};
+
 export const Disabled = Template.bind({});
 Disabled.args = {
 	...defaultArgs,

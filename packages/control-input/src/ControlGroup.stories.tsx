@@ -45,10 +45,16 @@ CheckboxGroupBlock.storyName = 'Checkbox group block';
 export const CheckboxGroupRequired = CheckboxTemplate.bind({});
 CheckboxGroupRequired.args = {
 	...checkboxDefaultArgs,
-
 	required: true,
 };
 CheckboxGroupRequired.storyName = 'Checkbox group required';
+
+export const CheckboxGroupHideOptionalLabel = CheckboxTemplate.bind({});
+CheckboxGroupHideOptionalLabel.args = {
+	...checkboxDefaultArgs,
+	hideOptionalLabel: true,
+};
+CheckboxGroupRequired.storyName = 'Checkbox group hide optional label';
 
 export const CheckboxGroupInvalid = CheckboxTemplate.bind({});
 CheckboxGroupInvalid.args = {
@@ -99,6 +105,13 @@ RadioGroupRequired.args = {
 	required: true,
 };
 RadioGroupRequired.storyName = 'Radio group required';
+
+export const RadioGroupHideOptionalLabel = RadioTemplate.bind({});
+RadioGroupHideOptionalLabel.args = {
+	...radioDefaultArgs,
+	hideOptionalLabel: true,
+};
+RadioGroupRequired.storyName = 'Radio group hide optional label';
 
 export const RadioGroupInvalid = RadioTemplate.bind({});
 RadioGroupInvalid.args = {

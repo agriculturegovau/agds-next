@@ -61,7 +61,7 @@ export const ControlGroup = ({
 						<FieldLabel
 							as="legend"
 							required={required}
-							hideOptionalLabel={Boolean(hideOptionalLabel)}
+							hideOptionalLabel={hideOptionalLabel}
 						>
 							{label}
 						</FieldLabel>

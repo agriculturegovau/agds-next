@@ -11,39 +11,43 @@ export default {
 	component: Field,
 } as ComponentMeta<typeof Field>;
 
-export const Basic: ComponentStory<typeof Field> = (args) => (
+const Template: ComponentStory<typeof Field> = (args) => (
 	<Field {...args}>{(a11yProps) => <input {...a11yProps} />}</Field>
 );
+
+export const Basic = Template.bind({});
 Basic.args = {
-	label: 'Basic',
+	label: 'Example',
 };
-export const Required: ComponentStory<typeof Field> = (args) => (
-	<Field {...args}>{(a11yProps) => <input {...a11yProps} />}</Field>
-);
+
+export const Required = Template.bind({});
 Required.args = {
-	label: 'Basic',
+	label: 'Example',
 	required: true,
 };
 
-export const Invalid: ComponentStory<typeof Field> = (args) => (
-	<Field {...args}>{(a11yProps) => <input {...a11yProps} />}</Field>
-);
+export const Invalid = Template.bind({});
 Invalid.args = {
-	label: 'Invalid',
+	label: 'Example',
 	message: 'This field is invalid',
 	invalid: true,
 };
 
-export const SecondaryLabel: ComponentStory<typeof Field> = (args) => (
-	<Field {...args}>{(a11yProps) => <input {...a11yProps} />}</Field>
-);
+export const SecondaryLabel = Template.bind({});
 SecondaryLabel.args = {
-	label: 'Label',
+	label: 'Example',
 	secondaryLabel: '(dd/mm/yyy)',
+};
+
+export const HideOptionalLabel = Template.bind({});
+HideOptionalLabel.args = {
+	label: 'Example',
+	hideOptionalLabel: true,
 };
 
 export const Modular: ComponentStory<typeof Field> = ({
 	label,
+	hideOptionalLabel,
 	secondaryLabel,
 	hint,
 	message,
@@ -65,6 +69,7 @@ export const Modular: ComponentStory<typeof Field> = ({
 				htmlFor={fieldId}
 				required={required}
 				secondaryLabel={secondaryLabel}
+				hideOptionalLabel={hideOptionalLabel}
 			>
 				{label}
 			</FieldLabel>
@@ -77,7 +82,8 @@ export const Modular: ComponentStory<typeof Field> = ({
 	);
 };
 Modular.args = {
-	label: 'Label',
-	hint: 'Hint',
+	label: 'Example',
+	hint: 'Hint text',
 	message: 'Message',
+	invalid: true,
 };

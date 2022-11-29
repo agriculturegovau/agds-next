@@ -172,7 +172,7 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 		return (
 			<Field
 				label={label}
-				hideOptionalLabel={Boolean(hideOptionalLabel)}
+				hideOptionalLabel={hideOptionalLabel}
 				required={Boolean(required)}
 				hint={hint}
 				message={message || errorSummary}

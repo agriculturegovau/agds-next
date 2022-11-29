@@ -44,6 +44,12 @@ Required.args = {
 	required: true,
 };
 
+export const HideOptionalLabel = Template.bind({});
+HideOptionalLabel.args = {
+	label: 'Drivers licence',
+	hideOptionalLabel: true,
+};
+
 export const Disabled = Template.bind({});
 Disabled.args = {
 	label: 'Drivers licence',

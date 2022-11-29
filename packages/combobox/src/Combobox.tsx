@@ -154,7 +154,7 @@ export function Combobox<Option extends DefaultComboboxOption>({
 		<div css={{ position: 'relative', maxWidth }} ref={setRefEl}>
 			<Field
 				label={label}
-				hideOptionalLabel={Boolean(hideOptionalLabel)}
+				hideOptionalLabel={hideOptionalLabel}
 				required={Boolean(required)}
 				hint={hint}
 				message={message}

@@ -18,7 +18,7 @@ export type FieldProps = {
 	/** Override the default secondary label. */
 	secondaryLabel?: string;
 	/** If true, "(optional)" will never be appended to the label even when `required` is `false`. */
-	hideOptionalLabel: boolean;
+	hideOptionalLabel?: boolean;
 	/** Message to show when the field is invalid. */
 	message: string | undefined;
 	/** If false, "(optional)" will be appended to the label. */
