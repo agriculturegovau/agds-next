@@ -1,5 +1,5 @@
 import { ButtonHTMLAttributes, ElementType, PropsWithChildren } from 'react';
-import { Flex } from '@ag.ds-next/box';
+import { Box, Flex, Stack } from '@ag.ds-next/box';
 import { Text } from '@ag.ds-next/text';
 import { TextLink } from '@ag.ds-next/text-link';
 import {
@@ -53,7 +53,6 @@ export const ProgressIndicatorItemButton = ({
 type ProgressIndicatorItemProps = PropsWithChildren<{
 	as: ElementType;
 	background?: ProgressIndicatorBackground;
-	className?: string;
 	status: ProgressIndicatorItemStatus;
 }>;
 
@@ -92,71 +91,86 @@ const ProgressIndicatorItem = ({
 	background = 'body',
 	children,
 	status,
-	className,
 	...props
 }: ProgressIndicatorItemProps) => {
 	const active = status === 'doing';
 	const { label } = statusMap[status];
+
+	const listItemTimelineBeginningPathSelector =
+		'> :first-child > div:first-of-type > div:first-of-type';
+
+	const listItemTimelineEndPathSelector =
+		'> :first-child > div:first-of-type > div:last-of-type';
+
+	const listItemTextContainerSelector = '> :first-child > span:last-of-type';
+
+	const listItemLinkTextSelector = '> span:last-of-type > span:first-of-type';
+
 	return (
-		<Flex
+		<Box
 			as="li"
 			background={background}
 			css={{
-				'&:first-of-type ': {
-					'> div:first-of-type > div:first-of-type': {
+				'&:first-of-type': {
+					[listItemTimelineBeginningPathSelector]: {
 						opacity: 0,
 					},
 				},
 				'&:last-of-type': {
-					'> div:first-of-type > div:last-of-type': {
+					[listItemTimelineEndPathSelector]: {
 						opacity: 0,
 					},
-					'> button, &:last-of-type > a': {
+					[listItemTextContainerSelector]: {
 						borderBottomWidth: 0,
 					},
 				},
 			}}
 		>
-			<ProgressIndicatorItemIcon status={status} />
 			<Flex
 				as={as}
-				className={className}
-				alignItems="center"
-				gap={0.75}
-				paddingY={0.75}
-				color="text"
-				fontFamily="body"
-				fontWeight={active ? 'bold' : 'normal'}
-				borderBottom
-				width="100%"
-				focus
 				css={{
-					'.title': {
+					textDecoration: 'none',
+					[listItemLinkTextSelector]: {
 						...packs.underline,
+						color: boxPalette.foregroundAction,
+						fontWeight: active ? 'bold' : 'normal',
 					},
 					'&:hover': {
 						backgroundColor: hoverColorMap[background],
-						'.title': {
+						[listItemLinkTextSelector]: {
 							textDecoration: 'none',
+							color: boxPalette.foregroundText,
 						},
 					},
 				}}
-				{...props}
 			>
-				<Flex as="span" flexDirection="column" gap={0}>
-					<Text color="muted" fontSize="xs" lineHeight="nospace">
+				<ProgressIndicatorItemIcon status={status} />
+
+				<Stack
+					as="span"
+					flexDirection="column-reverse"
+					gap={0}
+					justifyContent="center"
+					paddingY={0.75}
+					fontFamily="body"
+					fontWeight={active ? 'bold' : 'normal'}
+					borderBottom
+					width="100%"
+					focus
+					{...props}
+				>
+					<Text>{children}</Text>
+					<Text
+						color="muted"
+						fontSize="xs"
+						lineHeight="nospace"
+						css={{ textDecoration: 'none' }}
+					>
 						{label}
 					</Text>
-					<Text
-						className="title"
-						color="action"
-						fontWeight={active ? 'bold' : 'normal'}
-					>
-						{children}
-					</Text>
-				</Flex>
+				</Stack>
 			</Flex>
-		</Flex>
+		</Box>
 	);
 };
 
