@@ -27,13 +27,19 @@ Use the `block` prop to expand the component to fill the available space.
 
 ## Required
 
-The `SearchInput` component will always append `(optional)` to the label based on the `required` prop.
+The `SearchInput` component will always append "(optional)" to the label based on the `required` prop.
+
+Use the `hideOptionalLabel` prop in situations where you want to indiciate to screen reader users that a field is optional, but don't want to show the "optional" label. When this prop is `true`, "optional" will never be appended to the label, even when `required` is `false`.
 
 ```jsx live
 <Stack gap={1}>
-	<SearchInput label="Default" />
 	<SearchInput label="Required" required />
 	<SearchInput label="Optional" required={false} />
+	<SearchInput
+		label="Optional with hideOptionalLabel"
+		required={false}
+		hideOptionalLabel={true}
+	/>
 </Stack>
 ```
 

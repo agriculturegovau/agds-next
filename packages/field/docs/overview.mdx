@@ -5,7 +5,7 @@ group: Forms
 storybookPath: /story/forms-field--basic
 ---
 
-### Field
+## Default
 
 The field component connects the label, description, and message to the input element.
 
@@ -13,15 +13,7 @@ The field component connects the label, description, and message to the input el
 <Field label="Name">{(a11yProps) => <input {...a11yProps} />}</Field>
 ```
 
-### Required
-
-```jsx live
-<Field label="Name" required>
-	{(a11yProps) => <input {...a11yProps} />}
-</Field>
-```
-
-### Label
+## Label
 
 Each text field must be accompanied by a label. Effective form labeling helps users understand what information to enter into a text input.
 
@@ -29,7 +21,7 @@ Each text field must be accompanied by a label. Effective form labeling helps us
 <Field label="Name">{(a11yProps) => <input {...a11yProps} />}</Field>
 ```
 
-### Hint
+## Hint
 
 Hints can be used to provide more context that will help the user successfully complete the form field.
 
@@ -39,7 +31,7 @@ Hints can be used to provide more context that will help the user successfully c
 </Field>
 ```
 
-### Messages
+## Messages
 
 Error messages are used to notify the user when a form field has not passed validation. Use clear messages to explain what went wrong and how to fix it.
 
@@ -53,19 +45,33 @@ Error messages are used to notify the user when a form field has not passed vali
 </Field>
 ```
 
-### Required
+## Required
 
-The `Field` component will always append `(optional)` to the label based on the `required` prop.
+The `Field` component will always append "(optional)" to the label based on the `required` prop.
+
+Use the `hideOptionalLabel` prop in situations where you want to indiciate to screen reader users that a field is optional, but don't want to show the "optional" label. When this prop is `true`, "optional" will never be appended to the label, even when `required` is `false`.
 
 ```jsx live
-<Field label="Start date" required={false}>
-	{(a11yProps) => <select {...a11yProps} />}
-</Field>
+<Stack gap={1}>
+	<Field label="Required" required={true}>
+		{(a11yProps) => <input {...a11yProps} />}
+	</Field>
+	<Field label="Optional" required={false}>
+		{(a11yProps) => <input {...a11yProps} />}
+	</Field>
+	<Field
+		label="Optional with hideOptionalLabel"
+		required={false}
+		hideOptionalLabel={true}
+	>
+		{(a11yProps) => <input {...a11yProps} />}
+	</Field>
+</Stack>
 ```
 
 ## Hooks
 
-### `useScrollToField`
+## `useScrollToField`
 
 By default, the browser will scroll the target into view. Because our labels or legends appear above the input, this means the user will be presented with an input without any context, as the label or legend will be off the top of the screen. Manually handling the click event, scrolling the question into view and then focussing the element solves this.
 
