@@ -28,6 +28,8 @@ type BaseSearchInputProps = {
 export type SearchInputProps = BaseSearchInputProps & {
 	/** Describes the purpose of the field. */
 	label: string;
+	/** If true, the secondary label will not be rendered.  */
+	hideOptionalLabel?: boolean;
 	/** If false, "(optional)" will be appended to the label. */
 	required?: boolean;
 	/** Provides extra information about the field. */
@@ -48,6 +50,7 @@ export const SearchInput = forwardRef<HTMLInputElement, SearchInputProps>(
 	function SearchInput(
 		{
 			label,
+			hideOptionalLabel,
 			required,
 			hint,
 			message,
@@ -99,6 +102,7 @@ export const SearchInput = forwardRef<HTMLInputElement, SearchInputProps>(
 		return (
 			<Field
 				label={label}
+				hideOptionalLabel={hideOptionalLabel}
 				required={Boolean(required)}
 				hint={hint}
 				message={message}
