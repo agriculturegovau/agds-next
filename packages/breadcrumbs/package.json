@@ -10,6 +10,7 @@
 	"devDependencies": {
 		"@ag.ds-next/a11y": "*",
 		"@ag.ds-next/box": "*",
+		"@ag.ds-next/button": "*",
 		"@ag.ds-next/core": "*",
 		"@ag.ds-next/icon": "*",
 		"@ag.ds-next/text": "*",
@@ -20,6 +21,7 @@
 	"peerDependencies": {
 		"@ag.ds-next/a11y": "1.2.2",
 		"@ag.ds-next/box": "8.0.0",
+		"@ag.ds-next/button": "12.0.0",
 		"@ag.ds-next/core": "4.1.0",
 		"@ag.ds-next/icon": "12.0.0",
 		"@ag.ds-next/text": "11.0.0",
