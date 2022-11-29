@@ -41,6 +41,8 @@ Required.args = {
 export const HideOptionalLabel = Template.bind({});
 HideOptionalLabel.args = {
 	label: 'Example',
+	placeholder: 'Please select',
+	options: EXAMPLE_OPTIONS,
 	hideOptionalLabel: true,
 };
 

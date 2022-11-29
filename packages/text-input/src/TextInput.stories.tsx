@@ -59,15 +59,13 @@ Block.args = {
 export const MaxWidths: ComponentStory<typeof TextInput> = (args) => (
 	<Stack gap={1}>
 		{(['xs', 'sm', 'md', 'lg', 'xl'] as const).map((size) => (
-			<TextInput key={size} {...args} label={size} maxWidth={} />
+			<TextInput key={size} {...args} label={size} maxWidth={size} />
 		))}
 	</Stack>
 );
 MaxWidths.args = {};
 
-export const Password: ComponentStory<typeof TextInput> = (args) => (
-	<TextInput {...args} />
-);
+export const Password = Template.bind({});
 Password.args = {
 	label: 'Password',
 	type: 'password',

@@ -4,7 +4,7 @@ import { Text } from '@ag.ds-next/text';
 
 export type FieldLabelProps = PropsWithChildren<{
 	as?: ElementType;
-	htmlFor: string;
+	htmlFor?: string;
 	required: boolean;
 	secondaryLabel?: string;
 	hideOptionalLabel?: boolean;
