@@ -1,3 +1,4 @@
+import { forwardRef } from 'react';
 import { Flex } from '@ag.ds-next/box';
 import { Text } from '@ag.ds-next/text';
 import { TextLink } from '@ag.ds-next/text-link';
@@ -6,12 +7,15 @@ import { BreadcrumbsDivider } from './BreadcrumbsDivider';
 
 export type BreadcrumbsItemProps = LinkProps;
 
-export const BreadcrumbsItem = (props: BreadcrumbsItemProps) => {
+export const BreadcrumbsItem = forwardRef<
+	HTMLAnchorElement,
+	BreadcrumbsItemProps
+>(function BreadcrumbsItem(props, ref) {
 	const { children, href } = props;
 	return (
 		<Flex as="li" alignItems="center" gap={0.5}>
 			<BreadcrumbsDivider />
-			{href ? <TextLink {...props} /> : <Text>{children}</Text>}
+			{href ? <TextLink ref={ref} {...props} /> : <Text>{children}</Text>}
 		</Flex>
 	);
-};
+});

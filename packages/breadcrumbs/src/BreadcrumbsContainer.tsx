@@ -4,11 +4,13 @@ import { tokens } from '@ag.ds-next/core';
 
 export type BreadcrumbsContainerProps = PropsWithChildren<{
 	'aria-label': string;
+	isExpanded?: boolean;
 }>;
 
 export const BreadcrumbsContainer = ({
 	children,
 	'aria-label': ariaLabel,
+	isExpanded,
 }: BreadcrumbsContainerProps) => (
 	<nav aria-label={ariaLabel}>
 		<Flex
@@ -17,22 +19,24 @@ export const BreadcrumbsContainer = ({
 			alignItems="center"
 			flexWrap="wrap"
 			css={{
-				// In desktop, hide the `BreadcrumbsDivider` from the first item
-				[tokens.mediaQuery.min.sm]: {
-					'li:first-of-type > svg': {
-						display: 'none',
-					},
+				// Hide the `BreadcrumbDivider`
+				'li:first-of-type > svg': {
+					display: 'none',
 				},
-				[tokens.mediaQuery.max.xs]: {
-					// In mobile, hide all items except the second last item
-					'li:not(:nth-last-of-type(2))': {
-						display: 'none',
+				...(!isExpanded && {
+					// Hide the `BreadcrumbToggle`
+					[tokens.mediaQuery.min.md]: {
+						'li:nth-of-type(2)': {
+							display: 'none',
+						},
 					},
-					// In mobile, rotate the `BreadcrumbsDivider` icon
-					'li > svg': {
-						transform: 'rotate(180deg)',
+					// Hide the approritate list items
+					[tokens.mediaQuery.max.sm]: {
+						'li:not(:nth-of-type(-n+2)):not(:last-of-type)': {
+							display: isExpanded ? undefined : 'none',
+						},
 					},
-				},
+				}),
 			}}
 		>
 			{children}

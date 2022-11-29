@@ -18,8 +18,10 @@ export default {
 
 const exampleLinks = [
 	{ href: '#', label: 'Home' },
+	{ href: '#', label: 'Services' },
 	{ href: '#', label: 'Establishments' },
-	{ label: 'Applications' },
+	{ href: '#', label: 'Applications' },
+	{ label: 'ABC123' },
 ];
 
 export const Basic: ComponentStory<typeof Breadcrumbs> = (args) => (
