@@ -18,13 +18,14 @@ export const Breadcrumbs = ({
 	links: linksProp,
 }: BreadcrumbsProps) => {
 	const firstLinkRef = useRef<HTMLAnchorElement>(null);
-	const [isExpanded, setIsExpanded] = useState(false);
 
 	const { label: firstLinkLabel, ...firstLink } = linksProp[0];
 	const { label: lastLinkLabel, ...lastLink } = linksProp[linksProp.length - 1];
 	const links = linksProp.filter(
 		(_, index) => !(index === 0 || index === linksProp.length - 1)
 	);
+
+	const [isExpanded, setIsExpanded] = useState(!links.length);
 
 	const onToggleClick = () => {
 		setIsExpanded(true);
@@ -36,7 +37,9 @@ export const Breadcrumbs = ({
 			<BreadcrumbsItem ref={firstLinkRef} {...firstLink}>
 				{firstLinkLabel}
 			</BreadcrumbsItem>
-			{!isExpanded && <BreadcrumbsToggle onClick={onToggleClick} />}
+			{!isExpanded && links.length ? (
+				<BreadcrumbsToggle onClick={onToggleClick} />
+			) : null}
 			{links.map(({ label, ...props }, index) => (
 				<BreadcrumbsItem key={index} {...props}>
 					{label}

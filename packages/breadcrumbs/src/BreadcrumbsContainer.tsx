@@ -30,7 +30,7 @@ export const BreadcrumbsContainer = ({
 							display: 'none',
 						},
 					},
-					// Hide the approritate list items
+					// Hide the appropriate list items
 					[tokens.mediaQuery.max.sm]: {
 						'li:not(:nth-of-type(-n+2)):not(:last-of-type)': {
 							display: isExpanded ? undefined : 'none',
