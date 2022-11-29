@@ -28,20 +28,15 @@ Basic.args = {
 	],
 };
 
-export const SmallList = Template.bind({});
-SmallList.args = {
-	links: [{ href: '#', label: 'Home' }, { label: 'Services' }],
-};
-
 export const LargeList = Template.bind({});
 LargeList.args = {
 	links: [
-		{ href: '#', label: 'One' },
-		{ href: '#', label: 'Two' },
-		{ href: '#', label: 'Three' },
-		{ href: '#', label: 'Four' },
-		{ href: '#', label: 'Five' },
-		{ label: 'Six' },
+		{ href: '#', label: 'Home' },
+		{ href: '#', label: 'Lorem' },
+		{ href: '#', label: 'Ipsum' },
+		{ href: '#', label: 'Sit amet consectetur' },
+		{ href: '#', label: 'Adipiscing Elit' },
+		{ label: 'Aenean euismod' },
 	],
 };
 
