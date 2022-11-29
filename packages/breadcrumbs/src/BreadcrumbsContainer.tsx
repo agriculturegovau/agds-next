@@ -19,18 +19,18 @@ export const BreadcrumbsContainer = ({
 			alignItems="center"
 			flexWrap="wrap"
 			css={{
-				// Hide the `BreadcrumbDivider`
+				// Hide the divider in the first list item
 				'li:first-of-type > svg': {
 					display: 'none',
 				},
 				...(!isExpanded && {
-					// Hide the `BreadcrumbToggle`
+					// Hide the toggle button on desktops
 					[tokens.mediaQuery.min.md]: {
 						'li:nth-of-type(2)': {
 							display: 'none',
 						},
 					},
-					// Hide the appropriate list items
+					// Hide the appropriate list items on mobile
 					[tokens.mediaQuery.max.sm]: {
 						'li:not(:nth-of-type(-n+2)):not(:last-of-type)': {
 							display: isExpanded ? undefined : 'none',
