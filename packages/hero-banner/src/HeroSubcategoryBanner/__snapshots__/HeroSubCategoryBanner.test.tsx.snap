@@ -18,7 +18,7 @@ exports[`HeroSubcategoryBanner renders correctly 1`] = `
             aria-label="breadcrumb"
           >
             <ol
-              class="css-1v3a3t5-boxStyles-BreadcrumbsContainer"
+              class="css-njrw75-boxStyles-BreadcrumbsContainer"
             >
               <li
                 class="css-1xkbxzi-boxStyles"
@@ -44,6 +44,41 @@ exports[`HeroSubcategoryBanner renders correctly 1`] = `
                 >
                   Section 1
                 </a>
+              </li>
+              <li
+                class="css-1xkbxzi-boxStyles"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="css-1kvtdkq-BreadcrumbsDivider"
+                  clip-rule="evenodd"
+                  focusable="false"
+                  height="24"
+                  role="img"
+                  viewBox="0 0 24 24"
+                  width="24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M8 3L17 12L8 21"
+                  />
+                </svg>
+                <span
+                  class="css-6j1v6l-boxStyles-Text"
+                >
+                  <button
+                    aria-expanded="false"
+                    aria-label="Expand list"
+                    class="css-10vsrbp-BaseButton-boxStyles"
+                    type="button"
+                  >
+                    <span
+                      class="css-goz1ed-boxStyles-Text"
+                    >
+                      …
+                    </span>
+                  </button>
+                </span>
               </li>
               <li
                 class="css-1xkbxzi-boxStyles"
