@@ -42,9 +42,15 @@ Use the `block` prop to expand the component to fill the available space.
 
 ## Required
 
-The `Select` component will always append `(optional)` to the label based on the `required` prop.
+The `required` prop can be used to indicate that user input is required on the field before a form can be submitted.
 
-Use the `hideOptionalLabel` prop in situations where you want to indiciate to screen reader users that a field is optional, but don't want to show the "optional" label. When this prop is `true`, "optional" will never be appended to the label, even when `required` is `false`.
+Using the `required` prop, this component will automatically append "(optional)" to the label as well as using [aria-required](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-required) to indicate to screen reader user that the field is required.
+
+### Hide optional label
+
+The `hideOptionalLabel` prop can be used in situations where you want to indiciate to screen reader users that a field is optional but don't want to show the "(optional)" label.
+
+The usage of `hideOptionalLabel` should be reserved for filter forms and should never be used in standard forms for submitting information.
 
 ```jsx live
 <Stack gap={1}>
