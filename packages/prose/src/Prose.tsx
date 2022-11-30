@@ -38,7 +38,8 @@ export const proseClass = css({
 		...fontGrid('sm', 'default'),
 	},
 
-	'&:empty': {
+	/** Hide the container when there is no content. */
+	[`&:not(.${unsetProseStylesClassname}:empty)`]: {
 		display: 'none',
 	},
 
