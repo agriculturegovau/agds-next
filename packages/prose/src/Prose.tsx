@@ -39,7 +39,7 @@ export const proseClass = css({
 	},
 
 	/** Hide the container when there is no content. */
-	[`&:not(.${unsetProseStylesClassname}:empty)`]: {
+	[`&:empty:not(.${unsetProseStylesClassname})`]: {
 		display: 'none',
 	},
 
