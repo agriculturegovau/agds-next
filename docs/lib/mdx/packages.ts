@@ -97,6 +97,7 @@ function pkgNavMetaData(
 		title: (data?.title ?? slug) as string,
 		group: slugify(data?.group ?? 'Other') as string,
 		groupName: (data?.group ?? 'Other') as string,
+		description: (data?.description ?? null) as string | null,
 		slug,
 	};
 }
