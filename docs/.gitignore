@@ -41,3 +41,7 @@ yarn-error.log*
 
 # generated component props data
 __generated__
+
+# generated sitemap files
+/public/robots.txt
+/public/sitemap*.xml
