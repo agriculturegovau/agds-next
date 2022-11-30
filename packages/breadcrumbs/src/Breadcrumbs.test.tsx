@@ -39,6 +39,6 @@ describe('Breadcrumbs', () => {
 	it('announces "current page" to screen reader users', async () => {
 		renderBreadcrumbs({});
 		const el = await screen.getByText('Applications');
-		expect(el.parentElement?.textContent).toBe('Applications (current page)');
+		expect(el.textContent).toBe('Applications (current page)');
 	});
 });

@@ -18,10 +18,10 @@ exports[`HeroSubcategoryBanner renders correctly 1`] = `
             aria-label="breadcrumb"
           >
             <ol
-              class="css-1v3a3t5-boxStyles-BreadcrumbsContainer"
+              class="css-njrw75-boxStyles-BreadcrumbsContainer"
             >
               <li
-                class="css-1xkbxzi-boxStyles"
+                class="css-962g7u-boxStyles"
               >
                 <svg
                   aria-hidden="true"
@@ -46,7 +46,34 @@ exports[`HeroSubcategoryBanner renders correctly 1`] = `
                 </a>
               </li>
               <li
-                class="css-1xkbxzi-boxStyles"
+                class="css-962g7u-boxStyles"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="css-1kvtdkq-BreadcrumbsDivider"
+                  clip-rule="evenodd"
+                  focusable="false"
+                  height="24"
+                  role="img"
+                  viewBox="0 0 24 24"
+                  width="24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M8 3L17 12L8 21"
+                  />
+                </svg>
+                <button
+                  aria-expanded="false"
+                  aria-label="Expand list"
+                  class="css-f25yvk-BaseButton-boxStyles"
+                  type="button"
+                >
+                  …
+                </button>
+              </li>
+              <li
+                class="css-962g7u-boxStyles"
               >
                 <svg
                   aria-hidden="true"
@@ -71,7 +98,7 @@ exports[`HeroSubcategoryBanner renders correctly 1`] = `
                 </a>
               </li>
               <li
-                class="css-1xkbxzi-boxStyles"
+                class="css-962g7u-boxStyles"
               >
                 <svg
                   aria-hidden="true"
@@ -88,15 +115,11 @@ exports[`HeroSubcategoryBanner renders correctly 1`] = `
                     d="M8 3L17 12L8 21"
                   />
                 </svg>
+                Subcategory page
                 <span
-                  class="css-6j1v6l-boxStyles-Text"
+                  class="css-avudkd-VisuallyHidden"
                 >
-                  Subcategory page
-                  <span
-                    class="css-avudkd-VisuallyHidden"
-                  >
-                     (current page)
-                  </span>
+                   (current page)
                 </span>
               </li>
             </ol>
