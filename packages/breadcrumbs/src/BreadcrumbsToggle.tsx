@@ -1,6 +1,5 @@
 import { MouseEventHandler } from 'react';
 import { BaseButton } from '@ag.ds-next/button';
-import { Text } from '@ag.ds-next/text';
 import { Flex } from '@ag.ds-next/box';
 import { BreadcrumbsItem } from './BreadcrumbsItem';
 
@@ -13,14 +12,16 @@ export function BreadcrumbsToggle({ onClick }: BreadcrumbsToggleProps) {
 		<BreadcrumbsItem>
 			<Flex
 				as={BaseButton}
+				onClick={onClick}
 				aria-label="Expand list"
 				aria-expanded="false"
 				alignItems="center"
 				justifyContent="center"
-				onClick={onClick}
+				fontSize="sm"
 				focus
+				link
 			>
-				<Text color="action">&hellip;</Text>
+				&hellip;
 			</Flex>
 		</BreadcrumbsItem>
 	);

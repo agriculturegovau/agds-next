@@ -9,7 +9,7 @@ exports[`Breadcrumbs renders correctly 1`] = `
       class="css-njrw75-boxStyles-BreadcrumbsContainer"
     >
       <li
-        class="css-1xkbxzi-boxStyles"
+        class="css-962g7u-boxStyles"
       >
         <svg
           aria-hidden="true"
@@ -34,7 +34,7 @@ exports[`Breadcrumbs renders correctly 1`] = `
         </a>
       </li>
       <li
-        class="css-1xkbxzi-boxStyles"
+        class="css-962g7u-boxStyles"
       >
         <svg
           aria-hidden="true"
@@ -51,25 +51,17 @@ exports[`Breadcrumbs renders correctly 1`] = `
             d="M8 3L17 12L8 21"
           />
         </svg>
-        <span
-          class="css-6j1v6l-boxStyles-Text"
+        <button
+          aria-expanded="false"
+          aria-label="Expand list"
+          class="css-f25yvk-BaseButton-boxStyles"
+          type="button"
         >
-          <button
-            aria-expanded="false"
-            aria-label="Expand list"
-            class="css-10vsrbp-BaseButton-boxStyles"
-            type="button"
-          >
-            <span
-              class="css-goz1ed-boxStyles-Text"
-            >
-              …
-            </span>
-          </button>
-        </span>
+          …
+        </button>
       </li>
       <li
-        class="css-1xkbxzi-boxStyles"
+        class="css-962g7u-boxStyles"
       >
         <svg
           aria-hidden="true"
@@ -94,7 +86,7 @@ exports[`Breadcrumbs renders correctly 1`] = `
         </a>
       </li>
       <li
-        class="css-1xkbxzi-boxStyles"
+        class="css-962g7u-boxStyles"
       >
         <svg
           aria-hidden="true"
@@ -111,15 +103,11 @@ exports[`Breadcrumbs renders correctly 1`] = `
             d="M8 3L17 12L8 21"
           />
         </svg>
+        Applications
         <span
-          class="css-6j1v6l-boxStyles-Text"
+          class="css-avudkd-VisuallyHidden"
         >
-          Applications
-          <span
-            class="css-avudkd-VisuallyHidden"
-          >
-             (current page)
-          </span>
+           (current page)
         </span>
       </li>
     </ol>
