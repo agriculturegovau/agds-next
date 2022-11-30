@@ -8,8 +8,8 @@ import {
 	useToggleState,
 	useWindowSize,
 } from '@ag.ds-next/core';
+import { Box } from '@ag.ds-next/box';
 import { ProgressIndicatorCollapseButton } from './ProgressIndicatorCollapseButton';
-import { ProgressIndicatorContainer } from './ProgressIndicatorContainer';
 import {
 	ProgressIndicatorItem,
 	ProgressIndicatorItemButton,
@@ -57,7 +57,7 @@ export const ProgressIndicator = ({
 	const isMobile = (windowWidth || 0) <= tokens.breakpoint.lg - 1;
 
 	return (
-		<ProgressIndicatorContainer>
+		<Box as="section" borderBottom>
 			<ProgressIndicatorCollapseButton
 				background={background}
 				isOpen={isOpen}
@@ -106,7 +106,7 @@ export const ProgressIndicator = ({
 					})}
 				</ProgressIndicatorList>
 			</animated.div>
-		</ProgressIndicatorContainer>
+		</Box>
 	);
 };
 

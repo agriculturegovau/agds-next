@@ -3,7 +3,6 @@ import { Box } from '@ag.ds-next/box';
 import {
 	ProgressIndicator,
 	ProgressIndicatorCollapseButton,
-	ProgressIndicatorContainer,
 	ProgressIndicatorItemButton,
 	ProgressIndicatorItemLink,
 	ProgressIndicatorList,
@@ -14,7 +13,6 @@ export default {
 	component: ProgressIndicator,
 	subcomponents: {
 		ProgressIndicatorCollapseButton,
-		ProgressIndicatorContainer,
 		ProgressIndicatorItemButton,
 		ProgressIndicatorItemLink,
 		ProgressIndicatorList,
