@@ -4,6 +4,7 @@ import {
 	BreadcrumbsDivider,
 	BreadcrumbsItem,
 	BreadcrumbsContainer,
+	BreadcrumbsToggle,
 } from './index';
 
 export default {
@@ -11,8 +12,9 @@ export default {
 	component: Breadcrumbs,
 	subcomponents: {
 		BreadcrumbsContainer,
-		BreadcrumbsItem,
 		BreadcrumbsDivider,
+		BreadcrumbsItem,
+		BreadcrumbsToggle,
 	},
 } as ComponentMeta<typeof Breadcrumbs>;
 

@@ -4,12 +4,14 @@ import { tokens } from '@ag.ds-next/core';
 
 export type BreadcrumbsContainerProps = PropsWithChildren<{
 	'aria-label': string;
+	isExpandable?: boolean;
 	isExpanded?: boolean;
 }>;
 
 export const BreadcrumbsContainer = ({
 	children,
 	'aria-label': ariaLabel,
+	isExpandable,
 	isExpanded,
 }: BreadcrumbsContainerProps) => (
 	<nav aria-label={ariaLabel}>
@@ -23,20 +25,21 @@ export const BreadcrumbsContainer = ({
 				'li:first-of-type > svg': {
 					display: 'none',
 				},
-				...(!isExpanded && {
-					// Hide the toggle button on desktops
-					[tokens.mediaQuery.min.md]: {
-						'li:nth-of-type(2)': {
-							display: 'none',
+				...(isExpandable &&
+					!isExpanded && {
+						// Hide the toggle button on desktops
+						[tokens.mediaQuery.min.md]: {
+							'li:nth-of-type(2)': {
+								display: 'none',
+							},
 						},
-					},
-					// Hide the appropriate list items on mobile
-					[tokens.mediaQuery.max.sm]: {
-						'li:not(:nth-of-type(-n+2)):not(:last-of-type)': {
-							display: isExpanded ? undefined : 'none',
+						// Hide the appropriate list items on mobile
+						[tokens.mediaQuery.max.sm]: {
+							'li:not(:nth-of-type(-n+2)):not(:last-of-type)': {
+								display: isExpanded ? undefined : 'none',
+							},
 						},
-					},
-				}),
+					}),
 			}}
 		>
 			{children}

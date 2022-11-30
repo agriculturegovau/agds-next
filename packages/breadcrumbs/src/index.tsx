@@ -1,4 +1,5 @@
 export * from './Breadcrumbs';
-export * from './BreadcrumbsDivider';
 export * from './BreadcrumbsContainer';
+export * from './BreadcrumbsDivider';
 export * from './BreadcrumbsItem';
+export * from './BreadcrumbsToggle';
