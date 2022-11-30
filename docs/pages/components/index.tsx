@@ -1,8 +1,11 @@
 import { normalize } from 'path';
+import { Fragment, useMemo, useState } from 'react';
 import { MDXRemote } from 'next-mdx-remote';
 import { Stack } from '@ag.ds-next/box';
 import { Prose } from '@ag.ds-next/prose';
 import { H2 } from '@ag.ds-next/heading';
+import { Text } from '@ag.ds-next/text';
+import { SearchInput } from '@ag.ds-next/search-input';
 import { getMarkdownData, serializeMarkdown } from '../../lib/mdxUtils';
 import {
 	getPkgGroupList,
@@ -23,6 +26,19 @@ export default function PackagesHome({
 	pkgList,
 	source,
 }: StaticProps) {
+	const [searchTerm, setSearchTerm] = useState('');
+
+	const filteredPkgs = useMemo(() => {
+		if (!searchTerm) return null;
+		return pkgList.filter((p) => {
+			return (
+				p.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+				p.groupName.toLowerCase().includes(searchTerm.toLowerCase()) ||
+				p.description?.toLowerCase().includes(searchTerm.toLowerCase())
+			);
+		});
+	}, [pkgList, searchTerm]);
+
 	return (
 		<>
 			<DocumentTitle title="Components" />
@@ -38,16 +54,36 @@ export default function PackagesHome({
 					<Prose>
 						<MDXRemote {...source} components={mdxComponents} />
 					</Prose>
-					<Stack gap={2}>
-						{groupList.map((group) => (
-							<Stack gap={1} key={group.slug}>
-								<H2>{group.title}</H2>
-								<PkgCardList
-									items={pkgList.filter((p) => p.group === group.slug)}
-								/>
-							</Stack>
-						))}
-					</Stack>
+					<div role="search" aria-label="components">
+						<SearchInput
+							label="Search components"
+							hint="Example. Search for “toggle” or “form”."
+							value={searchTerm}
+							onChange={setSearchTerm}
+							maxWidth="xl"
+							hideOptionalLabel
+						/>
+					</div>
+					{searchTerm ? (
+						filteredPkgs?.length ? (
+							<PkgCardList items={filteredPkgs} />
+						) : (
+							<Text as="p">
+								No results found. Please change your search term.
+							</Text>
+						)
+					) : (
+						<Stack gap={2}>
+							{groupList.map((group) => (
+								<Stack gap={1} key={group.slug}>
+									<H2>{group.title}</H2>
+									<PkgCardList
+										items={pkgList.filter((p) => p.group === group.slug)}
+									/>
+								</Stack>
+							))}
+						</Stack>
+					)}
 				</PageLayout>
 			</AppLayout>
 		</>
