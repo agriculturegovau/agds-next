@@ -9,23 +9,25 @@ type BreadcrumbsLink = Omit<BreadcrumbsItemProps, 'children'> & {
 };
 
 export type BreadcrumbsProps = {
+	/** Describes the navigation element to assistive technologies. */
 	'aria-label'?: string;
-	links: BreadcrumbsLink[];
+	/** The list of links. Minimum of 2 links are required. */
+	links: [BreadcrumbsLink, BreadcrumbsLink, ...BreadcrumbsLink[]];
 };
 
 export const Breadcrumbs = ({
 	'aria-label': ariaLabel = 'breadcrumb',
-	links: linksProp,
+	links,
 }: BreadcrumbsProps) => {
 	const firstLinkRef = useRef<HTMLAnchorElement>(null);
 
-	const { label: firstLinkLabel, ...firstLink } = linksProp[0];
-	const { label: lastLinkLabel, ...lastLink } = linksProp[linksProp.length - 1];
-	const links = linksProp.filter(
-		(_, index) => !(index === 0 || index === linksProp.length - 1)
+	const { label: firstLinkLabel, ...firstLink } = links[0];
+	const { label: lastLinkLabel, ...lastLink } = links[links.length - 1];
+	const middleLinks = links.filter(
+		(_, idx, arr) => !(idx === 0 || idx === arr.length - 1)
 	);
 
-	const [isExpanded, setIsExpanded] = useState(!links.length);
+	const [isExpanded, setIsExpanded] = useState(!middleLinks.length);
 
 	const onToggleClick = () => {
 		setIsExpanded(true);
@@ -37,10 +39,10 @@ export const Breadcrumbs = ({
 			<BreadcrumbsItem ref={firstLinkRef} {...firstLink}>
 				{firstLinkLabel}
 			</BreadcrumbsItem>
-			{!isExpanded && links.length ? (
+			{!isExpanded && middleLinks.length ? (
 				<BreadcrumbsToggle onClick={onToggleClick} />
 			) : null}
-			{links.map(({ label, ...props }, index) => (
+			{middleLinks.map(({ label, ...props }, index) => (
 				<BreadcrumbsItem key={index} {...props}>
 					{label}
 				</BreadcrumbsItem>
