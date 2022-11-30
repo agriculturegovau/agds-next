@@ -11,10 +11,16 @@ import { mdxComponents } from '../../components/mdxComponents';
 import { AppLayout } from '../../components/AppLayout';
 import { DocumentTitle } from '../../components/DocumentTitle';
 import { PageLayout } from '../../components/PageLayout';
+import { PageTitle } from '../../components/PageTitle';
 
 type StaticProps = Awaited<ReturnType<typeof getStaticProps>>['props'];
 
-export default function GuidesHome({ source, guideLinks }: StaticProps) {
+export default function GuidesHome({
+	source,
+	title,
+	description,
+	guideLinks,
+}: StaticProps) {
 	return (
 		<>
 			<DocumentTitle title="Guides" />
@@ -27,6 +33,7 @@ export default function GuidesHome({ source, guideLinks }: StaticProps) {
 					}}
 					editPath="/docs/content/guides/index.mdx"
 				>
+					<PageTitle title={title} introduction={description} />
 					<Prose>
 						<MDXRemote {...source} components={mdxComponents} />
 					</Prose>
@@ -51,7 +58,7 @@ export default function GuidesHome({ source, guideLinks }: StaticProps) {
 }
 
 export async function getStaticProps() {
-	const { content } = await getMarkdownData(
+	const { content, data } = await getMarkdownData(
 		normalize(`${GUIDE_PATH}/index.mdx`)
 	);
 	const source = await serializeMarkdown(content);
@@ -65,6 +72,8 @@ export async function getStaticProps() {
 	return {
 		props: {
 			source,
+			title: (data?.title || null) as string | null,
+			description: (data?.description || null) as string | null,
 			guideLinks,
 		},
 	};

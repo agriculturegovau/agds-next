@@ -9,6 +9,8 @@ import {
 } from '../mdxUtils';
 import { slugify } from '../slugify';
 
+export const COMPONENTS_PATH = normalize(`${process.cwd()}/content/components`);
+
 const PKG_PATH = normalize(`${process.cwd()}/../packages`);
 const pkgReadmePath = (slug: string) => `${PKG_PATH}/${slug}/docs/overview.mdx`;
 

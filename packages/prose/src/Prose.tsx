@@ -38,6 +38,10 @@ export const proseClass = css({
 		...fontGrid('sm', 'default'),
 	},
 
+	'&:empty': {
+		display: 'none',
+	},
+
 	/**
 	 * Prose block
 	 */
