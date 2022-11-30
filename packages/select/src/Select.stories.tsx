@@ -14,27 +14,23 @@ const EXAMPLE_OPTIONS = [
 	{ value: 'c', label: 'Option C' },
 ];
 
-export const Basic: ComponentStory<typeof Select> = (args) => (
-	<Select {...args} />
-);
+const Template: ComponentStory<typeof Select> = (args) => <Select {...args} />;
+
+export const Basic = Template.bind({});
 Basic.args = {
 	label: 'Example',
 	placeholder: 'Please select',
 	options: EXAMPLE_OPTIONS,
 };
 
-export const Placeholder: ComponentStory<typeof Select> = (args) => (
-	<Select {...args} />
-);
+export const Placeholder = Template.bind({});
 Placeholder.args = {
 	label: 'Example',
 	placeholder: 'Select an option from the menu',
 	options: EXAMPLE_OPTIONS,
 };
 
-export const Required: ComponentStory<typeof Select> = (args) => (
-	<Select {...args} />
-);
+export const Required = Template.bind({});
 Required.args = {
 	label: 'Example',
 	placeholder: 'Please select',
@@ -42,9 +38,15 @@ Required.args = {
 	options: EXAMPLE_OPTIONS,
 };
 
-export const Disabled: ComponentStory<typeof Select> = (args) => (
-	<Select {...args} />
-);
+export const HideOptionalLabel = Template.bind({});
+HideOptionalLabel.args = {
+	label: 'Example',
+	placeholder: 'Please select',
+	options: EXAMPLE_OPTIONS,
+	hideOptionalLabel: true,
+};
+
+export const Disabled = Template.bind({});
 Disabled.args = {
 	label: 'Example',
 	placeholder: 'Please select',
@@ -52,9 +54,7 @@ Disabled.args = {
 	options: EXAMPLE_OPTIONS,
 };
 
-export const DisabledOption: ComponentStory<typeof Select> = (args) => (
-	<Select {...args} />
-);
+export const DisabledOption = Template.bind({});
 DisabledOption.args = {
 	label: 'Example',
 	placeholder: 'Please select',
@@ -65,9 +65,7 @@ DisabledOption.args = {
 	],
 };
 
-export const Invalid: ComponentStory<typeof Select> = (args) => (
-	<Select {...args} />
-);
+export const Invalid = Template.bind({});
 Invalid.args = {
 	label: 'Example',
 	placeholder: 'Please select',
@@ -77,9 +75,7 @@ Invalid.args = {
 	options: EXAMPLE_OPTIONS,
 };
 
-export const Hint: ComponentStory<typeof Select> = (args) => (
-	<Select {...args} />
-);
+export const Hint = Template.bind({});
 Hint.args = {
 	label: 'Example',
 	placeholder: 'Please select',
@@ -87,9 +83,7 @@ Hint.args = {
 	options: EXAMPLE_OPTIONS,
 };
 
-export const Block: ComponentStory<typeof Select> = (args) => (
-	<Select {...args} />
-);
+export const Block = Template.bind({});
 Block.args = {
 	label: 'Block',
 	placeholder: 'Please select',
@@ -111,7 +105,7 @@ MaxWidths.args = {
 
 export const Controlled = () => {
 	const [selected, setSelected] = useState<
-		{ label: string; value: string } | undefined
+		typeof EXAMPLE_OPTIONS[number] | undefined
 	>();
 
 	const onChange = (event: ChangeEvent<HTMLSelectElement>) => {
@@ -132,9 +126,7 @@ export const Controlled = () => {
 	);
 };
 
-export const GroupedOptions: ComponentStory<typeof Select> = (args) => (
-	<Select {...args} />
-);
+export const GroupedOptions = Template.bind({});
 GroupedOptions.args = {
 	label: 'Grouped options',
 	placeholder: 'Please select',

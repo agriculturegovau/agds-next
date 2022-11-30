@@ -7,54 +7,51 @@ export default {
 	component: Textarea,
 } as ComponentMeta<typeof Textarea>;
 
-export const Basic: ComponentStory<typeof Textarea> = (args) => (
+const Template: ComponentStory<typeof Textarea> = (args) => (
 	<Textarea {...args} />
 );
+
+export const Basic = Template.bind({});
 Basic.args = {
 	label: 'Example',
 };
 
-export const Required: ComponentStory<typeof Textarea> = (args) => (
-	<Textarea {...args} />
-);
+export const Required = Template.bind({});
 Required.args = {
 	label: 'Example',
 	required: true,
 };
 
-export const Disabled: ComponentStory<typeof Textarea> = (args) => (
-	<Textarea {...args} />
-);
+export const HideOptionalLabel = Template.bind({});
+HideOptionalLabel.args = {
+	label: 'Example',
+	hideOptionalLabel: true,
+};
+
+export const Disabled = Template.bind({});
 Disabled.args = {
 	label: 'Example',
 	disabled: true,
 };
 
-export const Invalid: ComponentStory<typeof Textarea> = (args) => (
-	<Textarea {...args} />
-);
+export const Invalid = Template.bind({});
 Invalid.args = {
-	label: 'Message',
+	label: 'Example',
 	message: 'The message you have entered is invalid',
 	value: '1e039ur4urf',
 	invalid: true,
 };
 
-export const Hint: ComponentStory<typeof Textarea> = (args) => (
-	<Textarea {...args} />
-);
+export const Hint = Template.bind({});
 Hint.args = {
-	label: 'Message',
+	label: 'Example',
 	message: 'We will only use this to respond to your question',
-	value: 'Lorem ipsum dolar',
 };
 
-export const Block: ComponentStory<typeof Textarea> = (args) => (
-	<Textarea {...args} />
-);
+export const Block = Template.bind({});
 Block.args = {
-	block: true,
 	label: 'Block',
+	block: true,
 };
 
 export const MaxWidths: ComponentStory<typeof Textarea> = (args) => (

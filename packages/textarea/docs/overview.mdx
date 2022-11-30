@@ -5,7 +5,7 @@ group: Forms
 storybookPath: /story/forms-textarea--basic
 ---
 
-### Default
+## Default
 
 By default, the `Textarea` component does not expand to fill the available space.
 
@@ -13,7 +13,7 @@ By default, the `Textarea` component does not expand to fill the available space
 <Textarea label="Message" />
 ```
 
-### Block
+## Block
 
 Use the `block` prop to expand the component to fill the available space.
 
@@ -21,19 +21,31 @@ Use the `block` prop to expand the component to fill the available space.
 <Textarea label="Message" block />
 ```
 
-### Required
+## Required
 
-The `Textarea` component will always append `(optional)` to the label based on the `required` prop.
+The `required` prop can be used to indicate that user input is required on the field before a form can be submitted.
+
+Using the `required` prop, this component will automatically append "(optional)" to the label as well as using [aria-required](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-required) to indicate to screen reader user that the field is required.
+
+### Hide optional label
+
+The `hideOptionalLabel` prop can be used in situations where you want to indiciate to screen reader users that a field is optional but don't want to show the "(optional)" label.
+
+The usage of `hideOptionalLabel` should be reserved for inputs that filter data in a table or chart, and should never be used in standard forms for submitting information.
 
 ```jsx live
 <Stack gap={1}>
-	<Textarea label="Default" />
 	<Textarea label="Required" required />
 	<Textarea label="Optional" required={false} />
+	<Textarea
+		label="Optional with hideOptionalLabel"
+		required={false}
+		hideOptionalLabel={true}
+	/>
 </Stack>
 ```
 
-### Invalid
+## Invalid
 
 Use the `invalid` prop to indicate if the user input is invalid (does not validate according to the elements settings).
 
@@ -41,7 +53,7 @@ Use the `invalid` prop to indicate if the user input is invalid (does not valida
 <Textarea label="Invalid" invalid message="This field is invalid" />
 ```
 
-### Disabled
+## Disabled
 
 Disabled textarea elements are unusable and can not be clicked. This prevents a user from interacting with the textarea element until another action is complete. Disabled textarea elements in a form will not be submitted.
 
@@ -49,7 +61,7 @@ Disabled textarea elements are unusable and can not be clicked. This prevents a 
 <Textarea label="Message" disabled />
 ```
 
-### Maximum widths
+## Maximum widths
 
 The maximum width of a textarea should indicate the amount of information expected to be entered into the field. The size of the textarea acts as a visual constraint for the end user.
 

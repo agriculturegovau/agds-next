@@ -28,6 +28,12 @@ Required.args = {
 	required: true,
 };
 
+export const HideOptionalLabel = Template.bind({});
+HideOptionalLabel.args = {
+	label: 'Search',
+	hideOptionalLabel: true,
+};
+
 export const Disabled = Template.bind({});
 Disabled.args = {
 	label: 'Search',

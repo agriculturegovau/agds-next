@@ -34,21 +34,27 @@ CheckboxGroupInline.args = {
 	...checkboxDefaultArgs,
 	block: false,
 };
-CheckboxGroupInline.storyName = 'Checkbox group inline';
+CheckboxGroupInline.storyName = 'Checkbox Group Inline';
 
 export const CheckboxGroupBlock = CheckboxTemplate.bind({});
 CheckboxGroupBlock.args = {
 	...checkboxDefaultArgs,
 };
-CheckboxGroupBlock.storyName = 'Checkbox group block';
+CheckboxGroupBlock.storyName = 'Checkbox Group Block';
 
 export const CheckboxGroupRequired = CheckboxTemplate.bind({});
 CheckboxGroupRequired.args = {
 	...checkboxDefaultArgs,
-
 	required: true,
 };
-CheckboxGroupRequired.storyName = 'Checkbox group required';
+CheckboxGroupRequired.storyName = 'Checkbox Group Required';
+
+export const CheckboxGroupHideOptionalLabel = CheckboxTemplate.bind({});
+CheckboxGroupHideOptionalLabel.args = {
+	...checkboxDefaultArgs,
+	hideOptionalLabel: true,
+};
+CheckboxGroupHideOptionalLabel.storyName = 'Checkbox Group Hide Optional Label';
 
 export const CheckboxGroupInvalid = CheckboxTemplate.bind({});
 CheckboxGroupInvalid.args = {
@@ -85,20 +91,27 @@ RadioGroupInline.args = {
 	...radioDefaultArgs,
 	block: false,
 };
-RadioGroupInline.storyName = 'Radio group inline';
+RadioGroupInline.storyName = 'Radio Group Inline';
 
 export const RadioGroupBlock = RadioTemplate.bind({});
 RadioGroupBlock.args = {
 	...radioDefaultArgs,
 };
-RadioGroupBlock.storyName = 'Radio group block';
+RadioGroupBlock.storyName = 'Radio Group Block';
 
 export const RadioGroupRequired = RadioTemplate.bind({});
 RadioGroupRequired.args = {
 	...radioDefaultArgs,
 	required: true,
 };
-RadioGroupRequired.storyName = 'Radio group required';
+RadioGroupRequired.storyName = 'Radio Group Required';
+
+export const RadioGroupHideOptionalLabel = RadioTemplate.bind({});
+RadioGroupHideOptionalLabel.args = {
+	...radioDefaultArgs,
+	hideOptionalLabel: true,
+};
+RadioGroupHideOptionalLabel.storyName = 'Radio Group Hide Optional Label';
 
 export const RadioGroupInvalid = RadioTemplate.bind({});
 RadioGroupInvalid.args = {

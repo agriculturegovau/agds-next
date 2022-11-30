@@ -5,8 +5,9 @@ import { Text } from '@ag.ds-next/text';
 export type FieldLabelProps = PropsWithChildren<{
 	as?: ElementType;
 	htmlFor?: string;
-	required?: boolean;
+	required: boolean;
 	secondaryLabel?: string;
+	hideOptionalLabel?: boolean;
 }>;
 
 export const FieldLabel = ({
@@ -15,11 +16,13 @@ export const FieldLabel = ({
 	htmlFor,
 	required,
 	secondaryLabel: secondaryLabelProp,
+	hideOptionalLabel,
 }: FieldLabelProps) => {
 	const secondaryLabel = useMemo(() => {
+		if (hideOptionalLabel) return null;
 		if (secondaryLabelProp) return secondaryLabelProp;
 		if (!required) return `(optional)`;
-	}, [required, secondaryLabelProp]);
+	}, [required, secondaryLabelProp, hideOptionalLabel]);
 	return (
 		<Flex as={as} htmlFor={htmlFor} gap={0.25}>
 			<Text as="span" fontWeight="bold">

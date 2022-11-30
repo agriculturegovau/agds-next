@@ -5,7 +5,7 @@ group: Forms
 storybookPath: /story/forms-select--basic
 ---
 
-### Default
+## Default
 
 Select boxes (drop-down lists) allow users to select a value from a list.
 
@@ -23,7 +23,7 @@ By default, the `Select` component does not expand to fill the available space.
 />
 ```
 
-### Block
+## Block
 
 Use the `block` prop to expand the component to fill the available space.
 
@@ -40,21 +40,20 @@ Use the `block` prop to expand the component to fill the available space.
 />
 ```
 
-### Required
+## Required
 
-The `Select` component will always append `(optional)` to the label based on the `required` prop.
+The `required` prop can be used to indicate that user input is required on the field before a form can be submitted.
+
+Using the `required` prop, this component will automatically append "(optional)" to the label as well as using [aria-required](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-required) to indicate to screen reader user that the field is required.
+
+### Hide optional label
+
+The `hideOptionalLabel` prop can be used in situations where you want to indiciate to screen reader users that a field is optional but don't want to show the "(optional)" label.
+
+The usage of `hideOptionalLabel` should be reserved for inputs that filter data in a table or chart, and should never be used in standard forms for submitting information.
 
 ```jsx live
 <Stack gap={1}>
-	<Select
-		label="Default"
-		placeholder="Please select"
-		options={[
-			{ value: 'a', label: 'Option A' },
-			{ value: 'b', label: 'Option B' },
-			{ value: 'c', label: 'Option C' },
-		]}
-	/>
 	<Select
 		label="Required"
 		placeholder="Please select"
@@ -75,10 +74,21 @@ The `Select` component will always append `(optional)` to the label based on the
 			{ value: 'c', label: 'Option C' },
 		]}
 	/>
+	<Select
+		label="Optional with hideOptionalLabel"
+		required={false}
+		hideOptionalLabel={true}
+		placeholder="Please select"
+		options={[
+			{ value: 'a', label: 'Option A' },
+			{ value: 'b', label: 'Option B' },
+			{ value: 'c', label: 'Option C' },
+		]}
+	/>
 </Stack>
 ```
 
-### Invalid
+## Invalid
 
 Use the `invalid` prop to indicate if the user input is invalid (does not validate according to the elements settings).
 
@@ -96,7 +106,7 @@ Use the `invalid` prop to indicate if the user input is invalid (does not valida
 />
 ```
 
-### Disabled
+## Disabled
 
 Disabled select elements are unusable and can not be clicked. This prevents a user from interacting with the select element until another action is complete. Disabled select elements in a form will not be submitted.
 
@@ -113,7 +123,7 @@ Disabled select elements are unusable and can not be clicked. This prevents a us
 />
 ```
 
-### Groups
+## Groups
 
 ```jsx live
 <Select

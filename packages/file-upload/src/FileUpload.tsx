@@ -33,8 +33,10 @@ type BaseInputProps = {
 export type FileUploadProps = BaseInputProps & {
 	/** List of acceptable file types, e.g.`image/jpeg`, `application/pdf` */
 	accept?: FileFormats[];
-	/** A label that describes the field*/
+	/** Describes the purpose of the field. */
 	label: string;
+	/** If true, "(optional)" will never be appended to the label. */
+	hideOptionalLabel?: boolean;
 	/** The maximum number of files allowed to be selected. By default there is no limit (if `multiple` is true). */
 	maxFiles?: DropzoneOptions['maxFiles'];
 	/** The maximum allowed size for each file, measured in KB */
@@ -61,6 +63,7 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 			accept,
 			disabled,
 			label,
+			hideOptionalLabel,
 			maxFiles,
 			maxSize,
 			multiple,
@@ -169,6 +172,7 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 		return (
 			<Field
 				label={label}
+				hideOptionalLabel={hideOptionalLabel}
 				required={Boolean(required)}
 				hint={hint}
 				message={message || errorSummary}

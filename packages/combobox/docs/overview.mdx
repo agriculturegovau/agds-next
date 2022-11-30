@@ -97,9 +97,17 @@ Use the `loadOptions` prop when you need to populate options from a network requ
 };
 ```
 
-### Required
+## Required
 
-The `Combobox` component will always append `(optional)` to the label based on the `required` prop.
+The `required` prop can be used to indicate that user input is required on the field before a form can be submitted.
+
+Using the `required` prop, this component will automatically append "(optional)" to the label as well as using [aria-required](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-required) to indicate to screen reader user that the field is required.
+
+### Hide optional label
+
+The `hideOptionalLabel` prop can be used in situations where you want to indiciate to screen reader users that a field is optional but don't want to show the "(optional)" label.
+
+The usage of `hideOptionalLabel` should be reserved for inputs that filter data in a table or chart, and should never be used in standard forms for submitting information.
 
 ```jsx live
 () => {
@@ -107,7 +115,7 @@ The `Combobox` component will always append `(optional)` to the label based on t
 	return (
 		<Combobox
 			label="Select state"
-			required
+			hideOptionalLabel
 			value={value}
 			onChange={(value) => setValue(value)}
 			options={[
@@ -125,7 +133,7 @@ The `Combobox` component will always append `(optional)` to the label based on t
 };
 ```
 
-### Invalid
+## Invalid
 
 Use the `invalid` prop to indicate if the user input is invalid (does not validate according to the elements settings).
 

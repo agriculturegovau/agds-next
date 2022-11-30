@@ -23,6 +23,8 @@ type BaseTextInputProps = {
 export type TextInputProps = BaseTextInputProps & {
 	/** Describes the purpose of the field. */
 	label: string;
+	/** If true, "(optional)" will never be appended to the label. */
+	hideOptionalLabel?: boolean;
 	/** If false, "(optional)" will be appended to the label. */
 	required?: boolean;
 	/** Provides extra information about the field. */
@@ -41,6 +43,7 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
 	function TextInput(
 		{
 			label,
+			hideOptionalLabel,
 			required,
 			hint,
 			message,
@@ -57,6 +60,7 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
 		return (
 			<Field
 				label={label}
+				hideOptionalLabel={hideOptionalLabel}
 				required={Boolean(required)}
 				hint={hint}
 				message={message}
