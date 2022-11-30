@@ -12,7 +12,7 @@ export type BreadcrumbsProps = {
 	/** Describes the navigation element to assistive technologies. */
 	'aria-label'?: string;
 	/** The list of links. Minimum of 2 links are required. */
-	links: [BreadcrumbsLink, BreadcrumbsLink, ...BreadcrumbsLink[]];
+	links: BreadcrumbsLink[];
 };
 
 export const Breadcrumbs = ({
