@@ -22,7 +22,7 @@ exports[`DatePicker renders correctly 1`] = `
         </span>
       </label>
       <div
-        class="css-1az95r4-boxStyles-DateInput"
+        class="css-rj58ps-boxStyles-DateInput"
       >
         <input
           aria-invalid="false"

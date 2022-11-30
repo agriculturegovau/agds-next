@@ -64,25 +64,39 @@ export const SpacingChart = () => {
 
 export const MaxWidthChart = () => {
 	return (
-		<Stack gap={0.5} className={proseBlockClassname}>
-			{Object.entries(tokens.maxWidth).map(([token, value]) => {
-				const label = `${token} (${value})`;
-				return (
-					<Flex key={token} gap={0.25}>
-						<Box
-							padding={0.5}
-							css={{
-								backgroundColor: boxPalette.systemInfoMuted,
-								width: '100%',
-								maxWidth: value,
-							}}
-						>
-							<Text>{label}</Text>
-						</Box>
-					</Flex>
-				);
-			})}
+		<Stack as="ul" gap={0.5} className={proseBlockClassname}>
+			{Object.entries(tokens.maxWidth).map(([token, value], index) => (
+				<MaxWidthItem key={index} token={token} value={value} />
+			))}
 		</Stack>
+	);
+};
+
+export const MaxWidthFieldChart = () => {
+	return (
+		<Stack as="ul" gap={0.5} className={proseBlockClassname}>
+			{Object.entries(tokens.maxWidthField).map(([token, value], index) => (
+				<MaxWidthItem key={index} token={token} value={value} />
+			))}
+		</Stack>
+	);
+};
+
+const MaxWidthItem = ({ token, value }: { token: string; value: string }) => {
+	const label = `${token} (${value})`;
+	return (
+		<Flex as="li" gap={0.25}>
+			<Box
+				padding={0.5}
+				css={{
+					backgroundColor: boxPalette.systemInfoMuted,
+					width: '100%',
+					maxWidth: value,
+				}}
+			>
+				<Text>{label}</Text>
+			</Box>
+		</Flex>
 	);
 };
 

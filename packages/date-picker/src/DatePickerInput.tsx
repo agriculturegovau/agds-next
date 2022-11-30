@@ -26,7 +26,7 @@ export const DateInput = forwardRef<HTMLInputElement, DateInputProps>(
 			block,
 			id,
 			buttonRef,
-			maxWidth: maxWidthProp,
+			maxWidth: maxWidthProp = 'md',
 			buttonOnClick,
 			disabled,
 			value,

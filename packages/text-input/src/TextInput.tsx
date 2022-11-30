@@ -1,6 +1,12 @@
 import { forwardRef, InputHTMLAttributes } from 'react';
-import { Field, fieldMaxWidth, FieldMaxWidth } from '@ag.ds-next/field';
-import { packs, boxPalette, mapSpacing, tokens } from '@ag.ds-next/core';
+import { Field } from '@ag.ds-next/field';
+import {
+	packs,
+	boxPalette,
+	mapSpacing,
+	tokens,
+	MaxWidthField,
+} from '@ag.ds-next/core';
 
 type NativeInputProps = InputHTMLAttributes<HTMLInputElement>;
 
@@ -36,7 +42,7 @@ export type TextInputProps = BaseTextInputProps & {
 	/** If true, the field will stretch to the fill the width of its container. */
 	block?: boolean;
 	/** The maximum width of the field. */
-	maxWidth?: FieldMaxWidth;
+	maxWidth?: MaxWidthField;
 };
 
 export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
@@ -49,7 +55,7 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
 			message,
 			invalid,
 			block,
-			maxWidth,
+			maxWidth = 'md',
 			id,
 			type = 'text',
 			...props
@@ -82,7 +88,7 @@ export const textInputStyles = ({
 	multiline,
 }: {
 	block?: boolean;
-	maxWidth?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
+	maxWidth?: MaxWidthField;
 	invalid?: boolean;
 	multiline?: boolean;
 }) =>
@@ -98,9 +104,12 @@ export const textInputStyles = ({
 		borderColor: boxPalette.border,
 		borderRadius: tokens.borderRadius,
 		color: boxPalette.foregroundText,
-		maxWidth: maxWidth ? fieldMaxWidth[maxWidth] : '12.8125rem',
 		fontFamily: tokens.font.body,
 		...packs.input.md,
+
+		...(maxWidth && {
+			maxWidth: tokens.maxWidthField[maxWidth],
+		}),
 
 		...(block && {
 			maxWidth: 'none',
