@@ -23,7 +23,7 @@ export default function GuidesHome({
 }: StaticProps) {
 	return (
 		<>
-			<DocumentTitle title="Guides" />
+			<DocumentTitle title="Guides" description={description} />
 			<AppLayout>
 				<PageLayout
 					sideNav={{

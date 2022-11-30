@@ -25,7 +25,7 @@ export default function TemplatesPage({
 }: StaticProps) {
 	return (
 		<>
-			<DocumentTitle title="Templates" />
+			<DocumentTitle title="Templates" description={description} />
 			<AppLayout>
 				<PageLayout
 					sideNav={{

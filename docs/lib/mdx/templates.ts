@@ -23,6 +23,8 @@ export async function getTemplate(slug: string) {
 		source,
 		data,
 		title: (data.title ?? slug) as string,
+		version: data.version as string,
+		description: (data.description ?? null) as string | null,
 		previewPath: (data.previewPath ?? null) as string | null,
 	};
 }

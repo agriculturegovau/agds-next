@@ -23,7 +23,7 @@ export default function UpdatesHome({
 }: StaticProps) {
 	return (
 		<>
-			<DocumentTitle title="Updates" />
+			<DocumentTitle title="Updates" description={description} />
 			<AppLayout>
 				<PageLayout
 					sideNav={{

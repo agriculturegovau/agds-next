@@ -31,6 +31,7 @@ export async function getPkg(slug: string) {
 		name: name as string,
 		version: version as string,
 		title: (data.title ?? slug) as string,
+		description: (data.description ?? null) as string | null,
 		storybookPath: (data.storybookPath ?? null) as string | null,
 		subNavItems: subNavItems ?? null,
 	};

@@ -23,7 +23,7 @@ export default function TemplateContentPage({
 }: InferGetStaticPropsType<typeof getStaticProps>) {
 	return (
 		<>
-			<DocumentTitle title={`${template.data.title} template content`} />
+			<DocumentTitle title={`${template.title} template content`} />
 			<TemplateLayout
 				template={template}
 				breadcrumbs={breadcrumbs}
@@ -32,7 +32,7 @@ export default function TemplateContentPage({
 				editPath={`/docs/content/templates/${template.slug}/content.mdx`}
 				skipLinks={[
 					{
-						label: `Skip to ${template.data.title} template content`,
+						label: `Skip to ${template.title} template content`,
 						href: '#page-content',
 					},
 				]}

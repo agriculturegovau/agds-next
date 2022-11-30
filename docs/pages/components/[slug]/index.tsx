@@ -22,7 +22,7 @@ export default function Packages({
 }: InferGetStaticPropsType<typeof getStaticProps>) {
 	return (
 		<>
-			<DocumentTitle title={pkg.title} />
+			<DocumentTitle title={pkg.title} description={pkg.description} />
 			<AppLayout>
 				<PkgLayout
 					pkg={pkg}

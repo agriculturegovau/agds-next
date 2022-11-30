@@ -45,7 +45,7 @@ export default function PackagesHome({
 
 	return (
 		<>
-			<DocumentTitle title="Components" />
+			<DocumentTitle title="Components" description={description} />
 			<AppLayout>
 				<PageLayout
 					sideNav={{

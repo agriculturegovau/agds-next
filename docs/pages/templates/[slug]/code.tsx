@@ -23,7 +23,7 @@ export default function TemplateCodePage({
 }: InferGetStaticPropsType<typeof getStaticProps>) {
 	return (
 		<>
-			<DocumentTitle title={`${template.data.title} template code`} />
+			<DocumentTitle title={`${template.title} template code`} />
 			<TemplateLayout
 				template={template}
 				breadcrumbs={breadcrumbs}
@@ -32,7 +32,7 @@ export default function TemplateCodePage({
 				editPath={`/docs/content/templates/${template.slug}/code.mdx`}
 				skipLinks={[
 					{
-						label: `Skip to ${template.data.title} template code`,
+						label: `Skip to ${template.title} template code`,
 						href: '#page-content',
 					},
 				]}
