@@ -12,6 +12,13 @@ import { boxPalette, LinkProps, packs } from '@ag.ds-next/core';
 import { BaseButton } from '@ag.ds-next/button';
 import { hoverColorMap, ProgressIndicatorBackground } from './utils';
 
+const progressIndicatorItemTimelineDataAttr =
+	'data-agds-progress-indicator-timeline-action';
+const progressIndicatorItemTextContainerDataAttr =
+	'data-agds-progress-indicator-item-text-container';
+const progressIndicatorItemTextDataAttr =
+	'data-agds-progress-indicator-item-text';
+
 export type ProgressIndicatorItem = (
 	| ProgressIndicatorItemButtonProps
 	| ProgressIndicatorItemLinkProps
@@ -58,6 +65,7 @@ type ProgressIndicatorItemProps = PropsWithChildren<{
 
 const ProgressIndicatorItemTimeline = () => (
 	<div
+		{...{ [progressIndicatorItemTimelineDataAttr]: '' }}
 		css={{
 			width: 2,
 			backgroundColor: boxPalette.border,
@@ -96,14 +104,6 @@ const ProgressIndicatorItem = ({
 	const active = status === 'doing';
 	const { label } = statusMap[status];
 
-	const listItemTimelineBeginningPathSelector =
-		'> :first-child > div:first-of-type > div:first-of-type';
-
-	const listItemTimelineEndPathSelector =
-		'> :first-child > div:first-of-type > div:last-of-type';
-
-	const listItemTextContainerSelector = '> :first-child > span:last-of-type';
-
 	const listItemLinkTextSelector = '> span:last-of-type > span:first-of-type';
 
 	return (
@@ -112,15 +112,15 @@ const ProgressIndicatorItem = ({
 			background={background}
 			css={{
 				'&:first-of-type': {
-					[listItemTimelineBeginningPathSelector]: {
+					[`[${progressIndicatorItemTimelineDataAttr}]:first-of-type`]: {
 						opacity: 0,
 					},
 				},
 				'&:last-of-type': {
-					[listItemTimelineEndPathSelector]: {
+					[`[${progressIndicatorItemTimelineDataAttr}]:last-of-type`]: {
 						opacity: 0,
 					},
-					[listItemTextContainerSelector]: {
+					[`[${progressIndicatorItemTextContainerDataAttr}]`]: {
 						borderBottomWidth: 0,
 					},
 				},
@@ -132,14 +132,12 @@ const ProgressIndicatorItem = ({
 					textDecoration: 'none',
 					[listItemLinkTextSelector]: {
 						...packs.underline,
-						color: boxPalette.foregroundAction,
 						fontWeight: active ? 'bold' : 'normal',
 					},
 					'&:hover': {
 						backgroundColor: hoverColorMap[background],
 						[listItemLinkTextSelector]: {
 							textDecoration: 'none',
-							color: boxPalette.foregroundText,
 						},
 					},
 				}}
@@ -147,6 +145,7 @@ const ProgressIndicatorItem = ({
 				<ProgressIndicatorItemIcon status={status} />
 
 				<Stack
+					{...{ [progressIndicatorItemTextContainerDataAttr]: '' }}
 					as="span"
 					flexDirection="column-reverse"
 					gap={0}
@@ -159,7 +158,9 @@ const ProgressIndicatorItem = ({
 					focus
 					{...props}
 				>
-					<Text>{children}</Text>
+					<Text {...{ [progressIndicatorItemTextDataAttr]: '' }}>
+						{children}
+					</Text>
 					<Text
 						color="muted"
 						fontSize="xs"
