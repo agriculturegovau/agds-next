@@ -20,7 +20,7 @@ export type ControlGroupProps = PropsWithChildren<{
 	invalid?: boolean;
 	/** Describes the purpose of the field. */
 	label?: string;
-	/** If true, the secondary label will not be rendered.  */
+	/** If true, "(optional)" will never be appended to the label. */
 	hideOptionalLabel?: boolean;
 	/** Message to show when the field is invalid. */
 	message?: string;

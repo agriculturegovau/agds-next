@@ -35,7 +35,7 @@ export type FileUploadProps = BaseInputProps & {
 	accept?: FileFormats[];
 	/** Describes the purpose of the field. */
 	label: string;
-	/** If true, the secondary label will not be rendered.  */
+	/** If true, "(optional)" will never be appended to the label. */
 	hideOptionalLabel?: boolean;
 	/** The maximum number of files allowed to be selected. By default there is no limit (if `multiple` is true). */
 	maxFiles?: DropzoneOptions['maxFiles'];

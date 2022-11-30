@@ -37,7 +37,7 @@ type BaseSelectProps = {
 export type SelectProps = BaseSelectProps & {
 	/** Describes the purpose of the field. */
 	label: string;
-	/** If true, the secondary label will not be rendered.  */
+	/** If true, "(optional)" will never be appended to the label. */
 	hideOptionalLabel?: boolean;
 	/** The list of options to display in the drop-down list. */
 	options: Options;
