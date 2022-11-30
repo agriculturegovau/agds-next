@@ -40,7 +40,7 @@ export function PkgLayout({
 			<PageTitle
 				pretext={isUnreleased ? 'In development' : `v${pkg.version}`}
 				title={pkg.title}
-				introduction={pkg.data.description}
+				introduction={pkg.description}
 				callToAction={
 					pkg.storybookPath && (
 						<CallToActionLink

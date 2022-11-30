@@ -38,7 +38,7 @@ exports[`PageAlert tone: error renders correctly 1`] = `
         There is a problem
       </h3>
       <div
-        class="css-1llvgqx-boxStyles-proseClass"
+        class="css-hl6z5f-boxStyles-proseClass"
       >
         <ul>
           <li>

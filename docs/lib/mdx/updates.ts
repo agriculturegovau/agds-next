@@ -18,6 +18,7 @@ export async function getUpdate(slug: string) {
 		source,
 		data,
 		title: (data.title ?? slug) as string,
+		description: (data.description ?? null) as string | null,
 	};
 }
 

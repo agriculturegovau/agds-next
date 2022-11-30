@@ -47,9 +47,9 @@ export const TemplateLayout = ({
 				skipLinks={skipLinks}
 			>
 				<PageTitle
-					pretext={`v${template.data.version}`}
+					pretext={`v${template.version}`}
 					title={template.title}
-					introduction={template.data.description}
+					introduction={template.description}
 					callToAction={
 						template.previewPath && (
 							<CallToActionLink href={`/example-site${template.previewPath}`}>

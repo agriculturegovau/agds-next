@@ -34,7 +34,7 @@ export default function PackagesRationale({
 							href: '#pkg-content',
 						},
 					]}
-					editPath={`/components/${pkg.slug}/docs/rationale.mdx`}
+					editPath={`/packages/${pkg.slug}/docs/rationale.mdx`}
 				>
 					<Prose id="pkg-content">
 						<MDXRemote {...content} components={mdxComponents} />

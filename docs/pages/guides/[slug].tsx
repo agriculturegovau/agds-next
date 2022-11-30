@@ -21,7 +21,7 @@ export default function Guides({
 }: InferGetStaticPropsType<typeof getStaticProps>) {
 	return (
 		<>
-			<DocumentTitle title={guide.title} />
+			<DocumentTitle title={guide.title} description={guide.description} />
 			<AppLayout>
 				<PageLayout
 					sideNav={{

@@ -14,10 +14,13 @@ import { AppLayout } from '../components/AppLayout';
 import { PictogramCard } from '../components/PictogramCard';
 import { DocumentTitle } from '../components/DocumentTitle';
 
+const description =
+	'AgDS provides a framework and a set of tools to help designers and developers build the steel threads of the Export Service quickly, efficiently and consistently.';
+
 export default function Homepage() {
 	return (
 		<>
-			<DocumentTitle />
+			<DocumentTitle description={description} />
 			<AppLayout>
 				<main
 					id="main-content"
@@ -29,11 +32,7 @@ export default function Homepage() {
 							<HeroBannerTitle>
 								Welcome to the Agriculture Design System (AgDS)
 							</HeroBannerTitle>
-							<HeroBannerSubtitle>
-								AgDS provides a framework and a set of tools to help designers
-								and developers build the steel threads of the Export Service
-								quickly, efficiently and consistently.
-							</HeroBannerSubtitle>
+							<HeroBannerSubtitle>{description}</HeroBannerSubtitle>
 						</HeroBannerTitleContainer>
 						<CallToActionLink href="/guides/getting-started">
 							Get started
@@ -54,12 +53,6 @@ export default function Homepage() {
 										Digital Service Standard
 									</TextLink>
 									.
-								</p>
-								<p>
-									The system is in early development right now. Feel free to
-									look around and leave feedback or suggestions if you like but
-									please do not depend on these components just yet. We&apos;re
-									working hard to get a stable release out as soon as we can.
 								</p>
 							</Prose>
 							<Columns

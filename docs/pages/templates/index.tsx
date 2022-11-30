@@ -13,13 +13,19 @@ import { mdxComponents } from '../../components/mdxComponents';
 import { AppLayout } from '../../components/AppLayout';
 import { PageLayout } from '../../components/PageLayout';
 import { DocumentTitle } from '../../components/DocumentTitle';
+import { PageTitle } from '../../components/PageTitle';
 
 type StaticProps = Awaited<ReturnType<typeof getStaticProps>>['props'];
 
-export default function TemplatesPage({ source, templateLinks }: StaticProps) {
+export default function TemplatesPage({
+	source,
+	title,
+	description,
+	templateLinks,
+}: StaticProps) {
 	return (
 		<>
-			<DocumentTitle title="Templates" />
+			<DocumentTitle title="Templates" description={description} />
 			<AppLayout>
 				<PageLayout
 					sideNav={{
@@ -29,6 +35,7 @@ export default function TemplatesPage({ source, templateLinks }: StaticProps) {
 					}}
 					editPath="/docs/content/templates/index.mdx"
 				>
+					<PageTitle title={title} introduction={description} />
 					<Prose>
 						<MDXRemote {...source} components={mdxComponents} />
 					</Prose>
@@ -80,7 +87,7 @@ const TemplateCard = ({
 };
 
 export async function getStaticProps() {
-	const { content } = await getMarkdownData(
+	const { content, data } = await getMarkdownData(
 		normalize(`${TEMPLATES_PATH}/index.mdx`)
 	);
 	const source = await serializeMarkdown(content);
@@ -96,6 +103,8 @@ export async function getStaticProps() {
 	return {
 		props: {
 			source,
+			title: (data?.title || null) as string | null,
+			description: (data?.description || null) as string | null,
 			templateLinks,
 		},
 	};

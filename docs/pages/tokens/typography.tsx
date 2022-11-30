@@ -93,7 +93,7 @@ function FontSizeTable() {
 	);
 }
 
-export function FontWeightTable() {
+function FontWeightTable() {
 	return (
 		<div className={proseBlockClassname}>
 			<TableWrapper>

@@ -8,6 +8,7 @@ import { Text } from '@ag.ds-next/text';
 import { SearchInput } from '@ag.ds-next/search-input';
 import { getMarkdownData, serializeMarkdown } from '../../lib/mdxUtils';
 import {
+	COMPONENTS_PATH,
 	getPkgGroupList,
 	getPkgList,
 	getPkgNavLinks,
@@ -17,6 +18,7 @@ import { AppLayout } from '../../components/AppLayout';
 import { DocumentTitle } from '../../components/DocumentTitle';
 import { PageLayout } from '../../components/PageLayout';
 import { PkgCardList } from '../../components/PkgCardList';
+import { PageTitle } from '../../components/PageTitle';
 
 type StaticProps = Awaited<ReturnType<typeof getStaticProps>>['props'];
 
@@ -25,6 +27,8 @@ export default function PackagesHome({
 	groupList,
 	pkgList,
 	source,
+	title,
+	description,
 }: StaticProps) {
 	const [searchTerm, setSearchTerm] = useState('');
 
@@ -41,7 +45,7 @@ export default function PackagesHome({
 
 	return (
 		<>
-			<DocumentTitle title="Components" />
+			<DocumentTitle title="Components" description={description} />
 			<AppLayout>
 				<PageLayout
 					sideNav={{
@@ -49,8 +53,9 @@ export default function PackagesHome({
 						titleLink: '/components',
 						items: navLinks,
 					}}
-					editPath="/packages/README.md"
+					editPath="/docs/content/components/index.mdx"
 				>
+					<PageTitle title={title} introduction={description} />
 					<Prose>
 						<MDXRemote {...source} components={mdxComponents} />
 					</Prose>
@@ -91,8 +96,8 @@ export default function PackagesHome({
 }
 
 export async function getStaticProps() {
-	const { content } = await getMarkdownData(
-		normalize(`${process.cwd()}/../packages/README.md`)
+	const { content, data } = await getMarkdownData(
+		normalize(`${COMPONENTS_PATH}/index.mdx`)
 	);
 	const source = await serializeMarkdown(content);
 	const navLinks = await getPkgNavLinks();
@@ -102,6 +107,8 @@ export async function getStaticProps() {
 	return {
 		props: {
 			source,
+			title: (data?.title || null) as string | null,
+			description: (data?.description || null) as string | null,
 			navLinks,
 			groupList,
 			pkgList,

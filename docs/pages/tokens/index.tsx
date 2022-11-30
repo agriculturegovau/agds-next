@@ -5,13 +5,16 @@ import { H3 } from '@ag.ds-next/heading';
 import { DocumentTitle } from '../../components/DocumentTitle';
 import { TokenLayout, navLinks } from '../../components/TokenLayout';
 
+const description =
+	'Our Design Tokens are the foundation of our design system. They are the building blocks of our components and are used to create a consistent look and feel across all of our products.';
+
 export default function TokensPage() {
 	return (
 		<>
 			<DocumentTitle title="Tokens" />
 			<TokenLayout
 				title="Design Tokens"
-				description="Our Design Tokens are the foundation of our design system. They are the building blocks of our components and are used to create a consistent look and feel across all of our products."
+				description={description}
 				editPath="/docs/pages/tokens/index.tsx"
 			>
 				<Columns as="ul" cols={{ xs: 1, sm: 2 }}>

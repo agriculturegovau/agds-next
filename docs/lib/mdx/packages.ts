@@ -9,6 +9,8 @@ import {
 } from '../mdxUtils';
 import { slugify } from '../slugify';
 
+export const COMPONENTS_PATH = normalize(`${process.cwd()}/content/components`);
+
 const PKG_PATH = normalize(`${process.cwd()}/../packages`);
 const pkgReadmePath = (slug: string) => `${PKG_PATH}/${slug}/docs/overview.mdx`;
 
@@ -29,6 +31,7 @@ export async function getPkg(slug: string) {
 		name: name as string,
 		version: version as string,
 		title: (data.title ?? slug) as string,
+		description: (data.description ?? null) as string | null,
 		storybookPath: (data.storybookPath ?? null) as string | null,
 		subNavItems: subNavItems ?? null,
 	};

@@ -22,7 +22,7 @@ export default function Packages({
 }: InferGetStaticPropsType<typeof getStaticProps>) {
 	return (
 		<>
-			<DocumentTitle title={pkg.title} />
+			<DocumentTitle title={pkg.title} description={pkg.description} />
 			<AppLayout>
 				<PkgLayout
 					pkg={pkg}
@@ -34,7 +34,7 @@ export default function Packages({
 							href: '#pkg-content',
 						},
 					]}
-					editPath={`/components/${pkg.slug}/docs/overview.mdx`}
+					editPath={`/packages/${pkg.slug}/docs/overview.mdx`}
 				>
 					<Prose id="pkg-content">
 						<MDXRemote {...content} components={mdxComponents} />
