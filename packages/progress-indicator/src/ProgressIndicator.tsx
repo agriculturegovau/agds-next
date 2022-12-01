@@ -9,6 +9,7 @@ import {
 	useWindowSize,
 } from '@ag.ds-next/core';
 import { Box } from '@ag.ds-next/box';
+import { ProgressIndicatorHeading } from './ProgressIndicatorHeading';
 import { ProgressIndicatorCollapseButton } from './ProgressIndicatorCollapseButton';
 import {
 	ProgressIndicatorItem,
@@ -58,6 +59,10 @@ export const ProgressIndicator = ({
 
 	return (
 		<Box as="section" borderBottom>
+			<ProgressIndicatorHeading
+				stepsCompleted={items.filter((item) => item.status === 'done').length}
+				totalSteps={items.length}
+			/>
 			<ProgressIndicatorCollapseButton
 				background={background}
 				isOpen={isOpen}
