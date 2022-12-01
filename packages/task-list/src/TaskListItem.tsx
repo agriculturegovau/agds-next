@@ -61,6 +61,8 @@ type TaskListItemProps = PropsWithChildren<{
 	ordered?: boolean;
 }>;
 
+const taskListItemTextDataAttr = 'data-agds-task-list-item-text';
+
 const TaskListItem = ({
 	as,
 	children,
@@ -90,14 +92,22 @@ const TaskListItem = ({
 				css={{
 					borderLeftColor: active ? boxPalette.foregroundAction : 'transparent',
 					textDecoration: 'none',
+					[`[${taskListItemTextDataAttr}]`]: {
+						...packs.underline,
+						color: boxPalette.foregroundAction,
+					},
 					'&:hover': {
 						backgroundColor: boxPalette.backgroundShade,
+						[`[${taskListItemTextDataAttr}]`]: {
+							textDecoration: 'none',
+							color: boxPalette.foregroundText,
+						},
 					},
 				}}
 				{...props}
 			>
 				<Icon
-					size="md"
+					size="lg"
 					color={iconColor}
 					css={{
 						// Use padding to ensure the icon is aligned centered with the status label and title
@@ -105,16 +115,16 @@ const TaskListItem = ({
 					}}
 				/>
 				<Flex as="span" flexDirection="column" gap={0.25}>
-					<Text as="span" color="muted" fontSize="xs" lineHeight="nospace">
+					<Text as="span" fontSize="xs" lineHeight="nospace">
 						{label}
 					</Text>
 					<Text
-						fontSize="md"
+						{...{ [taskListItemTextDataAttr]: '' }}
+						fontSize="lg"
 						lineHeight="heading"
 						fontWeight="bold"
 						color="action"
 						css={{
-							...packs.underline,
 							...(ordered && {
 								'&:before': {
 									content: "counter(task-count) '. '",
@@ -124,7 +134,7 @@ const TaskListItem = ({
 					>
 						{children}
 					</Text>
-					<Text color="muted" fontSize="xs">
+					<Text color="muted" fontSize="sm">
 						{message}
 					</Text>
 				</Flex>
