@@ -108,6 +108,7 @@ const ProgressIndicatorItem = ({
 						[listItemLinkTextSelector]: packs.underline,
 					},
 				}}
+				{...props}
 			>
 				<ProgressIndicatorItemIcon status={status} />
 				<Stack
@@ -122,7 +123,6 @@ const ProgressIndicatorItem = ({
 					fontWeight={active ? 'bold' : 'normal'}
 					borderBottom
 					focus
-					{...props}
 				>
 					<Text {...{ [progressIndicatorItemTextDataAttr]: '' }}>
 						{children}

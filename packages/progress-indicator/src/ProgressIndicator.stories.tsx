@@ -60,23 +60,3 @@ export const Button: ComponentStory<typeof ProgressIndicator> = (args) => (
 Button.args = {
 	items: exampleButtonItems,
 };
-
-export const ModularLinks = () => (
-	<ProgressIndicatorList>
-		{exampleLinkItems.map(({ label, ...props }, index) => (
-			<ProgressIndicatorItemLink key={index} {...props}>
-				{label}
-			</ProgressIndicatorItemLink>
-		))}
-	</ProgressIndicatorList>
-);
-
-export const ModularButtons = () => (
-	<ProgressIndicatorList>
-		{exampleButtonItems.map(({ label, ...props }, index) => (
-			<ProgressIndicatorItemButton key={index} {...props}>
-				{label}
-			</ProgressIndicatorItemButton>
-		))}
-	</ProgressIndicatorList>
-);
