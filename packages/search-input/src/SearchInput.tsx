@@ -6,7 +6,7 @@ import {
 	useState,
 } from 'react';
 import { Field } from '@ag.ds-next/field';
-import { MaxWidthField, mergeRefs } from '@ag.ds-next/core';
+import { FieldMaxWidth, mergeRefs } from '@ag.ds-next/core';
 import { textInputStyles } from '@ag.ds-next/text-input';
 import { SearchInputContainer } from './SearchInputContainer';
 import { SearchInputClearButton } from './SearchInputClearButton';
@@ -25,7 +25,7 @@ type BaseSearchInputProps = {
 	value?: NativeInputProps['value'];
 };
 
-export type SearchInputMaxWidth = Extract<MaxWidthField, 'md' | 'lg' | 'xl'>;
+export type SearchInputMaxWidth = Extract<FieldMaxWidth, 'md' | 'lg' | 'xl'>;
 
 export type SearchInputProps = BaseSearchInputProps & {
 	/** Describes the purpose of the field. */

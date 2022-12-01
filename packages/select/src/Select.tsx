@@ -10,7 +10,7 @@ import {
 	boxPalette,
 	mapSpacing,
 	tokens,
-	MaxWidthField,
+	FieldMaxWidth,
 } from '@ag.ds-next/core';
 import { ChevronDownIcon } from '@ag.ds-next/icon';
 
@@ -58,7 +58,7 @@ export type SelectProps = BaseSelectProps & {
 	/** If true, the field will stretch to the fill the width of its container. */
 	block?: boolean;
 	/** The maximum width of the field. */
-	maxWidth?: MaxWidthField;
+	maxWidth?: FieldMaxWidth;
 };
 
 export const Select = forwardRef<HTMLSelectElement, SelectProps>(
@@ -109,12 +109,14 @@ const SelectContainer = ({
 	maxWidth,
 }: PropsWithChildren<{
 	block?: boolean;
-	maxWidth: MaxWidthField;
+	maxWidth: FieldMaxWidth;
 }>) => (
 	<div
 		css={{
 			position: 'relative',
-			maxWidth: block ? undefined : tokens.maxWidthField[maxWidth],
+			...(!block && {
+				maxWidth: tokens.maxWidth.field[maxWidth],
+			}),
 		}}
 	>
 		{children}

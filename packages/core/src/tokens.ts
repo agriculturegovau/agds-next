@@ -89,27 +89,17 @@ const maxWidth = {
 	bodyText: '42em',
 	container: '80rem', // 1280 px
 	mobileMenu: '17.5rem', // 280 px
+	field: {
+		xs: '5rem', // 80 px
+		sm: '8rem', // 128 px
+		md: '13rem', // 208 px
+		lg: '18rem', // 288 px
+		xl: '24rem', // 384 px
+	},
 } as const;
 
 export type MaxWidth = keyof typeof maxWidth;
-
-const maxWidthField = {
-	xs: '5rem',
-	sm: '8rem',
-	md: '13rem',
-	lg: '18rem',
-	xl: '24rem',
-} as const;
-
-// OLD
-// 	xs: '4.3rem',
-// 	sm: '6.3rem',
-// 	md: '10rem',
-// 	lg: '18rem',
-// 	xl: '24rem',
-//	default: '12.8125rem'
-
-export type MaxWidthField = keyof typeof maxWidthField;
+export type FieldMaxWidth = keyof typeof maxWidth.field;
 
 const borderRadius = unit;
 
@@ -133,7 +123,6 @@ export const tokens = {
 	lineHeight,
 	containerPadding,
 	maxWidth,
-	maxWidthField,
 	borderRadius,
 	borderWidth,
 };

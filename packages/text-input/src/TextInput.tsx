@@ -5,7 +5,7 @@ import {
 	boxPalette,
 	mapSpacing,
 	tokens,
-	MaxWidthField,
+	FieldMaxWidth,
 } from '@ag.ds-next/core';
 
 type NativeInputProps = InputHTMLAttributes<HTMLInputElement>;
@@ -42,7 +42,7 @@ export type TextInputProps = BaseTextInputProps & {
 	/** If true, the field will stretch to the fill the width of its container. */
 	block?: boolean;
 	/** The maximum width of the field. */
-	maxWidth?: MaxWidthField;
+	maxWidth?: FieldMaxWidth;
 };
 
 export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
@@ -88,7 +88,7 @@ export const textInputStyles = ({
 	multiline,
 }: {
 	block?: boolean;
-	maxWidth?: MaxWidthField;
+	maxWidth?: FieldMaxWidth;
 	invalid?: boolean;
 	multiline?: boolean;
 }) =>
@@ -108,7 +108,7 @@ export const textInputStyles = ({
 		...packs.input.md,
 
 		...(maxWidth && {
-			maxWidth: tokens.maxWidthField[maxWidth],
+			maxWidth: tokens.maxWidth.field[maxWidth],
 		}),
 
 		...(block && {

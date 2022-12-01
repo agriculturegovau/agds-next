@@ -7,7 +7,7 @@ export const navLinks = [
 	{ href: '/tokens/colour', label: 'Colour' },
 	{ href: '/tokens/breakpoints', label: 'Breakpoints' },
 	{ href: '/tokens/border', label: 'Border' },
-	{ href: '/tokens/max-width', label: 'Max Width' },
+	{ href: '/tokens/max-width', label: 'Max width' },
 	{ href: '/tokens/spacing', label: 'Spacing' },
 	{ href: '/tokens/typography', label: 'Typography' },
 ];

@@ -1,7 +1,7 @@
 import { Fragment, useState, ReactNode, useCallback } from 'react';
 import { useCombobox } from 'downshift';
 import { usePopper } from 'react-popper';
-import { useId } from '@ag.ds-next/core';
+import { FieldMaxWidth, useId } from '@ag.ds-next/core';
 import { textInputStyles } from '@ag.ds-next/text-input';
 import { Field } from '@ag.ds-next/field';
 import { Text } from '@ag.ds-next/text';
@@ -29,6 +29,8 @@ export type ComboboxProps<Option extends DefaultComboboxOption> = {
 	invalid?: boolean;
 	/** If true, the field will stretch to the fill the width of its container. */
 	block?: boolean;
+	/** The maximum width of the field. */
+	maxWidth?: Extract<FieldMaxWidth, 'md' | 'lg' | 'xl'>;
 	disabled?: boolean;
 	id?: string;
 	name?: string;
@@ -60,6 +62,7 @@ export function Combobox<Option extends DefaultComboboxOption>({
 	id: idProp,
 	disabled,
 	block,
+	maxWidth: maxWidthProp = 'xl',
 	showDropdownTrigger = true,
 	clearable = false,
 	options = [],
@@ -145,7 +148,7 @@ export function Combobox<Option extends DefaultComboboxOption>({
 	const { maxWidth, ...inputStyles } = {
 		...textInputStyles({
 			block,
-			maxWidth: 'xl',
+			maxWidth: maxWidthProp,
 			invalid,
 		}),
 	};

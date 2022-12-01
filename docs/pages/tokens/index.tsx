@@ -11,9 +11,9 @@ const description =
 export default function TokensPage() {
 	return (
 		<>
-			<DocumentTitle title="Tokens" />
+			<DocumentTitle title="Tokens" description={description} />
 			<TokenLayout
-				title="Design Tokens"
+				title="Design tokens"
 				description={description}
 				editPath="/docs/pages/tokens/index.tsx"
 			>

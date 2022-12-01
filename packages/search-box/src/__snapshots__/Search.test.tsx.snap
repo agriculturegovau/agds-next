@@ -19,7 +19,7 @@ exports[`SearchBox renders correctly 1`] = `
           Search
         </label>
         <input
-          class="css-i4ov2d-SearchBoxInput"
+          class="css-q8ysto-SearchBoxInput"
           id="search-:r0:"
           type="search"
         />
