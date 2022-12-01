@@ -1,3 +1,5 @@
+import { Stack } from '@ag.ds-next/box';
+import { Text } from '@ag.ds-next/text';
 import { TaskListContainer } from './TaskListContainer';
 import {
 	TaskListItemButton,
@@ -17,22 +19,32 @@ export type TaskListProps = {
 };
 
 export const TaskList = ({ items, ordered = true }: TaskListProps) => (
-	<TaskListContainer as={ordered ? 'ol' : 'ul'}>
-		{items.map(({ label, ...props }, index) => {
-			if (isItemLink(props)) {
+	<Stack gap={1.5}>
+		<Stack gap={0.5}>
+			<Text fontSize="lg" fontWeight="bold" lineHeight="heading">
+				Task list
+			</Text>
+			<Text fontSize="sm" color="muted">
+				1 of 4 tasks completed
+			</Text>
+		</Stack>
+		<TaskListContainer as={ordered ? 'ol' : 'ul'}>
+			{items.map(({ label, ...props }, index) => {
+				if (isItemLink(props)) {
+					return (
+						<TaskListItemLink key={index} ordered={ordered} {...props}>
+							{label}
+						</TaskListItemLink>
+					);
+				}
 				return (
-					<TaskListItemLink key={index} ordered={ordered} {...props}>
+					<TaskListItemButton key={index} ordered={ordered} {...props}>
 						{label}
-					</TaskListItemLink>
+					</TaskListItemButton>
 				);
-			}
-			return (
-				<TaskListItemButton key={index} ordered={ordered} {...props}>
-					{label}
-				</TaskListItemButton>
-			);
-		})}
-	</TaskListContainer>
+			})}
+		</TaskListContainer>
+	</Stack>
 );
 
 const isItemLink = (
