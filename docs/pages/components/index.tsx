@@ -61,8 +61,8 @@ export default function PackagesHome({
 					</Prose>
 					<div role="search" aria-label="components">
 						<SearchInput
-							label="Search components"
-							hint="Example. Search for “toggle” or “form”."
+							label="Find a component"
+							hint="Filter by name or category"
 							value={searchTerm}
 							onChange={setSearchTerm}
 							maxWidth="xl"
