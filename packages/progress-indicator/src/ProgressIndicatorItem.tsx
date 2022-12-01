@@ -92,6 +92,7 @@ const ProgressIndicatorItem = ({
 				as={as}
 				gap={1}
 				css={{
+					width: '100%',
 					textDecoration: 'none',
 					[`[${progressIndicatorItemRingDataAttr}]:before`]: {
 						backgroundColor: backgroundColorMap[background],
@@ -113,13 +114,13 @@ const ProgressIndicatorItem = ({
 					{...{ [progressIndicatorItemTextContainerDataAttr]: '' }}
 					as="span"
 					flexDirection="column-reverse"
+					flexGrow={1}
 					gap={0}
 					justifyContent="center"
 					paddingY={0.75}
 					fontFamily="body"
 					fontWeight={active ? 'bold' : 'normal'}
 					borderBottom
-					width="100%"
 					focus
 					{...props}
 				>
@@ -141,7 +142,7 @@ const ProgressIndicatorItem = ({
 };
 
 const ProgressIndicatorItemTimeline = () => (
-	<div
+	<span
 		{...{ [progressIndicatorItemTimelineDataAttr]: '' }}
 		css={{
 			width: tokens.borderWidth.md,
@@ -161,9 +162,9 @@ const ProgressIndicatorItemIcon = ({
 	const ringGap = 3;
 	const ringInset = ringWidth + ringGap;
 	return (
-		<Flex flexDirection="column" alignItems="center">
+		<Flex as="span" flexDirection="column" alignItems="center">
 			<ProgressIndicatorItemTimeline />
-			<div
+			<span
 				{...{ [progressIndicatorItemRingDataAttr]: '' }}
 				css={{
 					position: 'relative',
@@ -192,7 +193,7 @@ const ProgressIndicatorItemIcon = ({
 						margin: -1,
 					}}
 				/>
-			</div>
+			</span>
 			<ProgressIndicatorItemTimeline />
 		</Flex>
 	);
