@@ -115,7 +115,7 @@ const TaskListItem = ({
 					}}
 				/>
 				<Flex as="span" flexDirection="column" gap={0.25}>
-					<Text as="span" fontSize="xs" lineHeight="nospace">
+					<Text as="span" fontSize="sm" lineHeight="nospace">
 						{label}
 					</Text>
 					<Text
