@@ -1,5 +1,5 @@
 import { ButtonHTMLAttributes, ElementType, PropsWithChildren } from 'react';
-import { Box, Flex, Stack } from '@ag.ds-next/box';
+import { Box, Flex, Stack, backgroundColorMap } from '@ag.ds-next/box';
 import { Text } from '@ag.ds-next/text';
 import { TextLink } from '@ag.ds-next/text-link';
 import {
@@ -8,16 +8,9 @@ import {
 	SuccessFilledIcon,
 	ProgressTodoIcon,
 } from '@ag.ds-next/icon';
-import { boxPalette, LinkProps, packs } from '@ag.ds-next/core';
+import { boxPalette, LinkProps, packs, tokens } from '@ag.ds-next/core';
 import { BaseButton } from '@ag.ds-next/button';
 import { hoverColorMap, ProgressIndicatorBackground } from './utils';
-
-const progressIndicatorItemTimelineDataAttr =
-	'data-agds-progress-indicator-timeline-action';
-const progressIndicatorItemTextContainerDataAttr =
-	'data-agds-progress-indicator-item-text-container';
-const progressIndicatorItemTextDataAttr =
-	'data-agds-progress-indicator-item-text';
 
 export type ProgressIndicatorItem = (
 	| ProgressIndicatorItemButtonProps
@@ -63,37 +56,6 @@ type ProgressIndicatorItemProps = PropsWithChildren<{
 	status: ProgressIndicatorItemStatus;
 }>;
 
-const ProgressIndicatorItemTimeline = () => (
-	<div
-		{...{ [progressIndicatorItemTimelineDataAttr]: '' }}
-		css={{
-			width: 2,
-			backgroundColor: boxPalette.border,
-			flex: 1,
-		}}
-	/>
-);
-
-const ProgressIndicatorItemIcon = ({
-	status,
-}: {
-	status: ProgressIndicatorItemStatus;
-}) => {
-	const { icon: Icon, iconColor } = statusMap[status];
-	return (
-		<Flex
-			flexDirection="column"
-			alignItems="center"
-			justifyContent="center"
-			width="46px"
-		>
-			<ProgressIndicatorItemTimeline />
-			<Icon size="md" color={iconColor} />
-			<ProgressIndicatorItemTimeline />
-		</Flex>
-	);
-};
-
 const ProgressIndicatorItem = ({
 	as,
 	background = 'body',
@@ -128,22 +90,25 @@ const ProgressIndicatorItem = ({
 		>
 			<Flex
 				as={as}
+				gap={1}
 				css={{
 					textDecoration: 'none',
+					[`[${progressIndicatorItemRingDataAttr}]:before`]: {
+						backgroundColor: backgroundColorMap[background],
+					},
 					[listItemLinkTextSelector]: {
-						...packs.underline,
 						fontWeight: active ? 'bold' : 'normal',
 					},
 					'&:hover': {
 						backgroundColor: hoverColorMap[background],
-						[listItemLinkTextSelector]: {
-							textDecoration: 'none',
+						[`[${progressIndicatorItemRingDataAttr}]:before`]: {
+							backgroundColor: hoverColorMap[background],
 						},
+						[listItemLinkTextSelector]: packs.underline,
 					},
 				}}
 			>
 				<ProgressIndicatorItemIcon status={status} />
-
 				<Stack
 					{...{ [progressIndicatorItemTextContainerDataAttr]: '' }}
 					as="span"
@@ -174,6 +139,73 @@ const ProgressIndicatorItem = ({
 		</Box>
 	);
 };
+
+const ProgressIndicatorItemTimeline = () => (
+	<div
+		{...{ [progressIndicatorItemTimelineDataAttr]: '' }}
+		css={{
+			width: tokens.borderWidth.md,
+			backgroundColor: boxPalette.border,
+			flex: 1,
+		}}
+	/>
+);
+
+const ProgressIndicatorItemIcon = ({
+	status,
+}: {
+	status: ProgressIndicatorItemStatus;
+}) => {
+	const { icon: Icon, iconColor } = statusMap[status];
+	const ringWidth = tokens.borderWidth.md;
+	const ringGap = 3;
+	const ringInset = ringWidth + ringGap;
+	return (
+		<Flex flexDirection="column" alignItems="center">
+			<ProgressIndicatorItemTimeline />
+			<div
+				{...{ [progressIndicatorItemRingDataAttr]: '' }}
+				css={{
+					position: 'relative',
+					paddingLeft: ringInset,
+					paddingRight: ringInset,
+					...(status === 'doing' && {
+						':before': {
+							position: 'absolute',
+							top: -ringInset,
+							bottom: -ringInset,
+							left: 0,
+							right: 0,
+							borderRadius: '100%',
+							content: '""',
+							border: `${ringWidth}px solid ${boxPalette.foregroundAction}`,
+						},
+					}),
+				}}
+			>
+				<Icon
+					size="md"
+					color={iconColor}
+					css={{
+						position: 'relative',
+						display: 'block',
+						margin: -1,
+					}}
+				/>
+			</div>
+			<ProgressIndicatorItemTimeline />
+		</Flex>
+	);
+};
+
+const progressIndicatorItemTimelineDataAttr =
+	'data-agds-progress-indicator-item-timeline-action';
+const progressIndicatorItemRingDataAttr =
+	'data-agds-progress-indicator-item-ring';
+const progressIndicatorItemTextContainerDataAttr =
+	'data-agds-progress-indicator-item-text-container';
+const progressIndicatorItemTextDataAttr =
+	'data-agds-progress-indicator-item-text';
 
 const statusMap = {
 	blocked: {
