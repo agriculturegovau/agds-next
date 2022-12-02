@@ -122,6 +122,7 @@ const ProgressIndicatorItem = ({
 					fontFamily="body"
 					fontWeight={active ? 'bold' : 'normal'}
 					borderBottom
+					borderColor="muted"
 					focus
 				>
 					<Text {...{ [progressIndicatorItemTextDataAttr]: '' }}>
