@@ -26,7 +26,7 @@ exports[`ProgressIndicator With anchors renders correctly 1`] = `
       id="progress-indicator-:r0:-button"
       type="button"
     >
-      Doing step 2 of 3
+      2 of 3 steps completed
       <svg
         aria-hidden="true"
         class="css-u8huve-Icon"
@@ -96,7 +96,7 @@ exports[`ProgressIndicator With anchors renders correctly 1`] = `
               />
             </span>
             <span
-              class="css-1lfiuf9-boxStyles"
+              class="css-1f8vpbj-boxStyles"
               data-agds-progress-indicator-item-text-container=""
             >
               <span
@@ -170,7 +170,7 @@ exports[`ProgressIndicator With anchors renders correctly 1`] = `
               />
             </span>
             <span
-              class="css-1egqwoc-boxStyles"
+              class="css-3301g1-boxStyles"
               data-agds-progress-indicator-item-text-container=""
             >
               <span
@@ -231,7 +231,7 @@ exports[`ProgressIndicator With anchors renders correctly 1`] = `
               />
             </span>
             <span
-              class="css-1lfiuf9-boxStyles"
+              class="css-1f8vpbj-boxStyles"
               data-agds-progress-indicator-item-text-container=""
             >
               <span
@@ -280,7 +280,7 @@ exports[`ProgressIndicator With buttons renders correctly 1`] = `
       id="progress-indicator-:r2:-button"
       type="button"
     >
-      Doing step 2 of 3
+      2 of 3 steps completed
       <svg
         aria-hidden="true"
         class="css-u8huve-Icon"
@@ -350,7 +350,7 @@ exports[`ProgressIndicator With buttons renders correctly 1`] = `
               />
             </span>
             <span
-              class="css-1lfiuf9-boxStyles"
+              class="css-1f8vpbj-boxStyles"
               data-agds-progress-indicator-item-text-container=""
             >
               <span
@@ -424,7 +424,7 @@ exports[`ProgressIndicator With buttons renders correctly 1`] = `
               />
             </span>
             <span
-              class="css-1egqwoc-boxStyles"
+              class="css-3301g1-boxStyles"
               data-agds-progress-indicator-item-text-container=""
             >
               <span
@@ -485,7 +485,7 @@ exports[`ProgressIndicator With buttons renders correctly 1`] = `
               />
             </span>
             <span
-              class="css-1lfiuf9-boxStyles"
+              class="css-1f8vpbj-boxStyles"
               data-agds-progress-indicator-item-text-container=""
             >
               <span
