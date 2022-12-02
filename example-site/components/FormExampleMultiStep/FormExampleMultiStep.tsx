@@ -186,7 +186,7 @@ export const FormExampleMultiStep = () => {
 												? 'doing'
 												: idx in formState
 												? 'done'
-												: 'todo',
+												: 'blocked',
 										onClick: () => setCurrentStep(idx),
 									}))}
 								/>
