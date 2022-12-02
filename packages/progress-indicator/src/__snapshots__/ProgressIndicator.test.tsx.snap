@@ -3,10 +3,10 @@
 exports[`ProgressIndicator With anchors renders correctly 1`] = `
 <div>
   <section
-    class="css-td3mpi-boxStyles"
+    class="css-rsqj87-boxStyles"
   >
     <div
-      class="css-1ufb6od-boxStyles-ProgressIndicatorHeading"
+      class="css-wxtzpi-boxStyles-ProgressIndicatorHeading"
     >
       <span
         class="css-kip0vn-boxStyles-Text"
@@ -257,10 +257,10 @@ exports[`ProgressIndicator With anchors renders correctly 1`] = `
 exports[`ProgressIndicator With buttons renders correctly 1`] = `
 <div>
   <section
-    class="css-td3mpi-boxStyles"
+    class="css-rsqj87-boxStyles"
   >
     <div
-      class="css-1ufb6od-boxStyles-ProgressIndicatorHeading"
+      class="css-wxtzpi-boxStyles-ProgressIndicatorHeading"
     >
       <span
         class="css-kip0vn-boxStyles-Text"

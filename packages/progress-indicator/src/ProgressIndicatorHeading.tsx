@@ -12,12 +12,9 @@ export const ProgressIndicatorHeading = ({
 	return (
 		<Stack
 			gap={0.5}
-			paddingBottom={1.5}
 			css={{
 				display: 'none',
-				[tokens.mediaQuery.min.md]: {
-					display: 'flex',
-				},
+				[tokens.mediaQuery.min.md]: { display: 'flex' },
 			}}
 		>
 			<Text fontSize="md" fontWeight="bold" lineHeight="heading">
