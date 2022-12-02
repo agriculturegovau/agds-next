@@ -12,7 +12,6 @@ import { Column, Columns } from '@ag.ds-next/columns';
 import { PageContent, ContentBleed } from '@ag.ds-next/content';
 import { ProgressIndicator } from '@ag.ds-next/progress-indicator';
 import { Stack } from '@ag.ds-next/box';
-import { Text } from '@ag.ds-next/text';
 import { DirectionButton } from '@ag.ds-next/direction-link';
 import { AppLayout } from '../AppLayout';
 import { useFormRegisterPet } from '../FormRegisterPetContext';
@@ -220,25 +219,13 @@ export const FormRegisterPetDetails = () => {
 					<Columns>
 						<Column columnSpan={{ xs: 12, md: 4, lg: 3 }}>
 							<ContentBleed visible={{ md: false }}>
-								<Stack gap={0.75}>
-									<Text
-										display={{ xs: 'none', md: 'block' }}
-										as="h3"
-										fontSize="md"
-										fontWeight="bold"
-										lineHeight="heading"
-									>
-										Progress
-									</Text>
-									<ProgressIndicator
-										items={FORM_STEPS.map(({ label }, idx) => ({
-											label,
-											status: getStepStatus(idx),
-
-											onClick: () => setCurrentStep(idx),
-										}))}
-									/>
-								</Stack>
+								<ProgressIndicator
+									items={FORM_STEPS.map(({ label }, idx) => ({
+										label,
+										status: getStepStatus(idx),
+										onClick: () => setCurrentStep(idx),
+									}))}
+								/>
 							</ContentBleed>
 						</Column>
 						<Column columnSpan={{ xs: 12, md: 8 }} columnStart={{ lg: 5 }}>

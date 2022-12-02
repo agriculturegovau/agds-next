@@ -208,24 +208,13 @@ export const FormRegisterPetPersonalDetails = () => {
 					<Columns>
 						<Column columnSpan={{ xs: 12, md: 4, lg: 3 }}>
 							<ContentBleed visible={{ md: false }}>
-								<Stack gap={0.75}>
-									<Text
-										display={{ xs: 'none', md: 'block' }}
-										as="h3"
-										fontSize="md"
-										fontWeight="bold"
-										lineHeight="heading"
-									>
-										Progress
-									</Text>
-									<ProgressIndicator
-										items={FORM_STEPS.map(({ label }, idx) => ({
-											label,
-											status: getStepStatus(idx),
-											onClick: () => setCurrentStep(idx),
-										}))}
-									/>
-								</Stack>
+								<ProgressIndicator
+									items={FORM_STEPS.map(({ label }, idx) => ({
+										label,
+										status: getStepStatus(idx),
+										onClick: () => setCurrentStep(idx),
+									}))}
+								/>
 							</ContentBleed>
 						</Column>
 						<Column columnSpan={{ xs: 12, md: 8 }} columnStart={{ lg: 5 }}>
