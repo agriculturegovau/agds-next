@@ -40,6 +40,8 @@ type BaseSelectProps = {
 	value?: NativeSelectProps['value'];
 };
 
+type SelectMaxWidth = Extract<FieldMaxWidth, 'md' | 'lg' | 'xl'>;
+
 export type SelectProps = BaseSelectProps & {
 	/** Describes the purpose of the field. */
 	label: string;
@@ -58,7 +60,7 @@ export type SelectProps = BaseSelectProps & {
 	/** If true, the field will stretch to the fill the width of its container. */
 	block?: boolean;
 	/** The maximum width of the field. */
-	maxWidth?: FieldMaxWidth;
+	maxWidth?: SelectMaxWidth;
 };
 
 export const Select = forwardRef<HTMLSelectElement, SelectProps>(
@@ -109,7 +111,7 @@ const SelectContainer = ({
 	maxWidth,
 }: PropsWithChildren<{
 	block?: boolean;
-	maxWidth: FieldMaxWidth;
+	maxWidth: SelectMaxWidth;
 }>) => (
 	<div
 		css={{

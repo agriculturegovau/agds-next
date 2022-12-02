@@ -93,7 +93,7 @@ Block.args = {
 
 export const MaxWidths: ComponentStory<typeof Select> = (args) => (
 	<Stack gap={1}>
-		{(['xs', 'sm', 'md', 'lg', 'xl'] as const).map((size) => (
+		{(['md', 'lg', 'xl'] as const).map((size) => (
 			<Select key={size} {...args} label={size} maxWidth={size} />
 		))}
 	</Stack>

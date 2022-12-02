@@ -56,7 +56,7 @@ Block.args = {
 
 export const MaxWidths: ComponentStory<typeof Textarea> = (args) => (
 	<Stack background="body" palette="light" gap={1}>
-		{(['xs', 'sm', 'md', 'lg', 'xl'] as const).map((size) => (
+		{(['md', 'lg', 'xl'] as const).map((size) => (
 			<Textarea key={size} {...args} label={size} maxWidth={size} />
 		))}
 	</Stack>

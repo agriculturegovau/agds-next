@@ -35,7 +35,7 @@ export type TextareaProps = BaseTextareaProps & {
 	/** If true, the field will stretch to the fill the width of its container. */
 	block?: boolean;
 	/** The maximum width of the field. */
-	maxWidth?: FieldMaxWidth;
+	maxWidth?: Extract<FieldMaxWidth, 'md' | 'lg' | 'xl'>;
 };
 
 export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
