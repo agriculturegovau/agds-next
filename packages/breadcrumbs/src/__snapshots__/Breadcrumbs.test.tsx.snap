@@ -9,7 +9,7 @@ exports[`Breadcrumbs renders correctly 1`] = `
       class="css-njrw75-boxStyles-BreadcrumbsContainer"
     >
       <li
-        class="css-962g7u-boxStyles"
+        class="css-v6k7t1-boxStyles"
       >
         <svg
           aria-hidden="true"
@@ -34,7 +34,7 @@ exports[`Breadcrumbs renders correctly 1`] = `
         </a>
       </li>
       <li
-        class="css-962g7u-boxStyles"
+        class="css-v6k7t1-boxStyles"
       >
         <svg
           aria-hidden="true"
@@ -61,7 +61,7 @@ exports[`Breadcrumbs renders correctly 1`] = `
         </button>
       </li>
       <li
-        class="css-962g7u-boxStyles"
+        class="css-v6k7t1-boxStyles"
       >
         <svg
           aria-hidden="true"
@@ -86,7 +86,7 @@ exports[`Breadcrumbs renders correctly 1`] = `
         </a>
       </li>
       <li
-        class="css-962g7u-boxStyles"
+        class="css-v6k7t1-boxStyles"
       >
         <svg
           aria-hidden="true"
