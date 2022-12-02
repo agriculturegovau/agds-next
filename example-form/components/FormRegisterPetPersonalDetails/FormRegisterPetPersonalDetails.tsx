@@ -12,7 +12,6 @@ import { Column, Columns } from '@ag.ds-next/columns';
 import { PageContent, ContentBleed } from '@ag.ds-next/content';
 import { ProgressIndicator } from '@ag.ds-next/progress-indicator';
 import { Stack } from '@ag.ds-next/box';
-import { Text } from '@ag.ds-next/text';
 import { DirectionButton } from '@ag.ds-next/direction-link';
 import { AppLayout } from '../AppLayout';
 import { useFormRegisterPet } from '../FormRegisterPetContext';
