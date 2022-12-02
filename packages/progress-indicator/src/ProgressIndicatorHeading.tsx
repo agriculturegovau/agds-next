@@ -3,11 +3,11 @@ import { Text } from '@ag.ds-next/text';
 import { tokens } from '@ag.ds-next/core';
 
 export const ProgressIndicatorHeading = ({
-	stepsCompleted,
-	totalSteps,
+	heading,
+	subHeading,
 }: {
-	stepsCompleted: number;
-	totalSteps: number;
+	heading: string;
+	subHeading: string;
 }) => {
 	return (
 		<Stack
@@ -21,12 +21,11 @@ export const ProgressIndicatorHeading = ({
 			}}
 		>
 			<Text fontSize="md" fontWeight="bold" lineHeight="heading">
-				Progress
+				{heading}
 			</Text>
-			<Text
-				color="muted"
-				fontSize="xs"
-			>{`${stepsCompleted} of ${totalSteps} steps completed`}</Text>
+			<Text color="muted" fontSize="xs">
+				{subHeading}
+			</Text>
 		</Stack>
 	);
 };

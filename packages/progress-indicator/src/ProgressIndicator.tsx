@@ -56,20 +56,20 @@ export const ProgressIndicator = ({
 
 	const { windowWidth } = useWindowSize();
 	const isMobile = (windowWidth || 0) <= tokens.breakpoint.lg - 1;
+	const stepsCompleted = items.filter((item) => item.status === 'done').length;
+	const totalSteps = items.length;
+	const subHeading = `${stepsCompleted} of ${totalSteps} steps completed`;
 
 	return (
 		<Box as="section" borderBottom>
-			<ProgressIndicatorHeading
-				stepsCompleted={items.filter((item) => item.status === 'done').length}
-				totalSteps={items.length}
-			/>
+			<ProgressIndicatorHeading heading="Progress" subHeading={subHeading} />
 			<ProgressIndicatorCollapseButton
 				background={background}
 				isOpen={isOpen}
 				onClick={onToggle}
 				ariaControls={bodyId}
 				id={buttonId}
-				items={items}
+				label={subHeading}
 			/>
 			<animated.div
 				id={bodyId}
