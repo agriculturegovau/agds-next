@@ -91,7 +91,7 @@ describe('SearchInput', () => {
 
 		expect(input).toHaveValue('Hello world');
 		expect(clearButton).toBeInTheDocument();
-		expect(clearButton).toHaveAccessibleName('Clear input');
+		expect(clearButton).toHaveAccessibleName('Clear search');
 
 		if (clearButton) await userEvent.click(clearButton);
 

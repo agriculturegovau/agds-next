@@ -1,7 +1,7 @@
 import { MouseEventHandler } from 'react';
 import { CloseIcon } from '@ag.ds-next/icon';
 import { Flex } from '@ag.ds-next/box';
-import { mapSpacing, tokens } from '@ag.ds-next/core';
+import { boxPalette, mapSpacing, tokens } from '@ag.ds-next/core';
 
 export type SearchInputClearButtonProps = {
 	disabled?: boolean;
@@ -21,7 +21,7 @@ export function SearchInputClearButton({
 			role="button"
 			alignItems="center"
 			justifyContent="center"
-			aria-label="Clear input"
+			aria-label="Clear search"
 			onClick={onClick}
 			css={{
 				position: 'absolute',
@@ -29,9 +29,12 @@ export function SearchInputClearButton({
 				right: `calc(${mapSpacing(1)} + ${tokens.borderWidth.lg}px)`, // Align from the inner border
 				transform: 'translateY(-50%)',
 				opacity: disabled ? 0.3 : 1,
+				cursor: 'pointer',
+				color: boxPalette.foregroundAction,
+				'&:hover': { color: boxPalette.foregroundText },
 			}}
 		>
-			<CloseIcon size="md" weight="regular" color="muted" />
+			<CloseIcon size="sm" weight="bold" color="inherit" />
 		</Flex>
 	);
 }
