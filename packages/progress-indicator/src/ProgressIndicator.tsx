@@ -8,7 +8,7 @@ import {
 	useToggleState,
 	useWindowSize,
 } from '@ag.ds-next/core';
-import { Stack } from '@ag.ds-next/box';
+import { Box } from '@ag.ds-next/box';
 import { ProgressIndicatorHeading } from './ProgressIndicatorHeading';
 import { ProgressIndicatorCollapseButton } from './ProgressIndicatorCollapseButton';
 import {
@@ -61,7 +61,7 @@ export const ProgressIndicator = ({
 	const subHeading = `${stepsCompleted} of ${totalSteps} steps completed`;
 
 	return (
-		<Stack as="section" gap={1.5} borderBottom>
+		<Box as="section" borderBottom>
 			<ProgressIndicatorHeading heading="Progress" subHeading={subHeading} />
 			<ProgressIndicatorCollapseButton
 				background={background}
@@ -111,7 +111,7 @@ export const ProgressIndicator = ({
 					})}
 				</ProgressIndicatorList>
 			</animated.div>
-		</Stack>
+		</Box>
 	);
 };
 
