@@ -176,7 +176,7 @@ export const FormRegisterPetPersonalDetails = () => {
 		(idx: number) => {
 			if (idx === currentStep) return 'doing';
 			if (hasCompletedStep(idx)) return 'done';
-			return 'todo';
+			return 'blocked';
 		},
 		[currentStep, hasCompletedStep]
 	);
