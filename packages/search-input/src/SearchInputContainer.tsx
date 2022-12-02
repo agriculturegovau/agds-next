@@ -1,6 +1,8 @@
 import { PropsWithChildren } from 'react';
 
-export type SearchInputContainerProps = PropsWithChildren<{ maxWidth: string }>;
+export type SearchInputContainerProps = PropsWithChildren<{
+	maxWidth?: string;
+}>;
 
 export function SearchInputContainer({
 	children,

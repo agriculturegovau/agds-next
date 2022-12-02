@@ -1,5 +1,6 @@
 import { forwardRef, TextareaHTMLAttributes } from 'react';
-import { Field, FieldMaxWidth } from '@ag.ds-next/field';
+import { FieldMaxWidth } from '@ag.ds-next/core';
+import { Field } from '@ag.ds-next/field';
 import { textInputStyles } from '@ag.ds-next/text-input';
 
 type NativeTextareaProps = TextareaHTMLAttributes<HTMLTextAreaElement>;
@@ -34,7 +35,7 @@ export type TextareaProps = BaseTextareaProps & {
 	/** If true, the field will stretch to the fill the width of its container. */
 	block?: boolean;
 	/** The maximum width of the field. */
-	maxWidth?: FieldMaxWidth;
+	maxWidth?: Extract<FieldMaxWidth, 'md' | 'lg' | 'xl'>;
 };
 
 export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
@@ -47,7 +48,7 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
 			message,
 			invalid,
 			block,
-			maxWidth,
+			maxWidth = 'md',
 			id,
 			...props
 		},

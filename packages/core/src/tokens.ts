@@ -89,7 +89,17 @@ const maxWidth = {
 	bodyText: '42em',
 	container: '80rem', // 1280 px
 	mobileMenu: '17.5rem', // 280 px
-};
+	field: {
+		xs: '5rem', // 80 px
+		sm: '8rem', // 128 px
+		md: '13rem', // 208 px
+		lg: '18rem', // 288 px
+		xl: '24rem', // 384 px
+	},
+} as const;
+
+export type MaxWidth = keyof typeof maxWidth;
+export type FieldMaxWidth = keyof typeof maxWidth.field;
 
 const borderRadius = unit;
 

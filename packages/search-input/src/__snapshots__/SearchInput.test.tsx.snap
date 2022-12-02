@@ -21,7 +21,7 @@ exports[`SearchInput Basic renders correctly 1`] = `
       </span>
     </label>
     <div
-      class="css-1mmi5kq-SearchInputContainer"
+      class="css-fctz8d-SearchInputContainer"
     >
       <svg
         aria-hidden="true"
@@ -114,7 +114,7 @@ exports[`SearchInput Invalid renders correctly 1`] = `
       </span>
     </div>
     <div
-      class="css-1mmi5kq-SearchInputContainer"
+      class="css-fctz8d-SearchInputContainer"
     >
       <svg
         aria-hidden="true"
@@ -180,7 +180,7 @@ exports[`SearchInput With hint renders correctly 1`] = `
       Hint text
     </span>
     <div
-      class="css-1mmi5kq-SearchInputContainer"
+      class="css-fctz8d-SearchInputContainer"
     >
       <svg
         aria-hidden="true"

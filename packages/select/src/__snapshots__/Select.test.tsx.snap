@@ -21,7 +21,7 @@ exports[`Select Basic renders correctly 1`] = `
       </span>
     </label>
     <div
-      class="css-yql58k-SelectContainer"
+      class="css-1bg5d3h-SelectContainer"
     >
       <select
         aria-invalid="false"
@@ -86,7 +86,7 @@ exports[`Select Grouped options renders correctly 1`] = `
       </span>
     </label>
     <div
-      class="css-yql58k-SelectContainer"
+      class="css-1bg5d3h-SelectContainer"
     >
       <select
         aria-invalid="false"
@@ -208,7 +208,7 @@ exports[`Select Invalid renders correctly 1`] = `
       </span>
     </div>
     <div
-      class="css-yql58k-SelectContainer"
+      class="css-1bg5d3h-SelectContainer"
     >
       <select
         aria-describedby="field-:r6:-message"
@@ -274,7 +274,7 @@ exports[`Select With hint renders correctly 1`] = `
       </span>
     </label>
     <div
-      class="css-yql58k-SelectContainer"
+      class="css-1bg5d3h-SelectContainer"
     >
       <select
         aria-invalid="false"

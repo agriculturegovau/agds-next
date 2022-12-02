@@ -4,8 +4,14 @@ import {
 	PropsWithChildren,
 	SelectHTMLAttributes,
 } from 'react';
-import { Field, FieldMaxWidth, fieldMaxWidth } from '@ag.ds-next/field';
-import { packs, boxPalette, mapSpacing, tokens } from '@ag.ds-next/core';
+import { Field } from '@ag.ds-next/field';
+import {
+	packs,
+	boxPalette,
+	mapSpacing,
+	tokens,
+	FieldMaxWidth,
+} from '@ag.ds-next/core';
 import { ChevronDownIcon } from '@ag.ds-next/icon';
 
 export type Option = {
@@ -34,6 +40,8 @@ type BaseSelectProps = {
 	value?: NativeSelectProps['value'];
 };
 
+type SelectMaxWidth = Extract<FieldMaxWidth, 'md' | 'lg' | 'xl'>;
+
 export type SelectProps = BaseSelectProps & {
 	/** Describes the purpose of the field. */
 	label: string;
@@ -52,7 +60,7 @@ export type SelectProps = BaseSelectProps & {
 	/** If true, the field will stretch to the fill the width of its container. */
 	block?: boolean;
 	/** The maximum width of the field. */
-	maxWidth?: FieldMaxWidth;
+	maxWidth?: SelectMaxWidth;
 };
 
 export const Select = forwardRef<HTMLSelectElement, SelectProps>(
@@ -65,7 +73,7 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(
 			message,
 			invalid,
 			block,
-			maxWidth,
+			maxWidth = 'md',
 			options,
 			placeholder,
 			id,
@@ -103,16 +111,14 @@ const SelectContainer = ({
 	maxWidth,
 }: PropsWithChildren<{
 	block?: boolean;
-	maxWidth?: FieldMaxWidth;
+	maxWidth: SelectMaxWidth;
 }>) => (
 	<div
 		css={{
 			position: 'relative',
-			maxWidth: block
-				? undefined
-				: maxWidth
-				? fieldMaxWidth[maxWidth]
-				: '12.8125rem',
+			...(!block && {
+				maxWidth: tokens.maxWidth.field[maxWidth],
+			}),
 		}}
 	>
 		{children}

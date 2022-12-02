@@ -62,13 +62,18 @@ export const SpacingChart = () => {
 	);
 };
 
-export const MaxWidthChart = () => {
+export const MaxWidthChart = ({
+	tokens,
+}: {
+	tokens: Record<string, unknown>;
+}) => {
 	return (
-		<Stack gap={0.5} className={proseBlockClassname}>
-			{Object.entries(tokens.maxWidth).map(([token, value]) => {
+		<Stack as="ul" gap={0.5} className={proseBlockClassname}>
+			{Object.entries(tokens).map(([token, value], index) => {
+				if (typeof value !== 'string') return null;
 				const label = `${token} (${value})`;
 				return (
-					<Flex key={token} gap={0.25}>
+					<Flex key={index} as="li" gap={0.25}>
 						<Box
 							padding={0.5}
 							css={{

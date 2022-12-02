@@ -1,6 +1,12 @@
 import { forwardRef, InputHTMLAttributes } from 'react';
-import { Field, fieldMaxWidth, FieldMaxWidth } from '@ag.ds-next/field';
-import { packs, boxPalette, mapSpacing, tokens } from '@ag.ds-next/core';
+import { Field } from '@ag.ds-next/field';
+import {
+	packs,
+	boxPalette,
+	mapSpacing,
+	tokens,
+	FieldMaxWidth,
+} from '@ag.ds-next/core';
 
 type NativeInputProps = InputHTMLAttributes<HTMLInputElement>;
 
@@ -49,7 +55,7 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
 			message,
 			invalid,
 			block,
-			maxWidth,
+			maxWidth = 'md',
 			id,
 			type = 'text',
 			...props
@@ -82,7 +88,7 @@ export const textInputStyles = ({
 	multiline,
 }: {
 	block?: boolean;
-	maxWidth?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
+	maxWidth?: FieldMaxWidth;
 	invalid?: boolean;
 	multiline?: boolean;
 }) =>
@@ -98,9 +104,12 @@ export const textInputStyles = ({
 		borderColor: boxPalette.border,
 		borderRadius: tokens.borderRadius,
 		color: boxPalette.foregroundText,
-		maxWidth: maxWidth ? fieldMaxWidth[maxWidth] : '12.8125rem',
 		fontFamily: tokens.font.body,
 		...packs.input.md,
+
+		...(maxWidth && {
+			maxWidth: tokens.maxWidth.field[maxWidth],
+		}),
 
 		...(block && {
 			maxWidth: 'none',
