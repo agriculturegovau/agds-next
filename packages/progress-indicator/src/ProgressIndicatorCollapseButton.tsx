@@ -37,7 +37,7 @@ export const ProgressIndicatorCollapseButton = ({
 	const title = useMemo(() => {
 		const activeItemIndex = items.findIndex(({ status }) => status === 'doing');
 		if (activeItemIndex === -1) return 'Progress';
-		return `Doing step ${activeItemIndex + 1} of ${items.length}`;
+		return `${activeItemIndex + 1} of ${items.length} steps completed`;
 	}, [items]);
 
 	return (
