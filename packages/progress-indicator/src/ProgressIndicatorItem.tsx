@@ -1,5 +1,5 @@
 import { ButtonHTMLAttributes, ElementType, PropsWithChildren } from 'react';
-import { Box, Flex } from '@ag.ds-next/box';
+import { Box, Flex, Stack, backgroundColorMap } from '@ag.ds-next/box';
 import { Text } from '@ag.ds-next/text';
 import { TextLink } from '@ag.ds-next/text-link';
 import {
@@ -8,7 +8,7 @@ import {
 	SuccessFilledIcon,
 	ProgressTodoIcon,
 } from '@ag.ds-next/icon';
-import { boxPalette, LinkProps, packs } from '@ag.ds-next/core';
+import { boxPalette, LinkProps, packs, tokens } from '@ag.ds-next/core';
 import { BaseButton } from '@ag.ds-next/button';
 import { hoverColorMap, ProgressIndicatorBackground } from './utils';
 
@@ -53,7 +53,6 @@ export const ProgressIndicatorItemButton = ({
 type ProgressIndicatorItemProps = PropsWithChildren<{
 	as: ElementType;
 	background?: ProgressIndicatorBackground;
-	className?: string;
 	status: ProgressIndicatorItemStatus;
 }>;
 
@@ -62,48 +61,153 @@ const ProgressIndicatorItem = ({
 	background = 'body',
 	children,
 	status,
-	className,
 	...props
 }: ProgressIndicatorItemProps) => {
 	const active = status === 'doing';
-	const { icon: Icon, iconColor, label } = statusMap[status];
+	const { label } = statusMap[status];
+
+	const listItemLinkTextSelector = '> span:last-of-type > span:first-of-type';
+
 	return (
-		<Box as="li" borderBottom>
+		<Box
+			as="li"
+			background={background}
+			css={{
+				'&:first-of-type': {
+					[`[${progressIndicatorItemTimelineDataAttr}]:first-of-type`]: {
+						opacity: 0,
+					},
+				},
+				'&:last-of-type': {
+					[`[${progressIndicatorItemTimelineDataAttr}]:last-of-type`]: {
+						opacity: 0,
+					},
+					[`[${progressIndicatorItemTextContainerDataAttr}]`]: {
+						borderBottomWidth: 0,
+					},
+				},
+			}}
+		>
 			<Flex
 				as={as}
-				className={className}
-				alignItems="center"
-				gap={0.75}
-				padding={0.75}
-				background={background}
-				color="text"
-				fontFamily="body"
-				fontWeight={active ? 'bold' : 'normal'}
-				borderLeft
-				borderLeftWidth="xl"
-				width="100%"
-				focus
+				gap={1}
 				css={{
-					borderLeftColor: active ? boxPalette.foregroundAction : 'transparent',
+					width: '100%',
 					textDecoration: 'none',
+					[`[${progressIndicatorItemRingDataAttr}]:before`]: {
+						backgroundColor: backgroundColorMap[background],
+					},
+					[listItemLinkTextSelector]: {
+						fontWeight: active ? 'bold' : 'normal',
+					},
 					'&:hover': {
-						...packs.underline,
 						backgroundColor: hoverColorMap[background],
+						[`[${progressIndicatorItemRingDataAttr}]:before`]: {
+							backgroundColor: hoverColorMap[background],
+						},
+						[listItemLinkTextSelector]: packs.underline,
 					},
 				}}
+				focus
 				{...props}
 			>
-				<Icon size="md" color={iconColor} />
-				<Flex as="span" flexDirection="column" gap={0}>
-					<Text color="muted" fontSize="xs" lineHeight="nospace">
+				<ProgressIndicatorItemIcon status={status} />
+				<Stack
+					{...{ [progressIndicatorItemTextContainerDataAttr]: '' }}
+					as="span"
+					flexDirection="column-reverse"
+					flexGrow={1}
+					gap={0}
+					justifyContent="center"
+					paddingY={0.75}
+					fontFamily="body"
+					fontWeight={active ? 'bold' : 'normal'}
+					borderBottom
+					borderColor="muted"
+				>
+					<Text {...{ [progressIndicatorItemTextDataAttr]: '' }}>
+						{children}
+					</Text>
+					<Text
+						color="muted"
+						fontSize="xs"
+						lineHeight="nospace"
+						css={{ textDecoration: 'none' }}
+					>
 						{label}
 					</Text>
-					{children}
-				</Flex>
+				</Stack>
 			</Flex>
 		</Box>
 	);
 };
+
+const ProgressIndicatorItemTimeline = () => (
+	<span
+		{...{ [progressIndicatorItemTimelineDataAttr]: '' }}
+		css={{
+			width: tokens.borderWidth.md,
+			backgroundColor: boxPalette.border,
+			flex: 1,
+		}}
+	/>
+);
+
+const ProgressIndicatorItemIcon = ({
+	status,
+}: {
+	status: ProgressIndicatorItemStatus;
+}) => {
+	const { icon: Icon, iconColor } = statusMap[status];
+	const ringWidth = tokens.borderWidth.md;
+	const ringGap = 3;
+	const ringInset = ringWidth + ringGap;
+	return (
+		<Flex as="span" flexDirection="column" alignItems="center">
+			<ProgressIndicatorItemTimeline />
+			<span
+				{...{ [progressIndicatorItemRingDataAttr]: '' }}
+				css={{
+					position: 'relative',
+					paddingLeft: ringInset,
+					paddingRight: ringInset,
+					...(status === 'doing' && {
+						':before': {
+							position: 'absolute',
+							top: -ringInset,
+							bottom: -ringInset,
+							left: 0,
+							right: 0,
+							borderRadius: '100%',
+							content: '""',
+							border: `${ringWidth}px solid ${boxPalette.foregroundAction}`,
+						},
+					}),
+				}}
+			>
+				<Icon
+					size="md"
+					color={iconColor}
+					css={{
+						position: 'relative',
+						display: 'block',
+						margin: -1,
+					}}
+				/>
+			</span>
+			<ProgressIndicatorItemTimeline />
+		</Flex>
+	);
+};
+
+const progressIndicatorItemTimelineDataAttr =
+	'data-agds-progress-indicator-item-timeline-action';
+const progressIndicatorItemRingDataAttr =
+	'data-agds-progress-indicator-item-ring';
+const progressIndicatorItemTextContainerDataAttr =
+	'data-agds-progress-indicator-item-text-container';
+const progressIndicatorItemTextDataAttr =
+	'data-agds-progress-indicator-item-text';
 
 const statusMap = {
 	blocked: {

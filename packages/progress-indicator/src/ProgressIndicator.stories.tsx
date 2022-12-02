@@ -3,7 +3,7 @@ import { Box } from '@ag.ds-next/box';
 import {
 	ProgressIndicator,
 	ProgressIndicatorCollapseButton,
-	ProgressIndicatorContainer,
+	ProgressIndicatorHeading,
 	ProgressIndicatorItemButton,
 	ProgressIndicatorItemLink,
 	ProgressIndicatorList,
@@ -14,7 +14,7 @@ export default {
 	component: ProgressIndicator,
 	subcomponents: {
 		ProgressIndicatorCollapseButton,
-		ProgressIndicatorContainer,
+		ProgressIndicatorHeading,
 		ProgressIndicatorItemButton,
 		ProgressIndicatorItemLink,
 		ProgressIndicatorList,
@@ -62,23 +62,3 @@ export const Button: ComponentStory<typeof ProgressIndicator> = (args) => (
 Button.args = {
 	items: exampleButtonItems,
 };
-
-export const ModularLinks = () => (
-	<ProgressIndicatorList>
-		{exampleLinkItems.map(({ label, ...props }, index) => (
-			<ProgressIndicatorItemLink key={index} {...props}>
-				{label}
-			</ProgressIndicatorItemLink>
-		))}
-	</ProgressIndicatorList>
-);
-
-export const ModularButtons = () => (
-	<ProgressIndicatorList>
-		{exampleButtonItems.map(({ label, ...props }, index) => (
-			<ProgressIndicatorItemButton key={index} {...props}>
-				{label}
-			</ProgressIndicatorItemButton>
-		))}
-	</ProgressIndicatorList>
-);

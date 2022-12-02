@@ -1,10 +1,8 @@
-import { useMemo } from 'react';
 import { useSpring, animated } from '@react-spring/web';
 import { Flex } from '@ag.ds-next/box';
 import { ChevronDownIcon } from '@ag.ds-next/icon';
 import { tokens, usePrefersReducedMotion } from '@ag.ds-next/core';
 import { BaseButton } from '@ag.ds-next/button';
-import type { ProgressIndicatorItem } from './ProgressIndicatorItem';
 import { hoverColorMap, ProgressIndicatorBackground } from './utils';
 
 type ProgressIndicatorCollapseButtonProps = {
@@ -12,7 +10,7 @@ type ProgressIndicatorCollapseButtonProps = {
 	background?: ProgressIndicatorBackground;
 	id: string;
 	isOpen: boolean;
-	items: ProgressIndicatorItem[];
+	label: string;
 	onClick: () => void;
 };
 
@@ -23,7 +21,7 @@ export const ProgressIndicatorCollapseButton = ({
 	background = 'body',
 	id,
 	isOpen,
-	items,
+	label,
 	onClick,
 }: ProgressIndicatorCollapseButtonProps) => {
 	const prefersReducedMotion = usePrefersReducedMotion();
@@ -33,12 +31,6 @@ export const ProgressIndicatorCollapseButton = ({
 		to: { transform: `rotate(${isOpen ? 180 : 0}deg)` },
 		immediate: prefersReducedMotion,
 	});
-
-	const title = useMemo(() => {
-		const activeItemIndex = items.findIndex(({ status }) => status === 'doing');
-		if (activeItemIndex === -1) return 'Progress';
-		return `Doing step ${activeItemIndex + 1} of ${items.length}`;
-	}, [items]);
 
 	return (
 		<Flex
@@ -68,7 +60,7 @@ export const ProgressIndicatorCollapseButton = ({
 				},
 			}}
 		>
-			{title}
+			{label}
 			<AnimatedIcon size="sm" weight="bold" style={iconStyle} />
 		</Flex>
 	);

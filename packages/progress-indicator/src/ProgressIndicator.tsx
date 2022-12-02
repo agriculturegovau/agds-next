@@ -8,8 +8,9 @@ import {
 	useToggleState,
 	useWindowSize,
 } from '@ag.ds-next/core';
+import { Box } from '@ag.ds-next/box';
+import { ProgressIndicatorHeading } from './ProgressIndicatorHeading';
 import { ProgressIndicatorCollapseButton } from './ProgressIndicatorCollapseButton';
-import { ProgressIndicatorContainer } from './ProgressIndicatorContainer';
 import {
 	ProgressIndicatorItem,
 	ProgressIndicatorItemButton,
@@ -55,16 +56,20 @@ export const ProgressIndicator = ({
 
 	const { windowWidth } = useWindowSize();
 	const isMobile = (windowWidth || 0) <= tokens.breakpoint.lg - 1;
+	const stepsCompleted = items.filter((item) => item.status === 'done').length;
+	const totalSteps = items.length;
+	const subHeading = `${stepsCompleted} of ${totalSteps} steps completed`;
 
 	return (
-		<ProgressIndicatorContainer>
+		<Box as="section" borderBottom>
+			<ProgressIndicatorHeading heading="Progress" subHeading={subHeading} />
 			<ProgressIndicatorCollapseButton
 				background={background}
 				isOpen={isOpen}
 				onClick={onToggle}
 				ariaControls={bodyId}
 				id={buttonId}
-				items={items}
+				label={subHeading}
 			/>
 			<animated.div
 				id={bodyId}
@@ -106,7 +111,7 @@ export const ProgressIndicator = ({
 					})}
 				</ProgressIndicatorList>
 			</animated.div>
-		</ProgressIndicatorContainer>
+		</Box>
 	);
 };
 
