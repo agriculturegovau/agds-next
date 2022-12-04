@@ -8,7 +8,7 @@ import {
 	ProgressTodoIcon,
 	ProgressBlockedIcon,
 } from '@ag.ds-next/icon';
-import { boxPalette, LinkProps, packs } from '@ag.ds-next/core';
+import { boxPalette, LinkProps, packs, tokens } from '@ag.ds-next/core';
 import { BaseButton } from '@ag.ds-next/button';
 
 export type TaskListItemStatus = keyof typeof statusMap;
@@ -81,21 +81,34 @@ const TaskListItem = ({
 				className={className}
 				gap={0.75}
 				paddingY={1.5}
-				paddingX={0.75}
+				paddingLeft={0.75}
+				paddingRight={active ? 0.5 : 0.25}
 				fontFamily="body"
 				color="text"
 				borderBottom
-				borderLeft
-				borderLeftWidth="xl"
 				width="100%"
 				focus
 				css={{
-					borderLeftColor: active ? boxPalette.foregroundAction : 'transparent',
+					position: 'relative',
 					textDecoration: 'none',
 					[`[${taskListItemTextDataAttr}]`]: {
 						...packs.underline,
 						color: boxPalette.foregroundAction,
 					},
+					...(active
+						? {
+								'&:before': {
+									content: '""',
+									background: boxPalette.foregroundAction,
+									position: 'absolute',
+									top: 0,
+									bottom: 0,
+									left: 0,
+									width: tokens.borderWidth.xl,
+								},
+						  }
+						: null),
+
 					'&:hover': {
 						backgroundColor: boxPalette.backgroundShade,
 						[`[${taskListItemTextDataAttr}]`]: {

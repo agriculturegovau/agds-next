@@ -17,10 +17,30 @@ export default {
 } as ComponentMeta<typeof TaskList>;
 
 const exampleLinkItems = [
-	{ href: '#', label: 'Check eligibility', status: 'done' as const },
-	{ href: '#', label: 'Personal details', status: 'doing' as const },
-	{ href: '#', label: 'Business details', status: 'todo' as const },
-	{ href: '#', label: 'Export', status: 'todo' as const },
+	{
+		href: '#',
+		label: 'Check eligibility',
+		message: 'Short description of the task',
+		status: 'done' as const,
+	},
+	{
+		href: '#',
+		label: 'Personal details',
+		message: 'Short description of the task',
+		status: 'doing' as const,
+	},
+	{
+		href: '#',
+		label: 'Business details',
+		message: 'Short description of the task',
+		status: 'todo' as const,
+	},
+	{
+		href: '#',
+		label: 'Export',
+		message: 'Short description of the task',
+		status: 'todo' as const,
+	},
 	{
 		href: '#',
 		label: 'Review and submit',
