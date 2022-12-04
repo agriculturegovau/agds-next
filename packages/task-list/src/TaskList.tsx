@@ -18,35 +18,40 @@ export type TaskListProps = {
 	ordered?: boolean;
 };
 
-export const TaskList = ({ items, ordered = true }: TaskListProps) => (
-	<Stack gap={1.5}>
-		<Stack gap={0.5}>
-			<Text fontSize="lg" fontWeight="bold" lineHeight="heading">
-				Task list
-			</Text>
-			<Text fontSize="sm" color="muted">
-				1 of 4 tasks completed
-			</Text>
-		</Stack>
-		<TaskListContainer as={ordered ? 'ol' : 'ul'}>
-			{items.map(({ label, ...props }, index) => {
-				if (isItemLink(props)) {
-					return (
-						<TaskListItemLink key={index} ordered={ordered} {...props}>
-							{label}
-						</TaskListItemLink>
-					);
-				}
-				return (
-					<TaskListItemButton key={index} ordered={ordered} {...props}>
-						{label}
-					</TaskListItemButton>
-				);
-			})}
-		</TaskListContainer>
-	</Stack>
-);
+export const TaskList = ({ items, ordered = true }: TaskListProps) => {
+	const stepsCompleted = items.filter((item) => item.status === 'done').length;
+	const totalSteps = items.length;
+	const subHeading = `${stepsCompleted} of ${totalSteps} steps completed`;
 
+	return (
+		<Stack gap={1.5}>
+			<Stack gap={0.5}>
+				<Text fontSize="lg" fontWeight="bold" lineHeight="heading">
+					Task list
+				</Text>
+				<Text fontSize="sm" color="muted">
+					{subHeading}
+				</Text>
+			</Stack>
+			<TaskListContainer as={ordered ? 'ol' : 'ul'}>
+				{items.map(({ label, ...props }, index) => {
+					if (isItemLink(props)) {
+						return (
+							<TaskListItemLink key={index} ordered={ordered} {...props}>
+								{label}
+							</TaskListItemLink>
+						);
+					}
+					return (
+						<TaskListItemButton key={index} ordered={ordered} {...props}>
+							{label}
+						</TaskListItemButton>
+					);
+				})}
+			</TaskListContainer>
+		</Stack>
+	);
+};
 const isItemLink = (
 	item: Omit<TaskListItem, 'label'>
 ): item is TaskListItemLinkProps => 'href' in item;
