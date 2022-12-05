@@ -65,6 +65,7 @@ export const DateInput = forwardRef<HTMLInputElement, DateInputProps>(
 							ref={ref}
 							type="text"
 							css={{ ...styles, maxWidth: 'unset' }}
+							autoComplete="off"
 							{...a11yProps}
 							{...props}
 							value={value}

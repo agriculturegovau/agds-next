@@ -52,6 +52,8 @@ export type DateRangePickerProps = DateRangePickerCalendarProps & {
 	fromInputRef?: Ref<HTMLInputElement>;
 	/** Ref to the end input element. */
 	toInputRef?: Ref<HTMLInputElement>;
+	/** The range of options to display in calendar year select. */
+	yearRange?: { from: number; to: number };
 };
 
 export const DateRangePicker = ({
@@ -65,6 +67,7 @@ export const DateRangePicker = ({
 	maxDate,
 	fromInputRef,
 	toInputRef,
+	yearRange,
 }: DateRangePickerProps) => {
 	const [isCalendarOpen, openCalendar, closeCalendar] = useTernaryState(false);
 	const [inputMode, setInputMode] = useState<'from' | 'to'>();
@@ -237,6 +240,7 @@ export const DateRangePicker = ({
 						returnFocusRef={
 							inputMode === 'from' ? fromTriggerRef : toTriggerRef
 						}
+						yearRange={yearRange}
 					/>
 				</div>
 			) : null}

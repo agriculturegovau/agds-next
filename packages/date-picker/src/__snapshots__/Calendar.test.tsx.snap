@@ -11,7 +11,7 @@ exports[`Calendar Range renders correctly 1`] = `
     data-focus-lock-disabled="false"
   >
     <div
-      class="css-o15n1k-boxStyles-CalendarContainer"
+      class="css-1pefi12-boxStyles-CalendarContainer"
     >
       <div
         class="rdp "
@@ -28,11 +28,117 @@ exports[`Calendar Range renders correctly 1`] = `
               <h2
                 aria-atomic="true"
                 aria-live="polite"
-                class="rdp-caption_label"
+                class="css-3ucdhc-CaptionLabel"
                 id="react-day-picker-4"
               >
                 June 2022
               </h2>
+              <div
+                class="css-4d2b9s-boxStyles"
+              >
+                <span
+                  class="css-1wppko8-boxStyles"
+                >
+                  June
+                </span>
+                <div
+                  class="css-1imz916-boxStyles"
+                >
+                  <div
+                    class="css-11igi7-YearSelect"
+                  >
+                    <label
+                      class="css-139npyp-YearSelect"
+                      for="calendar-:r2:-year"
+                    >
+                      Year
+                    </label>
+                    <select
+                      class="css-ec6y33-boxStyles-YearSelect"
+                      id="calendar-:r2:-year"
+                    >
+                      <option>
+                        2012
+                      </option>
+                      <option>
+                        2013
+                      </option>
+                      <option>
+                        2014
+                      </option>
+                      <option>
+                        2015
+                      </option>
+                      <option>
+                        2016
+                      </option>
+                      <option>
+                        2017
+                      </option>
+                      <option>
+                        2018
+                      </option>
+                      <option>
+                        2019
+                      </option>
+                      <option>
+                        2020
+                      </option>
+                      <option>
+                        2021
+                      </option>
+                      <option>
+                        2022
+                      </option>
+                      <option>
+                        2023
+                      </option>
+                      <option>
+                        2024
+                      </option>
+                      <option>
+                        2025
+                      </option>
+                      <option>
+                        2026
+                      </option>
+                      <option>
+                        2027
+                      </option>
+                      <option>
+                        2028
+                      </option>
+                      <option>
+                        2029
+                      </option>
+                      <option>
+                        2030
+                      </option>
+                      <option>
+                        2031
+                      </option>
+                      <option>
+                        2032
+                      </option>
+                    </select>
+                    <svg
+                      aria-hidden="true"
+                      class="css-1it4hii-YearSelect"
+                      clip-rule="evenodd"
+                      focusable="false"
+                      height="24"
+                      role="img"
+                      viewBox="0 0 24 24"
+                      width="24"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M21 8L12 17L3 8"
+                      />
+                    </svg>
+                  </div>
+                </div>
+              </div>
               <div
                 class="rdp-nav"
               >
@@ -44,7 +150,7 @@ exports[`Calendar Range renders correctly 1`] = `
                 >
                   <svg
                     aria-hidden="true"
-                    class="css-1t4it9i-Icon"
+                    class="css-vfodg1-Icon"
                     clip-rule="evenodd"
                     focusable="false"
                     height="24"
@@ -66,7 +172,7 @@ exports[`Calendar Range renders correctly 1`] = `
                 >
                   <svg
                     aria-hidden="true"
-                    class="css-1t4it9i-Icon"
+                    class="css-vfodg1-Icon"
                     clip-rule="evenodd"
                     focusable="false"
                     height="24"
@@ -661,7 +767,7 @@ exports[`Calendar Single renders correctly 1`] = `
     data-focus-lock-disabled="false"
   >
     <div
-      class="css-196uktu-boxStyles-CalendarContainer"
+      class="css-1clsgw4-boxStyles-CalendarContainer"
     >
       <div
         class="rdp "
@@ -678,11 +784,117 @@ exports[`Calendar Single renders correctly 1`] = `
               <h2
                 aria-atomic="true"
                 aria-live="polite"
-                class="rdp-caption_label"
+                class="css-3ucdhc-CaptionLabel"
                 id="react-day-picker-1"
               >
                 June 2022
               </h2>
+              <div
+                class="css-4d2b9s-boxStyles"
+              >
+                <span
+                  class="css-1wppko8-boxStyles"
+                >
+                  June
+                </span>
+                <div
+                  class="css-1imz916-boxStyles"
+                >
+                  <div
+                    class="css-11igi7-YearSelect"
+                  >
+                    <label
+                      class="css-139npyp-YearSelect"
+                      for="calendar-:r0:-year"
+                    >
+                      Year
+                    </label>
+                    <select
+                      class="css-ec6y33-boxStyles-YearSelect"
+                      id="calendar-:r0:-year"
+                    >
+                      <option>
+                        2012
+                      </option>
+                      <option>
+                        2013
+                      </option>
+                      <option>
+                        2014
+                      </option>
+                      <option>
+                        2015
+                      </option>
+                      <option>
+                        2016
+                      </option>
+                      <option>
+                        2017
+                      </option>
+                      <option>
+                        2018
+                      </option>
+                      <option>
+                        2019
+                      </option>
+                      <option>
+                        2020
+                      </option>
+                      <option>
+                        2021
+                      </option>
+                      <option>
+                        2022
+                      </option>
+                      <option>
+                        2023
+                      </option>
+                      <option>
+                        2024
+                      </option>
+                      <option>
+                        2025
+                      </option>
+                      <option>
+                        2026
+                      </option>
+                      <option>
+                        2027
+                      </option>
+                      <option>
+                        2028
+                      </option>
+                      <option>
+                        2029
+                      </option>
+                      <option>
+                        2030
+                      </option>
+                      <option>
+                        2031
+                      </option>
+                      <option>
+                        2032
+                      </option>
+                    </select>
+                    <svg
+                      aria-hidden="true"
+                      class="css-1it4hii-YearSelect"
+                      clip-rule="evenodd"
+                      focusable="false"
+                      height="24"
+                      role="img"
+                      viewBox="0 0 24 24"
+                      width="24"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M21 8L12 17L3 8"
+                      />
+                    </svg>
+                  </div>
+                </div>
+              </div>
               <div
                 class="rdp-nav"
               >
@@ -694,7 +906,7 @@ exports[`Calendar Single renders correctly 1`] = `
                 >
                   <svg
                     aria-hidden="true"
-                    class="css-1t4it9i-Icon"
+                    class="css-vfodg1-Icon"
                     clip-rule="evenodd"
                     focusable="false"
                     height="24"
@@ -716,7 +928,7 @@ exports[`Calendar Single renders correctly 1`] = `
                 >
                   <svg
                     aria-hidden="true"
-                    class="css-1t4it9i-Icon"
+                    class="css-vfodg1-Icon"
                     clip-rule="evenodd"
                     focusable="false"
                     height="24"
