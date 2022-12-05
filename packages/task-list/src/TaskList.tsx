@@ -18,7 +18,7 @@ export type TaskListProps = {
 	ordered?: boolean;
 };
 
-export const TaskList = ({ items, ordered = true }: TaskListProps) => {
+export const TaskList = ({ items, ordered }: TaskListProps) => {
 	const stepsCompleted = items.filter((item) => item.status === 'done').length;
 	const totalSteps = items.length;
 	const subHeading = `${stepsCompleted} of ${totalSteps} steps completed`;
