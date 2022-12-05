@@ -2,408 +2,870 @@
 
 exports[`TaskList With anchors renders correctly 1`] = `
 <div>
-  <ol
-    class="css-vcugan-boxStyles-TaskListContainer"
+  <div
+    class="css-1mxr31d-boxStyles"
   >
-    <li
-      class="css-16jufl0-TaskListItem"
+    <div
+      class="css-1l7qjbc-boxStyles"
     >
-      <a
-        class="css-n0v8bk-TextLink-boxStyles-TaskListItem"
-        href="#"
+      <span
+        class="css-5k6djv-boxStyles-Text"
       >
-        <svg
-          aria-hidden="true"
-          class="css-z0pluw-TaskListItem"
-          clip-rule="evenodd"
-          focusable="false"
-          height="24"
-          role="img"
-          viewBox="0 0 24 24"
-          width="24"
-          xmlns="http://www.w3.org/2000/svg"
+        Task list
+      </span>
+      <span
+        class="css-1rpt3h8-boxStyles-Text"
+      >
+        2 of 4 steps completed
+      </span>
+    </div>
+    <ul
+      class="css-vcugan-boxStyles-TaskListContainer"
+    >
+      <li
+        class="css-16jufl0-TaskListItem"
+      >
+        <a
+          class="css-1w476dk-TextLink-boxStyles-TaskListItem"
+          href="#"
         >
-          <path
+          <span
+            class="css-dddyaj-boxStyles"
+          >
+            <span
+              class="css-1hgwk69-boxStyles"
+            >
+              <svg
+                aria-hidden="true"
+                class="css-15xybhx-TaskListItem"
+                clip-rule="evenodd"
+                focusable="false"
+                height="24"
+                role="img"
+                viewBox="0 0 24 24"
+                width="24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  clip-rule="evenodd"
+                  d="M12 24C18.6274 24 24 18.6274 24 12C24 5.37258 18.6274 0 12 0C5.37258 0 0 5.37258 0 12C0 18.6274 5.37258 24 12 24ZM17.7071 9.70711C18.0976 9.31658 18.0976 8.68342 17.7071 8.29289C17.3166 7.90237 16.6834 7.90237 16.2929 8.29289L10 14.5858L7.70711 12.2929C7.31658 11.9024 6.68342 11.9024 6.29289 12.2929C5.90237 12.6834 5.90237 13.3166 6.29289 13.7071L9.29289 16.7071C9.68342 17.0976 10.3166 17.0976 10.7071 16.7071L17.7071 9.70711Z"
+                  fill="currentColor"
+                  fill-rule="evenodd"
+                  stroke="none"
+                />
+              </svg>
+            </span>
+            <span
+              class="css-1wcx0lf-boxStyles"
+            >
+              <span
+                class="css-q6tqn6-boxStyles"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="css-u3cc2f-TaskListItem"
+                  clip-rule="evenodd"
+                  focusable="false"
+                  height="24"
+                  role="img"
+                  viewBox="0 0 24 24"
+                  width="24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    clip-rule="evenodd"
+                    d="M12 24C18.6274 24 24 18.6274 24 12C24 5.37258 18.6274 0 12 0C5.37258 0 0 5.37258 0 12C0 18.6274 5.37258 24 12 24ZM17.7071 9.70711C18.0976 9.31658 18.0976 8.68342 17.7071 8.29289C17.3166 7.90237 16.6834 7.90237 16.2929 8.29289L10 14.5858L7.70711 12.2929C7.31658 11.9024 6.68342 11.9024 6.29289 12.2929C5.90237 12.6834 5.90237 13.3166 6.29289 13.7071L9.29289 16.7071C9.68342 17.0976 10.3166 17.0976 10.7071 16.7071L17.7071 9.70711Z"
+                    fill="currentColor"
+                    fill-rule="evenodd"
+                    stroke="none"
+                  />
+                </svg>
+                <span
+                  class="css-1b077g7-boxStyles-Text"
+                >
+                  Completed
+                </span>
+              </span>
+              <span
+                class="css-163dclb-boxStyles-Text-TaskListItem"
+                data-agds-task-list-item-text=""
+              >
+                Check eligibility
+              </span>
+              <span
+                class="css-1rpt3h8-boxStyles-Text"
+              />
+            </span>
+          </span>
+          <svg
+            aria-hidden="true"
+            class="css-dcsd2p-Icon"
             clip-rule="evenodd"
-            d="M12 24C18.6274 24 24 18.6274 24 12C24 5.37258 18.6274 0 12 0C5.37258 0 0 5.37258 0 12C0 18.6274 5.37258 24 12 24ZM17.7071 9.70711C18.0976 9.31658 18.0976 8.68342 17.7071 8.29289C17.3166 7.90237 16.6834 7.90237 16.2929 8.29289L10 14.5858L7.70711 12.2929C7.31658 11.9024 6.68342 11.9024 6.29289 12.2929C5.90237 12.6834 5.90237 13.3166 6.29289 13.7071L9.29289 16.7071C9.68342 17.0976 10.3166 17.0976 10.7071 16.7071L17.7071 9.70711Z"
-            fill="currentColor"
-            fill-rule="evenodd"
-            stroke="none"
-          />
-        </svg>
-        <span
-          class="css-1i7cdx8-boxStyles"
-        >
-          <span
-            class="css-1f7oqqc-boxStyles-Text"
+            focusable="false"
+            height="24"
+            role="img"
+            viewBox="0 0 24 24"
+            width="24"
+            xmlns="http://www.w3.org/2000/svg"
           >
-            Completed
-          </span>
-          <span
-            class="css-msykz1-boxStyles-Text-TaskListItem"
-          >
-            Check eligibility
-          </span>
-          <span
-            class="css-1lp7dl8-boxStyles-Text"
-          />
-        </span>
-      </a>
-    </li>
-    <li
-      class="css-16jufl0-TaskListItem"
-    >
-      <a
-        class="css-n0v8bk-TextLink-boxStyles-TaskListItem"
-        href="#"
+            <path
+              d="M3 12L20 12"
+            />
+            <path
+              d="M16 7L21 12L16 17"
+            />
+          </svg>
+        </a>
+      </li>
+      <li
+        class="css-16jufl0-TaskListItem"
       >
-        <svg
-          aria-hidden="true"
-          class="css-z0pluw-TaskListItem"
-          clip-rule="evenodd"
-          focusable="false"
-          height="24"
-          role="img"
-          viewBox="0 0 24 24"
-          width="24"
-          xmlns="http://www.w3.org/2000/svg"
+        <a
+          class="css-1w476dk-TextLink-boxStyles-TaskListItem"
+          href="#"
         >
-          <path
+          <span
+            class="css-dddyaj-boxStyles"
+          >
+            <span
+              class="css-1hgwk69-boxStyles"
+            >
+              <svg
+                aria-hidden="true"
+                class="css-15xybhx-TaskListItem"
+                clip-rule="evenodd"
+                focusable="false"
+                height="24"
+                role="img"
+                viewBox="0 0 24 24"
+                width="24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  clip-rule="evenodd"
+                  d="M12 24C18.6274 24 24 18.6274 24 12C24 5.37258 18.6274 0 12 0C5.37258 0 0 5.37258 0 12C0 18.6274 5.37258 24 12 24ZM17.7071 9.70711C18.0976 9.31658 18.0976 8.68342 17.7071 8.29289C17.3166 7.90237 16.6834 7.90237 16.2929 8.29289L10 14.5858L7.70711 12.2929C7.31658 11.9024 6.68342 11.9024 6.29289 12.2929C5.90237 12.6834 5.90237 13.3166 6.29289 13.7071L9.29289 16.7071C9.68342 17.0976 10.3166 17.0976 10.7071 16.7071L17.7071 9.70711Z"
+                  fill="currentColor"
+                  fill-rule="evenodd"
+                  stroke="none"
+                />
+              </svg>
+            </span>
+            <span
+              class="css-1wcx0lf-boxStyles"
+            >
+              <span
+                class="css-q6tqn6-boxStyles"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="css-u3cc2f-TaskListItem"
+                  clip-rule="evenodd"
+                  focusable="false"
+                  height="24"
+                  role="img"
+                  viewBox="0 0 24 24"
+                  width="24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    clip-rule="evenodd"
+                    d="M12 24C18.6274 24 24 18.6274 24 12C24 5.37258 18.6274 0 12 0C5.37258 0 0 5.37258 0 12C0 18.6274 5.37258 24 12 24ZM17.7071 9.70711C18.0976 9.31658 18.0976 8.68342 17.7071 8.29289C17.3166 7.90237 16.6834 7.90237 16.2929 8.29289L10 14.5858L7.70711 12.2929C7.31658 11.9024 6.68342 11.9024 6.29289 12.2929C5.90237 12.6834 5.90237 13.3166 6.29289 13.7071L9.29289 16.7071C9.68342 17.0976 10.3166 17.0976 10.7071 16.7071L17.7071 9.70711Z"
+                    fill="currentColor"
+                    fill-rule="evenodd"
+                    stroke="none"
+                  />
+                </svg>
+                <span
+                  class="css-1b077g7-boxStyles-Text"
+                >
+                  Completed
+                </span>
+              </span>
+              <span
+                class="css-163dclb-boxStyles-Text-TaskListItem"
+                data-agds-task-list-item-text=""
+              >
+                Lorem ipsum dolor sit amet
+              </span>
+              <span
+                class="css-1rpt3h8-boxStyles-Text"
+              />
+            </span>
+          </span>
+          <svg
+            aria-hidden="true"
+            class="css-dcsd2p-Icon"
             clip-rule="evenodd"
-            d="M12 24C18.6274 24 24 18.6274 24 12C24 5.37258 18.6274 0 12 0C5.37258 0 0 5.37258 0 12C0 18.6274 5.37258 24 12 24ZM17.7071 9.70711C18.0976 9.31658 18.0976 8.68342 17.7071 8.29289C17.3166 7.90237 16.6834 7.90237 16.2929 8.29289L10 14.5858L7.70711 12.2929C7.31658 11.9024 6.68342 11.9024 6.29289 12.2929C5.90237 12.6834 5.90237 13.3166 6.29289 13.7071L9.29289 16.7071C9.68342 17.0976 10.3166 17.0976 10.7071 16.7071L17.7071 9.70711Z"
-            fill="currentColor"
-            fill-rule="evenodd"
-            stroke="none"
-          />
-        </svg>
-        <span
-          class="css-1i7cdx8-boxStyles"
-        >
-          <span
-            class="css-1f7oqqc-boxStyles-Text"
+            focusable="false"
+            height="24"
+            role="img"
+            viewBox="0 0 24 24"
+            width="24"
+            xmlns="http://www.w3.org/2000/svg"
           >
-            Completed
-          </span>
-          <span
-            class="css-msykz1-boxStyles-Text-TaskListItem"
-          >
-            Lorem ipsum dolor sit amet
-          </span>
-          <span
-            class="css-1lp7dl8-boxStyles-Text"
-          />
-        </span>
-      </a>
-    </li>
-    <li
-      class="css-16jufl0-TaskListItem"
-    >
-      <a
-        class="css-nafnpt-TextLink-boxStyles-TaskListItem"
-        href="#"
+            <path
+              d="M3 12L20 12"
+            />
+            <path
+              d="M16 7L21 12L16 17"
+            />
+          </svg>
+        </a>
+      </li>
+      <li
+        class="css-16jufl0-TaskListItem"
       >
-        <svg
-          aria-hidden="true"
-          class="css-1l7qv7c-TaskListItem"
-          clip-rule="evenodd"
-          focusable="false"
-          height="24"
-          role="img"
-          viewBox="0 0 24 24"
-          width="24"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M6.5 13.5C7.32843 13.5 8 12.8284 8 12C8 11.1716 7.32843 10.5 6.5 10.5C5.67157 10.5 5 11.1716 5 12C5 12.8284 5.67157 13.5 6.5 13.5Z"
-            fill="currentColor"
-            stroke="none"
-          />
-          <path
-            d="M12 13.5C12.8284 13.5 13.5 12.8284 13.5 12C13.5 11.1716 12.8284 10.5 12 10.5C11.1716 10.5 10.5 11.1716 10.5 12C10.5 12.8284 11.1716 13.5 12 13.5Z"
-            fill="currentColor"
-            stroke="none"
-          />
-          <path
-            d="M17.5 13.5C18.3284 13.5 19 12.8284 19 12C19 11.1716 18.3284 10.5 17.5 10.5C16.6716 10.5 16 11.1716 16 12C16 12.8284 16.6716 13.5 17.5 13.5Z"
-            fill="currentColor"
-            stroke="none"
-          />
-          <circle
-            cx="12"
-            cy="12"
-            r="10.5"
-          />
-        </svg>
-        <span
-          class="css-1i7cdx8-boxStyles"
+        <a
+          class="css-1er5hak-TextLink-boxStyles-TaskListItem"
+          href="#"
         >
           <span
-            class="css-1f7oqqc-boxStyles-Text"
+            class="css-dddyaj-boxStyles"
           >
-            In progress
+            <span
+              class="css-1hgwk69-boxStyles"
+            >
+              <svg
+                aria-hidden="true"
+                class="css-1xvuhl0-TaskListItem"
+                clip-rule="evenodd"
+                focusable="false"
+                height="24"
+                role="img"
+                viewBox="0 0 24 24"
+                width="24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M6.5 13.5C7.32843 13.5 8 12.8284 8 12C8 11.1716 7.32843 10.5 6.5 10.5C5.67157 10.5 5 11.1716 5 12C5 12.8284 5.67157 13.5 6.5 13.5Z"
+                  fill="currentColor"
+                  stroke="none"
+                />
+                <path
+                  d="M12 13.5C12.8284 13.5 13.5 12.8284 13.5 12C13.5 11.1716 12.8284 10.5 12 10.5C11.1716 10.5 10.5 11.1716 10.5 12C10.5 12.8284 11.1716 13.5 12 13.5Z"
+                  fill="currentColor"
+                  stroke="none"
+                />
+                <path
+                  d="M17.5 13.5C18.3284 13.5 19 12.8284 19 12C19 11.1716 18.3284 10.5 17.5 10.5C16.6716 10.5 16 11.1716 16 12C16 12.8284 16.6716 13.5 17.5 13.5Z"
+                  fill="currentColor"
+                  stroke="none"
+                />
+                <circle
+                  cx="12"
+                  cy="12"
+                  r="10.5"
+                />
+              </svg>
+            </span>
+            <span
+              class="css-1wcx0lf-boxStyles"
+            >
+              <span
+                class="css-q6tqn6-boxStyles"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="css-1rzsgvs-TaskListItem"
+                  clip-rule="evenodd"
+                  focusable="false"
+                  height="24"
+                  role="img"
+                  viewBox="0 0 24 24"
+                  width="24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M6.5 13.5C7.32843 13.5 8 12.8284 8 12C8 11.1716 7.32843 10.5 6.5 10.5C5.67157 10.5 5 11.1716 5 12C5 12.8284 5.67157 13.5 6.5 13.5Z"
+                    fill="currentColor"
+                    stroke="none"
+                  />
+                  <path
+                    d="M12 13.5C12.8284 13.5 13.5 12.8284 13.5 12C13.5 11.1716 12.8284 10.5 12 10.5C11.1716 10.5 10.5 11.1716 10.5 12C10.5 12.8284 11.1716 13.5 12 13.5Z"
+                    fill="currentColor"
+                    stroke="none"
+                  />
+                  <path
+                    d="M17.5 13.5C18.3284 13.5 19 12.8284 19 12C19 11.1716 18.3284 10.5 17.5 10.5C16.6716 10.5 16 11.1716 16 12C16 12.8284 16.6716 13.5 17.5 13.5Z"
+                    fill="currentColor"
+                    stroke="none"
+                  />
+                  <circle
+                    cx="12"
+                    cy="12"
+                    r="10.5"
+                  />
+                </svg>
+                <span
+                  class="css-1b077g7-boxStyles-Text"
+                >
+                  In progress
+                </span>
+              </span>
+              <span
+                class="css-163dclb-boxStyles-Text-TaskListItem"
+                data-agds-task-list-item-text=""
+              >
+                Case Studies
+              </span>
+              <span
+                class="css-1rpt3h8-boxStyles-Text"
+              />
+            </span>
           </span>
-          <span
-            class="css-msykz1-boxStyles-Text-TaskListItem"
+          <svg
+            aria-hidden="true"
+            class="css-dcsd2p-Icon"
+            clip-rule="evenodd"
+            focusable="false"
+            height="24"
+            role="img"
+            viewBox="0 0 24 24"
+            width="24"
+            xmlns="http://www.w3.org/2000/svg"
           >
-            Case Studies
-          </span>
-          <span
-            class="css-1lp7dl8-boxStyles-Text"
-          />
-        </span>
-      </a>
-    </li>
-    <li
-      class="css-16jufl0-TaskListItem"
-    >
-      <a
-        class="css-n0v8bk-TextLink-boxStyles-TaskListItem"
-        href="#"
+            <path
+              d="M3 12L20 12"
+            />
+            <path
+              d="M16 7L21 12L16 17"
+            />
+          </svg>
+        </a>
+      </li>
+      <li
+        class="css-16jufl0-TaskListItem"
       >
-        <svg
-          aria-hidden="true"
-          class="css-1l7qv7c-TaskListItem"
-          clip-rule="evenodd"
-          focusable="false"
-          height="24"
-          role="img"
-          viewBox="0 0 24 24"
-          width="24"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <circle
-            cx="12"
-            cy="12"
-            r="10.5"
-            stroke-dasharray="4 4"
-            stroke-linecap="round"
-          />
-        </svg>
-        <span
-          class="css-1i7cdx8-boxStyles"
+        <a
+          class="css-1w476dk-TextLink-boxStyles-TaskListItem"
+          href="#"
         >
           <span
-            class="css-1f7oqqc-boxStyles-Text"
+            class="css-dddyaj-boxStyles"
           >
-            Not started
+            <span
+              class="css-1hgwk69-boxStyles"
+            >
+              <svg
+                aria-hidden="true"
+                class="css-1xvuhl0-TaskListItem"
+                clip-rule="evenodd"
+                focusable="false"
+                height="24"
+                role="img"
+                viewBox="0 0 24 24"
+                width="24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <circle
+                  cx="12"
+                  cy="12"
+                  r="10.5"
+                  stroke-dasharray="4 4"
+                  stroke-linecap="round"
+                />
+              </svg>
+            </span>
+            <span
+              class="css-1wcx0lf-boxStyles"
+            >
+              <span
+                class="css-q6tqn6-boxStyles"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="css-1rzsgvs-TaskListItem"
+                  clip-rule="evenodd"
+                  focusable="false"
+                  height="24"
+                  role="img"
+                  viewBox="0 0 24 24"
+                  width="24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <circle
+                    cx="12"
+                    cy="12"
+                    r="10.5"
+                    stroke-dasharray="4 4"
+                    stroke-linecap="round"
+                  />
+                </svg>
+                <span
+                  class="css-1b077g7-boxStyles-Text"
+                >
+                  Not started
+                </span>
+              </span>
+              <span
+                class="css-163dclb-boxStyles-Text-TaskListItem"
+                data-agds-task-list-item-text=""
+              >
+                Review and submit
+              </span>
+              <span
+                class="css-1rpt3h8-boxStyles-Text"
+              >
+                Not available until previous tasks are done
+              </span>
+            </span>
           </span>
-          <span
-            class="css-msykz1-boxStyles-Text-TaskListItem"
+          <svg
+            aria-hidden="true"
+            class="css-dcsd2p-Icon"
+            clip-rule="evenodd"
+            focusable="false"
+            height="24"
+            role="img"
+            viewBox="0 0 24 24"
+            width="24"
+            xmlns="http://www.w3.org/2000/svg"
           >
-            Review and submit
-          </span>
-          <span
-            class="css-1lp7dl8-boxStyles-Text"
-          >
-            Not available until previous tasks are done
-          </span>
-        </span>
-      </a>
-    </li>
-  </ol>
+            <path
+              d="M3 12L20 12"
+            />
+            <path
+              d="M16 7L21 12L16 17"
+            />
+          </svg>
+        </a>
+      </li>
+    </ul>
+  </div>
 </div>
 `;
 
 exports[`TaskList With buttons renders correctly 1`] = `
 <div>
-  <ol
-    class="css-vcugan-boxStyles-TaskListContainer"
+  <div
+    class="css-1mxr31d-boxStyles"
   >
-    <li
-      class="css-16jufl0-TaskListItem"
+    <div
+      class="css-1l7qjbc-boxStyles"
     >
-      <button
-        class="css-1rrnib1-BaseButton-boxStyles-TaskListItem"
-        type="button"
+      <span
+        class="css-5k6djv-boxStyles-Text"
       >
-        <svg
-          aria-hidden="true"
-          class="css-z0pluw-TaskListItem"
-          clip-rule="evenodd"
-          focusable="false"
-          height="24"
-          role="img"
-          viewBox="0 0 24 24"
-          width="24"
-          xmlns="http://www.w3.org/2000/svg"
+        Task list
+      </span>
+      <span
+        class="css-1rpt3h8-boxStyles-Text"
+      >
+        2 of 4 steps completed
+      </span>
+    </div>
+    <ul
+      class="css-vcugan-boxStyles-TaskListContainer"
+    >
+      <li
+        class="css-16jufl0-TaskListItem"
+      >
+        <button
+          class="css-rppkjm-BaseButton-boxStyles-TaskListItem"
+          type="button"
         >
-          <path
+          <span
+            class="css-dddyaj-boxStyles"
+          >
+            <span
+              class="css-1hgwk69-boxStyles"
+            >
+              <svg
+                aria-hidden="true"
+                class="css-15xybhx-TaskListItem"
+                clip-rule="evenodd"
+                focusable="false"
+                height="24"
+                role="img"
+                viewBox="0 0 24 24"
+                width="24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  clip-rule="evenodd"
+                  d="M12 24C18.6274 24 24 18.6274 24 12C24 5.37258 18.6274 0 12 0C5.37258 0 0 5.37258 0 12C0 18.6274 5.37258 24 12 24ZM17.7071 9.70711C18.0976 9.31658 18.0976 8.68342 17.7071 8.29289C17.3166 7.90237 16.6834 7.90237 16.2929 8.29289L10 14.5858L7.70711 12.2929C7.31658 11.9024 6.68342 11.9024 6.29289 12.2929C5.90237 12.6834 5.90237 13.3166 6.29289 13.7071L9.29289 16.7071C9.68342 17.0976 10.3166 17.0976 10.7071 16.7071L17.7071 9.70711Z"
+                  fill="currentColor"
+                  fill-rule="evenodd"
+                  stroke="none"
+                />
+              </svg>
+            </span>
+            <span
+              class="css-1wcx0lf-boxStyles"
+            >
+              <span
+                class="css-q6tqn6-boxStyles"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="css-u3cc2f-TaskListItem"
+                  clip-rule="evenodd"
+                  focusable="false"
+                  height="24"
+                  role="img"
+                  viewBox="0 0 24 24"
+                  width="24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    clip-rule="evenodd"
+                    d="M12 24C18.6274 24 24 18.6274 24 12C24 5.37258 18.6274 0 12 0C5.37258 0 0 5.37258 0 12C0 18.6274 5.37258 24 12 24ZM17.7071 9.70711C18.0976 9.31658 18.0976 8.68342 17.7071 8.29289C17.3166 7.90237 16.6834 7.90237 16.2929 8.29289L10 14.5858L7.70711 12.2929C7.31658 11.9024 6.68342 11.9024 6.29289 12.2929C5.90237 12.6834 5.90237 13.3166 6.29289 13.7071L9.29289 16.7071C9.68342 17.0976 10.3166 17.0976 10.7071 16.7071L17.7071 9.70711Z"
+                    fill="currentColor"
+                    fill-rule="evenodd"
+                    stroke="none"
+                  />
+                </svg>
+                <span
+                  class="css-1b077g7-boxStyles-Text"
+                >
+                  Completed
+                </span>
+              </span>
+              <span
+                class="css-163dclb-boxStyles-Text-TaskListItem"
+                data-agds-task-list-item-text=""
+              >
+                Check eligibility
+              </span>
+              <span
+                class="css-1rpt3h8-boxStyles-Text"
+              />
+            </span>
+          </span>
+          <svg
+            aria-hidden="true"
+            class="css-dcsd2p-Icon"
             clip-rule="evenodd"
-            d="M12 24C18.6274 24 24 18.6274 24 12C24 5.37258 18.6274 0 12 0C5.37258 0 0 5.37258 0 12C0 18.6274 5.37258 24 12 24ZM17.7071 9.70711C18.0976 9.31658 18.0976 8.68342 17.7071 8.29289C17.3166 7.90237 16.6834 7.90237 16.2929 8.29289L10 14.5858L7.70711 12.2929C7.31658 11.9024 6.68342 11.9024 6.29289 12.2929C5.90237 12.6834 5.90237 13.3166 6.29289 13.7071L9.29289 16.7071C9.68342 17.0976 10.3166 17.0976 10.7071 16.7071L17.7071 9.70711Z"
-            fill="currentColor"
-            fill-rule="evenodd"
-            stroke="none"
-          />
-        </svg>
-        <span
-          class="css-1i7cdx8-boxStyles"
-        >
-          <span
-            class="css-1f7oqqc-boxStyles-Text"
+            focusable="false"
+            height="24"
+            role="img"
+            viewBox="0 0 24 24"
+            width="24"
+            xmlns="http://www.w3.org/2000/svg"
           >
-            Completed
-          </span>
-          <span
-            class="css-msykz1-boxStyles-Text-TaskListItem"
-          >
-            Check eligibility
-          </span>
-          <span
-            class="css-1lp7dl8-boxStyles-Text"
-          />
-        </span>
-      </button>
-    </li>
-    <li
-      class="css-16jufl0-TaskListItem"
-    >
-      <button
-        class="css-1rrnib1-BaseButton-boxStyles-TaskListItem"
-        type="button"
+            <path
+              d="M3 12L20 12"
+            />
+            <path
+              d="M16 7L21 12L16 17"
+            />
+          </svg>
+        </button>
+      </li>
+      <li
+        class="css-16jufl0-TaskListItem"
       >
-        <svg
-          aria-hidden="true"
-          class="css-z0pluw-TaskListItem"
-          clip-rule="evenodd"
-          focusable="false"
-          height="24"
-          role="img"
-          viewBox="0 0 24 24"
-          width="24"
-          xmlns="http://www.w3.org/2000/svg"
+        <button
+          class="css-rppkjm-BaseButton-boxStyles-TaskListItem"
+          type="button"
         >
-          <path
+          <span
+            class="css-dddyaj-boxStyles"
+          >
+            <span
+              class="css-1hgwk69-boxStyles"
+            >
+              <svg
+                aria-hidden="true"
+                class="css-15xybhx-TaskListItem"
+                clip-rule="evenodd"
+                focusable="false"
+                height="24"
+                role="img"
+                viewBox="0 0 24 24"
+                width="24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  clip-rule="evenodd"
+                  d="M12 24C18.6274 24 24 18.6274 24 12C24 5.37258 18.6274 0 12 0C5.37258 0 0 5.37258 0 12C0 18.6274 5.37258 24 12 24ZM17.7071 9.70711C18.0976 9.31658 18.0976 8.68342 17.7071 8.29289C17.3166 7.90237 16.6834 7.90237 16.2929 8.29289L10 14.5858L7.70711 12.2929C7.31658 11.9024 6.68342 11.9024 6.29289 12.2929C5.90237 12.6834 5.90237 13.3166 6.29289 13.7071L9.29289 16.7071C9.68342 17.0976 10.3166 17.0976 10.7071 16.7071L17.7071 9.70711Z"
+                  fill="currentColor"
+                  fill-rule="evenodd"
+                  stroke="none"
+                />
+              </svg>
+            </span>
+            <span
+              class="css-1wcx0lf-boxStyles"
+            >
+              <span
+                class="css-q6tqn6-boxStyles"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="css-u3cc2f-TaskListItem"
+                  clip-rule="evenodd"
+                  focusable="false"
+                  height="24"
+                  role="img"
+                  viewBox="0 0 24 24"
+                  width="24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    clip-rule="evenodd"
+                    d="M12 24C18.6274 24 24 18.6274 24 12C24 5.37258 18.6274 0 12 0C5.37258 0 0 5.37258 0 12C0 18.6274 5.37258 24 12 24ZM17.7071 9.70711C18.0976 9.31658 18.0976 8.68342 17.7071 8.29289C17.3166 7.90237 16.6834 7.90237 16.2929 8.29289L10 14.5858L7.70711 12.2929C7.31658 11.9024 6.68342 11.9024 6.29289 12.2929C5.90237 12.6834 5.90237 13.3166 6.29289 13.7071L9.29289 16.7071C9.68342 17.0976 10.3166 17.0976 10.7071 16.7071L17.7071 9.70711Z"
+                    fill="currentColor"
+                    fill-rule="evenodd"
+                    stroke="none"
+                  />
+                </svg>
+                <span
+                  class="css-1b077g7-boxStyles-Text"
+                >
+                  Completed
+                </span>
+              </span>
+              <span
+                class="css-163dclb-boxStyles-Text-TaskListItem"
+                data-agds-task-list-item-text=""
+              >
+                Lorem ipsum dolor sit amet
+              </span>
+              <span
+                class="css-1rpt3h8-boxStyles-Text"
+              />
+            </span>
+          </span>
+          <svg
+            aria-hidden="true"
+            class="css-dcsd2p-Icon"
             clip-rule="evenodd"
-            d="M12 24C18.6274 24 24 18.6274 24 12C24 5.37258 18.6274 0 12 0C5.37258 0 0 5.37258 0 12C0 18.6274 5.37258 24 12 24ZM17.7071 9.70711C18.0976 9.31658 18.0976 8.68342 17.7071 8.29289C17.3166 7.90237 16.6834 7.90237 16.2929 8.29289L10 14.5858L7.70711 12.2929C7.31658 11.9024 6.68342 11.9024 6.29289 12.2929C5.90237 12.6834 5.90237 13.3166 6.29289 13.7071L9.29289 16.7071C9.68342 17.0976 10.3166 17.0976 10.7071 16.7071L17.7071 9.70711Z"
-            fill="currentColor"
-            fill-rule="evenodd"
-            stroke="none"
-          />
-        </svg>
-        <span
-          class="css-1i7cdx8-boxStyles"
-        >
-          <span
-            class="css-1f7oqqc-boxStyles-Text"
+            focusable="false"
+            height="24"
+            role="img"
+            viewBox="0 0 24 24"
+            width="24"
+            xmlns="http://www.w3.org/2000/svg"
           >
-            Completed
-          </span>
-          <span
-            class="css-msykz1-boxStyles-Text-TaskListItem"
-          >
-            Lorem ipsum dolor sit amet
-          </span>
-          <span
-            class="css-1lp7dl8-boxStyles-Text"
-          />
-        </span>
-      </button>
-    </li>
-    <li
-      class="css-16jufl0-TaskListItem"
-    >
-      <button
-        class="css-1u344cx-BaseButton-boxStyles-TaskListItem"
-        type="button"
+            <path
+              d="M3 12L20 12"
+            />
+            <path
+              d="M16 7L21 12L16 17"
+            />
+          </svg>
+        </button>
+      </li>
+      <li
+        class="css-16jufl0-TaskListItem"
       >
-        <svg
-          aria-hidden="true"
-          class="css-1l7qv7c-TaskListItem"
-          clip-rule="evenodd"
-          focusable="false"
-          height="24"
-          role="img"
-          viewBox="0 0 24 24"
-          width="24"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M6.5 13.5C7.32843 13.5 8 12.8284 8 12C8 11.1716 7.32843 10.5 6.5 10.5C5.67157 10.5 5 11.1716 5 12C5 12.8284 5.67157 13.5 6.5 13.5Z"
-            fill="currentColor"
-            stroke="none"
-          />
-          <path
-            d="M12 13.5C12.8284 13.5 13.5 12.8284 13.5 12C13.5 11.1716 12.8284 10.5 12 10.5C11.1716 10.5 10.5 11.1716 10.5 12C10.5 12.8284 11.1716 13.5 12 13.5Z"
-            fill="currentColor"
-            stroke="none"
-          />
-          <path
-            d="M17.5 13.5C18.3284 13.5 19 12.8284 19 12C19 11.1716 18.3284 10.5 17.5 10.5C16.6716 10.5 16 11.1716 16 12C16 12.8284 16.6716 13.5 17.5 13.5Z"
-            fill="currentColor"
-            stroke="none"
-          />
-          <circle
-            cx="12"
-            cy="12"
-            r="10.5"
-          />
-        </svg>
-        <span
-          class="css-1i7cdx8-boxStyles"
+        <button
+          class="css-1o80al1-BaseButton-boxStyles-TaskListItem"
+          type="button"
         >
           <span
-            class="css-1f7oqqc-boxStyles-Text"
+            class="css-dddyaj-boxStyles"
           >
-            In progress
+            <span
+              class="css-1hgwk69-boxStyles"
+            >
+              <svg
+                aria-hidden="true"
+                class="css-1xvuhl0-TaskListItem"
+                clip-rule="evenodd"
+                focusable="false"
+                height="24"
+                role="img"
+                viewBox="0 0 24 24"
+                width="24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M6.5 13.5C7.32843 13.5 8 12.8284 8 12C8 11.1716 7.32843 10.5 6.5 10.5C5.67157 10.5 5 11.1716 5 12C5 12.8284 5.67157 13.5 6.5 13.5Z"
+                  fill="currentColor"
+                  stroke="none"
+                />
+                <path
+                  d="M12 13.5C12.8284 13.5 13.5 12.8284 13.5 12C13.5 11.1716 12.8284 10.5 12 10.5C11.1716 10.5 10.5 11.1716 10.5 12C10.5 12.8284 11.1716 13.5 12 13.5Z"
+                  fill="currentColor"
+                  stroke="none"
+                />
+                <path
+                  d="M17.5 13.5C18.3284 13.5 19 12.8284 19 12C19 11.1716 18.3284 10.5 17.5 10.5C16.6716 10.5 16 11.1716 16 12C16 12.8284 16.6716 13.5 17.5 13.5Z"
+                  fill="currentColor"
+                  stroke="none"
+                />
+                <circle
+                  cx="12"
+                  cy="12"
+                  r="10.5"
+                />
+              </svg>
+            </span>
+            <span
+              class="css-1wcx0lf-boxStyles"
+            >
+              <span
+                class="css-q6tqn6-boxStyles"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="css-1rzsgvs-TaskListItem"
+                  clip-rule="evenodd"
+                  focusable="false"
+                  height="24"
+                  role="img"
+                  viewBox="0 0 24 24"
+                  width="24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M6.5 13.5C7.32843 13.5 8 12.8284 8 12C8 11.1716 7.32843 10.5 6.5 10.5C5.67157 10.5 5 11.1716 5 12C5 12.8284 5.67157 13.5 6.5 13.5Z"
+                    fill="currentColor"
+                    stroke="none"
+                  />
+                  <path
+                    d="M12 13.5C12.8284 13.5 13.5 12.8284 13.5 12C13.5 11.1716 12.8284 10.5 12 10.5C11.1716 10.5 10.5 11.1716 10.5 12C10.5 12.8284 11.1716 13.5 12 13.5Z"
+                    fill="currentColor"
+                    stroke="none"
+                  />
+                  <path
+                    d="M17.5 13.5C18.3284 13.5 19 12.8284 19 12C19 11.1716 18.3284 10.5 17.5 10.5C16.6716 10.5 16 11.1716 16 12C16 12.8284 16.6716 13.5 17.5 13.5Z"
+                    fill="currentColor"
+                    stroke="none"
+                  />
+                  <circle
+                    cx="12"
+                    cy="12"
+                    r="10.5"
+                  />
+                </svg>
+                <span
+                  class="css-1b077g7-boxStyles-Text"
+                >
+                  In progress
+                </span>
+              </span>
+              <span
+                class="css-163dclb-boxStyles-Text-TaskListItem"
+                data-agds-task-list-item-text=""
+              >
+                Case Studies
+              </span>
+              <span
+                class="css-1rpt3h8-boxStyles-Text"
+              />
+            </span>
           </span>
-          <span
-            class="css-msykz1-boxStyles-Text-TaskListItem"
+          <svg
+            aria-hidden="true"
+            class="css-dcsd2p-Icon"
+            clip-rule="evenodd"
+            focusable="false"
+            height="24"
+            role="img"
+            viewBox="0 0 24 24"
+            width="24"
+            xmlns="http://www.w3.org/2000/svg"
           >
-            Case Studies
-          </span>
-          <span
-            class="css-1lp7dl8-boxStyles-Text"
-          />
-        </span>
-      </button>
-    </li>
-    <li
-      class="css-16jufl0-TaskListItem"
-    >
-      <button
-        class="css-1rrnib1-BaseButton-boxStyles-TaskListItem"
-        type="button"
+            <path
+              d="M3 12L20 12"
+            />
+            <path
+              d="M16 7L21 12L16 17"
+            />
+          </svg>
+        </button>
+      </li>
+      <li
+        class="css-16jufl0-TaskListItem"
       >
-        <svg
-          aria-hidden="true"
-          class="css-1l7qv7c-TaskListItem"
-          clip-rule="evenodd"
-          focusable="false"
-          height="24"
-          role="img"
-          viewBox="0 0 24 24"
-          width="24"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <circle
-            cx="12"
-            cy="12"
-            r="10.5"
-            stroke-dasharray="4 4"
-            stroke-linecap="round"
-          />
-        </svg>
-        <span
-          class="css-1i7cdx8-boxStyles"
+        <button
+          class="css-rppkjm-BaseButton-boxStyles-TaskListItem"
+          type="button"
         >
           <span
-            class="css-1f7oqqc-boxStyles-Text"
+            class="css-dddyaj-boxStyles"
           >
-            Not started
+            <span
+              class="css-1hgwk69-boxStyles"
+            >
+              <svg
+                aria-hidden="true"
+                class="css-1xvuhl0-TaskListItem"
+                clip-rule="evenodd"
+                focusable="false"
+                height="24"
+                role="img"
+                viewBox="0 0 24 24"
+                width="24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <circle
+                  cx="12"
+                  cy="12"
+                  r="10.5"
+                  stroke-dasharray="4 4"
+                  stroke-linecap="round"
+                />
+              </svg>
+            </span>
+            <span
+              class="css-1wcx0lf-boxStyles"
+            >
+              <span
+                class="css-q6tqn6-boxStyles"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="css-1rzsgvs-TaskListItem"
+                  clip-rule="evenodd"
+                  focusable="false"
+                  height="24"
+                  role="img"
+                  viewBox="0 0 24 24"
+                  width="24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <circle
+                    cx="12"
+                    cy="12"
+                    r="10.5"
+                    stroke-dasharray="4 4"
+                    stroke-linecap="round"
+                  />
+                </svg>
+                <span
+                  class="css-1b077g7-boxStyles-Text"
+                >
+                  Not started
+                </span>
+              </span>
+              <span
+                class="css-163dclb-boxStyles-Text-TaskListItem"
+                data-agds-task-list-item-text=""
+              >
+                Review and submit
+              </span>
+              <span
+                class="css-1rpt3h8-boxStyles-Text"
+              >
+                Not available until previous tasks are done
+              </span>
+            </span>
           </span>
-          <span
-            class="css-msykz1-boxStyles-Text-TaskListItem"
+          <svg
+            aria-hidden="true"
+            class="css-dcsd2p-Icon"
+            clip-rule="evenodd"
+            focusable="false"
+            height="24"
+            role="img"
+            viewBox="0 0 24 24"
+            width="24"
+            xmlns="http://www.w3.org/2000/svg"
           >
-            Review and submit
-          </span>
-          <span
-            class="css-1lp7dl8-boxStyles-Text"
-          >
-            Not available until previous tasks are done
-          </span>
-        </span>
-      </button>
-    </li>
-  </ol>
+            <path
+              d="M3 12L20 12"
+            />
+            <path
+              d="M16 7L21 12L16 17"
+            />
+          </svg>
+        </button>
+      </li>
+    </ul>
+  </div>
 </div>
 `;
