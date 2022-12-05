@@ -84,8 +84,7 @@ const TaskListItem = ({
 				alignItems={['flex-start', 'center']}
 				className={className}
 				gap={0.75}
-				paddingX={1}
-				paddingY={1}
+				padding={1}
 				fontFamily="body"
 				color="text"
 				borderBottom
