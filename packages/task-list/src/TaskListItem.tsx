@@ -9,7 +9,7 @@ import {
 	ProgressBlockedIcon,
 	ArrowRightIcon,
 } from '@ag.ds-next/icon';
-import { boxPalette, LinkProps, packs, tokens } from '@ag.ds-next/core';
+import { boxPalette, LinkProps, mq, packs, tokens } from '@ag.ds-next/core';
 import { BaseButton } from '@ag.ds-next/button';
 
 export type TaskListItemStatus = keyof typeof statusMap;
@@ -79,12 +79,13 @@ const TaskListItem = ({
 		<li css={{ counterIncrement: 'task-count' }}>
 			<Flex
 				as={as}
+				flexDirection={['column', 'row']}
 				justifyContent="space-between"
-				alignItems="center"
+				alignItems={['flex-start', 'center']}
 				className={className}
 				gap={0.75}
 				paddingX={1}
-				paddingY={1.5}
+				paddingY={1}
 				fontFamily="body"
 				color="text"
 				borderBottom
@@ -97,7 +98,7 @@ const TaskListItem = ({
 						...packs.underline,
 						color: boxPalette.foregroundAction,
 					},
-					...(status === 'recentlyCompleted'
+					...(status === 'doneRecently'
 						? {
 								backgroundColor: boxPalette.systemSuccessMuted,
 						  }
@@ -126,22 +127,32 @@ const TaskListItem = ({
 				}}
 				{...props}
 			>
-				<Flex gap={0.75}>
+				<Flex gap={[0, 0.75]}>
 					<Icon
 						size="lg"
 						color={iconColor}
-						css={{
+						css={mq({
+							display: ['none', 'block'],
 							// Use padding to ensure the icon is aligned centered with the status label and title
 							paddingTop: '0.75rem',
-						}}
+						})}
 					/>
-					<Flex as="span" flexDirection="column" gap={0.25}>
-						<Text as="span" fontSize="sm" lineHeight="nospace">
-							{label}
-						</Text>
+					<Flex as="span" flexDirection="column" gap={0.5}>
+						<Flex gap={0.25} alignItems="center">
+							<Icon
+								size="md"
+								color={iconColor}
+								css={mq({
+									display: ['block', 'none'],
+								})}
+							/>
+							<Text as="span" fontSize={['xs', 'sm']} lineHeight="nospace">
+								{label}
+							</Text>
+						</Flex>
 						<Text
 							{...{ [taskListItemTextDataAttr]: '' }}
-							fontSize="lg"
+							fontSize={['md', 'lg']}
 							lineHeight="heading"
 							fontWeight="bold"
 							color="action"
@@ -187,7 +198,7 @@ const statusMap = {
 		icon: SuccessFilledIcon,
 		iconColor: 'success',
 	},
-	recentlyCompleted: {
+	doneRecently: {
 		label: 'Completed',
 		icon: SuccessFilledIcon,
 		iconColor: 'success',

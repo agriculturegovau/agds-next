@@ -25,7 +25,7 @@ export const TaskList = ({ items, ordered }: TaskListProps) => {
 
 	return (
 		<Stack gap={1.5}>
-			<Stack gap={0.5}>
+			<Stack gap={0.5} paddingLeft={[1, 0]}>
 				<Text fontSize="lg" fontWeight="bold" lineHeight="heading">
 					Task list
 				</Text>

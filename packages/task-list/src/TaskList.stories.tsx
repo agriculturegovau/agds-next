@@ -103,7 +103,7 @@ RecentlyCompleted.args = {
 		{
 			...exampleLinkItems[0],
 			label: 'My details',
-			status: 'recentlyCompleted' as const,
+			status: 'doneRecently' as const,
 		},
 		...exampleLinkItems.slice(1),
 	],
