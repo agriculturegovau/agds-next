@@ -22,11 +22,13 @@ export function SearchInputClearButton({
 			alignItems="center"
 			justifyContent="center"
 			aria-label="Clear search"
+			width="2rem"
+			height="2rem"
 			onClick={onClick}
 			css={{
 				position: 'absolute',
 				top: '50%',
-				right: `calc(${mapSpacing(1)} + ${tokens.borderWidth.lg}px)`, // Align from the inner border
+				right: `calc(${mapSpacing(0.5)} + ${tokens.borderWidth.lg}px)`, // Align from the inner border
 				transform: 'translateY(-50%)',
 				opacity: disabled ? 0.3 : 1,
 				cursor: 'pointer',
