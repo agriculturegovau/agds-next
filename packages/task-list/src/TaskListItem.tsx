@@ -7,6 +7,7 @@ import {
 	SuccessFilledIcon,
 	ProgressTodoIcon,
 	ProgressBlockedIcon,
+	ArrowRightIcon,
 } from '@ag.ds-next/icon';
 import { boxPalette, LinkProps, packs, tokens } from '@ag.ds-next/core';
 import { BaseButton } from '@ag.ds-next/button';
@@ -78,11 +79,12 @@ const TaskListItem = ({
 		<li css={{ counterIncrement: 'task-count' }}>
 			<Flex
 				as={as}
+				justifyContent="space-between"
+				alignItems="center"
 				className={className}
 				gap={0.75}
+				paddingX={1}
 				paddingY={1.5}
-				paddingLeft={0.75}
-				paddingRight={active ? 0.5 : 0.25}
 				fontFamily="body"
 				color="text"
 				borderBottom
@@ -124,38 +126,41 @@ const TaskListItem = ({
 				}}
 				{...props}
 			>
-				<Icon
-					size="lg"
-					color={iconColor}
-					css={{
-						// Use padding to ensure the icon is aligned centered with the status label and title
-						paddingTop: '0.75rem',
-					}}
-				/>
-				<Flex as="span" flexDirection="column" gap={0.25}>
-					<Text as="span" fontSize="sm" lineHeight="nospace">
-						{label}
-					</Text>
-					<Text
-						{...{ [taskListItemTextDataAttr]: '' }}
-						fontSize="lg"
-						lineHeight="heading"
-						fontWeight="bold"
-						color="action"
+				<Flex gap={0.75}>
+					<Icon
+						size="lg"
+						color={iconColor}
 						css={{
-							...(ordered && {
-								'&:before': {
-									content: "counter(task-count) '. '",
-								},
-							}),
+							// Use padding to ensure the icon is aligned centered with the status label and title
+							paddingTop: '0.75rem',
 						}}
-					>
-						{children}
-					</Text>
-					<Text color="muted" fontSize="sm">
-						{message}
-					</Text>
+					/>
+					<Flex as="span" flexDirection="column" gap={0.25}>
+						<Text as="span" fontSize="sm" lineHeight="nospace">
+							{label}
+						</Text>
+						<Text
+							{...{ [taskListItemTextDataAttr]: '' }}
+							fontSize="lg"
+							lineHeight="heading"
+							fontWeight="bold"
+							color="action"
+							css={{
+								...(ordered && {
+									'&:before': {
+										content: "counter(task-count) '. '",
+									},
+								}),
+							}}
+						>
+							{children}
+						</Text>
+						<Text color="muted" fontSize="sm">
+							{message}
+						</Text>
+					</Flex>
 				</Flex>
+				<ArrowRightIcon color="action" />
 			</Flex>
 		</li>
 	);
