@@ -127,18 +127,18 @@ const TaskListItem = ({
 				}}
 				{...props}
 			>
-				<Flex gap={[0, 0.75]}>
-					<Icon
-						size="lg"
-						color={iconColor}
-						css={mq({
-							display: ['none', 'block'],
-							// Use padding to ensure the icon is aligned centered with the status label and title
-							paddingTop: '0.75rem',
-						})}
-					/>
+				<Flex as="span" gap={[0, 1]}>
+					<Flex as="span" alignItems="center">
+						<Icon
+							size="xl"
+							color={iconColor}
+							css={mq({
+								display: ['none', 'block'],
+							})}
+						/>
+					</Flex>
 					<Flex as="span" flexDirection="column" gap={0.5}>
-						<Flex gap={0.25} alignItems="center">
+						<Flex as="span" gap={0.25} alignItems="center">
 							<Icon
 								size="md"
 								color={iconColor}
@@ -171,7 +171,7 @@ const TaskListItem = ({
 						</Text>
 					</Flex>
 				</Flex>
-				<ArrowRightIcon color="action" />
+				<ArrowRightIcon color="action" size={['sm', 'lg']} />
 			</Flex>
 		</li>
 	);
