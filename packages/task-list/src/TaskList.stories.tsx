@@ -94,6 +94,21 @@ Ordered.args = {
 	items: exampleLinkItems,
 };
 
+export const RecentlyCompleted: ComponentStory<typeof TaskList> = (args) => (
+	<TaskList {...args} />
+);
+RecentlyCompleted.args = {
+	items: [
+		exampleLinkItems[0],
+		{
+			...exampleLinkItems[0],
+			label: 'My details',
+			status: 'recentlyCompleted' as const,
+		},
+		...exampleLinkItems.slice(1),
+	],
+};
+
 export const Button: ComponentStory<typeof TaskList> = (args) => (
 	<TaskList {...args} />
 );

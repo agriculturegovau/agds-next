@@ -95,6 +95,11 @@ const TaskListItem = ({
 						...packs.underline,
 						color: boxPalette.foregroundAction,
 					},
+					...(status === 'recentlyCompleted'
+						? {
+								backgroundColor: boxPalette.systemSuccessMuted,
+						  }
+						: null),
 					...(active
 						? {
 								'&:before': {
@@ -173,6 +178,11 @@ const statusMap = {
 		iconColor: 'action',
 	},
 	done: {
+		label: 'Completed',
+		icon: SuccessFilledIcon,
+		iconColor: 'success',
+	},
+	recentlyCompleted: {
 		label: 'Completed',
 		icon: SuccessFilledIcon,
 		iconColor: 'success',
