@@ -50,7 +50,7 @@ exports[`Card With link renders correctly 1`] = `
         </p>
         <a
           class="css-1ytze9p-CardLink"
-          data-agds-card-link="true"
+          data-agds-card-link=""
           href="#"
         >
           Linking out
