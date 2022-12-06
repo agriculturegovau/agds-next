@@ -83,8 +83,9 @@ const TaskListItem = ({
 				justifyContent="space-between"
 				alignItems={['flex-start', 'center']}
 				className={className}
-				gap={0.75}
-				padding={1}
+				gap={1}
+				paddingY={1}
+				paddingX={[0.75, 1]}
 				fontFamily="body"
 				color="text"
 				borderBottom

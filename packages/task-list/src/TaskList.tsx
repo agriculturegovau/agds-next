@@ -1,4 +1,5 @@
 import { Stack } from '@ag.ds-next/box';
+import { H2 } from '@ag.ds-next/heading';
 import { Text } from '@ag.ds-next/text';
 import { TaskListContainer } from './TaskListContainer';
 import {
@@ -25,10 +26,8 @@ export const TaskList = ({ items, ordered }: TaskListProps) => {
 
 	return (
 		<Stack gap={1.5}>
-			<Stack gap={0.5} paddingLeft={[1, 0]}>
-				<Text fontSize="lg" fontWeight="bold" lineHeight="heading">
-					Task list
-				</Text>
+			<Stack gap={1}>
+				<H2>Task list</H2>
 				<Text fontSize="sm" color="muted">
 					{subHeading}
 				</Text>

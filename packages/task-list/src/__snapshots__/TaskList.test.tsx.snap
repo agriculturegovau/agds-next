@@ -6,13 +6,13 @@ exports[`TaskList With anchors renders correctly 1`] = `
     class="css-1mxr31d-boxStyles"
   >
     <div
-      class="css-1l7qjbc-boxStyles"
+      class="css-1lvzxao-boxStyles"
     >
-      <span
-        class="css-5k6djv-boxStyles-Text"
+      <h2
+        class="css-s8h0nj-boxStyles"
       >
         Task list
-      </span>
+      </h2>
       <span
         class="css-1rpt3h8-boxStyles-Text"
       >
@@ -26,7 +26,7 @@ exports[`TaskList With anchors renders correctly 1`] = `
         class="css-16jufl0-TaskListItem"
       >
         <a
-          class="css-1w476dk-TextLink-boxStyles-TaskListItem"
+          class="css-5z9siv-TextLink-boxStyles-TaskListItem"
           href="#"
         >
           <span
@@ -121,7 +121,7 @@ exports[`TaskList With anchors renders correctly 1`] = `
         class="css-16jufl0-TaskListItem"
       >
         <a
-          class="css-1w476dk-TextLink-boxStyles-TaskListItem"
+          class="css-5z9siv-TextLink-boxStyles-TaskListItem"
           href="#"
         >
           <span
@@ -216,7 +216,7 @@ exports[`TaskList With anchors renders correctly 1`] = `
         class="css-16jufl0-TaskListItem"
       >
         <a
-          class="css-1er5hak-TextLink-boxStyles-TaskListItem"
+          class="css-m64nx9-TextLink-boxStyles-TaskListItem"
           href="#"
         >
           <span
@@ -337,7 +337,7 @@ exports[`TaskList With anchors renders correctly 1`] = `
         class="css-16jufl0-TaskListItem"
       >
         <a
-          class="css-1w476dk-TextLink-boxStyles-TaskListItem"
+          class="css-5z9siv-TextLink-boxStyles-TaskListItem"
           href="#"
         >
           <span
@@ -441,13 +441,13 @@ exports[`TaskList With buttons renders correctly 1`] = `
     class="css-1mxr31d-boxStyles"
   >
     <div
-      class="css-1l7qjbc-boxStyles"
+      class="css-1lvzxao-boxStyles"
     >
-      <span
-        class="css-5k6djv-boxStyles-Text"
+      <h2
+        class="css-s8h0nj-boxStyles"
       >
         Task list
-      </span>
+      </h2>
       <span
         class="css-1rpt3h8-boxStyles-Text"
       >
@@ -461,7 +461,7 @@ exports[`TaskList With buttons renders correctly 1`] = `
         class="css-16jufl0-TaskListItem"
       >
         <button
-          class="css-rppkjm-BaseButton-boxStyles-TaskListItem"
+          class="css-nwqjlx-BaseButton-boxStyles-TaskListItem"
           type="button"
         >
           <span
@@ -556,7 +556,7 @@ exports[`TaskList With buttons renders correctly 1`] = `
         class="css-16jufl0-TaskListItem"
       >
         <button
-          class="css-rppkjm-BaseButton-boxStyles-TaskListItem"
+          class="css-nwqjlx-BaseButton-boxStyles-TaskListItem"
           type="button"
         >
           <span
@@ -651,7 +651,7 @@ exports[`TaskList With buttons renders correctly 1`] = `
         class="css-16jufl0-TaskListItem"
       >
         <button
-          class="css-1o80al1-BaseButton-boxStyles-TaskListItem"
+          class="css-nxvcns-BaseButton-boxStyles-TaskListItem"
           type="button"
         >
           <span
@@ -772,7 +772,7 @@ exports[`TaskList With buttons renders correctly 1`] = `
         class="css-16jufl0-TaskListItem"
       >
         <button
-          class="css-rppkjm-BaseButton-boxStyles-TaskListItem"
+          class="css-nwqjlx-BaseButton-boxStyles-TaskListItem"
           type="button"
         >
           <span
