@@ -16,8 +16,6 @@ import {
 	formSchema as task2FormSchema,
 } from './FormRegisterPetDetails/FormRegisterPetDetails';
 
-export const recentlyCompletedUrlParam = 'recently-completed-step';
-
 type ContextType = {
 	/** The task form state. */
 	task1FormState: FormState[0];
