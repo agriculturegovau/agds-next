@@ -20,7 +20,7 @@ export const CardLink = (props: CardLinkProps) => {
 					},
 				},
 			]}
-			{...{ [cardLinkDataAttr]: true }}
+			{...{ [cardLinkDataAttr]: '' }}
 			{...props}
 		/>
 	);
