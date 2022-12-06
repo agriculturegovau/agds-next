@@ -62,11 +62,15 @@ exports[`TaskList With anchors renders correctly 1`] = `
               class="css-1wcx0lf-boxStyles"
             >
               <span
-                aria-label="Check eligibility."
                 class="css-3sibcn-boxStyles-Text-TaskListItem"
                 data-agds-task-list-item-text=""
               >
                 Check eligibility
+                <span
+                  class="css-avudkd-VisuallyHidden"
+                >
+                  .
+                </span>
               </span>
               <span
                 class="css-1heyt4z-boxStyles-TaskListItem"
@@ -91,10 +95,14 @@ exports[`TaskList With anchors renders correctly 1`] = `
                   />
                 </svg>
                 <span
-                  aria-label="Completed."
                   class="css-1b077g7-boxStyles-Text"
                 >
                   Completed
+                  <span
+                    class="css-avudkd-VisuallyHidden"
+                  >
+                    .
+                  </span>
                 </span>
               </span>
               <span
@@ -159,11 +167,15 @@ exports[`TaskList With anchors renders correctly 1`] = `
               class="css-1wcx0lf-boxStyles"
             >
               <span
-                aria-label="Lorem ipsum dolor sit amet."
                 class="css-3sibcn-boxStyles-Text-TaskListItem"
                 data-agds-task-list-item-text=""
               >
                 Lorem ipsum dolor sit amet
+                <span
+                  class="css-avudkd-VisuallyHidden"
+                >
+                  .
+                </span>
               </span>
               <span
                 class="css-1heyt4z-boxStyles-TaskListItem"
@@ -188,10 +200,14 @@ exports[`TaskList With anchors renders correctly 1`] = `
                   />
                 </svg>
                 <span
-                  aria-label="Completed."
                   class="css-1b077g7-boxStyles-Text"
                 >
                   Completed
+                  <span
+                    class="css-avudkd-VisuallyHidden"
+                  >
+                    .
+                  </span>
                 </span>
               </span>
               <span
@@ -269,11 +285,15 @@ exports[`TaskList With anchors renders correctly 1`] = `
               class="css-1wcx0lf-boxStyles"
             >
               <span
-                aria-label="Case Studies."
                 class="css-3sibcn-boxStyles-Text-TaskListItem"
                 data-agds-task-list-item-text=""
               >
                 Case Studies
+                <span
+                  class="css-avudkd-VisuallyHidden"
+                >
+                  .
+                </span>
               </span>
               <span
                 class="css-1heyt4z-boxStyles-TaskListItem"
@@ -311,10 +331,14 @@ exports[`TaskList With anchors renders correctly 1`] = `
                   />
                 </svg>
                 <span
-                  aria-label="In progress."
                   class="css-1b077g7-boxStyles-Text"
                 >
                   In progress
+                  <span
+                    class="css-avudkd-VisuallyHidden"
+                  >
+                    .
+                  </span>
                 </span>
               </span>
               <span
@@ -379,11 +403,15 @@ exports[`TaskList With anchors renders correctly 1`] = `
               class="css-1wcx0lf-boxStyles"
             >
               <span
-                aria-label="Review and submit."
                 class="css-3sibcn-boxStyles-Text-TaskListItem"
                 data-agds-task-list-item-text=""
               >
                 Review and submit
+                <span
+                  class="css-avudkd-VisuallyHidden"
+                >
+                  .
+                </span>
               </span>
               <span
                 class="css-1heyt4z-boxStyles-TaskListItem"
@@ -408,10 +436,14 @@ exports[`TaskList With anchors renders correctly 1`] = `
                   />
                 </svg>
                 <span
-                  aria-label="Not started."
                   class="css-1b077g7-boxStyles-Text"
                 >
                   Not started
+                  <span
+                    class="css-avudkd-VisuallyHidden"
+                  >
+                    .
+                  </span>
                 </span>
               </span>
               <span
@@ -508,11 +540,15 @@ exports[`TaskList With buttons renders correctly 1`] = `
               class="css-1wcx0lf-boxStyles"
             >
               <span
-                aria-label="Check eligibility."
                 class="css-3sibcn-boxStyles-Text-TaskListItem"
                 data-agds-task-list-item-text=""
               >
                 Check eligibility
+                <span
+                  class="css-avudkd-VisuallyHidden"
+                >
+                  .
+                </span>
               </span>
               <span
                 class="css-1heyt4z-boxStyles-TaskListItem"
@@ -537,10 +573,14 @@ exports[`TaskList With buttons renders correctly 1`] = `
                   />
                 </svg>
                 <span
-                  aria-label="Completed."
                   class="css-1b077g7-boxStyles-Text"
                 >
                   Completed
+                  <span
+                    class="css-avudkd-VisuallyHidden"
+                  >
+                    .
+                  </span>
                 </span>
               </span>
               <span
@@ -605,11 +645,15 @@ exports[`TaskList With buttons renders correctly 1`] = `
               class="css-1wcx0lf-boxStyles"
             >
               <span
-                aria-label="Lorem ipsum dolor sit amet."
                 class="css-3sibcn-boxStyles-Text-TaskListItem"
                 data-agds-task-list-item-text=""
               >
                 Lorem ipsum dolor sit amet
+                <span
+                  class="css-avudkd-VisuallyHidden"
+                >
+                  .
+                </span>
               </span>
               <span
                 class="css-1heyt4z-boxStyles-TaskListItem"
@@ -634,10 +678,14 @@ exports[`TaskList With buttons renders correctly 1`] = `
                   />
                 </svg>
                 <span
-                  aria-label="Completed."
                   class="css-1b077g7-boxStyles-Text"
                 >
                   Completed
+                  <span
+                    class="css-avudkd-VisuallyHidden"
+                  >
+                    .
+                  </span>
                 </span>
               </span>
               <span
@@ -715,11 +763,15 @@ exports[`TaskList With buttons renders correctly 1`] = `
               class="css-1wcx0lf-boxStyles"
             >
               <span
-                aria-label="Case Studies."
                 class="css-3sibcn-boxStyles-Text-TaskListItem"
                 data-agds-task-list-item-text=""
               >
                 Case Studies
+                <span
+                  class="css-avudkd-VisuallyHidden"
+                >
+                  .
+                </span>
               </span>
               <span
                 class="css-1heyt4z-boxStyles-TaskListItem"
@@ -757,10 +809,14 @@ exports[`TaskList With buttons renders correctly 1`] = `
                   />
                 </svg>
                 <span
-                  aria-label="In progress."
                   class="css-1b077g7-boxStyles-Text"
                 >
                   In progress
+                  <span
+                    class="css-avudkd-VisuallyHidden"
+                  >
+                    .
+                  </span>
                 </span>
               </span>
               <span
@@ -825,11 +881,15 @@ exports[`TaskList With buttons renders correctly 1`] = `
               class="css-1wcx0lf-boxStyles"
             >
               <span
-                aria-label="Review and submit."
                 class="css-3sibcn-boxStyles-Text-TaskListItem"
                 data-agds-task-list-item-text=""
               >
                 Review and submit
+                <span
+                  class="css-avudkd-VisuallyHidden"
+                >
+                  .
+                </span>
               </span>
               <span
                 class="css-1heyt4z-boxStyles-TaskListItem"
@@ -854,10 +914,14 @@ exports[`TaskList With buttons renders correctly 1`] = `
                   />
                 </svg>
                 <span
-                  aria-label="Not started."
                   class="css-1b077g7-boxStyles-Text"
                 >
                   Not started
+                  <span
+                    class="css-avudkd-VisuallyHidden"
+                  >
+                    .
+                  </span>
                 </span>
               </span>
               <span
