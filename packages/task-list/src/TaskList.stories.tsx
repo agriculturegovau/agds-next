@@ -1,4 +1,5 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { Stack } from '@ag.ds-next/box';
 import {
 	TaskListContainer,
 	TaskList,
@@ -120,21 +121,27 @@ Button.args = {
 };
 
 export const ModularLinks = () => (
-	<TaskListContainer>
-		{exampleLinkItems.map(({ label, ...props }, index) => (
-			<TaskListItemLink key={index} {...props}>
-				{label}
-			</TaskListItemLink>
-		))}
-	</TaskListContainer>
+	<Stack gap={1.5}>
+		<TaskListHeading stepsCompleted={1} totalSteps={5} />
+		<TaskListContainer>
+			{exampleLinkItems.map(({ label, ...props }, index) => (
+				<TaskListItemLink key={index} {...props}>
+					{label}
+				</TaskListItemLink>
+			))}
+		</TaskListContainer>
+	</Stack>
 );
 
 export const ModularButtons = () => (
-	<TaskListContainer>
-		{exampleOrderedButtonItems.map(({ label, ...props }, index) => (
-			<TaskListItemButton key={index} {...props}>
-				{label}
-			</TaskListItemButton>
-		))}
-	</TaskListContainer>
+	<Stack gap={1.5}>
+		<TaskListHeading stepsCompleted={2} totalSteps={5} />
+		<TaskListContainer>
+			{exampleOrderedButtonItems.map(({ label, ...props }, index) => (
+				<TaskListItemButton key={index} {...props}>
+					{label}
+				</TaskListItemButton>
+			))}
+		</TaskListContainer>
+	</Stack>
 );
