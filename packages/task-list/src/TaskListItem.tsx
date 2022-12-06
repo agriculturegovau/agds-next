@@ -136,18 +136,6 @@ const TaskListItem = ({
 						/>
 					</Flex>
 					<Flex as="span" flexDirection="column" gap={0.5}>
-						<Flex as="span" gap={0.25} alignItems="center">
-							<Icon
-								size="md"
-								color={iconColor}
-								css={mq({
-									display: ['block', 'none'],
-								})}
-							/>
-							<Text as="span" fontSize={['xs', 'sm']} lineHeight="nospace">
-								{label}
-							</Text>
-						</Flex>
 						<Text
 							{...{ [taskListItemTextDataAttr]: '' }}
 							fontSize={['md', 'lg']}
@@ -155,16 +143,36 @@ const TaskListItem = ({
 							fontWeight="bold"
 							color="action"
 							css={{
+								order: 2,
 								...(ordered && {
 									'&:before': {
-										content: "counter(task-count) '. '",
+										content: 'counter(task-count)',
 									},
 								}),
 							}}
+							aria-label={`${children}.`}
 						>
+							{ordered && <span aria-hidden="true">. </span>}
 							{children}
 						</Text>
-						<Text color="muted" fontSize="sm">
+						<Flex as="span" gap={0.25} alignItems="center" css={{ order: 1 }}>
+							<Icon
+								size="md"
+								color={iconColor}
+								css={mq({
+									display: ['block', 'none'],
+								})}
+							/>
+							<Text
+								as="span"
+								fontSize={['xs', 'sm']}
+								lineHeight="nospace"
+								aria-label={`${label}.`}
+							>
+								{label}
+							</Text>
+						</Flex>
+						<Text color="muted" fontSize="sm" css={{ order: 3 }}>
 							{message}
 						</Text>
 					</Flex>
