@@ -2,6 +2,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import {
 	TaskListContainer,
 	TaskList,
+	TaskListHeading,
 	TaskListItemLink,
 	TaskListItemButton,
 } from './index';
@@ -11,6 +12,7 @@ export default {
 	component: TaskList,
 	subcomponents: {
 		TaskListContainer,
+		TaskListHeading,
 		TaskListItemLink,
 		TaskListItemButton,
 	},
