@@ -1,9 +1,9 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { Stack } from '@ag.ds-next/box';
 import {
 	TaskListContainer,
 	TaskList,
 	TaskListHeading,
+	TaskListItemsContainer,
 	TaskListItemLink,
 	TaskListItemButton,
 } from './index';
@@ -14,6 +14,7 @@ export default {
 	subcomponents: {
 		TaskListContainer,
 		TaskListHeading,
+		TaskListItemsContainer,
 		TaskListItemLink,
 		TaskListItemButton,
 	},
@@ -81,67 +82,59 @@ const exampleOrderedButtonItems = [
 	},
 ];
 
-export const Unordered: ComponentStory<typeof TaskList> = (args) => (
+const Template: ComponentStory<typeof TaskList> = (args) => (
 	<TaskList {...args} />
 );
+
+export const Unordered = Template.bind({});
 Unordered.args = {
-	ordered: false,
 	items: exampleLinkItems,
 };
 
-export const Ordered: ComponentStory<typeof TaskList> = (args) => (
-	<TaskList {...args} />
-);
+export const Ordered = Template.bind({});
 Ordered.args = {
 	ordered: true,
 	items: exampleLinkItems,
 };
 
-export const RecentlyCompleted: ComponentStory<typeof TaskList> = (args) => (
-	<TaskList {...args} />
-);
+export const RecentlyCompleted = Template.bind({});
 RecentlyCompleted.args = {
-	items: [
-		exampleLinkItems[0],
-		{
-			...exampleLinkItems[0],
-			label: 'My details',
-			status: 'doneRecently' as const,
-		},
-		...exampleLinkItems.slice(1),
-	],
+	items: exampleLinkItems.map((item, idx) => {
+		if (idx !== 1) return item;
+		return {
+			...item,
+			status: 'doneRecently',
+		};
+	}),
 };
 
-export const Button: ComponentStory<typeof TaskList> = (args) => (
-	<TaskList {...args} />
-);
+export const Button = Template.bind({});
 Button.args = {
-	ordered: false,
 	items: exampleOrderedButtonItems,
 };
 
 export const ModularLinks = () => (
-	<Stack gap={1.5}>
+	<TaskListContainer>
 		<TaskListHeading stepsCompleted={1} totalSteps={5} />
-		<TaskListContainer>
+		<TaskListItemsContainer>
 			{exampleLinkItems.map(({ label, ...props }, index) => (
 				<TaskListItemLink key={index} {...props}>
 					{label}
 				</TaskListItemLink>
 			))}
-		</TaskListContainer>
-	</Stack>
+		</TaskListItemsContainer>
+	</TaskListContainer>
 );
 
 export const ModularButtons = () => (
-	<Stack gap={1.5}>
+	<TaskListContainer>
 		<TaskListHeading stepsCompleted={2} totalSteps={5} />
-		<TaskListContainer>
+		<TaskListItemsContainer>
 			{exampleOrderedButtonItems.map(({ label, ...props }, index) => (
 				<TaskListItemButton key={index} {...props}>
 					{label}
 				</TaskListItemButton>
 			))}
-		</TaskListContainer>
-	</Stack>
+		</TaskListItemsContainer>
+	</TaskListContainer>
 );

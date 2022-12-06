@@ -1,16 +1,10 @@
-import type { ElementType, ReactNode } from 'react';
+import type { ReactNode } from 'react';
 import { Stack } from '@ag.ds-next/box';
 
 export type TaskListContainerProps = {
-	as?: ElementType;
 	children: ReactNode;
 };
 
-export const TaskListContainer = ({
-	children,
-	as = 'ul',
-}: TaskListContainerProps) => (
-	<Stack as={as} borderTop css={{ counterReset: 'task-count' }}>
-		{children}
-	</Stack>
+export const TaskListContainer = ({ children }: TaskListContainerProps) => (
+	<Stack gap={1.5}>{children}</Stack>
 );

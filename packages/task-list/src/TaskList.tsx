@@ -1,6 +1,6 @@
-import { Stack } from '@ag.ds-next/box';
 import { TaskListContainer } from './TaskListContainer';
 import { TaskListHeading } from './TaskListHeading';
+import { TaskListItemsContainer } from './TaskListItemsContainer';
 import {
 	TaskListItemButton,
 	TaskListItemButtonProps,
@@ -21,14 +21,13 @@ export type TaskListProps = {
 export const TaskList = ({ items, ordered }: TaskListProps) => {
 	const stepsCompleted = items.filter((item) => item.status === 'done').length;
 	const totalSteps = items.length;
-
 	return (
-		<Stack gap={1.5}>
+		<TaskListContainer>
 			<TaskListHeading
 				stepsCompleted={stepsCompleted}
 				totalSteps={totalSteps}
 			/>
-			<TaskListContainer as={ordered ? 'ol' : 'ul'}>
+			<TaskListItemsContainer as={ordered ? 'ol' : 'ul'}>
 				{items.map(({ label, ...props }, index) => {
 					if (isItemLink(props)) {
 						return (
@@ -43,8 +42,8 @@ export const TaskList = ({ items, ordered }: TaskListProps) => {
 						</TaskListItemButton>
 					);
 				})}
-			</TaskListContainer>
-		</Stack>
+			</TaskListItemsContainer>
+		</TaskListContainer>
 	);
 };
 const isItemLink = (
