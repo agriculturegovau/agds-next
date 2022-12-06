@@ -16,7 +16,10 @@ exports[`TaskList With anchors renders correctly 1`] = `
       <span
         class="css-1rpt3h8-boxStyles-Text"
       >
-        2 of 4 steps completed
+        2
+         of 
+        4
+         steps completed
       </span>
     </div>
     <ul
@@ -459,7 +462,10 @@ exports[`TaskList With buttons renders correctly 1`] = `
       <span
         class="css-1rpt3h8-boxStyles-Text"
       >
-        2 of 4 steps completed
+        2
+         of 
+        4
+         steps completed
       </span>
     </div>
     <ul

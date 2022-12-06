@@ -40,6 +40,7 @@ describe('TaskList', () => {
 				extends: ['html-validate:recommended'],
 				rules: {
 					'no-inline-style': 'off',
+					'aria-label-misuse': 'off',
 					// react 18s `useId` break this rule
 					'valid-id': 'off',
 				},
@@ -82,6 +83,7 @@ describe('TaskList', () => {
 				extends: ['html-validate:recommended'],
 				rules: {
 					'no-inline-style': 'off',
+					'aria-label-misuse': 'off',
 					// react 18s `useId` break this rule
 					'valid-id': 'off',
 				},
