@@ -11,6 +11,7 @@ import {
 } from '@ag.ds-next/icon';
 import { boxPalette, LinkProps, mq, packs, tokens } from '@ag.ds-next/core';
 import { BaseButton } from '@ag.ds-next/button';
+import { VisuallyHidden } from '@ag.ds-next/a11y';
 
 export type TaskListItemStatus = keyof typeof statusMap;
 
@@ -150,10 +151,10 @@ const TaskListItem = ({
 									},
 								}),
 							}}
-							aria-label={`${children}.`}
 						>
 							{ordered && <span aria-hidden="true">. </span>}
 							{children}
+							<VisuallyHidden>.</VisuallyHidden>
 						</Text>
 						<Flex as="span" gap={0.25} alignItems="center" css={{ order: 1 }}>
 							<Icon
@@ -163,13 +164,9 @@ const TaskListItem = ({
 									display: ['block', 'none'],
 								})}
 							/>
-							<Text
-								as="span"
-								fontSize={['xs', 'sm']}
-								lineHeight="nospace"
-								aria-label={`${label}.`}
-							>
+							<Text as="span" fontSize={['xs', 'sm']} lineHeight="nospace">
 								{label}
+								<VisuallyHidden>.</VisuallyHidden>
 							</Text>
 						</Flex>
 						<Text color="muted" fontSize="sm" css={{ order: 3 }}>
