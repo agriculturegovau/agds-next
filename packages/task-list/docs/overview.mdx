@@ -8,8 +8,10 @@ storybookPath: /story/forms-tasklist--unordered
 The individual tasks or steps are shown as either:
 
 - `todo` – the task is available for the user to do
-- `doing` – the task has been started
+- `doing` – the task has been started, and is ready for the user to continue.
 - `done` – the task has been completed
+- `doneRecently` – the task has just been completed
+- `blocked` - the task cannot be completed until other tasks have been.
 
 ```jsx live
 <TaskList
@@ -22,35 +24,69 @@ The individual tasks or steps are shown as either:
 		{
 			href: '#',
 			label: 'Lorem ipsum dolor sit amet',
-			status: 'done',
+			status: 'doing',
 		},
 		{
 			href: '#',
 			label: 'Case Studies',
-			status: 'doing',
+			status: 'todo',
 		},
 		{
 			href: '#',
 			label: 'Review and submit',
 			message: 'Not available until previous tasks are done',
-			status: 'todo',
+			status: 'blocked',
 		},
 	]}
 />
 ```
 
-## Nonsequential
+## Sequential
 
-If the list of tasks can be done in any order, you can set the `ordered` prop to `false`.
+If the list of tasks must be completed in order, you can set the `ordered` prop to `true`.
 
 ```jsx live
 <TaskList
-	ordered={false}
+	ordered={true}
 	items={[
 		{
 			href: '#',
 			label: 'Check eligibility',
 			status: 'done',
+		},
+		{
+			href: '#',
+			label: 'Lorem ipsum dolor sit amet',
+			status: 'doing',
+		},
+		{
+			href: '#',
+			label: 'Case Studies',
+			status: 'todo',
+		},
+		{
+			href: '#',
+			label: 'Review and submit',
+			message: 'Not available until previous tasks are done',
+			status: 'blocked',
+		},
+	]}
+/>
+```
+
+## Recently completed
+
+If the user has just completed a task, and then navigated back to the TaskList screen, you can highlight that the task is completed by setting the status of the item to `doneRecently`.
+
+This should be a temporary state, and should be removed after a short period of time.
+
+```jsx live
+<TaskList
+	items={[
+		{
+			href: '#',
+			label: 'Check eligibility',
+			status: 'doneRecently',
 		},
 		{
 			href: '#',
@@ -65,7 +101,8 @@ If the list of tasks can be done in any order, you can set the `ordered` prop to
 		{
 			href: '#',
 			label: 'Review and submit',
-			status: 'todo',
+			message: 'Not available until previous tasks are done',
+			status: 'blocked',
 		},
 	]}
 />

@@ -1,7 +1,5 @@
 import '@testing-library/jest-dom';
 import 'html-validate/jest';
-import '@testing-library/jest-dom';
-import 'html-validate/jest';
 import { render, cleanup } from '../../../test-utils';
 import { TaskList, TaskListProps } from './TaskList';
 
@@ -40,6 +38,7 @@ describe('TaskList', () => {
 				extends: ['html-validate:recommended'],
 				rules: {
 					'no-inline-style': 'off',
+					'aria-label-misuse': 'off',
 					// react 18s `useId` break this rule
 					'valid-id': 'off',
 				},
@@ -82,6 +81,7 @@ describe('TaskList', () => {
 				extends: ['html-validate:recommended'],
 				rules: {
 					'no-inline-style': 'off',
+					'aria-label-misuse': 'off',
 					// react 18s `useId` break this rule
 					'valid-id': 'off',
 				},

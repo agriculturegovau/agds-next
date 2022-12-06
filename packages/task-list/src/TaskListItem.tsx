@@ -7,8 +7,9 @@ import {
 	SuccessFilledIcon,
 	ProgressTodoIcon,
 	ProgressBlockedIcon,
+	ArrowRightIcon,
 } from '@ag.ds-next/icon';
-import { boxPalette, LinkProps, packs } from '@ag.ds-next/core';
+import { boxPalette, LinkProps, mq, packs, tokens } from '@ag.ds-next/core';
 import { BaseButton } from '@ag.ds-next/button';
 
 export type TaskListItemStatus = keyof typeof statusMap;
@@ -61,6 +62,8 @@ type TaskListItemProps = PropsWithChildren<{
 	ordered?: boolean;
 }>;
 
+const taskListItemTextDataAttr = 'data-agds-task-list-item-text';
+
 const TaskListItem = ({
 	as,
 	children,
@@ -70,64 +73,111 @@ const TaskListItem = ({
 	className,
 	...props
 }: TaskListItemProps) => {
-	const active = status === 'doing';
 	const { icon: Icon, iconColor, label } = statusMap[status];
 	return (
 		<li css={{ counterIncrement: 'task-count' }}>
 			<Flex
 				as={as}
+				flexDirection={['column', 'row']}
+				justifyContent="space-between"
+				alignItems={['flex-start', 'center']}
 				className={className}
-				gap={0.75}
-				paddingY={1.5}
-				paddingX={0.75}
+				gap={1}
+				paddingY={1}
+				paddingX={[0.75, 1]}
 				fontFamily="body"
 				color="text"
 				borderBottom
-				borderLeft
-				borderLeftWidth="xl"
 				width="100%"
 				focus
 				css={{
-					borderLeftColor: active ? boxPalette.foregroundAction : 'transparent',
+					position: 'relative',
 					textDecoration: 'none',
+
+					...(status === 'doneRecently' && {
+						backgroundColor: boxPalette.systemSuccessMuted,
+					}),
+
+					...(status === 'doing' && {
+						'&:before': {
+							content: '""',
+							background: boxPalette.foregroundAction,
+							position: 'absolute',
+							top: 0,
+							bottom: 0,
+							left: 0,
+							width: tokens.borderWidth.xl,
+						},
+					}),
+
+					[`[${taskListItemTextDataAttr}]`]: {
+						...packs.underline,
+						color: boxPalette.foregroundAction,
+					},
+
 					'&:hover': {
 						backgroundColor: boxPalette.backgroundShade,
+						[`[${taskListItemTextDataAttr}]`]: {
+							textDecoration: 'none',
+							color: boxPalette.foregroundText,
+						},
 					},
 				}}
 				{...props}
 			>
-				<Icon
-					size="md"
-					color={iconColor}
-					css={{
-						// Use padding to ensure the icon is aligned centered with the status label and title
-						paddingTop: '0.75rem',
-					}}
-				/>
-				<Flex as="span" flexDirection="column" gap={0.25}>
-					<Text as="span" color="muted" fontSize="xs" lineHeight="nospace">
-						{label}
-					</Text>
-					<Text
-						fontSize="md"
-						lineHeight="heading"
-						fontWeight="bold"
-						color="action"
-						css={{
-							...packs.underline,
-							...(ordered && {
-								'&:before': {
-									content: "counter(task-count) '. '",
-								},
-							}),
-						}}
-					>
-						{children}
-					</Text>
-					<Text color="muted" fontSize="xs">
-						{message}
-					</Text>
+				<Flex as="span" gap={[0, 1]}>
+					<Flex as="span" alignItems="center">
+						<Icon
+							size="xl"
+							color={iconColor}
+							css={mq({
+								display: ['none', 'block'],
+							})}
+						/>
+					</Flex>
+					<Flex as="span" flexDirection="column" gap={0.5}>
+						<Text
+							{...{ [taskListItemTextDataAttr]: '' }}
+							fontSize={['md', 'lg']}
+							lineHeight="heading"
+							fontWeight="bold"
+							color="action"
+							css={{
+								order: 2,
+								...(ordered && {
+									'&:before': {
+										content: 'counter(task-count)',
+									},
+								}),
+							}}
+							aria-label={`${children}.`}
+						>
+							{ordered && <span aria-hidden="true">. </span>}
+							{children}
+						</Text>
+						<Flex as="span" gap={0.25} alignItems="center" css={{ order: 1 }}>
+							<Icon
+								size="md"
+								color={iconColor}
+								css={mq({
+									display: ['block', 'none'],
+								})}
+							/>
+							<Text
+								as="span"
+								fontSize={['xs', 'sm']}
+								lineHeight="nospace"
+								aria-label={`${label}.`}
+							>
+								{label}
+							</Text>
+						</Flex>
+						<Text color="muted" fontSize="sm" css={{ order: 3 }}>
+							{message}
+						</Text>
+					</Flex>
 				</Flex>
+				<ArrowRightIcon color="action" size={['sm', 'lg']} />
 			</Flex>
 		</li>
 	);
@@ -150,6 +200,11 @@ const statusMap = {
 		iconColor: 'action',
 	},
 	done: {
+		label: 'Completed',
+		icon: SuccessFilledIcon,
+		iconColor: 'success',
+	},
+	doneRecently: {
 		label: 'Completed',
 		icon: SuccessFilledIcon,
 		iconColor: 'success',

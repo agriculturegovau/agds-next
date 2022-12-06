@@ -2,6 +2,8 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import {
 	TaskListContainer,
 	TaskList,
+	TaskListHeading,
+	TaskListItemsContainer,
 	TaskListItemLink,
 	TaskListItemButton,
 } from './index';
@@ -11,16 +13,38 @@ export default {
 	component: TaskList,
 	subcomponents: {
 		TaskListContainer,
+		TaskListHeading,
+		TaskListItemsContainer,
 		TaskListItemLink,
 		TaskListItemButton,
 	},
 } as ComponentMeta<typeof TaskList>;
 
 const exampleLinkItems = [
-	{ href: '#', label: 'Check eligibility', status: 'done' as const },
-	{ href: '#', label: 'Personal details', status: 'doing' as const },
-	{ href: '#', label: 'Business details', status: 'todo' as const },
-	{ href: '#', label: 'Export', status: 'todo' as const },
+	{
+		href: '#',
+		label: 'Check eligibility',
+		message: 'Short description of the task',
+		status: 'done' as const,
+	},
+	{
+		href: '#',
+		label: 'Personal details',
+		message: 'Short description of the task',
+		status: 'doing' as const,
+	},
+	{
+		href: '#',
+		label: 'Business details',
+		message: 'Short description of the task',
+		status: 'todo' as const,
+	},
+	{
+		href: '#',
+		label: 'Export',
+		message: 'Short description of the task',
+		status: 'todo' as const,
+	},
 	{
 		href: '#',
 		label: 'Review and submit',
@@ -58,46 +82,59 @@ const exampleOrderedButtonItems = [
 	},
 ];
 
-export const Unordered: ComponentStory<typeof TaskList> = (args) => (
+const Template: ComponentStory<typeof TaskList> = (args) => (
 	<TaskList {...args} />
 );
+
+export const Unordered = Template.bind({});
 Unordered.args = {
-	ordered: false,
 	items: exampleLinkItems,
 };
 
-export const Ordered: ComponentStory<typeof TaskList> = (args) => (
-	<TaskList {...args} />
-);
+export const Ordered = Template.bind({});
 Ordered.args = {
 	ordered: true,
 	items: exampleLinkItems,
 };
 
-export const Button: ComponentStory<typeof TaskList> = (args) => (
-	<TaskList {...args} />
-);
+export const RecentlyCompleted = Template.bind({});
+RecentlyCompleted.args = {
+	items: exampleLinkItems.map((item, idx) => {
+		if (idx !== 1) return item;
+		return {
+			...item,
+			status: 'doneRecently',
+		};
+	}),
+};
+
+export const Button = Template.bind({});
 Button.args = {
-	ordered: false,
 	items: exampleOrderedButtonItems,
 };
 
 export const ModularLinks = () => (
 	<TaskListContainer>
-		{exampleLinkItems.map(({ label, ...props }, index) => (
-			<TaskListItemLink key={index} {...props}>
-				{label}
-			</TaskListItemLink>
-		))}
+		<TaskListHeading stepsCompleted={1} totalSteps={5} />
+		<TaskListItemsContainer>
+			{exampleLinkItems.map(({ label, ...props }, index) => (
+				<TaskListItemLink key={index} {...props}>
+					{label}
+				</TaskListItemLink>
+			))}
+		</TaskListItemsContainer>
 	</TaskListContainer>
 );
 
 export const ModularButtons = () => (
 	<TaskListContainer>
-		{exampleOrderedButtonItems.map(({ label, ...props }, index) => (
-			<TaskListItemButton key={index} {...props}>
-				{label}
-			</TaskListItemButton>
-		))}
+		<TaskListHeading stepsCompleted={2} totalSteps={5} />
+		<TaskListItemsContainer>
+			{exampleOrderedButtonItems.map(({ label, ...props }, index) => (
+				<TaskListItemButton key={index} {...props}>
+					{label}
+				</TaskListItemButton>
+			))}
+		</TaskListItemsContainer>
 	</TaskListContainer>
 );
