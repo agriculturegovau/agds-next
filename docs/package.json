@@ -41,6 +41,7 @@
 		"@ag.ds-next/file-upload": "7.0.0",
 		"@ag.ds-next/footer": "10.0.0",
 		"@ag.ds-next/form-stack": "7.0.0",
+		"@ag.ds-next/global-alert": "0.0.1",
 		"@ag.ds-next/header": "12.0.0",
 		"@ag.ds-next/heading": "10.0.0",
 		"@ag.ds-next/hero-banner": "7.0.0",
