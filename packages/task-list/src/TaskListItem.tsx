@@ -73,7 +73,6 @@ const TaskListItem = ({
 	className,
 	...props
 }: TaskListItemProps) => {
-	const active = status === 'doing';
 	const { icon: Icon, iconColor, label } = statusMap[status];
 	return (
 		<li css={{ counterIncrement: 'task-count' }}>
@@ -94,28 +93,27 @@ const TaskListItem = ({
 				css={{
 					position: 'relative',
 					textDecoration: 'none',
+
+					...(status === 'doneRecently' && {
+						backgroundColor: boxPalette.systemSuccessMuted,
+					}),
+
+					...(status === 'doing' && {
+						'&:before': {
+							content: '""',
+							background: boxPalette.foregroundAction,
+							position: 'absolute',
+							top: 0,
+							bottom: 0,
+							left: 0,
+							width: tokens.borderWidth.xl,
+						},
+					}),
+
 					[`[${taskListItemTextDataAttr}]`]: {
 						...packs.underline,
 						color: boxPalette.foregroundAction,
 					},
-					...(status === 'doneRecently'
-						? {
-								backgroundColor: boxPalette.systemSuccessMuted,
-						  }
-						: null),
-					...(active
-						? {
-								'&:before': {
-									content: '""',
-									background: boxPalette.foregroundAction,
-									position: 'absolute',
-									top: 0,
-									bottom: 0,
-									left: 0,
-									width: tokens.borderWidth.xl,
-								},
-						  }
-						: null),
 
 					'&:hover': {
 						backgroundColor: boxPalette.backgroundShade,
