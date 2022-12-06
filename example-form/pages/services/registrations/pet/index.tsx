@@ -1,20 +1,16 @@
-import { useRouter } from 'next/router';
 import { Columns, Column } from '@ag.ds-next/columns';
 import { H2 } from '@ag.ds-next/heading';
 import { PageContent } from '@ag.ds-next/content';
 import { Prose } from '@ag.ds-next/prose';
 import { Stack } from '@ag.ds-next/box';
-import { TaskList } from '@ag.ds-next/task-list';
 import { Text } from '@ag.ds-next/text';
 import { Breadcrumbs } from '@ag.ds-next/breadcrumbs';
+import { TaskList } from '@ag.ds-next/task-list';
 import { AppLayout } from '../../../../components/AppLayout';
 import { DocumentTitle } from '../../../../components/DocumentTitle';
 import { FormHelpCallout } from '../../../../components/FormHelpCallout';
 import { PageTitle } from '../../../../components/PageTitle';
-import {
-	useFormRegisterPet,
-	recentlyCompletedUrlParam,
-} from '../../../../components/FormRegisterPetContext';
+import { useFormRegisterPet } from '../../../../components/FormRegisterPetContext';
 
 const TASKS = [
 	{
@@ -30,18 +26,7 @@ const TASKS = [
 ];
 
 export default function FormRegisterPetHomePage() {
-	const { query } = useRouter();
-	const recentlyCompletedStep = query[recentlyCompletedUrlParam];
-	const { getTaskStatus: getTaskStatusFromContext } = useFormRegisterPet();
-
-	const getTaskStatus = (taskIndex: number) => {
-		const recentlyCompletedStepNum = Number(recentlyCompletedStep);
-		if (recentlyCompletedStep && recentlyCompletedStepNum === taskIndex + 1) {
-			return 'doneRecently';
-		}
-		return getTaskStatusFromContext(taskIndex);
-	};
-
+	const { getTaskStatus } = useFormRegisterPet();
 	return (
 		<>
 			<DocumentTitle title="Register a pet" />
