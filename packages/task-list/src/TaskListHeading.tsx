@@ -9,12 +9,11 @@ export const TaskListHeading = ({
 	stepsCompleted: number;
 	totalSteps: number;
 }) => {
-	const subHeading = `${stepsCompleted} of ${totalSteps} steps completed`;
 	return (
 		<Stack gap={1}>
 			<H2>Task list</H2>
 			<Text fontSize="sm" color="muted">
-				{subHeading}
+				{stepsCompleted} of {totalSteps} steps completed
 			</Text>
 		</Stack>
 	);
