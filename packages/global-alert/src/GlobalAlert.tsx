@@ -2,7 +2,7 @@ import { MouseEventHandler, PropsWithChildren } from 'react';
 import { Box, Flex, Stack } from '@ag.ds-next/box';
 import { Button } from '@ag.ds-next/button';
 import { boxPalette, mq } from '@ag.ds-next/core';
-import { CloseIcon, WarningIcon } from '@ag.ds-next/icon';
+import { CloseIcon, WarningFilledIcon, WarningIcon } from '@ag.ds-next/icon';
 import { Content } from '@ag.ds-next/content';
 import { Heading } from '@ag.ds-next/heading';
 
@@ -63,7 +63,7 @@ function GlobalAlertIcon() {
 			flexShrink={0}
 			css={{ color: boxPalette.systemWarning }}
 		>
-			<WarningIcon
+			<WarningFilledIcon
 				aria-hidden="false"
 				aria-label="Warning"
 				color="inherit"
