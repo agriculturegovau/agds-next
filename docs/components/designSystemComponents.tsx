@@ -94,7 +94,8 @@ export {
 	ProgressTodoIcon,
 } from '@ag.ds-next/icon';
 export { ProgressIndicator } from '@ag.ds-next/progress-indicator';
-export { PageAlert } from '@ag.ds-next/page-alert';
+export { PageAlert, PageAlertTitle } from '@ag.ds-next/page-alert';
+export { GlobalAlert } from '@ag.ds-next/global-alert';
 export { ControlGroup, Checkbox, Radio } from '@ag.ds-next/control-input';
 export {
 	SearchBox,

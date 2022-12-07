@@ -7,7 +7,9 @@ import { Content } from '@ag.ds-next/content';
 import { Heading } from '@ag.ds-next/heading';
 
 export type GlobalAlertProps = PropsWithChildren<{
+	/** Function to be called when the 'Close' button is pressed. */
 	onDismiss?: MouseEventHandler<HTMLButtonElement>;
+	/** The title of the alert. */
 	title?: string;
 }>;
 
