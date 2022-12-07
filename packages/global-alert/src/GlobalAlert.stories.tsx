@@ -10,11 +10,28 @@ export default {
 
 export const Basic: ComponentStory<typeof GlobalAlert> = (args) => (
 	<GlobalAlert {...args}>
-		<Text as="p">Service description that could be a little longer</Text>
+		<Text as="p">
+			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce massa nibh,
+			aliquam vel dolor non, gravida porttitor nulla. Pellentesque cursus orci
+			vulputate nibh sagittis blandit.
+		</Text>
 	</GlobalAlert>
 );
 Basic.args = {
 	title: 'Alert title',
+};
+
+export const WithoutTitle: ComponentStory<typeof GlobalAlert> = (args) => (
+	<GlobalAlert {...args}>
+		<Text as="p">
+			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce massa nibh,
+			aliquam vel dolor non, gravida porttitor nulla. Pellentesque cursus orci
+			vulputate nibh sagittis blandit.
+		</Text>
+	</GlobalAlert>
+);
+WithoutTitle.args = {
+	title: '',
 };
 
 export const WithProse: ComponentStory<typeof GlobalAlert> = (args) => (
@@ -29,5 +46,5 @@ export const WithProse: ComponentStory<typeof GlobalAlert> = (args) => (
 	</GlobalAlert>
 );
 WithProse.args = {
-	title: 'Page Alert',
+	title: 'Alert title',
 };

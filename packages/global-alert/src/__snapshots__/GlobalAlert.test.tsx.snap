@@ -2,8 +2,8 @@
 
 exports[`GlobalAlert renders correctly 1`] = `
 <div>
-  <div
-    class="css-1r6yv6z-boxStyles-GlobalAlert"
+  <section
+    class="css-1yjveji-boxStyles-GlobalAlertContainer"
   >
     <div
       class="css-ou39vu-boxStyles"
@@ -12,58 +12,62 @@ exports[`GlobalAlert renders correctly 1`] = `
         class="css-1rhmzip-boxStyles"
       >
         <div
-          class="css-qdmsth-boxStyles"
+          class="css-sne9f1-boxStyles"
         >
           <div
-            class="css-1hgwk69-boxStyles"
+            class="css-1wcx0lf-boxStyles"
           >
             <div
-              class="css-11wz9re-boxStyles-GlobalAlert"
+              class="css-1hgwk69-boxStyles"
             >
-              <svg
-                aria-hidden="false"
-                aria-label="Warning"
-                class="css-qhpjst-Icon"
-                clip-rule="evenodd"
-                focusable="true"
-                height="24"
-                role="img"
-                viewBox="0 0 24 24"
-                width="24"
-                xmlns="http://www.w3.org/2000/svg"
+              <div
+                class="css-ea91s8-boxStyles-GlobalAlertIcon"
               >
-                <path
-                  d="M12.8858 2.69113C12.5115 1.97647 11.4876 1.97824 11.1132 2.6929C7.60041 9.39921 5.30783 13.776 1.76707 20.5356C1.4183 21.2014 1.90105 22 2.65269 22H21.3473C22.099 22 22.5819 21.2018 22.2331 20.536L12.8858 2.69113Z"
-                />
-                <line
-                  x1="12"
-                  x2="12"
-                  y1="14"
-                  y2="9"
-                />
-                <path
-                  d="M12 18H12.01"
-                />
-              </svg>
+                <svg
+                  aria-hidden="false"
+                  aria-label="Warning"
+                  class="css-ms2jfn-GlobalAlertIcon"
+                  clip-rule="evenodd"
+                  focusable="true"
+                  height="24"
+                  role="img"
+                  viewBox="0 0 24 24"
+                  width="24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M12.8858 2.69113C12.5115 1.97647 11.4876 1.97824 11.1132 2.6929C7.60041 9.39921 5.30783 13.776 1.76707 20.5356C1.4183 21.2014 1.90105 22 2.65269 22H21.3473C22.099 22 22.5819 21.2018 22.2331 20.536L12.8858 2.69113Z"
+                  />
+                  <line
+                    x1="12"
+                    x2="12"
+                    y1="14"
+                    y2="9"
+                  />
+                  <path
+                    d="M12 18H12.01"
+                  />
+                </svg>
+              </div>
+              <h2
+                class="css-e6rsgj-boxStyles"
+              >
+                Alert title
+              </h2>
             </div>
-            <h3
-              class="css-5k6djv-boxStyles-Text"
+            <div
+              class="css-1btozzf-boxStyles-GlobalAlertText"
             >
-              Alert title
-            </h3>
-          </div>
-          <div
-            class="css-16zwxq5-boxStyles-GlobalAlert"
-          >
-            <p
-              class="css-6j1v6l-boxStyles-Text"
-            >
-              Alert description.
-            </p>
+              <p
+                class="css-6j1v6l-boxStyles-Text"
+              >
+                Alert description.
+              </p>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
+  </section>
 </div>
 `;
