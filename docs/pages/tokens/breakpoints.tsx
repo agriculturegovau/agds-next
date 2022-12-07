@@ -9,16 +9,11 @@ export default function TokensBreakpointsPage() {
 			<DocumentTitle title="Breakpoint tokens" />
 			<TokenLayout
 				title="Breakpoint tokens"
-				description="Breakpoints are points where the website content responds according
-        to the device width, allowing you to show the best possible layout
-        to the user."
+				description="Breakpoints are a set of predefined widths that can be used to change the layout of a webpage to ensure it accommodates different device widths."
 				editPath="/docs/pages/tokens/breakpoints.tsx"
 			>
 				<Prose>
-					<p>
-						You can see breakpoints in action where a layout would change from a
-						two to three column grid, as an example.
-					</p>
+					<p>There are 5 predefined breakpoint tokens:</p>
 					<BreakpointsChart />
 				</Prose>
 			</TokenLayout>
