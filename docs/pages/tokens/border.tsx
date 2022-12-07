@@ -15,13 +15,23 @@ export default function TokensBorderWidthPage() {
 			>
 				<Prose>
 					<h2>Border Width</h2>
-					<p>These tokens are used to set the width of borders.</p>
+					<p>
+						The following 4 tokens can be used to set the thickness of borders.
+					</p>
 					<BorderWidthChart />
 					<h2>Border radius tokens</h2>
-					<p>These tokens are used to apply rounded corners to components.</p>
 					<p>
-						We have one border radius token, which is 4px. It is available by
-						setting <code>rounded</code> on the <code>Box</code> component.
+						Use the following border radius token to apply rounded corners to
+						containers.
+					</p>
+
+					<ul>
+						<li>4px</li>
+					</ul>
+
+					<p>
+						Use it by setting <code>rounded</code> on the Box component as seen
+						in the following example.
 					</p>
 
 					<Box border rounded padding={0.5} className={proseBlockClassname}>
