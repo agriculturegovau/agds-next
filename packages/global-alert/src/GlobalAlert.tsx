@@ -2,7 +2,7 @@ import { MouseEventHandler, PropsWithChildren } from 'react';
 import { Box, Flex, Stack } from '@ag.ds-next/box';
 import { Button } from '@ag.ds-next/button';
 import { boxPalette, mq } from '@ag.ds-next/core';
-import { CloseIcon, WarningFilledIcon, WarningIcon } from '@ag.ds-next/icon';
+import { CloseIcon, WarningFilledIcon } from '@ag.ds-next/icon';
 import { Content } from '@ag.ds-next/content';
 import { Heading } from '@ag.ds-next/heading';
 
@@ -27,7 +27,7 @@ export function GlobalAlert({ children, onDismiss, title }: GlobalAlertProps) {
 					<GlobalAlertText title={true}>{children}</GlobalAlertText>
 				</Stack>
 			) : (
-				<Flex>
+				<Flex gap={[0.5, 0]} flexDirection={['column', 'row']}>
 					<GlobalAlertIcon />
 					<GlobalAlertText title={false}>{children}</GlobalAlertText>
 				</Flex>
@@ -44,6 +44,7 @@ function GlobalAlertContainer({ children }: PropsWithChildren<{}>) {
 				<Flex
 					flexDirection={['column', 'row']}
 					alignItems="flex-start"
+					justifyContent="space-between"
 					gap={[1, 2]}
 					paddingY={1}
 				>
