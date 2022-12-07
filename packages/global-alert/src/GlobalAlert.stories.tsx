@@ -8,16 +8,33 @@ export default {
 	component: GlobalAlert,
 } as ComponentMeta<typeof GlobalAlert>;
 
-export const Basic: ComponentStory<typeof GlobalAlert> = (args) => (
+export const Basic: ComponentStory<typeof GlobalAlert> = (args) => {
+	return (
+		<GlobalAlert {...args}>
+			<Text as="p">
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce massa
+				nibh, aliquam vel dolor non, gravida porttitor nulla. Pellentesque
+				cursus orci vulputate nibh sagittis blandit.
+			</Text>
+		</GlobalAlert>
+	);
+};
+Basic.args = {
+	title: 'Alert title',
+};
+
+export const WithProse: ComponentStory<typeof GlobalAlert> = (args) => (
 	<GlobalAlert {...args}>
-		<Text as="p">
-			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce massa nibh,
-			aliquam vel dolor non, gravida porttitor nulla. Pellentesque cursus orci
-			vulputate nibh sagittis blandit.
-		</Text>
+		<Prose>
+			<p>
+				There is an issue with myGov ID which is preventing sign in to that
+				shiny new authenticated state that Adham has been working on.
+			</p>
+			<p> Please try again later or call us on 9481 1111.</p>
+		</Prose>
 	</GlobalAlert>
 );
-Basic.args = {
+WithProse.args = {
 	title: 'Alert title',
 };
 
@@ -34,17 +51,17 @@ WithoutTitle.args = {
 	title: '',
 };
 
-export const WithProse: ComponentStory<typeof GlobalAlert> = (args) => (
-	<GlobalAlert {...args}>
-		<Prose>
-			<p>
-				There is an issue with myGov ID which is preventing sign in to that
-				shiny new authenticated state that Adham has been working on.
-			</p>
-			<p> Please try again later or call us on 9481 1111.</p>
-		</Prose>
-	</GlobalAlert>
-);
-WithProse.args = {
+export const WithoutDismiss: ComponentStory<typeof GlobalAlert> = (args) => {
+	return (
+		<GlobalAlert {...args} onDismiss={undefined}>
+			<Text as="p">
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce massa
+				nibh, aliquam vel dolor non, gravida porttitor nulla. Pellentesque
+				cursus orci vulputate nibh sagittis blandit.
+			</Text>
+		</GlobalAlert>
+	);
+};
+WithoutDismiss.args = {
 	title: 'Alert title',
 };
