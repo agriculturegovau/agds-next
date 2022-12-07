@@ -1,7 +1,8 @@
 import { ButtonHTMLAttributes, forwardRef } from 'react';
 import { ChevronDownIcon } from '@ag.ds-next/icon';
-import { Button } from '@ag.ds-next/button';
+import { BaseButton } from '@ag.ds-next/button';
 import { boxPalette, mapSpacing } from '@ag.ds-next/core';
+import { Flex } from '@ag.ds-next/box';
 
 type ComboboxDropdownTriggerProps = ButtonHTMLAttributes<HTMLButtonElement>;
 
@@ -10,13 +11,11 @@ export const ComboboxDropdownTrigger = forwardRef<
 	ComboboxDropdownTriggerProps
 >(function ComboboxDropdownTrigger({ disabled, ...props }, ref) {
 	return (
-		<Button
+		<Flex
+			as={BaseButton}
 			ref={ref}
-			type="button"
-			variant="text"
 			disabled={disabled}
 			aria-label="Toggle menu"
-			{...props}
 			css={{
 				position: 'absolute',
 				top: '50%',
@@ -24,9 +23,16 @@ export const ComboboxDropdownTrigger = forwardRef<
 				transform: 'translateY(-50%)',
 				opacity: disabled ? 0.3 : 1,
 				color: boxPalette.foregroundAction,
+				'&:hover': { color: boxPalette.foregroundText },
 			}}
+			{...props}
 		>
-			<ChevronDownIcon />
-		</Button>
+			<ChevronDownIcon
+				size="sm"
+				weight="bold"
+				color="inherit"
+				css={{ display: 'block' }}
+			/>
+		</Flex>
 	);
 });
