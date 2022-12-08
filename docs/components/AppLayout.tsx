@@ -17,7 +17,6 @@ export const AppLayout = ({ children }: AppLayoutProps) => {
 					{ href: '#main-nav', label: 'Skip to main navigation' },
 				]}
 			/>
-
 			<Flex flexDirection="column" fontFamily="body" minHeight="100vh">
 				<SiteHeader />
 				<Box flexGrow={1}>{children}</Box>
