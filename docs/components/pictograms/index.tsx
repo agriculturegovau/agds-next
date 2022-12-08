@@ -80,6 +80,7 @@ export const pictograms = {
 	fieldset,
 	footer,
 	'form-stack': formStack,
+	'global-alert': pageAlert,
 	guides,
 	header,
 	heading,

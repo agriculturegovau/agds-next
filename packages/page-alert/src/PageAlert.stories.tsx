@@ -4,7 +4,7 @@ import { Prose } from '@ag.ds-next/prose';
 import { PageAlert } from './PageAlert';
 
 export default {
-	title: 'content/Page Alert',
+	title: 'content/PageAlert',
 	component: PageAlert,
 } as ComponentMeta<typeof PageAlert>;
 

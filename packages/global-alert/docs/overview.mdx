@@ -1,0 +1,30 @@
+---
+title: Global Alert
+description: Global Alert
+group: Content
+storybookPath: /story/content-globalalert--basic
+---
+
+## Global Alert
+
+```jsx live
+<GlobalAlert title="Alert title">
+	<Text as="p">
+		All vacancies close on the advertised closing date unless otherwise
+		specified.
+	</Text>
+</GlobalAlert>
+```
+
+## Dismissable
+
+Use the `onDismiss` prop to make the alert dismissable.
+
+```jsx live
+<GlobalAlert title="Alert title" onDismiss={console.log}>
+	<Text as="p">
+		All vacancies close on the advertised closing date unless otherwise
+		specified.
+	</Text>
+</GlobalAlert>
+```

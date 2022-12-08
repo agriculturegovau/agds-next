@@ -798,6 +798,11 @@ items={[
 		name: 'Basic',
 		code: `<SearchInput label="Search" />`,
 	},
+	{
+		group: 'GlobalAlert',
+		name: 'Basic',
+		code: `<GlobalAlert title="Alert title"><Text as="p">Lorem ipsum dolor sit amet, consectetur adipiscing elit.nulla.</Text></GlobalAlert>`,
+	},
 ];
 
 export default snippets;
