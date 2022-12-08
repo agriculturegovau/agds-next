@@ -22,7 +22,7 @@ exports[`GlobalAlert renders correctly 1`] = `
               class="css-1hgwk69-boxStyles"
             >
               <div
-                class="css-dc9cqm-boxStyles-GlobalAlertIcon"
+                class="css-ea91s8-boxStyles-GlobalAlertIcon"
               >
                 <svg
                   aria-hidden="false"

@@ -68,7 +68,7 @@ function GlobalAlertIcon() {
 		<Box
 			width={COLUMN_WIDTH}
 			flexShrink={0}
-			css={{ color: boxPalette.systemError }}
+			css={{ color: boxPalette.systemWarning }}
 		>
 			<WarningFilledIcon
 				aria-hidden="false"
