@@ -1,5 +1,6 @@
 import { Prose, proseBlockClassname } from '@ag.ds-next/prose';
 import { Box } from '@ag.ds-next/box';
+import { tokens } from '@ag.ds-next/core';
 import { DocumentTitle } from '../../components/DocumentTitle';
 import { TokenLayout } from '../../components/TokenLayout';
 import { BorderWidthChart } from '../../components/TokenCharts';
@@ -16,7 +17,8 @@ export default function TokensBorderWidthPage() {
 				<Prose>
 					<h2>Border Width</h2>
 					<p>
-						The following 4 tokens can be used to set the thickness of borders.
+						The following {Object.keys(tokens.borderWidth).length} tokens can be
+						used to set the thickness of borders.
 					</p>
 					<BorderWidthChart />
 					<h2>Border radius tokens</h2>
@@ -26,7 +28,7 @@ export default function TokensBorderWidthPage() {
 					</p>
 
 					<ul>
-						<li>4px</li>
+						<li>{tokens.borderRadius}px</li>
 					</ul>
 
 					<p>
