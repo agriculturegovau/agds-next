@@ -1,7 +1,7 @@
 import '@testing-library/jest-dom';
 import 'html-validate/jest';
 import { Text } from '@ag.ds-next/text';
-import { cleanup, render } from '../../../test-utils';
+import { cleanup, render, screen } from '../../../test-utils';
 import { GlobalAlert, GlobalAlertProps } from './GlobalAlert';
 
 afterEach(cleanup);
@@ -26,6 +26,21 @@ describe('GlobalAlert', () => {
 		});
 		expect(container).toHTMLValidate({
 			extends: ['html-validate:recommended'],
+			rules: {
+				// react 18s `useId` break this rule
+				'valid-id': 'off',
+			},
 		});
+	});
+
+	it('has correct aria attributes', () => {
+		renderGlobalAlert({
+			title: 'Alert title',
+			children: <Text as="p">Alert description.</Text>,
+		});
+		expect(screen.getByRole('region')).toHaveAttribute(
+			'aria-label',
+			'Alert title'
+		);
 	});
 });

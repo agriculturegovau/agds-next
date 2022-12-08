@@ -15,7 +15,7 @@ export type GlobalAlertProps = PropsWithChildren<{
 
 export function GlobalAlert({ children, onDismiss, title }: GlobalAlertProps) {
 	return (
-		<GlobalAlertContainer>
+		<GlobalAlertContainer aria-label={title}>
 			{title ? (
 				<Stack gap={0.5}>
 					<Flex alignItems="center">
@@ -37,9 +37,15 @@ export function GlobalAlert({ children, onDismiss, title }: GlobalAlertProps) {
 	);
 }
 
-function GlobalAlertContainer({ children }: PropsWithChildren<{}>) {
+function GlobalAlertContainer({
+	['aria-label']: ariaLabel,
+	children,
+}: PropsWithChildren<{ 'aria-label'?: string }>) {
 	return (
-		<Box as="section" css={{ backgroundColor: boxPalette.systemWarningMuted }}>
+		<section
+			aria-label={ariaLabel}
+			css={{ backgroundColor: boxPalette.systemWarningMuted }}
+		>
 			<Content>
 				<Flex
 					flexDirection={['column', 'row']}
@@ -51,7 +57,7 @@ function GlobalAlertContainer({ children }: PropsWithChildren<{}>) {
 					{children}
 				</Flex>
 			</Content>
-		</Box>
+		</section>
 	);
 }
 
@@ -62,7 +68,7 @@ function GlobalAlertIcon() {
 		<Box
 			width={COLUMN_WIDTH}
 			flexShrink={0}
-			css={{ color: boxPalette.systemWarning }}
+			css={{ color: boxPalette.systemError }}
 		>
 			<WarningFilledIcon
 				aria-hidden="false"

@@ -3,7 +3,8 @@
 exports[`GlobalAlert renders correctly 1`] = `
 <div>
   <section
-    class="css-1yjveji-boxStyles-GlobalAlertContainer"
+    aria-label="Alert title"
+    class="css-wbf37d-GlobalAlertContainer"
   >
     <div
       class="css-ou39vu-boxStyles"
@@ -21,7 +22,7 @@ exports[`GlobalAlert renders correctly 1`] = `
               class="css-1hgwk69-boxStyles"
             >
               <div
-                class="css-ea91s8-boxStyles-GlobalAlertIcon"
+                class="css-dc9cqm-boxStyles-GlobalAlertIcon"
               >
                 <svg
                   aria-hidden="false"
