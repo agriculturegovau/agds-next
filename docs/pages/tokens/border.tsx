@@ -15,7 +15,7 @@ export default function TokensBorderWidthPage() {
 				editPath="/docs/pages/tokens/border.tsx"
 			>
 				<Prose>
-					<h2>Border Width</h2>
+					<h2>Border width</h2>
 					<p>
 						The following {Object.keys(tokens.borderWidth).length} tokens can be
 						used to set the thickness of borders.
