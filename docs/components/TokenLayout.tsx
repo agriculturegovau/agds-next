@@ -1,26 +1,18 @@
 import { PropsWithChildren } from 'react';
+import { TOKEN_NAV_LINKS } from '../content/tokens';
 import { AppLayout } from './AppLayout';
 import { PageLayout } from './PageLayout';
 import { PageTitle } from './PageTitle';
 
-export const navLinks = [
-	{ href: '/tokens/colour', label: 'Colour' },
-	{ href: '/tokens/breakpoints', label: 'Breakpoints' },
-	{ href: '/tokens/border', label: 'Border' },
-	{ href: '/tokens/max-width', label: 'Max width' },
-	{ href: '/tokens/spacing', label: 'Spacing' },
-	{ href: '/tokens/typography', label: 'Typography' },
-];
-
 type TokenLayoutProps = PropsWithChildren<{
-	// breadcrumbs: {}
+	breadcrumbs?: undefined;
 	editPath: string;
 	title: string;
 	description: string;
 }>;
 
 export const TokenLayout = ({
-	// breadcrumbs,
+	breadcrumbs,
 	editPath,
 	children,
 	title,
@@ -32,13 +24,12 @@ export const TokenLayout = ({
 				sideNav={{
 					title: 'Tokens',
 					titleLink: '/tokens',
-					items: navLinks,
+					items: TOKEN_NAV_LINKS,
 				}}
 				editPath={editPath}
-				// breadcrumbs={breadcrumbs}
+				breadcrumbs={breadcrumbs}
 			>
 				<PageTitle title={title} introduction={description} />
-
 				{children}
 			</PageLayout>
 		</AppLayout>

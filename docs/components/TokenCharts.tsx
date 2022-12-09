@@ -1,5 +1,5 @@
 import { Box, Flex, Stack } from '@ag.ds-next/box';
-import { boxPalette, tokens, Spacing } from '@ag.ds-next/core';
+import { boxPalette, tokens, Spacing, FontSize } from '@ag.ds-next/core';
 import { proseBlockClassname } from '@ag.ds-next/prose';
 import { Text } from '@ag.ds-next/text';
 
@@ -92,7 +92,7 @@ export const MaxWidthChart = ({
 };
 
 export const LineHeightChart = () => {
-	const fontSizes = ['xxxl', 'xxl', 'xl', 'lg', 'md', 'sm', 'xs'] as const;
+	const fontSizes = ['xxxl', 'xxl', 'xl', 'lg', 'md', 'sm', 'xs'] as FontSize[];
 	return (
 		<Flex gap={1} className={proseBlockClassname}>
 			<Flex flexDirection="column" gap={1}>

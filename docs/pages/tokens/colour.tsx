@@ -8,16 +8,20 @@ import { DocumentTitle } from '../../components/DocumentTitle';
 import { ColorTable } from '../../components/TokenColorTable';
 import { TokenLayout } from '../../components/TokenLayout';
 import { LinkComponent } from '../../components/LinkComponent';
+import { TOKEN_PAGES } from '../../content/tokens';
 
 export default function TokensColorPage() {
 	const [isDarkMode, setDarkMode] = useState(false);
 
 	return (
 		<Box palette={isDarkMode ? 'dark' : 'light'} background="body">
-			<DocumentTitle title="Color tokens" />
+			<DocumentTitle
+				title={TOKEN_PAGES.colour.pageTitle}
+				description={TOKEN_PAGES.colour.description}
+			/>
 			<TokenLayout
-				title="Colour tokens"
-				description="How to use colour to design consistent, purposeful, and accessible products."
+				title={TOKEN_PAGES.colour.pageTitle}
+				description={TOKEN_PAGES.colour.description}
 				editPath="/docs/pages/tokens/color.tsx"
 			>
 				<Prose>
@@ -32,11 +36,8 @@ export default function TokensColorPage() {
 							title="On this page"
 							links={[
 								{ href: '#foreground', label: 'Foreground colors' },
-
 								{ href: '#background', label: 'Background colors' },
-
 								{ href: '#border', label: 'Border colors' },
-
 								{ href: '#system', label: 'System colors' },
 							]}
 						/>
