@@ -2,14 +2,19 @@ import { Prose } from '@ag.ds-next/prose';
 import { DocumentTitle } from '../../components/DocumentTitle';
 import { BreakpointsChart } from '../../components/TokenCharts';
 import { TokenLayout } from '../../components/TokenLayout';
+import { TOKEN_PAGES, getTokensBreadcrumbs } from '../../content/tokens';
 
 export default function TokensBreakpointsPage() {
 	return (
 		<>
-			<DocumentTitle title="Breakpoint tokens" />
+			<DocumentTitle
+				title={TOKEN_PAGES.breakpoints.pageTitle}
+				description={TOKEN_PAGES.breakpoints.description}
+			/>
 			<TokenLayout
-				title="Breakpoint tokens"
-				description="Breakpoints are a set of predefined widths that can be used to change the layout of a webpage to ensure it accommodates different device widths."
+				title={TOKEN_PAGES.breakpoints.pageTitle}
+				description={TOKEN_PAGES.breakpoints.description}
+				breadcrumbs={getTokensBreadcrumbs(TOKEN_PAGES.breakpoints)}
 				editPath="/docs/pages/tokens/breakpoints.tsx"
 			>
 				<Prose>

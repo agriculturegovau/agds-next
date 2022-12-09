@@ -11,18 +11,86 @@ import {
 import { Text } from '@ag.ds-next/text';
 import { tokens, FontSize, Font } from '@ag.ds-next/core';
 import { Stack } from '@ag.ds-next/box';
+import { InpageNav } from '@ag.ds-next/inpage-nav';
 import { DocumentTitle } from '../../components/DocumentTitle';
 import { TokenLayout } from '../../components/TokenLayout';
 import { LineHeightChart } from '../../components/TokenCharts';
+import { TOKEN_PAGES, getTokensBreadcrumbs } from '../../content/tokens';
+
+export default function TokensTypographyPage() {
+	return (
+		<>
+			<DocumentTitle
+				title={TOKEN_PAGES.typography.pageTitle}
+				description={TOKEN_PAGES.typography.description}
+			/>
+			<TokenLayout
+				title={TOKEN_PAGES.typography.pageTitle}
+				description={TOKEN_PAGES.typography.description}
+				breadcrumbs={getTokensBreadcrumbs(TOKEN_PAGES.typography)}
+				editPath="/docs/pages/tokens/typography.tsx"
+			>
+				<Prose>
+					<div className={proseBlockClassname}>
+						<InpageNav
+							title="On this page"
+							links={[
+								{ href: '#font-size', label: 'Font size' },
+								{ href: '#line-height', label: 'Line height' },
+								{ href: '#font-family', label: 'Font family' },
+								{ href: '#font-weight', label: 'Font weight' },
+							]}
+						/>
+					</div>
+
+					<h2 id="font-size">Font size</h2>
+					<p>
+						A typographic scale of 1.25 was used to create a limited set of font
+						sizes. This helps ensure that text looks balanced and consistent.
+						Font sizes were rounded to to full pixel values for simplicity.
+					</p>
+					<FontSizeTable />
+
+					<h2 id="line-height">Line height</h2>
+					<p>
+						A set of predefined line heights that align to a 4px grid. This
+						helps achieve better alignment across website elements.
+					</p>
+					<LineHeightChart />
+
+					<h2 id="font-family">Font family</h2>
+					<p>
+						The design system uses system fonts to decrease file size and
+						increase page speed.
+					</p>
+					<p>
+						Government services are provided for everyone, regardless of their
+						situation or location. By choosing to use system fonts users
+						download less data and make fewer HTTP requests. This means that
+						people on low-end devices or internet connections in remote areas
+						can access government services easier.
+					</p>
+					<FontFamilyTable />
+
+					<h2 id="font-weight">Font weight</h2>
+					<p>
+						Use 2 font weights, bold and normal, to help convey visual hierarchy
+						amongst text. Primary text like headings are generally bold to make
+						them more prominent. Use a normal font weight for less important
+						text.
+					</p>
+					<FontWeightTable />
+				</Prose>
+			</TokenLayout>
+		</>
+	);
+}
 
 function FontFamilyTable() {
-	const { font } = tokens;
-
 	const fontDescriptions = {
 		body: 'Used as the default font for all text',
 		monospace: 'Used for code and other monospaced text',
 	};
-
 	return (
 		<div className={proseBlockClassname}>
 			<TableWrapper>
@@ -36,7 +104,7 @@ function FontFamilyTable() {
 						</tr>
 					</TableHead>
 					<TableBody>
-						{(Object.entries(font) as [key: Font, value: string][]).map(
+						{(Object.entries(tokens.font) as [key: Font, value: string][]).map(
 							([key, value]) => (
 								<tr key={key}>
 									<TableCell>
@@ -55,9 +123,8 @@ function FontFamilyTable() {
 		</div>
 	);
 }
-function FontSizeTable() {
-	const { fontSize } = tokens;
 
+function FontSizeTable() {
 	return (
 		<Stack className={proseBlockClassname}>
 			<TableWrapper>
@@ -71,18 +138,22 @@ function FontSizeTable() {
 						</tr>
 					</TableHead>
 					<TableBody>
-						{(Object.keys(fontSize.sm) as FontSize[]).map((token) => {
-							const xs = fontSize.xs[token];
-							const sm = fontSize.sm[token];
+						{(Object.keys(tokens.fontSize.sm) as FontSize[]).map((token) => {
+							const xs = tokens.fontSize.xs[token];
+							const sm = tokens.fontSize.sm[token];
 							return (
 								<tr key={token}>
 									<TableCell>
-										<Text as="span" fontSize={token}>
+										<Text as="span" fontSize={token} lineHeight="nospace">
 											{token}
 										</Text>
 									</TableCell>
-									<TableCell>{`${sm}rem (${sm * 16}px)`}</TableCell>
-									<TableCell>{`${xs}rem (${xs * 16}px)`}</TableCell>
+									<TableCell>
+										{sm}rem ({sm * 16}px)
+									</TableCell>
+									<TableCell>
+										{xs}rem ({xs * 16}px)
+									</TableCell>
 								</tr>
 							);
 						})}
@@ -110,12 +181,18 @@ function FontWeightTable() {
 					</TableHead>
 					<TableBody>
 						<tr>
-							<TableCell>Normal</TableCell>
+							<TableCell>
+								<Text as="span">Normal</Text>
+							</TableCell>
 							<TableCell>normal</TableCell>
 							<TableCell>Used for the majority of body text</TableCell>
 						</tr>
 						<tr>
-							<TableCell>Bold</TableCell>
+							<TableCell>
+								<Text as="span" fontWeight="bold">
+									Bold
+								</Text>
+							</TableCell>
 							<TableCell>bold</TableCell>
 							<TableCell>Used to draw emphasis</TableCell>
 						</tr>
@@ -123,60 +200,5 @@ function FontWeightTable() {
 				</Table>
 			</TableWrapper>
 		</div>
-	);
-}
-
-export default function TokensTypographyPage() {
-	return (
-		<>
-			<DocumentTitle title="Typography tokens" />
-			<TokenLayout
-				title="Typography tokens"
-				description="Guidelines using typography across the Design System."
-				editPath="/docs/pages/tokens/typography.tsx"
-			>
-				<Prose>
-					<p>
-						A typographic scale was used to create a set of font-size and
-						line-height values which have been designed for legibility and can
-						be easily be implemented by designers or developers with a
-						predictable output.
-					</p>
-					<p>
-						Using the design system&apos;s typography values means any object
-						containing text is more likely to align with another element. This
-						appearance of a baseline grid is created by automatically rounding
-						the line-heights to the nearest grid value 4px, then converting them
-						back to a unit-less value.
-					</p>
-					<p>
-						To ensure consistency with other components in the system,{' '}
-						<strong>Designers</strong> can use font-size and line-height values
-						from the typographic scale. <strong>Developers</strong> can use the{' '}
-						<code>fontSize</code> and <code>lineHeight</code> props available on
-						typographic components which use of the `fontGrid` function.
-					</p>
-					<p>We have individual tokens for...</p>
-					<ul>
-						<li>Font size</li>
-						<li>Line height</li>
-						<li>Font family</li>
-						<li>Font weight</li>
-					</ul>
-
-					<h2>Font size</h2>
-					<FontSizeTable />
-					<h2>Line height</h2>
-					<LineHeightChart />
-
-					<h2>Font family</h2>
-					<p>A collection of tokens for font family groupings.</p>
-					<FontFamilyTable />
-
-					<h2>Font weight</h2>
-					<FontWeightTable />
-				</Prose>
-			</TokenLayout>
-		</>
 	);
 }
