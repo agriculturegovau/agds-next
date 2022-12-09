@@ -19,7 +19,7 @@ export default function TokensPage() {
 				description={description}
 				editPath="/docs/pages/tokens/index.tsx"
 			>
-				<Columns as="ul" cols={{ xs: 1, sm: 2 }}>
+				<Columns as="ul" cols={{ xs: 1, sm: 2, lg: 3 }}>
 					{TOKEN_NAV_LINKS.map(({ href, label, description }) => (
 						<Card key={href} as="li" clickable shadow>
 							<Flex flexDirection="column-reverse">
