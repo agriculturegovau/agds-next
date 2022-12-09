@@ -1,8 +1,7 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { Text } from '@ag.ds-next/text';
-import { Prose } from '@ag.ds-next/prose';
-import { GlobalAlert } from './GlobalAlert';
 import { Stack } from '@ag.ds-next/box';
+import { Text } from '@ag.ds-next/text';
+import { GlobalAlert } from './GlobalAlert';
 
 export default {
 	title: 'content/GlobalAlert',
