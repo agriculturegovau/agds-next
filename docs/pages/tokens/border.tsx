@@ -4,7 +4,7 @@ import { tokens } from '@ag.ds-next/core';
 import { DocumentTitle } from '../../components/DocumentTitle';
 import { TokenLayout } from '../../components/TokenLayout';
 import { BorderWidthChart } from '../../components/TokenCharts';
-import { TOKEN_PAGES } from '../../content/tokens';
+import { TOKEN_PAGES, getTokensBreadcrumbs } from '../../content/tokens';
 
 export default function TokensBorderWidthPage() {
 	return (
@@ -16,6 +16,7 @@ export default function TokensBorderWidthPage() {
 			<TokenLayout
 				title={TOKEN_PAGES.border.pageTitle}
 				description={TOKEN_PAGES.border.description}
+				breadcrumbs={getTokensBreadcrumbs(TOKEN_PAGES.border)}
 				editPath="/docs/pages/tokens/border.tsx"
 			>
 				<Prose>

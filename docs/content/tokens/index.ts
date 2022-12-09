@@ -46,3 +46,19 @@ export const TOKEN_NAV_LINKS = Object.values(TOKEN_PAGES).map((item) => ({
 	href: `/tokens/${item.slug}`,
 	...item,
 }));
+
+export function getTokensBreadcrumbs(item: { label: string }) {
+	return [
+		{
+			label: 'Home',
+			href: '/',
+		},
+		{
+			label: 'Tokens',
+			href: '/tokens',
+		},
+		{
+			label: item.label,
+		},
+	];
+}

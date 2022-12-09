@@ -8,7 +8,7 @@ import { DocumentTitle } from '../../components/DocumentTitle';
 import { ColorTable } from '../../components/TokenColorTable';
 import { TokenLayout } from '../../components/TokenLayout';
 import { LinkComponent } from '../../components/LinkComponent';
-import { TOKEN_PAGES } from '../../content/tokens';
+import { getTokensBreadcrumbs, TOKEN_PAGES } from '../../content/tokens';
 
 export default function TokensColorPage() {
 	const [isDarkMode, setDarkMode] = useState(false);
@@ -22,6 +22,7 @@ export default function TokensColorPage() {
 			<TokenLayout
 				title={TOKEN_PAGES.colour.pageTitle}
 				description={TOKEN_PAGES.colour.description}
+				breadcrumbs={getTokensBreadcrumbs(TOKEN_PAGES.colour)}
 				editPath="/docs/pages/tokens/color.tsx"
 			>
 				<Prose>

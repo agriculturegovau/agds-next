@@ -3,7 +3,7 @@ import { Prose } from '@ag.ds-next/prose';
 import { DocumentTitle } from '../../components/DocumentTitle';
 import { MaxWidthChart } from '../../components/TokenCharts';
 import { TokenLayout } from '../../components/TokenLayout';
-import { TOKEN_PAGES } from '../../content/tokens';
+import { getTokensBreadcrumbs, TOKEN_PAGES } from '../../content/tokens';
 
 export default function TokensMaxWidthsPage() {
 	return (
@@ -15,6 +15,7 @@ export default function TokensMaxWidthsPage() {
 			<TokenLayout
 				title={TOKEN_PAGES.maxWidth.pageTitle}
 				description={TOKEN_PAGES.maxWidth.description}
+				breadcrumbs={getTokensBreadcrumbs(TOKEN_PAGES.maxWidth)}
 				editPath="/docs/pages/tokens/max-width.tsx"
 			>
 				<Prose>

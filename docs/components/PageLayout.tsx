@@ -5,7 +5,7 @@ import { Flex, Stack } from '@ag.ds-next/box';
 import { Columns, Column } from '@ag.ds-next/columns';
 import { SideNav } from '@ag.ds-next/side-nav';
 import { SkipLinks, SkipLinksProps } from '@ag.ds-next/skip-link';
-import { Breadcrumbs } from '@ag.ds-next/breadcrumbs';
+import { Breadcrumbs, BreadcrumbsProps } from '@ag.ds-next/breadcrumbs';
 import { EditPage } from './EditPage';
 
 export function PageLayout({
@@ -20,7 +20,7 @@ export function PageLayout({
 		titleLink: string;
 		items: ComponentProps<typeof SideNav>['items'];
 	};
-	breadcrumbs?: ComponentProps<typeof Breadcrumbs>['links'];
+	breadcrumbs?: BreadcrumbsProps['links'];
 	skipLinks?: SkipLinksProps['links'];
 	editPath?: string;
 }>) {

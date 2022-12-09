@@ -15,7 +15,7 @@ import { InpageNav } from '@ag.ds-next/inpage-nav';
 import { DocumentTitle } from '../../components/DocumentTitle';
 import { TokenLayout } from '../../components/TokenLayout';
 import { LineHeightChart } from '../../components/TokenCharts';
-import { TOKEN_PAGES } from '../../content/tokens';
+import { TOKEN_PAGES, getTokensBreadcrumbs } from '../../content/tokens';
 
 export default function TokensTypographyPage() {
 	return (
@@ -27,6 +27,7 @@ export default function TokensTypographyPage() {
 			<TokenLayout
 				title={TOKEN_PAGES.typography.pageTitle}
 				description={TOKEN_PAGES.typography.description}
+				breadcrumbs={getTokensBreadcrumbs(TOKEN_PAGES.typography)}
 				editPath="/docs/pages/tokens/typography.tsx"
 			>
 				<Prose>
