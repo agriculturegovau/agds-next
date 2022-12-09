@@ -64,9 +64,8 @@ export const WithLongMessage: ComponentStory<typeof GlobalAlert> = (args) => (
 				cursus orci vulputate nibh sagittis blandit.
 			</Text>
 			<Text as="p">
-				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce massa
-				nibh, aliquam vel dolor non, gravida porttitor nulla. Pellentesque
-				cursus orci vulputate nibh sagittis blandit.
+				Nulla facilisis id orci vel placerat. Nam nisl enim, efficitur id mattis
+				eget, commodo at tortor.
 			</Text>
 		</Stack>
 	</GlobalAlert>
