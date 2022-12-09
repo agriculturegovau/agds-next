@@ -1,5 +1,6 @@
 import '@testing-library/jest-dom';
 import 'html-validate/jest';
+import userEvent from '@testing-library/user-event';
 import { Text } from '@ag.ds-next/text';
 import { cleanup, render, screen } from '../../../test-utils';
 import { GlobalAlert, GlobalAlertProps } from './GlobalAlert';
@@ -42,5 +43,16 @@ describe('GlobalAlert', () => {
 			'aria-label',
 			'Alert title'
 		);
+	});
+
+	it('responds to an onDismiss event', async () => {
+		const onDismiss = jest.fn();
+		renderGlobalAlert({
+			title: 'Alert title',
+			children: <Text as="p">Alert description.</Text>,
+			onDismiss,
+		});
+		await userEvent.click(screen.getByText('Dismiss'));
+		expect(onDismiss).toHaveBeenCalledTimes(1);
 	});
 });
