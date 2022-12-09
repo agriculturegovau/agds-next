@@ -51,7 +51,7 @@ export function GlobalAlert({ children, onDismiss, title }: GlobalAlertProps) {
 					</Flex>
 					{onDismiss ? (
 						<Button onClick={onDismiss} iconAfter={CloseIcon} variant="text">
-							Close
+							Dismiss
 						</Button>
 					) : null}
 				</Flex>
