@@ -8,10 +8,7 @@ export type LinkComponentProps = PropsWithChildren<NextLinkProps> & {
 };
 
 export const LinkComponent = forwardRef<HTMLAnchorElement, LinkComponentProps>(
-	function LinkComponent(
-		{ href, replace, scroll, shallow, passHref, prefetch, locale, ...props },
-		ref
-	) {
+	function LinkComponent({ href, ...props }, ref) {
 		if (!href) return <a ref={ref} {...props} />;
 
 		// Use an `a` tag when linking externally
@@ -21,18 +18,6 @@ export const LinkComponent = forwardRef<HTMLAnchorElement, LinkComponentProps>(
 			return <a ref={ref} href={hrefAsString} {...props} />;
 		}
 
-		return (
-			<Link
-				href={href}
-				replace={replace}
-				scroll={scroll}
-				shallow={shallow}
-				passHref={passHref}
-				prefetch={prefetch}
-				locale={locale}
-			>
-				<a ref={ref} {...props} />
-			</Link>
-		);
+		return <Link ref={ref} href={href} {...props} />;
 	}
 );
