@@ -122,6 +122,7 @@ export const SearchInput = forwardRef<HTMLInputElement, SearchInputProps>(
 							onChange={(e) => onChange(e.target.value)}
 							onKeyDown={onKeyDown}
 							css={styles}
+							autoComplete="off"
 							{...a11yProps}
 							{...props}
 						/>
