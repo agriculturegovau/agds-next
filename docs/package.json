@@ -80,7 +80,7 @@
 		"next-remote-watch": "^2.0.0",
 		"next-sitemap": "^3.1.32",
 		"parse-numeric-range": "^1.2.0",
-		"playroom": "^0.27.9",
+		"playroom": "^0.28.1",
 		"prism-react-renderer": "^1.2.1",
 		"react": "18.1.0",
 		"react-dom": "18.1.0",
