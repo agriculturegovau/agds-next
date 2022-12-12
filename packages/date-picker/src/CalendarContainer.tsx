@@ -13,8 +13,8 @@ export function CalendarContainer({ children, range }: CalendarContainerProps) {
 		<Box
 			display="inline-block"
 			background="body"
-			padding={[0.25, 1]}
-			paddingTop={1.5}
+			paddingY={1}
+			paddingX={[0.25, 1]}
 			border
 			borderColor="muted"
 			rounded

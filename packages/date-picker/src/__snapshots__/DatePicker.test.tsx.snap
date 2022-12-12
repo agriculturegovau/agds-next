@@ -27,6 +27,7 @@ exports[`DatePicker renders correctly 1`] = `
         <input
           aria-invalid="false"
           aria-required="false"
+          autocomplete="off"
           class="css-qcwla-DateInput"
           id="field-:r0:"
           type="text"

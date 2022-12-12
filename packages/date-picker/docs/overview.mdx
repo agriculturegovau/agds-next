@@ -70,7 +70,7 @@ Disabled input elements are unusable and can not be clicked. This prevents a use
 
 ### Minimum and maximum dates
 
-The `minDate` property can be used to disable any days before a specific date
+The `minDate` property can be used to disable any days before a specific date.
 
 The `maxDate` property can be used to disable any days after a specific date.
 
@@ -89,6 +89,26 @@ If a valid date is entered using the text input but it falls outside the constra
 			label="Select date"
 			minDate={lastWeek}
 			maxDate={nextWeek}
+			value={value}
+			onChange={setValue}
+		/>
+	);
+};
+```
+
+### Custom year range
+
+The `yearRange` property can be used to change the range of options to display in calendar year select.
+
+```jsx live
+() => {
+	const [value, setValue] = React.useState();
+	const thisYear = new Date().getFullYear();
+	const yearRange = { from: thisYear - 2, to: thisYear + 2 };
+	return (
+		<DatePicker
+			label="Select date"
+			yearRange={yearRange}
 			value={value}
 			onChange={setValue}
 		/>

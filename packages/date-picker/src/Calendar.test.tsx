@@ -30,7 +30,11 @@ describe('Calendar Single', () => {
 		});
 		expect(container).toHTMLValidate({
 			extends: ['html-validate:recommended'],
-			rules: { 'no-inline-style': 'off' },
+			rules: {
+				'no-inline-style': 'off',
+				// react 18s `useId` break this rule
+				'valid-id': 'off',
+			},
 		});
 	});
 });
@@ -55,7 +59,11 @@ describe('Calendar Range', () => {
 		});
 		expect(container).toHTMLValidate({
 			extends: ['html-validate:recommended'],
-			rules: { 'no-inline-style': 'off' },
+			rules: {
+				'no-inline-style': 'off',
+				// react 18s `useId` break this rule
+				'valid-id': 'off',
+			},
 		});
 	});
 });

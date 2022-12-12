@@ -24,8 +24,10 @@ type DatePickerCalendarProps = {
 	minDate?: Date;
 	/** If set, any days after this date will not be selectable. */
 	maxDate?: Date;
-	/** The calendar month to initially show, if no value is set. */
+	/** The calendar month to initially show if no value is set. */
 	initialMonth?: Date;
+	/** The range of options to display in calendar year select. */
+	yearRange?: { from: number; to: number };
 };
 
 type DatePickerBaseProps = {
@@ -47,6 +49,7 @@ export const DatePicker = ({
 	minDate,
 	maxDate,
 	initialMonth,
+	yearRange,
 	inputRef,
 	...props
 }: DatePickerProps) => {
@@ -147,6 +150,7 @@ export const DatePicker = ({
 						selected={value}
 						onSelect={onSelect}
 						defaultMonth={value || initialMonth}
+						yearRange={yearRange}
 						numberOfMonths={1}
 						disabled={disabledCalendarDays}
 					/>

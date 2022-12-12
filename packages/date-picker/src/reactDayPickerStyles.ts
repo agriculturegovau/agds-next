@@ -6,9 +6,9 @@ import {
 	tokens,
 } from '@ag.ds-next/core';
 import { visuallyHiddenStyles } from '@ag.ds-next/a11y';
-import { highContrastOutlineStyles } from '@ag.ds-next/box';
+import { focusStyles, highContrastOutlineStyles } from '@ag.ds-next/box';
 
-const cellSize = '2.875rem';
+const cellSize = '3rem';
 
 export const reactDayPickerStyles = (range: boolean) =>
 	({
@@ -27,10 +27,11 @@ export const reactDayPickerStyles = (range: boolean) =>
 		},
 		// Header
 		'.rdp-caption': {
+			position: 'relative',
 			display: 'flex',
 			alignItems: 'center',
 			justifyContent: 'center',
-			marginBottom: mapSpacing(1),
+			marginBottom: mapSpacing(0.5),
 		},
 		'.rdp-caption_label': {
 			zIndex: 1,
@@ -42,20 +43,23 @@ export const reactDayPickerStyles = (range: boolean) =>
 		},
 		// Left / right arrows
 		'.rdp-nav_button': {
-			display: 'inline-flex',
+			position: 'absolute',
+			top: 0,
+			display: 'flex',
 			alignItems: 'center',
 			justifyContent: 'center',
+			width: '2rem',
+			height: '2rem',
 			borderRadius: tokens.borderRadius,
+			color: boxPalette.foregroundAction,
+			'&:hover': { color: boxPalette.foregroundText },
+			...focusStyles,
 		},
 		'.rdp-nav_button_previous': {
-			position: 'absolute',
-			top: mapSpacing(1.5),
-			left: mapSpacing(1.5),
+			left: 0,
 		},
 		'.rdp-nav_button_next': {
-			position: 'absolute',
-			top: mapSpacing(1.5),
-			right: mapSpacing(1.5),
+			right: 0,
 		},
 		// Days of week
 		'.rdp-head_cell': {
@@ -71,24 +75,22 @@ export const reactDayPickerStyles = (range: boolean) =>
 		},
 		// Day button
 		'.rdp-day': {
-			color: boxPalette.foregroundAction,
-		},
-		'.rdp-button[disabled]': {
-			color: boxPalette.foregroundText,
-			opacity: 0.3,
-			cursor: 'not-allowed',
-		},
-		'.rdp-button:hover:not([disabled])': {
-			backgroundColor: boxPalette.backgroundShade,
-		},
-		'.rdp-button:focus, .rdp-button:active': packs.outline,
-		'.rdp-weeknumber, .rdp-day': {
 			display: 'flex',
 			justifyContent: 'center',
 			alignItems: 'center',
 			width: cellSize,
 			height: cellSize,
 			borderRadius: tokens.borderRadius,
+			color: boxPalette.foregroundAction,
+			'&[disabled]': {
+				color: boxPalette.foregroundText,
+				opacity: 0.3,
+				cursor: 'not-allowed',
+			},
+			'&:not([disabled]):hover': {
+				backgroundColor: boxPalette.backgroundShade,
+			},
+			'&:focus, &:active': packs.outline,
 		},
 		// Table
 		'.rdp-months': {
@@ -96,12 +98,8 @@ export const reactDayPickerStyles = (range: boolean) =>
 		},
 		'.rdp-month': {
 			margin: `0 ${mapSpacing(1)}`,
-		},
-		'.rdp-month:first-of-type': {
-			marginLeft: 0,
-		},
-		'.rdp-month:last-of-type': {
-			marginRight: 0,
+			'&:first-of-type': { marginLeft: 0 },
+			'&:last-of-type': { marginRight: 0 },
 		},
 		'.rdp-table': {
 			margin: 0,
