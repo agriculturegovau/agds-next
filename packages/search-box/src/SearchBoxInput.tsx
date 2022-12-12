@@ -33,7 +33,14 @@ export const SearchBoxInput = forwardRef<HTMLInputElement, SearchBoxInputProps>(
 				<SearchBoxLabel htmlFor={inputId} visible={labelVisible}>
 					{label}
 				</SearchBoxLabel>
-				<input ref={ref} type="search" css={styles} id={inputId} {...props} />
+				<input
+					ref={ref}
+					type="search"
+					autoComplete="off"
+					css={styles}
+					id={inputId}
+					{...props}
+				/>
 			</Stack>
 		);
 	}
