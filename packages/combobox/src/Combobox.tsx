@@ -1,7 +1,7 @@
 import { Fragment, useState, ReactNode, useCallback } from 'react';
 import { useCombobox } from 'downshift';
 import { usePopper } from 'react-popper';
-import { FieldMaxWidth, useId } from '@ag.ds-next/core';
+import { FieldMaxWidth, mapSpacing, useId } from '@ag.ds-next/core';
 import { textInputStyles } from '@ag.ds-next/text-input';
 import { Field } from '@ag.ds-next/field';
 import { Text } from '@ag.ds-next/text';
@@ -10,8 +10,10 @@ import { ComboboxListItem } from './ComboboxListItem';
 import { ComboboxListLoading } from './ComboboxListLoading';
 import { ComboboxListError } from './ComboboxListError';
 import { ComboboxListEmptyResults } from './ComboboxListEmptyResults';
-import { ComboboxDropdownTrigger } from './ComboboxDropdownTrigger';
-import { ComboboxClearButton } from './ComboboxClearButton';
+import {
+	ComboboxDropdownTrigger,
+	ComboboxClearButton,
+} from './ComboboxButtons';
 import { DefaultComboboxOption, filterOptions, splitLabel } from './utils';
 
 export type ComboboxProps<Option extends DefaultComboboxOption> = {
@@ -151,6 +153,7 @@ export function Combobox<Option extends DefaultComboboxOption>({
 			maxWidth: maxWidthProp,
 			invalid,
 		}),
+		paddingRight: mapSpacing(3),
 	};
 
 	return (
