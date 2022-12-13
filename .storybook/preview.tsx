@@ -65,19 +65,17 @@ export const globalTypes = {
 		description: 'Global branding',
 		defaultValue: 'agriculture',
 		toolbar: {
+			title: 'Brand',
 			icon: 'circlehollow',
-			// Array of plain string values or MenuItem shape (see below)
 			items: Object.keys(storybookThemes),
-			// Property that specifies if the name of the item will be displayed
-			showName: true,
 		},
 	},
 	palette: {
 		name: 'Palette',
 		defaultValue: 'light',
 		toolbar: {
+			title: 'Palette',
 			items: ['light', 'dark'],
-			showName: true,
 		},
 	},
 };
