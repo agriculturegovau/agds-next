@@ -4,13 +4,19 @@ import { BaseButton } from '@ag.ds-next/button';
 import { boxPalette, mapSpacing, tokens } from '@ag.ds-next/core';
 import { focusStyles } from '@ag.ds-next/box';
 
-export function ComboboxClearButton(
-	props: ButtonHTMLAttributes<HTMLButtonElement>
-) {
+export const ComboboxClearButton = forwardRef<
+	HTMLButtonElement,
+	ButtonHTMLAttributes<HTMLButtonElement>
+>(function ComboboxClearButton({ disabled, ...props }, ref) {
 	return (
-		<ComboboxIconButton aria-label="Clear input" icon={CloseIcon} {...props} />
+		<ComboboxIconButton
+			ref={ref}
+			aria-label="Clear input"
+			icon={CloseIcon}
+			{...props}
+		/>
 	);
-}
+});
 
 export const ComboboxDropdownTrigger = forwardRef<
 	HTMLButtonElement,
@@ -31,9 +37,10 @@ type IconButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
 };
 
 const ComboboxIconButton = forwardRef<HTMLButtonElement, IconButtonProps>(
-	function ComboboxIconButton({ disabled, icon: Icon, ...props }) {
+	function ComboboxIconButton({ disabled, icon: Icon, ...props }, ref) {
 		return (
 			<BaseButton
+				ref={ref}
 				disabled={disabled}
 				css={{
 					display: 'flex',
