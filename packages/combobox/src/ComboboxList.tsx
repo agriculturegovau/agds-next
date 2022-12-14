@@ -20,7 +20,7 @@ export const ComboboxList = forwardRef<HTMLUListElement, ComboboxListProps>(
 					opacity: isOpen ? 1 : 0,
 					position: 'relative',
 					overflowY: 'scroll',
-					maxHeight: 160,
+					maxHeight: 295,
 				}}
 			>
 				{children}

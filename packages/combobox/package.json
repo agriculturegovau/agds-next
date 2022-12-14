@@ -8,7 +8,8 @@
 		"@babel/runtime": "^7.4.5",
 		"@popperjs/core": "^2.11.4",
 		"downshift": "^6.1.7",
-		"react-popper": "^2.2.5"
+		"react-popper": "^2.2.5",
+		"use-debounce": "^9.0.2"
 	},
 	"devDependencies": {
 		"@ag.ds-next/box": "*",
