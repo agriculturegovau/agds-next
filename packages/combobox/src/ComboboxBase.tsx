@@ -20,9 +20,9 @@ import { DefaultComboboxOption, splitLabel } from './utils';
 export type ComboboxBaseProps<Option extends DefaultComboboxOption> =
 	ComboboxProps<Option> & {
 		inputId: string;
+		inputItems?: Option[];
 		loading?: boolean;
 		networkError?: boolean;
-		inputItems?: Option[];
 		downshift: UseComboboxReturnValue<Option>;
 	};
 

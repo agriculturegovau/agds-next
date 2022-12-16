@@ -50,6 +50,7 @@ export function ComboboxAsync<Option extends DefaultComboboxOption>({
 		stateReducer: (state, actionAndChanges) => {
 			const { type: actionAndChangesType, changes } = actionAndChanges;
 			switch (actionAndChangesType) {
+				// Reset the input value when the menu is closed
 				case useCombobox.stateChangeTypes.InputBlur:
 					return { inputValue: state.selectedItem ? state.inputValue : '' };
 				default:
