@@ -15,7 +15,7 @@ import {
 	ComboboxDropdownTrigger,
 	ComboboxClearButton,
 } from './ComboboxButtons';
-import { DefaultComboboxOption, useComboboxInputId } from './utils';
+import { DefaultComboboxOption, splitLabel, useComboboxInputId } from './utils';
 
 export type ComboboxBaseProps<Option extends DefaultComboboxOption> =
 	ComboboxProps<Option> & {
@@ -138,11 +138,6 @@ export function ComboboxBase<Option extends DefaultComboboxOption>({
 			</div>
 		</div>
 	);
-}
-
-export function splitLabel(label: string, inputValue: string) {
-	if (!inputValue) return [label];
-	return label.split(new RegExp(`(${inputValue})`, 'gi')).filter(Boolean);
 }
 
 export function defaultRenderItem<Option extends DefaultComboboxOption>(

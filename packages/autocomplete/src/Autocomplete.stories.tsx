@@ -9,8 +9,7 @@ export default {
 const defaultArgs = {
 	label: 'Find your state',
 	hint: 'Start typing to see results',
-	loadOptions: async function loadOptions(inputValue: string) {
-		console.log({ inputValue });
+	loadOptions: async function loadOptions() {
 		await new Promise((resolve) => setTimeout(resolve, 1000));
 		return [
 			{ label: 'Australian Capital Territory', value: 'act' },

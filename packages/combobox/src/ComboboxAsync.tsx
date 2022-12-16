@@ -102,8 +102,6 @@ export function ComboboxAsync<Option extends DefaultComboboxOption>({
 		loadOptions();
 	}, [shouldLoadOptions, debouncedInput, loadOptionsProp]);
 
-	console.log(cache.current);
-
 	return (
 		<ComboboxBase
 			downshift={downshift}

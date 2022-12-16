@@ -11,10 +11,6 @@ import {
 } from './styles';
 import { BaseButton, BaseButtonProps } from './BaseButton';
 
-type ExampleProps = {
-	variant?: 'primary' | 'secondary';
-};
-
 type CommonButtonProps = {
 	/** If true, the button will stretch to the fill the width of its container. */
 	block?: boolean;

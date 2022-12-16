@@ -18,3 +18,8 @@ export function filterOptions<Option extends DefaultComboboxOption>(
 			label.toLowerCase().includes(inputValue)
 	);
 }
+
+export function splitLabel(label: string, inputValue: string) {
+	if (!inputValue) return [label];
+	return label.split(new RegExp(`(${inputValue})`, 'gi')).filter(Boolean);
+}
