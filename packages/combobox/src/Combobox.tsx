@@ -52,11 +52,13 @@ export function Combobox<Option extends DefaultComboboxOption>({
 	loadOptions,
 	...props
 }: ComboboxProps<Option>) {
-	if (options) {
-		return <ComboboxSync options={options} {...props} />;
-	}
 	if (loadOptions) {
 		return <ComboboxAsync loadOptions={loadOptions} {...props} />;
 	}
+
+	if (options) {
+		return <ComboboxSync options={options} {...props} />;
+	}
+
 	return null;
 }

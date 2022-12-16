@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Button renders correctly 1`] = `
+exports[`Autocomplete renders correctly 1`] = `
 <div>
   <div
     class="css-ep8qz0-ComboboxBase"
@@ -10,7 +10,7 @@ exports[`Button renders correctly 1`] = `
     >
       <label
         class="css-n7rdvo-boxStyles"
-        for="combobox-input-:r1:"
+        for="combobox-input-:r0:"
       >
         <span
           class="css-433uqb-boxStyles-Text"
@@ -25,7 +25,7 @@ exports[`Button renders correctly 1`] = `
       </label>
       <span
         class="css-lw0v8u-boxStyles-Text"
-        id="field-combobox-input-:r1:-hint"
+        id="field-combobox-input-:r0:-hint"
       >
         Start typing to see results
       </span>
@@ -39,7 +39,7 @@ exports[`Button renders correctly 1`] = `
         <input
           aria-autocomplete="list"
           aria-controls="downshift-0-menu"
-          aria-describedby="field-combobox-input-:r1:-hint"
+          aria-describedby="field-combobox-input-:r0:-hint"
           aria-invalid="false"
           aria-labelledby="downshift-0-label"
           aria-required="false"

@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { useDebounce } from 'use-debounce';
 import { useCombobox } from 'downshift';
 import {
@@ -16,36 +16,33 @@ export type ComboboxAsyncProps<Option extends DefaultComboboxOption> =
 
 export function ComboboxAsync<Option extends DefaultComboboxOption>({
 	loadOptions: loadOptionsProp,
+	showDropdownTrigger = true,
 	...props
 }: ComboboxAsyncProps<Option>) {
 	const inputId = useComboboxInputId(props.id);
-	const [loading, setLoading] = useState(false);
-	const [networkError, setNetworkError] = useState(false);
-	const [inputItems, setInputItems] = useState<Option[]>();
+
+	const [state, setState] = useState<{
+		inputItems: Option[] | undefined;
+		loading: boolean;
+		networkError: boolean;
+	}>({
+		inputItems: undefined,
+		loading: false,
+		networkError: false,
+	});
 
 	const isInputDirty = useRef(false);
 
 	const downshift = useCombobox<Option>({
 		selectedItem: props.value,
 		inputId,
-		items: inputItems ?? [],
+		items: state.inputItems ?? [],
 		itemToString: (item) => item?.label ?? '',
 		onSelectedItemChange: ({ selectedItem = null }) => {
 			props.onChange?.(selectedItem);
 		},
 		onInputValueChange: ({ inputValue }) => {
-			inputValue = inputValue?.toLowerCase() ?? '';
 			isInputDirty.current = true;
-			if (inputItems) {
-				setInputItems(filterOptions(inputItems, inputValue));
-			}
-		},
-		// When the menu is opened by the user, show the entire options list
-		// This is common in other Combobox implementations (react-aria, react-select, etc)
-		onIsOpenChange: ({ isOpen }) => {
-			if (inputItems && isOpen && props.showDropdownTrigger) {
-				setInputItems(filterOptions(inputItems, ''));
-			}
 		},
 		stateReducer: (state, actionAndChanges) => {
 			const { type: actionAndChangesType, changes } = actionAndChanges;
@@ -61,42 +58,72 @@ export function ComboboxAsync<Option extends DefaultComboboxOption>({
 
 	const [debouncedInput] = useDebounce(downshift.inputValue, 300);
 
-	const selectedItemLabel = downshift.selectedItem?.label;
-	const shouldLoadOptions = useRef<boolean>();
-	shouldLoadOptions.current = Boolean(
-		// When there is no dropdown trigger (Autocomplete), load the options when the user has interacted with the input
-		(props.showDropdownTrigger ? false : isInputDirty.current) &&
-			// Options are not already being loaded
-			!loading &&
-			// If a selection has just been made, no not need to load options again
-			!(selectedItemLabel && selectedItemLabel === debouncedInput)
-	);
+	const shouldLoadOptions = useMemo(() => {
+		const selectedItemLabel = downshift.selectedItem?.label;
+		// user has manually opened the menu
+		if (showDropdownTrigger && downshift.isOpen && !downshift.selectedItem) {
+			return true;
+		}
+		// options are already being loaded
+		if (state.loading) return false;
+		// options have failed to load
+		if (state.networkError) return false;
+
+		return true;
+
+		// return Boolean(
+		// 	// Options are not already being loaded
+		// 	!state.loading &&
+		// 		// Options have not failed
+		// 		!state.networkError &&
+		// 		// If a selection has just been made, no not need to load options again
+		// 		!(selectedItemLabel && selectedItemLabel === debouncedInput) &&
+		// 		// When there is no dropdown trigger (Autocomplete), only load the options when the user has interacted with the input
+		// 		(showDropdownTrigger ? downshift.isOpen : isInputDirty.current)
+		// );
+	}, [
+		debouncedInput,
+		state.loading,
+		state.networkError,
+		downshift.isOpen,
+		downshift.selectedItem?.label,
+		showDropdownTrigger,
+	]);
 
 	const cache = useRef<Record<string, Option[]>>({});
 
 	useEffect(() => {
 		async function loadOptions() {
-			if (!shouldLoadOptions.current) return;
+			if (!shouldLoadOptions) return;
 			const inputValue = debouncedInput?.toLowerCase() ?? '';
 
 			// If there are already options for the search term, use the cached version
-			if (cache.current[inputValue]) {
-				setInputItems(cache.current[inputValue]);
+			const cachedInputItems = cache.current[inputValue];
+			if (cachedInputItems) {
+				setState({
+					inputItems: cachedInputItems,
+					loading: false,
+					networkError: false,
+				});
 				return;
 			}
 
-			setLoading(true);
-			setNetworkError(false);
+			// Start the loading state
+			setState({ inputItems: undefined, loading: true, networkError: false });
+
 			try {
+				// Attempt to load the options, update the UI and the cache
 				const inputItems = await loadOptionsProp(inputValue);
 				const filteredInputItems = filterOptions(inputItems, inputValue);
-				setInputItems(filteredInputItems);
 				cache.current[inputValue] = filteredInputItems;
+				setState({
+					inputItems: filteredInputItems,
+					loading: false,
+					networkError: false,
+				});
 			} catch {
-				setInputItems(undefined);
-				setNetworkError(true);
-			} finally {
-				setLoading(false);
+				// An error occurred while loading options
+				setState({ inputItems: undefined, loading: false, networkError: true });
 			}
 		}
 
@@ -107,9 +134,10 @@ export function ComboboxAsync<Option extends DefaultComboboxOption>({
 		<ComboboxBase
 			downshift={downshift}
 			inputId={inputId}
-			loading={loading}
-			networkError={networkError}
-			inputItems={inputItems}
+			loading={state.loading}
+			networkError={state.networkError}
+			inputItems={state.inputItems}
+			showDropdownTrigger={showDropdownTrigger}
 			{...props}
 		/>
 	);

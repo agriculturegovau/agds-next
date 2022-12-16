@@ -1,6 +1,7 @@
 import '@testing-library/jest-dom';
 import 'html-validate/jest';
-import { render, cleanup } from '../../../test-utils';
+import userEvent from '@testing-library/user-event';
+import { render, cleanup, waitFor } from '../../../test-utils';
 import { Autocomplete } from './Autocomplete';
 
 afterEach(cleanup);
@@ -46,5 +47,29 @@ describe('Autocomplete', () => {
 				'valid-id': 'off',
 			},
 		});
+	});
+
+	it.only('loads options', async () => {
+		const { container, getByText } = renderAutocomplete();
+		const input = container.querySelector('input');
+		if (!input) return;
+
+		input.focus();
+		expect(input).toHaveFocus();
+		await userEvent.type(input, 'qld');
+		expect(input.value).toBe('qld');
+
+		await waitFor(
+			() => {
+				expect(getByText('Queensland')).toBeInTheDocument();
+			},
+			{ timeout: 3000 }
+		);
+
+		const options = container.querySelectorAll('li');
+		expect(options.length).toBe(1);
+		expect(options[0].textContent).toBe('Queensland');
+		await userEvent.click(options[0]);
+		expect(input.value).toBe('Queensland');
 	});
 });

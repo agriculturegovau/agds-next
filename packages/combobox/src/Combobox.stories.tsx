@@ -273,7 +273,7 @@ AsyncOptionsWithError.args = {
 	hint: 'Start typing to see results',
 	loadOptions: async function loadOptions() {
 		// Simulate a slow network connection
-		await new Promise((resolve) => setTimeout(resolve, 3000));
+		await new Promise((resolve) => setTimeout(resolve, 1000));
 		throw new Error('Something went wrong while fetching options');
 	},
 };
