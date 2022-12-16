@@ -81,7 +81,7 @@ export function ComboboxBase<Option extends DefaultComboboxOption>({
 							css={[inputStyles, { width: '100%' }]}
 							disabled={disabled}
 							{...a11yProps}
-							{...downshift.getInputProps()}
+							{...downshift.getInputProps({ type: 'text' })}
 						/>
 						{showDropdownTrigger && (
 							<ComboboxDropdownTrigger
