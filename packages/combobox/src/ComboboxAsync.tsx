@@ -41,7 +41,7 @@ export function ComboboxAsync<Option extends DefaultComboboxOption>({
 		onSelectedItemChange: ({ selectedItem = null }) => {
 			props.onChange?.(selectedItem);
 		},
-		onInputValueChange: ({ inputValue }) => {
+		onInputValueChange: () => {
 			isInputDirty.current = true;
 		},
 		stateReducer: (state, actionAndChanges) => {
@@ -68,26 +68,18 @@ export function ComboboxAsync<Option extends DefaultComboboxOption>({
 		if (state.loading) return false;
 		// options have failed to load
 		if (state.networkError) return false;
-
+		// If a selection has just been made, no not need to load options again
+		if (selectedItemLabel && selectedItemLabel === debouncedInput) return false;
+		// When there is no dropdown trigger (Autocomplete), only load the options when the user has interacted with the input
+		if (!showDropdownTrigger && isInputDirty.current) return true;
 		return true;
-
-		// return Boolean(
-		// 	// Options are not already being loaded
-		// 	!state.loading &&
-		// 		// Options have not failed
-		// 		!state.networkError &&
-		// 		// If a selection has just been made, no not need to load options again
-		// 		!(selectedItemLabel && selectedItemLabel === debouncedInput) &&
-		// 		// When there is no dropdown trigger (Autocomplete), only load the options when the user has interacted with the input
-		// 		(showDropdownTrigger ? downshift.isOpen : isInputDirty.current)
-		// );
 	}, [
 		debouncedInput,
+		downshift.isOpen,
+		downshift.selectedItem,
+		showDropdownTrigger,
 		state.loading,
 		state.networkError,
-		downshift.isOpen,
-		downshift.selectedItem?.label,
-		showDropdownTrigger,
 	]);
 
 	const cache = useRef<Record<string, Option[]>>({});
