@@ -105,6 +105,7 @@ export function ComboboxAsync<Option extends DefaultComboboxOption>({
 	return (
 		<ComboboxBase
 			downshift={downshift}
+			inputId={inputId}
 			loading={loading}
 			networkError={networkError}
 			inputItems={inputItems}

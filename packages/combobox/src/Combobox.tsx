@@ -42,6 +42,11 @@ export type ComboboxProps<Option extends DefaultComboboxOption> = {
 	emptyResultsMessage?: string;
 };
 
+/**
+ * Internally, we have split up our logic for Combobox into 2 different components: `ComboboxSync` and `ComboboxAsync`
+ * The reason for this is that the async version is much more complicated than the sync version, so we want to keep that complexity separate.
+ */
+
 export function Combobox<Option extends DefaultComboboxOption>({
 	options,
 	loadOptions,

@@ -15,10 +15,11 @@ import {
 	ComboboxDropdownTrigger,
 	ComboboxClearButton,
 } from './ComboboxButtons';
-import { DefaultComboboxOption, splitLabel, useComboboxInputId } from './utils';
+import { DefaultComboboxOption, splitLabel } from './utils';
 
 export type ComboboxBaseProps<Option extends DefaultComboboxOption> =
 	ComboboxProps<Option> & {
+		inputId: string;
 		loading?: boolean;
 		networkError?: boolean;
 		inputItems?: Option[];
@@ -32,7 +33,7 @@ export function ComboboxBase<Option extends DefaultComboboxOption>({
 	hint,
 	message,
 	invalid,
-	id: idProp,
+	inputId,
 	disabled,
 	block,
 	maxWidth: maxWidthProp = 'xl',
@@ -45,8 +46,6 @@ export function ComboboxBase<Option extends DefaultComboboxOption>({
 	downshift,
 	inputItems,
 }: ComboboxBaseProps<Option>) {
-	const inputId = useComboboxInputId(idProp);
-
 	// Popper state
 	const [refEl, setRefEl] = useState<HTMLDivElement | null>(null);
 	const [popperEl, setPopperEl] = useState<HTMLDivElement | null>(null);

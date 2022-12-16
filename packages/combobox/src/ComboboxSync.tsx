@@ -49,6 +49,11 @@ export function ComboboxSync<Option extends DefaultComboboxOption>(
 	});
 
 	return (
-		<ComboboxBase downshift={downshift} inputItems={inputItems} {...props} />
+		<ComboboxBase
+			downshift={downshift}
+			inputItems={inputItems}
+			inputId={inputId}
+			{...props}
+		/>
 	);
 }
