@@ -1,6 +1,6 @@
 ---
 title: Text Link
-description: A typographic component for creating a hyperlinks.
+description: A typographic component for creating hyperlinks.
 group: Navigation
 storybookPath: /story/navigation-textlink--basic
 ---
@@ -14,6 +14,19 @@ The `TextLink` component creates a hyperlink to web pages, files, email addresse
 	This is some text with <TextLink href="#">a link</TextLink> inside.
 </Text>
 ```
+
+<DoHeading />
+
+- use TextLinkExternal if the link takes the user away from an active flow (such as a form)
+- use to link users to other pages
+- provide a concise label that describes the target destination – for example, Export Service home.
+
+<DontHeading />
+
+- use TextLinkExternal unless the use case is valid
+- use to trigger an action – use a Button instead
+- use generic labels such as Click here
+- remove styles for action, colour and underline.
 
 ## TextLinkExternal
 
