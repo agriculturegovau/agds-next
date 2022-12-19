@@ -1,6 +1,6 @@
 ---
 title: Autocomplete
-description: Autocompletes allow users to search through a set of options fetched over the network based on their input
+description: Autocomplete, also known as type-ahead, uses predictive text to complete words as they are entered.
 group: Forms
 storybookPath: /story/forms-autocomplete--basic
 ---
@@ -9,10 +9,6 @@ storybookPath: /story/forms-autocomplete--basic
 	This component is currently in development, some features currently may not be
 	working as expected.
 </PageAlert>
-
-## Basic
-
-By default, the `Autocomplete` component does not expand to fill the available space.
 
 ```jsx live
 () => {
@@ -41,6 +37,24 @@ By default, the `Autocomplete` component does not expand to fill the available s
 	);
 };
 ```
+
+By default, the `Autocomplete` component does not expand to fill the available space.
+
+<DoHeading />
+
+- use to help people complete input from an API
+- use for address input
+- use where spelling or data entry might be challenging
+- use to order results in a meaningful way
+- indicate whether input is optional
+- ensure users can easily filter a list of options
+- provide hint text for instruction
+- deliver suggestions in real-time for low latency.
+
+<DontHeading />
+
+- show more than 10 results at a time
+- use if the list of possible results is small - use Radio instead.
 
 ## Required
 
