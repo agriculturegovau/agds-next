@@ -15,6 +15,7 @@ import generatedComponentPropsData from '../__generated__/componentProps.json';
 import { Code } from './Code';
 import { ComponentPropsTable } from './ComponentPropsTable';
 import { FigmaLogo } from './FigmaLogo';
+import { DoHeading, DontHeading } from './DoHeading';
 
 export const mdxComponents: MDXRemoteProps['components'] = {
 	Fragment,
@@ -76,4 +77,6 @@ export const mdxComponents: MDXRemoteProps['components'] = {
 			/>
 		);
 	},
+	DoHeading: () => <DoHeading />,
+	DontHeading: () => <DontHeading />,
 };
