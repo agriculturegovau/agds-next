@@ -1,6 +1,6 @@
 ---
 title: Combobox
-description: Allows the user to browse, search, and make a single selection from a large list of values.
+description: This component lets users select from a list of options. It is especially useful when there are many options to choose from.
 group: Forms
 storybookPath: /story/forms-combobox--basic
 ---
@@ -9,10 +9,6 @@ storybookPath: /story/forms-combobox--basic
 	This component is currently in development, some features currently may not be
 	working as expected.
 </PageAlert>
-
-## Basic
-
-By default, the `Combobox` component does not expand to fill the available space.
 
 ```jsx live
 () => {
@@ -36,6 +32,22 @@ By default, the `Combobox` component does not expand to fill the available space
 	);
 };
 ```
+
+By default, the `Combobox` component does not expand to fill the available space.
+
+<DoHeading />
+
+- include to help users select from a large list
+- provide concise options
+- create hint text to let the user know they can search or select
+- use a pre-filled list so users can search or scroll
+- consider whether the list of selections is complex enough to merit searching and filtering
+- indicate whether input is optional.
+
+<DontHeading />
+
+- use if the list of possible results is small – use Select
+- leave the list open once an option is selected.
 
 ## Block
 
