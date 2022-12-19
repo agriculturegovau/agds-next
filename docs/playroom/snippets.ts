@@ -304,16 +304,6 @@ items={[
   </SearchBox>`,
 	},
 	{
-		group: 'KeywordList',
-		name: 'Basic',
-		code: `<KeywordList
-    items={[
-      { subTitle: 'Department of', title: 'Agriculture, Fisheries and Forestry' },
-      { subTitle: 'Department of', title: 'Communications and the Arts' },
-    ]}
-  />`,
-	},
-	{
 		group: 'SkipLinks',
 		name: 'Basic',
 		code: `<SkipLinks
