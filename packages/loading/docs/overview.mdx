@@ -1,11 +1,9 @@
 ---
 title: Loading
-description: Loading indicators inform users that their action is being processed.
+description: Loading indicators inform users their action is being processed.
 group: Content
 storybookPath: /story/content-loading-loadingblanket--basic
 ---
-
-## Loading Blanket
 
 The `LoadingBlanket` component can be used indicate the loading state of a component or page.
 
@@ -17,8 +15,6 @@ By default this component is positioned absolutely, so you will need to make sur
 </Box>
 ```
 
-### Full-screen
-
 Adding the `fullScreen` prop will position the component over the whole screen.
 
 We recommend limiting the use of this pattern to certain use cases such as before or after a redirection.
@@ -26,6 +22,14 @@ We recommend limiting the use of this pattern to certain use cases such as befor
 ```jsx
 <LoadingBlanket fullScreen label="Page loading state" />
 ```
+
+<DoHeading />
+
+- use for charts and components that are loading.
+
+<DontHeading />
+
+- use full-screen blanket for partially loaded pages – use patterns such as Skeleton.
 
 ## Loading Dots
 
