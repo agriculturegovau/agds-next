@@ -60,12 +60,17 @@ export function ComboboxAsync<Option extends DefaultComboboxOption>({
 	const [debouncedInput] = useDebounce(downshift.inputValue, 300);
 
 	const shouldLoadOptions = useMemo(() => {
-		// User has manually triggered the menu open and there is no value
-		if (showDropdownTrigger && downshift.isOpen && !downshift.selectedItem) {
+		if (
+			// User has just started typing, so this avoids the flicker of the empty state
+			(!debouncedInput && downshift.inputValue) ||
+			// User has manually triggered the dropdown menu open
+			(showDropdownTrigger && downshift.isOpen && !downshift.selectedItem)
+		) {
 			return true;
 		}
+
 		const selectedItemLabel = downshift.selectedItem?.label;
-		// DON'T load options when...
+		// Do not load options when...
 		if (
 			// Options are already being loaded
 			state.loading ||
@@ -82,6 +87,7 @@ export function ComboboxAsync<Option extends DefaultComboboxOption>({
 		return true;
 	}, [
 		debouncedInput,
+		downshift.inputValue,
 		downshift.isOpen,
 		downshift.selectedItem,
 		showDropdownTrigger,
