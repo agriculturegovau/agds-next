@@ -2,13 +2,13 @@ import '@testing-library/jest-dom';
 import 'html-validate/jest';
 import userEvent from '@testing-library/user-event';
 import { render, cleanup, waitFor } from '../../../test-utils';
-import { Autocomplete } from './Autocomplete';
+import { ComboboxAsync } from './ComboboxAsync';
 
 afterEach(cleanup);
 
-function renderAutocomplete() {
+function renderComboboxAsync() {
 	return render(
-		<Autocomplete
+		<ComboboxAsync
 			label="Find your state"
 			hint="Start typing to see results"
 			loadOptions={async function loadOptions() {
@@ -30,12 +30,12 @@ function renderAutocomplete() {
 
 describe('ComboboxAsync', () => {
 	it('renders correctly', () => {
-		const { container } = renderAutocomplete();
+		const { container } = renderComboboxAsync();
 		expect(container).toMatchSnapshot();
 	});
 
 	it('renders a valid HTML structure', () => {
-		const { container } = renderAutocomplete();
+		const { container } = renderComboboxAsync();
 		expect(container).toHTMLValidate({
 			extends: ['html-validate:recommended'],
 			rules: {
@@ -49,7 +49,7 @@ describe('ComboboxAsync', () => {
 	});
 
 	it('can load async options', async () => {
-		const { container } = renderAutocomplete();
+		const { container } = renderComboboxAsync();
 
 		const input = container.querySelector('input');
 		expect(input).toBeInTheDocument();
