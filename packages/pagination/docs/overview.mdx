@@ -1,6 +1,6 @@
 ---
 title: Pagination
-description: Pagination allows large amounts of content to be separated into multiple pages.
+description: Pagination separates large amounts of content into separate pages, which helps reduce cognitive load.
 group: Navigation
 storybookPath: /story/navigation--basic
 ---
@@ -18,6 +18,22 @@ Use pagination to separate large lists of content, such as search results, into 
 	generateHref={(page) => `/example?page=${page}`}
 />
 ```
+
+<DoHeading />
+
+- use to enable navigation to a large data set such as a long list of results
+- use for table listings, search results, and directories
+- include a maximum of 7 for smaller screens and 14 for larger screens
+- use links over buttons where possible
+- ensure the user knows which page they are on
+- include Previous and Next chevrons
+- always place below the content you are paginating
+- centre align.
+
+<DontHeading />
+
+- left or right align
+- display more than 5 list items in the main area.
 
 ### Pagination Buttons
 
