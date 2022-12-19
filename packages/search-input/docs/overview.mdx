@@ -1,6 +1,6 @@
 ---
 title: Search Input
-description: Search enables users to specify a word or a phrase to find relevant pieces of content.
+description: Search input enables users to enter a word or phrase to find relevant content.
 group: Forms
 storybookPath: /story/forms-searchinput--basic
 ---
@@ -9,13 +9,23 @@ The `SearchInput` component can be used as a filter to aid the user in finding c
 
 For use cases where you need a search form with a submit button, the [Search Box](/components/search-box) component can be used instead.
 
-## Default
-
-By default, the `SearchInput` component does not expand to fill the available space.
-
 ```jsx live
 <SearchInput label="Search" />
 ```
+
+By default, the `SearchInput` component does not expand to fill the available space.
+
+<DoHeading />
+
+- use to filter results on a page
+- provide a meaningful label – for example, Search components
+- hide the ‘optional’ label.
+
+<DontHeading />
+
+- use to fetch results from a server – use SearchBox or Autocomplete
+- hide the search icon or clear button
+- use for global site search - use SearchBox.
 
 ## Block
 
