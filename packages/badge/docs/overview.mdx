@@ -23,24 +23,39 @@ The five supported tones are `info`, `success`, `error`, `warning` and `neutral`
 </Flex>
 ```
 
+<DoHeading />
+
+- use to indicate the status of a task or process
+- use to help users differentiate between multiple statuses
+
+<DontHeading />
+
+- use status badge without an icon
+- change the colours or create new ones
+- use when colour and icon don't convey meaning.
+
 ## NotificationBadge
 
 A notification badge is a visual indicator for numeric values.
+
+Use the `max` property where the count is expected to exceed a reasonable number, and the exact count is not particularly valuable to the user.
 
 ```jsx live
 <Flex gap={1}>
 	<NotificationBadge tone="neutral" value={16} />
 	<NotificationBadge tone="action" value={8} />
+	<NotificationBadge tone="action" max={99} value={123} />
 </Flex>
 ```
 
-### Maximum value
+<DoHeading />
 
-Use the `max` property where the count is expected to exceed a reasonable number, and the exact count is not particularly valuable to the user.
+- use to indicate numeric values such as message count
+- place next to associated content – for example, Messages (1)
 
-```jsx live
-<NotificationBadge tone="action" max={99} value={123} />
-```
+<DontHeading />
+
+- change the colours or create new ones
 
 ## IndicatorDot
 
@@ -91,3 +106,12 @@ An IndicatorDot should not be used on its own, as it gives no context. It should
 	</Flex>
 </Flex>
 ```
+
+<DoHeading />
+
+- use to indicate something needs attention – for example, unread messages
+
+<DontHeading />
+
+- change the colours or create new ones
+- use on it's own. It should be considered as part of a wider composition.
