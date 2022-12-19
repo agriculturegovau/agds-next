@@ -1,15 +1,9 @@
 ---
 title: Select
-description: Select provides a means to select a single item from a collapsible list. Use of select helps to reduce input errors and screen space. It's commonly used to help users enter a value into a form field.
+description: Select provides a way for users to choose one item from a collapsible list. It helps reduce input errors and screen space.
 group: Forms
 storybookPath: /story/forms-select--basic
 ---
-
-## Default
-
-Select boxes (drop-down lists) allow users to select a value from a list.
-
-By default, the `Select` component does not expand to fill the available space.
 
 ```jsx live
 <Select
@@ -22,6 +16,25 @@ By default, the `Select` component does not expand to fill the available space.
 	]}
 />
 ```
+
+Select boxes (drop-down lists) allow users to select a value from a list.
+
+By default, the `Select` component does not expand to fill the available space.
+
+<DoHeading />
+
+- implement to help users enter a value into a form field
+- use when selecting from a list of options is required
+- use concise labels
+- indicate whether input is optional
+- use for alphabetical or numerical lists
+- present list items in a logical way (alphabetic or numeric)
+- group options into similar categories if possible for larger lists.
+
+<DontHeading />
+
+- use for small lists – use Radio input
+- use for long lists – consider using Combobox.
 
 ## Block
 
