@@ -27,7 +27,6 @@ import heading from './heading.svg';
 import herobanner from './hero-banner.svg';
 import icon from './icon.svg';
 import inpageNav from './inpage-nav.svg';
-import keywordList from './keyword-list.svg';
 import loading from './loading.svg';
 import linkList from './link-list.svg';
 import mainNav from './main-nav.svg';
@@ -87,7 +86,6 @@ export const pictograms = {
 	'hero-banner': herobanner,
 	icon,
 	'inpage-nav': inpageNav,
-	'keyword-list': keywordList,
 	'link-list': linkList,
 	loading,
 	'main-nav': mainNav,
