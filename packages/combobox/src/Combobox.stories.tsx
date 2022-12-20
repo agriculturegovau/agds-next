@@ -1,10 +1,12 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { useState } from 'react';
 import { Combobox } from './Combobox';
+import { ComboboxAsync } from './ComboboxAsync';
 
 export default {
 	title: 'forms/Combobox',
 	component: Combobox,
+	subcomponents: { ComboboxAsync },
 } as ComponentMeta<typeof Combobox>;
 
 const COUNTRIES = [
@@ -254,7 +256,12 @@ Block.args = {
 	block: true,
 };
 
-export const AsyncOptions = Template.bind({});
+const AsyncTemplate: ComponentStory<typeof ComboboxAsync> = (args) => {
+	const [value, onChange] = useState<Option | null>(null);
+	return <ComboboxAsync {...args} value={value} onChange={onChange} />;
+};
+
+export const AsyncOptions = AsyncTemplate.bind({});
 AsyncOptions.args = {
 	label: 'Select character',
 	hint: 'Start typing to see results',
@@ -267,7 +274,7 @@ AsyncOptions.args = {
 	},
 };
 
-export const AsyncOptionsWithError = Template.bind({});
+export const AsyncOptionsWithError = AsyncTemplate.bind({});
 AsyncOptionsWithError.args = {
 	label: 'Select character',
 	hint: 'Start typing to see results',

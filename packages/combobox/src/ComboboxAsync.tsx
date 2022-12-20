@@ -1,16 +1,16 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { useDebounce } from 'use-debounce';
 import { useCombobox } from 'downshift';
+import { ComboboxBase, CommonComboboxProps } from './ComboboxBase';
 import {
 	DefaultComboboxOption,
 	filterOptions,
 	useComboboxInputId,
 } from './utils';
-import { ComboboxBase } from './ComboboxBase';
-import { ComboboxProps } from './Combobox';
 
 export type ComboboxAsyncProps<Option extends DefaultComboboxOption> =
-	ComboboxProps<Option> & {
+	CommonComboboxProps<Option> & {
+		/** Function to be used when options need to be loaded over the network. */
 		loadOptions: (inputValue: string) => Promise<Option[]>;
 	};
 
@@ -56,22 +56,29 @@ export function ComboboxAsync<Option extends DefaultComboboxOption>({
 		},
 	});
 
+	// Keep track of the debounced input value to prevent unnecessary network requests
 	const [debouncedInput] = useDebounce(downshift.inputValue, 300);
 
 	const shouldLoadOptions = useMemo(() => {
-		const selectedItemLabel = downshift.selectedItem?.label;
-		// user has manually opened the menu
+		// User has manually triggered the menu open and there is no value
 		if (showDropdownTrigger && downshift.isOpen && !downshift.selectedItem) {
 			return true;
 		}
-		// options are already being loaded
-		if (state.loading) return false;
-		// options have failed to load
-		if (state.networkError) return false;
-		// If a selection has just been made, no not need to load options again
-		if (selectedItemLabel && selectedItemLabel === debouncedInput) return false;
-		// When there is no dropdown trigger (Autocomplete), only load the options when the user has interacted with the input
-		if (!showDropdownTrigger && isInputDirty.current) return true;
+		const selectedItemLabel = downshift.selectedItem?.label;
+		// DON'T load options when...
+		if (
+			// Options are already being loaded
+			state.loading ||
+			// options have failed to load
+			state.networkError ||
+			// If a selection has just been made, no not need to load options again
+			(selectedItemLabel && selectedItemLabel === debouncedInput) ||
+			// When there is no dropdown trigger (e.g. Autocomplete), only load the options if the user has interacted with the input
+			(!showDropdownTrigger && !isInputDirty.current)
+		) {
+			return false;
+		}
+
 		return true;
 	}, [
 		debouncedInput,
@@ -82,15 +89,18 @@ export function ComboboxAsync<Option extends DefaultComboboxOption>({
 		state.networkError,
 	]);
 
+	// Keep track of of loaded options and search terms to prevent unnecessary network requests
 	const cache = useRef<Record<string, Option[]>>({});
 
 	useEffect(() => {
-		async function loadOptions() {
+		async function loadOptions(shouldLoadOptions: boolean) {
 			if (!shouldLoadOptions) return;
+			// sanitize the input value
 			const inputValue = debouncedInput?.toLowerCase() ?? '';
 
-			// If there are already options for the search term, use the cached version
-			const cachedInputItems = cache.current[inputValue];
+			// If there are cached options for the search term, use that
+			const cachedInputItems =
+				inputValue in cache.current ? cache.current[inputValue] : null;
 			if (cachedInputItems) {
 				setState({
 					inputItems: cachedInputItems,
@@ -100,14 +110,15 @@ export function ComboboxAsync<Option extends DefaultComboboxOption>({
 				return;
 			}
 
-			// Start the loading state
+			// No cached options found, so kick off the loading state
 			setState({ inputItems: undefined, loading: true, networkError: false });
-
 			try {
-				// Attempt to load the options, update the UI and the cache
+				// Load the options
 				const inputItems = await loadOptionsProp(inputValue);
 				const filteredInputItems = filterOptions(inputItems, inputValue);
+				// Update the cache
 				cache.current[inputValue] = filteredInputItems;
+				// Update the UI
 				setState({
 					inputItems: filteredInputItems,
 					loading: false,
@@ -119,7 +130,7 @@ export function ComboboxAsync<Option extends DefaultComboboxOption>({
 			}
 		}
 
-		loadOptions();
+		loadOptions(shouldLoadOptions);
 	}, [shouldLoadOptions, debouncedInput, loadOptionsProp]);
 
 	return (

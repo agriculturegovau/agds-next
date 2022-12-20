@@ -1,11 +1,11 @@
-import { Fragment, useState } from 'react';
+import { Fragment, ReactNode, useState } from 'react';
 import { UseComboboxReturnValue } from 'downshift';
 import { usePopper } from 'react-popper';
-import { mapSpacing } from '@ag.ds-next/core';
+import { FieldMaxWidth, mapSpacing } from '@ag.ds-next/core';
 import { textInputStyles } from '@ag.ds-next/text-input';
 import { Field } from '@ag.ds-next/field';
 import { Text } from '@ag.ds-next/text';
-import { ComboboxProps } from './Combobox';
+import { DefaultComboboxOption, splitLabel } from '../utils';
 import { ComboboxList } from './ComboboxList';
 import { ComboboxListItem } from './ComboboxListItem';
 import { ComboboxListLoading } from './ComboboxListLoading';
@@ -15,10 +15,46 @@ import {
 	ComboboxDropdownTrigger,
 	ComboboxClearButton,
 } from './ComboboxButtons';
-import { DefaultComboboxOption, splitLabel } from './utils';
 
-export type ComboboxBaseProps<Option extends DefaultComboboxOption> =
-	ComboboxProps<Option> & {
+export type CommonComboboxProps<Option extends DefaultComboboxOption> = {
+	/** Describes the purpose of the field. */
+	label: string;
+	/** If true, "(optional)" will never be appended to the label. */
+	hideOptionalLabel?: boolean;
+	/** If false, "(optional)" will be appended to the label. */
+	required?: boolean;
+	/** Provides extra information about the field. */
+	hint?: string;
+	/** Message to show when the field is invalid. */
+	message?: string;
+	/** If true, the invalid state will be rendered. */
+	invalid?: boolean;
+	/** If true, the field will stretch to the fill the width of its container. */
+	block?: boolean;
+	/** The maximum width of the field. */
+	maxWidth?: Extract<FieldMaxWidth, 'md' | 'lg' | 'xl'>;
+	/** If true, the field will not be interactive. */
+	disabled?: boolean;
+	/** Defines an identifier (ID) which must be unique. */
+	id?: string;
+	/** A string specifying a name for the input control. */
+	name?: string;
+	/** If true, the dropdown trigger will be rendered. */
+	showDropdownTrigger?: boolean;
+	/** If true, the selected item can be cleared. Only available when `showDropdownTrigger` is false. */
+	clearable?: boolean;
+	/** Function to be fired following a change event. */
+	onChange?: (value: Option | null) => void;
+	/** The value of the field. */
+	value?: Option | null;
+	/** Used to override the default item rendering.  */
+	renderItem?: (item: Option, inputValue: string) => ReactNode;
+	/** Message to display when no options match the users search term. */
+	emptyResultsMessage?: string;
+};
+
+type ComboboxBaseProps<Option extends DefaultComboboxOption> =
+	CommonComboboxProps<Option> & {
 		inputId: string;
 		inputItems?: Option[];
 		loading?: boolean;

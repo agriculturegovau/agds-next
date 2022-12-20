@@ -149,7 +149,7 @@ export {
 	SkeletonBox,
 } from '@ag.ds-next/skeleton';
 export { Autocomplete } from '@ag.ds-next/autocomplete';
-export { Combobox } from '@ag.ds-next/combobox';
+export { Combobox, ComboboxAsync } from '@ag.ds-next/combobox';
 export { Details } from '@ag.ds-next/details';
 export {
 	SummaryList,
