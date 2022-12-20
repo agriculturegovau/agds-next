@@ -5,14 +5,6 @@ group: Forms
 storybookPath: /story/forms-tasklist--unordered
 ---
 
-The individual tasks or steps are shown as either:
-
-- `todo` – the task is available for the user to do
-- `doing` – the task has been started, and is ready for the user to continue.
-- `done` – the task has been completed
-- `doneRecently` – the task has just been completed
-- `blocked` - the task cannot be completed until other tasks have been.
-
 ```jsx live
 <TaskList
 	items={[
@@ -40,6 +32,14 @@ The individual tasks or steps are shown as either:
 	]}
 />
 ```
+
+The individual tasks or steps are shown as either:
+
+- `todo` – the task is available for the user to do
+- `doing` – the task has been started, and is ready for the user to continue.
+- `done` – the task has been completed
+- `doneRecently` – the task has just been completed
+- `blocked` - the task cannot be completed until other tasks have been.
 
 <DoHeading />
 

@@ -1,13 +1,9 @@
 ---
 title: Card
-description: The card component is used to provide a brief summary of content or a task, often with a link to more detail. Cards are frequently displayed alongside other cards to group related content or tasks.
+description: Also known as Tiles, Cards are a layout component that link to more information on a topic.
 group: Layout
 storybookPath: /story/layout-card--basic
 ---
-
-## Basic card
-
-Cards are used to organise information related to a single topic. Cards can contain multiple elements, such as images, links, actions, text and more.
 
 ```jsx live
 <Flex gap={1} flexDirection="row">
@@ -55,6 +51,25 @@ Cards are used to organise information related to a single topic. Cards can cont
 	</Flex>
 </Flex>
 ```
+
+Cards are used to organise information related to a single topic. Cards can contain multiple elements, such as images, links, actions, text and more.
+
+<DoHeading />
+
+- use link cards to provide a contextual link to another page
+- only have one link per card
+- avoid images for the most part unless they add information and are relevant
+- use a pictogram only if it provides meaningful context
+- use appropriate alt text for images.
+
+<DontHeading />
+
+- include more than 1 topic per card
+- use decorative images
+- use formatted or rich text such as lists, links etc. in the content area
+- include more than 3 lines of body copy
+- repeat images in card groups
+- use different card types in the same grid.
 
 ## Images
 

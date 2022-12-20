@@ -5,10 +5,6 @@ group: Forms
 storybookPath: /story/forms-switch--switch
 ---
 
-A Switch allows a user to toggle a setting on or off, immediately affecting the user interface. Common use-cases include filtering interfaces and settings menus.
-
-A Switch should not be used in Forms, or where a submit button is needed. Instead, a Checkbox or Radio component should be used.
-
 ```jsx live
 () => {
 	const [isChecked, setChecked] = React.useState(false);
@@ -21,6 +17,10 @@ A Switch should not be used in Forms, or where a submit button is needed. Instea
 	);
 };
 ```
+
+A Switch allows a user to toggle a setting on or off, immediately affecting the user interface. Common use-cases include filtering interfaces and settings menus.
+
+A Switch should not be used in Forms, or where a submit button is needed. Instead, a Checkbox or Radio component should be used.
 
 `Switch` is a [controlled component](https://reactjs.org/docs/forms.html#controlled-components).
 

@@ -7,12 +7,6 @@ storybookPath: /story/content-badge-statusbadge--basic
 
 ## StatusBadge
 
-Use `StatusBadge` to highlight an item's status for quick recognition.
-
-Choosing a `tone` for StatusBadge allows the user to understand the importance and severity of the message at a glance.
-
-The five supported tones are `info`, `success`, `error`, `warning` and `neutral`.
-
 ```jsx live
 <Flex flexWrap="wrap" gap={1}>
 	<StatusBadge tone="info" label="In progress" />
@@ -22,6 +16,12 @@ The five supported tones are `info`, `success`, `error`, `warning` and `neutral`
 	<StatusBadge tone="neutral" label="Draft" />
 </Flex>
 ```
+
+Use `StatusBadge` to highlight an item's status for quick recognition.
+
+Choosing a `tone` for StatusBadge allows the user to understand the importance and severity of the message at a glance.
+
+The five supported tones are `info`, `success`, `error`, `warning` and `neutral`.
 
 <DoHeading />
 
@@ -36,10 +36,6 @@ The five supported tones are `info`, `success`, `error`, `warning` and `neutral`
 
 ## NotificationBadge
 
-A notification badge is a visual indicator for numeric values.
-
-Use the `max` property where the count is expected to exceed a reasonable number, and the exact count is not particularly valuable to the user.
-
 ```jsx live
 <Flex gap={1}>
 	<NotificationBadge tone="neutral" value={16} />
@@ -47,6 +43,10 @@ Use the `max` property where the count is expected to exceed a reasonable number
 	<NotificationBadge tone="action" max={99} value={123} />
 </Flex>
 ```
+
+A notification badge is a visual indicator for numeric values.
+
+Use the `max` property where the count is expected to exceed a reasonable number, and the exact count is not particularly valuable to the user.
 
 <DoHeading />
 
