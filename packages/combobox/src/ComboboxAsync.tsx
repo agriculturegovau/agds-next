@@ -57,36 +57,35 @@ export function ComboboxAsync<Option extends DefaultComboboxOption>({
 	});
 
 	// Keep track of the debounced input value to prevent unnecessary network requests
-	const [debouncedInput] = useDebounce(downshift.inputValue, 300);
+	const [debouncedInputValue] = useDebounce(downshift.inputValue, 300);
 
 	const shouldLoadOptions = useMemo(() => {
+		// Do load options when...
 		if (
 			// User has just started typing, so this avoids the flicker of the empty state
-			(!debouncedInput && downshift.inputValue) ||
+			(!debouncedInputValue && downshift.inputValue) ||
 			// User has manually triggered the dropdown menu open
 			(showDropdownTrigger && downshift.isOpen && !downshift.selectedItem)
 		) {
 			return true;
 		}
-
+		// Do NOT load options when...
 		const selectedItemLabel = downshift.selectedItem?.label;
-		// Do not load options when...
 		if (
 			// Options are already being loaded
 			state.loading ||
-			// options have failed to load
+			// Options have failed to load
 			state.networkError ||
 			// If a selection has just been made, no not need to load options again
-			(selectedItemLabel && selectedItemLabel === debouncedInput) ||
+			(selectedItemLabel && selectedItemLabel === debouncedInputValue) ||
 			// When there is no dropdown trigger (e.g. Autocomplete), only load the options if the user has interacted with the input
 			(!showDropdownTrigger && !isInputDirty.current)
 		) {
 			return false;
 		}
-
 		return true;
 	}, [
-		debouncedInput,
+		debouncedInputValue,
 		downshift.inputValue,
 		downshift.isOpen,
 		downshift.selectedItem,
@@ -95,18 +94,17 @@ export function ComboboxAsync<Option extends DefaultComboboxOption>({
 		state.networkError,
 	]);
 
-	// Keep track of of loaded options and search terms to prevent unnecessary network requests
+	// Keep track of search terms/loaded options to prevent unnecessary network requests
 	const cache = useRef<Record<string, Option[]>>({});
 
 	useEffect(() => {
 		async function loadOptions(shouldLoadOptions: boolean) {
 			if (!shouldLoadOptions) return;
 			// sanitize the input value
-			const inputValue = debouncedInput?.toLowerCase() ?? '';
+			const inputValue = debouncedInputValue?.toLowerCase() ?? '';
 
 			// If there are cached options for the search term, use that
-			const cachedInputItems =
-				inputValue in cache.current ? cache.current[inputValue] : null;
+			const cachedInputItems = cache.current[inputValue];
 			if (cachedInputItems) {
 				setState({
 					inputItems: cachedInputItems,
@@ -137,7 +135,7 @@ export function ComboboxAsync<Option extends DefaultComboboxOption>({
 		}
 
 		loadOptions(shouldLoadOptions);
-	}, [shouldLoadOptions, debouncedInput, loadOptionsProp]);
+	}, [shouldLoadOptions, debouncedInputValue, loadOptionsProp]);
 
 	return (
 		<ComboboxBase
