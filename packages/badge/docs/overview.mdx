@@ -7,12 +7,6 @@ storybookPath: /story/content-badge-statusbadge--basic
 
 ## StatusBadge
 
-Use `StatusBadge` to highlight an item's status for quick recognition.
-
-Choosing a `tone` for StatusBadge allows the user to understand the importance and severity of the message at a glance.
-
-The five supported tones are `info`, `success`, `error`, `warning` and `neutral`.
-
 ```jsx live
 <Flex flexWrap="wrap" gap={1}>
 	<StatusBadge tone="info" label="In progress" />
@@ -23,24 +17,45 @@ The five supported tones are `info`, `success`, `error`, `warning` and `neutral`
 </Flex>
 ```
 
-## NotificationBadge
+Use `StatusBadge` to highlight an item's status for quick recognition.
 
-A notification badge is a visual indicator for numeric values.
+Choosing a `tone` for StatusBadge allows the user to understand the importance and severity of the message at a glance.
+
+The five supported tones are `info`, `success`, `error`, `warning` and `neutral`.
+
+<DoHeading />
+
+- use to indicate the status of a task or process
+- use to help users differentiate between multiple statuses
+
+<DontHeading />
+
+- use status badge without an icon
+- change the colours or create new ones
+- use when colour and icon don't convey meaning.
+
+## NotificationBadge
 
 ```jsx live
 <Flex gap={1}>
 	<NotificationBadge tone="neutral" value={16} />
 	<NotificationBadge tone="action" value={8} />
+	<NotificationBadge tone="action" max={99} value={123} />
 </Flex>
 ```
 
-### Maximum value
+A notification badge is a visual indicator for numeric values.
 
 Use the `max` property where the count is expected to exceed a reasonable number, and the exact count is not particularly valuable to the user.
 
-```jsx live
-<NotificationBadge tone="action" max={99} value={123} />
-```
+<DoHeading />
+
+- use to indicate numeric values such as message count
+- place next to associated content – for example, Messages (1)
+
+<DontHeading />
+
+- change the colours or create new ones
 
 ## IndicatorDot
 
@@ -91,3 +106,12 @@ An IndicatorDot should not be used on its own, as it gives no context. It should
 	</Flex>
 </Flex>
 ```
+
+<DoHeading />
+
+- use to indicate something needs attention – for example, unread messages
+
+<DontHeading />
+
+- change the colours or create new ones
+- use on it's own. It should be considered as part of a wider composition.

@@ -1,15 +1,26 @@
 ---
 title: Date Picker
-description: Allow users to select a single date or a range of dates.
+description: Date picker allows users to select a single date or range of dates. There are 3 types; date select range, simple date input and date select.
 group: forms
 storybookPath: /story/forms-datepicker-datepicker--basic
 ---
 
+<DoHeading />
+
+- allow year or date navigation
+- use date format dd/mm/yyyy
+- allow approximate date options
+- use autocomplete where it might help with input—for example, date of birth
+- ensure users can use Tab to select a date
+- Make sure error messages are specific about what input is required. For example, dd/mm/yyyy should always be displayed in hint text.
+
+<DontHeading />
+
+- use international date formats such as USA mm/dd/yyyy
+- use Date Select for historical dates such as birthdates – use Date Input
+- hijack built-in keyboard navigation behaviour.
+
 ## Date Picker
-
-`DatePicker` is a [controlled component](https://reactjs.org/docs/forms.html#controlled-components).
-
-### Basic
 
 ```jsx live
 () => {
@@ -17,6 +28,8 @@ storybookPath: /story/forms-datepicker-datepicker--basic
 	return <DatePicker label="Select date" value={value} onChange={setValue} />;
 };
 ```
+
+`DatePicker` is a [controlled component](https://reactjs.org/docs/forms.html#controlled-components).
 
 ### Block
 

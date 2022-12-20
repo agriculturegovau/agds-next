@@ -5,12 +5,6 @@ group: Navigation
 storybookPath: /story/navigation-subnav--basic
 ---
 
-The `SubNav` component is a horizontal list of links that can accommodate up to 5 items. It is best suited for navigation to persistent links, or to reveal additional content on the same page. The `SubNav` component sometimes accommodates the third level of the information architecture, following the [Side Nav](/components/side-nav) on a content page. If you need more space for longer lists, consider another form of navigation such as the [Side Nav](/components/side-nav), [Link List](/components/link-list), [Inpage Nav](/components/inpage-nav) or [Card lists](/components/card#card-lists).
-
-The `SubNav` component is designed to collapse down to a static vertical list on smaller devices. Progressive disclosure should not be used to enclose the SubNav on small screens.
-
-The background of the `SubNav` must match the background it is being placed on. For example, if `SubNav` is placed on a 'bodyAlt' background, please set the `background` prop to `bodyAlt`.
-
 ```jsx live
 <SubNav
 	activePath="#usage"
@@ -22,3 +16,23 @@ The background of the `SubNav` must match the background it is being placed on. 
 	]}
 />
 ```
+
+The `SubNav` component is a horizontal list of links that can accommodate up to 5 items. It is best suited for navigation to persistent links, or to reveal additional content on the same page. The `SubNav` component sometimes accommodates the third level of the information architecture, following the [Side Nav](/components/side-nav) on a content page. If you need more space for longer lists, consider another form of navigation such as the [Side Nav](/components/side-nav), [Link List](/components/link-list), [Inpage Nav](/components/inpage-nav) or [Card lists](/components/card#card-lists).
+
+The `SubNav` component is designed to collapse down to a static vertical list on smaller devices. Progressive disclosure should not be used to enclose the SubNav on small screens.
+
+The background of the `SubNav` must match the background it is being placed on. For example, if `SubNav` is placed on a 'bodyAlt' background, please set the `background` prop to `bodyAlt`.
+
+<DoHeading />
+
+- use to link to pages within the current section
+- keep the user in the same scroll position when navigating between items
+- write meaningful labels for each item
+- indicate active state for the relevant item
+
+<DontHeading />
+
+- use more than 5 items
+- apply more than one SubNav on a page
+- use to replicate Tabs behaviour
+- use to link to items on the same page – use Inpage nav.

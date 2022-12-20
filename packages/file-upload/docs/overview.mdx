@@ -1,11 +1,9 @@
 ---
 title: File Upload
-description: Allows a user to select files for upload, via drag-and-drop or using the system file browser.
+description: This component allows users to select files to upload via drag-and-drop or browsing their device.
 group: Forms
 storybookPath: /story/forms-fileupload--basic
 ---
-
-`FileUpload` is a [controlled component](https://reactjs.org/docs/forms.html#controlled-components).
 
 ```jsx live
 <FileUpload
@@ -15,6 +13,23 @@ storybookPath: /story/forms-fileupload--basic
 	accept={['image/jpeg', 'image/jpg', 'image/png']}
 />
 ```
+
+`FileUpload` is a [controlled component](https://reactjs.org/docs/forms.html#controlled-components).
+
+<DoHeading />
+
+- provide the accepted file types, maximum file size and whether the user can upload one file at a time or several at once
+- include hint text to provide information about the field
+- indicate file uploading state
+- indicate successful file upload
+- indicate unsuccessful file uploads with a meaningful error message.
+
+<DontHeading />
+
+- use for multiple files in modals or page alerts
+- add a standalone Submit file button inside a form
+- include other fields on the page
+- make File upload a mandatory field.
 
 ## Indicating upload status
 

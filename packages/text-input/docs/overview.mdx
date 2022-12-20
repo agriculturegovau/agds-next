@@ -1,17 +1,30 @@
 ---
 title: Text Input
-description: Text inputs are input fields typically used in forms that allow the user to enter text data in a structured format.
+description: This component allows users to enter free-form text.
 group: Forms
 storybookPath: /story/forms-textinput--basic
 ---
 
-## Default
-
-By default, the `TextInput` component does not expand to fill the available space.
-
 ```jsx live
 <TextInput label="Name" />
 ```
+
+By default, the `TextInput` component does not expand to fill the available space.
+
+<DoHeading />
+
+- use when unique information needs to be entered that can’t be answered through preset options
+- indicate if input is optional
+- provide useful hints where necessary
+- provide an error message when input is invalid
+- align form inputs using a FormStack
+- hide the ‘optional’ label when filtering data.
+
+<DontHeading />
+
+- use if a dropdown, select, or radio button can be used instead
+- hide the 'optional' label within a form
+- use placeholder text as a substitute for a label.
 
 ## Block
 

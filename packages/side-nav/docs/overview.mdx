@@ -1,13 +1,9 @@
 ---
 title: Side Nav
-description: A vertical list of links for site navigation typically placed next to the body content.
+description: A vertical list of links use for site navigation, typically placed next to body content.
 group: Navigation
 storybookPath: /story/navigation-sidenav--light-variant
 ---
-
-The side navigation allows users to find other pages which share a similar topic or section. By default it supports three levels of nesting along with an accompanying heading.
-
-On mobile and smaller viewports, the side navigation uses functionality from the accordion component to collapse down to an expandable element. (Coming soon)
 
 ```jsx live
 <SideNav
@@ -62,4 +58,18 @@ On mobile and smaller viewports, the side navigation uses functionality from the
 />
 ```
 
+The side navigation allows users to find other pages which share a similar topic or section. By default it supports three levels of nesting along with an accompanying heading.
+
+On mobile and smaller viewports, the side navigation uses functionality from the accordion component to collapse down to an expandable element. (Coming soon)
+
 The background of the `SideNav` must match the background it is being placed on. For example, if `SideNav` is placed on a 'bodyAlt' background, please set the `background` prop to `bodyAlt`.
+
+<DoHeading />
+
+- include a concise label
+- indent each nesting level
+
+<DontHeading />
+
+- create more than 3 levels of nesting
+- place on the right-hand side of content.

@@ -1,17 +1,9 @@
 ---
 title: Main Nav
-description: A horizontal list of links to key areas on the website. Typically placed in the header.
+description: The main nav is the primary way users navigate the UI. It is consistently visible throughout the service.
 group: Navigation
 storybookPath: /story/navigation-mainnav--body
 ---
-
-The main navigation component is intended to be used as the primary means of navigation around the website. It typically accommodates the top level of the information architecture.
-
-Most sites will require some form of navigation to help users find the information they’re looking for. While a horizontal navigation bar is just one option for navigation design, it is one of the most visible and familiar ways of helping users navigate a site.
-
-The main navigation component is designed to work closely with the header component and collapses down to a conventional open/close menu button on smaller devices.
-
-Note: Because the main navigation component is a horizontal list, it doesn’t accommodate a large amount of items. If you need more space, consider another navigation component such as the [side nav](/components/side-nav).
 
 ```jsx live
 <Box palette="dark">
@@ -26,3 +18,24 @@ Note: Because the main navigation component is a horizontal list, it doesn’t a
 	/>
 </Box>
 ```
+
+The main navigation component is intended to be used as the primary means of navigation around the website. It typically accommodates the top level of the information architecture.
+
+Most sites will require some form of navigation to help users find the information they’re looking for. While a horizontal navigation bar is just one option for navigation design, it is one of the most visible and familiar ways of helping users navigate a site.
+
+The main navigation component is designed to work closely with the header component and collapses down to a conventional open/close menu button on smaller devices.
+
+Note: Because the main navigation component is a horizontal list, it doesn’t accommodate a large amount of items. If you need more space, consider another navigation component such as the [side nav](/components/side-nav).
+
+<DoHeading />
+
+- use to display the top level of the information architecture
+- use to enable universal access to system-level tasks and functions – for example, Log in, Account settings, and Messages
+- use concise labels
+- model your navigation according to most frequently accesses tasks and information
+- implement below the Header component.
+
+<DontHeading />
+
+- use hover to expand dropdown lists
+- include more than 8 items where possible.
