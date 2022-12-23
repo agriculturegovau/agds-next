@@ -10,8 +10,7 @@ const defaultArgs = {
 	label: 'Find your state',
 	hint: 'Start typing to see results',
 	loadOptions: async function loadOptions() {
-		// Simulate a slow network connection
-		await new Promise((resolve) => setTimeout(resolve, 3000));
+		await new Promise((resolve) => setTimeout(resolve, 1000));
 		return [
 			{ label: 'Australian Capital Territory', value: 'act' },
 			{ label: 'New South Wales', value: 'nsw' },
@@ -63,4 +62,20 @@ export const Block = Template.bind({});
 Block.args = {
 	...defaultArgs,
 	block: true,
+};
+
+export const ExternalAPI = Template.bind({});
+ExternalAPI.args = {
+	...defaultArgs,
+	hideOptionalLabel: true,
+	label: 'Pick a Star Wars character',
+	loadOptions: async function loadOptions(inputValue: string) {
+		const response = await fetch(
+			`https://swapi.dev/api/people/?search=${inputValue}`
+		).then((r) => r.json());
+		return response.results.map((result: { name: string }) => ({
+			label: result.name,
+			value: result.name,
+		}));
+	},
 };

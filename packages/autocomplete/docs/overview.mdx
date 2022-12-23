@@ -5,11 +5,6 @@ group: Forms
 storybookPath: /story/forms-autocomplete--basic
 ---
 
-<PageAlert tone="warning">
-	This component is currently in development, some features currently may not be
-	working as expected.
-</PageAlert>
-
 ```jsx live
 () => {
 	const [value, setValue] = React.useState(null);
@@ -21,7 +16,7 @@ storybookPath: /story/forms-autocomplete--basic
 			onChange={(value) => setValue(value)}
 			loadOptions={async function loadOptions(inputValue) {
 				// Simulate a slow network call
-				await new Promise((resolve) => setTimeout(resolve, 3000));
+				await new Promise((resolve) => setTimeout(resolve, 1500));
 				return [
 					{ label: 'Australian Capital Territory', value: 'act' },
 					{ label: 'New South Wales', value: 'nsw' },
@@ -80,7 +75,7 @@ The usage of `hideOptionalLabel` should be reserved for inputs that filter data 
 			onChange={(value) => setValue(value)}
 			loadOptions={async function loadOptions(inputValue) {
 				// Simulate a slow network call
-				await new Promise((resolve) => setTimeout(resolve, 3000));
+				await new Promise((resolve) => setTimeout(resolve, 1500));
 				return [
 					{ label: 'Australian Capital Territory', value: 'act' },
 					{ label: 'New South Wales', value: 'nsw' },
@@ -113,7 +108,7 @@ Use the `block` prop to expand the component to fill the available space.
 			onChange={(value) => setValue(value)}
 			loadOptions={async function loadOptions(inputValue) {
 				// Simulate a slow network call
-				await new Promise((resolve) => setTimeout(resolve, 3000));
+				await new Promise((resolve) => setTimeout(resolve, 1500));
 				return [
 					{ label: 'Australian Capital Territory', value: 'act' },
 					{ label: 'New South Wales', value: 'nsw' },
@@ -148,7 +143,7 @@ Use the `invalid` prop to indicate if the user input is invalid (does not valida
 			onChange={(value) => setValue(value)}
 			loadOptions={async function loadOptions(inputValue) {
 				// Simulate a slow network call
-				await new Promise((resolve) => setTimeout(resolve, 3000));
+				await new Promise((resolve) => setTimeout(resolve, 1500));
 				return [
 					{ label: 'Australian Capital Territory', value: 'act' },
 					{ label: 'New South Wales', value: 'nsw' },

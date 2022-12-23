@@ -1,19 +1,19 @@
 import {
-	Combobox,
-	ComboboxProps,
+	ComboboxAsync,
+	ComboboxAsyncProps,
 	DefaultComboboxOption,
 } from '@ag.ds-next/combobox';
 
 export type AutocompleteProps<Option extends DefaultComboboxOption> = Omit<
-	ComboboxProps<Option>,
-	'showDropdownTrigger' | 'clearable' | 'options' | 'emptyResultsMessage'
+	ComboboxAsyncProps<Option>,
+	'showDropdownTrigger' | 'clearable' | 'emptyResultsMessage'
 >;
 
 export function Autocomplete<Option extends DefaultComboboxOption>(
 	props: AutocompleteProps<Option>
 ) {
 	return (
-		<Combobox
+		<ComboboxAsync
 			{...props}
 			showDropdownTrigger={false}
 			clearable={true}

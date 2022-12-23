@@ -1,9 +1,12 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { useState } from 'react';
 import { Combobox } from './Combobox';
+import { ComboboxAsync } from './ComboboxAsync';
 
 export default {
 	title: 'forms/Combobox',
 	component: Combobox,
+	subcomponents: { ComboboxAsync },
 } as ComponentMeta<typeof Combobox>;
 
 const COUNTRIES = [
@@ -204,15 +207,18 @@ const COUNTRIES = [
 	'Zimbabwe',
 ].map((country) => ({ label: country, value: country }));
 
+type Option = typeof COUNTRIES[number];
+
 const defaultArgs = {
 	label: 'Select country',
 	hint: 'Start typing to see results',
 	options: COUNTRIES,
 };
 
-const Template: ComponentStory<typeof Combobox> = (args) => (
-	<Combobox {...args} />
-);
+const Template: ComponentStory<typeof Combobox> = (args) => {
+	const [value, onChange] = useState<Option | null>(null);
+	return <Combobox {...args} value={value} onChange={onChange} />;
+};
 
 export const Basic = Template.bind({});
 Basic.args = {
@@ -250,28 +256,31 @@ Block.args = {
 	block: true,
 };
 
-export const AsyncOptions = Template.bind({});
+const AsyncTemplate: ComponentStory<typeof ComboboxAsync> = (args) => {
+	const [value, onChange] = useState<Option | null>(null);
+	return <ComboboxAsync {...args} value={value} onChange={onChange} />;
+};
+
+export const AsyncOptions = AsyncTemplate.bind({});
 AsyncOptions.args = {
 	label: 'Select character',
 	hint: 'Start typing to see results',
 	loadOptions: async function loadOptions(inputValue) {
 		const response = await fetch(
-			inputValue
-				? `https://swapi.dev/api/people/?search=${inputValue}`
-				: `https://swapi.dev/api/people`
+			`https://swapi.dev/api/people/?search=${inputValue}`
 		);
 		const data: { results: { name: string }[] } = await response.json();
 		return data.results.map(({ name }) => ({ value: name, label: name }));
 	},
 };
 
-export const AsyncOptionsWithError = Template.bind({});
+export const AsyncOptionsWithError = AsyncTemplate.bind({});
 AsyncOptionsWithError.args = {
 	label: 'Select character',
 	hint: 'Start typing to see results',
 	loadOptions: async function loadOptions() {
 		// Simulate a slow network connection
-		await new Promise((resolve) => setTimeout(resolve, 3000));
+		await new Promise((resolve) => setTimeout(resolve, 1000));
 		throw new Error('Something went wrong while fetching options');
 	},
 };

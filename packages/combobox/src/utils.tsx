@@ -1,3 +1,10 @@
+import { useId } from '@ag.ds-next/core';
+
+export function useComboboxInputId(idProp?: string) {
+	const autoId = useId();
+	return idProp || `combobox-input-${autoId}`;
+}
+
 export type DefaultComboboxOption = { label: string; value: string };
 
 export function filterOptions<Option extends DefaultComboboxOption>(

@@ -5,11 +5,6 @@ group: Forms
 storybookPath: /story/forms-combobox--basic
 ---
 
-<PageAlert tone="warning">
-	This component is currently in development, some features currently may not be
-	working as expected.
-</PageAlert>
-
 ```jsx live
 () => {
 	const [value, setValue] = React.useState(null);
@@ -77,38 +72,6 @@ Use the `block` prop to expand the component to fill the available space.
 };
 ```
 
-## Async
-
-Use the `loadOptions` prop when you need to populate options from a network request.
-
-```jsx live
-() => {
-	const [value, setValue] = React.useState(null);
-	return (
-		<Combobox
-			label="Select state"
-			hint="Start typing to see results"
-			value={value}
-			onChange={(value) => setValue(value)}
-			loadOptions={async function loadOptions(inputValue) {
-				// Simulate a slow network call
-				await new Promise((resolve) => setTimeout(resolve, 3000));
-				return [
-					{ label: 'Australian Capital Territory', value: 'act' },
-					{ label: 'New South Wales', value: 'nsw' },
-					{ label: 'Northern Territory', value: 'nt' },
-					{ label: 'Queensland', value: 'qld' },
-					{ label: 'South Australia', value: 'sa' },
-					{ label: 'Tasmania', value: 'tas' },
-					{ label: 'Victoria', value: 'vic' },
-					{ label: 'Western Australia', value: 'wa' },
-				];
-			}}
-		/>
-	);
-};
-```
-
 ## Required
 
 The `required` prop can be used to indicate that user input is required on the field before a form can be submitted.
@@ -170,6 +133,38 @@ Use the `invalid` prop to indicate if the user input is invalid (does not valida
 				{ label: 'Victoria', value: 'vic' },
 				{ label: 'Western Australia', value: 'wa' },
 			]}
+		/>
+	);
+};
+```
+
+## ComboboxAsync
+
+Use the `ComboboxAsync` component when you need to populate options from a network request.
+
+```jsx live
+() => {
+	const [value, setValue] = React.useState(null);
+	return (
+		<ComboboxAsync
+			label="Select state"
+			hint="Start typing to see results"
+			value={value}
+			onChange={(value) => setValue(value)}
+			loadOptions={async function loadOptions(inputValue) {
+				// Simulate a slow network call
+				await new Promise((resolve) => setTimeout(resolve, 1500));
+				return [
+					{ label: 'Australian Capital Territory', value: 'act' },
+					{ label: 'New South Wales', value: 'nsw' },
+					{ label: 'Northern Territory', value: 'nt' },
+					{ label: 'Queensland', value: 'qld' },
+					{ label: 'South Australia', value: 'sa' },
+					{ label: 'Tasmania', value: 'tas' },
+					{ label: 'Victoria', value: 'vic' },
+					{ label: 'Western Australia', value: 'wa' },
+				];
+			}}
 		/>
 	);
 };

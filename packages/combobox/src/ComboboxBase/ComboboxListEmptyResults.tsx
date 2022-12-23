@@ -1,7 +1,11 @@
 import { Text } from '@ag.ds-next/text';
 import { ComboboxListItem } from './ComboboxListItem';
 
-export function ComboboxListEmptyResults({ message }: { message: string }) {
+export type ComboboxListEmptyResultsProps = { message: string };
+
+export function ComboboxListEmptyResults({
+	message,
+}: ComboboxListEmptyResultsProps) {
 	return (
 		<ComboboxListItem isActiveItem={false} isInteractive={false}>
 			<Text>{message}</Text>
