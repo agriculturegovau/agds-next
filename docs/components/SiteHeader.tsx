@@ -43,7 +43,7 @@ export const SiteHeader = () => {
 				logo={<Logo />}
 				heading="Agriculture Design System"
 				subline="Design System for the Export Service"
-				badgeLabel="Alpha"
+				badgeLabel="Beta"
 			/>
 			<MainNav
 				id="main-nav"
