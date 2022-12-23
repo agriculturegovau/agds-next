@@ -67,6 +67,8 @@ Block.args = {
 export const ExternalAPI = Template.bind({});
 ExternalAPI.args = {
 	...defaultArgs,
+		hideOptionalLabel: true,
+		label: 'Pick a Star Wars character',
 	loadOptions: async function loadOptions(inputValue: string) {
 		const response = await fetch(
 			`https://swapi.dev/api/people/?search=${inputValue}`

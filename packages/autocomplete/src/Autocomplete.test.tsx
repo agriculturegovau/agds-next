@@ -28,7 +28,7 @@ function renderAutocomplete() {
 	);
 }
 
-describe('ComboboxAsync', () => {
+describe('Autocomplete', () => {
 	it('renders correctly', () => {
 		const { container } = renderAutocomplete();
 		expect(container).toMatchSnapshot();
