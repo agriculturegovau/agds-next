@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ComboboxAsync renders correctly 1`] = `
+exports[`Autocomplete renders correctly 1`] = `
 <div>
   <div
     class="css-ep8qz0-ComboboxBase"
