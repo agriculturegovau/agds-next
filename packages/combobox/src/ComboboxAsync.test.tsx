@@ -1,29 +1,28 @@
 import '@testing-library/jest-dom';
 import 'html-validate/jest';
 import userEvent from '@testing-library/user-event';
-import { render, cleanup, waitFor } from '../../../test-utils';
+import { render, cleanup, act } from '../../../test-utils';
 import { ComboboxAsync } from './ComboboxAsync';
 
 afterEach(cleanup);
+
+const mockLoadOptions = jest.fn().mockResolvedValue([
+	{ label: 'Australian Capital Territory', value: 'act' },
+	{ label: 'New South Wales', value: 'nsw' },
+	{ label: 'Northern Territory', value: 'nt' },
+	{ label: 'Queensland', value: 'qld' },
+	{ label: 'South Australia', value: 'sa' },
+	{ label: 'Tasmania', value: 'tas' },
+	{ label: 'Victoria', value: 'vic' },
+	{ label: 'Western Australia', value: 'wa' },
+]);
 
 function renderComboboxAsync() {
 	return render(
 		<ComboboxAsync
 			label="Find your state"
 			hint="Start typing to see results"
-			loadOptions={async function loadOptions() {
-				await new Promise((resolve) => setTimeout(resolve, 500));
-				return [
-					{ label: 'Australian Capital Territory', value: 'act' },
-					{ label: 'New South Wales', value: 'nsw' },
-					{ label: 'Northern Territory', value: 'nt' },
-					{ label: 'Queensland', value: 'qld' },
-					{ label: 'South Australia', value: 'sa' },
-					{ label: 'Tasmania', value: 'tas' },
-					{ label: 'Victoria', value: 'vic' },
-					{ label: 'Western Australia', value: 'wa' },
-				];
-			}}
+			loadOptions={mockLoadOptions}
 		/>
 	);
 }
@@ -55,22 +54,20 @@ describe('ComboboxAsync', () => {
 		expect(input).toBeInTheDocument();
 		if (!input) return;
 
-		// Focus the input and start type a search term
+		// Focus the input and start typing a search term
 		input.focus();
-		expect(input).toHaveFocus();
-		await userEvent.type(input, 'qld');
-		expect(input.value).toBe('qld');
+		userEvent.type(input, 'qld');
 
-		// Wait for the options to load
-		await waitFor(() => new Promise((resolve) => setTimeout(resolve, 2000)), {
-			timeout: 3000,
-		});
+		// Wait for 500ms so options can be loaded
+		await act(async () => await new Promise((res) => setTimeout(res, 500)));
 
 		// Select the QLD option
 		const options = container.querySelectorAll('li');
 		expect(options.length).toBe(1);
 		expect(options[0].textContent).toBe('Queensland');
 		await userEvent.click(options[0]);
+
+		// Expect the input to be updated
 		expect(input.value).toBe('Queensland');
 	});
 });
