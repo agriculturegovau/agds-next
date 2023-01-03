@@ -40,9 +40,11 @@ export default function PackagesCode({
 						<Prose>
 							<h2>Usage</h2>
 							<p>
-								{pkg.title} components can be imported from the{' '}
-								<code>{pkg.name}</code> entrypoint. For example:
+								{pkg.title} components can be imported via the{' '}
+								<code>{pkg.name}</code> entrypoint in the{' '}
+								<code>@ag.ds-next/react</code> package.
 							</p>
+							<p>For example:</p>
 							<pre>
 								<code>{`import { ... } from '@ag.ds-next/react/${pkg.name}';`}</code>
 							</pre>
