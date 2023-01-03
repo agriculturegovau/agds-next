@@ -1,0 +1,173 @@
+---
+title: 4th January, 2023
+description: TODO
+---
+
+> ⚠️ Note: All releases under the `@ag.ds-next` package scope should be considered alpha pre-releases. Expect breaking changes. Once we are happy with the state of the core packages we will migrate all packages to `@ag.ds`.
+
+## New Packages
+
+```sh
+@ag.ds-next/global-alert@1.0.0
+@ag.ds-next/search-input@1.0.0
+```
+
+### @ag.ds-next/global-alert@1.0.0
+
+Global Alerts show pressing and high-signal messages, such as system alerts.
+
+You can [learn more about GlobalAlert in the component docs](https://design-system.agriculture.gov.au/components/global-alert).
+
+```jsx live
+<GlobalAlert title="Alert title">
+	<Text as="p">
+		Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce massa nibh,
+		aliquam vel dolor non, gravida porttitor nulla. Pellentesque cursus orci
+		vulputate nibh sagittis blandit.
+	</Text>
+</GlobalAlert>
+```
+
+### @ag.ds-next/search-input@1.0.0
+
+Search input enables users to enter a word or phrase to find relevant content.
+
+You can [learn more about SearchInput in the component docs](https://design-system.agriculture.gov.au/components/search-input).
+
+```jsx live
+<SearchInput label="Search" />
+```
+
+## Updates
+
+### @ag.ds-next/badge@4.0.0
+
+- Removed the neutral tone as well as the `tone` prop from IndicatorDot. It now only uses the blue 'action' colour.
+
+### @ag.ds-next/combobox@2.0.0
+
+- Split up `Combobox` and `ComboboxAsync` into separate components
+- Improved styles to combobox buttons (dropdown indicator and clear button)
+- Added debouncing to prevent unnecessary network requests
+- Removed `valid` prop
+- Added new prop `hideOptionalLabel`. If true, "(optional)" will never be appended to the label even when `required` is `false`.
+- Adjusted form field max widths
+
+### @ag.ds-next/icon@13.0.0
+
+- Added new size `xl` (2.5rem/40px)
+- Enable dynamic weights to show thicker strokes at small sizes
+- Added support for responsive sizes
+- Removed `ProgressDoneIcon`
+- Added `ProgressBlockedIcon`
+- Updated `ProgressTodoIcon`
+
+### @ag.ds-next/autocomplete@2.0.0
+
+- Removed `valid` prop.
+- Added debouncing to prevent unnecessary network requests.
+
+### @ag.ds-next/box@8.1.0
+
+- Enable responsive border props
+
+### @ag.ds-next/breadcrumbs@16.0.0
+
+- Added collapsible behaviour to mobile version
+
+### @ag.ds-next/control-input@13.0.0
+
+- Removed `valid` prop
+- Added `aria-invalid` and `aria-describedby` to `Checkbox` and `Radio`
+- Added new prop `hideOptionalLabel`. If true, "(optional)" will never be appended to the label even when `required` is `false`.
+
+### @ag.ds-next/date-picker@10.0.0
+
+- Removed `valid` prop
+- Added year select to calendar widget
+- Disabled browser autocomplete from text input
+- Improve accessibility by increasing font weight of selected dates
+- Adjusted form field max widths
+
+### @ag.ds-next/field@12.0.0
+
+- Removed `valid` prop
+- Added new prop `hideOptionalLabel`. If true, "(optional)" will never be appended to the label even when `required` is `false`.
+- Adjusted form field max widths
+
+### @ag.ds-next/file-upload@8.0.0
+
+- Removed `valid` prop
+- Show multiple errors per rejected file
+- Updated visual styles for default and active drag state
+- Added new prop `hideOptionalLabel`. If true, "(optional)" will never be appended to the label even when `required` is `false`.
+
+### @ag.ds-next/progress-indicator@14.0.0
+
+- Visual improvements featuring a new timeline design
+- Added new status option `blocked`
+- Updated status labels with new language
+
+### @ag.ds-next/select@13.0.0
+
+- Removed `valid` prop
+- Adjusted form field max width and removed `xs` and `sm` options from the `maxWidth` prop
+- Added new prop `hideOptionalLabel`. If true, "(optional)" will never be appended to the label even when `required` is `false`.
+
+### @ag.ds-next/task-list@12.0.0
+
+- Added new status options `blocked` and `doneRecently`
+- Added title and step count above TaskList
+- Updated status labels with new language
+- UI refresh
+
+### @ag.ds-next/text-input@13.0.0
+
+- Removed `valid` prop
+- Adjusted form field max widths
+- Added new prop `hideOptionalLabel`. If true, "(optional)" will never be appended to the label even when `required` is `false`.
+
+### @ag.ds-next/textarea@13.0.0
+
+- Removed `valid` prop
+- Adjusted form field max widths and removed `xs` and `sm` options from the `maxWidth` prop
+- Added new prop `hideOptionalLabel`. If true, "(optional)" will never be appended to the label even when `required` is `false`.
+
+### @ag.ds-next/card@9.0.0
+
+- Updated card link data attribute value
+
+### @ag.ds-next/content@11.0.0
+
+- Added support for `tabIndex` in `BaseContent`
+
+### @ag.ds-next/core@4.1.1
+
+- Adjusted form field max widths
+
+### @ag.ds-next/header@13.0.0
+
+- Adjust responsive behaviour to better support `SearchBox`
+
+### @ag.ds-next/main-nav@16.0.0
+
+- Added tab index to navigation container to improve accessibility when used with skip links
+
+### @ag.ds-next/prose@3.0.0
+
+- Added empty styles so the container will be hidden if no content has been supplied
+- Increase spacing before block elements
+
+### @ag.ds-next/search-box@14.0.0
+
+- Removed browser autocomplete from the search box input component
+
+### @ag.ds-next/summary-list@2.0.0
+
+- Prevented flex shrinking of `SummaryListItemTerm` to ensure the width of this element is always the same
+
+## Released packages
+
+```sh
+TODO
+```
