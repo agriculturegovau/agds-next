@@ -1,7 +1,7 @@
 import { FormEvent } from 'react';
-import { Stack } from '@ag.ds-next/box';
-import { H2 } from '@ag.ds-next/heading';
-import { Button } from '@ag.ds-next/button';
+import { Stack } from '@ag.ds-next/react/box';
+import { H2 } from '@ag.ds-next/react/heading';
+import { Button } from '@ag.ds-next/react/button';
 import { FormDefinitionList } from '../FormDefinitionList';
 import {
 	FORM_STEPS,

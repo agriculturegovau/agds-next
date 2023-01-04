@@ -1,3 +1,2 @@
 node_modules
-design-system/lib
-packages/*/dist
+**/dist

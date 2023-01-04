@@ -1,6 +1,6 @@
 import { GetStaticProps, InferGetStaticPropsType } from 'next';
 import { MDXRemote } from 'next-mdx-remote';
-import { Prose } from '@ag.ds-next/prose';
+import { Prose } from '@ag.ds-next/react/prose';
 import {
 	getPkgList,
 	getPkg,
@@ -37,17 +37,27 @@ export default function PackagesCode({
 					editPath={`/packages/${pkg.slug}/docs/code.mdx`}
 				>
 					<Prose id="pkg-content">
+						<h2>Usage</h2>
+						<p>
+							{pkg.title} components can be imported via the{' '}
+							<code>{pkg.name}</code> entrypoint in the{' '}
+							<code>@ag.ds-next/react</code> package.
+						</p>
+						<p>For example:</p>
+						<pre>
+							<code>{`import { ... } from '@ag.ds-next/react/${pkg.name}';`}</code>
+						</pre>
+						<MDXRemote {...content} components={mdxComponents} />
 						<h2>Source</h2>
 						<p>
 							You can view the full source code for this package on{' '}
 							<a
-								href={`https://github.com/steelthreads/agds-next/tree/main/packages/${pkg.slug}`}
+								href={`https://github.com/steelthreads/agds-next/tree/main/packages/react/src/${pkg.slug}`}
 							>
 								Github
 							</a>
 							.
 						</p>
-						<MDXRemote {...content} components={mdxComponents} />
 					</Prose>
 				</PkgLayout>
 			</AppLayout>

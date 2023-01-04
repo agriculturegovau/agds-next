@@ -1,10 +1,10 @@
-import { Prose, proseBlockClassname } from '@ag.ds-next/prose';
+import { Prose, proseBlockClassname } from '@ag.ds-next/react/prose';
 import {
 	SummaryList,
 	SummaryListItem,
 	SummaryListItemDescription,
 	SummaryListItemTerm,
-} from '@ag.ds-next/summary-list';
+} from '@ag.ds-next/react/summary-list';
 import { DocumentTitle } from '../../components/DocumentTitle';
 import { TokenLayout } from '../../components/TokenLayout';
 import { SpacingChart } from '../../components/TokenCharts';

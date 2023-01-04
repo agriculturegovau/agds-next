@@ -1,7 +1,7 @@
-import { Box, Flex, Stack } from '@ag.ds-next/box';
-import { Card, CardInner, CardLink } from '@ag.ds-next/card';
-import { Columns } from '@ag.ds-next/columns';
-import { Text } from '@ag.ds-next/text';
+import { Box, Flex, Stack } from '@ag.ds-next/react/box';
+import { Card, CardInner, CardLink } from '@ag.ds-next/react/card';
+import { Columns } from '@ag.ds-next/react/columns';
+import { Text } from '@ag.ds-next/react/text';
 import { DocumentTitle } from '../../components/DocumentTitle';
 import { TokenLayout } from '../../components/TokenLayout';
 import { TOKEN_NAV_LINKS } from '../../content/tokens';

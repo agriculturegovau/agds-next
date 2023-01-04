@@ -2,22 +2,22 @@ import { useEffect, useRef, useState } from 'react';
 import { useForm, SubmitHandler, SubmitErrorHandler } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
-import { Box, Stack } from '@ag.ds-next/box';
-import { Button, ButtonGroup } from '@ag.ds-next/button';
-import { FormStack } from '@ag.ds-next/form-stack';
-import { TextInput } from '@ag.ds-next/text-input';
-import { H2 } from '@ag.ds-next/heading';
-import { Prose } from '@ag.ds-next/prose';
-import { useScrollToField } from '@ag.ds-next/field';
-import { useToggleState } from '@ag.ds-next/core';
-import { PageAlert } from '@ag.ds-next/page-alert';
-import { Select } from '@ag.ds-next/select';
+import { Box, Stack } from '@ag.ds-next/react/box';
+import { Button, ButtonGroup } from '@ag.ds-next/react/button';
+import { FormStack } from '@ag.ds-next/react/form-stack';
+import { TextInput } from '@ag.ds-next/react/text-input';
+import { H2 } from '@ag.ds-next/react/heading';
+import { Prose } from '@ag.ds-next/react/prose';
+import { useScrollToField } from '@ag.ds-next/react/field';
+import { useToggleState } from '@ag.ds-next/react/core';
+import { PageAlert } from '@ag.ds-next/react/page-alert';
+import { Select } from '@ag.ds-next/react/select';
 import {
 	SummaryList,
 	SummaryListItem,
 	SummaryListItemDescription,
 	SummaryListItemTerm,
-} from '@ag.ds-next/summary-list';
+} from '@ag.ds-next/react/summary-list';
 import { FormRequiredFieldsMessage } from '../FormRequiredFieldsMessage';
 import { FormRegisterPetPersonalDetailsContainer } from './FormRegisterPetPersonalDetailsContainer';
 import { FormRegisterPetPersonalDetailsActions } from './FormRegisterPetPersonalDetailsActions';

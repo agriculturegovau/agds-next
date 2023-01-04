@@ -1,8 +1,8 @@
 import { useRouter } from 'next/router';
-import { Logo } from '@ag.ds-next/ag-branding';
-import { Stack } from '@ag.ds-next/box';
-import { Header } from '@ag.ds-next/header';
-import { MainNav } from '@ag.ds-next/main-nav';
+import { Logo } from '@ag.ds-next/react/ag-branding';
+import { Stack } from '@ag.ds-next/react/box';
+import { Header } from '@ag.ds-next/react/header';
+import { MainNav } from '@ag.ds-next/react/main-nav';
 
 const GithubIcon = () => (
 	<svg

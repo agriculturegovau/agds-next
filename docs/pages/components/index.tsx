@@ -1,11 +1,11 @@
 import { normalize } from 'path';
 import { Fragment, useMemo, useState } from 'react';
 import { MDXRemote } from 'next-mdx-remote';
-import { Stack } from '@ag.ds-next/box';
-import { Prose } from '@ag.ds-next/prose';
-import { H2 } from '@ag.ds-next/heading';
-import { Text } from '@ag.ds-next/text';
-import { SearchInput } from '@ag.ds-next/search-input';
+import { Stack } from '@ag.ds-next/react/box';
+import { Prose } from '@ag.ds-next/react/prose';
+import { H2 } from '@ag.ds-next/react/heading';
+import { Text } from '@ag.ds-next/react/text';
+import { SearchInput } from '@ag.ds-next/react/search-input';
 import { getMarkdownData, serializeMarkdown } from '../../lib/mdxUtils';
 import {
 	COMPONENTS_PATH,

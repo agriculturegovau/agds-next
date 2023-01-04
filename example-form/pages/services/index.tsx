@@ -1,9 +1,9 @@
-import { SectionContent } from '@ag.ds-next/content';
+import { SectionContent } from '@ag.ds-next/react/content';
 import {
 	HeroCategoryBanner,
 	HeroCategoryBannerTitle,
 	HeroCategoryBannerSubtitle,
-} from '@ag.ds-next/hero-banner';
+} from '@ag.ds-next/react/hero-banner';
 import { AppLayout } from '../../components/AppLayout';
 import { DocumentTitle } from '../../components/DocumentTitle';
 import { ServicesCardList } from '../../components/ServicesCardList';
