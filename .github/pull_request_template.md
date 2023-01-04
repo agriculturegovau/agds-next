@@ -16,6 +16,7 @@ Include screenshots, photos or links if necessary.
 For new components...
 
 - [ ] Preconstruct entrypoint has been created
+- [ ] Changeset file includes a minor
 - [ ] Export components for docs site and Playroom (docs/components/designSystemComponents.tsx)
 - [ ] Add snippets to Playroom (docs/playroom/snippets.js)
 - [ ] Add pictogram to Docs (docs/components/pictograms/index.tsx)
