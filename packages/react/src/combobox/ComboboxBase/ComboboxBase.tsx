@@ -1,10 +1,10 @@
 import { Fragment, ReactNode, useState } from 'react';
 import { UseComboboxReturnValue } from 'downshift';
 import { usePopper } from 'react-popper';
-import { FieldMaxWidth, mapSpacing } from '@ag.ds-next/core';
-import { textInputStyles } from '@ag.ds-next/text-input';
-import { Field } from '@ag.ds-next/field';
-import { Text } from '@ag.ds-next/text';
+import { FieldMaxWidth, mapSpacing } from '../../core';
+import { textInputStyles } from '../../text-input';
+import { Field } from '../../field';
+import { Text } from '../../text';
 import { DefaultComboboxOption, splitLabel } from '../utils';
 import { ComboboxList } from './ComboboxList';
 import { ComboboxListItem } from './ComboboxListItem';

@@ -1,5 +1,5 @@
 import { forwardRef, PropsWithChildren } from 'react';
-import { Box } from '../box';
+import { Box } from '../../box';
 
 export type ComboboxListProps = PropsWithChildren<{
 	isOpen: boolean;

@@ -1,4 +1,4 @@
-import { Text } from '../text';
+import { Text } from '../../text';
 import { ComboboxListItem } from './ComboboxListItem';
 
 export type ComboboxListEmptyResultsProps = { message: string };

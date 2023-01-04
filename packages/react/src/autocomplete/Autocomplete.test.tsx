@@ -1,7 +1,7 @@
 import '@testing-library/jest-dom';
 import 'html-validate/jest';
 import userEvent from '@testing-library/user-event';
-import { render, cleanup, act } from '../../../test-utils';
+import { render, cleanup, act } from '../../../../test-utils';
 import { Autocomplete } from './Autocomplete';
 
 afterEach(cleanup);

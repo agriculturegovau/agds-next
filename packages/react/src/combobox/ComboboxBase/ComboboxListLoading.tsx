@@ -1,6 +1,6 @@
-import { Flex } from '../box';
-import { LoadingDots } from '../loading';
-import { Text } from '../text';
+import { Flex } from '../../box';
+import { LoadingDots } from '../../loading';
+import { Text } from '../../text';
 import { ComboboxListItem } from './ComboboxListItem';
 
 export function ComboboxListLoading() {

@@ -1,12 +1,6 @@
-<<<<<<< HEAD:packages/react/src/combobox/ComboboxBase/ComboboxListError.tsx
-import { Flex } from '@ag.ds-next/box';
-import { AlertFilledIcon } from '@ag.ds-next/icon';
-import { Text } from '@ag.ds-next/text';
-=======
-import { Flex } from '../box';
-import { AlertIcon } from '../icon';
-import { Text } from '../text';
->>>>>>> d50511948 (create pkg):packages/react/src/combobox/ComboboxListError.tsx
+import { Flex } from '../../box';
+import { AlertFilledIcon } from '../../icon';
+import { Text } from '../../text';
 import { ComboboxListItem } from './ComboboxListItem';
 
 export function ComboboxListError() {

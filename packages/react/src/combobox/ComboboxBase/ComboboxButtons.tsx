@@ -1,8 +1,8 @@
 import { ButtonHTMLAttributes, ComponentType, forwardRef } from 'react';
-import { IconProps, CloseIcon, ChevronDownIcon } from '../icon';
-import { BaseButton } from '../button';
-import { boxPalette, mapSpacing, tokens } from '../core';
-import { focusStyles } from '../box';
+import { IconProps, CloseIcon, ChevronDownIcon } from '../../icon';
+import { BaseButton } from '../../button';
+import { boxPalette, mapSpacing, tokens } from '../../core';
+import { focusStyles } from '../../box';
 
 export const ComboboxClearButton = forwardRef<
 	HTMLButtonElement,

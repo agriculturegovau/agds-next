@@ -1,12 +1,8 @@
-<<<<<<< HEAD:packages/autocomplete/src/Autocomplete.tsx
 import {
 	ComboboxAsync,
 	ComboboxAsyncProps,
 	DefaultComboboxOption,
-} from '@ag.ds-next/combobox';
-=======
-import { Combobox, ComboboxProps, DefaultComboboxOption } from '../combobox';
->>>>>>> d50511948 (create pkg):packages/react/src/autocomplete/Autocomplete.tsx
+} from '../combobox';
 
 export type AutocompleteProps<Option extends DefaultComboboxOption> = Omit<
 	ComboboxAsyncProps<Option>,

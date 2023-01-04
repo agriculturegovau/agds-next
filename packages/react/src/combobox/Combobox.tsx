@@ -1,19 +1,6 @@
 import { useState } from 'react';
 import { useCombobox } from 'downshift';
-<<<<<<< HEAD:packages/combobox/src/Combobox.tsx
 import { ComboboxBase, CommonComboboxProps } from './ComboboxBase/ComboboxBase';
-=======
-import { usePopper } from 'react-popper';
-import { FieldMaxWidth, mapSpacing, useId } from '../core';
-import { textInputStyles } from '../text-input';
-import { Field } from '../field';
-import { Text } from '../text';
-import { ComboboxList } from './ComboboxList';
-import { ComboboxListItem } from './ComboboxListItem';
-import { ComboboxListLoading } from './ComboboxListLoading';
-import { ComboboxListError } from './ComboboxListError';
-import { ComboboxListEmptyResults } from './ComboboxListEmptyResults';
->>>>>>> d50511948 (create pkg):packages/react/src/combobox/Combobox.tsx
 import {
 	DefaultComboboxOption,
 	filterOptions,

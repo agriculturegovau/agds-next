@@ -1,6 +1,6 @@
 import { forwardRef, HTMLAttributes } from 'react';
-import { Box } from '../box';
-import { boxPalette } from '../core';
+import { Box } from '../../box';
+import { boxPalette } from '../../core';
 
 type ComboboxListItemProps = Omit<HTMLAttributes<HTMLLIElement>, 'color'> & {
 	isActiveItem: boolean;

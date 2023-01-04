@@ -1,4 +1,4 @@
-import { useId } from '@ag.ds-next/core';
+import { useId } from '../core';
 
 export function useComboboxInputId(idProp?: string) {
 	const autoId = useId();
