@@ -1,18 +1,18 @@
-import { Prose } from '@ag.ds-next/prose';
-import { PageContent, ContentBleed } from '@ag.ds-next/content';
-import { Columns, Column } from '@ag.ds-next/columns';
-import { SideNav } from '@ag.ds-next/side-nav';
-import { Breadcrumbs } from '@ag.ds-next/breadcrumbs';
-import { Stack } from '@ag.ds-next/box';
-import { InpageNav } from '@ag.ds-next/inpage-nav';
-import { DirectionLink } from '@ag.ds-next/direction-link';
-import { Callout } from '@ag.ds-next/callout';
-import { Text } from '@ag.ds-next/text';
+import { Prose } from '@ag.ds-next/react/prose';
+import { PageContent, ContentBleed } from '@ag.ds-next/react/content';
+import { Columns, Column } from '@ag.ds-next/react/columns';
+import { SideNav } from '@ag.ds-next/react/side-nav';
+import { Breadcrumbs } from '@ag.ds-next/react/breadcrumbs';
+import { Stack } from '@ag.ds-next/react/box';
+import { InpageNav } from '@ag.ds-next/react/inpage-nav';
+import { DirectionLink } from '@ag.ds-next/react/direction-link';
+import { Callout } from '@ag.ds-next/react/callout';
+import { Text } from '@ag.ds-next/react/text';
 import {
 	Accordion,
 	AccordionItem,
 	AccordionItemContent,
-} from '@ag.ds-next/accordion';
+} from '@ag.ds-next/react/accordion';
 import { PageTitle } from '../../../components/PageTitle';
 import { DocumentTitle } from '../../../components/DocumentTitle';
 import { AppLayout } from '../../../components/AppLayout';

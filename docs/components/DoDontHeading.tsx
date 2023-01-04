@@ -1,5 +1,5 @@
-import { Flex } from '@ag.ds-next/box';
-import { SuccessFilledIcon, AlertFilledIcon } from '@ag.ds-next/icon';
+import { Flex } from '@ag.ds-next/react/box';
+import { SuccessFilledIcon, AlertFilledIcon } from '@ag.ds-next/react/icon';
 
 export const DoHeading = () => (
 	<p>

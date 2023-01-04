@@ -6,7 +6,7 @@ import {
 	useState,
 } from 'react';
 import { useRouter } from 'next/router';
-import { TaskListItemStatus } from '@ag.ds-next/task-list';
+import { TaskListItemStatus } from '@ag.ds-next/react/task-list';
 import {
 	FormState as Task1FormState,
 	formSchema as task1FormSchema,

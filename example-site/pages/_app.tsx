@@ -3,8 +3,8 @@ import { Fragment, useEffect } from 'react';
 import Script from 'next/script';
 import { useRouter } from 'next/router';
 import Head from 'next/head';
-import { Core } from '@ag.ds-next/core';
-import { theme } from '@ag.ds-next/ag-branding';
+import { Core } from '@ag.ds-next/react/core';
+import { theme } from '@ag.ds-next/react/ag-branding';
 import { LinkComponent } from '../components/LinkComponent';
 import { trackPageView, GA_MEASUREMENT_ID } from '../lib/gtag';
 

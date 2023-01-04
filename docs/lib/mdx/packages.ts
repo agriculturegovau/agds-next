@@ -11,25 +11,22 @@ import { slugify } from '../slugify';
 
 export const COMPONENTS_PATH = normalize(`${process.cwd()}/content/components`);
 
-const PKG_PATH = normalize(`${process.cwd()}/../packages`);
+const REACT_PKG_PATH = normalize(`${process.cwd()}/../packages/react`);
+const PKG_PATH = normalize(`${REACT_PKG_PATH}/src`);
 const pkgReadmePath = (slug: string) => `${PKG_PATH}/${slug}/docs/overview.mdx`;
-
 const pkgDocsPath = (slug: string) => normalize(`${PKG_PATH}/${slug}/docs`);
 
-const pkgJsonPath = (slug: string) =>
-	normalize(`${PKG_PATH}/${slug}/package.json`);
-
 export async function getPkg(slug: string) {
-	const { name, version } = await getJSONData(pkgJsonPath(slug));
 	const { data, content } = await getMarkdownData(pkgReadmePath(slug));
+	const { version } = await getJSONData(`${REACT_PKG_PATH}/package.json`);
 	const source = await serializeMarkdown(content, data);
 	const subNavItems = await getPkgSubNavItems(slug);
 	return {
 		slug,
 		source,
 		data,
-		name: name as string,
-		version: version as string,
+		name: slug,
+		version,
 		title: (data.title ?? slug) as string,
 		description: (data.description ?? null) as string | null,
 		storybookPath: (data.storybookPath ?? null) as string | null,

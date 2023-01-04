@@ -1,6 +1,6 @@
 import { PropsWithChildren } from 'react';
-import { Core } from '@ag.ds-next/core';
-import { theme } from '@ag.ds-next/ag-branding';
+import { Core } from '@ag.ds-next/react/core';
+import { theme } from '@ag.ds-next/react/ag-branding';
 
 type FrameComponentProps = PropsWithChildren<{}>;
 

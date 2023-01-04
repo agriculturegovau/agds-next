@@ -1,9 +1,9 @@
 import { Fragment } from 'react';
-import { Button, ButtonGroup } from '@ag.ds-next/button';
-import { Modal } from '@ag.ds-next/modal';
-import { Stack } from '@ag.ds-next/box';
-import { Text } from '@ag.ds-next/text';
-import { useTernaryState } from '@ag.ds-next/core';
+import { Button, ButtonGroup } from '@ag.ds-next/react/button';
+import { Modal } from '@ag.ds-next/react/modal';
+import { Stack } from '@ag.ds-next/react/box';
+import { Text } from '@ag.ds-next/react/text';
+import { useTernaryState } from '@ag.ds-next/react/core';
 import { FormDivider } from '../FormDivider';
 import { useFormRegisterPetPersonalDetails } from './FormRegisterPetPersonalDetails';
 

@@ -1,4 +1,4 @@
-import { Prose, proseBlockClassname } from '@ag.ds-next/prose';
+import { Prose, proseBlockClassname } from '@ag.ds-next/react/prose';
 import {
 	TableHead,
 	TableWrapper,
@@ -7,11 +7,11 @@ import {
 	TableBody,
 	TableHeader,
 	TableCell,
-} from '@ag.ds-next/table';
-import { Text } from '@ag.ds-next/text';
-import { tokens, FontSize, Font } from '@ag.ds-next/core';
-import { Stack } from '@ag.ds-next/box';
-import { InpageNav } from '@ag.ds-next/inpage-nav';
+} from '@ag.ds-next/react/table';
+import { Text } from '@ag.ds-next/react/text';
+import { tokens, FontSize, Font } from '@ag.ds-next/react/core';
+import { Stack } from '@ag.ds-next/react/box';
+import { InpageNav } from '@ag.ds-next/react/inpage-nav';
 import { DocumentTitle } from '../../components/DocumentTitle';
 import { TokenLayout } from '../../components/TokenLayout';
 import { LineHeightChart } from '../../components/TokenCharts';

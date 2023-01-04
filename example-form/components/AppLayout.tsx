@@ -1,6 +1,6 @@
 import { PropsWithChildren, useMemo } from 'react';
-import { Box, Flex } from '@ag.ds-next/box';
-import { SkipLinks } from '@ag.ds-next/skip-link';
+import { Box, Flex } from '@ag.ds-next/react/box';
+import { SkipLinks } from '@ag.ds-next/react/skip-link';
 import { SiteHeader } from './SiteHeader';
 import { SiteFooter } from './SiteFooter';
 

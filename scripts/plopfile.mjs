@@ -41,30 +41,22 @@ export default function newPackage(
 				type: 'addMany',
 				templateFiles: '../plop-templates/component/**',
 				base: '../plop-templates/component/',
-				destination: `../packages/${packageName}`,
+				destination: `../packages/react/src/${packageName}`,
 				data: { componentName, packageName, projectCategorySlug },
-			});
-
-			actions.push({
-				type: 'modify',
-				path: '../docs/package.json',
-				pattern: /"dependencies": {/,
-				template:
-					'"dependencies": {\n"@ag.ds-next/{{packageName}}": "^0.0.1",\n',
 			});
 
 			actions.push({
 				type: 'append',
 				path: '../docs/components/designSystemComponents.tsx',
 				template:
-					'export { {{componentName}} } from "@ag.ds-next/{{packageName}}"\n',
+					'export { {{componentName}} } from "@ag.ds-next/react/{{packageName}}"\n',
 			});
 
 			actions.push({
 				type: 'add',
 				path: '../.changeset/plop-create-{{packageName}}.md',
 				template:
-					"---\n'@ag.ds-next/{{packageName}}': major\n---\n\nCreate package",
+					"---\n'@ag.ds-next/react': minor\n---\n\nCreated new component `{{componentName}}`\n",
 			});
 
 			return actions;

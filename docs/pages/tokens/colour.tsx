@@ -1,9 +1,9 @@
 import { useState } from 'react';
-import { Prose, proseBlockClassname } from '@ag.ds-next/prose';
-import { Switch } from '@ag.ds-next/switch';
-import { Box } from '@ag.ds-next/box';
-import { InpageNav } from '@ag.ds-next/inpage-nav';
-import { Column, Columns } from '@ag.ds-next/columns';
+import { Prose, proseBlockClassname } from '@ag.ds-next/react/prose';
+import { Switch } from '@ag.ds-next/react/switch';
+import { Box } from '@ag.ds-next/react/box';
+import { InpageNav } from '@ag.ds-next/react/inpage-nav';
+import { Column, Columns } from '@ag.ds-next/react/columns';
 import { DocumentTitle } from '../../components/DocumentTitle';
 import { ColorTable } from '../../components/TokenColorTable';
 import { TokenLayout } from '../../components/TokenLayout';

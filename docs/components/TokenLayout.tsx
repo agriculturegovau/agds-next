@@ -1,5 +1,5 @@
 import { PropsWithChildren } from 'react';
-import { BreadcrumbsProps } from '@ag.ds-next/breadcrumbs';
+import { BreadcrumbsProps } from '@ag.ds-next/react/breadcrumbs';
 import { TOKEN_NAV_LINKS } from '../content/tokens';
 import { AppLayout } from './AppLayout';
 import { PageLayout } from './PageLayout';

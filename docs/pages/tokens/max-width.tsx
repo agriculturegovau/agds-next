@@ -1,5 +1,5 @@
-import { tokens } from '@ag.ds-next/core';
-import { Prose } from '@ag.ds-next/prose';
+import { tokens } from '@ag.ds-next/react/core';
+import { Prose } from '@ag.ds-next/react/prose';
 import { DocumentTitle } from '../../components/DocumentTitle';
 import { MaxWidthChart } from '../../components/TokenCharts';
 import { TokenLayout } from '../../components/TokenLayout';

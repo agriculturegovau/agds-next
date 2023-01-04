@@ -11,7 +11,7 @@ import { LiveProvider, LiveEditor, LivePreview, withLive } from 'react-live';
 import { createUrl } from 'playroom/utils';
 import Highlight, { defaultProps, Language } from 'prism-react-renderer';
 import copy from 'clipboard-copy';
-import { ExternalLinkCallout } from '@ag.ds-next/a11y';
+import { ExternalLinkCallout } from '@ag.ds-next/react/a11y';
 import {
 	globalPalette,
 	mapSpacing,
@@ -19,14 +19,18 @@ import {
 	tokens,
 	useId,
 	useToggleState,
-} from '@ag.ds-next/core';
-import { Box, Flex } from '@ag.ds-next/box';
+} from '@ag.ds-next/react/core';
+import { Box, Flex } from '@ag.ds-next/react/box';
 import {
 	unsetProseStylesClassname,
 	proseBlockClassname,
-} from '@ag.ds-next/prose';
-import { Button, ButtonLink } from '@ag.ds-next/button';
-import { CopyIcon, ChevronDownIcon, ChevronUpIcon } from '@ag.ds-next/icon';
+} from '@ag.ds-next/react/prose';
+import { Button, ButtonLink } from '@ag.ds-next/react/button';
+import {
+	CopyIcon,
+	ChevronDownIcon,
+	ChevronUpIcon,
+} from '@ag.ds-next/react/icon';
 import * as designSystemComponents from './designSystemComponents';
 import { prismTheme } from './prism-theme';
 
