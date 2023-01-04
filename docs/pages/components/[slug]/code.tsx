@@ -37,18 +37,16 @@ export default function PackagesCode({
 					editPath={`/packages/${pkg.slug}/docs/code.mdx`}
 				>
 					<Prose id="pkg-content">
-						<Prose>
-							<h2>Usage</h2>
-							<p>
-								{pkg.title} components can be imported via the{' '}
-								<code>{pkg.name}</code> entrypoint in the{' '}
-								<code>@ag.ds-next/react</code> package.
-							</p>
-							<p>For example:</p>
-							<pre>
-								<code>{`import { ... } from '@ag.ds-next/react/${pkg.name}';`}</code>
-							</pre>
-						</Prose>
+						<h2>Usage</h2>
+						<p>
+							{pkg.title} components can be imported via the{' '}
+							<code>{pkg.name}</code> entrypoint in the{' '}
+							<code>@ag.ds-next/react</code> package.
+						</p>
+						<p>For example:</p>
+						<pre>
+							<code>{`import { ... } from '@ag.ds-next/react/${pkg.name}';`}</code>
+						</pre>
 						<MDXRemote {...content} components={mdxComponents} />
 						<h2>Source</h2>
 						<p>
