@@ -1,5 +1,15 @@
 # @ag.ds-next/summary-list
 
+## 2.0.0
+
+### Patch Changes
+
+- 0f2c88bd3: Prevented flex shrinking of `SummaryListItemTerm` to ensure the width of this element is always the same.
+- Updated dependencies [d5670236e]
+- Updated dependencies [1f3bdfc4c]
+  - @ag.ds-next/box@8.1.0
+  - @ag.ds-next/core@4.1.1
+
 ## 1.0.0
 
 ### Major Changes

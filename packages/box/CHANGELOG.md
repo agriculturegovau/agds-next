@@ -1,5 +1,16 @@
 # @ag.ds-next/box
 
+## 8.1.0
+
+### Minor Changes
+
+- d5670236e: Enable responsive border props
+
+### Patch Changes
+
+- Updated dependencies [1f3bdfc4c]
+  - @ag.ds-next/core@4.1.1
+
 ## 8.0.0
 
 ### Patch Changes

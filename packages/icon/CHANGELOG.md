@@ -1,5 +1,27 @@
 # @ag.ds-next/icon
 
+## 13.0.0
+
+### Major Changes
+
+- 9ff8a7fed: - Removed `ProgressDoneIcon`
+  - Added `ProgressBlockedIcon`
+  - Updated `ProgressTodoIcon`
+
+### Minor Changes
+
+- a4803ea9a: Added support for responsive sizes
+
+### Patch Changes
+
+- 85dd20b03: Enable dynamic weights to show thicker strokes at small sizes.
+- 29f1aa7f4: Added new size `xl` (2.5rem/40px)
+- Updated dependencies [d5670236e]
+- Updated dependencies [1f3bdfc4c]
+  - @ag.ds-next/box@8.1.0
+  - @ag.ds-next/core@4.1.1
+  - @ag.ds-next/text@12.0.0
+
 ## 12.0.0
 
 ### Minor Changes
