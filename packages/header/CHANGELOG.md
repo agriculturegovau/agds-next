@@ -1,5 +1,17 @@
 # @ag.ds-next/header
 
+## 13.0.0
+
+### Patch Changes
+
+- acc884879: Adjust responsive behaviour to better support `SearchBox`
+- Updated dependencies [d5670236e]
+- Updated dependencies [1f3bdfc4c]
+  - @ag.ds-next/box@8.1.0
+  - @ag.ds-next/core@4.1.1
+  - @ag.ds-next/columns@10.0.0
+  - @ag.ds-next/text@12.0.0
+
 ## 12.0.0
 
 ### Patch Changes

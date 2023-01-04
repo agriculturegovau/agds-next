@@ -1,5 +1,15 @@
 # @ag.ds-next/table
 
+## 8.0.0
+
+### Patch Changes
+
+- Updated dependencies [d5670236e]
+- Updated dependencies [1f3bdfc4c]
+  - @ag.ds-next/box@8.1.0
+  - @ag.ds-next/core@4.1.1
+  - @ag.ds-next/text@12.0.0
+
 ## 7.0.0
 
 ### Patch Changes

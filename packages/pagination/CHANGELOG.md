@@ -1,5 +1,17 @@
 # @ag.ds-next/pagination
 
+## 5.0.0
+
+### Patch Changes
+
+- Updated dependencies [d5670236e]
+- Updated dependencies [1f3bdfc4c]
+  - @ag.ds-next/box@8.1.0
+  - @ag.ds-next/core@4.1.1
+  - @ag.ds-next/direction-link@12.0.0
+  - @ag.ds-next/button@13.0.0
+  - @ag.ds-next/text@12.0.0
+
 ## 4.0.0
 
 ### Patch Changes

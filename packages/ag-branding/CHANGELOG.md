@@ -1,5 +1,12 @@
 # @ag.ds-next/ag-branding
 
+## 8.0.1
+
+### Patch Changes
+
+- Updated dependencies [1f3bdfc4c]
+  - @ag.ds-next/core@4.1.1
+
 ## 8.0.0
 
 ### Patch Changes

@@ -1,5 +1,13 @@
 # @ag.ds-next/skip-link
 
+## 11.0.0
+
+### Patch Changes
+
+- Updated dependencies [1f3bdfc4c]
+  - @ag.ds-next/core@4.1.1
+  - @ag.ds-next/button@13.0.0
+
 ## 10.0.0
 
 ### Patch Changes

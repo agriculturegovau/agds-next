@@ -1,5 +1,32 @@
 # @ag.ds-next/date-picker
 
+## 10.0.0
+
+### Minor Changes
+
+- e05a47386: Removed `valid` prop
+- ea89383fd: - Added year select to calendar widget
+  - Disabled browser autocomplete from text input
+
+### Patch Changes
+
+- c220cef58: Improve accessibility by increasing font weight of selected dates
+- 1f3bdfc4c: Adjusted form field max widths
+- Updated dependencies [85dd20b03]
+- Updated dependencies [d5670236e]
+- Updated dependencies [b8d470ad0]
+- Updated dependencies [9ff8a7fed]
+- Updated dependencies [e05a47386]
+- Updated dependencies [a4803ea9a]
+- Updated dependencies [1f3bdfc4c]
+- Updated dependencies [29f1aa7f4]
+  - @ag.ds-next/icon@13.0.0
+  - @ag.ds-next/box@8.1.0
+  - @ag.ds-next/field@12.0.0
+  - @ag.ds-next/text-input@13.0.0
+  - @ag.ds-next/core@4.1.1
+  - @ag.ds-next/button@13.0.0
+
 ## 9.0.0
 
 ### Patch Changes

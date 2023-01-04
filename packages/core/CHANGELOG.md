@@ -1,5 +1,11 @@
 # @ag.ds-next/core
 
+## 4.1.1
+
+### Patch Changes
+
+- 1f3bdfc4c: Adjusted form field max widths
+
 ## 4.1.0
 
 ### Minor Changes

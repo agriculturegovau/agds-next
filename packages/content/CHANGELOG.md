@@ -1,5 +1,15 @@
 # @ag.ds-next/content
 
+## 11.0.0
+
+### Patch Changes
+
+- 9e48e4aae: Added support for `tabIndex` in `BaseContent`
+- Updated dependencies [d5670236e]
+- Updated dependencies [1f3bdfc4c]
+  - @ag.ds-next/box@8.1.0
+  - @ag.ds-next/core@4.1.1
+
 ## 10.0.0
 
 ### Patch Changes
