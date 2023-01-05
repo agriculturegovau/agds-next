@@ -3,13 +3,13 @@ title: Using Figma
 description: How to access the AgDS design files
 ---
 
-<ButtonLink
-	href="https://www.figma.com/files/project/37217032/AgDS-Agriculture-Design-System?fuid=1049534194839136217"
-	variant="secondary"
-	iconBefore={() => <FigmaLogo />}
->
-	{'Go to Figma'}
-</ButtonLink>
+<iframe
+	style={{ border: '1px solid rgba(0, 0, 0, 0.1)' }}
+	width="800"
+	height="450"
+	src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Ffile%2FSgSHfK8AUadp7aEzD34ZG3%2FAgDS---Agriculture-Design-System-1.2.1%3Fnode-id%3D10942%253A92273%26t%3DJ4Xy0yzc44JjeRPS-1"
+	allowfullscreen
+></iframe>
 
 Figma is an interface design tool that allows you to create, test, and iterate on your designs collaboratively. It is used by the Design System team to create and maintain the AgDS, and is the tool of choice for designing and prototyping applications for the Export Service.
 
@@ -17,18 +17,20 @@ A Figma account will be created for you as part of your onboading process with t
 
 For assistance with Figma accounts, please contact the Research Operations team.
 
-## About the Figma files
-
-The **AgDS Figma File** contains all of the components, colours, icons, and font-styles needed to build applications for the Export Service. It also contains a gallery of examples of common components variants, and is where the **AgDS Figma Component Library** is published from.
-
-The **AgDS Component development and testing file** is the Design System Team's working file. All new components, bug fixes and patterns are developed here. Please get in touch if you would like to contribute.
-
 ## Get started
 
-The fastest way to start designing, prototyping, testing your application is to copy the AgDS Design File into your team location. From there you will have edit access so you can copy the example components showcased in the Gallery, read design system guidance, or start consuming the components straight from the published library in the assets panel.
+To start using the AgDS Design System in Figma, you will need to enable the **AgDS Figma Component Library** in your team's project file. This will give you access to all of the components and tokens in AgDS. The component library is available in any Figma file you create in the DAFF Figma organisation. Simply select the latest version and activate it to enable all current components in any file.
 
-Alternatively, you can create a new blank Figma file in your project or draft folder, and enable the DAWE Figma asset library v1.20 to access the components and tokens. You can copy compositions in the Gallery and Templates pages of the AgDS Design file, and use them to create compositions for your product.
+Once the library is enabled, you can copy the compositions in the Gallery and Templates pages of the AgDS Design file, and compose them to create interfaces for your product.
 
-The Design System Component Library 2.0 is available in any Figma file you create in the Assets panel. Simply select the latest version and activate it to enable all current components in any file.
+Alternatively, you can drag and drop components straight from the published library in the assets panel into your project file.
 
-The Figma Design File and Component Library can be found [here](https://www.figma.com/files/project/37217032/AgDS-Agriculture-Design-System?fuid=1049534194839136217).
+Our components are built using the same properties as the React components, so developers can use the Figma components as a reference when building React applications.
+
+![alt text](/img/guides/figma/properties.jpg 'Figma properties panel')
+
+## About the Figma files
+
+The **[AgDS Figma File](https://www.figma.com/files/project/37217032/AgDS-Agriculture-Design-System?fuid=1049534194839136217)** contains all of the components, colours, icons, and font-styles needed to build applications for the Export Service. It also contains a gallery of examples of common components variants, and general design guidance for using the components. This file is also where the **AgDS Figma Component Library** is published from.
+
+The **AgDS Component development and testing file** is the Design System Team's working file. All new components, bug fixes and patterns are developed here. Please get in touch if you would like to contribute.
