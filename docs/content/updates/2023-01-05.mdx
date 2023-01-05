@@ -25,36 +25,36 @@ The AgDS team is composed of our lead Adrian Yee, designers Adham Dannaway and P
 
 ## Upgrade guide
 
-Current users of AgDS will need to follow this simple two step guide
+Current users of AgDS will need to follow this two step guide in order to upgrade from our previous multi-package distribution method.
 
 ### Step 1: Update package.json
 
-In your `package.json` file, remove all current dependencies to `@ag.ds-next` (e.g. `@ag.ds-next/box`) and replace with a single package `@ag.ds-next/react` at version `1.0.0`.
+In your `package.json` file, remove all current dependencies to `@ag.ds-next/*` (e.g. `@ag.ds-next/box`) and replace with a single dependency `@ag.ds-next/react` at version `1.0.0`.
 
-Once you have done that, you will need to re-install your depenecies again (e.g. by running `yarn` or `npm install`).
+Once you have done that, you will need install your dependencies (e.g. run `yarn` or `npm install`).
 
 ### Step 2: Update imports
 
-All imports to `@ag.ds-next` will also need to be updated. Luckily using VSCodes find and replace with RegEx makes this a fairly straightforward task.
+All imports to `@ag.ds-next/*` will also need to be updated. Using a code editors find and replace with RegEx feature makes this a fairly straightforward task.
 
 ```
 Find:    '@ag.ds-next/(.*)'
 Replace: '@ag.ds-next/react/$1'
 ```
 
-This results in...
+This will results in changes that look similar to the following:
 
 ```diff
 - import { Box, Flex, Stack } from '@ag.ds-next/box';
 + import { Box, Flex, Stack } from '@ag.ds-next/react/box';
 ```
 
-## Full Changelog
-
-Aside from the [complete release notes on the @ag.ds-next website](https://design-system.agriculture.gov.au/updates/2023-01-05), you can also view the [verbose change log](https://github.com/steelthreads/agds-next/pull/908) in the related PR (https://github.com/steelthreads/agds-next/pull/908) for this release.
-
 ## Released packages
 
 ```sh
 "@ag.ds-next/react": "1.0.0"
 ```
+
+## Full Changelog
+
+Aside from the [complete release notes on the @ag.ds-next website](https://design-system.agriculture.gov.au/updates/2023-01-05), you can also view the [verbose change log](https://github.com/steelthreads/agds-next/pull/908) in the [related PR](https://github.com/steelthreads/agds-next/pull/908) for this release.
