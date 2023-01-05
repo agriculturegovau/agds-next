@@ -1,6 +1,7 @@
 import { PropsWithChildren } from 'react';
 import { useRouter } from 'next/router';
-import { ButtonGroup, ButtonLink } from '@ag.ds-next/react/button';
+import { ButtonLink } from '@ag.ds-next/react/button';
+import { Flex } from '@ag.ds-next/react/box';
 import { Prose } from '@ag.ds-next/react/prose';
 import { SkipLinksProps } from '@ag.ds-next/react/skip-link';
 import { SubNav } from '@ag.ds-next/react/sub-nav';
@@ -42,7 +43,11 @@ export function PkgLayout({
 				introduction={pkg.description}
 				callToAction={
 					(pkg.storybookPath || pkg.figmaGalleryNodeId) && (
-						<ButtonGroup>
+						<Flex
+							gap={1.5}
+							flexDirection={['column', 'row']}
+							alignItems="flex-start"
+						>
 							{pkg.storybookPath && (
 								<ButtonLink
 									variant="text"
@@ -61,7 +66,7 @@ export function PkgLayout({
 									View in Figma
 								</ButtonLink>
 							)}
-						</ButtonGroup>
+						</Flex>
 					)
 				}
 			/>
