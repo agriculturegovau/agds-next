@@ -30,6 +30,7 @@ export async function getPkg(slug: string) {
 		title: (data.title ?? slug) as string,
 		description: (data.description ?? null) as string | null,
 		storybookPath: (data.storybookPath ?? null) as string | null,
+		figmaGalleryNodeId: (data.figmaGalleryNodeId ?? null) as string | null,
 		subNavItems: subNavItems ?? null,
 	};
 }
