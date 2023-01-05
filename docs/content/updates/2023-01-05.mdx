@@ -1,0 +1,60 @@
+---
+title: AgDS beta
+description: The Department of Agriculture, Forestry and Fisheries Export Services Design System Team is proud to announce the beta release the Agriculture Design System (AgDS).
+---
+
+The AgDS team have been working hard for over a year to get AgDS to where it is today and have received lots of great feedback from our product teams.
+
+AgDS provides a framework and a set of tools to help designers and developers build the steel threads of the Export Service quickly, efficiently and consistently. It includes a library of components that are built in React and Figma, a suite of templates and examples, as well as documentation and guidelines for using the available tools.
+
+AgDS is based on the former Australian Government Design System GOLD which incorporates the highest usability and accessibility standards, helping us to deliver a consistent experience for all users, in line with the Digital Service Standard. We’ve taken the aesthetic and many design principles of GOLD and extended it with the needs of the Export Service in mind with a modern React and Typescript architecture.
+
+Accessibility is a huge focus area for AgDS, and we have recently undertaken an extensive accessibility audit and usability research sessions by independent third party specialists Intopia. AgDS achieved AA-level compliance against the WCAG v2.1 standard from Intopia who now refer to it as an exemplary implementation of an accessible React based Design System.
+
+## Whats new in Beta?
+
+For designers, our AgDS Figma file has been refreshed, and now includes a component gallery so you can easily copy common component variants into your designs, and reference general guidance for the components.
+
+For developers, we’ve moved our React component library to a single package. This is a huge quality of life improvement for developers, by simplifying their dependency management. There are also some updates to specific components which are outlined below
+
+And finally, we’ve enhanced our website with a redesigned Components page and new Tokens section. We have also migrated our documentation website to design-system.agriculture.gov.au.
+
+The move from Alpha to Beta demonstrates our confidence in the foundations of AgDS, not just for the components, but also in the core design language, component architecture, accessibility, and Figma library.
+
+The AgDS team is composed of our lead Adrian Yee, designers Adham Dannaway and Paul Maher, and developers Jordan Overbye and Nathan Simpson.
+
+## Upgrade guide
+
+Current users of AgDS will need to follow this simple two step guide
+
+### Step 1: Update package.json
+
+In your `package.json` file, remove all current dependencies to `@ag.ds-next` (e.g. `@ag.ds-next/box`) and replace with a single package `@ag.ds-next/react` at version `1.0.0`.
+
+Once you have done that, you will need to re-install your depenecies again (e.g. by running `yarn` or `npm install`).
+
+### Step 2: Update imports
+
+All imports to `@ag.ds-next` will also need to be updated. Luckily using VSCodes find and replace with RegEx makes this a fairly straightforward task.
+
+```
+Find:    '@ag.ds-next/(.*)'
+Replace: '@ag.ds-next/react/$1'
+```
+
+This results in...
+
+```diff
+- import { Box, Flex, Stack } from '@ag.ds-next/box';
++ import { Box, Flex, Stack } from '@ag.ds-next/react/box';
+```
+
+## Full Changelog
+
+Aside from the [complete release notes on the @ag.ds-next website](https://design-system.agriculture.gov.au/updates/2023-01-05), you can also view the [verbose change log](https://github.com/steelthreads/agds-next/pull/908) in the related PR (https://github.com/steelthreads/agds-next/pull/908) for this release.
+
+## Released packages
+
+```sh
+"@ag.ds-next/react": "1.0.0"
+```
