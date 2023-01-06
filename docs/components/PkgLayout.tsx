@@ -1,12 +1,15 @@
 import { PropsWithChildren } from 'react';
 import { useRouter } from 'next/router';
-import { CallToActionLink } from '@ag.ds-next/react/call-to-action';
+import { ButtonLink } from '@ag.ds-next/react/button';
+import { Flex } from '@ag.ds-next/react/box';
 import { Prose } from '@ag.ds-next/react/prose';
 import { SkipLinksProps } from '@ag.ds-next/react/skip-link';
 import { SubNav } from '@ag.ds-next/react/sub-nav';
 import { getPkgBreadcrumbs, getPkgNavLinks, Pkg } from '../lib/mdx/packages';
 import { PageTitle } from './PageTitle';
 import { PageLayout } from './PageLayout';
+import { FigmaLogo } from './FigmaLogo';
+import { StorybookLogo } from './StorybookLogo';
 
 export function PkgLayout({
 	children,
@@ -39,12 +42,31 @@ export function PkgLayout({
 				title={pkg.title}
 				introduction={pkg.description}
 				callToAction={
-					pkg.storybookPath && (
-						<CallToActionLink
-							href={`${process.env.NEXT_PUBLIC_STORYBOOK_URL}?path=${pkg.storybookPath}`}
+					(pkg.storybookPath || pkg.figmaGalleryNodeId) && (
+						<Flex
+							gap={1.5}
+							flexDirection={['column', 'row']}
+							alignItems="flex-start"
 						>
-							View in Storybook
-						</CallToActionLink>
+							{pkg.storybookPath && (
+								<ButtonLink
+									variant="text"
+									href={`${process.env.NEXT_PUBLIC_STORYBOOK_URL}?path=${pkg.storybookPath}`}
+									iconBefore={StorybookLogo}
+								>
+									View in Storybook
+								</ButtonLink>
+							)}
+							{pkg.figmaGalleryNodeId && (
+								<ButtonLink
+									variant="text"
+									href={`https://www.figma.com/file/SgSHfK8AUadp7aEzD34ZG3/AgDS---Agriculture-Design-System-1.2.1?node-id=${pkg.figmaGalleryNodeId}`}
+									iconBefore={FigmaLogo}
+								>
+									View in Figma
+								</ButtonLink>
+							)}
+						</Flex>
 					)
 				}
 			/>
