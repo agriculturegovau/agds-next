@@ -7,6 +7,7 @@ import {
 } from 'react';
 import type { MDXRemoteProps } from 'next-mdx-remote';
 import Link from 'next/link';
+import { Box } from '@ag.ds-next/react/box';
 import { proseBlockClassname } from '@ag.ds-next/react/prose';
 import { PageAlert, PageAlertProps } from '@ag.ds-next/react/page-alert';
 import { ButtonLink } from '@ag.ds-next/react/button';
@@ -14,7 +15,6 @@ import { slugify } from '../lib/slugify';
 import generatedComponentPropsData from '../__generated__/componentProps.json';
 import { Code } from './Code';
 import { ComponentPropsTable } from './ComponentPropsTable';
-import { FigmaLogo } from './FigmaLogo';
 import { DoHeading, DontHeading } from './DoDontHeading';
 
 export const mdxComponents: MDXRemoteProps['components'] = {
@@ -33,7 +33,35 @@ export const mdxComponents: MDXRemoteProps['components'] = {
 		);
 	},
 	ButtonLink,
-	FigmaLogo,
+	FigmaEmbed: ({ src }: { src: string }) => (
+		<Box
+			width="100%"
+			height="0"
+			border
+			borderColor="muted"
+			css={{
+				position: 'relative',
+				paddingBottom: '56.25%',
+				overflow: 'hidden',
+			}}
+		>
+			<Box
+				as="iframe"
+				frameBorder="0"
+				src={src}
+				allowFullScreen
+				height="100%"
+				width="100%"
+				css={{
+					position: 'absolute',
+					top: 0,
+					left: 0,
+					width: '100%',
+					height: '100%',
+				}}
+			/>
+		</Box>
+	),
 	a: ({ href, ...props }: AnchorHTMLAttributes<HTMLAnchorElement>) => {
 		if (!href) return <a {...props} />;
 		return <Link href={href} {...props} />;
