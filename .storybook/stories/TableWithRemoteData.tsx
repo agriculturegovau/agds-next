@@ -17,7 +17,7 @@ import { PageContent } from '@ag.ds-next/react/content';
 import { VisuallyHidden } from '@ag.ds-next/react/a11y';
 
 export default {
-	title: 'Examples/RemoteData',
+	title: 'Examples/Remote data',
 };
 
 const fetcher = async (url: string) => {
