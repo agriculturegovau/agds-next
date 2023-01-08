@@ -27,6 +27,7 @@ export default function App({ Component, pageProps }: AppProps) {
 					name="viewport"
 					content="width=device-width,initial-scale=1,shrink-to-fit=no,viewport-fit=cover"
 				/>
+				<meta property="og:image" content="/img/og-image.webp" />
 				{/* Favicons - https://css-tricks.com/svg-favicons-and-all-the-fun-things-we-can-do-with-them/ */}
 				<link rel="icon" href="/favicon/favicon.ico" sizes="any" />
 				<link rel="icon" href="/favicon/favicon.svg" type="image/svg+xml" />
