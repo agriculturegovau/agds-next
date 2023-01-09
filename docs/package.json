@@ -1,6 +1,6 @@
 {
 	"name": "@ag.ds-next/docs",
-	"version": "0.6.4",
+	"version": "0.6.5",
 	"private": true,
 	"repository": "https://github.com/steelthreads/agds-next/tree/main/docs",
 	"license": "MIT",
@@ -17,7 +17,7 @@
 		"start": "next start"
 	},
 	"dependencies": {
-		"@ag.ds-next/react": "^0.0.1",
+		"@ag.ds-next/react": "^1.0.0",
 		"@preconstruct/next": "^4.0.0",
 		"@types/gtag.js": "^0.0.12",
 		"clipboard-copy": "^4.0.1",
