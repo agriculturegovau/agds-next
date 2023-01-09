@@ -1,5 +1,12 @@
 # @ag.ds-next/docs
 
+## 0.6.5
+
+### Patch Changes
+
+- Updated dependencies [6245c4774]
+  - @ag.ds-next/react@1.0.0
+
 ## 0.6.4
 
 ### Patch Changes
