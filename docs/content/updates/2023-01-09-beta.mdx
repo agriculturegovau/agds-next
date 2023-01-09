@@ -1,0 +1,69 @@
+---
+title: AgDS Beta v1.0.0 release
+description: The Agriculture Design System (AgDS), which helps designers and developers build the Export Service efficiently and consistently, is now in Beta.
+---
+
+<img
+	src="/img/updates/2023-01-09/beta-hero.webp"
+	alt="Composition of AgDS components"
+/>
+
+AgDS is based on the former Australian Government Design System [GOLD](https://gold.designsystemau.org/) which was created to meet the [Digital Service Standard](https://www.dta.gov.au/help-and-advice/about-digital-service-standard). The aesthetic and design principles of GOLD have been extended into AgDS to meet the needs of the [Export Service](https://agriculture-exports.awe.gov.au/).
+
+The design system incorporates the highest usability and accessibility standards and helps deliver a consistent experience for all users. It includes:
+
+- a React/Typescript component library containing over 60 components
+- a Figma library of components and tokens
+- documentation and examples of how to use the design system
+- templates for common page compositions
+- a shared language between design, development and content practitioners
+
+The move from Alpha to Beta demonstrates our confidence in the foundations, design language, component architecture, accessibility and usability of AgDS. Part of the Beta release includes a redesigned [Components](https://design-system.agriculture.gov.au/components) section and new [Tokens](https://design-system.agriculture.gov.au/tokens) section, as well as moving our documentation website to [design-system.agriculture.gov.au](https://design-system.agriculture.gov.au).
+
+The AgDS team is led by Adrian Yee and consists of designers Adham Dannaway and Paul Maher, as well as developers Jordan Overbye and Nathan Simpson from [Thinkmill](https://www.thinkmill.com.au/work/daff).
+
+## Accessibility
+
+Accessibility is a huge focus area for AgDS. Independent third-party specialists [Intopia](https://intopia.digital/) recently reviewed AgDS against the Web Content Accessibility Guidelines (WCAG). This review also included usability testing sessions with users who heavily rely on assistive technologies. We are proud to have achieved AA-level compliance against the WCAG v2.1 standard from Intopia who now refer to AgDS as an exemplary implementation of an accessible React based design system.
+
+## What’s new for designers
+
+The AgDS Figma file has been refreshed and includes a component gallery where common component variants can be copied. The gallery also includes general guidance for the components for quick reference.
+
+## What’s new for developers
+
+The React component library has been merged into a single NPM package, which simplifies dependency management for consumers.
+
+Current users of AgDS will need to follow this two step guide in order to upgrade from our previous multi-package distribution method.
+
+### Step 1: Update package.json
+
+In your `package.json` file, remove all current dependencies to `@ag.ds-next/*` (e.g. `@ag.ds-next/box`) and replace with a single dependency `@ag.ds-next/react` at version `1.0.0`.
+
+Once you have done that, you will need install your dependencies (e.g. run `yarn` or `npm install`).
+
+### Step 2: Update imports
+
+All imports to `@ag.ds-next/*` will also need to be updated. Using a code editors find and replace with RegEx feature makes this a fairly straightforward task.
+
+```
+Find:    '@ag.ds-next/(.*)'
+Replace: '@ag.ds-next/react/$1'
+```
+
+This will results in changes that look similar to the following:
+
+```diff
+- import { Box, Flex, Stack } from '@ag.ds-next/box';
++ import { Box, Flex, Stack } from '@ag.ds-next/react/box';
+```
+
+## Released packages
+
+```sh
+"@ag.ds-next/react": "1.0.0"
+```
+
+## Full Changelog
+
+Aside from the [complete release notes on the @ag.ds-next website](https://design-system.agriculture.gov.au/updates/2023-01-09), you can also view the [verbose change log](https://github.com/steelthreads/agds-next/pull/908) in the [related PR](https://github.com/steelthreads/agds-next/pull/908) for this release.
