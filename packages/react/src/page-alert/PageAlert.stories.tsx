@@ -10,11 +10,11 @@ export default {
 
 export const Basic: ComponentStory<typeof PageAlert> = (args) => (
 	<PageAlert {...args}>
-		<Text as="p">This is a Page Alert component.</Text>
+		<Text as="p">This is a Page alert component.</Text>
 	</PageAlert>
 );
 Basic.args = {
-	title: 'Page Alert',
+	title: 'Page alert',
 	tone: 'success',
 };
 
@@ -33,6 +33,6 @@ export const WithProse: ComponentStory<typeof PageAlert> = (args) => (
 	</PageAlert>
 );
 WithProse.args = {
-	title: 'Page Alert',
+	title: 'Page alert',
 	tone: 'error',
 };

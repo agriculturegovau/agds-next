@@ -61,7 +61,7 @@ import { TextLink } from '@ag.ds-next/react/text-link';
 import { AvatarIcon } from '@ag.ds-next/react/icon';
 
 export default {
-	title: 'Examples/Kitchen Sink',
+	title: 'Examples/Kitchen sink',
 };
 
 const sideNavItems = [
@@ -224,7 +224,7 @@ const KitchenSink = ({ background }: { background: 'body' | 'bodyAlt' }) => {
 									{ href: '#section-5', label: 'Section 5' },
 								]}
 							/>
-							<H1>Kitchen Sink</H1>
+							<H1>Kitchen sink</H1>
 							<Text>
 								Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 								Pellentesque at arcu eleifend, varius enim non, eleifend nibh.
