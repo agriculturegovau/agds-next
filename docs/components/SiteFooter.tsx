@@ -19,6 +19,10 @@ const footerLinks = [
 		label: 'Starter kit',
 		href: 'https://github.com/steelthreads/agds-starter-kit',
 	},
+	{
+		label: 'Privacy',
+		href: 'https://www.agriculture.gov.au/about/commitment/privacy',
+	},
 ];
 
 export const SiteFooter = () => {
