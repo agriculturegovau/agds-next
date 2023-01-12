@@ -16,7 +16,9 @@ const exampleLinks = [
 	{ href: '#', label: 'Baz' },
 ];
 
-export const Basic: ComponentStory<typeof Tags> = (args) => <Tags {...args} />;
+const Template: ComponentStory<typeof Tags> = (args) => <Tags {...args} />;
+
+export const Basic = Template.bind({});
 Basic.args = {
 	heading: (
 		<Text as="h2" fontWeight="bold">
@@ -26,7 +28,7 @@ Basic.args = {
 	items: exampleItems,
 };
 
-export const Links: ComponentStory<typeof Tags> = (args) => <Tags {...args} />;
+export const Links = Template.bind({});
 Links.args = {
 	heading: (
 		<Text as="h2" fontWeight="bold">
@@ -34,6 +36,20 @@ Links.args = {
 		</Text>
 	),
 	items: exampleLinks,
+};
+
+export const Removable = Template.bind({});
+Removable.args = {
+	heading: (
+		<Text as="h2" fontWeight="bold">
+			Tags:
+		</Text>
+	),
+	items: [
+		{ href: '#', label: 'Foo', onRemove: () => console.log('remove foo') },
+		{ href: '#', label: 'Bar', onRemove: () => console.log('remove bar') },
+		{ href: '#', label: 'Baz', onRemove: () => console.log('remove baz') },
+	],
 };
 
 export const Modular = () => (
