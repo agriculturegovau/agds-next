@@ -16,32 +16,176 @@ exports[`Tags With links renders correctly 1`] = `
       <li
         class="css-79i25n-boxStyles"
       >
-        <a
-          class="css-kx40q4-TextLink-boxStyles-Tag"
-          href="#"
+        <span
+          class="css-1x0htu7-boxStyles"
         >
-          Foo
-        </a>
+          <a
+            class="css-1as6xcj-TextLink-boxStyles"
+            href="#"
+          >
+            Foo
+          </a>
+        </span>
       </li>
       <li
         class="css-79i25n-boxStyles"
       >
-        <a
-          class="css-kx40q4-TextLink-boxStyles-Tag"
-          href="#"
+        <span
+          class="css-1x0htu7-boxStyles"
         >
-          Bar
-        </a>
+          <a
+            class="css-1as6xcj-TextLink-boxStyles"
+            href="#"
+          >
+            Bar
+          </a>
+        </span>
       </li>
       <li
         class="css-79i25n-boxStyles"
       >
-        <a
-          class="css-kx40q4-TextLink-boxStyles-Tag"
-          href="#"
+        <span
+          class="css-1x0htu7-boxStyles"
         >
-          Baz
-        </a>
+          <a
+            class="css-1as6xcj-TextLink-boxStyles"
+            href="#"
+          >
+            Baz
+          </a>
+        </span>
+      </li>
+    </ul>
+  </div>
+</div>
+`;
+
+exports[`Tags With onRemove renders correctly 1`] = `
+<div>
+  <div
+    class="css-1i7cdx8-boxStyles"
+  >
+    <h2
+      class="css-433uqb-boxStyles-Text"
+    >
+      Tags:
+    </h2>
+    <ul
+      class="css-1xkbxzi-boxStyles"
+    >
+      <li
+        class="css-79i25n-boxStyles"
+      >
+        <span
+          class="css-1x0htu7-boxStyles"
+        >
+          <a
+            class="css-1as6xcj-TextLink-boxStyles"
+            href="#"
+          >
+            Foo
+          </a>
+          <button
+            aria-label="Remove Foo"
+            class="css-3sn8tw-BaseButton-boxStyles-TagRemoveButton"
+            type="button"
+          >
+            <svg
+              aria-hidden="true"
+              class="css-1krnro2-Icon"
+              clip-rule="evenodd"
+              focusable="false"
+              height="24"
+              role="img"
+              viewBox="0 0 24 24"
+              width="24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M5 19L19 5"
+              />
+              <path
+                d="M19 19L5 5"
+              />
+            </svg>
+          </button>
+        </span>
+      </li>
+      <li
+        class="css-79i25n-boxStyles"
+      >
+        <span
+          class="css-1x0htu7-boxStyles"
+        >
+          <a
+            class="css-1as6xcj-TextLink-boxStyles"
+            href="#"
+          >
+            Bar
+          </a>
+          <button
+            aria-label="Remove Bar"
+            class="css-3sn8tw-BaseButton-boxStyles-TagRemoveButton"
+            type="button"
+          >
+            <svg
+              aria-hidden="true"
+              class="css-1krnro2-Icon"
+              clip-rule="evenodd"
+              focusable="false"
+              height="24"
+              role="img"
+              viewBox="0 0 24 24"
+              width="24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M5 19L19 5"
+              />
+              <path
+                d="M19 19L5 5"
+              />
+            </svg>
+          </button>
+        </span>
+      </li>
+      <li
+        class="css-79i25n-boxStyles"
+      >
+        <span
+          class="css-1x0htu7-boxStyles"
+        >
+          <a
+            class="css-1as6xcj-TextLink-boxStyles"
+            href="#"
+          >
+            Baz
+          </a>
+          <button
+            aria-label="Remove Baz"
+            class="css-3sn8tw-BaseButton-boxStyles-TagRemoveButton"
+            type="button"
+          >
+            <svg
+              aria-hidden="true"
+              class="css-1krnro2-Icon"
+              clip-rule="evenodd"
+              focusable="false"
+              height="24"
+              role="img"
+              viewBox="0 0 24 24"
+              width="24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M5 19L19 5"
+              />
+              <path
+                d="M19 19L5 5"
+              />
+            </svg>
+          </button>
+        </span>
       </li>
     </ul>
   </div>
@@ -65,27 +209,39 @@ exports[`Tags Without links renders correctly 1`] = `
         class="css-79i25n-boxStyles"
       >
         <span
-          class="css-zxf6qz-boxStyles-Tag"
+          class="css-1g6kkcv-boxStyles"
         >
-          Foo
+          <span
+            class="css-79i25n-boxStyles"
+          >
+            Foo
+          </span>
         </span>
       </li>
       <li
         class="css-79i25n-boxStyles"
       >
         <span
-          class="css-zxf6qz-boxStyles-Tag"
+          class="css-1g6kkcv-boxStyles"
         >
-          Bar
+          <span
+            class="css-79i25n-boxStyles"
+          >
+            Bar
+          </span>
         </span>
       </li>
       <li
         class="css-79i25n-boxStyles"
       >
         <span
-          class="css-zxf6qz-boxStyles-Tag"
+          class="css-1g6kkcv-boxStyles"
         >
-          Baz
+          <span
+            class="css-79i25n-boxStyles"
+          >
+            Baz
+          </span>
         </span>
       </li>
     </ul>

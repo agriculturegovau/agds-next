@@ -74,4 +74,40 @@ describe('Tags', () => {
 			});
 		});
 	});
+
+	describe('With onRemove', () => {
+		it('renders correctly', () => {
+			const { container } = renderTags({
+				heading: (
+					<Text as="h2" fontWeight="bold">
+						Tags:
+					</Text>
+				),
+				items: [
+					{ href: '#', label: 'Foo', onRemove: () => console.log('onRemove') },
+					{ href: '#', label: 'Bar', onRemove: () => console.log('onRemove') },
+					{ href: '#', label: 'Baz', onRemove: () => console.log('onRemove') },
+				],
+			});
+			expect(container).toMatchSnapshot();
+		});
+
+		it('renders a valid HTML structure', () => {
+			const { container } = renderTags({
+				heading: (
+					<Text as="h2" fontWeight="bold">
+						Tags:
+					</Text>
+				),
+				items: [
+					{ href: '#', label: 'Foo', onRemove: () => console.log('onRemove') },
+					{ href: '#', label: 'Bar', onRemove: () => console.log('onRemove') },
+					{ href: '#', label: 'Baz', onRemove: () => console.log('onRemove') },
+				],
+			});
+			expect(container).toHTMLValidate({
+				extends: ['html-validate:recommended'],
+			});
+		});
+	});
 });
