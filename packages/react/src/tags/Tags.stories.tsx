@@ -46,9 +46,9 @@ Removable.args = {
 		</Text>
 	),
 	items: [
-		{ href: '#', label: 'Foo', onRemove: () => console.log('remove foo') },
-		{ href: '#', label: 'Bar', onRemove: () => console.log('remove bar') },
-		{ href: '#', label: 'Baz', onRemove: () => console.log('remove baz') },
+		{ label: 'Foo', onRemove: () => console.log('remove foo') },
+		{ label: 'Bar', onRemove: () => console.log('remove bar') },
+		{ label: 'Baz', onRemove: () => console.log('remove baz') },
 	],
 };
 
