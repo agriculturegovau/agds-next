@@ -54,3 +54,31 @@ A list of related tags without links.
 	items={[{ label: 'Foo' }, { label: 'Bar' }, { label: 'Baz' }]}
 />
 ```
+
+## Removable tags
+
+Tags can be removed from a list, if you add an `onRemove` function.
+
+```jsx live
+<Tags
+	heading={
+		<Text as="h2" fontWeight="bold">
+			Tags:
+		</Text>
+	}
+	items={[
+		{
+			label: 'Foo',
+			onRemove: () => console.log('remove tag'),
+		},
+		{
+			label: 'Bar',
+			onRemove: () => console.log('remove tag'),
+		},
+		{
+			label: 'Baz',
+			onRemove: () => console.log('remove tag'),
+		},
+	]}
+/>
+```
