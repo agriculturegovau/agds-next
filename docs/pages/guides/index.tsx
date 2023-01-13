@@ -1,6 +1,6 @@
 import { normalize } from 'path';
 import { Card, CardInner, CardLink } from '@ag.ds-next/react/card';
-import { Stack } from '@ag.ds-next/react/box';
+import { Box, Stack } from '@ag.ds-next/react/box';
 import { Heading } from '@ag.ds-next/react/heading';
 import { Text } from '@ag.ds-next/react/text';
 import { Column, Columns } from '@ag.ds-next/react/columns';
@@ -24,23 +24,19 @@ export default function GuidesHome({
 				description={description}
 				editPath="/docs/content/guides/index.mdx"
 			>
-				<Columns cols={{ xs: 1, lg: 3 }}>
-					<Column columnSpan={{ xs: 1, lg: 2 }}>
-						<Stack as="ul" gap={1.5}>
-							{guideLinks.map(({ href, label, description }) => (
-								<Card as="li" key={label} clickable shadow>
-									<CardInner>
-										<Stack gap={1}>
-											<Heading type="h3">
-												<CardLink href={href}>{label}</CardLink>
-											</Heading>
-											{description ? <Text as="p">{description}</Text> : null}
-										</Stack>
-									</CardInner>
-								</Card>
-							))}
-						</Stack>
-					</Column>
+				<Columns as="ul" gap={1.5} cols={{ xs: 1, sm: 2, lg: 3 }}>
+					{guideLinks.map(({ href, label, description }) => (
+						<Card as="li" key={label} clickable shadow>
+							<CardInner>
+								<Stack gap={1}>
+									<Box as="h3">
+										<CardLink href={href}>{label}</CardLink>
+									</Box>
+									{description ? <Text as="p">{description}</Text> : null}
+								</Stack>
+							</CardInner>
+						</Card>
+					))}
 				</Columns>
 			</CategoryPageTemplate>
 		</>

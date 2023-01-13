@@ -25,13 +25,11 @@ export default function TemplatesPage({
 				description={description}
 				editPath="/docs/content/templates/index.mdx"
 			>
-				<Stack gap={1.5}>
-					<Columns as="ul" gap={1.5} cols={{ xs: 1, sm: 2, lg: 3 }}>
-						{templateLinks.map((template) => {
-							return <TemplateCard key={template.slug} {...template} />;
-						})}
-					</Columns>
-				</Stack>
+				<Columns as="ul" gap={1.5} cols={{ xs: 1, sm: 2, lg: 3 }}>
+					{templateLinks.map((template) => {
+						return <TemplateCard key={template.slug} {...template} />;
+					})}
+				</Columns>
 			</CategoryPageTemplate>
 		</>
 	);
