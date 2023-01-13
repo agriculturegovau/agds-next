@@ -5,12 +5,12 @@ import { CloseIcon } from '../icon';
 import { BaseButton } from '../button';
 
 export type TagProps = LinkProps & {
-	children: string;
+	label: string;
 	onRemove?: () => void;
 };
 
-export const Tag = (props: TagProps) => {
-	const { children, href, onRemove } = props;
+export const Tag = ({ label, onRemove, ...props }: TagProps) => {
+	const { href } = props;
 
 	return (
 		<Flex
@@ -26,9 +26,9 @@ export const Tag = (props: TagProps) => {
 			color={href ? 'action' : 'text'}
 		>
 			<Box as={href ? TextLink : 'span'} {...props}>
-				{children}
+				{label}
 			</Box>
-			{onRemove && <TagRemoveButton onClick={onRemove} label={children} />}
+			{onRemove && <TagRemoveButton onClick={onRemove} label={label} />}
 		</Flex>
 	);
 };

@@ -58,9 +58,9 @@ export const Modular = () => (
 			Tags:
 		</Text>
 		<TagsList>
-			<Tag href="#">Foo</Tag>
-			<Tag href="#">Bar</Tag>
-			<Tag href="#">Baz</Tag>
+			<Tag href="#" label="Foo" />
+			<Tag href="#" label="Bar" />
+			<Tag href="#" label="Baz" />
 		</TagsList>
 	</TagsContainer>
 );
