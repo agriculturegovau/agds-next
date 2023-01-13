@@ -3,7 +3,7 @@ import { Card, CardInner, CardLink } from '@ag.ds-next/react/card';
 import { Columns } from '@ag.ds-next/react/columns';
 import { Text } from '@ag.ds-next/react/text';
 import { DocumentTitle } from '../../components/DocumentTitle';
-import { TokenLayout } from '../../components/TokenLayout';
+import { CategoryPageTemplate } from '../../components/CategoryPageTemplate';
 import { TOKEN_NAV_LINKS } from '../../content/tokens';
 
 const title = 'Tokens';
@@ -14,7 +14,7 @@ export default function TokensPage() {
 	return (
 		<>
 			<DocumentTitle title={title} description={description} />
-			<TokenLayout
+			<CategoryPageTemplate
 				title={title}
 				description={description}
 				editPath="/docs/pages/tokens/index.tsx"
@@ -35,7 +35,7 @@ export default function TokensPage() {
 						</Card>
 					))}
 				</Columns>
-			</TokenLayout>
+			</CategoryPageTemplate>
 		</>
 	);
 }

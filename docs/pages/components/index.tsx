@@ -1,8 +1,6 @@
 import { normalize } from 'path';
-import { Fragment, useMemo, useState } from 'react';
-import { MDXRemote } from 'next-mdx-remote';
+import { useMemo, useState } from 'react';
 import { Stack } from '@ag.ds-next/react/box';
-import { Prose } from '@ag.ds-next/react/prose';
 import { H2 } from '@ag.ds-next/react/heading';
 import { Text } from '@ag.ds-next/react/text';
 import { SearchInput } from '@ag.ds-next/react/search-input';
@@ -13,20 +11,15 @@ import {
 	getPkgList,
 	getPkgNavLinks,
 } from '../../lib/mdx/packages';
-import { mdxComponents } from '../../components/mdxComponents';
-import { AppLayout } from '../../components/AppLayout';
 import { DocumentTitle } from '../../components/DocumentTitle';
-import { PageLayout } from '../../components/PageLayout';
 import { PkgCardList } from '../../components/PkgCardList';
-import { PageTitle } from '../../components/PageTitle';
+import { CategoryPageTemplate } from '../../components/CategoryPageTemplate';
 
 type StaticProps = Awaited<ReturnType<typeof getStaticProps>>['props'];
 
 export default function PackagesHome({
-	navLinks,
 	groupList,
 	pkgList,
-	source,
 	title,
 	description,
 }: StaticProps) {
@@ -46,19 +39,12 @@ export default function PackagesHome({
 	return (
 		<>
 			<DocumentTitle title="Components" description={description} />
-			<AppLayout>
-				<PageLayout
-					sideNav={{
-						title: 'Components',
-						titleLink: '/components',
-						items: navLinks,
-					}}
-					editPath="/docs/content/components/index.mdx"
-				>
-					<PageTitle title={title} introduction={description} />
-					<Prose>
-						<MDXRemote {...source} components={mdxComponents} />
-					</Prose>
+			<CategoryPageTemplate
+				title={title}
+				description={description}
+				editPath="/docs/content/components/index.mdx"
+			>
+				<Stack gap={1}>
 					<div role="search" aria-label="components">
 						<SearchInput
 							label="Find a component"
@@ -89,8 +75,8 @@ export default function PackagesHome({
 							))}
 						</Stack>
 					)}
-				</PageLayout>
-			</AppLayout>
+				</Stack>
+			</CategoryPageTemplate>
 		</>
 	);
 }
@@ -107,8 +93,8 @@ export async function getStaticProps() {
 	return {
 		props: {
 			source,
-			title: (data?.title || null) as string | null,
-			description: (data?.description || null) as string | null,
+			title: data?.title as string,
+			description: data?.description as string,
 			navLinks,
 			groupList,
 			pkgList,

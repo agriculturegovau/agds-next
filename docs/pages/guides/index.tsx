@@ -1,22 +1,17 @@
 import { normalize } from 'path';
-import { MDXRemote } from 'next-mdx-remote';
 import { Card, CardInner, CardLink } from '@ag.ds-next/react/card';
-import { Prose } from '@ag.ds-next/react/prose';
 import { Stack } from '@ag.ds-next/react/box';
 import { Heading } from '@ag.ds-next/react/heading';
 import { Text } from '@ag.ds-next/react/text';
-import { getMarkdownData, serializeMarkdown } from '../../lib/mdxUtils';
+import { Column, Columns } from '@ag.ds-next/react/columns';
+import { getMarkdownData } from '../../lib/mdxUtils';
 import { getGuideList, GUIDE_PATH } from '../../lib/mdx/guides';
-import { mdxComponents } from '../../components/mdxComponents';
-import { AppLayout } from '../../components/AppLayout';
 import { DocumentTitle } from '../../components/DocumentTitle';
-import { PageLayout } from '../../components/PageLayout';
-import { PageTitle } from '../../components/PageTitle';
+import { CategoryPageTemplate } from '../../components/CategoryPageTemplate';
 
 type StaticProps = Awaited<ReturnType<typeof getStaticProps>>['props'];
 
 export default function GuidesHome({
-	source,
 	title,
 	description,
 	guideLinks,
@@ -24,44 +19,36 @@ export default function GuidesHome({
 	return (
 		<>
 			<DocumentTitle title="Guides" description={description} />
-			<AppLayout>
-				<PageLayout
-					sideNav={{
-						title: 'Guides',
-						titleLink: '/guides',
-						items: guideLinks,
-					}}
-					editPath="/docs/content/guides/index.mdx"
-				>
-					<PageTitle title={title} introduction={description} />
-					<Prose>
-						<MDXRemote {...source} components={mdxComponents} />
-					</Prose>
-					<Stack as="ul" gap={1.5}>
-						{guideLinks.map(({ href, label, description }) => (
-							<Card as="li" key={label} clickable shadow>
-								<CardInner>
-									<Stack gap={1}>
-										<Heading type="h3">
-											<CardLink href={href}>{label}</CardLink>
-										</Heading>
-										{description ? <Text as="p">{description}</Text> : null}
-									</Stack>
-								</CardInner>
-							</Card>
-						))}
-					</Stack>
-				</PageLayout>
-			</AppLayout>
+			<CategoryPageTemplate
+				title={title}
+				description={description}
+				editPath="/docs/content/guides/index.mdx"
+			>
+				<Columns cols={{ xs: 1, lg: 3 }}>
+					<Column columnSpan={{ xs: 1, lg: 2 }}>
+						<Stack as="ul" gap={1.5}>
+							{guideLinks.map(({ href, label, description }) => (
+								<Card as="li" key={label} clickable shadow>
+									<CardInner>
+										<Stack gap={1}>
+											<Heading type="h3">
+												<CardLink href={href}>{label}</CardLink>
+											</Heading>
+											{description ? <Text as="p">{description}</Text> : null}
+										</Stack>
+									</CardInner>
+								</Card>
+							))}
+						</Stack>
+					</Column>
+				</Columns>
+			</CategoryPageTemplate>
 		</>
 	);
 }
 
 export async function getStaticProps() {
-	const { content, data } = await getMarkdownData(
-		normalize(`${GUIDE_PATH}/index.mdx`)
-	);
-	const source = await serializeMarkdown(content);
+	const { data } = await getMarkdownData(normalize(`${GUIDE_PATH}/index.mdx`));
 	const guideList = await getGuideList();
 	const guideLinks = guideList.map(({ slug, title, description }) => ({
 		href: `/guides/${slug}`,
@@ -71,9 +58,8 @@ export async function getStaticProps() {
 
 	return {
 		props: {
-			source,
-			title: (data?.title || null) as string | null,
-			description: (data?.description || null) as string | null,
+			title: data?.title as string,
+			description: data?.description as string,
 			guideLinks,
 		},
 	};

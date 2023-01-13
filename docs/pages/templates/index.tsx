@@ -1,24 +1,18 @@
 import { normalize } from 'path';
-import { MDXRemote } from 'next-mdx-remote';
-import { Prose } from '@ag.ds-next/react/prose';
 import { boxPalette } from '@ag.ds-next/react/core';
 import { Box, Flex, Stack } from '@ag.ds-next/react/box';
 import { Card, CardLink, CardInner } from '@ag.ds-next/react/card';
 import { Columns } from '@ag.ds-next/react/columns';
 import { mq } from '@ag.ds-next/react/core';
 import { Text } from '@ag.ds-next/react/text';
-import { getMarkdownData, serializeMarkdown } from '../../lib/mdxUtils';
+import { getMarkdownData } from '../../lib/mdxUtils';
 import { getTemplateList, TEMPLATES_PATH } from '../../lib/mdx/templates';
-import { mdxComponents } from '../../components/mdxComponents';
-import { AppLayout } from '../../components/AppLayout';
-import { PageLayout } from '../../components/PageLayout';
 import { DocumentTitle } from '../../components/DocumentTitle';
-import { PageTitle } from '../../components/PageTitle';
+import { CategoryPageTemplate } from '../../components/CategoryPageTemplate';
 
 type StaticProps = Awaited<ReturnType<typeof getStaticProps>>['props'];
 
 export default function TemplatesPage({
-	source,
 	title,
 	description,
 	templateLinks,
@@ -26,26 +20,19 @@ export default function TemplatesPage({
 	return (
 		<>
 			<DocumentTitle title="Templates" description={description} />
-			<AppLayout>
-				<PageLayout
-					sideNav={{
-						title: 'Templates',
-						titleLink: '/templates',
-						items: templateLinks,
-					}}
-					editPath="/docs/content/templates/index.mdx"
-				>
-					<PageTitle title={title} introduction={description} />
-					<Prose>
-						<MDXRemote {...source} components={mdxComponents} />
-					</Prose>
+			<CategoryPageTemplate
+				title={title}
+				description={description}
+				editPath="/docs/content/templates/index.mdx"
+			>
+				<Stack gap={1.5}>
 					<Columns as="ul" gap={1.5} cols={{ xs: 1, sm: 2, lg: 3 }}>
 						{templateLinks.map((template) => {
 							return <TemplateCard key={template.slug} {...template} />;
 						})}
 					</Columns>
-				</PageLayout>
-			</AppLayout>
+				</Stack>
+			</CategoryPageTemplate>
 		</>
 	);
 }
@@ -87,10 +74,9 @@ const TemplateCard = ({
 };
 
 export async function getStaticProps() {
-	const { content, data } = await getMarkdownData(
+	const { data } = await getMarkdownData(
 		normalize(`${TEMPLATES_PATH}/index.mdx`)
 	);
-	const source = await serializeMarkdown(content);
 	const templateList = await getTemplateList();
 
 	const templateLinks = templateList.map(({ slug, title, description }) => ({
@@ -102,9 +88,8 @@ export async function getStaticProps() {
 
 	return {
 		props: {
-			source,
-			title: (data?.title || null) as string | null,
-			description: (data?.description || null) as string | null,
+			title: data?.title as string,
+			description: data?.description as string,
 			templateLinks,
 		},
 	};
