@@ -1,6 +1,6 @@
 import { Box, Flex } from '../box';
 import { TextLink } from '../text-link';
-import { boxPalette, LinkProps } from '../core';
+import { boxPalette, LinkProps, mapSpacing } from '../core';
 import { CloseIcon } from '../icon';
 import { BaseButton } from '../button';
 
@@ -19,8 +19,9 @@ export const Tag = (props: TagProps) => {
 			alignItems="center"
 			border
 			rounded
-			paddingX={0.5}
-			gap={0.5}
+			paddingLeft={0.5}
+			paddingRight={onRemove ? 0.25 : 0.5}
+			gap={0.25}
 			fontSize="sm"
 			color={href ? 'action' : 'text'}
 		>
@@ -42,6 +43,8 @@ const TagRemoveButton = ({
 	return (
 		<Flex
 			as={BaseButton}
+			height={mapSpacing(1.5)}
+			width={mapSpacing(1.5)}
 			alignItems="center"
 			justifyContent="center"
 			onClick={onClick}
