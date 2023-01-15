@@ -44,7 +44,7 @@ export default function PackagesHome({
 				description={description}
 				editPath="/docs/content/components/index.mdx"
 			>
-				<Stack gap={1}>
+				<Stack gap={3}>
 					<div role="search" aria-label="components">
 						<SearchInput
 							label="Find a component"
@@ -55,26 +55,28 @@ export default function PackagesHome({
 							hideOptionalLabel
 						/>
 					</div>
-					{searchTerm ? (
-						filteredPkgs?.length ? (
-							<PkgCardList items={filteredPkgs} />
+					<Stack gap={1}>
+						{searchTerm ? (
+							filteredPkgs?.length ? (
+								<PkgCardList items={filteredPkgs} />
+							) : (
+								<Text as="p">
+									No results found. Please change your search term.
+								</Text>
+							)
 						) : (
-							<Text as="p">
-								No results found. Please change your search term.
-							</Text>
-						)
-					) : (
-						<Stack gap={2}>
-							{groupList.map((group) => (
-								<Stack gap={1} key={group.slug}>
-									<H2>{group.title}</H2>
-									<PkgCardList
-										items={pkgList.filter((p) => p.group === group.slug)}
-									/>
-								</Stack>
-							))}
-						</Stack>
-					)}
+							<Stack gap={2}>
+								{groupList.map((group) => (
+									<Stack gap={1} key={group.slug}>
+										<H2>{group.title}</H2>
+										<PkgCardList
+											items={pkgList.filter((p) => p.group === group.slug)}
+										/>
+									</Stack>
+								))}
+							</Stack>
+						)}
+					</Stack>
 				</Stack>
 			</CategoryPageTemplate>
 		</>
