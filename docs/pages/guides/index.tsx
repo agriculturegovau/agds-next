@@ -1,9 +1,8 @@
 import { normalize } from 'path';
 import { Card, CardInner, CardLink } from '@ag.ds-next/react/card';
 import { Box, Stack } from '@ag.ds-next/react/box';
-import { Heading } from '@ag.ds-next/react/heading';
 import { Text } from '@ag.ds-next/react/text';
-import { Column, Columns } from '@ag.ds-next/react/columns';
+import { Columns } from '@ag.ds-next/react/columns';
 import { getMarkdownData } from '../../lib/mdxUtils';
 import { getGuideList, GUIDE_PATH } from '../../lib/mdx/guides';
 import { DocumentTitle } from '../../components/DocumentTitle';
