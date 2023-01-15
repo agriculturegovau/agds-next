@@ -4,7 +4,6 @@ import { Prose } from '@ag.ds-next/react/prose';
 import {
 	getUpdate,
 	getUpdateBreadcrumbs,
-	getUpdatesList,
 	getUpdateSlugs,
 	Update,
 } from '../../lib/mdx/updates';
@@ -16,7 +15,6 @@ import { PageTitle } from '../../components/PageTitle';
 
 export default function Updates({
 	update,
-	updateLinks,
 	breadcrumbs,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
 	return (
@@ -24,11 +22,6 @@ export default function Updates({
 			<DocumentTitle title={update.title} description={update.description} />
 			<AppLayout>
 				<PageLayout
-					sideNav={{
-						title: 'Updates',
-						titleLink: '/updates',
-						items: updateLinks,
-					}}
 					editPath={`/docs/content/updates/${update.slug}.mdx`}
 					breadcrumbs={breadcrumbs}
 				>
@@ -45,18 +38,12 @@ export default function Updates({
 export const getStaticProps: GetStaticProps<
 	{
 		update: Update;
-		updateLinks: { href: string; label: string }[];
 		breadcrumbs: Awaited<ReturnType<typeof getUpdateBreadcrumbs>>;
 	},
 	{ slug: string }
 > = async ({ params }) => {
 	const { slug } = params ?? {};
 	const update = slug ? await getUpdate(slug) : undefined;
-	const updatesList = await getUpdatesList();
-	const updateLinks = updatesList.map(({ title, slug }) => ({
-		href: `/updates/${slug}`,
-		label: title,
-	}));
 
 	if (!(slug && update)) {
 		return { notFound: true };
@@ -67,7 +54,6 @@ export const getStaticProps: GetStaticProps<
 	return {
 		props: {
 			update,
-			updateLinks,
 			breadcrumbs,
 			slug,
 		},
