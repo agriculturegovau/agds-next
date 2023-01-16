@@ -58,8 +58,6 @@ const inputStyles = () => {
 		borderRightWidth: 0,
 		borderTopRightRadius: 0,
 		borderBottomRightRadius: 0,
-		color: globalPalette.lightForegroundText,
-		background: globalPalette.lightBackgroundBody,
 
 		'&::-webkit-search-decoration, &::-webkit-search-cancel-button, &::-webkit-search-results-button, &::-webkit-search-results-decoration':
 			{
