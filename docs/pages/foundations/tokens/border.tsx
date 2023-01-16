@@ -17,7 +17,7 @@ export default function TokensBorderWidthPage() {
 				title={TOKEN_PAGES.border.pageTitle}
 				description={TOKEN_PAGES.border.description}
 				breadcrumbs={getTokensBreadcrumbs(TOKEN_PAGES.border)}
-				editPath="/docs/pages/tokens/border.tsx"
+				editPath="/docs/pages/foundations/tokens/border.tsx"
 			>
 				<Prose>
 					<h2>Border width</h2>

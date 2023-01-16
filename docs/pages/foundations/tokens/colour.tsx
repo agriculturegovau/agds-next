@@ -23,7 +23,7 @@ export default function TokensColorPage() {
 				title={TOKEN_PAGES.colour.pageTitle}
 				description={TOKEN_PAGES.colour.description}
 				breadcrumbs={getTokensBreadcrumbs(TOKEN_PAGES.colour)}
-				editPath="/docs/pages/tokens/color.tsx"
+				editPath="/docs/pages/foundations/tokens/color.tsx"
 			>
 				<Prose>
 					<h2>Colour palettes</h2>

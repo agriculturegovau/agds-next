@@ -28,7 +28,7 @@ export default function TokensTypographyPage() {
 				title={TOKEN_PAGES.typography.pageTitle}
 				description={TOKEN_PAGES.typography.description}
 				breadcrumbs={getTokensBreadcrumbs(TOKEN_PAGES.typography)}
-				editPath="/docs/pages/tokens/typography.tsx"
+				editPath="/docs/pages/foundations/tokens/typography.tsx"
 			>
 				<Prose>
 					<div className={proseBlockClassname}>

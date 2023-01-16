@@ -16,7 +16,7 @@ export default function TokensMaxWidthsPage() {
 				title={TOKEN_PAGES.maxWidth.pageTitle}
 				description={TOKEN_PAGES.maxWidth.description}
 				breadcrumbs={getTokensBreadcrumbs(TOKEN_PAGES.maxWidth)}
-				editPath="/docs/pages/tokens/max-width.tsx"
+				editPath="/docs/pages/foundations/tokens/max-width.tsx"
 			>
 				<Prose>
 					<MaxWidthChart tokens={tokens.maxWidth} />

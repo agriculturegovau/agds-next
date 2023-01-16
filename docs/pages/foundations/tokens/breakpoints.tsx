@@ -15,7 +15,7 @@ export default function TokensBreakpointsPage() {
 				title={TOKEN_PAGES.breakpoints.pageTitle}
 				description={TOKEN_PAGES.breakpoints.description}
 				breadcrumbs={getTokensBreadcrumbs(TOKEN_PAGES.breakpoints)}
-				editPath="/docs/pages/tokens/breakpoints.tsx"
+				editPath="/docs/pages/foundations/tokens/breakpoints.tsx"
 			>
 				<Prose>
 					<p>There are 5 predefined breakpoint tokens:</p>

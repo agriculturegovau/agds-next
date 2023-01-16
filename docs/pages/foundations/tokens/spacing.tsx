@@ -21,7 +21,7 @@ export default function TokensSpacingPage() {
 				title={TOKEN_PAGES.spacing.pageTitle}
 				description={TOKEN_PAGES.spacing.description}
 				breadcrumbs={getTokensBreadcrumbs(TOKEN_PAGES.spacing)}
-				editPath="/docs/pages/tokens/spacing.tsx"
+				editPath="/docs/pages/foundations/tokens/spacing.tsx"
 			>
 				<Prose>
 					<p>
