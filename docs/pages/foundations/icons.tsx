@@ -19,7 +19,7 @@ import {
 type IconSize = 'sm' | 'md' | 'lg' | 'xl';
 type IconWeight = 'regular' | 'bold';
 
-export default function IconsPage({
+export default function FoundationsIconsPage({
 	breadcrumbs,
 	description,
 	title,

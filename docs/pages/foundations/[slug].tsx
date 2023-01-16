@@ -13,7 +13,7 @@ import {
 	Foundation,
 } from '../../lib/mdx/foundations';
 
-export default function Updates({
+export default function FoundationsPage({
 	breadcrumbs,
 	foundation,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
