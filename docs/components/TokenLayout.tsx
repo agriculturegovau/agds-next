@@ -24,7 +24,7 @@ export const TokenLayout = ({
 			<PageLayout
 				sideNav={{
 					title: 'Tokens',
-					titleLink: '/tokens',
+					titleLink: '/foundations/tokens',
 					items: TOKEN_NAV_LINKS,
 				}}
 				editPath={editPath}
