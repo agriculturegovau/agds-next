@@ -64,7 +64,11 @@ export default function Homepage() {
 									xl: 4,
 								}}
 							>
-								<PictogramCard title="Tokens" pictogram="text" href="/tokens" />
+								<PictogramCard
+									title="Foundations"
+									pictogram="text"
+									href="/foundations"
+								/>
 								<PictogramCard
 									title="Components"
 									pictogram="components"

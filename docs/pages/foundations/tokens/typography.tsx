@@ -12,10 +12,10 @@ import { Text } from '@ag.ds-next/react/text';
 import { tokens, FontSize, Font } from '@ag.ds-next/react/core';
 import { Stack } from '@ag.ds-next/react/box';
 import { InpageNav } from '@ag.ds-next/react/inpage-nav';
-import { DocumentTitle } from '../../components/DocumentTitle';
-import { TokenLayout } from '../../components/TokenLayout';
-import { LineHeightChart } from '../../components/TokenCharts';
-import { TOKEN_PAGES, getTokensBreadcrumbs } from '../../content/tokens';
+import { DocumentTitle } from '../../../components/DocumentTitle';
+import { TokenLayout } from '../../../components/TokenLayout';
+import { LineHeightChart } from '../../../components/TokenCharts';
+import { TOKEN_PAGES, getTokensBreadcrumbs } from '../../../content/tokens';
 
 export default function TokensTypographyPage() {
 	return (
@@ -28,7 +28,7 @@ export default function TokensTypographyPage() {
 				title={TOKEN_PAGES.typography.pageTitle}
 				description={TOKEN_PAGES.typography.description}
 				breadcrumbs={getTokensBreadcrumbs(TOKEN_PAGES.typography)}
-				editPath="/docs/pages/tokens/typography.tsx"
+				editPath="/docs/pages/foundations/tokens/typography.tsx"
 			>
 				<Prose>
 					<div className={proseBlockClassname}>

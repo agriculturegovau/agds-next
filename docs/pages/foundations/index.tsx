@@ -1,32 +1,35 @@
+import { GetStaticProps, InferGetStaticPropsType } from 'next';
 import { Box, Flex, Stack } from '@ag.ds-next/react/box';
 import { Card, CardInner, CardLink } from '@ag.ds-next/react/card';
 import { Columns } from '@ag.ds-next/react/columns';
 import { Text } from '@ag.ds-next/react/text';
 import { DocumentTitle } from '../../components/DocumentTitle';
 import { CategoryPageTemplate } from '../../components/CategoryPageTemplate';
-import { TOKEN_NAV_LINKS } from '../../content/tokens';
+import { getFoundationList } from '../../lib/mdx/foundations';
 
-const title = 'Tokens';
+const title = 'Foundations';
 const description =
-	'Our design tokens are the foundation of our design system. They are the building blocks of our components and are used to create a consistent look and feel across all of our products.';
+	'Discover all the foundational elements that make up the Agriculture Design System including colors, typography, spacing, and more.';
 
-export default function TokensPage() {
+export default function FoundationsPage({
+	list,
+}: InferGetStaticPropsType<typeof getStaticProps>) {
 	return (
 		<>
 			<DocumentTitle title={title} description={description} />
 			<CategoryPageTemplate
 				title={title}
 				description={description}
-				editPath="/docs/pages/tokens/index.tsx"
+				editPath="/docs/pages/foundations/index.tsx"
 			>
 				<Columns as="ul" cols={{ xs: 1, sm: 2, lg: 3 }}>
-					{TOKEN_NAV_LINKS.map(({ href, label, description }) => (
-						<Card key={href} as="li" clickable shadow>
+					{list.map(({ slug, title, description }) => (
+						<Card key={slug} as="li" clickable shadow>
 							<Flex flexDirection="column-reverse">
 								<CardInner>
 									<Stack gap={1} flexGrow={1}>
 										<Box as="h3">
-											<CardLink href={href}>{label}</CardLink>
+											<CardLink href={`/foundations/${slug}`}>{title}</CardLink>
 										</Box>
 										<Text>{description}</Text>
 									</Stack>
@@ -39,3 +42,13 @@ export default function TokensPage() {
 		</>
 	);
 }
+
+export const getStaticProps: GetStaticProps<{
+	list: Awaited<ReturnType<typeof getFoundationList>>;
+}> = async () => {
+	return {
+		props: {
+			list: await getFoundationList(),
+		},
+	};
+};

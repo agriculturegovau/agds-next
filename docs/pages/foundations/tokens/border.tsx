@@ -1,10 +1,10 @@
 import { Prose, proseBlockClassname } from '@ag.ds-next/react/prose';
 import { Box } from '@ag.ds-next/react/box';
 import { tokens } from '@ag.ds-next/react/core';
-import { DocumentTitle } from '../../components/DocumentTitle';
-import { TokenLayout } from '../../components/TokenLayout';
-import { BorderWidthChart } from '../../components/TokenCharts';
-import { TOKEN_PAGES, getTokensBreadcrumbs } from '../../content/tokens';
+import { DocumentTitle } from '../../../components/DocumentTitle';
+import { TokenLayout } from '../../../components/TokenLayout';
+import { BorderWidthChart } from '../../../components/TokenCharts';
+import { TOKEN_PAGES, getTokensBreadcrumbs } from '../../../content/tokens';
 
 export default function TokensBorderWidthPage() {
 	return (
@@ -17,7 +17,7 @@ export default function TokensBorderWidthPage() {
 				title={TOKEN_PAGES.border.pageTitle}
 				description={TOKEN_PAGES.border.description}
 				breadcrumbs={getTokensBreadcrumbs(TOKEN_PAGES.border)}
-				editPath="/docs/pages/tokens/border.tsx"
+				editPath="/docs/pages/foundations/tokens/border.tsx"
 			>
 				<Prose>
 					<h2>Border width</h2>

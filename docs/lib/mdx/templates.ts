@@ -89,7 +89,7 @@ function templateNavMetaData(
 	data: Awaited<ReturnType<typeof getMarkdownData>>['data']
 ) {
 	return {
-		order: (data?.order ?? 0) as number,
+		order: (data.order as number | null) || 100,
 		title: (data?.title ?? slug) as string,
 		slug,
 		description: data?.description,
