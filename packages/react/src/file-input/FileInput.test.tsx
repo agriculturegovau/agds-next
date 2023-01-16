@@ -1,22 +1,22 @@
 import '@testing-library/jest-dom';
 import 'html-validate/jest';
 import { cleanup, render } from '../../../../test-utils';
-import { FileSelect } from './FileSelect';
-import type { FileSelectProps } from './FileSelect';
+import { FileInput } from './FileInput';
+import type { FileInputProps } from './FileInput';
 
 afterEach(cleanup);
 
-function renderFileSelect(props?: Partial<FileSelectProps>) {
-	return render(<FileSelect {...props} />);
+function renderFileInput(props?: Partial<FileInputProps>) {
+	return render(<FileInput {...props} />);
 }
 
-describe('FileSelect', () => {
+describe('FileInput', () => {
 	it('renders correctly', () => {
-		const { container } = renderFileSelect();
+		const { container } = renderFileInput();
 		expect(container).toMatchSnapshot();
 	});
 	it('renders a valid HTML structure', () => {
-		const { container } = renderFileSelect();
+		const { container } = renderFileInput();
 		expect(container).toHTMLValidate({
 			extends: ['html-validate:recommended'],
 		});

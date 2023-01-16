@@ -2,4 +2,4 @@
 '@ag.ds-next/react': minor
 ---
 
-Created new component `FileSelect`
+Created new component `FileInput`
