@@ -3,6 +3,7 @@ import {
 	AccordionItem,
 	AccordionItemContent,
 } from '@ag.ds-next/react/accordion';
+import { Details } from '@ag.ds-next/react/details';
 import {
 	SearchBox,
 	SearchBoxButton,
@@ -16,6 +17,7 @@ import { CallToActionLink } from '@ag.ds-next/react/call-to-action';
 import { Card, CardInner } from '@ag.ds-next/react/card';
 import { Columns, Column } from '@ag.ds-next/react/columns';
 import { PageContent } from '@ag.ds-next/react/content';
+import { Switch } from '@ag.ds-next/react/switch';
 import { ControlGroup, Checkbox, Radio } from '@ag.ds-next/react/control-input';
 import { DirectionLink } from '@ag.ds-next/react/direction-link';
 import { Heading, H1, H2 } from '@ag.ds-next/react/heading';
@@ -59,6 +61,8 @@ import {
 } from '@ag.ds-next/react/table';
 import { TextLink } from '@ag.ds-next/react/text-link';
 import { AvatarIcon } from '@ag.ds-next/react/icon';
+import { Autocomplete } from '@ag.ds-next/react/src/autocomplete/Autocomplete';
+import { Combobox } from '@ag.ds-next/react/src/combobox';
 
 export default {
 	title: 'Examples/Kitchen sink',
@@ -174,11 +178,6 @@ const KitchenSink = ({ background }: { background: 'body' | 'bodyAlt' }) => {
 								]}
 							/>
 
-							<SearchBox>
-								<SearchBoxInput />
-								<SearchBoxButton>Search</SearchBoxButton>
-							</SearchBox>
-
 							<Stack gap={1}>
 								<PageAlert tone="info" title="Notice">
 									<Text as="p">
@@ -279,6 +278,13 @@ const KitchenSink = ({ background }: { background: 'body' | 'bodyAlt' }) => {
 								</AccordionItem>
 							</Accordion>
 
+							<Details label="Details">
+								<Text as="p">
+									This is a small paragraph of text that is supplementary to the
+									main page content.
+								</Text>
+							</Details>
+
 							<Columns cols={2}>
 								<Card background="body">
 									<CardInner>
@@ -359,6 +365,41 @@ const KitchenSink = ({ background }: { background: 'body' | 'bodyAlt' }) => {
 									<Radio checked={true}>Laptop</Radio>
 								</ControlGroup>
 								<Checkbox checked={true}>Label</Checkbox>
+								<Autocomplete
+									label="Find your state"
+									hint="Start typing to see results"
+									loadOptions={async function loadOptions() {
+										return [
+											{ label: 'Australian Capital Territory', value: 'act' },
+											{ label: 'New South Wales', value: 'nsw' },
+											{ label: 'Northern Territory', value: 'nt' },
+											{ label: 'Queensland', value: 'qld' },
+											{ label: 'South Australia', value: 'sa' },
+											{ label: 'Tasmania', value: 'tas' },
+											{ label: 'Victoria', value: 'vic' },
+											{ label: 'Western Australia', value: 'wa' },
+										];
+									}}
+								/>
+								<Combobox
+									label="Select state"
+									options={[
+										{ label: 'Australian Capital Territory', value: 'act' },
+										{ label: 'New South Wales', value: 'nsw' },
+										{ label: 'Northern Territory', value: 'nt' },
+										{ label: 'Queensland', value: 'qld' },
+										{ label: 'South Australia', value: 'sa' },
+										{ label: 'Tasmania', value: 'tas' },
+										{ label: 'Victoria', value: 'vic' },
+										{ label: 'Western Australia', value: 'wa' },
+									]}
+								/>
+								<Switch
+									label="Show establishments"
+									checked={true}
+									onChange={console.log}
+								/>
+
 								<ButtonGroup>
 									<Button size="md">Primary</Button>
 									<Button size="md" variant="secondary">
