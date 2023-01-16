@@ -38,7 +38,7 @@ export default function FoundationsIconsPage({
 					<Stack gap={1.5}>
 						<H2>React component</H2>
 						<Text as="p">
-							The <TextLink href="/components/icon">Icon</TextLink> component is
+							The <TextLink href="/components/icon">Icon component</TextLink> is
 							used to apply our set of universal icons to more complex
 							components of the system.
 						</Text>
