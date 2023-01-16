@@ -24,7 +24,7 @@ export default function FoundationsIconsPage({
 	description,
 	title,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
-	const [size, setSize] = useState<IconSize>('lg');
+	const [size, setSize] = useState<IconSize>('md');
 	const [weight, setWeight] = useState<IconWeight>('regular');
 	return (
 		<>
