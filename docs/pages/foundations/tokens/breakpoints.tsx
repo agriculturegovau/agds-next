@@ -1,8 +1,8 @@
 import { Prose } from '@ag.ds-next/react/prose';
-import { DocumentTitle } from '../../components/DocumentTitle';
-import { BreakpointsChart } from '../../components/TokenCharts';
-import { TokenLayout } from '../../components/TokenLayout';
-import { TOKEN_PAGES, getTokensBreadcrumbs } from '../../content/tokens';
+import { DocumentTitle } from '../../../components/DocumentTitle';
+import { BreakpointsChart } from '../../../components/TokenCharts';
+import { TokenLayout } from '../../../components/TokenLayout';
+import { TOKEN_PAGES, getTokensBreadcrumbs } from '../../../content/tokens';
 
 export default function TokensBreakpointsPage() {
 	return (

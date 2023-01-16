@@ -5,10 +5,10 @@ import {
 	SummaryListItemDescription,
 	SummaryListItemTerm,
 } from '@ag.ds-next/react/summary-list';
-import { DocumentTitle } from '../../components/DocumentTitle';
-import { TokenLayout } from '../../components/TokenLayout';
-import { SpacingChart } from '../../components/TokenCharts';
-import { getTokensBreadcrumbs, TOKEN_PAGES } from '../../content/tokens';
+import { DocumentTitle } from '../../../components/DocumentTitle';
+import { TokenLayout } from '../../../components/TokenLayout';
+import { SpacingChart } from '../../../components/TokenCharts';
+import { getTokensBreadcrumbs, TOKEN_PAGES } from '../../../content/tokens';
 
 export default function TokensSpacingPage() {
 	return (

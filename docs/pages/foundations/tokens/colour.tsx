@@ -4,11 +4,11 @@ import { Switch } from '@ag.ds-next/react/switch';
 import { Box } from '@ag.ds-next/react/box';
 import { InpageNav } from '@ag.ds-next/react/inpage-nav';
 import { Column, Columns } from '@ag.ds-next/react/columns';
-import { DocumentTitle } from '../../components/DocumentTitle';
-import { ColorTable } from '../../components/TokenColorTable';
-import { TokenLayout } from '../../components/TokenLayout';
-import { LinkComponent } from '../../components/LinkComponent';
-import { getTokensBreadcrumbs, TOKEN_PAGES } from '../../content/tokens';
+import { DocumentTitle } from '../../../components/DocumentTitle';
+import { ColorTable } from '../../../components/TokenColorTable';
+import { TokenLayout } from '../../../components/TokenLayout';
+import { LinkComponent } from '../../../components/LinkComponent';
+import { getTokensBreadcrumbs, TOKEN_PAGES } from '../../../content/tokens';
 
 export default function TokensColorPage() {
 	const [isDarkMode, setDarkMode] = useState(false);
