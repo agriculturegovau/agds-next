@@ -92,7 +92,7 @@ export const textInputStyles = ({
 		paddingLeft: mapSpacing(1),
 		paddingRight: mapSpacing(1),
 		margin: 0,
-		background: 'none',
+		background: boxPalette.backgroundBody,
 		borderWidth: tokens.borderWidth.lg,
 		borderStyle: 'solid',
 		borderColor: boxPalette.border,
