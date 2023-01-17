@@ -7,7 +7,7 @@ import type { FileInputProps } from './FileInput';
 afterEach(cleanup);
 
 function renderFileInput(props?: Partial<FileInputProps>) {
-	return render(<FileInput {...props} />);
+	return render(<FileInput label="Example" {...props} />);
 }
 
 describe('FileInput', () => {
@@ -19,6 +19,8 @@ describe('FileInput', () => {
 		const { container } = renderFileInput();
 		expect(container).toHTMLValidate({
 			extends: ['html-validate:recommended'],
+			// react 18s `useId` break this rule
+			rules: { 'valid-id': 'off' },
 		});
 	});
 });
