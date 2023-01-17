@@ -1,7 +1,7 @@
 import { InputHTMLAttributes, forwardRef } from 'react';
 import { textInputStyles } from '../text-input';
 import { Stack } from '../box';
-import { globalPalette, useId } from '../core';
+import { useId } from '../core';
 import { SearchBoxLabel } from './SearchBoxLabel';
 
 type NativeInputProps = InputHTMLAttributes<HTMLInputElement>;
