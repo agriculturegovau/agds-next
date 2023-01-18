@@ -46,9 +46,9 @@ Removable.args = {
 		</Text>
 	),
 	items: [
-		{ label: 'Foo', onRemove: () => console.log('remove foo') },
-		{ label: 'Bar', onRemove: () => console.log('remove bar') },
-		{ label: 'Baz', onRemove: () => console.log('remove baz') },
+		{ label: 'Foo', onRemove: console.log },
+		{ label: 'Bar', onRemove: console.log },
+		{ label: 'Baz', onRemove: console.log },
 	],
 };
 
@@ -58,9 +58,9 @@ export const Modular = () => (
 			Tags:
 		</Text>
 		<TagsList>
-			<Tag href="#" label="Foo" />
-			<Tag href="#" label="Bar" />
-			<Tag href="#" label="Baz" />
+			<Tag href="#">Foo</Tag>
+			<Tag href="#">Bar</Tag>
+			<Tag href="#">Baz</Tag>
 		</TagsList>
 	</TagsContainer>
 );
