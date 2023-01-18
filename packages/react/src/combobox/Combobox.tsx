@@ -45,7 +45,7 @@ export function Combobox<Option extends DefaultComboboxOption>(
 				case useCombobox.stateChangeTypes.InputBlur:
 					return {
 						...changes,
-						inputValue: state.selectedItem ? state.selectedItem.label : '',
+						inputValue: state.selectedItem?.label ?? '',
 					};
 				default:
 					return changes;
