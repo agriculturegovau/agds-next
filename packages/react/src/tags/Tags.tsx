@@ -6,16 +6,16 @@ import { TagsList } from './TagsList';
 
 export type TagsProps = {
 	heading?: ReactNode;
-	items: (Omit<TagProps, 'children'> & { label: string })[];
+	items: Omit<TagProps, 'children'> & { label: string }[];
 };
 
 export const Tags = ({ items, heading }: TagsProps) => (
 	<TagsContainer>
 		{heading}
 		<TagsList>
-			{items.map((props, index) => (
+			{items.map(({ label, ...props }, index) => (
 				<Box as="li" key={index}>
-					<Tag {...props} />
+					<Tag {...props}>{label}</Tag>
 				</Box>
 			))}
 		</TagsList>
