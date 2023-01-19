@@ -43,7 +43,10 @@ export function Combobox<Option extends DefaultComboboxOption>(
 			switch (actionAndChangesType) {
 				// Reset the input value when the menu is closed
 				case useCombobox.stateChangeTypes.InputBlur:
-					return { inputValue: state.selectedItem ? state.inputValue : '' };
+					return {
+						...changes,
+						inputValue: state.selectedItem?.label ?? '',
+					};
 				default:
 					return changes;
 			}
