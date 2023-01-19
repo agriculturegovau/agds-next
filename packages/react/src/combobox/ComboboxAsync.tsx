@@ -79,10 +79,10 @@ export function ComboboxAsync<Option extends DefaultComboboxOption>({
 			state.loading ||
 			// Options have failed to load
 			state.networkError ||
+			// Dropdown is closed
+			!downshift.isOpen ||
 			// If a selection has just been made, no not need to load options again
 			(selectedItemLabel && selectedItemLabel === debouncedInputValue) ||
-			// When there is a dropdown trigger and dropdown is closed
-			(showDropdownTrigger && !downshift.isOpen) ||
 			// When there is no dropdown trigger (e.g. Autocomplete), only load the options if the user has interacted with the input
 			(!showDropdownTrigger && !isInputDirty.current)
 		) {
