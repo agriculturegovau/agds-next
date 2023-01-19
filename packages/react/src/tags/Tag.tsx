@@ -1,28 +1,69 @@
-import { Box } from '../box';
+import { MouseEventHandler } from 'react';
+import { Box, Flex } from '../box';
 import { TextLink } from '../text-link';
-import { boxPalette, LinkProps } from '../core';
+import { boxPalette, LinkProps, mapSpacing } from '../core';
+import { CloseIcon } from '../icon';
+import { BaseButton } from '../button';
 
-export type TagProps = LinkProps;
+export type TagProps = Omit<LinkProps, 'children'> & {
+	children: string;
+	onRemove?: MouseEventHandler<HTMLButtonElement>;
+};
 
-export const Tag = (props: TagProps) => {
-	const { children, href } = props;
+export const Tag = ({ children, onRemove, ...props }: TagProps) => {
+	const { href } = props;
 	return (
-		<Box
-			as={href ? TextLink : 'span'}
-			display="inline-block"
+		<Flex
+			as="span"
+			inline
+			alignItems="center"
 			border
 			rounded
-			paddingX={0.5}
+			paddingLeft={0.5}
+			paddingRight={onRemove ? 0.25 : 0.5}
+			gap={0.25}
 			fontSize="sm"
 			color={href ? 'action' : 'text'}
+		>
+			<Box as={href ? TextLink : 'span'} {...props}>
+				{children}
+			</Box>
+			{onRemove && (
+				<TagRemoveButton onClick={onRemove} aria-label={`Remove ${children}`} />
+			)}
+		</Flex>
+	);
+};
+
+const TagRemoveButton = ({
+	'aria-label': ariaLabel,
+	onClick,
+}: {
+	['aria-label']: string;
+	onClick: MouseEventHandler<HTMLButtonElement>;
+}) => {
+	return (
+		<Flex
+			as={BaseButton}
+			height={mapSpacing(1.5)}
+			width={mapSpacing(1.5)}
+			alignItems="center"
+			justifyContent="center"
+			onClick={onClick}
+			aria-label={ariaLabel}
 			css={{
+				svg: {
+					display: 'block',
+					color: boxPalette.foregroundAction,
+				},
 				'&:hover': {
-					backgroundColor: href ? boxPalette.backgroundShade : undefined,
+					svg: {
+						color: boxPalette.foregroundText,
+					},
 				},
 			}}
-			{...props}
 		>
-			{children}
-		</Box>
+			<CloseIcon size="sm" />
+		</Flex>
 	);
 };

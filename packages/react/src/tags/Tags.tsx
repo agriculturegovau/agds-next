@@ -6,7 +6,7 @@ import { TagsList } from './TagsList';
 
 export type TagsProps = {
 	heading?: ReactNode;
-	items: Omit<TagProps, 'children'> & { label: ReactNode }[];
+	items: Omit<TagProps, 'children'> & { label: string }[];
 };
 
 export const Tags = ({ items, heading }: TagsProps) => (
