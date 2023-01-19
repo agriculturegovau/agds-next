@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Avatar renders correctly 1`] = `
+<div>
+  <div
+    class="css-7wumue-boxStyles-Avatar"
+  >
+    OP
+  </div>
+</div>
+`;
