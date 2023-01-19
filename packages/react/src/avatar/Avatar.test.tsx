@@ -6,8 +6,8 @@ import type { AvatarProps } from './Avatar';
 
 afterEach(cleanup);
 
-function renderAvatar(props?: Partial<AvatarProps>) {
-	return render(<Avatar name={props.name} />);
+function renderAvatar({ name }: AvatarProps) {
+	return render(<Avatar name={name} />);
 }
 
 describe('Avatar', () => {
