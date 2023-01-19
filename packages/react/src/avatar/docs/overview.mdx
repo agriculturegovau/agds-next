@@ -5,13 +5,34 @@ group: Content
 storybookPath: /story/Content-Avatar--basic
 ---
 
-```jsx
-<Stack gap={0.5}>
+```jsx live
+<Flex gap={0.5}>
 	<Avatar name="Oscar Piastri" size="sm" />
 	<Avatar name="Lando Norris" size="md" />
 	<Avatar name="Lewis Hamilton" size="lg" />
 	<Avatar name="George Russell" size="xl" />
 	<Avatar name="Sergio Perez" size="xxl" />
 	<Avatar name="Max Verstappen" size="xxxl" />
-</Stack>
+</Flex>
+```
+
+## Colors
+
+Avatar supports two colours: 'default' and 'action. Use 'action' if the Avatar is used within a button or link.
+
+```jsx live
+<Flex
+	as="a"
+	href={'#'}
+	gap={0.5}
+	alignItems="center"
+	justifyContent="flex-start"
+	link
+	css={{
+		textDecoration: 'none',
+	}}
+>
+	<Avatar name="Oscar Piastri" size="md" color="action" />
+	Oscar Piastri
+</Flex>
 ```

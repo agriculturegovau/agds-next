@@ -62,3 +62,36 @@ CompositeNames.args = {
 	color: 'default',
 	size: 'md',
 };
+
+export const Links = () => {
+	const names = [
+		'Oscar Piastri',
+		'Lando Norris',
+		'Lewis Hamilton',
+		'George Russell',
+		'Sergio Perez',
+		'Max Verstappen',
+	];
+
+	return (
+		<Stack gap={0.5}>
+			{names.map((name) => (
+				<Flex
+					as="a"
+					href={`#${name}`}
+					key={name}
+					gap={0.5}
+					alignItems="center"
+					justifyContent="flex-start"
+					link
+					css={{
+						textDecoration: 'none',
+					}}
+				>
+					<Avatar color="action" size="md" name={name} />
+					{name}
+				</Flex>
+			))}
+		</Stack>
+	);
+};

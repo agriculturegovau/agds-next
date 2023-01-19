@@ -14,7 +14,7 @@ const sizeMap = {
 	xl: { fontSize: 'lg', objectSize: mapSpacing(4) },
 	xxl: { fontSize: 'xl', objectSize: mapSpacing(4.5) },
 	xxxl: { fontSize: 'xl', objectSize: mapSpacing(5) },
-};
+} as const;
 
 export type AvatarProps = {
 	name: string;
@@ -36,6 +36,7 @@ export function Avatar({
 			alignItems="center"
 			justifyContent="center"
 			css={{
+				textDecoration: 'none',
 				height: objectSize,
 				width: objectSize,
 				borderRadius: objectSize,
