@@ -126,6 +126,7 @@ describe('Field', () => {
 		const hintEl = screen.getByText(hint);
 		const messageEl = screen.getByText(message);
 		const inputEl = screen.getByTestId('example-input');
+		expect(inputEl.getAttribute('aria-invalid')).toBe('true');
 		expect(inputEl.getAttribute('aria-required')).toBe('true');
 		expect(inputEl.getAttribute('aria-describedby')).toBe(
 			[messageEl.id, hintEl.id].join(' ')
