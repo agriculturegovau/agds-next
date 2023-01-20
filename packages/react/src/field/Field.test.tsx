@@ -122,7 +122,7 @@ describe('Field', () => {
 		});
 		it('provides the correct a11y props when invalid', () => {
 			renderField({ label, hint, message, invalid: true });
-			const labelEl = screen.getByText(label).parentElement as HTMLLabelElement;
+			const labelEl = getLabelElement();
 			const hintEl = screen.getByText(hint);
 			const messageEl = screen.getByText(message);
 			const inputEl = getInputElement();
