@@ -9,8 +9,8 @@ function renderField({
 	label = '',
 	hint = undefined,
 	message = undefined,
-	required = true,
-	invalid = true,
+	required = false,
+	invalid = false,
 	hideOptionalLabel = false,
 	children = (a11yProps) => (
 		<input data-testid="example-input" type="text" {...a11yProps} />
@@ -32,8 +32,12 @@ function renderField({
 	);
 }
 
+const label = 'Name';
+const hint = 'Hint text';
+const message = 'This field is required';
+
 function getLabelElement() {
-	return screen.getByText('Name').parentElement as HTMLLabelElement;
+	return screen.getByText(label).parentElement as HTMLLabelElement;
 }
 
 function getInputElement() {
@@ -43,11 +47,11 @@ function getInputElement() {
 describe('Field', () => {
 	describe('Basic', () => {
 		it('renders correctly', () => {
-			const { container } = renderField({ label: 'Name' });
+			const { container } = renderField({ label });
 			expect(container).toMatchSnapshot();
 		});
 		it('renders a valid HTML structure', () => {
-			const { container } = renderField({ label: 'Name' });
+			const { container } = renderField({ label });
 			expect(container).toHTMLValidate({
 				extends: ['html-validate:recommended'],
 				// react 18s `useId` break this rule
@@ -58,17 +62,11 @@ describe('Field', () => {
 
 	describe('With hint', () => {
 		it('renders correctly', () => {
-			const { container } = renderField({
-				label: 'Name',
-				hint: 'Hint text',
-			});
+			const { container } = renderField({ label, hint });
 			expect(container).toMatchSnapshot();
 		});
 		it('renders a valid HTML structure', () => {
-			const { container } = renderField({
-				label: 'Name',
-				hint: 'Hint text',
-			});
+			const { container } = renderField({ label, hint });
 			expect(container).toHTMLValidate({
 				extends: ['html-validate:recommended'],
 				// react 18s `useId` break this rule
@@ -79,20 +77,12 @@ describe('Field', () => {
 
 	describe('Invalid', () => {
 		it('renders correctly', () => {
-			const { container } = renderField({
-				label: 'Name',
-				message: 'This field is required',
-				invalid: true,
-			});
+			const { container } = renderField({ label, message, invalid: true });
 			expect(container).toMatchSnapshot();
 		});
 
 		it('renders a valid HTML structure', () => {
-			const { container } = renderField({
-				label: 'Name',
-				message: 'This field is required',
-				invalid: true,
-			});
+			const { container } = renderField({ label, message, invalid: true });
 			expect(container).toHTMLValidate({
 				extends: ['html-validate:recommended'],
 				// react 18s `useId` break this rule
@@ -102,47 +92,59 @@ describe('Field', () => {
 	});
 
 	it('automatically generates an ID if no ID is provided', () => {
-		renderField({ label: 'Name' });
+		renderField({ label });
 		const inputEl = getInputElement();
 		const labelEl = getLabelElement();
 		const id = inputEl.id;
+		expect(id).toMatch(/^field-(.*)$/);
 		expect(labelEl.htmlFor).toBe(id);
 	});
 
 	it('uses ID prop if provided ', () => {
-		renderField({ label: 'Name', id: 'name' });
+		const id = 'name';
+		renderField({ label, id });
 		const labelEl = getLabelElement();
 		const inputEl = getInputElement();
-		expect(labelEl.htmlFor).toBe('name');
-		expect(inputEl.id).toBe('name');
+		expect(labelEl.htmlFor).toBe(id);
+		expect(inputEl.id).toBe(id);
 	});
 
-	it('provides the correct a11y props', () => {
-		const label = 'Name';
-		const hint = 'Hint text';
-		const message = 'This field is required';
-		renderField({ label, hint, message, invalid: true });
-		const labelEl = screen.getByText(label).parentElement as HTMLLabelElement;
-		const hintEl = screen.getByText(hint);
-		const messageEl = screen.getByText(message);
-		const inputEl = screen.getByTestId('example-input');
-		expect(inputEl.getAttribute('aria-required')).toBe('true');
-		expect(inputEl.getAttribute('aria-describedby')).toBe(
-			[messageEl.id, hintEl.id].join(' ')
-		);
-		expect(inputEl.id).toBe(labelEl.htmlFor);
+	describe('Field a11yProps', () => {
+		it('provides the correct a11y props', () => {
+			renderField({ label, hint });
+			const labelEl = getLabelElement();
+			const hintEl = screen.getByText(hint);
+			const inputEl = getInputElement();
+			expect(inputEl.getAttribute('aria-required')).toBe('false');
+			expect(inputEl.getAttribute('aria-invalid')).toBe('false');
+			expect(inputEl.getAttribute('aria-describedby')).toBe(hintEl.id);
+			expect(inputEl.id).toBe(labelEl.htmlFor);
+		});
+		it('provides the correct a11y props when invalid', () => {
+			renderField({ label, hint, message, invalid: true });
+			const labelEl = getLabelElement();
+			const hintEl = screen.getByText(hint);
+			const messageEl = screen.getByText(message);
+			const inputEl = getInputElement();
+			expect(inputEl.getAttribute('aria-required')).toBe('false');
+			expect(inputEl.getAttribute('aria-invalid')).toBe('true');
+			expect(inputEl.getAttribute('aria-describedby')).toBe(
+				`${messageEl.id} ${hintEl.id}`
+			);
+			expect(inputEl.id).toBe(labelEl.htmlFor);
+		});
 	});
 
 	describe('FieldLabel', () => {
 		describe('Optional', () => {
 			it('renders correctly', () => {
-				renderField({ label: 'Name', required: false });
+				renderField({ label, required: false });
 				const labelEl = document.querySelector('label');
 				expect(labelEl?.textContent).toBe('Name(optional)');
 			});
 			it('renders correctly when optional label is hidden', () => {
 				renderField({
-					label: 'Name',
+					label,
 					required: false,
 					hideOptionalLabel: true,
 				});
@@ -152,13 +154,13 @@ describe('Field', () => {
 		});
 		describe('Required', () => {
 			it('renders correctly', () => {
-				renderField({ label: 'Name', required: true });
+				renderField({ label, required: true });
 				const labelEl = document.querySelector('label');
 				expect(labelEl?.textContent).toBe('Name');
 			});
 			it('renders correctly when optional label is hidden', () => {
 				renderField({
-					label: 'Name',
+					label,
 					required: false,
 					hideOptionalLabel: true,
 				});
@@ -170,10 +172,9 @@ describe('Field', () => {
 
 	describe('FieldHint', () => {
 		it('renders correctly', () => {
-			const hint = 'Hint text';
-			renderField({ label: 'Name', hint });
+			renderField({ label, hint });
 			const hintEl = screen.getByText(hint);
-			const inputEl = screen.getByTestId('example-input');
+			const inputEl = getInputElement();
 			expect(hintEl).toBeInTheDocument();
 			expect(hintEl).toHaveTextContent(hint);
 			expect(inputEl.getAttribute('aria-describedby')).toBe(hintEl.id);
@@ -182,10 +183,9 @@ describe('Field', () => {
 
 	describe('FieldMessage', () => {
 		it('renders correctly', () => {
-			const message = 'This field is required';
-			renderField({ label: 'Name', message, invalid: true });
+			renderField({ label, message, invalid: true });
 			const messageEl = screen.getByText(message);
-			const inputEl = screen.getByTestId('example-input');
+			const inputEl = getInputElement();
 			expect(messageEl).toBeInTheDocument();
 			expect(messageEl).toHaveTextContent(message);
 			expect(inputEl.getAttribute('aria-describedby')).toBe(messageEl.id);
