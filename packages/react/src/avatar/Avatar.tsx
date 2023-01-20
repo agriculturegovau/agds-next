@@ -1,31 +1,38 @@
+import { HTMLAttributes } from 'react';
 import { Flex } from '@ag.ds-next/react/box';
-import { boxPalette, mapSpacing } from '@ag.ds-next/react/core';
+import { boxPalette } from '@ag.ds-next/react/core';
 import { getInitialsFromName } from './getInitialsFromName';
 
 const colorMap = {
 	action: boxPalette.foregroundAction,
-	default: boxPalette.foregroundMuted,
+	neutral: boxPalette.foregroundMuted,
 };
 
 const sizeMap = {
-	sm: { fontSize: 'xs', objectSize: mapSpacing(2) },
-	md: { fontSize: 'sm', objectSize: mapSpacing(2.5) },
-	lg: { fontSize: 'md', objectSize: mapSpacing(3) },
-	xl: { fontSize: 'lg', objectSize: mapSpacing(4) },
-	xxl: { fontSize: 'xl', objectSize: mapSpacing(4.5) },
-	xxxl: { fontSize: 'xl', objectSize: mapSpacing(5) },
+	sm: { fontSize: 'xs', objectSize: 2 },
+	md: { fontSize: 'sm', objectSize: 2.5 },
+	lg: { fontSize: 'md', objectSize: 3 },
+	xl: { fontSize: 'lg', objectSize: 4 },
+	xxl: { fontSize: 'xl', objectSize: 4.5 },
+	xxxl: { fontSize: 'xl', objectSize: 5 },
 } as const;
 
 export type AvatarProps = {
 	name: string;
 	color?: keyof typeof colorMap;
 	size?: keyof typeof sizeMap;
+	'aria-hidden'?: HTMLAttributes<HTMLDivElement>['aria-hidden'];
+	'aria-label'?: HTMLAttributes<HTMLDivElement>['aria-label'];
+	role?: HTMLAttributes<HTMLDivElement>['role'];
 };
 
 export function Avatar({
 	name,
-	color: _color = 'default',
+	color: _color = 'neutral',
 	size = 'md',
+	'aria-hidden': ariaHidden = false,
+	'aria-label': ariaLabel,
+	role,
 }: AvatarProps) {
 	const initials = getInitialsFromName(name);
 	const color = colorMap[_color];
@@ -37,9 +44,9 @@ export function Avatar({
 			justifyContent="center"
 			css={{
 				textDecoration: 'none',
-				height: objectSize,
-				width: objectSize,
-				borderRadius: objectSize,
+				height: `${objectSize}rem`,
+				width: `${objectSize}rem`,
+				borderRadius: '50%',
 				borderStyle: 'solid',
 				borderWidth: 1,
 				borderColor: color,
@@ -47,6 +54,9 @@ export function Avatar({
 			}}
 			fontSize={fontSize}
 			fontWeight="bold"
+			aria-hidden={ariaHidden}
+			aria-label={ariaLabel}
+			role={role}
 		>
 			{initials}
 		</Flex>

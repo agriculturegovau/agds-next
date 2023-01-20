@@ -13,7 +13,7 @@ const Template: ComponentStory<typeof Avatar> = (args) => <Avatar {...args} />;
 export const Basic = Template.bind({});
 Basic.args = {
 	name: 'Oscar Piastri',
-	color: 'default',
+	color: 'neutral',
 	size: 'md',
 };
 
@@ -30,7 +30,7 @@ export const Sizes: ComponentStory<typeof Avatar> = (args) => {
 	);
 };
 Sizes.args = {
-	color: 'default',
+	color: 'neutral',
 };
 
 export const CompositeNames: ComponentStory<typeof Avatar> = (args) => {
@@ -59,7 +59,7 @@ export const CompositeNames: ComponentStory<typeof Avatar> = (args) => {
 	);
 };
 CompositeNames.args = {
-	color: 'default',
+	color: 'neutral',
 	size: 'md',
 };
 
@@ -86,10 +86,16 @@ export const Links = () => {
 					link
 					css={{
 						textDecoration: 'none',
+						'> span': {
+							textDecoration: 'underline',
+						},
+						'&:hover > span': {
+							textDecoration: 'none',
+						},
 					}}
 				>
-					<Avatar color="action" size="md" name={name} />
-					{name}
+					<Avatar color="action" size="md" name={name} aria-hidden="true" />
+					<Text color="inherit">{name}</Text>
 				</Flex>
 			))}
 		</Stack>
