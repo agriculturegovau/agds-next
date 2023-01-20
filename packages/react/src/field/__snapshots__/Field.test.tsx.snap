@@ -3,7 +3,7 @@
 exports[`Field Basic renders correctly 1`] = `
 <div>
   <div
-    class="css-1n67ua0-boxStyles-FieldContainer"
+    class="css-1904cz9-boxStyles-FieldContainer"
   >
     <label
       class="css-n7rdvo-boxStyles"
@@ -14,10 +14,15 @@ exports[`Field Basic renders correctly 1`] = `
       >
         Name
       </span>
+      <span
+        class="css-1rpt3h8-boxStyles-Text"
+      >
+        (optional)
+      </span>
     </label>
     <input
-      aria-invalid="true"
-      aria-required="true"
+      aria-invalid="false"
+      aria-required="false"
       data-testid="example-input"
       id="field-:r0:"
       type="text"
@@ -39,6 +44,11 @@ exports[`Field Invalid renders correctly 1`] = `
         class="css-433uqb-boxStyles-Text"
       >
         Name
+      </span>
+      <span
+        class="css-1rpt3h8-boxStyles-Text"
+      >
+        (optional)
       </span>
     </label>
     <div
@@ -78,7 +88,7 @@ exports[`Field Invalid renders correctly 1`] = `
     <input
       aria-describedby="field-:r4:-message"
       aria-invalid="true"
-      aria-required="true"
+      aria-required="false"
       data-testid="example-input"
       id="field-:r4:"
       type="text"
@@ -90,7 +100,7 @@ exports[`Field Invalid renders correctly 1`] = `
 exports[`Field With hint renders correctly 1`] = `
 <div>
   <div
-    class="css-1n67ua0-boxStyles-FieldContainer"
+    class="css-1904cz9-boxStyles-FieldContainer"
   >
     <label
       class="css-n7rdvo-boxStyles"
@@ -101,6 +111,11 @@ exports[`Field With hint renders correctly 1`] = `
       >
         Name
       </span>
+      <span
+        class="css-1rpt3h8-boxStyles-Text"
+      >
+        (optional)
+      </span>
     </label>
     <span
       class="css-lw0v8u-boxStyles-Text"
@@ -110,8 +125,8 @@ exports[`Field With hint renders correctly 1`] = `
     </span>
     <input
       aria-describedby="field-:r2:-hint"
-      aria-invalid="true"
-      aria-required="true"
+      aria-invalid="false"
+      aria-required="false"
       data-testid="example-input"
       id="field-:r2:"
       type="text"
