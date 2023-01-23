@@ -21,6 +21,13 @@ Required.args = {
 	label: 'Example',
 };
 
+export const AcceptableFileTypes = Template.bind({});
+AcceptableFileTypes.args = {
+	label: 'Example',
+	hint: 'Acceptable file types: .jpg, .png, .heic',
+	accept: 'image/*',
+};
+
 export const HideOptionalLabel = Template.bind({});
 HideOptionalLabel.args = {
 	label: 'Example',
@@ -41,7 +48,7 @@ Disabled.args = {
 
 export const Invalid = Template.bind({});
 Invalid.args = {
-	label: 'Email',
+	label: 'Example',
 	message: 'Please choose a valid file',
 	invalid: true,
 };
