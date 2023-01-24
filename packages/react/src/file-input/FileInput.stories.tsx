@@ -55,6 +55,6 @@ Invalid.args = {
 
 export const Hint = Template.bind({});
 Hint.args = {
-	label: 'Email',
-	hint: 'We will only use this to respond to your question',
+	label: 'Example',
+	hint: 'General hint information',
 };
