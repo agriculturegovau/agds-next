@@ -38,8 +38,9 @@ export const Card = ({
 
 		const cardLinkEl = event.currentTarget.querySelector(
 			`[${cardLinkDataAttr}]`
-		) as HTMLAnchorElement | null | undefined;
-		if (!cardLinkEl) return;
+		);
+		if (!(cardLinkEl instanceof HTMLAnchorElement)) return;
+		if (cardLinkEl === event.target) return;
 
 		if (new Date().getTime() - mousedownTimer.current < 200) cardLinkEl.click();
 	};
