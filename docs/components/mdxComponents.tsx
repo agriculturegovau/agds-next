@@ -11,6 +11,15 @@ import { Box } from '@ag.ds-next/react/box';
 import { proseBlockClassname } from '@ag.ds-next/react/prose';
 import { PageAlert, PageAlertProps } from '@ag.ds-next/react/page-alert';
 import { ButtonLink } from '@ag.ds-next/react/button';
+import {
+	Table as TableComponent,
+	TableBody,
+	TableCaption,
+	TableCell,
+	TableHead,
+	TableHeader,
+	TableWrapper,
+} from '@ag.ds-next/react/table';
 import { slugify } from '../lib/slugify';
 import generatedComponentPropsData from '../__generated__/componentProps.json';
 import { Code } from './Code';
@@ -107,4 +116,16 @@ export const mdxComponents: MDXRemoteProps['components'] = {
 	},
 	DoHeading,
 	DontHeading,
+	Table: ({ children, ...props }: HTMLAttributes<HTMLTableElement>) => (
+		<div className={proseBlockClassname}>
+			<TableWrapper>
+				<TableComponent {...props}>{children}</TableComponent>
+			</TableWrapper>
+		</div>
+	),
+	TableHead,
+	TableBody,
+	TableCell,
+	TableHeader,
+	TableCaption,
 };
