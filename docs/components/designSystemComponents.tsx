@@ -166,3 +166,4 @@ export {
 	SummaryListItemDescription,
 	SummaryListItemAction,
 } from '@ag.ds-next/react/summary-list';
+export { FileInput } from '@ag.ds-next/react/file-input';

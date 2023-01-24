@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FileInput renders correctly 1`] = `
+<div>
+  <div
+    class="css-1904cz9-boxStyles-FieldContainer"
+  >
+    <label
+      class="css-n7rdvo-boxStyles"
+      for="field-:r0:"
+    >
+      <span
+        class="css-433uqb-boxStyles-Text"
+      >
+        Example
+      </span>
+      <span
+        class="css-1rpt3h8-boxStyles-Text"
+      >
+        (optional)
+      </span>
+    </label>
+    <input
+      aria-invalid="false"
+      aria-required="false"
+      class="css-mhe2d1-Field"
+      id="field-:r0:"
+      type="file"
+    />
+  </div>
+</div>
+`;

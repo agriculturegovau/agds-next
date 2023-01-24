@@ -1,0 +1,47 @@
+---
+title: File input
+description: Allows a user to attach a file to a form.
+group: Forms
+storybookPath: /story/Forms-FileInput--basic
+---
+
+A simple input for selecting files in a form. The `FileInput` component is a wrapper around the native `<input type="file" />` element. Use when you require multiple files in a form, which must be associated as seperate fields. If you only require a single file, use the [FileUpload](/components/file-upload) component instead.
+
+```jsx live
+<FormStack>
+	<FileInput label="Drivers license" required />
+	<FileInput label="Passport" required />
+</FormStack>
+```
+
+## Required
+
+The `required` prop can be used to indicate that user input is required on the field before a form can be submitted.
+
+Using the `required` prop, this component will automatically append "(optional)" to the label as well as using [aria-required](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-required) to indicate to screen reader user that the field is required.
+
+### Hide optional label
+
+The `hideOptionalLabel` prop can be used in situations where you want to indiciate to screen reader users that a field is optional but don't want to show the "(optional)" label.
+
+The usage of `hideOptionalLabel` should be reserved for inputs that filter data in a table or chart, and should never be used in standard forms for submitting information.
+
+```jsx live
+<Stack gap={1}>
+	<FileInput label="Required" required />
+	<FileInput label="Optional" required={false} />
+	<FileInput
+		label="Optional with hideOptionalLabel"
+		required={false}
+		hideOptionalLabel={true}
+	/>
+</Stack>
+```
+
+## Invalid
+
+Use the `invalid` prop to indicate if the user input is invalid (does not validate according to the elements settings).
+
+```jsx live
+<FileInput label="Invalid" invalid message="This input is invalid" />
+```

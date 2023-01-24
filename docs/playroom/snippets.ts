@@ -793,6 +793,11 @@ items={[
 		name: 'Basic',
 		code: `<GlobalAlert title="Alert title"><Text as="p">Lorem ipsum dolor sit amet, consectetur adipiscing elit.nulla.</Text></GlobalAlert>`,
 	},
+	{
+		group: 'FileInput',
+		name: 'Basic',
+		code: `<FileInput label="Upload a file" />`,
+	},
 ];
 
 export default snippets;

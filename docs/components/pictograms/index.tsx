@@ -74,6 +74,7 @@ export const pictograms = {
 	'direction-link': directionLink,
 	'date-picker': datePicker,
 	details,
+	'file-input': fileUpload,
 	'file-upload': fileUpload,
 	field,
 	fieldset,
