@@ -51,6 +51,7 @@ const TagRemoveButton = ({
 			justifyContent="center"
 			onClick={onClick}
 			aria-label={ariaLabel}
+			focus
 			css={{
 				svg: {
 					display: 'block',
