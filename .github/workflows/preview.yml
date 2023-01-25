@@ -47,3 +47,5 @@ jobs:
         uses: rossjrw/pr-preview-action@v1
         with:
           source-dir: docs/out
+        env:
+          BASE_PATH: https://design-system.agriculture.gov.au/pr-preview/pr-${{ github.event.number }}
