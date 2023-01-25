@@ -29,9 +29,7 @@ export default function Homepage() {
 				>
 					<HeroBanner>
 						<HeroBannerTitleContainer>
-							<HeroBannerTitle>
-								Welcome to the Agriculture Design System (AgDS)
-							</HeroBannerTitle>
+							<HeroBannerTitle>Hello world</HeroBannerTitle>
 							<HeroBannerSubtitle>{description}</HeroBannerSubtitle>
 						</HeroBannerTitleContainer>
 						<CallToActionLink href="/guides/getting-started">
