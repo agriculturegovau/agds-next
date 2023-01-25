@@ -33,15 +33,15 @@ jobs:
             ${{ runner.os }}-yarn-
 
       - name: Install dependencies
+        run: yarn
+
+      - name: Build
         run: |
           yarn storybook:build
           yarn playroom:build
           yarn example:build
           yarn example-form:build
           yarn docs:build
-
-      - name: Build
-        run: yarn docs:build
         env:
           BASE_PATH: /pr-preview/pr-${{ github.event.number }}
 
