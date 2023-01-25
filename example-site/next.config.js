@@ -2,10 +2,14 @@
 
 const withPreconstruct = require('@preconstruct/next');
 
+const basePath = [process.env.BASE_PATH, '/example-site']
+	.filter(Boolean)
+	.join('/');
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
 	reactStrictMode: true,
-	basePath: '/example-site',
+	basePath,
 };
 
 module.exports = withPreconstruct(nextConfig);

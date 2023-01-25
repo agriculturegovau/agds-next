@@ -2,12 +2,15 @@
 
 const withPreconstruct = require('@preconstruct/next');
 
-console.log(process.env.BASE_PATH);
+// We use a github action for pull requests deploy preview
+// As they get published on a subpath, we need to set the base path
+// See .github/workflows/preview.yml
+const basePath = process.env.BASE_PATH ?? undefined;
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-	basePath: process.env.BASE_PATH,
 	reactStrictMode: true,
+	basePath,
 };
 
 module.exports = withPreconstruct(nextConfig);
