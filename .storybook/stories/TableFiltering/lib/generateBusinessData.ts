@@ -1,5 +1,11 @@
 import { faker } from '@faker-js/faker';
 
+export type BusinessForAuditStatus =
+	| 'notBooked'
+	| 'booked'
+	| 'completed'
+	| 'cancelled';
+
 export type BusinessForAudit = {
 	businessName: string;
 	id: string;
@@ -7,7 +13,7 @@ export type BusinessForAudit = {
 	state: string;
 	numberOfEmployees: number;
 	dateRegistered: Date;
-	status: 'notBooked' | 'booked' | 'completed' | 'cancelled';
+	status: BusinessForAuditStatus;
 };
 
 const EXAMPLE_BUSINESSES: Partial<BusinessForAudit>[] = [

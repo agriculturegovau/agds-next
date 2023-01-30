@@ -1,14 +1,26 @@
 import {
 	generateBusinessData,
 	BusinessForAudit,
+	BusinessForAuditStatus,
 } from './lib/generateBusinessData';
 
 const data = generateBusinessData();
 
+export type handleGetDataFilters = {
+	state?: string | undefined;
+	dateRegistered?:
+		| {
+				from: Date | undefined;
+				to: Date | undefined;
+		  }
+		| undefined;
+	status?: BusinessForAuditStatus | undefined;
+};
+
 export type handleGetDataParams = {
 	sort: { field: keyof BusinessForAudit; order: 'ASC' | 'DESC' };
 	pagination: { page: number; perPage: number };
-	filters: Partial<BusinessForAudit>;
+	filters: handleGetDataFilters;
 };
 
 type handleGetDataResponse = {
@@ -25,17 +37,30 @@ export const handleGetData: (
 
 	const filteredData = data.filter((business) => {
 		let isValid = true;
-		const filters = Object.entries(params.filters) as [
-			keyof BusinessForAudit,
-			string
-		][];
 
-		filters.forEach(([key, val]) => {
-			const value = val.toLowerCase();
-			if (business[key].toString().toLowerCase().indexOf(value) === -1) {
+		const { dateRegistered, state, status } = params.filters;
+
+		if (dateRegistered) {
+			const { from, to } = dateRegistered;
+			if (business.dateRegistered < from || business.dateRegistered > to) {
 				isValid = false;
 			}
-		});
+		}
+
+		if (state) {
+			const value = state.toLowerCase();
+			if (business.state.toString().toLowerCase().indexOf(value) === -1) {
+				isValid = false;
+			}
+		}
+
+		if (status) {
+			const value = status.toLowerCase();
+			if (business.status.toString().toLowerCase().indexOf(value) === -1) {
+				isValid = false;
+			}
+		}
+
 		return isValid;
 	});
 
