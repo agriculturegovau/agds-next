@@ -7,14 +7,12 @@ import {
 const data = generateBusinessData();
 
 export type handleGetDataFilters = {
-	state?: string | undefined;
-	dateRegistered?:
-		| {
-				from: Date | undefined;
-				to: Date | undefined;
-		  }
-		| undefined;
-	status?: BusinessForAuditStatus | undefined;
+	state: string | undefined;
+	dateRegistered: {
+		from: Date | undefined;
+		to: Date | undefined;
+	};
+	status: BusinessForAuditStatus | undefined;
 };
 
 export type GetDataParams = {
