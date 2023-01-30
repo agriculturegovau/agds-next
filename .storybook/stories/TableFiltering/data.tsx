@@ -17,7 +17,7 @@ export type handleGetDataFilters = {
 	status?: BusinessForAuditStatus | undefined;
 };
 
-export type handleGetDataParams = {
+export type GetDataParams = {
 	sort: { field: keyof BusinessForAudit; order: 'ASC' | 'DESC' };
 	pagination: { page: number; perPage: number };
 	filters: handleGetDataFilters;
@@ -30,7 +30,7 @@ type handleGetDataResponse = {
 };
 
 export const handleGetData: (
-	params: handleGetDataParams
+	params: GetDataParams
 ) => Promise<handleGetDataResponse> = async (params) => {
 	const { page, perPage } = params.pagination;
 	const { field, order } = params.sort;
