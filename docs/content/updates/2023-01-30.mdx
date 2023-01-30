@@ -1,0 +1,48 @@
+---
+date: 30th January 2023
+title: AgDS Beta v1.1.0 release
+description: New FileInput component and new icons. Bug fixes and improvements.
+---
+
+## New components
+
+### [File input](/components/file-input)
+
+A simple input for selecting files in a form. The `FileInput` component is a wrapper around the native `<input type="file" />` element. Use when you require multiple files in a form, which must be associated as seperate fields. If you only require a single file, use the [FileUpload](/components/file-upload) component instead.
+
+```jsx live
+<FileInput label="Drivers license" />
+```
+
+## Updates
+
+### [Card](/components/card)
+
+- Prevent link event from firing twice
+
+### [Combobox](/components/combobox)
+
+- Fixed bug in `ComboboxAsync` where options would be loaded on initial render incorrectly.
+- Fixed a bug where the input element became non-interactive after blur
+
+### [Icon](/components/icon)
+
+- Added new icons: `ChartBarIcon`, `ChartLineIcon`, `DeleteIcon`, `DownloadIcon`, `EditIcon`, `FilterIcon`, `HelpIcon` and `PrintIcon`
+
+### [Tags](/components/tags)
+
+- Add support for removing tags
+
+### [Text input](/components/text-input)
+
+- Apply body background to all inputs
+
+## Released packages
+
+```sh
+"@ag.ds-next/react": "1.1.0"
+```
+
+## Full Changelog
+
+Aside from the [complete release notes on the @ag.ds-next website](https://design-system.agriculture.gov.au/updates/2023-01-30), you can also view the [verbose change log](https://github.com/steelthreads/agds-next/pull/924) in the [related PR](https://github.com/steelthreads/agds-next/pull/924) for this release.

@@ -25,7 +25,11 @@ export default function Updates({
 					editPath={`/docs/content/updates/${update.slug}.mdx`}
 					breadcrumbs={breadcrumbs}
 				>
-					<PageTitle title={update.title} introduction={update.description} />
+					<PageTitle
+						pretext={update.date}
+						title={update.title}
+						introduction={update.description}
+					/>
 					<Prose>
 						<MDXRemote {...update.source} components={mdxComponents} />
 					</Prose>
