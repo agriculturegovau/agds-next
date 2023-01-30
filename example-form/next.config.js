@@ -2,10 +2,14 @@
 
 const withPreconstruct = require('@preconstruct/next');
 
+const basePath = [process.env.BASE_PATH, '/example-form']
+	.filter(Boolean)
+	.join('/');
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
 	reactStrictMode: true,
-	basePath: '/example-form',
+	basePath,
 };
 
 module.exports = withPreconstruct(nextConfig);

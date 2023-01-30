@@ -1,13 +1,19 @@
-name: Deploy Docs Site
+# .github/workflows/preview.yml
+name: Deploy PR previews
+
 on:
-  push:
-    branches:
-      - main
-  workflow_dispatch:
+  pull_request:
+    types:
+      - opened
+      - reopened
+      - synchronize
+      - closed
+
+concurrency: preview-${{ github.ref }}
 
 jobs:
-  build-and-deploy:
-    runs-on: ubuntu-latest
+  deploy-preview:
+    runs-on: ubuntu-20.04
     steps:
       - name: Checkout 🛎️
         uses: actions/checkout@v3
@@ -36,11 +42,10 @@ jobs:
           yarn example:build
           yarn example-form:build
           yarn docs:build
+        env:
+          BASE_PATH: /pr-preview/pr-${{ github.event.number }}
 
-      - name: Deploy 🚀
-        uses: JamesIves/github-pages-deploy-action@v4
+      - name: Deploy preview
+        uses: rossjrw/pr-preview-action@v1
         with:
-          branch: gh-pages # The branch the action should deploy to.
-          folder: docs/out # The folder the action should deploy.
-          clean-exclude: pr-preview/ # https://github.com/rossjrw/pr-preview-action#ensure-your-main-deployment-is-compatible
-          force: false # https://github.com/rossjrw/pr-preview-action#ensure-your-main-deployment-is-compatible
+          source-dir: docs/out

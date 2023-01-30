@@ -98,7 +98,7 @@ jobs:
         run: yarn lint:typescript
 
   build:
-    name: Build packages & websites
+    name: Build packages
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
@@ -132,18 +132,3 @@ jobs:
 
       - name: Build packages
         run: yarn build
-
-      - name: Build Website
-        run: yarn docs:build
-
-      - name: Build Storybook
-        run: yarn storybook:build
-
-      - name: Build Playroom
-        run: yarn playroom:build
-
-      - name: Build Templates
-        run: yarn example:build
-
-      - name: Build Example Form
-        run: yarn example-form:build
