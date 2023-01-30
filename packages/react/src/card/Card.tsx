@@ -1,7 +1,6 @@
-import { PropsWithChildren, ElementType, useRef, MouseEvent } from 'react';
-import { Box, linkStyles } from '../box';
+import { PropsWithChildren, ElementType } from 'react';
+import { Box } from '../box';
 import { packs } from '../core';
-import { cardLinkDataAttr } from './CardLink';
 
 export type CardProps = PropsWithChildren<{
 	as?: ElementType;
@@ -25,31 +24,9 @@ export const Card = ({
 	shadow,
 	clickable,
 }: CardProps) => {
-	const mousedownTimer = useRef<number>();
-
-	const onMouseDown = () => {
-		mousedownTimer.current = new Date().getTime();
-	};
-
-	// This code ensures that when `CardLink` is used, the text within the card is selectable and the entire card is clickable
-	// Please read more about this technique here: https://inclusive-components.design/cards/#theredundantclickevent
-	const onMouseUp = (event: MouseEvent<HTMLDivElement>) => {
-		if (!clickable || !mousedownTimer.current) return;
-
-		const cardLinkEl = event.currentTarget.querySelector(
-			`[${cardLinkDataAttr}]`
-		);
-		if (!(cardLinkEl instanceof HTMLAnchorElement)) return;
-		if (cardLinkEl === event.target) return;
-
-		if (new Date().getTime() - mousedownTimer.current < 200) cardLinkEl.click();
-	};
-
 	return (
 		<Box
 			as={as} // Note: this should be an li when used in a card list
-			onMouseDown={onMouseDown}
-			onMouseUp={onMouseUp}
 			display="block"
 			border
 			borderColor="muted"
@@ -61,8 +38,6 @@ export const Card = ({
 				overflow: 'hidden',
 
 				...(clickable && {
-					cursor: 'pointer',
-					[`&:hover [${cardLinkDataAttr}]`]: linkStyles['&:hover'],
 					// If any element inside the card receives focus, add a focus ring around the wrapper card div
 					'&:focus-within': packs.outline,
 				}),
