@@ -38,7 +38,9 @@ jobs:
           yarn docs:build
 
       - name: Deploy 🚀
-        uses: JamesIves/github-pages-deploy-action@4.1.7
+        uses: JamesIves/github-pages-deploy-action@v4
         with:
           branch: gh-pages # The branch the action should deploy to.
           folder: docs/out # The folder the action should deploy.
+          clean-exclude: pr-preview/ # https://github.com/rossjrw/pr-preview-action#ensure-your-main-deployment-is-compatible
+          force: false # https://github.com/rossjrw/pr-preview-action#ensure-your-main-deployment-is-compatible
