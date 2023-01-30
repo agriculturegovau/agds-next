@@ -2,6 +2,7 @@ import { Flex, Stack } from '@ag.ds-next/react/box';
 import { Select } from '@ag.ds-next/react/select';
 import { VerticalDivider } from './VerticalDivider';
 import { handleGetDataParams } from './data';
+import { DateRangePicker } from '@ag.ds-next/react/date-picker';
 
 export const DashboardFilters = ({
 	params,
@@ -120,6 +121,20 @@ export const DashboardFilters = ({
 						},
 					});
 				}}
+			/>
+			<DateRangePicker
+				label="Date registered"
+				hideOptionalLabel
+				onChange={(value) => {
+					setParams({
+						...params,
+						filters: {
+							...params.filters,
+							dateRegistered: value,
+						},
+					});
+				}}
+				value={params.filters.dateRegistered}
 			/>
 		</Flex>
 	);
