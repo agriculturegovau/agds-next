@@ -30,7 +30,7 @@ exports[`Card Basic renders correctly 1`] = `
 exports[`Card With link renders correctly 1`] = `
 <div>
   <div
-    class="css-bfsv4q-boxStyles-Card"
+    class="css-a5w7y4-boxStyles-Card"
   >
     <div
       class="css-z5u98n-boxStyles"
@@ -49,8 +49,7 @@ exports[`Card With link renders correctly 1`] = `
           Lorem ipsum dolor, sit amet consectetur adipisicing elit. In, voluptat
         </p>
         <a
-          class="css-1ytze9p-CardLink"
-          data-agds-card-link=""
+          class="css-n0hvbj-CardLink"
           href="#"
         >
           Linking out
