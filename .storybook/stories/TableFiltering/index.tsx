@@ -41,7 +41,14 @@ export const Filtering = () => {
 			field: 'businessName',
 			order: 'ASC',
 		},
-		filters: {},
+		filters: {
+			state: undefined,
+			status: undefined,
+			dateRegistered: {
+				from: undefined,
+				to: undefined,
+			},
+		},
 	});
 
 	const { loading, data, totalPages } = useData(params);
