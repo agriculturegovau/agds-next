@@ -3,19 +3,18 @@ import { PageContent } from '@ag.ds-next/react/content';
 import { PaginationButtons } from '@ag.ds-next/react/pagination';
 import { SubNav } from '@ag.ds-next/react/sub-nav';
 import { useEffect, useState } from 'react';
-
 import { AppShell } from '../../components/ExampleShell';
 import { DashboardFilters } from './DashboardFilters';
 import { DashboardPageTitle } from './DashboardPageTitle';
 import { DashboardTable } from './DashboardTable';
-import { handleGetData, handleGetDataParams } from './data';
+import { handleGetData, GetDataParams } from './data';
 import { BusinessForAudit } from './lib/generateBusinessData';
 
 export default {
 	title: 'Examples/Filtering',
 };
 
-const getData = (params: handleGetDataParams) => {
+function useData(params: GetDataParams) {
 	const [loading, setLoading] = useState(false);
 	const [data, setData] = useState<BusinessForAudit[]>([]);
 	const [totalPages, setTotalPages] = useState(0);
@@ -30,10 +29,10 @@ const getData = (params: handleGetDataParams) => {
 	}, [params]);
 
 	return { loading, data, totalPages };
-};
+}
 
 export const Filtering = () => {
-	const [params, setParams] = useState({
+	const [params, setParams] = useState<GetDataParams>({
 		pagination: {
 			page: 1,
 			perPage: 20,
@@ -43,9 +42,9 @@ export const Filtering = () => {
 			order: 'ASC',
 		},
 		filters: {},
-	} as handleGetDataParams);
+	});
 
-	const { loading, data, totalPages } = getData(params);
+	const { loading, data, totalPages } = useData(params);
 
 	return (
 		<AppShell>
