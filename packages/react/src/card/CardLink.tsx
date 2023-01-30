@@ -30,5 +30,3 @@ export const CardLink = (props: CardLinkProps) => {
 		/>
 	);
 };
-
-//
