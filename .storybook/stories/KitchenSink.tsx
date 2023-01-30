@@ -38,12 +38,6 @@ import { Text } from '@ag.ds-next/react/text';
 import { Textarea } from '@ag.ds-next/react/textarea';
 import { TextInput } from '@ag.ds-next/react/text-input';
 import { DatePicker } from '@ag.ds-next/react/date-picker';
-import { Header } from '@ag.ds-next/react/header';
-import { Logo } from '@ag.ds-next/react/ag-branding';
-import { MainNav } from '@ag.ds-next/react/main-nav';
-import { Footer, FooterDivider } from '@ag.ds-next/react/footer';
-import { LinkList } from '@ag.ds-next/react/link-list';
-import { tokens } from '@ag.ds-next/react/core';
 import {
 	HeroBanner,
 	HeroBannerSubtitle,
@@ -60,14 +54,20 @@ import {
 	TableBody,
 } from '@ag.ds-next/react/table';
 import { TextLink } from '@ag.ds-next/react/text-link';
-import { AvatarIcon } from '@ag.ds-next/react/icon';
 import { Autocomplete } from '@ag.ds-next/react/src/autocomplete/Autocomplete';
 import { Combobox } from '@ag.ds-next/react/src/combobox';
+import { AppShell } from '../components/ExampleShell';
 
 export default {
 	title: 'Testing/Kitchen sink',
 	parameters: {
 		layout: 'fullscreen',
+	},
+	argTypes: {
+		bg: {
+			options: ['body', 'bodyAlt'],
+			control: { type: 'radio' },
+		},
 	},
 };
 
@@ -92,43 +92,22 @@ const sideNavItems = [
 
 const backgroundMapper = {
 	body: {
+		background: 'body',
 		shade: 'shade',
 		opposite: 'bodyAlt',
 	},
 	bodyAlt: {
+		background: 'bodyAlt',
 		shade: 'shadeAlt',
 		opposite: 'body',
 	},
 } as const;
 
-const KitchenSink = ({ background }: { background: 'body' | 'bodyAlt' }) => {
-	const backgroundSet = backgroundMapper[background];
+export const KitchenSink = ({ bg }: { bg: 'body' | 'bodyAlt' }) => {
+	const { background, shade, opposite } = backgroundMapper[bg];
 	return (
-		<Box background={background}>
-			<Stack palette="dark">
-				<Header
-					background="bodyAlt"
-					logo={<Logo />}
-					heading="Export Service"
-					subline="Supporting Australian agricultural exports"
-				/>
-				<MainNav
-					id="main-nav"
-					activePath="#home"
-					items={[
-						{ label: 'Home', href: '#home' },
-						{ label: 'Category', href: '#category' },
-					]}
-					secondaryItems={[
-						{
-							label: 'Sign in',
-							href: '#sign-in',
-							endElement: <AvatarIcon color="action" />,
-						},
-					]}
-				/>
-			</Stack>
-			<HeroBanner background={backgroundSet.opposite}>
+		<AppShell background={background}>
+			<HeroBanner background={opposite}>
 				<HeroBannerTitleContainer>
 					<HeroBannerTitle>
 						Website hero banner title - xxxl/display (H1)
@@ -240,7 +219,7 @@ const KitchenSink = ({ background }: { background: 'body' | 'bodyAlt' }) => {
 								tortor eu, finibus lacinia libero.
 							</Text>
 
-							<Callout title="Callout heading" background={backgroundSet.shade}>
+							<Callout title="Callout heading" background={shade}>
 								<Text as="p">Description of the callout.</Text>
 							</Callout>
 
@@ -488,48 +467,9 @@ const KitchenSink = ({ background }: { background: 'body' | 'bodyAlt' }) => {
 					</Column>
 				</Columns>
 			</PageContent>
-			<Box palette="dark">
-				<Footer background="bodyAlt">
-					<nav aria-label="footer">
-						<LinkList
-							links={[
-								{ label: 'Home', href: '/' },
-								{
-									label: 'Storybook',
-									href: 'https://design-system.agriculture.gov.au/storybook/index.html',
-								},
-								{
-									label: 'Playroom',
-									href: 'https://design-system.agriculture.gov.au/playroom/index.html',
-								},
-								{
-									label: 'Starter kit',
-									href: 'https://github.com/steelthreads/agds-starter-kit',
-								},
-							]}
-							horizontal
-						/>
-					</nav>
-					<FooterDivider />
-					<Text fontSize="xs" maxWidth={tokens.maxWidth.bodyText}>
-						We acknowledge the traditional owners of country throughout
-						Australia and recognise their continuing connection to land, waters
-						and culture. We pay our respects to their Elders past, present and
-						emerging.
-					</Text>
-					<Text fontSize="xs" maxWidth={tokens.maxWidth.bodyText}>
-						&copy; 2022 Department of Agriculture, Fisheries and Forestry
-					</Text>
-				</Footer>
-			</Box>
-		</Box>
+		</AppShell>
 	);
 };
-
-export const BodyBackground = () => {
-	return <KitchenSink background="body" />;
-};
-
-export const BodyAltBackground = () => {
-	return <KitchenSink background="bodyAlt" />;
+KitchenSink.args = {
+	bg: 'body',
 };

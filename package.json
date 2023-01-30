@@ -46,6 +46,7 @@
 		"@changesets/cli": "^2.23.2",
 		"@emotion/babel-preset-css-prop": "^11.2.0",
 		"@emotion/react": "^11.7.0",
+		"@faker-js/faker": "^7.6.0",
 		"@manypkg/cli": "^0.19.1",
 		"@preconstruct/cli": "^2.2.2",
 		"@preconstruct/next": "^4.0.0",
