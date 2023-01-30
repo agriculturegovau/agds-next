@@ -8,7 +8,7 @@ const data = generateBusinessData();
 export type handleGetDataParams = {
 	sort: { field: keyof BusinessForAudit; order: 'ASC' | 'DESC' };
 	pagination: { page: number; perPage: number };
-	filters: { [key: string]: string | undefined };
+	filters: Partial<BusinessForAudit>;
 };
 
 type handleGetDataResponse = {
@@ -25,8 +25,13 @@ export const handleGetData: (
 
 	const filteredData = data.filter((business) => {
 		let isValid = true;
-		Object.keys(params.filters).forEach((key) => {
-			const value = params.filters[key].toLowerCase();
+		const filters = Object.entries(params.filters) as [
+			keyof BusinessForAudit,
+			string
+		][];
+
+		filters.forEach(([key, val]) => {
+			const value = val.toLowerCase();
 			if (business[key].toString().toLowerCase().indexOf(value) === -1) {
 				isValid = false;
 			}

@@ -55,7 +55,12 @@ export const DashboardFilters = ({
 					{ value: 'cancelled', label: 'Cancelled' },
 				]}
 				onChange={(e) => {
-					const value = e.target.value;
+					const value = e.target.value as
+						| 'all'
+						| 'booked'
+						| 'notBooked'
+						| 'completed'
+						| 'cancelled';
 					setParams({
 						...params,
 						filters: {
