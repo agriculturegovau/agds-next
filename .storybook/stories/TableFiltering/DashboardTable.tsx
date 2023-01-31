@@ -14,30 +14,6 @@ import { TextLink } from '@ag.ds-next/react/text-link';
 import { Fragment } from 'react';
 import { BusinessForAudit } from './lib/generateBusinessData';
 
-const statusMap: {
-	[key: string]: {
-		label: string;
-		tone: StatusBadgeTone;
-	};
-} = {
-	notBooked: {
-		label: 'Not booked',
-		tone: 'neutral',
-	},
-	booked: {
-		label: 'Booked',
-		tone: 'info',
-	},
-	completed: {
-		label: 'Completed',
-		tone: 'success',
-	},
-	cancelled: {
-		label: 'Cancelled',
-		tone: 'error',
-	},
-};
-
 export const DashboardTable = ({
 	data,
 	loading,
@@ -98,39 +74,60 @@ export const DashboardTable = ({
 							))}
 						</Fragment>
 					) : (
-						data.map(
-							({
-								id,
-								businessName,
-								city,
-								state,
-								numberOfEmployees,
-								dateRegistered,
-								status,
-							}) => {
-								const { label, tone } = statusMap[status];
-
-								return (
-									<tr key={id}>
-										<TableCell>
-											<TextLink href={`#${id}`}>{businessName}</TextLink>
-										</TableCell>
-										<TableCell>{city}</TableCell>
-										<TableCell>{state}</TableCell>
-										<TableCell textAlign="right">{numberOfEmployees}</TableCell>
-										<TableCell textAlign="right">
-											{dateRegistered.toLocaleDateString()}
-										</TableCell>
-										<TableCell>
-											<StatusBadge label={label} tone={tone} />
-										</TableCell>
-									</tr>
-								);
-							}
-						)
+						<Fragment>
+							{data.map(
+								({
+									id,
+									businessName,
+									city,
+									state,
+									numberOfEmployees,
+									dateRegistered,
+									status,
+								}) => {
+									return (
+										<tr key={id}>
+											<TableCell>
+												<TextLink href={`#${id}`}>{businessName}</TextLink>
+											</TableCell>
+											<TableCell>{city}</TableCell>
+											<TableCell>{state}</TableCell>
+											<TableCell textAlign="right">
+												{numberOfEmployees}
+											</TableCell>
+											<TableCell textAlign="right">
+												{dateRegistered.toLocaleDateString()}
+											</TableCell>
+											<TableCell>
+												<StatusBadge {...STATUS_MAP[status]} />
+											</TableCell>
+										</tr>
+									);
+								}
+							)}
+						</Fragment>
 					)}
 				</TableBody>
 			</Table>
 		</TableWrapper>
 	);
 };
+
+const STATUS_MAP = {
+	notBooked: {
+		label: 'Not booked',
+		tone: 'neutral',
+	},
+	booked: {
+		label: 'Booked',
+		tone: 'info',
+	},
+	completed: {
+		label: 'Completed',
+		tone: 'success',
+	},
+	cancelled: {
+		label: 'Cancelled',
+		tone: 'error',
+	},
+} as const;

@@ -139,13 +139,10 @@ const EXAMPLE_BUSINESSES: Partial<BusinessForAudit>[] = [
 	},
 ];
 
-export const generateBusinessData = () => {
-	const data: BusinessForAudit[] = [];
-
-	Array.from({ length: 150 }).forEach((_, index) => {
+export const generateBusinessData = (): BusinessForAudit[] => {
+	return Array.from({ length: 150 }).map((_, index) => {
 		const exampleAustralianBusiness = EXAMPLE_BUSINESSES[index] || {};
-
-		data.push({
+		return {
 			id: faker.datatype.uuid(),
 			businessName: faker.company.name(),
 			city: faker.address.city(),
@@ -168,8 +165,6 @@ export const generateBusinessData = () => {
 			dateRegistered: faker.date.past(),
 			numberOfEmployees: faker.datatype.number(1000),
 			...exampleAustralianBusiness,
-		});
+		};
 	});
-
-	return data;
 };

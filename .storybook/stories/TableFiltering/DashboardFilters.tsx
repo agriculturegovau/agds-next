@@ -1,7 +1,7 @@
 import { Flex, Stack } from '@ag.ds-next/react/box';
 import { Select } from '@ag.ds-next/react/select';
 import { VerticalDivider } from './VerticalDivider';
-import { GetDataParams } from './data';
+import { GetDataParams } from './lib/data';
 import { DateRangePicker } from '@ag.ds-next/react/date-picker';
 
 export const DashboardFilters = ({
@@ -38,6 +38,10 @@ export const DashboardFilters = ({
 					const value = e.target.value;
 					setParams({
 						...params,
+						pagination: {
+							...params.pagination,
+							page: 1,
+						},
 						filters: {
 							...params.filters,
 							state: value === 'all' ? undefined : value,
@@ -64,6 +68,10 @@ export const DashboardFilters = ({
 						| 'cancelled';
 					setParams({
 						...params,
+						pagination: {
+							...params.pagination,
+							page: 1,
+						},
 						filters: {
 							...params.filters,
 							status: value === 'all' ? undefined : value,
@@ -112,9 +120,12 @@ export const DashboardFilters = ({
 				onChange={(e) => {
 					const value = e.target.value;
 					const { field, order } = JSON.parse(value);
-
 					setParams({
 						...params,
+						pagination: {
+							...params.pagination,
+							page: 1,
+						},
 						sort: {
 							field,
 							order,
@@ -126,6 +137,10 @@ export const DashboardFilters = ({
 				onChange={(value) => {
 					setParams({
 						...params,
+						pagination: {
+							...params.pagination,
+							page: 1,
+						},
 						filters: {
 							...params.filters,
 							dateRegistered: value,
