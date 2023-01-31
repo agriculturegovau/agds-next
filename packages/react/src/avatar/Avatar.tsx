@@ -17,7 +17,7 @@ export function Avatar({
 	name,
 	color: colorProp = 'neutral',
 	size: sizeProp = 'md',
-	'aria-hidden': ariaHidden = false,
+	'aria-hidden': ariaHidden,
 	'aria-label': ariaLabel,
 }: AvatarProps) {
 	const initials = getInitialsFromName(name);

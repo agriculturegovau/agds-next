@@ -3,7 +3,6 @@
 exports[`Avatar renders correctly 1`] = `
 <div>
   <div
-    aria-hidden="false"
     class="css-jee3dn-boxStyles-Avatar"
   >
     AA
