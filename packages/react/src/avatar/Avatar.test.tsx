@@ -13,14 +13,14 @@ function renderAvatar(props: AvatarProps) {
 describe('Avatar', () => {
 	it('renders correctly', () => {
 		const { container } = renderAvatar({
-			name: 'Taj Grainger',
+			name: 'William Mead',
 		});
 		expect(container).toMatchSnapshot();
 	});
 
 	it('renders a valid HTML structure', () => {
 		const { container } = renderAvatar({
-			name: 'Taj Grainger',
+			name: 'William Mead',
 		});
 		expect(container).toHTMLValidate({
 			extends: ['html-validate:recommended'],
@@ -29,12 +29,12 @@ describe('Avatar', () => {
 
 	it('renders the correct aria attributes', () => {
 		const { container } = renderAvatar({
-			name: 'Taj Grainger',
+			name: 'William Mead',
 			'aria-hidden': 'true',
-			'aria-label': 'Avatar for Taj Grainger',
+			'aria-label': 'William Mead Avatar',
 		});
 		const el = container.firstChild;
 		expect(el).toHaveAttribute('aria-hidden', 'true');
-		expect(el).toHaveAttribute('aria-label', 'Avatar for Taj Grainger');
+		expect(el).toHaveAttribute('aria-label', 'William Mead Avatar');
 	});
 });

@@ -14,7 +14,7 @@ const Template: ComponentStory<typeof Avatar> = (args) => <Avatar {...args} />;
 export const Basic = Template.bind({});
 Basic.args = {
 	name: 'William Mead',
-	color: 'neutral',
+	tone: 'neutral',
 	size: 'md',
 };
 
@@ -30,7 +30,7 @@ export const Sizes: ComponentStory<typeof Avatar> = ({ size, ...args }) => {
 };
 Sizes.args = {
 	name: 'William Mead',
-	color: 'neutral',
+	tone: 'neutral',
 };
 
 const SIZE_MAP = {
@@ -44,14 +44,14 @@ const SIZE_MAP = {
 
 const sizes = Object.keys(SIZE_MAP) as (keyof typeof SIZE_MAP)[];
 
-const COLOR_MAP = {
+const TONE_MAP = {
 	neutral: 'muted',
 	action: 'action',
 } as const;
 
 export const CompositeNames = () => {
 	const name = 'William Mead';
-	const color = 'neutral';
+	const tone = 'neutral';
 	return (
 		<Stack gap={1} alignItems="flex-start">
 			{sizes.map((size) => (
@@ -61,9 +61,9 @@ export const CompositeNames = () => {
 					alignItems="center"
 					justifyContent="flex-start"
 				>
-					<Avatar name={name} size={size} color={color} />
+					<Avatar name={name} size={size} tone={tone} />
 					<Text
-						color={COLOR_MAP[color]}
+						color={TONE_MAP[tone]}
 						fontSize={SIZE_MAP[size].fontSize}
 						fontWeight={SIZE_MAP[size].fontWeight}
 					>
@@ -77,7 +77,7 @@ export const CompositeNames = () => {
 
 export const CompositeNamesLinks = () => {
 	const name = 'William Mead';
-	const color = 'action';
+	const tone = 'action';
 	return (
 		<Stack gap={1} alignItems="flex-start">
 			{sizes.map((size) => (
@@ -100,9 +100,9 @@ export const CompositeNamesLinks = () => {
 						},
 					}}
 				>
-					<Avatar name={name} size={size} color={color} />
+					<Avatar name={name} size={size} tone={tone} />
 					<Text
-						color={COLOR_MAP[color]}
+						color={TONE_MAP[tone]}
 						fontSize={SIZE_MAP[size].fontSize}
 						fontWeight={SIZE_MAP[size].fontWeight}
 					>
@@ -113,19 +113,3 @@ export const CompositeNamesLinks = () => {
 		</Stack>
 	);
 };
-
-// <Flex
-// 	key={size}
-// 	gap={SIZE_MAP[size].gap}
-// 	alignItems="center"
-// 	justifyContent="flex-start"
-// >
-// 	<Avatar name={name} size={size} color={color} />
-// 	<Text
-// 		color={COLOR_MAP[color]}
-// 		fontSize={SIZE_MAP[size].fontSize}
-// 		fontWeight={SIZE_MAP[size].fontWeight}
-// 	>
-// 		{name}
-// 	</Text>
-// </Flex>

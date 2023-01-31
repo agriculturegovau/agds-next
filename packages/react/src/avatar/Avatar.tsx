@@ -7,7 +7,7 @@ type NativeDivProps = HTMLAttributes<HTMLDivElement>;
 
 export type AvatarProps = {
 	name: string;
-	color?: AvatarColor;
+	tone?: AvatarTone;
 	size?: AvatarSize;
 	'aria-hidden'?: NativeDivProps['aria-hidden'];
 	'aria-label'?: NativeDivProps['aria-label'];
@@ -15,13 +15,13 @@ export type AvatarProps = {
 
 export function Avatar({
 	name,
-	color: colorProp = 'neutral',
+	tone: toneProp = 'neutral',
 	size: sizeProp = 'md',
 	'aria-hidden': ariaHidden,
 	'aria-label': ariaLabel,
 }: AvatarProps) {
 	const initials = getInitialsFromName(name);
-	const color = COLOR_MAP[colorProp];
+	const color = TONE_PROP[toneProp];
 	const { size, fontSize } = SIZE_MAP[sizeProp];
 	return (
 		<Flex
@@ -47,12 +47,12 @@ export function Avatar({
 	);
 }
 
-const COLOR_MAP = {
+const TONE_PROP = {
 	neutral: boxPalette.foregroundMuted,
 	action: boxPalette.foregroundAction,
 };
 
-type AvatarColor = keyof typeof COLOR_MAP;
+type AvatarTone = keyof typeof TONE_PROP;
 
 const SIZE_MAP = {
 	sm: { fontSize: 'xs', size: 2 },
