@@ -4,8 +4,6 @@ import {
 	BusinessForAuditStatus,
 } from './generateBusinessData';
 
-const EXAMPLE_DATA = generateBusinessData();
-
 export type GetDataSort = {
 	field: keyof BusinessForAudit;
 	order: 'ASC' | 'DESC';
@@ -36,13 +34,16 @@ type GetDataResponse = {
 	data: BusinessForAudit[];
 	total: number;
 	totalPages: number;
+	totalItems: number;
 };
+
+const allData = generateBusinessData();
 
 export async function getData(params: GetDataParams): Promise<GetDataResponse> {
 	const { page, perPage } = params.pagination;
 	const { field, order } = params.sort;
 
-	const filteredData = EXAMPLE_DATA.filter((business) => {
+	const filteredData = allData.filter((business) => {
 		let isValid = true;
 
 		const { dateRegistered, state, status, businessName } = params.filters;
@@ -96,6 +97,7 @@ export async function getData(params: GetDataParams): Promise<GetDataResponse> {
 				data: sortedData.slice((page - 1) * perPage, page * perPage),
 				total: sortedData.length,
 				totalPages: Math.ceil(sortedData.length / perPage),
+				totalItems: sortedData.length,
 			});
 		}, 1000);
 	});
