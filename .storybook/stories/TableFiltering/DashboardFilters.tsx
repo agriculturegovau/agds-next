@@ -13,18 +13,21 @@ export const DashboardFilters = ({
 	setFilters,
 	setSort,
 	resetPagination,
+	resetFilters,
 }: {
 	filters: GetDataFilters;
 	sort: GetDataSort;
 	setFilters: (filters: GetDataFilters) => void;
 	setSort: (sort: GetDataSort) => void;
 	resetPagination: () => void;
+	resetFilters: () => void;
 }) => {
 	return (
 		<Flex
 			gap={1}
 			background="shade"
 			flexWrap="wrap"
+			alignItems="flex-end"
 			padding={1}
 			rounded
 			border
@@ -45,9 +48,9 @@ export const DashboardFilters = ({
 			/>
 			<Select
 				label="State"
+				placeholder="All"
 				hideOptionalLabel
 				options={[
-					{ value: 'all', label: 'All' },
 					{ value: 'act', label: 'ACT' },
 					{ value: 'nsw', label: 'NSW' },
 					{ value: 'nt', label: 'NT' },
@@ -57,29 +60,30 @@ export const DashboardFilters = ({
 					{ value: 'vic', label: 'VIC' },
 					{ value: 'wa', label: 'WA' },
 				]}
-				value={filters.state}
+				value={filters.state || ''}
 				onChange={(e) => {
 					const value = e.target.value;
 					resetPagination();
 					setFilters({
 						...filters,
-						state: value === 'all' ? undefined : value,
+						state: value === '' ? undefined : value,
 					});
 				}}
 			/>
 			<Select
 				label="Status"
+				placeholder="All"
 				hideOptionalLabel
 				options={[
-					{ value: 'all', label: 'All' },
 					{ value: 'booked', label: 'Booked' },
 					{ value: 'notBooked', label: 'Not booked' },
 					{ value: 'completed', label: 'Completed' },
 					{ value: 'cancelled', label: 'Cancelled' },
 				]}
+				value={filters.status || ''}
 				onChange={(e) => {
 					const value = e.target.value as
-						| 'all'
+						| ''
 						| 'booked'
 						| 'notBooked'
 						| 'completed'
@@ -87,7 +91,7 @@ export const DashboardFilters = ({
 					resetPagination();
 					setFilters({
 						...filters,
-						status: value === 'all' ? undefined : value,
+						status: value === '' ? undefined : value,
 					});
 				}}
 			/>
@@ -150,6 +154,15 @@ export const DashboardFilters = ({
 					});
 				}}
 			/>
+			<Button
+				variant="secondary"
+				onClick={() => {
+					resetPagination();
+					resetFilters();
+				}}
+			>
+				Reset filters
+			</Button>
 		</Flex>
 	);
 };
