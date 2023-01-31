@@ -3,6 +3,7 @@ import { Select } from '@ag.ds-next/react/select';
 import { VerticalDivider } from './VerticalDivider';
 import { GetDataParams } from './lib/data';
 import { DateRangePicker } from '@ag.ds-next/react/date-picker';
+import { BusinessForAudit } from './lib/generateBusinessData';
 
 export const DashboardFilters = ({
 	params,
@@ -36,7 +37,7 @@ export const DashboardFilters = ({
 				]}
 				onChange={(e) => {
 					const value = e.target.value;
-					setParams({
+					setFilters({
 						...params,
 						pagination: {
 							...params.pagination,
@@ -85,41 +86,40 @@ export const DashboardFilters = ({
 				hideOptionalLabel
 				options={[
 					{
-						value: '{"field":"businessName","order":"ASC" }',
+						value: 'businessName-ASC',
 						label: 'Business name (A-Z)',
 					},
 					{
-						value: '{"field":"businessName","order":"DESC" }',
+						value: 'businessName-DESC',
 						label: 'Business name (Z-A)',
 					},
 					{
-						value: '{"field":"city","order":"ASC" }',
+						value: 'city-ASC',
 						label: 'City (A-Z)',
 					},
 					{
-						value: '{"field":"city","order":"DESC" }',
+						value: 'city-DESC',
 						label: 'City (Z-A)',
 					},
 					{
-						value: '{"field":"numberOfEmployees","order":"ASC" }',
+						value: 'numberOfEmployees-ASC',
 						label: 'Number of employees (lowest first)',
 					},
 					{
-						value: '{"field":"numberOfEmployees","order":"DESC" }',
+						value: 'numberOfEmployees-DESC',
 						label: 'Number of employees (highest first)',
 					},
 					{
-						value: '{"field":"dateRegistered","order":"ASC" }',
+						value: 'dateRegistered-ASC',
 						label: 'Date registered (oldest first)',
 					},
 					{
-						value: '{"field":"dateRegistered","order":"DESC" }',
+						value: 'dateRegistered-DESC',
 						label: 'Date registered (newest first)',
 					},
 				]}
 				onChange={(e) => {
-					const value = e.target.value;
-					const { field, order } = JSON.parse(value);
+					const [field, order] = e.target.value.split('-');
 					setParams({
 						...params,
 						pagination: {
@@ -127,8 +127,8 @@ export const DashboardFilters = ({
 							page: 1,
 						},
 						sort: {
-							field,
-							order,
+							field: field as keyof BusinessForAudit,
+							order: order as 'ASC' | 'DESC',
 						},
 					});
 				}}
