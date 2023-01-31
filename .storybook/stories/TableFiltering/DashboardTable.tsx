@@ -19,10 +19,12 @@ export const DashboardTable = ({
 	data,
 	totalItems,
 	loading,
+	itemsPerPage = 10,
 }: {
 	data: BusinessForAudit[];
 	totalItems?: number;
 	loading?: boolean;
+	itemsPerPage?: number;
 }) => {
 	if (!loading && data.length === 0) {
 		return <Text>No results</Text>;
@@ -53,7 +55,7 @@ export const DashboardTable = ({
 				<TableBody>
 					{loading ? (
 						<Fragment>
-							{Array.from(Array(10).keys()).map((i) => (
+							{Array.from(Array(itemsPerPage).keys()).map((i) => (
 								<tr key={i}>
 									<TableCell>
 										<SkeletonText />

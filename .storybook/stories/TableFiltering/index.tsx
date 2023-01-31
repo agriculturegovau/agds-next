@@ -1,7 +1,9 @@
-import { Stack } from '@ag.ds-next/react/box';
+import { Box, Stack } from '@ag.ds-next/react/box';
+import { ButtonLink } from '@ag.ds-next/react/button';
 import { PageContent } from '@ag.ds-next/react/content';
+import { PlusIcon } from '@ag.ds-next/react/icon';
 import { PaginationButtons } from '@ag.ds-next/react/pagination';
-import { SubNav } from '@ag.ds-next/react/sub-nav';
+import { Select } from '@ag.ds-next/react/select';
 import { useEffect, useState } from 'react';
 import { AppShell } from '../../components/ExampleShell';
 import { DashboardFilters } from './DashboardFilters';
@@ -42,7 +44,7 @@ function useData({ sort, filters, pagination }: GetDataParams) {
 export const Filtering = () => {
 	const [pagination, setPagination] = useState<GetDataPagination>({
 		page: 1,
-		perPage: 20,
+		perPage: 10,
 	});
 	const [sort, setSort] = useState<GetDataSort>({
 		field: 'businessName',
@@ -69,13 +71,11 @@ export const Filtering = () => {
 			<DashboardPageTitle />
 			<PageContent>
 				<Stack gap={2}>
-					<SubNav
-						links={[
-							{ href: 'active', label: 'Active' },
-							{ href: 'completed', label: 'Completed' },
-						]}
-						activePath="active"
-					/>
+					<Box>
+						<ButtonLink href="#new" iconBefore={PlusIcon}>
+							New item
+						</ButtonLink>
+					</Box>
 					<DashboardFilters
 						filters={filters}
 						sort={sort}
@@ -87,13 +87,33 @@ export const Filtering = () => {
 						data={data}
 						loading={loading}
 						totalItems={totalItems}
+						itemsPerPage={pagination.perPage}
 					/>
 					{data.length ? (
-						<PaginationButtons
-							currentPage={pagination.page}
-							onChange={(page) => setPagination({ ...pagination, page })}
-							totalPages={totalPages}
-						/>
+						<Stack>
+							<PaginationButtons
+								currentPage={pagination.page}
+								onChange={(page) => setPagination({ ...pagination, page })}
+								totalPages={totalPages}
+							/>
+							<Select
+								label="Items per page"
+								value={pagination.perPage}
+								onChange={(event) =>
+									setPagination({
+										...pagination,
+										perPage: parseInt(event.target.value),
+									})
+								}
+								hideOptionalLabel
+								options={[
+									{ label: '10', value: '10' },
+									{ label: '20', value: '20' },
+									{ label: '50', value: '50' },
+									{ label: '100', value: '100' },
+								]}
+							/>
+						</Stack>
 					) : null}
 				</Stack>
 			</PageContent>
