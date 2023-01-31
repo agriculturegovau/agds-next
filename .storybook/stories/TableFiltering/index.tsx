@@ -7,51 +7,56 @@ import { AppShell } from '../../components/ExampleShell';
 import { DashboardFilters } from './DashboardFilters';
 import { DashboardPageTitle } from './DashboardPageTitle';
 import { DashboardTable } from './DashboardTable';
-import { getData, GetDataParams } from './lib/data';
+import {
+	getData,
+	GetDataParams,
+	GetDataFilters,
+	GetDataPagination,
+	GetDataSort,
+} from './lib/data';
 import { BusinessForAudit } from './lib/generateBusinessData';
 
 export default {
 	title: 'Examples/Filtering',
 };
 
-function useData(params: GetDataParams) {
+function useData({ sort, filters, pagination }: GetDataParams) {
 	const [loading, setLoading] = useState(false);
 	const [data, setData] = useState<BusinessForAudit[]>([]);
 	const [totalPages, setTotalPages] = useState(0);
 
 	useEffect(() => {
 		setLoading(true);
-		getData(params).then((response) => {
+		getData({ sort, filters, pagination }).then((response) => {
 			setData(response.data);
 			setTotalPages(response.totalPages);
 			setLoading(false);
 		});
-	}, [params]);
+	}, [sort, filters, pagination]);
 
 	return { loading, data, totalPages };
 }
 
 export const Filtering = () => {
-	const [params, setParams] = useState<GetDataParams>({
-		pagination: {
-			page: 1,
-			perPage: 20,
-		},
-		sort: {
-			field: 'businessName',
-			order: 'ASC',
-		},
-		filters: {
-			state: undefined,
-			status: undefined,
-			dateRegistered: {
-				from: undefined,
-				to: undefined,
-			},
+	const [pagination, setPagination] = useState<GetDataPagination>({
+		page: 1,
+		perPage: 20,
+	});
+	const [sort, setSort] = useState<GetDataSort>({
+		field: 'businessName',
+		order: 'ASC',
+	});
+	const [filters, setFilters] = useState<GetDataFilters>({
+		businessName: undefined,
+		state: undefined,
+		status: undefined,
+		dateRegistered: {
+			from: undefined,
+			to: undefined,
 		},
 	});
 
-	const { loading, data, totalPages } = useData(params);
+	const { loading, data, totalPages } = useData({ filters, pagination, sort });
 
 	return (
 		<AppShell>
@@ -65,18 +70,21 @@ export const Filtering = () => {
 						]}
 						activePath="active"
 					/>
-					<DashboardFilters params={params} setParams={setParams} />
-					<DashboardTable data={data} loading={loading} />
-					<PaginationButtons
-						currentPage={params.pagination.page}
-						onChange={(page) =>
-							setParams({
-								...params,
-								pagination: { ...params.pagination, page },
-							})
-						}
-						totalPages={totalPages}
+					<DashboardFilters
+						filters={filters}
+						sort={sort}
+						setFilters={setFilters}
+						setSort={setSort}
+						resetPagination={() => setPagination({ ...pagination, page: 1 })}
 					/>
+					<DashboardTable data={data} loading={loading} />
+					{data.length ? (
+						<PaginationButtons
+							currentPage={pagination.page}
+							onChange={(page) => setPagination({ ...pagination, page })}
+							totalPages={totalPages}
+						/>
+					) : null}
 				</Stack>
 			</PageContent>
 		</AppShell>

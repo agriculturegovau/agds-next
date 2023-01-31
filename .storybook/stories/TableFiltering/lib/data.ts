@@ -6,17 +6,30 @@ import {
 
 const EXAMPLE_DATA = generateBusinessData();
 
-export type GetDataParams = {
-	sort: { field: keyof BusinessForAudit; order: 'ASC' | 'DESC' };
-	pagination: { page: number; perPage: number };
-	filters: {
-		state: string | undefined;
-		dateRegistered: {
-			from: Date | undefined;
-			to: Date | undefined;
-		};
-		status: BusinessForAuditStatus | undefined;
+export type GetDataSort = {
+	field: keyof BusinessForAudit;
+	order: 'ASC' | 'DESC';
+};
+
+export type GetDataPagination = {
+	page: number;
+	perPage: number;
+};
+
+export type GetDataFilters = {
+	businessName: string | undefined;
+	state: string | undefined;
+	dateRegistered: {
+		from: Date | undefined;
+		to: Date | undefined;
 	};
+	status: BusinessForAuditStatus | undefined;
+};
+
+export type GetDataParams = {
+	sort: GetDataSort;
+	pagination: GetDataPagination;
+	filters: GetDataFilters;
 };
 
 type GetDataResponse = {
@@ -32,7 +45,7 @@ export async function getData(params: GetDataParams): Promise<GetDataResponse> {
 	const filteredData = EXAMPLE_DATA.filter((business) => {
 		let isValid = true;
 
-		const { dateRegistered, state, status } = params.filters;
+		const { dateRegistered, state, status, businessName } = params.filters;
 
 		if (dateRegistered?.from && dateRegistered?.to) {
 			if (
@@ -53,6 +66,13 @@ export async function getData(params: GetDataParams): Promise<GetDataResponse> {
 		if (status) {
 			const value = status.toLowerCase();
 			if (business.status.toString().toLowerCase().indexOf(value) === -1) {
+				isValid = false;
+			}
+		}
+
+		if (businessName) {
+			const value = businessName.toLowerCase();
+			if (!business.businessName.toString().toLowerCase().includes(value)) {
 				isValid = false;
 			}
 		}
