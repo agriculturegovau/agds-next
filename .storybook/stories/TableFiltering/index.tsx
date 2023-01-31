@@ -24,17 +24,19 @@ function useData({ sort, filters, pagination }: GetDataParams) {
 	const [loading, setLoading] = useState(false);
 	const [data, setData] = useState<BusinessForAudit[]>([]);
 	const [totalPages, setTotalPages] = useState(0);
+	const [totalItems, setTotalItems] = useState(0);
 
 	useEffect(() => {
 		setLoading(true);
 		getData({ sort, filters, pagination }).then((response) => {
 			setData(response.data);
 			setTotalPages(response.totalPages);
+			setTotalItems(response.totalItems);
 			setLoading(false);
 		});
 	}, [sort, filters, pagination]);
 
-	return { loading, data, totalPages };
+	return { loading, data, totalPages, totalItems };
 }
 
 export const Filtering = () => {
@@ -56,7 +58,11 @@ export const Filtering = () => {
 		},
 	});
 
-	const { loading, data, totalPages } = useData({ filters, pagination, sort });
+	const { loading, data, totalPages, totalItems } = useData({
+		filters,
+		pagination,
+		sort,
+	});
 
 	return (
 		<AppShell>
@@ -77,7 +83,11 @@ export const Filtering = () => {
 						setSort={setSort}
 						resetPagination={() => setPagination({ ...pagination, page: 1 })}
 					/>
-					<DashboardTable data={data} loading={loading} />
+					<DashboardTable
+						data={data}
+						loading={loading}
+						totalItems={totalItems}
+					/>
 					{data.length ? (
 						<PaginationButtons
 							currentPage={pagination.page}

@@ -5,6 +5,7 @@ import { GetDataFilters, GetDataSort } from './lib/data';
 import { DateRangePicker } from '@ag.ds-next/react/date-picker';
 import { BusinessForAudit } from './lib/generateBusinessData';
 import { SearchInput } from '@ag.ds-next/react/search-input';
+import { Button } from '@ag.ds-next/react/button';
 
 export const DashboardFilters = ({
 	filters,
@@ -23,6 +24,7 @@ export const DashboardFilters = ({
 		<Flex
 			gap={1}
 			background="shade"
+			flexWrap="wrap"
 			padding={1}
 			rounded
 			border
@@ -30,6 +32,7 @@ export const DashboardFilters = ({
 		>
 			<SearchInput
 				label="Search Business name"
+				maxWidth="lg"
 				hideOptionalLabel
 				value={filters.businessName}
 				onChange={(searchString) => {
@@ -88,6 +91,7 @@ export const DashboardFilters = ({
 					});
 				}}
 			/>
+			<VerticalDivider />
 			<DateRangePicker
 				onChange={(value) => {
 					resetPagination();

@@ -17,9 +17,11 @@ import { BusinessForAudit } from './lib/generateBusinessData';
 
 export const DashboardTable = ({
 	data,
+	totalItems,
 	loading,
 }: {
 	data: BusinessForAudit[];
+	totalItems?: number;
 	loading?: boolean;
 }) => {
 	if (!loading && data.length === 0) {
@@ -29,7 +31,9 @@ export const DashboardTable = ({
 	return (
 		<TableWrapper>
 			<Table>
-				<TableCaption>Establishments</TableCaption>
+				<TableCaption>{`Establishments ${
+					loading ? '' : `(${totalItems} items)`
+				}`}</TableCaption>
 				<TableHead>
 					<tr>
 						<TableHeader width="30%" scope="col">
