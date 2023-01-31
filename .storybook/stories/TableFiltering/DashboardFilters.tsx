@@ -1,16 +1,23 @@
 import { Flex, Stack } from '@ag.ds-next/react/box';
 import { Select } from '@ag.ds-next/react/select';
 import { VerticalDivider } from './VerticalDivider';
-import { GetDataParams } from './lib/data';
+import { GetDataFilters, GetDataSort } from './lib/data';
 import { DateRangePicker } from '@ag.ds-next/react/date-picker';
 import { BusinessForAudit } from './lib/generateBusinessData';
+import { SearchInput } from '@ag.ds-next/react/search-input';
 
 export const DashboardFilters = ({
-	params,
-	setParams,
+	filters,
+	sort,
+	setFilters,
+	setSort,
+	resetPagination,
 }: {
-	params: GetDataParams;
-	setParams: (params: GetDataParams) => void;
+	filters: GetDataFilters;
+	sort: GetDataSort;
+	setFilters: (filters: GetDataFilters) => void;
+	setSort: (sort: GetDataSort) => void;
+	resetPagination: () => void;
 }) => {
 	return (
 		<Flex
@@ -21,6 +28,18 @@ export const DashboardFilters = ({
 			border
 			borderColor="muted"
 		>
+			<SearchInput
+				label="Search Business name"
+				hideOptionalLabel
+				value={filters.businessName}
+				onChange={(searchString) => {
+					// debounce
+					setFilters({
+						...filters,
+						businessName: searchString,
+					});
+				}}
+			/>
 			<Select
 				label="State"
 				hideOptionalLabel
@@ -35,18 +54,13 @@ export const DashboardFilters = ({
 					{ value: 'vic', label: 'VIC' },
 					{ value: 'wa', label: 'WA' },
 				]}
+				value={filters.state}
 				onChange={(e) => {
 					const value = e.target.value;
+					resetPagination();
 					setFilters({
-						...params,
-						pagination: {
-							...params.pagination,
-							page: 1,
-						},
-						filters: {
-							...params.filters,
-							state: value === 'all' ? undefined : value,
-						},
+						...filters,
+						state: value === 'all' ? undefined : value,
 					});
 				}}
 			/>
@@ -67,18 +81,22 @@ export const DashboardFilters = ({
 						| 'notBooked'
 						| 'completed'
 						| 'cancelled';
-					setParams({
-						...params,
-						pagination: {
-							...params.pagination,
-							page: 1,
-						},
-						filters: {
-							...params.filters,
-							status: value === 'all' ? undefined : value,
-						},
+					resetPagination();
+					setFilters({
+						...filters,
+						status: value === 'all' ? undefined : value,
 					});
 				}}
+			/>
+			<DateRangePicker
+				onChange={(value) => {
+					resetPagination();
+					setFilters({
+						...filters,
+						dateRegistered: value,
+					});
+				}}
+				value={filters.dateRegistered}
 			/>
 			<VerticalDivider />
 			<Select
@@ -118,36 +136,15 @@ export const DashboardFilters = ({
 						label: 'Date registered (newest first)',
 					},
 				]}
+				value={`${sort.field}-${sort.order}`}
 				onChange={(e) => {
 					const [field, order] = e.target.value.split('-');
-					setParams({
-						...params,
-						pagination: {
-							...params.pagination,
-							page: 1,
-						},
-						sort: {
-							field: field as keyof BusinessForAudit,
-							order: order as 'ASC' | 'DESC',
-						},
+					resetPagination();
+					setSort({
+						field: field as keyof BusinessForAudit,
+						order: order as 'ASC' | 'DESC',
 					});
 				}}
-			/>
-			<DateRangePicker
-				onChange={(value) => {
-					setParams({
-						...params,
-						pagination: {
-							...params.pagination,
-							page: 1,
-						},
-						filters: {
-							...params.filters,
-							dateRegistered: value,
-						},
-					});
-				}}
-				value={params.filters.dateRegistered}
 			/>
 		</Flex>
 	);

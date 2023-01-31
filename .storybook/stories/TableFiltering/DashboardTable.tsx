@@ -11,6 +11,7 @@ import {
 	TableWrapper,
 } from '@ag.ds-next/react/table';
 import { TextLink } from '@ag.ds-next/react/text-link';
+import { Text } from '@ag.ds-next/react/text';
 import { Fragment } from 'react';
 import { BusinessForAudit } from './lib/generateBusinessData';
 
@@ -21,6 +22,10 @@ export const DashboardTable = ({
 	data: BusinessForAudit[];
 	loading?: boolean;
 }) => {
+	if (!loading && data.length === 0) {
+		return <Text>No results</Text>;
+	}
+
 	return (
 		<TableWrapper>
 			<Table>
