@@ -82,6 +82,17 @@ export const Filtering = () => {
 						setFilters={setFilters}
 						setSort={setSort}
 						resetPagination={() => setPagination({ ...pagination, page: 1 })}
+						resetFilters={() =>
+							setFilters({
+								businessName: undefined,
+								state: undefined,
+								status: undefined,
+								dateRegistered: {
+									from: undefined,
+									to: undefined,
+								},
+							})
+						}
 					/>
 					<DashboardTable
 						data={data}
