@@ -12,60 +12,43 @@ const Template: ComponentStory<typeof Avatar> = (args) => <Avatar {...args} />;
 
 export const Basic = Template.bind({});
 Basic.args = {
-	name: 'Oscar Piastri',
+	name: 'Anthony Albanese',
 	color: 'neutral',
 	size: 'md',
 };
 
-export const Sizes: ComponentStory<typeof Avatar> = (args) => {
+export const Sizes: ComponentStory<typeof Avatar> = ({ size, ...args }) => {
+	const sizes = ['sm', 'md', 'lg', 'xl', 'xxl', 'xxxl'] as const;
 	return (
-		<Stack gap={0.5}>
-			<Avatar {...args} name="Max Merstappen" size="sm" />
-			<Avatar {...args} name="Max Merstappen" size="md" />
-			<Avatar {...args} name="Max Merstappen" size="lg" />
-			<Avatar {...args} name="Max Merstappen" size="xl" />
-			<Avatar {...args} name="Max Merstappen" size="xxl" />
-			<Avatar {...args} name="Max Merstappen" size="xxxl" />
-		</Stack>
+		<Flex alignItems="center" gap={1}>
+			{sizes.map((size) => (
+				<Avatar key={size} {...args} size={size} />
+			))}
+		</Flex>
 	);
 };
 Sizes.args = {
+	name: 'Anthony Albanese',
 	color: 'neutral',
 };
 
 export const CompositeNames: ComponentStory<typeof Avatar> = (args) => {
-	const names = [
-		'Jordan Overbye',
-		'Sarah-Jane Ricciardo',
-		'Billy Bob Ricciardo',
-		'John Doe-Ray-Mee',
-		'Admin',
-	];
-
 	return (
-		<Stack gap={0.5}>
-			{names.map((name) => (
-				<Flex
-					key={name}
-					gap={0.5}
-					alignItems="center"
-					justifyContent="flex-start"
-				>
-					<Avatar {...args} name={name} />
-					<Text>{name}</Text>
-				</Flex>
-			))}
-		</Stack>
+		<Flex gap={0.5} alignItems="center" justifyContent="flex-start">
+			<Avatar {...args} />
+			<Text>{args.name}</Text>
+		</Flex>
 	);
 };
 CompositeNames.args = {
+	name: 'Anthony Albanese',
 	color: 'neutral',
 	size: 'md',
 };
 
 export const Links = () => {
 	const names = [
-		'Oscar Piastri',
+		'Anthony Albanese',
 		'Lando Norris',
 		'Lewis Hamilton',
 		'George Russell',

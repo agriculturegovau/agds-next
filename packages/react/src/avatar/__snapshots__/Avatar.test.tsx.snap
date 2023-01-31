@@ -3,9 +3,10 @@
 exports[`Avatar renders correctly 1`] = `
 <div>
   <div
-    class="css-7wumue-boxStyles-Avatar"
+    aria-hidden="false"
+    class="css-jee3dn-boxStyles-Avatar"
   >
-    OP
+    AA
   </div>
 </div>
 `;

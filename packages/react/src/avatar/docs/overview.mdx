@@ -1,38 +1,45 @@
 ---
 title: Avatar
-description: Represents a user, either as an image or as a placeholder.
+description: User avatars help to quickly identify people in the system.
 group: Content
 storybookPath: /story/Content-Avatar--basic
 ---
 
+Avatars are used to show a thumbnail representation of an individual.
+
 ```jsx live
-<Flex gap={0.5}>
-	<Avatar name="Oscar Piastri" size="sm" />
-	<Avatar name="Lando Norris" size="md" />
-	<Avatar name="Lewis Hamilton" size="lg" />
-	<Avatar name="George Russell" size="xl" />
-	<Avatar name="Sergio Perez" size="xxl" />
-	<Avatar name="Max Verstappen" size="xxxl" />
+<Avatar name="Anthony Albanese" />
+```
+
+## Sizes
+
+```jsx live
+<Flex alignItems="center" gap={0.5}>
+	<Avatar name="Anthony Albanese" size="sm" />
+	<Avatar name="Scott Morrison" size="md" />
+	<Avatar name="Malcolm Turnbull" size="lg" />
+	<Avatar name="Tony Abbott" size="xl" />
+	<Avatar name="Kevin Rudd" size="xxl" />
+	<Avatar name="Julia Gillard" size="xxxl" />
 </Flex>
 ```
 
 ## Colors
 
-Avatar supports two colours: 'default' and 'action. Use 'action' if the Avatar is used within a button or link.
+Avatar supports two colours: `default` and `action`.
+
+Use the `action` color if the Avatar is used within a button or link.
 
 ```jsx live
 <Flex
 	as="a"
-	href={'#'}
+	href="#"
 	gap={0.5}
 	alignItems="center"
 	justifyContent="flex-start"
 	link
-	css={{
-		textDecoration: 'none',
-	}}
 >
-	<Avatar name="Oscar Piastri" size="md" color="action" />
-	Oscar Piastri
+	<Avatar name="Anthony Albanese" size="md" color="action" />
+	Anthony Albanese
 </Flex>
 ```
