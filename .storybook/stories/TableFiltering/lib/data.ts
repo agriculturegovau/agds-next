@@ -2,45 +2,43 @@ import {
 	generateBusinessData,
 	BusinessForAudit,
 	BusinessForAuditStatus,
-} from './lib/generateBusinessData';
+} from './generateBusinessData';
 
-const data = generateBusinessData();
-
-export type handleGetDataFilters = {
-	state: string | undefined;
-	dateRegistered: {
-		from: Date | undefined;
-		to: Date | undefined;
-	};
-	status: BusinessForAuditStatus | undefined;
-};
+const EXAMPLE_DATA = generateBusinessData();
 
 export type GetDataParams = {
 	sort: { field: keyof BusinessForAudit; order: 'ASC' | 'DESC' };
 	pagination: { page: number; perPage: number };
-	filters: handleGetDataFilters;
+	filters: {
+		state: string | undefined;
+		dateRegistered: {
+			from: Date | undefined;
+			to: Date | undefined;
+		};
+		status: BusinessForAuditStatus | undefined;
+	};
 };
 
-type handleGetDataResponse = {
+type GetDataResponse = {
 	data: BusinessForAudit[];
 	total: number;
 	totalPages: number;
 };
 
-export const handleGetData: (
-	params: GetDataParams
-) => Promise<handleGetDataResponse> = async (params) => {
+export async function getData(params: GetDataParams): Promise<GetDataResponse> {
 	const { page, perPage } = params.pagination;
 	const { field, order } = params.sort;
 
-	const filteredData = data.filter((business) => {
+	const filteredData = EXAMPLE_DATA.filter((business) => {
 		let isValid = true;
 
 		const { dateRegistered, state, status } = params.filters;
 
-		if (dateRegistered) {
-			const { from, to } = dateRegistered;
-			if (business.dateRegistered < from || business.dateRegistered > to) {
+		if (dateRegistered?.from && dateRegistered?.to) {
+			if (
+				business.dateRegistered < dateRegistered.from ||
+				business.dateRegistered > dateRegistered.to
+			) {
 				isValid = false;
 			}
 		}
@@ -81,4 +79,4 @@ export const handleGetData: (
 			});
 		}, 1000);
 	});
-};
+}

@@ -7,7 +7,7 @@ import { AppShell } from '../../components/ExampleShell';
 import { DashboardFilters } from './DashboardFilters';
 import { DashboardPageTitle } from './DashboardPageTitle';
 import { DashboardTable } from './DashboardTable';
-import { handleGetData, GetDataParams } from './data';
+import { getData, GetDataParams } from './lib/data';
 import { BusinessForAudit } from './lib/generateBusinessData';
 
 export default {
@@ -21,7 +21,7 @@ function useData(params: GetDataParams) {
 
 	useEffect(() => {
 		setLoading(true);
-		handleGetData(params).then((response) => {
+		getData(params).then((response) => {
 			setData(response.data);
 			setTotalPages(response.totalPages);
 			setLoading(false);
@@ -69,10 +69,10 @@ export const Filtering = () => {
 					<DashboardTable data={data} loading={loading} />
 					<PaginationButtons
 						currentPage={params.pagination.page}
-						onChange={(v) =>
+						onChange={(page) =>
 							setParams({
 								...params,
-								pagination: { ...params.pagination, page: v },
+								pagination: { ...params.pagination, page },
 							})
 						}
 						totalPages={totalPages}
