@@ -1,5 +1,6 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { Flex, Stack } from '../box';
+import { boxPalette } from '../core';
 import { Text } from '../text';
 import { Avatar } from './Avatar';
 
@@ -12,7 +13,7 @@ const Template: ComponentStory<typeof Avatar> = (args) => <Avatar {...args} />;
 
 export const Basic = Template.bind({});
 Basic.args = {
-	name: 'Anthony Albanese',
+	name: 'William Mead',
 	color: 'neutral',
 	size: 'md',
 };
@@ -28,41 +29,62 @@ export const Sizes: ComponentStory<typeof Avatar> = ({ size, ...args }) => {
 	);
 };
 Sizes.args = {
-	name: 'Anthony Albanese',
+	name: 'William Mead',
 	color: 'neutral',
 };
 
-export const CompositeNames: ComponentStory<typeof Avatar> = (args) => {
+const SIZE_MAP = {
+	sm: { fontSize: 'xs', fontWeight: 'bold', gap: 0.75 },
+	md: { fontSize: 'sm', fontWeight: 'bold', gap: 0.75 },
+	lg: { fontSize: 'md', fontWeight: 'bold', gap: 0.75 },
+	xl: { fontSize: 'lg', fontWeight: 'bold', gap: 0.75 },
+	xxl: { fontSize: 'xl', fontWeight: 'bold', gap: 1 },
+	xxxl: { fontSize: 'xl', fontWeight: 'bold', gap: 1 },
+} as const;
+
+const sizes = Object.keys(SIZE_MAP) as (keyof typeof SIZE_MAP)[];
+
+const COLOR_MAP = {
+	neutral: 'muted',
+	action: 'action',
+} as const;
+
+export const CompositeNames = () => {
+	const name = 'William Mead';
+	const color = 'neutral';
 	return (
-		<Flex gap={0.5} alignItems="center" justifyContent="flex-start">
-			<Avatar {...args} />
-			<Text>{args.name}</Text>
-		</Flex>
+		<Stack gap={1} alignItems="flex-start">
+			{sizes.map((size) => (
+				<Flex
+					key={size}
+					gap={SIZE_MAP[size].gap}
+					alignItems="center"
+					justifyContent="flex-start"
+				>
+					<Avatar name={name} size={size} color={color} />
+					<Text
+						color={COLOR_MAP[color]}
+						fontSize={SIZE_MAP[size].fontSize}
+						fontWeight={SIZE_MAP[size].fontWeight}
+					>
+						{name}
+					</Text>
+				</Flex>
+			))}
+		</Stack>
 	);
 };
-CompositeNames.args = {
-	name: 'Anthony Albanese',
-	color: 'neutral',
-	size: 'md',
-};
 
-export const Links = () => {
-	const names = [
-		'Anthony Albanese',
-		'Lando Norris',
-		'Lewis Hamilton',
-		'George Russell',
-		'Sergio Perez',
-		'Max Verstappen',
-	];
-
+export const CompositeNamesLinks = () => {
+	const name = 'William Mead';
+	const color = 'action';
 	return (
-		<Stack gap={0.5}>
-			{names.map((name) => (
+		<Stack gap={1} alignItems="flex-start">
+			{sizes.map((size) => (
 				<Flex
+					key={size}
 					as="a"
-					href={`#${name}`}
-					key={name}
+					href="#"
 					gap={0.5}
 					alignItems="center"
 					justifyContent="flex-start"
@@ -74,13 +96,36 @@ export const Links = () => {
 						},
 						'&:hover > span': {
 							textDecoration: 'none',
+							color: boxPalette.foregroundText,
 						},
 					}}
 				>
-					<Avatar color="action" size="md" name={name} aria-hidden="true" />
-					<Text color="inherit">{name}</Text>
+					<Avatar name={name} size={size} color={color} />
+					<Text
+						color={COLOR_MAP[color]}
+						fontSize={SIZE_MAP[size].fontSize}
+						fontWeight={SIZE_MAP[size].fontWeight}
+					>
+						{name}
+					</Text>
 				</Flex>
 			))}
 		</Stack>
 	);
 };
+
+// <Flex
+// 	key={size}
+// 	gap={SIZE_MAP[size].gap}
+// 	alignItems="center"
+// 	justifyContent="flex-start"
+// >
+// 	<Avatar name={name} size={size} color={color} />
+// 	<Text
+// 		color={COLOR_MAP[color]}
+// 		fontSize={SIZE_MAP[size].fontSize}
+// 		fontWeight={SIZE_MAP[size].fontWeight}
+// 	>
+// 		{name}
+// 	</Text>
+// </Flex>

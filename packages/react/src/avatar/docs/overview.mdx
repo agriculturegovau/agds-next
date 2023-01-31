@@ -8,38 +8,33 @@ storybookPath: /story/Content-Avatar--basic
 Avatars are used to show a thumbnail representation of an individual.
 
 ```jsx live
-<Avatar name="Anthony Albanese" />
+<Avatar name="William Mead" />
 ```
 
 ## Sizes
 
+Use to `size` prop to change the size of the avatar.
+
 ```jsx live
 <Flex alignItems="center" gap={0.5}>
-	<Avatar name="Anthony Albanese" size="sm" />
-	<Avatar name="Scott Morrison" size="md" />
-	<Avatar name="Malcolm Turnbull" size="lg" />
-	<Avatar name="Tony Abbott" size="xl" />
-	<Avatar name="Kevin Rudd" size="xxl" />
-	<Avatar name="Julia Gillard" size="xxxl" />
+	<Avatar name="Taj Grainger" size="sm" />
+	<Avatar name="Isabel Edmund" size="md" />
+	<Avatar name="Ethan Polglaze" size="lg" />
+	<Avatar name="Rachel Warlow-Davies" size="xl" />
+	<Avatar name="Callum Lascelles" size="xxl" />
+	<Avatar name="William Mead" size="xxxl" />
 </Flex>
 ```
 
 ## Colors
 
-Avatar supports two colours: `default` and `action`.
+Avatar supports two colours: `neutral` and `action`.
 
-Use the `action` color if the Avatar is used within a button or link.
+Use the `action` color if the Avatar is used within an interactive element such as a button or link.
 
 ```jsx live
-<Flex
-	as="a"
-	href="#"
-	gap={0.5}
-	alignItems="center"
-	justifyContent="flex-start"
-	link
->
-	<Avatar name="Anthony Albanese" size="md" color="action" />
-	Anthony Albanese
+<Flex alignItems="center" gap={0.5}>
+	<Avatar name="William Mead" color="neutral" />
+	<Avatar name="William Mead" color="action" />
 </Flex>
 ```

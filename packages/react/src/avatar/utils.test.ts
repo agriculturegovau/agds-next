@@ -2,21 +2,21 @@ import { getInitialsFromName } from './utils';
 
 describe('getInitialsFromName', () => {
 	it('works correctly', () => {
-		expect(getInitialsFromName('Anthony Albanese')).toEqual('AA');
-		expect(getInitialsFromName('Scott Morrison')).toEqual('SM');
-		expect(getInitialsFromName('Malcolm Turnbull')).toEqual('MT');
+		expect(getInitialsFromName('Taj Grainger')).toEqual('TG');
+		expect(getInitialsFromName('Isabel Edmund')).toEqual('IE');
+		expect(getInitialsFromName('Ethan Polglaze')).toEqual('EP');
 	});
 
 	it('works correctly with a single name', () => {
-		expect(getInitialsFromName('Anthony')).toEqual('A');
-		expect(getInitialsFromName('Scott')).toEqual('S');
-		expect(getInitialsFromName('Malcolm')).toEqual('M');
+		expect(getInitialsFromName('Cooper')).toEqual('C');
+		expect(getInitialsFromName('Angus')).toEqual('A');
+		expect(getInitialsFromName('Hayden')).toEqual('H');
 	});
 
 	it('works correctly with lowercase names', () => {
-		expect(getInitialsFromName('anthony albanese')).toEqual('AA');
-		expect(getInitialsFromName('scott morrison')).toEqual('SM');
-		expect(getInitialsFromName('malcolm turnbull')).toEqual('MT');
+		expect(getInitialsFromName('lauren alanson')).toEqual('LA');
+		expect(getInitialsFromName('brooke tier')).toEqual('BT');
+		expect(getInitialsFromName('ashley hull')).toEqual('AH');
 	});
 
 	it('works correctly with long names', () => {
@@ -32,12 +32,12 @@ describe('getInitialsFromName', () => {
 	});
 
 	it('works correctly with names with whitespace', () => {
-		expect(getInitialsFromName(' Anthony Albanese')).toEqual('AA');
-		expect(getInitialsFromName('Anthony Albanese ')).toEqual('AA');
-		expect(getInitialsFromName('  Anthony    Albanese  ')).toEqual('AA');
+		expect(getInitialsFromName(' Taj Grainger')).toEqual('TG');
+		expect(getInitialsFromName('Taj Grainger ')).toEqual('TG');
+		expect(getInitialsFromName('  Taj   Grainger  ')).toEqual('TG');
 	});
 
-	it('handles edgecases gracefully ', () => {
+	it('handles edge-cases gracefully ', () => {
 		expect(getInitialsFromName('')).toEqual('?');
 		expect(getInitialsFromName('  ')).toEqual('?');
 		expect(getInitialsFromName('_')).toEqual('?');
