@@ -91,9 +91,9 @@ export const DatePicker = ({
 		[maxDate, minDate, onChange]
 	);
 
-	// Update the text inputs when the value updates
+	// Update the text input when the value updates
 	useEffect(() => {
-		if (value) setInputValue(formatDate(value));
+		setInputValue(value ? formatDate(value) : '');
 	}, [value]);
 
 	// Close the calendar when the user clicks outside
