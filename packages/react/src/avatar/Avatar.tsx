@@ -6,10 +6,15 @@ import { getInitialsFromName } from './utils';
 type NativeDivProps = HTMLAttributes<HTMLDivElement>;
 
 export type AvatarProps = {
+	/** The name of the person represented by the avatar. */
 	name: string;
+	/** The colour tone to apply. */
 	tone?: AvatarTone;
+	/** The size to apply. */
 	size?: AvatarSize;
+	/** If true, the element will be hidden from assistive technologies. */
 	'aria-hidden'?: NativeDivProps['aria-hidden'];
+	/** Describes the element to assistive technologies. */
 	'aria-label'?: NativeDivProps['aria-label'];
 };
 

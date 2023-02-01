@@ -18,8 +18,30 @@ Basic.args = {
 	size: 'md',
 };
 
+export const Tone = Template.bind({});
+Tone.args = {
+	name: 'William Mead',
+	tone: 'action',
+	size: 'md',
+};
+
+const SIZE_MAP = {
+	sm: { fontSize: 'xs', gap: 0.5 },
+	md: { fontSize: 'sm', gap: 0.5 },
+	lg: { fontSize: 'md', gap: 0.75 },
+	xl: { fontSize: 'lg', gap: 0.75 },
+	xxl: { fontSize: 'xl', gap: 1 },
+	xxxl: { fontSize: 'xl', gap: 1 },
+} as const;
+
+const sizes = Object.keys(SIZE_MAP) as (keyof typeof SIZE_MAP)[];
+
+const TONE_MAP = {
+	neutral: 'muted',
+	action: 'action',
+} as const;
+
 export const Sizes: ComponentStory<typeof Avatar> = ({ size, ...args }) => {
-	const sizes = ['sm', 'md', 'lg', 'xl', 'xxl', 'xxxl'] as const;
 	return (
 		<Flex alignItems="center" gap={1}>
 			{sizes.map((size) => (
@@ -32,22 +54,6 @@ Sizes.args = {
 	name: 'William Mead',
 	tone: 'neutral',
 };
-
-const SIZE_MAP = {
-	sm: { fontSize: 'xs', fontWeight: 'bold', gap: 0.75 },
-	md: { fontSize: 'sm', fontWeight: 'bold', gap: 0.75 },
-	lg: { fontSize: 'md', fontWeight: 'bold', gap: 0.75 },
-	xl: { fontSize: 'lg', fontWeight: 'bold', gap: 0.75 },
-	xxl: { fontSize: 'xl', fontWeight: 'bold', gap: 1 },
-	xxxl: { fontSize: 'xl', fontWeight: 'bold', gap: 1 },
-} as const;
-
-const sizes = Object.keys(SIZE_MAP) as (keyof typeof SIZE_MAP)[];
-
-const TONE_MAP = {
-	neutral: 'muted',
-	action: 'action',
-} as const;
 
 export const CompositeNames = () => {
 	const name = 'William Mead';
@@ -65,7 +71,7 @@ export const CompositeNames = () => {
 					<Text
 						color={TONE_MAP[tone]}
 						fontSize={SIZE_MAP[size].fontSize}
-						fontWeight={SIZE_MAP[size].fontWeight}
+						fontWeight="bold"
 					>
 						{name}
 					</Text>
@@ -83,11 +89,11 @@ export const CompositeNamesLinks = () => {
 			{sizes.map((size) => (
 				<Flex
 					key={size}
-					as="a"
-					href="#"
-					gap={0.5}
+					gap={SIZE_MAP[size].gap}
 					alignItems="center"
 					justifyContent="flex-start"
+					as="a"
+					href="#"
 					link
 					css={{
 						textDecoration: 'none',
@@ -104,7 +110,7 @@ export const CompositeNamesLinks = () => {
 					<Text
 						color={TONE_MAP[tone]}
 						fontSize={SIZE_MAP[size].fontSize}
-						fontWeight={SIZE_MAP[size].fontWeight}
+						fontWeight="bold"
 					>
 						{name}
 					</Text>
