@@ -60,7 +60,7 @@ export function PkgLayout({
 							{pkg.figmaGalleryNodeId && (
 								<ButtonLink
 									variant="text"
-									href={`https://www.figma.com/file/SgSHfK8AUadp7aEzD34ZG3/AgDS---Agriculture-Design-System-1.2.1?node-id=${pkg.figmaGalleryNodeId}`}
+									href={`https://www.figma.com/file/SgSHfK8AUadp7aEzD34ZG3/AgDS---Agriculture-Design-System?node-id=${pkg.figmaGalleryNodeId}`}
 									iconBefore={FigmaLogo}
 								>
 									View in Figma
