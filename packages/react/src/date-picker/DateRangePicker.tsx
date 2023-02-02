@@ -157,8 +157,8 @@ export const DateRangePicker = ({
 
 	// Update the text inputs when the value updates
 	useEffect(() => {
-		if (value.from) setFromInputValue(formatDate(value.from));
-		if (value.to) setToInputValue(formatDate(value.to));
+		setFromInputValue(value.from ? formatDate(value.from) : '');
+		setToInputValue(value.to ? formatDate(value.to) : '');
 	}, [value]);
 
 	// Close the calendar when the user clicks outside
