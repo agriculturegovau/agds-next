@@ -6,6 +6,7 @@ import { DateRangePicker } from '@ag.ds-next/react/date-picker';
 import { BusinessForAudit } from './lib/generateBusinessData';
 import { SearchInput } from '@ag.ds-next/react/search-input';
 import { Button } from '@ag.ds-next/react/button';
+import { DashboardSortBySelect } from './DashboardSortBySelect';
 
 export const DashboardFilters = ({
 	filters,
@@ -107,52 +108,10 @@ export const DashboardFilters = ({
 				value={filters.dateRegistered}
 			/>
 			<VerticalDivider />
-			<Select
-				label="Sort by"
-				hideOptionalLabel
-				options={[
-					{
-						value: 'businessName-ASC',
-						label: 'Business name (A-Z)',
-					},
-					{
-						value: 'businessName-DESC',
-						label: 'Business name (Z-A)',
-					},
-					{
-						value: 'city-ASC',
-						label: 'City (A-Z)',
-					},
-					{
-						value: 'city-DESC',
-						label: 'City (Z-A)',
-					},
-					{
-						value: 'numberOfEmployees-ASC',
-						label: 'Number of employees (lowest first)',
-					},
-					{
-						value: 'numberOfEmployees-DESC',
-						label: 'Number of employees (highest first)',
-					},
-					{
-						value: 'dateRegistered-ASC',
-						label: 'Date registered (oldest first)',
-					},
-					{
-						value: 'dateRegistered-DESC',
-						label: 'Date registered (newest first)',
-					},
-				]}
-				value={`${sort.field}-${sort.order}`}
-				onChange={(e) => {
-					const [field, order] = e.target.value.split('-');
-					resetPagination();
-					setSort({
-						field: field as keyof BusinessForAudit,
-						order: order as 'ASC' | 'DESC',
-					});
-				}}
+			<DashboardSortBySelect
+				sort={sort}
+				setSort={setSort}
+				resetPagination={resetPagination}
 			/>
 			<Button
 				variant="secondary"
