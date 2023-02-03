@@ -1,7 +1,7 @@
 import { Fragment, ReactNode, useState } from 'react';
 import { UseComboboxReturnValue } from 'downshift';
 import { usePopper } from 'react-popper';
-import { FieldMaxWidth, mapSpacing } from '../../core';
+import { FieldMaxWidth, mapSpacing, mergeRefs } from '../../core';
 import { textInputStyles } from '../../text-input';
 import { Field } from '../../field';
 import { Text } from '../../text';
@@ -91,87 +91,93 @@ export function ComboboxBase<Option extends DefaultComboboxOption>({
 	});
 
 	const { maxWidth, ...inputStyles } = {
-		...textInputStyles({
-			block,
-			maxWidth: maxWidthProp,
-			invalid,
-		}),
+		...textInputStyles({ block, maxWidth: maxWidthProp, invalid }),
 		paddingRight: mapSpacing(3),
 	};
 
+	const { ref: comboboxRef, ...comboboxProps } = downshift.getComboboxProps();
+
 	return (
-		<div css={{ position: 'relative', maxWidth }} ref={setRefEl}>
-			<Field
-				label={label}
-				hideOptionalLabel={hideOptionalLabel}
-				required={Boolean(required)}
-				hint={hint}
-				message={message}
-				invalid={invalid}
-				id={inputId}
-			>
-				{(a11yProps) => (
-					<div css={{ position: 'relative' }} {...downshift.getComboboxProps()}>
-						<input
-							css={[inputStyles, { width: '100%' }]}
+		<Field
+			label={label}
+			hideOptionalLabel={hideOptionalLabel}
+			required={Boolean(required)}
+			hint={hint}
+			message={message}
+			invalid={invalid}
+			id={inputId}
+		>
+			{(a11yProps) => (
+				<div
+					css={{ position: 'relative', maxWidth }}
+					ref={mergeRefs([setRefEl, comboboxRef])}
+					{...comboboxProps}
+				>
+					<input
+						css={{ ...inputStyles, width: '100%' }}
+						disabled={disabled}
+						{...a11yProps}
+						{...downshift.getInputProps({ type: 'text' })}
+					/>
+					{showDropdownTrigger && (
+						<ComboboxDropdownTrigger
 							disabled={disabled}
-							{...a11yProps}
-							{...downshift.getInputProps({ type: 'text' })}
+							{...downshift.getToggleButtonProps()}
 						/>
-						{showDropdownTrigger && (
-							<ComboboxDropdownTrigger
-								disabled={disabled}
-								{...downshift.getToggleButtonProps()}
-							/>
-						)}
-						{!showDropdownTrigger && clearable && downshift.selectedItem && (
-							<ComboboxClearButton
-								disabled={disabled}
-								onClick={downshift.reset}
-							/>
-						)}
-					</div>
-				)}
-			</Field>
-			<div
-				ref={setPopperEl}
-				style={styles.popper}
-				{...attributes.popper}
-				css={{ zIndex: 1, width: '100%' }}
-			>
-				<ComboboxList {...downshift.getMenuProps()} isOpen={downshift.isOpen}>
-					{downshift.isOpen && (
-						<Fragment>
-							{loading ? (
-								<ComboboxListLoading />
-							) : networkError ? (
-								<ComboboxListError />
-							) : (
+					)}
+					{!showDropdownTrigger && clearable && downshift.selectedItem && (
+						<ComboboxClearButton
+							disabled={disabled}
+							onClick={downshift.reset}
+						/>
+					)}
+					<div
+						ref={setPopperEl}
+						style={styles.popper}
+						{...attributes.popper}
+						css={{ maxWidth, zIndex: 1, width: '100%' }}
+					>
+						<ComboboxList
+							{...downshift.getMenuProps()}
+							isOpen={downshift.isOpen}
+						>
+							{downshift.isOpen && (
 								<Fragment>
-									{inputItems?.length ? (
-										inputItems.map((item, index) => {
-											const isActiveItem = downshift.highlightedIndex === index;
-											return (
-												<ComboboxListItem
-													key={`${item.value}${index}`}
-													isActiveItem={isActiveItem}
-													isInteractive={true}
-													{...downshift.getItemProps({ item, index })}
-												>
-													{renderItem(item, downshift.inputValue)}
-												</ComboboxListItem>
-											);
-										})
+									{loading ? (
+										<ComboboxListLoading />
+									) : networkError ? (
+										<ComboboxListError />
 									) : (
-										<ComboboxListEmptyResults message={emptyResultsMessage} />
+										<Fragment>
+											{inputItems?.length ? (
+												inputItems.map((item, index) => {
+													const isActiveItem =
+														downshift.highlightedIndex === index;
+													return (
+														<ComboboxListItem
+															key={`${item.value}${index}`}
+															isActiveItem={isActiveItem}
+															isInteractive={true}
+															{...downshift.getItemProps({ item, index })}
+														>
+															{renderItem(item, downshift.inputValue)}
+														</ComboboxListItem>
+													);
+												})
+											) : (
+												<ComboboxListEmptyResults
+													message={emptyResultsMessage}
+												/>
+											)}
+										</Fragment>
 									)}
 								</Fragment>
 							)}
-						</Fragment>
-					)}
-				</ComboboxList>
-			</div>
-		</div>
+						</ComboboxList>
+					</div>
+				</div>
+			)}
+		</Field>
 	);
 }
 
