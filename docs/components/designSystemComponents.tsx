@@ -125,7 +125,7 @@ export {
 	DirectionLink,
 	DirectionButton,
 } from '@ag.ds-next/react/direction-link';
-export { Tags } from '@ag.ds-next/react/tags';
+export { Tags, Tag } from '@ag.ds-next/react/tags';
 export { FormStack } from '@ag.ds-next/react/form-stack';
 export { TaskList } from '@ag.ds-next/react/task-list';
 export { Modal } from '@ag.ds-next/react/modal';
