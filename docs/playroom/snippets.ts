@@ -14,7 +14,7 @@ const snippets = [
     `,
 	},
 	{
-		group: 'Body',
+		group: 'Prose',
 		name: 'Basic',
 		code: `<Prose>
     <h1>Page heading</h1>
@@ -191,6 +191,15 @@ items={[
 `,
 	},
 	{
+		group: 'ButtonGroup',
+		name: 'Basic',
+		code: `<ButtonGroup>
+    <Button variant="primary">Primary</Button>
+    <Button variant="secondary">Secondary</Button>
+    <Button variant="tertiary">Tertiary</Button>
+  </ButtonGroup>`,
+	},
+	{
 		group: 'Button',
 		name: 'Primary',
 		code: `<Button>Submit</Button>`,
@@ -204,6 +213,11 @@ items={[
 		group: 'Button',
 		name: 'Tertiary',
 		code: `<Button variant='tertiary'>Cancel</Button>`,
+	},
+	{
+		group: 'Text',
+		name: 'Tertiary',
+		code: `<Button variant='text'>Cancel</Button>`,
 	},
 	{
 		group: 'Columns',
