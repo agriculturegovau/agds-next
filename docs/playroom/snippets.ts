@@ -24,6 +24,46 @@ const snippets = [
     `,
 	},
 	{
+		group: 'Text',
+		name: 'Regular',
+		code: `<Text as="p" fontWeight="normal">Normal text</Text>`,
+	},
+	{
+		group: 'Text',
+		name: 'Bold',
+		code: `<Text as="p" fontWeight="bold">Bold text</Text>`,
+	},
+	{
+		group: 'Heading 1',
+		name: 'H1',
+		code: `<H1>Heading 1</H1>`,
+	},
+	{
+		group: 'Heading 2',
+		name: 'H2',
+		code: `<H2>Heading 2</H2>`,
+	},
+	{
+		group: 'Heading 3',
+		name: 'H3',
+		code: `<H3>Heading 2</H3>`,
+	},
+	{
+		group: 'Heading 4',
+		name: 'H4',
+		code: `<H4>Heading 4</H4>`,
+	},
+	{
+		group: 'Heading 5',
+		name: 'H5',
+		code: `<H5>Heading 4</H5>`,
+	},
+	{
+		group: 'Heading 6',
+		name: 'H6',
+		code: `<H6>Heading 4</H6>`,
+	},
+	{
 		group: 'LinkList',
 		name: 'Basic',
 		code: `<LinkList links={[
@@ -263,7 +303,7 @@ items={[
 	{
 		group: 'Fieldset',
 		name: 'Basic',
-		code: `	<Fieldset legend="What is your address?">
+		code: `<Fieldset legend="What is your address?">
     <FormStack>
 			<TextInput label="Street and number" required maxWidth="xl" />
 			<TextInput label="Suburb" required maxWidth="xl" />
