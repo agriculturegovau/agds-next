@@ -3,7 +3,7 @@ const snippets = [
 		group: 'Boilerplate',
 		name: 'One',
 		code: `<Box dark><Header background="bodyAlt" logo={<Logo />} heading="Export Service" />
-    <MainNav items={[{ label: "Hello", href: "#" }]} /></Box>
+    <MainNav items={[{ label: "Home", href: "/" }]} secondaryItems={[{ label: 'Sign in', endElement: <AvatarIcon />}]} /></Box>
     <PageContent as="main">
       <Prose>
         <h1>Page heading</h1>
@@ -11,10 +11,23 @@ const snippets = [
         <p>Suspendisse feugiat rhoncus magna eleifend aliquam. Morbi euismod ex convallis viverra eleifend. Nullam vel finibus libero. Maecenas leo sem, consectetur sit amet ipsum vel, commodo porttitor quam. Nullam libero nulla, cursus a turpis et, ullamcorper lobortis metus. Aliquam aliquam sodales malesuada. Phasellus sit amet libero ut nulla porta ornare. In elit lectus, iaculis et volutpat eget, tempor ornare eros. Interdum et malesuada fames ac ante ipsum primis in faucibus. Suspendisse sodales metus quis vulputate convallis. Morbi congue lectus eget massa finibus luctus. Pellentesque tempus dui vel auctor ullamcorper.</p>
       </Prose>
     </PageContent>
+    <Box dark><Footer background="bodyAlt">
+    <nav aria-label="footer">
+      <LinkList
+        horizontal
+        links={[
+          { href: '#', label: 'Home' },
+          { href: '#', label: 'Terms and conditions' },
+          { href: '#', label: 'Privacy policy' },
+          { href: '#', label: 'A really long link title' },
+        ]}
+      />
+    </nav>
+    </Footer></Box>
     `,
 	},
 	{
-		group: 'Body',
+		group: 'Prose',
 		name: 'Basic',
 		code: `<Prose>
     <h1>Page heading</h1>
@@ -22,6 +35,46 @@ const snippets = [
     <p>Suspendisse feugiat rhoncus magna eleifend aliquam. Morbi euismod ex convallis viverra eleifend. Nullam vel finibus libero. Maecenas leo sem, consectetur sit amet ipsum vel, commodo porttitor quam. Nullam libero nulla, cursus a turpis et, ullamcorper lobortis metus. Aliquam aliquam sodales malesuada. Phasellus sit amet libero ut nulla porta ornare. In elit lectus, iaculis et volutpat eget, tempor ornare eros. Interdum et malesuada fames ac ante ipsum primis in faucibus. Suspendisse sodales metus quis vulputate convallis. Morbi congue lectus eget massa finibus luctus. Pellentesque tempus dui vel auctor ullamcorper.</p>
   </Prose>
     `,
+	},
+	{
+		group: 'Text',
+		name: 'Regular',
+		code: `<Text as="p" fontWeight="normal">Normal text</Text>`,
+	},
+	{
+		group: 'Text',
+		name: 'Bold',
+		code: `<Text as="p" fontWeight="bold">Bold text</Text>`,
+	},
+	{
+		group: 'Heading',
+		name: 'H1',
+		code: `<H1>Heading 1</H1>`,
+	},
+	{
+		group: 'Heading',
+		name: 'H2',
+		code: `<H2>Heading 2</H2>`,
+	},
+	{
+		group: 'Heading',
+		name: 'H3',
+		code: `<H3>Heading 2</H3>`,
+	},
+	{
+		group: 'Heading',
+		name: 'H4',
+		code: `<H4>Heading 4</H4>`,
+	},
+	{
+		group: 'Heading',
+		name: 'H5',
+		code: `<H5>Heading 4</H5>`,
+	},
+	{
+		group: 'Heading',
+		name: 'H6',
+		code: `<H6>Heading 4</H6>`,
 	},
 	{
 		group: 'LinkList',
@@ -192,6 +245,15 @@ items={[
 	},
 	{
 		group: 'Button',
+		name: 'ButtonGroup',
+		code: `<ButtonGroup>
+    <Button variant="primary">Primary</Button>
+    <Button variant="secondary">Secondary</Button>
+    <Button variant="tertiary">Tertiary</Button>
+  </ButtonGroup>`,
+	},
+	{
+		group: 'Button',
 		name: 'Primary',
 		code: `<Button>Submit</Button>`,
 	},
@@ -204,6 +266,11 @@ items={[
 		group: 'Button',
 		name: 'Tertiary',
 		code: `<Button variant='tertiary'>Cancel</Button>`,
+	},
+	{
+		group: 'Button',
+		name: 'Text',
+		code: `<Button variant='text'>Cancel</Button>`,
 	},
 	{
 		group: 'Columns',
@@ -249,7 +316,7 @@ items={[
 	{
 		group: 'Fieldset',
 		name: 'Basic',
-		code: `	<Fieldset legend="What is your address?">
+		code: `<Fieldset legend="What is your address?">
     <FormStack>
 			<TextInput label="Street and number" required maxWidth="xl" />
 			<TextInput label="Suburb" required maxWidth="xl" />
@@ -350,6 +417,23 @@ items={[
       { href: '#', label: 'Baz' },
     ]}
     />`,
+	},
+	{
+		group: 'Tags',
+		name: 'Removable',
+		code: `<Tags
+    heading={<Text as="h2" fontWeight="bold">Tags:</Text>}
+    items={[
+      { href: '#', label: 'Foo', onRemove: console.log },
+      { href: '#', label: 'Bar', onRemove: console.log },
+      { href: '#', label: 'Baz', onRemove: console.log },
+    ]}
+    />`,
+	},
+	{
+		group: 'Tag',
+		name: 'Basic',
+		code: `<Tag>Foo</Tag>`,
 	},
 	{
 		group: 'Form',
