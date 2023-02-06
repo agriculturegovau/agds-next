@@ -1,6 +1,6 @@
 import { VisuallyHidden } from '@ag.ds-next/react/a11y';
 import { StatusBadge, StatusBadgeTone } from '@ag.ds-next/react/badge';
-import { SkeletonText } from '@ag.ds-next/react/skeleton';
+import { SkeletonBox, SkeletonText } from '@ag.ds-next/react/skeleton';
 import {
 	Table,
 	TableBody,
@@ -42,14 +42,18 @@ export const DashboardTable = ({
 							Business name
 						</TableHeader>
 						<TableHeader scope="col">City</TableHeader>
-						<TableHeader scope="col">State</TableHeader>
-						<TableHeader textAlign="right" scope="col">
+						<TableHeader scope="col" width="10%">
+							State
+						</TableHeader>
+						<TableHeader textAlign="right" scope="col" width="10%">
 							Employees
 						</TableHeader>
-						<TableHeader textAlign="right" scope="col">
+						<TableHeader textAlign="right" scope="col" width="15%">
 							Date registered
 						</TableHeader>
-						<TableHeader scope="col">Status</TableHeader>
+						<TableHeader scope="col" width="15%">
+							Status
+						</TableHeader>
 					</tr>
 				</TableHead>
 				<TableBody>
@@ -78,7 +82,7 @@ export const DashboardTable = ({
 										<VisuallyHidden>Loading</VisuallyHidden>
 									</TableCell>
 									<TableCell>
-										<SkeletonText />
+										<SkeletonBox height={32} />
 										<VisuallyHidden>Loading</VisuallyHidden>
 									</TableCell>
 								</tr>

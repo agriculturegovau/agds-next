@@ -1,9 +1,9 @@
 import { Flex, Stack } from '@ag.ds-next/react/box';
 import { Select } from '@ag.ds-next/react/select';
 import { VerticalDivider } from './VerticalDivider';
-import { GetDataFilters, GetDataSort } from './lib/data';
+import { GetDataFilters, GetDataSort } from '../lib/data';
 import { DateRangePicker } from '@ag.ds-next/react/date-picker';
-import { BusinessForAudit } from './lib/generateBusinessData';
+import { BusinessForAudit } from '../lib/generateBusinessData';
 import { SearchInput } from '@ag.ds-next/react/search-input';
 import { Button } from '@ag.ds-next/react/button';
 import { DashboardSortBySelect } from './DashboardSortBySelect';

@@ -1,14 +1,6 @@
-import { Box, Stack } from '@ag.ds-next/react/box';
-import { ButtonLink } from '@ag.ds-next/react/button';
-import { PageContent } from '@ag.ds-next/react/content';
-import { PlusIcon } from '@ag.ds-next/react/icon';
-import { PaginationButtons } from '@ag.ds-next/react/pagination';
-import { Select } from '@ag.ds-next/react/select';
 import { useEffect, useState } from 'react';
-import { AppShell } from '../../components/ExampleShell';
-import { DashboardFilters } from './DashboardFilters';
-import { DashboardPageTitle } from './DashboardPageTitle';
-import { DashboardTable } from './DashboardTable';
+import { ExampleDropDownMenu } from './ExampleDropDownMenu';
+import { ExamplePersistentFilters } from './ExamplePersistentFilters';
 import {
 	getData,
 	GetDataParams,
@@ -41,7 +33,7 @@ function useData({ sort, filters, pagination }: GetDataParams) {
 	return { loading, data, totalPages, totalItems };
 }
 
-export const Filtering = () => {
+const useSortAndFilter = () => {
 	const [pagination, setPagination] = useState<GetDataPagination>({
 		page: 1,
 		perPage: 10,
@@ -60,6 +52,42 @@ export const Filtering = () => {
 		},
 	});
 
+	const resetPagination = () => setPagination({ ...pagination, page: 1 });
+	const resetFilters = () =>
+		setFilters({
+			businessName: undefined,
+			state: undefined,
+			status: undefined,
+			dateRegistered: {
+				from: undefined,
+				to: undefined,
+			},
+		});
+
+	return {
+		filters,
+		pagination,
+		resetFilters,
+		resetPagination,
+		setFilters,
+		setPagination,
+		setSort,
+		sort,
+	};
+};
+
+export const DropDown = () => {
+	const {
+		filters,
+		pagination,
+		resetFilters,
+		resetPagination,
+		setFilters,
+		setPagination,
+		setSort,
+		sort,
+	} = useSortAndFilter();
+
 	const { loading, data, totalPages, totalItems } = useData({
 		filters,
 		pagination,
@@ -67,67 +95,55 @@ export const Filtering = () => {
 	});
 
 	return (
-		<AppShell>
-			<DashboardPageTitle />
-			<PageContent>
-				<Stack gap={2}>
-					<Box>
-						<ButtonLink href="#new" iconBefore={PlusIcon}>
-							New item
-						</ButtonLink>
-					</Box>
-					<DashboardFilters
-						filters={filters}
-						sort={sort}
-						setFilters={setFilters}
-						setSort={setSort}
-						resetPagination={() => setPagination({ ...pagination, page: 1 })}
-						resetFilters={() =>
-							setFilters({
-								businessName: undefined,
-								state: undefined,
-								status: undefined,
-								dateRegistered: {
-									from: undefined,
-									to: undefined,
-								},
-							})
-						}
-					/>
-					<DashboardTable
-						data={data}
-						loading={loading}
-						totalItems={totalItems}
-						itemsPerPage={pagination.perPage}
-					/>
-					{data.length ? (
-						<Stack>
-							<PaginationButtons
-								currentPage={pagination.page}
-								onChange={(page) => setPagination({ ...pagination, page })}
-								totalPages={totalPages}
-							/>
-							<Select
-								label="Items per page"
-								value={pagination.perPage}
-								onChange={(event) =>
-									setPagination({
-										...pagination,
-										perPage: parseInt(event.target.value),
-									})
-								}
-								hideOptionalLabel
-								options={[
-									{ label: '10', value: '10' },
-									{ label: '20', value: '20' },
-									{ label: '50', value: '50' },
-									{ label: '100', value: '100' },
-								]}
-							/>
-						</Stack>
-					) : null}
-				</Stack>
-			</PageContent>
-		</AppShell>
+		<ExampleDropDownMenu
+			data={data}
+			filters={filters}
+			loading={loading}
+			pagination={pagination}
+			resetFilters={resetFilters}
+			resetPagination={resetPagination}
+			setFilters={setFilters}
+			setPagination={setPagination}
+			setSort={setSort}
+			sort={sort}
+			totalItems={totalItems}
+			totalPages={totalPages}
+		/>
+	);
+};
+
+export const PersistentFilters = () => {
+	const {
+		filters,
+		pagination,
+		resetFilters,
+		resetPagination,
+		setFilters,
+		setPagination,
+		setSort,
+		sort,
+	} = useSortAndFilter();
+
+	const { loading, data, totalPages, totalItems } = useData({
+		filters,
+		pagination,
+		sort,
+	});
+
+	return (
+		<ExamplePersistentFilters
+			data={data}
+			filters={filters}
+			loading={loading}
+			pagination={pagination}
+			resetFilters={resetFilters}
+			resetPagination={resetPagination}
+			setFilters={setFilters}
+			setPagination={setPagination}
+			setSort={setSort}
+			sort={sort}
+			totalItems={totalItems}
+			totalPages={totalPages}
+		/>
 	);
 };
