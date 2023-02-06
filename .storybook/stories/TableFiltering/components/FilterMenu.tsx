@@ -137,6 +137,8 @@ export const FilterMenu = ({
 							/>
 						</Flex>
 						<DateRangePicker
+							fromLabel="Date registered from"
+							toLabel="Date registered to"
 							onChange={(value) => {
 								resetPagination();
 								setFilters({

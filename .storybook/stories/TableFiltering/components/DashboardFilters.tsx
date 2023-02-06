@@ -1,12 +1,12 @@
-import { Flex, Stack } from '@ag.ds-next/react/box';
+import { Box, Flex } from '@ag.ds-next/react/box';
 import { Select } from '@ag.ds-next/react/select';
-import { VerticalDivider } from './VerticalDivider';
 import { GetDataFilters, GetDataSort } from '../lib/data';
 import { DateRangePicker } from '@ag.ds-next/react/date-picker';
-import { BusinessForAudit } from '../lib/generateBusinessData';
 import { SearchInput } from '@ag.ds-next/react/search-input';
 import { Button } from '@ag.ds-next/react/button';
 import { DashboardSortBySelect } from './DashboardSortBySelect';
+
+const VerticalDivider = () => <Box borderLeft borderColor="muted" />;
 
 export const DashboardFilters = ({
 	filters,
@@ -34,6 +34,12 @@ export const DashboardFilters = ({
 			border
 			borderColor="muted"
 		>
+			<DashboardSortBySelect
+				sort={sort}
+				setSort={setSort}
+				resetPagination={resetPagination}
+			/>
+			<VerticalDivider />
 			<SearchInput
 				label="Search Business name"
 				maxWidth="lg"
@@ -96,8 +102,9 @@ export const DashboardFilters = ({
 					});
 				}}
 			/>
-			<VerticalDivider />
 			<DateRangePicker
+				fromLabel="Date registered from"
+				toLabel="Date registered to"
 				onChange={(value) => {
 					resetPagination();
 					setFilters({
@@ -106,12 +113,6 @@ export const DashboardFilters = ({
 					});
 				}}
 				value={filters.dateRegistered}
-			/>
-			<VerticalDivider />
-			<DashboardSortBySelect
-				sort={sort}
-				setSort={setSort}
-				resetPagination={resetPagination}
 			/>
 			<Button
 				variant="secondary"
