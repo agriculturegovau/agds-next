@@ -244,8 +244,8 @@ items={[
 `,
 	},
 	{
-		group: 'ButtonGroup',
-		name: 'Basic',
+		group: 'Button',
+		name: 'ButtonGroup',
 		code: `<ButtonGroup>
     <Button variant="primary">Primary</Button>
     <Button variant="secondary">Secondary</Button>
