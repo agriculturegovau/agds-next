@@ -13,7 +13,7 @@ import {
 import { TextLink } from '@ag.ds-next/react/text-link';
 import { Text } from '@ag.ds-next/react/text';
 import { Fragment } from 'react';
-import { BusinessForAudit } from './lib/generateBusinessData';
+import { BusinessForAudit } from '../lib/generateBusinessData';
 
 export const DashboardTable = ({
 	data,
