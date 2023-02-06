@@ -268,8 +268,8 @@ items={[
 		code: `<Button variant='tertiary'>Cancel</Button>`,
 	},
 	{
-		group: 'Text',
-		name: 'Tertiary',
+		group: 'Button',
+		name: 'Text',
 		code: `<Button variant='text'>Cancel</Button>`,
 	},
 	{
