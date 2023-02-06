@@ -3,87 +3,83 @@
 exports[`Combobox renders correctly 1`] = `
 <div>
   <div
-    class="css-ep8qz0-ComboboxBase"
+    class="css-1904cz9-boxStyles-FieldContainer"
   >
-    <div
-      class="css-1904cz9-boxStyles-FieldContainer"
+    <label
+      class="css-n7rdvo-boxStyles"
+      for="combobox-input-:r0:"
     >
-      <label
-        class="css-n7rdvo-boxStyles"
-        for="combobox-input-:r0:"
-      >
-        <span
-          class="css-433uqb-boxStyles-Text"
-        >
-          Find your state
-        </span>
-        <span
-          class="css-1rpt3h8-boxStyles-Text"
-        >
-          (optional)
-        </span>
-      </label>
       <span
-        class="css-lw0v8u-boxStyles-Text"
-        id="field-combobox-input-:r0:-hint"
+        class="css-433uqb-boxStyles-Text"
       >
-        Start typing to see results
+        Find your state
       </span>
-      <div
-        aria-expanded="false"
-        aria-haspopup="listbox"
-        aria-owns="downshift-0-menu"
-        class="css-sg7u9w-ComboboxBase"
-        role="combobox"
+      <span
+        class="css-1rpt3h8-boxStyles-Text"
       >
-        <input
-          aria-autocomplete="list"
-          aria-controls="downshift-0-menu"
-          aria-describedby="field-combobox-input-:r0:-hint"
-          aria-invalid="false"
-          aria-labelledby="downshift-0-label"
-          aria-required="false"
-          autocomplete="off"
-          class="css-gztxie-ComboboxBase"
-          id="combobox-input-:r0:"
-          type="text"
-          value=""
-        />
-        <button
-          aria-label="Toggle menu"
-          class="css-1khxazb-BaseButton-ComboboxIconButton"
-          id="downshift-0-toggle-button"
-          tabindex="-1"
-          type="button"
-        >
-          <svg
-            aria-hidden="true"
-            class="css-vfodg1-Icon"
-            clip-rule="evenodd"
-            focusable="false"
-            height="24"
-            role="img"
-            viewBox="0 0 24 24"
-            width="24"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M21 8L12 17L3 8"
-            />
-          </svg>
-        </button>
-      </div>
-    </div>
-    <div
-      class="css-167bwb0-ComboboxBase"
-      style="position: absolute; left: 0px; top: 0px;"
+        (optional)
+      </span>
+    </label>
+    <span
+      class="css-lw0v8u-boxStyles-Text"
+      id="field-combobox-input-:r0:-hint"
     >
-      <ul
+      Start typing to see results
+    </span>
+    <div
+      aria-expanded="false"
+      aria-haspopup="listbox"
+      aria-owns="downshift-0-menu"
+      class="css-ep8qz0-ComboboxBase"
+      role="combobox"
+    >
+      <input
+        aria-autocomplete="list"
+        aria-controls="downshift-0-menu"
+        aria-describedby="field-combobox-input-:r0:-hint"
+        aria-invalid="false"
         aria-labelledby="downshift-0-label"
-        class="css-1bz7paq-boxStyles-ComboboxList"
-        id="downshift-0-menu"
-        role="listbox"
+        aria-required="false"
+        autocomplete="off"
+        class="css-6dhko2-ComboboxBase"
+        id="combobox-input-:r0:"
+        type="text"
+        value=""
       />
+      <button
+        aria-label="Toggle menu"
+        class="css-1khxazb-BaseButton-ComboboxIconButton"
+        id="downshift-0-toggle-button"
+        tabindex="-1"
+        type="button"
+      >
+        <svg
+          aria-hidden="true"
+          class="css-vfodg1-Icon"
+          clip-rule="evenodd"
+          focusable="false"
+          height="24"
+          role="img"
+          viewBox="0 0 24 24"
+          width="24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M21 8L12 17L3 8"
+          />
+        </svg>
+      </button>
+      <div
+        class="css-15i2gz6-ComboboxBase"
+        style="position: absolute; left: 0px; top: 0px;"
+      >
+        <ul
+          aria-labelledby="downshift-0-label"
+          class="css-1bz7paq-boxStyles-ComboboxList"
+          id="downshift-0-menu"
+          role="listbox"
+        />
+      </div>
     </div>
   </div>
 </div>
