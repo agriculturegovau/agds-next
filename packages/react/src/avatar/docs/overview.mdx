@@ -1,0 +1,41 @@
+---
+title: Avatar
+description: User avatars help to quickly identify people in the system.
+group: Content
+storybookPath: /story/Content-Avatar--basic
+figmaGalleryNodeId: 16226%3A40311
+---
+
+Avatars are used to show a thumbnail representation of an individual.
+
+```jsx live
+<Avatar name="William Mead" />
+```
+
+## Size
+
+Use the `size` prop to change the size of the avatar.
+
+```jsx live
+<Flex alignItems="center" gap={0.5}>
+	<Avatar name="Taj Grainger" size="sm" />
+	<Avatar name="Isabel Edmund" size="md" />
+	<Avatar name="Ethan Polglaze" size="lg" />
+	<Avatar name="Rachel Warlow-Davies" size="xl" />
+	<Avatar name="Callum Lascelles" size="xxl" />
+	<Avatar name="William Mead" size="xxxl" />
+</Flex>
+```
+
+## Tone
+
+Avatar supports two tones: `neutral` and `action`.
+
+Use the `action` tone if the Avatar is used within an interactive element such as a button or link.
+
+```jsx live
+<Flex alignItems="center" gap={0.5}>
+	<Avatar name="William Mead" tone="neutral" />
+	<Avatar name="William Mead" tone="action" />
+</Flex>
+```

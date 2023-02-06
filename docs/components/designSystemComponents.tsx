@@ -10,6 +10,7 @@ export {
 	AccordionItem,
 	AccordionItemContent,
 } from '@ag.ds-next/react/accordion';
+export { Avatar } from '@ag.ds-next/react/avatar';
 export {
 	StatusBadge,
 	NotificationBadge,

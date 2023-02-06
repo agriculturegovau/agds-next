@@ -1,6 +1,7 @@
 import a11y from './a11y.svg';
 import accordion from './accordion.svg';
 import agBranding from './ag-branding.svg';
+import avatar from './avatar.svg';
 import badge from './badge.svg';
 import box from './box.svg';
 import breadcrumb from './breadcrumb.svg';
@@ -57,6 +58,7 @@ export const pictograms = {
 	accordion,
 	autocomplete: select,
 	'ag-branding': agBranding,
+	avatar,
 	badge,
 	box,
 	breadcrumb,

@@ -798,6 +798,11 @@ items={[
 		name: 'Basic',
 		code: `<FileInput label="Upload a file" />`,
 	},
+	{
+		group: 'Avatar',
+		name: 'Basic',
+		code: `<Avatar name="William Mead" />`,
+	},
 ];
 
 export default snippets;
