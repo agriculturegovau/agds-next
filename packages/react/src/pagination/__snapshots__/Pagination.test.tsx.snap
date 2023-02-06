@@ -9,11 +9,11 @@ exports[`Pagination renders correctly 1`] = `
       class="css-1cc1bme-boxStyles"
     >
       <li
-        class="css-5zbwzc-PaginationItemDirection"
+        class="css-6p575j-boxStyles"
       >
         <a
           aria-label="Go to previous page"
-          class="css-1rgqr5t-TextLink-boxStyles-BaseDirectionLink-PaginationItemDirection"
+          class="css-1neg5ij-TextLink-boxStyles-BaseDirectionLink"
           href="page-4"
         >
           <svg
@@ -34,20 +34,24 @@ exports[`Pagination renders correctly 1`] = `
               d="M8 17L3 12L8 7"
             />
           </svg>
-          Previous
+          <span
+            class="css-z3ioz-boxStyles"
+          >
+            Previous
+          </span>
         </a>
       </li>
       <li>
         <a
           aria-label="Go to page 1"
-          class="css-14z0vnm-boxStyles"
+          class="css-1jzcyg9-boxStyles"
           href="page-1"
         >
           1
         </a>
       </li>
       <li
-        class="css-ugsfbz-boxStyles"
+        class="css-yxjemn-boxStyles"
       >
         <span
           class="css-6j1v6l-boxStyles-Text"
@@ -58,7 +62,7 @@ exports[`Pagination renders correctly 1`] = `
       <li>
         <a
           aria-label="Go to page 4"
-          class="css-14z0vnm-boxStyles"
+          class="css-1jzcyg9-boxStyles"
           href="page-4"
         >
           4
@@ -68,7 +72,7 @@ exports[`Pagination renders correctly 1`] = `
         <a
           aria-current="page"
           aria-label="Go to page 5"
-          class="css-19im9ov-boxStyles-PaginationItemPage"
+          class="css-15xdc4y-boxStyles-PaginationItemPage"
           href="page-5"
         >
           5
@@ -77,14 +81,14 @@ exports[`Pagination renders correctly 1`] = `
       <li>
         <a
           aria-label="Go to page 6"
-          class="css-14z0vnm-boxStyles"
+          class="css-1jzcyg9-boxStyles"
           href="page-6"
         >
           6
         </a>
       </li>
       <li
-        class="css-ugsfbz-boxStyles"
+        class="css-yxjemn-boxStyles"
       >
         <span
           class="css-6j1v6l-boxStyles-Text"
@@ -95,21 +99,25 @@ exports[`Pagination renders correctly 1`] = `
       <li>
         <a
           aria-label="Go to page 10"
-          class="css-14z0vnm-boxStyles"
+          class="css-1jzcyg9-boxStyles"
           href="page-10"
         >
           10
         </a>
       </li>
       <li
-        class="css-19ckcqr-PaginationItemDirection"
+        class="css-1vybkau-boxStyles"
       >
         <a
           aria-label="Go to next page"
-          class="css-1rgqr5t-TextLink-boxStyles-BaseDirectionLink-PaginationItemDirection"
+          class="css-1neg5ij-TextLink-boxStyles-BaseDirectionLink"
           href="page-6"
         >
-          Next
+          <span
+            class="css-z3ioz-boxStyles"
+          >
+            Next
+          </span>
           <svg
             aria-hidden="true"
             class="css-1krnro2-Icon"

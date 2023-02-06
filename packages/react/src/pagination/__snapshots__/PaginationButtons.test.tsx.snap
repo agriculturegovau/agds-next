@@ -9,11 +9,11 @@ exports[`PaginationButtons renders correctly 1`] = `
       class="css-1cc1bme-boxStyles"
     >
       <li
-        class="css-106mr6y-PaginationItemDirectionButton"
+        class="css-6p575j-boxStyles"
       >
         <button
           aria-label="Go to previous page"
-          class="css-1d2ughx-BaseButton-boxStyles-BaseDirectionLink-PaginationItemDirectionButton"
+          class="css-rheow1-BaseButton-boxStyles-BaseDirectionLink"
           type="button"
         >
           <svg
@@ -34,20 +34,24 @@ exports[`PaginationButtons renders correctly 1`] = `
               d="M8 17L3 12L8 7"
             />
           </svg>
-          Previous
+          <span
+            class="css-z3ioz-boxStyles"
+          >
+            Previous
+          </span>
         </button>
       </li>
       <li>
         <button
           aria-label="Go to page 1"
-          class="css-1qrtn8h-BaseButton-boxStyles"
+          class="css-znbpsc-BaseButton-boxStyles"
           type="button"
         >
           1
         </button>
       </li>
       <li
-        class="css-ugsfbz-boxStyles"
+        class="css-yxjemn-boxStyles"
       >
         <span
           class="css-6j1v6l-boxStyles-Text"
@@ -58,7 +62,7 @@ exports[`PaginationButtons renders correctly 1`] = `
       <li>
         <button
           aria-label="Go to page 4"
-          class="css-1qrtn8h-BaseButton-boxStyles"
+          class="css-znbpsc-BaseButton-boxStyles"
           type="button"
         >
           4
@@ -68,7 +72,7 @@ exports[`PaginationButtons renders correctly 1`] = `
         <button
           aria-current="page"
           aria-label="Go to page 5"
-          class="css-1ku539t-BaseButton-boxStyles-PaginationItemPageButton"
+          class="css-4qmtwe-BaseButton-boxStyles-PaginationItemPageButton"
           type="button"
         >
           5
@@ -77,14 +81,14 @@ exports[`PaginationButtons renders correctly 1`] = `
       <li>
         <button
           aria-label="Go to page 6"
-          class="css-1qrtn8h-BaseButton-boxStyles"
+          class="css-znbpsc-BaseButton-boxStyles"
           type="button"
         >
           6
         </button>
       </li>
       <li
-        class="css-ugsfbz-boxStyles"
+        class="css-yxjemn-boxStyles"
       >
         <span
           class="css-6j1v6l-boxStyles-Text"
@@ -95,21 +99,25 @@ exports[`PaginationButtons renders correctly 1`] = `
       <li>
         <button
           aria-label="Go to page 10"
-          class="css-1qrtn8h-BaseButton-boxStyles"
+          class="css-znbpsc-BaseButton-boxStyles"
           type="button"
         >
           10
         </button>
       </li>
       <li
-        class="css-5p8a11-PaginationItemDirectionButton"
+        class="css-1vybkau-boxStyles"
       >
         <button
           aria-label="Go to next page"
-          class="css-1d2ughx-BaseButton-boxStyles-BaseDirectionLink-PaginationItemDirectionButton"
+          class="css-rheow1-BaseButton-boxStyles-BaseDirectionLink"
           type="button"
         >
-          Next
+          <span
+            class="css-z3ioz-boxStyles"
+          >
+            Next
+          </span>
           <svg
             aria-hidden="true"
             class="css-1krnro2-Icon"

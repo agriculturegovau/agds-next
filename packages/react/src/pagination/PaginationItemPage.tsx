@@ -2,7 +2,7 @@ import { MouseEventHandler } from 'react';
 import { boxPalette, LinkProps, useLinkComponent } from '../core';
 import { Flex } from '../box';
 import { BaseButton } from '../button';
-import { BUTTON_SIZE } from './utils';
+import { BUTTON_SIZE_XS, BUTTON_SIZE_SM } from './utils';
 
 export type PaginationItemPageProps = Pick<LinkProps, 'href'> & {
 	pageNumber: number;
@@ -23,8 +23,8 @@ export function PaginationItemPage({
 				href={href}
 				justifyContent="center"
 				alignItems="center"
-				width={BUTTON_SIZE}
-				height={BUTTON_SIZE}
+				width={{ xs: BUTTON_SIZE_XS, sm: BUTTON_SIZE_SM }}
+				height={{ xs: BUTTON_SIZE_XS, sm: BUTTON_SIZE_SM }}
 				fontWeight={isActive ? 'bold' : 'normal'}
 				link
 				focus
@@ -61,8 +61,8 @@ export function PaginationItemPageButton({
 				onClick={onClick}
 				justifyContent="center"
 				alignItems="center"
-				width={BUTTON_SIZE}
-				height={BUTTON_SIZE}
+				width={{ xs: BUTTON_SIZE_XS, sm: BUTTON_SIZE_SM }}
+				height={{ xs: BUTTON_SIZE_XS, sm: BUTTON_SIZE_SM }}
 				fontWeight={isActive ? 'bold' : 'normal'}
 				link
 				focus
