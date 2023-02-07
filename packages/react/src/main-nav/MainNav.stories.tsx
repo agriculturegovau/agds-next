@@ -10,17 +10,31 @@ export default {
 	subcomponents: { MainNavBottomBar },
 } as ComponentMeta<typeof MainNav>;
 
-const NAV_ITEMS = [
-	{ href: '#home', label: 'Home' },
-	{ href: '#content', label: 'Content page' },
-	{ href: '#form', label: 'Form page' },
-	{ href: '#simple', label: 'Simple page' },
+const navItems = [
+	{ href: '#dashboard', label: 'Dashboard' },
+	{ href: '#establishments', label: 'Establishments' },
+	{ href: '#data', label: 'Data and Insights' },
+	{ href: '#compliance', label: 'Compliance' },
+];
+
+const secondaryItems = [
+	{
+		href: '#messages',
+		label: 'Messages',
+		endElement: <NotificationBadge tone="action" value={5} />,
+	},
+	{
+		href: '#sign-in',
+		label: 'Sign in',
+		endElement: <AvatarIcon color="action" />,
+	},
 ];
 
 const defaultArgs = {
-	items: NAV_ITEMS,
-	activePath: '#content',
-	background: 'body',
+	items: navItems,
+	activePath: '#dashboard',
+	background: 'bodyAlt',
+	secondaryItems: secondaryItems,
 } as const;
 
 const Template: ComponentStory<typeof MainNav> = (args) => (
@@ -40,24 +54,6 @@ BodyAlt.args = {
 	background: 'bodyAlt',
 };
 BodyAlt.storyName = 'BodyAlt background';
-
-export const HeaderRightLinks = Template.bind({});
-HeaderRightLinks.args = {
-	...defaultArgs,
-	activePath: '#messages',
-	secondaryItems: [
-		{
-			href: '#messages',
-			label: 'Messages',
-			endElement: <NotificationBadge tone="action" value={5} />,
-		},
-		{
-			href: '#sign-in',
-			label: 'Sign in',
-			endElement: <AvatarIcon color="action" />,
-		},
-	],
-};
 
 export const HeaderRightButton = Template.bind({});
 HeaderRightButton.args = {
@@ -99,6 +95,24 @@ EndElement.args = {
 		{ href: '#pull-requests', label: 'Pull requests' },
 		{ href: '#security', label: 'Security' },
 		{ href: '#settings', label: 'Settings' },
+	],
+};
+
+export const Vertical: ComponentStory<typeof MainNav> = (args) => {
+	return (
+		<div style={{ width: '340px', height: '100vh' }}>
+			<MainNav {...args} />
+		</div>
+	);
+};
+Vertical.args = {
+	...defaultArgs,
+	vertical: true,
+	secondaryItems: [
+		{
+			href: '#help',
+			label: 'Help',
+		},
 	],
 };
 
