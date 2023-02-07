@@ -1,10 +1,16 @@
+import { ElementType, PropsWithChildren } from 'react';
 import { MouseEventHandler } from 'react';
-import { LinkProps, mapSpacing } from '../core';
-import { DirectionButton, DirectionLink } from '../direction-link';
-import { BUTTON_SIZE } from './utils';
+import { LinkProps } from '../core';
+import { Box, Flex } from '../box';
+import { TextLink } from '../text-link';
+import { BaseButton, BaseButtonProps } from '../button';
+import { ArrowRightIcon, ArrowLeftIcon } from '../icon';
+import { BUTTON_SIZE_XS, BUTTON_SIZE_SM } from './utils';
+
+type Direction = 'left' | 'right';
 
 export type PaginationItemDirectionProps = Pick<LinkProps, 'href'> & {
-	direction: 'left' | 'right';
+	direction: Direction;
 };
 
 export function PaginationItemDirection({
@@ -12,26 +18,20 @@ export function PaginationItemDirection({
 	href,
 }: PaginationItemDirectionProps) {
 	return (
-		<li
-			css={{
-				marginLeft: direction === 'right' ? mapSpacing(1) : undefined,
-				marginRight: direction === 'left' ? mapSpacing(1) : undefined,
-			}}
-		>
+		<PaginationItemDirectionListItem direction={direction}>
 			<DirectionLink
 				direction={direction}
 				href={href}
 				aria-label={`Go to ${direction == 'left' ? 'previous' : 'next'} page`}
-				css={{ height: BUTTON_SIZE }}
 			>
 				{direction === 'left' ? 'Previous' : 'Next'}
 			</DirectionLink>
-		</li>
+		</PaginationItemDirectionListItem>
 	);
 }
 
 export type PaginationItemDirectionButtonProps = {
-	direction: 'left' | 'right';
+	direction: Direction;
 	onClick: MouseEventHandler<HTMLButtonElement>;
 };
 
@@ -40,20 +40,91 @@ export function PaginationItemDirectionButton({
 	onClick,
 }: PaginationItemDirectionButtonProps) {
 	return (
-		<li
-			css={{
-				marginLeft: direction === 'right' ? mapSpacing(1) : undefined,
-				marginRight: direction === 'left' ? mapSpacing(1) : undefined,
-			}}
-		>
+		<PaginationItemDirectionListItem direction={direction}>
 			<DirectionButton
 				direction={direction}
 				onClick={onClick}
 				aria-label={`Go to ${direction == 'left' ? 'previous' : 'next'} page`}
-				css={{ height: BUTTON_SIZE }}
 			>
 				{direction === 'left' ? 'Previous' : 'Next'}
 			</DirectionButton>
-		</li>
+		</PaginationItemDirectionListItem>
 	);
 }
+
+export type PaginationItemDirectionListItemProps = LinkProps & {
+	direction: Direction;
+};
+
+function PaginationItemDirectionListItem({
+	children,
+	direction,
+}: PaginationItemDirectionListItemProps) {
+	return (
+		<Box
+			as="li"
+			paddingRight={direction === 'left' ? { sm: 1 } : undefined}
+			paddingLeft={direction === 'right' ? { sm: 1 } : undefined}
+		>
+			{children}
+		</Box>
+	);
+}
+
+export type DirectionLinkProps = LinkProps & {
+	direction: Direction;
+};
+
+const DirectionLink = ({ children, ...props }: DirectionLinkProps) => (
+	<BaseDirectionLink as={TextLink} {...props}>
+		{children}
+	</BaseDirectionLink>
+);
+
+type DirectionButtonProps = BaseButtonProps & {
+	direction: Direction;
+};
+
+const DirectionButton = ({ children, ...props }: DirectionButtonProps) => (
+	<BaseDirectionLink as={BaseButton} {...props}>
+		{children}
+	</BaseDirectionLink>
+);
+
+type BaseDirectionLinkProps = PropsWithChildren<{
+	as: ElementType;
+	direction: Direction;
+}>;
+
+const BaseDirectionLink = ({
+	as,
+	children,
+	direction,
+	...props
+}: BaseDirectionLinkProps) => {
+	return (
+		<Flex
+			as={as}
+			inline
+			gap={0.5}
+			justifyContent="center"
+			alignItems="center"
+			fontFamily="body"
+			fontWeight="normal"
+			link
+			focus
+			width={{ xs: BUTTON_SIZE_XS, sm: 'auto' }}
+			height={{ xs: BUTTON_SIZE_XS, sm: BUTTON_SIZE_SM }}
+			css={{
+				alignSelf: 'flex-start',
+			}}
+			{...props}
+		>
+			{direction === 'left' ? <ArrowLeftIcon size="sm" /> : null}
+			<Box as="span" display={['none', 'inline']}>
+				{children}
+			</Box>
+			{direction === 'right' ? <ArrowRightIcon size="sm" /> : null}
+		</Flex>
+	);
+};
