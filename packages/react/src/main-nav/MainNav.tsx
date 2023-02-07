@@ -9,6 +9,7 @@ export type MainNavProps = PropsWithChildren<{
 	id?: string;
 	items?: NavListItem[];
 	secondaryItems?: NavListItem[];
+	vertical?: boolean;
 }>;
 
 export function MainNav({
@@ -17,6 +18,7 @@ export function MainNav({
 	items,
 	secondaryItems,
 	id,
+	vertical,
 }: MainNavProps) {
 	const bestMatch = findBestMatch(
 		[...(items || []), ...(secondaryItems || [])],
@@ -27,12 +29,14 @@ export function MainNav({
 			background={background}
 			id={id}
 			hasItems={items && items.length > 0}
+			vertical={vertical}
 			rightContent={
 				<NavList
 					aria-label="secondary"
 					items={secondaryItems}
 					activePath={bestMatch}
 					type="secondary"
+					vertical={vertical}
 				/>
 			}
 		>
@@ -41,6 +45,7 @@ export function MainNav({
 				items={items}
 				activePath={bestMatch}
 				type="primary"
+				vertical={vertical}
 			/>
 		</NavContainer>
 	);

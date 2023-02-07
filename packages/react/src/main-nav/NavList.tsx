@@ -20,6 +20,7 @@ export type NavListProps = {
 	activePath: string;
 	items?: NavListItem[];
 	type: 'primary' | 'secondary';
+	vertical?: boolean;
 };
 
 export function NavList({
@@ -27,10 +28,11 @@ export function NavList({
 	activePath,
 	items,
 	type,
+	vertical,
 }: NavListProps) {
 	const Link = useLinkComponent();
 	return (
-		<NavListContainer aria-label={ariaLabel} type={type}>
+		<NavListContainer aria-label={ariaLabel} type={type} vertical={vertical}>
 			{items?.map(({ label, endElement, ...item }, index) => {
 				if ('href' in item) {
 					const active = item.href === activePath;
@@ -40,6 +42,7 @@ export function NavList({
 							active={active}
 							type={type}
 							hasEndElement={Boolean(endElement)}
+							vertical={vertical}
 						>
 							<Link aria-current={active ? 'page' : undefined} {...item}>
 								<span>{label}</span>
@@ -54,6 +57,7 @@ export function NavList({
 						active={false}
 						type={type}
 						hasEndElement={Boolean(endElement)}
+						vertical={vertical}
 					>
 						<BaseButton {...item}>
 							<span>{label}</span>
@@ -69,20 +73,22 @@ export function NavList({
 type NavListContainerProps = PropsWithChildren<{
 	'aria-label': string;
 	type: NavListType;
+	vertical?: boolean;
 }>;
 
 function NavListContainer({
 	'aria-label': ariaLabel,
 	children,
 	type,
+	vertical,
 }: NavListContainerProps) {
-	if (type === 'primary') {
+	if (type === 'primary' || vertical) {
 		return (
 			<Flex
 				as="nav"
 				justifyContent="space-between"
 				width="100%"
-				flexDirection={{ xs: 'column', lg: 'row' }}
+				flexDirection={vertical ? 'column' : { xs: 'column', lg: 'row' }}
 				aria-label={ariaLabel}
 			>
 				<Flex

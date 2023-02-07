@@ -9,6 +9,7 @@ export type NavItemProps = PropsWithChildren<{
 	active: boolean;
 	hasEndElement: boolean;
 	type: NavListType;
+	vertical?: boolean;
 }>;
 
 export function NavListItem({
@@ -16,33 +17,35 @@ export function NavListItem({
 	children,
 	hasEndElement,
 	type,
+	vertical,
 }: NavItemProps) {
+	const shouldLeftJustify = type === 'primary' || vertical;
+
 	return (
 		<Flex
 			as="li"
 			height="100%"
 			paddingBottom={type === 'primary' ? { lg: 0.5 } : 0.5}
 			fontSize={{ xs: 'xs', lg: 'sm' }}
+			width={vertical ? '100%' : 'auto'}
 			css={[
 				mq({
 					' a, button': {
 						boxSizing: 'border-box',
 						position: 'relative',
 						display: 'flex',
-						flexDirection:
-							type === 'primary'
-								? 'row'
-								: mapResponsiveProp({
-										xs: 'column-reverse',
-										lg: 'row',
-								  }),
+						flexDirection: shouldLeftJustify
+							? 'row'
+							: mapResponsiveProp({
+									xs: 'column-reverse',
+									lg: 'row',
+							  }),
 						alignItems: 'center',
-						justifyContent:
-							type === 'primary'
-								? 'space-between'
-								: hasEndElement
-								? 'space-between'
-								: 'center',
+						justifyContent: shouldLeftJustify
+							? 'space-between'
+							: hasEndElement
+							? 'space-between'
+							: 'center',
 						height: '100%',
 						width: '100%',
 						gap: mapSpacing(0.5),
@@ -59,15 +62,21 @@ export function NavListItem({
 
 						// Underline overlay for active menu item
 						'&:after': {
-							content:
-								type === 'primary'
-									? mapResponsiveProp({ xs: undefined, lg: '""' })
-									: "''",
-							height: mapSpacing(0.5),
+							content: shouldLeftJustify
+								? mapResponsiveProp({ xs: undefined, lg: '""' })
+								: "''",
 							position: 'absolute',
-							top: '100%',
 							left: 0,
-							right: 0,
+							...(vertical
+								? {
+										top: 0,
+										width: mapSpacing(0.5),
+								  }
+								: {
+										height: mapSpacing(0.5),
+										top: '100%',
+										right: 0,
+								  }),
 							backgroundColor: active
 								? localPalette.linkActiveBg
 								: 'transparent',

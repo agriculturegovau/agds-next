@@ -33,6 +33,7 @@ export type NavContainerProps = PropsWithChildren<{
 	hasItems?: boolean;
 	id?: string;
 	rightContent?: ReactNode;
+	vertical?: boolean;
 }>;
 
 export function NavContainer({
@@ -41,6 +42,7 @@ export function NavContainer({
 	children,
 	background = 'body',
 	hasItems,
+	vertical,
 }: NavContainerProps) {
 	const containerRef = useRef<HTMLDivElement>(null);
 	const hover = hoverMap[background];
@@ -71,14 +73,16 @@ export function NavContainer({
 			}}
 		>
 			{menuVisiblyOpen ? <LockScroll /> : null}
-			<BottomBar />
+			<BottomBar vertical={vertical} />
 			<Flex justifyContent="center" css={{ position: 'relative' }}>
 				<Flex
 					justifyContent="space-between"
 					alignItems="center"
+					flexDirection={vertical ? 'column' : 'row'}
 					maxWidth={tokens.maxWidth.container}
 					width="100%"
-					paddingX={{ xs: 0.75, lg: 2 }}
+					gap={1.5}
+					paddingX={vertical ? 0 : { xs: 0.75, lg: 2 }}
 				>
 					{hasItems ? <OpenButton onClick={open} /> : null}
 					<NavContainerDialog
@@ -219,15 +223,21 @@ function Overlay({ onClick }: { onClick: MouseEventHandler<HTMLDivElement> }) {
 	);
 }
 
-function BottomBar() {
+function BottomBar({ vertical }: { vertical?: boolean }) {
 	return (
 		<Box
-			paddingTop={bottomBarPadding}
+			{...{ [vertical ? 'paddingLeft' : 'paddingTop']: bottomBarPadding }}
 			css={{
 				position: 'absolute',
 				bottom: 0,
 				left: 0,
-				right: 0,
+				...(vertical
+					? {
+							top: 0,
+					  }
+					: {
+							right: 0,
+					  }),
 				backgroundColor: localPalette.bottomBar,
 			}}
 		/>
