@@ -19,13 +19,13 @@ export default function Guides({
 }: InferGetStaticPropsType<typeof getStaticProps>) {
 	return (
 		<>
-			<DocumentTitle title={guide.title} description={guide.description} />
+			<DocumentTitle title={guide.title} description={guide.opener} />
 			<AppLayout>
 				<PageLayout
 					editPath={`/docs/content/guides/${guide.slug}.mdx`}
 					breadcrumbs={breadcrumbs}
 				>
-					<PageTitle title={guide.title} introduction={guide.description} />
+					<PageTitle title={guide.title} introduction={guide.opener} />
 					<Prose>
 						<MDXRemote {...guide.source} components={mdxComponents} />
 					</Prose>
