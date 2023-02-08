@@ -18,7 +18,7 @@ export async function getGuide(slug: string) {
 		source,
 		data,
 		title: (data.title ?? slug) as string,
-		description: (data.description ?? null) as string | null,
+		opener: (data.opener ?? null) as string | null,
 	};
 }
 
@@ -44,7 +44,8 @@ export async function getGuideList() {
 			getMarkdownData(guidePath(slug)).then(({ data }) => ({
 				order: (data.order as number | null) || 100,
 				title: (data?.title ?? slug) as string,
-				description: (data.description ?? null) as string | null,
+				opener: (data.opener ?? null) as string | null,
+				overview: (data.overview ?? data.opener ?? null) as string | null,
 				slug,
 			}))
 		)

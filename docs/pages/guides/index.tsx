@@ -13,7 +13,7 @@ type StaticProps = Awaited<ReturnType<typeof getStaticProps>>['props'];
 export default function GuidesHome({
 	title,
 	description,
-	guideLinks,
+	guideList,
 }: StaticProps) {
 	return (
 		<>
@@ -24,14 +24,14 @@ export default function GuidesHome({
 				editPath="/docs/content/guides/index.mdx"
 			>
 				<Columns as="ul" gap={1.5} cols={{ xs: 1, sm: 2, lg: 3 }}>
-					{guideLinks.map(({ href, label, description }) => (
-						<Card as="li" key={label} clickable shadow>
+					{guideList.map(({ slug, title, overview }) => (
+						<Card as="li" key={title} clickable shadow>
 							<CardInner>
 								<Stack gap={1}>
 									<Box as="h3">
-										<CardLink href={href}>{label}</CardLink>
+										<CardLink href={`/guides/${slug}`}>{title}</CardLink>
 									</Box>
-									{description ? <Text as="p">{description}</Text> : null}
+									{overview ? <Text as="p">{overview}</Text> : null}
 								</Stack>
 							</CardInner>
 						</Card>
@@ -45,17 +45,12 @@ export default function GuidesHome({
 export async function getStaticProps() {
 	const { data } = await getMarkdownData(normalize(`${GUIDE_PATH}/index.mdx`));
 	const guideList = await getGuideList();
-	const guideLinks = guideList.map(({ slug, title, description }) => ({
-		href: `/guides/${slug}`,
-		label: title,
-		description,
-	}));
 
 	return {
 		props: {
 			title: data?.title as string,
 			description: data?.description as string,
-			guideLinks,
+			guideList,
 		},
 	};
 }
