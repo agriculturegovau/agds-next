@@ -10,14 +10,6 @@ import { slugify } from '../slugify';
 export const GUIDE_PATH = normalize(`${process.cwd()}/content/guides`);
 const guidePath = (slug: string) => normalize(`${GUIDE_PATH}/${slug}.mdx`);
 
-const getGuideOverview = (overview: string | null, opener: string | null) => {
-	const stringLength = 72;
-	if (overview) return overview;
-	if (opener && opener.length < stringLength) return opener;
-	if (opener) return `${opener.slice(0, stringLength)}...`;
-	return null;
-};
-
 export async function getGuide(slug: string) {
 	const { content, data } = await getMarkdownData(guidePath(slug));
 	const source = await serializeMarkdown(content, data);
@@ -27,7 +19,6 @@ export async function getGuide(slug: string) {
 		data,
 		title: (data.title ?? slug) as string,
 		opener: (data.opener ?? null) as string | null,
-		overview: getGuideOverview(data.overview, data.opener),
 	};
 }
 
@@ -54,7 +45,7 @@ export async function getGuideList() {
 				order: (data.order as number | null) || 100,
 				title: (data?.title ?? slug) as string,
 				opener: (data.opener ?? null) as string | null,
-				overview: getGuideOverview(data.overview, data.opener),
+				overview: (data.overview ?? data.opener ?? null) as string | null,
 				slug,
 			}))
 		)
