@@ -12,15 +12,9 @@ const guidePath = (slug: string) => normalize(`${GUIDE_PATH}/${slug}.mdx`);
 
 const getGuideOverview = (overview: string | null, opener: string | null) => {
 	const stringLength = 72;
-	if (overview) {
-		return overview;
-	}
-	if (opener) {
-		if (opener.length < stringLength) {
-			return opener;
-		}
-		return `${opener.slice(0, stringLength)}...`;
-	}
+	if (overview) return overview;
+	if (opener && opener.length < stringLength) return opener;
+	if (opener) return `${opener.slice(0, stringLength)}...`;
 	return null;
 };
 
