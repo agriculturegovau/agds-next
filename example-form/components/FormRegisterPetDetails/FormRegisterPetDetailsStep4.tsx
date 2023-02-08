@@ -1,4 +1,5 @@
 import { FormEvent } from 'react';
+import format from 'date-fns/format';
 import { Stack } from '@ag.ds-next/react/box';
 import { H2 } from '@ag.ds-next/react/heading';
 import { Button } from '@ag.ds-next/react/button';
@@ -53,7 +54,9 @@ export const FormRegisterPetDetailsStep4 = () => {
 						},
 						{
 							label: 'Date of birth',
-							value: formState[1]?.dob.toLocaleDateString(),
+							value: formState[1]?.dob
+								? format(formState[1].dob, 'dd/MM/yyyy')
+								: undefined,
 						},
 						{
 							label: 'Sex',
@@ -87,7 +90,9 @@ export const FormRegisterPetDetailsStep4 = () => {
 					items={[
 						{
 							label: 'Registration start date',
-							value: formState[3]?.date.toLocaleDateString(),
+							value: formState[3]?.date
+								? format(formState[3].date, 'dd/MM/yyyy')
+								: undefined,
 						},
 					]}
 				/>
