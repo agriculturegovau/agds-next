@@ -135,15 +135,14 @@ export const FormRegisterPetDetails = () => {
 		(stepFormState?: StepFormState) => {
 			setIsSubmittingStep(true);
 
-			if (stepFormState) {
-				setFormState((current) => ({
-					...current,
-					[currentStep]: { ...stepFormState, completed: true },
-				}));
-			}
-
 			// Using a `setTimeout` to replicate a call to a back-end API
 			setTimeout(() => {
+				if (stepFormState) {
+					setFormState((current) => ({
+						...current,
+						[currentStep]: { ...stepFormState, completed: true },
+					}));
+				}
 				setIsSubmittingStep(false);
 				if (currentStep === TOTAL_STEPS) {
 					submitTask2(formState);
@@ -188,6 +187,7 @@ export const FormRegisterPetDetails = () => {
 		(idx: number) => {
 			if (idx === currentStep) return 'doing';
 			if (hasCompletedStep(idx)) return 'done';
+			if (idx === 0 || hasCompletedStep(idx - 1)) return 'todo';
 			return 'blocked';
 		},
 		[currentStep, hasCompletedStep]
