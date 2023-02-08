@@ -7,6 +7,7 @@ import {
 } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
+import format from 'date-fns/format';
 import { Box, Stack } from '@ag.ds-next/react/box';
 import { Button, ButtonGroup } from '@ag.ds-next/react/button';
 import { FormStack } from '@ag.ds-next/react/form-stack';
@@ -254,7 +255,7 @@ export const FormRegisterPetPersonalDetailsStep0 = () => {
 								<SummaryListItem>
 									<SummaryListItemTerm>Date of birth</SummaryListItemTerm>
 									<SummaryListItemDescription>
-										{localFormState.dob?.toLocaleDateString()}
+										{format(localFormState.dob, 'dd/MM/yyyy')}
 									</SummaryListItemDescription>
 								</SummaryListItem>
 							</SummaryList>
