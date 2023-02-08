@@ -16,6 +16,11 @@ figmaGalleryNodeId: 12444%3A100628
 		},
 		{
 			href: '#',
+			label: 'Personal details',
+			status: 'doneRecently',
+		},
+		{
+			href: '#',
 			label: 'Lorem ipsum dolor sit amet',
 			status: 'doing',
 		},
@@ -34,14 +39,6 @@ figmaGalleryNodeId: 12444%3A100628
 />
 ```
 
-The individual tasks or steps are shown as either:
-
-- `todo` – the task is available for the user to do
-- `doing` – the task has been started, and is ready for the user to continue.
-- `done` – the task has been completed
-- `doneRecently` – the task has just been completed
-- `blocked` - the task cannot be completed until other tasks have been.
-
 <DoHeading />
 
 - use when unique information needs to be entered that can’t be answered through preset options
@@ -56,6 +53,65 @@ The individual tasks or steps are shown as either:
 - use if a dropdown, select, or radio button can be used instead
 - hide the 'optional' label within a form
 - use placeholder text as a substitute for a label.
+
+## Task status
+
+You can indicate the status of each task using the `status` parameter. The following values are available:
+
+<Table>
+	<TableCaption>Available statuses for a TaskList</TableCaption>
+	<TableHead>
+		<tr>
+			<TableHeader scope="col">Status</TableHeader>
+			<TableHeader scope="col">Label</TableHeader>
+			<TableHeader scope="col">Description</TableHeader>
+		</tr>
+	</TableHead>
+	<TableBody>
+		<tr>
+			<TableCell>
+				<code>todo</code>
+			</TableCell>
+			<TableCell>Not started</TableCell>
+			<TableCell>The task is available for the user to do</TableCell>
+		</tr>
+		<tr>
+			<TableCell>
+				<code>doing</code>
+			</TableCell>
+			<TableCell>In progress</TableCell>
+			<TableCell>
+				The task has been started, and is ready for the user to continue.
+			</TableCell>
+		</tr>
+		<tr>
+			<TableCell>
+				<code>done</code>
+			</TableCell>
+			<TableCell>Completed</TableCell>
+			<TableCell>The task has been completed</TableCell>
+		</tr>
+		<tr>
+			<TableCell>
+				<code>doneRecently</code>
+			</TableCell>
+			<TableCell>Completed</TableCell>
+			<TableCell>
+				The task has just been completed recently, so it shows a green highlight
+				to indicate activity.
+			</TableCell>
+		</tr>
+		<tr>
+			<TableCell>
+				<code>blocked</code>
+			</TableCell>
+			<TableCell>Cannot start yet</TableCell>
+			<TableCell>
+				The task cannot be completed until other tasks have been.
+			</TableCell>
+		</tr>
+	</TableBody>
+</Table>
 
 ## Sequential
 
