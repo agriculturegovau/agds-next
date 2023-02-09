@@ -24,7 +24,7 @@ export const TOKEN_PAGES = {
 		label: 'Max width',
 		pageTitle: 'Max width tokens',
 		description:
-			'Used to set the maximum width of elements or containers in a page layout.',
+			'Used to set the maximum width of elements, containers and text in a page layout.',
 	},
 	spacing: {
 		slug: 'spacing',

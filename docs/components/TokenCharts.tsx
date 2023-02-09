@@ -62,35 +62,6 @@ export const SpacingChart = () => {
 	);
 };
 
-export const MaxWidthChart = ({
-	tokens,
-}: {
-	tokens: Record<string, unknown>;
-}) => {
-	return (
-		<Stack as="ul" gap={0.5} className={proseBlockClassname}>
-			{Object.entries(tokens).map(([token, value], index) => {
-				if (typeof value !== 'string') return null;
-				const label = `${token} (${value})`;
-				return (
-					<Flex key={index} as="li" gap={0.25}>
-						<Box
-							padding={0.5}
-							css={{
-								backgroundColor: boxPalette.systemInfoMuted,
-								width: '100%',
-								maxWidth: value,
-							}}
-						>
-							<Text>{label}</Text>
-						</Box>
-					</Flex>
-				);
-			})}
-		</Stack>
-	);
-};
-
 export const LineHeightChart = () => {
 	const fontSizes = ['xxxl', 'xxl', 'xl', 'lg', 'md', 'sm', 'xs'] as FontSize[];
 	return (
