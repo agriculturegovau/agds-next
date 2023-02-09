@@ -1,11 +1,10 @@
 import { PropsWithChildren } from 'react';
 import { useRouter } from 'next/router';
-import { CallToActionLink } from '@ag.ds-next/react/call-to-action';
+import { Flex } from '@ag.ds-next/react/box';
 import { SideNavProps } from '@ag.ds-next/react/side-nav';
 import { SkipLinksProps } from '@ag.ds-next/react/skip-link';
-import { Text } from '@ag.ds-next/react/text';
-import { Callout } from '@ag.ds-next/react/callout';
 import { SubNav } from '@ag.ds-next/react/sub-nav';
+import { ButtonLink } from '@ag.ds-next/react/button';
 import type {
 	Template,
 	getTemplateBreadcrumbs,
@@ -14,6 +13,8 @@ import type {
 import { AppLayout } from './AppLayout';
 import { PageLayout } from './PageLayout';
 import { PageTitle } from './PageTitle';
+import { FigmaLogo } from './FigmaLogo';
+import { GithubLogo } from './GithubLogo';
 
 type TemplateLayoutProps = PropsWithChildren<{
 	breadcrumbs: Awaited<ReturnType<typeof getTemplateBreadcrumbs>>;
@@ -23,6 +24,12 @@ type TemplateLayoutProps = PropsWithChildren<{
 	template: Template;
 	navLinks: SideNavProps['items'];
 }>;
+
+// TODO fixme
+const pkg = {
+	storybookPath: 'x',
+	figmaGalleryNodeId: 'x',
+};
 
 export const TemplateLayout = ({
 	breadcrumbs,
@@ -50,11 +57,39 @@ export const TemplateLayout = ({
 					pretext={`v${template.version}`}
 					title={template.title}
 					introduction={template.description}
+					// callToAction={
+					// 	template.previewPath && (
+					// 		<CallToActionLink href={`/example-site${template.previewPath}`}>
+					// 			View template preview
+					// 		</CallToActionLink>
+					// 	)
+					// }
 					callToAction={
-						template.previewPath && (
-							<CallToActionLink href={`/example-site${template.previewPath}`}>
-								View template preview
-							</CallToActionLink>
+						(pkg.storybookPath || pkg.figmaGalleryNodeId) && (
+							<Flex
+								gap={1.5}
+								flexDirection={['column', 'row']}
+								alignItems="flex-start"
+							>
+								{pkg.figmaGalleryNodeId && (
+									<ButtonLink
+										variant="text"
+										href={`https://www.figma.com/file/SgSHfK8AUadp7aEzD34ZG3/AgDS---Agriculture-Design-System?node-id=${pkg.figmaGalleryNodeId}`}
+										iconBefore={FigmaLogo}
+									>
+										View in Figma
+									</ButtonLink>
+								)}
+								{pkg.figmaGalleryNodeId && (
+									<ButtonLink
+										variant="text"
+										href={`https://www.figma.com/file/SgSHfK8AUadp7aEzD34ZG3/AgDS---Agriculture-Design-System?node-id=${pkg.figmaGalleryNodeId}`}
+										iconBefore={GithubLogo}
+									>
+										View in Github
+									</ButtonLink>
+								)}
+							</Flex>
 						)
 					}
 				/>
@@ -66,9 +101,6 @@ export const TemplateLayout = ({
 					}))}
 				/>
 				{children}
-				<Callout title="Questions or feedback?">
-					<Text as="p">Contact details go here...</Text>
-				</Callout>
 			</PageLayout>
 		</AppLayout>
 	);

@@ -10,6 +10,7 @@ import { PageTitle } from './PageTitle';
 import { PageLayout } from './PageLayout';
 import { FigmaLogo } from './FigmaLogo';
 import { StorybookLogo } from './StorybookLogo';
+import { GithubLogo } from './GithubLogo';
 
 export function PkgLayout({
 	children,
@@ -66,6 +67,13 @@ export function PkgLayout({
 									View in Figma
 								</ButtonLink>
 							)}
+							<ButtonLink
+								variant="text"
+								href={`https://www.figma.com/file/SgSHfK8AUadp7aEzD34ZG3/AgDS---Agriculture-Design-System?node-id=${pkg.figmaGalleryNodeId}`}
+								iconBefore={GithubLogo}
+							>
+								View in Github
+							</ButtonLink>
 						</Flex>
 					)
 				}
