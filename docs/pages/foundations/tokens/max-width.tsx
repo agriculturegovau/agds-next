@@ -15,14 +15,24 @@ import { DocumentTitle } from '../../../components/DocumentTitle';
 import { TokenLayout } from '../../../components/TokenLayout';
 import { getTokensBreadcrumbs, TOKEN_PAGES } from '../../../content/tokens';
 
-type TokenDescriptionKey = Exclude<keyof typeof tokens['maxWidth'], 'field'>;
-
-const tokenDescriptions: Record<TokenDescriptionKey, string> = {
-	bodyText:
-		'Used for setting an optimal line length for readability in body text. This helps the users attention flow easily from one line to the next, making reading more natural and comfortable.',
-	container: 'Used for setting the max-width of the page container.',
-	mobileMenu:
-		'Used for setting the max-width of the modal dialog in the mobile version of the MainNav.',
+const tokenDescriptions: Record<
+	Exclude<keyof typeof tokens['maxWidth'], 'field'>,
+	{ value: string; description: string }
+> = {
+	bodyText: {
+		value: tokens.maxWidth.bodyText,
+		description:
+			'Used for setting an optimal line length for readability in body text. This helps the users attention flow easily from one line to the next, making reading more natural and comfortable.',
+	},
+	container: {
+		value: tokens.maxWidth.container,
+		description: 'Used for setting the max-width of the page container.',
+	},
+	mobileMenu: {
+		value: tokens.maxWidth.mobileMenu,
+		description:
+			'Used for setting the max-width of the modal dialog in the mobile version of the MainNav.',
+	},
 };
 
 export default function TokensMaxWidthsPage() {
@@ -58,13 +68,11 @@ export default function TokensMaxWidthsPage() {
 								</TableHead>
 								<TableBody>
 									{Object.entries(tokenDescriptions).map(
-										([token, description]) => {
+										([token, { value, description }]) => {
 											return (
 												<tr key={token}>
 													<TableCell>{token}</TableCell>
-													<TableCell>
-														{tokens.maxWidth[token as TokenDescriptionKeys]}
-													</TableCell>
+													<TableCell>{value}</TableCell>
 													<TableCell>{description}</TableCell>
 												</tr>
 											);
