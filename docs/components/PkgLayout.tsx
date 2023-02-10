@@ -46,6 +46,7 @@ export function PkgLayout({
 					(pkg.storybookPath || pkg.figmaGalleryNodeId) && (
 						<Flex
 							gap={1.5}
+							flexWrap="wrap"
 							flexDirection={['column', 'row']}
 							alignItems="flex-start"
 						>

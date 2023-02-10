@@ -46,6 +46,7 @@ export const TemplateLayout = ({
 						(template.figmaTemplateNodeId || template.githubTemplatePath) && (
 							<Flex
 								gap={1.5}
+								flexWrap="wrap"
 								flexDirection={['column', 'row']}
 								alignItems="flex-start"
 							>
