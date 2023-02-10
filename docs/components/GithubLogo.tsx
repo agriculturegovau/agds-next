@@ -1,3 +1,4 @@
+// Used for the 'MainNav'
 export function GithubIcon() {
 	return (
 		<svg
@@ -12,6 +13,7 @@ export function GithubIcon() {
 	);
 }
 
+// Used for Buttons
 export function GithubLogo() {
 	return (
 		<svg
