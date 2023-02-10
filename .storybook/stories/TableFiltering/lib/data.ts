@@ -17,7 +17,7 @@ export type GetDataPagination = {
 export type GetDataFilters = {
 	businessName: string | undefined;
 	state: string | undefined;
-	dateRegistered: {
+	requestDate: {
 		from: Date | undefined;
 		to: Date | undefined;
 	};
@@ -46,12 +46,12 @@ export async function getData(params: GetDataParams): Promise<GetDataResponse> {
 	const filteredData = allData.filter((business) => {
 		let isValid = true;
 
-		const { dateRegistered, state, status, businessName } = params.filters;
+		const { requestDate, state, status, businessName } = params.filters;
 
-		if (dateRegistered?.from && dateRegistered?.to) {
+		if (requestDate?.from && requestDate?.to) {
 			if (
-				business.dateRegistered < dateRegistered.from ||
-				business.dateRegistered > dateRegistered.to
+				business.requestDate < requestDate.from ||
+				business.requestDate > requestDate.to
 			) {
 				isValid = false;
 			}

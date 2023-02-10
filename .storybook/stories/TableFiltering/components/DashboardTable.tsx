@@ -97,7 +97,7 @@ export const DashboardTable = ({
 									city,
 									state,
 									numberOfEmployees,
-									dateRegistered,
+									requestDate,
 									status,
 								}) => {
 									return (
@@ -111,7 +111,7 @@ export const DashboardTable = ({
 												{numberOfEmployees}
 											</TableCell>
 											<TableCell textAlign="right">
-												{dateRegistered.toLocaleDateString()}
+												{requestDate.toLocaleDateString()}
 											</TableCell>
 											<TableCell>
 												<StatusBadge {...STATUS_MAP[status]} />

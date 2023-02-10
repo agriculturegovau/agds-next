@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { ExampleBasic } from './ExampleBasic';
 import { ExampleDropDownMenu } from './ExampleDropDownMenu';
 import { ExamplePersistentFilters } from './ExamplePersistentFilters';
 import {
@@ -33,7 +34,7 @@ function useData({ sort, filters, pagination }: GetDataParams) {
 	return { loading, data, totalPages, totalItems };
 }
 
-const useSortAndFilter = () => {
+const useSortAndFilter = (args?: { filters?: Partial<GetDataFilters> }) => {
 	const [pagination, setPagination] = useState<GetDataPagination>({
 		page: 1,
 		perPage: 10,
@@ -46,10 +47,11 @@ const useSortAndFilter = () => {
 		businessName: undefined,
 		state: undefined,
 		status: undefined,
-		dateRegistered: {
+		requestDate: {
 			from: undefined,
 			to: undefined,
 		},
+		...args?.filters,
 	});
 
 	const resetPagination = () => setPagination({ ...pagination, page: 1 });
@@ -58,7 +60,7 @@ const useSortAndFilter = () => {
 			businessName: undefined,
 			state: undefined,
 			status: undefined,
-			dateRegistered: {
+			requestDate: {
 				from: undefined,
 				to: undefined,
 			},
@@ -74,6 +76,41 @@ const useSortAndFilter = () => {
 		setSort,
 		sort,
 	};
+};
+
+export const Basic = () => {
+	const {
+		filters,
+		pagination,
+		resetPagination,
+		setFilters,
+		setPagination,
+		sort,
+	} = useSortAndFilter({
+		filters: {
+			status: 'notBooked',
+		},
+	});
+
+	const { loading, data, totalPages, totalItems } = useData({
+		filters,
+		pagination,
+		sort,
+	});
+
+	return (
+		<ExampleBasic
+			data={data}
+			filters={filters}
+			loading={loading}
+			pagination={pagination}
+			resetPagination={resetPagination}
+			setFilters={setFilters}
+			setPagination={setPagination}
+			totalItems={totalItems}
+			totalPages={totalPages}
+		/>
+	);
 };
 
 export const DropDown = () => {

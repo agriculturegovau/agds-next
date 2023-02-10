@@ -41,11 +41,11 @@ export const DashboardSortBySelect = ({
 					label: 'Number of employees (highest first)',
 				},
 				{
-					value: 'dateRegistered-ASC',
+					value: 'requestDate-ASC',
 					label: 'Date registered (oldest first)',
 				},
 				{
-					value: 'dateRegistered-DESC',
+					value: 'requestDate-DESC',
 					label: 'Date registered (newest first)',
 				},
 			]}
