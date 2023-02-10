@@ -49,15 +49,6 @@ export function PkgLayout({
 							flexDirection={['column', 'row']}
 							alignItems="flex-start"
 						>
-							{pkg.storybookPath && (
-								<ButtonLink
-									variant="text"
-									href={`${process.env.NEXT_PUBLIC_STORYBOOK_URL}?path=${pkg.storybookPath}`}
-									iconBefore={StorybookLogo}
-								>
-									View in Storybook
-								</ButtonLink>
-							)}
 							{pkg.figmaGalleryNodeId && (
 								<ButtonLink
 									variant="text"
@@ -67,6 +58,16 @@ export function PkgLayout({
 									View in Figma
 								</ButtonLink>
 							)}
+							{pkg.storybookPath && (
+								<ButtonLink
+									variant="text"
+									href={`${process.env.NEXT_PUBLIC_STORYBOOK_URL}?path=${pkg.storybookPath}`}
+									iconBefore={StorybookLogo}
+								>
+									View in Storybook
+								</ButtonLink>
+							)}
+
 							<ButtonLink
 								variant="text"
 								href={`https://github.com/steelthreads/agds-next/tree/main/packages/react/src/${pkg.slug}`}
