@@ -7,7 +7,6 @@ import {
 	getTemplateBreadcrumbs,
 	getTemplateNavLinks,
 	getTemplateSlugs,
-	getTemplateSubNavItems,
 	Template,
 } from '../../../lib/mdx/templates';
 import { TemplateLayout } from '../../../components/TemplateLayout';
@@ -16,7 +15,6 @@ import { DocumentTitle } from '../../../components/DocumentTitle';
 
 export default function TemplateOverviewPage({
 	breadcrumbs,
-	subNavItems,
 	template,
 	navLinks,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
@@ -29,7 +27,6 @@ export default function TemplateOverviewPage({
 			<TemplateLayout
 				template={template}
 				breadcrumbs={breadcrumbs}
-				subNavItems={subNavItems}
 				navLinks={navLinks}
 				editPath={`/docs/content/templates/${template.slug}/index.mdx`}
 				skipLinks={[
@@ -59,17 +56,15 @@ export const getStaticProps: GetStaticProps<
 		template: Template;
 		navLinks: Awaited<ReturnType<typeof getTemplateNavLinks>>;
 		breadcrumbs: Awaited<ReturnType<typeof getTemplateBreadcrumbs>>;
-		subNavItems: Awaited<ReturnType<typeof getTemplateSubNavItems>>;
 	},
 	{ slug: string }
 > = async ({ params }) => {
 	const { slug } = params ?? {};
 	const template = slug ? await getTemplate(slug) : undefined;
-	const subNavItems = slug ? await getTemplateSubNavItems(slug) : undefined;
 	const navLinks = await getTemplateNavLinks();
 	const breadcrumbs = slug ? await getTemplateBreadcrumbs(slug) : undefined;
 
-	if (!(slug && template && subNavItems && breadcrumbs)) {
+	if (!(slug && template && breadcrumbs)) {
 		return { notFound: true };
 	}
 
@@ -77,7 +72,6 @@ export const getStaticProps: GetStaticProps<
 		props: {
 			template,
 			navLinks,
-			subNavItems,
 			breadcrumbs,
 			slug,
 		},

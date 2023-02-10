@@ -61,7 +61,7 @@ export function PkgLayout({
 							{pkg.figmaGalleryNodeId && (
 								<ButtonLink
 									variant="text"
-									href={`https://www.figma.com/file/SgSHfK8AUadp7aEzD34ZG3/AgDS---Agriculture-Design-System?node-id=${pkg.figmaGalleryNodeId}`}
+									href={`${process.env.NEXT_PUBLIC_FIGMA_URL}?node-id=${pkg.figmaGalleryNodeId}`}
 									iconBefore={FigmaLogo}
 								>
 									View in Figma
@@ -69,7 +69,7 @@ export function PkgLayout({
 							)}
 							<ButtonLink
 								variant="text"
-								href={`https://www.figma.com/file/SgSHfK8AUadp7aEzD34ZG3/AgDS---Agriculture-Design-System?node-id=${pkg.figmaGalleryNodeId}`}
+								href={`https://github.com/steelthreads/agds-next/tree/main/packages/react/src/${pkg.slug}`}
 								iconBefore={GithubLogo}
 							>
 								View in Github
