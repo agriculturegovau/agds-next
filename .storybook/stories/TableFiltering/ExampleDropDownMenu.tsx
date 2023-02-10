@@ -46,12 +46,40 @@ export const ExampleDropDownMenu = ({
 			<DashboardPageTitle />
 			<PageContent>
 				<Stack gap={2}>
-					<Flex justifyContent="space-between" alignItems="flex-end">
-						<Flex gap={1} alignItems="flex-end">
+					<Flex
+						gap={1}
+						justifyContent="space-between"
+						alignItems={{ sm: 'flex-end' }}
+						flexDirection={{ xs: 'column', sm: 'row' }}
+					>
+						<Flex
+							gap={1}
+							flexDirection={{ xs: 'column', md: 'row' }}
+							alignItems={{ md: 'flex-end' }}
+							flexWrap="wrap"
+						>
 							<DashboardSortBySelect
 								sort={sort}
 								setSort={setSort}
 								resetPagination={resetPagination}
+							/>
+							<Select
+								label="Items per page"
+								maxWidth="sm"
+								value={pagination.perPage}
+								onChange={(event) =>
+									setPagination({
+										...pagination,
+										perPage: parseInt(event.target.value),
+									})
+								}
+								hideOptionalLabel
+								options={[
+									{ label: '10', value: '10' },
+									{ label: '20', value: '20' },
+									{ label: '50', value: '50' },
+									{ label: '100', value: '100' },
+								]}
 							/>
 							<FilterMenu
 								filters={filters}
@@ -76,23 +104,6 @@ export const ExampleDropDownMenu = ({
 								currentPage={pagination.page}
 								onChange={(page) => setPagination({ ...pagination, page })}
 								totalPages={totalPages}
-							/>
-							<Select
-								label="Items per page"
-								value={pagination.perPage}
-								onChange={(event) =>
-									setPagination({
-										...pagination,
-										perPage: parseInt(event.target.value),
-									})
-								}
-								hideOptionalLabel
-								options={[
-									{ label: '10', value: '10' },
-									{ label: '20', value: '20' },
-									{ label: '50', value: '50' },
-									{ label: '100', value: '100' },
-								]}
 							/>
 						</Stack>
 					) : null}
