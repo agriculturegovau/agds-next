@@ -143,10 +143,10 @@ export const FilterMenu = ({
 								resetPagination();
 								setFilters({
 									...filters,
-									dateRegistered: value,
+									requestDate: value,
 								});
 							}}
-							value={filters.dateRegistered}
+							value={filters.requestDate}
 						/>
 
 						<Button

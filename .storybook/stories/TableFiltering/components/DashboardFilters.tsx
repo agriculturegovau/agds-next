@@ -5,6 +5,7 @@ import { DateRangePicker } from '@ag.ds-next/react/date-picker';
 import { SearchInput } from '@ag.ds-next/react/search-input';
 import { Button } from '@ag.ds-next/react/button';
 import { DashboardSortBySelect } from './DashboardSortBySelect';
+import { DashboardFilterStatus } from './DashboardFilterStatus';
 
 const VerticalDivider = () => <Box borderLeft borderColor="muted" />;
 
@@ -77,30 +78,10 @@ export const DashboardFilters = ({
 					});
 				}}
 			/>
-			<Select
-				label="Status"
-				placeholder="All"
-				hideOptionalLabel
-				options={[
-					{ value: 'booked', label: 'Booked' },
-					{ value: 'notBooked', label: 'Not booked' },
-					{ value: 'completed', label: 'Completed' },
-					{ value: 'cancelled', label: 'Cancelled' },
-				]}
-				value={filters.status || ''}
-				onChange={(e) => {
-					const value = e.target.value as
-						| ''
-						| 'booked'
-						| 'notBooked'
-						| 'completed'
-						| 'cancelled';
-					resetPagination();
-					setFilters({
-						...filters,
-						status: value === '' ? undefined : value,
-					});
-				}}
+			<DashboardFilterStatus
+				filters={filters}
+				setFilters={setFilters}
+				resetPagination={resetPagination}
 			/>
 			<DateRangePicker
 				fromLabel="Date registered from"
@@ -109,10 +90,10 @@ export const DashboardFilters = ({
 					resetPagination();
 					setFilters({
 						...filters,
-						dateRegistered: value,
+						requestDate: value,
 					});
 				}}
-				value={filters.dateRegistered}
+				value={filters.requestDate}
 			/>
 			<Button
 				variant="secondary"

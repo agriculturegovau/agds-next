@@ -12,7 +12,7 @@ export type BusinessForAudit = {
 	city: string;
 	state: string;
 	numberOfEmployees: number;
-	dateRegistered: Date;
+	requestDate: Date;
 	status: BusinessForAuditStatus;
 };
 
@@ -162,7 +162,7 @@ export const generateBusinessData = (): BusinessForAudit[] => {
 				'completed',
 				'cancelled',
 			]),
-			dateRegistered: faker.date.past(),
+			requestDate: faker.date.past(),
 			numberOfEmployees: faker.datatype.number(1000),
 			...exampleAustralianBusiness,
 		};
