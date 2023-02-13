@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState } from 'react';
-import { useRouter } from 'next/router';
 import { useForm, SubmitHandler, SubmitErrorHandler } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
@@ -55,8 +54,11 @@ const formSchema = yup
 
 type FormSchema = yup.InferType<typeof formSchema>;
 
-export const FormExampleSinglePage = () => {
-	const router = useRouter();
+export const FormExampleSinglePage = ({
+	navigateToSuccessPage,
+}: {
+	navigateToSuccessPage: () => void;
+}) => {
 	const [isSubmitting, setIsSubmitting] = useState(false);
 	const errorPageAlertRef = useRef<HTMLDivElement>(null);
 	const [hasFocusedErrorRef, setHasFocusedErrorRef] = useState(false);
@@ -78,7 +80,7 @@ export const FormExampleSinglePage = () => {
 		console.log(data);
 		setTimeout(() => {
 			setIsSubmitting(false);
-			router.push('single-page-form-success');
+			navigateToSuccessPage();
 		}, 2000);
 	};
 

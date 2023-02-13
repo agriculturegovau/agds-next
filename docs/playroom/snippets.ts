@@ -148,13 +148,6 @@ const snippets = [
 								/>
 							</FormStack>
 						</Fieldset>
-						<Fieldset legend={<H3>Postal address (H3)</H3>}>
-							<FormStack>
-								<Checkbox id="isPostalAddressSameAsStreetAddress">
-									Same as street address
-								</Checkbox>
-							</FormStack>
-						</Fieldset>
 						<ButtonGroup>
 							<Button type="submit">Submit form</Button>
 							<Button type="button" variant="secondary">

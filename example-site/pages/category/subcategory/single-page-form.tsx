@@ -1,3 +1,4 @@
+import { useRouter } from 'next/router';
 import { Stack } from '@ag.ds-next/react/box';
 import { Breadcrumbs } from '@ag.ds-next/react/breadcrumbs';
 import { PageContent } from '@ag.ds-next/react/content';
@@ -9,6 +10,7 @@ import { FormExampleSinglePage } from '../../../components/FormExampleSinglePage
 import { PageTitle } from '../../../components/PageTitle';
 
 export default function SinglePageFormPage() {
+	const router = useRouter();
 	return (
 		<>
 			<DocumentTitle title="Single-page form example" />
@@ -39,7 +41,11 @@ export default function SinglePageFormPage() {
 								<Text fontSize="xs" color="muted">
 									All fields are required unless marked optional.
 								</Text>
-								<FormExampleSinglePage />
+								<FormExampleSinglePage
+									navigateToSuccessPage={() =>
+										router.push('single-page-form-success')
+									}
+								/>
 							</Stack>
 						</Column>
 					</Columns>
