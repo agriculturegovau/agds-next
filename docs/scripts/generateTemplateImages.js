@@ -7,7 +7,7 @@ const sharp = require('sharp');
 
 const BASE_URL = `http://localhost:3000/example-site`;
 const OUTPUT_DIR = `public/img/templates/`;
-const TEMPLATES_PATH = normalize(`${process.cwd()}/../templates/`);
+const TEMPLATES_PATH = normalize(`${process.cwd()}/content/templates/`);
 
 const templateOverviewPath = (slug) =>
 	normalize(`${TEMPLATES_PATH}/${slug}/index.mdx`);
