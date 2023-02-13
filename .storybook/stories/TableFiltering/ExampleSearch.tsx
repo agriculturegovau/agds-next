@@ -17,10 +17,10 @@ type ExampleSearchProps = {
 	pagination: GetDataPagination;
 	setPagination: (pagination: GetDataPagination) => void;
 	resetPagination: () => void;
-	totalItems: number;
 	totalPages: number;
 	loading: boolean;
 	data: BusinessForAudit[];
+	tableCaption: string;
 };
 
 export const ExampleSearch = ({
@@ -29,10 +29,10 @@ export const ExampleSearch = ({
 	pagination,
 	setPagination,
 	resetPagination,
-	totalItems,
 	totalPages,
 	loading,
 	data,
+	tableCaption,
 }: ExampleSearchProps) => {
 	return (
 		<AppShell>
@@ -53,7 +53,7 @@ export const ExampleSearch = ({
 					<DashboardTable
 						data={data}
 						loading={loading}
-						totalItems={totalItems}
+						caption={tableCaption}
 						itemsPerPage={pagination.perPage}
 					/>
 					{data.length ? (

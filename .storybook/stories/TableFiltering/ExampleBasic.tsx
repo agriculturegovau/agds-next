@@ -16,10 +16,10 @@ type ExampleBasicProps = {
 	pagination: GetDataPagination;
 	setPagination: (pagination: GetDataPagination) => void;
 	resetPagination: () => void;
-	totalItems: number;
 	totalPages: number;
 	loading: boolean;
 	data: BusinessForAudit[];
+	tableCaption: string;
 };
 
 export const ExampleBasic = ({
@@ -28,10 +28,10 @@ export const ExampleBasic = ({
 	pagination,
 	setPagination,
 	resetPagination,
-	totalItems,
 	totalPages,
 	loading,
 	data,
+	tableCaption,
 }: ExampleBasicProps) => {
 	return (
 		<AppShell>
@@ -51,7 +51,7 @@ export const ExampleBasic = ({
 					<DashboardTable
 						data={data}
 						loading={loading}
-						totalItems={totalItems}
+						caption={tableCaption}
 						itemsPerPage={pagination.perPage}
 					/>
 					{data.length ? (

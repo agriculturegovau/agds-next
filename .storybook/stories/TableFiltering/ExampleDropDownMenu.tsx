@@ -21,10 +21,10 @@ type ExampleDropDownMenuProps = {
 	setPagination: (pagination: GetDataPagination) => void;
 	resetPagination: () => void;
 	resetFilters: () => void;
-	totalItems: number;
 	totalPages: number;
 	loading: boolean;
 	data: BusinessForAudit[];
+	tableCaption: string;
 };
 
 export const ExampleDropDownMenu = ({
@@ -36,10 +36,10 @@ export const ExampleDropDownMenu = ({
 	pagination,
 	setPagination,
 	resetPagination,
-	totalItems,
 	totalPages,
 	loading,
 	data,
+	tableCaption,
 }: ExampleDropDownMenuProps) => {
 	return (
 		<AppShell>
@@ -95,7 +95,7 @@ export const ExampleDropDownMenu = ({
 					<DashboardTable
 						data={data}
 						loading={loading}
-						totalItems={totalItems}
+						caption={tableCaption}
 						itemsPerPage={pagination.perPage}
 					/>
 					{data.length ? (
