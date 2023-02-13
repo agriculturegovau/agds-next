@@ -28,6 +28,11 @@ const tokenDescriptions: Record<
 		value: tokens.maxWidth.container,
 		description: 'Used for setting the max-width of the page container.',
 	},
+	modalDialog: {
+		value: tokens.maxWidth.modalDialog,
+		description:
+			'Used for setting the max-width of the dialog in the Modal component.',
+	},
 	mobileMenu: {
 		value: tokens.maxWidth.mobileMenu,
 		description:

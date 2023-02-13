@@ -2,9 +2,10 @@ import { Fragment, FunctionComponent, useEffect, useRef } from 'react';
 import { Global } from '@emotion/react';
 import { createPortal } from 'react-dom';
 import { ModalCover } from './ModalCover';
-import { ModalPanel, ModalPanelProps } from './ModalPanel';
+import { ModalDialog, ModalDialogProps } from './ModalDialog';
 
-export type ModalProps = ModalPanelProps & {
+export type ModalProps = ModalDialogProps & {
+	/** If true, the modal will be rendered.  */
 	isOpen?: boolean;
 };
 
@@ -68,9 +69,9 @@ export const Modal: FunctionComponent<ModalProps> = ({
 		<Fragment>
 			<LockScroll />
 			<ModalCover ref={coverRef}>
-				<ModalPanel onDismiss={onDismiss} title={title} actions={actions}>
+				<ModalDialog onDismiss={onDismiss} title={title} actions={actions}>
 					{children}
-				</ModalPanel>
+				</ModalDialog>
 			</ModalCover>
 		</Fragment>,
 		document.body
