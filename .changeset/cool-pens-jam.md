@@ -1,5 +1,5 @@
 ---
-'@ag.ds-next/react': minor
+'@ag.ds-next/react': patch
 ---
 
 icons: Add PlusIcon
