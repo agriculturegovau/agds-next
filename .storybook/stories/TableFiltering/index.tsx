@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
 import { ExampleBasic } from './ExampleBasic';
 import { ExampleDropDownMenu } from './ExampleDropDownMenu';
-import { ExamplePersistentFilters } from './ExamplePersistentFilters';
+import { ExampleFilterBar } from './ExampleFilterBar';
+import { ExampleSearch } from './ExampleSearch';
 import {
 	getData,
 	GetDataParams,
@@ -44,6 +45,7 @@ const useSortAndFilter = (args?: { filters?: Partial<GetDataFilters> }) => {
 		order: 'ASC',
 	});
 	const [filters, setFilters] = useState<GetDataFilters>({
+		assignee: undefined,
 		businessName: undefined,
 		state: undefined,
 		status: undefined,
@@ -57,6 +59,7 @@ const useSortAndFilter = (args?: { filters?: Partial<GetDataFilters> }) => {
 	const resetPagination = () => setPagination({ ...pagination, page: 1 });
 	const resetFilters = () =>
 		setFilters({
+			assignee: undefined,
 			businessName: undefined,
 			state: undefined,
 			status: undefined,
@@ -86,11 +89,7 @@ export const Basic = () => {
 		setFilters,
 		setPagination,
 		sort,
-	} = useSortAndFilter({
-		filters: {
-			status: 'notBooked',
-		},
-	});
+	} = useSortAndFilter();
 
 	const { loading, data, totalPages, totalItems } = useData({
 		filters,
@@ -148,8 +147,9 @@ export const DropDown = () => {
 		/>
 	);
 };
+DropDown.storyName = 'Drop down filter menu';
 
-export const PersistentFilters = () => {
+export const FilterBar = () => {
 	const {
 		filters,
 		pagination,
@@ -168,7 +168,7 @@ export const PersistentFilters = () => {
 	});
 
 	return (
-		<ExamplePersistentFilters
+		<ExampleFilterBar
 			data={data}
 			filters={filters}
 			loading={loading}
@@ -179,6 +179,37 @@ export const PersistentFilters = () => {
 			setPagination={setPagination}
 			setSort={setSort}
 			sort={sort}
+			totalItems={totalItems}
+			totalPages={totalPages}
+		/>
+	);
+};
+
+export const Search = () => {
+	const {
+		filters,
+		pagination,
+		resetPagination,
+		setFilters,
+		setPagination,
+		sort,
+	} = useSortAndFilter();
+
+	const { loading, data, totalPages, totalItems } = useData({
+		filters,
+		pagination,
+		sort,
+	});
+
+	return (
+		<ExampleSearch
+			data={data}
+			filters={filters}
+			loading={loading}
+			pagination={pagination}
+			resetPagination={resetPagination}
+			setFilters={setFilters}
+			setPagination={setPagination}
 			totalItems={totalItems}
 			totalPages={totalPages}
 		/>

@@ -9,6 +9,7 @@ import { Select } from '@ag.ds-next/react/select';
 import { DateRangePicker } from '@ag.ds-next/react/date-picker';
 import { useClickOutside, useTernaryState } from '@ag.ds-next/react/core';
 import { ChevronDownIcon, ChevronUpIcon } from '@ag.ds-next/react/icon';
+import { assignees } from '../lib/generateBusinessData';
 
 export const FilterMenu = ({
 	filters,
@@ -85,60 +86,79 @@ export const FilterMenu = ({
 								});
 							}}
 						/>
-						<Flex gap={1}>
-							<Select
-								label="State"
-								placeholder="All"
-								hideOptionalLabel
-								options={[
-									{ value: 'act', label: 'ACT' },
-									{ value: 'nsw', label: 'NSW' },
-									{ value: 'nt', label: 'NT' },
-									{ value: 'qld', label: 'QLD' },
-									{ value: 'sa', label: 'SA' },
-									{ value: 'tas', label: 'TAS' },
-									{ value: 'vic', label: 'VIC' },
-									{ value: 'wa', label: 'WA' },
-								]}
-								value={filters.state || ''}
-								onChange={(e) => {
-									const value = e.target.value;
-									resetPagination();
-									setFilters({
-										...filters,
-										state: value === '' ? undefined : value,
-									});
-								}}
-							/>
-							<Select
-								label="Status"
-								placeholder="All"
-								hideOptionalLabel
-								options={[
-									{ value: 'booked', label: 'Booked' },
-									{ value: 'notBooked', label: 'Not booked' },
-									{ value: 'completed', label: 'Completed' },
-									{ value: 'cancelled', label: 'Cancelled' },
-								]}
-								value={filters.status || ''}
-								onChange={(e) => {
-									const value = e.target.value as
-										| ''
-										| 'booked'
-										| 'notBooked'
-										| 'completed'
-										| 'cancelled';
-									resetPagination();
-									setFilters({
-										...filters,
-										status: value === '' ? undefined : value,
-									});
-								}}
-							/>
-						</Flex>
+						<Select
+							label="Assignee"
+							placeholder="All"
+							hideOptionalLabel
+							options={assignees.map((option) => ({
+								label: option,
+								value: option,
+							}))}
+							value={filters.assignee || ''}
+							onChange={(e) => {
+								const value = e.target.value;
+
+								resetPagination();
+								setFilters({
+									...filters,
+									assignee: value === '' ? undefined : value,
+								});
+							}}
+						/>
+
+						<Select
+							label="State"
+							placeholder="All"
+							hideOptionalLabel
+							options={[
+								{ value: 'act', label: 'ACT' },
+								{ value: 'nsw', label: 'NSW' },
+								{ value: 'nt', label: 'NT' },
+								{ value: 'qld', label: 'QLD' },
+								{ value: 'sa', label: 'SA' },
+								{ value: 'tas', label: 'TAS' },
+								{ value: 'vic', label: 'VIC' },
+								{ value: 'wa', label: 'WA' },
+							]}
+							value={filters.state || ''}
+							onChange={(e) => {
+								const value = e.target.value;
+								resetPagination();
+								setFilters({
+									...filters,
+									state: value === '' ? undefined : value,
+								});
+							}}
+						/>
+						<Select
+							label="Status"
+							placeholder="All"
+							hideOptionalLabel
+							options={[
+								{ value: 'booked', label: 'Booked' },
+								{ value: 'notBooked', label: 'Not booked' },
+								{ value: 'completed', label: 'Completed' },
+								{ value: 'cancelled', label: 'Cancelled' },
+							]}
+							value={filters.status || ''}
+							onChange={(e) => {
+								const value = e.target.value as
+									| ''
+									| 'booked'
+									| 'notBooked'
+									| 'completed'
+									| 'cancelled';
+								resetPagination();
+								setFilters({
+									...filters,
+									status: value === '' ? undefined : value,
+								});
+							}}
+						/>
+
 						<DateRangePicker
-							fromLabel="Date registered from"
-							toLabel="Date registered to"
+							fromLabel="Registered from"
+							toLabel="Registered to"
 							onChange={(value) => {
 								resetPagination();
 								setFilters({

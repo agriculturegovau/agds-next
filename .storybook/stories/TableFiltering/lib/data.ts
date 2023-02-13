@@ -15,6 +15,7 @@ export type GetDataPagination = {
 };
 
 export type GetDataFilters = {
+	assignee: string | undefined;
 	businessName: string | undefined;
 	state: string | undefined;
 	requestDate: {
@@ -46,7 +47,8 @@ export async function getData(params: GetDataParams): Promise<GetDataResponse> {
 	const filteredData = allData.filter((business) => {
 		let isValid = true;
 
-		const { requestDate, state, status, businessName } = params.filters;
+		const { requestDate, state, status, businessName, assignee } =
+			params.filters;
 
 		if (requestDate?.from && requestDate?.to) {
 			if (
@@ -78,14 +80,30 @@ export async function getData(params: GetDataParams): Promise<GetDataResponse> {
 			}
 		}
 
+		if (assignee) {
+			if (
+				!business.assignee ||
+				(business.assignee && business.assignee !== assignee)
+			) {
+				isValid = false;
+			}
+		}
+
 		return isValid;
 	});
 
+	// TODO: write tests for this
 	const sortedData = filteredData.sort((a, b) => {
-		if (a[field] > b[field]) {
+		const aValue = a[field];
+		const bValue = b[field];
+
+		if (aValue === undefined) return 1;
+		if (bValue === undefined) return -1;
+
+		if (aValue > bValue) {
 			return order === 'ASC' ? 1 : -1;
 		}
-		if (a[field] < b[field]) {
+		if (aValue < bValue) {
 			return order === 'ASC' ? -1 : 1;
 		}
 		return 0;

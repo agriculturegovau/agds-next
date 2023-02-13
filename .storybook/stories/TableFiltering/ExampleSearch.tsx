@@ -6,11 +6,12 @@ import { AppShell } from '../../components/ExampleShell';
 import { DashboardPageTitle } from './components/DashboardPageTitle';
 import { DashboardFilterStatus } from './components/DashboardFilterStatus';
 import { DashboardTable } from './components/DashboardTable';
-import { GetDataFilters, GetDataPagination } from './lib/data';
+import { GetDataFilters, GetDataPagination, GetDataSort } from './lib/data';
 import { BusinessForAudit } from './lib/generateBusinessData';
 import { PlusIcon } from '@ag.ds-next/react/icon';
+import { DashboardSearchInput } from './components/DashboardSearchInput';
 
-type ExampleBasicProps = {
+type ExampleSearchProps = {
 	filters: GetDataFilters;
 	setFilters: (filters: GetDataFilters) => void;
 	pagination: GetDataPagination;
@@ -22,7 +23,7 @@ type ExampleBasicProps = {
 	data: BusinessForAudit[];
 };
 
-export const ExampleBasic = ({
+export const ExampleSearch = ({
 	filters,
 	setFilters,
 	pagination,
@@ -32,13 +33,14 @@ export const ExampleBasic = ({
 	totalPages,
 	loading,
 	data,
-}: ExampleBasicProps) => {
+}: ExampleSearchProps) => {
 	return (
 		<AppShell>
 			<DashboardPageTitle />
 			<PageContent>
 				<Stack gap={2}>
 					<Flex gap={1} alignItems="flex-end">
+						<DashboardSearchInput filters={filters} setFilters={setFilters} />
 						<DashboardFilterStatus
 							filters={filters}
 							setFilters={setFilters}
