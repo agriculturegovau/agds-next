@@ -26,27 +26,9 @@ export async function getTemplate(slug: string) {
 		version: data.version as string,
 		description: (data.description ?? null) as string | null,
 		previewPath: (data.previewPath ?? null) as string | null,
+		figmaTemplateNodeId: (data.figmaTemplateNodeId ?? null) as string | null,
+		githubTemplatePath: (data.githubTemplatePath ?? null) as string | null,
 	};
-}
-
-export async function getTemplateSubNavItems(slug: string) {
-	return getMarkdownData(templateOverviewPath(slug)).then(({ data }) => {
-		const meta = templateNavMetaData(slug, data);
-		return [
-			{
-				label: 'Overview',
-				href: `/templates/${meta.slug}`,
-			},
-			{
-				label: 'Content',
-				href: `/templates/${meta.slug}/content`,
-			},
-			{
-				label: 'Code',
-				href: `/templates/${meta.slug}/code`,
-			},
-		];
-	});
 }
 
 export async function getTemplateSlugs() {

@@ -10,6 +10,7 @@ import { PageTitle } from './PageTitle';
 import { PageLayout } from './PageLayout';
 import { FigmaLogo } from './FigmaLogo';
 import { StorybookLogo } from './StorybookLogo';
+import { GithubLogo } from './GithubLogo';
 
 export function PkgLayout({
 	children,
@@ -45,9 +46,19 @@ export function PkgLayout({
 					(pkg.storybookPath || pkg.figmaGalleryNodeId) && (
 						<Flex
 							gap={1.5}
+							flexWrap="wrap"
 							flexDirection={['column', 'row']}
 							alignItems="flex-start"
 						>
+							{pkg.figmaGalleryNodeId && (
+								<ButtonLink
+									variant="text"
+									href={`${process.env.NEXT_PUBLIC_FIGMA_URL}?node-id=${pkg.figmaGalleryNodeId}`}
+									iconBefore={FigmaLogo}
+								>
+									View in Figma
+								</ButtonLink>
+							)}
 							{pkg.storybookPath && (
 								<ButtonLink
 									variant="text"
@@ -57,15 +68,14 @@ export function PkgLayout({
 									View in Storybook
 								</ButtonLink>
 							)}
-							{pkg.figmaGalleryNodeId && (
-								<ButtonLink
-									variant="text"
-									href={`https://www.figma.com/file/SgSHfK8AUadp7aEzD34ZG3/AgDS---Agriculture-Design-System?node-id=${pkg.figmaGalleryNodeId}`}
-									iconBefore={FigmaLogo}
-								>
-									View in Figma
-								</ButtonLink>
-							)}
+
+							<ButtonLink
+								variant="text"
+								href={`https://github.com/steelthreads/agds-next/tree/main/packages/react/src/${pkg.slug}`}
+								iconBefore={GithubLogo}
+							>
+								View in Github
+							</ButtonLink>
 						</Flex>
 					)
 				}
