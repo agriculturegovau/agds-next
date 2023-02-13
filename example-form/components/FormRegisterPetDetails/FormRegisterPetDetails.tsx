@@ -180,8 +180,8 @@ export const FormRegisterPetDetails = () => {
 	const hasCompletedPreviousStep = useMemo(() => {
 		if (currentStep === 0) return true;
 		const previousStep = currentStep - 1;
-		return Boolean(previousStep in formState);
-	}, [formState, currentStep]);
+		return hasCompletedStep(previousStep);
+	}, [currentStep, hasCompletedStep]);
 
 	const getStepStatus = useCallback(
 		(idx: number) => {

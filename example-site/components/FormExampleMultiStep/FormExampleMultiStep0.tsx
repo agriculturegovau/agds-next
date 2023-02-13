@@ -3,6 +3,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { Stack } from '@ag.ds-next/react/box';
 import { ControlGroup, Radio } from '@ag.ds-next/react/control-input';
+import { FormRequiredFieldsMessage } from '../FormRequiredFieldsMessage';
 import { useFormExampleMultiStep } from './FormExampleMultiStep';
 import { FormExampleMultiStepActions } from './FormExampleMultiStepActions';
 import { FormExampleMultiStepContainer } from './FormExampleMultiStepContainer';
@@ -38,6 +39,7 @@ export const FormExampleMultiStep0 = () => {
 		<FormExampleMultiStepContainer
 			title="Conditional fork title (H1)"
 			introduction="The introductory paragraph provides context about this page of the form. Use a short paragraph to reduce cognitive load."
+			callToAction={<FormRequiredFieldsMessage />}
 		>
 			<Stack as="form" gap={3} onSubmit={handleSubmit(onSubmit)} noValidate>
 				<ControlGroup

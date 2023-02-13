@@ -1,6 +1,7 @@
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
+import format from 'date-fns/format';
 import { FormStack } from '@ag.ds-next/react/form-stack';
 import { Prose } from '@ag.ds-next/react/prose';
 import { Stack } from '@ag.ds-next/react/box';
@@ -92,7 +93,9 @@ export const FormExampleMultiStep4 = () => {
 					<SummaryListItem>
 						<SummaryListItemTerm>Select a date</SummaryListItemTerm>
 						<SummaryListItemDescription>
-							{formState[2]?.date.toLocaleDateString()}
+							{formState[2]?.date
+								? format(formState[2]?.date, 'dd/MM/yyyy')
+								: null}
 						</SummaryListItemDescription>
 					</SummaryListItem>
 				</SummaryList>
@@ -112,12 +115,14 @@ export const FormExampleMultiStep4 = () => {
 							{formState[3]?.checkbox?.join(', ')}
 						</SummaryListItemDescription>
 					</SummaryListItem>
-					<SummaryListItem>
-						<SummaryListItemTerm>Nested field</SummaryListItemTerm>
-						<SummaryListItemDescription>
-							{formState[3]?.conditionalField}
-						</SummaryListItemDescription>
-					</SummaryListItem>
+					{formState[3]?.conditionalField && (
+						<SummaryListItem>
+							<SummaryListItemTerm>Nested field</SummaryListItemTerm>
+							<SummaryListItemDescription>
+								{formState[3]?.conditionalField}
+							</SummaryListItemDescription>
+						</SummaryListItem>
+					)}
 				</SummaryList>
 				<Button variant="text" onClick={() => goToStep(3)}>
 					Change

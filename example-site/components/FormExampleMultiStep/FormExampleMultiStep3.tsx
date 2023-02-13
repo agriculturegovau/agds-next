@@ -10,6 +10,7 @@ import { mapSpacing } from '@ag.ds-next/react/core';
 import { PageAlert } from '@ag.ds-next/react/page-alert';
 import { TextInput } from '@ag.ds-next/react/text-input';
 import { useScrollToField } from '@ag.ds-next/react/field';
+import { FormRequiredFieldsMessage } from '../FormRequiredFieldsMessage';
 import { useFormExampleMultiStep } from './FormExampleMultiStep';
 import { FormExampleMultiStepActions } from './FormExampleMultiStepActions';
 import { FormExampleMultiStepContainer } from './FormExampleMultiStepContainer';
@@ -82,6 +83,7 @@ export const FormExampleMultiStep3 = () => {
 		<FormExampleMultiStepContainer
 			title="Conditional reveal title (H1)"
 			introduction="The introductory paragraph provides context about this page of the form. Use a short paragraph to reduce cognitive load."
+			callToAction={<FormRequiredFieldsMessage />}
 		>
 			<Stack
 				as="form"
