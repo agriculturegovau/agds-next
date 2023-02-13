@@ -26,10 +26,10 @@ type ExampleFilterBarProps = {
 	setPagination: (pagination: GetDataPagination) => void;
 	resetPagination: () => void;
 	resetFilters: () => void;
-	totalItems: number;
 	totalPages: number;
 	loading: boolean;
 	data: BusinessForAudit[];
+	tableCaption: string;
 };
 
 export const ExampleFilterBar = ({
@@ -41,10 +41,10 @@ export const ExampleFilterBar = ({
 	pagination,
 	setPagination,
 	resetPagination,
-	totalItems,
 	totalPages,
 	loading,
 	data,
+	tableCaption,
 }: ExampleFilterBarProps) => {
 	const [isOpen, setIsOpen] = useState(false);
 
@@ -96,8 +96,8 @@ export const ExampleFilterBar = ({
 					<DashboardTable
 						data={data}
 						loading={loading}
-						totalItems={totalItems}
 						itemsPerPage={pagination.perPage}
+						caption={tableCaption}
 					/>
 					{data.length ? (
 						<Stack>

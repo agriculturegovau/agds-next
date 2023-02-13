@@ -38,13 +38,13 @@ const DashboardTableRowAssignee = ({
 };
 
 export const DashboardTable = ({
+	caption,
 	data,
-	totalItems,
 	loading,
 	itemsPerPage = 10,
 }: {
+	caption: string;
 	data: BusinessForAudit[];
-	totalItems?: number;
 	loading?: boolean;
 	itemsPerPage?: number;
 }) => {
@@ -55,9 +55,7 @@ export const DashboardTable = ({
 	return (
 		<TableWrapper>
 			<Table>
-				<TableCaption>{`Establishments ${
-					loading ? '' : `(${totalItems} items)`
-				}`}</TableCaption>
+				<TableCaption>{caption}</TableCaption>
 				<TableHead>
 					<tr>
 						<TableHeader width="25%" scope="col">

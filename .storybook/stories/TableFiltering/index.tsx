@@ -81,6 +81,36 @@ const useSortAndFilter = (args?: { filters?: Partial<GetDataFilters> }) => {
 	};
 };
 
+const genetateTableCaption = ({
+	filters,
+	loading,
+	totalItems,
+}: {
+	filters: GetDataFilters;
+	pagination: GetDataPagination;
+	loading: boolean;
+	totalItems: number;
+}) => {
+	let caption = 'All audits';
+
+	if (filters.businessName) {
+		return `Audits for businesses with name that includes "${filters.businessName}"`;
+	}
+
+	if (filters.assignee) {
+		caption = `Audits assigned to ${filters.assignee}`;
+	}
+
+	if (filters.state) {
+		caption = `${caption} in ${filters.state}`;
+	}
+	if (filters.status) {
+		caption = `${caption} which are ${filters.status}`;
+	}
+
+	return `${caption} ${loading ? '' : `(${totalItems} items)`}`;
+};
+
 export const Basic = () => {
 	const {
 		filters,
@@ -97,6 +127,13 @@ export const Basic = () => {
 		sort,
 	});
 
+	const tableCaption = genetateTableCaption({
+		loading,
+		totalItems,
+		filters,
+		pagination,
+	});
+
 	return (
 		<ExampleBasic
 			data={data}
@@ -106,7 +143,7 @@ export const Basic = () => {
 			resetPagination={resetPagination}
 			setFilters={setFilters}
 			setPagination={setPagination}
-			totalItems={totalItems}
+			tableCaption={tableCaption}
 			totalPages={totalPages}
 		/>
 	);
@@ -130,6 +167,13 @@ export const DropDown = () => {
 		sort,
 	});
 
+	const tableCaption = genetateTableCaption({
+		loading,
+		totalItems,
+		filters,
+		pagination,
+	});
+
 	return (
 		<ExampleDropDownMenu
 			data={data}
@@ -142,7 +186,7 @@ export const DropDown = () => {
 			setPagination={setPagination}
 			setSort={setSort}
 			sort={sort}
-			totalItems={totalItems}
+			tableCaption={tableCaption}
 			totalPages={totalPages}
 		/>
 	);
@@ -167,6 +211,13 @@ export const FilterBar = () => {
 		sort,
 	});
 
+	const tableCaption = genetateTableCaption({
+		loading,
+		totalItems,
+		filters,
+		pagination,
+	});
+
 	return (
 		<ExampleFilterBar
 			data={data}
@@ -179,7 +230,7 @@ export const FilterBar = () => {
 			setPagination={setPagination}
 			setSort={setSort}
 			sort={sort}
-			totalItems={totalItems}
+			tableCaption={tableCaption}
 			totalPages={totalPages}
 		/>
 	);
@@ -201,6 +252,13 @@ export const Search = () => {
 		sort,
 	});
 
+	const tableCaption = genetateTableCaption({
+		loading,
+		totalItems,
+		filters,
+		pagination,
+	});
+
 	return (
 		<ExampleSearch
 			data={data}
@@ -210,7 +268,7 @@ export const Search = () => {
 			resetPagination={resetPagination}
 			setFilters={setFilters}
 			setPagination={setPagination}
-			totalItems={totalItems}
+			tableCaption={tableCaption}
 			totalPages={totalPages}
 		/>
 	);
