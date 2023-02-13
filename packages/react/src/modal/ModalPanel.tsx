@@ -9,8 +9,11 @@ import { ModalTitle } from './ModalTitle';
 import { useModalId } from './utils';
 
 export type ModalPanelProps = PropsWithChildren<{
+	/** The actions to display at the bottom of the modal panel. Typically a `ButtonGroup`. */
 	actions?: ReactNode;
+	/** Function to be called when the modal is closed. */
 	onDismiss: () => void;
+	/** The title of the modal dialog. It can span lines but should not be too long. */
 	title: string;
 }>;
 
@@ -43,7 +46,7 @@ export const ModalPanel = ({
 				padding={1.5}
 				paddingTop={4}
 				gap={1}
-				maxWidth={tokens.maxWidth.bodyText}
+				maxWidth={tokens.maxWidth.modalPanel}
 				css={{
 					position: 'relative',
 					margin: '0 auto',

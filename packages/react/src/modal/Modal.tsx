@@ -5,6 +5,7 @@ import { ModalCover } from './ModalCover';
 import { ModalPanel, ModalPanelProps } from './ModalPanel';
 
 export type ModalProps = ModalPanelProps & {
+	/** If true, the modal will be rendered.  */
 	isOpen?: boolean;
 };
 
