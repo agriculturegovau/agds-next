@@ -1,19 +1,20 @@
 import { ReactNode, useEffect, useRef } from 'react';
-import { H1 } from '@ag.ds-next/react/heading';
 import { Stack } from '@ag.ds-next/react/box';
 import { PageAlert } from '@ag.ds-next/react/page-alert';
 import { Text } from '@ag.ds-next/react/text';
-import { PageTitle } from '../PageTitle';
+import { FormStepTitle } from '../FormStepTitle';
 import { useFormExampleMultiStep } from './FormExampleMultiStep';
 
 export const FormExampleMultiStepContainer = ({
 	children,
 	title,
 	introduction,
+	callToAction,
 }: {
 	children: ReactNode;
 	title: string;
 	introduction: string;
+	callToAction?: ReactNode;
 }) => {
 	const titleRef = useRef<HTMLHeadingElement>(null);
 	const { hasCompletedPreviousStep, currentStep } = useFormExampleMultiStep();
@@ -25,21 +26,12 @@ export const FormExampleMultiStepContainer = ({
 
 	return (
 		<Stack gap={3}>
-			<PageTitle
-				pretext="Title of multi-page form"
-				title={
-					<H1 ref={titleRef} tabIndex={-1} focus>
-						{title}
-					</H1>
-				}
+			<FormStepTitle
+				titleRef={titleRef}
+				formTitle="Title of multi-page form"
+				stepTitle={title}
 				introduction={introduction}
-				callToAction={
-					hasCompletedPreviousStep ? (
-						<Text fontSize="xs" color="muted">
-							All fields are required unless marked optional.
-						</Text>
-					) : null
-				}
+				callToAction={callToAction}
 			/>
 			{hasCompletedPreviousStep ? (
 				children

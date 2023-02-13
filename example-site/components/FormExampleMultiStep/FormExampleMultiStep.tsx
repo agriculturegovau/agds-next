@@ -116,9 +116,9 @@ export const FormExampleMultiStep = () => {
 	const next = useCallback(
 		(formState: StepFormState) => {
 			setIsSubmittingStep(true);
-			setFormState((current) => ({ ...current, [currentStep]: formState }));
 			// Using a `setTimeout` to replicate a call to a back-end API
 			setTimeout(() => {
+				setFormState((current) => ({ ...current, [currentStep]: formState }));
 				setIsSubmittingStep(false);
 				if (currentStep === TOTAL_STEPS) {
 					router.push('success');
@@ -142,12 +142,30 @@ export const FormExampleMultiStep = () => {
 		}, 1500);
 	}, [backToHomePage]);
 
+	const hasCompletedStep = useCallback(
+		(idx: number) => {
+			return idx in formState;
+		},
+		[formState]
+	);
+
 	/** If true, the user has completed the previous step of the form */
 	const hasCompletedPreviousStep = useMemo(() => {
 		if (currentStep === 0) return true;
 		const previousStep = currentStep - 1;
-		return Boolean(previousStep in formState);
-	}, [formState, currentStep]);
+		return hasCompletedStep(previousStep);
+	}, [currentStep, hasCompletedStep]);
+
+	const getStepStatus = useCallback(
+		(idx: number) => {
+			if (idx === currentStep) return 'doing';
+			if (hasCompletedStep(idx)) return 'done';
+			if (idx in formState) return 'done';
+			if (idx === 0 || hasCompletedStep(idx - 1)) return 'todo';
+			return 'blocked';
+		},
+		[currentStep, formState, hasCompletedStep]
+	);
 
 	const FormStepComponent = FORM_STEPS[currentStep]?.component;
 
@@ -181,12 +199,7 @@ export const FormExampleMultiStep = () => {
 								<ProgressIndicator
 									items={FORM_STEPS.map(({ label }, idx) => ({
 										label,
-										status:
-											idx === currentStep
-												? 'doing'
-												: idx in formState
-												? 'done'
-												: 'blocked',
+										status: getStepStatus(idx),
 										onClick: () => setCurrentStep(idx),
 									}))}
 								/>
