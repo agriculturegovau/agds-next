@@ -3,6 +3,7 @@ import { Flex } from '@ag.ds-next/react/box';
 import { SideNavProps } from '@ag.ds-next/react/side-nav';
 import { SkipLinksProps } from '@ag.ds-next/react/skip-link';
 import { ButtonLink } from '@ag.ds-next/react/button';
+import { CallToActionLink } from '@ag.ds-next/react/call-to-action';
 import type { Template, getTemplateBreadcrumbs } from '../lib/mdx/templates';
 import { AppLayout } from './AppLayout';
 import { PageLayout } from './PageLayout';
@@ -43,35 +44,40 @@ export const TemplateLayout = ({
 					title={template.title}
 					introduction={template.description}
 					callToAction={
-						(template.figmaTemplateNodeId || template.githubTemplatePath) && (
-							<Flex
-								gap={1.5}
-								flexWrap="wrap"
-								flexDirection={['column', 'row']}
-								alignItems="flex-start"
-							>
-								{template.figmaTemplateNodeId && (
-									<ButtonLink
-										variant="text"
-										href={`${process.env.NEXT_PUBLIC_FIGMA_URL}?node-id=${template.figmaTemplateNodeId}`}
-										iconBefore={FigmaLogo}
-									>
-										View in Figma
-									</ButtonLink>
-								)}
-								{template.githubTemplatePath && (
-									<ButtonLink
-										variant="text"
-										href={`https://github.com/steelthreads/agds-next/blob/main/example-site${template.githubTemplatePath}`}
-										iconBefore={GithubLogo}
-									>
-										View in Github
-									</ButtonLink>
-								)}
-							</Flex>
+						template.previewPath && (
+							<CallToActionLink href={`/example-site${template.previewPath}`}>
+								View template preview
+							</CallToActionLink>
 						)
 					}
 				/>
+				{(template.figmaTemplateNodeId || template.githubTemplatePath) && (
+					<Flex
+						gap={1.5}
+						flexWrap="wrap"
+						flexDirection={['column', 'row']}
+						alignItems="flex-start"
+					>
+						{template.figmaTemplateNodeId && (
+							<ButtonLink
+								variant="text"
+								href={`${process.env.NEXT_PUBLIC_FIGMA_URL}?node-id=${template.figmaTemplateNodeId}`}
+								iconBefore={FigmaLogo}
+							>
+								View in Figma
+							</ButtonLink>
+						)}
+						{template.githubTemplatePath && (
+							<ButtonLink
+								variant="text"
+								href={`https://github.com/steelthreads/agds-next/blob/main/example-site${template.githubTemplatePath}`}
+								iconBefore={GithubLogo}
+							>
+								View in Github
+							</ButtonLink>
+						)}
+					</Flex>
+				)}
 				{children}
 			</PageLayout>
 		</AppLayout>
