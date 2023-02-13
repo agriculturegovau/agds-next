@@ -3,6 +3,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { Stack } from '@ag.ds-next/react/box';
 import { DatePicker } from '@ag.ds-next/react/date-picker';
+import { FormRequiredFieldsMessage } from '../FormRequiredFieldsMessage';
 import { useFormExampleMultiStep } from './FormExampleMultiStep';
 import { FormExampleMultiStepActions } from './FormExampleMultiStepActions';
 import { FormExampleMultiStepContainer } from './FormExampleMultiStepContainer';
@@ -35,6 +36,7 @@ export const FormExampleMultiStep2 = () => {
 		<FormExampleMultiStepContainer
 			title="Select date (H1)"
 			introduction="The introductory paragraph provides context about this page of the form. Use a short paragraph to reduce cognitive load."
+			callToAction={<FormRequiredFieldsMessage />}
 		>
 			<Stack
 				as="form"

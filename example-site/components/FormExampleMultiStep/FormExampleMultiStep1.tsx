@@ -15,6 +15,7 @@ import { PageAlert } from '@ag.ds-next/react/page-alert';
 import { Stack } from '@ag.ds-next/react/box';
 import { Textarea } from '@ag.ds-next/react/textarea';
 import { useScrollToField } from '@ag.ds-next/react/field';
+import { FormRequiredFieldsMessage } from '../FormRequiredFieldsMessage';
 import { FormExampleMultiStepActions } from './FormExampleMultiStepActions';
 import { useFormExampleMultiStep } from './FormExampleMultiStep';
 import { FormExampleMultiStepContainer } from './FormExampleMultiStepContainer';
@@ -67,6 +68,7 @@ export const FormExampleMultiStep1 = () => {
 		<FormExampleMultiStepContainer
 			title="Submit evidence (H1)"
 			introduction="The introductory paragraph provides context about this page of the form. Use a short paragraph to reduce cognitive load."
+			callToAction={<FormRequiredFieldsMessage />}
 		>
 			<Stack
 				as="form"
