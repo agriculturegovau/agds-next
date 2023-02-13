@@ -10,6 +10,10 @@ import { PageAlert } from '@ag.ds-next/react/page-alert';
 import { Prose } from '@ag.ds-next/react/prose';
 import { useScrollToField } from '@ag.ds-next/react/field';
 import { TextLink } from '@ag.ds-next/react/text-link';
+import { PageContent } from '@ag.ds-next/react/content';
+import { Column, Columns } from '@ag.ds-next/react/columns';
+import { PageTitle } from './PageTitle';
+import { FormDivider } from './FormDivider';
 
 const formSchema = yup
 	.object({
@@ -20,7 +24,7 @@ const formSchema = yup
 
 type FormSchema = yup.InferType<typeof formSchema>;
 
-export const FormExampleSignIn = () => {
+export const SignInForm = () => {
 	const [isSubmitting, setIsSubmitting] = useState(false);
 	const networkErrorPageAlertRef = useRef<HTMLDivElement>(null);
 	const [networkErrorMessage, setNetworkErrorMessage] = useState<string>();
@@ -133,5 +137,32 @@ export const FormExampleSignIn = () => {
 				</FormStack>
 			</form>
 		</Stack>
+	);
+};
+
+export const FormExampleSignInPage = () => {
+	return (
+		<PageContent>
+			<Columns>
+				<Column columnSpan={{ xs: 12, md: 7 }}>
+					<Stack gap={3}>
+						<PageTitle
+							title="Sign in form - xxl/display (H1)"
+							introduction="Introductory paragraph providing context for this sign in form. All questions on page must be related - md/default (P)."
+						/>
+						<SignInForm />
+						<FormDivider />
+						<Prose>
+							<p>
+								Don&apos;t have an account? <a href="#">Create account</a>
+							</p>
+							<p>
+								Read our <a href="#">privacy policy</a>
+							</p>
+						</Prose>
+					</Stack>
+				</Column>
+			</Columns>
+		</PageContent>
 	);
 };
