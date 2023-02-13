@@ -88,7 +88,13 @@ export const FormRegisterPetPersonalDetailsStep3 = () => {
 							label: 'Preferred contact method',
 							value: formState[2]?.contactMethod,
 						},
-					]}
+						formState[2]?.mobileNumber
+							? {
+									label: 'Mobile number',
+									value: formState[2].mobileNumber,
+							  }
+							: undefined,
+					].filter((x): x is NonNullable<typeof x> => Boolean(x))}
 				/>
 				<Button variant="text" onClick={() => goToStep(2)}>
 					Change contact method
