@@ -2,10 +2,9 @@ import { Box, Flex } from '@ag.ds-next/react/box';
 import { Select } from '@ag.ds-next/react/select';
 import { GetDataFilters, GetDataSort } from '../lib/data';
 import { DateRangePicker } from '@ag.ds-next/react/date-picker';
-import { SearchInput } from '@ag.ds-next/react/search-input';
 import { Button } from '@ag.ds-next/react/button';
-import { DashboardSortBySelect } from './DashboardSortBySelect';
 import { DashboardFilterStatus } from './DashboardFilterStatus';
+import { assignees } from '../lib/generateBusinessData';
 
 const VerticalDivider = () => <Box borderLeft borderColor="muted" />;
 
@@ -35,25 +34,6 @@ export const DashboardFilters = ({
 			border
 			borderColor="muted"
 		>
-			<DashboardSortBySelect
-				sort={sort}
-				setSort={setSort}
-				resetPagination={resetPagination}
-			/>
-			<VerticalDivider />
-			<SearchInput
-				label="Search Business name"
-				maxWidth="lg"
-				hideOptionalLabel
-				value={filters.businessName}
-				onChange={(searchString) => {
-					// debounce
-					setFilters({
-						...filters,
-						businessName: searchString,
-					});
-				}}
-			/>
 			<Select
 				label="State"
 				placeholder="All"
@@ -83,9 +63,27 @@ export const DashboardFilters = ({
 				setFilters={setFilters}
 				resetPagination={resetPagination}
 			/>
+			<Select
+				label="Assignee"
+				placeholder="All"
+				hideOptionalLabel
+				options={assignees.map((option) => ({
+					label: option,
+					value: option,
+				}))}
+				value={filters.assignee || ''}
+				onChange={(e) => {
+					const value = e.target.value;
+					resetPagination();
+					setFilters({
+						...filters,
+						assignee: value === '' ? undefined : value,
+					});
+				}}
+			/>
 			<DateRangePicker
-				fromLabel="Date registered from"
-				toLabel="Date registered to"
+				fromLabel="Registered from"
+				toLabel="Registered to"
 				onChange={(value) => {
 					resetPagination();
 					setFilters({

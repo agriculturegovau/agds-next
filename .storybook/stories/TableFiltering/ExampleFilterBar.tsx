@@ -1,15 +1,23 @@
-import { Stack } from '@ag.ds-next/react/box';
+import { Flex, Stack } from '@ag.ds-next/react/box';
+import { Button, ButtonLink } from '@ag.ds-next/react/button';
 import { PageContent } from '@ag.ds-next/react/content';
+import {
+	ChevronDownIcon,
+	ChevronUpIcon,
+	PlusIcon,
+} from '@ag.ds-next/react/icon';
 import { PaginationButtons } from '@ag.ds-next/react/pagination';
-import { Select } from '@ag.ds-next/react/select';
+import { useCallback, useState } from 'react';
 import { AppShell } from '../../components/ExampleShell';
 import { DashboardFilters } from './components/DashboardFilters';
+import { DashboardItemsPerPageSelect } from './components/DashboardItemsPerPageSelect';
 import { DashboardPageTitle } from './components/DashboardPageTitle';
+import { DashboardSortBySelect } from './components/DashboardSortBySelect';
 import { DashboardTable } from './components/DashboardTable';
 import { GetDataFilters, GetDataPagination, GetDataSort } from './lib/data';
 import { BusinessForAudit } from './lib/generateBusinessData';
 
-type ExamplePersistentFiltersProps = {
+type ExampleFilterBarProps = {
 	filters: GetDataFilters;
 	setFilters: (filters: GetDataFilters) => void;
 	sort: GetDataSort;
@@ -24,7 +32,7 @@ type ExamplePersistentFiltersProps = {
 	data: BusinessForAudit[];
 };
 
-export const ExamplePersistentFilters = ({
+export const ExampleFilterBar = ({
 	sort,
 	setSort,
 	filters,
@@ -37,20 +45,54 @@ export const ExamplePersistentFilters = ({
 	totalPages,
 	loading,
 	data,
-}: ExamplePersistentFiltersProps) => {
+}: ExampleFilterBarProps) => {
+	const [isOpen, setIsOpen] = useState(false);
+
+	const onButtonClick = useCallback(() => {
+		if (isOpen) {
+			setIsOpen(false);
+		} else {
+			setIsOpen(true);
+		}
+	}, [isOpen, open, close]);
+
 	return (
 		<AppShell>
 			<DashboardPageTitle />
 			<PageContent>
 				<Stack gap={2}>
-					<DashboardFilters
-						filters={filters}
-						sort={sort}
-						setFilters={setFilters}
-						setSort={setSort}
-						resetPagination={resetPagination}
-						resetFilters={resetFilters}
-					/>
+					<Flex gap={1} alignItems="flex-end">
+						<DashboardSortBySelect
+							sort={sort}
+							setSort={setSort}
+							resetPagination={resetPagination}
+						/>
+						<DashboardItemsPerPageSelect
+							pagination={pagination}
+							setPagination={setPagination}
+						/>
+						<Button
+							onClick={onButtonClick}
+							variant="secondary"
+							iconAfter={isOpen ? ChevronUpIcon : ChevronDownIcon}
+						>
+							{isOpen ? 'Hide filters' : 'Show filters'}
+						</Button>
+						<ButtonLink href="#new" iconBefore={PlusIcon}>
+							New item
+						</ButtonLink>
+					</Flex>
+
+					{isOpen && (
+						<DashboardFilters
+							filters={filters}
+							sort={sort}
+							setFilters={setFilters}
+							setSort={setSort}
+							resetPagination={resetPagination}
+							resetFilters={resetFilters}
+						/>
+					)}
 					<DashboardTable
 						data={data}
 						loading={loading}
@@ -63,23 +105,6 @@ export const ExamplePersistentFilters = ({
 								currentPage={pagination.page}
 								onChange={(page) => setPagination({ ...pagination, page })}
 								totalPages={totalPages}
-							/>
-							<Select
-								label="Items per page"
-								value={pagination.perPage}
-								onChange={(event) =>
-									setPagination({
-										...pagination,
-										perPage: parseInt(event.target.value),
-									})
-								}
-								hideOptionalLabel
-								options={[
-									{ label: '10', value: '10' },
-									{ label: '20', value: '20' },
-									{ label: '50', value: '50' },
-									{ label: '100', value: '100' },
-								]}
 							/>
 						</Stack>
 					) : null}

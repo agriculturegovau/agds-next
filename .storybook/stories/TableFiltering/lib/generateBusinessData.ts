@@ -7,6 +7,7 @@ export type BusinessForAuditStatus =
 	| 'cancelled';
 
 export type BusinessForAudit = {
+	assignee: string | undefined;
 	businessName: string;
 	id: string;
 	city: string;
@@ -139,11 +140,14 @@ const EXAMPLE_BUSINESSES: Partial<BusinessForAudit>[] = [
 	},
 ];
 
+export const assignees = ['Oscar Piastri', 'George Russell', 'Lando Norris'];
+
 export const generateBusinessData = (): BusinessForAudit[] => {
 	return Array.from({ length: 150 }).map((_, index) => {
 		const exampleAustralianBusiness = EXAMPLE_BUSINESSES[index] || {};
 		return {
 			id: faker.datatype.uuid(),
+			assignee: faker.helpers.arrayElement([...assignees, undefined]),
 			businessName: faker.company.name(),
 			city: faker.address.city(),
 			state: faker.helpers.arrayElement([

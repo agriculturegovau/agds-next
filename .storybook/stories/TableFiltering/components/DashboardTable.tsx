@@ -14,6 +14,28 @@ import { TextLink } from '@ag.ds-next/react/text-link';
 import { Text } from '@ag.ds-next/react/text';
 import { Fragment } from 'react';
 import { BusinessForAudit } from '../lib/generateBusinessData';
+import { Avatar } from '@ag.ds-next/react/avatar';
+import { Flex } from '@ag.ds-next/react/box';
+
+const DashboardTableRowAssignee = ({
+	assignee,
+}: {
+	/** The name of the assignee, if set */
+	assignee: string | undefined;
+}) => {
+	if (!assignee) {
+		return <TableCell>-</TableCell>;
+	}
+
+	return (
+		<TableCell>
+			<Flex alignItems="center" gap={0.25}>
+				<Avatar name={assignee} size="sm" />
+				<Text>{assignee}</Text>
+			</Flex>
+		</TableCell>
+	);
+};
 
 export const DashboardTable = ({
 	data,
@@ -38,12 +60,14 @@ export const DashboardTable = ({
 				}`}</TableCaption>
 				<TableHead>
 					<tr>
-						<TableHeader width="30%" scope="col">
+						<TableHeader width="25%" scope="col">
 							Business name
 						</TableHeader>
-						<TableHeader scope="col">City</TableHeader>
-						<TableHeader scope="col" width="10%">
-							State
+						<TableHeader scope="col" width="15%">
+							Assignee
+						</TableHeader>
+						<TableHeader scope="col" width="20%">
+							City
 						</TableHeader>
 						<TableHeader textAlign="right" scope="col" width="10%">
 							Employees
@@ -93,6 +117,7 @@ export const DashboardTable = ({
 							{data.map(
 								({
 									id,
+									assignee,
 									businessName,
 									city,
 									state,
@@ -105,8 +130,10 @@ export const DashboardTable = ({
 											<TableCell>
 												<TextLink href={`#${id}`}>{businessName}</TextLink>
 											</TableCell>
-											<TableCell>{city}</TableCell>
-											<TableCell>{state}</TableCell>
+											<DashboardTableRowAssignee assignee={assignee} />
+											<TableCell>
+												{city}, {state}
+											</TableCell>
 											<TableCell textAlign="right">
 												{numberOfEmployees}
 											</TableCell>
