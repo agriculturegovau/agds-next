@@ -160,11 +160,10 @@ export const FormExampleMultiStep = () => {
 		(idx: number) => {
 			if (idx === currentStep) return 'doing';
 			if (hasCompletedStep(idx)) return 'done';
-			if (idx in formState) return 'done';
 			if (idx === 0 || hasCompletedStep(idx - 1)) return 'todo';
 			return 'blocked';
 		},
-		[currentStep, formState, hasCompletedStep]
+		[currentStep, hasCompletedStep]
 	);
 
 	const FormStepComponent = FORM_STEPS[currentStep]?.component;
