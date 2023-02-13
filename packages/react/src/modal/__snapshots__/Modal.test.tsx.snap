@@ -19,7 +19,7 @@ exports[`Modal renders correctly 1`] = `
       <div
         aria-labelledby="modal-:r0:-title"
         aria-modal="true"
-        class="css-1rzg5w1-boxStyles-ModalPanel"
+        class="css-3106a6-boxStyles-ModalDialog"
         role="dialog"
         style="opacity: 0; transform: translate3d(0,20px,0);"
       >
@@ -41,7 +41,7 @@ exports[`Modal renders correctly 1`] = `
           </p>
         </div>
         <div
-          class="css-1i9i114-boxStyles-ModalPanel"
+          class="css-1kzq3kl-boxStyles-ModalDialog"
         >
           <button
             class="css-3jmmp1-BaseButton-Button"
@@ -61,7 +61,7 @@ exports[`Modal renders correctly 1`] = `
         </div>
         <button
           aria-label="Close modal"
-          class="css-1b8gcds-BaseButton-ModalPanel"
+          class="css-1tn8j9z-BaseButton-ModalDialog"
           type="button"
         >
           <span>

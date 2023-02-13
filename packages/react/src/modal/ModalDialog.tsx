@@ -8,7 +8,7 @@ import { Button } from '../button';
 import { ModalTitle } from './ModalTitle';
 import { useModalId } from './utils';
 
-export type ModalPanelProps = PropsWithChildren<{
+export type ModalDialogProps = PropsWithChildren<{
 	/** The actions to display at the bottom of the modal panel. Typically a `ButtonGroup`. */
 	actions?: ReactNode;
 	/** Function to be called when the modal is closed. */
@@ -19,12 +19,12 @@ export type ModalPanelProps = PropsWithChildren<{
 
 const AnimatedStack = animated(Stack);
 
-export const ModalPanel = ({
+export const ModalDialog = ({
 	actions,
 	children,
 	title,
 	onDismiss,
-}: ModalPanelProps) => {
+}: ModalDialogProps) => {
 	const { titleId } = useModalId();
 
 	const prefersReducedMotion = usePrefersReducedMotion();
@@ -46,7 +46,7 @@ export const ModalPanel = ({
 				padding={1.5}
 				paddingTop={4}
 				gap={1}
-				maxWidth={tokens.maxWidth.modalPanel}
+				maxWidth={tokens.maxWidth.modalDialog}
 				css={{
 					position: 'relative',
 					margin: '0 auto',
