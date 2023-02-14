@@ -28,6 +28,7 @@ export { HelpIcon } from './icons/HelpIcon';
 export { InfoIcon } from './icons/InfoIcon';
 export { InfoFilledIcon } from './icons/InfoFilledIcon';
 export { PrintIcon } from './icons/PrintIcon';
+export { PlusIcon } from './icons/PlusIcon';
 export { ProgressBlockedIcon } from './icons/ProgressBlockedIcon';
 export { ProgressDoingIcon } from './icons/ProgressDoingIcon';
 export { ExternalLinkIcon } from './icons/ExternalLinkIcon';

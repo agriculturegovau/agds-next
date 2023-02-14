@@ -20,6 +20,7 @@ import { ExternalLinkIcon } from './icons/ExternalLinkIcon';
 import { InfoIcon } from './icons/InfoIcon';
 import { FilterIcon } from './icons/FilterIcon';
 import { HelpIcon } from './icons/HelpIcon';
+import { PlusIcon } from './icons/PlusIcon';
 import { InfoFilledIcon } from './icons/InfoFilledIcon';
 import { MenuIcon } from './icons/MenuIcon';
 import { PrintIcon } from './icons/PrintIcon';
@@ -61,6 +62,7 @@ export const allIcons = {
 	InfoFilledIcon,
 	MenuIcon,
 	PrintIcon,
+	PlusIcon,
 	ProgressBlockedIcon,
 	ProgressDoingIcon,
 	ProgressTodoIcon,
