@@ -1,16 +1,7 @@
-const snippets = [
-	{
-		group: 'Boilerplate',
-		name: 'One',
-		code: `<Box dark><Header background="bodyAlt" logo={<Logo />} heading="Export Service" />
+const boilerplatePageTemplate = (content: string) => `
+	<Box dark><Header background="bodyAlt" logo={<Logo />} heading="Export Service" />
     <MainNav items={[{ label: "Home", href: "/" }]} secondaryItems={[{ label: 'Sign in', endElement: <AvatarIcon />}]} /></Box>
-    <PageContent as="main">
-      <Prose>
-        <h1>Page heading</h1>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque at arcu eleifend, varius enim non, eleifend nibh. Quisque ac lacinia elit. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Integer scelerisque at ligula tempor eleifend. Vestibulum volutpat, dolor eu rutrum consequat, libero justo lacinia tortor, id varius tortor ante sit amet nisl. Aenean at dui diam. Cras a ligula a ante aliquam lacinia. Ut dolor quam, gravida eu dui quis, molestie lacinia dolor. Fusce lacus mi, pharetra molestie tortor eu, finibus lacinia libero.</p>
-        <p>Suspendisse feugiat rhoncus magna eleifend aliquam. Morbi euismod ex convallis viverra eleifend. Nullam vel finibus libero. Maecenas leo sem, consectetur sit amet ipsum vel, commodo porttitor quam. Nullam libero nulla, cursus a turpis et, ullamcorper lobortis metus. Aliquam aliquam sodales malesuada. Phasellus sit amet libero ut nulla porta ornare. In elit lectus, iaculis et volutpat eget, tempor ornare eros. Interdum et malesuada fames ac ante ipsum primis in faucibus. Suspendisse sodales metus quis vulputate convallis. Morbi congue lectus eget massa finibus luctus. Pellentesque tempus dui vel auctor ullamcorper.</p>
-      </Prose>
-    </PageContent>
+		<PageContent as="main">${content}</PageContent>
     <Box dark><Footer background="bodyAlt">
     <nav aria-label="footer">
       <LinkList
@@ -23,8 +14,143 @@ const snippets = [
         ]}
       />
     </nav>
-    </Footer></Box>
-    `,
+    </Footer></Box>`;
+
+const snippets = [
+	{
+		group: 'Boilerplate',
+		name: 'Basic',
+		code: boilerplatePageTemplate(`
+		<Prose>
+      <h1>Page heading</h1>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque at arcu eleifend, varius enim non, eleifend nibh. Quisque ac lacinia elit. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Integer scelerisque at ligula tempor eleifend. Vestibulum volutpat, dolor eu rutrum consequat, libero justo lacinia tortor, id varius tortor ante sit amet nisl. Aenean at dui diam. Cras a ligula a ante aliquam lacinia. Ut dolor quam, gravida eu dui quis, molestie lacinia dolor. Fusce lacus mi, pharetra molestie tortor eu, finibus lacinia libero.</p>
+  		<p>Suspendisse feugiat rhoncus magna eleifend aliquam. Morbi euismod ex convallis viverra eleifend. Nullam vel finibus libero. Maecenas leo sem, consectetur sit amet ipsum vel, commodo porttitor quam. Nullam libero nulla, cursus a turpis et, ullamcorper lobortis metus. Aliquam aliquam sodales malesuada. Phasellus sit amet libero ut nulla porta ornare. In elit lectus, iaculis et volutpat eget, tempor ornare eros. Interdum et malesuada fames ac ante ipsum primis in faucibus. Suspendisse sodales metus quis vulputate convallis. Morbi congue lectus eget massa finibus luctus. Pellentesque tempus dui vel auctor ullamcorper.</p>
+		</Prose>`),
+	},
+	{
+		group: 'Boilerplate',
+		name: 'Single page form',
+		code: boilerplatePageTemplate(`
+		<Columns>
+			<Column columnSpan={{ xs: 12, md: 8 }}>
+				<Stack gap={3}>
+					<Breadcrumbs
+						links={[
+							{ href: '/', label: 'Home' },
+							{ href: '/category', label: 'Category 1' },
+							{
+								href: '/category/subcategory',
+								label: 'Subcategory page',
+							},
+							{ label: 'Single-page form' },
+						]}
+					/>
+					<Stack gap={1.5}>
+						<Stack>
+							<H1>Single-page form (multi-question) xxl/display (H1)</H1>
+						</Stack>
+						<Text as="p" fontSize="md" color="muted">
+							Introductory paragraph providing context for this single page of
+							the multi-step form. All questions on page must be related -
+							md/default (P)
+						</Text>
+					</Stack>
+					<Text fontSize="xs" color="muted">
+						All fields are required unless marked optional.
+					</Text>
+					<Stack gap={3}>
+						<Fieldset
+							legend={<H2>Business details (H2)</H2>}
+							hint="Supporting information for provide details subheading - sm/default"
+						>
+							<FormStack>
+								<TextInput
+									label="Australian Business Number (ABN)"
+									id="abn"
+									required
+									inputMode="numeric"
+									pattern="[0-9]*"
+								/>
+								<TextInput
+									label="Australian Company Number (ACN)"
+									id="acn"
+									required
+									inputMode="numeric"
+									pattern="[0-9]*"
+								/>
+								<TextInput
+									label="Business name"
+									id="businessName"
+									required
+									maxWidth="xl"
+								/>
+							</FormStack>
+						</Fieldset>
+						<Fieldset
+							legend={<H2>Provide entity details (H2)</H2>}
+							hint="Supporting information for provide details subheading - sm/default"
+						>
+							<FormStack>
+								<TextInput label="Entity name" id="entityName" required />
+								<TextInput
+									label="Entity number"
+									id="entityNumber"
+									required
+									inputMode="numeric"
+									pattern="[0-9]*"
+								/>
+							</FormStack>
+						</Fieldset>
+						<Fieldset legend={<H3>Street address (H3)</H3>}>
+							<FormStack>
+								<TextInput
+									label="Street address"
+									id="streetAddress"
+									required
+									maxWidth="xl"
+								/>
+								<TextInput
+									label="Suburb, town or city"
+									id="suburbTownCity"
+									required
+								/>
+								<Select
+									label="State or territory"
+									id="state"
+									placeholder="Select"
+									options={[
+										{ label: 'NSW', value: 'nsw' },
+										{ label: 'QLD', value: 'qld' },
+										{ label: 'ACT', value: 'act' },
+										{ label: 'VIC', value: 'vic' },
+										{ label: 'TAS', value: 'tas' },
+										{ label: 'NT', value: 'nt' },
+										{ label: 'SA', value: 'sa' },
+										{ label: 'WA', value: 'wa' },
+									]}
+									required
+									maxWidth="md"
+								/>
+								<TextInput
+									label="Postcode"
+									id="postcode"
+									maxWidth="sm"
+									inputMode="numeric"
+									pattern="[0-9]*"
+									required
+								/>
+							</FormStack>
+						</Fieldset>
+						<ButtonGroup>
+							<Button type="submit">Submit form</Button>
+							<Button type="button" variant="secondary">
+								Cancel
+							</Button>
+						</ButtonGroup>
+					</Stack>
+				</Stack>
+			</Column>
+		</Columns>`),
 	},
 	{
 		group: 'Prose',
@@ -33,7 +159,7 @@ const snippets = [
     <h1>Page heading</h1>
     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque at arcu eleifend, varius enim non, eleifend nibh. Quisque ac lacinia elit. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Integer scelerisque at ligula tempor eleifend. Vestibulum volutpat, dolor eu rutrum consequat, libero justo lacinia tortor, id varius tortor ante sit amet nisl. Aenean at dui diam. Cras a ligula a ante aliquam lacinia. Ut dolor quam, gravida eu dui quis, molestie lacinia dolor. Fusce lacus mi, pharetra molestie tortor eu, finibus lacinia libero.</p>
     <p>Suspendisse feugiat rhoncus magna eleifend aliquam. Morbi euismod ex convallis viverra eleifend. Nullam vel finibus libero. Maecenas leo sem, consectetur sit amet ipsum vel, commodo porttitor quam. Nullam libero nulla, cursus a turpis et, ullamcorper lobortis metus. Aliquam aliquam sodales malesuada. Phasellus sit amet libero ut nulla porta ornare. In elit lectus, iaculis et volutpat eget, tempor ornare eros. Interdum et malesuada fames ac ante ipsum primis in faucibus. Suspendisse sodales metus quis vulputate convallis. Morbi congue lectus eget massa finibus luctus. Pellentesque tempus dui vel auctor ullamcorper.</p>
-  </Prose>
+  	</Prose>
     `,
 	},
 	{
