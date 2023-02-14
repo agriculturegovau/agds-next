@@ -24,7 +24,7 @@ const formSchema = yup
 
 type FormSchema = yup.InferType<typeof formSchema>;
 
-export const SignInForm = () => {
+const SignInForm = () => {
 	const [isSubmitting, setIsSubmitting] = useState(false);
 	const networkErrorPageAlertRef = useRef<HTMLDivElement>(null);
 	const [networkErrorMessage, setNetworkErrorMessage] = useState<string>();

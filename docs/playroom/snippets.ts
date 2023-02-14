@@ -1,7 +1,7 @@
-const pageTemplate = (content: string) => `
+const boilerplatePageTemplate = (content: string) => `
 	<Box dark><Header background="bodyAlt" logo={<Logo />} heading="Export Service" />
     <MainNav items={[{ label: "Home", href: "/" }]} secondaryItems={[{ label: 'Sign in', endElement: <AvatarIcon />}]} /></Box>
-   ${content}
+		<PageContent as="main">${content}</PageContent>
     <Box dark><Footer background="bodyAlt">
     <nav aria-label="footer">
       <LinkList
@@ -20,18 +20,17 @@ const snippets = [
 	{
 		group: 'Boilerplate',
 		name: 'Basic',
-		code: pageTemplate(`<PageContent as="main">
-      <Prose>
-        <h1>Page heading</h1>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque at arcu eleifend, varius enim non, eleifend nibh. Quisque ac lacinia elit. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Integer scelerisque at ligula tempor eleifend. Vestibulum volutpat, dolor eu rutrum consequat, libero justo lacinia tortor, id varius tortor ante sit amet nisl. Aenean at dui diam. Cras a ligula a ante aliquam lacinia. Ut dolor quam, gravida eu dui quis, molestie lacinia dolor. Fusce lacus mi, pharetra molestie tortor eu, finibus lacinia libero.</p>
-        <p>Suspendisse feugiat rhoncus magna eleifend aliquam. Morbi euismod ex convallis viverra eleifend. Nullam vel finibus libero. Maecenas leo sem, consectetur sit amet ipsum vel, commodo porttitor quam. Nullam libero nulla, cursus a turpis et, ullamcorper lobortis metus. Aliquam aliquam sodales malesuada. Phasellus sit amet libero ut nulla porta ornare. In elit lectus, iaculis et volutpat eget, tempor ornare eros. Interdum et malesuada fames ac ante ipsum primis in faucibus. Suspendisse sodales metus quis vulputate convallis. Morbi congue lectus eget massa finibus luctus. Pellentesque tempus dui vel auctor ullamcorper.</p>
-      </Prose>
-    </PageContent>`),
+		code: boilerplatePageTemplate(`
+		<Prose>
+      <h1>Page heading</h1>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque at arcu eleifend, varius enim non, eleifend nibh. Quisque ac lacinia elit. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Integer scelerisque at ligula tempor eleifend. Vestibulum volutpat, dolor eu rutrum consequat, libero justo lacinia tortor, id varius tortor ante sit amet nisl. Aenean at dui diam. Cras a ligula a ante aliquam lacinia. Ut dolor quam, gravida eu dui quis, molestie lacinia dolor. Fusce lacus mi, pharetra molestie tortor eu, finibus lacinia libero.</p>
+  		<p>Suspendisse feugiat rhoncus magna eleifend aliquam. Morbi euismod ex convallis viverra eleifend. Nullam vel finibus libero. Maecenas leo sem, consectetur sit amet ipsum vel, commodo porttitor quam. Nullam libero nulla, cursus a turpis et, ullamcorper lobortis metus. Aliquam aliquam sodales malesuada. Phasellus sit amet libero ut nulla porta ornare. In elit lectus, iaculis et volutpat eget, tempor ornare eros. Interdum et malesuada fames ac ante ipsum primis in faucibus. Suspendisse sodales metus quis vulputate convallis. Morbi congue lectus eget massa finibus luctus. Pellentesque tempus dui vel auctor ullamcorper.</p>
+		</Prose>`),
 	},
 	{
 		group: 'Boilerplate',
 		name: 'Single page form',
-		code: pageTemplate(`<PageContent>
+		code: boilerplatePageTemplate(`
 		<Columns>
 			<Column columnSpan={{ xs: 12, md: 8 }}>
 				<Stack gap={3}>
@@ -59,7 +58,6 @@ const snippets = [
 					<Text fontSize="xs" color="muted">
 						All fields are required unless marked optional.
 					</Text>
-
 					<Stack gap={3}>
 						<Fieldset
 							legend={<H2>Business details (H2)</H2>}
@@ -152,8 +150,7 @@ const snippets = [
 					</Stack>
 				</Stack>
 			</Column>
-		</Columns>
-	</PageContent>`),
+		</Columns>`),
 	},
 	{
 		group: 'Prose',
@@ -162,7 +159,7 @@ const snippets = [
     <h1>Page heading</h1>
     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque at arcu eleifend, varius enim non, eleifend nibh. Quisque ac lacinia elit. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Integer scelerisque at ligula tempor eleifend. Vestibulum volutpat, dolor eu rutrum consequat, libero justo lacinia tortor, id varius tortor ante sit amet nisl. Aenean at dui diam. Cras a ligula a ante aliquam lacinia. Ut dolor quam, gravida eu dui quis, molestie lacinia dolor. Fusce lacus mi, pharetra molestie tortor eu, finibus lacinia libero.</p>
     <p>Suspendisse feugiat rhoncus magna eleifend aliquam. Morbi euismod ex convallis viverra eleifend. Nullam vel finibus libero. Maecenas leo sem, consectetur sit amet ipsum vel, commodo porttitor quam. Nullam libero nulla, cursus a turpis et, ullamcorper lobortis metus. Aliquam aliquam sodales malesuada. Phasellus sit amet libero ut nulla porta ornare. In elit lectus, iaculis et volutpat eget, tempor ornare eros. Interdum et malesuada fames ac ante ipsum primis in faucibus. Suspendisse sodales metus quis vulputate convallis. Morbi congue lectus eget massa finibus luctus. Pellentesque tempus dui vel auctor ullamcorper.</p>
-  </Prose>
+  	</Prose>
     `,
 	},
 	{
