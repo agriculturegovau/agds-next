@@ -1,6 +1,6 @@
 import { AppLayout } from '../components/AppLayout';
 import { DocumentTitle } from '../components/DocumentTitle';
-import { FormExampleSignInPage } from '../components/FormExampleSignIn';
+import { FormExampleSignInPage } from '../components/templates/FormExampleSignIn';
 
 export default function SignInFormPage() {
 	return (

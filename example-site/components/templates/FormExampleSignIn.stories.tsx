@@ -1,8 +1,8 @@
-import { AppShell } from '../../.storybook/components/ExampleShell';
+import { AppShell } from '../../../.storybook/components/ExampleShell';
 import { FormExampleSignInPage } from './FormExampleSignIn';
 
 export default {
-	title: 'Examples/Sign In Form',
+	title: 'Patterns/Sign In Form',
 };
 
 export const SignInForm = () => {

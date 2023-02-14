@@ -13,7 +13,7 @@ import { H2, H3 } from '@ag.ds-next/react/heading';
 import { TextInput } from '@ag.ds-next/react/text-input';
 import { PageAlert } from '@ag.ds-next/react/page-alert';
 import { useScrollToField } from '@ag.ds-next/react/field';
-import { FormDivider } from './FormDivider';
+import { FormDivider } from '../FormDivider';
 
 const formSchema = yup
 	.object({

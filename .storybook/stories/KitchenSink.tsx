@@ -65,7 +65,7 @@ import { Autocomplete } from '@ag.ds-next/react/src/autocomplete/Autocomplete';
 import { Combobox } from '@ag.ds-next/react/src/combobox';
 
 export default {
-	title: 'Examples/Kitchen sink',
+	title: 'Testing/Kitchen sink',
 };
 
 const sideNavItems = [

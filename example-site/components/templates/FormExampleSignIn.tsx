@@ -12,8 +12,8 @@ import { useScrollToField } from '@ag.ds-next/react/field';
 import { TextLink } from '@ag.ds-next/react/text-link';
 import { PageContent } from '@ag.ds-next/react/content';
 import { Column, Columns } from '@ag.ds-next/react/columns';
-import { PageTitle } from './PageTitle';
-import { FormDivider } from './FormDivider';
+import { PageTitle } from '../PageTitle';
+import { FormDivider } from '../FormDivider';
 
 const formSchema = yup
 	.object({

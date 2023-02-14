@@ -3,12 +3,12 @@ import { Breadcrumbs } from '@ag.ds-next/react/breadcrumbs';
 import { Column, Columns } from '@ag.ds-next/react/columns';
 import { PageContent } from '@ag.ds-next/react/content';
 import { Text } from '@ag.ds-next/react/text';
-import { AppShell } from '../../.storybook/components/ExampleShell';
+import { AppShell } from '../../../.storybook/components/ExampleShell';
+import { PageTitle } from '../PageTitle';
 import { FormExampleSinglePage } from './FormExampleSinglePage';
-import { PageTitle } from './PageTitle';
 
 export default {
-	title: 'Examples/Single Page Form',
+	title: 'Patterns/Single Page Form',
 };
 
 export const SinglePageForm = () => {
