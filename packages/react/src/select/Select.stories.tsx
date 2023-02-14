@@ -93,8 +93,24 @@ Block.args = {
 
 export const MaxWidths: ComponentStory<typeof Select> = (args) => (
 	<Stack gap={1}>
+		<Select
+			maxWidth="sm"
+			label="Items per page (sm)"
+			hideOptionalLabel={true}
+			options={[
+				{ value: '10', label: '10' },
+				{ value: '25', label: '25' },
+				{ value: '50', label: '50' },
+				{ value: '100', label: '100' },
+			]}
+		/>
 		{(['md', 'lg', 'xl'] as const).map((size) => (
-			<Select key={size} {...args} label={size} maxWidth={size} />
+			<Select
+				key={size}
+				{...args}
+				label={`What option? (${size})`}
+				maxWidth={size}
+			/>
 		))}
 	</Stack>
 );

@@ -34,7 +34,7 @@ type BaseSelectProps = {
 	value?: NativeSelectProps['value'];
 };
 
-type SelectMaxWidth = Extract<FieldMaxWidth, 'md' | 'lg' | 'xl'>;
+type SelectMaxWidth = Extract<FieldMaxWidth, 'sm' | 'md' | 'lg' | 'xl'>;
 
 export type SelectProps = BaseSelectProps & {
 	/** Describes the purpose of the field. */
