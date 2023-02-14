@@ -6,7 +6,7 @@ import { Text } from '@ag.ds-next/react/text';
 import { Columns, Column } from '@ag.ds-next/react/columns';
 import { AppLayout } from '../../../components/AppLayout';
 import { DocumentTitle } from '../../../components/DocumentTitle';
-import { FormExampleSinglePage } from '../../../components/FormExampleSinglePage';
+import { FormExampleSinglePage } from '../../../components/templates/FormExampleSinglePage';
 import { PageTitle } from '../../../components/PageTitle';
 
 export default function SinglePageFormPage() {
