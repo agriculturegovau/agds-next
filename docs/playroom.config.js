@@ -1,7 +1,7 @@
 module.exports = {
 	title: 'Agriculture Design System',
 	components: './playroom/components.tsx',
-	snippets: './playroom/snippets.ts',
+	snippets: './playroom/snippets.tsx',
 	outputPath: './public/playroom',
 	frameComponent: './playroom/frame.tsx',
 	typeScriptFiles: [

@@ -1,14 +1,14 @@
-import { AppShell } from '../../../.storybook/components/ExampleShell';
+import { PageTemplate } from '../../../.storybook/components/PageTemplate';
 import { HomePage } from './HomePage';
 
 export default {
-	title: 'Patterns/Home',
+	title: 'Templates/Home',
 };
 
 export const Home = () => {
 	return (
-		<AppShell>
+		<PageTemplate>
 			<HomePage />
-		</AppShell>
+		</PageTemplate>
 	);
 };

@@ -9,7 +9,7 @@ import { LinkList } from '@ag.ds-next/react/link-list';
 import { MainNav } from '@ag.ds-next/react/main-nav';
 import { Text } from '@ag.ds-next/react/text';
 
-export const AppShell = ({
+export const PageTemplate = ({
 	background,
 	children,
 }: {

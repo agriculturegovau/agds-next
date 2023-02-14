@@ -13,7 +13,12 @@ import { H2, H3 } from '@ag.ds-next/react/heading';
 import { TextInput } from '@ag.ds-next/react/text-input';
 import { PageAlert } from '@ag.ds-next/react/page-alert';
 import { useScrollToField } from '@ag.ds-next/react/field';
+import { PageContent } from '@ag.ds-next/react/content';
+import { Column, Columns } from '@ag.ds-next/react/columns';
+import { Breadcrumbs } from '@ag.ds-next/react/breadcrumbs';
+import { Text } from '@ag.ds-next/react/text';
 import { FormDivider } from '../FormDivider';
+import { PageTitle } from '../PageTitle';
 
 const formSchema = yup
 	.object({
@@ -54,11 +59,7 @@ const formSchema = yup
 
 type FormSchema = yup.InferType<typeof formSchema>;
 
-export const FormExampleSinglePage = ({
-	navigateToSuccessPage,
-}: {
-	navigateToSuccessPage: () => void;
-}) => {
+const SinglePageForm = ({ onSubmit: onSuccess }: { onSubmit: () => void }) => {
 	const [isSubmitting, setIsSubmitting] = useState(false);
 	const errorPageAlertRef = useRef<HTMLDivElement>(null);
 	const [hasFocusedErrorRef, setHasFocusedErrorRef] = useState(false);
@@ -80,7 +81,7 @@ export const FormExampleSinglePage = ({
 		console.log(data);
 		setTimeout(() => {
 			setIsSubmitting(false);
-			navigateToSuccessPage();
+			onSuccess();
 		}, 2000);
 	};
 
@@ -319,5 +320,43 @@ export const FormExampleSinglePage = ({
 				</ButtonGroup>
 			</Stack>
 		</form>
+	);
+};
+
+export const FormExampleSinglePage = ({
+	onSubmit,
+}: {
+	onSubmit: () => void;
+}) => {
+	return (
+		<PageContent>
+			<Columns>
+				<Column columnSpan={{ xs: 12, md: 8 }}>
+					<Stack gap={3}>
+						<Breadcrumbs
+							links={[
+								{ href: '/', label: 'Home' },
+								{ href: '/category', label: 'Category 1' },
+								{
+									href: '/category/subcategory',
+									label: 'Subcategory page',
+								},
+								{ label: 'Single-page form' },
+							]}
+						/>
+						<PageTitle
+							title="Single-page form (multi-question) xxl/display (H1)"
+							introduction="Introductory paragraph providing context for this single
+							page of the multi-step form. All questions on page must be
+							related - md/default (P)"
+						/>
+						<Text fontSize="xs" color="muted">
+							All fields are required unless marked optional.
+						</Text>
+						<SinglePageForm onSubmit={onSubmit} />
+					</Stack>
+				</Column>
+			</Columns>
+		</PageContent>
 	);
 };

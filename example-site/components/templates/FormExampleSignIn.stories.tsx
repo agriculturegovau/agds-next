@@ -1,14 +1,14 @@
-import { AppShell } from '../../../.storybook/components/ExampleShell';
+import { PageTemplate } from '../../../.storybook/components/PageTemplate';
 import { FormExampleSignInPage } from './FormExampleSignIn';
 
 export default {
-	title: 'Patterns/Sign In Form',
+	title: 'Templates/Sign In Form',
 };
 
 export const SignInForm = () => {
 	return (
-		<AppShell>
+		<PageTemplate>
 			<FormExampleSignInPage />
-		</AppShell>
+		</PageTemplate>
 	);
 };

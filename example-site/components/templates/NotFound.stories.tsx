@@ -1,15 +1,15 @@
-import { AppShell } from '../../../.storybook/components/ExampleShell';
+import { PageTemplate } from '../../../.storybook/components/PageTemplate';
 import { NotFound as NotFoundComponent } from './NotFound';
 
 export default {
-	title: 'Patterns/Not Found',
+	title: 'Templates/Not Found',
 	component: NotFoundComponent,
 };
 
 export const NotFound = () => {
 	return (
-		<AppShell>
+		<PageTemplate>
 			<NotFoundComponent />
-		</AppShell>
+		</PageTemplate>
 	);
 };

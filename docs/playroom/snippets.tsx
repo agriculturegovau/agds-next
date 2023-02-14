@@ -1,16 +1,7 @@
-const snippets = [
-	{
-		group: 'Boilerplate',
-		name: 'Basic',
-		code: `<Box dark><Header background="bodyAlt" logo={<Logo />} heading="Export Service" />
+const pageTemplate = (content: string) => `
+	<Box dark><Header background="bodyAlt" logo={<Logo />} heading="Export Service" />
     <MainNav items={[{ label: "Home", href: "/" }]} secondaryItems={[{ label: 'Sign in', endElement: <AvatarIcon />}]} /></Box>
-    <PageContent as="main">
-      <Prose>
-        <h1>Page heading</h1>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque at arcu eleifend, varius enim non, eleifend nibh. Quisque ac lacinia elit. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Integer scelerisque at ligula tempor eleifend. Vestibulum volutpat, dolor eu rutrum consequat, libero justo lacinia tortor, id varius tortor ante sit amet nisl. Aenean at dui diam. Cras a ligula a ante aliquam lacinia. Ut dolor quam, gravida eu dui quis, molestie lacinia dolor. Fusce lacus mi, pharetra molestie tortor eu, finibus lacinia libero.</p>
-        <p>Suspendisse feugiat rhoncus magna eleifend aliquam. Morbi euismod ex convallis viverra eleifend. Nullam vel finibus libero. Maecenas leo sem, consectetur sit amet ipsum vel, commodo porttitor quam. Nullam libero nulla, cursus a turpis et, ullamcorper lobortis metus. Aliquam aliquam sodales malesuada. Phasellus sit amet libero ut nulla porta ornare. In elit lectus, iaculis et volutpat eget, tempor ornare eros. Interdum et malesuada fames ac ante ipsum primis in faucibus. Suspendisse sodales metus quis vulputate convallis. Morbi congue lectus eget massa finibus luctus. Pellentesque tempus dui vel auctor ullamcorper.</p>
-      </Prose>
-    </PageContent>
+   ${content}
     <Box dark><Footer background="bodyAlt">
     <nav aria-label="footer">
       <LinkList
@@ -23,20 +14,24 @@ const snippets = [
         ]}
       />
     </nav>
-    </Footer></Box>
-    `,
+    </Footer></Box>`;
+
+const snippets = [
+	{
+		group: 'Boilerplate',
+		name: 'Basic',
+		code: pageTemplate(`<PageContent as="main">
+      <Prose>
+        <h1>Page heading</h1>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque at arcu eleifend, varius enim non, eleifend nibh. Quisque ac lacinia elit. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Integer scelerisque at ligula tempor eleifend. Vestibulum volutpat, dolor eu rutrum consequat, libero justo lacinia tortor, id varius tortor ante sit amet nisl. Aenean at dui diam. Cras a ligula a ante aliquam lacinia. Ut dolor quam, gravida eu dui quis, molestie lacinia dolor. Fusce lacus mi, pharetra molestie tortor eu, finibus lacinia libero.</p>
+        <p>Suspendisse feugiat rhoncus magna eleifend aliquam. Morbi euismod ex convallis viverra eleifend. Nullam vel finibus libero. Maecenas leo sem, consectetur sit amet ipsum vel, commodo porttitor quam. Nullam libero nulla, cursus a turpis et, ullamcorper lobortis metus. Aliquam aliquam sodales malesuada. Phasellus sit amet libero ut nulla porta ornare. In elit lectus, iaculis et volutpat eget, tempor ornare eros. Interdum et malesuada fames ac ante ipsum primis in faucibus. Suspendisse sodales metus quis vulputate convallis. Morbi congue lectus eget massa finibus luctus. Pellentesque tempus dui vel auctor ullamcorper.</p>
+      </Prose>
+    </PageContent>`),
 	},
 	{
 		group: 'Boilerplate',
 		name: 'Single page form',
-		code: `<Box dark>
-		<Header background="bodyAlt" logo={<Logo />} heading="Export Service" />
-		<MainNav
-			items={[{ label: 'Home', href: '/' }]}
-			secondaryItems={[{ label: 'Sign in', endElement: <AvatarIcon /> }]}
-		/>
-	</Box>
-	<PageContent>
+		code: pageTemplate(`<PageContent>
 		<Columns>
 			<Column columnSpan={{ xs: 12, md: 8 }}>
 				<Stack gap={3}>
@@ -158,22 +153,7 @@ const snippets = [
 				</Stack>
 			</Column>
 		</Columns>
-	</PageContent>
-	<Box dark>
-		<Footer background="bodyAlt">
-			<nav aria-label="footer">
-				<LinkList
-					horizontal
-					links={[
-						{ href: '#', label: 'Home' },
-						{ href: '#', label: 'Terms and conditions' },
-						{ href: '#', label: 'Privacy policy' },
-						{ href: '#', label: 'A really long link title' },
-					]}
-				/>
-			</nav>
-		</Footer>
-	</Box>`,
+	</PageContent>`),
 	},
 	{
 		group: 'Prose',
