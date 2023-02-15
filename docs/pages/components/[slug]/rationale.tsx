@@ -26,9 +26,15 @@ export default function PackagesRationale({
 				pkg={pkg}
 				navLinks={navLinks}
 				breadcrumbs={breadcrumbs}
+				skipLinks={[
+					{
+						label: `Skip to ${pkg.title} rationale`,
+						href: '#pkg-content',
+					},
+				]}
 				editPath={`/packages/${pkg.slug}/docs/rationale.mdx`}
 			>
-				<Prose>
+				<Prose id="pkg-content">
 					<MDXRemote {...content} components={mdxComponents} />
 				</Prose>
 			</PkgLayout>

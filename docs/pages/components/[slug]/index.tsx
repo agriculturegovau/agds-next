@@ -26,9 +26,15 @@ export default function Packages({
 				pkg={pkg}
 				navLinks={navLinks}
 				breadcrumbs={breadcrumbs}
+				skipLinks={[
+					{
+						label: `Skip to ${pkg.title} overview`,
+						href: '#pkg-content',
+					},
+				]}
 				editPath={`/packages/${pkg.slug}/docs/overview.mdx`}
 			>
-				<Prose>
+				<Prose id="pkg-content">
 					<MDXRemote {...content} components={mdxComponents} />
 				</Prose>
 			</PkgLayout>
