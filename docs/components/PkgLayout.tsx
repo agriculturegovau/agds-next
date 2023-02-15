@@ -3,7 +3,6 @@ import { useRouter } from 'next/router';
 import { ButtonLink } from '@ag.ds-next/react/button';
 import { Flex } from '@ag.ds-next/react/box';
 import { Prose } from '@ag.ds-next/react/prose';
-import { SkipLinks, SkipLinksProps } from '@ag.ds-next/react/skip-link';
 import { SubNav } from '@ag.ds-next/react/sub-nav';
 import { getPkgBreadcrumbs, getPkgNavLinks, Pkg } from '../lib/mdx/packages';
 import { PageTitle } from './PageTitle';
@@ -22,7 +21,6 @@ export function PkgLayout({
 	pkg: Pkg;
 	navLinks: Awaited<ReturnType<typeof getPkgNavLinks>>;
 	breadcrumbs: Awaited<ReturnType<typeof getPkgBreadcrumbs>>;
-	skipLinks?: SkipLinksProps['links'];
 	editPath?: string;
 }>) {
 	const { asPath } = useRouter();
