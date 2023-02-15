@@ -3,6 +3,7 @@ import { DecoratorFn } from '@storybook/react';
 import { Box } from '@ag.ds-next/react/box';
 import { Core } from '@ag.ds-next/react/core';
 import { theme as agriculture } from '@ag.ds-next/react/ag-branding';
+import { LinkComponent } from './components/LinkComponent';
 
 function makeViewports() {
 	const viewports = [
@@ -102,7 +103,7 @@ const withBrandTheme: DecoratorFn = (Story, context) => {
 	const theme = getTheme(context.globals.brand);
 	const palette = context.globals.palette;
 	return (
-		<Core theme={theme}>
+		<Core theme={theme} linkComponent={LinkComponent}>
 			<Box
 				width="100%"
 				minHeight="100vh"

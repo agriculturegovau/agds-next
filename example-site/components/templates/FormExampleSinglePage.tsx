@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import { useRouter } from 'next/router';
 import { useForm, SubmitHandler, SubmitErrorHandler } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
@@ -59,7 +60,8 @@ const formSchema = yup
 
 type FormSchema = yup.InferType<typeof formSchema>;
 
-const SinglePageForm = ({ onSubmit: onSuccess }: { onSubmit: () => void }) => {
+const SinglePageForm = () => {
+	const router = useRouter();
 	const [isSubmitting, setIsSubmitting] = useState(false);
 	const errorPageAlertRef = useRef<HTMLDivElement>(null);
 	const [hasFocusedErrorRef, setHasFocusedErrorRef] = useState(false);
@@ -81,7 +83,7 @@ const SinglePageForm = ({ onSubmit: onSuccess }: { onSubmit: () => void }) => {
 		console.log(data);
 		setTimeout(() => {
 			setIsSubmitting(false);
-			onSuccess();
+			router.push('single-page-form-success');
 		}, 2000);
 	};
 
@@ -323,11 +325,7 @@ const SinglePageForm = ({ onSubmit: onSuccess }: { onSubmit: () => void }) => {
 	);
 };
 
-export const FormExampleSinglePage = ({
-	onSubmit,
-}: {
-	onSubmit: () => void;
-}) => {
+export const FormExampleSinglePage = () => {
 	return (
 		<PageContent>
 			<Columns>
@@ -353,7 +351,7 @@ export const FormExampleSinglePage = ({
 						<Text fontSize="xs" color="muted">
 							All fields are required unless marked optional.
 						</Text>
-						<SinglePageForm onSubmit={onSubmit} />
+						<SinglePageForm />
 					</Stack>
 				</Column>
 			</Columns>

@@ -9,9 +9,7 @@ export default {
 export const FormPage = () => {
 	return (
 		<PageTemplate>
-			<FormExampleSinglePage
-				onSubmit={() => console.log('navigate to success page')}
-			/>
+			<FormExampleSinglePage />
 		</PageTemplate>
 	);
 };
