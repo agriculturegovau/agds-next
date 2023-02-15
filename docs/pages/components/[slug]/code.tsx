@@ -28,15 +28,9 @@ export default function PackagesCode({
 					pkg={pkg}
 					navLinks={navLinks}
 					breadcrumbs={breadcrumbs}
-					skipLinks={[
-						{
-							label: `Skip to ${pkg.title} code`,
-							href: '#pkg-content',
-						},
-					]}
 					editPath={`/packages/${pkg.slug}/docs/code.mdx`}
 				>
-					<Prose id="pkg-content">
+					<Prose>
 						<h2>Usage</h2>
 						<p>
 							{pkg.title} components can be imported via the{' '}

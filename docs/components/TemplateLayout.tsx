@@ -1,7 +1,6 @@
 import { PropsWithChildren } from 'react';
 import { Flex } from '@ag.ds-next/react/box';
 import { SideNavProps } from '@ag.ds-next/react/side-nav';
-import { SkipLinksProps } from '@ag.ds-next/react/skip-link';
 import { ButtonLink } from '@ag.ds-next/react/button';
 import { CallToActionLink } from '@ag.ds-next/react/call-to-action';
 import type { Template, getTemplateBreadcrumbs } from '../lib/mdx/templates';
@@ -15,7 +14,6 @@ import { StorybookLogo } from './StorybookLogo';
 type TemplateLayoutProps = PropsWithChildren<{
 	breadcrumbs: Awaited<ReturnType<typeof getTemplateBreadcrumbs>>;
 	editPath: string;
-	skipLinks?: SkipLinksProps['links'];
 	template: Template;
 	navLinks: SideNavProps['items'];
 }>;
@@ -23,7 +21,6 @@ type TemplateLayoutProps = PropsWithChildren<{
 export const TemplateLayout = ({
 	breadcrumbs,
 	editPath,
-	skipLinks,
 	children,
 	navLinks,
 	template,
@@ -38,7 +35,6 @@ export const TemplateLayout = ({
 				}}
 				editPath={editPath}
 				breadcrumbs={breadcrumbs}
-				skipLinks={skipLinks}
 			>
 				<PageTitle
 					pretext={`v${template.version}`}

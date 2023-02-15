@@ -28,15 +28,9 @@ export default function PackagesAccessibility({
 					pkg={pkg}
 					navLinks={navLinks}
 					breadcrumbs={breadcrumbs}
-					skipLinks={[
-						{
-							label: `Skip to ${pkg.title} accessibility`,
-							href: '#pkg-content',
-						},
-					]}
 					editPath={`/packages/${pkg.slug}/docs/accessibility.mdx`}
 				>
-					<Prose id="pkg-content">
+					<Prose>
 						<MDXRemote {...content} components={mdxComponents} />
 					</Prose>
 				</PkgLayout>

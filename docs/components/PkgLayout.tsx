@@ -3,7 +3,7 @@ import { useRouter } from 'next/router';
 import { ButtonLink } from '@ag.ds-next/react/button';
 import { Flex } from '@ag.ds-next/react/box';
 import { Prose } from '@ag.ds-next/react/prose';
-import { SkipLinksProps } from '@ag.ds-next/react/skip-link';
+import { SkipLinks, SkipLinksProps } from '@ag.ds-next/react/skip-link';
 import { SubNav } from '@ag.ds-next/react/sub-nav';
 import { getPkgBreadcrumbs, getPkgNavLinks, Pkg } from '../lib/mdx/packages';
 import { PageTitle } from './PageTitle';
@@ -17,7 +17,6 @@ export function PkgLayout({
 	pkg,
 	navLinks,
 	breadcrumbs,
-	skipLinks,
 	editPath,
 }: PropsWithChildren<{
 	pkg: Pkg;
@@ -36,7 +35,6 @@ export function PkgLayout({
 			}}
 			editPath={editPath}
 			breadcrumbs={breadcrumbs}
-			skipLinks={skipLinks}
 		>
 			<PageTitle
 				pretext={`v${pkg.version}`}
@@ -68,7 +66,6 @@ export function PkgLayout({
 									View in Storybook
 								</ButtonLink>
 							)}
-
 							<ButtonLink
 								variant="text"
 								href={`https://github.com/steelthreads/agds-next/tree/main/packages/react/src/${pkg.slug}`}

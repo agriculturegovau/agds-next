@@ -19,7 +19,15 @@ export const AppLayout = ({ children }: AppLayoutProps) => {
 			/>
 			<Flex flexDirection="column" fontFamily="body" minHeight="100vh">
 				<SiteHeader />
-				<Box flexGrow={1}>{children}</Box>
+				<Box
+					as="main"
+					id="main-content"
+					tabIndex={-1}
+					css={{ '&:focus': { outline: 'none' } }}
+					flexGrow={1}
+				>
+					{children}
+				</Box>
 				<SiteFooter />
 			</Flex>
 		</>
