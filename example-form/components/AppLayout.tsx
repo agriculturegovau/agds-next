@@ -31,9 +31,9 @@ export const AppLayout = ({
 				<Box
 					as="main"
 					id="main-content"
-					flexGrow={1}
 					tabIndex={-1}
 					css={{ '&:focus': { outline: 'none' } }}
+					flexGrow={1}
 				>
 					{children}
 				</Box>
