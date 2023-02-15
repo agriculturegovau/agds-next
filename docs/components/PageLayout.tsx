@@ -28,54 +28,42 @@ export function PageLayout({
 }>) {
 	const router = useRouter();
 	return (
-		<>
-			{sideNav && (
-				<SkipLinks
-					links={[
-						{
-							href: '#page-content',
-							label: `Skip to page content`,
-						},
-					]}
-				/>
-			)}
-			<PageContent>
-				<Columns>
-					{sideNav && (
-						<Column columnSpan={{ xs: 12, md: 4, lg: 3 }}>
-							<ContentBleed visible={{ md: false }}>
-								<SideNav
-									collapseTitle="In this section"
-									activePath={router.asPath}
-									title={sideNav.title}
-									titleLink={sideNav.titleLink}
-									items={sideNav.items}
-								/>
-							</ContentBleed>
-						</Column>
-					)}
-					<Column
-						{...(applyMainContentId && {
-							id: 'main-content',
-							tabIndex: -1,
-							css: { '&:focus': { outline: 'none' } },
-						})}
-						columnSpan={{ xs: 12, md: 8 }}
-						columnStart={{ lg: sideNav ? 5 : 1 }}
-					>
-						{skipLinks?.length ? <SkipLinks links={skipLinks} /> : null}
-						<Stack flexGrow={1} gap={3}>
-							{breadcrumbs?.length ? <Breadcrumbs links={breadcrumbs} /> : null}
-							{children}
-							{editPath && (
-								<Flex justifyContent="flex-start">
-									<EditPage path={editPath} />
-								</Flex>
-							)}
-						</Stack>
+		<PageContent>
+			<Columns>
+				{sideNav && (
+					<Column columnSpan={{ xs: 12, md: 4, lg: 3 }}>
+						<ContentBleed visible={{ md: false }}>
+							<SideNav
+								collapseTitle="In this section"
+								activePath={router.asPath}
+								title={sideNav.title}
+								titleLink={sideNav.titleLink}
+								items={sideNav.items}
+							/>
+						</ContentBleed>
 					</Column>
-				</Columns>
-			</PageContent>
-		</>
+				)}
+				<Column
+					{...(applyMainContentId && {
+						id: 'main-content',
+						tabIndex: -1,
+						css: { '&:focus': { outline: 'none' } },
+					})}
+					columnSpan={{ xs: 12, md: 8 }}
+					columnStart={{ lg: sideNav ? 5 : 1 }}
+				>
+					{skipLinks?.length ? <SkipLinks links={skipLinks} /> : null}
+					<Stack flexGrow={1} gap={3}>
+						{breadcrumbs?.length ? <Breadcrumbs links={breadcrumbs} /> : null}
+						{children}
+						{editPath && (
+							<Flex justifyContent="flex-start">
+								<EditPage path={editPath} />
+							</Flex>
+						)}
+					</Stack>
+				</Column>
+			</Columns>
+		</PageContent>
 	);
 }

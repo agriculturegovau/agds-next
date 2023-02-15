@@ -22,6 +22,7 @@ export const TokenLayout = ({
 	return (
 		<AppLayout applyMainContentId={false}>
 			<PageLayout
+				applyMainContentId={true}
 				sideNav={{
 					title: 'Tokens',
 					titleLink: '/foundations/tokens',

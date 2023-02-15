@@ -10,7 +10,6 @@ import {
 	getPkgDocsContent,
 } from '../../../lib/mdx/packages';
 import { mdxComponents } from '../../../components/mdxComponents';
-import { AppLayout } from '../../../components/AppLayout';
 import { DocumentTitle } from '../../../components/DocumentTitle';
 import { PkgLayout } from '../../../components/PkgLayout';
 
@@ -23,18 +22,16 @@ export default function PackagesRationale({
 	return (
 		<>
 			<DocumentTitle title={`${pkg.title} Rationale`} />
-			<AppLayout applyMainContentId={false}>
-				<PkgLayout
-					pkg={pkg}
-					navLinks={navLinks}
-					breadcrumbs={breadcrumbs}
-					editPath={`/packages/${pkg.slug}/docs/rationale.mdx`}
-				>
-					<Prose>
-						<MDXRemote {...content} components={mdxComponents} />
-					</Prose>
-				</PkgLayout>
-			</AppLayout>
+			<PkgLayout
+				pkg={pkg}
+				navLinks={navLinks}
+				breadcrumbs={breadcrumbs}
+				editPath={`/packages/${pkg.slug}/docs/rationale.mdx`}
+			>
+				<Prose>
+					<MDXRemote {...content} components={mdxComponents} />
+				</Prose>
+			</PkgLayout>
 		</>
 	);
 }
