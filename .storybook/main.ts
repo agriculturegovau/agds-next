@@ -6,6 +6,7 @@ const config: StorybookConfig = {
 		{ name: '@storybook/addon-essentials', options: { backgrounds: false } },
 		'@storybook/addon-a11y',
 		'@storybook/addon-postcss',
+		'storybook-addon-next-router',
 	],
 	core: {
 		builder: 'webpack5',

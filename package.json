@@ -97,5 +97,8 @@
 		"packages": [
 			"packages/*"
 		]
+	},
+	"dependencies": {
+		"storybook-addon-next-router": "^4.0.2"
 	}
 }
