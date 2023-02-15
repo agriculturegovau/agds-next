@@ -3,6 +3,9 @@ import { NotFound as NotFoundComponent } from './NotFound';
 
 export default {
 	title: 'Templates/NotFound',
+	parameters: {
+		layout: 'fullscreen',
+	},
 };
 
 export const NotFound = () => {

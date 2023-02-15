@@ -4,6 +4,9 @@ import { SinglePageFormSuccess } from './SinglePageFormSuccess';
 
 export default {
 	title: 'Templates/Single-page Form',
+	parameters: {
+		layout: 'fullscreen',
+	},
 };
 
 export const FormPage = () => {

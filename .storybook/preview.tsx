@@ -4,6 +4,7 @@ import { Box } from '@ag.ds-next/react/box';
 import { Core } from '@ag.ds-next/react/core';
 import { theme as agriculture } from '@ag.ds-next/react/ag-branding';
 import { LinkComponent } from './components/LinkComponent';
+import { Fragment } from 'react';
 
 function makeViewports() {
 	const viewports = [
@@ -83,7 +84,6 @@ export const globalTypes = {
 };
 
 export const parameters = {
-	layout: 'fullscreen',
 	actions: { argTypesRegex: '^on[A-Z].*' },
 	controls: {
 		matchers: {
@@ -103,17 +103,13 @@ const withBrandTheme: DecoratorFn = (Story, context) => {
 	const theme = getTheme(context.globals.brand);
 	const palette = context.globals.palette;
 	return (
-		<Core theme={theme} linkComponent={LinkComponent}>
-			<Box
-				width="100%"
-				minHeight="100vh"
-				padding={1}
-				palette={palette}
-				background="body"
-			>
-				<Story />
-			</Box>
-		</Core>
+		<Fragment>
+			<Core theme={theme} linkComponent={LinkComponent}>
+				<Box width="100%" minHeight="100vh" palette={palette} background="body">
+					<Story />
+				</Box>
+			</Core>
+		</Fragment>
 	);
 };
 

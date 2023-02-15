@@ -12,6 +12,9 @@ import { VisuallyHidden } from '@ag.ds-next/react/a11y';
 
 export default {
 	title: 'Patterns/Remote data',
+	parameters: {
+		layout: 'fullscreen',
+	},
 };
 
 const fetcher = async (url: string) => {

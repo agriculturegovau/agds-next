@@ -5,6 +5,9 @@ import { MultiPageFormSuccess } from './MultiPageFormSuccess';
 
 export default {
 	title: 'Templates/Multi-page Form',
+	parameters: {
+		layout: 'fullscreen',
+	},
 };
 
 export const IntroPage = () => {
