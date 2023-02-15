@@ -10,7 +10,7 @@ import { FormHelpCallout } from '../FormHelpCallout';
 import { PageTitle } from '../PageTitle';
 import { FormDivider } from '../FormDivider';
 
-export function MultiPageFormHome() {
+export function MultiPageFormIntro() {
 	return (
 		<PageContent>
 			<Columns>

@@ -1,17 +1,16 @@
 import { PageTemplate } from '../../../.storybook/components/PageTemplate';
 import { FormExampleMultiStep } from '../FormExampleMultiStep/FormExampleMultiStep';
-import { MultiPageFormHome } from './MultiPageFormHome';
-// import { FormExampleSinglePage } from './FormExampleSinglePage';
+import { MultiPageFormIntro } from './MultiPageFormIntro';
 import { MultiPageFormSuccess } from './MultiPageFormSuccess';
 
 export default {
 	title: 'Templates/Multi-page Form',
 };
 
-export const HomePage = () => {
+export const IntroPage = () => {
 	return (
 		<PageTemplate>
-			<MultiPageFormHome />
+			<MultiPageFormIntro />
 		</PageTemplate>
 	);
 };

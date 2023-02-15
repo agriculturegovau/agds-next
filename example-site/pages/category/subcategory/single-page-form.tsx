@@ -1,6 +1,6 @@
 import { AppLayout } from '../../../components/AppLayout';
 import { DocumentTitle } from '../../../components/DocumentTitle';
-import { FormExampleSinglePage } from '../../../components/templates/FormExampleSinglePage';
+import { FormExampleSinglePage } from '../../../components/templates/SinglePageForm';
 
 export default function SinglePageFormPage() {
 	return (

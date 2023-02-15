@@ -1,6 +1,6 @@
 import { AppLayout } from '../../../../components/AppLayout';
 import { DocumentTitle } from '../../../../components/DocumentTitle';
-import { MultiPageFormHome } from '../../../../components/templates/MultiPageFormHome';
+import { MultiPageFormIntro } from '../../../../components/templates/MultiPageFormIntro';
 
 export default function FormMultiPageHomePage() {
 	return (
@@ -9,7 +9,7 @@ export default function FormMultiPageHomePage() {
 			<AppLayout
 				template={{ name: 'Multi-page form', slug: 'multi-page-form' }}
 			>
-				<MultiPageFormHome />
+				<MultiPageFormIntro />
 			</AppLayout>
 		</>
 	);

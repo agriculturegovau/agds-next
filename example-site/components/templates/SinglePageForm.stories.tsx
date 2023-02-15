@@ -1,9 +1,9 @@
 import { PageTemplate } from '../../../.storybook/components/PageTemplate';
-import { FormExampleSinglePage } from './FormExampleSinglePage';
-import { SinglePageFormSuccess } from './SinglePageFormSucces';
+import { FormExampleSinglePage } from './SinglePageForm';
+import { SinglePageFormSuccess } from './SinglePageFormSuccess';
 
 export default {
-	title: 'Templates/Single Page Form',
+	title: 'Templates/Single-page Form',
 };
 
 export const FormPage = () => {
