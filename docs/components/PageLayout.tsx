@@ -8,24 +8,31 @@ import { SkipLinks, SkipLinksProps } from '@ag.ds-next/react/skip-link';
 import { Breadcrumbs, BreadcrumbsProps } from '@ag.ds-next/react/breadcrumbs';
 import { EditPage } from './EditPage';
 
-export function PageLayout({
-	applyMainContentId = true,
-	sideNav,
-	editPath,
-	skipLinks,
-	breadcrumbs,
-	children,
-}: PropsWithChildren<{
+type PageLayoutProps = PropsWithChildren<{
+	/** If true, the `main` element will have the id of 'main-content' applied. Used for skip links. */
 	applyMainContentId?: boolean;
+	/** The breadcrumbs to render at the top of the page. */
+	breadcrumbs?: BreadcrumbsProps['links'];
+	/** Path to the file containing the content for the page. Used for 'Edit this page' link. */
+	editPath?: string;
+	/** Configuration for the `SideNav` component. */
 	sideNav?: {
 		title: string;
 		titleLink: string;
 		items: ComponentProps<typeof SideNav>['items'];
 	};
-	breadcrumbs?: BreadcrumbsProps['links'];
+	/** The skip links to render. */
 	skipLinks?: SkipLinksProps['links'];
-	editPath?: string;
-}>) {
+}>;
+
+export function PageLayout({
+	applyMainContentId = false,
+	breadcrumbs,
+	children,
+	editPath,
+	sideNav,
+	skipLinks,
+}: PageLayoutProps) {
 	const router = useRouter();
 	return (
 		<PageContent>

@@ -33,6 +33,9 @@ export function Content({ sideNav = true }: { sideNav?: boolean }) {
 					</Column>
 				)}
 				<Column
+					id="main-content"
+					tabIndex={-1}
+					css={{ '&:focus': { outline: 'none' } }}
 					columnSpan={{ xs: 12, md: 8 }}
 					columnStart={sideNav ? { lg: 5 } : undefined}
 				>

@@ -41,7 +41,9 @@ export const PageTemplate = ({
 					]}
 				/>
 			</Stack>
-			{children}
+			<Box as="main" flexGrow={1}>
+				{children}
+			</Box>
 			<Box palette="dark">
 				<Footer background="bodyAlt">
 					<nav aria-label="footer">

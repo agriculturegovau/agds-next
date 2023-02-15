@@ -1,13 +1,13 @@
-import { ReactNode } from 'react';
+import { PropsWithChildren } from 'react';
 import { Box, Flex } from '@ag.ds-next/react/box';
 import { SkipLinks } from '@ag.ds-next/react/skip-link';
 import { SiteHeader } from './SiteHeader';
 import { SiteFooter } from './SiteFooter';
 
-type AppLayoutProps = {
+type AppLayoutProps = PropsWithChildren<{
+	/** If true, the `main` element will have the id of 'main-content' applied. Used for skip links. */
 	applyMainContentId?: boolean;
-	children?: ReactNode;
-};
+}>;
 
 export const AppLayout = ({
 	applyMainContentId = true,
