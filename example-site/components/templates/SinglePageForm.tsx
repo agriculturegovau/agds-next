@@ -325,7 +325,7 @@ const SinglePageForm = () => {
 	);
 };
 
-export const FormExampleSinglePage = () => {
+export const SinglePageFormPage = () => {
 	return (
 		<PageContent>
 			<Columns>

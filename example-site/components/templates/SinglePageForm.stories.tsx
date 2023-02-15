@@ -1,5 +1,5 @@
 import { PageTemplate } from '../../../.storybook/components/PageTemplate';
-import { FormExampleSinglePage } from './SinglePageForm';
+import { SinglePageFormPage } from './SinglePageForm';
 import { SinglePageFormSuccess } from './SinglePageFormSuccess';
 
 export default {
@@ -9,7 +9,7 @@ export default {
 export const FormPage = () => {
 	return (
 		<PageTemplate>
-			<FormExampleSinglePage />
+			<SinglePageFormPage />
 		</PageTemplate>
 	);
 };

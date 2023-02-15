@@ -1,6 +1,6 @@
 import { AppLayout } from '../../../components/AppLayout';
 import { DocumentTitle } from '../../../components/DocumentTitle';
-import { SinglePageForm } from '../../../components/templates/FormExampleSinglePage.stories';
+import { SinglePageFormSuccess } from '../../../components/templates/SinglePageFormSuccess';
 
 export default function SinglePageFormSuccessPage() {
 	return (
@@ -9,7 +9,7 @@ export default function SinglePageFormSuccessPage() {
 			<AppLayout
 				template={{ name: 'Single-page form', slug: 'single-page-form' }}
 			>
-				<SinglePageForm />
+				<SinglePageFormSuccess />
 			</AppLayout>
 		</>
 	);

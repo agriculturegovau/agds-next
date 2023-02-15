@@ -1,15 +1,15 @@
 import { AppLayout } from '../../../components/AppLayout';
 import { DocumentTitle } from '../../../components/DocumentTitle';
-import { FormExampleSinglePage } from '../../../components/templates/SinglePageForm';
+import { SinglePageFormPage } from '../../../components/templates/SinglePageForm';
 
-export default function SinglePageFormPage() {
+export default function SinglePageForm() {
 	return (
 		<>
 			<DocumentTitle title="Single-page form example" />
 			<AppLayout
 				template={{ name: 'Single-page form', slug: 'single-page-form' }}
 			>
-				<FormExampleSinglePage />
+				<SinglePageFormPage />
 			</AppLayout>
 		</>
 	);
