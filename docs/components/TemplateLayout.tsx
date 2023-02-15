@@ -26,7 +26,7 @@ export const TemplateLayout = ({
 	template,
 }: TemplateLayoutProps) => {
 	return (
-		<AppLayout>
+		<AppLayout applyMainContentId={false}>
 			<PageLayout
 				sideNav={{
 					title: 'Templates',

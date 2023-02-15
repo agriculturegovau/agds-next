@@ -23,7 +23,7 @@ export default function PackagesRationale({
 	return (
 		<>
 			<DocumentTitle title={`${pkg.title} Rationale`} />
-			<AppLayout>
+			<AppLayout applyMainContentId={false}>
 				<PkgLayout
 					pkg={pkg}
 					navLinks={navLinks}

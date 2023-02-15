@@ -23,7 +23,7 @@ export default function Packages({
 	return (
 		<>
 			<DocumentTitle title={pkg.title} description={pkg.description} />
-			<AppLayout>
+			<AppLayout applyMainContentId={false}>
 				<PkgLayout
 					pkg={pkg}
 					navLinks={navLinks}

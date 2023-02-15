@@ -5,10 +5,14 @@ import { SiteHeader } from './SiteHeader';
 import { SiteFooter } from './SiteFooter';
 
 type AppLayoutProps = {
+	applyMainContentId?: boolean;
 	children?: ReactNode;
 };
 
-export const AppLayout = ({ children }: AppLayoutProps) => {
+export const AppLayout = ({
+	applyMainContentId = true,
+	children,
+}: AppLayoutProps) => {
 	return (
 		<>
 			<SkipLinks
@@ -21,10 +25,12 @@ export const AppLayout = ({ children }: AppLayoutProps) => {
 				<SiteHeader />
 				<Box
 					as="main"
-					id="main-content"
-					tabIndex={-1}
-					css={{ '&:focus': { outline: 'none' } }}
 					flexGrow={1}
+					{...(applyMainContentId && {
+						id: 'main-content',
+						tabIndex: -1,
+						css: { '&:focus': { outline: 'none' } },
+					})}
 				>
 					{children}
 				</Box>

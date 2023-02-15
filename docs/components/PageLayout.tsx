@@ -9,12 +9,14 @@ import { Breadcrumbs, BreadcrumbsProps } from '@ag.ds-next/react/breadcrumbs';
 import { EditPage } from './EditPage';
 
 export function PageLayout({
+	applyMainContentId = true,
 	sideNav,
 	editPath,
 	skipLinks,
 	breadcrumbs,
 	children,
 }: PropsWithChildren<{
+	applyMainContentId?: boolean;
 	sideNav?: {
 		title: string;
 		titleLink: string;
@@ -53,7 +55,11 @@ export function PageLayout({
 						</Column>
 					)}
 					<Column
-						id="page-content"
+						{...(applyMainContentId && {
+							id: 'main-content',
+							tabIndex: -1,
+							css: { '&:focus': { outline: 'none' } },
+						})}
 						columnSpan={{ xs: 12, md: 8 }}
 						columnStart={{ lg: sideNav ? 5 : 1 }}
 					>

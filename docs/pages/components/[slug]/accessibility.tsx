@@ -23,7 +23,7 @@ export default function PackagesAccessibility({
 	return (
 		<>
 			<DocumentTitle title={`${pkg.title} Accessibility`} />
-			<AppLayout>
+			<AppLayout applyMainContentId={false}>
 				<PkgLayout
 					pkg={pkg}
 					navLinks={navLinks}
