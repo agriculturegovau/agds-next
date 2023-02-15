@@ -1,13 +1,13 @@
 import { AppLayout } from '../components/AppLayout';
 import { DocumentTitle } from '../components/DocumentTitle';
-import { FormExampleSignInPage } from '../components/templates/FormExampleSignIn';
+import { SignInFormPage } from '../components/templates/SignInForm';
 
-export default function SignInFormPage() {
+export default function SignInForm() {
 	return (
 		<>
 			<DocumentTitle title="Sign in" />
 			<AppLayout template={{ name: 'Sign-in form', slug: 'sign-in' }}>
-				<FormExampleSignInPage />
+				<SignInFormPage />
 			</AppLayout>
 		</>
 	);

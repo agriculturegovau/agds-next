@@ -1,14 +1,14 @@
 import { PageTemplate } from '../../../.storybook/components/PageTemplate';
-import { HomePage } from './HomePage';
+import { SignInFormPage } from './SignInForm';
 
 export default {
-	title: 'Templates/Home',
+	title: 'Templates/Sign In Form',
 };
 
-export const Home = () => {
+export const SignInForm = () => {
 	return (
 		<PageTemplate>
-			<HomePage />
+			<SignInFormPage />
 		</PageTemplate>
 	);
 };

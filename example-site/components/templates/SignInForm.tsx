@@ -140,7 +140,7 @@ const SignInForm = () => {
 	);
 };
 
-export const FormExampleSignInPage = () => {
+export const SignInFormPage = () => {
 	return (
 		<PageContent>
 			<Columns>

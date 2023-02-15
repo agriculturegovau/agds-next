@@ -1,6 +1,6 @@
-import { NotFound } from '../components/templates/NotFound';
 import { AppLayout } from '../components/AppLayout';
 import { DocumentTitle } from '../components/DocumentTitle';
+import { NotFound } from '../components/templates/NotFound';
 
 export default function NotFoundPage() {
 	return (

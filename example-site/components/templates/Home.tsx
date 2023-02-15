@@ -13,7 +13,7 @@ import {
 } from '@ag.ds-next/react/hero-banner';
 import { Text } from '@ag.ds-next/react/text';
 
-export const HomePage = () => {
+export function Home() {
 	return (
 		<>
 			<HeroBanner
@@ -118,4 +118,4 @@ export const HomePage = () => {
 			</SectionContent>
 		</>
 	);
-};
+}
