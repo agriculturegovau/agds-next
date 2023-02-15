@@ -28,6 +28,7 @@ export async function getTemplate(slug: string) {
 		previewPath: (data.previewPath ?? null) as string | null,
 		figmaTemplateNodeId: (data.figmaTemplateNodeId ?? null) as string | null,
 		githubTemplatePath: (data.githubTemplatePath ?? null) as string | null,
+		storybookPath: (data.storybookPath ?? null) as string | null,
 	};
 }
 
