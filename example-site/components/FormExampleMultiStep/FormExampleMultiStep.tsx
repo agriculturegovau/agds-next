@@ -11,7 +11,6 @@ import { PageContent, ContentBleed } from '@ag.ds-next/react/content';
 import { ProgressIndicator } from '@ag.ds-next/react/progress-indicator';
 import { Stack } from '@ag.ds-next/react/box';
 import { DirectionButton } from '@ag.ds-next/react/direction-link';
-import { AppLayout } from '../AppLayout';
 import {
 	FormExampleMultiStep0,
 	FormSchema as FormExampleMultiStep0Schema,

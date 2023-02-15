@@ -7,7 +7,6 @@ import { Columns } from '../columns';
 import { boxPalette } from './boxPalette';
 import { mapSpacing, Spacing } from './tokens';
 
-// eslint-disable-next-line import/no-anonymous-default-export
 export default {
 	title: 'foundations/Core/Tokens',
 };
