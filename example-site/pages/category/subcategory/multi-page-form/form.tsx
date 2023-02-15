@@ -1,12 +1,17 @@
-import { Fragment } from 'react';
+import { AppLayout } from '../../../../components/AppLayout';
 import { DocumentTitle } from '../../../../components/DocumentTitle';
 import { FormExampleMultiStep } from '../../../../components/FormExampleMultiStep/FormExampleMultiStep';
 
 export default function FormMultiPageFormPage() {
 	return (
-		<Fragment>
+		<>
 			<DocumentTitle title="Multi-page form example" />
-			<FormExampleMultiStep />
-		</Fragment>
+			<AppLayout
+				template={{ name: 'Multi-page form', slug: 'multi-page-form' }}
+				focusMode
+			>
+				<FormExampleMultiStep />
+			</AppLayout>
+		</>
 	);
 }

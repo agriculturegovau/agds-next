@@ -1,3 +1,4 @@
+import { RouterContext } from 'next/dist/shared/lib/router-context';
 import { DecoratorFn } from '@storybook/react';
 import { Box } from '@ag.ds-next/react/box';
 import { Core } from '@ag.ds-next/react/core';
@@ -91,6 +92,9 @@ export const parameters = {
 	},
 	viewport: {
 		viewports: makeViewports(),
+	},
+	nextRouter: {
+		Provider: RouterContext.Provider,
 	},
 };
 
