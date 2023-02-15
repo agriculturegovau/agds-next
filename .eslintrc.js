@@ -51,5 +51,12 @@ module.exports = {
 			files: ['packages/**/*'],
 			rules: { '@next/next/no-html-link-for-pages': 'off' },
 		},
+		// CSF and import/no-anonymous-default-export
+		{
+			files: ['**/*.stories.ts', '**/*.stories.tsx'],
+			rules: {
+				'import/no-anonymous-default-export': 'off',
+			},
+		},
 	],
 };

@@ -10,6 +10,7 @@ import { PageLayout } from './PageLayout';
 import { PageTitle } from './PageTitle';
 import { FigmaLogo } from './FigmaLogo';
 import { GithubLogo } from './GithubLogo';
+import { StorybookLogo } from './StorybookLogo';
 
 type TemplateLayoutProps = PropsWithChildren<{
 	breadcrumbs: Awaited<ReturnType<typeof getTemplateBreadcrumbs>>;
@@ -65,6 +66,15 @@ export const TemplateLayout = ({
 								iconBefore={FigmaLogo}
 							>
 								View in Figma
+							</ButtonLink>
+						)}
+						{template.storybookPath && (
+							<ButtonLink
+								variant="text"
+								href={`${process.env.NEXT_PUBLIC_STORYBOOK_URL}?path=${template.storybookPath}`}
+								iconBefore={StorybookLogo}
+							>
+								View in Storybook
 							</ButtonLink>
 						)}
 						{template.githubTemplatePath && (

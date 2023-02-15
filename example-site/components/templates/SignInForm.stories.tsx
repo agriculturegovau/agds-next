@@ -1,5 +1,5 @@
 import { PageTemplate } from '../../../.storybook/components/PageTemplate';
-import { FormExampleSignInPage } from './FormExampleSignIn';
+import { SignInFormPage } from './SignInForm';
 
 export default {
 	title: 'Templates/Sign In Form',
@@ -8,7 +8,7 @@ export default {
 export const SignInForm = () => {
 	return (
 		<PageTemplate>
-			<FormExampleSignInPage />
+			<SignInFormPage />
 		</PageTemplate>
 	);
 };

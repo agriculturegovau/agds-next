@@ -11,7 +11,6 @@ import { PageContent, ContentBleed } from '@ag.ds-next/react/content';
 import { ProgressIndicator } from '@ag.ds-next/react/progress-indicator';
 import { Stack } from '@ag.ds-next/react/box';
 import { DirectionButton } from '@ag.ds-next/react/direction-link';
-import { AppLayout } from '../AppLayout';
 import {
 	FormExampleMultiStep0,
 	FormSchema as FormExampleMultiStep0Schema,
@@ -186,36 +185,31 @@ export const FormExampleMultiStep = () => {
 	};
 
 	return (
-		<AppLayout
-			template={{ name: 'Multi-page form', slug: 'multi-page-form' }}
-			focusMode
-		>
-			<PageContent>
-				<context.Provider value={contextValue}>
-					<Columns>
-						<Column columnSpan={{ xs: 12, md: 4, lg: 3 }}>
-							<ContentBleed visible={{ md: false }}>
-								<ProgressIndicator
-									items={FORM_STEPS.map(({ label }, idx) => ({
-										label,
-										status: getStepStatus(idx),
-										onClick: () => setCurrentStep(idx),
-									}))}
-								/>
-							</ContentBleed>
-						</Column>
-						<Column columnSpan={{ xs: 12, md: 8 }} columnStart={{ lg: 5 }}>
-							<Stack gap={3} alignItems="flex-start">
-								<DirectionButton direction="left" onClick={back}>
-									Back
-								</DirectionButton>
-								{FormStepComponent ? <FormStepComponent /> : null}
-							</Stack>
-						</Column>
-					</Columns>
-				</context.Provider>
-			</PageContent>
-		</AppLayout>
+		<PageContent>
+			<context.Provider value={contextValue}>
+				<Columns>
+					<Column columnSpan={{ xs: 12, md: 4, lg: 3 }}>
+						<ContentBleed visible={{ md: false }}>
+							<ProgressIndicator
+								items={FORM_STEPS.map(({ label }, idx) => ({
+									label,
+									status: getStepStatus(idx),
+									onClick: () => setCurrentStep(idx),
+								}))}
+							/>
+						</ContentBleed>
+					</Column>
+					<Column columnSpan={{ xs: 12, md: 8 }} columnStart={{ lg: 5 }}>
+						<Stack gap={3} alignItems="flex-start">
+							<DirectionButton direction="left" onClick={back}>
+								Back
+							</DirectionButton>
+							{FormStepComponent ? <FormStepComponent /> : null}
+						</Stack>
+					</Column>
+				</Columns>
+			</context.Provider>
+		</PageContent>
 	);
 };
 

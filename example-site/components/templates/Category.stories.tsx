@@ -1,14 +1,14 @@
 import { PageTemplate } from '../../../.storybook/components/PageTemplate';
-import { HomePage } from './HomePage';
+import { Category as CategoryComponent } from './Category';
 
 export default {
-	title: 'Templates/Home',
+	title: 'Templates/Category',
 };
 
-export const Home = () => {
+export function Category() {
 	return (
 		<PageTemplate>
-			<HomePage />
+			<CategoryComponent />
 		</PageTemplate>
 	);
-};
+}

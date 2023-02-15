@@ -29,7 +29,7 @@ const snippets = [
 	},
 	{
 		group: 'Boilerplate',
-		name: 'Single page form',
+		name: 'Single-page form',
 		code: boilerplatePageTemplate(`
 		<Columns>
 			<Column columnSpan={{ xs: 12, md: 8 }}>
