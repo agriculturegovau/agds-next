@@ -3,7 +3,11 @@ import { Breadcrumbs } from '@ag.ds-next/react/breadcrumbs';
 import { PageContent } from '@ag.ds-next/react/content';
 import { H1 } from '@ag.ds-next/react/heading';
 
-export const DashboardPageTitle = () => {
+export const DashboardPageTitle = ({
+	title = 'Establishments for audit',
+}: {
+	title?: string;
+}) => {
 	return (
 		<PageContent background="bodyAlt">
 			<Stack gap={1}>
@@ -14,7 +18,7 @@ export const DashboardPageTitle = () => {
 						{ label: 'Applications' },
 					]}
 				/>
-				<H1>Establishments for audit</H1>
+				<H1>{title}</H1>
 			</Stack>
 		</PageContent>
 	);
