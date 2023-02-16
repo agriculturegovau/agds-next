@@ -1,5 +1,24 @@
 # @ag.ds-next/react
 
+## 1.2.0
+
+### Minor Changes
+
+- e212e210a: Created new component `Avatar`
+
+### Patch Changes
+
+- 26428ef8d: card: Revert back to pseudo-content trick for `CardLink`
+- 95a0db5d6: icons: Add PlusIcon
+- 54aa398c1: core: Added new `modalPanel` max-width token
+
+  modal: Updated max-width of modal dialog
+
+- 9fc4594eb: date-picker: Fixed bug where the text input component was not being updated correctly when the `value` prop changed.
+- a3ec031e7: pagination: improved design for smaller devices
+- 1dc47888b: select: Add support for sm size
+- ee0d90b08: autocomplete, combobox: Fixed issue where hint and error text had incorrect max width.
+
 ## 1.1.0
 
 ### Minor Changes
