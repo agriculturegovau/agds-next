@@ -28,12 +28,16 @@ By default, the `Textarea` component does not expand to fill the available space
 - use when a specific value is needed
 - use for inputs that expect a single value or a couple of words.
 
-## Block
+## Hint
 
-Use the `block` prop to expand the component to fill the available space.
+Use the `hint` prop to provide help that’s relevant to the majority of users, like how their information will be used, or where to find it.
+
+Don't use long paragraphs and lists in hint text. Screen readers read out the entire text when users interact with the form element. This could frustrate users if the text is long.
+
+Don't include links within hint text. While screen readers will read out the link text when describing the field, they will not tell users that the text is a link.
 
 ```jsx live
-<Textarea label="Message" block />
+<Textarea label="Message" hint="Hint text" />
 ```
 
 ## Required
@@ -86,4 +90,12 @@ The maximum width of a textarea should indicate the amount of information expect
 	<Textarea label="lg textarea" maxWidth="lg" />
 	<Textarea label="xl textarea" maxWidth="xl" />
 </Stack>
+```
+
+## Block
+
+Use the `block` prop to expand the component to fill the available space.
+
+```jsx live
+<Textarea label="Message" block />
 ```
