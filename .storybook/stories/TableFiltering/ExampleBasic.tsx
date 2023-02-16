@@ -35,7 +35,7 @@ export const ExampleBasic = ({
 }: ExampleBasicProps) => {
 	return (
 		<AppShell>
-			<DashboardPageTitle />
+			<DashboardPageTitle title="Requests" />
 			<PageContent>
 				<Stack gap={2}>
 					<Flex gap={1} alignItems="flex-end">
@@ -45,7 +45,7 @@ export const ExampleBasic = ({
 							resetPagination={resetPagination}
 						/>
 						<ButtonLink href="#new" iconBefore={PlusIcon}>
-							New item
+							Create request
 						</ButtonLink>
 					</Flex>
 					<DashboardTable
