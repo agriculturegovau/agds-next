@@ -9,10 +9,19 @@ figmaGalleryNodeId: 16180%3A41550
 A simple input for selecting files in a form. The `FileInput` component is a wrapper around the native `<input type="file" />` element. Use when you require multiple files in a form, which must be associated as seperate fields. If you only require a single file, use the [FileUpload](/components/file-upload) component instead.
 
 ```jsx live
-<FormStack>
-	<FileInput label="Drivers license" required />
-	<FileInput label="Passport" required />
-</FormStack>
+<FileInput label="Passport" />
+```
+
+## Hint
+
+Use the `hint` prop to provide help that’s relevant to the majority of users, like how their information will be used, or where to find it.
+
+Don't use long paragraphs and lists in hint text. Screen readers read out the entire text when users interact with the form element. This could frustrate users if the text is long.
+
+Don't include links within hint text. While screen readers will read out the link text when describing the field, they will not tell users that the text is a link.
+
+```jsx live
+<FileInput label="Passport" hint="Hint text" />
 ```
 
 ## Required
