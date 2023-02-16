@@ -66,6 +66,9 @@ import { Combobox } from '@ag.ds-next/react/src/combobox';
 
 export default {
 	title: 'Testing/Kitchen sink',
+	parameters: {
+		layout: 'fullscreen',
+	},
 };
 
 const sideNavItems = [

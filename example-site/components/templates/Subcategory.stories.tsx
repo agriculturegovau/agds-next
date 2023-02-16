@@ -3,6 +3,9 @@ import { Subcategory as SubcategoryContent } from './Subcategory';
 
 export default {
 	title: 'Templates/Subcategory',
+	parameters: {
+		layout: 'fullscreen',
+	},
 };
 
 export function Subcategory() {

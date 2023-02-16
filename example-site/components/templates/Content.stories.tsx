@@ -3,6 +3,9 @@ import { Content as ContentComponent } from './Content';
 
 export default {
 	title: 'Templates/Content',
+	parameters: {
+		layout: 'fullscreen',
+	},
 };
 
 export function Basic() {
