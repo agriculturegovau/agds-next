@@ -37,20 +37,24 @@ By default, the `Select` component does not expand to fill the available space.
 - use for small lists – use Radio input
 - use for long lists – consider using Combobox.
 
-## Block
+## Hint
 
-Use the `block` prop to expand the component to fill the available space.
+Use the `hint` prop to provide help that’s relevant to the majority of users, like how their information will be used, or where to find it.
+
+Don't use long paragraphs and lists in hint text. Screen readers read out the entire text when users interact with the form element. This could frustrate users if the text is long.
+
+Don't include links within hint text. While screen readers will read out the link text when describing the field, they will not tell users that the text is a link.
 
 ```jsx live
 <Select
 	label="What option?"
+	hint="Hint text"
 	placeholder="Please select"
 	options={[
 		{ value: 'a', label: 'Option A' },
 		{ value: 'b', label: 'Option B' },
 		{ value: 'c', label: 'Option C' },
 	]}
-	block
 />
 ```
 
@@ -213,4 +217,21 @@ The small size is reserved for use cases where the value is no more than 3 chara
 		]}
 	/>
 </Stack>
+```
+
+## Block
+
+Use the `block` prop to expand the component to fill the available space.
+
+```jsx live
+<Select
+	label="What option?"
+	placeholder="Please select"
+	options={[
+		{ value: 'a', label: 'Option A' },
+		{ value: 'b', label: 'Option B' },
+		{ value: 'c', label: 'Option C' },
+	]}
+	block
+/>
 ```
