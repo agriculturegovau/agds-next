@@ -1,0 +1,59 @@
+---
+date: 17th February 2023
+title: AgDS Beta v1.2.0 release
+description: New Avatar component. Various bug fixes and improvements.
+---
+
+## New components
+
+### [Avatar](/components/avatar)
+
+User avatars help to quickly identify people in the system.
+
+```jsx live
+<Avatar name="William Mead" />
+```
+
+## Updates
+
+### [Autocomplete](/components/autocomplete)
+
+- Fixed issue where hint and error text had incorrect max-width
+
+### [Card](/components/card)
+
+- Reverted back to pseudo-content trick for `CardLink`
+
+### [Comboxbox](/components/combobox)
+
+- Fixed issue where hint and error text had incorrect max-width
+
+### [Core](/components/core)
+
+- Added new `modalPanel` max-width token
+
+### [Date Picker](/components/date-picker)
+
+- Fixed bug where the text input component was not being updated correctly when the `value` prop changed
+
+### [Icon](/components/icon)
+
+- Added `PlusIcon`
+
+### [Pagination](/components/pagination)
+
+- Improved design for smaller devices
+
+### [Select](/components/selected)
+
+- Added support for `sm` size
+
+## Released packages
+
+```sh
+"@ag.ds-next/react": "1.2.0"
+```
+
+## Full Changelog
+
+Aside from the [complete release notes on the @ag.ds-next website](https://design-system.agriculture.gov.au/updates/2023-02-17), you can also view the [verbose change log](https://github.com/steelthreads/agds-next/pull/947) in the [related PR](https://github.com/steelthreads/agds-next/pull/947) for this release.
