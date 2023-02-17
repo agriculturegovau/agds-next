@@ -8,7 +8,11 @@ import { SearchInput } from '@ag.ds-next/react/search-input';
 import { Select } from '@ag.ds-next/react/select';
 import { DateRangePicker } from '@ag.ds-next/react/date-picker';
 import { useClickOutside, useTernaryState } from '@ag.ds-next/react/core';
-import { ChevronDownIcon, ChevronUpIcon } from '@ag.ds-next/react/icon';
+import {
+	ChevronDownIcon,
+	ChevronUpIcon,
+	FilterIcon,
+} from '@ag.ds-next/react/icon';
 import { assignees } from '../lib/generateBusinessData';
 
 export const FilterMenu = ({
@@ -23,7 +27,6 @@ export const FilterMenu = ({
 	resetFilters: () => void;
 }) => {
 	const [isOpen, open, close] = useTernaryState(false);
-
 	const [refEl, setRefEl] = useState<HTMLDivElement | null>(null);
 	const [popperEl, setPopperEl] = useState<HTMLDivElement | null>(null);
 	const { styles, attributes } = usePopper(refEl, popperEl, {
@@ -54,6 +57,7 @@ export const FilterMenu = ({
 			<Button
 				onClick={onButtonClick}
 				variant="secondary"
+				iconBefore={FilterIcon}
 				iconAfter={isOpen ? ChevronUpIcon : ChevronDownIcon}
 			>
 				{isOpen ? 'Hide filters' : 'Show filters'}

@@ -4,9 +4,11 @@ import { PageContent } from '@ag.ds-next/react/content';
 import {
 	ChevronDownIcon,
 	ChevronUpIcon,
+	FilterIcon,
 	PlusIcon,
 } from '@ag.ds-next/react/icon';
 import { PaginationButtons } from '@ag.ds-next/react/pagination';
+import { Tags } from '@ag.ds-next/react/tags';
 import { useCallback, useState } from 'react';
 import { AppShell } from '../../components/ExampleShell';
 import { DashboardFilters } from './components/DashboardFilters';
@@ -61,38 +63,52 @@ export const ExampleFilterBar = ({
 			<DashboardPageTitle />
 			<PageContent>
 				<Stack gap={2}>
-					<Flex gap={1} alignItems="flex-end">
-						<DashboardSortBySelect
-							sort={sort}
-							setSort={setSort}
-							resetPagination={resetPagination}
-						/>
-						<DashboardItemsPerPageSelect
-							pagination={pagination}
-							setPagination={setPagination}
-						/>
-						<Button
-							onClick={onButtonClick}
-							variant="secondary"
-							iconAfter={isOpen ? ChevronUpIcon : ChevronDownIcon}
-						>
-							{isOpen ? 'Hide filters' : 'Show filters'}
-						</Button>
-						<ButtonLink href="#new" iconBefore={PlusIcon}>
-							New item
-						</ButtonLink>
-					</Flex>
+					<Stack gap={1}>
+						<Flex gap={1} alignItems="flex-end">
+							<DashboardSortBySelect
+								sort={sort}
+								setSort={setSort}
+								resetPagination={resetPagination}
+							/>
+							<DashboardItemsPerPageSelect
+								pagination={pagination}
+								setPagination={setPagination}
+							/>
+							<Button
+								onClick={onButtonClick}
+								variant="secondary"
+								iconBefore={FilterIcon}
+								iconAfter={isOpen ? ChevronUpIcon : ChevronDownIcon}
+							>
+								{isOpen ? 'Hide filters' : 'Show filters'}
+							</Button>
+							<ButtonLink href="#new" iconBefore={PlusIcon}>
+								New item
+							</ButtonLink>
+						</Flex>
 
-					{isOpen && (
-						<DashboardFilters
-							filters={filters}
-							sort={sort}
-							setFilters={setFilters}
-							setSort={setSort}
-							resetPagination={resetPagination}
-							resetFilters={resetFilters}
+						{isOpen && (
+							<DashboardFilters
+								filters={filters}
+								sort={sort}
+								setFilters={setFilters}
+								setSort={setSort}
+								resetPagination={resetPagination}
+								resetFilters={resetFilters}
+							/>
+						)}
+						<Tags
+							heading="Active filters"
+							items={[
+								{
+									label: 'Assignee: Oscar Piastri',
+									onRemove: console.log,
+								},
+								{ label: 'Bar', onRemove: console.log },
+								{ label: 'Baz', onRemove: console.log },
+							]}
 						/>
-					)}
+					</Stack>
 					<DashboardTable
 						data={data}
 						loading={loading}
