@@ -9,15 +9,18 @@ export type TagsProps = {
 	items: Omit<TagProps, 'children'> & { label: string }[];
 };
 
-export const Tags = ({ items, heading }: TagsProps) => (
-	<TagsContainer>
-		{heading}
-		<TagsList>
-			{items.map(({ label, ...props }, index) => (
-				<Box as="li" key={index}>
-					<Tag {...props}>{label}</Tag>
-				</Box>
-			))}
-		</TagsList>
-	</TagsContainer>
-);
+export function Tags({ items, heading }: TagsProps) {
+	return (
+		<TagsContainer>
+			{heading}
+			<TagsList>
+				{items.map(({ label, ...props }, index) => (
+					<Box as="li" key={index}>
+						<Tag {...props}>{label}</Tag>
+					</Box>
+				))}
+			</TagsList>
+		</TagsContainer>
+	);
+}
+Tags.displayName = 'Tags';
