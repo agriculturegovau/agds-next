@@ -32,6 +32,7 @@ export function Avatar({
 		<Flex
 			alignItems="center"
 			justifyContent="center"
+			flexShrink={0}
 			css={{
 				textDecoration: 'none',
 				height: `${size}rem`,
