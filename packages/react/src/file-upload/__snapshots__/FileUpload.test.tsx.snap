@@ -76,7 +76,7 @@ exports[`FileUpload Basic renders correctly 1`] = `
           </span>
         </div>
         <button
-          class="css-tgu3ek-BaseButton-Button"
+          class="css-eecl5m-BaseButton-Button"
           type="button"
         >
           <span>
