@@ -65,7 +65,12 @@ import { TextLink } from '@ag.ds-next/react/text-link';
 import { AvatarIcon } from '@ag.ds-next/react/icon';
 import { Autocomplete } from '@ag.ds-next/react/src/autocomplete/Autocomplete';
 import { Combobox } from '@ag.ds-next/react/src/combobox';
-import { SummaryList, SummaryListItem, SummaryListItemDescription, SummaryListItemTerm } from '@ag.ds-next/react/summary-list';
+import {
+	SummaryList,
+	SummaryListItem,
+	SummaryListItemDescription,
+	SummaryListItemTerm,
+} from '@ag.ds-next/react/summary-list';
 import { SearchInput } from '@ag.ds-next/react/search-input';
 
 export default {
@@ -450,30 +455,38 @@ const KitchenSink = ({ background }: { background: 'body' | 'bodyAlt' }) => {
 							</Flex>
 
 							<Stack gap={1.5}>
-	<SummaryList>
-		<SummaryListItem>
-			<SummaryListItemTerm>First name</SummaryListItemTerm>
-			<SummaryListItemDescription>Will</SummaryListItemDescription>
-		</SummaryListItem>
-		<SummaryListItem>
-			<SummaryListItemTerm>Last name</SummaryListItemTerm>
-			<SummaryListItemDescription>Power</SummaryListItemDescription>
-		</SummaryListItem>
-		<SummaryListItem>
-			<SummaryListItemTerm>Contact information</SummaryListItemTerm>
-			<SummaryListItemDescription>
-				+61 9912 3456
-				<br />
-				will.power@example.com
-			</SummaryListItemDescription>
-		</SummaryListItem>
-		<SummaryListItem>
-			<SummaryListItemTerm>Date of birth</SummaryListItemTerm>
-			<SummaryListItemDescription>09/06/1995</SummaryListItemDescription>
-		</SummaryListItem>
-	</SummaryList>
-	<TextLink href="#">Change all</TextLink>
-</Stack>
+								<SummaryList>
+									<SummaryListItem>
+										<SummaryListItemTerm>First name</SummaryListItemTerm>
+										<SummaryListItemDescription>
+											Will
+										</SummaryListItemDescription>
+									</SummaryListItem>
+									<SummaryListItem>
+										<SummaryListItemTerm>Last name</SummaryListItemTerm>
+										<SummaryListItemDescription>
+											Power
+										</SummaryListItemDescription>
+									</SummaryListItem>
+									<SummaryListItem>
+										<SummaryListItemTerm>
+											Contact information
+										</SummaryListItemTerm>
+										<SummaryListItemDescription>
+											+61 9912 3456
+											<br />
+											will.power@example.com
+										</SummaryListItemDescription>
+									</SummaryListItem>
+									<SummaryListItem>
+										<SummaryListItemTerm>Date of birth</SummaryListItemTerm>
+										<SummaryListItemDescription>
+											09/06/1995
+										</SummaryListItemDescription>
+									</SummaryListItem>
+								</SummaryList>
+								<TextLink href="#">Change all</TextLink>
+							</Stack>
 
 							<Table striped>
 								<TableCaption>
