@@ -15,13 +15,13 @@ const variants = {
 		},
 	},
 	secondary: {
-		background: 'transparent',
+		background: boxPalette.backgroundBody,
 		borderColor: boxPalette.foregroundAction,
 		color: boxPalette.foregroundAction,
 		textDecoration: 'none',
 
 		'&:not(:disabled):hover': {
-			background: 'transparent',
+			background: boxPalette.backgroundBody,
 			borderColor: boxPalette.foregroundText,
 			color: boxPalette.foregroundText,
 			...packs.underline,
