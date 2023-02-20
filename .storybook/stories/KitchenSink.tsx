@@ -348,6 +348,7 @@ const KitchenSink = ({ background }: { background: 'body' | 'bodyAlt' }) => {
 
 								<TextInput label="Name" value="Daniel Ricciardo" />
 								<TextInput disabled label="Name" value="Daniel Ricciardo" />
+
 								<TextInput
 									label="Email"
 									invalid
