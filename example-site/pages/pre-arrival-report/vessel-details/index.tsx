@@ -8,14 +8,14 @@ import {
 	values,
 	FieldSetSummaryList,
 	labelMapper,
-} from '../../../components/preArrival';
+} from '../../../components/PreArrival';
 
 export default function VesselDetails() {
 	return (
 		<>
 			<DocumentTitle title="Vessel Details | Pre-arrival report" />
 			<AppLayout>
-				<Frame currentPath="#vessel-details">
+				<Frame>
 					<Text maxWidth={tokens.maxWidth.bodyText}>
 						It is a requirement of the Biosecurity Act 2015, Section 193 for all
 						commercial vessels entering Australian waters to provide the
@@ -27,7 +27,6 @@ export default function VesselDetails() {
 						they must provide updated intormation immediatelv. The operator will
 						be notified of biosecurity status and pratique via the MARS portal.
 					</Text>
-
 					<Stack gap={3}>
 						<FieldSetSummaryList
 							title="Vessel Particulars"
@@ -39,7 +38,7 @@ export default function VesselDetails() {
 							).map(([key, value]) => [
 								labelMapper[key] || key,
 								value,
-								`edit-vessel-particulars#${key}`,
+								`/pre-arrival-report/vessel-details/edit-vessel-particulars#${key}`,
 							])}
 						/>
 

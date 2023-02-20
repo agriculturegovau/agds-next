@@ -1,3 +1,4 @@
+import { useRouter } from 'next/router';
 import { Stack } from '@ag.ds-next/react/box';
 import { Breadcrumbs } from '@ag.ds-next/react/breadcrumbs';
 import { Column, Columns } from '@ag.ds-next/react/columns';
@@ -17,45 +18,45 @@ import { TextLink } from '@ag.ds-next/react/text-link';
 
 const sideBarItems = [
 	{
-		href: 'vessel-details',
+		href: '/pre-arrival-report/vessel-details',
 		label: 'Vessel details',
 		items: [
 			{
-				href: 'edit-vessel-particulars',
+				href: '/pre-arrival-report/vessel-details/vessel-particulars',
 				label: 'Vessel Particulars',
 			},
 			{
-				href: 'edit-additional-information',
+				href: '/pre-arrival-report/vessel-details/additional-information',
 				label: 'Additional information',
 			},
 			{
-				href: 'edit-ship-sanitation',
+				href: '/pre-arrival-report/vessel-details/ship-sanitation',
 				label: 'Ship sanitation',
 			},
 			{
-				href: 'edit-certificate-details',
+				href: '/pre-arrival-report/vessel-details/certificate-details',
 				label: 'Certificate details',
 			},
 		],
 	},
 	{
-		href: 'arrival-details',
+		href: '/pre-arrival-report/arrival-details',
 		label: 'Arrival details',
 	},
 	{
-		href: 'sanitation',
+		href: '/pre-arrival-report/sanitation',
 		label: 'Sanitation',
 	},
 	{
-		href: '#four',
+		href: '/pre-arrival-report/#four',
 		label: 'Human health',
 	},
 	{
-		href: '#five',
+		href: '/pre-arrival-report/#five',
 		label: 'BioFouling',
 	},
 	{
-		href: '#six',
+		href: '/pre-arrival-report/#six',
 		label: 'BioSecurity',
 	},
 ];
@@ -141,17 +142,16 @@ export const FieldSetSummaryList = ({
 
 export const Frame = ({
 	children,
-	currentPath,
 }: {
 	children: React.ReactNode;
-	currentPath: string;
 }) => {
+	const router = useRouter();
 	return (
 		<PageContent>
 			<Columns>
 				<Column columnSpan={{ xs: 12, md: 4, lg: 3 }}>
 					<SideNav
-						activePath={currentPath}
+						activePath={router.asPath}
 						title="Pre-arrival report"
 						collapseTitle="In this section"
 						titleLink="#"
@@ -185,7 +185,6 @@ export const Frame = ({
 								md/default (P)
 							</Text>
 						</Stack>
-
 						{children}
 					</Stack>
 				</Column>

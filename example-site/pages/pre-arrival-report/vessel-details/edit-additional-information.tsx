@@ -6,7 +6,7 @@ import { H2 } from '@ag.ds-next/react/heading';
 import { TextInput } from '@ag.ds-next/react/text-input';
 import { AppLayout } from '../../../components/AppLayout';
 import { DocumentTitle } from '../../../components/DocumentTitle';
-import { Frame, values } from '../../../components/preArrival';
+import { Frame, values } from '../../../components/PreArrival';
 
 export default function VesselDetailsVesselParticulars() {
 	return (
