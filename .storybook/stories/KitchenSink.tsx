@@ -3,6 +3,7 @@ import {
 	AccordionItem,
 	AccordionItemContent,
 } from '@ag.ds-next/react/accordion';
+import { Avatar } from '@ag.ds-next/react/avatar';
 import { Details } from '@ag.ds-next/react/details';
 import {
 	SearchBox,
@@ -24,6 +25,7 @@ import { Heading, H1, H2 } from '@ag.ds-next/react/heading';
 import { InpageNav } from '@ag.ds-next/react/inpage-nav';
 import { FormStack } from '@ag.ds-next/react/form-stack';
 import { FileUpload } from '@ag.ds-next/react/file-upload';
+import { FileInput } from '@ag.ds-next/react/file-input';
 import { ProgressIndicator } from '@ag.ds-next/react/progress-indicator';
 import { PageAlert } from '@ag.ds-next/react/page-alert';
 import { Select } from '@ag.ds-next/react/select';
@@ -63,6 +65,8 @@ import { TextLink } from '@ag.ds-next/react/text-link';
 import { AvatarIcon } from '@ag.ds-next/react/icon';
 import { Autocomplete } from '@ag.ds-next/react/src/autocomplete/Autocomplete';
 import { Combobox } from '@ag.ds-next/react/src/combobox';
+import { SummaryList, SummaryListItem, SummaryListItemDescription, SummaryListItemTerm } from '@ag.ds-next/react/summary-list';
+import { SearchInput } from '@ag.ds-next/react/search-input';
 
 export default {
 	title: 'Testing/Kitchen sink',
@@ -335,6 +339,8 @@ const KitchenSink = ({ background }: { background: 'body' | 'bodyAlt' }) => {
 
 							<H2>Forms</H2>
 							<FormStack>
+								<SearchInput label="Search" />
+
 								<TextInput label="Name" />
 								<TextInput
 									label="Email"
@@ -356,6 +362,7 @@ const KitchenSink = ({ background }: { background: 'body' | 'bodyAlt' }) => {
 										{ value: 'c', label: 'Option C' },
 									]}
 								/>
+								<FileInput label="Drivers licence" />
 								<FileUpload
 									label="Drivers licence"
 									onChange={() => {}}
@@ -436,6 +443,37 @@ const KitchenSink = ({ background }: { background: 'body' | 'bodyAlt' }) => {
 							</Flex>
 
 							<IndicatorDot />
+
+							<Flex gap={0.5}>
+								<Avatar name="William Mead" tone="neutral" />
+								<Avatar name="William Mead" tone="action" />
+							</Flex>
+
+							<Stack gap={1.5}>
+	<SummaryList>
+		<SummaryListItem>
+			<SummaryListItemTerm>First name</SummaryListItemTerm>
+			<SummaryListItemDescription>Will</SummaryListItemDescription>
+		</SummaryListItem>
+		<SummaryListItem>
+			<SummaryListItemTerm>Last name</SummaryListItemTerm>
+			<SummaryListItemDescription>Power</SummaryListItemDescription>
+		</SummaryListItem>
+		<SummaryListItem>
+			<SummaryListItemTerm>Contact information</SummaryListItemTerm>
+			<SummaryListItemDescription>
+				+61 9912 3456
+				<br />
+				will.power@example.com
+			</SummaryListItemDescription>
+		</SummaryListItem>
+		<SummaryListItem>
+			<SummaryListItemTerm>Date of birth</SummaryListItemTerm>
+			<SummaryListItemDescription>09/06/1995</SummaryListItemDescription>
+		</SummaryListItem>
+	</SummaryList>
+	<TextLink href="#">Change all</TextLink>
+</Stack>
 
 							<Table striped>
 								<TableCaption>
