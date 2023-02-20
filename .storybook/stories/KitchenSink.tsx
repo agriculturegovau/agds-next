@@ -346,7 +346,8 @@ const KitchenSink = ({ background }: { background: 'body' | 'bodyAlt' }) => {
 							<FormStack>
 								<SearchInput label="Search" />
 
-								<TextInput label="Name" />
+								<TextInput label="Name" value="Daniel Ricciardo" />
+								<TextInput disabled label="Name" value="Daniel Ricciardo" />
 								<TextInput
 									label="Email"
 									invalid
