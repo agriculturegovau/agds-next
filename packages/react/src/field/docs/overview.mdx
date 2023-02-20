@@ -7,7 +7,7 @@ storybookPath: /story/forms-field--basic
 
 ## Default
 
-The field component connects the label, description, and message to the input element.
+The field component connects the label, description and message to the input element.
 
 ```jsx live
 <Field label="Name">{(a11yProps) => <input {...a11yProps} />}</Field>
@@ -15,7 +15,7 @@ The field component connects the label, description, and message to the input el
 
 ## Label
 
-Each text field must be accompanied by a label. Effective form labeling helps users understand what information to enter into a text input.
+Each field must be accompanied by a label. Effective form labeling helps users understand what information to enter into the input.
 
 ```jsx live
 <Field label="Name">{(a11yProps) => <input {...a11yProps} />}</Field>
@@ -23,7 +23,11 @@ Each text field must be accompanied by a label. Effective form labeling helps us
 
 ## Hint
 
-Hints can be used to provide more context that will help the user successfully complete the form field.
+Use the `hint` prop to provide help that’s relevant to the majority of users, like how their information will be used, or where to find it.
+
+Don't use long paragraphs and lists in hint text. Screen readers read out the entire text when users interact with the form element. This could frustrate users if the text is long.
+
+Don't include links within hint text. While screen readers will read out the link text when describing the field, they will not tell users that the text is a link.
 
 ```jsx live
 <Field label="Email" hint="We will only use this to respond to your question">
@@ -31,7 +35,7 @@ Hints can be used to provide more context that will help the user successfully c
 </Field>
 ```
 
-## Messages
+## Invalid
 
 Error messages are used to notify the user when a form field has not passed validation. Use clear messages to explain what went wrong and how to fix it.
 
