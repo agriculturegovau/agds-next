@@ -8,7 +8,7 @@ Include screenshots, photos or links if necessary.
 
 - [ ] Describe the changes clearly in the PR description
 - [ ] Read and check your code before tagging someone for review
-- [ ] Document the component for the website (`docs/overview.mdx` and `docs/code.mdx at a minimum`)
+- [ ] Document the component for the website (`docs/overview.mdx` and `docs/code.mdx` at a minimum)
 - [ ] Create stories for Storybook
 - [ ] Add necessary unit tests (HTML validation, snapshots etc)
 - [ ] Manually test component in various modern browsers
