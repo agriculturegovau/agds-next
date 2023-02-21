@@ -46,7 +46,7 @@ export default function VesselDetailsVesselParticulars() {
 								</Fieldset>
 								<ButtonGroup>
 									<Button>Submit</Button>
-									<Button variant="secondary" onClick={() => {}}>
+									<Button variant="secondary" onClick={() => undefined}>
 										Discard
 									</Button>
 								</ButtonGroup>
