@@ -7,14 +7,17 @@ import { H2 } from '@ag.ds-next/react/heading';
 import { TextInput } from '@ag.ds-next/react/text-input';
 import { AppLayout } from '../../../components/AppLayout';
 import { DocumentTitle } from '../../../components/DocumentTitle';
-import { Frame, values } from '../../../components/PreArrival';
+import {
+	PreArrivalReportLayout,
+	values,
+} from '../../../components/PreArrivalReportLayout';
 
 export default function VesselDetailsVesselParticulars() {
 	return (
 		<>
 			<DocumentTitle title="Vessel Particulars | Details | Pre-arrival report" />
 			<AppLayout>
-				<Frame currentPath="#ship-sanitation">
+				<PreArrivalReportLayout>
 					<Stack gap={3}>
 						<form>
 							<FormStack>
@@ -50,7 +53,7 @@ export default function VesselDetailsVesselParticulars() {
 							</FormStack>
 						</form>
 					</Stack>
-				</Frame>
+				</PreArrivalReportLayout>
 			</AppLayout>
 		</>
 	);

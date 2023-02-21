@@ -22,19 +22,19 @@ const sideBarItems = [
 		label: 'Vessel details',
 		items: [
 			{
-				href: '/pre-arrival-report/vessel-details/vessel-particulars',
+				href: '/pre-arrival-report/vessel-details/edit-vessel-particulars',
 				label: 'Vessel Particulars',
 			},
 			{
-				href: '/pre-arrival-report/vessel-details/additional-information',
+				href: '/pre-arrival-report/vessel-details/edit-additional-information',
 				label: 'Additional information',
 			},
 			{
-				href: '/pre-arrival-report/vessel-details/ship-sanitation',
+				href: '/pre-arrival-report/vessel-details/edit-ship-sanitation',
 				label: 'Ship sanitation',
 			},
 			{
-				href: '/pre-arrival-report/vessel-details/certificate-details',
+				href: '/pre-arrival-report/vessel-details/edit-certificate-details',
 				label: 'Certificate details',
 			},
 		],
@@ -87,6 +87,7 @@ export const values = {
 		certificateType: 'extension',
 		controlDetails: 'Mosquito vector',
 		portOfIssue: 'Sydney',
+		dateOfIssue: new Date(),
 		certificate: 'cert.pdf',
 	},
 } as const;
@@ -140,7 +141,7 @@ export const FieldSetSummaryList = ({
 	</Stack>
 );
 
-export const Frame = ({
+export const PreArrivalReportLayout = ({
 	children,
 }: {
 	children: React.ReactNode;

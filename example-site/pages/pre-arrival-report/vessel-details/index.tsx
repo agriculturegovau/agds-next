@@ -4,18 +4,18 @@ import { Text } from '@ag.ds-next/react/text';
 import { AppLayout } from '../../../components/AppLayout';
 import { DocumentTitle } from '../../../components/DocumentTitle';
 import {
-	Frame,
+	PreArrivalReportLayout,
 	values,
 	FieldSetSummaryList,
 	labelMapper,
-} from '../../../components/PreArrival';
+} from '../../../components/PreArrivalReportLayout';
 
 export default function VesselDetails() {
 	return (
 		<>
 			<DocumentTitle title="Vessel Details | Pre-arrival report" />
 			<AppLayout>
-				<Frame>
+				<PreArrivalReportLayout>
 					<Text maxWidth={tokens.maxWidth.bodyText}>
 						It is a requirement of the Biosecurity Act 2015, Section 193 for all
 						commercial vessels entering Australian waters to provide the
@@ -83,7 +83,7 @@ export default function VesselDetails() {
 							])}
 						/>
 					</Stack>
-				</Frame>
+				</PreArrivalReportLayout>
 			</AppLayout>
 		</>
 	);

@@ -1,22 +1,25 @@
 import { Stack } from '@ag.ds-next/react/box';
 import { Button, ButtonGroup } from '@ag.ds-next/react/button';
-import { ControlGroup, Radio } from '@ag.ds-next/react/control-input';
 import { DatePicker } from '@ag.ds-next/react/date-picker';
 import { Fieldset } from '@ag.ds-next/react/fieldset';
+import { FileUpload } from '@ag.ds-next/react/file-upload';
 import { FormStack } from '@ag.ds-next/react/form-stack';
 import { H2 } from '@ag.ds-next/react/heading';
 import { Select } from '@ag.ds-next/react/select';
 import { TextInput } from '@ag.ds-next/react/text-input';
 import { AppLayout } from '../../../components/AppLayout';
 import { DocumentTitle } from '../../../components/DocumentTitle';
-import { Frame, values } from '../../../components/PreArrival';
+import {
+	PreArrivalReportLayout,
+	values,
+} from '../../../components/PreArrivalReportLayout';
 
-export default function VesselDetailsVesselParticulars() {
+export default function VesselDetailsCertificateDetails() {
 	return (
 		<>
 			<DocumentTitle title="Vessel Particulars | Details | Pre-arrival report" />
 			<AppLayout>
-				<Frame currentPath="#certificate-details">
+				<PreArrivalReportLayout>
 					<Stack gap={3}>
 						<form>
 							<Fieldset legend={<H2>Certificate details</H2>}>
@@ -29,6 +32,7 @@ export default function VesselDetailsVesselParticulars() {
 												{ value: 'b', label: 'Option B' },
 												{ value: 'c', label: 'Option C' },
 											]}
+											value={values.certificateDetails.certificateType}
 											maxWidth="xl"
 											required
 										/>
@@ -39,28 +43,40 @@ export default function VesselDetailsVesselParticulars() {
 												{ value: 'b', label: 'Option B' },
 												{ value: 'c', label: 'Option C' },
 											]}
+											value={values.certificateDetails.controlDetails}
 											maxWidth="xl"
 											required
 										/>
-										<TextInput label="Port of issue" maxWidth="xl" required />
+										<TextInput
+											label="Port of issue"
+											maxWidth="xl"
+											required
+											value={values.certificateDetails.portOfIssue}
+										/>
 										<DatePicker
 											label="Date of issue"
-											value={new Date()}
-											onChange={() => {}}
+											value={values.certificateDetails.dateOfIssue}
+											onChange={() => undefined}
 											maxWidth="xl"
 										/>
 									</FormStack>
 									<FileUpload
 										label="Current Sanitation Certificate"
 										accept={['application/pdf']}
-										onChange={() => {}}
+										onChange={() => undefined}
 										value={[]}
 									/>
 								</FormStack>
 							</Fieldset>
+							<ButtonGroup>
+								<Button>Submit</Button>
+								<Button variant="secondary" onClick={() => undefined}>
+									Discard
+								</Button>
+							</ButtonGroup>
 						</form>
 					</Stack>
-				</Frame>
+				</PreArrivalReportLayout>
 			</AppLayout>
 		</>
 	);
