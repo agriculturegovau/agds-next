@@ -111,6 +111,7 @@ export const labelMapper = {
 	certificateType: 'Certificate type',
 	controlDetails: 'Control details',
 	portOfIssue: 'Port of issue',
+	dateOfIssue: 'Date of issue',
 	certificate: 'Current Sanitation Certificate',
 } as const;
 
