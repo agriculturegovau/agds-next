@@ -38,7 +38,7 @@ exports[`DateRangePicker renders correctly 1`] = `
           />
           <button
             aria-label="Change Date, Saturday January 1st, 2000"
-            class="css-iya2bc-BaseButton-DateInput"
+            class="css-5re0pj-BaseButton-DateInput"
             type="button"
           >
             <span>
@@ -112,7 +112,7 @@ exports[`DateRangePicker renders correctly 1`] = `
           />
           <button
             aria-label="Change Date, Sunday January 2nd, 2000"
-            class="css-iya2bc-BaseButton-DateInput"
+            class="css-5re0pj-BaseButton-DateInput"
             type="button"
           >
             <span>
