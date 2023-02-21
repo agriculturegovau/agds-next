@@ -10,12 +10,13 @@ import {
 	HeroBannerTitle,
 	HeroBannerSubtitle,
 } from '@ag.ds-next/react/hero-banner';
+import { H2 } from '@ag.ds-next/react/heading';
 import { AppLayout } from '../components/AppLayout';
 import { PictogramCard } from '../components/PictogramCard';
 import { DocumentTitle } from '../components/DocumentTitle';
 
 const description =
-	'AgDS provides a framework and a set of tools to help designers and developers build the steel threads of the Export Service quickly, efficiently and consistently.';
+	'AgDS is a suite of tools and guidelines to help designers and developers build the steel threads of the Export Service with efficiency and consistency.';
 
 export default function Homepage() {
 	return (
@@ -30,7 +31,7 @@ export default function Homepage() {
 					<HeroBanner>
 						<HeroBannerTitleContainer>
 							<HeroBannerTitle>
-								Welcome to the Agriculture Design System (AgDS)
+								Build the Export Service with world-class tools
 							</HeroBannerTitle>
 							<HeroBannerSubtitle>{description}</HeroBannerSubtitle>
 						</HeroBannerTitleContainer>
@@ -42,7 +43,9 @@ export default function Homepage() {
 						<Stack gap={3}>
 							<Prose>
 								<p>
-									AgDS is based on the{' '}
+									The Agriculture Design System (AgDS) enables the development
+									of consistent, intuitive and accessible applications with
+									efficiency, scale and collaboration. AgDS is based on the{' '}
 									<TextLink href="https://gold.designsystemau.org/">
 										GOLD Design System
 									</TextLink>{' '}
@@ -55,36 +58,39 @@ export default function Homepage() {
 									.
 								</p>
 							</Prose>
-							<Columns
-								as="ul"
-								cols={{
-									xs: 1,
-									sm: 2,
-									lg: 3,
-									xl: 4,
-								}}
-							>
-								<PictogramCard
-									title="Foundations"
-									pictogram="text"
-									href="/foundations"
-								/>
-								<PictogramCard
-									title="Components"
-									pictogram="components"
-									href="/components"
-								/>
-								<PictogramCard
-									title="Guides"
-									pictogram="guides"
-									href="/guides"
-								/>
-								<PictogramCard
-									title="Starter kit"
-									pictogram="starter"
-									href="https://github.com/steelthreads/agds-starter-kit"
-								/>
-							</Columns>
+							<Stack gap={2}>
+								<H2>Recommended links</H2>
+								<Columns
+									as="ul"
+									cols={{
+										xs: 1,
+										sm: 2,
+										lg: 3,
+										xl: 4,
+									}}
+								>
+									<PictogramCard
+										title="Foundations"
+										pictogram="text"
+										href="/foundations"
+									/>
+									<PictogramCard
+										title="Components"
+										pictogram="components"
+										href="/components"
+									/>
+									<PictogramCard
+										title="Guides"
+										pictogram="guides"
+										href="/guides"
+									/>
+									<PictogramCard
+										title="Starter kit"
+										pictogram="starter"
+										href="https://github.com/steelthreads/agds-starter-kit"
+									/>
+								</Columns>
+							</Stack>
 						</Stack>
 					</SectionContent>
 				</main>
