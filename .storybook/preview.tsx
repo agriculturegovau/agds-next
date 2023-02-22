@@ -36,6 +36,14 @@ function makeViewports() {
 			width: 1200,
 			breakpoint: 'xl',
 		},
+		{
+			width: 1920,
+			breakpoint: 'xxl',
+		},
+		{
+			width: 2560,
+			breakpoint: 'xxxl',
+		},
 	];
 	return Object.fromEntries(
 		viewports.map((viewport) => [

@@ -25,7 +25,7 @@ export function NavListItem({
 		<Flex
 			as="li"
 			height="100%"
-			paddingBottom={type === 'primary' ? { lg: 0.5 } : 0.5}
+			paddingBottom={vertical ? 0 : type === 'primary' ? { lg: 0.5 } : 0.5}
 			fontSize={{ xs: 'xs', lg: 'sm' }}
 			width={vertical ? '100%' : 'auto'}
 			css={[
