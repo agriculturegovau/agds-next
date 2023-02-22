@@ -23,7 +23,7 @@ exports[`TextInput Basic renders correctly 1`] = `
     <input
       aria-invalid="false"
       aria-required="false"
-      class="css-1s1j2su-Field"
+      class="css-l5jq1s-Field"
       id="field-:r0:"
       type="text"
     />
@@ -89,7 +89,7 @@ exports[`TextInput Invalid renders correctly 1`] = `
       aria-describedby="field-:r4:-message"
       aria-invalid="true"
       aria-required="false"
-      class="css-p00pdl-Field"
+      class="css-9wkjz9-Field"
       id="field-:r4:"
       type="text"
     />
@@ -127,7 +127,7 @@ exports[`TextInput With hint renders correctly 1`] = `
       aria-describedby="field-:r2:-hint"
       aria-invalid="false"
       aria-required="false"
-      class="css-1s1j2su-Field"
+      class="css-l5jq1s-Field"
       id="field-:r2:"
       type="text"
     />
