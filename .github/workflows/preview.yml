@@ -20,7 +20,8 @@ jobs:
 
       - name: Setup Node.js 18.x
         uses: actions/setup-node@v3
-        with: node-version:18.x
+        with:
+          node-version: 18.x
 
       - name: Get yarn cache directory path
         id: yarn-cache-dir-path
