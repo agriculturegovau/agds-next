@@ -146,6 +146,7 @@ export const VerticalNavigation = () => {
 					subline="Supporting Australian agricultural exports"
 					size="sm"
 					background="bodyAlt"
+					logo={<Logo />}
 				/>
 			</Box>
 
@@ -158,18 +159,20 @@ export const VerticalNavigation = () => {
 					}),
 				})}
 			>
-				<MainNav
-					background="bodyAlt"
-					vertical
-					items={[
-						{ href: '#dashboard', label: 'Dashboard' },
-						{ href: '#', label: 'Establishments' },
-						{ href: '#', label: 'Data and Insights' },
-						{ href: '#', label: 'Compliance' },
-					]}
-					activePath="#dashboard"
-					secondaryItems={[{ href: '#', label: 'Help' }]}
-				/>
+				<Box dark height="100%" background="bodyAlt">
+					<MainNav
+						background="bodyAlt"
+						vertical
+						items={[
+							{ href: '#dashboard', label: 'Dashboard' },
+							{ href: '#', label: 'Establishments' },
+							{ href: '#', label: 'Data and Insights' },
+							{ href: '#', label: 'Compliance' },
+						]}
+						activePath="#dashboard"
+						secondaryItems={[{ href: '#', label: 'Help' }]}
+					/>
+				</Box>
 
 				<Content />
 			</Box>
