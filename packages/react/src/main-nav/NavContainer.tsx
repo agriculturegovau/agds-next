@@ -64,6 +64,7 @@ export function NavContainer({
 			background={background}
 			color="text"
 			css={{
+				height: vertical ? '100%' : 'auto',
 				position: 'relative',
 				'&:focus': { outline: 'none' },
 				[localPaletteVars.linkHoverBg]: backgroundColorMap[hover],
