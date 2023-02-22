@@ -13,6 +13,7 @@ import { Text } from '@ag.ds-next/react/text';
 import { PlusIcon } from '@ag.ds-next/react/icon';
 import { FormStack } from '@ag.ds-next/react/form-stack';
 import { ComboboxAsync } from '@ag.ds-next/react/combobox';
+import { H1 } from '@ag.ds-next/react/heading';
 
 export default {
 	title: 'Examples/MultiSelect',
@@ -36,7 +37,7 @@ const SelectionTags = ({
 	);
 };
 
-export const DropDownMultiSelect = ({
+const DropDownMultiSelect = ({
 	selected,
 	setSelected,
 }: {
@@ -181,6 +182,12 @@ export const Default = () => {
 
 	return (
 		<FormStack>
+			<Stack>
+				<H1>Multi-select patterns</H1>
+				<Text as="p">
+					These patterns are used to select multiple items from a list.
+				</Text>
+			</Stack>
 			<ControlGroup label="Contact method">
 				<Checkbox checked>SMS</Checkbox>
 				<Checkbox checked={false}>Phone call</Checkbox>
