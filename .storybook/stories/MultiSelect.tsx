@@ -2,7 +2,7 @@ import { useCallback, useRef, useState } from 'react';
 import { usePopper } from 'react-popper';
 import { Box, Flex, Stack } from '@ag.ds-next/react/box';
 import { Button } from '@ag.ds-next/react/button';
-import { Checkbox, ControlGroup } from '@ag.ds-next/react/control-input';
+import { Checkbox, ControlGroup, Radio } from '@ag.ds-next/react/control-input';
 import {
 	tokens,
 	useClickOutside,
@@ -11,17 +11,38 @@ import {
 import { Tag } from '@ag.ds-next/react/tags';
 import { Text } from '@ag.ds-next/react/text';
 import { PlusIcon } from '@ag.ds-next/react/icon';
+import { FormStack } from '@ag.ds-next/react/form-stack';
+import { ComboboxAsync } from '@ag.ds-next/react/combobox';
 
 export default {
 	title: 'Examples/MultiSelect',
 };
 
-export const Default = () => {
-	const [selected, setSelected] = useState<string[]>([
-		'Daniel Ricciardo',
-		'George Russell',
-	]);
+const SelectionTags = ({
+	selected,
+	onRemove,
+}: {
+	selected: string[];
+	onRemove: (item: string) => void;
+}) => {
+	if (!selected.length) return <Text>None selected</Text>;
 
+	return (
+		<Flex gap={0.25} flexWrap="wrap">
+			{selected.map((item) => (
+				<Tag onRemove={() => onRemove(item)}>{item}</Tag>
+			))}
+		</Flex>
+	);
+};
+
+export const DropDownMultiSelect = ({
+	selected,
+	setSelected,
+}: {
+	selected: string[];
+	setSelected: (selected: string[]) => void;
+}) => {
 	const onRemove = (item: string) => {
 		setSelected(selected.filter((i) => i !== item));
 	};
@@ -61,12 +82,7 @@ export const Default = () => {
 				Assignees
 			</Text>
 
-			<Flex gap={0.25} flexWrap="wrap">
-				{selected.map((item) => (
-					<Tag onRemove={() => onRemove(item)}>{item}</Tag>
-				))}
-				{!selected.length && <Text>None selected</Text>}
-			</Flex>
+			<SelectionTags selected={selected} onRemove={onRemove} />
 
 			<div ref={setRefEl}>
 				<Button
@@ -95,19 +111,19 @@ export const Default = () => {
 						css={{ zIndex: 1 }}
 					>
 						<ControlGroup label="Select people" block hideOptionalLabel>
-							{options.map((option) => (
+							{drivers.map((driverName) => (
 								<Checkbox
 									size="sm"
-									checked={selected.includes(option)}
+									checked={selected.includes(driverName)}
 									onChange={() => {
-										if (selected.includes(option)) {
-											onRemove(option);
+										if (selected.includes(driverName)) {
+											onRemove(driverName);
 										} else {
-											setSelected([...selected, option]);
+											setSelected([...selected, driverName]);
 										}
 									}}
 								>
-									{option}
+									{driverName}
 								</Checkbox>
 							))}
 						</ControlGroup>
@@ -118,7 +134,66 @@ export const Default = () => {
 	);
 };
 
-const options = [
+const MultiSelectSearch = ({
+	selected,
+	setSelected,
+}: {
+	selected: string[];
+	setSelected: (selected: string[]) => void;
+}) => {
+	const onRemove = (item: string) => {
+		setSelected(selected.filter((i) => i !== item));
+	};
+
+	const handleSelection = (val: { value: string } | null) => {
+		if (val === null) return setSelected([]);
+
+		return setSelected([...selected, val.value]);
+	};
+
+	return (
+		<Stack gap={0.5}>
+			<ComboboxAsync
+				label="Select character"
+				hint="Start typing to see results"
+				loadOptions={async function loadOptions(inputValue) {
+					const response = await fetch(
+						`https://swapi.dev/api/people/?search=${inputValue}`
+					);
+					const data: { results: { name: string }[] } = await response.json();
+					return data.results
+						.filter(({ name }) => !selected.includes(name))
+						.map(({ name }) => ({ value: name, label: name }));
+				}}
+				onChange={(val) => handleSelection(val)}
+			/>
+			<SelectionTags selected={selected} onRemove={onRemove} />
+		</Stack>
+	);
+};
+
+export const Default = () => {
+	const [assignees, setAssignees] = useState<string[]>([
+		'Daniel Ricciardo',
+		'George Russell',
+	]);
+	const [characters, setCharacters] = useState<string[]>(['Luke Skywalker']);
+
+	return (
+		<FormStack>
+			<ControlGroup label="Contact method">
+				<Checkbox checked>SMS</Checkbox>
+				<Checkbox checked={false}>Phone call</Checkbox>
+				<Checkbox checked={false}>Email</Checkbox>
+				<Checkbox checked={false}>Mail</Checkbox>
+			</ControlGroup>
+			<DropDownMultiSelect selected={assignees} setSelected={setAssignees} />
+			<MultiSelectSearch selected={characters} setSelected={setCharacters} />
+		</FormStack>
+	);
+};
+
+const drivers = [
 	'Valtteri Bottas',
 	'Charles Leclerc',
 	'Carlos Sainz',
