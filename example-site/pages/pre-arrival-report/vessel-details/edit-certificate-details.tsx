@@ -1,6 +1,5 @@
 import { Stack } from '@ag.ds-next/react/box';
 import { Button, ButtonGroup } from '@ag.ds-next/react/button';
-import { DatePicker } from '@ag.ds-next/react/date-picker';
 import { Fieldset } from '@ag.ds-next/react/fieldset';
 import { FileUpload } from '@ag.ds-next/react/file-upload';
 import { FormStack } from '@ag.ds-next/react/form-stack';
@@ -52,12 +51,6 @@ export default function VesselDetailsCertificateDetails() {
 											maxWidth="xl"
 											required
 											value={values.certificateDetails.portOfIssue}
-										/>
-										<DatePicker
-											label="Date of issue"
-											value={values.certificateDetails.dateOfIssue}
-											onChange={() => undefined}
-											maxWidth="xl"
 										/>
 									</FormStack>
 									<FileUpload

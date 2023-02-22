@@ -87,7 +87,6 @@ export const values = {
 		certificateType: 'extension',
 		controlDetails: 'Mosquito vector',
 		portOfIssue: 'Sydney',
-		dateOfIssue: new Date(),
 		certificate: 'cert.pdf',
 	},
 } as const;
@@ -111,7 +110,6 @@ export const labelMapper = {
 	certificateType: 'Certificate type',
 	controlDetails: 'Control details',
 	portOfIssue: 'Port of issue',
-	dateOfIssue: 'Date of issue',
 	certificate: 'Current Sanitation Certificate',
 } as const;
 
@@ -129,15 +127,17 @@ export const FieldSetSummaryList = ({
 	<Stack gap={1.5} alignItems="flex-start">
 		<H2>{title}</H2>
 		<SummaryList>
-			{fields.map(([field, value, href]) => (
-				<SummaryListItem key={field}>
-					<SummaryListItemTerm>{field}</SummaryListItemTerm>
-					<SummaryListItemDescription>{value}</SummaryListItemDescription>
-					<SummaryListItemAction>
-						<TextLink href={href}>Change</TextLink>
-					</SummaryListItemAction>
-				</SummaryListItem>
-			))}
+			{fields.map(([field, value, href]) => {
+				return (
+					<SummaryListItem key={field}>
+						<SummaryListItemTerm>{field}</SummaryListItemTerm>
+						<SummaryListItemDescription>{value}</SummaryListItemDescription>
+						<SummaryListItemAction>
+							<TextLink href={href}>Change</TextLink>
+						</SummaryListItemAction>
+					</SummaryListItem>
+				);
+			})}
 		</SummaryList>
 	</Stack>
 );
