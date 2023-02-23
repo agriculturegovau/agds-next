@@ -1,5 +1,13 @@
 # @ag.ds-next/react
 
+## 1.2.1
+
+### Patch Changes
+
+- 1f7b6dafc: Avatar: Fix shrinking bug
+- 6e91efe01: file-input: Update button size
+- 5051525a7: button: Replaced transparent background in the `secondary` variant from `transparent` with body background colour.
+
 ## 1.2.0
 
 ### Minor Changes
