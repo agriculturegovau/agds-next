@@ -9,15 +9,13 @@ When contributing changes to the system, it is important to understand how we cl
 
 We classify changes into three types:
 
-- patch
-- minor
-- major
+- Patch
+- Minor
+- Major
 
-### Patch
+### Patch (fix)
 
-A patch is a change that fixes a bug or makes a small change to the system. It is a change that is unlikely to affect the user experience.
-
-A bug fix which does not affect the API of the component. The consumer isn't expected to change their code in order to implement the update.
+A change that fixes a bug or makes a small improvement which does not affect the API of the component. The consumer isn't expected to change their code in order to implement the update.
 
 For example...
 
@@ -26,20 +24,33 @@ For example...
 
 The PR can merged and released as soon as a AgDS team member is free.
 
-### Minor
-
-A minor change is a change that adds a new feature or makes a significant change to the system. It is a change that is likely to affect the user experience.
+### Minor (feature)
 
 A new feature to an existing component, or the introduction of a new standalone component. The user can elect to implement the change but isn't forced to change existing code.
 
-If the AgDS team agree with the change
+For example...
 
-### Major
+- A new component
+- A new prop on an existing component
 
-A major change is a change that makes a significant change to the system. It is a change that is likely to affect the user experience.
+The PR can merged and released as soon as a AgDS team member is free.
+
+### Major (breaking)
 
 A change which breaks the API of existing component(s). A user is expected to make a change to their code in order for it to continue working.
 
-The community must be given a chance to review and understand the change before it can be merged and released.
+For example
 
-## Using Changesets
+- Removing a component
+- Removing a prop from a component
+- Changing the API, behaviour or name of a component
+
+**Before this can be merged**, the community must be given a chance to give feedback on the change. The PR should be opened as a draft and the community should be notified in the "Design System" chat in Microsoft Teams. The PR should remain open for at least one week.
+
+## About Changesets
+
+We use [Changesets](https://github.com/changesets/changesets) to communicate the changes to our users and to automate the release process.
+
+Every pull request which changes a component must include a changeset file. This file describes the change, and is used to generate the release notes and to determine the version number of the next release.
+
+To create a changeset, run `yarn changset` in the root of the repository. Then commit the changeset file and push it to your branch.
