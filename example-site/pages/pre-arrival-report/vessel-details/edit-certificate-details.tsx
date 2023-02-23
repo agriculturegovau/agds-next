@@ -1,3 +1,5 @@
+import { useRouter } from 'next/router';
+import { FormEvent, useState } from 'react';
 import { Stack } from '@ag.ds-next/react/box';
 import { Button, ButtonGroup } from '@ag.ds-next/react/button';
 import { Fieldset } from '@ag.ds-next/react/fieldset';
@@ -14,13 +16,26 @@ import {
 } from '../../../components/PreArrivalReportLayout';
 
 export default function VesselDetailsCertificateDetails() {
+	const router = useRouter();
+	const [loading, setLoading] = useState(false);
+
+	// Fake an API call
+	const onSubmit = (event: FormEvent<HTMLFormElement>) => {
+		event.preventDefault();
+		setLoading(true);
+		setTimeout(() => {
+			router.push('/pre-arrival-report/vessel-details');
+			setLoading(false);
+		}, 1500);
+	};
+
 	return (
 		<>
 			<DocumentTitle title="Vessel Particulars | Details | Pre-arrival report" />
 			<AppLayout>
 				<PreArrivalReportLayout>
 					<Stack gap={3}>
-						<form>
+						<form onSubmit={onSubmit}>
 							<Fieldset legend={<H2>Certificate details</H2>}>
 								<FormStack>
 									<FormStack>
@@ -62,7 +77,9 @@ export default function VesselDetailsCertificateDetails() {
 								</FormStack>
 							</Fieldset>
 							<ButtonGroup>
-								<Button>Submit</Button>
+								<Button type="submit" loading={loading}>
+									Submit
+								</Button>
 								<Button variant="secondary" onClick={() => undefined}>
 									Discard
 								</Button>
