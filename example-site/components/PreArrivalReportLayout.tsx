@@ -1,4 +1,5 @@
 import { useRouter } from 'next/router';
+import { useEffect } from 'react';
 import { Stack } from '@ag.ds-next/react/box';
 import { Breadcrumbs } from '@ag.ds-next/react/breadcrumbs';
 import { Column, Columns } from '@ag.ds-next/react/columns';
@@ -15,8 +16,7 @@ import {
 } from '@ag.ds-next/react/summary-list';
 import { Text } from '@ag.ds-next/react/text';
 import { TextLink } from '@ag.ds-next/react/text-link';
-import { scrollFieldIntoView, useScrollToField } from '@ag.ds-next/react/field';
-import { useEffect } from 'react';
+import { scrollFieldIntoView } from '@ag.ds-next/react/field';
 
 const sideBarItems = [
 	{
