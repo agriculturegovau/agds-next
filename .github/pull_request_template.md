@@ -16,7 +16,7 @@ Include screenshots, photos or links if necessary.
 - [ ] Run `yarn format` to ensure code is formatted correctly
 - [ ] Run `yarn lint` in the root of the repository to ensure linting tests are passing
 - [ ] Run `yarn test` to ensure tests are passing. If required, run `yarn test -u` to update any generated snapshots.
-- [ ] Run `yarn changeset` to create a changeset file
+- [ ] Run `yarn changeset` to create a changeset file. [Learn more about change management]()
 
 ### Creating new component
 

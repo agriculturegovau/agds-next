@@ -1,0 +1,45 @@
+---
+title: Change Management
+opener: How we classify and communicate changes to our systems
+---
+
+When contributing changes to the system, it is important to understand how we classify and communicate them. This helps us to understand the impact of changes and to communicate them to our users.
+
+## Change Types
+
+We classify changes into three types:
+
+- patch
+- minor
+- major
+
+### Patch
+
+A patch is a change that fixes a bug or makes a small change to the system. It is a change that is unlikely to affect the user experience.
+
+A bug fix which does not affect the API of the component. The consumer isn't expected to change their code in order to implement the update.
+
+For example...
+
+- A minor visual change to a component
+- Resolving a crash or other kind of bug
+
+The PR can merged and released as soon as a AgDS team member is free.
+
+### Minor
+
+A minor change is a change that adds a new feature or makes a significant change to the system. It is a change that is likely to affect the user experience.
+
+A new feature to an existing component, or the introduction of a new standalone component. The user can elect to implement the change but isn't forced to change existing code.
+
+If the AgDS team agree with the change
+
+### Major
+
+A major change is a change that makes a significant change to the system. It is a change that is likely to affect the user experience.
+
+A change which breaks the API of existing component(s). A user is expected to make a change to their code in order for it to continue working.
+
+The community must be given a chance to review and understand the change before it can be merged and released.
+
+## Using Changesets
