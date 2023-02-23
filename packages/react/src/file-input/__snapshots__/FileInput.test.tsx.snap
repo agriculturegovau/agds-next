@@ -23,7 +23,7 @@ exports[`FileInput renders correctly 1`] = `
     <input
       aria-invalid="false"
       aria-required="false"
-      class="css-14j1aky-Field"
+      class="css-1hjj1fi-Field"
       id="field-:r0:"
       type="file"
     />
