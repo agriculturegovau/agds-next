@@ -3,7 +3,7 @@
 exports[`MainNav renders correctly 1`] = `
 <div>
   <div
-    class="css-1yqb0ov-boxStyles-NavContainer"
+    class="css-1i5vwgl-boxStyles-NavContainer"
     tabindex="-1"
   >
     <div
@@ -13,7 +13,7 @@ exports[`MainNav renders correctly 1`] = `
       class="css-zlf9wg-boxStyles-NavContainer"
     >
       <div
-        class="css-7k4rge-boxStyles"
+        class="css-1105to9-boxStyles"
       >
         <div
           class="css-1ff37wg-boxStyles"
@@ -113,7 +113,7 @@ exports[`MainNav renders correctly 1`] = `
                 class="css-5nrt7j-boxStyles-NavListContainer"
               >
                 <li
-                  class="css-1pszxfd-boxStyles-NavListItem"
+                  class="css-1i4szrc-boxStyles-NavListItem"
                 >
                   <a
                     href="#home"
@@ -124,7 +124,7 @@ exports[`MainNav renders correctly 1`] = `
                   </a>
                 </li>
                 <li
-                  class="css-32saf7-boxStyles-NavListItem"
+                  class="css-1tpkt4f-boxStyles-NavListItem"
                 >
                   <a
                     aria-current="page"
@@ -136,7 +136,7 @@ exports[`MainNav renders correctly 1`] = `
                   </a>
                 </li>
                 <li
-                  class="css-1pszxfd-boxStyles-NavListItem"
+                  class="css-1i4szrc-boxStyles-NavListItem"
                 >
                   <a
                     href="#form"
@@ -147,7 +147,7 @@ exports[`MainNav renders correctly 1`] = `
                   </a>
                 </li>
                 <li
-                  class="css-1pszxfd-boxStyles-NavListItem"
+                  class="css-1i4szrc-boxStyles-NavListItem"
                 >
                   <a
                     href="#simple"
@@ -174,7 +174,7 @@ exports[`MainNav renders correctly 1`] = `
             class="css-1ltfh56-boxStyles"
           >
             <li
-              class="css-6lwpn8-boxStyles-NavListItem"
+              class="css-16fd6zq-boxStyles-NavListItem"
             >
               <a
                 href="#sign-in"
