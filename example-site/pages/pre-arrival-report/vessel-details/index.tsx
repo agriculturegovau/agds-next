@@ -30,56 +30,44 @@ export default function VesselDetails() {
 					<Stack gap={3}>
 						<FieldSetSummaryList
 							title="Vessel Particulars"
+							href="/pre-arrival-report/vessel-details/edit-vessel-particulars"
 							fields={(
 								Object.entries(values.vesselParticulars) as [
 									keyof typeof values.vesselParticulars,
 									string
 								][]
-							).map(([key, value]) => [
-								labelMapper[key] || key,
-								value,
-								`/pre-arrival-report/vessel-details/edit-vessel-particulars?field=${key}`,
-							])}
+							).map(([key, value]) => [labelMapper[key] || key, value])}
 						/>
 
 						<FieldSetSummaryList
 							title="Additional vessel information"
+							href="/pre-arrival-report/vessel-details/edit-additional-information"
 							fields={(
 								Object.entries(values.additionalVesselInformation) as [
 									keyof typeof values.additionalVesselInformation,
 									string
 								][]
-							).map(([key, value]) => [
-								labelMapper[key] || key,
-								value,
-								`/pre-arrival-report/vessel-details/edit-additional-information?field=${key}`,
-							])}
+							).map(([key, value]) => [labelMapper[key] || key, value])}
 						/>
 						<FieldSetSummaryList
 							title="Ship sanitation"
+							href="/pre-arrival-report/vessel-details/edit-ship-sanitation"
 							fields={(
 								Object.entries(values.shipSanitation) as [
 									keyof typeof values.shipSanitation,
 									string
 								][]
-							).map(([key, value]) => [
-								labelMapper[key] || key,
-								value,
-								`/pre-arrival-report/vessel-details/edit-ship-sanitation?field=${key}`,
-							])}
+							).map(([key, value]) => [labelMapper[key] || key, value])}
 						/>
 						<FieldSetSummaryList
 							title="Certificate details"
+							href="/pre-arrival-report/vessel-details/edit-certificate-details"
 							fields={(
 								Object.entries(values.certificateDetails) as [
 									keyof typeof values.certificateDetails,
 									string
 								][]
-							).map(([key, value]) => [
-								labelMapper[key] || key,
-								value,
-								`/pre-arrival-report/vessel-details/edit-certificate-details?field=${key}`,
-							])}
+							).map(([key, value]) => [labelMapper[key] || key, value])}
 						/>
 					</Stack>
 				</PreArrivalReportLayout>

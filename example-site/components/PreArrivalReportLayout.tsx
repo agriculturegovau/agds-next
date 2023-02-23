@@ -10,7 +10,6 @@ import { SideNav } from '@ag.ds-next/react/side-nav';
 import {
 	SummaryList,
 	SummaryListItem,
-	SummaryListItemAction,
 	SummaryListItemDescription,
 	SummaryListItemTerm,
 } from '@ag.ds-next/react/summary-list';
@@ -118,29 +117,25 @@ export const labelMapper = {
 export const FieldSetSummaryList = ({
 	title,
 	fields,
+	href,
 }: {
 	title: string;
-	fields: [
-		field: string,
-		value: string | number | boolean | undefined,
-		href: string
-	][];
+	href: string;
+	fields: [field: string, value: string | number | boolean | undefined][];
 }) => (
 	<Stack gap={1.5} alignItems="flex-start">
 		<H2>{title}</H2>
 		<SummaryList>
-			{fields.map(([field, value, href]) => {
+			{fields.map(([field, value]) => {
 				return (
 					<SummaryListItem key={field}>
 						<SummaryListItemTerm>{field}</SummaryListItemTerm>
 						<SummaryListItemDescription>{value}</SummaryListItemDescription>
-						<SummaryListItemAction>
-							<TextLink href={href}>Change</TextLink>
-						</SummaryListItemAction>
 					</SummaryListItem>
 				);
 			})}
 		</SummaryList>
+		<TextLink href={href}>{`Update ${title}`}</TextLink>
 	</Stack>
 );
 
