@@ -70,7 +70,7 @@ export const FileInput = forwardRef<HTMLInputElement, FileInputProps>(
 export const fileInputStyles = ({ invalid }: { invalid?: boolean }) =>
 	({
 		'::file-selector-button': {
-			...buttonStyles({ size: 'sm', variant: 'secondary', block: false }),
+			...buttonStyles({ size: 'md', variant: 'secondary', block: false }),
 			margin: undefined,
 		},
 
