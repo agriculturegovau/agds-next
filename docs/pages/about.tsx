@@ -1,0 +1,80 @@
+import { PageContent } from '@ag.ds-next/react/content';
+import { Prose } from '@ag.ds-next/react/prose';
+import { AppLayout } from '../components/AppLayout';
+import { DocumentTitle } from '../components/DocumentTitle';
+
+export default function AboutPage() {
+	return (
+		<>
+			<DocumentTitle title="About AgDS" />
+			<AppLayout>
+				<PageContent
+					as="main"
+					id="main-content"
+					tabIndex={-1}
+					css={{ '&:focus': { outline: 'none' } }}
+				>
+					<Prose>
+						<h1>About AgDS</h1>
+
+						<p>
+							The Agriculture Design System (AgDS) is the Design System built
+							for the Australian Government Department of Agriculture, Fisheries
+							and Forestry (DAFF).
+						</p>
+
+						<p>
+							It is a suite of guidelines and tools for designers and developers
+							who build interactive experiences on the web. It enables
+							consistent, intuitive and accessible applications with efficiency
+							and scale - while also promoting collaboration between product
+							teams.
+						</p>
+
+						<p>
+							Its primary purpose is for building the Export Service, however is
+							also in use in other areas of the Department such as NEXDOC and
+							BioSecurity.
+						</p>
+
+						<p>The toolkit includes...</p>
+
+						<ul>
+							<li>A React component library</li>
+							<li>A library of Figma components</li>
+							<li>A suite of page templates and interaction patterns</li>
+							<li>Comprehensive documentation</li>
+							<li>A collaborative community of designers and developers</li>
+						</ul>
+
+						<h2>Inspired by GOLD</h2>
+
+						<p>
+							AgDS is based on the{' '}
+							<a href="https://gold.designsystemau.org/">GOLD Design System</a>{' '}
+							which incorporates the highest usability and accessibility
+							standards, helping us to deliver a consistent experience for all
+							users, in line with the{' '}
+							<a href="https://www.dta.gov.au/help-and-advice/about-digital-service-standard">
+								Digital Service Standard
+							</a>
+							.
+						</p>
+
+						<h2>Accessibility from the start</h2>
+
+						<p>
+							The Agriculture Design System is the best way to ensure we meet
+							our legal obligations to ensure accessibility. Under the
+							Disability Discrimination Act 1992, Australian Government agencies
+							are required to ensure information and services are provided in a
+							non-discriminatory accessible manner. That is why AgDS provides a
+							suite of components, templates and guides to ensure Export Service
+							applications are designed with accessibility built-in.
+						</p>
+					</Prose>
+				</PageContent>
+			</AppLayout>
+		</>
+	);
+}

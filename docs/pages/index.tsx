@@ -45,17 +45,8 @@ export default function Homepage() {
 								<p>
 									The Agriculture Design System (AgDS) enables the development
 									of consistent, intuitive and accessible applications with
-									efficiency, scale and collaboration. AgDS is based on the{' '}
-									<TextLink href="https://gold.designsystemau.org/">
-										GOLD Design System
-									</TextLink>{' '}
-									which incorporates the highest usability and accessibility
-									standards, helping us to deliver a consistent experience for
-									all users, in line with the{' '}
-									<TextLink href="https://www.dta.gov.au/help-and-advice/about-digital-service-standard">
-										Digital Service Standard
-									</TextLink>
-									.
+									efficiency, scale and collaboration.{' '}
+									<a href="/about">About AgDS</a>.
 								</p>
 							</Prose>
 							<Stack gap={2}>
