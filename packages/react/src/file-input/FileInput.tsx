@@ -1,6 +1,6 @@
 import { forwardRef, InputHTMLAttributes } from 'react';
 import { Field } from '../field';
-import { packs, boxPalette } from '../core';
+import { packs, boxPalette, fontGrid, mapSpacing, tokens } from '../core';
 import { buttonStyles } from '../button';
 
 type NativeInputProps = InputHTMLAttributes<HTMLInputElement>;
@@ -69,9 +69,13 @@ export const FileInput = forwardRef<HTMLInputElement, FileInputProps>(
 
 export const fileInputStyles = ({ invalid }: { invalid?: boolean }) =>
 	({
+		...fontGrid('sm', 'default'),
+		fontFamily: tokens.font.body,
+		color: boxPalette.foregroundText,
+
 		'::file-selector-button': {
-			...buttonStyles({ size: 'sm', variant: 'secondary', block: false }),
-			margin: undefined,
+			...buttonStyles({ size: 'md', variant: 'secondary', block: false }),
+			margin: `0 ${mapSpacing(1)} 0 0`,
 		},
 
 		...(invalid && {
