@@ -38,7 +38,7 @@ export default function VesselDetails() {
 							).map(([key, value]) => [
 								labelMapper[key] || key,
 								value,
-								`/pre-arrival-report/vessel-details/edit-vessel-particulars#${key}`,
+								`/pre-arrival-report/vessel-details/edit-vessel-particulars?field=${key}`,
 							])}
 						/>
 
@@ -52,7 +52,7 @@ export default function VesselDetails() {
 							).map(([key, value]) => [
 								labelMapper[key] || key,
 								value,
-								`edit-additional-information#${key}`,
+								`/pre-arrival-report/vessel-details/edit-additional-information?field=${key}`,
 							])}
 						/>
 						<FieldSetSummaryList
@@ -65,10 +65,9 @@ export default function VesselDetails() {
 							).map(([key, value]) => [
 								labelMapper[key] || key,
 								value,
-								`edit-ship-sanitation#${key}`,
+								`/pre-arrival-report/vessel-details/edit-ship-sanitation?field=${key}`,
 							])}
 						/>
-
 						<FieldSetSummaryList
 							title="Certificate details"
 							fields={(
@@ -79,7 +78,7 @@ export default function VesselDetails() {
 							).map(([key, value]) => [
 								labelMapper[key] || key,
 								value,
-								`edit-certificate-details#${key}`,
+								`/pre-arrival-report/vessel-details/edit-certificate-details?field=${key}`,
 							])}
 						/>
 					</Stack>

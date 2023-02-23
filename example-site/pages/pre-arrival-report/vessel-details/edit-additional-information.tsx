@@ -10,10 +10,13 @@ import { AppLayout } from '../../../components/AppLayout';
 import { DocumentTitle } from '../../../components/DocumentTitle';
 import {
 	PreArrivalReportLayout,
+	useScrollAndFocusField,
 	values,
 } from '../../../components/PreArrivalReportLayout';
 
 export default function VesselDetailsVesselParticulars() {
+	useScrollAndFocusField();
+
 	const router = useRouter();
 	const [loading, setLoading] = useState(false);
 

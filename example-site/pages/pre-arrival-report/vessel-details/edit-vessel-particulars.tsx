@@ -11,11 +11,13 @@ import { TextInput } from '@ag.ds-next/react/text-input';
 import { AppLayout } from '../../../components/AppLayout';
 import { DocumentTitle } from '../../../components/DocumentTitle';
 import {
+	useScrollAndFocusField,
 	PreArrivalReportLayout,
 	values,
 } from '../../../components/PreArrivalReportLayout';
 
 export default function VesselDetailsVesselParticulars() {
+	useScrollAndFocusField();
 	const router = useRouter();
 	const [loading, setLoading] = useState(false);
 

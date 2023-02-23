@@ -15,6 +15,8 @@ import {
 } from '@ag.ds-next/react/summary-list';
 import { Text } from '@ag.ds-next/react/text';
 import { TextLink } from '@ag.ds-next/react/text-link';
+import { scrollFieldIntoView, useScrollToField } from '@ag.ds-next/react/field';
+import { useEffect } from 'react';
 
 const sideBarItems = [
 	{
@@ -194,3 +196,17 @@ export const PreArrivalReportLayout = ({
 		</PageContent>
 	);
 };
+
+export function useScrollAndFocusField() {
+	const router = useRouter();
+	const fieldId = router.query?.field;
+
+	useEffect(() => {
+		if (typeof fieldId !== 'string') return;
+		const el = document.querySelector(`#${fieldId}`);
+		if (el instanceof HTMLInputElement) {
+			el.focus();
+			scrollFieldIntoView(fieldId);
+		}
+	}, [fieldId]);
+}
