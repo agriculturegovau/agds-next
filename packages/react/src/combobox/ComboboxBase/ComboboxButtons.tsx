@@ -7,7 +7,7 @@ import { focusStyles } from '../../box';
 export const ComboboxClearButton = forwardRef<
 	HTMLButtonElement,
 	ButtonHTMLAttributes<HTMLButtonElement>
->(function ComboboxClearButton({ disabled, ...props }, ref) {
+>(function ComboboxClearButton(props, ref) {
 	return (
 		<ComboboxIconButton
 			ref={ref}
@@ -21,7 +21,7 @@ export const ComboboxClearButton = forwardRef<
 export const ComboboxDropdownTrigger = forwardRef<
 	HTMLButtonElement,
 	ButtonHTMLAttributes<HTMLButtonElement>
->(function ComboboxDropdownTrigger({ disabled, ...props }, ref) {
+>(function ComboboxDropdownTrigger(props, ref) {
 	return (
 		<ComboboxIconButton
 			ref={ref}

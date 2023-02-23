@@ -27,7 +27,14 @@ export const RadioIndicator = ({
 				borderRadius: '100%',
 				borderStyle: 'solid',
 				borderColor: boxPalette.border,
-				opacity: disabled ? 0.3 : undefined,
+				// opacity: disabled ? 0.3 : undefined,
+
+				// ...(disabled && {
+				// 	color: boxPalette.borderMuted,
+				// 	borderColor: boxPalette.borderMuted,
+				// 	backgroundColor: boxPalette.backgroundShade,
+				// }),
+
 				...(invalid && {
 					borderColor: boxPalette.systemError,
 					backgroundColor: boxPalette.systemErrorMuted,

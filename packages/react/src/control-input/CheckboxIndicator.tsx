@@ -26,14 +26,20 @@ export const CheckboxIndicator = ({
 				borderWidth,
 				borderStyle: 'solid',
 				borderColor: boxPalette.border,
-				opacity: disabled ? 0.3 : undefined,
+				color: boxPalette.foregroundText,
+
+				...(disabled && {
+					color: boxPalette.borderMuted,
+					borderColor: boxPalette.borderMuted,
+					backgroundColor: boxPalette.backgroundShade,
+				}),
+
 				...(invalid && {
 					borderColor: boxPalette.systemError,
 					backgroundColor: boxPalette.systemErrorMuted,
 				}),
 			}}
 			background="body"
-			color="text"
 			rounded
 		>
 			<CheckboxIcon size={iconSize[size]} />
