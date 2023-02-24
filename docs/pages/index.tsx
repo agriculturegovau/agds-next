@@ -28,7 +28,9 @@ export default function Homepage() {
 					tabIndex={-1}
 					css={{ '&:focus': { outline: 'none' } }}
 				>
-					<HeroBanner>
+					<HeroBanner
+						image={<img src="/img/agds-hero.webp" role="presentation" alt="" />}
+					>
 						<HeroBannerTitleContainer>
 							<HeroBannerTitle>
 								Build the Export Service with world-class tools
