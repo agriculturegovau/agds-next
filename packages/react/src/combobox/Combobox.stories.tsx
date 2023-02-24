@@ -207,7 +207,7 @@ const COUNTRIES = [
 	'Zimbabwe',
 ].map((country) => ({ label: country, value: country }));
 
-type Option = typeof COUNTRIES[number];
+type Option = (typeof COUNTRIES)[number];
 
 const defaultArgs = {
 	label: 'Select country',
