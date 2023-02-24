@@ -48,7 +48,7 @@ export default function Homepage() {
 									The Agriculture Design System (AgDS) enables the development
 									of consistent, intuitive and accessible applications with
 									efficiency, scale and collaboration.{' '}
-									<a href="/about">About AgDS</a>.
+									<TextLink href="/about">About AgDS</TextLink>.
 								</p>
 							</Prose>
 							<Stack gap={2}>
