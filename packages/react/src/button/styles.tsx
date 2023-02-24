@@ -13,12 +13,6 @@ const variants = {
 			color: boxPalette.backgroundBody,
 			...packs.underline,
 		},
-
-		// '&:disabled': {
-		// 	background: boxPalette.foregroundMuted,
-		// 	borderColor: boxPalette.foregroundMuted,
-		// 	text: boxPalette.foregroundText,
-		// },
 	},
 	secondary: {
 		background: boxPalette.backgroundBody,
