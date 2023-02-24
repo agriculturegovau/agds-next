@@ -26,6 +26,7 @@ export const CheckboxIndicator = ({
 				borderWidth,
 				borderStyle: 'solid',
 				borderColor: boxPalette.border,
+				backgroundColor: boxPalette.backgroundBody,
 				color: boxPalette.foregroundText,
 
 				...(disabled && {
@@ -39,7 +40,6 @@ export const CheckboxIndicator = ({
 					backgroundColor: boxPalette.systemErrorMuted,
 				}),
 			}}
-			background="body"
 			rounded
 		>
 			<CheckboxIcon size={iconSize[size]} />
