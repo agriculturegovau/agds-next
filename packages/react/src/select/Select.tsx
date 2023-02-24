@@ -160,7 +160,7 @@ const SelectIcon = ({ disabled }: { disabled?: boolean }) => (
 			top: '50%',
 			right: mapSpacing(1),
 			transform: 'translateY(-50%)',
-			opacity: disabled ? 0.3 : 1,
+			opacity: disabled ? 0.3 : undefined,
 			pointerEvents: 'none',
 			color: boxPalette.foregroundAction,
 		}}
@@ -204,7 +204,9 @@ const selectStyles = ({
 
 		'&:disabled': {
 			cursor: 'not-allowed',
-			opacity: 0.3,
+			borderColor: boxPalette.borderMuted,
+			backgroundColor: boxPalette.backgroundShade,
+			color: boxPalette.foregroundMuted,
 		},
 
 		'&:focus': packs.outline,

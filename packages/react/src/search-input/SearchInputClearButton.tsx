@@ -30,7 +30,7 @@ export function SearchInputClearButton({
 				top: '50%',
 				right: `calc(${mapSpacing(0.5)} + ${tokens.borderWidth.lg}px)`, // Align from the inner border
 				transform: 'translateY(-50%)',
-				opacity: disabled ? 0.3 : 1,
+				opacity: disabled ? 0.3 : undefined,
 				cursor: 'pointer',
 				color: boxPalette.foregroundAction,
 				'&:hover': { color: boxPalette.foregroundText },

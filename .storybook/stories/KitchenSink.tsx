@@ -52,6 +52,7 @@ import {
 	HeroBannerTitle,
 	HeroBannerTitleContainer,
 } from '@ag.ds-next/react/hero-banner';
+import { Prose } from '@ag.ds-next/react/prose';
 import { SkeletonHeading, SkeletonText } from '@ag.ds-next/react/skeleton';
 import {
 	Table,
@@ -205,11 +206,16 @@ const KitchenSink = ({ background }: { background: 'body' | 'bodyAlt' }) => {
 								</PageAlert>
 
 								<PageAlert tone="error" title="There is a problem">
-									<Text as="p">
-										<TextLink href="#email">
-											Full name must not be empty
-										</TextLink>
-									</Text>
+									<Prose>
+										<ul>
+											<li>
+												<a href="#email">Name is required</a>
+											</li>
+											<li>
+												<a href="#email">Email is required</a>
+											</li>
+										</ul>
+									</Prose>
 								</PageAlert>
 
 								<PageAlert tone="warning" title="Browser out of date">
@@ -347,6 +353,7 @@ const KitchenSink = ({ background }: { background: 'body' | 'bodyAlt' }) => {
 								<SearchInput label="Search" />
 
 								<TextInput label="Name" />
+
 								<TextInput
 									label="Email"
 									invalid
@@ -374,7 +381,7 @@ const KitchenSink = ({ background }: { background: 'body' | 'bodyAlt' }) => {
 									value={[]}
 								/>
 								<Textarea label="Message" />
-								<ControlGroup>
+								<ControlGroup label="Device">
 									<Radio checked={false}>Phone</Radio>
 									<Radio checked={false}>Tablet</Radio>
 									<Radio checked={true}>Laptop</Radio>

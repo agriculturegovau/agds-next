@@ -38,7 +38,7 @@ exports[`ControlGroup  With Checkboxes renders correctly 1`] = `
               type="checkbox"
             />
             <span
-              class="css-gjetbs-boxStyles-CheckboxIndicator"
+              class="css-fhfj02-boxStyles-CheckboxIndicator"
             >
               <svg
                 aria-hidden="true"
@@ -72,7 +72,7 @@ exports[`ControlGroup  With Checkboxes renders correctly 1`] = `
               type="checkbox"
             />
             <span
-              class="css-gjetbs-boxStyles-CheckboxIndicator"
+              class="css-fhfj02-boxStyles-CheckboxIndicator"
             >
               <svg
                 aria-hidden="true"
@@ -106,7 +106,7 @@ exports[`ControlGroup  With Checkboxes renders correctly 1`] = `
               type="checkbox"
             />
             <span
-              class="css-gjetbs-boxStyles-CheckboxIndicator"
+              class="css-fhfj02-boxStyles-CheckboxIndicator"
             >
               <svg
                 aria-hidden="true"
@@ -140,7 +140,7 @@ exports[`ControlGroup  With Checkboxes renders correctly 1`] = `
               type="checkbox"
             />
             <span
-              class="css-gjetbs-boxStyles-CheckboxIndicator"
+              class="css-fhfj02-boxStyles-CheckboxIndicator"
             >
               <svg
                 aria-hidden="true"
@@ -253,7 +253,7 @@ exports[`ControlGroup  With Checkboxes renders correctly when invalid 1`] = `
               type="checkbox"
             />
             <span
-              class="css-lv3v0c-boxStyles-CheckboxIndicator"
+              class="css-7h9akr-boxStyles-CheckboxIndicator"
             >
               <svg
                 aria-hidden="true"
@@ -289,7 +289,7 @@ exports[`ControlGroup  With Checkboxes renders correctly when invalid 1`] = `
               type="checkbox"
             />
             <span
-              class="css-lv3v0c-boxStyles-CheckboxIndicator"
+              class="css-7h9akr-boxStyles-CheckboxIndicator"
             >
               <svg
                 aria-hidden="true"
@@ -325,7 +325,7 @@ exports[`ControlGroup  With Checkboxes renders correctly when invalid 1`] = `
               type="checkbox"
             />
             <span
-              class="css-lv3v0c-boxStyles-CheckboxIndicator"
+              class="css-7h9akr-boxStyles-CheckboxIndicator"
             >
               <svg
                 aria-hidden="true"
@@ -361,7 +361,7 @@ exports[`ControlGroup  With Checkboxes renders correctly when invalid 1`] = `
               type="checkbox"
             />
             <span
-              class="css-lv3v0c-boxStyles-CheckboxIndicator"
+              class="css-7h9akr-boxStyles-CheckboxIndicator"
             >
               <svg
                 aria-hidden="true"
@@ -431,10 +431,10 @@ exports[`ControlGroup  With Radios renders correctly 1`] = `
               type="radio"
             />
             <span
-              class="css-rz5sks-boxStyles-RadioIndicator"
+              class="css-osss6w-boxStyles-RadioIndicator"
             >
               <span
-                class="css-1mjlqey-boxStyles-RadioIndicator"
+                class="css-1f428uy-boxStyles-RadioIndicator"
               />
             </span>
             <span
@@ -452,10 +452,10 @@ exports[`ControlGroup  With Radios renders correctly 1`] = `
               type="radio"
             />
             <span
-              class="css-rz5sks-boxStyles-RadioIndicator"
+              class="css-osss6w-boxStyles-RadioIndicator"
             >
               <span
-                class="css-1mjlqey-boxStyles-RadioIndicator"
+                class="css-1f428uy-boxStyles-RadioIndicator"
               />
             </span>
             <span
@@ -473,10 +473,10 @@ exports[`ControlGroup  With Radios renders correctly 1`] = `
               type="radio"
             />
             <span
-              class="css-rz5sks-boxStyles-RadioIndicator"
+              class="css-osss6w-boxStyles-RadioIndicator"
             >
               <span
-                class="css-1mjlqey-boxStyles-RadioIndicator"
+                class="css-1f428uy-boxStyles-RadioIndicator"
               />
             </span>
             <span
@@ -494,10 +494,10 @@ exports[`ControlGroup  With Radios renders correctly 1`] = `
               type="radio"
             />
             <span
-              class="css-rz5sks-boxStyles-RadioIndicator"
+              class="css-osss6w-boxStyles-RadioIndicator"
             >
               <span
-                class="css-1mjlqey-boxStyles-RadioIndicator"
+                class="css-1f428uy-boxStyles-RadioIndicator"
               />
             </span>
             <span
@@ -594,10 +594,10 @@ exports[`ControlGroup  With Radios renders correctly when invalid 1`] = `
               type="radio"
             />
             <span
-              class="css-zot1ri-boxStyles-RadioIndicator"
+              class="css-ib2w54-boxStyles-RadioIndicator"
             >
               <span
-                class="css-1mjlqey-boxStyles-RadioIndicator"
+                class="css-1f428uy-boxStyles-RadioIndicator"
               />
             </span>
             <span
@@ -617,10 +617,10 @@ exports[`ControlGroup  With Radios renders correctly when invalid 1`] = `
               type="radio"
             />
             <span
-              class="css-zot1ri-boxStyles-RadioIndicator"
+              class="css-ib2w54-boxStyles-RadioIndicator"
             >
               <span
-                class="css-1mjlqey-boxStyles-RadioIndicator"
+                class="css-1f428uy-boxStyles-RadioIndicator"
               />
             </span>
             <span
@@ -640,10 +640,10 @@ exports[`ControlGroup  With Radios renders correctly when invalid 1`] = `
               type="radio"
             />
             <span
-              class="css-zot1ri-boxStyles-RadioIndicator"
+              class="css-ib2w54-boxStyles-RadioIndicator"
             >
               <span
-                class="css-1mjlqey-boxStyles-RadioIndicator"
+                class="css-1f428uy-boxStyles-RadioIndicator"
               />
             </span>
             <span
@@ -663,10 +663,10 @@ exports[`ControlGroup  With Radios renders correctly when invalid 1`] = `
               type="radio"
             />
             <span
-              class="css-zot1ri-boxStyles-RadioIndicator"
+              class="css-ib2w54-boxStyles-RadioIndicator"
             >
               <span
-                class="css-1mjlqey-boxStyles-RadioIndicator"
+                class="css-1f428uy-boxStyles-RadioIndicator"
               />
             </span>
             <span

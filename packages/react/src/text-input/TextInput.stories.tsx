@@ -32,6 +32,7 @@ export const Disabled = Template.bind({});
 Disabled.args = {
 	disabled: true,
 	label: 'Example',
+	value: 'Disabled',
 };
 
 export const Invalid = Template.bind({});

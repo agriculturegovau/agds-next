@@ -7,7 +7,7 @@ import { focusStyles } from '../../box';
 export const ComboboxClearButton = forwardRef<
 	HTMLButtonElement,
 	ButtonHTMLAttributes<HTMLButtonElement>
->(function ComboboxClearButton({ disabled, ...props }, ref) {
+>(function ComboboxClearButton(props, ref) {
 	return (
 		<ComboboxIconButton
 			ref={ref}
@@ -21,7 +21,7 @@ export const ComboboxClearButton = forwardRef<
 export const ComboboxDropdownTrigger = forwardRef<
 	HTMLButtonElement,
 	ButtonHTMLAttributes<HTMLButtonElement>
->(function ComboboxDropdownTrigger({ disabled, ...props }, ref) {
+>(function ComboboxDropdownTrigger(props, ref) {
 	return (
 		<ComboboxIconButton
 			ref={ref}
@@ -52,7 +52,7 @@ const ComboboxIconButton = forwardRef<HTMLButtonElement, IconButtonProps>(
 					top: '50%',
 					right: `calc(${mapSpacing(0.5)} + ${tokens.borderWidth.lg}px)`, // Align from the inner border
 					transform: 'translateY(-50%)',
-					opacity: disabled ? 0.3 : 1,
+					opacity: disabled ? 0.3 : undefined,
 					color: boxPalette.foregroundAction,
 					'&:hover': { color: boxPalette.foregroundText },
 					...focusStyles,

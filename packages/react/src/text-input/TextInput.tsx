@@ -125,7 +125,9 @@ export const textInputStyles = ({
 
 		'&:disabled': {
 			cursor: 'not-allowed',
-			opacity: 0.3,
+			borderColor: boxPalette.borderMuted,
+			backgroundColor: boxPalette.backgroundShade,
+			color: boxPalette.foregroundMuted,
 		},
 
 		'&:focus': packs.outline,

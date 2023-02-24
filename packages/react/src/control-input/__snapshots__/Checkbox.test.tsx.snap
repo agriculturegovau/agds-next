@@ -12,7 +12,7 @@ exports[`Checkbox renders correctly 1`] = `
       type="checkbox"
     />
     <span
-      class="css-gjetbs-boxStyles-CheckboxIndicator"
+      class="css-fhfj02-boxStyles-CheckboxIndicator"
     >
       <svg
         aria-hidden="true"

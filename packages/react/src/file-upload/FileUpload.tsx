@@ -286,8 +286,9 @@ const fileInputStyles = ({
 
 		...(disabled && {
 			cursor: 'not-allowed',
-			opacity: 0.3,
-			background: 'none',
+			borderColor: boxPalette.borderMuted,
+			backgroundColor: boxPalette.backgroundShade,
+			color: boxPalette.foregroundMuted,
 		}),
 
 		...(isDragActive && {
