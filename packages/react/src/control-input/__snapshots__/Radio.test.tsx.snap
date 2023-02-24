@@ -12,10 +12,10 @@ exports[`Radio renders correctly 1`] = `
       type="radio"
     />
     <span
-      class="css-rz5sks-boxStyles-RadioIndicator"
+      class="css-osss6w-boxStyles-RadioIndicator"
     >
       <span
-        class="css-1mjlqey-boxStyles-RadioIndicator"
+        class="css-1f428uy-boxStyles-RadioIndicator"
       />
     </span>
     <span

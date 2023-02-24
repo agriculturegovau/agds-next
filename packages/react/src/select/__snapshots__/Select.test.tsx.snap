@@ -26,7 +26,7 @@ exports[`Select Basic renders correctly 1`] = `
       <select
         aria-invalid="false"
         aria-required="false"
-        class="css-4aca9p-Field"
+        class="css-58fznw-Field"
         id="field-:r0:"
       >
         <option
@@ -47,7 +47,7 @@ exports[`Select Basic renders correctly 1`] = `
       </select>
       <svg
         aria-hidden="true"
-        class="css-5liio1-SelectIcon"
+        class="css-1j4iiu7-SelectIcon"
         clip-rule="evenodd"
         focusable="false"
         height="24"
@@ -91,7 +91,7 @@ exports[`Select Grouped options renders correctly 1`] = `
       <select
         aria-invalid="false"
         aria-required="false"
-        class="css-4aca9p-Field"
+        class="css-58fznw-Field"
         id="field-:r2:"
       >
         <optgroup
@@ -135,7 +135,7 @@ exports[`Select Grouped options renders correctly 1`] = `
       </select>
       <svg
         aria-hidden="true"
-        class="css-5liio1-SelectIcon"
+        class="css-1j4iiu7-SelectIcon"
         clip-rule="evenodd"
         focusable="false"
         height="24"
@@ -214,7 +214,7 @@ exports[`Select Invalid renders correctly 1`] = `
         aria-describedby="field-:r6:-message"
         aria-invalid="true"
         aria-required="false"
-        class="css-1s3iq3i-Field"
+        class="css-1qziw4b-Field"
         id="field-:r6:"
       >
         <option
@@ -235,7 +235,7 @@ exports[`Select Invalid renders correctly 1`] = `
       </select>
       <svg
         aria-hidden="true"
-        class="css-5liio1-SelectIcon"
+        class="css-1j4iiu7-SelectIcon"
         clip-rule="evenodd"
         focusable="false"
         height="24"
@@ -279,7 +279,7 @@ exports[`Select With hint renders correctly 1`] = `
       <select
         aria-invalid="false"
         aria-required="false"
-        class="css-4aca9p-Field"
+        class="css-58fznw-Field"
         id="field-:r4:"
       >
         <option
@@ -300,7 +300,7 @@ exports[`Select With hint renders correctly 1`] = `
       </select>
       <svg
         aria-hidden="true"
-        class="css-5liio1-SelectIcon"
+        class="css-1j4iiu7-SelectIcon"
         clip-rule="evenodd"
         focusable="false"
         height="24"
