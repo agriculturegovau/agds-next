@@ -121,7 +121,7 @@ MaxWidths.args = {
 
 export const Controlled = () => {
 	const [selected, setSelected] = useState<
-		typeof EXAMPLE_OPTIONS[number] | undefined
+		(typeof EXAMPLE_OPTIONS)[number] | undefined
 	>();
 
 	const onChange = (event: ChangeEvent<HTMLSelectElement>) => {

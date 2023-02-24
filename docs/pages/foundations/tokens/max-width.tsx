@@ -16,7 +16,7 @@ import { TokenLayout } from '../../../components/TokenLayout';
 import { getTokensBreadcrumbs, TOKEN_PAGES } from '../../../content/tokens';
 
 const tokenDescriptions: Record<
-	Exclude<keyof typeof tokens['maxWidth'], 'field'>,
+	Exclude<keyof (typeof tokens)['maxWidth'], 'field'>,
 	{ value: string; description: string }
 > = {
 	bodyText: {
