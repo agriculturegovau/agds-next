@@ -21,7 +21,7 @@ exports[`DateRangePicker renders correctly 1`] = `
           <span
             class="css-1rpt3h8-boxStyles-Text"
           >
-            (dd/mm/yyyy)
+            (dd/mm/yyyy optional)
           </span>
         </label>
         <div
@@ -95,7 +95,7 @@ exports[`DateRangePicker renders correctly 1`] = `
           <span
             class="css-1rpt3h8-boxStyles-Text"
           >
-            (dd/mm/yyyy)
+            (dd/mm/yyyy optional)
           </span>
         </label>
         <div
