@@ -74,10 +74,6 @@ export const labelMapper = {
 	certificate: 'Current Sanitation Certificate',
 } as const;
 
-export const getFormattedLabel = (label: string) => {
-	if (labelMapper[label] === undefined) {
-		return label;
-	}
-
-	return labelMapper[label] || label;
+export const getFormattedLabel = (label: string): string => {
+	return labelMapper[label as keyof typeof labelMapper] || label;
 };

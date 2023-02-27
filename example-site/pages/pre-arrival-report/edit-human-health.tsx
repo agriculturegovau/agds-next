@@ -50,7 +50,7 @@ export default function Page() {
 												{ value: 'c', label: 'Option C' },
 											]}
 											value={
-												preArrivalReportData.certificateDetails.certificateType
+												preArrivalReportData.shipSanitation.certificateType
 											}
 											maxWidth="xl"
 											required
@@ -62,9 +62,7 @@ export default function Page() {
 												{ value: 'b', label: 'Option B' },
 												{ value: 'c', label: 'Option C' },
 											]}
-											value={
-												preArrivalReportData.certificateDetails.controlDetails
-											}
+											value={preArrivalReportData.shipSanitation.controlDetails}
 											maxWidth="xl"
 											required
 										/>
@@ -72,9 +70,7 @@ export default function Page() {
 											label="Port of issue"
 											maxWidth="xl"
 											required
-											value={
-												preArrivalReportData.certificateDetails.portOfIssue
-											}
+											value={preArrivalReportData.shipSanitation.portOfIssue}
 										/>
 									</FormStack>
 									<FileUpload

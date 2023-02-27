@@ -7,6 +7,7 @@ import { Fieldset } from '@ag.ds-next/react/fieldset';
 import { FormStack } from '@ag.ds-next/react/form-stack';
 import { H2 } from '@ag.ds-next/react/heading';
 import { TextInput } from '@ag.ds-next/react/text-input';
+import { Select } from '@ag.ds-next/react/select';
 import { AppLayout } from '../../components/AppLayout';
 import { DocumentTitle } from '../../components/DocumentTitle';
 import {
@@ -40,6 +41,36 @@ export default function Page() {
 							<FormStack>
 								<Fieldset legend={<H2>Ship sanitation</H2>}>
 									<FormStack>
+										<Select
+											label="Certificate type"
+											options={[
+												{ value: 'extension', label: 'Extension certificate' },
+												{ value: 'b', label: 'Option B' },
+												{ value: 'c', label: 'Option C' },
+											]}
+											value={
+												preArrivalReportData.shipSanitation.certificateType
+											}
+											maxWidth="xl"
+											required
+										/>
+										<Select
+											label="Control details"
+											options={[
+												{ value: 'Mosquito vector', label: 'Mosquito vector' },
+												{ value: 'b', label: 'Option B' },
+												{ value: 'c', label: 'Option C' },
+											]}
+											value={preArrivalReportData.shipSanitation.controlDetails}
+											maxWidth="xl"
+											required
+										/>
+										<TextInput
+											label="Port of issue"
+											maxWidth="xl"
+											required
+											value={preArrivalReportData.shipSanitation.portOfIssue}
+										/>
 										<ControlGroup
 											label="Will the vessel require a new Sanitiation Certificate at this port?"
 											required
