@@ -2,32 +2,9 @@
 title: Combobox
 description: This component lets users select from a list of options. It is especially useful when there are many options to choose from.
 group: Forms
-storybookPath: /story/forms-combobox--basic
+storybookPath: /story/forms-combobox-combobox--basic
 figmaGalleryNodeId: 12925%3A104632
 ---
-
-```jsx live
-() => {
-	const [value, setValue] = React.useState(null);
-	return (
-		<Combobox
-			label="Select state"
-			value={value}
-			onChange={(value) => setValue(value)}
-			options={[
-				{ label: 'Australian Capital Territory', value: 'act' },
-				{ label: 'New South Wales', value: 'nsw' },
-				{ label: 'Northern Territory', value: 'nt' },
-				{ label: 'Queensland', value: 'qld' },
-				{ label: 'South Australia', value: 'sa' },
-				{ label: 'Tasmania', value: 'tas' },
-				{ label: 'Victoria', value: 'vic' },
-				{ label: 'Western Australia', value: 'wa' },
-			]}
-		/>
-	);
-};
-```
 
 By default, the `Combobox` component does not expand to fill the available space.
 
@@ -150,6 +127,60 @@ Use the `ComboboxAsync` component when you need to populate options from a netwo
 		<ComboboxAsync
 			label="Select state"
 			hint="Start typing to see results"
+			value={value}
+			onChange={(value) => setValue(value)}
+			loadOptions={async function loadOptions(inputValue) {
+				// Simulate a slow network call
+				await new Promise((resolve) => setTimeout(resolve, 1500));
+				return [
+					{ label: 'Australian Capital Territory', value: 'act' },
+					{ label: 'New South Wales', value: 'nsw' },
+					{ label: 'Northern Territory', value: 'nt' },
+					{ label: 'Queensland', value: 'qld' },
+					{ label: 'South Australia', value: 'sa' },
+					{ label: 'Tasmania', value: 'tas' },
+					{ label: 'Victoria', value: 'vic' },
+					{ label: 'Western Australia', value: 'wa' },
+				];
+			}}
+		/>
+	);
+};
+```
+
+## ComboboxMulti
+
+```jsx live
+() => {
+	const [value, setValue] = React.useState(null);
+	return (
+		<Combobox
+			label="Select state"
+			value={value}
+			onChange={(value) => setValue(value)}
+			options={[
+				{ label: 'Australian Capital Territory', value: 'act' },
+				{ label: 'New South Wales', value: 'nsw' },
+				{ label: 'Northern Territory', value: 'nt' },
+				{ label: 'Queensland', value: 'qld' },
+				{ label: 'South Australia', value: 'sa' },
+				{ label: 'Tasmania', value: 'tas' },
+				{ label: 'Victoria', value: 'vic' },
+				{ label: 'Western Australia', value: 'wa' },
+			]}
+		/>
+	);
+};
+```
+
+## ComboboxAsyncMulti
+
+```jsx live
+() => {
+	const [value, setValue] = React.useState(null);
+	return (
+		<ComboboxAsyncMulti
+			label="Select state"
 			value={value}
 			onChange={(value) => setValue(value)}
 			loadOptions={async function loadOptions(inputValue) {

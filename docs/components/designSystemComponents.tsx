@@ -175,7 +175,12 @@ export {
 	SkeletonBox,
 } from '@ag.ds-next/react/skeleton';
 export { Autocomplete } from '@ag.ds-next/react/autocomplete';
-export { Combobox, ComboboxAsync } from '@ag.ds-next/react/combobox';
+export {
+	Combobox,
+	ComboboxMulti,
+	ComboboxAsync,
+	ComboboxAsyncMulti,
+} from '@ag.ds-next/react/combobox';
 export { Details } from '@ag.ds-next/react/details';
 export {
 	SummaryList,

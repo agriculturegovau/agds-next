@@ -25,6 +25,7 @@ export function Combobox<Option extends DefaultComboboxOption>(
 		selectedItem: props.value,
 		inputId,
 		items: inputItems ?? [],
+		defaultHighlightedIndex: 0,
 		itemToString: (item) => item?.label ?? '',
 		onSelectedItemChange: ({ selectedItem = null }) => {
 			props.onChange?.(selectedItem);

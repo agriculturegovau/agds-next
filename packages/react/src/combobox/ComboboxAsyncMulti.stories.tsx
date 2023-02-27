@@ -1,14 +1,11 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { useState } from 'react';
-import { Combobox } from './Combobox';
+import { ComboboxAsyncMulti } from './ComboboxAsyncMulti';
 import { COUNTRIES } from './test-utils';
 
 export default {
-	title: 'forms/Combobox/Combobox',
-	component: Combobox,
-} as ComponentMeta<typeof Combobox>;
-
-type Option = (typeof COUNTRIES)[number];
+	title: 'forms/Combobox/ComboboxAsyncMulti',
+} as ComponentMeta<typeof ComboboxAsyncMulti>;
 
 const defaultArgs = {
 	label: 'Select country',
@@ -16,9 +13,22 @@ const defaultArgs = {
 	options: COUNTRIES,
 };
 
-const Template: ComponentStory<typeof Combobox> = (args) => {
-	const [value, onChange] = useState<Option | null>(null);
-	return <Combobox {...args} value={value} onChange={onChange} />;
+const Template: ComponentStory<typeof ComboboxAsyncMulti> = (args) => {
+	const [value, onChange] = useState<Option[] | null>(null);
+	return (
+		<ComboboxAsyncMulti
+			{...args}
+			value={value}
+			onChange={onChange}
+			loadOptions={async function loadOptions(inputValue: string) {
+				const response = await fetch(
+					`https://swapi.dev/api/people/?search=${inputValue}`
+				);
+				const data: { results: { name: string }[] } = await response.json();
+				return data.results.map(({ name }) => ({ value: name, label: name }));
+			}}
+		/>
+	);
 };
 
 export const Basic = Template.bind({});

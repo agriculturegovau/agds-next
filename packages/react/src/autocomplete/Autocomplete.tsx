@@ -15,6 +15,7 @@ export function Autocomplete<Option extends DefaultComboboxOption>(
 	return (
 		<ComboboxAsync
 			{...props}
+			openDropdownOnFocus={false}
 			showDropdownTrigger={false}
 			clearable={true}
 			emptyResultsMessage="No results found."
