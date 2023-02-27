@@ -1,13 +1,17 @@
-import { PageTemplate } from '../../../.storybook/components/PageTemplate';
 import { preArrivalReportData } from './data';
+import { MarsAppLayout } from './MarsAppLayout';
 import { PreArrivalReportPage } from './PreArrivalReportPage';
 
 export default {
-	title: 'Examples/Pre-Arrival Report',
+	title: 'MARS/Pre-Arrival Report',
+	component: PreArrivalReportPage,
+	parameters: {
+		layout: 'fullscreen',
+	},
 };
 
 export const Review = () => (
-	<PageTemplate>
+	<MarsAppLayout>
 		<PreArrivalReportPage data={preArrivalReportData} />
-	</PageTemplate>
+	</MarsAppLayout>
 );

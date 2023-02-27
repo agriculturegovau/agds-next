@@ -1,20 +1,23 @@
-import { PageTemplate } from '../../../.storybook/components/PageTemplate';
 import { preArrivalReportData } from './data';
 import { EditArrivalDetailsPage } from './EditArrivalDetailsPage';
+import { MarsAppLayout } from './MarsAppLayout';
 
 export default {
-	title: 'Examples/Pre-Arrival Report/EditArrivalDetailsPage',
+	title: 'MARS/Pre-Arrival Report/EditArrivalDetails',
 	component: EditArrivalDetailsPage,
+	parameters: {
+		layout: 'fullscreen',
+	},
 };
 
-export const Default = () => {
+export const EditArrivalDetails = () => {
 	return (
-		<PageTemplate>
+		<MarsAppLayout>
 			<EditArrivalDetailsPage
 				data={preArrivalReportData}
 				loading
 				onSubmit={console.log}
 			/>
-		</PageTemplate>
+		</MarsAppLayout>
 	);
 };

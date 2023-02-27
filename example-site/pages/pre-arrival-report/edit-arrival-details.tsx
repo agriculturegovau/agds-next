@@ -1,10 +1,10 @@
 import { useRouter } from 'next/router';
 import { FormEvent, useState } from 'react';
-import { AppLayout } from '../../components/AppLayout';
 import { DocumentTitle } from '../../components/DocumentTitle';
 import { useScrollAndFocusField } from '../../components/PreArrivalReport/PreArrivalReportLayout';
 import { preArrivalReportData } from '../../components/PreArrivalReport/data';
 import { EditArrivalDetailsPage } from '../../components/PreArrivalReport/EditArrivalDetailsPage';
+import { MarsAppLayout } from '../../components/PreArrivalReport/MarsAppLayout';
 
 export default function VesselDetailsVesselParticulars() {
 	useScrollAndFocusField();
@@ -25,13 +25,13 @@ export default function VesselDetailsVesselParticulars() {
 	return (
 		<>
 			<DocumentTitle title="Arrival Details | Pre-arrival report" />
-			<AppLayout>
+			<MarsAppLayout>
 				<EditArrivalDetailsPage
 					data={preArrivalReportData}
 					loading={loading}
 					onSubmit={onSubmit}
 				/>
-			</AppLayout>
+			</MarsAppLayout>
 		</>
 	);
 }
