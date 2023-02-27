@@ -73,3 +73,11 @@ export const labelMapper = {
 	portOfIssue: 'Port of issue',
 	certificate: 'Current Sanitation Certificate',
 } as const;
+
+export const getFormattedLabel = (label: string) => {
+	if (labelMapper[label] === undefined) {
+		return label;
+	}
+
+	return labelMapper[label] || label;
+};

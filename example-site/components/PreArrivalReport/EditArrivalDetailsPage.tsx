@@ -23,45 +23,49 @@ export const EditArrivalDetailsPage = ({
 				<form onSubmit={onSubmit}>
 					<FormStack>
 						<Fieldset
-							legend={<H2>Additional vessel information</H2>}
+							legend={<H2>Arrival details</H2>}
 							hint="Supporting information for provide details subheading. All fields are required unless marked optional."
 						>
 							<FormStack>
 								<TextInput
-									label="Year built"
+									label="Voyage ID"
 									inputMode="numeric"
 									pattern="[0-9]*"
 									maxWidth="xl"
-									value={data.vesselDetails.yearBuilt}
+									value={data.arrivalDetails.voyage}
 								/>
 								<TextInput
-									label="Gross tonnage"
-									inputMode="numeric"
-									pattern="[0-9]*"
+									label="Last port of call"
 									maxWidth="xl"
-									value={data.vesselDetails.grossTonnage}
+									value={data.arrivalDetails.lastPortOfCall}
 								/>
 								<TextInput
-									label="Net tonnage"
-									inputMode="numeric"
-									pattern="[0-9]*"
+									label="Date departed last port"
+									type="date"
 									maxWidth="xl"
-									value={data.vesselDetails.netTonnage}
+									value={data.arrivalDetails.dateDepartedLastPort}
 								/>
 								<TextInput
-									label="Cargo docks"
+									label="First port of call"
 									maxWidth="xl"
-									value={data.vesselDetails.cargoDocks}
+									value={data.arrivalDetails.firstPortOfCall}
 								/>
 								<TextInput
-									label="Cargo holds"
+									label="Estimated arrival date"
+									type="date"
 									maxWidth="xl"
-									value={data.vesselDetails.cargoHolds}
+									value={data.arrivalDetails.estimatedArrivalDate}
 								/>
 								<TextInput
-									label="Cargo tanks"
+									label="Estimated departure date"
+									type="date"
 									maxWidth="xl"
-									value={data.vesselDetails.cargoTanks}
+									value={data.arrivalDetails.estimatedDepartureDate}
+								/>
+								<TextInput
+									label="Berth name"
+									maxWidth="xl"
+									value={data.arrivalDetails.berthName}
 								/>
 							</FormStack>
 						</Fieldset>

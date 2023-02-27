@@ -15,7 +15,7 @@ import { Checkbox } from '@ag.ds-next/react/control-input';
 import { StatusBadge } from '@ag.ds-next/react/badge';
 import { PageAlert } from '@ag.ds-next/react/page-alert';
 import { PreArrivalReportLayout } from './PreArrivalReportLayout';
-import { labelMapper, PreArrivalReportDataType } from './data';
+import { getFormattedLabel, PreArrivalReportDataType } from './data';
 
 export const FieldSetSummaryList = ({
 	title,
@@ -54,6 +54,14 @@ const badgeMapper = {
 // ## biofouling
 // ## biosecurity
 // ## covid19
+
+const formatValue = (value: string | number | boolean | undefined) => {
+	if (typeof value === 'boolean') {
+		return value ? 'Yes' : 'No';
+	}
+
+	return value;
+};
 
 export const PreArrivalReportPage = ({
 	data,
@@ -104,10 +112,10 @@ export const PreArrivalReportPage = ({
 					fields={(
 						Object.entries(data.vesselDetails) as [
 							keyof typeof data.vesselDetails,
-							string
+							string | boolean
 						][]
 					).map(([key, value]) => {
-						return { field: labelMapper[key] || key, value: value };
+						return { field: getFormattedLabel(key), value: formatValue(value) };
 					})}
 				/>
 
@@ -117,10 +125,10 @@ export const PreArrivalReportPage = ({
 					fields={(
 						Object.entries(data.arrivalDetails) as [
 							keyof typeof data.arrivalDetails,
-							string
+							string | boolean
 						][]
 					).map(([key, value]) => {
-						return { field: labelMapper[key] || key, value: value };
+						return { field: getFormattedLabel(key), value: formatValue(value) };
 					})}
 				/>
 				<FieldSetSummaryList
@@ -129,10 +137,10 @@ export const PreArrivalReportPage = ({
 					fields={(
 						Object.entries(data.shipSanitation) as [
 							keyof typeof data.shipSanitation,
-							string
+							string | boolean
 						][]
 					).map(([key, value]) => {
-						return { field: labelMapper[key] || key, value: value };
+						return { field: getFormattedLabel(key), value: formatValue(value) };
 					})}
 				/>
 				<FieldSetSummaryList
@@ -141,10 +149,10 @@ export const PreArrivalReportPage = ({
 					fields={(
 						Object.entries(data.humanHealth) as [
 							keyof typeof data.humanHealth,
-							string
+							string | boolean
 						][]
 					).map(([key, value]) => {
-						return { field: labelMapper[key] || key, value: value };
+						return { field: getFormattedLabel(key), value: formatValue(value) };
 					})}
 				/>
 
@@ -154,10 +162,10 @@ export const PreArrivalReportPage = ({
 					fields={(
 						Object.entries(data.biofouling) as [
 							keyof typeof data.biofouling,
-							string
+							string | boolean
 						][]
 					).map(([key, value]) => {
-						return { field: labelMapper[key] || key, value: value };
+						return { field: getFormattedLabel(key), value: formatValue(value) };
 					})}
 				/>
 
@@ -167,10 +175,10 @@ export const PreArrivalReportPage = ({
 					fields={(
 						Object.entries(data.biosecurity) as [
 							keyof typeof data.biosecurity,
-							string
+							string | boolean
 						][]
 					).map(([key, value]) => {
-						return { field: labelMapper[key] || key, value: value };
+						return { field: getFormattedLabel(key), value: formatValue(value) };
 					})}
 				/>
 
@@ -180,10 +188,10 @@ export const PreArrivalReportPage = ({
 					fields={(
 						Object.entries(data.covid19) as [
 							keyof typeof data.covid19,
-							string
+							string | boolean
 						][]
 					).map(([key, value]) => {
-						return { field: labelMapper[key] || key, value: value };
+						return { field: getFormattedLabel(key), value: formatValue(value) };
 					})}
 				/>
 
