@@ -20,6 +20,7 @@ export const DateInput = forwardRef<HTMLInputElement, DateInputProps>(
 		{
 			label,
 			required,
+			hideOptionalLabel,
 			hint,
 			message,
 			invalid,
@@ -52,7 +53,11 @@ export const DateInput = forwardRef<HTMLInputElement, DateInputProps>(
 		return (
 			<Field
 				label={label}
-				secondaryLabel="(dd/mm/yyyy)"
+				secondaryLabel={
+					required || hideOptionalLabel
+						? '(dd/mm/yyyy)'
+						: '(dd/mm/yyyy optional)'
+				}
 				required={Boolean(required)}
 				hint={hint}
 				message={message}

@@ -48,6 +48,12 @@ Required.args = {
 	label: 'Example',
 };
 
+export const HideOptionalLabel = Template.bind({});
+HideOptionalLabel.args = {
+	hideOptionalLabel: true,
+	label: 'Example',
+};
+
 export const Invalid = Template.bind({});
 Invalid.args = {
 	label: 'Example',

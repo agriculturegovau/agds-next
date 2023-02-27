@@ -42,6 +42,11 @@ Required.args = {
 	required: true,
 };
 
+export const HideOptionalLabel = Template.bind({});
+HideOptionalLabel.args = {
+	hideOptionalLabel: true,
+};
+
 export const Labels = Template.bind({});
 Labels.args = {
 	fromLabel: 'From',

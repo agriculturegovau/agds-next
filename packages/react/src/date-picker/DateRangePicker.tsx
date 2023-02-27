@@ -40,6 +40,8 @@ type DateRangePickerCalendarProps = {
 export type DateRangePickerProps = DateRangePickerCalendarProps & {
 	disabled?: boolean;
 	required?: boolean;
+	/** If true, "(optional)" will never be appended to the label. */
+	hideOptionalLabel?: boolean;
 	/** The value of the field. */
 	value: DateRange;
 	/** Function to be fired following a change event. */
@@ -63,6 +65,7 @@ export const DateRangePicker = ({
 	fromLabel = 'Start date',
 	toLabel = 'End date',
 	required,
+	hideOptionalLabel,
 	minDate,
 	maxDate,
 	fromInputRef,
@@ -207,6 +210,7 @@ export const DateRangePicker = ({
 					label={fromLabel}
 					value={fromInputValue}
 					onChange={onFromInputChange}
+					hideOptionalLabel={hideOptionalLabel}
 					buttonRef={fromTriggerRef}
 					buttonOnClick={onFromTriggerClick}
 					disabled={disabled}
@@ -217,6 +221,7 @@ export const DateRangePicker = ({
 					label={toLabel}
 					value={toInputValue}
 					onChange={onToInputChange}
+					hideOptionalLabel={hideOptionalLabel}
 					buttonRef={toTriggerRef}
 					buttonOnClick={onToTriggerClick}
 					disabled={disabled}
