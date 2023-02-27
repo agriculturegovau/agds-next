@@ -7,15 +7,15 @@ import { Fieldset } from '@ag.ds-next/react/fieldset';
 import { FormStack } from '@ag.ds-next/react/form-stack';
 import { H2 } from '@ag.ds-next/react/heading';
 import { TextInput } from '@ag.ds-next/react/text-input';
-import { AppLayout } from '../../../components/AppLayout';
-import { DocumentTitle } from '../../../components/DocumentTitle';
+import { AppLayout } from '../../components/AppLayout';
+import { DocumentTitle } from '../../components/DocumentTitle';
 import {
 	useScrollAndFocusField,
 	PreArrivalReportLayout,
-	values,
-} from '../../../components/PreArrivalReportLayout';
+} from '../../components/PreArrivalReport/PreArrivalReportLayout';
+import { preArrivalReportData } from '../../components/PreArrivalReport/data';
 
-export default function VesselDetailsVesselParticulars() {
+export default function Page() {
 	useScrollAndFocusField();
 	const router = useRouter();
 	const [loading, setLoading] = useState(false);
@@ -25,16 +25,16 @@ export default function VesselDetailsVesselParticulars() {
 		event.preventDefault();
 		setLoading(true);
 		setTimeout(() => {
-			router.push('/pre-arrival-report/vessel-details');
+			router.push('/pre-arrival-report');
 			setLoading(false);
 		}, 1500);
 	};
 
 	return (
 		<>
-			<DocumentTitle title="Vessel Particulars | Details | Pre-arrival report" />
+			<DocumentTitle title="Sanitation | Pre-arrival report" />
 			<AppLayout>
-				<PreArrivalReportLayout>
+				<PreArrivalReportLayout id={preArrivalReportData.id}>
 					<Stack gap={3}>
 						<form onSubmit={onSubmit}>
 							<FormStack>
@@ -51,13 +51,13 @@ export default function VesselDetailsVesselParticulars() {
 											label="Port agency"
 											required
 											maxWidth="xl"
-											value={values.shipSanitation.portAgency}
+											value={preArrivalReportData.shipSanitation.portAgency}
 										/>
 										<TextInput
 											label="Billing agency"
 											required
 											maxWidth="xl"
-											value={values.shipSanitation.billingAgency}
+											value={preArrivalReportData.shipSanitation.billingAgency}
 										/>
 									</FormStack>
 								</Fieldset>

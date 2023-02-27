@@ -8,15 +8,15 @@ import { FormStack } from '@ag.ds-next/react/form-stack';
 import { H2 } from '@ag.ds-next/react/heading';
 import { Select } from '@ag.ds-next/react/select';
 import { TextInput } from '@ag.ds-next/react/text-input';
-import { AppLayout } from '../../../components/AppLayout';
-import { DocumentTitle } from '../../../components/DocumentTitle';
+import { AppLayout } from '../../components/AppLayout';
+import { DocumentTitle } from '../../components/DocumentTitle';
 import {
 	useScrollAndFocusField,
 	PreArrivalReportLayout,
-	values,
-} from '../../../components/PreArrivalReportLayout';
+} from '../../components/PreArrivalReport/PreArrivalReportLayout';
+import { preArrivalReportData } from '../../components/PreArrivalReport/data';
 
-export default function VesselDetailsCertificateDetails() {
+export default function Page() {
 	useScrollAndFocusField();
 
 	const router = useRouter();
@@ -27,16 +27,16 @@ export default function VesselDetailsCertificateDetails() {
 		event.preventDefault();
 		setLoading(true);
 		setTimeout(() => {
-			router.push('/pre-arrival-report/vessel-details');
+			router.push('/pre-arrival-report');
 			setLoading(false);
 		}, 1500);
 	};
 
 	return (
 		<>
-			<DocumentTitle title="Vessel Particulars | Details | Pre-arrival report" />
+			<DocumentTitle title="Human health | Pre-arrival report" />
 			<AppLayout>
-				<PreArrivalReportLayout>
+				<PreArrivalReportLayout id={preArrivalReportData.id}>
 					<Stack gap={3}>
 						<form onSubmit={onSubmit}>
 							<Fieldset legend={<H2>Certificate details</H2>}>
@@ -49,7 +49,9 @@ export default function VesselDetailsCertificateDetails() {
 												{ value: 'b', label: 'Option B' },
 												{ value: 'c', label: 'Option C' },
 											]}
-											value={values.certificateDetails.certificateType}
+											value={
+												preArrivalReportData.certificateDetails.certificateType
+											}
 											maxWidth="xl"
 											required
 										/>
@@ -60,7 +62,9 @@ export default function VesselDetailsCertificateDetails() {
 												{ value: 'b', label: 'Option B' },
 												{ value: 'c', label: 'Option C' },
 											]}
-											value={values.certificateDetails.controlDetails}
+											value={
+												preArrivalReportData.certificateDetails.controlDetails
+											}
 											maxWidth="xl"
 											required
 										/>
@@ -68,7 +72,9 @@ export default function VesselDetailsCertificateDetails() {
 											label="Port of issue"
 											maxWidth="xl"
 											required
-											value={values.certificateDetails.portOfIssue}
+											value={
+												preArrivalReportData.certificateDetails.portOfIssue
+											}
 										/>
 									</FormStack>
 									<FileUpload

@@ -8,15 +8,15 @@ import { FormStack } from '@ag.ds-next/react/form-stack';
 import { H2 } from '@ag.ds-next/react/heading';
 import { Select } from '@ag.ds-next/react/select';
 import { TextInput } from '@ag.ds-next/react/text-input';
-import { AppLayout } from '../../../components/AppLayout';
-import { DocumentTitle } from '../../../components/DocumentTitle';
+import { AppLayout } from '../../components/AppLayout';
+import { DocumentTitle } from '../../components/DocumentTitle';
 import {
 	useScrollAndFocusField,
 	PreArrivalReportLayout,
-	values,
-} from '../../../components/PreArrivalReportLayout';
+} from '../../components/PreArrivalReport/PreArrivalReportLayout';
+import { preArrivalReportData } from '../../components/PreArrivalReport/data';
 
-export default function VesselDetailsVesselParticulars() {
+export default function Page() {
 	useScrollAndFocusField();
 	const router = useRouter();
 	const [loading, setLoading] = useState(false);
@@ -26,16 +26,16 @@ export default function VesselDetailsVesselParticulars() {
 		event.preventDefault();
 		setLoading(true);
 		setTimeout(() => {
-			router.push('/pre-arrival-report/vessel-details');
+			router.push('/pre-arrival-report');
 			setLoading(false);
 		}, 1500);
 	};
 
 	return (
 		<>
-			<DocumentTitle title="Vessel Particulars | Details | Pre-arrival report" />
+			<DocumentTitle title="Vessel Particulars | Pre-arrival report" />
 			<AppLayout>
-				<PreArrivalReportLayout>
+				<PreArrivalReportLayout id={preArrivalReportData.id}>
 					<Stack gap={3}>
 						<form onSubmit={onSubmit}>
 							<FormStack>
@@ -49,14 +49,16 @@ export default function VesselDetailsVesselParticulars() {
 											id="vesselName"
 											required
 											maxWidth="xl"
-											value={values.vesselParticulars.vesselName}
+											value={preArrivalReportData.vesselDetails.vesselName}
 										/>
 										<TextInput
 											label="Country of registry"
 											id="countryOfRegistry"
 											required
 											maxWidth="xl"
-											value={values.vesselParticulars.countryOfRegistry}
+											value={
+												preArrivalReportData.vesselDetails.countryOfRegistry
+											}
 										/>
 										<Flex gap={1} alignItems="flex-end">
 											<TextInput
@@ -64,7 +66,7 @@ export default function VesselDetailsVesselParticulars() {
 												id="imo"
 												required
 												maxWidth="xl"
-												value={values.vesselParticulars.imo}
+												value={preArrivalReportData.vesselDetails.imo}
 											/>
 											<Checkbox checked={false}>tick if none</Checkbox>
 										</Flex>
@@ -73,7 +75,7 @@ export default function VesselDetailsVesselParticulars() {
 											id="registration"
 											required
 											maxWidth="xl"
-											value={values.vesselParticulars.registration}
+											value={preArrivalReportData.vesselDetails.registration}
 										/>
 										<Select
 											label="Vessel type"
@@ -83,7 +85,7 @@ export default function VesselDetailsVesselParticulars() {
 												{ value: 'b', label: 'Submarine' },
 												{ value: 'c', label: 'Kayak' },
 											]}
-											value={values.vesselParticulars.vesselType}
+											value={preArrivalReportData.vesselDetails.vesselType}
 											maxWidth="xl"
 										/>
 										<TextInput
@@ -91,7 +93,7 @@ export default function VesselDetailsVesselParticulars() {
 											id="overallLength"
 											required
 											maxWidth="xl"
-											value={values.vesselParticulars.overallLength}
+											value={preArrivalReportData.vesselDetails.overallLength}
 										/>
 									</FormStack>
 								</Fieldset>
