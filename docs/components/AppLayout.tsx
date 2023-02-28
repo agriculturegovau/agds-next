@@ -5,7 +5,7 @@ import { SiteHeader } from './SiteHeader';
 import { SiteFooter } from './SiteFooter';
 
 type AppLayoutProps = PropsWithChildren<{
-	/** If true, the area between the header and footer will be a `main` element with the ID of 'main-content' applied (used for skip links). */
+	/** If true, the area between the header and footer will be a 'main' element with the ID of 'main-content' applied (used for skip links). */
 	applyMainElement?: boolean;
 }>;
 

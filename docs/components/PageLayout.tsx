@@ -9,7 +9,7 @@ import { Breadcrumbs, BreadcrumbsProps } from '@ag.ds-next/react/breadcrumbs';
 import { EditPage } from './EditPage';
 
 type PageLayoutProps = PropsWithChildren<{
-	/** If true, the main content area will be a `main` element with the ID of 'main-content' applied (used for skip links). */
+	/** If true, the main content area will be a 'main' element with the ID of 'main-content' applied (used for skip links). */
 	applyMainElement?: boolean;
 	/** The breadcrumbs to render at the top of the page. */
 	breadcrumbs?: BreadcrumbsProps['links'];
