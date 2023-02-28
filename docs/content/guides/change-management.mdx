@@ -1,0 +1,85 @@
+---
+title: Change management
+opener: How we classify and communicate changes to our design system.
+---
+
+The design system is a living piece of software and is constantly evolving to meet the needs of our users. We want to ensure that we are communicating changes to our users in a way that is clear and easy to understand.
+
+See our [updates page](https://design-system.agriculture.gov.au/updates) for our changelog.
+
+## Release cadence
+
+We aim to release a new version of the design system [via npm](https://www.npmjs.com/package/@ag.ds-next/react) every two weeks, or the end of a sprint. This ensures that we are releasing changes regularly and giving our users a chance to provide feedback on changes before they are released.
+
+This is a general guideline and we may release more frequently if there are important changes to be released.
+
+## Change Types
+
+When contributing changes to the design system, it is important to understand how we classify and communicate them. This helps us to understand the impact of changes and to communicate them to our users.
+
+We follow the [Semantic Versioning](https://semver.org/) system to classify changes. This system uses three classificatons to describe the type of change...
+
+- Patch
+- Minor
+- Major
+
+### Patch (fix)
+
+A change that fixes a bug or makes a small improvement which does not affect the API of the component. The consumer isn't expected to change their code in order to implement the update.
+
+For example...
+
+- A minor visual change to a component
+- Resolving a crash or other kind of bug
+
+The GitHub pull request related to a patch change can reviewed, merged and released as soon as a AgDS team member is free.
+
+### Minor (feature)
+
+A new feature to an existing component, or the introduction of a new standalone component. The user can elect to implement the change but isn't forced to change existing code.
+
+For example...
+
+- A new component
+- A new prop on an existing component
+
+The GitHub pull request related to a patch change can be reviewed, merged and released as soon as a AgDS team member is free.
+
+### Major (breaking)
+
+A change which breaks the API of existing component(s). A user is expected to make a change to their code in order for it to continue working.
+
+For example...
+
+- Removing a component
+- Removing a prop from a component
+- Changing the API, behaviour or name of a component
+
+**Before this can be merged**, the community must be given a chance to give feedback on the change. Please follow the following steps.
+
+- Consult the Design System team of the change you intend to make
+- Open the PR as a draft, and add the "breaking" label. Notify the AgDS team
+- AgDS team will notify the community via the "Design System" chat in Microsoft Teams
+- Leave the PR open for at least one week, to give the community a chance to give feedback by commenting on the GitHub Pull Request
+- Consider the feedback given and make any changes
+- The AgDS team will decide whether to merge the PR and release the change
+
+### 'No change'
+
+Changes that do not effect our published artefacts such as the documentation website updates do not require any versioning updates.
+
+## Deprecation
+
+As a general rule, we do our best to design with the future in mind, to avoid breaking changes. However, sometimes new information or ideas come to light which mean that we need to change our approach. In these cases, we will deprecate a component or prop.
+
+Deprecation is a process of warning users that a component or prop will be removed in a future release. This gives users a chance to update their code before the change is made.
+
+If we intend to deprecate a component or prop, the process for commmunicating breaking changes, as outlined above, must be followed. A Github Pull Request will be created as a draft and will include the "deprecation" label. The community will be given one week to give feedback, before we decide whether to merge the PR and release the change.
+
+## About Changesets
+
+We use [Changesets](https://github.com/changesets/changesets) to communicate the changes to our users and to automate the release process.
+
+Every pull request which changes a component must include a changeset file. This file describes the change, and is used to generate the release notes and to determine the version number of the next release.
+
+To create a changeset, run `yarn changeset` in the root of the repository. Then commit the changeset file and push it to your branch.
