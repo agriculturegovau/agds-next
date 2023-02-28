@@ -14,6 +14,7 @@ import { Button, ButtonGroup } from '@ag.ds-next/react/button';
 import { Checkbox } from '@ag.ds-next/react/control-input';
 import { StatusBadge } from '@ag.ds-next/react/badge';
 import { PageAlert } from '@ag.ds-next/react/page-alert';
+import { FieldMessage } from '@ag.ds-next/react/field';
 import { PreArrivalReportLayout } from './PreArrivalReportLayout';
 import { getFormattedLabel, PreArrivalReportDataType } from './data';
 
@@ -24,16 +25,28 @@ export const FieldSetSummaryList = ({
 }: {
 	title: string;
 	href: string;
-	fields: { field: string; value: string | number | boolean | undefined }[];
+	fields: {
+		field: string;
+		value: string | number | boolean | undefined;
+		invalidMessage?: string;
+	}[];
 }) => (
 	<Stack gap={1.5} alignItems="flex-start" maxWidth={tokens.maxWidth.bodyText}>
 		<H3>{title}</H3>
 		<SummaryList>
-			{fields.map(({ field, value }) => {
+			{fields.map(({ field, value, invalidMessage }) => {
 				return (
 					<SummaryListItem key={field}>
 						<SummaryListItemTerm>{field}</SummaryListItemTerm>
-						<SummaryListItemDescription>{value}</SummaryListItemDescription>
+						<SummaryListItemDescription>
+							{invalidMessage ? (
+								<FieldMessage id={`${field}-error`}>
+									{invalidMessage}
+								</FieldMessage>
+							) : (
+								value
+							)}
+						</SummaryListItemDescription>
 					</SummaryListItem>
 				);
 			})}
@@ -69,6 +82,28 @@ export const PreArrivalReportPage = ({
 	data: PreArrivalReportDataType;
 }) => {
 	const { tone, label } = badgeMapper[data.status];
+
+	const sanitationFieldValues: {
+		field: string;
+		value: string | number | boolean | undefined;
+		invalidMessage?: string;
+	}[] = (
+		Object.entries(data.shipSanitation) as [
+			keyof typeof data.shipSanitation,
+			string | boolean
+		][]
+	).map(([key, value]) => {
+		return {
+			field: getFormattedLabel(key),
+			value: formatValue(value),
+		};
+	});
+
+	sanitationFieldValues.push({
+		field: 'Example field',
+		value: undefined,
+		invalidMessage: 'Field name is required',
+	});
 
 	return (
 		<PreArrivalReportLayout id={data.id}>
@@ -134,14 +169,7 @@ export const PreArrivalReportPage = ({
 				<FieldSetSummaryList
 					title="Sanitation"
 					href="/pre-arrival-report/edit-sanitation"
-					fields={(
-						Object.entries(data.shipSanitation) as [
-							keyof typeof data.shipSanitation,
-							string | boolean
-						][]
-					).map(([key, value]) => {
-						return { field: getFormattedLabel(key), value: formatValue(value) };
-					})}
+					fields={sanitationFieldValues}
 				/>
 				<FieldSetSummaryList
 					title="Human health"
