@@ -33,6 +33,7 @@ export function Content({ sideNav = true }: { sideNav?: boolean }) {
 					</Column>
 				)}
 				<Column
+					as="main"
 					id="main-content"
 					tabIndex={-1}
 					css={{ '&:focus': { outline: 'none' } }}
