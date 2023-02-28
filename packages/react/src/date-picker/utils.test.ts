@@ -7,6 +7,13 @@ describe('parseDate', () => {
 		expect(parseDate('31/12/1999')).not.toEqual(undefined);
 		expect(parseDate('01/01/2000')).not.toEqual(undefined);
 	});
+
+	test('works on short, valid dates ', () => {
+		expect(parseDate('1/1/1950')).not.toEqual(undefined);
+		expect(parseDate('2/9/1999')).not.toEqual(undefined);
+		expect(parseDate('14/1/2000')).not.toEqual(undefined);
+	});
+
 	test('works on invalid dates and invalid formats', () => {
 		expect(parseDate('50/50/2019')).toEqual(undefined);
 		expect(parseDate('50/50/19')).toEqual(undefined);
@@ -14,6 +21,10 @@ describe('parseDate', () => {
 		expect(parseDate('31/01/199')).toEqual(undefined);
 		expect(parseDate('31-01-19')).toEqual(undefined);
 		expect(parseDate('1-2-3')).toEqual(undefined);
+		expect(parseDate('hello')).toEqual(undefined);
+		expect(parseDate('aa/bb/cccc')).toEqual(undefined);
+		expect(parseDate('a/bb/cccc')).toEqual(undefined);
+		expect(parseDate('a/b/cccc')).toEqual(undefined);
 	});
 });
 

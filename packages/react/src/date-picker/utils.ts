@@ -10,7 +10,14 @@ export const formatHumanReadableDate = (date: Date) =>
 
 // https://github.com/date-fns/date-fns/issues/942
 export const parseDate = (value: string) => {
-	if (value.length !== dateFormat.length) return undefined;
+	if (value.length > dateFormat.length) return undefined;
+
+	if (value.length < dateFormat.length) {
+		const [d, m, y] = value.split('/');
+		if (!(d && m && y)) return undefined;
+		value = [d.padStart(2, '0'), m.padStart(2, '0'), y].join('/');
+		if (value.length !== dateFormat.length) return undefined;
+	}
 
 	const parsed = parse(value, dateFormat, new Date());
 	if (isDate(parsed) && isValid(parsed)) return parsed;

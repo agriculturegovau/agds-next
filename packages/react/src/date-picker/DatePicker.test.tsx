@@ -13,7 +13,7 @@ function renderDatePicker(props: DatePickerProps) {
 	return render(<DatePicker {...props} />);
 }
 
-function ControlledDatePicker({ initialValue }: { initialValue: Date }) {
+function ControlledDatePicker({ initialValue }: { initialValue?: Date }) {
 	const [value, setValue] = useState<Date | undefined>(initialValue);
 	return (
 		<Stack gap={4} alignItems="flex-start">
@@ -74,5 +74,24 @@ describe('DatePicker', () => {
 		expect(input).toHaveValue('');
 		// The calendar button triggers aria-label should be updated
 		expect(calendarTrigger).toHaveAttribute('aria-label', 'Choose date');
+	});
+
+	it('works with short date formats', async () => {
+		const { container } = render(<ControlledDatePicker />);
+
+		let input = container.querySelector('input');
+		expect(input).toBeInstanceOf(HTMLInputElement);
+		if (!input) return;
+
+		// The input should be empty
+		expect(input).toHaveValue('');
+
+		// Type in a short date format
+		await userEvent.type(input, '4/2/2020');
+
+		input = container.querySelector('input');
+
+		// The input should have the full date format
+		expect(input).toHaveValue('04/02/2020');
 	});
 });
