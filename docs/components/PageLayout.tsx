@@ -9,8 +9,8 @@ import { Breadcrumbs, BreadcrumbsProps } from '@ag.ds-next/react/breadcrumbs';
 import { EditPage } from './EditPage';
 
 type PageLayoutProps = PropsWithChildren<{
-	/** If true, the `main` element will have the id of 'main-content' applied. Used for skip links. */
-	applyMainContentId?: boolean;
+	/** If true, the main content area will be a `main` element with the ID of 'main-content' applied (used for skip links). */
+	applyMainElement?: boolean;
 	/** The breadcrumbs to render at the top of the page. */
 	breadcrumbs?: BreadcrumbsProps['links'];
 	/** Path to the file containing the content for the page. Used for 'Edit this page' link. */
@@ -26,7 +26,7 @@ type PageLayoutProps = PropsWithChildren<{
 }>;
 
 export function PageLayout({
-	applyMainContentId = false,
+	applyMainElement = false,
 	breadcrumbs,
 	children,
 	editPath,
@@ -51,7 +51,8 @@ export function PageLayout({
 					</Column>
 				)}
 				<Column
-					{...(applyMainContentId && {
+					{...(applyMainElement && {
+						as: 'main',
 						id: 'main-content',
 						tabIndex: -1,
 						css: { '&:focus': { outline: 'none' } },

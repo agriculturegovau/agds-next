@@ -8,7 +8,7 @@ export default function ContentPage() {
 			<DocumentTitle title="Content page example" />
 			<AppLayout
 				template={{ name: 'Content', slug: 'content' }}
-				applyMainContentId={false}
+				applyMainElement={false}
 			>
 				<Content />
 			</AppLayout>

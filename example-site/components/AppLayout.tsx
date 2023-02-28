@@ -6,8 +6,8 @@ import { SiteHeader } from './SiteHeader';
 import { SiteFooter } from './SiteFooter';
 
 type AppLayoutProps = PropsWithChildren<{
-	/** If true, the `main` element will have the id of 'main-content' applied. Used for skip links. */
-	applyMainContentId?: boolean;
+	/** If true, the area between the header and footer will be a `main` element with the ID of 'main-content' applied (used for skip links). */
+	applyMainElement?: boolean;
 	/** If true, the `MainNav` component will not be rendered. Used on pages with focused tasks such as multi-page forms. */
 	focusMode?: boolean;
 	/** The name and slug of the template. */
@@ -16,7 +16,7 @@ type AppLayoutProps = PropsWithChildren<{
 
 export const AppLayout = ({
 	children,
-	applyMainContentId = true,
+	applyMainElement = true,
 	focusMode = false,
 	template,
 }: AppLayoutProps) => {
@@ -40,9 +40,9 @@ export const AppLayout = ({
 				{template ? <TemplateBanner {...template} /> : null}
 				<SiteHeader focusMode={focusMode} />
 				<Box
-					as="main"
 					flexGrow={1}
-					{...(applyMainContentId && {
+					{...(applyMainElement && {
+						as: 'main',
 						id: 'main-content',
 						tabIndex: -1,
 						css: { '&:focus': { outline: 'none' } },

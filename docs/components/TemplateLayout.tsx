@@ -26,9 +26,9 @@ export const TemplateLayout = ({
 	template,
 }: TemplateLayoutProps) => {
 	return (
-		<AppLayout applyMainContentId={false}>
+		<AppLayout applyMainElement={false}>
 			<PageLayout
-				applyMainContentId={true}
+				applyMainElement={true}
 				sideNav={{
 					title: 'Templates',
 					titleLink: '/templates',

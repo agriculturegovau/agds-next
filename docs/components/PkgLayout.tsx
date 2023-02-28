@@ -29,9 +29,9 @@ export function PkgLayout({
 }>) {
 	const { asPath } = useRouter();
 	return (
-		<AppLayout applyMainContentId={false}>
+		<AppLayout applyMainElement={false}>
 			<PageLayout
-				applyMainContentId={true}
+				applyMainElement={true}
 				sideNav={{
 					title: 'Components',
 					titleLink: '/components',
