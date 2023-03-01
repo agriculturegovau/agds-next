@@ -82,33 +82,14 @@ const useSortAndFilter = (args?: { filters?: Partial<GetDataFilters> }) => {
 };
 
 const genetateTableCaption = ({
-	filters,
 	loading,
 	totalItems,
 }: {
-	filters: GetDataFilters;
 	pagination: GetDataPagination;
 	loading: boolean;
 	totalItems: number;
 }) => {
-	let caption = 'All audits';
-
-	if (filters.businessName) {
-		return `Audits for businesses with name that includes "${filters.businessName}"`;
-	}
-
-	if (filters.assignee) {
-		caption = `Audits assigned to ${filters.assignee}`;
-	}
-
-	if (filters.state) {
-		caption = `${caption} in ${filters.state}`;
-	}
-	if (filters.status) {
-		caption = `${caption} which are ${filters.status}`;
-	}
-
-	return `${caption} ${loading ? '' : `(${totalItems} items)`}`;
+	return `Audits ${loading ? '' : `(${totalItems} items)`}`;
 };
 
 export const Small = () => {
@@ -130,7 +111,6 @@ export const Small = () => {
 	const tableCaption = genetateTableCaption({
 		loading,
 		totalItems,
-		filters,
 		pagination,
 	});
 
@@ -170,7 +150,6 @@ export const DropDown = () => {
 	const tableCaption = genetateTableCaption({
 		loading,
 		totalItems,
-		filters,
 		pagination,
 	});
 
@@ -214,7 +193,6 @@ export const FilterBar = () => {
 	const tableCaption = genetateTableCaption({
 		loading,
 		totalItems,
-		filters,
 		pagination,
 	});
 
@@ -255,6 +233,24 @@ export const Search = () => {
 	const tableCaption = genetateTableCaption({
 		loading,
 		totalItems,
+		pagination,
+	});
+
+	return (
+		<ExampleSearch
+			data={data}
+			filters={filters}
+			loading={loading}
+			pagination={pagination}
+			resetPagination={resetPagination}
+			setFilters={setFilters}
+			setPagination={setPagination}
+			tableCaption={tableCaption}
+			totalPages={totalPages}
+		/>
+	);
+};
+
 		filters,
 		pagination,
 	});
