@@ -10,7 +10,7 @@ import { GetDataFilters, GetDataPagination } from './lib/data';
 import { BusinessForAudit } from './lib/generateBusinessData';
 import { PlusIcon } from '@ag.ds-next/react/icon';
 
-type ExampleBasicProps = {
+type SmallExampleProps = {
 	filters: GetDataFilters;
 	setFilters: (filters: GetDataFilters) => void;
 	pagination: GetDataPagination;
@@ -22,7 +22,7 @@ type ExampleBasicProps = {
 	tableCaption: string;
 };
 
-export const ExampleBasic = ({
+export const ExampleSmall = ({
 	filters,
 	setFilters,
 	pagination,
@@ -32,7 +32,7 @@ export const ExampleBasic = ({
 	loading,
 	data,
 	tableCaption,
-}: ExampleBasicProps) => {
+}: SmallExampleProps) => {
 	return (
 		<AppShell>
 			<DashboardPageTitle title="Requests" />

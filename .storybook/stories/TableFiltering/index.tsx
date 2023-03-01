@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { ExampleBasic } from './ExampleBasic';
+import { ExampleSmall } from './ExampleSmall';
 import { ExampleDropDownMenu } from './ExampleDropDownMenu';
 import { ExampleFilterBar } from './ExampleFilterBar';
 import { ExampleSearch } from './ExampleSearch';
@@ -111,7 +111,7 @@ const genetateTableCaption = ({
 	return `${caption} ${loading ? '' : `(${totalItems} items)`}`;
 };
 
-export const Basic = () => {
+export const Small = () => {
 	const {
 		filters,
 		pagination,
@@ -135,7 +135,7 @@ export const Basic = () => {
 	});
 
 	return (
-		<ExampleBasic
+		<ExampleSmall
 			data={data}
 			filters={filters}
 			loading={loading}
