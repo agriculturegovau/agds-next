@@ -20,8 +20,9 @@ export default function Guides({
 	return (
 		<>
 			<DocumentTitle title={guide.title} description={guide.opener} />
-			<AppLayout>
+			<AppLayout applyMainElement={false}>
 				<PageLayout
+					applyMainElement={true}
 					editPath={`/docs/content/guides/${guide.slug}.mdx`}
 					breadcrumbs={breadcrumbs}
 				>

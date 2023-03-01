@@ -29,12 +29,6 @@ export default function TemplateOverviewPage({
 				breadcrumbs={breadcrumbs}
 				navLinks={navLinks}
 				editPath={`/docs/content/templates/${template.slug}/index.mdx`}
-				skipLinks={[
-					{
-						label: `Skip to ${template.title} template overview`,
-						href: '#page-content',
-					},
-				]}
 			>
 				<Prose id="page-content">
 					<Box border borderColor="muted" css={{ img: { display: 'block' } }}>

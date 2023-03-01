@@ -11,6 +11,7 @@ import { PageLayout } from './PageLayout';
 import { FigmaLogo } from './FigmaLogo';
 import { StorybookLogo } from './StorybookLogo';
 import { GithubLogo } from './GithubLogo';
+import { AppLayout } from './AppLayout';
 
 export function PkgLayout({
 	children,
@@ -28,73 +29,76 @@ export function PkgLayout({
 }>) {
 	const { asPath } = useRouter();
 	return (
-		<PageLayout
-			sideNav={{
-				title: 'Components',
-				titleLink: '/components',
-				items: navLinks,
-			}}
-			editPath={editPath}
-			breadcrumbs={breadcrumbs}
-			skipLinks={skipLinks}
-		>
-			<PageTitle
-				pretext={`v${pkg.version}`}
-				title={pkg.title}
-				introduction={pkg.description}
-				callToAction={
-					(pkg.storybookPath || pkg.figmaGalleryNodeId) && (
-						<Flex
-							gap={1.5}
-							flexWrap="wrap"
-							flexDirection={['column', 'row']}
-							alignItems="flex-start"
-						>
-							{pkg.figmaGalleryNodeId && (
-								<ButtonLink
-									variant="text"
-									href={`${process.env.NEXT_PUBLIC_FIGMA_URL}?node-id=${pkg.figmaGalleryNodeId}`}
-									iconBefore={FigmaLogo}
-								>
-									View in Figma
-								</ButtonLink>
-							)}
-							{pkg.storybookPath && (
-								<ButtonLink
-									variant="text"
-									href={`${process.env.NEXT_PUBLIC_STORYBOOK_URL}?path=${pkg.storybookPath}`}
-									iconBefore={StorybookLogo}
-								>
-									View in Storybook
-								</ButtonLink>
-							)}
-
-							<ButtonLink
-								variant="text"
-								href={`https://github.com/steelthreads/agds-next/tree/main/packages/react/src/${pkg.slug}`}
-								iconBefore={GithubLogo}
+		<AppLayout applyMainElement={false}>
+			<PageLayout
+				applyMainElement={true}
+				sideNav={{
+					title: 'Components',
+					titleLink: '/components',
+					items: navLinks,
+				}}
+				editPath={editPath}
+				breadcrumbs={breadcrumbs}
+				skipLinks={skipLinks}
+			>
+				<PageTitle
+					pretext={`v${pkg.version}`}
+					title={pkg.title}
+					introduction={pkg.description}
+					callToAction={
+						(pkg.storybookPath || pkg.figmaGalleryNodeId) && (
+							<Flex
+								gap={1.5}
+								flexWrap="wrap"
+								flexDirection={['column', 'row']}
+								alignItems="flex-start"
 							>
-								View in Github
-							</ButtonLink>
-						</Flex>
-					)
-				}
-			/>
-			<Prose>
-				<pre>
-					<code>{`import { ... } from '@ag.ds-next/react/${pkg.name}';`}</code>
-				</pre>
-			</Prose>
-			{pkg.subNavItems?.length ? (
-				<SubNav
-					activePath={asPath}
-					links={pkg.subNavItems.map((item) => ({
-						...item,
-						scroll: false,
-					}))}
+								{pkg.figmaGalleryNodeId && (
+									<ButtonLink
+										variant="text"
+										href={`${process.env.NEXT_PUBLIC_FIGMA_URL}?node-id=${pkg.figmaGalleryNodeId}`}
+										iconBefore={FigmaLogo}
+									>
+										View in Figma
+									</ButtonLink>
+								)}
+								{pkg.storybookPath && (
+									<ButtonLink
+										variant="text"
+										href={`${process.env.NEXT_PUBLIC_STORYBOOK_URL}?path=${pkg.storybookPath}`}
+										iconBefore={StorybookLogo}
+									>
+										View in Storybook
+									</ButtonLink>
+								)}
+
+								<ButtonLink
+									variant="text"
+									href={`https://github.com/steelthreads/agds-next/tree/main/packages/react/src/${pkg.slug}`}
+									iconBefore={GithubLogo}
+								>
+									View in Github
+								</ButtonLink>
+							</Flex>
+						)
+					}
 				/>
-			) : null}
-			{children}
-		</PageLayout>
+				<Prose>
+					<pre>
+						<code>{`import { ... } from '@ag.ds-next/react/${pkg.name}';`}</code>
+					</pre>
+				</Prose>
+				{pkg.subNavItems?.length ? (
+					<SubNav
+						activePath={asPath}
+						links={pkg.subNavItems.map((item) => ({
+							...item,
+							scroll: false,
+						}))}
+					/>
+				) : null}
+				{children}
+			</PageLayout>
+		</AppLayout>
 	);
 }

@@ -5,14 +5,21 @@ import { TemplateBanner } from './TemplateBanner';
 import { SiteHeader } from './SiteHeader';
 import { SiteFooter } from './SiteFooter';
 
+type AppLayoutProps = PropsWithChildren<{
+	/** If true, the area between the header and footer will be a 'main' element with the ID of 'main-content' applied (used for skip links). */
+	applyMainElement?: boolean;
+	/** If true, the `MainNav` component will not be rendered. Used on pages with focused tasks such as multi-page forms. */
+	focusMode?: boolean;
+	/** The name and slug of the template. */
+	template?: { name: string; slug: string };
+}>;
+
 export const AppLayout = ({
 	children,
-	template,
+	applyMainElement = true,
 	focusMode = false,
-}: PropsWithChildren<{
-	template?: { name: string; slug: string };
-	focusMode?: boolean;
-}>) => {
+	template,
+}: AppLayoutProps) => {
 	const skipLinks = useMemo(() => {
 		const items = [{ href: '#main-content', label: 'Skip to main content' }];
 		if (!focusMode) {
@@ -33,11 +40,13 @@ export const AppLayout = ({
 				{template ? <TemplateBanner {...template} /> : null}
 				<SiteHeader focusMode={focusMode} />
 				<Box
-					as="main"
-					id="main-content"
 					flexGrow={1}
-					tabIndex={-1}
-					css={{ '&:focus': { outline: 'none' } }}
+					{...(applyMainElement && {
+						as: 'main',
+						id: 'main-content',
+						tabIndex: -1,
+						css: { '&:focus': { outline: 'none' } },
+					})}
 				>
 					{children}
 				</Box>

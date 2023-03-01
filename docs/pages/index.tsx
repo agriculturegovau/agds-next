@@ -22,72 +22,62 @@ export default function Homepage() {
 		<>
 			<DocumentTitle description={description} />
 			<AppLayout>
-				<main
-					id="main-content"
-					tabIndex={-1}
-					css={{ '&:focus': { outline: 'none' } }}
-				>
-					<HeroBanner>
-						<HeroBannerTitleContainer>
-							<HeroBannerTitle>
-								Welcome to the Agriculture Design System (AgDS)
-							</HeroBannerTitle>
-							<HeroBannerSubtitle>{description}</HeroBannerSubtitle>
-						</HeroBannerTitleContainer>
-						<CallToActionLink href="/guides/getting-started">
-							Get started
-						</CallToActionLink>
-					</HeroBanner>
-					<SectionContent>
-						<Stack gap={3}>
-							<Prose>
-								<p>
-									AgDS is based on the{' '}
-									<TextLink href="https://gold.designsystemau.org/">
-										GOLD Design System
-									</TextLink>{' '}
-									which incorporates the highest usability and accessibility
-									standards, helping us to deliver a consistent experience for
-									all users, in line with the{' '}
-									<TextLink href="https://www.dta.gov.au/help-and-advice/about-digital-service-standard">
-										Digital Service Standard
-									</TextLink>
-									.
-								</p>
-							</Prose>
-							<Columns
-								as="ul"
-								cols={{
-									xs: 1,
-									sm: 2,
-									lg: 3,
-									xl: 4,
-								}}
-							>
-								<PictogramCard
-									title="Foundations"
-									pictogram="text"
-									href="/foundations"
-								/>
-								<PictogramCard
-									title="Components"
-									pictogram="components"
-									href="/components"
-								/>
-								<PictogramCard
-									title="Guides"
-									pictogram="guides"
-									href="/guides"
-								/>
-								<PictogramCard
-									title="Starter kit"
-									pictogram="starter"
-									href="https://github.com/steelthreads/agds-starter-kit"
-								/>
-							</Columns>
-						</Stack>
-					</SectionContent>
-				</main>
+				<HeroBanner>
+					<HeroBannerTitleContainer>
+						<HeroBannerTitle>
+							Welcome to the Agriculture Design System (AgDS)
+						</HeroBannerTitle>
+						<HeroBannerSubtitle>{description}</HeroBannerSubtitle>
+					</HeroBannerTitleContainer>
+					<CallToActionLink href="/guides/getting-started">
+						Get started
+					</CallToActionLink>
+				</HeroBanner>
+				<SectionContent>
+					<Stack gap={3}>
+						<Prose>
+							<p>
+								AgDS is based on the{' '}
+								<TextLink href="https://gold.designsystemau.org/">
+									GOLD Design System
+								</TextLink>{' '}
+								which incorporates the highest usability and accessibility
+								standards, helping us to deliver a consistent experience for all
+								users, in line with the{' '}
+								<TextLink href="https://www.dta.gov.au/help-and-advice/about-digital-service-standard">
+									Digital Service Standard
+								</TextLink>
+								.
+							</p>
+						</Prose>
+						<Columns
+							as="ul"
+							cols={{
+								xs: 1,
+								sm: 2,
+								lg: 3,
+								xl: 4,
+							}}
+						>
+							<PictogramCard
+								title="Foundations"
+								pictogram="text"
+								href="/foundations"
+							/>
+							<PictogramCard
+								title="Components"
+								pictogram="components"
+								href="/components"
+							/>
+							<PictogramCard title="Guides" pictogram="guides" href="/guides" />
+							<PictogramCard
+								title="Starter kit"
+								pictogram="starter"
+								href="https://github.com/steelthreads/agds-starter-kit"
+							/>
+						</Columns>
+					</Stack>
+				</SectionContent>
 			</AppLayout>
 		</>
 	);

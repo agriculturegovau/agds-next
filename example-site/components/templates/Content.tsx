@@ -17,7 +17,7 @@ import { PageTitle } from '../PageTitle';
 
 export function Content({ sideNav = true }: { sideNav?: boolean }) {
 	return (
-		<PageContent as="main" id="main-content">
+		<PageContent>
 			<Columns>
 				{sideNav && (
 					<Column columnSpan={{ xs: 12, md: 4, lg: 3 }}>
@@ -33,6 +33,10 @@ export function Content({ sideNav = true }: { sideNav?: boolean }) {
 					</Column>
 				)}
 				<Column
+					as="main"
+					id="main-content"
+					tabIndex={-1}
+					css={{ '&:focus': { outline: 'none' } }}
 					columnSpan={{ xs: 12, md: 8 }}
 					columnStart={sideNav ? { lg: 5 } : undefined}
 				>

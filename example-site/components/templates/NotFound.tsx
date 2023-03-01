@@ -6,12 +6,7 @@ import { Text } from '@ag.ds-next/react/text';
 
 export const NotFound = () => {
 	return (
-		<PageContent
-			as="main"
-			id="main-content"
-			tabIndex={-1}
-			css={{ '&:focus': { outline: 'none' } }}
-		>
+		<PageContent>
 			<Stack gap={1.5}>
 				<H1>Page not found</H1>
 				<Text as="p" fontSize="md">

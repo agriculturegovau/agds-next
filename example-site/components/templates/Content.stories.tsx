@@ -10,7 +10,7 @@ export default {
 
 export function Basic() {
 	return (
-		<PageTemplate>
+		<PageTemplate applyMainElement={false}>
 			<ContentComponent />
 		</PageTemplate>
 	);
@@ -18,7 +18,7 @@ export function Basic() {
 
 export function WithoutSideNav() {
 	return (
-		<PageTemplate>
+		<PageTemplate applyMainElement={false}>
 			<ContentComponent sideNav={false} />
 		</PageTemplate>
 	);
