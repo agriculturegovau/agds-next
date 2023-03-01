@@ -212,6 +212,7 @@ const SinglePageForm = () => {
 									inputRef={ref}
 									label="Registration date"
 									{...field}
+									onInputChange={field.onChange}
 									id="registrationDate"
 									invalid={Boolean(errors.registrationDate?.message)}
 									message={errors.registrationDate?.message}
@@ -253,14 +254,19 @@ const SinglePageForm = () => {
 									legend="Period active"
 									fromInputRef={ref}
 									{...field}
+									hint="This is an example hint"
+									id="periodActive"
+									{...field}
+									value={value}
+									onChange={onChange}
+									onFromInputChange={(from) => onChange({ ...value, from })}
+									onToInputChange={(to) => onChange({ ...value, to })}
 									fromInvalid={Boolean(errors.periodActive?.from?.message)}
 									toInvalid={Boolean(errors.periodActive?.to?.message)}
 									message={
 										errors.periodActive?.from?.message ||
 										errors.periodActive?.to?.message
 									}
-									value={value}
-									onChange={onChange}
 									required
 								/>
 							)}

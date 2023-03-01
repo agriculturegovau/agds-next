@@ -70,6 +70,7 @@ function DatePickerInsideForm({
 						inputRef={ref}
 						label="Date"
 						{...field}
+						onInputChange={field.onChange}
 						id="date"
 						invalid={Boolean(errors.date?.message)}
 						message={errors.date?.message}

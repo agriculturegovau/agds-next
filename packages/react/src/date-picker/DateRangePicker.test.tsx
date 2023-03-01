@@ -91,6 +91,8 @@ function DateRangePickerInsideForm({
 						{...field}
 						value={value}
 						onChange={onChange}
+						onFromInputChange={(from) => onChange({ ...value, from })}
+						onToInputChange={(to) => onChange({ ...value, to })}
 						fromInvalid={Boolean(errors.dateRange?.from?.message)}
 						toInvalid={Boolean(errors.dateRange?.to?.message)}
 						message={
@@ -436,6 +438,7 @@ describe('DateRangePicker', () => {
 		).toEqual(false);
 	});
 
+<<<<<<< HEAD
 	it.skip('form: can be submitted with a value', async () => {
 		const fromValidDateAsString = '02/03/2023';
 		const toValidDateAsString = '03/03/2023';
@@ -469,6 +472,8 @@ describe('DateRangePicker', () => {
 		});
 	});
 
+=======
+>>>>>>> 8749de3b53 (add new props)
 	it('form: can be submitted without a value as an optional field', async () => {
 		const onSubmit = jest.fn();
 		const onError = jest.fn();
@@ -489,7 +494,11 @@ describe('DateRangePicker', () => {
 		});
 	});
 
+<<<<<<< HEAD
 	it.skip('form: shows validation errors as an optional field with invalid value', async () => {
+=======
+	it('form: shows validation errors as an optional field with invalid value', async () => {
+>>>>>>> 8749de3b53 (add new props)
 		const onSubmit = jest.fn();
 		const onError = jest.fn();
 
@@ -531,7 +540,11 @@ describe('DateRangePicker', () => {
 		});
 	});
 
+<<<<<<< HEAD
 	it.skip('form: shows validation errors as an optional field with a semi-real date value', async () => {
+=======
+	it('form: shows validation errors as an optional field with a semi-real date value', async () => {
+>>>>>>> 8749de3b53 (add new props)
 		const onSubmit = jest.fn();
 		const onError = jest.fn();
 
@@ -568,7 +581,11 @@ describe('DateRangePicker', () => {
 		});
 	});
 
+<<<<<<< HEAD
 	it.skip('form: shows validation errors as an optional field', async () => {
+=======
+	it('form: shows validation errors as an optional field', async () => {
+>>>>>>> 8749de3b53 (add new props)
 		const onSubmit = jest.fn();
 		const onError = jest.fn();
 
@@ -605,7 +622,11 @@ describe('DateRangePicker', () => {
 		});
 	});
 
+<<<<<<< HEAD
 	it.skip('form: shows validation errors as a required field', async () => {
+=======
+	it('form: shows validation errors as a required field', async () => {
+>>>>>>> 8749de3b53 (add new props)
 		const onSubmit = jest.fn();
 		const onError = jest.fn();
 

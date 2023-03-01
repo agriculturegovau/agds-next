@@ -27,11 +27,17 @@ import {
 	parseDate,
 	formatDate,
 	constrainDate,
+	transformValuePropToInputValue,
 } from './utils';
 
 export type DateRange = {
 	from: Date | undefined;
 	to: Date | undefined;
+};
+
+export type DateRangeWithString = {
+	from: Date | string | undefined;
+	to: Date | string | undefined;
 };
 
 type DateRangePickerCalendarProps = {
@@ -61,9 +67,13 @@ export type DateRangePickerProps = DateRangePickerCalendarProps & {
 	/** If false, "(optional)" will not be appended to the legend. */
 	required?: boolean;
 	/** The value of the field. */
-	value: DateRange;
+	value: DateRangeWithString;
 	/** Function to be fired following a change event. */
 	onChange: (day: DateRange) => void;
+	/** Function to be fired when the input value is updated. */
+	onFromInputChange?: (inputValue: string | undefined) => void;
+	/** Function to be fired when the input value is updated. */
+	onToInputChange?: (inputValue: string | undefined) => void;
 	/** The label above the start date. */
 	fromLabel?: string;
 	/** The label above the end date. */
@@ -86,6 +96,8 @@ export const DateRangePicker = ({
 	hideOptionalLabel,
 	value,
 	onChange,
+	onFromInputChange: onFromInputChangeProp,
+	onToInputChange: onToInputChangeProp,
 	disabled,
 	fromLabel = 'Start date',
 	toLabel = 'End date',
@@ -120,11 +132,23 @@ export const DateRangePicker = ({
 		modifiers: [{ name: 'offset', options: { offset: [0, 8] } }],
 	});
 
+	const valueAsDateOrUndefined = useMemo(
+		() => ({
+			from: typeof value.from === 'string' ? undefined : value.from,
+			to: typeof value.to === 'string' ? undefined : value.to,
+		}),
+		[value]
+	);
+
 	const onSelect = useCallback<SelectRangeEventHandler>(
 		(_, selectedDay, activeModifiers) => {
 			if (!inputMode || activeModifiers.disabled) return;
-			const range = getValidDateRange(inputMode, selectedDay, value);
 
+			const range = getValidDateRange(
+				inputMode,
+				selectedDay,
+				valueAsDateOrUndefined
+			);
 			onChange(range);
 			setFromInputValue(range.from ? formatDate(range.from) : '');
 			setToInputValue(range.to ? formatDate(range.to) : '');
@@ -145,12 +169,12 @@ export const DateRangePicker = ({
 				return;
 			}
 		},
-		[closeCalendar, inputMode, onChange, value]
+		[closeCalendar, inputMode, onChange, valueAsDateOrUndefined]
 	);
 
 	// From input state
 	const [fromInputValue, setFromInputValue] = useState(
-		value.from ? formatDate(value.from) : ''
+		transformValuePropToInputValue(value.from)
 	);
 	const onFromInputChange = useCallback(
 		(e: ChangeEvent<HTMLInputElement>) => {
@@ -160,14 +184,25 @@ export const DateRangePicker = ({
 			// Ensure the text entered is a valid date
 			const parsedDate = parseDate(inputValue);
 			const containedDate = constrainDate(parsedDate, minDate, maxDate);
-			onChange({ ...value, from: containedDate });
+
+			const nextValue = { ...valueAsDateOrUndefined, from: containedDate };
+
+			// When there is no value OR there is a valid date, only trigger the `onChange` callback
+			// `onInputChange` will not be called
+			if (!inputValue || containedDate) {
+				onChange(nextValue);
+				return;
+			}
+
+			onChange(nextValue);
+			onFromInputChangeProp?.(inputValue);
 		},
-		[maxDate, minDate, onChange, value]
+		[maxDate, minDate, onChange, valueAsDateOrUndefined, onFromInputChangeProp]
 	);
 
 	// To input state
 	const [toInputValue, setToInputValue] = useState(
-		value.to ? formatDate(value.to) : ''
+		transformValuePropToInputValue(value.to)
 	);
 	const onToInputChange = useCallback(
 		(e: ChangeEvent<HTMLInputElement>) => {
@@ -177,15 +212,26 @@ export const DateRangePicker = ({
 			// Ensure the text entered is a valid date
 			const parsedDate = parseDate(inputValue);
 			const containedDate = constrainDate(parsedDate, minDate, maxDate);
-			onChange({ ...value, to: containedDate });
+
+			const nextValue = { ...valueAsDateOrUndefined, to: containedDate };
+
+			// When there is no value OR there is a valid date, only trigger the `onChange` callback
+			// `onInputChange` will not be called
+			if (!inputValue || containedDate) {
+				onChange(nextValue);
+				return;
+			}
+
+			onChange(nextValue);
+			onToInputChangeProp?.(inputValue);
 		},
-		[maxDate, minDate, onChange, value]
+		[maxDate, minDate, onChange, onToInputChangeProp, valueAsDateOrUndefined]
 	);
 
 	// Update the text inputs when the value updates
 	useEffect(() => {
-		setFromInputValue(value.from ? formatDate(value.from) : '');
-		setToInputValue(value.to ? formatDate(value.to) : '');
+		setFromInputValue(transformValuePropToInputValue(value.from));
+		setToInputValue(transformValuePropToInputValue(value.to));
 	}, [value]);
 
 	// Close the calendar when the user clicks outside
