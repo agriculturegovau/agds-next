@@ -211,12 +211,13 @@ const SinglePageForm = () => {
 								<DatePicker
 									inputRef={ref}
 									label="Registration date"
+									hideLabelDateFormat
+									hint="dd/mm/yyyy"
 									{...field}
 									onInputChange={field.onChange}
 									id="registrationDate"
 									invalid={Boolean(errors.registrationDate?.message)}
 									message={errors.registrationDate?.message}
-									required
 								/>
 							)}
 						/>

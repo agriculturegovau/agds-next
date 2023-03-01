@@ -31,10 +31,10 @@ exports[`DatePicker renders correctly 1`] = `
           class="css-nisjv6-DateInput"
           id="field-:r0:"
           type="text"
-          value="01/01/2000"
+          value="01/02/2000"
         />
         <button
-          aria-label="Change Date, Saturday January 1st, 2000"
+          aria-label="Change date, Tuesday February 1st, 2000"
           class="css-5re0pj-BaseButton-DateInput"
           type="button"
         >
