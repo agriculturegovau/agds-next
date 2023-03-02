@@ -1,5 +1,6 @@
 import { PageContent } from '@ag.ds-next/react/content';
 import { Prose } from '@ag.ds-next/react/prose';
+import { TextLink } from '@ag.ds-next/react/text-link';
 import { AppLayout } from '../components/AppLayout';
 import { DocumentTitle } from '../components/DocumentTitle';
 
@@ -47,7 +48,7 @@ export default function AboutPage() {
 							<li>A collaborative community of designers and developers</li>
 						</ul>
 
-						<h2>Inspired by GOLD</h2>
+						<h2>Accessibility from the start</h2>
 
 						<p>
 							AgDS is based on the{' '}
@@ -61,28 +62,27 @@ export default function AboutPage() {
 							.
 						</p>
 
-						<h2>Accessibility from the start</h2>
-
 						<p>
 							The Agriculture Design System is the best way to ensure we meet
 							our legal obligations to ensure accessibility. Under the
 							Disability Discrimination Act 1992, Australian Government agencies
 							are required to ensure information and services are provided in a
-							non-discriminatory accessible manner. That is why AgDS provides a
-							suite of components, templates and guides to ensure Export Service
-							applications are designed with accessibility built-in.
+							non-discriminatory accessible manner. That is why AgDS&apos;s
+							suite of components, templates and guides are designed with
+							accessibility built-in.
 						</p>
 
 						<h2>Connect with us</h2>
 						<p>
 							Department of Agriculture Fisheries and Forestry staff can connect
-							with us in the 'Design System' chat in Microsoft Teams. Otherwise
-							you are welcome to submit pull requests to GitHub.
+							with us in the &rdquo;Design System&rdquo; chat in Microsoft
+							Teams. Otherwise you are welcome to submit pull requests to{' '}
+							<a href="httsps://github.com/steelthreads/agds-next">GitHub</a>.
 						</p>
 
 						<p>
-							If you're wondering what is next, please see our{' '}
-							<a href="/roadmap">roadmap</a>.
+							If you&apos;re wondering what is next, please see our{' '}
+							<TextLink href="/roadmap">roadmap</TextLink>.
 						</p>
 					</Prose>
 				</PageContent>

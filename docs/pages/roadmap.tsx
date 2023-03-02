@@ -1,5 +1,6 @@
 import { PageContent } from '@ag.ds-next/react/content';
 import { Prose } from '@ag.ds-next/react/prose';
+import { TextLink } from '@ag.ds-next/react/text-link';
 import { AppLayout } from '../components/AppLayout';
 import { DocumentTitle } from '../components/DocumentTitle';
 
@@ -56,7 +57,7 @@ export default function AboutPage() {
 
 						<p>
 							For more detailed release notes, see{' '}
-							<a href="/updates">Updates</a>
+							<TextLink href="/updates">Updates</TextLink>
 						</p>
 					</Prose>
 				</PageContent>
