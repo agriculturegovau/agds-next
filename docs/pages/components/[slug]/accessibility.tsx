@@ -10,7 +10,6 @@ import {
 	getPkgDocsContent,
 } from '../../../lib/mdx/packages';
 import { mdxComponents } from '../../../components/mdxComponents';
-import { AppLayout } from '../../../components/AppLayout';
 import { DocumentTitle } from '../../../components/DocumentTitle';
 import { PkgLayout } from '../../../components/PkgLayout';
 
@@ -23,24 +22,22 @@ export default function PackagesAccessibility({
 	return (
 		<>
 			<DocumentTitle title={`${pkg.title} Accessibility`} />
-			<AppLayout>
-				<PkgLayout
-					pkg={pkg}
-					navLinks={navLinks}
-					breadcrumbs={breadcrumbs}
-					skipLinks={[
-						{
-							label: `Skip to ${pkg.title} accessibility`,
-							href: '#pkg-content',
-						},
-					]}
-					editPath={`/packages/${pkg.slug}/docs/accessibility.mdx`}
-				>
-					<Prose id="pkg-content">
-						<MDXRemote {...content} components={mdxComponents} />
-					</Prose>
-				</PkgLayout>
-			</AppLayout>
+			<PkgLayout
+				pkg={pkg}
+				navLinks={navLinks}
+				breadcrumbs={breadcrumbs}
+				skipLinks={[
+					{
+						label: `Skip to ${pkg.title} accessibility`,
+						href: '#pkg-content',
+					},
+				]}
+				editPath={`/packages/${pkg.slug}/docs/accessibility.mdx`}
+			>
+				<Prose id="pkg-content">
+					<MDXRemote {...content} components={mdxComponents} />
+				</Prose>
+			</PkgLayout>
 		</>
 	);
 }

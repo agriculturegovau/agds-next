@@ -20,7 +20,7 @@ export const IntroPage = () => {
 
 export const FormPage = () => {
 	return (
-		<PageTemplate>
+		<PageTemplate focusMode>
 			<FormExampleMultiStep />
 		</PageTemplate>
 	);

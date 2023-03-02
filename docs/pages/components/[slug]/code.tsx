@@ -10,7 +10,6 @@ import {
 	getPkgDocsContent,
 } from '../../../lib/mdx/packages';
 import { mdxComponents } from '../../../components/mdxComponents';
-import { AppLayout } from '../../../components/AppLayout';
 import { DocumentTitle } from '../../../components/DocumentTitle';
 import { PkgLayout } from '../../../components/PkgLayout';
 
@@ -23,44 +22,42 @@ export default function PackagesCode({
 	return (
 		<>
 			<DocumentTitle title={`${pkg.title} Code`} />
-			<AppLayout>
-				<PkgLayout
-					pkg={pkg}
-					navLinks={navLinks}
-					breadcrumbs={breadcrumbs}
-					skipLinks={[
-						{
-							label: `Skip to ${pkg.title} code`,
-							href: '#pkg-content',
-						},
-					]}
-					editPath={`/packages/${pkg.slug}/docs/code.mdx`}
-				>
-					<Prose id="pkg-content">
-						<h2>Usage</h2>
-						<p>
-							{pkg.title} components can be imported via the{' '}
-							<code>{pkg.name}</code> entrypoint in the{' '}
-							<code>@ag.ds-next/react</code> package.
-						</p>
-						<p>For example:</p>
-						<pre>
-							<code>{`import { ... } from '@ag.ds-next/react/${pkg.name}';`}</code>
-						</pre>
-						<MDXRemote {...content} components={mdxComponents} />
-						<h2>Source</h2>
-						<p>
-							You can view the full source code for this package on{' '}
-							<a
-								href={`https://github.com/steelthreads/agds-next/tree/main/packages/react/src/${pkg.slug}`}
-							>
-								Github
-							</a>
-							.
-						</p>
-					</Prose>
-				</PkgLayout>
-			</AppLayout>
+			<PkgLayout
+				pkg={pkg}
+				navLinks={navLinks}
+				breadcrumbs={breadcrumbs}
+				skipLinks={[
+					{
+						label: `Skip to ${pkg.title} code`,
+						href: '#pkg-content',
+					},
+				]}
+				editPath={`/packages/${pkg.slug}/docs/code.mdx`}
+			>
+				<Prose id="pkg-content">
+					<h2>Usage</h2>
+					<p>
+						{pkg.title} components can be imported via the{' '}
+						<code>{pkg.name}</code> entrypoint in the{' '}
+						<code>@ag.ds-next/react</code> package.
+					</p>
+					<p>For example:</p>
+					<pre>
+						<code>{`import { ... } from '@ag.ds-next/react/${pkg.name}';`}</code>
+					</pre>
+					<MDXRemote {...content} components={mdxComponents} />
+					<h2>Source</h2>
+					<p>
+						You can view the full source code for this package on{' '}
+						<a
+							href={`https://github.com/steelthreads/agds-next/tree/main/packages/react/src/${pkg.slug}`}
+						>
+							Github
+						</a>
+						.
+					</p>
+				</Prose>
+			</PkgLayout>
 		</>
 	);
 }

@@ -23,76 +23,70 @@ export default function Homepage() {
 		<>
 			<DocumentTitle description={description} />
 			<AppLayout>
-				<main
-					id="main-content"
-					tabIndex={-1}
-					css={{ '&:focus': { outline: 'none' } }}
+				<HeroBanner
+					image={<img src="/img/agds-hero.webp" role="presentation" alt="" />}
 				>
-					<HeroBanner
-						image={<img src="/img/agds-hero.webp" role="presentation" alt="" />}
-					>
-						<HeroBannerTitleContainer>
-							<HeroBannerTitle>
-								Build an accessible and user-friendly Export Service
-							</HeroBannerTitle>
-							<HeroBannerSubtitle>{description}</HeroBannerSubtitle>
-						</HeroBannerTitleContainer>
-						<CallToActionLink href="/guides/getting-started">
-							Get started
-						</CallToActionLink>
-					</HeroBanner>
-					<SectionContent>
-						<Stack gap={3}>
-							<Prose>
-								<p>
-									<TextLink href="/about">
-										The Agriculture Design System (AgDS)
-									</TextLink>{' '}
-									enables the development of consistent, intuitive and
-									accessible applications with efficiency, scale and
-									collaboration, in line with the{' '}
-									<a href="https://www.dta.gov.au/help-and-advice/about-digital-service-standard">
-										Digital Service Standard
-									</a>
-									.
-								</p>
-							</Prose>
-							<Stack gap={2}>
-								<H2>Recommended links</H2>
-								<Columns
-									as="ul"
-									cols={{
-										xs: 1,
-										sm: 2,
-										lg: 3,
-										xl: 4,
-									}}
-								>
-									<PictogramCard
-										title="Foundations"
-										pictogram="text"
-										href="/foundations"
-									/>
-									<PictogramCard
-										title="Components"
-										pictogram="components"
-										href="/components"
-									/>
-									<PictogramCard
-										title="Guides"
-										pictogram="guides"
-										href="/guides"
-									/>
-									<PictogramCard
-										title="Starter kit"
-										pictogram="starter"
-										href="https://github.com/steelthreads/agds-starter-kit"
-									/>
-								</Columns>
-							</Stack>
+					<HeroBannerTitleContainer>
+						<HeroBannerTitle>
+							Build an accessible and user-friendly Export Service
+						</HeroBannerTitle>
+						<HeroBannerSubtitle>{description}</HeroBannerSubtitle>
+					</HeroBannerTitleContainer>
+					<CallToActionLink href="/guides/getting-started">
+						Get started
+					</CallToActionLink>
+				</HeroBanner>
+				<SectionContent>
+					<Stack gap={3}>
+						<Prose>
+							<p>
+								<TextLink href="/about">
+									The Agriculture Design System (AgDS)
+								</TextLink>{' '}
+								enables the development of consistent, intuitive and accessible
+								applications with efficiency, scale and collaboration, in line
+								with the{' '}
+								<a href="https://www.dta.gov.au/help-and-advice/about-digital-service-standard">
+									Digital Service Standard
+								</a>
+								.
+							</p>
+						</Prose>
+						<Stack gap={2}>
+							<H2>Recommended links</H2>
+							<Columns
+								as="ul"
+								cols={{
+									xs: 1,
+									sm: 2,
+									lg: 3,
+									xl: 4,
+								}}
+							>
+								<PictogramCard
+									title="Foundations"
+									pictogram="text"
+									href="/foundations"
+								/>
+								<PictogramCard
+									title="Components"
+									pictogram="components"
+									href="/components"
+								/>
+								<PictogramCard
+									title="Guides"
+									pictogram="guides"
+									href="/guides"
+								/>
+								<PictogramCard
+									title="Starter kit"
+									pictogram="starter"
+									href="https://github.com/steelthreads/agds-starter-kit"
+								/>
+							</Columns>
 						</Stack>
-					</SectionContent>
-				</main>
+					</Stack>
+				</SectionContent>
 			</AppLayout>
 		</>
 	);
