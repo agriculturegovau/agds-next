@@ -11,6 +11,7 @@ import {
 	GetDataSort,
 } from './lib/data';
 import { BusinessForAudit } from './lib/generateBusinessData';
+import { ExampleLarge } from './ExampleLarge';
 
 export default {
 	title: 'Examples/Filtering',
@@ -251,19 +252,42 @@ export const Search = () => {
 	);
 };
 
+export const Large = () => {
+	const {
 		filters,
+		pagination,
+		resetFilters,
+		resetPagination,
+		setFilters,
+		setPagination,
+		setSort,
+		sort,
+	} = useSortAndFilter();
+
+	const { loading, data, totalPages, totalItems } = useData({
+		filters,
+		pagination,
+		sort,
+	});
+
+	const tableCaption = genetateTableCaption({
+		loading,
+		totalItems,
 		pagination,
 	});
 
 	return (
-		<ExampleSearch
+		<ExampleLarge
 			data={data}
 			filters={filters}
 			loading={loading}
 			pagination={pagination}
+			resetFilters={resetFilters}
 			resetPagination={resetPagination}
 			setFilters={setFilters}
 			setPagination={setPagination}
+			setSort={setSort}
+			sort={sort}
 			tableCaption={tableCaption}
 			totalPages={totalPages}
 		/>
