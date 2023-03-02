@@ -7,6 +7,12 @@ import { tokens } from '@ag.ds-next/react/core';
 
 const footerLinks = [
 	{ label: 'Home', href: '/' },
+	{ label: 'About', href: '/about' },
+	{ label: 'Roadmap', href: '/roadmap' },
+	{
+		label: 'Privacy',
+		href: 'https://www.agriculture.gov.au/about/commitment/privacy',
+	},
 	{
 		label: 'Storybook',
 		href: process.env.NEXT_PUBLIC_STORYBOOK_URL,
@@ -18,10 +24,6 @@ const footerLinks = [
 	{
 		label: 'Starter kit',
 		href: 'https://github.com/steelthreads/agds-starter-kit',
-	},
-	{
-		label: 'Privacy',
-		href: 'https://www.agriculture.gov.au/about/commitment/privacy',
 	},
 ];
 

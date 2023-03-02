@@ -72,6 +72,18 @@ export default function AboutPage() {
 							suite of components, templates and guides to ensure Export Service
 							applications are designed with accessibility built-in.
 						</p>
+
+						<h2>Connect with us</h2>
+						<p>
+							Department of Agriculture Fisheries and Forestry staff can connect
+							with us in the 'Design System' chat in Microsoft Teams. Otherwise
+							you are welcome to submit pull requests to GitHub.
+						</p>
+
+						<p>
+							If you're wondering what is next, please see our{' '}
+							<a href="/roadmap">roadmap</a>.
+						</p>
 					</Prose>
 				</PageContent>
 			</AppLayout>
