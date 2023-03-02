@@ -33,7 +33,7 @@ export default function Homepage() {
 					>
 						<HeroBannerTitleContainer>
 							<HeroBannerTitle>
-								Build the Export Service with world-class tools
+								Build an accessible and user-friendly Export Service
 							</HeroBannerTitle>
 							<HeroBannerSubtitle>{description}</HeroBannerSubtitle>
 						</HeroBannerTitleContainer>
@@ -45,10 +45,16 @@ export default function Homepage() {
 						<Stack gap={3}>
 							<Prose>
 								<p>
-									The Agriculture Design System (AgDS) enables the development
-									of consistent, intuitive and accessible applications with
-									efficiency, scale and collaboration.{' '}
-									<TextLink href="/about">About AgDS</TextLink>.
+									<TextLink href="/about">
+										The Agriculture Design System (AgDS)
+									</TextLink>{' '}
+									enables the development of consistent, intuitive and
+									accessible applications with efficiency, scale and
+									collaboration, in line with the{' '}
+									<a href="https://www.dta.gov.au/help-and-advice/about-digital-service-standard">
+										Digital Service Standard
+									</a>
+									.
 								</p>
 							</Prose>
 							<Stack gap={2}>
