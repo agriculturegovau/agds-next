@@ -1,12 +1,10 @@
 import { Box, Flex } from '@ag.ds-next/react/box';
-import { Select } from '@ag.ds-next/react/select';
 import { GetDataFilters, GetDataSort } from '../lib/data';
 import { DateRangePicker } from '@ag.ds-next/react/date-picker';
 import { Button } from '@ag.ds-next/react/button';
-import { DashboardFilterStatus } from './DashboardFilterStatus';
-import { assignees } from '../lib/generateBusinessData';
-
-const VerticalDivider = () => <Box borderLeft borderColor="muted" />;
+import { FilterStatusSelect } from './FilterStatusSelect';
+import { FilterAssigneeSelect } from './FilterAssigneeSelect';
+import { FilterStateSelect } from './FilterStateSelect';
 
 export const DashboardFilters = ({
 	filters,
@@ -34,52 +32,15 @@ export const DashboardFilters = ({
 			border
 			borderColor="muted"
 		>
-			<Select
-				label="State"
-				placeholder="All"
-				hideOptionalLabel
-				options={[
-					{ value: 'act', label: 'ACT' },
-					{ value: 'nsw', label: 'NSW' },
-					{ value: 'nt', label: 'NT' },
-					{ value: 'qld', label: 'QLD' },
-					{ value: 'sa', label: 'SA' },
-					{ value: 'tas', label: 'TAS' },
-					{ value: 'vic', label: 'VIC' },
-					{ value: 'wa', label: 'WA' },
-				]}
-				value={filters.state || ''}
-				onChange={(e) => {
-					const value = e.target.value;
-					resetPagination();
-					setFilters({
-						...filters,
-						state: value === '' ? undefined : value,
-					});
-				}}
-			/>
-			<DashboardFilterStatus
+			<FilterStateSelect
 				filters={filters}
 				setFilters={setFilters}
 				resetPagination={resetPagination}
 			/>
-			<Select
-				label="Assignee"
-				placeholder="All"
-				hideOptionalLabel
-				options={assignees.map((option) => ({
-					label: option,
-					value: option,
-				}))}
-				value={filters.assignee || ''}
-				onChange={(e) => {
-					const value = e.target.value;
-					resetPagination();
-					setFilters({
-						...filters,
-						assignee: value === '' ? undefined : value,
-					});
-				}}
+			<FilterAssigneeSelect
+				filters={filters}
+				setFilters={setFilters}
+				resetPagination={resetPagination}
 			/>
 			<DateRangePicker
 				fromLabel="Registered from"

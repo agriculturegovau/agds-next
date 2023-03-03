@@ -1,7 +1,7 @@
 import { Select } from '@ag.ds-next/react/select';
 import { GetDataFilters } from '../lib/data';
 
-export const DashboardFilterStatus = ({
+export const FilterStatusSelect = ({
 	filters,
 	setFilters,
 	resetPagination,

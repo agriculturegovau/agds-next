@@ -3,7 +3,7 @@ import { Select } from '@ag.ds-next/react/select';
 import { GetDataFilters, GetDataSort } from '../lib/data';
 import { DateRangePicker } from '@ag.ds-next/react/date-picker';
 import { Button, ButtonGroup } from '@ag.ds-next/react/button';
-import { DashboardFilterStatus } from './DashboardFilterStatus';
+import { FilterStatusSelect } from './FilterStatusSelect';
 import { assignees } from '../lib/generateBusinessData';
 import {
 	Fragment,
@@ -25,6 +25,9 @@ import { ModalTitle } from '@ag.ds-next/react/src/modal/ModalTitle';
 import { CloseIcon } from '@ag.ds-next/react/icon';
 import { ModalCover } from '@ag.ds-next/react/src/modal/ModalCover';
 import { Checkbox, ControlGroup } from '@ag.ds-next/react/control-input';
+import { FilterAssigneeSelect } from './FilterAssigneeSelect';
+import { FilterStateSelect } from './FilterStateSelect';
+import { FilterSearchInput } from './FilterSearchInput';
 
 export type ModalDialogProps = PropsWithChildren<{
 	/** The actions to display at the bottom of the modal panel. Typically a `ButtonGroup`. */
@@ -38,7 +41,6 @@ export type ModalDialogProps = PropsWithChildren<{
 const AnimatedStack = animated(Stack);
 
 export const ModalDialog = ({
-	actions,
 	children,
 	title,
 	onDismiss,
@@ -179,52 +181,21 @@ export const FilterModal = ({
 			<ModalCover ref={coverRef}>
 				<ModalDialog onDismiss={onDismiss} title={title}>
 					<Stack gap={1}>
-						<Select
-							label="State"
-							placeholder="All"
-							hideOptionalLabel
-							options={[
-								{ value: 'act', label: 'ACT' },
-								{ value: 'nsw', label: 'NSW' },
-								{ value: 'nt', label: 'NT' },
-								{ value: 'qld', label: 'QLD' },
-								{ value: 'sa', label: 'SA' },
-								{ value: 'tas', label: 'TAS' },
-								{ value: 'vic', label: 'VIC' },
-								{ value: 'wa', label: 'WA' },
-							]}
-							value={filters.state || ''}
-							onChange={(e) => {
-								const value = e.target.value;
-								resetPagination();
-								setFilters({
-									...filters,
-									state: value === '' ? undefined : value,
-								});
-							}}
-						/>
-						<DashboardFilterStatus
+						<FilterSearchInput filters={filters} setFilters={setFilters} />
+						<FilterStatusSelect
 							filters={filters}
 							setFilters={setFilters}
 							resetPagination={resetPagination}
 						/>
-						<Select
-							label="Assignee"
-							placeholder="All"
-							hideOptionalLabel
-							options={assignees.map((option) => ({
-								label: option,
-								value: option,
-							}))}
-							value={filters.assignee || ''}
-							onChange={(e) => {
-								const value = e.target.value;
-								resetPagination();
-								setFilters({
-									...filters,
-									assignee: value === '' ? undefined : value,
-								});
-							}}
+						<FilterStateSelect
+							filters={filters}
+							setFilters={setFilters}
+							resetPagination={resetPagination}
+						/>
+						<FilterAssigneeSelect
+							filters={filters}
+							setFilters={setFilters}
+							resetPagination={resetPagination}
 						/>
 						<DateRangePicker
 							fromLabel="Registered from"

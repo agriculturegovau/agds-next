@@ -1,0 +1,39 @@
+import { Select } from '@ag.ds-next/react/select';
+import { GetDataFilters } from '../lib/data';
+
+export const FilterStateSelect = ({
+	filters,
+	setFilters,
+	resetPagination,
+}: {
+	filters: GetDataFilters;
+	setFilters: (filters: GetDataFilters) => void;
+	resetPagination: () => void;
+}) => {
+	return (
+		<Select
+			label="State"
+			placeholder="All"
+			hideOptionalLabel
+			options={[
+				{ value: 'act', label: 'ACT' },
+				{ value: 'nsw', label: 'NSW' },
+				{ value: 'nt', label: 'NT' },
+				{ value: 'qld', label: 'QLD' },
+				{ value: 'sa', label: 'SA' },
+				{ value: 'tas', label: 'TAS' },
+				{ value: 'vic', label: 'VIC' },
+				{ value: 'wa', label: 'WA' },
+			]}
+			value={filters.state || ''}
+			onChange={(e) => {
+				const value = e.target.value;
+				resetPagination();
+				setFilters({
+					...filters,
+					state: value === '' ? undefined : value,
+				});
+			}}
+		/>
+	);
+};

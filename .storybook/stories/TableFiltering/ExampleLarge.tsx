@@ -2,15 +2,16 @@ import { Flex, Stack } from '@ag.ds-next/react/box';
 import { Button, ButtonLink } from '@ag.ds-next/react/button';
 import { PageContent } from '@ag.ds-next/react/content';
 import { FilterIcon, PlusIcon } from '@ag.ds-next/react/icon';
-import { PaginationButtons } from '@ag.ds-next/react/pagination';
 import { Tags } from '@ag.ds-next/react/tags';
 import { useState } from 'react';
 import { AppShell } from '../../components/ExampleShell';
-import { DashboardItemsPerPageSelect } from './components/DashboardItemsPerPageSelect';
+import { ActiveFilters } from './components/ActiveFilters';
+import { AdvancedTablePagination } from './components/AdvancedPagination';
 import { DashboardPageTitle } from './components/DashboardPageTitle';
 import { DashboardSortBySelect } from './components/DashboardSortBySelect';
 import { DashboardTable } from './components/DashboardTable';
 import { FilterModal } from './components/FilterModal';
+import { FilterSearchInput } from './components/FilterSearchInput';
 import { GetDataFilters, GetDataPagination, GetDataSort } from './lib/data';
 import { BusinessForAudit } from './lib/generateBusinessData';
 
@@ -51,8 +52,14 @@ export const ExampleLarge = ({
 			<PageContent>
 				<Stack gap={2}>
 					<Stack gap={1}>
+						<div>
+							<ButtonLink href="#new" iconBefore={PlusIcon}>
+								New item
+							</ButtonLink>
+						</div>
 						<Flex gap={1} justifyContent="space-between" alignItems="flex-end">
 							<Flex gap={1} alignItems="flex-end">
+								<FilterSearchInput filters={filters} setFilters={setFilters} />
 								<Button
 									onClick={() => setIsOpen(true)}
 									variant="secondary"
@@ -60,22 +67,13 @@ export const ExampleLarge = ({
 								>
 									Show filters
 								</Button>
-								<ButtonLink href="#new" iconBefore={PlusIcon}>
-									New item
-								</ButtonLink>
 							</Flex>
 
-							<Flex gap={1} alignItems="flex-end">
-								<DashboardItemsPerPageSelect
-									pagination={pagination}
-									setPagination={setPagination}
-								/>
-								<DashboardSortBySelect
-									sort={sort}
-									setSort={setSort}
-									resetPagination={resetPagination}
-								/>
-							</Flex>
+							<DashboardSortBySelect
+								sort={sort}
+								setSort={setSort}
+								resetPagination={resetPagination}
+							/>
 						</Flex>
 
 						<FilterModal
@@ -89,17 +87,7 @@ export const ExampleLarge = ({
 							resetFilters={resetFilters}
 						/>
 
-						<Tags
-							heading="Active filters"
-							items={[
-								{
-									label: 'Assignee: Oscar Piastri',
-									onRemove: console.log,
-								},
-								{ label: 'Bar', onRemove: console.log },
-								{ label: 'Baz', onRemove: console.log },
-							]}
-						/>
+						<ActiveFilters filters={filters} />
 					</Stack>
 					<DashboardTable
 						data={data}
@@ -108,13 +96,11 @@ export const ExampleLarge = ({
 						caption={tableCaption}
 					/>
 					{data.length ? (
-						<Stack>
-							<PaginationButtons
-								currentPage={pagination.page}
-								onChange={(page) => setPagination({ ...pagination, page })}
-								totalPages={totalPages}
-							/>
-						</Stack>
+						<AdvancedTablePagination
+							pagination={pagination}
+							setPagination={setPagination}
+							totalPages={totalPages}
+						/>
 					) : null}
 				</Stack>
 			</PageContent>

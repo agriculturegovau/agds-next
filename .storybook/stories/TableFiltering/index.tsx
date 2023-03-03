@@ -1,8 +1,6 @@
 import { useEffect, useState } from 'react';
 import { ExampleSmall } from './ExampleSmall';
-import { ExampleDropDownMenu } from './ExampleDropDownMenu';
-import { ExampleFilterBar } from './ExampleFilterBar';
-import { ExampleSearch } from './ExampleSearch';
+import { ExampleMedium } from './ExampleMedium';
 import {
 	getData,
 	GetDataParams,
@@ -95,12 +93,13 @@ const genetateTableCaption = ({
 
 export const Small = () => {
 	const {
+		sort,
 		filters,
 		pagination,
 		resetPagination,
+		setSort,
 		setFilters,
 		setPagination,
-		sort,
 	} = useSortAndFilter();
 
 	const { loading, data, totalPages, totalItems } = useData({
@@ -118,6 +117,8 @@ export const Small = () => {
 	return (
 		<ExampleSmall
 			data={data}
+			sort={sort}
+			setSort={setSort}
 			filters={filters}
 			loading={loading}
 			pagination={pagination}
@@ -130,7 +131,7 @@ export const Small = () => {
 	);
 };
 
-export const DropDown = () => {
+export const Medium = () => {
 	const {
 		filters,
 		pagination,
@@ -155,7 +156,7 @@ export const DropDown = () => {
 	});
 
 	return (
-		<ExampleDropDownMenu
+		<ExampleMedium
 			data={data}
 			filters={filters}
 			loading={loading}
@@ -166,86 +167,6 @@ export const DropDown = () => {
 			setPagination={setPagination}
 			setSort={setSort}
 			sort={sort}
-			tableCaption={tableCaption}
-			totalPages={totalPages}
-		/>
-	);
-};
-DropDown.storyName = 'Drop down filter menu';
-
-export const FilterBar = () => {
-	const {
-		filters,
-		pagination,
-		resetFilters,
-		resetPagination,
-		setFilters,
-		setPagination,
-		setSort,
-		sort,
-	} = useSortAndFilter();
-
-	const { loading, data, totalPages, totalItems } = useData({
-		filters,
-		pagination,
-		sort,
-	});
-
-	const tableCaption = genetateTableCaption({
-		loading,
-		totalItems,
-		pagination,
-	});
-
-	return (
-		<ExampleFilterBar
-			data={data}
-			filters={filters}
-			loading={loading}
-			pagination={pagination}
-			resetFilters={resetFilters}
-			resetPagination={resetPagination}
-			setFilters={setFilters}
-			setPagination={setPagination}
-			setSort={setSort}
-			sort={sort}
-			tableCaption={tableCaption}
-			totalPages={totalPages}
-		/>
-	);
-};
-
-export const Search = () => {
-	const {
-		filters,
-		pagination,
-		resetPagination,
-		setFilters,
-		setPagination,
-		sort,
-	} = useSortAndFilter();
-
-	const { loading, data, totalPages, totalItems } = useData({
-		filters,
-		pagination,
-		sort,
-	});
-
-	const tableCaption = genetateTableCaption({
-		loading,
-		totalItems,
-		pagination,
-	});
-
-	return (
-		<ExampleSearch
-			data={data}
-			filters={filters}
-			loading={loading}
-			pagination={pagination}
-			resetPagination={resetPagination}
-			setFilters={setFilters}
-			setPagination={setPagination}
 			tableCaption={tableCaption}
 			totalPages={totalPages}
 		/>

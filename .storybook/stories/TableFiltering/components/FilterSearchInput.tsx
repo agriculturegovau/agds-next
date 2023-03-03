@@ -1,7 +1,7 @@
 import { SearchInput } from '@ag.ds-next/react/search-input';
 import { GetDataFilters } from '../lib/data';
 
-export const DashboardSearchInput = ({
+export const FilterSearchInput = ({
 	filters,
 	setFilters,
 }: {
