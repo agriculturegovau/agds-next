@@ -1,29 +1,33 @@
-import { PageContent } from '@ag.ds-next/react/content';
 import { Prose } from '@ag.ds-next/react/prose';
 import { TextLink } from '@ag.ds-next/react/text-link';
 import { AppLayout } from '../components/AppLayout';
 import { DocumentTitle } from '../components/DocumentTitle';
+import { PageLayout } from '../components/PageLayout';
+import { PageTitle } from '../components/PageTitle';
 
 export default function AboutPage() {
 	return (
 		<>
 			<DocumentTitle title="About AgDS" />
-			<AppLayout>
-				<PageContent
-					as="main"
-					id="main-content"
-					tabIndex={-1}
-					css={{ '&:focus': { outline: 'none' } }}
+			<AppLayout applyMainElement={false}>
+				<PageLayout
+					breadcrumbs={[
+						{
+							href: '/',
+							label: 'Home',
+						},
+						{
+							label: 'About',
+						},
+					]}
 				>
+					<PageTitle
+						title="About AgDS"
+						introduction="The Agriculture Design System (AgDS) is the Design System built
+					for the Australian Government Department of Agriculture, Fisheries
+					and Forestry (DAFF)."
+					/>
 					<Prose>
-						<h1>About AgDS</h1>
-
-						<p>
-							The Agriculture Design System (AgDS) is the Design System built
-							for the Australian Government Department of Agriculture, Fisheries
-							and Forestry (DAFF).
-						</p>
-
 						<p>
 							It is a suite of guidelines and tools for designers and developers
 							who build interactive experiences on the web. It enables
@@ -85,7 +89,7 @@ export default function AboutPage() {
 							<TextLink href="/roadmap">roadmap</TextLink>.
 						</p>
 					</Prose>
-				</PageContent>
+				</PageLayout>
 			</AppLayout>
 		</>
 	);

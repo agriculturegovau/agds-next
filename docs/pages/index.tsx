@@ -1,7 +1,6 @@
 import { Columns } from '@ag.ds-next/react/columns';
 import { SectionContent } from '@ag.ds-next/react/content';
 import { Stack } from '@ag.ds-next/react/box';
-import { CallToActionLink } from '@ag.ds-next/react/call-to-action';
 import { Prose } from '@ag.ds-next/react/prose';
 import { TextLink } from '@ag.ds-next/react/text-link';
 import {
@@ -10,7 +9,7 @@ import {
 	HeroBannerTitle,
 	HeroBannerSubtitle,
 } from '@ag.ds-next/react/hero-banner';
-import { H2 } from '@ag.ds-next/react/heading';
+import { ButtonLink } from '@ag.ds-next/react/button';
 import { AppLayout } from '../components/AppLayout';
 import { PictogramCard } from '../components/PictogramCard';
 import { DocumentTitle } from '../components/DocumentTitle';
@@ -32,28 +31,13 @@ export default function Homepage() {
 						</HeroBannerTitle>
 						<HeroBannerSubtitle>{description}</HeroBannerSubtitle>
 					</HeroBannerTitleContainer>
-					<CallToActionLink href="/guides/getting-started">
-						Get started
-					</CallToActionLink>
+					<div>
+						<ButtonLink href="/guides/getting-started">Get started</ButtonLink>
+					</div>
 				</HeroBanner>
 				<SectionContent>
 					<Stack gap={3}>
-						<Prose>
-							<p>
-								<TextLink href="/about">
-									The Agriculture Design System (AgDS)
-								</TextLink>{' '}
-								enables the development of consistent, intuitive and accessible
-								applications with efficiency, scale and collaboration, in line
-								with the{' '}
-								<a href="https://www.dta.gov.au/help-and-advice/about-digital-service-standard">
-									Digital Service Standard
-								</a>
-								.
-							</p>
-						</Prose>
 						<Stack gap={2}>
-							<H2>Recommended links</H2>
 							<Columns
 								as="ul"
 								cols={{
@@ -85,6 +69,20 @@ export default function Homepage() {
 								/>
 							</Columns>
 						</Stack>
+						<Prose>
+							<p>
+								<TextLink href="/about">
+									The Agriculture Design System (AgDS)
+								</TextLink>{' '}
+								enables the development of consistent, intuitive and accessible
+								applications with efficiency, scale and collaboration, in line
+								with the{' '}
+								<a href="https://www.dta.gov.au/help-and-advice/about-digital-service-standard">
+									Digital Service Standard
+								</a>
+								.
+							</p>
+						</Prose>
 					</Stack>
 				</SectionContent>
 			</AppLayout>

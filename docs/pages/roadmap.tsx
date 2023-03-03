@@ -1,30 +1,36 @@
-import { PageContent } from '@ag.ds-next/react/content';
 import { Prose } from '@ag.ds-next/react/prose';
 import { TextLink } from '@ag.ds-next/react/text-link';
 import { AppLayout } from '../components/AppLayout';
 import { DocumentTitle } from '../components/DocumentTitle';
+import { PageLayout } from '../components/PageLayout';
+import { PageTitle } from '../components/PageTitle';
 
 export default function AboutPage() {
 	return (
 		<>
 			<DocumentTitle title="AgDS Roadmap" />
-			<AppLayout>
-				<PageContent
-					as="main"
-					id="main-content"
-					tabIndex={-1}
-					css={{ '&:focus': { outline: 'none' } }}
+			<AppLayout applyMainElement={false}>
+				<PageLayout
+					breadcrumbs={[
+						{
+							href: '/',
+							label: 'Home',
+						},
+						{
+							label: 'Roadmap',
+						},
+					]}
 				>
+					<PageTitle
+						pretext="Last updated March 3rd 2023."
+						title="Roadmap"
+						introduction="Our roadmap is always evolving with the needs of our product teams."
+					/>
 					<Prose>
-						<h1>Roadmap</h1>
 						<p>
-							Our roadmap is always evolving with the needs of our product
-							teams. This page should be used as a general guide to see the big
-							pieces of work we are currently looking at, or almost ready to
-							start.
+							This page should be used as a general guide to see the big pieces
+							of work we are currently looking at, or almost ready to start.
 						</p>
-
-						<p>Last updated March 3rd 2023.</p>
 
 						<h2>Work in progress</h2>
 						<p>We are currently working on the following features:</p>
@@ -34,6 +40,7 @@ export default function AboutPage() {
 							<li>Multi-select patterns</li>
 							<li>DatePicker and DateRangePicker improvements</li>
 							<li>Application shell for Export Service authenticated space</li>
+							<li>Improving SideNav design</li>
 						</ul>
 
 						<h2>Coming up soon</h2>
@@ -60,7 +67,7 @@ export default function AboutPage() {
 							<TextLink href="/updates">Updates</TextLink>
 						</p>
 					</Prose>
-				</PageContent>
+				</PageLayout>
 			</AppLayout>
 		</>
 	);
