@@ -18,8 +18,6 @@ type SmallExampleProps = {
 	// filter
 	filters: GetDataFilters;
 	setFilters: (filters: GetDataFilters) => void;
-	resetFilters: () => void;
-	removeFilter: (filter: keyof GetDataFilters) => void;
 	// pagination
 	pagination: GetDataPagination;
 	setPagination: (pagination: GetDataPagination) => void;

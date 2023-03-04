@@ -6,7 +6,7 @@ import { CloseIcon } from '@ag.ds-next/react/icon';
 import { Tags } from '@ag.ds-next/react/tags';
 import { GetDataFilters } from '../lib/data';
 
-const formatDate = (date: Date) => {
+const formatDate = (date: Date | undefined) => {
 	if (!date || typeof date !== 'object') return '-';
 	return format(new Date(date), 'dd/MM/yyyy');
 };
@@ -18,16 +18,21 @@ const getTagsFromFilters = ({
 	filters: GetDataFilters;
 	removeFilter: (filter: keyof GetDataFilters) => void;
 }) => {
-	return Object.entries(filters)
+	return (
+		Object.entries(filters) as [
+			keyof typeof filters,
+			string | { from: Date | undefined; to: Date | undefined } | undefined
+		][]
+	)
 		.filter(([key, value]) => {
-			if (key === 'requestDate') {
+			if (typeof value === 'object') {
 				return value?.from !== undefined || value?.to !== undefined;
 			}
 
 			return value !== undefined;
 		})
 		.map(([key, value]) => {
-			if (key === 'requestDate') {
+			if (typeof value === 'object') {
 				const { from, to } = value;
 
 				return {
