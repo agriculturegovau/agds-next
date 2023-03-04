@@ -2,7 +2,7 @@ import { Flex } from '@ag.ds-next/react/box';
 import { DirectionButton } from '@ag.ds-next/react/direction-link';
 import { Select } from '@ag.ds-next/react/select';
 import { GetDataPagination } from '../lib/data';
-import { DashboardItemsPerPageSelect } from './DashboardItemsPerPageSelect';
+import { ItemsPerPageSelect } from './ItemsPerPageSelect';
 
 export const AdvancedTablePagination = ({
 	pagination,
@@ -15,7 +15,7 @@ export const AdvancedTablePagination = ({
 }) => {
 	return (
 		<Flex justifyContent="space-between" alignItems="center">
-			<DashboardItemsPerPageSelect
+			<ItemsPerPageSelect
 				pagination={pagination}
 				setPagination={setPagination}
 			/>

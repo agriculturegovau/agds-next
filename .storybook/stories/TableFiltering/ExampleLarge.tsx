@@ -2,28 +2,31 @@ import { Flex, Stack } from '@ag.ds-next/react/box';
 import { Button, ButtonLink } from '@ag.ds-next/react/button';
 import { PageContent } from '@ag.ds-next/react/content';
 import { FilterIcon, PlusIcon } from '@ag.ds-next/react/icon';
-import { Tags } from '@ag.ds-next/react/tags';
 import { useState } from 'react';
-import { AppShell } from '../../components/ExampleShell';
 import { ActiveFilters } from './components/ActiveFilters';
 import { AdvancedTablePagination } from './components/AdvancedPagination';
-import { DashboardPageTitle } from './components/DashboardPageTitle';
-import { DashboardSortBySelect } from './components/DashboardSortBySelect';
+import { SortBySelect } from './components/SortBySelect';
 import { DashboardTable } from './components/DashboardTable';
 import { FilterModal } from './components/FilterModal';
 import { FilterSearchInput } from './components/FilterSearchInput';
 import { GetDataFilters, GetDataPagination, GetDataSort } from './lib/data';
 import { BusinessForAudit } from './lib/generateBusinessData';
+import { Prose } from '@ag.ds-next/react/prose';
 
 type ExampleLargeProps = {
-	filters: GetDataFilters;
-	setFilters: (filters: GetDataFilters) => void;
+	// sort
 	sort: GetDataSort;
 	setSort: (sort: GetDataSort) => void;
+	// filter
+	filters: GetDataFilters;
+	setFilters: (filters: GetDataFilters) => void;
+	resetFilters: () => void;
+	removeFilter: (filter: keyof GetDataFilters) => void;
+	// pagination
 	pagination: GetDataPagination;
 	setPagination: (pagination: GetDataPagination) => void;
 	resetPagination: () => void;
-	resetFilters: () => void;
+	// data
 	totalPages: number;
 	loading: boolean;
 	data: BusinessForAudit[];
@@ -35,6 +38,7 @@ export const ExampleLarge = ({
 	setSort,
 	filters,
 	setFilters,
+	removeFilter,
 	resetFilters,
 	pagination,
 	setPagination,
@@ -47,60 +51,71 @@ export const ExampleLarge = ({
 	const [isOpen, setIsOpen] = useState(false);
 
 	return (
-		<AppShell>
-			<DashboardPageTitle />
-			<PageContent>
-				<Stack gap={2}>
-					<Stack gap={1}>
-						<div>
-							<ButtonLink href="#new" iconBefore={PlusIcon}>
-								New item
-							</ButtonLink>
-						</div>
-						<Flex gap={1} justifyContent="space-between" alignItems="flex-end">
-							<Flex gap={1} alignItems="flex-end">
-								<FilterSearchInput filters={filters} setFilters={setFilters} />
-								<Button
-									onClick={() => setIsOpen(true)}
-									variant="secondary"
-									iconBefore={FilterIcon}
-								>
-									Show filters
-								</Button>
-							</Flex>
-
-							<DashboardSortBySelect
-								sort={sort}
-								setSort={setSort}
-								resetPagination={resetPagination}
-							/>
+		<PageContent>
+			<Stack gap={2}>
+				<Prose>
+					<h1>Table Filtering (Large)</h1>
+					<p>
+						The large filtering pattern is for cases where the number of
+						filterable fields exceeds 5. Our FilterModal is used to reveal all
+						options as the user elects to show them. You may elect to show up to
+						two 'primary' filters in the main content area next to the button
+						which opens the modal.
+					</p>
+				</Prose>
+				<Stack gap={1}>
+					<div>
+						<ButtonLink href="#new" iconBefore={PlusIcon}>
+							New item
+						</ButtonLink>
+					</div>
+					<Flex gap={1} justifyContent="space-between" alignItems="flex-end">
+						<Flex gap={1} alignItems="flex-end">
+							<FilterSearchInput filters={filters} setFilters={setFilters} />
+							<Button
+								onClick={() => setIsOpen(true)}
+								variant="secondary"
+								iconBefore={FilterIcon}
+							>
+								Show filters
+							</Button>
 						</Flex>
 
-						<FilterModal
-							isOpen={isOpen}
-							onDismiss={() => setIsOpen(false)}
-							filters={filters}
-							setFilters={setFilters}
+						<SortBySelect
+							sort={sort}
+							setSort={setSort}
 							resetPagination={resetPagination}
 						/>
+					</Flex>
 
-						<ActiveFilters filters={filters} />
-					</Stack>
-					<DashboardTable
-						data={data}
-						loading={loading}
-						itemsPerPage={pagination.perPage}
-						caption={tableCaption}
+					<FilterModal
+						isOpen={isOpen}
+						onDismiss={() => setIsOpen(false)}
+						filters={filters}
+						setFilters={setFilters}
+						resetPagination={resetPagination}
 					/>
-					{data.length ? (
-						<AdvancedTablePagination
-							pagination={pagination}
-							setPagination={setPagination}
-							totalPages={totalPages}
-						/>
-					) : null}
+
+					<ActiveFilters
+						filters={filters}
+						removeFilter={removeFilter}
+						resetFilters={resetFilters}
+					/>
 				</Stack>
-			</PageContent>
-		</AppShell>
+				<DashboardTable
+					data={data}
+					loading={loading}
+					itemsPerPage={pagination.perPage}
+					caption={tableCaption}
+				/>
+				{data.length ? (
+					<AdvancedTablePagination
+						pagination={pagination}
+						setPagination={setPagination}
+						totalPages={totalPages}
+					/>
+				) : null}
+			</Stack>
+		</PageContent>
 	);
 };

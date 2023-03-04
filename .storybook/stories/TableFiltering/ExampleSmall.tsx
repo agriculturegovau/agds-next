@@ -2,24 +2,29 @@ import { Flex, Stack } from '@ag.ds-next/react/box';
 import { ButtonLink } from '@ag.ds-next/react/button';
 import { PageContent } from '@ag.ds-next/react/content';
 import { PaginationButtons } from '@ag.ds-next/react/pagination';
-import { AppShell } from '../../components/ExampleShell';
-import { DashboardPageTitle } from './components/DashboardPageTitle';
 import { FilterStatusSelect } from './components/FilterStatusSelect';
 import { DashboardTable } from './components/DashboardTable';
 import { GetDataFilters, GetDataPagination, GetDataSort } from './lib/data';
 import { BusinessForAudit } from './lib/generateBusinessData';
 import { PlusIcon } from '@ag.ds-next/react/icon';
-import { DashboardSortBySelect } from './components/DashboardSortBySelect';
+import { SortBySelect } from './components/SortBySelect';
 import { FilterAssigneeSelect } from './components/FilterAssigneeSelect';
+import { Prose } from '@ag.ds-next/react/prose';
 
 type SmallExampleProps = {
+	// sort
 	sort: GetDataSort;
 	setSort: (sort: GetDataSort) => void;
+	// filter
 	filters: GetDataFilters;
 	setFilters: (filters: GetDataFilters) => void;
+	resetFilters: () => void;
+	removeFilter: (filter: keyof GetDataFilters) => void;
+	// pagination
 	pagination: GetDataPagination;
 	setPagination: (pagination: GetDataPagination) => void;
 	resetPagination: () => void;
+	// data
 	totalPages: number;
 	loading: boolean;
 	data: BusinessForAudit[];
@@ -40,53 +45,55 @@ export const ExampleSmall = ({
 	tableCaption,
 }: SmallExampleProps) => {
 	return (
-		<AppShell>
-			<DashboardPageTitle title="Requests" />
-			<PageContent>
-				<Stack gap={2}>
-					<Flex gap={1} alignItems="flex-end">
-						<ButtonLink href="#new" iconBefore={PlusIcon}>
-							Create request
-						</ButtonLink>
-					</Flex>
+		<PageContent>
+			<Stack gap={2}>
+				<Prose>
+					<h1>Table Filtering (small)</h1>
+					<p>
+						In the most basic cases of filtering with up to three filterable
+						fields, we can show all filters in a row above the table.
+					</p>
+				</Prose>
+				<div>
+					<ButtonLink href="#new" iconBefore={PlusIcon}>
+						Create request
+					</ButtonLink>
+				</div>
 
-					<Flex gap={1} alignItems="flex-end" justifyContent="space-between">
-						<Flex gap={1} alignItems="flex-end">
-							<FilterStatusSelect
-								filters={filters}
-								setFilters={setFilters}
-								resetPagination={resetPagination}
-							/>
-							<FilterAssigneeSelect
-								filters={filters}
-								setFilters={setFilters}
-								resetPagination={resetPagination}
-							/>
-						</Flex>
-
-						<DashboardSortBySelect
-							sort={sort}
-							setSort={setSort}
+				<Flex gap={1} justifyContent="space-between">
+					<Flex gap={1}>
+						<FilterStatusSelect
+							filters={filters}
+							setFilters={setFilters}
+							resetPagination={resetPagination}
+						/>
+						<FilterAssigneeSelect
+							filters={filters}
+							setFilters={setFilters}
 							resetPagination={resetPagination}
 						/>
 					</Flex>
-					<DashboardTable
-						data={data}
-						loading={loading}
-						caption={tableCaption}
-						itemsPerPage={pagination.perPage}
+
+					<SortBySelect
+						sort={sort}
+						setSort={setSort}
+						resetPagination={resetPagination}
 					/>
-					{data.length ? (
-						<Stack>
-							<PaginationButtons
-								currentPage={pagination.page}
-								onChange={(page) => setPagination({ ...pagination, page })}
-								totalPages={totalPages}
-							/>
-						</Stack>
-					) : null}
-				</Stack>
-			</PageContent>
-		</AppShell>
+				</Flex>
+				<DashboardTable
+					data={data}
+					loading={loading}
+					caption={tableCaption}
+					itemsPerPage={pagination.perPage}
+				/>
+				{data.length ? (
+					<PaginationButtons
+						currentPage={pagination.page}
+						onChange={(page) => setPagination({ ...pagination, page })}
+						totalPages={totalPages}
+					/>
+				) : null}
+			</Stack>
+		</PageContent>
 	);
 };

@@ -2,7 +2,7 @@ import { Select } from '@ag.ds-next/react/select';
 import { GetDataSort } from '../lib/data';
 import { BusinessForAudit } from '../lib/generateBusinessData';
 
-export const DashboardSortBySelect = ({
+export const SortBySelect = ({
 	sort,
 	setSort,
 	resetPagination,

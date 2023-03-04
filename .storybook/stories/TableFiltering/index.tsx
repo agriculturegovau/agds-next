@@ -1,18 +1,13 @@
 import { useEffect, useState } from 'react';
 import { ExampleSmall } from './ExampleSmall';
 import { ExampleMedium } from './ExampleMedium';
-import {
-	getData,
-	GetDataParams,
-	GetDataFilters,
-	GetDataPagination,
-	GetDataSort,
-} from './lib/data';
+import { getData, GetDataParams, GetDataPagination } from './lib/data';
 import { BusinessForAudit } from './lib/generateBusinessData';
 import { ExampleLarge } from './ExampleLarge';
+import { useSortAndFilter } from './lib/useSortAndFilter';
 
 export default {
-	title: 'Examples/Filtering',
+	title: 'Patterns/Filtering',
 };
 
 function useData({ sort, filters, pagination }: GetDataParams) {
@@ -33,52 +28,6 @@ function useData({ sort, filters, pagination }: GetDataParams) {
 
 	return { loading, data, totalPages, totalItems };
 }
-
-const useSortAndFilter = (args?: { filters?: Partial<GetDataFilters> }) => {
-	const [pagination, setPagination] = useState<GetDataPagination>({
-		page: 1,
-		perPage: 10,
-	});
-	const [sort, setSort] = useState<GetDataSort>({
-		field: 'businessName',
-		order: 'ASC',
-	});
-	const [filters, setFilters] = useState<GetDataFilters>({
-		assignee: undefined,
-		businessName: undefined,
-		state: undefined,
-		status: undefined,
-		requestDate: {
-			from: undefined,
-			to: undefined,
-		},
-		...args?.filters,
-	});
-
-	const resetPagination = () => setPagination({ ...pagination, page: 1 });
-	const resetFilters = () =>
-		setFilters({
-			assignee: undefined,
-			businessName: undefined,
-			state: undefined,
-			status: undefined,
-			requestDate: {
-				from: undefined,
-				to: undefined,
-			},
-		});
-
-	return {
-		filters,
-		pagination,
-		resetFilters,
-		resetPagination,
-		setFilters,
-		setPagination,
-		setSort,
-		sort,
-	};
-};
 
 const genetateTableCaption = ({
 	loading,
@@ -116,17 +65,17 @@ export const Small = () => {
 
 	return (
 		<ExampleSmall
-			data={data}
 			sort={sort}
 			setSort={setSort}
 			filters={filters}
-			loading={loading}
-			pagination={pagination}
-			resetPagination={resetPagination}
 			setFilters={setFilters}
+			pagination={pagination}
 			setPagination={setPagination}
-			tableCaption={tableCaption}
+			resetPagination={resetPagination}
 			totalPages={totalPages}
+			loading={loading}
+			data={data}
+			tableCaption={tableCaption}
 		/>
 	);
 };
@@ -137,6 +86,7 @@ export const Medium = () => {
 		pagination,
 		resetFilters,
 		resetPagination,
+		removeFilter,
 		setFilters,
 		setPagination,
 		setSort,
@@ -164,6 +114,7 @@ export const Medium = () => {
 			resetFilters={resetFilters}
 			resetPagination={resetPagination}
 			setFilters={setFilters}
+			removeFilter={removeFilter}
 			setPagination={setPagination}
 			setSort={setSort}
 			sort={sort}
@@ -178,6 +129,7 @@ export const Large = () => {
 		filters,
 		pagination,
 		resetFilters,
+		removeFilter,
 		resetPagination,
 		setFilters,
 		setPagination,
@@ -204,6 +156,7 @@ export const Large = () => {
 			loading={loading}
 			pagination={pagination}
 			resetFilters={resetFilters}
+			removeFilter={removeFilter}
 			resetPagination={resetPagination}
 			setFilters={setFilters}
 			setPagination={setPagination}

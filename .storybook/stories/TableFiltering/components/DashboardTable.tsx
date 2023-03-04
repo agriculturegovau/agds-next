@@ -13,6 +13,7 @@ import {
 import { TextLink } from '@ag.ds-next/react/text-link';
 import { Text } from '@ag.ds-next/react/text';
 import { Fragment } from 'react';
+import { format } from 'date-fns';
 import { BusinessForAudit } from '../lib/generateBusinessData';
 import { Avatar } from '@ag.ds-next/react/avatar';
 import { Flex } from '@ag.ds-next/react/box';
@@ -136,7 +137,7 @@ export const DashboardTable = ({
 												{numberOfEmployees}
 											</TableCell>
 											<TableCell textAlign="right">
-												{requestDate.toLocaleDateString()}
+												{format(requestDate, 'dd/MM/yyyy')}
 											</TableCell>
 											<TableCell>
 												<StatusBadge {...STATUS_MAP[status]} />
