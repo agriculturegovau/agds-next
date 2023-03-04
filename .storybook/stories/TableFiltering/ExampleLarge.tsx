@@ -80,11 +80,8 @@ export const ExampleLarge = ({
 							isOpen={isOpen}
 							onDismiss={() => setIsOpen(false)}
 							filters={filters}
-							sort={sort}
 							setFilters={setFilters}
-							setSort={setSort}
 							resetPagination={resetPagination}
-							resetFilters={resetFilters}
 						/>
 
 						<ActiveFilters filters={filters} />
