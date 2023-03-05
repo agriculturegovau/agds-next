@@ -19,7 +19,7 @@ import { GetDataFilters, GetDataPagination, GetDataSort } from './lib/getData';
 import { BusinessForAudit } from './lib/generateBusinessData';
 import { Prose } from '@ag.ds-next/react/prose';
 
-type ExampleFilterBarProps = {
+type MediumExampleProps = {
 	// sort
 	sort: GetDataSort;
 	setSort: (sort: GetDataSort) => void;
@@ -53,7 +53,7 @@ export const ExampleMedium = ({
 	loading,
 	data,
 	tableCaption,
-}: ExampleFilterBarProps) => {
+}: MediumExampleProps) => {
 	const [isOpen, setIsOpen] = useState(false);
 
 	// IDs for accordion to ensure accessibility

@@ -11,7 +11,7 @@ import { SortBySelect } from './components/SortBySelect';
 import { FilterAssigneeSelect } from './components/FilterAssigneeSelect';
 import { Prose } from '@ag.ds-next/react/prose';
 
-type SmallExampleProps = {
+export type SmallExampleProps = {
 	// sort
 	sort: GetDataSort;
 	setSort: (sort: GetDataSort) => void;
