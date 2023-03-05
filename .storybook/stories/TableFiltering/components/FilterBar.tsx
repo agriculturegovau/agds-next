@@ -1,6 +1,6 @@
 import { useSpring, animated } from '@react-spring/web';
 import { Flex } from '@ag.ds-next/react/box';
-import { GetDataFilters, GetDataSort } from '../lib/data';
+import { GetDataFilters, GetDataSort } from '../lib/getData';
 import { DateRangePicker } from '@ag.ds-next/react/date-picker';
 import { Button } from '@ag.ds-next/react/button';
 import { FilterAssigneeSelect } from './FilterAssigneeSelect';

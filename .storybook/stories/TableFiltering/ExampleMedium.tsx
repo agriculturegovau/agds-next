@@ -15,7 +15,7 @@ import { SortBySelect } from './components/SortBySelect';
 import { DashboardTable } from './components/DashboardTable';
 import { FilterSearchInput } from './components/FilterSearchInput';
 import { FilterStatusSelect } from './components/FilterStatusSelect';
-import { GetDataFilters, GetDataPagination, GetDataSort } from './lib/data';
+import { GetDataFilters, GetDataPagination, GetDataSort } from './lib/getData';
 import { BusinessForAudit } from './lib/generateBusinessData';
 import { Prose } from '@ag.ds-next/react/prose';
 

@@ -1,7 +1,7 @@
 import { Flex } from '@ag.ds-next/react/box';
 import { DirectionButton } from '@ag.ds-next/react/direction-link';
 import { Select } from '@ag.ds-next/react/select';
-import { GetDataPagination } from '../lib/data';
+import { GetDataPagination } from '../lib/getData';
 import { ItemsPerPageSelect } from './ItemsPerPageSelect';
 
 export const AdvancedTablePagination = ({

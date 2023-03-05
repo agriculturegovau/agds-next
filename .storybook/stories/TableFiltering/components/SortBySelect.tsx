@@ -1,5 +1,5 @@
 import { Select } from '@ag.ds-next/react/select';
-import { GetDataSort } from '../lib/data';
+import { GetDataSort } from '../lib/getData';
 import { BusinessForAudit } from '../lib/generateBusinessData';
 
 export const SortBySelect = ({

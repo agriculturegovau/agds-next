@@ -4,7 +4,7 @@ import { PageContent } from '@ag.ds-next/react/content';
 import { PaginationButtons } from '@ag.ds-next/react/pagination';
 import { FilterStatusSelect } from './components/FilterStatusSelect';
 import { DashboardTable } from './components/DashboardTable';
-import { GetDataFilters, GetDataPagination, GetDataSort } from './lib/data';
+import { GetDataFilters, GetDataPagination, GetDataSort } from './lib/getData';
 import { BusinessForAudit } from './lib/generateBusinessData';
 import { PlusIcon } from '@ag.ds-next/react/icon';
 import { SortBySelect } from './components/SortBySelect';

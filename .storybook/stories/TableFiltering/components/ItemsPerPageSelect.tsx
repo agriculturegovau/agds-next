@@ -1,5 +1,5 @@
 import { Select } from '@ag.ds-next/react/select';
-import { GetDataPagination } from '../lib/data';
+import { GetDataPagination } from '../lib/getData';
 
 export const ItemsPerPageSelect = ({
 	pagination,

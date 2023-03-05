@@ -1,43 +1,11 @@
-import { useEffect, useState } from 'react';
 import { ExampleSmall } from './ExampleSmall';
 import { ExampleMedium } from './ExampleMedium';
-import { getData, GetDataParams, GetDataPagination } from './lib/data';
-import { BusinessForAudit } from './lib/generateBusinessData';
 import { ExampleLarge } from './ExampleLarge';
 import { useSortAndFilter } from './lib/useSortAndFilter';
+import { genetateTableCaption, useData } from './lib/utils';
 
 export default {
 	title: 'Patterns/Filtering',
-};
-
-function useData({ sort, filters, pagination }: GetDataParams) {
-	const [loading, setLoading] = useState(false);
-	const [data, setData] = useState<BusinessForAudit[]>([]);
-	const [totalPages, setTotalPages] = useState(0);
-	const [totalItems, setTotalItems] = useState(0);
-
-	useEffect(() => {
-		setLoading(true);
-		getData({ sort, filters, pagination }).then((response) => {
-			setData(response.data);
-			setTotalPages(response.totalPages);
-			setTotalItems(response.totalItems);
-			setLoading(false);
-		});
-	}, [sort, filters, pagination]);
-
-	return { loading, data, totalPages, totalItems };
-}
-
-const genetateTableCaption = ({
-	loading,
-	totalItems,
-}: {
-	pagination: GetDataPagination;
-	loading: boolean;
-	totalItems: number;
-}) => {
-	return `Audits ${loading ? '' : `(${totalItems} items)`}`;
 };
 
 export const Small = () => {
@@ -60,7 +28,6 @@ export const Small = () => {
 	const tableCaption = genetateTableCaption({
 		loading,
 		totalItems,
-		pagination,
 	});
 
 	return (
@@ -102,7 +69,6 @@ export const Medium = () => {
 	const tableCaption = genetateTableCaption({
 		loading,
 		totalItems,
-		pagination,
 	});
 
 	return (
@@ -146,7 +112,6 @@ export const Large = () => {
 	const tableCaption = genetateTableCaption({
 		loading,
 		totalItems,
-		pagination,
 	});
 
 	return (

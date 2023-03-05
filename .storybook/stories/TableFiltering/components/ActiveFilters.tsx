@@ -4,7 +4,7 @@ import { Flex } from '@ag.ds-next/react/box';
 import { Button } from '@ag.ds-next/react/button';
 import { CloseIcon } from '@ag.ds-next/react/icon';
 import { Tags } from '@ag.ds-next/react/tags';
-import { GetDataFilters } from '../lib/data';
+import { GetDataFilters } from '../lib/getData';
 
 const formatDate = (date: Date | undefined) => {
 	if (!date || typeof date !== 'object') return '-';

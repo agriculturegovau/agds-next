@@ -1,5 +1,5 @@
 import { Select } from '@ag.ds-next/react/select';
-import { GetDataFilters } from '../lib/data';
+import { GetDataFilters } from '../lib/getData';
 
 export const FilterStatusSelect = ({
 	filters,

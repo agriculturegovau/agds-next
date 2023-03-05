@@ -1,6 +1,6 @@
 import { Box, Flex, Stack } from '@ag.ds-next/react/box';
 import { Select } from '@ag.ds-next/react/select';
-import { GetDataFilters, GetDataSort } from '../lib/data';
+import { GetDataFilters, GetDataSort } from '../lib/getData';
 import { DateRangePicker } from '@ag.ds-next/react/date-picker';
 import { Button, ButtonGroup } from '@ag.ds-next/react/button';
 import { FilterStatusSelect } from './FilterStatusSelect';

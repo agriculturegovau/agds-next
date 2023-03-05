@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { GetDataFilters, GetDataPagination, GetDataSort } from './data';
+import { GetDataFilters, GetDataPagination, GetDataSort } from './getData';
 
 export type SortAndFilterType = {
 	// sort
