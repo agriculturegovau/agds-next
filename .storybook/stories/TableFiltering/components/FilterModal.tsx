@@ -11,6 +11,7 @@ import {
 	ReactNode,
 	useEffect,
 	useRef,
+	useState,
 } from 'react';
 import { createPortal } from 'react-dom';
 import { Global } from '@emotion/react';
@@ -43,6 +44,7 @@ const AnimatedStack = animated(Stack);
 export const ModalDialog = ({
 	children,
 	title,
+	onApply,
 	onDismiss,
 }: ModalDialogProps) => {
 	// const { titleId } = useModalId()
@@ -64,30 +66,34 @@ export const ModalDialog = ({
 				aria-labelledby={titleId}
 				rounded
 				focus
-				padding={1.5}
-				gap={1}
 				maxWidth={tokens.maxWidth.modalDialog}
 				css={{
 					position: 'relative',
 					margin: '0 auto',
 					minHeight: '100vh',
 					[tokens.mediaQuery.min.sm]: {
-						margin: `${mapSpacing(6)} auto ${mapSpacing(1)}`,
+						margin: `${mapSpacing(1)} auto ${mapSpacing(1)}`,
+						height: 'calc(100vh - 2rem)',
 						minHeight: 'auto',
 					},
 				}}
 				style={animationStyles}
 			>
-				<ModalTitle id={titleId}>{title}</ModalTitle>
+				<Box padding={1.5} borderBottom>
+					<ModalTitle id={titleId}>{title}</ModalTitle>
+				</Box>
+
 				<Box
-				// scrolls
+					css={{
+						overflowY: 'scroll',
+					}}
 				>
 					{children}
 				</Box>
 
-				<Box paddingTop={1} css={{ marginTop: 'auto' }}>
+				<Box borderTop padding={1.5} css={{ marginTop: 'auto' }}>
 					<ButtonGroup>
-						<Button onClick={onDismiss}>Apply filters</Button>
+						<Button onClick={onApply}>Apply filters</Button>
 						<Button variant="tertiary" onClick={onDismiss}>
 							Cancel
 						</Button>
@@ -101,8 +107,8 @@ export const ModalDialog = ({
 					iconAfter={CloseIcon}
 					css={{
 						position: 'absolute',
-						top: mapSpacing(0.5),
-						right: mapSpacing(0.5),
+						top: mapSpacing(1),
+						right: mapSpacing(1),
 					}}
 				>
 					Close
@@ -127,6 +133,18 @@ export const FilterModal = ({
 }) => {
 	const title = 'Filter by';
 	const coverRef = useRef<HTMLDivElement>(null);
+	const [selectedFilters, setSelectedFilters] =
+		useState<GetDataFilters>(filters);
+
+	const handleApply = () => {
+		setFilters(selectedFilters);
+		resetPagination();
+		onDismiss();
+	};
+
+	useEffect(() => {
+		setSelectedFilters(filters);
+	}, [isOpen, filters]);
 
 	// Close the modal when the user presses the escape key
 	useEffect(() => {
@@ -179,34 +197,34 @@ export const FilterModal = ({
 		<Fragment>
 			<LockScroll />
 			<ModalCover ref={coverRef}>
-				<ModalDialog onDismiss={onDismiss} title={title}>
-					<Stack gap={1}>
-						<FilterSearchInput filters={filters} setFilters={setFilters} />
+				<ModalDialog onDismiss={onDismiss} onApply={handleApply} title={title}>
+					<Stack gap={1} padding={1.5}>
+						<p>{JSON.stringify(selectedFilters)}</p>
+						<FilterSearchInput
+							filters={selectedFilters}
+							setFilters={setSelectedFilters}
+						/>
 						<FilterStatusSelect
-							filters={filters}
-							setFilters={setFilters}
-							resetPagination={resetPagination}
+							filters={selectedFilters}
+							setFilters={setSelectedFilters}
 						/>
 						<FilterStateSelect
-							filters={filters}
-							setFilters={setFilters}
-							resetPagination={resetPagination}
+							filters={selectedFilters}
+							setFilters={setSelectedFilters}
 						/>
 						<FilterAssigneeSelect
-							filters={filters}
-							setFilters={setFilters}
-							resetPagination={resetPagination}
+							filters={selectedFilters}
+							setFilters={setSelectedFilters}
 						/>
 						<DateRangePicker
 							fromLabel="Registered from"
 							toLabel="Registered to"
-							onChange={(value) => {
-								resetPagination();
+							onChange={(value) =>
 								setFilters({
 									...filters,
 									requestDate: value,
-								});
-							}}
+								})
+							}
 							value={filters.requestDate}
 						/>
 						<ControlGroup label="Contact method" block>

@@ -9,7 +9,7 @@ export const FilterAssigneeSelect = ({
 }: {
 	filters: GetDataFilters;
 	setFilters: (filters: GetDataFilters) => void;
-	resetPagination: () => void;
+	resetPagination?: () => void;
 }) => {
 	return (
 		<Select
@@ -23,7 +23,7 @@ export const FilterAssigneeSelect = ({
 			value={filters.assignee || ''}
 			onChange={(e) => {
 				const value = e.target.value;
-				resetPagination();
+				resetPagination && resetPagination();
 				setFilters({
 					...filters,
 					assignee: value === '' ? undefined : value,

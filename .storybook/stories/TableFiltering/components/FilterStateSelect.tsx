@@ -8,7 +8,7 @@ export const FilterStateSelect = ({
 }: {
 	filters: GetDataFilters;
 	setFilters: (filters: GetDataFilters) => void;
-	resetPagination: () => void;
+	resetPagination?: () => void;
 }) => {
 	return (
 		<Select
@@ -28,7 +28,7 @@ export const FilterStateSelect = ({
 			value={filters.state || ''}
 			onChange={(e) => {
 				const value = e.target.value;
-				resetPagination();
+				resetPagination && resetPagination();
 				setFilters({
 					...filters,
 					state: value === '' ? undefined : value,

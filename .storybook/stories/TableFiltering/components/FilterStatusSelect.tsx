@@ -8,7 +8,7 @@ export const FilterStatusSelect = ({
 }: {
 	filters: GetDataFilters;
 	setFilters: (sort: GetDataFilters) => void;
-	resetPagination: () => void;
+	resetPagination?: () => void;
 }) => {
 	return (
 		<Select
@@ -29,7 +29,8 @@ export const FilterStatusSelect = ({
 					| 'notBooked'
 					| 'completed'
 					| 'cancelled';
-				resetPagination();
+
+				resetPagination && resetPagination();
 				setFilters({
 					...filters,
 					status: value === '' ? undefined : value,
