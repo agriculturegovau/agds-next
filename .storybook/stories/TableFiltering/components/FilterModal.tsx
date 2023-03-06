@@ -33,6 +33,8 @@ import { FilterSearchInput } from './FilterSearchInput';
 export type ModalDialogProps = PropsWithChildren<{
 	/** The actions to display at the bottom of the modal panel. Typically a `ButtonGroup`. */
 	actions?: ReactNode;
+	/** Function to be called when the modal is closed to accept changes. */
+	onApply: () => void;
 	/** Function to be called when the modal is closed. */
 	onDismiss: () => void;
 	/** The title of the modal dialog. It can span lines but should not be too long. */
