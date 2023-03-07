@@ -1,5 +1,5 @@
 import { VisuallyHidden } from '@ag.ds-next/react/a11y';
-import { StatusBadge, StatusBadgeTone } from '@ag.ds-next/react/badge';
+import { StatusBadge } from '@ag.ds-next/react/badge';
 import { SkeletonBox, SkeletonText } from '@ag.ds-next/react/skeleton';
 import {
 	Table,
@@ -7,7 +7,6 @@ import {
 	TableCaption,
 	TableCell,
 	TableHead,
-	TableHeader,
 	TableWrapper,
 } from '@ag.ds-next/react/table';
 import { TextLink } from '@ag.ds-next/react/text-link';
@@ -17,6 +16,11 @@ import { format } from 'date-fns';
 import { BusinessForAudit } from '../lib/generateBusinessData';
 import { Avatar } from '@ag.ds-next/react/avatar';
 import { Flex } from '@ag.ds-next/react/box';
+import { GetDataSort } from '../lib/getData';
+import {
+	DashboardTableHeader,
+	DashboardTableHeaderBaseProps,
+} from './DashboardTableHeader';
 
 const DashboardTableRowAssignee = ({
 	assignee,
@@ -38,17 +42,31 @@ const DashboardTableRowAssignee = ({
 	);
 };
 
+type DashboardTableProps = {
+	/** The caption for the table */
+	caption: string;
+	/** The data to display in the table */
+	data: BusinessForAudit[];
+	/** The current sort */
+	sort?: GetDataSort;
+	/** A function to set the sort */
+	setSort?: (sort: GetDataSort) => void;
+	/** Whether the table is loading */
+	loading?: boolean;
+	/** The number of items to display per page */
+	itemsPerPage?: number;
+};
+
 export const DashboardTable = ({
 	caption,
 	data,
 	loading,
+	sort,
+	setSort,
 	itemsPerPage = 10,
-}: {
-	caption: string;
-	data: BusinessForAudit[];
-	loading?: boolean;
-	itemsPerPage?: number;
-}) => {
+}: DashboardTableProps) => {
+	const isTableSortable = !sort || !!setSort;
+
 	if (!loading && data.length === 0) {
 		return <Text>No results</Text>;
 	}
@@ -56,27 +74,46 @@ export const DashboardTable = ({
 	return (
 		<TableWrapper>
 			<Table>
-				<TableCaption>{caption}</TableCaption>
+				<TableCaption>
+					{caption}
+					<VisuallyHidden>
+						, column headers with buttons are sortable.
+					</VisuallyHidden>
+				</TableCaption>
 				<TableHead>
 					<tr>
-						<TableHeader width="25%" scope="col">
-							Business name
-						</TableHeader>
-						<TableHeader scope="col" width="15%">
-							Assignee
-						</TableHeader>
-						<TableHeader scope="col" width="20%">
-							City
-						</TableHeader>
-						<TableHeader textAlign="right" scope="col" width="10%">
-							Employees
-						</TableHeader>
-						<TableHeader textAlign="right" scope="col" width="15%">
-							Date registered
-						</TableHeader>
-						<TableHeader scope="col" width="15%">
-							Status
-						</TableHeader>
+						{headers.map(
+							({
+								label,
+								sortKey,
+								textAlign,
+								width,
+								isSortable: isFieldSortable,
+							}) => {
+								const isFieldTheActiveSortField = sort?.field === sortKey;
+								const clickHandler = () =>
+									setSort?.({
+										field: sortKey,
+										order:
+											sort?.field === sortKey && sort?.order === 'ASC'
+												? 'DESC'
+												: 'ASC',
+									});
+
+								return (
+									<DashboardTableHeader
+										key={sortKey}
+										textAlign={textAlign}
+										width={width}
+										isSortable={isTableSortable && isFieldSortable}
+										sort={isFieldTheActiveSortField ? sort.order : undefined}
+										onClick={clickHandler}
+									>
+										{label}
+									</DashboardTableHeader>
+								);
+							}
+						)}
 					</tr>
 				</TableHead>
 				<TableBody>
@@ -172,3 +209,47 @@ const STATUS_MAP = {
 		tone: 'error',
 	},
 } as const;
+
+const headers: ({
+	label: string;
+	sortKey: keyof BusinessForAudit;
+	isSortable?: true;
+} & DashboardTableHeaderBaseProps)[] = [
+	{
+		label: 'Business name',
+		sortKey: 'businessName',
+		width: '25%',
+		isSortable: true,
+	},
+	{
+		label: 'Assignee',
+		sortKey: 'assignee',
+		width: '15%',
+		isSortable: true,
+	},
+	{
+		label: 'City',
+		sortKey: 'city',
+		width: '20%',
+	},
+	{
+		label: 'Employees',
+		sortKey: 'numberOfEmployees',
+		textAlign: 'right',
+		width: '10%',
+		isSortable: true,
+	},
+	{
+		label: 'Date registered',
+		sortKey: 'requestDate',
+		textAlign: 'right',
+		width: '15%',
+		isSortable: true,
+	},
+	{
+		label: 'Status',
+		sortKey: 'status',
+		width: '15%',
+		isSortable: true,
+	},
+];

@@ -137,6 +137,8 @@ export const ExampleMedium = ({
 					loading={loading}
 					itemsPerPage={pagination.perPage}
 					caption={tableCaption}
+					sort={sort}
+					setSort={setSort}
 				/>
 				{data.length ? (
 					<Stack>

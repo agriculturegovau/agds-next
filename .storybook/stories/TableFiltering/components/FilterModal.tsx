@@ -1,10 +1,8 @@
-import { Box, Flex, Stack } from '@ag.ds-next/react/box';
-import { Select } from '@ag.ds-next/react/select';
-import { GetDataFilters, GetDataSort } from '../lib/getData';
+import { Box, Stack } from '@ag.ds-next/react/box';
+import { GetDataFilters } from '../lib/getData';
 import { DateRangePicker } from '@ag.ds-next/react/date-picker';
 import { Button, ButtonGroup } from '@ag.ds-next/react/button';
 import { FilterStatusSelect } from './FilterStatusSelect';
-import { assignees } from '../lib/generateBusinessData';
 import {
 	Fragment,
 	PropsWithChildren,
@@ -28,7 +26,6 @@ import { ModalCover } from '@ag.ds-next/react/src/modal/ModalCover';
 import { Checkbox, ControlGroup } from '@ag.ds-next/react/control-input';
 import { FilterAssigneeSelect } from './FilterAssigneeSelect';
 import { FilterStateSelect } from './FilterStateSelect';
-import { FilterSearchInput } from './FilterSearchInput';
 
 export type ModalDialogProps = PropsWithChildren<{
 	/** The actions to display at the bottom of the modal panel. Typically a `ButtonGroup`. */
@@ -201,11 +198,6 @@ export const FilterModal = ({
 			<ModalCover ref={coverRef}>
 				<ModalDialog onDismiss={onDismiss} onApply={handleApply} title={title}>
 					<Stack gap={1} padding={1.5}>
-						<p>{JSON.stringify(selectedFilters)}</p>
-						<FilterSearchInput
-							filters={selectedFilters}
-							setFilters={setSelectedFilters}
-						/>
 						<FilterStatusSelect
 							filters={selectedFilters}
 							setFilters={setSelectedFilters}
