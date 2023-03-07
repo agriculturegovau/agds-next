@@ -9,8 +9,14 @@ import { parseDate, formatHumanReadableDate } from './utils';
 
 export type DateInputProps = Omit<
 	TextInputProps,
-	'inputMode' | 'pattern' | 'type'
+	'inputMode' | 'pattern' | 'type' | 'invalid'
 > & {
+	invalid: {
+		/** If true, the entire field will be rendered in an invalid state.  */
+		field: boolean;
+		/** If true, only the input element will be rendered in an invalids state. */
+		input: boolean;
+	};
 	buttonRef: RefObject<HTMLButtonElement>;
 	buttonOnClick: MouseEventHandler<HTMLButtonElement>;
 };
@@ -35,7 +41,11 @@ export const DateInput = forwardRef<HTMLInputElement, DateInputProps>(
 		ref
 	) {
 		const { maxWidth, ...styles } = {
-			...textInputStyles({ block, invalid, maxWidth: maxWidthProp }),
+			...textInputStyles({
+				block,
+				invalid: invalid.input,
+				maxWidth: maxWidthProp,
+			}),
 			width: '100%',
 			borderRight: 'none',
 			borderTopRightRadius: 0,
@@ -56,7 +66,7 @@ export const DateInput = forwardRef<HTMLInputElement, DateInputProps>(
 				required={Boolean(required)}
 				hint={hint}
 				message={message}
-				invalid={invalid}
+				invalid={invalid.field}
 				id={id}
 			>
 				{(a11yProps) => (
@@ -67,6 +77,7 @@ export const DateInput = forwardRef<HTMLInputElement, DateInputProps>(
 							css={{ ...styles, maxWidth: 'unset' }}
 							autoComplete="off"
 							{...a11yProps}
+							aria-invalid={Boolean(invalid.field || invalid.input)}
 							{...props}
 							value={value}
 							disabled={disabled}

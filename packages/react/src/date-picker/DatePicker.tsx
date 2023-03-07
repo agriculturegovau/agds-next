@@ -16,7 +16,7 @@ import { parseDate, formatDate, constrainDate } from './utils';
 
 type DatePickerInputProps = Omit<
 	DateInputProps,
-	'value' | 'onChange' | 'buttonRef' | 'buttonOnClick'
+	'value' | 'onChange' | 'buttonRef' | 'buttonOnClick' | 'invalid'
 >;
 
 type DatePickerCalendarProps = {
@@ -37,6 +37,8 @@ type DatePickerBaseProps = {
 	onChange: (day: Date | undefined) => void;
 	/** Ref to the input element. */
 	inputRef?: Ref<HTMLInputElement>;
+	/** If true, the invalid state will be rendered. */
+	invalid?: boolean;
 };
 
 export type DatePickerProps = DatePickerInputProps &
@@ -51,6 +53,7 @@ export const DatePicker = ({
 	initialMonth,
 	yearRange,
 	inputRef,
+	invalid = false,
 	...props
 }: DatePickerProps) => {
 	const [isCalendarOpen, openCalendar, closeCalendar] = useTernaryState(false);
@@ -132,6 +135,7 @@ export const DatePicker = ({
 		<div ref={setRefEl}>
 			<DateInput
 				{...props}
+				invalid={{ field: invalid, input: invalid }}
 				ref={inputRef}
 				value={inputValue}
 				onChange={onInputChange}
