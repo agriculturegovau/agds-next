@@ -12,7 +12,7 @@ export function useScrollToField() {
 function focusTarget(event: MouseEvent<HTMLAnchorElement>) {
 	const target = event.target;
 	if (!(target instanceof HTMLAnchorElement)) return false;
-	// Atempt to the find target ID from the anchor tag href
+	// Attempt to the find target ID from the anchor tag href
 	const targetId = getTargetId(event);
 	if (!targetId) return false;
 	// Attempt to find the target element using the target Id
@@ -24,7 +24,7 @@ function focusTarget(event: MouseEvent<HTMLAnchorElement>) {
 		// If the target element is a div (e.g. a `ControlGroup`), focus the first child input
 		targetEl.querySelector('input')?.focus();
 	} else {
-		// Othwerise, focus the target element
+		// Otherwise, focus the target element
 		targetEl.focus();
 	}
 	// Scroll the field container into view if possible, otherwise fallback to scrolling to the target
