@@ -1,14 +1,14 @@
+import { PropsWithChildren } from 'react';
 import { Box, Flex } from '../box';
 import { AlertFilledIcon } from '../icon';
 import { Text } from '../text';
 
-export const FieldMessage = ({
-	children,
-	id,
-}: {
-	children: string;
+export type FieldMessageProps = PropsWithChildren<{
+	/** Defines an identifier (ID) which must be unique. */
 	id: string;
-}) => (
+}>;
+
+export const FieldMessage = ({ children, id }: FieldMessageProps) => (
 	<Flex gap={0.5} alignItems="center">
 		<Box flexShrink={0}>
 			<AlertFilledIcon
