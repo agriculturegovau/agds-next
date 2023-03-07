@@ -23,6 +23,8 @@ figmaGalleryNodeId: 12444%3A100327
 
 ## Date picker
 
+`DatePicker` is a [controlled component](https://reactjs.org/docs/forms.html#controlled-components) which means consumers of this component need to manage the state of this component by using the `value` and `onChange` props.
+
 ```jsx live
 () => {
 	const [value, setValue] = React.useState();
@@ -30,7 +32,27 @@ figmaGalleryNodeId: 12444%3A100327
 };
 ```
 
-`DatePicker` is a [controlled component](https://reactjs.org/docs/forms.html#controlled-components).
+### Hint
+
+Use the `hint` prop to provide help that’s relevant to the majority of users, like how their information will be used, or where to find it.
+
+Don't use long paragraphs and lists in hint text. Screen readers read out the entire text when users interact with the form element. This could frustrate users if the text is long.
+
+Don't include links within hint text. While screen readers will read out the link text when describing the field, they will not tell users that the text is a link.
+
+```jsx live
+() => {
+	const [value, setValue] = React.useState();
+	return (
+		<DatePicker
+			label="Select date"
+			hint="Hint text"
+			value={value}
+			onChange={setValue}
+		/>
+	);
+};
+```
 
 ### Block
 
@@ -56,7 +78,7 @@ Use the `invalid` prop to indicate if the user input is invalid (does not valida
 		<DatePicker
 			label="Invalid"
 			invalid
-			message="This input is invalid"
+			message="Enter a valid date"
 			value={value}
 			onChange={setValue}
 		/>
@@ -112,7 +134,7 @@ If a valid date is entered using the text input but it falls outside the constra
 
 ### Custom year range
 
-The `yearRange` property can be used to change the range of options to display in calendar year select.
+The `yearRange` prop can be used to change the range of options to display in calendar year select.
 
 ```jsx live
 () => {
@@ -132,7 +154,7 @@ The `yearRange` property can be used to change the range of options to display i
 
 ## Date range picker
 
-`DateRangePicker` is a [controlled component](https://reactjs.org/docs/forms.html#controlled-components).
+`DateRangePicker` is a [controlled component](https://reactjs.org/docs/forms.html#controlled-components) which means consumers of this component need to manage the state of this component by using the `value` and `onChange` props.
 
 ### Basic
 
@@ -143,7 +165,82 @@ The `yearRange` property can be used to change the range of options to display i
 };
 ```
 
-### Labels
+### Legend
+
+Use the `legend` prop to describe the purpose of the group of fields.
+
+```jsx live
+() => {
+	const [value, setValue] = React.useState({ from: undefined, to: undefined });
+	return (
+		<DateRangePicker value={value} onChange={setValue} legend="Date period" />
+	);
+};
+```
+
+### Hint
+
+Use the `hint` prop to provide help that’s relevant to the majority of users, like how their information will be used, or where to find it.
+
+Don't use long paragraphs and lists in hint text. Screen readers read out the entire text when users interact with the form element. This could frustrate users if the text is long.
+
+Don't include links within hint text. While screen readers will read out the link text when describing the field, they will not tell users that the text is a link.
+
+```jsx live
+() => {
+	const [value, setValue] = React.useState({ from: undefined, to: undefined });
+	return (
+		<DateRangePicker
+			value={value}
+			onChange={setValue}
+			legend="Date period"
+			hint="Example hint text"
+		/>
+	);
+};
+```
+
+### Invalid
+
+Use the `fromInvalid` and `toInvalid` props to indicate if the user input is invalid (does not validate according to the elements settings).
+
+```jsx live
+() => {
+	const [value, setValue] = React.useState({ from: undefined, to: undefined });
+	return (
+		<FormStack>
+			<DateRangePicker
+				value={value}
+				onChange={setValue}
+				fromInvalid={true}
+				toInvalid={true}
+				legend="Date period"
+				message="Enter a valid date"
+			/>
+			<DateRangePicker
+				value={value}
+				onChange={setValue}
+				fromInvalid={true}
+				toInvalid={false}
+				legend="Date period"
+				message="Enter a valid date"
+			/>
+			<DateRangePicker
+				value={value}
+				onChange={setValue}
+				fromInvalid={false}
+				toInvalid={true}
+				legend="Date period"
+				message="Enter a valid date"
+			/>
+		</FormStack>
+	);
+};
+```
+
+### Custom labels
+
+Use the `fromLabel` and `toLabel` props to change the field labels.
 
 ```jsx live
 () => {
@@ -161,6 +258,8 @@ The `yearRange` property can be used to change the range of options to display i
 
 ### Disabled
 
+Disabled input elements are unusable and can not be clicked. This prevents a user from interacting with the input element until another action is complete.
+
 ```jsx live
 () => {
 	const [value, setValue] = React.useState({ from: undefined, to: undefined });
@@ -169,6 +268,12 @@ The `yearRange` property can be used to change the range of options to display i
 ```
 
 ### Minimum and maximum dates
+
+The `minDate` property can be used to disable any days before a specific date.
+
+The `maxDate` property can be used to disable any days after a specific date.
+
+If a valid date is entered using the text input but it falls outside the constrained range, the closest valid date will be used.
 
 ```jsx live
 () => {
