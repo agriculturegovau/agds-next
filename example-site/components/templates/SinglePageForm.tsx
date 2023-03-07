@@ -1,6 +1,11 @@
 import { useEffect, useRef, useState } from 'react';
 import { useRouter } from 'next/router';
-import { useForm, SubmitHandler, SubmitErrorHandler } from 'react-hook-form';
+import {
+	useForm,
+	SubmitHandler,
+	SubmitErrorHandler,
+	Controller,
+} from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { Button, ButtonGroup } from '@ag.ds-next/react/button';
@@ -17,9 +22,18 @@ import { useScrollToField } from '@ag.ds-next/react/field';
 import { PageContent } from '@ag.ds-next/react/content';
 import { Column, Columns } from '@ag.ds-next/react/columns';
 import { Breadcrumbs } from '@ag.ds-next/react/breadcrumbs';
+import { DatePicker, DateRangePicker } from '@ag.ds-next/react/date-picker';
 import { Text } from '@ag.ds-next/react/text';
 import { FormDivider } from '../FormDivider';
 import { PageTitle } from '../PageTitle';
+
+// `yup.date()` can sometimes give false positives with certain string values
+// Fixes https://github.com/jquense/yup/issues/764
+// Tests for this can be found in `packages/react/src/date-picker/test-utils.ts`
+const yupDateField = yup
+	.date()
+	.transform((current, orig) => (typeof orig === 'string' ? orig : current))
+	.typeError('Enter a valid date');
 
 const formSchema = yup
 	.object({
@@ -27,9 +41,16 @@ const formSchema = yup
 		abn: yup.string().required('Enter your ABN'),
 		acn: yup.string().required('Enter your ACN'),
 		businessName: yup.string().required('Enter your business name'),
+		registrationDate: yupDateField,
 		// entity details
 		entityName: yup.string().required('Enter your entity name'),
 		entityNumber: yup.string().required('Enter your entity number'),
+		periodActive: yup
+			.object({
+				from: yupDateField.required('Enter a valid date'),
+				to: yupDateField.required('Enter a valid date'),
+			})
+			.required('Enter a valid date'),
 		// street address
 		streetAddress: yup.string().required('Enter your street address'),
 		suburbTownCity: yup.string().required('Enter your suburb, town or city'),
@@ -70,11 +91,15 @@ const SinglePageForm = () => {
 
 	const {
 		register,
+		control,
 		handleSubmit,
 		watch,
 		trigger,
 		formState: { errors, isSubmitted },
 	} = useForm<FormSchema>({
+		defaultValues: {
+			periodActive: { from: undefined, to: undefined },
+		},
 		resolver: yupResolver(formSchema),
 	});
 
@@ -110,6 +135,17 @@ const SinglePageForm = () => {
 		if (isSubmitted) trigger();
 	}, [isPostalAddressSameAsStreetAddress, trigger, isSubmitted]);
 
+	// As our form schema contains nested objects, we are the converting errors from a nested object to a simple flat array
+	const flatErrors = Object.entries(errors)
+		.map(([key, value]) => {
+			if ('message' in value) return { key, message: value.message };
+			if ('from' in value) return { key, message: value.from?.message };
+			if ('to' in value) return { key, message: value.to?.message };
+		})
+		.filter((item): item is { key: string; message: string } =>
+			Boolean(item?.message)
+		);
+
 	return (
 		<form onSubmit={handleSubmit(onSubmit, onError)} noValidate>
 			<Stack gap={3}>
@@ -123,10 +159,10 @@ const SinglePageForm = () => {
 						<Prose>
 							<p>Please correct the following fields and try again</p>
 							<ul>
-								{Object.entries(errors).map(([key, value]) => (
-									<li key={key}>
-										<a href={`#${key}`} onClick={scrollToField}>
-											{value.message}
+								{flatErrors.map((error) => (
+									<li key={error.key}>
+										<a href={`#${error.key}`} onClick={scrollToField}>
+											{error.message}
 										</a>
 									</li>
 								))}
@@ -168,6 +204,21 @@ const SinglePageForm = () => {
 							required
 							maxWidth="xl"
 						/>
+						<Controller
+							control={control}
+							name="registrationDate"
+							render={({ field: { ref, ...field } }) => (
+								<DatePicker
+									inputRef={ref}
+									label="Registration date"
+									{...field}
+									id="registrationDate"
+									invalid={Boolean(errors.registrationDate?.message)}
+									message={errors.registrationDate?.message}
+									required
+								/>
+							)}
+						/>
 					</FormStack>
 				</Fieldset>
 				<FormDivider />
@@ -193,6 +244,19 @@ const SinglePageForm = () => {
 							required
 							inputMode="numeric"
 							pattern="[0-9]*"
+						/>
+						<Controller
+							control={control}
+							name="periodActive"
+							render={({ field: { ref, value, onChange, ...field } }) => (
+								<DateRangePicker
+									fromInputRef={ref}
+									{...field}
+									value={value}
+									onChange={onChange}
+									required
+								/>
+							)}
 						/>
 					</FormStack>
 				</Fieldset>
