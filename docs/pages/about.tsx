@@ -45,9 +45,20 @@ export default function AboutPage() {
 						<p>The toolkit includes...</p>
 
 						<ul>
-							<li>A React component library</li>
-							<li>A library of Figma components</li>
-							<li>A suite of page templates and interaction patterns</li>
+							<li>
+								<TextLink href="/components">
+									A React component library
+								</TextLink>
+							</li>
+							<li>
+								<TextLink href="/guides/figma">
+									A library of Figma components
+								</TextLink>
+							</li>
+							<li>
+								A suite of <TextLink href="/templates">page templates</TextLink>{' '}
+								and interaction patterns
+							</li>
 							<li>Comprehensive documentation</li>
 							<li>A collaborative community of designers and developers</li>
 						</ul>
