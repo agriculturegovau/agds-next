@@ -139,8 +139,8 @@ describe('Field', () => {
 		describe('Optional', () => {
 			it('renders correctly', () => {
 				renderField({ label, required: false });
-				const labelEl = document.querySelector('label');
-				expect(labelEl?.textContent).toBe('Name(optional)');
+				const labelEl = getLabelElement();
+				expect(labelEl.textContent).toBe(`${label}(optional)`);
 			});
 			it('renders correctly when optional label is hidden', () => {
 				renderField({
@@ -148,15 +148,16 @@ describe('Field', () => {
 					required: false,
 					hideOptionalLabel: true,
 				});
-				const labelEl = document.querySelector('label');
-				expect(labelEl?.textContent).toBe('Name');
+				const labelEl = getLabelElement();
+				expect(labelEl.textContent).toBe(label);
 			});
 		});
+
 		describe('Required', () => {
 			it('renders correctly', () => {
 				renderField({ label, required: true });
-				const labelEl = document.querySelector('label');
-				expect(labelEl?.textContent).toBe('Name');
+				const labelEl = getLabelElement();
+				expect(labelEl.textContent).toBe(label);
 			});
 			it('renders correctly when optional label is hidden', () => {
 				renderField({
@@ -164,8 +165,17 @@ describe('Field', () => {
 					required: false,
 					hideOptionalLabel: true,
 				});
-				const labelEl = document.querySelector('label');
-				expect(labelEl?.textContent).toBe('Name');
+				const labelEl = getLabelElement();
+				expect(labelEl.textContent).toBe('Name');
+			});
+		});
+
+		describe('Secondary Label', () => {
+			it('renders correctly', () => {
+				const secondaryLabel = '(dd/mm/yyy)';
+				renderField({ label, secondaryLabel });
+				const labelEl = getLabelElement();
+				expect(labelEl.textContent).toBe(`${label}${secondaryLabel}`);
 			});
 		});
 	});
@@ -174,9 +184,10 @@ describe('Field', () => {
 		it('renders correctly', () => {
 			renderField({ label, hint });
 			const hintEl = screen.getByText(hint);
-			const inputEl = getInputElement();
 			expect(hintEl).toBeInTheDocument();
+			expect(hintEl).toBeInstanceOf(HTMLSpanElement);
 			expect(hintEl).toHaveTextContent(hint);
+			const inputEl = getInputElement();
 			expect(inputEl.getAttribute('aria-describedby')).toBe(hintEl.id);
 		});
 	});
@@ -185,10 +196,17 @@ describe('Field', () => {
 		it('renders correctly', () => {
 			renderField({ label, message, invalid: true });
 			const messageEl = screen.getByText(message);
-			const inputEl = getInputElement();
 			expect(messageEl).toBeInTheDocument();
+			expect(messageEl).toBeInstanceOf(HTMLSpanElement);
 			expect(messageEl).toHaveTextContent(message);
+			const inputEl = getInputElement();
 			expect(inputEl.getAttribute('aria-describedby')).toBe(messageEl.id);
+		});
+
+		it('does not render when invalid is false', () => {
+			renderField({ label, message, invalid: false });
+			const messageEl = screen.queryByText(message);
+			expect(messageEl).not.toBeInTheDocument();
 		});
 	});
 });
