@@ -26,8 +26,8 @@ export const FieldLabel = ({
 	hideOptionalLabel,
 }: FieldLabelProps) => {
 	const secondaryLabel = useMemo(() => {
-		if (hideOptionalLabel) return null;
 		if (secondaryLabelProp) return secondaryLabelProp;
+		if (hideOptionalLabel) return null;
 		if (!required) return `(optional)`;
 	}, [required, secondaryLabelProp, hideOptionalLabel]);
 	return (
