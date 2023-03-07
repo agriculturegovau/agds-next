@@ -39,7 +39,7 @@ MinMaxDates.args = {
 export const InitialMonth = Template.bind({});
 InitialMonth.args = {
 	label: 'Example',
-	initialMonth: new Date('1999-12-01'),
+	initialMonth: new Date(1999, 11, 1),
 };
 
 export const Required = Template.bind({});
@@ -84,7 +84,7 @@ export const ControlledExample = () => {
 		<Stack gap={4} alignItems="flex-start">
 			<DatePicker label="Controlled" value={value} onChange={setValue} />
 			<ButtonGroup>
-				<Button onClick={() => setValue(new Date('1999-12-25'))}>
+				<Button onClick={() => setValue(new Date(1999, 11, 25))}>
 					Set pre-defined date
 				</Button>
 				<Button variant="secondary" onClick={() => setValue(undefined)}>
