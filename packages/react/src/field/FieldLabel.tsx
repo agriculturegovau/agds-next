@@ -4,27 +4,34 @@ import { Text } from '../text';
 
 export type FieldLabelProps = PropsWithChildren<{
 	as?: ElementType;
+	/** The ID of the form element this label relates to. */
 	htmlFor?: string;
+	/** The CSS class name, typically generated from the `css` prop. */
+	className?: string;
+	/** If false, "(optional)" will be appended to the label. */
 	required: boolean;
-	secondaryLabel?: string;
+	/** If true, "(optional)" will never be appended to the label even when `required` is `false`. */
 	hideOptionalLabel?: boolean;
+	/** Override the default secondary label. */
+	secondaryLabel?: string;
 }>;
 
 export const FieldLabel = ({
 	as = 'label',
 	children,
+	className,
 	htmlFor,
 	required,
 	secondaryLabel: secondaryLabelProp,
 	hideOptionalLabel,
 }: FieldLabelProps) => {
 	const secondaryLabel = useMemo(() => {
-		if (hideOptionalLabel) return null;
 		if (secondaryLabelProp) return secondaryLabelProp;
+		if (hideOptionalLabel) return null;
 		if (!required) return `(optional)`;
 	}, [required, secondaryLabelProp, hideOptionalLabel]);
 	return (
-		<Flex as={as} htmlFor={htmlFor} gap={0.25}>
+		<Flex as={as} htmlFor={htmlFor} gap={0.25} className={className}>
 			<Text as="span" fontWeight="bold">
 				{children}
 			</Text>
