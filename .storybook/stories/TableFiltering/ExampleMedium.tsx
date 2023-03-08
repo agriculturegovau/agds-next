@@ -119,9 +119,7 @@ export const ExampleMedium = ({
 						ariaLabelledBy={buttonId}
 						filters={filters}
 						isOpen={isOpen}
-						sort={sort}
 						setFilters={setFilters}
-						setSort={setSort}
 						resetPagination={resetPagination}
 						resetFilters={resetFilters}
 					/>

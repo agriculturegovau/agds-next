@@ -13,9 +13,7 @@ export const FilterBar = ({
 	id,
 	isOpen,
 	filters,
-	sort,
 	setFilters,
-	setSort,
 	resetPagination,
 	resetFilters,
 }: {
@@ -23,9 +21,7 @@ export const FilterBar = ({
 	id: string;
 	isOpen: boolean;
 	filters: GetDataFilters;
-	sort: GetDataSort;
 	setFilters: (filters: GetDataFilters) => void;
-	setSort: (sort: GetDataSort) => void;
 	resetPagination: () => void;
 	resetFilters: () => void;
 }) => {
@@ -99,6 +95,3 @@ export const FilterBar = ({
 		</animated.section>
 	);
 };
-
-// text search
-// removable tags
