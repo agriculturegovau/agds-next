@@ -22,7 +22,6 @@ export default function RoadmapPage() {
 					]}
 				>
 					<PageTitle
-						pretext="Last updated March 3rd 2023."
 						title="Roadmap"
 						introduction="Our roadmap is always evolving with the needs of our product teams."
 					/>
@@ -72,8 +71,10 @@ export default function RoadmapPage() {
 
 						<p>
 							For more detailed release notes, see{' '}
-							<TextLink href="/updates">Updates</TextLink>
+							<TextLink href="/updates">Updates</TextLink>.
 						</p>
+
+						<p>Last updated March 8th 2023.</p>
 					</Prose>
 				</PageLayout>
 			</AppLayout>
