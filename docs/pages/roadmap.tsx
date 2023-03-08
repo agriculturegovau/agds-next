@@ -57,9 +57,17 @@ export default function RoadmapPage() {
 							most recent releases:
 						</p>
 						<ul>
-							<li><TextLink href="/components/avatar">Avatar</TextLink></li>
-							<li><TextLink href="/components/file-input">File input</TextLink></li>
-							<li><TextLink href="/updates/2023-01-09-beta">Our Beta release</TextLink></li>
+							<li>
+								<TextLink href="/components/avatar">Avatar</TextLink>
+							</li>
+							<li>
+								<TextLink href="/components/file-input">File input</TextLink>
+							</li>
+							<li>
+								<TextLink href="/updates/2023-01-09-beta">
+									Our Beta release
+								</TextLink>
+							</li>
 						</ul>
 
 						<p>
