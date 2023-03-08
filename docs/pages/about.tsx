@@ -42,7 +42,7 @@ export default function AboutPage() {
 							BioSecurity.
 						</p>
 
-						<p>The toolkit includes...</p>
+						<p>The toolkit includes:</p>
 
 						<ul>
 							<li>
@@ -63,7 +63,7 @@ export default function AboutPage() {
 							<li>A collaborative community of designers and developers</li>
 						</ul>
 
-						<h2>Accessibility from the start</h2>
+						<h2>Accessibility from the ground up</h2>
 
 						<p>
 							AgDS is based on the{' '}
@@ -84,16 +84,14 @@ export default function AboutPage() {
 							are required to ensure information and services are provided in a
 							non-discriminatory accessible manner. That is why AgDS&apos;s
 							suite of components, templates and guides are designed with
-							accessibility built-in.
+							the highest accessibility standards.
 						</p>
 
 						<h2>Connect with us</h2>
 						<p>
 							Department of Agriculture Fisheries and Forestry staff can connect
 							with us in the &rdquo;Design System&rdquo; chat in Microsoft
-							Teams. Otherwise you are welcome to submit pull requests to{' '}
-							<a href="httsps://github.com/steelthreads/agds-next">GitHub</a>.
-						</p>
+							Teams.</p>
 
 						<p>
 							If you&apos;re wondering what is next, please see our{' '}

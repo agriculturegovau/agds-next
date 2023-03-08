@@ -5,7 +5,7 @@ import { DocumentTitle } from '../components/DocumentTitle';
 import { PageLayout } from '../components/PageLayout';
 import { PageTitle } from '../components/PageTitle';
 
-export default function AboutPage() {
+export default function RoadmapPage() {
 	return (
 		<>
 			<DocumentTitle title="AgDS Roadmap" />
@@ -57,9 +57,9 @@ export default function AboutPage() {
 							most recent releases:
 						</p>
 						<ul>
-							<li>Avatar</li>
-							<li>FileInput</li>
-							<li>Our Beta release</li>
+							<li><TextLink href="/components/avatar">Avatar</TextLink></li>
+							<li><TextLink href="/components/file-input">File input</TextLink></li>
+							<li><TextLink href="/updates/2023-01-09-beta">Our Beta release</TextLink></li>
 						</ul>
 
 						<p>
