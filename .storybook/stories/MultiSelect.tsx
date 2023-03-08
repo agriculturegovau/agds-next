@@ -13,10 +13,10 @@ import { Text } from '@ag.ds-next/react/text';
 import { PlusIcon } from '@ag.ds-next/react/icon';
 import { FormStack } from '@ag.ds-next/react/form-stack';
 import { ComboboxAsync } from '@ag.ds-next/react/combobox';
-import { H1 } from '@ag.ds-next/react/heading';
+import { Fieldset } from '@ag.ds-next/react/fieldset';
 
 export default {
-	title: 'Examples/MultiSelect',
+	title: 'Patterns/Multi-select',
 };
 
 const SelectionTags = ({
@@ -47,6 +47,23 @@ const DropDownMultiSelect = ({
 	const onRemove = (item: string) => {
 		setSelected(selected.filter((i) => i !== item));
 	};
+
+	const drivers = [
+		'Valtteri Bottas',
+		'Charles Leclerc',
+		'Carlos Sainz',
+		'Lando Norris',
+		'Pierre Gasly',
+		'Esteban Ocon',
+		'Alexander Albon',
+		'Daniel Ricciardo',
+		'George Russell',
+		'Nicholas Latifi',
+		'Kimi Räikkönen',
+		'Sebastian Vettel',
+		'Lewis Hamilton',
+		'Antonio Giovinazzi',
+	];
 
 	// Pop-up menu state
 	const [isOpen, open, close] = useTernaryState(false);
@@ -83,11 +100,8 @@ const DropDownMultiSelect = ({
 				Assignees
 			</Text>
 
-			<SelectionTags selected={selected} onRemove={onRemove} />
-
 			<div ref={setRefEl}>
 				<Button
-					size="sm"
 					variant="secondary"
 					onClick={onButtonClick}
 					iconBefore={PlusIcon}
@@ -131,6 +145,7 @@ const DropDownMultiSelect = ({
 					</Box>
 				)}
 			</div>
+			<SelectionTags selected={selected} onRemove={onRemove} />
 		</Stack>
 	);
 };
@@ -173,46 +188,47 @@ const MultiSelectSearch = ({
 	);
 };
 
-export const Default = () => {
+export const All = () => {
+	return (
+		<Fieldset
+			legend="Multi-select patterns"
+			hint="These patterns are used to select multiple items from a list."
+		>
+			<FormStack>
+				<Small />
+				<DropDown />
+				<RemoteData />
+			</FormStack>
+		</Fieldset>
+	);
+};
+
+export const Small = () => {
+	return (
+		<ControlGroup label="Contact method" block>
+			<Checkbox checked>SMS</Checkbox>
+			<Checkbox checked={false}>Phone call</Checkbox>
+			<Checkbox checked={false}>Email</Checkbox>
+			<Checkbox checked={false}>Mail</Checkbox>
+		</ControlGroup>
+	);
+};
+
+export const DropDown = () => {
 	const [assignees, setAssignees] = useState<string[]>([
 		'Daniel Ricciardo',
 		'George Russell',
 	]);
-	const [characters, setCharacters] = useState<string[]>(['Luke Skywalker']);
 
 	return (
-		<FormStack>
-			<Stack>
-				<H1>Multi-select patterns</H1>
-				<Text as="p">
-					These patterns are used to select multiple items from a list.
-				</Text>
-			</Stack>
-			<ControlGroup label="Contact method">
-				<Checkbox checked>SMS</Checkbox>
-				<Checkbox checked={false}>Phone call</Checkbox>
-				<Checkbox checked={false}>Email</Checkbox>
-				<Checkbox checked={false}>Mail</Checkbox>
-			</ControlGroup>
-			<DropDownMultiSelect selected={assignees} setSelected={setAssignees} />
-			<MultiSelectSearch selected={characters} setSelected={setCharacters} />
-		</FormStack>
+		<DropDownMultiSelect selected={assignees} setSelected={setAssignees} />
 	);
 };
 
-const drivers = [
-	'Valtteri Bottas',
-	'Charles Leclerc',
-	'Carlos Sainz',
-	'Lando Norris',
-	'Pierre Gasly',
-	'Esteban Ocon',
-	'Alexander Albon',
-	'Daniel Ricciardo',
-	'George Russell',
-	'Nicholas Latifi',
-	'Kimi Räikkönen',
-	'Sebastian Vettel',
-	'Lewis Hamilton',
-	'Antonio Giovinazzi',
-];
+export const RemoteData = () => {
+	const [characters, setCharacters] = useState<string[]>(['Luke Skywalker']);
+
+	return (
+		<MultiSelectSearch selected={characters} setSelected={setCharacters} />
+	);
+};
