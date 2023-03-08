@@ -18,7 +18,7 @@ export { ChevronUpIcon } from './icons/ChevronUpIcon';
 export { ChevronDownIcon } from './icons/ChevronDownIcon';
 export { ChevronLeftIcon } from './icons/ChevronLeftIcon';
 export { ChevronRightIcon } from './icons/ChevronRightIcon';
-export { ChevronYIcon } from './icons/ChevronYIcon';
+export { ChevronsUpDownIcon } from './icons/ChevronsUpDownIcon';
 export { CloseIcon } from './icons/CloseIcon';
 export { CopyIcon } from './icons/CopyIcon';
 export { DeleteIcon } from './icons/DeleteIcon';

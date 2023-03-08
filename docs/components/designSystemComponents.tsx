@@ -90,7 +90,7 @@ export {
 	ChevronLeftIcon,
 	ChevronRightIcon,
 	ChevronUpIcon,
-	ChevronYIcon,
+	ChevronsUpDownIcon,
 	CloseIcon,
 	CopyIcon,
 	DownloadIcon,
