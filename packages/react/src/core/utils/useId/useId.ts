@@ -1,8 +1,14 @@
 /**
- * The contents of this file has been copied from https://github.com/reach/reach-ui/blob/dev/packages/auto-id/src/reach-auto-id.ts
- * Reach UI is no longer maintained and does not have explicit react 18 support which is causing issues for consumers
- * See issue for more details https://github.com/reach/reach-ui/issues/972
+ * This file use to just be a simple re-export of `useId` from @reach/auto-id
+ * We can not just use `useId` from React as we need to provide support for React 16, 17 and 18
+ *
+ * As Reach is no longer being maintained and does not support React 18, the contents of this file have been copied from:
+ * https://github.com/reach/reach-ui/blob/dev/packages/auto-id/src/reach-auto-id.ts
+ *
+ * See Github issue: https://github.com/reach/reach-ui/issues/972
+ */
 
+/**
  * Welcome to @reach/auto-id!
  * Let's see if we can make sense of why this hook exists and its
  * implementation.
