@@ -38,8 +38,7 @@ export default function AboutPage() {
 
 						<p>
 							Its primary purpose is for building the Export Service, however is
-							also in use in other areas of the Department such as NEXDOC and
-							BioSecurity.
+							also in use in other areas of the Department.
 						</p>
 
 						<p>The toolkit includes:</p>
@@ -83,15 +82,16 @@ export default function AboutPage() {
 							Disability Discrimination Act 1992, Australian Government agencies
 							are required to ensure information and services are provided in a
 							non-discriminatory accessible manner. That is why AgDS&apos;s
-							suite of components, templates and guides are designed with
-							the highest accessibility standards.
+							suite of components, templates and guides are designed with the
+							highest accessibility standards.
 						</p>
 
 						<h2>Connect with us</h2>
 						<p>
 							Department of Agriculture Fisheries and Forestry staff can connect
 							with us in the &rdquo;Design System&rdquo; chat in Microsoft
-							Teams.</p>
+							Teams.
+						</p>
 
 						<p>
 							If you&apos;re wondering what is next, please see our{' '}
