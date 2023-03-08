@@ -68,7 +68,11 @@ function DateRangePickerInsideForm({
 	onSubmit: (value: FormSchema) => void;
 	onError: () => void;
 }) {
-	const { control, handleSubmit } = useForm<FormSchema>({
+	const {
+		control,
+		handleSubmit,
+		formState: { errors },
+	} = useForm<FormSchema>({
 		defaultValues: { dateRange: { from: undefined, to: undefined } },
 		resolver: yupResolver(formSchema(required)),
 	});
@@ -82,10 +86,16 @@ function DateRangePickerInsideForm({
 				name="dateRange"
 				render={({ field: { ref, value, onChange, ...field } }) => (
 					<DateRangePicker
+						legend="Date range"
 						fromInputRef={ref}
 						{...field}
 						value={value}
 						onChange={onChange}
+						fromInvalid={Boolean(errors.dateRange?.from?.message)}
+						toInvalid={Boolean(errors.dateRange?.to?.message)}
+						message={
+							errors.dateRange?.from?.message || errors.dateRange?.to?.message
+						}
 						required
 					/>
 				)}
@@ -120,6 +130,13 @@ async function getErrorMessage() {
 	expect(el).toBeInstanceOf(HTMLSpanElement);
 	expect(el).toBeInTheDocument();
 	return el as HTMLSpanElement;
+}
+
+async function getLegend(text: string) {
+	const el = await screen.getByText(text).closest('legend');
+	expect(el).toBeInstanceOf(HTMLLegendElement);
+	expect(el).toBeInTheDocument();
+	return el as HTMLLegendElement;
 }
 
 async function getSubmitButton() {
@@ -239,6 +256,96 @@ describe('DateRangePicker', () => {
 			'aria-label',
 			`Change Date, ${toFormattedDate}`
 		);
+	});
+
+	it('legend: renders a hidden legend by default when optional', async () => {
+		const defaultLegend = 'Date range';
+
+		renderDateRangePicker({
+			value: { from: new Date(2000, 1, 1), to: new Date(2000, 1, 2) },
+			onChange: console.log,
+			required: false,
+		});
+		expect(await await (await getLegend(defaultLegend)).textContent).toEqual(
+			`${defaultLegend}(optional)`
+		);
+	});
+
+	it('legend: renders a hidden legend by default when required', async () => {
+		const defaultLegend = 'Date range';
+
+		renderDateRangePicker({
+			value: { from: new Date(2000, 1, 1), to: new Date(2000, 1, 2) },
+			onChange: console.log,
+			required: true,
+		});
+		expect(await (await getLegend(defaultLegend)).textContent).toEqual(
+			`${defaultLegend}`
+		);
+	});
+
+	it('legend: can render a different legend when optional', async () => {
+		const legend = 'Date period';
+
+		renderDateRangePicker({
+			legend,
+			value: { from: new Date(2000, 1, 1), to: new Date(2000, 1, 2) },
+			onChange: console.log,
+		});
+		expect(await (await getLegend(legend)).textContent).toEqual(
+			`${legend}(optional)`
+		);
+	});
+
+	it('legend: can render a different legend when required', async () => {
+		const legend = 'Date period';
+
+		renderDateRangePicker({
+			legend,
+			required: true,
+			value: { from: new Date(2000, 1, 1), to: new Date(2000, 1, 2) },
+			onChange: console.log,
+		});
+		expect(await (await getLegend(legend)).textContent).toEqual(`${legend}`);
+	});
+
+	it('invalid: can render an invalid state when both fields are invalid', async () => {
+		renderDateRangePicker({
+			value: { from: new Date(2000, 1, 1), to: new Date(2000, 1, 2) },
+			onChange: console.log,
+			fromInvalid: true,
+			toInvalid: true,
+			message: errorMessage,
+		});
+		expect(await getFromInput()).toHaveAttribute('aria-invalid', 'true');
+		expect(await getToInput()).toHaveAttribute('aria-invalid', 'true');
+		expect(await getErrorMessage()).toHaveTextContent(errorMessage);
+	});
+
+	it('invalid: can render an invalid state when only from is invalid', async () => {
+		renderDateRangePicker({
+			value: { from: new Date(2000, 1, 1), to: new Date(2000, 1, 2) },
+			onChange: console.log,
+			fromInvalid: true,
+			toInvalid: false,
+			message: errorMessage,
+		});
+		expect(await getFromInput()).toHaveAttribute('aria-invalid', 'true');
+		expect(await getToInput()).toHaveAttribute('aria-invalid', 'false');
+		expect(await getErrorMessage()).toHaveTextContent(errorMessage);
+	});
+
+	it('invalid: can render an invalid state when only to is invalid', async () => {
+		renderDateRangePicker({
+			value: { from: new Date(2000, 1, 1), to: new Date(2000, 1, 2) },
+			onChange: console.log,
+			fromInvalid: false,
+			toInvalid: true,
+			message: errorMessage,
+		});
+		expect(await getFromInput()).toHaveAttribute('aria-invalid', 'false');
+		expect(await getToInput()).toHaveAttribute('aria-invalid', 'true');
+		expect(await getErrorMessage()).toHaveTextContent(errorMessage);
 	});
 
 	it('formSchema: yupDateField works when optional', () => {
