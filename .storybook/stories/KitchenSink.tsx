@@ -10,7 +10,7 @@ import {
 	SearchBoxButton,
 	SearchBoxInput,
 } from '@ag.ds-next/react/search-box';
-import { Box, Flex, Stack } from '@ag.ds-next/react/box';
+import { Flex, Stack } from '@ag.ds-next/react/box';
 import { Breadcrumbs } from '@ag.ds-next/react/breadcrumbs';
 import { Button, ButtonGroup } from '@ag.ds-next/react/button';
 import { Callout } from '@ag.ds-next/react/callout';
