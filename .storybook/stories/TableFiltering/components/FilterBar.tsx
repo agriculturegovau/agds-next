@@ -45,10 +45,9 @@ export const FilterBar = ({
 	});
 
 	return (
-		<animated.div
+		<animated.section
 			id={id}
 			aria-labelledby={ariaLabelledBy}
-			role="region"
 			style={animatedHeight}
 			css={{
 				overflow: 'hidden',
@@ -97,7 +96,7 @@ export const FilterBar = ({
 					Reset filters
 				</Button>
 			</Flex>
-		</animated.div>
+		</animated.section>
 	);
 };
 

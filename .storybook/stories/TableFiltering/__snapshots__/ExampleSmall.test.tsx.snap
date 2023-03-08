@@ -270,22 +270,73 @@ exports[`SmallFilteringPattern renders correctly 1`] = `
               class="css-qt4zh6-boxStyles-Text-TableCaption"
             >
               Audits (147 items)
+              <span
+                class="css-avudkd-VisuallyHidden"
+              >
+                , column headers with buttons are sortable.
+              </span>
             </caption>
             <thead
               class="css-11khhn7-boxStyles"
             >
               <tr>
                 <th
-                  class="css-tko7c0-boxStyles-TableHeader"
+                  class="css-1st2ky7-boxStyles-DashboardTableHeader"
                   scope="col"
                 >
-                  Business name
+                  <button
+                    class="css-1o4ggwj-BaseButton-boxStyles-DashboardTableHeader"
+                    type="button"
+                  >
+                    Business name
+                    <svg
+                      aria-hidden="true"
+                      class="css-dgj9fa-Icon"
+                      clip-rule="evenodd"
+                      focusable="false"
+                      height="24"
+                      role="img"
+                      viewBox="0 0 24 24"
+                      width="24"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M7.5 8L11.8232 3.67678C11.9209 3.57915 12.0791 3.57915 12.1768 3.67678L16.5 8"
+                      />
+                      <path
+                        d="M16.5 16L12.1768 20.3232C12.0791 20.4209 11.9209 20.4209 11.8232 20.3232L7.5 16"
+                      />
+                    </svg>
+                  </button>
                 </th>
                 <th
-                  class="css-1622710-boxStyles-TableHeader"
+                  class="css-83w9b1-boxStyles-DashboardTableHeader"
                   scope="col"
                 >
-                  Assignee
+                  <button
+                    class="css-1o4ggwj-BaseButton-boxStyles-DashboardTableHeader"
+                    type="button"
+                  >
+                    Assignee
+                    <svg
+                      aria-hidden="true"
+                      class="css-dgj9fa-Icon"
+                      clip-rule="evenodd"
+                      focusable="false"
+                      height="24"
+                      role="img"
+                      viewBox="0 0 24 24"
+                      width="24"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M7.5 8L11.8232 3.67678C11.9209 3.57915 12.0791 3.57915 12.1768 3.67678L16.5 8"
+                      />
+                      <path
+                        d="M16.5 16L12.1768 20.3232C12.0791 20.4209 11.9209 20.4209 11.8232 20.3232L7.5 16"
+                      />
+                    </svg>
+                  </button>
                 </th>
                 <th
                   class="css-6jlnw2-boxStyles-TableHeader"
@@ -294,22 +345,91 @@ exports[`SmallFilteringPattern renders correctly 1`] = `
                   City
                 </th>
                 <th
-                  class="css-1o5hlha-boxStyles-TableHeader"
+                  class="css-rq1mcj-boxStyles-DashboardTableHeader"
                   scope="col"
                 >
-                  Employees
+                  <button
+                    class="css-1o4ggwj-BaseButton-boxStyles-DashboardTableHeader"
+                    type="button"
+                  >
+                    Employees
+                    <svg
+                      aria-hidden="true"
+                      class="css-dgj9fa-Icon"
+                      clip-rule="evenodd"
+                      focusable="false"
+                      height="24"
+                      role="img"
+                      viewBox="0 0 24 24"
+                      width="24"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M7.5 8L11.8232 3.67678C11.9209 3.57915 12.0791 3.57915 12.1768 3.67678L16.5 8"
+                      />
+                      <path
+                        d="M16.5 16L12.1768 20.3232C12.0791 20.4209 11.9209 20.4209 11.8232 20.3232L7.5 16"
+                      />
+                    </svg>
+                  </button>
                 </th>
                 <th
-                  class="css-18ambui-boxStyles-TableHeader"
+                  class="css-1uhswxm-boxStyles-DashboardTableHeader"
                   scope="col"
                 >
-                  Date registered
+                  <button
+                    class="css-1o4ggwj-BaseButton-boxStyles-DashboardTableHeader"
+                    type="button"
+                  >
+                    Date registered
+                    <svg
+                      aria-hidden="true"
+                      class="css-dgj9fa-Icon"
+                      clip-rule="evenodd"
+                      focusable="false"
+                      height="24"
+                      role="img"
+                      viewBox="0 0 24 24"
+                      width="24"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M7.5 8L11.8232 3.67678C11.9209 3.57915 12.0791 3.57915 12.1768 3.67678L16.5 8"
+                      />
+                      <path
+                        d="M16.5 16L12.1768 20.3232C12.0791 20.4209 11.9209 20.4209 11.8232 20.3232L7.5 16"
+                      />
+                    </svg>
+                  </button>
                 </th>
                 <th
-                  class="css-1622710-boxStyles-TableHeader"
+                  class="css-83w9b1-boxStyles-DashboardTableHeader"
                   scope="col"
                 >
-                  Status
+                  <button
+                    class="css-1o4ggwj-BaseButton-boxStyles-DashboardTableHeader"
+                    type="button"
+                  >
+                    Status
+                    <svg
+                      aria-hidden="true"
+                      class="css-dgj9fa-Icon"
+                      clip-rule="evenodd"
+                      focusable="false"
+                      height="24"
+                      role="img"
+                      viewBox="0 0 24 24"
+                      width="24"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M7.5 8L11.8232 3.67678C11.9209 3.57915 12.0791 3.57915 12.1768 3.67678L16.5 8"
+                      />
+                      <path
+                        d="M16.5 16L12.1768 20.3232C12.0791 20.4209 11.9209 20.4209 11.8232 20.3232L7.5 16"
+                      />
+                    </svg>
+                  </button>
                 </th>
               </tr>
             </thead>

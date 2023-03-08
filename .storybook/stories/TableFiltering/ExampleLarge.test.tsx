@@ -63,6 +63,10 @@ describe('LargeFilteringPattern', () => {
 		const { container } = render(<LargeFilteringPatternTest loading={false} />);
 		expect(container).toHTMLValidate({
 			extends: ['html-validate:recommended'],
+			rules: {
+				// react 18s `useId` break this rule
+				'valid-id': 'off',
+			},
 		});
 	});
 });
