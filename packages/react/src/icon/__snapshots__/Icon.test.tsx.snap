@@ -287,6 +287,29 @@ exports[`Icon ChevronUpIcon renders correctly 1`] = `
 </div>
 `;
 
+exports[`Icon ChevronsUpDownIcon renders correctly 1`] = `
+<div>
+  <svg
+    aria-hidden="true"
+    class="css-9s3cfn-Icon"
+    clip-rule="evenodd"
+    focusable="false"
+    height="24"
+    role="img"
+    viewBox="0 0 24 24"
+    width="24"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M7.5 8L11.8232 3.67678C11.9209 3.57915 12.0791 3.57915 12.1768 3.67678L16.5 8"
+    />
+    <path
+      d="M16.5 16L12.1768 20.3232C12.0791 20.4209 11.9209 20.4209 11.8232 20.3232L7.5 16"
+    />
+  </svg>
+</div>
+`;
+
 exports[`Icon CloseIcon renders correctly 1`] = `
 <div>
   <svg
@@ -397,6 +420,26 @@ exports[`Icon EditIcon renders correctly 1`] = `
 </div>
 `;
 
+exports[`Icon EmailIcon renders correctly 1`] = `
+<div>
+  <svg
+    aria-hidden="true"
+    class="css-9s3cfn-Icon"
+    clip-rule="evenodd"
+    focusable="false"
+    height="24"
+    role="img"
+    viewBox="0 0 24 24"
+    width="24"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M22 6C22 4.9 21.1 4 20 4H4C2.9 4 2 4.9 2 6M22 6V18C22 19.1 21.1 20 20 20H4C2.9 20 2 19.1 2 18V6M22 6L12 13L2 6"
+    />
+  </svg>
+</div>
+`;
+
 exports[`Icon ExternalLinkIcon renders correctly 1`] = `
 <div>
   <svg
@@ -421,6 +464,26 @@ exports[`Icon ExternalLinkIcon renders correctly 1`] = `
     />
     <path
       d="M7 2.99969H4.08981C3.80891 2.99457 3.53726 3.10042 3.3334 3.29442C3.12953 3.48842 3.00981 3.75503 3 4.0368V19.9345C3.00245 20.2163 3.1151 20.4858 3.31367 20.6851C3.51224 20.8844 3.78085 20.9974 4.06166 20.9999H19.9383C20.2192 20.9974 20.4878 20.8844 20.6863 20.6851C20.8849 20.4858 20.9975 20.2163 21 19.9345V16.9999"
+    />
+  </svg>
+</div>
+`;
+
+exports[`Icon FacebookIcon renders correctly 1`] = `
+<div>
+  <svg
+    aria-hidden="true"
+    class="css-9s3cfn-Icon"
+    clip-rule="evenodd"
+    focusable="false"
+    height="24"
+    role="img"
+    viewBox="0 0 24 24"
+    width="24"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M17 2H14C12.6739 2 11.4021 2.52678 10.4645 3.46447C9.52678 4.40215 9 5.67392 9 7V10H6V14H9V22H13V14H16L17 10H13V7C13 6.73478 13.1054 6.48043 13.2929 6.29289C13.4804 6.10536 13.7348 6 14 6H17V2Z"
     />
   </svg>
 </div>
@@ -516,6 +579,52 @@ exports[`Icon InfoIcon renders correctly 1`] = `
     />
     <path
       d="M12 7H12.01"
+    />
+  </svg>
+</div>
+`;
+
+exports[`Icon InstagramIcon renders correctly 1`] = `
+<div>
+  <svg
+    aria-hidden="true"
+    class="css-9s3cfn-Icon"
+    clip-rule="evenodd"
+    focusable="false"
+    height="24"
+    role="img"
+    viewBox="0 0 24 24"
+    width="24"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M17.5 6.5H17.51M7 2H17C19.7614 2 22 4.23858 22 7V17C22 19.7614 19.7614 22 17 22H7C4.23858 22 2 19.7614 2 17V7C2 4.23858 4.23858 2 7 2ZM15.9997 11.37C16.1231 12.2022 15.981 13.0522 15.5935 13.799C15.206 14.5458 14.5929 15.1514 13.8413 15.5297C13.0898 15.9079 12.2382 16.0396 11.4075 15.9059C10.5768 15.7723 9.80947 15.3801 9.21455 14.7852C8.61962 14.1902 8.22744 13.4229 8.09377 12.5922C7.96011 11.7615 8.09177 10.9099 8.47003 10.1584C8.84829 9.40685 9.45389 8.79374 10.2007 8.40624C10.9475 8.01874 11.7975 7.87658 12.6297 8C13.4786 8.12588 14.2646 8.52146 14.8714 9.1283C15.4782 9.73515 15.8738 10.5211 15.9997 11.37Z"
+    />
+  </svg>
+</div>
+`;
+
+exports[`Icon LinkedInIcon renders correctly 1`] = `
+<div>
+  <svg
+    aria-hidden="true"
+    class="css-9s3cfn-Icon"
+    clip-rule="evenodd"
+    focusable="false"
+    height="24"
+    role="img"
+    viewBox="0 0 24 24"
+    width="24"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M16 8C17.5913 8 19.1174 8.63214 20.2426 9.75736C21.3679 10.8826 22 12.4087 22 14V21H18V14C18 13.4696 17.7893 12.9609 17.4142 12.5858C17.0391 12.2107 16.5304 12 16 12C15.4696 12 14.9609 12.2107 14.5858 12.5858C14.2107 12.9609 14 13.4696 14 14V21H10V14C10 12.4087 10.6321 10.8826 11.7574 9.75736C12.8826 8.63214 14.4087 8 16 8Z"
+    />
+    <path
+      d="M6 9H2V21H6V9Z"
+    />
+    <path
+      d="M4 6C5.10457 6 6 5.10457 6 4C6 2.89543 5.10457 2 4 2C2.89543 2 2 2.89543 2 4C2 5.10457 2.89543 6 4 6Z"
     />
   </svg>
 </div>
@@ -798,6 +907,26 @@ exports[`Icon ThumbsUpIcon renders correctly 1`] = `
 </div>
 `;
 
+exports[`Icon TwitterIcon renders correctly 1`] = `
+<div>
+  <svg
+    aria-hidden="true"
+    class="css-9s3cfn-Icon"
+    clip-rule="evenodd"
+    focusable="false"
+    height="24"
+    role="img"
+    viewBox="0 0 24 24"
+    width="24"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M23 2.99998C22.0424 3.67546 20.9821 4.19209 19.86 4.52999C19.2577 3.8375 18.4573 3.34668 17.567 3.12391C16.6767 2.90115 15.7395 2.95718 14.8821 3.28444C14.0247 3.6117 13.2884 4.19439 12.773 4.9537C12.2575 5.71302 11.9877 6.61232 12 7.52998V8.52998C10.2426 8.57555 8.50127 8.1858 6.93101 7.39543C5.36074 6.60506 4.01032 5.43862 3 3.99998C3 3.99998 -1 13 8 17C5.94053 18.398 3.48716 19.0989 1 19C10 24 21 19 21 7.49998C20.9991 7.22144 20.9723 6.94358 20.92 6.66999C21.9406 5.66348 22.6608 4.3927 23 2.99998Z"
+    />
+  </svg>
+</div>
+`;
+
 exports[`Icon UploadIcon renders correctly 1`] = `
 <div>
   <svg
@@ -875,6 +1004,26 @@ exports[`Icon WarningIcon renders correctly 1`] = `
     />
     <path
       d="M12 18H12.01"
+    />
+  </svg>
+</div>
+`;
+
+exports[`Icon WebsiteIcon renders correctly 1`] = `
+<div>
+  <svg
+    aria-hidden="true"
+    class="css-9s3cfn-Icon"
+    clip-rule="evenodd"
+    focusable="false"
+    height="24"
+    role="img"
+    viewBox="0 0 24 24"
+    width="24"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M22 12C22 17.5228 17.5228 22 12 22M22 12C22 6.47715 17.5228 2 12 2M22 12H2M12 22C6.47715 22 2 17.5228 2 12M12 22C14.5013 19.2616 15.9228 15.708 16 12C15.9228 8.29203 14.5013 4.73835 12 2M12 22C9.49872 19.2616 8.07725 15.708 8 12C8.07725 8.29203 9.49872 4.73835 12 2M2 12C2 6.47715 6.47715 2 12 2"
     />
   </svg>
 </div>
