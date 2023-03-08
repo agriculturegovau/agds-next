@@ -368,11 +368,11 @@ describe('DatePicker', () => {
 		expect(onError).toHaveBeenCalledTimes(1);
 
 		// Expect an error
-		// const errorMessage = await getErrorMessage();
-		// expect(errorMessage).toBeInTheDocument();
-		// expect(await getInput()).toHaveFocus();
-		// expect(await getInput()).toHaveValue('hello');
-		// expect(await getInput()).toHaveAttribute('aria-invalid', 'true');
+		const errorMessage = await getErrorMessage();
+		expect(errorMessage).toBeInTheDocument();
+		expect(await getInput()).toHaveFocus();
+		expect(await getInput()).toHaveValue('hello');
+		expect(await getInput()).toHaveAttribute('aria-invalid', 'true');
 
 		// Type in a valid value
 		await userEvent.clear(await getInput());
