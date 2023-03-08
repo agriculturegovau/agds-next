@@ -11,18 +11,23 @@ import { ChevronDownIcon } from './icons/ChevronDownIcon';
 import { ChevronLeftIcon } from './icons/ChevronLeftIcon';
 import { ChevronRightIcon } from './icons/ChevronRightIcon';
 import { ChevronUpIcon } from './icons/ChevronUpIcon';
+import { ChevronYIcon } from './icons/ChevronYIcon';
 import { CloseIcon } from './icons/CloseIcon';
 import { CopyIcon } from './icons/CopyIcon';
 import { DeleteIcon } from './icons/DeleteIcon';
 import { DownloadIcon } from './icons/DownloadIcon';
 import { EditIcon } from './icons/EditIcon';
+import { EmailIcon } from './icons/EmailIcon';
 import { ExternalLinkIcon } from './icons/ExternalLinkIcon';
 import { InfoIcon } from './icons/InfoIcon';
+import { FacebookIcon } from './icons/FacebookIcon';
 import { FilterIcon } from './icons/FilterIcon';
 import { HelpIcon } from './icons/HelpIcon';
 import { PlusIcon } from './icons/PlusIcon';
 import { InfoFilledIcon } from './icons/InfoFilledIcon';
+import { InstagramIcon } from './icons/InstagramIcon';
 import { MenuIcon } from './icons/MenuIcon';
+import { LinkedInIcon } from './icons/LinkedInIcon';
 import { PrintIcon } from './icons/PrintIcon';
 import { ProgressBlockedIcon } from './icons/ProgressBlockedIcon';
 import { ProgressDoingIcon } from './icons/ProgressDoingIcon';
@@ -32,9 +37,11 @@ import { SuccessFilledIcon } from './icons/SuccessFilledIcon';
 import { SuccessIcon } from './icons/SuccessIcon';
 import { ThumbsDownIcon } from './icons/ThumbsDownIcon';
 import { ThumbsUpIcon } from './icons/ThumbsUpIcon';
+import { TwitterIcon } from './icons/TwitterIcon';
 import { UploadIcon } from './icons/UploadIcon';
 import { WarningIcon } from './icons/WarningIcon';
 import { WarningFilledIcon } from './icons/WarningFilledIcon';
+import { WebsiteIcon } from './icons/WebsiteIcon';
 
 export const allIcons = {
 	AlertFilledIcon,
@@ -50,16 +57,21 @@ export const allIcons = {
 	ChevronLeftIcon,
 	ChevronRightIcon,
 	ChevronUpIcon,
+	ChevronYIcon,
 	CloseIcon,
 	CopyIcon,
 	DownloadIcon,
 	DeleteIcon,
 	EditIcon,
+	EmailIcon,
 	ExternalLinkIcon,
+	FacebookIcon,
 	FilterIcon,
 	HelpIcon,
 	InfoIcon,
 	InfoFilledIcon,
+	InstagramIcon,
+	LinkedInIcon,
 	MenuIcon,
 	PrintIcon,
 	PlusIcon,
@@ -71,7 +83,9 @@ export const allIcons = {
 	SuccessIcon,
 	ThumbsDownIcon,
 	ThumbsUpIcon,
+	TwitterIcon,
 	UploadIcon,
 	WarningIcon,
 	WarningFilledIcon,
+	WebsiteIcon,
 };
