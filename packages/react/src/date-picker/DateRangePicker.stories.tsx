@@ -105,8 +105,8 @@ export const ControlledExample = () => {
 				<Button
 					onClick={() =>
 						setRange({
-							from: new Date('2020-08-14'),
-							to: new Date('2020-08-18'),
+							from: new Date(2020, 7, 14),
+							to: new Date(2020, 7, 18),
 						})
 					}
 				>
