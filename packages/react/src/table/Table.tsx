@@ -8,13 +8,13 @@ export type TableProps = PropsWithChildren<{
 	/** Setting this to -1 allows the table to be focusable */
 	tabIndex?: number;
 	/** The id of the element that labels the table */
-	ariaLabelledby?: string;
+	'aria-labelledby'?: string;
 	/** The id of the element that describes the table */
-	ariaDescribedby?: string;
+	'aria-describedby'?: string;
 }>;
 
 export const Table = forwardRef<HTMLTableElement, TableProps>(function Table(
-	{ children, striped, tabIndex, ariaLabelledby, ariaDescribedby },
+	{ children, striped, tabIndex, 'aria-labelledby': ariaLabelledby, 'aria-describedby': ariaDescribedby },
 	ref
 ) {
 	return (
