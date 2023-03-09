@@ -122,15 +122,15 @@ export async function getData(params: GetDataParams): Promise<GetDataResponse> {
 		filterData(business, params.filters)
 	);
 
-	const sortedData = filteredData.sort((a, b) => sortData(a, b, params.sort));
-
-	const paginatedData = sortedData
-		.slice((page - 1) * perPage, page * perPage)
+	const sortedData = filteredData
+		.sort((a, b) => sortData(a, b, params.sort))
 		.map((business, index) => ({
 			...business,
-			// The index of the search result
-			index: (page - 1) * perPage + index + 1,
+			/** The index of the search result */
+			index,
 		}));
+
+	const paginatedData = sortedData.slice((page - 1) * perPage, page * perPage);
 
 	return new Promise((resolve) => {
 		setTimeout(() => {

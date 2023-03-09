@@ -28,5 +28,5 @@ export const genetateTableCaption = ({
 	loading: boolean;
 	totalItems: number;
 }) => {
-	return `Audits ${loading ? '' : `(${totalItems} items)`}`;
+	return `Audits ${loading ? '' : `(${totalItems} items)`}`.trim();
 };

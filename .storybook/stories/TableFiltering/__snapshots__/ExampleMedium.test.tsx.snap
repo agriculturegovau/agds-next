@@ -801,7 +801,9 @@ exports[`MediumFilteringPattern renders correctly 1`] = `
             <tbody
               class="css-8u32cd-boxStyles"
             >
-              <tr>
+              <tr
+                aria-rowindex="1"
+              >
                 <td
                   class="css-18k5iax-boxStyles-TableCell"
                 >
@@ -882,7 +884,9 @@ exports[`MediumFilteringPattern renders correctly 1`] = `
                   </div>
                 </td>
               </tr>
-              <tr>
+              <tr
+                aria-rowindex="2"
+              >
                 <td
                   class="css-18k5iax-boxStyles-TableCell"
                 >
@@ -962,7 +966,9 @@ exports[`MediumFilteringPattern renders correctly 1`] = `
                   </div>
                 </td>
               </tr>
-              <tr>
+              <tr
+                aria-rowindex="3"
+              >
                 <td
                   class="css-18k5iax-boxStyles-TableCell"
                 >
@@ -1043,7 +1049,9 @@ exports[`MediumFilteringPattern renders correctly 1`] = `
                   </div>
                 </td>
               </tr>
-              <tr>
+              <tr
+                aria-rowindex="4"
+              >
                 <td
                   class="css-18k5iax-boxStyles-TableCell"
                 >
@@ -1106,7 +1114,9 @@ exports[`MediumFilteringPattern renders correctly 1`] = `
                   </div>
                 </td>
               </tr>
-              <tr>
+              <tr
+                aria-rowindex="5"
+              >
                 <td
                   class="css-18k5iax-boxStyles-TableCell"
                 >
@@ -1187,7 +1197,9 @@ exports[`MediumFilteringPattern renders correctly 1`] = `
                   </div>
                 </td>
               </tr>
-              <tr>
+              <tr
+                aria-rowindex="6"
+              >
                 <td
                   class="css-18k5iax-boxStyles-TableCell"
                 >
@@ -1273,7 +1285,9 @@ exports[`MediumFilteringPattern renders correctly 1`] = `
                   </div>
                 </td>
               </tr>
-              <tr>
+              <tr
+                aria-rowindex="7"
+              >
                 <td
                   class="css-18k5iax-boxStyles-TableCell"
                 >
@@ -1323,7 +1337,9 @@ exports[`MediumFilteringPattern renders correctly 1`] = `
                   </div>
                 </td>
               </tr>
-              <tr>
+              <tr
+                aria-rowindex="8"
+              >
                 <td
                   class="css-18k5iax-boxStyles-TableCell"
                 >
@@ -1390,7 +1406,9 @@ exports[`MediumFilteringPattern renders correctly 1`] = `
                   </div>
                 </td>
               </tr>
-              <tr>
+              <tr
+                aria-rowindex="9"
+              >
                 <td
                   class="css-18k5iax-boxStyles-TableCell"
                 >
@@ -1470,7 +1488,9 @@ exports[`MediumFilteringPattern renders correctly 1`] = `
                   </div>
                 </td>
               </tr>
-              <tr>
+              <tr
+                aria-rowindex="10"
+              >
                 <td
                   class="css-18k5iax-boxStyles-TableCell"
                 >

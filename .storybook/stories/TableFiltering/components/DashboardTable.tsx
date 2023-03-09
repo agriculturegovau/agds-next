@@ -45,7 +45,7 @@ const DashboardTableRowAssignee = ({
 	);
 };
 
-type DashboardTableProps = {
+export type DashboardTableProps = {
 	/** The caption for the table */
 	caption: string;
 	/** The data to display in the table */
