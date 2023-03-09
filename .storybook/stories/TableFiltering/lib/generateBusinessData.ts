@@ -17,6 +17,8 @@ export type BusinessForAudit = {
 	status: BusinessForAuditStatus;
 };
 
+export type BusinessForAuditWithIndex = BusinessForAudit & { index: number };
+
 const EXAMPLE_BUSINESSES: Partial<BusinessForAudit>[] = [
 	{
 		businessName: 'Agriculture Victoria',

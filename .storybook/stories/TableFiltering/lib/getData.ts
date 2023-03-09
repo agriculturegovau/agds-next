@@ -2,6 +2,7 @@ import {
 	generateBusinessData,
 	BusinessForAudit,
 	BusinessForAuditStatus,
+	BusinessForAuditWithIndex,
 } from './generateBusinessData';
 
 export type GetDataSort = {
@@ -32,7 +33,7 @@ export type GetDataParams = {
 };
 
 type GetDataResponse = {
-	data: BusinessForAudit[];
+	data: BusinessForAuditWithIndex[];
 	total: number;
 	totalPages: number;
 	totalItems: number;
@@ -123,10 +124,18 @@ export async function getData(params: GetDataParams): Promise<GetDataResponse> {
 
 	const sortedData = filteredData.sort((a, b) => sortData(a, b, params.sort));
 
+	const paginatedData = sortedData
+		.slice((page - 1) * perPage, page * perPage)
+		.map((business, index) => ({
+			...business,
+			// The index of the search result
+			index: (page - 1) * perPage + index + 1,
+		}));
+
 	return new Promise((resolve) => {
 		setTimeout(() => {
 			resolve({
-				data: sortedData.slice((page - 1) * perPage, page * perPage),
+				data: paginatedData,
 				total: sortedData.length,
 				totalPages: Math.ceil(sortedData.length / perPage),
 				totalItems: sortedData.length,

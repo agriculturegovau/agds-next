@@ -43,6 +43,7 @@ export const Small = () => {
 			loading={loading}
 			data={data}
 			tableCaption={tableCaption}
+			totalItems={totalItems}
 		/>
 	);
 };
@@ -86,6 +87,7 @@ export const Medium = () => {
 			sort={sort}
 			tableCaption={tableCaption}
 			totalPages={totalPages}
+			totalItems={totalItems}
 		/>
 	);
 };
@@ -129,6 +131,7 @@ export const Large = () => {
 			sort={sort}
 			tableCaption={tableCaption}
 			totalPages={totalPages}
+			totalItems={totalItems}
 		/>
 	);
 };

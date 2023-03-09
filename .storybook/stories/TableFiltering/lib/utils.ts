@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
 import { getData, GetDataParams } from './getData';
-import { BusinessForAudit } from './generateBusinessData';
+import { BusinessForAuditWithIndex } from './generateBusinessData';
 
 export function useData({ sort, filters, pagination }: GetDataParams) {
 	const [loading, setLoading] = useState(false);
-	const [data, setData] = useState<BusinessForAudit[]>([]);
+	const [data, setData] = useState<BusinessForAuditWithIndex[]>([]);
 	const [totalPages, setTotalPages] = useState(0);
 	const [totalItems, setTotalItems] = useState(0);
 

@@ -13,7 +13,10 @@ import { TextLink } from '@ag.ds-next/react/text-link';
 import { Text } from '@ag.ds-next/react/text';
 import { Fragment } from 'react';
 import { format } from 'date-fns';
-import { BusinessForAudit } from '../lib/generateBusinessData';
+import {
+	BusinessForAudit,
+	BusinessForAuditWithIndex,
+} from '../lib/generateBusinessData';
 import { Avatar } from '@ag.ds-next/react/avatar';
 import { Flex } from '@ag.ds-next/react/box';
 import { GetDataSort } from '../lib/getData';
@@ -46,13 +49,15 @@ type DashboardTableProps = {
 	/** The caption for the table */
 	caption: string;
 	/** The data to display in the table */
-	data: BusinessForAudit[];
+	data: BusinessForAuditWithIndex[];
 	/** The current sort */
 	sort?: GetDataSort;
 	/** A function to set the sort */
 	setSort?: (sort: GetDataSort) => void;
 	/** Whether the table is loading */
 	loading?: boolean;
+	/** The total number of items found in the search */
+	totalItems?: number;
 	/** The number of items to display per page */
 	itemsPerPage?: number;
 };
@@ -64,6 +69,7 @@ export const DashboardTable = ({
 	sort,
 	setSort,
 	itemsPerPage = 10,
+	totalItems,
 }: DashboardTableProps) => {
 	const isTableSortable = !sort || !!setSort;
 
@@ -73,7 +79,7 @@ export const DashboardTable = ({
 
 	return (
 		<TableWrapper>
-			<Table>
+			<Table aria-rowcount={totalItems}>
 				<TableCaption>
 					{caption}
 					<VisuallyHidden>
@@ -152,6 +158,7 @@ export const DashboardTable = ({
 						<Fragment>
 							{data.map(
 								({
+									index,
 									id,
 									assignee,
 									businessName,
@@ -162,7 +169,7 @@ export const DashboardTable = ({
 									status,
 								}) => {
 									return (
-										<tr key={id}>
+										<tr key={id} aria-rowindex={index}>
 											<TableCell>
 												<TextLink href={`#${id}`}>{businessName}</TextLink>
 											</TableCell>

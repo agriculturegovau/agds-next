@@ -5,7 +5,7 @@ import { PaginationButtons } from '@ag.ds-next/react/pagination';
 import { FilterStatusSelect } from './components/FilterStatusSelect';
 import { DashboardTable } from './components/DashboardTable';
 import { GetDataFilters, GetDataPagination, GetDataSort } from './lib/getData';
-import { BusinessForAudit } from './lib/generateBusinessData';
+import { BusinessForAuditWithIndex } from './lib/generateBusinessData';
 import { PlusIcon } from '@ag.ds-next/react/icon';
 import { SortBySelect } from './components/SortBySelect';
 import { FilterAssigneeSelect } from './components/FilterAssigneeSelect';
@@ -24,8 +24,9 @@ export type SmallExampleProps = {
 	resetPagination: () => void;
 	// data
 	totalPages: number;
+	totalItems: number;
 	loading: boolean;
-	data: BusinessForAudit[];
+	data: BusinessForAuditWithIndex[];
 	tableCaption: string;
 };
 
@@ -38,6 +39,7 @@ export const ExampleSmall = ({
 	setPagination,
 	resetPagination,
 	totalPages,
+	totalItems,
 	loading,
 	data,
 	tableCaption,
@@ -83,6 +85,7 @@ export const ExampleSmall = ({
 					loading={loading}
 					caption={tableCaption}
 					itemsPerPage={pagination.perPage}
+					totalItems={totalItems}
 				/>
 				{data.length ? (
 					<PaginationButtons

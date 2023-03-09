@@ -45,6 +45,7 @@ function LargeFilteringPatternTest({ loading }: { loading: boolean }) {
 				setPagination,
 				resetPagination,
 				totalPages,
+				totalItems,
 				loading,
 				data,
 				tableCaption,

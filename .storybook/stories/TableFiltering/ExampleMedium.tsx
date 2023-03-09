@@ -16,7 +16,7 @@ import { DashboardTable } from './components/DashboardTable';
 import { FilterSearchInput } from './components/FilterSearchInput';
 import { FilterStatusSelect } from './components/FilterStatusSelect';
 import { GetDataFilters, GetDataPagination, GetDataSort } from './lib/getData';
-import { BusinessForAudit } from './lib/generateBusinessData';
+import { BusinessForAuditWithIndex } from './lib/generateBusinessData';
 import { Prose } from '@ag.ds-next/react/prose';
 
 type MediumExampleProps = {
@@ -34,8 +34,9 @@ type MediumExampleProps = {
 	resetPagination: () => void;
 	// data
 	totalPages: number;
+	totalItems: number;
 	loading: boolean;
-	data: BusinessForAudit[];
+	data: BusinessForAuditWithIndex[];
 	tableCaption: string;
 };
 
@@ -50,6 +51,7 @@ export const ExampleMedium = ({
 	setPagination,
 	resetPagination,
 	totalPages,
+	totalItems,
 	loading,
 	data,
 	tableCaption,
@@ -137,6 +139,7 @@ export const ExampleMedium = ({
 					caption={tableCaption}
 					sort={sort}
 					setSort={setSort}
+					totalItems={totalItems}
 				/>
 				{data.length ? (
 					<Stack>

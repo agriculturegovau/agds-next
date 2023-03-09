@@ -41,6 +41,7 @@ function SmallFilteringPatternTest({ loading }: { loading: boolean }) {
 				setPagination,
 				resetPagination,
 				totalPages,
+				totalItems,
 				loading,
 				data,
 				tableCaption,
