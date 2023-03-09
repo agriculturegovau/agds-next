@@ -1,5 +1,5 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { Text } from '@ag.ds-next/react/text';
+import { Text } from '../text';
 import { TextLink } from '../text-link';
 import { Stack } from '../box';
 import { H1 } from '../heading';
@@ -190,12 +190,15 @@ export const Modular: ComponentStory<typeof Table> = (args) => (
 export const WithHeading = () => {
 	return (
 		<Stack gap={1}>
-			<H1 id="heading">Applications</H1>
-			<Text id="description">
+			<H1 id="table-heading">Applications</H1>
+			<Text id="table-description">
 				This list of active establishment registrations
 			</Text>
 			<TableWrapper>
-				<Table aria-labelledby="heading" aria-describedby="description">
+				<Table
+					aria-labelledby="table-heading"
+					aria-describedby="table-description"
+				>
 					<TableHead>
 						<tr>
 							<TableHeader>Date submitted</TableHeader>

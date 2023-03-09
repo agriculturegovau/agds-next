@@ -3,7 +3,7 @@ import 'html-validate/jest';
 import { Stack } from '@ag.ds-next/react/box';
 import { H1 } from '@ag.ds-next/react/heading';
 import { Text } from '@ag.ds-next/react/text';
-import { cleanup, render } from '../../../../test-utils';
+import { cleanup, screen, render } from '../../../../test-utils';
 import { Table } from './Table';
 import { TableBody } from './TableBody';
 import { TableCaption } from './TableCaption';
@@ -95,12 +95,15 @@ function renderTableWithCaption() {
 function renderTableWithHeadings() {
 	return render(
 		<Stack gap={1}>
-			<H1 id="heading">Applications</H1>
-			<Text id="description">
+			<H1 id="table-heading">Applications</H1>
+			<Text id="table-description">
 				This list of active establishment registrations
 			</Text>
 			<TableWrapper>
-				<Table aria-labelledby="heading" aria-describedby="description">
+				<Table
+					aria-labelledby="table-heading"
+					aria-describedby="table-description"
+				>
 					<TableHead>
 						<tr>
 							<TableHeader width="50%" scope="col">
@@ -189,16 +192,21 @@ describe('Table', () => {
 	});
 
 	describe('with headings', () => {
-		it('renders correctly', () => {
-			const { container } = renderTableWithHeadings();
-			expect(container).toMatchSnapshot();
-		});
-
 		it('renders a valid HTML structure', () => {
 			const { container } = renderTableWithHeadings();
 			expect(container).toHTMLValidate({
 				extends: ['html-validate:recommended'],
 			});
+		});
+
+		it('has correct accessible name and description', () => {
+			renderTableWithHeadings();
+			const table = screen.getByRole('table');
+
+			expect(table).toHaveAccessibleDescription(
+				'This list of active establishment registrations'
+			);
+			expect(table).toHaveAccessibleName('Applications');
 		});
 	});
 });
