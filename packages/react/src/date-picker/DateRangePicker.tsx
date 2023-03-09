@@ -339,8 +339,8 @@ export const DateRangePicker = ({
 					>
 						<CalendarRange
 							initialFocus
-							defaultMonth={value.from}
-							selected={value}
+							defaultMonth={valueAsDateOrUndefined.from}
+							selected={valueAsDateOrUndefined}
 							onSelect={onSelect}
 							numberOfMonths={numberOfMonths}
 							disabled={disabledCalendarDays}
