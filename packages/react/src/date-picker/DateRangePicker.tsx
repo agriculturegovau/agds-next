@@ -9,13 +9,17 @@ import {
 } from 'react';
 import { usePopper } from 'react-popper';
 import { SelectRangeEventHandler } from 'react-day-picker';
-import { Flex } from '../box';
+import { Flex, Stack } from '../box';
 import {
+	mapSpacing,
 	tokens,
 	useClickOutside,
 	useTernaryState,
 	useWindowSize,
+	useId,
 } from '../core';
+import { FieldContainer, FieldHint, FieldLabel, FieldMessage } from '../field';
+import { visuallyHiddenStyles } from '../a11y';
 import { CalendarRange } from './Calendar';
 import { DateInput } from './DatePickerInput';
 import {
@@ -38,15 +42,31 @@ type DateRangePickerCalendarProps = {
 };
 
 export type DateRangePickerProps = DateRangePickerCalendarProps & {
+	/** Describes the purpose of the group of fields. */
+	legend?: string;
+	/** Provides extra information about the group of fields. */
+	hint?: string;
+	/** Defines an identifier (ID) which must be unique. */
+	id?: string;
+	/** Message to show when the field is invalid. */
+	message?: string;
+	/** If true, the invalid state will be rendered for the start date. */
+	fromInvalid?: boolean;
+	/** If true, the invalid state will be rendered for the end date. */
+	toInvalid?: boolean;
+	/** If true, "(optional)" will never be appended to the legend even when `required` is `false`. */
+	hideOptionalLabel?: boolean;
+	/** If true, the field will not be interactive. */
 	disabled?: boolean;
+	/** If false, "(optional)" will not be appended to the legend. */
 	required?: boolean;
 	/** The value of the field. */
 	value: DateRange;
 	/** Function to be fired following a change event. */
 	onChange: (day: DateRange) => void;
-	/** The label above the start date text input. */
+	/** The label above the start date. */
 	fromLabel?: string;
-	/** The label above the end date text input. */
+	/** The label above the end date. */
 	toLabel?: string;
 	/** Ref to the start input element. */
 	fromInputRef?: Ref<HTMLInputElement>;
@@ -57,12 +77,19 @@ export type DateRangePickerProps = DateRangePickerCalendarProps & {
 };
 
 export const DateRangePicker = ({
+	legend,
+	hint,
+	id,
+	fromInvalid = false,
+	toInvalid = false,
+	message,
+	hideOptionalLabel,
 	value,
 	onChange,
 	disabled,
 	fromLabel = 'Start date',
 	toLabel = 'End date',
-	required,
+	required = false,
 	minDate,
 	maxDate,
 	fromInputRef,
@@ -194,56 +221,100 @@ export const DateRangePicker = ({
 	const { windowWidth = 0 } = useWindowSize();
 	const numberOfMonths = windowWidth > tokens.breakpoint.md ? 2 : 1;
 
+	const invalid = fromInvalid || toInvalid;
+
+	const { fieldsetId, hintId, messageId } = useDateRangePickerIds(id);
+	const describedByIds = [
+		invalid && message ? messageId : null,
+		hint ? hintId : null,
+	].filter(Boolean);
+	const describedBy = describedByIds.length
+		? describedByIds.join(' ')
+		: undefined;
+
 	return (
-		<div>
-			<Flex
-				ref={setRefEl}
-				flexDirection={{ xs: 'column', sm: 'row' }}
-				inline
-				gap={1}
+		<FieldContainer invalid={invalid} id={fieldsetId}>
+			<fieldset
+				aria-describedby={describedBy}
+				css={{ padding: 0, margin: 0, border: 'none' }}
 			>
-				<DateInput
-					ref={fromInputRef}
-					label={fromLabel}
-					value={fromInputValue}
-					onChange={onFromInputChange}
-					buttonRef={fromTriggerRef}
-					buttonOnClick={onFromTriggerClick}
-					disabled={disabled}
+				{/** Legend needs to be the first element, so if none is supplied render an visually hidden element. */}
+				<FieldLabel
+					as="legend"
 					required={required}
-				/>
-				<DateInput
-					ref={toInputRef}
-					label={toLabel}
-					value={toInputValue}
-					onChange={onToInputChange}
-					buttonRef={toTriggerRef}
-					buttonOnClick={onToTriggerClick}
-					disabled={disabled}
-					required={required}
-				/>
-			</Flex>
-			{isCalendarOpen ? (
-				<div
-					ref={setPopperEl}
-					style={styles.popper}
-					{...attributes.popper}
-					css={{ zIndex: 1 }}
+					hideOptionalLabel={hideOptionalLabel}
+					css={legend ? undefined : visuallyHiddenStyles}
 				>
-					<CalendarRange
-						initialFocus
-						defaultMonth={value.from}
-						selected={value}
-						onSelect={onSelect}
-						numberOfMonths={numberOfMonths}
-						disabled={disabledCalendarDays}
-						returnFocusRef={
-							inputMode === 'from' ? fromTriggerRef : toTriggerRef
-						}
-						yearRange={yearRange}
-					/>
-				</div>
-			) : null}
-		</div>
+					{legend ?? 'Date range'}
+				</FieldLabel>
+				<Stack
+					gap={0.5}
+					css={{ marginTop: legend ? mapSpacing(0.5) : undefined }}
+				>
+					{hint ? <FieldHint id={hintId}>{hint}</FieldHint> : null}
+					{message && invalid ? (
+						<FieldMessage id={messageId}>{message}</FieldMessage>
+					) : null}
+					<Flex
+						ref={setRefEl}
+						flexDirection={{ xs: 'column', sm: 'row' }}
+						inline
+						gap={1}
+					>
+						<DateInput
+							ref={fromInputRef}
+							label={fromLabel}
+							value={fromInputValue}
+							onChange={onFromInputChange}
+							buttonRef={fromTriggerRef}
+							buttonOnClick={onFromTriggerClick}
+							disabled={disabled}
+							required={required}
+							invalid={{ field: false, input: fromInvalid }}
+						/>
+						<DateInput
+							ref={toInputRef}
+							label={toLabel}
+							value={toInputValue}
+							onChange={onToInputChange}
+							buttonRef={toTriggerRef}
+							buttonOnClick={onToTriggerClick}
+							disabled={disabled}
+							required={required}
+							invalid={{ field: false, input: toInvalid }}
+						/>
+					</Flex>
+				</Stack>
+				{isCalendarOpen ? (
+					<div
+						ref={setPopperEl}
+						style={styles.popper}
+						{...attributes.popper}
+						css={{ zIndex: 1 }}
+					>
+						<CalendarRange
+							initialFocus
+							defaultMonth={value.from}
+							selected={value}
+							onSelect={onSelect}
+							numberOfMonths={numberOfMonths}
+							disabled={disabledCalendarDays}
+							returnFocusRef={
+								inputMode === 'from' ? fromTriggerRef : toTriggerRef
+							}
+							yearRange={yearRange}
+						/>
+					</div>
+				) : null}
+			</fieldset>
+		</FieldContainer>
 	);
+};
+
+export const useDateRangePickerIds = (idProp?: string) => {
+	const autoId = useId(idProp);
+	const fieldsetId = idProp ? idProp : `date-range-picker-${autoId}`;
+	const hintId = `date-range-picker-${autoId}-hint`;
+	const messageId = `date-range-picker-${autoId}-message`;
+	return { fieldsetId, hintId, messageId };
 };

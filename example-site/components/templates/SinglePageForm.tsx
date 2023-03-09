@@ -250,8 +250,15 @@ const SinglePageForm = () => {
 							name="periodActive"
 							render={({ field: { ref, value, onChange, ...field } }) => (
 								<DateRangePicker
+									legend="Period active"
 									fromInputRef={ref}
 									{...field}
+									fromInvalid={Boolean(errors.periodActive?.from?.message)}
+									toInvalid={Boolean(errors.periodActive?.to?.message)}
+									message={
+										errors.periodActive?.from?.message ||
+										errors.periodActive?.to?.message
+									}
 									value={value}
 									onChange={onChange}
 									required

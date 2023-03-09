@@ -4,7 +4,7 @@ import { Button, ButtonGroup } from '@ag.ds-next/react/button';
 import { Columns, Column } from '@ag.ds-next/react/columns';
 import { Combobox } from '@ag.ds-next/react/src/combobox';
 import { ControlGroup, Checkbox, Radio } from '@ag.ds-next/react/control-input';
-import { DatePicker } from '@ag.ds-next/react/date-picker';
+import { DatePicker, DateRangePicker } from '@ag.ds-next/react/date-picker';
 import { FileInput } from '@ag.ds-next/react/file-input';
 import { FileUpload } from '@ag.ds-next/react/file-upload';
 import { FormStack } from '@ag.ds-next/react/form-stack';
@@ -76,6 +76,16 @@ const AllFormFields = ({
 								value={new Date()}
 								onChange={() => {}}
 								{...commonProps}
+							/>
+
+							<DateRangePicker
+								legend="Date range"
+								value={{ from: undefined, to: undefined }}
+								onChange={() => {}}
+								disabled={commonProps.disabled}
+								fromInvalid={commonProps.invalid}
+								toInvalid={commonProps.invalid}
+								message={commonProps.message}
 							/>
 
 							<FileInput label="Drivers licence" {...commonProps} />

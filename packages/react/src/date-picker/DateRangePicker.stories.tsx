@@ -37,8 +37,48 @@ MinMaxDates.args = {
 	maxDate: nextWeek,
 };
 
+export const Legend = Template.bind({});
+Legend.args = {
+	legend: 'Date range',
+};
+
+export const HideOptionalLabel = Template.bind({});
+HideOptionalLabel.args = {
+	legend: 'Date range',
+	hideOptionalLabel: true,
+};
+
+export const Hint = Template.bind({});
+Hint.args = {
+	legend: 'Date range',
+	hint: 'Hint text',
+};
+
+export const Invalid = Template.bind({});
+Invalid.args = {
+	legend: 'Date range',
+	fromInvalid: true,
+	toInvalid: true,
+	message: 'Enter a valid date',
+};
+
+export const FromInvalid = Template.bind({});
+FromInvalid.args = {
+	legend: 'Date range',
+	fromInvalid: true,
+	message: 'Enter a valid date',
+};
+
+export const ToInvalid = Template.bind({});
+ToInvalid.args = {
+	legend: 'Date range',
+	toInvalid: true,
+	message: 'Enter a valid date',
+};
+
 export const Required = Template.bind({});
 Required.args = {
+	legend: 'Date range',
 	required: true,
 };
 
