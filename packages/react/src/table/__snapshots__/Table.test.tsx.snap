@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Table renders correctly 1`] = `
+exports[`Table with TableCaption renders correctly 1`] = `
 <div>
   <div
     class="css-2ebmvj-TableWrapper"
