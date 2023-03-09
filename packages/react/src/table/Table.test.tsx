@@ -189,6 +189,15 @@ describe('Table', () => {
 				extends: ['html-validate:recommended'],
 			});
 		});
+
+		it('has correct accessible name and description', () => {
+			renderTableWithCaption();
+			const table = screen.getByRole('table');
+
+			expect(table).toHaveAccessibleName(
+				'Population of Australian states and territories, December 2015'
+			);
+		});
 	});
 
 	describe('with headings', () => {
