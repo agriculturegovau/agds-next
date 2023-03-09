@@ -7,10 +7,14 @@ export type TableProps = PropsWithChildren<{
 	striped?: boolean;
 	/** Setting this to -1 allows the table to be focusable */
 	tabIndex?: number;
+	/** The id of the element that labels the table */
+	ariaLabelledby?: string;
+	/** The id of the element that describes the table */
+	ariaDescribedby?: string;
 }>;
 
 export const Table = forwardRef<HTMLTableElement, TableProps>(function Table(
-	{ children, striped, tabIndex },
+	{ children, striped, tabIndex, ariaLabelledby, ariaDescribedby },
 	ref
 ) {
 	return (
@@ -30,6 +34,8 @@ export const Table = forwardRef<HTMLTableElement, TableProps>(function Table(
 					backgroundColor: striped ? boxPalette.backgroundShade : 'transparent',
 				},
 			}}
+			aria-labelledby={ariaLabelledby}
+			aria-describedby={ariaDescribedby}
 		>
 			{children}
 		</Box>
