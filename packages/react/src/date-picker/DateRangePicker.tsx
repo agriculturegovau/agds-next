@@ -289,7 +289,7 @@ export const DateRangePicker = ({
 				aria-describedby={describedBy}
 				css={{ padding: 0, margin: 0, border: 'none' }}
 			>
-				{/** Legend needs to be the first element, so if none is supplied render an visually hidden element. */}
+				{/* Legend needs to be the first element, so if none is supplied render a visually hidden element. */}
 				<FieldLabel
 					as="legend"
 					required={required}
