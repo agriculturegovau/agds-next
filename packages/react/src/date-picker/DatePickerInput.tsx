@@ -56,7 +56,7 @@ export const DateInput = forwardRef<HTMLInputElement, DateInputProps>(
 			if (typeof value !== 'string') return 'Choose date';
 			const parsed = parseDate(value);
 			if (!parsed) return 'Choose date';
-			return `Change date, ${formatHumanReadableDate(parsed)}`;
+			return `Change Date, ${formatHumanReadableDate(parsed)}`;
 		}, [value]);
 
 		return (
