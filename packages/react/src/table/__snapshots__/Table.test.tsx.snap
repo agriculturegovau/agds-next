@@ -249,6 +249,8 @@ exports[`Table with headings renders correctly 1`] = `
       class="css-2ebmvj-TableWrapper"
     >
       <table
+        aria-describedby="description"
+        aria-labelledby="heading"
         class="css-57emj1-boxStyles-Table"
       >
         <thead

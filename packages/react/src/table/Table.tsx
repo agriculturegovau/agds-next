@@ -14,7 +14,13 @@ export type TableProps = PropsWithChildren<{
 }>;
 
 export const Table = forwardRef<HTMLTableElement, TableProps>(function Table(
-	{ children, striped, tabIndex, 'aria-labelledby': ariaLabelledby, 'aria-describedby': ariaDescribedby },
+	{
+		children,
+		striped,
+		tabIndex,
+		'aria-labelledby': ariaLabelledby,
+		'aria-describedby': ariaDescribedby,
+	},
 	ref
 ) {
 	return (
