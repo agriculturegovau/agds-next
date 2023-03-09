@@ -4,7 +4,7 @@ import { boxPalette } from '@ag.ds-next/react/core';
 import {
 	ChevronDownIcon,
 	ChevronUpIcon,
-	ChevronYIcon,
+	ChevronsUpDownIcon,
 } from '@ag.ds-next/react/icon';
 import { TableHeader, TableHeaderWidthType } from '@ag.ds-next/react/table';
 
@@ -82,7 +82,7 @@ export const DashboardTableHeader = ({
 				) : sort === 'DESC' ? (
 					<ChevronUpIcon color="action" />
 				) : (
-					<ChevronYIcon color="action" />
+					<ChevronsUpDownIcon color="action" />
 				)}
 			</Flex>
 		</Box>
