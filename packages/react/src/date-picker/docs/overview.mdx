@@ -74,6 +74,29 @@ To fix this issue, you can use the `onInputChange` prop to keep track of the use
 };
 ```
 
+### Date format label
+
+For accessibility reasons, the `DatePicker` component will always append the date format to the label. However, this prevents the label automatically appending `"(optional)"` to the label like other form components in AgDS.
+
+When using the `DatePicker` component in a form for capturing user data, you can use the `hideLabelDateFormat` prop to hide the date format and automatically append `"(optional)"` like other form components in AgDS.
+
+When using the `hideLabelDateFormat`, you _must_ provide the date format `"(dd/mm/yyyy)"` via the hint text.
+
+```jsx live
+() => {
+	const [value, setValue] = React.useState();
+	return (
+		<DatePicker
+			label="Select date"
+			hideLabelDateFormat
+			hint="dd/mm/yyyy"
+			value={value}
+			onChange={setValue}
+		/>
+	);
+};
+```
+
 ### Hint
 
 Use the `hint` prop to provide help that’s relevant to the majority of users, like how their information will be used, or where to find it.

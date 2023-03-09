@@ -11,6 +11,8 @@ export type DateInputProps = Omit<
 	TextInputProps,
 	'inputMode' | 'pattern' | 'type' | 'invalid'
 > & {
+	/** Stops the date format from being appended to the label. When this is disabled, you must provide the date format via the hint text. */
+	hideLabelDateFormat?: boolean;
 	invalid: {
 		/** If true, the entire field will be rendered in an invalid state.  */
 		field: boolean;
@@ -25,6 +27,7 @@ export const DateInput = forwardRef<HTMLInputElement, DateInputProps>(
 	function DateInput(
 		{
 			label,
+			hideLabelDateFormat,
 			required,
 			hint,
 			message,
@@ -62,7 +65,7 @@ export const DateInput = forwardRef<HTMLInputElement, DateInputProps>(
 		return (
 			<Field
 				label={label}
-				secondaryLabel="(dd/mm/yyyy)"
+				secondaryLabel={hideLabelDateFormat ? undefined : '(dd/mm/yyyy)'}
 				required={Boolean(required)}
 				hint={hint}
 				message={message}
