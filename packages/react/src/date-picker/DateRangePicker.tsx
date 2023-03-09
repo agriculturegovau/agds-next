@@ -143,7 +143,6 @@ export const DateRangePicker = ({
 	const onSelect = useCallback<SelectRangeEventHandler>(
 		(_, selectedDay, activeModifiers) => {
 			if (!inputMode || activeModifiers.disabled) return;
-
 			const range = getValidDateRange(
 				inputMode,
 				selectedDay,
