@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Table renders correctly 1`] = `
+exports[`Table with TableCaption renders correctly 1`] = `
 <div>
   <div
     class="css-2ebmvj-TableWrapper"
@@ -224,6 +224,245 @@ exports[`Table renders correctly 1`] = `
         </tr>
       </tbody>
     </table>
+  </div>
+</div>
+`;
+
+exports[`Table with headings renders correctly 1`] = `
+<div>
+  <div
+    class="css-1lvzxao-boxStyles"
+  >
+    <h1
+      class="css-18pa81a-boxStyles"
+      id="heading"
+    >
+      Applications
+    </h1>
+    <span
+      class="css-6j1v6l-boxStyles-Text"
+      id="description"
+    >
+      This list of active establishment registrations
+    </span>
+    <div
+      class="css-2ebmvj-TableWrapper"
+    >
+      <table
+        class="css-57emj1-boxStyles-Table"
+      >
+        <thead
+          class="css-11khhn7-boxStyles"
+        >
+          <tr>
+            <th
+              class="css-iyikmo-boxStyles-TableHeader"
+              scope="col"
+            >
+              Location
+            </th>
+            <th
+              class="css-ek52r0-boxStyles-TableHeader"
+              scope="col"
+            >
+              Population
+            </th>
+            <th
+              class="css-ek52r0-boxStyles-TableHeader"
+              scope="col"
+            >
+              Change over previous year %
+            </th>
+            <th
+              class="css-ek52r0-boxStyles-TableHeader"
+              scope="col"
+            >
+              Change over previous decade %
+            </th>
+          </tr>
+        </thead>
+        <tbody
+          class="css-8u32cd-boxStyles"
+        >
+          <tr>
+            <td
+              class="css-18k5iax-boxStyles-TableCell"
+            >
+              New South Wales
+            </td>
+            <td
+              class="css-c8qqgx-boxStyles-TableCell"
+            >
+              7,670,700
+            </td>
+            <td
+              class="css-c8qqgx-boxStyles-TableCell"
+            >
+              3.1%
+            </td>
+            <td
+              class="css-c8qqgx-boxStyles-TableCell"
+            >
+              12.9%
+            </td>
+          </tr>
+          <tr>
+            <td
+              class="css-18k5iax-boxStyles-TableCell"
+            >
+              Victoria
+            </td>
+            <td
+              class="css-c8qqgx-boxStyles-TableCell"
+            >
+              5,996,400
+            </td>
+            <td
+              class="css-c8qqgx-boxStyles-TableCell"
+            >
+              2.5%
+            </td>
+            <td
+              class="css-c8qqgx-boxStyles-TableCell"
+            >
+              9.3%
+            </td>
+          </tr>
+          <tr>
+            <td
+              class="css-18k5iax-boxStyles-TableCell"
+            >
+              Queensland
+            </td>
+            <td
+              class="css-c8qqgx-boxStyles-TableCell"
+            >
+              4,808,800
+            </td>
+            <td
+              class="css-c8qqgx-boxStyles-TableCell"
+            >
+              1.7%
+            </td>
+            <td
+              class="css-c8qqgx-boxStyles-TableCell"
+            >
+              13.3%
+            </td>
+          </tr>
+          <tr>
+            <td
+              class="css-18k5iax-boxStyles-TableCell"
+            >
+              Western Australia
+            </td>
+            <td
+              class="css-c8qqgx-boxStyles-TableCell"
+            >
+              2,603,900
+            </td>
+            <td
+              class="css-c8qqgx-boxStyles-TableCell"
+            >
+              2.3%
+            </td>
+            <td
+              class="css-c8qqgx-boxStyles-TableCell"
+            >
+              11.6%
+            </td>
+          </tr>
+          <tr>
+            <td
+              class="css-18k5iax-boxStyles-TableCell"
+            >
+              South Australia
+            </td>
+            <td
+              class="css-c8qqgx-boxStyles-TableCell"
+            >
+              1,702,800
+            </td>
+            <td
+              class="css-c8qqgx-boxStyles-TableCell"
+            >
+              2.0%
+            </td>
+            <td
+              class="css-c8qqgx-boxStyles-TableCell"
+            >
+              6.8%
+            </td>
+          </tr>
+          <tr>
+            <td
+              class="css-18k5iax-boxStyles-TableCell"
+            >
+              Tasmania
+            </td>
+            <td
+              class="css-c8qqgx-boxStyles-TableCell"
+            >
+              517,400
+            </td>
+            <td
+              class="css-c8qqgx-boxStyles-TableCell"
+            >
+              4%
+            </td>
+            <td
+              class="css-c8qqgx-boxStyles-TableCell"
+            >
+              5.3%
+            </td>
+          </tr>
+          <tr>
+            <td
+              class="css-18k5iax-boxStyles-TableCell"
+            >
+              Northern Territory
+            </td>
+            <td
+              class="css-c8qqgx-boxStyles-TableCell"
+            >
+              244,400
+            </td>
+            <td
+              class="css-c8qqgx-boxStyles-TableCell"
+            >
+              1.2%
+            </td>
+            <td
+              class="css-c8qqgx-boxStyles-TableCell"
+            >
+              4.5%
+            </td>
+          </tr>
+          <tr>
+            <td
+              class="css-18k5iax-boxStyles-TableCell"
+            >
+              Australian Capital Territory
+            </td>
+            <td
+              class="css-c8qqgx-boxStyles-TableCell"
+            >
+              393,000
+            </td>
+            <td
+              class="css-c8qqgx-boxStyles-TableCell"
+            >
+              2.4%
+            </td>
+            <td
+              class="css-c8qqgx-boxStyles-TableCell"
+            >
+              9.6%
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 </div>
 `;
