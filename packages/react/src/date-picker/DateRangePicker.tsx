@@ -184,7 +184,10 @@ export const DateRangePicker = ({
 			const parsedDate = parseDate(inputValue);
 			const containedDate = constrainDate(parsedDate, minDate, maxDate);
 
-			const nextValue = { ...valueAsDateOrUndefined, from: containedDate };
+			const nextValue = {
+				from: containedDate,
+				to: valueAsDateOrUndefined.to,
+			};
 
 			// When there is no value OR there is a valid date, only trigger the `onChange` callback
 			// `onInputChange` will not be called
@@ -212,7 +215,10 @@ export const DateRangePicker = ({
 			const parsedDate = parseDate(inputValue);
 			const containedDate = constrainDate(parsedDate, minDate, maxDate);
 
-			const nextValue = { ...valueAsDateOrUndefined, to: containedDate };
+			const nextValue = {
+				from: valueAsDateOrUndefined.from,
+				to: containedDate,
+			};
 
 			// When there is no value OR there is a valid date, only trigger the `onChange` callback
 			// `onInputChange` will not be called
