@@ -254,9 +254,7 @@ const SinglePageForm = () => {
 									legend="Period active"
 									fromInputRef={ref}
 									{...field}
-									hint="This is an example hint"
 									id="periodActive"
-									{...field}
 									value={value}
 									onChange={onChange}
 									onFromInputChange={(from) => onChange({ ...value, from })}
