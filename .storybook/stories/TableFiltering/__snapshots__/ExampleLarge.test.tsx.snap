@@ -50,7 +50,10 @@ exports[`LargeFilteringPattern renders correctly 1`] = `
               New item
             </a>
           </div>
-          <div
+          <section
+            aria-controls="dashboard-table"
+            aria-label="data filtering"
+            aria-orientation="vertical"
             class="css-14vgs17-boxStyles"
           >
             <div
@@ -96,6 +99,7 @@ exports[`LargeFilteringPattern renders correctly 1`] = `
                     />
                   </svg>
                   <input
+                    aria-controls="dashboard-table"
                     aria-invalid="false"
                     aria-required="false"
                     autocomplete="off"
@@ -154,6 +158,7 @@ exports[`LargeFilteringPattern renders correctly 1`] = `
                 class="css-1bg5d3h-SelectContainer"
               >
                 <select
+                  aria-controls="dashboard-table"
                   aria-invalid="false"
                   aria-required="false"
                   class="css-58fznw-Field"
@@ -170,14 +175,14 @@ exports[`LargeFilteringPattern renders correctly 1`] = `
                     Business name (Z-A)
                   </option>
                   <option
-                    value="city-ASC"
+                    value="assignee-ASC"
                   >
-                    City (A-Z)
+                    Assignee (A-Z)
                   </option>
                   <option
-                    value="city-DESC"
+                    value="assignee-DESC"
                   >
-                    City (Z-A)
+                    Assignee (Z-A)
                   </option>
                   <option
                     value="numberOfEmployees-ASC"
@@ -217,13 +222,14 @@ exports[`LargeFilteringPattern renders correctly 1`] = `
                 </svg>
               </div>
             </div>
-          </div>
+          </section>
         </div>
         <div
           class="css-2ebmvj-TableWrapper"
         >
           <table
             class="css-57emj1-boxStyles-Table"
+            id="dashboard-table"
           >
             <caption
               class="css-qt4zh6-boxStyles-Text-TableCaption"
@@ -1155,6 +1161,7 @@ exports[`LargeFilteringPattern renders correctly 1`] = `
               class="css-1mt40i6-SelectContainer"
             >
               <select
+                aria-controls="dashboard-table"
                 aria-invalid="false"
                 aria-required="false"
                 class="css-58fznw-Field"

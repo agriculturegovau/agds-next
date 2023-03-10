@@ -1,6 +1,7 @@
 import { Select } from '@ag.ds-next/react/select';
 import { GetDataSort } from '../lib/getData';
 import { BusinessForAudit } from '../lib/generateBusinessData';
+import { tableId } from './DashboardTable';
 
 export const SortBySelect = ({
 	sort,
@@ -25,12 +26,12 @@ export const SortBySelect = ({
 					label: 'Business name (Z-A)',
 				},
 				{
-					value: 'city-ASC',
-					label: 'City (A-Z)',
+					value: 'assignee-ASC',
+					label: 'Assignee (A-Z)',
 				},
 				{
-					value: 'city-DESC',
-					label: 'City (Z-A)',
+					value: 'assignee-DESC',
+					label: 'Assignee (Z-A)',
 				},
 				{
 					value: 'numberOfEmployees-ASC',
@@ -50,6 +51,7 @@ export const SortBySelect = ({
 				},
 			]}
 			value={`${sort.field}-${sort.order}`}
+			aria-controls={tableId}
 			onChange={(e) => {
 				const [field, order] = e.target.value.split('-');
 				resetPagination();

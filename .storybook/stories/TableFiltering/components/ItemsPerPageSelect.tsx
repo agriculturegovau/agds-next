@@ -1,5 +1,6 @@
 import { Select } from '@ag.ds-next/react/select';
 import { GetDataPagination } from '../lib/getData';
+import { tableId } from './DashboardTable';
 
 export const ItemsPerPageSelect = ({
 	pagination,
@@ -20,6 +21,7 @@ export const ItemsPerPageSelect = ({
 				})
 			}
 			hideOptionalLabel
+			aria-controls={tableId}
 			options={[
 				{ label: '10', value: '10' },
 				{ label: '20', value: '20' },

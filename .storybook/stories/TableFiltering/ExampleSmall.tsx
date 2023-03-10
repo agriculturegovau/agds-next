@@ -3,7 +3,7 @@ import { ButtonLink } from '@ag.ds-next/react/button';
 import { PageContent } from '@ag.ds-next/react/content';
 import { PaginationButtons } from '@ag.ds-next/react/pagination';
 import { FilterStatusSelect } from './components/FilterStatusSelect';
-import { DashboardTable } from './components/DashboardTable';
+import { DashboardTable, tableId } from './components/DashboardTable';
 import { GetDataFilters, GetDataPagination, GetDataSort } from './lib/getData';
 import { BusinessForAuditWithIndex } from './lib/generateBusinessData';
 import { PlusIcon } from '@ag.ds-next/react/icon';
@@ -60,7 +60,14 @@ export const ExampleSmall = ({
 					</ButtonLink>
 				</div>
 
-				<Flex gap={1} justifyContent="space-between">
+				<Flex
+					as="section"
+					aria-label="data filtering"
+					aria-controls={tableId}
+					aria-orientation="vertical"
+					gap={1}
+					justifyContent="space-between"
+				>
 					<Flex gap={1}>
 						<FilterStatusSelect
 							filters={filters}

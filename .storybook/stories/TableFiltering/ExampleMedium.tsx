@@ -12,7 +12,7 @@ import { useCallback, useState } from 'react';
 import { ActiveFilters } from './components/ActiveFilters';
 import { FilterBar } from './components/FilterBar';
 import { SortBySelect } from './components/SortBySelect';
-import { DashboardTable } from './components/DashboardTable';
+import { DashboardTable, tableId } from './components/DashboardTable';
 import { FilterSearchInput } from './components/FilterSearchInput';
 import { FilterStatusSelect } from './components/FilterStatusSelect';
 import { GetDataFilters, GetDataPagination, GetDataSort } from './lib/getData';
@@ -88,7 +88,15 @@ export const ExampleMedium = ({
 							New item
 						</ButtonLink>
 					</div>
-					<Flex gap={1} alignItems="flex-end" justifyContent="space-between">
+					<Flex
+						as="section"
+						aria-label="data filtering"
+						aria-controls={tableId}
+						aria-orientation="vertical"
+						gap={1}
+						alignItems="flex-end"
+						justifyContent="space-between"
+					>
 						<Flex gap={1} alignItems="flex-end">
 							<FilterSearchInput filters={filters} setFilters={setFilters} />
 							<FilterStatusSelect

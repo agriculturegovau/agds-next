@@ -1,5 +1,6 @@
 import { Select } from '@ag.ds-next/react/select';
 import { GetDataFilters } from '../lib/getData';
+import { tableId } from './DashboardTable';
 
 export const FilterStatusSelect = ({
 	filters,
@@ -14,6 +15,7 @@ export const FilterStatusSelect = ({
 		<Select
 			label="Status"
 			placeholder="All"
+			aria-controls={tableId}
 			hideOptionalLabel
 			options={[
 				{ value: 'booked', label: 'Booked' },

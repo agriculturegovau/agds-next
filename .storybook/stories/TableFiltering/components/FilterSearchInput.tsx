@@ -1,5 +1,6 @@
 import { SearchInput } from '@ag.ds-next/react/search-input';
 import { GetDataFilters } from '../lib/getData';
+import { tableId } from './DashboardTable';
 
 export const FilterSearchInput = ({
 	filters,
@@ -11,6 +12,7 @@ export const FilterSearchInput = ({
 	return (
 		<SearchInput
 			label="Search Business name"
+			aria-controls={tableId}
 			maxWidth="lg"
 			hideOptionalLabel
 			value={filters.businessName}

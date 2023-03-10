@@ -62,6 +62,8 @@ export type DashboardTableProps = {
 	itemsPerPage?: number;
 };
 
+export const tableId = 'dashboard-table';
+
 export const DashboardTable = ({
 	caption,
 	data,
@@ -79,7 +81,7 @@ export const DashboardTable = ({
 
 	return (
 		<TableWrapper>
-			<Table aria-rowcount={totalItems}>
+			<Table aria-rowcount={totalItems} id={tableId}>
 				<TableCaption>
 					{caption}
 					<VisuallyHidden>

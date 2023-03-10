@@ -1,5 +1,6 @@
 import { Select } from '@ag.ds-next/react/select';
 import { GetDataFilters } from '../lib/getData';
+import { tableId } from './DashboardTable';
 
 export const FilterStateSelect = ({
 	filters,
@@ -26,6 +27,7 @@ export const FilterStateSelect = ({
 				{ value: 'wa', label: 'WA' },
 			]}
 			value={filters.state || ''}
+			aria-controls={tableId}
 			onChange={(e) => {
 				const value = e.target.value;
 				resetPagination && resetPagination();
