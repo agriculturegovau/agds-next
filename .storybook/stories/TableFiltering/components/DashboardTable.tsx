@@ -171,7 +171,7 @@ export const DashboardTable = ({
 									status,
 								}) => {
 									return (
-										<tr key={id} aria-rowindex={index}>
+										<tr key={id} aria-rowindex={index + 1}>
 											<TableCell>
 												<TextLink href={`#${id}`}>{businessName}</TextLink>
 											</TableCell>
