@@ -266,6 +266,7 @@ const SinglePageForm = () => {
 										errors.periodActive?.from?.message ||
 										errors.periodActive?.to?.message
 									}
+									required
 								/>
 							)}
 						/>
