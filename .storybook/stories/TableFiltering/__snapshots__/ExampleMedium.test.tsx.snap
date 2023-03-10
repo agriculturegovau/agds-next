@@ -419,6 +419,7 @@ exports[`MediumFilteringPattern renders correctly 1`] = `
                   class="css-1bg5d3h-SelectContainer"
                 >
                   <select
+                    aria-controls="dashboard-table"
                     aria-invalid="false"
                     aria-required="false"
                     class="css-58fznw-Field"

@@ -73,7 +73,7 @@ export const DashboardTable = ({
 	itemsPerPage = 10,
 	totalItems,
 }: DashboardTableProps) => {
-	const isTableSortable = !sort || !!setSort;
+	const isTableSortable = !!sort || !!setSort;
 
 	if (!loading && data.length === 0) {
 		return <Text>No results</Text>;
