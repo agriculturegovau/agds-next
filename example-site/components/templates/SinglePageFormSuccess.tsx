@@ -1,3 +1,4 @@
+import { useEffect, useRef } from 'react';
 import { Stack } from '@ag.ds-next/react/box';
 import { Breadcrumbs } from '@ag.ds-next/react/breadcrumbs';
 import { PageContent } from '@ag.ds-next/react/content';
@@ -8,6 +9,13 @@ import { PageTitle } from '../PageTitle';
 import { FormHelpCallout } from '../FormHelpCallout';
 
 export function SinglePageFormSuccess() {
+	const successPageAlertRef = useRef<HTMLDivElement>(null);
+
+	// When this page renders, focus the success page alert
+	useEffect(() => {
+		successPageAlertRef.current?.focus();
+	}, []);
+
 	return (
 		<PageContent>
 			<Columns>
@@ -25,7 +33,7 @@ export function SinglePageFormSuccess() {
 							]}
 						/>
 						<PageTitle title="Single-page form (multi-question) xxl/display (H1)" />
-						<PageAlert tone="success">
+						<PageAlert ref={successPageAlertRef} tabIndex={-1} tone="success">
 							<PageAlertTitle as="h2">
 								Descriptive success message (H2)
 							</PageAlertTitle>
