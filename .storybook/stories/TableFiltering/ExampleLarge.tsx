@@ -4,7 +4,6 @@ import { PageContent } from '@ag.ds-next/react/content';
 import { FilterIcon, PlusIcon } from '@ag.ds-next/react/icon';
 import { useState } from 'react';
 import { ActiveFilters } from './components/ActiveFilters';
-import { AdvancedTablePagination } from './components/AdvancedPagination';
 import { SortBySelect } from './components/SortBySelect';
 import { DashboardTable, tableId } from './components/DashboardTable';
 import { FilterModal } from './components/FilterModal';
@@ -12,6 +11,7 @@ import { FilterSearchInput } from './components/FilterSearchInput';
 import { GetDataFilters, GetDataPagination, GetDataSort } from './lib/getData';
 import { BusinessForAuditWithIndex } from './lib/generateBusinessData';
 import { Prose } from '@ag.ds-next/react/prose';
+import { PaginationButtons } from '@ag.ds-next/react/pagination';
 
 type ExampleLargeProps = {
 	// sort
@@ -122,11 +122,13 @@ export const ExampleLarge = ({
 					setSort={setSort}
 				/>
 				{data.length ? (
-					<AdvancedTablePagination
-						pagination={pagination}
-						setPagination={setPagination}
-						totalPages={totalPages}
-					/>
+					<Stack>
+						<PaginationButtons
+							currentPage={pagination.page}
+							onChange={(page) => setPagination({ ...pagination, page })}
+							totalPages={totalPages}
+						/>
+					</Stack>
 				) : null}
 			</Stack>
 		</PageContent>

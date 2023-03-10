@@ -1142,236 +1142,95 @@ exports[`LargeFilteringPattern renders correctly 1`] = `
           </table>
         </div>
         <div
-          class="css-gtshp4-boxStyles"
+          class="css-o80hmi-boxStyles"
         >
-          <div
-            class="css-1904cz9-boxStyles-FieldContainer"
+          <nav
+            aria-label="pagination"
           >
-            <label
-              class="css-n7rdvo-boxStyles"
-              for="field-:r2:"
+            <ol
+              class="css-1cc1bme-boxStyles"
             >
-              <span
-                class="css-433uqb-boxStyles-Text"
-              >
-                Items per page
-              </span>
-            </label>
-            <div
-              class="css-1mt40i6-SelectContainer"
-            >
-              <select
-                aria-controls="dashboard-table"
-                aria-invalid="false"
-                aria-required="false"
-                class="css-58fznw-Field"
-                id="field-:r2:"
-              >
-                <option
-                  value="10"
+              <li>
+                <button
+                  aria-current="page"
+                  aria-label="Go to page 1"
+                  class="css-4qmtwe-BaseButton-boxStyles-PaginationItemPageButton"
+                  type="button"
                 >
-                  10
-                </option>
-                <option
-                  value="20"
+                  1
+                </button>
+              </li>
+              <li>
+                <button
+                  aria-label="Go to page 2"
+                  class="css-znbpsc-BaseButton-boxStyles"
+                  type="button"
                 >
-                  20
-                </option>
-                <option
-                  value="50"
+                  2
+                </button>
+              </li>
+              <li>
+                <button
+                  aria-label="Go to page 3"
+                  class="css-znbpsc-BaseButton-boxStyles"
+                  type="button"
                 >
-                  50
-                </option>
-                <option
-                  value="100"
-                >
-                  100
-                </option>
-              </select>
-              <svg
-                aria-hidden="true"
-                class="css-1j4iiu7-SelectIcon"
-                clip-rule="evenodd"
-                focusable="false"
-                height="24"
-                role="img"
-                viewBox="0 0 24 24"
-                width="24"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M21 8L12 17L3 8"
-                />
-              </svg>
-            </div>
-          </div>
-          <div
-            class="css-b7l074-boxStyles"
-          >
-            <button
-              class="css-1gdmbk7-BaseButton-boxStyles-BaseDirectionLink"
-              type="button"
-            >
-              <svg
-                aria-hidden="true"
-                class="css-1krnro2-Icon"
-                clip-rule="evenodd"
-                focusable="false"
-                height="24"
-                role="img"
-                viewBox="0 0 24 24"
-                width="24"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M21 12L4 12"
-                />
-                <path
-                  d="M8 17L3 12L8 7"
-                />
-              </svg>
-              Back
-            </button>
-            <div
-              class="css-1904cz9-boxStyles-FieldContainer"
-            >
-              <label
-                class="css-n7rdvo-boxStyles"
-                for="field-:r3:"
+                  3
+                </button>
+              </li>
+              <li
+                class="css-yxjemn-boxStyles"
               >
                 <span
-                  class="css-433uqb-boxStyles-Text"
+                  class="css-6j1v6l-boxStyles-Text"
                 >
-                  Page
+                  …
                 </span>
-              </label>
-              <div
-                class="css-1bg5d3h-SelectContainer"
-              >
-                <select
-                  aria-invalid="false"
-                  aria-required="false"
-                  class="css-58fznw-Field"
-                  id="field-:r3:"
+              </li>
+              <li>
+                <button
+                  aria-label="Go to page 15"
+                  class="css-znbpsc-BaseButton-boxStyles"
+                  type="button"
                 >
-                  <option
-                    value="1"
-                  >
-                    1
-                  </option>
-                  <option
-                    value="2"
-                  >
-                    2
-                  </option>
-                  <option
-                    value="3"
-                  >
-                    3
-                  </option>
-                  <option
-                    value="4"
-                  >
-                    4
-                  </option>
-                  <option
-                    value="5"
-                  >
-                    5
-                  </option>
-                  <option
-                    value="6"
-                  >
-                    6
-                  </option>
-                  <option
-                    value="7"
-                  >
-                    7
-                  </option>
-                  <option
-                    value="8"
-                  >
-                    8
-                  </option>
-                  <option
-                    value="9"
-                  >
-                    9
-                  </option>
-                  <option
-                    value="10"
-                  >
-                    10
-                  </option>
-                  <option
-                    value="11"
-                  >
-                    11
-                  </option>
-                  <option
-                    value="12"
-                  >
-                    12
-                  </option>
-                  <option
-                    value="13"
-                  >
-                    13
-                  </option>
-                  <option
-                    value="14"
-                  >
-                    14
-                  </option>
-                  <option
-                    value="15"
-                  >
-                    15
-                  </option>
-                </select>
-                <svg
-                  aria-hidden="true"
-                  class="css-1j4iiu7-SelectIcon"
-                  clip-rule="evenodd"
-                  focusable="false"
-                  height="24"
-                  role="img"
-                  viewBox="0 0 24 24"
-                  width="24"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M21 8L12 17L3 8"
-                  />
-                </svg>
-              </div>
-            </div>
-            <button
-              class="css-1gdmbk7-BaseButton-boxStyles-BaseDirectionLink"
-              type="button"
-            >
-              Next
-              <svg
-                aria-hidden="true"
-                class="css-1krnro2-Icon"
-                clip-rule="evenodd"
-                focusable="false"
-                height="24"
-                role="img"
-                viewBox="0 0 24 24"
-                width="24"
-                xmlns="http://www.w3.org/2000/svg"
+                  15
+                </button>
+              </li>
+              <li
+                class="css-1vybkau-boxStyles"
               >
-                <path
-                  d="M3 12L20 12"
-                />
-                <path
-                  d="M16 7L21 12L16 17"
-                />
-              </svg>
-            </button>
-          </div>
+                <button
+                  aria-label="Go to next page"
+                  class="css-rheow1-BaseButton-boxStyles-BaseDirectionLink"
+                  type="button"
+                >
+                  <span
+                    class="css-z3ioz-boxStyles"
+                  >
+                    Next
+                  </span>
+                  <svg
+                    aria-hidden="true"
+                    class="css-1krnro2-Icon"
+                    clip-rule="evenodd"
+                    focusable="false"
+                    height="24"
+                    role="img"
+                    viewBox="0 0 24 24"
+                    width="24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M3 12L20 12"
+                    />
+                    <path
+                      d="M16 7L21 12L16 17"
+                    />
+                  </svg>
+                </button>
+              </li>
+            </ol>
+          </nav>
         </div>
       </div>
     </div>
