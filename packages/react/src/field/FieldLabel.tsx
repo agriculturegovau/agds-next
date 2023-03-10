@@ -12,7 +12,7 @@ export type FieldLabelProps = PropsWithChildren<{
 	required: boolean;
 	/** If true, "(optional)" will never be appended to the label even when `required` is `false`. */
 	hideOptionalLabel?: boolean;
-	/** Override the default secondary label. */
+	/** Append text to the default secondary label. */
 	secondaryLabel?: string;
 }>;
 
@@ -26,10 +26,14 @@ export const FieldLabel = ({
 	hideOptionalLabel,
 }: FieldLabelProps) => {
 	const secondaryLabel = useMemo(() => {
-		if (hideOptionalLabel) return null;
-		if (secondaryLabelProp) return secondaryLabelProp;
-		if (!required) return `(optional)`;
+		if (hideOptionalLabel) {
+			return secondaryLabelProp ? secondaryLabelProp : null;
+		}
+		return required
+			? secondaryLabelProp
+			: [`(optional)`, secondaryLabelProp].filter(Boolean).join(' ');
 	}, [required, secondaryLabelProp, hideOptionalLabel]);
+
 	return (
 		<Flex as={as} htmlFor={htmlFor} gap={0.25} className={className}>
 			<Text as="span" fontWeight="bold">

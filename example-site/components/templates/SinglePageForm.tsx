@@ -47,8 +47,8 @@ const formSchema = yup
 		entityNumber: yup.string().required('Enter your entity number'),
 		periodActive: yup
 			.object({
-				from: yupDateField.required('Enter a valid date'),
-				to: yupDateField.required('Enter a valid date'),
+				from: yupDateField,
+				to: yupDateField,
 			})
 			.required('Enter a valid date'),
 		// street address
@@ -211,8 +211,6 @@ const SinglePageForm = () => {
 								<DatePicker
 									inputRef={ref}
 									label="Registration date"
-									hideLabelDateFormat
-									hint="dd/mm/yyyy"
 									{...field}
 									onInputChange={field.onChange}
 									id="registrationDate"
@@ -266,7 +264,6 @@ const SinglePageForm = () => {
 										errors.periodActive?.from?.message ||
 										errors.periodActive?.to?.message
 									}
-									required
 								/>
 							)}
 						/>

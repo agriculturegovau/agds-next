@@ -18,7 +18,7 @@ exports[`DatePicker renders correctly 1`] = `
         <span
           class="css-1rpt3h8-boxStyles-Text"
         >
-          (dd/mm/yyyy)
+          (optional) (dd/mm/yyyy)
         </span>
       </label>
       <div

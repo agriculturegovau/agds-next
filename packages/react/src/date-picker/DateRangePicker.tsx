@@ -28,6 +28,7 @@ import {
 	formatDate,
 	constrainDate,
 	transformValuePropToInputValue,
+	labelDateFormat,
 } from './utils';
 
 export type DateRange = {
@@ -62,6 +63,8 @@ export type DateRangePickerProps = DateRangePickerCalendarProps & {
 	toInvalid?: boolean;
 	/** If true, "(optional)" will never be appended to the legend even when `required` is `false`. */
 	hideOptionalLabel?: boolean;
+	/** Stops the date format from being appended to the label. When this is disabled, you must provide the date format via the hint text. */
+	hideDateFormatLabel?: boolean;
 	/** If true, the field will not be interactive. */
 	disabled?: boolean;
 	/** If false, "(optional)" will not be appended to the legend. */
@@ -94,6 +97,7 @@ export const DateRangePicker = ({
 	toInvalid = false,
 	message,
 	hideOptionalLabel,
+	hideDateFormatLabel,
 	value,
 	onChange,
 	onFromInputChange: onFromInputChangeProp,
@@ -315,6 +319,8 @@ export const DateRangePicker = ({
 						<DateInput
 							ref={fromInputRef}
 							label={fromLabel}
+							secondaryLabel={hideDateFormatLabel ? undefined : labelDateFormat}
+							hideOptionalLabel={hideOptionalLabel || Boolean(legend)}
 							value={fromInputValue}
 							onChange={onFromInputChange}
 							buttonRef={fromTriggerRef}
@@ -326,6 +332,8 @@ export const DateRangePicker = ({
 						<DateInput
 							ref={toInputRef}
 							label={toLabel}
+							secondaryLabel={hideDateFormatLabel ? undefined : labelDateFormat}
+							hideOptionalLabel={hideOptionalLabel || Boolean(legend)}
 							value={toInputValue}
 							onChange={onToInputChange}
 							buttonRef={toTriggerRef}

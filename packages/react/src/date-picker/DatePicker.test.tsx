@@ -167,13 +167,13 @@ describe('DatePicker', () => {
 			onChange: console.log,
 		});
 		const label = container.querySelector('label');
-		expect(label?.textContent).toEqual('Example(dd/mm/yyyy)');
+		expect(label?.textContent).toEqual('Example(optional) (dd/mm/yyyy)');
 	});
 
 	it('date-format: can hide the date format label when optional', async () => {
 		const { container } = renderDatePicker({
 			label: 'Example',
-			hideLabelDateFormat: true,
+			hideDateFormatLabel: true,
 			value: undefined,
 			onChange: console.log,
 		});
@@ -185,7 +185,7 @@ describe('DatePicker', () => {
 	it('date-format: can hide the date format label when required', async () => {
 		const { container } = renderDatePicker({
 			label: 'Example',
-			hideLabelDateFormat: true,
+			hideDateFormatLabel: true,
 			required: true,
 			value: undefined,
 			onChange: console.log,

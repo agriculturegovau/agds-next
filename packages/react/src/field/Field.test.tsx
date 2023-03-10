@@ -175,7 +175,9 @@ describe('Field', () => {
 				const secondaryLabel = '(dd/mm/yyy)';
 				renderField({ label, secondaryLabel });
 				const labelEl = getLabelElement();
-				expect(labelEl.textContent).toBe(`${label}${secondaryLabel}`);
+				expect(labelEl.textContent).toBe(
+					`${label}(optional) ${secondaryLabel}`
+				);
 			});
 		});
 	});
