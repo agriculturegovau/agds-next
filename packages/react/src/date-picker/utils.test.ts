@@ -1,5 +1,12 @@
 import { add } from 'date-fns';
-import { constrainDate, getValidDateRange, parseDate } from './utils';
+import {
+	constrainDate,
+	getValidDateRange,
+	formatDate,
+	formatHumanReadableDate,
+	parseDate,
+	transformValuePropToInputValue,
+} from './utils';
 
 describe('parseDate', () => {
 	test('works on valid dates', () => {
@@ -88,5 +95,38 @@ describe('getValidDateRange', () => {
 		expect(
 			getValidDateRange('to', today, { from: nextWeek, to: nextMonth })
 		).toStrictEqual({ from: today, to: undefined });
+	});
+});
+
+describe('formatDate', () => {
+	expect(formatDate(new Date(2020, 0, 31))).toEqual('31/01/2020');
+	expect(formatDate(new Date(2020, 11, 6))).toEqual('06/12/2020');
+});
+
+describe('formatHumanReadableDate', () => {
+	expect(formatHumanReadableDate(new Date(2020, 0, 31))).toEqual(
+		'Friday January 31st, 2020'
+	);
+	expect(formatHumanReadableDate(new Date(2020, 11, 6))).toEqual(
+		'Sunday December 6th, 2020'
+	);
+});
+
+describe('transformValuePropToInputValue', () => {
+	test('works with undefined', () => {
+		expect(transformValuePropToInputValue(undefined)).toEqual('');
+	});
+
+	test('works with strings', () => {
+		expect(transformValuePropToInputValue('')).toEqual('');
+		expect(transformValuePropToInputValue('abc')).toEqual('abc');
+		expect(transformValuePropToInputValue('aa/bb/cccc')).toEqual('aa/bb/cccc');
+	});
+
+	test('works with dates', () => {
+		const exampleDate = new Date(1999, 11, 10);
+		expect(transformValuePropToInputValue(exampleDate)).toEqual(
+			formatDate(exampleDate)
+		);
 	});
 });

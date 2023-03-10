@@ -23,12 +23,54 @@ figmaGalleryNodeId: 12444%3A100327
 
 ## Date picker
 
-`DatePicker` is a [controlled component](https://reactjs.org/docs/forms.html#controlled-components) which means consumers of this component need to manage the state of this component by using the `value` and `onChange` props.
+`DatePicker` is a [controlled component](https://reactjs.org/docs/forms.html#controlled-components) which means consumers of this component need to manage the state of this component by using the `value`, `onChange` and `onInputChange` props.
+
+For an example of using this component in a form built with `react-hook-form` and `yup`, please see the [Single-page form template](/templates/single-page-form).
 
 ```jsx live
 () => {
 	const [value, setValue] = React.useState();
 	return <DatePicker label="Select date" value={value} onChange={setValue} />;
+};
+```
+
+### Tracking the input value
+
+The `DatePicker` component has two methods of input:
+
+1. Typing in a date string (dd/mm/yyyy) via the text input
+2. Selecting a date via the calendar widget
+
+As we do not have any sort of input masking due to accessibility concerns, there is a possibilty for the user to enter an invalid value via the text input. In some scenarios, it can be useful to know what the value of the text input is so the user can be informed of any invalid values.
+
+For example, if the `DatePicker` component was placed inside of a form an optional field. If the user typed in an invalid value via the text input, the `onChange` event would never fire. This may lead the user to believe what they have typed is valid when actually their input will not be saved.
+
+To fix this issue, you can use the `onInputChange` prop to keep track of the users input. The `value` prop can also be set to a string, which represents the value of the text input.
+
+```jsx live
+() => {
+	// Set the value to a value that the user might think is valid
+	const [value, setValue] = React.useState('31/1o/2020');
+
+	// This logic is for documentation purposes only. This should be done with `yup` or `zod`.
+	const invalid = React.useMemo(() => {
+		if (typeof value === 'undefined' || value == '') return false;
+		if (value instanceof Date && !isNaN(value.getTime())) return false;
+		return true;
+	}, [value]);
+
+	return (
+		<DatePicker
+			label="Select date"
+			value={value}
+			onChange={setValue}
+			onInputChange={setValue}
+			{...(invalid && {
+				invalid: true,
+				message: 'Enter a valid date',
+			})}
+		/>
+	);
 };
 ```
 
@@ -154,14 +196,59 @@ The `yearRange` prop can be used to change the range of options to display in ca
 
 ## Date range picker
 
-`DateRangePicker` is a [controlled component](https://reactjs.org/docs/forms.html#controlled-components) which means consumers of this component need to manage the state of this component by using the `value` and `onChange` props.
+`DateRangePicker` is a [controlled component](https://reactjs.org/docs/forms.html#controlled-components) which means consumers of this component need to manage the state of this component by using the `value`, `onChange`, `onFromInputChange` and `onToInputChange` props.
 
-### Basic
+For an example of using this component in a form built with `react-hook-form` and `yup`, please see the [Single-page form template](/templates/single-page-form).
 
 ```jsx live
 () => {
 	const [value, setValue] = React.useState({ from: undefined, to: undefined });
 	return <DateRangePicker value={value} onChange={setValue} />;
+};
+```
+
+### Tracking the input value
+
+The `DateRangePicker` component has two methods of input:
+
+1. Typing in a date string (dd/mm/yyyy) via the text input
+2. Selecting a date via the calendar widget
+
+As we do not have any sort of input masking due to accessibility concerns, there is a possibilty for the user to enter an invalid value via the text input. In some scenarios, it can be useful to know what the value of the text input is so the user can be informed of any invalid values.
+
+For example, if the `DateRangePicker` component was placed inside of a form an optional field. If the user typed in an invalid value via the text input, the `onChange` event would never fire. This may lead the user to believe what they have typed is valid when actually their input will not be saved.
+
+To fix this issue, you can use the `onFromInputChange` and `onToInputChange` props to keep track of the users input. The `value.from` and `value.to` props can also be set to a string, which represents the value of the text input.
+
+```jsx live
+() => {
+	// Set the value to a value that the user might think is valid
+	const [value, setValue] = React.useState({
+		from: '30/1o/2020',
+		to: '31/1o/2020',
+	});
+
+	// This logic is for documentation purposes only. This should be done with `yup` or `zod`.
+	const isInvalid = React.useCallback((value) => {
+		if (typeof value === 'undefined' || value == '') return false;
+		if (value instanceof Date && !isNaN(value.getTime())) return false;
+		return true;
+	}, []);
+
+	const fromInvalid = isInvalid(value.from);
+	const toInvalid = isInvalid(value.from);
+
+	return (
+		<DateRangePicker
+			value={value}
+			onChange={setValue}
+			onFromInputChange={(from) => setValue({ ...value, from })}
+			onToInputChange={(to) => setValue({ ...value, to })}
+			fromInvalid={fromInvalid}
+			toInvalid={toInvalid}
+			message={fromInvalid || toInvalid ? 'Enter a valid date' : undefined}
+		/>
+	);
 };
 ```
 

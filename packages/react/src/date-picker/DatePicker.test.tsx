@@ -70,6 +70,7 @@ function DatePickerInsideForm({
 						inputRef={ref}
 						label="Date"
 						{...field}
+						onInputChange={field.onChange}
 						id="date"
 						invalid={Boolean(errors.date?.message)}
 						message={errors.date?.message}
@@ -274,7 +275,7 @@ describe('DatePicker', () => {
 		});
 	});
 
-	it.skip('form: shows validation errors as an optional field with invalid value', async () => {
+	it('form: shows validation errors as an optional field with invalid value', async () => {
 		const onSubmit = jest.fn();
 		const onError = jest.fn();
 
@@ -311,7 +312,7 @@ describe('DatePicker', () => {
 		});
 	});
 
-	it.skip('form: shows validation errors as an optional field with a semi-real date value', async () => {
+	it('form: shows validation errors as an optional field with a semi-real date value', async () => {
 		const onSubmit = jest.fn();
 		const onError = jest.fn();
 
@@ -348,7 +349,7 @@ describe('DatePicker', () => {
 		});
 	});
 
-	it.skip('form: shows validation errors as an optional field', async () => {
+	it('form: shows validation errors as an optional field', async () => {
 		const onSubmit = jest.fn();
 		const onError = jest.fn();
 
@@ -385,7 +386,7 @@ describe('DatePicker', () => {
 		});
 	});
 
-	it.skip('form: shows validation errors as a required field', async () => {
+	it('form: shows validation errors as a required field', async () => {
 		const onSubmit = jest.fn();
 		const onError = jest.fn();
 
