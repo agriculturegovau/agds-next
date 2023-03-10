@@ -10,6 +10,11 @@ import { PlusIcon } from '@ag.ds-next/react/icon';
 import { SortBySelect } from './components/SortBySelect';
 import { FilterAssigneeSelect } from './components/FilterAssigneeSelect';
 import { Prose } from '@ag.ds-next/react/prose';
+import {
+	FilterBar,
+	FilterBarGroup,
+	FilterRegion,
+} from './components/FilterBar';
 
 export type SmallExampleProps = {
 	// sort
@@ -60,33 +65,29 @@ export const ExampleSmall = ({
 					</ButtonLink>
 				</div>
 
-				<Flex
-					as="section"
-					aria-label="data filtering"
-					aria-controls={tableId}
-					aria-orientation="vertical"
-					gap={1}
-					justifyContent="space-between"
-				>
-					<Flex gap={1}>
-						<FilterStatusSelect
-							filters={filters}
-							setFilters={setFilters}
-							resetPagination={resetPagination}
-						/>
-						<FilterAssigneeSelect
-							filters={filters}
-							setFilters={setFilters}
-							resetPagination={resetPagination}
-						/>
-					</Flex>
+				<FilterRegion>
+					<FilterBar>
+						<FilterBarGroup>
+							<FilterStatusSelect
+								filters={filters}
+								setFilters={setFilters}
+								resetPagination={resetPagination}
+							/>
+							<FilterAssigneeSelect
+								filters={filters}
+								setFilters={setFilters}
+								resetPagination={resetPagination}
+							/>
+						</FilterBarGroup>
 
-					<SortBySelect
-						sort={sort}
-						setSort={setSort}
-						resetPagination={resetPagination}
-					/>
-				</Flex>
+						<SortBySelect
+							sort={sort}
+							setSort={setSort}
+							resetPagination={resetPagination}
+						/>
+					</FilterBar>
+				</FilterRegion>
+
 				<DashboardTable
 					data={data}
 					loading={loading}

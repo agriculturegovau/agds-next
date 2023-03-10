@@ -10,7 +10,7 @@ import {
 import { PaginationButtons } from '@ag.ds-next/react/pagination';
 import { useCallback, useState } from 'react';
 import { ActiveFilters } from './components/ActiveFilters';
-import { FilterBar } from './components/FilterBar';
+import { FilterAccordion } from './components/FilterAccordion';
 import { SortBySelect } from './components/SortBySelect';
 import { DashboardTable, tableId } from './components/DashboardTable';
 import { FilterSearchInput } from './components/FilterSearchInput';
@@ -18,6 +18,11 @@ import { FilterStatusSelect } from './components/FilterStatusSelect';
 import { GetDataFilters, GetDataPagination, GetDataSort } from './lib/getData';
 import { BusinessForAuditWithIndex } from './lib/generateBusinessData';
 import { Prose } from '@ag.ds-next/react/prose';
+import {
+	FilterBar,
+	FilterBarGroup,
+	FilterRegion,
+} from './components/FilterBar';
 
 type MediumExampleProps = {
 	// sort
@@ -82,64 +87,61 @@ export const ExampleMedium = ({
 						pressed.
 					</p>
 				</Prose>
+
 				<Stack gap={1}>
 					<div>
 						<ButtonLink href="#new" iconBefore={PlusIcon}>
 							New item
 						</ButtonLink>
 					</div>
-					<Flex
-						as="section"
-						aria-label="data filtering"
-						aria-controls={tableId}
-						aria-orientation="vertical"
-						gap={1}
-						alignItems="flex-end"
-						justifyContent="space-between"
-					>
-						<Flex gap={1} alignItems="flex-end">
-							<FilterSearchInput filters={filters} setFilters={setFilters} />
-							<FilterStatusSelect
-								filters={filters}
-								setFilters={setFilters}
+
+					<FilterRegion>
+						<FilterBar>
+							<FilterBarGroup>
+								<FilterSearchInput filters={filters} setFilters={setFilters} />
+								<FilterStatusSelect
+									filters={filters}
+									setFilters={setFilters}
+									resetPagination={resetPagination}
+								/>
+								<Button
+									onClick={onButtonClick}
+									variant="secondary"
+									iconBefore={FilterIcon}
+									iconAfter={isOpen ? ChevronUpIcon : ChevronDownIcon}
+									// accessibility
+									aria-label="more filters"
+									id={buttonId}
+									aria-controls={bodyId}
+									aria-expanded={isOpen}
+								>
+									{isOpen ? 'Hide filters' : 'Show filters'}
+								</Button>
+							</FilterBarGroup>
+
+							<SortBySelect
+								sort={sort}
+								setSort={setSort}
 								resetPagination={resetPagination}
 							/>
-							<Button
-								onClick={onButtonClick}
-								variant="secondary"
-								iconBefore={FilterIcon}
-								iconAfter={isOpen ? ChevronUpIcon : ChevronDownIcon}
-								// accessibility
-								id={buttonId}
-								aria-controls={bodyId}
-								aria-expanded={isOpen}
-							>
-								{isOpen ? 'Hide filters' : 'Show filters'}
-							</Button>
-						</Flex>
-						<SortBySelect
-							sort={sort}
-							setSort={setSort}
+						</FilterBar>
+						<FilterAccordion
+							id={bodyId}
+							ariaLabelledBy={buttonId}
+							filters={filters}
+							isOpen={isOpen}
+							setFilters={setFilters}
 							resetPagination={resetPagination}
+							resetFilters={resetFilters}
 						/>
-					</Flex>
-
-					<FilterBar
-						id={bodyId}
-						ariaLabelledBy={buttonId}
-						filters={filters}
-						isOpen={isOpen}
-						setFilters={setFilters}
-						resetPagination={resetPagination}
-						resetFilters={resetFilters}
-					/>
-
-					<ActiveFilters
-						filters={filters}
-						removeFilter={removeFilter}
-						resetFilters={resetFilters}
-					/>
+						<ActiveFilters
+							filters={filters}
+							removeFilter={removeFilter}
+							resetFilters={resetFilters}
+						/>
+					</FilterRegion>
 				</Stack>
+
 				<DashboardTable
 					data={data}
 					loading={loading}

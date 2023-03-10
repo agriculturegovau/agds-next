@@ -48,25 +48,154 @@ exports[`SmallFilteringPattern renders correctly 1`] = `
           </a>
         </div>
         <section
-          aria-controls="dashboard-table"
           aria-label="data filtering"
-          aria-orientation="vertical"
-          class="css-w4gbvv-boxStyles"
+          class="css-12rf75v-boxStyles"
         >
           <div
-            class="css-ljlj8k-boxStyles"
+            class="css-c60tb1-boxStyles"
           >
+            <div
+              class="css-1y31j5m-boxStyles"
+            >
+              <div
+                class="css-1904cz9-boxStyles-FieldContainer"
+              >
+                <label
+                  class="css-n7rdvo-boxStyles"
+                  for="field-:r0:"
+                >
+                  <span
+                    class="css-433uqb-boxStyles-Text"
+                  >
+                    Status
+                  </span>
+                </label>
+                <div
+                  class="css-1bg5d3h-SelectContainer"
+                >
+                  <select
+                    aria-controls="dashboard-table"
+                    aria-invalid="false"
+                    aria-required="false"
+                    class="css-58fznw-Field"
+                    id="field-:r0:"
+                  >
+                    <option
+                      value=""
+                    >
+                      All
+                    </option>
+                    <option
+                      value="booked"
+                    >
+                      Booked
+                    </option>
+                    <option
+                      value="notBooked"
+                    >
+                      Not booked
+                    </option>
+                    <option
+                      value="completed"
+                    >
+                      Completed
+                    </option>
+                    <option
+                      value="cancelled"
+                    >
+                      Cancelled
+                    </option>
+                  </select>
+                  <svg
+                    aria-hidden="true"
+                    class="css-1j4iiu7-SelectIcon"
+                    clip-rule="evenodd"
+                    focusable="false"
+                    height="24"
+                    role="img"
+                    viewBox="0 0 24 24"
+                    width="24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M21 8L12 17L3 8"
+                    />
+                  </svg>
+                </div>
+              </div>
+              <div
+                class="css-1904cz9-boxStyles-FieldContainer"
+              >
+                <label
+                  class="css-n7rdvo-boxStyles"
+                  for="field-:r1:"
+                >
+                  <span
+                    class="css-433uqb-boxStyles-Text"
+                  >
+                    Assignee
+                  </span>
+                </label>
+                <div
+                  class="css-1bg5d3h-SelectContainer"
+                >
+                  <select
+                    aria-controls="dashboard-table"
+                    aria-invalid="false"
+                    aria-required="false"
+                    class="css-58fznw-Field"
+                    id="field-:r1:"
+                  >
+                    <option
+                      value=""
+                    >
+                      All
+                    </option>
+                    <option
+                      value="Oscar Piastri"
+                    >
+                      Oscar Piastri
+                    </option>
+                    <option
+                      value="George Russell"
+                    >
+                      George Russell
+                    </option>
+                    <option
+                      value="Lando Norris"
+                    >
+                      Lando Norris
+                    </option>
+                  </select>
+                  <svg
+                    aria-hidden="true"
+                    class="css-1j4iiu7-SelectIcon"
+                    clip-rule="evenodd"
+                    focusable="false"
+                    height="24"
+                    role="img"
+                    viewBox="0 0 24 24"
+                    width="24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M21 8L12 17L3 8"
+                    />
+                  </svg>
+                </div>
+              </div>
+            </div>
             <div
               class="css-1904cz9-boxStyles-FieldContainer"
             >
               <label
                 class="css-n7rdvo-boxStyles"
-                for="field-:r0:"
+                for="field-:r2:"
               >
                 <span
                   class="css-433uqb-boxStyles-Text"
                 >
-                  Status
+                  Sort by
                 </span>
               </label>
               <div
@@ -77,32 +206,47 @@ exports[`SmallFilteringPattern renders correctly 1`] = `
                   aria-invalid="false"
                   aria-required="false"
                   class="css-58fznw-Field"
-                  id="field-:r0:"
+                  id="field-:r2:"
                 >
                   <option
-                    value=""
+                    value="businessName-ASC"
                   >
-                    All
+                    Business name (A-Z)
                   </option>
                   <option
-                    value="booked"
+                    value="businessName-DESC"
                   >
-                    Booked
+                    Business name (Z-A)
                   </option>
                   <option
-                    value="notBooked"
+                    value="assignee-ASC"
                   >
-                    Not booked
+                    Assignee (A-Z)
                   </option>
                   <option
-                    value="completed"
+                    value="assignee-DESC"
                   >
-                    Completed
+                    Assignee (Z-A)
                   </option>
                   <option
-                    value="cancelled"
+                    value="numberOfEmployees-ASC"
                   >
-                    Cancelled
+                    Number of employees (lowest first)
+                  </option>
+                  <option
+                    value="numberOfEmployees-DESC"
+                  >
+                    Number of employees (highest first)
+                  </option>
+                  <option
+                    value="requestDate-ASC"
+                  >
+                    Date registered (oldest first)
+                  </option>
+                  <option
+                    value="requestDate-DESC"
+                  >
+                    Date registered (newest first)
                   </option>
                 </select>
                 <svg
@@ -121,148 +265,6 @@ exports[`SmallFilteringPattern renders correctly 1`] = `
                   />
                 </svg>
               </div>
-            </div>
-            <div
-              class="css-1904cz9-boxStyles-FieldContainer"
-            >
-              <label
-                class="css-n7rdvo-boxStyles"
-                for="field-:r1:"
-              >
-                <span
-                  class="css-433uqb-boxStyles-Text"
-                >
-                  Assignee
-                </span>
-              </label>
-              <div
-                class="css-1bg5d3h-SelectContainer"
-              >
-                <select
-                  aria-controls="dashboard-table"
-                  aria-invalid="false"
-                  aria-required="false"
-                  class="css-58fznw-Field"
-                  id="field-:r1:"
-                >
-                  <option
-                    value=""
-                  >
-                    All
-                  </option>
-                  <option
-                    value="Oscar Piastri"
-                  >
-                    Oscar Piastri
-                  </option>
-                  <option
-                    value="George Russell"
-                  >
-                    George Russell
-                  </option>
-                  <option
-                    value="Lando Norris"
-                  >
-                    Lando Norris
-                  </option>
-                </select>
-                <svg
-                  aria-hidden="true"
-                  class="css-1j4iiu7-SelectIcon"
-                  clip-rule="evenodd"
-                  focusable="false"
-                  height="24"
-                  role="img"
-                  viewBox="0 0 24 24"
-                  width="24"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M21 8L12 17L3 8"
-                  />
-                </svg>
-              </div>
-            </div>
-          </div>
-          <div
-            class="css-1904cz9-boxStyles-FieldContainer"
-          >
-            <label
-              class="css-n7rdvo-boxStyles"
-              for="field-:r2:"
-            >
-              <span
-                class="css-433uqb-boxStyles-Text"
-              >
-                Sort by
-              </span>
-            </label>
-            <div
-              class="css-1bg5d3h-SelectContainer"
-            >
-              <select
-                aria-controls="dashboard-table"
-                aria-invalid="false"
-                aria-required="false"
-                class="css-58fznw-Field"
-                id="field-:r2:"
-              >
-                <option
-                  value="businessName-ASC"
-                >
-                  Business name (A-Z)
-                </option>
-                <option
-                  value="businessName-DESC"
-                >
-                  Business name (Z-A)
-                </option>
-                <option
-                  value="assignee-ASC"
-                >
-                  Assignee (A-Z)
-                </option>
-                <option
-                  value="assignee-DESC"
-                >
-                  Assignee (Z-A)
-                </option>
-                <option
-                  value="numberOfEmployees-ASC"
-                >
-                  Number of employees (lowest first)
-                </option>
-                <option
-                  value="numberOfEmployees-DESC"
-                >
-                  Number of employees (highest first)
-                </option>
-                <option
-                  value="requestDate-ASC"
-                >
-                  Date registered (oldest first)
-                </option>
-                <option
-                  value="requestDate-DESC"
-                >
-                  Date registered (newest first)
-                </option>
-              </select>
-              <svg
-                aria-hidden="true"
-                class="css-1j4iiu7-SelectIcon"
-                clip-rule="evenodd"
-                focusable="false"
-                height="24"
-                role="img"
-                viewBox="0 0 24 24"
-                width="24"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M21 8L12 17L3 8"
-                />
-              </svg>
             </div>
           </div>
         </section>

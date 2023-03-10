@@ -51,588 +51,591 @@ exports[`MediumFilteringPattern renders correctly 1`] = `
             </a>
           </div>
           <section
-            aria-controls="dashboard-table"
             aria-label="data filtering"
-            aria-orientation="vertical"
-            class="css-14vgs17-boxStyles"
+            class="css-12rf75v-boxStyles"
           >
             <div
-              class="css-1tyb9vh-boxStyles"
+              class="css-c60tb1-boxStyles"
             >
               <div
-                class="css-1904cz9-boxStyles-FieldContainer"
+                class="css-1y31j5m-boxStyles"
               >
-                <label
-                  class="css-n7rdvo-boxStyles"
-                  for="field-:r0:"
-                >
-                  <span
-                    class="css-433uqb-boxStyles-Text"
-                  >
-                    Search Business name
-                  </span>
-                </label>
                 <div
-                  class="css-1x3y508-SearchInputContainer"
+                  class="css-1904cz9-boxStyles-FieldContainer"
                 >
-                  <svg
-                    aria-hidden="true"
-                    class="css-c3auo9-SearchInputIcon"
-                    clip-rule="evenodd"
-                    focusable="false"
-                    height="24"
-                    role="img"
-                    viewBox="0 0 24 24"
-                    width="24"
-                    xmlns="http://www.w3.org/2000/svg"
+                  <label
+                    class="css-n7rdvo-boxStyles"
+                    for="field-:r0:"
                   >
-                    <line
-                      x1="15.5568"
-                      x2="21.9208"
-                      y1="15.5562"
-                      y2="21.9201"
-                    />
-                    <circle
-                      cx="9.8995"
-                      cy="9.89941"
-                      r="7"
-                    />
-                  </svg>
-                  <input
-                    aria-controls="dashboard-table"
-                    aria-invalid="false"
-                    aria-required="false"
-                    autocomplete="off"
-                    class="css-1ewffag-Field"
-                    id="field-:r0:"
-                    type="search"
-                    value=""
-                  />
-                </div>
-              </div>
-              <div
-                class="css-1904cz9-boxStyles-FieldContainer"
-              >
-                <label
-                  class="css-n7rdvo-boxStyles"
-                  for="field-:r1:"
-                >
-                  <span
-                    class="css-433uqb-boxStyles-Text"
-                  >
-                    Status
-                  </span>
-                </label>
-                <div
-                  class="css-1bg5d3h-SelectContainer"
-                >
-                  <select
-                    aria-controls="dashboard-table"
-                    aria-invalid="false"
-                    aria-required="false"
-                    class="css-58fznw-Field"
-                    id="field-:r1:"
-                  >
-                    <option
-                      value=""
+                    <span
+                      class="css-433uqb-boxStyles-Text"
                     >
-                      All
-                    </option>
-                    <option
-                      value="booked"
-                    >
-                      Booked
-                    </option>
-                    <option
-                      value="notBooked"
-                    >
-                      Not booked
-                    </option>
-                    <option
-                      value="completed"
-                    >
-                      Completed
-                    </option>
-                    <option
-                      value="cancelled"
-                    >
-                      Cancelled
-                    </option>
-                  </select>
-                  <svg
-                    aria-hidden="true"
-                    class="css-1j4iiu7-SelectIcon"
-                    clip-rule="evenodd"
-                    focusable="false"
-                    height="24"
-                    role="img"
-                    viewBox="0 0 24 24"
-                    width="24"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M21 8L12 17L3 8"
-                    />
-                  </svg>
-                </div>
-              </div>
-              <button
-                aria-controls="filter-body"
-                aria-expanded="false"
-                class="css-eecl5m-BaseButton-Button"
-                id="filter-button"
-                type="button"
-              >
-                <svg
-                  aria-hidden="true"
-                  class="css-9s3cfn-Icon"
-                  clip-rule="evenodd"
-                  focusable="false"
-                  height="24"
-                  role="img"
-                  viewBox="0 0 24 24"
-                  width="24"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M3 6H21M3 12H21M3 18H21M7 4V8M15 10V14M7 16V20"
-                  />
-                </svg>
-                <span>
-                  <span
-                    class="css-oobk4c-Button"
-                  >
-                    Show filters
-                  </span>
-                  <span
-                    aria-live="assertive"
-                  />
-                </span>
-                <svg
-                  aria-hidden="true"
-                  class="css-9s3cfn-Icon"
-                  clip-rule="evenodd"
-                  focusable="false"
-                  height="24"
-                  role="img"
-                  viewBox="0 0 24 24"
-                  width="24"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M21 8L12 17L3 8"
-                  />
-                </svg>
-              </button>
-            </div>
-            <div
-              class="css-1904cz9-boxStyles-FieldContainer"
-            >
-              <label
-                class="css-n7rdvo-boxStyles"
-                for="field-:r2:"
-              >
-                <span
-                  class="css-433uqb-boxStyles-Text"
-                >
-                  Sort by
-                </span>
-              </label>
-              <div
-                class="css-1bg5d3h-SelectContainer"
-              >
-                <select
-                  aria-controls="dashboard-table"
-                  aria-invalid="false"
-                  aria-required="false"
-                  class="css-58fznw-Field"
-                  id="field-:r2:"
-                >
-                  <option
-                    value="businessName-ASC"
-                  >
-                    Business name (A-Z)
-                  </option>
-                  <option
-                    value="businessName-DESC"
-                  >
-                    Business name (Z-A)
-                  </option>
-                  <option
-                    value="assignee-ASC"
-                  >
-                    Assignee (A-Z)
-                  </option>
-                  <option
-                    value="assignee-DESC"
-                  >
-                    Assignee (Z-A)
-                  </option>
-                  <option
-                    value="numberOfEmployees-ASC"
-                  >
-                    Number of employees (lowest first)
-                  </option>
-                  <option
-                    value="numberOfEmployees-DESC"
-                  >
-                    Number of employees (highest first)
-                  </option>
-                  <option
-                    value="requestDate-ASC"
-                  >
-                    Date registered (oldest first)
-                  </option>
-                  <option
-                    value="requestDate-DESC"
-                  >
-                    Date registered (newest first)
-                  </option>
-                </select>
-                <svg
-                  aria-hidden="true"
-                  class="css-1j4iiu7-SelectIcon"
-                  clip-rule="evenodd"
-                  focusable="false"
-                  height="24"
-                  role="img"
-                  viewBox="0 0 24 24"
-                  width="24"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M21 8L12 17L3 8"
-                  />
-                </svg>
-              </div>
-            </div>
-          </section>
-          <section
-            aria-labelledby="filter-button"
-            class="css-2n3mgz-FilterBar"
-            id="filter-body"
-            style="display: none; height: 0px;"
-          >
-            <div
-              class="css-brjhy1-boxStyles"
-            >
-              <div
-                class="css-1904cz9-boxStyles-FieldContainer"
-              >
-                <label
-                  class="css-n7rdvo-boxStyles"
-                  for="field-:r3:"
-                >
-                  <span
-                    class="css-433uqb-boxStyles-Text"
-                  >
-                    State
-                  </span>
-                </label>
-                <div
-                  class="css-1bg5d3h-SelectContainer"
-                >
-                  <select
-                    aria-controls="dashboard-table"
-                    aria-invalid="false"
-                    aria-required="false"
-                    class="css-58fznw-Field"
-                    id="field-:r3:"
-                  >
-                    <option
-                      value=""
-                    >
-                      All
-                    </option>
-                    <option
-                      value="act"
-                    >
-                      ACT
-                    </option>
-                    <option
-                      value="nsw"
-                    >
-                      NSW
-                    </option>
-                    <option
-                      value="nt"
-                    >
-                      NT
-                    </option>
-                    <option
-                      value="qld"
-                    >
-                      QLD
-                    </option>
-                    <option
-                      value="sa"
-                    >
-                      SA
-                    </option>
-                    <option
-                      value="tas"
-                    >
-                      TAS
-                    </option>
-                    <option
-                      value="vic"
-                    >
-                      VIC
-                    </option>
-                    <option
-                      value="wa"
-                    >
-                      WA
-                    </option>
-                  </select>
-                  <svg
-                    aria-hidden="true"
-                    class="css-1j4iiu7-SelectIcon"
-                    clip-rule="evenodd"
-                    focusable="false"
-                    height="24"
-                    role="img"
-                    viewBox="0 0 24 24"
-                    width="24"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M21 8L12 17L3 8"
-                    />
-                  </svg>
-                </div>
-              </div>
-              <div
-                class="css-1904cz9-boxStyles-FieldContainer"
-              >
-                <label
-                  class="css-n7rdvo-boxStyles"
-                  for="field-:r4:"
-                >
-                  <span
-                    class="css-433uqb-boxStyles-Text"
-                  >
-                    Assignee
-                  </span>
-                </label>
-                <div
-                  class="css-1bg5d3h-SelectContainer"
-                >
-                  <select
-                    aria-controls="dashboard-table"
-                    aria-invalid="false"
-                    aria-required="false"
-                    class="css-58fznw-Field"
-                    id="field-:r4:"
-                  >
-                    <option
-                      value=""
-                    >
-                      All
-                    </option>
-                    <option
-                      value="Oscar Piastri"
-                    >
-                      Oscar Piastri
-                    </option>
-                    <option
-                      value="George Russell"
-                    >
-                      George Russell
-                    </option>
-                    <option
-                      value="Lando Norris"
-                    >
-                      Lando Norris
-                    </option>
-                  </select>
-                  <svg
-                    aria-hidden="true"
-                    class="css-1j4iiu7-SelectIcon"
-                    clip-rule="evenodd"
-                    focusable="false"
-                    height="24"
-                    role="img"
-                    viewBox="0 0 24 24"
-                    width="24"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M21 8L12 17L3 8"
-                    />
-                  </svg>
-                </div>
-              </div>
-              <div>
-                <div
-                  class="css-ns3arw-boxStyles"
-                >
+                      Search Business name
+                    </span>
+                  </label>
                   <div
-                    class="css-1904cz9-boxStyles-FieldContainer"
+                    class="css-1x3y508-SearchInputContainer"
                   >
-                    <label
-                      class="css-n7rdvo-boxStyles"
-                      for="field-:r5:"
+                    <svg
+                      aria-hidden="true"
+                      class="css-c3auo9-SearchInputIcon"
+                      clip-rule="evenodd"
+                      focusable="false"
+                      height="24"
+                      role="img"
+                      viewBox="0 0 24 24"
+                      width="24"
+                      xmlns="http://www.w3.org/2000/svg"
                     >
-                      <span
-                        class="css-433uqb-boxStyles-Text"
-                      >
-                        Registered from
-                      </span>
-                      <span
-                        class="css-1rpt3h8-boxStyles-Text"
-                      >
-                        (dd/mm/yyyy)
-                      </span>
-                    </label>
-                    <div
-                      class="css-7swrfr-boxStyles-DateInput"
-                    >
-                      <input
-                        aria-invalid="false"
-                        aria-required="false"
-                        autocomplete="off"
-                        class="css-nisjv6-DateInput"
-                        id="field-:r5:"
-                        type="text"
-                        value=""
+                      <line
+                        x1="15.5568"
+                        x2="21.9208"
+                        y1="15.5562"
+                        y2="21.9201"
                       />
-                      <button
-                        aria-label="Choose date"
-                        class="css-5re0pj-BaseButton-DateInput"
-                        type="button"
-                      >
-                        <span>
-                          <span
-                            class="css-oobk4c-Button"
-                          >
-                            <svg
-                              aria-hidden="true"
-                              class="css-1aretzv-DateInput"
-                              clip-rule="evenodd"
-                              focusable="false"
-                              height="24"
-                              role="img"
-                              viewBox="0 0 24 24"
-                              width="24"
-                              xmlns="http://www.w3.org/2000/svg"
-                            >
-                              <path
-                                d="M8 3C8 4.5621 8 5.4379 8 7"
-                              />
-                              <path
-                                d="M16 3C16 4.5621 16 5.4379 16 7"
-                              />
-                              <path
-                                d="M21 20V6C21 5.44772 20.5523 5 20 5H4C3.44772 5 3 5.44772 3 6V20C3 20.5523 3.44772 21 4 21H20C20.5523 21 21 20.5523 21 20Z"
-                              />
-                              <line
-                                x1="3"
-                                x2="21"
-                                y1="12"
-                                y2="12"
-                              />
-                            </svg>
-                          </span>
-                          <span
-                            aria-live="assertive"
-                          />
-                        </span>
-                      </button>
-                    </div>
-                  </div>
-                  <div
-                    class="css-1904cz9-boxStyles-FieldContainer"
-                  >
-                    <label
-                      class="css-n7rdvo-boxStyles"
-                      for="field-:r6:"
-                    >
-                      <span
-                        class="css-433uqb-boxStyles-Text"
-                      >
-                        Registered to
-                      </span>
-                      <span
-                        class="css-1rpt3h8-boxStyles-Text"
-                      >
-                        (dd/mm/yyyy)
-                      </span>
-                    </label>
-                    <div
-                      class="css-7swrfr-boxStyles-DateInput"
-                    >
-                      <input
-                        aria-invalid="false"
-                        aria-required="false"
-                        autocomplete="off"
-                        class="css-nisjv6-DateInput"
-                        id="field-:r6:"
-                        type="text"
-                        value=""
+                      <circle
+                        cx="9.8995"
+                        cy="9.89941"
+                        r="7"
                       />
-                      <button
-                        aria-label="Choose date"
-                        class="css-5re0pj-BaseButton-DateInput"
-                        type="button"
-                      >
-                        <span>
-                          <span
-                            class="css-oobk4c-Button"
-                          >
-                            <svg
-                              aria-hidden="true"
-                              class="css-1aretzv-DateInput"
-                              clip-rule="evenodd"
-                              focusable="false"
-                              height="24"
-                              role="img"
-                              viewBox="0 0 24 24"
-                              width="24"
-                              xmlns="http://www.w3.org/2000/svg"
-                            >
-                              <path
-                                d="M8 3C8 4.5621 8 5.4379 8 7"
-                              />
-                              <path
-                                d="M16 3C16 4.5621 16 5.4379 16 7"
-                              />
-                              <path
-                                d="M21 20V6C21 5.44772 20.5523 5 20 5H4C3.44772 5 3 5.44772 3 6V20C3 20.5523 3.44772 21 4 21H20C20.5523 21 21 20.5523 21 20Z"
-                              />
-                              <line
-                                x1="3"
-                                x2="21"
-                                y1="12"
-                                y2="12"
-                              />
-                            </svg>
-                          </span>
-                          <span
-                            aria-live="assertive"
-                          />
-                        </span>
-                      </button>
-                    </div>
+                    </svg>
+                    <input
+                      aria-controls="dashboard-table"
+                      aria-invalid="false"
+                      aria-required="false"
+                      autocomplete="off"
+                      class="css-1ewffag-Field"
+                      id="field-:r0:"
+                      type="search"
+                      value=""
+                    />
                   </div>
                 </div>
-              </div>
-              <button
-                class="css-eecl5m-BaseButton-Button"
-                type="button"
-              >
-                <span>
-                  <span
-                    class="css-oobk4c-Button"
+                <div
+                  class="css-1904cz9-boxStyles-FieldContainer"
+                >
+                  <label
+                    class="css-n7rdvo-boxStyles"
+                    for="field-:r1:"
                   >
-                    Reset filters
+                    <span
+                      class="css-433uqb-boxStyles-Text"
+                    >
+                      Status
+                    </span>
+                  </label>
+                  <div
+                    class="css-1bg5d3h-SelectContainer"
+                  >
+                    <select
+                      aria-controls="dashboard-table"
+                      aria-invalid="false"
+                      aria-required="false"
+                      class="css-58fznw-Field"
+                      id="field-:r1:"
+                    >
+                      <option
+                        value=""
+                      >
+                        All
+                      </option>
+                      <option
+                        value="booked"
+                      >
+                        Booked
+                      </option>
+                      <option
+                        value="notBooked"
+                      >
+                        Not booked
+                      </option>
+                      <option
+                        value="completed"
+                      >
+                        Completed
+                      </option>
+                      <option
+                        value="cancelled"
+                      >
+                        Cancelled
+                      </option>
+                    </select>
+                    <svg
+                      aria-hidden="true"
+                      class="css-1j4iiu7-SelectIcon"
+                      clip-rule="evenodd"
+                      focusable="false"
+                      height="24"
+                      role="img"
+                      viewBox="0 0 24 24"
+                      width="24"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M21 8L12 17L3 8"
+                      />
+                    </svg>
+                  </div>
+                </div>
+                <button
+                  aria-controls="filter-body"
+                  aria-expanded="false"
+                  aria-label="more filters"
+                  class="css-eecl5m-BaseButton-Button"
+                  id="filter-button"
+                  type="button"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="css-9s3cfn-Icon"
+                    clip-rule="evenodd"
+                    focusable="false"
+                    height="24"
+                    role="img"
+                    viewBox="0 0 24 24"
+                    width="24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M3 6H21M3 12H21M3 18H21M7 4V8M15 10V14M7 16V20"
+                    />
+                  </svg>
+                  <span>
+                    <span
+                      class="css-oobk4c-Button"
+                    >
+                      Show filters
+                    </span>
+                    <span
+                      aria-live="assertive"
+                    />
                   </span>
+                  <svg
+                    aria-hidden="true"
+                    class="css-9s3cfn-Icon"
+                    clip-rule="evenodd"
+                    focusable="false"
+                    height="24"
+                    role="img"
+                    viewBox="0 0 24 24"
+                    width="24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M21 8L12 17L3 8"
+                    />
+                  </svg>
+                </button>
+              </div>
+              <div
+                class="css-1904cz9-boxStyles-FieldContainer"
+              >
+                <label
+                  class="css-n7rdvo-boxStyles"
+                  for="field-:r2:"
+                >
                   <span
-                    aria-live="assertive"
-                  />
-                </span>
-              </button>
+                    class="css-433uqb-boxStyles-Text"
+                  >
+                    Sort by
+                  </span>
+                </label>
+                <div
+                  class="css-1bg5d3h-SelectContainer"
+                >
+                  <select
+                    aria-controls="dashboard-table"
+                    aria-invalid="false"
+                    aria-required="false"
+                    class="css-58fznw-Field"
+                    id="field-:r2:"
+                  >
+                    <option
+                      value="businessName-ASC"
+                    >
+                      Business name (A-Z)
+                    </option>
+                    <option
+                      value="businessName-DESC"
+                    >
+                      Business name (Z-A)
+                    </option>
+                    <option
+                      value="assignee-ASC"
+                    >
+                      Assignee (A-Z)
+                    </option>
+                    <option
+                      value="assignee-DESC"
+                    >
+                      Assignee (Z-A)
+                    </option>
+                    <option
+                      value="numberOfEmployees-ASC"
+                    >
+                      Number of employees (lowest first)
+                    </option>
+                    <option
+                      value="numberOfEmployees-DESC"
+                    >
+                      Number of employees (highest first)
+                    </option>
+                    <option
+                      value="requestDate-ASC"
+                    >
+                      Date registered (oldest first)
+                    </option>
+                    <option
+                      value="requestDate-DESC"
+                    >
+                      Date registered (newest first)
+                    </option>
+                  </select>
+                  <svg
+                    aria-hidden="true"
+                    class="css-1j4iiu7-SelectIcon"
+                    clip-rule="evenodd"
+                    focusable="false"
+                    height="24"
+                    role="img"
+                    viewBox="0 0 24 24"
+                    width="24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M21 8L12 17L3 8"
+                    />
+                  </svg>
+                </div>
+              </div>
             </div>
+            <section
+              aria-labelledby="filter-button"
+              class="css-admysj-FilterAccordion"
+              id="filter-body"
+              style="display: none; height: 0px;"
+            >
+              <div
+                class="css-164ou-boxStyles"
+              >
+                <div
+                  class="css-1904cz9-boxStyles-FieldContainer"
+                >
+                  <label
+                    class="css-n7rdvo-boxStyles"
+                    for="field-:r3:"
+                  >
+                    <span
+                      class="css-433uqb-boxStyles-Text"
+                    >
+                      State
+                    </span>
+                  </label>
+                  <div
+                    class="css-1bg5d3h-SelectContainer"
+                  >
+                    <select
+                      aria-controls="dashboard-table"
+                      aria-invalid="false"
+                      aria-required="false"
+                      class="css-58fznw-Field"
+                      id="field-:r3:"
+                    >
+                      <option
+                        value=""
+                      >
+                        All
+                      </option>
+                      <option
+                        value="act"
+                      >
+                        ACT
+                      </option>
+                      <option
+                        value="nsw"
+                      >
+                        NSW
+                      </option>
+                      <option
+                        value="nt"
+                      >
+                        NT
+                      </option>
+                      <option
+                        value="qld"
+                      >
+                        QLD
+                      </option>
+                      <option
+                        value="sa"
+                      >
+                        SA
+                      </option>
+                      <option
+                        value="tas"
+                      >
+                        TAS
+                      </option>
+                      <option
+                        value="vic"
+                      >
+                        VIC
+                      </option>
+                      <option
+                        value="wa"
+                      >
+                        WA
+                      </option>
+                    </select>
+                    <svg
+                      aria-hidden="true"
+                      class="css-1j4iiu7-SelectIcon"
+                      clip-rule="evenodd"
+                      focusable="false"
+                      height="24"
+                      role="img"
+                      viewBox="0 0 24 24"
+                      width="24"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M21 8L12 17L3 8"
+                      />
+                    </svg>
+                  </div>
+                </div>
+                <div
+                  class="css-1904cz9-boxStyles-FieldContainer"
+                >
+                  <label
+                    class="css-n7rdvo-boxStyles"
+                    for="field-:r4:"
+                  >
+                    <span
+                      class="css-433uqb-boxStyles-Text"
+                    >
+                      Assignee
+                    </span>
+                  </label>
+                  <div
+                    class="css-1bg5d3h-SelectContainer"
+                  >
+                    <select
+                      aria-controls="dashboard-table"
+                      aria-invalid="false"
+                      aria-required="false"
+                      class="css-58fznw-Field"
+                      id="field-:r4:"
+                    >
+                      <option
+                        value=""
+                      >
+                        All
+                      </option>
+                      <option
+                        value="Oscar Piastri"
+                      >
+                        Oscar Piastri
+                      </option>
+                      <option
+                        value="George Russell"
+                      >
+                        George Russell
+                      </option>
+                      <option
+                        value="Lando Norris"
+                      >
+                        Lando Norris
+                      </option>
+                    </select>
+                    <svg
+                      aria-hidden="true"
+                      class="css-1j4iiu7-SelectIcon"
+                      clip-rule="evenodd"
+                      focusable="false"
+                      height="24"
+                      role="img"
+                      viewBox="0 0 24 24"
+                      width="24"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M21 8L12 17L3 8"
+                      />
+                    </svg>
+                  </div>
+                </div>
+                <div>
+                  <div
+                    class="css-ns3arw-boxStyles"
+                  >
+                    <div
+                      class="css-1904cz9-boxStyles-FieldContainer"
+                    >
+                      <label
+                        class="css-n7rdvo-boxStyles"
+                        for="field-:r5:"
+                      >
+                        <span
+                          class="css-433uqb-boxStyles-Text"
+                        >
+                          Registered from
+                        </span>
+                        <span
+                          class="css-1rpt3h8-boxStyles-Text"
+                        >
+                          (dd/mm/yyyy)
+                        </span>
+                      </label>
+                      <div
+                        class="css-7swrfr-boxStyles-DateInput"
+                      >
+                        <input
+                          aria-invalid="false"
+                          aria-required="false"
+                          autocomplete="off"
+                          class="css-nisjv6-DateInput"
+                          id="field-:r5:"
+                          type="text"
+                          value=""
+                        />
+                        <button
+                          aria-label="Choose date"
+                          class="css-5re0pj-BaseButton-DateInput"
+                          type="button"
+                        >
+                          <span>
+                            <span
+                              class="css-oobk4c-Button"
+                            >
+                              <svg
+                                aria-hidden="true"
+                                class="css-1aretzv-DateInput"
+                                clip-rule="evenodd"
+                                focusable="false"
+                                height="24"
+                                role="img"
+                                viewBox="0 0 24 24"
+                                width="24"
+                                xmlns="http://www.w3.org/2000/svg"
+                              >
+                                <path
+                                  d="M8 3C8 4.5621 8 5.4379 8 7"
+                                />
+                                <path
+                                  d="M16 3C16 4.5621 16 5.4379 16 7"
+                                />
+                                <path
+                                  d="M21 20V6C21 5.44772 20.5523 5 20 5H4C3.44772 5 3 5.44772 3 6V20C3 20.5523 3.44772 21 4 21H20C20.5523 21 21 20.5523 21 20Z"
+                                />
+                                <line
+                                  x1="3"
+                                  x2="21"
+                                  y1="12"
+                                  y2="12"
+                                />
+                              </svg>
+                            </span>
+                            <span
+                              aria-live="assertive"
+                            />
+                          </span>
+                        </button>
+                      </div>
+                    </div>
+                    <div
+                      class="css-1904cz9-boxStyles-FieldContainer"
+                    >
+                      <label
+                        class="css-n7rdvo-boxStyles"
+                        for="field-:r6:"
+                      >
+                        <span
+                          class="css-433uqb-boxStyles-Text"
+                        >
+                          Registered to
+                        </span>
+                        <span
+                          class="css-1rpt3h8-boxStyles-Text"
+                        >
+                          (dd/mm/yyyy)
+                        </span>
+                      </label>
+                      <div
+                        class="css-7swrfr-boxStyles-DateInput"
+                      >
+                        <input
+                          aria-invalid="false"
+                          aria-required="false"
+                          autocomplete="off"
+                          class="css-nisjv6-DateInput"
+                          id="field-:r6:"
+                          type="text"
+                          value=""
+                        />
+                        <button
+                          aria-label="Choose date"
+                          class="css-5re0pj-BaseButton-DateInput"
+                          type="button"
+                        >
+                          <span>
+                            <span
+                              class="css-oobk4c-Button"
+                            >
+                              <svg
+                                aria-hidden="true"
+                                class="css-1aretzv-DateInput"
+                                clip-rule="evenodd"
+                                focusable="false"
+                                height="24"
+                                role="img"
+                                viewBox="0 0 24 24"
+                                width="24"
+                                xmlns="http://www.w3.org/2000/svg"
+                              >
+                                <path
+                                  d="M8 3C8 4.5621 8 5.4379 8 7"
+                                />
+                                <path
+                                  d="M16 3C16 4.5621 16 5.4379 16 7"
+                                />
+                                <path
+                                  d="M21 20V6C21 5.44772 20.5523 5 20 5H4C3.44772 5 3 5.44772 3 6V20C3 20.5523 3.44772 21 4 21H20C20.5523 21 21 20.5523 21 20Z"
+                                />
+                                <line
+                                  x1="3"
+                                  x2="21"
+                                  y1="12"
+                                  y2="12"
+                                />
+                              </svg>
+                            </span>
+                            <span
+                              aria-live="assertive"
+                            />
+                          </span>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <button
+                  class="css-eecl5m-BaseButton-Button"
+                  type="button"
+                >
+                  <span>
+                    <span
+                      class="css-oobk4c-Button"
+                    >
+                      Reset filters
+                    </span>
+                    <span
+                      aria-live="assertive"
+                    />
+                  </span>
+                </button>
+              </div>
+            </section>
           </section>
         </div>
         <div

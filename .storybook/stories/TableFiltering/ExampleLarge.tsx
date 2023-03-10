@@ -12,6 +12,11 @@ import { GetDataFilters, GetDataPagination, GetDataSort } from './lib/getData';
 import { BusinessForAuditWithIndex } from './lib/generateBusinessData';
 import { Prose } from '@ag.ds-next/react/prose';
 import { PaginationButtons } from '@ag.ds-next/react/pagination';
+import {
+	FilterBar,
+	FilterBarGroup,
+	FilterRegion,
+} from './components/FilterBar';
 
 type ExampleLargeProps = {
 	// sort
@@ -71,46 +76,41 @@ export const ExampleLarge = ({
 							New item
 						</ButtonLink>
 					</div>
-					<Flex
-						as="section"
-						aria-label="data filtering"
-						aria-controls={tableId}
-						aria-orientation="vertical"
-						gap={1}
-						justifyContent="space-between"
-						alignItems="flex-end"
-					>
-						<Flex gap={1} alignItems="flex-end">
-							<FilterSearchInput filters={filters} setFilters={setFilters} />
-							<Button
-								onClick={() => setIsOpen(true)}
-								variant="secondary"
-								iconBefore={FilterIcon}
-							>
-								Show filters
-							</Button>
-						</Flex>
 
-						<SortBySelect
-							sort={sort}
-							setSort={setSort}
+					<FilterRegion>
+						<FilterBar>
+							<FilterBarGroup>
+								<FilterSearchInput filters={filters} setFilters={setFilters} />
+								<Button
+									onClick={() => setIsOpen(true)}
+									variant="secondary"
+									iconBefore={FilterIcon}
+								>
+									Show filters
+								</Button>
+							</FilterBarGroup>
+
+							<SortBySelect
+								sort={sort}
+								setSort={setSort}
+								resetPagination={resetPagination}
+							/>
+						</FilterBar>
+
+						<FilterModal
+							isOpen={isOpen}
+							onDismiss={() => setIsOpen(false)}
+							filters={filters}
+							setFilters={setFilters}
 							resetPagination={resetPagination}
 						/>
-					</Flex>
 
-					<FilterModal
-						isOpen={isOpen}
-						onDismiss={() => setIsOpen(false)}
-						filters={filters}
-						setFilters={setFilters}
-						resetPagination={resetPagination}
-					/>
-
-					<ActiveFilters
-						filters={filters}
-						removeFilter={removeFilter}
-						resetFilters={resetFilters}
-					/>
+						<ActiveFilters
+							filters={filters}
+							removeFilter={removeFilter}
+							resetFilters={resetFilters}
+						/>
+					</FilterRegion>
 				</Stack>
 				<DashboardTable
 					data={data}

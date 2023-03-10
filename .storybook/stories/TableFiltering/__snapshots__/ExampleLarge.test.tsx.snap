@@ -51,33 +51,73 @@ exports[`LargeFilteringPattern renders correctly 1`] = `
             </a>
           </div>
           <section
-            aria-controls="dashboard-table"
             aria-label="data filtering"
-            aria-orientation="vertical"
-            class="css-14vgs17-boxStyles"
+            class="css-12rf75v-boxStyles"
           >
             <div
-              class="css-1tyb9vh-boxStyles"
+              class="css-c60tb1-boxStyles"
             >
               <div
-                class="css-1904cz9-boxStyles-FieldContainer"
+                class="css-1y31j5m-boxStyles"
               >
-                <label
-                  class="css-n7rdvo-boxStyles"
-                  for="field-:r0:"
-                >
-                  <span
-                    class="css-433uqb-boxStyles-Text"
-                  >
-                    Search Business name
-                  </span>
-                </label>
                 <div
-                  class="css-1x3y508-SearchInputContainer"
+                  class="css-1904cz9-boxStyles-FieldContainer"
+                >
+                  <label
+                    class="css-n7rdvo-boxStyles"
+                    for="field-:r0:"
+                  >
+                    <span
+                      class="css-433uqb-boxStyles-Text"
+                    >
+                      Search Business name
+                    </span>
+                  </label>
+                  <div
+                    class="css-1x3y508-SearchInputContainer"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      class="css-c3auo9-SearchInputIcon"
+                      clip-rule="evenodd"
+                      focusable="false"
+                      height="24"
+                      role="img"
+                      viewBox="0 0 24 24"
+                      width="24"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <line
+                        x1="15.5568"
+                        x2="21.9208"
+                        y1="15.5562"
+                        y2="21.9201"
+                      />
+                      <circle
+                        cx="9.8995"
+                        cy="9.89941"
+                        r="7"
+                      />
+                    </svg>
+                    <input
+                      aria-controls="dashboard-table"
+                      aria-invalid="false"
+                      aria-required="false"
+                      autocomplete="off"
+                      class="css-1ewffag-Field"
+                      id="field-:r0:"
+                      type="search"
+                      value=""
+                    />
+                  </div>
+                </div>
+                <button
+                  class="css-eecl5m-BaseButton-Button"
+                  type="button"
                 >
                   <svg
                     aria-hidden="true"
-                    class="css-c3auo9-SearchInputIcon"
+                    class="css-9s3cfn-Icon"
                     clip-rule="evenodd"
                     focusable="false"
                     height="24"
@@ -86,140 +126,102 @@ exports[`LargeFilteringPattern renders correctly 1`] = `
                     width="24"
                     xmlns="http://www.w3.org/2000/svg"
                   >
-                    <line
-                      x1="15.5568"
-                      x2="21.9208"
-                      y1="15.5562"
-                      y2="21.9201"
-                    />
-                    <circle
-                      cx="9.8995"
-                      cy="9.89941"
-                      r="7"
+                    <path
+                      d="M3 6H21M3 12H21M3 18H21M7 4V8M15 10V14M7 16V20"
                     />
                   </svg>
-                  <input
+                  <span>
+                    <span
+                      class="css-oobk4c-Button"
+                    >
+                      Show filters
+                    </span>
+                    <span
+                      aria-live="assertive"
+                    />
+                  </span>
+                </button>
+              </div>
+              <div
+                class="css-1904cz9-boxStyles-FieldContainer"
+              >
+                <label
+                  class="css-n7rdvo-boxStyles"
+                  for="field-:r1:"
+                >
+                  <span
+                    class="css-433uqb-boxStyles-Text"
+                  >
+                    Sort by
+                  </span>
+                </label>
+                <div
+                  class="css-1bg5d3h-SelectContainer"
+                >
+                  <select
                     aria-controls="dashboard-table"
                     aria-invalid="false"
                     aria-required="false"
-                    autocomplete="off"
-                    class="css-1ewffag-Field"
-                    id="field-:r0:"
-                    type="search"
-                    value=""
-                  />
+                    class="css-58fznw-Field"
+                    id="field-:r1:"
+                  >
+                    <option
+                      value="businessName-ASC"
+                    >
+                      Business name (A-Z)
+                    </option>
+                    <option
+                      value="businessName-DESC"
+                    >
+                      Business name (Z-A)
+                    </option>
+                    <option
+                      value="assignee-ASC"
+                    >
+                      Assignee (A-Z)
+                    </option>
+                    <option
+                      value="assignee-DESC"
+                    >
+                      Assignee (Z-A)
+                    </option>
+                    <option
+                      value="numberOfEmployees-ASC"
+                    >
+                      Number of employees (lowest first)
+                    </option>
+                    <option
+                      value="numberOfEmployees-DESC"
+                    >
+                      Number of employees (highest first)
+                    </option>
+                    <option
+                      value="requestDate-ASC"
+                    >
+                      Date registered (oldest first)
+                    </option>
+                    <option
+                      value="requestDate-DESC"
+                    >
+                      Date registered (newest first)
+                    </option>
+                  </select>
+                  <svg
+                    aria-hidden="true"
+                    class="css-1j4iiu7-SelectIcon"
+                    clip-rule="evenodd"
+                    focusable="false"
+                    height="24"
+                    role="img"
+                    viewBox="0 0 24 24"
+                    width="24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M21 8L12 17L3 8"
+                    />
+                  </svg>
                 </div>
-              </div>
-              <button
-                class="css-eecl5m-BaseButton-Button"
-                type="button"
-              >
-                <svg
-                  aria-hidden="true"
-                  class="css-9s3cfn-Icon"
-                  clip-rule="evenodd"
-                  focusable="false"
-                  height="24"
-                  role="img"
-                  viewBox="0 0 24 24"
-                  width="24"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M3 6H21M3 12H21M3 18H21M7 4V8M15 10V14M7 16V20"
-                  />
-                </svg>
-                <span>
-                  <span
-                    class="css-oobk4c-Button"
-                  >
-                    Show filters
-                  </span>
-                  <span
-                    aria-live="assertive"
-                  />
-                </span>
-              </button>
-            </div>
-            <div
-              class="css-1904cz9-boxStyles-FieldContainer"
-            >
-              <label
-                class="css-n7rdvo-boxStyles"
-                for="field-:r1:"
-              >
-                <span
-                  class="css-433uqb-boxStyles-Text"
-                >
-                  Sort by
-                </span>
-              </label>
-              <div
-                class="css-1bg5d3h-SelectContainer"
-              >
-                <select
-                  aria-controls="dashboard-table"
-                  aria-invalid="false"
-                  aria-required="false"
-                  class="css-58fznw-Field"
-                  id="field-:r1:"
-                >
-                  <option
-                    value="businessName-ASC"
-                  >
-                    Business name (A-Z)
-                  </option>
-                  <option
-                    value="businessName-DESC"
-                  >
-                    Business name (Z-A)
-                  </option>
-                  <option
-                    value="assignee-ASC"
-                  >
-                    Assignee (A-Z)
-                  </option>
-                  <option
-                    value="assignee-DESC"
-                  >
-                    Assignee (Z-A)
-                  </option>
-                  <option
-                    value="numberOfEmployees-ASC"
-                  >
-                    Number of employees (lowest first)
-                  </option>
-                  <option
-                    value="numberOfEmployees-DESC"
-                  >
-                    Number of employees (highest first)
-                  </option>
-                  <option
-                    value="requestDate-ASC"
-                  >
-                    Date registered (oldest first)
-                  </option>
-                  <option
-                    value="requestDate-DESC"
-                  >
-                    Date registered (newest first)
-                  </option>
-                </select>
-                <svg
-                  aria-hidden="true"
-                  class="css-1j4iiu7-SelectIcon"
-                  clip-rule="evenodd"
-                  focusable="false"
-                  height="24"
-                  role="img"
-                  viewBox="0 0 24 24"
-                  width="24"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M21 8L12 17L3 8"
-                  />
-                </svg>
               </div>
             </div>
           </section>
