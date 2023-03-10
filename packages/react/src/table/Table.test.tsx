@@ -17,7 +17,7 @@ afterEach(cleanup);
 function renderTableWithCaption() {
 	return render(
 		<TableWrapper>
-			<Table>
+			<Table id="table">
 				<TableCaption>
 					Population of Australian states and territories, December 2015
 				</TableCaption>
@@ -101,6 +101,7 @@ function renderTableWithHeadings() {
 			</Text>
 			<TableWrapper>
 				<Table
+					id="table"
 					aria-labelledby="table-heading"
 					aria-describedby="table-description"
 				>
