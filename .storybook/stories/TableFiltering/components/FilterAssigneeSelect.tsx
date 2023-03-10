@@ -1,6 +1,7 @@
 import { Select } from '@ag.ds-next/react/select';
 import { GetDataFilters } from '../lib/getData';
 import { assignees } from '../lib/generateBusinessData';
+import { tableId } from './DashboardTable';
 
 export const FilterAssigneeSelect = ({
 	filters,
@@ -16,6 +17,7 @@ export const FilterAssigneeSelect = ({
 			label="Assignee"
 			placeholder="All"
 			hideOptionalLabel
+			aria-controls={tableId}
 			options={assignees.map((option) => ({
 				label: option,
 				value: option,
