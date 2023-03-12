@@ -165,7 +165,9 @@ export const DatePicker = ({
 		<div ref={setRefEl}>
 			<DateInput
 				{...props}
-				secondaryLabel={hideDateFormatLabel ? undefined : labelDateFormat}
+				secondaryLabel={
+					hideDateFormatLabel ? undefined : `(${labelDateFormat})`
+				}
 				invalid={{ field: invalid, input: invalid }}
 				ref={inputRef}
 				value={inputValue}

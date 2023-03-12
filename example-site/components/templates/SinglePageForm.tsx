@@ -22,7 +22,11 @@ import { useScrollToField } from '@ag.ds-next/react/field';
 import { PageContent } from '@ag.ds-next/react/content';
 import { Column, Columns } from '@ag.ds-next/react/columns';
 import { Breadcrumbs } from '@ag.ds-next/react/breadcrumbs';
-import { DatePicker, DateRangePicker } from '@ag.ds-next/react/date-picker';
+import {
+	DatePicker,
+	DateRangePicker,
+	labelDateFormat,
+} from '@ag.ds-next/react/date-picker';
 import { Text } from '@ag.ds-next/react/text';
 import { FormDivider } from '../FormDivider';
 import { PageTitle } from '../PageTitle';
@@ -211,6 +215,8 @@ const SinglePageForm = () => {
 								<DatePicker
 									inputRef={ref}
 									label="Registration date"
+									hideDateFormatLabel
+									hint={labelDateFormat}
 									{...field}
 									onInputChange={field.onChange}
 									id="registrationDate"

@@ -319,7 +319,9 @@ export const DateRangePicker = ({
 						<DateInput
 							ref={fromInputRef}
 							label={fromLabel}
-							secondaryLabel={hideDateFormatLabel ? undefined : labelDateFormat}
+							secondaryLabel={
+								hideDateFormatLabel ? undefined : `(${labelDateFormat})`
+							}
 							hideOptionalLabel={hideOptionalLabel || Boolean(legend)}
 							value={fromInputValue}
 							onChange={onFromInputChange}
@@ -332,7 +334,9 @@ export const DateRangePicker = ({
 						<DateInput
 							ref={toInputRef}
 							label={toLabel}
-							secondaryLabel={hideDateFormatLabel ? undefined : labelDateFormat}
+							secondaryLabel={
+								hideDateFormatLabel ? undefined : `(${labelDateFormat})`
+							}
 							hideOptionalLabel={hideOptionalLabel || Boolean(legend)}
 							value={toInputValue}
 							onChange={onToInputChange}
