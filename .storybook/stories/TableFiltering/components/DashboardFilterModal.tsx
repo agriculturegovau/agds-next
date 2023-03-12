@@ -9,6 +9,9 @@ import { Checkbox, ControlGroup } from '@ag.ds-next/react/control-input';
 import { FilterAssigneeSelect } from './FilterAssigneeSelect';
 import { FilterStateSelect } from './FilterStateSelect';
 import { FilterModal, LockScroll } from './FilterModal';
+import { Fieldset } from '@ag.ds-next/react/fieldset';
+import { FormDivider } from '../../../../example-site/components/FormDivider';
+import { FormStack } from '@ag.ds-next/react/form-stack';
 
 export const DashboardFilterModal = ({
 	isOpen,
@@ -90,36 +93,45 @@ export const DashboardFilterModal = ({
 			<LockScroll />
 			<ModalCover ref={coverRef}>
 				<FilterModal onDismiss={onDismiss} onApply={handleApply} title={title}>
-					<Stack gap={1} padding={1.5}>
-						<FilterStatusSelect
-							filters={selectedFilters}
-							setFilters={setSelectedFilters}
-						/>
-						<FilterStateSelect
-							filters={selectedFilters}
-							setFilters={setSelectedFilters}
-						/>
-						<FilterAssigneeSelect
-							filters={selectedFilters}
-							setFilters={setSelectedFilters}
-						/>
-						<DateRangePicker
-							fromLabel="Registered from"
-							toLabel="Registered to"
-							onChange={(value) =>
-								setFilters({
-									...filters,
-									requestDate: value,
-								})
-							}
-							value={filters.requestDate}
-						/>
-						<ControlGroup label="Contact method" block>
-							<Checkbox checked>SMS</Checkbox>
-							<Checkbox checked={false}>Phone call</Checkbox>
-							<Checkbox checked={false}>Email</Checkbox>
-							<Checkbox checked={false}>Mail</Checkbox>
-						</ControlGroup>
+					<Stack gap={2}>
+						<Fieldset legend="Fieldset">
+							<FormStack>
+								<FilterStatusSelect
+									filters={selectedFilters}
+									setFilters={setSelectedFilters}
+								/>
+								<FilterStateSelect
+									filters={selectedFilters}
+									setFilters={setSelectedFilters}
+								/>
+							</FormStack>
+						</Fieldset>
+						<FormDivider />
+						<Fieldset legend="Fieldset">
+							<FormStack>
+								<FilterAssigneeSelect
+									filters={selectedFilters}
+									setFilters={setSelectedFilters}
+								/>
+								<DateRangePicker
+									fromLabel="Registered from"
+									toLabel="Registered to"
+									onChange={(value) =>
+										setFilters({
+											...filters,
+											requestDate: value,
+										})
+									}
+									value={filters.requestDate}
+								/>
+								<ControlGroup label="Contact method" block>
+									<Checkbox checked>SMS</Checkbox>
+									<Checkbox checked={false}>Phone call</Checkbox>
+									<Checkbox checked={false}>Email</Checkbox>
+									<Checkbox checked={false}>Mail</Checkbox>
+								</ControlGroup>
+							</FormStack>
+						</Fieldset>
 					</Stack>
 				</FilterModal>
 			</ModalCover>

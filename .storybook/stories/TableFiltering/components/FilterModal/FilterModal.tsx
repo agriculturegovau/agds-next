@@ -72,7 +72,7 @@ export const FilterModal = ({
 						overflowY: 'scroll',
 					}}
 				>
-					{children}
+					<Box padding={1.5}>{children}</Box>
 				</Box>
 
 				<Box
