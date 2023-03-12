@@ -331,7 +331,7 @@ exports[`SmallFilteringPattern renders correctly 1`] = `
               class="css-8u32cd-boxStyles"
             >
               <tr
-                aria-rowindex="1"
+                aria-rowindex="2"
               >
                 <td
                   class="css-18k5iax-boxStyles-TableCell"
@@ -414,7 +414,7 @@ exports[`SmallFilteringPattern renders correctly 1`] = `
                 </td>
               </tr>
               <tr
-                aria-rowindex="2"
+                aria-rowindex="3"
               >
                 <td
                   class="css-18k5iax-boxStyles-TableCell"
@@ -496,7 +496,7 @@ exports[`SmallFilteringPattern renders correctly 1`] = `
                 </td>
               </tr>
               <tr
-                aria-rowindex="3"
+                aria-rowindex="4"
               >
                 <td
                   class="css-18k5iax-boxStyles-TableCell"
@@ -579,7 +579,7 @@ exports[`SmallFilteringPattern renders correctly 1`] = `
                 </td>
               </tr>
               <tr
-                aria-rowindex="4"
+                aria-rowindex="5"
               >
                 <td
                   class="css-18k5iax-boxStyles-TableCell"
@@ -644,7 +644,7 @@ exports[`SmallFilteringPattern renders correctly 1`] = `
                 </td>
               </tr>
               <tr
-                aria-rowindex="5"
+                aria-rowindex="6"
               >
                 <td
                   class="css-18k5iax-boxStyles-TableCell"
@@ -727,7 +727,7 @@ exports[`SmallFilteringPattern renders correctly 1`] = `
                 </td>
               </tr>
               <tr
-                aria-rowindex="6"
+                aria-rowindex="7"
               >
                 <td
                   class="css-18k5iax-boxStyles-TableCell"
@@ -815,7 +815,7 @@ exports[`SmallFilteringPattern renders correctly 1`] = `
                 </td>
               </tr>
               <tr
-                aria-rowindex="7"
+                aria-rowindex="8"
               >
                 <td
                   class="css-18k5iax-boxStyles-TableCell"
@@ -867,7 +867,7 @@ exports[`SmallFilteringPattern renders correctly 1`] = `
                 </td>
               </tr>
               <tr
-                aria-rowindex="8"
+                aria-rowindex="9"
               >
                 <td
                   class="css-18k5iax-boxStyles-TableCell"
@@ -936,7 +936,7 @@ exports[`SmallFilteringPattern renders correctly 1`] = `
                 </td>
               </tr>
               <tr
-                aria-rowindex="9"
+                aria-rowindex="10"
               >
                 <td
                   class="css-18k5iax-boxStyles-TableCell"
@@ -1018,7 +1018,7 @@ exports[`SmallFilteringPattern renders correctly 1`] = `
                 </td>
               </tr>
               <tr
-                aria-rowindex="10"
+                aria-rowindex="11"
               >
                 <td
                   class="css-18k5iax-boxStyles-TableCell"

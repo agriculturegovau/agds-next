@@ -5,8 +5,8 @@ import { FilterIcon, PlusIcon } from '@ag.ds-next/react/icon';
 import { useState } from 'react';
 import { ActiveFilters } from './components/ActiveFilters';
 import { SortBySelect } from './components/SortBySelect';
-import { DashboardTable, tableId } from './components/DashboardTable';
-import { FilterModal } from './components/FilterModal';
+import { DashboardTable } from './components/DashboardTable';
+import { DashboardFilterModal } from './components/DashboardFilterModal';
 import { FilterSearchInput } from './components/FilterSearchInput';
 import { GetDataFilters, GetDataPagination, GetDataSort } from './lib/getData';
 import { BusinessForAuditWithIndex } from './lib/generateBusinessData';
@@ -97,7 +97,7 @@ export const ExampleLarge = ({
 							/>
 						</FilterBar>
 
-						<FilterModal
+						<DashboardFilterModal
 							isOpen={isOpen}
 							onDismiss={() => setIsOpen(false)}
 							filters={filters}
