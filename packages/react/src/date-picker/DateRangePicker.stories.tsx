@@ -48,6 +48,12 @@ HideOptionalLabel.args = {
 	hideOptionalLabel: true,
 };
 
+export const HideDateFormatLabel = Template.bind({});
+HideDateFormatLabel.args = {
+	hideDateFormatLabel: true,
+	hint: 'dd/mm/yyyy',
+};
+
 export const Hint = Template.bind({});
 Hint.args = {
 	legend: 'Date range',

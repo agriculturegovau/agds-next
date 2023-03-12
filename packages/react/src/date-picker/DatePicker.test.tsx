@@ -160,17 +160,18 @@ describe('DatePicker', () => {
 		);
 	});
 
-	it('date-format: renders the date format in the label by default', async () => {
+	it('date-format: renders the date format label by default', () => {
 		const { container } = renderDatePicker({
 			label: 'Example',
 			value: undefined,
 			onChange: console.log,
 		});
+
 		const label = container.querySelector('label');
-		expect(label?.textContent).toEqual('Example(optional) (dd/mm/yyyy)');
+		expect(label?.textContent).toBe('Example(optional) (dd/mm/yyyy)');
 	});
 
-	it('date-format: can hide the date format label when optional', async () => {
+	it('date-format: can hide the date format label when optional', () => {
 		const { container } = renderDatePicker({
 			label: 'Example',
 			hideDateFormatLabel: true,
@@ -182,7 +183,7 @@ describe('DatePicker', () => {
 		expect(label?.textContent).toBe('Example(optional)');
 	});
 
-	it('date-format: can hide the date format label when required', async () => {
+	it('date-format: can hide the date format label when required', () => {
 		const { container } = renderDatePicker({
 			label: 'Example',
 			hideDateFormatLabel: true,

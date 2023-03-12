@@ -171,13 +171,20 @@ describe('Field', () => {
 		});
 
 		describe('Secondary Label', () => {
-			it('renders correctly', () => {
-				const secondaryLabel = '(dd/mm/yyy)';
-				renderField({ label, secondaryLabel });
+			const secondaryLabel = '(dd/mm/yyy)';
+
+			it('renders correctly when optional', () => {
+				renderField({ label, secondaryLabel, required: false });
 				const labelEl = getLabelElement();
 				expect(labelEl.textContent).toBe(
 					`${label}(optional) ${secondaryLabel}`
 				);
+			});
+
+			it('renders correctly when true', () => {
+				renderField({ label, secondaryLabel, required: true });
+				const labelEl = getLabelElement();
+				expect(labelEl.textContent).toBe(`${label}${secondaryLabel}`);
 			});
 		});
 	});
