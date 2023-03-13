@@ -11,7 +11,6 @@ export type DateInputProps = Omit<
 	TextInputProps,
 	'inputMode' | 'pattern' | 'type' | 'invalid'
 > & {
-	secondaryLabel: string | undefined;
 	invalid: {
 		/** If true, the entire field will be rendered in an invalid state.  */
 		field: boolean;
@@ -26,7 +25,6 @@ export const DateInput = forwardRef<HTMLInputElement, DateInputProps>(
 	function DateInput(
 		{
 			label,
-			secondaryLabel,
 			hideOptionalLabel,
 			required,
 			hint,
@@ -65,7 +63,7 @@ export const DateInput = forwardRef<HTMLInputElement, DateInputProps>(
 		return (
 			<Field
 				label={label}
-				secondaryLabel={secondaryLabel}
+				secondaryLabel="(dd/mm/yyyy)"
 				hideOptionalLabel={hideOptionalLabel}
 				required={Boolean(required)}
 				hint={hint}

@@ -171,13 +171,13 @@ describe('Field', () => {
 		});
 
 		describe('Secondary Label', () => {
-			const secondaryLabel = '(dd/mm/yyy)';
+			const secondaryLabel = '(dd/mm/yyyy)';
 
 			it('renders correctly when optional', () => {
 				renderField({ label, secondaryLabel, required: false });
 				const labelEl = getLabelElement();
 				expect(labelEl.textContent).toBe(
-					`${label}(optional) ${secondaryLabel}`
+					`${label}${secondaryLabel} (optional)`
 				);
 			});
 

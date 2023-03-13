@@ -74,29 +74,6 @@ To fix this issue, you can use the `onInputChange` prop to keep track of the use
 };
 ```
 
-### Date format label
-
-For accessibility reasons, the `DatePicker` component will always append the date format to the label.
-
-When using the `DatePicker` component in scenarios where vertical space is not a concern (e.g. in a form for capturing user data), you can use the `hideDateFormatLabel` prop to hide the date format from the label.
-
-When using the `hideDateFormatLabel`, you _must_ provide the date format `"(dd/mm/yyyy)"` via the hint text.
-
-```jsx live
-() => {
-	const [value, setValue] = React.useState();
-	return (
-		<DatePicker
-			label="Select date"
-			hideDateFormatLabel
-			hint="dd/mm/yyyy"
-			value={value}
-			onChange={setValue}
-		/>
-	);
-};
-```
-
 ### Hint
 
 Use the `hint` prop to provide help that’s relevant to the majority of users, like how their information will be used, or where to find it.
@@ -270,29 +247,6 @@ To fix this issue, you can use the `onFromInputChange` and `onToInputChange` pro
 			fromInvalid={fromInvalid}
 			toInvalid={toInvalid}
 			message={fromInvalid || toInvalid ? 'Enter a valid date' : undefined}
-		/>
-	);
-};
-```
-
-### Date format label
-
-For accessibility reasons, the `DateRangePicker` component will always append the date format to the label.
-
-When using the `DateRangePicker` component in scenarios where vertical space is not a concern (e.g. in a form for capturing user data), you can use the `hideDateFormatLabel` prop to hide the date format from the label.
-
-When using the `hideDateFormatLabel`, you _must_ provide the date format `"(dd/mm/yyyy)"` via the hint text.
-
-```jsx live
-() => {
-	const [value, setValue] = React.useState({ from: undefined, to: undefined });
-	return (
-		<DateRangePicker
-			value={value}
-			onChange={setValue}
-			legend="Date period"
-			hideDateFormatLabel
-			hint="dd/mm/yyyy"
 		/>
 	);
 };

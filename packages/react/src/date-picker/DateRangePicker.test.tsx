@@ -134,7 +134,7 @@ async function getErrorMessage() {
 	return el as HTMLSpanElement;
 }
 
-async function getLegend(text: string) {
+async function getLegend(text = 'Date format') {
 	const el = await screen.getByText(text).closest('legend');
 	expect(el).toBeInstanceOf(HTMLLegendElement);
 	expect(el).toBeInTheDocument();
@@ -309,6 +309,37 @@ describe('DateRangePicker', () => {
 			onChange: console.log,
 		});
 		expect(await (await getLegend(legend)).textContent).toEqual(`${legend}`);
+	});
+
+	it('shows date format when legend is supplied', async () => {
+		const { container } = renderDateRangePicker({
+			legend: 'Date range',
+			value: { from: new Date(2000, 1, 1), to: new Date(2000, 1, 2) },
+			onChange: console.log,
+		});
+		const inputFromId = await (await getFromInput())?.id;
+		const labelFrom = container.querySelector(`[for="${inputFromId}"]`);
+
+		const inputToId = await (await getToInput())?.id;
+		const labelTo = container.querySelector(`[for="${inputToId}"]`);
+
+		expect(labelFrom?.textContent).toEqual('Start date(dd/mm/yyyy)');
+		expect(labelTo?.textContent).toEqual('End date(dd/mm/yyyy)');
+	});
+
+	it('shows date format when no legend is supplied', async () => {
+		const { container } = renderDateRangePicker({
+			value: { from: new Date(2000, 1, 1), to: new Date(2000, 1, 2) },
+			onChange: console.log,
+		});
+		const inputFromId = await (await getFromInput())?.id;
+		const labelFrom = container.querySelector(`[for="${inputFromId}"]`);
+
+		const inputToId = await (await getToInput())?.id;
+		const labelTo = container.querySelector(`[for="${inputToId}"]`);
+
+		expect(labelFrom?.textContent).toEqual('Start date(dd/mm/yyyy) (optional)');
+		expect(labelTo?.textContent).toEqual('End date(dd/mm/yyyy) (optional)');
 	});
 
 	it('invalid: can render an invalid state when both fields are invalid', async () => {

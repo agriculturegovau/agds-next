@@ -2,7 +2,6 @@ import { isDate, format, parse, isValid, isBefore, isAfter } from 'date-fns';
 
 // Date format is not configurable
 const dateFormat = 'dd/MM/yyyy';
-export const labelDateFormat = 'dd/mm/yyyy';
 
 export const formatDate = (date: Date) => format(date, dateFormat);
 

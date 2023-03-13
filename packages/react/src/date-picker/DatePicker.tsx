@@ -17,17 +17,11 @@ import {
 	formatDate,
 	constrainDate,
 	transformValuePropToInputValue,
-	labelDateFormat,
 } from './utils';
 
 type DatePickerInputProps = Omit<
 	DateInputProps,
-	| 'value'
-	| 'onChange'
-	| 'buttonRef'
-	| 'buttonOnClick'
-	| 'invalid'
-	| 'secondaryLabel'
+	'value' | 'onChange' | 'buttonRef' | 'buttonOnClick' | 'invalid'
 >;
 
 type DatePickerCalendarProps = {
@@ -52,8 +46,6 @@ type DatePickerBaseProps = {
 	inputRef?: Ref<HTMLInputElement>;
 	/** If true, the invalid state will be rendered. */
 	invalid?: boolean;
-	/** Stops the date format from being appended to the label. When this is disabled, you must provide the date format via the hint text. */
-	hideDateFormatLabel?: boolean;
 };
 
 export type DatePickerProps = DatePickerInputProps &
@@ -70,7 +62,6 @@ export const DatePicker = ({
 	yearRange,
 	inputRef,
 	invalid = false,
-	hideDateFormatLabel,
 	...props
 }: DatePickerProps) => {
 	const [isCalendarOpen, openCalendar, closeCalendar] = useTernaryState(false);
@@ -165,9 +156,6 @@ export const DatePicker = ({
 		<div ref={setRefEl}>
 			<DateInput
 				{...props}
-				secondaryLabel={
-					hideDateFormatLabel ? undefined : `(${labelDateFormat})`
-				}
 				invalid={{ field: invalid, input: invalid }}
 				ref={inputRef}
 				value={inputValue}

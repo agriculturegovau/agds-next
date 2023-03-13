@@ -22,11 +22,7 @@ import { useScrollToField } from '@ag.ds-next/react/field';
 import { PageContent } from '@ag.ds-next/react/content';
 import { Column, Columns } from '@ag.ds-next/react/columns';
 import { Breadcrumbs } from '@ag.ds-next/react/breadcrumbs';
-import {
-	DatePicker,
-	DateRangePicker,
-	labelDateFormat,
-} from '@ag.ds-next/react/date-picker';
+import { DatePicker, DateRangePicker } from '@ag.ds-next/react/date-picker';
 import { Text } from '@ag.ds-next/react/text';
 import { FormDivider } from '../FormDivider';
 import { PageTitle } from '../PageTitle';
@@ -51,8 +47,8 @@ const formSchema = yup
 		entityNumber: yup.string().required('Enter your entity number'),
 		periodActive: yup
 			.object({
-				from: yupDateField,
-				to: yupDateField,
+				from: yupDateField.required('Enter a valid date'),
+				to: yupDateField.required('Enter a valid date'),
 			})
 			.required('Enter a valid date'),
 		// street address
@@ -215,8 +211,6 @@ const SinglePageForm = () => {
 								<DatePicker
 									inputRef={ref}
 									label="Registration date"
-									hideDateFormatLabel
-									hint={labelDateFormat}
 									{...field}
 									onInputChange={field.onChange}
 									id="registrationDate"
@@ -270,6 +264,7 @@ const SinglePageForm = () => {
 										errors.periodActive?.from?.message ||
 										errors.periodActive?.to?.message
 									}
+									required
 								/>
 							)}
 						/>

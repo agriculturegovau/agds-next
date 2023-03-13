@@ -61,13 +61,6 @@ Hint.args = {
 	hint: 'We will only use this to respond to your question',
 };
 
-export const HideDateFormatLabel = Template.bind({});
-HideDateFormatLabel.args = {
-	label: 'Example',
-	hideDateFormatLabel: true,
-	hint: 'dd/mm/yyyy',
-};
-
 export const Block = Template.bind({});
 Block.args = {
 	block: true,
