@@ -7,6 +7,8 @@ export type TableProps = PropsWithChildren<{
 	striped?: boolean;
 	/** Setting this to -1 allows the table to be focusable */
 	tabIndex?: number;
+	/** The table-layout CSS property sets the algorithm used to lay out cells, rows, and columns. */
+	tableLayout?: 'auto' | 'fixed';
 	/** The id of the element that labels the table */
 	'aria-labelledby'?: string;
 	/** The id of the element that describes the table */
@@ -20,6 +22,7 @@ export const Table = forwardRef<HTMLTableElement, TableProps>(function Table(
 		children,
 		striped,
 		tabIndex,
+		tableLayout,
 		'aria-labelledby': ariaLabelledby,
 		'aria-describedby': ariaDescribedby,
 		id,
@@ -39,6 +42,7 @@ export const Table = forwardRef<HTMLTableElement, TableProps>(function Table(
 			css={{
 				borderCollapse: 'collapse',
 				borderSpacing: 0,
+				'table-layout': tableLayout,
 
 				'tbody tr:nth-last-of-type( odd )': {
 					backgroundColor: striped ? boxPalette.backgroundShade : 'transparent',
