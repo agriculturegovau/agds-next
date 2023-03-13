@@ -1,17 +1,17 @@
-import { genetateTableCaption } from './utils';
+import { generateTableCaption } from './utils';
 
-describe('genetateTableCaption', () => {
+describe('generateTableCaption', () => {
 	it('should return the correct caption', () => {
-		expect(genetateTableCaption({ loading: true, totalItems: 0 })).toBe(
+		expect(generateTableCaption({ loading: true, totalItems: 0 })).toBe(
 			'Audits'
 		);
-		expect(genetateTableCaption({ loading: false, totalItems: 0 })).toBe(
+		expect(generateTableCaption({ loading: false, totalItems: 0 })).toBe(
 			'Audits (0 items)'
 		);
-		expect(genetateTableCaption({ loading: false, totalItems: 1 })).toBe(
+		expect(generateTableCaption({ loading: false, totalItems: 1 })).toBe(
 			'Audits (1 item)'
 		);
-		expect(genetateTableCaption({ loading: false, totalItems: 2 })).toBe(
+		expect(generateTableCaption({ loading: false, totalItems: 2 })).toBe(
 			'Audits (2 items)'
 		);
 	});

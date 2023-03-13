@@ -4,7 +4,7 @@ import { cleanup, render } from '../../../test-utils';
 import { ExampleMedium } from './ExampleMedium';
 import { useTestData } from './lib/testData';
 import { useSortAndFilter } from './lib/useSortAndFilter';
-import { genetateTableCaption } from './lib/utils';
+import { generateTableCaption } from './lib/utils';
 
 afterEach(cleanup);
 
@@ -27,7 +27,7 @@ function MediumFilteringPatternTest({ loading }: { loading: boolean }) {
 		sort,
 	});
 
-	const tableCaption = genetateTableCaption({
+	const tableCaption = generateTableCaption({
 		loading,
 		totalItems,
 	});

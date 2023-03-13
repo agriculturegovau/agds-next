@@ -21,7 +21,7 @@ export function useData({ sort, filters, pagination }: GetDataParams) {
 	return { loading, data, totalPages, totalItems };
 }
 
-export const genetateTableCaption = ({
+export const generateTableCaption = ({
 	loading,
 	totalItems,
 }: {

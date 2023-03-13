@@ -4,7 +4,7 @@ import { cleanup, render } from '../../../test-utils';
 import { ExampleSmall } from './ExampleSmall';
 import { useTestData } from './lib/testData';
 import { useSortAndFilter } from './lib/useSortAndFilter';
-import { genetateTableCaption } from './lib/utils';
+import { generateTableCaption } from './lib/utils';
 
 afterEach(cleanup);
 
@@ -25,7 +25,7 @@ function SmallFilteringPatternTest({ loading }: { loading: boolean }) {
 		sort,
 	});
 
-	const tableCaption = genetateTableCaption({
+	const tableCaption = generateTableCaption({
 		loading,
 		totalItems,
 	});

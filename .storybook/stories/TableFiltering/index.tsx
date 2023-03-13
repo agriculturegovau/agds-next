@@ -1,7 +1,7 @@
 import { ExampleSmall } from './ExampleSmall';
 import { ExampleMedium } from './ExampleMedium';
 import { useSortAndFilter } from './lib/useSortAndFilter';
-import { genetateTableCaption, useData } from './lib/utils';
+import { generateTableCaption, useData } from './lib/utils';
 import { useRef } from 'react';
 import { DraftBanner } from './components/DraftBanner';
 
@@ -29,7 +29,7 @@ export const Small = () => {
 		sort,
 	});
 
-	const tableCaption = genetateTableCaption({
+	const tableCaption = generateTableCaption({
 		loading,
 		totalItems,
 	});
@@ -78,7 +78,7 @@ export const Medium = () => {
 		sort,
 	});
 
-	const tableCaption = genetateTableCaption({
+	const tableCaption = generateTableCaption({
 		loading,
 		totalItems,
 	});
