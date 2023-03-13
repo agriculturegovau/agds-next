@@ -42,7 +42,7 @@ export const Table = forwardRef<HTMLTableElement, TableProps>(function Table(
 			css={{
 				borderCollapse: 'collapse',
 				borderSpacing: 0,
-				'table-layout': tableLayout,
+				tableLayout,
 
 				'tbody tr:nth-last-of-type( odd )': {
 					backgroundColor: striped ? boxPalette.backgroundShade : 'transparent',
