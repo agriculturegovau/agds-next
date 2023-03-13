@@ -103,7 +103,9 @@ export const Large = () => {
 		setPagination,
 		setSort,
 		sort,
-	} = useSortAndFilter();
+	} = useSortAndFilter({
+		itemsPerPage: 20,
+	});
 
 	const { loading, data, totalPages, totalItems } = useData({
 		filters,

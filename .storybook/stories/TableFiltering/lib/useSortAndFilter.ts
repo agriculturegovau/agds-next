@@ -18,10 +18,11 @@ export type SortAndFilterType = {
 
 export const useSortAndFilter: (args?: {
 	filters?: Partial<GetDataFilters>;
+	itemsPerPage?: number;
 }) => SortAndFilterType = (args) => {
 	const [pagination, setPagination] = useState<GetDataPagination>({
 		page: 1,
-		perPage: 10,
+		perPage: args?.itemsPerPage || 10,
 	});
 	const [sort, setSort] = useState<GetDataSort>({
 		field: 'businessName',

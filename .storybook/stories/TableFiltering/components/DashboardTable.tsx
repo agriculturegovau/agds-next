@@ -239,13 +239,13 @@ const headers: ({
 	{
 		label: 'City',
 		sortKey: 'city',
-		width: '20%',
+		width: '15%',
 	},
 	{
 		label: 'Employees',
 		sortKey: 'numberOfEmployees',
 		textAlign: 'right',
-		width: '10%',
+		width: '15%',
 		isSortable: true,
 	},
 	{
