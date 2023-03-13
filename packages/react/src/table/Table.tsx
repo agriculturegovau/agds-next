@@ -11,6 +11,8 @@ export type TableProps = PropsWithChildren<{
 	'aria-labelledby'?: string;
 	/** The id of the element that describes the table */
 	'aria-describedby'?: string;
+	/** The id of the table */
+	id?: string;
 }>;
 
 export const Table = forwardRef<HTMLTableElement, TableProps>(function Table(
@@ -20,6 +22,7 @@ export const Table = forwardRef<HTMLTableElement, TableProps>(function Table(
 		tabIndex,
 		'aria-labelledby': ariaLabelledby,
 		'aria-describedby': ariaDescribedby,
+		id,
 	},
 	ref
 ) {
@@ -32,6 +35,7 @@ export const Table = forwardRef<HTMLTableElement, TableProps>(function Table(
 			focus
 			width="100%"
 			display="table"
+			id={id}
 			css={{
 				borderCollapse: 'collapse',
 				borderSpacing: 0,
