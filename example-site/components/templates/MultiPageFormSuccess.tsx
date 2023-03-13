@@ -11,7 +11,8 @@ import { PageTitle } from '../PageTitle';
 export function MultiPageFormSuccess() {
 	const successPageAlertRef = useRef<HTMLDivElement>(null);
 
-	// When this page renders, focus the success page alert
+	// Users are redirected to this page when the form is submitted successfully
+	// So when this page renders, focus the success page alert
 	useEffect(() => {
 		successPageAlertRef.current?.focus();
 	}, []);
