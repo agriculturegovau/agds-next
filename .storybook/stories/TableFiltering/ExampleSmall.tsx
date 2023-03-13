@@ -55,7 +55,7 @@ export const ExampleSmall = ({
 		<PageContent>
 			<Stack gap={2}>
 				<Prose>
-					<h1>Table Filtering (small)</h1>
+					<h1>Table Filtering (Small)</h1>
 					<p>
 						In the most basic cases of filtering with up to three filterable
 						fields, we can show all filters in a row above the table.

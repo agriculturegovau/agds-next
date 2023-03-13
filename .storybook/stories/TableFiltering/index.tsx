@@ -1,5 +1,6 @@
 import { ExampleSmall } from './ExampleSmall';
 import { ExampleMedium } from './ExampleMedium';
+import { ExampleLarge } from './ExampleLarge';
 import { useSortAndFilter } from './lib/useSortAndFilter';
 import { generateTableCaption, useData } from './lib/utils';
 import { useRef } from 'react';
@@ -88,6 +89,56 @@ export const Medium = () => {
 				resetFilters={resetFilters}
 				setFilters={setFilters}
 				removeFilter={removeFilter}
+				setPagination={setPagination}
+				setSort={setSort}
+				sort={sort}
+				tableRef={tableRef}
+				tableCaption={tableCaption}
+				totalPages={totalPages}
+				totalItems={totalItems}
+			/>
+		</>
+	);
+};
+
+export const Large = () => {
+	const tableRef = useRef<HTMLTableElement>(null);
+	const {
+		filters,
+		pagination,
+		resetFilters,
+		removeFilter,
+		setFilters,
+		setPagination,
+		setSort,
+		sort,
+	} = useSortAndFilter({
+		itemsPerPage: 20,
+		tableRef,
+	});
+
+	const { loading, data, totalPages, totalItems } = useData({
+		filters,
+		pagination,
+		sort,
+	});
+
+	const tableCaption = generateTableCaption({
+		loading,
+		totalItems,
+	});
+
+	return (
+		<>
+			<DraftBanner />
+			<ExampleLarge
+				data={data}
+				filters={filters}
+				loading={loading}
+				pagination={pagination}
+				resetFilters={resetFilters}
+				removeFilter={removeFilter}
+				setFilters={setFilters}
 				setPagination={setPagination}
 				setSort={setSort}
 				sort={sort}
