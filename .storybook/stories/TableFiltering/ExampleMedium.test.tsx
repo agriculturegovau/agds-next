@@ -81,6 +81,7 @@ describe('MediumFilteringPattern', () => {
 			rules: {
 				// react 18s `useId` break this rule
 				'valid-id': 'off',
+				'no-inline-style': 'off',
 			},
 		});
 	});
