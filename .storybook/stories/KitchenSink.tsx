@@ -74,7 +74,7 @@ export default {
 		layout: 'fullscreen',
 	},
 	argTypes: {
-		bg: {
+		background: {
 			options: ['body', 'bodyAlt'],
 			control: { type: 'radio' },
 		},
