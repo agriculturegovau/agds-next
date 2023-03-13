@@ -85,7 +85,13 @@ export const DashboardTable = forwardRef<HTMLTableElement, DashboardTableProps>(
 
 		return (
 			<TableWrapper>
-				<Table aria-rowcount={totalItems} id={tableId} ref={ref} tabIndex={-1}>
+				<Table
+					aria-rowcount={totalItems}
+					id={tableId}
+					ref={ref}
+					tabIndex={-1}
+					tableLayout="fixed"
+				>
 					<TableCaption>
 						{caption}
 						<VisuallyHidden>
