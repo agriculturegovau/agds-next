@@ -3,7 +3,6 @@ import { Box } from '../box';
 import { boxPalette } from '../core';
 
 export type TableProps = PropsWithChildren<{
-	id?: string;
 	/** If true, alternating rows will have a different background colour. */
 	striped?: boolean;
 	/** Setting this to -1 allows the table to be focusable */
@@ -19,7 +18,6 @@ export type TableProps = PropsWithChildren<{
 export const Table = forwardRef<HTMLTableElement, TableProps>(function Table(
 	{
 		children,
-		id,
 		striped,
 		tabIndex,
 		'aria-labelledby': ariaLabelledby,
@@ -35,7 +33,6 @@ export const Table = forwardRef<HTMLTableElement, TableProps>(function Table(
 			tabIndex={tabIndex}
 			fontSize="sm"
 			focus
-			id={id}
 			width="100%"
 			display="table"
 			id={id}
