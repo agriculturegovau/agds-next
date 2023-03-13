@@ -216,7 +216,6 @@ const SinglePageForm = () => {
 									id="registrationDate"
 									invalid={Boolean(errors.registrationDate?.message)}
 									message={errors.registrationDate?.message}
-									required
 								/>
 							)}
 						/>
