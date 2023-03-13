@@ -1,27 +1,27 @@
 import '@testing-library/jest-dom';
 import 'html-validate/jest';
-import { cleanup, render } from '../../../test-utils';
+import { useRef } from 'react';
+import { cleanup, render, waitFor } from '../../../test-utils';
 import { ExampleMedium } from './ExampleMedium';
-import { useTestData } from './lib/testData';
 import { useSortAndFilter } from './lib/useSortAndFilter';
-import { generateTableCaption } from './lib/utils';
+import { generateTableCaption, useData } from './lib/utils';
 
 afterEach(cleanup);
 
 function MediumFilteringPatternTest({ loading }: { loading: boolean }) {
+	const tableRef = useRef<HTMLTableElement>(null);
 	const {
 		sort,
 		filters,
 		pagination,
-		resetPagination,
 		setSort,
 		setFilters,
 		resetFilters,
 		removeFilter,
 		setPagination,
-	} = useSortAndFilter();
+	} = useSortAndFilter({ tableRef });
 
-	const { data, totalPages, totalItems } = useTestData({
+	const { data, totalPages, totalItems } = useData({
 		filters,
 		pagination,
 		sort,
@@ -43,7 +43,6 @@ function MediumFilteringPatternTest({ loading }: { loading: boolean }) {
 				removeFilter,
 				pagination,
 				setPagination,
-				resetPagination,
 				totalPages,
 				totalItems,
 				loading,
@@ -55,22 +54,31 @@ function MediumFilteringPatternTest({ loading }: { loading: boolean }) {
 }
 
 describe('MediumFilteringPattern', () => {
-	it('renders correctly', () => {
-		const { container } = render(
-			<MediumFilteringPatternTest loading={false} />
-		);
-		expect(container).toMatchSnapshot();
-	});
-
-	it('renders a valid HTML structure', () => {
-		const { container } = render(
-			<MediumFilteringPatternTest loading={false} />
-		);
+	it('renders a valid HTML structure when loading', async () => {
+		const { container } = render(<MediumFilteringPatternTest loading />);
 		expect(container).toHTMLValidate({
 			extends: ['html-validate:recommended'],
-
 			rules: {
+				// react 18s `useId` break this rule
+				'valid-id': 'off',
 				'no-inline-style': 'off',
+			},
+		});
+	});
+
+	it('renders a valid HTML structure when loaded', async () => {
+		const { container } = render(
+			<MediumFilteringPatternTest loading={false} />
+		);
+
+		// Wait for the data to be loaded
+		await waitFor(() =>
+			expect(container.querySelector('caption')?.textContent).toContain('items')
+		);
+
+		expect(container).toHTMLValidate({
+			extends: ['html-validate:recommended'],
+			rules: {
 				// react 18s `useId` break this rule
 				'valid-id': 'off',
 			},

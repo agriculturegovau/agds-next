@@ -65,6 +65,7 @@ export const FilterAccordion = ({
 				<DateRangePicker
 					fromLabel="Registered from"
 					toLabel="Registered to"
+					hideOptionalLabel
 					onChange={(value) => {
 						setFilters({
 							...filters,

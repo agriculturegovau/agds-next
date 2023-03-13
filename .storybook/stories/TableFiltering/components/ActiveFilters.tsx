@@ -36,13 +36,14 @@ const getTagsFromFilters = ({
 				const { from, to } = value;
 
 				return {
+					// TODO add a formatter
 					label: `${key}: ${formatDate(from)} - ${formatDate(to)}`,
 					onRemove: () => removeFilter(key),
 				};
 			}
 
 			return {
-				key: key,
+				// TODO add a formatter
 				label: `${key}: ${value}`,
 				onRemove: () => removeFilter(key),
 			};

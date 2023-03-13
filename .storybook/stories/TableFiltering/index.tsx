@@ -57,7 +57,6 @@ export const Medium = () => {
 		filters,
 		pagination,
 		resetFilters,
-		resetPagination,
 		removeFilter,
 		setFilters,
 		setPagination,
@@ -87,7 +86,6 @@ export const Medium = () => {
 				loading={loading}
 				pagination={pagination}
 				resetFilters={resetFilters}
-				resetPagination={resetPagination}
 				setFilters={setFilters}
 				removeFilter={removeFilter}
 				setPagination={setPagination}

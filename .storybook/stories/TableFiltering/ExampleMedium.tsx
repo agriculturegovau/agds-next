@@ -1,6 +1,8 @@
+import { RefObject } from 'react';
 import { Stack } from '@ag.ds-next/react/box';
 import { Button, ButtonLink } from '@ag.ds-next/react/button';
 import { PageContent } from '@ag.ds-next/react/content';
+import { useToggleState } from '@ag.ds-next/react/core';
 import {
 	ChevronDownIcon,
 	ChevronUpIcon,
@@ -8,7 +10,6 @@ import {
 	PlusIcon,
 } from '@ag.ds-next/react/icon';
 import { PaginationButtons } from '@ag.ds-next/react/pagination';
-import { RefObject, useCallback, useState } from 'react';
 import { ActiveFilters } from './components/ActiveFilters';
 import { FilterAccordion } from './components/FilterAccordion';
 import { SortBySelect } from './components/SortBySelect';
@@ -36,7 +37,6 @@ type MediumExampleProps = {
 	// pagination
 	pagination: GetDataPagination;
 	setPagination: (pagination: GetDataPagination) => void;
-	resetPagination: () => void;
 	// data
 	totalPages: number;
 	totalItems: number;
@@ -56,7 +56,6 @@ export const ExampleMedium = ({
 	resetFilters,
 	pagination,
 	setPagination,
-	resetPagination,
 	totalPages,
 	totalItems,
 	loading,
@@ -64,19 +63,11 @@ export const ExampleMedium = ({
 	tableCaption,
 	tableRef,
 }: MediumExampleProps) => {
-	const [isOpen, setIsOpen] = useState(false);
+	const [isOpen, toggleIsOpen] = useToggleState(false, true);
 
 	// IDs for accordion to ensure accessibility
 	const buttonId = 'filter-button';
 	const bodyId = 'filter-body';
-
-	const onButtonClick = useCallback(() => {
-		if (isOpen) {
-			setIsOpen(false);
-		} else {
-			setIsOpen(true);
-		}
-	}, [isOpen, open, close]);
 
 	return (
 		<PageContent>
@@ -90,60 +81,48 @@ export const ExampleMedium = ({
 						pressed.
 					</p>
 				</Prose>
+				<div>
+					<ButtonLink href="#new" iconBefore={PlusIcon}>
+						New item
+					</ButtonLink>
+				</div>
 
-				<Stack gap={1}>
-					<div>
-						<ButtonLink href="#new" iconBefore={PlusIcon}>
-							New item
-						</ButtonLink>
-					</div>
+				<FilterRegion>
+					<FilterBar>
+						<FilterBarGroup>
+							<FilterSearchInput filters={filters} setFilters={setFilters} />
+							<FilterStatusSelect filters={filters} setFilters={setFilters} />
+							<Button
+								onClick={toggleIsOpen}
+								variant="secondary"
+								iconBefore={FilterIcon}
+								iconAfter={isOpen ? ChevronUpIcon : ChevronDownIcon}
+								// accessibility
+								aria-label="more filters"
+								id={buttonId}
+								aria-controls={bodyId}
+								aria-expanded={isOpen}
+							>
+								{isOpen ? 'Hide filters' : 'Show filters'}
+							</Button>
+						</FilterBarGroup>
 
-					<FilterRegion>
-						<FilterBar>
-							<FilterBarGroup>
-								<FilterSearchInput filters={filters} setFilters={setFilters} />
-								<FilterStatusSelect
-									filters={filters}
-									setFilters={setFilters}
-									resetPagination={resetPagination}
-								/>
-								<Button
-									onClick={onButtonClick}
-									variant="secondary"
-									iconBefore={FilterIcon}
-									iconAfter={isOpen ? ChevronUpIcon : ChevronDownIcon}
-									// accessibility
-									aria-label="more filters"
-									id={buttonId}
-									aria-controls={bodyId}
-									aria-expanded={isOpen}
-								>
-									{isOpen ? 'Hide filters' : 'Show filters'}
-								</Button>
-							</FilterBarGroup>
-
-							<SortBySelect
-								sort={sort}
-								setSort={setSort}
-								resetPagination={resetPagination}
-							/>
-						</FilterBar>
-						<FilterAccordion
-							id={bodyId}
-							ariaLabelledBy={buttonId}
-							filters={filters}
-							isOpen={isOpen}
-							setFilters={setFilters}
-							resetPagination={resetPagination}
-							resetFilters={resetFilters}
-						/>
-						<ActiveFilters
-							filters={filters}
-							removeFilter={removeFilter}
-							resetFilters={resetFilters}
-						/>
-					</FilterRegion>
-				</Stack>
+						<SortBySelect sort={sort} setSort={setSort} />
+					</FilterBar>
+					<FilterAccordion
+						id={bodyId}
+						ariaLabelledBy={buttonId}
+						filters={filters}
+						isOpen={isOpen}
+						setFilters={setFilters}
+						resetFilters={resetFilters}
+					/>
+					<ActiveFilters
+						filters={filters}
+						removeFilter={removeFilter}
+						resetFilters={resetFilters}
+					/>
+				</FilterRegion>
 
 				<DashboardTable
 					data={data}
@@ -155,6 +134,7 @@ export const ExampleMedium = ({
 					totalItems={totalItems}
 					ref={tableRef}
 				/>
+
 				{data.length ? (
 					<Stack>
 						<PaginationButtons
