@@ -17,9 +17,9 @@ export type DashboardTableHeaderBaseProps = {
 
 type DashboardTableHeaderProps = {
 	children: string;
-	sort?: DashboardTableHeaderSortDirection;
-	onClick?: () => void | undefined;
-	isSortable?: boolean | undefined;
+	sort: DashboardTableHeaderSortDirection;
+	onClick?: () => void;
+	isSortable: boolean;
 } & DashboardTableHeaderBaseProps;
 
 export const DashboardTableHeader = ({

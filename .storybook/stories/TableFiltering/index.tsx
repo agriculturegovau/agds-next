@@ -7,21 +7,17 @@ import { DraftBanner } from './components/DraftBanner';
 
 export default {
 	title: 'Patterns/Data Filtering (WIP)',
+	parameters: {
+		layout: 'fullscreen',
+	},
 };
 
 export const Small = () => {
 	const tableRef = useRef<HTMLTableElement>(null);
-	const {
-		sort,
-		filters,
-		pagination,
-		resetPagination,
-		setSort,
-		setFilters,
-		setPagination,
-	} = useSortAndFilter({
-		tableRef,
-	});
+	const { sort, filters, pagination, setSort, setFilters, setPagination } =
+		useSortAndFilter({
+			tableRef,
+		});
 
 	const { loading, data, totalPages, totalItems } = useData({
 		filters,
@@ -44,7 +40,6 @@ export const Small = () => {
 				setFilters={setFilters}
 				pagination={pagination}
 				setPagination={setPagination}
-				resetPagination={resetPagination}
 				totalPages={totalPages}
 				loading={loading}
 				data={data}

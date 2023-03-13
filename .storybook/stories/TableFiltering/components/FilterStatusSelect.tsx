@@ -5,11 +5,9 @@ import { tableId } from './DashboardTable';
 export const FilterStatusSelect = ({
 	filters,
 	setFilters,
-	resetPagination,
 }: {
 	filters: GetDataFilters;
 	setFilters: (sort: GetDataFilters) => void;
-	resetPagination?: () => void;
 }) => {
 	return (
 		<Select
@@ -32,7 +30,6 @@ export const FilterStatusSelect = ({
 					| 'completed'
 					| 'cancelled';
 
-				resetPagination && resetPagination();
 				setFilters({
 					...filters,
 					status: value === '' ? undefined : value,

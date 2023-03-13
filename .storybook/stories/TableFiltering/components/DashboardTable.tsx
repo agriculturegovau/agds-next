@@ -174,8 +174,10 @@ export const DashboardTable = forwardRef<HTMLTableElement, DashboardTableProps>(
 										requestDate,
 										status,
 									}) => {
+										// Adding 1 because the table header row is the first row
+										const rowIndex = index + 1;
 										return (
-											<tr key={id} aria-rowindex={index + 1}>
+											<tr key={id} aria-rowindex={rowIndex}>
 												<TableCell>
 													<TextLink href={`#${id}`}>{businessName}</TextLink>
 												</TableCell>
@@ -227,7 +229,7 @@ const STATUS_MAP = {
 const headers: ({
 	label: string;
 	sortKey: keyof BusinessForAudit;
-	isSortable?: true;
+	isSortable: boolean;
 } & DashboardTableHeaderBaseProps)[] = [
 	{
 		label: 'Business name',
@@ -245,6 +247,7 @@ const headers: ({
 		label: 'City',
 		sortKey: 'city',
 		width: '15%',
+		isSortable: false,
 	},
 	{
 		label: 'Employees',

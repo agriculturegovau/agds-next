@@ -6,11 +6,9 @@ import { tableId } from './DashboardTable';
 export const SortBySelect = ({
 	sort,
 	setSort,
-	resetPagination,
 }: {
 	sort: GetDataSort;
 	setSort: (sort: GetDataSort) => void;
-	resetPagination: () => void;
 }) => {
 	return (
 		<Select
@@ -54,7 +52,6 @@ export const SortBySelect = ({
 			aria-controls={tableId}
 			onChange={(e) => {
 				const [field, order] = e.target.value.split('-');
-				resetPagination();
 				setSort({
 					field: field as keyof BusinessForAudit,
 					order: order as 'ASC' | 'DESC',

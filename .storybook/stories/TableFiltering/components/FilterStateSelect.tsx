@@ -5,11 +5,9 @@ import { tableId } from './DashboardTable';
 export const FilterStateSelect = ({
 	filters,
 	setFilters,
-	resetPagination,
 }: {
 	filters: GetDataFilters;
 	setFilters: (filters: GetDataFilters) => void;
-	resetPagination?: () => void;
 }) => {
 	return (
 		<Select
@@ -30,7 +28,6 @@ export const FilterStateSelect = ({
 			aria-controls={tableId}
 			onChange={(e) => {
 				const value = e.target.value;
-				resetPagination && resetPagination();
 				setFilters({
 					...filters,
 					state: value === '' ? undefined : value,

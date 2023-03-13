@@ -14,7 +14,6 @@ export const FilterAccordion = ({
 	isOpen,
 	filters,
 	setFilters,
-	resetPagination,
 	resetFilters,
 }: {
 	ariaLabelledBy: string;
@@ -22,7 +21,6 @@ export const FilterAccordion = ({
 	isOpen: boolean;
 	filters: GetDataFilters;
 	setFilters: (filters: GetDataFilters) => void;
-	resetPagination: () => void;
 	resetFilters: () => void;
 }) => {
 	// This code has been copied from the Accordion component.
@@ -62,21 +60,12 @@ export const FilterAccordion = ({
 				border
 				borderColor="muted"
 			>
-				<FilterStateSelect
-					filters={filters}
-					setFilters={setFilters}
-					resetPagination={resetPagination}
-				/>
-				<FilterAssigneeSelect
-					filters={filters}
-					setFilters={setFilters}
-					resetPagination={resetPagination}
-				/>
+				<FilterStateSelect filters={filters} setFilters={setFilters} />
+				<FilterAssigneeSelect filters={filters} setFilters={setFilters} />
 				<DateRangePicker
 					fromLabel="Registered from"
 					toLabel="Registered to"
 					onChange={(value) => {
-						resetPagination();
 						setFilters({
 							...filters,
 							requestDate: value,
@@ -87,7 +76,6 @@ export const FilterAccordion = ({
 				<Button
 					variant="secondary"
 					onClick={() => {
-						resetPagination();
 						resetFilters();
 					}}
 				>

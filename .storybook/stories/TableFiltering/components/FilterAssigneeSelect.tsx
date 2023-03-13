@@ -6,11 +6,9 @@ import { tableId } from './DashboardTable';
 export const FilterAssigneeSelect = ({
 	filters,
 	setFilters,
-	resetPagination,
 }: {
 	filters: GetDataFilters;
 	setFilters: (filters: GetDataFilters) => void;
-	resetPagination?: () => void;
 }) => {
 	return (
 		<Select
@@ -25,7 +23,6 @@ export const FilterAssigneeSelect = ({
 			value={filters.assignee || ''}
 			onChange={(e) => {
 				const value = e.target.value;
-				resetPagination && resetPagination();
 				setFilters({
 					...filters,
 					assignee: value === '' ? undefined : value,

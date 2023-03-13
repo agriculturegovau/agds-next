@@ -27,14 +27,13 @@ export type SmallExampleProps = {
 	// pagination
 	pagination: GetDataPagination;
 	setPagination: (pagination: GetDataPagination) => void;
-	resetPagination: () => void;
 	// data
 	totalPages: number;
 	totalItems: number;
 	loading: boolean;
 	data: BusinessForAuditWithIndex[];
 	tableCaption: string;
-	tableRef?: RefObject<HTMLTableElement>;
+	tableRef: RefObject<HTMLTableElement>;
 };
 
 /** These patterns are draft designs and are not yet ready for production. */
@@ -45,7 +44,6 @@ export const ExampleSmall = ({
 	setFilters,
 	pagination,
 	setPagination,
-	resetPagination,
 	totalPages,
 	totalItems,
 	loading,
@@ -72,23 +70,11 @@ export const ExampleSmall = ({
 				<FilterRegion>
 					<FilterBar>
 						<FilterBarGroup>
-							<FilterStatusSelect
-								filters={filters}
-								setFilters={setFilters}
-								resetPagination={resetPagination}
-							/>
-							<FilterAssigneeSelect
-								filters={filters}
-								setFilters={setFilters}
-								resetPagination={resetPagination}
-							/>
+							<FilterStatusSelect filters={filters} setFilters={setFilters} />
+							<FilterAssigneeSelect filters={filters} setFilters={setFilters} />
 						</FilterBarGroup>
 
-						<SortBySelect
-							sort={sort}
-							setSort={setSort}
-							resetPagination={resetPagination}
-						/>
+						<SortBySelect sort={sort} setSort={setSort} />
 					</FilterBar>
 				</FilterRegion>
 

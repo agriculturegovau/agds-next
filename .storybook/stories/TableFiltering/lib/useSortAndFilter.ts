@@ -1,29 +1,14 @@
 import { RefObject, useState } from 'react';
 import { GetDataFilters, GetDataPagination, GetDataSort } from './getData';
 
-export type SortAndFilterType = {
-	// sort
-	sort: GetDataSort;
-	setSort: (sort: GetDataSort) => void;
-	// filter
-	filters: GetDataFilters;
-	setFilters: (filters: GetDataFilters) => void;
-	resetFilters: () => void;
-	removeFilter: (key: keyof GetDataFilters) => void;
-	// pagination
-	pagination: GetDataPagination;
-	setPagination: (pagination: GetDataPagination) => void;
-	resetPagination: () => void;
-};
-
-export const useSortAndFilter: (args?: {
+export const useSortAndFilter = (args: {
 	filters?: Partial<GetDataFilters>;
 	itemsPerPage?: number;
 	tableRef: RefObject<HTMLTableElement>;
-}) => SortAndFilterType = (args) => {
+}) => {
 	const [pagination, setPaginationObj] = useState<GetDataPagination>({
 		page: 1,
-		perPage: args?.itemsPerPage || 10,
+		perPage: args.itemsPerPage || 10,
 	});
 	const [sort, setSortObj] = useState<GetDataSort>({
 		field: 'businessName',
@@ -38,18 +23,16 @@ export const useSortAndFilter: (args?: {
 			from: undefined,
 			to: undefined,
 		},
-		...args?.filters,
+		...args.filters,
 	});
 
 	const focusTable = () => {
-		console.log('focusTable', args?.tableRef?.current);
-		if (args?.tableRef?.current) {
-			args.tableRef.current.focus();
-		}
+		args.tableRef.current?.focus();
 	};
 
 	const setSort = (sort: GetDataSort) => {
 		setSortObj(sort);
+		resetPagination();
 		focusTable();
 	};
 
@@ -57,6 +40,7 @@ export const useSortAndFilter: (args?: {
 		setPaginationObj(pagination);
 		focusTable();
 	};
+
 	const resetPagination = () => {
 		setPaginationObj({ ...pagination, page: 1 });
 		focusTable();
@@ -64,8 +48,10 @@ export const useSortAndFilter: (args?: {
 
 	const setFilters = (filters: GetDataFilters) => {
 		setFiltersObj(filters);
+		resetPagination();
 		focusTable();
 	};
+
 	const resetFilters = () => {
 		setFiltersObj({
 			assignee: undefined,
@@ -77,6 +63,7 @@ export const useSortAndFilter: (args?: {
 				to: undefined,
 			},
 		});
+		resetPagination();
 		focusTable();
 	};
 
@@ -85,6 +72,7 @@ export const useSortAndFilter: (args?: {
 			...filters,
 			[key]: undefined,
 		});
+		resetPagination();
 		focusTable();
 	};
 
@@ -95,11 +83,11 @@ export const useSortAndFilter: (args?: {
 		// filter
 		filters,
 		setFilters,
-		resetFilters,
 		removeFilter,
 		// pagination
 		pagination,
 		setPagination,
-		resetPagination,
+		// reset
+		resetFilters,
 	};
 };
