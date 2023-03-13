@@ -274,6 +274,7 @@ exports[`SmallFilteringPattern renders correctly 1`] = `
           <table
             class="css-57emj1-boxStyles-Table"
             id="dashboard-table"
+            tabindex="-1"
           >
             <caption
               class="css-qt4zh6-boxStyles-Text-TableCaption"
@@ -302,13 +303,13 @@ exports[`SmallFilteringPattern renders correctly 1`] = `
                   Assignee
                 </th>
                 <th
-                  class="css-6jlnw2-boxStyles-TableHeader"
+                  class="css-1622710-boxStyles-TableHeader"
                   scope="col"
                 >
                   City
                 </th>
                 <th
-                  class="css-1o5hlha-boxStyles-TableHeader"
+                  class="css-18ambui-boxStyles-TableHeader"
                   scope="col"
                 >
                   Employees

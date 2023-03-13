@@ -2,7 +2,7 @@ import { Flex, Stack } from '@ag.ds-next/react/box';
 import { Button, ButtonLink } from '@ag.ds-next/react/button';
 import { PageContent } from '@ag.ds-next/react/content';
 import { FilterIcon, PlusIcon } from '@ag.ds-next/react/icon';
-import { useState } from 'react';
+import { RefObject, useState } from 'react';
 import { ActiveFilters } from './components/ActiveFilters';
 import { SortBySelect } from './components/SortBySelect';
 import { DashboardTable } from './components/DashboardTable';
@@ -37,8 +37,10 @@ type ExampleLargeProps = {
 	loading: boolean;
 	data: BusinessForAuditWithIndex[];
 	tableCaption: string;
+	tableRef?: RefObject<HTMLTableElement>;
 };
 
+/** These patterns are draft designs and are not yet ready for production. */
 export const ExampleLarge = ({
 	sort,
 	setSort,
@@ -54,6 +56,7 @@ export const ExampleLarge = ({
 	loading,
 	data,
 	tableCaption,
+	tableRef,
 }: ExampleLargeProps) => {
 	const [isOpen, setIsOpen] = useState(false);
 
@@ -113,6 +116,7 @@ export const ExampleLarge = ({
 					</FilterRegion>
 				</Stack>
 				<DashboardTable
+					ref={tableRef}
 					data={data}
 					loading={loading}
 					itemsPerPage={pagination.perPage}

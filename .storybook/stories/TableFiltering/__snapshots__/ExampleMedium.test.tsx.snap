@@ -465,159 +465,184 @@ exports[`MediumFilteringPattern renders correctly 1`] = `
                     </svg>
                   </div>
                 </div>
-                <div>
-                  <div
-                    class="css-ns3arw-boxStyles"
+                <div
+                  class="css-1904cz9-boxStyles-FieldContainer"
+                  id="date-range-picker-:r5:"
+                >
+                  <fieldset
+                    class="css-1lbpzz2-DateRangePicker"
                   >
-                    <div
-                      class="css-1904cz9-boxStyles-FieldContainer"
+                    <legend
+                      class="css-n4cl2w-boxStyles-DateRangePicker"
                     >
-                      <label
-                        class="css-n7rdvo-boxStyles"
-                        for="field-:r5:"
+                      <span
+                        class="css-433uqb-boxStyles-Text"
                       >
-                        <span
-                          class="css-433uqb-boxStyles-Text"
-                        >
-                          Registered from
-                        </span>
-                        <span
-                          class="css-1rpt3h8-boxStyles-Text"
-                        >
-                          (dd/mm/yyyy)
-                        </span>
-                      </label>
+                        Date range
+                      </span>
+                      <span
+                        class="css-1rpt3h8-boxStyles-Text"
+                      >
+                        (optional)
+                      </span>
+                    </legend>
+                    <div
+                      class="css-1fqlpl4-boxStyles-DateRangePicker"
+                    >
                       <div
-                        class="css-7swrfr-boxStyles-DateInput"
+                        class="css-ns3arw-boxStyles"
                       >
-                        <input
-                          aria-invalid="false"
-                          aria-required="false"
-                          autocomplete="off"
-                          class="css-nisjv6-DateInput"
-                          id="field-:r5:"
-                          type="text"
-                          value=""
-                        />
-                        <button
-                          aria-label="Choose date"
-                          class="css-5re0pj-BaseButton-DateInput"
-                          type="button"
+                        <div
+                          class="css-1904cz9-boxStyles-FieldContainer"
                         >
-                          <span>
+                          <label
+                            class="css-n7rdvo-boxStyles"
+                            for="field-:r6:"
+                          >
                             <span
-                              class="css-oobk4c-Button"
+                              class="css-433uqb-boxStyles-Text"
                             >
-                              <svg
-                                aria-hidden="true"
-                                class="css-1aretzv-DateInput"
-                                clip-rule="evenodd"
-                                focusable="false"
-                                height="24"
-                                role="img"
-                                viewBox="0 0 24 24"
-                                width="24"
-                                xmlns="http://www.w3.org/2000/svg"
-                              >
-                                <path
-                                  d="M8 3C8 4.5621 8 5.4379 8 7"
-                                />
-                                <path
-                                  d="M16 3C16 4.5621 16 5.4379 16 7"
-                                />
-                                <path
-                                  d="M21 20V6C21 5.44772 20.5523 5 20 5H4C3.44772 5 3 5.44772 3 6V20C3 20.5523 3.44772 21 4 21H20C20.5523 21 21 20.5523 21 20Z"
-                                />
-                                <line
-                                  x1="3"
-                                  x2="21"
-                                  y1="12"
-                                  y2="12"
-                                />
-                              </svg>
+                              Registered from
                             </span>
                             <span
-                              aria-live="assertive"
-                            />
-                          </span>
-                        </button>
-                      </div>
-                    </div>
-                    <div
-                      class="css-1904cz9-boxStyles-FieldContainer"
-                    >
-                      <label
-                        class="css-n7rdvo-boxStyles"
-                        for="field-:r6:"
-                      >
-                        <span
-                          class="css-433uqb-boxStyles-Text"
-                        >
-                          Registered to
-                        </span>
-                        <span
-                          class="css-1rpt3h8-boxStyles-Text"
-                        >
-                          (dd/mm/yyyy)
-                        </span>
-                      </label>
-                      <div
-                        class="css-7swrfr-boxStyles-DateInput"
-                      >
-                        <input
-                          aria-invalid="false"
-                          aria-required="false"
-                          autocomplete="off"
-                          class="css-nisjv6-DateInput"
-                          id="field-:r6:"
-                          type="text"
-                          value=""
-                        />
-                        <button
-                          aria-label="Choose date"
-                          class="css-5re0pj-BaseButton-DateInput"
-                          type="button"
-                        >
-                          <span>
-                            <span
-                              class="css-oobk4c-Button"
+                              class="css-1rpt3h8-boxStyles-Text"
                             >
-                              <svg
-                                aria-hidden="true"
-                                class="css-1aretzv-DateInput"
-                                clip-rule="evenodd"
-                                focusable="false"
-                                height="24"
-                                role="img"
-                                viewBox="0 0 24 24"
-                                width="24"
-                                xmlns="http://www.w3.org/2000/svg"
-                              >
-                                <path
-                                  d="M8 3C8 4.5621 8 5.4379 8 7"
+                              (dd/mm/yyyy)
+                            </span>
+                          </label>
+                          <div
+                            class="css-7swrfr-boxStyles-DateInput"
+                          >
+                            <input
+                              aria-invalid="false"
+                              aria-required="false"
+                              autocomplete="off"
+                              class="css-nisjv6-DateInput"
+                              id="field-:r6:"
+                              type="text"
+                              value=""
+                            />
+                            <button
+                              aria-label="Choose date"
+                              class="css-5re0pj-BaseButton-DateInput"
+                              type="button"
+                            >
+                              <span>
+                                <span
+                                  class="css-oobk4c-Button"
+                                >
+                                  <svg
+                                    aria-hidden="true"
+                                    class="css-1aretzv-DateInput"
+                                    clip-rule="evenodd"
+                                    focusable="false"
+                                    height="24"
+                                    role="img"
+                                    viewBox="0 0 24 24"
+                                    width="24"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                  >
+                                    <path
+                                      d="M8 3C8 4.5621 8 5.4379 8 7"
+                                    />
+                                    <path
+                                      d="M16 3C16 4.5621 16 5.4379 16 7"
+                                    />
+                                    <path
+                                      d="M21 20V6C21 5.44772 20.5523 5 20 5H4C3.44772 5 3 5.44772 3 6V20C3 20.5523 3.44772 21 4 21H20C20.5523 21 21 20.5523 21 20Z"
+                                    />
+                                    <line
+                                      x1="3"
+                                      x2="21"
+                                      y1="12"
+                                      y2="12"
+                                    />
+                                  </svg>
+                                </span>
+                                <span
+                                  aria-live="assertive"
                                 />
-                                <path
-                                  d="M16 3C16 4.5621 16 5.4379 16 7"
-                                />
-                                <path
-                                  d="M21 20V6C21 5.44772 20.5523 5 20 5H4C3.44772 5 3 5.44772 3 6V20C3 20.5523 3.44772 21 4 21H20C20.5523 21 21 20.5523 21 20Z"
-                                />
-                                <line
-                                  x1="3"
-                                  x2="21"
-                                  y1="12"
-                                  y2="12"
-                                />
-                              </svg>
+                              </span>
+                            </button>
+                          </div>
+                        </div>
+                        <div
+                          class="css-1904cz9-boxStyles-FieldContainer"
+                        >
+                          <label
+                            class="css-n7rdvo-boxStyles"
+                            for="field-:r7:"
+                          >
+                            <span
+                              class="css-433uqb-boxStyles-Text"
+                            >
+                              Registered to
                             </span>
                             <span
-                              aria-live="assertive"
+                              class="css-1rpt3h8-boxStyles-Text"
+                            >
+                              (dd/mm/yyyy)
+                            </span>
+                          </label>
+                          <div
+                            class="css-7swrfr-boxStyles-DateInput"
+                          >
+                            <input
+                              aria-invalid="false"
+                              aria-required="false"
+                              autocomplete="off"
+                              class="css-nisjv6-DateInput"
+                              id="field-:r7:"
+                              type="text"
+                              value=""
                             />
-                          </span>
-                        </button>
+                            <button
+                              aria-label="Choose date"
+                              class="css-5re0pj-BaseButton-DateInput"
+                              type="button"
+                            >
+                              <span>
+                                <span
+                                  class="css-oobk4c-Button"
+                                >
+                                  <svg
+                                    aria-hidden="true"
+                                    class="css-1aretzv-DateInput"
+                                    clip-rule="evenodd"
+                                    focusable="false"
+                                    height="24"
+                                    role="img"
+                                    viewBox="0 0 24 24"
+                                    width="24"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                  >
+                                    <path
+                                      d="M8 3C8 4.5621 8 5.4379 8 7"
+                                    />
+                                    <path
+                                      d="M16 3C16 4.5621 16 5.4379 16 7"
+                                    />
+                                    <path
+                                      d="M21 20V6C21 5.44772 20.5523 5 20 5H4C3.44772 5 3 5.44772 3 6V20C3 20.5523 3.44772 21 4 21H20C20.5523 21 21 20.5523 21 20Z"
+                                    />
+                                    <line
+                                      x1="3"
+                                      x2="21"
+                                      y1="12"
+                                      y2="12"
+                                    />
+                                  </svg>
+                                </span>
+                                <span
+                                  aria-live="assertive"
+                                />
+                              </span>
+                            </button>
+                          </div>
+                        </div>
                       </div>
                     </div>
-                  </div>
+                  </fieldset>
                 </div>
                 <button
                   class="css-eecl5m-BaseButton-Button"
@@ -644,6 +669,7 @@ exports[`MediumFilteringPattern renders correctly 1`] = `
           <table
             class="css-57emj1-boxStyles-Table"
             id="dashboard-table"
+            tabindex="-1"
           >
             <caption
               class="css-qt4zh6-boxStyles-Text-TableCaption"
@@ -716,13 +742,13 @@ exports[`MediumFilteringPattern renders correctly 1`] = `
                   </button>
                 </th>
                 <th
-                  class="css-6jlnw2-boxStyles-TableHeader"
+                  class="css-1622710-boxStyles-TableHeader"
                   scope="col"
                 >
                   City
                 </th>
                 <th
-                  class="css-rq1mcj-boxStyles-DashboardTableHeader"
+                  class="css-1uhswxm-boxStyles-DashboardTableHeader"
                   scope="col"
                 >
                   <button

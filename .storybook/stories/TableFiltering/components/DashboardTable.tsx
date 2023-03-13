@@ -11,7 +11,7 @@ import {
 } from '@ag.ds-next/react/table';
 import { TextLink } from '@ag.ds-next/react/text-link';
 import { Text } from '@ag.ds-next/react/text';
-import { Fragment } from 'react';
+import { forwardRef, Fragment } from 'react';
 import { format } from 'date-fns';
 import {
 	BusinessForAudit,
@@ -64,141 +64,146 @@ export type DashboardTableProps = {
 
 export const tableId = 'dashboard-table';
 
-export const DashboardTable = ({
-	caption,
-	data,
-	loading,
-	sort,
-	setSort,
-	itemsPerPage = 10,
-	totalItems,
-}: DashboardTableProps) => {
-	const isTableSortable = !!sort || !!setSort;
+export const DashboardTable = forwardRef<HTMLTableElement, DashboardTableProps>(
+	function DashboardTable(
+		{
+			caption,
+			data,
+			loading,
+			sort,
+			setSort,
+			itemsPerPage = 10,
+			totalItems,
+		}: DashboardTableProps,
+		ref
+	) {
+		const isTableSortable = !!sort || !!setSort;
 
-	if (!loading && data.length === 0) {
-		return <Text>No results</Text>;
-	}
+		if (!loading && data.length === 0) {
+			return <Text>No results</Text>;
+		}
 
-	return (
-		<TableWrapper>
-			<Table aria-rowcount={totalItems} id={tableId}>
-				<TableCaption>
-					{caption}
-					<VisuallyHidden>
-						, column headers with buttons are sortable.
-					</VisuallyHidden>
-				</TableCaption>
-				<TableHead>
-					<tr>
-						{headers.map(
-							({
-								label,
-								sortKey,
-								textAlign,
-								width,
-								isSortable: isFieldSortable,
-							}) => {
-								const isFieldTheActiveSortField = sort?.field === sortKey;
-								const clickHandler = () =>
-									setSort?.({
-										field: sortKey,
-										order:
-											sort?.field === sortKey && sort?.order === 'ASC'
-												? 'DESC'
-												: 'ASC',
-									});
-
-								return (
-									<DashboardTableHeader
-										key={sortKey}
-										textAlign={textAlign}
-										width={width}
-										isSortable={isTableSortable && isFieldSortable}
-										sort={isFieldTheActiveSortField ? sort.order : undefined}
-										onClick={clickHandler}
-									>
-										{label}
-									</DashboardTableHeader>
-								);
-							}
-						)}
-					</tr>
-				</TableHead>
-				<TableBody>
-					{loading ? (
-						<Fragment>
-							{Array.from(Array(itemsPerPage).keys()).map((i) => (
-								<tr key={i}>
-									<TableCell>
-										<SkeletonText />
-										<VisuallyHidden>Loading</VisuallyHidden>
-									</TableCell>
-									<TableCell>
-										<SkeletonText />
-										<VisuallyHidden>Loading</VisuallyHidden>
-									</TableCell>
-									<TableCell>
-										<SkeletonText />
-										<VisuallyHidden>Loading</VisuallyHidden>
-									</TableCell>
-									<TableCell>
-										<SkeletonText />
-										<VisuallyHidden>Loading</VisuallyHidden>
-									</TableCell>
-									<TableCell>
-										<SkeletonText />
-										<VisuallyHidden>Loading</VisuallyHidden>
-									</TableCell>
-									<TableCell>
-										<SkeletonBox height={32} />
-										<VisuallyHidden>Loading</VisuallyHidden>
-									</TableCell>
-								</tr>
-							))}
-						</Fragment>
-					) : (
-						<Fragment>
-							{data.map(
+		return (
+			<TableWrapper>
+				<Table aria-rowcount={totalItems} id={tableId} ref={ref} tabIndex={-1}>
+					<TableCaption>
+						{caption}
+						<VisuallyHidden>
+							, column headers with buttons are sortable.
+						</VisuallyHidden>
+					</TableCaption>
+					<TableHead>
+						<tr>
+							{headers.map(
 								({
-									index,
-									id,
-									assignee,
-									businessName,
-									city,
-									state,
-									numberOfEmployees,
-									requestDate,
-									status,
+									label,
+									sortKey,
+									textAlign,
+									width,
+									isSortable: isFieldSortable,
 								}) => {
+									const isFieldTheActiveSortField = sort?.field === sortKey;
+									const clickHandler = () =>
+										setSort?.({
+											field: sortKey,
+											order:
+												sort?.field === sortKey && sort?.order === 'ASC'
+													? 'DESC'
+													: 'ASC',
+										});
+
 									return (
-										<tr key={id} aria-rowindex={index + 1}>
-											<TableCell>
-												<TextLink href={`#${id}`}>{businessName}</TextLink>
-											</TableCell>
-											<DashboardTableRowAssignee assignee={assignee} />
-											<TableCell>
-												{city}, {state}
-											</TableCell>
-											<TableCell textAlign="right">
-												{numberOfEmployees}
-											</TableCell>
-											<TableCell textAlign="right">
-												{format(requestDate, 'dd/MM/yyyy')}
-											</TableCell>
-											<TableCell>
-												<StatusBadge {...STATUS_MAP[status]} />
-											</TableCell>
-										</tr>
+										<DashboardTableHeader
+											key={sortKey}
+											textAlign={textAlign}
+											width={width}
+											isSortable={isTableSortable && isFieldSortable}
+											sort={isFieldTheActiveSortField ? sort.order : undefined}
+											onClick={clickHandler}
+										>
+											{label}
+										</DashboardTableHeader>
 									);
 								}
 							)}
-						</Fragment>
-					)}
-				</TableBody>
-			</Table>
-		</TableWrapper>
-	);
-};
+						</tr>
+					</TableHead>
+					<TableBody>
+						{loading ? (
+							<Fragment>
+								{Array.from(Array(itemsPerPage).keys()).map((i) => (
+									<tr key={i}>
+										<TableCell>
+											<SkeletonText />
+											<VisuallyHidden>Loading</VisuallyHidden>
+										</TableCell>
+										<TableCell>
+											<SkeletonText />
+											<VisuallyHidden>Loading</VisuallyHidden>
+										</TableCell>
+										<TableCell>
+											<SkeletonText />
+											<VisuallyHidden>Loading</VisuallyHidden>
+										</TableCell>
+										<TableCell>
+											<SkeletonText />
+											<VisuallyHidden>Loading</VisuallyHidden>
+										</TableCell>
+										<TableCell>
+											<SkeletonText />
+											<VisuallyHidden>Loading</VisuallyHidden>
+										</TableCell>
+										<TableCell>
+											<SkeletonBox height={32} />
+											<VisuallyHidden>Loading</VisuallyHidden>
+										</TableCell>
+									</tr>
+								))}
+							</Fragment>
+						) : (
+							<Fragment>
+								{data.map(
+									({
+										index,
+										id,
+										assignee,
+										businessName,
+										city,
+										state,
+										numberOfEmployees,
+										requestDate,
+										status,
+									}) => {
+										return (
+											<tr key={id} aria-rowindex={index + 1}>
+												<TableCell>
+													<TextLink href={`#${id}`}>{businessName}</TextLink>
+												</TableCell>
+												<DashboardTableRowAssignee assignee={assignee} />
+												<TableCell>
+													{city}, {state}
+												</TableCell>
+												<TableCell textAlign="right">
+													{numberOfEmployees}
+												</TableCell>
+												<TableCell textAlign="right">
+													{format(requestDate, 'dd/MM/yyyy')}
+												</TableCell>
+												<TableCell>
+													<StatusBadge {...STATUS_MAP[status]} />
+												</TableCell>
+											</tr>
+										);
+									}
+								)}
+							</Fragment>
+						)}
+					</TableBody>
+				</Table>
+			</TableWrapper>
+		);
+	}
+);
 
 const STATUS_MAP = {
 	notBooked: {

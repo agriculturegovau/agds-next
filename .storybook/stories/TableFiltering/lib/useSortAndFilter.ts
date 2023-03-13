@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { RefObject, useState } from 'react';
 import { GetDataFilters, GetDataPagination, GetDataSort } from './getData';
 
 export type SortAndFilterType = {
@@ -19,16 +19,17 @@ export type SortAndFilterType = {
 export const useSortAndFilter: (args?: {
 	filters?: Partial<GetDataFilters>;
 	itemsPerPage?: number;
+	tableRef: RefObject<HTMLTableElement>;
 }) => SortAndFilterType = (args) => {
-	const [pagination, setPagination] = useState<GetDataPagination>({
+	const [pagination, setPaginationObj] = useState<GetDataPagination>({
 		page: 1,
 		perPage: args?.itemsPerPage || 10,
 	});
-	const [sort, setSort] = useState<GetDataSort>({
+	const [sort, setSortObj] = useState<GetDataSort>({
 		field: 'businessName',
 		order: 'ASC',
 	});
-	const [filters, setFilters] = useState<GetDataFilters>({
+	const [filters, setFiltersObj] = useState<GetDataFilters>({
 		assignee: undefined,
 		businessName: undefined,
 		state: undefined,
@@ -40,9 +41,33 @@ export const useSortAndFilter: (args?: {
 		...args?.filters,
 	});
 
-	const resetPagination = () => setPagination({ ...pagination, page: 1 });
-	const resetFilters = () =>
-		setFilters({
+	const focusTable = () => {
+		console.log('focusTable', args?.tableRef?.current);
+		if (args?.tableRef?.current) {
+			args.tableRef.current.focus();
+		}
+	};
+
+	const setSort = (sort: GetDataSort) => {
+		setSortObj(sort);
+		focusTable();
+	};
+
+	const setPagination = (pagination: GetDataPagination) => {
+		setPaginationObj(pagination);
+		focusTable();
+	};
+	const resetPagination = () => {
+		setPaginationObj({ ...pagination, page: 1 });
+		focusTable();
+	};
+
+	const setFilters = (filters: GetDataFilters) => {
+		setFiltersObj(filters);
+		focusTable();
+	};
+	const resetFilters = () => {
+		setFiltersObj({
 			assignee: undefined,
 			businessName: undefined,
 			state: undefined,
@@ -52,12 +77,15 @@ export const useSortAndFilter: (args?: {
 				to: undefined,
 			},
 		});
+		focusTable();
+	};
 
 	const removeFilter = (key: keyof GetDataFilters) => {
-		setFilters({
+		setFiltersObj({
 			...filters,
 			[key]: undefined,
 		});
+		focusTable();
 	};
 
 	return {

@@ -1,4 +1,4 @@
-import { Flex, Stack } from '@ag.ds-next/react/box';
+import { Stack } from '@ag.ds-next/react/box';
 import { Button, ButtonLink } from '@ag.ds-next/react/button';
 import { PageContent } from '@ag.ds-next/react/content';
 import {
@@ -8,11 +8,11 @@ import {
 	PlusIcon,
 } from '@ag.ds-next/react/icon';
 import { PaginationButtons } from '@ag.ds-next/react/pagination';
-import { useCallback, useState } from 'react';
+import { RefObject, useCallback, useState } from 'react';
 import { ActiveFilters } from './components/ActiveFilters';
 import { FilterAccordion } from './components/FilterAccordion';
 import { SortBySelect } from './components/SortBySelect';
-import { DashboardTable, tableId } from './components/DashboardTable';
+import { DashboardTable } from './components/DashboardTable';
 import { FilterSearchInput } from './components/FilterSearchInput';
 import { FilterStatusSelect } from './components/FilterStatusSelect';
 import { GetDataFilters, GetDataPagination, GetDataSort } from './lib/getData';
@@ -43,8 +43,10 @@ type MediumExampleProps = {
 	loading: boolean;
 	data: BusinessForAuditWithIndex[];
 	tableCaption: string;
+	tableRef?: RefObject<HTMLTableElement>;
 };
 
+/** These patterns are draft designs and are not yet ready for production. */
 export const ExampleMedium = ({
 	sort,
 	setSort,
@@ -60,6 +62,7 @@ export const ExampleMedium = ({
 	loading,
 	data,
 	tableCaption,
+	tableRef,
 }: MediumExampleProps) => {
 	const [isOpen, setIsOpen] = useState(false);
 
@@ -150,6 +153,7 @@ export const ExampleMedium = ({
 					sort={sort}
 					setSort={setSort}
 					totalItems={totalItems}
+					ref={tableRef}
 				/>
 				{data.length ? (
 					<Stack>

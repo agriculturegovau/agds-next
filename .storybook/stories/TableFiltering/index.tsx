@@ -3,12 +3,15 @@ import { ExampleMedium } from './ExampleMedium';
 import { ExampleLarge } from './ExampleLarge';
 import { useSortAndFilter } from './lib/useSortAndFilter';
 import { genetateTableCaption, useData } from './lib/utils';
+import { useRef } from 'react';
+import { DraftBanner } from './components/DraftBanner';
 
 export default {
-	title: 'Patterns/Filtering',
+	title: 'Patterns/Data Filtering (WIP)',
 };
 
 export const Small = () => {
+	const tableRef = useRef<HTMLTableElement>(null);
 	const {
 		sort,
 		filters,
@@ -17,7 +20,9 @@ export const Small = () => {
 		setSort,
 		setFilters,
 		setPagination,
-	} = useSortAndFilter();
+	} = useSortAndFilter({
+		tableRef,
+	});
 
 	const { loading, data, totalPages, totalItems } = useData({
 		filters,
@@ -31,24 +36,29 @@ export const Small = () => {
 	});
 
 	return (
-		<ExampleSmall
-			sort={sort}
-			setSort={setSort}
-			filters={filters}
-			setFilters={setFilters}
-			pagination={pagination}
-			setPagination={setPagination}
-			resetPagination={resetPagination}
-			totalPages={totalPages}
-			loading={loading}
-			data={data}
-			tableCaption={tableCaption}
-			totalItems={totalItems}
-		/>
+		<>
+			<DraftBanner />
+			<ExampleSmall
+				sort={sort}
+				setSort={setSort}
+				filters={filters}
+				setFilters={setFilters}
+				pagination={pagination}
+				setPagination={setPagination}
+				resetPagination={resetPagination}
+				totalPages={totalPages}
+				loading={loading}
+				data={data}
+				tableRef={tableRef}
+				tableCaption={tableCaption}
+				totalItems={totalItems}
+			/>
+		</>
 	);
 };
 
 export const Medium = () => {
+	const tableRef = useRef<HTMLTableElement>(null);
 	const {
 		filters,
 		pagination,
@@ -59,7 +69,9 @@ export const Medium = () => {
 		setPagination,
 		setSort,
 		sort,
-	} = useSortAndFilter();
+	} = useSortAndFilter({
+		tableRef,
+	});
 
 	const { loading, data, totalPages, totalItems } = useData({
 		filters,
@@ -73,26 +85,31 @@ export const Medium = () => {
 	});
 
 	return (
-		<ExampleMedium
-			data={data}
-			filters={filters}
-			loading={loading}
-			pagination={pagination}
-			resetFilters={resetFilters}
-			resetPagination={resetPagination}
-			setFilters={setFilters}
-			removeFilter={removeFilter}
-			setPagination={setPagination}
-			setSort={setSort}
-			sort={sort}
-			tableCaption={tableCaption}
-			totalPages={totalPages}
-			totalItems={totalItems}
-		/>
+		<>
+			<DraftBanner />
+			<ExampleMedium
+				data={data}
+				filters={filters}
+				loading={loading}
+				pagination={pagination}
+				resetFilters={resetFilters}
+				resetPagination={resetPagination}
+				setFilters={setFilters}
+				removeFilter={removeFilter}
+				setPagination={setPagination}
+				setSort={setSort}
+				sort={sort}
+				tableRef={tableRef}
+				tableCaption={tableCaption}
+				totalPages={totalPages}
+				totalItems={totalItems}
+			/>
+		</>
 	);
 };
 
 export const Large = () => {
+	const tableRef = useRef<HTMLTableElement>(null);
 	const {
 		filters,
 		pagination,
@@ -105,6 +122,7 @@ export const Large = () => {
 		sort,
 	} = useSortAndFilter({
 		itemsPerPage: 20,
+		tableRef,
 	});
 
 	const { loading, data, totalPages, totalItems } = useData({
@@ -119,21 +137,25 @@ export const Large = () => {
 	});
 
 	return (
-		<ExampleLarge
-			data={data}
-			filters={filters}
-			loading={loading}
-			pagination={pagination}
-			resetFilters={resetFilters}
-			removeFilter={removeFilter}
-			resetPagination={resetPagination}
-			setFilters={setFilters}
-			setPagination={setPagination}
-			setSort={setSort}
-			sort={sort}
-			tableCaption={tableCaption}
-			totalPages={totalPages}
-			totalItems={totalItems}
-		/>
+		<>
+			<DraftBanner />
+			<ExampleLarge
+				data={data}
+				filters={filters}
+				loading={loading}
+				pagination={pagination}
+				resetFilters={resetFilters}
+				removeFilter={removeFilter}
+				resetPagination={resetPagination}
+				setFilters={setFilters}
+				setPagination={setPagination}
+				setSort={setSort}
+				sort={sort}
+				tableRef={tableRef}
+				tableCaption={tableCaption}
+				totalPages={totalPages}
+				totalItems={totalItems}
+			/>
+		</>
 	);
 };

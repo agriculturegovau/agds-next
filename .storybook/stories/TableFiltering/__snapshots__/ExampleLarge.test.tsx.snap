@@ -232,6 +232,7 @@ exports[`LargeFilteringPattern renders correctly 1`] = `
           <table
             class="css-57emj1-boxStyles-Table"
             id="dashboard-table"
+            tabindex="-1"
           >
             <caption
               class="css-qt4zh6-boxStyles-Text-TableCaption"
@@ -304,13 +305,13 @@ exports[`LargeFilteringPattern renders correctly 1`] = `
                   </button>
                 </th>
                 <th
-                  class="css-6jlnw2-boxStyles-TableHeader"
+                  class="css-1622710-boxStyles-TableHeader"
                   scope="col"
                 >
                   City
                 </th>
                 <th
-                  class="css-rq1mcj-boxStyles-DashboardTableHeader"
+                  class="css-1uhswxm-boxStyles-DashboardTableHeader"
                   scope="col"
                 >
                   <button
