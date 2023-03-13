@@ -36,7 +36,7 @@ Invalid.args = {
 export const SecondaryLabel = Template.bind({});
 SecondaryLabel.args = {
 	label: 'Example',
-	secondaryLabel: '(dd/mm/yyy)',
+	secondaryLabel: '(dd/mm/yyyy)',
 };
 
 export const HideOptionalLabel = Template.bind({});

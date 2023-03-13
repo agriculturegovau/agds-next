@@ -315,6 +315,7 @@ export const DateRangePicker = ({
 						<DateInput
 							ref={fromInputRef}
 							label={fromLabel}
+							hideOptionalLabel={hideOptionalLabel || Boolean(legend)}
 							value={fromInputValue}
 							onChange={onFromInputChange}
 							buttonRef={fromTriggerRef}
@@ -326,6 +327,7 @@ export const DateRangePicker = ({
 						<DateInput
 							ref={toInputRef}
 							label={toLabel}
+							hideOptionalLabel={hideOptionalLabel || Boolean(legend)}
 							value={toInputValue}
 							onChange={onToInputChange}
 							buttonRef={toTriggerRef}
