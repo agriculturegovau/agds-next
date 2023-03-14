@@ -25,6 +25,7 @@ const config: StorybookConfig = {
 		'../example-site/**/*.stories.@(ts|tsx)',
 		'./stories/*.@(ts|tsx)',
 		'./stories/*/index.@(ts|tsx)',
+		'./stories/**/*.stories.@(ts|tsx)',
 	],
 };
 

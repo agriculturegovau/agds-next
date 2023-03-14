@@ -26,44 +26,52 @@ export default {
 
 const exampleData = [
 	{
-		submissionDate: undefined,
-		id: '4f690575-8b96-4dbb-b9d6-a248088782f8',
-		type: 'Establishment registration',
+		location: 'New South Wales',
+		population: 7670700,
+		growthYear: 3.1,
+		growthDecade: 12.9,
 	},
 	{
-		submissionDate: undefined,
-		id: '0c8eaf7b-b9d3-4221-9e5b-87871c8442e2',
-		type: 'Establishment registration',
+		location: 'Victoria',
+		population: 5996400,
+		growthYear: 2.5,
+		growthDecade: 9.3,
 	},
 	{
-		submissionDate: 'Tuesday 22 March 2022',
-		id: '4dea2af2-8192-41b9-8909-5772b5e1969d',
-		type: 'Establishment registration',
+		location: 'Queensland',
+		population: 4808800,
+		growthYear: 1.7,
+		growthDecade: 13.3,
 	},
 	{
-		submissionDate: undefined,
-		id: 'aef2fa47-c431-472b-ab9f-f0a8a5d37f56',
-		type: 'Establishment registration',
+		location: 'Western Australia',
+		population: 2603900,
+		growthYear: 2.3,
+		growthDecade: 11.6,
 	},
 	{
-		submissionDate: 'Tuesday 22 March 2022',
-		id: '04bc33ac-134c-4edb-a221-81d345a891ec',
-		type: 'Establishment registration',
+		location: 'South Australia',
+		population: 1702800,
+		growthYear: 2.0,
+		growthDecade: 6.8,
 	},
 	{
-		submissionDate: 'Tuesday 22 March 2022',
-		id: '4b8fecdf-d602-4476-be68-fce7133c272f',
-		type: 'Establishment registration',
+		location: 'Tasmania',
+		population: 517400,
+		growthYear: 4,
+		growthDecade: 5.3,
 	},
 	{
-		submissionDate: undefined,
-		id: '89bf7ea4-d68f-4b6c-bae6-99d29e70811d',
-		type: 'Establishment registration',
+		location: 'Northern Territory',
+		population: 244400,
+		growthYear: 1.2,
+		growthDecade: 4.5,
 	},
 	{
-		submissionDate: 'Tuesday 22 March 2022',
-		id: 'f2342620-b5bc-44db-894d-969689373d1d',
-		type: 'Establishment registration',
+		location: 'Australian Capital Territory',
+		population: 393000,
+		growthYear: 2.4,
+		growthDecade: 9.6,
 	},
 ];
 
@@ -72,35 +80,35 @@ const Example: ComponentStory<typeof Table> = (args) => {
 		<TableWrapper>
 			<Table {...args}>
 				<TableCaption>
-					Your establishment registration applications
+					Population of Australian states and territories, December 2015
 				</TableCaption>
 				<TableHead>
 					<tr>
-						<TableHeader>Date submitted</TableHeader>
-						<TableHeader>Name</TableHeader>
-						<TableHeader display={{ xs: 'none', md: 'table-cell' }}>
-							Application type
+						<TableHeader width="50%" scope="col">
+							Location
 						</TableHeader>
-						<TableHeader>Actions</TableHeader>
+						<TableHeader textAlign="right" scope="col">
+							Population
+						</TableHeader>
+						<TableHeader textAlign="right" scope="col">
+							Change over previous year %
+						</TableHeader>
+						<TableHeader textAlign="right" scope="col">
+							Change over previous decade %
+						</TableHeader>
 					</tr>
 				</TableHead>
 				<TableBody>
-					{exampleData.map(({ id, submissionDate, type }) => (
-						<tr key={id}>
-							<TableCell>{submissionDate || 'Not yet submitted'}</TableCell>
-							<TableCell>
-								<TextLink href={`#${id}`}>{id}</TextLink>
-							</TableCell>
-							<TableCell display={{ xs: 'none', md: 'table-cell' }}>
-								{type}
-							</TableCell>
-							<TableCell>
-								<TextLink href={`#${id}`}>
-									{submissionDate ? 'View' : 'Edit Draft'}
-								</TextLink>
-							</TableCell>
-						</tr>
-					))}
+					{exampleData.map(
+						({ location, population, growthYear, growthDecade }, index) => (
+							<tr key={index}>
+								<TableCell>{location}</TableCell>
+								<TableCell textAlign="right">{population}</TableCell>
+								<TableCell textAlign="right">{growthYear}</TableCell>
+								<TableCell textAlign="right">{growthDecade}</TableCell>
+							</tr>
+						)
+					)}
 				</TableBody>
 			</Table>
 		</TableWrapper>
@@ -201,31 +209,31 @@ export const WithHeading = () => {
 				>
 					<TableHead>
 						<tr>
-							<TableHeader>Date submitted</TableHeader>
-							<TableHeader>Name</TableHeader>
-							<TableHeader display={{ xs: 'none', md: 'table-cell' }}>
-								Application type
+							<TableHeader width="50%" scope="col">
+								Location
 							</TableHeader>
-							<TableHeader>Actions</TableHeader>
+							<TableHeader textAlign="right" scope="col">
+								Population
+							</TableHeader>
+							<TableHeader textAlign="right" scope="col">
+								Change over previous year %
+							</TableHeader>
+							<TableHeader textAlign="right" scope="col">
+								Change over previous decade %
+							</TableHeader>
 						</tr>
 					</TableHead>
 					<TableBody>
-						{exampleData.map(({ id, submissionDate, type }) => (
-							<tr key={id}>
-								<TableCell>{submissionDate || 'Not yet submitted'}</TableCell>
-								<TableCell>
-									<TextLink href={`#${id}`}>{id}</TextLink>
-								</TableCell>
-								<TableCell display={{ xs: 'none', md: 'table-cell' }}>
-									{type}
-								</TableCell>
-								<TableCell>
-									<TextLink href={`#${id}`}>
-										{submissionDate ? 'View' : 'Edit Draft'}
-									</TextLink>
-								</TableCell>
-							</tr>
-						))}
+						{exampleData.map(
+							({ location, population, growthYear, growthDecade }, index) => (
+								<tr key={index}>
+									<TableCell>{location}</TableCell>
+									<TableCell textAlign="right">{population}</TableCell>
+									<TableCell textAlign="right">{growthYear}</TableCell>
+									<TableCell textAlign="right">{growthDecade}</TableCell>
+								</tr>
+							)
+						)}
 					</TableBody>
 				</Table>
 			</TableWrapper>
