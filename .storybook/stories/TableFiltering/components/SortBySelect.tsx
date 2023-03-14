@@ -32,14 +32,6 @@ export const SortBySelect = ({
 					label: 'Assignee (Z-A)',
 				},
 				{
-					value: 'numberOfEmployees-ASC',
-					label: 'Number of employees (lowest first)',
-				},
-				{
-					value: 'numberOfEmployees-DESC',
-					label: 'Number of employees (highest first)',
-				},
-				{
 					value: 'requestDate-ASC',
 					label: 'Date registered (oldest first)',
 				},

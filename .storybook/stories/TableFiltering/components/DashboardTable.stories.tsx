@@ -10,7 +10,7 @@ export default {
 export const Application = () => {
 	const tableRef = useRef<HTMLTableElement>(null);
 
-	const { sort, filters, pagination, setSort, setFilters, setPagination } =
+	const { sort, filters, pagination, setFilters, setPagination } =
 		useSortAndFilter({
 			tableRef,
 		});
@@ -23,14 +23,12 @@ export const Application = () => {
 
 	const tableCaption = generateTableCaption({
 		loading,
-		totalItems,
+		totalItems: 10,
 	});
 
 	return (
 		<DashboardTable
 			{...{
-				sort,
-				setSort,
 				filters,
 				setFilters,
 				pagination,

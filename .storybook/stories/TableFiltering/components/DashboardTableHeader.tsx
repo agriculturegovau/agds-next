@@ -1,6 +1,6 @@
 import { Box, Flex } from '@ag.ds-next/react/box';
 import { BaseButton } from '@ag.ds-next/react/button';
-import { boxPalette } from '@ag.ds-next/react/core';
+import { boxPalette, ResponsiveProp } from '@ag.ds-next/react/core';
 import {
 	ChevronDownIcon,
 	ChevronUpIcon,
@@ -12,7 +12,7 @@ export type DashboardTableHeaderSortDirection = 'ASC' | 'DESC' | undefined;
 
 export type DashboardTableHeaderBaseProps = {
 	textAlign?: 'left' | 'right' | 'center' | undefined;
-	width?: TableHeaderWidthType | undefined;
+	width?: ResponsiveProp<TableHeaderWidthType | string> | undefined;
 };
 
 type DashboardTableHeaderProps = {
