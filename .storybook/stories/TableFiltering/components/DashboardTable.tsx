@@ -38,7 +38,7 @@ const DashboardTableRowAssignee = ({
 	return (
 		<TableCell>
 			<Flex alignItems="center" gap={0.25}>
-				<Avatar name={assignee} size="sm" />
+				<Avatar name={assignee} size="sm" aria-hidden />
 				<Text>{assignee}</Text>
 			</Flex>
 		</TableCell>
