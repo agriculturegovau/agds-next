@@ -179,7 +179,7 @@ export const DashboardTable = forwardRef<HTMLTableElement, DashboardTableProps>(
 										const rowIndex = index + 1;
 										return (
 											<tr key={id} aria-rowindex={rowIndex}>
-												<TableCell>
+												<TableCell as="th" scope="row">
 													<TextLink href={`#${id}`}>{businessName}</TextLink>
 												</TableCell>
 												<DashboardTableRowAssignee assignee={assignee} />
