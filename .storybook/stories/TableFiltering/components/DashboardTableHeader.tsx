@@ -6,13 +6,13 @@ import {
 	ChevronUpIcon,
 	ChevronsUpDownIcon,
 } from '@ag.ds-next/react/icon';
-import { TableHeader, TableHeaderWidthType } from '@ag.ds-next/react/table';
+import { TableHeader } from '@ag.ds-next/react/table';
 
 export type DashboardTableHeaderSortDirection = 'ASC' | 'DESC' | undefined;
 
 export type DashboardTableHeaderBaseProps = {
 	textAlign?: 'left' | 'right' | 'center' | undefined;
-	width?: ResponsiveProp<TableHeaderWidthType | string> | undefined;
+	width?: ResponsiveProp<string | number>;
 };
 
 type DashboardTableHeaderProps = {
