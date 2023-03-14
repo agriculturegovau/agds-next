@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { GetStaticProps, InferGetStaticPropsType } from 'next';
+import { MDXRemote } from 'next-mdx-remote';
 import { allIcons } from '@ag.ds-next/react/icon';
 import { Flex, Stack } from '@ag.ds-next/react/box';
 import { Text } from '@ag.ds-next/react/text';
@@ -7,23 +8,26 @@ import { Select } from '@ag.ds-next/react/select';
 import { Columns } from '@ag.ds-next/react/columns';
 import { H2 } from '@ag.ds-next/react/heading';
 import { TextLink } from '@ag.ds-next/react/text-link';
+import { Prose } from '@ag.ds-next/react/prose';
 import { AppLayout } from '../../components/AppLayout';
 import { DocumentTitle } from '../../components/DocumentTitle';
 import { PageLayout } from '../../components/PageLayout';
 import { PageTitle } from '../../components/PageTitle';
 import {
+	Foundation,
 	getFoundation,
 	getFoundationBreadcrumbs,
 } from '../../lib/mdx/foundations';
+import { mdxComponents } from '../../components/mdxComponents';
 
 type IconSize = 'sm' | 'md' | 'lg' | 'xl';
 type IconWeight = 'regular' | 'bold';
 
 export default function FoundationsIconsPage({
 	breadcrumbs,
-	description,
-	title,
+	foundation,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
+	const { description, title, source } = foundation;
 	const [size, setSize] = useState<IconSize>('md');
 	const [weight, setWeight] = useState<IconWeight>('regular');
 	return (
@@ -95,6 +99,10 @@ export default function FoundationsIconsPage({
 								})}
 						</Columns>
 					</Stack>
+
+					<Prose>
+						<MDXRemote {...source} components={mdxComponents} />
+					</Prose>
 				</PageLayout>
 			</AppLayout>
 		</>
@@ -103,16 +111,14 @@ export default function FoundationsIconsPage({
 
 export const getStaticProps: GetStaticProps<{
 	breadcrumbs: Awaited<ReturnType<typeof getFoundationBreadcrumbs>>;
-	description: string | null;
-	title: string;
+	foundation: Foundation;
 }> = async () => {
-	const { title, description } = await getFoundation('icons');
+	const foundation = await getFoundation('icons');
 	const breadcrumbs = await getFoundationBreadcrumbs('icons');
 	return {
 		props: {
 			breadcrumbs,
-			description,
-			title,
+			foundation,
 		},
 	};
 };
