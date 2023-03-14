@@ -49,176 +49,176 @@ exports[`Table with TableCaption renders correctly 1`] = `
       >
         <tr>
           <td
-            class="css-18k5iax-boxStyles-TableCell"
+            class="css-amj30e-boxStyles-TableCell"
           >
             New South Wales
           </td>
           <td
-            class="css-c8qqgx-boxStyles-TableCell"
+            class="css-1yz5krj-boxStyles-TableCell"
           >
             7,670,700
           </td>
           <td
-            class="css-c8qqgx-boxStyles-TableCell"
+            class="css-1yz5krj-boxStyles-TableCell"
           >
             3.1%
           </td>
           <td
-            class="css-c8qqgx-boxStyles-TableCell"
+            class="css-1yz5krj-boxStyles-TableCell"
           >
             12.9%
           </td>
         </tr>
         <tr>
           <td
-            class="css-18k5iax-boxStyles-TableCell"
+            class="css-amj30e-boxStyles-TableCell"
           >
             Victoria
           </td>
           <td
-            class="css-c8qqgx-boxStyles-TableCell"
+            class="css-1yz5krj-boxStyles-TableCell"
           >
             5,996,400
           </td>
           <td
-            class="css-c8qqgx-boxStyles-TableCell"
+            class="css-1yz5krj-boxStyles-TableCell"
           >
             2.5%
           </td>
           <td
-            class="css-c8qqgx-boxStyles-TableCell"
+            class="css-1yz5krj-boxStyles-TableCell"
           >
             9.3%
           </td>
         </tr>
         <tr>
           <td
-            class="css-18k5iax-boxStyles-TableCell"
+            class="css-amj30e-boxStyles-TableCell"
           >
             Queensland
           </td>
           <td
-            class="css-c8qqgx-boxStyles-TableCell"
+            class="css-1yz5krj-boxStyles-TableCell"
           >
             4,808,800
           </td>
           <td
-            class="css-c8qqgx-boxStyles-TableCell"
+            class="css-1yz5krj-boxStyles-TableCell"
           >
             1.7%
           </td>
           <td
-            class="css-c8qqgx-boxStyles-TableCell"
+            class="css-1yz5krj-boxStyles-TableCell"
           >
             13.3%
           </td>
         </tr>
         <tr>
           <td
-            class="css-18k5iax-boxStyles-TableCell"
+            class="css-amj30e-boxStyles-TableCell"
           >
             Western Australia
           </td>
           <td
-            class="css-c8qqgx-boxStyles-TableCell"
+            class="css-1yz5krj-boxStyles-TableCell"
           >
             2,603,900
           </td>
           <td
-            class="css-c8qqgx-boxStyles-TableCell"
+            class="css-1yz5krj-boxStyles-TableCell"
           >
             2.3%
           </td>
           <td
-            class="css-c8qqgx-boxStyles-TableCell"
+            class="css-1yz5krj-boxStyles-TableCell"
           >
             11.6%
           </td>
         </tr>
         <tr>
           <td
-            class="css-18k5iax-boxStyles-TableCell"
+            class="css-amj30e-boxStyles-TableCell"
           >
             South Australia
           </td>
           <td
-            class="css-c8qqgx-boxStyles-TableCell"
+            class="css-1yz5krj-boxStyles-TableCell"
           >
             1,702,800
           </td>
           <td
-            class="css-c8qqgx-boxStyles-TableCell"
+            class="css-1yz5krj-boxStyles-TableCell"
           >
             2.0%
           </td>
           <td
-            class="css-c8qqgx-boxStyles-TableCell"
+            class="css-1yz5krj-boxStyles-TableCell"
           >
             6.8%
           </td>
         </tr>
         <tr>
           <td
-            class="css-18k5iax-boxStyles-TableCell"
+            class="css-amj30e-boxStyles-TableCell"
           >
             Tasmania
           </td>
           <td
-            class="css-c8qqgx-boxStyles-TableCell"
+            class="css-1yz5krj-boxStyles-TableCell"
           >
             517,400
           </td>
           <td
-            class="css-c8qqgx-boxStyles-TableCell"
+            class="css-1yz5krj-boxStyles-TableCell"
           >
             4%
           </td>
           <td
-            class="css-c8qqgx-boxStyles-TableCell"
+            class="css-1yz5krj-boxStyles-TableCell"
           >
             5.3%
           </td>
         </tr>
         <tr>
           <td
-            class="css-18k5iax-boxStyles-TableCell"
+            class="css-amj30e-boxStyles-TableCell"
           >
             Northern Territory
           </td>
           <td
-            class="css-c8qqgx-boxStyles-TableCell"
+            class="css-1yz5krj-boxStyles-TableCell"
           >
             244,400
           </td>
           <td
-            class="css-c8qqgx-boxStyles-TableCell"
+            class="css-1yz5krj-boxStyles-TableCell"
           >
             1.2%
           </td>
           <td
-            class="css-c8qqgx-boxStyles-TableCell"
+            class="css-1yz5krj-boxStyles-TableCell"
           >
             4.5%
           </td>
         </tr>
         <tr>
           <td
-            class="css-18k5iax-boxStyles-TableCell"
+            class="css-amj30e-boxStyles-TableCell"
           >
             Australian Capital Territory
           </td>
           <td
-            class="css-c8qqgx-boxStyles-TableCell"
+            class="css-1yz5krj-boxStyles-TableCell"
           >
             393,000
           </td>
           <td
-            class="css-c8qqgx-boxStyles-TableCell"
+            class="css-1yz5krj-boxStyles-TableCell"
           >
             2.4%
           </td>
           <td
-            class="css-c8qqgx-boxStyles-TableCell"
+            class="css-1yz5krj-boxStyles-TableCell"
           >
             9.6%
           </td>
