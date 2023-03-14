@@ -7,6 +7,7 @@ import { Text } from '@ag.ds-next/react/text';
 import { Select } from '@ag.ds-next/react/select';
 import { Columns } from '@ag.ds-next/react/columns';
 import { H2 } from '@ag.ds-next/react/heading';
+import { TextLink } from '@ag.ds-next/react/text-link';
 import { Prose } from '@ag.ds-next/react/prose';
 import { AppLayout } from '../../components/AppLayout';
 import { DocumentTitle } from '../../components/DocumentTitle';
@@ -38,9 +39,14 @@ export default function FoundationsIconsPage({
 					breadcrumbs={breadcrumbs}
 				>
 					<PageTitle title={title} introduction={description} />
-					<Prose>
-						<MDXRemote {...source} components={mdxComponents} />
-					</Prose>
+					<Stack gap={1.5}>
+						<H2>React component</H2>
+						<Text as="p">
+							The <TextLink href="/components/icon">Icon component</TextLink> is
+							used to apply our set of universal icons to more complex
+							components of the system.
+						</Text>
+					</Stack>
 					<Stack gap={1.5}>
 						<H2>All icons</H2>
 						<Columns cols={{ xs: 1, sm: 2, md: 3 }} gap={1}>
@@ -93,6 +99,10 @@ export default function FoundationsIconsPage({
 								})}
 						</Columns>
 					</Stack>
+
+					<Prose>
+						<MDXRemote {...source} components={mdxComponents} />
+					</Prose>
 				</PageLayout>
 			</AppLayout>
 		</>
