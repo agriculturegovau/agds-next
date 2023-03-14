@@ -1,6 +1,5 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { Text } from '../text';
-import { TextLink } from '../text-link';
 import { Stack } from '../box';
 import { H1 } from '../heading';
 import { Table } from './Table';
