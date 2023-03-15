@@ -87,6 +87,7 @@ export const DatePicker = ({
 	yearRange,
 	inputRef,
 	invalid = false,
+	maxWidth = 'md',
 	...props
 }: DatePickerProps) => {
 	const [isCalendarOpen, openCalendar, closeCalendar] = useTernaryState(false);
@@ -181,6 +182,7 @@ export const DatePicker = ({
 		<div ref={setRefEl}>
 			<DateInput
 				{...props}
+				maxWidth={maxWidth}
 				invalid={{ field: invalid, input: invalid }}
 				ref={inputRef}
 				value={inputValue}
