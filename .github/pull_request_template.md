@@ -2,10 +2,6 @@
 
 Include screenshots, photos or links if necessary.
 
-> Please update this link with the PR number and story path.
-
-[See changes in Storybook](https://design-system.agriculture.gov.au/pr-preview/pr-XXX/storybook/index.html?path=/story/testing-kitchen-sink--kitchen-sink)
-
 ## Checklist
 
 ### Updating existing component
