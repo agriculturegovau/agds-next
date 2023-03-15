@@ -85,7 +85,13 @@ export const DashboardTable = forwardRef<HTMLTableElement, DashboardTableProps>(
 
 		return (
 			<TableWrapper>
-				<Table aria-rowcount={totalItems} id={tableId} ref={ref} tabIndex={-1}>
+				<Table
+					aria-rowcount={totalItems}
+					id={tableId}
+					ref={ref}
+					tabIndex={-1}
+					tableLayout="fixed"
+				>
 					<TableCaption>
 						{caption}
 						<VisuallyHidden>
@@ -150,10 +156,6 @@ export const DashboardTable = forwardRef<HTMLTableElement, DashboardTableProps>(
 											<VisuallyHidden>Loading</VisuallyHidden>
 										</TableCell>
 										<TableCell>
-											<SkeletonText />
-											<VisuallyHidden>Loading</VisuallyHidden>
-										</TableCell>
-										<TableCell>
 											<SkeletonBox height={32} />
 											<VisuallyHidden>Loading</VisuallyHidden>
 										</TableCell>
@@ -170,7 +172,6 @@ export const DashboardTable = forwardRef<HTMLTableElement, DashboardTableProps>(
 										businessName,
 										city,
 										state,
-										numberOfEmployees,
 										requestDate,
 										status,
 									}) => {
@@ -184,9 +185,6 @@ export const DashboardTable = forwardRef<HTMLTableElement, DashboardTableProps>(
 												<DashboardTableRowAssignee assignee={assignee} />
 												<TableCell>
 													{city}, {state}
-												</TableCell>
-												<TableCell textAlign="right">
-													{numberOfEmployees}
 												</TableCell>
 												<TableCell textAlign="right">
 													{format(requestDate, 'dd/MM/yyyy')}
@@ -234,39 +232,32 @@ const headers: ({
 	{
 		label: 'Business name',
 		sortKey: 'businessName',
-		width: '25%',
+		width: { xs: '20rem', lg: 'auto' },
 		isSortable: true,
 	},
 	{
 		label: 'Assignee',
 		sortKey: 'assignee',
-		width: '15%',
+		width: '12rem',
 		isSortable: true,
 	},
 	{
 		label: 'City',
 		sortKey: 'city',
-		width: '15%',
+		width: { xs: '16rem', lg: 'auto' },
 		isSortable: false,
-	},
-	{
-		label: 'Employees',
-		sortKey: 'numberOfEmployees',
-		textAlign: 'right',
-		width: '15%',
-		isSortable: true,
 	},
 	{
 		label: 'Date registered',
 		sortKey: 'requestDate',
 		textAlign: 'right',
-		width: '15%',
+		width: '12rem',
 		isSortable: true,
 	},
 	{
 		label: 'Status',
 		sortKey: 'status',
-		width: '15%',
+		width: '11rem',
 		isSortable: true,
 	},
 ];

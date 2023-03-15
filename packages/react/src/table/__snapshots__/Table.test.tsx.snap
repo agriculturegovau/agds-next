@@ -6,7 +6,7 @@ exports[`Table with TableCaption renders correctly 1`] = `
     class="css-2ebmvj-TableWrapper"
   >
     <table
-      class="css-57emj1-boxStyles-Table"
+      class="css-1lii0zf-boxStyles-Table"
       id="table"
     >
       <caption
@@ -19,7 +19,7 @@ exports[`Table with TableCaption renders correctly 1`] = `
       >
         <tr>
           <th
-            class="css-iyikmo-boxStyles-TableHeader"
+            class="css-1odudei-boxStyles-TableHeader"
             scope="col"
           >
             Location

@@ -1,6 +1,5 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { Text } from '../text';
-import { TextLink } from '../text-link';
 import { Stack } from '../box';
 import { H1 } from '../heading';
 import { Table } from './Table';
@@ -26,92 +25,58 @@ export default {
 
 const exampleData = [
 	{
-		submissionDate: undefined,
-		id: '4f690575-8b96-4dbb-b9d6-a248088782f8',
-		type: 'Establishment registration',
+		location: 'New South Wales',
+		population: 7670700,
+		growthYear: 3.1,
+		growthDecade: 12.9,
 	},
 	{
-		submissionDate: undefined,
-		id: '0c8eaf7b-b9d3-4221-9e5b-87871c8442e2',
-		type: 'Establishment registration',
+		location: 'Victoria',
+		population: 5996400,
+		growthYear: 2.5,
+		growthDecade: 9.3,
 	},
 	{
-		submissionDate: 'Tuesday 22 March 2022',
-		id: '4dea2af2-8192-41b9-8909-5772b5e1969d',
-		type: 'Establishment registration',
+		location: 'Queensland',
+		population: 4808800,
+		growthYear: 1.7,
+		growthDecade: 13.3,
 	},
 	{
-		submissionDate: undefined,
-		id: 'aef2fa47-c431-472b-ab9f-f0a8a5d37f56',
-		type: 'Establishment registration',
+		location: 'Western Australia',
+		population: 2603900,
+		growthYear: 2.3,
+		growthDecade: 11.6,
 	},
 	{
-		submissionDate: 'Tuesday 22 March 2022',
-		id: '04bc33ac-134c-4edb-a221-81d345a891ec',
-		type: 'Establishment registration',
+		location: 'South Australia',
+		population: 1702800,
+		growthYear: 2.0,
+		growthDecade: 6.8,
 	},
 	{
-		submissionDate: 'Tuesday 22 March 2022',
-		id: '4b8fecdf-d602-4476-be68-fce7133c272f',
-		type: 'Establishment registration',
+		location: 'Tasmania',
+		population: 517400,
+		growthYear: 4,
+		growthDecade: 5.3,
 	},
 	{
-		submissionDate: undefined,
-		id: '89bf7ea4-d68f-4b6c-bae6-99d29e70811d',
-		type: 'Establishment registration',
+		location: 'Northern Territory',
+		population: 244400,
+		growthYear: 1.2,
+		growthDecade: 4.5,
 	},
 	{
-		submissionDate: 'Tuesday 22 March 2022',
-		id: 'f2342620-b5bc-44db-894d-969689373d1d',
-		type: 'Establishment registration',
+		location: 'Australian Capital Territory',
+		population: 393000,
+		growthYear: 2.4,
+		growthDecade: 9.6,
 	},
 ];
 
-const Example: ComponentStory<typeof Table> = (args) => {
-	return (
-		<TableWrapper>
-			<Table {...args}>
-				<TableCaption>
-					Your establishment registration applications
-				</TableCaption>
-				<TableHead>
-					<tr>
-						<TableHeader>Date submitted</TableHeader>
-						<TableHeader>Name</TableHeader>
-						<TableHeader display={{ xs: 'none', md: 'table-cell' }}>
-							Application type
-						</TableHeader>
-						<TableHeader>Actions</TableHeader>
-					</tr>
-				</TableHead>
-				<TableBody>
-					{exampleData.map(({ id, submissionDate, type }) => (
-						<tr key={id}>
-							<TableCell>{submissionDate || 'Not yet submitted'}</TableCell>
-							<TableCell>
-								<TextLink href={`#${id}`}>{id}</TextLink>
-							</TableCell>
-							<TableCell display={{ xs: 'none', md: 'table-cell' }}>
-								{type}
-							</TableCell>
-							<TableCell>
-								<TextLink href={`#${id}`}>
-									{submissionDate ? 'View' : 'Edit Draft'}
-								</TextLink>
-							</TableCell>
-						</tr>
-					))}
-				</TableBody>
-			</Table>
-		</TableWrapper>
-	);
-};
+const numberFormatter = new Intl.NumberFormat('en-AU');
 
-export const Basic: ComponentStory<typeof Table> = (args) => (
-	<Example {...args} />
-);
-
-export const Modular: ComponentStory<typeof Table> = (args) => (
+const Template: ComponentStory<typeof Table> = (args) => (
 	<TableWrapper>
 		<Table {...args}>
 			<TableCaption>
@@ -119,9 +84,7 @@ export const Modular: ComponentStory<typeof Table> = (args) => (
 			</TableCaption>
 			<TableHead>
 				<tr>
-					<TableHeader width="50%" scope="col">
-						Location
-					</TableHeader>
+					<TableHeader scope="col">Location</TableHeader>
 					<TableHeader textAlign="right" scope="col">
 						Population
 					</TableHeader>
@@ -134,54 +97,78 @@ export const Modular: ComponentStory<typeof Table> = (args) => (
 				</tr>
 			</TableHead>
 			<TableBody>
+				{exampleData.map(
+					({ location, population, growthYear, growthDecade }, index) => (
+						<tr key={index}>
+							<TableCell>{location}</TableCell>
+							<TableCell textAlign="right">
+								{numberFormatter.format(population)}
+							</TableCell>
+							<TableCell textAlign="right">{growthYear}%</TableCell>
+							<TableCell textAlign="right">{growthDecade}%</TableCell>
+						</tr>
+					)
+				)}
+			</TableBody>
+		</Table>
+	</TableWrapper>
+);
+
+export const Basic = Template.bind({});
+Basic.args = {};
+
+export const Striped = Template.bind({});
+Striped.args = {
+	striped: true,
+};
+
+export const FixedLayout = () => (
+	<TableWrapper>
+		<Table tableLayout="fixed">
+			<TableCaption>
+				Population of Australian states and territories, December 2015
+			</TableCaption>
+			<TableHead>
 				<tr>
-					<TableCell>New South Wales</TableCell>
-					<TableCell textAlign="right">7,670,700</TableCell>
-					<TableCell textAlign="right">3.1%</TableCell>
-					<TableCell textAlign="right">12.9%</TableCell>
+					<TableHeader scope="col" width={{ xs: '14rem', md: '40%' }}>
+						Location
+					</TableHeader>
+					<TableHeader
+						scope="col"
+						textAlign="right"
+						width={{ xs: '10rem', md: '20%' }}
+					>
+						Population
+					</TableHeader>
+					<TableHeader
+						scope="col"
+						textAlign="right"
+						width={{ xs: '14rem', md: '20%' }}
+					>
+						Change over previous year %
+					</TableHeader>
+					<TableHeader
+						scope="col"
+						textAlign="right"
+						width={{ xs: '14rem', md: '20%' }}
+					>
+						Change over previous decade %
+					</TableHeader>
 				</tr>
-				<tr>
-					<TableCell>Victoria</TableCell>
-					<TableCell textAlign="right">5,996,400</TableCell>
-					<TableCell textAlign="right">2.5%</TableCell>
-					<TableCell textAlign="right">9.3%</TableCell>
-				</tr>
-				<tr>
-					<TableCell>Queensland</TableCell>
-					<TableCell textAlign="right">4,808,800</TableCell>
-					<TableCell textAlign="right">1.7%</TableCell>
-					<TableCell textAlign="right">13.3%</TableCell>
-				</tr>
-				<tr>
-					<TableCell>Western Australia</TableCell>
-					<TableCell textAlign="right">2,603,900</TableCell>
-					<TableCell textAlign="right">2.3%</TableCell>
-					<TableCell textAlign="right">11.6%</TableCell>
-				</tr>
-				<tr>
-					<TableCell>South Australia</TableCell>
-					<TableCell textAlign="right">1,702,800</TableCell>
-					<TableCell textAlign="right">2.0%</TableCell>
-					<TableCell textAlign="right">6.8%</TableCell>
-				</tr>
-				<tr>
-					<TableCell>Tasmania</TableCell>
-					<TableCell textAlign="right">517,400</TableCell>
-					<TableCell textAlign="right">4%</TableCell>
-					<TableCell textAlign="right">5.3%</TableCell>
-				</tr>
-				<tr>
-					<TableCell>Northern Territory</TableCell>
-					<TableCell textAlign="right">244,400</TableCell>
-					<TableCell textAlign="right">1.2%</TableCell>
-					<TableCell textAlign="right">4.5%</TableCell>
-				</tr>
-				<tr>
-					<TableCell>Australian Capital Territory</TableCell>
-					<TableCell textAlign="right">393,000</TableCell>
-					<TableCell textAlign="right">2.4%</TableCell>
-					<TableCell textAlign="right">9.6%</TableCell>
-				</tr>
+			</TableHead>
+			<TableBody>
+				{exampleData.map(
+					({ location, population, growthYear, growthDecade }, index) => (
+						<tr key={index}>
+							<TableCell>{location}</TableCell>
+							<TableCell textAlign="right">
+								{numberFormatter.format(population)}
+							</TableCell>
+							<TableCell textAlign="right">{growthYear}%</TableCell>
+							<TableCell textAlign="right">{growthDecade}%</TableCell>
+						</tr>
+					)
+				)}
 			</TableBody>
 		</Table>
 	</TableWrapper>
@@ -190,9 +177,9 @@ export const Modular: ComponentStory<typeof Table> = (args) => (
 export const WithHeading = () => {
 	return (
 		<Stack gap={1}>
-			<H1 id="table-heading">Applications</H1>
+			<H1 id="table-heading">Population</H1>
 			<Text id="table-description">
-				This list of active establishment registrations
+				Population of Australian states and territories, December 2015.
 			</Text>
 			<TableWrapper>
 				<Table
@@ -201,31 +188,31 @@ export const WithHeading = () => {
 				>
 					<TableHead>
 						<tr>
-							<TableHeader>Date submitted</TableHeader>
-							<TableHeader>Name</TableHeader>
-							<TableHeader display={{ xs: 'none', md: 'table-cell' }}>
-								Application type
+							<TableHeader scope="col">Location</TableHeader>
+							<TableHeader textAlign="right" scope="col">
+								Population
 							</TableHeader>
-							<TableHeader>Actions</TableHeader>
+							<TableHeader textAlign="right" scope="col">
+								Change over previous year %
+							</TableHeader>
+							<TableHeader textAlign="right" scope="col">
+								Change over previous decade %
+							</TableHeader>
 						</tr>
 					</TableHead>
 					<TableBody>
-						{exampleData.map(({ id, submissionDate, type }) => (
-							<tr key={id}>
-								<TableCell>{submissionDate || 'Not yet submitted'}</TableCell>
-								<TableCell>
-									<TextLink href={`#${id}`}>{id}</TextLink>
-								</TableCell>
-								<TableCell display={{ xs: 'none', md: 'table-cell' }}>
-									{type}
-								</TableCell>
-								<TableCell>
-									<TextLink href={`#${id}`}>
-										{submissionDate ? 'View' : 'Edit Draft'}
-									</TextLink>
-								</TableCell>
-							</tr>
-						))}
+						{exampleData.map(
+							({ location, population, growthYear, growthDecade }, index) => (
+								<tr key={index}>
+									<TableCell>{location}</TableCell>
+									<TableCell textAlign="right">
+										{numberFormatter.format(population)}
+									</TableCell>
+									<TableCell textAlign="right">{growthYear}%</TableCell>
+									<TableCell textAlign="right">{growthDecade}%</TableCell>
+								</tr>
+							)
+						)}
 					</TableBody>
 				</Table>
 			</TableWrapper>

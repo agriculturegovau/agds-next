@@ -12,7 +12,6 @@ export type BusinessForAudit = {
 	id: string;
 	city: string;
 	state: string;
-	numberOfEmployees: number;
 	requestDate: Date;
 	status: BusinessForAuditStatus;
 };
@@ -73,7 +72,6 @@ const EXAMPLE_BUSINESSES: Partial<BusinessForAudit>[] = [
 		businessName: 'Woolaroo Ranch',
 		city: 'Woolaroo',
 		state: 'NSW',
-		numberOfEmployees: 100,
 	},
 	{ businessName: 'The Land Down Under Livestock Co.' },
 	{ businessName: 'The Oz Harvest Co.' },
@@ -83,7 +81,6 @@ const EXAMPLE_BUSINESSES: Partial<BusinessForAudit>[] = [
 		businessName: 'The Great Barrier Reef Seafood Co.',
 		city: 'Hamilton Island',
 		state: 'QLD',
-		numberOfEmployees: 100,
 	},
 	{ businessName: 'Down Under Harvest' },
 	{ businessName: 'Outback Orchards' },
@@ -169,7 +166,6 @@ export const generateBusinessData = (): BusinessForAudit[] => {
 				'cancelled',
 			]),
 			requestDate: faker.date.past(),
-			numberOfEmployees: faker.datatype.number(1000),
 			...exampleAustralianBusiness,
 		};
 	});

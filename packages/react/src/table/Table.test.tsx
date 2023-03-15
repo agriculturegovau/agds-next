@@ -23,9 +23,7 @@ function renderTableWithCaption() {
 				</TableCaption>
 				<TableHead>
 					<tr>
-						<TableHeader width="50%" scope="col">
-							Location
-						</TableHeader>
+						<TableHeader scope="col">Location</TableHeader>
 						<TableHeader textAlign="right" scope="col">
 							Population
 						</TableHeader>
@@ -107,9 +105,7 @@ function renderTableWithHeadings() {
 				>
 					<TableHead>
 						<tr>
-							<TableHeader width="50%" scope="col">
-								Location
-							</TableHeader>
+							<TableHeader scope="col">Location</TableHeader>
 							<TableHeader textAlign="right" scope="col">
 								Population
 							</TableHeader>
