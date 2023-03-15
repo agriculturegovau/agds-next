@@ -22,7 +22,7 @@ export const Table = forwardRef<HTMLTableElement, TableProps>(function Table(
 		children,
 		striped,
 		tabIndex,
-		tableLayout,
+		tableLayout = 'auto',
 		'aria-labelledby': ariaLabelledby,
 		'aria-describedby': ariaDescribedby,
 		id,
