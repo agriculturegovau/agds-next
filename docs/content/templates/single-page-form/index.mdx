@@ -9,6 +9,42 @@ githubTemplatePath: /pages/category/subcategory/single-page-form.tsx
 storybookPath: /story/templates-single-page-form--form-page
 ---
 
-## Tips
+## Usage guidelines
 
-Coming soon
+### General guidelines
+
+- Use concise descriptive field labels.
+- Match field width to intended input to set expectations of required information.
+- Avoid placeholder text for hints (use static hint text instead):
+  - Placeholder text disappears on focus, causing some to forget the hint.
+  - Placeholder text can make it look like a field is already filled.
+  - Low contrast is hard to see.
+
+### Simplicity by design
+
+Present forms in a single column layout for efficiency and to avoid people missing fields in other columns (especially those using screen magnifiers).
+
+Try to limit forms to a single question per page. A question could include multiple related inputs, such as a street address. Break up large forms [into multiple steps](multi-page-form) to decrease cognitive load. In cases where this isn't possible, group related fields using [fieldsets](/components/fieldset).
+
+### Required vs optional fields
+
+Try to only ask for necessary information. Avoid optional fields by asking users to opt in first. If you can’t avoid optional fields, indicate them with (optional) in label. Place text at the top of the page that says 'All fields are required unless marked optional.'
+
+### Buttons
+
+Left align buttons, starting with the primary button on the far left. Right aligned buttons can be missed, especially by those using screen magnifyers.
+Only include one primary button per page.
+
+Use descriptive button text. A simple rule that works most of the time is to start with a verb and end with a noun. For example, 'Submit application'.
+
+Try to avoid disabled buttons as they can be problematic for some users - They don’t provide feedback why they’re not clickable causing people to get stuck. They are also hard to see for those with poor eyesight, and aren’t natively keyboard accessible.
+
+Instead, allow users to interact with buttons and receive feedback.
+
+### Error messages
+
+A form should validate when a user attempts to submit. If there are errors, they should be listed in an error summary (or [PageAlert](/components/page-alert)) at the top of the page. The summary should link to each error and focus on the form field when clicked.
+
+If only one error is present, the error summary can be omitted and the invalid field can be focused.
+
+An invalid field is highlighted with a red border and a red error message. They should never be covered by autocomplete menus and on-screen keyboards.
