@@ -48,11 +48,12 @@ exports[`Table with TableCaption renders correctly 1`] = `
         class="css-8u32cd-boxStyles"
       >
         <tr>
-          <td
+          <th
             class="css-amj30e-boxStyles-TableCell"
+            scope="row"
           >
             New South Wales
-          </td>
+          </th>
           <td
             class="css-1yz5krj-boxStyles-TableCell"
           >
@@ -70,11 +71,12 @@ exports[`Table with TableCaption renders correctly 1`] = `
           </td>
         </tr>
         <tr>
-          <td
+          <th
             class="css-amj30e-boxStyles-TableCell"
+            scope="row"
           >
             Victoria
-          </td>
+          </th>
           <td
             class="css-1yz5krj-boxStyles-TableCell"
           >
@@ -92,11 +94,12 @@ exports[`Table with TableCaption renders correctly 1`] = `
           </td>
         </tr>
         <tr>
-          <td
+          <th
             class="css-amj30e-boxStyles-TableCell"
+            scope="row"
           >
             Queensland
-          </td>
+          </th>
           <td
             class="css-1yz5krj-boxStyles-TableCell"
           >
@@ -114,11 +117,12 @@ exports[`Table with TableCaption renders correctly 1`] = `
           </td>
         </tr>
         <tr>
-          <td
+          <th
             class="css-amj30e-boxStyles-TableCell"
+            scope="row"
           >
             Western Australia
-          </td>
+          </th>
           <td
             class="css-1yz5krj-boxStyles-TableCell"
           >
@@ -136,11 +140,12 @@ exports[`Table with TableCaption renders correctly 1`] = `
           </td>
         </tr>
         <tr>
-          <td
+          <th
             class="css-amj30e-boxStyles-TableCell"
+            scope="row"
           >
             South Australia
-          </td>
+          </th>
           <td
             class="css-1yz5krj-boxStyles-TableCell"
           >
@@ -158,11 +163,12 @@ exports[`Table with TableCaption renders correctly 1`] = `
           </td>
         </tr>
         <tr>
-          <td
+          <th
             class="css-amj30e-boxStyles-TableCell"
+            scope="row"
           >
             Tasmania
-          </td>
+          </th>
           <td
             class="css-1yz5krj-boxStyles-TableCell"
           >
@@ -180,11 +186,12 @@ exports[`Table with TableCaption renders correctly 1`] = `
           </td>
         </tr>
         <tr>
-          <td
+          <th
             class="css-amj30e-boxStyles-TableCell"
+            scope="row"
           >
             Northern Territory
-          </td>
+          </th>
           <td
             class="css-1yz5krj-boxStyles-TableCell"
           >
@@ -202,11 +209,12 @@ exports[`Table with TableCaption renders correctly 1`] = `
           </td>
         </tr>
         <tr>
-          <td
+          <th
             class="css-amj30e-boxStyles-TableCell"
+            scope="row"
           >
             Australian Capital Territory
-          </td>
+          </th>
           <td
             class="css-1yz5krj-boxStyles-TableCell"
           >
