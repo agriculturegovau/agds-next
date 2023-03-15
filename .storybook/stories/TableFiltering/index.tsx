@@ -4,6 +4,7 @@ import { useSortAndFilter } from './lib/useSortAndFilter';
 import { generateTableCaption, useData } from './lib/utils';
 import { useRef } from 'react';
 import { DraftBanner } from './components/DraftBanner';
+import { PageContent } from '@ag.ds-next/react/content';
 
 export default {
 	title: 'Patterns/Data Filtering (WIP)',
@@ -34,20 +35,22 @@ export const Small = () => {
 	return (
 		<>
 			<DraftBanner />
-			<ExampleSmall
-				sort={sort}
-				setSort={setSort}
-				filters={filters}
-				setFilters={setFilters}
-				pagination={pagination}
-				setPagination={setPagination}
-				totalPages={totalPages}
-				loading={loading}
-				data={data}
-				tableRef={tableRef}
-				tableCaption={tableCaption}
-				totalItems={totalItems}
-			/>
+			<PageContent>
+				<ExampleSmall
+					sort={sort}
+					setSort={setSort}
+					filters={filters}
+					setFilters={setFilters}
+					pagination={pagination}
+					setPagination={setPagination}
+					totalPages={totalPages}
+					loading={loading}
+					data={data}
+					tableRef={tableRef}
+					tableCaption={tableCaption}
+					totalItems={totalItems}
+				/>
+			</PageContent>
 		</>
 	);
 };
@@ -82,22 +85,24 @@ export const Medium = () => {
 	return (
 		<>
 			<DraftBanner />
-			<ExampleMedium
-				data={data}
-				filters={filters}
-				loading={loading}
-				pagination={pagination}
-				resetFilters={resetFilters}
-				setFilters={setFilters}
-				removeFilter={removeFilter}
-				setPagination={setPagination}
-				setSort={setSort}
-				sort={sort}
-				tableRef={tableRef}
-				tableCaption={tableCaption}
-				totalPages={totalPages}
-				totalItems={totalItems}
-			/>
+			<PageContent>
+				<ExampleMedium
+					data={data}
+					filters={filters}
+					loading={loading}
+					pagination={pagination}
+					resetFilters={resetFilters}
+					setFilters={setFilters}
+					removeFilter={removeFilter}
+					setPagination={setPagination}
+					setSort={setSort}
+					sort={sort}
+					tableRef={tableRef}
+					tableCaption={tableCaption}
+					totalPages={totalPages}
+					totalItems={totalItems}
+				/>
+			</PageContent>
 		</>
 	);
 };

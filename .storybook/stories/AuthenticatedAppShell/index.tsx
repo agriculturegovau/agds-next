@@ -58,6 +58,8 @@ const AuthenticatedAppShellCommon = ({
 
 	return (
 		<AuthenticatedAppShell
+			siteTitle="Export Service"
+			siteSubtitle="Supporting Australian agricultural exports"
 			collapseByDefault={collapseByDefault}
 			navItems={navItems}
 			signOut={signOut}

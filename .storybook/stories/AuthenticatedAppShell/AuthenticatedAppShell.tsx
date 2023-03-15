@@ -1,21 +1,22 @@
-import { Box } from '@ag.ds-next/react/box';
-import {
-	tokens,
-	useTernaryState,
-	useToggleState,
-} from '@ag.ds-next/react/core';
+import { Box, Flex } from '@ag.ds-next/react/box';
+import { tokens, useTernaryState } from '@ag.ds-next/react/core';
 import { ReactNode } from 'react';
 import { AuthenticatedAppShellHeader } from './AuthenticatedAppShellHeader';
 import {
 	AuthenticatedAppShellNav,
 	AuthenticatedAppShellNavListItemType,
 } from './AuthenticatedAppShellNav';
+import { AuthenticatedAppShellFooter } from './AuthenticatedAppShellFooter';
 
 export const AuthenticatedAppShell = ({
+	siteTitle,
+	siteSubtitle,
 	children,
 	collapseByDefault = false,
 	navItems,
 }: {
+	siteTitle: string;
+	siteSubtitle: string;
 	children: ReactNode;
 	collapseByDefault?: boolean;
 	navItems: AuthenticatedAppShellNavListItemType[];
@@ -31,25 +32,31 @@ export const AuthenticatedAppShell = ({
 				items={navItems}
 			/>
 
-			<Box width="100%">
+			<Box
+				width="100%"
+				css={{
+					overflow: 'scroll',
+				}}
+			>
 				<AuthenticatedAppShellHeader
-					title="Export Service"
-					subtitle="Supporting Australian agricultural exports"
+					title={siteTitle}
+					subtitle={siteSubtitle}
 					isNavbarOpen={isOpen}
 					openMenu={openMenu}
 				/>
-				<Box
-					css={{
-						height: '100%',
-						width: '100%',
-						margin: '0 auto',
-						maxWidth: tokens.maxWidth.container,
-						overflow: 'scroll',
-					}}
-					padding={1}
-				>
-					<Box>{children}</Box>
-				</Box>
+
+				<Flex alignItems="center" flexDirection="column">
+					<Box
+						width="100%"
+						maxWidth={tokens.maxWidth.container}
+						paddingX={tokens.containerPadding}
+					>
+						<Box paddingTop={{ xs: 2, md: 3 }} paddingBottom={{ xs: 3, md: 4 }}>
+							{children}
+						</Box>
+						<AuthenticatedAppShellFooter />
+					</Box>
+				</Flex>
 			</Box>
 		</Box>
 	);

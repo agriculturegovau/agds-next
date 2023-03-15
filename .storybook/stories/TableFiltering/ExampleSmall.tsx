@@ -1,6 +1,5 @@
-import { Flex, Stack } from '@ag.ds-next/react/box';
+import { Stack } from '@ag.ds-next/react/box';
 import { ButtonLink } from '@ag.ds-next/react/button';
-import { PageContent } from '@ag.ds-next/react/content';
 import { PaginationButtons } from '@ag.ds-next/react/pagination';
 import { FilterStatusSelect } from './components/FilterStatusSelect';
 import { DashboardTable, tableId } from './components/DashboardTable';
@@ -52,48 +51,46 @@ export const ExampleSmall = ({
 	tableRef,
 }: SmallExampleProps) => {
 	return (
-		<PageContent>
-			<Stack gap={2}>
-				<Prose>
-					<h1>Table Filtering (small)</h1>
-					<p>
-						In the most basic cases of filtering with up to three filterable
-						fields, we can show all filters in a row above the table.
-					</p>
-				</Prose>
-				<div>
-					<ButtonLink href="#new" iconBefore={PlusIcon}>
-						Create request
-					</ButtonLink>
-				</div>
+		<Stack gap={2}>
+			<Prose>
+				<h1>Table Filtering (small)</h1>
+				<p>
+					In the most basic cases of filtering with up to three filterable
+					fields, we can show all filters in a row above the table.
+				</p>
+			</Prose>
+			<div>
+				<ButtonLink href="#new" iconBefore={PlusIcon}>
+					Create request
+				</ButtonLink>
+			</div>
 
-				<FilterRegion>
-					<FilterBar>
-						<FilterBarGroup>
-							<FilterStatusSelect filters={filters} setFilters={setFilters} />
-							<FilterAssigneeSelect filters={filters} setFilters={setFilters} />
-						</FilterBarGroup>
+			<FilterRegion>
+				<FilterBar>
+					<FilterBarGroup>
+						<FilterStatusSelect filters={filters} setFilters={setFilters} />
+						<FilterAssigneeSelect filters={filters} setFilters={setFilters} />
+					</FilterBarGroup>
 
-						<SortBySelect sort={sort} setSort={setSort} />
-					</FilterBar>
-				</FilterRegion>
+					<SortBySelect sort={sort} setSort={setSort} />
+				</FilterBar>
+			</FilterRegion>
 
-				<DashboardTable
-					ref={tableRef}
-					data={data}
-					loading={loading}
-					caption={tableCaption}
-					itemsPerPage={pagination.perPage}
-					totalItems={totalItems}
+			<DashboardTable
+				ref={tableRef}
+				data={data}
+				loading={loading}
+				caption={tableCaption}
+				itemsPerPage={pagination.perPage}
+				totalItems={totalItems}
+			/>
+			{data.length ? (
+				<PaginationButtons
+					currentPage={pagination.page}
+					onChange={(page) => setPagination({ ...pagination, page })}
+					totalPages={totalPages}
 				/>
-				{data.length ? (
-					<PaginationButtons
-						currentPage={pagination.page}
-						onChange={(page) => setPagination({ ...pagination, page })}
-						totalPages={totalPages}
-					/>
-				) : null}
-			</Stack>
-		</PageContent>
+			) : null}
+		</Stack>
 	);
 };
