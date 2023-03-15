@@ -30,6 +30,7 @@ function MediumFilteringPatternTest({ loading }: { loading: boolean }) {
 	const tableCaption = generateTableCaption({
 		loading,
 		totalItems,
+		pagination,
 	});
 
 	return (

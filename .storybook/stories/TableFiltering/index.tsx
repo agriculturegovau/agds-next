@@ -28,6 +28,7 @@ export const Small = () => {
 	const tableCaption = generateTableCaption({
 		loading,
 		totalItems,
+		pagination,
 	});
 
 	return (
@@ -75,6 +76,7 @@ export const Medium = () => {
 	const tableCaption = generateTableCaption({
 		loading,
 		totalItems,
+		pagination,
 	});
 
 	return (
