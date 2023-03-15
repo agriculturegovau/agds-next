@@ -1,5 +1,6 @@
 import {
 	ChangeEvent,
+	InputHTMLAttributes,
 	Ref,
 	useCallback,
 	useEffect,
@@ -9,9 +10,9 @@ import {
 } from 'react';
 import { usePopper } from 'react-popper';
 import { SelectSingleEventHandler } from 'react-day-picker';
-import { useClickOutside, useTernaryState } from '../core';
+import { FieldMaxWidth, useClickOutside, useTernaryState } from '../core';
 import { CalendarSingle } from './Calendar';
-import { DateInput, DateInputProps } from './DatePickerInput';
+import { DateInput } from './DatePickerInput';
 import {
 	parseDate,
 	formatDate,
@@ -19,10 +20,36 @@ import {
 	transformValuePropToInputValue,
 } from './utils';
 
-type DatePickerInputProps = Omit<
-	DateInputProps,
-	'value' | 'onChange' | 'buttonRef' | 'buttonOnClick' | 'invalid'
->;
+type NativeInputProps = InputHTMLAttributes<HTMLInputElement>;
+
+type BaseTextInputProps = {
+	autoComplete?: NativeInputProps['autoComplete'];
+	autoFocus?: NativeInputProps['autoFocus'];
+	disabled?: NativeInputProps['disabled'];
+	id?: NativeInputProps['id'];
+	name?: NativeInputProps['name'];
+	onBlur?: NativeInputProps['onBlur'];
+	onFocus?: NativeInputProps['onFocus'];
+};
+
+export type DatePickerInputProps = BaseTextInputProps & {
+	/** Describes the purpose of the field. */
+	label: string;
+	/** If true, "(optional)" will never be appended to the label. */
+	hideOptionalLabel?: boolean;
+	/** If false, "(optional)" will be appended to the label. */
+	required?: boolean;
+	/** Provides extra information about the field. */
+	hint?: string;
+	/** Message to show when the field is invalid. */
+	message?: string;
+	/** If true, the invalid state will be rendered. */
+	invalid?: boolean;
+	/** If true, the field will stretch to the fill the width of its container. */
+	block?: boolean;
+	/** The maximum width of the field. */
+	maxWidth?: Extract<FieldMaxWidth, 'md' | 'lg' | 'xl'>;
+};
 
 type DatePickerCalendarProps = {
 	/** If set, any days before this date will not be selectable. */
@@ -44,8 +71,6 @@ type DatePickerBaseProps = {
 	onInputChange?: (inputValue: string) => void;
 	/** Ref to the input element. */
 	inputRef?: Ref<HTMLInputElement>;
-	/** If true, the invalid state will be rendered. */
-	invalid?: boolean;
 };
 
 export type DatePickerProps = DatePickerInputProps &
@@ -62,6 +87,7 @@ export const DatePicker = ({
 	yearRange,
 	inputRef,
 	invalid = false,
+	maxWidth = 'md',
 	...props
 }: DatePickerProps) => {
 	const [isCalendarOpen, openCalendar, closeCalendar] = useTernaryState(false);
@@ -156,6 +182,7 @@ export const DatePicker = ({
 		<div ref={setRefEl}>
 			<DateInput
 				{...props}
+				maxWidth={maxWidth}
 				invalid={{ field: invalid, input: invalid }}
 				ref={inputRef}
 				value={inputValue}

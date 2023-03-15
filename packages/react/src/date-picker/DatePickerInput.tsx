@@ -7,10 +7,7 @@ import { Button } from '../button';
 import { Field } from '../field';
 import { parseDate, formatHumanReadableDate } from './utils';
 
-export type DateInputProps = Omit<
-	TextInputProps,
-	'inputMode' | 'pattern' | 'type' | 'invalid'
-> & {
+export type DateInputProps = Omit<TextInputProps, 'invalid'> & {
 	invalid: {
 		/** If true, the entire field will be rendered in an invalid state.  */
 		field: boolean;
