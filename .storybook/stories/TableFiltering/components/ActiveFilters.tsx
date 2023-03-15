@@ -43,21 +43,13 @@ const getTagsFromFilters = ({
 			if (!value) continue;
 			tags.push({
 				// TODO add a formatter
-				label: `${FILTER_TAG_MAP[key]}: ${value}`,
+				label: `${key}: ${value}`,
 				onRemove: () => removeFilter(key),
 			});
 		}
 	}
 
 	return tags;
-};
-
-const FILTER_TAG_MAP: Record<keyof GetDataFilters, string> = {
-	assignee: 'Assignee',
-	businessName: 'Business name',
-	state: 'State',
-	requestDate: 'Request date',
-	status: 'Status',
 };
 
 export const ActiveFilters = ({
