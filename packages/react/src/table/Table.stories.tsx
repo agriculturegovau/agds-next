@@ -76,47 +76,103 @@ const exampleData = [
 
 const numberFormatter = new Intl.NumberFormat('en-AU');
 
-export const Basic: ComponentStory<typeof Table> = (args) => {
-	return (
-		<TableWrapper>
-			<Table {...args}>
-				<TableCaption>
-					Population of Australian states and territories, December 2015
-				</TableCaption>
-				<TableHead>
-					<tr>
-						<TableHeader width="50%" scope="col">
-							Location
-						</TableHeader>
-						<TableHeader textAlign="right" scope="col">
-							Population
-						</TableHeader>
-						<TableHeader textAlign="right" scope="col">
-							Change over previous year %
-						</TableHeader>
-						<TableHeader textAlign="right" scope="col">
-							Change over previous decade %
-						</TableHeader>
-					</tr>
-				</TableHead>
-				<TableBody>
-					{exampleData.map(
-						({ location, population, growthYear, growthDecade }, index) => (
-							<tr key={index}>
-								<TableCell>{location}</TableCell>
-								<TableCell textAlign="right">
-									{numberFormatter.format(population)}
-								</TableCell>
-								<TableCell textAlign="right">{growthYear}%</TableCell>
-								<TableCell textAlign="right">{growthDecade}%</TableCell>
-							</tr>
-						)
-					)}
-				</TableBody>
-			</Table>
-		</TableWrapper>
-	);
+const Template: ComponentStory<typeof Table> = (args) => (
+	<TableWrapper>
+		<Table {...args}>
+			<TableCaption>
+				Population of Australian states and territories, December 2015
+			</TableCaption>
+			<TableHead>
+				<tr>
+					<TableHeader scope="col">Location</TableHeader>
+					<TableHeader textAlign="right" scope="col">
+						Population
+					</TableHeader>
+					<TableHeader textAlign="right" scope="col">
+						Change over previous year %
+					</TableHeader>
+					<TableHeader textAlign="right" scope="col">
+						Change over previous decade %
+					</TableHeader>
+				</tr>
+			</TableHead>
+			<TableBody>
+				{exampleData.map(
+					({ location, population, growthYear, growthDecade }, index) => (
+						<tr key={index}>
+							<TableCell>{location}</TableCell>
+							<TableCell textAlign="right">
+								{numberFormatter.format(population)}
+							</TableCell>
+							<TableCell textAlign="right">{growthYear}%</TableCell>
+							<TableCell textAlign="right">{growthDecade}%</TableCell>
+						</tr>
+					)
+				)}
+			</TableBody>
+		</Table>
+	</TableWrapper>
+);
+
+export const Basic = Template.bind({});
+Basic.args = {};
+
+export const Striped = Template.bind({});
+Striped.args = {
+	striped: true,
 };
+
+export const FixedLayout = () => (
+	<TableWrapper>
+		<Table tableLayout="fixed">
+			<TableCaption>
+				Population of Australian states and territories, December 2015
+			</TableCaption>
+			<TableHead>
+				<tr>
+					<TableHeader scope="col" width={{ xs: '14rem', md: '40%' }}>
+						Location
+					</TableHeader>
+					<TableHeader
+						scope="col"
+						textAlign="right"
+						width={{ xs: '10rem', md: '20%' }}
+					>
+						Population
+					</TableHeader>
+					<TableHeader
+						scope="col"
+						textAlign="right"
+						width={{ xs: '14rem', md: '20%' }}
+					>
+						Change over previous year %
+					</TableHeader>
+					<TableHeader
+						scope="col"
+						textAlign="right"
+						width={{ xs: '14rem', md: '20%' }}
+					>
+						Change over previous decade %
+					</TableHeader>
+				</tr>
+			</TableHead>
+			<TableBody>
+				{exampleData.map(
+					({ location, population, growthYear, growthDecade }, index) => (
+						<tr key={index}>
+							<TableCell>{location}</TableCell>
+							<TableCell textAlign="right">
+								{numberFormatter.format(population)}
+							</TableCell>
+							<TableCell textAlign="right">{growthYear}%</TableCell>
+							<TableCell textAlign="right">{growthDecade}%</TableCell>
+						</tr>
+					)
+				)}
+			</TableBody>
+		</Table>
+	</TableWrapper>
+);
 
 export const WithHeading = () => {
 	return (
@@ -151,9 +207,11 @@ export const WithHeading = () => {
 							({ location, population, growthYear, growthDecade }, index) => (
 								<tr key={index}>
 									<TableCell>{location}</TableCell>
-									<TableCell textAlign="right">{population}</TableCell>
-									<TableCell textAlign="right">{growthYear}</TableCell>
-									<TableCell textAlign="right">{growthDecade}</TableCell>
+									<TableCell textAlign="right">
+										{numberFormatter.format(population)}
+									</TableCell>
+									<TableCell textAlign="right">{growthYear}%</TableCell>
+									<TableCell textAlign="right">{growthDecade}%</TableCell>
 								</tr>
 							)
 						)}
