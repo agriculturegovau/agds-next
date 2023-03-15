@@ -24,6 +24,7 @@ export const Application = () => {
 	const tableCaption = generateTableCaption({
 		loading,
 		totalItems: 10,
+		pagination,
 	});
 
 	return (
