@@ -2,4 +2,7 @@
 '@ag.ds-next/react': minor
 ---
 
-date-picker: Removed unused and undocumented props `placeholder` and `maxWidth`
+Date picker
+
+- Removed unused prop `placeholder` 
+- Removed options `xs` and `sm` from `maxWidth` prop. These widths were too small to be used in this component.

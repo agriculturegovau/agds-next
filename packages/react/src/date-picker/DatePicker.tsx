@@ -10,7 +10,7 @@ import {
 } from 'react';
 import { usePopper } from 'react-popper';
 import { SelectSingleEventHandler } from 'react-day-picker';
-import { useClickOutside, useTernaryState } from '../core';
+import { FieldMaxWidth, useClickOutside, useTernaryState } from '../core';
 import { CalendarSingle } from './Calendar';
 import { DateInput } from './DatePickerInput';
 import {
@@ -47,6 +47,8 @@ export type DatePickerInputProps = BaseTextInputProps & {
 	invalid?: boolean;
 	/** If true, the field will stretch to the fill the width of its container. */
 	block?: boolean;
+	/** The maximum width of the field. */
+	maxWidth?: Extract<FieldMaxWidth, 'md' | 'lg' | 'xl'>;
 };
 
 type DatePickerCalendarProps = {
