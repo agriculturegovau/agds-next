@@ -69,7 +69,7 @@ import { SearchInput } from '@ag.ds-next/react/search-input';
 import { PageTemplate } from '../components/PageTemplate';
 
 export default {
-	title: 'Testing/Kitchen Sink',
+	title: 'Testing/Kitchen sink',
 	parameters: {
 		layout: 'fullscreen',
 	},
@@ -532,6 +532,7 @@ export const KitchenSink = ({
 		</PageTemplate>
 	);
 };
+KitchenSink.storyName = 'Kitchen sink';
 KitchenSink.args = {
 	background: 'body',
 };
