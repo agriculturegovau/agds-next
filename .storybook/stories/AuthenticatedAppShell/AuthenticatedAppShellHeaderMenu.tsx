@@ -12,11 +12,8 @@ import { Text } from '@ag.ds-next/react/text';
 import { ChevronDownIcon } from '@ag.ds-next/react/icon';
 import { authenticatedAppShellHeaderHeight } from './utils';
 
-const links = [
-	{ label: 'Account', href: '#account' },
-	{ label: 'Settings', href: '#settings' },
-	{ label: 'Messages', href: '#messages' },
-];
+const menuId = 'authenticatedAppShellHeaderMenu';
+const buttonId = 'authenticatedAppShellHeaderMenuButton';
 
 const AuthenticatedAppShellHeaderMenuButton = ({
 	userName,
@@ -31,6 +28,10 @@ const AuthenticatedAppShellHeaderMenuButton = ({
 }) => (
 	<Flex
 		as={BaseButton}
+		id={buttonId}
+		type="button"
+		aria-haspopup="true"
+		aria-controls={menuId}
 		aria-label={`User menu, ${userName}`}
 		onClick={onClick}
 		gap={1}
@@ -98,8 +99,12 @@ export const AuthenticatedAppShellHeaderMenu = () => {
 			/>
 
 			{isOpen && (
-				<Box
+				<Stack
+					as="ul"
 					ref={setPopperEl}
+					role="menu"
+					aria-labelledby={buttonId}
+					id={menuId}
 					palette="light"
 					background="body"
 					rounded
@@ -113,84 +118,26 @@ export const AuthenticatedAppShellHeaderMenu = () => {
 					{...attributes.popper}
 					css={{ zIndex: 1 }}
 				>
-					<Stack as="ul" role="menu">
-						{links.map(({ label, href }, key) => (
-							<LinkItem href={href} key={key}>
+					{[
+						{ label: 'Account', href: '#account' },
+						{ label: 'Settings', href: '#settings' },
+						{ label: 'Messages', href: '#messages' },
+					].map(({ label, href }, key) => (
+						<Box as="li" key={key} role="none">
+							<Box
+								as="a"
+								display="block"
+								role="menuitem"
+								padding={1}
+								href={href}
+								link
+							>
 								{label}
-							</LinkItem>
-						))}
-					</Stack>
-				</Box>
+							</Box>
+						</Box>
+					))}
+				</Stack>
 			)}
-		</div>
-	);
-};
-
-const LinkItem = ({ children, href }) => (
-	<Box as="li">
-		<Box as="a" display="block" role="menuitem" padding={1} href={href} link>
-			{children}
-		</Box>
-	</Box>
-);
-
-const Html = () => {
-	return (
-		<div className="menu-button-links">
-			<button
-				type="button"
-				id="menubutton"
-				aria-haspopup="true"
-				aria-controls="menu2"
-			>
-				WAI-ARIA Quick Links
-				<svg
-					xmlns="http://www.w3.org/2000/svg"
-					width="12"
-					height="9"
-					viewBox="0 0 12 9"
-				>
-					<polygon points="1 0, 11 0, 6 8"></polygon>
-				</svg>
-			</button>
-			<ul role="menu" id="menu2" aria-labelledby="menubutton">
-				<li role="none">
-					<a role="menuitem" href="https://www.w3.org/">
-						W3C Home Page
-					</a>
-				</li>
-				<li role="none">
-					<a
-						role="menuitem"
-						href="https://www.w3.org/standards/webdesign/accessibility"
-					>
-						W3C Web Accessibility Initiative
-					</a>
-				</li>
-				<li role="none">
-					<a role="menuitem" href="https://www.w3.org/TR/wai-aria/">
-						Accessible Rich Internet Application Specification
-					</a>
-				</li>
-				<li role="none">
-					<a role="menuitem" href="https://www.w3.org/TR/wai-aria-practices/">
-						WAI-ARIA Authoring Practices
-					</a>
-				</li>
-				<li role="none">
-					<a
-						role="menuitem"
-						href="https://www.w3.org/TR/wai-aria-implementation/"
-					>
-						WAI-ARIA Implementation Guide
-					</a>
-				</li>
-				<li role="none">
-					<a role="menuitem" href="https://www.w3.org/TR/accname-aam-1.1/">
-						Accessible Name and Description
-					</a>
-				</li>
-			</ul>
 		</div>
 	);
 };
