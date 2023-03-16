@@ -17,6 +17,7 @@ export function SummaryListItemTerm({ children }: SummaryListItemTermProps) {
 			flexShrink={0}
 			minWidth="200px"
 			fontSize="sm"
+			color="text"
 		>
 			{children}
 		</Flex>
@@ -30,7 +31,7 @@ export function SummaryListItemDescription({
 	children,
 }: SummaryListItemDescriptionProps) {
 	return (
-		<Flex as="dd" flexGrow={1} fontSize="sm">
+		<Flex as="dd" flexGrow={1} fontSize="sm" color="text">
 			{children}
 		</Flex>
 	);
