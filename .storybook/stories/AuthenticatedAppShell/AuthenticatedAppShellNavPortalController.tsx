@@ -1,21 +1,28 @@
-import { Box } from '@ag.ds-next/react/box';
-import { tokens } from '@ag.ds-next/react/core';
-import { ReactNode, useEffect, useRef } from 'react';
+import { Box, Flex } from '@ag.ds-next/react/box';
+import { boxPalette, tokens, useWindowSize } from '@ag.ds-next/react/core';
+import {
+	Fragment,
+	MouseEventHandler,
+	ReactNode,
+	useEffect,
+	useRef,
+} from 'react';
 import { Global } from '@emotion/react';
 import { createPortal } from 'react-dom';
 import FocusLock from 'react-focus-lock';
 
 export const AuthenticatedAppShellNavPortalController = ({
-	isOpenAsModal,
-	isHidden,
-	children,
+	isOpen,
 	closeMenu,
+	children,
 }: {
-	children: ReactNode;
-	isOpenAsModal: boolean;
-	isHidden: boolean;
+	isOpen: boolean;
 	closeMenu: () => void;
+	children: ReactNode;
 }) => {
+	const { windowWidth } = useWindowSize();
+	const isOpenAsModal =
+		isOpen && (windowWidth || 0) <= tokens.breakpoint.lg - 1;
 	const dialogRef = useRef<HTMLDivElement>(null);
 
 	// Close the component when the user presses the escape key
@@ -36,7 +43,7 @@ export const AuthenticatedAppShellNavPortalController = ({
 	// This fixes a bug in certain devices where focus is not trapped correctly such as VoiceOver on iOS.
 	// This has been inspired by Reach UI (https://github.com/reach/reach-ui/blob/main/packages/dialog/src/index.tsx)
 	useEffect(() => {
-		if (!isOpenAsModal || !dialogRef.current) return;
+		if (!isOpen || !dialogRef.current) return;
 
 		const rootNodes: Element[] = [];
 		const originalAttrs: (string | null)[] = [];
@@ -61,35 +68,67 @@ export const AuthenticatedAppShellNavPortalController = ({
 				}
 			});
 		};
-	}, [isOpenAsModal]);
+	}, [isOpen]);
 
 	const element = (
-		<Box
-			css={{
-				[tokens.mediaQuery.max.md]: {
-					zIndex: 200,
+		<Fragment>
+			{isOpenAsModal ? <LockScroll /> : null}
+			{isOpenAsModal ? <Overlay onClick={close} /> : null}
+			<Box
+				dark
+				background="bodyAlt"
+				css={{
 					position: 'fixed',
-					display: isOpenAsModal ? 'block' : 'none',
+					zIndex: 200,
+					display: isOpen ? 'block' : 'none',
 					top: 0,
 					left: 0,
 					bottom: 0,
-					width: '100%',
 					boxSizing: 'border-box',
 					overflowY: 'auto',
-				},
-			}}
-		>
-			<FocusLock returnFocus disabled={!isOpenAsModal}>
-				{children}
-			</FocusLock>
-		</Box>
+					width: '100%',
+					// Desktop
+					[tokens.mediaQuery.min.md]: {
+						position: 'sticky',
+						top: 0,
+						flexShrink: 0,
+						height: '100vh',
+						width: tokens.maxWidth.mobileMenu,
+						borderLeft: `8px solid ${boxPalette.accent}`,
+					},
+				}}
+			>
+				<FocusLock returnFocus disabled={!isOpen}>
+					{children}
+				</FocusLock>
+			</Box>
+		</Fragment>
 	);
 
 	if (isOpenAsModal) {
 		return createPortal(element, document.body);
 	}
 
-	if (isHidden) return null;
-
 	return element;
 };
+
+function Overlay({ onClick }: { onClick: MouseEventHandler<HTMLDivElement> }) {
+	return (
+		<Box
+			css={{
+				position: 'fixed',
+				top: 0,
+				left: 0,
+				bottom: 0,
+				right: 0,
+				backgroundColor: `rgba(0, 0, 0, 0.8)`,
+				zIndex: 100,
+			}}
+			onClick={onClick}
+		/>
+	);
+}
+
+function LockScroll() {
+	return <Global styles={{ body: { overflow: 'hidden' } }} />;
+}

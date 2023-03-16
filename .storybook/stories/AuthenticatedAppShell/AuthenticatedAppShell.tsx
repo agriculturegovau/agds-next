@@ -37,7 +37,6 @@ export const AuthenticatedAppShell = ({
 						))}
 					</Stack>
 				</Box>
-				;
 				<Box as="hr" borderBottom />
 				<Box as="nav">
 					<Stack as="ul">
@@ -48,12 +47,7 @@ export const AuthenticatedAppShell = ({
 				</Box>
 			</AuthenticatedAppShellNavBar>
 
-			<Box
-				width="100%"
-				css={{
-					overflow: 'scroll',
-				}}
-			>
+			<Box width="100%">
 				<AuthenticatedAppShellHeader
 					title={siteTitle}
 					subtitle={siteSubtitle}
