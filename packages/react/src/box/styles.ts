@@ -16,16 +16,38 @@ import {
 	FontSize,
 	LineHeight,
 	Font,
+	breakpointNames,
 } from '../core';
 
 type PaletteProps = Partial<{
-	palette: BoxPalette;
+	palette: ResponsiveProp<BoxPalette>;
 	dark: boolean;
 	light: boolean;
 }>;
 
 function paletteStyles({ palette, dark, light }: PaletteProps) {
-	if (palette) return boxPalettes[palette];
+	if (palette) {
+		// If the `palette` prop is a string, nothing special is required
+		if (typeof palette === 'string') return boxPalettes[palette];
+
+		// Use the `mapResponsiveProp` utility to convert the prop to an array matching each named breakpoints
+		const [xsBreakpointPalette, ...breakpointPalettes] = mapResponsiveProp(
+			palette
+		) as BoxPalette[];
+
+		// The first item in the array does not need a media query since it is for devices larger than 0px
+		return [
+			boxPalettes[xsBreakpointPalette],
+			Object.fromEntries(
+				breakpointNames
+					.filter((name) => name !== 'xs')
+					.map((name, idx) => [
+						tokens.mediaQuery.min[name],
+						boxPalettes[breakpointPalettes[idx]],
+					])
+			),
+		];
+	}
 	if (dark) return boxPalettes.dark;
 	if (light) return boxPalettes.light;
 }

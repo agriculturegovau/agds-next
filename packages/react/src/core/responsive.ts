@@ -19,7 +19,7 @@ export const mq = facepaint([
 ]);
 
 type NamedBreakpoint = keyof typeof tokens.breakpoint;
-const breakpointNames = ['xs', 'sm', 'md', 'lg', 'xl'] as const;
+export const breakpointNames = ['xs', 'sm', 'md', 'lg', 'xl'] as const;
 
 export function mapResponsiveProp<T>(
 	value: ResponsiveProp<T>,
