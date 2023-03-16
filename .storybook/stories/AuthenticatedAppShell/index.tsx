@@ -106,6 +106,7 @@ export const Table = () => {
 	const tableCaption = generateTableCaption({
 		loading,
 		totalItems,
+		pagination,
 	});
 
 	return (
