@@ -46,7 +46,7 @@ const AuthenticatedAppShellHeaderMenuButton = ({
 		alignItems="center"
 	>
 		<Flex gap={0.5} as="span">
-			<Avatar name={userName} tone="action" />
+			<Avatar name={userName} tone="action" aria-hidden />
 			<Stack as="span">
 				<Text color="action" fontWeight="bold">
 					{userName}
