@@ -12,6 +12,7 @@ export const Application = () => {
 
 	const { sort, filters, pagination, setFilters, setPagination } =
 		useSortAndFilter({
+			itemsPerPage: 10,
 			tableRef,
 		});
 
@@ -24,6 +25,7 @@ export const Application = () => {
 	const tableCaption = generateTableCaption({
 		loading,
 		totalItems: 10,
+		pagination,
 	});
 
 	return (

@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { getData, GetDataParams } from './getData';
+import { getData, GetDataParams, GetDataPagination } from './getData';
 import { BusinessForAuditWithIndex } from './generateBusinessData';
 
 export function useData({ sort, filters, pagination }: GetDataParams) {
@@ -24,11 +24,21 @@ export function useData({ sort, filters, pagination }: GetDataParams) {
 export const generateTableCaption = ({
 	loading,
 	totalItems,
+	pagination,
 }: {
 	loading: boolean;
 	totalItems: number;
+	pagination: GetDataPagination;
 }) => {
-	return `Audits ${
-		loading ? '' : `(${totalItems} ${totalItems === 1 ? 'item' : 'items'})`
-	}`.trim();
+	if (loading) return 'Audits';
+
+	const totalItemsPlural = totalItems === 1 ? '1 item' : `${totalItems} items`;
+	const firstItem = (pagination.page - 1) * pagination.perPage + 1;
+	const lastItem =
+		(pagination.page - 1) * pagination.perPage + pagination.perPage;
+
+	const rangeExceedsTotalItems = lastItem > totalItems;
+	if (rangeExceedsTotalItems) return `Audits (${totalItemsPlural})`;
+
+	return `Audits (${firstItem} - ${lastItem} of ${totalItemsPlural})`;
 };

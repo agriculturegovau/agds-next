@@ -100,7 +100,9 @@ const Template: ComponentStory<typeof Table> = (args) => (
 				{exampleData.map(
 					({ location, population, growthYear, growthDecade }, index) => (
 						<tr key={index}>
-							<TableCell>{location}</TableCell>
+							<TableCell as="th" scope="row">
+								{location}
+							</TableCell>
 							<TableCell textAlign="right">
 								{numberFormatter.format(population)}
 							</TableCell>
@@ -160,7 +162,9 @@ export const FixedLayout = () => (
 				{exampleData.map(
 					({ location, population, growthYear, growthDecade }, index) => (
 						<tr key={index}>
-							<TableCell>{location}</TableCell>
+							<TableCell as="th" scope="row">
+								{location}
+							</TableCell>
 							<TableCell textAlign="right">
 								{numberFormatter.format(population)}
 							</TableCell>
@@ -204,7 +208,9 @@ export const WithHeading = () => {
 						{exampleData.map(
 							({ location, population, growthYear, growthDecade }, index) => (
 								<tr key={index}>
-									<TableCell>{location}</TableCell>
+									<TableCell as="th" scope="row">
+										{location}
+									</TableCell>
 									<TableCell textAlign="right">
 										{numberFormatter.format(population)}
 									</TableCell>

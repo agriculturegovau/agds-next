@@ -38,7 +38,7 @@ const DashboardTableRowAssignee = ({
 	return (
 		<TableCell>
 			<Flex alignItems="center" gap={0.25}>
-				<Avatar name={assignee} size="sm" />
+				<Avatar name={assignee} size="sm" aria-hidden />
 				<Text>{assignee}</Text>
 			</Flex>
 		</TableCell>
@@ -179,7 +179,7 @@ export const DashboardTable = forwardRef<HTMLTableElement, DashboardTableProps>(
 										const rowIndex = index + 1;
 										return (
 											<tr key={id} aria-rowindex={rowIndex}>
-												<TableCell>
+												<TableCell as="th" scope="row">
 													<TextLink href={`#${id}`}>{businessName}</TextLink>
 												</TableCell>
 												<DashboardTableRowAssignee assignee={assignee} />
