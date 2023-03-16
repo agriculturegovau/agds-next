@@ -11,7 +11,7 @@ import { Global } from '@emotion/react';
 import { createPortal } from 'react-dom';
 import FocusLock from 'react-focus-lock';
 
-export const AuthenticatedAppShellNavPortalController = ({
+export const AuthenticatedAppShellSideBar = ({
 	isOpen,
 	closeMenu,
 	children,

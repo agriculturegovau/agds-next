@@ -2,19 +2,19 @@ import { Box, Flex } from '@ag.ds-next/react/box';
 import { boxPalette, tokens } from '@ag.ds-next/react/core';
 import { FC } from 'react';
 
-export type AuthenticatedAppShellNavItemType = {
+export type AuthenticatedAppShellSideBarItemType = {
 	active?: boolean;
 	href: string;
 	label: string;
 	icon: FC;
 };
 
-export const AuthenticatedAppShellNavItem = ({
+export const AuthenticatedAppShellSideBarItem = ({
 	label,
 	href,
 	active,
 	icon: Icon,
-}: AuthenticatedAppShellNavItemType) => {
+}: AuthenticatedAppShellSideBarItemType) => {
 	return (
 		<Box as="li">
 			<Flex

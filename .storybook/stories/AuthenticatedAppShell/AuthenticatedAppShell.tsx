@@ -2,12 +2,14 @@ import { Box, Flex, Stack } from '@ag.ds-next/react/box';
 import { tokens, useTernaryState } from '@ag.ds-next/react/core';
 import { ReactNode } from 'react';
 import { AuthenticatedAppShellHeader } from './AuthenticatedAppShellHeader';
-import { AuthenticatedAppShellNavBar } from './AuthenticatedAppShellNavBar';
+import { AuthenticatedAppShellSideBar } from './AuthenticatedAppShellSideBar';
 import { AuthenticatedAppShellFooter } from './AuthenticatedAppShellFooter';
 import {
-	AuthenticatedAppShellNavItem,
-	AuthenticatedAppShellNavItemType,
-} from './AuthenticatedAppShellNavItem';
+	AuthenticatedAppShellSideBarItem,
+	AuthenticatedAppShellSideBarItemType,
+} from './AuthenticatedAppShellSideBarItem';
+import { Logo } from '@ag.ds-next/react/ag-branding';
+import { Button } from '@ag.ds-next/react/button';
 
 export const AuthenticatedAppShell = ({
 	siteTitle,
@@ -21,19 +23,31 @@ export const AuthenticatedAppShell = ({
 	siteSubtitle: string;
 	children: ReactNode;
 	collapseByDefault?: boolean;
-	primaryNavItems: AuthenticatedAppShellNavItemType[];
-	secondaryNavItems: AuthenticatedAppShellNavItemType[];
+	primaryNavItems: AuthenticatedAppShellSideBarItemType[];
+	secondaryNavItems: AuthenticatedAppShellSideBarItemType[];
 	signOut: () => void;
 }) => {
 	const [isOpen, openMenu, closeMenu] = useTernaryState(!collapseByDefault);
 
 	return (
 		<Box display="flex" flexDirection="row">
-			<AuthenticatedAppShellNavBar isOpen={isOpen} closeMenu={closeMenu}>
+			<AuthenticatedAppShellSideBar isOpen={isOpen} closeMenu={closeMenu}>
+				<Stack gap={1} padding={1}>
+					<Box maxWidth={tokens.maxWidth.mobileMenu} color="text">
+						<Logo />
+					</Box>
+
+					<Flex justifyContent="flex-end">
+						<Button onClick={closeMenu} variant="text">
+							Hide menu
+						</Button>
+					</Flex>
+				</Stack>
+
 				<Box as="nav">
 					<Stack as="ul">
 						{primaryNavItems.map(({ ...props }, index) => (
-							<AuthenticatedAppShellNavItem key={index} {...props} />
+							<AuthenticatedAppShellSideBarItem key={index} {...props} />
 						))}
 					</Stack>
 				</Box>
@@ -41,11 +55,11 @@ export const AuthenticatedAppShell = ({
 				<Box as="nav">
 					<Stack as="ul">
 						{secondaryNavItems.map(({ ...props }, index) => (
-							<AuthenticatedAppShellNavItem key={index} {...props} />
+							<AuthenticatedAppShellSideBarItem key={index} {...props} />
 						))}
 					</Stack>
 				</Box>
-			</AuthenticatedAppShellNavBar>
+			</AuthenticatedAppShellSideBar>
 
 			<Box width="100%">
 				<AuthenticatedAppShellHeader
