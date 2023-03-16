@@ -7,7 +7,7 @@ export type TableCellProps = PropsWithChildren<{
 	as?: 'td' | 'th';
 	/** Can be used to conditionally hide or show table cells at different breakpoints. */
 	display?: ResponsiveProp<'none' | 'table-cell'>;
-	/** Essential if you are using TableCell as a row header (th). This defines the cells that the header (defined in the <th>) element relates to. */
+	/** Essential if you are using TableCell as a row header (as="th"). This defines the cells that the header (defined in the <th>) element relates to. */
 	scope?: 'row' | 'rowgroup';
 	/** Sets the horizontal alignment of the content. */
 	textAlign?: 'center' | 'left' | 'right';

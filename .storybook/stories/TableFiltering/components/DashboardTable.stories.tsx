@@ -12,6 +12,7 @@ export const Application = () => {
 
 	const { sort, filters, pagination, setFilters, setPagination } =
 		useSortAndFilter({
+			itemsPerPage: 10,
 			tableRef,
 		});
 

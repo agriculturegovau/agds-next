@@ -32,13 +32,13 @@ export const generateTableCaption = ({
 }) => {
 	if (loading) return 'Audits';
 
-	const itemPlural = totalItems === 1 ? '1 item' : `${totalItems} items`;
+	const totalItemsPlural = totalItems === 1 ? '1 item' : `${totalItems} items`;
 	const firstItem = (pagination.page - 1) * pagination.perPage + 1;
 	const lastItem =
 		(pagination.page - 1) * pagination.perPage + pagination.perPage;
+
 	const rangeExceedsTotalItems = lastItem > totalItems;
+	if (rangeExceedsTotalItems) return `Audits (${totalItemsPlural})`;
 
-	if (rangeExceedsTotalItems) return `Audits (${itemPlural})`;
-
-	return `Audits (${firstItem} - ${lastItem} of ${itemPlural})`;
+	return `Audits (${firstItem} - ${lastItem} of ${totalItemsPlural})`;
 };
