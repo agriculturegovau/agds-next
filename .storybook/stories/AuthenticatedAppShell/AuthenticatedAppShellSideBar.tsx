@@ -3,6 +3,7 @@ import { boxPalette, tokens, useWindowSize } from '@ag.ds-next/react/core';
 import {
 	Fragment,
 	MouseEventHandler,
+	PropsWithChildren,
 	ReactNode,
 	useEffect,
 	useRef,
@@ -11,15 +12,16 @@ import { Global } from '@emotion/react';
 import { createPortal } from 'react-dom';
 import FocusLock from 'react-focus-lock';
 
+export type AuthenticatedAppShellSideBarProps = PropsWithChildren<{
+	isOpen: boolean;
+	closeMenu: () => void;
+}>;
+
 export const AuthenticatedAppShellSideBar = ({
 	isOpen,
 	closeMenu,
 	children,
-}: {
-	isOpen: boolean;
-	closeMenu: () => void;
-	children: ReactNode;
-}) => {
+}: AuthenticatedAppShellSideBarProps) => {
 	const { windowWidth } = useWindowSize();
 	const isOpenAsModal =
 		isOpen && (windowWidth || 0) <= tokens.breakpoint.lg - 1;

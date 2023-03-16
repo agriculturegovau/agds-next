@@ -6,31 +6,11 @@ import { BaseButton } from '@ag.ds-next/react/button';
 import { AuthenticatedAppShellHeaderMenu } from './AuthenticatedAppShellHeaderMenu';
 import { authenticatedAppShellHeaderHeight } from './utils';
 
-export const AuthenticatedAppShellHeaderButton = ({
-	onClick,
-}: {
-	onClick: () => void;
-}) => {
-	return (
-		<Stack
-			as={BaseButton}
-			onClick={onClick}
-			borderRight
-			alignItems="center"
-			justifyContent="center"
-			height={authenticatedAppShellHeaderHeight}
-			width={authenticatedAppShellHeaderHeight}
-			color="action"
-			css={{
-				'&:hover': {
-					background: boxPalette.backgroundShade,
-				},
-			}}
-		>
-			<MenuIcon aria-hidden />
-			Menu
-		</Stack>
-	);
+export type AuthenticatedAppShellHeaderProps = {
+	title: string;
+	subtitle: string;
+	isNavbarOpen: boolean;
+	openMenu: () => void;
 };
 
 export const AuthenticatedAppShellHeader = ({
@@ -38,12 +18,7 @@ export const AuthenticatedAppShellHeader = ({
 	subtitle,
 	isNavbarOpen,
 	openMenu,
-}: {
-	title: string;
-	subtitle: string;
-	isNavbarOpen: boolean;
-	openMenu: () => void;
-}) => {
+}: AuthenticatedAppShellHeaderProps) => {
 	return (
 		<Flex
 			as="header"
@@ -79,5 +54,32 @@ export const AuthenticatedAppShellHeader = ({
 
 			<AuthenticatedAppShellHeaderMenu />
 		</Flex>
+	);
+};
+
+export const AuthenticatedAppShellHeaderButton = ({
+	onClick,
+}: {
+	onClick: () => void;
+}) => {
+	return (
+		<Stack
+			as={BaseButton}
+			onClick={onClick}
+			borderRight
+			alignItems="center"
+			justifyContent="center"
+			height={authenticatedAppShellHeaderHeight}
+			width={authenticatedAppShellHeaderHeight}
+			color="action"
+			css={{
+				'&:hover': {
+					background: boxPalette.backgroundShade,
+				},
+			}}
+		>
+			<MenuIcon aria-hidden />
+			Menu
+		</Stack>
 	);
 };

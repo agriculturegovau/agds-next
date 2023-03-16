@@ -15,53 +15,6 @@ import { authenticatedAppShellHeaderHeight } from './utils';
 const menuId = 'authenticatedAppShellHeaderMenu';
 const buttonId = 'authenticatedAppShellHeaderMenuButton';
 
-const AuthenticatedAppShellHeaderMenuButton = ({
-	userName,
-	role,
-	onClick,
-	isOpen,
-}: {
-	userName: string;
-	role: string;
-	onClick: () => void;
-	isOpen: boolean;
-}) => (
-	<Flex
-		as={BaseButton}
-		id={buttonId}
-		type="button"
-		aria-haspopup="true"
-		aria-controls={menuId}
-		aria-label={`User menu, ${userName}`}
-		onClick={onClick}
-		gap={1}
-		paddingX={1}
-		height={authenticatedAppShellHeaderHeight}
-		css={{
-			'&:hover': {
-				background: boxPalette.backgroundShade,
-			},
-			...(isOpen && {
-				background: boxPalette.backgroundShade,
-			}),
-		}}
-		alignItems="center"
-	>
-		<Flex gap={0.5} as="span">
-			<Avatar name={userName} tone="action" aria-hidden />
-			<Stack as="span" display={{ xs: 'none', lg: 'flex' }}>
-				<Text color="action" fontWeight="bold">
-					{userName}
-				</Text>
-				<Text color="muted" fontSize="sm">
-					{role}
-				</Text>
-			</Stack>
-		</Flex>
-		<ChevronDownIcon color="action" />
-	</Flex>
-);
-
 export const AuthenticatedAppShellHeaderMenu = () => {
 	// Pop-up menu state
 	const [isOpen, open, close] = useTernaryState(false);
@@ -141,3 +94,50 @@ export const AuthenticatedAppShellHeaderMenu = () => {
 		</div>
 	);
 };
+
+const AuthenticatedAppShellHeaderMenuButton = ({
+	userName,
+	role,
+	onClick,
+	isOpen,
+}: {
+	userName: string;
+	role: string;
+	onClick: () => void;
+	isOpen: boolean;
+}) => (
+	<Flex
+		as={BaseButton}
+		id={buttonId}
+		type="button"
+		aria-haspopup="true"
+		aria-controls={menuId}
+		aria-label={`User menu, ${userName}`}
+		onClick={onClick}
+		gap={1}
+		paddingX={1}
+		height={authenticatedAppShellHeaderHeight}
+		css={{
+			'&:hover': {
+				background: boxPalette.backgroundShade,
+			},
+			...(isOpen && {
+				background: boxPalette.backgroundShade,
+			}),
+		}}
+		alignItems="center"
+	>
+		<Flex gap={0.5} as="span">
+			<Avatar name={userName} tone="action" aria-hidden />
+			<Stack as="span" display={{ xs: 'none', lg: 'flex' }}>
+				<Text color="action" fontWeight="bold">
+					{userName}
+				</Text>
+				<Text color="muted" fontSize="sm">
+					{role}
+				</Text>
+			</Stack>
+		</Flex>
+		<ChevronDownIcon color="action" />
+	</Flex>
+);

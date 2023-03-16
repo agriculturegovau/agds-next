@@ -11,14 +11,7 @@ import {
 import { Logo } from '@ag.ds-next/react/ag-branding';
 import { Button } from '@ag.ds-next/react/button';
 
-export const AuthenticatedAppShell = ({
-	siteTitle,
-	siteSubtitle,
-	children,
-	collapseByDefault = false,
-	primaryNavItems,
-	secondaryNavItems,
-}: {
+type AuthenticatedAppShellProps = {
 	siteTitle: string;
 	siteSubtitle: string;
 	children: ReactNode;
@@ -26,7 +19,16 @@ export const AuthenticatedAppShell = ({
 	primaryNavItems: AuthenticatedAppShellSideBarItemType[];
 	secondaryNavItems: AuthenticatedAppShellSideBarItemType[];
 	signOut: () => void;
-}) => {
+};
+
+export const AuthenticatedAppShell = ({
+	siteTitle,
+	siteSubtitle,
+	children,
+	collapseByDefault = false,
+	primaryNavItems,
+	secondaryNavItems,
+}: AuthenticatedAppShellProps) => {
 	const [isOpen, openMenu, closeMenu] = useTernaryState(!collapseByDefault);
 
 	return (
