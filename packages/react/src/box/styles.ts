@@ -450,6 +450,7 @@ export function boxStyles({
 	return [
 		css([
 			paletteStyles({ palette, dark, light }),
+
 			// common resets
 			{
 				boxSizing: 'border-box',
@@ -457,6 +458,7 @@ export function boxStyles({
 				margin: 0,
 				padding: 0,
 			},
+
 			mq({
 				...colorStyles({ background, color }),
 
