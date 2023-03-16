@@ -3,9 +3,8 @@ import { boxPalette, tokens } from '@ag.ds-next/react/core';
 import { Text } from '@ag.ds-next/react/text';
 import { MenuIcon } from '@ag.ds-next/react/icon';
 import { BaseButton } from '@ag.ds-next/react/button';
-import { Menu } from './Menu';
-
-const topHeight = { xs: '5rem', lg: '6rem' };
+import { AuthenticatedAppShellHeaderMenu } from './AuthenticatedAppShellHeaderMenu';
+import { authenticatedAppShellHeaderHeight } from './utils';
 
 export const AuthenticatedAppShellHeaderButton = ({
 	onClick,
@@ -19,8 +18,8 @@ export const AuthenticatedAppShellHeaderButton = ({
 			borderRight
 			alignItems="center"
 			justifyContent="center"
-			height={topHeight}
-			width={topHeight}
+			height={authenticatedAppShellHeaderHeight}
+			width={authenticatedAppShellHeaderHeight}
 			color="action"
 			css={{
 				'&:hover': {
@@ -49,7 +48,7 @@ export const AuthenticatedAppShellHeader = ({
 		<Flex
 			alignItems="center"
 			justifyContent="space-between"
-			height={topHeight}
+			height={authenticatedAppShellHeaderHeight}
 			borderBottom
 			width="100%"
 		>
@@ -72,15 +71,7 @@ export const AuthenticatedAppShellHeader = ({
 				</Stack>
 			</Flex>
 
-			<Box paddingRight={1}>
-				<Menu
-					links={[
-						{ label: 'Account', href: '#account' },
-						{ label: 'Settings', href: '#settings' },
-						{ label: 'Messages', href: '#messages' },
-					]}
-				/>
-			</Box>
+			<AuthenticatedAppShellHeaderMenu />
 		</Flex>
 	);
 };
