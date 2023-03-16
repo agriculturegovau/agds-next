@@ -31,6 +31,7 @@ const AuthenticatedAppShellHeaderMenuButton = ({
 }) => (
 	<Flex
 		as={BaseButton}
+		aria-label={`User menu, ${userName}`}
 		onClick={onClick}
 		gap={1}
 		paddingX={1}
@@ -47,7 +48,7 @@ const AuthenticatedAppShellHeaderMenuButton = ({
 	>
 		<Flex gap={0.5} as="span">
 			<Avatar name={userName} tone="action" aria-hidden />
-			<Stack as="span">
+			<Stack as="span" display={{ xs: 'none', lg: 'flex' }}>
 				<Text color="action" fontWeight="bold">
 					{userName}
 				</Text>
@@ -99,6 +100,7 @@ export const AuthenticatedAppShellHeaderMenu = () => {
 			{isOpen && (
 				<Box
 					ref={setPopperEl}
+					palette="light"
 					background="body"
 					rounded
 					style={{
