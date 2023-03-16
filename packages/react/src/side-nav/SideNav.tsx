@@ -1,4 +1,4 @@
-import { ReactNode, useRef } from 'react';
+import { useRef } from 'react';
 import { useSpring, animated } from '@react-spring/web';
 import { Box } from '../box';
 import {
@@ -10,10 +10,14 @@ import {
 } from '../core';
 import { SideNavContainer } from './SideNavContainer';
 import { SideNavTitle } from './SideNavTitle';
-import { SideNavGroup } from './SideNavGroup';
-import { SideNavLink } from './SideNavLink';
 import { SideNavCollapseButton } from './SideNavCollapseButton';
-import { SideNavBackground, findBestMatch, useSideNavIds } from './utils';
+import { findBestMatch, SideNavBackground, useSideNavIds } from './utils';
+import { SideNavLinkList } from './SideNavLinkList';
+
+type SideNavMenuItemType = Omit<LinkProps, 'children'> & {
+	label: string;
+	items?: SideNavMenuItemType[];
+};
 
 export type SideNavProps = {
 	/** Used for highlighting the active element. */
@@ -25,7 +29,7 @@ export type SideNavProps = {
 	/** The list of links. */
 	items: SideNavMenuItemType[];
 	/** The title is placed at the top of the list of links. */
-	title: ReactNode;
+	title: string;
 	/** If provided, the title will be rendered as an anchor element. */
 	titleLink?: string;
 };
@@ -35,8 +39,8 @@ export function SideNav({
 	collapseTitle,
 	items,
 	background = 'body',
-	titleLink,
 	title,
+	titleLink,
 }: SideNavProps) {
 	const { bodyId, buttonId, navId, titleId } = useSideNavIds();
 	const ref = useRef<HTMLDivElement>(null);
@@ -65,6 +69,8 @@ export function SideNav({
 
 	const { windowWidth } = useWindowSize();
 	const isMobile = (windowWidth || 0) <= tokens.breakpoint.lg - 1;
+
+	const bestMatch = findBestMatch(items, activePath);
 
 	return (
 		<SideNavContainer background={background}>
@@ -106,40 +112,9 @@ export function SideNav({
 					>
 						{title}
 					</SideNavTitle>
-					<LinkList activePath={activePath} items={items} />
+					<SideNavLinkList activePath={bestMatch} items={items} />
 				</Box>
 			</animated.div>
 		</SideNavContainer>
-	);
-}
-
-type SideNavMenuItemType = Omit<LinkProps, 'children'> & {
-	label: string;
-	items?: SideNavMenuItemType[];
-};
-
-type LinkListProps = {
-	activePath: string;
-	items: SideNavMenuItemType[];
-};
-
-// QUESTION: Should this be public api
-function LinkList({ activePath, items }: LinkListProps) {
-	const bestMatch = findBestMatch(items, activePath);
-	return (
-		<SideNavGroup>
-			{items.map(({ items: subItems, ...item }, index) => (
-				<SideNavLink
-					key={index}
-					active={item.href === bestMatch}
-					isCurrentPage={item.href === activePath}
-					{...item}
-				>
-					{subItems?.length ? (
-						<LinkList items={subItems} activePath={activePath} />
-					) : null}
-				</SideNavLink>
-			))}
-		</SideNavGroup>
 	);
 }

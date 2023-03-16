@@ -5,21 +5,21 @@ import { localPalette } from './utils';
 
 export type SideNavTitleProps = PropsWithChildren<{
 	id: string;
-	href?: string;
 	isCurrentPage: boolean;
+	href?: string;
 }>;
 
 export function SideNavTitle({
 	children,
 	id,
-	isCurrentPage,
 	href,
+	isCurrentPage,
 }: SideNavTitleProps) {
 	const Link = useLinkComponent();
 
 	if (href) {
 		return (
-			<Box as="h2" id={id}>
+			<Box as="h2" id={id} borderBottom borderBottomWidth="xl">
 				<Box
 					as={Link}
 					padding={1}
@@ -49,6 +49,8 @@ export function SideNavTitle({
 		<Box
 			as="h2"
 			id={id}
+			borderBottom
+			borderBottomWidth="xl"
 			display="block"
 			padding={1}
 			color="text"

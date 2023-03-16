@@ -1,7 +1,7 @@
 import type { PropsWithChildren } from 'react';
 import { backgroundColorMap, Box } from '../box';
 import { mapResponsiveProp, mq, packs } from '../core';
-import { hoverColorMap, SideNavBackground, localPaletteVars } from './utils';
+import { activeColorMap, SideNavBackground, localPaletteVars } from './utils';
 
 export type SideNavContainerProps = PropsWithChildren<{
 	background: SideNavBackground;
@@ -11,7 +11,7 @@ export const SideNavContainer = ({
 	children,
 	background,
 }: SideNavContainerProps) => {
-	const hover = hoverColorMap[background];
+	const activeColor = activeColorMap[background];
 	return (
 		<Box
 			as="aside"
@@ -19,7 +19,7 @@ export const SideNavContainer = ({
 			css={mq({
 				...packs.print.hidden,
 				[localPaletteVars.hover]: mapResponsiveProp(
-					hover,
+					activeColor,
 					(t) => backgroundColorMap[t]
 				),
 			})}
