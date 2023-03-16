@@ -5,13 +5,13 @@ import { useSortAndFilter } from '../TableFiltering/lib/useSortAndFilter';
 import { AuthenticatedAppShell } from './AuthenticatedAppShell';
 import { FormExampleMultiStep } from '../../../example-site/components/FormExampleMultiStep/FormExampleMultiStep';
 import {
-	ChartIcon,
 	FactoryIcon,
 	HomeIcon,
-	MailIcon,
-	QuestionIcon,
-	TickIcon,
-} from './icons';
+	ChartLineIcon,
+	EmailIcon,
+	HelpIcon,
+	SuccessIcon,
+} from '@ag.ds-next/react/icon';
 
 export default {
 	title: 'Testing/Authenticated App Shell (WIP)',
@@ -38,18 +38,18 @@ const AuthenticatedAppShellCommon = ({
 		{
 			label: 'Data and Insights',
 			active: false,
-			icon: ChartIcon,
+			icon: ChartLineIcon,
 			href: '#data',
 		},
 		{
 			label: 'Compliance',
 			active: false,
-			icon: TickIcon,
+			icon: SuccessIcon,
 			href: '#compliance',
 		},
 		{ isSeperator: true },
-		{ label: 'Messages', active: false, icon: MailIcon, href: '#messages' },
-		{ label: 'Help', active: false, icon: QuestionIcon, href: '#help' },
+		{ label: 'Messages', active: false, icon: EmailIcon, href: '#messages' },
+		{ label: 'Help', active: false, icon: HelpIcon, href: '#help' },
 	];
 
 	const signOut = () => {
