@@ -27,23 +27,24 @@ type PaletteProps = Partial<{
 
 function paletteStyles({ palette, dark, light }: PaletteProps) {
 	if (palette) {
-		// If the palette prop is a string, nothing special is required
+		// If the `palette` prop is a string, nothing special is required
 		if (typeof palette === 'string') return boxPalettes[palette];
 
-		// Convert the prop to an array matching the breakpoints
-		const mappedResponsiveProp = mapResponsiveProp(palette) as BoxPalette[];
+		// Use the `mapResponsiveProp` utility to convert the prop to an array matching each named breakpoints
+		const [xsBreakpointPalette, ...breakpointPalettes] = mapResponsiveProp(
+			palette
+		) as BoxPalette[];
 
+		// The first item in the array does not need a media query since it is for devices larger than 0px
 		return [
-			boxPalettes[mappedResponsiveProp[0]],
+			boxPalettes[xsBreakpointPalette],
 			Object.fromEntries(
 				breakpointNames
 					.filter((name) => name !== 'xs')
-					.map((name, idx) => {
-						return [
-							tokens.mediaQuery.min[name],
-							boxPalettes[mappedResponsiveProp[idx]],
-						];
-					})
+					.map((name, idx) => [
+						tokens.mediaQuery.min[name],
+						boxPalettes[breakpointPalettes[idx]],
+					])
 			),
 		];
 	}
