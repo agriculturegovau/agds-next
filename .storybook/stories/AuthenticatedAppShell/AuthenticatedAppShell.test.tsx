@@ -1,44 +1,19 @@
+import {
+	ChartPieIcon,
+	EmailIcon,
+	FactoryIcon,
+	HelpIcon,
+	HomeIcon,
+	SuccessIcon,
+} from '@ag.ds-next/react/icon';
 import '@testing-library/jest-dom';
 import 'html-validate/jest';
 import { cleanup, render } from '../../../test-utils';
 import { AuthenticatedAppShell } from './AuthenticatedAppShell';
-import {
-	ChartIcon,
-	FactoryIcon,
-	HomeIcon,
-	MailIcon,
-	QuestionIcon,
-	TickIcon,
-} from './icons';
 
 afterEach(cleanup);
 
 function AppShellTest() {
-	const navItems = [
-		{ label: 'Dashboard', active: true, icon: HomeIcon, href: '#home' },
-		{
-			label: 'Establishments',
-			active: false,
-			icon: FactoryIcon,
-			href: '#establishments',
-		},
-		{
-			label: 'Data and Insights',
-			active: false,
-			icon: ChartIcon,
-			href: '#data',
-		},
-		{
-			label: 'Compliance',
-			active: false,
-			icon: TickIcon,
-			href: '#compliance',
-		},
-		{ isSeperator: true },
-		{ label: 'Messages', active: false, icon: MailIcon, href: '#messages' },
-		{ label: 'Help', active: false, icon: QuestionIcon, href: '#help' },
-	];
-
 	const signOut = () => {
 		console.log('sign out');
 	};
@@ -47,7 +22,36 @@ function AppShellTest() {
 		<AuthenticatedAppShell
 			siteTitle="Export Service"
 			siteSubtitle="Supporting Australian agricultural exports"
-			navItems={navItems}
+			primaryNavItems={[
+				{ label: 'Dashboard', active: true, icon: HomeIcon, href: '#home' },
+				{
+					label: 'Establishments',
+					active: false,
+					icon: FactoryIcon,
+					href: '#establishments',
+				},
+				{
+					label: 'Data and Insights',
+					active: false,
+					icon: ChartPieIcon,
+					href: '#data',
+				},
+				{
+					label: 'Compliance',
+					active: false,
+					icon: SuccessIcon,
+					href: '#compliance',
+				},
+			]}
+			secondaryNavItems={[
+				{
+					label: 'Messages',
+					active: false,
+					icon: EmailIcon,
+					href: '#messages',
+				},
+				{ label: 'Help', active: false, icon: HelpIcon, href: '#help' },
+			]}
 			signOut={signOut}
 		>
 			<h1>Authenticated App Shell</h1>

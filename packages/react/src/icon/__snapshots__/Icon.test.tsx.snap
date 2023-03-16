@@ -207,6 +207,35 @@ exports[`Icon ChartLineIcon renders correctly 1`] = `
 </div>
 `;
 
+exports[`Icon ChartPieIcon renders correctly 1`] = `
+<div>
+  <svg
+    aria-hidden="true"
+    class="css-9s3cfn-Icon"
+    clip-rule="evenodd"
+    focusable="false"
+    height="24"
+    role="img"
+    viewBox="0 0 24 24"
+    width="24"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z"
+    />
+    <path
+      d="M7 4L12 12"
+    />
+    <path
+      d="M17.4545 20.1818L12 12"
+    />
+    <path
+      d="M22 12H12"
+    />
+  </svg>
+</div>
+`;
+
 exports[`Icon ChevronDownIcon renders correctly 1`] = `
 <div>
   <svg
@@ -489,6 +518,39 @@ exports[`Icon FacebookIcon renders correctly 1`] = `
 </div>
 `;
 
+exports[`Icon FactoryIcon renders correctly 1`] = `
+<div>
+  <svg
+    aria-hidden="true"
+    class="css-9s3cfn-Icon"
+    clip-rule="evenodd"
+    focusable="false"
+    height="24"
+    role="img"
+    viewBox="0 0 24 24"
+    width="24"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M15.7575 12.4394L17.7575 12.9394C18.3886 13.0972 19 12.6198 19 11.9692V3C19 2.44772 18.5523 2 18 2H16C15.4477 2 15 2.44772 15 3V11.4692C15 11.9281 15.3123 12.3281 15.7575 12.4394ZM3.24254 9.31063L21.2425 13.8106C21.6877 13.9219 22 14.3219 22 14.7808V21C22 21.5523 21.5523 22 21 22H3C2.44772 22 2 21.5523 2 21V10.2808C2 9.63021 2.61139 9.15285 3.24254 9.31063Z"
+    />
+    <rect
+      height="1"
+      transform="rotate(180 7 18)"
+      width="1"
+      x="7"
+      y="18"
+    />
+    <rect
+      height="1"
+      width="1"
+      x="11"
+      y="17"
+    />
+  </svg>
+</div>
+`;
+
 exports[`Icon FilterIcon renders correctly 1`] = `
 <div>
   <svg
@@ -524,6 +586,29 @@ exports[`Icon HelpIcon renders correctly 1`] = `
   >
     <path
       d="M9.08984 8.99959C9.32495 8.33126 9.789 7.7677 10.3998 7.40873C11.0106 7.04975 11.7287 6.91853 12.427 7.0383C13.1253 7.15808 13.7587 7.52112 14.2149 8.06312C14.6712 8.60512 14.9209 9.29111 14.9198 9.99959C14.9198 11.9996 11.9198 12.9996 11.9198 12.9996M12 17H12.01M12 2C9.34784 2 6.8043 3.05357 4.92893 4.92893C3.05357 6.8043 2 9.34784 2 12C2 14.6522 3.05357 17.1957 4.92893 19.0711C6.8043 20.9464 9.34784 22 12 22C14.6522 22 17.1957 20.9464 19.0711 19.0711C20.9464 17.1957 22 14.6522 22 12C22 9.34784 20.9464 6.8043 19.0711 4.92893C17.1957 3.05357 14.6522 2 12 2Z"
+    />
+  </svg>
+</div>
+`;
+
+exports[`Icon HomeIcon renders correctly 1`] = `
+<div>
+  <svg
+    aria-hidden="true"
+    class="css-9s3cfn-Icon"
+    clip-rule="evenodd"
+    focusable="false"
+    height="24"
+    role="img"
+    viewBox="0 0 24 24"
+    width="24"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M20 11V21C20 21.5523 19.5523 22 19 22H5C4.44772 22 4 21.5523 4 21V11"
+    />
+    <path
+      d="M2 12C3.83629 10.0774 12 2 12 2C12 2 20.1637 10.0774 22 12"
     />
   </svg>
 </div>

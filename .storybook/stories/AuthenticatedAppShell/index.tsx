@@ -27,31 +27,6 @@ const AuthenticatedAppShellCommon = ({
 	children: ReactNode;
 	collapseByDefault?: boolean;
 }) => {
-	const navItems = [
-		{ label: 'Dashboard', active: true, icon: HomeIcon, href: '#home' },
-		{
-			label: 'Establishments',
-			active: false,
-			icon: FactoryIcon,
-			href: '#establishments',
-		},
-		{
-			label: 'Data and Insights',
-			active: false,
-			icon: ChartLineIcon,
-			href: '#data',
-		},
-		{
-			label: 'Compliance',
-			active: false,
-			icon: SuccessIcon,
-			href: '#compliance',
-		},
-		{ isSeperator: true },
-		{ label: 'Messages', active: false, icon: EmailIcon, href: '#messages' },
-		{ label: 'Help', active: false, icon: HelpIcon, href: '#help' },
-	];
-
 	const signOut = () => {
 		console.log('sign out');
 	};
@@ -61,7 +36,36 @@ const AuthenticatedAppShellCommon = ({
 			siteTitle="Export Service"
 			siteSubtitle="Supporting Australian agricultural exports"
 			collapseByDefault={collapseByDefault}
-			navItems={navItems}
+			primaryNavItems={[
+				{ label: 'Dashboard', active: true, icon: HomeIcon, href: '#home' },
+				{
+					label: 'Establishments',
+					active: false,
+					icon: FactoryIcon,
+					href: '#establishments',
+				},
+				{
+					label: 'Data and Insights',
+					active: false,
+					icon: ChartLineIcon,
+					href: '#data',
+				},
+				{
+					label: 'Compliance',
+					active: false,
+					icon: SuccessIcon,
+					href: '#compliance',
+				},
+			]}
+			secondaryNavItems={[
+				{
+					label: 'Messages',
+					active: false,
+					icon: EmailIcon,
+					href: '#messages',
+				},
+				{ label: 'Help', active: false, icon: HelpIcon, href: '#help' },
+			]}
 			signOut={signOut}
 		>
 			{children}

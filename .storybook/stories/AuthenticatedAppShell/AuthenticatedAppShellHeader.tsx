@@ -46,6 +46,7 @@ export const AuthenticatedAppShellHeader = ({
 }) => {
 	return (
 		<Flex
+			as="header"
 			alignItems="center"
 			justifyContent="space-between"
 			height={authenticatedAppShellHeaderHeight}

@@ -9,28 +9,22 @@ import {
 	useWindowSize,
 } from '@ag.ds-next/react/core';
 import { Global } from '@emotion/react';
-import { MouseEventHandler } from 'react';
+import { MouseEventHandler, ReactNode } from 'react';
 import {
 	AuthenticatedAppShellNavItem,
 	AuthenticatedAppShellNavItemType,
 } from './AuthenticatedAppShellNavItem';
 import { AuthenticatedAppShellNavPortalController } from './AuthenticatedAppShellNavPortalController';
 
-export type AuthenticatedAppShellNavListItemType =
-	| AuthenticatedAppShellNavItemType
-	| {
-			isSeperator?: boolean;
-	  };
-
 /** The vertical navigation bar for the UI shell. A lot of this code was copied from Main-nav NavContainerDialog */
-export const AuthenticatedAppShellNav = ({
-	items,
+export const AuthenticatedAppShellNavBar = ({
 	isOpen,
 	closeMenu,
+	children,
 }: {
-	items: AuthenticatedAppShellNavListItemType[];
 	isOpen: boolean;
 	closeMenu: () => void;
+	children: ReactNode;
 }) => {
 	const { windowWidth } = useWindowSize();
 	const isOpenAsModal =
@@ -66,20 +60,18 @@ export const AuthenticatedAppShellNav = ({
 						</Flex>
 					</Stack>
 
-					<Box as="nav">
-						<Stack as="ul">
-							{items.map(({ isSeperator, ...props }, index) => {
-								if (isSeperator) {
-									return <Box as="hr" borderBottom key={index} />;
-								}
-
-								return <AuthenticatedAppShellNavItem key={index} {...props} />;
-							})}
-						</Stack>
-					</Box>
+					{children}
 				</Box>
 			</AuthenticatedAppShellNavPortalController>
 			{isOpenAsModal ? <Overlay onClick={close} /> : null}
+		</Box>
+	);
+};
+
+export const AuthenticatedAppShellNavGroup = ({ children }) => {
+	return (
+		<Box as="nav">
+			<Stack as="ul">{}</Stack>
 		</Box>
 	);
 };
