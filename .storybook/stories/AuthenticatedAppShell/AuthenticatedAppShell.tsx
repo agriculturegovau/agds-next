@@ -8,14 +8,12 @@ import {
 	AuthenticatedAppShellSideBarItem,
 	AuthenticatedAppShellSideBarItemType,
 } from './AuthenticatedAppShellSideBarItem';
-import { Logo } from '@ag.ds-next/react/ag-branding';
-import { Button } from '@ag.ds-next/react/button';
-
 type AuthenticatedAppShellProps = {
 	siteTitle: string;
 	siteSubtitle: string;
 	children: ReactNode;
-	collapseByDefault?: boolean;
+	/** For screens where a user is focusing on a task, the UI should collapse */
+	isFocusMode?: boolean;
 	primaryNavItems: AuthenticatedAppShellSideBarItemType[];
 	secondaryNavItems: AuthenticatedAppShellSideBarItemType[];
 	signOut: () => void;
@@ -25,27 +23,19 @@ export const AuthenticatedAppShell = ({
 	siteTitle,
 	siteSubtitle,
 	children,
-	collapseByDefault = false,
+	isFocusMode = false,
 	primaryNavItems,
 	secondaryNavItems,
 }: AuthenticatedAppShellProps) => {
-	const [isOpen, openMenu, closeMenu] = useTernaryState(!collapseByDefault);
+	const [isModalOpen, openModal, closeModal] = useTernaryState(false);
 
 	return (
 		<Box display="flex" flexDirection="row">
-			<AuthenticatedAppShellSideBar isOpen={isOpen} closeMenu={closeMenu}>
-				<Stack gap={1} padding={1}>
-					<Box maxWidth={tokens.maxWidth.mobileMenu} color="text">
-						<Logo />
-					</Box>
-
-					<Flex justifyContent="flex-end">
-						<Button onClick={closeMenu} variant="text">
-							Hide menu
-						</Button>
-					</Flex>
-				</Stack>
-
+			<AuthenticatedAppShellSideBar
+				isFocusMode={isFocusMode}
+				isModalOpen={isModalOpen}
+				closeModal={closeModal}
+			>
 				<Box as="nav">
 					<Stack as="ul">
 						{primaryNavItems.map(({ ...props }, index) => (
@@ -67,8 +57,8 @@ export const AuthenticatedAppShell = ({
 				<AuthenticatedAppShellHeader
 					title={siteTitle}
 					subtitle={siteSubtitle}
-					isNavbarOpen={isOpen}
-					openMenu={openMenu}
+					isNavbarOpen={isModalOpen}
+					openMenu={openModal}
 				/>
 
 				<Flex alignItems="center" flexDirection="column">

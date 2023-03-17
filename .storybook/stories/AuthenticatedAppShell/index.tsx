@@ -22,10 +22,10 @@ export default {
 
 const AuthenticatedAppShellCommon = ({
 	children,
-	collapseByDefault,
+	isFocusMode,
 }: {
 	children: ReactNode;
-	collapseByDefault?: boolean;
+	isFocusMode?: boolean;
 }) => {
 	const signOut = () => {
 		console.log('sign out');
@@ -35,7 +35,7 @@ const AuthenticatedAppShellCommon = ({
 		<AuthenticatedAppShell
 			siteTitle="Export Service"
 			siteSubtitle="Supporting Australian agricultural exports"
-			collapseByDefault={collapseByDefault}
+			isFocusMode={isFocusMode}
 			primaryNavItems={[
 				{ label: 'Dashboard', active: true, icon: HomeIcon, href: '#home' },
 				{
@@ -133,7 +133,7 @@ export const Table = () => {
 
 export const MultiPageForm = () => {
 	return (
-		<AuthenticatedAppShellCommon collapseByDefault={true}>
+		<AuthenticatedAppShellCommon isFocusMode={true}>
 			<FormExampleMultiStep />
 		</AuthenticatedAppShellCommon>
 	);
