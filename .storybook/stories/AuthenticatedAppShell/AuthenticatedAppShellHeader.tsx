@@ -5,20 +5,19 @@ import { MenuIcon } from '@ag.ds-next/react/icon';
 import { BaseButton } from '@ag.ds-next/react/button';
 import { AuthenticatedAppShellHeaderMenu } from './AuthenticatedAppShellHeaderMenu';
 import { authenticatedAppShellHeaderHeight } from './utils';
+import { useAuthenticatedAppShellContext } from './AuthenticatedAppShellContext';
 
 export type AuthenticatedAppShellHeaderProps = {
 	title: string;
 	subtitle: string;
-	isNavbarOpen: boolean;
-	openMenu: () => void;
 };
 
 export const AuthenticatedAppShellHeader = ({
 	title,
 	subtitle,
-	isNavbarOpen,
-	openMenu,
 }: AuthenticatedAppShellHeaderProps) => {
+	const { isModalOpen, openModal } = useAuthenticatedAppShellContext();
+
 	return (
 		<Flex
 			as="header"
@@ -34,8 +33,8 @@ export const AuthenticatedAppShellHeader = ({
 			width="100%"
 		>
 			<Flex alignItems="center">
-				{!isNavbarOpen && (
-					<AuthenticatedAppShellHeaderButton onClick={openMenu} />
+				{!isModalOpen && (
+					<AuthenticatedAppShellHeaderButton onClick={openModal} />
 				)}
 				<Stack paddingY={1} paddingLeft={{ xs: 1, lg: 2 }}>
 					<Text

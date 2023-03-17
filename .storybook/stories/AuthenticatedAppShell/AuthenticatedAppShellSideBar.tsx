@@ -13,30 +13,22 @@ import { createPortal } from 'react-dom';
 import FocusLock from 'react-focus-lock';
 import { Button } from '@ag.ds-next/react/button';
 import { Logo } from '@ag.ds-next/react/ag-branding';
-
-export type AuthenticatedAppShellSideBarProps = PropsWithChildren<{
-	isModalOpen: boolean;
-	/** If focus mode is true, the menu will be visible on desktop depending on the value of isModalOpen */
-	isFocusMode: boolean;
-	closeModal: () => void;
-}>;
+import { useAuthenticatedAppShellContext } from './AuthenticatedAppShellContext';
 
 export const AuthenticatedAppShellSideBar = ({
-	isModalOpen,
-	isFocusMode,
-	closeModal,
 	children,
-}: AuthenticatedAppShellSideBarProps) => {
+}: {
+	children: ReactNode;
+}) => {
+	const { isFocusMode, isModalOpen, closeModal } =
+		useAuthenticatedAppShellContext();
 	const { windowWidth } = useWindowSize();
 	// Whether the menu should be shown as a modal
 	const isModal = (windowWidth || 0) <= tokens.breakpoint.lg - 1;
 
 	if (isModal) {
 		return (
-			<AuthenticatedAppShellSideBarMobile
-				closeModal={closeModal}
-				isModalOpen={isModalOpen}
-			>
+			<AuthenticatedAppShellSideBarMobile>
 				{children}
 			</AuthenticatedAppShellSideBarMobile>
 		);
@@ -91,13 +83,10 @@ export const AuthenticatedAppShellSideBar = ({
 
 const AuthenticatedAppShellSideBarMobile = ({
 	children,
-	isModalOpen,
-	closeModal,
 }: {
 	children: ReactNode;
-	isModalOpen: boolean;
-	closeModal: () => void;
 }) => {
+	const { isModalOpen, closeModal } = useAuthenticatedAppShellContext();
 	const dialogRef = useRef<HTMLDivElement>(null);
 
 	// Close the component when the user presses the escape key
