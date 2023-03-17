@@ -9,6 +9,7 @@ import {
 	AuthenticatedAppShellSideBarItemType,
 } from './AuthenticatedAppShellSideBarItem';
 import { AuthenticatedAppShellContext } from './AuthenticatedAppShellContext';
+import { useIsMobile } from './utils';
 
 type AuthenticatedAppShellProps = PropsWithChildren<{
 	siteTitle: string;
@@ -36,16 +37,19 @@ export const AuthenticatedAppShell = ({
 	signOut,
 }: AuthenticatedAppShellProps) => {
 	const [isModalOpen, openModal, closeModal] = useTernaryState(false);
+	const isMobile = useIsMobile();
 
 	return (
 		<AuthenticatedAppShellContext.Provider
 			value={{
 				isFocusMode,
+				isMobile,
 				isModalOpen,
 				openModal,
 				closeModal,
 				userName,
 				userRole,
+				signOut,
 			}}
 		>
 			<Box display="flex" flexDirection="row">

@@ -20,13 +20,10 @@ export const AuthenticatedAppShellSideBar = ({
 }: {
 	children: ReactNode;
 }) => {
-	const { isFocusMode, isModalOpen, closeModal } =
+	const { isFocusMode, isModalOpen, isMobile, closeModal } =
 		useAuthenticatedAppShellContext();
-	const { windowWidth } = useWindowSize();
-	// Whether the menu should be shown as a modal
-	const isModal = (windowWidth || 0) <= tokens.breakpoint.lg - 1;
 
-	if (isModal) {
+	if (isMobile) {
 		return (
 			<AuthenticatedAppShellSideBarMobile>
 				{children}
@@ -65,7 +62,7 @@ export const AuthenticatedAppShellSideBar = ({
 						<Logo />
 					</Box>
 
-					{isModal || isFocusMode ? (
+					{isFocusMode ? (
 						<Flex justifyContent="flex-end">
 							<Button onClick={closeModal} variant="text">
 								Hide menu
