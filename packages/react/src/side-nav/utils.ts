@@ -57,12 +57,12 @@ export const localPalette = {
 	hover: `var(${localPaletteVars.hover})`,
 };
 
-export const activeColorMap = {
+export const hoverColorMap = {
 	body: 'shade',
 	bodyAlt: 'shadeAlt',
 } as const;
 
-export type SideNavBackground = keyof typeof activeColorMap;
+export type SideNavBackground = keyof typeof hoverColorMap;
 
 export function useSideNavIds() {
 	const autoId = useId();
