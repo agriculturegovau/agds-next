@@ -27,46 +27,52 @@ const AuthenticatedAppShellCommon = ({
 	children: ReactNode;
 	isFocusMode?: boolean;
 }) => {
+	const siteTitle = 'Export Service';
+	const siteSubtitle = 'Supporting Australian agricultural exports';
+	const userName = 'Toto Wolff';
+	const userRole = 'Team Principal';
+	const primaryNavItems = [
+		{ label: 'Dashboard', icon: HomeIcon, href: '#home' },
+		{
+			label: 'Establishments',
+			icon: FactoryIcon,
+			href: '#establishments',
+		},
+		{
+			label: 'Data and Insights',
+			icon: ChartLineIcon,
+			href: '#data',
+		},
+		{
+			label: 'Compliance',
+			icon: SuccessIcon,
+			href: '#compliance',
+		},
+	];
+	const secondaryNavItems = [
+		{
+			label: 'Messages',
+			icon: EmailIcon,
+			href: '#messages',
+		},
+		{ label: 'Help', icon: HelpIcon, href: '#help' },
+	];
+
 	const signOut = () => {
 		console.log('sign out');
 	};
 
 	return (
 		<AuthenticatedAppShell
-			siteTitle="Export Service"
-			siteSubtitle="Supporting Australian agricultural exports"
+			siteTitle={siteTitle}
+			siteSubtitle={siteSubtitle}
+			userName={userName}
+			userRole={userRole}
 			isFocusMode={isFocusMode}
-			primaryNavItems={[
-				{ label: 'Dashboard', active: true, icon: HomeIcon, href: '#home' },
-				{
-					label: 'Establishments',
-					active: false,
-					icon: FactoryIcon,
-					href: '#establishments',
-				},
-				{
-					label: 'Data and Insights',
-					active: false,
-					icon: ChartLineIcon,
-					href: '#data',
-				},
-				{
-					label: 'Compliance',
-					active: false,
-					icon: SuccessIcon,
-					href: '#compliance',
-				},
-			]}
-			secondaryNavItems={[
-				{
-					label: 'Messages',
-					active: false,
-					icon: EmailIcon,
-					href: '#messages',
-				},
-				{ label: 'Help', active: false, icon: HelpIcon, href: '#help' },
-			]}
+			primaryNavItems={primaryNavItems}
+			secondaryNavItems={secondaryNavItems}
 			signOut={signOut}
+			activePath="#home"
 		>
 			{children}
 		</AuthenticatedAppShell>

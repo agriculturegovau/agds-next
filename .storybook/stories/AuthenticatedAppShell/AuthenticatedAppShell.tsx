@@ -1,6 +1,6 @@
 import { Box, Flex, Stack } from '@ag.ds-next/react/box';
 import { tokens, useTernaryState } from '@ag.ds-next/react/core';
-import { createContext, ReactNode } from 'react';
+import { PropsWithChildren } from 'react';
 import { AuthenticatedAppShellHeader } from './AuthenticatedAppShellHeader';
 import { AuthenticatedAppShellSideBar } from './AuthenticatedAppShellSideBar';
 import { AuthenticatedAppShellFooter } from './AuthenticatedAppShellFooter';
@@ -9,24 +9,31 @@ import {
 	AuthenticatedAppShellSideBarItemType,
 } from './AuthenticatedAppShellSideBarItem';
 import { AuthenticatedAppShellContext } from './AuthenticatedAppShellContext';
-type AuthenticatedAppShellProps = {
+
+type AuthenticatedAppShellProps = PropsWithChildren<{
 	siteTitle: string;
 	siteSubtitle: string;
-	children: ReactNode;
+	userName: string;
+	userRole: string;
+	activePath: string;
 	/** For screens where a user is focusing on a task, the UI should collapse */
 	isFocusMode?: boolean;
 	primaryNavItems: AuthenticatedAppShellSideBarItemType[];
 	secondaryNavItems: AuthenticatedAppShellSideBarItemType[];
 	signOut: () => void;
-};
+}>;
 
 export const AuthenticatedAppShell = ({
 	siteTitle,
 	siteSubtitle,
+	userName,
+	userRole,
+	activePath,
 	children,
 	isFocusMode = false,
 	primaryNavItems,
 	secondaryNavItems,
+	signOut,
 }: AuthenticatedAppShellProps) => {
 	const [isModalOpen, openModal, closeModal] = useTernaryState(false);
 
@@ -37,6 +44,8 @@ export const AuthenticatedAppShell = ({
 				isModalOpen,
 				openModal,
 				closeModal,
+				userName,
+				userRole,
 			}}
 		>
 			<Box display="flex" flexDirection="row">
@@ -44,7 +53,11 @@ export const AuthenticatedAppShell = ({
 					<Box as="nav">
 						<Stack as="ul">
 							{primaryNavItems.map(({ ...props }, index) => (
-								<AuthenticatedAppShellSideBarItem key={index} {...props} />
+								<AuthenticatedAppShellSideBarItem
+									active={activePath === props.href}
+									key={index}
+									{...props}
+								/>
 							))}
 						</Stack>
 					</Box>

@@ -3,7 +3,6 @@ import { boxPalette, tokens } from '@ag.ds-next/react/core';
 import { FC } from 'react';
 
 export type AuthenticatedAppShellSideBarItemType = {
-	active?: boolean;
 	href: string;
 	label: string;
 	icon: FC;
@@ -14,7 +13,9 @@ export const AuthenticatedAppShellSideBarItem = ({
 	href,
 	active,
 	icon: Icon,
-}: AuthenticatedAppShellSideBarItemType) => {
+}: AuthenticatedAppShellSideBarItemType & {
+	active?: boolean;
+}) => {
 	return (
 		<Box as="li">
 			<Flex

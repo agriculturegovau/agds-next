@@ -11,6 +11,7 @@ import { Avatar } from '@ag.ds-next/react/avatar';
 import { Text } from '@ag.ds-next/react/text';
 import { ChevronDownIcon } from '@ag.ds-next/react/icon';
 import { authenticatedAppShellHeaderHeight } from './utils';
+import { useAuthenticatedAppShellContext } from './AuthenticatedAppShellContext';
 
 const menuId = 'authenticatedAppShellHeaderMenu';
 const buttonId = 'authenticatedAppShellHeaderMenuButton';
@@ -45,8 +46,6 @@ export const AuthenticatedAppShellHeaderMenu = () => {
 	return (
 		<div ref={setRefEl}>
 			<AuthenticatedAppShellHeaderMenuButton
-				userName="Toto Wolff"
-				role="Team Principal"
 				onClick={onButtonClick}
 				isOpen={isOpen}
 			/>
@@ -96,48 +95,52 @@ export const AuthenticatedAppShellHeaderMenu = () => {
 };
 
 const AuthenticatedAppShellHeaderMenuButton = ({
-	userName,
-	role,
 	onClick,
 	isOpen,
 }: {
-	userName: string;
-	role: string;
 	onClick: () => void;
 	isOpen: boolean;
-}) => (
-	<Flex
-		as={BaseButton}
-		id={buttonId}
-		type="button"
-		aria-haspopup="true"
-		aria-controls={menuId}
-		aria-label={`User menu, ${userName}`}
-		onClick={onClick}
-		gap={1}
-		paddingX={1}
-		height={authenticatedAppShellHeaderHeight}
-		css={{
-			'&:hover': {
-				background: boxPalette.backgroundShade,
-			},
-			...(isOpen && {
-				background: boxPalette.backgroundShade,
-			}),
-		}}
-		alignItems="center"
-	>
-		<Flex gap={0.5} as="span">
-			<Avatar name={userName} tone="action" aria-hidden />
-			<Stack as="span" display={{ xs: 'none', lg: 'flex' }}>
-				<Text color="action" fontWeight="bold">
-					{userName}
-				</Text>
-				<Text color="muted" fontSize="sm">
-					{role}
-				</Text>
-			</Stack>
+}) => {
+	const { userName, userRole } = useAuthenticatedAppShellContext();
+
+	return (
+		<Flex
+			as={BaseButton}
+			id={buttonId}
+			type="button"
+			aria-haspopup="true"
+			aria-controls={menuId}
+			aria-label={`User menu, ${userName}`}
+			onClick={onClick}
+			gap={1}
+			paddingX={1}
+			height={authenticatedAppShellHeaderHeight}
+			css={{
+				'&:hover': {
+					background: boxPalette.backgroundShade,
+				},
+				...(isOpen && {
+					background: boxPalette.backgroundShade,
+				}),
+			}}
+			alignItems="center"
+		>
+			<Flex gap={0.5} as="span">
+				<Avatar name={userName} tone="action" aria-hidden />
+				<Box
+					as="span"
+					display={{ xs: 'none', lg: 'flex' }}
+					flexDirection="column"
+				>
+					<Text color="action" fontWeight="bold">
+						{userName}
+					</Text>
+					<Text color="muted" fontSize="sm">
+						{userRole}
+					</Text>
+				</Box>
+			</Flex>
+			<ChevronDownIcon color="action" />
 		</Flex>
-		<ChevronDownIcon color="action" />
-	</Flex>
-);
+	);
+};
