@@ -1,5 +1,104 @@
 # @ag.ds-next/react
 
+## 1.3.0
+
+### Minor Changes
+
+- 8074a9594d: Date picker
+
+  - Updated default label to show "(optional)" when the field is not required. This is consistent with all other form components in the design system.
+
+  Date range picker
+
+  - Updated default label to show "(optional)" when the field is not required. This is consistent with all other form components in the design system.
+
+- 8f27d1c5ea: Date range picker
+
+  - Added support for a legend to be supplied via a new `legend` prop. If no legend is supplied, a default legend of `Date range` will be rendered but will be visually hidden
+  - Added support for hint text via the `hint` prop
+  - Added support for an invalid state via the `fromInvalid`, `toInvalid` and `message` prop
+
+- 42d8d711c9: Removed dependency to Reach UI as it is no longer being maintained. The logic from `@reach/auto-id` has been forked and copied into the repo.
+- fcc5cde78c: icon: Add ChevronsUpDownIcon, EmailIcon, FacebookIcon, InstagramIcon, LinkedInIcon, WebsiteIcon and TwitterIcon.
+- 99a6b30916: Date picker
+
+  - Added new prop `onInputChange` which can be used to track the value of the text input
+  - Updated the type of the `value` prop so it can accept string (which represents the value of the text input)
+
+  Date range picker
+
+  - Added new prop `onFromInputChange` and `onToInputChange` which can be used to track the value of the text inputs
+  - Updated the type of the `value` prop so it can accept string (which represents the value of the text inputs)
+
+- 8074a9594d: Field
+
+  - Updated behaviour of the `secondaryLabel` prop so it will prepend any text to the label instead of replacing default secondary label "(optional)".
+
+- 3f245233e1: Side nav
+
+  - Updated interface of link list items as per latest designs
+  - Removed exports of primitive components and modular storybook example
+
+- 1d4bb8a7b3: Date picker
+
+  - Removed unused prop `placeholder`
+  - Removed options `xs` and `sm` from `maxWidth` prop. These widths were too small to be used in this component.
+
+### Patch Changes
+
+- 5e8afca53b: table: Add support for `table-layout` property
+  table: Widen types for column widths
+- 54084988e9: Table: TableCell supports usage as a row header (th)
+- 4cfd38ccb0: Table: support aria-labelledby and aria-describedby
+- dbd3c05d9a: box: Updated the `palette` prop to accept responsive values. For example `<Box palette={["dark", "light"]} />`.
+- 107ddf8b5d: ## Autocomplete
+
+  Improved styles for disabled state
+
+  ## Combobox
+
+  Improved styles for disabled state
+
+  ## Control Input
+
+  Improved styles for disabled state
+
+  ## Date Picker
+
+  Improved styles for disabled state
+
+  ## File Input
+
+  Improved styles for disabled state
+
+  ## File Upload
+
+  Improved styles for disabled state
+
+  ## Search Input
+
+  Improved styles for disabled state
+
+  ## Select
+
+  Improved styles for disabled state
+
+  ## TextInput
+
+  Improved styles for disabled state
+
+  ## Textarea
+
+  Improved styless for disabled state
+
+- 107ddf8b5d: combobox: Fixed bug where the dropdown trigger button and clear button were not being marked or shown as disabled
+- 379536c7f5: - field: Added `className` prop to `FieldLabel`
+  - field: Fixed typos in hook `useScrollToField`
+  - field: Exported component props and added comments to props.
+- 461f8da749: summary-list: Fixed a text colour bug when this component was placed inside dark palette. This was done by adding an explicit colour to `SummaryListItemTerm` and `SummaryListItemDescription`.
+- c8e9a08fa1: table: Add support for ID prop
+- 7ce426ca98: date-picker: Improved test coverage
+
 ## 1.2.1
 
 ### Patch Changes
