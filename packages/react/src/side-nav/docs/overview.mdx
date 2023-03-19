@@ -2,56 +2,68 @@
 title: Side nav
 description: A vertical list of links use for site navigation, typically placed next to body content.
 group: Navigation
-storybookPath: /story/navigation-sidenav--light-variant
+storybookPath: /story/navigation-sidenav--basic
 figmaGalleryNodeId: 11981%3A101095
 ---
 
 ```jsx live
 <SideNav
-	activePath="#welcome"
-	collapseTitle="In this section"
-	title="SideNav"
+	title="Lodging your tax return"
 	titleLink="#"
+	collapseTitle="In this section"
+	activePath="#in-detail"
 	items={[
 		{
 			href: '#welcome',
 			label: 'Welcome',
 		},
 		{
-			href: '#one',
-			label: 'Item',
+			href: '#do-you-need-to-lodge-a-tax-return',
+			label: 'Do you need to lodge a tax return?',
+		},
+		{
+			href: '#lodge-online',
+			label: 'Lodge online',
 			items: [
 				{
-					href: '#two',
-					label: 'Sub-item',
+					href: '#lodge-online/pre-filling',
+					label: 'Pre-filling your online tax return',
 				},
 			],
 		},
 		{
-			href: '#three',
-			label: 'Item',
+			href: '#whats-new-for-individuals',
+			label: "What's new for individuals",
 		},
 		{
-			href: '#four',
-			label: 'Item',
+			href: '#why-you-may-receive-a-tax-bill',
+			label: 'Why you may receive a tax bill',
+		},
+		{
+			href: '#in-detail',
+			label: 'In detail',
 			items: [
 				{
-					href: '#five',
-					label: 'Sub-item',
+					href: '#in-detail/record-keeping',
+					label: 'Record keeping',
 					items: [
 						{
-							href: '#six',
-							label: 'Sub-sub-item',
+							href: '#in-detail/record-keeping/tax',
+							label: 'Keeping your tax records',
 						},
 						{
-							href: '#seven',
-							label: 'Sub-sub-item',
+							href: '#in-detail/record-keeping/incorrect-amounts',
+							label: 'Incorrect amounts',
 						},
 					],
 				},
 				{
-					href: '#eight',
-					label: 'Sub-item',
+					href: '#tax-receipt',
+					label: 'Tax receipt',
+				},
+				{
+					href: '#pre-fill availability',
+					label: 'Pre-fill availability',
 				},
 			],
 		},
@@ -61,7 +73,7 @@ figmaGalleryNodeId: 11981%3A101095
 
 The side navigation allows users to find other pages which share a similar topic or section. By default it supports three levels of nesting along with an accompanying heading.
 
-On mobile and smaller viewports, the side navigation uses functionality from the accordion component to collapse down to an expandable element. (Coming soon)
+On mobile and smaller viewports, the side navigation uses functionality from the accordion component to collapse down to an expandable element.
 
 The background of the `SideNav` must match the background it is being placed on. For example, if `SideNav` is placed on a 'bodyAlt' background, please set the `background` prop to `bodyAlt`.
 
@@ -69,6 +81,7 @@ The background of the `SideNav` must match the background it is being placed on.
 
 - include a concise label
 - indent each nesting level
+- only expand active subsections to help emphasise which section the user is in and to reduce visual complexity
 
 <DontHeading />
 

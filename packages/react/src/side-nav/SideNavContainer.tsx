@@ -11,7 +11,7 @@ export const SideNavContainer = ({
 	children,
 	background,
 }: SideNavContainerProps) => {
-	const hover = hoverColorMap[background];
+	const hoverColor = hoverColorMap[background];
 	return (
 		<Box
 			as="aside"
@@ -19,7 +19,7 @@ export const SideNavContainer = ({
 			css={mq({
 				...packs.print.hidden,
 				[localPaletteVars.hover]: mapResponsiveProp(
-					hover,
+					hoverColor,
 					(t) => backgroundColorMap[t]
 				),
 			})}

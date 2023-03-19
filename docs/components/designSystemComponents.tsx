@@ -68,13 +68,7 @@ export {
 } from '@ag.ds-next/react/breadcrumbs';
 export { MainNav } from '@ag.ds-next/react/main-nav';
 export { SubNav } from '@ag.ds-next/react/sub-nav';
-export {
-	SideNav,
-	SideNavContainer,
-	SideNavLink,
-	SideNavGroup,
-	SideNavTitle,
-} from '@ag.ds-next/react/side-nav';
+export { SideNav } from '@ag.ds-next/react/side-nav';
 export { Switch } from '@ag.ds-next/react/switch';
 export {
 	AlertFilledIcon,

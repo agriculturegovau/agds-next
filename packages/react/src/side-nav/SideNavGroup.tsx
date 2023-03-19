@@ -4,14 +4,12 @@ import { LinkListContext, useLinkListDepth } from './context';
 
 type SideNavGroupProps = { children: ReactNode };
 
-export const SideNavGroup = ({ children }: SideNavGroupProps) => {
+export function SideNavGroup({ children }: SideNavGroupProps) {
 	const depth = useLinkListDepth();
 	const value = depth + 1;
 	return (
 		<LinkListContext.Provider value={value}>
-			<Box as="ul" borderTop borderColor={value > 1 ? 'muted' : 'border'}>
-				{children}
-			</Box>
+			<Box as="ul">{children}</Box>
 		</LinkListContext.Provider>
 	);
-};
+}
