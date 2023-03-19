@@ -10,6 +10,7 @@ import {
 } from './AuthenticatedAppShellSideBarItem';
 import { AuthenticatedAppShellContext } from './AuthenticatedAppShellContext';
 import { useIsMobile } from './utils';
+import { SkipLinks } from '@ag.ds-next/react/skip-link';
 
 type AuthenticatedAppShellProps = PropsWithChildren<{
 	siteTitle: string;
@@ -54,6 +55,9 @@ export const AuthenticatedAppShell = ({
 		>
 			<Box display="flex" flexDirection="row">
 				<AuthenticatedAppShellSideBar>
+					<SkipLinks
+						links={[{ href: '#main-content', label: 'Skip to main content' }]}
+					/>
 					<Box as="nav">
 						<Stack as="ul">
 							{primaryNavItems.map(({ ...props }, index) => (
@@ -88,6 +92,7 @@ export const AuthenticatedAppShell = ({
 							paddingX={tokens.containerPadding}
 						>
 							<Box
+								id="main-content"
 								paddingTop={{ xs: 2, md: 3 }}
 								paddingBottom={{ xs: 3, md: 4 }}
 							>
