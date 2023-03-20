@@ -30,6 +30,7 @@ export function Avatar({
 	const { size, fontSize } = SIZE_MAP[sizeProp];
 	return (
 		<Flex
+			as="span"
 			alignItems="center"
 			justifyContent="center"
 			flexShrink={0}
