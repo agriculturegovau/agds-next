@@ -27,26 +27,27 @@ exports[`Combobox renders correctly 1`] = `
       Start typing to see results
     </span>
     <div
-      aria-expanded="false"
-      aria-haspopup="listbox"
-      aria-owns="downshift-0-menu"
       class="css-ep8qz0-ComboboxBase"
-      role="combobox"
     >
       <input
+        aria-activedescendant=""
         aria-autocomplete="list"
         aria-controls="downshift-0-menu"
         aria-describedby="field-combobox-input-:r0:-hint"
+        aria-expanded="false"
         aria-invalid="false"
         aria-labelledby="downshift-0-label"
         aria-required="false"
         autocomplete="off"
         class="css-1fv0ovm-ComboboxBase"
         id="combobox-input-:r0:"
+        role="combobox"
         type="text"
         value=""
       />
       <button
+        aria-controls="downshift-0-menu"
+        aria-expanded="false"
         aria-label="Toggle menu"
         class="css-16i21f4-BaseButton-ComboboxIconButton"
         id="downshift-0-toggle-button"
@@ -69,17 +70,13 @@ exports[`Combobox renders correctly 1`] = `
           />
         </svg>
       </button>
-      <div
-        class="css-15i2gz6-ComboboxBase"
+      <ul
+        aria-labelledby="downshift-0-label"
+        class="css-13zg723-boxStyles-ComboboxList"
+        id="downshift-0-menu"
+        role="listbox"
         style="position: absolute; left: 0px; top: 0px;"
-      >
-        <ul
-          aria-labelledby="downshift-0-label"
-          class="css-1bz7paq-boxStyles-ComboboxList"
-          id="downshift-0-menu"
-          role="listbox"
-        />
-      </div>
+      />
     </div>
   </div>
 </div>

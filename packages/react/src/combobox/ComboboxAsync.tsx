@@ -10,6 +10,8 @@ import {
 
 export type ComboboxAsyncProps<Option extends DefaultComboboxOption> =
 	CommonComboboxProps<Option> & {
+		/** If true, the dropdown will open when the user focuses on the element  */
+		openDropdownOnFocus?: boolean;
 		/** Function to be used when options need to be loaded over the network. */
 		loadOptions: (inputValue: string) => Promise<Option[]>;
 	};
@@ -17,6 +19,7 @@ export type ComboboxAsyncProps<Option extends DefaultComboboxOption> =
 export function ComboboxAsync<Option extends DefaultComboboxOption>({
 	loadOptions: loadOptionsProp,
 	showDropdownTrigger = true,
+	openDropdownOnFocus = true,
 	...props
 }: ComboboxAsyncProps<Option>) {
 	const inputId = useComboboxInputId(props.id);
@@ -47,6 +50,10 @@ export function ComboboxAsync<Option extends DefaultComboboxOption>({
 		stateReducer: (state, actionAndChanges) => {
 			const { type: actionAndChangesType, changes } = actionAndChanges;
 			switch (actionAndChangesType) {
+				case useCombobox.stateChangeTypes.InputFocus:
+					// In downshift v7 the dropdown is opened automatically when the user focuses
+					// We want to disable this functionality in the `Autocomplete` component
+					return { ...changes, isOpen: openDropdownOnFocus };
 				// Reset the input value when the menu is closed
 				case useCombobox.stateChangeTypes.InputBlur:
 					return {

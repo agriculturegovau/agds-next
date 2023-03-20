@@ -95,7 +95,10 @@ export function ComboboxBase<Option extends DefaultComboboxOption>({
 		paddingRight: mapSpacing(3),
 	};
 
-	const { ref: comboboxRef, ...comboboxProps } = downshift.getComboboxProps();
+	const { ref: menuRef, ...menuProps } = downshift.getMenuProps({
+		...attributes.popper,
+		style: styles.popper,
+	});
 
 	return (
 		<Field
@@ -108,16 +111,11 @@ export function ComboboxBase<Option extends DefaultComboboxOption>({
 			id={inputId}
 		>
 			{(a11yProps) => (
-				<div
-					css={{ position: 'relative', maxWidth }}
-					ref={mergeRefs([setRefEl, comboboxRef])}
-					{...comboboxProps}
-				>
+				<div ref={setRefEl} css={{ position: 'relative', maxWidth }}>
 					<input
 						css={{ ...inputStyles, width: '100%' }}
 						disabled={disabled}
-						{...a11yProps}
-						{...downshift.getInputProps({ type: 'text' })}
+						{...downshift.getInputProps({ ...a11yProps, type: 'text' })}
 					/>
 					{showDropdownTrigger && (
 						<ComboboxDropdownTrigger
@@ -131,50 +129,43 @@ export function ComboboxBase<Option extends DefaultComboboxOption>({
 							onClick={downshift.reset}
 						/>
 					)}
-					<div
-						ref={setPopperEl}
-						style={styles.popper}
-						{...attributes.popper}
-						css={{ maxWidth, zIndex: 1, width: '100%' }}
+					<ComboboxList
+						{...menuProps}
+						ref={mergeRefs([menuRef, setPopperEl])}
+						maxWidth={maxWidthProp}
+						isOpen={downshift.isOpen}
 					>
-						<ComboboxList
-							{...downshift.getMenuProps()}
-							isOpen={downshift.isOpen}
-						>
-							{downshift.isOpen && (
-								<Fragment>
-									{loading ? (
-										<ComboboxListLoading />
-									) : networkError ? (
-										<ComboboxListError />
-									) : (
-										<Fragment>
-											{inputItems?.length ? (
-												inputItems.map((item, index) => {
-													const isActiveItem =
-														downshift.highlightedIndex === index;
-													return (
-														<ComboboxListItem
-															key={`${item.value}${index}`}
-															isActiveItem={isActiveItem}
-															isInteractive={true}
-															{...downshift.getItemProps({ item, index })}
-														>
-															{renderItem(item, downshift.inputValue)}
-														</ComboboxListItem>
-													);
-												})
-											) : (
-												<ComboboxListEmptyResults
-													message={emptyResultsMessage}
-												/>
-											)}
-										</Fragment>
-									)}
-								</Fragment>
-							)}
-						</ComboboxList>
-					</div>
+						{downshift.isOpen && (
+							<Fragment>
+								{loading ? (
+									<ComboboxListLoading />
+								) : networkError ? (
+									<ComboboxListError />
+								) : (
+									<Fragment>
+										{inputItems?.length ? (
+											inputItems.map((item, index) => {
+												const isActiveItem =
+													downshift.highlightedIndex === index;
+												return (
+													<ComboboxListItem
+														key={`${item.value}${index}`}
+														isActiveItem={isActiveItem}
+														isInteractive={true}
+														{...downshift.getItemProps({ item, index })}
+													>
+														{renderItem(item, downshift.inputValue)}
+													</ComboboxListItem>
+												);
+											})
+										) : (
+											<ComboboxListEmptyResults message={emptyResultsMessage} />
+										)}
+									</Fragment>
+								)}
+							</Fragment>
+						)}
+					</ComboboxList>
 				</div>
 			)}
 		</Field>
