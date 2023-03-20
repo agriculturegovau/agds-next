@@ -1,28 +1,33 @@
-import { NotificationBadge } from '@ag.ds-next/react/badge';
+import { ComponentType } from 'react';
 import { Box, Flex } from '@ag.ds-next/react/box';
-import { boxPalette, tokens } from '@ag.ds-next/react/core';
-import { FC } from 'react';
+import { boxPalette, tokens, useLinkComponent } from '@ag.ds-next/react/core';
+import { IconProps } from '@ag.ds-next/react/icon';
+import { NotificationBadge } from '@ag.ds-next/react/badge';
 
 export type AuthenticatedAppShellSideBarItemType = {
 	href: string;
 	label: string;
-	icon: FC;
-	badgeNumber?: number;
+	icon: ComponentType<IconProps>;
+	badgeCount?: number;
 };
+
+export type AuthenticatedAppShellSideBarItemProps =
+	AuthenticatedAppShellSideBarItemType & {
+		isActive: boolean;
+	};
 
 export const AuthenticatedAppShellSideBarItem = ({
 	label,
 	href,
 	isActive,
-	badgeNumber,
+	badgeCount,
 	icon: Icon,
-}: AuthenticatedAppShellSideBarItemType & {
-	isActive?: boolean;
-}) => {
+}: AuthenticatedAppShellSideBarItemProps) => {
+	const Link = useLinkComponent();
 	return (
 		<Box as="li">
 			<Flex
-				as="a"
+				as={Link}
 				href={href}
 				paddingX={2}
 				paddingY={1}
@@ -37,7 +42,6 @@ export const AuthenticatedAppShellSideBarItem = ({
 						background: boxPalette.backgroundShade,
 						color: boxPalette.foregroundText,
 					}),
-
 					'&:hover': {
 						background: boxPalette.backgroundShade,
 						color: boxPalette.foregroundText,
@@ -47,7 +51,7 @@ export const AuthenticatedAppShellSideBarItem = ({
 			>
 				<Icon />
 				{label}
-				{badgeNumber && <NotificationBadge tone="action" value={badgeNumber} />}
+				{badgeCount && <NotificationBadge tone="action" value={badgeCount} />}
 			</Flex>
 		</Box>
 	);

@@ -11,6 +11,7 @@ import {
 	EmailIcon,
 	HelpIcon,
 	SuccessIcon,
+	AvatarIcon,
 } from '@ag.ds-next/react/icon';
 
 export default {
@@ -20,6 +21,34 @@ export default {
 	},
 };
 
+const primaryNavItems = [
+	{ label: 'Dashboard', icon: HomeIcon, href: '#home' },
+	{
+		label: 'Establishments',
+		icon: FactoryIcon,
+		href: '#establishments',
+	},
+	{
+		label: 'Data and Insights',
+		icon: ChartLineIcon,
+		href: '#data',
+	},
+	{
+		label: 'Compliance',
+		icon: SuccessIcon,
+		href: '#compliance',
+	},
+];
+const secondaryNavItems = [
+	{
+		label: 'Messages',
+		icon: EmailIcon,
+		href: '#messages',
+		badgeCount: 3,
+	},
+	{ label: 'Help', icon: HelpIcon, href: '#help' },
+];
+
 const AuthenticatedAppShellCommon = ({
 	children,
 	isFocusMode,
@@ -27,52 +56,27 @@ const AuthenticatedAppShellCommon = ({
 	children: ReactNode;
 	isFocusMode?: boolean;
 }) => {
-	const siteTitle = 'Export Service';
-	const siteSubtitle = 'Supporting Australian agricultural exports';
-	const userName = 'Toto Wolff';
-	const userRole = 'Team Principal';
-	const primaryNavItems = [
-		{ label: 'Dashboard', icon: HomeIcon, href: '#home' },
-		{
-			label: 'Establishments',
-			icon: FactoryIcon,
-			href: '#establishments',
-		},
-		{
-			label: 'Data and Insights',
-			icon: ChartLineIcon,
-			href: '#data',
-		},
-		{
-			label: 'Compliance',
-			icon: SuccessIcon,
-			href: '#compliance',
-		},
-	];
-	const secondaryNavItems = [
-		{
-			label: 'Messages',
-			icon: EmailIcon,
-			href: '#messages',
-			badgeNumber: 3,
-		},
-		{ label: 'Help', icon: HelpIcon, href: '#help' },
-	];
-
-	const signOut = () => {
-		console.log('sign out');
-	};
-
 	return (
 		<AuthenticatedAppShell
-			siteTitle={siteTitle}
-			siteSubtitle={siteSubtitle}
-			userName={userName}
-			userRole={userRole}
+			siteTitle="Export Service"
+			siteSubtitle="Supporting Australian agricultural exports"
+			userMenu={{
+				name: 'Toto Wolff',
+				organisation: 'Orange Meat Works',
+				items: [
+					{
+						label: 'Account settings',
+						href: '#account',
+					},
+					{
+						label: 'Sign out',
+						onClick: () => console.log('sign out'),
+						icon: AvatarIcon,
+					},
+				],
+			}}
+			mainNavItems={{ primary: primaryNavItems, secondary: secondaryNavItems }}
 			isFocusMode={isFocusMode}
-			primaryNavItems={primaryNavItems}
-			secondaryNavItems={secondaryNavItems}
-			signOut={signOut}
 			activePath="#home"
 		>
 			{children}

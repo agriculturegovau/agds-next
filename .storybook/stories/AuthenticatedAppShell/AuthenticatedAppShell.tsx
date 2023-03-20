@@ -1,6 +1,8 @@
+import { PropsWithChildren, MouseEventHandler, ComponentType } from 'react';
 import { Box, Flex, Stack } from '@ag.ds-next/react/box';
 import { tokens, useTernaryState } from '@ag.ds-next/react/core';
-import { PropsWithChildren } from 'react';
+import { IconProps } from '@ag.ds-next/react/icon';
+import { SkipLinks } from '@ag.ds-next/react/skip-link';
 import { AuthenticatedAppShellHeader } from './AuthenticatedAppShellHeader';
 import { AuthenticatedAppShellSideBar } from './AuthenticatedAppShellSideBar';
 import { AuthenticatedAppShellFooter } from './AuthenticatedAppShellFooter';
@@ -10,32 +12,39 @@ import {
 } from './AuthenticatedAppShellSideBarItem';
 import { AuthenticatedAppShellContext } from './AuthenticatedAppShellContext';
 import { useIsMobile } from './utils';
-import { SkipLinks } from '@ag.ds-next/react/skip-link';
 
-type AuthenticatedAppShellProps = PropsWithChildren<{
+export type AuthenticatedAppShellProps = PropsWithChildren<{
 	siteTitle: string;
 	siteSubtitle: string;
-	userName: string;
-	userRole: string;
-	activePath: string;
 	/** For screens where a user is focusing on a task, the UI should collapse */
 	isFocusMode?: boolean;
-	primaryNavItems: AuthenticatedAppShellSideBarItemType[];
-	secondaryNavItems: AuthenticatedAppShellSideBarItemType[];
-	signOut: () => void;
+	activePath: string;
+	mainNavItems: {
+		primary: AuthenticatedAppShellSideBarItemType[];
+		secondary: AuthenticatedAppShellSideBarItemType[];
+	};
+	userMenu: {
+		name: string;
+		organisation: string;
+		items: (
+			| { label: string; href: string; icon?: ComponentType<IconProps> }
+			| {
+					label: string;
+					onClick: MouseEventHandler<HTMLButtonElement>;
+					icon?: ComponentType<IconProps>;
+			  }
+		)[];
+	};
 }>;
 
 export const AuthenticatedAppShell = ({
 	siteTitle,
 	siteSubtitle,
-	userName,
-	userRole,
-	activePath,
-	children,
 	isFocusMode = false,
-	primaryNavItems,
-	secondaryNavItems,
-	signOut,
+	activePath,
+	mainNavItems,
+	userMenu,
+	children,
 }: AuthenticatedAppShellProps) => {
 	const [isModalOpen, openModal, closeModal] = useTernaryState(false);
 	const isMobile = useIsMobile();
@@ -43,42 +52,51 @@ export const AuthenticatedAppShell = ({
 	return (
 		<AuthenticatedAppShellContext.Provider
 			value={{
-				isFocusMode,
 				isMobile,
 				isModalOpen,
 				openModal,
 				closeModal,
-				userName,
-				userRole,
-				signOut,
+				isFocusMode,
+				userMenu,
 			}}
 		>
 			<Box display="flex" flexDirection="row">
 				<AuthenticatedAppShellSideBar>
-					<SkipLinks
-						links={[{ href: '#main-content', label: 'Skip to main content' }]}
-					/>
-					<Box as="nav">
-						<Stack as="ul">
-							{primaryNavItems.map((props, index) => (
-								<AuthenticatedAppShellSideBarItem
-									isActive={activePath === props.href}
-									key={index}
-									{...props}
-								/>
-							))}
-						</Stack>
-					</Box>
-					<Box paddingX={2}>
-						<Box as="hr" borderBottom borderColor="muted" />
-					</Box>
-					<Box as="nav">
-						<Stack as="ul">
-							{secondaryNavItems.map((props, index) => (
-								<AuthenticatedAppShellSideBarItem key={index} {...props} />
-							))}
-						</Stack>
-					</Box>
+					<Stack gap={1}>
+						<SkipLinks
+							links={[{ href: '#main-content', label: 'Skip to main content' }]}
+						/>
+						<Box as="nav" aria-label="main">
+							<Stack as="ul">
+								{mainNavItems.primary.map((props, index) => (
+									<AuthenticatedAppShellSideBarItem
+										key={index}
+										isActive={activePath === props.href}
+										{...props}
+									/>
+								))}
+							</Stack>
+						</Box>
+						<Box paddingX={2}>
+							<Box
+								as="hr"
+								borderBottom
+								borderColor="muted"
+								aria-hidden="true"
+							/>
+						</Box>
+						<Box as="nav" aria-label="secondary">
+							<Stack as="ul">
+								{mainNavItems.secondary.map((props, index) => (
+									<AuthenticatedAppShellSideBarItem
+										key={index}
+										isActive={activePath === props.href}
+										{...props}
+									/>
+								))}
+							</Stack>
+						</Box>
+					</Stack>
 				</AuthenticatedAppShellSideBar>
 
 				<Box width="100%">
