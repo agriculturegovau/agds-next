@@ -2,10 +2,10 @@
 
 exports[`Avatar renders correctly 1`] = `
 <div>
-  <div
+  <span
     class="css-9lwp3u-boxStyles-Avatar"
   >
     WM
-  </div>
+  </span>
 </div>
 `;
