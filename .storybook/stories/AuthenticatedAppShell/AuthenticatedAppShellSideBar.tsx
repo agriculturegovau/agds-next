@@ -14,6 +14,7 @@ import FocusLock from 'react-focus-lock';
 import { Button } from '@ag.ds-next/react/button';
 import { Logo } from '@ag.ds-next/react/ag-branding';
 import { useAuthenticatedAppShellContext } from './AuthenticatedAppShellContext';
+import { ChevronsLeftIcon } from './icons';
 
 export const AuthenticatedAppShellSideBar = ({
 	children,
@@ -62,13 +63,7 @@ export const AuthenticatedAppShellSideBar = ({
 						<Logo />
 					</Box>
 
-					{isFocusMode ? (
-						<Flex justifyContent="flex-end">
-							<Button onClick={closeModal} variant="text">
-								Hide menu
-							</Button>
-						</Flex>
-					) : null}
+					{isFocusMode ? <HideMenuButton /> : null}
 				</Stack>
 				{children}
 			</Box>
@@ -162,11 +157,7 @@ const AuthenticatedAppShellSideBarMobile = ({
 							<Logo />
 						</Box>
 
-						<Flex justifyContent="flex-end">
-							<Button onClick={closeModal} variant="text">
-								Hide menu
-							</Button>
-						</Flex>
+						<HideMenuButton />
 					</Stack>
 					{children}
 				</FocusLock>
@@ -195,4 +186,16 @@ function Overlay({ onClick }: { onClick: MouseEventHandler<HTMLDivElement> }) {
 
 function LockScroll() {
 	return <Global styles={{ body: { overflow: 'hidden' } }} />;
+}
+
+function HideMenuButton() {
+	const { closeModal } = useAuthenticatedAppShellContext();
+
+	return (
+		<Flex justifyContent="flex-end">
+			<Button onClick={closeModal} variant="text" iconBefore={ChevronsLeftIcon}>
+				Hide menu
+			</Button>
+		</Flex>
+	);
 }
