@@ -1,0 +1,104 @@
+---
+date: 20th March 2023
+title: AgDS Beta v1.3.0 release
+description: Extended the functionality of Date picker and Date range picker, improved accessibilty of Table, updated Side Nav styling, various bug fixes and improvements.
+---
+
+## Updates
+
+### [Autocomplete](/components/autocomplete)
+
+- Improved styles for disabled state ([PR #981](https://github.com/steelthreads/agds-next/pull/981))
+
+### [Box](/components/box)
+
+- Updated the `palette` prop to accept responsive values. For example `<Box palette={["dark", "light"]} />`. ([PR #1021](https://github.com/steelthreads/agds-next/pull/1021))
+
+### [Combobox](/components/combobox)
+
+- Fixed bug where the dropdown trigger button and clear button were not being marked or shown as disabled ([PR #981](https://github.com/steelthreads/agds-next/pull/981))
+- Improved styles for disabled state ([PR #981](https://github.com/steelthreads/agds-next/pull/981))
+
+### [Control Input](/components/control-input)
+
+- Improved styles for disabled state ([PR #981](https://github.com/steelthreads/agds-next/pull/981))
+
+### [Core](/components/core)
+
+- Removed dependency to Reach UI as it is no longer being maintained. The logic from `@reach/auto-id` has been forked and copied into the repo. ([PR #1002](https://github.com/steelthreads/agds-next/pull/1002))
+
+### [Date picker](/components/date-picker#date-picker)
+
+- Updated default label to show "(optional)" when the field is not required. This is consistent with all other form components in the design system. ([PR #1008](https://github.com/steelthreads/agds-next/pull/1008))
+- Added new prop `onInputChange` which can be used to track the value of the text input ([PR #997](https://github.com/steelthreads/agds-next/pull/997))
+- Updated the type of the `value` prop so it can accept string (which represents the value of the text input) ([PR #997](https://github.com/steelthreads/agds-next/pull/997))
+- Removed unused prop `placeholder` ([PR #1016](https://github.com/steelthreads/agds-next/pull/1016))
+- Removed options `xs` and `sm` from `maxWidth` prop. These widths were too small to be used in this component. ([PR #1016](https://github.com/steelthreads/agds-next/pull/1016))
+- Improved styles for disabled state ([PR #981](https://github.com/steelthreads/agds-next/pull/981))
+- Improved test coverage ([PR #999](https://github.com/steelthreads/agds-next/pull/999))
+
+### [Date range picker](/components/date-picker#date-range-picker)
+
+- Updated default label to show "(optional)" when the field is not required. This is consistent with all other form components in the design system. ([PR #1008](https://github.com/steelthreads/agds-next/pull/1008))
+- Updated the type of the `value` prop so it can accept string (which represents the value of the text inputs) ([PR #997](https://github.com/steelthreads/agds-next/pull/997))- Added new prop `onFromInputChange` and `onToInputChange` which can be used to track the value of the text inputs ([PR #997](https://github.com/steelthreads/agds-next/pull/997))
+- Added support for a legend to be supplied via a new `legend` prop. If no legend is supplied, a default legend of `Date range` will be rendered but will be visually hidden. ([PR #1000](https://github.com/steelthreads/agds-next/pull/1000))
+- Added support for hint text via the `hint` prop ([PR #1000](https://github.com/steelthreads/agds-next/pull/1000))
+- Added support for an invalid state via the `fromInvalid`, `toInvalid` and `message` prop ([PR #1000](https://github.com/steelthreads/agds-next/pull/1000))
+- Improved styles for disabled state ([PR #981](https://github.com/steelthreads/agds-next/pull/981))
+- Improved test coverage ([PR #999](https://github.com/steelthreads/agds-next/pull/999))
+
+### [Field](/components/field)
+
+- Updated behaviour of the `secondaryLabel` prop so it will prepend any text to the label instead of replacing default secondary label "(optional)". ([PR #1008](https://github.com/steelthreads/agds-next/pull/1008))
+- Added `className` prop to `FieldLabel` ([PR #998](https://github.com/steelthreads/agds-next/pull/998))
+- Fixed typos in hook `useScrollToField` ([PR #998](https://github.com/steelthreads/agds-next/pull/998))
+- Exported component props and added comments to props ([PR #998](https://github.com/steelthreads/agds-next/pull/998))
+
+### [File input](/components/file-input)
+
+- Improved styles for disabled state ([PR #981](https://github.com/steelthreads/agds-next/pull/981))
+
+### [Icon](/components/icon)
+
+- Added new icons `ChevronsUpDownIcon`, `EmailIcon`, `FacebookIcon`, `InstagramIcon`, `LinkedInIcon`, `WebsiteIcon` and `TwitterIcon`. ([PR #1005](https://github.com/steelthreads/agds-next/pull/1005))
+
+### [Search input](/components/search-input)
+
+- Improved styles for disabled state ([PR #981](https://github.com/steelthreads/agds-next/pull/981))
+
+### [Side nav](/components/side-nav)
+
+- Updated interface of link list items as per latest designs ([PR #1023](https://github.com/steelthreads/agds-next/pull/1023))
+- Removed exports of primitive components and modular storybook example ([PR #1023](https://github.com/steelthreads/agds-next/pull/1023))
+
+### [Summary list](/components/summary-list)
+
+- Fixed a text colour bug when this component was placed inside dark palette. This was done by adding an explicit colour to `SummaryListItemTerm` and `SummaryListItemDescription`. ([PR #1022](https://github.com/steelthreads/agds-next/pull/1022))
+
+### [Table](/components/table)
+
+- Add support for `id` prop ([PR #1010](https://github.com/steelthreads/agds-next/pull/1010))
+- Add support for `table-layout` prop ([PR #1015](https://github.com/steelthreads/agds-next/pull/1015))
+- Add support for `aria-labelledby` and `aria-describedby` props ([PR #1007](https://github.com/steelthreads/agds-next/pull/1007))
+- Widen types for column widths ([PR #1015](https://github.com/steelthreads/agds-next/pull/1015))
+- `TableCell` supports usage as a row header (th) ([PR #1017](https://github.com/steelthreads/agds-next/pull/1017))
+
+### [Text input](/components/text-input)
+
+- Improved styles for disabled state ([PR #981](https://github.com/steelthreads/agds-next/pull/981))
+
+### [Textarea](/components/textarea)
+
+- Improved styles for disabled state ([PR #981](https://github.com/steelthreads/agds-next/pull/981))
+
+---
+
+## Released packages
+
+```sh
+"@ag.ds-next/react": "1.3.0"
+```
+
+## Full Changelog
+
+Aside from the [complete release notes on the @ag.ds-next website](https://design-system.agriculture.gov.au/updates/2023-03-20), you can also view the [verbose change log](https://github.com/steelthreads/agds-next/pull/992) in the [related PR](https://github.com/steelthreads/agds-next/pull/992) for this release.
