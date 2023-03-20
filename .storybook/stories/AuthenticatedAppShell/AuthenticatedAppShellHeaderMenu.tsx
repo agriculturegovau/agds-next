@@ -132,15 +132,15 @@ const AuthenticatedAppShellHeaderMenuButton = ({
 					display={{ xs: 'none', lg: 'flex' }}
 					flexDirection="column"
 				>
-					<Text color="action" fontWeight="bold">
+					<Text color="action" fontWeight="bold" fontSize="xs">
 						{userName}
 					</Text>
-					<Text color="muted" fontSize="sm">
+					<Text color="muted" fontSize="xs">
 						{userRole}
 					</Text>
 				</Box>
 			</Flex>
-			<ChevronDownIcon color="action" />
+			<ChevronDownIcon color="action" weight="bold" size="sm" />
 		</Flex>
 	);
 };

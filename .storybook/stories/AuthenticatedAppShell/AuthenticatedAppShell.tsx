@@ -60,19 +60,21 @@ export const AuthenticatedAppShell = ({
 					/>
 					<Box as="nav">
 						<Stack as="ul">
-							{primaryNavItems.map(({ ...props }, index) => (
+							{primaryNavItems.map((props, index) => (
 								<AuthenticatedAppShellSideBarItem
-									active={activePath === props.href}
+									isActive={activePath === props.href}
 									key={index}
 									{...props}
 								/>
 							))}
 						</Stack>
 					</Box>
-					<Box as="hr" borderBottom />
+					<Box paddingX={2}>
+						<Box as="hr" borderBottom borderColor="muted" />
+					</Box>
 					<Box as="nav">
 						<Stack as="ul">
-							{secondaryNavItems.map(({ ...props }, index) => (
+							{secondaryNavItems.map((props, index) => (
 								<AuthenticatedAppShellSideBarItem key={index} {...props} />
 							))}
 						</Stack>

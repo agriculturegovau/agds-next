@@ -33,6 +33,7 @@ export const AuthenticatedAppShellHeader = ({
 			justifyContent="space-between"
 			height={authenticatedAppShellHeaderHeight}
 			borderBottom
+			borderColor="muted"
 			width="100%"
 		>
 			<Flex alignItems="center">
@@ -48,7 +49,7 @@ export const AuthenticatedAppShellHeader = ({
 					>
 						{title}
 					</Text>
-					<Text color="muted" fontSize={{ xs: 'xs', sm: 'sm' }}>
+					<Text color="muted" fontSize="xs">
 						{subtitle}
 					</Text>
 				</Stack>

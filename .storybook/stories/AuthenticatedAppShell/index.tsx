@@ -54,6 +54,7 @@ const AuthenticatedAppShellCommon = ({
 			label: 'Messages',
 			icon: EmailIcon,
 			href: '#messages',
+			badgeNumber: 3,
 		},
 		{ label: 'Help', icon: HelpIcon, href: '#help' },
 	];
