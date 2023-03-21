@@ -15,6 +15,7 @@ import { Button } from '@ag.ds-next/react/button';
 import { Logo } from '@ag.ds-next/react/ag-branding';
 import { useAuthenticatedAppShellContext } from './AuthenticatedAppShellContext';
 import { ChevronsLeftIcon } from './icons';
+import { authenticatedAppShellHeaderHeight } from './utils';
 
 export const AuthenticatedAppShellSideBar = ({
 	children,
@@ -58,10 +59,18 @@ export const AuthenticatedAppShellSideBar = ({
 					},
 				}}
 			>
-				<Stack gap={1} padding={1}>
-					<Box maxWidth={tokens.maxWidth.mobileMenu} color="text">
+				<Stack gap={1}>
+					<Flex
+						alignItems="center"
+						maxWidth={tokens.maxWidth.mobileMenu}
+						color="text"
+						height={authenticatedAppShellHeaderHeight}
+						borderBottom
+						borderColor="muted"
+						paddingX={1.5}
+					>
 						<Logo />
-					</Box>
+					</Flex>
 
 					{isFocusMode ? <HideMenuButton /> : null}
 				</Stack>
@@ -146,13 +155,14 @@ const AuthenticatedAppShellSideBarMobile = ({
 					bottom: 0,
 					overflowY: 'auto',
 					width: '100%',
+					borderLeft: `8px solid ${boxPalette.accent}`,
 					[tokens.mediaQuery.min.md]: {
 						width: tokens.maxWidth.mobileMenu,
 					},
 				}}
 			>
 				<FocusLock returnFocus disabled={!isModalOpen}>
-					<Stack gap={1} padding={1}>
+					<Stack paddingX={1.5} paddingY={1}>
 						<Box maxWidth={tokens.maxWidth.mobileMenu} color="text">
 							<Logo />
 						</Box>
@@ -193,7 +203,14 @@ function HideMenuButton() {
 
 	return (
 		<Flex justifyContent="flex-end">
-			<Button onClick={closeModal} variant="text" iconBefore={ChevronsLeftIcon}>
+			<Button
+				onClick={closeModal}
+				variant="text"
+				iconBefore={() => <ChevronsLeftIcon weight="bold" />}
+				css={{
+					textDecoration: 'none',
+				}}
+			>
 				Hide menu
 			</Button>
 		</Flex>

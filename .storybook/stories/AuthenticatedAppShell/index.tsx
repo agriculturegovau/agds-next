@@ -11,8 +11,8 @@ import {
 	EmailIcon,
 	HelpIcon,
 	SuccessIcon,
-	AvatarIcon,
 } from '@ag.ds-next/react/icon';
+import { CogIcon, ExitIcon } from './icons';
 
 export default {
 	title: 'Testing/Authenticated App Shell (WIP)',
@@ -67,11 +67,12 @@ const AuthenticatedAppShellCommon = ({
 					{
 						label: 'Account settings',
 						href: '#account',
+						icon: CogIcon,
 					},
 					{
 						label: 'Sign out',
 						onClick: () => console.log('sign out'),
-						icon: AvatarIcon,
+						icon: ExitIcon,
 					},
 				],
 			}}

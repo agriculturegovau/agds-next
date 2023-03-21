@@ -35,6 +35,9 @@ export const AuthenticatedAppShellHeader = ({
 			borderBottom
 			borderColor="muted"
 			width="100%"
+			css={{
+				boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
+			}}
 		>
 			<Flex alignItems="center">
 				{isMenuButtonVisible && (

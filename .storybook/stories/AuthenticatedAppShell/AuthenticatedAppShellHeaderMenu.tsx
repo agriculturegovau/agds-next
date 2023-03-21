@@ -80,33 +80,35 @@ export const AuthenticatedAppShellHeaderMenu = () => {
 						return (
 							<Box key={key} as="li" role="none">
 								{'href' in item ? (
-									<Box
+									<Flex
 										as={Link}
 										href={item.href}
-										display="block"
-										// @ts-ignore
-										role="menuitem"
-										padding={1}
-										link
-										width="100%"
+										{...authenticatedAppShellHeaderMenuItemProps}
+										css={{
+											textDecoration: 'none',
+											'&:hover': {
+												textDecoration: 'underline',
+											},
+										}}
 									>
-										{item.label}
 										{Icon && <Icon />}
-									</Box>
+										{item.label}
+									</Flex>
 								) : (
-									<Box
+									<Flex
 										as={BaseButton}
 										onClick={item.onClick}
-										display="block"
-										// @ts-ignore
-										role="menuitem"
-										padding={1}
-										link
-										width="100%"
+										{...authenticatedAppShellHeaderMenuItemProps}
+										css={{
+											textDecoration: 'none',
+											'&:hover': {
+												textDecoration: 'underline',
+											},
+										}}
 									>
-										{item.label}
 										{Icon && <Icon />}
-									</Box>
+										{item.label}
+									</Flex>
 								)}
 							</Box>
 						);
@@ -116,6 +118,17 @@ export const AuthenticatedAppShellHeaderMenu = () => {
 		</div>
 	);
 };
+
+const authenticatedAppShellHeaderMenuItemProps = {
+	// @ts-ignore
+	role: 'menuitem',
+	padding: 1,
+	focus: true,
+	color: 'action',
+	width: '100%',
+	alignItems: 'center',
+	gap: 0.5,
+} as const;
 
 const AuthenticatedAppShellHeaderMenuButton = ({
 	onClick,

@@ -20,8 +20,8 @@ export const ExitIcon = createIcon(
 
 export const ChevronsLeftIcon = createIcon(
 	<Fragment>
-		<polyline points="11 17 6 12 11 7"></polyline>
-		<polyline points="18 17 13 12 18 7"></polyline>
+		<path d="M18.5 7.5L14.1179 11.8821C14.0528 11.9472 14.0528 12.0528 14.1179 12.1179L18.5 16.5" />
+		<path d="M9.5 7.5L5.11785 11.8821C5.05276 11.9472 5.05276 12.0528 5.11785 12.1179L9.5 16.5" />
 	</Fragment>,
 	'ChevronsLeftIcon'
 );

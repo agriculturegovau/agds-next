@@ -29,7 +29,7 @@ export const AuthenticatedAppShellSideBarItem = ({
 			<Flex
 				as={Link}
 				href={href}
-				paddingX={2}
+				paddingX={1.5}
 				paddingY={1}
 				gap={1}
 				alignItems="center"
