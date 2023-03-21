@@ -21,6 +21,7 @@ export async function getTemplate(slug: string) {
 	return {
 		slug,
 		source,
+		content,
 		data,
 		title: (data.title ?? slug) as string,
 		version: data.version as string,
