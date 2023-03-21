@@ -6,6 +6,7 @@ import {
 	stripMdxExtension,
 } from '../mdxUtils';
 import { slugify } from '../slugify';
+import { generateToc } from '../generateToc';
 
 export const GUIDE_PATH = normalize(`${process.cwd()}/content/guides`);
 const guidePath = (slug: string) => normalize(`${GUIDE_PATH}/${slug}.mdx`);
@@ -19,6 +20,7 @@ export async function getGuide(slug: string) {
 		data,
 		title: (data.title ?? slug) as string,
 		opener: (data.opener ?? null) as string | null,
+		content,
 	};
 }
 
