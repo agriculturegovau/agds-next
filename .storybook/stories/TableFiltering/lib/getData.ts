@@ -47,11 +47,14 @@ export const filterData = (
 
 	const { requestDate, state, status, businessName, assignee } = filters;
 
-	if (requestDate?.from && requestDate?.to) {
-		if (
-			business.requestDate < requestDate.from ||
-			business.requestDate > requestDate.to
-		) {
+	if (requestDate.from) {
+		if (business.requestDate < requestDate.from) {
+			isValid = false;
+		}
+	}
+
+	if (requestDate.to) {
+		if (business.requestDate > requestDate.to) {
 			isValid = false;
 		}
 	}
