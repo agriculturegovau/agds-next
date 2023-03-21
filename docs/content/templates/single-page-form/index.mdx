@@ -48,3 +48,7 @@ A form should validate when a user attempts to submit. If there are errors, they
 If only one error is present, the error summary can be omitted and the invalid field can be focused.
 
 An invalid field is highlighted with a red border and a red error message. They should never be covered by autocomplete menus and on-screen keyboards.
+
+### Success messaging
+
+When a form is successfully completed, return the user to the entry point of the form and display a [PageAlert](/components/page-alert) with the green 'success' tone and a clear message which communicates the successful submission. When possible provide, persistent methods for a user to return and see the status of the from submission - ie a reference number for the artifact.
