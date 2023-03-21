@@ -24,6 +24,7 @@ export async function getPkg(slug: string) {
 	return {
 		slug,
 		source,
+		content,
 		data,
 		name: slug,
 		version,
