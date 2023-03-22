@@ -1,5 +1,5 @@
 import { MouseEventHandler } from 'react';
-import { Box, Flex, Stack } from '@ag.ds-next/react/box';
+import { Flex, Stack } from '@ag.ds-next/react/box';
 import { boxPalette } from '@ag.ds-next/react/core';
 import { Text } from '@ag.ds-next/react/text';
 import { MenuIcon } from '@ag.ds-next/react/icon';
@@ -37,8 +37,9 @@ export function AuthenticatedAppShellHeader({
 				{isMenuButtonVisible && (
 					<AuthenticatedAppShellHeaderButton onClick={showMenu} />
 				)}
-				<Stack
-					paddingY={1}
+				<Flex
+					flexDirection="column"
+					justifyContent="center"
 					paddingLeft={{ xs: 1, lg: 2 }}
 					height={authenticatedAppShellHeaderHeight}
 				>
@@ -48,7 +49,7 @@ export function AuthenticatedAppShellHeader({
 					<Text color="muted" fontSize="xs">
 						{subtitle}
 					</Text>
-				</Stack>
+				</Flex>
 			</Flex>
 			<AuthenticatedAppShellHeaderMenu />
 		</Flex>
