@@ -18,14 +18,14 @@ figmaGalleryNodeId: 12926%3A104981
 
 - use when only one item can be selected
 - provide disabled options unless unavoidable
-- use horizontal groups.
+- Avoid using horizontal groups.
 
 ## Checkbox
 
 Check boxes allow users to select one or more items.
 
 ```jsx live
-<ControlGroup label="Example">
+<ControlGroup label="Example" block>
 	<Checkbox value="phone">Phone</Checkbox>
 	<Checkbox value="tablet">Tablet</Checkbox>
 	<Checkbox value="tablet">Laptop</Checkbox>
@@ -42,7 +42,7 @@ Radio inputs allow users to select one item at a time.
 	const handlerForKey = React.useCallback((key) => () => setValue(key), []);
 	const isChecked = (key) => key === value;
 	return (
-		<ControlGroup label="Example">
+		<ControlGroup label="Example" block>
 			<Radio checked={isChecked('phone')} onChange={handlerForKey('phone')}>
 				Phone
 			</Radio>
@@ -102,7 +102,7 @@ Don't use long paragraphs and lists in hint text. Screen readers read out the en
 Don't include links within hint text. While screen readers will read out the link text when describing the field, they will not tell users that the text is a link.
 
 ```jsx live
-<ControlGroup label="Example" hint="Hint text">
+<ControlGroup label="Example" hint="Hint text" block>
 	<Checkbox value="phone">Phone</Checkbox>
 	<Checkbox value="tablet">Tablet</Checkbox>
 	<Checkbox value="laptop">Laptop</Checkbox>
@@ -114,7 +114,12 @@ Don't include links within hint text. While screen readers will read out the lin
 Use the `invalid` prop to indicate if the user input is invalid (does not validate according to the elements settings).
 
 ```jsx live
-<ControlGroup label="Invalid example" message="Please choose an option" invalid>
+<ControlGroup
+	label="Invalid example"
+	message="Please choose an option"
+	invalid
+	block
+>
 	<Checkbox>Phone</Checkbox>
 	<Checkbox>Tablet</Checkbox>
 	<Checkbox>Laptop</Checkbox>
@@ -132,6 +137,7 @@ Use the `invalid` prop to indicate if the user input is invalid (does not valida
 			label="Invalid example"
 			message="Please choose an option"
 			invalid
+			block
 		>
 			<Radio checked={isChecked('phone')} onChange={handlerForKey('phone')}>
 				Phone
@@ -161,16 +167,17 @@ The usage of `hideOptionalLabel` should be reserved for inputs that filter data 
 
 ```jsx live
 <Stack gap={1}>
-	<ControlGroup label="Required" required>
+	<ControlGroup label="Required" required block>
 		<Checkbox value="phone">Phone</Checkbox>
 	</ControlGroup>
-	<ControlGroup label="Optional" required={false}>
+	<ControlGroup label="Optional" required={false} block>
 		<Checkbox value="phone">Phone</Checkbox>
 	</ControlGroup>
 	<ControlGroup
 		label="Optional with hideOptionalLabel"
 		required={false}
 		hideOptionalLabel={true}
+		block;
 	>
 		<Checkbox value="phone">Phone</Checkbox>
 	</ControlGroup>
@@ -182,7 +189,7 @@ The usage of `hideOptionalLabel` should be reserved for inputs that filter data 
 Disabled control inputs can be used to indicate inputs that are no longer valid or expired.
 
 ```jsx live
-<ControlGroup label="Disabled example">
+<ControlGroup label="Disabled example" block>
 	<Checkbox value="phone" disabled>
 		Phone
 	</Checkbox>
@@ -196,7 +203,7 @@ Disabled control inputs can be used to indicate inputs that are no longer valid 
 ```
 
 ```jsx live
-<ControlGroup label="Disabled example">
+<ControlGroup label="Disabled example" block>
 	<Radio disabled>Phone</Radio>
 	<Radio checked disabled>
 		Tablet
@@ -210,7 +217,7 @@ Disabled control inputs can be used to indicate inputs that are no longer valid 
 Smaller versions of control inputs.
 
 ```jsx live
-<ControlGroup label="Small example">
+<ControlGroup label="Small example" block>
 	<Checkbox size="sm" value="phone">
 		Phone
 	</Checkbox>
@@ -230,7 +237,7 @@ Smaller versions of control inputs.
 	const isChecked = (key) => key === value;
 
 	return (
-		<ControlGroup label="Small example">
+		<ControlGroup label="Small example" block>
 			<Radio
 				checked={isChecked('phone')}
 				onChange={handlerForKey('phone')}
