@@ -56,22 +56,26 @@ export const getStaticProps: GetStaticProps<
 		pkg: NonNullable<Pkg>;
 		navLinks: Awaited<ReturnType<typeof getPkgNavLinks>>;
 		breadcrumbs: Awaited<ReturnType<typeof getPkgBreadcrumbs>>;
-		toc: NonNullable<Awaited<ReturnType<typeof generateToc>>>;
-		source: NonNullable<Awaited<ReturnType<typeof getPkgDocsContent>>>;
+		toc: Awaited<ReturnType<typeof generateToc>>;
+		source: NonNullable<
+			Awaited<ReturnType<typeof getPkgDocsContent>>
+		>['source'];
 	},
 	{ slug: string }
 > = async ({ params }) => {
 	const { slug } = params ?? {};
 	const pkg = slug ? await getPkg(slug) : undefined;
-	const source = pkg ? await getPkgDocsContent(pkg.slug, 'overview.mdx') : null;
+	const pkgContent = pkg
+		? await getPkgDocsContent(pkg.slug, 'overview.mdx')
+		: null;
 
-	if (!(slug && pkg && source)) {
+	if (!(slug && pkg && pkgContent)) {
 		return { notFound: true };
 	}
 
 	const navLinks = await getPkgNavLinks();
 	const breadcrumbs = await getPkgBreadcrumbs(slug);
-	const toc = await generateToc(pkg.content);
+	const toc = await generateToc(pkgContent.content);
 
 	return {
 		props: {
@@ -79,7 +83,7 @@ export const getStaticProps: GetStaticProps<
 			navLinks,
 			breadcrumbs,
 			toc,
-			source,
+			source: pkgContent.source,
 		},
 	};
 };
