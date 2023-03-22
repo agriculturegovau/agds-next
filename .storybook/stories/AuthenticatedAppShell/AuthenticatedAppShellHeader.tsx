@@ -16,10 +16,9 @@ export const AuthenticatedAppShellHeader = ({
 	title,
 	subtitle,
 }: AuthenticatedAppShellHeaderProps) => {
-	const { isMobile, isModalOpen, isFocusMode, openModal } =
-		useAuthenticatedAppShellContext();
+	const { isMenuVisible, showMenu } = useAuthenticatedAppShellContext();
 
-	const isMenuButtonVisible = isMobile || (isFocusMode && !isModalOpen);
+	const isMenuButtonVisible = !isMenuVisible;
 
 	return (
 		<Flex
@@ -41,7 +40,7 @@ export const AuthenticatedAppShellHeader = ({
 		>
 			<Flex alignItems="center">
 				{isMenuButtonVisible && (
-					<AuthenticatedAppShellHeaderButton onClick={openModal} />
+					<AuthenticatedAppShellHeaderButton onClick={showMenu} />
 				)}
 				<Stack paddingY={1} paddingLeft={{ xs: 1, lg: 2 }}>
 					<Text

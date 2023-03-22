@@ -1,4 +1,9 @@
-import { PropsWithChildren, MouseEventHandler, ComponentType } from 'react';
+import {
+	PropsWithChildren,
+	MouseEventHandler,
+	ComponentType,
+	useEffect,
+} from 'react';
 import { Box, Flex, Stack } from '@ag.ds-next/react/box';
 import { tokens, useTernaryState } from '@ag.ds-next/react/core';
 import { IconProps } from '@ag.ds-next/react/icon';
@@ -46,17 +51,27 @@ export const AuthenticatedAppShell = ({
 	userMenu,
 	children,
 }: AuthenticatedAppShellProps) => {
-	const [isModalOpen, openModal, closeModal] = useTernaryState(false);
+	const [isMenuVisible, showMenu, hideMenu] = useTernaryState(false);
 	const isMobile = useIsMobile();
+
+	// isMobile is always true on first render, so we need to hide the menu
+	// when the screen size is properly detected.
+	useEffect(() => {
+		// Hide the menu when the screen size changes
+		if (isMobile || isFocusMode) {
+			hideMenu();
+		} else {
+			showMenu();
+		}
+	}, [isMobile]);
 
 	return (
 		<AuthenticatedAppShellContext.Provider
 			value={{
 				isMobile,
-				isModalOpen,
-				openModal,
-				closeModal,
-				isFocusMode,
+				isMenuVisible,
+				showMenu,
+				hideMenu,
 				userMenu,
 			}}
 		>

@@ -22,8 +22,7 @@ export const AuthenticatedAppShellSideBar = ({
 }: {
 	children: ReactNode;
 }) => {
-	const { isFocusMode, isModalOpen, isMobile, closeModal } =
-		useAuthenticatedAppShellContext();
+	const { isMenuVisible, isMobile } = useAuthenticatedAppShellContext();
 
 	if (isMobile) {
 		return (
@@ -33,7 +32,7 @@ export const AuthenticatedAppShellSideBar = ({
 		);
 	}
 
-	if (!isFocusMode || (isFocusMode && isModalOpen)) {
+	if (isMenuVisible) {
 		return (
 			<Box
 				dark
@@ -71,8 +70,9 @@ export const AuthenticatedAppShellSideBar = ({
 					>
 						<Logo />
 					</Flex>
-
-					{isFocusMode ? <HideMenuButton /> : null}
+					<Box paddingX={1.5}>
+						<HideMenuButton />
+					</Box>
 				</Stack>
 				{children}
 			</Box>
@@ -87,7 +87,7 @@ const AuthenticatedAppShellSideBarMobile = ({
 }: {
 	children: ReactNode;
 }) => {
-	const { isModalOpen, closeModal } = useAuthenticatedAppShellContext();
+	const { isMenuVisible, hideMenu } = useAuthenticatedAppShellContext();
 	const dialogRef = useRef<HTMLDivElement>(null);
 
 	// Close the component when the user presses the escape key
@@ -96,19 +96,19 @@ const AuthenticatedAppShellSideBarMobile = ({
 			if (e.code === 'Escape') {
 				e.preventDefault();
 				e.stopPropagation();
-				closeModal();
+				hideMenu();
 			}
 		};
 		window.addEventListener('keydown', handleKeyDown);
 		return () => window.removeEventListener('keydown', handleKeyDown);
-	}, [closeModal]);
+	}, [hideMenu]);
 
 	// The following `useEffect` will add `aria-hidden="true"` to every direct child of the `body` element when the modal is opened.
 	// This is because `aria-modal` is not yet supported by all browsers (https://a11ysupport.io/tech/aria/aria-modal_attribute).
 	// This fixes a bug in certain devices where focus is not trapped correctly such as VoiceOver on iOS.
 	// This has been inspired by Reach UI (https://github.com/reach/reach-ui/blob/main/packages/dialog/src/index.tsx)
 	useEffect(() => {
-		if (!isModalOpen || !dialogRef.current) return;
+		if (!isMenuVisible || !dialogRef.current) return;
 
 		const rootNodes: Element[] = [];
 		const originalAttrs: (string | null)[] = [];
@@ -133,9 +133,9 @@ const AuthenticatedAppShellSideBarMobile = ({
 				}
 			});
 		};
-	}, [isModalOpen]);
+	}, [isMenuVisible]);
 
-	if (!isModalOpen) {
+	if (!isMenuVisible) {
 		return null;
 	}
 
@@ -161,7 +161,7 @@ const AuthenticatedAppShellSideBarMobile = ({
 					},
 				}}
 			>
-				<FocusLock returnFocus disabled={!isModalOpen}>
+				<FocusLock returnFocus disabled={!isMenuVisible}>
 					<Stack paddingX={1.5} paddingY={1}>
 						<Box maxWidth={tokens.maxWidth.mobileMenu} color="text">
 							<Logo />
@@ -199,12 +199,12 @@ function LockScroll() {
 }
 
 function HideMenuButton() {
-	const { closeModal } = useAuthenticatedAppShellContext();
+	const { hideMenu } = useAuthenticatedAppShellContext();
 
 	return (
 		<Flex justifyContent="flex-end">
 			<Button
-				onClick={closeModal}
+				onClick={hideMenu}
 				variant="text"
 				iconBefore={() => <ChevronsLeftIcon weight="bold" />}
 				css={{

@@ -3,10 +3,10 @@ import { AuthenticatedAppShellProps } from './AuthenticatedAppShell';
 
 export type AuthenticatedAppShellContextType = {
 	isMobile: boolean;
-	isModalOpen: boolean;
-	openModal: () => void;
-	closeModal: () => void;
-} & Pick<NonNullable<AuthenticatedAppShellProps>, 'isFocusMode' | 'userMenu'>;
+	isMenuVisible: boolean;
+	showMenu: () => void;
+	hideMenu: () => void;
+} & Pick<NonNullable<AuthenticatedAppShellProps>, 'userMenu'>;
 
 // create new context
 export const AuthenticatedAppShellContext = createContext<
