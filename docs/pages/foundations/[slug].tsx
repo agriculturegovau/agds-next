@@ -20,7 +20,6 @@ export default function FoundationsPage({
 	foundation,
 	toc,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
-	console.log({ toc });
 	return (
 		<>
 			<DocumentTitle
