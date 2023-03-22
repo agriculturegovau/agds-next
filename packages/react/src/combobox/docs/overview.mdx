@@ -6,6 +6,31 @@ storybookPath: /story/forms-combobox-combobox--basic
 figmaGalleryNodeId: 12925%3A104632
 ---
 
+All Combobox components are [controlled components](https://reactjs.org/docs/forms.html#controlled-components) which means consumers of these components need to manage the state of these components by using the `value` and `onChange` props.
+
+```jsx live
+() => {
+	const [value, setValue] = React.useState(null);
+	return (
+		<Combobox
+			label="Select state"
+			value={value}
+			onChange={(value) => setValue(value)}
+			options={[
+				{ label: 'Australian Capital Territory', value: 'act' },
+				{ label: 'New South Wales', value: 'nsw' },
+				{ label: 'Northern Territory', value: 'nt' },
+				{ label: 'Queensland', value: 'qld' },
+				{ label: 'South Australia', value: 'sa' },
+				{ label: 'Tasmania', value: 'tas' },
+				{ label: 'Victoria', value: 'vic' },
+				{ label: 'Western Australia', value: 'wa' },
+			]}
+		/>
+	);
+};
+```
+
 <DoHeading />
 
 - include to help users select from a large list
@@ -20,7 +45,9 @@ figmaGalleryNodeId: 12925%3A104632
 - use if the list of possible results is small – use Select
 - leave the list open once an option is selected.
 
-## Combobox
+## Components
+
+### Combobox
 
 Use the `Combobox` component when users can choose a single item from a predefined list of options.
 
@@ -47,7 +74,7 @@ Use the `Combobox` component when users can choose a single item from a predefin
 };
 ```
 
-## ComboboxAsync
+### ComboboxAsync
 
 Use the `ComboboxAsync` component when users can choose a single item from a list of options that needs to be fetched over the network.
 
@@ -78,7 +105,34 @@ Use the `ComboboxAsync` component when users can choose a single item from a lis
 };
 ```
 
-## ComboboxAsyncMulti
+### ComboboxMulti
+
+Use the `ComboboxMulti` component when users can make choose multiple items from a predefined list of options.
+
+```jsx live
+() => {
+	const [value, setValue] = React.useState(null);
+	return (
+		<ComboboxMulti
+			label="Select state"
+			value={value}
+			onChange={(value) => setValue(value)}
+			options={[
+				{ label: 'Australian Capital Territory', value: 'act' },
+				{ label: 'New South Wales', value: 'nsw' },
+				{ label: 'Northern Territory', value: 'nt' },
+				{ label: 'Queensland', value: 'qld' },
+				{ label: 'South Australia', value: 'sa' },
+				{ label: 'Tasmania', value: 'tas' },
+				{ label: 'Victoria', value: 'vic' },
+				{ label: 'Western Australia', value: 'wa' },
+			]}
+		/>
+	);
+};
+```
+
+### ComboboxAsyncMulti
 
 Use the `ComboboxAsyncMulti` component when users can make choose multiple items from a list of options that needs to be fetched over the network.
 
@@ -109,7 +163,7 @@ Use the `ComboboxAsyncMulti` component when users can make choose multiple items
 };
 ```
 
-## Props
+### Props
 
 ### Block
 
