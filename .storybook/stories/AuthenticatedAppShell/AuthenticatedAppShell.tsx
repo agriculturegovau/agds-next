@@ -1,6 +1,6 @@
 import { PropsWithChildren, ComponentType, Fragment, useEffect } from 'react';
 import { Box, Flex, Stack } from '@ag.ds-next/react/box';
-import { tokens, useTernaryState } from '@ag.ds-next/react/core';
+import { tokens } from '@ag.ds-next/react/core';
 import { IconProps } from '@ag.ds-next/react/icon';
 import { SkipLinks } from '@ag.ds-next/react/skip-link';
 import { AuthenticatedAppShellHeader } from './AuthenticatedAppShellHeader';
@@ -12,7 +12,7 @@ import {
 	AuthenticatedAppShellSideBarDivider,
 } from './AuthenticatedAppShellSideBarItem';
 import { AuthenticatedAppShellContext } from './AuthenticatedAppShellContext';
-import { useIsMobile } from './utils';
+import { useIsMobile, useSidebarMenuState } from './utils';
 
 export type AuthenticatedAppShellProps = PropsWithChildren<{
 	siteTitle: string;
@@ -45,18 +45,10 @@ export function AuthenticatedAppShell({
 	children,
 }: AuthenticatedAppShellProps) {
 	const isMobile = useIsMobile();
-
-	// Mobile menu should be hidden by default
-	const [mobileIsOpen, mobileShowMenu, mobileHideMenu] = useTernaryState(false);
-	// Desktop menu should by visible by default, unless in focus mode
-	const [desktopIsOpen, desktopShowMenu, desktopHideMenu] = useTernaryState(
-		!isFocusMode
-	);
-
-	const isMenuOpen = isMobile ? mobileIsOpen : desktopIsOpen;
-	const showMenu = isMobile ? mobileShowMenu : desktopShowMenu;
-	const hideMenu = isMobile ? mobileHideMenu : desktopHideMenu;
-
+	const [isMenuOpen, showMenu, hideMenu] = useSidebarMenuState({
+		isFocusMode,
+		isMobile,
+	});
 	return (
 		<AuthenticatedAppShellContext.Provider
 			value={{
@@ -74,15 +66,15 @@ export function AuthenticatedAppShell({
 				<AuthenticatedAppShellSideBar>
 					<Box as="nav" aria-label="main">
 						<Stack as="ul">
-							{mainNavItems.map((nav, idx) => {
-								const isLastItem = idx === mainNavItems.length - 1;
+							{mainNavItems.map((group, idx, arr) => {
+								const isLastItem = idx === arr.length - 1;
 								return (
 									<Fragment key={idx}>
-										{nav.map((props, idx) => (
+										{group.map((item, idx) => (
 											<AuthenticatedAppShellSideBarItem
 												key={idx}
-												isActive={activePath === props.href}
-												{...props}
+												isActive={activePath === item.href}
+												{...item}
 											/>
 										))}
 										{!isLastItem ? (
