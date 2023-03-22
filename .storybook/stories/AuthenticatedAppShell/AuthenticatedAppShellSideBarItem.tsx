@@ -46,7 +46,9 @@ export function AuthenticatedAppShellSideBarItem({
 					'&:hover': {
 						background: boxPalette.backgroundShade,
 						color: boxPalette.foregroundText,
-						textDecoration: 'underline',
+						'& span:first-of-type': {
+							textDecoration: 'underline',
+						},
 					},
 				}}
 			>
