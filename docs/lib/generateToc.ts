@@ -16,7 +16,7 @@ function generateRowToc(content: string): HeadingDataRaw[] {
 	let toc: HeadingDataRaw[] = [];
 
 	if (headings.length) {
-		toc = headings.map((heading: Record<number, any>) => {
+		toc = headings.map((heading) => {
 			const headingText = heading[2].trim();
 			const headingLevel = heading[1].trim().length;
 			const headingSlug = slugify(headingText);
