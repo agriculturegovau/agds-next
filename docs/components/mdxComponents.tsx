@@ -129,5 +129,5 @@ export const mdxComponents: MDXRemoteProps['components'] = {
 	TableCell,
 	TableHeader,
 	TableCaption,
-	AllIconsPlayground: () => <AllIconsPlayground />,
+	AllIconsPlayground,
 };
