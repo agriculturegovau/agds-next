@@ -2,8 +2,8 @@ import { createContext, useContext } from 'react';
 import { AuthenticatedAppShellProps } from './AuthenticatedAppShell';
 
 export type AuthenticatedAppShellContextType = {
-	isMobile: boolean;
-	isMenuVisible: boolean;
+	isMobile: boolean | undefined;
+	isMenuOpen: boolean;
 	showMenu: () => void;
 	hideMenu: () => void;
 } & Pick<NonNullable<AuthenticatedAppShellProps>, 'userMenu'>;

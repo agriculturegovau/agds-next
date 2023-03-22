@@ -1,6 +1,6 @@
 import { MouseEventHandler } from 'react';
 import { Flex, Stack } from '@ag.ds-next/react/box';
-import { boxPalette } from '@ag.ds-next/react/core';
+import { boxPalette, tokens } from '@ag.ds-next/react/core';
 import { Text } from '@ag.ds-next/react/text';
 import { MenuIcon } from '@ag.ds-next/react/icon';
 import { BaseButton } from '@ag.ds-next/react/button';
@@ -17,9 +17,6 @@ export function AuthenticatedAppShellHeader({
 	title,
 	subtitle,
 }: AuthenticatedAppShellHeaderProps) {
-	const { isMenuVisible, showMenu } = useAuthenticatedAppShellContext();
-	const isMenuButtonVisible = !isMenuVisible;
-
 	return (
 		<Flex
 			as="header"
@@ -34,9 +31,7 @@ export function AuthenticatedAppShellHeader({
 			}}
 		>
 			<Flex alignItems="center">
-				{isMenuButtonVisible && (
-					<AuthenticatedAppShellHeaderButton onClick={showMenu} />
-				)}
+				<AuthenticatedAppShellHeaderButton />
 				<Flex
 					flexDirection="column"
 					justifyContent="center"
@@ -51,23 +46,20 @@ export function AuthenticatedAppShellHeader({
 					</Text>
 				</Flex>
 			</Flex>
+
 			<AuthenticatedAppShellHeaderMenu />
 		</Flex>
 	);
 }
 
-type AuthenticatedAppShellHeaderButtonProps = {
-	onClick: MouseEventHandler<HTMLButtonElement>;
-};
-
-function AuthenticatedAppShellHeaderButton({
-	onClick,
-}: AuthenticatedAppShellHeaderButtonProps) {
+function AuthenticatedAppShellHeaderButton() {
+	const { isMenuOpen, showMenu } = useAuthenticatedAppShellContext();
 	return (
-		<Stack
+		<Flex
 			as={BaseButton}
-			onClick={onClick}
+			onClick={showMenu}
 			borderRight
+			flexDirection="column"
 			alignItems="center"
 			justifyContent="center"
 			height={authenticatedAppShellHeaderHeight}
@@ -79,10 +71,15 @@ function AuthenticatedAppShellHeaderButton({
 				'&:hover': {
 					background: boxPalette.backgroundShade,
 				},
+				...(isMenuOpen && {
+					[tokens.mediaQuery.min.lg]: {
+						display: 'none',
+					},
+				}),
 			}}
 		>
 			<MenuIcon aria-hidden />
 			Menu
-		</Stack>
+		</Flex>
 	);
 }

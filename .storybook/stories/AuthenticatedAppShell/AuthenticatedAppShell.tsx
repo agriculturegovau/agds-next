@@ -44,25 +44,24 @@ export function AuthenticatedAppShell({
 	userMenu,
 	children,
 }: AuthenticatedAppShellProps) {
-	const [isMenuVisible, showMenu, hideMenu] = useTernaryState(false);
 	const isMobile = useIsMobile();
 
-	// isMobile is always true on first render, so we need to hide the menu
-	// when the screen size is properly detected.
-	useEffect(() => {
-		// Hide the menu when the screen size changes
-		if (isMobile || isFocusMode) {
-			hideMenu();
-		} else {
-			showMenu();
-		}
-	}, [isMobile]);
+	// Mobile menu should be hidden by default
+	const [mobileIsOpen, mobileShowMenu, mobileHideMenu] = useTernaryState(false);
+	// Desktop menu should by visible by default, unless in focus mode
+	const [desktopIsOpen, desktopShowMenu, desktopHideMenu] = useTernaryState(
+		!isFocusMode
+	);
+
+	const isMenuOpen = isMobile ? mobileIsOpen : desktopIsOpen;
+	const showMenu = isMobile ? mobileShowMenu : desktopShowMenu;
+	const hideMenu = isMobile ? mobileHideMenu : desktopHideMenu;
 
 	return (
 		<AuthenticatedAppShellContext.Provider
 			value={{
 				isMobile,
-				isMenuVisible,
+				isMenuOpen,
 				showMenu,
 				hideMenu,
 				userMenu,

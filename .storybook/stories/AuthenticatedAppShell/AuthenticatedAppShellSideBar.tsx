@@ -22,7 +22,8 @@ export function AuthenticatedAppShellSideBar({
 }: {
 	children: ReactNode;
 }) {
-	const { isMenuVisible, isMobile } = useAuthenticatedAppShellContext();
+	const { isMenuOpen, isMobile } = useAuthenticatedAppShellContext();
+
 	if (isMobile) {
 		return (
 			<AuthenticatedAppShellSideBarMobile>
@@ -31,43 +32,44 @@ export function AuthenticatedAppShellSideBar({
 		);
 	}
 
-	if (isMenuVisible) {
-		return (
-			<Stack
-				gap={1}
-				dark
-				background="bodyAlt"
-				css={{
-					position: 'sticky',
-					top: 0,
-					flexShrink: 0,
-					height: '100vh',
-					width: tokens.maxWidth.mobileMenu,
-					borderLeft: `8px solid ${boxPalette.accent}`,
-				}}
+	return (
+		<Stack
+			gap={1}
+			dark
+			background="bodyAlt"
+			css={{
+				display: isMenuOpen ? 'flex' : 'none',
+				position: 'sticky',
+				top: 0,
+				flexShrink: 0,
+				height: '100vh',
+				width: tokens.maxWidth.mobileMenu,
+				borderLeft: `8px solid ${boxPalette.accent}`,
+				// This component should never be visible on smaller devices
+				[tokens.mediaQuery.max.md]: {
+					display: 'none',
+				},
+			}}
+		>
+			<Flex
+				paddingX={1.5}
+				justifyContent="center"
+				alignItems="center"
+				color="text"
+				height={authenticatedAppShellHeaderHeight}
+				maxWidth={tokens.maxWidth.mobileMenu}
+				borderBottom
+				borderColor="muted"
+				css={{ svg: { display: 'block' } }}
 			>
-				<Flex
-					paddingX={1.5}
-					justifyContent="center"
-					alignItems="center"
-					color="text"
-					height={authenticatedAppShellHeaderHeight}
-					maxWidth={tokens.maxWidth.mobileMenu}
-					borderBottom
-					borderColor="muted"
-					css={{ svg: { display: 'block' } }}
-				>
-					<Logo />
-				</Flex>
-				<Flex justifyContent="flex-end" paddingX={1.5}>
-					<HideMenuButton />
-				</Flex>
-				{children}
-			</Stack>
-		);
-	}
-
-	return null;
+				<Logo />
+			</Flex>
+			<Flex justifyContent="flex-end" paddingX={1.5}>
+				<HideMenuButton />
+			</Flex>
+			{children}
+		</Stack>
+	);
 }
 
 function AuthenticatedAppShellSideBarMobile({
@@ -75,7 +77,7 @@ function AuthenticatedAppShellSideBarMobile({
 }: {
 	children: ReactNode;
 }) {
-	const { isMenuVisible, hideMenu } = useAuthenticatedAppShellContext();
+	const { isMenuOpen, hideMenu } = useAuthenticatedAppShellContext();
 	const dialogRef = useRef<HTMLDivElement>(null);
 
 	// Close the component when the user presses the escape key
@@ -96,7 +98,7 @@ function AuthenticatedAppShellSideBarMobile({
 	// This fixes a bug in certain devices where focus is not trapped correctly such as VoiceOver on iOS.
 	// This has been inspired by Reach UI (https://github.com/reach/reach-ui/blob/main/packages/dialog/src/index.tsx)
 	useEffect(() => {
-		if (!isMenuVisible || !dialogRef.current) return;
+		if (!isMenuOpen || !dialogRef.current) return;
 
 		const rootNodes: Element[] = [];
 		const originalAttrs: (string | null)[] = [];
@@ -121,9 +123,9 @@ function AuthenticatedAppShellSideBarMobile({
 				}
 			});
 		};
-	}, [isMenuVisible]);
+	}, [isMenuOpen]);
 
-	if (!isMenuVisible) {
+	if (!isMenuOpen) {
 		return null;
 	}
 
@@ -131,7 +133,7 @@ function AuthenticatedAppShellSideBarMobile({
 		<Fragment>
 			<LockScroll />
 			<Overlay onClick={close} />
-			<FocusLock returnFocus disabled={!isMenuVisible}>
+			<FocusLock returnFocus disabled={!isMenuOpen}>
 				<Stack
 					dark
 					background="bodyAlt"
