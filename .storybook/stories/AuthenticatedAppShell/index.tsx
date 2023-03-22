@@ -21,32 +21,38 @@ export default {
 	},
 };
 
-const primaryNavItems = [
-	{ label: 'Dashboard', icon: HomeIcon, href: '#home' },
-	{
-		label: 'Establishments',
-		icon: FactoryIcon,
-		href: '#establishments',
-	},
-	{
-		label: 'Data and Insights',
-		icon: ChartLineIcon,
-		href: '#data',
-	},
-	{
-		label: 'Compliance',
-		icon: SuccessIcon,
-		href: '#compliance',
-	},
-];
-const secondaryNavItems = [
-	{
-		label: 'Messages',
-		icon: EmailIcon,
-		href: '#messages',
-		badgeCount: 3,
-	},
-	{ label: 'Help', icon: HelpIcon, href: '#help' },
+const mainNavItems = [
+	[
+		{
+			label: 'Dashboard',
+			icon: HomeIcon,
+			href: '#home',
+		},
+		{
+			label: 'Establishments',
+			icon: FactoryIcon,
+			href: '#establishments',
+		},
+		{
+			label: 'Data and Insights',
+			icon: ChartLineIcon,
+			href: '#data',
+		},
+		{
+			label: 'Compliance',
+			icon: SuccessIcon,
+			href: '#compliance',
+		},
+	],
+	[
+		{
+			label: 'Messages',
+			icon: EmailIcon,
+			href: '#messages',
+			badgeCount: 3,
+		},
+		{ label: 'Help', icon: HelpIcon, href: '#help' },
+	],
 ];
 
 const AuthenticatedAppShellCommon = ({
@@ -76,7 +82,7 @@ const AuthenticatedAppShellCommon = ({
 					},
 				],
 			}}
-			mainNavItems={{ primary: primaryNavItems, secondary: secondaryNavItems }}
+			mainNavItems={mainNavItems}
 			isFocusMode={isFocusMode}
 			activePath="#home"
 		>

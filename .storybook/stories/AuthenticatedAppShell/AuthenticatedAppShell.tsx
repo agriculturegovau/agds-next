@@ -1,9 +1,4 @@
-import {
-	PropsWithChildren,
-	MouseEventHandler,
-	ComponentType,
-	useEffect,
-} from 'react';
+import { PropsWithChildren, ComponentType, Fragment, useEffect } from 'react';
 import { Box, Flex, Stack } from '@ag.ds-next/react/box';
 import { tokens, useTernaryState } from '@ag.ds-next/react/core';
 import { IconProps } from '@ag.ds-next/react/icon';
@@ -14,6 +9,7 @@ import { AuthenticatedAppShellFooter } from './AuthenticatedAppShellFooter';
 import {
 	AuthenticatedAppShellSideBarItem,
 	AuthenticatedAppShellSideBarItemType,
+	AuthenticatedAppShellSideBarDivider,
 } from './AuthenticatedAppShellSideBarItem';
 import { AuthenticatedAppShellContext } from './AuthenticatedAppShellContext';
 import { useIsMobile } from './utils';
@@ -24,10 +20,7 @@ export type AuthenticatedAppShellProps = PropsWithChildren<{
 	/** For screens where a user is focusing on a task, the UI should collapse */
 	isFocusMode?: boolean;
 	activePath: string;
-	mainNavItems: {
-		primary: AuthenticatedAppShellSideBarItemType[];
-		secondary: AuthenticatedAppShellSideBarItemType[];
-	};
+	mainNavItems: AuthenticatedAppShellSideBarItemType[][];
 	userMenu: {
 		name: string;
 		organisation: string;
@@ -35,14 +28,14 @@ export type AuthenticatedAppShellProps = PropsWithChildren<{
 			| { label: string; href: string; icon?: ComponentType<IconProps> }
 			| {
 					label: string;
-					onClick: MouseEventHandler<HTMLButtonElement>;
+					onClick: () => void;
 					icon?: ComponentType<IconProps>;
 			  }
 		)[];
 	};
 }>;
 
-export const AuthenticatedAppShell = ({
+export function AuthenticatedAppShell({
 	siteTitle,
 	siteSubtitle,
 	isFocusMode = false,
@@ -50,7 +43,7 @@ export const AuthenticatedAppShell = ({
 	mainNavItems,
 	userMenu,
 	children,
-}: AuthenticatedAppShellProps) => {
+}: AuthenticatedAppShellProps) {
 	const [isMenuVisible, showMenu, hideMenu] = useTernaryState(false);
 	const isMobile = useIsMobile();
 
@@ -75,51 +68,38 @@ export const AuthenticatedAppShell = ({
 				userMenu,
 			}}
 		>
+			<SkipLinks
+				links={[{ href: '#main-content', label: 'Skip to main content' }]}
+			/>
 			<Box display="flex" flexDirection="row">
 				<AuthenticatedAppShellSideBar>
-					<Stack gap={1}>
-						<SkipLinks
-							links={[{ href: '#main-content', label: 'Skip to main content' }]}
-						/>
-						<Box as="nav" aria-label="main">
-							<Stack as="ul">
-								{mainNavItems.primary.map((props, index) => (
-									<AuthenticatedAppShellSideBarItem
-										key={index}
-										isActive={activePath === props.href}
-										{...props}
-									/>
-								))}
-							</Stack>
-						</Box>
-						<Box paddingX={2}>
-							<Box
-								as="hr"
-								borderBottom
-								borderColor="muted"
-								aria-hidden="true"
-							/>
-						</Box>
-						<Box as="nav" aria-label="secondary">
-							<Stack as="ul">
-								{mainNavItems.secondary.map((props, index) => (
-									<AuthenticatedAppShellSideBarItem
-										key={index}
-										isActive={activePath === props.href}
-										{...props}
-									/>
-								))}
-							</Stack>
-						</Box>
-					</Stack>
+					<Box as="nav" aria-label="main" paddingTop={1}>
+						<Stack as="ul">
+							{mainNavItems.map((nav, idx) => {
+								const isLastItem = idx === mainNavItems.length - 1;
+								return (
+									<Fragment key={idx}>
+										{nav.map((props, idx) => (
+											<AuthenticatedAppShellSideBarItem
+												key={idx}
+												isActive={activePath === props.href}
+												{...props}
+											/>
+										))}
+										{!isLastItem ? (
+											<AuthenticatedAppShellSideBarDivider />
+										) : null}
+									</Fragment>
+								);
+							})}
+						</Stack>
+					</Box>
 				</AuthenticatedAppShellSideBar>
-
 				<Box width="100%">
 					<AuthenticatedAppShellHeader
 						title={siteTitle}
 						subtitle={siteSubtitle}
 					/>
-
 					<Flex alignItems="center" flexDirection="column">
 						<Box
 							width="100%"
@@ -140,4 +120,4 @@ export const AuthenticatedAppShell = ({
 			</Box>
 		</AuthenticatedAppShellContext.Provider>
 	);
-};
+}

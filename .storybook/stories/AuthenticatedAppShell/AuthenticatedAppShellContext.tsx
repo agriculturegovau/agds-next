@@ -13,8 +13,8 @@ export const AuthenticatedAppShellContext = createContext<
 	AuthenticatedAppShellContextType | undefined
 >(undefined);
 
-// export context
-export const useAuthenticatedAppShellContext = () => {
+// export hook to access context
+export function useAuthenticatedAppShellContext() {
 	const context = useContext(AuthenticatedAppShellContext);
 
 	if (context === undefined) {
@@ -22,4 +22,4 @@ export const useAuthenticatedAppShellContext = () => {
 	}
 
 	return context;
-};
+}

@@ -1,5 +1,6 @@
+import { MouseEventHandler } from 'react';
 import { Box, Flex, Stack } from '@ag.ds-next/react/box';
-import { boxPalette, tokens } from '@ag.ds-next/react/core';
+import { boxPalette } from '@ag.ds-next/react/core';
 import { Text } from '@ag.ds-next/react/text';
 import { MenuIcon } from '@ag.ds-next/react/icon';
 import { BaseButton } from '@ag.ds-next/react/button';
@@ -12,28 +13,22 @@ export type AuthenticatedAppShellHeaderProps = {
 	subtitle: string;
 };
 
-export const AuthenticatedAppShellHeader = ({
+export function AuthenticatedAppShellHeader({
 	title,
 	subtitle,
-}: AuthenticatedAppShellHeaderProps) => {
+}: AuthenticatedAppShellHeaderProps) {
 	const { isMenuVisible, showMenu } = useAuthenticatedAppShellContext();
-
 	const isMenuButtonVisible = !isMenuVisible;
 
 	return (
 		<Flex
 			as="header"
-			palette={{
-				xs: 'dark',
-				lg: 'light',
-			}}
+			palette={{ xs: 'dark', lg: 'light' }}
 			background="body"
 			alignItems="center"
 			justifyContent="space-between"
-			height={authenticatedAppShellHeaderHeight}
 			borderBottom
 			borderColor="muted"
-			width="100%"
 			css={{
 				boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
 			}}
@@ -42,13 +37,12 @@ export const AuthenticatedAppShellHeader = ({
 				{isMenuButtonVisible && (
 					<AuthenticatedAppShellHeaderButton onClick={showMenu} />
 				)}
-				<Stack paddingY={1} paddingLeft={{ xs: 1, lg: 2 }}>
-					<Text
-						lineHeight="default"
-						fontSize={{ xs: 'md', sm: 'lg' }}
-						fontWeight="bold"
-						maxWidth={tokens.maxWidth.bodyText}
-					>
+				<Stack
+					paddingY={1}
+					paddingLeft={{ xs: 1, lg: 2 }}
+					height={authenticatedAppShellHeaderHeight}
+				>
+					<Text fontSize={{ xs: 'md', sm: 'lg' }} fontWeight="bold">
 						{title}
 					</Text>
 					<Text color="muted" fontSize="xs">
@@ -56,17 +50,18 @@ export const AuthenticatedAppShellHeader = ({
 					</Text>
 				</Stack>
 			</Flex>
-
 			<AuthenticatedAppShellHeaderMenu />
 		</Flex>
 	);
+}
+
+type AuthenticatedAppShellHeaderButtonProps = {
+	onClick: MouseEventHandler<HTMLButtonElement>;
 };
 
-export const AuthenticatedAppShellHeaderButton = ({
+function AuthenticatedAppShellHeaderButton({
 	onClick,
-}: {
-	onClick: () => void;
-}) => {
+}: AuthenticatedAppShellHeaderButtonProps) {
 	return (
 		<Stack
 			as={BaseButton}
@@ -77,6 +72,7 @@ export const AuthenticatedAppShellHeaderButton = ({
 			height={authenticatedAppShellHeaderHeight}
 			width={authenticatedAppShellHeaderHeight}
 			color="action"
+			focus
 			css={{
 				'&:hover': {
 					background: boxPalette.backgroundShade,
@@ -87,4 +83,4 @@ export const AuthenticatedAppShellHeaderButton = ({
 			Menu
 		</Stack>
 	);
-};
+}

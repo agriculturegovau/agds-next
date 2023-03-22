@@ -17,13 +17,12 @@ import { useAuthenticatedAppShellContext } from './AuthenticatedAppShellContext'
 import { ChevronsLeftIcon } from './icons';
 import { authenticatedAppShellHeaderHeight } from './utils';
 
-export const AuthenticatedAppShellSideBar = ({
+export function AuthenticatedAppShellSideBar({
 	children,
 }: {
 	children: ReactNode;
-}) => {
+}) {
 	const { isMenuVisible, isMobile } = useAuthenticatedAppShellContext();
-
 	if (isMobile) {
 		return (
 			<AuthenticatedAppShellSideBarMobile>
@@ -38,34 +37,20 @@ export const AuthenticatedAppShellSideBar = ({
 				dark
 				background="bodyAlt"
 				css={{
-					position: 'fixed',
-					zIndex: 200,
-					display: 'block',
+					position: 'sticky',
 					top: 0,
-					left: 0,
-					bottom: 0,
-					boxSizing: 'border-box',
-					overflowY: 'auto',
-					width: '100%',
-					// Desktop
-					[tokens.mediaQuery.min.md]: {
-						position: 'sticky',
-						top: 0,
-						flexShrink: 0,
-						height: '100vh',
-						width: tokens.maxWidth.mobileMenu,
-						borderLeft: `8px solid ${boxPalette.accent}`,
-					},
+					flexShrink: 0,
+					height: '100vh',
+					width: tokens.maxWidth.mobileMenu,
+					borderLeft: `8px solid ${boxPalette.accent}`,
 				}}
 			>
-				<Stack gap={1}>
+				<Stack gap={1} borderBottom borderColor="muted">
 					<Flex
 						alignItems="center"
 						maxWidth={tokens.maxWidth.mobileMenu}
 						color="text"
 						height={authenticatedAppShellHeaderHeight}
-						borderBottom
-						borderColor="muted"
 						paddingX={1.5}
 					>
 						<Logo />
@@ -80,13 +65,13 @@ export const AuthenticatedAppShellSideBar = ({
 	}
 
 	return null;
-};
+}
 
-const AuthenticatedAppShellSideBarMobile = ({
+function AuthenticatedAppShellSideBarMobile({
 	children,
 }: {
 	children: ReactNode;
-}) => {
+}) {
 	const { isMenuVisible, hideMenu } = useAuthenticatedAppShellContext();
 	const dialogRef = useRef<HTMLDivElement>(null);
 
@@ -166,7 +151,6 @@ const AuthenticatedAppShellSideBarMobile = ({
 						<Box maxWidth={tokens.maxWidth.mobileMenu} color="text">
 							<Logo />
 						</Box>
-
 						<HideMenuButton />
 					</Stack>
 					{children}
@@ -175,7 +159,7 @@ const AuthenticatedAppShellSideBarMobile = ({
 		</Fragment>,
 		document.body
 	);
-};
+}
 
 function Overlay({ onClick }: { onClick: MouseEventHandler<HTMLDivElement> }) {
 	return (
@@ -200,13 +184,12 @@ function LockScroll() {
 
 function HideMenuButton() {
 	const { hideMenu } = useAuthenticatedAppShellContext();
-
 	return (
-		<Flex justifyContent="flex-end">
+		<Flex justifyContent="flex-end" paddingTop={[0, 1.5]}>
 			<Button
 				onClick={hideMenu}
 				variant="text"
-				iconBefore={() => <ChevronsLeftIcon weight="bold" />}
+				iconBefore={ChevronsLeftIcon}
 				css={{
 					textDecoration: 'none',
 				}}

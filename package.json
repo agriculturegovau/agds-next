@@ -98,5 +98,8 @@
 		"packages": [
 			"packages/*"
 		]
+	},
+	"dependencies": {
+		"@reach/menu-button": "^0.18.0"
 	}
 }
