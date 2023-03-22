@@ -17,12 +17,12 @@ import { useAuthenticatedAppShellContext } from './AuthenticatedAppShellContext'
 import { ChevronsLeftIcon } from './icons';
 import { authenticatedAppShellHeaderHeight } from './utils';
 
-export const AuthenticatedAppShellSideBar = ({
+export function AuthenticatedAppShellSideBar({
 	children,
 }: {
 	children: ReactNode;
-}) => {
-	const { isMenuVisible, isMobile } = useAuthenticatedAppShellContext();
+}) {
+	const { isMenuOpen, isMobile } = useAuthenticatedAppShellContext();
 
 	if (isMobile) {
 		return (
@@ -32,62 +32,52 @@ export const AuthenticatedAppShellSideBar = ({
 		);
 	}
 
-	if (isMenuVisible) {
-		return (
-			<Box
-				dark
-				background="bodyAlt"
-				css={{
-					position: 'fixed',
-					zIndex: 200,
-					display: 'block',
-					top: 0,
-					left: 0,
-					bottom: 0,
-					boxSizing: 'border-box',
-					overflowY: 'auto',
-					width: '100%',
-					// Desktop
-					[tokens.mediaQuery.min.md]: {
-						position: 'sticky',
-						top: 0,
-						flexShrink: 0,
-						height: '100vh',
-						width: tokens.maxWidth.mobileMenu,
-						borderLeft: `8px solid ${boxPalette.accent}`,
-					},
-				}}
+	return (
+		<Stack
+			gap={1}
+			dark
+			background="bodyAlt"
+			css={{
+				display: isMenuOpen ? 'flex' : 'none',
+				position: 'sticky',
+				top: 0,
+				flexShrink: 0,
+				height: '100vh',
+				width: tokens.maxWidth.mobileMenu,
+				borderLeft: `8px solid ${boxPalette.accent}`,
+				// This component should never be visible on smaller devices
+				[tokens.mediaQuery.max.md]: {
+					display: 'none',
+				},
+			}}
+		>
+			<Flex
+				paddingX={1.5}
+				justifyContent="center"
+				alignItems="center"
+				color="text"
+				height={authenticatedAppShellHeaderHeight}
+				maxWidth={tokens.maxWidth.mobileMenu}
+				borderBottom
+				borderColor="muted"
+				css={{ svg: { display: 'block' } }}
 			>
-				<Stack gap={1}>
-					<Flex
-						alignItems="center"
-						maxWidth={tokens.maxWidth.mobileMenu}
-						color="text"
-						height={authenticatedAppShellHeaderHeight}
-						borderBottom
-						borderColor="muted"
-						paddingX={1.5}
-					>
-						<Logo />
-					</Flex>
-					<Box paddingX={1.5}>
-						<HideMenuButton />
-					</Box>
-				</Stack>
-				{children}
-			</Box>
-		);
-	}
+				<Logo />
+			</Flex>
+			<Flex justifyContent="flex-end" paddingX={1.5}>
+				<HideMenuButton />
+			</Flex>
+			{children}
+		</Stack>
+	);
+}
 
-	return null;
-};
-
-const AuthenticatedAppShellSideBarMobile = ({
+function AuthenticatedAppShellSideBarMobile({
 	children,
 }: {
 	children: ReactNode;
-}) => {
-	const { isMenuVisible, hideMenu } = useAuthenticatedAppShellContext();
+}) {
+	const { isMenuOpen, hideMenu } = useAuthenticatedAppShellContext();
 	const dialogRef = useRef<HTMLDivElement>(null);
 
 	// Close the component when the user presses the escape key
@@ -108,7 +98,7 @@ const AuthenticatedAppShellSideBarMobile = ({
 	// This fixes a bug in certain devices where focus is not trapped correctly such as VoiceOver on iOS.
 	// This has been inspired by Reach UI (https://github.com/reach/reach-ui/blob/main/packages/dialog/src/index.tsx)
 	useEffect(() => {
-		if (!isMenuVisible || !dialogRef.current) return;
+		if (!isMenuOpen || !dialogRef.current) return;
 
 		const rootNodes: Element[] = [];
 		const originalAttrs: (string | null)[] = [];
@@ -133,9 +123,9 @@ const AuthenticatedAppShellSideBarMobile = ({
 				}
 			});
 		};
-	}, [isMenuVisible]);
+	}, [isMenuOpen]);
 
-	if (!isMenuVisible) {
+	if (!isMenuOpen) {
 		return null;
 	}
 
@@ -143,39 +133,44 @@ const AuthenticatedAppShellSideBarMobile = ({
 		<Fragment>
 			<LockScroll />
 			<Overlay onClick={close} />
-			<Box
-				dark
-				background="bodyAlt"
-				css={{
-					position: 'fixed',
-					zIndex: 200,
-					display: 'block',
-					top: 0,
-					left: 0,
-					bottom: 0,
-					overflowY: 'auto',
-					width: '100%',
-					borderLeft: `8px solid ${boxPalette.accent}`,
-					[tokens.mediaQuery.min.md]: {
-						width: tokens.maxWidth.mobileMenu,
-					},
-				}}
-			>
-				<FocusLock returnFocus disabled={!isMenuVisible}>
-					<Stack paddingX={1.5} paddingY={1}>
-						<Box maxWidth={tokens.maxWidth.mobileMenu} color="text">
-							<Logo />
-						</Box>
-
+			<FocusLock returnFocus disabled={!isMenuOpen}>
+				<Stack
+					dark
+					background="bodyAlt"
+					paddingY={1}
+					gap={1}
+					css={{
+						position: 'fixed',
+						zIndex: 100,
+						top: 0,
+						left: 0,
+						bottom: 0,
+						overflowY: 'auto',
+						width: '100%',
+						borderLeft: `8px solid ${boxPalette.accent}`,
+						[tokens.mediaQuery.min.md]: {
+							width: tokens.maxWidth.mobileMenu,
+						},
+					}}
+				>
+					<Box
+						paddingX={1.5}
+						maxWidth={tokens.maxWidth.mobileMenu}
+						color="text"
+						css={{ svg: { display: 'block' } }}
+					>
+						<Logo />
+					</Box>
+					<Flex paddingX={1.5} justifyContent="flex-end">
 						<HideMenuButton />
-					</Stack>
+					</Flex>
 					{children}
-				</FocusLock>
-			</Box>
+				</Stack>
+			</FocusLock>
 		</Fragment>,
 		document.body
 	);
-};
+}
 
 function Overlay({ onClick }: { onClick: MouseEventHandler<HTMLDivElement> }) {
 	return (
@@ -187,7 +182,7 @@ function Overlay({ onClick }: { onClick: MouseEventHandler<HTMLDivElement> }) {
 				bottom: 0,
 				right: 0,
 				backgroundColor: `rgba(0, 0, 0, 0.8)`,
-				zIndex: 100,
+				zIndex: 99,
 			}}
 			onClick={onClick}
 		/>
@@ -200,19 +195,16 @@ function LockScroll() {
 
 function HideMenuButton() {
 	const { hideMenu } = useAuthenticatedAppShellContext();
-
 	return (
-		<Flex justifyContent="flex-end">
-			<Button
-				onClick={hideMenu}
-				variant="text"
-				iconBefore={() => <ChevronsLeftIcon weight="bold" />}
-				css={{
-					textDecoration: 'none',
-				}}
-			>
-				Hide menu
-			</Button>
-		</Flex>
+		<Button
+			onClick={hideMenu}
+			variant="text"
+			iconBefore={ChevronsLeftIcon}
+			css={{
+				textDecoration: 'none',
+			}}
+		>
+			Hide menu
+		</Button>
 	);
 }

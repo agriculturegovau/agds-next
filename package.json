@@ -39,6 +39,9 @@
 		"storybook:dev": "start-storybook -p 6006",
 		"test": "jest"
 	},
+	"dependencies": {
+		"@reach/menu-button": "^0.18.0"
+	},
 	"devDependencies": {
 		"@babel/core": "^7.16.5",
 		"@babel/plugin-transform-runtime": "^7.16.4",

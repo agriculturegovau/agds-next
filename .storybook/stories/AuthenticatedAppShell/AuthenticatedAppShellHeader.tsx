@@ -1,4 +1,5 @@
-import { Box, Flex, Stack } from '@ag.ds-next/react/box';
+import { MouseEventHandler } from 'react';
+import { Flex, Stack } from '@ag.ds-next/react/box';
 import { boxPalette, tokens } from '@ag.ds-next/react/core';
 import { Text } from '@ag.ds-next/react/text';
 import { MenuIcon } from '@ag.ds-next/react/icon';
@@ -12,79 +13,73 @@ export type AuthenticatedAppShellHeaderProps = {
 	subtitle: string;
 };
 
-export const AuthenticatedAppShellHeader = ({
+export function AuthenticatedAppShellHeader({
 	title,
 	subtitle,
-}: AuthenticatedAppShellHeaderProps) => {
-	const { isMenuVisible, showMenu } = useAuthenticatedAppShellContext();
-
-	const isMenuButtonVisible = !isMenuVisible;
-
+}: AuthenticatedAppShellHeaderProps) {
 	return (
 		<Flex
 			as="header"
-			palette={{
-				xs: 'dark',
-				lg: 'light',
-			}}
+			palette={{ xs: 'dark', lg: 'light' }}
 			background="body"
 			alignItems="center"
 			justifyContent="space-between"
-			height={authenticatedAppShellHeaderHeight}
 			borderBottom
 			borderColor="muted"
-			width="100%"
 			css={{
 				boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
 			}}
 		>
 			<Flex alignItems="center">
-				{isMenuButtonVisible && (
-					<AuthenticatedAppShellHeaderButton onClick={showMenu} />
-				)}
-				<Stack paddingY={1} paddingLeft={{ xs: 1, lg: 2 }}>
-					<Text
-						lineHeight="default"
-						fontSize={{ xs: 'md', sm: 'lg' }}
-						fontWeight="bold"
-						maxWidth={tokens.maxWidth.bodyText}
-					>
+				<AuthenticatedAppShellHeaderButton />
+				<Flex
+					flexDirection="column"
+					justifyContent="center"
+					paddingLeft={{ xs: 1, lg: 2 }}
+					height={authenticatedAppShellHeaderHeight}
+				>
+					<Text fontSize={{ xs: 'md', sm: 'lg' }} fontWeight="bold">
 						{title}
 					</Text>
 					<Text color="muted" fontSize="xs">
 						{subtitle}
 					</Text>
-				</Stack>
+				</Flex>
 			</Flex>
 
 			<AuthenticatedAppShellHeaderMenu />
 		</Flex>
 	);
-};
+}
 
-export const AuthenticatedAppShellHeaderButton = ({
-	onClick,
-}: {
-	onClick: () => void;
-}) => {
+function AuthenticatedAppShellHeaderButton() {
+	const { isMenuOpen, showMenu } = useAuthenticatedAppShellContext();
 	return (
-		<Stack
+		<Flex
 			as={BaseButton}
-			onClick={onClick}
+			onClick={showMenu}
 			borderRight
+			flexDirection="column"
 			alignItems="center"
 			justifyContent="center"
 			height={authenticatedAppShellHeaderHeight}
 			width={authenticatedAppShellHeaderHeight}
 			color="action"
+			focus
 			css={{
+				flexShrink: 0,
 				'&:hover': {
 					background: boxPalette.backgroundShade,
 				},
+				...(isMenuOpen && {
+					[tokens.mediaQuery.min.lg]: {
+						display: 'none',
+					},
+				}),
 			}}
 		>
 			<MenuIcon aria-hidden />
 			Menu
-		</Stack>
+		</Flex>
 	);
-};
+}

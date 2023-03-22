@@ -15,39 +15,37 @@ import { AuthenticatedAppShell } from './AuthenticatedAppShell';
 
 afterEach(cleanup);
 
-const primaryNavItems = [
-	{ label: 'Dashboard', icon: HomeIcon, href: '#home' },
-	{
-		label: 'Establishments',
-		icon: FactoryIcon,
-		href: '#establishments',
-	},
-	{
-		label: 'Data and Insights',
-		icon: ChartLineIcon,
-		href: '#data',
-	},
-	{
-		label: 'Compliance',
-		icon: SuccessIcon,
-		href: '#compliance',
-	},
-];
-const secondaryNavItems = [
-	{
-		label: 'Messages',
-		icon: EmailIcon,
-		href: '#messages',
-		badgeCount: 3,
-	},
-	{ label: 'Help', icon: HelpIcon, href: '#help' },
+const navItems = [
+	[
+		{ label: 'Dashboard', icon: HomeIcon, href: '#home' },
+		{
+			label: 'Establishments',
+			icon: FactoryIcon,
+			href: '#establishments',
+		},
+		{
+			label: 'Data and Insights',
+			icon: ChartLineIcon,
+			href: '#data',
+		},
+		{
+			label: 'Compliance',
+			icon: SuccessIcon,
+			href: '#compliance',
+		},
+	],
+	[
+		{
+			label: 'Messages',
+			icon: EmailIcon,
+			href: '#messages',
+			badgeCount: 3,
+		},
+		{ label: 'Help', icon: HelpIcon, href: '#help' },
+	],
 ];
 
 function AppShellTest({ isFocusMode = false }) {
-	const signOut = () => {
-		console.log('sign out');
-	};
-
 	return (
 		<AuthenticatedAppShell
 			siteTitle="Export Service"
@@ -67,7 +65,7 @@ function AppShellTest({ isFocusMode = false }) {
 					},
 				],
 			}}
-			mainNavItems={{ primary: primaryNavItems, secondary: secondaryNavItems }}
+			mainNavItems={navItems}
 			isFocusMode={isFocusMode}
 			activePath="#home"
 		>

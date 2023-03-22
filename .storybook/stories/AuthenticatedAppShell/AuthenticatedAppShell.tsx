@@ -1,11 +1,6 @@
-import {
-	PropsWithChildren,
-	MouseEventHandler,
-	ComponentType,
-	useEffect,
-} from 'react';
+import { PropsWithChildren, ComponentType, Fragment, useEffect } from 'react';
 import { Box, Flex, Stack } from '@ag.ds-next/react/box';
-import { tokens, useTernaryState } from '@ag.ds-next/react/core';
+import { tokens } from '@ag.ds-next/react/core';
 import { IconProps } from '@ag.ds-next/react/icon';
 import { SkipLinks } from '@ag.ds-next/react/skip-link';
 import { AuthenticatedAppShellHeader } from './AuthenticatedAppShellHeader';
@@ -14,9 +9,10 @@ import { AuthenticatedAppShellFooter } from './AuthenticatedAppShellFooter';
 import {
 	AuthenticatedAppShellSideBarItem,
 	AuthenticatedAppShellSideBarItemType,
+	AuthenticatedAppShellSideBarDivider,
 } from './AuthenticatedAppShellSideBarItem';
 import { AuthenticatedAppShellContext } from './AuthenticatedAppShellContext';
-import { useIsMobile } from './utils';
+import { useIsMobile, useSidebarMenuState } from './utils';
 
 export type AuthenticatedAppShellProps = PropsWithChildren<{
 	siteTitle: string;
@@ -24,10 +20,7 @@ export type AuthenticatedAppShellProps = PropsWithChildren<{
 	/** For screens where a user is focusing on a task, the UI should collapse */
 	isFocusMode?: boolean;
 	activePath: string;
-	mainNavItems: {
-		primary: AuthenticatedAppShellSideBarItemType[];
-		secondary: AuthenticatedAppShellSideBarItemType[];
-	};
+	mainNavItems: AuthenticatedAppShellSideBarItemType[][];
 	userMenu: {
 		name: string;
 		organisation: string;
@@ -35,14 +28,14 @@ export type AuthenticatedAppShellProps = PropsWithChildren<{
 			| { label: string; href: string; icon?: ComponentType<IconProps> }
 			| {
 					label: string;
-					onClick: MouseEventHandler<HTMLButtonElement>;
+					onClick: () => void;
 					icon?: ComponentType<IconProps>;
 			  }
 		)[];
 	};
 }>;
 
-export const AuthenticatedAppShell = ({
+export function AuthenticatedAppShell({
 	siteTitle,
 	siteSubtitle,
 	isFocusMode = false,
@@ -50,76 +43,54 @@ export const AuthenticatedAppShell = ({
 	mainNavItems,
 	userMenu,
 	children,
-}: AuthenticatedAppShellProps) => {
-	const [isMenuVisible, showMenu, hideMenu] = useTernaryState(false);
+}: AuthenticatedAppShellProps) {
 	const isMobile = useIsMobile();
-
-	// isMobile is always true on first render, so we need to hide the menu
-	// when the screen size is properly detected.
-	useEffect(() => {
-		// Hide the menu when the screen size changes
-		if (isMobile || isFocusMode) {
-			hideMenu();
-		} else {
-			showMenu();
-		}
-	}, [isMobile]);
-
+	const [isMenuOpen, showMenu, hideMenu] = useSidebarMenuState({
+		isFocusMode,
+		isMobile,
+	});
 	return (
 		<AuthenticatedAppShellContext.Provider
 			value={{
 				isMobile,
-				isMenuVisible,
+				isMenuOpen,
 				showMenu,
 				hideMenu,
 				userMenu,
 			}}
 		>
+			<SkipLinks
+				links={[{ href: '#main-content', label: 'Skip to main content' }]}
+			/>
 			<Box display="flex" flexDirection="row">
 				<AuthenticatedAppShellSideBar>
-					<Stack gap={1}>
-						<SkipLinks
-							links={[{ href: '#main-content', label: 'Skip to main content' }]}
-						/>
-						<Box as="nav" aria-label="main">
-							<Stack as="ul">
-								{mainNavItems.primary.map((props, index) => (
-									<AuthenticatedAppShellSideBarItem
-										key={index}
-										isActive={activePath === props.href}
-										{...props}
-									/>
-								))}
-							</Stack>
-						</Box>
-						<Box paddingX={2}>
-							<Box
-								as="hr"
-								borderBottom
-								borderColor="muted"
-								aria-hidden="true"
-							/>
-						</Box>
-						<Box as="nav" aria-label="secondary">
-							<Stack as="ul">
-								{mainNavItems.secondary.map((props, index) => (
-									<AuthenticatedAppShellSideBarItem
-										key={index}
-										isActive={activePath === props.href}
-										{...props}
-									/>
-								))}
-							</Stack>
-						</Box>
-					</Stack>
+					<Box as="nav" aria-label="main">
+						<Stack as="ul">
+							{mainNavItems.map((group, idx, arr) => {
+								const isLastItem = idx === arr.length - 1;
+								return (
+									<Fragment key={idx}>
+										{group.map((item, idx) => (
+											<AuthenticatedAppShellSideBarItem
+												key={idx}
+												isActive={activePath === item.href}
+												{...item}
+											/>
+										))}
+										{!isLastItem ? (
+											<AuthenticatedAppShellSideBarDivider />
+										) : null}
+									</Fragment>
+								);
+							})}
+						</Stack>
+					</Box>
 				</AuthenticatedAppShellSideBar>
-
 				<Box width="100%">
 					<AuthenticatedAppShellHeader
 						title={siteTitle}
 						subtitle={siteSubtitle}
 					/>
-
 					<Flex alignItems="center" flexDirection="column">
 						<Box
 							width="100%"
@@ -140,4 +111,4 @@ export const AuthenticatedAppShell = ({
 			</Box>
 		</AuthenticatedAppShellContext.Provider>
 	);
-};
+}
