@@ -27,7 +27,7 @@ export function AuthenticatedAppShellHeaderMenu() {
 	return (
 		<Menu>
 			<AuthenticatedAppShellHeaderMenuButton ref={setRefEl} />
-			<Box as={MenuList} focus>
+			<Box as={MenuList} background="body" focus>
 				{userMenu.items.map((item, idx) => {
 					const { icon: Icon } = item;
 					if ('href' in item) {
@@ -62,7 +62,7 @@ export function AuthenticatedAppShellHeaderMenu() {
 const menuItemStyles = {
 	boxSizing: 'border-box',
 	appearance: 'none',
-	background: 'none',
+	background: boxPalette.backgroundBody,
 	display: 'flex',
 	alignItems: 'center',
 	gap: mapSpacing(0.5),
@@ -87,6 +87,7 @@ const AuthenticatedAppShellHeaderMenuButton = forwardRef<HTMLButtonElement>(
 				// @ts-ignore
 				ref={ref}
 				as={MenuButton}
+				background="body"
 				alignItems="center"
 				paddingX={1}
 				gap={1}
@@ -94,7 +95,6 @@ const AuthenticatedAppShellHeaderMenuButton = forwardRef<HTMLButtonElement>(
 				aria-label={`User menu, ${userMenu.name}`}
 				css={{
 					appearance: 'none',
-					background: 'none',
 					'&:hover': {
 						background: boxPalette.backgroundShade,
 					},

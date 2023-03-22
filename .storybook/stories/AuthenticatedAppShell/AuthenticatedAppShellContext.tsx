@@ -1,4 +1,4 @@
-import { createContext, useContext } from 'react';
+import { createContext, RefObject, useContext } from 'react';
 import { AuthenticatedAppShellProps } from './AuthenticatedAppShell';
 
 export type AuthenticatedAppShellContextType = {
@@ -6,6 +6,8 @@ export type AuthenticatedAppShellContextType = {
 	isMenuOpen: boolean;
 	showMenu: () => void;
 	hideMenu: () => void;
+	showMenuButtonRef: RefObject<HTMLButtonElement>;
+	hideMenuButtonRef: RefObject<HTMLButtonElement>;
 } & Pick<NonNullable<AuthenticatedAppShellProps>, 'userMenu'>;
 
 // create new context
