@@ -3,12 +3,13 @@ import { Box } from '../../box';
 import { FieldMaxWidth, tokens } from '../../core';
 
 export type ComboboxListProps = PropsWithChildren<{
+	block: boolean;
 	isOpen: boolean;
 	maxWidth: FieldMaxWidth;
 }>;
 
 export const ComboboxList = forwardRef<HTMLUListElement, ComboboxListProps>(
-	function ComboboxList({ children, isOpen, maxWidth, ...props }, ref) {
+	function ComboboxList({ children, isOpen, block, maxWidth, ...props }, ref) {
 		return (
 			<Box
 				ref={ref}
@@ -21,7 +22,7 @@ export const ComboboxList = forwardRef<HTMLUListElement, ComboboxListProps>(
 				css={{
 					overflowY: 'scroll',
 					maxHeight: 295,
-					maxWidth: tokens.maxWidth.field[maxWidth],
+					maxWidth: block ? tokens.maxWidth.field[maxWidth] : undefined,
 					width: '100%',
 					zIndex: 1,
 					...(!isOpen && {
