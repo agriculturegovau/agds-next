@@ -33,7 +33,8 @@ export function AuthenticatedAppShellSideBar({
 
 	if (isMenuVisible) {
 		return (
-			<Box
+			<Stack
+				gap={1}
 				dark
 				background="bodyAlt"
 				css={{
@@ -45,22 +46,24 @@ export function AuthenticatedAppShellSideBar({
 					borderLeft: `8px solid ${boxPalette.accent}`,
 				}}
 			>
-				<Stack gap={1} borderBottom borderColor="muted">
-					<Flex
-						alignItems="center"
-						maxWidth={tokens.maxWidth.mobileMenu}
-						color="text"
-						height={authenticatedAppShellHeaderHeight}
-						paddingX={1.5}
-					>
-						<Logo />
-					</Flex>
-					<Box paddingX={1.5}>
-						<HideMenuButton />
-					</Box>
-				</Stack>
+				<Flex
+					paddingX={1.5}
+					justifyContent="center"
+					alignItems="center"
+					color="text"
+					height={authenticatedAppShellHeaderHeight}
+					maxWidth={tokens.maxWidth.mobileMenu}
+					borderBottom
+					borderColor="muted"
+					css={{ svg: { display: 'block' } }}
+				>
+					<Logo />
+				</Flex>
+				<Flex justifyContent="flex-end" paddingX={1.5}>
+					<HideMenuButton />
+				</Flex>
 				{children}
-			</Box>
+			</Stack>
 		);
 	}
 
@@ -128,34 +131,39 @@ function AuthenticatedAppShellSideBarMobile({
 		<Fragment>
 			<LockScroll />
 			<Overlay onClick={close} />
-			<Box
-				dark
-				background="bodyAlt"
-				css={{
-					position: 'fixed',
-					zIndex: 200,
-					display: 'block',
-					top: 0,
-					left: 0,
-					bottom: 0,
-					overflowY: 'auto',
-					width: '100%',
-					borderLeft: `8px solid ${boxPalette.accent}`,
-					[tokens.mediaQuery.min.md]: {
-						width: tokens.maxWidth.mobileMenu,
-					},
-				}}
-			>
-				<FocusLock returnFocus disabled={!isMenuVisible}>
-					<Stack paddingX={1.5} paddingY={1}>
-						<Box maxWidth={tokens.maxWidth.mobileMenu} color="text">
-							<Logo />
-						</Box>
+			<FocusLock returnFocus disabled={!isMenuVisible}>
+				<Stack
+					dark
+					background="bodyAlt"
+					css={{
+						position: 'fixed',
+						zIndex: 200,
+						display: 'block',
+						top: 0,
+						left: 0,
+						bottom: 0,
+						overflowY: 'auto',
+						width: '100%',
+						borderLeft: `8px solid ${boxPalette.accent}`,
+						[tokens.mediaQuery.min.md]: {
+							width: tokens.maxWidth.mobileMenu,
+						},
+					}}
+				>
+					<Box
+						paddingX={1.5}
+						paddingY={1}
+						maxWidth={tokens.maxWidth.mobileMenu}
+						color="text"
+					>
+						<Logo />
+					</Box>
+					<Flex justifyContent="flex-end" paddingX={1.5}>
 						<HideMenuButton />
-					</Stack>
+					</Flex>
 					{children}
-				</FocusLock>
-			</Box>
+				</Stack>
+			</FocusLock>
 		</Fragment>,
 		document.body
 	);
@@ -185,17 +193,15 @@ function LockScroll() {
 function HideMenuButton() {
 	const { hideMenu } = useAuthenticatedAppShellContext();
 	return (
-		<Flex justifyContent="flex-end" paddingTop={[0, 1.5]}>
-			<Button
-				onClick={hideMenu}
-				variant="text"
-				iconBefore={ChevronsLeftIcon}
-				css={{
-					textDecoration: 'none',
-				}}
-			>
-				Hide menu
-			</Button>
-		</Flex>
+		<Button
+			onClick={hideMenu}
+			variant="text"
+			iconBefore={ChevronsLeftIcon}
+			css={{
+				textDecoration: 'none',
+			}}
+		>
+			Hide menu
+		</Button>
 	);
 }

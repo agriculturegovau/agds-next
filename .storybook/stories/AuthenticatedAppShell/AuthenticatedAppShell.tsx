@@ -73,7 +73,7 @@ export function AuthenticatedAppShell({
 			/>
 			<Box display="flex" flexDirection="row">
 				<AuthenticatedAppShellSideBar>
-					<Box as="nav" aria-label="main" paddingTop={1}>
+					<Box as="nav" aria-label="main">
 						<Stack as="ul">
 							{mainNavItems.map((nav, idx) => {
 								const isLastItem = idx === mainNavItems.length - 1;
