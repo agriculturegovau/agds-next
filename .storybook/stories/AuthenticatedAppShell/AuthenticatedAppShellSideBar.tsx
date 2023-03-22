@@ -135,10 +135,11 @@ function AuthenticatedAppShellSideBarMobile({
 				<Stack
 					dark
 					background="bodyAlt"
+					paddingY={1}
+					gap={1}
 					css={{
 						position: 'fixed',
-						zIndex: 200,
-						display: 'block',
+						zIndex: 100,
 						top: 0,
 						left: 0,
 						bottom: 0,
@@ -152,13 +153,13 @@ function AuthenticatedAppShellSideBarMobile({
 				>
 					<Box
 						paddingX={1.5}
-						paddingY={1}
 						maxWidth={tokens.maxWidth.mobileMenu}
 						color="text"
+						css={{ svg: { display: 'block' } }}
 					>
 						<Logo />
 					</Box>
-					<Flex justifyContent="flex-end" paddingX={1.5}>
+					<Flex paddingX={1.5} justifyContent="flex-end">
 						<HideMenuButton />
 					</Flex>
 					{children}
@@ -179,7 +180,7 @@ function Overlay({ onClick }: { onClick: MouseEventHandler<HTMLDivElement> }) {
 				bottom: 0,
 				right: 0,
 				backgroundColor: `rgba(0, 0, 0, 0.8)`,
-				zIndex: 100,
+				zIndex: 99,
 			}}
 			onClick={onClick}
 		/>

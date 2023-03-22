@@ -75,6 +75,7 @@ function AuthenticatedAppShellHeaderButton({
 			color="action"
 			focus
 			css={{
+				flexShrink: 0,
 				'&:hover': {
 					background: boxPalette.backgroundShade,
 				},
