@@ -1,9 +1,0 @@
-# *
-User-agent: *
-Allow: /
-
-# Host
-Host: https://design-system.agriculture.gov.au
-
-# Sitemaps
-Sitemap: https://design-system.agriculture.gov.au/sitemap.xml
