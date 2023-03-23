@@ -11,7 +11,7 @@ function generateRowToc(content: string): HeadingDataRaw[] {
 		new RegExp(/^(#### |### |## )(.*)\n/, 'gm')
 	);
 
-	const headings = [...(headingContent as unknown as string[])];
+	const headings = Array.from(headingContent);
 
 	let toc: HeadingDataRaw[] = [];
 
