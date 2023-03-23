@@ -3,7 +3,9 @@ import { useEffect, useRef } from 'react';
 
 export const authenticatedAppShellHeaderHeight = { xs: '5rem', lg: '6rem' };
 
-/** Used to calculate whether the menu should be shown as a modal */
+/**
+ * Used to calculate whether the menu should be shown as a modal
+ */
 export function useIsMobile() {
 	const { windowWidth } = useWindowSize();
 
@@ -12,6 +14,9 @@ export function useIsMobile() {
 	return windowWidth <= tokens.breakpoint.lg - 1;
 }
 
+/**
+ * State to manage the collapsed state of the sidebar menu
+ */
 export function useSidebarMenuState({
 	isMobile,
 	isFocusMode,
@@ -28,6 +33,9 @@ export function useSidebarMenuState({
 	return isMobile ? mobileState : desktopState;
 }
 
+/**
+ * Ensures the the open/close buttons are focused when the menu opens/closes
+ */
 export function useManageSidebarTriggerFocus({
 	isMenuOpen,
 	isMobile,
@@ -38,13 +46,12 @@ export function useManageSidebarTriggerFocus({
 	const showMenuButtonRef = useRef<HTMLButtonElement>(null);
 	const hideMenuButtonRef = useRef<HTMLButtonElement>(null);
 
-	// This effect ensures the correct trigger is first when the menu opens and closes
-	// This should not happen on first render — only when the state changes
 	const isFirstRenderRef = useRef(true);
 	const isMobileRef = useRef(isMobile);
 	useEffect(() => {
 		// Prevents the mobile menu trigger from focusing on first render
 		if (typeof isMobileRef.current === 'undefined') return;
+		//This should not happen on first render — only when the state changes
 		if (isFirstRenderRef.current) {
 			isFirstRenderRef.current = false;
 			return;
