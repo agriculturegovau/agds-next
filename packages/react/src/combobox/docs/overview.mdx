@@ -258,3 +258,31 @@ Use the `invalid` prop to indicate if the user input is invalid (does not valida
 	);
 };
 ```
+
+### Disabled
+
+Disabled input elements are unusable and can not be clicked. This prevents a user from interacting with the input element until another action is complete.
+
+```jsx live
+() => {
+	const [value, setValue] = React.useState(null);
+	return (
+		<Combobox
+			label="Select state"
+			disabled
+			value={value}
+			onChange={(value) => setValue(value)}
+			options={[
+				{ label: 'Australian Capital Territory', value: 'act' },
+				{ label: 'New South Wales', value: 'nsw' },
+				{ label: 'Northern Territory', value: 'nt' },
+				{ label: 'Queensland', value: 'qld' },
+				{ label: 'South Australia', value: 'sa' },
+				{ label: 'Tasmania', value: 'tas' },
+				{ label: 'Victoria', value: 'vic' },
+				{ label: 'Western Australia', value: 'wa' },
+			]}
+		/>
+	);
+};
+```

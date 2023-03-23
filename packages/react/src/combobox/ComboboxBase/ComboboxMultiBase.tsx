@@ -79,9 +79,9 @@ export function ComboboxMultiBase<Option extends DefaultComboboxOption>({
 	required,
 	hint,
 	message,
-	invalid,
+	invalid = false,
 	inputId,
-	disabled,
+	disabled = false,
 	block = true,
 	maxWidth: maxWidthProp = 'xl',
 	// clearable = false,
@@ -104,29 +104,14 @@ export function ComboboxMultiBase<Option extends DefaultComboboxOption>({
 		modifiers: [{ name: 'offset', options: { offset: [0, 8] } }],
 	});
 
-	const inputContainerStyles = {
-		appearance: 'none' as const,
-		margin: 0,
-		background: boxPalette.backgroundBody,
-		borderWidth: tokens.borderWidth.lg,
-		borderStyle: 'solid',
-		borderColor: boxPalette.border,
-		color: boxPalette.foregroundText,
-		fontFamily: tokens.font.body,
-		...packs.input.md,
-		height: 'auto',
-		minHeight: packs.input.md.height,
-		paddingTop: mapSpacing(0.25),
-		paddingBottom: mapSpacing(0.25),
-		paddingLeft: mapSpacing(0.5),
-		paddingRight: '4rem',
-	};
-
 	// This component changes its height as the selected item change
 	// So we need to update the popper element to recalculate its position
 	useEffect(() => {
 		update?.();
 	}, [selectedItems, update]);
+
+	const containerStyles = comboboxContainerStyles({ invalid, disabled });
+	const inputStyles = comboboxInputStyles({ invalid });
 
 	return (
 		<Field
@@ -151,7 +136,7 @@ export function ComboboxMultiBase<Option extends DefaultComboboxOption>({
 						}}
 						ref={setRefEl}
 					>
-						<Flex gap={0.5} flexWrap="wrap" css={inputContainerStyles}>
+						<Flex gap={0.5} flexWrap="wrap" css={containerStyles}>
 							{selectedItems.map((item, idx) => {
 								const { ref, ...itemProps } =
 									multiSelection.getSelectedItemProps({
@@ -169,27 +154,20 @@ export function ComboboxMultiBase<Option extends DefaultComboboxOption>({
 									</Tag>
 								);
 							})}
-							<input
-								disabled={disabled}
-								{...a11yProps}
-								{...downshift.getInputProps(
-									multiSelection.getDropdownProps({
-										type: 'text',
-										preventKeyAction: downshift.isOpen,
-										ref: inputRef,
-									})
-								)}
-								css={{
-									flex: 1,
-									appearance: 'none',
-									border: 'none',
-									with: '100%',
-									borderWidth: 0,
-									'&:focus': { outline: 'none' },
-									fontFamily: tokens.font.body,
-									...fontGrid('sm', 'default'),
-								}}
-							/>
+							<div css={{ display: 'flex', flex: '1 1 2rem' }}>
+								<input
+									disabled={disabled}
+									{...a11yProps}
+									{...downshift.getInputProps(
+										multiSelection.getDropdownProps({
+											type: 'text',
+											preventKeyAction: downshift.isOpen,
+											ref: inputRef,
+										})
+									)}
+									css={inputStyles}
+								/>
+							</div>
 						</Flex>
 						{selectedItems?.length ? (
 							<ComboboxClearButton
@@ -257,4 +235,68 @@ export function ComboboxMultiBase<Option extends DefaultComboboxOption>({
 			}}
 		</Field>
 	);
+}
+
+function comboboxContainerStyles({
+	invalid,
+	disabled,
+}: {
+	invalid: boolean;
+	disabled: boolean;
+}) {
+	return {
+		appearance: 'none' as const,
+		margin: 0,
+		background: boxPalette.backgroundBody,
+		borderWidth: tokens.borderWidth.lg,
+		borderStyle: 'solid',
+		borderColor: boxPalette.border,
+		color: boxPalette.foregroundText,
+		fontFamily: tokens.font.body,
+		...packs.input.md,
+		height: 'auto',
+		minHeight: packs.input.md.height,
+		paddingTop: mapSpacing(0.25),
+		paddingBottom: mapSpacing(0.25),
+		paddingLeft: mapSpacing(0.5),
+		paddingRight: '5rem',
+
+		...(disabled && {
+			cursor: 'not-allowed',
+			borderColor: boxPalette.borderMuted,
+			backgroundColor: boxPalette.backgroundShade,
+			color: boxPalette.foregroundMuted,
+		}),
+
+		...(invalid && {
+			backgroundColor: boxPalette.systemErrorMuted,
+			borderColor: boxPalette.systemError,
+		}),
+	};
+}
+
+function comboboxInputStyles({ invalid }: { invalid: boolean }) {
+	return {
+		appearance: 'none',
+		boxSizing: 'border-box',
+		borderWidth: 0,
+		width: '100%',
+		background: boxPalette.backgroundBody,
+		color: boxPalette.foregroundText,
+		fontFamily: tokens.font.body,
+		...fontGrid('sm', 'default'),
+
+		'&:focus': {
+			outline: 'none',
+		},
+
+		...(invalid && {
+			backgroundColor: boxPalette.systemErrorMuted,
+			borderColor: boxPalette.systemError,
+		}),
+
+		'&:disabled': {
+			backgroundColor: boxPalette.backgroundShade,
+		},
+	};
 }
