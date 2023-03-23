@@ -56,11 +56,12 @@ export const getStaticProps: GetStaticProps<
 	const { slug } = params ?? {};
 	const template = slug ? await getTemplate(slug) : undefined;
 	const navLinks = await getTemplateNavLinks();
-	const breadcrumbs = slug ? await getTemplateBreadcrumbs(slug) : undefined;
 
-	if (!(slug && template && breadcrumbs)) {
+	if (!(slug && template)) {
 		return { notFound: true };
 	}
+
+	const breadcrumbs = await getTemplateBreadcrumbs(slug);
 
 	return {
 		props: {

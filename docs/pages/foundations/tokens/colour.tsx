@@ -25,24 +25,24 @@ export default function TokensColorPage() {
 				breadcrumbs={getTokensBreadcrumbs(TOKEN_PAGES.colour)}
 				editPath="/docs/pages/foundations/tokens/color.tsx"
 			>
+				<InpageNav
+					title="On this page"
+					links={[
+						{ href: '#colour-palettes', label: 'Colour palettes' },
+						{ href: '#foreground', label: 'Foreground colors' },
+						{ href: '#background', label: 'Background colors' },
+						{ href: '#border', label: 'Border colors' },
+						{ href: '#system', label: 'System colors' },
+						{ href: '#usage-guidelines', label: 'Usage guidelines' },
+					]}
+				/>
 				<Prose>
-					<h2>Colour palettes</h2>
+					<h2 id="colour-palettes">Colour palettes</h2>
 					<p>
 						There are 2 colour palettes, light and dark. Each colour palette is
 						divided into foreground, background, border, and system colours
 						which all have a specific purpose.
 					</p>
-					<div className={proseBlockClassname}>
-						<InpageNav
-							title="On this page"
-							links={[
-								{ href: '#foreground', label: 'Foreground colors' },
-								{ href: '#background', label: 'Background colors' },
-								{ href: '#border', label: 'Border colors' },
-								{ href: '#system', label: 'System colors' },
-							]}
-						/>
-					</div>
 					<Box
 						borderTop
 						borderBottom
@@ -65,7 +65,7 @@ export default function TokensColorPage() {
 						</div>
 					</Box>
 					<ColorTable activePalette={isDarkMode ? 'dark' : 'light'} />
-					<h2>Usage guidelines</h2>
+					<h2 id="usage-guidelines">Usage guidelines</h2>
 
 					<Columns cols={[1, 3]} className={proseBlockClassname}>
 						<Column columnSpan={[1, 2]}>

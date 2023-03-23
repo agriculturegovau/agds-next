@@ -5,6 +5,7 @@ import {
 	SummaryListItemDescription,
 	SummaryListItemTerm,
 } from '@ag.ds-next/react/summary-list';
+import { InpageNav } from '@ag.ds-next/react/inpage-nav';
 import { DocumentTitle } from '../../../components/DocumentTitle';
 import { TokenLayout } from '../../../components/TokenLayout';
 import { SpacingChart } from '../../../components/TokenCharts';
@@ -23,6 +24,16 @@ export default function TokensSpacingPage() {
 				breadcrumbs={getTokensBreadcrumbs(TOKEN_PAGES.spacing)}
 				editPath="/docs/pages/foundations/tokens/spacing.tsx"
 			>
+				<InpageNav
+					title="On this page"
+					links={[
+						{ href: '#spacing-tokens', label: 'Spacing tokens' },
+						{
+							href: '#how-to-use-spacing-tokens',
+							label: 'How to use spacing tokens',
+						},
+					]}
+				/>
 				<Prose>
 					<p>
 						Use the following guidelines when making decisions about spacing:
@@ -46,7 +57,7 @@ export default function TokensSpacingPage() {
 							distinguish between them.
 						</li>
 					</ul>
-					<h2>Spacing tokens</h2>
+					<h2 id="spacing-tokens">Spacing tokens</h2>
 					<p>
 						All spacing between interface elements should use the following
 						predefined spacing options to help ensure consistency and speed up
@@ -57,7 +68,7 @@ export default function TokensSpacingPage() {
 						an 8px grid.
 					</p>
 					<SpacingChart />
-					<h2>How to use spacing tokens</h2>
+					<h2 id="how-to-use-spacing-tokens">How to use spacing tokens</h2>
 					<p>
 						In order to improve consistency, each spacing token is used for a
 						specific purpose. More closely related elements have less spacing

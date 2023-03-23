@@ -87,7 +87,7 @@ export default function TokensMaxWidthsPage() {
 							</Table>
 						</TableWrapper>
 					</div>
-					<h2>Form fields</h2>
+					<h2 id="form-fields">Form fields</h2>
 					<p>
 						The width of a form field should indicate the amount of information
 						expected to be entered into the field. The size of the form field

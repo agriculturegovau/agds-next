@@ -25,6 +25,7 @@ import generatedComponentPropsData from '../__generated__/componentProps.json';
 import { Code } from './Code';
 import { ComponentPropsTable } from './ComponentPropsTable';
 import { DoHeading, DontHeading } from './DoDontHeading';
+import { AllIconsPlayground } from './AllIconsPlayground';
 
 export const mdxComponents: MDXRemoteProps['components'] = {
 	Fragment,
@@ -128,4 +129,5 @@ export const mdxComponents: MDXRemoteProps['components'] = {
 	TableCell,
 	TableHeader,
 	TableCaption,
+	AllIconsPlayground,
 };

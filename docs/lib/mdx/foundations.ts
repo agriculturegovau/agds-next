@@ -19,6 +19,7 @@ export async function getFoundation(slug: string) {
 	return {
 		slug,
 		source,
+		content,
 		data,
 		title: (data.title ?? slug) as string,
 		description: (data.description ?? null) as string | null,

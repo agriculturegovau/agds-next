@@ -30,19 +30,16 @@ export default function TokensTypographyPage() {
 				breadcrumbs={getTokensBreadcrumbs(TOKEN_PAGES.typography)}
 				editPath="/docs/pages/foundations/tokens/typography.tsx"
 			>
+				<InpageNav
+					title="On this page"
+					links={[
+						{ href: '#font-size', label: 'Font size' },
+						{ href: '#line-height', label: 'Line height' },
+						{ href: '#font-family', label: 'Font family' },
+						{ href: '#font-weight', label: 'Font weight' },
+					]}
+				/>
 				<Prose>
-					<div className={proseBlockClassname}>
-						<InpageNav
-							title="On this page"
-							links={[
-								{ href: '#font-size', label: 'Font size' },
-								{ href: '#line-height', label: 'Line height' },
-								{ href: '#font-family', label: 'Font family' },
-								{ href: '#font-weight', label: 'Font weight' },
-							]}
-						/>
-					</div>
-
 					<h2 id="font-size">Font size</h2>
 					<p>
 						A typographic scale of 1.25 was used to create a limited set of font

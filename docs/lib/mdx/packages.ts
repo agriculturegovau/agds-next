@@ -17,14 +17,11 @@ const pkgReadmePath = (slug: string) => `${PKG_PATH}/${slug}/docs/overview.mdx`;
 const pkgDocsPath = (slug: string) => normalize(`${PKG_PATH}/${slug}/docs`);
 
 export async function getPkg(slug: string) {
-	const { data, content } = await getMarkdownData(pkgReadmePath(slug));
+	const { data } = await getMarkdownData(pkgReadmePath(slug));
 	const { version } = await getJSONData(`${REACT_PKG_PATH}/package.json`);
-	const source = await serializeMarkdown(content, data);
 	const subNavItems = await getPkgSubNavItems(slug);
 	return {
 		slug,
-		source,
-		data,
 		name: slug,
 		version,
 		title: (data.title ?? slug) as string,
@@ -75,7 +72,7 @@ export async function getPkgDocsContent(
 	const filePath = `${pkgDocsPath(slug)}/${path}`;
 	if (!existsSync(filePath)) return;
 	const { data, content } = await getMarkdownData(filePath);
-	return await serializeMarkdown(content, data);
+	return { content, source: await serializeMarkdown(content, data) };
 }
 
 export async function getPkgSlugs() {

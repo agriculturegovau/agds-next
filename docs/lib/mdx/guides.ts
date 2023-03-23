@@ -15,6 +15,7 @@ export async function getGuide(slug: string) {
 	const source = await serializeMarkdown(content, data);
 	return {
 		slug,
+		content,
 		source,
 		data,
 		title: (data.title ?? slug) as string,
