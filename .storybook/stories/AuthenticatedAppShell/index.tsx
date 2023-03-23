@@ -5,14 +5,12 @@ import { useSortAndFilter } from '../TableFiltering/lib/useSortAndFilter';
 import { AuthenticatedAppShell } from './AuthenticatedAppShell';
 import { FormExampleMultiStep } from '../../../example-site/components/FormExampleMultiStep/FormExampleMultiStep';
 import {
-	FactoryIcon,
-	HomeIcon,
 	ChartLineIcon,
 	EmailIcon,
 	HelpIcon,
 	SuccessIcon,
 } from '@ag.ds-next/react/icon';
-import { CogIcon, ExitIcon } from './icons';
+import { CogIcon, ExitIcon, FactoryIcon, HomeIcon } from './icons';
 
 export default {
 	title: 'Testing/Authenticated App Shell (WIP)',

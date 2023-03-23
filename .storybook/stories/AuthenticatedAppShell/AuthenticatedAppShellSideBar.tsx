@@ -34,6 +34,7 @@ export function AuthenticatedAppShellSideBar({
 
 	return (
 		<Stack
+			as="aside"
 			gap={1}
 			dark
 			background="bodyAlt"
@@ -194,9 +195,10 @@ function LockScroll() {
 }
 
 function HideMenuButton() {
-	const { hideMenu } = useAuthenticatedAppShellContext();
+	const { hideMenu, hideMenuButtonRef } = useAuthenticatedAppShellContext();
 	return (
 		<Button
+			ref={hideMenuButtonRef}
 			onClick={hideMenu}
 			variant="text"
 			iconBefore={ChevronsLeftIcon}

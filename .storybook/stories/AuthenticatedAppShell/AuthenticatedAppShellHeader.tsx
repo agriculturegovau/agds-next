@@ -1,5 +1,4 @@
-import { MouseEventHandler } from 'react';
-import { Flex, Stack } from '@ag.ds-next/react/box';
+import { Flex } from '@ag.ds-next/react/box';
 import { boxPalette, tokens } from '@ag.ds-next/react/core';
 import { Text } from '@ag.ds-next/react/text';
 import { MenuIcon } from '@ag.ds-next/react/icon';
@@ -53,9 +52,12 @@ export function AuthenticatedAppShellHeader({
 }
 
 function AuthenticatedAppShellHeaderButton() {
-	const { isMenuOpen, showMenu } = useAuthenticatedAppShellContext();
+	const { isMenuOpen, showMenu, showMenuButtonRef } =
+		useAuthenticatedAppShellContext();
 	return (
 		<Flex
+			// @ts-ignore
+			ref={showMenuButtonRef}
 			as={BaseButton}
 			onClick={showMenu}
 			borderRight

@@ -1,4 +1,4 @@
-import { PropsWithChildren, ComponentType, Fragment, useEffect } from 'react';
+import { PropsWithChildren, ComponentType, Fragment } from 'react';
 import { Box, Flex, Stack } from '@ag.ds-next/react/box';
 import { tokens } from '@ag.ds-next/react/core';
 import { IconProps } from '@ag.ds-next/react/icon';
@@ -12,24 +12,35 @@ import {
 	AuthenticatedAppShellSideBarDivider,
 } from './AuthenticatedAppShellSideBarItem';
 import { AuthenticatedAppShellContext } from './AuthenticatedAppShellContext';
-import { useIsMobile, useSidebarMenuState } from './utils';
+import {
+	useIsMobile,
+	useManageSidebarTriggerFocus,
+	useSidebarMenuState,
+} from './utils';
 
 export type AuthenticatedAppShellProps = PropsWithChildren<{
 	siteTitle: string;
 	siteSubtitle: string;
 	/** For screens where a user is focusing on a task, the UI should collapse */
 	isFocusMode?: boolean;
+	/** Used for highlighting the active element. */
 	activePath: string;
+	/** Groups of items to display in the sidebar. */
 	mainNavItems: AuthenticatedAppShellSideBarItemType[][];
+	/** Configuration of the user dropdown menu. */
 	userMenu: {
 		name: string;
 		organisation: string;
 		items: (
-			| { label: string; href: string; icon?: ComponentType<IconProps> }
 			| {
 					label: string;
-					onClick: () => void;
 					icon?: ComponentType<IconProps>;
+					href: string;
+			  }
+			| {
+					label: string;
+					icon?: ComponentType<IconProps>;
+					onClick: () => void;
 			  }
 		)[];
 	};
@@ -45,10 +56,16 @@ export function AuthenticatedAppShell({
 	children,
 }: AuthenticatedAppShellProps) {
 	const isMobile = useIsMobile();
+
 	const [isMenuOpen, showMenu, hideMenu] = useSidebarMenuState({
 		isFocusMode,
 		isMobile,
 	});
+
+	const { showMenuButtonRef, hideMenuButtonRef } = useManageSidebarTriggerFocus(
+		{ isMenuOpen, isMobile }
+	);
+
 	return (
 		<AuthenticatedAppShellContext.Provider
 			value={{
@@ -57,6 +74,8 @@ export function AuthenticatedAppShell({
 				showMenu,
 				hideMenu,
 				userMenu,
+				showMenuButtonRef,
+				hideMenuButtonRef,
 			}}
 		>
 			<SkipLinks
@@ -98,6 +117,7 @@ export function AuthenticatedAppShell({
 							paddingX={tokens.containerPadding}
 						>
 							<Box
+								as="main"
 								id="main-content"
 								paddingTop={{ xs: 2, md: 3 }}
 								paddingBottom={{ xs: 3, md: 4 }}
