@@ -12,8 +12,10 @@ import {
 
 export type ComboboxMultiProps<Option extends DefaultComboboxOption> = Omit<
 	CommonComboboxProps<Option>,
-	'showDropdownTrigger' | 'clearable'
+	'showDropdownTrigger' | 'clearable' | 'value' | 'onChange'
 > & {
+	value: Option[] | null;
+	onChange: (value: Option[] | null) => void;
 	/** The list of options to show in the dropdown. */
 	options: Option[];
 };
@@ -52,8 +54,8 @@ export function ComboboxMulti<Option extends DefaultComboboxOption>(
 		inputId,
 		items: items ?? [],
 		itemToString: (item) => item?.label ?? '',
-		selectedItem: null, // TODO
 		defaultHighlightedIndex: 0, // after selection, highlight the first item.
+		selectedItem: null,
 		stateReducer(state, actionAndChanges) {
 			const { changes, type } = actionAndChanges;
 			switch (type) {

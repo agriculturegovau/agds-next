@@ -1,4 +1,4 @@
-import { Fragment, ReactNode, useEffect, useState } from 'react';
+import { Fragment, ReactNode, RefObject, useEffect, useState } from 'react';
 import {
 	UseComboboxReturnValue,
 	UseMultipleSelectionReturnValue,
@@ -53,9 +53,9 @@ export type CommonComboboxProps<Option extends DefaultComboboxOption> = {
 	/** If true, the selected item can be cleared.  */
 	clearable?: boolean;
 	/** Function to be fired following a change event. */
-	onChange?: (value: Option | null) => void;
+	onChange?: (value: Option[] | null) => void;
 	/** The value of the field. */
-	value?: Option | null;
+	value?: Option[] | null;
 	/** Used to override the default item rendering.  */
 	renderItem?: (item: Option, inputValue: string) => ReactNode;
 	/** Message to display when no options match the users search term. */
@@ -71,6 +71,8 @@ type ComboboxBaseProps<Option extends DefaultComboboxOption> =
 		downshift: UseComboboxReturnValue<Option>;
 		selectedItems: Option[];
 		multiSelection: UseMultipleSelectionReturnValue<Option>;
+		onClear: () => void;
+		inputRef: RefObject<HTMLInputElement>;
 	};
 
 export function ComboboxMultiBase<Option extends DefaultComboboxOption>({

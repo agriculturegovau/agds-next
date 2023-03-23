@@ -13,6 +13,8 @@ const defaultArgs = {
 	options: COUNTRIES,
 };
 
+type Option = (typeof COUNTRIES)[number];
+
 const Template: ComponentStory<typeof ComboboxAsyncMulti> = (args) => {
 	const [value, onChange] = useState<Option[] | null>(null);
 	return (
@@ -20,12 +22,10 @@ const Template: ComponentStory<typeof ComboboxAsyncMulti> = (args) => {
 			{...args}
 			value={value}
 			onChange={onChange}
-			loadOptions={async function loadOptions(inputValue: string) {
-				const response = await fetch(
-					`https://swapi.dev/api/people/?search=${inputValue}`
-				);
-				const data: { results: { name: string }[] } = await response.json();
-				return data.results.map(({ name }) => ({ value: name, label: name }));
+			loadOptions={async function loadOptions() {
+				// Simulate a slow network connection
+				await new Promise((resolve) => setTimeout(resolve, 1000));
+				return COUNTRIES;
 			}}
 		/>
 	);

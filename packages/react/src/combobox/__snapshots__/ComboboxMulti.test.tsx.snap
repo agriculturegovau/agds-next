@@ -30,24 +30,28 @@ exports[`ComboboxMulti renders correctly 1`] = `
       class="css-1cal3xx-ComboboxMultiBase"
     >
       <div
-        class="css-15m7rul-boxStyles-Field"
+        class="css-zkctfs-boxStyles-Field"
       >
-        <input
-          aria-activedescendant=""
-          aria-autocomplete="list"
-          aria-controls="downshift-0-menu"
-          aria-describedby="field-combobox-input-:r0:-hint"
-          aria-expanded="false"
-          aria-invalid="false"
-          aria-labelledby="downshift-0-label"
-          aria-required="false"
-          autocomplete="off"
-          class="css-z3910l-ComboboxMultiBase"
-          id="combobox-input-:r0:"
-          role="combobox"
-          type="text"
-          value=""
-        />
+        <div
+          class="css-b7bi97-ComboboxMultiBase"
+        >
+          <input
+            aria-activedescendant=""
+            aria-autocomplete="list"
+            aria-controls="downshift-0-menu"
+            aria-describedby="field-combobox-input-:r0:-hint"
+            aria-expanded="false"
+            aria-invalid="false"
+            aria-labelledby="downshift-0-label"
+            aria-required="false"
+            autocomplete="off"
+            class="css-12ygbur-Field"
+            id="combobox-input-:r0:"
+            role="combobox"
+            type="text"
+            value=""
+          />
+        </div>
       </div>
       <button
         aria-controls="downshift-0-menu"

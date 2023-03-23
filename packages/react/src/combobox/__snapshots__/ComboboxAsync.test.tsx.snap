@@ -72,7 +72,7 @@ exports[`ComboboxAsync renders correctly 1`] = `
       </button>
       <ul
         aria-labelledby="downshift-0-label"
-        class="css-13zg723-boxStyles-ComboboxList"
+        class="css-5wdaps-boxStyles-ComboboxList"
         id="downshift-0-menu"
         role="listbox"
         style="position: absolute; left: 0px; top: 0px;"

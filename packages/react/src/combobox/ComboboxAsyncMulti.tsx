@@ -12,9 +12,12 @@ import {
 } from './utils';
 
 export type ComboboxAsyncMultiProps<Option extends DefaultComboboxOption> =
-	Omit<CommonComboboxProps<Option>, 'showDropdownTrigger' | 'clearable'> & {
-		/** The list of options to show in the dropdown. */
-		options: Option[];
+	Omit<
+		CommonComboboxProps<Option>,
+		'showDropdownTrigger' | 'options' | 'clearable' | 'value' | 'onChange'
+	> & {
+		value: Option[] | null;
+		onChange: (value: Option[] | null) => void;
 		/** Function to be used when options need to be loaded over the network. */
 		loadOptions: (inputValue: string) => Promise<Option[]>;
 	};
