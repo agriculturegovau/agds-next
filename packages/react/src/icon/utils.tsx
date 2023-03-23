@@ -7,7 +7,6 @@ import { ArrowUpIcon } from './icons/ArrowUpIcon';
 import { AvatarIcon } from './icons/AvatarIcon';
 import { ChartBarIcon } from './icons/ChartBarIcon';
 import { ChartLineIcon } from './icons/ChartLineIcon';
-import { ChartPieIcon } from './icons/ChartPieIcon';
 import { ChevronDownIcon } from './icons/ChevronDownIcon';
 import { ChevronLeftIcon } from './icons/ChevronLeftIcon';
 import { ChevronRightIcon } from './icons/ChevronRightIcon';
@@ -20,11 +19,9 @@ import { DownloadIcon } from './icons/DownloadIcon';
 import { EditIcon } from './icons/EditIcon';
 import { EmailIcon } from './icons/EmailIcon';
 import { ExternalLinkIcon } from './icons/ExternalLinkIcon';
-import { FactoryIcon } from './icons/FactoryIcon';
 import { InfoIcon } from './icons/InfoIcon';
 import { FacebookIcon } from './icons/FacebookIcon';
 import { FilterIcon } from './icons/FilterIcon';
-import { HomeIcon } from './icons/HomeIcon';
 import { HelpIcon } from './icons/HelpIcon';
 import { PlusIcon } from './icons/PlusIcon';
 import { InfoFilledIcon } from './icons/InfoFilledIcon';
@@ -56,7 +53,6 @@ export const allIcons = {
 	AvatarIcon,
 	ChartBarIcon,
 	ChartLineIcon,
-	ChartPieIcon,
 	ChevronDownIcon,
 	ChevronLeftIcon,
 	ChevronRightIcon,
@@ -69,11 +65,9 @@ export const allIcons = {
 	EditIcon,
 	EmailIcon,
 	ExternalLinkIcon,
-	FactoryIcon,
 	FacebookIcon,
 	FilterIcon,
 	HelpIcon,
-	HomeIcon,
 	InfoIcon,
 	InfoFilledIcon,
 	InstagramIcon,

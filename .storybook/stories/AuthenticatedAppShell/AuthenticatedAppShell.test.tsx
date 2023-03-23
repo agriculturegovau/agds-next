@@ -1,16 +1,14 @@
 import {
 	AvatarIcon,
 	ChartLineIcon,
-	ChartPieIcon,
 	EmailIcon,
-	FactoryIcon,
 	HelpIcon,
-	HomeIcon,
 	SuccessIcon,
 } from '@ag.ds-next/react/icon';
 import '@testing-library/jest-dom';
 import 'html-validate/jest';
 import { cleanup, render } from '../../../test-utils';
+import { CogIcon, ExitIcon, FactoryIcon, HomeIcon } from './icons';
 import { AuthenticatedAppShell } from './AuthenticatedAppShell';
 
 afterEach(cleanup);
@@ -57,11 +55,12 @@ function AppShellTest({ isFocusMode = false }) {
 					{
 						label: 'Account settings',
 						href: '#account',
+						icon: CogIcon,
 					},
 					{
 						label: 'Sign out',
 						onClick: () => console.log('sign out'),
-						icon: AvatarIcon,
+						icon: ExitIcon,
 					},
 				],
 			}}

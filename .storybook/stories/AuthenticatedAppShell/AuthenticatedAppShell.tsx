@@ -1,10 +1,4 @@
-import {
-	PropsWithChildren,
-	ComponentType,
-	Fragment,
-	useEffect,
-	useRef,
-} from 'react';
+import { PropsWithChildren, ComponentType, Fragment } from 'react';
 import { Box, Flex, Stack } from '@ag.ds-next/react/box';
 import { tokens } from '@ag.ds-next/react/core';
 import { IconProps } from '@ag.ds-next/react/icon';
