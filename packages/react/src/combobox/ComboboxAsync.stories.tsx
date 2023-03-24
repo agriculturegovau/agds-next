@@ -70,27 +70,3 @@ Block.args = {
 	...defaultArgs,
 	block: true,
 };
-
-// const AsyncTemplate: ComponentStory<typeof ComboboxAsync> = (args) => {
-// 	const [value, onChange] = useState<Option | null>(null);
-// 	return <ComboboxAsync {...args} value={value} onChange={onChange} />;
-// };
-
-// export const AsyncOptions = AsyncTemplate.bind({});
-// AsyncOptions.args = {
-// 	label: 'Select character',
-// 	hint: 'Start typing to see results',
-// 	loadOptions: async function loadOptions(inputValue) {
-// 		const response = await fetch(
-// 			`https://swapi.dev/api/people/?search=${inputValue}`
-// 		);
-// 		const data: { results: { name: string }[] } = await response.json();
-// 		return data.results.map(({ name }) => ({ value: name, label: name }));
-// 	},
-// };
-
-// export const AsyncOptionsWithError = AsyncTemplate.bind({});
-// AsyncOptionsWithError.args = {
-// 	label: 'Select character',
-// 	hint: 'Start typing to see results',
-// };

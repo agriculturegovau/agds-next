@@ -7,14 +7,11 @@ import { COUNTRIES } from './test-utils';
 afterEach(cleanup);
 
 function renderComboboxMulti() {
-	const onChange = jest.fn();
 	return render(
 		<ComboboxMulti
 			label="Find your state"
 			hint="Start typing to see results"
 			options={COUNTRIES}
-			value={null}
-			onChange={onChange}
 		/>
 	);
 }

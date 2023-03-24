@@ -24,9 +24,9 @@ const defaultArgs = {
 	},
 };
 
-const Template: ComponentStory<typeof Autocomplete> = (args) => {
-	return <Autocomplete {...args} />;
-};
+const Template: ComponentStory<typeof Autocomplete> = (args) => (
+	<Autocomplete {...args} />
+);
 
 export const Basic = Template.bind({});
 Basic.args = {

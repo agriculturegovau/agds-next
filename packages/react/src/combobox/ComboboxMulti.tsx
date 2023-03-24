@@ -34,7 +34,7 @@ export type ComboboxMultiProps<Option extends DefaultComboboxOption> = {
 	/** The value of the field. */
 	value?: Option[] | null;
 	/** Function to be fired following a change event. */
-	onChange?: (value?: Option[] | null) => void;
+	onChange?: (value: Option[] | null) => void;
 	/** The list of options to show in the dropdown. */
 	options: Option[];
 	/** Used to override the default item rendering.  */
