@@ -3,7 +3,7 @@ import { Flex } from '../../box';
 import { boxPalette, mapSpacing } from '../../core';
 import { CloseIcon } from '../../icon';
 
-export type TagProps = Omit<
+export type ComboboxTagProps = Omit<
 	HTMLAttributes<HTMLSpanElement>,
 	'children' | 'color'
 > & {
@@ -11,54 +11,56 @@ export type TagProps = Omit<
 	onRemove: () => void;
 };
 
-export const Tag = forwardRef<HTMLSpanElement, TagProps>(function Tag(
-	{ children, onRemove, ...props },
-	ref
-) {
-	return (
-		<Flex
-			ref={ref}
-			as="span"
-			inline
-			alignItems="center"
-			border
-			rounded
-			paddingLeft={0.5}
-			paddingRight={0.25}
-			gap={0.25}
-			fontSize="sm"
-			color="text"
-			focus
-			css={{ cursor: 'pointer' }}
-			{...props}
-		>
-			{children}
+// This component is based off our 'Tag' component with slightly different markup
+// See https://www.downshift-js.com/use-multiple-selection#usage-with-combobox
+
+export const ComboboxTag = forwardRef<HTMLSpanElement, ComboboxTagProps>(
+	function ComboboxTag({ children, onRemove, ...props }, ref) {
+		return (
 			<Flex
+				ref={ref}
 				as="span"
-				height={mapSpacing(1.5)}
-				width={mapSpacing(1.5)}
+				inline
 				alignItems="center"
-				justifyContent="center"
-				onClick={(event: MouseEvent<HTMLSpanElement>) => {
-					event.stopPropagation();
-					onRemove();
-				}}
+				border
+				rounded
+				paddingLeft={0.5}
+				paddingRight={0.25}
+				gap={0.25}
+				fontSize="sm"
+				color="text"
 				focus
-				css={{
-					cursor: 'pointer',
-					svg: {
-						display: 'block',
-						color: boxPalette.foregroundAction,
-					},
-					'&:hover': {
-						svg: {
-							color: boxPalette.foregroundText,
-						},
-					},
-				}}
+				css={{ cursor: 'pointer' }}
+				{...props}
 			>
-				<CloseIcon size="sm" />
+				{children}
+				<Flex
+					as="span"
+					height={mapSpacing(1.5)}
+					width={mapSpacing(1.5)}
+					alignItems="center"
+					justifyContent="center"
+					onClick={(event: MouseEvent<HTMLSpanElement>) => {
+						event.stopPropagation();
+						onRemove();
+					}}
+					focus
+					css={{
+						cursor: 'pointer',
+						svg: {
+							display: 'block',
+							color: boxPalette.foregroundAction,
+						},
+						'&:hover': {
+							svg: {
+								color: boxPalette.foregroundText,
+							},
+						},
+					}}
+				>
+					<CloseIcon size="sm" />
+				</Flex>
 			</Flex>
-		</Flex>
-	);
-});
+		);
+	}
+);

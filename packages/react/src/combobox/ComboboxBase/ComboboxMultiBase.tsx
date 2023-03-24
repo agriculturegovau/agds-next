@@ -37,7 +37,7 @@ import {
 	ComboboxClearButton,
 	ComboboxButtonContainer,
 } from './ComboboxButtons';
-import { Tag } from './ComboboxTag';
+import { ComboboxTag } from './ComboboxTag';
 
 type ComboboxMultiBaseProps<Option extends DefaultComboboxOption> = {
 	// Field props
@@ -163,7 +163,7 @@ export function ComboboxMultiBase<Option extends DefaultComboboxOption>({
 						css={styles.container}
 					>
 						{selectedItems.map((item, idx) => (
-							<Tag
+							<ComboboxTag
 								key={`selected-item-${idx}`}
 								onRemove={() => multiSelection.removeSelectedItem(item)}
 								{...multiSelection.getSelectedItemProps({
@@ -172,7 +172,7 @@ export function ComboboxMultiBase<Option extends DefaultComboboxOption>({
 								})}
 							>
 								{item.label}
-							</Tag>
+							</ComboboxTag>
 						))}
 						<div css={styles.inputContainer}>
 							<input
