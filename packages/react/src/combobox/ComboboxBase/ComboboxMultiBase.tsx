@@ -91,8 +91,8 @@ export function ComboboxMultiBase<Option extends DefaultComboboxOption>({
 	onClear,
 	inputRef,
 }: ComboboxMultiBaseProps<Option>) {
-	const containerRef = useRef<HTMLDivElement>(null);
-	const [isInputFocused, setInputFocus, setInputBlur] = useTernaryState(false);
+	const [isInputFocused, setInputFocused, setInputBlurred] =
+		useTernaryState(false);
 
 	// Popper state
 	const [refEl, setRefEl] = useState<HTMLDivElement | null>(null);
@@ -128,12 +128,13 @@ export function ComboboxMultiBase<Option extends DefaultComboboxOption>({
 		style: popperStyles.popper,
 	});
 
-	const onFieldContainerClick = useCallback(
+	// Focus the input element if the user clicks inside the container
+	// This should be prevented if a user clicks on any other element (e.g. a Tag)
+	const fieldContainerRef = useRef<HTMLDivElement>(null);
+	const handleFieldContainerClick = useCallback(
 		(event: MouseEvent<HTMLDivElement>) => {
-			if (event.target === containerRef.current) {
-				console.log('...');
-				inputRef.current?.focus();
-			}
+			if (event.target !== fieldContainerRef.current) return;
+			inputRef.current?.focus();
 		},
 		[inputRef]
 	);
@@ -152,10 +153,10 @@ export function ComboboxMultiBase<Option extends DefaultComboboxOption>({
 				<div
 					ref={setRefEl}
 					css={styles.fieldContainer}
-					onClick={onFieldContainerClick}
+					onClick={handleFieldContainerClick}
 				>
 					<Flex
-						ref={containerRef}
+						ref={fieldContainerRef}
 						gap={0.5}
 						flexWrap="wrap"
 						alignItems="center"
@@ -182,8 +183,8 @@ export function ComboboxMultiBase<Option extends DefaultComboboxOption>({
 										ref: inputRef,
 										type: 'text',
 										preventKeyAction: combobox.isOpen,
-										onFocus: setInputFocus,
-										onBlur: setInputBlur,
+										onFocus: setInputFocused,
+										onBlur: setInputBlurred,
 									})
 								)}
 								css={styles.input}
@@ -242,16 +243,16 @@ export function ComboboxMultiBase<Option extends DefaultComboboxOption>({
 }
 
 function comboboxMultiStyles({
-	disabled,
 	block,
+	disabled,
 	invalid,
-	maxWidth,
 	isInputFocused,
+	maxWidth,
 	showClearButton,
 }: {
+	block: boolean;
 	disabled: boolean;
 	invalid: boolean;
-	block: boolean;
 	isInputFocused: boolean;
 	maxWidth: FieldMaxWidth;
 	showClearButton: boolean;
