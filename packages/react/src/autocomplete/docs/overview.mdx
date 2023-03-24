@@ -13,23 +13,14 @@ figmaGalleryNodeId: 12911%3A103687
 	const [value, setValue] = React.useState(null);
 	return (
 		<Autocomplete
-			label="Find your state"
+			label="Find your country"
 			hint="Start typing to see results"
 			value={value}
-			onChange={(value) => setValue(value)}
+			onChange={setValue}
 			loadOptions={async function loadOptions(inputValue) {
 				// Simulate a slow network call
 				await new Promise((resolve) => setTimeout(resolve, 1500));
-				return [
-					{ label: 'Australian Capital Territory', value: 'act' },
-					{ label: 'New South Wales', value: 'nsw' },
-					{ label: 'Northern Territory', value: 'nt' },
-					{ label: 'Queensland', value: 'qld' },
-					{ label: 'South Australia', value: 'sa' },
-					{ label: 'Tasmania', value: 'tas' },
-					{ label: 'Victoria', value: 'vic' },
-					{ label: 'Western Australia', value: 'wa' },
-				];
+				return COUNTRY_OPTIONS;
 			}}
 		/>
 	);
@@ -67,24 +58,15 @@ Use the `block` prop to expand the component to fill the available space.
 	const [value, setValue] = React.useState(null);
 	return (
 		<Autocomplete
-			label="Find your state"
+			label="Find your country"
 			hint="Start typing to see results"
 			block
 			value={value}
-			onChange={(value) => setValue(value)}
+			onChange={setValue}
 			loadOptions={async function loadOptions(inputValue) {
 				// Simulate a slow network call
 				await new Promise((resolve) => setTimeout(resolve, 1500));
-				return [
-					{ label: 'Australian Capital Territory', value: 'act' },
-					{ label: 'New South Wales', value: 'nsw' },
-					{ label: 'Northern Territory', value: 'nt' },
-					{ label: 'Queensland', value: 'qld' },
-					{ label: 'South Australia', value: 'sa' },
-					{ label: 'Tasmania', value: 'tas' },
-					{ label: 'Victoria', value: 'vic' },
-					{ label: 'Western Australia', value: 'wa' },
-				];
+				return COUNTRY_OPTIONS;
 			}}
 		/>
 	);
@@ -108,24 +90,15 @@ The usage of `hideOptionalLabel` should be reserved for inputs that filter data 
 	const [value, setValue] = React.useState(null);
 	return (
 		<Autocomplete
-			label="Find your state"
+			label="Find your country"
 			hint="Start typing to see results"
 			required
 			value={value}
-			onChange={(value) => setValue(value)}
+			onChange={setValue}
 			loadOptions={async function loadOptions(inputValue) {
 				// Simulate a slow network call
 				await new Promise((resolve) => setTimeout(resolve, 1500));
-				return [
-					{ label: 'Australian Capital Territory', value: 'act' },
-					{ label: 'New South Wales', value: 'nsw' },
-					{ label: 'Northern Territory', value: 'nt' },
-					{ label: 'Queensland', value: 'qld' },
-					{ label: 'South Australia', value: 'sa' },
-					{ label: 'Tasmania', value: 'tas' },
-					{ label: 'Victoria', value: 'vic' },
-					{ label: 'Western Australia', value: 'wa' },
-				];
+				return COUNTRY_OPTIONS;
 			}}
 		/>
 	);
@@ -142,25 +115,16 @@ Use the `invalid` prop to indicate if the user input is invalid (does not valida
 	const invalid = !value;
 	return (
 		<Autocomplete
-			label="Find your state"
+			label="Find your country"
 			hint="Start typing to see results"
 			invalid={invalid}
 			message={invalid ? 'State is required' : undefined}
 			value={value}
-			onChange={(value) => setValue(value)}
+			onChange={setValue}
 			loadOptions={async function loadOptions(inputValue) {
 				// Simulate a slow network call
 				await new Promise((resolve) => setTimeout(resolve, 1500));
-				return [
-					{ label: 'Australian Capital Territory', value: 'act' },
-					{ label: 'New South Wales', value: 'nsw' },
-					{ label: 'Northern Territory', value: 'nt' },
-					{ label: 'Queensland', value: 'qld' },
-					{ label: 'South Australia', value: 'sa' },
-					{ label: 'Tasmania', value: 'tas' },
-					{ label: 'Victoria', value: 'vic' },
-					{ label: 'Western Australia', value: 'wa' },
-				];
+				return COUNTRY_OPTIONS;
 			}}
 		/>
 	);
@@ -176,24 +140,15 @@ Disabled input elements are unusable and can not be clicked. This prevents a use
 	const [value, setValue] = React.useState(null);
 	return (
 		<Autocomplete
-			label="Find your state"
+			label="Find your country"
 			hint="Start typing to see results"
 			disabled
 			value={value}
-			onChange={(value) => setValue(value)}
+			onChange={setValue}
 			loadOptions={async function loadOptions(inputValue) {
 				// Simulate a slow network call
 				await new Promise((resolve) => setTimeout(resolve, 1500));
-				return [
-					{ label: 'Australian Capital Territory', value: 'act' },
-					{ label: 'New South Wales', value: 'nsw' },
-					{ label: 'Northern Territory', value: 'nt' },
-					{ label: 'Queensland', value: 'qld' },
-					{ label: 'South Australia', value: 'sa' },
-					{ label: 'Tasmania', value: 'tas' },
-					{ label: 'Victoria', value: 'vic' },
-					{ label: 'Western Australia', value: 'wa' },
-				];
+				return COUNTRY_OPTIONS;
 			}}
 		/>
 	);

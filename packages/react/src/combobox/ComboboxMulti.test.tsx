@@ -2,7 +2,7 @@ import '@testing-library/jest-dom';
 import 'html-validate/jest';
 import { render, cleanup } from '../../../../test-utils';
 import { ComboboxMulti } from './ComboboxMulti';
-import { COUNTRIES } from './test-utils';
+import { COUNTRY_OPTIONS } from './test-utils';
 
 afterEach(cleanup);
 
@@ -11,7 +11,7 @@ function renderComboboxMulti() {
 		<ComboboxMulti
 			label="Find your state"
 			hint="Start typing to see results"
-			options={COUNTRIES}
+			options={COUNTRY_OPTIONS}
 		/>
 	);
 }

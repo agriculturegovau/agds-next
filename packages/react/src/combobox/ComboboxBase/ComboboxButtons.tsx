@@ -7,11 +7,13 @@ import {
 import { IconProps, CloseIcon, ChevronDownIcon } from '../../icon';
 import { BaseButton } from '../../button';
 import { boxPalette, mapSpacing, tokens } from '../../core';
-import { Flex, focusStyles } from '../../box';
+import { Box, Flex, focusStyles } from '../../box';
 
 export function ComboboxButtonContainer(props: PropsWithChildren<{}>) {
 	return (
 		<Flex
+			alignItems="center"
+			gap={0.25}
 			css={{
 				position: 'absolute',
 				top: '50%',
@@ -21,6 +23,18 @@ export function ComboboxButtonContainer(props: PropsWithChildren<{}>) {
 		>
 			{props.children}
 		</Flex>
+	);
+}
+
+export function ComboboxButtonDivider() {
+	return (
+		<Box
+			aria-hidden
+			height="1.5rem"
+			borderLeft
+			borderLeftWidth="md"
+			borderColor="muted"
+		/>
 	);
 }
 

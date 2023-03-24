@@ -1,7 +1,7 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { useState } from 'react';
 import { Combobox } from './Combobox';
-import { COUNTRIES } from './test-utils';
+import { COUNTRY_OPTIONS } from './test-utils';
 
 export default {
 	title: 'forms/Combobox/Combobox',
@@ -11,10 +11,10 @@ export default {
 const defaultArgs = {
 	label: 'Select country',
 	hint: 'Start typing to see results',
-	options: COUNTRIES,
+	options: COUNTRY_OPTIONS,
 };
 
-type Option = (typeof COUNTRIES)[number];
+type Option = (typeof COUNTRY_OPTIONS)[number];
 
 const Template: ComponentStory<typeof Combobox> = (args) => {
 	const [value, onChange] = useState<Option | null>(null);

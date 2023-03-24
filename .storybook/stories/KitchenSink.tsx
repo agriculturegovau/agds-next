@@ -67,6 +67,7 @@ import {
 } from '@ag.ds-next/react/summary-list';
 import { SearchInput } from '@ag.ds-next/react/search-input';
 import { PageTemplate } from '../components/PageTemplate';
+import { COUNTRY_OPTIONS } from '../../docs/components/designSystemComponents';
 
 export default {
 	title: 'Testing/Kitchen sink',
@@ -371,33 +372,16 @@ export const KitchenSink = ({
 								</ControlGroup>
 								<Checkbox checked={true}>Label</Checkbox>
 								<Autocomplete
-									label="Find your state"
+									label="Find your country"
 									hint="Start typing to see results"
 									loadOptions={async function loadOptions() {
-										return [
-											{ label: 'Australian Capital Territory', value: 'act' },
-											{ label: 'New South Wales', value: 'nsw' },
-											{ label: 'Northern Territory', value: 'nt' },
-											{ label: 'Queensland', value: 'qld' },
-											{ label: 'South Australia', value: 'sa' },
-											{ label: 'Tasmania', value: 'tas' },
-											{ label: 'Victoria', value: 'vic' },
-											{ label: 'Western Australia', value: 'wa' },
-										];
+										return COUNTRY_OPTIONS;
 									}}
 								/>
 								<Combobox
-									label="Select state"
-									options={[
-										{ label: 'Australian Capital Territory', value: 'act' },
-										{ label: 'New South Wales', value: 'nsw' },
-										{ label: 'Northern Territory', value: 'nt' },
-										{ label: 'Queensland', value: 'qld' },
-										{ label: 'South Australia', value: 'sa' },
-										{ label: 'Tasmania', value: 'tas' },
-										{ label: 'Victoria', value: 'vic' },
-										{ label: 'Western Australia', value: 'wa' },
-									]}
+									label="Select country"
+									hint="Start typing to see results"
+									options={COUNTRY_OPTIONS}
 								/>
 								<Switch
 									label="Show establishments"

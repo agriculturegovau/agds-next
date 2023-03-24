@@ -36,6 +36,7 @@ import {
 	ComboboxDropdownTrigger,
 	ComboboxClearButton,
 	ComboboxButtonContainer,
+	ComboboxButtonDivider,
 } from './ComboboxButtons';
 import { ComboboxTag } from './ComboboxTag';
 
@@ -192,10 +193,13 @@ export function ComboboxMultiBase<Option extends DefaultComboboxOption>({
 						</div>
 						<ComboboxButtonContainer>
 							{showClearButton && (
-								<ComboboxClearButton
-									disabled={disabled}
-									onClick={() => onClear()}
-								/>
+								<Fragment>
+									<ComboboxClearButton
+										disabled={disabled}
+										onClick={() => onClear()}
+									/>
+									<ComboboxButtonDivider />
+								</Fragment>
 							)}
 							<ComboboxDropdownTrigger
 								disabled={disabled}

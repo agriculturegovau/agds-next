@@ -53,7 +53,7 @@ exports[`ComboboxAsyncMulti renders correctly 1`] = `
           />
         </div>
         <div
-          class="css-1hqb0i1-boxStyles-ComboboxButtonContainer"
+          class="css-1733k8b-boxStyles-ComboboxButtonContainer"
         >
           <button
             aria-controls="downshift-0-menu"

@@ -1,6 +1,6 @@
-export type Option = (typeof COUNTRIES)[number];
+export type Option = (typeof COUNTRY_OPTIONS)[number];
 
-export const COUNTRIES = [
+export const COUNTRY_OPTIONS = [
 	'Afghanistan',
 	'Albania',
 	'Algeria',

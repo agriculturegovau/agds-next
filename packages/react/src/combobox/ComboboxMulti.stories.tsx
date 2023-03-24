@@ -1,18 +1,18 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { useState } from 'react';
 import { ComboboxMulti } from './ComboboxMulti';
-import { COUNTRIES } from './test-utils';
+import { COUNTRY_OPTIONS } from './test-utils';
 
 export default {
 	title: 'forms/Combobox/ComboboxMulti',
 } as ComponentMeta<typeof ComboboxMulti>;
 
-type Option = (typeof COUNTRIES)[number];
+type Option = (typeof COUNTRY_OPTIONS)[number];
 
 const defaultArgs = {
 	label: 'Select country',
 	hint: 'Start typing to see results',
-	options: COUNTRIES,
+	options: COUNTRY_OPTIONS,
 };
 
 const Template: ComponentStory<typeof ComboboxMulti> = (args) => {

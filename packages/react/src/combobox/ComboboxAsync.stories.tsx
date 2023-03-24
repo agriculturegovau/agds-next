@@ -1,19 +1,19 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { useState } from 'react';
 import { ComboboxAsync } from './ComboboxAsync';
-import { COUNTRIES } from './test-utils';
+import { COUNTRY_OPTIONS } from './test-utils';
 
 export default {
 	title: 'forms/Combobox/ComboboxAsync',
 	component: ComboboxAsync,
 } as ComponentMeta<typeof ComboboxAsync>;
 
-type Option = (typeof COUNTRIES)[number];
+type Option = (typeof COUNTRY_OPTIONS)[number];
 
 const defaultArgs = {
 	label: 'Select country',
 	hint: 'Start typing to see results',
-	options: COUNTRIES,
+	options: COUNTRY_OPTIONS,
 };
 
 const Template: ComponentStory<typeof ComboboxAsync> = ({
@@ -28,7 +28,7 @@ const Template: ComponentStory<typeof ComboboxAsync> = ({
 			loadOptions={async function loadOptions() {
 				// Simulate a slow network connection
 				await new Promise((resolve) => setTimeout(resolve, 1000));
-				return COUNTRIES;
+				return COUNTRY_OPTIONS;
 			}}
 			{...args}
 		/>
