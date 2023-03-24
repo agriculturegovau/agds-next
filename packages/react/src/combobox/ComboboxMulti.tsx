@@ -1,36 +1,63 @@
-import { useCallback, useMemo, useRef, useState } from 'react';
+import { ReactNode, useCallback, useMemo, useRef, useState } from 'react';
 import { useCombobox, useMultipleSelection } from 'downshift';
-import {
-	ComboboxMultiBase,
-	CommonComboboxProps,
-} from './ComboboxBase/ComboboxMultiBase';
+import { FieldMaxWidth } from '../core';
+import { ComboboxMultiBase } from './ComboboxBase';
 import {
 	DefaultComboboxOption,
 	useComboboxInputId,
 	filterOptions,
 } from './utils';
 
-export type ComboboxMultiProps<Option extends DefaultComboboxOption> = Omit<
-	CommonComboboxProps<Option>,
-	'showDropdownTrigger' | 'clearable' | 'value' | 'onChange'
-> & {
-	value: Option[] | null;
-	onChange: (value: Option[] | null) => void;
+export type ComboboxMultiProps<Option extends DefaultComboboxOption> = {
+	/** Describes the purpose of the field. */
+	label: string;
+	/** If true, "(optional)" will never be appended to the label. */
+	hideOptionalLabel?: boolean;
+	/** If false, "(optional)" will be appended to the label. */
+	required?: boolean;
+	/** Provides extra information about the field. */
+	hint?: string;
+	/** Message to show when the field is invalid. */
+	message?: string;
+	/** If true, the invalid state will be rendered. */
+	invalid?: boolean;
+	/** If true, the field will stretch to the fill the width of its container. */
+	block?: boolean;
+	/** The maximum width of the field. */
+	maxWidth?: Extract<FieldMaxWidth, 'md' | 'lg' | 'xl'>;
+	/** If true, the field will not be interactive. */
+	disabled?: boolean;
+	/** Defines an identifier (ID) which must be unique. */
+	id?: string;
+	/** A string specifying a name for the input control. */
+	name?: string;
+	/** The value of the field. */
+	value?: Option[] | null;
+	/** Function to be fired following a change event. */
+	onChange?: (value?: Option[] | null) => void;
 	/** The list of options to show in the dropdown. */
 	options: Option[];
+	/** Used to override the default item rendering.  */
+	renderItem?: (item: Option, inputValue: string) => ReactNode;
+	/** Message to display when no options match the users search term. */
+	emptyResultsMessage?: string;
 };
 
-export function ComboboxMulti<Option extends DefaultComboboxOption>(
-	props: ComboboxMultiProps<Option>
-) {
+export function ComboboxMulti<Option extends DefaultComboboxOption>({
+	id,
+	value,
+	onChange,
+	options,
+	...props
+}: ComboboxMultiProps<Option>) {
 	const [inputValue, setInputValue] = useState('');
-	const inputId = useComboboxInputId(props.id);
+	const inputId = useComboboxInputId(id);
 
 	const [selectedItems, setSelectedItems] = useState<Option[]>([]);
 
 	const items = useMemo(
-		() => filterOptions(props.options, inputValue, selectedItems),
-		[props.options, inputValue, selectedItems]
+		() => filterOptions(options, inputValue, selectedItems),
+		[options, inputValue, selectedItems]
 	);
 
 	const multiSelection = useMultipleSelection({
@@ -49,7 +76,7 @@ export function ComboboxMulti<Option extends DefaultComboboxOption>(
 		},
 	});
 
-	const downshift = useCombobox({
+	const combobox = useCombobox({
 		inputValue,
 		inputId,
 		items: items ?? [],
@@ -102,10 +129,10 @@ export function ComboboxMulti<Option extends DefaultComboboxOption>(
 
 	return (
 		<ComboboxMultiBase
-			downshift={downshift}
+			combobox={combobox}
+			multiSelection={multiSelection}
 			inputItems={items}
 			inputId={inputId}
-			multiSelection={multiSelection}
 			selectedItems={selectedItems}
 			onClear={onClear}
 			inputRef={inputRef}

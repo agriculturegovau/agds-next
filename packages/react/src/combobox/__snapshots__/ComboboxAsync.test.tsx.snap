@@ -45,31 +45,35 @@ exports[`ComboboxAsync renders correctly 1`] = `
         type="text"
         value=""
       />
-      <button
-        aria-controls="downshift-0-menu"
-        aria-expanded="false"
-        aria-label="Toggle menu"
-        class="css-16i21f4-BaseButton-ComboboxIconButton"
-        id="downshift-0-toggle-button"
-        tabindex="-1"
-        type="button"
+      <div
+        class="css-1hqb0i1-boxStyles-ComboboxButtonContainer"
       >
-        <svg
-          aria-hidden="true"
-          class="css-vfodg1-Icon"
-          clip-rule="evenodd"
-          focusable="false"
-          height="24"
-          role="img"
-          viewBox="0 0 24 24"
-          width="24"
-          xmlns="http://www.w3.org/2000/svg"
+        <button
+          aria-controls="downshift-0-menu"
+          aria-expanded="false"
+          aria-label="Toggle menu"
+          class="css-q06sws-BaseButton-ComboboxIconButton"
+          id="downshift-0-toggle-button"
+          tabindex="-1"
+          type="button"
         >
-          <path
-            d="M21 8L12 17L3 8"
-          />
-        </svg>
-      </button>
+          <svg
+            aria-hidden="true"
+            class="css-vfodg1-Icon"
+            clip-rule="evenodd"
+            focusable="false"
+            height="24"
+            role="img"
+            viewBox="0 0 24 24"
+            width="24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M21 8L12 17L3 8"
+            />
+          </svg>
+        </button>
+      </div>
       <ul
         aria-labelledby="downshift-0-label"
         class="css-5wdaps-boxStyles-ComboboxList"

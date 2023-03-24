@@ -53,42 +53,42 @@ exports[`ComboboxMulti renders correctly 1`] = `
           />
         </div>
       </div>
-      <button
-        aria-controls="downshift-0-menu"
-        aria-expanded="false"
-        aria-label="Toggle menu"
-        class="css-16i21f4-BaseButton-ComboboxIconButton"
-        id="downshift-0-toggle-button"
-        tabindex="-1"
-        type="button"
-      >
-        <svg
-          aria-hidden="true"
-          class="css-vfodg1-Icon"
-          clip-rule="evenodd"
-          focusable="false"
-          height="24"
-          role="img"
-          viewBox="0 0 24 24"
-          width="24"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M21 8L12 17L3 8"
-          />
-        </svg>
-      </button>
       <div
-        class="css-hr65r3-ComboboxMultiBase"
-        style="position: absolute; left: 0px; top: 0px;"
+        class="css-1hqb0i1-boxStyles-ComboboxButtonContainer"
       >
-        <ul
-          aria-labelledby="downshift-0-label"
-          class="css-5wdaps-boxStyles-ComboboxList"
-          id="downshift-0-menu"
-          role="listbox"
-        />
+        <button
+          aria-controls="downshift-0-menu"
+          aria-expanded="false"
+          aria-label="Toggle menu"
+          class="css-q06sws-BaseButton-ComboboxIconButton"
+          id="downshift-0-toggle-button"
+          tabindex="-1"
+          type="button"
+        >
+          <svg
+            aria-hidden="true"
+            class="css-vfodg1-Icon"
+            clip-rule="evenodd"
+            focusable="false"
+            height="24"
+            role="img"
+            viewBox="0 0 24 24"
+            width="24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M21 8L12 17L3 8"
+            />
+          </svg>
+        </button>
       </div>
+      <ul
+        aria-labelledby="downshift-0-label"
+        class="css-5wdaps-boxStyles-ComboboxList"
+        id="downshift-0-menu"
+        role="listbox"
+        style="position: absolute; left: 0px; top: 0px;"
+      />
     </div>
   </div>
 </div>

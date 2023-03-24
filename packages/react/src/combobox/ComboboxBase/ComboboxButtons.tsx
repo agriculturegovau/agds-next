@@ -1,8 +1,28 @@
-import { ButtonHTMLAttributes, ComponentType, forwardRef } from 'react';
+import {
+	ButtonHTMLAttributes,
+	ComponentType,
+	forwardRef,
+	PropsWithChildren,
+} from 'react';
 import { IconProps, CloseIcon, ChevronDownIcon } from '../../icon';
 import { BaseButton } from '../../button';
 import { boxPalette, mapSpacing, tokens } from '../../core';
-import { focusStyles } from '../../box';
+import { Flex, focusStyles } from '../../box';
+
+export function ComboboxButtonContainer(props: PropsWithChildren<{}>) {
+	return (
+		<Flex
+			css={{
+				position: 'absolute',
+				top: '50%',
+				right: `calc(${mapSpacing(0.5)} + ${tokens.borderWidth.lg}px)`, // Align from the inner border
+				transform: 'translateY(-50%)',
+			}}
+		>
+			{props.children}
+		</Flex>
+	);
+}
 
 export const ComboboxClearButton = forwardRef<
 	HTMLButtonElement,
@@ -48,10 +68,6 @@ const ComboboxIconButton = forwardRef<HTMLButtonElement, IconButtonProps>(
 					justifyContent: 'center',
 					width: '2rem',
 					height: '2rem',
-					position: 'absolute',
-					top: '50%',
-					right: `calc(${mapSpacing(0.5)} + ${tokens.borderWidth.lg}px)`, // Align from the inner border
-					transform: 'translateY(-50%)',
 					opacity: disabled ? 0.3 : undefined,
 					color: boxPalette.foregroundAction,
 					'&:hover': { color: boxPalette.foregroundText },

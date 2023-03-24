@@ -1,7 +1,7 @@
 import '@testing-library/jest-dom';
 import 'html-validate/jest';
 import userEvent from '@testing-library/user-event';
-import { render, cleanup, act } from '../../../../test-utils';
+import { render, cleanup, act, waitFor } from '../../../../test-utils';
 import { ComboboxAsync } from './ComboboxAsync';
 
 afterEach(cleanup);
@@ -55,16 +55,17 @@ describe('ComboboxAsync', () => {
 		if (!input) return;
 
 		// Focus the input and start typing a search term
-		input.focus();
-		userEvent.type(input, 'qld');
+		act(() => input.focus());
+		await userEvent.type(input, 'qld');
 
-		// Wait for 500ms so options can be loaded
-		await act(async () => await new Promise((res) => setTimeout(res, 500)));
+		// Wait for the data to be loaded
+		// When searching for 'qld', only 1 option should be visible
+		await waitFor(() =>
+			expect(container.querySelectorAll('li').length).toBe(1)
+		);
 
 		// Select the QLD option
 		const options = container.querySelectorAll('li');
-		expect(options.length).toBe(1);
-		expect(options[0].textContent).toBe('Queensland');
 		await userEvent.click(options[0]);
 
 		// Expect the input to be updated

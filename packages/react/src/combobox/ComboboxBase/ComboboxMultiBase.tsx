@@ -9,6 +9,7 @@ import {
 	FieldMaxWidth,
 	fontGrid,
 	mapSpacing,
+	mergeRefs,
 	packs,
 	tokens,
 } from '../../core';
@@ -25,55 +26,37 @@ import { ComboboxListEmptyResults } from './ComboboxListEmptyResults';
 import {
 	ComboboxDropdownTrigger,
 	ComboboxClearButton,
+	ComboboxButtonContainer,
 } from './ComboboxButtons';
 
-export type CommonComboboxProps<Option extends DefaultComboboxOption> = {
-	/** Describes the purpose of the field. */
+type ComboboxMultiBaseProps<Option extends DefaultComboboxOption> = {
+	// Field props
 	label: string;
-	/** If true, "(optional)" will never be appended to the label. */
 	hideOptionalLabel?: boolean;
-	/** If false, "(optional)" will be appended to the label. */
 	required?: boolean;
-	/** Provides extra information about the field. */
 	hint?: string;
-	/** Message to show when the field is invalid. */
 	message?: string;
-	/** If true, the invalid state will be rendered. */
 	invalid?: boolean;
-	/** If true, the field will stretch to the fill the width of its container. */
-	block?: boolean;
-	/** The maximum width of the field. */
-	maxWidth?: Extract<FieldMaxWidth, 'md' | 'lg' | 'xl'>;
-	/** If true, the field will not be interactive. */
+	inputId: string;
+	inputName?: string;
 	disabled?: boolean;
-	/** Defines an identifier (ID) which must be unique. */
-	id?: string;
-	/** A string specifying a name for the input control. */
-	name?: string;
-	/** If true, the selected item can be cleared.  */
+	// Styles
+	block?: boolean;
+	maxWidth?: Extract<FieldMaxWidth, 'md' | 'lg' | 'xl'>;
+	showDropdownTrigger?: boolean;
 	clearable?: boolean;
-	/** Function to be fired following a change event. */
-	onChange?: (value: Option[] | null) => void;
-	/** The value of the field. */
-	value?: Option[] | null;
-	/** Used to override the default item rendering.  */
-	renderItem?: (item: Option, inputValue: string) => ReactNode;
-	/** Message to display when no options match the users search term. */
+	// Downshift
+	combobox: UseComboboxReturnValue<Option>;
+	multiSelection: UseMultipleSelectionReturnValue<Option>;
+	selectedItems: Option[];
+	onClear: () => void;
+	inputRef: RefObject<HTMLInputElement>;
+	loading?: boolean;
+	inputItems?: Option[];
+	networkError?: boolean;
 	emptyResultsMessage?: string;
+	renderItem?: (item: Option, inputValue: string) => ReactNode;
 };
-
-type ComboboxBaseProps<Option extends DefaultComboboxOption> =
-	CommonComboboxProps<Option> & {
-		inputId: string;
-		inputItems?: (Option & { isSelected?: boolean })[];
-		loading?: boolean;
-		networkError?: boolean;
-		downshift: UseComboboxReturnValue<Option>;
-		selectedItems: Option[];
-		multiSelection: UseMultipleSelectionReturnValue<Option>;
-		onClear: () => void;
-		inputRef: RefObject<HTMLInputElement>;
-	};
 
 export function ComboboxMultiBase<Option extends DefaultComboboxOption>({
 	label,
@@ -91,16 +74,16 @@ export function ComboboxMultiBase<Option extends DefaultComboboxOption>({
 	emptyResultsMessage = 'No options found.',
 	loading,
 	networkError,
-	downshift,
+	combobox,
 	inputItems,
 	selectedItems,
 	multiSelection,
 	onClear,
 	inputRef,
-}: ComboboxBaseProps<Option>) {
+}: ComboboxMultiBaseProps<Option>) {
 	// Popper state
 	const [refEl, setRefEl] = useState<HTMLDivElement | null>(null);
-	const [popperEl, setPopperEl] = useState<HTMLDivElement | null>(null);
+	const [popperEl, setPopperEl] = useState<HTMLUListElement | null>(null);
 	const { styles, attributes, update } = usePopper(refEl, popperEl, {
 		placement: 'bottom-start',
 		modifiers: [{ name: 'offset', options: { offset: [0, 8] } }],
@@ -114,6 +97,13 @@ export function ComboboxMultiBase<Option extends DefaultComboboxOption>({
 
 	const containerStyles = comboboxContainerStyles({ invalid, disabled });
 	const inputStyles = comboboxInputStyles({ invalid });
+
+	const showClearButton = selectedItems?.length > 0;
+
+	const { ref: menuRef, ...menuProps } = combobox.getMenuProps({
+		...attributes.popper,
+		style: styles.popper,
+	});
 
 	return (
 		<Field
@@ -160,10 +150,10 @@ export function ComboboxMultiBase<Option extends DefaultComboboxOption>({
 								<input
 									disabled={disabled}
 									{...a11yProps}
-									{...downshift.getInputProps(
+									{...combobox.getInputProps(
 										multiSelection.getDropdownProps({
 											type: 'text',
-											preventKeyAction: downshift.isOpen,
+											preventKeyAction: combobox.isOpen,
 											ref: inputRef,
 										})
 									)}
@@ -171,67 +161,57 @@ export function ComboboxMultiBase<Option extends DefaultComboboxOption>({
 								/>
 							</div>
 						</Flex>
-						{selectedItems?.length ? (
-							<ComboboxClearButton
+						<ComboboxButtonContainer>
+							{showClearButton && (
+								<ComboboxClearButton
+									disabled={disabled}
+									onClick={() => onClear()}
+								/>
+							)}
+							<ComboboxDropdownTrigger
 								disabled={disabled}
-								onClick={() => onClear()}
-								css={{ right: '2.5rem' }}
+								{...combobox.getToggleButtonProps()}
 							/>
-						) : null}
-						<ComboboxDropdownTrigger
-							disabled={disabled}
-							{...downshift.getToggleButtonProps()}
-						/>
-						<div
-							ref={setPopperEl}
-							style={styles.popper}
-							{...attributes.popper}
-							css={{
-								maxWidth: block
-									? undefined
-									: tokens.maxWidth.field[maxWidthProp],
-								zIndex: 1,
-								width: '100%',
-							}}
+						</ComboboxButtonContainer>
+						<ComboboxList
+							{...menuProps}
+							ref={mergeRefs([menuRef, setPopperEl])}
+							maxWidth={maxWidthProp}
+							isOpen={combobox.isOpen}
 						>
-							<ComboboxList
-								{...downshift.getMenuProps()}
-								isOpen={downshift.isOpen}
-							>
-								{downshift.isOpen && (
-									<Fragment>
-										{loading ? (
-											<ComboboxListLoading />
-										) : networkError ? (
-											<ComboboxListError />
-										) : (
-											<Fragment>
-												{inputItems?.length ? (
-													inputItems.map((item, index) => {
-														const isActiveItem =
-															downshift.highlightedIndex === index;
-														return (
-															<ComboboxListItem
-																key={`${item.value}${index}`}
-																isActiveItem={isActiveItem}
-																isInteractive={true}
-																{...downshift.getItemProps({ item, index })}
-															>
-																{renderItem(item, downshift.inputValue)}
-															</ComboboxListItem>
-														);
-													})
-												) : (
-													<ComboboxListEmptyResults
-														message={emptyResultsMessage}
-													/>
-												)}
-											</Fragment>
-										)}
-									</Fragment>
-								)}
-							</ComboboxList>
-						</div>
+							{combobox.isOpen && (
+								<Fragment>
+									{loading ? (
+										<ComboboxListLoading />
+									) : networkError ? (
+										<ComboboxListError />
+									) : (
+										<Fragment>
+											{inputItems?.length ? (
+												inputItems.map((item, index) => {
+													const isActiveItem =
+														combobox.highlightedIndex === index;
+													return (
+														<ComboboxListItem
+															key={`${item.value}${index}`}
+															isActiveItem={isActiveItem}
+															isInteractive={true}
+															{...combobox.getItemProps({ item, index })}
+														>
+															{renderItem(item, combobox.inputValue)}
+														</ComboboxListItem>
+													);
+												})
+											) : (
+												<ComboboxListEmptyResults
+													message={emptyResultsMessage}
+												/>
+											)}
+										</Fragment>
+									)}
+								</Fragment>
+							)}
+						</ComboboxList>
 					</div>
 				);
 			}}

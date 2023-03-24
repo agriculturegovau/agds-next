@@ -8,13 +8,13 @@ export default {
 	component: Combobox,
 } as ComponentMeta<typeof Combobox>;
 
-type Option = (typeof COUNTRIES)[number];
-
 const defaultArgs = {
 	label: 'Select country',
 	hint: 'Start typing to see results',
 	options: COUNTRIES,
 };
+
+type Option = (typeof COUNTRIES)[number];
 
 const Template: ComponentStory<typeof Combobox> = (args) => {
 	const [value, onChange] = useState<Option | null>(null);
