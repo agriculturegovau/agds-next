@@ -1,4 +1,4 @@
-import { forwardRef, MouseEventHandler, RefObject } from 'react';
+import { MouseEventHandler } from 'react';
 import { Box, Flex } from '../box';
 import { TextLink } from '../text-link';
 import { boxPalette, LinkProps, mapSpacing } from '../core';
@@ -8,17 +8,12 @@ import { BaseButton } from '../button';
 export type TagProps = Omit<LinkProps, 'children'> & {
 	children: string;
 	onRemove?: MouseEventHandler<HTMLButtonElement>;
-	removeButtonRef?: RefObject<HTMLButtonElement>;
 };
 
-export const Tag = forwardRef<HTMLSpanElement, TagProps>(function Tag(
-	{ children, onRemove, removeButtonRef, ...linkProps },
-	ref
-) {
-	const { href } = linkProps;
+export const Tag = ({ children, onRemove, ...props }: TagProps) => {
+	const { href } = props;
 	return (
 		<Flex
-			ref={ref}
 			as="span"
 			inline
 			alignItems="center"
@@ -30,32 +25,25 @@ export const Tag = forwardRef<HTMLSpanElement, TagProps>(function Tag(
 			fontSize="sm"
 			color={href ? 'action' : 'text'}
 		>
-			<Box as={href ? TextLink : 'span'} {...linkProps}>
+			<Box as={href ? TextLink : 'span'} {...props}>
 				{children}
 			</Box>
-			{onRemove ? (
-				<TagRemoveButton
-					ref={removeButtonRef}
-					onClick={onRemove}
-					aria-label={`Remove ${children}`}
-				/>
-			) : null}
+			{onRemove && (
+				<TagRemoveButton onClick={onRemove} aria-label={`Remove ${children}`} />
+			)}
 		</Flex>
 	);
-});
+};
 
-const TagRemoveButton = forwardRef<
-	HTMLButtonElement,
-	{
-		['aria-label']: string;
-		onClick: MouseEventHandler<HTMLButtonElement>;
-	}
->(function TagRemoveButton({ onClick, 'aria-label': ariaLabel }, ref) {
+const TagRemoveButton = ({
+	'aria-label': ariaLabel,
+	onClick,
+}: {
+	['aria-label']: string;
+	onClick: MouseEventHandler<HTMLButtonElement>;
+}) => {
 	return (
 		<Flex
-			// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-			// @ts-ignore
-			ref={ref}
 			as={BaseButton}
 			height={mapSpacing(1.5)}
 			width={mapSpacing(1.5)}
@@ -79,4 +67,4 @@ const TagRemoveButton = forwardRef<
 			<CloseIcon size="sm" />
 		</Flex>
 	);
-});
+};

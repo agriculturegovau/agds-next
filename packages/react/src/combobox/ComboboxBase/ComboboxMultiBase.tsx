@@ -1,4 +1,13 @@
-import { Fragment, ReactNode, RefObject, useEffect, useState } from 'react';
+import {
+	Fragment,
+	ReactNode,
+	RefObject,
+	useCallback,
+	useEffect,
+	useState,
+	MouseEvent,
+	useRef,
+} from 'react';
 import {
 	UseComboboxReturnValue,
 	UseMultipleSelectionReturnValue,
@@ -12,10 +21,10 @@ import {
 	mergeRefs,
 	packs,
 	tokens,
+	useTernaryState,
 } from '../../core';
 import { Field } from '../../field';
 import { Flex } from '../../box';
-import { Tag } from '../../tags';
 import { defaultRenderItem } from '../defaultRenderItem';
 import { DefaultComboboxOption } from '../utils';
 import { ComboboxList } from './ComboboxList';
@@ -28,6 +37,7 @@ import {
 	ComboboxClearButton,
 	ComboboxButtonContainer,
 } from './ComboboxButtons';
+import { Tag } from './ComboboxTag';
 
 type ComboboxMultiBaseProps<Option extends DefaultComboboxOption> = {
 	// Field props
@@ -81,10 +91,17 @@ export function ComboboxMultiBase<Option extends DefaultComboboxOption>({
 	onClear,
 	inputRef,
 }: ComboboxMultiBaseProps<Option>) {
+	const containerRef = useRef<HTMLDivElement>(null);
+	const [isInputFocused, setInputFocus, setInputBlur] = useTernaryState(false);
+
 	// Popper state
 	const [refEl, setRefEl] = useState<HTMLDivElement | null>(null);
 	const [popperEl, setPopperEl] = useState<HTMLUListElement | null>(null);
-	const { styles, attributes, update } = usePopper(refEl, popperEl, {
+	const {
+		styles: popperStyles,
+		attributes,
+		update,
+	} = usePopper(refEl, popperEl, {
 		placement: 'bottom-start',
 		modifiers: [{ name: 'offset', options: { offset: [0, 8] } }],
 	});
@@ -95,15 +112,31 @@ export function ComboboxMultiBase<Option extends DefaultComboboxOption>({
 		update?.();
 	}, [selectedItems, update]);
 
-	const containerStyles = comboboxContainerStyles({ invalid, disabled });
-	const inputStyles = comboboxInputStyles({ invalid });
-
 	const showClearButton = selectedItems?.length > 0;
+
+	const styles = comboboxMultiStyles({
+		block,
+		disabled,
+		invalid,
+		isInputFocused,
+		maxWidth: maxWidthProp,
+		showClearButton,
+	});
 
 	const { ref: menuRef, ...menuProps } = combobox.getMenuProps({
 		...attributes.popper,
-		style: styles.popper,
+		style: popperStyles.popper,
 	});
+
+	const onFieldContainerClick = useCallback(
+		(event: MouseEvent<HTMLDivElement>) => {
+			if (event.target === containerRef.current) {
+				console.log('...');
+				inputRef.current?.focus();
+			}
+		},
+		[inputRef]
+	);
 
 	return (
 		<Field
@@ -115,52 +148,47 @@ export function ComboboxMultiBase<Option extends DefaultComboboxOption>({
 			invalid={invalid}
 			id={inputId}
 		>
-			{(a11yProps) => {
-				return (
-					<div
-						css={{
-							position: 'relative',
-							maxWidth: !block
-								? tokens.maxWidth.field[maxWidthProp]
-								: undefined,
-							width: block ? '100%' : undefined,
-							':focus-within': packs.outline,
-						}}
-						ref={setRefEl}
+			{(a11yProps) => (
+				<div
+					ref={setRefEl}
+					css={styles.fieldContainer}
+					onClick={onFieldContainerClick}
+				>
+					<Flex
+						ref={containerRef}
+						gap={0.5}
+						flexWrap="wrap"
+						alignItems="center"
+						css={styles.container}
 					>
-						<Flex gap={0.5} flexWrap="wrap" css={containerStyles}>
-							{selectedItems.map((item, idx) => {
-								const { ref, ...itemProps } =
-									multiSelection.getSelectedItemProps({
-										selectedItem: item,
-										index: idx,
-									});
-								return (
-									<Tag
-										key={`selected-item-${idx}`}
-										onRemove={() => multiSelection.removeSelectedItem(item)}
-										removeButtonRef={ref}
-										{...itemProps}
-									>
-										{item.label}
-									</Tag>
-								);
-							})}
-							<div css={{ display: 'flex', flex: '1 1 2rem' }}>
-								<input
-									disabled={disabled}
-									{...a11yProps}
-									{...combobox.getInputProps(
-										multiSelection.getDropdownProps({
-											type: 'text',
-											preventKeyAction: combobox.isOpen,
-											ref: inputRef,
-										})
-									)}
-									css={inputStyles}
-								/>
-							</div>
-						</Flex>
+						{selectedItems.map((item, idx) => (
+							<Tag
+								key={`selected-item-${idx}`}
+								onRemove={() => multiSelection.removeSelectedItem(item)}
+								{...multiSelection.getSelectedItemProps({
+									selectedItem: item,
+									index: idx,
+								})}
+							>
+								{item.label}
+							</Tag>
+						))}
+						<div css={styles.inputContainer}>
+							<input
+								disabled={disabled}
+								{...a11yProps}
+								{...combobox.getInputProps(
+									multiSelection.getDropdownProps({
+										ref: inputRef,
+										type: 'text',
+										preventKeyAction: combobox.isOpen,
+										onFocus: setInputFocus,
+										onBlur: setInputBlur,
+									})
+								)}
+								css={styles.input}
+							/>
+						</div>
 						<ComboboxButtonContainer>
 							{showClearButton && (
 								<ComboboxClearButton
@@ -173,112 +201,126 @@ export function ComboboxMultiBase<Option extends DefaultComboboxOption>({
 								{...combobox.getToggleButtonProps()}
 							/>
 						</ComboboxButtonContainer>
-						<ComboboxList
-							{...menuProps}
-							ref={mergeRefs([menuRef, setPopperEl])}
-							maxWidth={maxWidthProp}
-							isOpen={combobox.isOpen}
-						>
-							{combobox.isOpen && (
-								<Fragment>
-									{loading ? (
-										<ComboboxListLoading />
-									) : networkError ? (
-										<ComboboxListError />
-									) : (
-										<Fragment>
-											{inputItems?.length ? (
-												inputItems.map((item, index) => {
-													const isActiveItem =
-														combobox.highlightedIndex === index;
-													return (
-														<ComboboxListItem
-															key={`${item.value}${index}`}
-															isActiveItem={isActiveItem}
-															isInteractive={true}
-															{...combobox.getItemProps({ item, index })}
-														>
-															{renderItem(item, combobox.inputValue)}
-														</ComboboxListItem>
-													);
-												})
-											) : (
-												<ComboboxListEmptyResults
-													message={emptyResultsMessage}
-												/>
-											)}
-										</Fragment>
-									)}
-								</Fragment>
-							)}
-						</ComboboxList>
-					</div>
-				);
-			}}
+					</Flex>
+					<ComboboxList
+						{...menuProps}
+						ref={mergeRefs([menuRef, setPopperEl])}
+						maxWidth={maxWidthProp}
+						isOpen={combobox.isOpen}
+					>
+						{combobox.isOpen && (
+							<Fragment>
+								{loading ? (
+									<ComboboxListLoading />
+								) : networkError ? (
+									<ComboboxListError />
+								) : (
+									<Fragment>
+										{inputItems?.length ? (
+											inputItems.map((item, index) => (
+												<ComboboxListItem
+													key={`${item.value}-${index}`}
+													isActiveItem={combobox.highlightedIndex === index}
+													isInteractive={true}
+													{...combobox.getItemProps({ item, index })}
+												>
+													{renderItem(item, combobox.inputValue)}
+												</ComboboxListItem>
+											))
+										) : (
+											<ComboboxListEmptyResults message={emptyResultsMessage} />
+										)}
+									</Fragment>
+								)}
+							</Fragment>
+						)}
+					</ComboboxList>
+				</div>
+			)}
 		</Field>
 	);
 }
 
-function comboboxContainerStyles({
-	invalid,
+function comboboxMultiStyles({
 	disabled,
+	block,
+	invalid,
+	maxWidth,
+	isInputFocused,
+	showClearButton,
 }: {
-	invalid: boolean;
 	disabled: boolean;
+	invalid: boolean;
+	block: boolean;
+	isInputFocused: boolean;
+	maxWidth: FieldMaxWidth;
+	showClearButton: boolean;
 }) {
 	return {
-		appearance: 'none' as const,
-		margin: 0,
-		background: boxPalette.backgroundBody,
-		borderWidth: tokens.borderWidth.lg,
-		borderStyle: 'solid',
-		borderColor: boxPalette.border,
-		color: boxPalette.foregroundText,
-		fontFamily: tokens.font.body,
-		...packs.input.md,
-		height: 'auto',
-		minHeight: packs.input.md.height,
-		paddingTop: mapSpacing(0.25),
-		paddingBottom: mapSpacing(0.25),
-		paddingLeft: mapSpacing(0.5),
-		paddingRight: '5rem',
-
-		...(disabled && {
-			cursor: 'not-allowed',
-			borderColor: boxPalette.borderMuted,
-			backgroundColor: boxPalette.backgroundShade,
-			color: boxPalette.foregroundMuted,
-		}),
-
-		...(invalid && {
-			backgroundColor: boxPalette.systemErrorMuted,
-			borderColor: boxPalette.systemError,
-		}),
-	};
-}
-
-function comboboxInputStyles({ invalid }: { invalid: boolean }) {
-	return {
-		appearance: 'none',
-		boxSizing: 'border-box',
-		borderWidth: 0,
-		width: '100%',
-		background: boxPalette.backgroundBody,
-		color: boxPalette.foregroundText,
-		fontFamily: tokens.font.body,
-		...fontGrid('sm', 'default'),
-
-		'&:focus': {
-			outline: 'none',
+		fieldContainer: {
+			position: 'relative',
+			...(!block && {
+				maxWidth: tokens.maxWidth.field[maxWidth],
+			}),
 		},
+		container: {
+			position: 'relative',
+			cursor: 'text',
+			background: boxPalette.backgroundBody,
+			borderWidth: tokens.borderWidth.lg,
+			borderStyle: 'solid',
+			borderColor: boxPalette.border,
+			borderRadius: tokens.borderRadius,
+			color: boxPalette.foregroundText,
+			...packs.input.md,
+			height: 'auto',
+			minHeight: packs.input.md.height,
+			margin: 0,
+			paddingTop: mapSpacing(0.25),
+			paddingBottom: mapSpacing(0.25),
+			paddingLeft: mapSpacing(0.5),
+			paddingRight: showClearButton ? '5rem' : '3rem',
 
-		...(invalid && {
-			backgroundColor: boxPalette.systemErrorMuted,
-			borderColor: boxPalette.systemError,
-		}),
+			...(disabled && {
+				cursor: 'not-allowed',
+				borderColor: boxPalette.borderMuted,
+				backgroundColor: boxPalette.backgroundShade,
+				color: boxPalette.foregroundMuted,
+			}),
 
-		'&:disabled': {
-			backgroundColor: boxPalette.backgroundShade,
+			...(invalid && {
+				backgroundColor: boxPalette.systemErrorMuted,
+				borderColor: boxPalette.systemError,
+			}),
+
+			...(isInputFocused && packs.outline),
 		},
-	};
+		inputContainer: {
+			display: 'flex',
+			flex: '1 1 2rem',
+		},
+		input: {
+			appearance: 'none',
+			boxSizing: 'border-box',
+			borderWidth: 0,
+			width: '100%',
+			background: boxPalette.backgroundBody,
+			color: boxPalette.foregroundText,
+			fontFamily: tokens.font.body,
+			...fontGrid('sm', 'default'),
+
+			...(invalid && {
+				backgroundColor: boxPalette.systemErrorMuted,
+				borderColor: boxPalette.systemError,
+			}),
+
+			'&:focus': {
+				outline: 'none',
+			},
+
+			'&:disabled': {
+				backgroundColor: boxPalette.backgroundShade,
+			},
+		},
+	} as const;
 }
