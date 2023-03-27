@@ -81,12 +81,17 @@ The usage of `hideOptionalLabel` should be reserved for inputs that filter data 
 
 ### useScrollToField
 
-By default, the browser will scroll the target into view. Because our labels or legends appear above the input, this means the user will be presented with an input without any context, as the label or legend will be off the top of the screen. Manually handling the click event, scrolling the question into view and then focussing the element solves this.
+`useScrollToField` is a hook that can be used to scroll and focus users to a form field on the same page.
 
-Please refer to the [example site single-page form example](https://design-system.agriculture.gov.au/example-site/single-page-form) to see an example of this hook in use.
+Because our labels or legends appear above the input, when using native browsers API's users will be presented with an input without any context, as the label or legend will be off the top of the screen. Manually handling the click event, scrolling the question into view and then focussing the element solves this.
+
+Please refer to the [example site single-page form example](/example-site/single-page-form) to see an example of this hook in use.
 
 ```jsx
-function ExampleForm() {
+/**
+ * Example usage when displaying a list of form validation errors
+ */
+function ExampleOne() {
 	const scrollToField = useScrollToField();
 	return (
 		<ul>
@@ -98,6 +103,25 @@ function ExampleForm() {
 				</li>
 			))}
 		</ul>
+	);
+}
+
+/**
+ * Example usage scrolling and focusing to a specific field on first mount
+ */
+function ExampleTwo() {
+	const targetId = 'last-name'; // This could potentially come from route query params
+	const scrollToField = useScrollToField();
+
+	React.useEffect(() => {
+		scrollToField('last-name');
+	}, [scrollToField]);
+
+	return (
+		<FormStack>
+			<TextInput label="First name" id="first-name" />
+			<TextInput label="Last name" id="last-name" />
+		</FormStack>
 	);
 }
 ```
