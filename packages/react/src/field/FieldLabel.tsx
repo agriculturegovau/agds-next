@@ -1,5 +1,6 @@
 import { ElementType, PropsWithChildren, useMemo } from 'react';
-import { Flex } from '../box';
+import { Box } from '../box';
+import { mapSpacing } from '../core';
 import { Text } from '../text';
 
 export type FieldLabelProps = PropsWithChildren<{
@@ -34,15 +35,16 @@ export const FieldLabel = ({
 			.join(' ');
 	}, [required, secondaryLabelProp, hideOptionalLabel]);
 	return (
-		<Flex as={as} htmlFor={htmlFor} gap={0.25} className={className}>
+		<Box as={as} htmlFor={htmlFor} className={className}>
 			<Text as="span" fontWeight="bold">
 				{children}
 			</Text>
 			{secondaryLabel ? (
 				<Text as="span" color="muted">
+					{' '}
 					{secondaryLabel}
 				</Text>
 			) : null}
-		</Flex>
+		</Box>
 	);
 };
