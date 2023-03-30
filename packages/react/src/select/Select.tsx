@@ -203,7 +203,7 @@ const selectStyles = ({
 		}),
 
 		'&:disabled': {
-			opacity: 1, // Fixes default browser styles
+			opacity: 1, // Overwrites default browser styles
 			cursor: 'not-allowed',
 			borderColor: boxPalette.borderMuted,
 			backgroundColor: boxPalette.backgroundShade,
