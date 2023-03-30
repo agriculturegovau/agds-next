@@ -10,7 +10,7 @@ exports[`DateRangePicker renders correctly 1`] = `
       class="css-1lbpzz2-DateRangePicker"
     >
       <legend
-        class="css-n4cl2w-boxStyles-DateRangePicker"
+        class="css-1r0k8hi-boxStyles-DateRangePicker"
       >
         <span
           class="css-433uqb-boxStyles-Text"
@@ -20,6 +20,7 @@ exports[`DateRangePicker renders correctly 1`] = `
         <span
           class="css-1rpt3h8-boxStyles-Text"
         >
+           
           (optional)
         </span>
       </legend>
@@ -33,7 +34,7 @@ exports[`DateRangePicker renders correctly 1`] = `
             class="css-1904cz9-boxStyles-FieldContainer"
           >
             <label
-              class="css-n7rdvo-boxStyles"
+              class="css-79i25n-boxStyles"
               for="field-:r1:"
             >
               <span
@@ -44,6 +45,7 @@ exports[`DateRangePicker renders correctly 1`] = `
               <span
                 class="css-1rpt3h8-boxStyles-Text"
               >
+                 
                 (dd/mm/yyyy) (optional)
               </span>
             </label>
@@ -107,7 +109,7 @@ exports[`DateRangePicker renders correctly 1`] = `
             class="css-1904cz9-boxStyles-FieldContainer"
           >
             <label
-              class="css-n7rdvo-boxStyles"
+              class="css-79i25n-boxStyles"
               for="field-:r2:"
             >
               <span
@@ -118,6 +120,7 @@ exports[`DateRangePicker renders correctly 1`] = `
               <span
                 class="css-1rpt3h8-boxStyles-Text"
               >
+                 
                 (dd/mm/yyyy) (optional)
               </span>
             </label>

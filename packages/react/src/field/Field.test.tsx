@@ -140,7 +140,7 @@ describe('Field', () => {
 			it('renders correctly', () => {
 				renderField({ label, required: false });
 				const labelEl = getLabelElement();
-				expect(labelEl.textContent).toBe(`${label}(optional)`);
+				expect(labelEl.textContent).toBe(`${label} (optional)`);
 			});
 			it('renders correctly when optional label is hidden', () => {
 				renderField({
@@ -177,14 +177,14 @@ describe('Field', () => {
 				renderField({ label, secondaryLabel, required: false });
 				const labelEl = getLabelElement();
 				expect(labelEl.textContent).toBe(
-					`${label}${secondaryLabel} (optional)`
+					`${label} ${secondaryLabel} (optional)`
 				);
 			});
 
 			it('renders correctly when true', () => {
 				renderField({ label, secondaryLabel, required: true });
 				const labelEl = getLabelElement();
-				expect(labelEl.textContent).toBe(`${label}${secondaryLabel}`);
+				expect(labelEl.textContent).toBe(`${label} ${secondaryLabel}`);
 			});
 		});
 	});

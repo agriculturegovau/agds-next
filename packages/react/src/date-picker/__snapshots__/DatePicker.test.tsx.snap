@@ -7,7 +7,7 @@ exports[`DatePicker renders correctly 1`] = `
       class="css-1904cz9-boxStyles-FieldContainer"
     >
       <label
-        class="css-n7rdvo-boxStyles"
+        class="css-79i25n-boxStyles"
         for="field-:r0:"
       >
         <span
@@ -18,6 +18,7 @@ exports[`DatePicker renders correctly 1`] = `
         <span
           class="css-1rpt3h8-boxStyles-Text"
         >
+           
           (dd/mm/yyyy) (optional)
         </span>
       </label>
