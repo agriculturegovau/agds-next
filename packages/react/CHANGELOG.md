@@ -1,5 +1,13 @@
 # @ag.ds-next/react
 
+## 1.3.1
+
+### Patch Changes
+
+- f52eca2952: avatar: Render a span component
+- e7d3c328ab: select: Updated styles for disabled state to fix default browser styles overrides.
+- 546f3d7858: skip-links: Added high z-index to ensure the element is always placed above other elements on the page.
+
 ## 1.3.0
 
 ### Minor Changes
