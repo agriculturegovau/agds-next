@@ -1,6 +1,5 @@
 import { ElementType, PropsWithChildren, useMemo } from 'react';
 import { Box } from '../box';
-import { mapSpacing } from '../core';
 import { Text } from '../text';
 
 export type FieldLabelProps = PropsWithChildren<{
