@@ -1,4 +1,4 @@
-import { RefObject } from 'react';
+import { RefObject, useRef } from 'react';
 import { Stack } from '@ag.ds-next/react/box';
 import { Button, ButtonLink } from '@ag.ds-next/react/button';
 import { PageContent } from '@ag.ds-next/react/content';
@@ -24,6 +24,9 @@ import {
 	FilterBarGroup,
 	FilterRegion,
 } from './components/FilterBar';
+import { FilterStateSelect } from './components/FilterStateSelect';
+import { FilterAssigneeSelect } from './components/FilterAssigneeSelect';
+import { DateRangePicker } from '@ag.ds-next/react/date-picker';
 
 type MediumExampleProps = {
 	// sort
@@ -64,6 +67,13 @@ export const ExampleMedium = ({
 	tableRef,
 }: MediumExampleProps) => {
 	const [isOpen, toggleIsOpen] = useToggleState(false, true);
+	const filterAccordionRef = useRef<HTMLDivElement>(null);
+	const focusAccordion = () => filterAccordionRef.current?.focus();
+
+	const handleToggleAccordion = () => {
+		toggleIsOpen();
+		!isOpen && setTimeout(focusAccordion, 100);
+	};
 
 	// IDs for accordion to ensure accessibility
 	const buttonId = 'filter-button';
@@ -93,7 +103,7 @@ export const ExampleMedium = ({
 							<FilterSearchInput filters={filters} setFilters={setFilters} />
 							<FilterStatusSelect filters={filters} setFilters={setFilters} />
 							<Button
-								onClick={toggleIsOpen}
+								onClick={handleToggleAccordion}
 								variant="secondary"
 								iconBefore={FilterIcon}
 								iconAfter={isOpen ? ChevronUpIcon : ChevronDownIcon}
@@ -111,12 +121,33 @@ export const ExampleMedium = ({
 					</FilterBar>
 					<FilterAccordion
 						id={bodyId}
+						ref={filterAccordionRef}
 						ariaLabelledBy={buttonId}
-						filters={filters}
 						isOpen={isOpen}
-						setFilters={setFilters}
-						resetFilters={resetFilters}
-					/>
+					>
+						<FilterStateSelect filters={filters} setFilters={setFilters} />
+						<FilterAssigneeSelect filters={filters} setFilters={setFilters} />
+						<DateRangePicker
+							fromLabel="Registered from"
+							toLabel="Registered to"
+							hideOptionalLabel
+							onChange={(value) => {
+								setFilters({
+									...filters,
+									requestDate: value,
+								});
+							}}
+							value={filters.requestDate}
+						/>
+						<Button
+							variant="secondary"
+							onClick={() => {
+								resetFilters();
+							}}
+						>
+							Reset filters
+						</Button>
+					</FilterAccordion>
 					<ActiveFilters
 						filters={filters}
 						removeFilter={removeFilter}
