@@ -1,7 +1,7 @@
-import { Box, Flex } from '@ag.ds-next/react/box';
-import { BaseButton } from '@ag.ds-next/react/button';
-import { boxPalette } from '@ag.ds-next/react/core';
-import { ArrowDownIcon, ArrowUpIcon } from '@ag.ds-next/react/icon';
+import { Box, Flex } from '../box';
+import { BaseButton } from '../button';
+import { boxPalette } from '../core';
+import { ArrowDownIcon, ArrowUpIcon } from '../icon';
 import { TableHeaderProps } from './TableHeader';
 
 export type TableSortDirection = 'ASC' | 'DESC' | undefined;
