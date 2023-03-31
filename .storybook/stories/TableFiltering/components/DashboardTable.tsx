@@ -8,6 +8,7 @@ import {
 	TableCell,
 	TableHead,
 	TableHeader,
+	TableHeaderProps,
 	TableHeaderSortable,
 	TableWrapper,
 } from '@ag.ds-next/react/table';
@@ -238,7 +239,7 @@ const headers: ({
 	label: string;
 	sortKey: keyof BusinessForAudit;
 	isSortable: boolean;
-} & DashboardTableHeaderBaseProps)[] = [
+} & Pick<TableHeaderProps, 'width' | 'textAlign'>)[] = [
 	{
 		label: 'Business name',
 		sortKey: 'businessName',

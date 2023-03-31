@@ -152,6 +152,7 @@ export {
 	TableCaption,
 	TableCell,
 	TableHeader,
+	TableHeaderSortable,
 	TableHead,
 	TableWrapper,
 } from '@ag.ds-next/react/table';
