@@ -1,3 +1,4 @@
+import { HTMLAttributes } from 'react';
 import { mapSpacing, boxPalette } from '../core';
 import { Text } from '../text';
 import { badgeToneMap, BadgeTone } from './utils';
@@ -9,8 +10,8 @@ export type NotificationBadgeProps = {
 	max?: number;
 	/** The colour tone to apply. */
 	tone: BadgeTone;
-	/** Whether to hide the badge from screen readers. */
-	'aria-hidden'?: boolean;
+	/** If true, the element will be hidden from assistive technologies. */
+	'aria-hidden'?: HTMLAttributes<HTMLSpanElement>['aria-hidden'];
 };
 
 export const NotificationBadge = ({

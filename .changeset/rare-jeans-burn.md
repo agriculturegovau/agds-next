@@ -2,4 +2,4 @@
 '@ag.ds-next/react': patch
 ---
 
-badge: Add aria-hidden to NotificationBadge
+badge: Added support for the `aria-hidden` prop in `NotificationBadge`
