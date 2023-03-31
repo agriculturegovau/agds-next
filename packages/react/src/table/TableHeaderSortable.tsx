@@ -11,6 +11,8 @@ type TableHeaderSortableProps = TableHeaderProps & {
 	onClick?: () => void;
 };
 
+/** Used in place of TableHeader when users can click a column header to
+ * sort the table. */
 export const TableHeaderSortable = ({
 	children,
 	textAlign = 'left',

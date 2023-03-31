@@ -110,6 +110,7 @@ export const DashboardTable = forwardRef<HTMLTableElement, DashboardTableProps>(
 										return (
 											<TableHeader
 												key={sortKey}
+												scope="col"
 												textAlign={textAlign}
 												width={width}
 											>
