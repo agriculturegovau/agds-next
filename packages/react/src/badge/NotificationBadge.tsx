@@ -9,12 +9,15 @@ export type NotificationBadgeProps = {
 	max?: number;
 	/** The colour tone to apply. */
 	tone: BadgeTone;
+	/** Whether to hide the badge from screen readers. */
+	'aria-hidden'?: boolean;
 };
 
 export const NotificationBadge = ({
 	value,
 	max,
 	tone,
+	'aria-hidden': ariaHidden,
 }: NotificationBadgeProps) => {
 	const backgroundColor = badgeToneMap[tone];
 	return (
@@ -27,6 +30,7 @@ export const NotificationBadge = ({
 			rounded
 			fontSize="sm"
 			lineHeight="nospace"
+			aria-hidden={ariaHidden}
 			css={{
 				color: boxPalette.backgroundBody,
 				backgroundColor,
