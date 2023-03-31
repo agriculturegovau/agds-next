@@ -6,7 +6,7 @@ exports[`Field Basic renders correctly 1`] = `
     class="css-1904cz9-boxStyles-FieldContainer"
   >
     <label
-      class="css-n7rdvo-boxStyles"
+      class="css-79i25n-boxStyles"
       for="field-:r0:"
     >
       <span
@@ -17,6 +17,7 @@ exports[`Field Basic renders correctly 1`] = `
       <span
         class="css-1rpt3h8-boxStyles-Text"
       >
+         
         (optional)
       </span>
     </label>
@@ -37,7 +38,7 @@ exports[`Field Invalid renders correctly 1`] = `
     class="css-1n67ua0-boxStyles-FieldContainer"
   >
     <label
-      class="css-n7rdvo-boxStyles"
+      class="css-79i25n-boxStyles"
       for="field-:r4:"
     >
       <span
@@ -48,6 +49,7 @@ exports[`Field Invalid renders correctly 1`] = `
       <span
         class="css-1rpt3h8-boxStyles-Text"
       >
+         
         (optional)
       </span>
     </label>
@@ -103,7 +105,7 @@ exports[`Field With hint renders correctly 1`] = `
     class="css-1904cz9-boxStyles-FieldContainer"
   >
     <label
-      class="css-n7rdvo-boxStyles"
+      class="css-79i25n-boxStyles"
       for="field-:r2:"
     >
       <span
@@ -114,6 +116,7 @@ exports[`Field With hint renders correctly 1`] = `
       <span
         class="css-1rpt3h8-boxStyles-Text"
       >
+         
         (optional)
       </span>
     </label>

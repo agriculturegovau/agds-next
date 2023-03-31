@@ -10,7 +10,7 @@ exports[`ControlGroup  With Checkboxes renders correctly 1`] = `
       class="css-faxsk2-ControlGroup"
     >
       <legend
-        class="css-n7rdvo-boxStyles"
+        class="css-79i25n-boxStyles"
       >
         <span
           class="css-433uqb-boxStyles-Text"
@@ -20,6 +20,7 @@ exports[`ControlGroup  With Checkboxes renders correctly 1`] = `
         <span
           class="css-1rpt3h8-boxStyles-Text"
         >
+           
           (optional)
         </span>
       </legend>
@@ -183,7 +184,7 @@ exports[`ControlGroup  With Checkboxes renders correctly when invalid 1`] = `
       class="css-faxsk2-ControlGroup"
     >
       <legend
-        class="css-n7rdvo-boxStyles"
+        class="css-79i25n-boxStyles"
       >
         <span
           class="css-433uqb-boxStyles-Text"
@@ -193,6 +194,7 @@ exports[`ControlGroup  With Checkboxes renders correctly when invalid 1`] = `
         <span
           class="css-1rpt3h8-boxStyles-Text"
         >
+           
           (optional)
         </span>
       </legend>
@@ -403,7 +405,7 @@ exports[`ControlGroup  With Radios renders correctly 1`] = `
       class="css-faxsk2-ControlGroup"
     >
       <legend
-        class="css-n7rdvo-boxStyles"
+        class="css-79i25n-boxStyles"
       >
         <span
           class="css-433uqb-boxStyles-Text"
@@ -413,6 +415,7 @@ exports[`ControlGroup  With Radios renders correctly 1`] = `
         <span
           class="css-1rpt3h8-boxStyles-Text"
         >
+           
           (optional)
         </span>
       </legend>
@@ -524,7 +527,7 @@ exports[`ControlGroup  With Radios renders correctly when invalid 1`] = `
       class="css-faxsk2-ControlGroup"
     >
       <legend
-        class="css-n7rdvo-boxStyles"
+        class="css-79i25n-boxStyles"
       >
         <span
           class="css-433uqb-boxStyles-Text"
@@ -534,6 +537,7 @@ exports[`ControlGroup  With Radios renders correctly when invalid 1`] = `
         <span
           class="css-1rpt3h8-boxStyles-Text"
         >
+           
           (optional)
         </span>
       </legend>

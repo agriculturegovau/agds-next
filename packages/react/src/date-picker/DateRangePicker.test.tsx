@@ -269,7 +269,7 @@ describe('DateRangePicker', () => {
 			required: false,
 		});
 		expect(await await (await getLegend(defaultLegend)).textContent).toEqual(
-			`${defaultLegend}(optional)`
+			`${defaultLegend} (optional)`
 		);
 	});
 
@@ -295,7 +295,7 @@ describe('DateRangePicker', () => {
 			onChange: console.log,
 		});
 		expect(await (await getLegend(legend)).textContent).toEqual(
-			`${legend}(optional)`
+			`${legend} (optional)`
 		);
 	});
 
@@ -323,8 +323,8 @@ describe('DateRangePicker', () => {
 		const inputToId = await (await getToInput())?.id;
 		const labelTo = container.querySelector(`[for="${inputToId}"]`);
 
-		expect(labelFrom?.textContent).toEqual('Start date(dd/mm/yyyy)');
-		expect(labelTo?.textContent).toEqual('End date(dd/mm/yyyy)');
+		expect(labelFrom?.textContent).toEqual('Start date (dd/mm/yyyy)');
+		expect(labelTo?.textContent).toEqual('End date (dd/mm/yyyy)');
 	});
 
 	it('shows date format when no legend is supplied', async () => {
@@ -338,8 +338,10 @@ describe('DateRangePicker', () => {
 		const inputToId = await (await getToInput())?.id;
 		const labelTo = container.querySelector(`[for="${inputToId}"]`);
 
-		expect(labelFrom?.textContent).toEqual('Start date(dd/mm/yyyy) (optional)');
-		expect(labelTo?.textContent).toEqual('End date(dd/mm/yyyy) (optional)');
+		expect(labelFrom?.textContent).toEqual(
+			'Start date (dd/mm/yyyy) (optional)'
+		);
+		expect(labelTo?.textContent).toEqual('End date (dd/mm/yyyy) (optional)');
 	});
 
 	it('invalid: can render an invalid state when both fields are invalid', async () => {
