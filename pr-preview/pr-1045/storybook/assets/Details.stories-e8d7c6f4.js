@@ -1,0 +1,12 @@
+import{a as o,j as e,B as x}from"./Box-e652c7f2.js";import{T as d}from"./Text-51e6146a.js";import{r as y}from"./index-42611d8b.js";import{F as D}from"./Stack-4546232d.js";import{I as b,C as I}from"./WebsiteIcon-f0b253fc.js";import"./CalendarIcon-16f5268f.js";import"./_commonjsHelpers-042e6b4d.js";const s=y.forwardRef(function({children:h,iconBefore:u=!1,label:g="Details"},f){return o("details",{ref:f,css:{"&[open] summary svg:last-of-type":{transform:"rotate(180deg)"},"summary::marker, summary::-webkit-details-marker":{display:"none"}},children:[o(D,{as:"summary",gap:.5,link:!0,focus:!0,alignItems:"center",fontWeight:"bold",paddingY:.5,rounded:!0,children:[u&&e(b,{weight:"regular",size:"md"}),g,e(I,{weight:"bold",size:"sm"})]}),e(x,{background:"shade",padding:1.5,borderLeft:!0,borderLeftWidth:"xl",highContrastOutline:!0,children:h})]})});try{s.displayName="Details",s.__docgenInfo={description:"",displayName:"Details",props:{iconBefore:{defaultValue:{value:"false"},description:"If true, the InfoIcon will be shown.",name:"iconBefore",required:!1,type:{name:"boolean"}},label:{defaultValue:{value:"Details"},description:"The label that will be present in the trigger.",name:"label",required:!1,type:{name:"string"}}}}}catch{}const j={title:"content/Details",component:s},t=a=>e(s,{...a,children:e(d,{as:"p",children:"This is a small paragraph of text that is supplementary to the main page content."})});t.args={label:"Details"};const r=a=>e(s,{...a,children:e(d,{as:"p",children:"This is a small paragraph of text that is supplementary to the main page content."})});r.args={label:"Details",iconBefore:!0};var i,n,l;t.parameters={...t.parameters,docs:{...(i=t.parameters)==null?void 0:i.docs,source:{originalSource:`args => <Details {...args}>
+        <Text as="p">
+            This is a small paragraph of text that is supplementary to the main page
+            content.
+        </Text>
+    </Details>`,...(l=(n=t.parameters)==null?void 0:n.docs)==null?void 0:l.source}}};var p,c,m;r.parameters={...r.parameters,docs:{...(p=r.parameters)==null?void 0:p.docs,source:{originalSource:`args => <Details {...args}>
+        <Text as="p">
+            This is a small paragraph of text that is supplementary to the main page
+            content.
+        </Text>
+    </Details>`,...(m=(c=r.parameters)==null?void 0:c.docs)==null?void 0:m.source}}};const C=["Basic","WithIcon"];export{t as Basic,r as WithIcon,C as __namedExportsOrder,j as default};
+//# sourceMappingURL=Details.stories-e8d7c6f4.js.map

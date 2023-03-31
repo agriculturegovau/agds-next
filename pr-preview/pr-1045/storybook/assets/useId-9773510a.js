@@ -1,0 +1,2 @@
+import{r as e,a}from"./index-42611d8b.js";function i(){return!!(typeof window<"u"&&window.document&&window.document.createElement)}const d=i()?e.useLayoutEffect:e.useEffect;let n=!1,l=0;function s(){return++l}const u=a["useId".toString()];function w(t){if(u!==void 0){const r=u();return t??r}const f=t??(n?s():null),[o,c]=e.useState(f);return d(()=>{o===null&&c(s())},[]),e.useEffect(()=>{n===!1&&(n=!0)},[]),t??o??void 0}export{w as u};
+//# sourceMappingURL=useId-9773510a.js.map

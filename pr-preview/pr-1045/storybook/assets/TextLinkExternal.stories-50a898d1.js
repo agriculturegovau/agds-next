@@ -1,0 +1,4 @@
+import{j as n}from"./Box-e652c7f2.js";import{T as o}from"./TextLinkExternal-ed8d4b34.js";import"./index-42611d8b.js";import"./_commonjsHelpers-042e6b4d.js";import"./VisuallyHidden-315ab967.js";import"./Stack-4546232d.js";import"./WebsiteIcon-f0b253fc.js";import"./CalendarIcon-16f5268f.js";import"./TextLink-99cf0354.js";const k={title:"navigation/TextLink/TextLinkExternal",component:o},i=s=>n(o,{...s}),r=i.bind({});r.args={children:"External link",href:"https://design-system.agriculture.gov.au"};var t,e,a;r.parameters={...r.parameters,docs:{...(t=r.parameters)==null?void 0:t.docs,source:{originalSource:`args => {
+  return <TextLinkExternal {...args} />;
+}`,...(a=(e=r.parameters)==null?void 0:e.docs)==null?void 0:a.source}}};const E=["Basic"];export{r as Basic,E as __namedExportsOrder,k as default};
+//# sourceMappingURL=TextLinkExternal.stories-50a898d1.js.map

@@ -1,0 +1,6 @@
+import{a as p,j as t}from"./Box-e652c7f2.js";import{B as m}from"./ButtonGroup-75f04ad3.js";import{a as o}from"./Button-ffb9a9d6.js";import"./index-42611d8b.js";import"./_commonjsHelpers-042e6b4d.js";import"./Stack-4546232d.js";import"./LoadingBlanket-2ea81d60.js";import"./Content-e54e3b95.js";import"./BaseContent-1f85429f.js";import"./PageContent-3fd36d19.js";import"./SectionContent-a2643fbb.js";import"./ContentBleed-5b1d8d06.js";import"./Text-51e6146a.js";import"./react-spring-web.esm-92c11c75.js";import"./index-7a46b491.js";import"./VisuallyHidden-315ab967.js";import"./mergeRefs-868b543a.js";const T={title:"forms/Button/ButtonGroup",component:m},r=()=>p(m,{children:[t(o,{variant:"primary",children:"Primary"}),t(o,{variant:"secondary",children:"Secondary"}),t(o,{variant:"tertiary",children:"Tertiary"})]});var a,i,n;r.parameters={...r.parameters,docs:{...(a=r.parameters)==null?void 0:a.docs,source:{originalSource:`() => <ButtonGroup>
+        <Button variant="primary">Primary</Button>
+        <Button variant="secondary">Secondary</Button>
+        <Button variant="tertiary">Tertiary</Button>
+    </ButtonGroup>`,...(n=(i=r.parameters)==null?void 0:i.docs)==null?void 0:n.source}}};const g=["Basic"];export{r as Basic,g as __namedExportsOrder,T as default};
+//# sourceMappingURL=ButtonGroup.stories-f4702377.js.map
