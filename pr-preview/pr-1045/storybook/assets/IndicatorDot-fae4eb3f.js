@@ -1,2 +1,0 @@
-import{j as r,b as t,B as o}from"./Box-e652c7f2.js";import"./Stack-4546232d.js";import"./index-42611d8b.js";const a=({"aria-label":e})=>r(o,{"aria-label":e,highContrastOutline:!0,css:{width:8,height:8,borderRadius:4,backgroundColor:t.foregroundAction}});try{a.displayName="IndicatorDot",a.__docgenInfo={description:"",displayName:"IndicatorDot",props:{"aria-label":{defaultValue:null,description:"The accessible label to read out in screen readers.",name:"aria-label",required:!1,type:{name:"string"}}}}}catch{}export{a as I};
-//# sourceMappingURL=IndicatorDot-fae4eb3f.js.map
