@@ -1,10 +1,9 @@
-import { RouterContext } from 'next/dist/shared/lib/router-context';
-import { DecoratorFn } from '@storybook/react';
-import { Box } from '@ag.ds-next/react/box';
-import { Core } from '@ag.ds-next/react/core';
-import { theme as agriculture } from '@ag.ds-next/react/ag-branding';
-import { LinkComponent } from './components/LinkComponent';
-import { Fragment } from 'react';
+import React, { Fragment } from 'react';
+import { Preview } from '@storybook/react';
+import { Box } from '../packages/react/src/box';
+import { Core } from '../packages/react/src/core';
+import { theme as agriculture, theme } from '../packages/react/src/ag-branding';
+// import { LinkComponent } from './components/LinkComponent';
 
 function makeViewports() {
 	const viewports = [
@@ -62,7 +61,7 @@ const getTheme = (brand: StorybookThemes) => {
 	return storybookThemes[brand];
 };
 
-export const globalTypes = {
+const globalTypes = {
 	brand: {
 		name: 'Brand',
 		description: 'Global branding',
@@ -83,34 +82,43 @@ export const globalTypes = {
 	},
 };
 
-export const parameters = {
-	actions: { argTypesRegex: '^on[A-Z].*' },
-	controls: {
-		matchers: {
-			color: /(background|color)$/i,
-			date: /Date$/,
+// 	nextRouter: {
+// 		Provider: RouterContext.Provider,
+// 	},
+// };
+
+const preview: Preview = {
+	parameters: {
+		actions: { argTypesRegex: '^on[A-Z].*' },
+		controls: {
+			matchers: {
+				color: /(background|color)$/i,
+				date: /Date$/,
+			},
+		},
+		viewport: {
+			viewports: makeViewports(),
 		},
 	},
-	viewport: {
-		viewports: makeViewports(),
-	},
-	nextRouter: {
-		Provider: RouterContext.Provider,
-	},
+	globalTypes,
+	decorators: [
+		(Story, context) => {
+			const theme = getTheme(context.globals.brand);
+			const palette = context.globals.palette;
+			return (
+				<Core theme={theme}>
+					<Box
+						width="100%"
+						minHeight="100vh"
+						palette={palette}
+						background="body"
+					>
+						<Story />
+					</Box>
+				</Core>
+			);
+		},
+	],
 };
 
-const withBrandTheme: DecoratorFn = (Story, context) => {
-	const theme = getTheme(context.globals.brand);
-	const palette = context.globals.palette;
-	return (
-		<Fragment>
-			<Core theme={theme} linkComponent={LinkComponent}>
-				<Box width="100%" minHeight="100vh" palette={palette} background="body">
-					<Story />
-				</Box>
-			</Core>
-		</Fragment>
-	);
-};
-
-export const decorators = [withBrandTheme];
+export default preview;
