@@ -7,6 +7,8 @@ import {
 	TableCaption,
 	TableCell,
 	TableHead,
+	TableHeader,
+	TableHeaderSortable,
 	TableWrapper,
 } from '@ag.ds-next/react/table';
 import { TextLink } from '@ag.ds-next/react/text-link';
@@ -20,10 +22,6 @@ import {
 import { Avatar } from '@ag.ds-next/react/avatar';
 import { Flex } from '@ag.ds-next/react/box';
 import { GetDataSort } from '../lib/getData';
-import {
-	DashboardTableHeader,
-	DashboardTableHeaderBaseProps,
-} from './DashboardTableHeader';
 
 const DashboardTableRowAssignee = ({
 	assignee,
@@ -108,6 +106,18 @@ export const DashboardTable = forwardRef<HTMLTableElement, DashboardTableProps>(
 									width,
 									isSortable: isFieldSortable,
 								}) => {
+									if (!isTableSortable || !isFieldSortable) {
+										return (
+											<TableHeader
+												key={sortKey}
+												textAlign={textAlign}
+												width={width}
+											>
+												{label}
+											</TableHeader>
+										);
+									}
+
 									const isFieldTheActiveSortField = sort?.field === sortKey;
 									const clickHandler = () =>
 										setSort?.({
@@ -119,16 +129,15 @@ export const DashboardTable = forwardRef<HTMLTableElement, DashboardTableProps>(
 										});
 
 									return (
-										<DashboardTableHeader
+										<TableHeaderSortable
 											key={sortKey}
 											textAlign={textAlign}
 											width={width}
-											isSortable={isTableSortable && isFieldSortable}
-											sort={isFieldTheActiveSortField ? sort.order : undefined}
+											sort={isFieldTheActiveSortField ? sort?.order : undefined}
 											onClick={clickHandler}
 										>
 											{label}
-										</DashboardTableHeader>
+										</TableHeaderSortable>
 									);
 								}
 							)}
