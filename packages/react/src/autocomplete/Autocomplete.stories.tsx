@@ -1,4 +1,5 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { COUNTRY_OPTIONS } from '../combobox/test-utils';
 import { Autocomplete } from './Autocomplete';
 
 export default {
@@ -7,20 +8,11 @@ export default {
 } as ComponentMeta<typeof Autocomplete>;
 
 const defaultArgs = {
-	label: 'Find your state',
+	label: 'Find your country',
 	hint: 'Start typing to see results',
 	loadOptions: async function loadOptions() {
 		await new Promise((resolve) => setTimeout(resolve, 1000));
-		return [
-			{ label: 'Australian Capital Territory', value: 'act' },
-			{ label: 'New South Wales', value: 'nsw' },
-			{ label: 'Northern Territory', value: 'nt' },
-			{ label: 'Queensland', value: 'qld' },
-			{ label: 'South Australia', value: 'sa' },
-			{ label: 'Tasmania', value: 'tas' },
-			{ label: 'Victoria', value: 'vic' },
-			{ label: 'Western Australia', value: 'wa' },
-		];
+		return COUNTRY_OPTIONS;
 	},
 };
 
@@ -55,7 +47,7 @@ export const Invalid = Template.bind({});
 Invalid.args = {
 	...defaultArgs,
 	invalid: true,
-	message: 'City is required',
+	message: 'Country is required',
 };
 
 export const Block = Template.bind({});

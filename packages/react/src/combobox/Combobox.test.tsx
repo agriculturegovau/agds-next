@@ -1,7 +1,7 @@
 import '@testing-library/jest-dom';
 import 'html-validate/jest';
 import userEvent from '@testing-library/user-event';
-import { render, cleanup } from '../../../../test-utils';
+import { render, cleanup, act } from '../../../../test-utils';
 import { Combobox } from './Combobox';
 
 afterEach(cleanup);
@@ -53,7 +53,7 @@ describe('Combobox', () => {
 		if (!input) return;
 
 		// Focus the input and start type a search term
-		input.focus();
+		act(() => input.focus());
 		expect(input).toHaveFocus();
 		await userEvent.type(input, 'capital');
 		expect(input.value).toBe('capital');

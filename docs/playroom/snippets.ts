@@ -918,7 +918,12 @@ items={[
 	{
 		group: 'Combobox',
 		name: 'Combobox',
-		code: `<Combobox label="Select country" options={[{ value: 'a', label: 'Option A' }, { value: 'b', label: 'Option B' }, { value: 'c', label: 'Option C' }]} />`,
+		code: `<Combobox label="Select option" options={[{ value: 'a', label: 'Option A' }, { value: 'b', label: 'Option B' }, { value: 'c', label: 'Option C' }]} />`,
+	},
+	{
+		group: 'Combobox',
+		name: 'ComboboxMulti',
+		code: `<ComboboxMulti label="Select option" options={[{ value: 'a', label: 'Option A' }, { value: 'b', label: 'Option B' }, { value: 'c', label: 'Option C' }]} />`,
 	},
 	{
 		group: 'Details',

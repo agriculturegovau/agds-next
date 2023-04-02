@@ -1,15 +1,22 @@
-import { ReactNode, useEffect, useMemo, useRef, useState } from 'react';
+import {
+	ReactNode,
+	useCallback,
+	useEffect,
+	useMemo,
+	useRef,
+	useState,
+} from 'react';
+import { useCombobox, useMultipleSelection } from 'downshift';
 import { useDebounce } from 'use-debounce';
-import { useCombobox } from 'downshift';
 import { FieldMaxWidth } from '../core';
-import { ComboboxBase } from './ComboboxBase';
+import { ComboboxMultiBase } from './ComboboxBase';
 import {
 	DefaultComboboxOption,
-	filterOptions,
 	useComboboxInputId,
+	filterOptions,
 } from './utils';
 
-export type ComboboxAsyncProps<Option extends DefaultComboboxOption> = {
+export type ComboboxAsyncMultiProps<Option extends DefaultComboboxOption> = {
 	/** Describes the purpose of the field. */
 	label: string;
 	/** If true, "(optional)" will never be appended to the label. */
@@ -33,34 +40,26 @@ export type ComboboxAsyncProps<Option extends DefaultComboboxOption> = {
 	/** A string specifying a name for the input control. */
 	name?: string;
 	/** The value of the field. */
-	value?: Option | null;
+	value?: Option[] | null;
 	/** Function to be fired following a change event. */
-	onChange?: (value: Option | null) => void;
+	onChange?: (value: Option[] | null) => void;
 	/** Function to be used when options need to be loaded over the network. */
 	loadOptions: (inputValue: string) => Promise<Option[]>;
 	/** Used to override the default item rendering.  */
 	renderItem?: (item: Option, inputValue: string) => ReactNode;
 	/** Message to display when no options match the users search term. */
 	emptyResultsMessage?: string;
-	/** If true, the clear button will be rendered. */
-	clearable?: boolean;
-	/** If true, the dropdown trigger will be rendered. */
-	showDropdownTrigger?: boolean;
-	/** If true, the dropdown will open when the user focuses on the element  */
-	openDropdownOnFocus?: boolean;
 };
 
-export function ComboboxAsync<Option extends DefaultComboboxOption>({
+export function ComboboxAsyncMulti<Option extends DefaultComboboxOption>({
 	id,
 	value,
 	onChange,
 	loadOptions: loadOptionsProp,
-	clearable = false,
-	showDropdownTrigger = true,
-	openDropdownOnFocus = true,
 	...props
-}: ComboboxAsyncProps<Option>) {
+}: ComboboxAsyncMultiProps<Option>) {
 	const inputId = useComboboxInputId(id);
+	const [inputValue, setInputValue] = useState('');
 
 	const [state, setState] = useState<{
 		inputItems: Option[] | undefined;
@@ -72,35 +71,69 @@ export function ComboboxAsync<Option extends DefaultComboboxOption>({
 		networkError: false,
 	});
 
-	const isInputDirty = useRef(false);
+	const [selectedItems, setSelectedItems] = useState<Option[]>([]);
 
-	const combobox = useCombobox<Option>({
-		selectedItem: value,
+	const multiSelection = useMultipleSelection({
+		selectedItems,
+		onStateChange({ selectedItems: newSelectedItems, type }) {
+			switch (type) {
+				case useMultipleSelection.stateChangeTypes.SelectedItemKeyDownBackspace:
+				case useMultipleSelection.stateChangeTypes.SelectedItemKeyDownDelete:
+				case useMultipleSelection.stateChangeTypes.DropdownKeyDownBackspace:
+				case useMultipleSelection.stateChangeTypes.FunctionRemoveSelectedItem:
+					setSelectedItems(newSelectedItems ?? []);
+					break;
+				default:
+					break;
+			}
+		},
+	});
+
+	const items = useMemo(
+		() => filterOptions(state.inputItems ?? [], inputValue, selectedItems),
+		[state.inputItems, inputValue, selectedItems]
+	);
+
+	const combobox = useCombobox({
+		inputValue,
 		inputId,
-		items: state.inputItems ?? [],
-		defaultHighlightedIndex: 0,
+		items,
 		itemToString: (item) => item?.label ?? '',
-		onSelectedItemChange: ({ selectedItem = null }) => {
-			onChange?.(selectedItem);
-		},
-		onInputValueChange: () => {
-			isInputDirty.current = true;
-		},
-		stateReducer: (state, actionAndChanges) => {
-			const { type: actionAndChangesType, changes } = actionAndChanges;
-			switch (actionAndChangesType) {
-				case useCombobox.stateChangeTypes.InputFocus:
-					// In downshift v7 the dropdown is opened automatically when the user focuses
-					// We want to disable this functionality in the `Autocomplete` component
-					return { ...changes, isOpen: openDropdownOnFocus };
-				// Reset the input value when the menu is closed
-				case useCombobox.stateChangeTypes.InputBlur:
+		selectedItem: null, // TODO
+		defaultHighlightedIndex: 0, // after selection, highlight the first item.
+		stateReducer(state, actionAndChanges) {
+			const { changes, type } = actionAndChanges;
+			switch (type) {
+				case useCombobox.stateChangeTypes.InputKeyDownEnter:
+				case useCombobox.stateChangeTypes.ItemClick:
 					return {
 						...changes,
-						inputValue: state.selectedItem?.label ?? '',
+						isOpen: true, // keep the menu open after selection.
+						highlightedIndex: 0, // with the first option highlighted.
 					};
 				default:
 					return changes;
+			}
+		},
+		onStateChange({
+			inputValue: newInputValue = '',
+			type,
+			selectedItem: newSelectedItem,
+		}) {
+			switch (type) {
+				case useCombobox.stateChangeTypes.InputKeyDownEnter:
+				case useCombobox.stateChangeTypes.ItemClick:
+				case useCombobox.stateChangeTypes.InputBlur:
+					if (newSelectedItem) {
+						setSelectedItems([...selectedItems, newSelectedItem]);
+					}
+					setInputValue('');
+					break;
+				case useCombobox.stateChangeTypes.InputChange:
+					setInputValue(newInputValue);
+					break;
+				default:
+					break;
 			}
 		},
 	});
@@ -114,7 +147,7 @@ export function ComboboxAsync<Option extends DefaultComboboxOption>({
 			// User has just started typing, so this avoids the flicker of the empty state
 			(!debouncedInputValue && combobox.inputValue) ||
 			// User has manually triggered the dropdown menu open
-			(showDropdownTrigger && combobox.isOpen && !combobox.selectedItem)
+			(combobox.isOpen && !combobox.selectedItem)
 		) {
 			return true;
 		}
@@ -128,9 +161,7 @@ export function ComboboxAsync<Option extends DefaultComboboxOption>({
 			// Dropdown is closed
 			!combobox.isOpen ||
 			// If a selection has just been made, no not need to load options again
-			(selectedItemLabel && selectedItemLabel === debouncedInputValue) ||
-			// When there is no dropdown trigger (e.g. Autocomplete), only load the options if the user has interacted with the input
-			(!showDropdownTrigger && !isInputDirty.current)
+			(selectedItemLabel && selectedItemLabel === debouncedInputValue)
 		) {
 			return false;
 		}
@@ -140,7 +171,6 @@ export function ComboboxAsync<Option extends DefaultComboboxOption>({
 		combobox.inputValue,
 		combobox.isOpen,
 		combobox.selectedItem,
-		showDropdownTrigger,
 		state.loading,
 		state.networkError,
 	]);
@@ -170,12 +200,11 @@ export function ComboboxAsync<Option extends DefaultComboboxOption>({
 			try {
 				// Load the options
 				const inputItems = await loadOptionsProp(inputValue);
-				const filteredInputItems = filterOptions(inputItems, inputValue);
 				// Update the cache
-				cache.current[inputValue] = filteredInputItems;
+				cache.current[inputValue] = inputItems;
 				// Update the UI
 				setState({
-					inputItems: filteredInputItems,
+					inputItems: inputItems,
 					loading: false,
 					networkError: false,
 				});
@@ -188,15 +217,25 @@ export function ComboboxAsync<Option extends DefaultComboboxOption>({
 		loadOptions(shouldLoadOptions);
 	}, [shouldLoadOptions, debouncedInputValue, loadOptionsProp]);
 
+	const inputRef = useRef<HTMLInputElement>(null);
+
+	const onClear = useCallback(() => {
+		setSelectedItems([]);
+		inputRef.current?.focus();
+	}, []);
+
 	return (
-		<ComboboxBase
+		<ComboboxMultiBase
 			combobox={combobox}
+			multiSelection={multiSelection}
 			inputId={inputId}
+			inputItems={items}
 			loading={state.loading}
 			networkError={state.networkError}
-			inputItems={state.inputItems}
-			showDropdownTrigger={showDropdownTrigger}
-			clearable={clearable}
+			selectedItems={selectedItems}
+			onClear={onClear}
+			inputRef={inputRef}
+			clearable
 			{...props}
 		/>
 	);

@@ -1,12 +1,13 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { useState } from 'react';
-import { Combobox } from './Combobox';
+import { ComboboxMulti } from './ComboboxMulti';
 import { COUNTRY_OPTIONS } from './test-utils';
 
 export default {
-	title: 'forms/Combobox/Combobox',
-	component: Combobox,
-} as ComponentMeta<typeof Combobox>;
+	title: 'forms/Combobox/ComboboxMulti',
+} as ComponentMeta<typeof ComboboxMulti>;
+
+type Option = (typeof COUNTRY_OPTIONS)[number];
 
 const defaultArgs = {
 	label: 'Select country',
@@ -14,11 +15,9 @@ const defaultArgs = {
 	options: COUNTRY_OPTIONS,
 };
 
-type Option = (typeof COUNTRY_OPTIONS)[number];
-
-const Template: ComponentStory<typeof Combobox> = (args) => {
-	const [value, onChange] = useState<Option | null>(null);
-	return <Combobox {...args} value={value} onChange={onChange} />;
+const Template: ComponentStory<typeof ComboboxMulti> = (args) => {
+	const [value, onChange] = useState<Option[] | null>(null);
+	return <ComboboxMulti {...args} value={value} onChange={onChange} />;
 };
 
 export const Basic = Template.bind({});

@@ -1,35 +1,27 @@
 ---
 title: Combobox
-description: This component lets users select from a list of options. It is especially useful when there are many options to choose from.
+description: This component allows users to select from a list of options. It's especially useful when there are many options to choose from.
 group: Forms
-storybookPath: /story/forms-combobox--basic
+storybookPath: /story/forms-combobox-combobox--basic
 figmaGalleryNodeId: 12925%3A104632
 ---
+
+All Combobox components are [controlled components](https://reactjs.org/docs/forms.html#controlled-components) which means consumers of these components need to manage the state of these components by using the `value` and `onChange` props.
 
 ```jsx live
 () => {
 	const [value, setValue] = React.useState(null);
 	return (
 		<Combobox
-			label="Select state"
+			label="Select country"
+			hint="Start typing to see results"
 			value={value}
-			onChange={(value) => setValue(value)}
-			options={[
-				{ label: 'Australian Capital Territory', value: 'act' },
-				{ label: 'New South Wales', value: 'nsw' },
-				{ label: 'Northern Territory', value: 'nt' },
-				{ label: 'Queensland', value: 'qld' },
-				{ label: 'South Australia', value: 'sa' },
-				{ label: 'Tasmania', value: 'tas' },
-				{ label: 'Victoria', value: 'vic' },
-				{ label: 'Western Australia', value: 'wa' },
-			]}
+			onChange={setValue}
+			options={COUNTRY_OPTIONS}
 		/>
 	);
 };
 ```
-
-By default, the `Combobox` component does not expand to fill the available space.
 
 <DoHeading />
 
@@ -45,6 +37,90 @@ By default, the `Combobox` component does not expand to fill the available space
 - use if the list of possible results is small – use Select
 - leave the list open once an option is selected.
 
+## Combobox
+
+Use the `Combobox` component when users can choose a single item from a predefined list of options.
+
+```jsx live
+() => {
+	const [value, setValue] = React.useState(null);
+	return (
+		<Combobox
+			label="Select country"
+			hint="Start typing to see results"
+			value={value}
+			onChange={setValue}
+			options={COUNTRY_OPTIONS}
+		/>
+	);
+};
+```
+
+## ComboboxAsync
+
+Use the `ComboboxAsync` component when users can choose a single item from a list of options that needs to be fetched over the network.
+
+```jsx live
+() => {
+	const [value, setValue] = React.useState(null);
+	return (
+		<ComboboxAsync
+			label="Select country"
+			hint="Start typing to see results"
+			value={value}
+			onChange={setValue}
+			loadOptions={async function loadOptions(inputValue) {
+				// Simulate a slow network call
+				await new Promise((resolve) => setTimeout(resolve, 1500));
+				return COUNTRY_OPTIONS;
+			}}
+		/>
+	);
+};
+```
+
+## ComboboxMulti
+
+Use the `ComboboxMulti` component when users can choose multiple items from a predefined list of options.
+
+```jsx live
+() => {
+	const [value, setValue] = React.useState(null);
+	return (
+		<ComboboxMulti
+			label="Select country"
+			hint="Start typing to see results"
+			value={value}
+			onChange={setValue}
+			options={COUNTRY_OPTIONS}
+		/>
+	);
+};
+```
+
+## ComboboxAsyncMulti
+
+Use the `ComboboxAsyncMulti` component when users can choose multiple items from a list of options that needs to be fetched over the network.
+
+```jsx live
+() => {
+	const [value, setValue] = React.useState(null);
+	return (
+		<ComboboxAsyncMulti
+			label="Select country"
+			hint="Start typing to see results"
+			value={value}
+			onChange={setValue}
+			loadOptions={async function loadOptions(inputValue) {
+				// Simulate a slow network call
+				await new Promise((resolve) => setTimeout(resolve, 1500));
+				return COUNTRY_OPTIONS;
+			}}
+		/>
+	);
+};
+```
+
 ## Block
 
 Use the `block` prop to expand the component to fill the available space.
@@ -54,20 +130,12 @@ Use the `block` prop to expand the component to fill the available space.
 	const [value, setValue] = React.useState(null);
 	return (
 		<Combobox
-			label="Select state"
+			label="Select country"
+			hint="Start typing to see results"
 			block
 			value={value}
-			onChange={(value) => setValue(value)}
-			options={[
-				{ label: 'Australian Capital Territory', value: 'act' },
-				{ label: 'New South Wales', value: 'nsw' },
-				{ label: 'Northern Territory', value: 'nt' },
-				{ label: 'Queensland', value: 'qld' },
-				{ label: 'South Australia', value: 'sa' },
-				{ label: 'Tasmania', value: 'tas' },
-				{ label: 'Victoria', value: 'vic' },
-				{ label: 'Western Australia', value: 'wa' },
-			]}
+			onChange={setValue}
+			options={COUNTRY_OPTIONS}
 		/>
 	);
 };
@@ -90,20 +158,12 @@ The usage of `hideOptionalLabel` should be reserved for inputs that filter data 
 	const [value, setValue] = React.useState(null);
 	return (
 		<Combobox
-			label="Select state"
+			label="Select country"
+			hint="Start typing to see results"
 			hideOptionalLabel
 			value={value}
-			onChange={(value) => setValue(value)}
-			options={[
-				{ label: 'Australian Capital Territory', value: 'act' },
-				{ label: 'New South Wales', value: 'nsw' },
-				{ label: 'Northern Territory', value: 'nt' },
-				{ label: 'Queensland', value: 'qld' },
-				{ label: 'South Australia', value: 'sa' },
-				{ label: 'Tasmania', value: 'tas' },
-				{ label: 'Victoria', value: 'vic' },
-				{ label: 'Western Australia', value: 'wa' },
-			]}
+			onChange={setValue}
+			options={COUNTRY_OPTIONS}
 		/>
 	);
 };
@@ -119,53 +179,33 @@ Use the `invalid` prop to indicate if the user input is invalid (does not valida
 	const invalid = !value;
 	return (
 		<Combobox
-			label="Select state"
+			label="Select country"
+			hint="Start typing to see results"
 			invalid={invalid}
-			message={invalid ? 'City is required' : undefined}
+			message={invalid ? 'Country is required' : undefined}
 			value={value}
-			onChange={(value) => setValue(value)}
-			options={[
-				{ label: 'Australian Capital Territory', value: 'act' },
-				{ label: 'New South Wales', value: 'nsw' },
-				{ label: 'Northern Territory', value: 'nt' },
-				{ label: 'Queensland', value: 'qld' },
-				{ label: 'South Australia', value: 'sa' },
-				{ label: 'Tasmania', value: 'tas' },
-				{ label: 'Victoria', value: 'vic' },
-				{ label: 'Western Australia', value: 'wa' },
-			]}
+			onChange={setValue}
+			options={COUNTRY_OPTIONS}
 		/>
 	);
 };
 ```
 
-## ComboboxAsync
+## Disabled
 
-Use the `ComboboxAsync` component when you need to populate options from a network request.
+Disabled input elements are unusable and can not be clicked. This prevents a user from interacting with the input element until another action is complete.
 
 ```jsx live
 () => {
 	const [value, setValue] = React.useState(null);
 	return (
-		<ComboboxAsync
-			label="Select state"
+		<Combobox
+			label="Select country"
 			hint="Start typing to see results"
+			disabled
 			value={value}
-			onChange={(value) => setValue(value)}
-			loadOptions={async function loadOptions(inputValue) {
-				// Simulate a slow network call
-				await new Promise((resolve) => setTimeout(resolve, 1500));
-				return [
-					{ label: 'Australian Capital Territory', value: 'act' },
-					{ label: 'New South Wales', value: 'nsw' },
-					{ label: 'Northern Territory', value: 'nt' },
-					{ label: 'Queensland', value: 'qld' },
-					{ label: 'South Australia', value: 'sa' },
-					{ label: 'Tasmania', value: 'tas' },
-					{ label: 'Victoria', value: 'vic' },
-					{ label: 'Western Australia', value: 'wa' },
-				];
-			}}
+			onChange={setValue}
+			options={COUNTRY_OPTIONS}
 		/>
 	);
 };

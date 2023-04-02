@@ -21,13 +21,22 @@ describe('filterOptions', () => {
 
 describe('splitLabel', () => {
 	test('it should split a label correctly', () => {
-		expect(splitLabel('Australia', '')).toEqual(['Australia']);
-		expect(splitLabel('Australia', ' ')).toEqual(['Australia']);
-		expect(splitLabel('Australia', 'Lorem')).toEqual(['Australia']);
-		expect(splitLabel('Australia', 'AUS')).toEqual(['Aus', 'tralia']);
-		expect(splitLabel('Australia', 'aus')).toEqual(['Aus', 'tralia']);
-		expect(splitLabel('Australia', 'stra')).toEqual(['Au', 'stra', 'lia']);
-		expect(splitLabel('Australia', 'STRA')).toEqual(['Au', 'stra', 'lia']);
-		expect(splitLabel('Australia', 'ia')).toEqual(['Austral', 'ia']);
+		const option = 'Australia';
+		expect(splitLabel(option, '')).toEqual(['Australia']);
+		expect(splitLabel(option, ' ')).toEqual(['Australia']);
+		expect(splitLabel(option, 'Lorem')).toEqual(['Australia']);
+		expect(splitLabel(option, 'AUS')).toEqual(['Aus', 'tralia']);
+		expect(splitLabel(option, 'aus')).toEqual(['Aus', 'tralia']);
+		expect(splitLabel(option, 'stra')).toEqual(['Au', 'stra', 'lia']);
+		expect(splitLabel(option, 'STRA')).toEqual(['Au', 'stra', 'lia']);
+		expect(splitLabel(option, 'ia')).toEqual(['Austral', 'ia']);
+	});
+
+	test('it should split a multi word labels correctly', () => {
+		const option = 'New Zealand';
+		expect(splitLabel(option, '')).toEqual(['New Zealand']);
+		expect(splitLabel(option, 'New')).toEqual(['New', ' Zealand']);
+		expect(splitLabel(option, 'New ')).toEqual(['New ', 'Zealand']);
+		expect(splitLabel(option, 'New Z')).toEqual(['New Z', 'ealand']);
 	});
 });

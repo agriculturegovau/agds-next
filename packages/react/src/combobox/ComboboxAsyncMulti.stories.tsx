@@ -1,12 +1,11 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { useState } from 'react';
-import { Combobox } from './Combobox';
+import { ComboboxAsyncMulti } from './ComboboxAsyncMulti';
 import { COUNTRY_OPTIONS } from './test-utils';
 
 export default {
-	title: 'forms/Combobox/Combobox',
-	component: Combobox,
-} as ComponentMeta<typeof Combobox>;
+	title: 'forms/Combobox/ComboboxAsyncMulti',
+} as ComponentMeta<typeof ComboboxAsyncMulti>;
 
 const defaultArgs = {
 	label: 'Select country',
@@ -16,9 +15,20 @@ const defaultArgs = {
 
 type Option = (typeof COUNTRY_OPTIONS)[number];
 
-const Template: ComponentStory<typeof Combobox> = (args) => {
-	const [value, onChange] = useState<Option | null>(null);
-	return <Combobox {...args} value={value} onChange={onChange} />;
+const Template: ComponentStory<typeof ComboboxAsyncMulti> = (args) => {
+	const [value, onChange] = useState<Option[] | null>(null);
+	return (
+		<ComboboxAsyncMulti
+			{...args}
+			value={value}
+			onChange={onChange}
+			loadOptions={async function loadOptions() {
+				// Simulate a slow network connection
+				await new Promise((resolve) => setTimeout(resolve, 1000));
+				return COUNTRY_OPTIONS;
+			}}
+		/>
+	);
 };
 
 export const Basic = Template.bind({});

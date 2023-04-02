@@ -175,7 +175,12 @@ export {
 	SkeletonBox,
 } from '@ag.ds-next/react/skeleton';
 export { Autocomplete } from '@ag.ds-next/react/autocomplete';
-export { Combobox, ComboboxAsync } from '@ag.ds-next/react/combobox';
+export {
+	Combobox,
+	ComboboxMulti,
+	ComboboxAsync,
+	ComboboxAsyncMulti,
+} from '@ag.ds-next/react/combobox';
 export { Details } from '@ag.ds-next/react/details';
 export {
 	SummaryList,
@@ -185,3 +190,6 @@ export {
 	SummaryListItemAction,
 } from '@ag.ds-next/react/summary-list';
 export { FileInput } from '@ag.ds-next/react/file-input';
+
+// Used to populate options on documentation site and playroom
+export { COUNTRY_OPTIONS } from '@ag.ds-next/react/src/combobox/test-utils';
