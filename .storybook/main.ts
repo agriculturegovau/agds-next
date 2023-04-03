@@ -34,6 +34,7 @@ const config: StorybookConfig = {
 	viteFinal: async function viteConfig(config) {
 		const entryPoints = await getEntryPoints();
 		const include = config.build?.commonjsOptions?.include;
+
 		return {
 			...config,
 			define: {
@@ -51,6 +52,7 @@ const config: StorybookConfig = {
 					include: [
 						...(include ? (Array.isArray(include) ? include : [include]) : []),
 						...entryPoints,
+						/(packages\/react.+)/,
 						/node_modules/,
 					],
 				},
