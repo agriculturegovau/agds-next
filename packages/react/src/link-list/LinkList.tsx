@@ -2,8 +2,12 @@ import { ReactNode } from 'react';
 import { LinkListContainer } from './LinkListContainer';
 import { LinkListItem, LinkListItemProps } from './LinkListItem';
 
+export type LinkListLink = Omit<LinkListItemProps, 'children'> & {
+	label: ReactNode;
+};
+
 export type LinkListProps = {
-	links: (Omit<LinkListItemProps, 'children'> & { label: ReactNode })[];
+	links: LinkListLink[];
 	horizontal?: boolean;
 };
 
