@@ -1,3 +1,4 @@
+import { PropsWithChildren } from 'react';
 import { Box, Flex } from '../box';
 import { BaseButton } from '../button';
 import { boxPalette } from '../core';
@@ -6,7 +7,10 @@ import { TableHeaderProps } from './TableHeader';
 
 export type TableSortDirection = 'ASC' | 'DESC' | undefined;
 
-type TableHeaderSortableProps = TableHeaderProps & {
+type TableHeaderSortableProps = Pick<
+	TableHeaderProps,
+	'textAlign' | 'width'
+> & {
 	sort: TableSortDirection;
 	onClick?: () => void;
 };
@@ -19,7 +23,7 @@ export const TableHeaderSortable = ({
 	width,
 	sort,
 	onClick,
-}: TableHeaderSortableProps) => {
+}: PropsWithChildren<TableHeaderSortableProps>) => {
 	const Icon = sort === 'DESC' ? ArrowUpIcon : ArrowDownIcon;
 
 	return (
@@ -27,7 +31,6 @@ export const TableHeaderSortable = ({
 			as="th"
 			scope="col"
 			aria-sort={getSortLabel(sort)}
-			focus
 			width={width}
 			css={{
 				textAlign,
@@ -42,7 +45,6 @@ export const TableHeaderSortable = ({
 				as={BaseButton}
 				gap={0.5}
 				onClick={onClick}
-				type="button"
 				padding={0.75}
 				fontWeight="bold"
 				width="100%"
