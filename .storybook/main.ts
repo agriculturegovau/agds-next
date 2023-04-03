@@ -43,7 +43,10 @@ const config: StorybookConfig = {
 			},
 			optimizeDeps: {
 				...config.optimizeDeps,
-				include: [...(config.optimizeDeps?.include ?? []), ...entryPoints],
+				include: [
+					...(config.optimizeDeps?.include ?? []),
+					...entryPoints.map((name) => `@ag.ds-next/react/${name}`),
+				],
 			},
 			build: {
 				...config.build,
@@ -51,8 +54,7 @@ const config: StorybookConfig = {
 					...config.build?.commonjsOptions,
 					include: [
 						...(include ? (Array.isArray(include) ? include : [include]) : []),
-						...entryPoints,
-						/(packages\/react.+)/,
+						/(packages\/react.+.cjs.js)/,
 						/node_modules/,
 					],
 				},
@@ -73,5 +75,5 @@ async function getEntryPoints() {
 
 	return folderContents
 		.filter(({ name }) => existsSync(path.join(basePath, name, 'package.json')))
-		.map(({ name }) => `@ag.ds-next/react/${name}`);
+		.map(({ name }) => name);
 }
