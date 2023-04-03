@@ -37,8 +37,11 @@ export default function AboutPage() {
 						</p>
 
 						<p>
-							Its primary purpose is for building the Export Service, however is
-							also in use in other areas of the Department.
+							Its primary purpose is for building the{' '}
+							<TextLink href="https://exports.agriculture.gov.au/">
+								Export Service
+							</TextLink>
+							, however is also in use in other areas of the Department.
 						</p>
 
 						<p>The toolkit includes:</p>
