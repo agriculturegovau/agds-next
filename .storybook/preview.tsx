@@ -1,9 +1,37 @@
-import React, { Fragment } from 'react';
 import { Preview } from '@storybook/react';
+import { RouterContext } from 'next/dist/shared/lib/router-context';
 import { Box } from '../packages/react/src/box';
 import { Core } from '../packages/react/src/core';
-import { theme as agriculture, theme } from '../packages/react/src/ag-branding';
-// import { LinkComponent } from './components/LinkComponent';
+import { theme as agriculture } from '../packages/react/src/ag-branding';
+import { LinkComponent } from './components/LinkComponent';
+
+const storybookThemes = {
+	gold: {},
+	agriculture,
+} as const;
+
+type StorybookThemes = keyof typeof storybookThemes;
+
+const globalTypes = {
+	brand: {
+		name: 'Brand',
+		description: 'Global branding',
+		defaultValue: 'agriculture',
+		toolbar: {
+			title: 'Brand',
+			icon: 'circlehollow',
+			items: Object.keys(storybookThemes),
+		},
+	},
+	palette: {
+		name: 'Palette',
+		defaultValue: 'light',
+		toolbar: {
+			title: 'Palette',
+			items: ['light', 'dark'],
+		},
+	},
+};
 
 function makeViewports() {
 	const viewports = [
@@ -50,63 +78,31 @@ function makeViewports() {
 	);
 }
 
-const storybookThemes = {
-	gold: {},
-	agriculture,
-} as const;
-
-type StorybookThemes = keyof typeof storybookThemes;
-
-const getTheme = (brand: StorybookThemes) => {
-	return storybookThemes[brand];
-};
-
-const globalTypes = {
-	brand: {
-		name: 'Brand',
-		description: 'Global branding',
-		defaultValue: 'agriculture',
-		toolbar: {
-			title: 'Brand',
-			icon: 'circlehollow',
-			items: Object.keys(storybookThemes),
+const parameters = {
+	actions: { argTypesRegex: '^on[A-Z].*' },
+	controls: {
+		matchers: {
+			color: /(background|color)$/i,
+			date: /Date$/,
 		},
 	},
-	palette: {
-		name: 'Palette',
-		defaultValue: 'light',
-		toolbar: {
-			title: 'Palette',
-			items: ['light', 'dark'],
-		},
+	viewport: {
+		viewports: makeViewports(),
+	},
+	nextRouter: {
+		Provider: RouterContext.Provider,
 	},
 };
-
-// 	nextRouter: {
-// 		Provider: RouterContext.Provider,
-// 	},
-// };
 
 const preview: Preview = {
-	parameters: {
-		actions: { argTypesRegex: '^on[A-Z].*' },
-		controls: {
-			matchers: {
-				color: /(background|color)$/i,
-				date: /Date$/,
-			},
-		},
-		viewport: {
-			viewports: makeViewports(),
-		},
-	},
+	parameters,
 	globalTypes,
 	decorators: [
 		(Story, context) => {
-			const theme = getTheme(context.globals.brand);
+			const theme = storybookThemes[context.globals.brand as StorybookThemes];
 			const palette = context.globals.palette;
 			return (
-				<Core theme={theme}>
+				<Core theme={theme} linkComponent={LinkComponent}>
 					<Box
 						width="100%"
 						minHeight="100vh"
