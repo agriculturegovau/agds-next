@@ -41,6 +41,11 @@ jobs:
           yarn example:build
           yarn example-form:build
           yarn docs:build
+        env:
+          # Github has a maximum RAM size of 7 GiB by default
+          # Building storybook requires extra RAM, so we are bumping the `max-old-space-size` to 6 GiB
+          # https://docs.github.com/en/actions/using-github-hosted-runners/about-github-hosted-runners#supported-runners-and-hardware-resources
+          NODE_OPTIONS: --max-old-space-size=6144
 
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4

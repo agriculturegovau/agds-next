@@ -10,7 +10,7 @@ export default {
 	title: 'navigation/SkipLinks',
 	component: SkipLinks,
 	subcomponents: { SkipLinkContainer, SkipLinkItem },
-} as ComponentMeta<typeof SkipLinkItem>;
+} as ComponentMeta<typeof SkipLinks>;
 
 export const Basic = () => (
 	<Fragment>

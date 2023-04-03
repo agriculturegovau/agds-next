@@ -49,6 +49,10 @@ jobs:
           yarn docs:build
         env:
           BASE_PATH: /pr-preview/pr-${{ github.event.number }}
+          # Github has a maximum RAM size of 7 GiB by default
+          # Building storybook requires extra RAM, so we are bumping the `max-old-space-size` to 6 GiB
+          # https://docs.github.com/en/actions/using-github-hosted-runners/about-github-hosted-runners#supported-runners-and-hardware-resources
+          NODE_OPTIONS: --max-old-space-size=6144
 
       - name: Deploy preview
         uses: rossjrw/pr-preview-action@v1

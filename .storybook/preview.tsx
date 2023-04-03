@@ -1,10 +1,37 @@
+import { Preview } from '@storybook/react';
 import { RouterContext } from 'next/dist/shared/lib/router-context';
-import { DecoratorFn } from '@storybook/react';
-import { Box } from '@ag.ds-next/react/box';
-import { Core } from '@ag.ds-next/react/core';
-import { theme as agriculture } from '@ag.ds-next/react/ag-branding';
+import { Box } from '../packages/react/src/box';
+import { Core } from '../packages/react/src/core';
+import { theme as agriculture } from '../packages/react/src/ag-branding';
 import { LinkComponent } from './components/LinkComponent';
-import { Fragment } from 'react';
+
+const storybookThemes = {
+	gold: {},
+	agriculture,
+} as const;
+
+type StorybookThemes = keyof typeof storybookThemes;
+
+const globalTypes = {
+	brand: {
+		name: 'Brand',
+		description: 'Global branding',
+		defaultValue: 'agriculture',
+		toolbar: {
+			title: 'Brand',
+			icon: 'circlehollow',
+			items: Object.keys(storybookThemes),
+		},
+	},
+	palette: {
+		name: 'Palette',
+		defaultValue: 'light',
+		toolbar: {
+			title: 'Palette',
+			items: ['light', 'dark'],
+		},
+	},
+};
 
 function makeViewports() {
 	const viewports = [
@@ -51,39 +78,7 @@ function makeViewports() {
 	);
 }
 
-const storybookThemes = {
-	gold: {},
-	agriculture,
-} as const;
-
-type StorybookThemes = keyof typeof storybookThemes;
-
-const getTheme = (brand: StorybookThemes) => {
-	return storybookThemes[brand];
-};
-
-export const globalTypes = {
-	brand: {
-		name: 'Brand',
-		description: 'Global branding',
-		defaultValue: 'agriculture',
-		toolbar: {
-			title: 'Brand',
-			icon: 'circlehollow',
-			items: Object.keys(storybookThemes),
-		},
-	},
-	palette: {
-		name: 'Palette',
-		defaultValue: 'light',
-		toolbar: {
-			title: 'Palette',
-			items: ['light', 'dark'],
-		},
-	},
-};
-
-export const parameters = {
+const parameters = {
 	actions: { argTypesRegex: '^on[A-Z].*' },
 	controls: {
 		matchers: {
@@ -99,18 +94,27 @@ export const parameters = {
 	},
 };
 
-const withBrandTheme: DecoratorFn = (Story, context) => {
-	const theme = getTheme(context.globals.brand);
-	const palette = context.globals.palette;
-	return (
-		<Fragment>
-			<Core theme={theme} linkComponent={LinkComponent}>
-				<Box width="100%" minHeight="100vh" palette={palette} background="body">
-					<Story />
-				</Box>
-			</Core>
-		</Fragment>
-	);
+const preview: Preview = {
+	parameters,
+	globalTypes,
+	decorators: [
+		(Story, context) => {
+			const theme = storybookThemes[context.globals.brand as StorybookThemes];
+			const palette = context.globals.palette;
+			return (
+				<Core theme={theme} linkComponent={LinkComponent}>
+					<Box
+						width="100%"
+						minHeight="100vh"
+						palette={palette}
+						background="body"
+					>
+						<Story />
+					</Box>
+				</Core>
+			);
+		},
+	],
 };
 
-export const decorators = [withBrandTheme];
+export default preview;
