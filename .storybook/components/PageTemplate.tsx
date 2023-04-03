@@ -1,4 +1,4 @@
-import { PropsWithChildren, ReactNode } from 'react';
+import { PropsWithChildren } from 'react';
 import { Logo } from '@ag.ds-next/react/ag-branding';
 import { Box, Stack } from '@ag.ds-next/react/box';
 import { tokens } from '@ag.ds-next/react/core';
