@@ -12,10 +12,6 @@ const aboutLinks: LinkListLink[] = [
 	{ label: 'About', href: '/about' },
 	{ label: 'Roadmap', href: '/roadmap' },
 	{
-		label: 'Github',
-		href: 'https://github.com/steelthreads/agds-next',
-	},
-	{
 		label: 'Exports Service',
 		href: 'https://exports.agriculture.gov.au/',
 	},
@@ -27,8 +23,16 @@ const aboutLinks: LinkListLink[] = [
 
 const toolLinks: LinkListLink[] = [
 	{ label: 'Figma', href: '' },
+	{
+		label: 'Github',
+		href: 'https://github.com/steelthreads/agds-next',
+	},
 	{ label: 'Storybook', href: process.env.NEXT_PUBLIC_STORYBOOK_URL as string },
 	{ label: 'Playroom', href: process.env.NEXT_PUBLIC_PLAYROOM_URL as string },
+	{
+		label: 'Starter kit',
+		href: 'https://github.com/steelthreads/agds-starter-kit',
+	},
 ];
 
 const columnWidths = {
@@ -58,20 +62,6 @@ export const SiteFooter = () => {
 									Tools
 								</Heading>
 								<LinkList links={toolLinks} />
-							</Stack>
-						</Column>
-						<Column columnSpan={columnWidths}>
-							<Stack gap={0.5}>
-								<Heading as="h2" type="h3">
-									Section
-								</Heading>
-								<LinkList
-									links={[
-										{ href: '#', label: 'Link 1' },
-										{ href: '#', label: 'Link 2' },
-										{ href: '#', label: 'Link 3' },
-									]}
-								/>
 							</Stack>
 						</Column>
 					</Columns>
