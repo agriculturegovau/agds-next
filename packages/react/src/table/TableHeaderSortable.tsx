@@ -58,6 +58,7 @@ export const TableHeaderSortable = ({
 					},
 					'&:hover': {
 						backgroundColor: boxPalette.backgroundShade,
+						textDecoration: 'none',
 						svg: {
 							display: 'block',
 							transform: sort ? 'rotate(180deg)' : 'rotate(0deg)',
