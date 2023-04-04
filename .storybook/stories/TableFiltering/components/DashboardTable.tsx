@@ -107,39 +107,39 @@ export const DashboardTable = forwardRef<HTMLTableElement, DashboardTableProps>(
 									width,
 									isSortable: isFieldSortable,
 								}) => {
-									if (!isTableSortable || !isFieldSortable) {
+									if (isTableSortable && isFieldSortable) {
+										const isFieldTheActiveSortField = sort?.field === sortKey;
+										const onClick = () =>
+											setSort?.({
+												field: sortKey,
+												order:
+													sort?.field === sortKey && sort?.order === 'ASC'
+														? 'DESC'
+														: 'ASC',
+											});
 										return (
-											<TableHeader
+											<TableHeaderSortable
 												key={sortKey}
-												scope="col"
 												textAlign={textAlign}
 												width={width}
+												sort={
+													isFieldTheActiveSortField ? sort?.order : undefined
+												}
+												onClick={onClick}
 											>
 												{label}
-											</TableHeader>
+											</TableHeaderSortable>
 										);
 									}
-
-									const isFieldTheActiveSortField = sort?.field === sortKey;
-									const clickHandler = () =>
-										setSort?.({
-											field: sortKey,
-											order:
-												sort?.field === sortKey && sort?.order === 'ASC'
-													? 'DESC'
-													: 'ASC',
-										});
-
 									return (
-										<TableHeaderSortable
+										<TableHeader
 											key={sortKey}
+											scope="col"
 											textAlign={textAlign}
 											width={width}
-											sort={isFieldTheActiveSortField ? sort?.order : undefined}
-											onClick={clickHandler}
 										>
 											{label}
-										</TableHeaderSortable>
+										</TableHeader>
 									);
 								}
 							)}

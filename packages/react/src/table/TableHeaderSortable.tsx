@@ -1,45 +1,46 @@
 import { PropsWithChildren } from 'react';
 import { Box, Flex } from '../box';
 import { BaseButton } from '../button';
-import { boxPalette } from '../core';
+import { boxPalette, ResponsiveProp } from '../core';
 import { ArrowDownIcon, ArrowUpIcon } from '../icon';
-import { TableHeaderProps } from './TableHeader';
 
-export type TableSortDirection = 'ASC' | 'DESC' | undefined;
+export type TableSortDirection = 'ASC' | 'DESC';
 
-type TableHeaderSortableProps = Pick<
-	TableHeaderProps,
-	'textAlign' | 'width'
-> & {
-	sort: TableSortDirection;
+export type TableHeaderSortableProps = {
+	/** The active direction this column is being sorted by. */
+	sort?: TableSortDirection;
+	/** Callback function for when the column header is clicked. */
 	onClick?: () => void;
+	/** Sets the horizontal alignment of the content. */
+	textAlign?: 'left' | 'center' | 'right';
+	/** Sets the width of the column. */
+	width?: ResponsiveProp<string | number>;
 };
 
-/** Used in place of TableHeader when users can click a column header to
+/** Used in place of `TableHeader` when users can click a column header to
  * sort the table. */
 export const TableHeaderSortable = ({
 	children,
-	textAlign = 'left',
-	width,
 	sort,
 	onClick,
+	textAlign = 'left',
+	width,
 }: PropsWithChildren<TableHeaderSortableProps>) => {
 	const Icon = sort === 'DESC' ? ArrowUpIcon : ArrowDownIcon;
-
 	return (
 		<Box
 			as="th"
 			scope="col"
 			aria-sort={getSortLabel(sort)}
 			width={width}
-			css={{
-				textAlign,
-				borderBottomColor: boxPalette.foregroundAction,
-			}}
 			{...(sort && {
 				borderBottom: true,
 				borderBottomWidth: 'xl',
 			})}
+			css={{
+				textAlign,
+				borderBottomColor: boxPalette.foregroundAction,
+			}}
 		>
 			<Flex
 				as={BaseButton}
@@ -73,8 +74,7 @@ export const TableHeaderSortable = ({
 	);
 };
 
-const getSortLabel = (sort: TableSortDirection) => {
+const getSortLabel = (sort?: TableSortDirection) => {
 	if (sort === 'ASC') return 'ascending';
 	if (sort === 'DESC') return 'descending';
-	return undefined;
 };
