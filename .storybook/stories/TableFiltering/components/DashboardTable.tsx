@@ -7,6 +7,9 @@ import {
 	TableCaption,
 	TableCell,
 	TableHead,
+	TableHeader,
+	TableHeaderProps,
+	TableHeaderSortable,
 	TableWrapper,
 } from '@ag.ds-next/react/table';
 import { TextLink } from '@ag.ds-next/react/text-link';
@@ -20,10 +23,6 @@ import {
 import { Avatar } from '@ag.ds-next/react/avatar';
 import { Flex } from '@ag.ds-next/react/box';
 import { GetDataSort } from '../lib/getData';
-import {
-	DashboardTableHeader,
-	DashboardTableHeaderBaseProps,
-} from './DashboardTableHeader';
 
 const DashboardTableRowAssignee = ({
 	assignee,
@@ -108,27 +107,39 @@ export const DashboardTable = forwardRef<HTMLTableElement, DashboardTableProps>(
 									width,
 									isSortable: isFieldSortable,
 								}) => {
-									const isFieldTheActiveSortField = sort?.field === sortKey;
-									const clickHandler = () =>
-										setSort?.({
-											field: sortKey,
-											order:
-												sort?.field === sortKey && sort?.order === 'ASC'
-													? 'DESC'
-													: 'ASC',
-										});
-
+									if (isTableSortable && isFieldSortable) {
+										const isFieldTheActiveSortField = sort?.field === sortKey;
+										const onClick = () =>
+											setSort?.({
+												field: sortKey,
+												order:
+													sort?.field === sortKey && sort?.order === 'ASC'
+														? 'DESC'
+														: 'ASC',
+											});
+										return (
+											<TableHeaderSortable
+												key={sortKey}
+												textAlign={textAlign}
+												width={width}
+												sort={
+													isFieldTheActiveSortField ? sort?.order : undefined
+												}
+												onClick={onClick}
+											>
+												{label}
+											</TableHeaderSortable>
+										);
+									}
 									return (
-										<DashboardTableHeader
+										<TableHeader
 											key={sortKey}
+											scope="col"
 											textAlign={textAlign}
 											width={width}
-											isSortable={isTableSortable && isFieldSortable}
-											sort={isFieldTheActiveSortField ? sort.order : undefined}
-											onClick={clickHandler}
 										>
 											{label}
-										</DashboardTableHeader>
+										</TableHeader>
 									);
 								}
 							)}
@@ -228,7 +239,7 @@ const headers: ({
 	label: string;
 	sortKey: keyof BusinessForAudit;
 	isSortable: boolean;
-} & DashboardTableHeaderBaseProps)[] = [
+} & Pick<TableHeaderProps, 'width' | 'textAlign'>)[] = [
 	{
 		label: 'Business name',
 		sortKey: 'businessName',
