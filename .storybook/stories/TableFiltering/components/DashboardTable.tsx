@@ -235,11 +235,13 @@ const STATUS_MAP = {
 	},
 } as const;
 
-const headers: ({
+const headers: {
 	label: string;
 	sortKey: keyof BusinessForAudit;
 	isSortable: boolean;
-} & Pick<TableHeaderProps, 'width' | 'textAlign'>)[] = [
+	width?: TableHeaderProps['width'];
+	textAlign?: TableHeaderProps['textAlign'];
+}[] = [
 	{
 		label: 'Business name',
 		sortKey: 'businessName',
