@@ -13,11 +13,8 @@ export default {
 };
 
 export const Small = () => {
-	const tableRef = useRef<HTMLTableElement>(null);
 	const { sort, filters, pagination, setSort, setFilters, setPagination } =
-		useSortAndFilter({
-			tableRef,
-		});
+		useSortAndFilter();
 
 	const { loading, data, totalPages, totalItems } = useData({
 		filters,
@@ -44,7 +41,6 @@ export const Small = () => {
 				totalPages={totalPages}
 				loading={loading}
 				data={data}
-				tableRef={tableRef}
 				tableCaption={tableCaption}
 				totalItems={totalItems}
 			/>
@@ -53,7 +49,6 @@ export const Small = () => {
 };
 
 export const Medium = () => {
-	const tableRef = useRef<HTMLTableElement>(null);
 	const {
 		filters,
 		pagination,
@@ -63,9 +58,7 @@ export const Medium = () => {
 		setPagination,
 		setSort,
 		sort,
-	} = useSortAndFilter({
-		tableRef,
-	});
+	} = useSortAndFilter();
 
 	const { loading, data, totalPages, totalItems } = useData({
 		filters,
@@ -93,7 +86,6 @@ export const Medium = () => {
 				setPagination={setPagination}
 				setSort={setSort}
 				sort={sort}
-				tableRef={tableRef}
 				tableCaption={tableCaption}
 				totalPages={totalPages}
 				totalItems={totalItems}

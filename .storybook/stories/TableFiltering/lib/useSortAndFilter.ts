@@ -4,7 +4,6 @@ import { GetDataFilters, GetDataPagination, GetDataSort } from './getData';
 export const useSortAndFilter = (args: {
 	filters?: Partial<GetDataFilters>;
 	itemsPerPage?: number;
-	tableRef: RefObject<HTMLTableElement>;
 }) => {
 	const [pagination, setPaginationObj] = useState<GetDataPagination>({
 		page: 1,
@@ -26,30 +25,22 @@ export const useSortAndFilter = (args: {
 		...args.filters,
 	});
 
-	const focusTable = () => {
-		args.tableRef.current?.focus();
-	};
-
 	const setSort = (sort: GetDataSort) => {
 		setSortObj(sort);
 		resetPagination();
-		focusTable();
 	};
 
 	const setPagination = (pagination: GetDataPagination) => {
 		setPaginationObj(pagination);
-		focusTable();
 	};
 
 	const resetPagination = () => {
 		setPaginationObj({ ...pagination, page: 1 });
-		focusTable();
 	};
 
 	const setFilters = (filters: GetDataFilters) => {
 		setFiltersObj(filters);
 		resetPagination();
-		focusTable();
 	};
 
 	const resetFilters = () => {
@@ -64,7 +55,6 @@ export const useSortAndFilter = (args: {
 			},
 		});
 		resetPagination();
-		focusTable();
 	};
 
 	const removeFilter = (key: keyof GetDataFilters) => {
@@ -73,7 +63,6 @@ export const useSortAndFilter = (args: {
 			[key]: undefined,
 		});
 		resetPagination();
-		focusTable();
 	};
 
 	return {

@@ -43,7 +43,6 @@ type MediumExampleProps = {
 	loading: boolean;
 	data: BusinessForAuditWithIndex[];
 	tableCaption: string;
-	tableRef?: RefObject<HTMLTableElement>;
 };
 
 /** These patterns are draft designs and are not yet ready for production. */
@@ -61,7 +60,6 @@ export const ExampleMedium = ({
 	loading,
 	data,
 	tableCaption,
-	tableRef,
 }: MediumExampleProps) => {
 	const [isOpen, toggleIsOpen] = useToggleState(false, true);
 
@@ -90,6 +88,7 @@ export const ExampleMedium = ({
 				<FilterRegion>
 					<FilterBar>
 						<FilterBarGroup>
+							<SortBySelect sort={sort} setSort={setSort} />
 							<FilterSearchInput filters={filters} setFilters={setFilters} />
 							<FilterStatusSelect filters={filters} setFilters={setFilters} />
 							<Button
@@ -106,8 +105,6 @@ export const ExampleMedium = ({
 								{isOpen ? 'Hide filters' : 'Show filters'}
 							</Button>
 						</FilterBarGroup>
-
-						<SortBySelect sort={sort} setSort={setSort} />
 					</FilterBar>
 					<FilterAccordion
 						id={bodyId}
@@ -132,7 +129,6 @@ export const ExampleMedium = ({
 					sort={sort}
 					setSort={setSort}
 					totalItems={totalItems}
-					ref={tableRef}
 				/>
 
 				{data.length ? (

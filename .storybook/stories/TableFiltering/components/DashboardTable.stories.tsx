@@ -8,12 +8,9 @@ export default {
 };
 
 export const Application = () => {
-	const tableRef = useRef<HTMLTableElement>(null);
-
 	const { sort, filters, pagination, setFilters, setPagination } =
 		useSortAndFilter({
 			itemsPerPage: 10,
-			tableRef,
 		});
 
 	const { data, totalPages, totalItems, loading } = useData({
@@ -40,7 +37,6 @@ export const Application = () => {
 				loading,
 				data,
 				caption: tableCaption,
-				tableRef,
 			}}
 		/>
 	);
