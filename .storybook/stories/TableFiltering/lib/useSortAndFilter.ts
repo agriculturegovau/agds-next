@@ -1,10 +1,12 @@
 import { RefObject, useState } from 'react';
 import { GetDataFilters, GetDataPagination, GetDataSort } from './getData';
 
-export const useSortAndFilter = (args: {
-	filters?: Partial<GetDataFilters>;
-	itemsPerPage?: number;
-}) => {
+export const useSortAndFilter = (
+	args: {
+		filters?: Partial<GetDataFilters>;
+		itemsPerPage?: number;
+	} = {}
+) => {
 	const [pagination, setPaginationObj] = useState<GetDataPagination>({
 		page: 1,
 		perPage: args.itemsPerPage || 10,
