@@ -3,7 +3,7 @@ import { ButtonLink } from '@ag.ds-next/react/button';
 import { PageContent } from '@ag.ds-next/react/content';
 import { PaginationButtons } from '@ag.ds-next/react/pagination';
 import { FilterStatusSelect } from './components/FilterStatusSelect';
-import { DashboardTable, tableId } from './components/DashboardTable';
+import { DashboardTable } from './components/DashboardTable';
 import { GetDataFilters, GetDataPagination, GetDataSort } from './lib/getData';
 import { BusinessForAuditWithIndex } from './lib/generateBusinessData';
 import { PlusIcon } from '@ag.ds-next/react/icon';
@@ -15,7 +15,6 @@ import {
 	FilterBarGroup,
 	FilterRegion,
 } from './components/FilterBar';
-import { RefObject } from 'react';
 
 export type SmallExampleProps = {
 	// sort
@@ -33,7 +32,6 @@ export type SmallExampleProps = {
 	loading: boolean;
 	data: BusinessForAuditWithIndex[];
 	tableCaption: string;
-	tableRef: RefObject<HTMLTableElement>;
 };
 
 /** These patterns are draft designs and are not yet ready for production. */
@@ -49,7 +47,6 @@ export const ExampleSmall = ({
 	loading,
 	data,
 	tableCaption,
-	tableRef,
 }: SmallExampleProps) => {
 	return (
 		<PageContent>
@@ -73,13 +70,11 @@ export const ExampleSmall = ({
 							<FilterStatusSelect filters={filters} setFilters={setFilters} />
 							<FilterAssigneeSelect filters={filters} setFilters={setFilters} />
 						</FilterBarGroup>
-
 						<SortBySelect sort={sort} setSort={setSort} />
 					</FilterBar>
 				</FilterRegion>
 
 				<DashboardTable
-					ref={tableRef}
 					data={data}
 					loading={loading}
 					caption={tableCaption}

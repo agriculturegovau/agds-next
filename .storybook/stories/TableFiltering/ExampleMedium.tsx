@@ -1,5 +1,5 @@
 import { RefObject } from 'react';
-import { Stack } from '@ag.ds-next/react/box';
+import { Box, Stack } from '@ag.ds-next/react/box';
 import { Button, ButtonLink } from '@ag.ds-next/react/button';
 import { PageContent } from '@ag.ds-next/react/content';
 import { useToggleState } from '@ag.ds-next/react/core';
@@ -43,7 +43,6 @@ type MediumExampleProps = {
 	loading: boolean;
 	data: BusinessForAuditWithIndex[];
 	tableCaption: string;
-	tableRef?: RefObject<HTMLTableElement>;
 };
 
 /** These patterns are draft designs and are not yet ready for production. */
@@ -61,7 +60,6 @@ export const ExampleMedium = ({
 	loading,
 	data,
 	tableCaption,
-	tableRef,
 }: MediumExampleProps) => {
 	const [isOpen, toggleIsOpen] = useToggleState(false, true);
 
@@ -90,6 +88,14 @@ export const ExampleMedium = ({
 				<FilterRegion>
 					<FilterBar>
 						<FilterBarGroup>
+							<Box
+								display={{
+									xs: 'block',
+									lg: 'none',
+								}}
+							>
+								<SortBySelect sort={sort} setSort={setSort} />
+							</Box>
 							<FilterSearchInput filters={filters} setFilters={setFilters} />
 							<FilterStatusSelect filters={filters} setFilters={setFilters} />
 							<Button
@@ -107,7 +113,14 @@ export const ExampleMedium = ({
 							</Button>
 						</FilterBarGroup>
 
-						<SortBySelect sort={sort} setSort={setSort} />
+						<Box
+							display={{
+								xs: 'none',
+								lg: 'block',
+							}}
+						>
+							<SortBySelect sort={sort} setSort={setSort} />
+						</Box>
 					</FilterBar>
 					<FilterAccordion
 						id={bodyId}
@@ -132,7 +145,6 @@ export const ExampleMedium = ({
 					sort={sort}
 					setSort={setSort}
 					totalItems={totalItems}
-					ref={tableRef}
 				/>
 
 				{data.length ? (

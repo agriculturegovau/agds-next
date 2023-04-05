@@ -2,8 +2,6 @@ import { ExampleSmall } from './ExampleSmall';
 import { ExampleMedium } from './ExampleMedium';
 import { useSortAndFilter } from './lib/useSortAndFilter';
 import { generateTableCaption, useData } from './lib/utils';
-import { useRef } from 'react';
-import { DraftBanner } from './components/DraftBanner';
 
 export default {
 	title: 'Patterns/Data Filtering (WIP)',
@@ -13,11 +11,8 @@ export default {
 };
 
 export const Small = () => {
-	const tableRef = useRef<HTMLTableElement>(null);
 	const { sort, filters, pagination, setSort, setFilters, setPagination } =
-		useSortAndFilter({
-			tableRef,
-		});
+		useSortAndFilter();
 
 	const { loading, data, totalPages, totalItems } = useData({
 		filters,
@@ -32,28 +27,23 @@ export const Small = () => {
 	});
 
 	return (
-		<>
-			<DraftBanner />
-			<ExampleSmall
-				sort={sort}
-				setSort={setSort}
-				filters={filters}
-				setFilters={setFilters}
-				pagination={pagination}
-				setPagination={setPagination}
-				totalPages={totalPages}
-				loading={loading}
-				data={data}
-				tableRef={tableRef}
-				tableCaption={tableCaption}
-				totalItems={totalItems}
-			/>
-		</>
+		<ExampleSmall
+			sort={sort}
+			setSort={setSort}
+			filters={filters}
+			setFilters={setFilters}
+			pagination={pagination}
+			setPagination={setPagination}
+			totalPages={totalPages}
+			loading={loading}
+			data={data}
+			tableCaption={tableCaption}
+			totalItems={totalItems}
+		/>
 	);
 };
 
 export const Medium = () => {
-	const tableRef = useRef<HTMLTableElement>(null);
 	const {
 		filters,
 		pagination,
@@ -63,9 +53,7 @@ export const Medium = () => {
 		setPagination,
 		setSort,
 		sort,
-	} = useSortAndFilter({
-		tableRef,
-	});
+	} = useSortAndFilter();
 
 	const { loading, data, totalPages, totalItems } = useData({
 		filters,
@@ -80,24 +68,20 @@ export const Medium = () => {
 	});
 
 	return (
-		<>
-			<DraftBanner />
-			<ExampleMedium
-				data={data}
-				filters={filters}
-				loading={loading}
-				pagination={pagination}
-				resetFilters={resetFilters}
-				setFilters={setFilters}
-				removeFilter={removeFilter}
-				setPagination={setPagination}
-				setSort={setSort}
-				sort={sort}
-				tableRef={tableRef}
-				tableCaption={tableCaption}
-				totalPages={totalPages}
-				totalItems={totalItems}
-			/>
-		</>
+		<ExampleMedium
+			data={data}
+			filters={filters}
+			loading={loading}
+			pagination={pagination}
+			resetFilters={resetFilters}
+			setFilters={setFilters}
+			removeFilter={removeFilter}
+			setPagination={setPagination}
+			setSort={setSort}
+			sort={sort}
+			tableCaption={tableCaption}
+			totalPages={totalPages}
+			totalItems={totalItems}
+		/>
 	);
 };

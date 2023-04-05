@@ -9,12 +9,8 @@ import { generateTableCaption, useData } from './lib/utils';
 afterEach(cleanup);
 
 function SmallFilteringPatternTest({ loading }: { loading: boolean }) {
-	const tableRef = useRef<HTMLTableElement>(null);
-
 	const { sort, filters, pagination, setSort, setFilters, setPagination } =
-		useSortAndFilter({
-			tableRef,
-		});
+		useSortAndFilter();
 
 	const { data, totalPages, totalItems } = useData({
 		filters,
@@ -42,7 +38,6 @@ function SmallFilteringPatternTest({ loading }: { loading: boolean }) {
 				loading,
 				data,
 				tableCaption,
-				tableRef,
 			}}
 		/>
 	);

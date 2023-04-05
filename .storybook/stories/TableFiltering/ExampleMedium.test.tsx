@@ -9,7 +9,6 @@ import { generateTableCaption, useData } from './lib/utils';
 afterEach(cleanup);
 
 function MediumFilteringPatternTest({ loading }: { loading: boolean }) {
-	const tableRef = useRef<HTMLTableElement>(null);
 	const {
 		sort,
 		filters,
@@ -19,7 +18,7 @@ function MediumFilteringPatternTest({ loading }: { loading: boolean }) {
 		resetFilters,
 		removeFilter,
 		setPagination,
-	} = useSortAndFilter({ tableRef });
+	} = useSortAndFilter();
 
 	const { data, totalPages, totalItems } = useData({
 		filters,
