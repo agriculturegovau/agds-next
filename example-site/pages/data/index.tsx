@@ -16,6 +16,10 @@ const dataPatterns = [
 		name: 'Table filtering (medium)',
 		href: '/data/table-filtering-medium',
 	},
+	{
+		name: 'Data loading',
+		href: '/data/data-loading',
+	},
 ];
 
 export default function DataPatternsPage() {
