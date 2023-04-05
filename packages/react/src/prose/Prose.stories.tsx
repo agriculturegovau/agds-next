@@ -1,11 +1,13 @@
 import { Fragment } from 'react';
-import { ComponentMeta } from '@storybook/react';
+import { Meta } from '@storybook/react';
 import { Prose } from './index';
 
-export default {
+const meta: Meta<typeof Prose> = {
 	title: 'content/Prose',
 	component: Prose,
-} as ComponentMeta<typeof Prose>;
+};
+
+export default meta;
 
 const UnstyledContent = () => (
 	<Fragment>

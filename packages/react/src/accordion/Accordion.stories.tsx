@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { ComponentMeta } from '@storybook/react';
+import { Meta } from '@storybook/react';
 import { Box, Stack } from '../box';
 import { useToggleState } from '../core';
 import { Prose } from '../prose';
@@ -8,10 +8,12 @@ import { Text } from '../text';
 import { Accordion } from './Accordion';
 import { AccordionItem, AccordionItemContent } from './AccordionItem';
 
-export default {
+const meta: Meta<typeof Accordion> = {
 	title: 'Layout/Accordion',
 	component: Accordion,
-} as ComponentMeta<typeof Accordion>;
+};
+
+export default meta;
 
 type AccordionExampleProps = {
 	background: 'body' | 'bodyAlt';

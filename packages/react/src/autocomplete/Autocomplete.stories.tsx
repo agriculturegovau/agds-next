@@ -1,11 +1,6 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react';
 import { COUNTRY_OPTIONS } from '../combobox/test-utils';
 import { Autocomplete } from './Autocomplete';
-
-export default {
-	title: 'forms/Autocomplete',
-	component: Autocomplete,
-} as ComponentMeta<typeof Autocomplete>;
 
 const defaultArgs = {
 	label: 'Find your country',
@@ -16,58 +11,61 @@ const defaultArgs = {
 	},
 };
 
-const Template: ComponentStory<typeof Autocomplete> = (args) => (
-	<Autocomplete {...args} />
-);
-
-export const Basic = Template.bind({});
-Basic.args = {
-	...defaultArgs,
+const meta: Meta<typeof Autocomplete> = {
+	title: 'forms/Autocomplete',
+	component: Autocomplete,
+	args: defaultArgs,
 };
 
-export const Required = Template.bind({});
-Required.args = {
-	...defaultArgs,
-	required: true,
+export default meta;
+
+type Story = StoryObj<typeof Autocomplete>;
+
+export const Basic: Story = {};
+
+export const Required: Story = {
+	args: {
+		required: true,
+	},
 };
 
-export const HideOptionalLabel = Template.bind({});
-HideOptionalLabel.args = {
-	...defaultArgs,
-	hideOptionalLabel: true,
+export const HideOptionalLabel: Story = {
+	args: {
+		hideOptionalLabel: true,
+	},
 };
 
-export const Disabled = Template.bind({});
-Disabled.args = {
-	...defaultArgs,
-	disabled: true,
+export const Disabled: Story = {
+	args: {
+		disabled: true,
+	},
 };
 
-export const Invalid = Template.bind({});
-Invalid.args = {
-	...defaultArgs,
-	invalid: true,
-	message: 'Country is required',
+export const Invalid: Story = {
+	args: {
+		invalid: true,
+		message: 'Country is required',
+	},
 };
 
-export const Block = Template.bind({});
-Block.args = {
-	...defaultArgs,
-	block: true,
+export const Block: Story = {
+	args: {
+		block: true,
+	},
 };
 
-export const ExternalAPI = Template.bind({});
-ExternalAPI.args = {
-	...defaultArgs,
-	hideOptionalLabel: true,
-	label: 'Pick a Star Wars character',
-	loadOptions: async function loadOptions(inputValue: string) {
-		const response = await fetch(
-			`https://swapi.dev/api/people/?search=${inputValue}`
-		).then((r) => r.json());
-		return response.results.map((result: { name: string }) => ({
-			label: result.name,
-			value: result.name,
-		}));
+export const ExternalAPI: Story = {
+	args: {
+		hideOptionalLabel: true,
+		label: 'Pick a Star Wars character',
+		loadOptions: async function loadOptions(inputValue: string) {
+			const response = await fetch(
+				`https://swapi.dev/api/people/?search=${inputValue}`
+			).then((r) => r.json());
+			return response.results.map((result: { name: string }) => ({
+				label: result.name,
+				value: result.name,
+			}));
+		},
 	},
 };

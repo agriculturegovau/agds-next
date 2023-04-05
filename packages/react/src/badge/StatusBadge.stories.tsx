@@ -1,4 +1,4 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react';
 import { Flex, Stack } from '../box';
 import {
 	Table,
@@ -12,19 +12,41 @@ import {
 import { TextLink } from '../text-link';
 import { StatusBadge } from './StatusBadge';
 
-export default {
+const meta: Meta<typeof StatusBadge> = {
 	title: 'content/Badge/StatusBadge',
 	component: StatusBadge,
-} as ComponentMeta<typeof StatusBadge>;
+};
 
-const Template: ComponentStory<typeof StatusBadge> = (args) => (
-	<StatusBadge {...args} />
-);
+export default meta;
 
-export const Basic = Template.bind({});
-Basic.args = {
-	tone: 'info',
-	label: 'In progress',
+type Story = StoryObj<typeof StatusBadge>;
+
+export const Info: Story = {
+	args: {
+		tone: 'info',
+		label: 'In progress',
+	},
+};
+
+export const Success: Story = {
+	args: {
+		tone: 'success',
+		label: 'Approved',
+	},
+};
+
+export const Warning: Story = {
+	args: {
+		tone: 'warning',
+		label: 'Due',
+	},
+};
+
+export const Error: Story = {
+	args: {
+		tone: 'error',
+		label: 'Rejected',
+	},
 };
 
 export const LanguageExamples = () => {

@@ -1,14 +1,16 @@
-import { ComponentMeta } from '@storybook/react';
+import { Meta } from '@storybook/react';
 import { Stack } from '../box';
 import { Text } from '../text';
 import { TextLink } from '../text-link';
 import { H1 } from '../heading';
 import { VisuallyHidden, visuallyHiddenStyles } from './VisuallyHidden';
 
-export default {
+const meta: Meta<typeof VisuallyHidden> = {
 	title: 'foundations/A11y/VisuallyHidden',
 	component: VisuallyHidden,
-} as ComponentMeta<typeof VisuallyHidden>;
+};
+
+export default meta;
 
 export const Basic = () => (
 	<Stack gap={1}>

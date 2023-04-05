@@ -1,13 +1,18 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { StoryFn, Meta } from '@storybook/react';
 import { Prose } from '../prose';
 import { PageContent } from './PageContent';
 
-export default {
+const meta: Meta<typeof PageContent> = {
 	title: 'layout/Content/PageContent',
 	component: PageContent,
-} as ComponentMeta<typeof PageContent>;
+	args: {
+		as: 'main',
+	},
+};
 
-export const Basic: ComponentStory<typeof PageContent> = (args) => (
+export default meta;
+
+export const Basic: StoryFn<typeof PageContent> = (args) => (
 	<PageContent {...args}>
 		<Prose>
 			<h1>Page heading</h1>
@@ -36,6 +41,3 @@ export const Basic: ComponentStory<typeof PageContent> = (args) => (
 		</Prose>
 	</PageContent>
 );
-Basic.args = {
-	as: 'main',
-};

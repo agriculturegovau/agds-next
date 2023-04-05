@@ -1,5 +1,5 @@
 import { Fragment } from 'react';
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { StoryFn, Meta, StoryObj } from '@storybook/react';
 import { VisuallyHidden } from '../a11y';
 import { Box, Flex, Stack } from '../box';
 import { H2, H3, Heading } from '../heading';
@@ -17,58 +17,64 @@ import { CardLink } from './CardLink';
 import { CardHeader } from './CardHeader';
 import { CardFooter } from './CardFooter';
 
-export default {
+const meta: Meta<typeof Card> = {
 	title: 'layout/Card',
 	component: Card,
 	subcomponents: { CardInner, CardLink, CardHeader, CardFooter },
-} as ComponentMeta<typeof Card>;
-
-export const Basic: ComponentStory<typeof Card> = (args) => (
-	<Box maxWidth={300}>
-		<Card {...args}>
-			<CardInner>
-				<Stack gap={1}>
-					<Heading as="h2" type="h3">
-						Card heading
-					</Heading>
-					<Text as="p">
-						Lorem ipsum dolor, sit amet consectetur adipisicing elit. In,
-						voluptat
-					</Text>
-				</Stack>
-			</CardInner>
-		</Card>
-	</Box>
-);
-Basic.args = {};
-
-export const Link: ComponentStory<typeof Card> = (args) => (
-	<Box maxWidth={300}>
-		<Card {...args}>
-			<CardInner>
-				<Stack gap={1}>
-					<Heading as="h2" type="h3">
-						Card heading
-					</Heading>
-					<Text as="p">
-						Lorem ipsum dolor, sit amet consectetur adipisicing elit. In,
-						voluptat
-					</Text>
-					<CardLink href="#">
-						Linking out
-						<ChevronRightIcon weight="bold" size="sm" />
-					</CardLink>
-				</Stack>
-			</CardInner>
-		</Card>
-	</Box>
-);
-Link.args = {
-	clickable: true,
-	shadow: true,
+	args: {
+		background: 'body',
+	},
 };
 
-export const FeatureHeader: ComponentStory<typeof Card> = (args) => (
+export default meta;
+
+export const Basic: StoryFn<typeof Card> = (args) => (
+	<Box maxWidth={300}>
+		<Card {...args}>
+			<CardInner>
+				<Stack gap={1}>
+					<Heading as="h2" type="h3">
+						Card heading
+					</Heading>
+					<Text as="p">
+						Lorem ipsum dolor, sit amet consectetur adipisicing elit. In,
+						voluptat
+					</Text>
+				</Stack>
+			</CardInner>
+		</Card>
+	</Box>
+);
+
+export const Link: StoryObj<typeof Card> = {
+	args: {
+		clickable: true,
+		shadow: true,
+	},
+	render: (args) => (
+		<Box maxWidth={300}>
+			<Card {...args}>
+				<CardInner>
+					<Stack gap={1}>
+						<Heading as="h2" type="h3">
+							Card heading
+						</Heading>
+						<Text as="p">
+							Lorem ipsum dolor, sit amet consectetur adipisicing elit. In,
+							voluptat
+						</Text>
+						<CardLink href="#">
+							Linking out
+							<ChevronRightIcon weight="bold" size="sm" />
+						</CardLink>
+					</Stack>
+				</CardInner>
+			</Card>
+		</Box>
+	),
+};
+
+export const FeatureHeader: StoryFn<typeof Card> = (args) => (
 	<Columns>
 		<Column columnSpan={6}>
 			<Card {...args}>
@@ -92,11 +98,8 @@ export const FeatureHeader: ComponentStory<typeof Card> = (args) => (
 		</Column>
 	</Columns>
 );
-FeatureHeader.args = {
-	background: 'body',
-};
 
-export const FeatureFooter: ComponentStory<typeof Card> = (args) => (
+export const FeatureFooter: StoryFn<typeof Card> = (args) => (
 	<Columns>
 		<Column columnSpan={6}>
 			<Card {...args}>
@@ -132,9 +135,6 @@ export const FeatureFooter: ComponentStory<typeof Card> = (args) => (
 		</Column>
 	</Columns>
 );
-FeatureFooter.args = {
-	background: 'body',
-};
 
 export const CardListStory = () => {
 	const toneMapper = {

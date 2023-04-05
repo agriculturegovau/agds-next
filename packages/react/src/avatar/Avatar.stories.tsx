@@ -1,28 +1,29 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { Flex, Stack } from '../box';
+import { Meta, StoryObj } from '@storybook/react';
+import { Flex } from '../box';
 import { boxPalette } from '../core';
 import { Text } from '../text';
 import { Avatar } from './Avatar';
 
-export default {
+const meta: Meta<typeof Avatar> = {
 	title: 'Content/Avatar',
 	component: Avatar,
-} as ComponentMeta<typeof Avatar>;
-
-const Template: ComponentStory<typeof Avatar> = (args) => <Avatar {...args} />;
-
-export const Basic = Template.bind({});
-Basic.args = {
-	name: 'William Mead',
-	tone: 'neutral',
-	size: 'md',
+	args: {
+		name: 'William Mead',
+		tone: 'neutral',
+		size: 'md',
+	},
 };
 
-export const Tone = Template.bind({});
-Tone.args = {
-	name: 'William Mead',
-	tone: 'action',
-	size: 'md',
+export default meta;
+
+type Story = StoryObj<typeof Avatar>;
+
+export const Neutral: Story = {};
+
+export const Action: Story = {
+	args: {
+		tone: 'action',
+	},
 };
 
 const SIZE_MAP = {
@@ -36,86 +37,64 @@ const SIZE_MAP = {
 
 const sizes = Object.keys(SIZE_MAP) as (keyof typeof SIZE_MAP)[];
 
-const TONE_MAP = {
-	neutral: 'muted',
-	action: 'action',
-} as const;
-
-export const Sizes: ComponentStory<typeof Avatar> = ({ size, ...args }) => {
-	return (
-		<Flex alignItems="center" gap={1}>
-			{sizes.map((size) => (
-				<Avatar key={size} {...args} size={size} />
-			))}
-		</Flex>
-	);
-};
-Sizes.args = {
-	name: 'William Mead',
-	tone: 'neutral',
+export const AllSizes: Story = {
+	render: ({ size, ...args }) => {
+		return (
+			<Flex alignItems="center" gap={1}>
+				{sizes.map((size) => (
+					<Avatar key={size} {...args} size={size} />
+				))}
+			</Flex>
+		);
+	},
 };
 
-export const CompositeNames = () => {
-	const name = 'William Mead';
-	const tone = 'neutral';
-	return (
-		<Stack gap={1} alignItems="flex-start">
-			{sizes.map((size) => (
-				<Flex
-					key={size}
-					gap={SIZE_MAP[size].gap}
-					alignItems="center"
-					justifyContent="flex-start"
-				>
-					<Avatar name={name} size={size} tone={tone} />
-					<Text
-						color={TONE_MAP[tone]}
-						fontSize={SIZE_MAP[size].fontSize}
-						fontWeight="bold"
-					>
-						{name}
-					</Text>
-				</Flex>
-			))}
-		</Stack>
-	);
+export const WithText: Story = {
+	render: ({ name, size = 'md' }) => {
+		return (
+			<Flex
+				key={size}
+				gap={SIZE_MAP[size].gap}
+				alignItems="center"
+				justifyContent="flex-start"
+			>
+				<Avatar name={name} size={size} tone="neutral" />
+				<Text fontSize={SIZE_MAP[size].fontSize} fontWeight="bold">
+					{name}
+				</Text>
+			</Flex>
+		);
+	},
 };
 
-export const CompositeNamesLinks = () => {
-	const name = 'William Mead';
-	const tone = 'action';
-	return (
-		<Stack gap={1} alignItems="flex-start">
-			{sizes.map((size) => (
-				<Flex
-					key={size}
-					gap={SIZE_MAP[size].gap}
-					alignItems="center"
-					justifyContent="flex-start"
-					as="a"
-					href="#"
-					link
-					css={{
+export const WithLink: Story = {
+	render: ({ name, size = 'md' }) => (
+		<Flex
+			key={size}
+			gap={SIZE_MAP[size].gap}
+			alignItems="center"
+			justifyContent="flex-start"
+			as="a"
+			href="#"
+			link
+			css={{
+				textDecoration: 'none',
+				'> span:nth-of-type(2)': {
+					color: boxPalette.foregroundAction,
+					textDecoration: 'underline',
+				},
+				'&:hover': {
+					'> span:nth-of-type(2)': {
 						textDecoration: 'none',
-						'> span': {
-							textDecoration: 'underline',
-						},
-						'&:hover > span': {
-							textDecoration: 'none',
-							color: boxPalette.foregroundText,
-						},
-					}}
-				>
-					<Avatar name={name} size={size} tone={tone} />
-					<Text
-						color={TONE_MAP[tone]}
-						fontSize={SIZE_MAP[size].fontSize}
-						fontWeight="bold"
-					>
-						{name}
-					</Text>
-				</Flex>
-			))}
-		</Stack>
-	);
+						color: boxPalette.foregroundText,
+					},
+				},
+			}}
+		>
+			<Avatar name={name} size={size} tone="action" />
+			<Text fontSize={SIZE_MAP[size].fontSize} fontWeight="bold">
+				{name}
+			</Text>
+		</Flex>
+	),
 };

@@ -1,4 +1,4 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { StoryFn, Meta, StoryObj } from '@storybook/react';
 import { Text } from '../text';
 import { Stack } from '../box';
 import { H1 } from '../heading';
@@ -10,18 +10,53 @@ import { TableHeader } from './TableHeader';
 import { TableHead } from './TableHead';
 import { TableWrapper } from './TableWrapper';
 
-export default {
+const Template: StoryFn<typeof Table> = (args) => (
+	<TableWrapper>
+		<Table {...args}>
+			<TableCaption>
+				Population of Australian states and territories, December 2015
+			</TableCaption>
+			<TableHead>
+				<tr>
+					<TableHeader scope="col">Location</TableHeader>
+					<TableHeader textAlign="right" scope="col">
+						Population
+					</TableHeader>
+					<TableHeader textAlign="right" scope="col">
+						Change over previous year %
+					</TableHeader>
+					<TableHeader textAlign="right" scope="col">
+						Change over previous decade %
+					</TableHeader>
+				</tr>
+			</TableHead>
+			<TableBody>
+				{exampleData.map(
+					({ location, population, growthYear, growthDecade }, index) => (
+						<tr key={index}>
+							<TableCell as="th" scope="row">
+								{location}
+							</TableCell>
+							<TableCell textAlign="right">
+								{numberFormatter.format(population)}
+							</TableCell>
+							<TableCell textAlign="right">{growthYear}%</TableCell>
+							<TableCell textAlign="right">{growthDecade}%</TableCell>
+						</tr>
+					)
+				)}
+			</TableBody>
+		</Table>
+	</TableWrapper>
+);
+
+const meta: Meta<typeof Table> = {
 	title: 'content/Table',
 	component: Table,
-	subcomponents: {
-		TableBody,
-		TableCaption,
-		TableCell,
-		TableHeader,
-		TableHead,
-		TableWrapper,
-	},
-} as ComponentMeta<typeof Table>;
+	render: Template,
+};
+
+export default meta;
 
 const exampleData = [
 	{
@@ -76,52 +111,14 @@ const exampleData = [
 
 const numberFormatter = new Intl.NumberFormat('en-AU');
 
-const Template: ComponentStory<typeof Table> = (args) => (
-	<TableWrapper>
-		<Table {...args}>
-			<TableCaption>
-				Population of Australian states and territories, December 2015
-			</TableCaption>
-			<TableHead>
-				<tr>
-					<TableHeader scope="col">Location</TableHeader>
-					<TableHeader textAlign="right" scope="col">
-						Population
-					</TableHeader>
-					<TableHeader textAlign="right" scope="col">
-						Change over previous year %
-					</TableHeader>
-					<TableHeader textAlign="right" scope="col">
-						Change over previous decade %
-					</TableHeader>
-				</tr>
-			</TableHead>
-			<TableBody>
-				{exampleData.map(
-					({ location, population, growthYear, growthDecade }, index) => (
-						<tr key={index}>
-							<TableCell as="th" scope="row">
-								{location}
-							</TableCell>
-							<TableCell textAlign="right">
-								{numberFormatter.format(population)}
-							</TableCell>
-							<TableCell textAlign="right">{growthYear}%</TableCell>
-							<TableCell textAlign="right">{growthDecade}%</TableCell>
-						</tr>
-					)
-				)}
-			</TableBody>
-		</Table>
-	</TableWrapper>
-);
+type Story = StoryObj<typeof Table>;
 
-export const Basic = Template.bind({});
-Basic.args = {};
+export const Basic: Story = {};
 
-export const Striped = Template.bind({});
-Striped.args = {
-	striped: true,
+export const Striped: Story = {
+	args: {
+		striped: true,
+	},
 };
 
 export const FixedLayout = () => (

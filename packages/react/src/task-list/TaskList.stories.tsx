@@ -1,4 +1,4 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react';
 import {
 	TaskListContainer,
 	TaskList,
@@ -7,18 +7,6 @@ import {
 	TaskListItemLink,
 	TaskListItemButton,
 } from './index';
-
-export default {
-	title: 'forms/TaskList',
-	component: TaskList,
-	subcomponents: {
-		TaskListContainer,
-		TaskListHeading,
-		TaskListItemsContainer,
-		TaskListItemLink,
-		TaskListItemButton,
-	},
-} as ComponentMeta<typeof TaskList>;
 
 const exampleLinkItems = [
 	{
@@ -53,6 +41,16 @@ const exampleLinkItems = [
 	},
 ];
 
+const meta: Meta<typeof TaskList> = {
+	title: 'forms/TaskList',
+	component: TaskList,
+	args: {
+		items: exampleLinkItems,
+	},
+};
+
+export default meta;
+
 const exampleOrderedButtonItems = [
 	{
 		onClick: console.log,
@@ -82,35 +80,32 @@ const exampleOrderedButtonItems = [
 	},
 ];
 
-const Template: ComponentStory<typeof TaskList> = (args) => (
-	<TaskList {...args} />
-);
+type Story = StoryObj<typeof TaskList>;
 
-export const Unordered = Template.bind({});
-Unordered.args = {
-	items: exampleLinkItems,
+export const Unordered: Story = {};
+
+export const Ordered: Story = {
+	args: {
+		ordered: true,
+	},
 };
 
-export const Ordered = Template.bind({});
-Ordered.args = {
-	ordered: true,
-	items: exampleLinkItems,
+export const RecentlyCompleted: Story = {
+	args: {
+		items: exampleLinkItems.map((item, idx) => {
+			if (idx !== 1) return item;
+			return {
+				...item,
+				status: 'doneRecently',
+			};
+		}),
+	},
 };
 
-export const RecentlyCompleted = Template.bind({});
-RecentlyCompleted.args = {
-	items: exampleLinkItems.map((item, idx) => {
-		if (idx !== 1) return item;
-		return {
-			...item,
-			status: 'doneRecently',
-		};
-	}),
-};
-
-export const Button = Template.bind({});
-Button.args = {
-	items: exampleOrderedButtonItems,
+export const Button: Story = {
+	args: {
+		items: exampleOrderedButtonItems,
+	},
 };
 
 export const ModularLinks = () => (

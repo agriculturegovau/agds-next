@@ -1,64 +1,66 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react';
 import { Stack } from '../box';
 import { Textarea } from './Textarea';
 
-export default {
+const meta: Meta<typeof Textarea> = {
 	title: 'forms/Textarea',
 	component: Textarea,
-} as ComponentMeta<typeof Textarea>;
-
-const Template: ComponentStory<typeof Textarea> = (args) => (
-	<Textarea {...args} />
-);
-
-export const Basic = Template.bind({});
-Basic.args = {
-	label: 'Example',
+	args: {
+		label: 'Example',
+	},
 };
 
-export const Required = Template.bind({});
-Required.args = {
-	label: 'Example',
-	required: true,
+export default meta;
+
+type Story = StoryObj<typeof Textarea>;
+
+export const Basic: Story = {};
+
+export const Required: Story = {
+	args: {
+		required: true,
+	},
 };
 
-export const HideOptionalLabel = Template.bind({});
-HideOptionalLabel.args = {
-	label: 'Example',
-	hideOptionalLabel: true,
+export const HideOptionalLabel: Story = {
+	args: {
+		hideOptionalLabel: true,
+	},
 };
 
-export const Disabled = Template.bind({});
-Disabled.args = {
-	label: 'Example',
-	disabled: true,
+export const Disabled: Story = {
+	args: {
+		disabled: true,
+	},
 };
 
-export const Invalid = Template.bind({});
-Invalid.args = {
-	label: 'Example',
-	message: 'The message you have entered is invalid',
-	value: '1e039ur4urf',
-	invalid: true,
+export const Invalid: Story = {
+	args: {
+		message: 'The message you have entered is invalid',
+		value: '1e039ur4urf',
+		invalid: true,
+	},
 };
 
-export const Hint = Template.bind({});
-Hint.args = {
-	label: 'Example',
-	message: 'We will only use this to respond to your question',
+export const Hint: Story = {
+	args: {
+		message: 'We will only use this to respond to your question',
+	},
 };
 
-export const Block = Template.bind({});
-Block.args = {
-	label: 'Block',
-	block: true,
+export const Block: Story = {
+	args: {
+		label: 'Block',
+		block: true,
+	},
 };
 
-export const MaxWidths: ComponentStory<typeof Textarea> = (args) => (
-	<Stack background="body" palette="light" gap={1}>
-		{(['md', 'lg', 'xl'] as const).map((size) => (
-			<Textarea key={size} {...args} label={size} maxWidth={size} />
-		))}
-	</Stack>
-);
-MaxWidths.args = {};
+export const MaxWidths: Story = {
+	render: (args) => (
+		<Stack background="body" palette="light" gap={1}>
+			{(['md', 'lg', 'xl'] as const).map((size) => (
+				<Textarea key={size} {...args} label={size} maxWidth={size} />
+			))}
+		</Stack>
+	),
+};

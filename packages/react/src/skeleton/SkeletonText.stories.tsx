@@ -1,24 +1,26 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { StoryFn, Meta, StoryObj } from '@storybook/react';
 import { Stack } from '../box';
 import { Text } from '../text';
 import { FontSize, tokens } from '../core';
 import { Columns, Column } from '../columns';
 import { SkeletonText } from './SkeletonText';
 
-export default {
+const meta: Meta<typeof SkeletonText> = {
 	title: 'content/Skeleton/SkeletonText',
 	component: SkeletonText,
-} as ComponentMeta<typeof SkeletonText>;
-
-export const Basic: ComponentStory<typeof SkeletonText> = (args) => (
-	<SkeletonText {...args} />
-);
-Basic.args = {
-	fontSize: 'sm',
-	width: '100%',
 };
 
-export const Sizes: ComponentStory<typeof SkeletonText> = ({ lineHeight }) => {
+export default meta;
+
+export const Basic: StoryObj<typeof SkeletonText> = {
+	args: {
+		fontSize: 'sm',
+		width: '100%',
+		lineHeight: 'default',
+	},
+};
+
+export const Sizes: StoryFn<typeof SkeletonText> = ({ lineHeight }) => {
 	const sizes = Object.keys(tokens.fontSize.sm).reverse() as FontSize[];
 	return (
 		<Stack gap={1.5}>
@@ -41,7 +43,4 @@ export const Sizes: ComponentStory<typeof SkeletonText> = ({ lineHeight }) => {
 			))}
 		</Stack>
 	);
-};
-Basic.args = {
-	lineHeight: 'default',
 };

@@ -1,4 +1,4 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { StoryFn, Meta, StoryObj } from '@storybook/react';
 import { useState } from 'react';
 import { subDays, addDays } from 'date-fns';
 import { Box, Flex, Stack } from '../box';
@@ -7,12 +7,7 @@ import { Select } from '../select';
 import { Prose } from '../prose';
 import { DateRangePicker, DateRange } from './DateRangePicker';
 
-export default {
-	title: 'forms/DatePicker/DateRangePicker',
-	component: DateRangePicker,
-} as ComponentMeta<typeof DateRangePicker>;
-
-const Template: ComponentStory<typeof DateRangePicker> = (args) => {
+const Template: StoryFn<typeof DateRangePicker> = (args) => {
 	const [range, setRange] = useState<DateRange>({
 		from: undefined,
 		to: undefined,
@@ -20,72 +15,91 @@ const Template: ComponentStory<typeof DateRangePicker> = (args) => {
 	return <DateRangePicker {...args} value={range} onChange={setRange} />;
 };
 
-export const Basic = Template.bind({});
-Basic.args = {};
+const meta: Meta<typeof DateRangePicker> = {
+	title: 'forms/DatePicker/DateRangePicker',
+	component: DateRangePicker,
+	render: Template,
+};
 
-export const Disabled = Template.bind({});
-Disabled.args = {
-	disabled: true,
+export default meta;
+
+type Story = StoryObj<typeof DateRangePicker>;
+
+export const Basic: Story = {};
+
+export const Disabled: Story = {
+	args: {
+		disabled: true,
+	},
 };
 
 const today = new Date();
 const lastWeek = subDays(today, 7);
 const nextWeek = addDays(today, 7);
-export const MinMaxDates = Template.bind({});
-MinMaxDates.args = {
-	minDate: lastWeek,
-	maxDate: nextWeek,
+export const MinMaxDates: Story = {
+	args: {
+		minDate: lastWeek,
+		maxDate: nextWeek,
+	},
 };
 
-export const Legend = Template.bind({});
-Legend.args = {
-	legend: 'Date range',
+export const Legend: Story = {
+	args: {
+		legend: 'Date range',
+	},
 };
 
-export const HideOptionalLabel = Template.bind({});
-HideOptionalLabel.args = {
-	legend: 'Date range',
-	hideOptionalLabel: true,
+export const HideOptionalLabel: Story = {
+	args: {
+		legend: 'Date range',
+		hideOptionalLabel: true,
+	},
 };
 
-export const Hint = Template.bind({});
-Hint.args = {
-	legend: 'Date range',
-	hint: 'Hint text',
+export const Hint: Story = {
+	args: {
+		legend: 'Date range',
+		hint: 'Hint text',
+	},
 };
 
-export const Invalid = Template.bind({});
-Invalid.args = {
-	legend: 'Date range',
-	fromInvalid: true,
-	toInvalid: true,
-	message: 'Enter a valid date',
+export const Invalid: Story = {
+	args: {
+		legend: 'Date range',
+		fromInvalid: true,
+		toInvalid: true,
+		message: 'Enter a valid date',
+	},
 };
 
-export const FromInvalid = Template.bind({});
-FromInvalid.args = {
-	legend: 'Date range',
-	fromInvalid: true,
-	message: 'Enter a valid date',
+export const FromInvalid: Story = {
+	args: {
+		legend: 'Date range',
+		fromInvalid: true,
+		message: 'Enter a valid date',
+	},
 };
 
-export const ToInvalid = Template.bind({});
-ToInvalid.args = {
-	legend: 'Date range',
-	toInvalid: true,
-	message: 'Enter a valid date',
+export const ToInvalid: Story = {
+	args: {
+		legend: 'Date range',
+		toInvalid: true,
+		message: 'Enter a valid date',
+	},
 };
 
-export const Required = Template.bind({});
-Required.args = {
-	legend: 'Date range',
-	required: true,
+export const Required: Story = {
+	args: {
+		legend: 'Date range',
+		required: true,
+	},
 };
 
-export const Labels = Template.bind({});
-Labels.args = {
-	fromLabel: 'From',
-	toLabel: 'To',
+export const Labels: Story = {
+	args: {
+		fromLabel: 'From',
+		toLabel: 'To',
+	},
 };
 
 export const FiltersExample = () => {
@@ -123,7 +137,7 @@ export const FiltersExample = () => {
 	);
 };
 
-export const ScrollExample: ComponentStory<typeof DateRangePicker> = (args) => {
+export const ScrollExample: StoryFn<typeof DateRangePicker> = (args) => {
 	return (
 		<Box>
 			<Box height="1000px"></Box>

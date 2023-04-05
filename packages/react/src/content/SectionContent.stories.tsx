@@ -1,13 +1,18 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { StoryFn, Meta } from '@storybook/react';
 import { Prose } from '../prose';
 import { SectionContent } from './SectionContent';
 
-export default {
+const meta: Meta<typeof SectionContent> = {
 	title: 'layout/Content/SectionContent',
 	component: SectionContent,
-} as ComponentMeta<typeof SectionContent>;
+	args: {
+		background: 'shade',
+	},
+};
 
-export const Basic: ComponentStory<typeof SectionContent> = (args) => (
+export default meta;
+
+export const Basic: StoryFn<typeof SectionContent> = (args) => (
 	<SectionContent {...args}>
 		<Prose>
 			<h2>Section heading</h2>
@@ -25,6 +30,3 @@ export const Basic: ComponentStory<typeof SectionContent> = (args) => (
 		</Prose>
 	</SectionContent>
 );
-Basic.args = {
-	background: 'shade',
-};

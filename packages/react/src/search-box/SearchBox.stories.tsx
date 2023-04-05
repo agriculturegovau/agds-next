@@ -1,34 +1,34 @@
 import { useState, ChangeEvent, FormEvent } from 'react';
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { StoryFn, Meta, StoryObj } from '@storybook/react';
 import { SearchBox } from './SearchBox';
 import { SearchBoxButton } from './SearchBoxButton';
 import { SearchBoxInput } from './SearchBoxInput';
 
-export default {
+const meta: Meta<typeof SearchBox> = {
 	title: 'forms/SearchBox',
 	component: SearchBox,
-	subcomponents: { SearchBoxButton, SearchBoxInput },
-} as ComponentMeta<typeof SearchBox>;
-
-export const Basic: ComponentStory<typeof SearchBox> = () => (
-	<SearchBox>
-		<SearchBoxInput />
-		<SearchBoxButton>Search</SearchBoxButton>
-	</SearchBox>
-);
-
-export const LabelVisible: ComponentStory<typeof SearchBoxInput> = (args) => (
-	<SearchBox>
-		<SearchBoxInput {...args} />
-		<SearchBoxButton>Search</SearchBoxButton>
-	</SearchBox>
-);
-LabelVisible.args = {
-	label: 'Search this website',
-	labelVisible: true,
+	render: (args) => (
+		<SearchBox>
+			<SearchBoxInput {...args} />
+			<SearchBoxButton>Search</SearchBoxButton>
+		</SearchBox>
+	),
 };
 
-export const ButtonLabel: ComponentStory<typeof SearchBoxButton> = (args) => (
+export default meta;
+
+type Story = StoryObj<typeof SearchBoxInput>;
+
+export const Basic: Story = {};
+
+export const LabelVisible: Story = {
+	args: {
+		label: 'Search this website',
+		labelVisible: true,
+	},
+};
+
+export const ButtonLabel: StoryFn<typeof SearchBoxButton> = (args) => (
 	<SearchBox>
 		<SearchBoxInput />
 		<SearchBoxButton {...args} />
@@ -38,9 +38,7 @@ ButtonLabel.args = {
 	children: 'Custom label',
 };
 
-export const ResponsiveButtonIcon: ComponentStory<typeof SearchBoxButton> = (
-	args
-) => (
+export const ResponsiveButtonIcon: StoryFn<typeof SearchBoxButton> = (args) => (
 	<SearchBox>
 		<SearchBoxInput />
 		<SearchBoxButton {...args}>Search</SearchBoxButton>

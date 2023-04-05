@@ -1,74 +1,83 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react';
 import { Stack } from '../box';
 import { TextInput } from './TextInput';
 
-export default {
+const meta: Meta<typeof TextInput> = {
 	title: 'forms/TextInput',
 	component: TextInput,
-} as ComponentMeta<typeof TextInput>;
-
-const Template: ComponentStory<typeof TextInput> = (args) => (
-	<TextInput {...args} />
-);
-
-export const Basic = Template.bind({});
-Basic.args = {
-	label: 'Example',
 };
 
-export const Required = Template.bind({});
-Required.args = {
-	required: true,
-	label: 'Example',
+export default meta;
+
+type Story = StoryObj<typeof TextInput>;
+
+export const Basic: Story = {
+	args: {
+		label: 'Example',
+	},
 };
 
-export const HideOptionalLabel = Template.bind({});
-HideOptionalLabel.args = {
-	label: 'Example',
-	hideOptionalLabel: true,
+export const Required: Story = {
+	args: {
+		required: true,
+		label: 'Example',
+	},
 };
 
-export const Disabled = Template.bind({});
-Disabled.args = {
-	disabled: true,
-	label: 'Example',
-	value: 'Disabled',
+export const HideOptionalLabel: Story = {
+	args: {
+		label: 'Example',
+		hideOptionalLabel: true,
+	},
 };
 
-export const Invalid = Template.bind({});
-Invalid.args = {
-	type: 'email',
-	label: 'Email',
-	message:
-		'Enter an email address in the correct format, like name@example.com',
-	invalid: true,
+export const Disabled: Story = {
+	args: {
+		disabled: true,
+		label: 'Example',
+		value: 'Disabled',
+	},
 };
 
-export const Hint = Template.bind({});
-Hint.args = {
-	label: 'Email',
-	type: 'email',
-	hint: 'We will only use this to respond to your question',
+export const Invalid: Story = {
+	args: {
+		type: 'email',
+		label: 'Email',
+		message:
+			'Enter an email address in the correct format, like name@example.com',
+		invalid: true,
+	},
 };
 
-export const Block = Template.bind({});
-Block.args = {
-	block: true,
-	label: 'Block',
+export const Hint: Story = {
+	args: {
+		label: 'Email',
+		type: 'email',
+		hint: 'We will only use this to respond to your question',
+	},
 };
 
-export const MaxWidths: ComponentStory<typeof TextInput> = (args) => (
-	<Stack gap={1}>
-		{(['xs', 'sm', 'md', 'lg', 'xl'] as const).map((size) => (
-			<TextInput key={size} {...args} label={size} maxWidth={size} />
-		))}
-	</Stack>
-);
-MaxWidths.args = {};
+export const Block: Story = {
+	args: {
+		block: true,
+		label: 'Block',
+	},
+};
 
-export const Password = Template.bind({});
-Password.args = {
-	label: 'Password',
-	type: 'password',
-	required: true,
+export const MaxWidths: Story = {
+	render: (args) => (
+		<Stack gap={1}>
+			{(['xs', 'sm', 'md', 'lg', 'xl'] as const).map((size) => (
+				<TextInput key={size} {...args} label={size} maxWidth={size} />
+			))}
+		</Stack>
+	),
+};
+
+export const Password: Story = {
+	args: {
+		label: 'Password',
+		type: 'password',
+		required: true,
+	},
 };

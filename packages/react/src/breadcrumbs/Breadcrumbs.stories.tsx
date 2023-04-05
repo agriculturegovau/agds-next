@@ -1,27 +1,16 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react';
-import {
-	Breadcrumbs,
-	BreadcrumbsDivider,
-	BreadcrumbsItem,
-	BreadcrumbsContainer,
-	BreadcrumbsToggle,
-} from './index';
+import { Meta, StoryObj } from '@storybook/react';
+import { Breadcrumbs, BreadcrumbsItem, BreadcrumbsContainer } from './index';
 
-export default {
+const meta: Meta<typeof Breadcrumbs> = {
 	title: 'navigation/Breadcrumbs',
 	component: Breadcrumbs,
-	subcomponents: {
-		BreadcrumbsContainer,
-		BreadcrumbsDivider,
-		BreadcrumbsItem,
-		BreadcrumbsToggle,
-	},
-} as ComponentMeta<typeof Breadcrumbs>;
+};
 
-const Template: ComponentStory<typeof Breadcrumbs> = (args) => (
-	<Breadcrumbs {...args} />
-);
-export const Basic = Template.bind({});
+export default meta;
+
+type Story = StoryObj<typeof Breadcrumbs>;
+
+export const Basic: Story = {};
 Basic.args = {
 	links: [
 		{ href: '#', label: 'Home' },
@@ -30,7 +19,7 @@ Basic.args = {
 	],
 };
 
-export const LargeList = Template.bind({});
+export const LargeList: Story = {};
 LargeList.args = {
 	links: [
 		{ href: '#', label: 'Home' },

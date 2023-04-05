@@ -1,4 +1,4 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { StoryFn, Meta } from '@storybook/react';
 import { TextLink } from '../text-link';
 import { Stack } from '../box';
 import {
@@ -9,10 +9,12 @@ import {
 	SummaryListItemAction,
 } from './SummaryList';
 
-export default {
+const meta: Meta<typeof SummaryList> = {
 	title: 'Content/SummaryList',
 	component: SummaryList,
-} as ComponentMeta<typeof SummaryList>;
+};
+
+export default meta;
 
 export const Basic = () => (
 	<SummaryList>
@@ -39,7 +41,7 @@ export const Basic = () => (
 	</SummaryList>
 );
 
-export const WithChangeLink: ComponentStory<typeof SummaryList> = (args) => (
+export const WithChangeLink: StoryFn<typeof SummaryList> = (args) => (
 	<Stack gap={1.5}>
 		<SummaryList {...args}>
 			<SummaryListItem>

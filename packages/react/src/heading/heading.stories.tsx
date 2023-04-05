@@ -1,27 +1,20 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react';
 import { Stack } from '../box';
 import { Heading, H1, H2, H3, H4, H5, H6 } from './Heading';
 
-export default {
+const meta: Meta<typeof Heading> = {
 	title: 'content/Heading',
 	component: Heading,
-	subcomponents: {
-		H1,
-		H2,
-		H3,
-		H4,
-		H5,
-		H6,
-	},
-} as ComponentMeta<typeof Heading>;
+};
 
-export const Basic: ComponentStory<typeof Heading> = (args) => (
-	<Heading {...args} />
-);
-Basic.args = {
-	type: 'h1',
-	as: 'h1',
-	children: 'Heading Example',
+export default meta;
+
+export const Basic: StoryObj<typeof Heading> = {
+	args: {
+		type: 'h1',
+		as: 'h1',
+		children: 'Heading Example',
+	},
 };
 
 export const Sizes = () => (

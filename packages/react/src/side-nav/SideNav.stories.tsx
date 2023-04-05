@@ -1,50 +1,47 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react';
 import { Box } from '../box';
 import { SideNav } from './SideNav';
 import { defaultTestingProps } from './test-utils';
 
-export default {
+const meta: Meta<typeof SideNav> = {
 	title: 'navigation/SideNav',
 	component: SideNav,
-} as ComponentMeta<typeof SideNav>;
-
-const Template: ComponentStory<typeof SideNav> = (args) => (
-	<SideNav {...args} />
-);
-
-export const Basic = Template.bind({});
-Basic.args = {
-	...defaultTestingProps,
+	args: defaultTestingProps,
 };
 
-export const ChildActive = Template.bind({});
-ChildActive.args = {
-	...defaultTestingProps,
-	activePath: '/in-detail/record-keeping',
+export default meta;
+
+type Story = StoryObj<typeof SideNav>;
+
+export const Basic: Story = {};
+
+export const ChildActive: Story = {
+	args: {
+		activePath: '/in-detail/record-keeping',
+	},
 };
 
-export const GrandChildActive = Template.bind({});
-GrandChildActive.args = {
-	...defaultTestingProps,
-	activePath: '/in-detail/record-keeping/incorrect-amounts',
+export const GrandChildActive: Story = {
+	args: {
+		activePath: '/in-detail/record-keeping/incorrect-amounts',
+	},
 };
 
-export const WithoutTitleLink: ComponentStory<typeof SideNav> = (args) => (
-	<SideNav {...args} />
-);
-WithoutTitleLink.args = {
-	...defaultTestingProps,
-	titleLink: undefined,
-	activePath: '/in-detail',
+export const WithoutTitleLink: Story = {
+	args: {
+		titleLink: undefined,
+		activePath: '/in-detail',
+	},
 };
 
-export const OnBodyAlt: ComponentStory<typeof SideNav> = (args) => (
-	<Box padding={2} background="bodyAlt">
-		<SideNav {...args} />
-	</Box>
-);
-OnBodyAlt.args = {
-	...defaultTestingProps,
-	background: 'bodyAlt',
+export const OnBodyAlt: Story = {
+	args: {
+		background: 'bodyAlt',
+	},
+	storyName: 'On bodyAlt background',
+	render: (args) => (
+		<Box padding={2} background="bodyAlt">
+			<SideNav {...args} />
+		</Box>
+	),
 };
-OnBodyAlt.storyName = 'On bodyAlt background';

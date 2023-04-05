@@ -1,58 +1,47 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { StoryFn, Meta, StoryObj } from '@storybook/react';
 import { Text } from '../text';
 import { Tags, TagsContainer, TagsList, Tag } from './index';
 
-export default {
+const meta: Meta<typeof Tags> = {
 	title: 'content/Tags',
 	component: Tags,
-	subcomponents: { TagsContainer, TagsList, Tag },
-} as ComponentMeta<typeof Tags>;
-
-const exampleItems = [{ label: 'Foo' }, { label: 'Bar' }, { label: 'Baz' }];
-
-const exampleLinks = [
-	{ href: '#', label: 'Foo' },
-	{ href: '#', label: 'Bar' },
-	{ href: '#', label: 'Baz' },
-];
-
-const Template: ComponentStory<typeof Tags> = (args) => <Tags {...args} />;
-
-export const Basic = Template.bind({});
-Basic.args = {
-	heading: (
-		<Text as="h2" fontWeight="bold">
-			Tags:
-		</Text>
-	),
-	items: exampleItems,
+	args: {
+		heading: (
+			<Text as="h2" fontWeight="bold">
+				Tags:
+			</Text>
+		),
+		items: [{ label: 'Foo' }, { label: 'Bar' }, { label: 'Baz' }],
+	},
 };
 
-export const Links = Template.bind({});
-Links.args = {
-	heading: (
-		<Text as="h2" fontWeight="bold">
-			Tags:
-		</Text>
-	),
-	items: exampleLinks,
+export default meta;
+
+type Story = StoryObj<typeof Tags>;
+
+export const Basic: Story = {};
+
+export const Links: Story = {
+	args: {
+		items: [
+			{ href: '#', label: 'Foo' },
+			{ href: '#', label: 'Bar' },
+			{ href: '#', label: 'Baz' },
+		],
+	},
 };
 
-export const Removable = Template.bind({});
-Removable.args = {
-	heading: (
-		<Text as="h2" fontWeight="bold">
-			Tags:
-		</Text>
-	),
-	items: [
-		{ label: 'Foo', onRemove: console.log },
-		{ label: 'Bar', onRemove: console.log },
-		{ label: 'Baz', onRemove: console.log },
-	],
+export const Removable: Story = {
+	args: {
+		items: [
+			{ label: 'Foo', onRemove: console.log },
+			{ label: 'Bar', onRemove: console.log },
+			{ label: 'Baz', onRemove: console.log },
+		],
+	},
 };
 
-export const Modular = () => (
+export const Modular: StoryFn<typeof Tags> = () => (
 	<TagsContainer>
 		<Text as="h2" fontWeight="bold">
 			Tags:

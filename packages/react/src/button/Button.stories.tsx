@@ -1,8 +1,8 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react';
 import { allIcons, AvatarIcon } from '../icon';
 import { Button, ButtonLink } from './Button';
 
-export default {
+const meta: Meta<typeof Button> = {
 	title: 'forms/Button',
 	component: Button,
 	subcomponents: { ButtonLink },
@@ -16,82 +16,93 @@ export default {
 			mapping: allIcons, // Maps serializable option values to complex arg values
 		},
 	},
-} as ComponentMeta<typeof Button>;
-
-const Template: ComponentStory<typeof Button> = (args) => <Button {...args} />;
-const LinkTemplate: ComponentStory<typeof ButtonLink> = (args) => (
-	<ButtonLink {...args} />
-);
-
-export const Basic = Template.bind({});
-Basic.args = {
-	block: false,
-	children: 'Button',
-	disabled: false,
-	loading: false,
-	variant: 'primary',
 };
 
-export const Primary = Template.bind({});
-Primary.args = {
-	children: 'Primary button',
-	variant: 'primary',
+export default meta;
+
+type Story = StoryObj<typeof Button>;
+
+export const Basic: Story = {
+	args: {
+		block: false,
+		children: 'Button',
+		disabled: false,
+		loading: false,
+		variant: 'primary',
+	},
 };
 
-export const Secondary = Template.bind({});
-Secondary.args = {
-	children: 'Secondary button',
-	variant: 'secondary',
+export const Primary: Story = {
+	args: {
+		children: 'Primary button',
+		variant: 'primary',
+	},
 };
 
-export const Tertiary = Template.bind({});
-Tertiary.args = {
-	children: 'Tertiary button',
-	variant: 'tertiary',
+export const Secondary: Story = {
+	args: {
+		children: 'Secondary button',
+		variant: 'secondary',
+	},
 };
 
-export const TextStory = Template.bind({});
-TextStory.storyName = 'Text';
-TextStory.args = {
-	children: 'Text button',
-	variant: 'text',
+export const Tertiary: Story = {
+	args: {
+		children: 'Tertiary button',
+		variant: 'tertiary',
+	},
 };
 
-export const Disabled = Template.bind({});
-Disabled.args = {
-	children: 'Submit',
-	disabled: true,
+export const TextStory: Story = {
+	storyName: 'Text',
+	args: {
+		children: 'Text button',
+		variant: 'text',
+	},
 };
 
-export const Loading = Template.bind({});
-Loading.args = {
-	children: 'Submit',
-	loading: true,
+export const Disabled: Story = {
+	args: {
+		children: 'Submit',
+		disabled: true,
+	},
 };
 
-export const Block = Template.bind({});
-Block.args = {
-	children: 'Submit',
-	block: true,
+export const Loading: Story = {
+	args: {
+		children: 'Submit',
+		loading: true,
+	},
 };
 
-export const Size = Template.bind({});
-Size.args = {
-	children: 'Button',
-	size: 'sm',
+export const Block: Story = {
+	args: {
+		children: 'Submit',
+		block: true,
+	},
 };
 
-export const WithIcon = Template.bind({});
-WithIcon.args = {
-	children: 'Sign out',
-	iconAfter: AvatarIcon,
+export const Size: Story = {
+	args: {
+		children: 'Button',
+		size: 'sm',
+	},
 };
 
-const ButtonLinkStory = LinkTemplate.bind({});
-ButtonLinkStory.storyName = 'ButtonLink';
-ButtonLinkStory.args = {
-	children: 'Button Link',
-	block: false,
-	href: '#',
-	variant: 'primary',
+export const WithIcon: Story = {
+	args: {
+		children: 'Sign out',
+		iconAfter: AvatarIcon,
+	},
+};
+
+export const ButtonLinkStory: StoryObj<typeof ButtonLink> = {
+	render: (args) => <ButtonLink {...args} />,
+	storyName: 'ButtonLink',
+	args: {
+		children: 'Button Link',
+		block: false,
+		href: '#',
+		variant: 'primary',
+	},
 };

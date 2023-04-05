@@ -1,14 +1,16 @@
-import { ComponentMeta } from '@storybook/react';
+import { Meta } from '@storybook/react';
 import { Stack } from '../box';
 import { Text } from '../text';
 import { TextLink } from '../text-link';
 import { H1 } from '../heading';
 import { ExternalLinkCallout } from './ExternalLinkCallout';
 
-export default {
+const meta: Meta<typeof ExternalLinkCallout> = {
 	title: 'foundations/A11y/ExternalLinkCallout',
 	component: ExternalLinkCallout,
-} as ComponentMeta<typeof ExternalLinkCallout>;
+};
+
+export default meta;
 
 export const Basic = () => (
 	<Stack gap={1}>

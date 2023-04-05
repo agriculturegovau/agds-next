@@ -1,16 +1,18 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react';
-import { ButtonGroup } from './ButtonGroup';
+import { Meta } from '@storybook/react';
+import { ButtonGroup as ButtonGroupComponent } from './ButtonGroup';
 import { Button } from './Button';
 
-export default {
+const meta: Meta<typeof ButtonGroupComponent> = {
 	title: 'forms/Button/ButtonGroup',
-	component: ButtonGroup,
-} as ComponentMeta<typeof Button>;
+	component: ButtonGroupComponent,
+};
 
-export const Basic: ComponentStory<typeof ButtonGroup> = () => (
-	<ButtonGroup>
+export default meta;
+
+export const ButtonGroup = () => (
+	<ButtonGroupComponent>
 		<Button variant="primary">Primary</Button>
 		<Button variant="secondary">Secondary</Button>
 		<Button variant="tertiary">Tertiary</Button>
-	</ButtonGroup>
+	</ButtonGroupComponent>
 );
