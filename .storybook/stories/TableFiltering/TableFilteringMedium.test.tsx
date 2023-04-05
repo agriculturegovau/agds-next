@@ -2,13 +2,13 @@ import '@testing-library/jest-dom';
 import 'html-validate/jest';
 import { useRef } from 'react';
 import { cleanup, render, waitFor } from '../../../test-utils';
-import { ExampleMedium } from './ExampleMedium';
+import { TableFilteringMedium } from './TableFilteringMedium';
 import { useSortAndFilter } from './lib/useSortAndFilter';
 import { generateTableCaption, useData } from './lib/utils';
 
 afterEach(cleanup);
 
-function MediumFilteringPatternTest({ loading }: { loading: boolean }) {
+function TableFilteringMediumTest({ loading }: { loading: boolean }) {
 	const {
 		sort,
 		filters,
@@ -33,7 +33,7 @@ function MediumFilteringPatternTest({ loading }: { loading: boolean }) {
 	});
 
 	return (
-		<ExampleMedium
+		<TableFilteringMedium
 			{...{
 				sort,
 				setSort,
@@ -55,7 +55,7 @@ function MediumFilteringPatternTest({ loading }: { loading: boolean }) {
 
 describe('MediumFilteringPattern', () => {
 	it('renders a valid HTML structure when loading', async () => {
-		const { container } = render(<MediumFilteringPatternTest loading />);
+		const { container } = render(<TableFilteringMediumTest loading />);
 		expect(container).toHTMLValidate({
 			extends: ['html-validate:recommended'],
 			rules: {
@@ -67,9 +67,7 @@ describe('MediumFilteringPattern', () => {
 	});
 
 	it('renders a valid HTML structure when loaded', async () => {
-		const { container } = render(
-			<MediumFilteringPatternTest loading={false} />
-		);
+		const { container } = render(<TableFilteringMediumTest loading={false} />);
 
 		// Wait for the data to be loaded
 		await waitFor(() =>

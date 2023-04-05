@@ -1,5 +1,5 @@
-import { ExampleSmall } from './ExampleSmall';
-import { ExampleMedium } from './ExampleMedium';
+import { TableFilteringSmall } from './TableFilteringSmall';
+import { TableFilteringMedium } from './TableFilteringMedium';
 import { useSortAndFilter } from './lib/useSortAndFilter';
 import { generateTableCaption, useData } from './lib/utils';
 
@@ -27,7 +27,7 @@ export const Small = () => {
 	});
 
 	return (
-		<ExampleSmall
+		<TableFilteringSmall
 			sort={sort}
 			setSort={setSort}
 			filters={filters}
@@ -68,7 +68,7 @@ export const Medium = () => {
 	});
 
 	return (
-		<ExampleMedium
+		<TableFilteringMedium
 			data={data}
 			filters={filters}
 			loading={loading}

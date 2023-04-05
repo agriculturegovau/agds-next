@@ -25,7 +25,7 @@ import {
 	FilterRegion,
 } from './components/FilterBar';
 
-type MediumExampleProps = {
+type TableFilteringMediumProps = {
 	// sort
 	sort: GetDataSort;
 	setSort: (sort: GetDataSort) => void;
@@ -46,7 +46,7 @@ type MediumExampleProps = {
 };
 
 /** These patterns are draft designs and are not yet ready for production. */
-export const ExampleMedium = ({
+export const TableFilteringMedium = ({
 	sort,
 	setSort,
 	filters,
@@ -60,7 +60,7 @@ export const ExampleMedium = ({
 	loading,
 	data,
 	tableCaption,
-}: MediumExampleProps) => {
+}: TableFilteringMediumProps) => {
 	const [isOpen, toggleIsOpen] = useToggleState(false, true);
 
 	// IDs for accordion to ensure accessibility

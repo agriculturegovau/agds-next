@@ -2,13 +2,13 @@ import '@testing-library/jest-dom';
 import 'html-validate/jest';
 import { useRef } from 'react';
 import { cleanup, render, waitFor } from '../../../test-utils';
-import { ExampleSmall } from './ExampleSmall';
+import { TableFilteringSmall } from './TableFilteringSmall';
 import { useSortAndFilter } from './lib/useSortAndFilter';
 import { generateTableCaption, useData } from './lib/utils';
 
 afterEach(cleanup);
 
-function SmallFilteringPatternTest({ loading }: { loading: boolean }) {
+function TableFilteringSmallTest({ loading }: { loading: boolean }) {
 	const { sort, filters, pagination, setSort, setFilters, setPagination } =
 		useSortAndFilter();
 
@@ -25,7 +25,7 @@ function SmallFilteringPatternTest({ loading }: { loading: boolean }) {
 	});
 
 	return (
-		<ExampleSmall
+		<TableFilteringSmall
 			{...{
 				sort,
 				setSort,
@@ -45,7 +45,7 @@ function SmallFilteringPatternTest({ loading }: { loading: boolean }) {
 
 describe('SmallFilteringPattern', () => {
 	it('renders a valid HTML structure when loading', async () => {
-		const { container } = render(<SmallFilteringPatternTest loading />);
+		const { container } = render(<TableFilteringSmallTest loading />);
 		expect(container).toHTMLValidate({
 			extends: ['html-validate:recommended'],
 			rules: {
@@ -57,7 +57,7 @@ describe('SmallFilteringPattern', () => {
 	});
 
 	it('renders a valid HTML structure when loaded', async () => {
-		const { container } = render(<SmallFilteringPatternTest loading={false} />);
+		const { container } = render(<TableFilteringSmallTest loading={false} />);
 
 		// Wait for the data to be loaded
 		await waitFor(() =>

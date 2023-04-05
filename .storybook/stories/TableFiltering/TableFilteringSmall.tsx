@@ -35,7 +35,7 @@ export type SmallExampleProps = {
 };
 
 /** These patterns are draft designs and are not yet ready for production. */
-export const ExampleSmall = ({
+export const TableFilteringSmall = ({
 	sort,
 	setSort,
 	filters,
