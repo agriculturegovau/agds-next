@@ -26,6 +26,8 @@ export default function TemplateOverviewPage({
 				description={template.description}
 			/>
 			<TemplateLayout
+				// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+				// @ts-ignore
 				template={template}
 				breadcrumbs={breadcrumbs}
 				navLinks={navLinks}
