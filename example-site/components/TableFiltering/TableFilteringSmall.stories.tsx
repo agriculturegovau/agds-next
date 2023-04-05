@@ -1,15 +1,21 @@
+import { Meta, StoryObj } from '@storybook/react';
 import { TableFilteringSmall } from './TableFilteringSmall';
 import { useSortAndFilter } from './lib/useSortAndFilter';
 import { generateTableCaption, useData } from './lib/utils';
 
-export default {
-	title: 'Patterns/Data Filtering (WIP)',
+const meta: Meta<typeof TableFilteringSmall> = {
+	title: 'Patterns/Table Filtering',
+	component: TableFilteringSmall,
 	parameters: {
 		layout: 'fullscreen',
 	},
 };
 
-export const Small = () => {
+export default meta;
+
+type Story = StoryObj<typeof TableFilteringSmall>;
+
+const TableFilteringSmallExample = () => {
 	const { sort, filters, pagination, setSort, setFilters, setPagination } =
 		useSortAndFilter();
 
@@ -40,4 +46,8 @@ export const Small = () => {
 			totalItems={totalItems}
 		/>
 	);
+};
+
+export const Small: Story = {
+	render: TableFilteringSmallExample,
 };

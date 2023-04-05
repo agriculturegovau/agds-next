@@ -1,15 +1,21 @@
+import { Meta, StoryObj } from '@storybook/react';
 import { TableFilteringMedium } from './TableFilteringMedium';
 import { useSortAndFilter } from './lib/useSortAndFilter';
 import { generateTableCaption, useData } from './lib/utils';
 
-export default {
-	title: 'Patterns/Data Filtering (WIP)',
+const meta: Meta<typeof TableFilteringMedium> = {
+	title: 'Patterns/Table Filtering',
+	component: TableFilteringMedium,
 	parameters: {
 		layout: 'fullscreen',
 	},
 };
 
-export const Medium = () => {
+export default meta;
+
+type Story = StoryObj<typeof TableFilteringMedium>;
+
+const TableFilteringMediumExample = () => {
 	const {
 		filters,
 		pagination,
@@ -50,4 +56,8 @@ export const Medium = () => {
 			totalItems={totalItems}
 		/>
 	);
+};
+
+export const Medium: Story = {
+	render: () => <TableFilteringMediumExample />,
 };
