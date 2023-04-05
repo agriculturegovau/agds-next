@@ -85,12 +85,13 @@ export function getTemplateBreadcrumbs(slug: string, currentPageName?: string) {
 		const meta = templateNavMetaData(slug, data);
 		const baseItems = [
 			{ href: '/', label: 'Home' },
-			{ href: '/templates', label: 'Templates' },
+			{ href: '/patterns', label: 'Patterns' },
+			{ href: '/patterns/templates', label: 'Templates' },
 		];
 		if (currentPageName) {
 			return [
 				...baseItems,
-				{ href: `/templates/${slug}`, label: meta.title },
+				{ href: `/patterns/templates/${slug}`, label: meta.title },
 				{ label: currentPageName },
 			];
 		}
@@ -101,7 +102,7 @@ export function getTemplateBreadcrumbs(slug: string, currentPageName?: string) {
 export async function getTemplateNavLinks() {
 	const templateList = await getTemplateList();
 	return templateList.map(({ title, slug }) => ({
-		href: `/templates/${slug}`,
+		href: `/patterns/templates/${slug}`,
 		label: title,
 	}));
 }
