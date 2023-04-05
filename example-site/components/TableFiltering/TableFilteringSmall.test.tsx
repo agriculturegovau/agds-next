@@ -1,6 +1,5 @@
 import '@testing-library/jest-dom';
 import 'html-validate/jest';
-import { useRef } from 'react';
 import { cleanup, render, waitFor } from '../../../test-utils';
 import { TableFilteringSmall } from './TableFilteringSmall';
 import { useSortAndFilter } from './lib/useSortAndFilter';

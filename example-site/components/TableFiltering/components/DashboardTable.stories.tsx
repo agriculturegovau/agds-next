@@ -1,4 +1,3 @@
-import { useRef } from 'react';
 import { useSortAndFilter } from '../lib/useSortAndFilter';
 import { generateTableCaption, useData } from '../lib/utils';
 import { DashboardTable } from './DashboardTable';

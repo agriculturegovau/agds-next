@@ -1,5 +1,5 @@
-import { Flex, Stack } from '@ag.ds-next/react/box';
 import { ReactNode } from 'react';
+import { Flex, Stack } from '@ag.ds-next/react/box';
 
 export const FilterRegion = ({ children }: { children: ReactNode }) => {
 	return (
