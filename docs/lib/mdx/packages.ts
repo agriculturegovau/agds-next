@@ -126,19 +126,6 @@ export function getPkgGroupList() {
 	});
 }
 
-export function getGroupBreadCrumbs(groupSlug: string) {
-	return getPkgGroupList().then((groups) => {
-		const group = groups.find((g) => g.slug === groupSlug);
-		return group
-			? [
-					{ href: '/', label: 'Home' },
-					{ href: '/packages', label: 'Packages' },
-					{ label: group.title },
-			  ]
-			: undefined;
-	});
-}
-
 export function getPkgBreadcrumbs(slug: string, currentPageName?: string) {
 	return getMarkdownData(pkgReadmePath(slug)).then(({ data }) => {
 		const meta = pkgNavMetaData(slug, data);

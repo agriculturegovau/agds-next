@@ -2,7 +2,7 @@ import { PageTemplate } from '../../../.storybook/components/PageTemplate';
 import { Category as CategoryComponent } from './Category';
 
 export default {
-	title: 'Templates/Category',
+	title: 'Templates/Category page',
 	parameters: {
 		layout: 'fullscreen',
 	},

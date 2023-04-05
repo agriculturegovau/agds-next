@@ -1,7 +1,7 @@
 import { PropsWithChildren, useMemo } from 'react';
 import { Box, Flex } from '@ag.ds-next/react/box';
 import { SkipLinks } from '@ag.ds-next/react/skip-link';
-import { TemplateBanner } from './TemplateBanner';
+import { PatternBanner } from './PatternBanner';
 import { SiteHeader } from './SiteHeader';
 import { SiteFooter } from './SiteFooter';
 
@@ -37,7 +37,7 @@ export const AppLayout = ({
 				palette="light"
 				minHeight="100vh"
 			>
-				{template ? <TemplateBanner {...template} /> : null}
+				{template ? <PatternBanner {...template} /> : null}
 				<SiteHeader focusMode={focusMode} />
 				<Box
 					flexGrow={1}

@@ -3,69 +3,69 @@ import { MDXRemote } from 'next-mdx-remote';
 import { Box } from '@ag.ds-next/react/box';
 import { Prose } from '@ag.ds-next/react/prose';
 import {
-	getTemplate,
-	getTemplateBreadcrumbs,
-	getTemplateNavLinks,
-	getTemplateSlugs,
-	Template,
-} from '../../../lib/mdx/templates';
-import { TemplateLayout } from '../../../components/TemplateLayout';
+	getPattern,
+	getPatternBreadcrumbs,
+	getPatternNavLinks,
+	getPatternSlugs,
+	Pattern,
+} from '../../../lib/mdx/patterns';
+import { PatternLayout } from '../../../components/PatternLayout';
 import { mdxComponents } from '../../../components/mdxComponents';
 import { DocumentTitle } from '../../../components/DocumentTitle';
 
-export default function TemplateOverviewPage({
+export default function PatternOverviewPage({
 	breadcrumbs,
-	template,
+	pattern,
 	navLinks,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
 	return (
 		<>
 			<DocumentTitle
-				title={`${template.title} template`}
-				description={template.description}
+				title={`${pattern.title} pattern`}
+				description={pattern.description}
 			/>
-			<TemplateLayout
-				template={template}
+			<PatternLayout
+				pattern={pattern}
 				breadcrumbs={breadcrumbs}
 				navLinks={navLinks}
-				editPath={`/docs/content/templates/${template.slug}/index.mdx`}
+				editPath={`/docs/content/patterns/${pattern.slug}/index.mdx`}
 			>
 				<Prose id="page-content">
 					<Box border borderColor="muted" css={{ img: { display: 'block' } }}>
 						<img
-							src={`/img/templates/${template.slug}.webp`}
+							src={`/img/templates/${pattern.slug}.webp`}
 							role="presentation"
 							alt=""
 						/>
 					</Box>
-					<MDXRemote {...template.source} components={mdxComponents} />
+					<MDXRemote {...pattern.source} components={mdxComponents} />
 				</Prose>
-			</TemplateLayout>
+			</PatternLayout>
 		</>
 	);
 }
 
 export const getStaticProps: GetStaticProps<
 	{
-		template: Template;
-		navLinks: Awaited<ReturnType<typeof getTemplateNavLinks>>;
-		breadcrumbs: Awaited<ReturnType<typeof getTemplateBreadcrumbs>>;
+		pattern: Pattern;
+		navLinks: Awaited<ReturnType<typeof getPatternNavLinks>>;
+		breadcrumbs: Awaited<ReturnType<typeof getPatternBreadcrumbs>>;
 	},
 	{ slug: string }
 > = async ({ params }) => {
 	const { slug } = params ?? {};
-	const template = slug ? await getTemplate(slug) : undefined;
-	const navLinks = await getTemplateNavLinks();
+	const pattern = slug ? await getPattern(slug) : undefined;
+	const navLinks = await getPatternNavLinks();
 
-	if (!(slug && template)) {
+	if (!(slug && pattern)) {
 		return { notFound: true };
 	}
 
-	const breadcrumbs = await getTemplateBreadcrumbs(slug);
+	const breadcrumbs = await getPatternBreadcrumbs(slug);
 
 	return {
 		props: {
-			template,
+			pattern,
 			navLinks,
 			breadcrumbs,
 			slug,
@@ -74,7 +74,7 @@ export const getStaticProps: GetStaticProps<
 };
 
 export const getStaticPaths = async () => {
-	const slugs = await getTemplateSlugs();
+	const slugs = await getPatternSlugs();
 
 	return {
 		paths: slugs.map((slug) => ({

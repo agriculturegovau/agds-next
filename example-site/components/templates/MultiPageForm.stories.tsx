@@ -4,7 +4,7 @@ import { MultiPageFormIntro } from './MultiPageFormIntro';
 import { MultiPageFormSuccess } from './MultiPageFormSuccess';
 
 export default {
-	title: 'Templates/Multi-page Form',
+	title: 'Templates/Multi-page form',
 	parameters: {
 		layout: 'fullscreen',
 	},

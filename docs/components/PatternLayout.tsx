@@ -3,7 +3,7 @@ import { Flex } from '@ag.ds-next/react/box';
 import { SideNavProps } from '@ag.ds-next/react/side-nav';
 import { ButtonLink } from '@ag.ds-next/react/button';
 import { CallToActionLink } from '@ag.ds-next/react/call-to-action';
-import type { Template, getTemplateBreadcrumbs } from '../lib/mdx/templates';
+import type { Pattern, getPatternBreadcrumbs } from '../lib/mdx/patterns';
 import { AppLayout } from './AppLayout';
 import { PageLayout } from './PageLayout';
 import { PageTitle } from './PageTitle';
@@ -11,73 +11,75 @@ import { FigmaLogo } from './FigmaLogo';
 import { GithubLogo } from './GithubLogo';
 import { StorybookLogo } from './StorybookLogo';
 
-type TemplateLayoutProps = PropsWithChildren<{
-	breadcrumbs: Awaited<ReturnType<typeof getTemplateBreadcrumbs>>;
+type PatternLayoutProps = PropsWithChildren<{
+	breadcrumbs: Awaited<ReturnType<typeof getPatternBreadcrumbs>>;
 	editPath: string;
-	template: Template;
+	pattern: Pattern;
 	navLinks: SideNavProps['items'];
 }>;
 
-export const TemplateLayout = ({
+export function PatternLayout({
 	breadcrumbs,
 	editPath,
 	children,
 	navLinks,
-	template,
-}: TemplateLayoutProps) => {
+	pattern,
+}: PatternLayoutProps) {
 	return (
 		<AppLayout applyMainElement={false}>
 			<PageLayout
 				applyMainElement={true}
 				sideNav={{
-					title: 'Templates',
-					titleLink: '/templates',
+					title: 'Patterns and templates',
+					titleLink: '/patterns',
 					items: navLinks,
 				}}
 				editPath={editPath}
 				breadcrumbs={breadcrumbs}
 			>
 				<PageTitle
-					pretext={`v${template.version}`}
-					title={template.title}
-					introduction={template.description}
+					pretext={`v${pattern.version}`}
+					title={pattern.title}
+					introduction={pattern.description}
 					callToAction={
-						template.previewPath && (
-							<CallToActionLink href={`/example-site${template.previewPath}`}>
-								View template preview
+						pattern.previewPath && (
+							<CallToActionLink href={`/example-site${pattern.previewPath}`}>
+								View pattern preview
 							</CallToActionLink>
 						)
 					}
 				/>
-				{(template.figmaTemplateNodeId || template.githubTemplatePath) && (
+				{(pattern.figmaTemplateNodeId ||
+					pattern.githubTemplatePath ||
+					pattern.storybookPath) && (
 					<Flex
 						gap={1.5}
 						flexWrap="wrap"
 						flexDirection={['column', 'row']}
 						alignItems="flex-start"
 					>
-						{template.figmaTemplateNodeId && (
+						{pattern.figmaTemplateNodeId && (
 							<ButtonLink
 								variant="text"
-								href={`${process.env.NEXT_PUBLIC_FIGMA_URL}?node-id=${template.figmaTemplateNodeId}`}
+								href={`${process.env.NEXT_PUBLIC_FIGMA_URL}?node-id=${pattern.figmaTemplateNodeId}`}
 								iconBefore={FigmaLogo}
 							>
 								View in Figma
 							</ButtonLink>
 						)}
-						{template.storybookPath && (
+						{pattern.storybookPath && (
 							<ButtonLink
 								variant="text"
-								href={`${process.env.NEXT_PUBLIC_STORYBOOK_URL}?path=${template.storybookPath}`}
+								href={`${process.env.NEXT_PUBLIC_STORYBOOK_URL}?path=${pattern.storybookPath}`}
 								iconBefore={StorybookLogo}
 							>
 								View in Storybook
 							</ButtonLink>
 						)}
-						{template.githubTemplatePath && (
+						{pattern.githubTemplatePath && (
 							<ButtonLink
 								variant="text"
-								href={`https://github.com/steelthreads/agds-next/blob/main/example-site${template.githubTemplatePath}`}
+								href={`https://github.com/steelthreads/agds-next/blob/main/example-site${pattern.githubTemplatePath}`}
 								iconBefore={GithubLogo}
 							>
 								View in Github
@@ -89,4 +91,4 @@ export const TemplateLayout = ({
 			</PageLayout>
 		</AppLayout>
 	);
-};
+}

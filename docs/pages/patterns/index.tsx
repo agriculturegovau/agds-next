@@ -5,52 +5,67 @@ import { Card, CardLink, CardInner } from '@ag.ds-next/react/card';
 import { Columns } from '@ag.ds-next/react/columns';
 import { mq } from '@ag.ds-next/react/core';
 import { Text } from '@ag.ds-next/react/text';
+import { H2 } from '@ag.ds-next/react/heading';
 import { getMarkdownData } from '../../lib/mdxUtils';
-import { getTemplateList, TEMPLATES_PATH } from '../../lib/mdx/templates';
+import {
+	getPatternList,
+	getPatternGroupList,
+	PATTERNS_PATH,
+} from '../../lib/mdx/patterns';
 import { DocumentTitle } from '../../components/DocumentTitle';
 import { CategoryPageTemplate } from '../../components/CategoryPageTemplate';
 
 type StaticProps = Awaited<ReturnType<typeof getStaticProps>>['props'];
 
-export default function TemplatesPage({
+export default function PatternsPage({
 	title,
 	description,
-	templateLinks,
+	groupList,
+	patternList,
 }: StaticProps) {
 	return (
 		<>
-			<DocumentTitle title="Templates" description={description} />
+			<DocumentTitle title={title} description={description} />
 			<CategoryPageTemplate
 				title={title}
 				description={description}
-				editPath="/docs/content/templates/index.mdx"
+				editPath="/docs/content/patterns/index.mdx"
 			>
-				<Columns as="ul" gap={1.5} cols={{ xs: 1, sm: 2, lg: 3 }}>
-					{templateLinks.map((template) => {
-						return <TemplateCard key={template.slug} {...template} />;
-					})}
-				</Columns>
+				<Stack gap={2}>
+					{groupList.map((group) => (
+						<Stack gap={1} key={group.slug}>
+							<H2>{group.title}</H2>
+							<Columns as="ul" gap={1.5} cols={{ xs: 1, sm: 2, lg: 3 }}>
+								{patternList
+									.filter((p) => p.group === group.slug)
+									.map((pattern) => (
+										<PatternCard key={pattern.slug} {...pattern} />
+									))}
+							</Columns>
+						</Stack>
+					))}
+				</Stack>
 			</CategoryPageTemplate>
 		</>
 	);
 }
 
-const TemplateCard = ({
+function PatternCard({
+	title,
 	slug,
-	label,
 	description,
 }: {
+	title: string;
 	slug: string;
-	label: string;
 	description: string;
-}) => {
+}) {
 	return (
 		<Card as="li" clickable shadow>
 			<Flex flexDirection="column-reverse">
 				<CardInner>
 					<Stack gap={1} flexGrow={1}>
 						<Box as="h3">
-							<CardLink href={`/templates/${slug}`}>{label}</CardLink>
+							<CardLink href={`/patterns/${slug}`}>{title}</CardLink>
 						</Box>
 						<Text>{description}</Text>
 					</Stack>
@@ -69,26 +84,20 @@ const TemplateCard = ({
 			</Flex>
 		</Card>
 	);
-};
+}
 
 export async function getStaticProps() {
 	const { data } = await getMarkdownData(
-		normalize(`${TEMPLATES_PATH}/index.mdx`)
+		normalize(`${PATTERNS_PATH}/index.mdx`)
 	);
-	const templateList = await getTemplateList();
-
-	const templateLinks = templateList.map(({ slug, title, description }) => ({
-		href: `/templates/${slug}`,
-		slug,
-		label: title,
-		description: description || null,
-	}));
-
+	const groupList = await getPatternGroupList();
+	const patternList = await getPatternList();
 	return {
 		props: {
 			title: data?.title as string,
 			description: data?.description as string,
-			templateLinks,
+			groupList,
+			patternList,
 		},
 	};
 }

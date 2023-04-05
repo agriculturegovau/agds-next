@@ -2,7 +2,7 @@ import { PageTemplate } from '../../../.storybook/components/PageTemplate';
 import { NotFound as NotFoundComponent } from './NotFound';
 
 export default {
-	title: 'Templates/NotFound',
+	title: 'Templates/Not found page',
 	parameters: {
 		layout: 'fullscreen',
 	},
