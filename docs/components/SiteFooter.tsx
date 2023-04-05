@@ -6,7 +6,6 @@ import { Box } from '@ag.ds-next/react/box';
 import { tokens } from '@ag.ds-next/react/core';
 
 const footerLinks = [
-	{ label: 'Home', href: '/' },
 	{ label: 'About', href: '/about' },
 	{ label: 'Roadmap', href: '/roadmap' },
 	{
