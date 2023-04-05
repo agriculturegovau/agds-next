@@ -1,5 +1,5 @@
 import { RefObject } from 'react';
-import { Stack } from '@ag.ds-next/react/box';
+import { Box, Stack } from '@ag.ds-next/react/box';
 import { Button, ButtonLink } from '@ag.ds-next/react/button';
 import { PageContent } from '@ag.ds-next/react/content';
 import { useToggleState } from '@ag.ds-next/react/core';
@@ -88,7 +88,14 @@ export const ExampleMedium = ({
 				<FilterRegion>
 					<FilterBar>
 						<FilterBarGroup>
-							<SortBySelect sort={sort} setSort={setSort} />
+							<Box
+								display={{
+									xs: 'block',
+									lg: 'none',
+								}}
+							>
+								<SortBySelect sort={sort} setSort={setSort} />
+							</Box>
 							<FilterSearchInput filters={filters} setFilters={setFilters} />
 							<FilterStatusSelect filters={filters} setFilters={setFilters} />
 							<Button
@@ -105,6 +112,15 @@ export const ExampleMedium = ({
 								{isOpen ? 'Hide filters' : 'Show filters'}
 							</Button>
 						</FilterBarGroup>
+
+						<Box
+							display={{
+								xs: 'none',
+								lg: 'block',
+							}}
+						>
+							<SortBySelect sort={sort} setSort={setSort} />
+						</Box>
 					</FilterBar>
 					<FilterAccordion
 						id={bodyId}

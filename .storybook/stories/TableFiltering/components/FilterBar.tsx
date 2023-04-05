@@ -23,7 +23,7 @@ export const FilterBar = ({ children }: { children: ReactNode }) => {
 			alignItems={{ xs: 'stretch', lg: 'flex-end' }}
 			justifyContent={{ xs: 'flex-start', md: 'space-between' }}
 			flexDirection={{
-				xs: 'column-reverse',
+				xs: 'column',
 				lg: 'row',
 			}}
 		>
