@@ -1,4 +1,5 @@
 import { Meta, StoryObj } from '@storybook/react';
+import { PageContent } from '@ag.ds-next/react/content';
 import { DataLoadingWithTables } from './DataLoadingWithTables';
 
 const meta: Meta<typeof DataLoadingWithTables> = {
@@ -8,4 +9,10 @@ const meta: Meta<typeof DataLoadingWithTables> = {
 
 export default meta;
 
-export const Tables: StoryObj<typeof DataLoadingWithTables> = {};
+export const Tables: StoryObj<typeof DataLoadingWithTables> = {
+	render: () => (
+		<PageContent>
+			<DataLoadingWithTables />
+		</PageContent>
+	),
+};

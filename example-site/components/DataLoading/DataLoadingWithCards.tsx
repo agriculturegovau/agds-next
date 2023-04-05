@@ -3,7 +3,6 @@ import useSWR from 'swr';
 import { Stack } from '@ag.ds-next/react/box';
 import { SkeletonText } from '@ag.ds-next/react/skeleton';
 import { Text } from '@ag.ds-next/react/text';
-import { PageContent } from '@ag.ds-next/react/content';
 import { Card, CardInner, CardLink } from '@ag.ds-next/react/card';
 import { Columns } from '@ag.ds-next/react/columns';
 import { SkeletonHeading } from '@ag.ds-next/react/skeleton';
