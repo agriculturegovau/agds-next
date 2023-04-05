@@ -67,10 +67,10 @@ export const ExampleSmall = ({
 				<FilterRegion>
 					<FilterBar>
 						<FilterBarGroup>
-							<SortBySelect sort={sort} setSort={setSort} />
 							<FilterStatusSelect filters={filters} setFilters={setFilters} />
 							<FilterAssigneeSelect filters={filters} setFilters={setFilters} />
 						</FilterBarGroup>
+						<SortBySelect sort={sort} setSort={setSort} />
 					</FilterBar>
 				</FilterRegion>
 
