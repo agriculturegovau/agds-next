@@ -65,9 +65,9 @@ export default function PackagesHome({
 								</Text>
 							)
 						) : (
-							<Stack gap={2}>
+							<Stack gap={3}>
 								{groupList.map((group) => (
-									<Stack gap={1} key={group.slug}>
+									<Stack gap={1.5} key={group.slug}>
 										<H2>{group.title}</H2>
 										<PkgCardList
 											items={pkgList.filter((p) => p.group === group.slug)}

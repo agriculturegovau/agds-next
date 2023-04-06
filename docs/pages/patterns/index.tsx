@@ -31,9 +31,9 @@ export default function PatternsPage({
 				description={description}
 				editPath="/docs/content/patterns/index.mdx"
 			>
-				<Stack gap={2}>
+				<Stack gap={3}>
 					{groupList.map((group) => (
-						<Stack gap={1} key={group.slug}>
+						<Stack gap={1.5} key={group.slug}>
 							<H2>{group.title}</H2>
 							<Columns as="ul" gap={1.5} cols={{ xs: 1, sm: 2, lg: 3 }}>
 								{patternList
