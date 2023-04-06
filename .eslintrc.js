@@ -48,7 +48,7 @@ module.exports = {
 			},
 		},
 		{
-			files: ['packages/**/*'],
+			files: ['packages/**/*', '.storybook/**/*'],
 			rules: { '@next/next/no-html-link-for-pages': 'off' },
 		},
 		// CSF and import/no-anonymous-default-export
