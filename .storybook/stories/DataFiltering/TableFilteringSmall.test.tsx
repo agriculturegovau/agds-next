@@ -1,24 +1,15 @@
 import '@testing-library/jest-dom';
 import 'html-validate/jest';
-import { useRef } from 'react';
 import { cleanup, render, waitFor } from '../../../test-utils';
-import { ExampleMedium } from './ExampleMedium';
+import { TableFilteringSmall } from './TableFilteringSmall';
 import { useSortAndFilter } from './lib/useSortAndFilter';
 import { generateTableCaption, useData } from './lib/utils';
 
 afterEach(cleanup);
 
-function MediumFilteringPatternTest({ loading }: { loading: boolean }) {
-	const {
-		sort,
-		filters,
-		pagination,
-		setSort,
-		setFilters,
-		resetFilters,
-		removeFilter,
-		setPagination,
-	} = useSortAndFilter();
+function TableFilteringSmallTest({ loading }: { loading: boolean }) {
+	const { sort, filters, pagination, setSort, setFilters, setPagination } =
+		useSortAndFilter();
 
 	const { data, totalPages, totalItems } = useData({
 		filters,
@@ -33,14 +24,12 @@ function MediumFilteringPatternTest({ loading }: { loading: boolean }) {
 	});
 
 	return (
-		<ExampleMedium
+		<TableFilteringSmall
 			{...{
 				sort,
 				setSort,
 				filters,
 				setFilters,
-				resetFilters,
-				removeFilter,
 				pagination,
 				setPagination,
 				totalPages,
@@ -53,9 +42,9 @@ function MediumFilteringPatternTest({ loading }: { loading: boolean }) {
 	);
 }
 
-describe('MediumFilteringPattern', () => {
+describe('SmallFilteringPattern', () => {
 	it('renders a valid HTML structure when loading', async () => {
-		const { container } = render(<MediumFilteringPatternTest loading />);
+		const { container } = render(<TableFilteringSmallTest loading />);
 		expect(container).toHTMLValidate({
 			extends: ['html-validate:recommended'],
 			rules: {
@@ -67,9 +56,7 @@ describe('MediumFilteringPattern', () => {
 	});
 
 	it('renders a valid HTML structure when loaded', async () => {
-		const { container } = render(
-			<MediumFilteringPatternTest loading={false} />
-		);
+		const { container } = render(<TableFilteringSmallTest loading={false} />);
 
 		// Wait for the data to be loaded
 		await waitFor(() =>
@@ -81,7 +68,6 @@ describe('MediumFilteringPattern', () => {
 			rules: {
 				// react 18s `useId` break this rule
 				'valid-id': 'off',
-				'no-inline-style': 'off',
 			},
 		});
 	});

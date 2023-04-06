@@ -1,4 +1,3 @@
-import { RefObject } from 'react';
 import { Box, Stack } from '@ag.ds-next/react/box';
 import { Button, ButtonLink } from '@ag.ds-next/react/button';
 import { PageContent } from '@ag.ds-next/react/content';
@@ -10,6 +9,7 @@ import {
 	PlusIcon,
 } from '@ag.ds-next/react/icon';
 import { PaginationButtons } from '@ag.ds-next/react/pagination';
+import { Prose } from '@ag.ds-next/react/prose';
 import { ActiveFilters } from './components/ActiveFilters';
 import { FilterAccordion } from './components/FilterAccordion';
 import { SortBySelect } from './components/SortBySelect';
@@ -18,14 +18,13 @@ import { FilterSearchInput } from './components/FilterSearchInput';
 import { FilterStatusSelect } from './components/FilterStatusSelect';
 import { GetDataFilters, GetDataPagination, GetDataSort } from './lib/getData';
 import { BusinessForAuditWithIndex } from './lib/generateBusinessData';
-import { Prose } from '@ag.ds-next/react/prose';
 import {
 	FilterBar,
 	FilterBarGroup,
 	FilterRegion,
 } from './components/FilterBar';
 
-type MediumExampleProps = {
+type TableFilteringMediumProps = {
 	// sort
 	sort: GetDataSort;
 	setSort: (sort: GetDataSort) => void;
@@ -46,7 +45,7 @@ type MediumExampleProps = {
 };
 
 /** These patterns are draft designs and are not yet ready for production. */
-export const ExampleMedium = ({
+export const TableFilteringMedium = ({
 	sort,
 	setSort,
 	filters,
@@ -60,7 +59,7 @@ export const ExampleMedium = ({
 	loading,
 	data,
 	tableCaption,
-}: MediumExampleProps) => {
+}: TableFilteringMediumProps) => {
 	const [isOpen, toggleIsOpen] = useToggleState(false, true);
 
 	// IDs for accordion to ensure accessibility

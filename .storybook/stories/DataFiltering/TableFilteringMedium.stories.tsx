@@ -1,49 +1,21 @@
-import { ExampleSmall } from './ExampleSmall';
-import { ExampleMedium } from './ExampleMedium';
+import { Meta, StoryObj } from '@storybook/react';
+import { TableFilteringMedium } from './TableFilteringMedium';
 import { useSortAndFilter } from './lib/useSortAndFilter';
 import { generateTableCaption, useData } from './lib/utils';
 
-export default {
-	title: 'Patterns/Data Filtering (WIP)',
+const meta: Meta<typeof TableFilteringMedium> = {
+	title: 'Patterns/Data filtering and sorting',
+	component: TableFilteringMedium,
 	parameters: {
 		layout: 'fullscreen',
 	},
 };
 
-export const Small = () => {
-	const { sort, filters, pagination, setSort, setFilters, setPagination } =
-		useSortAndFilter();
+export default meta;
 
-	const { loading, data, totalPages, totalItems } = useData({
-		filters,
-		pagination,
-		sort,
-	});
+type Story = StoryObj<typeof TableFilteringMedium>;
 
-	const tableCaption = generateTableCaption({
-		loading,
-		totalItems,
-		pagination,
-	});
-
-	return (
-		<ExampleSmall
-			sort={sort}
-			setSort={setSort}
-			filters={filters}
-			setFilters={setFilters}
-			pagination={pagination}
-			setPagination={setPagination}
-			totalPages={totalPages}
-			loading={loading}
-			data={data}
-			tableCaption={tableCaption}
-			totalItems={totalItems}
-		/>
-	);
-};
-
-export const Medium = () => {
+const TableFilteringMediumExample = () => {
 	const {
 		filters,
 		pagination,
@@ -68,7 +40,7 @@ export const Medium = () => {
 	});
 
 	return (
-		<ExampleMedium
+		<TableFilteringMedium
 			data={data}
 			filters={filters}
 			loading={loading}
@@ -84,4 +56,9 @@ export const Medium = () => {
 			totalItems={totalItems}
 		/>
 	);
+};
+
+export const Medium: Story = {
+	storyName: 'Tables (Medium)',
+	render: TableFilteringMediumExample,
 };

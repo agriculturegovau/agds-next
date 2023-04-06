@@ -1,4 +1,4 @@
-import { RefObject, useState } from 'react';
+import { useState } from 'react';
 import { GetDataFilters, GetDataPagination, GetDataSort } from './getData';
 
 export const useSortAndFilter = (
