@@ -9,8 +9,7 @@ import { SiteHeaderSearch } from './SiteHeaderSearch';
 const NAV_ITEMS = {
 	primary: [
 		{ label: 'Home', href: '/' },
-		{ label: 'Content', href: '/category' },
-		{ label: 'Data', href: '/data' },
+		{ label: 'Category 1', href: '/category' },
 	],
 	secondary: [
 		{

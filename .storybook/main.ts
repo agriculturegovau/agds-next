@@ -25,7 +25,6 @@ const config: StorybookConfig = {
 		'../packages/*/src/**/*.stories.@(ts|tsx)',
 		'../example-site/**/*.stories.@(ts|tsx)',
 		'./stories/*.@(ts|tsx)',
-		'./stories/*/index.@(ts|tsx)',
 		'./stories/**/*.stories.@(ts|tsx)',
 	],
 	staticDirs: ['../example-site/public'],
