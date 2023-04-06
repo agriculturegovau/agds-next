@@ -4,7 +4,7 @@ import { useSortAndFilter } from './lib/useSortAndFilter';
 import { generateTableCaption, useData } from './lib/utils';
 
 const meta: Meta<typeof TableFilteringMedium> = {
-	title: 'Patterns/Table Filtering',
+	title: 'Patterns/Data filtering and sorting',
 	component: TableFilteringMedium,
 	parameters: {
 		layout: 'fullscreen',
@@ -59,5 +59,6 @@ const TableFilteringMediumExample = () => {
 };
 
 export const Medium: Story = {
+	storyName: 'Tables (Medium)',
 	render: () => <TableFilteringMediumExample />,
 };
