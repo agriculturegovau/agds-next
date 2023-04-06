@@ -2,7 +2,7 @@ import { PageTemplate } from '../../../.storybook/components/PageTemplate';
 import { Content as ContentComponent } from './Content';
 
 export default {
-	title: 'Templates/Content',
+	title: 'Templates/Content page',
 	parameters: {
 		layout: 'fullscreen',
 	},
