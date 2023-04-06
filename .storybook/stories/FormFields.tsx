@@ -1,3 +1,4 @@
+import { Meta } from '@storybook/react';
 import { Autocomplete } from '@ag.ds-next/react/src/autocomplete/Autocomplete';
 import { Box } from '@ag.ds-next/react/box';
 import { Button, ButtonGroup } from '@ag.ds-next/react/button';
@@ -13,9 +14,11 @@ import { Select } from '@ag.ds-next/react/select';
 import { Textarea } from '@ag.ds-next/react/textarea';
 import { TextInput } from '@ag.ds-next/react/text-input';
 
-export default {
+const meta: Meta = {
 	title: 'Forms/All',
 };
+
+export default meta;
 
 const AllFormFields = ({
 	background,
@@ -74,14 +77,14 @@ const AllFormFields = ({
 							<DatePicker
 								label="Birth date"
 								value={new Date()}
-								onChange={() => {}}
+								onChange={() => undefined}
 								{...commonProps}
 							/>
 
 							<DateRangePicker
 								legend="Date range"
 								value={{ from: undefined, to: undefined }}
-								onChange={() => {}}
+								onChange={() => undefined}
 								disabled={commonProps.disabled}
 								fromInvalid={commonProps.invalid}
 								toInvalid={commonProps.invalid}
@@ -92,7 +95,7 @@ const AllFormFields = ({
 
 							<FileUpload
 								label="Drivers licence"
-								onChange={() => {}}
+								onChange={() => undefined}
 								value={[]}
 								{...commonProps}
 							/>

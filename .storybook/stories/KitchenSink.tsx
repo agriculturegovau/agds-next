@@ -1,3 +1,4 @@
+import { Meta } from '@storybook/react';
 import {
 	Accordion,
 	AccordionItem,
@@ -69,7 +70,7 @@ import { SearchInput } from '@ag.ds-next/react/search-input';
 import { PageTemplate } from '../components/PageTemplate';
 import { COUNTRY_OPTIONS } from '../../docs/components/designSystemComponents';
 
-export default {
+const meta: Meta = {
 	title: 'Testing/Kitchen sink',
 	parameters: {
 		layout: 'fullscreen',
@@ -81,6 +82,8 @@ export default {
 		},
 	},
 };
+
+export default meta;
 
 const sideNavItems = [
 	{
@@ -131,7 +134,7 @@ export const KitchenSink = ({
 						Short hero banner sentence - md/default (P)
 					</HeroBannerSubtitle>
 				</HeroBannerTitleContainer>
-				<SearchBox onSubmit={() => {}}>
+				<SearchBox onSubmit={() => undefined}>
 					<SearchBoxInput label="Search this website" />
 					<SearchBoxButton iconOnly={{ xs: true, md: false }}>
 						Search
@@ -347,7 +350,7 @@ export const KitchenSink = ({
 								<DatePicker
 									label="Birth date"
 									value={new Date()}
-									onChange={() => {}}
+									onChange={() => undefined}
 								/>
 								<Select
 									label="Example"
@@ -361,7 +364,7 @@ export const KitchenSink = ({
 								<FileInput label="Drivers licence" />
 								<FileUpload
 									label="Drivers licence"
-									onChange={() => {}}
+									onChange={() => undefined}
 									value={[]}
 								/>
 								<Textarea label="Message" />
@@ -400,11 +403,9 @@ export const KitchenSink = ({
 								</ButtonGroup>
 							</FormStack>
 
-							<DirectionLink
-								children="Direction link"
-								direction="left"
-								href="#"
-							/>
+							<DirectionLink direction="left" href="#">
+								Back
+							</DirectionLink>
 
 							<CallToActionLink href="#">Call to action</CallToActionLink>
 
