@@ -16,6 +16,6 @@
 		"jsxImportSource": "@emotion/react",
 		"incremental": true
 	},
-	"include": ["**/*", ".storybook/**/*"],
-	"exclude": ["node_modules", "packages/*/dist"]
+	"include": ["**/*.ts", "**/*.tsx", ".storybook/**/*.tsx"],
+	"exclude": ["node_modules", "packages/react/**/dist/*"]
 }
