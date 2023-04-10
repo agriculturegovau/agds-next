@@ -1,3 +1,4 @@
+import { Fragment } from 'react';
 import { Meta } from '@storybook/react';
 import {
 	Accordion,
@@ -68,6 +69,7 @@ import {
 } from '@ag.ds-next/react/summary-list';
 import { SearchInput } from '@ag.ds-next/react/search-input';
 import { PageTemplate } from '../components/PageTemplate';
+import { AuthenticatedPageTemplate } from '../components/AuthenticatedPageTemplate';
 import { COUNTRY_OPTIONS } from '../../docs/components/designSystemComponents';
 
 const meta: Meta = {
@@ -78,6 +80,10 @@ const meta: Meta = {
 	argTypes: {
 		background: {
 			options: ['body', 'bodyAlt'],
+			control: { type: 'radio' },
+		},
+		layout: {
+			options: ['unauthenticated', 'authenticated'],
 			control: { type: 'radio' },
 		},
 	},
@@ -117,14 +123,44 @@ const backgroundMapper = {
 	},
 } as const;
 
-export const KitchenSink = ({
+export function KitchenSink({
+	background,
+	layout,
+}: {
+	background: 'body' | 'bodyAlt';
+	layout: 'unauthenticated' | 'authenticated';
+}) {
+	const { page } = backgroundMapper[background];
+
+	if (layout === 'unauthenticated') {
+		return (
+			<PageTemplate background={page}>
+				<KitchenSinkContent background={background} />
+			</PageTemplate>
+		);
+	}
+
+	return (
+		<AuthenticatedPageTemplate background={page}>
+			<KitchenSinkContent background={background} />
+		</AuthenticatedPageTemplate>
+	);
+}
+
+KitchenSink.storyName = 'Kitchen sink';
+KitchenSink.args = {
+	background: 'body',
+	layout: 'unauthenticated',
+};
+
+function KitchenSinkContent({
 	background,
 }: {
 	background: 'body' | 'bodyAlt';
-}) => {
+}) {
 	const { page, shade, opposite } = backgroundMapper[background];
 	return (
-		<PageTemplate background={page}>
+		<Fragment>
 			<HeroBanner background={opposite}>
 				<HeroBannerTitleContainer>
 					<HeroBannerTitle>
@@ -141,7 +177,6 @@ export const KitchenSink = ({
 					</SearchBoxButton>
 				</SearchBox>
 			</HeroBanner>
-
 			<PageContent>
 				<Columns>
 					<Column columnSpan={{ xs: 12, md: 4 }}>
@@ -514,10 +549,6 @@ export const KitchenSink = ({
 					</Column>
 				</Columns>
 			</PageContent>
-		</PageTemplate>
+		</Fragment>
 	);
-};
-KitchenSink.storyName = 'Kitchen sink';
-KitchenSink.args = {
-	background: 'body',
-};
+}

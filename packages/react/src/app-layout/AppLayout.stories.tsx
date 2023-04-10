@@ -1,34 +1,111 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Prose } from '@ag.ds-next/react/prose';
+import { Fragment, useMemo } from 'react';
+import { Logo } from '../ag-branding';
+import { PageContent } from '../content';
+import { tokens } from '../core';
+import { LinkList } from '../link-list';
+import { Prose } from '../prose';
+import { Text } from '../text';
+import { SkipLinks } from '../skip-link';
 import { AppLayout } from './AppLayout';
-import { navigationItems } from './testUtils';
+import { AppLayoutContent } from './AppLayoutContent';
+import {
+	AppLayoutFooter,
+	AppLayoutFooterLogo,
+	AppLayoutFooterDivider,
+} from './AppLayoutFooter';
+import { AppLayoutHeader } from './AppLayoutHeader';
+import { AppLayoutHeaderTitles } from './AppLayoutHeaderTitles';
+import { AppLayoutHeaderAccountLink } from './AppLayoutHeaderAccountLink';
+import { AppLayoutSidebar } from './AppLayoutSidebar';
+import { AppLayoutSidebarNav } from './AppLayoutSidebarNav';
+import { navigationItems, secondaryNavigationItems } from './test-utils';
 
 const meta: Meta<typeof AppLayout> = {
-	title: 'Navigation/AppLayout',
+	title: 'Layout/AppLayout',
 	component: AppLayout,
 	parameters: {
 		layout: 'fullscreen',
 	},
-	args: {
-		siteTitle: 'Export Service',
-		siteSubtitle: 'Supporting Australian agricultural exports',
-		userMenu: {
-			name: 'Toto Wolff',
-			organisation: 'Orange Meat Works',
-			href: '/account/preferences',
-		},
-		activePath: '/account',
-		handleSignOut: async () => console.log('sign out'),
-		navigationItems: navigationItems,
+	render: function AppLayoutRender(args) {
+		const year = useMemo(() => new Date().getFullYear(), []);
+		return (
+			<Fragment>
+				<SkipLinks
+					links={[{ href: '#main-content', label: 'Skip to main content' }]}
+				/>
+				<AppLayout {...args}>
+					<AppLayoutSidebar logo={<Logo />}>
+						<AppLayoutSidebarNav
+							activePath="#"
+							items={navigationItems}
+							secondaryItems={secondaryNavigationItems}
+						/>
+					</AppLayoutSidebar>
+					<AppLayoutContent>
+						<AppLayoutHeader logo={<Logo />}>
+							<AppLayoutHeaderTitles
+								title="Export Service"
+								subTitle="Supporting Australian agricultural exports"
+							/>
+							<AppLayoutHeaderAccountLink
+								name="Toto Wolff"
+								organisation="Orange Meat Works"
+								href="/account/preferences"
+							/>
+						</AppLayoutHeader>
+						<main
+							id="main-content"
+							tabIndex={-1}
+							css={{ '&:focus': { outline: 'none' } }}
+						>
+							<PageContent>
+								<Prose>
+									<h1>Page title</h1>
+									<p>Page content</p>
+								</Prose>
+							</PageContent>
+						</main>
+						<AppLayoutFooter>
+							<AppLayoutFooterLogo>
+								<Logo />
+							</AppLayoutFooterLogo>
+							<nav aria-label="footer">
+								<LinkList
+									links={[
+										{ label: 'Home', href: '/' },
+										{
+											label: 'Storybook',
+											href: 'https://design-system.agriculture.gov.au/storybook/index.html',
+										},
+										{
+											label: 'Playroom',
+											href: 'https://design-system.agriculture.gov.au/playroom/index.html',
+										},
+										{
+											label: 'Starter kit',
+											href: 'https://github.com/steelthreads/agds-starter-kit',
+										},
+									]}
+									horizontal
+								/>
+							</nav>
+							<AppLayoutFooterDivider />
+							<Text fontSize="xs" maxWidth={tokens.maxWidth.bodyText}>
+								We acknowledge the traditional owners of country throughout
+								Australia and recognise their continuing connection to land,
+								waters and culture. We pay our respects to their Elders past,
+								present and emerging.
+							</Text>
+							<Text fontSize="xs" maxWidth={tokens.maxWidth.bodyText}>
+								&copy; {year} Department of Agriculture, Fisheries and Forestry
+							</Text>
+						</AppLayoutFooter>
+					</AppLayoutContent>
+				</AppLayout>
+			</Fragment>
+		);
 	},
-	render: (args) => (
-		<AppLayout {...args}>
-			<Prose>
-				<h1>Authenticated App Shell</h1>
-				<p>Some content</p>
-			</Prose>
-		</AppLayout>
-	),
 };
 
 export default meta;
@@ -41,12 +118,6 @@ export const Basic: Story = {
 
 export const FocusMode: Story = {
 	args: {
-		isFocusMode: true,
-	},
-};
-
-export const NoOrganisation: Story = {
-	args: {
-		userOrganisation: undefined,
+		focusMode: true,
 	},
 };

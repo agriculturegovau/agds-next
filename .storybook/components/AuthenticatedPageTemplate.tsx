@@ -1,29 +1,64 @@
-import '@testing-library/jest-dom';
-import 'html-validate/jest';
-import { cleanup, render } from '../../../../test-utils';
-import { Text } from '../text';
-import { LinkList } from '../link-list';
-import { tokens } from '../core';
-import { Logo } from '../ag-branding';
-import { navigationItems, secondaryNavigationItems } from './test-utils';
+import { PropsWithChildren, useMemo } from 'react';
+import { Logo } from '@ag.ds-next/react/ag-branding';
+import { tokens } from '@ag.ds-next/react/core';
+import { LinkList } from '@ag.ds-next/react/link-list';
+import { Text } from '@ag.ds-next/react/text';
+import { HelpIcon, HomeIcon, ExitIcon } from '@ag.ds-next/react/icon';
 import {
 	AppLayout,
-	AppLayoutProps,
 	AppLayoutSidebar,
 	AppLayoutSidebarNav,
-	AppLayoutContent,
 	AppLayoutHeader,
 	AppLayoutHeaderTitles,
 	AppLayoutHeaderAccountLink,
 	AppLayoutFooter,
 	AppLayoutFooterDivider,
-} from './index';
+	AppLayoutContent,
+	AppLayoutFooterLogo,
+} from '@ag.ds-next/react/app-layout';
+import {
+	EmailIcon,
+	NotificationBadge,
+} from '../../docs/components/designSystemComponents';
 
-afterEach(cleanup);
+type PageTemplateProps = PropsWithChildren<{
+	background?: 'body' | 'bodyAlt';
+}>;
 
-function renderAppLayout(props: AppLayoutProps) {
-	return render(
-		<AppLayout {...props}>
+const navigationItems = [
+	[
+		{
+			label: 'Home',
+			icon: HomeIcon,
+			href: '#',
+		},
+	],
+	[
+		{
+			label: 'Messages',
+			icon: EmailIcon,
+			href: '#messages',
+			endElement: <NotificationBadge tone="action" value={100} max={99} />,
+		},
+		{ label: 'Help', icon: HelpIcon, href: '#help' },
+	],
+];
+
+const secondaryNavigationItems = [
+	{
+		label: 'Sign Out',
+		icon: ExitIcon,
+		onClick: console.log,
+	},
+];
+
+export function AuthenticatedPageTemplate({
+	children,
+	background,
+}: PageTemplateProps) {
+	const year = useMemo(() => new Date().getFullYear(), []);
+	return (
+		<AppLayout>
 			<AppLayoutSidebar logo={<Logo />}>
 				<AppLayoutSidebarNav
 					activePath="#"
@@ -31,7 +66,7 @@ function renderAppLayout(props: AppLayoutProps) {
 					secondaryItems={secondaryNavigationItems}
 				/>
 			</AppLayoutSidebar>
-			<AppLayoutContent>
+			<AppLayoutContent background={background}>
 				<AppLayoutHeader logo={<Logo />}>
 					<AppLayoutHeaderTitles
 						title="Export Service"
@@ -43,10 +78,11 @@ function renderAppLayout(props: AppLayoutProps) {
 						href="/account/preferences"
 					/>
 				</AppLayoutHeader>
-				<main id="main-content">
-					<p>Page content</p>
-				</main>
-				<AppLayoutFooter logo={<Logo />}>
+				<main id="main-content">{children}</main>
+				<AppLayoutFooter>
+					<AppLayoutFooterLogo>
+						<Logo />
+					</AppLayoutFooterLogo>
 					<nav aria-label="footer">
 						<LinkList
 							links={[
@@ -75,42 +111,10 @@ function renderAppLayout(props: AppLayoutProps) {
 						emerging.
 					</Text>
 					<Text fontSize="xs" maxWidth={tokens.maxWidth.bodyText}>
-						&copy; 2023 Department of Agriculture, Fisheries and Forestry
+						&copy; {year} Department of Agriculture, Fisheries and Forestry
 					</Text>
 				</AppLayoutFooter>
 			</AppLayoutContent>
 		</AppLayout>
 	);
 }
-
-describe('AppLayout', () => {
-	it('renders correctly', () => {
-		const { container } = renderAppLayout({ focusMode: false });
-		expect(container).toMatchSnapshot();
-	});
-	it('renders a valid HTML structure', () => {
-		const { container } = renderAppLayout({ focusMode: false });
-		expect(container).toHTMLValidate({
-			extends: ['html-validate:recommended'],
-			rules: {
-				// react 18s `useId` break this rule
-				'valid-id': 'off',
-				'no-inline-style': 'off',
-			},
-		});
-	});
-
-	describe('Focus mode', () => {
-		it('renders a valid HTML structure', () => {
-			const { container } = renderAppLayout({ focusMode: true });
-			expect(container).toHTMLValidate({
-				extends: ['html-validate:recommended'],
-				rules: {
-					// react 18s `useId` break this rule
-					'valid-id': 'off',
-					'no-inline-style': 'off',
-				},
-			});
-		});
-	});
-});

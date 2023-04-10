@@ -1,56 +1,18 @@
-import { PropsWithChildren, Fragment } from 'react';
-import { Box, Stack } from '@ag.ds-next/react/box';
-import { SkipLinks } from '@ag.ds-next/react/skip-link';
-import { Content } from '@ag.ds-next/react/content';
-import { AppLayoutHeader } from './AppLayoutHeader';
-import { AppLayoutSideBar } from './AppLayoutSideBar';
-import { AppLayoutFooter } from './AppLayoutFooter';
-import {
-	AppLayoutSideBarItem,
-	AuthenticatedAppShellSideBarItemType,
-	AuthenticatedAppShellSideBarDivider,
-} from './AppLayoutSideBarItem';
+import { PropsWithChildren } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
+import { tokens, useTernaryState, useWindowSize } from '../core';
 import { AppLayoutContext } from './AppLayoutContext';
-import {
-	useIsMobile,
-	useSidebarMenuState,
-	useSidebarMenuToggles,
-} from './utils';
 
 export type AppLayoutProps = PropsWithChildren<{
-	/** Title of the website */
-	siteTitle: string;
-	/** Subtitle of the website */
-	siteSubtitle: string;
-	/** For screens where a user is focusing on a task, the UI should collapse */
-	isFocusMode?: boolean;
-	/** Used for highlighting the active element. */
-	activePath: string;
-	/** Groups of items to display in the sidebar. */
-	mainNavItems: AuthenticatedAppShellSideBarItemType[][];
-	/** Configuration of the user dropdown menu. */
-	userMenu: {
-		name: string;
-		organisation?: string;
-		href: string;
-	};
-	handleSignOut: () => Promise<void>;
+	/** When true, the side bar will be collapsed by default. This should be used in screens where a user is focusing on a task, such as multi-page forms. */
+	focusMode?: boolean;
 }>;
 
-export function AppLayout({
-	siteTitle,
-	siteSubtitle,
-	isFocusMode = false,
-	activePath,
-	mainNavItems,
-	userMenu,
-	children,
-	handleSignOut,
-}: AppLayoutProps) {
+export function AppLayout({ children, focusMode = false }: AppLayoutProps) {
 	const isMobile = useIsMobile();
 
 	const [isMenuOpen, _showMenu, _hideMenu] = useSidebarMenuState({
-		isFocusMode,
+		focusMode,
 		isMobile,
 	});
 
@@ -67,107 +29,93 @@ export function AppLayout({
 				isMenuOpen,
 				showMenu,
 				hideMenu,
-				userMenu,
 				showMenuButtonRef,
 				hideMenuButtonRef,
-				handleSignOut,
 			}}
 		>
-			<SkipLinks
-				links={[{ href: '#main-content', label: 'Skip to main content' }]}
-			/>
-			<Box display="flex" flexDirection="row">
-				<AppLayoutSideBar>
-					<Box as="nav" aria-label="main">
-						<Stack as="ul">
-							{mainNavItems.map((group, idx, arr) => {
-								const isLastItem = idx === arr.length - 1;
-								return (
-									<Fragment key={idx}>
-										{group.map((item, idx) => (
-											<AppLayoutSideBarItem
-												key={idx}
-												isActive={activePath === item.href}
-												{...item}
-											/>
-										))}
-										{!isLastItem ? (
-											<AuthenticatedAppShellSideBarDivider />
-										) : null}
-									</Fragment>
-								);
-							})}
-						</Stack>
-					</Box>
-				</AppLayoutSideBar>
-				<Stack width="100%" minHeight={'100vh'}>
-					<AppLayoutHeader title={siteTitle} subtitle={siteSubtitle} />
-
-					<Box
-						as="main"
-						id="main-content"
-						paddingTop={2}
-						paddingBottom={3}
-						flexGrow={1}
-					>
-						<Content>{children}</Content>
-					</Box>
-
-					<Content>
-						<AppLayoutFooter />
-					</Content>
-				</Stack>
-			</Box>
+			{children}
 		</AppLayoutContext.Provider>
 	);
 }
 
-// export type AppLayoutNavItem = {
-// 	label: string;
-// 	icon: FC;
-// 	href: string;
-// };
+/**
+ * Used to calculate whether the menu should be shown as a modal
+ */
+function useIsMobile() {
+	const { windowWidth } = useWindowSize();
+	if (typeof windowWidth === 'undefined') return;
+	return windowWidth <= tokens.breakpoint.lg - 1;
+}
 
-// export type AppLayoutProps = {
-// 	isFocusMode?: boolean;
-// 	userName: string;
-// 	userOrganisation?: string;
-// 	unreadMessageCount?: number;
-// 	activePath: string;
-// 	handleSignOut: () => Promise<void>;
-// 	navigationItems?: AppLayoutNavItem[][];
-// };
+/**
+ * State to manage the collapsed state of the sidebar menu
+ */
+function useSidebarMenuState({
+	isMobile,
+	focusMode,
+}: {
+	isMobile: boolean | undefined;
+	focusMode: boolean;
+}) {
+	// Mobile menu should be hidden by default
+	const mobileState = useTernaryState(false);
 
-// /** Common application shell for apps in the user-facing authenticated space of the Export Service */
-// export const AppLayout = ({
-// 	children,
-// 	isFocusMode,
-// 	userName,
-// 	userOrganisation,
-// 	navigationItems,
-// 	activePath,
-// 	handleSignOut,
-// }: PropsWithChildren<AppLayoutProps>) => {
-// 	const bestActivePath = findBestMatch(
-// 		navigationItems.flatMap((xs) => xs),
-// 		activePath
-// 	);
+	// Desktop menu should by visible by default, unless in focus mode
+	const desktopState = useTernaryState(!focusMode);
 
-// 	return (
-// 		<AuthenticatedAppShell
-// 			siteTitle="Export Service"
-// 			siteSubtitle="Supporting Australian agricultural exports"
-// 			userMenu={{
-// 				name: userName,
-// 				organisation: userOrganisation,
-// 				href: '/account/preferences',
-// 			}}
-// 			mainNavItems={navigationItems}
-// 			isFocusMode={isFocusMode}
-// 			activePath={bestActivePath}
-// 			handleSignOut={handleSignOut}
-// 		>
-// 			{children}
-// 		</AuthenticatedAppShell>
-// 	);
-// };
+	// This effect syncs the `focusMode` prop with this state
+	// Note: Focus mode has no effect on mobile devices
+	const openDesktopMenu = desktopState[1];
+	const closeDesktopMenu = desktopState[2];
+	useEffect(() => {
+		if (isMobile) return;
+		focusMode ? closeDesktopMenu() : openDesktopMenu();
+	}, [isMobile, focusMode, openDesktopMenu, closeDesktopMenu]);
+
+	return isMobile ? mobileState : desktopState;
+}
+
+/**
+ * Ensures the the open/close buttons are focused when the menu opens/closes
+ */
+function useSidebarMenuToggles({
+	showMenu: _showMenu,
+	hideMenu: _hideMenu,
+}: {
+	showMenu: () => void;
+	hideMenu: () => void;
+}) {
+	const showMenuButtonRef = useRef<HTMLButtonElement>(null);
+	const hideMenuButtonRef = useRef<HTMLButtonElement>(null);
+
+	const [shouldFocusShowMenuButton, setShouldFocusShowMenuButton] =
+		useState(false);
+	const [shouldFocusHideMenuButton, setShouldFocusHideMenuButton] =
+		useState(false);
+
+	// When the menu opens, focus the hide menu button
+	const showMenu = useCallback(() => {
+		_showMenu();
+		setShouldFocusHideMenuButton(true);
+	}, [_showMenu]);
+
+	// When the menu closes, focus the show menu button
+	const hideMenu = useCallback(() => {
+		_hideMenu();
+		setShouldFocusShowMenuButton(true);
+	}, [_hideMenu]);
+
+	useEffect(() => {
+		if (!shouldFocusHideMenuButton) return;
+		hideMenuButtonRef.current?.focus();
+		setShouldFocusHideMenuButton(false);
+	}, [shouldFocusHideMenuButton]);
+
+	useEffect(() => {
+		if (!shouldFocusShowMenuButton) return;
+		showMenuButtonRef.current?.focus();
+		setShouldFocusShowMenuButton(false);
+	}, [shouldFocusShowMenuButton]);
+
+	return { showMenuButtonRef, hideMenuButtonRef, showMenu, hideMenu };
+}

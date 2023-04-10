@@ -1,6 +1,47 @@
 ---
-title: AppLayout
-description: Description of AppLayout
-group: Navigation
-storybookPath: /story/Navigation-AppLayout--basic
+title: App layout
+description: App layout is a collection of components that can be composed together to create a layout for the authenticated space.
+group: Layout
+storybookPath: /story/layout-applayout--basic
 ---
+
+<DoHeading />
+
+- Use in authenticated areas
+- Use the full collection of components as a composition (sidebar, header, footer etc.)
+
+<DontHeading />
+
+- Use in unauthenticated spaces
+- Use a partial set of components. For example, you can not opt out of using the header.
+
+## App layout
+
+Please refer to the Storybook linked above for a live code example.
+
+```jsx
+<AppLayout>
+	<AppLayoutSidebar>
+		<AppLayoutSidebarNav activePath="#" items={[]} />
+	</AppLayoutSidebar>
+	<AppLayoutContent>
+		<AppLayoutHeader>
+			<AppLayoutHeaderTitles
+				title="Export Service"
+				subTitle="Supporting Australian agricultural exports"
+			/>
+			<AppLayoutHeaderAccountLink
+				name="Toto Wolff"
+				organisation="Orange Meat Works"
+				href="/account/preferences"
+			/>
+		</AppLayoutHeader>
+		<AppLayoutMain>
+			<h1>Page title</h1>
+		</AppLayoutMain>
+		<AppLayoutFooter>
+			<p>Footer content</p>
+		</AppLayoutFooter>
+	</AppLayoutContent>
+</AppLayout>
+```
