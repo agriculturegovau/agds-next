@@ -1,6 +1,7 @@
 import {
 	Fragment,
 	MouseEventHandler,
+	PropsWithChildren,
 	ReactNode,
 	useEffect,
 	useRef,
@@ -8,35 +9,40 @@ import {
 import { Global } from '@emotion/react';
 import { createPortal } from 'react-dom';
 import FocusLock from 'react-focus-lock';
-import { boxPalette, tokens } from '@ag.ds-next/react/core';
-import { Box, Flex, Stack } from '@ag.ds-next/react/box';
-import { Button } from '@ag.ds-next/react/button';
-import { Logo } from '@ag.ds-next/react/ag-branding';
-import { useAuthenticatedAppShellContext } from './AppLayoutContext';
-import { ChevronsLeftIcon } from './icons';
-import { authenticatedAppShellHeaderHeight } from './utils';
+import { boxPalette, tokens } from '../core';
+import { Box, Flex, Stack } from '../box';
+import { useAppLayoutContext } from './AppLayoutContext';
+import { BORDER_WIDTH_XXL, HEADER_HEIGHT } from './utils';
 
-export function AppLayoutSideBar({ children }: { children: ReactNode }) {
-	const { isMenuOpen, isMobile } = useAuthenticatedAppShellContext();
+export type AppLayoutSidebarProps = PropsWithChildren<{
+	logo: JSX.Element;
+}>;
+
+export function AppLayoutSidebar({ children, logo }: AppLayoutSidebarProps) {
+	const { isMenuOpen, isMobile } = useAppLayoutContext();
 
 	if (isMobile) {
-		return <AppLayoutSideBarMobile>{children}</AppLayoutSideBarMobile>;
+		return (
+			<AppLayoutSideBarMobile logo={logo}>{children}</AppLayoutSideBarMobile>
+		);
 	}
 
 	return (
 		<Stack
 			as="aside"
+			aria-hidden={!isMenuOpen}
 			gap={1}
 			dark
 			background="bodyAlt"
 			css={{
-				display: isMenuOpen ? 'flex' : 'none',
-				position: 'sticky',
+				position: 'fixed',
 				top: 0,
-				flexShrink: 0,
-				height: '100vh',
+				left: 0,
+				bottom: 0,
 				width: tokens.maxWidth.mobileMenu,
-				borderLeft: `8px solid ${boxPalette.accent}`,
+				transform: isMenuOpen ? 'translateX(0)' : 'translateX(-100%)',
+				borderLeft: `${BORDER_WIDTH_XXL}px solid ${boxPalette.accent}`,
+				overflowY: 'auto',
 				// This component should never be visible on smaller devices
 				[tokens.mediaQuery.max.md]: {
 					display: 'none',
@@ -48,25 +54,32 @@ export function AppLayoutSideBar({ children }: { children: ReactNode }) {
 				justifyContent="center"
 				alignItems="center"
 				color="text"
-				height={authenticatedAppShellHeaderHeight}
+				height={HEADER_HEIGHT}
 				flexShrink={0}
-				maxWidth={tokens.maxWidth.mobileMenu}
 				borderBottom
 				borderColor="muted"
-				css={{ svg: { display: 'block' } }}
+				css={{
+					svg: {
+						display: 'block',
+						width: '100%',
+					},
+				}}
 			>
-				<Logo />
-			</Flex>
-			<Flex justifyContent="flex-end" paddingX={1.5}>
-				<HideMenuButton />
+				{logo}
 			</Flex>
 			{children}
 		</Stack>
 	);
 }
 
-function AppLayoutSideBarMobile({ children }: { children: ReactNode }) {
-	const { isMenuOpen, hideMenu } = useAuthenticatedAppShellContext();
+function AppLayoutSideBarMobile({
+	children,
+	logo,
+}: {
+	children: ReactNode;
+	logo: JSX.Element;
+}) {
+	const { isMenuOpen, hideMenu } = useAppLayoutContext();
 	const dialogRef = useRef<HTMLDivElement>(null);
 
 	// Close the component when the user presses the escape key
@@ -126,7 +139,7 @@ function AppLayoutSideBarMobile({ children }: { children: ReactNode }) {
 				<Stack
 					dark
 					background="bodyAlt"
-					paddingY={1}
+					paddingTop={1}
 					gap={1}
 					css={{
 						position: 'fixed',
@@ -136,7 +149,7 @@ function AppLayoutSideBarMobile({ children }: { children: ReactNode }) {
 						bottom: 0,
 						overflowY: 'auto',
 						width: '100%',
-						borderLeft: `8px solid ${boxPalette.accent}`,
+						borderLeft: `${BORDER_WIDTH_XXL}px solid ${boxPalette.accent}`,
 						[tokens.mediaQuery.min.md]: {
 							width: tokens.maxWidth.mobileMenu,
 						},
@@ -148,11 +161,8 @@ function AppLayoutSideBarMobile({ children }: { children: ReactNode }) {
 						color="text"
 						css={{ svg: { display: 'block' } }}
 					>
-						<Logo />
+						{logo}
 					</Box>
-					<Flex paddingX={1.5} justifyContent="flex-end">
-						<HideMenuButton />
-					</Flex>
 					{children}
 				</Stack>
 			</FocusLock>
@@ -180,21 +190,4 @@ function Overlay({ onClick }: { onClick: MouseEventHandler<HTMLDivElement> }) {
 
 function LockScroll() {
 	return <Global styles={{ body: { overflow: 'hidden' } }} />;
-}
-
-function HideMenuButton() {
-	const { hideMenu, hideMenuButtonRef } = useAuthenticatedAppShellContext();
-	return (
-		<Button
-			ref={hideMenuButtonRef}
-			onClick={hideMenu}
-			variant="text"
-			iconBefore={ChevronsLeftIcon}
-			css={{
-				textDecoration: 'none',
-			}}
-		>
-			Hide menu
-		</Button>
-	);
 }

@@ -2,4 +2,4 @@
 '@ag.ds-next/react': minor
 ---
 
-Created new component `AppLayout`
+app-layout: Created a collection of components that can be composed together to create a layout for the authenticated space.

@@ -1,4 +1,4 @@
-import { PropsWithChildren } from 'react';
+import { PropsWithChildren, useMemo } from 'react';
 import { Logo } from '@ag.ds-next/react/ag-branding';
 import { Box, Stack } from '@ag.ds-next/react/box';
 import { tokens } from '@ag.ds-next/react/core';
@@ -15,12 +15,13 @@ type PageTemplateProps = PropsWithChildren<{
 	focusMode?: boolean;
 }>;
 
-export const PageTemplate = ({
+export function PageTemplate({
 	applyMainElement = true,
 	background,
 	children,
 	focusMode,
-}: PageTemplateProps) => {
+}: PageTemplateProps) {
+	const year = useMemo(() => new Date().getFullYear(), []);
 	return (
 		<Box background={background}>
 			<Stack palette="dark">
@@ -83,10 +84,10 @@ export const PageTemplate = ({
 						emerging.
 					</Text>
 					<Text fontSize="xs" maxWidth={tokens.maxWidth.bodyText}>
-						&copy; 2022 Department of Agriculture, Fisheries and Forestry
+						&copy; {year} Department of Agriculture, Fisheries and Forestry
 					</Text>
 				</Footer>
 			</Box>
 		</Box>
 	);
-};
+}
