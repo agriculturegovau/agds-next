@@ -23,6 +23,8 @@ export async function getPattern(slug: string) {
 		content,
 		data,
 		title: (data.title ?? slug) as string,
+		group: slugify(data?.group ?? 'Other') as string,
+		groupName: (data?.group ?? 'Other') as string,
 		version: data.version as string,
 		description: (data.description ?? null) as string | null,
 		previewPath: (data.previewPath ?? null) as string | null,

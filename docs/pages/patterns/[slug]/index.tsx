@@ -31,13 +31,15 @@ export default function PatternOverviewPage({
 				editPath={`/docs/content/patterns/${pattern.slug}/index.mdx`}
 			>
 				<Prose id="page-content">
-					<Box border borderColor="muted" css={{ img: { display: 'block' } }}>
-						<img
-							src={`/img/templates/${pattern.slug}.webp`}
-							role="presentation"
-							alt=""
-						/>
-					</Box>
+					{pattern.group === 'templates' ? (
+						<Box border borderColor="muted" css={{ img: { display: 'block' } }}>
+							<img
+								src={`/img/templates/${pattern.slug}.webp`}
+								role="presentation"
+								alt=""
+							/>
+						</Box>
+					) : null}
 					<MDXRemote {...pattern.source} components={mdxComponents} />
 				</Prose>
 			</PatternLayout>
