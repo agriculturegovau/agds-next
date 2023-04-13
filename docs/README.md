@@ -2,7 +2,7 @@
 
 The AgDS documentation site.
 
-[View live website](https://design-system.agriculture.gov.au).
+[View live website](https://design-system.agriculture.gov.au)
 
 ## Develop
 

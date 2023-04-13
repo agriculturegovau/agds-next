@@ -2,7 +2,7 @@
 
 This websites provides a live preview of our [Templates](https://design-system.agriculture.gov.au/patterns).
 
-[View live website](https://design-system.agriculture.gov.au/example-site).
+[View live website](https://design-system.agriculture.gov.au/example-site)
 
 ## Develop
 

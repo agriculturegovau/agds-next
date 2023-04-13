@@ -2,7 +2,7 @@
 
 This website was built to facilitate the accessibility user research sessions.
 
-[View live website](https://design-system.agriculture.gov.au/example-form).
+[View live website](https://design-system.agriculture.gov.au/example-form)
 
 ## Develop
 
