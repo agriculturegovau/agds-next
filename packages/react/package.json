@@ -7,7 +7,6 @@
 	"dependencies": {
 		"@babel/runtime": "^7.4.5",
 		"@popperjs/core": "^2.11.4",
-		"@react-spring/web": "^9.4.5",
 		"date-fns": "^2.28.0",
 		"downshift": "^7.4.1",
 		"filesize": "^8.0.7",
