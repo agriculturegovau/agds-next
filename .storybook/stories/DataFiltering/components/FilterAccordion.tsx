@@ -1,9 +1,7 @@
-import { useSpring, animated } from '@react-spring/web';
 import { useRef } from 'react';
 import { Flex } from '@ag.ds-next/react/box';
 import { DateRangePicker } from '@ag.ds-next/react/date-picker';
 import { Button } from '@ag.ds-next/react/button';
-import { usePrefersReducedMotion } from '@ag.ds-next/react/core';
 import { GetDataFilters } from '../lib/getData';
 import { FilterAssigneeSelect } from './FilterAssigneeSelect';
 import { FilterStateSelect } from './FilterStateSelect';
@@ -25,27 +23,12 @@ export const FilterAccordion = ({
 }) => {
 	// This code has been copied from the Accordion component.
 	const ref = useRef<HTMLDivElement>(null);
-	const prefersReducedMotion = usePrefersReducedMotion();
-	const animatedHeight = useSpring({
-		from: { display: 'none', height: 0 },
-		to: async (next) => {
-			if (isOpen) await next({ display: 'block' });
-			await next({
-				height: isOpen ? ref.current?.offsetHeight : 0,
-				immediate: prefersReducedMotion,
-			});
-			await next(isOpen ? { height: 'auto' } : { display: 'none' });
-		},
-	});
 
 	return (
-		<animated.section
+		<section
 			id={id}
 			aria-labelledby={ariaLabelledBy}
-			style={animatedHeight}
-			css={{
-				overflow: 'hidden',
-			}}
+			css={{ display: isOpen ? 'none' : 'block' }}
 		>
 			<Flex
 				ref={ref}
@@ -83,6 +66,6 @@ export const FilterAccordion = ({
 					Reset filters
 				</Button>
 			</Flex>
-		</animated.section>
+		</section>
 	);
 };

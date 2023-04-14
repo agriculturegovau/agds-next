@@ -8,6 +8,11 @@ import { Button } from '../button';
 import { ModalTitle } from './ModalTitle';
 import { useModalId } from './utils';
 
+const slideInUp = keyframes`
+  0% { transform: translateY(1rem); }
+	100% { transform: translateY(0); }
+`;
+
 export type ModalDialogProps = PropsWithChildren<{
 	/** The actions to display at the bottom of the modal panel. Typically a `ButtonGroup`. */
 	actions?: ReactNode;

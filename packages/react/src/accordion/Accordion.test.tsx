@@ -49,7 +49,7 @@ describe('Accordion', () => {
 		renderAccordion();
 		const titleEl = screen.getByText('Accordion 1');
 		const bodyEl = screen.getByText('Accordion 1 text content.').parentElement
-			?.parentElement?.parentElement as HTMLDivElement;
+			?.parentElement as HTMLDivElement;
 		expect(titleEl).toBeInTheDocument();
 		expect(titleEl).toHaveAttribute('aria-controls', bodyEl.id);
 		expect(bodyEl).toHaveAttribute('aria-labelledby', titleEl.id);

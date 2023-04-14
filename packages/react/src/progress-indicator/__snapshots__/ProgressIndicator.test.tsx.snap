@@ -44,9 +44,8 @@ exports[`ProgressIndicator With anchors renders correctly 1`] = `
       </svg>
     </button>
     <div
-      class="css-fmb23f-ProgressIndicator"
+      class="css-2lhvj8-ProgressIndicator"
       id="progress-indicator-:r0:-body"
-      style="display: none; height: 0px; overflow: hidden;"
     >
       <ul
         class="css-14adt79-boxStyles"
@@ -297,9 +296,8 @@ exports[`ProgressIndicator With buttons renders correctly 1`] = `
       </svg>
     </button>
     <div
-      class="css-fmb23f-ProgressIndicator"
+      class="css-2lhvj8-ProgressIndicator"
       id="progress-indicator-:r2:-body"
-      style="display: none; height: 0px; overflow: hidden;"
     >
       <ul
         class="css-14adt79-boxStyles"

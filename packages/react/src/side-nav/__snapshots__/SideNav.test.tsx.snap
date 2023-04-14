@@ -30,9 +30,8 @@ exports[`SideNav renders correctly 1`] = `
       </svg>
     </button>
     <div
-      class="css-1wh7zb4-SideNav"
+      class="css-prpgpu-SideNav"
       id="sideNav-:r0:-body"
-      style="display: none; height: 0px; overflow: hidden;"
     >
       <nav
         aria-labelledby="sideNav-:r0:-title"

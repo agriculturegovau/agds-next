@@ -38,21 +38,18 @@ exports[`Accordion renders correctly 1`] = `
       </h3>
       <div
         aria-labelledby="accordion-:r0:-title"
-        class="css-1g0zzsa-AccordionBody"
+        class="css-8g94ik-AccordionBody"
         id="accordion-:r0:-body"
         role="region"
-        style="display: none; height: 0px;"
       >
-        <div>
-          <div
-            class="css-1u803sw-boxStyles"
+        <div
+          class="css-1u803sw-boxStyles"
+        >
+          <p
+            class="css-6j1v6l-boxStyles-Text"
           >
-            <p
-              class="css-6j1v6l-boxStyles-Text"
-            >
-              Accordion 1 text content.
-            </p>
-          </div>
+            Accordion 1 text content.
+          </p>
         </div>
       </div>
     </div>
@@ -89,21 +86,18 @@ exports[`Accordion renders correctly 1`] = `
       </h3>
       <div
         aria-labelledby="accordion-:r1:-title"
-        class="css-1g0zzsa-AccordionBody"
+        class="css-8g94ik-AccordionBody"
         id="accordion-:r1:-body"
         role="region"
-        style="display: none; height: 0px;"
       >
-        <div>
-          <div
-            class="css-1u803sw-boxStyles"
+        <div
+          class="css-1u803sw-boxStyles"
+        >
+          <p
+            class="css-6j1v6l-boxStyles-Text"
           >
-            <p
-              class="css-6j1v6l-boxStyles-Text"
-            >
-              Accordion 2 text content.
-            </p>
-          </div>
+            Accordion 2 text content.
+          </p>
         </div>
       </div>
     </div>
