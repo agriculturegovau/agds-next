@@ -1,5 +1,5 @@
 import { ElementType, PropsWithChildren } from 'react';
-import { LinkProps, mapSpacing } from '../core';
+import { LinkProps } from '../core';
 import { Flex } from '../box';
 import { BaseButton, BaseButtonProps } from '../button';
 import { ChevronRightIcon } from '../icon';
@@ -39,17 +39,6 @@ const CallToAction = ({
 				fontSize="md"
 				link
 				focus
-				css={{
-					svg: {
-						paddingLeft: 0,
-						transition: 'padding-left 250ms',
-					},
-					'&:hover': {
-						svg: {
-							paddingLeft: mapSpacing(0.25),
-						},
-					},
-				}}
 				{...props}
 			>
 				{children}
