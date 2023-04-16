@@ -6,7 +6,7 @@ exports[`CallToActionButton renders correctly 1`] = `
     class="css-zce95a-boxStyles-CallToAction"
   >
     <button
-      class="css-117oncu-BaseButton-boxStyles-CallToAction"
+      class="css-t28hm-BaseButton-boxStyles"
       data-testid="example"
       type="button"
     >
@@ -37,7 +37,7 @@ exports[`CallToActionLink renders correctly 1`] = `
     class="css-zce95a-boxStyles-CallToAction"
   >
     <a
-      class="css-1pyq4i8-TextLink-boxStyles-CallToAction"
+      class="css-mzhcw2-TextLink-boxStyles"
       data-testid="example"
       href="#"
     >
