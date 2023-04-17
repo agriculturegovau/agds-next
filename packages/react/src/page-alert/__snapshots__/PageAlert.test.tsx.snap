@@ -30,7 +30,7 @@ exports[`PageAlert tone: error renders correctly 1`] = `
       </svg>
     </div>
     <div
-      class="css-1ynvr0e-boxStyles"
+      class="css-1u7h2qt-boxStyles"
     >
       <h3
         class="css-1lv1g9v-boxStyles-Text"
@@ -85,7 +85,7 @@ exports[`PageAlert tone: info renders correctly 1`] = `
       </svg>
     </div>
     <div
-      class="css-1ynvr0e-boxStyles"
+      class="css-1u7h2qt-boxStyles"
     >
       <h3
         class="css-1lv1g9v-boxStyles-Text"
@@ -132,7 +132,7 @@ exports[`PageAlert tone: success renders correctly 1`] = `
       </svg>
     </div>
     <div
-      class="css-1ynvr0e-boxStyles"
+      class="css-1u7h2qt-boxStyles"
     >
       <h3
         class="css-1lv1g9v-boxStyles-Text"
@@ -179,7 +179,7 @@ exports[`PageAlert tone: warning renders correctly 1`] = `
       </svg>
     </div>
     <div
-      class="css-1ynvr0e-boxStyles"
+      class="css-1u7h2qt-boxStyles"
     >
       <h3
         class="css-1lv1g9v-boxStyles-Text"
