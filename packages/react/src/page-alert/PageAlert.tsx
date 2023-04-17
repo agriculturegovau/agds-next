@@ -47,7 +47,7 @@ export const PageAlert = forwardRef<HTMLDivElement, PageAlertProps>(
 				>
 					{icon}
 				</Flex>
-				<Flex padding={1.5} gap={1} flexDirection="column">
+				<Flex padding={1.5} gap={1} flexDirection="column" flexGrow={1}>
 					{title ? <PageAlertTitle>{title}</PageAlertTitle> : null}
 					{children}
 				</Flex>
