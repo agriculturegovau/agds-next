@@ -139,6 +139,7 @@ const calendarComponents: CustomComponents = {
 				<Flex alignItems="center" gap={0.5} width="100%">
 					<Flex
 						as="span"
+						color="text"
 						fontSize="lg"
 						lineHeight="heading"
 						fontWeight="bold"
@@ -196,6 +197,7 @@ function YearSelect({
 				rounded
 				focus
 				paddingRight={1.5}
+				color="text"
 				fontSize="lg"
 				lineHeight="nospace"
 				fontWeight="bold"

@@ -37,7 +37,7 @@ exports[`Calendar Range renders correctly 1`] = `
                 class="css-4d2b9s-boxStyles"
               >
                 <span
-                  class="css-1wppko8-boxStyles"
+                  class="css-1ia12kz-boxStyles"
                 >
                   June
                 </span>
@@ -54,7 +54,7 @@ exports[`Calendar Range renders correctly 1`] = `
                       Year
                     </label>
                     <select
-                      class="css-ec6y33-boxStyles-YearSelect"
+                      class="css-golef1-boxStyles-YearSelect"
                       id="calendar-:r2:-year"
                     >
                       <option>
@@ -793,7 +793,7 @@ exports[`Calendar Single renders correctly 1`] = `
                 class="css-4d2b9s-boxStyles"
               >
                 <span
-                  class="css-1wppko8-boxStyles"
+                  class="css-1ia12kz-boxStyles"
                 >
                   June
                 </span>
@@ -810,7 +810,7 @@ exports[`Calendar Single renders correctly 1`] = `
                       Year
                     </label>
                     <select
-                      class="css-ec6y33-boxStyles-YearSelect"
+                      class="css-golef1-boxStyles-YearSelect"
                       id="calendar-:r0:-year"
                     >
                       <option>
