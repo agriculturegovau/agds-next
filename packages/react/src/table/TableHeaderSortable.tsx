@@ -47,6 +47,7 @@ export const TableHeaderSortable = ({
 				gap={0.5}
 				onClick={onClick}
 				padding={0.75}
+				color="text"
 				fontWeight="bold"
 				width="100%"
 				justifyContent="space-between"
