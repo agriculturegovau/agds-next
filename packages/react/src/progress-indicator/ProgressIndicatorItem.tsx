@@ -220,6 +220,11 @@ const statusMap = {
 		icon: ProgressDoingIcon,
 		iconColor: 'action',
 	},
+	started: {
+		label: 'In progress',
+		icon: ProgressDoingIcon,
+		iconColor: 'border',
+	},
 	todo: {
 		label: 'Not started',
 		icon: ProgressTodoIcon,

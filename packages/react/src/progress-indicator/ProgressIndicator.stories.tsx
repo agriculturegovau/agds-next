@@ -1,64 +1,60 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react';
 import { Box } from '../box';
-import {
-	ProgressIndicator,
-	ProgressIndicatorCollapseButton,
-	ProgressIndicatorHeading,
-	ProgressIndicatorItemButton,
-	ProgressIndicatorItemLink,
-	ProgressIndicatorList,
-} from './index';
+import { ProgressIndicator } from './index';
 
-export default {
+const meta: Meta<typeof ProgressIndicator> = {
 	title: 'forms/ProgressIndicator',
 	component: ProgressIndicator,
-	subcomponents: {
-		ProgressIndicatorCollapseButton,
-		ProgressIndicatorHeading,
-		ProgressIndicatorItemButton,
-		ProgressIndicatorItemLink,
-		ProgressIndicatorList,
-	},
-} as ComponentMeta<typeof ProgressIndicator>;
+};
+
+export default meta;
+
+type Story = StoryObj<typeof meta>;
 
 const exampleLinkItems = [
 	{ href: '#', label: 'Introduction', status: 'done' as const },
-	{ href: '#', label: 'Business Contacts', status: 'doing' as const },
-	{ href: '#', label: 'Case Studies', status: 'todo' as const },
+	{ href: '#', label: 'Organisations', status: 'started' as const },
+	{ href: '#', label: 'Business contacts', status: 'doing' as const },
+	{ href: '#', label: 'Case studies', status: 'todo' as const },
 	{ href: '#', label: 'Attachments', status: 'blocked' as const },
 ];
 
 const exampleButtonItems = [
 	{ onClick: console.log, label: 'Introduction', status: 'done' as const },
+	{ onClick: console.log, label: 'Organisations', status: 'started' as const },
 	{
 		onClick: console.log,
-		label: 'Business Contacts',
+		label: 'Business contacts',
 		status: 'doing' as const,
 	},
-	{ onClick: console.log, label: 'Case Studies', status: 'todo' as const },
+	{ onClick: console.log, label: 'Case studies', status: 'todo' as const },
+	{ onClick: console.log, label: 'Attachments', status: 'blocked' as const },
 ];
 
-export const Basic: ComponentStory<typeof ProgressIndicator> = (args) => (
-	<ProgressIndicator {...args} />
-);
-Basic.args = {
-	items: exampleLinkItems,
+export const Basic: Story = {
+	args: {
+		items: exampleLinkItems,
+	},
 };
 
-export const OnBodyAlt: ComponentStory<typeof ProgressIndicator> = (args) => (
-	<Box background="bodyAlt" padding={1.5}>
-		<ProgressIndicator {...args} />
-	</Box>
-);
-OnBodyAlt.storyName = 'On bodyAlt background';
-OnBodyAlt.args = {
-	background: 'bodyAlt',
-	items: exampleLinkItems,
+export const OnBodyAlt: Story = {
+	name: 'On bodyAlt background',
+	args: {
+		background: 'bodyAlt',
+		items: exampleButtonItems,
+	},
+	parameters: {
+		layout: 'fullscreen',
+	},
+	render: (props) => (
+		<Box background="bodyAlt" padding={1.5}>
+			<ProgressIndicator {...props} />
+		</Box>
+	),
 };
 
-export const Button: ComponentStory<typeof ProgressIndicator> = (args) => (
-	<ProgressIndicator {...args} />
-);
-Button.args = {
-	items: exampleButtonItems,
+export const Buttons: Story = {
+	args: {
+		items: exampleButtonItems,
+	},
 };
