@@ -29,10 +29,11 @@ export async function getPkg(slug: string) {
 		storybookPath: (data.storybookPath ?? null) as string | null,
 		figmaGalleryNodeId: (data.figmaGalleryNodeId ?? null) as string | null,
 		subNavItems: subNavItems ?? null,
+		relatedComponents: (data.relatedComponents ?? null) as string[] | null,
 	};
 }
 
-export async function getPkgSubNavItems(slug: string) {
+async function getPkgSubNavItems(slug: string) {
 	return getMarkdownData(pkgReadmePath(slug)).then(({ data }) => {
 		const meta = pkgNavMetaData(slug, data);
 		return [

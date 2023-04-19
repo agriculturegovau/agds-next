@@ -1,7 +1,9 @@
+import { Fragment } from 'react';
 import { GetStaticProps, InferGetStaticPropsType } from 'next';
 import { MDXRemote } from 'next-mdx-remote';
 import { InpageNav } from '@ag.ds-next/react/inpage-nav';
 import { Prose } from '@ag.ds-next/react/prose';
+import { TextLink } from '@ag.ds-next/react/text-link';
 import {
 	getPkgList,
 	getPkg,
@@ -21,6 +23,7 @@ export default function Packages({
 	breadcrumbs,
 	toc,
 	source,
+	relatedComponents,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
 	return (
 		<>
@@ -45,6 +48,19 @@ export default function Packages({
 				) : null}
 				<Prose id="pkg-content">
 					<MDXRemote {...source} components={mdxComponents} />
+					{relatedComponents?.length ? (
+						<Fragment>
+							<h2 id="related-components">Related components</h2>
+							<ul>
+								{relatedComponents.map(({ slug, title, description }) => (
+									<li key={slug}>
+										<TextLink href={`/components/${slug}`}>{title}</TextLink>{' '}
+										&ndash; {description}
+									</li>
+								))}
+							</ul>
+						</Fragment>
+					) : null}
 				</Prose>
 			</PkgLayout>
 		</>
@@ -60,6 +76,7 @@ export const getStaticProps: GetStaticProps<
 		source: NonNullable<
 			Awaited<ReturnType<typeof getPkgDocsContent>>
 		>['source'];
+		relatedComponents: Awaited<Pkg[]> | null;
 	},
 	{ slug: string }
 > = async ({ params }) => {
@@ -77,6 +94,20 @@ export const getStaticProps: GetStaticProps<
 	const breadcrumbs = await getPkgBreadcrumbs(slug);
 	const toc = await generateToc(pkgContent.content);
 
+	// Get related components
+	const relatedComponents = pkg.relatedComponents?.length
+		? await Promise.all(pkg.relatedComponents.sort().map(getPkg))
+		: null;
+	if (relatedComponents?.length) {
+		toc.push({
+			title: 'Related components',
+			slug: 'related-components',
+			id: 'related-components',
+			level: 2,
+			items: [],
+		});
+	}
+
 	return {
 		props: {
 			pkg,
@@ -84,6 +115,7 @@ export const getStaticProps: GetStaticProps<
 			breadcrumbs,
 			toc,
 			source: pkgContent.source,
+			relatedComponents,
 		},
 	};
 };
