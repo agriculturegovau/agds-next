@@ -1,0 +1,58 @@
+---
+date: 19th April 2023
+title: AgDS Beta v1.4.0 release
+description: Added multi-select combobox, extended progress indicator, various bug fixes and improvements.
+---
+
+## Updates
+
+### [Autocomplete](/components/autocomplete)
+
+- Upgraded internal dependency of `downshift` to version 7 which was updated to support the ARIA 1.2 combobox pattern ([PR #993](https://github.com/steelthreads/agds-next/pull/993))
+- Updated documentation ([PR #993](https://github.com/steelthreads/agds-next/pull/993))
+- Fixed asynchronous test displaying a warning for performing a state update that is not wrapped in act ([PR #993](https://github.com/steelthreads/agds-next/pull/993))
+
+### [Badge](/components/badge)
+
+- Added support for the `aria-hidden` prop in `NotificationBadge` ([PR #1042](https://github.com/steelthreads/agds-next/pull/1042))
+
+### [Combobox](/components/combobox)
+
+- Upgraded internal dependency of `downshift` to version 7 which was updated to support the ARIA 1.2 combobox pattern ([PR #993](https://github.com/steelthreads/agds-next/pull/993))
+- Created new component `ComboboxMulti` which allows users to choose multiple items from a predefined list of options ([PR #993](https://github.com/steelthreads/agds-next/pull/993))
+- Created new component `ComboboxAsyncMulti` which allows users to choose multiple items from a list of options that needs to be fetched over the network ([PR #993](https://github.com/steelthreads/agds-next/pull/993))
+
+### [Date picker](/components/date-picker)
+
+- Fixed text colour bug when using in dark palette ([PR #1067](https://github.com/steelthreads/agds-next/pull/1067))
+
+### [Field](/components/field)
+
+- Update wrapping behaviour of label ([PR #1041](https://github.com/steelthreads/agds-next/pull/1041))
+- Extended the function returned from from `useScrollToField` to accept either a mouse event or an ID of a form field element. This change makes it easier for consumers to scroll and focus a form field on the same page in situations such as when a form first renders. ([PR #1038](https://github.com/steelthreads/agds-next/pull/1038))
+
+### [Icon](/components/icon)
+
+- Added new icons `HomeIcon` and `ExitIcon` ([PR #1062](https://github.com/steelthreads/agds-next/pull/1062))
+
+### [Page alert](/components/page-alert)
+
+- Added flex growing to the content area ([PR #1066](https://github.com/steelthreads/agds-next/pull/1066))
+
+### [Progress indicator](/components/progress-indicator)
+
+- Added new status `started` which can be used to indicate that the step has been partially completed but is not active or selected ([PR #1068](https://github.com/steelthreads/agds-next/pull/1068))
+
+### [Table](/components/table)
+
+- Created new component `TableHeaderSortable` which can be used in place of `TableHeader` when users can click a column header to sort the table ([PR #1047](https://github.com/steelthreads/agds-next/pull/1047))
+
+## Released packages
+
+```sh
+"@ag.ds-next/react": "1.4.0"
+```
+
+## Full Changelog
+
+Aside from the [complete release notes on the @ag.ds-next website](https://design-system.agriculture.gov.au/updates/2023-04-19), you can also view the verbose change log in the [related PR](https://github.com/steelthreads/agds-next/pull/1043) for this release.
