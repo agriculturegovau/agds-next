@@ -1,6 +1,6 @@
 {
 	"name": "@ag.ds-next/react",
-	"version": "1.3.1",
+	"version": "1.4.0",
 	"license": "MIT",
 	"main": "dist/ag.ds-next-react.cjs.js",
 	"module": "dist/ag.ds-next-react.esm.js",

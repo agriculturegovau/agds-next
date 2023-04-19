@@ -1,5 +1,36 @@
 # @ag.ds-next/react
 
+## 1.4.0
+
+### Minor Changes
+
+- 2327b619e0: Combobox
+
+  - Created new component `ComboboxMulti` which allows users to choose multiple items from a predefined list of options
+  - Created new component `ComboboxAsyncMulti` which allows users to choose multiple items from a list of options that needs to be fetched over the network.
+  - Upgraded internal dependency of `downshift` to version 7 which was updated to support the ARIA 1.2 combobox pattern
+
+- b02a64147a: table: Created new component `TableHeaderSortable` which can be used in place of `TableHeader` when users can click a column header to sort the table.
+- 2327b619e0: Autocomplete
+
+  - Upgraded internal dependency of `downshift` to version 7 which was updated to support the ARIA 1.2 combobox pattern
+  - Updated documentation
+  - Fixed asynchronous test displaying a warning for performing a state update that is not wrapped in `act`
+
+- 8c1f8daa66: progress-indicator: Added new status `started` which can be used to indicate that the step has been partially completed but is not active or selected.
+- cd9d1db944: field: Update wrapping behaviour of label.
+- 7569f78da7: icon: Added new icons: `HomeIcon` and `ExitIcon`.
+
+### Patch Changes
+
+- 36ff4165ab: date-picker: Fixed text colour bug when using in dark palette
+
+  table: Fixed text colour bug when using `TableHeaderSortable` in dark palette
+
+- e6155854c2: page-alert: Added flex growing to the content area
+- 2da4ba7420: field: Extended the function returned from from `useScrollToField` to accept either a mouse event or an ID of a form field element. This change makes it easier for consumers to scroll and focus a form field on the same page in situations such as when a form first renders.
+- 6a4b322201: badge: Added support for the `aria-hidden` prop in `NotificationBadge`
+
 ## 1.3.1
 
 ### Patch Changes
