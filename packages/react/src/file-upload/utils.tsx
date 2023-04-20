@@ -63,8 +63,13 @@ export const getAcceptedFilesSummary = (
 	accept: AcceptedFileMimeTypes[] | undefined
 ) => {
 	if (!accept?.length) return;
-	const symbols = accept.map((MIME) => fileTypeMapping[MIME]);
-	return symbols.join(', ');
+	return (
+		accept
+			.map((MIME) => fileTypeMapping[MIME])
+			// Filter out any duplicates
+			.filter((v, idx, arr) => arr.indexOf(v) === idx)
+			.join(', ')
+	);
 };
 
 export const getFileRejectionErrorMessage = (
