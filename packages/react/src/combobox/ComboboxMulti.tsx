@@ -32,9 +32,9 @@ export type ComboboxMultiProps<Option extends DefaultComboboxOption> = {
 	/** A string specifying a name for the input control. */
 	name?: string;
 	/** The value of the field. */
-	value?: Option[] | null;
+	value?: Option[];
 	/** Function to be fired following a change event. */
-	onChange?: (value: Option[] | null) => void;
+	onChange?: (value: Option[]) => void;
 	/** The list of options to show in the dropdown. */
 	options: Option[];
 	/** Used to override the default item rendering.  */
@@ -53,7 +53,17 @@ export function ComboboxMulti<Option extends DefaultComboboxOption>({
 	const [inputValue, setInputValue] = useState('');
 	const inputId = useComboboxInputId(id);
 
-	const [selectedItems, setSelectedItems] = useState<Option[]>([]);
+	// If no `value` has been supplied, use the internal state
+	const [_selectedItems, _setSelectedItems] = useState<Option[]>(value ?? []);
+	const selectedItems = typeof value === 'undefined' ? _selectedItems : value;
+
+	const setSelectedItems = useCallback(
+		(items: Option[]) => {
+			_setSelectedItems(items);
+			onChange?.(items);
+		},
+		[onChange]
+	);
 
 	const items = useMemo(
 		() => filterOptions(options, inputValue, selectedItems),
@@ -125,7 +135,7 @@ export function ComboboxMulti<Option extends DefaultComboboxOption>({
 	const onClear = useCallback(() => {
 		setSelectedItems([]);
 		inputRef.current?.focus();
-	}, []);
+	}, [setSelectedItems]);
 
 	return (
 		<ComboboxMultiBase

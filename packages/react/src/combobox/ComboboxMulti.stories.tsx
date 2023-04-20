@@ -16,7 +16,7 @@ const defaultArgs = {
 };
 
 const Template: ComponentStory<typeof ComboboxMulti> = (args) => {
-	const [value, onChange] = useState<Option[] | null>(null);
+	const [value, onChange] = useState<Option[]>([]);
 	return <ComboboxMulti {...args} value={value} onChange={onChange} />;
 };
 
