@@ -1,10 +1,7 @@
-import { Fragment } from 'react';
 import { Avatar } from '../avatar';
-import { Box, Flex } from '../box';
+import { Flex } from '../box';
 import { useLinkComponent } from '../core';
 import { Text } from '../text';
-import { AvatarIcon } from '../icon';
-import { HEADER_BUTTON_HEIGHT } from './utils';
 
 export type AppLayoutHeaderAccountLinkProps = {
 	/** The name of the currently authenticated user. */
@@ -22,61 +19,35 @@ export function AppLayoutHeaderAccountLink({
 }: AppLayoutHeaderAccountLinkProps) {
 	const Link = useLinkComponent();
 	return (
-		<Fragment>
-			<Flex
-				as={Link}
-				display={{ xs: 'none', lg: 'flex' }}
-				href={href}
-				alignItems="center"
-				focus
-				gap={1}
-				css={{
-					textDecoration: 'none',
-					'&:hover': {
-						'& span:first-of-type': {
-							textDecoration: 'underline',
-						},
+		<Flex
+			as={Link}
+			display={{ xs: 'none', lg: 'flex' }}
+			href={href}
+			alignItems="center"
+			focus
+			gap={1}
+			css={{
+				marginLeft: 'auto',
+				textDecoration: 'none',
+				textAlign: 'right',
+				'&:hover': {
+					'& > div > span': {
+						textDecoration: 'underline',
 					},
-				}}
-			>
-				<Box
-					display={{ xs: 'none', lg: 'flex' }}
-					flexDirection="column"
-					css={{ textAlign: 'right' }}
-				>
-					<Text color="action" fontWeight="bold" fontSize="xs">
-						{name}
+				},
+			}}
+		>
+			<Flex display={{ xs: 'none', lg: 'flex' }} flexDirection="column">
+				<Text color="action" fontWeight="bold" fontSize="xs">
+					{name}
+				</Text>
+				{organisation ? (
+					<Text color="muted" fontSize="xs">
+						{organisation}
 					</Text>
-					{organisation ? (
-						<Text color="muted" fontSize="xs">
-							{organisation}
-						</Text>
-					) : null}
-				</Box>
-				<Avatar name={name} tone="action" aria-hidden size="md" />
+				) : null}
 			</Flex>
-			<Flex
-				as={Link}
-				href={href}
-				width={HEADER_BUTTON_HEIGHT}
-				height={HEADER_BUTTON_HEIGHT}
-				display={{ xs: 'flex', lg: 'none' }}
-				flexDirection="column"
-				justifyContent="center"
-				alignItems="center"
-				focus
-				css={{
-					textDecoration: 'none',
-					'&:hover': {
-						'& span:first-of-type': {
-							textDecoration: 'underline',
-						},
-					},
-				}}
-			>
-				<AvatarIcon color="action" aria-hidden />
-				<Text color="action">Account</Text>
-			</Flex>
-		</Fragment>
+			<Avatar name={name} tone="action" aria-hidden size="md" />
+		</Flex>
 	);
 }

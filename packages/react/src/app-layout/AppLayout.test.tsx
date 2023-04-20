@@ -5,16 +5,13 @@ import { Text } from '../text';
 import { LinkList } from '../link-list';
 import { tokens } from '../core';
 import { Logo } from '../ag-branding';
-import { navigationItems, secondaryNavigationItems } from './test-utils';
+import { navigationItems } from './test-utils';
 import {
-	AppLayout,
 	AppLayoutProps,
+	AppLayout,
 	AppLayoutSidebar,
-	AppLayoutSidebarNav,
 	AppLayoutContent,
 	AppLayoutHeader,
-	AppLayoutHeaderTitles,
-	AppLayoutHeaderAccountLink,
 	AppLayoutFooter,
 	AppLayoutFooterDivider,
 } from './index';
@@ -24,29 +21,23 @@ afterEach(cleanup);
 function renderAppLayout(props: AppLayoutProps) {
 	return render(
 		<AppLayout {...props}>
-			<AppLayoutSidebar logo={<Logo />}>
-				<AppLayoutSidebarNav
-					activePath="#"
-					items={navigationItems}
-					secondaryItems={secondaryNavigationItems}
-				/>
-			</AppLayoutSidebar>
+			<AppLayoutSidebar activePath="#" items={navigationItems} />
 			<AppLayoutContent>
-				<AppLayoutHeader logo={<Logo />}>
-					<AppLayoutHeaderTitles
-						title="Export Service"
-						subTitle="Supporting Australian agricultural exports"
-					/>
-					<AppLayoutHeaderAccountLink
-						name="Toto Wolff"
-						organisation="Orange Meat Works"
-						href="/account/preferences"
-					/>
-				</AppLayoutHeader>
+				<AppLayoutHeader
+					href="#"
+					logo={<Logo />}
+					title="Export Service"
+					subTitle="Supporting Australian agricultural exports"
+					user={{
+						name: 'Toto Wolff',
+						organisation: 'Orange Meat Works',
+						href: '/account/preferences',
+					}}
+				/>
 				<main id="main-content">
 					<p>Page content</p>
 				</main>
-				<AppLayoutFooter logo={<Logo />}>
+				<AppLayoutFooter>
 					<nav aria-label="footer">
 						<LinkList
 							links={[

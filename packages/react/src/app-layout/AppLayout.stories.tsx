@@ -7,19 +7,15 @@ import { LinkList } from '../link-list';
 import { Prose } from '../prose';
 import { Text } from '../text';
 import { SkipLinks } from '../skip-link';
-import { AppLayout } from './AppLayout';
-import { AppLayoutContent } from './AppLayoutContent';
+import { navigationItems } from './test-utils';
 import {
+	AppLayout,
+	AppLayoutSidebar,
+	AppLayoutContent,
+	AppLayoutHeader,
 	AppLayoutFooter,
-	AppLayoutFooterLogo,
 	AppLayoutFooterDivider,
-} from './AppLayoutFooter';
-import { AppLayoutHeader } from './AppLayoutHeader';
-import { AppLayoutHeaderTitles } from './AppLayoutHeaderTitles';
-import { AppLayoutHeaderAccountLink } from './AppLayoutHeaderAccountLink';
-import { AppLayoutSidebar } from './AppLayoutSidebar';
-import { AppLayoutSidebarNav } from './AppLayoutSidebarNav';
-import { navigationItems, secondaryNavigationItems } from './test-utils';
+} from './index';
 
 const meta: Meta<typeof AppLayout> = {
 	title: 'Layout/AppLayout',
@@ -35,25 +31,19 @@ const meta: Meta<typeof AppLayout> = {
 					links={[{ href: '#main-content', label: 'Skip to main content' }]}
 				/>
 				<AppLayout {...args}>
-					<AppLayoutSidebar logo={<Logo />}>
-						<AppLayoutSidebarNav
-							activePath="#"
-							items={navigationItems}
-							secondaryItems={secondaryNavigationItems}
-						/>
-					</AppLayoutSidebar>
+					<AppLayoutSidebar activePath="#" items={navigationItems} />
 					<AppLayoutContent>
-						<AppLayoutHeader logo={<Logo />}>
-							<AppLayoutHeaderTitles
-								title="Export Service"
-								subTitle="Supporting Australian agricultural exports"
-							/>
-							<AppLayoutHeaderAccountLink
-								name="Toto Wolff"
-								organisation="Orange Meat Works"
-								href="/account/preferences"
-							/>
-						</AppLayoutHeader>
+						<AppLayoutHeader
+							href="/"
+							title="Export Service"
+							subTitle="Supporting Australian agricultural exports"
+							logo={<Logo />}
+							user={{
+								href: '#account',
+								name: 'Toto Wolff',
+								organisation: 'Orange Meat Works',
+							}}
+						/>
 						<main
 							id="main-content"
 							tabIndex={-1}
@@ -67,9 +57,6 @@ const meta: Meta<typeof AppLayout> = {
 							</PageContent>
 						</main>
 						<AppLayoutFooter>
-							<AppLayoutFooterLogo>
-								<Logo />
-							</AppLayoutFooterLogo>
 							<nav aria-label="footer">
 								<LinkList
 									links={[
