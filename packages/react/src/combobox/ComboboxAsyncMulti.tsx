@@ -40,9 +40,9 @@ export type ComboboxAsyncMultiProps<Option extends DefaultComboboxOption> = {
 	/** A string specifying a name for the input control. */
 	name?: string;
 	/** The value of the field. */
-	value?: Option[] | null;
+	value?: Option[];
 	/** Function to be fired following a change event. */
-	onChange?: (value: Option[] | null) => void;
+	onChange?: (value: Option[]) => void;
 	/** Function to be used when options need to be loaded over the network. */
 	loadOptions: (inputValue: string) => Promise<Option[]>;
 	/** Used to override the default item rendering.  */
@@ -71,7 +71,17 @@ export function ComboboxAsyncMulti<Option extends DefaultComboboxOption>({
 		networkError: false,
 	});
 
-	const [selectedItems, setSelectedItems] = useState<Option[]>([]);
+	// If no `value` has been supplied, use the internal state
+	const [_selectedItems, _setSelectedItems] = useState<Option[]>(value ?? []);
+	const selectedItems = typeof value === 'undefined' ? _selectedItems : value;
+
+	const setSelectedItems = useCallback(
+		(items: Option[]) => {
+			_setSelectedItems(items);
+			onChange?.(items);
+		},
+		[onChange]
+	);
 
 	const multiSelection = useMultipleSelection({
 		selectedItems,

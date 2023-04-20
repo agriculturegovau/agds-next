@@ -16,7 +16,7 @@ const defaultArgs = {
 type Option = (typeof COUNTRY_OPTIONS)[number];
 
 const Template: ComponentStory<typeof ComboboxAsyncMulti> = (args) => {
-	const [value, onChange] = useState<Option[] | null>(null);
+	const [value, onChange] = useState<Option[]>([]);
 	return (
 		<ComboboxAsyncMulti
 			{...args}
