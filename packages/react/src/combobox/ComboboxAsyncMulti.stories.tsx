@@ -1,11 +1,31 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react';
 import { useState } from 'react';
 import { ComboboxAsyncMulti } from './ComboboxAsyncMulti';
 import { COUNTRY_OPTIONS } from './test-utils';
 
-export default {
+const meta: Meta<typeof ComboboxAsyncMulti> = {
 	title: 'forms/Combobox/ComboboxAsyncMulti',
-} as ComponentMeta<typeof ComboboxAsyncMulti>;
+	component: ComboboxAsyncMulti,
+	render: function ComboboxAsyncMultiStory(props) {
+		const [value, onChange] = useState<Option[]>([]);
+		return (
+			<ComboboxAsyncMulti
+				{...props}
+				value={value}
+				onChange={onChange}
+				loadOptions={async function loadOptions() {
+					// Simulate a slow network connection
+					await new Promise((resolve) => setTimeout(resolve, 1000));
+					return COUNTRY_OPTIONS;
+				}}
+			/>
+		);
+	},
+};
+
+export default meta;
+
+type Option = (typeof COUNTRY_OPTIONS)[number];
 
 const defaultArgs = {
 	label: 'Select country',
@@ -13,56 +33,44 @@ const defaultArgs = {
 	options: COUNTRY_OPTIONS,
 };
 
-type Option = (typeof COUNTRY_OPTIONS)[number];
+type Story = StoryObj<typeof ComboboxAsyncMulti>;
 
-const Template: ComponentStory<typeof ComboboxAsyncMulti> = (args) => {
-	const [value, onChange] = useState<Option[]>([]);
-	return (
-		<ComboboxAsyncMulti
-			{...args}
-			value={value}
-			onChange={onChange}
-			loadOptions={async function loadOptions() {
-				// Simulate a slow network connection
-				await new Promise((resolve) => setTimeout(resolve, 1000));
-				return COUNTRY_OPTIONS;
-			}}
-		/>
-	);
+export const Basic: Story = {
+	args: defaultArgs,
 };
 
-export const Basic = Template.bind({});
-Basic.args = {
-	...defaultArgs,
+export const Required: Story = {
+	args: {
+		...defaultArgs,
+		required: true,
+	},
 };
 
-export const Required = Template.bind({});
-Required.args = {
-	...defaultArgs,
-	required: true,
+export const HideOptionalLabel: Story = {
+	args: {
+		...defaultArgs,
+		hideOptionalLabel: true,
+	},
 };
 
-export const HideOptionalLabel = Template.bind({});
-HideOptionalLabel.args = {
-	...defaultArgs,
-	hideOptionalLabel: true,
+export const Disabled: Story = {
+	args: {
+		...defaultArgs,
+		disabled: true,
+	},
 };
 
-export const Disabled = Template.bind({});
-Disabled.args = {
-	...defaultArgs,
-	disabled: true,
+export const Invalid: Story = {
+	args: {
+		...defaultArgs,
+		invalid: true,
+		message: 'Country is required',
+	},
 };
 
-export const Invalid = Template.bind({});
-Invalid.args = {
-	...defaultArgs,
-	invalid: true,
-	message: 'Country is required',
-};
-
-export const Block = Template.bind({});
-Block.args = {
-	...defaultArgs,
-	block: true,
+export const Block: Story = {
+	args: {
+		...defaultArgs,
+		block: true,
+	},
 };

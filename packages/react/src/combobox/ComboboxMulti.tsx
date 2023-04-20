@@ -54,7 +54,7 @@ export function ComboboxMulti<Option extends DefaultComboboxOption>({
 	const inputId = useComboboxInputId(id);
 
 	// If no `value` has been supplied, use the internal state
-	const [_selectedItems, _setSelectedItems] = useState<Option[]>(value ?? []);
+	const [_selectedItems, _setSelectedItems] = useState<Option[]>([]);
 	const selectedItems = typeof value === 'undefined' ? _selectedItems : value;
 
 	const setSelectedItems = useCallback(
