@@ -1,31 +1,66 @@
 import { Flex } from '../box';
+import {
+	boxPalette,
+	mapResponsiveProp,
+	mapSpacing,
+	mq,
+	tokens,
+	useLinkComponent,
+} from '../core';
 import { Text } from '../text';
 
 export type AppLayoutHeaderTitlesProps = {
-	/** Title of the application.*/
-	title: string;
-	/** Subtitle of the application. */
+	href: string;
+	logo: JSX.Element;
 	subTitle: string;
+	title: string;
 };
 
 export function AppLayoutHeaderTitles({
 	title,
 	subTitle,
+	logo,
+	href,
 }: AppLayoutHeaderTitlesProps) {
+	const Link = useLinkComponent();
 	return (
 		<Flex
-			flexDirection="column"
-			justifyContent="center"
-			alignItems={{ xs: 'center', lg: 'flex-start' }}
-			flexGrow={{ xs: 1, md: 0 }}
-			css={{ marginRight: 'auto' }}
+			as={Link}
+			href={href}
+			flexDirection={{ xs: 'column', md: 'row' }}
+			justifyContent="flex-start"
+			alignItems={{ xs: 'flex-start', lg: 'center' }}
+			gap={{ xs: 1, md: 0 }}
+			focus
+			color="text"
+			css={mq({
+				textDecoration: 'none',
+				svg: {
+					display: 'block',
+					height: mapResponsiveProp({ xs: '3.75rem', md: '3.5rem' }),
+				},
+			})}
 		>
-			<Text fontSize={{ xs: 'md', sm: 'lg' }} fontWeight="bold">
-				{title}
-			</Text>
-			<Text color="muted" fontSize="xs" display={{ xs: 'none', lg: 'block' }}>
-				{subTitle}
-			</Text>
+			{logo}
+			<Flex
+				flexDirection="column"
+				justifyContent="center"
+				alignItems="flex-start"
+				css={{
+					[tokens.mediaQuery.min.md]: {
+						marginLeft: mapSpacing(1),
+						paddingLeft: mapSpacing(1),
+						borderLeft: `1px solid ${boxPalette.foregroundText}`,
+					},
+				}}
+			>
+				<Text fontSize="lg" fontWeight="bold">
+					{title}
+				</Text>
+				<Text color="muted" fontSize="xs">
+					{subTitle}
+				</Text>
+			</Flex>
 		</Flex>
 	);
 }

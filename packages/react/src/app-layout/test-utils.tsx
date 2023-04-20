@@ -55,12 +55,11 @@ export const navigationItems = [
 			href: '#help',
 		},
 	],
-];
-
-export const secondaryNavigationItems = [
-	{
-		label: 'Sign Out',
-		onClick: console.log,
-		icon: ExitIcon,
-	},
+	[
+		{
+			label: 'Sign Out',
+			onClick: console.log,
+			icon: ExitIcon,
+		},
+	],
 ];

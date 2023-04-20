@@ -3,45 +3,41 @@ import {
 	boxPalette,
 	LinkProps,
 	mapSpacing,
+	packs,
 	tokens,
 	useLinkComponent,
 } from '../core';
+import { VisuallyHidden } from '../a11y';
 import { Box, Flex } from '../box';
-import { BaseButton, BaseButtonProps, Button } from '../button';
+import { BaseButton, BaseButtonProps } from '../button';
 import { createIcon, IconProps } from '../icon';
 import { useAppLayoutContext } from './AppLayoutContext';
+import { HEADER_HEIGHT } from './utils';
 
 type NavLink = Omit<LinkProps, 'children'>;
 
 type NavButton = Omit<BaseButtonProps, 'children'>;
 
-type NavItem = (NavLink | NavButton) & {
+export type NavItem = (NavLink | NavButton) & {
 	label: ReactNode;
 	icon?: ComponentType<IconProps>;
 	endElement?: ReactNode;
 };
 
 export type AppLayoutSidebarNavProps = {
-	/** Used for highlighting the active element. */
 	activePath?: string;
-	/** Groups of navigation items to display at the top of the sidebar. */
 	items: NavItem[][];
-	/** Navigation items to display at the bottom of the sidebar. */
-	secondaryItems?: NavItem[];
 };
 
 export function AppLayoutSidebarNav({
 	activePath,
 	items,
-	secondaryItems,
 }: AppLayoutSidebarNavProps) {
 	return (
 		<Fragment>
-			<Flex justifyContent="flex-end" paddingX={1.5}>
-				<HideMenuButton />
-			</Flex>
-			<Flex as="nav" flexDirection="column" flexGrow={1} aria-label="main">
-				<Flex as="ul" flexDirection="column" flexGrow={1}>
+			<HideMenuButton />
+			<Flex as="nav" flexDirection="column" aria-label="main">
+				<Flex as="ul" flexDirection="column">
 					{items.map((group, idx, arr) => {
 						const isLastItem = idx === arr.length - 1;
 						return (
@@ -57,18 +53,6 @@ export function AppLayoutSidebarNav({
 							</Fragment>
 						);
 					})}
-					{secondaryItems?.length ? (
-						<Fragment>
-							<li aria-hidden="true" css={{ marginTop: 'auto' }} />
-							{secondaryItems?.map((item, idx) => (
-								<AppLayoutSidebarNavListItem
-									key={idx}
-									item={item}
-									activePath={activePath}
-								/>
-							))}
-						</Fragment>
-					) : null}
 				</Flex>
 			</Flex>
 		</Fragment>
@@ -158,6 +142,8 @@ function AppLayoutSidebarNavItemInner({
 						},
 					}),
 
+					'&:focus': packs.outline,
+
 					'&:hover': {
 						background: boxPalette.backgroundShade,
 						color: boxPalette.foregroundText,
@@ -196,17 +182,74 @@ function AppLayoutSidebarNavDivider() {
 function HideMenuButton() {
 	const { hideMenu, hideMenuButtonRef } = useAppLayoutContext();
 	return (
-		<Button
-			ref={hideMenuButtonRef}
-			onClick={hideMenu}
-			variant="text"
-			iconBefore={ChevronsLeftIcon}
+		<div
 			css={{
-				textDecoration: 'none',
+				paddingLeft: mapSpacing(1.5),
+				[tokens.mediaQuery.min.lg]: {
+					paddingLeft: 0,
+					height: HEADER_HEIGHT.md,
+					display: 'flex',
+					alignItems: 'center',
+					borderBottom: `${tokens.borderWidth.sm}px solid ${boxPalette.borderMuted}`,
+					flexShrink: 0,
+				},
 			}}
 		>
-			Hide menu
-		</Button>
+			<BaseButton
+				ref={hideMenuButtonRef}
+				onClick={hideMenu}
+				css={{
+					// Mobile button styles
+					'> span:first-of-type': {
+						width: '100%',
+						display: 'flex',
+						flexDirection: 'column',
+						alignItems: 'center',
+						gap: mapSpacing(0.5),
+						boxSizing: 'border-box',
+						padding: mapSpacing(1),
+						color: boxPalette.foregroundAction,
+					},
+					// Desktop button styles
+					'> span:last-of-type': {
+						display: 'none', // Hide on mobile
+						width: '100%',
+						alignItems: 'center',
+						gap: mapSpacing(1),
+						boxSizing: 'border-box',
+						paddingLeft: mapSpacing(1.5),
+						paddingRight: mapSpacing(1.5),
+						paddingTop: mapSpacing(1),
+						paddingBottom: mapSpacing(1),
+						color: boxPalette.foregroundAction,
+						'&:hover': {
+							background: boxPalette.backgroundShade,
+							color: boxPalette.foregroundText,
+						},
+					},
+					'&:focus': packs.outline,
+					[tokens.mediaQuery.min.lg]: {
+						width: '100%',
+						// Hide mobile button
+						'> span:first-of-type': { display: 'none' },
+						// Show desktop button
+						'> span:last-of-type': { display: 'flex' },
+					},
+				}}
+			>
+				{/** Mobile button content */}
+				<span>
+					<CloseIcon />
+					<span aria-hidden="true">Close</span>
+					<VisuallyHidden>Close Menu</VisuallyHidden>
+				</span>
+				{/** Desktop button content */}
+				<span>
+					<ChevronsLeftIcon />
+					<span>Hide menu</span>
+				</span>
+			</BaseButton>
+		</div>
 	);
 }
 
@@ -217,3 +260,34 @@ const ChevronsLeftIcon = createIcon(
 	</Fragment>,
 	'ChevronsLeftIcon'
 );
+
+// TODO This icon has been copied+pasted from `MainNav`
+// This should be a design system icon
+function CloseIcon() {
+	return (
+		<svg
+			width="24"
+			height="24"
+			viewBox="0 0 24 24"
+			fill="currentcolor"
+			xmlns="http://www.w3.org/2000/svg"
+			aria-hidden="true"
+			focusable="false"
+		>
+			<rect
+				x="6"
+				y="17.3137"
+				width="16"
+				height="2"
+				transform="rotate(-45 6 17.3137)"
+			/>
+			<rect
+				x="7.41406"
+				y="6"
+				width="16"
+				height="2"
+				transform="rotate(45 7.41406 6)"
+			/>
+		</svg>
+	);
+}

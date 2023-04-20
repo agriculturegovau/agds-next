@@ -16,8 +16,6 @@ export function AppLayoutContent({
 		<Flex
 			background={background}
 			flexDirection="column"
-			// justifyContent = 'flex-start',
-			// alignItems = 'stretch',
 			css={mq({
 				minHeight: '100vh',
 				paddingLeft: mapResponsiveProp({

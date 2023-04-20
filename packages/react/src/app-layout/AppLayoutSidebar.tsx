@@ -2,7 +2,6 @@ import {
 	Fragment,
 	MouseEventHandler,
 	PropsWithChildren,
-	ReactNode,
 	useEffect,
 	useRef,
 } from 'react';
@@ -10,20 +9,26 @@ import { Global } from '@emotion/react';
 import { createPortal } from 'react-dom';
 import FocusLock from 'react-focus-lock';
 import { boxPalette, tokens } from '../core';
-import { Box, Flex, Stack } from '../box';
+import { Box, Stack } from '../box';
 import { useAppLayoutContext } from './AppLayoutContext';
-import { BORDER_WIDTH_XXL, HEADER_HEIGHT } from './utils';
+import { BORDER_WIDTH_XXL } from './utils';
+import { AppLayoutSidebarNav, NavItem } from './AppLayoutSidebarNav';
 
-export type AppLayoutSidebarProps = PropsWithChildren<{
-	logo: JSX.Element;
-}>;
+export type AppLayoutSidebarProps = {
+	/** Used for highlighting the active element. */
+	activePath?: string;
+	/** Groups of navigation items to display at the top of the sidebar. */
+	items: NavItem[][];
+};
 
-export function AppLayoutSidebar({ children, logo }: AppLayoutSidebarProps) {
+export function AppLayoutSidebar({ activePath, items }: AppLayoutSidebarProps) {
 	const { isMenuOpen, isMobile } = useAppLayoutContext();
 
 	if (isMobile) {
 		return (
-			<AppLayoutSideBarMobile logo={logo}>{children}</AppLayoutSideBarMobile>
+			<AppLayoutSideBarMobile>
+				<AppLayoutSidebarNav activePath={activePath} items={items} />
+			</AppLayoutSideBarMobile>
 		);
 	}
 
@@ -49,36 +54,12 @@ export function AppLayoutSidebar({ children, logo }: AppLayoutSidebarProps) {
 				},
 			}}
 		>
-			<Flex
-				paddingX={1.5}
-				justifyContent="center"
-				alignItems="center"
-				color="text"
-				height={HEADER_HEIGHT}
-				flexShrink={0}
-				borderBottom
-				borderColor="muted"
-				css={{
-					svg: {
-						display: 'block',
-						width: '100%',
-					},
-				}}
-			>
-				{logo}
-			</Flex>
-			{children}
+			<AppLayoutSidebarNav activePath={activePath} items={items} />
 		</Stack>
 	);
 }
 
-function AppLayoutSideBarMobile({
-	children,
-	logo,
-}: {
-	children: ReactNode;
-	logo: JSX.Element;
-}) {
+function AppLayoutSideBarMobile({ children }: PropsWithChildren<{}>) {
 	const { isMenuOpen, hideMenu } = useAppLayoutContext();
 	const dialogRef = useRef<HTMLDivElement>(null);
 
@@ -155,14 +136,6 @@ function AppLayoutSideBarMobile({
 						},
 					}}
 				>
-					<Box
-						paddingX={1.5}
-						maxWidth={tokens.maxWidth.mobileMenu}
-						color="text"
-						css={{ svg: { display: 'block' } }}
-					>
-						{logo}
-					</Box>
 					{children}
 				</Stack>
 			</FocusLock>

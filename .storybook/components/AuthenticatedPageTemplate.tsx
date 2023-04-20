@@ -7,14 +7,10 @@ import { HelpIcon, HomeIcon, ExitIcon } from '@ag.ds-next/react/icon';
 import {
 	AppLayout,
 	AppLayoutSidebar,
-	AppLayoutSidebarNav,
 	AppLayoutHeader,
-	AppLayoutHeaderTitles,
-	AppLayoutHeaderAccountLink,
 	AppLayoutFooter,
 	AppLayoutFooterDivider,
 	AppLayoutContent,
-	AppLayoutFooterLogo,
 } from '@ag.ds-next/react/app-layout';
 import {
 	EmailIcon,
@@ -42,14 +38,13 @@ const navigationItems = [
 		},
 		{ label: 'Help', icon: HelpIcon, href: '#help' },
 	],
-];
-
-const secondaryNavigationItems = [
-	{
-		label: 'Sign Out',
-		icon: ExitIcon,
-		onClick: console.log,
-	},
+	[
+		{
+			label: 'Sign Out',
+			icon: ExitIcon,
+			onClick: console.log,
+		},
+	],
 ];
 
 export function AuthenticatedPageTemplate({
@@ -59,30 +54,21 @@ export function AuthenticatedPageTemplate({
 	const year = useMemo(() => new Date().getFullYear(), []);
 	return (
 		<AppLayout>
-			<AppLayoutSidebar logo={<Logo />}>
-				<AppLayoutSidebarNav
-					activePath="#"
-					items={navigationItems}
-					secondaryItems={secondaryNavigationItems}
-				/>
-			</AppLayoutSidebar>
+			<AppLayoutSidebar activePath="#" items={navigationItems} />
 			<AppLayoutContent background={background}>
-				<AppLayoutHeader logo={<Logo />}>
-					<AppLayoutHeaderTitles
-						title="Export Service"
-						subTitle="Supporting Australian agricultural exports"
-					/>
-					<AppLayoutHeaderAccountLink
-						name="Toto Wolff"
-						organisation="Orange Meat Works"
-						href="/account/preferences"
-					/>
-				</AppLayoutHeader>
+				<AppLayoutHeader
+					href="/"
+					logo={<Logo />}
+					title="Export Service"
+					subTitle="Supporting Australian agricultural exports"
+					user={{
+						name: 'Toto Wolff',
+						organisation: 'Orange Meat Works',
+						href: '/account/preferences',
+					}}
+				/>
 				<main id="main-content">{children}</main>
 				<AppLayoutFooter>
-					<AppLayoutFooterLogo>
-						<Logo />
-					</AppLayoutFooterLogo>
 					<nav aria-label="footer">
 						<LinkList
 							links={[
