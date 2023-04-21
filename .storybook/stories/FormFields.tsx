@@ -3,7 +3,7 @@ import { Autocomplete } from '@ag.ds-next/react/src/autocomplete/Autocomplete';
 import { Box } from '@ag.ds-next/react/box';
 import { Button, ButtonGroup } from '@ag.ds-next/react/button';
 import { Columns, Column } from '@ag.ds-next/react/columns';
-import { Combobox } from '@ag.ds-next/react/src/combobox';
+import { Combobox, ComboboxMulti } from '@ag.ds-next/react/src/combobox';
 import { ControlGroup, Checkbox, Radio } from '@ag.ds-next/react/control-input';
 import { DatePicker, DateRangePicker } from '@ag.ds-next/react/date-picker';
 import { FileInput } from '@ag.ds-next/react/file-input';
@@ -145,6 +145,26 @@ const AllFormFields = ({
 									{ label: 'Western Australia', value: 'wa' },
 								]}
 								value={{ label: 'Tasmania', value: 'tas' }}
+								{...commonProps}
+							/>
+
+							<ComboboxMulti
+								label="Select state"
+								hint="Start typing to see results"
+								options={[
+									{ label: 'Australian Capital Territory', value: 'act' },
+									{ label: 'New South Wales', value: 'nsw' },
+									{ label: 'Northern Territory', value: 'nt' },
+									{ label: 'Queensland', value: 'qld' },
+									{ label: 'South Australia', value: 'sa' },
+									{ label: 'Tasmania', value: 'tas' },
+									{ label: 'Victoria', value: 'vic' },
+									{ label: 'Western Australia', value: 'wa' },
+								]}
+								value={[
+									{ label: 'Tasmania', value: 'tas' },
+									{ label: 'New South Wales', value: 'nsw' },
+								]}
 								{...commonProps}
 							/>
 

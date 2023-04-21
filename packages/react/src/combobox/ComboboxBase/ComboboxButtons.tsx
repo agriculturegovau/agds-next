@@ -9,7 +9,7 @@ import { BaseButton } from '../../button';
 import { boxPalette, mapSpacing, tokens } from '../../core';
 import { Box, Flex, focusStyles } from '../../box';
 
-export function ComboboxButtonContainer(props: PropsWithChildren<{}>) {
+export function ComboboxButtonContainer({ children }: PropsWithChildren<{}>) {
 	return (
 		<Flex
 			alignItems="center"
@@ -21,7 +21,7 @@ export function ComboboxButtonContainer(props: PropsWithChildren<{}>) {
 				transform: 'translateY(-50%)',
 			}}
 		>
-			{props.children}
+			{children}
 		</Flex>
 	);
 }
@@ -82,8 +82,13 @@ const ComboboxIconButton = forwardRef<HTMLButtonElement, IconButtonProps>(
 					justifyContent: 'center',
 					width: '2rem',
 					height: '2rem',
-					opacity: disabled ? 0.3 : undefined,
 					color: boxPalette.foregroundAction,
+
+					...(disabled && {
+						cursor: 'not-allowed',
+						opacity: 0.3,
+					}),
+
 					'&:hover': { color: boxPalette.foregroundText },
 					...focusStyles,
 				}}

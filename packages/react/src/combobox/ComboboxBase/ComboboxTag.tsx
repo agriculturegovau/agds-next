@@ -7,6 +7,7 @@ export type ComboboxTagProps = Omit<
 	HTMLAttributes<HTMLSpanElement>,
 	'children' | 'color'
 > & {
+	disabled: boolean;
 	children: string;
 	onRemove: () => void;
 };
@@ -15,7 +16,7 @@ export type ComboboxTagProps = Omit<
 // See https://www.downshift-js.com/use-multiple-selection#usage-with-combobox
 
 export const ComboboxTag = forwardRef<HTMLSpanElement, ComboboxTagProps>(
-	function ComboboxTag({ children, onRemove, ...props }, ref) {
+	function ComboboxTag({ disabled, children, onRemove, ...props }, ref) {
 		return (
 			<Flex
 				ref={ref}
@@ -30,7 +31,14 @@ export const ComboboxTag = forwardRef<HTMLSpanElement, ComboboxTagProps>(
 				fontSize="sm"
 				color="text"
 				focus
-				css={{ cursor: 'pointer' }}
+				css={{
+					cursor: 'pointer',
+					...(disabled && {
+						cursor: 'not-allowed',
+						borderColor: boxPalette.borderMuted,
+						color: boxPalette.foregroundMuted,
+					}),
+				}}
 				{...props}
 			>
 				{children}
@@ -41,21 +49,19 @@ export const ComboboxTag = forwardRef<HTMLSpanElement, ComboboxTagProps>(
 					alignItems="center"
 					justifyContent="center"
 					onClick={(event: MouseEvent<HTMLSpanElement>) => {
+						if (disabled) return;
 						event.stopPropagation();
 						onRemove();
 					}}
 					focus
 					css={{
 						cursor: 'pointer',
-						svg: {
-							display: 'block',
-							color: boxPalette.foregroundAction,
-						},
-						'&:hover': {
-							svg: {
-								color: boxPalette.foregroundText,
-							},
-						},
+						svg: { display: 'block', color: boxPalette.foregroundAction },
+						'&:hover': { svg: { color: boxPalette.foregroundText } },
+						...(disabled && {
+							cursor: 'not-allowed',
+							opacity: 0.3,
+						}),
 					}}
 				>
 					<CloseIcon size="sm" />

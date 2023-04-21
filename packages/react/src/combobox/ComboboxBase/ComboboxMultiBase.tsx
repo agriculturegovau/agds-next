@@ -167,6 +167,7 @@ export function ComboboxMultiBase<Option extends DefaultComboboxOption>({
 							<ComboboxTag
 								key={`selected-item-${idx}`}
 								onRemove={() => multiSelection.removeSelectedItem(item)}
+								disabled={disabled}
 								{...multiSelection.getSelectedItemProps({
 									selectedItem: item,
 									index: idx,
@@ -324,6 +325,8 @@ function comboboxMultiStyles({
 			},
 
 			'&:disabled': {
+				cursor: 'not-allowed',
+				color: boxPalette.foregroundMuted,
 				backgroundColor: boxPalette.backgroundShade,
 			},
 		},
