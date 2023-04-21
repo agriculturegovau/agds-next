@@ -1,0 +1,26 @@
+---
+date: 21st April 2023
+title: AgDS Beta v1.4.1 release
+description: Fixed controlled usage bug in multi-select combobox, addded support for xml MIME types in file upload.
+---
+
+## Updates
+
+### [Combobox](/components/combobox)
+
+- Fixed controlled usage bug where `value` and `onChange` props were not being used/called in `ComboboxMulti` and `ComboboxAsyncMulti` ([PR #1072](https://github.com/steelthreads/agds-next/pull/1072))
+- Updated disabled state in `ComboboxMulti` and `ComboboxAsyncMulti` ([PR #1072](https://github.com/steelthreads/agds-next/pull/1072))
+
+### [File upload](/components/file-upload)
+
+- Added support for `application/xml` and `text/xml` MIME types ([PR #1071](https://github.com/steelthreads/agds-next/pull/1071))
+
+## Released packages
+
+```sh
+"@ag.ds-next/react": "1.4.1"
+```
+
+## Full Changelog
+
+Aside from the [complete release notes on the @ag.ds-next website](https://design-system.agriculture.gov.au/updates/2023-04-21), you can also view the verbose change log in the [related PR](https://github.com/steelthreads/agds-next/pull/1073) for this release.
