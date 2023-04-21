@@ -4,14 +4,13 @@ import {
 	fontGrid,
 	LinkProps,
 	mapSpacing,
-	packs,
 	tokens,
 	useLinkComponent,
 } from '../core';
 import { VisuallyHidden } from '../a11y';
-import { Box, Flex } from '../box';
+import { Box, Flex, focusStyles } from '../box';
 import { BaseButton, BaseButtonProps } from '../button';
-import { createIcon, IconProps } from '../icon';
+import { CloseIcon, createIcon, IconProps } from '../icon';
 import { useAppLayoutContext } from './AppLayoutContext';
 import { HEADER_HEIGHT } from './utils';
 
@@ -143,7 +142,7 @@ function AppLayoutSidebarNavItemInner({
 						},
 					}),
 
-					'&:focus': packs.outline,
+					...focusStyles,
 
 					'&:hover': {
 						background: boxPalette.backgroundShade,
@@ -228,7 +227,7 @@ function HideMenuButton() {
 						},
 					},
 
-					'&:focus': packs.outline,
+					...focusStyles,
 
 					[tokens.mediaQuery.min.lg]: {
 						width: '100%',
@@ -262,34 +261,3 @@ const ChevronsLeftIcon = createIcon(
 	</Fragment>,
 	'ChevronsLeftIcon'
 );
-
-// TODO This icon has been copied+pasted from `MainNav`
-// This should be a design system icon
-function CloseIcon() {
-	return (
-		<svg
-			width="24"
-			height="24"
-			viewBox="0 0 24 24"
-			fill="currentcolor"
-			xmlns="http://www.w3.org/2000/svg"
-			aria-hidden="true"
-			focusable="false"
-		>
-			<rect
-				x="6"
-				y="17.3137"
-				width="16"
-				height="2"
-				transform="rotate(-45 6 17.3137)"
-			/>
-			<rect
-				x="7.41406"
-				y="6"
-				width="16"
-				height="2"
-				transform="rotate(45 7.41406 6)"
-			/>
-		</svg>
-	);
-}

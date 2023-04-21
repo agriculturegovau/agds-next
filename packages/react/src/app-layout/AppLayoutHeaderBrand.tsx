@@ -13,19 +13,19 @@ import { Text } from '../text';
 import { useAppLayoutContext } from './AppLayoutContext';
 import { HEADER_HEIGHT } from './utils';
 
-export type AppLayoutHeaderTitlesProps = {
+export type AppLayoutHeaderBrandProps = {
 	href: string;
 	logo: JSX.Element;
-	subTitle: string;
-	title: string;
+	heading: string;
+	subLine: string;
 };
 
-export function AppLayoutHeaderTitles({
-	title,
-	subTitle,
+export function AppLayoutHeaderBrand({
+	heading,
+	subLine,
 	logo,
 	href,
-}: AppLayoutHeaderTitlesProps) {
+}: AppLayoutHeaderBrandProps) {
 	const { isMenuOpen } = useAppLayoutContext();
 	const Link = useLinkComponent();
 
@@ -75,10 +75,10 @@ export function AppLayoutHeaderTitles({
 					}}
 				>
 					<Text fontSize="lg" fontWeight="bold">
-						{title}
+						{heading}
 					</Text>
 					<Text color="muted" fontSize="xs">
-						{subTitle}
+						{subLine}
 					</Text>
 				</Flex>
 			</Flex>

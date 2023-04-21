@@ -17,11 +17,16 @@ export function AppLayout(props: AppLayoutProps) {
 
 	const [isMenuOpen, _showMenu, _hideMenu] = useSidebarMenuState(props);
 
-	const { showMenu, showMenuButtonRef, hideMenu, hideMenuButtonRef } =
-		useSidebarMenuToggles({
-			showMenu: _showMenu,
-			hideMenu: _hideMenu,
-		});
+	const {
+		showMenu,
+		hideMenu,
+		mobileShowMenuButtonRef,
+		desktopShowMenuButtonRef,
+		hideMenuButtonRef,
+	} = useSidebarMenuToggles({
+		showMenu: _showMenu,
+		hideMenu: _hideMenu,
+	});
 
 	return (
 		<AppLayoutContext.Provider
@@ -30,7 +35,8 @@ export function AppLayout(props: AppLayoutProps) {
 				isMenuOpen,
 				showMenu,
 				hideMenu,
-				showMenuButtonRef,
+				mobileShowMenuButtonRef,
+				desktopShowMenuButtonRef,
 				hideMenuButtonRef,
 			}}
 		>
@@ -68,7 +74,7 @@ function useSidebarMenuState({
 }
 
 /**
- * Ensures the the open/close buttons are focused when the menu opens/closes
+ * Ensures the the open/close buttons are correctly focused when the menu opens/closes
  */
 function useSidebarMenuToggles({
 	showMenu: _showMenu,
@@ -77,7 +83,9 @@ function useSidebarMenuToggles({
 	showMenu: () => void;
 	hideMenu: () => void;
 }) {
-	const showMenuButtonRef = useRef<HTMLButtonElement>(null);
+	const isMobile = useIsMobile();
+	const mobileShowMenuButtonRef = useRef<HTMLButtonElement>(null);
+	const desktopShowMenuButtonRef = useRef<HTMLButtonElement>(null);
 	const hideMenuButtonRef = useRef<HTMLButtonElement>(null);
 
 	const [shouldFocusShowMenuButton, setShouldFocusShowMenuButton] =
@@ -105,9 +113,17 @@ function useSidebarMenuToggles({
 
 	useEffect(() => {
 		if (!shouldFocusShowMenuButton) return;
-		showMenuButtonRef.current?.focus();
+		isMobile
+			? mobileShowMenuButtonRef.current?.focus()
+			: desktopShowMenuButtonRef.current?.focus();
 		setShouldFocusShowMenuButton(false);
-	}, [shouldFocusShowMenuButton]);
+	}, [shouldFocusShowMenuButton, isMobile]);
 
-	return { showMenuButtonRef, hideMenuButtonRef, showMenu, hideMenu };
+	return {
+		mobileShowMenuButtonRef,
+		desktopShowMenuButtonRef,
+		hideMenuButtonRef,
+		showMenu,
+		hideMenu,
+	};
 }
