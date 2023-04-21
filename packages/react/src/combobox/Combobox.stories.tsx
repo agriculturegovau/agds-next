@@ -1,12 +1,20 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react';
 import { useState } from 'react';
 import { Combobox } from './Combobox';
 import { COUNTRY_OPTIONS } from './test-utils';
 
-export default {
+const meta: Meta<typeof Combobox> = {
 	title: 'forms/Combobox/Combobox',
 	component: Combobox,
-} as ComponentMeta<typeof Combobox>;
+	render: function ComboboxStory(props) {
+		const [value, onChange] = useState<Option | null>(null);
+		return <Combobox {...props} value={value} onChange={onChange} />;
+	},
+};
+
+export default meta;
+
+type Option = (typeof COUNTRY_OPTIONS)[number];
 
 const defaultArgs = {
 	label: 'Select country',
@@ -14,45 +22,44 @@ const defaultArgs = {
 	options: COUNTRY_OPTIONS,
 };
 
-type Option = (typeof COUNTRY_OPTIONS)[number];
+type Story = StoryObj<typeof Combobox>;
 
-const Template: ComponentStory<typeof Combobox> = (args) => {
-	const [value, onChange] = useState<Option | null>(null);
-	return <Combobox {...args} value={value} onChange={onChange} />;
+export const Basic: Story = {
+	args: defaultArgs,
 };
 
-export const Basic = Template.bind({});
-Basic.args = {
-	...defaultArgs,
+export const Required: Story = {
+	args: {
+		...defaultArgs,
+		required: true,
+	},
 };
 
-export const Required = Template.bind({});
-Required.args = {
-	...defaultArgs,
-	required: true,
+export const HideOptionalLabel: Story = {
+	args: {
+		...defaultArgs,
+		hideOptionalLabel: true,
+	},
 };
 
-export const HideOptionalLabel = Template.bind({});
-HideOptionalLabel.args = {
-	...defaultArgs,
-	hideOptionalLabel: true,
+export const Disabled: Story = {
+	args: {
+		...defaultArgs,
+		disabled: true,
+	},
 };
 
-export const Disabled = Template.bind({});
-Disabled.args = {
-	...defaultArgs,
-	disabled: true,
+export const Invalid: Story = {
+	args: {
+		...defaultArgs,
+		invalid: true,
+		message: 'Country is required',
+	},
 };
 
-export const Invalid = Template.bind({});
-Invalid.args = {
-	...defaultArgs,
-	invalid: true,
-	message: 'Country is required',
-};
-
-export const Block = Template.bind({});
-Block.args = {
-	...defaultArgs,
-	block: true,
+export const Block: Story = {
+	args: {
+		...defaultArgs,
+		block: true,
+	},
 };
