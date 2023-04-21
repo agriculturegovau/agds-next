@@ -31,7 +31,7 @@ const meta: Meta<typeof AppLayout> = {
 					links={[{ href: '#main-content', label: 'Skip to main content' }]}
 				/>
 				<AppLayout {...args}>
-					<AppLayoutSidebar activePath="#" items={navigationItems} />
+					<AppLayoutSidebar activePath="#dashboard" items={navigationItems} />
 					<AppLayoutContent>
 						<AppLayoutHeader
 							href="/"
