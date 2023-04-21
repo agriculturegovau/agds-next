@@ -36,7 +36,6 @@ export function AppLayoutHeader({
 	href,
 	user,
 }: AppLayoutHeaderProps) {
-	const { isMenuOpen } = useAppLayoutContext();
 	return (
 		<Fragment>
 			<Flex
@@ -47,7 +46,7 @@ export function AppLayoutHeader({
 				paddingY={{ xs: 1, md: 0 }}
 				paddingLeft={{
 					...tokens.containerPadding,
-					lg: isMenuOpen ? tokens.containerPadding.md : 0,
+					lg: tokens.containerPadding.md,
 				}}
 				paddingRight={tokens.containerPadding}
 				background={{ xs: 'bodyAlt', lg: 'body' }}
@@ -84,14 +83,17 @@ function AppLayoutHeaderMenuTrigger() {
 			ref={showMenuButtonRef}
 			as={BaseButton}
 			onClick={showMenu}
+			aria-label="Open menu"
 			borderRight
 			borderColor="muted"
 			borderRightWidth={{ xs: undefined, lg: 'sm' }}
 			flexDirection="column"
 			alignItems="center"
 			justifyContent="center"
+			gap={0.25}
 			height={HEADER_HEIGHT}
 			width={HEADER_HEIGHT}
+			fontSize="xs"
 			color="action"
 			focus
 			css={{
@@ -102,6 +104,9 @@ function AppLayoutHeaderMenuTrigger() {
 				},
 				[tokens.mediaQuery.min.lg]: {
 					display: isMenuOpen ? 'none' : 'flex',
+					position: 'fixed',
+					top: 0,
+					left: 0,
 				},
 			}}
 		>

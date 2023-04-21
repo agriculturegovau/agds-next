@@ -5,10 +5,11 @@ import {
 	useEffect,
 	useRef,
 } from 'react';
-import { Global } from '@emotion/react';
 import { createPortal } from 'react-dom';
+import { Global } from '@emotion/react';
+import { animated, useSpring } from '@react-spring/web';
 import FocusLock from 'react-focus-lock';
-import { boxPalette, tokens } from '../core';
+import { boxPalette, tokens, usePrefersReducedMotion } from '../core';
 import { Box, Stack } from '../box';
 import { useAppLayoutContext } from './AppLayoutContext';
 import { BORDER_WIDTH_XXL } from './utils';
@@ -21,8 +22,11 @@ export type AppLayoutSidebarProps = {
 	items: NavItem[][];
 };
 
+const AnimatedBox = animated(Box);
+const AnimatedStack = animated(Stack);
+
 export function AppLayoutSidebar({ activePath, items }: AppLayoutSidebarProps) {
-	const { isMenuOpen, isMobile } = useAppLayoutContext();
+	const { isMobile } = useAppLayoutContext();
 
 	if (isMobile) {
 		return (
@@ -33,7 +37,23 @@ export function AppLayoutSidebar({ activePath, items }: AppLayoutSidebarProps) {
 	}
 
 	return (
-		<Stack
+		<AppLayoutSideBarDesktop>
+			<AppLayoutSidebarNav activePath={activePath} items={items} />
+		</AppLayoutSideBarDesktop>
+	);
+}
+
+function AppLayoutSideBarDesktop({ children }: PropsWithChildren<{}>) {
+	const { isMenuOpen } = useAppLayoutContext();
+
+	const prefersReducedMotion = usePrefersReducedMotion();
+	const animatedStyles = useSpring({
+		transform: isMenuOpen ? 'translateX(0%)' : 'translateX(-100%)',
+		immediate: prefersReducedMotion,
+	});
+
+	return (
+		<AnimatedStack
 			as="aside"
 			aria-hidden={!isMenuOpen}
 			gap={1}
@@ -45,17 +65,18 @@ export function AppLayoutSidebar({ activePath, items }: AppLayoutSidebarProps) {
 				left: 0,
 				bottom: 0,
 				width: tokens.maxWidth.mobileMenu,
-				transform: isMenuOpen ? 'translateX(0)' : 'translateX(-100%)',
 				borderLeft: `${BORDER_WIDTH_XXL}px solid ${boxPalette.accent}`,
 				overflowY: 'auto',
+				zIndex: 1,
 				// This component should never be visible on smaller devices
 				[tokens.mediaQuery.max.md]: {
 					display: 'none',
 				},
 			}}
+			style={animatedStyles}
 		>
-			<AppLayoutSidebarNav activePath={activePath} items={items} />
-		</Stack>
+			{children}
+		</AnimatedStack>
 	);
 }
 
@@ -108,6 +129,12 @@ function AppLayoutSideBarMobile({ children }: PropsWithChildren<{}>) {
 		};
 	}, [isMenuOpen]);
 
+	const prefersReducedMotion = usePrefersReducedMotion();
+	const animatedStyles = useSpring({
+		transform: isMenuOpen ? 'translateX(0%)' : 'translateX(-100%)',
+		immediate: prefersReducedMotion,
+	});
+
 	if (!isMenuOpen) {
 		return null;
 	}
@@ -117,10 +144,9 @@ function AppLayoutSideBarMobile({ children }: PropsWithChildren<{}>) {
 			<LockScroll />
 			<Overlay onClick={hideMenu} />
 			<FocusLock returnFocus disabled={!isMenuOpen}>
-				<Stack
+				<AnimatedStack
 					dark
 					background="bodyAlt"
-					paddingTop={1}
 					gap={1}
 					css={{
 						position: 'fixed',
@@ -131,13 +157,12 @@ function AppLayoutSideBarMobile({ children }: PropsWithChildren<{}>) {
 						overflowY: 'auto',
 						width: '100%',
 						borderLeft: `${BORDER_WIDTH_XXL}px solid ${boxPalette.accent}`,
-						[tokens.mediaQuery.min.md]: {
-							width: tokens.maxWidth.mobileMenu,
-						},
+						maxWidth: tokens.maxWidth.mobileMenu,
 					}}
+					style={animatedStyles}
 				>
 					{children}
-				</Stack>
+				</AnimatedStack>
 			</FocusLock>
 		</Fragment>,
 		document.body
@@ -145,8 +170,14 @@ function AppLayoutSideBarMobile({ children }: PropsWithChildren<{}>) {
 }
 
 function Overlay({ onClick }: { onClick: MouseEventHandler<HTMLDivElement> }) {
+	const prefersReducedMotion = usePrefersReducedMotion();
+	const animatedStyles = useSpring({
+		from: { opacity: 0 },
+		to: { opacity: 1 },
+		immediate: prefersReducedMotion,
+	});
 	return (
-		<Box
+		<AnimatedBox
 			css={{
 				position: 'fixed',
 				top: 0,
@@ -157,6 +188,7 @@ function Overlay({ onClick }: { onClick: MouseEventHandler<HTMLDivElement> }) {
 				zIndex: 99,
 			}}
 			onClick={onClick}
+			style={animatedStyles}
 		/>
 	);
 }

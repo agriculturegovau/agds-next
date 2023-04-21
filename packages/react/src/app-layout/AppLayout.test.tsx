@@ -21,7 +21,7 @@ afterEach(cleanup);
 function renderAppLayout(props: AppLayoutProps) {
 	return render(
 		<AppLayout {...props}>
-			<AppLayoutSidebar activePath="#" items={navigationItems} />
+			<AppLayoutSidebar activePath="#dashboard" items={navigationItems} />
 			<AppLayoutContent>
 				<AppLayoutHeader
 					href="#"

@@ -1,6 +1,7 @@
+import { useSpring, animated } from '@react-spring/web';
 import { PropsWithChildren } from 'react';
 import { Flex } from '../box';
-import { mapResponsiveProp, mq, tokens } from '../core';
+import { tokens, usePrefersReducedMotion } from '../core';
 import { useAppLayoutContext } from './AppLayoutContext';
 
 export type AppLayoutContentProps = PropsWithChildren<{
@@ -12,18 +13,29 @@ export function AppLayoutContent({
 	children,
 }: AppLayoutContentProps) {
 	const { isMenuOpen } = useAppLayoutContext();
+
+	const prefersReducedMotion = usePrefersReducedMotion();
+	const animatedStyles = useSpring({
+		paddingLeft: isMenuOpen ? tokens.maxWidth.mobileMenu : '0rem',
+		immediate: prefersReducedMotion,
+	});
+
 	return (
-		<Flex
+		<AnimatedFlex
 			background={background}
 			flexDirection="column"
-			css={mq({
+			css={{
 				minHeight: '100vh',
-				paddingLeft: mapResponsiveProp({
-					lg: isMenuOpen ? tokens.maxWidth.mobileMenu : 0,
-				}),
-			})}
+				// Never animated on mobile
+				[tokens.mediaQuery.max.md]: {
+					paddingLeft: '0 !important',
+				},
+			}}
+			style={animatedStyles}
 		>
 			{children}
-		</Flex>
+		</AnimatedFlex>
 	);
 }
+
+const AnimatedFlex = animated(Flex);

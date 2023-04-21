@@ -1,6 +1,7 @@
 import { ComponentType, Fragment, PropsWithChildren, ReactNode } from 'react';
 import {
 	boxPalette,
+	fontGrid,
 	LinkProps,
 	mapSpacing,
 	packs,
@@ -182,18 +183,13 @@ function AppLayoutSidebarNavDivider() {
 function HideMenuButton() {
 	const { hideMenu, hideMenuButtonRef } = useAppLayoutContext();
 	return (
-		<div
-			css={{
-				paddingLeft: mapSpacing(1.5),
-				[tokens.mediaQuery.min.lg]: {
-					paddingLeft: 0,
-					height: HEADER_HEIGHT.md,
-					display: 'flex',
-					alignItems: 'center',
-					borderBottom: `${tokens.borderWidth.sm}px solid ${boxPalette.borderMuted}`,
-					flexShrink: 0,
-				},
-			}}
+		<Flex
+			height={HEADER_HEIGHT.md}
+			alignItems="center"
+			borderBottom
+			borderColor="muted"
+			paddingLeft={{ xs: 1, lg: 0 }}
+			flexShrink={0}
 		>
 			<BaseButton
 				ref={hideMenuButtonRef}
@@ -209,7 +205,9 @@ function HideMenuButton() {
 						boxSizing: 'border-box',
 						padding: mapSpacing(1),
 						color: boxPalette.foregroundAction,
+						...fontGrid('xs', 'default'),
 					},
+
 					// Desktop button styles
 					'> span:last-of-type': {
 						display: 'none', // Hide on mobile
@@ -219,15 +217,19 @@ function HideMenuButton() {
 						boxSizing: 'border-box',
 						paddingLeft: mapSpacing(1.5),
 						paddingRight: mapSpacing(1.5),
-						paddingTop: mapSpacing(1),
-						paddingBottom: mapSpacing(1),
+						paddingTop: mapSpacing(0.5),
+						paddingBottom: mapSpacing(0.5),
 						color: boxPalette.foregroundAction,
+						...fontGrid('xs', 'default'),
+
 						'&:hover': {
 							background: boxPalette.backgroundShade,
 							color: boxPalette.foregroundText,
 						},
 					},
+
 					'&:focus': packs.outline,
+
 					[tokens.mediaQuery.min.lg]: {
 						width: '100%',
 						// Hide mobile button
@@ -249,7 +251,7 @@ function HideMenuButton() {
 					<span>Hide menu</span>
 				</span>
 			</BaseButton>
-		</div>
+		</Flex>
 	);
 }
 
