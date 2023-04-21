@@ -4,17 +4,18 @@ import { tokens, useTernaryState, useWindowSize } from '../core';
 import { AppLayoutContext } from './AppLayoutContext';
 
 export type AppLayoutProps = PropsWithChildren<{
-	/** When true, the side bar will be collapsed by default. This should be used in screens where a user is focusing on a task, such as multi-page forms. */
-	focusMode?: boolean;
+	/** When true, the side bar will be collapsed. This should be set to `false` in screens where a user is focusing on a task, such as multi-page forms. */
+	isMenuOpen: boolean;
+	/** Callback function for when a user opens the desktop menu. */
+	openMenu: () => void;
+	/** Callback function for when a user closer the desktop menu. */
+	closeMenu: () => void;
 }>;
 
-export function AppLayout({ children, focusMode = false }: AppLayoutProps) {
+export function AppLayout(props: AppLayoutProps) {
 	const isMobile = useIsMobile();
 
-	const [isMenuOpen, _showMenu, _hideMenu] = useSidebarMenuState({
-		focusMode,
-		isMobile,
-	});
+	const [isMenuOpen, _showMenu, _hideMenu] = useSidebarMenuState(props);
 
 	const { showMenu, showMenuButtonRef, hideMenu, hideMenuButtonRef } =
 		useSidebarMenuToggles({
@@ -33,7 +34,7 @@ export function AppLayout({ children, focusMode = false }: AppLayoutProps) {
 				hideMenuButtonRef,
 			}}
 		>
-			{children}
+			{props.children}
 		</AppLayoutContext.Provider>
 	);
 }
@@ -51,26 +52,17 @@ function useIsMobile() {
  * State to manage the collapsed state of the sidebar menu
  */
 function useSidebarMenuState({
-	isMobile,
-	focusMode,
-}: {
-	isMobile: boolean | undefined;
-	focusMode: boolean;
-}) {
+	isMenuOpen,
+	openMenu,
+	closeMenu,
+}: AppLayoutProps) {
+	const isMobile = useIsMobile();
+
 	// Mobile menu should be hidden by default
 	const mobileState = useTernaryState(false);
 
-	// Desktop menu should by visible by default, unless in focus mode
-	const desktopState = useTernaryState(!focusMode);
-
-	// This effect syncs the `focusMode` prop with this state
-	// Note: Focus mode has no effect on mobile devices
-	const openDesktopMenu = desktopState[1];
-	const closeDesktopMenu = desktopState[2];
-	useEffect(() => {
-		if (isMobile) return;
-		focusMode ? closeDesktopMenu() : openDesktopMenu();
-	}, [isMobile, focusMode, openDesktopMenu, closeDesktopMenu]);
+	// Desktop menu is configurable by consumers
+	const desktopState = [isMenuOpen, openMenu, closeMenu] as const;
 
 	return isMobile ? mobileState : desktopState;
 }

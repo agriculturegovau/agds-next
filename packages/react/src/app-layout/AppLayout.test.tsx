@@ -75,25 +75,38 @@ function renderAppLayout(props: AppLayoutProps) {
 }
 
 describe('AppLayout', () => {
-	it('renders correctly', () => {
-		const { container } = renderAppLayout({ focusMode: false });
-		expect(container).toMatchSnapshot();
-	});
-	it('renders a valid HTML structure', () => {
-		const { container } = renderAppLayout({ focusMode: false });
-		expect(container).toHTMLValidate({
-			extends: ['html-validate:recommended'],
-			rules: {
-				// react 18s `useId` break this rule
-				'valid-id': 'off',
-				'no-inline-style': 'off',
-			},
+	describe('Open', () => {
+		it('renders correctly', () => {
+			const { container } = renderAppLayout({
+				isMenuOpen: true,
+				openMenu: console.log,
+				closeMenu: console.log,
+			});
+			expect(container).toMatchSnapshot();
+		});
+		it('renders a valid HTML structure', () => {
+			const { container } = renderAppLayout({
+				isMenuOpen: true,
+				openMenu: console.log,
+				closeMenu: console.log,
+			});
+			expect(container).toHTMLValidate({
+				extends: ['html-validate:recommended'],
+				rules: {
+					// react 18s `useId` break this rule
+					'valid-id': 'off',
+					'no-inline-style': 'off',
+				},
+			});
 		});
 	});
-
-	describe('Focus mode', () => {
+	describe('Closed', () => {
 		it('renders a valid HTML structure', () => {
-			const { container } = renderAppLayout({ focusMode: true });
+			const { container } = renderAppLayout({
+				isMenuOpen: false,
+				openMenu: console.log,
+				closeMenu: console.log,
+			});
 			expect(container).toHTMLValidate({
 				extends: ['html-validate:recommended'],
 				rules: {
