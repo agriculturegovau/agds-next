@@ -19,7 +19,8 @@ export const getFilesTotal = (files: { size: number }[]) => {
 	return `${files.length} ${label} selected (${formatFileSize(size)})`;
 };
 
-export const fileTypeMapping = {
+const fileTypeMapping = {
+	// Application
 	'application/msword': 'word',
 	'application/pdf': 'pdf',
 	'application/rtf': 'rtf',
@@ -28,9 +29,12 @@ export const fileTypeMapping = {
 	'application/vnd.openxmlformats-officedocument.wordprocessingml.document':
 		'doc',
 	'application/zip': 'zip',
+	'application/xml': 'xml',
+	// Audio
 	'audio/*': 'Any audio file',
 	'audio/mpeg': 'mpeg audio',
 	'audio/wav': 'wav',
+	// Image
 	'image/*': 'Any image',
 	'image/gif': 'gif',
 	'image/heic': 'heic',
@@ -40,22 +44,32 @@ export const fileTypeMapping = {
 	'image/svg+xml': 'svg',
 	'image/tiff': 'tiff',
 	'image/webp': 'webp',
+	// Text
 	'text/*': 'text',
 	'text/csv': 'csv',
 	'text/plain': 'txt',
 	'text/rtf': 'rtf',
+	'text/xml': 'xml',
+	// Video
 	'video/*': 'Anv video file',
 	'video/mp4': 'mp4',
 	'video/mpeg': 'mpeg video',
 };
 
 // Accepted MIME types
-export type FileFormats = keyof typeof fileTypeMapping;
+export type AcceptedFileMimeTypes = keyof typeof fileTypeMapping;
 
-export const getAcceptedFilesSummary = (accept: FileFormats[] | undefined) => {
+export const getAcceptedFilesSummary = (
+	accept: AcceptedFileMimeTypes[] | undefined
+) => {
 	if (!accept?.length) return;
-	const symbols = accept.map((MIME) => fileTypeMapping[MIME]);
-	return symbols.join(', ');
+	return (
+		accept
+			.map((MIME) => fileTypeMapping[MIME])
+			// Filter out any duplicates
+			.filter((v, idx, arr) => arr.indexOf(v) === idx)
+			.join(', ')
+	);
 };
 
 export const getFileRejectionErrorMessage = (

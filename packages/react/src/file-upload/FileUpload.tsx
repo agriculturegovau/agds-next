@@ -11,7 +11,7 @@ import { visuallyHiddenStyles } from '../a11y';
 import { FileUploadRejectedFileList } from './FileUploadRejectedFileList';
 import {
 	getAcceptedFilesSummary,
-	FileFormats,
+	AcceptedFileMimeTypes,
 	getFileRejectionErrorMessage,
 	getErrorSummary,
 	FileWithStatus,
@@ -32,7 +32,7 @@ type BaseInputProps = {
 
 export type FileUploadProps = BaseInputProps & {
 	/** List of acceptable file types, e.g.`image/jpeg`, `application/pdf` */
-	accept?: FileFormats[];
+	accept?: AcceptedFileMimeTypes[];
 	/** Describes the purpose of the field. */
 	label: string;
 	/** If true, "(optional)" will never be appended to the label. */
