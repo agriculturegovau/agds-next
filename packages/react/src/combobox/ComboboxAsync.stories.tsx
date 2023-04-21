@@ -4,7 +4,7 @@ import { ComboboxAsync } from './ComboboxAsync';
 import { COUNTRY_OPTIONS } from './test-utils';
 
 const meta: Meta<typeof ComboboxAsync> = {
-	title: 'forms/ComboboxAsync/ComboboxAsync',
+	title: 'forms/Combobox/ComboboxAsync',
 	component: ComboboxAsync,
 	render: function ComboboxAsyncStory(props) {
 		const [value, onChange] = useState<Option | null>(null);
