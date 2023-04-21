@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { Fragment, useMemo } from 'react';
 import { Logo } from '../ag-branding';
 import { PageContent } from '../content';
-import { tokens } from '../core';
+import { tokens, useTernaryState } from '../core';
 import { LinkList } from '../link-list';
 import { Prose } from '../prose';
 import { Text } from '../text';
@@ -25,12 +25,17 @@ const meta: Meta<typeof AppLayout> = {
 	},
 	render: function AppLayoutRender(args) {
 		const year = useMemo(() => new Date().getFullYear(), []);
+		const [isMenuOpen, openMenu, closeMenu] = useTernaryState(args.isMenuOpen);
 		return (
 			<Fragment>
 				<SkipLinks
 					links={[{ href: '#main-content', label: 'Skip to main content' }]}
 				/>
-				<AppLayout {...args}>
+				<AppLayout
+					isMenuOpen={isMenuOpen}
+					openMenu={openMenu}
+					closeMenu={closeMenu}
+				>
 					<AppLayoutSidebar activePath="#dashboard" items={navigationItems} />
 					<AppLayoutContent>
 						<AppLayoutHeader
@@ -100,11 +105,13 @@ export default meta;
 type Story = StoryObj<typeof AppLayout>;
 
 export const Basic: Story = {
-	args: {},
+	args: {
+		isMenuOpen: true,
+	},
 };
 
 export const FocusMode: Story = {
 	args: {
-		focusMode: true,
+		isMenuOpen: false,
 	},
 };

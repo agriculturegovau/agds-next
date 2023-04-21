@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`AppLayout renders correctly 1`] = `
+exports[`AppLayout Open renders correctly 1`] = `
 <div>
   <aside
     aria-hidden="false"
