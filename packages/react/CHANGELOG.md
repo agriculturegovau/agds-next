@@ -1,5 +1,13 @@
 # @ag.ds-next/react
 
+## 1.4.1
+
+### Patch Changes
+
+- 04829a478f: - combobox: Fixed controlled usage bug where `value` and `onChange` props were not being used/called in `ComboboxMulti` and `ComboboxAsyncMulti`
+- 04829a478f: combobox: Updated disabled state in `ComboboxMulti` and `ComboboxAsyncMulti`
+- 9b48dc0264: file-upload: Added support for `application/xml` and `text/xml` mime types.
+
 ## 1.4.0
 
 ### Minor Changes
