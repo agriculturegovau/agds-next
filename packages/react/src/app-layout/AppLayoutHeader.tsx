@@ -1,40 +1,40 @@
-import { Fragment, PropsWithChildren } from 'react';
+import { Fragment } from 'react';
 import { Flex } from '../box';
 import { boxPalette, tokens } from '../core';
 import { MenuIcon } from '../icon';
 import { BaseButton } from '../button';
 import { HEADER_HEIGHT } from './utils';
 import { useAppLayoutContext } from './AppLayoutContext';
-import { AppLayoutHeaderTitles } from './AppLayoutHeaderTitles';
-import { AppLayoutHeaderAccountLink } from './AppLayoutHeaderAccountLink';
+import { AppLayoutHeaderBrand } from './AppLayoutHeaderBrand';
+import { AppLayoutHeaderAccountDetails } from './AppLayoutHeaderAccountDetails';
 import { AppLayoutHeaderMainNav } from './AppLayoutHeaderMainNav';
 
-export type AppLayoutHeaderProps = PropsWithChildren<{
-	/** Title of the application.*/
-	title: string;
-	/** Subtitle of the application. */
-	subTitle: string;
+export type AppLayoutHeaderProps = {
 	/** The logo to display. */
 	logo: JSX.Element;
 	/**  The href to link to, for example "/". */
 	href: string;
-	/** The currently authenticated user. */
-	user?: {
-		/** The name of the currently authenticated user. */
+	/** The heading should be set to the website or service title. */
+	heading: string;
+	/** Used to provide additional information to describe your website or service. */
+	subLine: string;
+	/** Details for the authenticated account. */
+	accountDetails: {
+		/** The name of the authenticated user. */
 		name: string;
-		/** The name of the organisation that the currently authenticated user belongs to. */
-		organisation?: string;
+		/** Displayed under the users name if needed e.g. to show the business name. */
+		secondaryText?: string;
 		/** The href to link to, for example "/account". */
 		href: string;
 	};
-}>;
+};
 
 export function AppLayoutHeader({
-	title,
-	subTitle,
-	logo,
+	heading,
 	href,
-	user,
+	logo,
+	subLine,
+	accountDetails,
 }: AppLayoutHeaderProps) {
 	return (
 		<Fragment>
@@ -61,26 +61,27 @@ export function AppLayoutHeader({
 				}}
 			>
 				<AppLayoutHeaderMenuTrigger />
-				<AppLayoutHeaderTitles
+				<AppLayoutHeaderBrand
+					heading={heading}
 					href={href}
-					title={title}
-					subTitle={subTitle}
 					logo={logo}
+					subLine={subLine}
 				/>
-				{user ? <AppLayoutHeaderAccountLink {...user} /> : null}
+				<AppLayoutHeaderAccountDetails {...accountDetails} />
 			</Flex>
-			<AppLayoutHeaderMainNav user={user} />
+			<AppLayoutHeaderMainNav accountDetails={accountDetails} />
 		</Fragment>
 	);
 }
 
 function AppLayoutHeaderMenuTrigger() {
-	const { isMenuOpen, showMenu, showMenuButtonRef } = useAppLayoutContext();
+	const { isMenuOpen, showMenu, desktopShowMenuButtonRef } =
+		useAppLayoutContext();
 	return (
 		<Flex
 			// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 			// @ts-ignore
-			ref={showMenuButtonRef}
+			ref={desktopShowMenuButtonRef}
 			as={BaseButton}
 			onClick={showMenu}
 			aria-label="Open menu"

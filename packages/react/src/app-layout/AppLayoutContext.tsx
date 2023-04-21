@@ -5,7 +5,8 @@ export type AppLayoutContextType = {
 	isMenuOpen: boolean;
 	showMenu: () => void;
 	hideMenu: () => void;
-	showMenuButtonRef: RefObject<HTMLButtonElement>;
+	mobileShowMenuButtonRef: RefObject<HTMLButtonElement>;
+	desktopShowMenuButtonRef: RefObject<HTMLButtonElement>;
 	hideMenuButtonRef: RefObject<HTMLButtonElement>;
 };
 

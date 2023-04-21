@@ -2,21 +2,16 @@ import { Avatar } from '../avatar';
 import { Flex } from '../box';
 import { useLinkComponent } from '../core';
 import { Text } from '../text';
+import type { AppLayoutHeaderProps } from './AppLayoutHeader';
 
-export type AppLayoutHeaderAccountLinkProps = {
-	/** The name of the currently authenticated user. */
-	name: string;
-	/** The name of the organisation that the currently authenticated user belongs to. */
-	organisation?: string;
-	/** The href to link to, for example "/account". */
-	href: string;
-};
+export type AppLayoutHeaderAccountDetailsProps =
+	AppLayoutHeaderProps['accountDetails'];
 
-export function AppLayoutHeaderAccountLink({
+export function AppLayoutHeaderAccountDetails({
 	name,
+	secondaryText,
 	href,
-	organisation,
-}: AppLayoutHeaderAccountLinkProps) {
+}: AppLayoutHeaderAccountDetailsProps) {
 	const Link = useLinkComponent();
 	return (
 		<Flex
@@ -41,9 +36,9 @@ export function AppLayoutHeaderAccountLink({
 				<Text color="action" fontWeight="bold" fontSize="xs">
 					{name}
 				</Text>
-				{organisation ? (
+				{secondaryText ? (
 					<Text color="muted" fontSize="xs">
-						{organisation}
+						{secondaryText}
 					</Text>
 				) : null}
 			</Flex>

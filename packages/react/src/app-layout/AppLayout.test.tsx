@@ -26,12 +26,12 @@ function renderAppLayout(props: AppLayoutProps) {
 				<AppLayoutHeader
 					href="#"
 					logo={<Logo />}
-					title="Export Service"
-					subTitle="Supporting Australian agricultural exports"
-					user={{
-						name: 'Toto Wolff',
-						organisation: 'Orange Meat Works',
+					heading="Export Service"
+					subLine="Supporting Australian agricultural exports"
+					accountDetails={{
 						href: '/account/preferences',
+						name: 'Toto Wolff',
+						secondaryText: 'Orange Meat Works',
 					}}
 				/>
 				<main id="main-content">

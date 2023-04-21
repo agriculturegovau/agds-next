@@ -1,17 +1,19 @@
 import { Flex, focusStyles } from '../box';
 import { boxPalette, fontGrid, mapSpacing, useLinkComponent } from '../core';
-import { AvatarIcon } from '../icon';
+import { AvatarIcon, MenuIcon } from '../icon';
 import { BaseButton } from '../button';
 import { useAppLayoutContext } from './AppLayoutContext';
 import { AppLayoutHeaderProps } from './AppLayoutHeader';
 import { BORDER_WIDTH_XXL } from './utils';
 
 export type AppLayoutHeaderMainNavProps = {
-	user: AppLayoutHeaderProps['user'];
+	accountDetails: AppLayoutHeaderProps['accountDetails'];
 };
 
-export function AppLayoutHeaderMainNav({ user }: AppLayoutHeaderMainNavProps) {
-	const { showMenu } = useAppLayoutContext();
+export function AppLayoutHeaderMainNav({
+	accountDetails,
+}: AppLayoutHeaderMainNavProps) {
+	const { showMenu, mobileShowMenuButtonRef } = useAppLayoutContext();
 	const Link = useLinkComponent();
 	return (
 		<Flex
@@ -32,46 +34,24 @@ export function AppLayoutHeaderMainNav({ user }: AppLayoutHeaderMainNavProps) {
 					color: boxPalette.foregroundAction,
 					textDecoration: 'none',
 					...fontGrid('xs', 'default'),
+					...focusStyles,
 					'&:hover': {
 						backgroundColor: boxPalette.backgroundShade,
 						'& span': {
 							textDecoration: 'underline',
 						},
 					},
-					...focusStyles,
 				},
 			}}
 		>
-			<BaseButton onClick={showMenu}>
+			<BaseButton onClick={showMenu} ref={mobileShowMenuButtonRef}>
 				<MenuIcon />
 				<span>Menu</span>
 			</BaseButton>
-			{user ? (
-				<Link href={user.href}>
-					<AvatarIcon color="action" aria-hidden />
-					<span>Account</span>
-				</Link>
-			) : null}
+			<Link href={accountDetails.href}>
+				<AvatarIcon color="action" aria-hidden />
+				<span>Account</span>
+			</Link>
 		</Flex>
-	);
-}
-
-// TODO This icon has been copied+pasted from `MainNav`
-// This should be a design system icon
-function MenuIcon() {
-	return (
-		<svg
-			width="24"
-			height="24"
-			viewBox="0 0 24 24"
-			fill="currentcolor"
-			xmlns="http://www.w3.org/2000/svg"
-			aria-hidden="true"
-			focusable="false"
-		>
-			<rect x="4" y="16" width="16" height="2" />
-			<rect x="4" y="11" width="16" height="2" />
-			<rect x="4" y="6" width="16" height="2" />
-		</svg>
 	);
 }

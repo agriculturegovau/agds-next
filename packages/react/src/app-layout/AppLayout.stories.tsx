@@ -40,13 +40,13 @@ const meta: Meta<typeof AppLayout> = {
 					<AppLayoutContent>
 						<AppLayoutHeader
 							href="/"
-							title="Export Service"
-							subTitle="Supporting Australian agricultural exports"
+							heading="Export Service"
+							subLine="Supporting Australian agricultural exports"
 							logo={<Logo />}
-							user={{
+							accountDetails={{
 								href: '#account',
 								name: 'Toto Wolff',
-								organisation: 'Orange Meat Works',
+								secondaryText: 'Orange Meat Works',
 							}}
 						/>
 						<main
