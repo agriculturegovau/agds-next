@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 const fs = require('fs');
 const path = require('path');
-const glob = require('glob');
+const { glob } = require('glob');
 const docgen = require('react-docgen-typescript');
 
 const repoRoot = path.join(process.cwd(), '..');
@@ -18,9 +18,11 @@ const tsConfigParser = docgen.withCustomConfig('./tsconfig.json', {
 	shouldRemoveUndefinedFromOptional: true,
 });
 
-glob(packages, {}, function (_, files) {
+(async () => {
+	const results = await glob(packages);
+
 	const data = Object.fromEntries(
-		tsConfigParser.parse(files).map(({ displayName, description, props }) => {
+		tsConfigParser.parse(results).map(({ displayName, description, props }) => {
 			return [
 				displayName,
 				{
@@ -42,8 +44,10 @@ glob(packages, {}, function (_, files) {
 			];
 		})
 	);
+
 	// Create the output folder if it doesn't exist
 	if (!fs.existsSync(outputFolder)) fs.mkdirSync(outputFolder);
+
 	// Write the output from react-docgen-typescript to the output file
 	fs.writeFileSync(outputFile, JSON.stringify(data));
-});
+})();
