@@ -58,5 +58,12 @@ module.exports = {
 				'import/no-anonymous-default-export': 'off',
 			},
 		},
+		// Scrips written in plain JS need to use require
+		{
+			files: ['*.js'],
+			rules: {
+				'@typescript-eslint/no-var-requires': 'off',
+			},
+		},
 	],
 };

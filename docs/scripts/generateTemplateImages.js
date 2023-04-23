@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
 const { normalize } = require('path');
 const { readdir, readFile } = require('fs/promises');
 const puppeteer = require('puppeteer');
