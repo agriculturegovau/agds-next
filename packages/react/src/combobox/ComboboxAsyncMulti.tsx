@@ -232,7 +232,7 @@ export function ComboboxAsyncMulti<Option extends DefaultComboboxOption>({
 	const onClear = useCallback(() => {
 		setSelectedItems([]);
 		inputRef.current?.focus();
-	}, []);
+	}, [setSelectedItems]);
 
 	return (
 		<ComboboxMultiBase
