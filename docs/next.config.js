@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
-
 const withPreconstruct = require('@preconstruct/next');
 
 // We use a github action for pull requests deploy preview
