@@ -31,12 +31,13 @@ import {
 	ChevronDownIcon,
 	ChevronUpIcon,
 } from '@ag.ds-next/react/icon';
+import { withBasePath } from '../lib/img';
 import * as designSystemComponents from './designSystemComponents';
 import { prismTheme } from './prism-theme';
 
 const PlaceholderImage = () => (
 	<img
-		src="/img/placeholder/600X260.png"
+		src={withBasePath('/img/placeholder/600X260.png')}
 		alt="Grey placeholder image"
 		css={{ width: '100%' }}
 	/>

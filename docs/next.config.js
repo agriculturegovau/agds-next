@@ -9,6 +9,9 @@ const basePath = process.env.BASE_PATH ?? undefined;
 const nextConfig = {
 	reactStrictMode: true,
 	basePath,
+	env: {
+		NEXT_PUBLIC_BASE_PATH: basePath,
+	},
 };
 
 module.exports = withPreconstruct(nextConfig);

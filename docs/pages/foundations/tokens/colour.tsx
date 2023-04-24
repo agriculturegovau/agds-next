@@ -9,6 +9,7 @@ import { ColorTable } from '../../../components/TokenColorTable';
 import { TokenLayout } from '../../../components/TokenLayout';
 import { LinkComponent } from '../../../components/LinkComponent';
 import { getTokensBreadcrumbs, TOKEN_PAGES } from '../../../content/tokens';
+import { withBasePath } from '../../../lib/img';
 
 export default function TokensColorPage() {
 	const [isDarkMode, setDarkMode] = useState(false);
@@ -95,7 +96,7 @@ export default function TokensColorPage() {
 
 						<Box paddingTop={[1, 0]}>
 							<img
-								src="/img/guides/home.webp"
+								src={withBasePath('/img/guides/home.webp')}
 								alt="Screenshot of a successful usage of palettes"
 							/>
 						</Box>

@@ -14,6 +14,7 @@ import {
 } from '../../lib/mdx/patterns';
 import { DocumentTitle } from '../../components/DocumentTitle';
 import { CategoryPageTemplate } from '../../components/CategoryPageTemplate';
+import { withBasePath } from '../../lib/img';
 
 type StaticProps = Awaited<ReturnType<typeof getStaticProps>>['props'];
 
@@ -74,7 +75,7 @@ function PatternCard({
 				</CardInner>
 				{group === 'templates' ? (
 					<img
-						src={`/img/templates/${slug}.webp`}
+						src={withBasePath(`/img/templates/${slug}.webp`)}
 						role="presentation"
 						alt=""
 						height="auto"
