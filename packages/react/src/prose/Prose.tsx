@@ -76,8 +76,15 @@ export const proseClass = css({
 		backgroundColor: boxPalette.foregroundAction,
 	},
 
+	/**
+	 * Image styling
+	 */
 	[`img${notSelector}`]: {
 		maxWidth: '100%',
+	},
+
+	[`* + img${notSelector}`]: {
+		marginTop: mapSpacing(1.5),
 	},
 
 	/**
