@@ -54,10 +54,12 @@ function PatternCard({
 	title,
 	slug,
 	description,
+	group,
 }: {
 	title: string;
 	slug: string;
 	description: string;
+	group: string;
 }) {
 	return (
 		<Card as="li" clickable shadow>
@@ -70,17 +72,19 @@ function PatternCard({
 						<Text>{description}</Text>
 					</Stack>
 				</CardInner>
-				<img
-					src={`/img/templates/${slug}.webp`}
-					role="presentation"
-					alt=""
-					height="auto"
-					width="100%"
-					css={mq({
-						borderBottom: `1px solid ${boxPalette.borderMuted}`,
-						objectFit: 'cover',
-					})}
-				/>
+				{group === 'templates' ? (
+					<img
+						src={`/img/templates/${slug}.webp`}
+						role="presentation"
+						alt=""
+						height="auto"
+						width="100%"
+						css={mq({
+							borderBottom: `1px solid ${boxPalette.borderMuted}`,
+							objectFit: 'cover',
+						})}
+					/>
+				) : null}
 			</Flex>
 		</Card>
 	);
