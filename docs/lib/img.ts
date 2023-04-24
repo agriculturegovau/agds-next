@@ -4,5 +4,8 @@
  * See next.config.js
  */
 export function withBasePath(src: string | undefined) {
+	if (!src) return;
+	// Don't replace external images
+	if (/^(https?:\/\/|\/\/)/i.test(src)) return src;
 	return [process.env.NEXT_PUBLIC_BASE_PATH, src].filter(Boolean).join('');
 }
