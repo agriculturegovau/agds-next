@@ -35,7 +35,7 @@ export default function PatternOverviewPage({
 					{pattern.group === 'templates' ? (
 						<Box border borderColor="muted" css={{ img: { display: 'block' } }}>
 							<img
-								src={withBasePath(`//img/templates/${pattern.slug}.webp`)}
+								src={withBasePath(`/img/templates/${pattern.slug}.webp`)}
 								role="presentation"
 								alt=""
 							/>
