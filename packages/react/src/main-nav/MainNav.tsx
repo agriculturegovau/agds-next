@@ -4,10 +4,15 @@ import { NavList, NavListItem } from './NavList';
 import { findBestMatch, MainNavBackground } from './utils';
 
 export type MainNavProps = PropsWithChildren<{
+	/** Used for highlighting the active navigation item. */
 	activePath?: string;
+	/** The background of the component. */
 	background?: MainNavBackground;
+	/** Defines an identifier (ID) which must be unique. */
 	id?: string;
+	/** List of navigation items to display. */
 	items?: NavListItem[];
+	/** Optional list of navigation items to display on the right of the component. */
 	secondaryItems?: NavListItem[];
 }>;
 

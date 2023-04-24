@@ -27,30 +27,23 @@ exports[`MainNav renders correctly 1`] = `
           >
             <svg
               aria-hidden="true"
-              fill="currentcolor"
+              class="css-9s3cfn-Icon"
+              clip-rule="evenodd"
               focusable="false"
               height="24"
+              role="img"
               viewBox="0 0 24 24"
               width="24"
               xmlns="http://www.w3.org/2000/svg"
             >
-              <rect
-                height="2"
-                width="16"
-                x="4"
-                y="16"
+              <path
+                d="M3 6H21"
               />
-              <rect
-                height="2"
-                width="16"
-                x="4"
-                y="11"
+              <path
+                d="M3 12H21"
               />
-              <rect
-                height="2"
-                width="16"
-                x="4"
-                y="6"
+              <path
+                d="M3 18H21"
               />
             </svg>
             Menu
@@ -80,26 +73,20 @@ exports[`MainNav renders correctly 1`] = `
               >
                 <svg
                   aria-hidden="true"
-                  fill="currentcolor"
+                  class="css-9s3cfn-Icon"
+                  clip-rule="evenodd"
                   focusable="false"
                   height="24"
+                  role="img"
                   viewBox="0 0 24 24"
                   width="24"
                   xmlns="http://www.w3.org/2000/svg"
                 >
-                  <rect
-                    height="2"
-                    transform="rotate(-45 6 17.3137)"
-                    width="16"
-                    x="6"
-                    y="17.3137"
+                  <path
+                    d="M5 19L19 5"
                   />
-                  <rect
-                    height="2"
-                    transform="rotate(45 7.41406 6)"
-                    width="16"
-                    x="7.41406"
-                    y="6"
+                  <path
+                    d="M19 19L5 5"
                   />
                 </svg>
                 Close
