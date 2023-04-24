@@ -9,6 +9,7 @@ import {
 	getPatternSlugs,
 	Pattern,
 } from '../../../lib/mdx/patterns';
+import { withBasePath } from '../../../lib/img';
 import { PatternLayout } from '../../../components/PatternLayout';
 import { mdxComponents } from '../../../components/mdxComponents';
 import { DocumentTitle } from '../../../components/DocumentTitle';
@@ -34,7 +35,7 @@ export default function PatternOverviewPage({
 					{pattern.group === 'templates' ? (
 						<Box border borderColor="muted" css={{ img: { display: 'block' } }}>
 							<img
-								src={`/img/templates/${pattern.slug}.webp`}
+								src={withBasePath(`//img/templates/${pattern.slug}.webp`)}
 								role="presentation"
 								alt=""
 							/>

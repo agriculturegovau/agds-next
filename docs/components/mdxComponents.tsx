@@ -4,6 +4,7 @@ import {
 	isValidElement,
 	HTMLAttributes,
 	AnchorHTMLAttributes,
+	ImgHTMLAttributes,
 } from 'react';
 import type { MDXRemoteProps } from 'next-mdx-remote';
 import Link from 'next/link';
@@ -21,6 +22,7 @@ import {
 	TableWrapper,
 } from '@ag.ds-next/react/table';
 import { slugify } from '../lib/slugify';
+import { withBasePath } from '../lib/img';
 import generatedComponentPropsData from '../__generated__/componentProps.json';
 import { Code } from './Code';
 import { ComponentPropsTable } from './ComponentPropsTable';
@@ -42,6 +44,9 @@ export const mdxComponents: MDXRemoteProps['components'] = {
 			</Fragment>
 		);
 	},
+	img: ({ alt, src, ...props }: ImgHTMLAttributes<HTMLImageElement>) => (
+		<img alt={alt} src={withBasePath(src)} {...props} />
+	),
 	ButtonLink,
 	FigmaEmbed: ({ src }: { src: string }) => (
 		<Box

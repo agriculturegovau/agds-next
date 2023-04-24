@@ -13,6 +13,7 @@ import { ButtonLink } from '@ag.ds-next/react/button';
 import { AppLayout } from '../components/AppLayout';
 import { PictogramCard } from '../components/PictogramCard';
 import { DocumentTitle } from '../components/DocumentTitle';
+import { withBasePath } from '../lib/img';
 
 const description =
 	'AgDS is a suite of tools and guidelines to help designers and developers build the steel threads of the Export Service with efficiency and consistency.';
@@ -23,7 +24,13 @@ export default function Homepage() {
 			<DocumentTitle description={description} />
 			<AppLayout>
 				<HeroBanner
-					image={<img src="/img/agds-hero.webp" role="presentation" alt="" />}
+					image={
+						<img
+							src={withBasePath('/img/agds-hero.webp')}
+							role="presentation"
+							alt=""
+						/>
+					}
 				>
 					<HeroBannerTitleContainer>
 						<HeroBannerTitle>
