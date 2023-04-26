@@ -1,10 +1,12 @@
 import { Meta, StoryObj } from '@storybook/react';
 import { TextLinkExternal as TextLinkExternalComponent } from './TextLinkExternal';
 
-export default {
+const meta: Meta<typeof TextLinkExternalComponent> = {
 	title: 'navigation/TextLink',
 	component: TextLinkExternalComponent,
-} as Meta<typeof TextLinkExternalComponent>;
+};
+
+export default meta;
 
 export const TextLinkExternal: StoryObj<typeof TextLinkExternalComponent> = {
 	name: 'TextLinkExternal',

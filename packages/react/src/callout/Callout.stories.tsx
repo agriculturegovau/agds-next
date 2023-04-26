@@ -2,13 +2,13 @@ import { StoryObj, Meta } from '@storybook/react';
 import { Box } from '../box';
 import { Text } from '../text';
 import { Callout } from './Callout';
-import { CalloutTitle } from './CalloutTitle';
 
-export default {
+const meta: Meta<typeof Callout> = {
 	title: 'content/Callout',
 	component: Callout,
-	subcomponents: { CalloutTitle },
-} as Meta<typeof Callout>;
+};
+
+export default meta;
 
 export const Basic: StoryObj<typeof Callout> = {
 	args: {

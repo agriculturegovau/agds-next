@@ -5,7 +5,6 @@ import { Button, ButtonLink } from './Button';
 const meta: Meta<typeof Button> = {
 	title: 'forms/Button',
 	component: Button,
-	subcomponents: { ButtonLink },
 	argTypes: {
 		iconAfter: {
 			options: Object.keys(allIcons), // An array of serializable values

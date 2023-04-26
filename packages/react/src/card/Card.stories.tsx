@@ -20,7 +20,6 @@ import { CardFooter } from './CardFooter';
 const meta: Meta<typeof Card> = {
 	title: 'layout/Card',
 	component: Card,
-	subcomponents: { CardInner, CardLink, CardHeader, CardFooter },
 	args: {
 		background: 'body',
 	},

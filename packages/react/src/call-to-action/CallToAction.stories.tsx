@@ -1,11 +1,12 @@
 import { Meta, StoryObj } from '@storybook/react';
 import { CallToActionLink, CallToActionButton } from './index';
 
-export default {
+const meta: Meta<typeof CallToActionLink> = {
 	title: 'navigation/CallToAction',
 	component: CallToActionLink,
-	subcomponents: { CallToActionButton },
-} as Meta<typeof CallToActionLink>;
+};
+
+export default meta;
 
 export const Basic: StoryObj<typeof CallToActionLink> = {
 	args: {
