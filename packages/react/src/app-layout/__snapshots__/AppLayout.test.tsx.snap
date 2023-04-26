@@ -348,6 +348,7 @@ exports[`AppLayout Open renders correctly 1`] = `
   >
     <header
       class="css-1cy2vru-dark-light-boxStyles-AppLayoutHeader"
+      id="header"
     >
       <button
         aria-label="Open menu"

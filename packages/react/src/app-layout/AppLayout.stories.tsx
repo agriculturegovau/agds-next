@@ -29,7 +29,10 @@ const meta: Meta<typeof AppLayout> = {
 		return (
 			<Fragment>
 				<SkipLinks
-					links={[{ href: '#main-content', label: 'Skip to main content' }]}
+					links={[
+						{ href: '#main-content', label: 'Skip to main content' },
+						{ href: '#header', label: 'Skip to header' },
+					]}
 				/>
 				<AppLayout
 					isMenuOpen={isMenuOpen}
@@ -39,6 +42,7 @@ const meta: Meta<typeof AppLayout> = {
 					<AppLayoutSidebar activePath="#dashboard" items={navigationItems} />
 					<AppLayoutContent>
 						<AppLayoutHeader
+							id="header"
 							href="/"
 							heading="Export Service"
 							subLine="Supporting Australian agricultural exports"
