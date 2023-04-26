@@ -48,14 +48,19 @@ function AppLayoutSideBarDesktop({ children }: PropsWithChildren<{}>) {
 
 	const prefersReducedMotion = usePrefersReducedMotion();
 	const animatedStyles = useSpring({
-		transform: isMenuOpen ? 'translateX(0%)' : 'translateX(-100%)',
-		immediate: prefersReducedMotion,
+		to: async (next) => {
+			await next({ display: 'flex' });
+			await next({
+				translateX: isMenuOpen ? '0%' : '-100%',
+				immediate: prefersReducedMotion,
+			});
+			await next({ display: isMenuOpen ? 'flex' : 'none' });
+		},
 	});
 
 	return (
 		<AnimatedStack
 			as="aside"
-			aria-hidden={!isMenuOpen}
 			gap={1}
 			dark
 			background="bodyAlt"
@@ -68,6 +73,10 @@ function AppLayoutSideBarDesktop({ children }: PropsWithChildren<{}>) {
 				borderLeft: `${BORDER_WIDTH_XXL}px solid ${boxPalette.accent}`,
 				overflowY: 'auto',
 				zIndex: 1,
+				// Prevents the sidebar from flashing when closed by default
+				...(!isMenuOpen && {
+					display: 'none',
+				}),
 				// This component should never be visible on smaller devices
 				[tokens.mediaQuery.max.md]: {
 					display: 'none',
@@ -131,7 +140,7 @@ function AppLayoutSideBarMobile({ children }: PropsWithChildren<{}>) {
 
 	const prefersReducedMotion = usePrefersReducedMotion();
 	const animatedStyles = useSpring({
-		transform: isMenuOpen ? 'translateX(0%)' : 'translateX(-100%)',
+		translateX: isMenuOpen ? '0%' : '-100%',
 		immediate: prefersReducedMotion,
 	});
 
