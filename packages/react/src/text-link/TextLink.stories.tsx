@@ -7,6 +7,6 @@ export default {
 } as Meta<typeof TextLinkComponent>;
 
 export const TextLink: StoryObj<typeof TextLinkComponent> = {
-	storyName: 'TextLink',
+	name: 'TextLink',
 	args: { children: 'Internal link', href: '#' },
 };

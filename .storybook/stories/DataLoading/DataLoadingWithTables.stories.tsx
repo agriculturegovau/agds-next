@@ -10,7 +10,7 @@ const meta: Meta<typeof DataLoadingWithTables> = {
 export default meta;
 
 export const Tables: StoryObj<typeof DataLoadingWithTables> = {
-	storyName: 'with tables',
+	name: 'with tables',
 	render: () => (
 		<PageContent>
 			<DataLoadingWithTables />

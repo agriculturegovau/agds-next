@@ -25,7 +25,7 @@ export const OnBodyAlt: StoryObj<typeof Callout> = {
 			</Callout>
 		</Box>
 	),
-	storyName: 'On bodyAlt background',
+	name: 'On bodyAlt background',
 	args: {
 		title: 'Callout heading',
 		background: 'shadeAlt',

@@ -27,14 +27,14 @@ export default meta;
 type Story = StoryObj<typeof Header>;
 
 export const BodyBackground: Story = {
-	storyName: 'Body background',
+	name: 'Body background',
 	args: {
 		background: 'body',
 	},
 };
 
 export const BodyAltBackground: Story = {
-	storyName: 'BodyAlt background',
+	name: 'BodyAlt background',
 	args: {
 		background: 'bodyAlt',
 	},
@@ -86,7 +86,7 @@ export const Search: Story = {
 			</SearchBox>
 		),
 	},
-	storyName: 'With SearchBox',
+	name: 'With SearchBox',
 };
 
 const TemplateWithMainNav: StoryFn<typeof Header> = (args) => {
@@ -121,7 +121,7 @@ const TemplateWithMainNav: StoryFn<typeof Header> = (args) => {
 
 export const WithMainNav: Story = {
 	render: TemplateWithMainNav,
-	storyName: 'With MainNav',
+	name: 'With MainNav',
 	args: {
 		background: 'bodyAlt',
 	},
@@ -129,7 +129,7 @@ export const WithMainNav: Story = {
 
 export const WithMainNavAndSearch: Story = {
 	render: TemplateWithMainNav,
-	storyName: 'With MainNav and SearchBox',
+	name: 'With MainNav and SearchBox',
 	args: {
 		rightContent: (
 			<SearchBox onSubmit={console.log}>

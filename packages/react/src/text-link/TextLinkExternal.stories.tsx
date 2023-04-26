@@ -7,7 +7,7 @@ export default {
 } as Meta<typeof TextLinkExternalComponent>;
 
 export const TextLinkExternal: StoryObj<typeof TextLinkExternalComponent> = {
-	storyName: 'TextLinkExternal',
+	name: 'TextLinkExternal',
 	args: {
 		children: 'External link',
 		href: 'https://design-system.agriculture.gov.au',

@@ -38,7 +38,7 @@ export const OnBodyAlt: Story = {
 	args: {
 		background: 'bodyAlt',
 	},
-	storyName: 'On bodyAlt background',
+	name: 'On bodyAlt background',
 	render: (args) => (
 		<Box padding={2} background="bodyAlt">
 			<SideNav {...args} />

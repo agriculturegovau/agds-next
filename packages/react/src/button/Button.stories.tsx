@@ -54,7 +54,7 @@ export const Tertiary: Story = {
 };
 
 export const TextStory: Story = {
-	storyName: 'Text',
+	name: 'Text',
 	args: {
 		children: 'Text button',
 		variant: 'text',
@@ -98,7 +98,7 @@ export const WithIcon: Story = {
 
 export const ButtonLinkStory: StoryObj<typeof ButtonLink> = {
 	render: (args) => <ButtonLink {...args} />,
-	storyName: 'ButtonLink',
+	name: 'ButtonLink',
 	args: {
 		children: 'Button Link',
 		block: false,
