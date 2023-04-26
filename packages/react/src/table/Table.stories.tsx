@@ -1,4 +1,4 @@
-import { StoryFn, Meta, StoryObj } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react';
 import { Text } from '../text';
 import { Stack } from '../box';
 import { H1 } from '../heading';
@@ -10,53 +10,53 @@ import { TableHeader } from './TableHeader';
 import { TableHead } from './TableHead';
 import { TableWrapper } from './TableWrapper';
 
-const Template: StoryFn<typeof Table> = (args) => (
-	<TableWrapper>
-		<Table {...args}>
-			<TableCaption>
-				Population of Australian states and territories, December 2015
-			</TableCaption>
-			<TableHead>
-				<tr>
-					<TableHeader scope="col">Location</TableHeader>
-					<TableHeader textAlign="right" scope="col">
-						Population
-					</TableHeader>
-					<TableHeader textAlign="right" scope="col">
-						Change over previous year %
-					</TableHeader>
-					<TableHeader textAlign="right" scope="col">
-						Change over previous decade %
-					</TableHeader>
-				</tr>
-			</TableHead>
-			<TableBody>
-				{exampleData.map(
-					({ location, population, growthYear, growthDecade }, index) => (
-						<tr key={index}>
-							<TableCell as="th" scope="row">
-								{location}
-							</TableCell>
-							<TableCell textAlign="right">
-								{numberFormatter.format(population)}
-							</TableCell>
-							<TableCell textAlign="right">{growthYear}%</TableCell>
-							<TableCell textAlign="right">{growthDecade}%</TableCell>
-						</tr>
-					)
-				)}
-			</TableBody>
-		</Table>
-	</TableWrapper>
-);
-
 const meta: Meta<typeof Table> = {
 	title: 'content/Table',
 	component: Table,
-	render: Template,
+	render: (props) => (
+		<TableWrapper>
+			<Table {...props}>
+				<TableCaption>
+					Population of Australian states and territories, December 2015
+				</TableCaption>
+				<TableHead>
+					<tr>
+						<TableHeader scope="col">Location</TableHeader>
+						<TableHeader textAlign="right" scope="col">
+							Population
+						</TableHeader>
+						<TableHeader textAlign="right" scope="col">
+							Change over previous year %
+						</TableHeader>
+						<TableHeader textAlign="right" scope="col">
+							Change over previous decade %
+						</TableHeader>
+					</tr>
+				</TableHead>
+				<TableBody>
+					{exampleData.map(
+						({ location, population, growthYear, growthDecade }, index) => (
+							<tr key={index}>
+								<TableCell as="th" scope="row">
+									{location}
+								</TableCell>
+								<TableCell textAlign="right">
+									{numberFormatter.format(population)}
+								</TableCell>
+								<TableCell textAlign="right">{growthYear}%</TableCell>
+								<TableCell textAlign="right">{growthDecade}%</TableCell>
+							</tr>
+						)
+					)}
+				</TableBody>
+			</Table>
+		</TableWrapper>
+	),
 };
 
 export default meta;
+
+type Story = StoryObj<typeof Table>;
 
 const exampleData = [
 	{
@@ -110,8 +110,6 @@ const exampleData = [
 ];
 
 const numberFormatter = new Intl.NumberFormat('en-AU');
-
-type Story = StoryObj<typeof Table>;
 
 export const Basic: Story = {};
 

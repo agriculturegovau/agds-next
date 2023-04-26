@@ -1,23 +1,25 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react';
 import { SkeletonBox } from './SkeletonBox';
 
-export default {
+const meta: Meta<typeof SkeletonBox> = {
 	title: 'content/Skeleton/SkeletonBox',
 	component: SkeletonBox,
-} as ComponentMeta<typeof SkeletonBox>;
-
-export const Square: ComponentStory<typeof SkeletonBox> = (args) => (
-	<SkeletonBox {...args} />
-);
-Square.args = {
-	width: '200px',
-	height: '200px',
 };
 
-export const Rectangle: ComponentStory<typeof SkeletonBox> = (args) => (
-	<SkeletonBox {...args} />
-);
-Rectangle.args = {
-	width: '100%',
-	height: '200px',
+export default meta;
+
+type Story = StoryObj<typeof SkeletonBox>;
+
+export const Square: Story = {
+	args: {
+		width: '200px',
+		height: '200px',
+	},
+};
+
+export const Rectangle: Story = {
+	args: {
+		width: '100%',
+		height: '200px',
+	},
 };

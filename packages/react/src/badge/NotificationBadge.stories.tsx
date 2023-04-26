@@ -10,10 +10,17 @@ export default meta;
 
 type Story = StoryObj<typeof NotificationBadge>;
 
-export const Basic: Story = {
+export const Neutral: Story = {
 	args: {
 		value: 48,
 		tone: 'neutral',
+	},
+};
+
+export const Action: Story = {
+	args: {
+		value: 48,
+		tone: 'action',
 	},
 };
 

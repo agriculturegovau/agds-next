@@ -1,10 +1,15 @@
 import { Meta, StoryObj } from '@storybook/react';
+import { useState } from 'react';
 import { COUNTRY_OPTIONS } from '../combobox/test-utils';
 import { Autocomplete } from './Autocomplete';
 
 const meta: Meta<typeof Autocomplete> = {
 	title: 'forms/Autocomplete',
 	component: Autocomplete,
+	render: function ComboboxStory(props) {
+		const [value, onChange] = useState<Option | null>(null);
+		return <Autocomplete {...props} value={value} onChange={onChange} />;
+	},
 	args: {
 		label: 'Find your country',
 		hint: 'Start typing to see results',
@@ -18,6 +23,8 @@ const meta: Meta<typeof Autocomplete> = {
 export default meta;
 
 type Story = StoryObj<typeof Autocomplete>;
+
+type Option = (typeof COUNTRY_OPTIONS)[number];
 
 export const Basic: Story = {};
 
@@ -54,7 +61,6 @@ export const Block: Story = {
 
 export const ExternalAPI: Story = {
 	args: {
-		hideOptionalLabel: true,
 		label: 'Pick a Star Wars character',
 		loadOptions: async function loadOptions(inputValue: string) {
 			const response = await fetch(

@@ -8,7 +8,9 @@ const meta: Meta<typeof TextLinkComponent> = {
 
 export default meta;
 
-export const TextLink: StoryObj<typeof TextLinkComponent> = {
+type Story = StoryObj<typeof TextLinkComponent>;
+
+export const TextLink: Story = {
 	name: 'TextLink',
 	args: { children: 'Internal link', href: '#' },
 };

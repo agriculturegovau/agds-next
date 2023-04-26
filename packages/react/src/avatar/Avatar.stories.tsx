@@ -38,7 +38,7 @@ const SIZE_MAP = {
 const sizes = Object.keys(SIZE_MAP) as (keyof typeof SIZE_MAP)[];
 
 export const AllSizes: Story = {
-	render: ({ size, ...args }) => {
+	render: (args) => {
 		return (
 			<Flex alignItems="center" gap={1}>
 				{sizes.map((size) => (

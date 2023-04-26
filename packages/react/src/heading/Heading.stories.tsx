@@ -9,7 +9,9 @@ const meta: Meta<typeof Heading> = {
 
 export default meta;
 
-export const Basic: StoryObj<typeof Heading> = {
+type Story = StoryObj<typeof Heading>;
+
+export const Basic: Story = {
 	args: {
 		type: 'h1',
 		as: 'h1',

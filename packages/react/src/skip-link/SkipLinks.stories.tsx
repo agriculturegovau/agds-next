@@ -1,5 +1,5 @@
 import { Fragment } from 'react';
-import { Meta, StoryFn } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react';
 import { Prose } from '../prose';
 import { Stack } from '../box';
 import { SkipLinkItem } from './SkipLinkItem';
@@ -13,27 +13,34 @@ const meta: Meta<typeof SkipLinks> = {
 
 export default meta;
 
-export const Basic: StoryFn<typeof SkipLinks> = () => (
-	<Fragment>
-		<SkipLinks
-			links={[
-				{ href: '#main-content', label: 'Skip to main content' },
-				{ href: '#main-nav', label: 'Skip to main navigation' },
-			]}
-		/>
-		<ExampleContent />
-	</Fragment>
-);
+type Story = StoryObj<typeof SkipLinks>;
 
-export const Modular: StoryFn<typeof SkipLinks> = () => (
-	<Fragment>
-		<SkipLinkContainer aria-label="skip links">
-			<SkipLinkItem href="#main-content">Skip to main content</SkipLinkItem>
-			<SkipLinkItem href="#main-nav">Skip to main navigation</SkipLinkItem>
-		</SkipLinkContainer>
-		<ExampleContent />
-	</Fragment>
-);
+export const Basic: Story = {
+	args: {
+		links: [
+			{ href: '#main-content', label: 'Skip to main content' },
+			{ href: '#main-nav', label: 'Skip to main navigation' },
+		],
+	},
+	render: (props) => (
+		<Fragment>
+			<SkipLinks {...props} />
+			<ExampleContent />
+		</Fragment>
+	),
+};
+
+export const Modular: Story = {
+	render: () => (
+		<Fragment>
+			<SkipLinkContainer aria-label="skip links">
+				<SkipLinkItem href="#main-content">Skip to main content</SkipLinkItem>
+				<SkipLinkItem href="#main-nav">Skip to main navigation</SkipLinkItem>
+			</SkipLinkContainer>
+			<ExampleContent />
+		</Fragment>
+	),
+};
 
 const ExampleContent = () => (
 	<Prose>

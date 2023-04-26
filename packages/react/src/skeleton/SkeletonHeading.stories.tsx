@@ -1,20 +1,23 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react';
 import { Stack } from '../box';
 import { Columns, Column } from '../columns';
 import { Heading } from '../heading';
 import { SkeletonHeading } from './SkeletonHeading';
 
-export default {
+const meta: Meta<typeof SkeletonHeading> = {
 	title: 'content/Skeleton/SkeletonHeading',
 	component: SkeletonHeading,
-} as ComponentMeta<typeof SkeletonHeading>;
-
-export const Basic: ComponentStory<typeof SkeletonHeading> = (args) => {
-	return <SkeletonHeading {...args} />;
 };
-Basic.args = {
-	type: 'h1',
-	width: '100%',
+
+export default meta;
+
+type Story = StoryObj<typeof SkeletonHeading>;
+
+export const Basic: Story = {
+	args: {
+		type: 'h1',
+		width: '100%',
+	},
 };
 
 export const Sizes = () => {

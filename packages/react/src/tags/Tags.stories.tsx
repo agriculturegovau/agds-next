@@ -41,7 +41,7 @@ export const Removable: Story = {
 	},
 };
 
-export const Modular: StoryFn<typeof Tags> = () => (
+export const Modular = () => (
 	<TagsContainer>
 		<Text as="h2" fontWeight="bold">
 			Tags:
