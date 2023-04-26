@@ -18,6 +18,8 @@ export { ChevronUpIcon } from './icons/ChevronUpIcon';
 export { ChevronDownIcon } from './icons/ChevronDownIcon';
 export { ChevronLeftIcon } from './icons/ChevronLeftIcon';
 export { ChevronRightIcon } from './icons/ChevronRightIcon';
+export { ChevronsLeftIcon } from './icons/ChevronsLeftIcon';
+export { ChevronsRightIcon } from './icons/ChevronsRightIcon';
 export { ChevronsUpDownIcon } from './icons/ChevronsUpDownIcon';
 export { CloseIcon } from './icons/CloseIcon';
 export { CopyIcon } from './icons/CopyIcon';

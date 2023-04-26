@@ -84,6 +84,8 @@ export {
 	ChevronLeftIcon,
 	ChevronRightIcon,
 	ChevronUpIcon,
+	ChevronsLeftIcon,
+	ChevronsRightIcon,
 	ChevronsUpDownIcon,
 	CloseIcon,
 	CopyIcon,
