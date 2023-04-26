@@ -80,7 +80,7 @@ export const WithoutSecondaryText: Story = {
 		},
 	},
 	render: function Render(props) {
-		const [isMenuOpen, openMenu, closeMenu] = useTernaryState(true);
+		const [isMenuOpen, openMenu, closeMenu] = useTernaryState(false);
 		return (
 			<AppLayout
 				isMenuOpen={isMenuOpen}

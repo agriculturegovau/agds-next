@@ -16,7 +16,7 @@ export function AppLayoutContent({
 
 	const prefersReducedMotion = usePrefersReducedMotion();
 	const animatedStyles = useSpring({
-		paddingLeft: isMenuOpen ? tokens.maxWidth.mobileMenu : '0rem',
+		marginLeft: isMenuOpen ? tokens.maxWidth.mobileMenu : '0rem',
 		immediate: prefersReducedMotion,
 	});
 
@@ -28,7 +28,7 @@ export function AppLayoutContent({
 				minHeight: '100vh',
 				// Never animated on mobile
 				[tokens.mediaQuery.max.md]: {
-					paddingLeft: '0 !important',
+					marginLeft: '0 !important',
 				},
 			}}
 			style={animatedStyles}
