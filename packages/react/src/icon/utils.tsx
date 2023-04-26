@@ -11,6 +11,8 @@ import { ChevronDownIcon } from './icons/ChevronDownIcon';
 import { ChevronLeftIcon } from './icons/ChevronLeftIcon';
 import { ChevronRightIcon } from './icons/ChevronRightIcon';
 import { ChevronUpIcon } from './icons/ChevronUpIcon';
+import { ChevronsLeftIcon } from './icons/ChevronsLeftIcon';
+import { ChevronsRightIcon } from './icons/ChevronsRightIcon';
 import { ChevronsUpDownIcon } from './icons/ChevronsUpDownIcon';
 import { CloseIcon } from './icons/CloseIcon';
 import { CopyIcon } from './icons/CopyIcon';
@@ -35,6 +37,7 @@ import { ProgressBlockedIcon } from './icons/ProgressBlockedIcon';
 import { ProgressDoingIcon } from './icons/ProgressDoingIcon';
 import { ProgressTodoIcon } from './icons/ProgressTodoIcon';
 import { SearchIcon } from './icons/SearchIcon';
+import { SettingsIcon } from './icons/SettingsIcon';
 import { SuccessFilledIcon } from './icons/SuccessFilledIcon';
 import { SuccessIcon } from './icons/SuccessIcon';
 import { ThumbsDownIcon } from './icons/ThumbsDownIcon';
@@ -59,6 +62,8 @@ export const allIcons = {
 	ChevronLeftIcon,
 	ChevronRightIcon,
 	ChevronUpIcon,
+	ChevronsLeftIcon,
+	ChevronsRightIcon,
 	ChevronsUpDownIcon,
 	CloseIcon,
 	CopyIcon,
@@ -83,6 +88,7 @@ export const allIcons = {
 	ProgressDoingIcon,
 	ProgressTodoIcon,
 	SearchIcon,
+	SettingsIcon,
 	SuccessFilledIcon,
 	SuccessIcon,
 	ThumbsDownIcon,
