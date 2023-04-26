@@ -1,5 +1,6 @@
 import { Fragment } from 'react';
 import { Flex } from '../box';
+import { NotificationBadge } from '../badge';
 import { boxPalette, tokens } from '../core';
 import { MenuIcon } from '../icon';
 import { BaseButton } from '../button';
@@ -20,6 +21,8 @@ export type AppLayoutHeaderProps = {
 	heading: string;
 	/** Used to provide additional information to describe your website or service. */
 	subLine: string;
+	/** Used to display the number of unread messages in "Open menu" button. */
+	unreadMessageCount?: number;
 	/** Details for the authenticated account. */
 	accountDetails: {
 		/** The name of the authenticated user. */
@@ -38,6 +41,7 @@ export function AppLayoutHeader({
 	logo,
 	subLine,
 	accountDetails,
+	unreadMessageCount,
 }: AppLayoutHeaderProps) {
 	return (
 		<Fragment>
@@ -64,7 +68,7 @@ export function AppLayoutHeader({
 					},
 				}}
 			>
-				<AppLayoutHeaderMenuTrigger />
+				<AppLayoutHeaderMenuTrigger unreadMessageCount={unreadMessageCount} />
 				<AppLayoutHeaderBrand
 					heading={heading}
 					href={href}
@@ -73,12 +77,19 @@ export function AppLayoutHeader({
 				/>
 				<AppLayoutHeaderAccountDetails {...accountDetails} />
 			</Flex>
-			<AppLayoutHeaderMainNav accountDetails={accountDetails} />
+			<AppLayoutHeaderMainNav
+				accountDetails={accountDetails}
+				unreadMessageCount={unreadMessageCount}
+			/>
 		</Fragment>
 	);
 }
 
-function AppLayoutHeaderMenuTrigger() {
+function AppLayoutHeaderMenuTrigger({
+	unreadMessageCount,
+}: {
+	unreadMessageCount?: number;
+}) {
 	const { isMenuOpen, showMenu, desktopShowMenuButtonRef } =
 		useAppLayoutContext();
 	return (
@@ -88,7 +99,11 @@ function AppLayoutHeaderMenuTrigger() {
 			ref={desktopShowMenuButtonRef}
 			as={BaseButton}
 			onClick={showMenu}
-			aria-label="Open menu"
+			aria-label={
+				unreadMessageCount
+					? `Open menu, ${unreadMessageCount} messages`
+					: `Open menu`
+			}
 			borderRight
 			borderColor="muted"
 			borderRightWidth={{ xs: undefined, lg: 'sm' }}
@@ -106,6 +121,7 @@ function AppLayoutHeaderMenuTrigger() {
 				flexShrink: 0,
 				'&:hover': {
 					background: boxPalette.backgroundShade,
+					textDecoration: 'underline',
 				},
 				[tokens.mediaQuery.min.lg]: {
 					display: isMenuOpen ? 'none' : 'flex',
@@ -115,7 +131,26 @@ function AppLayoutHeaderMenuTrigger() {
 				},
 			}}
 		>
-			<MenuIcon aria-hidden />
+			<Flex
+				as="span"
+				css={{
+					textDecoration: 'none',
+					'& span:last-of-type': {
+						position: 'absolute',
+						transform: `translateX(1.6rem)`,
+					},
+				}}
+			>
+				<MenuIcon aria-hidden />
+				{unreadMessageCount ? (
+					<NotificationBadge
+						aria-hidden="true"
+						tone="action"
+						value={unreadMessageCount}
+						max={99}
+					/>
+				) : null}
+			</Flex>
 			Menu
 		</Flex>
 	);

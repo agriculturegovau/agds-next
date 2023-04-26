@@ -12,30 +12,34 @@ exports[`AppLayout Open renders correctly 1`] = `
     >
       <button
         aria-label="Open menu"
-        class="css-1hmv2hl-BaseButton-boxStyles-AppLayoutHeaderMenuTrigger"
+        class="css-1pxsyc6-BaseButton-boxStyles-AppLayoutHeaderMenuTrigger"
         type="button"
       >
-        <svg
-          aria-hidden="true"
-          class="css-9s3cfn-Icon"
-          clip-rule="evenodd"
-          focusable="false"
-          height="24"
-          role="img"
-          viewBox="0 0 24 24"
-          width="24"
-          xmlns="http://www.w3.org/2000/svg"
+        <span
+          class="css-cf5af3-boxStyles-AppLayoutHeaderMenuTrigger"
         >
-          <path
-            d="M3 6H21"
-          />
-          <path
-            d="M3 12H21"
-          />
-          <path
-            d="M3 18H21"
-          />
-        </svg>
+          <svg
+            aria-hidden="true"
+            class="css-9s3cfn-Icon"
+            clip-rule="evenodd"
+            focusable="false"
+            height="24"
+            role="img"
+            viewBox="0 0 24 24"
+            width="24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M3 6H21"
+            />
+            <path
+              d="M3 12H21"
+            />
+            <path
+              d="M3 18H21"
+            />
+          </svg>
+        </span>
         Menu
       </button>
       <div
@@ -119,33 +123,38 @@ exports[`AppLayout Open renders correctly 1`] = `
       </a>
     </header>
     <div
-      class="css-1phz1cu-dark-boxStyles-AppLayoutHeaderMainNav"
+      class="css-1ivols5-dark-boxStyles-AppLayoutHeaderMainNav"
     >
       <button
+        aria-label="Open menu"
         class="css-6e6ykx-BaseButton"
         type="button"
       >
-        <svg
-          aria-hidden="true"
-          class="css-9s3cfn-Icon"
-          clip-rule="evenodd"
-          focusable="false"
-          height="24"
-          role="img"
-          viewBox="0 0 24 24"
-          width="24"
-          xmlns="http://www.w3.org/2000/svg"
+        <span
+          class="css-1iuyxmy-boxStyles-AppLayoutHeaderMainNav"
         >
-          <path
-            d="M3 6H21"
-          />
-          <path
-            d="M3 12H21"
-          />
-          <path
-            d="M3 18H21"
-          />
-        </svg>
+          <svg
+            aria-hidden="true"
+            class="css-9s3cfn-Icon"
+            clip-rule="evenodd"
+            focusable="false"
+            height="24"
+            role="img"
+            viewBox="0 0 24 24"
+            width="24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M3 6H21"
+            />
+            <path
+              d="M3 12H21"
+            />
+            <path
+              d="M3 18H21"
+            />
+          </svg>
+        </span>
         <span>
           Menu
         </span>
@@ -413,7 +422,7 @@ exports[`AppLayout Open renders correctly 1`] = `
               <span
                 class="css-uouzcn-boxStyles-Text-NotificationBadge"
               >
-                99+
+                6
               </span>
             </a>
           </li>
@@ -511,7 +520,7 @@ exports[`AppLayout Open renders correctly 1`] = `
                 />
               </svg>
               <span>
-                Sign Out
+                Sign out
               </span>
             </button>
           </li>

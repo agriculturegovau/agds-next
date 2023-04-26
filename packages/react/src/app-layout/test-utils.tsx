@@ -56,7 +56,7 @@ export const navigationItems = [
 			label: 'Messages',
 			icon: EmailIcon,
 			href: '#account/messages',
-			endElement: <NotificationBadge tone="action" value={100} max={99} />,
+			endElement: <NotificationBadge tone="action" value={6} max={99} />,
 		},
 		{
 			label: 'Account settings',
@@ -72,7 +72,7 @@ export const navigationItems = [
 
 	[
 		{
-			label: 'Sign Out',
+			label: 'Sign out',
 			onClick: console.log,
 			icon: ExitIcon,
 		},

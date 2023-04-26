@@ -22,6 +22,7 @@ export const SidebarOpen: Story = {
 		heading: 'Export Service',
 		subLine: 'Supporting Australian agricultural exports',
 		logo: <Logo />,
+		unreadMessageCount: 6,
 		accountDetails: {
 			href: '#account',
 			name: 'Toto Wolff',
@@ -48,6 +49,7 @@ export const SidebarClosed: Story = {
 		heading: 'Export Service',
 		subLine: 'Supporting Australian agricultural exports',
 		logo: <Logo />,
+		unreadMessageCount: 6,
 		accountDetails: {
 			href: '#account',
 			name: 'Toto Wolff',
@@ -68,12 +70,64 @@ export const SidebarClosed: Story = {
 	},
 };
 
-export const WithoutSecondaryText: Story = {
+export const WithoutUserSecondaryText: Story = {
 	args: {
 		href: '/',
 		heading: 'Export Service',
 		subLine: 'Supporting Australian agricultural exports',
 		logo: <Logo />,
+		unreadMessageCount: 6,
+		accountDetails: {
+			href: '#account',
+			name: 'Toto Wolff',
+		},
+	},
+	render: function Render(props) {
+		const [isMenuOpen, openMenu, closeMenu] = useTernaryState(false);
+		return (
+			<AppLayout
+				isMenuOpen={isMenuOpen}
+				openMenu={openMenu}
+				closeMenu={closeMenu}
+			>
+				<AppLayoutHeader {...props} />
+			</AppLayout>
+		);
+	},
+};
+
+export const WithoutUnreadMessageCount: Story = {
+	args: {
+		href: '/',
+		heading: 'Export Service',
+		subLine: 'Supporting Australian agricultural exports',
+		logo: <Logo />,
+		accountDetails: {
+			href: '#account',
+			name: 'Toto Wolff',
+		},
+	},
+	render: function Render(props) {
+		const [isMenuOpen, openMenu, closeMenu] = useTernaryState(false);
+		return (
+			<AppLayout
+				isMenuOpen={isMenuOpen}
+				openMenu={openMenu}
+				closeMenu={closeMenu}
+			>
+				<AppLayoutHeader {...props} />
+			</AppLayout>
+		);
+	},
+};
+
+export const LargeUnreadMessageCount: Story = {
+	args: {
+		href: '/',
+		heading: 'Export Service',
+		subLine: 'Supporting Australian agricultural exports',
+		logo: <Logo />,
+		unreadMessageCount: 100,
 		accountDetails: {
 			href: '#account',
 			name: 'Toto Wolff',

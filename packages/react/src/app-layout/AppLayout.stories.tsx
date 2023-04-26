@@ -40,6 +40,7 @@ const meta: Meta<typeof AppLayout> = {
 						heading="Export Service"
 						subLine="Supporting Australian agricultural exports"
 						logo={<Logo />}
+						unreadMessageCount={6}
 						accountDetails={{
 							href: '#account',
 							name: 'Toto Wolff',
