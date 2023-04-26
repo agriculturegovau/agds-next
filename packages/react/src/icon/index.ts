@@ -43,6 +43,7 @@ export { ProgressDoingIcon } from './icons/ProgressDoingIcon';
 export { ExternalLinkIcon } from './icons/ExternalLinkIcon';
 export { MenuIcon } from './icons/MenuIcon';
 export { SearchIcon } from './icons/SearchIcon';
+export { SettingsIcon } from './icons/SettingsIcon';
 export { SuccessIcon } from './icons/SuccessIcon';
 export { SuccessFilledIcon } from './icons/SuccessFilledIcon';
 export { ThumbsDownIcon } from './icons/ThumbsDownIcon';
