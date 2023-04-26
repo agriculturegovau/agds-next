@@ -108,6 +108,7 @@ export {
 	ProgressDoingIcon,
 	ProgressTodoIcon,
 	SearchIcon,
+	SettingsIcon,
 	SuccessFilledIcon,
 	SuccessIcon,
 	ThumbsDownIcon,

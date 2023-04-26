@@ -35,6 +35,7 @@ import { ProgressBlockedIcon } from './icons/ProgressBlockedIcon';
 import { ProgressDoingIcon } from './icons/ProgressDoingIcon';
 import { ProgressTodoIcon } from './icons/ProgressTodoIcon';
 import { SearchIcon } from './icons/SearchIcon';
+import { SettingsIcon } from './icons/SettingsIcon';
 import { SuccessFilledIcon } from './icons/SuccessFilledIcon';
 import { SuccessIcon } from './icons/SuccessIcon';
 import { ThumbsDownIcon } from './icons/ThumbsDownIcon';
@@ -83,6 +84,7 @@ export const allIcons = {
 	ProgressDoingIcon,
 	ProgressTodoIcon,
 	SearchIcon,
+	SettingsIcon,
 	SuccessFilledIcon,
 	SuccessIcon,
 	ThumbsDownIcon,
