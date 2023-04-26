@@ -11,7 +11,6 @@ import { navigationItems } from './test-utils';
 import {
 	AppLayout,
 	AppLayoutSidebar,
-	AppLayoutContent,
 	AppLayoutHeader,
 	AppLayoutFooter,
 	AppLayoutFooterDivider,
@@ -29,75 +28,69 @@ const meta: Meta<typeof AppLayout> = {
 		return (
 			<Fragment>
 				<SkipLinks
-					links={[
-						{ href: '#main-content', label: 'Skip to main content' },
-						{ href: '#header', label: 'Skip to header' },
-					]}
+					links={[{ href: '#main-content', label: 'Skip to main content' }]}
 				/>
 				<AppLayout
 					isMenuOpen={isMenuOpen}
 					openMenu={openMenu}
 					closeMenu={closeMenu}
 				>
+					<AppLayoutHeader
+						href="/"
+						heading="Export Service"
+						subLine="Supporting Australian agricultural exports"
+						logo={<Logo />}
+						accountDetails={{
+							href: '#account',
+							name: 'Toto Wolff',
+							secondaryText: 'Orange Meat Works',
+						}}
+					/>
 					<AppLayoutSidebar activePath="#dashboard" items={navigationItems} />
-					<AppLayoutContent>
-						<AppLayoutHeader
-							id="header"
-							href="/"
-							heading="Export Service"
-							subLine="Supporting Australian agricultural exports"
-							logo={<Logo />}
-							accountDetails={{
-								href: '#account',
-								name: 'Toto Wolff',
-								secondaryText: 'Orange Meat Works',
-							}}
-						/>
-						<main
-							id="main-content"
-							tabIndex={-1}
-							css={{ '&:focus': { outline: 'none' } }}
-						>
-							<PageContent>
-								<Prose>
-									<h1>Page title</h1>
-									<p>Page content</p>
-								</Prose>
-							</PageContent>
-						</main>
-						<AppLayoutFooter>
-							<nav aria-label="footer">
-								<LinkList
-									links={[
-										{ label: 'Home', href: '/' },
-										{
-											label: 'Storybook',
-											href: 'https://design-system.agriculture.gov.au/storybook/index.html',
-										},
-										{
-											label: 'Playroom',
-											href: 'https://design-system.agriculture.gov.au/playroom/index.html',
-										},
-										{
-											label: 'Starter kit',
-											href: 'https://github.com/steelthreads/agds-starter-kit',
-										},
-									]}
-									horizontal
-								/>
-							</nav>
-							<AppLayoutFooterDivider />
-							<Text fontSize="xs" maxWidth={tokens.maxWidth.bodyText}>
-								We acknowledge the traditional owners of country throughout
-								Australia and recognise their continuing connection to land,
-								waters and culture. We pay our respects to their Elders past,
-								present and emerging.
-							</Text>
-							<Text fontSize="xs" maxWidth={tokens.maxWidth.bodyText}>
-								&copy; {year} Department of Agriculture, Fisheries and Forestry
-							</Text>
-						</AppLayoutFooter>
-					</AppLayoutContent>
+					<main
+						id="main-content"
+						tabIndex={-1}
+						css={{ '&:focus': { outline: 'none' } }}
+					>
+						<PageContent>
+							<Prose>
+								<h1>Page title</h1>
+								<p>Page content</p>
+							</Prose>
+						</PageContent>
+					</main>
+					<AppLayoutFooter>
+						<nav aria-label="footer">
+							<LinkList
+								links={[
+									{ label: 'Home', href: '/' },
+									{
+										label: 'Storybook',
+										href: 'https://design-system.agriculture.gov.au/storybook/index.html',
+									},
+									{
+										label: 'Playroom',
+										href: 'https://design-system.agriculture.gov.au/playroom/index.html',
+									},
+									{
+										label: 'Starter kit',
+										href: 'https://github.com/steelthreads/agds-starter-kit',
+									},
+								]}
+								horizontal
+							/>
+						</nav>
+						<AppLayoutFooterDivider />
+						<Text fontSize="xs" maxWidth={tokens.maxWidth.bodyText}>
+							We acknowledge the traditional owners of country throughout
+							Australia and recognise their continuing connection to land,
+							waters and culture. We pay our respects to their Elders past,
+							present and emerging.
+						</Text>
+						<Text fontSize="xs" maxWidth={tokens.maxWidth.bodyText}>
+							&copy; {year} Department of Agriculture, Fisheries and Forestry
+						</Text>
+					</AppLayoutFooter>
 				</AppLayout>
 			</Fragment>
 		);
