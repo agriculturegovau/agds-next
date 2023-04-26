@@ -9,9 +9,9 @@ import { cleanup, render, screen } from '../../../../test-utils';
 import { Stack } from '../box';
 import { Button } from '../button';
 import {
-	DateRange,
 	DateRangePicker,
 	DateRangePickerProps,
+	DateRangeWithString,
 } from './DateRangePicker';
 import { yupDateField, errorMessage } from './test-utils';
 import { formatHumanReadableDate, parseDate } from './utils';
@@ -25,12 +25,17 @@ function renderDateRangePicker(props: DateRangePickerProps) {
 function ClearableDateRangePicker({
 	initialValue,
 }: {
-	initialValue: DateRange;
+	initialValue: DateRangeWithString;
 }) {
-	const [value, setValue] = useState<DateRange>(initialValue);
+	const [value, setValue] = useState<DateRangeWithString>(initialValue);
 	return (
 		<Stack gap={4} alignItems="flex-start">
-			<DateRangePicker value={value} onChange={setValue} />
+			<DateRangePicker
+				value={value}
+				onChange={setValue}
+				onFromInputChange={(from) => setValue({ ...value, from })}
+				onToInputChange={(to) => setValue({ ...value, to })}
+			/>
 			<Button
 				data-testid="clear"
 				onClick={() => setValue({ from: undefined, to: undefined })}
@@ -41,23 +46,31 @@ function ClearableDateRangePicker({
 	);
 }
 
+const fromDateFieldBase = yupDateField
+	// Ensures the start date is always after the end date
+	.max(yup.ref('to'), 'Start date must be before the end date');
+
+const toDateFieldBase = yupDateField
+	// Ensures the start date is always after the end date
+	.min(yup.ref('from'), 'Start date must be before the end date');
+
 const formSchema = (required: boolean) =>
 	yup
 		.object({
 			dateRange: yup
 				.object({
 					from: required
-						? yupDateField.required(errorMessage)
-						: yupDateField.optional(),
+						? fromDateFieldBase.required(errorMessage)
+						: fromDateFieldBase.optional(),
 					to: required
-						? yupDateField.required(errorMessage)
-						: yupDateField.optional(),
+						? toDateFieldBase.required(errorMessage)
+						: toDateFieldBase.optional(),
 				})
 				.required(),
 		})
 		.required();
 
-type FormSchema = yup.InferType<ReturnType<typeof formSchema>>;
+export type FormSchema = yup.InferType<ReturnType<typeof formSchema>>;
 
 function DateRangePickerInsideForm({
 	required,
@@ -127,8 +140,8 @@ async function getToInput() {
 	return el as HTMLInputElement;
 }
 
-async function getErrorMessage() {
-	const el = await screen.findByText(errorMessage);
+async function getErrorMessage(message = errorMessage) {
+	const el = await screen.findByText(message);
 	expect(el).toBeInstanceOf(HTMLSpanElement);
 	expect(el).toBeInTheDocument();
 	return el as HTMLSpanElement;
@@ -428,44 +441,44 @@ describe('DateRangePicker', () => {
 	});
 
 	it('formSchema: yupDateField works when required', () => {
-		const optionalFormSchema = formSchema(true);
+		const requiredFormSchema = formSchema(true);
 		expect(
-			optionalFormSchema.isValidSync({
+			requiredFormSchema.isValidSync({
 				dateRange: { from: new Date(), to: new Date() },
 			})
 		).toEqual(true);
 		expect(
-			optionalFormSchema.isValidSync({
+			requiredFormSchema.isValidSync({
 				dateRange: { from: undefined, to: undefined },
 			})
 		).toEqual(false);
 		expect(
-			optionalFormSchema.isValidSync({
+			requiredFormSchema.isValidSync({
 				dateRange: { from: '', to: '' },
 			})
 		).toEqual(false);
 		expect(
-			optionalFormSchema.isValidSync({
+			requiredFormSchema.isValidSync({
 				dateRange: { from: '123', to: '' },
 			})
 		).toEqual(false);
 		expect(
-			optionalFormSchema.isValidSync({
+			requiredFormSchema.isValidSync({
 				dateRange: { from: '123', to: '456' },
 			})
 		).toEqual(false);
 		expect(
-			optionalFormSchema.isValidSync({
+			requiredFormSchema.isValidSync({
 				dateRange: { from: 'hi', to: 'hello' },
 			})
 		).toEqual(false);
 		expect(
-			optionalFormSchema.isValidSync({
+			requiredFormSchema.isValidSync({
 				dateRange: { from: '02/02/200', to: '2/02/2002' },
 			})
 		).toEqual(false);
 		expect(
-			optionalFormSchema.isValidSync({
+			requiredFormSchema.isValidSync({
 				dateRange: { from: '2/2/2003', to: undefined },
 			})
 		).toEqual(false);
@@ -601,6 +614,40 @@ describe('DateRangePicker', () => {
 		expect(onSubmit).toHaveBeenCalledWith({
 			dateRange: { from: undefined, to: undefined },
 		});
+	});
+
+	it('form: shows validation errors when `to` date is before `from` date', async () => {
+		const onSubmit = jest.fn();
+		const onError = jest.fn();
+
+		render(
+			<DateRangePickerInsideForm
+				required={true}
+				onSubmit={onSubmit}
+				onError={onError}
+			/>
+		);
+
+		// Type in an invalid value
+		const fromDate = '05/01/2000';
+		const toDate = '01/01/2000'; // Before from date
+		await userEvent.type(await getFromInput(), fromDate);
+		await userEvent.type(await getToInput(), toDate);
+
+		// Submit the form
+		await userEvent.click(await getSubmitButton());
+		expect(onError).toHaveBeenCalledTimes(1);
+
+		// Expect an error
+		const errorMessage = await getErrorMessage(
+			'Start date must be before the end date'
+		);
+		expect(errorMessage).toBeInTheDocument();
+		expect(await getFromInput()).toHaveFocus();
+		expect(await getFromInput()).toHaveValue(fromDate);
+		expect(await getFromInput()).toHaveAttribute('aria-invalid', 'true');
+		expect(await getToInput()).toHaveValue(toDate);
+		expect(await getToInput()).toHaveAttribute('aria-invalid', 'true');
 	});
 
 	it('form: shows validation errors as an optional field', async () => {

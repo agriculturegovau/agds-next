@@ -5,7 +5,7 @@ import { Box, Flex, Stack } from '../box';
 import { Button, ButtonGroup } from '../button';
 import { Select } from '../select';
 import { Prose } from '../prose';
-import { DateRangePicker, DateRange } from './DateRangePicker';
+import { DateRangePicker, DateRangeWithString } from './DateRangePicker';
 
 export default {
 	title: 'forms/DatePicker/DateRangePicker',
@@ -13,11 +13,19 @@ export default {
 } as ComponentMeta<typeof DateRangePicker>;
 
 const Template: ComponentStory<typeof DateRangePicker> = (args) => {
-	const [range, setRange] = useState<DateRange>({
+	const [range, setRange] = useState<DateRangeWithString>({
 		from: undefined,
 		to: undefined,
 	});
-	return <DateRangePicker {...args} value={range} onChange={setRange} />;
+	return (
+		<DateRangePicker
+			{...args}
+			value={range}
+			onChange={setRange}
+			onFromInputChange={(from) => setRange((range) => ({ ...range, from }))}
+			onToInputChange={(to) => setRange((range) => ({ ...range, to }))}
+		/>
+	);
 };
 
 export const Basic = Template.bind({});
@@ -91,10 +99,20 @@ Labels.args = {
 export const FiltersExample = () => {
 	const [option, setOption] = useState<string>();
 
-	const [range, setRange] = useState<DateRange>({
+	const [range, setRange] = useState<DateRangeWithString>({
 		from: undefined,
 		to: undefined,
 	});
+
+	const dateFrom =
+		range.from && typeof range.from !== 'string'
+			? range.from.toLocaleDateString()
+			: 'Not set';
+
+	const dateTo =
+		range.to && typeof range.to !== 'string'
+			? range.to.toLocaleDateString()
+			: 'Not set';
 
 	return (
 		<Stack gap={3}>
@@ -110,13 +128,18 @@ export const FiltersExample = () => {
 					value={option}
 					onChange={(e) => setOption(e.target.value)}
 				/>
-				<DateRangePicker value={range} onChange={setRange} />
+				<DateRangePicker
+					value={range}
+					onChange={setRange}
+					onFromInputChange={(from) => setRange({ ...range, from })}
+					onToInputChange={(to) => setRange({ ...range, to })}
+				/>
 			</Flex>
 			<Prose>
 				<ul>
 					<li>Option: {option || 'Not set'}</li>
-					<li>Date from: {range.from?.toLocaleDateString() || 'Not set'}</li>
-					<li>Date to: {range.to?.toLocaleDateString() || 'Not set'}</li>
+					<li>Date from: {dateFrom}</li>
+					<li>Date to: {dateTo}</li>
 				</ul>
 			</Prose>
 		</Stack>
@@ -134,13 +157,18 @@ export const ScrollExample: ComponentStory<typeof DateRangePicker> = (args) => {
 };
 
 export const ControlledExample = () => {
-	const [range, setRange] = useState<DateRange>({
+	const [range, setRange] = useState<DateRangeWithString>({
 		from: undefined,
 		to: undefined,
 	});
 	return (
 		<Stack gap={4} alignItems="flex-start">
-			<DateRangePicker value={range} onChange={setRange} />
+			<DateRangePicker
+				value={range}
+				onChange={setRange}
+				onFromInputChange={(from) => setRange({ ...range, from })}
+				onToInputChange={(to) => setRange({ ...range, to })}
+			/>
 			<ButtonGroup>
 				<Button
 					onClick={() =>

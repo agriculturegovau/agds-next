@@ -31,7 +31,13 @@ const getTagsFromFilters = ({
 
 	for (const [key, value] of filterEntries) {
 		if (key === 'requestDate') {
-			if (!value.from && !value.to) continue;
+			// Ensure that we have at least 1 valid date (from OR to)
+			if (
+				(!value.from || typeof value.from === 'string') &&
+				(!value.to || typeof value.to === 'string')
+			) {
+				continue;
+			}
 			tags.push({
 				// TODO add a formatter
 				label: `${key}: ${[formatDate(value.from), formatDate(value.to)]

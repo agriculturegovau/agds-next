@@ -66,12 +66,19 @@ export const FilterAccordion = ({
 					fromLabel="Registered from"
 					toLabel="Registered to"
 					hideOptionalLabel
-					onChange={(value) => {
+					onChange={(requestDate) => setFilters({ ...filters, requestDate })}
+					onFromInputChange={(from) =>
 						setFilters({
 							...filters,
-							requestDate: value,
-						});
-					}}
+							requestDate: { ...filters.requestDate, from },
+						})
+					}
+					onToInputChange={(to) =>
+						setFilters({
+							...filters,
+							requestDate: { ...filters.requestDate, to },
+						})
+					}
 					value={filters.requestDate}
 				/>
 				<Button
