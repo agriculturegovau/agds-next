@@ -1,4 +1,5 @@
 import { Flex, focusStyles } from '../box';
+import { NotificationBadge } from '../badge';
 import { boxPalette, fontGrid, mapSpacing, useLinkComponent } from '../core';
 import { AvatarIcon, MenuIcon } from '../icon';
 import { BaseButton } from '../button';
@@ -8,10 +9,12 @@ import { BORDER_WIDTH_XXL } from './utils';
 
 export type AppLayoutHeaderMainNavProps = {
 	accountDetails: AppLayoutHeaderProps['accountDetails'];
+	unreadMessageCount?: AppLayoutHeaderProps['unreadMessageCount'];
 };
 
 export function AppLayoutHeaderMainNav({
 	accountDetails,
+	unreadMessageCount,
 }: AppLayoutHeaderMainNavProps) {
 	const { showMenu, mobileShowMenuButtonRef } = useAppLayoutContext();
 	const Link = useLinkComponent();
@@ -37,15 +40,40 @@ export function AppLayoutHeaderMainNav({
 					...focusStyles,
 					'&:hover': {
 						backgroundColor: boxPalette.backgroundShade,
-						'& span': {
-							textDecoration: 'underline',
-						},
+						textDecoration: 'underline',
 					},
 				},
 			}}
 		>
-			<BaseButton onClick={showMenu} ref={mobileShowMenuButtonRef}>
-				<MenuIcon />
+			<BaseButton
+				onClick={showMenu}
+				ref={mobileShowMenuButtonRef}
+				aria-label={
+					unreadMessageCount
+						? `Open menu, ${unreadMessageCount} messages`
+						: `Open menu`
+				}
+			>
+				<Flex
+					as="span"
+					css={{
+						textDecoration: 'none',
+						'& span:last-of-type': {
+							position: 'absolute',
+							transform: `translateX(1.6rem)`,
+						},
+					}}
+				>
+					<MenuIcon aria-hidden />
+					{unreadMessageCount ? (
+						<NotificationBadge
+							aria-hidden="true"
+							tone="action"
+							value={unreadMessageCount}
+							max={99}
+						/>
+					) : null}
+				</Flex>
 				<span>Menu</span>
 			</BaseButton>
 			<Link href={accountDetails.href}>
