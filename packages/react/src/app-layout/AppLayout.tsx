@@ -1,6 +1,7 @@
 import { PropsWithChildren } from 'react';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { tokens, useTernaryState, useWindowSize } from '../core';
+import { AppLayoutContent } from './AppLayoutContent';
 import { AppLayoutContext } from './AppLayoutContext';
 
 export type AppLayoutProps = PropsWithChildren<{
@@ -40,7 +41,7 @@ export function AppLayout(props: AppLayoutProps) {
 				hideMenuButtonRef,
 			}}
 		>
-			{props.children}
+			<AppLayoutContent>{props.children}</AppLayoutContent>
 		</AppLayoutContext.Provider>
 	);
 }

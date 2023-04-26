@@ -199,7 +199,6 @@ export { FileInput } from '@ag.ds-next/react/file-input';
 export {
 	AppLayout,
 	AppLayoutSidebar,
-	AppLayoutContent,
 	AppLayoutHeader,
 	AppLayoutFooter,
 	AppLayoutFooterDivider,
