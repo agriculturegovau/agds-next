@@ -1,5 +1,10 @@
-import { PropsWithChildren } from 'react';
-import { useCallback, useEffect, useRef, useState } from 'react';
+import {
+	PropsWithChildren,
+	useEffect,
+	useCallback,
+	useRef,
+	useState,
+} from 'react';
 import { tokens, useTernaryState, useWindowSize } from '../core';
 import { AppLayoutContent } from './AppLayoutContent';
 import { AppLayoutContext } from './AppLayoutContext';
@@ -108,7 +113,13 @@ function useSidebarMenuToggles({
 
 	useEffect(() => {
 		if (!shouldFocusHideMenuButton) return;
-		hideMenuButtonRef.current?.focus();
+		if (!hideMenuButtonRef.current) return;
+		const sidebarEl = hideMenuButtonRef.current.closest('aside');
+		if (!sidebarEl) return;
+		// If you call `.focus` on a element that is in a parent with `display: none`, nothing will happen
+		// This ensures that the sidebar element (aside) is visible before we focus the button
+		sidebarEl.style.display = 'flex';
+		hideMenuButtonRef.current.focus();
 		setShouldFocusHideMenuButton(false);
 	}, [shouldFocusHideMenuButton]);
 

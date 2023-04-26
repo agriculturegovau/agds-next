@@ -43,8 +43,8 @@ exports[`AppLayout Open renders correctly 1`] = `
         Menu
       </button>
       <div
-        class="css-bdqjht-AppLayoutHeaderBrand"
-        style="padding-left: 0rem;"
+        class="css-1sdw6d-AppLayoutHeaderBrand"
+        style="margin-left: 0rem;"
       >
         <a
           class="css-1wpax3t-boxStyles-AppLayoutHeaderBrand"
@@ -81,7 +81,7 @@ exports[`AppLayout Open renders correctly 1`] = `
             />
           </svg>
           <div
-            class="css-bl7pkx-boxStyles-AppLayoutHeaderBrand"
+            class="css-1oa0omf-boxStyles-AppLayoutHeaderBrand"
           >
             <span
               class="css-1lv1g9v-boxStyles-Text"
@@ -188,9 +188,8 @@ exports[`AppLayout Open renders correctly 1`] = `
       </a>
     </div>
     <aside
-      aria-hidden="false"
       class="css-hi7ma4-dark-boxStyles-AppLayoutSideBarDesktop"
-      style="transform: translateX(0%);"
+      style="display: flex;"
     >
       <div
         class="css-cntu5x-boxStyles"

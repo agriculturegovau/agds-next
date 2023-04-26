@@ -31,7 +31,7 @@ export function AppLayoutHeaderBrand({
 
 	const prefersReducedMotion = usePrefersReducedMotion();
 	const animatedStyles = useSpring({
-		paddingLeft: isMenuOpen ? '0rem' : HEADER_HEIGHT.md,
+		marginLeft: isMenuOpen ? '0rem' : HEADER_HEIGHT.md,
 		immediate: prefersReducedMotion,
 	});
 
@@ -40,7 +40,7 @@ export function AppLayoutHeaderBrand({
 			style={animatedStyles}
 			css={{
 				[tokens.mediaQuery.max.md]: {
-					paddingLeft: '0 !important',
+					marginLeft: '0 !important',
 				},
 			}}
 		>
@@ -68,8 +68,8 @@ export function AppLayoutHeaderBrand({
 					alignItems="flex-start"
 					css={{
 						[tokens.mediaQuery.min.md]: {
-							marginLeft: mapSpacing(1),
 							paddingLeft: mapSpacing(1),
+							marginLeft: mapSpacing(1),
 							borderLeft: `1px solid ${boxPalette.foregroundText}`,
 						},
 					}}
