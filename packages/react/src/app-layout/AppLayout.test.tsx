@@ -24,6 +24,7 @@ function renderAppLayout(props: AppLayoutProps) {
 			<AppLayoutSidebar activePath="#dashboard" items={navigationItems} />
 			<AppLayoutContent>
 				<AppLayoutHeader
+					id="header"
 					href="#"
 					logo={<Logo />}
 					heading="Export Service"

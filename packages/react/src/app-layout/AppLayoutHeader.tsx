@@ -10,6 +10,8 @@ import { AppLayoutHeaderAccountDetails } from './AppLayoutHeaderAccountDetails';
 import { AppLayoutHeaderMainNav } from './AppLayoutHeaderMainNav';
 
 export type AppLayoutHeaderProps = {
+	/** Defines an identifier (ID) which must be unique. */
+	id?: string;
 	/** The logo to display. */
 	logo: JSX.Element;
 	/**  The href to link to, for example "/". */
@@ -30,6 +32,7 @@ export type AppLayoutHeaderProps = {
 };
 
 export function AppLayoutHeader({
+	id,
 	heading,
 	href,
 	logo,
@@ -40,6 +43,7 @@ export function AppLayoutHeader({
 		<Fragment>
 			<Flex
 				as="header"
+				id={id}
 				palette={{ xs: 'dark', lg: 'light' }}
 				gap={1}
 				height={HEADER_HEIGHT}
