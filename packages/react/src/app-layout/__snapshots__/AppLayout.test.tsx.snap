@@ -3,8 +3,8 @@
 exports[`AppLayout Open renders correctly 1`] = `
 <div>
   <div
-    class="css-y3fb1c-boxStyles-AppLayoutContent"
-    style="padding-left: 17.5rem;"
+    class="css-nbrxk-boxStyles-AppLayoutContent"
+    style="margin-left: 17.5rem;"
   >
     <header
       class="css-1cy2vru-dark-light-boxStyles-AppLayoutHeader"
