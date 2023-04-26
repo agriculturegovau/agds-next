@@ -2,19 +2,17 @@ import { Meta, StoryObj } from '@storybook/react';
 import { COUNTRY_OPTIONS } from '../combobox/test-utils';
 import { Autocomplete } from './Autocomplete';
 
-const defaultArgs = {
-	label: 'Find your country',
-	hint: 'Start typing to see results',
-	loadOptions: async function loadOptions() {
-		await new Promise((resolve) => setTimeout(resolve, 1000));
-		return COUNTRY_OPTIONS;
-	},
-};
-
 const meta: Meta<typeof Autocomplete> = {
 	title: 'forms/Autocomplete',
 	component: Autocomplete,
-	args: defaultArgs,
+	args: {
+		label: 'Find your country',
+		hint: 'Start typing to see results',
+		loadOptions: async function loadOptions() {
+			await new Promise((resolve) => setTimeout(resolve, 1000));
+			return COUNTRY_OPTIONS;
+		},
+	},
 };
 
 export default meta;
