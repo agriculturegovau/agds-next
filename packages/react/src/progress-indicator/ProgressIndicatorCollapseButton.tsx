@@ -1,7 +1,6 @@
-import { useSpring, animated } from '@react-spring/web';
 import { Flex } from '../box';
 import { ChevronDownIcon } from '../icon';
-import { tokens, usePrefersReducedMotion } from '../core';
+import { tokens } from '../core';
 import { BaseButton } from '../button';
 import { hoverColorMap, ProgressIndicatorBackground } from './utils';
 
@@ -14,8 +13,6 @@ type ProgressIndicatorCollapseButtonProps = {
 	onClick: () => void;
 };
 
-const AnimatedIcon = animated(ChevronDownIcon);
-
 export const ProgressIndicatorCollapseButton = ({
 	ariaControls,
 	background = 'body',
@@ -24,14 +21,6 @@ export const ProgressIndicatorCollapseButton = ({
 	label,
 	onClick,
 }: ProgressIndicatorCollapseButtonProps) => {
-	const prefersReducedMotion = usePrefersReducedMotion();
-
-	const iconStyle = useSpring({
-		from: { transform: `rotate(0deg)` },
-		to: { transform: `rotate(${isOpen ? 180 : 0}deg)` },
-		immediate: prefersReducedMotion,
-	});
-
 	return (
 		<Flex
 			as={BaseButton}
@@ -54,14 +43,20 @@ export const ProgressIndicatorCollapseButton = ({
 				'&:hover': {
 					background: hoverColorMap[background],
 				},
-
 				[tokens.mediaQuery.min.md]: {
 					display: 'none',
 				},
 			}}
 		>
 			{label}
-			<AnimatedIcon size="sm" weight="bold" style={iconStyle} />
+			<ChevronDownIcon
+				size="sm"
+				weight="bold"
+				css={{
+					transition: `transform ${tokens.transition.duration} ${tokens.transition.timingFunction}`,
+					transform: `rotate(${isOpen ? 180 : 0}deg)`,
+				}}
+			/>
 		</Flex>
 	);
 };

@@ -21,12 +21,11 @@ exports[`Accordion renders correctly 1`] = `
           Accordion 1
           <svg
             aria-hidden="true"
-            class="css-u8huve-Icon"
+            class="css-1x3ekmz-AccordionTitle"
             clip-rule="evenodd"
             focusable="false"
             height="24"
             role="img"
-            style="transform: rotate(0deg);"
             viewBox="0 0 24 24"
             width="24"
             xmlns="http://www.w3.org/2000/svg"
@@ -73,12 +72,11 @@ exports[`Accordion renders correctly 1`] = `
           Accordion 2
           <svg
             aria-hidden="true"
-            class="css-u8huve-Icon"
+            class="css-1x3ekmz-AccordionTitle"
             clip-rule="evenodd"
             focusable="false"
             height="24"
             role="img"
-            style="transform: rotate(0deg);"
             viewBox="0 0 24 24"
             width="24"
             xmlns="http://www.w3.org/2000/svg"

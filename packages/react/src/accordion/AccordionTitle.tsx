@@ -1,8 +1,7 @@
 import { MouseEventHandler, PropsWithChildren } from 'react';
-import { animated, useSpring } from '@react-spring/web';
 import { Box, Flex } from '../box';
+import { tokens } from '../core';
 import { ChevronDownIcon } from '../icon';
-import { usePrefersReducedMotion } from '../core';
 import { BaseButton } from '../button/';
 import { hoverColorMap, AccordionBackground } from './utils';
 
@@ -15,8 +14,6 @@ export type AccordionTitleProps = PropsWithChildren<{
 	tag: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
 }>;
 
-const AnimatedIcon = animated(ChevronDownIcon);
-
 export const AccordionTitle = ({
 	ariaControls,
 	background = 'body',
@@ -26,13 +23,6 @@ export const AccordionTitle = ({
 	onClick,
 	tag,
 }: AccordionTitleProps) => {
-	const prefersReducedMotion = usePrefersReducedMotion();
-	const style = useSpring({
-		from: { transform: `rotate(0deg)` },
-		to: { transform: `rotate(${isOpen ? 180 : 0}deg)` },
-		immediate: prefersReducedMotion,
-	});
-
 	return (
 		<Box as={tag}>
 			<Flex
@@ -59,7 +49,14 @@ export const AccordionTitle = ({
 				}}
 			>
 				{children}
-				<AnimatedIcon weight="bold" size="sm" style={style} />
+				<ChevronDownIcon
+					weight="bold"
+					size="sm"
+					css={{
+						transition: `transform ${tokens.transition.duration} ${tokens.transition.timingFunction}`,
+						transform: `rotate(${isOpen ? 180 : 0}deg)`,
+					}}
+				/>
 			</Flex>
 		</Box>
 	);

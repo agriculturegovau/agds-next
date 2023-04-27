@@ -29,12 +29,11 @@ exports[`ProgressIndicator With anchors renders correctly 1`] = `
       1 of 3 steps completed
       <svg
         aria-hidden="true"
-        class="css-u8huve-Icon"
+        class="css-1mmdn60-ProgressIndicatorCollapseButton"
         clip-rule="evenodd"
         focusable="false"
         height="24"
         role="img"
-        style="transform: rotate(0deg);"
         viewBox="0 0 24 24"
         width="24"
         xmlns="http://www.w3.org/2000/svg"
@@ -283,12 +282,11 @@ exports[`ProgressIndicator With buttons renders correctly 1`] = `
       1 of 3 steps completed
       <svg
         aria-hidden="true"
-        class="css-u8huve-Icon"
+        class="css-1mmdn60-ProgressIndicatorCollapseButton"
         clip-rule="evenodd"
         focusable="false"
         height="24"
         role="img"
-        style="transform: rotate(0deg);"
         viewBox="0 0 24 24"
         width="24"
         xmlns="http://www.w3.org/2000/svg"

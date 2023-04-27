@@ -1,12 +1,9 @@
 import { PropsWithChildren } from 'react';
-import { useSpring, animated } from '@react-spring/web';
 import { Flex } from '../box';
 import { BaseButton } from '../button';
 import { ChevronDownIcon } from '../icon';
-import { tokens, usePrefersReducedMotion } from '../core';
+import { tokens } from '../core';
 import { localPalette } from './utils';
-
-const AnimatedIcon = animated(ChevronDownIcon);
 
 type SideNavCollapseButtonProps = PropsWithChildren<{
 	ariaControls: string;
@@ -22,14 +19,6 @@ export const SideNavCollapseButton = ({
 	isOpen,
 	onClick,
 }: SideNavCollapseButtonProps) => {
-	const prefersReducedMotion = usePrefersReducedMotion();
-
-	const iconStyle = useSpring({
-		from: { transform: `rotate(0deg)` },
-		to: { transform: `rotate(${isOpen ? 180 : 0}deg)` },
-		immediate: prefersReducedMotion,
-	});
-
 	return (
 		<Flex
 			as={BaseButton}
@@ -58,7 +47,14 @@ export const SideNavCollapseButton = ({
 			}}
 		>
 			{children}
-			<AnimatedIcon size="sm" weight="bold" style={iconStyle} />
+			<ChevronDownIcon
+				size="sm"
+				weight="bold"
+				css={{
+					transition: `transform ${tokens.transition.duration} ${tokens.transition.timingFunction}`,
+					transform: `rotate(${isOpen ? 180 : 0}deg)`,
+				}}
+			/>
 		</Flex>
 	);
 };
