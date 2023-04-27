@@ -1,17 +1,23 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { StoryObj, Meta, StoryFn } from '@storybook/react';
 import { useState } from 'react';
 import { Switch } from './Switch';
 
-export default {
+const meta: Meta<typeof Switch> = {
 	title: 'forms/Switch',
 	component: Switch,
-} as ComponentMeta<typeof Switch>;
+};
 
-export const Basic: ComponentStory<typeof Switch> = (args) => {
+export default meta;
+
+const Template: StoryFn<typeof Switch> = (args) => {
 	const [isChecked, setChecked] = useState(false);
 	return <Switch {...args} checked={isChecked} onChange={setChecked} />;
 };
-Basic.args = {
-	size: 'md',
-	label: 'Show establishments',
+
+export const Basic: StoryObj<typeof Switch> = {
+	args: {
+		size: 'md',
+		label: 'Show establishments',
+	},
+	render: Template,
 };

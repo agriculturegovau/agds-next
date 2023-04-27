@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { ComponentMeta } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react';
 import { Box, Stack } from '../box';
 import { useToggleState } from '../core';
 import { Prose } from '../prose';
@@ -8,16 +8,20 @@ import { Text } from '../text';
 import { Accordion } from './Accordion';
 import { AccordionItem, AccordionItemContent } from './AccordionItem';
 
-export default {
+const meta: Meta<typeof Accordion> = {
 	title: 'Layout/Accordion',
 	component: Accordion,
-} as ComponentMeta<typeof Accordion>;
+};
 
-type AccordionExampleProps = {
+type Story = StoryObj<typeof Accordion>;
+
+export default meta;
+
+type AccordionTemplateProps = {
 	background: 'body' | 'bodyAlt';
 };
 
-const AccordionBasicExample = ({ background }: AccordionExampleProps) => (
+const AccordionBasicTemplate = ({ background }: AccordionTemplateProps) => (
 	<Box padding={1.5} background={background}>
 		<Accordion>
 			<AccordionItem title="Accordion title" background={background}>
@@ -29,11 +33,16 @@ const AccordionBasicExample = ({ background }: AccordionExampleProps) => (
 	</Box>
 );
 
-export const Basic = () => <AccordionBasicExample background="body" />;
-export const OnBodyAlt = () => <AccordionBasicExample background="bodyAlt" />;
-OnBodyAlt.storyName = 'On bodyAlt background';
+export const Basic: Story = {
+	render: () => <AccordionBasicTemplate background="body" />,
+};
 
-const AccordionGroupExample = ({ background }: AccordionExampleProps) => (
+export const onBodyAlt: Story = {
+	render: () => <AccordionBasicTemplate background="bodyAlt" />,
+	name: 'On bodyAlt background',
+};
+
+const AccordionGroupTemplate = ({ background }: AccordionTemplateProps) => (
 	<Box padding={1.5} background={background}>
 		<Accordion>
 			<AccordionItem title="Accordion 1" background={background}>
@@ -84,11 +93,14 @@ const AccordionGroupExample = ({ background }: AccordionExampleProps) => (
 	</Box>
 );
 
-export const Group = () => <AccordionGroupExample background="body" />;
-export const GroupOnBodyAlt = () => (
-	<AccordionGroupExample background="bodyAlt" />
-);
-GroupOnBodyAlt.storyName = 'Group on bodyAlt background';
+export const Group: Story = {
+	render: () => <AccordionGroupTemplate background="body" />,
+};
+
+export const GroupOnBodyAlt: Story = {
+	render: () => <AccordionGroupTemplate background="bodyAlt" />,
+	name: 'Group on bodyAlt background',
+};
 
 export const Controlled = () => {
 	const [isOpen, onToggle] = useToggleState(false, true);
@@ -129,10 +141,9 @@ export const Controlled = () => {
 	);
 };
 
-const controlledGroupAccordionLength = 3;
 type ControlledGroupAccordion = 1 | 2 | 3;
 
-const AccordionControlledGroupExample = ({
+const AccordionControlledGroupTemplate = ({
 	openAccordions,
 	toggle,
 }: {
@@ -218,6 +229,7 @@ export const ControlledGroup = () => {
 		});
 	};
 
+	const controlledGroupAccordionLength = 3;
 	const isAllOpen = openAccordions.length === controlledGroupAccordionLength;
 
 	return (
@@ -230,7 +242,7 @@ export const ControlledGroup = () => {
 			>
 				{isAllOpen ? 'Hide all sections' : 'Show all sections'}
 			</Button>
-			<AccordionControlledGroupExample
+			<AccordionControlledGroupTemplate
 				openAccordions={openAccordions}
 				toggle={toggle}
 			/>
@@ -238,34 +250,38 @@ export const ControlledGroup = () => {
 	);
 };
 
-export const InitiallyOpened = () => (
-	<Accordion>
-		<AccordionItem title="Initially opened" isInitiallyOpen>
-			<AccordionItemContent>
-				<Text as="p">
-					This is some text inside an Accordion, which is opened at time of page
-					render.
-				</Text>
-			</AccordionItemContent>
-		</AccordionItem>
-	</Accordion>
-);
+export const InitiallyOpened: Story = {
+	render: () => (
+		<Accordion>
+			<AccordionItem title="Initially opened" isInitiallyOpen>
+				<AccordionItemContent>
+					<Text as="p">
+						This is some text inside an Accordion, which is opened at time of
+						page render.
+					</Text>
+				</AccordionItemContent>
+			</AccordionItem>
+		</Accordion>
+	),
+};
 
-export const EdgeToEdgeImage = () => (
-	<Accordion>
-		<AccordionItem title="Edge-to-edge image">
-			<img
-				alt="Placeholder image"
-				src="/img/placeholder/600X260.png"
-				width="100%"
-			/>
-			<AccordionItemContent>
-				<Text as="p">
-					In this example, we remove the default padding from the AccordionItem,
-					in order to achieve the edge-to-edge image above. This Text is wrapped
-					in the AccordionItemContent component.
-				</Text>
-			</AccordionItemContent>
-		</AccordionItem>
-	</Accordion>
-);
+export const EdgeToEdgeImage: Story = {
+	render: () => (
+		<Accordion>
+			<AccordionItem title="Edge-to-edge image">
+				<img
+					alt="Placeholder image"
+					src="/img/placeholder/600X260.png"
+					width="100%"
+				/>
+				<AccordionItemContent>
+					<Text as="p">
+						In this example, we remove the default padding from the
+						AccordionItem, in order to achieve the edge-to-edge image above.
+						This Text is wrapped in the AccordionItemContent component.
+					</Text>
+				</AccordionItemContent>
+			</AccordionItem>
+		</Accordion>
+	),
+};
