@@ -31,16 +31,15 @@ const getTagsFromFilters = ({
 
 	for (const [key, value] of filterEntries) {
 		if (key === 'requestDate') {
-			// Ensure that we have at least 1 valid date (from OR to)
-			if (
-				(!value.from || typeof value.from === 'string') &&
-				(!value.to || typeof value.to === 'string')
-			) {
-				continue;
-			}
+			const fromDate =
+				value.from && typeof value.from !== 'string' ? value.from : undefined;
+			const toDate =
+				value.to && typeof value.to !== 'string' ? value.to : undefined;
+			// Ensure that we have at least 1 valid date (from date OR to date)
+			if (!fromDate && !toDate) continue;
 			tags.push({
-				// TODO add a formatter
-				label: `${key}: ${[formatDate(value.from), formatDate(value.to)]
+				// TODO add a formatter for the `key`
+				label: `${key}: ${[formatDate(fromDate), formatDate(toDate)]
 					.filter(Boolean)
 					.join(' - ')}`,
 				onRemove: () => removeFilter(key),
