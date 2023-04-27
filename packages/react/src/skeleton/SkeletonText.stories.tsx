@@ -12,14 +12,16 @@ const meta: Meta<typeof SkeletonText> = {
 
 export default meta;
 
-export const Basic: StoryObj<typeof SkeletonText> = {
+type Story = StoryObj<typeof SkeletonText>;
+
+export const Basic: Story = {
 	args: {
 		fontSize: 'sm',
 		width: '100%',
 	},
 };
 
-export const Sizes: StoryObj<typeof SkeletonText> = {
+export const Sizes: Story = {
 	render: ({ lineHeight }) => {
 		const sizes = Object.keys(tokens.fontSize.sm).reverse() as FontSize[];
 		return (

@@ -8,7 +8,9 @@ const meta: Meta<typeof LoadingDotsComp> = {
 
 export default meta;
 
-export const LoadingDots: StoryObj<typeof LoadingDotsComp> = {
+type Story = StoryObj<typeof LoadingDotsComp>;
+
+export const LoadingDots: Story = {
 	args: {
 		size: 'md',
 		label: 'loading',

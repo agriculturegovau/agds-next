@@ -9,7 +9,9 @@ const meta: Meta<typeof ButtonGroupComponent> = {
 
 export default meta;
 
-export const ButtonGroup: StoryObj<typeof ButtonGroupComponent> = {
+type Story = StoryObj<typeof ButtonGroupComponent>;
+
+export const ButtonGroup: Story = {
 	render: () => (
 		<ButtonGroupComponent>
 			<Button variant="primary">Primary</Button>

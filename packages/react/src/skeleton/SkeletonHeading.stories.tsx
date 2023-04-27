@@ -11,14 +11,16 @@ const meta: Meta<typeof SkeletonHeading> = {
 
 export default meta;
 
-export const Basic: StoryObj<typeof SkeletonHeading> = {
+type Story = StoryObj<typeof SkeletonHeading>;
+
+export const Basic: Story = {
 	args: {
 		type: 'h1',
 		width: '100%',
 	},
 };
 
-export const Sizes: StoryObj<typeof SkeletonHeading> = {
+export const Sizes: Story = {
 	render: () => {
 		const headingTypes = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'] as const;
 		return (
