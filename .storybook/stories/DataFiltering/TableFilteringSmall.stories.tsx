@@ -49,6 +49,6 @@ const TableFilteringSmallExample = () => {
 };
 
 export const Small: Story = {
-	storyName: 'Tables (Small)',
+	name: 'Tables (Small)',
 	render: TableFilteringSmallExample,
 };
