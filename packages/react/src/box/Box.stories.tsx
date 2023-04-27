@@ -1,40 +1,46 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react';
 import { Box } from './Box';
 
-export default {
+const meta: Meta<typeof Box> = {
 	title: 'foundations/Box',
 	component: Box,
-} as ComponentMeta<typeof Box>;
+};
 
-const Template: ComponentStory<typeof Box> = (args) => <Box {...args} />;
+export default meta;
+
+type Story = StoryObj<typeof Box>;
 
 /**
  * The Box with a Light palette applied
  */
-export const Basic = Template.bind({});
-Basic.args = {
-	children: 'Box with a border',
-	background: 'body',
-	color: 'text',
-	padding: 2,
-	border: true,
-	rounded: true,
-	light: true,
+export const Basic: Story = {
+	args: {
+		children: 'Box with a border',
+		background: 'body',
+		color: 'text',
+		padding: 2,
+		border: true,
+		rounded: true,
+		light: true,
+	},
 };
 
 /** Responsive props */
-export const ResponsivePadding = Template.bind({});
-ResponsivePadding.args = {
-	children: (
-		<div>
-			<div>Responsive padding</div>
-			<div>Change the size of the browser window to see the padding change</div>
-			<ResponsiveSizeIndicator />
-		</div>
-	),
-	border: true,
-	rounded: true,
-	padding: { xs: 1, sm: 2, md: 3, lg: 4, xl: 5 },
+export const ResponsivePadding: Story = {
+	args: {
+		children: (
+			<div>
+				<div>Responsive padding</div>
+				<div>
+					Change the size of the browser window to see the padding change
+				</div>
+				<ResponsiveSizeIndicator />
+			</div>
+		),
+		border: true,
+		rounded: true,
+		padding: { xs: 1, sm: 2, md: 3, lg: 4, xl: 5 },
+	},
 };
 
 function ResponsiveSizeIndicator() {
