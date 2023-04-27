@@ -6,7 +6,7 @@ exports[`Modal renders correctly 1`] = `
     aria-hidden="true"
   />
   <div
-    class="css-5exj1b-ModalCover"
+    class="css-rpfvdv-ModalCover"
   >
     <div
       data-focus-guard="true"
@@ -19,9 +19,8 @@ exports[`Modal renders correctly 1`] = `
       <div
         aria-labelledby="modal-:r0:-title"
         aria-modal="true"
-        class="css-3106a6-boxStyles-ModalDialog"
+        class="css-1vaislj-boxStyles-ModalDialog"
         role="dialog"
-        style="opacity: 0; transform: translate3d(0,20px,0);"
       >
         <h2
           class="css-n64ezu-boxStyles-Text"

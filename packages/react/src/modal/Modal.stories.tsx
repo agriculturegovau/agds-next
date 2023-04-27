@@ -1,15 +1,17 @@
-import { ComponentMeta } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react';
 import { Button, ButtonGroup } from '../button';
 import { useTernaryState } from '../core';
 import { Text } from '../text';
 import { Modal } from './Modal';
 
-export default {
+const meta: Meta<typeof Modal> = {
 	title: 'content/Modal',
 	component: Modal,
-} as ComponentMeta<typeof Modal>;
+};
 
-export const Basic = () => {
+export default meta;
+
+const Template = () => {
 	const [isModalOpen, openModal, closeModal] = useTernaryState(false);
 
 	return (
@@ -39,4 +41,8 @@ export const Basic = () => {
 			</Modal>
 		</div>
 	);
+};
+
+export const Basic: StoryObj<typeof Modal> = {
+	render: Template,
 };
