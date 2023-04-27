@@ -1,16 +1,17 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { StoryObj, Meta } from '@storybook/react';
 import { LoadingDots as LoadingDotsComp } from './index';
 
-export default {
+const meta: Meta<typeof LoadingDotsComp> = {
 	title: 'content/Loading/LoadingDots',
 	component: LoadingDotsComp,
-} as ComponentMeta<typeof LoadingDotsComp>;
+};
 
-export const LoadingDots: ComponentStory<typeof LoadingDotsComp> = (args) => (
-	<LoadingDotsComp {...args} />
-);
-LoadingDots.args = {
-	size: 'md',
-	label: 'loading',
-	role: 'status',
+export default meta;
+
+export const LoadingDots: StoryObj<typeof LoadingDotsComp> = {
+	args: {
+		size: 'md',
+		label: 'loading',
+		role: 'status',
+	},
 };
