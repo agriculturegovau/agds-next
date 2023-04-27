@@ -27,18 +27,15 @@ exports[`Button Loading renders correctly 1`] = `
           </span>
           <span
             aria-hidden="true"
-            class="css-3a1w1j-boxStyles-LoadingDots"
-            style="opacity: 0;"
+            class="css-1b171kd-boxStyles-LoadingDots"
           />
           <span
             aria-hidden="true"
-            class="css-3a1w1j-boxStyles-LoadingDots"
-            style="opacity: 0;"
+            class="css-1c8uen7-boxStyles-LoadingDots"
           />
           <span
             aria-hidden="true"
-            class="css-3a1w1j-boxStyles-LoadingDots"
-            style="opacity: 0;"
+            class="css-1udhakn-boxStyles-LoadingDots"
           />
         </span>
       </span>
