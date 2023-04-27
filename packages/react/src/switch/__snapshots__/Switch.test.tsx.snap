@@ -17,8 +17,7 @@ exports[`Switch renders correctly 1`] = `
         class="css-k2d2eq-boxStyles-SwitchTrack"
       />
       <span
-        class="css-3bm08u-boxStyles-SwitchThumb"
-        style="left: 0rem;"
+        class="css-oj5g50-boxStyles-SwitchThumb"
       />
     </span>
     <span
