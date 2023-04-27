@@ -19,7 +19,6 @@ describe('SkeletonText', () => {
 		const { container } = renderSkeletonText({ fontSize: 'sm', width: '100%' });
 		expect(container).toHTMLValidate({
 			extends: ['html-validate:recommended'],
-			rules: { 'no-inline-style': 'off' },
 		});
 	});
 });

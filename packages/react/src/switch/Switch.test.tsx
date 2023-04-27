@@ -27,7 +27,6 @@ describe('Switch', () => {
 		});
 		expect(container).toHTMLValidate({
 			extends: ['html-validate:recommended'],
-			rules: { 'no-inline-style': 'off' },
 		});
 	});
 

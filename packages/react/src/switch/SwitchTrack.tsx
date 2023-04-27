@@ -1,6 +1,5 @@
 import { PropsWithChildren } from 'react';
-import { useSpring, animated } from '@react-spring/web';
-import { boxPalette, usePrefersReducedMotion } from '../core';
+import { boxPalette, tokens } from '../core';
 import { Box, Flex } from '../box';
 import { switchTrackStyles } from './utils';
 
@@ -51,8 +50,6 @@ export const SwitchTrack = ({ checked, size }: SwitchTrackProps) => {
 	);
 };
 
-const AnimatedFlex = animated(Flex);
-
 type SwitchThumbProps = {
 	checked: boolean;
 	size: SwitchSize;
@@ -64,20 +61,11 @@ export const SwitchThumb = ({ checked, size }: SwitchThumbProps) => {
 		borderWidth,
 		height: thumbSize,
 	} = switchTrackStyles[size];
-
-	const prefersReducedMotion = usePrefersReducedMotion();
-	const animationStyles = useSpring({
-		from: { left: '0rem' },
-		to: { left: checked ? thumbCheckedPos : '0rem' },
-		immediate: prefersReducedMotion,
-	});
-
 	return (
-		<AnimatedFlex
+		<Flex
 			as="span"
 			alignItems="center"
 			justifyContent="center"
-			style={animationStyles}
 			height={thumbSize}
 			width={thumbSize}
 			background="body"
@@ -87,10 +75,12 @@ export const SwitchThumb = ({ checked, size }: SwitchThumbProps) => {
 				borderStyle: 'solid',
 				borderColor: boxPalette.foregroundAction,
 				position: 'absolute',
+				transition: `left ${tokens.transition.duration} ${tokens.transition.timingFunction}`,
+				left: checked ? thumbCheckedPos : '0rem',
 			}}
 		>
 			{checked && <SwitchThumbIcon size={size} />}
-		</AnimatedFlex>
+		</Flex>
 	);
 };
 

@@ -1,6 +1,5 @@
-import { ElementType, PropsWithChildren, useState } from 'react';
-import { useSpring, animated } from '@react-spring/web';
-import { LinkProps, mapSpacing, usePrefersReducedMotion } from '../core';
+import { ElementType, PropsWithChildren } from 'react';
+import { LinkProps } from '../core';
 import { Flex } from '../box';
 import { BaseButton, BaseButtonProps } from '../button';
 import { ChevronRightIcon } from '../icon';
@@ -23,30 +22,14 @@ type CallToActionProps = PropsWithChildren<{
 	className?: string;
 }>;
 
-const AnimatedChevronRightIcon = animated(ChevronRightIcon);
-
 const CallToAction = ({
 	as,
 	children,
 	className,
 	...props
 }: CallToActionProps) => {
-	const [mouseOver, setMouseOver] = useState(false);
-
-	const prefersReducedMotion = usePrefersReducedMotion();
-	const animationStyles = useSpring({
-		from: { paddingLeft: mapSpacing(0) },
-		to: { paddingLeft: mouseOver ? mapSpacing(0.25) : mapSpacing(0) },
-		immediate: prefersReducedMotion,
-	});
-
 	return (
-		<Flex
-			inline
-			onMouseEnter={() => setMouseOver(true)}
-			onMouseLeave={() => setMouseOver(false)}
-			css={{ alignSelf: 'flex-start' }}
-		>
+		<Flex inline css={{ alignSelf: 'flex-start' }}>
 			<Flex
 				as={as}
 				className={className}
@@ -59,11 +42,7 @@ const CallToAction = ({
 				{...props}
 			>
 				{children}
-				<AnimatedChevronRightIcon
-					weight="bold"
-					size="sm"
-					style={animationStyles}
-				/>
+				<ChevronRightIcon weight="bold" size="sm" />
 			</Flex>
 		</Flex>
 	);

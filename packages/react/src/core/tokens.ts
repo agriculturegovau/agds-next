@@ -113,6 +113,11 @@ const borderWidth = {
 
 export type BorderWidth = keyof typeof borderWidth;
 
+const transition = {
+	duration: '250ms',
+	timingFunction: 'ease',
+};
+
 export const tokens = {
 	breakpoint,
 	mediaQuery,
@@ -126,4 +131,5 @@ export const tokens = {
 	maxWidth,
 	borderRadius,
 	borderWidth,
+	transition,
 };

@@ -1,4 +1,6 @@
+import { keyframes } from '@emotion/react';
 import { forwardRef, ReactNode } from 'react';
+import { tokens } from '../core';
 
 export type ModalCoverProps = { children: ReactNode };
 
@@ -16,6 +18,7 @@ export const ModalCover = forwardRef<HTMLDivElement, ModalCoverProps>(
 					backgroundColor: `rgba(0, 0, 0, 0.8)`,
 					zIndex: 100,
 					overflowY: 'auto',
+					animation: `${animateFadeInOut} ${tokens.transition.duration} ${tokens.transition.timingFunction}`,
 				}}
 			>
 				{children}
@@ -23,3 +26,8 @@ export const ModalCover = forwardRef<HTMLDivElement, ModalCoverProps>(
 		);
 	}
 );
+
+const animateFadeInOut = keyframes`
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+`;

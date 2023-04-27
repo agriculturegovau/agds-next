@@ -1,8 +1,8 @@
 import { PropsWithChildren, ReactNode } from 'react';
 import FocusLock from 'react-focus-lock';
-import { animated, useSpring } from '@react-spring/web';
+import { keyframes } from '@emotion/react';
 import { Box, Stack } from '../box';
-import { usePrefersReducedMotion, mapSpacing, tokens } from '../core';
+import { mapSpacing, tokens } from '../core';
 import { CloseIcon } from '../icon';
 import { Button } from '../button';
 import { ModalTitle } from './ModalTitle';
@@ -17,8 +17,6 @@ export type ModalDialogProps = PropsWithChildren<{
 	title: string;
 }>;
 
-const AnimatedStack = animated(Stack);
-
 export const ModalDialog = ({
 	actions,
 	children,
@@ -26,17 +24,9 @@ export const ModalDialog = ({
 	onDismiss,
 }: ModalDialogProps) => {
 	const { titleId } = useModalId();
-
-	const prefersReducedMotion = usePrefersReducedMotion();
-	const animationStyles = useSpring({
-		from: { y: 20, opacity: 0 },
-		to: { y: 0, opacity: 1 },
-		immediate: prefersReducedMotion,
-	});
-
 	return (
 		<FocusLock returnFocus>
-			<AnimatedStack
+			<Stack
 				role="dialog"
 				aria-modal="true"
 				background="body"
@@ -51,12 +41,12 @@ export const ModalDialog = ({
 					position: 'relative',
 					margin: '0 auto',
 					minHeight: '100vh',
+					animation: `${animateSlideInUp} ${tokens.transition.duration}  ${tokens.transition.timingFunction}`,
 					[tokens.mediaQuery.min.sm]: {
 						margin: `${mapSpacing(6)} auto ${mapSpacing(1)}`,
 						minHeight: 'auto',
 					},
 				}}
-				style={animationStyles}
 			>
 				<ModalTitle id={titleId}>{title}</ModalTitle>
 				<Box>{children}</Box>
@@ -78,7 +68,12 @@ export const ModalDialog = ({
 				>
 					Close
 				</Button>
-			</AnimatedStack>
+			</Stack>
 		</FocusLock>
 	);
 };
+
+const animateSlideInUp = keyframes`
+  0% { transform: translateY(1rem); }
+	100% { transform: translateY(0); }
+`;

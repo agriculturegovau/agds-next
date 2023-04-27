@@ -1,7 +1,7 @@
 import { HTMLAttributes } from 'react';
-import { useTrail, animated } from '@react-spring/web';
+import { keyframes } from '@emotion/react';
 import { Box, Flex } from '../box';
-import { mapSpacing, usePrefersReducedMotion } from '../core';
+import { mapSpacing } from '../core';
 import { VisuallyHidden } from '../a11y';
 
 const loadingDotsSizes = {
@@ -9,8 +9,6 @@ const loadingDotsSizes = {
 	md: { gap: 0.5, dotSize: mapSpacing(0.75), dots: 3 },
 	lg: { gap: 0.5, dotSize: mapSpacing(0.75), dots: 5 },
 } as const;
-
-const AnimatedBox = animated(Box);
 
 type LoadingDotsSizes = keyof typeof loadingDotsSizes;
 
@@ -38,20 +36,7 @@ export const LoadingDots = ({
 	...props
 }: LoadingDotsProps) => {
 	const { gap, dots, dotSize } = loadingDotsSizes[size];
-
-	const prefersReducedMotion = usePrefersReducedMotion();
-	const trail = useTrail(
-		dots,
-		prefersReducedMotion
-			? { from: { opacity: 1 }, to: { opacity: 1 } }
-			: {
-					from: { opacity: 0 },
-					to: { opacity: 1 },
-					loop: { reverse: true, delay: 0 },
-					reset: true,
-			  }
-	);
-
+	const dotsArr = Array.from(Array(dots).keys());
 	return (
 		<Flex
 			as="span"
@@ -63,18 +48,31 @@ export const LoadingDots = ({
 			{...props}
 		>
 			{label && <VisuallyHidden>{label}</VisuallyHidden>}
-			{trail.map((style, idx) => (
-				<AnimatedBox
-					as="span"
+			{dotsArr.map((idx) => (
+				<Box
 					key={idx}
+					as="span"
 					height={dotSize}
 					width={dotSize}
 					highContrastOutline
-					style={style}
-					css={{ borderRadius: '50%', background: 'currentColor' }}
 					aria-hidden="true"
+					css={{
+						opacity: 0,
+						background: 'currentColor',
+						borderRadius: '50%',
+						animationName: fadeInOut,
+						animationDuration: '1250ms',
+						animationIterationCount: 'infinite',
+						animationDelay: `${idx * 100}ms`,
+					}}
 				/>
 			))}
 		</Flex>
 	);
 };
+
+const fadeInOut = keyframes`
+  0% { opacity: 0; }
+  50% { opacity: 1; }
+	100% { opacity: 0 }
+`;

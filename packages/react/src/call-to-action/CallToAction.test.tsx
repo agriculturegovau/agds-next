@@ -29,7 +29,6 @@ describe('CallToActionLink', () => {
 		const { container } = renderCallToActionLink();
 		expect(container).toHTMLValidate({
 			extends: ['html-validate:recommended'],
-			rules: { 'no-inline-style': 'off' },
 		});
 	});
 
@@ -61,7 +60,6 @@ describe('CallToActionButton', () => {
 		const { container } = renderCallToActionButton({});
 		expect(container).toHTMLValidate({
 			extends: ['html-validate:recommended'],
-			rules: { 'no-inline-style': 'off' },
 		});
 	});
 
