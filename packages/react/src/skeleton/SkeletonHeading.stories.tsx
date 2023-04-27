@@ -1,9 +1,4 @@
-import {
-	ComponentStory,
-	ComponentMeta,
-	Meta,
-	StoryObj,
-} from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react';
 import { Stack } from '../box';
 import { Columns, Column } from '../columns';
 import { Heading } from '../heading';
