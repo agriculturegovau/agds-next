@@ -1,14 +1,9 @@
-import { Fragment } from 'react';
 import { Flex } from '../box';
-import { NotificationBadge } from '../badge';
 import { boxPalette, tokens } from '../core';
-import { MenuIcon } from '../icon';
-import { BaseButton } from '../button';
-import { HEADER_HEIGHT } from './utils';
-import { useAppLayoutContext } from './AppLayoutContext';
+import { BORDER_WIDTH_XXL } from './utils';
 import { AppLayoutHeaderBrand } from './AppLayoutHeaderBrand';
-import { AppLayoutHeaderAccountDetails } from './AppLayoutHeaderAccountDetails';
-import { AppLayoutHeaderMainNav } from './AppLayoutHeaderMainNav';
+import { AppLayoutHeaderAccount } from './AppLayoutHeaderAccount';
+import { AppLayoutHeaderNav } from './AppLayoutHeaderNav';
 
 export type AppLayoutHeaderProps = {
 	/** Defines an identifier (ID) which must be unique. */
@@ -21,8 +16,6 @@ export type AppLayoutHeaderProps = {
 	heading: string;
 	/** Used to provide additional information to describe your website or service. */
 	subLine: string;
-	/** Used to display the number of unread messages in "Open menu" button. */
-	unreadMessageCount?: number;
 	/** Details for the authenticated account. */
 	accountDetails: {
 		/** The name of the authenticated user. */
@@ -41,117 +34,44 @@ export function AppLayoutHeader({
 	logo,
 	subLine,
 	accountDetails,
-	unreadMessageCount,
 }: AppLayoutHeaderProps) {
 	return (
-		<Fragment>
+		<Flex
+			as="header"
+			id={id}
+			palette="dark"
+			flexDirection="column"
+			css={{
+				borderBottomWidth: BORDER_WIDTH_XXL,
+				borderBottomStyle: 'solid',
+				borderColor: boxPalette.accent,
+				[tokens.mediaQuery.min.lg]: {
+					gridColumnStart: 1,
+					gridColumnEnd: 3,
+				},
+			}}
+		>
 			<Flex
-				as="header"
-				id={id}
-				palette={{ xs: 'dark', lg: 'light' }}
 				gap={1}
-				height={HEADER_HEIGHT}
-				paddingY={{ xs: 1, md: 0 }}
-				paddingLeft={{
-					...tokens.containerPadding,
-					lg: tokens.containerPadding.md,
-				}}
-				paddingRight={tokens.containerPadding}
-				background={{ xs: 'bodyAlt', lg: 'body' }}
+				paddingY={1}
+				paddingX={tokens.containerPadding}
+				justifyContent="space-between"
+				background="bodyAlt"
 				alignItems="center"
-				css={{
-					[tokens.mediaQuery.min.lg]: {
-						boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
-						borderBottomWidth: tokens.borderWidth.sm,
-						borderBottomStyle: 'solid',
-						borderColor: boxPalette.borderMuted,
-					},
-				}}
+				width="100%"
 			>
-				<AppLayoutHeaderMenuTrigger unreadMessageCount={unreadMessageCount} />
 				<AppLayoutHeaderBrand
 					heading={heading}
 					href={href}
 					logo={logo}
 					subLine={subLine}
 				/>
-				<AppLayoutHeaderAccountDetails {...accountDetails} />
+				<AppLayoutHeaderAccount
+					display={{ xs: 'none', lg: 'flex' }}
+					{...accountDetails}
+				/>
 			</Flex>
-			<AppLayoutHeaderMainNav
-				accountDetails={accountDetails}
-				unreadMessageCount={unreadMessageCount}
-			/>
-		</Fragment>
-	);
-}
-
-function AppLayoutHeaderMenuTrigger({
-	unreadMessageCount,
-}: {
-	unreadMessageCount?: number;
-}) {
-	const { isMenuOpen, showMenu, desktopShowMenuButtonRef } =
-		useAppLayoutContext();
-	return (
-		<Flex
-			// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-			// @ts-ignore
-			ref={desktopShowMenuButtonRef}
-			as={BaseButton}
-			onClick={showMenu}
-			aria-label={
-				unreadMessageCount
-					? `Open menu, ${unreadMessageCount} messages`
-					: `Open menu`
-			}
-			borderRight
-			borderColor="muted"
-			borderRightWidth={{ xs: undefined, lg: 'sm' }}
-			flexDirection="column"
-			alignItems="center"
-			justifyContent="center"
-			gap={0.25}
-			height={HEADER_HEIGHT}
-			width={HEADER_HEIGHT}
-			fontSize="xs"
-			color="action"
-			focus
-			css={{
-				display: 'none',
-				flexShrink: 0,
-				'&:hover': {
-					background: boxPalette.backgroundShade,
-					textDecoration: 'underline',
-				},
-				[tokens.mediaQuery.min.lg]: {
-					display: isMenuOpen ? 'none' : 'flex',
-					position: 'fixed',
-					top: 0,
-					left: 0,
-				},
-			}}
-		>
-			<Flex
-				as="span"
-				css={{
-					textDecoration: 'none',
-					'& span:last-of-type': {
-						position: 'absolute',
-						transform: `translateX(1.6rem)`,
-					},
-				}}
-			>
-				<MenuIcon aria-hidden />
-				{unreadMessageCount ? (
-					<NotificationBadge
-						aria-hidden="true"
-						tone="action"
-						value={unreadMessageCount}
-						max={99}
-					/>
-				) : null}
-			</Flex>
-			Menu
+			<AppLayoutHeaderNav accountDetails={accountDetails} />
 		</Flex>
 	);
 }

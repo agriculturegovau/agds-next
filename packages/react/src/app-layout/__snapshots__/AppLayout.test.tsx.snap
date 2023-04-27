@@ -1,53 +1,19 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`AppLayout Open renders correctly 1`] = `
+exports[`AppLayout renders correctly 1`] = `
 <div>
   <div
-    class="css-nbrxk-boxStyles-AppLayoutContent"
-    style="margin-left: 17.5rem;"
+    class="css-1q8dikz-AppLayoutGrid"
   >
     <header
-      class="css-1cy2vru-dark-light-boxStyles-AppLayoutHeader"
+      class="css-c88wtn-dark-boxStyles-AppLayoutHeader"
       id="header"
     >
-      <button
-        aria-label="Open menu"
-        class="css-1pxsyc6-BaseButton-boxStyles-AppLayoutHeaderMenuTrigger"
-        type="button"
-      >
-        <span
-          class="css-cf5af3-boxStyles-AppLayoutHeaderMenuTrigger"
-        >
-          <svg
-            aria-hidden="true"
-            class="css-9s3cfn-Icon"
-            clip-rule="evenodd"
-            focusable="false"
-            height="24"
-            role="img"
-            viewBox="0 0 24 24"
-            width="24"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M3 6H21"
-            />
-            <path
-              d="M3 12H21"
-            />
-            <path
-              d="M3 18H21"
-            />
-          </svg>
-        </span>
-        Menu
-      </button>
       <div
-        class="css-1sdw6d-AppLayoutHeaderBrand"
-        style="margin-left: 0rem;"
+        class="css-1aywuo5-boxStyles"
       >
         <a
-          class="css-1wpax3t-boxStyles-AppLayoutHeaderBrand"
+          class="css-1i04zgw-boxStyles-AppLayoutHeaderBrand"
           href="#"
         >
           <svg
@@ -81,7 +47,7 @@ exports[`AppLayout Open renders correctly 1`] = `
             />
           </svg>
           <div
-            class="css-1oa0omf-boxStyles-AppLayoutHeaderBrand"
+            class="css-tq3w1z-boxStyles-AppLayoutHeaderBrand"
           >
             <span
               class="css-1lv1g9v-boxStyles-Text"
@@ -95,43 +61,38 @@ exports[`AppLayout Open renders correctly 1`] = `
             </span>
           </div>
         </a>
+        <a
+          class="css-a3q8q0-boxStyles-AppLayoutHeaderAccount"
+          href="/account/preferences"
+        >
+          <div
+            class="css-o80hmi-boxStyles"
+          >
+            <span
+              class="css-19uuw7q-boxStyles-Text"
+            >
+              Toto Wolff
+            </span>
+            <span
+              class="css-1lp7dl8-boxStyles-Text"
+            >
+              Orange Meat Works
+            </span>
+          </div>
+          <span
+            aria-hidden="true"
+            class="css-1cow25h-boxStyles-Avatar"
+          >
+            TW
+          </span>
+        </a>
       </div>
-      <a
-        class="css-1gfeoyi-boxStyles-AppLayoutHeaderAccountDetails"
-        href="/account/preferences"
+      <div
+        class="css-wbnnm8-boxStyles-AppLayoutHeaderNav"
       >
-        <div
-          class="css-1onnlei-boxStyles"
-        >
-          <span
-            class="css-19uuw7q-boxStyles-Text"
-          >
-            Toto Wolff
-          </span>
-          <span
-            class="css-1lp7dl8-boxStyles-Text"
-          >
-            Orange Meat Works
-          </span>
-        </div>
-        <span
-          aria-hidden="true"
-          class="css-1cow25h-boxStyles-Avatar"
-        >
-          TW
-        </span>
-      </a>
-    </header>
-    <div
-      class="css-1ivols5-dark-boxStyles-AppLayoutHeaderMainNav"
-    >
-      <button
-        aria-label="Open menu"
-        class="css-6e6ykx-BaseButton"
-        type="button"
-      >
-        <span
-          class="css-1iuyxmy-boxStyles-AppLayoutHeaderMainNav"
+        <button
+          class="css-lha977-BaseButton-boxStyles-AppLayoutHeaderNavMenuButton"
+          type="button"
         >
           <svg
             aria-hidden="true"
@@ -154,114 +115,49 @@ exports[`AppLayout Open renders correctly 1`] = `
               d="M3 18H21"
             />
           </svg>
-        </span>
-        <span>
-          Menu
-        </span>
-      </button>
-      <a
-        href="/account/preferences"
-      >
-        <svg
-          aria-hidden="true"
-          class="css-dgj9fa-Icon"
-          clip-rule="evenodd"
-          focusable="false"
-          height="24"
-          role="img"
-          viewBox="0 0 24 24"
-          width="24"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M4.5 19.1773C6.74319 17.9616 9.42279 17.0003 11.9999 17.0003C14.5769 17.0003 17.2567 17.9618 19.4999 19.1775M15.2053 9.95293C15.2036 10.4573 15.0723 10.9535 14.823 11.3977C14.5737 11.842 14.2141 12.2205 13.7759 12.5C13.3377 12.7794 12.8345 12.9511 12.3106 13C11.7867 13.0489 11.2584 12.9733 10.7722 12.7801C10.286 12.5869 9.85698 12.2819 9.52298 11.892C9.18899 11.5022 8.96036 11.0396 8.85721 10.545C8.75406 10.0504 8.7796 9.53905 8.93158 9.05615C9.08357 8.57326 9.35732 8.13367 9.72865 7.77621C10.1769 7.34467 10.7489 7.05056 11.372 6.93123C11.9951 6.81191 12.6412 6.87274 13.2281 7.10602C13.815 7.3393 14.3164 7.73449 14.6684 8.2414C15.0204 8.7483 15.2073 9.34403 15.2053 9.95293Z"
-          />
-          <circle
-            cx="12"
-            cy="12"
-            r="10.5"
-          />
-        </svg>
-        <span>
-          Account
-        </span>
-      </a>
-    </div>
-    <aside
-      class="css-hi7ma4-dark-boxStyles-AppLayoutSideBarDesktop"
-      style="display: flex;"
-    >
-      <div
-        class="css-cntu5x-boxStyles"
-      >
-        <button
-          class="css-uolzrf-BaseButton-HideMenuButton"
-          type="button"
-        >
           <span>
-            <svg
-              aria-hidden="true"
-              class="css-9s3cfn-Icon"
-              clip-rule="evenodd"
-              focusable="false"
-              height="24"
-              role="img"
-              viewBox="0 0 24 24"
-              width="24"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M5 19L19 5"
-              />
-              <path
-                d="M19 19L5 5"
-              />
-            </svg>
-            <span
-              aria-hidden="true"
-            >
-              Close
-            </span>
-            <span
-              class="css-avudkd-VisuallyHidden"
-            >
-              Close Menu
-            </span>
-          </span>
-          <span>
-            <svg
-              aria-hidden="true"
-              class="css-9s3cfn-Icon"
-              clip-rule="evenodd"
-              focusable="false"
-              height="24"
-              role="img"
-              viewBox="0 0 24 24"
-              width="24"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <polyline
-                points="11 17 6 12 11 7"
-              />
-              <polyline
-                points="18 17 13 12 18 7"
-              />
-            </svg>
-            <span>
-              Hide menu
-            </span>
+            Menu
           </span>
         </button>
+        <a
+          class="css-1v957my-boxStyles-AppLayoutHeaderAccount"
+          href="/account/preferences"
+        >
+          <div
+            class="css-o80hmi-boxStyles"
+          >
+            <span
+              class="css-19uuw7q-boxStyles-Text"
+            >
+              Toto Wolff
+            </span>
+            <span
+              class="css-1lp7dl8-boxStyles-Text"
+            >
+              Orange Meat Works
+            </span>
+          </div>
+          <span
+            aria-hidden="true"
+            class="css-1cow25h-boxStyles-Avatar"
+          >
+            TW
+          </span>
+        </a>
       </div>
+    </header>
+    <aside
+      class="css-qmgybk-boxStyles-AppLayoutSidebar"
+    >
       <nav
         aria-label="main"
-        class="css-o80hmi-boxStyles"
+        class="css-1gsgqbm-boxStyles"
       >
         <ul
           class="css-o80hmi-boxStyles"
         >
           <li
-            class="css-42n47j-AppLayoutSidebarNavItemInner"
+            class="css-1dlv8vn-AppLayoutSidebarNavItemInner"
           >
             <a
               aria-current="page"
@@ -269,7 +165,7 @@ exports[`AppLayout Open renders correctly 1`] = `
             >
               <svg
                 aria-hidden="true"
-                class="css-9s3cfn-Icon"
+                class="css-qhpjst-Icon"
                 clip-rule="evenodd"
                 focusable="false"
                 height="24"
@@ -291,14 +187,14 @@ exports[`AppLayout Open renders correctly 1`] = `
             </a>
           </li>
           <li
-            class="css-1fq9ccg-AppLayoutSidebarNavItemInner"
+            class="css-172k8w9-AppLayoutSidebarNavItemInner"
           >
             <a
               href="#establishments"
             >
               <svg
                 aria-hidden="true"
-                class="css-9s3cfn-Icon"
+                class="css-qhpjst-Icon"
                 clip-rule="evenodd"
                 focusable="false"
                 height="24"
@@ -330,14 +226,14 @@ exports[`AppLayout Open renders correctly 1`] = `
             </a>
           </li>
           <li
-            class="css-1fq9ccg-AppLayoutSidebarNavItemInner"
+            class="css-172k8w9-AppLayoutSidebarNavItemInner"
           >
             <a
               href="#intelligence"
             >
               <svg
                 aria-hidden="true"
-                class="css-9s3cfn-Icon"
+                class="css-qhpjst-Icon"
                 clip-rule="evenodd"
                 focusable="false"
                 height="24"
@@ -356,14 +252,14 @@ exports[`AppLayout Open renders correctly 1`] = `
             </a>
           </li>
           <li
-            class="css-1fq9ccg-AppLayoutSidebarNavItemInner"
+            class="css-172k8w9-AppLayoutSidebarNavItemInner"
           >
             <a
               href="#compliance"
             >
               <svg
                 aria-hidden="true"
-                class="css-9s3cfn-Icon"
+                class="css-qhpjst-Icon"
                 clip-rule="evenodd"
                 focusable="false"
                 height="24"
@@ -395,14 +291,14 @@ exports[`AppLayout Open renders correctly 1`] = `
             />
           </li>
           <li
-            class="css-1pokcq1-AppLayoutSidebarNavItemInner"
+            class="css-5xtwjg-AppLayoutSidebarNavItemInner"
           >
             <a
               href="#account/messages"
             >
               <svg
                 aria-hidden="true"
-                class="css-9s3cfn-Icon"
+                class="css-qhpjst-Icon"
                 clip-rule="evenodd"
                 focusable="false"
                 height="24"
@@ -426,14 +322,14 @@ exports[`AppLayout Open renders correctly 1`] = `
             </a>
           </li>
           <li
-            class="css-1fq9ccg-AppLayoutSidebarNavItemInner"
+            class="css-172k8w9-AppLayoutSidebarNavItemInner"
           >
             <a
               href="#account/settings"
             >
               <svg
                 aria-hidden="true"
-                class="css-9s3cfn-Icon"
+                class="css-qhpjst-Icon"
                 clip-rule="evenodd"
                 focusable="false"
                 height="24"
@@ -457,14 +353,14 @@ exports[`AppLayout Open renders correctly 1`] = `
             </a>
           </li>
           <li
-            class="css-1fq9ccg-AppLayoutSidebarNavItemInner"
+            class="css-172k8w9-AppLayoutSidebarNavItemInner"
           >
             <a
               href="#help"
             >
               <svg
                 aria-hidden="true"
-                class="css-9s3cfn-Icon"
+                class="css-qhpjst-Icon"
                 clip-rule="evenodd"
                 focusable="false"
                 height="24"
@@ -491,7 +387,7 @@ exports[`AppLayout Open renders correctly 1`] = `
             />
           </li>
           <li
-            class="css-1fq9ccg-AppLayoutSidebarNavItemInner"
+            class="css-172k8w9-AppLayoutSidebarNavItemInner"
           >
             <button
               class="css-6e6ykx-BaseButton"
@@ -499,7 +395,7 @@ exports[`AppLayout Open renders correctly 1`] = `
             >
               <svg
                 aria-hidden="true"
-                class="css-9s3cfn-Icon"
+                class="css-qhpjst-Icon"
                 clip-rule="evenodd"
                 focusable="false"
                 height="24"
@@ -526,91 +422,67 @@ exports[`AppLayout Open renders correctly 1`] = `
         </ul>
       </nav>
     </aside>
-    <main
-      id="main-content"
+    <div
+      class="css-yurbt-boxStyles-AppLayoutContent"
     >
-      <p>
-        Page content
-      </p>
-    </main>
-    <footer
-      class="css-owhoi8-AppLayoutFooter"
-    >
-      <div
-        class="css-ou39vu-boxStyles"
+      <main
+        class="css-z5n8zt-renderAppLayout"
+        id="main-content"
+        tabindex="-1"
+      >
+        <p>
+          Page content
+        </p>
+      </main>
+      <footer
+        class="css-owhoi8-AppLayoutFooter"
       >
         <div
-          class="css-1rhmzip-boxStyles"
+          class="css-ou39vu-boxStyles"
         >
           <div
-            class="css-1yys21m-boxStyles"
+            class="css-1rhmzip-boxStyles"
           >
-            <nav
-              aria-label="footer"
+            <div
+              class="css-1yys21m-boxStyles"
             >
-              <ul
-                class="css-u0m30q-boxStyles"
+              <nav
+                aria-label="footer"
               >
-                <li
-                  class="css-79i25n-boxStyles"
+                <ul
+                  class="css-u0m30q-boxStyles"
                 >
-                  <a
-                    class="css-38ppen-TextLink"
-                    href="/"
+                  <li
+                    class="css-79i25n-boxStyles"
                   >
-                    Home
-                  </a>
-                </li>
-                <li
-                  class="css-79i25n-boxStyles"
-                >
-                  <a
-                    class="css-38ppen-TextLink"
-                    href="https://design-system.agriculture.gov.au/storybook/index.html"
-                  >
-                    Storybook
-                  </a>
-                </li>
-                <li
-                  class="css-79i25n-boxStyles"
-                >
-                  <a
-                    class="css-38ppen-TextLink"
-                    href="https://design-system.agriculture.gov.au/playroom/index.html"
-                  >
-                    Playroom
-                  </a>
-                </li>
-                <li
-                  class="css-79i25n-boxStyles"
-                >
-                  <a
-                    class="css-38ppen-TextLink"
-                    href="https://github.com/steelthreads/agds-starter-kit"
-                  >
-                    Starter kit
-                  </a>
-                </li>
-              </ul>
-            </nav>
-            <hr
-              aria-hidden="true"
-              class="css-1vt7i89-AppLayoutFooterDivider"
-            />
-            <span
-              class="css-1sbhbx-boxStyles-Text"
-            >
-              We acknowledge the traditional owners of country throughout Australia and recognise their continuing connection to land, waters and culture. We pay our respects to their Elders past, present and emerging.
-            </span>
-            <span
-              class="css-1sbhbx-boxStyles-Text"
-            >
-              © 2023 Department of Agriculture, Fisheries and Forestry
-            </span>
+                    <a
+                      class="css-38ppen-TextLink"
+                      href="/"
+                    >
+                      Home
+                    </a>
+                  </li>
+                </ul>
+              </nav>
+              <hr
+                aria-hidden="true"
+                class="css-1vt7i89-AppLayoutFooterDivider"
+              />
+              <span
+                class="css-1sbhbx-boxStyles-Text"
+              >
+                We acknowledge the traditional owners of country throughout Australia and recognise their continuing connection to land, waters and culture. We pay our respects to their Elders past, present and emerging.
+              </span>
+              <span
+                class="css-1sbhbx-boxStyles-Text"
+              >
+                © 2023 Department of Agriculture, Fisheries and Forestry
+              </span>
+            </div>
           </div>
         </div>
-      </div>
-    </footer>
+      </footer>
+    </div>
   </div>
 </div>
 `;

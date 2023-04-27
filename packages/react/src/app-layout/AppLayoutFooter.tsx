@@ -3,11 +3,14 @@ import { Stack } from '../box';
 import { Content } from '../content';
 import { boxPalette } from '../core';
 
-export type AppLayoutFooterProps = PropsWithChildren<{}>;
+export type AppLayoutFooterProps = PropsWithChildren<{
+	/** Defines an identifier (ID) which must be unique. */
+	id?: string;
+}>;
 
-export function AppLayoutFooter({ children }: AppLayoutFooterProps) {
+export function AppLayoutFooter({ children, id }: AppLayoutFooterProps) {
 	return (
-		<footer css={{ marginTop: 'auto' }}>
+		<footer css={{ marginTop: 'auto' }} id={id}>
 			<Content>
 				<Stack
 					paddingY={3}

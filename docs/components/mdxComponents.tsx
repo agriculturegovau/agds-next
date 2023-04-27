@@ -21,6 +21,7 @@ import {
 	TableHeader,
 	TableWrapper,
 } from '@ag.ds-next/react/table';
+import { mapSpacing } from '@ag.ds-next/react/core';
 import { slugify } from '../lib/slugify';
 import { withBasePath } from '../lib/img';
 import generatedComponentPropsData from '../__generated__/componentProps.json';
@@ -46,6 +47,19 @@ export const mdxComponents: MDXRemoteProps['components'] = {
 	},
 	img: ({ alt, src, ...props }: ImgHTMLAttributes<HTMLImageElement>) => (
 		<img alt={alt} src={withBasePath(src)} {...props} />
+	),
+	ImageWithBorder: ({
+		alt,
+		src,
+		...props
+	}: ImgHTMLAttributes<HTMLImageElement>) => (
+		<Box
+			border
+			borderColor="muted"
+			css={{ marginTop: mapSpacing(1.5), img: { display: 'block' } }}
+		>
+			<img src={withBasePath(src)} alt={alt} {...props} />
+		</Box>
 	),
 	ButtonLink,
 	FigmaEmbed: ({ src }: { src: string }) => (

@@ -1,21 +1,16 @@
-import { createContext, RefObject, useContext } from 'react';
+import { createContext, useContext } from 'react';
 
 export type AppLayoutContextType = {
-	isMobile: boolean | undefined;
-	isMenuOpen: boolean;
-	showMenu: () => void;
-	hideMenu: () => void;
-	mobileShowMenuButtonRef: RefObject<HTMLButtonElement>;
-	desktopShowMenuButtonRef: RefObject<HTMLButtonElement>;
-	hideMenuButtonRef: RefObject<HTMLButtonElement>;
+	focusMode: boolean;
+	isMobileMenuOpen: boolean;
+	openMobileMenu: () => void;
+	closeMobileMenu: () => void;
 };
 
-// Create new context
 export const AppLayoutContext = createContext<AppLayoutContextType | undefined>(
 	undefined
 );
 
-// export hook to access context
 export function useAppLayoutContext() {
 	const context = useContext(AppLayoutContext);
 
