@@ -1,28 +1,30 @@
 import { Avatar } from '../avatar';
-import { Flex } from '../box';
+import { Flex, FlexProps } from '../box';
 import { useLinkComponent } from '../core';
 import { Text } from '../text';
 import type { AppLayoutHeaderProps } from './AppLayoutHeader';
 
-export type AppLayoutHeaderAccountDetailsProps =
-	AppLayoutHeaderProps['accountDetails'];
+export type AppLayoutHeaderAccountProps =
+	AppLayoutHeaderProps['accountDetails'] & {
+		display?: FlexProps['display'];
+	};
 
-export function AppLayoutHeaderAccountDetails({
+export function AppLayoutHeaderAccount({
 	name,
 	secondaryText,
 	href,
-}: AppLayoutHeaderAccountDetailsProps) {
+	display,
+}: AppLayoutHeaderAccountProps) {
 	const Link = useLinkComponent();
 	return (
 		<Flex
 			as={Link}
-			display={{ xs: 'none', lg: 'flex' }}
+			display={display}
 			href={href}
 			alignItems="center"
 			focus
 			gap={1}
 			css={{
-				marginLeft: 'auto',
 				textDecoration: 'none',
 				textAlign: 'right',
 				'&:hover': {
@@ -32,7 +34,7 @@ export function AppLayoutHeaderAccountDetails({
 				},
 			}}
 		>
-			<Flex display={{ xs: 'none', lg: 'flex' }} flexDirection="column">
+			<Flex flexDirection="column">
 				<Text color="action" fontWeight="bold" fontSize="xs">
 					{name}
 				</Text>

@@ -1,18 +1,15 @@
 import { ComponentType, Fragment, PropsWithChildren, ReactNode } from 'react';
 import {
 	boxPalette,
-	fontGrid,
 	LinkProps,
 	mapSpacing,
 	tokens,
 	useLinkComponent,
 } from '../core';
-import { VisuallyHidden } from '../a11y';
 import { Box, Flex, focusStyles } from '../box';
 import { BaseButton, BaseButtonProps } from '../button';
-import { ChevronsLeftIcon, CloseIcon, IconProps } from '../icon';
-import { useAppLayoutContext } from './AppLayoutContext';
-import { HEADER_HEIGHT } from './utils';
+import { IconProps } from '../icon';
+import { BORDER_WIDTH_XXL } from './utils';
 
 type NavLink = Omit<LinkProps, 'children'>;
 
@@ -27,6 +24,7 @@ export type NavItem = (NavLink | NavButton) & {
 export type AppLayoutSidebarNavProps = {
 	activePath?: string;
 	items: NavItem[][];
+	className?: string;
 };
 
 export function AppLayoutSidebarNav({
@@ -34,28 +32,25 @@ export function AppLayoutSidebarNav({
 	items,
 }: AppLayoutSidebarNavProps) {
 	return (
-		<Fragment>
-			<HideMenuButton />
-			<Flex as="nav" flexDirection="column" aria-label="main">
-				<Flex as="ul" flexDirection="column">
-					{items.map((group, idx, arr) => {
-						const isLastItem = idx === arr.length - 1;
-						return (
-							<Fragment key={idx}>
-								{group.map((item, idx) => (
-									<AppLayoutSidebarNavListItem
-										key={idx}
-										item={item}
-										activePath={activePath}
-									/>
-								))}
-								{!isLastItem ? <AppLayoutSidebarNavDivider /> : null}
-							</Fragment>
-						);
-					})}
-				</Flex>
+		<Flex as="nav" flexDirection="column" aria-label="main" paddingY={1.5}>
+			<Flex as="ul" flexDirection="column">
+				{items.map((group, idx, arr) => {
+					const isLastItem = idx === arr.length - 1;
+					return (
+						<Fragment key={idx}>
+							{group.map((item, idx) => (
+								<AppLayoutSidebarNavListItem
+									key={idx}
+									item={item}
+									activePath={activePath}
+								/>
+							))}
+							{!isLastItem ? <AppLayoutSidebarNavDivider /> : null}
+						</Fragment>
+					);
+				})}
 			</Flex>
-		</Fragment>
+		</Flex>
 	);
 }
 
@@ -79,7 +74,7 @@ function AppLayoutSidebarNavListItem({
 				hasEndElement={Boolean(endElement)}
 			>
 				<Link aria-current={active ? 'page' : undefined} {...restItemProps}>
-					{Icon ? <Icon /> : null}
+					{Icon ? <Icon color="inherit" /> : null}
 					<span>{label}</span>
 					{endElement}
 				</Link>
@@ -93,7 +88,7 @@ function AppLayoutSidebarNavListItem({
 			hasEndElement={Boolean(endElement)}
 		>
 			<BaseButton {...restItemProps}>
-				{Icon ? <Icon /> : null}
+				{Icon ? <Icon color="inherit" /> : null}
 				<span>{label}</span>
 				{endElement}
 			</BaseButton>
@@ -131,9 +126,20 @@ function AppLayoutSidebarNavItemInner({
 					color: boxPalette[isActive ? 'foregroundText' : 'foregroundAction'],
 
 					...(isActive && {
+						position: 'relative',
 						fontWeight: tokens.fontWeight.bold,
-						background: boxPalette.backgroundShade,
+						background: boxPalette.backgroundBody,
 						color: boxPalette.foregroundText,
+						'&:before': {
+							content: "''",
+							position: 'absolute',
+							top: 0,
+							left: 0,
+							bottom: 0,
+							borderLeftWidth: BORDER_WIDTH_XXL,
+							borderLeftStyle: 'solid',
+							borderLeftColor: boxPalette.foregroundAction,
+						},
 					}),
 
 					...(hasEndElement && {
@@ -142,15 +148,15 @@ function AppLayoutSidebarNavItemInner({
 						},
 					}),
 
-					...focusStyles,
-
 					'&:hover': {
-						background: boxPalette.backgroundShade,
+						background: boxPalette.backgroundBody,
 						color: boxPalette.foregroundText,
 						'& span:first-of-type': {
 							textDecoration: 'underline',
 						},
 					},
+
+					...focusStyles,
 				},
 			}}
 		>
@@ -176,80 +182,5 @@ function AppLayoutSidebarNavDivider() {
 				}}
 			/>
 		</Box>
-	);
-}
-
-function HideMenuButton() {
-	const { hideMenu, hideMenuButtonRef } = useAppLayoutContext();
-	return (
-		<Flex
-			height={HEADER_HEIGHT.md}
-			alignItems="center"
-			borderBottom
-			borderColor="muted"
-			paddingLeft={{ xs: 1, lg: 0 }}
-			flexShrink={0}
-		>
-			<BaseButton
-				ref={hideMenuButtonRef}
-				onClick={hideMenu}
-				css={{
-					// Mobile button styles
-					'> span:first-of-type': {
-						width: '100%',
-						display: 'flex',
-						flexDirection: 'column',
-						alignItems: 'center',
-						gap: mapSpacing(0.5),
-						boxSizing: 'border-box',
-						padding: mapSpacing(1),
-						color: boxPalette.foregroundAction,
-						...fontGrid('xs', 'default'),
-					},
-
-					// Desktop button styles
-					'> span:last-of-type': {
-						display: 'none', // Hide on mobile
-						width: '100%',
-						alignItems: 'center',
-						gap: mapSpacing(1),
-						boxSizing: 'border-box',
-						paddingLeft: mapSpacing(1.5),
-						paddingRight: mapSpacing(1.5),
-						paddingTop: mapSpacing(0.5),
-						paddingBottom: mapSpacing(0.5),
-						color: boxPalette.foregroundAction,
-						...fontGrid('xs', 'default'),
-
-						'&:hover': {
-							background: boxPalette.backgroundShade,
-							color: boxPalette.foregroundText,
-						},
-					},
-
-					...focusStyles,
-
-					[tokens.mediaQuery.min.lg]: {
-						width: '100%',
-						// Hide mobile button
-						'> span:first-of-type': { display: 'none' },
-						// Show desktop button
-						'> span:last-of-type': { display: 'flex' },
-					},
-				}}
-			>
-				{/** Mobile button content */}
-				<span>
-					<CloseIcon />
-					<span aria-hidden="true">Close</span>
-					<VisuallyHidden>Close Menu</VisuallyHidden>
-				</span>
-				{/** Desktop button content */}
-				<span>
-					<ChevronsLeftIcon />
-					<span>Hide menu</span>
-				</span>
-			</BaseButton>
-		</Flex>
 	);
 }
