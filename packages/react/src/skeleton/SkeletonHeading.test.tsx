@@ -19,7 +19,6 @@ describe('SkeletonHeading', () => {
 		const { container } = renderSkeletonHeading({ type: 'h1', width: '100%' });
 		expect(container).toHTMLValidate({
 			extends: ['html-validate:recommended'],
-			rules: { 'no-inline-style': 'off' },
 		});
 	});
 });

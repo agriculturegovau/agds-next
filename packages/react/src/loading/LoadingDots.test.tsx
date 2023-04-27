@@ -21,14 +21,12 @@ describe('LoadingDots', () => {
 		const { container } = render(<LoadingDotsExample />);
 		expect(container).toHTMLValidate({
 			extends: ['html-validate:recommended'],
-			rules: { 'no-inline-style': 'off' },
 		});
 	});
 	it('renders a valid HTML structure with role="status"', () => {
 		const { container } = render(<LoadingDotsExample role="status" />);
 		expect(container).toHTMLValidate({
 			extends: ['html-validate:recommended'],
-			rules: { 'no-inline-style': 'off' },
 		});
 	});
 });

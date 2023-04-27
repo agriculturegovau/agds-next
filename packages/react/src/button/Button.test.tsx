@@ -66,7 +66,6 @@ describe('Button', () => {
 			const { container } = renderButton({ loading: true });
 			expect(container).toHTMLValidate({
 				extends: ['html-validate:recommended'],
-				rules: { 'no-inline-style': 'off' },
 			});
 		});
 
