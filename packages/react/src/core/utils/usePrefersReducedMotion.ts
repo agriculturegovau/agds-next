@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 
-/** @deprecated */
 export function usePrefersReducedMotion() {
 	const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
 
