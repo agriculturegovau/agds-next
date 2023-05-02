@@ -1,96 +1,102 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react';
 import { useState } from 'react';
 import { subDays, addDays } from 'date-fns';
 import { Box, Stack } from '../box';
 import { Button, ButtonGroup } from '../button';
-import { DatePicker } from './DatePicker';
+import { DatePicker, DatePickerProps } from './DatePicker';
 
-export default {
+function ControlledDatePicker(props: DatePickerProps) {
+	const [value, setValue] = useState<Date>();
+	return <DatePicker {...props} value={value} onChange={setValue} />;
+}
+
+const meta: Meta<typeof DatePicker> = {
 	title: 'forms/DatePicker/DatePicker',
 	component: DatePicker,
-} as ComponentMeta<typeof DatePicker>;
-
-const Template: ComponentStory<typeof DatePicker> = (args) => {
-	const [value, setValue] = useState<Date>();
-	return <DatePicker {...args} value={value} onChange={setValue} />;
+	args: {
+		label: 'Example',
+	},
+	render: ControlledDatePicker,
 };
 
-export const Basic = Template.bind({});
-Basic.args = {
-	label: 'Example',
-};
+export default meta;
 
-export const Disabled = Template.bind({});
-Disabled.args = {
-	label: 'Example',
-	disabled: true,
+type Story = StoryObj<typeof DatePicker>;
+
+export const Basic: Story = {};
+
+export const Disabled: Story = {
+	args: {
+		disabled: true,
+	},
 };
 
 const today = new Date();
 const lastWeek = subDays(today, 7);
 const nextWeek = addDays(today, 7);
-export const MinMaxDates = Template.bind({});
-MinMaxDates.args = {
-	label: 'Example',
-	minDate: lastWeek,
-	maxDate: nextWeek,
+export const MinMaxDates: Story = {
+	args: {
+		minDate: lastWeek,
+		maxDate: nextWeek,
+	},
 };
 
-export const InitialMonth = Template.bind({});
-InitialMonth.args = {
-	label: 'Example',
-	initialMonth: new Date(1999, 11, 1),
+export const InitialMonth: Story = {
+	args: {
+		initialMonth: new Date(1999, 11, 1),
+	},
 };
 
-export const Required = Template.bind({});
-Required.args = {
-	required: true,
-	label: 'Example',
+export const Required: Story = {
+	args: {
+		required: true,
+	},
 };
 
-export const Invalid = Template.bind({});
-Invalid.args = {
-	label: 'Example',
-	message: 'Enter a valid date',
-	invalid: true,
+export const Invalid: Story = {
+	args: {
+		invalid: true,
+		message: 'Enter a valid date',
+	},
 };
 
-export const Hint = Template.bind({});
-Hint.args = {
-	label: 'Example',
-	hint: 'We will only use this to respond to your question',
+export const Hint: Story = {
+	args: {
+		hint: 'We will only use this to respond to your question',
+	},
 };
 
-export const Block = Template.bind({});
-Block.args = {
-	block: true,
-	label: 'Block',
+export const Block: Story = {
+	args: {
+		block: true,
+	},
 };
 
-export const ScrollExample: ComponentStory<typeof DatePicker> = (args) => (
-	<Box>
-		<Box height="1000px"></Box>
-		<Template {...args} />
-		<Box height="1000px"></Box>
-	</Box>
-);
-ScrollExample.args = {
-	label: 'Example',
+export const ScrollExample: Story = {
+	render: (props) => (
+		<Box>
+			<Box height="1000px"></Box>
+			<ControlledDatePicker {...props} />
+			<Box height="1000px"></Box>
+		</Box>
+	),
 };
 
-export const ControlledExample = () => {
-	const [value, setValue] = useState<Date>();
-	return (
-		<Stack gap={4} alignItems="flex-start">
-			<DatePicker label="Controlled" value={value} onChange={setValue} />
-			<ButtonGroup>
-				<Button onClick={() => setValue(new Date(1999, 11, 25))}>
-					Set pre-defined date
-				</Button>
-				<Button variant="secondary" onClick={() => setValue(undefined)}>
-					Clear
-				</Button>
-			</ButtonGroup>
-		</Stack>
-	);
+export const ClearableExample: Story = {
+	render: function Render(props) {
+		const [value, setValue] = useState<Date>();
+		return (
+			<Stack gap={4} alignItems="flex-start">
+				<DatePicker {...props} value={value} onChange={setValue} />
+				<ButtonGroup>
+					<Button onClick={() => setValue(new Date(1999, 11, 25))}>
+						Set pre-defined date
+					</Button>
+					<Button variant="secondary" onClick={() => setValue(undefined)}>
+						Clear
+					</Button>
+				</ButtonGroup>
+			</Stack>
+		);
+	},
 };

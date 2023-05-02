@@ -47,8 +47,14 @@ const formSchema = yup
 		entityNumber: yup.string().required('Enter your entity number'),
 		periodActive: yup
 			.object({
-				from: yupDateField.required('Enter a valid date'),
-				to: yupDateField.required('Enter a valid date'),
+				from: yupDateField
+					.required('Enter a valid date')
+					// Ensures the start date is always after the end date
+					.max(yup.ref('to'), 'Start date must be before the end date'),
+				to: yupDateField
+					.required('Enter a valid date')
+					// Ensures the start date is always after the end date
+					.min(yup.ref('from'), 'Start date must be before the end date'),
 			})
 			.required('Enter a valid date'),
 		// street address

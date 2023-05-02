@@ -20,8 +20,8 @@ export type GetDataFilters = {
 	businessName: string | undefined;
 	state: string | undefined;
 	requestDate: {
-		from: Date | undefined;
-		to: Date | undefined;
+		from: Date | string | undefined;
+		to: Date | string | undefined;
 	};
 	status: BusinessForAuditStatus | undefined;
 };
@@ -47,13 +47,13 @@ export const filterData = (
 
 	const { requestDate, state, status, businessName, assignee } = filters;
 
-	if (requestDate.from) {
+	if (requestDate.from && typeof requestDate.from !== 'string') {
 		if (business.requestDate < requestDate.from) {
 			isValid = false;
 		}
 	}
 
-	if (requestDate.to) {
+	if (requestDate.to && typeof requestDate.to !== 'string') {
 		if (business.requestDate > requestDate.to) {
 			isValid = false;
 		}
