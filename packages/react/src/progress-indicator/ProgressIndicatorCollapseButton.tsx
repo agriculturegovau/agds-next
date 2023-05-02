@@ -53,7 +53,7 @@ export const ProgressIndicatorCollapseButton = ({
 				size="sm"
 				weight="bold"
 				css={{
-					transition: `transform ${tokens.transition.duration} ${tokens.transition.timingFunction}`,
+					transition: `transform ${tokens.transition.duration}ms ${tokens.transition.timingFunction}`,
 					transform: `rotate(${isOpen ? 180 : 0}deg)`,
 				}}
 			/>

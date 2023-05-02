@@ -18,7 +18,7 @@ export const ModalCover = forwardRef<HTMLDivElement, ModalCoverProps>(
 					backgroundColor: `rgba(0, 0, 0, 0.8)`,
 					zIndex: 100,
 					overflowY: 'auto',
-					animation: `${animateFadeInOut} ${tokens.transition.duration} ${tokens.transition.timingFunction}`,
+					animation: `${animateFadeInOut} ${tokens.transition.duration}ms ${tokens.transition.timingFunction}`,
 				}}
 			>
 				{children}

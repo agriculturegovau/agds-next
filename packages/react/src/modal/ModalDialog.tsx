@@ -41,7 +41,7 @@ export const ModalDialog = ({
 					position: 'relative',
 					margin: '0 auto',
 					minHeight: '100vh',
-					animation: `${animateSlideInUp} ${tokens.transition.duration}  ${tokens.transition.timingFunction}`,
+					animation: `${animateSlideInUp} ${tokens.transition.duration}ms ${tokens.transition.timingFunction}`,
 					[tokens.mediaQuery.min.sm]: {
 						margin: `${mapSpacing(6)} auto ${mapSpacing(1)}`,
 						minHeight: 'auto',
