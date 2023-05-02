@@ -114,8 +114,8 @@ const borderWidth = {
 export type BorderWidth = keyof typeof borderWidth;
 
 const transition = {
-	duration: '250ms',
-	timingFunction: 'ease',
+	duration: 250, // in milliseconds (ms)
+	timingFunction: 'ease', // https://developer.mozilla.org/en-US/docs/Web/CSS/transition-timing-function
 };
 
 export const tokens = {
