@@ -24,7 +24,6 @@ import {
 	MainNavBackground,
 	localPalette,
 	localPaletteVars,
-	bottomBarPadding,
 } from './utils';
 import { CloseButton, OpenButton } from './MenuButtons';
 
@@ -222,13 +221,14 @@ function Overlay({ onClick }: { onClick: MouseEventHandler<HTMLDivElement> }) {
 function BottomBar() {
 	return (
 		<Box
-			paddingTop={bottomBarPadding}
+			borderBottom
+			borderBottomWidth="xxl"
 			css={{
 				position: 'absolute',
 				bottom: 0,
 				left: 0,
 				right: 0,
-				backgroundColor: localPalette.bottomBar,
+				borderBottomColor: localPalette.bottomBar,
 			}}
 		/>
 	);

@@ -1,7 +1,5 @@
 import { NavListLink, NavListItem } from './NavList';
 
-export const bottomBarPadding = 0.5;
-
 export const hoverMap = {
 	body: 'shade',
 	bodyAlt: 'shadeAlt',
