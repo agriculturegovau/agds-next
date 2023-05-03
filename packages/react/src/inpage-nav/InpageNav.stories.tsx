@@ -1,5 +1,5 @@
 import { Fragment } from 'react';
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react';
 import { Prose } from '../prose';
 import { Stack } from '../box';
 import {
@@ -10,16 +10,14 @@ import {
 	InpageNavTitle,
 } from './index';
 
-export default {
+const meta: Meta<typeof InpageNav> = {
 	title: 'navigation/InpageNav',
 	component: InpageNav,
-	subcomponents: {
-		InpageNavContainer,
-		InpageNavItem,
-		InpageNavItemContainer,
-		InpageNavTitle,
-	},
-} as ComponentMeta<typeof InpageNav>;
+};
+
+export default meta;
+
+type Story = StoryObj<typeof InpageNav>;
 
 const exampleLinks = [
 	{ href: '#section-1', label: 'Section 1' },
@@ -54,15 +52,17 @@ const ExampleContent = () => (
 	</Prose>
 );
 
-export const Basic: ComponentStory<typeof InpageNav> = (args) => (
-	<Stack gap={3}>
-		<InpageNav {...args} />
-		<ExampleContent />
-	</Stack>
-);
-Basic.args = {
-	title: 'On this page',
-	links: exampleLinks,
+export const Basic: Story = {
+	render: (args) => (
+		<Stack gap={3}>
+			<InpageNav {...args} />
+			<ExampleContent />
+		</Stack>
+	),
+	args: {
+		title: 'On this page',
+		links: exampleLinks,
+	},
 };
 
 export const Modular = () => (
