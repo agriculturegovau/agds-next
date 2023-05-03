@@ -19,7 +19,7 @@ exports[`Modal renders correctly 1`] = `
       <div
         aria-labelledby="modal-:r0:-title"
         aria-modal="true"
-        class="css-1vaislj-boxStyles-ModalDialog"
+        class="css-2sldpu-boxStyles-ModalDialog"
         role="dialog"
       >
         <h2
