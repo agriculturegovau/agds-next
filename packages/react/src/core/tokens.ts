@@ -109,6 +109,7 @@ const borderWidth = {
 	md: 2,
 	lg: 3,
 	xl: 4,
+	xxl: 8,
 } as const;
 
 export type BorderWidth = keyof typeof borderWidth;
