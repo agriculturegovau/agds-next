@@ -52,12 +52,12 @@ const colourTokens = {
 		bodyAlt: {
 			light: theme.lightBackgroundBodyAlt,
 			dark: theme.darkBackgroundBodyAlt,
-			desc: 'Used to help differentiate or highlight interface components that sit on `body` background. For example, hover states for interactive components, callouts, and Zebra stripes on tables.',
+			desc: 'Used as an alternative background.',
 		},
 		shade: {
 			light: theme.lightBackgroundShade,
 			dark: theme.darkBackgroundShade,
-			desc: 'Used as an alternative background.',
+			desc: 'Used to help differentiate or highlight interface components that sit on `body` background. For example, hover states for interactive components, callouts, and Zebra stripes on tables.',
 		},
 		shadeAlt: {
 			light: theme.lightBackgroundShadeAlt,
