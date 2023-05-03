@@ -10,7 +10,7 @@ const meta: Meta<typeof DataLoadingWithCards> = {
 export default meta;
 
 export const Cards: StoryObj<typeof DataLoadingWithCards> = {
-	storyName: 'with cards',
+	name: 'with cards',
 	render: () => (
 		<PageContent>
 			<DataLoadingWithCards />

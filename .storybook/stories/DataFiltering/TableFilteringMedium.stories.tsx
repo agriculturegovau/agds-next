@@ -59,6 +59,6 @@ const TableFilteringMediumExample = () => {
 };
 
 export const Medium: Story = {
-	storyName: 'Tables (Medium)',
+	name: 'Tables (Medium)',
 	render: TableFilteringMediumExample,
 };
