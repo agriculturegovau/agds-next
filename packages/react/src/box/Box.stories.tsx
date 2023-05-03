@@ -1,4 +1,5 @@
 import { Meta, StoryObj } from '@storybook/react';
+import { Fragment } from 'react';
 import { Box } from './Box';
 
 const meta: Meta<typeof Box> = {
@@ -29,13 +30,13 @@ export const Basic: Story = {
 export const ResponsivePadding: Story = {
 	args: {
 		children: (
-			<div>
+			<Fragment>
 				<div>Responsive padding</div>
 				<div>
 					Change the size of the browser window to see the padding change
 				</div>
 				<ResponsiveSizeIndicator />
-			</div>
+			</Fragment>
 		),
 		border: true,
 		rounded: true,
