@@ -147,7 +147,7 @@ exports[`AppLayout renders correctly 1`] = `
       </div>
     </header>
     <aside
-      class="css-qmgybk-boxStyles-AppLayoutSidebar"
+      class="css-1r9ioti-boxStyles-AppLayoutSidebar"
     >
       <nav
         aria-label="main"
@@ -157,7 +157,7 @@ exports[`AppLayout renders correctly 1`] = `
           class="css-o80hmi-boxStyles"
         >
           <li
-            class="css-1dlv8vn-AppLayoutSidebarNavItemInner"
+            class="css-1y1qeh5-AppLayoutSidebarNavItemInner"
           >
             <a
               aria-current="page"
@@ -187,7 +187,7 @@ exports[`AppLayout renders correctly 1`] = `
             </a>
           </li>
           <li
-            class="css-172k8w9-AppLayoutSidebarNavItemInner"
+            class="css-1t06xnm-AppLayoutSidebarNavItemInner"
           >
             <a
               href="#establishments"
@@ -226,7 +226,7 @@ exports[`AppLayout renders correctly 1`] = `
             </a>
           </li>
           <li
-            class="css-172k8w9-AppLayoutSidebarNavItemInner"
+            class="css-1t06xnm-AppLayoutSidebarNavItemInner"
           >
             <a
               href="#intelligence"
@@ -252,7 +252,7 @@ exports[`AppLayout renders correctly 1`] = `
             </a>
           </li>
           <li
-            class="css-172k8w9-AppLayoutSidebarNavItemInner"
+            class="css-1t06xnm-AppLayoutSidebarNavItemInner"
           >
             <a
               href="#compliance"
@@ -291,7 +291,7 @@ exports[`AppLayout renders correctly 1`] = `
             />
           </li>
           <li
-            class="css-5xtwjg-AppLayoutSidebarNavItemInner"
+            class="css-1c7lu52-AppLayoutSidebarNavItemInner"
           >
             <a
               href="#account/messages"
@@ -322,7 +322,7 @@ exports[`AppLayout renders correctly 1`] = `
             </a>
           </li>
           <li
-            class="css-172k8w9-AppLayoutSidebarNavItemInner"
+            class="css-1t06xnm-AppLayoutSidebarNavItemInner"
           >
             <a
               href="#account/settings"
@@ -353,7 +353,7 @@ exports[`AppLayout renders correctly 1`] = `
             </a>
           </li>
           <li
-            class="css-172k8w9-AppLayoutSidebarNavItemInner"
+            class="css-1t06xnm-AppLayoutSidebarNavItemInner"
           >
             <a
               href="#help"
@@ -387,7 +387,7 @@ exports[`AppLayout renders correctly 1`] = `
             />
           </li>
           <li
-            class="css-172k8w9-AppLayoutSidebarNavItemInner"
+            class="css-1t06xnm-AppLayoutSidebarNavItemInner"
           >
             <button
               class="css-6e6ykx-BaseButton"

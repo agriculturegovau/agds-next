@@ -128,7 +128,7 @@ function AppLayoutSidebarNavItemInner({
 					...(isActive && {
 						position: 'relative',
 						fontWeight: tokens.fontWeight.bold,
-						background: boxPalette.backgroundBody,
+						background: boxPalette.backgroundShadeAlt,
 						color: boxPalette.foregroundText,
 						'&:before': {
 							content: "''",
@@ -149,7 +149,7 @@ function AppLayoutSidebarNavItemInner({
 					}),
 
 					'&:hover': {
-						background: boxPalette.backgroundBody,
+						background: boxPalette.backgroundShadeAlt,
 						color: boxPalette.foregroundText,
 						'& span:first-of-type': {
 							textDecoration: 'underline',

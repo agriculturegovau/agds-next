@@ -20,7 +20,7 @@ export function AppLayoutSidebar({ activePath, items }: AppLayoutSidebarProps) {
 			<Stack
 				as="aside"
 				gap={1}
-				background="shade"
+				background="bodyAlt"
 				borderRight
 				borderColor="muted"
 				flexGrow={1}
