@@ -196,6 +196,12 @@ export {
 	SummaryListItemAction,
 } from '@ag.ds-next/react/summary-list';
 export { FileInput } from '@ag.ds-next/react/file-input';
+export {
+	AppLayoutSidebar,
+	AppLayoutHeader,
+	AppLayoutFooter,
+	AppLayoutFooterDivider,
+} from '@ag.ds-next/react/app-layout';
 
 // Used to populate options on documentation site and playroom
 export { COUNTRY_OPTIONS } from '@ag.ds-next/react/src/combobox/test-utils';

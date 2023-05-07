@@ -1,0 +1,64 @@
+---
+title: App layout
+description: The app layout provides a consistent way for users to navigate around a web application and access their account settings.
+group: Layout
+storybookPath: /story/layout-applayout--basic
+---
+
+## Overview
+
+The app layout is a single component that consists of 3 parts. All 3 parts should be used together across all pages of a web application.
+
+1. [App layout header](#app-layout-header)
+2. [App layout sidebar](#app-layout-sidebar)
+3. [App layout footer](#app-layout-footer)
+
+Use the app layout for web applications, not informational websites, as the layout is better suited to task-oriented interactions.
+
+<ImageWithBorder
+	alt="Screenshot of App layout components with annotations labelling the header, sidebar and footer"
+	src="/img/components/app-layout.png"
+/>
+
+## Usage guidelines
+
+<DoHeading />
+
+- use the app layout for web applications i.e. task oriented websites that users generally need to sign in to access.
+- use the app layout on all pages of an application
+- display the app layout sidebar by default
+- allow the app layout sidebar to be hidden via the “hide menu” action
+- hide the app layout sidebar for multi-page forms
+- use all parts of the app layout always
+
+<DontHeading />
+
+- use the app layout for informational websites, use the informational website templates instead: [home page](/patterns/home), [category page](/patterns/category), [subcategory page](/patterns/subcategory), and [content page](/patterns/content)
+- use some parts of this component and not others, they should always be used together.
+
+<ImageWithBorder
+	alt="Screenshot of App layout components in focus mode with annotations labelling the header and footer"
+	src="/img/components/app-layout-focus-mode.png"
+/>
+
+## App layout header
+
+The app layout header tells users what application they're using and displays the logo.
+
+- **Heading and subline** - The heading should be set to the website or service title and the subline can be used to provide additional information to describe your website or service.
+
+- **Account details** - A users name and avatar should be displayed in the top right corner to clearly show which account they're signed in to. Users can access their account settings by pressing on their account details. Secondary text can also be displayed under the user's name if needed e.g. to show the business name.
+
+## App layout sidebar
+
+The app layout sidebar houses the main navigational menu which provides users with a consistent way to navigate around a web application.
+
+Each menu item can have an optional icon on the left to help users scan the menu faster. Menu items can also have a notification badge on the right to indicate the number of notifications.
+
+The 'hide menu' action allows users to collapse the app layout sidebar to create more space for content and to reduce distractions.
+
+The app layout sidebar should be hidden by default while users are completing multi-page forms to reduce distractions (as seen in the following example). It can be shown again by pressing the menu button in the top left.
+
+## App layout footer
+
+The footer lives at the bottom of a page and generally contains copyright information and links to other sections of the website application.
