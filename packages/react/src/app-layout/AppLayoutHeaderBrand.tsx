@@ -6,7 +6,7 @@ export type AppLayoutHeaderBrandProps = {
 	href: string;
 	logo: JSX.Element;
 	heading: string;
-	subLine: string;
+	subLine?: string;
 };
 
 export function AppLayoutHeaderBrand({
@@ -50,9 +50,11 @@ export function AppLayoutHeaderBrand({
 				<Text fontSize="lg" fontWeight="bold">
 					{heading}
 				</Text>
-				<Text color="muted" fontSize="xs">
-					{subLine}
-				</Text>
+				{subLine ? (
+					<Text color="muted" fontSize="xs">
+						{subLine}
+					</Text>
+				) : null}
 			</Flex>
 		</Flex>
 	);

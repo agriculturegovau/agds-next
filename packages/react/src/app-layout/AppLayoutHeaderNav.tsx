@@ -34,10 +34,12 @@ export function AppLayoutHeaderNav({
 				{!focusMode ? (
 					<AppLayoutHeaderNavMenuButton onClick={openMobileMenu} />
 				) : null}
-				<AppLayoutHeaderAccount
-					display={{ xs: 'flex', lg: 'none' }}
-					{...accountDetails}
-				/>
+				{accountDetails ? (
+					<AppLayoutHeaderAccount
+						display={{ xs: 'flex', lg: 'none' }}
+						{...accountDetails}
+					/>
+				) : null}
 			</Flex>
 		</Fragment>
 	);

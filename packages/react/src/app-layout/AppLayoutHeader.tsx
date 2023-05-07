@@ -1,6 +1,5 @@
 import { Flex } from '../box';
 import { boxPalette, tokens } from '../core';
-import { BORDER_WIDTH_XXL } from './utils';
 import { AppLayoutHeaderBrand } from './AppLayoutHeaderBrand';
 import { AppLayoutHeaderAccount } from './AppLayoutHeaderAccount';
 import { AppLayoutHeaderNav } from './AppLayoutHeaderNav';
@@ -15,9 +14,9 @@ export type AppLayoutHeaderProps = {
 	/** The heading should be set to the website or service title. */
 	heading: string;
 	/** Used to provide additional information to describe your website or service. */
-	subLine: string;
+	subLine?: string;
 	/** Details for the authenticated account. */
-	accountDetails: {
+	accountDetails?: {
 		/** The name of the authenticated user. */
 		name: string;
 		/** Displayed under the users name if needed e.g. to show the business name. */
@@ -42,7 +41,7 @@ export function AppLayoutHeader({
 			palette="dark"
 			flexDirection="column"
 			css={{
-				borderBottomWidth: BORDER_WIDTH_XXL,
+				borderBottomWidth: tokens.borderWidth.xxl,
 				borderBottomStyle: 'solid',
 				borderColor: boxPalette.accent,
 				[tokens.mediaQuery.min.lg]: {
@@ -66,10 +65,12 @@ export function AppLayoutHeader({
 					logo={logo}
 					subLine={subLine}
 				/>
-				<AppLayoutHeaderAccount
-					display={{ xs: 'none', lg: 'flex' }}
-					{...accountDetails}
-				/>
+				{accountDetails ? (
+					<AppLayoutHeaderAccount
+						display={{ xs: 'none', lg: 'flex' }}
+						{...accountDetails}
+					/>
+				) : null}
 			</Flex>
 			<AppLayoutHeaderNav accountDetails={accountDetails} />
 		</Flex>

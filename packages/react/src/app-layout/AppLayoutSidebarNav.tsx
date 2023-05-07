@@ -9,7 +9,6 @@ import {
 import { Box, Flex, focusStyles } from '../box';
 import { BaseButton, BaseButtonProps } from '../button';
 import { IconProps } from '../icon';
-import { BORDER_WIDTH_XXL } from './utils';
 
 type NavLink = Omit<LinkProps, 'children'>;
 
@@ -136,7 +135,7 @@ function AppLayoutSidebarNavItemInner({
 							top: 0,
 							left: 0,
 							bottom: 0,
-							borderLeftWidth: BORDER_WIDTH_XXL,
+							borderLeftWidth: tokens.borderWidth.xxl,
 							borderLeftStyle: 'solid',
 							borderLeftColor: boxPalette.foregroundAction,
 						},
