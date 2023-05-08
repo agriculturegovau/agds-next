@@ -23,6 +23,7 @@ export function AppLayoutHeaderAccount({
 			href={href}
 			alignItems="center"
 			focus
+			flexShrink={0}
 			gap={1}
 			css={{
 				textDecoration: 'none',
@@ -34,7 +35,13 @@ export function AppLayoutHeaderAccount({
 				},
 			}}
 		>
-			<Flex flexDirection="column">
+			<Flex
+				flexDirection="column"
+				css={{
+					// Wrap long names at a sensible width
+					maxWidth: '16rem',
+				}}
+			>
 				<Text color="action" fontWeight="bold" fontSize="xs">
 					{name}
 				</Text>
