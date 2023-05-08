@@ -74,4 +74,4 @@ export function getContentBreadcrumbs(slug: string) {
 	});
 }
 
-export type Foundation = Awaited<ReturnType<typeof getContent>>;
+export type Content = Awaited<ReturnType<typeof getContent>>;

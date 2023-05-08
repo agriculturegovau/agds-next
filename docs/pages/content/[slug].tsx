@@ -15,7 +15,7 @@ import {
 } from '../../lib/mdx/content';
 import { generateToc } from '../../lib/generateToc';
 
-export default function ContentsPage({
+export default function ContentPage({
 	breadcrumbs,
 	foundation,
 	toc,
