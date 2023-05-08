@@ -35,7 +35,7 @@ export function AppLayoutHeaderBrand({
 				textDecoration: 'none',
 				'&:hover': packs.underline,
 				// Logo styles
-				svg: { display: 'block', height: '3.75rem' },
+				svg: { display: 'block', height: '3.75rem', flexShrink: 0 },
 			}}
 		>
 			{logo}

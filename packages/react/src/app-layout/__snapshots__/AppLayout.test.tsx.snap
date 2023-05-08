@@ -13,7 +13,7 @@ exports[`AppLayout renders correctly 1`] = `
         class="css-1aywuo5-boxStyles"
       >
         <a
-          class="css-2ixix2-boxStyles-AppLayoutHeaderBrand"
+          class="css-10e1rls-boxStyles-AppLayoutHeaderBrand"
           href="#"
         >
           <svg
@@ -62,11 +62,11 @@ exports[`AppLayout renders correctly 1`] = `
           </div>
         </a>
         <a
-          class="css-a3q8q0-boxStyles-AppLayoutHeaderAccount"
+          class="css-gsfq1r-boxStyles-AppLayoutHeaderAccount"
           href="/account/preferences"
         >
           <div
-            class="css-o80hmi-boxStyles"
+            class="css-1bv5hke-boxStyles-AppLayoutHeaderAccount"
           >
             <span
               class="css-19uuw7q-boxStyles-Text"
@@ -120,11 +120,11 @@ exports[`AppLayout renders correctly 1`] = `
           </span>
         </button>
         <a
-          class="css-1v957my-boxStyles-AppLayoutHeaderAccount"
+          class="css-wk4htx-boxStyles-AppLayoutHeaderAccount"
           href="/account/preferences"
         >
           <div
-            class="css-o80hmi-boxStyles"
+            class="css-1bv5hke-boxStyles-AppLayoutHeaderAccount"
           >
             <span
               class="css-19uuw7q-boxStyles-Text"
