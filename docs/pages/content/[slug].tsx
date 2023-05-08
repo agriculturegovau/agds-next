@@ -43,6 +43,31 @@ export default function ContentPage({
 					) : null}
 					<Prose>
 						<MDXRemote {...foundation.source} components={mdxComponents} />
+						<h2>Related links</h2>
+						<ul>
+							<li>
+								<a>How to create guidance in the Export Service</a>
+							</li>
+							<li>
+								<a href="./content-structure">Content structure</a>
+							</li>
+							<li>
+								<a href="./content-styles">Content styles</a>
+							</li>
+							<li>
+								<a href="./content-patterns">Content patterns</a>
+							</li>
+							<li>
+								<a href="https://design-system.agriculture.gov.au/foundations/design-principles">
+									Design principles
+								</a>
+							</li>
+							<li>
+								<a href="https://www.stylemanual.gov.au/writing-and-designing-content">
+									Writing and designing content I Style Manual
+								</a>
+							</li>
+						</ul>
 					</Prose>
 				</PageLayout>
 			</AppLayout>
