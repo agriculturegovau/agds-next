@@ -43,6 +43,7 @@ export function AppLayoutHeaderBrand({
 				flexDirection="column"
 				justifyContent="center"
 				alignItems="flex-start"
+				maxWidth={tokens.maxWidth.bodyText}
 				css={{
 					// Border between logo and heading/subLine
 					[tokens.mediaQuery.min.md]: {
