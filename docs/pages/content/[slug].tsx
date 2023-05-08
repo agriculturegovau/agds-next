@@ -19,18 +19,18 @@ import { generateToc } from '../../lib/generateToc';
 export default function ContentPage({
 	breadcrumbs,
 	navLinks,
-	foundation,
+	document,
 	toc,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
 	return (
 		<>
 			<DocumentTitle
-				title={foundation.title}
-				description={foundation.description}
+				title={document.title}
+				description={document.description}
 			/>
 			<AppLayout applyMainElement={false}>
 				<PageLayout
-					editPath={`/docs/content/content/${foundation.slug}.mdx`}
+					editPath={`/docs/content/content/${document.slug}.mdx`}
 					breadcrumbs={breadcrumbs}
 					applyMainElement={true}
 					sideNav={{
@@ -40,8 +40,8 @@ export default function ContentPage({
 					}}
 				>
 					<PageTitle
-						title={foundation.title}
-						introduction={foundation.description}
+						title={document.title}
+						introduction={document.description}
 					/>
 					{toc?.length > 1 ? (
 						<InpageNav
@@ -50,7 +50,7 @@ export default function ContentPage({
 						/>
 					) : null}
 					<Prose>
-						<MDXRemote {...foundation.source} components={mdxComponents} />
+						<MDXRemote {...document.source} components={mdxComponents} />
 						<h2>Related links</h2>
 						<ul>
 							<li>
@@ -66,7 +66,7 @@ export default function ContentPage({
 								<a href="./content-patterns">Content patterns</a>
 							</li>
 							<li>
-								<a href="https://design-system.agriculture.gov.au/foundations/design-principles">
+								<a href="https://design-system.agriculture.gov.au/documents/design-principles">
 									Design principles
 								</a>
 							</li>
@@ -85,7 +85,7 @@ export default function ContentPage({
 
 export const getStaticProps: GetStaticProps<
 	{
-		foundation: Content;
+		document: Content;
 		navLinks: Awaited<ReturnType<typeof getContentNavLinks>>;
 		breadcrumbs: Awaited<ReturnType<typeof getContentBreadcrumbs>>;
 		toc: Awaited<ReturnType<typeof generateToc>>;
@@ -93,19 +93,19 @@ export const getStaticProps: GetStaticProps<
 	{ slug: string }
 > = async ({ params }) => {
 	const { slug } = params ?? {};
-	const foundation = slug ? await getContent(slug) : undefined;
+	const document = slug ? await getContent(slug) : undefined;
 	const navLinks = await getContentNavLinks();
 
-	if (!(foundation && slug)) {
+	if (!(document && slug)) {
 		return { notFound: true };
 	}
 
 	const breadcrumbs = await getContentBreadcrumbs(slug);
-	const toc = await generateToc(foundation.content);
+	const toc = await generateToc(document.content);
 
 	return {
 		props: {
-			foundation,
+			document,
 			navLinks,
 			breadcrumbs,
 			toc,

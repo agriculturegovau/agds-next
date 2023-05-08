@@ -1,29 +1,32 @@
 import { GetStaticProps, InferGetStaticPropsType } from 'next';
+import { MDXRemote } from 'next-mdx-remote';
 import { Box, Flex, Stack } from '@ag.ds-next/react/box';
 import { Card, CardInner, CardLink } from '@ag.ds-next/react/card';
 import { Columns } from '@ag.ds-next/react/columns';
 import { Text } from '@ag.ds-next/react/text';
+import { Prose } from '@ag.ds-next/react/prose';
 import { DocumentTitle } from '../../components/DocumentTitle';
 import { CategoryPageTemplate } from '../../components/CategoryPageTemplate';
-import { getContentList } from '../../lib/mdx/content';
-
-const title = 'Content';
-const description =
-	'Basic principles to create clear and consistent content in the Export Service. Learn how to express, structure and style content that meets users’ needs.';
+import { getContent, getContentList } from '../../lib/mdx/content';
+import { mdxComponents } from '../../components/mdxComponents';
 
 export default function ContentPage({
-	list,
+	document,
+	documentList,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
 	return (
 		<>
-			<DocumentTitle title={title} description={description} />
+			<DocumentTitle
+				title={document.title}
+				description={document.description}
+			/>
 			<CategoryPageTemplate
-				title={title}
-				description={description}
+				title={document.title}
+				description={document.description as string}
 				editPath="/docs/pages/content/index.tsx"
 			>
 				<Columns as="ul" cols={{ xs: 1, sm: 2, lg: 3 }}>
-					{list.map(({ slug, title, description }) => (
+					{documentList.map(({ slug, title, description }) => (
 						<Card key={slug} as="li" clickable shadow>
 							<Flex flexDirection="column-reverse">
 								<CardInner>
@@ -38,17 +41,24 @@ export default function ContentPage({
 						</Card>
 					))}
 				</Columns>
+				<Prose>
+					<MDXRemote {...document.source} components={mdxComponents} />
+				</Prose>
 			</CategoryPageTemplate>
 		</>
 	);
 }
 
 export const getStaticProps: GetStaticProps<{
-	list: Awaited<ReturnType<typeof getContentList>>;
+	document: Awaited<ReturnType<typeof getContent>>;
+	documentList: Awaited<ReturnType<typeof getContentList>>;
 }> = async () => {
+	const document = await getContent('index');
+	const documentList = await getContentList();
 	return {
 		props: {
-			list: await getContentList(),
+			documentList,
+			document,
 		},
 	};
 };
