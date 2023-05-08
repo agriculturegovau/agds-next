@@ -1,5 +1,5 @@
 import { RefObject, useState } from 'react';
-import { Flex, Stack } from '@ag.ds-next/react/box';
+import { Stack } from '@ag.ds-next/react/box';
 import { Button, ButtonLink } from '@ag.ds-next/react/button';
 import { PageContent } from '@ag.ds-next/react/content';
 import { FilterIcon, PlusIcon } from '@ag.ds-next/react/icon';
@@ -67,8 +67,8 @@ export const TableFilteringLarge = ({
 						The large filtering pattern is for cases where the number of
 						filterable fields exceeds 5. Our FilterModal is used to reveal all
 						options as the user elects to show them. You may elect to show up to
-						two 'primary' filters in the main content area next to the button
-						which opens the modal.
+						two &apos;primary&apos; filters in the main content area next to the
+						button which opens the modal.
 					</p>
 				</Prose>
 				<Stack gap={1}>
