@@ -13,7 +13,7 @@ exports[`AppLayout renders correctly 1`] = `
         class="css-1aywuo5-boxStyles"
       >
         <a
-          class="css-1i04zgw-boxStyles-AppLayoutHeaderBrand"
+          class="css-2ixix2-boxStyles-AppLayoutHeaderBrand"
           href="#"
         >
           <svg
