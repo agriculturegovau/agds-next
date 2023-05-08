@@ -74,4 +74,12 @@ export function getContentBreadcrumbs(slug: string) {
 	});
 }
 
+export async function getContentNavLinks() {
+	const contentList = await getContentList();
+	return contentList.map(({ title, slug }) => ({
+		href: `/content/${slug}`,
+		label: title,
+	}));
+}
+
 export type Content = Awaited<ReturnType<typeof getContent>>;

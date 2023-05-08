@@ -12,11 +12,13 @@ import {
 	getContent,
 	getContentBreadcrumbs,
 	Content,
+	getContentNavLinks,
 } from '../../lib/mdx/content';
 import { generateToc } from '../../lib/generateToc';
 
 export default function ContentPage({
 	breadcrumbs,
+	navLinks,
 	foundation,
 	toc,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
@@ -26,10 +28,16 @@ export default function ContentPage({
 				title={foundation.title}
 				description={foundation.description}
 			/>
-			<AppLayout>
+			<AppLayout applyMainElement={false}>
 				<PageLayout
 					editPath={`/docs/content/content/${foundation.slug}.mdx`}
 					breadcrumbs={breadcrumbs}
+					applyMainElement={true}
+					sideNav={{
+						title: 'Content',
+						titleLink: '/content',
+						items: navLinks,
+					}}
 				>
 					<PageTitle
 						title={foundation.title}
@@ -77,14 +85,16 @@ export default function ContentPage({
 
 export const getStaticProps: GetStaticProps<
 	{
-		breadcrumbs: Awaited<ReturnType<typeof getContentBreadcrumbs>>;
 		foundation: Content;
+		navLinks: Awaited<ReturnType<typeof getContentNavLinks>>;
+		breadcrumbs: Awaited<ReturnType<typeof getContentBreadcrumbs>>;
 		toc: Awaited<ReturnType<typeof generateToc>>;
 	},
 	{ slug: string }
 > = async ({ params }) => {
 	const { slug } = params ?? {};
 	const foundation = slug ? await getContent(slug) : undefined;
+	const navLinks = await getContentNavLinks();
 
 	if (!(foundation && slug)) {
 		return { notFound: true };
@@ -95,17 +105,16 @@ export const getStaticProps: GetStaticProps<
 
 	return {
 		props: {
-			breadcrumbs,
 			foundation,
+			navLinks,
+			breadcrumbs,
 			toc,
 		},
 	};
 };
 
 export const getStaticPaths = async () => {
-	const content = await (
-		await getContentList()
-	).filter(({ slug }) => !['tokens'].includes(slug));
+	const content = await getContentList();
 
 	return {
 		paths: content.map(({ slug }) => ({
