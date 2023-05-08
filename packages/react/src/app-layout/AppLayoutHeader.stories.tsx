@@ -61,3 +61,13 @@ export const WithoutUserSecondaryText: Story = {
 		},
 	},
 };
+
+export const WithLongUserName: Story = {
+	args: {
+		accountDetails: {
+			href: '#account',
+			name: 'Mobutu Sese Seko Kuku Ngbendu Wa Za Banga',
+			secondaryText: 'Orange Meat Works',
+		},
+	},
+};
