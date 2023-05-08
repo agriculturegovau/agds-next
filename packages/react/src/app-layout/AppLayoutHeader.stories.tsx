@@ -41,7 +41,7 @@ export const FocusMode: Story = {
 	),
 };
 
-export const WithouSubline: Story = {
+export const WithoutSubline: Story = {
 	args: {
 		subLine: undefined,
 	},
