@@ -1,5 +1,11 @@
 import { Flex } from '../box';
-import { boxPalette, mapSpacing, tokens, useLinkComponent } from '../core';
+import {
+	boxPalette,
+	mapSpacing,
+	packs,
+	tokens,
+	useLinkComponent,
+} from '../core';
 import { Text } from '../text';
 
 export type AppLayoutHeaderBrandProps = {
@@ -27,6 +33,7 @@ export function AppLayoutHeaderBrand({
 			color="text"
 			css={{
 				textDecoration: 'none',
+				'&:hover': packs.underline,
 				// Logo styles
 				svg: { display: 'block', height: '3.75rem' },
 			}}
