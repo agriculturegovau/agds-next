@@ -25,6 +25,7 @@ export function HeaderBrand({
 
 	return (
 		<Flex
+			inline
 			as={Link}
 			href={href}
 			flexDirection={{ xs: 'column', md: 'row' }}
