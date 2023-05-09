@@ -27,6 +27,7 @@ export function HeaderBrand({
 		<Flex
 			as={Link}
 			href={href}
+			inline
 			flexDirection={{ xs: 'column', md: 'row' }}
 			color="text"
 			gap={1}
