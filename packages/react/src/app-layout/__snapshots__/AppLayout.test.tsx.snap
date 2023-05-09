@@ -47,7 +47,7 @@ exports[`AppLayout renders correctly 1`] = `
             />
           </svg>
           <div
-            class="css-tq3w1z-boxStyles-AppLayoutHeaderBrand"
+            class="css-1l41q-boxStyles-AppLayoutHeaderBrand"
           >
             <span
               class="css-1lv1g9v-boxStyles-Text"
