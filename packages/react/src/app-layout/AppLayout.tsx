@@ -3,6 +3,7 @@ import { mapResponsiveProp, mq, tokens, useTernaryState } from '../core';
 import { AppLayoutContext } from './AppLayoutContext';
 
 export type AppLayoutProps = PropsWithChildren<{
+	/** Set to `true` while users are completing multi-page forms to reduce distractions. When true, the app layout sidebar will not be rendered. */
 	focusMode: boolean;
 }>;
 
