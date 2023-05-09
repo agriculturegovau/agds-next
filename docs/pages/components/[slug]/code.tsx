@@ -35,7 +35,7 @@ export default function PackagesCode({
 						href: '#pkg-content',
 					},
 				]}
-				editPath={`/packages/${pkg.slug}/docs/code.mdx`}
+				editPath={`/packages/react/src/${pkg.slug}/docs/code.mdx`}
 			>
 				<InpageNav
 					title="On this page"

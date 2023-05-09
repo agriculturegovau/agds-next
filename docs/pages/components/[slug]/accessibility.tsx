@@ -35,7 +35,7 @@ export default function PackagesAccessibility({
 						href: '#pkg-content',
 					},
 				]}
-				editPath={`/packages/${pkg.slug}/docs/accessibility.mdx`}
+				editPath={`/packages/react/src/${pkg.slug}/docs/accessibility.mdx`}
 			>
 				{toc?.length > 1 ? (
 					<InpageNav
