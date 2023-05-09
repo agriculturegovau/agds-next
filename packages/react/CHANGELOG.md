@@ -1,5 +1,38 @@
 # @ag.ds-next/react
 
+## 1.5.0
+
+### Minor Changes
+
+- f4aed33922: Replaced some react spring animations with CSS animations/transitions. This change improves performance by removing Javascript and utilising the browser's ability to process CSS.
+
+  Accordion: Replaced chevron icon react spring animation with CSS animation
+
+  Call to action: Removed icon animation on hover as it is inconsistent with AgDS interactions.
+
+  Loading: Replaced react spring animation with CSS animation
+
+  Modal: Replaced react spring animation with CSS animation
+
+  Progress indicator: Replaced chevron icon react spring animation with CSS animation
+
+  Side nav: Replaced chevron icon react spring animation with CSS animation
+
+  Skeleton: Replaced react spring animation with CSS animation
+
+  Switch: Replaced react spring animation with CSS animation
+
+- b4fe9fe9b8: app-layout: Created a collection of components that can be composed together to create a layout for the authenticated space.
+
+### Patch Changes
+
+- 74bfce2981: main-nav: Replaced custom inline icons with design system icons `MenuIcon` and `CloseIcon`
+- ca12a9df43: date-picker: Improved documentation examples and test coverage of `DateRangePicker`
+- 92b79b5f67: core: Added new border token `xxl` which has a value of 8px.
+- 3d5edea458: icon: Added new icons `ChevronsLeftIcon`, `ChevronsRightIcon` and `SettingsIcon`.
+- 18125db5ad: combobox: Fixed exhaustive deps warning for the `onClear` function in `ComboboxAsyncMulti`
+- 19c215cc0d: header: Updated header branding link size to match content
+
 ## 1.4.1
 
 ### Patch Changes
