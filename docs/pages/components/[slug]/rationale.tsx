@@ -35,7 +35,7 @@ export default function PackagesRationale({
 						href: '#pkg-content',
 					},
 				]}
-				editPath={`/packages/${pkg.slug}/docs/rationale.mdx`}
+				editPath={`/packages/react/src/${pkg.slug}/docs/rationale.mdx`}
 			>
 				{toc?.length > 1 ? (
 					<InpageNav

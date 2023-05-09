@@ -35,7 +35,7 @@ export default function PackagesContent({
 						href: '#pkg-content',
 					},
 				]}
-				editPath={`/packages/${pkg.slug}/docs/content.mdx`}
+				editPath={`/packages/react/src/${pkg.slug}/docs/content.mdx`}
 			>
 				{toc?.length > 1 ? (
 					<InpageNav
