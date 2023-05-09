@@ -30,6 +30,7 @@ const getTagsFromFilters = ({
 	}[] = [];
 
 	for (const [key, value] of filterEntries) {
+		const formattedKey = formatFilterKey(key);
 		if (key === 'requestDate') {
 			const fromDate =
 				value.from && typeof value.from !== 'string' ? value.from : undefined;
@@ -38,8 +39,7 @@ const getTagsFromFilters = ({
 			// Ensure that we have at least 1 valid date (from date OR to date)
 			if (!fromDate && !toDate) continue;
 			tags.push({
-				// TODO add a formatter for the `key`
-				label: `${key}: ${[formatDate(fromDate), formatDate(toDate)]
+				label: `${formattedKey}: ${[formatDate(fromDate), formatDate(toDate)]
 					.filter(Boolean)
 					.join(' - ')}`,
 				onRemove: () => removeFilter(key),
@@ -47,8 +47,7 @@ const getTagsFromFilters = ({
 		} else {
 			if (!value) continue;
 			tags.push({
-				// TODO add a formatter
-				label: `${key}: ${value}`,
+				label: `${formattedKey}: ${value}`,
 				onRemove: () => removeFilter(key),
 			});
 		}
@@ -56,6 +55,16 @@ const getTagsFromFilters = ({
 
 	return tags;
 };
+
+function formatFilterKey(key: keyof GetDataFilters) {
+	return {
+		requestDate: 'Request date',
+		assignee: 'Assignee',
+		businessName: 'Business name',
+		state: 'State',
+		status: 'Status',
+	}[key];
+}
 
 export const ActiveFilters = ({
 	filters,
