@@ -24,7 +24,7 @@ export function AppLayoutHeaderAccount({
 			alignItems="center"
 			focus
 			flexShrink={0}
-			gap={1}
+			gap={0.5}
 			css={{
 				textDecoration: 'none',
 				textAlign: 'right',
