@@ -1,5 +1,6 @@
 import { Meta, StoryObj } from '@storybook/react';
 import { TableFilteringLarge } from './TableFilteringLarge';
+import { TableFilteringLargeInstant } from './TableFilteringLargeInstant';
 import { useSortAndFilter } from './lib/useSortAndFilter';
 import { generateTableCaption, useData } from './lib/utils';
 
@@ -61,4 +62,52 @@ const TableFilteringLargeExample = () => {
 export const Large: Story = {
 	name: 'Tables (Large)',
 	render: TableFilteringLargeExample,
+};
+
+const TableFilteringLargeInstantExample = () => {
+	const {
+		filters,
+		pagination,
+		resetFilters,
+		removeFilter,
+		setFilters,
+		setPagination,
+		setSort,
+		sort,
+	} = useSortAndFilter();
+
+	const { loading, data, totalPages, totalItems } = useData({
+		filters,
+		pagination,
+		sort,
+	});
+
+	const tableCaption = generateTableCaption({
+		loading,
+		totalItems,
+		pagination,
+	});
+
+	return (
+		<TableFilteringLargeInstant
+			data={data}
+			filters={filters}
+			loading={loading}
+			pagination={pagination}
+			resetFilters={resetFilters}
+			setFilters={setFilters}
+			removeFilter={removeFilter}
+			setPagination={setPagination}
+			setSort={setSort}
+			sort={sort}
+			tableCaption={tableCaption}
+			totalPages={totalPages}
+			totalItems={totalItems}
+		/>
+	);
+};
+
+export const LargeInstant: Story = {
+	name: 'Tables (Large Instant)',
+	render: TableFilteringLargeInstantExample,
 };

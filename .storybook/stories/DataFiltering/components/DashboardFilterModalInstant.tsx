@@ -1,4 +1,3 @@
-import { useEffect, useState } from 'react';
 import { Stack } from '@ag.ds-next/react/box';
 import { DateRangePicker } from '@ag.ds-next/react/date-picker';
 import { Fieldset } from '@ag.ds-next/react/fieldset';
@@ -11,7 +10,7 @@ import { FilterStatusSelect } from './FilterStatusSelect';
 import { FilterAssigneeSelect } from './FilterAssigneeSelect';
 import { FilterStateSelect } from './FilterStateSelect';
 
-export const DashboardFilterModal = ({
+export const DashboardFilterModalInstant = ({
 	isOpen,
 	onDismiss,
 	filters,
@@ -24,65 +23,34 @@ export const DashboardFilterModal = ({
 	setFilters: (filters: GetDataFilters) => void;
 	resetFilters: () => void;
 }) => {
-	const [selectedFilters, setSelectedFilters] =
-		useState<GetDataFilters>(filters);
-
-	const handleApply = () => {
-		setFilters(selectedFilters);
-		onDismiss();
-	};
-
-	useEffect(() => {
-		setSelectedFilters(filters);
-	}, [isOpen, filters]);
-
 	return (
 		<SideDrawer
 			title="Filter by"
 			isOpen={isOpen}
 			onDismiss={onDismiss}
-			actions={
-				<ButtonGroup>
-					<Button onClick={handleApply}>Apply filters</Button>
-					<Button variant="secondary" onClick={resetFilters}>
-						Reset filters
-					</Button>
-					<Button variant="tertiary" onClick={onDismiss}>
-						Cancel
-					</Button>
-				</ButtonGroup>
-			}
+			overlay={false}
 		>
 			<Stack gap={2}>
 				<Fieldset legend="Fieldset">
 					<FormStack>
-						<FilterStatusSelect
-							filters={selectedFilters}
-							setFilters={setSelectedFilters}
-						/>
-						<FilterStateSelect
-							filters={selectedFilters}
-							setFilters={setSelectedFilters}
-						/>
+						<FilterStatusSelect filters={filters} setFilters={setFilters} />
+						<FilterStateSelect filters={filters} setFilters={setFilters} />
 					</FormStack>
 				</Fieldset>
 				<FormDivider />
 				<Fieldset legend="Fieldset">
 					<FormStack>
-						<FilterAssigneeSelect
-							filters={selectedFilters}
-							setFilters={setSelectedFilters}
-						/>
+						<FilterAssigneeSelect filters={filters} setFilters={setFilters} />
 						<DateRangePicker
 							fromLabel="Registered from"
 							toLabel="Registered to"
 							onChange={(value) =>
-								setSelectedFilters({
-									...selectedFilters,
+								setFilters({
+									...filters,
 									requestDate: value,
 								})
 							}
-							value={selectedFilters.requestDate}
+							value={filters.requestDate}
 						/>
 					</FormStack>
 				</Fieldset>

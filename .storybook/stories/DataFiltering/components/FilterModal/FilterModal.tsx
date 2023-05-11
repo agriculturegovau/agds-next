@@ -1,26 +1,20 @@
 import { PropsWithChildren, ReactNode } from 'react';
 import { Global } from '@emotion/react';
 import FocusLock from 'react-focus-lock';
-import { animated, useSpring } from '@react-spring/web';
+import { animated } from '@react-spring/web';
 import { Button, ButtonGroup } from '@ag.ds-next/react/button';
 import { Box, Stack } from '@ag.ds-next/react/box';
-import {
-	mapSpacing,
-	tokens,
-	usePrefersReducedMotion,
-} from '@ag.ds-next/react/core';
-import { ModalTitle } from '@ag.ds-next/react/src/modal/ModalTitle';
+import { mapSpacing, tokens } from '@ag.ds-next/react/core';
+import { Text } from '@ag.ds-next/react/text';
 import { CloseIcon } from '@ag.ds-next/react/icon';
 
 export type FilterModalProps = PropsWithChildren<{
-	/** The actions to display at the bottom of the modal panel. Typically a `ButtonGroup`. */
 	actions?: ReactNode;
-	/** Function to be called when the modal is closed to accept changes. */
 	onApply: () => void;
-	/** Function to be called when the modal is closed. */
 	onDismiss: () => void;
-	/** The title of the modal dialog. It can span lines but should not be too long. */
 	title: string;
+	resetFilters: () => void;
+	style?: any;
 }>;
 
 const AnimatedStack = animated(Stack);
@@ -30,17 +24,10 @@ export const FilterModal = ({
 	title,
 	onApply,
 	onDismiss,
+	resetFilters,
+	style,
 }: FilterModalProps) => {
-	// const { titleId } = useModalId()
 	const titleId = 'modal-title';
-
-	const prefersReducedMotion = usePrefersReducedMotion();
-	const animationStyles = useSpring({
-		from: { y: 20, opacity: 0 },
-		to: { y: 0, opacity: 1 },
-		immediate: prefersReducedMotion,
-	});
-
 	return (
 		<FocusLock returnFocus>
 			<AnimatedStack
@@ -48,35 +35,36 @@ export const FilterModal = ({
 				aria-modal="true"
 				background="body"
 				aria-labelledby={titleId}
-				rounded
-				focus
-				maxWidth={tokens.maxWidth.modalDialog}
+				maxWidth="32rem"
 				css={{
-					position: 'relative',
-					margin: '0 auto',
-					minHeight: '100vh',
-					[tokens.mediaQuery.min.sm]: {
-						margin: `${mapSpacing(1)} auto ${mapSpacing(1)}`,
-						height: 'calc(100vh - 2rem)',
-						minHeight: 'auto',
-					},
+					position: 'fixed',
+					top: 0,
+					bottom: 0,
+					right: 0,
+					zIndex: 100,
 				}}
-				style={animationStyles}
+				style={style}
 			>
-				<Box padding={1.5} borderBottom={{ xs: false, md: true }}>
-					<ModalTitle id={titleId}>{title}</ModalTitle>
+				<Box padding={1.5} borderBottom borderColor="muted">
+					<Text
+						as="h2"
+						fontSize="lg"
+						fontWeight="bold"
+						lineHeight="heading"
+						data-autofocus
+						focus
+						tabIndex={-1}
+						css={{ display: 'inline-block' }}
+					>
+						{title}
+					</Text>
 				</Box>
-
-				<Box
-					css={{
-						overflowY: 'scroll',
-					}}
-				>
+				<Box css={{ overflowY: 'scroll' }}>
 					<Box padding={1.5}>{children}</Box>
 				</Box>
-
 				<Box
-					borderTop={{ xs: false, md: true }}
+					borderTop
+					borderColor="muted"
 					padding={1.5}
 					css={{
 						[tokens.mediaQuery.min.sm]: {
@@ -86,12 +74,14 @@ export const FilterModal = ({
 				>
 					<ButtonGroup>
 						<Button onClick={onApply}>Apply filters</Button>
+						<Button variant="secondary" onClick={resetFilters}>
+							Reset filters
+						</Button>
 						<Button variant="tertiary" onClick={onDismiss}>
 							Cancel
 						</Button>
 					</ButtonGroup>
 				</Box>
-
 				<Button
 					variant="tertiary"
 					aria-label="Close modal"

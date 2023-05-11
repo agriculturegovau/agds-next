@@ -8,7 +8,7 @@ import { PaginationButtons } from '@ag.ds-next/react/pagination';
 import { ActiveFilters } from './components/ActiveFilters';
 import { SortBySelect } from './components/SortBySelect';
 import { DashboardTable } from './components/DashboardTable';
-import { DashboardFilterModal } from './components/DashboardFilterModal';
+import { DashboardFilterModalInstant } from './components/DashboardFilterModalInstant';
 import { FilterSearchInput } from './components/FilterSearchInput';
 import { GetDataFilters, GetDataPagination, GetDataSort } from './lib/getData';
 import { BusinessForAuditWithIndex } from './lib/generateBusinessData';
@@ -40,7 +40,7 @@ type TableFilteringLargeProps = {
 };
 
 /** These patterns are draft designs and are not yet ready for production. */
-export const TableFilteringLarge = ({
+export const TableFilteringLargeInstant = ({
 	sort,
 	setSort,
 	filters,
@@ -62,7 +62,7 @@ export const TableFilteringLarge = ({
 		<PageContent>
 			<Stack gap={2}>
 				<Prose>
-					<h1>Table Filtering (Large)</h1>
+					<h1>Table Filtering (Large Instant)</h1>
 					<p>
 						The large filtering pattern is for cases where the number of
 						filterable fields exceeds 5. Our FilterModal is used to reveal all
@@ -77,7 +77,6 @@ export const TableFilteringLarge = ({
 							New item
 						</ButtonLink>
 					</div>
-
 					<FilterRegion>
 						<FilterBar>
 							<FilterBarGroup>
@@ -93,7 +92,7 @@ export const TableFilteringLarge = ({
 
 							<SortBySelect sort={sort} setSort={setSort} />
 						</FilterBar>
-						<DashboardFilterModal
+						<DashboardFilterModalInstant
 							isOpen={isOpen}
 							onDismiss={() => setIsOpen(false)}
 							filters={filters}
