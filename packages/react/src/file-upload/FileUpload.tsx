@@ -1,6 +1,5 @@
 import { forwardRef, InputHTMLAttributes, useEffect, useState } from 'react';
 import { useDropzone, DropzoneOptions } from 'react-dropzone';
-import formatFileSize from 'filesize';
 import { Flex, Stack } from '../box';
 import { Button } from '../button';
 import { packs, boxPalette, tokens, mergeRefs } from '../core';
@@ -14,6 +13,7 @@ import {
 	AcceptedFileMimeTypes,
 	getFileRejectionErrorMessage,
 	getErrorSummary,
+	formatFileSize,
 	FileWithStatus,
 	RejectedFile,
 	getFilesTotal,

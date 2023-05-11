@@ -13,7 +13,7 @@ If you are looking to implement AgDS components, you need to [install packages f
 You should only clone this repo if you are looking to contribute to it, such as...
 
 - Improving documentation
-- Updating exisiting components
+- Updating existing components
 - Creating new components for consideration and feedback
 
 ## Contributing
