@@ -9,7 +9,7 @@ import { createPortal } from 'react-dom';
 import { useTransition, animated, SpringValue } from '@react-spring/web';
 import { Global } from '@emotion/react';
 import FocusLock from 'react-focus-lock';
-import { tokens, usePrefersReducedMotion } from '../core';
+import { tokens, usePrefersReducedMotion, canUseDOM } from '../core';
 import { Box, Flex } from '../box';
 import { CloseIcon } from '../icon';
 import { VisuallyHidden } from '../a11y';
@@ -82,6 +82,10 @@ export function AppLayoutSidebarDialog({
 		config: { duration: 150 },
 		immediate: prefersReducedMotion,
 	}));
+
+	// Since react portals can not be rendered on the server and this component is always closed by default
+	// This component doesn't need to be server side rendered
+	if (!canUseDOM()) return null;
 
 	return createPortal(
 		<Fragment>
