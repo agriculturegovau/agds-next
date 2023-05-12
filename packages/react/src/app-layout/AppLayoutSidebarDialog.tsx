@@ -83,7 +83,8 @@ export function AppLayoutSidebarDialog({
 		immediate: prefersReducedMotion,
 	}));
 
-	// Portals can not be rendered on the server
+	// Since react portals can not be rendered on the server and this component is always closed by default
+	// This component doesn't need to be server side rendered
 	if (!canUseDOM()) return null;
 
 	return createPortal(
