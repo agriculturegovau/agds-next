@@ -55,7 +55,7 @@ describe('getErrorSummary', () => {
 });
 
 describe('formatFileSize', () => {
-	const kilobit = 500;
+	const kilobit = 500; // It's unclear why this is 500 bytes... taken from the filesize tests
 	const kibibyte = 1024;
 	const neg = -1024;
 	const byte = 1;
@@ -75,6 +75,13 @@ describe('formatFileSize', () => {
 		expect(formatFileSize(zero)).toEqual('0 B');
 		expect(formatFileSize(small)).toEqual('0 B');
 	});
+	it('It should show only 1 decimal place unless more are needed', function () {
+		expect(formatFileSize(1300)).toEqual('1.3 kB');
+		expect(formatFileSize(1304)).toEqual('1.3 kB');
+		expect(formatFileSize(1305)).toEqual('1.31 kB');
+		expect(formatFileSize(1394)).toEqual('1.39 kB');
+		expect(formatFileSize(1399)).toEqual('1.4 kB');
+	});
 
 	it('It should format edge case numbers', function () {
 		expect(formatFileSize(petabyte)).toEqual('1.13 PB');
@@ -82,14 +89,12 @@ describe('formatFileSize', () => {
 	});
 
 	it('It should throw for invalid input', function () {
-		expect(function () {
-			// eslint-disable-next-line @typescript-eslint/no-explicit-any
-			formatFileSize(invalid as any);
-		}).toThrow(Error);
+		// eslint-disable-next-line @typescript-eslint/no-explicit-any
+		expect(formatFileSize(invalid as any)).toEqual('Unknown');
 	});
 
 	it('It rounds to 2 decimal places', function () {
-		// 2 decimals was the default of filesize
+		// filesize defaulted to showing up to 2 decimal places
 		expect(formatFileSize(kibibyte)).toEqual('1.02 kB');
 		expect(formatFileSize(kibibyte * 1.333)).toEqual('1.36 kB');
 	});
