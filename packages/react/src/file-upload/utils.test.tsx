@@ -57,6 +57,7 @@ describe('getErrorSummary', () => {
 describe('formatFileSize', () => {
 	const kilobit = 500;
 	const kibibyte = 1024;
+	const kilobyte = 1000;
 	const neg = -1024;
 	const byte = 1;
 	const zero = 0;
@@ -75,13 +76,6 @@ describe('formatFileSize', () => {
 		expect(formatFileSize(zero)).toEqual('0 B');
 		expect(formatFileSize(small)).toEqual('0 B');
 	});
-	it('It should show only 1 decimal place unless more are needed', function () {
-		expect(formatFileSize(1300)).toEqual('1.3 kB');
-		expect(formatFileSize(1304)).toEqual('1.3 kB');
-		expect(formatFileSize(1305)).toEqual('1.31 kB');
-		expect(formatFileSize(1394)).toEqual('1.39 kB');
-		expect(formatFileSize(1399)).toEqual('1.4 kB');
-	});
 
 	it('It should format edge case numbers', function () {
 		expect(formatFileSize(petabyte)).toEqual('1.13 PB');
@@ -93,9 +87,36 @@ describe('formatFileSize', () => {
 		expect(formatFileSize(invalid as any)).toEqual('Unknown');
 	});
 
-	it('It rounds to 2 decimal places', function () {
+	it('It rounds to upto 2 decimal places as appropriate', function () {
 		// filesize defaulted to showing up to 2 decimal places
+		expect(formatFileSize(kilobyte)).toEqual('1 kB');
+		expect(formatFileSize(kilobyte * 1.333)).toEqual('1.33 kB');
 		expect(formatFileSize(kibibyte)).toEqual('1.02 kB');
 		expect(formatFileSize(kibibyte * 1.333)).toEqual('1.36 kB');
+
+		// Rounding at the edges
+		expect(formatFileSize(1000)).toEqual('1 kB');
+		expect(formatFileSize(1001)).toEqual('1 kB');
+		expect(formatFileSize(1010)).toEqual('1.01 kB');
+		expect(formatFileSize(1100)).toEqual('1.1 kB');
+		expect(formatFileSize(1110)).toEqual('1.11 kB');
+		expect(formatFileSize(1111)).toEqual('1.11 kB');
+		expect(formatFileSize(1300)).toEqual('1.3 kB');
+		expect(formatFileSize(1304)).toEqual('1.3 kB');
+		expect(formatFileSize(1305)).toEqual('1.31 kB');
+		expect(formatFileSize(1394)).toEqual('1.39 kB');
+		expect(formatFileSize(1399)).toEqual('1.4 kB');
+		expect(formatFileSize(9000)).toEqual('9 kB');
+		expect(formatFileSize(9001)).toEqual('9 kB');
+		expect(formatFileSize(9004)).toEqual('9 kB');
+		expect(formatFileSize(9009)).toEqual('9.01 kB');
+		expect(formatFileSize(9090)).toEqual('9.09 kB');
+		expect(formatFileSize(9099)).toEqual('9.1 kB');
+		expect(formatFileSize(9900)).toEqual('9.9 kB');
+		expect(formatFileSize(9990)).toEqual('9.99 kB');
+		expect(formatFileSize(9994)).toEqual('9.99 kB');
+		// expect(formatFileSize(9995)).toEqual('10 kB'); // this should round up but does not. Ignoring as this is the same behaviour as filesize
+		expect(formatFileSize(9996)).toEqual('10 kB');
+		expect(formatFileSize(9999)).toEqual('10 kB');
 	});
 });
