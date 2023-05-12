@@ -55,7 +55,7 @@ describe('getErrorSummary', () => {
 });
 
 describe('formatFileSize', () => {
-	const kilobit = 500; // It's unclear why this is 500 bytes... taken from the filesize tests
+	const kilobit = 500;
 	const kibibyte = 1024;
 	const neg = -1024;
 	const byte = 1;
