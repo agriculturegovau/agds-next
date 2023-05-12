@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { StoryObj, Meta } from '@storybook/react';
 import {
 	useForm,
 	SubmitHandler,
@@ -11,95 +11,112 @@ import * as yup from 'yup';
 import { FormStack } from '../form-stack';
 import { Button } from '../button';
 import { LoadingBlanket } from '../loading';
-import { FileUpload } from './FileUpload';
+import { FileUpload, FileUploadProps } from './FileUpload';
 import { FileWithStatus } from './utils';
 
-export default {
+const Template = ({ value: initialValue = [], ...props }: FileUploadProps) => {
+	const [value, setValue] = useState<FileWithStatus[]>(initialValue);
+	return <FileUpload {...props} value={value} onChange={setValue} />;
+};
+
+const meta: Meta<typeof FileUpload> = {
 	title: 'forms/FileUpload',
 	component: FileUpload,
-} as ComponentMeta<typeof FileUpload>;
+	render: (args) => <Template {...args} />,
+};
 
-const Template: ComponentStory<typeof FileUpload> = (args) => {
+const exampleFile = new File(['this is an example file'], 'example.jpg', {
+	type: 'image/jpg',
+});
+
+export default meta;
+
+type Story = StoryObj<typeof FileUpload>;
+
+export const Basic: Story = {
+	args: {
+		label: 'Drivers licence',
+		value: [exampleFile],
+	},
+};
+
+export const Required: Story = {
+	args: {
+		label: 'Drivers licence',
+		required: true,
+	},
+};
+
+export const HideOptionalLabel: Story = {
+	args: {
+		label: 'Drivers licence',
+		hideOptionalLabel: true,
+	},
+};
+
+export const Disabled: Story = {
+	args: {
+		label: 'Drivers licence',
+		disabled: true,
+	},
+};
+
+export const Invalid: Story = {
+	args: {
+		label: 'Drivers licence',
+		message: 'Please choose a valid file',
+		invalid: true,
+	},
+};
+
+export const MultipleFiles: Story = {
+	args: {
+		label: 'Identity documents',
+		multiple: true,
+	},
+};
+
+export const OnlyAcceptedFormats: Story = {
+	args: {
+		label: 'Identity documents',
+		required: true,
+		hint: 'May include images of your passport, drivers licence etc.',
+		maxSize: 200,
+		accept: [
+			'image/jpeg',
+			'image/jpg',
+			'image/png',
+			'application/pdf',
+			'application/msword',
+			'application/vnd.ms-excel',
+			'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+			'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+		],
+		multiple: true,
+	},
+};
+
+export const MultipleImages: Story = {
+	args: {
+		label: 'Photos from your holiday',
+		maxSize: 2000,
+		maxFiles: 3,
+		accept: ['image/jpeg', 'image/jpg', 'image/png', 'image/heic'],
+		multiple: true,
+	},
+};
+
+export const InstantUpload: Story = {
+	args: {
+		label: 'Photos from your holiday',
+		multiple: true,
+		maxFiles: 3,
+	},
+	render: (args) => <InstantUploadTemplate {...args} />,
+};
+
+const InstantUploadTemplate = (args: FileUploadProps) => {
 	const [value, setValue] = useState<FileWithStatus[]>([]);
-	return <FileUpload {...args} value={value} onChange={setValue} />;
-};
-
-const TemplateWithValue: ComponentStory<typeof FileUpload> = (args) => {
-	const [value, setValue] = useState<FileWithStatus[]>([
-		new File(['this is an example file'], 'example.jpg', {
-			type: 'image/jpg',
-		}),
-	]);
-	return <FileUpload {...args} value={value} onChange={setValue} />;
-};
-
-export const Basic = TemplateWithValue.bind({});
-Basic.args = {
-	label: 'Drivers licence',
-};
-
-export const Required = Template.bind({});
-Required.args = {
-	label: 'Drivers licence',
-	required: true,
-};
-
-export const HideOptionalLabel = Template.bind({});
-HideOptionalLabel.args = {
-	label: 'Drivers licence',
-	hideOptionalLabel: true,
-};
-
-export const Disabled = Template.bind({});
-Disabled.args = {
-	label: 'Drivers licence',
-	disabled: true,
-};
-
-export const Invalid = Template.bind({});
-Invalid.args = {
-	label: 'Drivers licence',
-	message: 'Please choose a valid file',
-	invalid: true,
-};
-
-export const MultipleFiles = Template.bind({});
-MultipleFiles.args = {
-	label: 'Identity documents',
-	multiple: true,
-};
-
-export const OnlyAcceptedFormats = Template.bind({});
-OnlyAcceptedFormats.args = {
-	label: 'Identity documents',
-	required: true,
-	hint: 'May include images of your passport, drivers licence etc.',
-	maxSize: 200,
-	accept: [
-		'image/jpeg',
-		'image/jpg',
-		'image/png',
-		'application/pdf',
-		'application/msword',
-		'application/vnd.ms-excel',
-		'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
-		'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
-	],
-	multiple: true,
-};
-
-export const MultipleImages = Template.bind({});
-MultipleImages.args = {
-	label: 'Photos from your holiday',
-	maxSize: 2000,
-	maxFiles: 3,
-	accept: ['image/jpeg', 'image/jpg', 'image/png', 'image/heic'],
-	multiple: true,
-};
-
-export const InstantUpload: ComponentStory<typeof FileUpload> = (args) => {
-	const [value, setValue] = useState<FileWithStatus[]>([]);
-
 	const onChange = (acceptedFiles: FileWithStatus[]) => {
 		// Update the UI to show loading state straight away
 		setValue(
@@ -121,15 +138,19 @@ export const InstantUpload: ComponentStory<typeof FileUpload> = (args) => {
 
 	return <FileUpload {...args} value={value} onChange={onChange} />;
 };
-InstantUpload.args = {
-	label: 'Photos from your holiday',
-	multiple: true,
-	maxFiles: 3,
+
+export const UploadSingleFileOnSubmit: Story = {
+	args: {
+		label: 'Upload evidence',
+		hint: 'General hint information',
+		maxSize: 100000,
+		multiple: false,
+		required: true,
+	},
+	render: (args) => <UploadSingleFileOnSubmitTemplate {...args} />,
 };
 
-export const UploadSingleFileOnSubmit: ComponentStory<typeof FileUpload> = (
-	args
-) => {
+const UploadSingleFileOnSubmitTemplate = (args: FileUploadProps) => {
 	const [isSubmitting, setSubmitting] = useState(false);
 
 	const formSchema = yup
@@ -201,11 +222,4 @@ export const UploadSingleFileOnSubmit: ComponentStory<typeof FileUpload> = (
 			</FormStack>
 		</form>
 	);
-};
-UploadSingleFileOnSubmit.args = {
-	label: 'Upload evidence',
-	hint: 'General hint information',
-	maxSize: 100000,
-	multiple: false,
-	required: true,
 };
