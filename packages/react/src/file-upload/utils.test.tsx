@@ -88,7 +88,7 @@ describe('formatFileSize', () => {
 		expect(formatFileSize(huge)).toEqual('100000000000000000 YB');
 	});
 
-	it('It should throw for invalid input', function () {
+	it('It should not throw on an invalid input', function () {
 		// eslint-disable-next-line @typescript-eslint/no-explicit-any
 		expect(formatFileSize(invalid as any)).toEqual('Unknown');
 	});
