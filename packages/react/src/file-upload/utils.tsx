@@ -1,5 +1,5 @@
 import type { FileError, FileWithPath } from 'react-dropzone';
-import { filesize } from './formatFileSize';
+import { filesize } from './filesize';
 
 export type FileStatus = 'none' | 'uploading' | 'success';
 
