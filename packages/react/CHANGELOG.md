@@ -1,5 +1,12 @@
 # @ag.ds-next/react
 
+## 1.5.1
+
+### Patch Changes
+
+- da0458e9f7: app-layout: Reduce spacing between user avatar and user name in App layout header
+- 7ff9d96a9b: app-layout: Fixed bug when server side rendering `AppLayoutSidebarDialog`
+
 ## 1.5.0
 
 ### Minor Changes
