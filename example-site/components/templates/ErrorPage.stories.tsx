@@ -94,8 +94,8 @@ export const Maintenance: Story = {
 							Friday)
 							<br />
 							Email{' '}
-							<a href="mailto:emailaccount@awe.gov.au">
-								emailaccount@awe.gov.au
+							<a href="mailto:emailaccount@agriculture.gov.au">
+								emailaccount@agriculture.gov.au
 							</a>
 						</p>
 					</Prose>
@@ -126,8 +126,8 @@ export const ThirdParty: Story = {
 							Friday)
 							<br />
 							Email{' '}
-							<a href="mailto:emailaccount@awe.gov.au">
-								emailaccount@awe.gov.au
+							<a href="mailto:emailaccount@agriculture.gov.au">
+								emailaccount@agriculture.gov.au
 							</a>
 						</p>
 					</Prose>

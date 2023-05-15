@@ -9,7 +9,9 @@ export const FormHelpCallout = () => {
 					Call <strong>000 000 000</strong> (9am to 5pm AEST Monday to Friday)
 					<br />
 					Email{' '}
-					<a href="mailto:emailaccount@awe.gov.au">emailaccount@awe.gov.au</a>
+					<a href="mailto:emailaccount@agriculture.gov.au">
+						emailaccount@agriculture.gov.au
+					</a>
 				</p>
 			</Prose>
 		</Callout>
