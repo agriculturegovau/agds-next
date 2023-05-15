@@ -77,9 +77,14 @@ export const getStaticPaths = async () => {
 	const slugs = await getGuideSlugs();
 
 	return {
-		paths: slugs.map((slug) => ({
-			params: { slug },
-		})),
+		paths: slugs
+			.filter((slug) => {
+				// this page is defined in docs/pages/guides/how-to-write-guidance/index.tsx
+				return slug !== 'how-to-write-guidance';
+			})
+			.map((slug) => ({
+				params: { slug },
+			})),
 		fallback: false,
 	};
 };
