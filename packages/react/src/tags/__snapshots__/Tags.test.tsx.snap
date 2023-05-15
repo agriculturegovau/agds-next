@@ -11,7 +11,7 @@ exports[`Tags With links renders correctly 1`] = `
       Tags:
     </h2>
     <ul
-      class="css-1xkbxzi-boxStyles"
+      class="css-15pioji-boxStyles"
     >
       <li
         class="css-79i25n-boxStyles"
@@ -71,7 +71,7 @@ exports[`Tags With onRemove renders correctly 1`] = `
       Tags:
     </h2>
     <ul
-      class="css-1xkbxzi-boxStyles"
+      class="css-15pioji-boxStyles"
     >
       <li
         class="css-79i25n-boxStyles"
@@ -203,7 +203,7 @@ exports[`Tags Without links renders correctly 1`] = `
       Tags:
     </h2>
     <ul
-      class="css-1xkbxzi-boxStyles"
+      class="css-15pioji-boxStyles"
     >
       <li
         class="css-79i25n-boxStyles"
