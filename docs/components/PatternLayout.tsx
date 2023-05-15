@@ -79,7 +79,7 @@ export function PatternLayout({
 						{pattern.githubTemplatePath && (
 							<ButtonLink
 								variant="text"
-								href={`https://github.com/steelthreads/agds-next/blob/main/example-site${pattern.githubTemplatePath}`}
+								href={`https://github.com/steelthreads/agds-next/blob/main${pattern.githubTemplatePath}`}
 								iconBefore={GithubLogo}
 							>
 								View in Github

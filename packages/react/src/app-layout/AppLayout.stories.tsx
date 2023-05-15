@@ -2,7 +2,7 @@ import { Fragment, useMemo } from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 import { SinglePageFormPage } from '../../../../example-site/components/templates/SinglePageForm';
 import { FormExampleMultiStep } from '../../../../example-site/components/FormExampleMultiStep/FormExampleMultiStep';
-import { TableFilteringMediumExample } from '../../../../.storybook/stories/DataFiltering/TableFilteringMedium.stories';
+import { TableFilteringMediumExample } from '../../../../.storybook/stories/DataFiltering/TableFilteringMediumExample';
 import { Logo } from '../ag-branding';
 import { PageContent } from '../content';
 import { tokens } from '../core';
