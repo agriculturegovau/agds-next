@@ -15,7 +15,7 @@ export default meta;
 
 type Story = StoryObj<typeof TableFilteringMedium>;
 
-export const TableFilteringMediumExample = () => {
+const TableFilteringMediumExample = () => {
 	const {
 		filters,
 		pagination,
