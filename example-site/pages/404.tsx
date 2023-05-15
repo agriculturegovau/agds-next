@@ -1,6 +1,6 @@
 import { SiteLayout } from '../components/SiteLayout';
 import { DocumentTitle } from '../components/DocumentTitle';
-import { NotFound } from '../components/templates/NotFound';
+import { NotFound } from '../components/templates/ErrorPage';
 
 export default function NotFoundPage() {
 	return (
