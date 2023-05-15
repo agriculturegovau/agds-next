@@ -113,8 +113,8 @@ export const ThirdParty: Story = {
 		children: (
 			<Fragment>
 				<Text as="p">
-					Digital Identity is currently experiencing an outage. You can't create
-					an account or sign into the Export Service right now.
+					Digital Identity is currently experiencing an outage. You can&apos;t
+					create an account or sign into the Export Service right now.
 				</Text>
 
 				<Text as="p">Please check back soon.</Text>
