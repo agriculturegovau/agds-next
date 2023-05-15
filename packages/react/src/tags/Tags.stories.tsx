@@ -1,4 +1,5 @@
 import { Meta, StoryObj } from '@storybook/react';
+import { Box } from '../box';
 import { Text } from '../text';
 import { Tags, TagsContainer, TagsList, Tag } from './index';
 
@@ -55,9 +56,9 @@ export const Modular = () => (
 		</Text>
 		<TagsList>
 			{exampleLinks.map(({ href, label }, idx) => (
-				<Tag key={idx} href={href}>
-					{label}
-				</Tag>
+				<Box key={idx} as="li">
+					<Tag href={href}>{label}</Tag>
+				</Box>
 			))}
 		</TagsList>
 	</TagsContainer>
