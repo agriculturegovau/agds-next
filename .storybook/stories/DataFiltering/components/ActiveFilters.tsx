@@ -5,6 +5,8 @@ import { Button } from '@ag.ds-next/react/button';
 import { CloseIcon } from '@ag.ds-next/react/icon';
 import { Tags } from '@ag.ds-next/react/tags';
 import { GetDataFilters } from '../lib/getData';
+import { STATUS_MAP } from './DashboardTable';
+import { STATE_OPTIONS } from './FilterStateSelect';
 
 const formatDate = (date: Date | undefined) => {
 	if (!date) return;
@@ -30,7 +32,28 @@ const getTagsFromFilters = ({
 	}[] = [];
 
 	for (const [key, value] of filterEntries) {
+		if (!value) continue;
 		const formattedKey = formatFilterKey(key);
+		const onRemove = () => removeFilter(key);
+
+		if (key === 'state') {
+			const option = STATE_OPTIONS.find((o) => o.value === value);
+			if (!option) continue;
+			tags.push({
+				label: `${formattedKey}: ${option.label}`,
+				onRemove,
+			});
+			continue;
+		}
+
+		if (key === 'status') {
+			tags.push({
+				label: `${formattedKey}: ${STATUS_MAP[value].label}`,
+				onRemove,
+			});
+			continue;
+		}
+
 		if (key === 'requestDate') {
 			const fromDate =
 				value.from && typeof value.from !== 'string' ? value.from : undefined;
@@ -42,15 +65,12 @@ const getTagsFromFilters = ({
 				label: `${formattedKey}: ${[formatDate(fromDate), formatDate(toDate)]
 					.filter(Boolean)
 					.join(' - ')}`,
-				onRemove: () => removeFilter(key),
+				onRemove,
 			});
-		} else {
-			if (!value) continue;
-			tags.push({
-				label: `${formattedKey}: ${value}`,
-				onRemove: () => removeFilter(key),
-			});
+			continue;
 		}
+
+		tags.push({ label: `${formattedKey}: ${value}`, onRemove });
 	}
 
 	return tags;
@@ -75,9 +95,9 @@ export const ActiveFilters = ({
 	removeFilter: (filter: keyof GetDataFilters) => void;
 	resetFilters: () => void;
 }) => {
-	const items = getTagsFromFilters({ filters, removeFilter });
+	const tags = getTagsFromFilters({ filters, removeFilter });
 
-	if (items.length === 0) {
+	if (tags.length === 0) {
 		return null;
 	}
 
@@ -85,7 +105,7 @@ export const ActiveFilters = ({
 		<Flex alignItems="flex-end">
 			<Tags
 				heading={<Text fontWeight="bold">Active filters</Text>}
-				items={items}
+				items={tags}
 			/>
 			<Button
 				size="sm"

@@ -14,16 +14,7 @@ export const FilterStateSelect = ({
 			label="State"
 			placeholder="All"
 			hideOptionalLabel
-			options={[
-				{ value: 'act', label: 'ACT' },
-				{ value: 'nsw', label: 'NSW' },
-				{ value: 'nt', label: 'NT' },
-				{ value: 'qld', label: 'QLD' },
-				{ value: 'sa', label: 'SA' },
-				{ value: 'tas', label: 'TAS' },
-				{ value: 'vic', label: 'VIC' },
-				{ value: 'wa', label: 'WA' },
-			]}
+			options={STATE_OPTIONS}
 			value={filters.state || ''}
 			aria-controls={tableId}
 			onChange={(e) => {
@@ -36,3 +27,14 @@ export const FilterStateSelect = ({
 		/>
 	);
 };
+
+export const STATE_OPTIONS = [
+	{ value: 'act', label: 'ACT' },
+	{ value: 'nsw', label: 'NSW' },
+	{ value: 'nt', label: 'NT' },
+	{ value: 'qld', label: 'QLD' },
+	{ value: 'sa', label: 'SA' },
+	{ value: 'tas', label: 'TAS' },
+	{ value: 'vic', label: 'VIC' },
+	{ value: 'wa', label: 'WA' },
+];
