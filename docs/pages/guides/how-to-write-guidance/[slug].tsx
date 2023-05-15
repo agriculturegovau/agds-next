@@ -45,6 +45,15 @@ export default function Guides({
 					) : null}
 					<Prose>
 						<MDXRemote {...guide.source} components={mdxComponents} />
+						<h2>Related links</h2>
+						<ul>
+							<li>
+								<a href="/content">Content</a>
+							</li>
+							<li>
+								<a href="https://www.stylemanual.gov.au/">Style Manual</a>
+							</li>
+						</ul>
 					</Prose>
 				</PageLayout>
 			</AppLayout>
@@ -85,8 +94,6 @@ export const getStaticProps: GetStaticProps<
 
 export const getStaticPaths = async () => {
 	const slugs = await getNestedGuideSlugs();
-	console.log({ slugs });
-
 	return {
 		paths: slugs.map((slug) => ({
 			params: { slug },

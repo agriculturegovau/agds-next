@@ -1,6 +1,7 @@
 ---
 title: How to present guidance
 overview: Follow our principles and use the right template to present guidance.
+complete: no, needs images
 ---
 
 ## Informational guidance
@@ -9,7 +10,7 @@ The Services section in the [Export Service](https://exports.agriculture.gov.au/
 
 Once a user finds the service they are interested in, we need to provide instructional information to help them prepare.
 
-To help users ‘get started’, use the first page of the [multi-page form template](https://design-system.agriculture.gov.au/templates/multi-page-form) in the AgDS. That is, prepare to complete a multi-page form in the Export Service.
+To help users ‘get started’, use the first page of the [multi-page form template](https://design-system.agriculture.gov.au/templates/multi-page-form) in AgDS. That is, prepare to complete a multi-page form in the Export Service.
 
 The ‘getting started’ page should provide:
 
@@ -21,6 +22,10 @@ The ‘getting started’ page should provide:
 ## Multi-page form template
 
 To create pages that ask users a series of questions to provide them with tailored guidance, use the [multi-page form template](https://design-system.agriculture.gov.au/templates/multi-page-form) in AgDS.
+
+You can use the [Card component](https://design-system.agriculture.gov.au/components/card) to provide tailored guidance in a list format.
+
+For example, to deliver results at the end of a multi-page form experience such as the interactive guidance tool to [Find an export guide for agricultural goods](https://exports.agriculture.gov.au/guides/export-guide-agricultural-goods).
 
 ## In-task guidance
 
@@ -40,8 +45,7 @@ The user is filling out a form or completing a task to find information. There a
   ‘address’.
 - **include only information users’ need**. That is, necessary information
   to progress to the next step or complete the task.
-
-If users may need extra information, link to an authoritative source. For example, to explain the term ‘outstanding charges’ we may say, ‘a charge is considered outstanding until it is finalised. For more information, see the [Crimes Act 1914 - Section 15MC](http://classic.austlii.edu.au/au/legis/cth/consol_act/ca191482/s15mc.html).’
+- **link to an authoritative source if users may want extra information**. For example, to explain the term ‘outstanding charges’ we may say, ‘a charge is considered outstanding until it is finalised. For more information, see the [Crimes Act 1914 - Section 15MC](http://classic.austlii.edu.au/au/legis/cth/consol_act/ca191482/s15mc.html).’
 
 ### Guidance text above forms
 
@@ -50,6 +54,10 @@ Where guidance is relevant to all users, you can provide concise guidance above 
 ### Hint text in forms
 
 Use hint text to provide more context to help users successfully complete a form field. Hint text is optional and additional information to help users understand what the field is about.
+
+```jsx live
+<TextInput label="Label" hint="Hint text" />
+```
 
 ### Details component
 
@@ -111,18 +119,14 @@ Use this template and our principles to create your help page for the [Export Se
 - **address user needs**. Not every aspect of the service will need supporting technical guidance.
 - **make sure technical guidance helps users feel confident**. This will help reduce support desk call volumes.
 - **use meaningful headings**. Start with a verb and end with a noun to describe what users want to do in a ‘statement’ heading (H1).
-
-Use conjunctions, prepositions and pronouns in between. For example, ‘create an account.’ Avoid starting with ‘how to’ if the statement makes sense without it.
-
-A H1 can also be a question. But try to use questions as headings minimally or instead of a statement.
-
-Start with one of the 5 ‘W’s’: ‘who’, ‘what’, ‘where’, ‘when’ or ‘why’ for question headings.
+- **Use conjunctions, prepositions and pronouns in headings**. For example, ‘create an account.’ Avoid starting with ‘how to’ if the statement makes sense without it.
+- **Use questions as headings minimally**. Consider if you can restructure the question as a statement that describes what the user wants to do. If not, start a question with ‘who’, ‘what’, ‘where’, ‘when’ or ‘why’.
 
 - **include a short introduction that describes the page content**. It should be no longer than 2 sentences (or 30 words).
 
-- **be concise**. Use subheadings to break up content into short sections. If you need more than 2 subheadings, consider dividing the content over more help pages.
+- **be concise**. Use subheadings to break up content into short sections. If you need more than 2 subheadings, consider dividing the content over more technical help pages.
 
-Use short sentences so it’s easier for users to skim-read. Communicate one unique task or idea per page.
+- **use short sentences**. It’s easier for users to skim-read. Communicate one unique task or idea per page.
 
 - **use a number list for step-by-step instructions**. Include one action the user needs to take in each step. If the task is complex, you can condense several short steps within one numbered step.
 
@@ -131,9 +135,7 @@ Use short sentences so it’s easier for users to skim-read. Communicate one uni
 <DontHeading />
 
 - **promote the service or its features**. Technical help is there to solve problems, not sell its value.
-- **use screenshots or videos**. They can become outdated. That’s unless you plan to update them whenever you iterate your product.
-
-Also test with users if you can, to understand if they find them helpful within your guidance.
+- **use screenshots or videos**. They can become outdated. That’s unless you plan to update them whenever you iterate your product. Test with users if you can, to understand if they find them helpful within your guidance.
 
 For more information, see [Content structure](/content/content-structure) and [Headings](https://design-system.agriculture.gov.au/components/heading). Also see [Content styles](/content/content-styles):
 
