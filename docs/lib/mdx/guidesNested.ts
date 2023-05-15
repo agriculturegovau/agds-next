@@ -7,11 +7,11 @@ import {
 } from '../mdxUtils';
 import { slugify } from '../slugify';
 
-export const GUIDE_PATH = normalize(
+export const NESTED_GUIDE_PATH = normalize(
 	`${process.cwd()}/content/guides/how-to-write-guidance`
 );
 const nestedGuidePath = (slug: string) =>
-	normalize(`${GUIDE_PATH}/${slug}.mdx`);
+	normalize(`${NESTED_GUIDE_PATH}/${slug}.mdx`);
 
 export async function getNestedGuide(slug: string) {
 	const { content, data } = await getMarkdownData(nestedGuidePath(slug));
@@ -26,8 +26,8 @@ export async function getNestedGuide(slug: string) {
 	};
 }
 
-export async function getGuideSlugs() {
-	const entries = await readdir(GUIDE_PATH, { withFileTypes: true });
+export async function getNestedGuideSlugs() {
+	const entries = await readdir(NESTED_GUIDE_PATH, { withFileTypes: true });
 	return entries
 		.filter(
 			(entry) =>
@@ -42,7 +42,7 @@ export async function getGuideSlugs() {
 }
 
 export async function getContentGuideList() {
-	const slugs = await getGuideSlugs();
+	const slugs = await getNestedGuideSlugs();
 	const list = await Promise.all(
 		slugs.map((slug) =>
 			getMarkdownData(nestedGuidePath(slug)).then(({ data }) => ({
@@ -55,21 +55,6 @@ export async function getContentGuideList() {
 		)
 	);
 	return list.sort((a, b) => a.order - b.order);
-}
-
-export async function getNestedGuideSlugs() {
-	const entries = await readdir(GUIDE_PATH, { withFileTypes: true });
-	return entries
-		.filter(
-			(entry) =>
-				!entry.name.startsWith('_') &&
-				!entry.name.startsWith('.') &&
-				!entry.name.startsWith('index') &&
-				entry.isFile()
-		)
-		.map((entry) => slugify(stripMdxExtension(entry.name)))
-		.sort()
-		.reverse();
 }
 
 function guideNavMetaData(
