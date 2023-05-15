@@ -216,7 +216,7 @@ export const DashboardTable = forwardRef<HTMLTableElement, DashboardTableProps>(
 	}
 );
 
-const STATUS_MAP = {
+export const STATUS_MAP = {
 	notBooked: {
 		label: 'Not booked',
 		tone: 'neutral',
