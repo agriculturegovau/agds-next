@@ -104,3 +104,35 @@ export const Maintenance: Story = {
 		),
 	},
 };
+
+export const ThirdParty: Story = {
+	name: 'Third party outage (503)',
+	args: {
+		title: "Sorry, there's a problem with the Export Service",
+		errorCode: '503',
+		children: (
+			<Fragment>
+				<Text as="p">
+					Digital Identity is currently experiencing an outage. You can't create
+					an account or sign into the Export Service right now.
+				</Text>
+
+				<Text as="p">Please check back soon.</Text>
+
+				<Callout title="Need help?">
+					<Prose>
+						<p>
+							Call <strong>000 000 000</strong> (9am to 5pm AEST Monday to
+							Friday)
+							<br />
+							Email{' '}
+							<a href="mailto:emailaccount@awe.gov.au">
+								emailaccount@awe.gov.au
+							</a>
+						</p>
+					</Prose>
+				</Callout>
+			</Fragment>
+		),
+	},
+};
