@@ -7,11 +7,25 @@ figmaGalleryNodeId: 16180%3A41550
 relatedComponents: ['file-upload']
 ---
 
-A simple input for selecting files in a form. The `FileInput` component is a wrapper around the native `<input type="file" />` element. Use when you require multiple files in a form, which must be associated as seperate fields. If you only require a single file, use the [FileUpload](/components/file-upload) component instead.
-
 ```jsx live
 <FileInput label="Passport" />
 ```
+
+A simple input for selecting files in a form. The `FileInput` component is a wrapper around the native `<input type="file" />` element. Use when you require multiple files in a form, which must be associated as seperate fields. If you only require a single file, use the [FileUpload](/components/file-upload) component instead.
+
+<DoHeading />
+
+- use this option when there are other form fields on the page
+- use when a drag and drop zone isn’t required
+- use if only one file is being uploaded
+
+<DontHeading />
+
+- use if the user might need to remove the file after uploading
+- use if you don’t want the file to be uploaded immediately
+- use for uploading multiple files
+- use if the user might benefit from a drag and drop zone
+- use if it’s the only form element on the page
 
 ## Hint
 
