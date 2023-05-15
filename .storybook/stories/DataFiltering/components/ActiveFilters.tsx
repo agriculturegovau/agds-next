@@ -95,9 +95,9 @@ export const ActiveFilters = ({
 	removeFilter: (filter: keyof GetDataFilters) => void;
 	resetFilters: () => void;
 }) => {
-	const items = getTagsFromFilters({ filters, removeFilter });
+	const tags = getTagsFromFilters({ filters, removeFilter });
 
-	if (items.length === 0) {
+	if (tags.length === 0) {
 		return null;
 	}
 
@@ -105,7 +105,7 @@ export const ActiveFilters = ({
 		<Flex alignItems="flex-end">
 			<Tags
 				heading={<Text fontWeight="bold">Active filters</Text>}
-				items={items}
+				items={tags}
 			/>
 			<Button
 				size="sm"
