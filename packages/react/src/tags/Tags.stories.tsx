@@ -5,6 +5,13 @@ import { Tags, TagsContainer, TagsList, Tag } from './index';
 const meta: Meta<typeof Tags> = {
 	title: 'content/Tags',
 	component: Tags,
+	args: {
+		heading: (
+			<Text as="h2" fontWeight="bold">
+				Tags:
+			</Text>
+		),
+	},
 };
 
 export default meta;
@@ -21,33 +28,18 @@ type Story = StoryObj<typeof Tags>;
 
 export const Basic: Story = {
 	args: {
-		heading: (
-			<Text as="h2" fontWeight="bold">
-				Tags:
-			</Text>
-		),
 		items: exampleItems,
 	},
 };
 
 export const Links: Story = {
 	args: {
-		heading: (
-			<Text as="h2" fontWeight="bold">
-				Tags:
-			</Text>
-		),
 		items: exampleLinks,
 	},
 };
 
 export const Removable: Story = {
 	args: {
-		heading: (
-			<Text as="h2" fontWeight="bold">
-				Tags:
-			</Text>
-		),
 		items: [
 			{ label: 'Foo', onRemove: console.log },
 			{ label: 'Bar', onRemove: console.log },
