@@ -2,4 +2,4 @@
 '@ag.ds-next/react': patch
 ---
 
-Removed the filesize third party dependency
+file-upload: Removed the filesize third party dependency
