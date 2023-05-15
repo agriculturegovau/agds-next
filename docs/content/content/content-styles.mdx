@@ -10,7 +10,11 @@ Don’t use the ampersand symbol (&) instead of ‘and’ in a heading or senten
 
 That’s unless it’s a part of a proper noun or name.
 
-### Example
+## And/or
+
+Use ‘and/or’ to indicate either or both possibilities to users in the Export Service.
+
+For example: "Register fish and/or fish products."
 
 ## Capitalisation
 
@@ -31,6 +35,7 @@ Use simple contractions if it’s appropriate. For example, simple contractions 
 - don’t
 - can’t
 - we’ll
+- we’re
 - we’ve
 - it’s
 - you’ll
@@ -38,9 +43,11 @@ Use simple contractions if it’s appropriate. For example, simple contractions 
 
 Avoid complex contractions which are harder to interpret. Some users may find these contractions hard to understand. For example, complex contractions include:
 
+- they’re
 - wouldn’t
 - shouldn’t
 - doesn’t
+- mustn’t
 - cannot
 - haven’t
 - where’ve
@@ -50,9 +57,8 @@ Conduct research where possible to see if you should use contractions in Export 
 
 ### Examples
 
-- We’ll get back to you within 2 days.
-
-- You don’t have access to this business.
+- "We’ll get back to you within 2 days".
+- "You don’t have access to this business".
 
 For more information, see [Contractions](https://www.stylemanual.gov.au/grammar-punctuation-and-conventions/shortened-words-and-phrases/contractions). Also see Abbreviations and other shortened forms in the DAFF Style guide (DAFF staff only).
 
@@ -74,7 +80,30 @@ Don’t include a full stop after an email address if it’s part of sentence fr
 
 You can use a full stop after an email address if it’s at the end of a sentence. But make sure the full stop is not included in the link text. Otherwise, users may confuse it with being a part of the email address.
 
-### Examples
+```jsx live
+<Stack gap={1.5}>
+	<SummaryList>
+		<SummaryListItem>
+			<SummaryListItemTerm>Email address</SummaryListItemTerm>
+			<SummaryListItemDescription>
+				<TextLink href="mailto:exportservice@agriculture.gov.au">
+					exportservice@agriculture.gov.au
+				</TextLink>
+			</SummaryListItemDescription>
+		</SummaryListItem>
+	</SummaryList>
+</Stack>
+```
+
+```jsx live
+<Text>
+	If you're interested in taking part or would like to find out more, email{' '}
+	<TextLink href="mailto:exportassurance@agriculture.gov.au">
+		exportassurance@agriculture.gov.au
+	</TextLink>
+	.
+</Text>
+```
 
 For more information, see [Text link](https://design-system.agriculture.gov.au/components/text-link) and [Full stops](https://www.stylemanual.gov.au/grammar-punctuation-and-conventions/punctuation-and-capitalisation/full-stops#dont_end_web_or_email_addresses_with_full_stops).
 
@@ -247,6 +276,21 @@ Don’t add ‘please’ and ‘thanks’ in content for normal Export Service a
 Use ‘please’ and ‘thanks’ sparingly. Only add it to content when you’re asking users to do something extra.
 
 For example, if you are asking them to give feedback on a web page. Use ‘thanks’ instead of ‘thank you’ in these instances.
+
+## Plurals
+
+Use ‘(s)’ to indicate one or more of a word to users in the Export Service.
+
+```jsx live
+<Stack gap={1.5}>
+	<SummaryList>
+		<SummaryListItem>
+			<SummaryListItemTerm>Alternate business name(s)</SummaryListItemTerm>
+			<SummaryListItemDescription>None provided</SummaryListItemDescription>
+		</SummaryListItem>
+	</SummaryList>
+</Stack>
+```
 
 ## Punctuation
 
