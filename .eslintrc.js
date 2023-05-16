@@ -7,7 +7,6 @@ module.exports = {
 		'plugin:@typescript-eslint/recommended',
 		'next/core-web-vitals',
 		'prettier',
-		'plugin:markdown/recommended',
 	],
 	rules: {
 		'@typescript-eslint/ban-types': [
