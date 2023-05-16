@@ -47,7 +47,7 @@ describe('Autocomplete', () => {
 		});
 	});
 
-	it('can load async options', async () => {
+	it('can load and clear async options', async () => {
 		const { container } = renderAutocomplete();
 
 		const input = container.querySelector('input');
@@ -70,5 +70,15 @@ describe('Autocomplete', () => {
 
 		// Expect the input to be updated
 		expect(input.value).toBe('Queensland');
+
+		// Press the "Clear button"
+		const clearButton = container.querySelector('button');
+		expect(clearButton).toBeInTheDocument();
+		expect(clearButton).toHaveAttribute('aria-label', 'Clear input');
+
+		if (clearButton) await userEvent.click(clearButton);
+
+		// Expect the input to be updated
+		expect(input.value).toBe('');
 	});
 });

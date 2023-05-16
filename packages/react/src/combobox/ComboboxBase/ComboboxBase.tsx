@@ -81,8 +81,7 @@ export function ComboboxBase<Option extends DefaultComboboxOption>({
 		style: styles.popper,
 	});
 
-	const showClearButton =
-		showDropdownTrigger && clearable && combobox.selectedItem;
+	const showClearButton = clearable && combobox.selectedItem;
 	const hasButtons = showDropdownTrigger || showClearButton;
 
 	return (
