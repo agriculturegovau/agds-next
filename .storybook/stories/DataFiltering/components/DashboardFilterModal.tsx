@@ -3,7 +3,7 @@ import { Stack } from '@ag.ds-next/react/box';
 import { DateRangePicker } from '@ag.ds-next/react/date-picker';
 import { Fieldset } from '@ag.ds-next/react/fieldset';
 import { FormStack } from '@ag.ds-next/react/form-stack';
-import { FilterDrawer } from '@ag.ds-next/react/src/side-drawer';
+import { FilterDrawer } from '@ag.ds-next/react/src/filter-drawer';
 import { Button, ButtonGroup } from '@ag.ds-next/react/button';
 import { GetDataFilters } from '../lib/getData';
 import { FormDivider } from '../../../../example-site/components/FormDivider';
