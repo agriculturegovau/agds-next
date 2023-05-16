@@ -15,6 +15,7 @@ import {
 	mapSpacing,
 	tokens,
 	useWindowSize,
+	useAriaModalPolyfill,
 	packs,
 	useBoxPalette,
 	BoxPalette,
@@ -107,8 +108,6 @@ function NavContainerDialog({
 	menuVisiblyOpen,
 	palette,
 }: NavContainerDialogProps) {
-	const dialogRef = useRef<HTMLDivElement>(null);
-
 	// Close the component when the user presses the escape key
 	useEffect(() => {
 		const handleKeyDown = (e: KeyboardEvent) => {
@@ -122,42 +121,13 @@ function NavContainerDialog({
 		return () => window.removeEventListener('keydown', handleKeyDown);
 	}, [close]);
 
-	// The following `useEffect` will add `aria-hidden="true"` to every direct child of the `body` element when the modal is opened.
-	// This is because `aria-modal` is not yet supported by all browsers (https://a11ysupport.io/tech/aria/aria-modal_attribute).
-	// This fixes a bug in certain devices where focus is not trapped correctly such as VoiceOver on iOS.
-	// This has been inspired by Reach UI (https://github.com/reach/reach-ui/blob/main/packages/dialog/src/index.tsx)
-	useEffect(() => {
-		if (!menuVisiblyOpen || !dialogRef.current) return;
-
-		const rootNodes: Element[] = [];
-		const originalAttrs: (string | null)[] = [];
-
-		document.querySelectorAll('body > *').forEach(function (node) {
-			if (node === dialogRef.current) return;
-			const attr = node.getAttribute('aria-hidden');
-			const alreadyHidden = attr !== null && attr !== 'false';
-			if (alreadyHidden) return;
-			rootNodes.push(node);
-			originalAttrs.push(attr);
-			node.setAttribute('aria-hidden', 'true');
-		});
-
-		return () => {
-			rootNodes.forEach((node, index) => {
-				const originalValue = originalAttrs[index];
-				if (originalValue === null) {
-					node.removeAttribute('aria-hidden');
-				} else {
-					node.setAttribute('aria-hidden', originalValue);
-				}
-			});
-		};
-	}, [menuVisiblyOpen]);
+	// Polyfill usage of `aria-modal`
+	const { modalContainerRef } = useAriaModalPolyfill(menuVisiblyOpen);
 
 	const element = (
 		<Box
+			ref={modalContainerRef}
 			palette={palette}
-			ref={dialogRef}
 			{...(menuVisiblyOpen
 				? {
 						role: 'dialog',
