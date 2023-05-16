@@ -3,13 +3,17 @@ import {
 	MouseEventHandler,
 	PropsWithChildren,
 	useEffect,
-	useRef,
 } from 'react';
 import { createPortal } from 'react-dom';
 import { useTransition, animated, SpringValue } from '@react-spring/web';
 import { Global } from '@emotion/react';
 import FocusLock from 'react-focus-lock';
-import { tokens, usePrefersReducedMotion, canUseDOM } from '../core';
+import {
+	tokens,
+	usePrefersReducedMotion,
+	canUseDOM,
+	useAriaModalPolyfill,
+} from '../core';
 import { Box, Flex } from '../box';
 import { CloseIcon } from '../icon';
 import { VisuallyHidden } from '../a11y';
@@ -22,7 +26,9 @@ export function AppLayoutSidebarDialog({
 	children,
 }: AppLayoutSidebarDialogProps) {
 	const { isMobileMenuOpen, closeMobileMenu } = useAppLayoutContext();
-	const dialogRef = useRef<HTMLDivElement>(null);
+
+	// Polyfill usage of `aria-modal`
+	const { modalContainerRef } = useAriaModalPolyfill(isMobileMenuOpen);
 
 	// Close the component when the user presses the escape key
 	useEffect(() => {
@@ -37,48 +43,12 @@ export function AppLayoutSidebarDialog({
 		return () => window.removeEventListener('keydown', handleKeyDown);
 	}, [closeMobileMenu]);
 
-	// The following `useEffect` will add `aria-hidden="true"` to every direct child of the `body` element when the modal is opened.
-	// This is because `aria-modal` is not yet supported by all browsers (https://a11ysupport.io/tech/aria/aria-modal_attribute).
-	// This fixes a bug in certain devices where focus is not trapped correctly such as VoiceOver on iOS.
-	// This has been inspired by Reach UI (https://github.com/reach/reach-ui/blob/main/packages/dialog/src/index.tsx)
-	useEffect(() => {
-		if (!isMobileMenuOpen || !dialogRef.current) return;
-		const rootNodes: Element[] = [];
-		const originalAttrs: (string | null)[] = [];
-		document.querySelectorAll('body > *').forEach(function (node) {
-			if (node === dialogRef.current) return;
-			const attr = node.getAttribute('aria-hidden');
-			const alreadyHidden = attr !== null && attr !== 'false';
-			if (alreadyHidden) return;
-			rootNodes.push(node);
-			originalAttrs.push(attr);
-			node.setAttribute('aria-hidden', 'true');
-		});
-		return () => {
-			rootNodes.forEach((node, index) => {
-				const originalValue = originalAttrs[index];
-				if (originalValue === null) {
-					node.removeAttribute('aria-hidden');
-				} else {
-					node.setAttribute('aria-hidden', originalValue);
-				}
-			});
-		};
-	}, [isMobileMenuOpen]);
-
 	// Animation styles
 	const prefersReducedMotion = usePrefersReducedMotion();
-	const [overlayTransitions] = useTransition(isMobileMenuOpen, () => ({
-		from: { opacity: 0 },
-		enter: { opacity: 1 },
-		leave: { opacity: 0 },
-		config: { duration: 150 },
-		immediate: prefersReducedMotion,
-	}));
 	const [dialogTransitions] = useTransition(isMobileMenuOpen, () => ({
-		from: { translateX: '-100%' },
-		enter: { translateX: '0%' },
-		leave: { translateX: '-100%' },
+		from: { translateX: '-100%', opacity: 0 },
+		enter: { translateX: '0%', opacity: 1 },
+		leave: { translateX: '-100%', opacity: 0 },
 		config: { duration: 150 },
 		immediate: prefersReducedMotion,
 	}));
@@ -90,30 +60,32 @@ export function AppLayoutSidebarDialog({
 	return createPortal(
 		<Fragment>
 			{isMobileMenuOpen && <LockScroll />}
-			{overlayTransitions((style, item) =>
-				item ? <Overlay onClick={closeMobileMenu} style={style} /> : null
-			)}
-			{dialogTransitions((style, item) =>
+			{dialogTransitions(({ translateX, opacity }, item) =>
 				item ? (
-					<FocusLock returnFocus>
-						<AnimatedBox
-							display={{ lg: 'none' }}
-							background="shade"
-							width={tokens.maxWidth.mobileMenu}
-							css={{
-								position: 'fixed',
-								zIndex: 100,
-								top: 0,
-								left: 0,
-								bottom: 0,
-								overflowY: 'auto',
-							}}
-							style={style}
-						>
-							<CloseMenuButton onClick={closeMobileMenu} />
-							{children}
-						</AnimatedBox>
-					</FocusLock>
+					<div ref={modalContainerRef}>
+						<Overlay onClick={closeMobileMenu} style={{ opacity }} />
+						<FocusLock returnFocus>
+							<AnimatedBox
+								display={{ lg: 'none' }}
+								role="dialog"
+								aria-modal="true"
+								background="shade"
+								width={tokens.maxWidth.mobileMenu}
+								css={{
+									position: 'fixed',
+									zIndex: 100,
+									top: 0,
+									left: 0,
+									bottom: 0,
+									overflowY: 'auto',
+								}}
+								style={{ translateX }}
+							>
+								<CloseMenuButton onClick={closeMobileMenu} />
+								{children}
+							</AnimatedBox>
+						</FocusLock>
+					</div>
 				) : null
 			)}
 		</Fragment>,
