@@ -1,12 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`SideDrawer renders correctly 1`] = `
+exports[`FilterDrawer renders correctly 1`] = `
 <body>
   <div
     aria-hidden="true"
   />
   <div
-    class="css-rpfvdv-SideDrawerCover"
+    class="css-rpfvdv-FilterDrawerCover"
   >
     <div
       data-focus-guard="true"
@@ -17,18 +17,18 @@ exports[`SideDrawer renders correctly 1`] = `
       data-focus-lock-disabled="false"
     >
       <div
-        aria-labelledby="SideDrawer-:r0:-title"
-        aria-SideDrawer="true"
-        class="css-2sldpu-boxStyles-SideDrawerDialog"
+        aria-labelledby="FilterDrawer-:r0:-title"
+        aria-FilterDrawer="true"
+        class="css-2sldpu-boxStyles-FilterDrawerDialog"
         role="dialog"
       >
         <h2
           class="css-n64ezu-boxStyles-Text"
           data-autofocus="true"
-          id="SideDrawer-:r0:-title"
+          id="FilterDrawer-:r0:-title"
           tabindex="-1"
         >
-          SideDrawer title
+          FilterDrawer title
         </h2>
         <div
           class="css-79i25n-boxStyles"
@@ -36,11 +36,11 @@ exports[`SideDrawer renders correctly 1`] = `
           <p
             class="css-6j1v6l-boxStyles-Text"
           >
-            This is the SideDrawer Body paragraph.
+            This is the FilterDrawer Body paragraph.
           </p>
         </div>
         <div
-          class="css-1kzq3kl-boxStyles-SideDrawerDialog"
+          class="css-1kzq3kl-boxStyles-FilterDrawerDialog"
         >
           <button
             class="css-3jmmp1-BaseButton-Button"
@@ -50,7 +50,7 @@ exports[`SideDrawer renders correctly 1`] = `
               <span
                 class="css-oobk4c-Button"
               >
-                Close SideDrawer
+                Close FilterDrawer
               </span>
               <span
                 aria-live="assertive"
@@ -59,8 +59,8 @@ exports[`SideDrawer renders correctly 1`] = `
           </button>
         </div>
         <button
-          aria-label="Close SideDrawer"
-          class="css-1tn8j9z-BaseButton-SideDrawerDialog"
+          aria-label="Close FilterDrawer"
+          class="css-1tn8j9z-BaseButton-FilterDrawerDialog"
           type="button"
         >
           <span>

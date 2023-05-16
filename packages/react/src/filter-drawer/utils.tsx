@@ -1,6 +1,6 @@
 import { useId } from '../core';
 
-export const useSideDrawerId = () => {
+export const useFilterDrawerId = () => {
 	const id = useId();
 	return {
 		titleId: `side-drawer-${id}-title`,

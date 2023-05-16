@@ -3,13 +3,16 @@ import { Global } from '@emotion/react';
 import { createPortal } from 'react-dom';
 import { useTransition, animated } from '@react-spring/web';
 import { usePrefersReducedMotion } from '../core';
-import { SideDrawerDialog, SideDrawerDialogProps } from './SideDrawerDialog';
+import {
+	FilterDrawerDialog,
+	FilterDrawerDialogProps,
+} from './FilterDrawerDialog';
 
-export type SideDrawerProps = SideDrawerDialogProps & {
+export type FilterDrawerProps = FilterDrawerDialogProps & {
 	isOpen?: boolean;
 };
 
-export const SideDrawer: FunctionComponent<SideDrawerProps> = ({
+export const FilterDrawer: FunctionComponent<FilterDrawerProps> = ({
 	actions,
 	children,
 	isOpen = false,
@@ -19,7 +22,7 @@ export const SideDrawer: FunctionComponent<SideDrawerProps> = ({
 }) => {
 	const coverRef = useRef<HTMLDivElement>(null);
 
-	// Close the SideDrawer when the user presses the escape key
+	// Close the FilterDrawer when the user presses the escape key
 	useEffect(() => {
 		const handleKeyDown = (e: KeyboardEvent) => {
 			if (isOpen && e.code === 'Escape') {
@@ -32,8 +35,8 @@ export const SideDrawer: FunctionComponent<SideDrawerProps> = ({
 		return () => window.removeEventListener('keydown', handleKeyDown);
 	}, [isOpen, onDismiss]);
 
-	// The following `useEffect` will add `aria-hidden="true"` to every direct child of the `body` element when the SideDrawer is opened.
-	// This is because `aria-SideDrawer` is not yet supported by all browsers (https://a11ysupport.io/tech/aria/aria-SideDrawer_attribute).
+	// The following `useEffect` will add `aria-hidden="true"` to every direct child of the `body` element when the FilterDrawer is opened.
+	// This is because `aria-FilterDrawer` is not yet supported by all browsers (https://a11ysupport.io/tech/aria/aria-FilterDrawer_attribute).
 	// This fixes a bug in certain devices where focus is not trapped correctly such as VoiceOver on iOS.
 	// This has been inspired by Reach UI (https://github.com/reach/reach-ui/blob/main/packages/dialog/src/index.tsx)
 	useEffect(() => {
@@ -102,7 +105,7 @@ export const SideDrawer: FunctionComponent<SideDrawerProps> = ({
 			)}
 			{dialogTransitions((style, item) =>
 				item ? (
-					<SideDrawerDialog
+					<FilterDrawerDialog
 						onDismiss={onDismiss}
 						title={title}
 						actions={actions}
@@ -110,7 +113,7 @@ export const SideDrawer: FunctionComponent<SideDrawerProps> = ({
 						style={style}
 					>
 						{children}
-					</SideDrawerDialog>
+					</FilterDrawerDialog>
 				) : null
 			)}
 		</Fragment>,

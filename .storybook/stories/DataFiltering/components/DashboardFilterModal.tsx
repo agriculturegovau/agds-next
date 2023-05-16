@@ -3,7 +3,7 @@ import { Stack } from '@ag.ds-next/react/box';
 import { DateRangePicker } from '@ag.ds-next/react/date-picker';
 import { Fieldset } from '@ag.ds-next/react/fieldset';
 import { FormStack } from '@ag.ds-next/react/form-stack';
-import { SideDrawer } from '@ag.ds-next/react/src/side-drawer';
+import { FilterDrawer } from '@ag.ds-next/react/src/side-drawer';
 import { Button, ButtonGroup } from '@ag.ds-next/react/button';
 import { GetDataFilters } from '../lib/getData';
 import { FormDivider } from '../../../../example-site/components/FormDivider';
@@ -37,7 +37,7 @@ export const DashboardFilterModal = ({
 	}, [isOpen, filters]);
 
 	return (
-		<SideDrawer
+		<FilterDrawer
 			title="Filter by"
 			isOpen={isOpen}
 			onDismiss={onDismiss}
@@ -87,6 +87,6 @@ export const DashboardFilterModal = ({
 					</FormStack>
 				</Fieldset>
 			</Stack>
-		</SideDrawer>
+		</FilterDrawer>
 	);
 };

@@ -6,14 +6,14 @@ import { mapSpacing } from '../core';
 import { CloseIcon } from '../icon';
 import { Button } from '../button';
 import { Text } from '../text';
-import { useSideDrawerId } from './utils';
+import { useFilterDrawerId } from './utils';
 
-export type SideDrawerDialogProps = PropsWithChildren<{
-	/** The actions to display at the bottom of the SideDrawer panel. Typically a `ButtonGroup`. */
+export type FilterDrawerDialogProps = PropsWithChildren<{
+	/** The actions to display at the bottom of the FilterDrawer panel. Typically a `ButtonGroup`. */
 	actions?: ReactNode;
-	/** Function to be called when the SideDrawer is closed. */
+	/** Function to be called when the FilterDrawer is closed. */
 	onDismiss: () => void;
-	/** The title of the SideDrawer dialog. It can span lines but should not be too long. */
+	/** The title of the FilterDrawer dialog. It can span lines but should not be too long. */
 	title: string;
 	overlay?: boolean;
 	style?: any; // TODO
@@ -21,15 +21,15 @@ export type SideDrawerDialogProps = PropsWithChildren<{
 
 const AnimatedFlex = animated(Flex);
 
-export const SideDrawerDialog = ({
+export const FilterDrawerDialog = ({
 	actions,
 	children,
 	title,
 	onDismiss,
 	overlay = true,
 	style,
-}: SideDrawerDialogProps) => {
-	const { titleId } = useSideDrawerId();
+}: FilterDrawerDialogProps) => {
+	const { titleId } = useFilterDrawerId();
 	return (
 		<FocusLock returnFocus>
 			<AnimatedFlex
@@ -56,14 +56,16 @@ export const SideDrawerDialog = ({
 				}}
 				style={style}
 			>
-				<SideDrawerHeader>
-					<SideDrawerHeaderTitle id={titleId}>{title}</SideDrawerHeaderTitle>
-				</SideDrawerHeader>
-				<SideDrawerContent>{children}</SideDrawerContent>
-				{actions ? <SideDrawerFooter>{actions}</SideDrawerFooter> : null}
+				<FilterDrawerHeader>
+					<FilterDrawerHeaderTitle id={titleId}>
+						{title}
+					</FilterDrawerHeaderTitle>
+				</FilterDrawerHeader>
+				<FilterDrawerContent>{children}</FilterDrawerContent>
+				{actions ? <FilterDrawerFooter>{actions}</FilterDrawerFooter> : null}
 				<Button
 					variant="tertiary"
-					aria-label="Close SideDrawer"
+					aria-label="Close FilterDrawer"
 					onClick={onDismiss}
 					iconAfter={CloseIcon}
 					css={{
@@ -79,9 +81,9 @@ export const SideDrawerDialog = ({
 	);
 };
 
-type SideDrawerHeaderProps = PropsWithChildren<{}>;
+type FilterDrawerHeaderProps = PropsWithChildren<{}>;
 
-function SideDrawerHeader({ children }: SideDrawerHeaderProps) {
+function FilterDrawerHeader({ children }: FilterDrawerHeaderProps) {
 	return (
 		<Box borderBottom borderColor="muted" padding={1.5}>
 			{children}
@@ -89,9 +91,12 @@ function SideDrawerHeader({ children }: SideDrawerHeaderProps) {
 	);
 }
 
-type SideDrawerHeaderTitleProps = PropsWithChildren<{ id: string }>;
+type FilterDrawerHeaderTitleProps = PropsWithChildren<{ id: string }>;
 
-function SideDrawerHeaderTitle({ children, id }: SideDrawerHeaderTitleProps) {
+function FilterDrawerHeaderTitle({
+	children,
+	id,
+}: FilterDrawerHeaderTitleProps) {
 	return (
 		<Text
 			as="h2"
@@ -109,9 +114,9 @@ function SideDrawerHeaderTitle({ children, id }: SideDrawerHeaderTitleProps) {
 	);
 }
 
-type SideDrawerContentProps = PropsWithChildren<{}>;
+type FilterDrawerContentProps = PropsWithChildren<{}>;
 
-function SideDrawerContent({ children }: SideDrawerContentProps) {
+function FilterDrawerContent({ children }: FilterDrawerContentProps) {
 	return (
 		<Box padding={1.5} css={{ overflowY: 'auto' }}>
 			{children}
@@ -119,9 +124,9 @@ function SideDrawerContent({ children }: SideDrawerContentProps) {
 	);
 }
 
-type SideDrawerFooterProps = PropsWithChildren<{}>;
+type FilterDrawerFooterProps = PropsWithChildren<{}>;
 
-function SideDrawerFooter({ children }: SideDrawerFooterProps) {
+function FilterDrawerFooter({ children }: FilterDrawerFooterProps) {
 	return (
 		<Box
 			borderTop

@@ -1,0 +1,61 @@
+---
+title: FilterDrawer
+description: A FilterDrawer is a dialog box that appears above the parent page and provides advance notice of a destructive action and consequence. They tell users a decision is needed.
+group: Content
+storybookPath: /story/content-FilterDrawer--basic
+figmaGalleryNodeId: 11981%3A101667
+---
+
+```jsx live
+() => {
+	const [isFilterDrawerOpen, openFilterDrawer, closeFilterDrawer] =
+		useTernaryState(false);
+	return (
+		<React.Fragment>
+			<Button onClick={openFilterDrawer}>Open FilterDrawer</Button>
+			<FilterDrawer
+				isOpen={isFilterDrawerOpen}
+				onDismiss={closeFilterDrawer}
+				title="This is the title of the FilterDrawer dialog, it can span lines but should not be too long."
+				actions={
+					<ButtonGroup>
+						<Button onClick={closeFilterDrawer}>Primary button</Button>
+						<Button variant="secondary" onClick={closeFilterDrawer}>
+							Secondary button
+						</Button>
+						<Button variant="tertiary" onClick={closeFilterDrawer}>
+							Tertiary button
+						</Button>
+					</ButtonGroup>
+				}
+			>
+				<Text as="p">
+					This is the FilterDrawer Body paragraph, it provides detailed
+					instruction and context for the the FilterDrawer action. It can also
+					span lines but long form content should be avoided.
+				</Text>
+			</FilterDrawer>
+		</React.Fragment>
+	);
+};
+```
+
+FilterDrawers are ideal for prompting a user to confirm a destructive action.
+
+For other uses, other patterns are preferred.
+
+<DoHeading />
+
+- use to confirm a destructive action – for example, when cancelling a form and user input will be lost
+- use a Button or Button group for actions
+- include a Close button in the top right corner
+- ensure the FilterDrawer closes when the action is completed.
+
+<DontHeading />
+
+- change the Button group order
+- remove the Close button
+- change default behaviour
+- use a FilterDrawer to explain why a user cannot continue in a flow - use PageAlert
+- embed forms in a FilterDrawer
+- use for error, success or loading messages.
