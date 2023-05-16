@@ -74,3 +74,10 @@ export const Block: Story = {
 		block: true,
 	},
 };
+
+export const Clearable: Story = {
+	args: {
+		...defaultArgs,
+		clearable: true,
+	},
+};

@@ -13,8 +13,9 @@ import { ComboboxListError } from './ComboboxListError';
 import { ComboboxListEmptyResults } from './ComboboxListEmptyResults';
 import {
 	ComboboxDropdownTrigger,
-	ComboboxClearButton,
 	ComboboxButtonContainer,
+	ComboboxClearButton,
+	ComboboxButtonDivider,
 } from './ComboboxButtons';
 
 type ComboboxBaseProps<Option extends DefaultComboboxOption> = {
@@ -71,18 +72,19 @@ export function ComboboxBase<Option extends DefaultComboboxOption>({
 		modifiers: [{ name: 'offset', options: { offset: [0, 8] } }],
 	});
 
+	const showClearButton = clearable && combobox.selectedItem;
+	const hasButtons = showDropdownTrigger || showClearButton;
+	const hasBothButtons = showDropdownTrigger && showClearButton;
+
 	const { maxWidth, ...inputStyles } = {
 		...textInputStyles({ block, maxWidth: maxWidthProp, invalid }),
-		paddingRight: mapSpacing(3),
+		paddingRight: hasBothButtons ? '5rem' : '3rem',
 	};
 
 	const { ref: menuRef, ...menuProps } = combobox.getMenuProps({
 		...attributes.popper,
 		style: styles.popper,
 	});
-
-	const showClearButton = clearable && combobox.selectedItem;
-	const hasButtons = showDropdownTrigger || showClearButton;
 
 	return (
 		<Field
@@ -113,6 +115,7 @@ export function ComboboxBase<Option extends DefaultComboboxOption>({
 									{...combobox.getToggleButtonProps()}
 								/>
 							)}
+							{hasBothButtons && <ComboboxButtonDivider />}
 							{showClearButton && (
 								<ComboboxClearButton
 									disabled={disabled}
