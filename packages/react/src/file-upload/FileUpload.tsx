@@ -1,6 +1,5 @@
 import { forwardRef, InputHTMLAttributes, useEffect, useState } from 'react';
 import { useDropzone, DropzoneOptions } from 'react-dropzone';
-import formatFileSize from 'filesize';
 import { Flex, Stack } from '../box';
 import { Button } from '../button';
 import { packs, boxPalette, tokens, mergeRefs } from '../core';
@@ -14,6 +13,7 @@ import {
 	AcceptedFileMimeTypes,
 	getFileRejectionErrorMessage,
 	getErrorSummary,
+	formatFileSize,
 	FileWithStatus,
 	RejectedFile,
 	getFilesTotal,
@@ -79,7 +79,7 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 		forwardedRef
 	) {
 		const filesPlural = multiple ? 'files' : 'file';
-		const maxSizeBytes = (maxSize || 0) * 1000;
+		const maxSizeBytes = maxSize && !isNaN(maxSize) ? maxSize * 1000 : 0;
 		const formattedMaxFileSize = formatFileSize(maxSizeBytes);
 
 		const [fileRejections, setFileRejections] = useState<RejectedFile[]>([]);

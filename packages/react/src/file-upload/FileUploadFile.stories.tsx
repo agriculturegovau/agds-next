@@ -1,33 +1,34 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react';
 import { FileUploadFile } from './FileUploadFile';
 
-export default {
+const meta: Meta = {
 	title: 'forms/FileUpload/Primitives/FileUploadFile',
 	component: FileUploadFile,
-} as ComponentMeta<typeof FileUploadFile>;
-
-export const Basic: ComponentStory<typeof FileUploadFile> = (args) => {
-	return <FileUploadFile {...args} />;
-};
-Basic.args = {
-	name: 'Example.jpg',
-	size: 2345,
 };
 
-export const Uploading: ComponentStory<typeof FileUploadFile> = (args) => {
-	return <FileUploadFile {...args} />;
-};
-Uploading.args = {
-	name: 'Example.jpg',
-	size: 2345,
-	status: 'uploading',
+export default meta;
+
+type Story = StoryObj<typeof FileUploadFile>;
+
+export const Basic: Story = {
+	args: {
+		name: 'Example.jpg',
+		size: 2345,
+	},
 };
 
-export const Success: ComponentStory<typeof FileUploadFile> = (args) => {
-	return <FileUploadFile {...args} />;
+export const Uploading: Story = {
+	args: {
+		name: 'Example.jpg',
+		size: 2345,
+		status: 'uploading',
+	},
 };
-Success.args = {
-	name: 'Example.jpg',
-	size: 2345,
-	status: 'success',
+
+export const Success: Story = {
+	args: {
+		name: 'Example.jpg',
+		size: 2345,
+		status: 'success',
+	},
 };

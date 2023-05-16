@@ -1,15 +1,15 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { StoryObj, Meta } from '@storybook/react';
 import { FileUploadFileList } from './FileUploadFileList';
 import { FileStatus, FileWithStatus } from './utils';
 
-export default {
+const meta: Meta<typeof FileUploadFileList> = {
 	title: 'forms/FileUpload/Primitives/FileUploadFileList',
 	component: FileUploadFileList,
-} as ComponentMeta<typeof FileUploadFileList>;
-
-const Template: ComponentStory<typeof FileUploadFileList> = (args) => {
-	return <FileUploadFileList {...args} />;
 };
+
+export default meta;
+
+type Story = StoryObj<typeof FileUploadFileList>;
 
 function createExampleFile(status?: FileStatus) {
 	const file: FileWithStatus = new File(['example'], 'example.jpg', {
@@ -19,14 +19,16 @@ function createExampleFile(status?: FileStatus) {
 	return file;
 }
 
-export const Basic = Template.bind({});
-Basic.args = {
-	files: [createExampleFile(), createExampleFile(), createExampleFile()],
-	onRemove: (id) => console.log(id),
+export const Basic: Story = {
+	args: {
+		files: [createExampleFile(), createExampleFile(), createExampleFile()],
+		onRemove: (id) => console.log(id),
+	},
 };
 
-export const Uploading = Template.bind({});
-Uploading.args = {
-	files: [createExampleFile('uploading'), createExampleFile('success')],
-	onRemove: (id) => console.log(id),
+export const Uploading: Story = {
+	args: {
+		files: [createExampleFile('uploading'), createExampleFile('success')],
+		onRemove: (id) => console.log(id),
+	},
 };

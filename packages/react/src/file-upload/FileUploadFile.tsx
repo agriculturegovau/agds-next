@@ -1,12 +1,11 @@
 import { MouseEventHandler } from 'react';
-import formatFileSize from 'filesize';
 import { Box, Flex } from '../box';
 import { boxPalette } from '../core';
 import { Text } from '../text';
 import { Button } from '../button';
 import { LoadingDots } from '../loading';
 import { SuccessFilledIcon } from '../icon';
-import { FileStatus } from './utils';
+import { FileStatus, formatFileSize } from './utils';
 
 type FileUploadFileProps = {
 	name: string;

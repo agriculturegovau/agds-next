@@ -1,10 +1,10 @@
 import { MouseEventHandler } from 'react';
-import formatFileSize from 'filesize';
 import { Box, Flex, Stack } from '../box';
 import { Button } from '../button';
 import { boxPalette } from '../core';
 import { AlertFilledIcon } from '../icon';
 import { Text } from '../text';
+import { formatFileSize } from './utils';
 
 type FileUploadRejectedFileProps = {
 	fileName: string;
