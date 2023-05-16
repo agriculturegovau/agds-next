@@ -1,7 +1,7 @@
 import { Fragment, ReactNode, useState } from 'react';
 import { UseComboboxReturnValue } from 'downshift';
 import { usePopper } from 'react-popper';
-import { FieldMaxWidth, mapSpacing, mergeRefs } from '../../core';
+import { FieldMaxWidth, mergeRefs } from '../../core';
 import { textInputStyles } from '../../text-input';
 import { Field } from '../../field';
 import { DefaultComboboxOption } from '../utils';
