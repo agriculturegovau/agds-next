@@ -35,6 +35,7 @@ export const FilterBar = ({ children }: { children: ReactNode }) => {
 export const FilterBarGroup = ({ children }: { children: ReactNode }) => {
 	return (
 		<Flex
+			flexWrap="wrap"
 			columnGap={1}
 			rowGap={1.5}
 			flexDirection={{ xs: 'column', md: 'row' }}
