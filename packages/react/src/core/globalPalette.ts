@@ -3,6 +3,7 @@ import { themeVars } from './theme';
 export const globalPalette = {
 	lightForegroundText: `var(${themeVars.lightForegroundText})`,
 	lightForegroundAction: `var(${themeVars.lightForegroundAction})`,
+	lightForegroundSelected: `var(${themeVars.lightForegroundSelected})`,
 	lightForegroundFocus: `var(${themeVars.lightForegroundFocus})`,
 	lightForegroundMuted: `var(${themeVars.lightForegroundMuted})`,
 	lightBackgroundBody: `var(${themeVars.lightBackgroundBody})`,
@@ -22,6 +23,7 @@ export const globalPalette = {
 	lightSystemInfoMuted: `var(${themeVars.lightSystemInfoMuted})`,
 	darkForegroundText: `var(${themeVars.darkForegroundText})`,
 	darkForegroundAction: `var(${themeVars.darkForegroundAction})`,
+	darkForegroundSelected: `var(${themeVars.darkForegroundSelected})`,
 	darkForegroundFocus: `var(${themeVars.darkForegroundFocus})`,
 	darkForegroundMuted: `var(${themeVars.darkForegroundMuted})`,
 	darkBackgroundBody: `var(${themeVars.darkBackgroundBody})`,

@@ -3,6 +3,7 @@ import { Theme } from './theme';
 export const printTheme: Theme = {
 	lightForegroundText: 'black',
 	lightForegroundAction: 'black',
+	lightForegroundSelected: 'black',
 	lightForegroundFocus: 'black',
 	lightForegroundMuted: 'black',
 	lightBackgroundBody: 'white',
@@ -23,6 +24,7 @@ export const printTheme: Theme = {
 	lightSystemInfoMuted: 'white',
 	darkForegroundText: 'black',
 	darkForegroundAction: 'black',
+	darkForegroundSelected: 'black',
 	darkForegroundFocus: 'black',
 	darkForegroundMuted: 'black',
 	darkBackgroundBody: 'white',

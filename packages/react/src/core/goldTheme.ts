@@ -4,6 +4,7 @@ import { Theme } from './theme';
 export const goldTheme: Theme = {
 	lightForegroundText: '#313131',
 	lightForegroundAction: '#00698f',
+	lightForegroundSelected: '#00698f',
 	lightForegroundFocus: '#9263de',
 	lightForegroundMuted: '#626262',
 	lightBackgroundBody: '#FFFFFF',
@@ -24,6 +25,7 @@ export const goldTheme: Theme = {
 	lightSystemInfoMuted: '#f2fcfe',
 	darkForegroundText: '#FFFFFF',
 	darkForegroundAction: '#61daff',
+	darkForegroundSelected: '#61daff',
 	darkForegroundFocus: '#c390f9',
 	darkForegroundMuted: '#bdd2d7',
 	darkBackgroundBody: '#135e70',

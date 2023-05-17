@@ -2,6 +2,7 @@ export const themeVars = {
 	// Light
 	lightForegroundText: '--agds-light-foreground-text',
 	lightForegroundAction: '--agds-light-foreground-action',
+	lightForegroundSelected: '--agds-light-foreground-selected',
 	lightForegroundFocus: '--agds-light-foreground-focus',
 	lightForegroundMuted: '--agds-light-foreground-muted',
 	lightBackgroundBody: '--agds-light-background-body',
@@ -23,6 +24,7 @@ export const themeVars = {
 	// Dark
 	darkForegroundText: '--agds-dark-foreground-text',
 	darkForegroundAction: '--agds-dark-foreground-action',
+	darkForegroundSelected: '--agds-dark-foreground-selected',
 	darkForegroundFocus: '--agds-dark-foreground-focus',
 	darkForegroundMuted: '--agds-dark-foreground-muted',
 	darkBackgroundBody: '--agds-dark-background-body',
