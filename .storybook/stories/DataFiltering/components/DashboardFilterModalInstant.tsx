@@ -16,19 +16,21 @@ export const DashboardFilterModalInstant = ({
 	filters,
 	setFilters,
 	resetFilters,
+	overlay,
 }: {
 	isOpen: boolean;
 	onDismiss: () => void;
 	filters: GetDataFilters;
 	setFilters: (filters: GetDataFilters) => void;
 	resetFilters: () => void;
+	overlay: boolean;
 }) => {
 	return (
 		<FilterDrawer
 			title="Filter by"
 			isOpen={isOpen}
 			onDismiss={onDismiss}
-			overlay={false}
+			overlay={overlay}
 		>
 			<Stack gap={2}>
 				<Fieldset legend="Fieldset">

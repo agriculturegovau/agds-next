@@ -15,8 +15,11 @@ export type FilterDrawerDialogProps = PropsWithChildren<{
 	onDismiss: () => void;
 	/** The title of the FilterDrawer dialog. It can span lines but should not be too long. */
 	title: string;
+
+	// TODO This probably will be removed
 	overlay?: boolean;
-	style?: any; // TODO
+	// TODO This can be cleaned up
+	style?: any;
 }>;
 
 const AnimatedFlex = animated(Flex);

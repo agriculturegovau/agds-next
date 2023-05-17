@@ -1,6 +1,7 @@
 import { Meta, StoryObj } from '@storybook/react';
 import { TableFilteringLarge } from './TableFilteringLarge';
 import { TableFilteringLargeInstant } from './TableFilteringLargeInstant';
+import { TableFilteringLargeInstantOverlay } from './TableFilteringLargeInstantOverlay';
 import { useSortAndFilter } from './lib/useSortAndFilter';
 import { generateTableCaption, useData } from './lib/utils';
 
@@ -107,7 +108,57 @@ const TableFilteringLargeInstantExample = () => {
 	);
 };
 
+// TODO This will probably be removed after discussion
 export const LargeInstant: Story = {
 	name: 'Tables (Large Instant)',
 	render: TableFilteringLargeInstantExample,
+};
+
+const TableFilteringLargeInstantOverlayExample = () => {
+	const {
+		filters,
+		pagination,
+		resetFilters,
+		removeFilter,
+		setFilters,
+		setPagination,
+		setSort,
+		sort,
+	} = useSortAndFilter();
+
+	const { loading, data, totalPages, totalItems } = useData({
+		filters,
+		pagination,
+		sort,
+	});
+
+	const tableCaption = generateTableCaption({
+		loading,
+		totalItems,
+		pagination,
+	});
+
+	return (
+		<TableFilteringLargeInstantOverlay
+			data={data}
+			filters={filters}
+			loading={loading}
+			pagination={pagination}
+			resetFilters={resetFilters}
+			setFilters={setFilters}
+			removeFilter={removeFilter}
+			setPagination={setPagination}
+			setSort={setSort}
+			sort={sort}
+			tableCaption={tableCaption}
+			totalPages={totalPages}
+			totalItems={totalItems}
+		/>
+	);
+};
+
+// TODO This will probably be removed after discussion
+export const LargeInstantOverlay: Story = {
+	name: 'Tables (Large Instant with overlay)',
+	render: TableFilteringLargeInstantOverlayExample,
 };

@@ -40,7 +40,7 @@ type TableFilteringLargeProps = {
 };
 
 /** These patterns are draft designs and are not yet ready for production. */
-export const TableFilteringLargeInstant = ({
+export const TableFilteringLargeInstantOverlay = ({
 	sort,
 	setSort,
 	filters,
@@ -62,7 +62,7 @@ export const TableFilteringLargeInstant = ({
 		<PageContent>
 			<Stack gap={2}>
 				<Prose>
-					<h1>Table Filtering (Large Instant)</h1>
+					<h1>Table Filtering (Large Instant with overlay)</h1>
 					<p>
 						The large filtering pattern is for cases where the number of
 						filterable fields exceeds 5. Our FilterModal is used to reveal all
@@ -89,6 +89,7 @@ export const TableFilteringLargeInstant = ({
 									Show filters
 								</Button>
 							</FilterBarGroup>
+
 							<SortBySelect sort={sort} setSort={setSort} />
 						</FilterBar>
 						<DashboardFilterModalInstant
@@ -97,7 +98,7 @@ export const TableFilteringLargeInstant = ({
 							filters={filters}
 							setFilters={setFilters}
 							resetFilters={resetFilters}
-							overlay={false}
+							overlay={true}
 						/>
 						<ActiveFilters
 							filters={filters}
