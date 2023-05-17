@@ -41,7 +41,7 @@ export const TableHeaderSortable = ({
 			})}
 			css={{
 				textAlign,
-				borderBottomColor: boxPalette.foregroundAction,
+				borderBottomColor: boxPalette.foregroundSelected,
 			}}
 		>
 			<Flex

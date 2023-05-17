@@ -22,7 +22,7 @@ export function SubNavListItem({ children, active }: SubNavListItemProps) {
 			css={mq({
 				borderBottomColor: mapResponsiveProp([
 					boxPalette.borderMuted,
-					active ? boxPalette.foregroundAction : boxPalette.borderMuted,
+					active ? boxPalette.foregroundSelected : boxPalette.borderMuted,
 				]),
 				borderBottomWidth: mapResponsiveProp([
 					tokens.borderWidth.sm,
