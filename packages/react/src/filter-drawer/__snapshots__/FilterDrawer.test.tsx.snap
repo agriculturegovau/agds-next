@@ -5,108 +5,107 @@ exports[`FilterDrawer renders correctly 1`] = `
   <div
     aria-hidden="true"
   />
-  <div
-    class="css-1nfidid-FilterDrawer"
-    style="opacity: 0;"
-  />
-  <div
-    aria-hidden="true"
-    data-focus-guard="true"
-    style="width: 1px; height: 0px; padding: 0px; overflow: hidden; position: fixed; top: 1px; left: 1px;"
-    tabindex="0"
-  />
-  <div
-    aria-hidden="true"
-    data-focus-lock-disabled="false"
-  >
+  <div>
     <div
-      aria-labelledby="filter-drawer-:r0:-title"
-      aria-modal="true"
-      class="css-155ogtw-boxStyles-FilterDrawerDialog"
-      role="dialog"
-      style="transform: translateX(100%);"
+      class="css-1nfidid-FilterDrawer"
+      style="opacity: 0;"
+    />
+    <div
+      data-focus-guard="true"
+      style="width: 1px; height: 0px; padding: 0px; overflow: hidden; position: fixed; top: 1px; left: 1px;"
+      tabindex="0"
+    />
+    <div
+      data-focus-lock-disabled="false"
     >
       <div
-        class="css-vcprua-boxStyles"
+        aria-labelledby="filter-drawer-:r0:-title"
+        aria-modal="true"
+        class="css-155ogtw-boxStyles-FilterDrawerDialog"
+        role="dialog"
+        style="transform: translateX(100%);"
       >
-        <h2
-          class="css-4kc494-boxStyles-Text-FilterDrawerHeaderTitle"
-          data-autofocus="true"
-          id="filter-drawer-:r0:-title"
-          tabindex="-1"
+        <div
+          class="css-vcprua-boxStyles"
         >
-          FilterDrawer title
-        </h2>
-      </div>
-      <div
-        class="css-16oc5h-boxStyles-FilterDrawerContent"
-      >
-        <p
-          class="css-6j1v6l-boxStyles-Text"
+          <h2
+            class="css-4kc494-boxStyles-Text-FilterDrawerHeaderTitle"
+            data-autofocus="true"
+            id="filter-drawer-:r0:-title"
+            tabindex="-1"
+          >
+            Filter drawer title
+          </h2>
+        </div>
+        <div
+          class="css-16oc5h-boxStyles-FilterDrawerContent"
         >
-          This is the FilterDrawer Body paragraph.
-        </p>
-      </div>
-      <div
-        class="css-zzcowr-boxStyles-FilterDrawerFooter"
-      >
+          <p
+            class="css-6j1v6l-boxStyles-Text"
+          >
+            This is the Filter drawer content.
+          </p>
+        </div>
+        <div
+          class="css-zzcowr-boxStyles-FilterDrawerFooter"
+        >
+          <button
+            class="css-3jmmp1-BaseButton-Button"
+            type="button"
+          >
+            <span>
+              <span
+                class="css-oobk4c-Button"
+              >
+                Close
+              </span>
+              <span
+                aria-live="assertive"
+              />
+            </span>
+          </button>
+        </div>
         <button
-          class="css-3jmmp1-BaseButton-Button"
+          aria-label="Close drawer"
+          class="css-1alhlgt-BaseButton-FilterDrawerDialog"
           type="button"
         >
           <span>
             <span
               class="css-oobk4c-Button"
             >
-              Close FilterDrawer
+              Close
             </span>
             <span
               aria-live="assertive"
             />
           </span>
+          <svg
+            aria-hidden="true"
+            class="css-9s3cfn-Icon"
+            clip-rule="evenodd"
+            focusable="false"
+            height="24"
+            role="img"
+            viewBox="0 0 24 24"
+            width="24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M5 19L19 5"
+            />
+            <path
+              d="M19 19L5 5"
+            />
+          </svg>
         </button>
       </div>
-      <button
-        aria-label="Close FilterDrawer"
-        class="css-1alhlgt-BaseButton-FilterDrawerDialog"
-        type="button"
-      >
-        <span>
-          <span
-            class="css-oobk4c-Button"
-          >
-            Close
-          </span>
-          <span
-            aria-live="assertive"
-          />
-        </span>
-        <svg
-          aria-hidden="true"
-          class="css-9s3cfn-Icon"
-          clip-rule="evenodd"
-          focusable="false"
-          height="24"
-          role="img"
-          viewBox="0 0 24 24"
-          width="24"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M5 19L19 5"
-          />
-          <path
-            d="M19 19L5 5"
-          />
-        </svg>
-      </button>
     </div>
+    <div
+      data-focus-guard="true"
+      style="width: 1px; height: 0px; padding: 0px; overflow: hidden; position: fixed; top: 1px; left: 1px;"
+      tabindex="0"
+    />
   </div>
-  <div
-    aria-hidden="true"
-    data-focus-guard="true"
-    style="width: 1px; height: 0px; padding: 0px; overflow: hidden; position: fixed; top: 1px; left: 1px;"
-    tabindex="0"
-  />
 </body>
 `;

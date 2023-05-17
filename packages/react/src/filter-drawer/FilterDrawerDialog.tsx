@@ -1,6 +1,6 @@
 import { PropsWithChildren, ReactNode } from 'react';
 import FocusLock from 'react-focus-lock';
-import { animated } from '@react-spring/web';
+import { animated, SpringValue } from '@react-spring/web';
 import { Box, Flex } from '../box';
 import { mapSpacing } from '../core';
 import { CloseIcon } from '../icon';
@@ -15,11 +15,8 @@ export type FilterDrawerDialogProps = PropsWithChildren<{
 	onDismiss: () => void;
 	/** The title of the FilterDrawer dialog. It can span lines but should not be too long. */
 	title: string;
-
-	// TODO This probably will be removed
-	overlay?: boolean;
-	// TODO This can be cleaned up
-	style?: any;
+	overlay?: boolean; // TODO This probably will be removed
+	style?: { translateX: SpringValue<string> };
 }>;
 
 const AnimatedFlex = animated(Flex);
@@ -30,7 +27,7 @@ export const FilterDrawerDialog = ({
 	title,
 	onDismiss,
 	overlay = true,
-	style,
+	style, // TODO This probably will be removed
 }: FilterDrawerDialogProps) => {
 	const { titleId } = useFilterDrawerId();
 	return (
@@ -68,7 +65,7 @@ export const FilterDrawerDialog = ({
 				{actions ? <FilterDrawerFooter>{actions}</FilterDrawerFooter> : null}
 				<Button
 					variant="tertiary"
-					aria-label="Close FilterDrawer"
+					aria-label="Close drawer"
 					onClick={onDismiss}
 					iconAfter={CloseIcon}
 					css={{

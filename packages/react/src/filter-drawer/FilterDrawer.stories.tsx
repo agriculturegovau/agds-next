@@ -9,7 +9,7 @@ const meta: Meta<typeof FilterDrawer> = {
 	component: FilterDrawer,
 	args: {
 		title:
-			'This is the title of the FilterDrawer dialog, it can span lines but should not be too long.',
+			'This is the title of the Filter drawer dialog, it can span lines but should not be too long.',
 	},
 	render: function Render(props) {
 		const [isFilterDrawerOpen, openFilterDrawer, closeFilterDrawer] =
@@ -34,7 +34,7 @@ const meta: Meta<typeof FilterDrawer> = {
 					}
 				>
 					<Text as="p">
-						This is the FilterDrawer Body paragraph, it provides detailed
+						This is the Filter drawer Body paragraph, it provides detailed
 						instruction and context for the the FilterDrawer action. It can also
 						span lines but long form content should be avoided.
 					</Text>

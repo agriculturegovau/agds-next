@@ -4,7 +4,7 @@ import userEvent from '@testing-library/user-event';
 import { useTernaryState } from '../core';
 import { Button } from '../button';
 import { Text } from '../text';
-import { render, screen, cleanup } from '../../../../test-utils';
+import { render, screen, cleanup, waitFor } from '../../../../test-utils';
 import { FilterDrawer } from './FilterDrawer';
 
 afterEach(cleanup);
@@ -14,10 +14,10 @@ function renderBaseFilterDrawer() {
 		<FilterDrawer
 			isOpen
 			onDismiss={() => undefined}
-			title="FilterDrawer title"
-			actions={<Button>Close FilterDrawer</Button>}
+			title="Filter drawer title"
+			actions={<Button>Close</Button>}
 		>
-			<Text as="p">This is the FilterDrawer Body paragraph.</Text>
+			<Text as="p">This is the Filter drawer content.</Text>
 		</FilterDrawer>
 	);
 }
@@ -27,23 +27,20 @@ function FilterDrawerExample() {
 		useTernaryState(false);
 	return (
 		<div>
-			<Button onClick={openFilterDrawer} data-testid="open-FilterDrawer-button">
-				Open FilterDrawer
+			<Button onClick={openFilterDrawer} data-testid="open-button">
+				Open
 			</Button>
 			<FilterDrawer
 				isOpen={isFilterDrawerOpen}
 				onDismiss={closeFilterDrawer}
-				title="FilterDrawer title"
+				title="Filter drawer title"
 				actions={
-					<Button
-						onClick={closeFilterDrawer}
-						data-testid="close-FilterDrawer-button"
-					>
-						Close FilterDrawer
+					<Button onClick={closeFilterDrawer} data-testid="close-button">
+						Close
 					</Button>
 				}
 			>
-				<Text as="p">This is the FilterDrawer Body paragraph.</Text>
+				<Text as="p">This is the Filter drawer content.</Text>
 			</FilterDrawer>
 		</div>
 	);
@@ -73,16 +70,21 @@ describe('FilterDrawer', () => {
 
 	it('focuses the correct elements when opening and closing', async () => {
 		renderFilterDrawer();
-		// Open the FilterDrawer by clicking the "Open FilterDrawer" button
-		await userEvent.click(await screen.getByTestId('open-FilterDrawer-button'));
+
+		// Open the FilterDrawer by clicking the "Open" button
+		await userEvent.click(screen.getByTestId('open-button'));
 		expect(await screen.findByRole('dialog')).toBeInTheDocument();
+
 		// Title should have focus
-		expect(await screen.getByText('FilterDrawer title')).toHaveFocus();
-		// Close the FilterDrawer
-		await userEvent.click(
-			await screen.getByTestId('close-FilterDrawer-button')
+		expect(await screen.getByText('Filter drawer title')).toHaveFocus();
+
+		// Close the FilterDrawer by clicking the "Close" button
+		await userEvent.click(screen.getByTestId('close-button'));
+
+		// After closing the FilterDrawer, the "Open" button should be focused
+		// Note: We need to wait for the closing animation
+		await waitFor(() =>
+			expect(screen.getByTestId('open-button')).toHaveFocus()
 		);
-		// After closing the FilterDrawer, the "Open FilterDrawer" button should be focused
-		expect(await screen.getByTestId('open-FilterDrawer-button')).toHaveFocus();
 	});
 });
