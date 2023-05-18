@@ -1,17 +1,17 @@
 import { DocumentTitle } from '../../../components/DocumentTitle';
-import { AppLayout } from '../../../components/AppLayout';
+import { SiteLayout } from '../../../components/SiteLayout';
 import { Content } from '../../../components/templates/Content';
 
 export default function ContentPage() {
 	return (
 		<>
 			<DocumentTitle title="Content page example" />
-			<AppLayout
+			<SiteLayout
 				template={{ name: 'Content', slug: 'content' }}
 				applyMainElement={false}
 			>
 				<Content />
-			</AppLayout>
+			</SiteLayout>
 		</>
 	);
 }

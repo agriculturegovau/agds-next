@@ -5,7 +5,7 @@ import { PatternBanner } from './PatternBanner';
 import { SiteHeader } from './SiteHeader';
 import { SiteFooter } from './SiteFooter';
 
-type AppLayoutProps = PropsWithChildren<{
+type SiteLayoutProps = PropsWithChildren<{
 	/** If true, the area between the header and footer will be a 'main' element with the ID of 'main-content' applied (used for skip links). */
 	applyMainElement?: boolean;
 	/** If true, the `MainNav` component will not be rendered. Used on pages with focused tasks such as multi-page forms. */
@@ -14,12 +14,12 @@ type AppLayoutProps = PropsWithChildren<{
 	template?: { name: string; slug: string };
 }>;
 
-export const AppLayout = ({
+export const SiteLayout = ({
 	children,
 	applyMainElement = true,
 	focusMode = false,
 	template,
-}: AppLayoutProps) => {
+}: SiteLayoutProps) => {
 	const skipLinks = useMemo(() => {
 		const items = [{ href: '#main-content', label: 'Skip to main content' }];
 		if (!focusMode) {
