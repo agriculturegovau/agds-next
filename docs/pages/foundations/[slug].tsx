@@ -3,7 +3,7 @@ import { MDXRemote } from 'next-mdx-remote';
 import { InpageNav } from '@ag.ds-next/react/inpage-nav';
 import { Prose } from '@ag.ds-next/react/prose';
 import { mdxComponents } from '../../components/mdxComponents';
-import { AppLayout } from '../../components/AppLayout';
+import { SiteLayout } from '../../components/SiteLayout';
 import { DocumentTitle } from '../../components/DocumentTitle';
 import { PageLayout } from '../../components/PageLayout';
 import { PageTitle } from '../../components/PageTitle';
@@ -26,7 +26,7 @@ export default function FoundationsPage({
 				title={foundation.title}
 				description={foundation.description}
 			/>
-			<AppLayout>
+			<SiteLayout>
 				<PageLayout
 					editPath={`/docs/content/foundations/${foundation.slug}.mdx`}
 					breadcrumbs={breadcrumbs}
@@ -45,7 +45,7 @@ export default function FoundationsPage({
 						<MDXRemote {...foundation.source} components={mdxComponents} />
 					</Prose>
 				</PageLayout>
-			</AppLayout>
+			</SiteLayout>
 		</>
 	);
 }

@@ -4,15 +4,15 @@ import { SkipLinks } from '@ag.ds-next/react/skip-link';
 import { SiteHeader } from './SiteHeader';
 import { SiteFooter } from './SiteFooter';
 
-type AppLayoutProps = PropsWithChildren<{
+type SiteLayoutProps = PropsWithChildren<{
 	/** If true, the area between the header and footer will be a 'main' element with the ID of 'main-content' applied (used for skip links). */
 	applyMainElement?: boolean;
 }>;
 
-export const AppLayout = ({
+export const SiteLayout = ({
 	applyMainElement = true,
 	children,
-}: AppLayoutProps) => {
+}: SiteLayoutProps) => {
 	return (
 		<>
 			<SkipLinks

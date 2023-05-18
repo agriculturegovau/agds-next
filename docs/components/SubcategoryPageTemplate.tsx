@@ -6,7 +6,7 @@ import {
 } from '@ag.ds-next/react/hero-banner';
 import { Flex, Stack } from '@ag.ds-next/react/box';
 import { Breadcrumbs, BreadcrumbsProps } from '@ag.ds-next/react/breadcrumbs';
-import { AppLayout } from './AppLayout';
+import { SiteLayout } from './SiteLayout';
 import { EditPage } from './EditPage';
 
 export const SubcategoryPageTemplate = ({
@@ -21,7 +21,7 @@ export const SubcategoryPageTemplate = ({
 	editPath?: string;
 }) => {
 	return (
-		<AppLayout>
+		<SiteLayout>
 			<HeroSubcategoryBanner>
 				{breadcrumbs?.length ? <Breadcrumbs links={breadcrumbs} /> : null}
 				<HeroSubcategoryBannerTitle>{title}</HeroSubcategoryBannerTitle>
@@ -36,6 +36,6 @@ export const SubcategoryPageTemplate = ({
 					)}
 				</Stack>
 			</SectionContent>
-		</AppLayout>
+		</SiteLayout>
 	);
 };

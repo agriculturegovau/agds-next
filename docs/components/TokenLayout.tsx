@@ -1,7 +1,7 @@
 import { PropsWithChildren } from 'react';
 import { BreadcrumbsProps } from '@ag.ds-next/react/breadcrumbs';
 import { TOKEN_NAV_LINKS } from '../content/tokens';
-import { AppLayout } from './AppLayout';
+import { SiteLayout } from './SiteLayout';
 import { PageLayout } from './PageLayout';
 import { PageTitle } from './PageTitle';
 
@@ -20,7 +20,7 @@ export const TokenLayout = ({
 	description,
 }: TokenLayoutProps) => {
 	return (
-		<AppLayout applyMainElement={false}>
+		<SiteLayout applyMainElement={false}>
 			<PageLayout
 				applyMainElement={true}
 				sideNav={{
@@ -37,6 +37,6 @@ export const TokenLayout = ({
 				<PageTitle title={title} introduction={description} />
 				{children}
 			</PageLayout>
-		</AppLayout>
+		</SiteLayout>
 	);
 };

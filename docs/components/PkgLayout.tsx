@@ -11,7 +11,7 @@ import { PageLayout } from './PageLayout';
 import { FigmaLogo } from './FigmaLogo';
 import { StorybookLogo } from './StorybookLogo';
 import { GithubLogo } from './GithubLogo';
-import { AppLayout } from './AppLayout';
+import { SiteLayout } from './SiteLayout';
 
 export function PkgLayout({
 	children,
@@ -29,7 +29,7 @@ export function PkgLayout({
 }>) {
 	const { asPath } = useRouter();
 	return (
-		<AppLayout applyMainElement={false}>
+		<SiteLayout applyMainElement={false}>
 			<PageLayout
 				applyMainElement={true}
 				sideNav={{
@@ -99,6 +99,6 @@ export function PkgLayout({
 				) : null}
 				{children}
 			</PageLayout>
-		</AppLayout>
+		</SiteLayout>
 	);
 }

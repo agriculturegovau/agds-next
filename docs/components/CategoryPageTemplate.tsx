@@ -6,7 +6,7 @@ import {
 	HeroCategoryBannerTitle,
 } from '@ag.ds-next/react/hero-banner';
 import { Flex, Stack } from '@ag.ds-next/react/box';
-import { AppLayout } from './AppLayout';
+import { SiteLayout } from './SiteLayout';
 import { EditPage } from './EditPage';
 
 export const CategoryPageTemplate = ({
@@ -21,7 +21,7 @@ export const CategoryPageTemplate = ({
 	editPath?: string;
 }) => {
 	return (
-		<AppLayout>
+		<SiteLayout>
 			<HeroCategoryBanner>
 				<HeroCategoryBannerTitle>{title}</HeroCategoryBannerTitle>
 				<HeroCategoryBannerSubtitle>{description}</HeroCategoryBannerSubtitle>
@@ -36,6 +36,6 @@ export const CategoryPageTemplate = ({
 					)}
 				</Stack>
 			</SectionContent>
-		</AppLayout>
+		</SiteLayout>
 	);
 };

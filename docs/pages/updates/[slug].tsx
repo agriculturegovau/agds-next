@@ -8,7 +8,7 @@ import {
 	Update,
 } from '../../lib/mdx/updates';
 import { mdxComponents } from '../../components/mdxComponents';
-import { AppLayout } from '../../components/AppLayout';
+import { SiteLayout } from '../../components/SiteLayout';
 import { DocumentTitle } from '../../components/DocumentTitle';
 import { PageLayout } from '../../components/PageLayout';
 import { PageTitle } from '../../components/PageTitle';
@@ -20,7 +20,7 @@ export default function Updates({
 	return (
 		<>
 			<DocumentTitle title={update.title} description={update.description} />
-			<AppLayout>
+			<SiteLayout>
 				<PageLayout
 					editPath={`/docs/content/updates/${update.slug}.mdx`}
 					breadcrumbs={breadcrumbs}
@@ -34,7 +34,7 @@ export default function Updates({
 						<MDXRemote {...update.source} components={mdxComponents} />
 					</Prose>
 				</PageLayout>
-			</AppLayout>
+			</SiteLayout>
 		</>
 	);
 }

@@ -9,7 +9,7 @@ import {
 	Guide,
 } from '../../lib/mdx/guides';
 import { mdxComponents } from '../../components/mdxComponents';
-import { AppLayout } from '../../components/AppLayout';
+import { SiteLayout } from '../../components/SiteLayout';
 import { DocumentTitle } from '../../components/DocumentTitle';
 import { PageLayout } from '../../components/PageLayout';
 import { PageTitle } from '../../components/PageTitle';
@@ -23,7 +23,7 @@ export default function Guides({
 	return (
 		<>
 			<DocumentTitle title={guide.title} description={guide.opener} />
-			<AppLayout applyMainElement={false}>
+			<SiteLayout applyMainElement={false}>
 				<PageLayout
 					applyMainElement={true}
 					editPath={`/docs/content/guides/${guide.slug}.mdx`}
@@ -40,7 +40,7 @@ export default function Guides({
 						<MDXRemote {...guide.source} components={mdxComponents} />
 					</Prose>
 				</PageLayout>
-			</AppLayout>
+			</SiteLayout>
 		</>
 	);
 }
