@@ -139,7 +139,36 @@ export function getPatternBreadcrumbs(slug: string, currentPageName?: string) {
 }
 
 export async function getPatternNavLinks() {
+	const groupList = await getPatternGroupList();
 	const patternList = await getPatternList();
+
+	return groupList.map((group) => {
+		return {
+			href: `/patterns#${group.slug}`,
+			label: group.title,
+			items:
+				group.subGroups?.length > 0
+					? group.subGroups.map((subGroup) => ({
+							href: `/patterns#${group.slug}-${subGroup.slug}`,
+							label: subGroup.title,
+							items: patternList
+								.filter(
+									(p) => p.group === group.slug && p.subGroup === subGroup.slug
+								)
+								.map((p) => ({
+									href: `/patterns/${p.slug}`,
+									label: p.title,
+								})),
+					  }))
+					: patternList
+							.filter((p) => p.group === group.slug)
+							.map((p) => ({
+								href: `/patterns/${p.slug}`,
+								label: p.title,
+							})),
+		};
+	});
+
 	return patternList.map(({ title, slug }) => ({
 		href: `/patterns/${slug}`,
 		label: title,
