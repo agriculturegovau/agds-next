@@ -37,12 +37,14 @@ export default function PatternsPage({
 				<Stack gap={3}>
 					{groupList.map((group) => (
 						<Stack gap={1.5} key={group.slug}>
-							<H2>{group.title}</H2>
+							<H2 id={group.slug}>{group.title}</H2>
 							{group.subGroups.length > 0 ? (
 								<Fragment>
 									{group.subGroups.map((subGroup) => (
 										<Stack key={subGroup.slug} gap={1.5}>
-											<H3>{subGroup.title}</H3>
+											<H3 id={`${group.slug}-${subGroup.slug}`}>
+												{subGroup.title}
+											</H3>
 											<Columns as="ul" gap={1.5} cols={{ xs: 1, sm: 2, lg: 3 }}>
 												{patternList
 													.filter(
