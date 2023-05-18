@@ -1,13 +1,13 @@
-import { Flex } from '@ag.ds-next/react/box';
-import { Text } from '@ag.ds-next/react/text';
+import { H1 } from '@ag.ds-next/react/heading';
+import { PageContent } from '@ag.ds-next/react/content';
 import { AppLayout } from '../../components/AppLayout';
 
 export default function Dashboard() {
 	return (
 		<AppLayout>
-			<Flex>
-				<Text>Dashboard</Text>
-			</Flex>
+			<PageContent>
+				<H1>Heading H1</H1>
+			</PageContent>
 		</AppLayout>
 	);
 }
