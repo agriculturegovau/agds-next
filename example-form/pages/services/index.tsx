@@ -4,7 +4,7 @@ import {
 	HeroCategoryBannerTitle,
 	HeroCategoryBannerSubtitle,
 } from '@ag.ds-next/react/hero-banner';
-import { AppLayout } from '../../components/AppLayout';
+import { SiteLayout } from '../../components/SiteLayout';
 import { DocumentTitle } from '../../components/DocumentTitle';
 import { ServicesCardList } from '../../components/ServicesCardList';
 
@@ -12,7 +12,7 @@ export default function ServicesPage() {
 	return (
 		<>
 			<DocumentTitle title="Services" />
-			<AppLayout>
+			<SiteLayout>
 				<HeroCategoryBanner>
 					<HeroCategoryBannerTitle>Services</HeroCategoryBannerTitle>
 					<HeroCategoryBannerSubtitle>
@@ -23,7 +23,7 @@ export default function ServicesPage() {
 				<SectionContent>
 					<ServicesCardList />
 				</SectionContent>
-			</AppLayout>
+			</SiteLayout>
 		</>
 	);
 }

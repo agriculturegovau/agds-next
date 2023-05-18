@@ -3,14 +3,14 @@ import { Text } from '@ag.ds-next/react/text';
 import { TextLink } from '@ag.ds-next/react/text-link';
 import { PageContent } from '@ag.ds-next/react/content';
 import { Stack } from '@ag.ds-next/react/box';
-import { AppLayout } from '../components/AppLayout';
+import { SiteLayout } from '../components/SiteLayout';
 import { DocumentTitle } from '../components/DocumentTitle';
 
 export default function NotFoundPage() {
 	return (
 		<>
 			<DocumentTitle title="Error 404" />
-			<AppLayout>
+			<SiteLayout>
 				<PageContent>
 					<Stack gap={1.5}>
 						<H1>Page not found</H1>
@@ -21,7 +21,7 @@ export default function NotFoundPage() {
 						<Text>Error code: 404</Text>
 					</Stack>
 				</PageContent>
-			</AppLayout>
+			</SiteLayout>
 		</>
 	);
 }

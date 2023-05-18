@@ -9,7 +9,7 @@ import { PageAlert } from '@ag.ds-next/react/page-alert';
 import { Text } from '@ag.ds-next/react/text';
 import { Breadcrumbs } from '@ag.ds-next/react/breadcrumbs';
 import { Stack } from '@ag.ds-next/react/box';
-import { AppLayout } from '../../../components/AppLayout';
+import { SiteLayout } from '../../../components/SiteLayout';
 import { DocumentTitle } from '../../../components/DocumentTitle';
 import { RegistrationsCardList } from '../../../components/RegistrationsCardList';
 
@@ -30,7 +30,7 @@ export default function RegistrationsPage() {
 					registrationId ? 'Successfully registered pet ' : 'Registrations'
 				}
 			/>
-			<AppLayout>
+			<SiteLayout>
 				<HeroSubcategoryBanner>
 					<Breadcrumbs
 						links={[
@@ -58,7 +58,7 @@ export default function RegistrationsPage() {
 						<RegistrationsCardList />
 					</Stack>
 				</SectionContent>
-			</AppLayout>
+			</SiteLayout>
 		</>
 	);
 }

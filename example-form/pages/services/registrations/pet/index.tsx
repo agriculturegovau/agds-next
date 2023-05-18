@@ -6,7 +6,7 @@ import { Stack } from '@ag.ds-next/react/box';
 import { TaskList } from '@ag.ds-next/react/task-list';
 import { Text } from '@ag.ds-next/react/text';
 import { Breadcrumbs } from '@ag.ds-next/react/breadcrumbs';
-import { AppLayout } from '../../../../components/AppLayout';
+import { SiteLayout } from '../../../../components/SiteLayout';
 import { DocumentTitle } from '../../../../components/DocumentTitle';
 import { FormHelpCallout } from '../../../../components/FormHelpCallout';
 import { PageTitle } from '../../../../components/PageTitle';
@@ -30,7 +30,7 @@ export default function FormRegisterPetHomePage() {
 	return (
 		<>
 			<DocumentTitle title="Register a pet" />
-			<AppLayout>
+			<SiteLayout>
 				<PageContent>
 					<Columns>
 						<Column columnSpan={{ xs: 12, md: 8 }}>
@@ -76,7 +76,7 @@ export default function FormRegisterPetHomePage() {
 						</Column>
 					</Columns>
 				</PageContent>
-			</AppLayout>
+			</SiteLayout>
 		</>
 	);
 }

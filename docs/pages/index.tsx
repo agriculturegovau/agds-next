@@ -10,7 +10,7 @@ import {
 	HeroBannerSubtitle,
 } from '@ag.ds-next/react/hero-banner';
 import { ButtonLink } from '@ag.ds-next/react/button';
-import { AppLayout } from '../components/AppLayout';
+import { SiteLayout } from '../components/SiteLayout';
 import { PictogramCard } from '../components/PictogramCard';
 import { DocumentTitle } from '../components/DocumentTitle';
 import { withBasePath } from '../lib/img';
@@ -22,7 +22,7 @@ export default function Homepage() {
 	return (
 		<>
 			<DocumentTitle description={description} />
-			<AppLayout>
+			<SiteLayout>
 				<HeroBanner
 					image={
 						<img
@@ -92,7 +92,7 @@ export default function Homepage() {
 						</Prose>
 					</Stack>
 				</SectionContent>
-			</AppLayout>
+			</SiteLayout>
 		</>
 	);
 }

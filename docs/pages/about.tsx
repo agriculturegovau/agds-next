@@ -1,6 +1,6 @@
 import { Prose } from '@ag.ds-next/react/prose';
 import { TextLink } from '@ag.ds-next/react/text-link';
-import { AppLayout } from '../components/AppLayout';
+import { SiteLayout } from '../components/SiteLayout';
 import { DocumentTitle } from '../components/DocumentTitle';
 import { PageLayout } from '../components/PageLayout';
 import { PageTitle } from '../components/PageTitle';
@@ -9,7 +9,7 @@ export default function AboutPage() {
 	return (
 		<>
 			<DocumentTitle title="About AgDS" />
-			<AppLayout applyMainElement={false}>
+			<SiteLayout applyMainElement={false}>
 				<PageLayout
 					breadcrumbs={[
 						{
@@ -99,7 +99,7 @@ export default function AboutPage() {
 						</p>
 					</Prose>
 				</PageLayout>
-			</AppLayout>
+			</SiteLayout>
 		</>
 	);
 }

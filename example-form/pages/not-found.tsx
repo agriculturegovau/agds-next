@@ -4,14 +4,14 @@ import { Text } from '@ag.ds-next/react/text';
 import { TextLink } from '@ag.ds-next/react/text-link';
 import { tokens } from '@ag.ds-next/react/core';
 import { PageContent } from '@ag.ds-next/react/content';
-import { AppLayout } from '../components/AppLayout';
+import { SiteLayout } from '../components/SiteLayout';
 import { DocumentTitle } from '../components/DocumentTitle';
 
 export default function NotFoundPage() {
 	return (
 		<>
 			<DocumentTitle title="Page not found" />
-			<AppLayout>
+			<SiteLayout>
 				<PageContent>
 					<Stack gap={1.5} maxWidth={tokens.maxWidth.bodyText}>
 						<H1>Oops! This page does not exist.</H1>
@@ -24,7 +24,7 @@ export default function NotFoundPage() {
 						</Text>
 					</Stack>
 				</PageContent>
-			</AppLayout>
+			</SiteLayout>
 		</>
 	);
 }

@@ -1,6 +1,6 @@
 import { Prose } from '@ag.ds-next/react/prose';
 import { TextLink } from '@ag.ds-next/react/text-link';
-import { AppLayout } from '../components/AppLayout';
+import { SiteLayout } from '../components/SiteLayout';
 import { DocumentTitle } from '../components/DocumentTitle';
 import { PageLayout } from '../components/PageLayout';
 import { PageTitle } from '../components/PageTitle';
@@ -9,7 +9,7 @@ export default function RoadmapPage() {
 	return (
 		<>
 			<DocumentTitle title="AgDS Roadmap" />
-			<AppLayout applyMainElement={false}>
+			<SiteLayout applyMainElement={false}>
 				<PageLayout
 					breadcrumbs={[
 						{
@@ -79,7 +79,7 @@ export default function RoadmapPage() {
 						<p>Last updated April 19th 2023.</p>
 					</Prose>
 				</PageLayout>
-			</AppLayout>
+			</SiteLayout>
 		</>
 	);
 }

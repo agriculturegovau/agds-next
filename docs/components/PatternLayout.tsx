@@ -4,7 +4,7 @@ import { SideNavProps } from '@ag.ds-next/react/side-nav';
 import { ButtonLink } from '@ag.ds-next/react/button';
 import { CallToActionLink } from '@ag.ds-next/react/call-to-action';
 import type { Pattern, getPatternBreadcrumbs } from '../lib/mdx/patterns';
-import { AppLayout } from './AppLayout';
+import { SiteLayout } from './SiteLayout';
 import { PageLayout } from './PageLayout';
 import { PageTitle } from './PageTitle';
 import { FigmaLogo } from './FigmaLogo';
@@ -26,7 +26,7 @@ export function PatternLayout({
 	pattern,
 }: PatternLayoutProps) {
 	return (
-		<AppLayout applyMainElement={false}>
+		<SiteLayout applyMainElement={false}>
 			<PageLayout
 				applyMainElement={true}
 				sideNav={{
@@ -89,6 +89,6 @@ export function PatternLayout({
 				)}
 				{children}
 			</PageLayout>
-		</AppLayout>
+		</SiteLayout>
 	);
 }
