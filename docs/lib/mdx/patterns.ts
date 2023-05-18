@@ -23,11 +23,8 @@ export async function getPattern(slug: string) {
 		content,
 		data,
 		title: (data.title ?? slug) as string,
-		group: slugify(data?.group ?? 'Other') as string,
-		groupName: (data?.group ?? 'Other') as string,
 		version: data.version as string,
 		description: (data.description ?? null) as string | null,
-		previewPath: (data.previewPath ?? null) as string | null,
 		figmaTemplateNodeId: (data.figmaTemplateNodeId ?? null) as string | null,
 		githubTemplatePath: (data.githubTemplatePath ?? null) as string | null,
 		storybookPath: (data.storybookPath ?? null) as string | null,
@@ -61,20 +58,6 @@ export function getPatternList() {
 	});
 }
 
-export function getPatternGroupList() {
-	return getPatternList().then((patterns) => {
-		const uniqueGroups = new Map(patterns.map((p) => [p.group, p.groupName]));
-		return Array.from(uniqueGroups.entries())
-			.map(([slug, title]) => ({
-				slug,
-				title,
-			}))
-			.sort((a, b) => {
-				return a.title > b.title ? 1 : -1;
-			});
-	});
-}
-
 export async function getPatternDocsContent(slug: string, path: string) {
 	const { data, content } = await getMarkdownData(
 		`${patternDocsPath(slug)}/${path}`
@@ -91,8 +74,6 @@ function patternNavMetaData(
 		title: (data?.title ?? slug) as string,
 		slug,
 		description: data?.description,
-		group: slugify(data?.group ?? 'Other') as string,
-		groupName: (data?.group ?? 'Other') as string,
 	};
 }
 

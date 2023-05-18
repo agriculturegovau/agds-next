@@ -1,20 +1,18 @@
 import { GetStaticProps, InferGetStaticPropsType } from 'next';
 import { MDXRemote } from 'next-mdx-remote';
-import { Box } from '@ag.ds-next/react/box';
 import { Prose } from '@ag.ds-next/react/prose';
 import {
 	getPattern,
+	getPatternSlugs,
 	getPatternBreadcrumbs,
 	getPatternNavLinks,
-	getPatternSlugs,
 	Pattern,
-} from '../../../lib/mdx/patterns';
-import { withBasePath } from '../../../lib/img';
-import { PatternLayout } from '../../../components/PatternLayout';
-import { mdxComponents } from '../../../components/mdxComponents';
-import { DocumentTitle } from '../../../components/DocumentTitle';
+} from '../../lib/mdx/patterns';
+import { PatternLayout } from '../../components/PatternLayout';
+import { mdxComponents } from '../../components/mdxComponents';
+import { DocumentTitle } from '../../components/DocumentTitle';
 
-export default function PatternOverviewPage({
+export default function PatternPage({
 	breadcrumbs,
 	pattern,
 	navLinks,
@@ -28,19 +26,10 @@ export default function PatternOverviewPage({
 			<PatternLayout
 				pattern={pattern}
 				breadcrumbs={breadcrumbs}
-				navLinks={navLinks}
 				editPath={`/docs/content/patterns/${pattern.slug}/index.mdx`}
+				navLinks={navLinks}
 			>
 				<Prose id="page-content">
-					{pattern.group === 'templates' ? (
-						<Box border borderColor="muted" css={{ img: { display: 'block' } }}>
-							<img
-								src={withBasePath(`/img/templates/${pattern.slug}.webp`)}
-								role="presentation"
-								alt=""
-							/>
-						</Box>
-					) : null}
 					<MDXRemote {...pattern.source} components={mdxComponents} />
 				</Prose>
 			</PatternLayout>
