@@ -1,8 +1,8 @@
 import { ReactNode, useEffect, useMemo, useRef, useState } from 'react';
-import { useDebounce } from 'use-debounce';
 import { useCombobox } from 'downshift';
 import { FieldMaxWidth } from '../core';
 import { ComboboxBase } from './ComboboxBase';
+import { useDebounceValue } from './useDebounceValue';
 import {
 	DefaultComboboxOption,
 	filterOptions,
@@ -106,7 +106,7 @@ export function ComboboxAsync<Option extends DefaultComboboxOption>({
 	});
 
 	// Keep track of the debounced input value to prevent unnecessary network requests
-	const [debouncedInputValue] = useDebounce(combobox.inputValue, 300);
+	const debouncedInputValue = useDebounceValue(combobox.inputValue, 300);
 
 	const shouldLoadOptions = useMemo(() => {
 		// Do load options when...
