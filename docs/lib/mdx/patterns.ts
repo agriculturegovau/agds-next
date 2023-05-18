@@ -61,17 +61,37 @@ export function getPatternList() {
 	});
 }
 
-export function getPatternGroupList() {
+export async function getPatternGroupList() {
+	const patternsList = await getPatternList();
+	const subGroups = await getPatternSubGroupList();
+
+	const uniquePatternGroups = new Map(
+		patternsList.map((p) => [p.group, p.groupName])
+	);
+	const patternGroups = Array.from(uniquePatternGroups.entries())
+		.map(([slug, title]) => ({ slug, title }))
+		.sort((a, b) => (a.title > b.title ? 1 : -1));
+
+	return patternGroups.map((group) => ({
+		...group,
+		subGroups: subGroups.filter((i) => i.group === group.slug),
+	}));
+}
+
+export function getPatternSubGroupList() {
 	return getPatternList().then((patterns) => {
-		const uniqueGroups = new Map(patterns.map((p) => [p.group, p.groupName]));
+		const uniqueGroups = new Map(
+			patterns
+				.filter((p) => p.subGroup && p.subGroupName)
+				.map((p) => [p.subGroup, p])
+		);
 		return Array.from(uniqueGroups.entries())
-			.map(([slug, title]) => ({
+			.map(([slug, { subGroupName, group }]) => ({
 				slug,
-				title,
+				title: subGroupName as string,
+				group,
 			}))
-			.sort((a, b) => {
-				return a.title > b.title ? 1 : -1;
-			});
+			.sort((a, b) => (a.title > b.title ? 1 : -1));
 	});
 }
 
@@ -93,6 +113,10 @@ function patternNavMetaData(
 		description: data?.description,
 		group: slugify(data?.group ?? 'Other') as string,
 		groupName: (data?.group ?? 'Other') as string,
+		subGroup: data?.subGroup
+			? slugify(data?.subGroup)
+			: (null as string | null),
+		subGroupName: (data?.subGroup ?? null) as string | null,
 	};
 }
 

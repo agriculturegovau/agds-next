@@ -5,7 +5,7 @@ import { Card, CardLink, CardInner } from '@ag.ds-next/react/card';
 import { Columns } from '@ag.ds-next/react/columns';
 import { mq } from '@ag.ds-next/react/core';
 import { Text } from '@ag.ds-next/react/text';
-import { H2 } from '@ag.ds-next/react/heading';
+import { H2, H3 } from '@ag.ds-next/react/heading';
 import { getMarkdownData } from '../../lib/mdxUtils';
 import {
 	getPatternList,
@@ -15,6 +15,7 @@ import {
 import { DocumentTitle } from '../../components/DocumentTitle';
 import { CategoryPageTemplate } from '../../components/CategoryPageTemplate';
 import { withBasePath } from '../../lib/img';
+import { Fragment } from 'react';
 
 type StaticProps = Awaited<ReturnType<typeof getStaticProps>>['props'];
 
@@ -24,6 +25,7 @@ export default function PatternsPage({
 	groupList,
 	patternList,
 }: StaticProps) {
+	console.log({ groupList });
 	return (
 		<>
 			<DocumentTitle title={title} description={description} />
@@ -36,13 +38,34 @@ export default function PatternsPage({
 					{groupList.map((group) => (
 						<Stack gap={1.5} key={group.slug}>
 							<H2>{group.title}</H2>
-							<Columns as="ul" gap={1.5} cols={{ xs: 1, sm: 2, lg: 3 }}>
-								{patternList
-									.filter((p) => p.group === group.slug)
-									.map((pattern) => (
-										<PatternCard key={pattern.slug} {...pattern} />
+							{group.subGroups.length > 0 ? (
+								<Fragment>
+									{group.subGroups.map((subGroup) => (
+										<Stack key={subGroup.slug} gap={1.5}>
+											<H3>{subGroup.title}</H3>
+											<Columns as="ul" gap={1.5} cols={{ xs: 1, sm: 2, lg: 3 }}>
+												{patternList
+													.filter(
+														(p) =>
+															p.group === group.slug &&
+															p.subGroup === subGroup.slug
+													)
+													.map((pattern) => (
+														<PatternCard key={pattern.slug} {...pattern} />
+													))}
+											</Columns>
+										</Stack>
 									))}
-							</Columns>
+								</Fragment>
+							) : (
+								<Columns as="ul" gap={1.5} cols={{ xs: 1, sm: 2, lg: 3 }}>
+									{patternList
+										.filter((p) => p.group === group.slug)
+										.map((pattern) => (
+											<PatternCard key={pattern.slug} {...pattern} />
+										))}
+								</Columns>
+							)}
 						</Stack>
 					))}
 				</Stack>
@@ -64,29 +87,27 @@ function PatternCard({
 }) {
 	return (
 		<Card as="li" clickable shadow>
-			<Flex flexDirection="column-reverse">
-				<CardInner>
-					<Stack gap={1} flexGrow={1}>
-						<Box as="h3">
-							<CardLink href={`/patterns/${slug}`}>{title}</CardLink>
-						</Box>
-						<Text>{description}</Text>
-					</Stack>
-				</CardInner>
-				{group === 'templates' ? (
-					<img
-						src={withBasePath(`/img/templates/${slug}.webp`)}
-						role="presentation"
-						alt=""
-						height="auto"
-						width="100%"
-						css={mq({
-							borderBottom: `1px solid ${boxPalette.borderMuted}`,
-							objectFit: 'cover',
-						})}
-					/>
-				) : null}
-			</Flex>
+			{group === 'templates' ? (
+				<img
+					src={withBasePath(`/img/templates/${slug}.webp`)}
+					role="presentation"
+					alt=""
+					height="auto"
+					width="100%"
+					css={mq({
+						borderBottom: `1px solid ${boxPalette.borderMuted}`,
+						objectFit: 'cover',
+					})}
+				/>
+			) : null}
+			<CardInner>
+				<Stack gap={1} flexGrow={1}>
+					<Box as="h3">
+						<CardLink href={`/patterns/${slug}`}>{title}</CardLink>
+					</Box>
+					<Text>{description}</Text>
+				</Stack>
+			</CardInner>
 		</Card>
 	);
 }
@@ -97,6 +118,7 @@ export async function getStaticProps() {
 	);
 	const groupList = await getPatternGroupList();
 	const patternList = await getPatternList();
+
 	return {
 		props: {
 			title: data?.title as string,
