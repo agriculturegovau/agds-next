@@ -15,6 +15,8 @@ type PatternLayoutProps = PropsWithChildren<{
 	breadcrumbs: Awaited<ReturnType<typeof getPatternBreadcrumbs>>;
 	editPath: string;
 	pattern: Pattern;
+	navTitle: string;
+	navTitleLink: string;
 	navLinks: SideNavProps['items'];
 }>;
 
@@ -22,6 +24,8 @@ export function PatternLayout({
 	breadcrumbs,
 	editPath,
 	children,
+	navTitle,
+	navTitleLink,
 	navLinks,
 	pattern,
 }: PatternLayoutProps) {
@@ -30,8 +34,8 @@ export function PatternLayout({
 			<PageLayout
 				applyMainElement={true}
 				sideNav={{
-					title: 'Patterns and templates',
-					titleLink: '/patterns',
+					title: navTitle,
+					titleLink: navTitleLink,
 					items: navLinks,
 				}}
 				editPath={editPath}

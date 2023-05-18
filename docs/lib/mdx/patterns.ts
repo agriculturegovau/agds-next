@@ -61,18 +61,16 @@ export function getPatternList() {
 	});
 }
 
-export function getPatternGroupList() {
-	return getPatternList().then((patterns) => {
-		const uniqueGroups = new Map(patterns.map((p) => [p.group, p.groupName]));
-		return Array.from(uniqueGroups.entries())
-			.map(([slug, title]) => ({
-				slug,
-				title,
-			}))
-			.sort((a, b) => {
-				return a.title > b.title ? 1 : -1;
-			});
-	});
+export async function getPatternGroupList() {
+	const patternsList = await getPatternList();
+
+	const uniquePatternGroups = new Map(
+		patternsList.map((p) => [p.group, p.groupName])
+	);
+
+	return Array.from(uniquePatternGroups.entries())
+		.map(([slug, title]) => ({ slug, title }))
+		.sort((a, b) => (a.title > b.title ? 1 : -1));
 }
 
 export async function getPatternDocsContent(slug: string, path: string) {
@@ -93,6 +91,10 @@ function patternNavMetaData(
 		description: data?.description,
 		group: slugify(data?.group ?? 'Other') as string,
 		groupName: (data?.group ?? 'Other') as string,
+		subGroup: data?.subGroup
+			? slugify(data?.subGroup)
+			: (null as string | null),
+		subGroupName: (data?.subGroup ?? null) as string | null,
 	};
 }
 
@@ -102,6 +104,7 @@ export function getPatternBreadcrumbs(slug: string, currentPageName?: string) {
 		const baseItems = [
 			{ href: '/', label: 'Home' },
 			{ href: '/patterns', label: 'Patterns' },
+			{ href: '/patterns/patterns', label: 'Patterns' },
 		];
 		if (currentPageName) {
 			return [
@@ -117,7 +120,7 @@ export function getPatternBreadcrumbs(slug: string, currentPageName?: string) {
 export async function getPatternNavLinks() {
 	const patternList = await getPatternList();
 	return patternList.map(({ title, slug }) => ({
-		href: `/patterns/${slug}`,
+		href: `/patterns/patterns/${slug}`,
 		label: title,
 	}));
 }
