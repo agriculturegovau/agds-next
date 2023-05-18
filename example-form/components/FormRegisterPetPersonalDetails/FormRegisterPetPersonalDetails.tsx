@@ -13,7 +13,7 @@ import { PageContent, ContentBleed } from '@ag.ds-next/react/content';
 import { ProgressIndicator } from '@ag.ds-next/react/progress-indicator';
 import { Stack } from '@ag.ds-next/react/box';
 import { DirectionButton } from '@ag.ds-next/react/direction-link';
-import { AppLayout } from '../AppLayout';
+import { SiteLayout } from '../SiteLayout';
 import { useFormRegisterPet } from '../FormRegisterPetContext';
 import {
 	FormRegisterPetPersonalDetailsStep0,
@@ -200,7 +200,7 @@ export const FormRegisterPetPersonalDetails = () => {
 	};
 
 	return (
-		<AppLayout focusMode>
+		<SiteLayout focusMode>
 			<PageContent>
 				<context.Provider value={contextValue}>
 					<Columns>
@@ -226,7 +226,7 @@ export const FormRegisterPetPersonalDetails = () => {
 					</Columns>
 				</context.Provider>
 			</PageContent>
-		</AppLayout>
+		</SiteLayout>
 	);
 };
 

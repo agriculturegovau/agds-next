@@ -8,7 +8,7 @@ import {
 	HeroBannerTitleContainer,
 } from '@ag.ds-next/react/hero-banner';
 import { CallToActionLink } from '@ag.ds-next/react/call-to-action';
-import { AppLayout } from '../components/AppLayout';
+import { SiteLayout } from '../components/SiteLayout';
 import { DocumentTitle } from '../components/DocumentTitle';
 import { ServicesRecentlyViewedCardList } from '../components/ServicesRecentlyViewedCardList';
 
@@ -16,7 +16,7 @@ export default function HomePage() {
 	return (
 		<>
 			<DocumentTitle title="Home" />
-			<AppLayout>
+			<SiteLayout>
 				<HeroBanner background="bodyAlt">
 					<HeroBannerTitleContainer>
 						<HeroBannerTitle>My Government services account</HeroBannerTitle>
@@ -35,7 +35,7 @@ export default function HomePage() {
 						</CallToActionLink>
 					</Stack>
 				</SectionContent>
-			</AppLayout>
+			</SiteLayout>
 		</>
 	);
 }

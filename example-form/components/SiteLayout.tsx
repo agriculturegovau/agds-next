@@ -4,7 +4,7 @@ import { SkipLinks } from '@ag.ds-next/react/skip-link';
 import { SiteHeader } from './SiteHeader';
 import { SiteFooter } from './SiteFooter';
 
-export const AppLayout = ({
+export const SiteLayout = ({
 	children,
 	focusMode = false,
 }: PropsWithChildren<{

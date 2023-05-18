@@ -5,7 +5,7 @@ import { Stack } from '@ag.ds-next/react/box';
 import { H2 } from '@ag.ds-next/react/heading';
 import { DirectionLink } from '@ag.ds-next/react/direction-link';
 import { ButtonLink } from '@ag.ds-next/react/button';
-import { AppLayout } from '../../../../../components/AppLayout';
+import { SiteLayout } from '../../../../../components/SiteLayout';
 import { DocumentTitle } from '../../../../../components/DocumentTitle';
 import { FormHelpCallout } from '../../../../../components/FormHelpCallout';
 import { PageTitle } from '../../../../../components/PageTitle';
@@ -15,7 +15,7 @@ export default function FormRegisterPetTask2HomePage() {
 	return (
 		<>
 			<DocumentTitle title="Your pet's details | Register a pet" />
-			<AppLayout focusMode>
+			<SiteLayout focusMode>
 				<PageContent>
 					<Columns>
 						<Column columnSpan={{ xs: 12, md: 8 }}>
@@ -75,7 +75,7 @@ export default function FormRegisterPetTask2HomePage() {
 						</Column>
 					</Columns>
 				</PageContent>
-			</AppLayout>
+			</SiteLayout>
 		</>
 	);
 }
