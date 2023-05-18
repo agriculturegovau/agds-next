@@ -1,6 +1,7 @@
 import { normalize } from 'path';
+import { Fragment } from 'react';
 import { boxPalette } from '@ag.ds-next/react/core';
-import { Box, Flex, Stack } from '@ag.ds-next/react/box';
+import { Box, Stack } from '@ag.ds-next/react/box';
 import { Card, CardLink, CardInner } from '@ag.ds-next/react/card';
 import { Columns } from '@ag.ds-next/react/columns';
 import { mq } from '@ag.ds-next/react/core';
@@ -15,7 +16,6 @@ import {
 import { DocumentTitle } from '../../components/DocumentTitle';
 import { CategoryPageTemplate } from '../../components/CategoryPageTemplate';
 import { withBasePath } from '../../lib/img';
-import { Fragment } from 'react';
 
 type StaticProps = Awaited<ReturnType<typeof getStaticProps>>['props'];
 
