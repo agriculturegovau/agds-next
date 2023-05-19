@@ -13,7 +13,7 @@ import {
 	getTemplateNavLinks,
 } from '../../../../lib/mdx/templates';
 import { DocumentTitle } from '../../../../components/DocumentTitle';
-import { AppLayout } from '../../../../components/AppLayout';
+import { SiteLayout } from '../../../../components/SiteLayout';
 import { PageLayout } from '../../../../components/PageLayout';
 import { PageTitle } from '../../../../components/PageTitle';
 
@@ -26,7 +26,7 @@ export default function TemplatesPage({
 	return (
 		<Fragment>
 			<DocumentTitle title="Templates" />
-			<AppLayout applyMainElement={false}>
+			<SiteLayout applyMainElement={false}>
 				<PageLayout
 					applyMainElement={true}
 					sideNav={{
@@ -66,7 +66,7 @@ export default function TemplatesPage({
 						))}
 					</Columns>
 				</PageLayout>
-			</AppLayout>
+			</SiteLayout>
 		</Fragment>
 	);
 }
