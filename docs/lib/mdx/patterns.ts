@@ -91,10 +91,6 @@ function patternNavMetaData(
 		description: data?.description,
 		group: slugify(data?.group ?? 'Other') as string,
 		groupName: (data?.group ?? 'Other') as string,
-		subGroup: data?.subGroup
-			? slugify(data?.subGroup)
-			: (null as string | null),
-		subGroupName: (data?.subGroup ?? null) as string | null,
 	};
 }
 
