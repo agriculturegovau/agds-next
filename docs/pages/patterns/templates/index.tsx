@@ -1,19 +1,15 @@
 import { Fragment } from 'react';
-import { boxPalette } from '@ag.ds-next/react/core';
-import { Box, Stack } from '@ag.ds-next/react/box';
-import { Card, CardLink, CardInner } from '@ag.ds-next/react/card';
+import { Stack } from '@ag.ds-next/react/box';
 import { Columns } from '@ag.ds-next/react/columns';
-import { mq } from '@ag.ds-next/react/core';
-import { Text } from '@ag.ds-next/react/text';
 import { TextLink } from '@ag.ds-next/react/text-link';
 import { H2 } from '@ag.ds-next/react/heading';
-import { withBasePath } from '../../../lib/img';
 import {
 	getTemplateGroupList,
 	getTemplateList,
 } from '../../../lib/mdx/templates';
 import { DocumentTitle } from '../../../components/DocumentTitle';
 import { SubcategoryPageTemplate } from '../../../components/SubcategoryPageTemplate';
+import { TemplateCard } from '../../../components/TemplateCard';
 
 type StaticProps = Awaited<ReturnType<typeof getStaticProps>>['props'];
 
@@ -27,7 +23,7 @@ export default function TemplatesPage({
 			<DocumentTitle title="Templates" />
 			<SubcategoryPageTemplate
 				title="Templates"
-				editPath="/docs/content/patterns/index.mdx" // TODO
+				editPath="/docs/pages/patterns/templates/index.tsx"
 				breadcrumbs={breadcrumbs}
 			>
 				<Stack gap={3}>
@@ -41,8 +37,8 @@ export default function TemplatesPage({
 							<Columns as="ul" gap={1.5} cols={{ xs: 1, sm: 2, lg: 3 }}>
 								{templateList
 									.filter((p) => p.group === group.slug)
-									.map((pattern) => (
-										<PatternCard key={pattern.slug} {...pattern} />
+									.map((template) => (
+										<TemplateCard key={template.slug} {...template} />
 									))}
 							</Columns>
 						</Stack>
@@ -50,44 +46,6 @@ export default function TemplatesPage({
 				</Stack>
 			</SubcategoryPageTemplate>
 		</>
-	);
-}
-
-function PatternCard({
-	title,
-	slug,
-	description,
-	group,
-}: {
-	title: string;
-	slug: string;
-	description: string;
-	group: string;
-}) {
-	return (
-		<Card as="li" clickable shadow>
-			<img
-				src={withBasePath(`/img/templates/${slug}.webp`)}
-				role="presentation"
-				alt=""
-				height="auto"
-				width="100%"
-				css={mq({
-					borderBottom: `1px solid ${boxPalette.borderMuted}`,
-					objectFit: 'cover',
-				})}
-			/>
-			<CardInner>
-				<Stack gap={1} flexGrow={1}>
-					<Box as="h3">
-						<CardLink href={`/patterns/templates/${group}/${slug}`}>
-							{title}
-						</CardLink>
-					</Box>
-					<Text>{description}</Text>
-				</Stack>
-			</CardInner>
-		</Card>
 	);
 }
 

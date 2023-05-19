@@ -29,7 +29,7 @@ export default function TemplatePage({
 			<PatternLayout
 				pattern={pattern}
 				breadcrumbs={breadcrumbs}
-				editPath={`/docs/content/patterns/${pattern.slug}/index.mdx`}
+				editPath={`/docs/content/templates/${pattern.slug}/index.mdx`}
 				navTitle="Templates"
 				navTitleLink="/patterns/templates"
 				navLinks={navLinks}

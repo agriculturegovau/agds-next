@@ -18,27 +18,39 @@ export default function PatternsPage({
 			<DocumentTitle title="Patterns" />
 			<SubcategoryPageTemplate
 				title="Patterns"
-				editPath="/docs/content/patterns/index.mdx" // TODO
+				editPath="/docs/pages/patterns/patterns/index.tsx"
 				breadcrumbs={breadcrumbs}
 			>
 				<Columns as="ul" gap={1.5} cols={{ xs: 1, sm: 2, lg: 3 }}>
-					{patternList.map(({ slug, title, description }) => (
-						<Card key={slug} as="li" clickable shadow>
-							<CardInner>
-								<Stack gap={1} flexGrow={1}>
-									<Box as="h3">
-										<CardLink href={`/patterns/patterns/${slug}`}>
-											{title}
-										</CardLink>
-									</Box>
-									<Text>{description}</Text>
-								</Stack>
-							</CardInner>
-						</Card>
+					{patternList.map((pattern) => (
+						<PatternCard key={pattern.slug} {...pattern} />
 					))}
 				</Columns>
 			</SubcategoryPageTemplate>
 		</Fragment>
+	);
+}
+
+function PatternCard({
+	title,
+	slug,
+	description,
+}: {
+	title: string;
+	slug: string;
+	description: string;
+}) {
+	return (
+		<Card key={slug} as="li" clickable shadow>
+			<CardInner>
+				<Stack gap={1} flexGrow={1}>
+					<Box as="h3">
+						<CardLink href={`/patterns/patterns/${slug}`}>{title}</CardLink>
+					</Box>
+					<Text>{description}</Text>
+				</Stack>
+			</CardInner>
+		</Card>
 	);
 }
 

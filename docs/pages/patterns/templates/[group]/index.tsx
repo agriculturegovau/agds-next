@@ -1,12 +1,6 @@
 import { Fragment } from 'react';
 import { GetStaticProps, InferGetStaticPropsType } from 'next';
-import { boxPalette } from '@ag.ds-next/react/core';
-import { Box, Stack } from '@ag.ds-next/react/box';
-import { Card, CardLink, CardInner } from '@ag.ds-next/react/card';
 import { Columns } from '@ag.ds-next/react/columns';
-import { mq } from '@ag.ds-next/react/core';
-import { Text } from '@ag.ds-next/react/text';
-import { withBasePath } from '../../../../lib/img';
 import {
 	getTemplateGroupList,
 	getTemplateList,
@@ -16,6 +10,7 @@ import { DocumentTitle } from '../../../../components/DocumentTitle';
 import { SiteLayout } from '../../../../components/SiteLayout';
 import { PageLayout } from '../../../../components/PageLayout';
 import { PageTitle } from '../../../../components/PageTitle';
+import { TemplateCard } from '../../../../components/TemplateCard';
 
 export default function TemplatesPage({
 	breadcrumbs,
@@ -34,35 +29,13 @@ export default function TemplatesPage({
 						titleLink: '/patterns/templates',
 						items: navLinks,
 					}}
-					editPath="" // TODO
+					editPath="docs/pages/patterns/templates/[group]/index.tsx"
 					breadcrumbs={breadcrumbs}
 				>
 					<PageTitle title={title} />
 					<Columns as="ul" gap={1.5} cols={{ xs: 1, sm: 2, lg: 3 }}>
-						{groupTemplateList.map(({ slug, group, description, title }) => (
-							<Card key={slug} as="li" clickable shadow>
-								<img
-									src={withBasePath(`/img/templates/${slug}.webp`)}
-									role="presentation"
-									alt=""
-									height="auto"
-									width="100%"
-									css={mq({
-										borderBottom: `1px solid ${boxPalette.borderMuted}`,
-										objectFit: 'cover',
-									})}
-								/>
-								<CardInner>
-									<Stack gap={1} flexGrow={1}>
-										<Box as="h3">
-											<CardLink href={`/patterns/templates/${group}/${slug}`}>
-												{title}
-											</CardLink>
-										</Box>
-										<Text>{description}</Text>
-									</Stack>
-								</CardInner>
-							</Card>
+						{groupTemplateList.map((template) => (
+							<TemplateCard key={template.slug} {...template} />
 						))}
 					</Columns>
 				</PageLayout>
