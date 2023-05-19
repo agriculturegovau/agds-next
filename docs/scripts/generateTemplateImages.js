@@ -84,10 +84,14 @@ function getTemplateList() {
 					deviceScaleFactor: 1,
 				});
 
-				// Scroll past the template banner
+				// Scroll into the main content area
+				// Note: We don't just use the `main` selector here as that can be different across templates
 				await page.waitForSelector('header');
 				await page.evaluate(() => {
-					document.querySelector('header').scrollIntoView();
+					const header = document.querySelector('header');
+					const headerParent = header.parentElement;
+					const contentArea = headerParent.nextElementSibling;
+					contentArea.scrollIntoView();
 				});
 
 				// Convert the screenshot into a webp image
