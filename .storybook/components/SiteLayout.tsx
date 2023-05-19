@@ -9,18 +9,18 @@ import { LinkList } from '@ag.ds-next/react/link-list';
 import { MainNav, MainNavBottomBar } from '@ag.ds-next/react/main-nav';
 import { Text } from '@ag.ds-next/react/text';
 
-type PageTemplateProps = PropsWithChildren<{
+type SiteLayout = PropsWithChildren<{
 	applyMainElement?: boolean;
 	background?: 'body' | 'bodyAlt';
 	focusMode?: boolean;
 }>;
 
-export function PageTemplate({
+export function SiteLayout({
 	applyMainElement = true,
 	background,
 	children,
 	focusMode,
-}: PageTemplateProps) {
+}: SiteLayout) {
 	const year = useMemo(() => new Date().getFullYear(), []);
 	return (
 		<Box background={background}>

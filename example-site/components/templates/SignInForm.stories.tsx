@@ -1,4 +1,4 @@
-import { PageTemplate } from '../../../.storybook/components/PageTemplate';
+import { SiteLayout } from '../../../.storybook/components/SiteLayout';
 import { SignInFormPage } from './SignInForm';
 
 export default {
@@ -10,8 +10,8 @@ export default {
 
 export const SignInForm = () => {
 	return (
-		<PageTemplate>
+		<SiteLayout>
 			<SignInFormPage />
-		</PageTemplate>
+		</SiteLayout>
 	);
 };

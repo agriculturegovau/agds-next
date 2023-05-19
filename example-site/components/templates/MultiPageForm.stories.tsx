@@ -1,4 +1,5 @@
-import { PageTemplate } from '../../../.storybook/components/PageTemplate';
+import { SiteLayout } from '../../../.storybook/components/SiteLayout';
+import { AppLayout } from '../../../.storybook/components/AppLayout';
 import { FormExampleMultiStep } from '../FormExampleMultiStep/FormExampleMultiStep';
 import { MultiPageFormIntro } from './MultiPageFormIntro';
 import { MultiPageFormSuccess } from './MultiPageFormSuccess';
@@ -12,24 +13,48 @@ export default {
 
 export const IntroPage = () => {
 	return (
-		<PageTemplate>
+		<SiteLayout>
 			<MultiPageFormIntro />
-		</PageTemplate>
+		</SiteLayout>
 	);
 };
 
 export const FormPage = () => {
 	return (
-		<PageTemplate focusMode>
+		<SiteLayout focusMode>
 			<FormExampleMultiStep />
-		</PageTemplate>
+		</SiteLayout>
 	);
 };
 
 export const SuccessPage = () => {
 	return (
-		<PageTemplate>
+		<SiteLayout>
 			<MultiPageFormSuccess />
-		</PageTemplate>
+		</SiteLayout>
+	);
+};
+
+export const AppIntroPage = () => {
+	return (
+		<AppLayout>
+			<MultiPageFormIntro />
+		</AppLayout>
+	);
+};
+
+export const AppFormPage = () => {
+	return (
+		<AppLayout focusMode>
+			<FormExampleMultiStep />
+		</AppLayout>
+	);
+};
+
+export const AppSuccessPage = () => {
+	return (
+		<AppLayout>
+			<MultiPageFormSuccess />
+		</AppLayout>
 	);
 };

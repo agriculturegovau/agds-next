@@ -1,4 +1,4 @@
-import { PageTemplate } from '../../../.storybook/components/PageTemplate';
+import { SiteLayout } from '../../../.storybook/components/SiteLayout';
 import { Content as ContentComponent } from './Content';
 
 export default {
@@ -10,17 +10,17 @@ export default {
 
 export function Basic() {
 	return (
-		<PageTemplate applyMainElement={false}>
+		<SiteLayout applyMainElement={false}>
 			<ContentComponent />
-		</PageTemplate>
+		</SiteLayout>
 	);
 }
 
 export function WithoutSideNav() {
 	return (
-		<PageTemplate applyMainElement={false}>
+		<SiteLayout applyMainElement={false}>
 			<ContentComponent sideNav={false} />
-		</PageTemplate>
+		</SiteLayout>
 	);
 }
 

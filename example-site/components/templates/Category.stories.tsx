@@ -1,4 +1,4 @@
-import { PageTemplate } from '../../../.storybook/components/PageTemplate';
+import { SiteLayout } from '../../../.storybook/components/SiteLayout';
 import { Category as CategoryComponent } from './Category';
 
 export default {
@@ -10,8 +10,8 @@ export default {
 
 export function Category() {
 	return (
-		<PageTemplate>
+		<SiteLayout>
 			<CategoryComponent />
-		</PageTemplate>
+		</SiteLayout>
 	);
 }

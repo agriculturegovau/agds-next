@@ -1,4 +1,4 @@
-import { PageTemplate } from '../../../.storybook/components/PageTemplate';
+import { SiteLayout } from '../../../.storybook/components/SiteLayout';
 import { Subcategory as SubcategoryContent } from './Subcategory';
 
 export default {
@@ -10,8 +10,8 @@ export default {
 
 export function Subcategory() {
 	return (
-		<PageTemplate>
+		<SiteLayout>
 			<SubcategoryContent />
-		</PageTemplate>
+		</SiteLayout>
 	);
 }

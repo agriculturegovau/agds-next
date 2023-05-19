@@ -1,4 +1,5 @@
-import { PageTemplate } from '../../../.storybook/components/PageTemplate';
+import { AppLayout } from '../../../.storybook/components/AppLayout';
+import { SiteLayout } from '../../../.storybook/components/SiteLayout';
 import { SinglePageFormPage } from './SinglePageForm';
 import { SinglePageFormSuccess } from './SinglePageFormSuccess';
 
@@ -11,16 +12,32 @@ export default {
 
 export const FormPage = () => {
 	return (
-		<PageTemplate>
+		<SiteLayout>
 			<SinglePageFormPage />
-		</PageTemplate>
+		</SiteLayout>
 	);
 };
 
 export const SuccessPage = () => {
 	return (
-		<PageTemplate>
+		<SiteLayout>
 			<SinglePageFormSuccess />
-		</PageTemplate>
+		</SiteLayout>
+	);
+};
+
+export const AppFormPage = () => {
+	return (
+		<AppLayout>
+			<SinglePageFormPage />
+		</AppLayout>
+	);
+};
+
+export const AppSuccessPage = () => {
+	return (
+		<AppLayout>
+			<SinglePageFormSuccess />
+		</AppLayout>
 	);
 };

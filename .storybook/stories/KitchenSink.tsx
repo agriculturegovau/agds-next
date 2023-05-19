@@ -67,7 +67,7 @@ import {
 	SummaryListItemTerm,
 } from '@ag.ds-next/react/summary-list';
 import { SearchInput } from '@ag.ds-next/react/search-input';
-import { PageTemplate } from '../components/PageTemplate';
+import { SiteLayout } from '../components/SiteLayout';
 import { COUNTRY_OPTIONS } from '../../docs/components/designSystemComponents';
 
 const meta: Meta = {
@@ -124,7 +124,7 @@ export const KitchenSink = ({
 }) => {
 	const { page, shade, opposite } = backgroundMapper[background];
 	return (
-		<PageTemplate background={page}>
+		<SiteLayout background={page}>
 			<HeroBanner background={opposite}>
 				<HeroBannerTitleContainer>
 					<HeroBannerTitle>
@@ -514,7 +514,7 @@ export const KitchenSink = ({
 					</Column>
 				</Columns>
 			</PageContent>
-		</PageTemplate>
+		</SiteLayout>
 	);
 };
 KitchenSink.storyName = 'Kitchen sink';
