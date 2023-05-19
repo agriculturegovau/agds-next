@@ -13,7 +13,7 @@ type StaticProps = Awaited<ReturnType<typeof getStaticProps>>['props'];
 
 export default function PatternsPage({ title, description }: StaticProps) {
 	return (
-		<>
+		<Fragment>
 			<DocumentTitle title={title} description={description} />
 			<CategoryPageTemplate
 				title={title}
@@ -35,7 +35,7 @@ export default function PatternsPage({ title, description }: StaticProps) {
 					</Columns>
 				</Stack>
 			</CategoryPageTemplate>
-		</>
+		</Fragment>
 	);
 }
 
