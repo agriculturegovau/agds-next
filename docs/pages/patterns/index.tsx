@@ -30,7 +30,7 @@ export default function PatternsPage({ title, description }: StaticProps) {
 						<PatternCard
 							title="Templates"
 							slug="templates"
-							description="Choose from any of the template below to get your project up and running faster. They'll save your team time and resources and help get value to your users sooner."
+							description="Templates can get your project up and running faster. They'll save your team time and resources and help get value to your users sooner."
 						/>
 					</Columns>
 				</Stack>
