@@ -49,7 +49,9 @@ export function SubNavListItem({ children, active }: SubNavListItemProps) {
 					textDecoration: 'none',
 					borderLeftStyle: 'solid',
 					borderLeftWidth: mapResponsiveProp([tokens.borderWidth.xl, 0]),
-					borderLeftColor: active ? boxPalette.foregroundAction : 'transparent',
+					borderLeftColor: active
+						? boxPalette.foregroundSelected
+						: 'transparent',
 
 					// Underline overlay for active menu item
 					'&:after': {

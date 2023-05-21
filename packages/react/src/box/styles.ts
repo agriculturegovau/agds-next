@@ -55,6 +55,7 @@ function paletteStyles({ palette, dark, light }: PaletteProps) {
 export const foregroundColorMap = {
 	text: boxPalette.foregroundText,
 	action: boxPalette.foregroundAction,
+	selected: boxPalette.foregroundSelected,
 	muted: boxPalette.foregroundMuted,
 	accent: boxPalette.accent,
 	error: boxPalette.systemError,

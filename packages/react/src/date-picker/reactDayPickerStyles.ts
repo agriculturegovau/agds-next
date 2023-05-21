@@ -114,7 +114,7 @@ export const reactDayPickerStyles = (range: boolean) =>
 		'.rdp-day_selected:not([disabled]), .rdp-day_selected:focus:not([disabled]), .rdp-day_selected:active:not([disabled]), .rdp-day_selected:hover:not([disabled]), .rdp-day_selected:hover:not([disabled])':
 			{
 				'&:not(:focus)': highContrastOutlineStyles,
-				backgroundColor: boxPalette.foregroundAction,
+				backgroundColor: boxPalette.foregroundSelected,
 				color: boxPalette.backgroundBody,
 				fontWeight: tokens.fontWeight.bold,
 			},
