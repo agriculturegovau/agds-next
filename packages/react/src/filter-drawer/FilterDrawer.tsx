@@ -37,7 +37,6 @@ export const FilterDrawer: FunctionComponent<FilterDrawerProps> = ({
 	const { modalContainerRef } = useAriaModalPolyfill(isOpen);
 
 	// Animation styles
-	// Animation styles
 	const prefersReducedMotion = usePrefersReducedMotion();
 	const [dialogTransitions] = useTransition(isOpen, () => ({
 		from: { translateX: '100%', opacity: 0 },
@@ -53,16 +52,18 @@ export const FilterDrawer: FunctionComponent<FilterDrawerProps> = ({
 			{dialogTransitions(({ translateX, opacity }, item) =>
 				item ? (
 					<div ref={modalContainerRef}>
-						<animated.div
-							css={{
-								position: 'fixed',
-								inset: 0,
-								backgroundColor: `rgba(0, 0, 0, 0.8)`,
-								zIndex: 100,
-								overflow: 'hidden',
-							}}
-							style={{ opacity }}
-						/>
+						{overlay ? (
+							<animated.div
+								css={{
+									position: 'fixed',
+									inset: 0,
+									backgroundColor: `rgba(0, 0, 0, 0.8)`,
+									zIndex: 100,
+									overflow: 'hidden',
+								}}
+								style={{ opacity }}
+							/>
+						) : null}
 						<FilterDrawerDialog
 							onDismiss={onDismiss}
 							title={title}
