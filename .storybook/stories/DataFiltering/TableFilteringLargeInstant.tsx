@@ -17,6 +17,7 @@ import {
 	FilterBarGroup,
 	FilterRegion,
 } from './components/FilterBar';
+import { DraftBanner } from './components/DraftBanner';
 
 type TableFilteringLargeProps = {
 	// sort
@@ -61,6 +62,7 @@ export const TableFilteringLargeInstant = ({
 	return (
 		<PageContent>
 			<Stack gap={2}>
+				<DraftBanner />
 				<Prose>
 					<h1>Table Filtering (Large Instant)</h1>
 					<p>
