@@ -5,7 +5,8 @@ export const DraftBanner = () => {
 	return (
 		<GlobalAlert>
 			<Text as="p">
-				These patterns are draft designs and are not yet ready for production.
+				These patterns are work-in-progress and are not yet ready for
+				production.
 			</Text>
 		</GlobalAlert>
 	);
