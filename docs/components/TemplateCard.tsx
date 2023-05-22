@@ -18,17 +18,19 @@ export function TemplateCard({
 }) {
 	return (
 		<Card as="li" clickable shadow>
-			<img
-				src={withBasePath(`/img/templates/${slug}.webp`)}
-				role="presentation"
-				alt=""
-				height="auto"
-				width="100%"
-				css={mq({
-					borderBottom: `1px solid ${boxPalette.borderMuted}`,
-					objectFit: 'cover',
-				})}
-			/>
+			{group !== 'interactions' && (
+				<img
+					src={withBasePath(`/img/templates/${slug}.webp`)}
+					role="presentation"
+					alt=""
+					height="auto"
+					width="100%"
+					css={mq({
+						borderBottom: `1px solid ${boxPalette.borderMuted}`,
+						objectFit: 'cover',
+					})}
+				/>
+			)}
 			<CardInner>
 				<Stack gap={1} flexGrow={1}>
 					<Box as="h3">
