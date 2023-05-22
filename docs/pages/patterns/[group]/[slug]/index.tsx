@@ -9,11 +9,11 @@ import {
 	getTemplateNavLinks,
 	Template,
 	getTemplateList,
-} from '../../../../../lib/mdx/templates';
-import { withBasePath } from '../../../../../lib/img';
-import { PatternLayout } from '../../../../../components/PatternLayout';
-import { mdxComponents } from '../../../../../components/mdxComponents';
-import { DocumentTitle } from '../../../../../components/DocumentTitle';
+} from '../../../../lib/mdx/templates';
+import { withBasePath } from '../../../../lib/img';
+import { PatternLayout } from '../../../../components/PatternLayout';
+import { mdxComponents } from '../../../../components/mdxComponents';
+import { DocumentTitle } from '../../../../components/DocumentTitle';
 
 export default function TemplatePage({
 	breadcrumbs,
@@ -30,8 +30,8 @@ export default function TemplatePage({
 				pattern={pattern}
 				breadcrumbs={breadcrumbs}
 				editPath={`/docs/content/templates/${pattern.slug}/index.mdx`}
-				navTitle="Templates"
-				navTitleLink="/patterns/templates"
+				navTitle="Patterns"
+				navTitleLink="/patterns"
 				navLinks={navLinks}
 			>
 				<Prose id="page-content">

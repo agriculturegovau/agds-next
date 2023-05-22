@@ -32,9 +32,7 @@ export function TemplateCard({
 			<CardInner>
 				<Stack gap={1} flexGrow={1}>
 					<Box as="h3">
-						<CardLink href={`/patterns/templates/${group}/${slug}`}>
-							{title}
-						</CardLink>
+						<CardLink href={`/patterns/${group}/${slug}`}>{title}</CardLink>
 					</Box>
 					<Text>{description}</Text>
 				</Stack>

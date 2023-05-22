@@ -5,12 +5,12 @@ import {
 	getTemplateGroupList,
 	getTemplateList,
 	getTemplateNavLinks,
-} from '../../../../lib/mdx/templates';
-import { DocumentTitle } from '../../../../components/DocumentTitle';
-import { SiteLayout } from '../../../../components/SiteLayout';
-import { PageLayout } from '../../../../components/PageLayout';
-import { PageTitle } from '../../../../components/PageTitle';
-import { TemplateCard } from '../../../../components/TemplateCard';
+} from '../../../lib/mdx/templates';
+import { DocumentTitle } from '../../../components/DocumentTitle';
+import { SiteLayout } from '../../../components/SiteLayout';
+import { PageLayout } from '../../../components/PageLayout';
+import { PageTitle } from '../../../components/PageTitle';
+import { TemplateCard } from '../../../components/TemplateCard';
 
 export default function TemplatesPage({
 	breadcrumbs,
@@ -20,16 +20,16 @@ export default function TemplatesPage({
 }: InferGetStaticPropsType<typeof getStaticProps>) {
 	return (
 		<Fragment>
-			<DocumentTitle title="Templates" />
+			<DocumentTitle title="Patterns" />
 			<SiteLayout applyMainElement={false}>
 				<PageLayout
 					applyMainElement={true}
 					sideNav={{
-						title: 'Templates',
-						titleLink: '/patterns/templates',
+						title: 'Patterns',
+						titleLink: '/patterns',
 						items: navLinks,
 					}}
-					editPath="docs/pages/patterns/templates/[group]/index.tsx"
+					editPath="docs/pages/patterns/[group]/index.tsx"
 					breadcrumbs={breadcrumbs}
 				>
 					<PageTitle title={title} />
@@ -72,7 +72,6 @@ export const getStaticProps: GetStaticProps<
 	const breadcrumbs = [
 		{ label: 'Home', href: '/' },
 		{ label: 'Patterns', href: '/patterns' },
-		{ label: 'Templates', href: '/patterns/templates' },
 		{ label: activeGroup.title },
 	];
 

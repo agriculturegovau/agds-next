@@ -101,8 +101,7 @@ export function getTemplateBreadcrumbs(slug: string) {
 		return [
 			{ href: '/', label: 'Home' },
 			{ href: '/patterns', label: 'Patterns' },
-			{ href: '/patterns/templates', label: 'Templates' },
-			{ href: `/patterns/templates/${meta.group}`, label: meta.groupName },
+			{ href: `/patterns/${meta.group}`, label: meta.groupName },
 			{ label: meta.title },
 		];
 	});
@@ -114,12 +113,12 @@ export async function getTemplateGroupNavLinks(group: {
 }) {
 	const templateList = await getTemplateList();
 	return {
-		href: `/patterns/templates${group.slug}`,
+		href: `/patterns${group.slug}`,
 		label: group.title,
 		items: templateList
 			.filter((p) => p.group === group.slug)
 			.map((p) => ({
-				href: `/templates/${p.slug}`,
+				href: `/patterns/${group.slug}/${p.slug}`,
 				label: p.title,
 			})),
 	};
@@ -131,14 +130,14 @@ export async function getTemplateNavLinks(groupSlug: string) {
 
 	return groupList.map((group) => {
 		return {
-			href: `/patterns/templates/${group.slug}`,
+			href: `/patterns/${group.slug}`,
 			label: group.title,
 			items:
 				groupSlug === group.slug
 					? templateList
 							.filter((p) => p.group === group.slug)
 							.map((p) => ({
-								href: `/patterns/templates/${group.slug}/${p.slug}`,
+								href: `/patterns/${group.slug}/${p.slug}`,
 								label: p.title,
 							}))
 					: [],
