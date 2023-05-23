@@ -3,10 +3,13 @@ import { useForm, SubmitHandler } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { Prose } from '@ag.ds-next/react/prose';
-import { Box, Stack } from '@ag.ds-next/react/box';
-import { ControlGroup, Radio } from '@ag.ds-next/react/control-input';
+import { Stack } from '@ag.ds-next/react/box';
+import {
+	ControlGroup,
+	ConditionalFieldContainer,
+	Radio,
+} from '@ag.ds-next/react/control-input';
 import { FormStack } from '@ag.ds-next/react/form-stack';
-import { mapSpacing } from '@ag.ds-next/react/core';
 import { PageAlert } from '@ag.ds-next/react/page-alert';
 import { TextInput } from '@ag.ds-next/react/text-input';
 import { useScrollToField } from '@ag.ds-next/react/field';
@@ -124,12 +127,7 @@ export const FormRegisterPetPersonalDetailsStep2 = () => {
 							SMS
 						</Radio>
 						{showConditionalField ? (
-							<Box
-								borderLeft
-								borderLeftWidth="xl"
-								paddingLeft={1.5}
-								css={{ marginLeft: mapSpacing(1) }}
-							>
+							<ConditionalFieldContainer>
 								<TextInput
 									id="mobilePhone"
 									type="tel"
@@ -140,7 +138,7 @@ export const FormRegisterPetPersonalDetailsStep2 = () => {
 									message={errors.mobileNumber?.message}
 									required
 								/>
-							</Box>
+							</ConditionalFieldContainer>
 						) : null}
 						<Radio {...register('contactMethod')} value="Email">
 							Email
