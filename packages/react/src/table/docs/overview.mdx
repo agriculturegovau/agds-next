@@ -258,6 +258,71 @@ You can use custom widths based on the expected length of the data under each co
 </TableWrapper>
 ```
 
+## Sortable columns
+
+You can use the `TableHeaderSortable` component to make columns sortable. This component is a wrapper around the `TableHeader` component and adds the necessary aria attributes to make the column sortable.
+
+You can see a working example of this component in the [Table Filtering Patterns](https://design-system.agriculture.gov.au/storybook/index.html?path=/story/patterns-data-filtering-and-sorting--medium).
+
+```jsx live
+<TableWrapper>
+	<Table striped>
+		<TableCaption>
+			Population of Australian states and territories, December 2015
+		</TableCaption>
+		<TableHead>
+			<tr>
+				<TableHeaderSortable
+					scope="col"
+					sort="ASC"
+					width="50%"
+					onClick={console.log}
+				>
+					Location
+				</TableHeaderSortable>
+				<TableHeaderSortable scope="col" width="50%" onClick={console.log}>
+					Population
+				</TableHeaderSortable>
+			</tr>
+		</TableHead>
+		<TableBody>
+			<tr>
+				<TableCell>Australian Capital Territory</TableCell>
+				<TableCell textAlign="right">393,000</TableCell>
+			</tr>
+			<tr>
+				<TableCell>New South Wales</TableCell>
+				<TableCell textAlign="right">7,670,700</TableCell>
+			</tr>
+			<tr>
+				<TableCell>Northern Territory</TableCell>
+				<TableCell textAlign="right">244,400</TableCell>
+			</tr>
+			<tr>
+				<TableCell>Queensland</TableCell>
+				<TableCell textAlign="right">4,808,800</TableCell>
+			</tr>
+			<tr>
+				<TableCell>South Australia</TableCell>
+				<TableCell textAlign="right">1,702,800</TableCell>
+			</tr>
+			<tr>
+				<TableCell>Tasmania</TableCell>
+				<TableCell textAlign="right">517,400</TableCell>
+			</tr>
+			<tr>
+				<TableCell>Victoria</TableCell>
+				<TableCell textAlign="right">5,996,400</TableCell>
+			</tr>
+			<tr>
+				<TableCell>Western Australia</TableCell>
+				<TableCell textAlign="right">2,603,900</TableCell>
+			</tr>
+		</TableBody>
+	</Table>
+</TableWrapper>
+```
+
 ## Labels and headings
 
 A Table must have some form of caption or heading to describe the data it contains. This can be done using the `TableCaption` component, or referencing a heading using `aria-labelledBy`.
