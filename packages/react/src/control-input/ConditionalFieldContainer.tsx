@@ -1,6 +1,6 @@
 import { PropsWithChildren } from 'react';
 import { Box } from '../box';
-import { mapSpacing } from '../core';
+import { mapSpacing, tokens } from '../core';
 
 export type ConditionalFieldContainerProps = PropsWithChildren<{}>;
 
@@ -12,7 +12,9 @@ export function ConditionalFieldContainer({
 			borderLeft
 			borderLeftWidth="xl"
 			paddingLeft={1.5}
-			css={{ marginLeft: mapSpacing(1) }}
+			css={{
+				marginLeft: `calc(${mapSpacing(1)} - ${tokens.borderWidth.xl / 2}px)`,
+			}}
 		>
 			{children}
 		</Box>
