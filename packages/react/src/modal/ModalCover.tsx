@@ -1,6 +1,6 @@
 import { keyframes } from '@emotion/react';
 import { forwardRef, ReactNode } from 'react';
-import { tokens } from '../core';
+import { tokens, boxPalette } from '../core';
 
 export type ModalCoverProps = { children: ReactNode };
 
@@ -15,7 +15,7 @@ export const ModalCover = forwardRef<HTMLDivElement, ModalCoverProps>(
 					left: 0,
 					bottom: 0,
 					right: 0,
-					backgroundColor: `rgba(0, 0, 0, 0.8)`,
+					backgroundColor: boxPalette.overlay,
 					zIndex: 100,
 					overflowY: 'auto',
 					animation: `${animateFadeInOut} ${tokens.transition.duration}ms ${tokens.transition.timingFunction}`,
