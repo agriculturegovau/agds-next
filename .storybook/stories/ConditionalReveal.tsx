@@ -1,33 +1,23 @@
----
-title: Conditionally revealed questions
-group: Patterns
-description: Conditionally reveal a related question when a user selects a specific radio or checkbox option. This ensures that users only encounter questions when it is applicable to their selection.
-version: 1.0.0
-storybookPath: /story/patterns-conditionally-revealed-questions--radios
-githubTemplatePath: .storybook/stories/ConditionalReveal.tsx
----
+import { Meta } from '@storybook/react';
+import { useCallback, useState } from 'react';
+import {
+	ControlGroup,
+	Radio,
+	ConditionalFieldContainer,
+	Checkbox,
+} from '@ag.ds-next/react/control-input';
+import { TextInput } from '@ag.ds-next/react/text-input';
 
-<DoHeading />
+const meta: Meta = {
+	title: 'Patterns/Conditionally revealed questions',
+};
 
-- Only conditionally reveal 1 related question
-- Use another page if there are multiple related questions
-- Only use with vertically stacked checkboxes or radios
+export default meta;
 
-<DontHeading />
-
-- Conditionally reveal more than 1 related question
-- Use with horizontally stacked checkboxes or radios
-- Conditonally show or hide anything that is not a question.
-
-## Radio
-
-You can ask users a related question when they select a particular [Radio](/components/control-input#radio), so they only see the question when it is relevant to them.
-
-```jsx live
-() => {
-	const [value, setValue] = React.useState();
-	const handlerForKey = React.useCallback((key) => () => setValue(key), []);
-	const isChecked = (key) => key === value;
+export const Radios = () => {
+	const [value, setValue] = useState<string>();
+	const handlerForKey = useCallback((key: string) => () => setValue(key), []);
+	const isChecked = (key: string) => key === value;
 	return (
 		<ControlGroup label="Preferred contact method" required block>
 			<Radio checked={isChecked('email')} onChange={handlerForKey('email')}>
@@ -60,23 +50,17 @@ You can ask users a related question when they select a particular [Radio](/comp
 		</ControlGroup>
 	);
 };
-```
 
-## Checkbox
-
-You can ask users a related question when they select a particular [Checkbox](/components/control-input#checkbox), so they only see the question when it is relevant to them.
-
-```jsx live
-() => {
-	const [value, setValue] = React.useState([]);
-	const handlerForKey = React.useCallback(
-		(key) => () =>
+export const Checkboxes = () => {
+	const [value, setValue] = useState<string[]>([]);
+	const handlerForKey = useCallback(
+		(key: string) => () =>
 			setValue((value) =>
 				value.includes(key) ? value.filter((v) => v !== key) : [...value, key]
 			),
 		[]
 	);
-	const isChecked = (key) => value.includes(key);
+	const isChecked = (key: string) => value.includes(key);
 	return (
 		<ControlGroup label="Preferred contact method" required block>
 			<Checkbox checked={isChecked('email')} onChange={handlerForKey('email')}>
@@ -109,17 +93,11 @@ You can ask users a related question when they select a particular [Checkbox](/c
 		</ControlGroup>
 	);
 };
-```
 
-## Invalid
-
-When a conditionally revealed question is invalid, include an error message on the invalid field that is clearly related to the initial question.
-
-```jsx live
-() => {
-	const [value, setValue] = React.useState('email');
-	const handlerForKey = React.useCallback((key) => () => setValue(key), []);
-	const isChecked = (key) => key === value;
+export const Invalid = () => {
+	const [value, setValue] = useState('email');
+	const handlerForKey = useCallback((key: string) => () => setValue(key), []);
+	const isChecked = (key: string) => key === value;
 	return (
 		<ControlGroup label="Preferred contact method" required block>
 			<Radio checked={isChecked('email')} onChange={handlerForKey('email')}>
@@ -170,4 +148,3 @@ When a conditionally revealed question is invalid, include an error message on t
 		</ControlGroup>
 	);
 };
-```
