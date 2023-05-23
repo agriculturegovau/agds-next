@@ -125,12 +125,12 @@ export default function TokensColorPage() {
 						)}
 					/>
 
-					<h3 id="other">Other colors</h3>
+					<h3 id="other">Miscellaneous colors</h3>
 					<p>
 						Miscellaneous colours which do not form part of the above groups
 					</p>
 					<ColorTable
-						caption="All Other tokens"
+						caption="All Miscellaneous tokens"
 						tokens={getTokensArrayFromObject(colourTokens.other, activePalette)}
 					/>
 

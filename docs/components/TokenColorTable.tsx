@@ -48,16 +48,6 @@ export const colourTokens: {
 			dark: theme.darkForegroundAction,
 			desc: 'Used to indicate interactive components like links and buttons. Don’t use the action colour for non-interactive components as it could confuse users. Also make sure you don’t rely on colour alone to indicate that a component is interactive, use additional visual cues.',
 		},
-		focus: {
-			light: theme.lightForegroundFocus,
-			dark: theme.darkForegroundFocus,
-			desc: 'Used to highlight interactive components for those navigating via keyboard.',
-		},
-		accent: {
-			light: theme.lightAccent,
-			dark: theme.darkAccent,
-			desc: 'Used to add a highlight of branding colours to navigation elements',
-		},
 	},
 	background: {
 		body: {
@@ -140,6 +130,16 @@ export const colourTokens: {
 			light: theme.lightOverlay,
 			dark: theme.darkOverlay,
 			desc: 'Used as an overlay for modals and other components that sit on top of the main background. The main content area beneath is considered disabled and not interactive.',
+		},
+		focus: {
+			light: theme.lightForegroundFocus,
+			dark: theme.darkForegroundFocus,
+			desc: 'Used to highlight interactive components for those navigating via keyboard.',
+		},
+		accent: {
+			light: theme.lightAccent,
+			dark: theme.darkAccent,
+			desc: 'Used to add a highlight of branding colours to navigation elements',
 		},
 	},
 };
