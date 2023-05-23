@@ -5,7 +5,11 @@ import { Box } from '@ag.ds-next/react/box';
 import { InpageNav } from '@ag.ds-next/react/inpage-nav';
 import { Column, Columns } from '@ag.ds-next/react/columns';
 import { DocumentTitle } from '../../../components/DocumentTitle';
-import { ColorTable } from '../../../components/TokenColorTable';
+import {
+	ColorTable,
+	colourTokens,
+	getTokensArrayFromObject,
+} from '../../../components/TokenColorTable';
 import { TokenLayout } from '../../../components/TokenLayout';
 import { LinkComponent } from '../../../components/LinkComponent';
 import { getTokensBreadcrumbs, TOKEN_PAGES } from '../../../content/tokens';
@@ -13,6 +17,8 @@ import { withBasePath } from '../../../lib/img';
 
 export default function TokensColorPage() {
 	const [isDarkMode, setDarkMode] = useState(false);
+
+	const activePalette = isDarkMode ? 'dark' : 'light';
 
 	return (
 		<Box palette={isDarkMode ? 'dark' : 'light'} background="body">
@@ -65,9 +71,70 @@ export default function TokensColorPage() {
 							/>
 						</div>
 					</Box>
-					<ColorTable activePalette={isDarkMode ? 'dark' : 'light'} />
-					<h2 id="usage-guidelines">Usage guidelines</h2>
+					<h3 id="foreground">Foreground colors</h3>
+					<p>
+						Designed to sit on top of background colours to ensure contrast
+						ratios meet WCAG 2.1 level AA accessibility requirements.
+					</p>
+					<ColorTable
+						caption="All Foreground tokens"
+						tokens={getTokensArrayFromObject(
+							colourTokens.foreground,
+							activePalette
+						)}
+					/>
 
+					<h3 id="background">Background colors</h3>
+					<p>
+						Designed to sit under foreground colours to ensure contrast ratios
+						meet WCAG 2.1 level AA accessibility requirements. Each colour
+						palette has 2 main background colours to choose from, the default
+						background (body) and a darker alternative (body-alt). Shades can be
+						used to help differentiate or highlight content against the body
+						background colours.
+					</p>
+					<ColorTable
+						caption="All Background tokens"
+						tokens={getTokensArrayFromObject(
+							colourTokens.background,
+							activePalette
+						)}
+					/>
+
+					<h3 id="border">Border colors</h3>
+					<p>Each colour palette has 2 border colours.</p>
+					<ColorTable
+						caption="All Border tokens"
+						tokens={getTokensArrayFromObject(
+							colourTokens.border,
+							activePalette
+						)}
+					/>
+
+					<h3 id="system">System colors</h3>
+					<p>
+						System colours are used to indicate status. They’re very prominent
+						colours aimed at grabbing the user’s attention. Each system colour
+						has a muted version to be used as a background colour.
+					</p>
+					<ColorTable
+						caption="All System tokens"
+						tokens={getTokensArrayFromObject(
+							colourTokens.system,
+							activePalette
+						)}
+					/>
+
+					<h3 id="other">Other colors</h3>
+					<p>
+						Miscellaneous colours which do not form part of the above groups
+					</p>
+					<ColorTable
+						caption="All Other tokens"
+						tokens={getTokensArrayFromObject(colourTokens.other, activePalette)}
+					/>
+
+					<h2 id="usage-guidelines">Usage guidelines</h2>
 					<Columns cols={[1, 3]} className={proseBlockClassname}>
 						<Column columnSpan={[1, 2]}>
 							<h3 id="palettes">Use palettes to divide sections</h3>
