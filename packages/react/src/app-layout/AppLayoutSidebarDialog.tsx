@@ -13,6 +13,7 @@ import {
 	usePrefersReducedMotion,
 	canUseDOM,
 	useAriaModalPolyfill,
+	boxPalette,
 } from '../core';
 import { Box, Flex } from '../box';
 import { CloseIcon } from '../icon';
@@ -129,7 +130,7 @@ function Overlay({
 					left: 0,
 					bottom: 0,
 					right: 0,
-					backgroundColor: `rgba(0, 0, 0, 0.8)`,
+					backgroundColor: boxPalette.overlay,
 					zIndex: 99,
 				},
 			}}
