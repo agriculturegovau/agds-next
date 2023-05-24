@@ -13,10 +13,10 @@ Typically page alerts appear at the top of a page following a submit action.
 
 - use constructive, no-blame language, avoid vague descriptions and always provide a solution
 - keep it short – content should be understood at a glance
-- error alerts (red) must be actioned before the user can continue
-- warning alerts (orange) tell the user how to avoid a problem
-- success alerts (green) confirm a task is completed
-- information alerts (blue) are used for important messaging the user can simply acknowledge before moving on.
+- use red error alerts for errors that must be actioned before the user can continue
+- use orange warning alerts to tell the user how to avoid a problem
+- use green success alerts to confirm a task is completed
+- use blue information alerts to highlight important information to the user before they move on.
 
 <DontHeading />
 
@@ -32,7 +32,7 @@ The four supported tones are `info`, `success`, `error` and `warning`.
 
 ### Info
 
-Page alerts are intended for important time-sensitive information only and should be used sparingly.
+The information page alert is used to highlight important information to the user. Info alerts should be used sparingly.
 
 ```jsx live
 <PageAlert tone="info" title="Notice">
@@ -55,7 +55,7 @@ The success page alert is used for notifying the user that a task is fully compl
 
 ### Error
 
-The error page alert should be used with form validation errors or other errors which will block the user from completing their task.
+The error page alert should be used with form validation errors or other errors which the user must action before they can can continue.
 
 ```jsx live
 <PageAlert tone="error" title="There is a problem">
