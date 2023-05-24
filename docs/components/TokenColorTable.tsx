@@ -5,7 +5,6 @@ import { theme as agTheme } from '@ag.ds-next/react/ag-branding';
 import {
 	Table,
 	TableBody,
-	TableCaption,
 	TableCell,
 	TableHead,
 	TableHeader,
@@ -30,7 +29,7 @@ export const colourTokens: {
 	background: ColorTokenGroup;
 	border: ColorTokenGroup;
 	system: ColorTokenGroup;
-	other: ColorTokenGroup;
+	miscellaneous: ColorTokenGroup;
 } = {
 	foreground: {
 		text: {
@@ -125,7 +124,7 @@ export const colourTokens: {
 			desc: 'Used as a background for a Component with an `warning` tone.',
 		},
 	},
-	other: {
+	miscellaneous: {
 		overlay: {
 			light: theme.lightOverlay,
 			dark: theme.darkOverlay,
@@ -157,21 +156,25 @@ function ColorSquare({ color }: { color?: string }) {
 }
 
 export const ColorTable = ({
+	'aria-labelledby': ariaLabelledby,
+	'aria-describedby': ariaDescribedby,
 	tokens,
-	caption,
 }: {
+	'aria-labelledby': string;
+	'aria-describedby': string;
 	tokens: {
 		name: string;
 		desc: string;
 		color: string | undefined;
 	}[];
-	caption: string;
 }) => {
 	return (
 		<div className={proseBlockClassname}>
 			<TableWrapper>
-				<Table>
-					<TableCaption>{caption}</TableCaption>
+				<Table
+					aria-labelledby={ariaLabelledby}
+					aria-describedby={ariaDescribedby}
+				>
 					<TableHead>
 						<tr>
 							<TableHeader width="25%" scope="col">
