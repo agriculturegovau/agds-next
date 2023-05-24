@@ -43,12 +43,12 @@ const PlaceholderImage = () => (
 	/>
 );
 
-const LiveCode = withLive(function LiveCode(props: unknown) {
+const LiveCode = withLive(function LiveCode(props: { showCode?: boolean }) {
 	const liveCodeToggleButton = useRef<HTMLButtonElement>(null);
 	const { query } = useRouter();
 
 	// The types on `withLive` are kind of useless.
-	const { live } = props as {
+	const { live, showCode = false } = props as {
 		live: {
 			code: string;
 			error: string | undefined;
@@ -56,11 +56,12 @@ const LiveCode = withLive(function LiveCode(props: unknown) {
 			disabled: boolean;
 			onChange: (code: string) => void;
 		};
+		showCode?: boolean;
 	};
 
 	const liveOnChange = live.onChange;
 	const [localCopy, setLocalCopy] = useState<string>(live.code);
-	const [isCodeVisible, toggleIsCodeVisible] = useToggleState(false, true);
+	const [isCodeVisible, toggleIsCodeVisible] = useToggleState(showCode, true);
 
 	const copyLiveCode = useCallback(() => {
 		copy(localCopy);
@@ -278,9 +279,10 @@ type CodeProps = {
 	children?: ReactNode;
 	className?: string;
 	live?: boolean;
+	showCode?: boolean;
 };
 
-export function Code({ children, live, className }: CodeProps) {
+export function Code({ children, live, showCode, className }: CodeProps) {
 	const childrenAsString = children?.toString().trim();
 	const language = className?.replace(/language-/, '') as Language;
 
@@ -293,7 +295,7 @@ export function Code({ children, live, className }: CodeProps) {
 				scope={LIVE_SCOPE}
 				language={language}
 			>
-				<LiveCode />
+				<LiveCode showCode={showCode} />
 			</LiveProvider>
 		);
 	}
