@@ -35,12 +35,23 @@ export const mdxComponents: MDXRemoteProps['components'] = {
 	pre: ({
 		children,
 		live,
-	}: HTMLAttributes<HTMLPreElement> & { live?: boolean }) => {
+		showCode,
+	}: HTMLAttributes<HTMLPreElement> & {
+		live?: boolean;
+		showCode?: boolean;
+	}) => {
 		return (
 			<Fragment>
 				{Children.map(children, (element) => {
 					if (!isValidElement(element)) return null;
-					return <Code key={element.key} live={live} {...element.props} />;
+					return (
+						<Code
+							key={element.key}
+							live={live}
+							showCode={showCode}
+							{...element.props}
+						/>
+					);
 				})}
 			</Fragment>
 		);
