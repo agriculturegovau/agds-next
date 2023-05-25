@@ -5,11 +5,12 @@ import React, {
 	Fragment,
 	useRef,
 	KeyboardEvent,
+	useContext,
 } from 'react';
 import { useRouter } from 'next/router';
-import { LiveProvider, LiveEditor, LivePreview, withLive } from 'react-live';
+import { LiveProvider, LiveEditor, LivePreview, LiveContext } from 'react-live';
 import { createUrl } from 'playroom/utils';
-import Highlight, { defaultProps, Language } from 'prism-react-renderer';
+import { Highlight } from 'prism-react-renderer';
 import copy from 'clipboard-copy';
 import { ExternalLinkCallout } from '@ag.ds-next/react/a11y';
 import {
@@ -43,21 +44,10 @@ const PlaceholderImage = () => (
 	/>
 );
 
-const LiveCode = withLive(function LiveCode(props: { showCode?: boolean }) {
+function LiveCode({ showCode = false }: { showCode?: boolean }) {
 	const liveCodeToggleButton = useRef<HTMLButtonElement>(null);
 	const { query } = useRouter();
-
-	// The types on `withLive` are kind of useless.
-	const { live, showCode = false } = props as {
-		live: {
-			code: string;
-			error: string | undefined;
-			language: Language;
-			disabled: boolean;
-			onChange: (code: string) => void;
-		};
-		showCode?: boolean;
-	};
+	const live = useContext(LiveContext);
 
 	const liveOnChange = live.onChange;
 	const [localCopy, setLocalCopy] = useState<string>(live.code);
@@ -164,7 +154,7 @@ const LiveCode = withLive(function LiveCode(props: { showCode?: boolean }) {
 				onKeyDown={onLiveEditorContainerKeyDown}
 			>
 				<LiveEditor
-					tabIndex={-1}
+					tabMode="focus"
 					aria-label="Live code editor, press the escape key to leave the editor"
 					theme={prismTheme}
 					code={live.code}
@@ -197,14 +187,14 @@ const LiveCode = withLive(function LiveCode(props: { showCode?: boolean }) {
 			) : null}
 		</Box>
 	);
-});
+}
 
 const StaticCode = ({
 	code,
-	language,
+	language = '', // By default render as plain text (ie. no language)
 }: {
 	code: string;
-	language: Language;
+	language?: string;
 }) => {
 	return (
 		<Box
@@ -228,12 +218,7 @@ const StaticCode = ({
 			}}
 		>
 			<Box dark>
-				<Highlight
-					{...defaultProps}
-					code={code}
-					theme={prismTheme}
-					language={language}
-				>
+				<Highlight code={code} theme={prismTheme} language={language}>
 					{({ className, style, tokens, getLineProps, getTokenProps }) => (
 						<pre
 							className={[className, unsetProseStylesClassname].join(' ')}
@@ -287,7 +272,7 @@ type CodeProps = {
 
 export function Code({ children, live, showCode, className }: CodeProps) {
 	const childrenAsString = children?.toString().trim();
-	const language = className?.replace(/language-/, '') as Language;
+	const language = className?.replace(/language-/, '');
 
 	if (!childrenAsString) return null;
 
