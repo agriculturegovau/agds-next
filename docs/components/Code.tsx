@@ -61,7 +61,10 @@ const LiveCode = withLive(function LiveCode(props: { showCode?: boolean }) {
 
 	const liveOnChange = live.onChange;
 	const [localCopy, setLocalCopy] = useState<string>(live.code);
-	const [isCodeVisible, toggleIsCodeVisible] = useToggleState(showCode, true);
+	const [isCodeVisible, toggleIsCodeVisible] = useToggleState(
+		showCode,
+		!showCode
+	);
 
 	const copyLiveCode = useCallback(() => {
 		copy(localCopy);
