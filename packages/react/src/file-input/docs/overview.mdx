@@ -11,25 +11,25 @@ relatedComponents: ['file-upload']
 <FileInput label="Passport" />
 ```
 
-The `FileInput` component is a simple input for selecting and uploading files in a form. It is a wrapper around the native `<input type="file" />` element. Use a File input component when you need to upload one file per form field or when you have multiple form fileds on a page that require one file attachment each. If you need to upload multiple attachments to one form field, use the  [FileUpload](/components/file-upload) component instead.
+The File input component is a simple input for selecting and uploading files in a form. It is a wrapper around the native `<input type="file" />` element. Use a File input component when you need to upload one file per form field or when you have multiple form fileds on a page that require one file attachment each. If you need to upload multiple attachments to one form field, use the [File upload](/components/file-upload) component instead.
 
 <DoHeading />
 
 - use if only one file is being uploaded per form field
 - use to conserve vertical space
-- use when a drag and drop zone isn’t required
+- use when a drag and drop zone isn't required
 
 <DontHeading />
 
 - use if the user might need to remove the file after uploading
-- use if you don’t want the file to be uploaded immediately
+- use if you don't want the file to be uploaded immediately
 - use for uploading multiple files
 - use if the user might benefit from a drag and drop zone
-- use if it’s the only form element on the page
+- use if it's the only form element on the page
 
 ## Hint
 
-Use the `hint` prop to provide help that’s relevant to the majority of users, like how their information will be used, or where to find it.
+Use the `hint` prop to provide help that's relevant to the majority of users, like how their information will be used, or where to find it.
 
 Don't use long paragraphs and lists in hint text. Screen readers read out the entire text when users interact with the form element. This could frustrate users if the text is long.
 
