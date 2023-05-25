@@ -1,6 +1,6 @@
 ---
 title: File input
-description: Allows a user to attach a file to a form.
+description: The File input component allows users to attach one file to a form field by browsing their device.
 group: Forms
 storybookPath: /story/Forms-FileInput--basic
 figmaGalleryNodeId: 16180%3A41550
@@ -11,13 +11,13 @@ relatedComponents: ['file-upload']
 <FileInput label="Passport" />
 ```
 
-A simple input for selecting files in a form. The `FileInput` component is a wrapper around the native `<input type="file" />` element. Use when you require multiple files in a form, which must be associated as seperate fields. If you only require a single file, use the [FileUpload](/components/file-upload) component instead.
+The `FileInput` component is a simple input for selecting and uploading files in a form. It is a wrapper around the native `<input type="file" />` element. Use a File input component when you need to upload one file per form field or when you have multiple form fileds on a page that require one file attachment each. If you need to upload multiple attachments to one form field, use the  [FileUpload](/components/file-upload) component instead.
 
 <DoHeading />
 
-- use this option when there are other form fields on the page
+- use if only one file is being uploaded per form field
+- use to conserve vertical space
 - use when a drag and drop zone isn’t required
-- use if only one file is being uploaded
 
 <DontHeading />
 
