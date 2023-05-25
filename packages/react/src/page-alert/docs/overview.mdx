@@ -59,9 +59,17 @@ The error page alert should be used with form validation errors or other errors 
 
 ```jsx live
 <PageAlert tone="error" title="There is a problem">
-	<Text as="p">
-		<a href="#">Full name must not be empty</a>
-	</Text>
+	<Prose>
+		<p>Please correct the following fields and try again</p>
+		<ul>
+			<li>
+				<a href="#">Full name must not be empty</a>
+			</li>
+			<li>
+				<a href="#">Email must not be empty</a>
+			</li>
+		</ul>
+	</Prose>
 </PageAlert>
 ```
 
@@ -89,9 +97,6 @@ You can take advantage of our `Prose` component to ensure consistant spacing bet
 			</li>
 			<li>
 				<a href="#">Email must not be empty</a>
-			</li>
-			<li>
-				<a href="#">Description must not be empty</a>
 			</li>
 		</ul>
 	</Prose>
