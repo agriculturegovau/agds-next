@@ -1,27 +1,11 @@
 ---
 title: Status badge
-description: Badges are visual indicators used to call attention to an item or to communicate non-actionable information.
+description: Status badges are visual indicators used to highlight an item's status for quick recognition.
 group: Content
 storybookPath: /story/content-badge-statusbadge--basic
 figmaGalleryNodeId: 11981%3A101236
-relatedComponents: ['tags']
+relatedComponents: ['notification-badge', 'indicator-dot', 'tags']
 ---
-
-```jsx live
-<Flex flexWrap="wrap" gap={1}>
-	<StatusBadge tone="info" label="In progress" />
-	<StatusBadge tone="success" label="Resolved" />
-	<StatusBadge tone="error" label="Rejected" />
-	<StatusBadge tone="warning" label="Attention" />
-	<StatusBadge tone="neutral" label="Draft" />
-</Flex>
-```
-
-Use `StatusBadge` to highlight an item's status for quick recognition.
-
-Choosing a `tone` for StatusBadge allows the user to understand the importance and severity of the message at a glance.
-
-The five supported tones are `info`, `success`, `error`, `warning` and `neutral`.
 
 <DoHeading />
 
@@ -33,3 +17,19 @@ The five supported tones are `info`, `success`, `error`, `warning` and `neutral`
 - use status badge without an icon
 - change the colours or create new ones
 - use when colour and icon don't convey meaning.
+
+## Tone
+
+Choosing a `tone` for Status badge allows the user to understand the importance and severity of the message at a glance.
+
+The five supported tones are `info`, `success`, `error`, `warning` and `neutral`.
+
+```jsx live
+<Flex flexWrap="wrap" gap={1}>
+	<StatusBadge tone="info" label="In progress" />
+	<StatusBadge tone="success" label="Resolved" />
+	<StatusBadge tone="error" label="Rejected" />
+	<StatusBadge tone="warning" label="Attention" />
+	<StatusBadge tone="neutral" label="Draft" />
+</Flex>
+```
