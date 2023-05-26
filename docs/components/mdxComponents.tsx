@@ -22,6 +22,8 @@ import {
 	TableWrapper,
 } from '@ag.ds-next/react/table';
 import { mapSpacing } from '@ag.ds-next/react/core';
+import { Text } from '@ag.ds-next/react/text';
+import { TextLink } from '@ag.ds-next/react/text-link';
 import { slugify } from '../lib/slugify';
 import { withBasePath } from '../lib/img';
 import generatedComponentPropsData from '../__generated__/componentProps.json';
@@ -148,5 +150,7 @@ export const mdxComponents: MDXRemoteProps['components'] = {
 	TableCell,
 	TableHeader,
 	TableCaption,
+	Text,
+	TextLink,
 	AllIconsPlayground,
 };

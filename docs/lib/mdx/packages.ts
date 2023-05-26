@@ -30,6 +30,7 @@ export async function getPkg(slug: string) {
 		figmaGalleryNodeId: (data.figmaGalleryNodeId ?? null) as string | null,
 		subNavItems: subNavItems ?? null,
 		relatedComponents: (data.relatedComponents ?? null) as string[] | null,
+		deprecated: (data.deprecated ?? false) as boolean,
 	};
 }
 
@@ -97,6 +98,7 @@ function pkgNavMetaData(
 		group: slugify(data?.group ?? 'Other') as string,
 		groupName: (data?.group ?? 'Other') as string,
 		description: (data?.description ?? null) as string | null,
+		deprecated: (data?.deprecated ?? false) as boolean,
 		slug,
 	};
 }
@@ -109,7 +111,11 @@ export function getPkgList() {
 					pkgNavMetaData(slug, data)
 				)
 			)
-		).then((pkgList) => pkgList.sort((a, b) => (a.title > b.title ? 1 : -1)))
+		).then((pkgList) =>
+			pkgList
+				.filter((pkg) => !pkg.deprecated)
+				.sort((a, b) => (a.title > b.title ? 1 : -1))
+		)
 	);
 }
 

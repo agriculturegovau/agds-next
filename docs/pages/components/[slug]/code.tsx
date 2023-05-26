@@ -3,7 +3,7 @@ import { MDXRemote } from 'next-mdx-remote';
 import { InpageNav } from '@ag.ds-next/react/inpage-nav';
 import { Prose } from '@ag.ds-next/react/prose';
 import {
-	getPkgList,
+	getPkgSlugs,
 	getPkg,
 	Pkg,
 	getPkgNavLinks,
@@ -115,10 +115,9 @@ export const getStaticProps: GetStaticProps<
 };
 
 export const getStaticPaths = async () => {
-	const packages = await getPkgList();
-
+	const slugs = await getPkgSlugs();
 	return {
-		paths: packages.map(({ slug }) => ({
+		paths: slugs.map((slug) => ({
 			params: { slug },
 		})),
 		fallback: false,

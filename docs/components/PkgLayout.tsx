@@ -1,10 +1,11 @@
-import { PropsWithChildren } from 'react';
+import { Fragment, PropsWithChildren } from 'react';
 import { useRouter } from 'next/router';
 import { ButtonLink } from '@ag.ds-next/react/button';
 import { Flex } from '@ag.ds-next/react/box';
 import { Prose } from '@ag.ds-next/react/prose';
 import { SkipLinksProps } from '@ag.ds-next/react/skip-link';
 import { SubNav } from '@ag.ds-next/react/sub-nav';
+import { StatusBadge } from '@ag.ds-next/react/src/status-badge';
 import { getPkgBreadcrumbs, getPkgNavLinks, Pkg } from '../lib/mdx/packages';
 import { PageTitle } from './PageTitle';
 import { PageLayout } from './PageLayout';
@@ -83,20 +84,24 @@ export function PkgLayout({
 						)
 					}
 				/>
-				<Prose>
-					<pre>
-						<code>{`import { ... } from '@ag.ds-next/react/${pkg.name}';`}</code>
-					</pre>
-				</Prose>
-				{pkg.subNavItems?.length ? (
-					<SubNav
-						activePath={asPath}
-						links={pkg.subNavItems.map((item) => ({
-							...item,
-							scroll: false,
-						}))}
-					/>
-				) : null}
+				{!pkg.deprecated && (
+					<Fragment>
+						<Prose>
+							<pre>
+								<code>{`import { ... } from '@ag.ds-next/react/${pkg.name}';`}</code>
+							</pre>
+						</Prose>
+						{pkg.subNavItems?.length ? (
+							<SubNav
+								activePath={asPath}
+								links={pkg.subNavItems.map((item) => ({
+									...item,
+									scroll: false,
+								}))}
+							/>
+						) : null}
+					</Fragment>
+				)}
 				{children}
 			</PageLayout>
 		</SiteLayout>

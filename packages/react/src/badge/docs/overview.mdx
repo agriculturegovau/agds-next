@@ -2,118 +2,20 @@
 title: Badge
 description: Badges are visual indicators used to call attention to an item or to communicate non-actionable information.
 group: Content
-storybookPath: /story/content-badge-statusbadge--basic
-figmaGalleryNodeId: 11981%3A101236
-relatedComponents: ['tags']
+deprecated: true
 ---
 
-## StatusBadge
-
-```jsx live
-<Flex flexWrap="wrap" gap={1}>
-	<StatusBadge tone="info" label="In progress" />
-	<StatusBadge tone="success" label="Resolved" />
-	<StatusBadge tone="error" label="Rejected" />
-	<StatusBadge tone="warning" label="Attention" />
-	<StatusBadge tone="neutral" label="Draft" />
-</Flex>
-```
-
-Use `StatusBadge` to highlight an item's status for quick recognition.
-
-Choosing a `tone` for StatusBadge allows the user to understand the importance and severity of the message at a glance.
-
-The five supported tones are `info`, `success`, `error`, `warning` and `neutral`.
-
-<DoHeading />
-
-- use to indicate the status of a task or process
-- use to help users differentiate between multiple statuses
-
-<DontHeading />
-
-- use status badge without an icon
-- change the colours or create new ones
-- use when colour and icon don't convey meaning.
-
-## NotificationBadge
-
-```jsx live
-<Flex gap={1}>
-	<NotificationBadge tone="neutral" value={16} />
-	<NotificationBadge tone="action" value={8} />
-	<NotificationBadge tone="action" max={99} value={123} />
-</Flex>
-```
-
-A notification badge is a visual indicator for numeric values.
-
-Use the `max` property where the count is expected to exceed a reasonable number, and the exact count is not particularly valuable to the user.
-
-<DoHeading />
-
-- use to indicate numeric values such as message count
-- place next to associated content – for example, Messages (1)
-
-<DontHeading />
-
-- change the colours or create new ones
-
-## IndicatorDot
-
-A small decorative indicator used to call attention to an item, such as an unread message.
-
-```jsx live
-<IndicatorDot />
-```
-
-An IndicatorDot should not be used on its own, as it gives no context. It should instead be considered as part of a wider composition.
-
-```jsx live
-<Flex flexDirection="column" as="ul">
-	<Flex
-		as="li"
-		aria-selected="false"
-		borderColor="muted"
-		borderY
-		css={{
-			backgroundColor: boxPalette.systemInfoMuted,
-		}}
-		flexDirection="column"
-		gap={0.5}
-		justifyContent="space-between"
-		padding={1.5}
-		width="100%"
-	>
-		<Flex justifyContent="space-between">
-			<Text fontSize="md" fontWeight="bold">
-				Action required
-			</Text>
-
-			<Flex alignItems="center" gap={0.5}>
-				<Text color="muted">10:15am</Text>
-				<IndicatorDot tone="action" />
-				<VisuallyHidden>Unread message</VisuallyHidden>
-			</Flex>
-		</Flex>
-
-		<Text fontSize="sm">
-			Your application to register establishment Orange Meat Works needs more
-			information. Please provide your ABN/ACN by 12 June 2022 to avoid delays.
-		</Text>
-
-		<div>
-			<TextLink href="#details">View details</TextLink>
-		</div>
-	</Flex>
-</Flex>
-```
-
-<DoHeading />
-
-- use to indicate something needs attention – for example, unread messages
-
-<DontHeading />
-
-- change the colours or create new ones
-- use on it's own. It should be considered as part of a wider composition.
+<PageAlert tone="info" title="This component has been renamed">
+	<Text as="p">
+		{'Badge has been split into separate three components: '}
+		<TextLink href="/components/indicator-dot">{'Indicator dot'}</TextLink>
+		{', '}
+		<TextLink href="/components/notification-badge">
+			{'Notification badge'}
+		</TextLink>
+		{' and '}
+		<TextLink href="/components/status-badge">{'Status badge'}</TextLink>
+		{'.'}
+	</Text>
+	<Text as="p">Badge will be removed in the next major release.</Text>
+</PageAlert>

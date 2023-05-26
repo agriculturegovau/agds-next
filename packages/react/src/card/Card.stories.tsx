@@ -9,7 +9,7 @@ import { DirectionLink } from '../direction-link';
 import { Tags } from '../tags';
 import { Text } from '../text';
 import { TextLink } from '../text-link';
-import { StatusBadge } from '../badge';
+import { StatusBadge } from '../status-badge';
 import { PageContent } from '../content';
 import { Card } from './Card';
 import { CardInner } from './CardInner';
