@@ -26,7 +26,7 @@ function ControlledDateRangePicker(props: DateRangePickerProps) {
 }
 
 const meta: Meta<typeof DateRangePicker> = {
-	title: 'forms/DatePicker/DateRangePicker',
+	title: 'forms/DateRangePicker',
 	component: DateRangePicker,
 	render: ControlledDateRangePicker,
 };

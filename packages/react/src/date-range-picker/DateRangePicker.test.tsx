@@ -8,13 +8,13 @@ import * as yup from 'yup';
 import { cleanup, render, screen } from '../../../../test-utils';
 import { Stack } from '../box';
 import { Button } from '../button';
+import { formatHumanReadableDate, parseDate } from '../date-picker/utils';
+import { yupDateField, errorMessage } from '../date-picker/test-utils';
 import {
 	DateRangePicker,
 	DateRangePickerProps,
 	DateRangeWithString,
 } from './DateRangePicker';
-import { yupDateField, errorMessage } from './test-utils';
-import { formatHumanReadableDate, parseDate } from './utils';
 
 afterEach(cleanup);
 

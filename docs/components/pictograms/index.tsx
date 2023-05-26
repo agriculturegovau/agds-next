@@ -73,6 +73,7 @@ export const pictograms = {
 	core,
 	'direction-link': directionLink,
 	'date-picker': datePicker,
+	'date-range-picker': datePicker,
 	details,
 	'file-input': fileUpload,
 	'file-upload': fileUpload,
