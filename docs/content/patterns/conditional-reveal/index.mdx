@@ -1,0 +1,172 @@
+---
+title: Conditionally revealed questions
+group: Patterns
+description: Conditionally reveal a related question when a user selects a specific radio or checkbox option. This ensures that users only encounter questions when it is applicable to their selection.
+version: 1.0.0
+---
+
+<DoHeading />
+
+- only reveal 1 related question
+- reveal the related question directly under the initial question
+- use another page if there are multiple related questions
+- only use with vertically stacked checkboxes or radios
+
+<DontHeading />
+
+- reveal more than 1 related question
+- use with horizontally stacked checkboxes or radios
+- reveal anything that is not a question.
+
+## Radio
+
+You can ask users a related question when they select a particular [Radio](/components/control-input#radio), so they only see the question when it is relevant to them.
+
+```jsx live
+() => {
+	const [value, setValue] = React.useState();
+	const handlerForKey = React.useCallback((key) => () => setValue(key), []);
+	const isChecked = (key) => key === value;
+	return (
+		<ControlGroup label="Preferred contact method" required block>
+			<Radio checked={isChecked('email')} onChange={handlerForKey('email')}>
+				Email
+			</Radio>
+			{isChecked('email') && (
+				<ConditionalFieldContainer>
+					<TextInput type="email" label="Email address" required />
+				</ConditionalFieldContainer>
+			)}
+			<Radio checked={isChecked('phone')} onChange={handlerForKey('phone')}>
+				Phone
+			</Radio>
+			{isChecked('phone') && (
+				<ConditionalFieldContainer>
+					<TextInput label="Phone number" inputMode="numeric" required />
+				</ConditionalFieldContainer>
+			)}
+			<Radio
+				checked={isChecked('textMessage')}
+				onChange={handlerForKey('textMessage')}
+			>
+				Text message
+			</Radio>
+			{isChecked('textMessage') && (
+				<ConditionalFieldContainer>
+					<TextInput label="Mobile phone number" inputMode="numeric" required />
+				</ConditionalFieldContainer>
+			)}
+		</ControlGroup>
+	);
+};
+```
+
+## Checkbox
+
+You can ask users a related question when they select a particular [Checkbox](/components/control-input#checkbox), so they only see the question when it is relevant to them.
+
+```jsx live
+() => {
+	const [value, setValue] = React.useState([]);
+	const handlerForKey = React.useCallback(
+		(key) => () =>
+			setValue((value) =>
+				value.includes(key) ? value.filter((v) => v !== key) : [...value, key]
+			),
+		[]
+	);
+	const isChecked = (key) => value.includes(key);
+	return (
+		<ControlGroup label="Preferred contact method" required block>
+			<Checkbox checked={isChecked('email')} onChange={handlerForKey('email')}>
+				Email
+			</Checkbox>
+			{isChecked('email') && (
+				<ConditionalFieldContainer>
+					<TextInput type="email" label="Email address" required />
+				</ConditionalFieldContainer>
+			)}
+			<Checkbox checked={isChecked('phone')} onChange={handlerForKey('phone')}>
+				Phone
+			</Checkbox>
+			{isChecked('phone') && (
+				<ConditionalFieldContainer>
+					<TextInput label="Phone number" inputMode="numeric" required />
+				</ConditionalFieldContainer>
+			)}
+			<Checkbox
+				checked={isChecked('textMessage')}
+				onChange={handlerForKey('textMessage')}
+			>
+				Text message
+			</Checkbox>
+			{isChecked('textMessage') && (
+				<ConditionalFieldContainer>
+					<TextInput label="Mobile phone number" inputMode="numeric" required />
+				</ConditionalFieldContainer>
+			)}
+		</ControlGroup>
+	);
+};
+```
+
+## Invalid
+
+When a conditionally revealed question is invalid, include an error message on the invalid field that is clearly related to the initial question.
+
+```jsx live
+() => {
+	const [value, setValue] = React.useState('email');
+	const handlerForKey = React.useCallback((key) => () => setValue(key), []);
+	const isChecked = (key) => key === value;
+	return (
+		<ControlGroup label="Preferred contact method" required block>
+			<Radio checked={isChecked('email')} onChange={handlerForKey('email')}>
+				Email
+			</Radio>
+			{isChecked('email') && (
+				<ConditionalFieldContainer>
+					<TextInput
+						type="email"
+						label="Email address"
+						required
+						invalid
+						message="Enter a email address"
+					/>
+				</ConditionalFieldContainer>
+			)}
+			<Radio checked={isChecked('phone')} onChange={handlerForKey('phone')}>
+				Phone
+			</Radio>
+			{isChecked('phone') && (
+				<ConditionalFieldContainer>
+					<TextInput
+						label="Phone number"
+						inputMode="numeric"
+						required
+						invalid
+						message="Enter a phone number"
+					/>
+				</ConditionalFieldContainer>
+			)}
+			<Radio
+				checked={isChecked('textMessage')}
+				onChange={handlerForKey('textMessage')}
+			>
+				Text message
+			</Radio>
+			{isChecked('textMessage') && (
+				<ConditionalFieldContainer>
+					<TextInput
+						label="Mobile phone number"
+						inputMode="numeric"
+						required
+						invalid
+						message="Enter a mobile phone number"
+					/>
+				</ConditionalFieldContainer>
+			)}
+		</ControlGroup>
+	);
+};
+```

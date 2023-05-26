@@ -1,36 +1,41 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react';
 import { Radio } from './Radio';
 
-export default {
+const meta: Meta<typeof Radio> = {
 	title: 'forms/Radio',
 	component: Radio,
-} as ComponentMeta<typeof Radio>;
-
-const Template: ComponentStory<typeof Radio> = (args) => <Radio {...args} />;
-
-export const Basic = Template.bind({});
-Basic.args = {
-	children: 'Example',
-	checked: true,
 };
 
-export const Size = Template.bind({});
-Size.args = {
-	size: 'sm',
-	children: 'Small example',
-	checked: true,
+export default meta;
+
+type Story = StoryObj<typeof Radio>;
+
+export const Basic: Story = {
+	args: {
+		children: 'Example',
+		disabled: false,
+	},
 };
 
-export const Disabled = Template.bind({});
-Disabled.args = {
-	children: 'Disabled',
-	disabled: true,
-	checked: true,
+export const Size: Story = {
+	args: {
+		size: 'sm',
+		children: 'Small example',
+		disabled: false,
+	},
 };
 
-export const Invalid = Template.bind({});
-Invalid.args = {
-	children: 'Invalid',
-	invalid: true,
-	checked: true,
+export const Disabled: Story = {
+	args: {
+		children: 'Disabled',
+		disabled: true,
+	},
+};
+
+export const Invalid: Story = {
+	args: {
+		children: 'Invalid',
+		invalid: true,
+		disabled: false,
+	},
 };
