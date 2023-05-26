@@ -1,6 +1,6 @@
-import { IndicatorDot as AgDsIndicatorDot } from '../indicator-dot';
-import { NotificationBadge as AgDsNotificationBadge } from '../notification-badge';
-import { StatusBadge as AgDsStatusBadge } from '../status-badge';
+import { IndicatorDot as _IndicatorDot } from '../indicator-dot';
+import { NotificationBadge as _NotificationBadge } from '../notification-badge';
+import { StatusBadge as _StatusBadge } from '../status-badge';
 
 /**
  * @deprecated This component has been moved.
@@ -8,7 +8,7 @@ import { StatusBadge as AgDsStatusBadge } from '../status-badge';
  * Example: `import { IndicatorDot } from '@ag.ds-next/react/indicator-dot'`".
  * This will be removed in the next major version.
  */
-export const IndicatorDot = AgDsIndicatorDot;
+export const IndicatorDot = _IndicatorDot;
 
 /**
  * @deprecated This component has been moved.
@@ -16,7 +16,7 @@ export const IndicatorDot = AgDsIndicatorDot;
  * Example: `import { NotificationBadge } from '@ag.ds-next/react/notification-badge'`".
  * This will be removed in the next major version.
  */
-export const NotificationBadge = AgDsNotificationBadge;
+export const NotificationBadge = _NotificationBadge;
 
 /**
  * @deprecated This component has been moved.
@@ -24,4 +24,4 @@ export const NotificationBadge = AgDsNotificationBadge;
  * Example: `import { StatusBadge } from '@ag.ds-next/react/status-badge'`".
  * This will be removed in the next major version.
  */
-export const StatusBadge = AgDsStatusBadge;
+export const StatusBadge = _StatusBadge;
