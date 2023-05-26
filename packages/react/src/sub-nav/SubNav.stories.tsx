@@ -1,6 +1,6 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { Box } from '../box';
-import { NotificationBadge } from '../badge';
+import { NotificationBadge } from '../notification-badge';
 import { SubNav } from './SubNav';
 
 export default {

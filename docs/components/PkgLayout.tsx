@@ -5,7 +5,6 @@ import { Flex } from '@ag.ds-next/react/box';
 import { Prose } from '@ag.ds-next/react/prose';
 import { SkipLinksProps } from '@ag.ds-next/react/skip-link';
 import { SubNav } from '@ag.ds-next/react/sub-nav';
-import { StatusBadge } from '@ag.ds-next/react/src/status-badge';
 import { getPkgBreadcrumbs, getPkgNavLinks, Pkg } from '../lib/mdx/packages';
 import { PageTitle } from './PageTitle';
 import { PageLayout } from './PageLayout';

@@ -1,7 +1,7 @@
 import { forwardRef, Fragment } from 'react';
 import { format } from 'date-fns';
 import { VisuallyHidden } from '@ag.ds-next/react/a11y';
-import { StatusBadge } from '@ag.ds-next/react/badge';
+import { StatusBadge } from '@ag.ds-next/react/status-badge';
 import { SkeletonBox, SkeletonText } from '@ag.ds-next/react/skeleton';
 import {
 	Table,

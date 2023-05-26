@@ -1,12 +1,8 @@
 import '@testing-library/jest-dom';
 import 'html-validate/jest';
 import { cleanup, render, screen } from '../../../../test-utils';
-import {
-	NotificationBadge,
-	NotificationBadgeProps,
-	badgeToneMap,
-	BadgeTone,
-} from './NotificationBadge';
+import { NotificationBadge, NotificationBadgeProps } from './NotificationBadge';
+import { BadgeTone, badgeToneMap } from './utils';
 
 afterEach(cleanup);
 

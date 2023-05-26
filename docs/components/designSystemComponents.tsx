@@ -11,11 +11,9 @@ export {
 	AccordionItemContent,
 } from '@ag.ds-next/react/accordion';
 export { Avatar } from '@ag.ds-next/react/avatar';
-export {
-	StatusBadge,
-	NotificationBadge,
-	IndicatorDot,
-} from '@ag.ds-next/react/badge';
+export { StatusBadge } from '@ag.ds-next/react/status-badge';
+export { NotificationBadge } from '@ag.ds-next/react/notification-badge';
+export { IndicatorDot } from '@ag.ds-next/react/indicator-dot';
 export { Prose } from '@ag.ds-next/react/prose';
 export { Box, Flex, Stack } from '@ag.ds-next/react/box';
 export {

@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from '@storybook/react';
 import { AvatarIcon } from '../icon';
-import { NotificationBadge } from '../badge';
+import { NotificationBadge } from '../notification-badge';
 import { MainNav } from './MainNav';
 import { MainNavBottomBar } from './MainNavBottomBar';
 

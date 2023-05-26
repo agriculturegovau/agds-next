@@ -31,11 +31,9 @@ import { ProgressIndicator } from '@ag.ds-next/react/progress-indicator';
 import { PageAlert } from '@ag.ds-next/react/page-alert';
 import { Select } from '@ag.ds-next/react/select';
 import { SubNav } from '@ag.ds-next/react/sub-nav';
-import {
-	StatusBadge,
-	NotificationBadge,
-	IndicatorDot,
-} from '@ag.ds-next/react/badge';
+import { StatusBadge } from '@ag.ds-next/react/status-badge';
+import { NotificationBadge } from '@ag.ds-next/react/notification-badge';
+import { IndicatorDot } from '@ag.ds-next/react/indicator-dot';
 import { SideNav } from '@ag.ds-next/react/side-nav';
 import { Text } from '@ag.ds-next/react/text';
 import { Textarea } from '@ag.ds-next/react/textarea';
