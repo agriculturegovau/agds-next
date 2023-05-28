@@ -118,7 +118,7 @@ export default function TokensColorPage() {
 					/>
 
 					<h2 id="system-colours">System colours</h2>
-					<p id="system-colours-colours">
+					<p id="system-colours-description">
 						System colours are used to indicate status. They’re very prominent
 						colours aimed at grabbing the user’s attention. Each system colour
 						has a muted version to be used as a background colour.
