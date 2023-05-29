@@ -56,106 +56,112 @@ export const ListFilteringLarge = ({
 }: ListFilteringLargeProps) => {
 	return (
 		<PageContent>
-			<SkipLinks
-				links={[{ href: '#main-content', label: 'Skip to main content' }]}
-			/>
-			<Columns>
-				<Column columnSpan={{ xs: 12, md: 4, lg: 3 }}>
-					<ContentBleed visible={{ md: false }}>
-						<FormStack>
-							<FilterSearchInput filters={filters} setFilters={setFilters} />
-							<FilterStatusSelect filters={filters} setFilters={setFilters} />
-							<FilterStateSelect
-								filters={filters}
-								setFilters={setFilters}
-								block
-							/>
-							<FilterAssigneeSelect filters={filters} setFilters={setFilters} />
-							<FilterDestinationsSelect
-								filters={filters}
-								setFilters={setFilters}
-							/>
-							<FilterServicesSelect filters={filters} setFilters={setFilters} />
-							<DateRangePicker
-								fromLabel="Registered from"
-								toLabel="Registered to"
-								hideOptionalLabel
-								onChange={(requestDate) =>
-									setFilters({ ...filters, requestDate })
-								}
-								onFromInputChange={(from) =>
-									setFilters({
-										...filters,
-										requestDate: { ...filters.requestDate, from },
-									})
-								}
-								onToInputChange={(to) =>
-									setFilters({
-										...filters,
-										requestDate: { ...filters.requestDate, to },
-									})
-								}
-								value={filters.requestDate}
-							/>
-							<Button
-								variant="secondary"
-								onClick={() => {
-									resetFilters();
-								}}
-							>
-								Reset filters
-							</Button>
-						</FormStack>
-					</ContentBleed>
-				</Column>
-				<Column
-					as="main"
-					id="main-content"
-					tabIndex={-1}
-					css={{ '&:focus': { outline: 'none' } }}
-					columnSpan={{ xs: 12, md: 8 }}
-					columnStart={{ lg: 5 }}
-				>
-					<Stack gap={3}>
-						<Prose>
-							<h1>List Filtering (Large)</h1>
-							<p>
-								The medium filtering pattern is for cases where the number of
-								filterable fields is between 1 and 4 secondary filters. Our
-								FilterBar is used to reveal all filterable fields when the
-								button is pressed.
-							</p>
-							<p>Here it is applied to a list of establishments.</p>
-						</Prose>
-						<div>
-							<ButtonLink href="#new" iconBefore={PlusIcon}>
-								New item
-							</ButtonLink>
-						</div>
+			<Stack gap={3}>
+				<SkipLinks
+					links={[{ href: '#main-content', label: 'Skip to main content' }]}
+				/>
 
-						<Stack gap={1}>
-							<SortBySelect sort={sort} setSort={setSort} />
-							<ActiveFilters
-								filters={filters}
-								removeFilter={removeFilter}
-								resetFilters={resetFilters}
-							/>
-						</Stack>
+				<Prose>
+					<h1>List Filtering (Large)</h1>
+					<p>
+						The medium filtering pattern is for cases where the number of
+						filterable fields is between 1 and 4 secondary filters. Our
+						FilterBar is used to reveal all filterable fields when the button is
+						pressed.
+					</p>
+					<p>Here it is applied to a list of establishments.</p>
+				</Prose>
 
-						<DataList data={data} loading={loading} />
-
-						{data.length ? (
-							<Stack>
-								<PaginationButtons
-									currentPage={pagination.page}
-									onChange={(page) => setPagination({ ...pagination, page })}
-									totalPages={totalPages}
+				<Columns>
+					<Column columnSpan={{ xs: 12, md: 4, lg: 3 }}>
+						<ContentBleed visible={{ md: false }}>
+							<FormStack>
+								<FilterSearchInput
+									filters={filters}
+									setFilters={setFilters}
+									block
+								/>
+								<FilterStatusSelect
+									filters={filters}
+									setFilters={setFilters}
+									block
+								/>
+								<FilterStateSelect
+									filters={filters}
+									setFilters={setFilters}
+									block
+								/>
+								<FilterAssigneeSelect
+									filters={filters}
+									setFilters={setFilters}
+									block
+								/>
+								<FilterDestinationsSelect
+									filters={filters}
+									setFilters={setFilters}
+									block
+								/>
+								<FilterServicesSelect
+									filters={filters}
+									setFilters={setFilters}
+								/>
+								<DateRangePicker
+									fromLabel="Registered from"
+									toLabel="Registered to"
+									hideOptionalLabel
+									onChange={(requestDate) =>
+										setFilters({ ...filters, requestDate })
+									}
+									onFromInputChange={(from) =>
+										setFilters({
+											...filters,
+											requestDate: { ...filters.requestDate, from },
+										})
+									}
+									onToInputChange={(to) =>
+										setFilters({
+											...filters,
+											requestDate: { ...filters.requestDate, to },
+										})
+									}
+									value={filters.requestDate}
+								/>
+							</FormStack>
+						</ContentBleed>
+					</Column>
+					<Column
+						as="main"
+						id="main-content"
+						tabIndex={-1}
+						css={{ '&:focus': { outline: 'none' } }}
+						columnSpan={{ xs: 12, md: 8 }}
+						columnStart={{ lg: 5 }}
+					>
+						<Stack gap={3}>
+							<Stack gap={1}>
+								<SortBySelect sort={sort} setSort={setSort} />
+								<ActiveFilters
+									filters={filters}
+									removeFilter={removeFilter}
+									resetFilters={resetFilters}
 								/>
 							</Stack>
-						) : null}
-					</Stack>
-				</Column>
-			</Columns>
+
+							<DataList data={data} loading={loading} />
+
+							{data.length ? (
+								<Stack>
+									<PaginationButtons
+										currentPage={pagination.page}
+										onChange={(page) => setPagination({ ...pagination, page })}
+										totalPages={totalPages}
+									/>
+								</Stack>
+							) : null}
+						</Stack>
+					</Column>
+				</Columns>
+			</Stack>
 		</PageContent>
 	);
 };
