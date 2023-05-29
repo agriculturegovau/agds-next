@@ -36,10 +36,11 @@ export default function TokensColorPage() {
 					title="On this page"
 					links={[
 						{ href: '#colour-palettes', label: 'Colour palettes' },
-						{ href: '#foreground', label: 'Foreground colors' },
-						{ href: '#background', label: 'Background colors' },
-						{ href: '#border', label: 'Border colors' },
-						{ href: '#system', label: 'System colors' },
+						{ href: '#foreground-colours', label: 'Foreground colours' },
+						{ href: '#background-colours', label: 'Background colours' },
+						{ href: '#border-colours', label: 'Border colours' },
+						{ href: '#system-colours', label: 'System colours' },
+						{ href: '#miscellaneous-colours', label: 'Miscellaneous colours' },
 						{ href: '#usage-guidelines', label: 'Usage guidelines' },
 					]}
 				/>
@@ -71,21 +72,22 @@ export default function TokensColorPage() {
 							/>
 						</div>
 					</Box>
-					<h3 id="foreground">Foreground colors</h3>
-					<p>
+					<h2 id="foreground-colours">Foreground colours</h2>
+					<p id="foreground-colours-description">
 						Designed to sit on top of background colours to ensure contrast
 						ratios meet WCAG 2.1 level AA accessibility requirements.
 					</p>
 					<ColorTable
-						caption="All Foreground tokens"
+						aria-labelledby="foreground-colours"
+						aria-describedby="foreground-colours-description"
 						tokens={getTokensArrayFromObject(
 							colourTokens.foreground,
 							activePalette
 						)}
 					/>
 
-					<h3 id="background">Background colors</h3>
-					<p>
+					<h2 id="background-colours">Background colours</h2>
+					<p id="background-colours-description">
 						Designed to sit under foreground colours to ensure contrast ratios
 						meet WCAG 2.1 level AA accessibility requirements. Each colour
 						palette has 2 main background colours to choose from, the default
@@ -94,44 +96,53 @@ export default function TokensColorPage() {
 						background colours.
 					</p>
 					<ColorTable
-						caption="All Background tokens"
+						aria-labelledby="background-colours"
+						aria-describedby="background-colours-description"
 						tokens={getTokensArrayFromObject(
 							colourTokens.background,
 							activePalette
 						)}
 					/>
 
-					<h3 id="border">Border colors</h3>
-					<p>Each colour palette has 2 border colours.</p>
+					<h2 id="border-colours">Border colours</h2>
+					<p id="border-colours-description">
+						Each colour palette has 2 border colours.
+					</p>
 					<ColorTable
-						caption="All Border tokens"
+						aria-labelledby="border-colours"
+						aria-describedby="border-colours-description"
 						tokens={getTokensArrayFromObject(
 							colourTokens.border,
 							activePalette
 						)}
 					/>
 
-					<h3 id="system">System colors</h3>
-					<p>
+					<h2 id="system-colours">System colours</h2>
+					<p id="system-colours-description">
 						System colours are used to indicate status. They’re very prominent
 						colours aimed at grabbing the user’s attention. Each system colour
 						has a muted version to be used as a background colour.
 					</p>
 					<ColorTable
-						caption="All System tokens"
+						aria-labelledby="system-colours"
+						aria-describedby="system-colours-description"
 						tokens={getTokensArrayFromObject(
 							colourTokens.system,
 							activePalette
 						)}
 					/>
 
-					<h3 id="other">Miscellaneous colors</h3>
-					<p>
-						Miscellaneous colours which do not form part of the above groups
+					<h2 id="miscellaneous-colours">Miscellaneous colours</h2>
+					<p id="miscellaneous-colours-description">
+						Miscellaneous colours which do not form part of the above groups.
 					</p>
 					<ColorTable
-						caption="All Miscellaneous tokens"
-						tokens={getTokensArrayFromObject(colourTokens.other, activePalette)}
+						aria-labelledby="miscellaneous-colours"
+						aria-describedby="miscellaneous-colours-description"
+						tokens={getTokensArrayFromObject(
+							colourTokens.miscellaneous,
+							activePalette
+						)}
 					/>
 
 					<h2 id="usage-guidelines">Usage guidelines</h2>

@@ -2,6 +2,4 @@
 '@ag.ds-next/react': minor
 ---
 
-Core
-
-- Created a new `overlay` Design Token, which is used as a backdrop behind modal components
+core: Created a new `overlay` design token which can be used as an overlay for modals and other components that sit on top of the main background.
