@@ -122,12 +122,7 @@ export {
 export { ProgressIndicator } from '@ag.ds-next/react/progress-indicator';
 export { PageAlert, PageAlertTitle } from '@ag.ds-next/react/page-alert';
 export { GlobalAlert } from '@ag.ds-next/react/global-alert';
-export {
-	ControlGroup,
-	Checkbox,
-	Radio,
-	ConditionalFieldContainer,
-} from '@ag.ds-next/react/control-input';
+export { ControlGroup, Checkbox, Radio } from '@ag.ds-next/react/control-input';
 export {
 	SearchBox,
 	SearchBoxInput,

@@ -34,6 +34,7 @@ import {
 } from '@ag.ds-next/react/icon';
 import { withBasePath } from '../lib/img';
 import * as designSystemComponents from './designSystemComponents';
+import { ConditionalFieldContainer } from './ConditionalFieldContainer';
 import { prismTheme } from './prism-theme';
 
 const PlaceholderImage = () => (
@@ -257,6 +258,7 @@ const StaticCode = ({
 
 const LIVE_SCOPE = {
 	...designSystemComponents,
+	ConditionalFieldContainer,
 	PlaceholderImage,
 	useState,
 	Fragment,

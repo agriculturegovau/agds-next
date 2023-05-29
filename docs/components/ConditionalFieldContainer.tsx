@@ -1,6 +1,6 @@
 import { PropsWithChildren } from 'react';
-import { Box } from '../box';
-import { mapSpacing, tokens } from '../core';
+import { Box } from '@ag.ds-next/react/box';
+import { mapSpacing, tokens } from '@ag.ds-next/react/core';
 
 export type ConditionalFieldContainerProps = PropsWithChildren<{}>;
 
