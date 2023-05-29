@@ -48,7 +48,7 @@ export const FilterDrawer: FunctionComponent<FilterDrawerProps> = ({
 
 	return createPortal(
 		<Fragment>
-			{overlay ? <LockScroll /> : null}
+			{isOpen && overlay ? <LockScroll /> : null}
 			{dialogTransitions(({ translateX, opacity }, item) =>
 				item ? (
 					<div ref={modalContainerRef}>
