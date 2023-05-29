@@ -12,5 +12,3 @@ To upgrade, simply update the import when using these components.
 - import { DateRangePicker } from '@ag.ds-next/react/date-picker';
 + import { DateRangePicker } from '@ag.ds-next/react/date-range-picker';
 ```
-
-
