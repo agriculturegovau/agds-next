@@ -2,7 +2,7 @@ import { VisuallyHidden } from '@ag.ds-next/react/a11y';
 import { Stack } from '@ag.ds-next/react/box';
 import { Card, CardInner, CardLink } from '@ag.ds-next/react/card';
 import { H3 } from '@ag.ds-next/react/heading';
-import { SkeletonBox } from '@ag.ds-next/react/skeleton';
+import { SkeletonHeading, SkeletonText } from '@ag.ds-next/react/skeleton';
 import { Text } from '@ag.ds-next/react/text';
 import { BusinessForAuditWithIndex } from '../lib/generateBusinessData';
 
@@ -12,7 +12,7 @@ type DataListProps = {
 	data: BusinessForAuditWithIndex[];
 };
 
-export const DataList: React.FC<DataListProps> = ({ loading, data }) => {
+export const DataList = ({ loading, data }: DataListProps) => {
 	return (
 		<Stack as="ul" gap={1}>
 			{loading
@@ -28,7 +28,7 @@ type DataListItemProps = {
 	data: BusinessForAuditWithIndex;
 };
 
-const DataListItem: React.FC<DataListItemProps> = ({ data }) => {
+const DataListItem = ({ data }: DataListItemProps) => {
 	return (
 		<Card as="li" shadow clickable>
 			<CardInner>
@@ -54,9 +54,16 @@ const DataListItem: React.FC<DataListItemProps> = ({ data }) => {
 
 const DataListItemSkeleton = () => {
 	return (
-		<div>
-			<VisuallyHidden>Loading</VisuallyHidden>
-			<SkeletonBox height="6.5rem" />
-		</div>
+		<Card as="li" shadow>
+			<CardInner>
+				<Stack gap={1}>
+					<SkeletonHeading type="h3" width="50%" />
+					<SkeletonText fontSize="sm" width="12%" />
+					<SkeletonText fontSize="sm" width="25%" />
+					<SkeletonText fontSize="sm" width="25%" />
+					<VisuallyHidden>Loading</VisuallyHidden>
+				</Stack>
+			</CardInner>
+		</Card>
 	);
 };
