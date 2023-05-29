@@ -10,8 +10,8 @@ To upgrade, simply update the import when using these components.
 
 ```diff
 - import { IndicatorDot, NotificationBadge, StatusBadge } from '@ag.ds-next/react/badge';
-+ import { IndicatorDot } from '@ag.ds-next/react/indicator-dot'`
-+ import { NotificationBadge } from '@ag.ds-next/react/notification-badge'`
-+ import { StatusBadge } from '@ag.ds-next/react/status-badge'`
++ import { IndicatorDot } from '@ag.ds-next/react/indicator-dot';
++ import { NotificationBadge } from '@ag.ds-next/react/notification-badge';
++ import { StatusBadge } from '@ag.ds-next/react/status-badge';
 ```
 
