@@ -1,6 +1,6 @@
 ---
 title: FilterDrawer
-description: A FilterDrawer is a dialog box that appears above the parent page and provides advance notice of a destructive action and consequence. They tell users a decision is needed.
+description: FilterDrawers are a type of modal which are used to apply several filters to a data set, without taking up a large area of the main page.
 group: Content
 storybookPath: /story/content-FilterDrawer--basic
 figmaGalleryNodeId: 11981%3A101667
@@ -16,7 +16,7 @@ figmaGalleryNodeId: 11981%3A101667
 			<FilterDrawer
 				isOpen={isFilterDrawerOpen}
 				onDismiss={closeFilterDrawer}
-				title="This is the title of the FilterDrawer dialog, it can span lines but should not be too long."
+				title="Filter by"
 				actions={
 					<ButtonGroup>
 						<Button onClick={closeFilterDrawer}>Primary button</Button>
@@ -29,24 +29,20 @@ figmaGalleryNodeId: 11981%3A101667
 					</ButtonGroup>
 				}
 			>
-				<Text as="p">
-					This is the FilterDrawer Body paragraph, it provides detailed
-					instruction and context for the the FilterDrawer action. It can also
-					span lines but long form content should be avoided.
-				</Text>
+				<Text as="p">This is the FilterDrawer Body.</Text>
 			</FilterDrawer>
 		</React.Fragment>
 	);
 };
 ```
 
-FilterDrawers are ideal for prompting a user to confirm a destructive action.
+The user can scroll through and interact with the vertical list of filter controls, which can include checkboxes, radio buttons, dropdowns, and text fields. The filters are applied when the user clicks the Apply button.
 
-For other uses, other patterns are preferred.
+When the user opens the FilterDrawer, the main page is dimmed and the FilterDrawer appears on the right edge of the screen. The user cannot interact with the main page while the FilterDrawer is open. The FilterDrawer can be closed by clicking the Close button or by clicking outside the FilterDrawer.
 
 <DoHeading />
 
-- use to confirm a destructive action – for example, when cancelling a form and user input will be lost
+- use to allow a user to filter a data list or table
 - use a Button or Button group for actions
 - include a Close button in the top right corner
 - ensure the FilterDrawer closes when the action is completed.
