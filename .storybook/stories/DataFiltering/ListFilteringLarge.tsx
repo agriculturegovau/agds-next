@@ -17,6 +17,8 @@ import { BusinessForAuditWithIndex } from './lib/generateBusinessData';
 import { FilterStateSelect } from './components/FilterStateSelect';
 import { FilterAssigneeSelect } from './components/FilterAssigneeSelect';
 import { DataList } from './components/DataList';
+import { FilterDestinationsSelect } from './components/FilterDestinationsSelect';
+import { FilterServicesSelect } from './components/FilterServicesSelect';
 
 type ListFilteringLargeProps = {
 	// sort
@@ -63,8 +65,17 @@ export const ListFilteringLarge = ({
 						<FormStack>
 							<FilterSearchInput filters={filters} setFilters={setFilters} />
 							<FilterStatusSelect filters={filters} setFilters={setFilters} />
-							<FilterStateSelect filters={filters} setFilters={setFilters} />
+							<FilterStateSelect
+								filters={filters}
+								setFilters={setFilters}
+								block
+							/>
 							<FilterAssigneeSelect filters={filters} setFilters={setFilters} />
+							<FilterDestinationsSelect
+								filters={filters}
+								setFilters={setFilters}
+							/>
+							<FilterServicesSelect filters={filters} setFilters={setFilters} />
 							<DateRangePicker
 								fromLabel="Registered from"
 								toLabel="Registered to"
@@ -105,7 +116,7 @@ export const ListFilteringLarge = ({
 					columnSpan={{ xs: 12, md: 8 }}
 					columnStart={{ lg: 5 }}
 				>
-					<Stack gap={2}>
+					<Stack gap={3}>
 						<Prose>
 							<h1>List Filtering (Large)</h1>
 							<p>
