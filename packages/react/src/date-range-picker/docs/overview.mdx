@@ -7,26 +7,6 @@ figmaGalleryNodeId: 12444%3A100327
 relatedComponents: ['date-picker']
 ---
 
-<DoHeading />
-
-- always display the date format above the text input
-- use Australian date format 'dd/mm/yyyy'
-- allow users to navigate dates via the calendar
-- ensure users can enter dates via the calendar or text input
-- Make sure error messages are specific about what input is required.
-
-<DontHeading />
-
-- never hide the date format
-- use international date formats such as USA mm/dd/yyyy
-- hijack built-in keyboard navigation behaviour.
-
-## Date range picker
-
-`DateRangePicker` is a [controlled component](https://reactjs.org/docs/forms.html#controlled-components) which means consumers of this component need to manage the state of this component by using the `value`, `onChange`, `onFromInputChange` and `onToInputChange` props.
-
-For an example of using this component in a form built with `react-hook-form` and `yup`, please see the [Single-page form template](/templates/single-page-form).
-
 ```jsx live
 () => {
 	const [value, setValue] = React.useState({ from: undefined, to: undefined });
@@ -41,9 +21,27 @@ For an example of using this component in a form built with `react-hook-form` an
 };
 ```
 
+Date range picker is a [controlled component](https://reactjs.org/docs/forms.html#controlled-components) which means consumers of this component need to manage the state of this component by using the `value`, `onChange`, `onFromInputChange` and `onToInputChange` props.
+
+For an example of using this component in a form built with `react-hook-form` and `yup`, please see the [Single-page form template](/templates/single-page-form).
+
+<DoHeading />
+
+- always display the date format above the text input
+- use Australian date format 'dd/mm/yyyy'
+- allow users to navigate dates via the calendar
+- ensure users can enter dates via the calendar or text input
+- Make sure error messages are specific about what input is required.
+
+<DontHeading />
+
+- never hide the date format
+- use international date formats such as USA mm/dd/yyyy
+- hijack built-in keyboard navigation behaviour.
+
 ## Tracking the input value
 
-The `DateRangePicker` component has two methods of input:
+The Date range picker component has two methods of input:
 
 1. Typing in a date string (dd/mm/yyyy) via the text inputs
 2. Selecting a date via the calendar widgets
