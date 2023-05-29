@@ -1,7 +1,7 @@
 import { useSpring, animated } from '@react-spring/web';
 import { useRef } from 'react';
 import { Flex } from '@ag.ds-next/react/box';
-import { DateRangePicker } from '@ag.ds-next/react/date-picker';
+import { DateRangePicker } from '@ag.ds-next/react/date-range-picker';
 import { Button } from '@ag.ds-next/react/button';
 import { usePrefersReducedMotion } from '@ag.ds-next/react/core';
 import { GetDataFilters } from '../lib/getData';

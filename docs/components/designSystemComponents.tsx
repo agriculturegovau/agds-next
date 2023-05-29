@@ -164,7 +164,8 @@ export {
 	TableHead,
 	TableWrapper,
 } from '@ag.ds-next/react/table';
-export { DatePicker, DateRangePicker } from '@ag.ds-next/react/date-picker';
+export { DatePicker } from '@ag.ds-next/react/date-picker';
+export { DateRangePicker } from '@ag.ds-next/react/date-range-picker';
 export {
 	HeroBanner,
 	HeroBannerTitleContainer,
