@@ -61,11 +61,6 @@ export const ListFilteringLarge = ({
 				<Column columnSpan={{ xs: 12, md: 4, lg: 3 }}>
 					<ContentBleed visible={{ md: false }}>
 						<FormStack>
-							<ActiveFilters
-								filters={filters}
-								removeFilter={removeFilter}
-								resetFilters={resetFilters}
-							/>
 							<FilterSearchInput filters={filters} setFilters={setFilters} />
 							<FilterStatusSelect filters={filters} setFilters={setFilters} />
 							<FilterStateSelect filters={filters} setFilters={setFilters} />
@@ -119,6 +114,7 @@ export const ListFilteringLarge = ({
 								FilterBar is used to reveal all filterable fields when the
 								button is pressed.
 							</p>
+							<p>Here it is applied to a list of establishments.</p>
 						</Prose>
 						<div>
 							<ButtonLink href="#new" iconBefore={PlusIcon}>
@@ -126,7 +122,14 @@ export const ListFilteringLarge = ({
 							</ButtonLink>
 						</div>
 
-						<SortBySelect sort={sort} setSort={setSort} />
+						<Stack gap={1}>
+							<SortBySelect sort={sort} setSort={setSort} />
+							<ActiveFilters
+								filters={filters}
+								removeFilter={removeFilter}
+								resetFilters={resetFilters}
+							/>
+						</Stack>
 
 						<DataList data={data} loading={loading} />
 

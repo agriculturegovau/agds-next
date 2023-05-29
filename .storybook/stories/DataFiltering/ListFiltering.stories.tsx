@@ -10,7 +10,7 @@ const meta: Meta = {
 
 export default meta;
 
-export const Large = {
+export const ListLarge = {
 	name: 'List (Large)',
 	render: ListFilteringLargeExample,
 };

@@ -1,12 +1,10 @@
 import { VisuallyHidden } from '@ag.ds-next/react/a11y';
-import { StatusBadge } from '@ag.ds-next/react/badge';
-import { Flex, Stack } from '@ag.ds-next/react/box';
+import { Stack } from '@ag.ds-next/react/box';
 import { Card, CardInner, CardLink } from '@ag.ds-next/react/card';
 import { H3 } from '@ag.ds-next/react/heading';
 import { SkeletonBox } from '@ag.ds-next/react/skeleton';
 import { Text } from '@ag.ds-next/react/text';
 import { BusinessForAuditWithIndex } from '../lib/generateBusinessData';
-import { STATUS_MAP } from '../lib/utils';
 
 type DataListProps = {
 	loading: boolean;
@@ -34,28 +32,20 @@ const DataListItem: React.FC<DataListItemProps> = ({ data }) => {
 	return (
 		<Card as="li" shadow clickable>
 			<CardInner>
-				<Stack gap={0.5} width="100%" flexWrap="wrap">
+				<Stack gap={1} width="100%" flexWrap="wrap">
 					<H3>
 						<CardLink href={`#${data.id}`}>{data.businessName}</CardLink>
 					</H3>
-
-					<Text as="p">
-						<VisuallyHidden>Type: </VisuallyHidden>
-						{data.assignee || 'Unassigned'}
+					<Text>{`${data.city}, ${data.state}`}</Text>
+					<Text>
+						<Text fontWeight="bold">{`Destinations: `}</Text>
+						{data.destinations.join(', ')}
 					</Text>
 
-					<Flex
-						gap={0.5}
-						flexWrap="wrap"
-						justifyContent="space-between"
-						alignItems="center"
-					>
-						<StatusBadge {...STATUS_MAP[data.status]} />
-						<Text color="muted" fontSize="xs">
-							<VisuallyHidden>{'CAR ID: '}</VisuallyHidden>
-							{data.id}
-						</Text>
-					</Flex>
+					<Text>
+						<Text fontWeight="bold">{`Services: `}</Text>
+						{data.services.join(', ')}
+					</Text>
 				</Stack>
 			</CardInner>
 		</Card>
