@@ -4,15 +4,12 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { Prose } from '@ag.ds-next/react/prose';
 import { Stack } from '@ag.ds-next/react/box';
-import {
-	Checkbox,
-	ControlGroup,
-	ConditionalFieldContainer,
-} from '@ag.ds-next/react/control-input';
+import { Checkbox, ControlGroup } from '@ag.ds-next/react/control-input';
 import { FormStack } from '@ag.ds-next/react/form-stack';
 import { PageAlert } from '@ag.ds-next/react/page-alert';
 import { TextInput } from '@ag.ds-next/react/text-input';
 import { useScrollToField } from '@ag.ds-next/react/field';
+import { ConditionalFieldContainer } from '../ConditionalFieldContainer';
 import { FormRequiredFieldsMessage } from '../FormRequiredFieldsMessage';
 import { useFormExampleMultiStep } from './FormExampleMultiStep';
 import { FormExampleMultiStepActions } from './FormExampleMultiStepActions';
