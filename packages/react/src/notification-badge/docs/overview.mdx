@@ -1,0 +1,33 @@
+---
+title: Notification badge
+description: Notification badges are visual indicators for numeric values.
+group: Content
+storybookPath: /story/content-notificationbadge--basic
+figmaGalleryNodeId: 11981%3A101236
+relatedComponents: ['status-badge', 'indicator-dot', 'tags']
+---
+
+```jsx live
+<Flex gap={1}>
+	<NotificationBadge tone="neutral" value={16} />
+	<NotificationBadge tone="action" value={8} />
+	<NotificationBadge tone="action" max={99} value={123} />
+</Flex>
+```
+
+<DoHeading />
+
+- use to indicate numeric values such as message count
+- place next to associated content – for example, Messages (1)
+
+<DontHeading />
+
+- change the colours or create new ones
+
+## Max values
+
+Use the `max` property where the count is expected to exceed a reasonable number, and the exact count is not particularly valuable to the user.
+
+```jsx live
+<NotificationBadge tone="action" max={99} value={123} />
+```

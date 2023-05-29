@@ -1,5 +1,5 @@
 import { Fragment } from 'react';
-import { NotificationBadge } from '../badge';
+import { NotificationBadge } from '../notification-badge';
 import {
 	ChartLineIcon,
 	EmailIcon,

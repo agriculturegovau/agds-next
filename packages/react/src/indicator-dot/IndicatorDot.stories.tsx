@@ -1,4 +1,4 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react';
 import { Flex } from '../box';
 import { VisuallyHidden } from '../a11y';
 import { Text } from '../text';
@@ -6,14 +6,18 @@ import { boxPalette } from '../core';
 import { TextLink } from '../text-link';
 import { IndicatorDot } from './IndicatorDot';
 
-export default {
-	title: 'content/Badge/IndicatorDot',
+const meta: Meta<typeof IndicatorDot> = {
+	title: 'content/IndicatorDot',
 	component: IndicatorDot,
-} as ComponentMeta<typeof IndicatorDot>;
+};
 
-export const Basic: ComponentStory<typeof IndicatorDot> = (args) => (
-	<IndicatorDot {...args} />
-);
+export default meta;
+
+type Story = StoryObj<typeof IndicatorDot>;
+
+export const Basic: Story = {
+	args: {},
+};
 
 export const Example = () => {
 	return (

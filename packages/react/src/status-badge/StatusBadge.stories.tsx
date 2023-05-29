@@ -1,5 +1,4 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { Flex, Stack } from '../box';
+import { StoryObj, Meta } from '@storybook/react';
 import {
 	Table,
 	TableBody,
@@ -12,57 +11,48 @@ import {
 import { TextLink } from '../text-link';
 import { StatusBadge } from './StatusBadge';
 
-export default {
-	title: 'content/Badge/StatusBadge',
+const meta: Meta<typeof StatusBadge> = {
+	title: 'content/StatusBadge',
 	component: StatusBadge,
-} as ComponentMeta<typeof StatusBadge>;
-
-const Template: ComponentStory<typeof StatusBadge> = (args) => (
-	<StatusBadge {...args} />
-);
-
-export const Basic = Template.bind({});
-Basic.args = {
-	tone: 'info',
-	label: 'In progress',
 };
 
-export const LanguageExamples = () => {
-	return (
-		<Flex flexWrap="wrap" gap={1}>
-			<Stack gap={0.5} alignItems="flex-start">
-				<StatusBadge tone="success" label="Approved" />
-				<StatusBadge tone="success" label="Accepted" />
-				<StatusBadge tone="success" label="Online" />
-				<StatusBadge tone="success" label="Open" />
-				<StatusBadge tone="success" label="Available" />
-				<StatusBadge tone="success" label="Success" />
-			</Stack>
+export default meta;
 
-			<Stack gap={0.5} alignItems="flex-start">
-				<StatusBadge tone="info" label="In progress" />
-				<StatusBadge tone="info" label="Pending" />
-				<StatusBadge tone="info" label="New" />
-			</Stack>
+type Story = StoryObj<typeof StatusBadge>;
 
-			<Stack gap={0.5} alignItems="flex-start">
-				<StatusBadge tone="warning" label="Due" />
-				<StatusBadge tone="warning" label="Alert" />
-				<StatusBadge tone="warning" label="Attention" />
-			</Stack>
+export const Info: Story = {
+	args: {
+		tone: 'info',
+		label: 'In progress',
+	},
+};
 
-			<Stack gap={0.5} alignItems="flex-start">
-				<StatusBadge tone="error" label="Rejected" />
-				<StatusBadge tone="error" label="Outage" />
-				<StatusBadge tone="error" label="Overdue" />
-				<StatusBadge tone="error" label="Error" />
-			</Stack>
+export const Success: Story = {
+	args: {
+		tone: 'success',
+		label: 'Resolved',
+	},
+};
 
-			<Stack gap={0.5} alignItems="flex-start">
-				<StatusBadge tone="neutral" label="Draft" />
-			</Stack>
-		</Flex>
-	);
+export const Error: Story = {
+	args: {
+		tone: 'error',
+		label: 'Rejected',
+	},
+};
+
+export const Warning: Story = {
+	args: {
+		tone: 'warning',
+		label: 'Attention',
+	},
+};
+
+export const Neutral: Story = {
+	args: {
+		tone: 'neutral',
+		label: 'Draft',
+	},
 };
 
 export const InTable = () => {

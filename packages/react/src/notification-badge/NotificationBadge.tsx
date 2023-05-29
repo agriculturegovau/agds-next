@@ -1,7 +1,7 @@
 import { HTMLAttributes } from 'react';
 import { mapSpacing, boxPalette } from '../core';
 import { Text } from '../text';
-import { badgeToneMap, BadgeTone } from './utils';
+import { BadgeTone, badgeToneMap } from './utils';
 
 export type NotificationBadgeProps = {
 	/** The number to show. */
