@@ -1,7 +1,7 @@
 import '@testing-library/jest-dom';
 import 'html-validate/jest';
 import { cleanup, render } from '../../../../test-utils';
-import { IndicatorDot, IndicatorDotProps } from '../badge';
+import { IndicatorDot, IndicatorDotProps } from './IndicatorDot';
 
 afterEach(cleanup);
 
