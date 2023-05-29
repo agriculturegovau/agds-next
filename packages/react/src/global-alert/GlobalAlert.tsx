@@ -1,7 +1,7 @@
 import { MouseEventHandler, PropsWithChildren } from 'react';
 import { Box, Flex, Stack } from '../box';
 import { Button } from '../button';
-import { boxPalette } from '../core';
+import { boxPalette, tokens } from '../core';
 import { CloseIcon, WarningFilledIcon } from '../icon';
 import { Content } from '../content';
 import { Heading } from '../heading';
@@ -17,17 +17,20 @@ export function GlobalAlert({ children, onDismiss, title }: GlobalAlertProps) {
 	return (
 		<section
 			aria-label={title}
-			css={{ backgroundColor: boxPalette.systemWarningMuted }}
+			css={{
+				backgroundColor: boxPalette.systemWarningMuted,
+				position: 'relative',
+			}}
 		>
 			<Content>
 				<Flex
-					flexDirection={['column', 'row']}
+					flexDirection={{ xs: 'column', sm: 'row' }}
 					alignItems="flex-start"
 					justifyContent="space-between"
 					gap={[1, 1.5]}
 					paddingY={1}
 				>
-					<Flex flexDirection={['column', 'row']} gap={[0.5, 1]}>
+					<Flex flexDirection={{ xs: 'column', sm: 'row' }} gap={[0.5, 1]}>
 						<Box
 							flexShrink={0}
 							css={{ color: boxPalette.systemWarning }}
@@ -50,9 +53,22 @@ export function GlobalAlert({ children, onDismiss, title }: GlobalAlertProps) {
 						</Stack>
 					</Flex>
 					{onDismiss ? (
-						<Button onClick={onDismiss} iconAfter={CloseIcon} variant="text">
-							Dismiss
-						</Button>
+						<div
+							css={{
+								position: 'absolute',
+								top: '1rem',
+								right: '1rem',
+								[tokens.mediaQuery.min.sm]: {
+									position: 'relative',
+									top: 'unset',
+									right: 'unset',
+								},
+							}}
+						>
+							<Button onClick={onDismiss} iconAfter={CloseIcon} variant="text">
+								Dismiss
+							</Button>
+						</div>
 					) : null}
 				</Flex>
 			</Content>
