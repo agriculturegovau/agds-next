@@ -4,7 +4,7 @@ import {
 	MouseEventHandler,
 	PropsWithChildren,
 } from 'react';
-import { Box, Flex } from '@ag.ds-next/react/box';
+import { Flex } from '@ag.ds-next/react/box';
 import { Text } from '@ag.ds-next/react/text';
 import { boxPalette, tokens } from '@ag.ds-next/react/core';
 import { Button } from '@ag.ds-next/react/button';
