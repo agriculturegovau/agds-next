@@ -4,7 +4,7 @@ exports[`GlobalAlert renders correctly 1`] = `
 <div>
   <section
     aria-label="Alert title"
-    class="css-1fzkvbf-GlobalAlert"
+    class="css-4i05bg-GlobalAlert"
   >
     <div
       class="css-ou39vu-boxStyles"
