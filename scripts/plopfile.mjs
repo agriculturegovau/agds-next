@@ -56,7 +56,7 @@ export default function newPackage(
 				type: 'add',
 				path: '../.changeset/plop-create-{{packageName}}.md',
 				template:
-					"---\n'@ag.ds-next/react': minor\n---\n\nCreated new component `{{componentName}}`\n",
+					"---\n'@ag.ds-next/react': minor\n---\n\n{{componentName}}: Created new component\n",
 			});
 
 			return actions;
