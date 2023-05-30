@@ -1,0 +1,39 @@
+---
+title: Stack
+description: Stack is a primitive layout component used to distribute items vertically with even spacing.
+group: Foundations
+storybookPath: /story/foundations-box--basic
+relatedComponents: ['box', 'flex']
+---
+
+```jsx live
+<Stack gap={1}>
+	<Box background="shade" padding={1} />
+	<Box background="shade" padding={1} />
+	<Box background="shade" padding={1} />
+</Stack>
+```
+
+## As prop
+
+By default, the Stack component renders a HTML `<div>` element. You can render it with a different HTML element by using the `as` prop.
+
+```jsx live
+<Stack as="section" gap={1}>
+	<Box background="shade" padding={1} />
+	<Box background="shade" padding={1} />
+	<Box background="shade" padding={1} />
+</Stack>
+```
+
+## Box props
+
+`<Stack />` supports all of the `BoxProps` from the box component (except for `display`).
+
+See [Box props](/components/box/code) for more information.
+
+## Responsive
+
+The `<Stack />` component supports the responsive prop syntax on most props.
+
+For more information about this, see the [responsive props guides](/guides/responsive-props).

@@ -1,0 +1,49 @@
+---
+title: Flex
+description: A CSS flex version of the Box component.
+group: Foundations
+storybookPath: /story/foundations-flex--basic
+relatedComponents: ['box', 'stack']
+---
+
+The `<Flex />` component is a version of `<Box />` that applies `display: flex`.
+
+```jsx live
+<Flex>A simple Flex</Flex>
+```
+
+## As
+
+By default, the Flex component renders a HTML `<div>` element. You can render it with a different HTML element by using the `as` prop:
+
+```jsx live
+<Flex as="section">A simple Flex rendered as a section element</Flex>
+```
+
+## Inline
+
+Use the `inline` prop to apply `display: inline-flex` to the element.
+
+```jsx live
+<Flex inline>A simple inline Flex</Flex>
+```
+
+## Wrapping
+
+`flexWrap` is an optional prop that makes the children wrap if they can't fit within the container.
+
+```jsx live
+<Flex flexWrap>A simple Flex with flex wrapping</Flex>
+```
+
+## Box props
+
+`<Flex />` supports all of the `BoxProps` from the box component (except for display), with the addition of `inline`.
+
+See [Box props](/components/box/code) for more information.
+
+## Responsive
+
+The `<Flex />` component supports the responsive prop syntax on most props.
+
+For more information about this, see the [responsive props guides](/guides/responsive-props).
