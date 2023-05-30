@@ -1,4 +1,11 @@
-import { forwardRef, HTMLAttributes, PropsWithChildren } from 'react';
+import {
+	forwardRef,
+	HTMLAttributes,
+	isValidElement,
+	MouseEventHandler,
+	PropsWithChildren,
+	ReactNode,
+} from 'react';
 import { Flex } from '../box';
 import { boxPalette, tokens } from '../core';
 import {
@@ -8,6 +15,7 @@ import {
 	WarningFilledIcon,
 } from '../icon';
 import { PageAlertTitle } from './PageAlertTitle';
+import { PageAlertDismissButton } from './PageAlertDismissButton';
 
 export type PageAlertTone = 'success' | 'error' | 'warning' | 'info';
 
@@ -17,12 +25,19 @@ export type PageAlertProps = PropsWithChildren<{
 	id?: string;
 	role?: DivProps['role'];
 	tabIndex?: number;
-	title?: string;
+	/** The title of the alert. */
+	title?: ReactNode;
+	/** The tone of the alert. */
 	tone: PageAlertTone;
+	/** Function to be called when the 'Close' button is pressed. */
+	onDismiss?: MouseEventHandler<HTMLButtonElement>;
 }>;
 
 export const PageAlert = forwardRef<HTMLDivElement, PageAlertProps>(
-	function PageAlert({ id, role, children, title, tone, tabIndex }, ref) {
+	function PageAlert(
+		{ id, role, children, onDismiss, title, tone, tabIndex },
+		ref
+	) {
 		const { fg, bg, icon } = pageAlertToneMap[tone];
 		return (
 			<Flex
@@ -33,7 +48,7 @@ export const PageAlert = forwardRef<HTMLDivElement, PageAlertProps>(
 				rounded
 				focus
 				highContrastOutline
-				css={{ backgroundColor: bg }}
+				css={{ backgroundColor: bg, position: 'relative' }}
 			>
 				<Flex
 					padding={0.5}
@@ -47,9 +62,38 @@ export const PageAlert = forwardRef<HTMLDivElement, PageAlertProps>(
 				>
 					{icon}
 				</Flex>
-				<Flex padding={1.5} gap={1} flexDirection="column" flexGrow={1}>
-					{title ? <PageAlertTitle>{title}</PageAlertTitle> : null}
-					{children}
+				<Flex
+					padding={1.5}
+					gap={1}
+					flexGrow={1}
+					alignItems="flex-start"
+					css={{
+						// When there is a dismiss button and no title
+						// We need to add extra padding to avoid overlapping
+						marginTop: onDismiss && !title ? '3rem' : undefined,
+						[tokens.mediaQuery.min.sm]: {
+							marginTop: '0',
+						},
+					}}
+				>
+					<Flex
+						flexDirection="column"
+						flexGrow={1}
+						gap={1}
+						alignItems="flex-start"
+					>
+						{title ? (
+							isValidElement(title) ? (
+								title
+							) : (
+								<PageAlertTitle hasDismissButton={Boolean(onDismiss)}>
+									{title}
+								</PageAlertTitle>
+							)
+						) : null}
+						{children}
+					</Flex>
+					{onDismiss ? <PageAlertDismissButton onClick={onDismiss} /> : null}
 				</Flex>
 			</Flex>
 		);

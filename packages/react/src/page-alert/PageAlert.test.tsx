@@ -76,4 +76,19 @@ describe('PageAlert', () => {
 		expect(el).toBeInTheDocument();
 		expect(el.tagName).toBe('H2');
 	});
+
+	it('can render a dismiss button', () => {
+		const { container } = renderPageAlert({
+			tone: 'info',
+			title: 'PageAlert with dismiss button',
+			children: <Text as="p">This is a Page alert component.</Text>,
+			onDismiss: jest.fn(),
+		});
+
+		expect(container).toMatchSnapshot();
+		const el = screen.getByLabelText('Dismiss');
+		expect(el).toBeInTheDocument();
+		expect(el).toHaveAccessibleName('Dismiss');
+		expect(el.tagName).toEqual('BUTTON');
+	});
 });

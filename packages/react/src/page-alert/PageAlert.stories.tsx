@@ -1,38 +1,112 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react';
 import { Text } from '../text';
 import { Prose } from '../prose';
 import { PageAlert } from './PageAlert';
+import { PageAlertTitle } from './PageAlertTitle';
 
-export default {
+const meta: Meta<typeof PageAlert> = {
 	title: 'content/PageAlert',
 	component: PageAlert,
-} as ComponentMeta<typeof PageAlert>;
-
-export const Basic: ComponentStory<typeof PageAlert> = (args) => (
-	<PageAlert {...args}>
-		<Text as="p">This is a Page alert component.</Text>
-	</PageAlert>
-);
-Basic.args = {
-	title: 'Page alert',
-	tone: 'success',
+	args: {
+		onDismiss: undefined,
+	},
+	render: (args) => (
+		<PageAlert {...args}>
+			<Text as="p">This is a Page alert component.</Text>
+		</PageAlert>
+	),
 };
 
-export const WithProse: ComponentStory<typeof PageAlert> = (args) => (
-	<PageAlert {...args}>
-		<Prose>
-			<ul>
-				<li>
-					<a href="#">Full name must not be empty</a>
-				</li>
-				<li>
-					<a href="#">Phone number must not be empty</a>
-				</li>
-			</ul>
-		</Prose>
-	</PageAlert>
-);
-WithProse.args = {
-	title: 'Page alert',
-	tone: 'error',
+export default meta;
+
+type Story = StoryObj<typeof PageAlert>;
+
+export const Basic: Story = {
+	args: {
+		title: 'Page alert',
+		tone: 'success',
+	},
+};
+
+export const WithNoTitle: Story = {
+	args: {
+		tone: 'success',
+	},
+};
+
+export const WithProse: Story = {
+	args: {
+		title: 'Page alert',
+		tone: 'error',
+	},
+	render: (args) => (
+		<PageAlert {...args}>
+			<Prose>
+				<ul>
+					<li>
+						<a href="#">Full name must not be empty</a>
+					</li>
+					<li>
+						<a href="#">Phone number must not be empty</a>
+					</li>
+				</ul>
+			</Prose>
+		</PageAlert>
+	),
+};
+
+export const WithDismiss: Story = {
+	render: (args) => (
+		<PageAlert {...args}>
+			<Text as="p">
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris
+				fermentum, libero vel tristique mollis, lacus ipsum rutrum sem, in
+				rhoncus nisl velit nec arcu. Sed condimentum, enim eget volutpat
+				consequat, lacus nulla rutrum neque, eget vulputate urna magna vitae
+				diam.
+			</Text>
+		</PageAlert>
+	),
+	args: {
+		title: 'Page alert title that is long and spans multiple lines',
+		tone: 'success',
+		onDismiss: () => console.log('dismissed'),
+	},
+};
+
+export const WithDismissNoTitle: Story = {
+	render: (args) => (
+		<PageAlert {...args}>
+			<Text as="p">
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris
+				fermentum, libero vel tristique mollis, lacus ipsum rutrum sem, in
+				rhoncus nisl velit nec arcu. Sed condimentum, enim eget volutpat
+				consequat, lacus nulla rutrum neque, eget vulputate urna magna vitae
+				diam.
+			</Text>
+		</PageAlert>
+	),
+	args: {
+		tone: 'success',
+		onDismiss: () => console.log('dismissed'),
+	},
+};
+
+export const WithDismissAndChildTitle: Story = {
+	render: (args) => (
+		<PageAlert {...args}>
+			<Text as="p">
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris
+				fermentum, libero vel tristique mollis, lacus ipsum rutrum sem, in
+				rhoncus nisl velit nec arcu. Sed condimentum, enim eget volutpat
+				consequat, lacus nulla rutrum neque, eget vulputate urna magna vitae
+				diam.
+			</Text>
+		</PageAlert>
+	),
+	args: {
+		tone: 'success',
+		title: <PageAlertTitle as="h5">Hello nath</PageAlertTitle>,
+		onDismiss: () => console.log('dismissed'),
+	},
 };
