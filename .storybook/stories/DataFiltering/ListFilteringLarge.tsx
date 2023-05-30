@@ -60,7 +60,6 @@ export const ListFilteringLarge = ({
 				<SkipLinks
 					links={[{ href: '#main-content', label: 'Skip to main content' }]}
 				/>
-
 				<Prose>
 					<h1>List Filtering (Large)</h1>
 					<p>
@@ -71,7 +70,6 @@ export const ListFilteringLarge = ({
 					</p>
 					<p>Here it is applied to a list of establishments.</p>
 				</Prose>
-
 				<Columns>
 					<Column columnSpan={{ xs: 12, md: 4, lg: 3 }}>
 						<ContentBleed visible={{ md: false }}>
