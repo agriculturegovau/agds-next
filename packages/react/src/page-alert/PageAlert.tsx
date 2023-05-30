@@ -6,7 +6,6 @@ import {
 	PropsWithChildren,
 	ReactNode,
 } from 'react';
-import { Flex } from '../box';
 import { boxPalette, tokens } from '../core';
 import {
 	AlertFilledIcon,
