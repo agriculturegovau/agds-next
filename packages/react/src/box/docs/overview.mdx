@@ -6,15 +6,15 @@ storybookPath: /story/foundations-box--basic
 relatedComponents: ['flex', 'stack']
 ---
 
-The `<Box />` is a primitive layout component that is heavily used to build other components, but can also be used to create custom layouts and components in your application.
+The Box component is a primitive layout component that is heavily used to build other components. It can also be used to create custom layouts and components in your application.
 
 ```jsx live
 <Box>A simple Box</Box>
 ```
 
-## As
+## As prop
 
-By default, it renders a `<div>`. You can render it with a different HTML element tag by using the as prop:
+By default, the Box component renders a HTML `<div>` element. You can render it with a different HTML element tag by using the `as` prop.
 
 ```jsx live
 <Box as="section">A simple Box rendered as a section element</Box>
@@ -22,7 +22,7 @@ By default, it renders a `<div>`. You can render it with a different HTML elemen
 
 ## Styles
 
-Apply styles like padding, margin, border radius, background color and more, by using available props. Here's a small example:
+Apply styles like padding, border radius, background color and more by using available props. Here's a small example:
 
 ```jsx live
 <Box background="shade" border padding={1} rounded>
@@ -30,6 +30,6 @@ Apply styles like padding, margin, border radius, background color and more, by 
 </Box>
 ```
 
-## Responsive
+## Responsive props
 
-The `<Box />` component supports the responsive prop syntax on most props. For more information about this, see the [responsive props guides](/guides/responsive-props).
+The Flex component supports the responsive prop syntax on most props. For more information about responsive props, see the [responsive props guide](/guides/responsive-props).
