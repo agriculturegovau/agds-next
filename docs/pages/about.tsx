@@ -20,6 +20,7 @@ export default function AboutPage() {
 							label: 'About',
 						},
 					]}
+					editPath="/docs/pages/about.tsx"
 				>
 					<PageTitle
 						title="About AgDS"

@@ -20,6 +20,7 @@ export default function RoadmapPage() {
 							label: 'Roadmap',
 						},
 					]}
+					editPath="/docs/pages/roadmap.tsx"
 				>
 					<PageTitle
 						title="Roadmap"
