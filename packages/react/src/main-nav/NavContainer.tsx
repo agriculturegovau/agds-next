@@ -180,7 +180,7 @@ function Overlay({ onClick }: { onClick: MouseEventHandler<HTMLDivElement> }) {
 				left: 0,
 				bottom: 0,
 				right: 0,
-				backgroundColor: `rgba(0, 0, 0, 0.8)`,
+				backgroundColor: boxPalette.overlay,
 				zIndex: 100,
 			}}
 			onClick={onClick}
