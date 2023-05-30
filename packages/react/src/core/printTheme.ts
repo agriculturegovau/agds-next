@@ -1,4 +1,6 @@
-export const printTheme = {
+import { Theme } from './theme';
+
+export const printTheme: Theme = {
 	lightForegroundText: 'black',
 	lightForegroundAction: 'black',
 	lightForegroundFocus: 'black',
@@ -10,6 +12,7 @@ export const printTheme = {
 	lightBorder: 'black',
 	lightBorderMuted: 'black',
 	lightAccent: 'black',
+	lightOverlay: 'white',
 	lightSystemError: 'black',
 	lightSystemSuccess: 'black',
 	lightSystemWarning: 'black',
@@ -29,6 +32,7 @@ export const printTheme = {
 	darkBorder: 'black',
 	darkBorderMuted: 'black',
 	darkAccent: 'black',
+	darkOverlay: 'white',
 	darkSystemError: 'black',
 	darkSystemErrorMuted: 'white',
 	darkSystemSuccess: 'black',
