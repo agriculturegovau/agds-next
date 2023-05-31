@@ -1,7 +1,7 @@
 import { Meta, StoryObj } from '@storybook/react';
+import { Box } from '../box';
+import { Stack } from '../stack';
 import { Flex } from './Flex';
-import { Stack } from './Stack';
-import { Box } from './Box';
 
 const meta: Meta<typeof Flex> = {
 	title: 'foundations/Flex',

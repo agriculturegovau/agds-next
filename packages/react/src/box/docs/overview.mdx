@@ -1,48 +1,35 @@
 ---
 title: Box
-description: A set of primitive layout components
+description: A primitive layout component.
 group: Foundations
 storybookPath: /story/foundations-box--basic
+relatedComponents: ['flex', 'stack']
 ---
 
-This package includes the components `<Box />`, `<Flex />` and `<Stack />`.
+The Box component is a primitive layout component that is heavily used to build other components. It can also be used to create custom layouts and components in your application.
 
-## Box
+```jsx live showCode
+<Box>A simple Box</Box>
+```
 
-```jsx live
-<Box
-	palette="dark"
-	background="body"
-	color="text"
-	fontFamily="body"
-	border
-	padding={{ xs: 1, xl: 4 }}
-	rounded
->
-	A Box example
+## The "as" prop
+
+By default, the Box component renders a HTML `<div>` element. You can render it with a different HTML element tag by using the `as` prop.
+
+```jsx live showCode
+<Box as="section">A simple Box rendered as a section element</Box>
+```
+
+## Styles
+
+Apply styles like padding, border radius, background color and more by using available props. Here's a small example:
+
+```jsx live showCode
+<Box background="shade" border padding={1} rounded>
+	A Styled Box
 </Box>
 ```
 
-## Flex
+## Responsive props
 
-Same principles as `Box`, but extended with CSS Flexbox properties.
-
-```jsx live
-<Flex gap={1} justifyContent="space-between" alignItems="flex-start">
-	<Box background="shade" padding={1} />
-	<Box background="shade" height="64px" padding={1} />
-	<Box background="shade" padding={1} />
-</Flex>
-```
-
-## Stack
-
-Use to distribute items vertically with even spacing.
-
-```jsx live
-<Stack gap={1}>
-	<Box background="shade" padding={1} />
-	<Box background="shade" padding={1} />
-	<Box background="shade" padding={1} />
-</Stack>
-```
+The Flex component supports the responsive prop syntax on most props. For more information about responsive props, see the [responsive props guide](/guides/responsive-props).
