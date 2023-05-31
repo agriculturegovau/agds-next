@@ -1,4 +1,3 @@
-import { PageTemplate } from '../../../.storybook/components/PageTemplate';
 import { Home as HomeComponent } from './Home';
 
 export default {
@@ -9,9 +8,5 @@ export default {
 };
 
 export function Home() {
-	return (
-		<PageTemplate>
-			<HomeComponent />
-		</PageTemplate>
-	);
+	return <HomeComponent />;
 }
