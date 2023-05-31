@@ -1,6 +1,5 @@
 import { forwardRefWithAs } from '../core';
-import type { BoxProps } from './styles';
-import { Box } from './Box';
+import { Box, BoxProps } from '../box';
 
 export type FlexProps = BoxProps & { inline?: boolean };
 
