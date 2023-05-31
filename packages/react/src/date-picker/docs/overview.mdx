@@ -41,7 +41,7 @@ The Date picker component has two methods of input:
 
 As we do not have any sort of input masking due to accessibility concerns, there is a possibilty for the user to enter an invalid value via the text input. In some scenarios, it can be useful to know what the value of the text input is so the user can be informed of any invalid values.
 
-For example, if the Date picker component was placed inside of a form an optional field. If the user typed in an invalid value via the text input, the `onChange` event would never fire. This may lead the user to believe what they have typed is valid when actually their input will not be saved.
+For example, if the Date picker component was an optional field. If a user inputs an invalid value via the text input, the `onChange` event will never fire. This may lead the user to believe what they have typed is valid when actually their input will not be saved.
 
 To fix this issue, you can use the `onInputChange` prop to keep track of the users input. The `value` prop can also be set to a string, which represents the value of the text input.
 
