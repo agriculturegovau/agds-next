@@ -1,10 +1,10 @@
 import { PropsWithChildren } from 'react';
 import { Text } from '../text';
-import { ControlSize } from './utils';
+import { RadioSize } from './utils';
 
-export type ControlLabelProps = PropsWithChildren<{
+export type RadioLabelProps = PropsWithChildren<{
 	disabled?: boolean;
-	size: ControlSize;
+	size: RadioSize;
 }>;
 
 const paddingTopMap = {
@@ -12,11 +12,7 @@ const paddingTopMap = {
 	md: '0.2rem',
 } as const;
 
-export const ControlLabel = ({
-	children,
-	disabled,
-	size,
-}: ControlLabelProps) => {
+export function RadioLabel({ children, disabled, size }: RadioLabelProps) {
 	const paddingTop = paddingTopMap[size];
 	return (
 		<Text
@@ -30,4 +26,4 @@ export const ControlLabel = ({
 			{children}
 		</Text>
 	);
-};
+}

@@ -1,10 +1,10 @@
 import { forwardRef, InputHTMLAttributes, PropsWithChildren } from 'react';
+import { useControlGroupContext } from '../control-group/ControlGroupProvider';
 import { CheckboxIndicator } from './CheckboxIndicator';
-import { ControlInput } from './ControlInput';
-import { ControlContainer } from './ControlContainer';
-import { ControlLabel } from './ControlLabel';
-import { useControlGroupContext } from './ControlGroupProvider';
-import { ControlSize } from './utils';
+import { CheckboxInput } from './CheckboxInput';
+import { CheckboxContainer } from './CheckboxContainer';
+import { CheckboxLabel } from './CheckboxLabel';
+import { CheckboxSize } from './utils';
 
 type NativeCheckboxProps = InputHTMLAttributes<HTMLInputElement>;
 
@@ -29,7 +29,7 @@ export type CheckboxProps = BaseCheckboxProps & {
 	/** If true, the invalid state will be rendered. */
 	invalid?: boolean;
 	/** The size of the input. */
-	size?: ControlSize;
+	size?: CheckboxSize;
 };
 
 export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
@@ -40,8 +40,8 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
 		const controlGroupContext = useControlGroupContext();
 		const invalid = invalidProp || controlGroupContext?.invalid;
 		return (
-			<ControlContainer disabled={disabled}>
-				<ControlInput
+			<CheckboxContainer disabled={disabled}>
+				<CheckboxInput
 					ref={ref}
 					type="checkbox"
 					disabled={disabled}
@@ -52,10 +52,10 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
 					{...props}
 				/>
 				<CheckboxIndicator disabled={disabled} invalid={invalid} size={size} />
-				<ControlLabel disabled={disabled} size={size}>
+				<CheckboxLabel disabled={disabled} size={size}>
 					{children}
-				</ControlLabel>
-			</ControlContainer>
+				</CheckboxLabel>
+			</CheckboxContainer>
 		);
 	}
 );

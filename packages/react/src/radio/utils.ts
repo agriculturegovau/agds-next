@@ -1,6 +1,6 @@
 import { packs } from '../core';
 
-export type ControlSize = keyof typeof packs.control;
+export type RadioSize = keyof typeof packs.control;
 
 export const iconSize = {
 	sm: 1,

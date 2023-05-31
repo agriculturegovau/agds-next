@@ -1,11 +1,16 @@
-import { Flex } from '../box';
+import { Flex } from '../flex';
 import { boxPalette, mapSpacing, packs, Spacing } from '../core';
-import { ControlSize, iconSize } from './utils';
+import { CheckboxSize } from './utils';
+
+export const iconSize = {
+	sm: 1,
+	md: 1.5,
+} as const;
 
 export type CheckboxIndicatorProps = {
 	disabled?: boolean;
 	invalid?: boolean;
-	size: ControlSize;
+	size: CheckboxSize;
 };
 
 export const CheckboxIndicator = ({

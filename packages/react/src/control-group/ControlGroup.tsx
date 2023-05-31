@@ -1,5 +1,6 @@
 import { PropsWithChildren } from 'react';
-import { Flex, Stack } from '../box';
+import { Flex } from '../flex';
+import { Stack } from '../stack';
 import { mapSpacing, useId } from '../core';
 import { FieldContainer, FieldHint, FieldLabel, FieldMessage } from '../field';
 import { ControlGroupProvider } from './ControlGroupProvider';

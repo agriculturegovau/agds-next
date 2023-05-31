@@ -1,0 +1,100 @@
+---
+title: Checkbox
+description: Checkboxes allow users to select one or more options from a list.
+group: Forms
+storybookPath: /story/forms-controlgroup--checkbox-group
+figmaGalleryNodeId: 12926%3A104981
+relatedComponents: ['control-group', 'radio', 'switch']
+---
+
+```jsx live
+<Checkbox value="basic-checkbox">Basic checkbox</Checkbox>
+```
+
+<DoHeading />
+
+- use to help users select one or more items
+- use for a concise list of options `(<10)`
+- ensure users can select one item at a time
+- use vertical lists.
+
+<DontHeading />
+
+- use when only one item can be selected
+- provide disabled options unless unavoidable
+- use horizontal groups unless unavoidable.
+
+## Grouping checkboxes
+
+Use the [Control group](/components/control-group) component to group multiple related checkboxes.
+
+```jsx live
+<ControlGroup label="Example" block>
+	<Checkbox value="phone">Phone</Checkbox>
+	<Checkbox value="tablet">Tablet</Checkbox>
+	<Checkbox value="tablet">Laptop</Checkbox>
+</ControlGroup>
+```
+
+## Hint
+
+Use the `hint` prop to provide help that’s relevant to the majority of users, like how their information will be used, or where to find it.
+
+Don't use long paragraphs and lists in hint text. Screen readers read out the entire text when users interact with the form element. This could frustrate users if the text is long.
+
+Don't include links within hint text. While screen readers will read out the link text when describing the field, they will not tell users that the text is a link.
+
+```jsx live
+<ControlGroup label="Example" hint="Hint text" block>
+	<Checkbox value="phone">Phone</Checkbox>
+	<Checkbox value="tablet">Tablet</Checkbox>
+	<Checkbox value="laptop">Laptop</Checkbox>
+</ControlGroup>
+```
+
+## Invalid
+
+Use the `invalid` prop to indicate if the user input is invalid (does not validate according to the elements settings).
+
+```jsx live
+<ControlGroup
+	label="Invalid example"
+	message="Please choose an option"
+	invalid
+	block
+>
+	<Checkbox>Phone</Checkbox>
+	<Checkbox>Tablet</Checkbox>
+	<Checkbox>Laptop</Checkbox>
+</ControlGroup>
+```
+
+## Disabled
+
+Disabled checkboxes can be used to indicate inputs that are no longer valid or expired.
+
+```jsx live
+<ControlGroup label="Disabled example" block>
+	<Checkbox value="phone" disabled>
+		Disabled checkbox
+	</Checkbox>
+	<Checkbox value="tablet" checked disabled>
+		Checked and disabled checkbox
+	</Checkbox>
+</ControlGroup>
+```
+
+## Small checkboxes
+
+Use the `size` prop to change the size of the checkbox.
+
+```jsx live
+<Stack gap={1}>
+	<Checkbox size="sm" value="small">
+		Small checkbox
+	</Checkbox>
+	<Checkbox size="md" value="phone">
+		Medium checkbox (default)
+	</Checkbox>
+</Stack>
+```

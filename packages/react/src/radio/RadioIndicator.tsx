@@ -1,18 +1,19 @@
-import { Box, Flex } from '../box';
+import { Box } from '../box';
+import { Flex } from '../flex';
 import { boxPalette, packs } from '../core';
-import { ControlSize } from './utils';
+import { RadioSize } from './utils';
 
 export type RadioIndicatorProps = {
 	disabled?: boolean;
 	invalid?: boolean;
-	size: ControlSize;
+	size: RadioSize;
 };
 
-export const RadioIndicator = ({
+export function RadioIndicator({
 	disabled,
 	invalid,
 	size,
-}: RadioIndicatorProps) => {
+}: RadioIndicatorProps) {
 	const { width, height, borderWidth } = packs.control[size];
 	return (
 		<Flex
@@ -59,4 +60,4 @@ export const RadioIndicator = ({
 			/>
 		</Flex>
 	);
-};
+}

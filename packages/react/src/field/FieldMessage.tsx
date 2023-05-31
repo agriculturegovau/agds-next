@@ -1,5 +1,6 @@
 import { PropsWithChildren } from 'react';
-import { Box, Flex } from '../box';
+import { Box } from '../box';
+import { Flex } from '../flex';
 import { AlertFilledIcon } from '../icon';
 import { Text } from '../text';
 

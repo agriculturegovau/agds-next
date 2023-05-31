@@ -2,10 +2,10 @@ import { forwardRef, InputHTMLAttributes } from 'react';
 import { visuallyHiddenStyles } from '../a11y';
 import { packs } from '../core';
 
-export type ControlInputProps = InputHTMLAttributes<HTMLInputElement>;
+export type RadioInputProps = InputHTMLAttributes<HTMLInputElement>;
 
-export const ControlInput = forwardRef<HTMLInputElement, ControlInputProps>(
-	function ControlInput(props, ref) {
+export const RadioInput = forwardRef<HTMLInputElement, RadioInputProps>(
+	function RadioInput(props, ref) {
 		return (
 			<input
 				ref={ref}
