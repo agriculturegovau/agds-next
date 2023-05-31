@@ -8,15 +8,15 @@ relatedComponents: ['flex', 'stack']
 
 The Box component is a primitive layout component that is heavily used to build other components. It can also be used to create custom layouts and components in your application.
 
-```jsx live
+```jsx live showCode
 <Box>A simple Box</Box>
 ```
 
-## As prop
+## The "as" prop
 
 By default, the Box component renders a HTML `<div>` element. You can render it with a different HTML element tag by using the `as` prop.
 
-```jsx live
+```jsx live showCode
 <Box as="section">A simple Box rendered as a section element</Box>
 ```
 
@@ -24,7 +24,7 @@ By default, the Box component renders a HTML `<div>` element. You can render it 
 
 Apply styles like padding, border radius, background color and more by using available props. Here's a small example:
 
-```jsx live
+```jsx live showCode
 <Box background="shade" border padding={1} rounded>
 	A Styled Box
 </Box>

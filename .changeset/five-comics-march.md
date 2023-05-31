@@ -8,7 +8,7 @@
 
 These components will continue to work out of the the `@ag.ds-next/react/box` entrypoint, but this usage has been marked as deprecated and will be removed in the next major release.
 
-To upgrade, simply update the import when using these components.
+To upgrade, update the import when using these components.
 
 ```diff
 - import { Box, Flex, Stack } from '@ag.ds-next/react/box';
