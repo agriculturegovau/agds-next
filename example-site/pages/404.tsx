@@ -1,20 +1,27 @@
-import { Text } from '@ag.ds-next/react/text';
-import { TextLink } from '@ag.ds-next/react/text-link';
-import { SiteLayout } from '../components/SiteLayout';
+import { PageContent } from '@ag.ds-next/react/content';
+import { Prose } from '@ag.ds-next/react/prose';
 import { DocumentTitle } from '../components/DocumentTitle';
-import { ErrorPage } from '../components/templates/ErrorPage';
+import { SiteLayout } from '../components/SiteLayout';
 
 export default function NotFoundPage() {
 	return (
 		<>
 			<DocumentTitle title="Error 404" />
-			<SiteLayout template={{ name: 'Error page', slug: 'error-page' }}>
-				<ErrorPage title="Page not found" errorCode="404">
-					<Text as="p" fontSize="md">
-						Check the web address is correct or go back to the{' '}
-						<TextLink href="/">Export Service</TextLink>.
-					</Text>
-				</ErrorPage>
+			<SiteLayout template={{ name: '404', slug: '404' }}>
+				<PageContent>
+					<Prose>
+						<h1>Page not found</h1>
+						<p>If you typed the web address, check it is correct.</p>
+						<p>
+							If you pasted the web address, check you copied the entire
+							address.
+						</p>
+						<p>
+							If the address is correct and you believe this page should exist,
+							please contact support.
+						</p>
+					</Prose>
+				</PageContent>
 			</SiteLayout>
 		</>
 	);

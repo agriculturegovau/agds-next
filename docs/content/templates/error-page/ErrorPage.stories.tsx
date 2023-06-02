@@ -4,7 +4,6 @@ import { TextLink } from '@ag.ds-next/react/text-link';
 import { Text } from '@ag.ds-next/react/text';
 import { Prose } from '@ag.ds-next/react/prose';
 import { Callout } from '@ag.ds-next/react/callout';
-import { PageTemplate } from '../../../.storybook/components/PageTemplate';
 import { ErrorPage } from './ErrorPage';
 
 const meta: Meta<typeof ErrorPage> = {
@@ -14,11 +13,7 @@ const meta: Meta<typeof ErrorPage> = {
 		layout: 'fullscreen',
 	},
 	render: (props) => {
-		return (
-			<PageTemplate>
-				<ErrorPage {...props} />
-			</PageTemplate>
-		);
+		return <ErrorPage {...props} />;
 	},
 };
 
