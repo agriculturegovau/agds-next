@@ -17,6 +17,24 @@ describe('filterOptions', () => {
 		expect(filterOptions(options, 'sit')).toEqual([]);
 		expect(filterOptions(options, '')).toEqual(options);
 	});
+
+	test('should filter out options from a different array but with the same value', () => {
+		expect(
+			filterOptions(
+				[
+					{ label: 'lorem', value: 'lorem' },
+					{ label: 'ipsum', value: 'ipsum' },
+					{ label: 'dolar', value: 'dolar' },
+				],
+				undefined,
+				// Note: This array is different from the first parameter of `filterOptions`
+				[{ label: 'lorem', value: 'lorem' }]
+			)
+		).toEqual([
+			{ label: 'ipsum', value: 'ipsum' },
+			{ label: 'dolar', value: 'dolar' },
+		]);
+	});
 });
 
 describe('splitLabel', () => {
