@@ -70,7 +70,7 @@ describe('PageAlert', () => {
 	it('can render a different heading level', () => {
 		renderPageAlert({
 			tone: 'info',
-			children: <PageAlertTitle as="h2">Title</PageAlertTitle>,
+			title: <PageAlertTitle as="h2">Title</PageAlertTitle>,
 		});
 		const el = screen.getByText('Title');
 		expect(el).toBeInTheDocument();
