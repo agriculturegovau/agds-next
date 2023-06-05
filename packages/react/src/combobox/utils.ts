@@ -29,5 +29,25 @@ export function filterOptions<Option extends DefaultComboboxOption>(
 
 export function splitLabel(label: string, inputValue: string) {
 	if (!inputValue) return [label];
-	return label.split(new RegExp(`(${inputValue})`, 'gi')).filter(Boolean);
+
+	const iinput = inputValue.toLowerCase();
+	const isource = label.toLowerCase();
+	const results = [];
+
+	let i = 0;
+	while (i < label.length) {
+		const part = label.slice(i);
+		const ipart = isource.slice(i);
+		const x = ipart.indexOf(iinput);
+		if (x === -1) {
+			results.push(part);
+			return results;
+		}
+
+		if (x !== 0) results.push(part.slice(0, x));
+		results.push(part.slice(x, x + iinput.length));
+		i += x + iinput.length;
+	}
+
+	return results;
 }
