@@ -7,7 +7,8 @@ import type { SectionAlertProps } from './SectionAlert';
 afterEach(cleanup);
 
 function renderSectionAlert(props?: Partial<SectionAlertProps>) {
-	return render(<SectionAlert {...props} />);
+	const tone = props?.tone || 'info';
+	return render(<SectionAlert tone={tone} {...props} />);
 }
 
 describe('SectionAlert', () => {
