@@ -12,17 +12,18 @@ const meta: Meta<typeof PageAlert> = {
 			<Text as="p">This is a Page alert component.</Text>
 		</PageAlert>
 	),
-	args: {
-		title: 'Page alert',
-		tone: 'success',
-	},
 };
 
 export default meta;
 
 type Story = StoryObj<typeof PageAlert>;
 
-export const Basic: Story = {};
+export const Basic: Story = {
+	args: {
+		title: 'Page alert',
+		tone: 'success',
+	},
+};
 
 export const WithProse: Story = {
 	render: (args) => (
@@ -47,6 +48,7 @@ export const WithProse: Story = {
 
 export const WithTitleElement: Story = {
 	args: {
+		tone: 'success',
 		title: (
 			<PageAlertTitle as="h2">Descriptive success message (H2)</PageAlertTitle>
 		),
