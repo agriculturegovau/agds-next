@@ -20,15 +20,15 @@ import {
 } from '../core';
 import { FieldContainer, FieldHint, FieldLabel, FieldMessage } from '../field';
 import { visuallyHiddenStyles } from '../a11y';
-import { CalendarRange } from './Calendar';
-import { DateInput } from './DatePickerInput';
 import {
 	getValidDateRange,
 	parseDate,
 	formatDate,
 	constrainDate,
 	transformValuePropToInputValue,
-} from './utils';
+} from '../date-picker/utils';
+import { CalendarRange } from '../date-picker/Calendar';
+import { DateInput } from './../date-picker/DatePickerInput';
 
 export type DateRange = {
 	from: Date | undefined;

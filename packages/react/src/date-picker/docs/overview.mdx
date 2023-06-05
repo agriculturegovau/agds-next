@@ -1,31 +1,11 @@
 ---
 title: Date picker
-description: 'Date picker allows users to select a single date or range of dates. There are 3 types: date select range, simple date input and date select.'
+description: The Date picker component allows users to select a single date via a calendar or text input.
 group: forms
 storybookPath: /story/forms-datepicker-datepicker--basic
 figmaGalleryNodeId: 12444%3A100327
+relatedComponents: ['date-range-picker']
 ---
-
-<DoHeading />
-
-- allow year or date navigation
-- use date format dd/mm/yyyy
-- allow approximate date options
-- use autocomplete where it might help with input—for example, date of birth
-- ensure users can use Tab to select a date
-- Make sure error messages are specific about what input is required. For example, dd/mm/yyyy should always be displayed in hint text.
-
-<DontHeading />
-
-- use international date formats such as USA mm/dd/yyyy
-- use Date Select for historical dates such as birthdates – use Date Input
-- hijack built-in keyboard navigation behaviour.
-
-## Date picker
-
-`DatePicker` is a [controlled component](https://reactjs.org/docs/forms.html#controlled-components) which means consumers of this component need to manage the state of this component by using the `value`, `onChange` and `onInputChange` props.
-
-For an example of using this component in a form built with `react-hook-form` and `yup`, please see the [Single-page form template](/patterns/single-page-form).
 
 ```jsx live
 () => {
@@ -34,16 +14,34 @@ For an example of using this component in a form built with `react-hook-form` an
 };
 ```
 
-### Tracking the input value
+Date picker is a [controlled component](https://reactjs.org/docs/forms.html#controlled-components) which means consumers of this component need to manage the state of this component by using the `value`, `onChange` and `onInputChange` props.
 
-The `DatePicker` component has two methods of input:
+For an example of using this component in a form built with `react-hook-form` and `yup`, please see the [Single-page form template](/patterns/single-page-form).
+
+<DoHeading />
+
+- always display the date format above the text input
+- use Australian date format 'dd/mm/yyyy'
+- allow users to navigate dates via the calendar
+- ensure users can enter dates via the calendar or text input
+- Make sure error messages are specific about what input is required.
+
+<DontHeading />
+
+- hide the date format
+- use international date formats such as USA mm/dd/yyyy
+- hijack built-in keyboard navigation behaviour.
+
+## Tracking the input value
+
+The Date picker component has two methods of input:
 
 1. Typing in a date string (dd/mm/yyyy) via the text input
 2. Selecting a date via the calendar widget
 
 As we do not have any sort of input masking due to accessibility concerns, there is a possibilty for the user to enter an invalid value via the text input. In some scenarios, it can be useful to know what the value of the text input is so the user can be informed of any invalid values.
 
-For example, if the `DatePicker` component was placed inside of a form an optional field. If the user typed in an invalid value via the text input, the `onChange` event would never fire. This may lead the user to believe what they have typed is valid when actually their input will not be saved.
+For example, if the Date picker component was an optional field. If a user inputs an invalid value via the text input, the `onChange` event will never fire. This may lead the user to believe what they have typed is valid when actually their input will not be saved.
 
 To fix this issue, you can use the `onInputChange` prop to keep track of the users input. The `value` prop can also be set to a string, which represents the value of the text input.
 
@@ -74,7 +72,7 @@ To fix this issue, you can use the `onInputChange` prop to keep track of the use
 };
 ```
 
-### Hint
+## Hint
 
 Use the `hint` prop to provide help that’s relevant to the majority of users, like how their information will be used, or where to find it.
 
@@ -96,7 +94,7 @@ Don't include links within hint text. While screen readers will read out the lin
 };
 ```
 
-### Block
+## Block
 
 Use the `block` prop to expand the component to fill the available space.
 
@@ -109,7 +107,7 @@ Use the `block` prop to expand the component to fill the available space.
 };
 ```
 
-### Invalid
+## Invalid
 
 Use the `invalid` prop to indicate if the user input is invalid (does not validate according to the elements settings).
 
@@ -128,7 +126,7 @@ Use the `invalid` prop to indicate if the user input is invalid (does not valida
 };
 ```
 
-### Disabled
+## Disabled
 
 Disabled input elements are unusable and can not be clicked. This prevents a user from interacting with the input element until another action is complete.
 
@@ -146,7 +144,7 @@ Disabled input elements are unusable and can not be clicked. This prevents a use
 };
 ```
 
-### Minimum and maximum dates
+## Minimum and maximum dates
 
 The `minDate` property can be used to disable any days before a specific date.
 
@@ -174,7 +172,7 @@ If a valid date is entered using the text input but it falls outside the constra
 };
 ```
 
-### Custom year range
+## Custom year range
 
 The `yearRange` prop can be used to change the range of options to display in calendar year select.
 
@@ -189,225 +187,6 @@ The `yearRange` prop can be used to change the range of options to display in ca
 			yearRange={yearRange}
 			value={value}
 			onChange={setValue}
-		/>
-	);
-};
-```
-
-## Date range picker
-
-`DateRangePicker` is a [controlled component](https://reactjs.org/docs/forms.html#controlled-components) which means consumers of this component need to manage the state of this component by using the `value`, `onChange`, `onFromInputChange` and `onToInputChange` props.
-
-For an example of using this component in a form built with `react-hook-form` and `yup`, please see the [Single-page form template](/templates/single-page-form).
-
-```jsx live
-() => {
-	const [value, setValue] = React.useState({ from: undefined, to: undefined });
-	return (
-		<DateRangePicker
-			value={value}
-			onChange={setValue}
-			onFromInputChange={(from) => setValue({ ...value, from })}
-			onToInputChange={(to) => setValue({ ...value, to })}
-		/>
-	);
-};
-```
-
-### Tracking the input value
-
-The `DateRangePicker` component has two methods of input:
-
-1. Typing in a date string (dd/mm/yyyy) via the text inputs
-2. Selecting a date via the calendar widgets
-
-As we do not have any sort of input masking due to accessibility concerns, there is a possibilty for the user to enter invalids value via the text inputs.
-
-You can use the `onFromInputChange` and `onToInputChange` props to keep track of the users input. The `value.from` and `value.to` props can also be set to a string, which represents the value of the text inputs.
-
-```jsx live
-() => {
-	// Set the value to a value that the user might think is valid
-	const [value, setValue] = React.useState({
-		from: '30/1o/2020',
-		to: '31/1o/2020',
-	});
-
-	// This logic is for documentation purposes only. This should be done with `yup` or `zod`.
-	// See Single-page form template
-	const isInvalid = React.useCallback((value) => {
-		if (typeof value === 'undefined' || value == '') return false;
-		if (value instanceof Date && !isNaN(value.getTime())) return false;
-		return true;
-	}, []);
-
-	const fromInvalid = isInvalid(value.from);
-	const toInvalid = isInvalid(value.from);
-
-	return (
-		<DateRangePicker
-			value={value}
-			onChange={setValue}
-			onFromInputChange={(from) => setValue({ ...value, from })}
-			onToInputChange={(to) => setValue({ ...value, to })}
-			fromInvalid={fromInvalid}
-			toInvalid={toInvalid}
-			message={fromInvalid || toInvalid ? 'Enter a valid date' : undefined}
-		/>
-	);
-};
-```
-
-### Legend
-
-Use the `legend` prop to describe the purpose of the group of fields.
-
-```jsx live
-() => {
-	const [value, setValue] = React.useState({ from: undefined, to: undefined });
-	return (
-		<DateRangePicker
-			value={value}
-			onChange={setValue}
-			onFromInputChange={(from) => setValue({ ...value, from })}
-			onToInputChange={(to) => setValue({ ...value, to })}
-			legend="Date period"
-		/>
-	);
-};
-```
-
-### Hint
-
-Use the `hint` prop to provide help that’s relevant to the majority of users, like how their information will be used, or where to find it.
-
-Don't use long paragraphs and lists in hint text. Screen readers read out the entire text when users interact with the form element. This could frustrate users if the text is long.
-
-Don't include links within hint text. While screen readers will read out the link text when describing the field, they will not tell users that the text is a link.
-
-```jsx live
-() => {
-	const [value, setValue] = React.useState({ from: undefined, to: undefined });
-	return (
-		<DateRangePicker
-			value={value}
-			onChange={setValue}
-			onFromInputChange={(from) => setValue({ ...value, from })}
-			onToInputChange={(to) => setValue({ ...value, to })}
-			legend="Date period"
-			hint="Example hint text"
-		/>
-	);
-};
-```
-
-### Invalid
-
-Use the `fromInvalid` and `toInvalid` props to indicate if the user input is invalid (does not validate according to the elements settings).
-
-```jsx live
-() => {
-	const [value, setValue] = React.useState({ from: undefined, to: undefined });
-	return (
-		<FormStack>
-			<DateRangePicker
-				value={value}
-				onChange={setValue}
-				onFromInputChange={(from) => setValue({ ...value, from })}
-				onToInputChange={(to) => setValue({ ...value, to })}
-				fromInvalid={true}
-				toInvalid={true}
-				legend="Date period"
-				message="Enter a valid date"
-			/>
-			<DateRangePicker
-				value={value}
-				onChange={setValue}
-				onFromInputChange={(from) => setValue({ ...value, from })}
-				onToInputChange={(to) => setValue({ ...value, to })}
-				fromInvalid={true}
-				toInvalid={false}
-				legend="Date period"
-				message="Enter a valid date"
-			/>
-			<DateRangePicker
-				value={value}
-				onChange={setValue}
-				onFromInputChange={(from) => setValue({ ...value, from })}
-				onToInputChange={(to) => setValue({ ...value, to })}
-				fromInvalid={false}
-				toInvalid={true}
-				legend="Date period"
-				message="Enter a valid date"
-			/>
-		</FormStack>
-	);
-};
-```
-
-### Custom labels
-
-Use the `fromLabel` and `toLabel` props to change the field labels.
-
-```jsx live
-() => {
-	const [value, setValue] = React.useState({ from: undefined, to: undefined });
-	return (
-		<DateRangePicker
-			value={value}
-			onChange={setValue}
-			onFromInputChange={(from) => setValue({ ...value, from })}
-			onToInputChange={(to) => setValue({ ...value, to })}
-			fromLabel="From"
-			toLabel="To"
-		/>
-	);
-};
-```
-
-### Disabled
-
-Disabled input elements are unusable and can not be clicked. This prevents a user from interacting with the input element until another action is complete.
-
-```jsx live
-() => {
-	const [value, setValue] = React.useState({ from: undefined, to: undefined });
-	return (
-		<DateRangePicker
-			value={value}
-			onChange={setValue}
-			onFromInputChange={(from) => setValue({ ...value, from })}
-			onToInputChange={(to) => setValue({ ...value, to })}
-			disabled
-		/>
-	);
-};
-```
-
-### Minimum and maximum dates
-
-The `minDate` property can be used to disable any days before a specific date.
-
-The `maxDate` property can be used to disable any days after a specific date.
-
-If a valid date is entered using the text input but it falls outside the constrained range, the closest valid date will be used.
-
-```jsx live
-() => {
-	const [value, setValue] = React.useState({ from: undefined, to: undefined });
-
-	const today = new Date();
-	const lastWeek = new Date(today.getTime() - 7 * 24 * 60 * 60 * 1000);
-	const nextWeek = new Date(today.getTime() + 7 * 24 * 60 * 60 * 1000);
-
-	return (
-		<DateRangePicker
-			value={value}
-			onChange={setValue}
-			onFromInputChange={(from) => setValue({ ...value, from })}
-			onToInputChange={(to) => setValue({ ...value, to })}
-			minDate={lastWeek}
-			maxDate={nextWeek}
 		/>
 	);
 };
