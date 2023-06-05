@@ -37,10 +37,16 @@ export function MultiPageFormSuccess() {
 							pretext="Title of multi-page form"
 							title="Multi-page form title (H1)"
 						/>
-						<PageAlert ref={successPageAlertRef} tabIndex={-1} tone="success">
-							<PageAlertTitle as="h2">
-								Descriptive success message (H2)
-							</PageAlertTitle>
+						<PageAlert
+							ref={successPageAlertRef}
+							tabIndex={-1}
+							tone="success"
+							title={
+								<PageAlertTitle as="h2">
+									Descriptive success message (H2)
+								</PageAlertTitle>
+							}
+						>
 							<Prose>
 								<p>Supporting paragraph for the success message</p>
 								<p>
