@@ -23,7 +23,12 @@ export function filterOptions<Option extends DefaultComboboxOption>(
 			return hasMatch;
 		}
 
-		return hasMatch && !selectedItems.includes(option);
+		return (
+			hasMatch &&
+			!selectedItems?.some(
+				(item) => item.label === option.label && item.value === option.value
+			)
+		);
 	});
 }
 
