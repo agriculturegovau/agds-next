@@ -1,14 +1,11 @@
 import { Stack } from '@ag.ds-next/react/box';
-import { Button, ButtonLink } from '@ag.ds-next/react/button';
 import { ContentBleed, PageContent } from '@ag.ds-next/react/content';
-import { PlusIcon } from '@ag.ds-next/react/icon';
 import { PaginationButtons } from '@ag.ds-next/react/pagination';
 import { Prose } from '@ag.ds-next/react/prose';
 import { Column, Columns } from '@ag.ds-next/react/columns';
 import { FormStack } from '@ag.ds-next/react/form-stack';
 import { DateRangePicker } from '@ag.ds-next/react/date-picker';
 import { SkipLinks } from '@ag.ds-next/react/skip-link';
-import { ActiveFilters } from './components/ActiveFilters';
 import { SortBySelect } from './components/SortBySelect';
 import { FilterSearchInput } from './components/FilterSearchInput';
 import { FilterStatusSelect } from './components/FilterStatusSelect';
@@ -136,17 +133,8 @@ export const ListFilteringLarge = ({
 						columnStart={{ lg: 5 }}
 					>
 						<Stack gap={3}>
-							<Stack gap={1}>
-								<SortBySelect sort={sort} setSort={setSort} />
-								<ActiveFilters
-									filters={filters}
-									removeFilter={removeFilter}
-									resetFilters={resetFilters}
-								/>
-							</Stack>
-
+							<SortBySelect sort={sort} setSort={setSort} />
 							<DataList data={data} loading={loading} />
-
 							{data.length ? (
 								<Stack>
 									<PaginationButtons
