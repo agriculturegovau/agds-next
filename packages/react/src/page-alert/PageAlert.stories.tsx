@@ -35,10 +35,6 @@ export const WithNoTitle: Story = {
 };
 
 export const WithProse: Story = {
-	args: {
-		title: 'Page alert',
-		tone: 'error',
-	},
 	render: (args) => (
 		<PageAlert {...args}>
 			<Prose>
@@ -53,6 +49,19 @@ export const WithProse: Story = {
 			</Prose>
 		</PageAlert>
 	),
+	args: {
+		title: 'Page alert',
+		tone: 'error',
+	},
+};
+
+export const WithTitleElement: Story = {
+	args: {
+		tone: 'success',
+		title: (
+			<PageAlertTitle as="h2">Descriptive success message (H2)</PageAlertTitle>
+		),
+	},
 };
 
 export const WithDismiss: Story = {
