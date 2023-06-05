@@ -30,23 +30,23 @@ export function filterOptions<Option extends DefaultComboboxOption>(
 export function splitLabel(label: string, inputValue: string) {
 	if (!inputValue) return [label];
 
-	const iinput = inputValue.toLowerCase();
-	const isource = label.toLowerCase();
+	const iinputValue = inputValue.toLowerCase();
+	const ilabel = label.toLowerCase();
 	const results = [];
 
 	let i = 0;
 	while (i < label.length) {
 		const part = label.slice(i);
-		const ipart = isource.slice(i);
-		const x = ipart.indexOf(iinput);
+		const ipart = ilabel.slice(i);
+		const x = ipart.indexOf(iinputValue);
 		if (x === -1) {
 			results.push(part);
 			return results;
 		}
 
 		if (x !== 0) results.push(part.slice(0, x));
-		results.push(part.slice(x, x + iinput.length));
-		i += x + iinput.length;
+		results.push(part.slice(x, x + iinputValue.length));
+		i += x + iinputValue.length;
 	}
 
 	return results;
