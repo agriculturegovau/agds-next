@@ -1,6 +1,49 @@
 ---
 title: Divider
-description: Description of Divider
+description: A horizontal rule that seperates blocks of content.
 group: Layout
 storybookPath: /story/Layout-Divider--basic
 ---
+
+Divider renders a horizontal rule (`<hr>`) that seperates blocks of content. This is commonly used between fieldsets in forms, or to break up text content.
+
+```jsx live
+<Stack gap={3}>
+	<Fieldset
+		legend={<H2>Business details</H2>}
+		hint="Supporting information for provide details subheading - sm/default"
+	>
+		<FormStack>
+			<TextInput
+				label="Australian Business Number (ABN)"
+				id="abn"
+				required
+				inputMode="numeric"
+				pattern="[0-9]*"
+			/>
+			<TextInput
+				label="Business name"
+				id="businessName"
+				required
+				maxWidth="xl"
+			/>
+		</FormStack>
+	</Fieldset>
+	<Divider />
+	<Fieldset
+		legend={<H2>Provide entity details</H2>}
+		hint="Supporting information for provide details subheading - sm/default"
+	>
+		<FormStack>
+			<TextInput label="Entity name" id="entityName" required />
+			<TextInput
+				label="Entity number"
+				id="entityNumber"
+				required
+				inputMode="numeric"
+				pattern="[0-9]*"
+			/>
+		</FormStack>
+	</Fieldset>
+</Stack>
+```
