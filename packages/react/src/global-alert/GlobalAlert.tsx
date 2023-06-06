@@ -19,7 +19,6 @@ export function GlobalAlert({ children, onDismiss, title }: GlobalAlertProps) {
 			aria-label={title}
 			css={{
 				backgroundColor: boxPalette.systemWarningMuted,
-				position: 'relative',
 			}}
 		>
 			<Content>
@@ -29,6 +28,9 @@ export function GlobalAlert({ children, onDismiss, title }: GlobalAlertProps) {
 					justifyContent="space-between"
 					gap={[1, 1.5]}
 					paddingY={1}
+					css={{
+						position: 'relative',
+					}}
 				>
 					<Flex flexDirection={{ xs: 'column', sm: 'row' }} gap={[0.5, 1]}>
 						<Box
@@ -53,22 +55,33 @@ export function GlobalAlert({ children, onDismiss, title }: GlobalAlertProps) {
 						</Stack>
 					</Flex>
 					{onDismiss ? (
-						<div
+						<Button
+							onClick={onDismiss}
+							iconAfter={CloseIcon}
+							variant="text"
+							aria-label="Close"
 							css={{
 								position: 'absolute',
 								top: '1rem',
 								right: '1rem',
+								flexShrink: 0,
+								// Reset the position on larger screens
 								[tokens.mediaQuery.min.sm]: {
 									position: 'relative',
 									top: 'unset',
 									right: 'unset',
 								},
+								// Hide the button text on small screens
+								'& > span:first-of-type': {
+									display: 'none',
+									[tokens.mediaQuery.min.sm]: {
+										display: 'block',
+									},
+								},
 							}}
 						>
-							<Button onClick={onDismiss} iconAfter={CloseIcon} variant="text">
-								Dismiss
-							</Button>
-						</div>
+							Dismiss
+						</Button>
 					) : null}
 				</Flex>
 			</Content>
