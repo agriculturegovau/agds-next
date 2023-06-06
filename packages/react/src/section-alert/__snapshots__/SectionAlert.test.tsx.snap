@@ -1,0 +1,44 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SectionAlert renders correctly 1`] = `
+<div>
+  <div
+    class="css-1otq6kb-boxStyles-SectionAlert"
+  >
+    <div
+      class="css-1xkbxzi-boxStyles"
+    >
+      <div
+        class="css-iq0g41-boxStyles-SectionAlert"
+      />
+      <div
+        class="css-1dd24pc-boxStyles-SectionAlert"
+      >
+        <svg
+          aria-hidden="false"
+          aria-label="Information"
+          class="css-9s3cfn-Icon"
+          clip-rule="evenodd"
+          focusable="true"
+          height="24"
+          role="img"
+          viewBox="0 0 24 24"
+          width="24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            clip-rule="evenodd"
+            d="M12 1C5.9 1 1 5.9 1 12C1 18.1 5.9 23 12 23C18.1 23 23 18.1 23 12C23 5.9 18.1 1 12 1ZM12 18C11.4477 18 11 17.5523 11 17V11C11 10.4477 11.4477 10 12 10C12.5523 10 13 10.4477 13 11V17C13 17.5523 12.5523 18 12 18ZM12 8C12.5523 8 13 7.55228 13 7C13 6.44772 12.5523 6 12 6C11.4477 6 11 6.44772 11 7C11 7.55228 11.4477 8 12 8Z"
+            fill="currentColor"
+            fill-rule="evenodd"
+            stroke="none"
+          />
+        </svg>
+      </div>
+      <div
+        class="css-168v5bw-boxStyles"
+      />
+    </div>
+  </div>
+</div>
+`;

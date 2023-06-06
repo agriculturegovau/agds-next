@@ -4,6 +4,9 @@ import { SectionAlert } from './SectionAlert';
 const meta: Meta<typeof SectionAlert> = {
 	title: 'Content/SectionAlert',
 	component: SectionAlert,
+	args: {
+		onDismiss: undefined,
+	},
 };
 
 export default meta;
