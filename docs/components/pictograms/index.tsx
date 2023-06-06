@@ -11,7 +11,7 @@ import card from './card.svg';
 import columns from './columns.svg';
 import components from './components.svg';
 import content from './content.svg';
-import controlInput from './control-input.svg';
+import controlGroup from './control-group.svg';
 import core from './core.svg';
 import datePicker from './date-picker.svg';
 import details from './details.svg';
@@ -69,7 +69,7 @@ export const pictograms = {
 	combobox: select,
 	components,
 	content,
-	'control-input': controlInput,
+	'control-group': controlGroup,
 	core,
 	'direction-link': directionLink,
 	'date-picker': datePicker,
