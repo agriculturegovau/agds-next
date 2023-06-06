@@ -136,3 +136,39 @@ export const ThirdParty: Story = {
 		),
 	},
 };
+
+export const ScheduledOutage: Story = {
+	name: 'Scheduled outage (503)',
+	args: {
+		title: "There's a problem with the Export Service",
+		errorCode: '503',
+		children: (
+			<Prose>
+				<p>
+					Relationship Autorisation Manager (RAM) is down for system maintenance
+					from 11:30 pm, 15 October to 7pm, 16 October.
+				</p>
+
+				<p>
+					During this time you can&apos;t create an account or sign into the
+					Export Service right now. Please try again later.
+				</p>
+
+				<p>If you need help:</p>
+
+				<ul>
+					<li>
+						Call <a href="tel:1800 571 125">1800 571 125</a>, Monday to Friday,
+						9 am to 5 pm AEST
+					</li>
+					<li>
+						Email{' '}
+						<a href="exportservive@agriculture.gov.au">
+							exportservive@agriculture.gov.au
+						</a>
+					</li>
+				</ul>
+			</Prose>
+		),
+	},
+};
