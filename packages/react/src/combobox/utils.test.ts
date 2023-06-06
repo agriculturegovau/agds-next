@@ -57,4 +57,22 @@ describe('splitLabel', () => {
 		expect(splitLabel(option, 'New ')).toEqual(['New ', 'Zealand']);
 		expect(splitLabel(option, 'New Z')).toEqual(['New Z', 'ealand']);
 	});
+
+	test('it should split a label with special characters correctly', () => {
+		const option = 'Hello / (World) \\ [bracket]';
+		expect(splitLabel(option, '')).toEqual(['Hello / (World) \\ [bracket]']);
+		expect(splitLabel(option, 'Hello')).toEqual([
+			'Hello',
+			' / (World) \\ [bracket]',
+		]);
+		expect(splitLabel(option, 'Hello / (W')).toEqual([
+			'Hello / (W',
+			'orld) \\ [bracket]',
+		]);
+		expect(splitLabel(option, '/')).toEqual([
+			'Hello ',
+			'/',
+			' (World) \\ [bracket]',
+		]);
+	});
 });
