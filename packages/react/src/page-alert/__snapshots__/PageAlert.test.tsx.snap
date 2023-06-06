@@ -30,7 +30,7 @@ exports[`PageAlert can render a dismiss button 1`] = `
       </svg>
     </div>
     <div
-      class="css-1oqdhu0-boxStyles-PageAlert"
+      class="css-ic9f31-boxStyles-PageAlert"
     >
       <div
         class="css-g6k1ma-boxStyles"
@@ -47,8 +47,8 @@ exports[`PageAlert can render a dismiss button 1`] = `
         </p>
       </div>
       <button
-        aria-label="Dismiss"
-        class="css-ucbi3g-BaseButton-PageAlertDismissButton"
+        aria-label="Close"
+        class="css-ajxfbb-BaseButton-PageAlertCloseButton"
         type="button"
       >
         <span>
@@ -115,7 +115,7 @@ exports[`PageAlert tone: error renders correctly 1`] = `
       </svg>
     </div>
     <div
-      class="css-1oqdhu0-boxStyles-PageAlert"
+      class="css-ic9f31-boxStyles-PageAlert"
     >
       <div
         class="css-g6k1ma-boxStyles"
@@ -174,7 +174,7 @@ exports[`PageAlert tone: info renders correctly 1`] = `
       </svg>
     </div>
     <div
-      class="css-1oqdhu0-boxStyles-PageAlert"
+      class="css-ic9f31-boxStyles-PageAlert"
     >
       <div
         class="css-g6k1ma-boxStyles"
@@ -225,7 +225,7 @@ exports[`PageAlert tone: success renders correctly 1`] = `
       </svg>
     </div>
     <div
-      class="css-1oqdhu0-boxStyles-PageAlert"
+      class="css-ic9f31-boxStyles-PageAlert"
     >
       <div
         class="css-g6k1ma-boxStyles"
@@ -276,7 +276,7 @@ exports[`PageAlert tone: warning renders correctly 1`] = `
       </svg>
     </div>
     <div
-      class="css-1oqdhu0-boxStyles-PageAlert"
+      class="css-ic9f31-boxStyles-PageAlert"
     >
       <div
         class="css-g6k1ma-boxStyles"
