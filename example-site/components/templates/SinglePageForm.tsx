@@ -11,7 +11,7 @@ import * as yup from 'yup';
 import { Button, ButtonGroup } from '@ag.ds-next/react/button';
 import { Checkbox } from '@ag.ds-next/react/control-input';
 import { Prose } from '@ag.ds-next/react/prose';
-import { Stack } from '@ag.ds-next/react/box';
+import { Stack } from '@ag.ds-next/react/stack';
 import { Fieldset } from '@ag.ds-next/react/fieldset';
 import { FormStack } from '@ag.ds-next/react/form-stack';
 import { Select } from '@ag.ds-next/react/select';
@@ -25,7 +25,7 @@ import { Breadcrumbs } from '@ag.ds-next/react/breadcrumbs';
 import { DatePicker } from '@ag.ds-next/react/date-picker';
 import { DateRangePicker } from '@ag.ds-next/react/date-range-picker';
 import { Text } from '@ag.ds-next/react/text';
-import { FormDivider } from '../FormDivider';
+import { Divider } from '@ag.ds-next/react/divider';
 import { PageTitle } from '../PageTitle';
 
 // `yup.date()` can sometimes give false positives with certain string values
@@ -228,7 +228,7 @@ const SinglePageForm = () => {
 						/>
 					</FormStack>
 				</Fieldset>
-				<FormDivider />
+				<Divider />
 				<Fieldset
 					legend={<H2>Provide entity details (H2)</H2>}
 					hint="Supporting information for provide details subheading - sm/default"
@@ -392,7 +392,7 @@ const SinglePageForm = () => {
 						)}
 					</FormStack>
 				</Fieldset>
-				<FormDivider />
+				<Divider />
 				<ButtonGroup>
 					<Button type="submit" loading={isSubmitting}>
 						Submit form
