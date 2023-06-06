@@ -11,7 +11,9 @@ import {
 	SearchBoxButton,
 	SearchBoxInput,
 } from '@ag.ds-next/react/search-box';
-import { Flex, Stack } from '@ag.ds-next/react/box';
+import { Divider } from '@ag.ds-next/react/divider';
+import { Flex } from '@ag.ds-next/react/flex';
+import { Stack } from '@ag.ds-next/react/stack';
 import { Breadcrumbs } from '@ag.ds-next/react/breadcrumbs';
 import { Button, ButtonGroup } from '@ag.ds-next/react/button';
 import { Callout } from '@ag.ds-next/react/callout';
@@ -400,6 +402,8 @@ export const KitchenSink = ({
 									</Button>
 								</ButtonGroup>
 							</FormStack>
+
+							<Divider />
 
 							<DirectionLink direction="left" href="#">
 								Back
