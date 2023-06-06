@@ -15,7 +15,7 @@ import {
 	WarningFilledIcon,
 } from '../icon';
 import { PageAlertTitle } from './PageAlertTitle';
-import { PageAlertDismissButton } from './PageAlertDismissButton';
+import { PageAlertCloseButton } from './PageAlertCloseButton';
 
 export type PageAlertTone = 'success' | 'error' | 'warning' | 'info';
 
@@ -70,9 +70,9 @@ export const PageAlert = forwardRef<HTMLDivElement, PageAlertProps>(
 					css={{
 						// When there is a dismiss button and no title
 						// We need to add extra padding to avoid overlapping
-						marginTop: onDismiss && !title ? '3rem' : undefined,
+						marginRight: onDismiss && !title ? '3rem' : undefined,
 						[tokens.mediaQuery.min.sm]: {
-							marginTop: '0',
+							marginRight: '0',
 						},
 					}}
 				>
@@ -93,7 +93,7 @@ export const PageAlert = forwardRef<HTMLDivElement, PageAlertProps>(
 						) : null}
 						{children}
 					</Flex>
-					{onDismiss ? <PageAlertDismissButton onClick={onDismiss} /> : null}
+					{onDismiss ? <PageAlertCloseButton onClick={onDismiss} /> : null}
 				</Flex>
 			</Flex>
 		);

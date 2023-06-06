@@ -115,7 +115,7 @@ export const WithDismissAndChildTitle: Story = {
 	),
 	args: {
 		tone: 'success',
-		title: <PageAlertTitle as="h5">Hello nath</PageAlertTitle>,
+		title: <PageAlertTitle as="h2">Page Alert title as H2</PageAlertTitle>,
 		onDismiss: () => console.log('dismissed'),
 	},
 };

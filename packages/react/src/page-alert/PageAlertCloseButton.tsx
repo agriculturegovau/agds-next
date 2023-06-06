@@ -3,19 +3,19 @@ import { Button } from '../button';
 import { mq, tokens } from '../core';
 import { CloseIcon } from '../icon';
 
-type PageAlertDismissButtonProps = {
+type PageAlertCloseButtonProps = {
 	onClick?: MouseEventHandler<HTMLButtonElement>;
 };
 
-export const PageAlertDismissButton = ({
+export const PageAlertCloseButton = ({
 	onClick,
-}: PageAlertDismissButtonProps) => {
+}: PageAlertCloseButtonProps) => {
 	return (
 		<Button
 			onClick={onClick}
 			iconAfter={CloseIcon}
 			variant="text"
-			aria-label="Dismiss"
+			aria-label="Close"
 			css={mq({
 				position: 'absolute',
 				top: '1.5rem',
