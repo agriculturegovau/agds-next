@@ -35,6 +35,38 @@ export const NotFound: Story = {
 	),
 };
 
+export const Maintenance: Story = {
+	name: 'Under maintenance',
+	args: {
+		title: "We're updating the Export Service",
+		errorCode: undefined,
+		children: (
+			<Fragment>
+				<Text as="p" fontSize="md">
+					While we&apos;re down for planned maintenance, you won&apos;t be able
+					to access our services.
+				</Text>
+
+				<Text>Please check back soon.</Text>
+
+				<Callout title="Need help?">
+					<Prose>
+						<p>
+							Call <strong>000 000 000</strong> (9am to 5pm AEST Monday to
+							Friday)
+							<br />
+							Email{' '}
+							<a href="mailto:emailaccount@agriculture.gov.au">
+								emailaccount@agriculture.gov.au
+							</a>
+						</p>
+					</Prose>
+				</Callout>
+			</Fragment>
+		),
+	},
+};
+
 export const FiveHundredError: Story = {
 	name: 'Server error (500)',
 	args: {
@@ -73,66 +105,34 @@ export const FiveHundredError: Story = {
 	},
 };
 
-export const Maintenance: Story = {
-	name: 'Under maintenance',
-	args: {
-		title: "We're updating the Export Service",
-		errorCode: undefined,
-		children: (
-			<Fragment>
-				<Text as="p" fontSize="md">
-					While we&apos;re down for planned maintenance, you won&apos;t be able
-					to access our services.
-				</Text>
-
-				<Text>Please check back soon.</Text>
-
-				<Callout title="Need help?">
-					<Prose>
-						<p>
-							Call <strong>000 000 000</strong> (9am to 5pm AEST Monday to
-							Friday)
-							<br />
-							Email{' '}
-							<a href="mailto:emailaccount@agriculture.gov.au">
-								emailaccount@agriculture.gov.au
-							</a>
-						</p>
-					</Prose>
-				</Callout>
-			</Fragment>
-		),
-	},
-};
-
 export const ThirdParty: Story = {
 	name: 'Third party outage (503)',
 	args: {
 		title: "There's a problem with the Export Service",
 		errorCode: '503',
 		children: (
-			<Fragment>
-				<Text as="p">
+			<Prose>
+				<p>
 					Digital Identity is currently experiencing an outage. You can&apos;t
-					create an account or sign into the Export Service right now.
-				</Text>
+					create an account or sign into the Export Service right now. Please
+					try again later.
+				</p>
 
-				<Text as="p">Please check back soon.</Text>
+				<p>If you need help:</p>
 
-				<Callout title="Need help?">
-					<Prose>
-						<p>
-							Call <strong>000 000 000</strong> (9am to 5pm AEST Monday to
-							Friday)
-							<br />
-							Email{' '}
-							<a href="mailto:emailaccount@agriculture.gov.au">
-								emailaccount@agriculture.gov.au
-							</a>
-						</p>
-					</Prose>
-				</Callout>
-			</Fragment>
+				<ul>
+					<li>
+						Call <a href="tel:1800 571 125">1800 571 125</a>, Monday to Friday,
+						9 am to 5 pm AEST
+					</li>
+					<li>
+						Email{' '}
+						<a href="exportservive@agriculture.gov.au">
+							exportservive@agriculture.gov.au
+						</a>
+					</li>
+				</ul>
+			</Prose>
 		),
 	},
 };
