@@ -4,17 +4,16 @@ import {
 	MouseEventHandler,
 	PropsWithChildren,
 } from 'react';
-import { Flex } from '@ag.ds-next/react/box';
+import { Box, Flex } from '@ag.ds-next/react/box';
 import { Text } from '@ag.ds-next/react/text';
 import { boxPalette, tokens } from '@ag.ds-next/react/core';
-import { Button } from '@ag.ds-next/react/button';
 import {
 	AlertFilledIcon,
-	CloseIcon,
 	InfoFilledIcon,
 	SuccessFilledIcon,
 	WarningFilledIcon,
 } from '@ag.ds-next/react/icon';
+import { SectionAlertDismissButton } from './SectionAlertDismissButton';
 
 type SectionAlertTone = keyof typeof sectionAlertToneMap;
 
@@ -30,26 +29,6 @@ export type SectionAlertProps = PropsWithChildren<{
 	/** The title of the alert. */
 	title?: string;
 }>;
-
-const SectionAlertDismissButton = forwardRef<
-	HTMLButtonElement,
-	{ onDismiss: MouseEventHandler<HTMLButtonElement> }
->(function SectionAlertDismissButton({ onDismiss, ...props }, ref) {
-	return (
-		<Button
-			onClick={onDismiss}
-			iconAfter={CloseIcon}
-			variant="text"
-			aria-label="Dismiss"
-			ref={ref}
-			{...props}
-		>
-			<Text display={{ xs: 'none', sm: 'block' }} color="action">
-				Dismiss
-			</Text>
-		</Button>
-	);
-});
 
 export const SectionAlert = forwardRef<HTMLDivElement, SectionAlertProps>(
 	function SectionAlert(
@@ -74,7 +53,7 @@ export const SectionAlert = forwardRef<HTMLDivElement, SectionAlertProps>(
 				{...props}
 			>
 				<Flex gap={0.5} alignItems="center">
-					<Flex
+					<Box
 						css={{
 							borderTopLeftRadius: tokens.borderRadius,
 							borderBottomLeftRadius: tokens.borderRadius,
@@ -97,7 +76,7 @@ export const SectionAlert = forwardRef<HTMLDivElement, SectionAlertProps>(
 						{children}
 					</Flex>
 				</Flex>
-				{onDismiss ? <SectionAlertDismissButton onDismiss={onDismiss} /> : null}
+				{onDismiss ? <SectionAlertDismissButton onClick={onDismiss} /> : null}
 			</Flex>
 		);
 	}
