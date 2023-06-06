@@ -101,6 +101,7 @@ export const pictograms = {
 	sideNav,
 	'search-box': searchBox,
 	'search-input': searchBox,
+	'section-alert': pageAlert,
 	select,
 	'side-nav': sideNav,
 	skeleton,

@@ -63,13 +63,7 @@ export const SectionAlert = forwardRef<HTMLDivElement, SectionAlertProps>(
 						}}
 					/>
 
-					<Flex
-						css={{
-							color: fg,
-						}}
-					>
-						{icon}
-					</Flex>
+					<Flex css={{ color: fg }}>{icon}</Flex>
 
 					<Flex paddingY={1} gap={0.25} alignItems="center">
 						{title && <Text fontWeight="bold">{title}</Text>}
