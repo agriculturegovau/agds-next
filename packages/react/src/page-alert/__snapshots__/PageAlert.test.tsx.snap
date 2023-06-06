@@ -1,5 +1,90 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`PageAlert can render a close button 1`] = `
+<div>
+  <div
+    class="css-mgpque-boxStyles-PageAlert"
+  >
+    <div
+      class="css-11095yd-boxStyles-PageAlert"
+    >
+      <svg
+        aria-hidden="false"
+        aria-label="Information"
+        class="css-9s3cfn-Icon"
+        clip-rule="evenodd"
+        focusable="true"
+        height="24"
+        role="img"
+        viewBox="0 0 24 24"
+        width="24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          clip-rule="evenodd"
+          d="M12 1C5.9 1 1 5.9 1 12C1 18.1 5.9 23 12 23C18.1 23 23 18.1 23 12C23 5.9 18.1 1 12 1ZM12 18C11.4477 18 11 17.5523 11 17V11C11 10.4477 11.4477 10 12 10C12.5523 10 13 10.4477 13 11V17C13 17.5523 12.5523 18 12 18ZM12 8C12.5523 8 13 7.55228 13 7C13 6.44772 12.5523 6 12 6C11.4477 6 11 6.44772 11 7C11 7.55228 11.4477 8 12 8Z"
+          fill="currentColor"
+          fill-rule="evenodd"
+          stroke="none"
+        />
+      </svg>
+    </div>
+    <div
+      class="css-ic9f31-boxStyles-PageAlert"
+    >
+      <div
+        class="css-g6k1ma-boxStyles"
+      >
+        <h3
+          class="css-1a10dg0-boxStyles-Text-PageAlertTitle"
+        >
+          PageAlert with close button
+        </h3>
+        <p
+          class="css-6j1v6l-boxStyles-Text"
+        >
+          This is a Page alert component.
+        </p>
+      </div>
+      <button
+        aria-label="Close"
+        class="css-ajxfbb-BaseButton-PageAlertCloseButton"
+        type="button"
+      >
+        <span>
+          <span
+            class="css-oobk4c-Button"
+          >
+            Dismiss
+          </span>
+          <span
+            aria-live="assertive"
+          />
+        </span>
+        <svg
+          aria-hidden="true"
+          class="css-9s3cfn-Icon"
+          clip-rule="evenodd"
+          focusable="false"
+          height="24"
+          role="img"
+          viewBox="0 0 24 24"
+          width="24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M5 19L19 5"
+          />
+          <path
+            d="M19 19L5 5"
+          />
+        </svg>
+      </button>
+    </div>
+  </div>
+</div>
+`;
+
 exports[`PageAlert can render a dismiss button 1`] = `
 <div>
   <div
