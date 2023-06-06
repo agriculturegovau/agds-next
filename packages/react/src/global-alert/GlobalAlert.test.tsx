@@ -47,11 +47,14 @@ describe('GlobalAlert', () => {
 
 	it('responds to an onDismiss event', async () => {
 		const onDismiss = jest.fn();
-		renderGlobalAlert({
+		const { container } = renderGlobalAlert({
 			title: 'Alert title',
 			children: <Text as="p">Alert description.</Text>,
 			onDismiss,
 		});
+
+		expect(container).toMatchSnapshot();
+
 		await userEvent.click(screen.getByText('Dismiss'));
 		expect(onDismiss).toHaveBeenCalledTimes(1);
 	});
