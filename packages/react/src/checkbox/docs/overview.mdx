@@ -2,7 +2,7 @@
 title: Checkbox
 description: Checkboxes allow users to select one or more options from a list.
 group: Forms
-storybookPath: /story/forms-controlgroup--checkbox-group
+storybookPath: /story/forms-checkbox--basic
 figmaGalleryNodeId: 12926%3A104981
 relatedComponents: ['control-group', 'radio', 'switch']
 ---
@@ -13,20 +13,21 @@ relatedComponents: ['control-group', 'radio', 'switch']
 
 <DoHeading />
 
-- use to help users select one or more items
-- use for a concise list of options `(<10)`
-- ensure users can select one item at a time
-- use vertical lists.
+- use to help users to select one or more options
+- use for a short list of options
+- use the [Control group component](/components/control-group) to group multiple related checkboxes
+- ensure users can select multiple related checkboxes at a time
+- use a vertical list of options when grouping multiple related checkboxes
 
 <DontHeading />
 
-- use when only one item can be selected
+- use when only one option can be selected
 - provide disabled options unless unavoidable
-- use horizontal groups unless unavoidable.
+- use a horizontal list of options when grouping multiple related checkboxes unless unavoidable.
 
 ## Grouping checkboxes
 
-Use the [Control group](/components/control-group) component to group multiple related checkboxes.
+Use the [Control group component](/components/control-group) to group multiple related checkboxes.
 
 ```jsx live
 <ControlGroup label="Example" block>
@@ -38,7 +39,7 @@ Use the [Control group](/components/control-group) component to group multiple r
 
 ## Hint
 
-Use the `hint` prop to provide help that’s relevant to the majority of users, like how their information will be used, or where to find it.
+Use the `hint` prop to provide help that's relevant to the majority of users, like how their information will be used, or where to find it.
 
 Don't use long paragraphs and lists in hint text. Screen readers read out the entire text when users interact with the form element. This could frustrate users if the text is long.
 
@@ -69,19 +70,50 @@ Use the `invalid` prop to indicate if the user input is invalid (does not valida
 </ControlGroup>
 ```
 
+## Required
+
+The `required` prop can be used to indicate that user input is required on the field before a form can be submitted.
+
+Using the `required` prop, this component will automatically append "(optional)" to the label as well as using [aria-required](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-required) to indicate to screen reader user that the field is required.
+
+### Hide optional label
+
+The `hideOptionalLabel` prop can be used in situations where you want to indiciate to screen reader users that a field is optional but don't want to show the "(optional)" label.
+
+The usage of `hideOptionalLabel` should be reserved for inputs that filter data in a table or chart, and should never be used in standard forms for submitting information.
+
+```jsx live
+<Stack gap={1}>
+	<ControlGroup label="Required" required block>
+		<Checkbox value="phone">Phone</Checkbox>
+	</ControlGroup>
+	<ControlGroup label="Optional" required={false} block>
+		<Checkbox value="phone">Phone</Checkbox>
+	</ControlGroup>
+	<ControlGroup
+		label="Optional with hideOptionalLabel"
+		required={false}
+		hideOptionalLabel={true}
+		block
+	>
+		<Checkbox value="phone">Phone</Checkbox>
+	</ControlGroup>
+</Stack>
+```
+
 ## Disabled
 
 Disabled checkboxes can be used to indicate inputs that are no longer valid or expired.
 
 ```jsx live
-<ControlGroup label="Disabled example" block>
+<Stack gap={1}>
 	<Checkbox value="phone" disabled>
 		Disabled checkbox
 	</Checkbox>
 	<Checkbox value="tablet" checked disabled>
-		Checked and disabled checkbox
+		Disabled and checked checkbox
 	</Checkbox>
-</ControlGroup>
+</Stack>
 ```
 
 ## Small checkboxes
