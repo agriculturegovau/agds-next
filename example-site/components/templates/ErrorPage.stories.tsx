@@ -43,8 +43,8 @@ export const FiveHundredError: Story = {
 		children: (
 			<Fragment>
 				<Text as="p" fontSize="md">
-					Sorry, there&apos;s a problem with the Export Service. We&apos;re
-					working to fix it. Please try again later.
+					There&apos;s a problem with the Export Service. We&apos;re working to
+					fix it. Please try again later.
 				</Text>
 
 				<Prose>
@@ -108,7 +108,7 @@ export const Maintenance: Story = {
 export const ThirdParty: Story = {
 	name: 'Third party outage (503)',
 	args: {
-		title: "Sorry, there's a problem with the Export Service",
+		title: "There's a problem with the Export Service",
 		errorCode: '503',
 		children: (
 			<Fragment>
