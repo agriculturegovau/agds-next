@@ -15,6 +15,7 @@ import controlInput from './control-input.svg';
 import core from './core.svg';
 import datePicker from './date-picker.svg';
 import details from './details.svg';
+import divider from './divider.svg';
 import directionLink from './direction-link.svg';
 import fileUpload from './file-upload.svg';
 import field from './field.svg';
@@ -75,6 +76,7 @@ export const pictograms = {
 	'date-picker': datePicker,
 	'date-range-picker': datePicker,
 	details,
+	divider,
 	'file-input': fileUpload,
 	'file-upload': fileUpload,
 	field,
