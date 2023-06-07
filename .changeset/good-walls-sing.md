@@ -2,7 +2,7 @@
 '@ag.ds-next/react': minor
 ---
 
-`Checkbox`, `Radio` and `ControlGroup` has been moved into their own entrypoints. 
+`Checkbox`, `Radio` and `ControlGroup` have been moved to their own entry points. 
 
 These components will continue to work out of the the `@ag.ds-next/react/control-input` entrypoint, but this usage has been marked as deprecated and will be removed in the next major release.
 

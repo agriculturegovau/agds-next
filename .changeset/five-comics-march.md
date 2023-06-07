@@ -4,7 +4,7 @@
 
 ## Box
 
-`Flex` and `Stack` have been moved into their own entrypoints. 
+`Flex` and `Stack` have been moved to their own entry points. 
 
 These components will continue to work out of the the `@ag.ds-next/react/box` entrypoint, but this usage has been marked as deprecated and will be removed in the next major release.
 
