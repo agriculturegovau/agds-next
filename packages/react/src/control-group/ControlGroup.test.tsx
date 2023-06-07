@@ -1,9 +1,9 @@
 import '@testing-library/jest-dom';
 import 'html-validate/jest';
 import { render, cleanup, screen } from '../../../../test-utils';
+import { Checkbox } from '../checkbox';
+import { Radio } from '../radio';
 import { ControlGroup, ControlGroupProps } from './ControlGroup';
-import { Checkbox } from './Checkbox';
-import { Radio } from './Radio';
 
 afterEach(cleanup);
 

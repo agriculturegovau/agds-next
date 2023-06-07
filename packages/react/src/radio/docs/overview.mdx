@@ -1,0 +1,215 @@
+---
+title: Radio
+description: Radios allow users to select one option from a list.
+group: Forms
+storybookPath: /story/forms-radio--basic
+figmaGalleryNodeId: 12926%3A104981
+relatedComponents: ['checkbox', 'control-group']
+---
+
+```jsx live
+() => {
+	const [value, setValue] = React.useState();
+	const handlerForKey = React.useCallback((key) => () => setValue(key), []);
+	const isChecked = (key) => key === value;
+	return (
+		<ControlGroup label="Example" block>
+			<Radio checked={isChecked('phone')} onChange={handlerForKey('phone')}>
+				Phone
+			</Radio>
+			<Radio checked={isChecked('tablet')} onChange={handlerForKey('tablet')}>
+				Tablet
+			</Radio>
+			<Radio checked={isChecked('laptop')} onChange={handlerForKey('laptop')}>
+				Laptop
+			</Radio>
+		</ControlGroup>
+	);
+};
+```
+
+<DoHeading />
+
+- use to help users to select one ptions
+- use for a short list of options
+- use the [Control group component](/components/control-group) to group multiple related radios
+- use a vertical list of options when grouping multiple related radios
+
+<DontHeading />
+
+- use when more than one option can be selected
+- provide disabled options unless unavoidable
+- use a horizontal list of options when grouping multiple related radios unless unavoidable.
+
+## Grouping radios
+
+Use the [Control group component](/components/control-group) to group multiple related radios.
+
+```jsx live
+() => {
+	const [value, setValue] = React.useState();
+	const handlerForKey = React.useCallback((key) => () => setValue(key), []);
+	const isChecked = (key) => key === value;
+	return (
+		<ControlGroup label="Example" block>
+			<Radio checked={isChecked('phone')} onChange={handlerForKey('phone')}>
+				Phone
+			</Radio>
+			<Radio checked={isChecked('tablet')} onChange={handlerForKey('tablet')}>
+				Tablet
+			</Radio>
+			<Radio checked={isChecked('laptop')} onChange={handlerForKey('laptop')}>
+				Laptop
+			</Radio>
+		</ControlGroup>
+	);
+};
+```
+
+## Hint
+
+Use the `hint` prop to provide help that's relevant to the majority of users, like how their information will be used, or where to find it.
+
+Don't use long paragraphs and lists in hint text. Screen readers read out the entire text when users interact with the form element. This could frustrate users if the text is long.
+
+Don't include links within hint text. While screen readers will read out the link text when describing the field, they will not tell users that the text is a link.
+
+```jsx live
+() => {
+	const [value, setValue] = React.useState();
+	const handlerForKey = React.useCallback((key) => () => setValue(key), []);
+	const isChecked = (key) => key === value;
+	return (
+		<ControlGroup label="Example" hint="Hint text" block>
+			<Radio checked={isChecked('phone')} onChange={handlerForKey('phone')}>
+				Phone
+			</Radio>
+			<Radio checked={isChecked('tablet')} onChange={handlerForKey('tablet')}>
+				Tablet
+			</Radio>
+			<Radio checked={isChecked('laptop')} onChange={handlerForKey('laptop')}>
+				Laptop
+			</Radio>
+		</ControlGroup>
+	);
+};
+```
+
+## Invalid
+
+Use the `invalid` prop to indicate if the user input is invalid (does not validate according to the elements settings).
+
+```jsx live
+() => {
+	const [value, setValue] = React.useState();
+	const handlerForKey = React.useCallback((key) => () => setValue(key), []);
+	const isChecked = (key) => key === value;
+
+	return (
+		<ControlGroup
+			label="Invalid example"
+			message="Please choose an option"
+			invalid
+			block
+		>
+			<Radio checked={isChecked('phone')} onChange={handlerForKey('phone')}>
+				Phone
+			</Radio>
+			<Radio checked={isChecked('tablet')} onChange={handlerForKey('tablet')}>
+				Tablet
+			</Radio>
+			<Radio checked={isChecked('laptop')} onChange={handlerForKey('laptop')}>
+				Laptop
+			</Radio>
+		</ControlGroup>
+	);
+};
+```
+
+## Required
+
+The `required` prop can be used to indicate that user input is required on the field before a form can be submitted.
+
+Using the `required` prop, this component will automatically append "(optional)" to the label as well as using [aria-required](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-required) to indicate to screen reader user that the field is required.
+
+### Hide optional label
+
+The `hideOptionalLabel` prop can be used in situations where you want to indiciate to screen reader users that a field is optional but don't want to show the "(optional)" label.
+
+The usage of `hideOptionalLabel` should be reserved for inputs that filter data in a table or chart, and should never be used in standard forms for submitting information.
+
+```jsx live
+<Stack gap={1}>
+	<ControlGroup label="Required" required block>
+		<Radio value="phone">Phone</Radio>
+		<Radio value="phone">Tablet</Radio>
+		<Radio value="phone">Laptop</Radio>
+	</ControlGroup>
+	<ControlGroup label="Optional" required={false} block>
+		<Radio value="phone">Phone</Radio>
+		<Radio value="phone">Tablet</Radio>
+		<Radio value="phone">Laptop</Radio>
+	</ControlGroup>
+	<ControlGroup
+		label="Optional with hideOptionalLabel"
+		required={false}
+		hideOptionalLabel={true}
+		block
+	>
+		<Radio value="phone">Phone</Radio>
+		<Radio value="phone">Tablet</Radio>
+		<Radio value="phone">Laptop</Radio>
+	</ControlGroup>
+</Stack>
+```
+
+## Disabled radios
+
+Disabled radios can be used to indicate inputs that are no longer valid or expired.
+
+```jsx live
+<ControlGroup label="Disabled example" block>
+	<Radio disabled>Phone</Radio>
+	<Radio checked disabled>
+		Tablet
+	</Radio>
+	<Radio disabled>Laptop</Radio>
+</ControlGroup>
+```
+
+## Small radios
+
+Use the `size` prop to change the size of the radio.
+
+```jsx live
+() => {
+	const [value, setValue] = React.useState();
+	const handlerForKey = React.useCallback((key) => () => setValue(key), []);
+	const isChecked = (key) => key === value;
+	return (
+		<ControlGroup label="Small example" block>
+			<Radio
+				checked={isChecked('phone')}
+				onChange={handlerForKey('phone')}
+				size="sm"
+			>
+				Phone
+			</Radio>
+			<Radio
+				checked={isChecked('tablet')}
+				onChange={handlerForKey('tablet')}
+				size="sm"
+			>
+				Tablet
+			</Radio>
+			<Radio
+				checked={isChecked('laptop')}
+				onChange={handlerForKey('laptop')}
+				size="sm"
+			>
+				Laptop
+			</Radio>
+		</ControlGroup>
+	);
+};
+```

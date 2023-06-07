@@ -9,7 +9,7 @@ import {
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { Button, ButtonGroup } from '@ag.ds-next/react/button';
-import { Checkbox } from '@ag.ds-next/react/control-input';
+import { Checkbox } from '@ag.ds-next/react/checkbox';
 import { Prose } from '@ag.ds-next/react/prose';
 import { Stack } from '@ag.ds-next/react/box';
 import { Fieldset } from '@ag.ds-next/react/fieldset';

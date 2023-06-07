@@ -1,7 +1,7 @@
 import { useCallback, useState } from 'react';
 import { Meta, StoryObj } from '@storybook/react';
-import { Checkbox } from './Checkbox';
-import { Radio } from './Radio';
+import { Checkbox } from '../checkbox';
+import { Radio } from '../radio';
 import { ControlGroup, ControlGroupProps } from './ControlGroup';
 
 const meta: Meta<typeof ControlGroup> = {

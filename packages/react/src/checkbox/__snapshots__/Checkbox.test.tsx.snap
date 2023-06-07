@@ -3,10 +3,10 @@
 exports[`Checkbox renders correctly 1`] = `
 <div>
   <label
-    class="css-kwvgrg-boxStyles-ControlContainer"
+    class="css-hp3wbe-boxStyles-CheckboxContainer"
   >
     <input
-      class="css-poh1fz-ControlInput"
+      class="css-ovafqv-CheckboxInput"
       data-testid="example"
       name="my-checkbox"
       type="checkbox"
@@ -32,7 +32,7 @@ exports[`Checkbox renders correctly 1`] = `
       </svg>
     </span>
     <span
-      class="css-1g33cu8-boxStyles-Text-ControlLabel"
+      class="css-1929o1r-boxStyles-Text-CheckboxLabel"
     >
       My checkbox
     </span>

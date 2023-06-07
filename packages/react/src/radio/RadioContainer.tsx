@@ -1,14 +1,11 @@
 import { PropsWithChildren } from 'react';
-import { Flex } from '../box';
+import { Flex } from '../flex';
 
-export type ControlContainerProps = PropsWithChildren<{
+export type RadioContainerProps = PropsWithChildren<{
 	disabled?: boolean;
 }>;
 
-export const ControlContainer = ({
-	children,
-	disabled,
-}: ControlContainerProps) => (
+export const RadioContainer = ({ children, disabled }: RadioContainerProps) => (
 	<Flex
 		as="label"
 		alignItems="flex-start"

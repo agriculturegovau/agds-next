@@ -1,10 +1,10 @@
 import { forwardRef, InputHTMLAttributes, PropsWithChildren } from 'react';
+import { useControlGroupContext } from '../control-group/ControlGroupProvider';
 import { RadioIndicator } from './RadioIndicator';
-import { ControlInput } from './ControlInput';
-import { ControlContainer } from './ControlContainer';
-import { ControlLabel } from './ControlLabel';
-import { useControlGroupContext } from './ControlGroupProvider';
-import { ControlSize } from './utils';
+import { RadioInput } from './RadioInput';
+import { RadioContainer } from './RadioContainer';
+import { RadioLabel } from './RadioLabel';
+import { RadioSize } from './utils';
 
 type NativeRadioProps = InputHTMLAttributes<HTMLInputElement>;
 
@@ -30,7 +30,7 @@ export type RadioProps = BaseCheckboxProps & {
 	/** If true, the invalid state will be rendered. */
 	invalid?: boolean;
 	/** The size of the input. */
-	size?: ControlSize;
+	size?: RadioSize;
 };
 
 export const Radio = forwardRef<HTMLInputElement, RadioProps>(function Radio(
@@ -40,8 +40,8 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>(function Radio(
 	const controlGroupContext = useControlGroupContext();
 	const invalid = invalidProp || controlGroupContext?.invalid;
 	return (
-		<ControlContainer disabled={disabled}>
-			<ControlInput
+		<RadioContainer disabled={disabled}>
+			<RadioInput
 				ref={ref}
 				type="radio"
 				disabled={disabled}
@@ -50,9 +50,9 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>(function Radio(
 				{...props}
 			/>
 			<RadioIndicator disabled={disabled} invalid={invalid} size={size} />
-			<ControlLabel disabled={disabled} size={size}>
+			<RadioLabel disabled={disabled} size={size}>
 				{children}
-			</ControlLabel>
-		</ControlContainer>
+			</RadioLabel>
+		</RadioContainer>
 	);
 });
