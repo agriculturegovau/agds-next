@@ -9,7 +9,8 @@ import {
 } from 'react';
 import { usePopper } from 'react-popper';
 import { SelectRangeEventHandler } from 'react-day-picker';
-import { Flex, Stack } from '../box';
+import { Flex } from '../flex';
+import { Stack } from '../stack';
 import {
 	mapSpacing,
 	tokens,
@@ -306,12 +307,7 @@ export const DateRangePicker = ({
 					{message && invalid ? (
 						<FieldMessage id={messageId}>{message}</FieldMessage>
 					) : null}
-					<Flex
-						ref={setRefEl}
-						flexDirection={{ xs: 'column', sm: 'row' }}
-						inline
-						gap={1}
-					>
+					<Flex ref={setRefEl} flexWrap="wrap" inline gap={1}>
 						<DateInput
 							ref={fromInputRef}
 							label={fromLabel}
