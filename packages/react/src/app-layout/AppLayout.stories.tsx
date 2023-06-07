@@ -1,17 +1,12 @@
 import { Fragment, useMemo } from 'react';
 import { Meta, StoryObj } from '@storybook/react';
-import { SinglePageFormPage } from '../../../../example-site/components/templates/SinglePageForm';
-import { FormExampleMultiStep } from '../../../../example-site/components/FormExampleMultiStep/FormExampleMultiStep';
-import { TableFilteringMediumExample } from '../../../../.storybook/stories/DataFiltering/TableFilteringMediumExample';
 import { Logo } from '../ag-branding';
 import { PageContent } from '../content';
 import { tokens } from '../core';
 import { LinkList } from '../link-list';
 import { SkipLinks } from '../skip-link';
 import { Text } from '../text';
-import { Stack } from '../stack';
-import { H1 } from '../heading';
-import { TextLink } from '../text-link';
+import { Prose } from '../prose';
 import { navigationItems } from './test-utils';
 import {
 	AppLayout,
@@ -23,7 +18,7 @@ import {
 	AppLayoutFooterDivider,
 } from './index';
 
-function AppLayoutTemplate({ children, focusMode }: AppLayoutProps) {
+function AppLayoutTemplate({ focusMode }: AppLayoutProps) {
 	const year = useMemo(() => new Date().getFullYear(), []);
 	return (
 		<Fragment>
@@ -49,7 +44,26 @@ function AppLayoutTemplate({ children, focusMode }: AppLayoutProps) {
 						tabIndex={-1}
 						css={{ '&:focus': { outline: 'none' } }}
 					>
-						{children}
+						<PageContent>
+							<Prose>
+								<h2>Content heading</h2>
+								<p>See Template stories for more in context examples</p>
+								<p>
+									Etiam porta sem malesuada magna mollis euismod. Maecenas
+									faucibus mollis interdum. Aenean lacinia bibendum nulla sed
+									consectetur. Aenean eu leo quam. Pellentesque ornare sem
+									lacinia quam venenatis vestibulum. Donec ullamcorper nulla non
+									metus auctor fringilla.
+								</p>
+								<p>
+									Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor
+									auctor. Cras justo odio, dapibus ac facilisis in, egestas eget
+									quam. Donec sed odio dui. Maecenas sed diam eget risus varius
+									blandit sit amet non magna. Nullam id dolor id nibh ultricies
+									vehicula ut id elit.
+								</p>
+							</Prose>
+						</PageContent>
 					</main>
 					<AppLayoutFooter>
 						<nav aria-label="footer">
@@ -100,38 +114,10 @@ const meta: Meta<typeof AppLayout> = {
 
 export default meta;
 
-export const Basic: StoryObj<typeof AppLayout> = {
-	args: {
-		children: <SinglePageFormPage />,
-	},
+export const Default: StoryObj<typeof AppLayout> = {
+	args: {},
 };
 
 export const FocusMode: StoryObj<typeof AppLayout> = {
-	args: {
-		children: <FormExampleMultiStep />,
-		focusMode: true,
-	},
-};
-
-export const ExampleTable: StoryObj<typeof AppLayout> = {
-	args: {
-		children: <TableFilteringMediumExample />,
-	},
-};
-
-export const MinimalContent: StoryObj<typeof AppLayout> = {
-	args: {
-		children: (
-			<PageContent>
-				<Stack gap={1.5}>
-					<H1>Page not found</H1>
-					<Text as="p" fontSize="md">
-						Check the web address is correct or go back to the{' '}
-						<TextLink href="/">Design System</TextLink>.
-					</Text>
-					<Text>Error code: 404</Text>
-				</Stack>
-			</PageContent>
-		),
-	},
+	args: { focusMode: true },
 };

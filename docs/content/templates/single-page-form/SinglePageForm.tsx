@@ -8,25 +8,24 @@ import {
 } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
+import { Breadcrumbs } from '@ag.ds-next/react/breadcrumbs';
 import { Button, ButtonGroup } from '@ag.ds-next/react/button';
 import { Checkbox } from '@ag.ds-next/react/checkbox';
-import { Prose } from '@ag.ds-next/react/prose';
-import { Stack } from '@ag.ds-next/react/stack';
-import { Fieldset } from '@ag.ds-next/react/fieldset';
-import { FormStack } from '@ag.ds-next/react/form-stack';
-import { Select } from '@ag.ds-next/react/select';
-import { H2, H3 } from '@ag.ds-next/react/heading';
-import { TextInput } from '@ag.ds-next/react/text-input';
-import { PageAlert } from '@ag.ds-next/react/page-alert';
-import { useScrollToField } from '@ag.ds-next/react/field';
-import { PageContent } from '@ag.ds-next/react/content';
 import { Column, Columns } from '@ag.ds-next/react/columns';
-import { Breadcrumbs } from '@ag.ds-next/react/breadcrumbs';
 import { DatePicker } from '@ag.ds-next/react/date-picker';
 import { DateRangePicker } from '@ag.ds-next/react/date-range-picker';
-import { Text } from '@ag.ds-next/react/text';
 import { Divider } from '@ag.ds-next/react/divider';
-import { PageTitle } from '../PageTitle';
+import { Fieldset } from '@ag.ds-next/react/fieldset';
+import { FormStack } from '@ag.ds-next/react/form-stack';
+import { H1, H2, H3 } from '@ag.ds-next/react/heading';
+import { PageAlert } from '@ag.ds-next/react/page-alert';
+import { PageContent } from '@ag.ds-next/react/content';
+import { Prose } from '@ag.ds-next/react/prose';
+import { Select } from '@ag.ds-next/react/select';
+import { Stack } from '@ag.ds-next/react/stack';
+import { Text } from '@ag.ds-next/react/text';
+import { TextInput } from '@ag.ds-next/react/text-input';
+import { useScrollToField } from '@ag.ds-next/react/field';
 
 // `yup.date()` can sometimes give false positives with certain string values
 // Fixes https://github.com/jquense/yup/issues/764
@@ -414,21 +413,20 @@ export const SinglePageFormPage = () => {
 					<Stack gap={3}>
 						<Breadcrumbs
 							links={[
-								{ href: '/', label: 'Home' },
-								{ href: '/category', label: 'Category 1' },
-								{
-									href: '/category/subcategory',
-									label: 'Subcategory page',
-								},
-								{ label: 'Single-page form' },
+								{ href: '#', label: 'Home' },
+								{ href: '#', label: 'Parent' },
+								{ href: '#', label: 'Child' },
+								{ label: 'Current page' },
 							]}
 						/>
-						<PageTitle
-							title="Single-page form (multi-question) xxl/display (H1)"
-							introduction="Introductory paragraph providing context for this single
-							page of the multi-step form. All questions on page must be
-							related - md/default (P)"
-						/>
+						<Stack gap={1.5}>
+							<H1>Single-page form (multi-question) xxl/display (H1)</H1>
+							<Text as="p" fontSize="md" color="muted">
+								Introductory paragraph providing context for this single page of
+								the multi-step form. All questions on page must be related -
+								md/default (P)
+							</Text>
+						</Stack>
 						<Text fontSize="xs" color="muted">
 							All fields are required unless marked optional.
 						</Text>
