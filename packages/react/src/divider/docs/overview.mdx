@@ -1,49 +1,45 @@
 ---
 title: Divider
-description: A horizontal rule that seperates blocks of content.
+description: A horizontal rule that separates blocks of content.
 group: Layout
 storybookPath: /story/Layout-Divider--basic
 ---
 
-Divider renders a horizontal rule (`<hr>`) that seperates blocks of content. This is commonly used between fieldsets in forms, or to break up text content.
+```jsx live showCode
+<Divider />
+```
+
+<DoHeading />
+
+- use to create visual space and separation between blocks of content like form field sets in the main content area
+- divide and logically group content sections to enhance clarity and organisation
+- position above buttons groups at the bottom of a form to give prominence to the action area.
+
+<DontHeading />
+
+- change the colour of divider.
+
+## Example
 
 ```jsx live
-<Stack gap={3}>
-	<Fieldset
-		legend={<H2>Business details</H2>}
-		hint="Supporting information for provide details subheading - sm/default"
-	>
+<FormStack>
+	<Fieldset legend={<H2>Business details</H2>}>
 		<FormStack>
-			<TextInput
-				label="Australian Business Number (ABN)"
-				id="abn"
-				required
-				inputMode="numeric"
-				pattern="[0-9]*"
-			/>
-			<TextInput
-				label="Business name"
-				id="businessName"
-				required
-				maxWidth="xl"
-			/>
+			<TextInput label="Australian Business Number (ABN)" />
+			<TextInput label="Australian Company Number (ACN)" />
 		</FormStack>
 	</Fieldset>
 	<Divider />
-	<Fieldset
-		legend={<H2>Provide entity details</H2>}
-		hint="Supporting information for provide details subheading - sm/default"
-	>
+	<Fieldset legend={<H2>Entity details</H2>}>
 		<FormStack>
-			<TextInput label="Entity name" id="entityName" required />
-			<TextInput
-				label="Entity number"
-				id="entityNumber"
-				required
-				inputMode="numeric"
-				pattern="[0-9]*"
-			/>
+			<TextInput label="Entity name" />
+			<TextInput label="Entity number" />
 		</FormStack>
 	</Fieldset>
-</Stack>
+	<Divider />
+	<ButtonGroup>
+		<Button type="submit">Submit form</Button>
+		<Button variant="secondary">Cancel</Button>
+	</ButtonGroup>
+</FormStack>
 ```
