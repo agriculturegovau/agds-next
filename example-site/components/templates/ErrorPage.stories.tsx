@@ -5,7 +5,7 @@ import { Text } from '@ag.ds-next/react/text';
 import { Prose } from '@ag.ds-next/react/prose';
 import { Callout } from '@ag.ds-next/react/callout';
 import { PageTemplate } from '../../../.storybook/components/PageTemplate';
-import { NotFound as NotFoundComponent, ErrorPage } from './ErrorPage';
+import { ErrorPage } from './ErrorPage';
 
 const meta: Meta<typeof ErrorPage> = {
 	title: 'Templates/Error page',
@@ -28,11 +28,16 @@ type Story = StoryObj<typeof ErrorPage>;
 
 export const NotFound: Story = {
 	name: 'Not found (404)',
-	render: () => (
-		<PageTemplate>
-			<NotFoundComponent />
-		</PageTemplate>
-	),
+	args: {
+		title: 'Page not found',
+		errorCode: '404',
+		children: (
+			<Text as="p" fontSize="md">
+				Check the web address is correct or go back to the{' '}
+				<TextLink href="/">Export Service</TextLink>.
+			</Text>
+		),
+	},
 };
 
 export const Maintenance: Story = {
@@ -46,9 +51,7 @@ export const Maintenance: Story = {
 					While we&apos;re down for planned maintenance, you won&apos;t be able
 					to access our services.
 				</Text>
-
 				<Text>Please check back soon.</Text>
-
 				<Callout title="Need help?">
 					<Prose>
 						<p>
@@ -78,15 +81,12 @@ export const FiveHundredError: Story = {
 					There&apos;s a problem with the Export Service. We&apos;re working to
 					fix it. Please try again later.
 				</Text>
-
 				<Prose>
 					<p>
 						You may be able to access other parts of the{' '}
 						<TextLink href="/">Export Service</TextLink>.
 					</p>
-
 					<p>If you need help:</p>
-
 					<ul>
 						<li>
 							Call <a href="tel:1800 571 125">1800 571 125</a>, Monday to
@@ -117,9 +117,7 @@ export const ThirdParty: Story = {
 					create an account or sign into the Export Service right now. Please
 					try again later.
 				</p>
-
 				<p>If you need help:</p>
-
 				<ul>
 					<li>
 						Call <a href="tel:1800 571 125">1800 571 125</a>, Monday to Friday,
@@ -148,14 +146,11 @@ export const ScheduledOutage: Story = {
 					Relationship Autorisation Manager (RAM) is down for system maintenance
 					from 11:30 pm, 15 October to 7pm, 16 October.
 				</p>
-
 				<p>
 					During this time you can&apos;t create an account or sign into the
 					Export Service. Please try again later.
 				</p>
-
 				<p>If you need help:</p>
-
 				<ul>
 					<li>
 						Call <a href="tel:1800 571 125">1800 571 125</a>, Monday to Friday,
