@@ -151,7 +151,7 @@ export const ScheduledOutage: Story = {
 
 				<p>
 					During this time you can&apos;t create an account or sign into the
-					Export Service right now. Please try again later.
+					Export Service. Please try again later.
 				</p>
 
 				<p>If you need help:</p>
