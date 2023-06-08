@@ -1,7 +1,7 @@
 import { MouseEventHandler, PropsWithChildren } from 'react';
 import { Box, Flex, Stack } from '../box';
 import { Button } from '../button';
-import { boxPalette, tokens } from '../core';
+import { boxPalette, mapSpacing, tokens } from '../core';
 import { CloseIcon, WarningFilledIcon } from '../icon';
 import { Content } from '../content';
 import { Heading } from '../heading';
@@ -59,11 +59,11 @@ export function GlobalAlert({ children, onDismiss, title }: GlobalAlertProps) {
 							onClick={onDismiss}
 							iconAfter={CloseIcon}
 							variant="text"
-							aria-label="Close"
+							aria-label="Dismiss"
 							css={{
 								position: 'absolute',
-								top: '1rem',
-								right: '1rem',
+								top: mapSpacing(0.75),
+								right: 0,
 								flexShrink: 0,
 								// Reset the position on larger screens
 								[tokens.mediaQuery.min.sm]: {
