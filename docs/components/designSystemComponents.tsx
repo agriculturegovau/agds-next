@@ -203,6 +203,7 @@ export {
 	AppLayoutFooter,
 	AppLayoutFooterDivider,
 } from '@ag.ds-next/react/app-layout';
+export { Divider } from '@ag.ds-next/react/divider';
 
 // Used to populate options on documentation site and playroom
 export { COUNTRY_OPTIONS } from '@ag.ds-next/react/src/combobox/test-utils';

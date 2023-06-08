@@ -5,15 +5,15 @@ import * as yup from 'yup';
 import { Button } from '@ag.ds-next/react/button';
 import { FormStack } from '@ag.ds-next/react/form-stack';
 import { TextInput } from '@ag.ds-next/react/text-input';
-import { Stack } from '@ag.ds-next/react/box';
+import { Stack } from '@ag.ds-next/react/stack';
 import { PageAlert } from '@ag.ds-next/react/page-alert';
 import { Prose } from '@ag.ds-next/react/prose';
 import { useScrollToField } from '@ag.ds-next/react/field';
 import { TextLink } from '@ag.ds-next/react/text-link';
 import { PageContent } from '@ag.ds-next/react/content';
 import { Column, Columns } from '@ag.ds-next/react/columns';
+import { Divider } from '@ag.ds-next/react/divider';
 import { PageTitle } from '../PageTitle';
-import { FormDivider } from '../FormDivider';
 
 const formSchema = yup
 	.object({
@@ -151,7 +151,7 @@ export const SignInFormPage = () => {
 							introduction="Introductory paragraph providing context for this sign in form. All questions on page must be related - md/default (P)."
 						/>
 						<SignInForm />
-						<FormDivider />
+						<Divider />
 						<Prose>
 							<p>
 								Don&apos;t have an account? <a href="#">Create account</a>

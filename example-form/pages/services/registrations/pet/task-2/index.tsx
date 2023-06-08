@@ -1,15 +1,15 @@
 import { PageContent } from '@ag.ds-next/react/content';
 import { Columns, Column } from '@ag.ds-next/react/columns';
 import { Prose } from '@ag.ds-next/react/prose';
-import { Stack } from '@ag.ds-next/react/box';
+import { Stack } from '@ag.ds-next/react/stack';
 import { H2 } from '@ag.ds-next/react/heading';
 import { DirectionLink } from '@ag.ds-next/react/direction-link';
 import { ButtonLink } from '@ag.ds-next/react/button';
+import { Divider } from '@ag.ds-next/react/divider';
 import { SiteLayout } from '../../../../../components/SiteLayout';
 import { DocumentTitle } from '../../../../../components/DocumentTitle';
 import { FormHelpCallout } from '../../../../../components/FormHelpCallout';
 import { PageTitle } from '../../../../../components/PageTitle';
-import { FormDivider } from '../../../../../components/FormDivider';
 
 export default function FormRegisterPetTask2HomePage() {
 	return (
@@ -48,11 +48,10 @@ export default function FormRegisterPetTask2HomePage() {
 										Get started
 									</ButtonLink>
 								</div>
-								<FormDivider />
+								<Divider />
 								<Stack gap={1.5}>
 									<H2>Information on pet registration rules and regulations</H2>
 									<Prose>
-										<h2></h2>
 										<ul>
 											<li>
 												<a href="#">State pet registration rules</a>
