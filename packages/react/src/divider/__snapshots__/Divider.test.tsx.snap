@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Divider renders correctly 1`] = `
+<div>
+  <hr
+    aria-hidden="true"
+    class="css-1th2zfi-Divider"
+  />
+</div>
+`;
