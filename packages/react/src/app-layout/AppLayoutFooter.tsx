@@ -39,7 +39,7 @@ export function AppLayoutFooterDivider() {
 				border: 'none',
 				borderTopWidth: 1,
 				borderTopStyle: 'solid',
-				borderColor: boxPalette.border,
+				borderColor: boxPalette.borderMuted,
 				width: '100%',
 			}}
 		/>

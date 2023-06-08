@@ -466,7 +466,7 @@ exports[`AppLayout renders correctly 1`] = `
               </nav>
               <hr
                 aria-hidden="true"
-                class="css-1vt7i89-AppLayoutFooterDivider"
+                class="css-14u6sul-AppLayoutFooterDivider"
               />
               <span
                 class="css-1sbhbx-boxStyles-Text"
