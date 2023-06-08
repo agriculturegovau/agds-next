@@ -130,8 +130,8 @@ exports[`GlobalAlert responds to an onDismiss event 1`] = `
             </div>
           </div>
           <button
-            aria-label="Close"
-            class="css-srn7k2-BaseButton-GlobalAlert"
+            aria-label="Dismiss"
+            class="css-11qvz4r-BaseButton-GlobalAlert"
             type="button"
           >
             <span>
