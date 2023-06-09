@@ -1,4 +1,3 @@
-import { PageTemplate } from '../../../.storybook/components/PageTemplate';
 import { SignInFormPage } from './SignInForm';
 
 export default {
@@ -9,9 +8,5 @@ export default {
 };
 
 export const SignInForm = () => {
-	return (
-		<PageTemplate>
-			<SignInFormPage />
-		</PageTemplate>
-	);
+	return <SignInFormPage />;
 };
