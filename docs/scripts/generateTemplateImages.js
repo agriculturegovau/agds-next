@@ -84,7 +84,7 @@ function getTemplateList() {
 					deviceScaleFactor: 1,
 				});
 
-				// Scroll into the main content area
+				// Scroll past the header into the content area
 				// Note: We don't just use the `main` selector here as that can be different across templates
 				await page.waitForSelector('header');
 				await page.evaluate(() => {
