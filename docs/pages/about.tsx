@@ -56,8 +56,8 @@ export default function AboutPage() {
 								</TextLink>
 							</li>
 							<li>
-								A suite of <TextLink href="/patterns">page templates</TextLink>{' '}
-								and interaction patterns
+								A suite of <TextLink href="/template">page templates</TextLink>{' '}
+								and <TextLink href="/patterns">interaction patterns</TextLink>
 							</li>
 							<li>Comprehensive documentation</li>
 							<li>A collaborative community of designers and developers</li>

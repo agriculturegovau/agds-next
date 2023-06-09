@@ -1,20 +1,24 @@
 import { normalize } from 'path';
 import { Fragment } from 'react';
-import { Box, Stack } from '@ag.ds-next/react/box';
-import { Card, CardLink, CardInner } from '@ag.ds-next/react/card';
 import { Columns } from '@ag.ds-next/react/columns';
+import { boxPalette } from '@ag.ds-next/react/core';
+import { Box } from '@ag.ds-next/react/box';
+import { Stack } from '@ag.ds-next/react/stack';
+import { Card, CardLink, CardInner } from '@ag.ds-next/react/card';
+import { mq } from '@ag.ds-next/react/core';
 import { Text } from '@ag.ds-next/react/text';
-import { getPatternList, PATTERNS_PATH } from '../../lib/mdx/patterns';
-import { getMarkdownData } from '../../lib/mdxUtils';
+import { getTemplateList, TEMPLATES_PATH } from '../../lib/mdx/templates';
 import { DocumentTitle } from '../../components/DocumentTitle';
 import { CategoryPageTemplate } from '../../components/CategoryPageTemplate';
+import { getMarkdownData } from '../../lib/mdxUtils';
+import { withBasePath } from '../../lib/img';
 
 type StaticProps = Awaited<ReturnType<typeof getStaticProps>>['props'];
 
-export default function PatternsPage({
+export default function TemplatesPage({
 	title,
 	description,
-	patternList,
+	templateList,
 }: StaticProps) {
 	return (
 		<Fragment>
@@ -22,11 +26,11 @@ export default function PatternsPage({
 			<CategoryPageTemplate
 				title={title}
 				description={description}
-				editPath="/docs/content/patterns/index.mdx"
+				editPath="docs/content/templates/index.mdx"
 			>
 				<Columns as="ul" gap={1.5} cols={{ xs: 1, sm: 2, lg: 3 }}>
-					{patternList.map((pattern) => (
-						<PatternCard key={pattern.slug} {...pattern} />
+					{templateList.map((template) => (
+						<TemplateCard key={template.slug} {...template} />
 					))}
 				</Columns>
 			</CategoryPageTemplate>
@@ -34,7 +38,7 @@ export default function PatternsPage({
 	);
 }
 
-function PatternCard({
+function TemplateCard({
 	title,
 	slug,
 	description,
@@ -44,11 +48,22 @@ function PatternCard({
 	description: string;
 }) {
 	return (
-		<Card key={slug} as="li" clickable shadow>
+		<Card as="li" clickable shadow>
+			<img
+				src={withBasePath(`/img/templates/${slug}.webp`)}
+				role="presentation"
+				alt=""
+				height="auto"
+				width="100%"
+				css={mq({
+					borderBottom: `1px solid ${boxPalette.borderMuted}`,
+					objectFit: 'cover',
+				})}
+			/>
 			<CardInner>
 				<Stack gap={1} flexGrow={1}>
 					<Box as="h3">
-						<CardLink href={`/patterns/${slug}`}>{title}</CardLink>
+						<CardLink href={`/templates/${slug}`}>{title}</CardLink>
 					</Box>
 					<Text>{description}</Text>
 				</Stack>
@@ -59,14 +74,14 @@ function PatternCard({
 
 export async function getStaticProps() {
 	const { data } = await getMarkdownData(
-		normalize(`${PATTERNS_PATH}/index.mdx`)
+		normalize(`${TEMPLATES_PATH}/index.mdx`)
 	);
-	const patternList = await getPatternList();
+	const templateList = await getTemplateList();
 	return {
 		props: {
 			title: data?.title as string,
 			description: data?.description as string,
-			patternList,
+			templateList,
 		},
 	};
 }
