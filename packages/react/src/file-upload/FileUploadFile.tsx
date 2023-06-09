@@ -1,5 +1,6 @@
 import { MouseEventHandler } from 'react';
-import { Box, Flex } from '../box';
+import { Box } from '../box';
+import { Flex } from '../flex';
 import { boxPalette } from '../core';
 import { Text } from '../text';
 import { Button } from '../button';

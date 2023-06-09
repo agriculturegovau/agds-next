@@ -1,4 +1,4 @@
-import { Stack } from '../box';
+import { Stack } from '../stack';
 import { FileUploadRejectedFile } from './FileUploadRejectedFile';
 import type { RejectedFile } from './utils';
 
