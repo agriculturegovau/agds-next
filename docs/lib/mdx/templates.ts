@@ -24,8 +24,6 @@ export async function getTemplate(slug: string) {
 		content,
 		data,
 		title: (data.title ?? slug) as string,
-		group: slugify(data?.group ?? 'Other') as string,
-		groupName: (data?.group ?? 'Other') as string,
 		version: data.version as string,
 		description: (data.description ?? null) as string | null,
 		previewPath: (data.previewPath ?? null) as string | null,
@@ -62,18 +60,6 @@ export function getTemplateList() {
 	});
 }
 
-export async function getTemplateGroupList() {
-	const templatesList = await getTemplateList();
-
-	const uniqueTemplateGroups = new Map(
-		templatesList.map((p) => [p.group, p.groupName])
-	);
-
-	return Array.from(uniqueTemplateGroups.entries())
-		.map(([slug, title]) => ({ slug, title }))
-		.sort((a, b) => (a.title > b.title ? 1 : -1));
-}
-
 export async function getTemplateDocsContent(slug: string, path: string) {
 	const { data, content } = await getMarkdownData(
 		`${templateDocsPath(slug)}/${path}`
@@ -90,8 +76,6 @@ function templateNavMetaData(
 		title: (data?.title ?? slug) as string,
 		slug,
 		description: data?.description,
-		group: slugify(data?.group ?? 'Other') as string,
-		groupName: (data?.group ?? 'Other') as string,
 	};
 }
 
@@ -101,48 +85,17 @@ export function getTemplateBreadcrumbs(slug: string) {
 		return [
 			{ href: '/', label: 'Home' },
 			{ href: '/templates', label: 'Templates' },
-			{ href: `/templates/${meta.group}`, label: meta.groupName },
 			{ label: meta.title },
 		];
 	});
 }
 
-export async function getTemplateGroupNavLinks(group: {
-	title: string;
-	slug: string;
-}) {
+export async function getTemplateNavLinks() {
 	const templateList = await getTemplateList();
-	return {
-		href: `/templates${group.slug}`,
-		label: group.title,
-		items: templateList
-			.filter((p) => p.group === group.slug)
-			.map((p) => ({
-				href: `/templates/${p.slug}`,
-				label: p.title,
-			})),
-	};
-}
-
-export async function getTemplateNavLinks(groupSlug: string) {
-	const groupList = await getTemplateGroupList();
-	const templateList = await getTemplateList();
-
-	return groupList.map((group) => {
-		return {
-			href: `/templates/${group.slug}`,
-			label: group.title,
-			items:
-				groupSlug === group.slug
-					? templateList
-							.filter((p) => p.group === group.slug)
-							.map((p) => ({
-								href: `/templates/${group.slug}/${p.slug}`,
-								label: p.title,
-							}))
-					: [],
-		};
-	});
+	return templateList.map((template) => ({
+		href: `/templates/${template.slug}`,
+		label: template.title,
+	}));
 }
 
 export type Template = Awaited<ReturnType<typeof getTemplate>>;

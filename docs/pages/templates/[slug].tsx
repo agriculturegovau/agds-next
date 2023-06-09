@@ -8,12 +8,12 @@ import {
 	getTemplateBreadcrumbs,
 	getTemplateNavLinks,
 	Template,
-	getTemplateList,
-} from '../../../../lib/mdx/templates';
-import { withBasePath } from '../../../../lib/img';
-import { TemplateLayout } from '../../../../components/TemplateLayout';
-import { mdxComponents } from '../../../../components/mdxComponents';
-import { DocumentTitle } from '../../../../components/DocumentTitle';
+	getTemplateSlugs,
+} from '../../lib/mdx/templates';
+import { withBasePath } from '../../lib/img';
+import { TemplateLayout } from '../../components/TemplateLayout';
+import { mdxComponents } from '../../components/mdxComponents';
+import { DocumentTitle } from '../../components/DocumentTitle';
 
 export default function TemplatePage({
 	breadcrumbs,
@@ -53,16 +53,16 @@ export const getStaticProps: GetStaticProps<
 		navLinks: Awaited<ReturnType<typeof getTemplateNavLinks>>;
 		breadcrumbs: Awaited<ReturnType<typeof getTemplateBreadcrumbs>>;
 	},
-	{ slug: string; group: string }
+	{ slug: string }
 > = async ({ params }) => {
-	const { slug, group } = params ?? {};
+	const { slug } = params ?? {};
 	const template = slug ? await getTemplate(slug) : undefined;
 
-	if (!(slug && group && template)) {
+	if (!(slug && template)) {
 		return { notFound: true };
 	}
 
-	const navLinks = await getTemplateNavLinks(group);
+	const navLinks = await getTemplateNavLinks();
 	const breadcrumbs = await getTemplateBreadcrumbs(slug);
 
 	return {
@@ -76,10 +76,10 @@ export const getStaticProps: GetStaticProps<
 };
 
 export const getStaticPaths = async () => {
-	const templateList = await getTemplateList();
+	const slugs = await getTemplateSlugs();
 	return {
-		paths: templateList.map((t) => ({
-			params: { slug: t.slug, group: t.group },
+		paths: slugs.map((slug) => ({
+			params: { slug },
 		})),
 		fallback: false,
 	};
