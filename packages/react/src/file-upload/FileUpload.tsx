@@ -20,11 +20,6 @@ import {
 	RejectedFile,
 } from './utils';
 import { FileUploadFileList } from './FileUploadFileList';
-export type {
-	AcceptedFileMimeTypes,
-	FileWithStatus,
-	RejectedFile,
-} from './utils';
 
 type NativeInputProps = InputHTMLAttributes<HTMLInputElement>;
 
