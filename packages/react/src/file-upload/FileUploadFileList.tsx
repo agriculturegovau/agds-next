@@ -1,4 +1,4 @@
-import { Stack } from '../box';
+import { Stack } from '../stack';
 import { FileUploadFile } from './FileUploadFile';
 import { FileWithStatus } from './utils';
 
