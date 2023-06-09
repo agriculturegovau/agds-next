@@ -2,6 +2,4 @@
 '@ag.ds-next/react': patch
 ---
 
-FileUpload
-
-- Makes the internal FileUpload types available to consumers.
+file-upload: Made internal types available to consumers.
