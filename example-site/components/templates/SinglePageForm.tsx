@@ -8,29 +8,24 @@ import {
 } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
-import {
-	Button,
-	ButtonGroup,
-	Checkbox,
-	Prose,
-	Stack,
-	Fieldset,
-	FormStack,
-	Select,
-	H2,
-	H3,
-	TextInput,
-	PageAlert,
-	useScrollToField,
-	PageContent,
-	Column,
-	Columns,
-	Breadcrumbs,
-	DatePicker,
-	DateRangePicker,
-	Text,
-	Divider,
-} from '@ag.ds-next/react';
+import { Button, ButtonGroup } from '@ag.ds-next/react/button';
+import { Checkbox } from '@ag.ds-next/react/checkbox';
+import { Prose } from '@ag.ds-next/react/prose';
+import { Stack } from '@ag.ds-next/react/stack';
+import { Fieldset } from '@ag.ds-next/react/fieldset';
+import { FormStack } from '@ag.ds-next/react/form-stack';
+import { Select } from '@ag.ds-next/react/select';
+import { H2, H3 } from '@ag.ds-next/react/heading';
+import { TextInput } from '@ag.ds-next/react/text-input';
+import { PageAlert } from '@ag.ds-next/react/page-alert';
+import { useScrollToField } from '@ag.ds-next/react/field';
+import { PageContent } from '@ag.ds-next/react/content';
+import { Column, Columns } from '@ag.ds-next/react/columns';
+import { Breadcrumbs } from '@ag.ds-next/react/breadcrumbs';
+import { DatePicker } from '@ag.ds-next/react/date-picker';
+import { DateRangePicker } from '@ag.ds-next/react/date-range-picker';
+import { Text } from '@ag.ds-next/react/text';
+import { Divider } from '@ag.ds-next/react/divider';
 import { PageTitle } from '../PageTitle';
 
 // `yup.date()` can sometimes give false positives with certain string values

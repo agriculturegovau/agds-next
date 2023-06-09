@@ -1,6 +1,5 @@
 import { forwardRefWithAs } from '../core';
-import { Box } from '../box/Box';
-import { BoxProps } from '../box/styles';
+import { Box, BoxProps } from '../box';
 
 export type StackProps = Omit<BoxProps, 'display'>;
 
