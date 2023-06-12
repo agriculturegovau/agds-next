@@ -15,7 +15,9 @@ export { StatusBadge } from '@ag.ds-next/react/status-badge';
 export { NotificationBadge } from '@ag.ds-next/react/notification-badge';
 export { IndicatorDot } from '@ag.ds-next/react/indicator-dot';
 export { Prose } from '@ag.ds-next/react/prose';
-export { Box, Flex, Stack } from '@ag.ds-next/react/box';
+export { Box } from '@ag.ds-next/react/box';
+export { Flex } from '@ag.ds-next/react/flex';
+export { Stack } from '@ag.ds-next/react/stack';
 export {
 	BaseButton,
 	Button,

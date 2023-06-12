@@ -1,5 +1,5 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { Stack } from '../box';
+import { Stack } from '../stack';
 import { DirectionLink, DirectionButton } from './index';
 
 export default {

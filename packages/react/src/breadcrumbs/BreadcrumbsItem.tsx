@@ -1,5 +1,5 @@
 import { forwardRef } from 'react';
-import { Flex } from '../box';
+import { Flex } from '../flex';
 import { TextLink } from '../text-link';
 import { LinkProps } from '../core';
 import { BreadcrumbsDivider } from './BreadcrumbsDivider';

@@ -15,7 +15,8 @@ import {
 	useAriaModalPolyfill,
 	boxPalette,
 } from '../core';
-import { Box, Flex } from '../box';
+import { Box } from '../box';
+import { Flex } from '../flex';
 import { CloseIcon } from '../icon';
 import { VisuallyHidden } from '../a11y';
 import { BaseButton } from '../button';

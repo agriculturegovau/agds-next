@@ -1,5 +1,5 @@
 import { forwardRef, HTMLAttributes } from 'react';
-import { Flex } from '../../box';
+import { Flex } from '../../flex';
 import { boxPalette } from '../../core';
 
 type ComboboxListItemProps = Omit<HTMLAttributes<HTMLLIElement>, 'color'> & {

@@ -1,7 +1,9 @@
 import { Fragment } from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { VisuallyHidden } from '../a11y';
-import { Box, Flex, Stack } from '../box';
+import { Box } from '../box';
+import { Flex } from '../flex';
+import { Stack } from '../stack';
 import { H2, H3, Heading } from '../heading';
 import { ChevronRightIcon } from '../icon';
 import { Columns, Column } from '../columns';

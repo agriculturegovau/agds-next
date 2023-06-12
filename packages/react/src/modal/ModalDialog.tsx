@@ -1,7 +1,8 @@
 import { PropsWithChildren, ReactNode } from 'react';
 import FocusLock from 'react-focus-lock';
 import { keyframes } from '@emotion/react';
-import { Box, Stack } from '../box';
+import { Box } from '../box';
+import { Stack } from '../stack';
 import { mapSpacing, tokens } from '../core';
 import { CloseIcon } from '../icon';
 import { Button } from '../button';

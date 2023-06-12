@@ -1,4 +1,4 @@
-import { Flex } from '@ag.ds-next/react/box';
+import { Flex } from '@ag.ds-next/react/flex';
 import { proseBlockClassname } from '@ag.ds-next/react/prose';
 import { goldTheme, Theme } from '@ag.ds-next/react/core';
 import { theme as agTheme } from '@ag.ds-next/react/ag-branding';

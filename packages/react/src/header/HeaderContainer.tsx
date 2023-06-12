@@ -1,5 +1,6 @@
 import { PropsWithChildren } from 'react';
-import { Box, Flex } from '../box';
+import { Box } from '../box';
+import { Flex } from '../flex';
 import { tokens } from '../core';
 import { Columns } from '../columns';
 

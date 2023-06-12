@@ -1,4 +1,4 @@
-import { Stack } from '../box';
+import { Stack } from '../stack';
 import { H2 } from '../heading';
 import { Text } from '../text';
 

@@ -1,6 +1,6 @@
 import { normalize } from 'path';
 import { useMemo, useState } from 'react';
-import { Stack } from '@ag.ds-next/react/box';
+import { Stack } from '@ag.ds-next/react/stack';
 import { H2 } from '@ag.ds-next/react/heading';
 import { Text } from '@ag.ds-next/react/text';
 import { SearchInput } from '@ag.ds-next/react/search-input';

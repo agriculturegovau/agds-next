@@ -1,5 +1,5 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { Stack } from '../box';
+import { Stack } from '../stack';
 import { TextInput } from '../text-input';
 import { FormStack } from '../form-stack';
 import { H1 } from '../heading';

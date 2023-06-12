@@ -1,6 +1,7 @@
 import { normalize } from 'path';
 import { Fragment } from 'react';
-import { Box, Stack } from '@ag.ds-next/react/box';
+import { Box } from '@ag.ds-next/react/box';
+import { Stack } from '@ag.ds-next/react/stack';
 import { Card, CardLink, CardInner } from '@ag.ds-next/react/card';
 import { Columns } from '@ag.ds-next/react/columns';
 import { Text } from '@ag.ds-next/react/text';

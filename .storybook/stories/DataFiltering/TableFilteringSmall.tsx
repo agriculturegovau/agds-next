@@ -1,4 +1,4 @@
-import { Stack } from '@ag.ds-next/react/box';
+import { Stack } from '@ag.ds-next/react/stack';
 import { ButtonLink } from '@ag.ds-next/react/button';
 import { PageContent } from '@ag.ds-next/react/content';
 import { PaginationButtons } from '@ag.ds-next/react/pagination';

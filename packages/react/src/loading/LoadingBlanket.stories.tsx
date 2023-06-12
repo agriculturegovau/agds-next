@@ -1,6 +1,7 @@
 import { Fragment } from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { Box, Stack } from '../box';
+import { Box } from '../box';
+import { Stack } from '../stack';
 import { Header } from '../header';
 import { Logo } from '../ag-branding/';
 import { MainNav } from '../main-nav';

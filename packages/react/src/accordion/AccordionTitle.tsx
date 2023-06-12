@@ -1,5 +1,6 @@
 import { MouseEventHandler, PropsWithChildren } from 'react';
-import { Box, Flex } from '../box';
+import { Box } from '../box';
+import { Flex } from '../flex';
 import { tokens } from '../core';
 import { ChevronDownIcon } from '../icon';
 import { BaseButton } from '../button/';

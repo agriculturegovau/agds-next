@@ -8,7 +8,8 @@ import {
 import { createPortal } from 'react-dom';
 import FocusLock from 'react-focus-lock';
 import { Global } from '@emotion/react';
-import { Box, Flex, backgroundColorMap } from '../box';
+import { Box, backgroundColorMap } from '../box';
+import { Flex } from '../flex';
 import {
 	boxPalette,
 	useTernaryState,

@@ -1,5 +1,5 @@
 import { ReactNode, useEffect, useRef } from 'react';
-import { Stack } from '@ag.ds-next/react/box';
+import { Stack } from '@ag.ds-next/react/stack';
 import { PageAlert } from '@ag.ds-next/react/page-alert';
 import { Text } from '@ag.ds-next/react/text';
 import { FormStepTitle } from '../FormStepTitle';

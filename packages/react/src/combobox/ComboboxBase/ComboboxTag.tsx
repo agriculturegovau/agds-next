@@ -1,5 +1,5 @@
 import { forwardRef, HTMLAttributes, MouseEvent } from 'react';
-import { Flex } from '../../box';
+import { Flex } from '../../flex';
 import { boxPalette, mapSpacing } from '../../core';
 import { CloseIcon } from '../../icon';
 

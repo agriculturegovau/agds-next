@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import { Stack } from '../../box';
+import { Stack } from '../../stack';
 import { Content } from '../../content';
 
 export type HeroSubcategoryBannerContentProps = { children: ReactNode };

@@ -1,5 +1,7 @@
 import { GetStaticProps, InferGetStaticPropsType } from 'next';
-import { Box, Flex, Stack } from '@ag.ds-next/react/box';
+import { Box } from '@ag.ds-next/react/box';
+import { Flex } from '@ag.ds-next/react/flex';
+import { Stack } from '@ag.ds-next/react/stack';
 import { Card, CardInner, CardLink } from '@ag.ds-next/react/card';
 import { Columns } from '@ag.ds-next/react/columns';
 import { Text } from '@ag.ds-next/react/text';

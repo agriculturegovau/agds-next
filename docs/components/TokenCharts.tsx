@@ -1,4 +1,6 @@
-import { Box, Flex, Stack } from '@ag.ds-next/react/box';
+import { Box } from '@ag.ds-next/react/box';
+import { Flex } from '@ag.ds-next/react/flex';
+import { Stack } from '@ag.ds-next/react/stack';
 import { boxPalette, tokens, Spacing, FontSize } from '@ag.ds-next/react/core';
 import { proseBlockClassname } from '@ag.ds-next/react/prose';
 import { Text } from '@ag.ds-next/react/text';

@@ -1,5 +1,5 @@
 import { PropsWithChildren } from 'react';
-import { Flex } from '../box';
+import { Flex } from '../flex';
 
 export type LoadingBlanketContainerProps = PropsWithChildren<{
 	/** If true, the blanket will cover the entire screen */

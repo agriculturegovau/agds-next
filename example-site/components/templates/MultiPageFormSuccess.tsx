@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react';
 import { Prose } from '@ag.ds-next/react/prose';
-import { Stack } from '@ag.ds-next/react/box';
+import { Stack } from '@ag.ds-next/react/stack';
 import { Breadcrumbs } from '@ag.ds-next/react/breadcrumbs';
 import { Column, Columns } from '@ag.ds-next/react/columns';
 import { PageContent } from '@ag.ds-next/react/content';

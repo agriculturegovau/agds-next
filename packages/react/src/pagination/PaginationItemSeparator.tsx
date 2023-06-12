@@ -1,4 +1,4 @@
-import { Flex } from '../box';
+import { Flex } from '../flex';
 import { Text } from '../text';
 import { BUTTON_SIZE_SM } from './utils';
 

@@ -17,7 +17,7 @@ import {
 import { TextLink } from '@ag.ds-next/react/text-link';
 import { Text } from '@ag.ds-next/react/text';
 import { Avatar } from '@ag.ds-next/react/avatar';
-import { Flex } from '@ag.ds-next/react/box';
+import { Flex } from '@ag.ds-next/react/flex';
 import {
 	BusinessForAudit,
 	BusinessForAuditWithIndex,

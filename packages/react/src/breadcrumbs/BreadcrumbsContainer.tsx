@@ -1,5 +1,5 @@
 import type { PropsWithChildren } from 'react';
-import { Flex } from '../box';
+import { Flex } from '../flex';
 import { tokens } from '../core';
 
 export type BreadcrumbsContainerProps = PropsWithChildren<{

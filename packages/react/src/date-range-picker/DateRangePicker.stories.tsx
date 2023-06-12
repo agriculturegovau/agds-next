@@ -1,7 +1,8 @@
 import { StoryObj, Meta } from '@storybook/react';
 import { useState } from 'react';
 import { subDays, addDays } from 'date-fns';
-import { Box, Stack } from '../box';
+import { Box } from '../box';
+import { Stack } from '../stack';
 import { Button, ButtonGroup } from '../button';
 import {
 	DateRangePicker,

@@ -7,7 +7,7 @@ import {
 	packs,
 	tokens,
 } from '../core';
-import { Flex } from '../box';
+import { Flex } from '../flex';
 import { localPalette } from './utils';
 
 export type SubNavListItemProps = PropsWithChildren<{

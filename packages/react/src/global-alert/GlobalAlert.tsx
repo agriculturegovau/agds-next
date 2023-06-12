@@ -1,5 +1,7 @@
 import { MouseEventHandler, PropsWithChildren } from 'react';
-import { Box, Flex, Stack } from '../box';
+import { Box } from '../box';
+import { Flex } from '../flex';
+import { Stack } from '../stack';
 import { Button } from '../button';
 import { boxPalette } from '../core';
 import { CloseIcon, WarningFilledIcon } from '../icon';

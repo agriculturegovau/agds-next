@@ -1,5 +1,6 @@
 import { PropsWithChildren, useMemo } from 'react';
-import { Box, Flex } from '@ag.ds-next/react/box';
+import { Box } from '@ag.ds-next/react/box';
+import { Flex } from '@ag.ds-next/react/flex';
 import { SkipLinks } from '@ag.ds-next/react/skip-link';
 import { TemplateBanner } from './TemplateBanner';
 import { SiteHeader } from './SiteHeader';

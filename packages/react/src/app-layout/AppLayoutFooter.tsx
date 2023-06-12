@@ -1,5 +1,5 @@
 import { PropsWithChildren } from 'react';
-import { Stack } from '../box';
+import { Stack } from '../stack';
 import { Content } from '../content';
 import { boxPalette } from '../core';
 

@@ -1,6 +1,6 @@
 import { FormEvent } from 'react';
 import format from 'date-fns/format';
-import { Stack } from '@ag.ds-next/react/box';
+import { Stack } from '@ag.ds-next/react/stack';
 import { H2 } from '@ag.ds-next/react/heading';
 import { Button } from '@ag.ds-next/react/button';
 import { FormDefinitionList } from '../FormDefinitionList';

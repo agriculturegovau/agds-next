@@ -1,7 +1,8 @@
 import { ComponentProps, PropsWithChildren } from 'react';
 import { useRouter } from 'next/router';
 import { PageContent, ContentBleed } from '@ag.ds-next/react/content';
-import { Flex, Stack } from '@ag.ds-next/react/box';
+import { Flex } from '@ag.ds-next/react/flex';
+import { Stack } from '@ag.ds-next/react/stack';
 import { Columns, Column } from '@ag.ds-next/react/columns';
 import { SideNav } from '@ag.ds-next/react/side-nav';
 import { SkipLinks, SkipLinksProps } from '@ag.ds-next/react/skip-link';

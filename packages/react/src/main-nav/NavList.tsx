@@ -1,5 +1,5 @@
 import type { PropsWithChildren, ReactNode } from 'react';
-import { Flex } from '../box';
+import { Flex } from '../flex';
 import { boxPalette, tokens, useLinkComponent, LinkProps } from '../core';
 import { BaseButton, BaseButtonProps } from '../button';
 import { NavListItem } from './NavListItem';

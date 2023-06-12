@@ -1,5 +1,6 @@
 import { ReactNode } from 'react';
-import { Box, Flex } from '../box';
+import { Box } from '../box';
+import { Flex } from '../flex';
 import { boxPalette, mapSpacing } from '../core';
 import { SuccessIcon, AlertIcon, InfoIcon, WarningIcon } from '../icon';
 import { Text } from '../text';

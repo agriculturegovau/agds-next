@@ -1,6 +1,6 @@
 import { ElementType, PropsWithChildren } from 'react';
 import { LinkProps } from '../core';
-import { Flex } from '../box';
+import { Flex } from '../flex';
 import { BaseButton, BaseButtonProps } from '../button';
 import { ChevronRightIcon } from '../icon';
 import { TextLink } from '../text-link';

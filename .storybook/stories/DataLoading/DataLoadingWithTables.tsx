@@ -1,6 +1,6 @@
 import { Fragment, useRef, useState } from 'react';
 import useSWR from 'swr';
-import { Stack } from '@ag.ds-next/react/box';
+import { Stack } from '@ag.ds-next/react/stack';
 import {
 	TableWrapper,
 	Table,

@@ -1,6 +1,6 @@
 import { Fragment } from 'react';
 import { tokens } from '../core';
-import { Stack } from '../box';
+import { Stack } from '../stack';
 import { AppLayoutSidebarNav, NavItem } from './AppLayoutSidebarNav';
 import { useAppLayoutContext } from './AppLayoutContext';
 import { AppLayoutSidebarDialog } from './AppLayoutSidebarDialog';

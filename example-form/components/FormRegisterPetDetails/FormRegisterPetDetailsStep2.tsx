@@ -12,7 +12,7 @@ import { FileUpload } from '@ag.ds-next/react/file-upload';
 import { FormStack } from '@ag.ds-next/react/form-stack';
 import { LoadingBlanket } from '@ag.ds-next/react/loading';
 import { PageAlert } from '@ag.ds-next/react/page-alert';
-import { Stack } from '@ag.ds-next/react/box';
+import { Stack } from '@ag.ds-next/react/stack';
 import { useScrollToField } from '@ag.ds-next/react/field';
 import { FormRequiredFieldsMessage } from '../FormRequiredFieldsMessage';
 import { FormRegisterPetDetailsContainer } from './FormRegisterPetDetailsContainer';

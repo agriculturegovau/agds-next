@@ -1,6 +1,6 @@
 import { useState, ChangeEvent } from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { Stack } from '../box';
+import { Stack } from '../stack';
 import { Select } from './Select';
 
 export default {

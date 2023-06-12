@@ -1,6 +1,6 @@
 import type { PropsWithChildren } from 'react';
 import { boxPalette, mapSpacing, mq, mapResponsiveProp, packs } from '../core';
-import { Flex } from '../box';
+import { Flex } from '../flex';
 import { localPalette } from './utils';
 
 type NavListType = 'primary' | 'secondary';
