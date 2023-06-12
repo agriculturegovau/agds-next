@@ -1,5 +1,86 @@
 # @ag.ds-next/react
 
+## 1.6.0
+
+### Minor Changes
+
+- 3f7d46f832: ## Box
+
+  `Flex` and `Stack` have been moved to their own entry points.
+
+  These components will continue to work out of the the `@ag.ds-next/react/box` entrypoint, but this usage has been marked as deprecated and will be removed in the next major release.
+
+  To upgrade, update the import when using these components.
+
+  ```diff
+  - import { Box, Flex, Stack } from '@ag.ds-next/react/box';
+  + import { Box } from '@ag.ds-next/react/box';
+  + import { Flex } from '@ag.ds-next/react/flex';
+  + import { Stack } from '@ag.ds-next/react/stack';
+  ```
+
+- 12bf142fd9: core: Created a new `overlay` design token which can be used as an overlay for modals and other components that sit on top of the main background.
+- 4d84709678: `Checkbox`, `Radio` and `ControlGroup` have been moved to their own entry points.
+
+  These components will continue to work out of the the `@ag.ds-next/react/control-input` entrypoint, but this usage has been marked as deprecated and will be removed in the next major release.
+
+  To upgrade, update the import when using these components.
+
+  ```diff
+  - import { Checkbox, Radio, ControlGroup } from '@ag.ds-next/react/control-input';
+  + import { Checkbox } from '@ag.ds-next/react/checkbox';
+  + import { Radio } from '@ag.ds-next/react/radio';
+  + import { ControlGroup } from '@ag.ds-next/react/control-group';
+  ```
+
+- c177bc6c95: date-range-picker: Updated container wrapping behaviour to allow the component to be placed in tight areas such as sidebars.
+- 7e0f1ec100: `IndicatorDot`, `NotificationBadge` and `StatusBadge` have been moved to their own entry points.
+
+  These components will continue to work out of the the `@ag.ds-next/react/badge` entrypoint, but this usage has been marked as deprecated and will be removed in the next major release.
+
+  To upgrade, update the import when using these components.
+
+  ```diff
+  - import { IndicatorDot, NotificationBadge, StatusBadge } from '@ag.ds-next/react/badge';
+  + import { IndicatorDot } from '@ag.ds-next/react/indicator-dot';
+  + import { NotificationBadge } from '@ag.ds-next/react/notification-badge';
+  + import { StatusBadge } from '@ag.ds-next/react/status-badge';
+  ```
+
+- 0942aab35d: `DateRangePicker` has been moved to it's own entry point.
+
+  `DateRangePicker` will continue to work out of the the `@ag.ds-next/react/date-picker` entrypoint, but this usage has been marked as deprecated and will be removed in the next major release.
+
+  To upgrade, update the import when using these components.
+
+  ```diff
+  - import { DateRangePicker } from '@ag.ds-next/react/date-picker';
+  + import { DateRangePicker } from '@ag.ds-next/react/date-range-picker';
+  ```
+
+- 1fd2f2ceec: divider: Created new component `Divider`
+
+### Patch Changes
+
+- dc23907904: Autocomplete
+
+  - Fixed bug where the "Clear" button was not being rendered as expected
+  - Added new prop `emptyResultsMessage` which can be used to display a message when no options match the users search term
+
+  Combobox
+
+  - Fixed bug where the "Clear" button was not being rendered as expected
+
+- 5f623c7016: combobox: Remove use-debounce dependency
+- 7956c675a8: tags: Enabled wrapping behaviour to allow tags to flow across multiple lines.
+- a92537a993: core: Created new hook `useAriaModalPolyfill` which adds `aria-hidden="true"` to every direct child of the `body` element when a modal is opened. This hook consolidates code that was previously copied/pasted across Modal, App layout and Main nav.
+- bc11d4394e: file-upload: Removed the filesize third party dependency
+- e4af9a6c11: app-layout: Updated `AppLayoutFooterDivider` border color from `border` to `borderMuted`
+- 768b98090e: page-alert: Added support for a react element in the `title` prop
+- a92537a993: app-layout: Adding missing aria dialog tags to mobile version of App layout sidebar.
+- 11afd2c50a: combobox: Updated logic in the `splitLabel` helper function so options with special characters (brackets, slashes etc) are handled correctly.
+- 2a86439bf9: file-upload: Made internal types available to consumers.
+
 ## 1.5.1
 
 ### Patch Changes
