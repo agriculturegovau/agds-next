@@ -3,7 +3,7 @@
 exports[`Footer renders correctly 1`] = `
 <div>
   <footer
-    class="css-12z2cqh-boxStyles-Footer"
+    class="css-1qjnm0n-boxStyles-Footer"
   >
     <div
       class="css-1qpkcxh-boxStyles"
@@ -58,7 +58,7 @@ exports[`Footer renders correctly 1`] = `
       </nav>
       <hr
         aria-hidden="true"
-        class="css-m1ii31-FooterDivider"
+        class="css-jcokw4-FooterDivider"
       />
       <span
         class="css-1sbhbx-boxStyles-Text"
