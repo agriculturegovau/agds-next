@@ -21,12 +21,7 @@ import {
 	useBoxPalette,
 	BoxPalette,
 } from '../core';
-import {
-	hoverMap,
-	MainNavBackground,
-	localPalette,
-	localPaletteVars,
-} from './utils';
+import { hoverMap, MainNavBackground, localPaletteVars } from './utils';
 import { CloseButton, OpenButton } from './MenuButtons';
 
 export type NavContainerProps = PropsWithChildren<{
@@ -67,7 +62,6 @@ export function NavContainer({
 				'&:focus': { outline: 'none' },
 				[localPaletteVars.linkHoverBg]: backgroundColorMap[hover],
 				[localPaletteVars.linkActiveBg]: backgroundColorMap[background],
-				[localPaletteVars.bottomBar]: boxPalette.accent,
 				...packs.print.hidden,
 			}}
 		>
@@ -196,12 +190,12 @@ function BottomBar() {
 		<Box
 			borderBottom
 			borderBottomWidth="xxl"
+			borderColor="accent"
 			css={{
 				position: 'absolute',
 				bottom: 0,
 				left: 0,
 				right: 0,
-				borderBottomColor: localPalette.bottomBar,
 			}}
 		/>
 	);

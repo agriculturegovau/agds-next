@@ -3,11 +3,11 @@
 exports[`MainNav renders correctly 1`] = `
 <div>
   <div
-    class="css-1yqb0ov-boxStyles-NavContainer"
+    class="css-13crp22-boxStyles-NavContainer"
     tabindex="-1"
   >
     <div
-      class="css-1jzbc50-boxStyles-BottomBar"
+      class="css-1fl9qli-boxStyles-BottomBar"
     />
     <div
       class="css-zlf9wg-boxStyles-NavContainer"
