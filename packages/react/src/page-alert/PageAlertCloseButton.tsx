@@ -34,7 +34,7 @@ export const PageAlertCloseButton = ({
 				},
 			})}
 		>
-			Dismiss
+			Close
 		</Button>
 	);
 };
