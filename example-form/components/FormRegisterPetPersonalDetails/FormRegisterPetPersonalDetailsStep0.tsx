@@ -8,7 +8,8 @@ import {
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import format from 'date-fns/format';
-import { Box, Stack } from '@ag.ds-next/react/box';
+import { Box } from '@ag.ds-next/react/box';
+import { Stack } from '@ag.ds-next/react/stack';
 import { Button, ButtonGroup } from '@ag.ds-next/react/button';
 import { FormStack } from '@ag.ds-next/react/form-stack';
 import { TextInput } from '@ag.ds-next/react/text-input';

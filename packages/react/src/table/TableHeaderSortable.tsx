@@ -1,5 +1,6 @@
 import { PropsWithChildren } from 'react';
-import { Box, Flex } from '../box';
+import { Box } from '../box';
+import { Flex } from '../flex';
 import { BaseButton } from '../button';
 import { boxPalette, ResponsiveProp } from '../core';
 import { ArrowDownIcon, ArrowUpIcon } from '../icon';

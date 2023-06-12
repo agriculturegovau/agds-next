@@ -1,7 +1,7 @@
 import { Fragment, PropsWithChildren } from 'react';
 import { useRouter } from 'next/router';
 import { ButtonLink } from '@ag.ds-next/react/button';
-import { Flex } from '@ag.ds-next/react/box';
+import { Flex } from '@ag.ds-next/react/flex';
 import { Prose } from '@ag.ds-next/react/prose';
 import { SkipLinksProps } from '@ag.ds-next/react/skip-link';
 import { SubNav } from '@ag.ds-next/react/sub-nav';

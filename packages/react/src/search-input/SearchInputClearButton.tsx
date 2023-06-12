@@ -1,6 +1,6 @@
 import { MouseEventHandler } from 'react';
 import { CloseIcon } from '../icon';
-import { Flex } from '../box';
+import { Flex } from '../flex';
 import { boxPalette, mapSpacing, tokens } from '../core';
 
 export type SearchInputClearButtonProps = {

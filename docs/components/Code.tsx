@@ -21,7 +21,8 @@ import {
 	useId,
 	useToggleState,
 } from '@ag.ds-next/react/core';
-import { Box, Flex } from '@ag.ds-next/react/box';
+import { Box } from '@ag.ds-next/react/box';
+import { Flex } from '@ag.ds-next/react/flex';
 import {
 	unsetProseStylesClassname,
 	proseBlockClassname,

@@ -1,4 +1,6 @@
-import { Box, Flex, Stack } from '../box';
+import { Box } from '../box';
+import { Flex } from '../flex';
+import { Stack } from '../stack';
 import { Text } from '../text';
 import { Card, CardInner } from '../card';
 import { H2 } from '../heading';

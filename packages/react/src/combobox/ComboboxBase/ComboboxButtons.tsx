@@ -7,7 +7,8 @@ import {
 import { IconProps, CloseIcon, ChevronDownIcon } from '../../icon';
 import { BaseButton } from '../../button';
 import { boxPalette, mapSpacing, tokens } from '../../core';
-import { Box, Flex, focusStyles } from '../../box';
+import { Box, focusStyles } from '../../box';
+import { Flex } from '../../flex';
 
 export function ComboboxButtonContainer({ children }: PropsWithChildren<{}>) {
 	return (

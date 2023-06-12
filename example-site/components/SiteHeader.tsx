@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router';
 import { Logo } from '@ag.ds-next/react/ag-branding';
-import { Stack } from '@ag.ds-next/react/box';
+import { Stack } from '@ag.ds-next/react/stack';
 import { Header } from '@ag.ds-next/react/header';
 import { AvatarIcon } from '@ag.ds-next/react/icon';
 import { MainNav, MainNavBottomBar } from '@ag.ds-next/react/main-nav';

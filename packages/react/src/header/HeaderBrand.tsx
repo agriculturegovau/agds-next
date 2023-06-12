@@ -1,5 +1,7 @@
 import { ReactNode } from 'react';
-import { Box, Flex, Stack } from '../box';
+import { Box } from '../box';
+import { Flex } from '../flex';
+import { Stack } from '../stack';
 import { tokens } from '../core';
 import { Text } from '../text';
 import { useLinkComponent, boxPalette, packs } from '../core';

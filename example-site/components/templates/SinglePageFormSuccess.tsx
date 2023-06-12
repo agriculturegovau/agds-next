@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react';
-import { Stack } from '@ag.ds-next/react/box';
+import { Stack } from '@ag.ds-next/react/stack';
 import { Breadcrumbs } from '@ag.ds-next/react/breadcrumbs';
 import { PageContent } from '@ag.ds-next/react/content';
 import { Columns, Column } from '@ag.ds-next/react/columns';

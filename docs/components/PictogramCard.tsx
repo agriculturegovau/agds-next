@@ -1,5 +1,5 @@
 import { Card, CardInner, CardLink } from '@ag.ds-next/react/card';
-import { Flex } from '@ag.ds-next/react/box';
+import { Flex } from '@ag.ds-next/react/flex';
 import { ChevronRightIcon } from '@ag.ds-next/react/icon';
 import { LinkProps } from '@ag.ds-next/react/core';
 import { getPictogram } from './pictograms';

@@ -6,7 +6,7 @@ import { useForm, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { cleanup, render, screen } from '../../../../test-utils';
-import { Stack } from '../box';
+import { Stack } from '../stack';
 import { Button } from '../button';
 import { formatHumanReadableDate, parseDate } from '../date-picker/utils';
 import { yupDateField, errorMessage } from '../date-picker/test-utils';

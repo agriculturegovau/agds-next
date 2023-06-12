@@ -1,7 +1,7 @@
 import { Fragment } from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 import { Prose } from '../prose';
-import { Stack } from '../box';
+import { Stack } from '../stack';
 import {
 	InpageNav,
 	InpageNavContainer,

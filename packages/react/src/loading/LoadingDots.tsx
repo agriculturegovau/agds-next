@@ -1,6 +1,7 @@
 import { HTMLAttributes } from 'react';
 import { keyframes } from '@emotion/react';
-import { Box, Flex } from '../box';
+import { Box } from '../box';
+import { Flex } from '../flex';
 import { mapSpacing } from '../core';
 import { VisuallyHidden } from '../a11y';
 

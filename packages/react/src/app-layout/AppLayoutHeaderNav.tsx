@@ -1,5 +1,5 @@
 import { Fragment, MouseEventHandler } from 'react';
-import { Flex } from '../box';
+import { Flex } from '../flex';
 import { boxPalette, tokens } from '../core';
 import { MenuIcon } from '../icon';
 import { BaseButton } from '../button';

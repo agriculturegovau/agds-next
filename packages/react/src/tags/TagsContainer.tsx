@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react';
-import { Stack } from '../box';
+import { Stack } from '../stack';
 
 export type TagsContainerProps = { children: ReactNode };
 

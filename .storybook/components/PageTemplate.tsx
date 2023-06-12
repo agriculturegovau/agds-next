@@ -1,6 +1,7 @@
 import { PropsWithChildren, useMemo } from 'react';
 import { Logo } from '@ag.ds-next/react/ag-branding';
-import { Box, Stack } from '@ag.ds-next/react/box';
+import { Box } from '@ag.ds-next/react/box';
+import { Stack } from '@ag.ds-next/react/stack';
 import { tokens } from '@ag.ds-next/react/core';
 import { Footer, FooterDivider } from '@ag.ds-next/react/footer';
 import { Header } from '@ag.ds-next/react/header';

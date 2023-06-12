@@ -1,5 +1,6 @@
 import type { PropsWithChildren } from 'react';
-import { Flex, Stack } from '../box';
+import { Flex } from '../flex';
+import { Stack } from '../stack';
 import { tokens, boxPalette } from '../core';
 import { localPaletteVars } from './localPalette';
 

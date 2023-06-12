@@ -1,4 +1,4 @@
-import { Flex } from '../box';
+import { Flex } from '../flex';
 import {
 	boxPalette,
 	mapSpacing,

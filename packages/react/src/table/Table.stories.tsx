@@ -1,6 +1,6 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { Text } from '../text';
-import { Stack } from '../box';
+import { Stack } from '../stack';
 import { H1 } from '../heading';
 import { Table } from './Table';
 import { TableBody } from './TableBody';

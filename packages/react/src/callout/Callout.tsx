@@ -1,5 +1,5 @@
 import { ElementType, PropsWithChildren } from 'react';
-import { Flex } from '../box';
+import { Flex } from '../flex';
 import { CalloutTitle } from './CalloutTitle';
 
 export type CalloutProps = PropsWithChildren<{

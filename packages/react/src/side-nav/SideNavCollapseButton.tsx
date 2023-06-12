@@ -1,5 +1,5 @@
 import { PropsWithChildren } from 'react';
-import { Flex } from '../box';
+import { Flex } from '../flex';
 import { BaseButton } from '../button';
 import { ChevronDownIcon } from '../icon';
 import { tokens } from '../core';

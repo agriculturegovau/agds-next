@@ -1,6 +1,6 @@
 import { visuallyHiddenStyles } from '../a11y';
 import { Text } from '../text';
-import { Flex } from '../box';
+import { Flex } from '../flex';
 import { boxPalette, packs } from '../core';
 import {
 	SwitchContainer,

@@ -1,5 +1,5 @@
 import type { PropsWithChildren } from 'react';
-import { Stack } from '../box';
+import { Stack } from '../stack';
 
 export type LinkListContainerProps = PropsWithChildren<{
 	horizontal?: boolean;

@@ -1,4 +1,4 @@
-import { Flex } from '../box';
+import { Flex } from '../flex';
 import { ChevronDownIcon } from '../icon';
 import { tokens } from '../core';
 import { BaseButton } from '../button';

@@ -3,7 +3,7 @@ import { useForm, SubmitHandler } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { Prose } from '@ag.ds-next/react/prose';
-import { Stack } from '@ag.ds-next/react/box';
+import { Stack } from '@ag.ds-next/react/stack';
 import { Checkbox } from '@ag.ds-next/react/checkbox';
 import { ControlGroup } from '@ag.ds-next/react/control-group';
 import { FormStack } from '@ag.ds-next/react/form-stack';

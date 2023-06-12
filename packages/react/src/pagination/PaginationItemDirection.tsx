@@ -1,7 +1,8 @@
 import { ElementType, PropsWithChildren } from 'react';
 import { MouseEventHandler } from 'react';
 import { LinkProps } from '../core';
-import { Box, Flex } from '../box';
+import { Box } from '../box';
+import { Flex } from '../flex';
 import { TextLink } from '../text-link';
 import { BaseButton, BaseButtonProps } from '../button';
 import { ArrowRightIcon, ArrowLeftIcon } from '../icon';

@@ -1,6 +1,6 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { useState } from 'react';
-import { Stack } from '../box';
+import { Stack } from '../stack';
 import { SearchInput } from './SearchInput';
 
 export default {

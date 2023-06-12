@@ -1,5 +1,6 @@
 import { PropsWithChildren, ReactNode } from 'react';
-import { Flex, Stack } from '../../box';
+import { Flex } from '../../flex';
+import { Stack } from '../../stack';
 import { Content } from '../../content';
 import { HeroBannerBackground } from '../utils';
 import { HeroBannerImage } from './HeroBannerImage';

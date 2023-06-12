@@ -1,4 +1,5 @@
-import { Box, Stack } from '@ag.ds-next/react/box';
+import { Box } from '@ag.ds-next/react/box';
+import { Stack } from '@ag.ds-next/react/stack';
 import { Button, ButtonLink } from '@ag.ds-next/react/button';
 import { PageContent } from '@ag.ds-next/react/content';
 import { useToggleState } from '@ag.ds-next/react/core';

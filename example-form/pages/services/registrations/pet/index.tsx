@@ -2,7 +2,7 @@ import { Columns, Column } from '@ag.ds-next/react/columns';
 import { H2 } from '@ag.ds-next/react/heading';
 import { PageContent } from '@ag.ds-next/react/content';
 import { Prose } from '@ag.ds-next/react/prose';
-import { Stack } from '@ag.ds-next/react/box';
+import { Stack } from '@ag.ds-next/react/stack';
 import { TaskList } from '@ag.ds-next/react/task-list';
 import { Text } from '@ag.ds-next/react/text';
 import { Breadcrumbs } from '@ag.ds-next/react/breadcrumbs';
