@@ -7,7 +7,7 @@ exports[`FilterDrawer renders correctly 1`] = `
   />
   <div>
     <div
-      class="css-1nfidid-FilterDrawer"
+      class="css-hyp6kw-Overlay"
       style="opacity: 0;"
     />
     <div
@@ -26,7 +26,7 @@ exports[`FilterDrawer renders correctly 1`] = `
         style="transform: translateX(100%);"
       >
         <div
-          class="css-vcprua-boxStyles"
+          class="css-1iljj5f-boxStyles"
         >
           <h2
             class="css-4kc494-boxStyles-Text-FilterDrawerHeaderTitle"
@@ -47,7 +47,7 @@ exports[`FilterDrawer renders correctly 1`] = `
           </p>
         </div>
         <div
-          class="css-zzcowr-boxStyles-FilterDrawerFooter"
+          class="css-p9ibp2-boxStyles-FilterDrawerFooter"
         >
           <button
             class="css-3jmmp1-BaseButton-Button"
@@ -66,7 +66,6 @@ exports[`FilterDrawer renders correctly 1`] = `
           </button>
         </div>
         <button
-          aria-label="Close drawer"
           class="css-1alhlgt-BaseButton-FilterDrawerDialog"
           type="button"
         >

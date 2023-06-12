@@ -1,16 +1,30 @@
-import { Fragment, FunctionComponent, useEffect } from 'react';
+import {
+	Fragment,
+	FunctionComponent,
+	PropsWithChildren,
+	ReactNode,
+	useEffect,
+} from 'react';
 import { Global } from '@emotion/react';
 import { createPortal } from 'react-dom';
-import { useTransition, animated } from '@react-spring/web';
-import { useAriaModalPolyfill, usePrefersReducedMotion } from '../core';
+import { useTransition, animated, SpringValue } from '@react-spring/web';
 import {
-	FilterDrawerDialog,
-	FilterDrawerDialogProps,
-} from './FilterDrawerDialog';
+	boxPalette,
+	useAriaModalPolyfill,
+	usePrefersReducedMotion,
+} from '../core';
+import { FilterDrawerDialog } from './FilterDrawerDialog';
 
-export type FilterDrawerProps = FilterDrawerDialogProps & {
+export type FilterDrawerProps = PropsWithChildren<{
+	/** The actions to display at the bottom of the drawer. Typically a `ButtonGroup`. */
+	actions?: ReactNode;
+	/** If true, the drawer will be displayed. */
 	isOpen?: boolean;
-};
+	/** Function to be called when the drawer is closed. */
+	onDismiss: () => void;
+	/** The title of the drawer. It can span lines but should not be too long. */
+	title: string;
+}>;
 
 export const FilterDrawer: FunctionComponent<FilterDrawerProps> = ({
 	actions,
@@ -18,7 +32,6 @@ export const FilterDrawer: FunctionComponent<FilterDrawerProps> = ({
 	isOpen = false,
 	onDismiss,
 	title,
-	overlay = true,
 }) => {
 	// Close the FilterDrawer when the user presses the escape key
 	useEffect(() => {
@@ -48,27 +61,15 @@ export const FilterDrawer: FunctionComponent<FilterDrawerProps> = ({
 
 	return createPortal(
 		<Fragment>
-			{isOpen && overlay ? <LockScroll /> : null}
+			{isOpen ? <LockScroll /> : null}
 			{dialogTransitions(({ translateX, opacity }, item) =>
 				item ? (
 					<div ref={modalContainerRef}>
-						{overlay ? (
-							<animated.div
-								css={{
-									position: 'fixed',
-									inset: 0,
-									backgroundColor: `rgba(0, 0, 0, 0.8)`,
-									zIndex: 100,
-									overflow: 'hidden',
-								}}
-								style={{ opacity }}
-							/>
-						) : null}
+						<Overlay style={{ opacity }} />
 						<FilterDrawerDialog
 							onDismiss={onDismiss}
 							title={title}
 							actions={actions}
-							overlay={overlay}
 							style={{ translateX }}
 						>
 							{children}
@@ -81,4 +82,20 @@ export const FilterDrawer: FunctionComponent<FilterDrawerProps> = ({
 	);
 };
 
-const LockScroll = () => <Global styles={{ body: { overflow: 'hidden' } }} />;
+function Overlay({ style }: { style: { opacity: SpringValue<number> } }) {
+	return (
+		<animated.div
+			css={{
+				position: 'fixed',
+				inset: 0,
+				backgroundColor: boxPalette.overlay,
+				zIndex: 100,
+			}}
+			style={style}
+		/>
+	);
+}
+
+function LockScroll() {
+	return <Global styles={{ body: { overflow: 'hidden' } }} />;
+}

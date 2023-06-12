@@ -1,7 +1,8 @@
 import { PropsWithChildren, ReactNode } from 'react';
 import FocusLock from 'react-focus-lock';
 import { animated, SpringValue } from '@react-spring/web';
-import { Box, Flex } from '../box';
+import { Box } from '../box';
+import { Flex } from '../flex';
 import { mapSpacing } from '../core';
 import { CloseIcon } from '../icon';
 import { Button } from '../button';
@@ -9,26 +10,21 @@ import { Text } from '../text';
 import { useFilterDrawerId } from './utils';
 
 export type FilterDrawerDialogProps = PropsWithChildren<{
-	/** The actions to display at the bottom of the FilterDrawer panel. Typically a `ButtonGroup`. */
 	actions?: ReactNode;
-	/** Function to be called when the FilterDrawer is closed. */
 	onDismiss: () => void;
-	/** The title of the FilterDrawer dialog. It can span lines but should not be too long. */
 	title: string;
-	overlay?: boolean; // TODO This probably will be removed
 	style?: { translateX: SpringValue<string> };
 }>;
 
 const AnimatedFlex = animated(Flex);
 
-export const FilterDrawerDialog = ({
+export function FilterDrawerDialog({
 	actions,
 	children,
 	title,
 	onDismiss,
-	overlay = true,
-	style, // TODO This probably will be removed
-}: FilterDrawerDialogProps) => {
+	style,
+}: FilterDrawerDialogProps) {
 	const { titleId } = useFilterDrawerId();
 	return (
 		<FocusLock returnFocus>
@@ -50,9 +46,6 @@ export const FilterDrawerDialog = ({
 					right: 0,
 					bottom: 0,
 					zIndex: 100,
-					...(!overlay && {
-						boxShadow: '-2px 0px 4px rgba(0, 0, 0, 0.3)',
-					}),
 				}}
 				style={style}
 			>
@@ -65,7 +58,6 @@ export const FilterDrawerDialog = ({
 				{actions ? <FilterDrawerFooter>{actions}</FilterDrawerFooter> : null}
 				<Button
 					variant="tertiary"
-					aria-label="Close drawer"
 					onClick={onDismiss}
 					iconAfter={CloseIcon}
 					css={{
@@ -79,13 +71,13 @@ export const FilterDrawerDialog = ({
 			</AnimatedFlex>
 		</FocusLock>
 	);
-};
+}
 
 type FilterDrawerHeaderProps = PropsWithChildren<{}>;
 
 function FilterDrawerHeader({ children }: FilterDrawerHeaderProps) {
 	return (
-		<Box borderBottom borderColor="muted" padding={1.5}>
+		<Box borderBottom borderColor="muted" paddingX={1.5} paddingY={1}>
 			{children}
 		</Box>
 	);
@@ -131,7 +123,8 @@ function FilterDrawerFooter({ children }: FilterDrawerFooterProps) {
 		<Box
 			borderTop
 			borderColor="muted"
-			padding={1.5}
+			paddingX={1.5}
+			paddingY={1}
 			css={{ marginTop: 'auto' }}
 		>
 			{children}

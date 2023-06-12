@@ -1,8 +1,8 @@
 import { useId } from '../core';
 
-export const useFilterDrawerId = () => {
+export function useFilterDrawerId() {
 	const id = useId();
 	return {
 		titleId: `filter-drawer-${id}-title`,
 	};
-};
+}

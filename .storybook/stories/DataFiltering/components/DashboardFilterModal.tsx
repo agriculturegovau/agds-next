@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react';
-import { Stack } from '@ag.ds-next/react/box';
-import { DateRangePicker } from '@ag.ds-next/react/date-picker';
+import { Stack } from '@ag.ds-next/react/stack';
+import { DateRangePicker } from '@ag.ds-next/react/date-range-picker';
 import { Fieldset } from '@ag.ds-next/react/fieldset';
 import { FormStack } from '@ag.ds-next/react/form-stack';
+import { Divider } from '@ag.ds-next/react/divider';
 import { FilterDrawer } from '@ag.ds-next/react/src/filter-drawer';
 import { Button, ButtonGroup } from '@ag.ds-next/react/button';
 import { GetDataFilters } from '../lib/getData';
-import { FormDivider } from '../../../../example-site/components/FormDivider';
 import { FilterStatusSelect } from './FilterStatusSelect';
 import { FilterAssigneeSelect } from './FilterAssigneeSelect';
 import { FilterStateSelect } from './FilterStateSelect';
@@ -66,7 +66,7 @@ export const DashboardFilterModal = ({
 						/>
 					</FormStack>
 				</Fieldset>
-				<FormDivider />
+				<Divider />
 				<Fieldset legend="Fieldset">
 					<FormStack>
 						<FilterAssigneeSelect
