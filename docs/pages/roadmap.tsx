@@ -52,7 +52,7 @@ export default function RoadmapPage() {
 								<TextLink href="/components/app-layout">
 									App layout component
 								</TextLink>{' '}
-								for Export Service authenticated space
+								for the Export Service authenticated space
 							</li>
 							<li>
 								Improvements to{' '}
