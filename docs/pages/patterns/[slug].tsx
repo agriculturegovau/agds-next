@@ -1,6 +1,7 @@
 import { GetStaticProps, InferGetStaticPropsType } from 'next';
 import { MDXRemote } from 'next-mdx-remote';
 import { Prose } from '@ag.ds-next/react/prose';
+import { InpageNav } from '@ag.ds-next/react/inpage-nav';
 import {
 	getPattern,
 	getPatternSlugs,
@@ -8,6 +9,7 @@ import {
 	getPatternNavLinks,
 	Pattern,
 } from '../../lib/mdx/patterns';
+import { generateToc } from '../../lib/generateToc';
 import { PatternLayout } from '../../components/PatternLayout';
 import { mdxComponents } from '../../components/mdxComponents';
 import { DocumentTitle } from '../../components/DocumentTitle';
@@ -16,6 +18,7 @@ export default function PatternPage({
 	breadcrumbs,
 	pattern,
 	navLinks,
+	toc,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
 	return (
 		<>
@@ -29,6 +32,12 @@ export default function PatternPage({
 				editPath={`/docs/content/patterns/${pattern.slug}/index.mdx`}
 				navLinks={navLinks}
 			>
+				{toc?.length > 1 ? (
+					<InpageNav
+						title="On this page"
+						links={toc.map((i) => ({ label: i.title, href: `#${i.slug}` }))}
+					/>
+				) : null}
 				<Prose id="page-content">
 					<MDXRemote {...pattern.source} components={mdxComponents} />
 				</Prose>
@@ -42,6 +51,7 @@ export const getStaticProps: GetStaticProps<
 		pattern: Pattern;
 		navLinks: Awaited<ReturnType<typeof getPatternNavLinks>>;
 		breadcrumbs: Awaited<ReturnType<typeof getPatternBreadcrumbs>>;
+		toc: Awaited<ReturnType<typeof generateToc>>;
 	},
 	{ slug: string }
 > = async ({ params }) => {
@@ -54,13 +64,14 @@ export const getStaticProps: GetStaticProps<
 	}
 
 	const breadcrumbs = await getPatternBreadcrumbs(slug);
+	const toc = await generateToc(pattern.content);
 
 	return {
 		props: {
-			pattern,
-			navLinks,
 			breadcrumbs,
-			slug,
+			navLinks,
+			pattern,
+			toc,
 		},
 	};
 };
