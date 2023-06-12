@@ -1,0 +1,117 @@
+---
+date: 12th June 2023
+title: AgDS Beta v1.6.0 release
+description:
+---
+
+## Updates
+
+### [App layout](/components/app-layout)
+
+- Updated `AppLayoutFooterDivider` border color from `border` to `borderMuted` ([PR #1181](https://github.com/steelthreads/agds-next/pull/1181))
+- Adding missing aria dialog tags to mobile version of App layout sidebar ([PR #1119](https://github.com/steelthreads/agds-next/pull/1119))
+
+### [Autocomplete](/components/autocomplete)
+
+- Fixed bug where the "Clear" button was not being rendered as expected ([PR #1123](https://github.com/steelthreads/agds-next/pull/1123))
+- Added new prop `emptyResultsMessage` which can be used to display a message when no options match the users search term ([PR #1123](https://github.com/steelthreads/agds-next/pull/1123))
+
+### [Badge](/components/badge)
+
+[Indicator dot](/components/indicator-dot), [Notification badge](/components/notification-badge) and [Status badge](/components/status-badge) have been moved to their own entry points.
+
+These components will continue to work out of the the `@ag.ds-next/react/badge` entrypoint, but this usage has been marked as deprecated and will be removed in the next major release.
+
+To upgrade, update the import when using these components.
+
+```diff
+- import { IndicatorDot, NotificationBadge, StatusBadge } from '@ag.ds-next/react/badge';
++ import { IndicatorDot } from '@ag.ds-next/react/indicator-dot';
++ import { NotificationBadge } from '@ag.ds-next/react/notification-badge';
++ import { StatusBadge } from '@ag.ds-next/react/status-badge';
+```
+
+### [Box](/components/box)
+
+[Flex](/components/flex) and [Stack](/components/stack) have been moved to their own entry points.
+
+These components will continue to work out of the the `@ag.ds-next/react/box` entrypoint, but this usage has been marked as deprecated and will be removed in the next major release.
+
+To upgrade, update the import when using these components.
+
+```diff
+- import { Box, Flex, Stack } from '@ag.ds-next/react/box';
++ import { Box } from '@ag.ds-next/react/box';
++ import { Flex } from '@ag.ds-next/react/flex';
++ import { Stack } from '@ag.ds-next/react/stack';
+```
+
+### [Combobox](/components/combobox)
+
+- Remove `use-debounce` dependency ([PR #1131](https://github.com/steelthreads/agds-next/pull/1131))
+- Fixed bug where the "Clear" button was not being rendered as expected ([PR #1123](https://github.com/steelthreads/agds-next/pull/1123))
+- Updated logic in the `splitLabel` helper function so options with special characters (brackets, slashes etc) are handled correctly ([PR #1176](https://github.com/steelthreads/agds-next/pull/1176))
+
+### [Control input](/components/control-input)
+
+[Checkbox](/components/checkbox), [Radio](/components/radio) and [Control group](/components/control-group) have been moved to their own entry points.
+
+These components will continue to work out of the the `@ag.ds-next/react/control-input` entrypoint, but this usage has been marked as deprecated and will be removed in the next major release.
+
+To upgrade, update the import when using these components.
+
+```diff
+- import { Checkbox, Radio, ControlGroup } from '@ag.ds-next/react/control-input';
++ import { Checkbox } from '@ag.ds-next/react/checkbox';
++ import { Radio } from '@ag.ds-next/react/radio';
++ import { ControlGroup } from '@ag.ds-next/react/control-group';
+```
+
+### [Core](/components/core)
+
+- Created new hook `useAriaModalPolyfill` which adds `aria-hidden="true"` to every direct child of the `body` element when a modal is opened. This hook consolidates code that was previously copied/pasted across Modal, App layout and Main nav. ([PR #1119](https://github.com/steelthreads/agds-next/pull/1119))
+- Created a new `overlay` design token which can be used as an overlay for modals and other components that sit on top of the main background ([PR #1147](https://github.com/steelthreads/agds-next/pull/1147))
+
+### [Date picker](/components/date-picker)
+
+[Date range picker](/components/date-range-picker) has been moved to it's own entry point.
+
+`DateRangePicker` will continue to work out of the the `@ag.ds-next/react/date-picker` entrypoint, but this usage has been marked as deprecated and will be removed in the next major release.
+
+To upgrade, update the import when using these components.
+
+```diff
+- import { DateRangePicker } from '@ag.ds-next/react/date-picker';
++ import { DateRangePicker } from '@ag.ds-next/react/date-range-picker';
+```
+
+### [Date range picker](/components-date-range-picker)
+
+- Updated container wrapping behaviour to allow the component to be placed in tight areas such as sidebars ([PR #1177](https://github.com/steelthreads/agds-next/pull/1170))
+
+### [Divider](/components/divider)
+
+- Created new component `Divider` which is a horizontal rule that separates blocks of content ([PR #1180](https://github.com/steelthreads/agds-next/pull/1180))
+
+### [File upload](/components/file-upload)
+
+- Made internal types available to consumers ([PR #1183](https://github.com/steelthreads/agds-next/pull/1183))
+- Removed the filesize third party dependency ([PR #1110](https://github.com/steelthreads/agds-next/pull/1110))
+
+### [Page alert](/components/page-alert)
+
+- Added support for a react element in the `title` prop ([PR #1177](https://github.com/steelthreads/agds-next/pull/1177))
+
+### [Tags](/components/tags)
+
+- Enabled wrapping behaviour to allow tags to flow across multiple lines ([PR #1116](https://github.com/steelthreads/agds-next/pull/1116))
+
+## Released packages
+
+```sh
+"@ag.ds-next/react": "1.6.0"
+```
+
+## Full Changelog
+
+Aside from the [complete release notes on the @ag.ds-next website](https://design-system.agriculture.gov.au/updates/2023-06-12), you can also view the verbose change log in the [related PR](https://github.com/steelthreads/agds-next/pull/1118) for this release.
