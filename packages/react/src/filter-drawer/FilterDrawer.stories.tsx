@@ -25,7 +25,7 @@ export const Basic: Story = {
 	},
 	render: function Render(props) {
 		const [isFilterDrawerOpen, openFilterDrawer, closeFilterDrawer] =
-			useTernaryState(true);
+			useTernaryState(false);
 		return (
 			<Fragment>
 				<Button onClick={openFilterDrawer}>Open Filter drawer</Button>
@@ -69,7 +69,7 @@ export const WithFieldsets: Story = {
 	},
 	render: function Render(props) {
 		const [isFilterDrawerOpen, openFilterDrawer, closeFilterDrawer] =
-			useTernaryState(true);
+			useTernaryState(false);
 		return (
 			<Fragment>
 				<Button onClick={openFilterDrawer}>Open Filter drawer</Button>
