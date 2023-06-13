@@ -3,7 +3,7 @@ import { PageContent, ContentBleed } from '@ag.ds-next/react/content';
 import { Columns, Column } from '@ag.ds-next/react/columns';
 import { SideNav } from '@ag.ds-next/react/side-nav';
 import { Breadcrumbs } from '@ag.ds-next/react/breadcrumbs';
-import { Stack } from '@ag.ds-next/react/box';
+import { Stack } from '@ag.ds-next/react/stack';
 import { InpageNav } from '@ag.ds-next/react/inpage-nav';
 import { DirectionLink } from '@ag.ds-next/react/direction-link';
 import { Callout } from '@ag.ds-next/react/callout';

@@ -21,7 +21,8 @@ import {
 	useId,
 	useToggleState,
 } from '@ag.ds-next/react/core';
-import { Box, Flex } from '@ag.ds-next/react/box';
+import { Box } from '@ag.ds-next/react/box';
+import { Flex } from '@ag.ds-next/react/flex';
 import {
 	unsetProseStylesClassname,
 	proseBlockClassname,
@@ -34,6 +35,7 @@ import {
 } from '@ag.ds-next/react/icon';
 import { withBasePath } from '../lib/img';
 import * as designSystemComponents from './designSystemComponents';
+import { ConditionalFieldContainer } from './ConditionalFieldContainer';
 import { prismTheme } from './prism-theme';
 
 const PlaceholderImage = () => (
@@ -257,6 +259,7 @@ const StaticCode = ({
 
 const LIVE_SCOPE = {
 	...designSystemComponents,
+	ConditionalFieldContainer,
 	PlaceholderImage,
 	useState,
 	Fragment,

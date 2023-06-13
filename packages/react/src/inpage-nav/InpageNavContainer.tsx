@@ -1,5 +1,5 @@
 import type { PropsWithChildren } from 'react';
-import { Stack } from '../box';
+import { Stack } from '../stack';
 import { boxPalette } from '../core';
 
 export type InpageNavContainerProps = PropsWithChildren<{

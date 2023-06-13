@@ -6,7 +6,8 @@ import {
 	tokens,
 	useLinkComponent,
 } from '../core';
-import { Box, Flex, focusStyles } from '../box';
+import { Box, focusStyles } from '../box';
+import { Flex } from '../flex';
 import { BaseButton, BaseButtonProps } from '../button';
 import { IconProps } from '../icon';
 

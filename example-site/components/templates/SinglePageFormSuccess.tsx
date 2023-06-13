@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react';
-import { Stack } from '@ag.ds-next/react/box';
+import { Stack } from '@ag.ds-next/react/stack';
 import { Breadcrumbs } from '@ag.ds-next/react/breadcrumbs';
 import { PageContent } from '@ag.ds-next/react/content';
 import { Columns, Column } from '@ag.ds-next/react/columns';
@@ -34,10 +34,16 @@ export function SinglePageFormSuccess() {
 							]}
 						/>
 						<PageTitle title="Single-page form (multi-question) xxl/display (H1)" />
-						<PageAlert ref={successPageAlertRef} tabIndex={-1} tone="success">
-							<PageAlertTitle as="h2">
-								Descriptive success message (H2)
-							</PageAlertTitle>
+						<PageAlert
+							ref={successPageAlertRef}
+							tabIndex={-1}
+							tone="success"
+							title={
+								<PageAlertTitle as="h2">
+									Descriptive success message (H2)
+								</PageAlertTitle>
+							}
+						>
 							<Prose>
 								<p>Supporting paragraph for the success message</p>
 								<p>

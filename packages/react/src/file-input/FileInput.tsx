@@ -48,7 +48,6 @@ export const FileInput = forwardRef<HTMLInputElement, FileInputProps>(
 		},
 		ref
 	) {
-		const styles = fileInputStyles({ invalid });
 		return (
 			<Field
 				label={label}
@@ -60,33 +59,35 @@ export const FileInput = forwardRef<HTMLInputElement, FileInputProps>(
 				id={id}
 			>
 				{(a11yProps) => (
-					<input ref={ref} css={styles} {...a11yProps} type="file" {...props} />
+					<input
+						ref={ref}
+						css={{
+							...fontGrid('sm', 'default'),
+							fontFamily: tokens.font.body,
+							color: boxPalette.foregroundText,
+
+							'::file-selector-button': {
+								...buttonStyles({
+									size: 'md',
+									variant: 'secondary',
+									block: false,
+								}),
+								margin: `0 ${mapSpacing(1)} 0 0`,
+							},
+
+							'&:disabled': {
+								cursor: 'not-allowed',
+								opacity: 0.3,
+							},
+
+							'&:focus': packs.outline,
+						}}
+						{...a11yProps}
+						type="file"
+						{...props}
+					/>
 				)}
 			</Field>
 		);
 	}
 );
-
-export const fileInputStyles = ({ invalid }: { invalid?: boolean }) =>
-	({
-		...fontGrid('sm', 'default'),
-		fontFamily: tokens.font.body,
-		color: boxPalette.foregroundText,
-
-		'::file-selector-button': {
-			...buttonStyles({ size: 'md', variant: 'secondary', block: false }),
-			margin: `0 ${mapSpacing(1)} 0 0`,
-		},
-
-		...(invalid && {
-			backgroundColor: boxPalette.systemErrorMuted,
-			color: boxPalette.systemError,
-		}),
-
-		'&:disabled': {
-			cursor: 'not-allowed',
-			opacity: 0.3,
-		},
-
-		'&:focus': packs.outline,
-	} as const);

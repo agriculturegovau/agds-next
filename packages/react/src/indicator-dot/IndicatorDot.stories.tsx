@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from '@storybook/react';
-import { Flex } from '../box';
+import { Flex } from '../flex';
 import { VisuallyHidden } from '../a11y';
 import { Text } from '../text';
 import { boxPalette } from '../core';

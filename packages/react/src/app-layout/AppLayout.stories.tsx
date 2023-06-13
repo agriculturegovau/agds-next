@@ -9,7 +9,7 @@ import { tokens } from '../core';
 import { LinkList } from '../link-list';
 import { SkipLinks } from '../skip-link';
 import { Text } from '../text';
-import { Stack } from '../box';
+import { Stack } from '../stack';
 import { H1 } from '../heading';
 import { TextLink } from '../text-link';
 import { navigationItems } from './test-utils';

@@ -1,5 +1,5 @@
 import { forwardRef, MouseEventHandler, RefObject, useMemo } from 'react';
-import { Flex } from '../box';
+import { Flex } from '../flex';
 import { CalendarIcon } from '../icon';
 import { TextInputProps, textInputStyles } from '../text-input';
 import { mapSpacing } from '../core';

@@ -1,4 +1,4 @@
-import { Flex } from '../../box';
+import { Flex } from '../../flex';
 import { AlertFilledIcon } from '../../icon';
 import { Text } from '../../text';
 import { ComboboxListItem } from './ComboboxListItem';

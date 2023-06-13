@@ -1,6 +1,7 @@
 import { PropsWithChildren } from 'react';
 import { boxPalette, tokens } from '../core';
-import { Box, Flex } from '../box';
+import { Box } from '../box';
+import { Flex } from '../flex';
 import { switchTrackStyles } from './utils';
 
 export type SwitchSize = 'sm' | 'md';

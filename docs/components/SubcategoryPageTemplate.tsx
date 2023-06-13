@@ -4,7 +4,8 @@ import {
 	HeroSubcategoryBanner,
 	HeroSubcategoryBannerTitle,
 } from '@ag.ds-next/react/hero-banner';
-import { Flex, Stack } from '@ag.ds-next/react/box';
+import { Flex } from '@ag.ds-next/react/flex';
+import { Stack } from '@ag.ds-next/react/stack';
 import { Breadcrumbs, BreadcrumbsProps } from '@ag.ds-next/react/breadcrumbs';
 import { SiteLayout } from './SiteLayout';
 import { EditPage } from './EditPage';

@@ -1,5 +1,7 @@
 import { ButtonHTMLAttributes, ElementType, PropsWithChildren } from 'react';
-import { Box, Flex, Stack, backgroundColorMap } from '../box';
+import { Box, backgroundColorMap } from '../box';
+import { Flex } from '../flex';
+import { Stack } from '../stack';
 import { Text } from '../text';
 import { TextLink } from '../text-link';
 import {

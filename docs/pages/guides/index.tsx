@@ -1,6 +1,7 @@
 import { normalize } from 'path';
 import { Card, CardInner, CardLink } from '@ag.ds-next/react/card';
-import { Box, Stack } from '@ag.ds-next/react/box';
+import { Box } from '@ag.ds-next/react/box';
+import { Stack } from '@ag.ds-next/react/stack';
 import { Text } from '@ag.ds-next/react/text';
 import { Columns } from '@ag.ds-next/react/columns';
 import { getMarkdownData } from '../../lib/mdxUtils';

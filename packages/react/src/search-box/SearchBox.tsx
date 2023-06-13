@@ -1,5 +1,5 @@
 import { FormHTMLAttributes, PropsWithChildren } from 'react';
-import { Flex } from '../box';
+import { Flex } from '../flex';
 
 type NativeFormProps = FormHTMLAttributes<HTMLFormElement>;
 

@@ -1,6 +1,6 @@
 import '@testing-library/jest-dom';
 import 'html-validate/jest';
-import { Stack } from '../box';
+import { Stack } from '../stack';
 import { Heading } from '../heading';
 import { Text } from '../text';
 import { ChevronRightIcon } from '../icon';

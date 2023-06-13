@@ -1,5 +1,5 @@
 import { StoryObj, Meta } from '@storybook/react';
-import { Stack } from '../box';
+import { Stack } from '../stack';
 import { Text } from '../text';
 import { FontSize, tokens } from '../core';
 import { Columns, Column } from '../columns';

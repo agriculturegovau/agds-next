@@ -10,7 +10,7 @@ import {
 } from '@ag.ds-next/react/table';
 import { Text } from '@ag.ds-next/react/text';
 import { tokens, FontSize, Font } from '@ag.ds-next/react/core';
-import { Stack } from '@ag.ds-next/react/box';
+import { Stack } from '@ag.ds-next/react/stack';
 import { InpageNav } from '@ag.ds-next/react/inpage-nav';
 import { DocumentTitle } from '../../../components/DocumentTitle';
 import { TokenLayout } from '../../../components/TokenLayout';

@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Meta, StoryObj } from '@storybook/react';
-import { Box, Stack } from '../box';
+import { Box } from '../box';
+import { Stack } from '../stack';
 import { useToggleState } from '../core';
 import { Prose } from '../prose';
 import { Button } from '../button';

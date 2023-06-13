@@ -8,7 +8,8 @@ import {
 import { createPortal } from 'react-dom';
 import FocusLock from 'react-focus-lock';
 import { Global } from '@emotion/react';
-import { Box, Flex, backgroundColorMap } from '../box';
+import { Box, backgroundColorMap } from '../box';
+import { Flex } from '../flex';
 import {
 	boxPalette,
 	useTernaryState,
@@ -180,7 +181,7 @@ function Overlay({ onClick }: { onClick: MouseEventHandler<HTMLDivElement> }) {
 				left: 0,
 				bottom: 0,
 				right: 0,
-				backgroundColor: `rgba(0, 0, 0, 0.8)`,
+				backgroundColor: boxPalette.overlay,
 				zIndex: 100,
 			}}
 			onClick={onClick}

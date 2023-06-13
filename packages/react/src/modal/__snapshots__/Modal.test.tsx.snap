@@ -6,7 +6,7 @@ exports[`Modal renders correctly 1`] = `
     aria-hidden="true"
   />
   <div
-    class="css-rpfvdv-ModalCover"
+    class="css-cikjj0-ModalCover"
   >
     <div
       data-focus-guard="true"

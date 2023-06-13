@@ -11,7 +11,9 @@ import {
 	SearchBoxButton,
 	SearchBoxInput,
 } from '@ag.ds-next/react/search-box';
-import { Flex, Stack } from '@ag.ds-next/react/box';
+import { Divider } from '@ag.ds-next/react/divider';
+import { Flex } from '@ag.ds-next/react/flex';
+import { Stack } from '@ag.ds-next/react/stack';
 import { Breadcrumbs } from '@ag.ds-next/react/breadcrumbs';
 import { Button, ButtonGroup } from '@ag.ds-next/react/button';
 import { Callout } from '@ag.ds-next/react/callout';
@@ -20,7 +22,9 @@ import { Card, CardInner } from '@ag.ds-next/react/card';
 import { Columns, Column } from '@ag.ds-next/react/columns';
 import { PageContent } from '@ag.ds-next/react/content';
 import { Switch } from '@ag.ds-next/react/switch';
-import { ControlGroup, Checkbox, Radio } from '@ag.ds-next/react/control-input';
+import { Checkbox } from '@ag.ds-next/react/checkbox';
+import { Radio } from '@ag.ds-next/react/radio';
+import { ControlGroup } from '@ag.ds-next/react/control-group';
 import { DirectionLink } from '@ag.ds-next/react/direction-link';
 import { Heading, H1, H2 } from '@ag.ds-next/react/heading';
 import { InpageNav } from '@ag.ds-next/react/inpage-nav';
@@ -400,6 +404,8 @@ export const KitchenSink = ({
 									</Button>
 								</ButtonGroup>
 							</FormStack>
+
+							<Divider />
 
 							<DirectionLink direction="left" href="#">
 								Back

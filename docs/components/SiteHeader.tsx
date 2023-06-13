@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router';
 import { Logo } from '@ag.ds-next/react/ag-branding';
-import { Stack } from '@ag.ds-next/react/box';
+import { Stack } from '@ag.ds-next/react/stack';
 import { Header } from '@ag.ds-next/react/header';
 import { MainNav } from '@ag.ds-next/react/main-nav';
 import { GithubIcon } from './GithubLogo';
@@ -11,8 +11,8 @@ const NAV_ITEMS = {
 		{ label: 'Foundations', href: '/foundations' },
 		{ label: 'Components', href: '/components' },
 		{ label: 'Patterns', href: '/patterns' },
+		{ label: 'Templates', href: '/templates' },
 		{ label: 'Guides', href: '/guides' },
-		{ label: 'Updates', href: '/updates' },
 	],
 	secondary: [
 		{

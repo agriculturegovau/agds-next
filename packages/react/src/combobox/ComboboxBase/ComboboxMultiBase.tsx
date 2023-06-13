@@ -24,7 +24,7 @@ import {
 	useTernaryState,
 } from '../../core';
 import { Field } from '../../field';
-import { Flex } from '../../box';
+import { Flex } from '../../flex';
 import { defaultRenderItem } from '../defaultRenderItem';
 import { DefaultComboboxOption } from '../utils';
 import { ComboboxList } from './ComboboxList';

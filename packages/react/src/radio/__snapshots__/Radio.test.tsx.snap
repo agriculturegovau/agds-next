@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Radio renders correctly 1`] = `
+<div>
+  <label
+    class="css-6pplfb-boxStyles-RadioContainer"
+  >
+    <input
+      class="css-1gurbk-RadioInput"
+      data-testid="example"
+      name="my-radio"
+      type="radio"
+    />
+    <span
+      class="css-osss6w-boxStyles-RadioIndicator"
+    >
+      <span
+        class="css-1f428uy-boxStyles-RadioIndicator"
+      />
+    </span>
+    <span
+      class="css-812asu-boxStyles-Text-RadioLabel"
+    >
+      My Radio
+    </span>
+  </label>
+</div>
+`;

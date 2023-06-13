@@ -1,26 +1,36 @@
-import { Flex, Stack } from '@ag.ds-next/react/box';
-import { Columns, Column } from '@ag.ds-next/react/columns';
-import { Prose, proseBlockClassname } from '@ag.ds-next/react/prose';
-import { goldTheme } from '@ag.ds-next/react/core';
+import { Flex } from '@ag.ds-next/react/flex';
+import { proseBlockClassname } from '@ag.ds-next/react/prose';
+import { goldTheme, Theme } from '@ag.ds-next/react/core';
 import { theme as agTheme } from '@ag.ds-next/react/ag-branding';
 import {
 	Table,
 	TableBody,
-	TableCaption,
 	TableCell,
 	TableHead,
 	TableHeader,
 	TableWrapper,
 } from '@ag.ds-next/react/table';
 
-type paletteName = 'light' | 'dark';
-
-const theme = {
+const theme: Theme = {
 	...goldTheme,
 	...agTheme,
 };
 
-const colourTokens = {
+type ColorTokenGroup = {
+	[tokenName: string]: {
+		dark: string | undefined;
+		light: string | undefined;
+		desc: string;
+	};
+};
+
+export const colourTokens: {
+	foreground: ColorTokenGroup;
+	background: ColorTokenGroup;
+	border: ColorTokenGroup;
+	system: ColorTokenGroup;
+	miscellaneous: ColorTokenGroup;
+} = {
 	foreground: {
 		text: {
 			light: theme.lightForegroundText,
@@ -36,11 +46,6 @@ const colourTokens = {
 			light: theme.lightForegroundAction,
 			dark: theme.darkForegroundAction,
 			desc: 'Used to indicate interactive components like links and buttons. Don’t use the action colour for non-interactive components as it could confuse users. Also make sure you don’t rely on colour alone to indicate that a component is interactive, use additional visual cues.',
-		},
-		focus: {
-			light: theme.lightForegroundFocus,
-			dark: theme.darkForegroundFocus,
-			desc: 'Used to highlight interactive components for those navigating via keyboard.',
 		},
 	},
 	background: {
@@ -78,7 +83,6 @@ const colourTokens = {
 		},
 	},
 	system: {
-		accent: { light: theme.lightAccent, dark: theme.darkAccent, desc: '' },
 		systemSuccess: {
 			light: theme.lightSystemSuccess,
 			dark: theme.darkSystemSuccess,
@@ -120,7 +124,24 @@ const colourTokens = {
 			desc: 'Used as a background for a Component with an `warning` tone.',
 		},
 	},
-} as const;
+	miscellaneous: {
+		overlay: {
+			light: theme.lightOverlay,
+			dark: theme.darkOverlay,
+			desc: 'Used as an overlay for modals and other components that sit on top of the main background. The main content area beneath is considered disabled and not interactive.',
+		},
+		focus: {
+			light: theme.lightForegroundFocus,
+			dark: theme.darkForegroundFocus,
+			desc: 'Used to highlight interactive components for those navigating via keyboard.',
+		},
+		accent: {
+			light: theme.lightAccent,
+			dark: theme.darkAccent,
+			desc: 'Used to add a highlight of branding colours to navigation elements',
+		},
+	},
+};
 
 function ColorSquare({ color }: { color?: string }) {
 	return (
@@ -135,220 +156,72 @@ function ColorSquare({ color }: { color?: string }) {
 }
 
 export const ColorTable = ({
-	activePalette,
+	'aria-labelledby': ariaLabelledby,
+	'aria-describedby': ariaDescribedby,
+	tokens,
 }: {
-	activePalette: paletteName;
+	'aria-labelledby': string;
+	'aria-describedby': string;
+	tokens: {
+		name: string;
+		desc: string;
+		color: string | undefined;
+	}[];
 }) => {
 	return (
-		<>
-			<h3 id="foreground">Foreground colors</h3>
-			<p>
-				Designed to sit on top of background colours to ensure contrast ratios
-				meet WCAG 2.1 level AA accessibility requirements.
-			</p>
-
-			<div className={proseBlockClassname}>
-				<TableWrapper>
-					<Table>
-						<TableCaption>All Foreground tokens</TableCaption>
-						<TableHead>
-							<tr>
-								<TableHeader width="25%" scope="col">
-									Name
-								</TableHeader>
-								<TableHeader width="25%" scope="col">
-									Value
-								</TableHeader>
-								<TableHeader width="50%" scope="col">
-									Description
-								</TableHeader>
-							</tr>
-						</TableHead>
-						<TableBody>
-							{Object.entries(colourTokens.foreground).map(
-								([tokenName, { [activePalette]: color, desc }]) => {
-									return (
-										<tr key={tokenName}>
-											<TableCell>
-												<Flex gap={0.5} alignItems="center">
-													<ColorSquare color={color} />
-													{tokenName}
-												</Flex>
-											</TableCell>
-											<TableCell>{color}</TableCell>
-											<TableCell>{desc}</TableCell>
-										</tr>
-									);
-								}
-							)}
-						</TableBody>
-					</Table>
-				</TableWrapper>
-			</div>
-
-			<h3 id="background">Background colors</h3>
-			<p>
-				Designed to sit under foreground colours to ensure contrast ratios meet
-				WCAG 2.1 level AA accessibility requirements. Each colour palette has 2
-				main background colours to choose from, the default background (body)
-				and a darker alternative (body-alt). Shades can be used to help
-				differentiate or highlight content against the body background colours.
-			</p>
-
-			<div className={proseBlockClassname}>
-				<TableWrapper>
-					<Table>
-						<TableCaption>All Background tokens</TableCaption>
-						<TableHead>
-							<tr>
-								<TableHeader width="25%" scope="col">
-									Name
-								</TableHeader>
-								<TableHeader width="25%" scope="col">
-									Value
-								</TableHeader>
-								<TableHeader width="50%" scope="col">
-									Description
-								</TableHeader>
-							</tr>
-						</TableHead>
-						<TableBody>
-							{Object.entries(colourTokens.background).map(
-								([tokenName, { [activePalette]: color, desc }]) => {
-									return (
-										<tr key={tokenName}>
-											<TableCell>
-												<Flex gap={0.5} alignItems="center">
-													<ColorSquare color={color} />
-													{tokenName}
-												</Flex>
-											</TableCell>
-											<TableCell>{color}</TableCell>
-											<TableCell>{desc}</TableCell>
-										</tr>
-									);
-								}
-							)}
-						</TableBody>
-					</Table>
-				</TableWrapper>
-			</div>
-
-			<h3 id="border">Border colors</h3>
-			<p>Each colour palette has 2 border colours.</p>
-			<div className={proseBlockClassname}>
-				<TableWrapper>
-					<Table>
-						<TableCaption>All Border tokens</TableCaption>
-						<TableHead>
-							<tr>
-								<TableHeader width="25%" scope="col">
-									Name
-								</TableHeader>
-								<TableHeader width="25%" scope="col">
-									Value
-								</TableHeader>
-								<TableHeader width="50%" scope="col">
-									Description
-								</TableHeader>
-							</tr>
-						</TableHead>
-						<TableBody>
-							{Object.entries(colourTokens.border).map(
-								([tokenName, { [activePalette]: color, desc }]) => {
-									return (
-										<tr key={tokenName}>
-											<TableCell>
-												<Flex gap={0.5} alignItems="center">
-													<ColorSquare color={color} />
-													{tokenName}
-												</Flex>
-											</TableCell>
-											<TableCell>{color}</TableCell>
-											<TableCell>{desc}</TableCell>
-										</tr>
-									);
-								}
-							)}
-						</TableBody>
-					</Table>
-				</TableWrapper>
-			</div>
-
-			<h3 id="system">System colors</h3>
-			<p>
-				System colours are used to indicate status. They’re very prominent
-				colours aimed at grabbing the user’s attention. Each system colour has a
-				muted version to be used as a background colour.
-			</p>
-			<div className={proseBlockClassname}>
-				<TableWrapper>
-					<Table>
-						<TableCaption>All System tokens</TableCaption>
-						<TableHead>
-							<tr>
-								<TableHeader width="25%" scope="col">
-									Name
-								</TableHeader>
-								<TableHeader width="25%" scope="col">
-									Value
-								</TableHeader>
-								<TableHeader width="50%" scope="col">
-									Description
-								</TableHeader>
-							</tr>
-						</TableHead>
-						<TableBody>
-							{Object.entries(colourTokens.system).map(
-								([tokenName, { [activePalette]: color, desc }]) => {
-									return (
-										<tr key={tokenName}>
-											<TableCell>
-												<Flex gap={0.5} alignItems="center">
-													<ColorSquare color={color} />
-													{tokenName}
-												</Flex>
-											</TableCell>
-											<TableCell>{color}</TableCell>
-											<TableCell>{desc}</TableCell>
-										</tr>
-									);
-								}
-							)}
-						</TableBody>
-					</Table>
-				</TableWrapper>
-			</div>
-		</>
+		<div className={proseBlockClassname}>
+			<TableWrapper>
+				<Table
+					aria-labelledby={ariaLabelledby}
+					aria-describedby={ariaDescribedby}
+				>
+					<TableHead>
+						<tr>
+							<TableHeader width="25%" scope="col">
+								Name
+							</TableHeader>
+							<TableHeader width="25%" scope="col">
+								Value
+							</TableHeader>
+							<TableHeader width="50%" scope="col">
+								Description
+							</TableHeader>
+						</tr>
+					</TableHead>
+					<TableBody>
+						{tokens.map(({ name, color, desc }) => {
+							return (
+								<tr key={name}>
+									<TableCell>
+										<Flex gap={0.5} alignItems="center">
+											<ColorSquare color={color} />
+											{name}
+										</Flex>
+									</TableCell>
+									<TableCell>{color}</TableCell>
+									<TableCell>{desc}</TableCell>
+								</tr>
+							);
+						})}
+					</TableBody>
+				</Table>
+			</TableWrapper>
+		</div>
 	);
 };
 
-export const ColorBlock = ({ isDarkMode }: { isDarkMode: boolean }) => {
-	return (
-		<Columns cols={{ xs: 1, md: 3 }} id="color">
-			<Column columnSpan={{ xs: 1, md: 2 }}>
-				<Stack gap={2}>
-					<Prose>
-						<h2>Color</h2>
-						<p>
-							The colour palette is designed and tested to provide colour
-							pairings that pass accessibility contrast ratios while still being
-							easy to implement. This means that designers and developers using
-							the system do not need to be concerned about if a colour will pass
-							WCAG requirements in a particular circumstance.
-						</p>
-
-						<p>
-							We use semantic naming so that all colours labeled as foreground
-							colours in a theme. These colours are manually tested to pass
-							accessibility contrast ratios when used with all background
-							colours within a theme and vice versa.
-						</p>
-
-						<ColorTable activePalette={isDarkMode ? 'dark' : 'light'} />
-					</Prose>
-				</Stack>
-			</Column>
-		</Columns>
-	);
-};
+export const getTokensArrayFromObject = (
+	obj: {
+		[tokenName: string]: {
+			dark: string | undefined;
+			light: string | undefined;
+			desc: string;
+		};
+	},
+	activePalette: 'light' | 'dark'
+) =>
+	Object.entries(obj).map(([tokenName, { [activePalette]: color, desc }]) => ({
+		name: tokenName,
+		desc,
+		color,
+	}));

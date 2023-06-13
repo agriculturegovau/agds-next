@@ -1,7 +1,7 @@
 import { Fragment } from 'react';
 import { ComponentMeta } from '@storybook/react';
 import { Prose } from '../prose';
-import { Stack } from '../box';
+import { Stack } from '../stack';
 import { SkipLinkItem } from './SkipLinkItem';
 import { SkipLinks } from './SkipLinks';
 import { SkipLinkContainer } from './SkipLinkContainer';

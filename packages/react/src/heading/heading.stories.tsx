@@ -1,5 +1,5 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { Stack } from '../box';
+import { Stack } from '../stack';
 import { Heading, H1, H2, H3, H4, H5, H6 } from './Heading';
 
 export default {

@@ -1,5 +1,6 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { Flex, Stack } from '../box';
+import { Flex } from '../flex';
+import { Stack } from '../stack';
 import { boxPalette } from '../core';
 import { Text } from '../text';
 import { Avatar } from './Avatar';

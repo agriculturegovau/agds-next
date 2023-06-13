@@ -1,9 +1,8 @@
 import { PropsWithChildren } from 'react';
-import { Flex } from '@ag.ds-next/react/box';
+import { Flex } from '@ag.ds-next/react/flex';
 import { SideNavProps } from '@ag.ds-next/react/side-nav';
 import { ButtonLink } from '@ag.ds-next/react/button';
-import { CallToActionLink } from '@ag.ds-next/react/call-to-action';
-import type { Pattern, getPatternBreadcrumbs } from '../lib/mdx/patterns';
+import { Pattern, getPatternBreadcrumbs } from '../lib/mdx/patterns';
 import { SiteLayout } from './SiteLayout';
 import { PageLayout } from './PageLayout';
 import { PageTitle } from './PageTitle';
@@ -30,7 +29,7 @@ export function PatternLayout({
 			<PageLayout
 				applyMainElement={true}
 				sideNav={{
-					title: 'Patterns and templates',
+					title: 'Patterns',
 					titleLink: '/patterns',
 					items: navLinks,
 				}}
@@ -41,13 +40,6 @@ export function PatternLayout({
 					pretext={`v${pattern.version}`}
 					title={pattern.title}
 					introduction={pattern.description}
-					callToAction={
-						pattern.previewPath && (
-							<CallToActionLink href={`/example-site${pattern.previewPath}`}>
-								View pattern preview
-							</CallToActionLink>
-						)
-					}
 				/>
 				{(pattern.figmaTemplateNodeId ||
 					pattern.githubTemplatePath ||

@@ -1,6 +1,6 @@
 import { Fragment, useRef } from 'react';
 import useSWR from 'swr';
-import { Stack } from '@ag.ds-next/react/box';
+import { Stack } from '@ag.ds-next/react/stack';
 import { SkeletonText } from '@ag.ds-next/react/skeleton';
 import { Text } from '@ag.ds-next/react/text';
 import { Card, CardInner, CardLink } from '@ag.ds-next/react/card';

@@ -1,4 +1,4 @@
-import { Stack } from '@ag.ds-next/react/box';
+import { Stack } from '@ag.ds-next/react/stack';
 import { H3 } from '@ag.ds-next/react/heading';
 import { Text } from '@ag.ds-next/react/text';
 import { Card, CardInner, CardLink } from '@ag.ds-next/react/card';

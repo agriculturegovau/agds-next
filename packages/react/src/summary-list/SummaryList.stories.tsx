@@ -1,6 +1,6 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { TextLink } from '../text-link';
-import { Stack } from '../box';
+import { Stack } from '../stack';
 import {
 	SummaryList,
 	SummaryListItem,

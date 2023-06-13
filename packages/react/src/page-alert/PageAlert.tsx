@@ -1,5 +1,11 @@
-import { forwardRef, HTMLAttributes, PropsWithChildren } from 'react';
-import { Flex } from '../box';
+import {
+	forwardRef,
+	HTMLAttributes,
+	PropsWithChildren,
+	ReactNode,
+	isValidElement,
+} from 'react';
+import { Flex } from '../flex';
 import { boxPalette, tokens } from '../core';
 import {
 	AlertFilledIcon,
@@ -17,7 +23,7 @@ export type PageAlertProps = PropsWithChildren<{
 	id?: string;
 	role?: DivProps['role'];
 	tabIndex?: number;
-	title?: string;
+	title?: ReactNode;
 	tone: PageAlertTone;
 }>;
 
@@ -48,7 +54,13 @@ export const PageAlert = forwardRef<HTMLDivElement, PageAlertProps>(
 					{icon}
 				</Flex>
 				<Flex padding={1.5} gap={1} flexDirection="column" flexGrow={1}>
-					{title ? <PageAlertTitle>{title}</PageAlertTitle> : null}
+					{title ? (
+						isValidElement(title) ? (
+							title
+						) : (
+							<PageAlertTitle>{title}</PageAlertTitle>
+						)
+					) : null}
 					{children}
 				</Flex>
 			</Flex>

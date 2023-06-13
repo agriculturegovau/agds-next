@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Flex } from '../box';
+import { Flex } from '../flex';
 import { AppLayoutContext } from './AppLayoutContext';
 import { AppLayoutSidebar } from './AppLayoutSidebar';
 import { navigationItems } from './test-utils';

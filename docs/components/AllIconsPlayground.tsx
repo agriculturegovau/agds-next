@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { allIcons } from '@ag.ds-next/react/icon';
-import { Flex, Stack } from '@ag.ds-next/react/box';
+import { Flex } from '@ag.ds-next/react/flex';
+import { Stack } from '@ag.ds-next/react/stack';
 import { Text } from '@ag.ds-next/react/text';
 import { Select } from '@ag.ds-next/react/select';
 import { Columns } from '@ag.ds-next/react/columns';

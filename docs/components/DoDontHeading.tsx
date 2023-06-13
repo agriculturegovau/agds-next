@@ -1,4 +1,4 @@
-import { Flex } from '@ag.ds-next/react/box';
+import { Flex } from '@ag.ds-next/react/flex';
 import { SuccessFilledIcon, AlertFilledIcon } from '@ag.ds-next/react/icon';
 
 export const DoHeading = () => (

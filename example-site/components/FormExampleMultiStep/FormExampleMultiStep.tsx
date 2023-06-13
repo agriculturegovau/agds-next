@@ -9,7 +9,7 @@ import { useRouter } from 'next/router';
 import { Column, Columns } from '@ag.ds-next/react/columns';
 import { PageContent, ContentBleed } from '@ag.ds-next/react/content';
 import { ProgressIndicator } from '@ag.ds-next/react/progress-indicator';
-import { Stack } from '@ag.ds-next/react/box';
+import { Stack } from '@ag.ds-next/react/stack';
 import { DirectionButton } from '@ag.ds-next/react/direction-link';
 import {
 	FormExampleMultiStep0,

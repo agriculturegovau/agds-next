@@ -15,7 +15,9 @@ export { StatusBadge } from '@ag.ds-next/react/status-badge';
 export { NotificationBadge } from '@ag.ds-next/react/notification-badge';
 export { IndicatorDot } from '@ag.ds-next/react/indicator-dot';
 export { Prose } from '@ag.ds-next/react/prose';
-export { Box, Flex, Stack } from '@ag.ds-next/react/box';
+export { Box } from '@ag.ds-next/react/box';
+export { Flex } from '@ag.ds-next/react/flex';
+export { Stack } from '@ag.ds-next/react/stack';
 export {
 	BaseButton,
 	Button,
@@ -122,12 +124,9 @@ export {
 export { ProgressIndicator } from '@ag.ds-next/react/progress-indicator';
 export { PageAlert, PageAlertTitle } from '@ag.ds-next/react/page-alert';
 export { GlobalAlert } from '@ag.ds-next/react/global-alert';
-export {
-	ControlGroup,
-	Checkbox,
-	Radio,
-	ConditionalFieldContainer,
-} from '@ag.ds-next/react/control-input';
+export { Checkbox } from '@ag.ds-next/react/checkbox';
+export { Radio } from '@ag.ds-next/react/radio';
+export { ControlGroup } from '@ag.ds-next/react/control-group';
 export {
 	SearchBox,
 	SearchBoxInput,
@@ -164,7 +163,8 @@ export {
 	TableHead,
 	TableWrapper,
 } from '@ag.ds-next/react/table';
-export { DatePicker, DateRangePicker } from '@ag.ds-next/react/date-picker';
+export { DatePicker } from '@ag.ds-next/react/date-picker';
+export { DateRangePicker } from '@ag.ds-next/react/date-range-picker';
 export {
 	HeroBanner,
 	HeroBannerTitleContainer,
@@ -205,6 +205,7 @@ export {
 	AppLayoutFooter,
 	AppLayoutFooterDivider,
 } from '@ag.ds-next/react/app-layout';
+export { Divider } from '@ag.ds-next/react/divider';
 
 // Used to populate options on documentation site and playroom
 export { COUNTRY_OPTIONS } from '@ag.ds-next/react/src/combobox/test-utils';

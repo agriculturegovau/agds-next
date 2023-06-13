@@ -1,6 +1,6 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { Text } from '../text';
-import { Flex } from '../box';
+import { Flex } from '../flex';
 import { AlertIcon } from './icons/AlertIcon';
 import { iconColors } from './Icon';
 import { allIcons } from './utils';

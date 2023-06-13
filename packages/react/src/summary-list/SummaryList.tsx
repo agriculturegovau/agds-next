@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import { Flex } from '../box';
+import { Flex } from '../flex';
 
 type PropsWithOnlyChildren = {
 	children: ReactNode;

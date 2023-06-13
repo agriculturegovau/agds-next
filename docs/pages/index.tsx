@@ -1,6 +1,6 @@
 import { Columns } from '@ag.ds-next/react/columns';
 import { SectionContent } from '@ag.ds-next/react/content';
-import { Stack } from '@ag.ds-next/react/box';
+import { Stack } from '@ag.ds-next/react/stack';
 import { Prose } from '@ag.ds-next/react/prose';
 import { TextLink } from '@ag.ds-next/react/text-link';
 import {

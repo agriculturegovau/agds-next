@@ -13,8 +13,10 @@ import {
 	usePrefersReducedMotion,
 	canUseDOM,
 	useAriaModalPolyfill,
+	boxPalette,
 } from '../core';
-import { Box, Flex } from '../box';
+import { Box } from '../box';
+import { Flex } from '../flex';
 import { CloseIcon } from '../icon';
 import { VisuallyHidden } from '../a11y';
 import { BaseButton } from '../button';
@@ -129,7 +131,7 @@ function Overlay({
 					left: 0,
 					bottom: 0,
 					right: 0,
-					backgroundColor: `rgba(0, 0, 0, 0.8)`,
+					backgroundColor: boxPalette.overlay,
 					zIndex: 99,
 				},
 			}}

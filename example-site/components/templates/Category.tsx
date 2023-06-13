@@ -1,5 +1,5 @@
 import { Fragment } from 'react';
-import { Stack } from '@ag.ds-next/react/box';
+import { Stack } from '@ag.ds-next/react/stack';
 import { SectionContent } from '@ag.ds-next/react/content';
 import { H2, H3 } from '@ag.ds-next/react/heading';
 import { Text } from '@ag.ds-next/react/text';

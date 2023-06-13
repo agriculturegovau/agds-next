@@ -1,6 +1,6 @@
 import { MouseEventHandler } from 'react';
 import { BaseButton } from '../button';
-import { Flex } from '../box';
+import { Flex } from '../flex';
 import { BreadcrumbsItem } from './BreadcrumbsItem';
 
 export type BreadcrumbsToggleProps = {

@@ -1,5 +1,6 @@
 import { forwardRef, PropsWithChildren } from 'react';
-import { Box, Flex } from '../box';
+import { Box } from '../box';
+import { Flex } from '../flex';
 import { InfoIcon, ChevronDownIcon } from '../icon';
 
 export type DetailsProps = PropsWithChildren<{

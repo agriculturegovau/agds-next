@@ -102,3 +102,14 @@ You can take advantage of our `Prose` component to ensure consistant spacing bet
 	</Prose>
 </PageAlert>
 ```
+
+You can also use the `PageAlertTitle` component in the title prop, to change the element used for the title.
+
+```jsx live
+<PageAlert
+	tone="success"
+	title={<PageAlertTitle as="h2">Submission successful</PageAlertTitle>}
+>
+	<Text as="p">Your application has been successfully submitted.</Text>
+</PageAlert>
+```

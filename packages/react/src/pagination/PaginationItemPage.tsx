@@ -1,6 +1,6 @@
 import { MouseEventHandler } from 'react';
 import { boxPalette, LinkProps, useLinkComponent } from '../core';
-import { Flex } from '../box';
+import { Flex } from '../flex';
 import { BaseButton } from '../button';
 import { BUTTON_SIZE_XS, BUTTON_SIZE_SM } from './utils';
 

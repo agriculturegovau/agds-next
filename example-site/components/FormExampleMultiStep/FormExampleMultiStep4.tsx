@@ -4,8 +4,9 @@ import * as yup from 'yup';
 import format from 'date-fns/format';
 import { FormStack } from '@ag.ds-next/react/form-stack';
 import { Prose } from '@ag.ds-next/react/prose';
-import { Stack } from '@ag.ds-next/react/box';
-import { Checkbox, ControlGroup } from '@ag.ds-next/react/control-input';
+import { Stack } from '@ag.ds-next/react/stack';
+import { Checkbox } from '@ag.ds-next/react/checkbox';
+import { ControlGroup } from '@ag.ds-next/react/control-group';
 import { H2 } from '@ag.ds-next/react/heading';
 import { Button } from '@ag.ds-next/react/button';
 import {

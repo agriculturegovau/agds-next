@@ -7,6 +7,7 @@ import { tokens } from '@ag.ds-next/react/core';
 
 const footerLinks = [
 	{ label: 'About', href: '/about' },
+	{ label: 'Updates', href: '/updates' },
 	{ label: 'Roadmap', href: '/roadmap' },
 	{
 		label: 'Privacy',

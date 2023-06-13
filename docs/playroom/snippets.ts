@@ -1018,6 +1018,11 @@ items={[
 		name: 'Basic',
 		code: `<Avatar name="William Mead" />`,
 	},
+	{
+		group: 'Divider',
+		name: 'Basic',
+		code: `<Divider />`,
+	},
 ];
 
 export default snippets;

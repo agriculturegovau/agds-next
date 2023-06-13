@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react';
-import { Flex } from '../box';
+import { Flex } from '../flex';
 
 export type TagsListProps = { children: ReactNode };
 

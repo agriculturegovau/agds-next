@@ -1,6 +1,6 @@
 import { format } from 'date-fns';
 import { Text } from '@ag.ds-next/react/text';
-import { Flex } from '@ag.ds-next/react/box';
+import { Flex } from '@ag.ds-next/react/flex';
 import { Button } from '@ag.ds-next/react/button';
 import { CloseIcon } from '@ag.ds-next/react/icon';
 import { Tags } from '@ag.ds-next/react/tags';

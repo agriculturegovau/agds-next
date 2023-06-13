@@ -1,6 +1,7 @@
 import { MouseEventHandler, PropsWithChildren } from 'react';
 import { BaseButton } from '../button';
-import { Box, Flex } from '../box';
+import { Box } from '../box';
+import { Flex } from '../flex';
 import { boxPalette } from '../core';
 import { CloseIcon, MenuIcon } from '../icon';
 import { localPalette } from './utils';

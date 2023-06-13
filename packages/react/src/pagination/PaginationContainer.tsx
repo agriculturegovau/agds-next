@@ -1,5 +1,5 @@
 import type { PropsWithChildren } from 'react';
-import { Flex } from '../box';
+import { Flex } from '../flex';
 
 export type PaginationContainerProps = PropsWithChildren<{
 	'aria-label': string;

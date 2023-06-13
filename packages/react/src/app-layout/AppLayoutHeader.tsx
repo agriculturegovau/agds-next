@@ -1,4 +1,4 @@
-import { Flex } from '../box';
+import { Flex } from '../flex';
 import { boxPalette, tokens } from '../core';
 import { AppLayoutHeaderBrand } from './AppLayoutHeaderBrand';
 import { AppLayoutHeaderAccount } from './AppLayoutHeaderAccount';

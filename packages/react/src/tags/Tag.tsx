@@ -1,5 +1,6 @@
 import { MouseEventHandler } from 'react';
-import { Box, Flex } from '../box';
+import { Box } from '../box';
+import { Flex } from '../flex';
 import { TextLink } from '../text-link';
 import { boxPalette, LinkProps, mapSpacing } from '../core';
 import { CloseIcon } from '../icon';

@@ -3,12 +3,12 @@ import { Columns, Column } from '@ag.ds-next/react/columns';
 import { ButtonLink } from '@ag.ds-next/react/button';
 import { Prose } from '@ag.ds-next/react/prose';
 import { Breadcrumbs } from '@ag.ds-next/react/breadcrumbs';
-import { Stack } from '@ag.ds-next/react/box';
+import { Stack } from '@ag.ds-next/react/stack';
 import { H2 } from '@ag.ds-next/react/heading';
 import { Text } from '@ag.ds-next/react/text';
+import { Divider } from '@ag.ds-next/react/divider';
 import { FormHelpCallout } from '../FormHelpCallout';
 import { PageTitle } from '../PageTitle';
-import { FormDivider } from '../FormDivider';
 
 export function MultiPageFormIntro() {
 	return (
@@ -53,7 +53,7 @@ export function MultiPageFormIntro() {
 								Get started
 							</ButtonLink>
 						</div>
-						<FormDivider />
+						<Divider />
 						<Prose>
 							<h2>More information section heading (H2)</h2>
 							<h3>More information link list heading (H3)</h3>

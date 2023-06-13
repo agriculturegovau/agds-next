@@ -22,7 +22,8 @@ import {
 import { getMonth, getYear } from 'date-fns';
 import { boxPalette, mapSpacing, tokens, useId } from '../core';
 import { ChevronDownIcon, ChevronLeftIcon, ChevronRightIcon } from '../icon';
-import { Box, Flex } from '../box';
+import { Box } from '../box';
+import { Flex } from '../flex';
 import { visuallyHiddenStyles } from '../a11y';
 import { CalendarContainer } from './CalendarContainer';
 

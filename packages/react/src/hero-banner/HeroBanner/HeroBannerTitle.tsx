@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import { Stack } from '../../box';
+import { Stack } from '../../stack';
 import { tokens } from '../../core';
 import { Heading } from '../../heading';
 import { Text } from '../../text';

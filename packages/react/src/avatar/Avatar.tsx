@@ -1,5 +1,5 @@
 import { HTMLAttributes } from 'react';
-import { Flex } from '../box';
+import { Flex } from '../flex';
 import { boxPalette, tokens } from '../core';
 import { getInitialsFromName } from './utils';
 

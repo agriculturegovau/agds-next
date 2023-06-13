@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react';
 import { Prose } from '@ag.ds-next/react/prose';
-import { Stack } from '@ag.ds-next/react/box';
+import { Stack } from '@ag.ds-next/react/stack';
 import { Breadcrumbs } from '@ag.ds-next/react/breadcrumbs';
 import { Column, Columns } from '@ag.ds-next/react/columns';
 import { PageContent } from '@ag.ds-next/react/content';
@@ -37,10 +37,16 @@ export function MultiPageFormSuccess() {
 							pretext="Title of multi-page form"
 							title="Multi-page form title (H1)"
 						/>
-						<PageAlert ref={successPageAlertRef} tabIndex={-1} tone="success">
-							<PageAlertTitle as="h2">
-								Descriptive success message (H2)
-							</PageAlertTitle>
+						<PageAlert
+							ref={successPageAlertRef}
+							tabIndex={-1}
+							tone="success"
+							title={
+								<PageAlertTitle as="h2">
+									Descriptive success message (H2)
+								</PageAlertTitle>
+							}
+						>
 							<Prose>
 								<p>Supporting paragraph for the success message</p>
 								<p>

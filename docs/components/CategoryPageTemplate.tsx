@@ -5,7 +5,8 @@ import {
 	HeroCategoryBannerSubtitle,
 	HeroCategoryBannerTitle,
 } from '@ag.ds-next/react/hero-banner';
-import { Flex, Stack } from '@ag.ds-next/react/box';
+import { Flex } from '@ag.ds-next/react/flex';
+import { Stack } from '@ag.ds-next/react/stack';
 import { SiteLayout } from './SiteLayout';
 import { EditPage } from './EditPage';
 

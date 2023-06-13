@@ -1,6 +1,7 @@
 import { forwardRef, InputHTMLAttributes, useEffect, useState } from 'react';
 import { useDropzone, DropzoneOptions } from 'react-dropzone';
-import { Flex, Stack } from '../box';
+import { Flex } from '../flex';
+import { Stack } from '../stack';
 import { Button } from '../button';
 import { packs, boxPalette, tokens, mergeRefs } from '../core';
 import { Field } from '../field';
@@ -9,14 +10,14 @@ import { Text } from '../text';
 import { visuallyHiddenStyles } from '../a11y';
 import { FileUploadRejectedFileList } from './FileUploadRejectedFileList';
 import {
-	getAcceptedFilesSummary,
 	AcceptedFileMimeTypes,
-	getFileRejectionErrorMessage,
-	getErrorSummary,
-	formatFileSize,
 	FileWithStatus,
-	RejectedFile,
+	formatFileSize,
+	getAcceptedFilesSummary,
+	getErrorSummary,
+	getFileRejectionErrorMessage,
 	getFilesTotal,
+	RejectedFile,
 } from './utils';
 import { FileUploadFileList } from './FileUploadFileList';
 

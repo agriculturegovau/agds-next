@@ -1,4 +1,4 @@
-import { Flex } from '../../box';
+import { Flex } from '../../flex';
 import { LoadingDots } from '../../loading';
 import { Text } from '../../text';
 import { ComboboxListItem } from './ComboboxListItem';

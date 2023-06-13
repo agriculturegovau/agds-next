@@ -3,16 +3,14 @@ import { useForm, SubmitHandler } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { Prose } from '@ag.ds-next/react/prose';
-import { Stack } from '@ag.ds-next/react/box';
-import {
-	ControlGroup,
-	ConditionalFieldContainer,
-	Radio,
-} from '@ag.ds-next/react/control-input';
+import { Stack } from '@ag.ds-next/react/stack';
+import { Radio } from '@ag.ds-next/react/radio';
+import { ControlGroup } from '@ag.ds-next/react/control-group';
 import { FormStack } from '@ag.ds-next/react/form-stack';
 import { PageAlert } from '@ag.ds-next/react/page-alert';
 import { TextInput } from '@ag.ds-next/react/text-input';
 import { useScrollToField } from '@ag.ds-next/react/field';
+import { ConditionalFieldContainer } from '../ConditionalFieldContainer';
 import { FormRequiredFieldsMessage } from '../FormRequiredFieldsMessage';
 import { useFormRegisterPetPersonalDetails } from './FormRegisterPetPersonalDetails';
 import { FormRegisterPetPersonalDetailsActions } from './FormRegisterPetPersonalDetailsActions';
