@@ -23,4 +23,25 @@ describe('FileInput', () => {
 			rules: { 'valid-id': 'off' },
 		});
 	});
+
+	describe('invalid', () => {
+		it('renders correctly', () => {
+			const { container } = renderFileInput({
+				invalid: true,
+				message: 'This file is not valid',
+			});
+			expect(container).toMatchSnapshot();
+		});
+		it('renders a valid HTML structure', () => {
+			const { container } = renderFileInput({
+				invalid: true,
+				message: 'This file is not valid',
+			});
+			expect(container).toHTMLValidate({
+				extends: ['html-validate:recommended'],
+				// react 18s `useId` break this rule
+				rules: { 'valid-id': 'off' },
+			});
+		});
+	});
 });
