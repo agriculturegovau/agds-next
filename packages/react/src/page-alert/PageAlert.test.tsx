@@ -82,7 +82,7 @@ describe('PageAlert', () => {
 			tone: 'info',
 			title: 'PageAlert with close button',
 			children: <Text as="p">This is a Page alert component.</Text>,
-			onDismiss: jest.fn(),
+			onClose: jest.fn(),
 		});
 
 		expect(container).toMatchSnapshot();

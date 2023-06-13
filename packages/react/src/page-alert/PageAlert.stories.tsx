@@ -8,7 +8,7 @@ const meta: Meta<typeof PageAlert> = {
 	title: 'content/PageAlert',
 	component: PageAlert,
 	args: {
-		onDismiss: undefined,
+		onClose: undefined,
 	},
 	render: (args) => (
 		<PageAlert {...args}>
@@ -64,7 +64,7 @@ export const WithTitleElement: Story = {
 	},
 };
 
-export const WithDismiss: Story = {
+export const WithClose: Story = {
 	render: (args) => (
 		<PageAlert {...args}>
 			<Text as="p">
@@ -79,11 +79,11 @@ export const WithDismiss: Story = {
 	args: {
 		title: 'Page alert title that is long and spans multiple lines',
 		tone: 'success',
-		onDismiss: () => console.log('dismissed'),
+		onClose: () => console.log('Closed'),
 	},
 };
 
-export const WithDismissNoTitle: Story = {
+export const WithCloseNoTitle: Story = {
 	render: (args) => (
 		<PageAlert {...args}>
 			<Text as="p">
@@ -97,11 +97,11 @@ export const WithDismissNoTitle: Story = {
 	),
 	args: {
 		tone: 'success',
-		onDismiss: () => console.log('dismissed'),
+		onClose: () => console.log('Closed'),
 	},
 };
 
-export const WithDismissAndChildTitle: Story = {
+export const WithCloseAndChildTitle: Story = {
 	render: (args) => (
 		<PageAlert {...args}>
 			<Text as="p">
@@ -116,6 +116,6 @@ export const WithDismissAndChildTitle: Story = {
 	args: {
 		tone: 'success',
 		title: <PageAlertTitle as="h2">Page Alert title as H2</PageAlertTitle>,
-		onDismiss: () => console.log('dismissed'),
+		onClose: () => console.log('Closed'),
 	},
 };

@@ -30,12 +30,12 @@ export type PageAlertProps = PropsWithChildren<{
 	/** The tone of the alert. */
 	tone: PageAlertTone;
 	/** Function to be called when the 'Close' button is pressed. */
-	onDismiss?: MouseEventHandler<HTMLButtonElement>;
+	onClose?: MouseEventHandler<HTMLButtonElement>;
 }>;
 
 export const PageAlert = forwardRef<HTMLDivElement, PageAlertProps>(
 	function PageAlert(
-		{ id, role, children, onDismiss, title, tone, tabIndex },
+		{ id, role, children, onClose, title, tone, tabIndex },
 		ref
 	) {
 		const { fg, bg, icon } = pageAlertToneMap[tone];
@@ -70,7 +70,7 @@ export const PageAlert = forwardRef<HTMLDivElement, PageAlertProps>(
 					css={{
 						// When there is a dismiss button and no title
 						// We need to add extra padding to avoid overlapping
-						marginRight: onDismiss && !title ? '3rem' : undefined,
+						marginRight: onClose && !title ? '3rem' : undefined,
 						[tokens.mediaQuery.min.sm]: {
 							marginRight: '0',
 						},
@@ -86,14 +86,14 @@ export const PageAlert = forwardRef<HTMLDivElement, PageAlertProps>(
 							isValidElement(title) ? (
 								title
 							) : (
-								<PageAlertTitle hasDismissButton={Boolean(onDismiss)}>
+								<PageAlertTitle hasDismissButton={Boolean(onClose)}>
 									{title}
 								</PageAlertTitle>
 							)
 						) : null}
 						{children}
 					</Flex>
-					{onDismiss ? <PageAlertCloseButton onClick={onDismiss} /> : null}
+					{onClose ? <PageAlertCloseButton onClick={onClose} /> : null}
 				</Flex>
 			</Flex>
 		);
