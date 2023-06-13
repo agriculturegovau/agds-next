@@ -39,7 +39,6 @@ export function FilterDrawerDialog({
 				borderColor="muted"
 				css={{
 					height: '100vh',
-					overflow: 'hidden',
 					position: 'fixed',
 					inset: 0,
 					marginLeft: 'auto',

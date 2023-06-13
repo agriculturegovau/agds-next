@@ -201,7 +201,8 @@ export const WithFieldsets: Story = {
 									Example filter
 								</Checkbox>
 								<ComboboxMulti
-									label="Select country"
+									label="Example filter"
+									hideOptionalLabel
 									hint="Start typing to see results"
 									value={formState.comboboxMulti}
 									onChange={(value) =>
@@ -231,6 +232,22 @@ export const WithFieldsets: Story = {
 									value={formState.dateRangePicker}
 									onChange={(value) =>
 										updateFormState({ dateRangePicker: value })
+									}
+									onFromInputChange={(from) =>
+										updateFormState({
+											dateRangePicker: {
+												from,
+												to: formState.dateRangePicker.to,
+											},
+										})
+									}
+									onToInputChange={(to) =>
+										updateFormState({
+											dateRangePicker: {
+												from: formState.dateRangePicker.from,
+												to,
+											},
+										})
 									}
 								/>
 							</FormStack>
