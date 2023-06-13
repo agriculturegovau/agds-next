@@ -1,6 +1,6 @@
 ---
 title: Filter drawer
-description: Filter drawer is used to display a large number of filters for a data set. It is overlayed over of the main area area of the user interface.
+description: Filter drawer can be used to display a large number of filters for a data set. It is overlayed on top of the main area of the page to capture the user's attention while keeping the context of the current task.
 group: Content
 storybookPath: /story/content-filterdrawer--basic
 relatedComponents: ['modal']
@@ -29,64 +29,67 @@ relatedComponents: ['modal']
 					</ButtonGroup>
 				}
 			>
-				<Text as="p">Example filter content</Text>
+				<FormStack>
+					<Checkbox>Example checkbox</Checkbox>
+					<Select
+						label="Example filter"
+						options={[
+							{ value: 'a', label: 'Option A' },
+							{ value: 'b', label: 'Option B' },
+							{ value: 'c', label: 'Option C' },
+						]}
+						hideOptionalLabel
+					/>
+				</FormStack>
 			</FilterDrawer>
 		</React.Fragment>
 	);
 };
 ```
 
-When the user opens the Filter drawer component, the main area of page is dimmed and the Filter drawer is overlayed on the right edge of the screen. When the Filter drawer is open, the main area of the page is not interactive.
-
 <DoHeading />
 
-- use to allow a user to filter a data list or table
+- use to display a large number of filters for a data list or table
 - use a [Button group](/components/button#button-group) to display actions
-- include a Close button in the top right corner
-- closes the Filter drawer when filters are applied.
+- include a Close button in the top right
+- include a meaingful title - e.g. "Filter by"
+- close the Filter drawer when filters are applied.
 
 <DontHeading />
 
 - remove the Close button
-- remove the tinted overlay
+- remove the overlay
 - change default behaviour
 - use for anything else besides filters.
 
-## Closing the filter drawer
+## Opening the Filter drawer
+
+When the Filter drawer is opened, an overlay is displayed over the main area of the page. This prevents the main area of the page from being interactive.
+
+## Closing the Filter drawer
 
 The Filter drawer can be closed by either:
 
-1. Clicking the "Close" button
-2. Clicking the "Apply filters" button
-3. Clicking the "Cancel" button
+1. Pressing the "Close" button
+2. Pressing the "Apply filters" button
+3. Pressing the "Cancel" button
 4. Pressing the "Escape" key
 
-The filter drawer does not close when clicking the overlay.
+The filter drawer does not close when pressing the overlay.
 
 When closing the Filter drawer, focus should be returned to the button that opened the Filter drawer.
 
 ## Actions
 
-When using this component, there should be a total of 4 actions.
+The Filter drawer component should contain a total of 4 actions:
 
-### 1. "Apply filters" button
+1. **"Apply filters" button**: When a user presses the "Apply filters" button, filters should be applied and the Filter drawer should be closed.
+2. **"Reset filters" button**: When a user presses the "Apply filters" button, filters should be reset to their original state. The Filter drawer should stay open.
+3. **"Close" button**: When a user presses the "Close" button, the Filter drawer should close. Any changes that have been made since opening the Filter drawer should be discarded. This is essentially the same as the "Cancel" button.
+4. **"Cancel" button**: When a user presses the "Cancel" button, the Filter drawer should close. Any changes that have been made since opening the Filter drawer should be discarded. This is essentially the same as the "Close" button.
 
-When a user presses the "Apply filters" button, filters should be applied and the Filter drawer should be closed.
-
-### 2. "Reset filters" button
-
-When a user presses the "Apply filters" button, filters should be reset to their original state. The Filter drawer should stay open.
-
-### 3. "Close" button
-
-When a user presses the "Cancel" button, the Filter drawer should close. Any changes that have been made since opening the Filter drawer should be discarded. This is essentially the same as the "Cancel" button.
-
-### 4. "Cancel" button
-
-When a user presses the "Cancel" button, the Filter drawer should close. Any changes that have been made since opening the Filter drawer should be discarded. This is essentially the same as the "Close" button.
-
-## Filtering a data set pattern
+## Filtering pattern
 
 Filters allows a user to refine the data they want to display in a large dataset by removing any items that do not match their criteria.
 
-[View Filtering a data set pattern](/patterns/filtering-a-dataset)
+This component is feature in the [Filtering a data set pattern](/patterns/filtering-a-dataset).
