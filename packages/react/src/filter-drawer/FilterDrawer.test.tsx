@@ -15,9 +15,9 @@ function renderBaseFilterDrawer() {
 			isOpen
 			onDismiss={() => undefined}
 			title="Filter drawer title"
-			actions={<Button>Close</Button>}
+			actions={<Button>Example action</Button>}
 		>
-			<Text as="p">This is the Filter drawer content.</Text>
+			<Text as="p">Example content.</Text>
 		</FilterDrawer>
 	);
 }

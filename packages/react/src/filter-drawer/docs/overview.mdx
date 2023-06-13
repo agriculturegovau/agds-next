@@ -1,9 +1,9 @@
 ---
 title: Filter drawer
-description: Filter drawers are a type of modal which are used to apply several filters to a data set, without taking up a large area of the main page.
+description: Filter drawer is used to display a large number of filters for a data set. It is overlayed over of the main area area of the user interface.
 group: Content
-storybookPath: /story/content-FilterDrawer--basic
-figmaGalleryNodeId: 11981%3A101667
+storybookPath: /story/content-filterdrawer--basic
+relatedComponents: ['modal']
 ---
 
 ```jsx live
@@ -12,7 +12,7 @@ figmaGalleryNodeId: 11981%3A101667
 		useTernaryState(false);
 	return (
 		<React.Fragment>
-			<Button onClick={openFilterDrawer}>Open FilterDrawer</Button>
+			<Button onClick={openFilterDrawer}>Open Filter drawer</Button>
 			<FilterDrawer
 				isOpen={isFilterDrawerOpen}
 				onDismiss={closeFilterDrawer}
@@ -29,29 +29,64 @@ figmaGalleryNodeId: 11981%3A101667
 					</ButtonGroup>
 				}
 			>
-				<Text as="p">This is the FilterDrawer Body.</Text>
+				<Text as="p">Example filter content</Text>
 			</FilterDrawer>
 		</React.Fragment>
 	);
 };
 ```
 
-The user can scroll through and interact with the vertical list of filter controls, which can include checkboxes, radio buttons, dropdowns, and text fields. The filters are applied when the user clicks the Apply button.
-
-When the user opens the FilterDrawer, the main page is dimmed and the FilterDrawer appears on the right edge of the screen. The user cannot interact with the main page while the FilterDrawer is open. The FilterDrawer can be closed by clicking the Close button or by clicking outside the FilterDrawer.
+When the user opens the Filter drawer component, the main area of page is dimmed and the Filter drawer is overlayed on the right edge of the screen. When the Filter drawer is open, the main area of the page is not interactive.
 
 <DoHeading />
 
 - use to allow a user to filter a data list or table
-- use a Button or Button group for actions
+- use a [Button group](/components/button#button-group) to display actions
 - include a Close button in the top right corner
-- ensure the FilterDrawer closes when the action is completed.
+- closes the Filter drawer when filters are applied.
 
 <DontHeading />
 
-- change the Button group order
 - remove the Close button
+- remove the tinted overlay
 - change default behaviour
-- use a FilterDrawer to explain why a user cannot continue in a flow - use PageAlert
-- embed forms in a FilterDrawer
-- use for error, success or loading messages.
+- use for anything else besides filters.
+
+## Closing the filter drawer
+
+The Filter drawer can be closed by either:
+
+1. Clicking the "Close" button
+2. Clicking the "Apply filters" button
+3. Clicking the "Cancel" button
+4. Pressing the "Escape" key
+
+The filter drawer does not close when clicking the overlay.
+
+When closing the Filter drawer, focus should be returned to the button that opened the Filter drawer.
+
+## Actions
+
+When using this component, there should be a total of 4 actions.
+
+### 1. "Apply filters" button
+
+When a user presses the "Apply filters" button, filters should be applied and the Filter drawer should be closed.
+
+### 2. "Reset filters" button
+
+When a user presses the "Apply filters" button, filters should be reset to their original state. The Filter drawer should stay open.
+
+### 3. "Close" button
+
+When a user presses the "Cancel" button, the Filter drawer should close. Any changes that have been made since opening the Filter drawer should be discarded. This is essentially the same as the "Cancel" button.
+
+### 4. "Cancel" button
+
+When a user presses the "Cancel" button, the Filter drawer should close. Any changes that have been made since opening the Filter drawer should be discarded. This is essentially the same as the "Close" button.
+
+## Filtering a data set pattern
+
+Filters allows a user to refine the data they want to display in a large dataset by removing any items that do not match their criteria.
+
+[View Filtering a data set pattern](/patterns/filtering-a-dataset)

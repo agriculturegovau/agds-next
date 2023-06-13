@@ -43,7 +43,7 @@ exports[`FilterDrawer renders correctly 1`] = `
           <p
             class="css-6j1v6l-boxStyles-Text"
           >
-            This is the Filter drawer content.
+            Example content.
           </p>
         </div>
         <div
@@ -57,7 +57,7 @@ exports[`FilterDrawer renders correctly 1`] = `
               <span
                 class="css-oobk4c-Button"
               >
-                Close
+                Example action
               </span>
               <span
                 aria-live="assertive"

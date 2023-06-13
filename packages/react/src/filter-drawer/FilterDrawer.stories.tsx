@@ -1,45 +1,81 @@
 import { Meta, StoryObj } from '@storybook/react';
+import { Fragment } from 'react';
 import { Button, ButtonGroup } from '../button';
 import { useTernaryState } from '../core';
-import { Text } from '../text';
+import { Divider } from '../divider';
+import { Fieldset } from '../fieldset';
+import { FormStack } from '../form-stack';
+import { Select } from '../select';
+import { Stack } from '../stack';
 import { FilterDrawer } from './FilterDrawer';
 
 const meta: Meta<typeof FilterDrawer> = {
 	title: 'content/FilterDrawer',
 	component: FilterDrawer,
 	args: {
-		title:
-			'This is the title of the Filter drawer dialog, it can span lines but should not be too long.',
+		title: 'Filters',
 	},
 	render: function Render(props) {
 		const [isFilterDrawerOpen, openFilterDrawer, closeFilterDrawer] =
 			useTernaryState(true);
 		return (
-			<div>
-				<Button onClick={openFilterDrawer}>Open FilterDrawer</Button>
+			<Fragment>
+				<Button onClick={openFilterDrawer}>Open Filter drawer</Button>
 				<FilterDrawer
 					isOpen={isFilterDrawerOpen}
 					onDismiss={closeFilterDrawer}
 					title={props.title}
 					actions={
 						<ButtonGroup>
-							<Button onClick={closeFilterDrawer}>Primary button</Button>
+							<Button onClick={closeFilterDrawer}>Apply filters</Button>
 							<Button variant="secondary" onClick={closeFilterDrawer}>
-								Secondary button
+								Reset filters
 							</Button>
 							<Button variant="tertiary" onClick={closeFilterDrawer}>
-								Tertiary button
+								Cancel
 							</Button>
 						</ButtonGroup>
 					}
 				>
-					<Text as="p">
-						This is the Filter drawer Body paragraph, it provides detailed
-						instruction and context for the the FilterDrawer action. It can also
-						span lines but long form content should be avoided.
-					</Text>
+					<Stack gap={3}>
+						<Fieldset legend="Example fieldset">
+							<FormStack>
+								{Array.from(Array(5)).map((_, idx) => (
+									<Select
+										key={idx}
+										label="Example filter"
+										options={[
+											{ value: 'a', label: 'Option A' },
+											{ value: 'b', label: 'Option B' },
+											{ value: 'c', label: 'Option C' },
+										]}
+										hideOptionalLabel
+										block
+									/>
+								))}
+							</FormStack>
+						</Fieldset>
+						<Divider />
+						<Fieldset legend="Example fieldset">
+							<FormStack>
+								{Array.from(Array(4)).map((_, idx) => (
+									<Select
+										key={idx}
+										label="Example filter"
+										options={[
+											{ value: 'a', label: 'Option A' },
+											{ value: 'b', label: 'Option B' },
+											{ value: 'c', label: 'Option C' },
+										]}
+										hideOptionalLabel
+										block
+									/>
+								))}
+							</FormStack>
+						</Fieldset>
+					</Stack>
 				</FilterDrawer>
-			</div>
+			</Fragment>
 		);
 	},
 };

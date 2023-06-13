@@ -65,10 +65,10 @@ export const TableFilteringLarge = ({
 					<h1>Table Filtering (Large)</h1>
 					<p>
 						The large filtering pattern is for cases where the number of
-						filterable fields exceeds 5. Our FilterModal is used to reveal all
-						options as the user elects to show them. You may elect to show up to
-						two &apos;primary&apos; filters in the main content area next to the
-						button which opens the modal.
+						filterable fields exceeds 5. Our FilterDrawer component is used to
+						reveal all options as the user elects to show them. You may elect to
+						show up to two &apos;primary&apos; filters in the main content area
+						next to the button which opens the drawer.
 					</p>
 				</Prose>
 				<Stack gap={1}>
