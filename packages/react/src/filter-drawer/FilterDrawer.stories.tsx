@@ -1,13 +1,20 @@
 import { Meta, StoryObj } from '@storybook/react';
-import { Fragment } from 'react';
+import { Fragment, useState } from 'react';
 import { Button, ButtonGroup } from '../button';
 import { Checkbox } from '../checkbox';
+import { ComboboxMulti, DefaultComboboxOption } from '../combobox';
+import { ControlGroup } from '../control-group';
 import { useTernaryState } from '../core';
+import { DatePicker } from '../date-picker';
+import { DateRangePicker, DateRangeWithString } from '../date-range-picker';
 import { Divider } from '../divider';
 import { Fieldset } from '../fieldset';
 import { FormStack } from '../form-stack';
+import { Radio } from '../radio';
 import { Select } from '../select';
 import { Stack } from '../stack';
+import { Switch } from '../switch';
+import { Text } from '../text';
 import { FilterDrawer } from './FilterDrawer';
 
 const meta: Meta<typeof FilterDrawer> = {
@@ -24,39 +31,27 @@ export const Basic: Story = {
 		title: 'Filter by',
 	},
 	render: function Render(props) {
-		const [isFilterDrawerOpen, openFilterDrawer, closeFilterDrawer] =
-			useTernaryState(false);
+		const [isOpen, open, close] = useTernaryState(false);
 		return (
 			<Fragment>
-				<Button onClick={openFilterDrawer}>Open Filter drawer</Button>
+				<Button onClick={open}>Open Filter drawer</Button>
 				<FilterDrawer
-					isOpen={isFilterDrawerOpen}
-					onDismiss={closeFilterDrawer}
+					isOpen={isOpen}
+					onDismiss={close}
 					title={props.title}
 					actions={
 						<ButtonGroup>
-							<Button onClick={closeFilterDrawer}>Apply filters</Button>
-							<Button variant="secondary" onClick={closeFilterDrawer}>
+							<Button onClick={close}>Apply filters</Button>
+							<Button variant="secondary" onClick={close}>
 								Reset filters
 							</Button>
-							<Button variant="tertiary" onClick={closeFilterDrawer}>
+							<Button variant="tertiary" onClick={close}>
 								Cancel
 							</Button>
 						</ButtonGroup>
 					}
 				>
-					<FormStack>
-						<Checkbox>Example checkbox</Checkbox>
-						<Select
-							label="Example filter"
-							options={[
-								{ value: 'a', label: 'Option A' },
-								{ value: 'b', label: 'Option B' },
-								{ value: 'c', label: 'Option C' },
-							]}
-							hideOptionalLabel
-						/>
-					</FormStack>
+					<Text as="p">Filter area</Text>
 				</FilterDrawer>
 			</Fragment>
 		);
@@ -68,22 +63,67 @@ export const WithFieldsets: Story = {
 		title: 'Filter by',
 	},
 	render: function Render(props) {
-		const [isFilterDrawerOpen, openFilterDrawer, closeFilterDrawer] =
-			useTernaryState(false);
+		const [isDrawerOpen, openDrawer, closeDrawer] = useTernaryState(false);
+
+		type FormState = {
+			switch: boolean;
+			checkbox: boolean;
+			radio: string;
+			select: string;
+			datePicker: Date | string | undefined;
+			dateRangePicker: DateRangeWithString;
+			comboboxMulti: DefaultComboboxOption[];
+		};
+
+		const initialFilterState: FormState = {
+			switch: false,
+			checkbox: false,
+			select: '',
+			radio: 'a',
+			datePicker: undefined,
+			dateRangePicker: { from: undefined, to: undefined },
+			comboboxMulti: [],
+		};
+
+		const [filters, setFilters] = useState(initialFilterState);
+		const [formState, setFormState] = useState(initialFilterState);
+
+		const updateFormState = (formState: Partial<FormState>) => {
+			setFormState((currentState) => ({
+				...currentState,
+				...formState,
+			}));
+		};
+
+		const onApplyFiltersClick = () => {
+			setFilters(formState);
+			closeDrawer();
+		};
+
+		const onResetFiltersClick = () => {
+			setFormState(initialFilterState);
+			setFilters(initialFilterState);
+		};
+
+		const onCloseClick = () => {
+			setFormState(filters);
+			closeDrawer();
+		};
+
 		return (
 			<Fragment>
-				<Button onClick={openFilterDrawer}>Open Filter drawer</Button>
+				<Button onClick={openDrawer}>Open Filter drawer</Button>
 				<FilterDrawer
-					isOpen={isFilterDrawerOpen}
-					onDismiss={closeFilterDrawer}
+					isOpen={isDrawerOpen}
+					onDismiss={onCloseClick}
 					title={props.title}
 					actions={
 						<ButtonGroup>
-							<Button onClick={closeFilterDrawer}>Apply filters</Button>
-							<Button variant="secondary" onClick={closeFilterDrawer}>
+							<Button onClick={onApplyFiltersClick}>Apply filters</Button>
+							<Button variant="secondary" onClick={onResetFiltersClick}>
 								Reset filters
 							</Button>
-							<Button variant="tertiary" onClick={closeFilterDrawer}>
+							<Button variant="tertiary" onClick={onCloseClick}>
 								Cancel
 							</Button>
 						</ButtonGroup>
@@ -92,46 +132,106 @@ export const WithFieldsets: Story = {
 					<Stack gap={3}>
 						<Fieldset legend="Example fieldset">
 							<FormStack>
+								<Switch
+									label="Example filter"
+									checked={formState.switch}
+									onChange={(checked) => updateFormState({ switch: checked })}
+								/>
 								<Select
 									label="Example filter"
+									hideOptionalLabel
+									placeholder="Please select"
 									options={[
 										{ value: 'a', label: 'Option A' },
 										{ value: 'b', label: 'Option B' },
 										{ value: 'c', label: 'Option C' },
+										{ value: 'd', label: 'Option D' },
+										{ value: 'e', label: 'Option E' },
+										{ value: 'f', label: 'Option F' },
 									]}
-									hideOptionalLabel
+									value={formState.select}
+									onChange={(e) => updateFormState({ select: e.target.value })}
 								/>
-								<Select
-									label="Example filter"
-									options={[
-										{ value: 'a', label: 'Option A' },
-										{ value: 'b', label: 'Option B' },
-										{ value: 'c', label: 'Option C' },
-									]}
-									hideOptionalLabel
-								/>
+								<ControlGroup label="Example filter" hideOptionalLabel block>
+									<Radio
+										value="a"
+										checked={formState.radio === 'a'}
+										onChange={(e) =>
+											updateFormState({
+												radio: e.target.value,
+											})
+										}
+									>
+										Option A
+									</Radio>
+									<Radio
+										value="b"
+										checked={formState.radio === 'b'}
+										onChange={(e) =>
+											updateFormState({
+												radio: e.target.value,
+											})
+										}
+									>
+										Option B
+									</Radio>
+									<Radio
+										value="c"
+										checked={formState.radio === 'c'}
+										onChange={(e) =>
+											updateFormState({
+												radio: e.target.value,
+											})
+										}
+									>
+										Option C
+									</Radio>
+								</ControlGroup>
 							</FormStack>
 						</Fieldset>
 						<Divider />
 						<Fieldset legend="Example fieldset">
 							<FormStack>
-								<Select
-									label="Example filter"
+								<Checkbox
+									checked={formState.checkbox}
+									onChange={(e) =>
+										updateFormState({ checkbox: e.target.checked })
+									}
+								>
+									Example filter
+								</Checkbox>
+								<ComboboxMulti
+									label="Select country"
+									hint="Start typing to see results"
+									value={formState.comboboxMulti}
+									onChange={(value) =>
+										updateFormState({ comboboxMulti: value })
+									}
 									options={[
 										{ value: 'a', label: 'Option A' },
 										{ value: 'b', label: 'Option B' },
 										{ value: 'c', label: 'Option C' },
+										{ value: 'd', label: 'Option D' },
+										{ value: 'e', label: 'Option E' },
+										{ value: 'f', label: 'Option F' },
 									]}
-									hideOptionalLabel
 								/>
-								<Select
+								<DatePicker
 									label="Example filter"
-									options={[
-										{ value: 'a', label: 'Option A' },
-										{ value: 'b', label: 'Option B' },
-										{ value: 'c', label: 'Option C' },
-									]}
 									hideOptionalLabel
+									value={formState.datePicker}
+									onChange={(value) => updateFormState({ datePicker: value })}
+									onInputChange={(value) =>
+										updateFormState({ datePicker: value })
+									}
+								/>
+								<DateRangePicker
+									legend="Example filter"
+									hideOptionalLabel
+									value={formState.dateRangePicker}
+									onChange={(value) =>
+										updateFormState({ dateRangePicker: value })
+									}
 								/>
 							</FormStack>
 						</Fieldset>
