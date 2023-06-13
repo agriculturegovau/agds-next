@@ -1,19 +1,19 @@
 import { MouseEventHandler, PropsWithChildren } from 'react';
 import { Box, Flex, Stack } from '../box';
-import { Button } from '../button';
-import { boxPalette, mapSpacing, tokens } from '../core';
-import { CloseIcon, WarningFilledIcon } from '../icon';
+import { boxPalette } from '../core';
+import { WarningFilledIcon } from '../icon';
 import { Content } from '../content';
 import { Heading } from '../heading';
+import { GlobalAlertCloseButton } from './GlobalAlertCloseButton';
 
 export type GlobalAlertProps = PropsWithChildren<{
 	/** Function to be called when the 'Close' button is pressed. */
-	onDismiss?: MouseEventHandler<HTMLButtonElement>;
+	onClose?: MouseEventHandler<HTMLButtonElement>;
 	/** The title of the alert. */
 	title?: string;
 }>;
 
-export function GlobalAlert({ children, onDismiss, title }: GlobalAlertProps) {
+export function GlobalAlert({ children, onClose, title }: GlobalAlertProps) {
 	return (
 		<section
 			aria-label={title}
@@ -54,35 +54,7 @@ export function GlobalAlert({ children, onDismiss, title }: GlobalAlertProps) {
 							<Box flexGrow={1}>{children}</Box>
 						</Stack>
 					</Flex>
-					{onDismiss ? (
-						<Button
-							onClick={onDismiss}
-							iconAfter={CloseIcon}
-							variant="text"
-							aria-label="Dismiss"
-							css={{
-								position: 'absolute',
-								top: mapSpacing(0.75),
-								right: 0,
-								flexShrink: 0,
-								// Reset the position on larger screens
-								[tokens.mediaQuery.min.sm]: {
-									position: 'relative',
-									top: 'unset',
-									right: 'unset',
-								},
-								// Hide the button text on small screens
-								'& > span:first-of-type': {
-									display: 'none',
-									[tokens.mediaQuery.min.sm]: {
-										display: 'block',
-									},
-								},
-							}}
-						>
-							Dismiss
-						</Button>
-					) : null}
+					{onClose ? <GlobalAlertCloseButton onClick={onClose} /> : null}
 				</Flex>
 			</Content>
 		</section>
