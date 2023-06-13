@@ -15,7 +15,6 @@ export const GlobalAlertCloseButton = ({
 			onClick={onClick}
 			iconAfter={CloseIcon}
 			variant="text"
-			aria-label="Dismiss"
 			css={{
 				position: 'absolute',
 				top: mapSpacing(0.75),
@@ -26,13 +25,6 @@ export const GlobalAlertCloseButton = ({
 					position: 'relative',
 					top: 'unset',
 					right: 'unset',
-				},
-				// Hide the button text on small screens
-				'& > span:first-of-type': {
-					display: 'none',
-					[tokens.mediaQuery.min.sm]: {
-						display: 'block',
-					},
 				},
 			}}
 		>

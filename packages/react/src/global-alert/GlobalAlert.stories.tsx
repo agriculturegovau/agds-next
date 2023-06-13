@@ -53,6 +53,20 @@ export const WithoutTitle: Story = {
 	},
 };
 
+export const WithDismissAndWithoutTitle: Story = {
+	args: {
+		title: undefined,
+		onDismiss: console.log,
+		children: (
+			<Text as="p">
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce massa
+				nibh, aliquam vel dolor non, gravida porttitor nulla. Pellentesque
+				cursus orci vulputate nibh sagittis blandit.
+			</Text>
+		),
+	},
+};
+
 export const WithLongMessage: Story = {
 	args: {
 		title: 'Alert title',

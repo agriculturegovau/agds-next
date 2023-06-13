@@ -1,5 +1,5 @@
 ---
-'@ag.ds-next/react': minor
+'@ag.ds-next/react': patch
 ---
 
-global-alert: Rename `onDismiss` prop to `onClose`. Repositioned Close button to top right corner
+global-alert: Repositioned Close button to top right corner

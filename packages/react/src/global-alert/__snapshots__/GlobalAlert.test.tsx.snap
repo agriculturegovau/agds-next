@@ -68,7 +68,7 @@ exports[`GlobalAlert renders correctly 1`] = `
 </div>
 `;
 
-exports[`GlobalAlert responds to an onDismiss event 1`] = `
+exports[`GlobalAlert with a dismiss button renders correctly 1`] = `
 <div>
   <section
     aria-label="Alert title"
@@ -130,15 +130,14 @@ exports[`GlobalAlert responds to an onDismiss event 1`] = `
             </div>
           </div>
           <button
-            aria-label="Dismiss"
-            class="css-11qvz4r-BaseButton-GlobalAlert"
+            class="css-6xq8r7-BaseButton-GlobalAlertCloseButton"
             type="button"
           >
             <span>
               <span
                 class="css-oobk4c-Button"
               >
-                Dismiss
+                Close
               </span>
               <span
                 aria-live="assertive"
