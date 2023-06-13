@@ -48,7 +48,7 @@ export const FileInput = forwardRef<HTMLInputElement, FileInputProps>(
 		},
 		ref
 	) {
-		const styles = fileInputStyles({ invalid });
+		const styles = fileInputStyles();
 		return (
 			<Field
 				label={label}
@@ -67,7 +67,7 @@ export const FileInput = forwardRef<HTMLInputElement, FileInputProps>(
 	}
 );
 
-export const fileInputStyles = ({ invalid }: { invalid?: boolean }) =>
+export const fileInputStyles = () =>
 	({
 		...fontGrid('sm', 'default'),
 		fontFamily: tokens.font.body,
@@ -77,11 +77,6 @@ export const fileInputStyles = ({ invalid }: { invalid?: boolean }) =>
 			...buttonStyles({ size: 'md', variant: 'secondary', block: false }),
 			margin: `0 ${mapSpacing(1)} 0 0`,
 		},
-
-		...(invalid && {
-			backgroundColor: boxPalette.systemErrorMuted,
-			color: boxPalette.systemError,
-		}),
 
 		'&:disabled': {
 			cursor: 'not-allowed',
