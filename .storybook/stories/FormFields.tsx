@@ -1,9 +1,9 @@
 import { Meta } from '@storybook/react';
-import { Autocomplete } from '@ag.ds-next/react/src/autocomplete/Autocomplete';
+import { Autocomplete } from '@ag.ds-next/react/autocomplete';
 import { Box } from '@ag.ds-next/react/box';
 import { Button, ButtonGroup } from '@ag.ds-next/react/button';
 import { Columns, Column } from '@ag.ds-next/react/columns';
-import { Combobox, ComboboxMulti } from '@ag.ds-next/react/src/combobox';
+import { Combobox, ComboboxMulti } from '@ag.ds-next/react/combobox';
 import { Checkbox } from '@ag.ds-next/react/checkbox';
 import { Radio } from '@ag.ds-next/react/radio';
 import { ControlGroup } from '@ag.ds-next/react/control-group';
