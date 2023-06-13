@@ -8,12 +8,12 @@ import { GlobalAlertCloseButton } from './GlobalAlertCloseButton';
 
 export type GlobalAlertProps = PropsWithChildren<{
 	/** Function to be called when the 'Close' button is pressed. */
-	onClose?: MouseEventHandler<HTMLButtonElement>;
+	onDismiss?: MouseEventHandler<HTMLButtonElement>;
 	/** The title of the alert. */
 	title?: string;
 }>;
 
-export function GlobalAlert({ children, onClose, title }: GlobalAlertProps) {
+export function GlobalAlert({ children, onDismiss, title }: GlobalAlertProps) {
 	return (
 		<section
 			aria-label={title}
@@ -54,7 +54,7 @@ export function GlobalAlert({ children, onClose, title }: GlobalAlertProps) {
 							<Box flexGrow={1}>{children}</Box>
 						</Stack>
 					</Flex>
-					{onClose ? <GlobalAlertCloseButton onClick={onClose} /> : null}
+					{onDismiss ? <GlobalAlertCloseButton onClick={onDismiss} /> : null}
 				</Flex>
 			</Content>
 		</section>
