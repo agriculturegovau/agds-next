@@ -10,6 +10,23 @@ Don’t use the ampersand symbol (&) instead of ‘and’ in a heading or senten
 
 That’s unless it’s a part of a proper noun or name.
 
+```jsx live
+<Prose>
+	<h1>Summary and findings</h1>
+
+	<h2>Audit criteria</h2>
+
+	<ul>
+		<li>Export Control (Fish and Fish products) Rules 2021</li>
+		<li>Export Control (Milk and Milk Products) Rules 2021</li>
+		<li>Export Control (Egg and Egg Products) Rules 2021</li>
+		<li>Export Control (Meat and Meat Products) Rules 2021</li>
+		<li>Applicable Importing Country Requirements</li>
+		<li>Relevant Approved Arrangement for the Operations</li>
+	</ul>
+</Prose>
+```
+
 ## And/or
 
 Use ‘and/or’ to indicate either or both possibilities to users in the Export Service.
@@ -158,7 +175,7 @@ Reserve FAQs for ‘edge’ cases as much as possible. That is, user journeys an
 
 Provide guidance and answers a user needs in the context of what they are doing. That is, at the point of their journey or within a transaction where they need a piece of information.
 
-If the information applies to all users, don’t hide an FAQ in an accordion or other component. If it applies to some users only, you can use an [accordion](https://design-system.agriculture.gov.au/components/accordion).
+If the information applies to all users, don’t hide an FAQ in an accordion or other component. If it applies to some users only, you can use an [details](https://design-system.agriculture.gov.au/components/details).
 
 Monitor and measure the success of FAQs. If no one is using them, remove FAQ content.
 
@@ -179,6 +196,48 @@ Use conjunctions, prepositions and pronouns in between so a statement heading so
 A H1 can also be a question. But try to use questions as headings minimally or instead of a statement. Start with one of the 5 ‘W’s’: ‘who’, ‘what’, ‘where’, ‘when’ or ‘why’ for question headings.
 
 For more information, see Structuring headings and labels in [Content structure](https://deptagriculture.sharepoint.com/teams/msteams_26787b_671006/Shared%20Documents/3.%20Guidance%20and%20support/Help%20section%20content/linktocome). Also see Frequently Asked Questions in [Content styles](https://deptagriculture.sharepoint.com/teams/msteams_26787b_671006/Shared%20Documents/3.%20Guidance%20and%20support/Help%20section%20content/link%20to%20come) and [Headings](https://design-system.agriculture.gov.au/components/heading).
+
+```jsx live
+<Stack gap={3}>
+	<H1>Find an export guide for agricultural goods</H1>
+	<Text as="p" fontSize="lg" color="muted">
+		Get tailored step-by-step guidance on how to get started exporting. Just
+		answer a few quick questions about your goods and role in the export
+		process.
+	</Text>
+
+	<H2>What do you want to export or prepare for export?</H2>
+
+	<Stack as="ul" gap={1}>
+		<Card shadow clickable>
+			<CardInner>
+				<Stack gap={1}>
+					<H3>
+						<CardLink href="#">Dairy</CardLink>
+					</H3>
+					<Text as="p">
+						Includes milk, milk, powder products, butter, cream cheese, and
+						other processed dairy products
+					</Text>
+				</Stack>
+			</CardInner>
+		</Card>
+
+		<Card shadow clickable>
+			<CardInner>
+				<Stack gap={1}>
+					<H3>
+						<CardLink href="#">Eggs</CardLink>
+					</H3>
+					<Text as="p">
+						Includes shell eggs and egg products intended to be exported as food
+					</Text>
+				</Stack>
+			</CardInner>
+		</Card>
+	</Stack>
+</Stack>
+```
 
 ## Instructions
 

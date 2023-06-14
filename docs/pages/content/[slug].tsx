@@ -3,7 +3,7 @@ import { MDXRemote } from 'next-mdx-remote';
 import { InpageNav } from '@ag.ds-next/react/inpage-nav';
 import { Prose } from '@ag.ds-next/react/prose';
 import { mdxComponents } from '../../components/mdxComponents';
-import { AppLayout } from '../../components/AppLayout';
+import { SiteLayout } from '../../components/SiteLayout';
 import { DocumentTitle } from '../../components/DocumentTitle';
 import { PageLayout } from '../../components/PageLayout';
 import { PageTitle } from '../../components/PageTitle';
@@ -28,7 +28,7 @@ export default function ContentPage({
 				title={document.title}
 				description={document.description}
 			/>
-			<AppLayout applyMainElement={false}>
+			<SiteLayout applyMainElement={false}>
 				<PageLayout
 					editPath={`/docs/content/content/${document.slug}.mdx`}
 					breadcrumbs={breadcrumbs}
@@ -78,7 +78,7 @@ export default function ContentPage({
 						</ul>
 					</Prose>
 				</PageLayout>
-			</AppLayout>
+			</SiteLayout>
 		</>
 	);
 }
