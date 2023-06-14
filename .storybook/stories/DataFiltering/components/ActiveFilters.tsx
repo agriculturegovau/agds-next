@@ -22,7 +22,7 @@ const getTagsFromFilters = ({
 	removeFilter,
 }: {
 	filters: GetDataFilters;
-	removeFilter: (filter: keyof GetDataFilters) => void;
+	removeFilter: (filterKey: keyof GetDataFilters) => void;
 }) => {
 	const filterEntries = Object.entries(filters) as Entries<GetDataFilters>;
 

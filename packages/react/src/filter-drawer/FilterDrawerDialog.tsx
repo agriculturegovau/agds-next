@@ -35,8 +35,6 @@ export function FilterDrawerDialog({
 				background="body"
 				aria-labelledby={titleId}
 				maxWidth="32rem"
-				borderLeft
-				borderColor="muted"
 				css={{
 					position: 'fixed',
 					inset: 0,
@@ -69,11 +67,13 @@ export function FilterDrawerDialog({
 	);
 }
 
+// Filter drawer header
+
 type FilterDrawerHeaderProps = PropsWithChildren<{}>;
 
 function FilterDrawerHeader({ children }: FilterDrawerHeaderProps) {
 	return (
-		<Box borderBottom borderColor="muted" paddingX={1.5} paddingY={1}>
+		<Box borderBottom paddingX={1.5} paddingY={1}>
 			{children}
 		</Box>
 	);
@@ -102,6 +102,8 @@ function FilterDrawerHeaderTitle({
 	);
 }
 
+// Filter drawer content
+
 type FilterDrawerContentProps = PropsWithChildren<{}>;
 
 function FilterDrawerContent({ children }: FilterDrawerContentProps) {
@@ -112,17 +114,13 @@ function FilterDrawerContent({ children }: FilterDrawerContentProps) {
 	);
 }
 
+// Filter drawer footer
+
 type FilterDrawerFooterProps = PropsWithChildren<{}>;
 
 function FilterDrawerFooter({ children }: FilterDrawerFooterProps) {
 	return (
-		<Box
-			borderTop
-			borderColor="muted"
-			paddingX={1.5}
-			paddingY={1}
-			css={{ marginTop: 'auto' }}
-		>
+		<Box borderTop paddingX={1.5} paddingY={1} css={{ marginTop: 'auto' }}>
 			{children}
 		</Box>
 	);

@@ -45,7 +45,6 @@ type TableFilteringMediumProps = {
 	tableCaption: string;
 };
 
-/** These patterns are draft designs and are not yet ready for production. */
 export const TableFilteringMedium = ({
 	sort,
 	setSort,
@@ -148,13 +147,11 @@ export const TableFilteringMedium = ({
 				/>
 
 				{data.length ? (
-					<Stack>
-						<PaginationButtons
-							currentPage={pagination.page}
-							onChange={(page) => setPagination({ ...pagination, page })}
-							totalPages={totalPages}
-						/>
-					</Stack>
+					<PaginationButtons
+						currentPage={pagination.page}
+						onChange={(page) => setPagination({ ...pagination, page })}
+						totalPages={totalPages}
+					/>
 				) : null}
 			</Stack>
 		</PageContent>

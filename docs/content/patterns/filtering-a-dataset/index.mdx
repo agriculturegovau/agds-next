@@ -15,14 +15,13 @@ When filters are applied, tags are added below the filters so that users can see
 
 <DoHeading />
 
-- include 1-2 primary filters above the dataset
-- prioritise filters by expected usage
 - choose the right filter pattern to meet user needs
+- prioritise filters by expected usage
+- include 1-2 primary filters above the dataset
 
 <DontHeading />
 
 - remove tags feature as tags allow users to see the selections that are active and remove them easily
-- use long radio/checkbox groups - e.g. more than 10 items
 
 ## Filter input methods
 
@@ -36,6 +35,7 @@ Filters need to work within a limited space, so consider using input methods tha
 - [Combobox](/components/combobox)
 - [Switch](/components/switch)
 - [Date picker](/components/date-picker)
+- [Date range picker](/components/date-picker)
 
 ## Filter patterns
 
@@ -43,7 +43,7 @@ Filter patterns are available in 3 sizes to accommodate a wide range of use case
 
 - **Small:** 1-2 filters
 - **Medium:** 3-6 filters
-- **Large:** 6+ filters (coming soon)
+- **Large:** 6+ filters
 
 <Table>
 	<TableCaption>Filter sizes decision table</TableCaption>
@@ -56,6 +56,9 @@ Filter patterns are available in 3 sizes to accommodate a wide range of use case
 			<TableHeader width="15%" scope="col">
 				Medium
 			</TableHeader>
+			<TableHeader width="15%" scope="col">
+				Large
+			</TableHeader>
 		</tr>
 	</TableHead>
 	<TableBody>
@@ -65,11 +68,13 @@ Filter patterns are available in 3 sizes to accommodate a wide range of use case
 			</TableCell>
 			<TableCell>1-2</TableCell>
 			<TableCell>3-6</TableCell>
+			<TableCell>6+</TableCell>
 		</tr>
 		<tr>
 			<TableCell as="th" scope="row">
 				Number of primary filters
 			</TableCell>
+			<TableCell>1-2</TableCell>
 			<TableCell>1-2</TableCell>
 			<TableCell>1-2</TableCell>
 		</tr>
@@ -79,6 +84,7 @@ Filter patterns are available in 3 sizes to accommodate a wide range of use case
 			</TableCell>
 			<TableCell>No</TableCell>
 			<TableCell>Yes</TableCell>
+			<TableCell>Yes</TableCell>
 		</tr>
 		<tr>
 			<TableCell as="th" scope="row">
@@ -86,6 +92,7 @@ Filter patterns are available in 3 sizes to accommodate a wide range of use case
 			</TableCell>
 			<TableCell>No</TableCell>
 			<TableCell>No</TableCell>
+			<TableCell>Yes</TableCell>
 		</tr>
 	</TableBody>
 </Table>
@@ -120,4 +127,17 @@ Tags are added below the filters to show which are active and give the user an e
 
 ## Large filter pattern
 
-Coming soon.
+Large is intended to display 6+ filters in a [Filter drawer](/components/filter-drawer).
+
+1 to 2 of the most used filters should be displayed as the primary filters outside the Filter drawer to make them easier and faster to access.
+
+Related filters should be grouped together in a [Fieldset](/components/fieldset).
+
+Tags are added below the primary filters to show which are active and give the user an easy way to clear them.
+
+<ImageWithBorder
+	src="/img/patterns/filtering-a-dataset-large.png"
+	alt="Screenshot of the large filter pattern"
+/>
+
+[View Storybook preview](https://design-system.agriculture.gov.au/storybook/index.html?path=/story/patterns-data-filtering-and-sorting--large)
