@@ -1,3 +1,5 @@
+import { SiteLayout } from '../__shared/SiteLayout';
+import { AppLayout } from '../__shared/AppLayout';
 import { SinglePageFormPage } from './SinglePageForm';
 import { SinglePageFormSuccess } from './SinglePageFormSuccess';
 
@@ -15,3 +17,15 @@ export const FormPage = () => {
 export const SuccessPage = () => {
 	return <SinglePageFormSuccess />;
 };
+
+export const FormInSiteContext = () => (
+	<SiteLayout>
+		<SinglePageFormPage />
+	</SiteLayout>
+);
+
+export const FormInAppContext = () => (
+	<AppLayout>
+		<SinglePageFormPage />
+	</AppLayout>
+);
