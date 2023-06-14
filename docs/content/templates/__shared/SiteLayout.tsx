@@ -9,58 +9,68 @@ import { Logo } from '@ag.ds-next/react/ag-branding';
 import { MainNav } from '@ag.ds-next/react/main-nav';
 import { Text } from '@ag.ds-next/react/text';
 import { tokens } from '@ag.ds-next/react/core';
+import { SkipLinks } from '@ag.ds-next/react/skip-link';
 
 export const SiteLayout = ({ children }: PropsWithChildren) => (
-	<Flex
-		flexDirection="column"
-		fontFamily="body"
-		palette="light"
-		minHeight="100vh"
-	>
-		<Stack palette="dark">
-			<Header
-				background="bodyAlt"
-				logo={<Logo />}
-				heading="Site title"
-				href="#"
-				subline="Service description that could be a little longer"
-			/>
+	<>
+		<SkipLinks
+			links={[
+				{ href: '#main-content', label: 'Skip to main content' },
+				{ href: '#main-nav', label: 'Skip to main navigation' },
+			]}
+		/>
+		<Flex
+			flexDirection="column"
+			fontFamily="body"
+			palette="light"
+			minHeight="100vh"
+		>
+			<Stack palette="dark">
+				<Header
+					background="bodyAlt"
+					heading="Service name"
+					subline="Service description that could be a little longer"
+					logo={<Logo />}
+					href="#"
+				/>
 
-			<MainNav
-				id="main-nav"
-				items={[
-					{ label: 'Menu', href: '#' },
-					{ label: 'Menu', href: '#' },
-					{ label: 'Menu', href: '#' },
-				]}
-				secondaryItems={[{ label: 'Menu', href: '#' }]}
-			/>
-		</Stack>
-		{children}
-		<Box palette="dark">
-			<Footer background="bodyAlt">
-				<nav aria-label="footer">
-					<LinkList
-						links={[
-							{ label: 'Link', href: '#' },
-							{ label: 'Link', href: '#' },
-							{ label: 'Link', href: '#' },
-						]}
-						horizontal
-					/>
-				</nav>
-				<FooterDivider />
+				<MainNav
+					id="main-nav"
+					items={[
+						{ label: 'Menu', href: '#' },
+						{ label: 'Menu', href: '#' },
+						{ label: 'Menu', href: '#' },
+					]}
+					secondaryItems={[{ label: 'Menu', href: '#' }]}
+				/>
+			</Stack>
+			{children}
+			<Box palette="dark">
+				<Footer background="bodyAlt">
+					<nav aria-label="footer">
+						<LinkList
+							links={[
+								{ label: 'Link', href: '#' },
+								{ label: 'Link', href: '#' },
+								{ label: 'Link', href: '#' },
+							]}
+							horizontal
+						/>
+					</nav>
+					<FooterDivider />
 
-				<Text fontSize="xs" maxWidth={tokens.maxWidth.bodyText}>
-					We acknowledge the traditional owners of country throughout Australia
-					and recognise their continuing connection to land, waters and culture.
-					We pay our respects to their Elders past, present and emerging.
-				</Text>
-				<Text fontSize="xs" maxWidth={tokens.maxWidth.bodyText}>
-					&copy; {new Date().getFullYear()} Department of Agriculture, Fisheries
-					and Forestry
-				</Text>
-			</Footer>
-		</Box>
-	</Flex>
+					<Text fontSize="xs" maxWidth={tokens.maxWidth.bodyText}>
+						We acknowledge the traditional owners of country throughout
+						Australia and recognise their continuing connection to land, waters
+						and culture. We pay our respects to their Elders past, present and
+						emerging.
+					</Text>
+					<Text fontSize="xs" maxWidth={tokens.maxWidth.bodyText}>
+						&copy; {new Date().getFullYear()} Department of Agriculture,
+						Fisheries and Forestry
+					</Text>
+				</Footer>
+			</Box>
+		</Flex>
+	</>
 );
