@@ -1,3 +1,4 @@
+import { SiteLayout } from '../__shared/SiteLayout';
 import { SignInFormPage } from './SignInForm';
 
 export default {
@@ -10,3 +11,9 @@ export default {
 export const SignInForm = () => {
 	return <SignInFormPage />;
 };
+
+export const InSiteContext = () => (
+	<SiteLayout>
+		<SignInForm />
+	</SiteLayout>
+);
