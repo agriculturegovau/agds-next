@@ -1,3 +1,4 @@
+import { SiteLayout } from '../__shared/SiteLayout';
 import { Home as HomeComponent } from './Home';
 
 export default {
@@ -8,5 +9,9 @@ export default {
 };
 
 export function Home() {
-	return <HomeComponent />;
+	return (
+		<SiteLayout>
+			<HomeComponent />
+		</SiteLayout>
+	);
 }
