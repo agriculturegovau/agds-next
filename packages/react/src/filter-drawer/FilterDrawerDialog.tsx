@@ -67,6 +67,8 @@ export function FilterDrawerDialog({
 	);
 }
 
+// Filter drawer header
+
 type FilterDrawerHeaderProps = PropsWithChildren<{}>;
 
 function FilterDrawerHeader({ children }: FilterDrawerHeaderProps) {
@@ -100,6 +102,8 @@ function FilterDrawerHeaderTitle({
 	);
 }
 
+// Filter drawer content
+
 type FilterDrawerContentProps = PropsWithChildren<{}>;
 
 function FilterDrawerContent({ children }: FilterDrawerContentProps) {
@@ -109,6 +113,8 @@ function FilterDrawerContent({ children }: FilterDrawerContentProps) {
 		</Box>
 	);
 }
+
+// Filter drawer footer
 
 type FilterDrawerFooterProps = PropsWithChildren<{}>;
 

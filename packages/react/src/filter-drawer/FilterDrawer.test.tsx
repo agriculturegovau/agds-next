@@ -23,19 +23,18 @@ function renderBaseFilterDrawer() {
 }
 
 function FilterDrawerExample() {
-	const [isFilterDrawerOpen, openFilterDrawer, closeFilterDrawer] =
-		useTernaryState(false);
+	const [isOpen, open, close] = useTernaryState(false);
 	return (
 		<div>
-			<Button onClick={openFilterDrawer} data-testid="open-button">
+			<Button onClick={open} data-testid="open-button">
 				Open
 			</Button>
 			<FilterDrawer
-				isOpen={isFilterDrawerOpen}
-				onDismiss={closeFilterDrawer}
+				isOpen={isOpen}
+				onDismiss={close}
 				title="Filter drawer title"
 				actions={
-					<Button onClick={closeFilterDrawer} data-testid="close-button">
+					<Button onClick={close} data-testid="close-button">
 						Close
 					</Button>
 				}
