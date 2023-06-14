@@ -4,18 +4,22 @@ import { Prose } from '@ag.ds-next/react/prose';
 import { Stack } from '@ag.ds-next/react/stack';
 import { Text } from '@ag.ds-next/react/text';
 
-export const ErrorPage = () => {
+export const ScheduledOutage = () => {
 	return (
 		<PageContent>
 			<Stack gap={1.5}>
 				<Prose>
-					<h1>Error page title</h1>
+					<h1>There&apos;s a problem with the Export Service</h1>
 					<p>
-						Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis
-						vestibulum.
+						Relationship Autorisation Manager (RAM) is down for system
+						maintenance from 11:30 pm, 15 October to 7pm, 16 October.
+					</p>
+					<p>
+						During this time you can&apos;t create an account or sign into the
+						Export Service. Please try again later.
 					</p>
 				</Prose>
-				<Callout title="Need help?">
+				<Callout title="If you need help:">
 					<Prose>
 						<ul>
 							<li>
@@ -31,7 +35,7 @@ export const ErrorPage = () => {
 						</ul>
 					</Prose>
 				</Callout>
-				<Text color="muted">Error code: 500</Text>
+				<Text color="muted">Error code: 503</Text>
 			</Stack>
 		</PageContent>
 	);

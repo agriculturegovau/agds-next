@@ -2,18 +2,18 @@ import { Callout } from '@ag.ds-next/react/callout';
 import { PageContent } from '@ag.ds-next/react/content';
 import { Prose } from '@ag.ds-next/react/prose';
 import { Stack } from '@ag.ds-next/react/stack';
-import { Text } from '@ag.ds-next/react/text';
 
-export const ErrorPage = () => {
+export const Maintenance = () => {
 	return (
 		<PageContent>
 			<Stack gap={1.5}>
 				<Prose>
-					<h1>Error page title</h1>
+					<h1>We&apos;re updating the Export Service</h1>
 					<p>
-						Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis
-						vestibulum.
+						While we&apos;re down for planned maintenance, you won&apos;t be
+						able to access our services.
 					</p>
+					<p>Please check back soon.</p>
 				</Prose>
 				<Callout title="Need help?">
 					<Prose>
@@ -31,7 +31,6 @@ export const ErrorPage = () => {
 						</ul>
 					</Prose>
 				</Callout>
-				<Text color="muted">Error code: 500</Text>
 			</Stack>
 		</PageContent>
 	);

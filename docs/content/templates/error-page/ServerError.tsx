@@ -4,16 +4,13 @@ import { Prose } from '@ag.ds-next/react/prose';
 import { Stack } from '@ag.ds-next/react/stack';
 import { Text } from '@ag.ds-next/react/text';
 
-export const ErrorPage = () => {
+export const ServerError = () => {
 	return (
 		<PageContent>
 			<Stack gap={1.5}>
 				<Prose>
-					<h1>Error page title</h1>
-					<p>
-						Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis
-						vestibulum.
-					</p>
+					<h1>Sorry, there is a problem with the service</h1>
+					<p>Please try again later.</p>
 				</Prose>
 				<Callout title="Need help?">
 					<Prose>

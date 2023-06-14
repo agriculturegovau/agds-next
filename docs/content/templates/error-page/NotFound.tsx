@@ -1,23 +1,38 @@
-import { Prose } from '@ag.ds-next/react/prose';
+import { Callout } from '@ag.ds-next/react/callout';
 import { PageContent } from '@ag.ds-next/react/content';
-import { SiteLayout } from '../__shared/SiteLayout';
+import { Prose } from '@ag.ds-next/react/prose';
+import { Stack } from '@ag.ds-next/react/stack';
+import { Text } from '@ag.ds-next/react/text';
 
 export const NotFound = () => {
 	return (
-		<SiteLayout>
-			<PageContent>
+		<PageContent>
+			<Stack gap={1.5}>
 				<Prose>
 					<h1>Page not found</h1>
-					<p>If you typed the web address, check it is correct.</p>
 					<p>
-						If you pasted the web address, check you copied the entire address.
-					</p>
-					<p>
-						If the address is correct and you believe this page should exist,
-						please <a href="#">contact support</a>.
+						Check the web address is correct or go back to the{' '}
+						<a href="#">Export Service</a>.
 					</p>
 				</Prose>
-			</PageContent>
-		</SiteLayout>
+				<Callout title="Need help?">
+					<Prose>
+						<ul>
+							<li>
+								Call <a href="tel:1800 571 125">1800 571 125</a>, Monday to
+								Friday, 9 am to 5 pm AEST
+							</li>
+							<li>
+								Email{' '}
+								<a href="exportservive@agriculture.gov.au">
+									exportservive@agriculture.gov.au
+								</a>
+							</li>
+						</ul>
+					</Prose>
+				</Callout>
+				<Text color="muted">Error code: 404</Text>
+			</Stack>
+		</PageContent>
 	);
 };
