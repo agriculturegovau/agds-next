@@ -42,7 +42,6 @@ export const Maintenance = {
 		</SiteLayout>
 	),
 };
-// Maintenance.name =
 
 export const ServerError = {
 	name: 'Server error (500)',
