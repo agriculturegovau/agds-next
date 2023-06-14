@@ -1,5 +1,6 @@
 import '@testing-library/jest-dom';
 import 'html-validate/jest';
+import userEvent from '@testing-library/user-event';
 import { Text } from '../text';
 import { Prose } from '../prose';
 import { cleanup, render, screen } from '../../../../test-utils';
@@ -75,5 +76,47 @@ describe('PageAlert', () => {
 		const el = screen.getByText('Title');
 		expect(el).toBeInTheDocument();
 		expect(el.tagName).toBe('H2');
+	});
+
+	describe('with a close button', () => {
+		it('renders correctly', () => {
+			const { container } = renderPageAlert({
+				tone: 'info',
+				title: 'PageAlert with close button',
+				children: <Text as="p">This is a Page alert component.</Text>,
+				onDismiss: jest.fn(),
+			});
+
+			expect(container).toMatchSnapshot();
+		});
+
+		it('renders a valid HTML structure', () => {
+			const { container } = renderPageAlert({
+				tone: 'info',
+				title: 'PageAlert with close button',
+				children: <Text as="p">This is a Page alert component.</Text>,
+				onDismiss: jest.fn(),
+			});
+			expect(container).toHTMLValidate({
+				extends: ['html-validate:recommended'],
+			});
+		});
+
+		it('responds to an onDismiss event', async () => {
+			const onDismiss = jest.fn();
+			renderPageAlert({
+				tone: 'info',
+				title: 'PageAlert with close button',
+				children: <Text as="p">This is a Page alert component.</Text>,
+				onDismiss: onDismiss,
+			});
+
+			const el = screen.getByLabelText('Close');
+			expect(el).toBeInTheDocument();
+			expect(el).toHaveAccessibleName('Close');
+			expect(el.tagName).toEqual('BUTTON');
+			await userEvent.click(el);
+			expect(onDismiss).toHaveBeenCalledTimes(1);
+		});
 	});
 });

@@ -3,7 +3,7 @@
 exports[`PageAlert tone: error renders correctly 1`] = `
 <div>
   <div
-    class="css-mzppos-boxStyles-PageAlert"
+    class="css-6b0oeo-boxStyles-PageAlert"
   >
     <div
       class="css-1k8g9lc-boxStyles-PageAlert"
@@ -30,25 +30,29 @@ exports[`PageAlert tone: error renders correctly 1`] = `
       </svg>
     </div>
     <div
-      class="css-1u7h2qt-boxStyles"
+      class="css-ic9f31-boxStyles-PageAlert"
     >
-      <h3
-        class="css-1lv1g9v-boxStyles-Text"
-      >
-        There is a problem
-      </h3>
       <div
-        class="css-hl6z5f-boxStyles-proseClass"
+        class="css-g6k1ma-boxStyles"
       >
-        <ul>
-          <li>
-            <a
-              href="#"
-            >
-              Full name must not be empty
-            </a>
-          </li>
-        </ul>
+        <h3
+          class="css-x96jxq-boxStyles-Text-PageAlertTitle"
+        >
+          There is a problem
+        </h3>
+        <div
+          class="css-hl6z5f-boxStyles-proseClass"
+        >
+          <ul>
+            <li>
+              <a
+                href="#"
+              >
+                Full name must not be empty
+              </a>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
   </div>
@@ -58,7 +62,7 @@ exports[`PageAlert tone: error renders correctly 1`] = `
 exports[`PageAlert tone: info renders correctly 1`] = `
 <div>
   <div
-    class="css-1i0pn2n-boxStyles-PageAlert"
+    class="css-mgpque-boxStyles-PageAlert"
   >
     <div
       class="css-11095yd-boxStyles-PageAlert"
@@ -85,18 +89,22 @@ exports[`PageAlert tone: info renders correctly 1`] = `
       </svg>
     </div>
     <div
-      class="css-1u7h2qt-boxStyles"
+      class="css-ic9f31-boxStyles-PageAlert"
     >
-      <h3
-        class="css-1lv1g9v-boxStyles-Text"
+      <div
+        class="css-g6k1ma-boxStyles"
       >
-        Notice
-      </h3>
-      <p
-        class="css-6j1v6l-boxStyles-Text"
-      >
-        All vacancies close on the advertised closing date unless otherwise specified.
-      </p>
+        <h3
+          class="css-x96jxq-boxStyles-Text-PageAlertTitle"
+        >
+          Notice
+        </h3>
+        <p
+          class="css-6j1v6l-boxStyles-Text"
+        >
+          All vacancies close on the advertised closing date unless otherwise specified.
+        </p>
+      </div>
     </div>
   </div>
 </div>
@@ -105,7 +113,7 @@ exports[`PageAlert tone: info renders correctly 1`] = `
 exports[`PageAlert tone: success renders correctly 1`] = `
 <div>
   <div
-    class="css-gwusee-boxStyles-PageAlert"
+    class="css-12s1p7i-boxStyles-PageAlert"
   >
     <div
       class="css-pnbgw6-boxStyles-PageAlert"
@@ -132,18 +140,22 @@ exports[`PageAlert tone: success renders correctly 1`] = `
       </svg>
     </div>
     <div
-      class="css-1u7h2qt-boxStyles"
+      class="css-ic9f31-boxStyles-PageAlert"
     >
-      <h3
-        class="css-1lv1g9v-boxStyles-Text"
+      <div
+        class="css-g6k1ma-boxStyles"
       >
-        Submission successful
-      </h3>
-      <p
-        class="css-6j1v6l-boxStyles-Text"
-      >
-        Your application has been successfully submitted.
-      </p>
+        <h3
+          class="css-x96jxq-boxStyles-Text-PageAlertTitle"
+        >
+          Submission successful
+        </h3>
+        <p
+          class="css-6j1v6l-boxStyles-Text"
+        >
+          Your application has been successfully submitted.
+        </p>
+      </div>
     </div>
   </div>
 </div>
@@ -152,7 +164,7 @@ exports[`PageAlert tone: success renders correctly 1`] = `
 exports[`PageAlert tone: warning renders correctly 1`] = `
 <div>
   <div
-    class="css-1wuz7wi-boxStyles-PageAlert"
+    class="css-1c4dk5p-boxStyles-PageAlert"
   >
     <div
       class="css-11ssqox-boxStyles-PageAlert"
@@ -179,18 +191,107 @@ exports[`PageAlert tone: warning renders correctly 1`] = `
       </svg>
     </div>
     <div
-      class="css-1u7h2qt-boxStyles"
+      class="css-ic9f31-boxStyles-PageAlert"
     >
-      <h3
-        class="css-1lv1g9v-boxStyles-Text"
+      <div
+        class="css-g6k1ma-boxStyles"
       >
-        Browser out of date
-      </h3>
-      <p
-        class="css-6j1v6l-boxStyles-Text"
+        <h3
+          class="css-x96jxq-boxStyles-Text-PageAlertTitle"
+        >
+          Browser out of date
+        </h3>
+        <p
+          class="css-6j1v6l-boxStyles-Text"
+        >
+          Your web browser is out of date.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`PageAlert with a close button renders correctly 1`] = `
+<div>
+  <div
+    class="css-mgpque-boxStyles-PageAlert"
+  >
+    <div
+      class="css-11095yd-boxStyles-PageAlert"
+    >
+      <svg
+        aria-hidden="false"
+        aria-label="Information"
+        class="css-9s3cfn-Icon"
+        clip-rule="evenodd"
+        focusable="true"
+        height="24"
+        role="img"
+        viewBox="0 0 24 24"
+        width="24"
+        xmlns="http://www.w3.org/2000/svg"
       >
-        Your web browser is out of date.
-      </p>
+        <path
+          clip-rule="evenodd"
+          d="M12 1C5.9 1 1 5.9 1 12C1 18.1 5.9 23 12 23C18.1 23 23 18.1 23 12C23 5.9 18.1 1 12 1ZM12 18C11.4477 18 11 17.5523 11 17V11C11 10.4477 11.4477 10 12 10C12.5523 10 13 10.4477 13 11V17C13 17.5523 12.5523 18 12 18ZM12 8C12.5523 8 13 7.55228 13 7C13 6.44772 12.5523 6 12 6C11.4477 6 11 6.44772 11 7C11 7.55228 11.4477 8 12 8Z"
+          fill="currentColor"
+          fill-rule="evenodd"
+          stroke="none"
+        />
+      </svg>
+    </div>
+    <div
+      class="css-ic9f31-boxStyles-PageAlert"
+    >
+      <div
+        class="css-g6k1ma-boxStyles"
+      >
+        <h3
+          class="css-1a10dg0-boxStyles-Text-PageAlertTitle"
+        >
+          PageAlert with close button
+        </h3>
+        <p
+          class="css-6j1v6l-boxStyles-Text"
+        >
+          This is a Page alert component.
+        </p>
+      </div>
+      <button
+        aria-label="Close"
+        class="css-ajxfbb-BaseButton-PageAlertCloseButton"
+        type="button"
+      >
+        <span>
+          <span
+            class="css-oobk4c-Button"
+          >
+            Close
+          </span>
+          <span
+            aria-live="assertive"
+          />
+        </span>
+        <svg
+          aria-hidden="true"
+          class="css-9s3cfn-Icon"
+          clip-rule="evenodd"
+          focusable="false"
+          height="24"
+          role="img"
+          viewBox="0 0 24 24"
+          width="24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M5 19L19 5"
+          />
+          <path
+            d="M19 19L5 5"
+          />
+        </svg>
+      </button>
     </div>
   </div>
 </div>
