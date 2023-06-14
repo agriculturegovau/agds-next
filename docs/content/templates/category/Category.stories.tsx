@@ -1,3 +1,4 @@
+import { SiteLayout } from '../__shared/SiteLayout';
 import { Category as CategoryPage } from './Category';
 
 export default {
@@ -8,5 +9,9 @@ export default {
 };
 
 export function Category() {
-	return <CategoryPage />;
+	return (
+		<SiteLayout>
+			<CategoryPage />
+		</SiteLayout>
+	);
 }

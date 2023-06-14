@@ -8,11 +8,10 @@ import {
 } from '@ag.ds-next/react/hero-banner';
 import { Card, CardInner, CardLink } from '@ag.ds-next/react/card';
 import { Columns } from '@ag.ds-next/react/columns';
-import { SiteLayout } from '../__shared/SiteLayout';
 
 export function Category() {
 	return (
-		<SiteLayout>
+		<>
 			<HeroCategoryBanner
 				image={
 					<img
@@ -50,6 +49,6 @@ export function Category() {
 					</Columns>
 				</Stack>
 			</SectionContent>
-		</SiteLayout>
+		</>
 	);
 }
