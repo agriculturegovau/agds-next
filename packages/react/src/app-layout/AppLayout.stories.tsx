@@ -12,6 +12,7 @@ import { Text } from '../text';
 import { Stack } from '../stack';
 import { H1 } from '../heading';
 import { TextLink } from '../text-link';
+import { GlobalAlert } from '../global-alert';
 import { navigationItems } from './test-utils';
 import {
 	AppLayout,
@@ -30,6 +31,11 @@ function AppLayoutTemplate({ children, focusMode }: AppLayoutProps) {
 			<SkipLinks
 				links={[{ href: '#main-content', label: 'Skip to main content' }]}
 			/>
+			<GlobalAlert title="Page alert title">
+				<Text as="p">
+					Digital identity is currently down for maintenance. We apologise for.
+				</Text>
+			</GlobalAlert>
 			<AppLayout focusMode={focusMode}>
 				<AppLayoutHeader
 					href="/"
