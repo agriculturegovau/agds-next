@@ -45,7 +45,6 @@ type TableFilteringMediumProps = {
 	tableCaption: string;
 };
 
-/** These patterns are draft designs and are not yet ready for production. */
 export const TableFilteringMedium = ({
 	sort,
 	setSort,

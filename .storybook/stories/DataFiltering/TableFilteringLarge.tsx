@@ -40,7 +40,6 @@ type TableFilteringLargeProps = {
 	tableRef?: RefObject<HTMLTableElement>;
 };
 
-/** These patterns are draft designs and are not yet ready for production. */
 export const TableFilteringLarge = ({
 	sort,
 	setSort,
