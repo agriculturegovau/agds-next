@@ -1,4 +1,4 @@
-import React from 'react';
+import { SiteLayout } from '../__shared/SiteLayout';
 import { Content } from './Content';
 import { ContentWithSideNav } from './ContentWithSideNav';
 
@@ -10,9 +10,17 @@ export default {
 };
 
 export function Basic() {
-	return <Content />;
+	return (
+		<SiteLayout>
+			<Content />
+		</SiteLayout>
+	);
 }
 
 export function WithSideNav() {
-	return <ContentWithSideNav />;
+	return (
+		<SiteLayout>
+			<ContentWithSideNav />
+		</SiteLayout>
+	);
 }
