@@ -19,12 +19,7 @@ export const SiteLayout = ({ children }: PropsWithChildren) => (
 				{ href: '#main-nav', label: 'Skip to main navigation' },
 			]}
 		/>
-		<Flex
-			flexDirection="column"
-			fontFamily="body"
-			palette="light"
-			minHeight="100vh"
-		>
+		<Flex flexDirection="column" fontFamily="body" minHeight="100vh">
 			<Stack palette="dark">
 				<Header
 					background="bodyAlt"
