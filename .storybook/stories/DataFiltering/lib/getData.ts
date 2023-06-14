@@ -1,3 +1,4 @@
+import { DateRangeWithString } from '@ag.ds-next/react/date-range-picker';
 import {
 	generateBusinessData,
 	BusinessForAudit,
@@ -19,10 +20,7 @@ export type GetDataFilters = {
 	assignee: string | undefined;
 	businessName: string | undefined;
 	state: string | undefined;
-	requestDate: {
-		from: Date | string | undefined;
-		to: Date | string | undefined;
-	};
+	requestDate: DateRangeWithString;
 	status: BusinessForAuditStatus | undefined;
 };
 

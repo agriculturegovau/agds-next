@@ -35,8 +35,6 @@ export function FilterDrawerDialog({
 				background="body"
 				aria-labelledby={titleId}
 				maxWidth="32rem"
-				borderLeft
-				borderColor="muted"
 				css={{
 					position: 'fixed',
 					inset: 0,
@@ -73,7 +71,7 @@ type FilterDrawerHeaderProps = PropsWithChildren<{}>;
 
 function FilterDrawerHeader({ children }: FilterDrawerHeaderProps) {
 	return (
-		<Box borderBottom borderColor="muted" paddingX={1.5} paddingY={1}>
+		<Box borderBottom paddingX={1.5} paddingY={1}>
 			{children}
 		</Box>
 	);
@@ -116,13 +114,7 @@ type FilterDrawerFooterProps = PropsWithChildren<{}>;
 
 function FilterDrawerFooter({ children }: FilterDrawerFooterProps) {
 	return (
-		<Box
-			borderTop
-			borderColor="muted"
-			paddingX={1.5}
-			paddingY={1}
-			css={{ marginTop: 'auto' }}
-		>
+		<Box borderTop paddingX={1.5} paddingY={1} css={{ marginTop: 'auto' }}>
 			{children}
 		</Box>
 	);

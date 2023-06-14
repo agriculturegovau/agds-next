@@ -116,13 +116,11 @@ export const TableFilteringLarge = ({
 					setSort={setSort}
 				/>
 				{data.length ? (
-					<Stack>
-						<PaginationButtons
-							currentPage={pagination.page}
-							onChange={(page) => setPagination({ ...pagination, page })}
-							totalPages={totalPages}
-						/>
-					</Stack>
+					<PaginationButtons
+						currentPage={pagination.page}
+						onChange={(page) => setPagination({ ...pagination, page })}
+						totalPages={totalPages}
+					/>
 				) : null}
 			</Stack>
 		</PageContent>

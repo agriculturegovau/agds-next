@@ -21,12 +21,12 @@ exports[`FilterDrawer renders correctly 1`] = `
       <div
         aria-labelledby="filter-drawer-:r0:-title"
         aria-modal="true"
-        class="css-5mib7-boxStyles-FilterDrawerDialog"
+        class="css-1xt2kod-boxStyles-FilterDrawerDialog"
         role="dialog"
         style="transform: translateX(100%);"
       >
         <div
-          class="css-1iljj5f-boxStyles"
+          class="css-1m212kh-boxStyles"
         >
           <h2
             class="css-4kc494-boxStyles-Text-FilterDrawerHeaderTitle"
@@ -47,7 +47,7 @@ exports[`FilterDrawer renders correctly 1`] = `
           </p>
         </div>
         <div
-          class="css-p9ibp2-boxStyles-FilterDrawerFooter"
+          class="css-oe0ykg-boxStyles-FilterDrawerFooter"
         >
           <button
             class="css-3jmmp1-BaseButton-Button"
