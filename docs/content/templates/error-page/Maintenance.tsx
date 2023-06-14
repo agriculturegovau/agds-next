@@ -2,11 +2,12 @@ import { Callout } from '@ag.ds-next/react/callout';
 import { PageContent } from '@ag.ds-next/react/content';
 import { Prose } from '@ag.ds-next/react/prose';
 import { Stack } from '@ag.ds-next/react/stack';
+import { tokens } from '@ag.ds-next/react/core';
 
 export const Maintenance = () => {
 	return (
 		<PageContent>
-			<Stack gap={1.5}>
+			<Stack gap={1.5} maxWidth={tokens.maxWidth.bodyText}>
 				<Prose>
 					<h1>We&apos;re updating the Export Service</h1>
 					<p>

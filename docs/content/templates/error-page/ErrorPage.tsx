@@ -3,11 +3,12 @@ import { PageContent } from '@ag.ds-next/react/content';
 import { Prose } from '@ag.ds-next/react/prose';
 import { Stack } from '@ag.ds-next/react/stack';
 import { Text } from '@ag.ds-next/react/text';
+import { tokens } from '@ag.ds-next/react/core';
 
 export const ErrorPage = () => {
 	return (
 		<PageContent>
-			<Stack gap={1.5}>
+			<Stack gap={1.5} maxWidth={tokens.maxWidth.bodyText}>
 				<Prose>
 					<h1>Error page title</h1>
 					<p>
