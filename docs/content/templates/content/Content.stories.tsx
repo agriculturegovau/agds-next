@@ -9,18 +9,20 @@ export default {
 	},
 };
 
-export function Basic() {
-	return (
-		<SiteLayout>
-			<Content />
-		</SiteLayout>
-	);
-}
-
-export function WithSideNav() {
-	return (
+export const WithSideNav = {
+	name: 'With side navigation',
+	render: () => (
 		<SiteLayout>
 			<ContentWithSideNav />
 		</SiteLayout>
-	);
-}
+	),
+};
+
+export const WithoutSideNav = {
+	name: 'Without side navigation',
+	render: () => (
+		<SiteLayout>
+			<Content />
+		</SiteLayout>
+	),
+};
