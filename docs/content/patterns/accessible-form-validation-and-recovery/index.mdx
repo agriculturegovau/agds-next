@@ -1,0 +1,70 @@
+---
+title: Accessible form validation and error recovery
+description: Form validation is a critical aspect of creating usable and accessible applications. By providing effective error feedback and guidance, you can help users submit accurate information while minimising frustrations.
+version: 1.0.0
+---
+
+<DoHeading />
+
+- summarise the errors as a list inside of a [Page alert](/components/page-alert) component with the 'error' tone when more than one form validation error has occurred
+- place the [Page alert](/components/page-alert) component at the top of the page and focus immediately after a submission attempt
+- validate a form page when the user attempts to submit or save and continue
+- always display fields with form validation errors as invalid with error messages
+- retain the users input after an unsuccessful form submission
+
+<DontHeading />
+
+- use the [Page alert](/components/page-alert) component if there is only one form validation error - instead focus the invalid field
+- use HTML5 validation
+- validate a form when the user is typing
+- depend only on client-side validation - also use server-side validation
+
+## When to validate
+
+A form should validate when a user attempts to submit the form. This should occur when the user presses the submit or save and continue button at the bottom of the form page.
+
+This approach prevents interrupting users while they are still entering information. Real-time validation while the user is still typing can be problematic, especially for users who type slowly.
+
+## Retaining users input
+
+It is important that users do not lose the data they have entered when they attempt to submit the form. Retaining the users input allows them to correct any errors without starting over.
+
+## Summarising form validation errors
+
+When more than one form validation error has occurred, form validation errors should be summarised as a list inside of a [Page alert](/components/page-alert) component with the 'error' tone. The [Page alert](/components/page-alert) component should be placed at the top of the form and focused immediately after a submission attempt to ensure it is visible and announced to screen reader users.
+
+To helps users quickly identify and navigate to the problematic areas of the form, each error in the list should scroll and focus the user focus respective form field when clicked. This can be done with the [useScrollToField](/components/field#usescrolltofield) hook.
+
+If there is only one form validation error, the [Page alert](/components/page-alert) component and error summary should not be displayed and the invalid form field should be focused immediately after a submission attempt.
+
+## Invalid form fields
+
+Form validation errors should also be displayed as invalid field error messages. Use the same error message in the invalid field and in the error summary, if there is more than one error, so they are consistent and reduce the cognitive effort needed to understand what has happened.
+
+Below is an example of an invalid form field:
+
+```jsx live
+<TextInput label="First name" required invalid message="Enter a first name" />
+```
+
+## Disabling HTML5 validation
+
+HTML5 validation is a type of client-side validation built into browsers. However, it is not recommended for use with the AgDS due to the following reasons:
+
+1. **Inconsistent visual style, placement and content:** HTML5 validation error messages cannot be made customised to be consistent with design system components
+2. **Accessibility concerns:** AgDS components that are used to display form validation errors have been designed to be as accessible and inclusive as possible.
+
+To disable HTML5 validation, add the `noValidate` attribute to your `form` tags.
+
+```jsx
+<form onSubmit={() => {}} noValidate>
+	...
+</form>
+```
+
+## Templates
+
+This pattern has been implemented in the following templates:
+
+- [Single-page form template](/templates/single-page-form)
+- [Multi-page form template](/templates/multi-page-form)
