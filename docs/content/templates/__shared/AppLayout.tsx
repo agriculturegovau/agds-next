@@ -11,7 +11,7 @@ import {
 	AppLayoutFooter,
 	AppLayoutFooterDivider,
 } from '@ag.ds-next/react/app-layout';
-import { Box } from '@ag.ds-next/react/Box';
+import { Box } from '@ag.ds-next/react/box';
 import { Text } from '@ag.ds-next/react/text';
 import { LinkList } from '@ag.ds-next/react/link-list';
 
