@@ -20,7 +20,7 @@ export const FormPage = {
 };
 
 export const SuccessPage = {
-	name: 'Website form success page',
+	name: 'Website form success',
 	render: () => (
 		<SiteLayout>
 			<SinglePageFormSuccess />
