@@ -8,12 +8,11 @@ export default {
 	},
 };
 
-export const SignInForm = () => {
-	return <SignInFormPage />;
+export const SignInForm = {
+	name: 'Sign in form',
+	render: () => (
+		<SiteLayout>
+			<SignInFormPage />
+		</SiteLayout>
+	),
 };
-
-export const InSiteContext = () => (
-	<SiteLayout>
-		<SignInForm />
-	</SiteLayout>
-);

@@ -10,22 +10,37 @@ export default {
 	},
 };
 
-export const FormPage = () => {
-	return <SinglePageFormPage />;
+export const FormPage = {
+	name: 'Website form',
+	render: () => (
+		<SiteLayout>
+			<SinglePageFormPage />
+		</SiteLayout>
+	),
 };
 
-export const SuccessPage = () => {
-	return <SinglePageFormSuccess />;
+export const SuccessPage = {
+	name: 'Website form success page',
+	render: () => (
+		<SiteLayout>
+			<SinglePageFormSuccess />
+		</SiteLayout>
+	),
 };
 
-export const FormInSiteContext = () => (
-	<SiteLayout>
-		<SinglePageFormPage />
-	</SiteLayout>
-);
-
-export const FormInAppContext = () => (
-	<AppLayout>
-		<SinglePageFormPage />
-	</AppLayout>
-);
+export const InAppFormPage = {
+	name: 'Application form',
+	render: () => (
+		<AppLayout>
+			<SinglePageFormPage />
+		</AppLayout>
+	),
+};
+export const InAppSuccessPage = {
+	name: 'Application form success',
+	render: () => (
+		<AppLayout>
+			<SinglePageFormPage />
+		</AppLayout>
+	),
+};

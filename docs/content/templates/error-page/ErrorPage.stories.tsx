@@ -1,4 +1,5 @@
 import { Meta } from '@storybook/react';
+import { AppLayout } from '../__shared/AppLayout';
 import { SiteLayout } from '../__shared/SiteLayout';
 import { NotFound as NotFoundPage } from './NotFound';
 import { Maintenance as MaintenancePage } from './Maintenance';
@@ -17,11 +18,20 @@ const meta: Meta<typeof ErrorPage> = {
 export default meta;
 
 export const Template = {
-	name: 'Error page template',
+	name: 'Website layout',
 	render: () => (
 		<SiteLayout>
 			<ErrorPage />
 		</SiteLayout>
+	),
+};
+
+export const ApplicationTemplate = {
+	name: 'Application layout',
+	render: () => (
+		<AppLayout>
+			<ErrorPage />
+		</AppLayout>
 	),
 };
 

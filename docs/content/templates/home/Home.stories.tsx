@@ -8,10 +8,11 @@ export default {
 	},
 };
 
-export function Home() {
-	return (
+export const Home = {
+	name: 'Website layout',
+	render: () => (
 		<SiteLayout>
 			<HomeComponent />
 		</SiteLayout>
-	);
-}
+	),
+};

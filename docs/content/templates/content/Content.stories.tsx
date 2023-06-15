@@ -1,3 +1,4 @@
+import { AppLayout } from '../__shared/AppLayout';
 import { SiteLayout } from '../__shared/SiteLayout';
 import { Content } from './Content';
 import { ContentWithSideNav } from './ContentWithSideNav';
@@ -24,5 +25,14 @@ export const WithoutSideNav = {
 		<SiteLayout>
 			<Content />
 		</SiteLayout>
+	),
+};
+
+export const InAppLayout = {
+	name: 'Application layout',
+	render: () => (
+		<AppLayout>
+			<Content />
+		</AppLayout>
 	),
 };
