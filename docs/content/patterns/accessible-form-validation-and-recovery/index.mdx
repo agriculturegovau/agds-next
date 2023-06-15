@@ -32,7 +32,7 @@ It is important that users do not lose the data they have entered when they atte
 
 ## Summarising form validation errors
 
-Form validation errors should be summarised as a list inside of a [Page alert component](/components/page-alert) with the 'error' tone. The [Page alert component](/components/page-alert) should be placed at the top of the form and focused immediately after a submission attempt to ensure it is visible and announced to screen reader users.
+When more than one form validation error has occurred, form validation errors should be summarised as a list inside of a [Page alert component](/components/page-alert) with the 'error' tone. The [Page alert component](/components/page-alert) should be placed at the top of the form and focused immediately after a submission attempt to ensure it is visible and announced to screen reader users.
 
 To helps users quickly identify and navigate to the problematic areas of the form, each error in the list should scroll and focus the user focus respective form field when clicked. This can be done with the [useScrollToField](/components/field#usescrolltofield) hook.
 
