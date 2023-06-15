@@ -9,7 +9,7 @@ export default {
 };
 
 export const SignInForm = {
-	name: 'Sign in form',
+	name: 'Website layout',
 	render: () => (
 		<SiteLayout>
 			<SignInFormPage />
