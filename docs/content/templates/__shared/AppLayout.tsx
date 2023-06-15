@@ -11,11 +11,13 @@ import {
 	AppLayoutFooter,
 	AppLayoutFooterDivider,
 } from '@ag.ds-next/react/app-layout';
+import { Box } from '@ag.ds-next/react/Box';
 import { Text } from '@ag.ds-next/react/text';
 import { LinkList } from '@ag.ds-next/react/link-list';
 
 type AppLayoutProps = PropsWithChildren<{
 	focusMode?: boolean;
+	applyMainElement?: boolean;
 }>;
 
 const sidebarLinks = [
@@ -42,7 +44,18 @@ const footerLinks = [
 	},
 ];
 
-export const AppLayout = ({ children, focusMode = false }: AppLayoutProps) => {
+const MAIN_CONTENT_ATTRS = {
+	as: 'main' as const,
+	id: 'main-content',
+	tabIndex: -1,
+	css: { '&:focus': { outline: 'none' } },
+};
+
+export const AppLayout = ({
+	children,
+	focusMode = false,
+	applyMainElement = true,
+}: AppLayoutProps) => {
 	const year = new Date().getFullYear();
 	return (
 		<Fragment>
@@ -58,13 +71,12 @@ export const AppLayout = ({ children, focusMode = false }: AppLayoutProps) => {
 				/>
 				<AppLayoutSidebar items={sidebarLinks} />
 				<AppLayoutContent>
-					<main
-						id="main-content"
-						tabIndex={-1}
-						css={{ '&:focus': { outline: 'none' } }}
+					<Box
+						flexGrow={1}
+						{...(applyMainElement ? MAIN_CONTENT_ATTRS : undefined)}
 					>
 						{children}
-					</main>
+					</Box>
 					<AppLayoutFooter>
 						<nav aria-label="footer">
 							<LinkList links={footerLinks} horizontal />

@@ -1,7 +1,6 @@
 import { ButtonGroup, ButtonLink } from '@ag.ds-next/react/button';
 import { CallToActionLink } from '@ag.ds-next/react/call-to-action';
 import { Card, CardInner, CardLink } from '@ag.ds-next/react/card';
-import { Box } from '@ag.ds-next/react/box';
 import { Stack } from '@ag.ds-next/react/stack';
 import { Columns } from '@ag.ds-next/react/columns';
 import { SectionContent } from '@ag.ds-next/react/content';
@@ -19,13 +18,7 @@ const placeholderImage = 'placeholder/600x260.png';
 
 export function Home() {
 	return (
-		<Box
-			flexGrow={1}
-			as="main"
-			id="main-content"
-			tabIndex={-1}
-			css={{ '&:focus': { outline: 'none' } }}
-		>
+		<>
 			<HeroBanner
 				image={<img src={placeholderBanner} role="presentation" alt="" />}
 			>
@@ -139,6 +132,6 @@ export function Home() {
 					<CallToActionLink href="#">See more articles</CallToActionLink>
 				</Stack>
 			</SectionContent>
-		</Box>
+		</>
 	);
 }

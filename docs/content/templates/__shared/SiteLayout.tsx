@@ -11,7 +11,17 @@ import { Text } from '@ag.ds-next/react/text';
 import { tokens } from '@ag.ds-next/react/core';
 import { SkipLinks } from '@ag.ds-next/react/skip-link';
 
-export const SiteLayout = ({ children }: PropsWithChildren) => (
+const MAIN_CONTENT_ATTRS = {
+	as: 'main' as const,
+	id: 'main-content',
+	tabIndex: -1,
+	css: { '&:focus': { outline: 'none' } },
+};
+
+export const SiteLayout = ({
+	applyMainElement = true,
+	children,
+}: PropsWithChildren<{ applyMainElement?: boolean }>) => (
 	<>
 		<SkipLinks
 			links={[
@@ -39,7 +49,12 @@ export const SiteLayout = ({ children }: PropsWithChildren) => (
 					secondaryItems={[{ label: 'Menu', href: '#' }]}
 				/>
 			</Stack>
-			{children}
+			<Box
+				flexGrow={1}
+				{...(applyMainElement ? MAIN_CONTENT_ATTRS : undefined)}
+			>
+				{children}
+			</Box>
 			<Box palette="dark">
 				<Footer background="bodyAlt">
 					<nav aria-label="footer">
