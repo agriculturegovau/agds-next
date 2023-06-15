@@ -6,10 +6,10 @@ version: 1.0.0
 
 <DoHeading />
 
-- summarise form validation errors as a list inside of a [Page alert component](/components/page-alert) with the 'error' tone
+- when more than one form validation error has occurred, summarise the errors as a list inside of a [Page alert component](/components/page-alert) with the 'error' tone
+- if there is only one form validation error do not use the Page alert component - instead focus the invalid field
 - place the [Page alert component](/components/page-alert) at the top of the page and focus immediately after a submission attempt
-- validate a form when the user attempts to submit
-- omit the error summary if there is only one form validation error - focus the invalid field instead.
+- validate a form page when the user attempts to submit or save and continue
 - always display fields with form validation errors as invalid with error messages
 - retain the users input after an unsuccessful form submission
 
