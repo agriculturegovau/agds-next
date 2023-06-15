@@ -20,20 +20,17 @@ export const ScheduledOutage = () => {
 						Export Service. Please try again later.
 					</p>
 				</Prose>
-				<Callout title="If you need help:">
+				<Callout title="Need help?">
 					<Prose>
-						<ul>
-							<li>
-								Call <a href="tel:1800 571 125">1800 571 125</a>, Monday to
-								Friday, 9 am to 5 pm AEST
-							</li>
-							<li>
-								Email{' '}
-								<a href="exportservive@agriculture.gov.au">
-									exportservive@agriculture.gov.au
-								</a>
-							</li>
-						</ul>
+						<p>
+							Call <strong>000 000 000</strong> (9am to 5pm AEST Monday to
+							Friday)
+							<br />
+							Email{' '}
+							<a href="mailto:emailaccount@agriculture.gov.au">
+								emailaccount@agriculture.gov.au
+							</a>
+						</p>
 					</Prose>
 				</Callout>
 				<Text color="muted">Error code: 503</Text>
