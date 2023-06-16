@@ -6,7 +6,7 @@ import { Footer, FooterDivider } from '@ag.ds-next/react/footer';
 import { Header } from '@ag.ds-next/react/header';
 import { LinkList } from '@ag.ds-next/react/link-list';
 import { Logo } from '@ag.ds-next/react/ag-branding';
-import { MainNav } from '@ag.ds-next/react/main-nav';
+import { MainNav, MainNavBottomBar } from '@ag.ds-next/react/main-nav';
 import { Text } from '@ag.ds-next/react/text';
 import { tokens } from '@ag.ds-next/react/core';
 import { SkipLinks } from '@ag.ds-next/react/skip-link';
@@ -20,14 +20,19 @@ export const MAIN_CONTENT_ATTRS = {
 
 export const SiteLayout = ({
 	applyMainElement = true,
+	focusMode,
 	children,
-}: PropsWithChildren<{ applyMainElement?: boolean }>) => (
+}: PropsWithChildren<{ focusMode?: boolean; applyMainElement?: boolean }>) => (
 	<>
 		<SkipLinks
-			links={[
-				{ href: '#main-content', label: 'Skip to main content' },
-				{ href: '#main-nav', label: 'Skip to main navigation' },
-			]}
+			links={
+				focusMode
+					? [{ href: '#main-content', label: 'Skip to main content' }]
+					: [
+							{ href: '#main-content', label: 'Skip to main content' },
+							{ href: '#main-nav', label: 'Skip to main navigation' },
+					  ]
+			}
 		/>
 		<Flex flexDirection="column" fontFamily="body" minHeight="100vh">
 			<Stack palette="dark">
@@ -38,16 +43,19 @@ export const SiteLayout = ({
 					logo={<Logo />}
 					href="#"
 				/>
-
-				<MainNav
-					id="main-nav"
-					items={[
-						{ label: 'Menu', href: '#' },
-						{ label: 'Menu', href: '#' },
-						{ label: 'Menu', href: '#' },
-					]}
-					secondaryItems={[{ label: 'Menu', href: '#' }]}
-				/>
+				{focusMode ? (
+					<MainNavBottomBar />
+				) : (
+					<MainNav
+						id="main-nav"
+						items={[
+							{ label: 'Menu', href: '#' },
+							{ label: 'Menu', href: '#' },
+							{ label: 'Menu', href: '#' },
+						]}
+						secondaryItems={[{ label: 'Menu', href: '#' }]}
+					/>
+				)}
 			</Stack>
 			<Box
 				flexGrow={1}
