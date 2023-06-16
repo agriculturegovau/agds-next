@@ -17,7 +17,6 @@ export const ThirdParty = () => {
 						try again later.
 					</p>
 				</Prose>
-				<Text color="muted">Error code: 503</Text>
 				<Callout title="Need help?">
 					<Prose>
 						<p>
