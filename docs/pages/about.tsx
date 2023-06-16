@@ -20,7 +20,7 @@ export default function AboutPage({
 			<SiteLayout applyMainElement={false}>
 				<PageLayout
 					breadcrumbs={[{ href: '/', label: 'Home' }, { label: title }]}
-					editPath="/docs/about.mdx"
+					editPath="/docs/content/about.mdx"
 				>
 					<PageTitle title={title} introduction={description} />
 					<Prose>

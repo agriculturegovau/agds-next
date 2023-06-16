@@ -20,7 +20,7 @@ export default function RoadmapPage({
 			<SiteLayout applyMainElement={false}>
 				<PageLayout
 					breadcrumbs={[{ href: '/', label: 'Home' }, { label: title }]}
-					editPath="/docs/roadmap.mdx"
+					editPath="/docs/content/roadmap.mdx"
 				>
 					<PageTitle title={title} introduction={description} />
 					<Prose>
