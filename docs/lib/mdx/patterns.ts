@@ -23,7 +23,6 @@ export async function getPattern(slug: string) {
 		content,
 		data,
 		title: (data.title ?? slug) as string,
-		version: data.version as string,
 		description: (data.description ?? null) as string | null,
 		figmaTemplateNodeId: (data.figmaTemplateNodeId ?? null) as string | null,
 		githubTemplatePath: (data.githubTemplatePath ?? null) as string | null,

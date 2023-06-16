@@ -38,7 +38,6 @@ export function TemplateLayout({
 				breadcrumbs={breadcrumbs}
 			>
 				<PageTitle
-					pretext={`v${template.version}`}
 					title={template.title}
 					introduction={template.description}
 					callToAction={

@@ -36,11 +36,7 @@ export function PatternLayout({
 				editPath={editPath}
 				breadcrumbs={breadcrumbs}
 			>
-				<PageTitle
-					pretext={`v${pattern.version}`}
-					title={pattern.title}
-					introduction={pattern.description}
-				/>
+				<PageTitle title={pattern.title} introduction={pattern.description} />
 				{(pattern.figmaTemplateNodeId ||
 					pattern.githubTemplatePath ||
 					pattern.storybookPath) && (

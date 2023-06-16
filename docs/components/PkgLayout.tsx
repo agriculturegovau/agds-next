@@ -42,7 +42,6 @@ export function PkgLayout({
 				skipLinks={skipLinks}
 			>
 				<PageTitle
-					pretext={`v${pkg.version}`}
 					title={pkg.title}
 					introduction={pkg.description}
 					callToAction={
