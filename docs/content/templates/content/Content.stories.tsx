@@ -13,7 +13,7 @@ export default {
 export const WithSideNav = {
 	name: 'With side navigation',
 	render: () => (
-		<SiteLayout>
+		<SiteLayout applyMainElement={false}>
 			<ContentWithSideNav />
 		</SiteLayout>
 	),
@@ -22,7 +22,7 @@ export const WithSideNav = {
 export const WithoutSideNav = {
 	name: 'Without side navigation',
 	render: () => (
-		<SiteLayout>
+		<SiteLayout applyMainElement={false}>
 			<Content />
 		</SiteLayout>
 	),
@@ -31,7 +31,7 @@ export const WithoutSideNav = {
 export const InAppLayout = {
 	name: 'Application layout',
 	render: () => (
-		<AppLayout>
+		<AppLayout applyMainElement={false}>
 			<Content />
 		</AppLayout>
 	),

@@ -11,7 +11,7 @@ import { Text } from '@ag.ds-next/react/text';
 import { tokens } from '@ag.ds-next/react/core';
 import { SkipLinks } from '@ag.ds-next/react/skip-link';
 
-const MAIN_CONTENT_ATTRS = {
+export const MAIN_CONTENT_ATTRS = {
 	as: 'main' as const,
 	id: 'main-content',
 	tabIndex: -1,

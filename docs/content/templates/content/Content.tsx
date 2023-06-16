@@ -13,18 +13,13 @@ import {
 	AccordionItem,
 	AccordionItemContent,
 } from '@ag.ds-next/react/accordion';
+import { MAIN_CONTENT_ATTRS } from '../__shared/SiteLayout';
 
 export function Content() {
 	return (
 		<PageContent>
 			<Columns>
-				<Column
-					as="main"
-					id="main-content"
-					tabIndex={-1}
-					css={{ '&:focus': { outline: 'none' } }}
-					columnSpan={{ xs: 12, md: 8 }}
-				>
+				<Column {...MAIN_CONTENT_ATTRS} columnSpan={{ xs: 12, md: 8 }}>
 					<Stack gap={3}>
 						<Breadcrumbs
 							links={[
