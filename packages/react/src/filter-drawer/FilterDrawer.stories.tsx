@@ -18,7 +18,7 @@ import { Text } from '../text';
 import { FilterDrawer } from './FilterDrawer';
 
 const meta: Meta<typeof FilterDrawer> = {
-	title: 'content/FilterDrawer',
+	title: 'layout/FilterDrawer',
 	component: FilterDrawer,
 };
 
