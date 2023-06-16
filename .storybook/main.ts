@@ -24,6 +24,7 @@ const config: StorybookConfig = {
 	stories: [
 		'../packages/*/src/**/*.stories.@(ts|tsx)',
 		'../example-site/**/*.stories.@(ts|tsx)',
+		'../docs/content/**/*.stories.@(ts|tsx)',
 		'./stories/*.@(ts|tsx)',
 		'./stories/**/*.stories.@(ts|tsx)',
 	],

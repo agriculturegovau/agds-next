@@ -13,7 +13,8 @@ import { TextLink } from '@ag.ds-next/react/text-link';
 import { PageContent } from '@ag.ds-next/react/content';
 import { Column, Columns } from '@ag.ds-next/react/columns';
 import { Divider } from '@ag.ds-next/react/divider';
-import { PageTitle } from '../PageTitle';
+import { Text } from '@ag.ds-next/react/text';
+import { H1 } from '@ag.ds-next/react/heading';
 
 const formSchema = yup
 	.object({
@@ -146,10 +147,13 @@ export const SignInFormPage = () => {
 			<Columns>
 				<Column columnSpan={{ xs: 12, md: 7 }}>
 					<Stack gap={3}>
-						<PageTitle
-							title="Sign in form - xxl/display (H1)"
-							introduction="Introductory paragraph providing context for this sign in form. All questions on page must be related - md/default (P)."
-						/>
+						<Stack gap={0.5}>
+							<H1>Sign in form - xxl/display (H1)</H1>
+							<Text as="p" fontSize="md" color="muted">
+								Introductory paragraph providing context for this sign in form.
+								All questions on page must be related - md/default (P).
+							</Text>
+						</Stack>
 						<SignInForm />
 						<Divider />
 						<Prose>

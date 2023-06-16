@@ -1,4 +1,3 @@
-import { Fragment } from 'react';
 import { Stack } from '@ag.ds-next/react/stack';
 import { SectionContent } from '@ag.ds-next/react/content';
 import { H2, H3 } from '@ag.ds-next/react/heading';
@@ -12,7 +11,7 @@ import { Columns } from '@ag.ds-next/react/columns';
 
 export function Category() {
 	return (
-		<Fragment>
+		<>
 			<HeroCategoryBanner
 				image={
 					<img
@@ -35,7 +34,7 @@ export function Category() {
 								<CardInner>
 									<Stack gap={1}>
 										<H3>
-											<CardLink href="/category/subcategory">
+											<CardLink href="#">
 												Card title - lg / display / underline (H3)
 											</CardLink>
 										</H3>
@@ -50,6 +49,6 @@ export function Category() {
 					</Columns>
 				</Stack>
 			</SectionContent>
-		</Fragment>
+		</>
 	);
 }

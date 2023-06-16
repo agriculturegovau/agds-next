@@ -1,4 +1,4 @@
-import { PageTemplate } from '../../../.storybook/components/PageTemplate';
+import { SiteLayout } from '../__shared/SiteLayout';
 import { Home as HomeComponent } from './Home';
 
 export default {
@@ -8,10 +8,11 @@ export default {
 	},
 };
 
-export function Home() {
-	return (
-		<PageTemplate>
+export const Home = {
+	name: 'Website layout',
+	render: () => (
+		<SiteLayout>
 			<HomeComponent />
-		</PageTemplate>
-	);
-}
+		</SiteLayout>
+	),
+};

@@ -1,7 +1,7 @@
-import { Stack } from '@ag.ds-next/react/stack';
 import { ButtonGroup, ButtonLink } from '@ag.ds-next/react/button';
 import { CallToActionLink } from '@ag.ds-next/react/call-to-action';
 import { Card, CardInner, CardLink } from '@ag.ds-next/react/card';
+import { Stack } from '@ag.ds-next/react/stack';
 import { Columns } from '@ag.ds-next/react/columns';
 import { SectionContent } from '@ag.ds-next/react/content';
 import { H2, H3, Heading } from '@ag.ds-next/react/heading';
@@ -13,17 +13,14 @@ import {
 } from '@ag.ds-next/react/hero-banner';
 import { Text } from '@ag.ds-next/react/text';
 
+const placeholderBanner = 'placeholder/hero-banner.jpeg';
+const placeholderImage = 'placeholder/600x260.png';
+
 export function Home() {
 	return (
 		<>
 			<HeroBanner
-				image={
-					<img
-						src="/example-site/placeholder/hero-banner.jpeg"
-						role="presentation"
-						alt=""
-					/>
-				}
+				image={<img src={placeholderBanner} role="presentation" alt="" />}
 			>
 				<HeroBannerTitleContainer>
 					<HeroBannerTitle>
@@ -35,9 +32,12 @@ export function Home() {
 					</HeroBannerSubtitle>
 				</HeroBannerTitleContainer>
 				<ButtonGroup>
-					<ButtonLink href="/sign-in-form">Create account</ButtonLink>
-					<ButtonLink href="/sign-in-form" variant="secondary">
-						Sign in
+					<ButtonLink href="#">Primary action</ButtonLink>
+					<ButtonLink href="#" variant="secondary">
+						Secondary action
+					</ButtonLink>
+					<ButtonLink href="#" variant="tertiary">
+						Tertiary action
 					</ButtonLink>
 				</ButtonGroup>
 			</HeroBanner>
@@ -46,16 +46,38 @@ export function Home() {
 				<Stack gap={1.5}>
 					<H2>Content heading (H2)</H2>
 					<Columns as="ul" cols={{ xs: 1, sm: 2, md: 4 }}>
-						{Array.from(Array(4).keys()).map((idx) => (
-							<Stack key={idx} as="li" gap={1.5}>
-								<H3>Content heading (H3)</H3>
-								<Text as="p">
-									Short descriptive paragraph designed to fit in this space -
-									sm/default (P). Short descriptive paragraph designed to fit in
-									this space - sm/default (P).
-								</Text>
-							</Stack>
-						))}
+						<Stack as="li" gap={1.5}>
+							<H3>Content heading (H3)</H3>
+							<Text as="p">
+								Short descriptive paragraph designed to fit in this space -
+								sm/default (P). Short descriptive paragraph designed to fit in
+								this space - sm/default (P).
+							</Text>
+						</Stack>
+						<Stack as="li" gap={1.5}>
+							<H3>Content heading (H3)</H3>
+							<Text as="p">
+								Short descriptive paragraph designed to fit in this space -
+								sm/default (P). Short descriptive paragraph designed to fit in
+								this space - sm/default (P).
+							</Text>
+						</Stack>
+						<Stack as="li" gap={1.5}>
+							<H3>Content heading (H3)</H3>
+							<Text as="p">
+								Short descriptive paragraph designed to fit in this space -
+								sm/default (P). Short descriptive paragraph designed to fit in
+								this space - sm/default (P).
+							</Text>
+						</Stack>
+						<Stack as="li" gap={1.5}>
+							<H3>Content heading (H3)</H3>
+							<Text as="p">
+								Short descriptive paragraph designed to fit in this space -
+								sm/default (P). Short descriptive paragraph designed to fit in
+								this space - sm/default (P).
+							</Text>
+						</Stack>
 					</Columns>
 				</Stack>
 			</SectionContent>
@@ -71,12 +93,10 @@ export function Home() {
 								this space - sm/default (P).
 							</Text>
 						</Stack>
-						<CallToActionLink href="/category/subcategory/content">
-							Read more
-						</CallToActionLink>
+						<CallToActionLink href="#">Read more</CallToActionLink>
 					</Stack>
 					<img
-						src="/example-site/placeholder/hero-banner.jpeg"
+						src={placeholderImage}
 						role="presentation"
 						alt=""
 						css={{ display: 'block', maxWidth: '100%' }}
@@ -91,7 +111,7 @@ export function Home() {
 						{Array.from(Array(3).keys()).map((idx) => (
 							<Card as="li" key={idx} clickable shadow>
 								<img
-									src="/example-site/placeholder/hero-banner.jpeg"
+									src={placeholderImage}
 									role="presentation"
 									alt=""
 									css={{ width: '100%' }}
@@ -99,9 +119,7 @@ export function Home() {
 								<CardInner>
 									<Stack gap={1}>
 										<Heading type="h3">
-											<CardLink href="/category/subcategory/content">
-												Title of article (H3)
-											</CardLink>
+											<CardLink href="#">Title of article (H3)</CardLink>
 										</Heading>
 										<Text as="p">
 											Short descriptive paragraph designed to fit in this space
@@ -111,9 +129,7 @@ export function Home() {
 							</Card>
 						))}
 					</Columns>
-					<CallToActionLink href="/category">
-						See more articles
-					</CallToActionLink>
+					<CallToActionLink href="#">See more articles</CallToActionLink>
 				</Stack>
 			</SectionContent>
 		</>

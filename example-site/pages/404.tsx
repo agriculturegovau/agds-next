@@ -1,20 +1,28 @@
+import { PageContent } from '@ag.ds-next/react/content';
+import { Prose } from '@ag.ds-next/react/prose';
+import { Stack } from '@ag.ds-next/react/stack';
 import { Text } from '@ag.ds-next/react/text';
-import { TextLink } from '@ag.ds-next/react/text-link';
-import { SiteLayout } from '../components/SiteLayout';
+import { tokens } from '@ag.ds-next/react/core';
 import { DocumentTitle } from '../components/DocumentTitle';
-import { ErrorPage } from '../components/templates/ErrorPage';
+import { SiteLayout } from '../components/SiteLayout';
 
 export default function NotFoundPage() {
 	return (
 		<>
-			<DocumentTitle title="Error 404" />
+			<DocumentTitle title="Page not found" />
 			<SiteLayout template={{ name: 'Error page', slug: 'error-page' }}>
-				<ErrorPage title="Page not found" errorCode="404">
-					<Text as="p" fontSize="md">
-						Check the web address is correct or go back to the{' '}
-						<TextLink href="/">Export Service</TextLink>.
-					</Text>
-				</ErrorPage>
+				<PageContent>
+					<Stack gap={1.5} maxWidth={tokens.maxWidth.bodyText}>
+						<Prose>
+							<h1>Page not found</h1>
+							<p>
+								Check the web address is correct or go back to the{' '}
+								<a href="#">Export Service</a>.
+							</p>
+						</Prose>
+						<Text color="muted">Error code: 404</Text>
+					</Stack>
+				</PageContent>
 			</SiteLayout>
 		</>
 	);

@@ -1,7 +1,7 @@
 import { Prose } from '@ag.ds-next/react/prose';
-import { PageContent, ContentBleed } from '@ag.ds-next/react/content';
+import { H1 } from '@ag.ds-next/react/heading';
+import { PageContent } from '@ag.ds-next/react/content';
 import { Columns, Column } from '@ag.ds-next/react/columns';
-import { SideNav } from '@ag.ds-next/react/side-nav';
 import { Breadcrumbs } from '@ag.ds-next/react/breadcrumbs';
 import { Stack } from '@ag.ds-next/react/stack';
 import { InpageNav } from '@ag.ds-next/react/inpage-nav';
@@ -13,49 +13,29 @@ import {
 	AccordionItem,
 	AccordionItemContent,
 } from '@ag.ds-next/react/accordion';
-import { PageTitle } from '../PageTitle';
+import { MAIN_CONTENT_ATTRS } from '../__shared/SiteLayout';
 
-export function Content({ sideNav = true }: { sideNav?: boolean }) {
+export function Content() {
 	return (
 		<PageContent>
 			<Columns>
-				{sideNav && (
-					<Column columnSpan={{ xs: 12, md: 4, lg: 3 }}>
-						<ContentBleed visible={{ md: false }}>
-							<SideNav
-								collapseTitle="In this section"
-								title="Category 1"
-								titleLink="/"
-								activePath="/category/subcategory/content"
-								items={sideNavItems}
-							/>
-						</ContentBleed>
-					</Column>
-				)}
-				<Column
-					as="main"
-					id="main-content"
-					tabIndex={-1}
-					css={{ '&:focus': { outline: 'none' } }}
-					columnSpan={{ xs: 12, md: 8 }}
-					columnStart={sideNav ? { lg: 5 } : undefined}
-				>
+				<Column {...MAIN_CONTENT_ATTRS} columnSpan={{ xs: 12, md: 8 }}>
 					<Stack gap={3}>
 						<Breadcrumbs
 							links={[
-								{ href: '/', label: 'Home' },
-								{ href: '/category', label: 'Category 1' },
-								{
-									href: '/category/subcategory',
-									label: 'Subcategory page',
-								},
-								{ label: 'Content page' },
+								{ href: '#', label: 'Home' },
+								{ href: '#', label: 'Parent' },
+								{ href: '#', label: 'Child' },
+								{ label: 'Current page' },
 							]}
 						/>
-						<PageTitle
-							title="Content page heading - xxl/display (H1)"
-							introduction="Introductory paragraph providing context for this content page - md/default (P)."
-						/>
+						<Stack gap={1.5}>
+							<H1>Content page heading - xxl/display (H1)</H1>
+							<Text as="p" fontSize="md" color="muted">
+								Introductory paragraph providing context for this content page -
+								md/default (P).
+							</Text>
+						</Stack>
 						<InpageNav
 							title="On this page"
 							links={[
@@ -142,52 +122,3 @@ export function Content({ sideNav = true }: { sideNav?: boolean }) {
 		</PageContent>
 	);
 }
-
-const sideNavItems = [
-	{
-		href: '#',
-		label: 'Content page',
-	},
-	{
-		href: '/category/subcategory/content',
-		label: 'Content page',
-		items: [
-			{
-				href: '#',
-				label: 'Side nav item level 3',
-			},
-			{
-				href: '#',
-				label: 'Side nav item level 3',
-			},
-		],
-	},
-	{
-		href: '#',
-		label: 'Content page',
-	},
-	{
-		href: '#',
-		label: 'Content page',
-	},
-	{
-		href: '#',
-		label: 'Content page',
-	},
-	{
-		href: '#',
-		label: 'Content page',
-	},
-	{
-		href: '#',
-		label: 'Content page',
-	},
-	{
-		href: '#',
-		label: 'Content page',
-	},
-	{
-		href: '#',
-		label: 'Content page',
-	},
-];

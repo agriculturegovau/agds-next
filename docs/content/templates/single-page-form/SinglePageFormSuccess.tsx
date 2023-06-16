@@ -5,8 +5,7 @@ import { PageContent } from '@ag.ds-next/react/content';
 import { Columns, Column } from '@ag.ds-next/react/columns';
 import { PageAlert, PageAlertTitle } from '@ag.ds-next/react/page-alert';
 import { Prose } from '@ag.ds-next/react/prose';
-import { PageTitle } from '../PageTitle';
-import { FormHelpCallout } from '../FormHelpCallout';
+import { H1 } from '@ag.ds-next/react/heading';
 
 export function SinglePageFormSuccess() {
 	const successPageAlertRef = useRef<HTMLDivElement>(null);
@@ -24,26 +23,17 @@ export function SinglePageFormSuccess() {
 					<Stack gap={3}>
 						<Breadcrumbs
 							links={[
-								{ href: '/', label: 'Home' },
-								{ href: '/category', label: 'Category 1' },
-								{
-									href: '/category/subcategory',
-									label: 'Subcategory page',
-								},
-								{ label: 'Single-page form' },
+								{ href: '#', label: 'Home' },
+								{ href: '#', label: 'Parent' },
+								{ href: '#', label: 'Child' },
+								{ label: 'Current page' },
 							]}
 						/>
-						<PageTitle title="Single-page form (multi-question) xxl/display (H1)" />
-						<PageAlert
-							ref={successPageAlertRef}
-							tabIndex={-1}
-							tone="success"
-							title={
-								<PageAlertTitle as="h2">
-									Descriptive success message (H2)
-								</PageAlertTitle>
-							}
-						>
+						<H1>Single-page form (multi-question) xxl/display (H1)</H1>
+						<PageAlert ref={successPageAlertRef} tabIndex={-1} tone="success">
+							<PageAlertTitle as="h2">
+								Descriptive success message (H2)
+							</PageAlertTitle>
 							<Prose>
 								<p>Supporting paragraph for the success message</p>
 								<p>
@@ -58,7 +48,7 @@ export function SinglePageFormSuccess() {
 								a short paragraph to reduce cognitive load.
 							</p>
 						</Prose>
-						<FormHelpCallout />
+						{/* <FormHelpCallout /> */}
 					</Stack>
 				</Column>
 			</Columns>

@@ -1,4 +1,4 @@
-import { PageTemplate } from '../../../.storybook/components/PageTemplate';
+import { SiteLayout } from '../__shared/SiteLayout';
 import { SignInFormPage } from './SignInForm';
 
 export default {
@@ -8,10 +8,11 @@ export default {
 	},
 };
 
-export const SignInForm = () => {
-	return (
-		<PageTemplate>
+export const SignInForm = {
+	name: 'Website layout',
+	render: () => (
+		<SiteLayout>
 			<SignInFormPage />
-		</PageTemplate>
-	);
+		</SiteLayout>
+	),
 };
