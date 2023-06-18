@@ -1,6 +1,7 @@
 import {
 	Fragment,
 	FunctionComponent,
+	MouseEventHandler,
 	PropsWithChildren,
 	ReactNode,
 	useEffect,
@@ -65,7 +66,7 @@ export const FilterDrawer: FunctionComponent<FilterDrawerProps> = ({
 			{dialogTransitions(({ translateX, opacity }, item) =>
 				item ? (
 					<div ref={modalContainerRef}>
-						<Overlay style={{ opacity }} />
+						<Overlay onClick={() => onDismiss()} style={{ opacity }} />
 						<FilterDrawerDialog
 							onDismiss={onDismiss}
 							title={title}
@@ -82,9 +83,16 @@ export const FilterDrawer: FunctionComponent<FilterDrawerProps> = ({
 	);
 };
 
-function Overlay({ style }: { style: { opacity: SpringValue<number> } }) {
+function Overlay({
+	onClick,
+	style,
+}: {
+	onClick: MouseEventHandler<HTMLDivElement>;
+	style: { opacity: SpringValue<number> };
+}) {
 	return (
 		<animated.div
+			onClick={onClick}
 			css={{
 				position: 'fixed',
 				inset: 0,
