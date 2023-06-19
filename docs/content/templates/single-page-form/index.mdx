@@ -88,8 +88,13 @@ An invalid field is highlighted with a red border and a red error message. They 
 When a form is successfully completed, return the user to the entry point of the form and display a [Page alert](/components/page-alert) with the 'success' tone and a clear message which communicates the successful submission. When possible, provide persistent methods for a user to return and see the status of the submitted artefact, for example a reference number.
 
 ```tsx live
-<PageAlert tabIndex={-1} tone="success">
-	<PageAlertTitle as="h2">Descriptive success message (H2)</PageAlertTitle>
+<PageAlert
+	tabIndex={-1}
+	tone="success"
+	title={
+		<PageAlertTitle as="h2">Descriptive success message (H2)</PageAlertTitle>
+	}
+>
 	<Prose>
 		<p>Supporting paragraph for the success message</p>
 		<p>

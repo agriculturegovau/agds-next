@@ -1,12 +1,12 @@
 import { useEffect, useRef } from 'react';
+import { Breadcrumbs } from '@ag.ds-next/react/breadcrumbs';
+import { Callout } from '@ag.ds-next/react/callout';
+import { Column, Columns } from '@ag.ds-next/react/columns';
+import { PageAlert, PageAlertTitle } from '@ag.ds-next/react/page-alert';
+import { PageContent } from '@ag.ds-next/react/content';
 import { Prose } from '@ag.ds-next/react/prose';
 import { Stack } from '@ag.ds-next/react/stack';
-import { Breadcrumbs } from '@ag.ds-next/react/breadcrumbs';
-import { Column, Columns } from '@ag.ds-next/react/columns';
-import { PageContent } from '@ag.ds-next/react/content';
-import { PageAlert, PageAlertTitle } from '@ag.ds-next/react/page-alert';
-import { FormHelpCallout } from '../FormHelpCallout';
-import { PageTitle } from '../PageTitle';
+import { PageTitle } from '../../../components/PageTitle';
 
 export function MultiPageFormSuccess() {
 	const successPageAlertRef = useRef<HTMLDivElement>(null);
@@ -24,13 +24,13 @@ export function MultiPageFormSuccess() {
 					<Stack gap={3}>
 						<Breadcrumbs
 							links={[
-								{ href: '/', label: 'Home' },
-								{ href: '/category', label: 'Category 1' },
+								{ href: '#', label: 'Home' },
+								{ href: '#', label: 'Parent' },
 								{
-									href: '/category/subcategory',
-									label: 'Subcategory page',
+									href: '#',
+									label: 'Child',
 								},
-								{ label: 'Multi-page form' },
+								{ label: 'Current page' },
 							]}
 						/>
 						<PageTitle
@@ -61,7 +61,19 @@ export function MultiPageFormSuccess() {
 								a short paragraph to reduce cognitive load.
 							</p>
 						</Prose>
-						<FormHelpCallout />
+						<Callout title="Need help?">
+							<Prose>
+								<p>
+									Call <strong>000 000 000</strong> (9am to 5pm AEST Monday to
+									Friday)
+									<br />
+									Email{' '}
+									<a href="mailto:emailaccount@agriculture.gov.au">
+										emailaccount@agriculture.gov.au
+									</a>
+								</p>
+							</Prose>
+						</Callout>
 					</Stack>
 				</Column>
 			</Columns>
