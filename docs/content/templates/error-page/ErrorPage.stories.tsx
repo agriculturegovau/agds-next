@@ -4,7 +4,8 @@ import { SiteLayout } from '../__shared/SiteLayout';
 import { NotFound as NotFoundPage } from './NotFound';
 import { Maintenance as MaintenancePage } from './Maintenance';
 import { ServerError as ServerErrorPage } from './ServerError';
-import { ThirdParty as ThirdPartyPage } from './ThirdParty';
+import { ScheduledThirdPartyOutage as ScheduledThirdPartyOutagePage } from './ScheduledOutage';
+import { ThirdPartyOutage as ThirdPartyPage } from './ThirdPartyOutage';
 import { ErrorPage } from './ErrorPage';
 
 const meta: Meta<typeof ErrorPage> = {
@@ -61,6 +62,14 @@ export const ServerError = {
 	),
 };
 
+export const ScheduledThirdPartyOutage = {
+	name: 'Scheduled Third party outage (503)',
+	render: () => (
+		<SiteLayout>
+			<ScheduledThirdPartyOutagePage />
+		</SiteLayout>
+	),
+};
 export const ThirdParty = {
 	name: 'Third party outage (503)',
 	render: () => (

@@ -163,11 +163,11 @@ When you create an error message:
 
 For more information, see:
 
-- [Error messages]()
+- [Error messages](/content/content-patterns#error-messages)
 - [Global alert](https://design-system.agriculture.gov.au/components/global-alert)
 - [Field](https://design-system.agriculture.gov.au/components/field)
 - [Page alert](https://design-system.agriculture.gov.au/components/page-alert)
-- [Voice and tone]()
+- [Voice and tone](/content/voice-and-tone)
 
 ## Frequently asked questions
 
@@ -367,6 +367,14 @@ When you create microcopy in the Export Service, make sure content:
 - offers a specific solution to fix any problem. For example, accepted formats
 - uses [‘Please and thanks’](#please-and-thanks) sparingly and only if the user’s action will be something extra.
 
+```jsx live
+<TextInput
+	label="Email address"
+	invalid
+	message="Enter an email address in the correct format, like name@example.com"
+/>
+```
+
 ## Numbers
 
 Use numerals in Export Service sentences and headings for the number ‘2’ and above.
@@ -411,6 +419,22 @@ Use ‘(s)’ to indicate one or more of a word to users in the Export Service.
 Use commas minimally in Export Service content. Instead, break up content into short sentences with full stops where possible.
 
 Don’t use the Oxford comma. That is, a comma before the final ‘and’ in a sentence.
+
+```jsx live
+<Card shadow clickable>
+	<CardInner>
+		<Stack gap={1}>
+			<Box as="h3">
+				<CardLink href="#">Meat</CardLink>
+			</Box>
+			<Text>
+				Includes fresh meat, processed meat, and animal by-products such as
+				skins, hides, petfood, rendered products and technical products.
+			</Text>
+		</Stack>
+	</CardInner>
+</Card>
+```
 
 For more information, see Commas in the DAFF Style guide (DAFF staff only). Also see [Commas](https://www.stylemanual.gov.au/grammar-punctuation-and-conventions/punctuation/commas).
 
@@ -457,6 +481,10 @@ Some of the preferred terms we use on common button labels in the Export Service
 - Start again
 - Manage [element]
 
+```jsx live
+<Button>Edit registered establishments</Button>
+```
+
 For more information, see the [Button content section](https://design-system.agriculture.gov.au/components/button/content).
 
 ### Pronouns
@@ -475,7 +503,7 @@ Use active voice and present tense where possible in the Export Service. For exa
 
 For more information, see:
 
-- [Voice and tone ]()
+- [Voice and tone ](/content/voice-and-tone)
 - [DAFF Style guide(DAFF staff only)]()
 - [Types of words](https://www.stylemanual.gov.au/grammar-punctuation-and-conventions/types-words)
 

@@ -5,7 +5,7 @@ import { Stack } from '@ag.ds-next/react/stack';
 import { Text } from '@ag.ds-next/react/text';
 import { tokens } from '@ag.ds-next/react/core';
 
-export const ThirdParty = () => {
+export const ScheduledThirdPartyOutage = () => {
 	return (
 		<PageContent>
 			<Stack gap={1.5} maxWidth={tokens.maxWidth.bodyText}>
