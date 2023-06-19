@@ -3,7 +3,7 @@ import FocusLock from 'react-focus-lock';
 import { animated, SpringValue } from '@react-spring/web';
 import { Box } from '../box';
 import { Flex } from '../flex';
-import { mapSpacing } from '../core';
+import { mapResponsiveProp, mapSpacing, mq } from '../core';
 import { CloseIcon } from '../icon';
 import { Button } from '../button';
 import { Text } from '../text';
@@ -51,14 +51,17 @@ export function FilterDrawerDialog({
 				<FilterDrawerContent>{children}</FilterDrawerContent>
 				{actions ? <FilterDrawerFooter>{actions}</FilterDrawerFooter> : null}
 				<Button
-					variant="tertiary"
+					variant="text"
 					onClick={onDismiss}
 					iconAfter={CloseIcon}
-					css={{
+					css={mq({
 						position: 'absolute',
-						top: mapSpacing(0.5),
-						right: mapSpacing(0.5),
-					}}
+						top: '1.25rem', // align with title
+						right: mapResponsiveProp({
+							xs: mapSpacing(0.75),
+							md: mapSpacing(1.5),
+						}),
+					})}
 				>
 					Close
 				</Button>

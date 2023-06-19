@@ -66,7 +66,7 @@ exports[`FilterDrawer renders correctly 1`] = `
           </button>
         </div>
         <button
-          class="css-1alhlgt-BaseButton-FilterDrawerDialog"
+          class="css-wlcd0o-BaseButton-FilterDrawerDialog"
           type="button"
         >
           <span>
