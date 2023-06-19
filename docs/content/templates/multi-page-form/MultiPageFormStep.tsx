@@ -6,10 +6,10 @@ import { ProgressIndicator } from '@ag.ds-next/react/progress-indicator';
 import { DirectionButton } from '@ag.ds-next/react/direction-link';
 import { Divider } from '@ag.ds-next/react/divider';
 import { Button, ButtonGroup } from '@ag.ds-next/react/button';
-import { H1 } from '@ag.ds-next/react/heading';
 import { Text } from '@ag.ds-next/react/text';
 import { FormStack } from '@ag.ds-next/react/form-stack';
 import { Textarea } from '@ag.ds-next/react/textarea';
+import { PageTitle } from '../../../components/PageTitle';
 
 export const MultiPageFormStep = () => (
 	<PageContent>
@@ -28,23 +28,17 @@ export const MultiPageFormStep = () => (
 			<Column columnSpan={{ xs: 12, md: 8 }} columnStart={{ lg: 5 }}>
 				<Stack gap={3} alignItems="flex-start">
 					<DirectionButton direction="left">Back</DirectionButton>
-					<Stack>
-						<Text
-							fontSize="sm"
-							color="muted"
-							fontWeight="bold"
-							lineHeight="heading"
-						>
-							Title of multi-page form
-						</Text>
-						<H1>Form step title (H1)</H1>
-						<Text>
-							The introductory paragraph provides context about this page of the
-							form. Use a short paragraph to reduce cognitive load.
-						</Text>
-
-						{/* callToAction={<FormRequiredFieldsMessage />} */}
-					</Stack>
+					<PageTitle
+						pretext="Title of multi-page form"
+						title="Form step title (H1)"
+						introduction="The introductory paragraph provides context about this page of the
+						form. Use a short paragraph to reduce cognitive load."
+						callToAction={
+							<Text as="p" fontSize="xs" color="muted">
+								All fields are required unless marked optional.
+							</Text>
+						}
+					/>
 					<Stack as="form" gap={3} noValidate>
 						<FormStack>
 							<Textarea
@@ -55,20 +49,18 @@ export const MultiPageFormStep = () => (
 								block
 							/>
 						</FormStack>
-						<Stack gap={3}>
-							<Divider />
-							<ButtonGroup>
-								<Button type="submit" variant="primary">
-									Save and continue
-								</Button>
-								<Button type="button" variant="secondary">
-									Save and exit
-								</Button>
-								<Button type="button" variant="tertiary">
-									Cancel
-								</Button>
-							</ButtonGroup>
-						</Stack>
+						<Divider />
+						<ButtonGroup>
+							<Button type="submit" variant="primary">
+								Save and continue
+							</Button>
+							<Button type="button" variant="secondary">
+								Save and exit
+							</Button>
+							<Button type="button" variant="tertiary">
+								Cancel
+							</Button>
+						</ButtonGroup>
 					</Stack>
 				</Stack>
 			</Column>

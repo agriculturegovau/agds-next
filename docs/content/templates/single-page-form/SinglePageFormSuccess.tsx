@@ -30,10 +30,16 @@ export function SinglePageFormSuccess() {
 							]}
 						/>
 						<H1>Single-page form (multi-question) xxl/display (H1)</H1>
-						<PageAlert ref={successPageAlertRef} tabIndex={-1} tone="success">
-							<PageAlertTitle as="h2">
-								Descriptive success message (H2)
-							</PageAlertTitle>
+						<PageAlert
+							ref={successPageAlertRef}
+							tabIndex={-1}
+							tone="success"
+							title={
+								<PageAlertTitle as="h2">
+									Descriptive success message (H2)
+								</PageAlertTitle>
+							}
+						>
 							<Prose>
 								<p>Supporting paragraph for the success message</p>
 								<p>

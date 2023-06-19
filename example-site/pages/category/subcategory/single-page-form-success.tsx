@@ -45,10 +45,12 @@ export default function SinglePageFormSuccessPage() {
 									ref={successPageAlertRef}
 									tabIndex={-1}
 									tone="success"
+									title={
+										<PageAlertTitle as="h2">
+											Descriptive success message (H2)
+										</PageAlertTitle>
+									}
 								>
-									<PageAlertTitle as="h2">
-										Descriptive success message (H2)
-									</PageAlertTitle>
 									<Prose>
 										<p>Supporting paragraph for the success message</p>
 										<p>

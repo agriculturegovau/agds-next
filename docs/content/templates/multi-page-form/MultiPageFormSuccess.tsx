@@ -2,12 +2,11 @@ import { useEffect, useRef } from 'react';
 import { Breadcrumbs } from '@ag.ds-next/react/breadcrumbs';
 import { Callout } from '@ag.ds-next/react/callout';
 import { Column, Columns } from '@ag.ds-next/react/columns';
-import { H1 } from '@ag.ds-next/react/heading';
 import { PageAlert, PageAlertTitle } from '@ag.ds-next/react/page-alert';
 import { PageContent } from '@ag.ds-next/react/content';
 import { Prose } from '@ag.ds-next/react/prose';
 import { Stack } from '@ag.ds-next/react/stack';
-import { Text } from '@ag.ds-next/react/text';
+import { PageTitle } from '../../../components/PageTitle';
 
 export function MultiPageFormSuccess() {
 	const successPageAlertRef = useRef<HTMLDivElement>(null);
@@ -34,17 +33,10 @@ export function MultiPageFormSuccess() {
 								{ label: 'Current page' },
 							]}
 						/>
-						<Stack>
-							<Text
-								fontSize="sm"
-								color="muted"
-								fontWeight="bold"
-								lineHeight="heading"
-							>
-								Title of multi-page form
-							</Text>
-							<H1>Multi-page form title (H1)</H1>
-						</Stack>
+						<PageTitle
+							pretext="Title of multi-page form"
+							title="Multi-page form title (H1)"
+						/>
 						<PageAlert
 							ref={successPageAlertRef}
 							tabIndex={-1}

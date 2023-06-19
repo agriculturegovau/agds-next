@@ -1,14 +1,14 @@
 import { PageContent } from '@ag.ds-next/react/content';
 import { Columns, Column } from '@ag.ds-next/react/columns';
 import { ButtonLink } from '@ag.ds-next/react/button';
-import { H1 } from '@ag.ds-next/react/heading';
 import { Prose } from '@ag.ds-next/react/prose';
 import { Breadcrumbs } from '@ag.ds-next/react/breadcrumbs';
 import { Stack } from '@ag.ds-next/react/stack';
 import { H2 } from '@ag.ds-next/react/heading';
-import { Text } from '@ag.ds-next/react/text';
 import { Divider } from '@ag.ds-next/react/divider';
 import { Callout } from '@ag.ds-next/react/callout';
+import { PageTitle } from '../../../components/PageTitle';
+import { Text } from '@ag.ds-next/react/text';
 
 export function MultiPageFormIntroduction() {
 	return (
@@ -24,17 +24,15 @@ export function MultiPageFormIntroduction() {
 								{ label: 'Current page' },
 							]}
 						/>
-						<Stack gap={1.5}>
-							<H1>Multi-page form title (H1)</H1>
-							<Text as="p" fontSize="md" color="muted">
-								The introductory paragraph provides context about the entire
-								multi-page form. Use a short paragraph to reduce cognitive load.
-							</Text>
-							<Text as="p" color="muted">
-								Takes around 10 minutes.
-							</Text>
-						</Stack>
-
+						<PageTitle
+							title="Multi-page form title (H1)"
+							introduction="The introductory paragraph provides context about the entire multi-page form. Use a short paragraph to reduce cognitive load."
+							callToAction={
+								<Text as="p" color="muted">
+									Takes around 10 minutes.
+								</Text>
+							}
+						/>
 						<Stack gap={1.5}>
 							<H2>Form requirements section heading (H2)</H2>
 							<Prose>
