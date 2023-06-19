@@ -73,7 +73,7 @@ type FilterDrawerHeaderProps = PropsWithChildren<{}>;
 
 function FilterDrawerHeader({ children }: FilterDrawerHeaderProps) {
 	return (
-		<Box borderBottom paddingX={1.5} paddingY={1}>
+		<Box borderBottom paddingX={{ xs: 0.75, md: 1.5 }} paddingY={1}>
 			{children}
 		</Box>
 	);
@@ -108,7 +108,11 @@ type FilterDrawerContentProps = PropsWithChildren<{}>;
 
 function FilterDrawerContent({ children }: FilterDrawerContentProps) {
 	return (
-		<Box padding={1.5} css={{ overflowY: 'auto' }}>
+		<Box
+			paddingX={{ xs: 0.75, md: 1.5 }}
+			paddingY={{ xs: 1, md: 1.5 }}
+			css={{ overflowY: 'auto' }}
+		>
 			{children}
 		</Box>
 	);
@@ -120,7 +124,12 @@ type FilterDrawerFooterProps = PropsWithChildren<{}>;
 
 function FilterDrawerFooter({ children }: FilterDrawerFooterProps) {
 	return (
-		<Box borderTop paddingX={1.5} paddingY={1} css={{ marginTop: 'auto' }}>
+		<Box
+			borderTop
+			paddingX={{ xs: 0.75, md: 1.5 }}
+			paddingY={1}
+			css={{ marginTop: 'auto' }}
+		>
 			{children}
 		</Box>
 	);

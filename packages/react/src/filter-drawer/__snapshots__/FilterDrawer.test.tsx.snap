@@ -26,7 +26,7 @@ exports[`FilterDrawer renders correctly 1`] = `
         style="transform: translateX(100%);"
       >
         <div
-          class="css-1m212kh-boxStyles"
+          class="css-uyeuq7-boxStyles"
         >
           <h2
             class="css-4kc494-boxStyles-Text-FilterDrawerHeaderTitle"
@@ -38,7 +38,7 @@ exports[`FilterDrawer renders correctly 1`] = `
           </h2>
         </div>
         <div
-          class="css-16oc5h-boxStyles-FilterDrawerContent"
+          class="css-1e81yjk-boxStyles-FilterDrawerContent"
         >
           <p
             class="css-6j1v6l-boxStyles-Text"
@@ -47,7 +47,7 @@ exports[`FilterDrawer renders correctly 1`] = `
           </p>
         </div>
         <div
-          class="css-oe0ykg-boxStyles-FilterDrawerFooter"
+          class="css-nji5cg-boxStyles-FilterDrawerFooter"
         >
           <button
             class="css-3jmmp1-BaseButton-Button"
