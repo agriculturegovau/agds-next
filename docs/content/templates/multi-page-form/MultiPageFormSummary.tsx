@@ -20,7 +20,7 @@ import { Divider } from '@ag.ds-next/react/divider';
 import { Button, ButtonGroup } from '@ag.ds-next/react/button';
 import { PageTitle } from '../../../components/PageTitle';
 
-export const MultiPageFormSummary = () => {
+export function MultiPageFormSummary() {
 	return (
 		<PageContent>
 			<Columns>
@@ -118,4 +118,4 @@ export const MultiPageFormSummary = () => {
 			</Columns>
 		</PageContent>
 	);
-};
+}

@@ -7,8 +7,8 @@ import { Stack } from '@ag.ds-next/react/stack';
 import { H2 } from '@ag.ds-next/react/heading';
 import { Divider } from '@ag.ds-next/react/divider';
 import { Callout } from '@ag.ds-next/react/callout';
-import { PageTitle } from '../../../components/PageTitle';
 import { Text } from '@ag.ds-next/react/text';
+import { PageTitle } from '../../../components/PageTitle';
 
 export function MultiPageFormIntroduction() {
 	return (
