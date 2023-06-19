@@ -4,7 +4,6 @@ import { SiteLayout } from '../__shared/SiteLayout';
 import { NotFound as NotFoundPage } from './NotFound';
 import { Maintenance as MaintenancePage } from './Maintenance';
 import { ServerError as ServerErrorPage } from './ServerError';
-import { ScheduledOutage as ScheduledOutagePage } from './ScheduledOutage';
 import { ThirdParty as ThirdPartyPage } from './ThirdParty';
 import { ErrorPage } from './ErrorPage';
 
@@ -45,7 +44,7 @@ export const NotFound = {
 };
 
 export const Maintenance = {
-	name: 'Under maintenance',
+	name: 'Under planned maintenance (503)',
 	render: () => (
 		<SiteLayout>
 			<MaintenancePage />
@@ -54,19 +53,10 @@ export const Maintenance = {
 };
 
 export const ServerError = {
-	name: 'Server error (500)',
+	name: 'Internal server error (500)',
 	render: () => (
 		<SiteLayout>
 			<ServerErrorPage />
-		</SiteLayout>
-	),
-};
-
-export const ScheduledOutage = {
-	name: 'Scheduled outage (503)',
-	render: () => (
-		<SiteLayout>
-			<ScheduledOutagePage />
 		</SiteLayout>
 	),
 };

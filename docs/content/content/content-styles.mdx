@@ -39,7 +39,7 @@ We use capitalisation minimally in the Export Service and sentence case generall
 
 That is, use a capital on the first word only in a header or sentence. All other words are lower case, except proper nouns.
 
-### Example
+For example, use 'Services you can use now' rather than 'Services You Can Use Now'.
 
 For more information, see Capitalisation in the DAFF Style guide (DAFF staff only).
 
@@ -159,6 +159,8 @@ When you create an error message:
 - be specific in describing how and when the error can be fixed
 - include the error code in the message if possible. It may be helpful to a support agent if a user accesses human-led support.
 
+![Our Error Page template](/img/templates/error-page.webp)
+
 For more information, see:
 
 - [Error messages]()
@@ -178,6 +180,26 @@ Provide guidance and answers a user needs in the context of what they are doing.
 If the information applies to all users, don’t hide an FAQ in an accordion or other component. If it applies to some users only, you can use an [details](https://design-system.agriculture.gov.au/components/details).
 
 Monitor and measure the success of FAQs. If no one is using them, remove FAQ content.
+
+```jsx live
+<Details label="How were my details prefilled?" iconBefore>
+	<Prose>
+		<p>
+			We’re working hard to improve the way we do business with you. This
+			includes making applications and registrations easier to use.
+		</p>
+		<p>
+			If we already have some of the information you need to tell us, we’ll
+			pre-fill it into your applications. This saves you entering all your
+			details yourself.
+		</p>
+		<p>
+			It’s important to check the pre-filled information in your report before
+			you submit it.
+		</p>
+	</Prose>
+</Details>
+```
 
 ## Headings
 
@@ -256,7 +278,38 @@ Use a forward arrow (>) to separate the tabs or buttons users need to select.
 
 "To carry out any of these actions, sign in to the Export Service and select the 'Establishments' tab."
 
-For more information, see Technical guidance in [How to create guidance in the Export Service]().
+### Examples
+
+```jsx live
+<Text>
+	To carry out any of these actions, sign in to the Export Service and select
+	the 'Establishments' tab.
+</Text>
+```
+
+```jsx live
+<Text>
+	On the Insert tab, select Symbol > More symbols > Special characters > En
+	dash.
+</Text>
+```
+
+```jsx live
+<Prose>
+	<p>You can see details of your audit in your Export Service account.</p>
+	<p>To find a summary and findings of your audit:</p>
+	<ul>
+		<li>Sign in to your Export Service account.</li>
+		<li>Select ‘Compliance’.</li>
+		<li>
+			Under Audit reports, find the audit reference number and select ‘View’.
+		</li>
+		<li>Go to the Findings section.</li>
+	</ul>
+</Prose>
+```
+
+For more information, see Technical guidance in [How to create guidance in the Export Service](/guides/how-to-write-guidance/how-to-present-guidance#technical-guidance).
 
 ## Introductions
 

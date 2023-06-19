@@ -12,9 +12,12 @@ export const ThirdParty = () => {
 				<Prose>
 					<h1>There&apos;s a problem with the Export Service</h1>
 					<p>
-						Digital Identity is currently experiencing an outage. You can&apos;t
-						create an account or sign into the Export Service right now. Please
-						try again later.
+						Relationship Autorisation Manager (RAM) is down for system
+						maintenance from 11:30 pm, 15 October to 7pm, 16 October.
+					</p>
+					<p>
+						During this time you can&apos;t create an account or sign into the
+						Export Service. Please try again later.
 					</p>
 				</Prose>
 				<Callout title="Need help?">

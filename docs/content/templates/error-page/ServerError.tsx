@@ -10,8 +10,12 @@ export const ServerError = () => {
 		<PageContent>
 			<Stack gap={1.5} maxWidth={tokens.maxWidth.bodyText}>
 				<Prose>
-					<h1>Sorry, there is a problem with the service</h1>
-					<p>Please try again later.</p>
+					<h1>Something's not right</h1>
+					<p>
+						There is a problem with the Export Service. We're working to fix it.
+						Please try again later.
+					</p>
+					<p>You may be able to access other parts of the Export Service.</p>
 				</Prose>
 				<Callout title="Need help?">
 					<Prose>
