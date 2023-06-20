@@ -19,7 +19,7 @@ exports[`Modal renders correctly 1`] = `
       <div
         aria-labelledby="modal-:r0:-title"
         aria-modal="true"
-        class="css-2sldpu-boxStyles-ModalDialog"
+        class="css-ekoxby-boxStyles-ModalDialog"
         role="dialog"
       >
         <h2
@@ -60,7 +60,7 @@ exports[`Modal renders correctly 1`] = `
         </div>
         <button
           aria-label="Close modal"
-          class="css-1tn8j9z-BaseButton-ModalDialog"
+          class="css-14ch2j2-BaseButton-ModalDialog"
           type="button"
         >
           <span>

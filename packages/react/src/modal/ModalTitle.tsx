@@ -1,7 +1,7 @@
-import { ReactNode } from 'react';
+import { PropsWithChildren } from 'react';
 import { Text } from '../text';
 
-export type ModalTitleProps = { children: ReactNode; id?: string };
+export type ModalTitleProps = PropsWithChildren<{ id: string }>;
 
 export const ModalTitle = ({ children, id }: ModalTitleProps) => {
 	return (

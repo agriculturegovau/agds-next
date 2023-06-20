@@ -33,9 +33,8 @@ export const ModalDialog = ({
 				background="body"
 				aria-labelledby={titleId}
 				rounded
-				focus
-				padding={1.5}
-				paddingTop={4}
+				paddingX={{ xs: 0.75, md: 1.5 }}
+				paddingY={{ xs: 1, md: 1.5 }}
 				gap={1}
 				maxWidth={tokens.maxWidth.modalDialog}
 				css={{
@@ -57,15 +56,11 @@ export const ModalDialog = ({
 					</Box>
 				) : null}
 				<Button
-					variant="tertiary"
+					variant="text"
 					aria-label="Close modal"
 					onClick={onDismiss}
 					iconAfter={CloseIcon}
-					css={{
-						position: 'absolute',
-						top: mapSpacing(0.5),
-						right: mapSpacing(0.5),
-					}}
+					css={{ order: -1, alignSelf: 'flex-end' }}
 				>
 					Close
 				</Button>
