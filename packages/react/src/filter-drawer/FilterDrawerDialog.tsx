@@ -32,14 +32,17 @@ export function FilterDrawerDialog({
 				flexDirection="column"
 				role="dialog"
 				aria-modal="true"
-				background="body"
 				aria-labelledby={titleId}
+				background="body"
 				maxWidth="32rem"
 				css={{
 					position: 'fixed',
 					inset: 0,
 					marginLeft: 'auto',
 					zIndex: tokens.zIndex.dialog,
+					[tokens.mediaQuery.max.xs]: {
+						overflowY: 'scroll',
+					},
 				}}
 				style={style}
 			>
@@ -55,12 +58,13 @@ export function FilterDrawerDialog({
 					onClick={onDismiss}
 					iconAfter={CloseIcon}
 					css={mq({
-						position: 'absolute',
+						position: 'fixed',
 						top: '1.25rem', // align with title
 						right: mapResponsiveProp({
 							xs: mapSpacing(0.75),
 							md: mapSpacing(1.5),
 						}),
+						zIndex: tokens.zIndex.elevated,
 					})}
 				>
 					Close
@@ -76,7 +80,20 @@ type FilterDrawerHeaderProps = PropsWithChildren<{}>;
 
 function FilterDrawerHeader({ children }: FilterDrawerHeaderProps) {
 	return (
-		<Box borderBottom paddingX={{ xs: 0.75, md: 1.5 }} paddingY={1}>
+		<Box
+			background="body"
+			borderBottom
+			paddingX={{ xs: 0.75, md: 1.5 }}
+			paddingY={1}
+			css={{
+				position: 'sticky',
+				top: 0,
+				zIndex: tokens.zIndex.elevated,
+				[tokens.mediaQuery.min.sm]: {
+					position: 'relative',
+				},
+			}}
+		>
 			{children}
 		</Box>
 	);
@@ -98,7 +115,9 @@ function FilterDrawerHeaderTitle({
 			data-autofocus
 			focus
 			tabIndex={-1}
-			css={{ display: 'inline-block' }}
+			css={{
+				display: 'inline-block',
+			}}
 		>
 			{children}
 		</Text>
@@ -112,9 +131,15 @@ type FilterDrawerContentProps = PropsWithChildren<{}>;
 function FilterDrawerContent({ children }: FilterDrawerContentProps) {
 	return (
 		<Box
+			background="body"
+			flexGrow={1}
 			paddingX={{ xs: 0.75, md: 1.5 }}
 			paddingY={{ xs: 1, md: 1.5 }}
-			css={{ overflowY: 'auto' }}
+			css={{
+				[tokens.mediaQuery.min.sm]: {
+					overflowY: 'auto',
+				},
+			}}
 		>
 			{children}
 		</Box>
@@ -128,10 +153,15 @@ type FilterDrawerFooterProps = PropsWithChildren<{}>;
 function FilterDrawerFooter({ children }: FilterDrawerFooterProps) {
 	return (
 		<Box
+			background="body"
 			borderTop
 			paddingX={{ xs: 0.75, md: 1.5 }}
 			paddingY={1}
-			css={{ marginTop: 'auto' }}
+			css={{
+				position: 'relative',
+				marginTop: 'auto',
+				zIndex: tokens.zIndex.elevated,
+			}}
 		>
 			{children}
 		</Box>

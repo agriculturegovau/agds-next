@@ -129,6 +129,7 @@ export const DateRangePicker = ({
 	const [refEl, setRefEl] = useState<HTMLDivElement | null>(null);
 	const [popperEl, setPopperEl] = useState<HTMLDivElement | null>(null);
 	const { styles, attributes } = usePopper(refEl, popperEl, {
+		strategy: 'fixed',
 		placement: 'bottom-start',
 		modifiers: [{ name: 'offset', options: { offset: [0, 8] } }],
 	});
