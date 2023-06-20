@@ -8,6 +8,9 @@ const basePath = [process.env.BASE_PATH, '/example-site']
 const nextConfig = {
 	reactStrictMode: true,
 	basePath,
+	experimental: {
+		esmExternals: false,
+	},
 };
 
 module.exports = withPreconstruct(nextConfig);

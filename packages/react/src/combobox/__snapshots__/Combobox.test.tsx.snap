@@ -75,13 +75,6 @@ exports[`Combobox renders correctly 1`] = `
           </svg>
         </button>
       </div>
-      <ul
-        aria-labelledby="downshift-0-label"
-        class="css-1xv1xw2-boxStyles-ComboboxList"
-        id="downshift-0-menu"
-        role="listbox"
-        style="position: absolute; left: 0px; top: 0px; z-index: 200;"
-      />
     </div>
   </div>
 </div>

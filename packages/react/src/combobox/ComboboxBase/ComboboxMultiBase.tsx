@@ -3,8 +3,6 @@ import {
 	ReactNode,
 	RefObject,
 	useCallback,
-	useEffect,
-	useState,
 	MouseEvent,
 	useRef,
 } from 'react';
@@ -12,7 +10,7 @@ import {
 	UseComboboxReturnValue,
 	UseMultipleSelectionReturnValue,
 } from 'downshift';
-import { usePopper } from 'react-popper';
+import { Popover, usePopover } from '../../_popover';
 import {
 	boxPalette,
 	FieldMaxWidth,
@@ -95,23 +93,14 @@ export function ComboboxMultiBase<Option extends DefaultComboboxOption>({
 	const [isInputFocused, setInputFocused, setInputBlurred] =
 		useTernaryState(false);
 
-	// Popper state
-	const [refEl, setRefEl] = useState<HTMLDivElement | null>(null);
-	const [popperEl, setPopperEl] = useState<HTMLUListElement | null>(null);
-	const {
-		styles: popperStyles,
-		attributes,
-		update,
-	} = usePopper(refEl, popperEl, {
-		placement: 'bottom-start',
-		modifiers: [{ name: 'offset', options: { offset: [0, 8] } }],
+	const { getPopoverProps, getReferenceProps } = usePopover({
+		matchReferenceWidth: true,
+		maxHeight: 295,
 	});
 
-	// This component changes its height as the selected item change
-	// So we need to update the popper element to recalculate its position
-	useEffect(() => {
-		update?.();
-	}, [selectedItems, update]);
+	const { ref: popoverRef, ...popoverProps } = getPopoverProps();
+	const { ref: comboboxMenuRef, ...comboboxPopoverMenuProps } =
+		combobox.getMenuProps({ ...popoverProps }, { suppressRefError: true });
 
 	const showClearButton = selectedItems?.length > 0;
 
@@ -122,14 +111,6 @@ export function ComboboxMultiBase<Option extends DefaultComboboxOption>({
 		isInputFocused,
 		maxWidth: maxWidthProp,
 		showClearButton,
-	});
-
-	const { ref: menuRef, ...menuProps } = combobox.getMenuProps({
-		...attributes.popper,
-		style: {
-			...popperStyles.popper,
-			zIndex: tokens.zIndex.popover,
-		},
 	});
 
 	// Focus the input element if the user clicks inside the container
@@ -155,7 +136,7 @@ export function ComboboxMultiBase<Option extends DefaultComboboxOption>({
 		>
 			{(a11yProps) => (
 				<div
-					ref={setRefEl}
+					{...getReferenceProps()}
 					css={styles.fieldContainer}
 					onClick={handleFieldContainerClick}
 				>
@@ -211,39 +192,36 @@ export function ComboboxMultiBase<Option extends DefaultComboboxOption>({
 							/>
 						</ComboboxButtonContainer>
 					</Flex>
-					<ComboboxList
-						{...menuProps}
-						ref={mergeRefs([menuRef, setPopperEl])}
-						maxWidth={maxWidthProp}
-						isOpen={combobox.isOpen}
-					>
-						{combobox.isOpen && (
-							<Fragment>
-								{loading ? (
-									<ComboboxListLoading />
-								) : networkError ? (
-									<ComboboxListError />
-								) : (
-									<Fragment>
-										{inputItems?.length ? (
-											inputItems.map((item, index) => (
-												<ComboboxListItem
-													key={`${item.value}-${index}`}
-													isActiveItem={combobox.highlightedIndex === index}
-													isInteractive={true}
-													{...combobox.getItemProps({ item, index })}
-												>
-													{renderItem(item, combobox.inputValue)}
-												</ComboboxListItem>
-											))
-										) : (
-											<ComboboxListEmptyResults message={emptyResultsMessage} />
-										)}
-									</Fragment>
-								)}
-							</Fragment>
-						)}
-					</ComboboxList>
+					{combobox.isOpen && (
+						<Popover
+							as={ComboboxList}
+							ref={mergeRefs([comboboxMenuRef, popoverRef])}
+							{...comboboxPopoverMenuProps}
+						>
+							{loading ? (
+								<ComboboxListLoading />
+							) : networkError ? (
+								<ComboboxListError />
+							) : (
+								<Fragment>
+									{inputItems?.length ? (
+										inputItems.map((item, index) => (
+											<ComboboxListItem
+												key={`${item.value}-${index}`}
+												isActiveItem={combobox.highlightedIndex === index}
+												isInteractive={true}
+												{...combobox.getItemProps({ item, index })}
+											>
+												{renderItem(item, combobox.inputValue)}
+											</ComboboxListItem>
+										))
+									) : (
+										<ComboboxListEmptyResults message={emptyResultsMessage} />
+									)}
+								</Fragment>
+							)}
+						</Popover>
+					)}
 				</div>
 			)}
 		</Field>
@@ -267,7 +245,6 @@ function comboboxMultiStyles({
 }) {
 	return {
 		fieldContainer: {
-			position: 'relative',
 			...(!block && {
 				maxWidth: tokens.maxWidth.field[maxWidth],
 			}),

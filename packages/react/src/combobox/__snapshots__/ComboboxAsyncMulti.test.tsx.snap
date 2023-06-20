@@ -28,7 +28,7 @@ exports[`ComboboxAsyncMulti renders correctly 1`] = `
       Start typing to see results
     </span>
     <div
-      class="css-158hlv8-Field"
+      class="css-1ok16nw-Field"
     >
       <div
         class="css-llvxcm-boxStyles-Field"
@@ -83,13 +83,6 @@ exports[`ComboboxAsyncMulti renders correctly 1`] = `
           </button>
         </div>
       </div>
-      <ul
-        aria-labelledby="downshift-0-label"
-        class="css-1xv1xw2-boxStyles-ComboboxList"
-        id="downshift-0-menu"
-        role="listbox"
-        style="position: absolute; left: 0px; top: 0px; z-index: 200;"
-      />
     </div>
   </div>
 </div>

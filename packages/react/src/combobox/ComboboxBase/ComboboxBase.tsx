@@ -1,7 +1,7 @@
-import { Fragment, ReactNode, useState } from 'react';
+import { Fragment, ReactNode } from 'react';
 import { UseComboboxReturnValue } from 'downshift';
-import { usePopper } from 'react-popper';
-import { FieldMaxWidth, mergeRefs, tokens } from '../../core';
+import { FieldMaxWidth, mergeRefs } from '../../core';
+import { Popover, usePopover } from '../../_popover';
 import { textInputStyles } from '../../text-input';
 import { Field } from '../../field';
 import { DefaultComboboxOption } from '../utils';
@@ -64,14 +64,6 @@ export function ComboboxBase<Option extends DefaultComboboxOption>({
 	combobox,
 	inputItems,
 }: ComboboxBaseProps<Option>) {
-	// Popper state
-	const [refEl, setRefEl] = useState<HTMLDivElement | null>(null);
-	const [popperEl, setPopperEl] = useState<HTMLDivElement | null>(null);
-	const { styles: popperStyles, attributes } = usePopper(refEl, popperEl, {
-		placement: 'bottom-start',
-		modifiers: [{ name: 'offset', options: { offset: [0, 8] } }],
-	});
-
 	const showClearButton = clearable && combobox.selectedItem;
 	const hasButtons = showDropdownTrigger || showClearButton;
 	const hasBothButtons = showDropdownTrigger && showClearButton;
@@ -81,13 +73,14 @@ export function ComboboxBase<Option extends DefaultComboboxOption>({
 		paddingRight: hasBothButtons ? '5rem' : '3rem',
 	};
 
-	const { ref: menuRef, ...menuProps } = combobox.getMenuProps({
-		...attributes.popper,
-		style: {
-			...popperStyles.popper,
-			zIndex: tokens.zIndex.popover,
-		},
+	const { getPopoverProps, getReferenceProps } = usePopover({
+		matchReferenceWidth: true,
+		maxHeight: 295,
 	});
+
+	const { ref: popoverRef, ...popoverProps } = getPopoverProps();
+	const { ref: comboboxMenuRef, ...comboboxPopoverMenuProps } =
+		combobox.getMenuProps({ ...popoverProps }, { suppressRefError: true });
 
 	return (
 		<Field
@@ -100,71 +93,72 @@ export function ComboboxBase<Option extends DefaultComboboxOption>({
 			id={inputId}
 		>
 			{(a11yProps) => (
-				<div ref={setRefEl} css={{ position: 'relative', maxWidth }}>
-					<input
-						css={{ ...inputStyles, width: '100%' }}
-						disabled={disabled}
-						{...combobox.getInputProps({
-							...a11yProps,
-							type: 'text',
-							name: inputName,
-						})}
-					/>
-					{hasButtons && (
-						<ComboboxButtonContainer>
-							{showDropdownTrigger && (
-								<ComboboxDropdownTrigger
-									disabled={disabled}
-									{...combobox.getToggleButtonProps()}
-								/>
-							)}
-							{hasBothButtons && <ComboboxButtonDivider />}
-							{showClearButton && (
-								<ComboboxClearButton
-									disabled={disabled}
-									onClick={combobox.reset}
-								/>
-							)}
-						</ComboboxButtonContainer>
-					)}
-					<ComboboxList
-						{...menuProps}
-						ref={mergeRefs([menuRef, setPopperEl])}
-						maxWidth={maxWidthProp}
-						isOpen={combobox.isOpen}
+				<Fragment>
+					<div
+						{...getReferenceProps()}
+						css={{ position: 'relative', maxWidth }}
 					>
-						{combobox.isOpen && (
-							<Fragment>
-								{loading ? (
-									<ComboboxListLoading />
-								) : networkError ? (
-									<ComboboxListError />
-								) : (
-									<Fragment>
-										{inputItems?.length ? (
-											inputItems.map((item, index) => {
-												const isActiveItem =
-													combobox.highlightedIndex === index;
-												return (
-													<ComboboxListItem
-														key={`${item.value}${index}`}
-														isActiveItem={isActiveItem}
-														isInteractive={true}
-														{...combobox.getItemProps({ item, index })}
-													>
-														{renderItem(item, combobox.inputValue)}
-													</ComboboxListItem>
-												);
-											})
-										) : (
-											<ComboboxListEmptyResults message={emptyResultsMessage} />
-										)}
-									</Fragment>
+						<input
+							css={{ ...inputStyles, width: '100%' }}
+							disabled={disabled}
+							{...combobox.getInputProps({
+								...a11yProps,
+								type: 'text',
+								name: inputName,
+							})}
+						/>
+						{hasButtons && (
+							<ComboboxButtonContainer>
+								{showDropdownTrigger && (
+									<ComboboxDropdownTrigger
+										disabled={disabled}
+										{...combobox.getToggleButtonProps()}
+									/>
 								)}
-							</Fragment>
+								{hasBothButtons && <ComboboxButtonDivider />}
+								{showClearButton && (
+									<ComboboxClearButton
+										disabled={disabled}
+										onClick={combobox.reset}
+									/>
+								)}
+							</ComboboxButtonContainer>
 						)}
-					</ComboboxList>
-				</div>
+					</div>
+					{combobox.isOpen && (
+						<Popover
+							as={ComboboxList}
+							ref={mergeRefs([comboboxMenuRef, popoverRef])}
+							{...comboboxPopoverMenuProps}
+						>
+							{loading ? (
+								<ComboboxListLoading />
+							) : networkError ? (
+								<ComboboxListError />
+							) : (
+								<Fragment>
+									{inputItems?.length ? (
+										inputItems.map((item, index) => {
+											const isActiveItem = combobox.highlightedIndex === index;
+											return (
+												<ComboboxListItem
+													key={`${item.value}${index}`}
+													isActiveItem={isActiveItem}
+													isInteractive={true}
+													{...combobox.getItemProps({ item, index })}
+												>
+													{renderItem(item, combobox.inputValue)}
+												</ComboboxListItem>
+											);
+										})
+									) : (
+										<ComboboxListEmptyResults message={emptyResultsMessage} />
+									)}
+								</Fragment>
+							)}
+						</Popover>
+					)}
+				</Fragment>
 			)}
 		</Field>
 	);

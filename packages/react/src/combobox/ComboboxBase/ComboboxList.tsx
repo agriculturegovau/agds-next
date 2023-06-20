@@ -1,35 +1,12 @@
-import { forwardRef, PropsWithChildren } from 'react';
+import { forwardRef, HTMLAttributes } from 'react';
 import { Box } from '../../box';
-import { FieldMaxWidth, tokens } from '../../core';
 
-export type ComboboxListProps = PropsWithChildren<{
-	block: boolean;
-	isOpen: boolean;
-	maxWidth: FieldMaxWidth;
-}>;
+export type ComboboxListProps = Omit<HTMLAttributes<HTMLUListElement>, 'color'>;
 
 export const ComboboxList = forwardRef<HTMLUListElement, ComboboxListProps>(
-	function ComboboxList({ children, isOpen, block, maxWidth, ...props }, ref) {
+	function ComboboxList({ children, ...props }, ref) {
 		return (
-			<Box
-				ref={ref}
-				as="ul"
-				background="body"
-				border
-				borderColor="muted"
-				rounded
-				{...props}
-				css={{
-					overflowY: 'scroll',
-					maxHeight: 295,
-					maxWidth: block ? tokens.maxWidth.field[maxWidth] : undefined,
-					width: '100%',
-					...(!isOpen && {
-						opacity: 0,
-						visibility: 'hidden',
-					}),
-				}}
-			>
+			<Box ref={ref} as="ul" {...props}>
 				{children}
 			</Box>
 		);
