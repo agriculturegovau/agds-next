@@ -315,6 +315,19 @@ For more information, see Technical guidance in [How to create guidance in the E
 
 Include a short introduction that describes a page’s content under the heading (H1). It should be 1 to 2 sentences (about 30 words) and end with a full stop.
 
+```jsx live
+<Stack gap={1.5}>
+	<H1>Business owner or principal authority</H1>
+	<Text as="p" fontSize="md" color="muted">
+		Only a business owner or principal authority can create an account and
+		authorise access for others.
+	</Text>
+	<Prose>
+		<p>Follow the steps to set up your business for the first time.</p>
+	</Prose>
+</Stack>
+```
+
 ## Links
 
 Link (also known as hyperlinks) content should be concise, meaningful and accessible. Make sure users can work out where a link goes from the anchor text alone.
@@ -338,6 +351,23 @@ For more information on links, see:
 Don't use full stops at the end of the last item on a list if the item is next to a radio button or a multi-select checkbox. For example, lists in a form or interactive experience.
 
 Use a capital letter on the first word of listed items next to radio buttons or multi-select checkboxes.
+
+```jsx live
+<Fieldset legend="Select commodities">
+	<ControlGroup
+		label="Which commodities are you applying to register?"
+		hint="Select all that apply"
+		block
+	>
+		<Checkbox checked={false}>Meat and/or meat products</Checkbox>
+		<Checkbox checked={false}>Plant and/or plant products</Checkbox>
+		<Checkbox checked={false}>Poultry and/or poultry products</Checkbox>
+		<Checkbox checked={false}>Rabbit and/or rabbit products</Checkbox>
+		<Checkbox checked={false}>Ratite and/or ratite products</Checkbox>
+		<Checkbox checked={false}>Wild game and/or wild game products</Checkbox>
+	</ControlGroup>
+</Fieldset>
+```
 
 ### Number lists
 
@@ -368,12 +398,21 @@ When you create microcopy in the Export Service, make sure content:
 - uses [‘Please and thanks’](#please-and-thanks) sparingly and only if the user’s action will be something extra.
 
 ```jsx live
-<TextInput
-	label="Email address"
-	invalid
-	message="Enter an email address in the correct format, like name@example.com"
-/>
+<FormStack>
+	<TextInput
+		label="Email address"
+		invalid
+		message="Enter an email address in the correct format, like name@example.com"
+	/>
+
+	<TextInput
+		label="Phone number"
+		hint="Enter a mobile number that starts with +61 followed by 9 numbers"
+	/>
+</FormStack>
 ```
+
+For more information on microcopy, see [Field](/components/field) and [Error messages](/content/content-patterns#error-messages).
 
 ## Numbers
 
@@ -389,6 +428,20 @@ Always spell out ‘one’ and ‘zero’ in words, so users don’t confuse the
 
 For more information, see Numbers in the DAFF Style guide (DAFF staff only). Also see [Numbers and measurements](https://www.stylemanual.gov.au/grammar-punctuation-and-conventions/numbers-and-measurements).
 
+```jsx live
+<Prose>
+	<h1>Linking a business in RAM</h1>
+	<p>
+		To link up to 5 businesses, call <b>1300 287 539</b> and select{' '}
+		<b>option three</b>
+	</p>
+	<p>
+		To link more than 5 businesses, complete the Assistance to link bulk ABNs
+		form.
+	</p>
+</Prose>
+```
+
 ## Please and thanks
 
 Don’t add ‘please’ and ‘thanks’ in content for normal Export Service activities.
@@ -396,6 +449,13 @@ Don’t add ‘please’ and ‘thanks’ in content for normal Export Service a
 Use ‘please’ and ‘thanks’ sparingly. Only add it to content when you’re asking users to do something extra.
 
 For example, if you are asking them to give feedback on a web page. Use ‘thanks’ instead of ‘thank you’ in these instances.
+
+```jsx live
+<FormStack>
+	<H2>Thanks for your feedback</H2>
+	<Textarea label="Please tell us more" hint="Don't provide personal details" />
+</FormStack>
+```
 
 ## Plurals
 
