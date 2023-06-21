@@ -84,7 +84,7 @@ export function ComboboxBase<Option extends DefaultComboboxOption>({
 	const { ref: menuRef, ...menuProps } = combobox.getMenuProps({
 		...attributes.popper,
 		style: {
-			...popperStyles,
+			...popperStyles.popper,
 			zIndex: tokens.zIndex.popover,
 		},
 	});

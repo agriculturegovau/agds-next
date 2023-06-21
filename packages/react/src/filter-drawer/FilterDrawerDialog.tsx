@@ -3,7 +3,7 @@ import FocusLock from 'react-focus-lock';
 import { animated, SpringValue } from '@react-spring/web';
 import { Box } from '../box';
 import { Flex } from '../flex';
-import { mapResponsiveProp, mapSpacing, mq } from '../core';
+import { mapResponsiveProp, mapSpacing, mq, tokens } from '../core';
 import { CloseIcon } from '../icon';
 import { Button } from '../button';
 import { Text } from '../text';

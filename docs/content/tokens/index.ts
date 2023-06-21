@@ -44,7 +44,8 @@ export const TOKEN_PAGES = {
 		slug: 'elevation',
 		label: 'Elevation',
 		pageTitle: 'Elevation tokens',
-		description: 'A set of predefined tokens to handle elevation.',
+		description:
+			'A set of predefined tokens for handling the relative distance between two surfaces along the z-axis.',
 	},
 } as const;
 

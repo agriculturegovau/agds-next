@@ -85,10 +85,10 @@ exports[`ComboboxMulti renders correctly 1`] = `
       </div>
       <ul
         aria-labelledby="downshift-0-label"
-        class="css-5wdaps-boxStyles-ComboboxList"
+        class="css-1xv1xw2-boxStyles-ComboboxList"
         id="downshift-0-menu"
         role="listbox"
-        style="position: absolute; left: 0px; top: 0px;"
+        style="position: absolute; left: 0px; top: 0px; z-index: 120;"
       />
     </div>
   </div>

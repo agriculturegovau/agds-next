@@ -19,27 +19,28 @@ const tokenDescriptions: Record<
 > = {
 	base: {
 		value: tokens.zIndex.base,
-		description: 'Lorem ipsum',
+		description: 'Used for base elements.',
 	},
 	elevated: {
 		value: tokens.zIndex.elevated,
-		description: 'Lorem ipsum',
+		description:
+			'Used for components that need to be elevated above adjacent siblings.',
 	},
 	overlay: {
 		value: tokens.zIndex.overlay,
-		description: 'Lorem ipsum',
+		description: 'Used for modal overlays.',
 	},
 	modal: {
 		value: tokens.zIndex.modal,
-		description: 'Lorem ipsum',
+		description: 'Used for modal dialogs.',
 	},
 	popover: {
 		value: tokens.zIndex.popover,
-		description: 'Lorem ipsum',
+		description: 'Used for popover elements - eg. date picker calendar.',
 	},
 	skipLink: {
 		value: tokens.zIndex.skipLink,
-		description: 'Lorem ipsum',
+		description: 'Used for skip links.',
 	},
 };
 

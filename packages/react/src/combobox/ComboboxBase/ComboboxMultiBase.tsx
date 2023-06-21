@@ -127,11 +127,8 @@ export function ComboboxMultiBase<Option extends DefaultComboboxOption>({
 	const { ref: menuRef, ...menuProps } = combobox.getMenuProps({
 		...attributes.popper,
 		style: {
-			...attributes.popper,
-			style: {
-				...styles.popper,
-				zIndex: tokens.zIndex.popover,
-			},
+			...popperStyles.popper,
+			zIndex: tokens.zIndex.popover,
 		},
 	});
 

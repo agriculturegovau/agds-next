@@ -24,7 +24,7 @@ exports[`HeroCategoryBanner renders correctly 1`] = `
           class="css-1jhrbpg-boxStyles"
         >
           <div
-            class="css-10v19du-boxStyles-HeroCategoryBannerContent"
+            class="css-shh8uh-boxStyles-HeroCategoryBannerContent"
           >
             <h1
               class="css-18pa81a-boxStyles"

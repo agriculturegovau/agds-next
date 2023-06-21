@@ -21,7 +21,7 @@ exports[`FilterDrawer renders correctly 1`] = `
       <div
         aria-labelledby="filter-drawer-:r0:-title"
         aria-modal="true"
-        class="css-1xt2kod-boxStyles-FilterDrawerDialog"
+        class="css-ul6pn6-boxStyles-FilterDrawerDialog"
         role="dialog"
         style="transform: translateX(100%);"
       >
