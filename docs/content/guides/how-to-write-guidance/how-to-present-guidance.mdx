@@ -101,6 +101,40 @@ The user is filling out a form or completing a task to find information. There a
 
 Where guidance is relevant to all users, you can provide concise guidance above form fields to help users complete a form step and move on.
 
+```jsx live
+<Stack gap={1.5}>
+	<Stack>
+		<Text fontWeight="bold" color="muted">
+			Apply for X
+		</Text>
+		<H1>Title of step 2</H1>
+	</Stack>
+	<Text fontSize="md" color="muted">
+		Lorem ipsum dolor sit amet, consectetur adipiscing elit. In diam lacus,
+		cursus sed dui ac, dapibus tincidunt libero.
+	</Text>
+
+	<Text as="p">
+		Lorem ipsum dolor sit amet, consectetur adipiscing elit. In diam lacus,
+		cursus sed dui ac, dapibus tincidunt libero. Pellentesque vitae enim
+		convallis, iaculis dolor nec, gravida elit.
+	</Text>
+
+	<Text as="p">
+		Cras maximus nulla ac consectetur faucibus. Nulla ligula lectus, mattis et
+		eros quis, posuere hendrerit lacus. Nunc tellus nunc, faucibus vitae
+		faucibus at, pretium a ipsum.
+	</Text>
+	<Text>All fields are required unless marked optional.</Text>
+
+	<ControlGroup label="Label 1" hint="Hint text" block>
+		<Radio checked={false}>Phone</Radio>
+		<Radio checked={false}>Tablet</Radio>
+		<Radio checked={true}>Laptop</Radio>
+	</ControlGroup>
+</Stack>
+```
+
 ### Hint text in forms
 
 Use hint text to provide more context to help users successfully complete a form field. Hint text is optional and additional information to help users understand what the field is about.
@@ -118,6 +152,27 @@ Users who need guidance can open the details component to display guidance if th
 This reduces cognitive load for users. That is, we won’t overwhelm the user with more information than their working memory can hold at that moment.
 
 You can link from inside the Details component to other content for further guidance.
+
+```jsx live
+<Stack gap={1.5}>
+	<Stack>
+		<Text fontWeight="bold" color="muted">
+			Your personal details
+		</Text>
+		<H1>Personal details</H1>
+	</Stack>
+	<Text fontSize="md" color="muted">
+		Confirm if these prefilled details from your account are still correct.
+	</Text>
+
+	<Details label="How were my details prefilled?" iconBefore>
+		<Text as="p">
+			This is a small paragraph of text that is supplementary to the main page
+			content.
+		</Text>
+	</Details>
+</Stack>
+```
 
 ## Technical guidance
 
@@ -160,6 +215,8 @@ For example, users may access a help page when something goes wrong. Or for furt
 To present technical guidance, use the [Content template](https://design-system.agriculture.gov.au/templates/content) in the Agriculture Design System (AgDS).
 
 Use this template and our principles to create your help page for the [Export Service help section](https://exports.agriculture.gov.au/help).
+
+![Image](https://design-system.agriculture.gov.au/img/templates/content.webp)
 
 ### Technical guidance principles
 

@@ -10,7 +10,7 @@ import {
 	getNestedGuidesNavLinks,
 } from '../../../lib/mdx/guidesNested';
 import { mdxComponents } from '../../../components/mdxComponents';
-import { AppLayout } from '../../../components/AppLayout';
+import { SiteLayout } from '../../../components/SiteLayout';
 import { DocumentTitle } from '../../../components/DocumentTitle';
 import { PageLayout } from '../../../components/PageLayout';
 import { PageTitle } from '../../../components/PageTitle';
@@ -25,7 +25,7 @@ export default function Guides({
 	return (
 		<>
 			<DocumentTitle title={guide.title} description={guide.opener} />
-			<AppLayout applyMainElement={false}>
+			<SiteLayout applyMainElement={false}>
 				<PageLayout
 					applyMainElement={true}
 					sideNav={{
@@ -56,7 +56,7 @@ export default function Guides({
 						</ul>
 					</Prose>
 				</PageLayout>
-			</AppLayout>
+			</SiteLayout>
 		</>
 	);
 }
