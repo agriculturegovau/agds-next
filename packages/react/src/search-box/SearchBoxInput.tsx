@@ -65,10 +65,5 @@ const inputStyles = () => {
 			{
 				display: 'none',
 			},
-
-		'&:focus': {
-			...baseStyles['&:focus'],
-			zIndex: 2,
-		},
 	};
 };

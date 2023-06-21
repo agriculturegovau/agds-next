@@ -11,6 +11,7 @@ import { createPortal } from 'react-dom';
 import { useTransition, animated, SpringValue } from '@react-spring/web';
 import {
 	boxPalette,
+	tokens,
 	useAriaModalPolyfill,
 	usePrefersReducedMotion,
 } from '../core';
@@ -97,7 +98,7 @@ function Overlay({
 				position: 'fixed',
 				inset: 0,
 				backgroundColor: boxPalette.overlay,
-				zIndex: 100,
+				zIndex: tokens.zIndex.overlay,
 			}}
 			style={style}
 		/>

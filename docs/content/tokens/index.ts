@@ -40,6 +40,12 @@ export const TOKEN_PAGES = {
 		description:
 			'A set of predefined text styles to ensure text is consistent and legible.',
 	},
+	elevation: {
+		slug: 'elevation',
+		label: 'Elevation',
+		pageTitle: 'Elevation tokens',
+		description: 'A set of predefined tokens to handle elevation.',
+	},
 } as const;
 
 export const TOKEN_NAV_LINKS = Object.values(TOKEN_PAGES).map((item) => ({

@@ -20,7 +20,7 @@ export function SubNavList({ links, activePath }: SubNavListProps) {
 			as="ul"
 			flexDirection={['column', 'row']}
 			flexWrap="wrap"
-			css={{ position: 'relative', zIndex: 1 }}
+			css={{ position: 'relative' }}
 		>
 			{links.map(({ href, label, endElement, ...props }, index) => {
 				const active = href === activePath;

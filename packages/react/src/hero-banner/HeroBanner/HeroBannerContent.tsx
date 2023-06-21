@@ -1,4 +1,5 @@
 import { PropsWithChildren, ReactNode } from 'react';
+import { tokens } from '../../core';
 import { Flex } from '../../flex';
 import { Stack } from '../../stack';
 import { Content } from '../../content';
@@ -23,7 +24,7 @@ export const HeroBannerContent = ({
 					width={['100%', '100%', image ? '60%' : '100%']}
 					paddingTop={{ xs: 2, md: 4 }}
 					paddingBottom={{ xs: 3, md: 4 }}
-					css={{ zIndex: 1 }}
+					css={{ zIndex: tokens.zIndex.elevated }}
 				>
 					{children}
 				</Stack>

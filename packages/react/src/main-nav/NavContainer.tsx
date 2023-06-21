@@ -139,7 +139,7 @@ function NavContainerDialog({
 			id="main-nav-dialog"
 			css={{
 				[tokens.mediaQuery.max.md]: {
-					zIndex: 200,
+					zIndex: tokens.zIndex.modal,
 					position: 'fixed',
 					display: menuVisiblyOpen ? 'block' : 'none',
 					background: boxPalette.backgroundBody,
@@ -182,7 +182,7 @@ function Overlay({ onClick }: { onClick: MouseEventHandler<HTMLDivElement> }) {
 				bottom: 0,
 				right: 0,
 				backgroundColor: boxPalette.overlay,
-				zIndex: 100,
+				zIndex: tokens.zIndex.overlay,
 			}}
 			onClick={onClick}
 		/>
