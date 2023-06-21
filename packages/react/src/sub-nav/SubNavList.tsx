@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react';
 import { Flex } from '../flex';
-import { useLinkComponent, LinkProps } from '../core';
+import { useLinkComponent, LinkProps, tokens } from '../core';
 import { SubNavListItem } from './SubNavListItem';
 
 export type SubNavListLink = Omit<LinkProps, 'children'> & {
@@ -20,7 +20,7 @@ export function SubNavList({ links, activePath }: SubNavListProps) {
 			as="ul"
 			flexDirection={['column', 'row']}
 			flexWrap="wrap"
-			css={{ position: 'relative' }}
+			css={{ position: 'relative', zIndex: tokens.zIndex.elevated }}
 		>
 			{links.map(({ href, label, endElement, ...props }, index) => {
 				const active = href === activePath;
