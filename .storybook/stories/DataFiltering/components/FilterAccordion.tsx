@@ -2,7 +2,6 @@ import { useSpring, animated } from '@react-spring/web';
 import { useRef } from 'react';
 import { Flex } from '@ag.ds-next/react/flex';
 import { DateRangePicker } from '@ag.ds-next/react/date-range-picker';
-import { Button } from '@ag.ds-next/react/button';
 import { usePrefersReducedMotion } from '@ag.ds-next/react/core';
 import { GetDataFilters } from '../lib/getData';
 import { FilterAssigneeSelect } from './FilterAssigneeSelect';
@@ -14,14 +13,12 @@ export const FilterAccordion = ({
 	isOpen,
 	filters,
 	setFilters,
-	resetFilters,
 }: {
 	ariaLabelledBy: string;
 	id: string;
 	isOpen: boolean;
 	filters: GetDataFilters;
 	setFilters: (filters: GetDataFilters) => void;
-	resetFilters: () => void;
 }) => {
 	// This code has been copied from the Accordion component.
 	const ref = useRef<HTMLDivElement>(null);
@@ -81,14 +78,6 @@ export const FilterAccordion = ({
 					}
 					value={filters.requestDate}
 				/>
-				<Button
-					variant="secondary"
-					onClick={() => {
-						resetFilters();
-					}}
-				>
-					Reset filters
-				</Button>
 			</Flex>
 		</animated.section>
 	);
