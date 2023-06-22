@@ -2,6 +2,7 @@
 title: How to present guidance
 overview: Follow our principles and use the right template to present guidance.
 complete: no, needs images
+order: 5
 ---
 
 ## Informational guidance
@@ -18,6 +19,8 @@ The ‘getting started’ page should provide:
 - details about export functions
 - context on laws, regulations, workflows and related processes
 - help users understand a topic or process. For example, what they need before they start a transaction or any requirements or fees to help them complete the task.
+
+![Multi-page form template](https://design-system.agriculture.gov.au/img/templates/multi-page-form.webp 'Multi-page form template')
 
 ### Tailored guidance
 
@@ -216,7 +219,7 @@ To present technical guidance, use the [Content template](https://design-system.
 
 Use this template and our principles to create your help page for the [Export Service help section](https://exports.agriculture.gov.au/help).
 
-![Image](https://design-system.agriculture.gov.au/img/templates/content.webp)
+![Content template](https://design-system.agriculture.gov.au/img/templates/content.webp 'Content template')
 
 ### Technical guidance principles
 
@@ -250,22 +253,26 @@ For more information, see [Content structure](/content/content-structure) and [H
 
 #### ‘How-to’ or troubleshooting content
 
+// TODO snippet
+
 #### Step-by-step instructions
 
-```jsx live
-<div>
-	<p>You can see details of your audit in your Export Service account.</p>
-
-	<p>To find a summary and findings of your audit:</p>
+```jsx live enableProse
+<Prose>
+	<h2>How to submit CAR evidence</h2>
 	<ol>
 		<li>Sign in to your Export Service account.</li>
-		<li>Select ‘Compliance’.</li>
 		<li>
-			Under Audit reports, find the audit reference number and select ‘View’.
+			In the Update evidence box, 'select files' to find your document or image.
 		</li>
-		<li>Go to the Findings section.</li>
+		<li>Select 'Attach'.</li>
+		<li>Select 'Submit file'</li>
 	</ol>
-</div>
+
+	<p>
+		Once you submit evidence, a page confirms the CAR is now pending review.
+	</p>
+</Prose>
 ```
 
 ```jsx live
@@ -278,6 +285,8 @@ For more information, see [Content structure](/content/content-structure) and [H
 #### Informational or FAQ content
 
 [What is a Digital Identity?](https://exports.agriculture.gov.au/help/digital-identity)
+
+// TODO image
 
 ### How to publish your help page
 
@@ -391,3 +400,10 @@ Make sure you talk to the relevant Export Service teams before seeking legal adv
 Whether it’s necessary to contact legal services and the process involved must be approved beforehand.
 
 You can contact guidanceandsupport@aff.gov.au for initial advice on creating legal guidance in the Export Service.
+
+## Related links
+
+- [Content](/content)
+- [Style Manual](https://www.stylemanual.gov.au/)
+- [Patterns](/patterns)
+- [Templates](/templates)
