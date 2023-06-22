@@ -139,7 +139,7 @@ function NavContainerDialog({
 			id="main-nav-dialog"
 			css={{
 				[tokens.mediaQuery.max.md]: {
-					zIndex: tokens.zIndex.modal,
+					zIndex: tokens.zIndex.dialog,
 					position: 'fixed',
 					display: menuVisiblyOpen ? 'block' : 'none',
 					background: boxPalette.backgroundBody,

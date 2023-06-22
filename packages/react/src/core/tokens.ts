@@ -123,9 +123,9 @@ const zIndex = {
 	base: 0,
 	elevated: 1,
 	overlay: 100,
-	modal: 110,
-	popover: 120,
-	skipLink: 200,
+	dialog: 110,
+	popover: 200,
+	skipLink: 999,
 };
 
 export type zIndex = keyof typeof zIndex;

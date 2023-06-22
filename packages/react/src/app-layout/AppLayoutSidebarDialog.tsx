@@ -75,7 +75,7 @@ export function AppLayoutSidebarDialog({
 								width={tokens.maxWidth.mobileMenu}
 								css={{
 									position: 'fixed',
-									zIndex: tokens.zIndex.modal,
+									zIndex: tokens.zIndex.dialog,
 									top: 0,
 									left: 0,
 									bottom: 0,

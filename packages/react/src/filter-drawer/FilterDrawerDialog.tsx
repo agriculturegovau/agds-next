@@ -39,7 +39,7 @@ export function FilterDrawerDialog({
 					position: 'fixed',
 					inset: 0,
 					marginLeft: 'auto',
-					zIndex: tokens.zIndex.modal,
+					zIndex: tokens.zIndex.dialog,
 				}}
 				style={style}
 			>
