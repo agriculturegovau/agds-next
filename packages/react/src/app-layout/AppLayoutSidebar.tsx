@@ -27,7 +27,7 @@ export function AppLayoutSidebar({ activePath, items }: AppLayoutSidebarProps) {
 				css={{
 					display: 'none',
 					width: tokens.maxWidth.mobileMenu,
-					[tokens.mediaQuery.min.lg]: {
+					[tokens.mediaQuery.min[appLayoutTwoColumnBreakpoint]]: {
 						display: focusMode ? 'none' : 'flex',
 					},
 				}}
@@ -45,3 +45,6 @@ export function AppLayoutSidebar({ activePath, items }: AppLayoutSidebarProps) {
 		</Fragment>
 	);
 }
+
+// The breakpoint where we show the sidebar in a two column layout
+export const appLayoutTwoColumnBreakpoint = 'xl';

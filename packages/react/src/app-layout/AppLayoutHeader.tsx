@@ -3,6 +3,7 @@ import { boxPalette, tokens } from '../core';
 import { AppLayoutHeaderBrand } from './AppLayoutHeaderBrand';
 import { AppLayoutHeaderAccount } from './AppLayoutHeaderAccount';
 import { AppLayoutHeaderNav } from './AppLayoutHeaderNav';
+import { appLayoutTwoColumnBreakpoint } from './AppLayoutSidebar';
 
 export type AppLayoutHeaderProps = {
 	/** Defines an identifier (ID) which must be unique. */
@@ -44,7 +45,7 @@ export function AppLayoutHeader({
 				borderBottomWidth: tokens.borderWidth.xxl,
 				borderBottomStyle: 'solid',
 				borderColor: boxPalette.accent,
-				[tokens.mediaQuery.min.lg]: {
+				[tokens.mediaQuery.min[appLayoutTwoColumnBreakpoint]]: {
 					gridColumnStart: 1,
 					gridColumnEnd: 3,
 				},

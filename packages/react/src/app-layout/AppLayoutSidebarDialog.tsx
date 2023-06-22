@@ -21,6 +21,7 @@ import { CloseIcon } from '../icon';
 import { VisuallyHidden } from '../a11y';
 import { BaseButton } from '../button';
 import { useAppLayoutContext } from './AppLayoutContext';
+import { appLayoutTwoColumnBreakpoint } from './AppLayoutSidebar';
 
 export type AppLayoutSidebarDialogProps = PropsWithChildren<{}>;
 
@@ -68,7 +69,7 @@ export function AppLayoutSidebarDialog({
 						<Overlay onClick={closeMobileMenu} style={{ opacity }} />
 						<FocusLock returnFocus>
 							<AnimatedBox
-								display={{ lg: 'none' }}
+								display={{ [appLayoutTwoColumnBreakpoint]: 'none' }}
 								role="dialog"
 								aria-modal="true"
 								background="shade"
@@ -101,10 +102,11 @@ function LockScroll() {
 	return (
 		<Global
 			styles={{
+				body: { overflow: 'hidden' },
 				// Only show in mobile devices
 				// Without this, `AppLayoutSidebar` stories would not correctly
-				[tokens.mediaQuery.max.md]: {
-					body: { overflow: 'hidden' },
+				[tokens.mediaQuery.min[appLayoutTwoColumnBreakpoint]]: {
+					body: { overflow: 'unset' },
 				},
 			}}
 		/>
@@ -124,7 +126,7 @@ function Overlay({
 				// Only show in mobile devices
 				// Without this, `AppLayoutSidebar` stories would not correctly
 				display: 'none',
-				[tokens.mediaQuery.max.md]: {
+				[tokens.mediaQuery.max.lg]: {
 					display: 'block',
 					position: 'fixed',
 					top: 0,
