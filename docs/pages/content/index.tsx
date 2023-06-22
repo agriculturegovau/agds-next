@@ -14,7 +14,7 @@ import { mdxComponents } from '../../components/mdxComponents';
 
 export default function ContentPage({
 	document,
-	documentList,
+	pageList,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
 	return (
 		<>
@@ -28,7 +28,7 @@ export default function ContentPage({
 				editPath="/docs/pages/content/index.tsx"
 			>
 				<Columns as="ul" cols={{ xs: 1, sm: 2, lg: 3 }}>
-					{documentList.map(({ slug, title, description }) => (
+					{pageList.map(({ slug, title, description }) => (
 						<Card key={slug} as="li" clickable shadow>
 							<Flex flexDirection="column-reverse">
 								<CardInner>
@@ -53,13 +53,13 @@ export default function ContentPage({
 
 export const getStaticProps: GetStaticProps<{
 	document: Awaited<ReturnType<typeof getContent>>;
-	documentList: Awaited<ReturnType<typeof getContentList>>;
+	pageList: Awaited<ReturnType<typeof getContentList>>;
 }> = async () => {
 	const document = await getContent('index');
-	const documentList = await getContentList();
+	const pageList = await getContentList();
 	return {
 		props: {
-			documentList,
+			pageList,
 			document,
 		},
 	};
