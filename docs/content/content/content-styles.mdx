@@ -11,7 +11,7 @@ Don’t use the ampersand symbol (&) instead of ‘and’ in a heading or senten
 
 That’s unless it’s a part of a proper noun or name.
 
-```jsx live
+```jsx live enableProse
 <Prose>
 	<h1>Summary and findings</h1>
 
@@ -200,7 +200,7 @@ If the information applies to all users, don’t hide an FAQ in an accordion or 
 
 Monitor and measure the success of FAQs. If no one is using them, remove FAQ content.
 
-```jsx live
+```jsx live enableProse
 <Details label="How were my details prefilled?" iconBefore>
 	<Prose>
 		<p>
@@ -317,7 +317,7 @@ Use a forward arrow (>) to separate the tabs or buttons users need to select.
 </Text>
 ```
 
-```jsx live
+```jsx live enableProse
 <Prose>
 	<p>You can see details of your audit in your Export Service account.</p>
 	<p>To find a summary and findings of your audit:</p>
@@ -347,9 +347,9 @@ Include a short introduction that describes a page’s content under the heading
 		Only a business owner or principal authority can create an account and
 		authorise access for others.
 	</Text>
-	<Prose>
-		<p>Follow the steps to set up your business for the first time.</p>
-	</Prose>
+	<Text as="p">
+		Follow the steps to set up your business for the first time.
+	</Text>
 </Stack>
 ```
 
