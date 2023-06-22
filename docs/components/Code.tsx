@@ -7,7 +7,6 @@ import React, {
 	KeyboardEvent,
 	useContext,
 } from 'react';
-import { useRouter } from 'next/router';
 import { LiveProvider, LiveEditor, LivePreview, LiveContext } from 'react-live';
 import { createUrl } from 'playroom/utils';
 import { Highlight } from 'prism-react-renderer';
@@ -46,9 +45,14 @@ const PlaceholderImage = () => (
 	/>
 );
 
-function LiveCode({ showCode = false }: { showCode?: boolean }) {
+function LiveCode({
+	showCode = false,
+	enableProse = false,
+}: {
+	showCode?: boolean;
+	enableProse?: boolean;
+}) {
 	const liveCodeToggleButton = useRef<HTMLButtonElement>(null);
-	const { query } = useRouter();
 	const live = useContext(LiveContext);
 
 	const liveOnChange = live.onChange;
@@ -98,9 +102,7 @@ function LiveCode({ showCode = false }: { showCode?: boolean }) {
 			<LivePreview
 				aria-label="Rendered code snippet example"
 				// Prevents prose styles from being inherited in live code examples (except for the prose example)
-				className={
-					query.slug === 'prose' ? undefined : unsetProseStylesClassname
-				}
+				className={enableProse ? undefined : unsetProseStylesClassname}
 				css={{
 					// The mdx codeblock transform wraps the code component in a pre which
 					// applies some weirdness here. This resets back to normal things
@@ -271,9 +273,16 @@ type CodeProps = {
 	className?: string;
 	live?: boolean;
 	showCode?: boolean;
+	enableProse?: boolean;
 };
 
-export function Code({ children, live, showCode, className }: CodeProps) {
+export function Code({
+	children,
+	live,
+	showCode,
+	enableProse,
+	className,
+}: CodeProps) {
 	const childrenAsString = children?.toString().trim();
 	const language = className?.replace(/language-/, '');
 
@@ -286,7 +295,7 @@ export function Code({ children, live, showCode, className }: CodeProps) {
 				scope={LIVE_SCOPE}
 				language={language}
 			>
-				<LiveCode showCode={showCode} />
+				<LiveCode showCode={showCode} enableProse={enableProse} />
 			</LiveProvider>
 		);
 	}
