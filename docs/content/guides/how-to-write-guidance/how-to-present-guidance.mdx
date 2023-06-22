@@ -338,6 +338,52 @@ A user must select the checkbox to confirm their consent and continue to move th
 
 - **consider where to publish legal content online**. Your legal content may be most appropriate within a task or informational page within the Export Service.
 
+```jsx live
+<Prose>
+	<h2>Legal declaration</h2>
+	<p>I understand that:</p>
+	<ul>
+		<li>
+			it’s a criminal offence under the Criminal Code Act 1995 to knowingly give
+			false or misleading information to a Commonwealth officer exercising
+			powers under Commonwealth law
+		</li>
+
+		<li>
+			a person may commit an offence or be liable to a civil penalty if they
+			make a false or misleading statement in an application or provide false or
+			misleading information or documents (see sections 136.1, 137.1 and 137.2
+			of the Criminal Code Act 1995 and sections 367, 368 and 369 of the Export
+			Control Act 2020).
+		</li>
+	</ul>
+	<p>I declare that:</p>
+	<ul>
+		<li>the information I’ve provided is true and correct</li>
+		<li>
+			I’ve conducted the appropriate due diligence to compile relevant
+			information on the person to be added to management and control
+		</li>
+		<li>
+			I have the consent of individuals whose personal information and sensitive
+			information is included in this application to disclose their information
+			to the department
+		</li>
+		<li>
+			I have read and understood the{' '}
+			<TextLinkExternal href="#">Privacy Notice</TextLinkExternal>
+		</li>
+	</ul>
+	<div className="agds-prose-block">
+		<Checkbox checked={false}>
+			I agree. All applicants consent to the collection, use and disclosure of
+			their information to the relevant authorities in the importing country as
+			outlined in the privacy notice.
+		</Checkbox>
+	</div>
+</Prose>
+```
+
 The relevant legal team must provide and approve legal guidance. However, legal services can be costly.
 
 Make sure you talk to the relevant Export Service teams before seeking legal advice on content. Engage them early to understand what work may have been done in this space before and how to move forward.
