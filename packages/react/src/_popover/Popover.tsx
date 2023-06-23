@@ -43,7 +43,7 @@ export function usePopover(options?: {
 	matchReferenceWidth?: boolean;
 	maxHeight?: number;
 }) {
-	const { refs, floatingStyles, update } = useFloating({
+	const { refs, floatingStyles } = useFloating({
 		placement: 'bottom-start',
 		middleware: [
 			// Adds distance between the reference and floating element
@@ -60,7 +60,7 @@ export function usePopover(options?: {
 					Object.assign(elements.floating.style, {
 						maxWidth: `${availableWidth}px`,
 						maxHeight: `${
-							// Poppers can set a max-height, only if there is enough room on the screen
+							// Popovers can have a predefined max-height if there is enough room on the screen
 							options?.maxHeight && availableHeight > options.maxHeight
 								? options.maxHeight
 								: availableHeight
@@ -102,7 +102,6 @@ export function usePopover(options?: {
 		getReferenceProps,
 		getPopoverProps,
 		referenceRef: refs.reference,
-		popoverRef: refs.setFloating,
-		refs,
+		popoverRef: refs.floating,
 	};
 }

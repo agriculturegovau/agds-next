@@ -1,6 +1,6 @@
 import { Fragment, ReactNode } from 'react';
 import { UseComboboxReturnValue } from 'downshift';
-import { FieldMaxWidth, mergeRefs } from '../../core';
+import { FieldMaxWidth } from '../../core';
 import { Popover, usePopover } from '../../_popover';
 import { textInputStyles } from '../../text-input';
 import { Field } from '../../field';
