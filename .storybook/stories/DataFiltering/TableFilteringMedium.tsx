@@ -127,7 +127,6 @@ export const TableFilteringMedium = ({
 						filters={filters}
 						isOpen={isOpen}
 						setFilters={setFilters}
-						resetFilters={resetFilters}
 					/>
 					<ActiveFilters
 						filters={filters}
