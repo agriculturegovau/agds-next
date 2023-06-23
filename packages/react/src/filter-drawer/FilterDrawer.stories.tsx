@@ -100,7 +100,7 @@ export const WithFieldsets: Story = {
 			closeDrawer();
 		};
 
-		const onResetFiltersClick = () => {
+		const onClearFiltersClick = () => {
 			setFormState(initialFilterState);
 			setFilters(initialFilterState);
 		};
@@ -120,7 +120,7 @@ export const WithFieldsets: Story = {
 					actions={
 						<ButtonGroup>
 							<Button onClick={onApplyFiltersClick}>Apply filters</Button>
-							<Button variant="secondary" onClick={onResetFiltersClick}>
+							<Button variant="secondary" onClick={onClearFiltersClick}>
 								Clear filters
 							</Button>
 							<Button variant="tertiary" onClick={onCloseClick}>
