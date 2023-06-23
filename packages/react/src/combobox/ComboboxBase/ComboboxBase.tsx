@@ -73,14 +73,19 @@ export function ComboboxBase<Option extends DefaultComboboxOption>({
 		paddingRight: hasBothButtons ? '5rem' : '3rem',
 	};
 
-	const { getPopoverProps, getReferenceProps } = usePopover({
+	const popover = usePopover({
 		matchReferenceWidth: true,
 		maxHeight: 295,
 	});
 
-	const { ref: popoverRef, ...popoverProps } = getPopoverProps();
-	const { ref: comboboxMenuRef, ...comboboxPopoverMenuProps } =
-		combobox.getMenuProps({ ...popoverProps }, { suppressRefError: true });
+	const popoverProps = popover.getPopoverProps();
+	const comboboxPopoverMenuProps = combobox.getMenuProps({
+		...popoverProps,
+		style: {
+			...popoverProps.style,
+			display: combobox.isOpen ? 'block' : 'none',
+		},
+	});
 
 	return (
 		<Field
@@ -95,7 +100,7 @@ export function ComboboxBase<Option extends DefaultComboboxOption>({
 			{(a11yProps) => (
 				<Fragment>
 					<div
-						{...getReferenceProps()}
+						{...popover.getReferenceProps()}
 						css={{ position: 'relative', maxWidth }}
 					>
 						<input
@@ -125,39 +130,38 @@ export function ComboboxBase<Option extends DefaultComboboxOption>({
 							</ComboboxButtonContainer>
 						)}
 					</div>
-					{combobox.isOpen && (
-						<Popover
-							as={ComboboxList}
-							ref={mergeRefs([comboboxMenuRef, popoverRef])}
-							{...comboboxPopoverMenuProps}
-						>
-							{loading ? (
-								<ComboboxListLoading />
-							) : networkError ? (
-								<ComboboxListError />
-							) : (
-								<Fragment>
-									{inputItems?.length ? (
-										inputItems.map((item, index) => {
-											const isActiveItem = combobox.highlightedIndex === index;
-											return (
-												<ComboboxListItem
-													key={`${item.value}${index}`}
-													isActiveItem={isActiveItem}
-													isInteractive={true}
-													{...combobox.getItemProps({ item, index })}
-												>
-													{renderItem(item, combobox.inputValue)}
-												</ComboboxListItem>
-											);
-										})
-									) : (
-										<ComboboxListEmptyResults message={emptyResultsMessage} />
-									)}
-								</Fragment>
-							)}
-						</Popover>
-					)}
+					<Popover as={ComboboxList} {...comboboxPopoverMenuProps}>
+						{combobox.isOpen ? (
+							<Fragment>
+								{loading ? (
+									<ComboboxListLoading />
+								) : networkError ? (
+									<ComboboxListError />
+								) : (
+									<Fragment>
+										{inputItems?.length ? (
+											inputItems.map((item, index) => {
+												const isActiveItem =
+													combobox.highlightedIndex === index;
+												return (
+													<ComboboxListItem
+														key={`${item.value}${index}`}
+														isActiveItem={isActiveItem}
+														isInteractive={true}
+														{...combobox.getItemProps({ item, index })}
+													>
+														{renderItem(item, combobox.inputValue)}
+													</ComboboxListItem>
+												);
+											})
+										) : (
+											<ComboboxListEmptyResults message={emptyResultsMessage} />
+										)}
+									</Fragment>
+								)}
+							</Fragment>
+						) : null}
+					</Popover>
 				</Fragment>
 			)}
 		</Field>
