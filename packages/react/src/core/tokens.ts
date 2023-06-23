@@ -128,7 +128,7 @@ const zIndex = {
 	skipLink: 999,
 };
 
-export type zIndex = keyof typeof zIndex;
+export type ZIndex = keyof typeof zIndex;
 
 export const tokens = {
 	breakpoint,
