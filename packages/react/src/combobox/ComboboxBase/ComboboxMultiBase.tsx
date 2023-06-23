@@ -138,65 +138,63 @@ export function ComboboxMultiBase<Option extends DefaultComboboxOption>({
 			id={inputId}
 		>
 			{(a11yProps) => (
-				<Fragment>
-					<div
-						{...popover.getReferenceProps()}
-						css={styles.fieldContainer}
-						onClick={handleFieldContainerClick}
+				<div
+					{...popover.getReferenceProps()}
+					css={styles.fieldContainer}
+					onClick={handleFieldContainerClick}
+				>
+					<Flex
+						ref={fieldContainerRef}
+						gap={0.5}
+						flexWrap="wrap"
+						alignItems="center"
+						css={styles.container}
 					>
-						<Flex
-							ref={fieldContainerRef}
-							gap={0.5}
-							flexWrap="wrap"
-							alignItems="center"
-							css={styles.container}
-						>
-							{selectedItems.map((item, idx) => (
-								<ComboboxTag
-									key={`selected-item-${idx}`}
-									onRemove={() => multiSelection.removeSelectedItem(item)}
-									disabled={disabled}
-									{...multiSelection.getSelectedItemProps({
-										selectedItem: item,
-										index: idx,
-									})}
-								>
-									{item.label}
-								</ComboboxTag>
-							))}
-							<div css={styles.inputContainer}>
-								<input
-									disabled={disabled}
-									{...a11yProps}
-									{...combobox.getInputProps(
-										multiSelection.getDropdownProps({
-											ref: inputRef,
-											type: 'text',
-											preventKeyAction: combobox.isOpen,
-											onFocus: setInputFocused,
-											onBlur: setInputBlurred,
-										})
-									)}
-									css={styles.input}
-								/>
-							</div>
-							<ComboboxButtonContainer>
-								{showClearButton && (
-									<Fragment>
-										<ComboboxClearButton
-											disabled={disabled}
-											onClick={() => onClear()}
-										/>
-										<ComboboxButtonDivider />
-									</Fragment>
+						{selectedItems.map((item, idx) => (
+							<ComboboxTag
+								key={`selected-item-${idx}`}
+								onRemove={() => multiSelection.removeSelectedItem(item)}
+								disabled={disabled}
+								{...multiSelection.getSelectedItemProps({
+									selectedItem: item,
+									index: idx,
+								})}
+							>
+								{item.label}
+							</ComboboxTag>
+						))}
+						<div css={styles.inputContainer}>
+							<input
+								disabled={disabled}
+								{...a11yProps}
+								{...combobox.getInputProps(
+									multiSelection.getDropdownProps({
+										ref: inputRef,
+										type: 'text',
+										preventKeyAction: combobox.isOpen,
+										onFocus: setInputFocused,
+										onBlur: setInputBlurred,
+									})
 								)}
-								<ComboboxDropdownTrigger
-									disabled={disabled}
-									{...combobox.getToggleButtonProps()}
-								/>
-							</ComboboxButtonContainer>
-						</Flex>
-					</div>
+								css={styles.input}
+							/>
+						</div>
+						<ComboboxButtonContainer>
+							{showClearButton && (
+								<Fragment>
+									<ComboboxClearButton
+										disabled={disabled}
+										onClick={() => onClear()}
+									/>
+									<ComboboxButtonDivider />
+								</Fragment>
+							)}
+							<ComboboxDropdownTrigger
+								disabled={disabled}
+								{...combobox.getToggleButtonProps()}
+							/>
+						</ComboboxButtonContainer>
+					</Flex>
 					<Popover as={ComboboxList} {...comboboxPopoverMenuProps}>
 						{combobox.isOpen ? (
 							<Fragment>
@@ -225,7 +223,7 @@ export function ComboboxMultiBase<Option extends DefaultComboboxOption>({
 							</Fragment>
 						) : null}
 					</Popover>
-				</Fragment>
+				</div>
 			)}
 		</Field>
 	);

@@ -75,14 +75,14 @@ exports[`Combobox renders correctly 1`] = `
           </svg>
         </button>
       </div>
+      <ul
+        aria-labelledby="downshift-0-label"
+        class="css-83ya7q-boxStyles-boxStyles-Popover"
+        id="downshift-0-menu"
+        role="listbox"
+        style="position: absolute; left: 0px; top: 0px; display: none; transform: translate(0px, 0px);"
+      />
     </div>
-    <ul
-      aria-labelledby="downshift-0-label"
-      class="css-83ya7q-boxStyles-boxStyles-Popover"
-      id="downshift-0-menu"
-      role="listbox"
-      style="position: absolute; left: 0px; top: 0px; display: none; transform: translate(0px, 0px);"
-    />
   </div>
 </div>
 `;

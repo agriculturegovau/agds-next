@@ -97,38 +97,36 @@ export function ComboboxBase<Option extends DefaultComboboxOption>({
 			id={inputId}
 		>
 			{(a11yProps) => (
-				<Fragment>
-					<div
-						{...popover.getReferenceProps()}
-						css={{ position: 'relative', maxWidth }}
-					>
-						<input
-							css={{ ...inputStyles, width: '100%' }}
-							disabled={disabled}
-							{...combobox.getInputProps({
-								...a11yProps,
-								type: 'text',
-								name: inputName,
-							})}
-						/>
-						{hasButtons && (
-							<ComboboxButtonContainer>
-								{showDropdownTrigger && (
-									<ComboboxDropdownTrigger
-										disabled={disabled}
-										{...combobox.getToggleButtonProps()}
-									/>
-								)}
-								{hasBothButtons && <ComboboxButtonDivider />}
-								{showClearButton && (
-									<ComboboxClearButton
-										disabled={disabled}
-										onClick={combobox.reset}
-									/>
-								)}
-							</ComboboxButtonContainer>
-						)}
-					</div>
+				<div
+					{...popover.getReferenceProps()}
+					css={{ position: 'relative', maxWidth }}
+				>
+					<input
+						css={{ ...inputStyles, width: '100%' }}
+						disabled={disabled}
+						{...combobox.getInputProps({
+							...a11yProps,
+							type: 'text',
+							name: inputName,
+						})}
+					/>
+					{hasButtons && (
+						<ComboboxButtonContainer>
+							{showDropdownTrigger && (
+								<ComboboxDropdownTrigger
+									disabled={disabled}
+									{...combobox.getToggleButtonProps()}
+								/>
+							)}
+							{hasBothButtons && <ComboboxButtonDivider />}
+							{showClearButton && (
+								<ComboboxClearButton
+									disabled={disabled}
+									onClick={combobox.reset}
+								/>
+							)}
+						</ComboboxButtonContainer>
+					)}
 					<Popover as={ComboboxList} {...comboboxPopoverMenuProps}>
 						{combobox.isOpen ? (
 							<Fragment>
@@ -161,7 +159,7 @@ export function ComboboxBase<Option extends DefaultComboboxOption>({
 							</Fragment>
 						) : null}
 					</Popover>
-				</Fragment>
+				</div>
 			)}
 		</Field>
 	);
