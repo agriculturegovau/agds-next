@@ -1,5 +1,6 @@
 import { Meta } from '@storybook/react';
-import { Autocomplete } from '@ag.ds-next/react/src/autocomplete/Autocomplete';
+import { Fragment } from 'react';
+import { Autocomplete } from '@ag.ds-next/react/autocomplete';
 import { Avatar } from '@ag.ds-next/react/avatar';
 import { AvatarIcon } from '@ag.ds-next/react/icon';
 import { Box } from '@ag.ds-next/react/box';
@@ -10,7 +11,7 @@ import { CallToActionLink } from '@ag.ds-next/react/call-to-action';
 import { Card, CardInner } from '@ag.ds-next/react/card';
 import { Checkbox } from '@ag.ds-next/react/checkbox';
 import { Columns, Column } from '@ag.ds-next/react/columns';
-import { Combobox } from '@ag.ds-next/react/src/combobox';
+import { Combobox } from '@ag.ds-next/react/combobox';
 import { ControlGroup } from '@ag.ds-next/react/control-group';
 import { DatePicker } from '@ag.ds-next/react/date-picker';
 import { Details } from '@ag.ds-next/react/details';
@@ -79,11 +80,16 @@ import {
 	SummaryListItemTerm,
 } from '@ag.ds-next/react/summary-list';
 import { COUNTRY_OPTIONS } from '../../docs/components/designSystemComponents';
+import { SiteLayout } from '../../docs/content/templates/__shared/SiteLayout';
+import { AppLayout } from '../../docs/content/templates/__shared/AppLayout';
 
 const meta: Meta = {
 	title: 'Testing/Kitchen sink',
 	parameters: {
 		layout: 'fullscreen',
+	},
+	args: {
+		background: 'body',
 	},
 	argTypes: {
 		background: {
@@ -127,40 +133,12 @@ const backgroundMapper = {
 	},
 } as const;
 
-export const KitchenSink = ({
-	background,
-}: {
-	background: 'body' | 'bodyAlt';
-}) => {
+type KitchenSinkProps = { background: 'body' | 'bodyAlt' };
+
+function KitchenSink({ background }: KitchenSinkProps) {
 	const { page, shade, opposite } = backgroundMapper[background];
 	return (
-		<div>
-			<GlobalAlert>
-				<Text as="p">This is a Global alert.</Text>
-			</GlobalAlert>
-
-			<Stack palette="dark">
-				<Header
-					background="bodyAlt"
-					logo={<Logo />}
-					heading="AgDS Kitchen Sink"
-					subline="A place to test all the components"
-				/>
-
-				<MainNav
-					id="main-nav"
-					activePath="#home"
-					items={[{ label: 'Home', href: '#home' }]}
-					secondaryItems={[
-						{
-							label: 'Sign in',
-							href: '#sign-in',
-							endElement: <AvatarIcon color="action" />,
-						},
-					]}
-				/>
-			</Stack>
-
+		<Fragment>
 			<HeroBanner background={opposite}>
 				<HeroBannerTitleContainer>
 					<HeroBannerTitle>
@@ -177,7 +155,6 @@ export const KitchenSink = ({
 					</SearchBoxButton>
 				</SearchBox>
 			</HeroBanner>
-
 			<PageContent>
 				<Columns>
 					<Column columnSpan={{ xs: 12, md: 4 }}>
@@ -552,41 +529,42 @@ export const KitchenSink = ({
 					</Column>
 				</Columns>
 			</PageContent>
-			<Box palette="dark">
-				<Footer background="bodyAlt">
-					<nav aria-label="footer">
-						<LinkList
-							links={[
-								{ label: 'Home', href: '/' },
-								{
-									label: 'Storybook',
-									href: 'https://design-system.agriculture.gov.au/storybook/index.html',
-								},
-								{
-									label: 'Playroom',
-									href: 'https://design-system.agriculture.gov.au/playroom/index.html',
-								},
-								{
-									label: 'Starter kit',
-									href: 'https://github.com/steelthreads/agds-starter-kit',
-								},
-							]}
-							horizontal
-						/>
-					</nav>
-					<FooterDivider />
-					<Text fontSize="xs" maxWidth={tokens.maxWidth.bodyText}>
-						We acknowledge the traditional owners of country throughout
-						Australia and recognise their continuing connection to land, waters
-						and culture. We pay our respects to their Elders past, present and
-						emerging.
-					</Text>
-				</Footer>
-			</Box>
-		</div>
+		</Fragment>
 	);
+}
+
+export const WesbsiteLayout = {
+	name: 'Website layout',
+	render: (args: KitchenSinkProps) => (
+		<Fragment>
+			<GlobalAlert onDismiss={console.log}>
+				<Text as="p">
+					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce massa
+					nibh, aliquam vel dolor non, gravida porttitor nulla. Pellentesque
+					cursus orci vulputate nibh sagittis blandit.
+				</Text>
+			</GlobalAlert>
+			<SiteLayout>
+				<KitchenSink {...args} />
+			</SiteLayout>
+		</Fragment>
+	),
 };
-KitchenSink.storyName = 'Kitchen sink';
-KitchenSink.args = {
-	background: 'body',
+
+export const ApplicationLayout = {
+	name: 'Application layout',
+	render: (args: KitchenSinkProps) => (
+		<Fragment>
+			<GlobalAlert onDismiss={console.log}>
+				<Text as="p">
+					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce massa
+					nibh, aliquam vel dolor non, gravida porttitor nulla. Pellentesque
+					cursus orci vulputate nibh sagittis blandit.
+				</Text>
+			</GlobalAlert>
+			<AppLayout>
+				<KitchenSink {...args} />
+			</AppLayout>
+		</Fragment>
+	),
 };
