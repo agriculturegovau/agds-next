@@ -24,7 +24,6 @@ export const ComboboxList = forwardRef<HTMLUListElement, ComboboxListProps>(
 					maxHeight: 295,
 					maxWidth: block ? tokens.maxWidth.field[maxWidth] : undefined,
 					width: '100%',
-					zIndex: 1,
 					...(!isOpen && {
 						opacity: 0,
 						visibility: 'hidden',

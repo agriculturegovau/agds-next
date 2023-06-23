@@ -1,7 +1,7 @@
 import { forwardRef, PropsWithChildren } from 'react';
 import { buttonStyles } from '../button';
 import { visuallyHiddenStyles } from '../a11y';
-import { mapSpacing } from '../core';
+import { mapSpacing, tokens } from '../core';
 
 export type SkipLinkItemProps = PropsWithChildren<{ href: string }>;
 
@@ -24,7 +24,7 @@ export const SkipLinkItem = forwardRef<HTMLAnchorElement, SkipLinkItemProps>(
 							overflow: 'visible',
 							whiteSpace: 'normal',
 							width: 'auto',
-							zIndex: 999,
+							zIndex: tokens.zIndex.skipLink,
 						},
 					},
 				]}

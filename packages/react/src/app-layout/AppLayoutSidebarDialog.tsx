@@ -75,7 +75,7 @@ export function AppLayoutSidebarDialog({
 								width={tokens.maxWidth.mobileMenu}
 								css={{
 									position: 'fixed',
-									zIndex: 100,
+									zIndex: tokens.zIndex.dialog,
 									top: 0,
 									left: 0,
 									bottom: 0,
@@ -132,7 +132,7 @@ function Overlay({
 					bottom: 0,
 					right: 0,
 					backgroundColor: boxPalette.overlay,
-					zIndex: 99,
+					zIndex: tokens.zIndex.overlay,
 				},
 			}}
 			onClick={onClick}

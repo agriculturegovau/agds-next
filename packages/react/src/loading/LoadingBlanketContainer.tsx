@@ -1,4 +1,5 @@
 import { PropsWithChildren } from 'react';
+import { tokens } from '../core';
 import { Flex } from '../flex';
 
 export type LoadingBlanketContainerProps = PropsWithChildren<{
@@ -20,7 +21,7 @@ export const LoadingBlanketContainer = ({
 		css={{
 			position: fullScreen ? 'fixed' : 'absolute',
 			inset: 0,
-			zIndex: 100,
+			zIndex: tokens.zIndex.overlay,
 			backgroundColor: `rgba(255, 255, 255, 0.9)`,
 		}}
 	>

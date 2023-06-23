@@ -337,9 +337,8 @@ export const DateRangePicker = ({
 				{isCalendarOpen ? (
 					<div
 						ref={setPopperEl}
-						style={styles.popper}
+						style={{ ...styles.popper, zIndex: tokens.zIndex.popover }}
 						{...attributes.popper}
-						css={{ zIndex: 1 }}
 					>
 						<CalendarRange
 							initialFocus

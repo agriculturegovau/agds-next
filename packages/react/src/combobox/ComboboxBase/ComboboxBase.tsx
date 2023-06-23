@@ -1,7 +1,7 @@
 import { Fragment, ReactNode, useState } from 'react';
 import { UseComboboxReturnValue } from 'downshift';
 import { usePopper } from 'react-popper';
-import { FieldMaxWidth, mergeRefs } from '../../core';
+import { FieldMaxWidth, mergeRefs, tokens } from '../../core';
 import { textInputStyles } from '../../text-input';
 import { Field } from '../../field';
 import { DefaultComboboxOption } from '../utils';
@@ -67,7 +67,7 @@ export function ComboboxBase<Option extends DefaultComboboxOption>({
 	// Popper state
 	const [refEl, setRefEl] = useState<HTMLDivElement | null>(null);
 	const [popperEl, setPopperEl] = useState<HTMLDivElement | null>(null);
-	const { styles, attributes } = usePopper(refEl, popperEl, {
+	const { styles: popperStyles, attributes } = usePopper(refEl, popperEl, {
 		placement: 'bottom-start',
 		modifiers: [{ name: 'offset', options: { offset: [0, 8] } }],
 	});
@@ -83,7 +83,10 @@ export function ComboboxBase<Option extends DefaultComboboxOption>({
 
 	const { ref: menuRef, ...menuProps } = combobox.getMenuProps({
 		...attributes.popper,
-		style: styles.popper,
+		style: {
+			...popperStyles.popper,
+			zIndex: tokens.zIndex.popover,
+		},
 	});
 
 	return (

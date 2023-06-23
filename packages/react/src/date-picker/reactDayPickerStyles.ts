@@ -28,7 +28,7 @@ export const reactDayPickerStyles = (range: boolean) =>
 			marginBottom: mapSpacing(0.5),
 		},
 		'.rdp-caption_label': {
-			zIndex: 1,
+			zIndex: tokens.zIndex.elevated,
 			whiteSpace: 'nowrap',
 			margin: 0,
 			color: boxPalette.foregroundText,

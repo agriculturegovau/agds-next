@@ -50,7 +50,7 @@ exports[`MainNav renders correctly 1`] = `
           </button>
         </div>
         <div
-          class="css-heefmy-light-boxStyles-element"
+          class="css-1cxgfke-light-boxStyles-element"
           id="main-nav-dialog"
         >
           <div
@@ -100,7 +100,7 @@ exports[`MainNav renders correctly 1`] = `
                 class="css-5nrt7j-boxStyles-NavListContainer"
               >
                 <li
-                  class="css-1pszxfd-boxStyles-NavListItem"
+                  class="css-1iz4dhy-boxStyles-NavListItem"
                 >
                   <a
                     href="#home"
@@ -111,7 +111,7 @@ exports[`MainNav renders correctly 1`] = `
                   </a>
                 </li>
                 <li
-                  class="css-32saf7-boxStyles-NavListItem"
+                  class="css-tk5pii-boxStyles-NavListItem"
                 >
                   <a
                     aria-current="page"
@@ -123,7 +123,7 @@ exports[`MainNav renders correctly 1`] = `
                   </a>
                 </li>
                 <li
-                  class="css-1pszxfd-boxStyles-NavListItem"
+                  class="css-1iz4dhy-boxStyles-NavListItem"
                 >
                   <a
                     href="#form"
@@ -134,7 +134,7 @@ exports[`MainNav renders correctly 1`] = `
                   </a>
                 </li>
                 <li
-                  class="css-1pszxfd-boxStyles-NavListItem"
+                  class="css-1iz4dhy-boxStyles-NavListItem"
                 >
                   <a
                     href="#simple"
@@ -161,7 +161,7 @@ exports[`MainNav renders correctly 1`] = `
             class="css-1ltfh56-boxStyles"
           >
             <li
-              class="css-6lwpn8-boxStyles-NavListItem"
+              class="css-1ieyr45-boxStyles-NavListItem"
             >
               <a
                 href="#sign-in"

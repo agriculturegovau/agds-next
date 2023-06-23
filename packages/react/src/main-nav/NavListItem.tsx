@@ -1,5 +1,12 @@
 import type { PropsWithChildren } from 'react';
-import { boxPalette, mapSpacing, mq, mapResponsiveProp, packs } from '../core';
+import {
+	boxPalette,
+	mapSpacing,
+	mq,
+	mapResponsiveProp,
+	packs,
+	tokens,
+} from '../core';
 import { Flex } from '../flex';
 import { localPalette } from './utils';
 
@@ -76,15 +83,11 @@ export function NavListItem({
 						// Focus styles
 						'&:focus': {
 							outline: 'none',
-
 							'&:before': {
 								content: '""',
 								position: 'absolute',
-								zIndex: 100,
-								top: 0,
-								left: 0,
-								height: '100%',
-								width: '100%',
+								inset: 0,
+								zIndex: tokens.zIndex.elevated,
 								...packs.outline,
 							},
 							'&::-moz-focus-inner': {

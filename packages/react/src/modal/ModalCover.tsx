@@ -16,7 +16,7 @@ export const ModalCover = forwardRef<HTMLDivElement, ModalCoverProps>(
 					bottom: 0,
 					right: 0,
 					backgroundColor: boxPalette.overlay,
-					zIndex: 100,
+					zIndex: tokens.zIndex.overlay,
 					overflowY: 'auto',
 					animation: `${animateFadeInOut} ${tokens.transition.duration}ms ${tokens.transition.timingFunction}`,
 				}}

@@ -119,6 +119,17 @@ const transition = {
 	timingFunction: 'ease', // https://developer.mozilla.org/en-US/docs/Web/CSS/transition-timing-function
 };
 
+const zIndex = {
+	base: 0,
+	elevated: 1,
+	overlay: 100,
+	dialog: 110,
+	popover: 200,
+	skipLink: 999,
+};
+
+export type ZIndex = keyof typeof zIndex;
+
 export const tokens = {
 	breakpoint,
 	mediaQuery,
@@ -133,4 +144,5 @@ export const tokens = {
 	borderRadius,
 	borderWidth,
 	transition,
+	zIndex,
 };

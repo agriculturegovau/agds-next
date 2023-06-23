@@ -10,7 +10,12 @@ import {
 } from 'react';
 import { usePopper } from 'react-popper';
 import { SelectSingleEventHandler } from 'react-day-picker';
-import { FieldMaxWidth, useClickOutside, useTernaryState } from '../core';
+import {
+	FieldMaxWidth,
+	tokens,
+	useClickOutside,
+	useTernaryState,
+} from '../core';
 import { CalendarSingle } from './Calendar';
 import { DateInput } from './DatePickerInput';
 import {
@@ -193,9 +198,8 @@ export const DatePicker = ({
 			{isCalendarOpen ? (
 				<div
 					ref={setPopperEl}
-					style={styles.popper}
+					style={{ ...styles.popper, zIndex: tokens.zIndex.popover }}
 					{...attributes.popper}
-					css={{ zIndex: 1 }}
 				>
 					<CalendarSingle
 						initialFocus

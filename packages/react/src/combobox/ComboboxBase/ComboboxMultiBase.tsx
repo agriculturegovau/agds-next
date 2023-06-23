@@ -126,7 +126,10 @@ export function ComboboxMultiBase<Option extends DefaultComboboxOption>({
 
 	const { ref: menuRef, ...menuProps } = combobox.getMenuProps({
 		...attributes.popper,
-		style: popperStyles.popper,
+		style: {
+			...popperStyles.popper,
+			zIndex: tokens.zIndex.popover,
+		},
 	});
 
 	// Focus the input element if the user clicks inside the container

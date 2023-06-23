@@ -67,11 +67,7 @@ export function SubNavListItem({ children, active }: SubNavListItemProps) {
 						'&:before': {
 							content: '""',
 							position: 'absolute',
-							zIndex: 100,
-							top: 0,
-							left: 0,
-							height: '100%',
-							width: '100%',
+							inset: 0,
 							...packs.outline,
 						},
 						'&::-moz-focus-inner': {
