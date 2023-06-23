@@ -88,6 +88,12 @@ jobs:
       - name: Example
         run: yarn lint:example
 
+      - name: Example form
+        run: yarn lint:example-form
+
+      - name: Storybook
+        run: yarn lint:storybook
+
       - name: Docs
         run: yarn lint:docs
 
