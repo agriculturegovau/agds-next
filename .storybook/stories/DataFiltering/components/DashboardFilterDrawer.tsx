@@ -33,7 +33,7 @@ export const DashboardFilterDrawer = ({
 		closeDrawer();
 	};
 
-	const onResetFiltersClick = () => {
+	const onClearFiltersClick = () => {
 		resetFilters();
 		setFormState({
 			assignee: undefined,
@@ -57,8 +57,8 @@ export const DashboardFilterDrawer = ({
 			actions={
 				<ButtonGroup>
 					<Button onClick={onApplyFiltersClick}>Apply filters</Button>
-					<Button variant="secondary" onClick={onResetFiltersClick}>
-						Reset filters
+					<Button variant="secondary" onClick={onClearFiltersClick}>
+						Clear filters
 					</Button>
 					<Button variant="tertiary" onClick={onCloseClick}>
 						Cancel

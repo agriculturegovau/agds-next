@@ -43,7 +43,7 @@ export const Basic: Story = {
 						<ButtonGroup>
 							<Button onClick={close}>Apply filters</Button>
 							<Button variant="secondary" onClick={close}>
-								Reset filters
+								Clear filters
 							</Button>
 							<Button variant="tertiary" onClick={close}>
 								Cancel
@@ -121,7 +121,7 @@ export const WithFieldsets: Story = {
 						<ButtonGroup>
 							<Button onClick={onApplyFiltersClick}>Apply filters</Button>
 							<Button variant="secondary" onClick={onResetFiltersClick}>
-								Reset filters
+								Clear filters
 							</Button>
 							<Button variant="tertiary" onClick={onCloseClick}>
 								Cancel
