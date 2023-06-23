@@ -1,11 +1,13 @@
-import { Stack } from '@ag.ds-next/react/box';
-import { ContentBleed, PageContent } from '@ag.ds-next/react/content';
+import { Stack } from '@ag.ds-next/react/stack';
+import { PageContent } from '@ag.ds-next/react/content';
 import { PaginationButtons } from '@ag.ds-next/react/pagination';
 import { Prose } from '@ag.ds-next/react/prose';
 import { Column, Columns } from '@ag.ds-next/react/columns';
 import { FormStack } from '@ag.ds-next/react/form-stack';
 import { DateRangePicker } from '@ag.ds-next/react/date-picker';
 import { SkipLinks } from '@ag.ds-next/react/skip-link';
+import { Flex } from '@ag.ds-next/react/flex';
+import { Text } from '@ag.ds-next/react/text';
 import { SortBySelect } from './components/SortBySelect';
 import { FilterSearchInput } from './components/FilterSearchInput';
 import { FilterStatusSelect } from './components/FilterStatusSelect';
@@ -16,6 +18,7 @@ import { FilterAssigneeSelect } from './components/FilterAssigneeSelect';
 import { DataList } from './components/DataList';
 import { FilterDestinationsSelect } from './components/FilterDestinationsSelect';
 import { FilterServicesSelect } from './components/FilterServicesSelect';
+import { FilterSidebar } from './components/FilterSidebar';
 
 type ListFilteringLargeProps = {
 	// sort
@@ -65,9 +68,9 @@ export const ListFilteringLarge = ({
 					</p>
 					<p>Here it is applied to a list of establishments.</p>
 				</Prose>
-				<Columns>
-					<Column columnSpan={{ xs: 12, md: 4, lg: 3 }}>
-						<ContentBleed visible={{ md: false }}>
+				<Columns gap={{ xs: 1, md: 3 }}>
+					<Column columnSpan={{ xs: 12, md: 4 }}>
+						<FilterSidebar>
 							<FormStack>
 								<FilterSearchInput
 									filters={filters}
@@ -120,7 +123,7 @@ export const ListFilteringLarge = ({
 									value={filters.requestDate}
 								/>
 							</FormStack>
-						</ContentBleed>
+						</FilterSidebar>
 					</Column>
 					<Column
 						as="main"
@@ -128,10 +131,26 @@ export const ListFilteringLarge = ({
 						tabIndex={-1}
 						css={{ '&:focus': { outline: 'none' } }}
 						columnSpan={{ xs: 12, md: 8 }}
-						columnStart={{ lg: 5 }}
 					>
-						<Stack gap={3}>
-							<SortBySelect sort={sort} setSort={setSort} />
+						<Stack gap={2}>
+							<Flex
+								flexDirection={{ xs: 'column', md: 'row' }}
+								justifyContent={{ xs: 'flex-start', md: 'space-between' }}
+								alignItems={{ xs: 'flex-start', md: 'flex-end' }}
+								gap={1.5}
+								borderBottom
+								paddingBottom={1}
+							>
+								<Text
+									fontSize={{
+										xs: 'sm',
+										md: 'lg',
+									}}
+								>
+									163 Items
+								</Text>
+								<SortBySelect sort={sort} setSort={setSort} />
+							</Flex>
 							<DataList data={data} loading={loading} />
 							{data.length ? (
 								<Stack>
