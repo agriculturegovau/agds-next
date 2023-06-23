@@ -7,6 +7,7 @@ import { LinkList } from '../link-list';
 import { SkipLinks } from '../skip-link';
 import { Text } from '../text';
 import { Prose } from '../prose';
+import { GlobalAlert } from '../global-alert';
 import { navigationItems } from './test-utils';
 import {
 	AppLayout,
@@ -120,4 +121,18 @@ export const Default: StoryObj<typeof AppLayout> = {
 
 export const FocusMode: StoryObj<typeof AppLayout> = {
 	args: { focusMode: true },
+};
+
+export const WithGlobalAlert: StoryObj<typeof AppLayout> = {
+	render: (args) => (
+		<Fragment>
+			<GlobalAlert onDismiss={console.log}>
+				<Text as="p">
+					This application will be down for maintenance on Sunday from 11am to
+					2pm.
+				</Text>
+			</GlobalAlert>
+			<AppLayoutTemplate {...args} />
+		</Fragment>
+	),
 };

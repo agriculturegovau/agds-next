@@ -1,56 +1,70 @@
 import { Meta } from '@storybook/react';
-import {
-	Accordion,
-	AccordionItem,
-	AccordionItemContent,
-} from '@ag.ds-next/react/accordion';
+import { Fragment } from 'react';
+import { Autocomplete } from '@ag.ds-next/react/autocomplete';
 import { Avatar } from '@ag.ds-next/react/avatar';
-import { Details } from '@ag.ds-next/react/details';
-import {
-	SearchBox,
-	SearchBoxButton,
-	SearchBoxInput,
-} from '@ag.ds-next/react/search-box';
-import { Divider } from '@ag.ds-next/react/divider';
-import { Flex } from '@ag.ds-next/react/flex';
-import { Stack } from '@ag.ds-next/react/stack';
+import { AvatarIcon } from '@ag.ds-next/react/icon';
+import { Box } from '@ag.ds-next/react/box';
 import { Breadcrumbs } from '@ag.ds-next/react/breadcrumbs';
 import { Button, ButtonGroup } from '@ag.ds-next/react/button';
 import { Callout } from '@ag.ds-next/react/callout';
 import { CallToActionLink } from '@ag.ds-next/react/call-to-action';
 import { Card, CardInner } from '@ag.ds-next/react/card';
-import { Columns, Column } from '@ag.ds-next/react/columns';
-import { PageContent } from '@ag.ds-next/react/content';
-import { Switch } from '@ag.ds-next/react/switch';
 import { Checkbox } from '@ag.ds-next/react/checkbox';
-import { Radio } from '@ag.ds-next/react/radio';
+import { Columns, Column } from '@ag.ds-next/react/columns';
+import { Combobox } from '@ag.ds-next/react/combobox';
 import { ControlGroup } from '@ag.ds-next/react/control-group';
+import { DatePicker } from '@ag.ds-next/react/date-picker';
+import { Details } from '@ag.ds-next/react/details';
 import { DirectionLink } from '@ag.ds-next/react/direction-link';
-import { Heading, H1, H2 } from '@ag.ds-next/react/heading';
-import { InpageNav } from '@ag.ds-next/react/inpage-nav';
-import { FormStack } from '@ag.ds-next/react/form-stack';
-import { FileUpload } from '@ag.ds-next/react/file-upload';
+import { Divider } from '@ag.ds-next/react/divider';
 import { FileInput } from '@ag.ds-next/react/file-input';
-import { ProgressIndicator } from '@ag.ds-next/react/progress-indicator';
-import { PageAlert } from '@ag.ds-next/react/page-alert';
-import { Select } from '@ag.ds-next/react/select';
-import { SubNav } from '@ag.ds-next/react/sub-nav';
-import { StatusBadge } from '@ag.ds-next/react/status-badge';
-import { NotificationBadge } from '@ag.ds-next/react/notification-badge';
+import { FileUpload } from '@ag.ds-next/react/file-upload';
+import { Flex } from '@ag.ds-next/react/flex';
+import { Footer, FooterDivider } from '@ag.ds-next/react/footer';
+import { FormStack } from '@ag.ds-next/react/form-stack';
+import { GlobalAlert } from '@ag.ds-next/react/global-alert';
+import { Header } from '@ag.ds-next/react/header';
+import { Heading, H1, H2 } from '@ag.ds-next/react/heading';
 import { IndicatorDot } from '@ag.ds-next/react/indicator-dot';
+import { InpageNav } from '@ag.ds-next/react/inpage-nav';
+import { LinkList } from '@ag.ds-next/react/link-list';
+import { Logo } from '@ag.ds-next/react/ag-branding';
+import { MainNav } from '@ag.ds-next/react/main-nav';
+import { NotificationBadge } from '@ag.ds-next/react/notification-badge';
+import { PageAlert } from '@ag.ds-next/react/page-alert';
+import { PageContent } from '@ag.ds-next/react/content';
+import { ProgressIndicator } from '@ag.ds-next/react/progress-indicator';
+import { Prose } from '@ag.ds-next/react/prose';
+import { Radio } from '@ag.ds-next/react/radio';
+import { SearchInput } from '@ag.ds-next/react/search-input';
+import { Select } from '@ag.ds-next/react/select';
 import { SideNav } from '@ag.ds-next/react/side-nav';
+import { SkeletonHeading, SkeletonText } from '@ag.ds-next/react/skeleton';
+import { Stack } from '@ag.ds-next/react/stack';
+import { StatusBadge } from '@ag.ds-next/react/status-badge';
+import { SubNav } from '@ag.ds-next/react/sub-nav';
+import { Switch } from '@ag.ds-next/react/switch';
 import { Text } from '@ag.ds-next/react/text';
 import { Textarea } from '@ag.ds-next/react/textarea';
 import { TextInput } from '@ag.ds-next/react/text-input';
-import { DatePicker } from '@ag.ds-next/react/date-picker';
+import { TextLink } from '@ag.ds-next/react/text-link';
+import { tokens } from '@ag.ds-next/react/core';
+import {
+	Accordion,
+	AccordionItem,
+	AccordionItemContent,
+} from '@ag.ds-next/react/accordion';
+import {
+	SearchBox,
+	SearchBoxButton,
+	SearchBoxInput,
+} from '@ag.ds-next/react/search-box';
 import {
 	HeroBanner,
 	HeroBannerSubtitle,
 	HeroBannerTitle,
 	HeroBannerTitleContainer,
 } from '@ag.ds-next/react/hero-banner';
-import { Prose } from '@ag.ds-next/react/prose';
-import { SkeletonHeading, SkeletonText } from '@ag.ds-next/react/skeleton';
 import {
 	Table,
 	TableCaption,
@@ -59,23 +73,23 @@ import {
 	TableHead,
 	TableBody,
 } from '@ag.ds-next/react/table';
-import { TextLink } from '@ag.ds-next/react/text-link';
-import { Autocomplete } from '@ag.ds-next/react/src/autocomplete/Autocomplete';
-import { Combobox } from '@ag.ds-next/react/src/combobox';
 import {
 	SummaryList,
 	SummaryListItem,
 	SummaryListItemDescription,
 	SummaryListItemTerm,
 } from '@ag.ds-next/react/summary-list';
-import { SearchInput } from '@ag.ds-next/react/search-input';
-import { PageTemplate } from '../components/PageTemplate';
 import { COUNTRY_OPTIONS } from '../../docs/components/designSystemComponents';
+import { SiteLayout } from '../../docs/content/templates/__shared/SiteLayout';
+import { AppLayout } from '../../docs/content/templates/__shared/AppLayout';
 
 const meta: Meta = {
 	title: 'Testing/Kitchen sink',
 	parameters: {
 		layout: 'fullscreen',
+	},
+	args: {
+		background: 'body',
 	},
 	argTypes: {
 		background: {
@@ -119,14 +133,12 @@ const backgroundMapper = {
 	},
 } as const;
 
-export const KitchenSink = ({
-	background,
-}: {
-	background: 'body' | 'bodyAlt';
-}) => {
+type KitchenSinkProps = { background: 'body' | 'bodyAlt' };
+
+function KitchenSink({ background }: KitchenSinkProps) {
 	const { page, shade, opposite } = backgroundMapper[background];
 	return (
-		<PageTemplate background={page}>
+		<Fragment>
 			<HeroBanner background={opposite}>
 				<HeroBannerTitleContainer>
 					<HeroBannerTitle>
@@ -143,7 +155,6 @@ export const KitchenSink = ({
 					</SearchBoxButton>
 				</SearchBox>
 			</HeroBanner>
-
 			<PageContent>
 				<Columns>
 					<Column columnSpan={{ xs: 12, md: 4 }}>
@@ -518,10 +529,42 @@ export const KitchenSink = ({
 					</Column>
 				</Columns>
 			</PageContent>
-		</PageTemplate>
+		</Fragment>
 	);
+}
+
+export const WesbsiteLayout = {
+	name: 'Website layout',
+	render: (args: KitchenSinkProps) => (
+		<Fragment>
+			<GlobalAlert onDismiss={console.log}>
+				<Text as="p">
+					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce massa
+					nibh, aliquam vel dolor non, gravida porttitor nulla. Pellentesque
+					cursus orci vulputate nibh sagittis blandit.
+				</Text>
+			</GlobalAlert>
+			<SiteLayout>
+				<KitchenSink {...args} />
+			</SiteLayout>
+		</Fragment>
+	),
 };
-KitchenSink.storyName = 'Kitchen sink';
-KitchenSink.args = {
-	background: 'body',
+
+export const ApplicationLayout = {
+	name: 'Application layout',
+	render: (args: KitchenSinkProps) => (
+		<Fragment>
+			<GlobalAlert onDismiss={console.log}>
+				<Text as="p">
+					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce massa
+					nibh, aliquam vel dolor non, gravida porttitor nulla. Pellentesque
+					cursus orci vulputate nibh sagittis blandit.
+				</Text>
+			</GlobalAlert>
+			<AppLayout>
+				<KitchenSink {...args} />
+			</AppLayout>
+		</Fragment>
+	),
 };
