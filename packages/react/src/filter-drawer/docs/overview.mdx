@@ -21,7 +21,7 @@ relatedComponents: ['modal']
 					<ButtonGroup>
 						<Button onClick={closeFilterDrawer}>Apply filters</Button>
 						<Button variant="secondary" onClick={closeFilterDrawer}>
-							Reset filters
+							Clear filters
 						</Button>
 						<Button variant="tertiary" onClick={closeFilterDrawer}>
 							Cancel
@@ -74,6 +74,6 @@ When closing the Filter drawer, focus should be returned to the button that open
 The Filter drawer component should contain a total of 4 actions:
 
 1. **"Apply filters" button**: When a user presses the "Apply filters" button, filters should be applied and the Filter drawer should be closed.
-2. **"Reset filters" button**: When a user presses the "Apply filters" button, filters should be reset to their original state. The Filter drawer should stay open.
+2. **"Clear filters" button**: When a user presses the "Clear filters" button, filters should be cleared and reset to their original state. The Filter drawer should stay open.
 3. **"Close" button**: When a user presses the "Close" button, the Filter drawer should close. Any changes that have been made since opening the Filter drawer should be discarded. This is essentially the same as the "Cancel" button.
 4. **"Cancel" button**: When a user presses the "Cancel" button, the Filter drawer should close. Any changes that have been made since opening the Filter drawer should be discarded. This is essentially the same as the "Close" button.

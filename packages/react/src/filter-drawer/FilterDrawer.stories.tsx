@@ -43,7 +43,7 @@ export const Basic: Story = {
 						<ButtonGroup>
 							<Button onClick={close}>Apply filters</Button>
 							<Button variant="secondary" onClick={close}>
-								Reset filters
+								Clear filters
 							</Button>
 							<Button variant="tertiary" onClick={close}>
 								Cancel
@@ -100,7 +100,7 @@ export const WithFieldsets: Story = {
 			closeDrawer();
 		};
 
-		const onResetFiltersClick = () => {
+		const onClearFiltersClick = () => {
 			setFormState(initialFilterState);
 			setFilters(initialFilterState);
 		};
@@ -120,8 +120,8 @@ export const WithFieldsets: Story = {
 					actions={
 						<ButtonGroup>
 							<Button onClick={onApplyFiltersClick}>Apply filters</Button>
-							<Button variant="secondary" onClick={onResetFiltersClick}>
-								Reset filters
+							<Button variant="secondary" onClick={onClearFiltersClick}>
+								Clear filters
 							</Button>
 							<Button variant="tertiary" onClick={onCloseClick}>
 								Cancel
