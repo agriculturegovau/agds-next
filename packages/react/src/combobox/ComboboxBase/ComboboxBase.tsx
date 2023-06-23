@@ -77,7 +77,6 @@ export function ComboboxBase<Option extends DefaultComboboxOption>({
 		matchReferenceWidth: true,
 		maxHeight: 295,
 	});
-
 	const popoverProps = popover.getPopoverProps();
 	const comboboxPopoverMenuProps = combobox.getMenuProps({
 		...popoverProps,

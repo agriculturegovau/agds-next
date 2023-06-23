@@ -91,8 +91,7 @@ export const DatePicker = ({
 }: DatePickerProps) => {
 	const [isCalendarOpen, openCalendar, closeCalendar] = useTernaryState(false);
 
-	// Popover state
-	const popper = usePopover();
+	const popover = usePopover();
 
 	const onSelect = useCallback<SelectSingleEventHandler>(
 		(_, selectedDay, modifiers) => {
@@ -142,7 +141,7 @@ export const DatePicker = ({
 		if (isCalendarOpen) closeCalendar();
 	}, [isCalendarOpen, closeCalendar]);
 
-	useClickOutside(popper.popoverRef, handleClickOutside);
+	useClickOutside(popover.popoverRef, handleClickOutside);
 
 	// Close the calendar when the user presses the escape key
 	useEffect(() => {
@@ -169,7 +168,7 @@ export const DatePicker = ({
 	const valueAsDateOrUndefined = typeof value === 'string' ? undefined : value;
 
 	return (
-		<div {...popper.getReferenceProps()}>
+		<div {...popover.getReferenceProps()}>
 			<DateInput
 				{...props}
 				maxWidth={maxWidth}
@@ -180,7 +179,7 @@ export const DatePicker = ({
 				buttonOnClick={openCalendar}
 			/>
 			{isCalendarOpen && (
-				<Popover {...popper.getPopoverProps()}>
+				<Popover {...popover.getPopoverProps()}>
 					<CalendarSingle
 						initialFocus
 						selected={valueAsDateOrUndefined}

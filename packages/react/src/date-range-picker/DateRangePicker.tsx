@@ -125,8 +125,7 @@ export const DateRangePicker = ({
 		openCalendar();
 	}, [openCalendar]);
 
-	// Popover state
-	const popper = usePopover();
+	const popover = usePopover();
 
 	const valueAsDateOrUndefined = useMemo(
 		() => ({
@@ -240,7 +239,7 @@ export const DateRangePicker = ({
 		if (isCalendarOpen) closeCalendar();
 	}, [isCalendarOpen, closeCalendar]);
 
-	useClickOutside(popper.popoverRef, handleClickOutside);
+	useClickOutside(popover.popoverRef, handleClickOutside);
 
 	// Close the calendar when the user presses the escape key
 	useEffect(() => {
@@ -303,7 +302,7 @@ export const DateRangePicker = ({
 					{message && invalid ? (
 						<FieldMessage id={messageId}>{message}</FieldMessage>
 					) : null}
-					<Flex {...popper.getReferenceProps()} flexWrap="wrap" inline gap={1}>
+					<Flex {...popover.getReferenceProps()} flexWrap="wrap" inline gap={1}>
 						<DateInput
 							ref={fromInputRef}
 							label={fromLabel}
@@ -331,7 +330,7 @@ export const DateRangePicker = ({
 					</Flex>
 				</Stack>
 				{isCalendarOpen && (
-					<Popover {...popper.getPopoverProps()}>
+					<Popover {...popover.getPopoverProps()}>
 						<CalendarRange
 							initialFocus
 							defaultMonth={valueAsDateOrUndefined.from}
