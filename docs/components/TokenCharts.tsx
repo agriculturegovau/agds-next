@@ -30,9 +30,15 @@ export const BorderWidthChart = () => {
 				([token, value]) => {
 					const label = `${token} (${value}px)`;
 					return (
-						<Box key={token} padding={0.5} border borderWidth={token}>
-							<Text>{label}</Text>
-						</Box>
+						<Flex
+							key={token}
+							alignItems="center"
+							padding={0.5}
+							border
+							borderWidth={token}
+						>
+							{label}
+						</Flex>
 					);
 				}
 			)}
