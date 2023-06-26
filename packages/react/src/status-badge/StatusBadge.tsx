@@ -6,7 +6,7 @@ import { SuccessIcon, AlertIcon, InfoIcon, WarningIcon } from '../icon';
 import { Text } from '../text';
 
 export type StatusBadgeProps = {
-	/** The weight of the badge to apply. */
+	/** The visual weight to apply. */
 	weight?: StatusBadgeWeight;
 	/** The status that is printed in the text label. */
 	label: ReactNode;
