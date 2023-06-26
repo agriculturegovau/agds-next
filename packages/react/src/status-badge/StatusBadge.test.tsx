@@ -14,7 +14,7 @@ function renderStatusBadge(props: StatusBadgeProps) {
 	return render(<StatusBadge {...props} />);
 }
 
-const weight: StatusBadgeWeight[] = ['subtle', 'regular'];
+const weights: StatusBadgeWeight[] = ['subtle', 'regular'];
 
 const tones: StatusBadgeTone[] = [
 	'error',
@@ -25,7 +25,7 @@ const tones: StatusBadgeTone[] = [
 ];
 
 describe('StatusBadge', () => {
-	weight.forEach((weight) => {
+	weights.forEach((weight) => {
 		describe(`weight: ${weight}`, () => {
 			tones.forEach((tone) => {
 				describe(`tone: ${tone}`, () => {
