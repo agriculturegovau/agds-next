@@ -32,8 +32,8 @@ export function FilterDrawerDialog({
 				flexDirection="column"
 				role="dialog"
 				aria-modal="true"
-				aria-labelledby={titleId}
 				background="body"
+				aria-labelledby={titleId}
 				maxWidth="32rem"
 				css={{
 					position: 'fixed',
@@ -59,12 +59,12 @@ export function FilterDrawerDialog({
 					iconAfter={CloseIcon}
 					css={mq({
 						position: 'fixed',
+						zIndex: tokens.zIndex.elevated,
 						top: '1.25rem', // align with title
 						right: mapResponsiveProp({
 							xs: mapSpacing(0.75),
 							md: mapSpacing(1.5),
 						}),
-						zIndex: tokens.zIndex.elevated,
 					})}
 				>
 					Close
@@ -157,11 +157,7 @@ function FilterDrawerFooter({ children }: FilterDrawerFooterProps) {
 			borderTop
 			paddingX={{ xs: 0.75, md: 1.5 }}
 			paddingY={1}
-			css={{
-				position: 'relative',
-				marginTop: 'auto',
-				zIndex: tokens.zIndex.elevated,
-			}}
+			css={{ marginTop: 'auto' }}
 		>
 			{children}
 		</Box>

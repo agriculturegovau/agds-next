@@ -47,7 +47,7 @@ exports[`FilterDrawer renders correctly 1`] = `
           </p>
         </div>
         <div
-          class="css-12edmau-boxStyles-FilterDrawerFooter"
+          class="css-1lcrni6-boxStyles-FilterDrawerFooter"
         >
           <button
             class="css-3jmmp1-BaseButton-Button"
@@ -66,7 +66,7 @@ exports[`FilterDrawer renders correctly 1`] = `
           </button>
         </div>
         <button
-          class="css-ajuhn4-BaseButton-FilterDrawerDialog"
+          class="css-1vsr4nb-BaseButton-FilterDrawerDialog"
           type="button"
         >
           <span>
