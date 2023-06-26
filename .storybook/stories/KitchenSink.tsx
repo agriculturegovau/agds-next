@@ -424,6 +424,14 @@ function KitchenSink({ background }: KitchenSinkProps) {
 								<StatusBadge tone="neutral" label="Draft" />
 							</Flex>
 
+							<Flex gap={0.5} flexWrap="wrap">
+								<StatusBadge weight="subtle" tone="info" label="In progress" />
+								<StatusBadge weight="subtle" tone="success" label="Resolved" />
+								<StatusBadge weight="subtle" tone="error" label="Rejected" />
+								<StatusBadge weight="subtle" tone="warning" label="Attention" />
+								<StatusBadge weight="subtle" tone="neutral" label="Draft" />
+							</Flex>
+
 							<Flex gap={0.5}>
 								<NotificationBadge tone="neutral" value={16} />
 								<NotificationBadge tone="action" value={8} />

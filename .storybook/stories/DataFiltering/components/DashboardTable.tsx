@@ -201,7 +201,10 @@ export const DashboardTable = forwardRef<HTMLTableElement, DashboardTableProps>(
 													{format(requestDate, 'dd/MM/yyyy')}
 												</TableCell>
 												<TableCell>
-													<StatusBadge {...STATUS_MAP[status]} />
+													<StatusBadge
+														weight="subtle"
+														{...STATUS_MAP[status]}
+													/>
 												</TableCell>
 											</tr>
 										);
