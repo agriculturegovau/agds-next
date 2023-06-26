@@ -2,4 +2,4 @@
 '@ag.ds-next/react': minor
 ---
 
-core: Replace dependency `react-popper` with `floating-ui`
+Upgraded popover positioning dependency from React Popper to Floating UI
