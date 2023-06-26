@@ -62,7 +62,7 @@ exports[`AppLayout renders correctly 1`] = `
           </div>
         </a>
         <a
-          class="css-1kt9evn-boxStyles-AppLayoutHeaderAccount"
+          class="css-32sbo0-boxStyles-AppLayoutHeaderAccount"
           href="/account/preferences"
         >
           <div
@@ -88,7 +88,7 @@ exports[`AppLayout renders correctly 1`] = `
         </a>
       </div>
       <div
-        class="css-wbnnm8-boxStyles-AppLayoutHeaderNav"
+        class="css-1sjsayx-boxStyles-AppLayoutHeaderNav"
       >
         <button
           class="css-lha977-BaseButton-boxStyles-AppLayoutHeaderNavMenuButton"
@@ -120,7 +120,7 @@ exports[`AppLayout renders correctly 1`] = `
           </span>
         </button>
         <a
-          class="css-9flucs-boxStyles-AppLayoutHeaderAccount"
+          class="css-1p8slii-boxStyles-AppLayoutHeaderAccount"
           href="/account/preferences"
         >
           <div
