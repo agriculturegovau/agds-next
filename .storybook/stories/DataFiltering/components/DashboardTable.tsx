@@ -197,7 +197,7 @@ export const DashboardTable = forwardRef<HTMLTableElement, DashboardTableProps>(
 												<TableCell>
 													{city}, {state}
 												</TableCell>
-												<TableCell textAlign="right">
+												<TableCell>
 													{format(requestDate, 'dd/MM/yyyy')}
 												</TableCell>
 												<TableCell>
