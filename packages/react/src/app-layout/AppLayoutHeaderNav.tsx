@@ -6,6 +6,7 @@ import { BaseButton } from '../button';
 import { AppLayoutHeaderProps } from './AppLayoutHeader';
 import { AppLayoutHeaderAccount } from './AppLayoutHeaderAccount';
 import { useAppLayoutContext } from './AppLayoutContext';
+import { appLayoutTwoColumnBreakpoint } from './AppLayoutSidebar';
 
 export type AppLayoutHeaderNavProps = {
 	accountDetails: AppLayoutHeaderProps['accountDetails'];
@@ -18,7 +19,7 @@ export function AppLayoutHeaderNav({
 	return (
 		<Fragment>
 			<Flex
-				display={{ xs: 'flex', lg: 'none' }}
+				display={{ xs: 'flex', [appLayoutTwoColumnBreakpoint]: 'none' }}
 				background="body"
 				alignItems="center"
 				justifyContent={focusMode ? 'flex-end' : 'space-between'}
@@ -36,7 +37,7 @@ export function AppLayoutHeaderNav({
 				) : null}
 				{accountDetails ? (
 					<AppLayoutHeaderAccount
-						display={{ xs: 'flex', lg: 'none' }}
+						display={{ xs: 'flex', [appLayoutTwoColumnBreakpoint]: 'none' }}
 						{...accountDetails}
 					/>
 				) : null}

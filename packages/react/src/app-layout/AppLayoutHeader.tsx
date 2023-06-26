@@ -68,7 +68,7 @@ export function AppLayoutHeader({
 				/>
 				{accountDetails ? (
 					<AppLayoutHeaderAccount
-						display={{ xs: 'none', lg: 'flex' }}
+						display={{ xs: 'none', [appLayoutTwoColumnBreakpoint]: 'flex' }}
 						{...accountDetails}
 					/>
 				) : null}
