@@ -8,6 +8,7 @@ import { SkipLinks } from '../skip-link';
 import { Text } from '../text';
 import { Prose } from '../prose';
 import { GlobalAlert } from '../global-alert';
+import { CardListStory } from '../card/Card.stories';
 import { navigationItems } from './test-utils';
 import {
 	AppLayout,
@@ -19,7 +20,12 @@ import {
 	AppLayoutFooterDivider,
 } from './index';
 
-function AppLayoutTemplate({ focusMode }: AppLayoutProps) {
+function AppLayoutTemplate({
+	focusMode = false,
+	children,
+}: AppLayoutProps & {
+	children: React.ReactNode;
+}) {
 	const year = useMemo(() => new Date().getFullYear(), []);
 	return (
 		<Fragment>
@@ -45,26 +51,7 @@ function AppLayoutTemplate({ focusMode }: AppLayoutProps) {
 						tabIndex={-1}
 						css={{ '&:focus': { outline: 'none' } }}
 					>
-						<PageContent>
-							<Prose>
-								<h2>Content heading</h2>
-								<p>See Template stories for more in context examples</p>
-								<p>
-									Etiam porta sem malesuada magna mollis euismod. Maecenas
-									faucibus mollis interdum. Aenean lacinia bibendum nulla sed
-									consectetur. Aenean eu leo quam. Pellentesque ornare sem
-									lacinia quam venenatis vestibulum. Donec ullamcorper nulla non
-									metus auctor fringilla.
-								</p>
-								<p>
-									Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor
-									auctor. Cras justo odio, dapibus ac facilisis in, egestas eget
-									quam. Donec sed odio dui. Maecenas sed diam eget risus varius
-									blandit sit amet non magna. Nullam id dolor id nibh ultricies
-									vehicula ut id elit.
-								</p>
-							</Prose>
-						</PageContent>
+						{children}
 					</main>
 					<AppLayoutFooter>
 						<nav aria-label="footer">
@@ -104,13 +91,39 @@ function AppLayoutTemplate({ focusMode }: AppLayoutProps) {
 	);
 }
 
+function AppLayoutBasicExample(args: AppLayoutProps) {
+	return (
+		<AppLayoutTemplate {...args}>
+			<PageContent>
+				<Prose>
+					<h2>Content heading</h2>
+					<p>See Template stories for more in context examples</p>
+					<p>
+						Etiam porta sem malesuada magna mollis euismod. Maecenas faucibus
+						mollis interdum. Aenean lacinia bibendum nulla sed consectetur.
+						Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis
+						vestibulum. Donec ullamcorper nulla non metus auctor fringilla.
+					</p>
+					<p>
+						Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor
+						auctor. Cras justo odio, dapibus ac facilisis in, egestas eget quam.
+						Donec sed odio dui. Maecenas sed diam eget risus varius blandit sit
+						amet non magna. Nullam id dolor id nibh ultricies vehicula ut id
+						elit.
+					</p>
+				</Prose>
+			</PageContent>
+		</AppLayoutTemplate>
+	);
+}
+
 const meta: Meta<typeof AppLayout> = {
 	title: 'Layout/AppLayout',
 	parameters: {
 		layout: 'fullscreen',
 	},
 	component: AppLayout,
-	render: AppLayoutTemplate,
+	render: AppLayoutBasicExample,
 };
 
 export default meta;
@@ -132,7 +145,17 @@ export const WithGlobalAlert: StoryObj<typeof AppLayout> = {
 					2pm.
 				</Text>
 			</GlobalAlert>
-			<AppLayoutTemplate {...args} />
+			<AppLayoutBasicExample {...args} />
 		</Fragment>
 	),
+};
+
+export const CardExample: StoryObj<typeof AppLayout> = {
+	render: (args) => {
+		return (
+			<AppLayoutTemplate {...args}>
+				<CardListStory />
+			</AppLayoutTemplate>
+		);
+	},
 };
