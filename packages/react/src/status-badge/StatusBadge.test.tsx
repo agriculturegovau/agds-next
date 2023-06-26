@@ -1,13 +1,20 @@
 import '@testing-library/jest-dom';
 import 'html-validate/jest';
 import { cleanup, render } from '../../../../test-utils';
-import { StatusBadge, StatusBadgeProps, StatusBadgeTone } from './StatusBadge';
+import {
+	StatusBadge,
+	StatusBadgeProps,
+	StatusBadgeTone,
+	StatusBadgeWeight,
+} from './StatusBadge';
 
 afterEach(cleanup);
 
 function renderStatusBadge(props: StatusBadgeProps) {
 	return render(<StatusBadge {...props} />);
 }
+
+const weight: StatusBadgeWeight[] = ['subtle', 'regular'];
 
 const tones: StatusBadgeTone[] = [
 	'error',
@@ -18,17 +25,29 @@ const tones: StatusBadgeTone[] = [
 ];
 
 describe('StatusBadge', () => {
-	tones.forEach((tone) => {
-		describe(`tone: ${tone}`, () => {
-			it('renders correctly', () => {
-				const { container } = renderStatusBadge({ tone, label: `Example` });
-				expect(container).toMatchSnapshot();
-			});
+	weight.forEach((weight) => {
+		describe(`weight: ${weight}`, () => {
+			tones.forEach((tone) => {
+				describe(`tone: ${tone}`, () => {
+					it('renders correctly', () => {
+						const { container } = renderStatusBadge({
+							weight,
+							tone,
+							label: `Example`,
+						});
+						expect(container).toMatchSnapshot();
+					});
 
-			it('renders a valid HTML structure', () => {
-				const { container } = renderStatusBadge({ tone, label: `Example` });
-				expect(container).toHTMLValidate({
-					extends: ['html-validate:recommended'],
+					it('renders a valid HTML structure', () => {
+						const { container } = renderStatusBadge({
+							weight,
+							tone,
+							label: `Example`,
+						});
+						expect(container).toHTMLValidate({
+							extends: ['html-validate:recommended'],
+						});
+					});
 				});
 			});
 		});
