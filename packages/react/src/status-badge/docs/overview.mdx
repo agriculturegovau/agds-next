@@ -11,6 +11,7 @@ relatedComponents: ['notification-badge', 'indicator-dot', 'tags']
 
 - use to indicate the status of a task or process
 - use to help users differentiate between multiple statuses
+- apply the `subtle` weight in tables to reduce visual emphasis and overall height of the parent component
 
 <DontHeading />
 
@@ -31,5 +32,19 @@ The five supported tones are `info`, `success`, `error`, `warning` and `neutral`
 	<StatusBadge tone="error" label="Rejected" />
 	<StatusBadge tone="warning" label="Attention" />
 	<StatusBadge tone="neutral" label="Draft" />
+</Flex>
+```
+
+## Weight
+
+Apply the `subtle` weight in tables to reduce visual emphasis and overall height of the parent component.
+
+```jsx live
+<Flex flexWrap="wrap" gap={2}>
+	<StatusBadge weight="subtle" tone="info" label="In progress" />
+	<StatusBadge weight="subtle" tone="success" label="Resolved" />
+	<StatusBadge weight="subtle" tone="error" label="Rejected" />
+	<StatusBadge weight="subtle" tone="warning" label="Attention" />
+	<StatusBadge weight="subtle" tone="neutral" label="Draft" />
 </Flex>
 ```

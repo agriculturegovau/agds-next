@@ -1,32 +1,41 @@
 import { ReactNode } from 'react';
 import { Box } from '../box';
 import { Flex } from '../flex';
-import { boxPalette, mapSpacing } from '../core';
+import { boxPalette, mapSpacing, tokens } from '../core';
 import { SuccessIcon, AlertIcon, InfoIcon, WarningIcon } from '../icon';
 import { Text } from '../text';
 
 export type StatusBadgeProps = {
+	/** The visual weight to apply. */
+	weight?: StatusBadgeWeight;
 	/** The status that is printed in the text label. */
 	label: ReactNode;
-	/** The colour tone to apply. */
+	/** The color tone to apply. */
 	tone: StatusBadgeTone;
 };
 
-export const StatusBadge = ({ label, tone }: StatusBadgeProps) => {
+export const StatusBadge = ({
+	label,
+	weight = 'regular',
+	tone,
+}: StatusBadgeProps) => {
 	const { borderColor, icon: Icon } = toneMap[tone];
 	return (
 		<Flex
 			display="inline-flex"
 			alignItems="center"
 			gap={0.5}
-			height={height}
-			paddingX={0.75}
-			background="body"
-			border
 			css={{
-				overflow: 'hidden',
-				borderRadius,
-				borderColor,
+				...(weight === 'regular' && {
+					height,
+					background: boxPalette.backgroundBody,
+					borderWidth: tokens.borderWidth.sm,
+					borderStyle: 'solid',
+					borderColor,
+					borderRadius,
+					paddingLeft: mapSpacing(1),
+					paddingRight: mapSpacing(1),
+				}),
 				'& svg': {
 					flexShrink: 0,
 					width: iconWidth,
@@ -87,3 +96,5 @@ const toneMap = {
 		icon: () => <WarningIcon color="warning" />,
 	},
 } as const;
+
+export type StatusBadgeWeight = 'subtle' | 'regular';

@@ -27,8 +27,24 @@ export const Info: Story = {
 	},
 };
 
+export const InfoSubtle: Story = {
+	args: {
+		weight: 'subtle',
+		tone: 'info',
+		label: 'Resolved',
+	},
+};
+
 export const Success: Story = {
 	args: {
+		tone: 'success',
+		label: 'Resolved',
+	},
+};
+
+export const SuccessSubtle: Story = {
+	args: {
+		weight: 'subtle',
 		tone: 'success',
 		label: 'Resolved',
 	},
@@ -41,6 +57,14 @@ export const Error: Story = {
 	},
 };
 
+export const ErrorSubtle: Story = {
+	args: {
+		weight: 'subtle',
+		tone: 'error',
+		label: 'Rejected',
+	},
+};
+
 export const Warning: Story = {
 	args: {
 		tone: 'warning',
@@ -48,8 +72,24 @@ export const Warning: Story = {
 	},
 };
 
+export const WarningSubtle: Story = {
+	args: {
+		weight: 'subtle',
+		tone: 'warning',
+		label: 'Attention',
+	},
+};
+
 export const Neutral: Story = {
 	args: {
+		tone: 'neutral',
+		label: 'Draft',
+	},
+};
+
+export const NeutralSubtle: Story = {
+	args: {
+		weight: 'subtle',
 		tone: 'neutral',
 		label: 'Draft',
 	},
@@ -110,7 +150,11 @@ export const InTable = () => {
 							<TableCell>{businessName}</TableCell>
 							<TableCell>{type}</TableCell>
 							<TableCell>
-								<StatusBadge tone={toneMapper[status]} label={status} />
+								<StatusBadge
+									weight="subtle"
+									tone={toneMapper[status]}
+									label={status}
+								/>
 							</TableCell>
 							<TableCell>
 								<TextLink href={`#${id}`}>
