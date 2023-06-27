@@ -2,4 +2,4 @@
 '@ag.ds-next/react': patch
 ---
 
-icon: Add `FactoryIcon`
+icon: Added `FactoryIcon`
