@@ -3,7 +3,7 @@ import { boxPalette, tokens } from '../core';
 import { AppLayoutHeaderBrand } from './AppLayoutHeaderBrand';
 import { AppLayoutHeaderAccount } from './AppLayoutHeaderAccount';
 import { AppLayoutHeaderNav } from './AppLayoutHeaderNav';
-import { appLayoutTwoColumnBreakpoint } from './AppLayoutSidebar';
+import { APP_LAYOUT_DESKTOP_BREAKPOINT } from './utils';
 
 export type AppLayoutHeaderProps = {
 	/** Defines an identifier (ID) which must be unique. */
@@ -45,7 +45,7 @@ export function AppLayoutHeader({
 				borderBottomWidth: tokens.borderWidth.xxl,
 				borderBottomStyle: 'solid',
 				borderColor: boxPalette.accent,
-				[tokens.mediaQuery.min[appLayoutTwoColumnBreakpoint]]: {
+				[tokens.mediaQuery.min[APP_LAYOUT_DESKTOP_BREAKPOINT]]: {
 					gridColumnStart: 1,
 					gridColumnEnd: 3,
 				},
@@ -68,7 +68,7 @@ export function AppLayoutHeader({
 				/>
 				{accountDetails ? (
 					<AppLayoutHeaderAccount
-						display={{ xs: 'none', [appLayoutTwoColumnBreakpoint]: 'flex' }}
+						display={{ xs: 'none', [APP_LAYOUT_DESKTOP_BREAKPOINT]: 'flex' }}
 						{...accountDetails}
 					/>
 				) : null}

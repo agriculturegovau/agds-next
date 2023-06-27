@@ -4,6 +4,7 @@ import { Stack } from '../stack';
 import { AppLayoutSidebarNav, NavItem } from './AppLayoutSidebarNav';
 import { useAppLayoutContext } from './AppLayoutContext';
 import { AppLayoutSidebarDialog } from './AppLayoutSidebarDialog';
+import { APP_LAYOUT_DESKTOP_BREAKPOINT } from './utils';
 
 export type AppLayoutSidebarProps = {
 	/** Used for highlighting the active element. */
@@ -27,7 +28,7 @@ export function AppLayoutSidebar({ activePath, items }: AppLayoutSidebarProps) {
 				css={{
 					display: 'none',
 					width: tokens.maxWidth.mobileMenu,
-					[tokens.mediaQuery.min[appLayoutTwoColumnBreakpoint]]: {
+					[tokens.mediaQuery.min[APP_LAYOUT_DESKTOP_BREAKPOINT]]: {
 						display: focusMode ? 'none' : 'flex',
 					},
 				}}
@@ -45,6 +46,3 @@ export function AppLayoutSidebar({ activePath, items }: AppLayoutSidebarProps) {
 		</Fragment>
 	);
 }
-
-// The breakpoint where we show the sidebar in a two column layout
-export const appLayoutTwoColumnBreakpoint = 'xl';
