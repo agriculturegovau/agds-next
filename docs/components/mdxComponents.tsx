@@ -166,10 +166,12 @@ export const mdxComponents: MDXRemoteProps['components'] = {
 	TextLink,
 	AllIconsPlayground,
 	BackToTop: () => (
-		<div className={proseBlockClassname}>
-			<DirectionLink direction="up" href="#main-content">
-				Back to top
-			</DirectionLink>
-		</div>
+		<DirectionLink
+			direction="up"
+			href="#main-content"
+			className={proseBlockClassname}
+		>
+			Back to top
+		</DirectionLink>
 	),
 };

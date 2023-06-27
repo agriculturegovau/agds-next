@@ -8,45 +8,31 @@ order: 5
 
 Break up legal declarations into separate paragraphs and consent checkboxes.
 
-It’s easier for users to read and confirm their acceptance of the statements we provide.
-
-### Example
-
-For more information, see [Legal guidance in How to create guidance in the Export Service](/guides/how-to-write-guidance/how-to-present-guidance#legal-guidance).
+It’s easier for users to read and confirm their acceptance of the statements we provide. For more information, see our Legal guidance in [How to create guidance in the Export Service](/guides/how-to-write-guidance/how-to-present-guidance#legal-guidance).
 
 <BackToTop />
 
-## Error messages
+## Error pages
 
-You can use the following content patterns for common error messages in the Export Service.
+You can use the following content patterns for common error pages in the Export Service.
 
-### Not found (404)
+### Page not found (404)
 
-You can use [this error message content](/storybook/index.html?path=/story/templates-error-page--not-found) if a user tries to access a page that doesn’t exist.
+Use the [Page not found (404)](/storybook/index.html?path=/story/templates-error-page--not-found) error page content if a user tries to access a page that doesn’t exist or a broken link.
 
 ### Planned maintenance (503)
 
-You can use [this error message content](/storybook/index.html?path=/story/templates-error-page--maintenance) if the Export Service is unavailable because of planned maintenance.
+Use the [Planned maintenance (503)](/storybook/index.html?path=/story/templates-error-page--maintenance) error page content if the Export Service is unavailable because of planned system maintenance.
 
-### Service unavailable (500)
+### Internal server error (500)
 
-You can use [this error message content](/storybook/index.html?path=/story/templates-error-page--server-error) if the Export Service is unavailable because of an internal service error or outage.
+Use the [Internal server error (500)](/storybook/index.html?path=/story/templates-error-page--server-error) error page content if the Export Service is unavailable due to an internal service error or outage.
 
 ### Third party outage (503)
 
-You can use [this error message content](/storybook/index.html?path=/story/templates-error-page--third-party) (or a variation of it) if a third-party provider experiences a system outage and their service is unavailable. For example, Digital Identity or Relationship Authorisation Manager (RAM).
+Use the [Third party outage (503)](/storybook/index.html?path=/story/templates-error-page--third-party) error page content (or a variation of it) if a third-party provider experiences a system outage and their service is unavailable. For example, Digital Identity or Relationship Authorisation Manager (RAM).
 
-If the outage is scheduled, you can use the [scheduled maintenance error message content](/storybook/index.html?path=/story/templates-error-page--third-party).
-
-### More information
-
-For more information on error messages, see:
-
-- [Field](/components/fields)
-- [File input](/components/file-input) and [Text input](/components/text-input)
-- [Global alert](/components/global-alert)
-- [Page alert](/components/page-alert)
-- [Microcopy](/content/content-styles#microcopy)
+If the outage is planned, you can use the [Scheduled third party outage (503)](/storybook/index.html?path=/story/templates-error-page--scheduled-third-party-outage) error page content instead.
 
 <BackToTop />
 
@@ -64,7 +50,10 @@ Make sure the Export Service phone number is accessible and linked. Don’t use 
 		<p>
 			Call <strong>1800 571 125</strong>, Monday to Friday, 9am to 5pm AEST
 			<br />
-			Email <a href="mailto:emailaccount@awe.gov.au">emailaccount@awe.gov.au</a>
+			Email{' '}
+			<a href="mailto:exportservice@agriculture.gov.au">
+				exportservice@agriculture.gov.au
+			</a>
 		</p>
 	</Prose>
 </Callout>

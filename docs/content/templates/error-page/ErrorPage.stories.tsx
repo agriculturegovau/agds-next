@@ -36,7 +36,7 @@ export const ApplicationTemplate = {
 };
 
 export const NotFound = {
-	name: 'Not found (404)',
+	name: 'Page not found (404)',
 	render: () => (
 		<SiteLayout>
 			<NotFoundPage />
@@ -45,7 +45,7 @@ export const NotFound = {
 };
 
 export const Maintenance = {
-	name: 'Under planned maintenance (503)',
+	name: 'Planned maintenance (503)',
 	render: () => (
 		<SiteLayout>
 			<MaintenancePage />
@@ -62,19 +62,20 @@ export const ServerError = {
 	),
 };
 
-export const ScheduledThirdPartyOutage = {
-	name: 'Scheduled Third party outage (503)',
-	render: () => (
-		<SiteLayout>
-			<ScheduledThirdPartyOutagePage />
-		</SiteLayout>
-	),
-};
 export const ThirdParty = {
 	name: 'Third party outage (503)',
 	render: () => (
 		<SiteLayout>
 			<ThirdPartyPage />
+		</SiteLayout>
+	),
+};
+
+export const ScheduledThirdPartyOutage = {
+	name: 'Scheduled third party outage (503)',
+	render: () => (
+		<SiteLayout>
+			<ScheduledThirdPartyOutagePage />
 		</SiteLayout>
 	),
 };

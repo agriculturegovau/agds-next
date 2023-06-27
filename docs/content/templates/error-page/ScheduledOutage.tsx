@@ -20,15 +20,15 @@ export const ScheduledThirdPartyOutage = () => {
 						Export Service. Please try again later.
 					</p>
 				</Prose>
-				<Callout title="Need help?">
+				<Callout title="Need more help?">
 					<Prose>
 						<p>
-							Call <strong>000 000 000</strong> (9am to 5pm AEST Monday to
-							Friday)
+							Call <strong>1800 571 125</strong>, Monday to Friday, 9am to 5pm
+							AEST
 							<br />
 							Email{' '}
-							<a href="mailto:emailaccount@agriculture.gov.au">
-								emailaccount@agriculture.gov.au
+							<a href="mailto:exportservice@agriculture.gov.au">
+								exportservice@agriculture.gov.au
 							</a>
 						</p>
 					</Prose>

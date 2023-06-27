@@ -12,20 +12,20 @@ export const ServerError = () => {
 				<Prose>
 					<h1>Something's not right</h1>
 					<p>
-						There is a problem with the Export Service. We're working to fix it.
+						There's a problem with the Export Service. We're working to fix it.
 						Please try again later.
 					</p>
 					<p>You may be able to access other parts of the Export Service.</p>
 				</Prose>
-				<Callout title="Need help?">
+				<Callout title="Need more help?">
 					<Prose>
 						<p>
-							Call <strong>000 000 000</strong> (9am to 5pm AEST Monday to
-							Friday)
+							Call <strong>1800 571 125</strong>, Monday to Friday, 9am to 5pm
+							AEST
 							<br />
 							Email{' '}
-							<a href="mailto:emailaccount@agriculture.gov.au">
-								emailaccount@agriculture.gov.au
+							<a href="mailto:exportservice@agriculture.gov.au">
+								exportservice@agriculture.gov.au
 							</a>
 						</p>
 					</Prose>
