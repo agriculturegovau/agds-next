@@ -96,6 +96,7 @@ export {
 	ExitIcon,
 	ExternalLinkIcon,
 	FacebookIcon,
+	FactoryIcon,
 	FilterIcon,
 	HelpIcon,
 	HomeIcon,
