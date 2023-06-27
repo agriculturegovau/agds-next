@@ -46,7 +46,7 @@ That is, use a capital on the first word only in a header or sentence. All other
 
 For example, use 'Services you can use now' rather than 'Services You Can Use Now'.
 
-For more information, see Capitalisation in the DAFF Style guide (DAFF staff only).
+For more information, see Capitalisation in the DAFF Style guide (internal DAFF staff only).
 
 <BackToTop />
 
@@ -58,24 +58,31 @@ Use simple contractions if it’s appropriate. For example, simple contractions 
 
 - don’t
 - can’t
+- won't
 - we’ll
 - we’re
 - we’ve
+- that's
 - it’s
-- you’ll
-- you’re.
+- let's
+- isn’t
 
 Avoid complex contractions which are harder to interpret. Some users may find these contractions hard to understand. For example, complex contractions include:
 
+- you’ll
+- you’re.
+- you're
 - they’re
+- there's
 - wouldn’t
 - shouldn’t
 - doesn’t
 - mustn’t
 - cannot
 - haven’t
-- where’ve
+- hasn't
 - weren’t.
+- where’ve
 
 Conduct research where possible to see if you should use contractions in Export Service content.
 
@@ -84,7 +91,7 @@ Conduct research where possible to see if you should use contractions in Export 
 - "We’ll get back to you within 2 days".
 - "You don’t have access to this business".
 
-For more information, see [Contractions](https://www.stylemanual.gov.au/grammar-punctuation-and-conventions/shortened-words-and-phrases/contractions). Also see Abbreviations and other shortened forms in the DAFF Style guide (DAFF staff only).
+For more information, see [Contractions](https://www.stylemanual.gov.au/grammar-punctuation-and-conventions/shortened-words-and-phrases/contractions). Also see Abbreviations and other shortened forms in the DAFF Style guide (internal DAFF staff only).
 
 <BackToTop />
 
@@ -109,18 +116,12 @@ Don’t include a full stop after an email address if it’s part of sentence fr
 You can use a full stop after an email address if it’s at the end of a sentence. But make sure the full stop is not included in the link text. Otherwise, users may confuse it with being a part of the email address.
 
 ```jsx live
-<Stack gap={1.5}>
-	<SummaryList>
-		<SummaryListItem>
-			<SummaryListItemTerm>Email address</SummaryListItemTerm>
-			<SummaryListItemDescription>
-				<TextLink href="mailto:exportservice@agriculture.gov.au">
-					exportservice@agriculture.gov.au
-				</TextLink>
-			</SummaryListItemDescription>
-		</SummaryListItem>
-	</SummaryList>
-</Stack>
+<Text>
+	Email address{' '}
+	<TextLink href="mailto:exportservice@agriculture.gov.au">
+		exportservice@agriculture.gov.au
+	</TextLink>
+</Text>
 ```
 
 ```jsx live
@@ -172,6 +173,8 @@ When you create an error message:
 - use simpler language and the correct [Voice and tone](/content/voice-and-tone)
 - don’t blame the user for the error
 - be specific in describing how and when the error can be fixed
+- don't use sorry in the error message
+- use ‘please’ sparingly. That is, only if users’ need to do something extra and inconvenient. Or if the Export Service (or third-party systems) are to blame
 - include the error code in the message if possible. It may be helpful to a support agent if a user accesses human-led support.
 
 <figure>
@@ -198,7 +201,7 @@ Reserve FAQs for ‘edge’ cases as much as possible. That is, user journeys an
 
 Provide guidance and answers a user needs in the context of what they are doing. That is, at the point of their journey or within a transaction where they need a piece of information.
 
-If the information applies to all users, don’t hide an FAQ in an accordion or other component. If it applies to some users only, you can use an [details](https://design-system.agriculture.gov.au/components/details).
+If the information applies to all users, don’t hide an FAQ in an accordion or other component. If it applies to some users only, you can use the [Details](https://design-system.agriculture.gov.au/components/details) component.
 
 Monitor and measure the success of FAQs. If no one is using them, remove FAQ content.
 
@@ -211,11 +214,11 @@ Monitor and measure the success of FAQs. If no one is using them, remove FAQ con
 		</p>
 		<p>
 			If we already have some of the information you need to tell us, we’ll
-			pre-fill it into your applications. This saves you entering all your
+			prefill it into your applications. This saves you entering all your
 			details yourself.
 		</p>
 		<p>
-			It’s important to check the pre-filled information in your report before
+			It’s important to check the prefilled information in your report before
 			you submit it.
 		</p>
 	</Prose>
@@ -228,7 +231,7 @@ Monitor and measure the success of FAQs. If no one is using them, remove FAQ con
 
 Break content up with headings and subheadings. The first heading (H1) should be meaningful and unique to each page. Headings should clearly state what users will find in the content that follows.
 
-If the page is the unauthenticated space of the [Export Service](https://exports.agriculture.gov.au/help) use keywords. Be consistent with the search intent of your users in search engines.
+If the page is the unauthenticated space of the [Export Service](https://exports.agriculture.gov.au/help), use keywords. Be consistent with the search intent of your users in search engines.
 
 Try to create headings that are 20 to 70 characters in length. Don’t use colons or full stops in headings.
 
@@ -238,9 +241,9 @@ You can use statement headings. Start with a verb and end with a noun to describ
 
 Use conjunctions, prepositions and pronouns in between so a statement heading sounds natural. For example, ‘manage your privacy settings’ or ‘create an account.’
 
-A H1 can also be a question. But try to use questions as headings minimally or instead of a statement. Start with one of the 5 ‘W’s’: ‘who’, ‘what’, ‘where’, ‘when’ or ‘why’ for question headings.
+A H1 can also be a question. But try to use questions as headings minimally or instead of a statement. Start with 1 of the 5 ‘Ws’: ‘who’, ‘what’, ‘where’, ‘when’ or ‘why’ for question headings.
 
-For more information, see Structuring headings and labels in [Content structure](https://deptagriculture.sharepoint.com/teams/msteams_26787b_671006/Shared%20Documents/3.%20Guidance%20and%20support/Help%20section%20content/linktocome). Also see Frequently Asked Questions in [Content styles](https://deptagriculture.sharepoint.com/teams/msteams_26787b_671006/Shared%20Documents/3.%20Guidance%20and%20support/Help%20section%20content/link%20to%20come) and [Headings](https://design-system.agriculture.gov.au/components/heading).
+For more information, see Structuring headings and labels in [Content structure](/content/content-structure#structuring-headings-and-labels). Also see Frequently Asked Questions in [Content styles](#frequently-asked-questions) and [Headings](https://design-system.agriculture.gov.au/components/heading).
 
 ```jsx live
 <Stack gap={3}>
@@ -300,8 +303,6 @@ In numbered lists, start each point with a capital letter and end each with a fu
 Ideally, include one action the user needs to take in each step. But if space is limited or a task is complex, you can condense several short steps within one numbered step.
 
 Use a forward arrow (>) to separate the tabs or buttons users need to select.
-
-"To carry out any of these actions, sign in to the Export Service and select the 'Establishments' tab."
 
 ### Examples
 
@@ -373,7 +374,33 @@ For more information on links, see:
 
 - [Call to action](https://design-system.agriculture.gov.au/components/call-to-action)
 
-- External links I DAFF Style guide (DAFF staff only).
+- External links I DAFF Style guide (internal DAFF staff only).
+
+```jsx live enableProse
+<Prose>
+<p>To create your myGovID:</a>
+<ol>
+<li>Go to <a href="https://www.mygovid.gov.au/set-up">How to set up</a> a myGovID.</li>
+<li>Download and set up the myGovID app on your mobile phone or tablet.</li>
+<li>Enter your personal details.</li>
+<li>Verify your Australian Identity documents. You need at least 2 from the ‘Standard’ identity strength list to access the Export Service.</li>
+<li>Follow the prompts to set up your myGovID.</li>
+</ol>
+</Prose>
+```
+
+```jsx live enableProse
+<p>
+	You can propose an arrangement to us to approve. You can do this at the same
+	time you apply to{' '}
+	<a href="https://www.agriculture.gov.au/biosecurity-trade/export/from-australia/ex26">
+		register an export establishment
+	</a>
+	. Go to the Approved Arrangements section of <a href="https://www.agriculture.gov.au/biosecurity-trade/export/from-australia">
+		Exporting from Australia
+	</a> for more information.
+</p>
+```
 
 <BackToTop />
 
@@ -408,7 +435,7 @@ Use a number list to help users follow step-by-step instructions. It will ensure
 
 Use a bullet list so users can compare items of similar value. If each point begins with an incomplete sentence, don’t start with a capital letter. Only use a full stop at the end of the last bullet point.
 
-See Paragraphs and lists in [Content structure](/guides/content-structure) for more information. Also see Lists in the DAFF Style guide (DAFF staff only).
+See Paragraphs and lists in [Content structure](/guides/content/content-structure) for more information. Also see Lists in the DAFF Style guide (internal DAFF staff only).
 
 <BackToTop />
 
@@ -451,27 +478,30 @@ For more information on microcopy, see [Field](/components/field) and [Error mes
 
 ## Numbers
 
-Use numerals in Export Service sentences and headings for the number ‘2’ and above.
+Use numerals in Export Service sentences and headings for numbers ‘2’ and above.
 
 However, there are a few exceptions to this rule. Spell out a number as a word if it’s:
 
 - at the start of a sentence or heading, or
 - a word in a proper noun or name.
 
-Always spell out ‘one’ and ‘zero’ in words, so users don’t confuse them with letters.
+Always spell out ‘one’ and ‘zero’ in words, so users don’t confuse them with letters. That’s unless you are comparing something directly. For example, ‘Digital Services to Take Farmers to Markets is 1 of 5 measures in the Busting Congestion package.’
 
-For more information, see Numbers in the DAFF Style guide (DAFF staff only). Also see [Numbers and measurements](https://www.stylemanual.gov.au/grammar-punctuation-and-conventions/numbers-and-measurements).
+For more information, see Numbers in the DAFF Style guide (internal DAFF staff only). Also see [Numbers and measurements](https://www.stylemanual.gov.au/grammar-punctuation-and-conventions/numbers-and-measurements).
 
 ```jsx live
 <Prose>
 	<h1>Linking a business in RAM</h1>
 	<p>
 		To link up to 5 businesses, call <b>1300 287 539</b> and select{' '}
-		<b>option three</b>
+		<b>option 3</b>
 	</p>
 	<p>
-		To link more than 5 businesses, complete the Assistance to link bulk ABNs
-		form.
+		To link more than 5 businesses, complete the{' '}
+		<TextLinkExternal href="#">
+			Assistance to link bulk ABNs form
+		</TextLinkExternal>
+		.
 	</p>
 </Prose>
 ```
@@ -536,7 +566,7 @@ Don’t use the Oxford comma. That is, a comma before the final ‘and’ in a s
 </Card>
 ```
 
-For more information, see Commas in the DAFF Style guide (DAFF staff only). Also see [Commas](https://www.stylemanual.gov.au/grammar-punctuation-and-conventions/punctuation/commas).
+For more information, see Commas in the DAFF Style guide (internal DAFF staff only). Also see [Commas](https://www.stylemanual.gov.au/grammar-punctuation-and-conventions/punctuation/commas).
 
 ### En dashes
 
@@ -549,15 +579,17 @@ Use an en dash (-) to:
 - mark an abrupt change in continuity
 - introduce an explanation or provide additional detail.
 
-For more information, see En rules and Hyphens in the DAFF Style guide (DAFF staff only). Also see [Dashes](https://www.stylemanual.gov.au/grammar-punctuation-and-conventions/punctuation/dashes).
+For more information, see En rules and Hyphens in the DAFF Style guide (internal DAFF staff only). Also see [Dashes](https://www.stylemanual.gov.au/grammar-punctuation-and-conventions/punctuation/dashes).
 
 ### Exclamation marks
 
-Don’t use exclamation marks in Export Service content.
+Don’t use exclamation marks (!) in Export Service content.
 
 <BackToTop />
 
 ## Types of words
+
+Go to the Macquarie Dictionary to find the spelling of words we prefer to use on the Export Service. See the DAFF Style guide (internal DAFF staff only) to access the dictionary online.
 
 ### Nouns, names and labels
 
@@ -573,18 +605,21 @@ Some of the preferred terms we use on common button labels in the Export Service
 
 - Save [element]
 - Save and exit
+- Cancel
 - Confirm and submit
+- Submit application
 - Share [element]
 - Sign in and Sign out
 - Get started
 - Start again
+- Change (instead of 'edit' or 'update')
 - Manage [element]
 
 ```jsx live
 <Button>Edit registered establishments</Button>
 ```
 
-For more information, see the [Button content section](https://design-system.agriculture.gov.au/components/button/content).
+For more information, see the [Button](https://design-system.agriculture.gov.au/components/button/content) content section.
 
 ### Pronouns
 
@@ -603,20 +638,32 @@ Use active voice and present tense where possible in the Export Service. For exa
 For more information, see:
 
 - [Voice and tone ](/content/voice-and-tone)
-- DAFF Style guide(DAFF staff only)
+- DAFF Style guide (internal DAFF staff only)
 - [Types of words](https://www.stylemanual.gov.au/grammar-punctuation-and-conventions/types-words)
 
 <BackToTop />
 
 ## Using 'for example'
 
-Use x (for example, y) to provide an example of x when it’s not critical to understand. Using parentheses () is a mental signal that the content can be safely ignored.
+Use ‘x (for example, y)’ to provide an example of x when it’s not critical to understand. Using parentheses () is a mental signal that the content can be safely ignored.
 
-Use x, for example y. to provide information that is critical to act on or understand x.
+Use ‘x, for example y’ to provide information that is critical to act on or understand x.
 
 Don’t use ‘such as’ or ‘includes’ in place of ‘for example’.
 
-For more information, see ‘e.g.’ or ‘for example’ in the DAFF Style guide (DAFF staff only).
+For more information, see ‘e.g.’ or ‘for example’ in the DAFF Style guide (internal DAFF staff only).
+
+```jsx live
+<Text as="p">
+	This tool is for exporting citrus fruits (for example, oranges and lemons).
+</Text>
+```
+
+```jsx live
+<Text as="p">
+	You’ll need identity documents, for example a driver licence.
+</Text>
+```
 
 <BackToTop />
 
@@ -651,3 +698,4 @@ A search engine optimised (SEO) URL:
 - [Style Manual](https://www.stylemanual.gov.au)
 
 <BackToTop />
+```
