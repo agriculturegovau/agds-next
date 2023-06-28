@@ -7,6 +7,7 @@ import { Card, CardInner, CardLink } from '@ag.ds-next/react/card';
 import { Columns } from '@ag.ds-next/react/columns';
 import { Text } from '@ag.ds-next/react/text';
 import { Prose } from '@ag.ds-next/react/prose';
+import { Divider } from '@ag.ds-next/react/divider';
 import { DocumentTitle } from '../../components/DocumentTitle';
 import { CategoryPageTemplate } from '../../components/CategoryPageTemplate';
 import { getContent, getContentList } from '../../lib/mdx/content';
@@ -43,6 +44,7 @@ export default function ContentPage({
 						</Card>
 					))}
 				</Columns>
+				<Divider />
 				<Prose>
 					<MDXRemote {...document.source} components={mdxComponents} />
 				</Prose>
