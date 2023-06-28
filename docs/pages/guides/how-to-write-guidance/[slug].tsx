@@ -29,7 +29,7 @@ export default function Guides({
 				<PageLayout
 					applyMainElement={true}
 					sideNav={{
-						title: 'How to write guidance',
+						title: 'How to create guidance in the Export Service',
 						titleLink: '/guides/how-to-write-guidance',
 						items: navLinks,
 					}}
@@ -45,15 +45,6 @@ export default function Guides({
 					) : null}
 					<Prose>
 						<MDXRemote {...guide.source} components={mdxComponents} />
-						<h2>Related links</h2>
-						<ul>
-							<li>
-								<a href="/content">Content</a>
-							</li>
-							<li>
-								<a href="https://www.stylemanual.gov.au/">Style Manual</a>
-							</li>
-						</ul>
 					</Prose>
 				</PageLayout>
 			</SiteLayout>
