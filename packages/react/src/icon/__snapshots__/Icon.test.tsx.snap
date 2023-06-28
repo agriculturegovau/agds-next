@@ -561,6 +561,26 @@ exports[`Icon FacebookIcon renders correctly 1`] = `
 </div>
 `;
 
+exports[`Icon FactoryIcon renders correctly 1`] = `
+<div>
+  <svg
+    aria-hidden="true"
+    class="css-9s3cfn-Icon"
+    clip-rule="evenodd"
+    focusable="false"
+    height="24"
+    role="img"
+    viewBox="0 0 24 24"
+    width="24"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M17.183 12.8457L20.3183 13.6296C20.7189 13.7297 21 14.0897 21 14.5027V20.1C21 20.5971 20.5971 21 20.1 21H3.9C3.40294 21 3 20.5971 3 20.1V10.4527C3 9.86718 3.55025 9.43756 4.11828 9.57957L15.3805 12.3951M17.183 12.8457C17.7506 12.9868 18.3 12.5574 18.3 11.9723V3.9C18.3 3.40294 17.8971 3 17.4 3H15.6C15.1029 3 14.7 3.40294 14.7 3.9V11.5223C14.7 11.9349 14.9805 12.2946 15.3805 12.3951M17.183 12.8457L15.3817 12.3954L15.3805 12.3951M7.5 17.4H6.6V16.5H7.5V17.4ZM11.1 16.5H12V17.4H11.1V16.5Z"
+    />
+  </svg>
+</div>
+`;
+
 exports[`Icon FilterIcon renders correctly 1`] = `
 <div>
   <svg
