@@ -6,7 +6,6 @@ import { textInputStyles } from '../../text-input';
 import { Field } from '../../field';
 import { DefaultComboboxOption } from '../utils';
 import { defaultRenderItem } from '../defaultRenderItem';
-import { ComboboxList } from './ComboboxList';
 import { ComboboxListItem } from './ComboboxListItem';
 import { ComboboxListLoading } from './ComboboxListLoading';
 import { ComboboxListError } from './ComboboxListError';
@@ -127,7 +126,7 @@ export function ComboboxBase<Option extends DefaultComboboxOption>({
 							)}
 						</ComboboxButtonContainer>
 					)}
-					<Popover as={ComboboxList} {...comboboxPopoverMenuProps}>
+					<Popover as="ul" {...comboboxPopoverMenuProps}>
 						{combobox.isOpen ? (
 							<Fragment>
 								{loading ? (

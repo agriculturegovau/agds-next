@@ -24,7 +24,6 @@ import { Field } from '../../field';
 import { Flex } from '../../flex';
 import { defaultRenderItem } from '../defaultRenderItem';
 import { DefaultComboboxOption } from '../utils';
-import { ComboboxList } from './ComboboxList';
 import { ComboboxListItem } from './ComboboxListItem';
 import { ComboboxListLoading } from './ComboboxListLoading';
 import { ComboboxListError } from './ComboboxListError';
@@ -195,7 +194,7 @@ export function ComboboxMultiBase<Option extends DefaultComboboxOption>({
 							/>
 						</ComboboxButtonContainer>
 					</Flex>
-					<Popover as={ComboboxList} {...comboboxPopoverMenuProps}>
+					<Popover as="ul" {...comboboxPopoverMenuProps}>
 						{combobox.isOpen ? (
 							<Fragment>
 								{loading ? (
