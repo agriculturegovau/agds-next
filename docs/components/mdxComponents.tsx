@@ -174,4 +174,5 @@ export const mdxComponents: MDXRemoteProps['components'] = {
 			Back to top
 		</DirectionLink>
 	),
+	Box,
 };
