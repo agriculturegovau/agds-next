@@ -4,8 +4,8 @@ import { SiteLayout } from '../__shared/SiteLayout';
 import { NotFound as NotFoundPage } from './NotFound';
 import { Maintenance as MaintenancePage } from './Maintenance';
 import { ServerError as ServerErrorPage } from './ServerError';
-import { ScheduledOutage as ScheduledOutagePage } from './ScheduledOutage';
-import { ThirdParty as ThirdPartyPage } from './ThirdParty';
+import { ScheduledThirdPartyOutage as ScheduledThirdPartyOutagePage } from './ScheduledOutage';
+import { ThirdPartyOutage as ThirdPartyPage } from './ThirdPartyOutage';
 import { ErrorPage } from './ErrorPage';
 
 const meta: Meta<typeof ErrorPage> = {
@@ -36,7 +36,7 @@ export const ApplicationTemplate = {
 };
 
 export const NotFound = {
-	name: 'Not found (404)',
+	name: 'Page not found (404)',
 	render: () => (
 		<SiteLayout>
 			<NotFoundPage />
@@ -45,7 +45,7 @@ export const NotFound = {
 };
 
 export const Maintenance = {
-	name: 'Under maintenance',
+	name: 'Planned maintenance (503)',
 	render: () => (
 		<SiteLayout>
 			<MaintenancePage />
@@ -54,19 +54,10 @@ export const Maintenance = {
 };
 
 export const ServerError = {
-	name: 'Server error (500)',
+	name: 'Internal server error (500)',
 	render: () => (
 		<SiteLayout>
 			<ServerErrorPage />
-		</SiteLayout>
-	),
-};
-
-export const ScheduledOutage = {
-	name: 'Scheduled outage (503)',
-	render: () => (
-		<SiteLayout>
-			<ScheduledOutagePage />
 		</SiteLayout>
 	),
 };
@@ -76,6 +67,15 @@ export const ThirdParty = {
 	render: () => (
 		<SiteLayout>
 			<ThirdPartyPage />
+		</SiteLayout>
+	),
+};
+
+export const ScheduledThirdPartyOutage = {
+	name: 'Scheduled third party outage (503)',
+	render: () => (
+		<SiteLayout>
+			<ScheduledThirdPartyOutagePage />
 		</SiteLayout>
 	),
 };

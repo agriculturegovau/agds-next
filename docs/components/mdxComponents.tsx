@@ -24,6 +24,7 @@ import {
 import { mapSpacing } from '@ag.ds-next/react/core';
 import { Text } from '@ag.ds-next/react/text';
 import { TextLink } from '@ag.ds-next/react/text-link';
+import { DirectionLink } from '@ag.ds-next/react/direction-link';
 import { slugify } from '../lib/slugify';
 import { withBasePath } from '../lib/img';
 import generatedComponentPropsData from '../__generated__/componentProps.json';
@@ -167,4 +168,14 @@ export const mdxComponents: MDXRemoteProps['components'] = {
 	Text,
 	TextLink,
 	AllIconsPlayground,
+	BackToTop: () => (
+		<DirectionLink
+			direction="up"
+			href="#main-content"
+			className={proseBlockClassname}
+		>
+			Back to top
+		</DirectionLink>
+	),
+	Box,
 };

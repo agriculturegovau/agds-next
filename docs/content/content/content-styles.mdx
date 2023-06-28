@@ -1,0 +1,701 @@
+---
+title: Content styles
+description: Use our rules on grammar, punctuation and more elements of our preferred styles.
+complete: no
+order: 4
+---
+
+## Ampersands
+
+Don’t use the ampersand symbol (&) instead of ‘and’ in a heading or sentence in the Export Service.
+
+That’s unless it’s a part of a proper noun or name.
+
+```jsx live enableProse
+<Prose>
+	<h1>Summary and findings</h1>
+
+	<h2>Audit criteria</h2>
+
+	<ul>
+		<li>Export Control (Fish and Fish products) Rules 2021</li>
+		<li>Export Control (Milk and Milk Products) Rules 2021</li>
+		<li>Export Control (Egg and Egg Products) Rules 2021</li>
+		<li>Export Control (Meat and Meat Products) Rules 2021</li>
+		<li>Applicable Importing Country Requirements</li>
+		<li>Relevant Approved Arrangement for the Operations</li>
+	</ul>
+</Prose>
+```
+
+<BackToTop />
+
+## And/or
+
+Use ‘and/or’ to indicate either or both possibilities to users in the Export Service.
+
+For example: "Register fish and/or fish products."
+
+<BackToTop />
+
+## Capitalisation
+
+We use capitalisation minimally in the Export Service and sentence case generally.
+
+That is, use a capital on the first word only in a header or sentence. All other words are lower case, except proper nouns.
+
+For example, use 'Services you can use now' rather than 'Services You Can Use Now'.
+
+For more information, see Capitalisation in the DAFF Style guide (internal DAFF staff only).
+
+<BackToTop />
+
+## Contractions
+
+Grammatical contractions can make things easier to read. That is, using shortened versions of words that combine 2 words, such as ‘don’t’ instead of ‘do not’.
+
+Use simple contractions if it’s appropriate. For example, simple contractions include:
+
+- don’t
+- can’t
+- won't
+- we’ll
+- we’re
+- we’ve
+- that's
+- it’s
+- let's
+- isn’t
+
+Avoid complex contractions which are harder to interpret. Some users may find these contractions hard to understand. For example, complex contractions include:
+
+- you’ll
+- you’re.
+- you're
+- they’re
+- there's
+- wouldn’t
+- shouldn’t
+- doesn’t
+- mustn’t
+- cannot
+- haven’t
+- hasn't
+- weren’t.
+- where’ve
+
+Conduct research where possible to see if you should use contractions in Export Service content.
+
+### Examples
+
+- "We’ll get back to you within 2 days".
+- "You don’t have access to this business".
+
+For more information, see [Contractions](https://www.stylemanual.gov.au/grammar-punctuation-and-conventions/shortened-words-and-phrases/contractions). Also see Abbreviations and other shortened forms in the DAFF Style guide (internal DAFF staff only).
+
+<BackToTop />
+
+## Directional language
+
+Directional language refers to phrases that instruct people where to interact with elements on a web page.
+
+Avoid referring to things using directional language. For example, ‘as shown above’. Try to keep related things as close as possible to each other (ideally in the same sentence).
+
+People read content in different ways, making directions like ‘above’, ‘to the right’ and ‘below’ confusing.
+
+Users of screen readers may jump backwards and forwards through headings and links on a page. Things that appear below something on a mobile screen might be to the right or left on a desktop screen.
+
+<BackToTop />
+
+## Email addresses
+
+If you include an email address in Export Service content, the full address should be visible and accessible to users.
+
+Don’t include a full stop after an email address if it’s part of sentence fragment or on a line by itself.
+
+You can use a full stop after an email address if it’s at the end of a sentence. But make sure the full stop is not included in the link text. Otherwise, users may confuse it with being a part of the email address.
+
+```jsx live
+<Text>
+	Email address{' '}
+	<TextLink href="mailto:exportservice@agriculture.gov.au">
+		exportservice@agriculture.gov.au
+	</TextLink>
+</Text>
+```
+
+```jsx live
+<Text>
+	If you're interested in taking part or would like to find out more, email{' '}
+	<TextLink href="mailto:exportassurance@agriculture.gov.au">
+		exportassurance@agriculture.gov.au
+	</TextLink>
+	.
+</Text>
+```
+
+For more information, see [Text link](/components/text-link) and [Full stops](https://www.stylemanual.gov.au/grammar-punctuation-and-conventions/punctuation-and-capitalisation/full-stops#dont_end_web_or_email_addresses_with_full_stops).
+
+<BackToTop />
+
+## Emojis and emoticons
+
+We don’t use emojis or emoticons in Export Service web content. Some social media channel content use emojis minimally. For example, Twitter and Medium.
+
+If you write content for a social media channel:
+
+- use emojis minimally (if at all)
+- don’t use emoticons
+- don’t use more than one emoji in a sentence
+- don’t use emojis to replace words
+- don’t use emojis as the only way to express an emotion you intend to communicate
+- use popular emojis that are widely recognised
+- use emojis that translate well across devices
+- use emojis at the end of sentences
+- don’t use emojis that are not visible in both dark and light mode.
+
+For more information on using humour in content, see [Voice and tone](/content/voice-and-tone). For more guidance on emojis, see [Accessibility and inclusion on social media](https://www.nsw.gov.au/nsw-government-communications/social-media-guidelines/accessibility-and-inclusion).
+
+<BackToTop />
+
+## Error messages
+
+An error message in the Export Service can be a:
+
+- [Page alert](/components/page-alert), or a
+- message about a form [Field](/components/field).
+
+There are also 'warning' messages that indicate urgent situations. For example, system alerts. For more information, see [Global alert](/components/global-alert).
+
+When you create an error message:
+
+- be specific in describing the error and avoid technical jargon
+- use simpler language and the correct [Voice and tone](/content/voice-and-tone)
+- don’t blame the user for the error
+- be specific in describing how and when the error can be fixed
+- don't use sorry in the error message
+- use ‘please’ sparingly. That is, only if users’ need to do something extra and inconvenient. Or if the Export Service (or third-party systems) are to blame
+- include the error code in the message if possible. It may be helpful to a support agent if a user accesses human-led support.
+
+<figure>
+    <ImageWithBorder src="/img/templates/error-page.webp" alt="Our Error Page template" />
+    <figcaption>Our Error Page template</figcaption>
+
+</figure>
+
+For more information, see:
+
+- [Error messages](/content/content-patterns#error-messages)
+- [Global alert](/components/global-alert)
+- [Field](/components/field)
+- [Page alert](/components/page-alert)
+- [Voice and tone](/content/voice-and-tone)
+
+<BackToTop />
+
+## Frequently asked questions
+
+Try not to use a Frequently Asked Question (FAQ) to ‘fix’ content that may be hard to understand or follow.
+
+Reserve FAQs for ‘edge’ cases as much as possible. That is, user journeys and outcomes that happen rarely. Instead try to make content for all users clearer and more concise.
+
+Provide guidance and answers a user needs in the context of what they are doing. That is, at the point of their journey or within a transaction where they need a piece of information.
+
+If the information applies to all users, don’t hide an FAQ in an accordion or other component. If it applies to some users only, you can use the [Details](/components/details) component.
+
+Monitor and measure the success of FAQs. If no one is using them, remove FAQ content.
+
+```jsx live enableProse
+<Details label="How were my details prefilled?" iconBefore>
+	<Prose>
+		<p>
+			We’re working hard to improve the way we do business with you. This
+			includes making applications and registrations easier to use.
+		</p>
+		<p>
+			If we already have some of the information you need to tell us, we’ll
+			prefill it into your applications. This saves you entering all your
+			details yourself.
+		</p>
+		<p>
+			It’s important to check the prefilled information in your report before
+			you submit it.
+		</p>
+	</Prose>
+</Details>
+```
+
+<BackToTop />
+
+## Headings
+
+Break content up with headings and subheadings. The first heading (H1) should be meaningful and unique to each page. Headings should clearly state what users will find in the content that follows.
+
+If the page is the unauthenticated space of the [Export Service](https://exports.agriculture.gov.au/help), use keywords. Be consistent with the search intent of your users in search engines.
+
+Try to create headings that are 20 to 70 characters in length. Don’t use colons or full stops in headings.
+
+Search engines sometimes use H1s instead of title tags in a Search Engine Results Page (SERP). This ensures a H1 is optimised if it’s used for this purpose and will not be cut off on a SERP.
+
+You can use statement headings. Start with a verb and end with a noun to describe what users want to do in a H1. Avoid starting with ‘how to’ if the statement makes sense without it.
+
+Use conjunctions, prepositions and pronouns in between so a statement heading sounds natural. For example, ‘manage your privacy settings’ or ‘create an account.’
+
+A H1 can also be a question. But try to use questions as headings minimally or instead of a statement. Start with 1 of the 5 ‘Ws’: ‘who’, ‘what’, ‘where’, ‘when’ or ‘why’ for question headings.
+
+For more information, see Structuring headings and labels in [Content structure](/content/content-structure#structuring-headings-and-labels). Also see Frequently Asked Questions in [Content styles](#frequently-asked-questions) and [Headings](/components/heading).
+
+```jsx live
+<Stack gap={3}>
+	<H1>Find an export guide for agricultural goods</H1>
+	<Text as="p" fontSize="lg" color="muted">
+		Get tailored step-by-step guidance on how to get started exporting. Just
+		answer a few quick questions about your goods and role in the export
+		process.
+	</Text>
+
+	<H2>What do you want to export or prepare for export?</H2>
+
+	<Stack as="ul" gap={1}>
+		<Card shadow clickable>
+			<CardInner>
+				<Stack gap={1}>
+					<H3>
+						<CardLink href="#">Dairy</CardLink>
+					</H3>
+					<Text as="p">
+						Includes milk, milk, powder products, butter, cream cheese, and
+						other processed dairy products
+					</Text>
+				</Stack>
+			</CardInner>
+		</Card>
+
+		<Card shadow clickable>
+			<CardInner>
+				<Stack gap={1}>
+					<H3>
+						<CardLink href="#">Eggs</CardLink>
+					</H3>
+					<Text as="p">
+						Includes shell eggs and egg products intended to be exported as food
+					</Text>
+				</Stack>
+			</CardInner>
+		</Card>
+	</Stack>
+</Stack>
+```
+
+<BackToTop />
+
+## Instructions
+
+Instructional content (also known as technical guidance) helps a user solve a specific problem.
+For example, to do something in the Export Service.
+
+It usually includes pages, tabs or buttons for users to select or short steps to follow in a set order.
+
+Use ‘select’ and not ‘click’ if users should select a particular tab, button or page element. You can use single quotation marks around the item to select to emphasise it.
+
+In numbered lists, start each point with a capital letter and end each with a full stop. Introduce the points with a colon.
+
+Ideally, include one action the user needs to take in each step. But if space is limited or a task is complex, you can condense several short steps within one numbered step.
+
+Use a forward arrow (>) to separate the tabs or buttons users need to select.
+
+### Examples
+
+```jsx live
+<Text>
+	To carry out any of these actions, sign in to the Export Service and select
+	the 'Establishments' tab.
+</Text>
+```
+
+```jsx live
+<Text>
+	On the Insert tab, select Symbol > More symbols > Special characters > En
+	dash.
+</Text>
+```
+
+```jsx live enableProse
+<Prose>
+	<p>You can see details of your audit in your Export Service account.</p>
+	<p>To find a summary and findings of your audit:</p>
+	<ol>
+		<li>Sign in to your Export Service account.</li>
+		<li>Select ‘Compliance’.</li>
+		<li>
+			Under Audit reports, find the audit reference number and select ‘View’.
+		</li>
+		<li>Go to the Findings section.</li>
+	</ol>
+</Prose>
+```
+
+For more information, see Technical guidance in [How to create guidance in the Export Service](/guides/how-to-write-guidance/how-to-present-guidance#technical-guidance).
+
+<BackToTop />
+
+## Introductions
+
+Include a short introduction that describes a page’s content under the heading (H1). It should be 1 to 2 sentences (about 30 words) and end with a full stop.
+
+```jsx live
+<Stack gap={1.5}>
+	<H1>Business owner or principal authority</H1>
+	<Text as="p" fontSize="md" color="muted">
+		Only a business owner or principal authority can create an account and
+		authorise access for others.
+	</Text>
+	<Text as="p">
+		Follow the steps to set up your business for the first time.
+	</Text>
+</Stack>
+```
+
+<BackToTop />
+
+## Links
+
+Link (also known as hyperlinks) content should be concise, meaningful and accessible. Make sure users can work out where a link goes from the anchor text alone.
+
+Users should not need to read the full sentence to understand what the link connects to. Don’t make URL addresses visible to users and don’t use ‘click here’ instead of link keywords.
+
+Try to avoid placing a link in the middle of a sentence if you can. It may be harder for some users to skim-read the content. Use a full stop after the link when it appears at the end of a sentence.
+
+Use ‘see’ rather than ‘find’ or ‘go to’ to describe how a user can access more information if they select the link. Only use ‘go to’ if the link appears in a step-by-step process in instructions or technical guidance.
+
+For more information on links, see:
+
+- [Text link](/components/text-link)
+
+- [Call to action](/components/call-to-action)
+
+- External links I DAFF Style guide (internal DAFF staff only).
+
+```jsx live enableProse
+<Prose>
+<p>To create your myGovID:</a>
+<ol>
+<li>Go to <a href="https://www.mygovid.gov.au/set-up">How to set up</a> a myGovID.</li>
+<li>Download and set up the myGovID app on your mobile phone or tablet.</li>
+<li>Enter your personal details.</li>
+<li>Verify your Australian Identity documents. You need at least 2 from the ‘Standard’ identity strength list to access the Export Service.</li>
+<li>Follow the prompts to set up your myGovID.</li>
+</ol>
+</Prose>
+```
+
+```jsx live enableProse
+<p>
+	You can propose an arrangement to us to approve. You can do this at the same
+	time you apply to{' '}
+	<a href="https://www.agriculture.gov.au/biosecurity-trade/export/from-australia/ex26">
+		register an export establishment
+	</a>
+	. Go to the Approved Arrangements section of <a href="https://www.agriculture.gov.au/biosecurity-trade/export/from-australia">
+		Exporting from Australia
+	</a> for more information.
+</p>
+```
+
+<BackToTop />
+
+## Lists
+
+Don't use full stops at the end of the last item on a list if the item is next to a radio button or a multi-select checkbox. For example, lists in a form or interactive experience.
+
+Use a capital letter on the first word of listed items next to radio buttons or multi-select checkboxes.
+
+```jsx live
+<Fieldset legend="Select commodities">
+	<ControlGroup
+		label="Which commodities are you applying to register?"
+		hint="Select all that apply"
+		block
+	>
+		<Checkbox checked={false}>Meat and/or meat products</Checkbox>
+		<Checkbox checked={false}>Plant and/or plant products</Checkbox>
+		<Checkbox checked={false}>Poultry and/or poultry products</Checkbox>
+		<Checkbox checked={false}>Rabbit and/or rabbit products</Checkbox>
+		<Checkbox checked={false}>Ratite and/or ratite products</Checkbox>
+		<Checkbox checked={false}>Wild game and/or wild game products</Checkbox>
+	</ControlGroup>
+</Fieldset>
+```
+
+### Number lists
+
+Use a number list to help users follow step-by-step instructions. It will ensure they complete their task in the right order. Start each point with a capital letter and end each with a full stop.
+
+### Bullet lists
+
+Use a bullet list so users can compare items of similar value. If each point begins with an incomplete sentence, don’t start with a capital letter. Only use a full stop at the end of the last bullet point.
+
+See Paragraphs and lists in [Content structure](/guides/content/content-structure) for more information. Also see Lists in the DAFF Style guide (internal DAFF staff only).
+
+<BackToTop />
+
+## Microcopy
+
+Microcopy is short content that helps users of the Export Service. It lets users know what to do or provides more context on information we ask for. For example, for content required in a form field.
+
+Microcopy can be:
+
+- hint text
+- messages
+- button labels.
+
+When you create microcopy in the Export Service, make sure content:
+
+- is short
+- is clear and direct
+- describes any problem and does not blame the user
+- offers a specific solution to fix any problem. For example, accepted formats
+- uses [‘Please and thanks’](#please-and-thanks) sparingly and only if the user’s action will be something extra.
+
+```jsx live
+<FormStack>
+	<TextInput
+		label="Email address"
+		invalid
+		message="Enter an email address in the correct format, like name@example.com"
+	/>
+
+	<TextInput
+		label="Phone number"
+		hint="Enter a mobile number that starts with +61 followed by 9 numbers"
+	/>
+</FormStack>
+```
+
+For more information on microcopy, see [Field](/components/field) and [Error messages](/content/content-patterns#error-messages).
+
+<BackToTop />
+
+## Numbers
+
+Use numerals in Export Service sentences and headings for numbers ‘2’ and above.
+
+However, there are a few exceptions to this rule. Spell out a number as a word if it’s:
+
+- at the start of a sentence or heading, or
+- a word in a proper noun or name.
+
+Always spell out ‘one’ and ‘zero’ in words, so users don’t confuse them with letters. That’s unless you are comparing something directly. For example, ‘Digital Services to Take Farmers to Markets is 1 of 5 measures in the Busting Congestion package.’
+
+For more information, see Numbers in the DAFF Style guide (internal DAFF staff only). Also see [Numbers and measurements](https://www.stylemanual.gov.au/grammar-punctuation-and-conventions/numbers-and-measurements).
+
+```jsx live
+<Prose>
+	<h1>Linking a business in RAM</h1>
+	<p>
+		To link up to 5 businesses, call <b>1300 287 539</b> and select{' '}
+		<b>option 3</b>
+	</p>
+	<p>
+		To link more than 5 businesses, complete the{' '}
+		<TextLinkExternal href="#">
+			Assistance to link bulk ABNs form
+		</TextLinkExternal>
+		.
+	</p>
+</Prose>
+```
+
+<BackToTop />
+
+## Please and thanks
+
+Don’t add ‘please’ and ‘thanks’ in content for normal Export Service activities.
+
+Use ‘please’ and ‘thanks’ sparingly. Only add it to content when you’re asking users to do something extra.
+
+For example, if you are asking them to give feedback on a web page. Use ‘thanks’ instead of ‘thank you’ in these instances.
+
+```jsx live
+<FormStack>
+	<H2>Thanks for your feedback</H2>
+	<Textarea label="Please tell us more" hint="Don't provide personal details" />
+</FormStack>
+```
+
+<BackToTop />
+
+## Plurals
+
+Use ‘(s)’ to indicate one or more of a word to users in the Export Service.
+
+```jsx live
+<Stack gap={1.5}>
+	<SummaryList>
+		<SummaryListItem>
+			<SummaryListItemTerm>Alternate business name(s)</SummaryListItemTerm>
+			<SummaryListItemDescription>None provided</SummaryListItemDescription>
+		</SummaryListItem>
+	</SummaryList>
+</Stack>
+```
+
+<BackToTop />
+
+## Punctuation
+
+### Commas
+
+Use commas minimally in Export Service content. Instead, break up content into short sentences with full stops where possible.
+
+Don’t use the Oxford comma. That is, a comma before the final ‘and’ in a sentence.
+
+```jsx live
+<Card shadow clickable>
+	<CardInner>
+		<Stack gap={1}>
+			<Box as="h3">
+				<CardLink href="#">Meat</CardLink>
+			</Box>
+			<Text>
+				Includes fresh meat, processed meat, and animal by-products such as
+				skins, hides, petfood, rendered products and technical products.
+			</Text>
+		</Stack>
+	</CardInner>
+</Card>
+```
+
+For more information, see Commas in the DAFF Style guide (internal DAFF staff only). Also see [Commas](https://www.stylemanual.gov.au/grammar-punctuation-and-conventions/punctuation/commas).
+
+### En dashes
+
+An en dash (also known as an en rule) is the width of the letter ‘N’. Hyphens are often used incorrectly in place of an en dash.
+
+Use an en dash (-) to:
+
+- indicate ranges in spans of figures
+- join subjects of equal weight
+- mark an abrupt change in continuity
+- introduce an explanation or provide additional detail.
+
+For more information, see En rules and Hyphens in the DAFF Style guide (internal DAFF staff only). Also see [Dashes](https://www.stylemanual.gov.au/grammar-punctuation-and-conventions/punctuation/dashes).
+
+### Exclamation marks
+
+Don’t use exclamation marks (!) in Export Service content.
+
+<BackToTop />
+
+## Types of words
+
+Go to the Macquarie Dictionary to find the spelling of words we prefer to use on the Export Service. See the DAFF Style guide (internal DAFF staff only) to access the dictionary online.
+
+### Nouns, names and labels
+
+Use capitals or Title Case on proper nouns and names only in the Export Service.
+
+Ideally, we should not need to guide users to specific parts of a web page or screen. The screen elements should be intuitive enough without the need for this.
+
+If you need to reference a name or user interface (UI) element in a sentence, you can use single quotation marks around the name to emphasise it. For example, around page names and button labels.
+
+Use sentence case on label or page names in sentences. Use lower case on label or page names on buttons. Don’t use single quotation marks around labels or names within button labels or links.
+
+Some of the preferred terms we use on common button labels in the Export Service are:
+
+- Save [element]
+- Save and exit
+- Cancel
+- Confirm and submit
+- Submit application
+- Share [element]
+- Sign in and Sign out
+- Get started
+- Start again
+- Change (instead of 'edit' or 'update')
+- Manage [element]
+
+```jsx live
+<Button>Edit registered establishments</Button>
+```
+
+For more information, see the [Button](/components/button/content) content section.
+
+### Pronouns
+
+Use personal pronouns such as ‘you’ and ‘your’ to refer to the user.
+
+Use ‘we’, ‘our’ or ‘us’ to represent Department of Agriculture, Fisheries and Forestry (DAFF).
+
+For more information, see First and second person in [Voice and tone](/content/voice-and-tone).
+
+### Verbs
+
+Use powerful verbs or ‘doing’ words in the Export Service. Powerful verbs are more descriptive and have a stronger impact on users.
+
+Use active voice and present tense where possible in the Export Service. For example, in forms or interactive experiences. It’s more direct and easier for users to interpret.
+
+For more information, see:
+
+- [Voice and tone ](/content/voice-and-tone)
+- DAFF Style guide (internal DAFF staff only)
+- [Types of words](https://www.stylemanual.gov.au/grammar-punctuation-and-conventions/types-words)
+
+<BackToTop />
+
+## Using 'for example'
+
+Use ‘x (for example, y)’ to provide an example of x when it’s not critical to understand. Using parentheses () is a mental signal that the content can be safely ignored.
+
+Use ‘x, for example y’ to provide information that is critical to act on or understand x.
+
+Don’t use ‘such as’ or ‘includes’ in place of ‘for example’.
+
+For more information, see ‘e.g.’ or ‘for example’ in the DAFF Style guide (internal DAFF staff only).
+
+```jsx live
+<Text as="p">
+	This tool is for exporting citrus fruits (for example, oranges and lemons).
+</Text>
+```
+
+```jsx live
+<Text as="p">
+	You’ll need identity documents, for example a driver licence.
+</Text>
+```
+
+<BackToTop />
+
+## Web addresses
+
+Create optimised web addresses (also known as Uniform Resource Locators [URLs]) on public web pages. This is so users and search engines can find your pages easily.
+
+A search engine optimised (SEO) URL:
+
+- includes keywords
+- is descriptive and meaningful
+- is easy to read
+- uses relevant categories/subfolders
+- has 20 to 70 characters if possible
+- is consistent with the H1 on the page if possible. But try not to repeat a word if it's already a part of the URL domain/folder URL stem.
+
+### Examples
+
+`https://exports.agriculture.gov.au/help/register-establishment`
+
+`https://exports.agriculture.gov.au/guides/export-guide-agricultural-goods`
+
+<BackToTop />
+
+## Related links
+
+- [How to create guidance in the Export Service](/guides/how-to-create-guidance)
+- [Content principles](./content-principles)
+- [Content structure](./content-structure)
+- [Voice and tone](./voice-and-tone)
+- [Content patterns](./content-patterns)
+- [Style Manual](https://www.stylemanual.gov.au)
+
+<BackToTop />
+```

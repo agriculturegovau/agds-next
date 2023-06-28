@@ -87,12 +87,18 @@ function getTemplateList() {
 				// Scroll past the header into the content area
 				// Note: We don't just use the `main` selector here as that can be different across templates
 				await page.waitForSelector('header');
-				await page.evaluate(() => {
+
+				await page.evaluate((slug) => {
 					const header = document.querySelector('header');
-					const headerParent = header.parentElement;
-					const contentArea = headerParent.nextElementSibling;
-					contentArea.scrollIntoView();
-				});
+
+					if (slug === 'error-page') {
+						header.scrollIntoView();
+					} else {
+						const headerParent = header.parentElement;
+						const contentArea = headerParent.nextElementSibling;
+						contentArea.scrollIntoView();
+					}
+				}, slug);
 
 				// Convert the screenshot into a webp image
 				const screenshotBuffer = await page.screenshot();

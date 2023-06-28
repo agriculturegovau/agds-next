@@ -1,0 +1,74 @@
+---
+title: Content patterns
+description: Reusable ways to combine content for common tasks in the Export Service.
+order: 5
+---
+
+## Declarations and consent
+
+Break up legal declarations into separate paragraphs and consent checkboxes.
+
+It’s easier for users to read and confirm their acceptance of the statements we provide. For more information, see our Legal guidance in [How to create guidance in the Export Service](/guides/how-to-write-guidance/how-to-present-guidance#legal-guidance).
+
+<BackToTop />
+
+## Error pages
+
+You can use the following content patterns for common error pages in the Export Service.
+
+### Page not found (404)
+
+Use the [Page not found (404)](/storybook/index.html?path=/story/templates-error-page--not-found) error page content if a user tries to access a page that doesn’t exist or a broken link.
+
+### Planned maintenance (503)
+
+Use the [Planned maintenance (503)](/storybook/index.html?path=/story/templates-error-page--maintenance) error page content if the Export Service is unavailable because of planned system maintenance.
+
+### Internal server error (500)
+
+Use the [Internal server error (500)](/storybook/index.html?path=/story/templates-error-page--server-error) error page content if the Export Service is unavailable due to an internal service error or outage.
+
+### Third party outage (503)
+
+Use the [Third party outage (503)](/storybook/index.html?path=/story/templates-error-page--third-party) error page content (or a variation of it) if a third-party provider experiences a system outage and their service is unavailable. For example, Digital Identity or Relationship Authorisation Manager (RAM).
+
+If the outage is planned, you can use the [Scheduled third party outage (503)](/storybook/index.html?path=/story/templates-error-page--scheduled-third-party-outage) error page content instead.
+
+<BackToTop />
+
+## 'Need more help?' callouts
+
+Use this pattern and content to give users the option to call the Export Service support desk.
+
+Use ‘Need more help?’ as the heading. Not, ‘Need help?’ or ‘For more help’.
+
+Make sure the Export Service phone number is accessible and linked. Don’t use bullet points or a colon after ‘Call’ or ‘Email’. Don’t use a full stop after the email address.
+
+```jsx live enableProse
+<Callout title="Need more help?">
+	<Prose>
+		<p>
+			Call <strong>1800 571 125</strong>, Monday to Friday, 9am to 5pm AEST
+			<br />
+			Email{' '}
+			<a href="mailto:exportservice@agriculture.gov.au">
+				exportservice@agriculture.gov.au
+			</a>
+		</p>
+	</Prose>
+</Callout>
+```
+
+For more information, see [Callout](/components/callout).
+
+<BackToTop />
+
+## Related links
+
+- [How to create guidance in the Export Service](/guides/how-to-write-guidance)
+- [Content principles](/content/content-principles)
+- [Content structure](/content/content-structure)
+- [Voice and tone](/content/voice-and-tone)
+- [Designing with content: how using content patterns can help](https://gathercontent.com/blog/designing-with-content-how-using-content-patterns-can-help)
+
+<BackToTop />

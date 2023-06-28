@@ -12,6 +12,7 @@ const NAV_ITEMS = {
 		{ label: 'Components', href: '/components' },
 		{ label: 'Patterns', href: '/patterns' },
 		{ label: 'Templates', href: '/templates' },
+		{ label: 'Content', href: '/content' },
 		{ label: 'Guides', href: '/guides' },
 	],
 	secondary: [

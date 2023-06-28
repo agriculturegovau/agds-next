@@ -296,6 +296,7 @@ export const proseClass = css({
 
 	[`figcaption${notSelector}`]: {
 		marginTop: mapSpacing(1),
+		color: boxPalette.foregroundMuted,
 	},
 
 	/**
