@@ -1,18 +1,16 @@
 import { Meta, StoryObj } from '@storybook/react';
-import { PageContent } from '@ag.ds-next/react/content';
-import { SiteLayout } from '../../../docs/content/templates/__shared/SiteLayout';
-import {
-	DataLoadingWithTables,
-	LoadingState,
-	ErrorState,
-	EmptyState,
-	FinalState,
-} from './DataLoadingWithTable';
-import { apiData } from './utils';
+import { PageContent } from '../../../docs/components/designSystemComponents';
+import { DataLoadingWithTable } from './DataLoadingWithTable';
+import { apiData, useFetchStarWarsAPI } from './utils';
 
-const meta: Meta<typeof DataLoadingWithTables> = {
+const meta: Meta<typeof DataLoadingWithTable> = {
 	title: 'Patterns/Data loading/Table',
-	component: DataLoadingWithTables,
+	component: DataLoadingWithTable,
+	render: (args) => (
+		<PageContent>
+			<DataLoadingWithTable {...args} />
+		</PageContent>
+	),
 	parameters: {
 		layout: 'fullscreen',
 	},
@@ -20,57 +18,52 @@ const meta: Meta<typeof DataLoadingWithTables> = {
 
 export default meta;
 
-export const Basic: StoryObj<typeof DataLoadingWithTables> = {
+type Story = StoryObj<typeof DataLoadingWithTable>;
+
+export const Basic: Story = {
 	name: 'Data loading with Table',
-	render: () => (
-		<SiteLayout>
+	render: function Render() {
+		const { data, loading, error } = useFetchStarWarsAPI();
+		return (
 			<PageContent>
-				<DataLoadingWithTables />
+				<DataLoadingWithTable data={data} loading={loading} error={error} />
 			</PageContent>
-		</SiteLayout>
-	),
+		);
+	},
 };
 
-export const Loading: StoryObj<typeof DataLoadingWithTables> = {
+export const Loading: StoryObj<typeof DataLoadingWithTable> = {
 	name: 'Loading state',
-	render: () => (
-		<SiteLayout>
-			<PageContent>
-				<LoadingState />
-			</PageContent>
-		</SiteLayout>
-	),
+	args: {
+		data: undefined,
+		loading: true,
+		error: false,
+	},
 };
 
-export const Error: StoryObj<typeof DataLoadingWithTables> = {
+export const Error: StoryObj<typeof DataLoadingWithTable> = {
 	name: 'Error state',
-	render: () => (
-		<SiteLayout>
-			<PageContent>
-				<ErrorState />
-			</PageContent>
-		</SiteLayout>
-	),
+	args: {
+		data: undefined,
+		loading: false,
+		error: true,
+	},
 };
 
-export const Empty: StoryObj<typeof DataLoadingWithTables> = {
+export const Empty: StoryObj<typeof DataLoadingWithTable> = {
 	name: 'Empty state',
-	render: () => (
-		<SiteLayout>
-			<PageContent>
-				<EmptyState />
-			</PageContent>
-		</SiteLayout>
-	),
+	args: {
+		data: { results: [] },
+		loading: false,
+		error: false,
+	},
 };
 
-export const Final: StoryObj<typeof DataLoadingWithTables> = {
+export const Final: StoryObj<typeof DataLoadingWithTable> = {
 	name: 'Final state',
-	render: () => (
-		<SiteLayout>
-			<PageContent>
-				<FinalState items={apiData.results} />
-			</PageContent>
-		</SiteLayout>
-	),
+	args: {
+		data: apiData,
+		loading: false,
+		error: false,
+	},
 };

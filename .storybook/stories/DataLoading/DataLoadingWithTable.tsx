@@ -13,11 +13,17 @@ import { VisuallyHidden } from '@ag.ds-next/react/a11y';
 import { AlertFilledIcon, HelpIcon } from '@ag.ds-next/react/icon';
 import { Heading } from '@ag.ds-next/react/heading';
 import { Button } from '@ag.ds-next/react/button';
-import { ApiData, numberFormatter, useFetchStarWarsAPI } from './utils';
+import { ApiData, numberFormatter } from './utils';
 
-export function DataLoadingWithTables() {
-	const { data, loading, error } = useFetchStarWarsAPI();
-
+export function DataLoadingWithTable({
+	data,
+	loading,
+	error,
+}: {
+	data: ApiData | undefined;
+	loading: boolean;
+	error: boolean;
+}) {
 	if (loading) {
 		return <LoadingState />;
 	}
@@ -33,21 +39,24 @@ export function DataLoadingWithTables() {
 	return <FinalState items={data.results} />;
 }
 
-export function LoadingState() {
+const tableHeadingId = 'star-wars-planets-table-heading';
+
+function LoadingState() {
 	return (
 		<Stack gap={2}>
-			<Heading type="h1">Star wars planets</Heading>
+			<Heading type="h1" id={tableHeadingId}>
+				Star wars planets
+			</Heading>
 			<TableWrapper>
-				<Table>
+				<Table tableLayout="fixed" aria-labelledby={tableHeadingId}>
 					<TableHead>
 						<tr>
-							<TableHeader width="20%" scope="col">
-								Name
+							<TableHeader width="10rem" scope="col">
+								ID
 							</TableHeader>
-							<TableHeader width="60%" scope="col">
-								Climate
-							</TableHeader>
-							<TableHeader width="20%" textAlign="right" scope="col">
+							<TableHeader scope="col">Name</TableHeader>
+							<TableHeader scope="col">Climate</TableHeader>
+							<TableHeader width="10rem" textAlign="right" scope="col">
 								Population
 							</TableHeader>
 						</tr>
@@ -60,7 +69,11 @@ export function LoadingState() {
 									<VisuallyHidden>Loading</VisuallyHidden>
 								</TableCell>
 								<TableCell>
-									<SkeletonText width="50%" />
+									<SkeletonText />
+									<VisuallyHidden>Loading</VisuallyHidden>
+								</TableCell>
+								<TableCell>
+									<SkeletonText />
 									<VisuallyHidden>Loading</VisuallyHidden>
 								</TableCell>
 								<TableCell>
@@ -76,10 +89,12 @@ export function LoadingState() {
 	);
 }
 
-export function ErrorState() {
+function ErrorState() {
 	return (
 		<Stack gap={2}>
-			<Heading type="h1">Star wars planets</Heading>
+			<Heading type="h1" id={tableHeadingId}>
+				Star wars planets
+			</Heading>
 			<Stack gap={2}>
 				<Stack gap={1}>
 					<AlertFilledIcon color="error" size="lg" />
@@ -98,10 +113,12 @@ export function ErrorState() {
 	);
 }
 
-export function EmptyState() {
+function EmptyState() {
 	return (
 		<Stack gap={2}>
-			<Heading type="h1">Star wars planets</Heading>
+			<Heading type="h1" id={tableHeadingId}>
+				Star wars planets
+			</Heading>
 			<Stack gap={2}>
 				<Stack gap={1}>
 					<HelpIcon size="lg" color="muted" />
@@ -117,36 +134,37 @@ export function EmptyState() {
 	);
 }
 
-export function FinalState({ items }: { items: ApiData['results'] }) {
+function FinalState({ items }: { items: NonNullable<ApiData['results']> }) {
 	return (
 		<Stack gap={2}>
-			<Heading type="h1">Star wars planets</Heading>
+			<Heading type="h1" id={tableHeadingId}>
+				Star wars planets
+			</Heading>
 			<TableWrapper>
-				<Table>
+				<Table tableLayout="fixed" aria-labelledby={tableHeadingId}>
 					<TableHead>
 						<tr>
-							<TableHeader width="20%" scope="col">
-								Name
+							<TableHeader width="10rem" scope="col">
+								ID
 							</TableHeader>
-							<TableHeader width="60%" scope="col">
-								Climate
-							</TableHeader>
-							<TableHeader width="20%" textAlign="right" scope="col">
+							<TableHeader scope="col">Name</TableHeader>
+							<TableHeader scope="col">Climate</TableHeader>
+							<TableHeader width="10rem" textAlign="right" scope="col">
 								Population
 							</TableHeader>
 						</tr>
 					</TableHead>
 					<TableBody>
 						{items.map((item) => {
-							const parsedPopulation = parseInt(item.population);
 							return (
-								<tr key={item.name}>
+								<tr key={item.id}>
+									<TableCell>{item.id}</TableCell>
 									<TableCell>{item.name}</TableCell>
 									<TableCell>{item.climate}</TableCell>
 									<TableCell textAlign="right">
-										{isNaN(parsedPopulation)
-											? 'Unknown'
-											: numberFormatter.format(parsedPopulation)}
+										{typeof item.population === 'number'
+											? numberFormatter.format(item.population)
+											: 'Unknown'}
 									</TableCell>
 								</tr>
 							);

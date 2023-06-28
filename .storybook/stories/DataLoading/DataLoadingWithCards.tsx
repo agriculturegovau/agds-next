@@ -8,11 +8,17 @@ import { Heading } from '@ag.ds-next/react/heading';
 import { VisuallyHidden } from '@ag.ds-next/react/a11y';
 import { AlertFilledIcon, HelpIcon } from '@ag.ds-next/react/icon';
 import { Button } from '@ag.ds-next/react/button';
-import { numberFormatter, useFetchStarWarsAPI } from './utils';
+import { ApiData, numberFormatter } from './utils';
 
-export function DataLoadingWithCards() {
-	const { data, loading, error } = useFetchStarWarsAPI();
-
+export function DataLoadingWithCards({
+	data,
+	loading,
+	error,
+}: {
+	data: ApiData | undefined;
+	loading: boolean;
+	error: boolean;
+}) {
 	if (loading) {
 		return <LoadingState />;
 	}
@@ -28,7 +34,7 @@ export function DataLoadingWithCards() {
 	return <FinalState items={data.results} />;
 }
 
-export function LoadingState() {
+function LoadingState() {
 	return (
 		<Stack gap={2}>
 			<Heading type="h1">Star wars planets</Heading>
@@ -49,7 +55,7 @@ export function LoadingState() {
 	);
 }
 
-export function ErrorState({}: {}) {
+function ErrorState() {
 	return (
 		<Stack gap={2}>
 			<Heading type="h1">Star wars planets</Heading>
@@ -71,7 +77,7 @@ export function ErrorState({}: {}) {
 	);
 }
 
-export function EmptyState() {
+function EmptyState() {
 	return (
 		<Stack gap={2}>
 			<Heading type="h1">Star wars planets</Heading>
@@ -90,19 +96,14 @@ export function EmptyState() {
 	);
 }
 
-export function FinalState({
-	items,
-}: {
-	items: { population: string; name: string }[];
-}) {
+function FinalState({ items }: { items: NonNullable<ApiData['results']> }) {
 	return (
 		<Stack gap={2}>
 			<Heading type="h1">Star wars planets</Heading>
 			<Columns as="ul" cols={[1, 2, 3, 3]}>
 				{items.map((item) => {
-					const parsedPopulation = parseInt(item.population);
 					return (
-						<Card as="li" key={item.name} shadow clickable>
+						<Card as="li" key={item.id} shadow clickable>
 							<CardInner>
 								<Stack gap={1}>
 									<Heading type="h3">
@@ -110,9 +111,9 @@ export function FinalState({
 									</Heading>
 									<Text as="p">
 										Population:{' '}
-										{isNaN(parsedPopulation)
-											? 'Unknown'
-											: numberFormatter.format(parsedPopulation)}
+										{typeof item.population === 'number'
+											? numberFormatter.format(item.population)
+											: 'Unknown'}
 									</Text>
 								</Stack>
 							</CardInner>

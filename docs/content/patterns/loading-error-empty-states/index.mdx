@@ -82,7 +82,7 @@ If applicable, use a [Button](/components-button) component to provide the user 
 Below is an example of an error that occured at the page level.
 
 ```jsx live
-<Stack gap={2}>
+<Stack gap={2} alignItems="flex-start">
 	<Stack gap={1}>
 		<AlertFilledIcon color="error" size="lg" />
 		<Heading type="h2" fontSize="lg">
@@ -90,9 +90,7 @@ Below is an example of an error that occured at the page level.
 		</Heading>
 		<Text>There was an error loading the data. Click retry to try again.</Text>
 	</Stack>
-	<div>
-		<Button>Retry</Button>
-	</div>
+	<Button>Retry</Button>
 </Stack>
 ```
 
@@ -118,35 +116,32 @@ Below is an example of an error that occured at the component level.
 
 The empty state is displayed when data has loaded succesfully, but there is nothing available to show to the user.
 
-This state could potentially be caused by the user visiting the page for the first time or by applying filters that do not match any results.
+This state could potentially be a result of either:
 
-This should not be confused with the [Error state](#error-state).
+- a user visting a service for the time and there being no data to display
+- a user applying settings or filters which ends up in no results being found
 
-If this empty state has been caused by, use a [Button](/components-button) component to provide the user with a way of clearing any settings.
+Depending on what caused the empty state, provide clear messaging and a helpful action to get rid of the empty state via a [Button](/components/button) component.
 
-### Page level empty state
+### Page level empty state examples
+
+Below is an example of two different empty states at the page level.
 
 ```jsx live
-<Stack gap={2}>
+<Stack gap={2} alignItems="flex-start">
 	<Stack gap={1}>
-		<HelpIcon size="lg" color="muted" />
+		<FactoryIcon size="lg" color="muted" />
 		<Heading type="h2" fontSize="lg">
 			Add an establishment
 		</Heading>
 		<Text>You haven’t added any establishments yet.</Text>
 	</Stack>
-	<div>
-		<Button>Clear filters</Button>
-	</div>
+	<Button>Add establishment</Button>
 </Stack>
 ```
 
-### Page level empty state examples
-
-Below is an example of an empty state at the page level.
-
 ```jsx live
-<Stack gap={2}>
+<Stack gap={2} alignItems="flex-start">
 	<Stack gap={1}>
 		<HelpIcon size="lg" color="muted" />
 		<Heading type="h2" fontSize="lg">
@@ -154,9 +149,7 @@ Below is an example of an empty state at the page level.
 		</Heading>
 		<Text>Try adjusting your filter options.</Text>
 	</Stack>
-	<div>
-		<Button>Clear filters</Button>
-	</div>
+	<Button>Clear filters</Button>
 </Stack>
 ```
 

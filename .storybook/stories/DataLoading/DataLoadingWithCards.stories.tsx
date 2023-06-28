@@ -1,18 +1,16 @@
 import { Meta, StoryObj } from '@storybook/react';
 import { PageContent } from '../../../docs/components/designSystemComponents';
-import { SiteLayout } from '../../../docs/content/templates/__shared/SiteLayout';
-import {
-	DataLoadingWithCards,
-	LoadingState,
-	ErrorState,
-	FinalState,
-	EmptyState,
-} from './DataLoadingWithCards';
-import { apiData } from './utils';
+import { DataLoadingWithCards } from './DataLoadingWithCards';
+import { apiData, useFetchStarWarsAPI } from './utils';
 
 const meta: Meta<typeof DataLoadingWithCards> = {
 	title: 'Patterns/Data loading/Cards',
 	component: DataLoadingWithCards,
+	render: (args) => (
+		<PageContent>
+			<DataLoadingWithCards {...args} />
+		</PageContent>
+	),
 	parameters: {
 		layout: 'fullscreen',
 	},
@@ -20,57 +18,52 @@ const meta: Meta<typeof DataLoadingWithCards> = {
 
 export default meta;
 
-export const Basic: StoryObj<typeof DataLoadingWithCards> = {
+type Story = StoryObj<typeof DataLoadingWithCards>;
+
+export const Basic: Story = {
 	name: 'Data loading with Cards',
-	render: () => (
-		<SiteLayout>
+	render: function Render() {
+		const { data, loading, error } = useFetchStarWarsAPI();
+		return (
 			<PageContent>
-				<DataLoadingWithCards />
+				<DataLoadingWithCards data={data} loading={loading} error={error} />
 			</PageContent>
-		</SiteLayout>
-	),
+		);
+	},
 };
 
-export const Loading: StoryObj<typeof DataLoadingWithCards> = {
+export const Loading: Story = {
 	name: 'Loading state',
-	render: () => (
-		<SiteLayout>
-			<PageContent>
-				<LoadingState />
-			</PageContent>
-		</SiteLayout>
-	),
+	args: {
+		data: undefined,
+		loading: true,
+		error: false,
+	},
 };
 
-export const Error: StoryObj<typeof DataLoadingWithCards> = {
+export const Error: Story = {
 	name: 'Error state',
-	render: () => (
-		<SiteLayout>
-			<PageContent>
-				<ErrorState onRetryClick={console.log} />
-			</PageContent>
-		</SiteLayout>
-	),
+	args: {
+		data: undefined,
+		loading: false,
+		error: true,
+	},
 };
 
-export const Empty: StoryObj<typeof DataLoadingWithCards> = {
+export const Empty: Story = {
 	name: 'Empty state',
-	render: () => (
-		<SiteLayout>
-			<PageContent>
-				<EmptyState />
-			</PageContent>
-		</SiteLayout>
-	),
+	args: {
+		data: { results: [] },
+		loading: false,
+		error: false,
+	},
 };
 
-export const Final: StoryObj<typeof DataLoadingWithCards> = {
+export const Final: Story = {
 	name: 'Final state',
-	render: () => (
-		<SiteLayout>
-			<PageContent>
-				<FinalState items={apiData.results} />
-			</PageContent>
-		</SiteLayout>
-	),
+	args: {
+		data: apiData,
+		loading: false,
+		error: false,
+	},
 };

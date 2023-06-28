@@ -5,15 +5,25 @@ export const numberFormatter = new Intl.NumberFormat();
 // Taken from https://swapi.dev
 export const apiData = {
 	results: [
-		{ name: 'Tatooine', climate: 'arid', population: '200000' },
-		{ name: 'Alderaan', climate: 'temperate', population: '2000000000' },
-		{ name: 'Yavin IV', climate: 'temperate, tropical', population: '1000' },
-		{ name: 'Hoth', climate: 'frozen', population: 'unknown' },
-		{ name: 'Dagobah', climate: 'murky', population: 'unknown' },
-		{ name: 'Bespin', climate: 'temperate', population: '6000000' },
-		{ name: 'Endor', climate: 'temperate', population: '30000000' },
-		{ name: 'Naboo', climate: 'temperate', population: '4500000000' },
-		{ name: 'Coruscant', climate: 'temperate', population: '1000000000000' },
+		{ id: 1, name: 'Tatooine', climate: 'Arid', population: 200000 },
+		{ id: 2, name: 'Alderaan', climate: 'Temperate', population: 2000000000 },
+		{
+			id: 3,
+			name: 'Yavin IV',
+			climate: 'Temperate, Tropical',
+			population: 1000,
+		},
+		{ id: 4, name: 'Hoth', climate: 'Frozen', population: 'unknown' },
+		{ id: 5, name: 'Dagobah', climate: 'Murky', population: 'unknown' },
+		{ id: 6, name: 'Bespin', climate: 'Temperate', population: 6000000 },
+		{ id: 7, name: 'Endor', climate: 'Temperate', population: 30000000 },
+		{ id: 8, name: 'Naboo', climate: 'Temperate', population: 4500000000 },
+		{
+			id: 9,
+			name: 'Coruscant',
+			climate: 'Temperate',
+			population: 1000000000000,
+		},
 	],
 };
 
@@ -26,14 +36,10 @@ async function fetcher() {
 }
 
 export function useFetchStarWarsAPI() {
-	const { data, error, mutate } = useSWR<ApiData>(
-		'start-wars-planets',
-		fetcher
-	);
+	const { data, error } = useSWR<ApiData>('/api/star-wars-planets', fetcher);
 	return {
-		loading: !data && !error,
 		data,
+		loading: !data && !error,
 		error,
-		retry: () => mutate(),
 	};
 }
