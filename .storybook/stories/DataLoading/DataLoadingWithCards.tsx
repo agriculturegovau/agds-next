@@ -32,8 +32,8 @@ export function LoadingState() {
 	return (
 		<Stack gap={2}>
 			<Heading type="h1">Star wars planets</Heading>
-			<Columns as="ul" cols={[1, 2, 3, 3, 4]}>
-				{Array.from(Array(10).keys()).map((i) => (
+			<Columns as="ul" cols={[1, 2, 3, 3]}>
+				{Array.from(Array(9).keys()).map((i) => (
 					<Card as="li" key={i} shadow>
 						<CardInner>
 							<Stack gap={1}>
@@ -49,7 +49,7 @@ export function LoadingState() {
 	);
 }
 
-export function ErrorState() {
+export function ErrorState({}: {}) {
 	return (
 		<Stack gap={2}>
 			<Heading type="h1">Star wars planets</Heading>
@@ -75,11 +75,16 @@ export function EmptyState() {
 	return (
 		<Stack gap={2}>
 			<Heading type="h1">Star wars planets</Heading>
-			<Stack gap={1}>
-				<HelpIcon size="lg" color="muted" />
-				<Heading type="h1" fontSize="lg">
-					No results found
-				</Heading>
+			<Stack gap={2}>
+				<Stack gap={1}>
+					<HelpIcon size="lg" color="muted" />
+					<Heading type="h2" fontSize="lg">
+						No planets found
+					</Heading>
+				</Stack>
+				<div>
+					<Button>Add new planet</Button>
+				</div>
 			</Stack>
 		</Stack>
 	);

@@ -3,7 +3,7 @@ import useSWR from 'swr';
 export const numberFormatter = new Intl.NumberFormat();
 
 // Taken from https://swapi.dev
-export const fakeApiData = {
+export const apiData = {
 	results: [
 		{ name: 'Tatooine', climate: 'arid', population: '200000' },
 		{ name: 'Alderaan', climate: 'temperate', population: '2000000000' },
@@ -17,19 +17,23 @@ export const fakeApiData = {
 	],
 };
 
-export type ApiData = typeof fakeApiData;
+export type ApiData = typeof apiData;
 
 async function fetcher() {
 	// Fake a slow network
 	await new Promise((resolve) => setTimeout(resolve, 2500));
-	return fakeApiData;
+	return apiData;
 }
 
 export function useFetchStarWarsAPI() {
-	const { data, error } = useSWR<ApiData>('start-wars-planets', fetcher);
+	const { data, error, mutate } = useSWR<ApiData>(
+		'start-wars-planets',
+		fetcher
+	);
 	return {
 		loading: !data && !error,
 		data,
 		error,
+		retry: () => mutate(),
 	};
 }

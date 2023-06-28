@@ -8,10 +8,10 @@ import {
 	FinalState,
 	EmptyState,
 } from './DataLoadingWithCards';
-import { fakeApiData } from './utils';
+import { apiData } from './utils';
 
 const meta: Meta<typeof DataLoadingWithCards> = {
-	title: 'Patterns/Data loading',
+	title: 'Patterns/Data loading/Cards',
 	component: DataLoadingWithCards,
 	parameters: {
 		layout: 'fullscreen',
@@ -32,7 +32,7 @@ export const Basic: StoryObj<typeof DataLoadingWithCards> = {
 };
 
 export const Loading: StoryObj<typeof DataLoadingWithCards> = {
-	name: 'Data loading with Cards - Loading state',
+	name: 'Loading state',
 	render: () => (
 		<SiteLayout>
 			<PageContent>
@@ -43,18 +43,18 @@ export const Loading: StoryObj<typeof DataLoadingWithCards> = {
 };
 
 export const Error: StoryObj<typeof DataLoadingWithCards> = {
-	name: 'Data loading with Cards - Error state',
+	name: 'Error state',
 	render: () => (
 		<SiteLayout>
 			<PageContent>
-				<ErrorState />
+				<ErrorState onRetryClick={console.log} />
 			</PageContent>
 		</SiteLayout>
 	),
 };
 
 export const Empty: StoryObj<typeof DataLoadingWithCards> = {
-	name: 'Data loading with Cards - Empty state',
+	name: 'Empty state',
 	render: () => (
 		<SiteLayout>
 			<PageContent>
@@ -65,11 +65,11 @@ export const Empty: StoryObj<typeof DataLoadingWithCards> = {
 };
 
 export const Final: StoryObj<typeof DataLoadingWithCards> = {
-	name: 'Data loading with Cards - Final state',
+	name: 'Final state',
 	render: () => (
 		<SiteLayout>
 			<PageContent>
-				<FinalState items={fakeApiData.results} />
+				<FinalState items={apiData.results} />
 			</PageContent>
 		</SiteLayout>
 	),

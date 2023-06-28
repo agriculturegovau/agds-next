@@ -2,7 +2,6 @@ import { Stack } from '@ag.ds-next/react/stack';
 import {
 	TableWrapper,
 	Table,
-	TableCaption,
 	TableCell,
 	TableHeader,
 	TableHead,
@@ -103,11 +102,16 @@ export function EmptyState() {
 	return (
 		<Stack gap={2}>
 			<Heading type="h1">Star wars planets</Heading>
-			<Stack gap={1}>
-				<HelpIcon size="lg" color="muted" />
-				<Heading type="h1" fontSize="lg">
-					No results found
-				</Heading>
+			<Stack gap={2}>
+				<Stack gap={1}>
+					<HelpIcon size="lg" color="muted" />
+					<Heading type="h2" fontSize="lg">
+						No planets found
+					</Heading>
+				</Stack>
+				<div>
+					<Button>Add new planet</Button>
+				</div>
 			</Stack>
 		</Stack>
 	);
@@ -119,7 +123,6 @@ export function FinalState({ items }: { items: ApiData['results'] }) {
 			<Heading type="h1">Star wars planets</Heading>
 			<TableWrapper>
 				<Table>
-					<TableCaption>Star wars planets</TableCaption>
 					<TableHead>
 						<tr>
 							<TableHeader width="20%" scope="col">

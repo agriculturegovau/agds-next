@@ -8,10 +8,10 @@ import {
 	EmptyState,
 	FinalState,
 } from './DataLoadingWithTable';
-import { fakeApiData } from './utils';
+import { apiData } from './utils';
 
 const meta: Meta<typeof DataLoadingWithTables> = {
-	title: 'Patterns/Data loading',
+	title: 'Patterns/Data loading/Table',
 	component: DataLoadingWithTables,
 	parameters: {
 		layout: 'fullscreen',
@@ -32,7 +32,7 @@ export const Basic: StoryObj<typeof DataLoadingWithTables> = {
 };
 
 export const Loading: StoryObj<typeof DataLoadingWithTables> = {
-	name: 'Data loading with Table - Loading state',
+	name: 'Loading state',
 	render: () => (
 		<SiteLayout>
 			<PageContent>
@@ -43,7 +43,7 @@ export const Loading: StoryObj<typeof DataLoadingWithTables> = {
 };
 
 export const Error: StoryObj<typeof DataLoadingWithTables> = {
-	name: 'Data loading with table - Error state',
+	name: 'Error state',
 	render: () => (
 		<SiteLayout>
 			<PageContent>
@@ -54,7 +54,7 @@ export const Error: StoryObj<typeof DataLoadingWithTables> = {
 };
 
 export const Empty: StoryObj<typeof DataLoadingWithTables> = {
-	name: 'Data loading with table - Empty state',
+	name: 'Empty state',
 	render: () => (
 		<SiteLayout>
 			<PageContent>
@@ -65,11 +65,11 @@ export const Empty: StoryObj<typeof DataLoadingWithTables> = {
 };
 
 export const Final: StoryObj<typeof DataLoadingWithTables> = {
-	name: 'Data loading with table - Final state',
+	name: 'Final state',
 	render: () => (
 		<SiteLayout>
 			<PageContent>
-				<FinalState items={fakeApiData.results} />
+				<FinalState items={apiData.results} />
 			</PageContent>
 		</SiteLayout>
 	),
