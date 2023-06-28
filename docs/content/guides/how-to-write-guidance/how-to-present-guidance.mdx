@@ -342,56 +342,56 @@ A user must select the checkbox to confirm their consent and continue to move th
 
 - **consider where to publish legal content online**. Your legal content may be most appropriate within a task or informational page within the Export Service. However, it may also be possible to place legal disclaimers on the DAFF [Disclaimer](https://www.agriculture.gov.au/about/disclaimer) or [Privacy](https://www.agriculture.gov.au/about/commitment/privacy) web pages. Seek the Principal Director’s approval to add such content.
 
-<DontHeading />- **use ‘legalese’**. Legal content is often difficult for users
-to understand. Minimise legalese where possible. But it still needs to be
-accurate under legislation and its intent for users.
+<DontHeading />
+
+- **use ‘legalese’**. Legal content is often difficult for users
+  to understand. Minimise legalese where possible. But it still needs to be
+  accurate under legislation and its intent for users.
 
 - **use complex language for legal terms if possible**. Consider if you can substitute more simple words. You may be able to work with the relevant legal team to amend legal terms in some instances.
 
 ```jsx live
-<Prose>
-	<h2>Declarations and concent</h2>
-	<p>I understand that:</p>
-	<ul>
-		<li>
-			it’s a criminal offence under the Criminal Code Act 1995 to knowingly give
-			false or misleading information to a Commonwealth officer exercising
-			powers under Commonwealth law
-		</li>
-
-		<li>
-			a person may commit an offence or be liable to a civil penalty if they
-			make a false or misleading statement in an application or provide false or
-			misleading information or documents (see sections 136.1, 137.1 and 137.2
-			of the Criminal Code Act 1995 and sections 367, 368 and 369 of the Export
-			Control Act 2020).
-		</li>
-	</ul>
-	<p>I declare that:</p>
-	<ul>
-		<li>the information I’ve provided is true and correct</li>
-		<li>
-			I’ve conducted the appropriate due diligence to compile relevant
-			information on the person to be added to management and control
-		</li>
-		<li>
-			I have the consent of individuals whose personal information and sensitive
-			information is included in this application to disclose their information
-			to the department
-		</li>
-		<li>
-			I have read and understood the{' '}
-			<TextLinkExternal href="#">Privacy Notice</TextLinkExternal>
-		</li>
-	</ul>
-	<div className="agds-prose-block">
-		<Checkbox checked={false}>
-			I agree. All applicants consent to the collection, use and disclosure of
-			their information to the relevant authorities in the importing country as
-			outlined in the privacy notice.
-		</Checkbox>
-	</div>
-</Prose>
+<FormStack>
+	<H2>Declarations and consent</H2>
+	<Text as="p">
+		Select each checkbox to confirm that you understand and agree with the
+		following statements.
+	</Text>
+	<Checkbox checked={false}>
+		I declare that the information I’ve provided is true and correct.
+	</Checkbox>
+	<Checkbox checked={false}>
+		I understand that it’s a criminal offence under the Criminal Code Act 1995
+		to knowingly give false or misleading information to a Commonwealth officer
+		exercising powers under Commonwealth law.
+	</Checkbox>
+	<Checkbox checked={false}>
+		I understand that I may commit an offence or be liable to a civil penalty if
+		I make a false or misleading statement in an application or provide false or
+		misleading information or documents. (See sections 136.1, 137.1 and 137.2 of
+		the Criminal Code Act 1995 and sections 367, 368, 369 of the Export Control
+		Act 2020.)
+	</Checkbox>
+	<Checkbox checked={false}>
+		I declare that I’ve read and understood the{' '}
+		<TextLinkExternal href="https://exports.agriculture.gov.au/about/privacy">
+			Privacy notice
+		</TextLinkExternal>
+	</Checkbox>
+	<Checkbox checked={false}>
+		I consent to the collection, use and disclosure of my information to the
+		relevant authorities in the importing country as outlined in the privacy
+		notice.
+	</Checkbox>
+	<Checkbox checked={false}>
+		I understand that checking these boxes has the same legal status as signing
+		a paper or PDF form.
+	</Checkbox>
+	<ButtonGroup>
+		<Button variant="primary">Submit application</Button>
+		<Button variant="tertiary">Cancel</Button>
+	</ButtonGroup>
+</FormStack>
 ```
 
 The relevant legal team must provide and approve legal guidance. However, legal services can be costly.
