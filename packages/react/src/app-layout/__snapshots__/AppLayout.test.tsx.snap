@@ -3,10 +3,10 @@
 exports[`AppLayout renders correctly 1`] = `
 <div>
   <div
-    class="css-1q8dikz-AppLayoutGrid"
+    class="css-4lqw0h-AppLayoutGrid"
   >
     <header
-      class="css-10bmmus-dark-boxStyles-AppLayoutHeader"
+      class="css-zl5uc2-dark-boxStyles-AppLayoutHeader"
       id="header"
     >
       <div
@@ -62,7 +62,7 @@ exports[`AppLayout renders correctly 1`] = `
           </div>
         </a>
         <a
-          class="css-1kt9evn-boxStyles-AppLayoutHeaderAccount"
+          class="css-32sbo0-boxStyles-AppLayoutHeaderAccount"
           href="/account/preferences"
         >
           <div
@@ -88,7 +88,7 @@ exports[`AppLayout renders correctly 1`] = `
         </a>
       </div>
       <div
-        class="css-wbnnm8-boxStyles-AppLayoutHeaderNav"
+        class="css-1sjsayx-boxStyles-AppLayoutHeaderNav"
       >
         <button
           class="css-lha977-BaseButton-boxStyles-AppLayoutHeaderNavMenuButton"
@@ -120,7 +120,7 @@ exports[`AppLayout renders correctly 1`] = `
           </span>
         </button>
         <a
-          class="css-9flucs-boxStyles-AppLayoutHeaderAccount"
+          class="css-ewmtp9-boxStyles-AppLayoutHeaderAccount"
           href="/account/preferences"
         >
           <div
@@ -147,7 +147,7 @@ exports[`AppLayout renders correctly 1`] = `
       </div>
     </header>
     <aside
-      class="css-1r9ioti-boxStyles-AppLayoutSidebar"
+      class="css-odyicp-boxStyles-AppLayoutSidebar"
     >
       <nav
         aria-label="main"

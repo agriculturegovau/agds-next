@@ -19,7 +19,7 @@ import {
 	AppLayoutFooterDivider,
 } from './index';
 
-function AppLayoutTemplate({ focusMode }: AppLayoutProps) {
+function AppLayoutTemplate({ focusMode = false }: AppLayoutProps) {
 	const year = useMemo(() => new Date().getFullYear(), []);
 	return (
 		<Fragment>
