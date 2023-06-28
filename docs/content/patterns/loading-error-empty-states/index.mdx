@@ -3,6 +3,7 @@ title: Loading, empty and error states
 group: Patterns
 description: When loading data in an application, it is important to consider and design for loading, empty, and error states. These states will help set user expectations and prevent them from assuming that the interface is unresponsive.
 version: 1.0.0
+storybookPath: /story/patterns-data-loading--cards
 ---
 
 ## Loading state
@@ -11,7 +12,7 @@ The loading state provides feedback to users that data is being loaded.
 
 Loading states can reduce uncertainty for the user by explaining what is happening and preparing them for what is coming up next.
 
-Use [Skeleton components](/components/skeleton) as visual placeholders for information while data is still loading.
+[Skeleton components](/components/skeleton) can be used as visual placeholders for information that is still loading - e.g. cells inside of a table.
 
 ### Table loading state example
 
@@ -118,9 +119,28 @@ Below is an example of an error that occured at the component level.
 
 The empty state is displayed when data has loaded succesfully, but there is nothing available to show to the user.
 
+This state could potentially be caused by the user visiting the page for the first time or by applying filters that do not match any results.
+
 This should not be confused with the [Error state](#error-state).
 
-If applicable, use a [Button](/components-button) component to provide the user with a way of clearing any settings that may have caused the empty state.
+If this empty state has been caused by, use a [Button](/components-button) component to provide the user with a way of clearing any settings.
+
+### Page level empty state
+
+```jsx live
+<Stack gap={2}>
+	<Stack gap={1}>
+		<HelpIcon size="lg" color="muted" />
+		<Heading type="h2" fontSize="lg">
+			Add an establishment
+		</Heading>
+		<Text>You haven’t added any establishments yet.</Text>
+	</Stack>
+	<div>
+		<Button>Clear filters</Button>
+	</div>
+</Stack>
+```
 
 ### Page level empty state examples
 

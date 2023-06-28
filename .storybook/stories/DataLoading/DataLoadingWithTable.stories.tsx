@@ -1,18 +1,18 @@
 import { Meta, StoryObj } from '@storybook/react';
-import { PageContent } from '../../../docs/components/designSystemComponents';
+import { PageContent } from '@ag.ds-next/react/content';
 import { SiteLayout } from '../../../docs/content/templates/__shared/SiteLayout';
 import {
-	DataLoadingWithCards,
+	DataLoadingWithTables,
 	LoadingState,
 	ErrorState,
-	FinalState,
 	EmptyState,
-} from './DataLoadingWithCards';
+	FinalState,
+} from './DataLoadingWithTable';
 import { fakeApiData } from './utils';
 
-const meta: Meta<typeof DataLoadingWithCards> = {
+const meta: Meta<typeof DataLoadingWithTables> = {
 	title: 'Patterns/Data loading',
-	component: DataLoadingWithCards,
+	component: DataLoadingWithTables,
 	parameters: {
 		layout: 'fullscreen',
 	},
@@ -20,19 +20,19 @@ const meta: Meta<typeof DataLoadingWithCards> = {
 
 export default meta;
 
-export const Basic: StoryObj<typeof DataLoadingWithCards> = {
-	name: 'Data loading with Cards',
+export const Basic: StoryObj<typeof DataLoadingWithTables> = {
+	name: 'Data loading with Table',
 	render: () => (
 		<SiteLayout>
 			<PageContent>
-				<DataLoadingWithCards />
+				<DataLoadingWithTables />
 			</PageContent>
 		</SiteLayout>
 	),
 };
 
-export const Loading: StoryObj<typeof DataLoadingWithCards> = {
-	name: 'Data loading with Cards - Loading state',
+export const Loading: StoryObj<typeof DataLoadingWithTables> = {
+	name: 'Data loading with Table - Loading state',
 	render: () => (
 		<SiteLayout>
 			<PageContent>
@@ -42,8 +42,8 @@ export const Loading: StoryObj<typeof DataLoadingWithCards> = {
 	),
 };
 
-export const Error: StoryObj<typeof DataLoadingWithCards> = {
-	name: 'Data loading with Cards - Error state',
+export const Error: StoryObj<typeof DataLoadingWithTables> = {
+	name: 'Data loading with table - Error state',
 	render: () => (
 		<SiteLayout>
 			<PageContent>
@@ -53,8 +53,8 @@ export const Error: StoryObj<typeof DataLoadingWithCards> = {
 	),
 };
 
-export const Empty: StoryObj<typeof DataLoadingWithCards> = {
-	name: 'Data loading with Cards - Empty state',
+export const Empty: StoryObj<typeof DataLoadingWithTables> = {
+	name: 'Data loading with table - Empty state',
 	render: () => (
 		<SiteLayout>
 			<PageContent>
@@ -64,8 +64,8 @@ export const Empty: StoryObj<typeof DataLoadingWithCards> = {
 	),
 };
 
-export const Final: StoryObj<typeof DataLoadingWithCards> = {
-	name: 'Data loading with Cards - Final state',
+export const Final: StoryObj<typeof DataLoadingWithTables> = {
+	name: 'Data loading with table - Final state',
 	render: () => (
 		<SiteLayout>
 			<PageContent>

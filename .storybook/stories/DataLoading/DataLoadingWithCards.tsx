@@ -1,5 +1,3 @@
-import { Fragment, useRef } from 'react';
-import useSWR from 'swr';
 import { Stack } from '@ag.ds-next/react/stack';
 import { SkeletonText } from '@ag.ds-next/react/skeleton';
 import { Text } from '@ag.ds-next/react/text';
@@ -8,61 +6,114 @@ import { Columns } from '@ag.ds-next/react/columns';
 import { SkeletonHeading } from '@ag.ds-next/react/skeleton';
 import { Heading } from '@ag.ds-next/react/heading';
 import { VisuallyHidden } from '@ag.ds-next/react/a11y';
-import { fetcher, numberFormatter } from './utils';
+import { AlertFilledIcon, HelpIcon } from '@ag.ds-next/react/icon';
+import { Button } from '@ag.ds-next/react/button';
+import { numberFormatter, useFetchStarWarsAPI } from './utils';
 
 export function DataLoadingWithCards() {
-	const { data, error } = useSWR<{
-		count: number;
-		results: { name: string; population: string; climate: string }[];
-	}>(`https://swapi.dev/api/planets/?page=1`, fetcher);
+	const { data, loading, error } = useFetchStarWarsAPI();
 
-	const totalPages = useRef<number>(0);
-	if (data?.count) totalPages.current = data.count / 10;
+	if (loading) {
+		return <LoadingState />;
+	}
 
-	if (error) return <Text>An error occurred</Text>;
+	if (error) {
+		return <ErrorState />;
+	}
 
+	if (!data?.results?.length) {
+		return <EmptyState />;
+	}
+
+	return <FinalState items={data.results} />;
+}
+
+export function LoadingState() {
 	return (
 		<Stack gap={2}>
-			<Heading type="h2">Star wars planets</Heading>
+			<Heading type="h1">Star wars planets</Heading>
 			<Columns as="ul" cols={[1, 2, 3, 3, 4]}>
-				{!data ? (
-					<Fragment>
-						{Array.from(Array(10).keys()).map((i) => (
-							<Card as="li" key={i} shadow>
-								<CardInner>
-									<Stack gap={1}>
-										<SkeletonHeading type="h3" width="50%" />
-										<SkeletonText fontSize="sm" width="25%" />
-										<VisuallyHidden>Loading</VisuallyHidden>
-									</Stack>
-								</CardInner>
-							</Card>
-						))}
-					</Fragment>
-				) : (
-					<Fragment>
-						{data.results.map((item) => {
-							const parsedPopulation = parseInt(item.population);
-							return (
-								<Card as="li" key={item.name} shadow clickable>
-									<CardInner>
-										<Stack gap={1}>
-											<Heading type="h3">
-												<CardLink href="#">{item.name}</CardLink>
-											</Heading>
-											<Text as="p">
-												Population:{' '}
-												{isNaN(parsedPopulation)
-													? 'Unknown'
-													: numberFormatter.format(parsedPopulation)}
-											</Text>
-										</Stack>
-									</CardInner>
-								</Card>
-							);
-						})}
-					</Fragment>
-				)}
+				{Array.from(Array(10).keys()).map((i) => (
+					<Card as="li" key={i} shadow>
+						<CardInner>
+							<Stack gap={1}>
+								<SkeletonHeading type="h3" width="50%" />
+								<SkeletonText fontSize="sm" width="25%" />
+								<VisuallyHidden>Loading</VisuallyHidden>
+							</Stack>
+						</CardInner>
+					</Card>
+				))}
+			</Columns>
+		</Stack>
+	);
+}
+
+export function ErrorState() {
+	return (
+		<Stack gap={2}>
+			<Heading type="h1">Star wars planets</Heading>
+			<Stack gap={2}>
+				<Stack gap={1}>
+					<AlertFilledIcon color="error" size="lg" />
+					<Heading type="h2" fontSize="lg">
+						Failed to load
+					</Heading>
+					<Text>
+						There was an error loading the data. Click retry to try again.
+					</Text>
+				</Stack>
+				<div>
+					<Button>Retry</Button>
+				</div>
+			</Stack>
+		</Stack>
+	);
+}
+
+export function EmptyState() {
+	return (
+		<Stack gap={2}>
+			<Heading type="h1">Star wars planets</Heading>
+			<Stack gap={1}>
+				<HelpIcon size="lg" color="muted" />
+				<Heading type="h1" fontSize="lg">
+					No results found
+				</Heading>
+			</Stack>
+		</Stack>
+	);
+}
+
+export function FinalState({
+	items,
+}: {
+	items: { population: string; name: string }[];
+}) {
+	return (
+		<Stack gap={2}>
+			<Heading type="h1">Star wars planets</Heading>
+			<Columns as="ul" cols={[1, 2, 3, 3]}>
+				{items.map((item) => {
+					const parsedPopulation = parseInt(item.population);
+					return (
+						<Card as="li" key={item.name} shadow clickable>
+							<CardInner>
+								<Stack gap={1}>
+									<Heading type="h3">
+										<CardLink href="#">{item.name}</CardLink>
+									</Heading>
+									<Text as="p">
+										Population:{' '}
+										{isNaN(parsedPopulation)
+											? 'Unknown'
+											: numberFormatter.format(parsedPopulation)}
+									</Text>
+								</Stack>
+							</CardInner>
+						</Card>
+					);
+				})}
 			</Columns>
 		</Stack>
 	);
