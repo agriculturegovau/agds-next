@@ -1,0 +1,173 @@
+---
+title: Loading, empty and error states
+group: Patterns
+description: When loading data in an application, it is important to consider and design for loading, empty, and error states. These states will help set user expectations and prevent them from assuming that the interface is unresponsive.
+figmaTemplateNodeId: 18846-97172
+storybookPath: /story/patterns-data-loading
+---
+
+## Loading state
+
+The loading state provides feedback to users that data is being loaded.
+
+Loading states can reduce uncertainty for the user by explaining what is happening and preparing them for what is coming up next.
+
+[Skeleton components](/components/skeleton) can be used as visual placeholders for information that is still loading - e.g. cells inside of a table.
+
+### Table loading state example
+
+Below is an example of a [Table](/components/table) in a loading state.
+
+```jsx live
+<TableWrapper>
+	<Table tableLayout="fixed">
+		<TableHead>
+			<tr>
+				<TableHeader width="6rem" scope="col">
+					ID
+				</TableHeader>
+				<TableHeader scope="col">Name</TableHeader>
+				<TableHeader scope="col">Email</TableHeader>
+			</tr>
+		</TableHead>
+		<TableBody>
+			{Array.from(Array(5)).map((_, idx) => (
+				<tr key={idx}>
+					<TableCell>
+						<SkeletonText />
+						<VisuallyHidden>Loading</VisuallyHidden>
+					</TableCell>
+					<TableCell>
+						<SkeletonText />
+						<VisuallyHidden>Loading</VisuallyHidden>
+					</TableCell>
+					<TableCell>
+						<SkeletonText />
+						<VisuallyHidden>Loading</VisuallyHidden>
+					</TableCell>
+				</tr>
+			))}
+		</TableBody>
+	</Table>
+</TableWrapper>
+```
+
+### Cards loading state example
+
+Below is an example of a list of [Cards](/components/card) in a loading state.
+
+```jsx live
+<Columns as="ul" cols={{ xs: 2 }}>
+	{Array.from(Array(2).keys()).map((i) => (
+		<Card key={i} as="li" shadow>
+			<CardInner>
+				<Stack gap={1}>
+					<SkeletonHeading type="h3" width="50%" />
+					<SkeletonText fontSize="sm" width="25%" />
+					<VisuallyHidden>Loading</VisuallyHidden>
+				</Stack>
+			</CardInner>
+		</Card>
+	))}
+</Columns>
+```
+
+## Error state
+
+The error state provides feedback to users that an error has occurred while loading the data.
+
+If applicable, use a [Button](/components-button) component to provide the user with an option to retrieve the data again.
+
+### Page level error state
+
+Below is an example of an error that occured at the page level.
+
+```jsx live
+<Stack gap={2} alignItems="flex-start">
+	<Stack gap={1}>
+		<AlertFilledIcon color="error" size="lg" />
+		<Heading type="h2" fontSize="lg">
+			Failed to load
+		</Heading>
+		<Text>There was an error loading the data. Click retry to try again.</Text>
+	</Stack>
+	<Button>Retry</Button>
+</Stack>
+```
+
+### Component level error state
+
+Below is an example of an error that occured at the component level.
+
+```jsx live
+<Flex gap={0.75}>
+	<AlertFilledIcon color="error" />
+	<Stack gap={1} alignItems="flex-start">
+		<Text>
+			<Text fontWeight="bold">Failed to load</Text>
+			<br />
+			There was an error loading the data. Click retry to try again.
+		</Text>
+		<Button variant="text">Retry</Button>
+	</Stack>
+</Flex>
+```
+
+## Empty state
+
+The empty state is displayed when data has loaded succesfully, but there is nothing available to show to the user.
+
+This state could potentially be a result of either:
+
+- a new user vists a service for the first time and needs to create data
+- a user applies a number of filters or settings which do return any results
+
+Depending on what the cause the empty state is, provide clear messaging and a helpful action to get rid of the empty state via a [Button](/components/button) component.
+
+### Page level empty state examples
+
+Below is an example of two different empty states at the page level.
+
+```jsx live
+<Stack gap={2} alignItems="flex-start">
+	<Stack gap={1}>
+		<FactoryIcon size="lg" color="muted" />
+		<Heading type="h2" fontSize="lg">
+			Add an establishment
+		</Heading>
+		<Text>You haven’t added any establishments yet.</Text>
+	</Stack>
+	<Button>Add establishment</Button>
+</Stack>
+```
+
+```jsx live
+<Stack gap={2} alignItems="flex-start">
+	<Stack gap={1}>
+		<HelpIcon size="lg" color="muted" />
+		<Heading type="h2" fontSize="lg">
+			No results found
+		</Heading>
+		<Text>Try adjusting your filter options.</Text>
+	</Stack>
+	<Button>Clear filters</Button>
+</Stack>
+```
+
+### Component level empty state example
+
+Below is an example of an empty state at the component level.
+
+```jsx live
+<Flex gap={0.75}>
+	<HelpIcon color="muted" />
+	<Stack gap={1} alignItems="flex-start">
+		<Text>
+			<Text fontWeight="bold">No results found</Text>
+			<br />
+			Try adjusting your filter options.
+		</Text>
+		<Button variant="text">Clear filters</Button>
+	</Stack>
+</Flex>
+```

@@ -1,14 +1,14 @@
 import { Meta, StoryObj } from '@storybook/react';
 import { PageContent } from '../../../docs/components/designSystemComponents';
-import { DataLoadingWithCards } from './DataLoadingWithCards';
+import { DataLoadingWithTable } from './DataLoadingWithTable';
 import { apiData, useFetchStarWarsAPI } from './utils';
 
-const meta: Meta<typeof DataLoadingWithCards> = {
-	title: 'Patterns/Data loading/Cards',
-	component: DataLoadingWithCards,
+const meta: Meta<typeof DataLoadingWithTable> = {
+	title: 'Patterns/Data loading/Table',
+	component: DataLoadingWithTable,
 	render: (args) => (
 		<PageContent>
-			<DataLoadingWithCards {...args} />
+			<DataLoadingWithTable {...args} />
 		</PageContent>
 	),
 	parameters: {
@@ -18,21 +18,21 @@ const meta: Meta<typeof DataLoadingWithCards> = {
 
 export default meta;
 
-type Story = StoryObj<typeof DataLoadingWithCards>;
+type Story = StoryObj<typeof DataLoadingWithTable>;
 
 export const Basic: Story = {
-	name: 'Data loading with Cards',
+	name: 'Data loading with Table',
 	render: function Render() {
 		const { data, loading, error } = useFetchStarWarsAPI();
 		return (
 			<PageContent>
-				<DataLoadingWithCards data={data} loading={loading} error={error} />
+				<DataLoadingWithTable data={data} loading={loading} error={error} />
 			</PageContent>
 		);
 	},
 };
 
-export const Loading: Story = {
+export const Loading: StoryObj<typeof DataLoadingWithTable> = {
 	name: 'Loading state',
 	args: {
 		data: undefined,
@@ -41,7 +41,7 @@ export const Loading: Story = {
 	},
 };
 
-export const Error: Story = {
+export const Error: StoryObj<typeof DataLoadingWithTable> = {
 	name: 'Error state',
 	args: {
 		data: undefined,
@@ -50,7 +50,7 @@ export const Error: Story = {
 	},
 };
 
-export const Empty: Story = {
+export const Empty: StoryObj<typeof DataLoadingWithTable> = {
 	name: 'Empty state',
 	args: {
 		data: { results: [] },
@@ -59,7 +59,7 @@ export const Empty: Story = {
 	},
 };
 
-export const Final: Story = {
+export const Final: StoryObj<typeof DataLoadingWithTable> = {
 	name: 'Final state',
 	args: {
 		data: apiData,
