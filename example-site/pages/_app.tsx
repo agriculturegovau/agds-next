@@ -27,9 +27,15 @@ export default function App({ Component, pageProps }: AppProps) {
 					name="viewport"
 					content="width=device-width,initial-scale=1,shrink-to-fit=no,viewport-fit=cover"
 				/>
-				{/* Favicons - https://css-tricks.com/svg-favicons-and-all-the-fun-things-we-can-do-with-them/ */}
-				<link rel="icon" href="/favicon/favicon.ico" sizes="any" />
-				<link rel="icon" href="/favicon/favicon.svg" type="image/svg+xml" />
+				{/* Open graph image  */}
+				<meta property="og:image" content="/img/ogimage.png" />
+				{/* Favicons  */}
+				<link
+					rel="alternate icon"
+					type="image/png"
+					href="/favicon/favicon.png"
+				/>
+				<link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg" />
 				<link rel="manifest" href="/favicon/manifest.webmanifest" />
 			</Head>
 			{/* Global Site Tag (gtag.js) - Google Analytics */}
