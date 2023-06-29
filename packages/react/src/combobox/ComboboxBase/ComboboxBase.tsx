@@ -1,12 +1,11 @@
-import { Fragment, ReactNode, useState } from 'react';
+import { Fragment, ReactNode } from 'react';
 import { UseComboboxReturnValue } from 'downshift';
-import { usePopper } from 'react-popper';
-import { FieldMaxWidth, mergeRefs, tokens } from '../../core';
+import { FieldMaxWidth } from '../../core';
+import { Popover, usePopover } from '../../_popover';
 import { textInputStyles } from '../../text-input';
 import { Field } from '../../field';
 import { DefaultComboboxOption } from '../utils';
 import { defaultRenderItem } from '../defaultRenderItem';
-import { ComboboxList } from './ComboboxList';
 import { ComboboxListItem } from './ComboboxListItem';
 import { ComboboxListLoading } from './ComboboxListLoading';
 import { ComboboxListError } from './ComboboxListError';
@@ -64,14 +63,6 @@ export function ComboboxBase<Option extends DefaultComboboxOption>({
 	combobox,
 	inputItems,
 }: ComboboxBaseProps<Option>) {
-	// Popper state
-	const [refEl, setRefEl] = useState<HTMLDivElement | null>(null);
-	const [popperEl, setPopperEl] = useState<HTMLDivElement | null>(null);
-	const { styles: popperStyles, attributes } = usePopper(refEl, popperEl, {
-		placement: 'bottom-start',
-		modifiers: [{ name: 'offset', options: { offset: [0, 8] } }],
-	});
-
 	const showClearButton = clearable && combobox.selectedItem;
 	const hasButtons = showDropdownTrigger || showClearButton;
 	const hasBothButtons = showDropdownTrigger && showClearButton;
@@ -81,11 +72,16 @@ export function ComboboxBase<Option extends DefaultComboboxOption>({
 		paddingRight: hasBothButtons ? '5rem' : '3rem',
 	};
 
-	const { ref: menuRef, ...menuProps } = combobox.getMenuProps({
-		...attributes.popper,
+	const popover = usePopover({
+		matchReferenceWidth: true,
+		maxHeight: 295,
+	});
+	const popoverProps = popover.getPopoverProps();
+	const comboboxPopoverMenuProps = combobox.getMenuProps({
+		...popoverProps,
 		style: {
-			...popperStyles.popper,
-			zIndex: tokens.zIndex.popover,
+			...popoverProps.style,
+			display: combobox.isOpen ? 'block' : 'none',
 		},
 	});
 
@@ -100,7 +96,10 @@ export function ComboboxBase<Option extends DefaultComboboxOption>({
 			id={inputId}
 		>
 			{(a11yProps) => (
-				<div ref={setRefEl} css={{ position: 'relative', maxWidth }}>
+				<div
+					{...popover.getReferenceProps()}
+					css={{ position: 'relative', maxWidth }}
+				>
 					<input
 						css={{ ...inputStyles, width: '100%' }}
 						disabled={disabled}
@@ -127,13 +126,8 @@ export function ComboboxBase<Option extends DefaultComboboxOption>({
 							)}
 						</ComboboxButtonContainer>
 					)}
-					<ComboboxList
-						{...menuProps}
-						ref={mergeRefs([menuRef, setPopperEl])}
-						maxWidth={maxWidthProp}
-						isOpen={combobox.isOpen}
-					>
-						{combobox.isOpen && (
+					<Popover as="ul" {...comboboxPopoverMenuProps}>
+						{combobox.isOpen ? (
 							<Fragment>
 								{loading ? (
 									<ComboboxListLoading />
@@ -162,8 +156,8 @@ export function ComboboxBase<Option extends DefaultComboboxOption>({
 									</Fragment>
 								)}
 							</Fragment>
-						)}
-					</ComboboxList>
+						) : null}
+					</Popover>
 				</div>
 			)}
 		</Field>

@@ -5,17 +5,11 @@ import {
 	useCallback,
 	useEffect,
 	useMemo,
-	useRef,
 	useState,
 } from 'react';
-import { usePopper } from 'react-popper';
 import { SelectSingleEventHandler } from 'react-day-picker';
-import {
-	FieldMaxWidth,
-	tokens,
-	useClickOutside,
-	useTernaryState,
-} from '../core';
+import { FieldMaxWidth, useClickOutside, useTernaryState } from '../core';
+import { Popover, usePopover } from '../_popover';
 import { CalendarSingle } from './Calendar';
 import { DateInput } from './DatePickerInput';
 import {
@@ -97,14 +91,7 @@ export const DatePicker = ({
 }: DatePickerProps) => {
 	const [isCalendarOpen, openCalendar, closeCalendar] = useTernaryState(false);
 
-	// Popper state
-	const triggerRef = useRef<HTMLButtonElement>(null);
-	const [refEl, setRefEl] = useState<HTMLDivElement | null>(null);
-	const [popperEl, setPopperEl] = useState<HTMLDivElement | null>(null);
-	const { styles, attributes } = usePopper(refEl, popperEl, {
-		placement: 'bottom-start',
-		modifiers: [{ name: 'offset', options: { offset: [0, 8] } }],
-	});
+	const popover = usePopover();
 
 	const onSelect = useCallback<SelectSingleEventHandler>(
 		(_, selectedDay, modifiers) => {
@@ -150,14 +137,11 @@ export const DatePicker = ({
 	}, [value]);
 
 	// Close the calendar when the user clicks outside
-	const clickOutsideRef = useRef(popperEl);
-	clickOutsideRef.current = popperEl;
-
 	const handleClickOutside = useCallback(() => {
 		if (isCalendarOpen) closeCalendar();
 	}, [isCalendarOpen, closeCalendar]);
 
-	useClickOutside(clickOutsideRef, handleClickOutside);
+	useClickOutside(popover.popoverRef, handleClickOutside);
 
 	// Close the calendar when the user presses the escape key
 	useEffect(() => {
@@ -184,7 +168,7 @@ export const DatePicker = ({
 	const valueAsDateOrUndefined = typeof value === 'string' ? undefined : value;
 
 	return (
-		<div ref={setRefEl}>
+		<div {...popover.getReferenceProps()}>
 			<DateInput
 				{...props}
 				maxWidth={maxWidth}
@@ -192,15 +176,10 @@ export const DatePicker = ({
 				ref={inputRef}
 				value={inputValue}
 				onChange={onInputChange}
-				buttonRef={triggerRef}
 				buttonOnClick={openCalendar}
 			/>
-			{isCalendarOpen ? (
-				<div
-					ref={setPopperEl}
-					style={{ ...styles.popper, zIndex: tokens.zIndex.popover }}
-					{...attributes.popper}
-				>
+			{isCalendarOpen && (
+				<Popover {...popover.getPopoverProps()}>
 					<CalendarSingle
 						initialFocus
 						selected={valueAsDateOrUndefined}
@@ -210,8 +189,8 @@ export const DatePicker = ({
 						numberOfMonths={1}
 						disabled={disabledCalendarDays}
 					/>
-				</div>
-			) : null}
+				</Popover>
+			)}
 		</div>
 	);
 };

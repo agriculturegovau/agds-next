@@ -7,7 +7,6 @@ import {
 	useEffect,
 	useMemo,
 } from 'react';
-import { usePopper } from 'react-popper';
 import { SelectRangeEventHandler } from 'react-day-picker';
 import { Flex } from '../flex';
 import { Stack } from '../stack';
@@ -21,6 +20,7 @@ import {
 } from '../core';
 import { FieldContainer, FieldHint, FieldLabel, FieldMessage } from '../field';
 import { visuallyHiddenStyles } from '../a11y';
+import { Popover, usePopover } from '../_popover';
 import {
 	getValidDateRange,
 	parseDate,
@@ -125,14 +125,7 @@ export const DateRangePicker = ({
 		openCalendar();
 	}, [openCalendar]);
 
-	// Popper state
-	const [refEl, setRefEl] = useState<HTMLDivElement | null>(null);
-	const [popperEl, setPopperEl] = useState<HTMLDivElement | null>(null);
-	const { styles, attributes } = usePopper(refEl, popperEl, {
-		strategy: 'fixed',
-		placement: 'bottom-start',
-		modifiers: [{ name: 'offset', options: { offset: [0, 8] } }],
-	});
+	const popover = usePopover();
 
 	const valueAsDateOrUndefined = useMemo(
 		() => ({
@@ -242,10 +235,11 @@ export const DateRangePicker = ({
 	}, [value]);
 
 	// Close the calendar when the user clicks outside
-	const clickOutsideRef = useRef(popperEl);
-	clickOutsideRef.current = popperEl;
+	const handleClickOutside = useCallback(() => {
+		if (isCalendarOpen) closeCalendar();
+	}, [isCalendarOpen, closeCalendar]);
 
-	useClickOutside(clickOutsideRef, closeCalendar);
+	useClickOutside(popover.popoverRef, handleClickOutside);
 
 	// Close the calendar when the user presses the escape key
 	useEffect(() => {
@@ -308,7 +302,7 @@ export const DateRangePicker = ({
 					{message && invalid ? (
 						<FieldMessage id={messageId}>{message}</FieldMessage>
 					) : null}
-					<Flex ref={setRefEl} flexWrap="wrap" inline gap={1}>
+					<Flex {...popover.getReferenceProps()} flexWrap="wrap" inline gap={1}>
 						<DateInput
 							ref={fromInputRef}
 							label={fromLabel}
@@ -335,12 +329,8 @@ export const DateRangePicker = ({
 						/>
 					</Flex>
 				</Stack>
-				{isCalendarOpen ? (
-					<div
-						ref={setPopperEl}
-						style={{ ...styles.popper, zIndex: tokens.zIndex.popover }}
-						{...attributes.popper}
-					>
+				{isCalendarOpen && (
+					<Popover {...popover.getPopoverProps()}>
 						<CalendarRange
 							initialFocus
 							defaultMonth={valueAsDateOrUndefined.from}
@@ -353,8 +343,8 @@ export const DateRangePicker = ({
 							}
 							yearRange={yearRange}
 						/>
-					</div>
-				) : null}
+					</Popover>
+				)}
 			</fieldset>
 		</FieldContainer>
 	);

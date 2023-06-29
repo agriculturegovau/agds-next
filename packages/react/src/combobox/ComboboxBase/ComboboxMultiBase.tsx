@@ -3,8 +3,6 @@ import {
 	ReactNode,
 	RefObject,
 	useCallback,
-	useEffect,
-	useState,
 	MouseEvent,
 	useRef,
 } from 'react';
@@ -12,13 +10,12 @@ import {
 	UseComboboxReturnValue,
 	UseMultipleSelectionReturnValue,
 } from 'downshift';
-import { usePopper } from 'react-popper';
+import { Popover, usePopover } from '../../_popover';
 import {
 	boxPalette,
 	FieldMaxWidth,
 	fontGrid,
 	mapSpacing,
-	mergeRefs,
 	packs,
 	tokens,
 	useTernaryState,
@@ -27,7 +24,6 @@ import { Field } from '../../field';
 import { Flex } from '../../flex';
 import { defaultRenderItem } from '../defaultRenderItem';
 import { DefaultComboboxOption } from '../utils';
-import { ComboboxList } from './ComboboxList';
 import { ComboboxListItem } from './ComboboxListItem';
 import { ComboboxListLoading } from './ComboboxListLoading';
 import { ComboboxListError } from './ComboboxListError';
@@ -95,23 +91,18 @@ export function ComboboxMultiBase<Option extends DefaultComboboxOption>({
 	const [isInputFocused, setInputFocused, setInputBlurred] =
 		useTernaryState(false);
 
-	// Popper state
-	const [refEl, setRefEl] = useState<HTMLDivElement | null>(null);
-	const [popperEl, setPopperEl] = useState<HTMLUListElement | null>(null);
-	const {
-		styles: popperStyles,
-		attributes,
-		update,
-	} = usePopper(refEl, popperEl, {
-		placement: 'bottom-start',
-		modifiers: [{ name: 'offset', options: { offset: [0, 8] } }],
+	const popover = usePopover({
+		matchReferenceWidth: true,
+		maxHeight: 295,
 	});
-
-	// This component changes its height as the selected item change
-	// So we need to update the popper element to recalculate its position
-	useEffect(() => {
-		update?.();
-	}, [selectedItems, update]);
+	const popoverProps = popover.getPopoverProps();
+	const comboboxPopoverMenuProps = combobox.getMenuProps({
+		...popoverProps,
+		style: {
+			...popoverProps.style,
+			display: combobox.isOpen ? 'block' : 'none',
+		},
+	});
 
 	const showClearButton = selectedItems?.length > 0;
 
@@ -122,14 +113,6 @@ export function ComboboxMultiBase<Option extends DefaultComboboxOption>({
 		isInputFocused,
 		maxWidth: maxWidthProp,
 		showClearButton,
-	});
-
-	const { ref: menuRef, ...menuProps } = combobox.getMenuProps({
-		...attributes.popper,
-		style: {
-			...popperStyles.popper,
-			zIndex: tokens.zIndex.popover,
-		},
 	});
 
 	// Focus the input element if the user clicks inside the container
@@ -155,7 +138,7 @@ export function ComboboxMultiBase<Option extends DefaultComboboxOption>({
 		>
 			{(a11yProps) => (
 				<div
-					ref={setRefEl}
+					{...popover.getReferenceProps()}
 					css={styles.fieldContainer}
 					onClick={handleFieldContainerClick}
 				>
@@ -211,13 +194,8 @@ export function ComboboxMultiBase<Option extends DefaultComboboxOption>({
 							/>
 						</ComboboxButtonContainer>
 					</Flex>
-					<ComboboxList
-						{...menuProps}
-						ref={mergeRefs([menuRef, setPopperEl])}
-						maxWidth={maxWidthProp}
-						isOpen={combobox.isOpen}
-					>
-						{combobox.isOpen && (
+					<Popover as="ul" {...comboboxPopoverMenuProps}>
+						{combobox.isOpen ? (
 							<Fragment>
 								{loading ? (
 									<ComboboxListLoading />
@@ -242,8 +220,8 @@ export function ComboboxMultiBase<Option extends DefaultComboboxOption>({
 									</Fragment>
 								)}
 							</Fragment>
-						)}
-					</ComboboxList>
+						) : null}
+					</Popover>
 				</div>
 			)}
 		</Field>
@@ -267,7 +245,6 @@ function comboboxMultiStyles({
 }) {
 	return {
 		fieldContainer: {
-			position: 'relative',
 			...(!block && {
 				maxWidth: tokens.maxWidth.field[maxWidth],
 			}),

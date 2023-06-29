@@ -28,7 +28,7 @@ exports[`ComboboxMulti renders correctly 1`] = `
       Start typing to see results
     </span>
     <div
-      class="css-158hlv8-Field"
+      class="css-1ok16nw-Field"
     >
       <div
         class="css-llvxcm-boxStyles-Field"
@@ -85,10 +85,10 @@ exports[`ComboboxMulti renders correctly 1`] = `
       </div>
       <ul
         aria-labelledby="downshift-0-label"
-        class="css-1xv1xw2-boxStyles-ComboboxList"
+        class="css-1br2jf0-boxStyles-Popover"
         id="downshift-0-menu"
         role="listbox"
-        style="position: absolute; left: 0px; top: 0px; z-index: 200;"
+        style="position: absolute; left: 0px; top: 0px; display: none; transform: translate(0px, 0px);"
       />
     </div>
   </div>
