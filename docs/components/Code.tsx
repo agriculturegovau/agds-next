@@ -9,7 +9,7 @@ import React, {
 } from 'react';
 import { LiveProvider, LiveEditor, LivePreview, LiveContext } from 'react-live';
 import { createUrl } from 'playroom/utils';
-import { Highlight } from 'prism-react-renderer';
+import { Highlight, Prism } from 'prism-react-renderer';
 import copy from 'clipboard-copy';
 import { ExternalLinkCallout } from '@ag.ds-next/react/a11y';
 import {
@@ -36,6 +36,11 @@ import { withBasePath } from '../lib/img';
 import * as designSystemComponents from './designSystemComponents';
 import { ConditionalFieldContainer } from './ConditionalFieldContainer';
 import { prismTheme } from './prism-theme';
+
+// Add support for diff language support
+// https://github.com/FormidableLabs/prism-react-renderer#custom-language-support
+(typeof global !== 'undefined' ? global : window).Prism = Prism;
+require('prismjs/components/prism-diff');
 
 const PlaceholderImage = () => (
 	<img
