@@ -2,23 +2,25 @@ import { GetStaticProps, InferGetStaticPropsType } from 'next';
 import { MDXRemote } from 'next-mdx-remote';
 import { InpageNav } from '@ag.ds-next/react/inpage-nav';
 import { Prose } from '@ag.ds-next/react/prose';
+import { Guide } from '../../../lib/mdx/guides';
 import {
-	getGuide,
-	getGuidesBreadcrumbs,
-	getGuideSlugs,
-	Guide,
-} from '../../lib/mdx/guides';
-import { mdxComponents } from '../../components/mdxComponents';
-import { SiteLayout } from '../../components/SiteLayout';
-import { DocumentTitle } from '../../components/DocumentTitle';
-import { PageLayout } from '../../components/PageLayout';
-import { PageTitle } from '../../components/PageTitle';
-import { generateToc } from '../../lib/generateToc';
+	getNestedGuide,
+	getNestedGuideSlugs,
+	getNestedGuidesBreadcrumbs,
+	getNestedGuidesNavLinks,
+} from '../../../lib/mdx/guidesHowToWriteGuidance';
+import { mdxComponents } from '../../../components/mdxComponents';
+import { SiteLayout } from '../../../components/SiteLayout';
+import { DocumentTitle } from '../../../components/DocumentTitle';
+import { PageLayout } from '../../../components/PageLayout';
+import { PageTitle } from '../../../components/PageTitle';
+import { generateToc } from '../../../lib/generateToc';
 
 export default function Guides({
 	guide,
 	toc,
 	breadcrumbs,
+	navLinks,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
 	return (
 		<>
@@ -26,7 +28,12 @@ export default function Guides({
 			<SiteLayout applyMainElement={false}>
 				<PageLayout
 					applyMainElement={true}
-					editPath={`/docs/content/guides/${guide.slug}.mdx`}
+					sideNav={{
+						title: 'How to create guidance in the Export Service',
+						titleLink: '/guides/how-to-write-guidance',
+						items: navLinks,
+					}}
+					editPath={`/docs/content/guides/how-to-write-guidance/${guide.slug}.mdx`}
 					breadcrumbs={breadcrumbs}
 				>
 					<PageTitle title={guide.title} introduction={guide.opener} />
@@ -48,25 +55,28 @@ export default function Guides({
 export const getStaticProps: GetStaticProps<
 	{
 		guide: Guide;
-		breadcrumbs: Awaited<ReturnType<typeof getGuidesBreadcrumbs>>;
+		breadcrumbs: Awaited<ReturnType<typeof getNestedGuidesBreadcrumbs>>;
+		navLinks: Awaited<ReturnType<typeof getNestedGuidesNavLinks>>;
 		toc: Awaited<ReturnType<typeof generateToc>>;
 	},
 	{ slug: string }
 > = async ({ params }) => {
 	const { slug } = params ?? {};
-	const guide = slug ? await getGuide(slug) : undefined;
+	const guide = slug ? await getNestedGuide(slug) : undefined;
 
 	if (!(slug && guide)) {
 		return { notFound: true };
 	}
 
 	const toc = await generateToc(guide.content);
-	const breadcrumbs = await getGuidesBreadcrumbs(slug);
+	const breadcrumbs = await getNestedGuidesBreadcrumbs(slug);
+	const navLinks = await getNestedGuidesNavLinks();
 
 	return {
 		props: {
 			guide,
 			breadcrumbs,
+			navLinks,
 			slug,
 			toc,
 		},
@@ -74,17 +84,11 @@ export const getStaticProps: GetStaticProps<
 };
 
 export const getStaticPaths = async () => {
-	const slugs = await getGuideSlugs();
-
+	const slugs = await getNestedGuideSlugs();
 	return {
-		paths: slugs
-			.filter((slug) => {
-				// this page is defined in docs/pages/guides/how-to-write-guidance/index.tsx
-				return slug !== 'how-to-write-guidance';
-			})
-			.map((slug) => ({
-				params: { slug },
-			})),
+		paths: slugs.map((slug) => ({
+			params: { slug },
+		})),
 		fallback: false,
 	};
 };
