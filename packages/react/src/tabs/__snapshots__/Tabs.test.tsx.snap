@@ -1,0 +1,77 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Tabs renders correctly 1`] = `
+<div>
+  <div
+    id="tabs-:r0:"
+  >
+    <div
+      class="css-1urm0li-boxStyles"
+      role="tablist"
+    >
+      <button
+        aria-controls="tabs-:r0:-tab-panel-0"
+        aria-selected="true"
+        class="css-1j9cx5s-BaseButton-boxStyles-Tab"
+        id="tabs-:r0:-tab-0"
+        role="tab"
+        tabindex="0"
+        type="button"
+      >
+        Tab 1
+      </button>
+      <button
+        aria-controls="tabs-:r0:-tab-panel-1"
+        aria-selected="false"
+        class="css-emt3il-BaseButton-boxStyles-Tab"
+        id="tabs-:r0:-tab-1"
+        role="tab"
+        tabindex="-1"
+        type="button"
+      >
+        Tab 2
+      </button>
+      <button
+        aria-controls="tabs-:r0:-tab-panel-2"
+        aria-selected="false"
+        class="css-emt3il-BaseButton-boxStyles-Tab"
+        id="tabs-:r0:-tab-2"
+        role="tab"
+        tabindex="-1"
+        type="button"
+      >
+        Tab 3
+      </button>
+    </div>
+    <div>
+      <div
+        aria-labelledby="tabs-:r0:-tab-0"
+        class="css-1jwv4nx-boxStyles"
+        id="tabs-:r0:-tab-panel-0"
+        role="tabpanel"
+        tabindex="0"
+      >
+        Tab panel 1.
+      </div>
+      <div
+        aria-labelledby="tabs-:r0:-tab-1"
+        class="css-z9oe7c-boxStyles"
+        id="tabs-:r0:-tab-panel-1"
+        role="tabpanel"
+        tabindex="-1"
+      >
+        Tab panel 2.
+      </div>
+      <div
+        aria-labelledby="tabs-:r0:-tab-2"
+        class="css-z9oe7c-boxStyles"
+        id="tabs-:r0:-tab-panel-2"
+        role="tabpanel"
+        tabindex="-1"
+      >
+        Tab panel 3.
+      </div>
+    </div>
+  </div>
+</div>
+`;
