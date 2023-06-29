@@ -8,7 +8,7 @@ import {
 	getNestedGuideSlugs,
 	getNestedGuidesBreadcrumbs,
 	getNestedGuidesNavLinks,
-} from '../../../lib/mdx/guidesNested';
+} from '../../../lib/mdx/guidesHowToWriteGuidance';
 import { mdxComponents } from '../../../components/mdxComponents';
 import { SiteLayout } from '../../../components/SiteLayout';
 import { DocumentTitle } from '../../../components/DocumentTitle';

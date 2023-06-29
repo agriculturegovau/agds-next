@@ -6,7 +6,7 @@ import { Text } from '@ag.ds-next/react/text';
 import { Columns } from '@ag.ds-next/react/columns';
 import { getMarkdownData } from '../../../lib/mdxUtils';
 import { GUIDE_PATH } from '../../../lib/mdx/guides';
-import { getContentGuideList } from '../../../lib/mdx/guidesNested';
+import { getContentGuideList } from '../../../lib/mdx/guidesHowToWriteGuidance';
 import { DocumentTitle } from '../../../components/DocumentTitle';
 import { SubcategoryPageTemplate } from '../../../components/SubcategoryPageTemplate';
 
