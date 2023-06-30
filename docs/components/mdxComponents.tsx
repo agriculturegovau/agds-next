@@ -5,6 +5,8 @@ import {
 	HTMLAttributes,
 	AnchorHTMLAttributes,
 	ImgHTMLAttributes,
+	ReactNode,
+	PropsWithChildren,
 } from 'react';
 import type { MDXRemoteProps } from 'next-mdx-remote';
 import Link from 'next/link';
@@ -25,6 +27,8 @@ import { mapSpacing } from '@ag.ds-next/react/core';
 import { Text } from '@ag.ds-next/react/text';
 import { TextLink } from '@ag.ds-next/react/text-link';
 import { DirectionLink } from '@ag.ds-next/react/direction-link';
+import { Card, CardHeader, CardInner } from '@ag.ds-next/react/card';
+import { Heading } from '@ag.ds-next/react/heading';
 import { slugify } from '../lib/slugify';
 import { withBasePath } from '../lib/img';
 import generatedComponentPropsData from '../__generated__/componentProps.json';
@@ -176,6 +180,23 @@ export const mdxComponents: MDXRemoteProps['components'] = {
 		>
 			Back to top
 		</DirectionLink>
+	),
+	ExampleContent: ({
+		heading,
+		children,
+	}: PropsWithChildren<{
+		heading?: string | ReactNode;
+	}>) => (
+		<Card className={proseBlockClassname}>
+			<CardHeader>
+				{heading && typeof heading === 'string' ? (
+					<Heading type="h4">{heading}</Heading>
+				) : (
+					heading
+				)}
+			</CardHeader>
+			<CardInner>{children}</CardInner>
+		</Card>
 	),
 	Box,
 };

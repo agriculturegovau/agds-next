@@ -11,6 +11,8 @@ Don’t use the ampersand symbol (&) instead of ‘and’ in a heading or senten
 
 That’s unless it’s a part of a proper noun or name.
 
+### Example
+
 ```jsx live enableProse
 <Prose>
 	<h1>Summary and findings</h1>
@@ -88,8 +90,9 @@ Conduct research where possible to see if you should use contractions in Export 
 
 ### Examples
 
-- "We’ll get back to you within 2 days".
-- "You don’t have access to this business".
+<ExampleContent>We’ll get back to you within 2 days.</ExampleContent>
+
+<ExampleContent>You don’t have access to this business.</ExampleContent>
 
 For more information, see [Contractions](https://www.stylemanual.gov.au/grammar-punctuation-and-conventions/shortened-words-and-phrases/contractions). Also see Abbreviations and other shortened forms in the DAFF Style guide (internal DAFF staff only).
 
@@ -114,6 +117,8 @@ If you include an email address in Export Service content, the full address shou
 Don’t include a full stop after an email address if it’s part of sentence fragment or on a line by itself.
 
 You can use a full stop after an email address if it’s at the end of a sentence. But make sure the full stop is not included in the link text. Otherwise, users may confuse it with being a part of the email address.
+
+### Examples
 
 ```jsx live
 <Text>
@@ -205,6 +210,8 @@ If the information applies to all users, don’t hide an FAQ in an accordion or 
 
 Monitor and measure the success of FAQs. If no one is using them, remove FAQ content.
 
+### Example
+
 ```jsx live enableProse
 <Details label="How were my details prefilled?" iconBefore>
 	<Prose>
@@ -244,6 +251,8 @@ Use conjunctions, prepositions and pronouns in between so a statement heading so
 A H1 can also be a question. But try to use questions as headings minimally or instead of a statement. Start with 1 of the 5 ‘Ws’: ‘who’, ‘what’, ‘where’, ‘when’ or ‘why’ for question headings.
 
 For more information, see Structuring headings and labels in [Content structure](/content/content-structure#structuring-headings-and-labels). Also see Frequently Asked Questions in [Content styles](#frequently-asked-questions) and [Headings](/components/heading).
+
+### Example
 
 ```jsx live
 <Stack gap={3}>
@@ -306,19 +315,15 @@ Use a forward arrow (>) to separate the tabs or buttons users need to select.
 
 ### Examples
 
-```jsx live
-<Text>
+<ExampleContent>
 	To carry out any of these actions, sign in to the Export Service and select
 	the 'Establishments' tab.
-</Text>
-```
+</ExampleContent>
 
-```jsx live
-<Text>
+<ExampleContent>
 	On the Insert tab, select Symbol > More symbols > Special characters > En
 	dash.
-</Text>
-```
+</ExampleContent>
 
 ```jsx live enableProse
 <Prose>
@@ -376,6 +381,8 @@ For more information on links, see:
 
 - External links I DAFF Style guide (internal DAFF staff only).
 
+### Examples
+
 ```jsx live enableProse
 <Prose>
 <p>To create your myGovID:</a>
@@ -409,6 +416,8 @@ For more information on links, see:
 Don't use full stops at the end of the last item on a list if the item is next to a radio button or a multi-select checkbox. For example, lists in a form or interactive experience.
 
 Use a capital letter on the first word of listed items next to radio buttons or multi-select checkboxes.
+
+### Example
 
 ```jsx live
 <Fieldset legend="Select commodities">
@@ -457,6 +466,8 @@ When you create microcopy in the Export Service, make sure content:
 - offers a specific solution to fix any problem. For example, accepted formats
 - uses [‘Please and thanks’](#please-and-thanks) sparingly and only if the user’s action will be something extra.
 
+### Examples
+
 ```jsx live
 <FormStack>
 	<TextInput
@@ -488,6 +499,8 @@ However, there are a few exceptions to this rule. Spell out a number as a word i
 Always spell out ‘one’ and ‘zero’ in words, so users don’t confuse them with letters. That’s unless you are comparing something directly. For example, ‘Digital Services to Take Farmers to Markets is 1 of 5 measures in the Busting Congestion package.’
 
 For more information, see Numbers in the DAFF Style guide (internal DAFF staff only). Also see [Numbers and measurements](https://www.stylemanual.gov.au/grammar-punctuation-and-conventions/numbers-and-measurements).
+
+### Examples
 
 ```jsx live
 <Prose>
@@ -682,9 +695,13 @@ A search engine optimised (SEO) URL:
 
 ### Examples
 
-`https://exports.agriculture.gov.au/help/register-establishment`
+<ExampleContent>
+	https://exports.agriculture.gov.au/help/register-establishment
+</ExampleContent>
 
-`https://exports.agriculture.gov.au/guides/export-guide-agricultural-goods`
+<ExampleContent>
+	https://exports.agriculture.gov.au/guides/export-guide-agricultural-goods
+</ExampleContent>
 
 <BackToTop />
 
