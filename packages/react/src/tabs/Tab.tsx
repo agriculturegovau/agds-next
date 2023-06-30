@@ -24,15 +24,19 @@ export function Tab({ children }: TabProps) {
 	function onKeyDown(event: KeyboardEvent<HTMLButtonElement>) {
 		switch (event.code) {
 			case 'ArrowLeft':
+				event.preventDefault();
 				goToPreviousTab();
 				break;
 			case 'ArrowRight':
+				event.preventDefault();
 				goToNextTab();
 				break;
 			case 'Home':
+				event.preventDefault();
 				goToFirstTab();
 				break;
 			case 'End':
+				event.preventDefault();
 				goToLastTab();
 				break;
 		}
