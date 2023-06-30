@@ -36,7 +36,7 @@ export const ModalDialog = ({
 				paddingX={{ xs: 0.75, md: 1.5 }}
 				paddingY={{ xs: 1, md: 1.5 }}
 				gap={1}
-				maxWidth={tokens.maxWidth.modalDialog}
+				maxWidth="45rem" // 720 px
 				css={{
 					position: 'relative',
 					margin: '0 auto',
