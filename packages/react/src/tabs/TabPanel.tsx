@@ -17,9 +17,9 @@ export function TabPanel({ children }: TabPanelProps) {
 		<Box
 			id={panelId}
 			role="tabpanel"
-			tabIndex={isSelected ? 0 : -1}
 			aria-labelledby={tabId}
 			display={isSelected ? undefined : 'none'}
+			tabIndex={isSelected ? 0 : -1}
 			padding={1}
 			rounded
 			border

@@ -43,13 +43,19 @@ export const FlatChildren: StoryObj = {
 						<Fragment>
 							<Tab>Tab 1</Tab>
 						</Fragment>
-						<Tab>Tab 2</Tab>
-						<Tab>Tab 3</Tab>
+						{false}
+						{[2, 3].map((i) => (
+							<Tab key={i}>Tab {i}</Tab>
+						))}
 						{show && <Tab>Tab 4</Tab>}
 					</TabList>
 					<TabPanels>
-						<TabPanel>Tab panel 1.</TabPanel>
-						<TabPanel>Tab panel 2.</TabPanel>
+						<Fragment>
+							<TabPanel>Tab panel 1.</TabPanel>
+						</Fragment>
+						{[2, 3].map((i) => (
+							<TabPanel key={i}>Tab panel {i}.</TabPanel>
+						))}
 						<TabPanel>Tab panel 3.</TabPanel>
 						{show && <TabPanel>Tab panel 4.</TabPanel>}
 					</TabPanels>

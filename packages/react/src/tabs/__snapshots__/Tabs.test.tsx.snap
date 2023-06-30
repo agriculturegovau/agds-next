@@ -51,7 +51,7 @@ exports[`Tabs renders correctly 1`] = `
         role="tabpanel"
         tabindex="0"
       >
-        Tab panel 1.
+        Tab panel 1
       </div>
       <div
         aria-labelledby="tabs-:r0:-tab-1"
@@ -60,7 +60,7 @@ exports[`Tabs renders correctly 1`] = `
         role="tabpanel"
         tabindex="-1"
       >
-        Tab panel 2.
+        Tab panel 2
       </div>
       <div
         aria-labelledby="tabs-:r0:-tab-2"
@@ -69,7 +69,7 @@ exports[`Tabs renders correctly 1`] = `
         role="tabpanel"
         tabindex="-1"
       >
-        Tab panel 3.
+        Tab panel 3
       </div>
     </div>
   </div>
