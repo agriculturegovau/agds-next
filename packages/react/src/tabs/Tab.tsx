@@ -54,17 +54,34 @@ export function Tab({ children }: TabProps) {
 			id={tabId}
 			tabIndex={isSelected ? 0 : -1}
 			aria-controls={panelId}
-			padding={1}
-			color="action"
+			background={isSelected ? 'body' : 'shade'}
+			paddingX={1}
+			paddingY={0.5}
+			link
+			border
+			rounded
 			focus
 			css={{
+				borderBottomWidth: 0,
+				borderBottomLeftRadius: 0,
+				borderBottomRightRadius: 0,
 				...(isSelected
 					? {
-							borderTop: `2px solid ${boxPalette.foregroundAction}`,
+							position: 'relative',
+							textDecoration: 'none',
+							color: boxPalette.foregroundText,
+							borderTop: `4px solid ${boxPalette.foregroundAction}`,
+							':after': {
+								content: "''",
+								position: 'absolute',
+								bottom: -1,
+								left: 0,
+								right: 0,
+								height: 1,
+								background: boxPalette.backgroundBody,
+							},
 					  }
-					: {
-							background: boxPalette.backgroundShade,
-					  }),
+					: {}),
 			}}
 		>
 			{children}

@@ -20,17 +20,17 @@ export function Tabs({
 	const tabsCount = tabElements?.length ? tabElements.length - 1 : 0;
 
 	useEffect(() => {
-		const tabElements = ref.current?.querySelectorAll('[role="tab"]');
+		const tabElements = ref.current?.querySelectorAll('[role="tab"]') as
+			| NodeListOf<HTMLButtonElement>
+			| undefined;
 		const panelElements = ref.current?.querySelectorAll('[role="tabpanel"]');
 
-		if (tabElements && panelElements) {
-			if (tabElements.length !== panelElements.length) {
-				throw Error('something went wrong.');
-			}
+		if (tabElements?.length !== panelElements?.length) {
+			throw Error(
+				'The number of `Tab` components do not match the number of `TabPanel` components.'
+			);
 		}
 
-		// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-		// @ts-ignore
 		setTabElements(tabElements);
 	}, [children]);
 

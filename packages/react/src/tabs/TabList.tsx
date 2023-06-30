@@ -7,7 +7,7 @@ export type TabListProps = PropsWithChildren<{}>;
 
 export function TabList({ children }: TabListProps) {
 	return (
-		<Flex role="tablist" gap={0.5}>
+		<Flex flexWrap="wrap" role="tablist" gap={0.5}>
 			{flattenChildren(children).map((child, index) => (
 				<TabListContext.Provider key={index} value={{ tabIndex: index }}>
 					{child}

@@ -1,5 +1,6 @@
 import { PropsWithChildren } from 'react';
 import { Box } from '../box';
+import { tokens } from '../core';
 import { useTabPanelsContext } from './TabPanelsContext';
 import { useTabsContext } from './TabsContext';
 import { useTabIds } from './utils';
@@ -20,10 +21,14 @@ export function TabPanel({ children }: TabPanelProps) {
 			aria-labelledby={tabId}
 			display={isSelected ? undefined : 'none'}
 			tabIndex={isSelected ? 0 : -1}
-			padding={1}
+			background="body"
+			padding={tokens.containerPadding}
 			rounded
 			border
 			focus
+			css={{
+				borderTopLeftRadius: 0,
+			}}
 		>
 			{children}
 		</Box>
