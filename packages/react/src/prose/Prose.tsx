@@ -47,7 +47,7 @@ export const proseClass = css({
 	 * Prose block
 	 */
 	[`* + .${proseBlockClassname}:not(.${unsetProseStylesClassname} *)`]: {
-		marginTop: mapSpacing(2),
+		marginTop: mapSpacing(1.5),
 	},
 
 	/**
