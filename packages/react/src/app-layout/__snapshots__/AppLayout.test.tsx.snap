@@ -70,31 +70,103 @@ exports[`AppLayout renders correctly 1`] = `
             </span>
           </div>
         </a>
-        <a
-          class="css-32sbo0-boxStyles-AppLayoutHeaderAccount"
-          href="/account/preferences"
+        <div
+          id="dropdown-menu-:r0:"
         >
+          <button
+            aria-controls="dropdown-menu-:r0:-list"
+            aria-expanded="false"
+            aria-haspopup="true"
+            class="css-2q9pyw-BaseButton-Button"
+            id="dropdown-menu-:r0:-button"
+            type="button"
+          >
+            <span>
+              <span
+                class="css-oobk4c-Button"
+              >
+                <span
+                  class="css-1urm0li-boxStyles"
+                >
+                  <span
+                    class="css-19vmdll-boxStyles-AppLayoutHeaderAccount"
+                  >
+                    <span
+                      class="css-utem53-boxStyles-Text-AppLayoutHeaderAccount"
+                    >
+                      Toto Wolff
+                    </span>
+                    <span
+                      class="css-1lp7dl8-boxStyles-Text"
+                    >
+                      Orange Meat Works
+                    </span>
+                  </span>
+                  <span
+                    aria-hidden="true"
+                    class="css-1cow25h-boxStyles-Avatar"
+                  >
+                    TW
+                  </span>
+                </span>
+              </span>
+              <span
+                aria-live="assertive"
+              />
+            </span>
+          </button>
           <div
-            class="css-1bv5hke-boxStyles-AppLayoutHeaderAccount"
+            aria-labelledby="dropdown-menu-:r0:-button"
+            class="css-5qvxyw-boxStyles-light-boxStyles-Popover-DropdownMenuList"
+            id="dropdown-menu-:r0:-list"
+            role="menu"
+            style="position: absolute; left: 0px; top: 0px; display: none; transform: translate(0px, 0px);"
+            tabindex="-1"
           >
-            <span
-              class="css-19uuw7q-boxStyles-Text"
+            <div
+              class="css-1lgsiwd-boxStyles-DropdownMenuItem"
+              id="dropdown-menu-:r0:-item-:r1:"
+              role="menuitem"
+              tabindex="-1"
             >
-              Toto Wolff
-            </span>
-            <span
-              class="css-1lp7dl8-boxStyles-Text"
+              <div
+                class="css-4cj67k-boxStyles"
+              >
+                <span>
+                  Option A
+                </span>
+              </div>
+            </div>
+            <div
+              class="css-1lgsiwd-boxStyles-DropdownMenuItem"
+              id="dropdown-menu-:r0:-item-:r2:"
+              role="menuitem"
+              tabindex="-1"
             >
-              Orange Meat Works
-            </span>
+              <div
+                class="css-4cj67k-boxStyles"
+              >
+                <span>
+                  Option B
+                </span>
+              </div>
+            </div>
+            <div
+              class="css-1lgsiwd-boxStyles-DropdownMenuItem"
+              id="dropdown-menu-:r0:-item-:r3:"
+              role="menuitem"
+              tabindex="-1"
+            >
+              <div
+                class="css-4cj67k-boxStyles"
+              >
+                <span>
+                  Option C
+                </span>
+              </div>
+            </div>
           </div>
-          <span
-            aria-hidden="true"
-            class="css-1cow25h-boxStyles-Avatar"
-          >
-            TW
-          </span>
-        </a>
+        </div>
       </div>
       <div
         class="css-1sjsayx-boxStyles-AppLayoutHeaderNav"
@@ -128,31 +200,103 @@ exports[`AppLayout renders correctly 1`] = `
             Menu
           </span>
         </button>
-        <a
-          class="css-ewmtp9-boxStyles-AppLayoutHeaderAccount"
-          href="/account/preferences"
+        <div
+          id="dropdown-menu-:r4:"
         >
+          <button
+            aria-controls="dropdown-menu-:r4:-list"
+            aria-expanded="false"
+            aria-haspopup="true"
+            class="css-2q9pyw-BaseButton-Button"
+            id="dropdown-menu-:r4:-button"
+            type="button"
+          >
+            <span>
+              <span
+                class="css-oobk4c-Button"
+              >
+                <span
+                  class="css-1urm0li-boxStyles"
+                >
+                  <span
+                    class="css-19vmdll-boxStyles-AppLayoutHeaderAccount"
+                  >
+                    <span
+                      class="css-utem53-boxStyles-Text-AppLayoutHeaderAccount"
+                    >
+                      Toto Wolff
+                    </span>
+                    <span
+                      class="css-1lp7dl8-boxStyles-Text"
+                    >
+                      Orange Meat Works
+                    </span>
+                  </span>
+                  <span
+                    aria-hidden="true"
+                    class="css-1cow25h-boxStyles-Avatar"
+                  >
+                    TW
+                  </span>
+                </span>
+              </span>
+              <span
+                aria-live="assertive"
+              />
+            </span>
+          </button>
           <div
-            class="css-1bv5hke-boxStyles-AppLayoutHeaderAccount"
+            aria-labelledby="dropdown-menu-:r4:-button"
+            class="css-5qvxyw-boxStyles-light-boxStyles-Popover-DropdownMenuList"
+            id="dropdown-menu-:r4:-list"
+            role="menu"
+            style="position: absolute; left: 0px; top: 0px; display: none; transform: translate(0px, 0px);"
+            tabindex="-1"
           >
-            <span
-              class="css-19uuw7q-boxStyles-Text"
+            <div
+              class="css-1lgsiwd-boxStyles-DropdownMenuItem"
+              id="dropdown-menu-:r4:-item-:r5:"
+              role="menuitem"
+              tabindex="-1"
             >
-              Toto Wolff
-            </span>
-            <span
-              class="css-1lp7dl8-boxStyles-Text"
+              <div
+                class="css-4cj67k-boxStyles"
+              >
+                <span>
+                  Option A
+                </span>
+              </div>
+            </div>
+            <div
+              class="css-1lgsiwd-boxStyles-DropdownMenuItem"
+              id="dropdown-menu-:r4:-item-:r6:"
+              role="menuitem"
+              tabindex="-1"
             >
-              Orange Meat Works
-            </span>
+              <div
+                class="css-4cj67k-boxStyles"
+              >
+                <span>
+                  Option B
+                </span>
+              </div>
+            </div>
+            <div
+              class="css-1lgsiwd-boxStyles-DropdownMenuItem"
+              id="dropdown-menu-:r4:-item-:r7:"
+              role="menuitem"
+              tabindex="-1"
+            >
+              <div
+                class="css-4cj67k-boxStyles"
+              >
+                <span>
+                  Option C
+                </span>
+              </div>
+            </div>
           </div>
-          <span
-            aria-hidden="true"
-            class="css-1cow25h-boxStyles-Avatar"
-          >
-            TW
-          </span>
-        </a>
+        </div>
       </div>
     </header>
     <aside
