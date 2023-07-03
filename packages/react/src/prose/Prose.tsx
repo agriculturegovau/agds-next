@@ -356,11 +356,11 @@ export const proseClass = css({
 		borderTopWidth: tokens.borderWidth.sm,
 		borderTopStyle: 'solid',
 		borderColor: boxPalette.borderMuted,
-		marginBottom: mapSpacing(1.5),
+		marginBottom: mapSpacing(3),
 	},
 
 	[`* + hr${notSelector}`]: {
-		marginTop: mapSpacing(1.5),
+		marginTop: mapSpacing(3),
 	},
 
 	/**

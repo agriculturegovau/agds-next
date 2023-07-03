@@ -178,4 +178,9 @@ export const mdxComponents: MDXRemoteProps['components'] = {
 		</DirectionLink>
 	),
 	Box,
+	FootnotesList: ({ children }: HTMLAttributes<HTMLOListElement>) => (
+		<Box as="ul" color="muted" css={{ marginTop: mapSpacing(1.5) }}>
+			{children}
+		</Box>
+	),
 };
