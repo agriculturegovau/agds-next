@@ -13,6 +13,7 @@ export function useClickOutside<T extends HTMLElement = HTMLElement>(
 				return;
 			}
 
+			event.preventDefault();
 			handler(event);
 		};
 

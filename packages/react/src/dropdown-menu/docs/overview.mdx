@@ -1,0 +1,25 @@
+---
+title: Dropdown menu
+description: The Dropdown menu component displays an accessible dropdown menu to the user, such as a set of actions or links.
+group: Layout
+storybookPath: /story/layout-dropdownmenu--basic
+---
+
+## Basic
+
+```jsx live
+<DropdownMenu>
+	<DropdownMenuButton>Open dropdown menu</DropdownMenuButton>
+	<DropdownMenuList>
+		<DropdownMenuItem onSelect={() => console.log('Profile')}>
+			Profile
+		</DropdownMenuItem>
+		<DropdownMenuItem onSelect={() => console.log('Messages')}>
+			Messages
+		</DropdownMenuItem>
+		<DropdownMenuItem onSelect={() => console.log('Account settings')}>
+			Account settings
+		</DropdownMenuItem>
+	</DropdownMenuList>
+</DropdownMenu>
+```

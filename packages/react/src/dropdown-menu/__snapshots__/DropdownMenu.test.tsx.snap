@@ -1,0 +1,80 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DropdownMenu renders correctly 1`] = `
+<div>
+  <div
+    id="dropdown-menu-:r0:"
+  >
+    <button
+      aria-controls="dropdown-menu-:r0:-list"
+      aria-expanded="false"
+      aria-haspopup="true"
+      class="css-2q9pyw-BaseButton-Button"
+      id="dropdown-menu-:r0:-button"
+      type="button"
+    >
+      <span>
+        <span
+          class="css-oobk4c-Button"
+        >
+          Open dropdown menu
+        </span>
+        <span
+          aria-live="assertive"
+        />
+      </span>
+    </button>
+    <div
+      aria-labelledby="dropdown-menu-:r0:-button"
+      class="css-l7me97-boxStyles-boxStyles-Popover-DropdownMenuList"
+      id="dropdown-menu-:r0:-list"
+      role="menu"
+      style="position: absolute; left: 0px; top: 0px; display: none; transform: translate(0px, 0px);"
+      tabindex="-1"
+    >
+      <div
+        class="css-1lgsiwd-boxStyles-DropdownMenuItem"
+        id="dropdown-menu-:r0:-item-:r1:"
+        role="menuitem"
+        tabindex="-1"
+      >
+        <div
+          class="css-4cj67k-boxStyles"
+        >
+          <span>
+            Profile
+          </span>
+        </div>
+      </div>
+      <div
+        class="css-1lgsiwd-boxStyles-DropdownMenuItem"
+        id="dropdown-menu-:r0:-item-:r2:"
+        role="menuitem"
+        tabindex="-1"
+      >
+        <div
+          class="css-4cj67k-boxStyles"
+        >
+          <span>
+            Messages
+          </span>
+        </div>
+      </div>
+      <div
+        class="css-1lgsiwd-boxStyles-DropdownMenuItem"
+        id="dropdown-menu-:r0:-item-:r3:"
+        role="menuitem"
+        tabindex="-1"
+      >
+        <div
+          class="css-4cj67k-boxStyles"
+        >
+          <span>
+            Account settings
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

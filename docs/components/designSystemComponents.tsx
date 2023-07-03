@@ -215,5 +215,17 @@ export {
 	TabPanels,
 	TabPanel,
 } from '@ag.ds-next/react/tabs';
+export {
+	DropdownMenu,
+	DropdownMenuButton,
+	DropdownMenuDivider,
+	DropdownMenuGroup,
+	DropdownMenuItem,
+	DropdownMenuItemLink,
+	DropdownMenuList,
+	DropdownMenuRadioGroup,
+	DropdownMenuRadioGroupLink,
+	DropdownMenuRadioItem,
+} from '@ag.ds-next/react/dropdown-menu';
 // Used to populate options on documentation site and playroom
 export { COUNTRY_OPTIONS } from '@ag.ds-next/react/src/combobox/test-utils';

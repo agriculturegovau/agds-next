@@ -1,5 +1,6 @@
 import { CSSProperties, PropsWithChildren } from 'react';
 import {
+	ReferenceType,
 	useFloating,
 	autoUpdate,
 	offset,
@@ -39,11 +40,11 @@ export const Popover = forwardRefWithAs<'div', PopoverProps>(function Popover(
 
 const DEFAULT_OFFSET = 8;
 
-export function usePopover(options?: {
+export function usePopover<RT extends ReferenceType = ReferenceType>(options?: {
 	matchReferenceWidth?: boolean;
 	maxHeight?: number;
 }) {
-	const { refs, floatingStyles } = useFloating({
+	const { refs, floatingStyles } = useFloating<RT>({
 		placement: 'bottom-start',
 		middleware: [
 			// Adds distance between the reference and floating element
