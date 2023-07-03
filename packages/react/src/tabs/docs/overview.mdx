@@ -72,6 +72,25 @@ relatedComponents: ['accordion', 'sub-nav']
 - use to indicate progress - use the [Progress indicator](/components/progress-indicator) component instead
 - use if the user needs to compare information between two or more tabs
 
+## Uncontained
+
+Use the `uncontained` prop to remove the horizontal borders and padding from the tab panels.
+
+```jsx live
+<Tabs uncontained={true}>
+	<TabList>
+		<Tab>Tab 1</Tab>
+		<Tab>Tab 2</Tab>
+		<Tab>Tab 3</Tab>
+	</TabList>
+	<TabPanels>
+		<TabPanel>Tab panel 1.</TabPanel>
+		<TabPanel>Tab panel 2.</TabPanel>
+		<TabPanel>Tab panel 3.</TabPanel>
+	</TabPanels>
+</Tabs>
+```
+
 ## Controlled
 
 Use the `activeTabIndex` and `setActiveIndex` props to control the active tab index. This is useful if you want to store the active tab state in the browser URL.

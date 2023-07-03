@@ -3,15 +3,18 @@ import flattenChildren from 'react-keyed-flatten-children';
 import { boxPalette, tokens } from '../core';
 import { Flex } from '../flex';
 import { TabListContext } from './TabListContext';
+import { useTabsOrientation } from './utils';
 
 export type TabListProps = PropsWithChildren<{}>;
 
 export function TabList({ children }: TabListProps) {
+	const orientation = useTabsOrientation();
 	return (
 		<Flex
 			flexDirection={{ xs: 'column', sm: 'row' }}
 			flexWrap="wrap"
 			role="tablist"
+			aria-orientation={orientation}
 			gap={{ xs: 0, sm: 0.5 }}
 			css={{
 				[tokens.mediaQuery.max.xs]: {

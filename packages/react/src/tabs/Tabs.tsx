@@ -3,14 +3,14 @@ import { TabsContext } from './TabsContext';
 import { useTabsId } from './utils';
 
 export type TabsProps = PropsWithChildren<{
-	contained?: boolean;
+	uncontained?: boolean;
 	activeIndex?: number;
 	onChange?: (index: number) => void;
 }>;
 
 export function Tabs({
 	children,
-	contained = true,
+	uncontained = false,
 	activeIndex: activeIndexProp,
 	onChange,
 }: TabsProps) {
@@ -68,13 +68,13 @@ export function Tabs({
 		<TabsContext.Provider
 			value={{
 				tabsId,
+				uncontained,
 				activeIndex,
 				setActiveIndex,
 				goToFirstTab,
 				goToLastTab,
 				goToPreviousTab,
 				goToNextTab,
-				contained,
 			}}
 		>
 			<div ref={ref} id={tabsId}>

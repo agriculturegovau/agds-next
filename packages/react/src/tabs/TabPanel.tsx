@@ -8,7 +8,7 @@ import { useTabIds } from './utils';
 export type TabPanelProps = PropsWithChildren<{}>;
 
 export function TabPanel({ children }: TabPanelProps) {
-	const { tabsId, activeIndex, contained } = useTabsContext();
+	const { tabsId, activeIndex, uncontained } = useTabsContext();
 	const { panelIndex } = useTabPanelsContext();
 	const { tabId, panelId } = useTabIds(tabsId, panelIndex);
 
@@ -23,11 +23,22 @@ export function TabPanel({ children }: TabPanelProps) {
 			tabIndex={isSelected ? 0 : -1}
 			focus
 			background="body"
-			paddingX={contained ? tokens.containerPadding : undefined}
+			paddingX={uncontained ? 0 : tokens.containerPadding}
 			paddingY={tokens.containerPadding}
 			css={{
-				...(contained
+				...(uncontained
 					? {
+							borderBottomWidth: tokens.borderWidth.sm,
+							borderStyle: 'solid',
+							borderColor: boxPalette.border,
+
+							[tokens.mediaQuery.min.sm]: {
+								borderTopWidth: tokens.borderWidth.sm,
+								borderStyle: 'solid',
+								borderColor: boxPalette.border,
+							},
+					  }
+					: {
 							borderRadius: `0 0 ${tokens.borderRadius}px ${tokens.borderRadius}px`,
 							borderWidth: tokens.borderWidth.sm,
 							borderStyle: 'solid',
@@ -37,17 +48,6 @@ export function TabPanel({ children }: TabPanelProps) {
 							[tokens.mediaQuery.min.sm]: {
 								borderTopWidth: tokens.borderWidth.sm,
 								borderRadius: `0 ${tokens.borderRadius}px ${tokens.borderRadius}px`,
-							},
-					  }
-					: {
-							borderBottomWidth: tokens.borderWidth.sm,
-							borderStyle: 'solid',
-							borderColor: boxPalette.border,
-
-							[tokens.mediaQuery.min.sm]: {
-								borderTopWidth: tokens.borderWidth.sm,
-								borderStyle: 'solid',
-								borderColor: boxPalette.border,
 							},
 					  }),
 			}}

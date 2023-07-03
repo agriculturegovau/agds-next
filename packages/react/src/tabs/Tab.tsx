@@ -4,7 +4,7 @@ import { Box } from '../box';
 import { boxPalette, tokens } from '../core';
 import { useTabsContext } from './TabsContext';
 import { useTabListContext } from './TabListContext';
-import { useTabIds } from './utils';
+import { useTabIds, useTabsOrientation } from './utils';
 
 export type TabProps = PropsWithChildren<{}>;
 
@@ -20,14 +20,27 @@ export function Tab({ children }: TabProps) {
 	} = useTabsContext();
 	const { tabIndex } = useTabListContext();
 	const { tabId, panelId } = useTabIds(tabsId, tabIndex);
+	const orientation = useTabsOrientation();
 
 	function onKeyDown(event: KeyboardEvent<HTMLButtonElement>) {
 		switch (event.code) {
 			case 'ArrowLeft':
+				if (orientation === 'vertical') break;
 				event.preventDefault();
 				goToPreviousTab();
 				break;
 			case 'ArrowRight':
+				if (orientation === 'vertical') break;
+				event.preventDefault();
+				goToNextTab();
+				break;
+			case 'ArrowUp':
+				if (orientation === 'horizontal') break;
+				event.preventDefault();
+				goToPreviousTab();
+				break;
+			case 'ArrowDown':
+				if (orientation === 'horizontal') break;
 				event.preventDefault();
 				goToNextTab();
 				break;
