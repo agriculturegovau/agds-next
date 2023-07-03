@@ -1,6 +1,6 @@
 import { PropsWithChildren } from 'react';
 import { Box } from '../box';
-import { tokens } from '../core';
+import { boxPalette, tokens } from '../core';
 import { useTabPanelsContext } from './TabPanelsContext';
 import { useTabsContext } from './TabsContext';
 import { useTabIds } from './utils';
@@ -8,7 +8,7 @@ import { useTabIds } from './utils';
 export type TabPanelProps = PropsWithChildren<{}>;
 
 export function TabPanel({ children }: TabPanelProps) {
-	const { tabsId, activeIndex } = useTabsContext();
+	const { tabsId, activeIndex, contained } = useTabsContext();
 	const { panelIndex } = useTabPanelsContext();
 	const { tabId, panelId } = useTabIds(tabsId, panelIndex);
 
@@ -21,13 +21,35 @@ export function TabPanel({ children }: TabPanelProps) {
 			aria-labelledby={tabId}
 			display={isSelected ? undefined : 'none'}
 			tabIndex={isSelected ? 0 : -1}
-			background="body"
-			padding={tokens.containerPadding}
-			rounded
-			border
 			focus
+			background="body"
+			paddingX={contained ? tokens.containerPadding : undefined}
+			paddingY={tokens.containerPadding}
 			css={{
-				borderTopLeftRadius: 0,
+				...(contained
+					? {
+							borderRadius: `0 0 ${tokens.borderRadius}px ${tokens.borderRadius}px`,
+							borderWidth: tokens.borderWidth.sm,
+							borderStyle: 'solid',
+							borderColor: boxPalette.border,
+							borderTopWidth: 0,
+
+							[tokens.mediaQuery.min.sm]: {
+								borderTopWidth: tokens.borderWidth.sm,
+								borderRadius: `0 ${tokens.borderRadius}px ${tokens.borderRadius}px`,
+							},
+					  }
+					: {
+							borderBottomWidth: tokens.borderWidth.sm,
+							borderStyle: 'solid',
+							borderColor: boxPalette.border,
+
+							[tokens.mediaQuery.min.sm]: {
+								borderTopWidth: tokens.borderWidth.sm,
+								borderStyle: 'solid',
+								borderColor: boxPalette.border,
+							},
+					  }),
 			}}
 		>
 			{children}

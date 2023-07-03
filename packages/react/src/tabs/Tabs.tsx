@@ -3,12 +3,14 @@ import { TabsContext } from './TabsContext';
 import { useTabsId } from './utils';
 
 export type TabsProps = PropsWithChildren<{
+	contained?: boolean;
 	activeIndex?: number;
 	onChange?: (index: number) => void;
 }>;
 
 export function Tabs({
 	children,
+	contained = true,
 	activeIndex: activeIndexProp,
 	onChange,
 }: TabsProps) {
@@ -72,6 +74,7 @@ export function Tabs({
 				goToLastTab,
 				goToPreviousTab,
 				goToNextTab,
+				contained,
 			}}
 		>
 			<div ref={ref} id={tabsId}>

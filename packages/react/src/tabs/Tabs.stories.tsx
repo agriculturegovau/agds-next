@@ -2,6 +2,7 @@ import { Meta, StoryObj } from '@storybook/react';
 import { Fragment, useState } from 'react';
 import { Box } from '../box';
 import { Button } from '../button';
+import { PageContent } from '../content';
 import { useToggleState } from '../core';
 import { Flex } from '../flex';
 import { Stack } from '../stack';
@@ -10,65 +11,72 @@ import { Tab, TabList, TabPanel, TabPanels, Tabs } from './index';
 
 const meta: Meta = {
 	title: 'layout/Tabs',
+	render: function Render(args) {
+		return (
+			<PageContent>
+				<Tabs {...args}>
+					<TabList>
+						<Tab>Tab 1</Tab>
+						<Tab>Tab 2</Tab>
+						<Tab>Tab 3</Tab>
+					</TabList>
+					<TabPanels>
+						<TabPanel>
+							<Text as="p">
+								Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+								Pellentesque fermentum lacus ac magna elementum, ac laoreet leo
+								facilisis. Nulla at bibendum diam. Pellentesque vel accumsan
+								eros, nec egestas leo. Etiam lacinia, ligula non cursus sodales,
+								diam odio posuere eros, pharetra convallis lacus magna in urna.
+								Etiam condimentum iaculis mattis. Vestibulum eget felis in orci
+								eleifend vulputate vestibulum id mi. Curabitur at lacus vitae
+								urna tincidunt vehicula at quis nibh. Quisque id aliquet sapien.
+								Quisque ultricies nibh nisl, eu pellentesque dui semper a.
+								Aliquam vestibulum justo vitae feugiat sodales. Aenean efficitur
+								sodales diam, et volutpat enim faucibus a. Nulla mollis est eu
+								velit malesuada ornare ultrices in neque.
+							</Text>
+						</TabPanel>
+						<TabPanel>
+							<Text as="p">
+								Praesent metus leo, ultrices porta sodales quis, molestie vitae
+								nisl. Fusce at eros ultricies, pharetra eros id, faucibus dolor.
+								Nam et nibh lacus. Etiam pellentesque eros finibus ultricies
+								malesuada. Sed eget libero suscipit, dictum lacus sit amet,
+								venenatis dolor. Sed porttitor lorem turpis, ac suscipit lacus
+								vehicula id. Aliquam id venenatis augue. Orci varius natoque
+								penatibus et magnis dis parturient montes, nascetur ridiculus
+								mus. Integer viverra metus sed dolor euismod consectetur. Cras
+								mauris nisi, elementum vel eros sed, faucibus rhoncus mauris.
+								Phasellus eu ante vehicula, luctus libero in, malesuada nulla.
+							</Text>
+						</TabPanel>
+						<TabPanel>
+							<Text as="p">
+								Duis eu bibendum urna. Integer nisl massa, aliquam scelerisque
+								hendrerit at, ullamcorper quis turpis. Proin vulputate tincidunt
+								neque ut sollicitudin. In ullamcorper neque justo, vitae euismod
+								ante aliquam eget. Orci varius natoque penatibus et magnis dis
+								parturient montes, nascetur ridiculus mus. Donec eu purus ac
+								ante tempus vulputate ac vel mauris. Duis congue augue augue,
+								quis elementum nisl ultricies fermentum. Sed pellentesque leo ut
+								est semper vulputate.
+							</Text>
+						</TabPanel>
+					</TabPanels>
+				</Tabs>
+			</PageContent>
+		);
+	},
 };
 
 export default meta;
 
-export const Basic: StoryObj = {
-	render: function Render() {
-		return (
-			<Tabs>
-				<TabList>
-					<Tab>Tab 1</Tab>
-					<Tab>Tab 2</Tab>
-					<Tab>Tab 3</Tab>
-				</TabList>
-				<TabPanels>
-					<TabPanel>
-						<Text as="p">
-							Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-							Pellentesque fermentum lacus ac magna elementum, ac laoreet leo
-							facilisis. Nulla at bibendum diam. Pellentesque vel accumsan eros,
-							nec egestas leo. Etiam lacinia, ligula non cursus sodales, diam
-							odio posuere eros, pharetra convallis lacus magna in urna. Etiam
-							condimentum iaculis mattis. Vestibulum eget felis in orci eleifend
-							vulputate vestibulum id mi. Curabitur at lacus vitae urna
-							tincidunt vehicula at quis nibh. Quisque id aliquet sapien.
-							Quisque ultricies nibh nisl, eu pellentesque dui semper a. Aliquam
-							vestibulum justo vitae feugiat sodales. Aenean efficitur sodales
-							diam, et volutpat enim faucibus a. Nulla mollis est eu velit
-							malesuada ornare ultrices in neque.
-						</Text>
-					</TabPanel>
-					<TabPanel>
-						<Text as="p">
-							Praesent metus leo, ultrices porta sodales quis, molestie vitae
-							nisl. Fusce at eros ultricies, pharetra eros id, faucibus dolor.
-							Nam et nibh lacus. Etiam pellentesque eros finibus ultricies
-							malesuada. Sed eget libero suscipit, dictum lacus sit amet,
-							venenatis dolor. Sed porttitor lorem turpis, ac suscipit lacus
-							vehicula id. Aliquam id venenatis augue. Orci varius natoque
-							penatibus et magnis dis parturient montes, nascetur ridiculus mus.
-							Integer viverra metus sed dolor euismod consectetur. Cras mauris
-							nisi, elementum vel eros sed, faucibus rhoncus mauris. Phasellus
-							eu ante vehicula, luctus libero in, malesuada nulla.
-						</Text>
-					</TabPanel>
-					<TabPanel>
-						<Text as="p">
-							Duis eu bibendum urna. Integer nisl massa, aliquam scelerisque
-							hendrerit at, ullamcorper quis turpis. Proin vulputate tincidunt
-							neque ut sollicitudin. In ullamcorper neque justo, vitae euismod
-							ante aliquam eget. Orci varius natoque penatibus et magnis dis
-							parturient montes, nascetur ridiculus mus. Donec eu purus ac ante
-							tempus vulputate ac vel mauris. Duis congue augue augue, quis
-							elementum nisl ultricies fermentum. Sed pellentesque leo ut est
-							semper vulputate.
-						</Text>
-					</TabPanel>
-				</TabPanels>
-			</Tabs>
-		);
+export const Basic: StoryObj = {};
+
+export const WithoutBorder: StoryObj = {
+	args: {
+		contained: false,
 	},
 };
 

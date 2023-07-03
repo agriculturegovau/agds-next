@@ -1,7 +1,7 @@
 import { KeyboardEvent, PropsWithChildren } from 'react';
 import { BaseButton } from '../button';
 import { Box } from '../box';
-import { boxPalette } from '../core';
+import { boxPalette, tokens } from '../core';
 import { useTabsContext } from './TabsContext';
 import { useTabListContext } from './TabListContext';
 import { useTabIds } from './utils';
@@ -62,30 +62,76 @@ export function Tab({ children }: TabProps) {
 			paddingX={1}
 			paddingY={0.5}
 			link
-			border
-			rounded
 			focus
 			css={{
-				borderBottomWidth: 0,
-				borderBottomLeftRadius: 0,
-				borderBottomRightRadius: 0,
-				...(isSelected
-					? {
-							position: 'relative',
-							textDecoration: 'none',
-							color: boxPalette.foregroundText,
-							borderTop: `4px solid ${boxPalette.foregroundAction}`,
-							':after': {
-								content: "''",
-								position: 'absolute',
-								bottom: -1,
-								left: 0,
-								right: 0,
-								height: 1,
-								background: boxPalette.backgroundBody,
-							},
-					  }
-					: {}),
+				// Mobile
+				[tokens.mediaQuery.max.xs]: {
+					position: 'relative',
+					textDecoration: 'none',
+					'&:not(:last-of-type)': {
+						borderBottomWidth: tokens.borderWidth.sm,
+						borderStyle: 'solid',
+						borderColor: boxPalette.border,
+					},
+					...(isSelected
+						? {
+								color: boxPalette.foregroundText,
+								':before': {
+									content: "''",
+									position: 'absolute',
+									top: 0,
+									left: 0,
+									bottom: 0,
+									width: tokens.borderWidth.xxl,
+									background: boxPalette.foregroundAction,
+								},
+						  }
+						: {
+								':before': {
+									content: "''",
+									position: 'absolute',
+									top: 0,
+									left: 0,
+									bottom: 0,
+									width: tokens.borderWidth.xl,
+									background: boxPalette.borderMuted,
+								},
+						  }),
+				},
+
+				// Desktop
+				[tokens.mediaQuery.min.sm]: {
+					borderWidth: tokens.borderWidth.sm,
+					borderBottomWidth: 0,
+					borderStyle: 'solid',
+					borderColor: boxPalette.border,
+					borderRadius: `${tokens.borderRadius}px ${tokens.borderRadius}px 0 0`,
+					...(isSelected && {
+						position: 'relative',
+						textDecoration: 'none',
+						color: boxPalette.foregroundText,
+
+						':before': {
+							content: "''",
+							position: 'absolute',
+							top: 0,
+							left: 0,
+							right: 0,
+							height: tokens.borderWidth.xl,
+							background: boxPalette.foregroundAction,
+						},
+
+						':after': {
+							content: "''",
+							position: 'absolute',
+							bottom: -1,
+							left: 0,
+							right: 0,
+							height: 1,
+							background: boxPalette.backgroundBody,
+						},
+					}),
+				},
 			}}
 		>
 			{children}
