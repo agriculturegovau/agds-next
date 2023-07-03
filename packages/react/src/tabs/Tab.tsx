@@ -68,35 +68,23 @@ export function Tab({ children }: TabProps) {
 				[tokens.mediaQuery.max.xs]: {
 					position: 'relative',
 					textDecoration: 'none',
+					color: isSelected ? boxPalette.foregroundText : undefined,
 					'&:not(:last-of-type)': {
 						borderBottomWidth: tokens.borderWidth.sm,
 						borderStyle: 'solid',
 						borderColor: boxPalette.border,
 					},
-					...(isSelected
-						? {
-								color: boxPalette.foregroundText,
-								':before': {
-									content: "''",
-									position: 'absolute',
-									top: 0,
-									left: 0,
-									bottom: 0,
-									width: tokens.borderWidth.xxl,
-									background: boxPalette.foregroundAction,
-								},
-						  }
-						: {
-								':before': {
-									content: "''",
-									position: 'absolute',
-									top: 0,
-									left: 0,
-									bottom: 0,
-									width: tokens.borderWidth.xl,
-									background: boxPalette.borderMuted,
-								},
-						  }),
+					':before': {
+						content: "''",
+						position: 'absolute',
+						top: 0,
+						left: 0,
+						bottom: 0,
+						width: isSelected ? tokens.borderWidth.xxl : tokens.borderWidth.xl,
+						background: isSelected
+							? boxPalette.foregroundAction
+							: boxPalette.borderMuted,
+					},
 				},
 
 				// Desktop
@@ -110,7 +98,6 @@ export function Tab({ children }: TabProps) {
 						position: 'relative',
 						textDecoration: 'none',
 						color: boxPalette.foregroundText,
-
 						':before': {
 							content: "''",
 							position: 'absolute',
@@ -120,7 +107,6 @@ export function Tab({ children }: TabProps) {
 							height: tokens.borderWidth.xl,
 							background: boxPalette.foregroundAction,
 						},
-
 						':after': {
 							content: "''",
 							position: 'absolute',
