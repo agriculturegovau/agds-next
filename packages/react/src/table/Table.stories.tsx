@@ -202,7 +202,7 @@ export const Actions: Story = {
 							<StatusBadge weight="subtle" tone="info" label="In progress" />
 						</TableCell>
 						<TableCell>
-							<Flex gap={0.5}>
+							<Flex gap={1}>
 								<TextLink href="#">Edit</TextLink>
 								<TextLink href="#">Download</TextLink>
 							</Flex>
@@ -217,7 +217,7 @@ export const Actions: Story = {
 							<StatusBadge weight="subtle" tone="info" label="In progress" />
 						</TableCell>
 						<TableCell>
-							<Flex gap={0.5}>
+							<Flex gap={1}>
 								<TextLink href="#">Edit</TextLink>
 								<TextLink href="#">Download</TextLink>
 							</Flex>
@@ -232,7 +232,7 @@ export const Actions: Story = {
 							<StatusBadge weight="subtle" tone="success" label="Completed" />
 						</TableCell>
 						<TableCell>
-							<Flex gap={0.5}>
+							<Flex gap={1}>
 								<TextLink href="#">Edit</TextLink>
 								<TextLink href="#">Download</TextLink>
 							</Flex>
@@ -247,7 +247,7 @@ export const Actions: Story = {
 							<StatusBadge weight="subtle" tone="info" label="In progress" />
 						</TableCell>
 						<TableCell>
-							<Flex gap={0.5}>
+							<Flex gap={1}>
 								<TextLink href="#">Edit</TextLink>
 								<TextLink href="#">Download</TextLink>
 							</Flex>
@@ -262,7 +262,7 @@ export const Actions: Story = {
 							<StatusBadge weight="subtle" tone="success" label="Completed" />
 						</TableCell>
 						<TableCell>
-							<Flex gap={0.5}>
+							<Flex gap={1}>
 								<TextLink href="#">Edit</TextLink>
 								<TextLink href="#">Download</TextLink>
 							</Flex>
