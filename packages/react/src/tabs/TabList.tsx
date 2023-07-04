@@ -1,6 +1,5 @@
 import { PropsWithChildren } from 'react';
 import flattenChildren from 'react-keyed-flatten-children';
-import { boxPalette, tokens } from '../core';
 import { Flex } from '../flex';
 import { TabListContext } from './TabListContext';
 import { useTabsOrientation } from './utils';
@@ -16,13 +15,6 @@ export function TabList({ children }: TabListProps) {
 			role="tablist"
 			aria-orientation={orientation}
 			gap={{ xs: 0, sm: 0.5 }}
-			css={{
-				[tokens.mediaQuery.max.xs]: {
-					borderWidth: tokens.borderWidth.sm,
-					borderStyle: 'solid',
-					borderColor: boxPalette.border,
-				},
-			}}
 		>
 			{flattenChildren(children).map((child, index) => (
 				<TabListContext.Provider key={index} value={{ tabIndex: index }}>

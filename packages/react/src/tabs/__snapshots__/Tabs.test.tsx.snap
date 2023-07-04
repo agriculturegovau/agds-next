@@ -6,41 +6,48 @@ exports[`Tabs renders correctly 1`] = `
     id="tabs-:r0:"
   >
     <div
-      class="css-pcovqy-boxStyles-TabList"
+      aria-orientation="horizontal"
+      class="css-1be2o1s-boxStyles"
       role="tablist"
     >
       <button
         aria-controls="tabs-:r0:-tab-panel-0"
         aria-selected="true"
-        class="css-1m95qrk-BaseButton-boxStyles-Tab"
+        class="css-9cy8hk-BaseButton-boxStyles-Tab"
         id="tabs-:r0:-tab-0"
         role="tab"
         tabindex="0"
         type="button"
       >
-        Tab 1
+        <span>
+          Tab 1
+        </span>
       </button>
       <button
         aria-controls="tabs-:r0:-tab-panel-1"
         aria-selected="false"
-        class="css-1tyn23g-BaseButton-boxStyles-Tab"
+        class="css-5jkm0u-BaseButton-boxStyles-Tab"
         id="tabs-:r0:-tab-1"
         role="tab"
         tabindex="-1"
         type="button"
       >
-        Tab 2
+        <span>
+          Tab 2
+        </span>
       </button>
       <button
         aria-controls="tabs-:r0:-tab-panel-2"
         aria-selected="false"
-        class="css-1tyn23g-BaseButton-boxStyles-Tab"
+        class="css-5jkm0u-BaseButton-boxStyles-Tab"
         id="tabs-:r0:-tab-2"
         role="tab"
         tabindex="-1"
         type="button"
       >
-        Tab 3
+        <span>
+          Tab 3
+        </span>
       </button>
     </div>
     <div>

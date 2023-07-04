@@ -3,9 +3,12 @@ import { TabsContext } from './TabsContext';
 import { useTabsId } from './utils';
 
 export type TabsProps = PropsWithChildren<{
-	uncontained?: boolean;
+	/** The index of the active tab. */
 	activeIndex?: number;
-	onChange?: (index: number) => void;
+	/** Function to be called when the active tab index is changed. */
+	onChange?: (activeIndex: number) => void;
+	/** If true, the horizontal padding and borders will be removed. */
+	uncontained?: boolean;
 }>;
 
 export function Tabs({

@@ -1,14 +1,16 @@
-import { KeyboardEvent, PropsWithChildren } from 'react';
+import { KeyboardEvent, PropsWithChildren, ReactNode } from 'react';
 import { BaseButton } from '../button';
 import { Box } from '../box';
-import { boxPalette, tokens } from '../core';
+import { boxPalette, fontGrid, mapSpacing, packs, tokens } from '../core';
 import { useTabsContext } from './TabsContext';
 import { useTabListContext } from './TabListContext';
 import { useTabIds, useTabsOrientation } from './utils';
 
-export type TabProps = PropsWithChildren<{}>;
+export type TabProps = PropsWithChildren<{
+	endElement?: ReactNode;
+}>;
 
-export function Tab({ children }: TabProps) {
+export function Tab({ children, endElement }: TabProps) {
 	const {
 		tabsId,
 		activeIndex,
@@ -72,21 +74,54 @@ export function Tab({ children }: TabProps) {
 			tabIndex={isSelected ? 0 : -1}
 			aria-controls={panelId}
 			background={isSelected ? 'body' : 'shade'}
-			paddingX={1}
-			paddingY={0.5}
-			link
+			paddingX={1.5}
+			paddingY={0.75}
 			focus
 			css={{
+				position: 'relative',
+				display: 'flex',
+				alignItems: 'center',
+				justifyContent: 'space-between',
+				gap: mapSpacing(0.5),
+				...fontGrid('sm', 'default'),
+
+				...(isSelected
+					? {
+							'& > span:first-of-type': {
+								color: boxPalette.foregroundText,
+							},
+					  }
+					: {
+							'& > span:first-of-type': {
+								...packs.underline,
+								color: boxPalette.foregroundAction,
+							},
+							'&:hover > span:first-of-type': {
+								color: boxPalette.foregroundText,
+								textDecoration: 'none',
+							},
+					  }),
+
+				'&:focus': {
+					zIndex: tokens.zIndex.elevated,
+				},
+
 				// Mobile
 				[tokens.mediaQuery.max.xs]: {
-					position: 'relative',
-					textDecoration: 'none',
-					color: isSelected ? boxPalette.foregroundText : undefined,
-					'&:not(:last-of-type)': {
-						borderBottomWidth: tokens.borderWidth.sm,
-						borderStyle: 'solid',
-						borderColor: boxPalette.border,
+					borderWidth: tokens.borderWidth.sm,
+					borderBottomWidth: 0,
+					borderStyle: 'solid',
+					borderColor: boxPalette.border,
+
+					'&:first-of-type': {
+						overflow: 'hidden',
+						borderRadius: `${tokens.borderRadius}px ${tokens.borderRadius}px 0 0`,
 					},
+
+					'&:last-of-type': {
+						borderBottomWidth: tokens.borderWidth.sm,
+					},
+
 					':before': {
 						content: "''",
 						position: 'absolute',
@@ -108,9 +143,6 @@ export function Tab({ children }: TabProps) {
 					borderColor: boxPalette.border,
 					borderRadius: `${tokens.borderRadius}px ${tokens.borderRadius}px 0 0`,
 					...(isSelected && {
-						position: 'relative',
-						textDecoration: 'none',
-						color: boxPalette.foregroundText,
 						':before': {
 							content: "''",
 							position: 'absolute',
@@ -133,7 +165,8 @@ export function Tab({ children }: TabProps) {
 				},
 			}}
 		>
-			{children}
+			<span>{children}</span>
+			{endElement}
 		</Box>
 	);
 }

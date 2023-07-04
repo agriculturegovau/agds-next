@@ -11,9 +11,7 @@ export function TabPanel({ children }: TabPanelProps) {
 	const { tabsId, activeIndex, uncontained } = useTabsContext();
 	const { panelIndex } = useTabPanelsContext();
 	const { tabId, panelId } = useTabIds(tabsId, panelIndex);
-
 	const isSelected = activeIndex === panelIndex;
-
 	return (
 		<Box
 			id={panelId}

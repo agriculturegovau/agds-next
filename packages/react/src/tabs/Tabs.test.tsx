@@ -28,6 +28,10 @@ function renderTabs() {
 	);
 }
 
+async function getTabByText(text: string) {
+	return (await screen.getByText(text).parentNode) as HTMLButtonElement;
+}
+
 describe('Tabs', () => {
 	it('renders correctly', () => {
 		const { container } = renderTabs();
@@ -89,7 +93,7 @@ describe('Tabs', () => {
 	it('renders the correct ARIA tags', async () => {
 		renderTabs();
 
-		const firstTab = await screen.getByText('Tab 1');
+		const firstTab = await getTabByText('Tab 1');
 		const firstPanel = await screen.getByText('Tab panel 1');
 
 		expect(firstTab).toBeInTheDocument();
@@ -103,7 +107,7 @@ describe('Tabs', () => {
 		expect(firstPanel).toHaveAttribute('tabIndex', '0');
 		expect(firstPanel).toHaveAttribute('aria-labelledby', firstTab.id);
 
-		const secondTab = await screen.getByText('Tab 2');
+		const secondTab = await getTabByText('Tab 2');
 		const secondPanel = await screen.getByText('Tab panel 2');
 
 		expect(secondTab).toBeInTheDocument();
@@ -117,7 +121,7 @@ describe('Tabs', () => {
 		expect(secondPanel).toHaveAttribute('tabIndex', '-1');
 		expect(secondPanel).toHaveAttribute('aria-labelledby', secondTab.id);
 
-		const thirdTab = await screen.getByText('Tab 3');
+		const thirdTab = await getTabByText('Tab 3');
 		const thirdPanel = await screen.getByText('Tab panel 3');
 
 		expect(thirdTab).toBeInTheDocument();
@@ -135,9 +139,9 @@ describe('Tabs', () => {
 	it('responds to arrow keys keyboard events', async () => {
 		renderTabs();
 
-		const tab1 = await screen.getByText('Tab 1');
-		const tab2 = await screen.getByText('Tab 2');
-		const tab3 = await screen.getByText('Tab 3');
+		const tab1 = await getTabByText('Tab 1');
+		const tab2 = await getTabByText('Tab 2');
+		const tab3 = await getTabByText('Tab 3');
 
 		// Focus the first tab to activate keyboard navigation
 		await tab1.focus();
@@ -187,8 +191,8 @@ describe('Tabs', () => {
 
 	it('responds to home/end keys keyboard events', async () => {
 		renderTabs();
-		const firstTab = await screen.getByText('Tab 1');
-		const lastTab = await screen.getByText('Tab 3');
+		const firstTab = await getTabByText('Tab 1');
+		const lastTab = await getTabByText('Tab 3');
 
 		// Focus the first tab to activate keyboard navigation
 		await firstTab.focus();
