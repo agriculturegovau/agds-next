@@ -20,9 +20,9 @@ export function useTabIds(tabsId: string, index: number) {
 
 /**
  * Gets the orientation of the tabs based on the window size.
- * On mobile tabs are stacked vertically. On desktop, tabs they are stacked horizontally.
+ * Tabs are stacked vertically on desktop and horizontally on desktop
  */
 export function useTabsOrientation() {
-	const { windowWidth } = useWindowSize();
-	return (windowWidth ?? 0) > tokens.breakpoint.sm ? 'horizontal' : 'vertical';
+	const { windowWidth = 0 } = useWindowSize();
+	return windowWidth >= tokens.breakpoint.sm ? 'horizontal' : 'vertical';
 }
