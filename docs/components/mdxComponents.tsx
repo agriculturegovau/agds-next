@@ -21,7 +21,7 @@ import {
 	TableHeader,
 	TableWrapper,
 } from '@ag.ds-next/react/table';
-import { mapSpacing } from '@ag.ds-next/react/core';
+import { boxPalette, fontGrid, mapSpacing } from '@ag.ds-next/react/core';
 import { Text } from '@ag.ds-next/react/text';
 import { TextLink } from '@ag.ds-next/react/text-link';
 import { DirectionLink } from '@ag.ds-next/react/direction-link';
@@ -179,8 +179,15 @@ export const mdxComponents: MDXRemoteProps['components'] = {
 	),
 	Box,
 	FootnotesList: ({ children }: HTMLAttributes<HTMLOListElement>) => (
-		<Box as="ul" color="muted" css={{ marginTop: mapSpacing(1.5) }}>
+		<ol
+			css={{
+				...fontGrid('sm', 'default'),
+				color: boxPalette.foregroundMuted,
+				marginTop: mapSpacing(1.5),
+				marginBottom: '0rem',
+			}}
+		>
 			{children}
-		</Box>
+		</ol>
 	),
 };
