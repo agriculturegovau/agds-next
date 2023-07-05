@@ -194,7 +194,7 @@ export const Actions: Story = {
 				</TableHead>
 				<TableBody>
 					<tr>
-						<TableCell as="th" scope="row">
+						<TableCell as="th" scope="row" fontWeight="bold">
 							<TextLink href="#">REF-AB3CD4EF</TextLink>
 						</TableCell>
 						<TableCell>20/06/2022</TableCell>
@@ -209,7 +209,7 @@ export const Actions: Story = {
 						</TableCell>
 					</tr>
 					<tr>
-						<TableCell as="th" scope="row">
+						<TableCell as="th" scope="row" fontWeight="bold">
 							<TextLink href="#">REF-5GH6IJ7K</TextLink>
 						</TableCell>
 						<TableCell>25/06/2022</TableCell>
@@ -224,7 +224,7 @@ export const Actions: Story = {
 						</TableCell>
 					</tr>
 					<tr>
-						<TableCell as="th" scope="row">
+						<TableCell as="th" scope="row" fontWeight="bold">
 							<TextLink href="#">REF-M8NO9PQR</TextLink>
 						</TableCell>
 						<TableCell>02/07/2022</TableCell>
@@ -239,7 +239,7 @@ export const Actions: Story = {
 						</TableCell>
 					</tr>
 					<tr>
-						<TableCell as="th" scope="row">
+						<TableCell as="th" scope="row" fontWeight="bold">
 							<TextLink href="#">REF-S1TU2VWX</TextLink>
 						</TableCell>
 						<TableCell>05/08/2022</TableCell>
@@ -254,7 +254,7 @@ export const Actions: Story = {
 						</TableCell>
 					</tr>
 					<tr>
-						<TableCell as="th" scope="row">
+						<TableCell as="th" scope="row" fontWeight="bold">
 							<TextLink href="#">REF-Y3ZA4B5C</TextLink>
 						</TableCell>
 						<TableCell>19/10/2022</TableCell>
