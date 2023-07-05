@@ -13,7 +13,7 @@ export function useTabsId() {
  */
 export function useTabIds(tabsId: string, index: number) {
 	return {
-		tabId: `${tabsId}-tab-${index}`,
+		tabButtonId: `${tabsId}-tab-button-${index}`,
 		panelId: `${tabsId}-tab-panel-${index}`,
 	};
 }

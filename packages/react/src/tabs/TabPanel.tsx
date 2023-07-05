@@ -11,13 +11,13 @@ export type TabPanelProps = PropsWithChildren<{}>;
 export function TabPanel({ children }: TabPanelProps) {
 	const { tabsId, activeIndex, contained } = useTabsContext();
 	const { panelIndex } = useTabPanelsContext();
-	const { tabId, panelId } = useTabIds(tabsId, panelIndex);
+	const { tabButtonId, panelId } = useTabIds(tabsId, panelIndex);
 	const isSelected = activeIndex === panelIndex;
 	return (
 		<Box
 			id={panelId}
 			role="tabpanel"
-			aria-labelledby={tabId}
+			aria-labelledby={tabButtonId}
 			display={isSelected ? undefined : 'none'}
 			tabIndex={isSelected ? 0 : -1}
 			focus

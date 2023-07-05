@@ -15,7 +15,7 @@ exports[`Tabs renders correctly 1`] = `
         aria-controls="tabs-:r0:-tab-panel-0"
         aria-selected="true"
         class="css-1be6reg-BaseButton-boxStyles-TabButton"
-        id="tabs-:r0:-tab-0"
+        id="tabs-:r0:-tab-button-0"
         role="tab"
         tabindex="0"
         type="button"
@@ -28,7 +28,7 @@ exports[`Tabs renders correctly 1`] = `
         aria-controls="tabs-:r0:-tab-panel-1"
         aria-selected="false"
         class="css-sboc43-BaseButton-boxStyles-TabButton"
-        id="tabs-:r0:-tab-1"
+        id="tabs-:r0:-tab-button-1"
         role="tab"
         tabindex="-1"
         type="button"
@@ -41,7 +41,7 @@ exports[`Tabs renders correctly 1`] = `
         aria-controls="tabs-:r0:-tab-panel-2"
         aria-selected="false"
         class="css-sboc43-BaseButton-boxStyles-TabButton"
-        id="tabs-:r0:-tab-2"
+        id="tabs-:r0:-tab-button-2"
         role="tab"
         tabindex="-1"
         type="button"
@@ -53,7 +53,7 @@ exports[`Tabs renders correctly 1`] = `
     </div>
     <div>
       <div
-        aria-labelledby="tabs-:r0:-tab-0"
+        aria-labelledby="tabs-:r0:-tab-button-0"
         class="css-1pt1uw1-boxStyles-TabPanel"
         id="tabs-:r0:-tab-panel-0"
         role="tabpanel"
@@ -62,7 +62,7 @@ exports[`Tabs renders correctly 1`] = `
         Tab panel 1
       </div>
       <div
-        aria-labelledby="tabs-:r0:-tab-1"
+        aria-labelledby="tabs-:r0:-tab-button-1"
         class="css-1vawut6-boxStyles-TabPanel"
         id="tabs-:r0:-tab-panel-1"
         role="tabpanel"
@@ -71,7 +71,7 @@ exports[`Tabs renders correctly 1`] = `
         Tab panel 2
       </div>
       <div
-        aria-labelledby="tabs-:r0:-tab-2"
+        aria-labelledby="tabs-:r0:-tab-button-2"
         class="css-1vawut6-boxStyles-TabPanel"
         id="tabs-:r0:-tab-panel-2"
         role="tabpanel"

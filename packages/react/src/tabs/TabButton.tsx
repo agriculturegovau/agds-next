@@ -22,7 +22,7 @@ export function TabButton({ children, endElement }: TabButtonProps) {
 		goToNextTab,
 	} = useTabsContext();
 	const { tabIndex } = useTabListContext();
-	const { tabId, panelId } = useTabIds(tabsId, tabIndex);
+	const { tabButtonId, panelId } = useTabIds(tabsId, tabIndex);
 	const orientation = useTabsOrientation();
 
 	function onKeyDown(event: KeyboardEvent<HTMLButtonElement>) {
@@ -71,7 +71,7 @@ export function TabButton({ children, endElement }: TabButtonProps) {
 			onClick={onClick}
 			role="tab"
 			aria-selected={isSelected}
-			id={tabId}
+			id={tabButtonId}
 			tabIndex={isSelected ? 0 : -1}
 			aria-controls={panelId}
 			paddingX={1.5}
