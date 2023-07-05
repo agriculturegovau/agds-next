@@ -1,3 +1,4 @@
+import { PropsWithChildren } from 'react';
 import { Flex } from '../flex';
 import {
 	boxPalette,
@@ -7,17 +8,20 @@ import {
 	useLinkComponent,
 } from '../core';
 import { Text } from '../text';
+import { Box } from '../box';
 
 export type AppLayoutHeaderBrandProps = {
 	href: string;
 	logo: JSX.Element;
 	heading: string;
 	subLine?: string;
+	badgeLabel?: string;
 };
 
 export function AppLayoutHeaderBrand({
 	heading,
 	subLine,
+	badgeLabel,
 	logo,
 	href,
 }: AppLayoutHeaderBrandProps) {
@@ -55,9 +59,14 @@ export function AppLayoutHeaderBrand({
 					},
 				}}
 			>
-				<Text fontSize="lg" fontWeight="bold">
-					{heading}
-				</Text>
+				<Flex alignItems="flex-start" gap={0.5}>
+					<Text fontSize="lg" fontWeight="bold">
+						{heading}
+					</Text>
+					{badgeLabel && (
+						<AppLayoutHeaderBrandBadge>{badgeLabel}</AppLayoutHeaderBrandBadge>
+					)}
+				</Flex>
 				{subLine ? (
 					<Text color="muted" fontSize="xs">
 						{subLine}
@@ -65,5 +74,33 @@ export function AppLayoutHeaderBrand({
 				) : null}
 			</Flex>
 		</Flex>
+	);
+}
+
+type AppLayoutHeaderBrandBadgeProps = PropsWithChildren<{}>;
+
+// Note: This component has been copied over from the `Header` component
+function AppLayoutHeaderBrandBadge({
+	children,
+}: AppLayoutHeaderBrandBadgeProps) {
+	return (
+		<Box
+			as="span"
+			fontWeight="bold"
+			paddingLeft={0.5}
+			paddingRight={0.5}
+			border
+			borderWidth="md"
+			css={{
+				// These values don't exist in our tokens
+				fontSize: '0.75rem',
+				paddingTop: '2px',
+				paddingBottom: '2px',
+				borderColor: boxPalette.foregroundText,
+				borderRadius: '2em',
+			}}
+		>
+			{children}
+		</Box>
 	);
 }
