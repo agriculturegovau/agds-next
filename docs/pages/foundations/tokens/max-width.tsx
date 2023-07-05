@@ -28,11 +28,6 @@ const tokenDescriptions: Record<
 		value: tokens.maxWidth.container,
 		description: 'Used for setting the max-width of the page container.',
 	},
-	mobileMenu: {
-		value: tokens.maxWidth.mobileMenu,
-		description:
-			'Used for setting the max-width of the modal dialog in the mobile version of the MainNav.',
-	},
 };
 
 export default function TokensMaxWidthsPage() {

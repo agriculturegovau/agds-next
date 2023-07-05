@@ -4,7 +4,10 @@ import { Stack } from '../stack';
 import { AppLayoutSidebarNav, NavItem } from './AppLayoutSidebarNav';
 import { useAppLayoutContext } from './AppLayoutContext';
 import { AppLayoutSidebarDialog } from './AppLayoutSidebarDialog';
-import { APP_LAYOUT_DESKTOP_BREAKPOINT } from './utils';
+import {
+	APP_LAYOUT_DESKTOP_BREAKPOINT,
+	APP_LAYOUT_SIDEBAR_WIDTH,
+} from './utils';
 
 export type AppLayoutSidebarProps = {
 	/** Used for highlighting the active element. */
@@ -27,7 +30,7 @@ export function AppLayoutSidebar({ activePath, items }: AppLayoutSidebarProps) {
 				flexGrow={1}
 				css={{
 					display: 'none',
-					width: tokens.maxWidth.mobileMenu,
+					width: APP_LAYOUT_SIDEBAR_WIDTH,
 					[tokens.mediaQuery.min[APP_LAYOUT_DESKTOP_BREAKPOINT]]: {
 						display: focusMode ? 'none' : 'flex',
 					},

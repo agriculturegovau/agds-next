@@ -21,7 +21,10 @@ import { CloseIcon } from '../icon';
 import { VisuallyHidden } from '../a11y';
 import { BaseButton } from '../button';
 import { useAppLayoutContext } from './AppLayoutContext';
-import { APP_LAYOUT_DESKTOP_BREAKPOINT } from './utils';
+import {
+	APP_LAYOUT_DESKTOP_BREAKPOINT,
+	APP_LAYOUT_SIDEBAR_WIDTH,
+} from './utils';
 
 export type AppLayoutSidebarDialogProps = PropsWithChildren<{}>;
 
@@ -73,7 +76,7 @@ export function AppLayoutSidebarDialog({
 								role="dialog"
 								aria-modal="true"
 								background="shade"
-								width={tokens.maxWidth.mobileMenu}
+								width={APP_LAYOUT_SIDEBAR_WIDTH}
 								css={{
 									position: 'fixed',
 									zIndex: tokens.zIndex.dialog,
