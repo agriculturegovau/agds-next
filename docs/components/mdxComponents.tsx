@@ -28,7 +28,7 @@ import { Text } from '@ag.ds-next/react/text';
 import { TextLink } from '@ag.ds-next/react/text-link';
 import { DirectionLink } from '@ag.ds-next/react/direction-link';
 import { Card, CardHeader, CardInner } from '@ag.ds-next/react/card';
-import { Heading } from '@ag.ds-next/react/heading';
+import { H3, H4 } from '@ag.ds-next/react/heading';
 import { slugify } from '../lib/slugify';
 import { withBasePath } from '../lib/img';
 import generatedComponentPropsData from '../__generated__/componentProps.json';
@@ -44,10 +44,12 @@ export const mdxComponents: MDXRemoteProps['components'] = {
 		live,
 		showCode,
 		enableProse,
+		headingType,
 	}: HTMLAttributes<HTMLPreElement> & {
 		live?: boolean;
 		showCode?: boolean;
 		enableProse?: boolean;
+		headingType?: 'h2' | 'h3' | 'h4';
 	}) => {
 		return (
 			<Fragment>
@@ -59,6 +61,7 @@ export const mdxComponents: MDXRemoteProps['components'] = {
 							live={live}
 							showCode={showCode}
 							enableProse={enableProse}
+							headingType={headingType}
 							{...element.props}
 						/>
 					);
@@ -131,6 +134,8 @@ export const mdxComponents: MDXRemoteProps['components'] = {
 			</h3>
 		);
 	},
+	H3,
+	H4,
 	PageAlert: (props: PageAlertProps) => (
 		<div className={proseBlockClassname}>
 			<PageAlert {...props} />
@@ -182,19 +187,13 @@ export const mdxComponents: MDXRemoteProps['components'] = {
 		</DirectionLink>
 	),
 	ExampleContent: ({
-		heading,
+		heading = <H4>Example</H4>,
 		children,
 	}: PropsWithChildren<{
-		heading?: string | ReactNode;
+		heading?: ReactNode;
 	}>) => (
 		<Card className={proseBlockClassname}>
-			<CardHeader>
-				{heading && typeof heading === 'string' ? (
-					<Heading type="h4">{heading}</Heading>
-				) : (
-					heading
-				)}
-			</CardHeader>
+			{heading ? <CardHeader>{heading}</CardHeader> : null}
 			<CardInner>{children}</CardInner>
 		</Card>
 	),
