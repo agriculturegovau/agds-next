@@ -27,7 +27,7 @@ export const localPalette = {
 	inactiveTabHover: `var(${localPaletteVars.inactiveTabHover})`,
 };
 
-export function getLocalPaletteVars(background: Background) {
+export function setLocalPaletteVars(background: Background) {
 	return {
 		[localPaletteVars.background]: backgroundMap[background].background,
 		[localPaletteVars.inactiveTab]: backgroundMap[background].inactiveTab,

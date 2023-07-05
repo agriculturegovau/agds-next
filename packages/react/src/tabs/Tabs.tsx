@@ -1,7 +1,7 @@
 import { PropsWithChildren, useEffect, useRef, useState } from 'react';
 import { TabsContext } from './TabsContext';
 import { useTabsId } from './utils';
-import { Background, getLocalPaletteVars } from './localPalette';
+import { Background, setLocalPaletteVars } from './localPalette';
 
 export type TabsProps = PropsWithChildren<{
 	/** If this component is placed on a page with a `bodyAlt` background, set this to `bodyAlt`. */
@@ -84,7 +84,7 @@ export function Tabs({
 				goToNextTab,
 			}}
 		>
-			<div ref={ref} id={tabsId} css={getLocalPaletteVars(background)}>
+			<div ref={ref} id={tabsId} css={setLocalPaletteVars(background)}>
 				{children}
 			</div>
 		</TabsContext.Provider>
