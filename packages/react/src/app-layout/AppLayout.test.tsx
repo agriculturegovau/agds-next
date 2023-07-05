@@ -26,6 +26,7 @@ function renderAppLayout({ focusMode }: { focusMode: boolean }) {
 				logo={<Logo />}
 				heading="Export Service"
 				subLine="Supporting Australian agricultural exports"
+				badgeLabel="Beta"
 				accountDetails={{
 					href: '/account/preferences',
 					name: 'Toto Wolff',

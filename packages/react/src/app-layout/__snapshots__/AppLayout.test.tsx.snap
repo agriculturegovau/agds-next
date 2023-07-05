@@ -57,6 +57,11 @@ exports[`AppLayout renders correctly 1`] = `
               >
                 Export Service
               </span>
+              <span
+                class="css-c5y8sd-boxStyles-AppLayoutHeaderBrandBadge"
+              >
+                Beta
+              </span>
             </div>
             <span
               class="css-1lp7dl8-boxStyles-Text"
