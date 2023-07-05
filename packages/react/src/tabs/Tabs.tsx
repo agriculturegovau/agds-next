@@ -1,19 +1,23 @@
 import { PropsWithChildren, useEffect, useRef, useState } from 'react';
 import { TabsContext } from './TabsContext';
 import { useTabsId } from './utils';
+import { Background, getLocalPaletteVars } from './localPalette';
 
 export type TabsProps = PropsWithChildren<{
+	/** If this component is placed on a page with a `bodyAlt` background, set this to `bodyAlt`. */
+	background?: Background;
+	/** If `false`, the horizontal padding and borders will be removed. */
+	contained?: boolean;
 	/** The index of the active tab. */
 	activeIndex?: number;
 	/** Function to be called when the active tab index is changed. */
 	onChange?: (activeIndex: number) => void;
-	/** If true, the horizontal padding and borders will be removed. */
-	uncontained?: boolean;
 }>;
 
 export function Tabs({
 	children,
-	uncontained = false,
+	background = 'body',
+	contained = true,
 	activeIndex: activeIndexProp,
 	onChange,
 }: TabsProps) {
@@ -71,7 +75,7 @@ export function Tabs({
 		<TabsContext.Provider
 			value={{
 				tabsId,
-				uncontained,
+				contained,
 				activeIndex,
 				setActiveIndex,
 				goToFirstTab,
@@ -80,7 +84,7 @@ export function Tabs({
 				goToNextTab,
 			}}
 		>
-			<div ref={ref} id={tabsId}>
+			<div ref={ref} id={tabsId} css={getLocalPaletteVars(background)}>
 				{children}
 			</div>
 		</TabsContext.Provider>

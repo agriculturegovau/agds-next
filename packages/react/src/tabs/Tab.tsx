@@ -5,6 +5,7 @@ import { boxPalette, fontGrid, mapSpacing, packs, tokens } from '../core';
 import { useTabsContext } from './TabsContext';
 import { useTabListContext } from './TabListContext';
 import { useTabIds, useTabsOrientation } from './utils';
+import { localPalette } from './localPalette';
 
 export type TabProps = PropsWithChildren<{
 	endElement?: ReactNode;
@@ -73,7 +74,6 @@ export function Tab({ children, endElement }: TabProps) {
 			id={tabId}
 			tabIndex={isSelected ? 0 : -1}
 			aria-controls={panelId}
-			background={isSelected ? 'body' : 'shade'}
 			paddingX={1.5}
 			paddingY={0.75}
 			focus
@@ -87,11 +87,16 @@ export function Tab({ children, endElement }: TabProps) {
 
 				...(isSelected
 					? {
+							background: localPalette.background,
 							'& > span:first-of-type': {
 								color: boxPalette.foregroundText,
 							},
 					  }
 					: {
+							background: localPalette.inactiveTab,
+							'&:hover': {
+								background: localPalette.inactiveTabHover,
+							},
 							'& > span:first-of-type': {
 								...packs.underline,
 								color: boxPalette.foregroundAction,
@@ -159,7 +164,7 @@ export function Tab({ children, endElement }: TabProps) {
 							left: 0,
 							right: 0,
 							height: 1,
-							background: boxPalette.backgroundBody,
+							background: localPalette.background,
 						},
 					}),
 				},

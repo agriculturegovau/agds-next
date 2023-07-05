@@ -2,7 +2,7 @@ import { createContext, useContext } from 'react';
 
 export type TabsContextType = {
 	tabsId: string;
-	uncontained: boolean;
+	contained: boolean;
 	activeIndex: number;
 	setActiveIndex: (index: number) => void;
 	goToPreviousTab: () => void;

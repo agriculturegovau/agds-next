@@ -72,12 +72,12 @@ relatedComponents: ['accordion', 'details', 'sub-nav']
 - use to indicate progress - use the [Progress indicator](/components/progress-indicator) component instead
 - use if the user needs to compare information between two or more tabs
 
-## Uncontained
+## Not contained
 
-Use the `uncontained` prop to remove the horizontal borders and padding from the tab panels.
+Set the `contained` prop to `false` to remove the horizontal borders and padding from the tab panels.
 
 ```jsx live
-<Tabs uncontained={true}>
+<Tabs contained={false}>
 	<TabList>
 		<Tab>Tab 1</Tab>
 		<Tab>Tab 2</Tab>
