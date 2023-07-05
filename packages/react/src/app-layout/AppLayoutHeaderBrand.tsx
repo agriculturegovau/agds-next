@@ -85,7 +85,6 @@ function AppLayoutHeaderBrandBadge({
 }: AppLayoutHeaderBrandBadgeProps) {
 	return (
 		<Box
-			as="span"
 			fontWeight="bold"
 			paddingLeft={0.5}
 			paddingRight={0.5}
