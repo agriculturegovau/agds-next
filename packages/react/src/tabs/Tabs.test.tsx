@@ -3,7 +3,7 @@ import 'html-validate/jest';
 import { Fragment } from 'react';
 import userEvent from '@testing-library/user-event';
 import { render, cleanup, screen } from '../../../../test-utils';
-import { Tab } from './Tab';
+import { TabButton } from './TabButton';
 import { TabList } from './TabList';
 import { TabPanel } from './TabPanel';
 import { TabPanels } from './TabPanels';
@@ -15,9 +15,9 @@ function renderTabs() {
 	return render(
 		<Tabs>
 			<TabList>
-				<Tab>Tab 1</Tab>
-				<Tab>Tab 2</Tab>
-				<Tab>Tab 3</Tab>
+				<TabButton>Tab 1</TabButton>
+				<TabButton>Tab 2</TabButton>
+				<TabButton>Tab 3</TabButton>
 			</TabList>
 			<TabPanels>
 				<TabPanel>Tab panel 1</TabPanel>
@@ -55,10 +55,10 @@ describe('Tabs', () => {
 				<TabList>
 					{undefined}
 					{[1, 2].map((i) => (
-						<Tab key={i}>Tab {i}</Tab>
+						<TabButton key={i}>Tab {i}</TabButton>
 					))}
 					<Fragment>
-						<Tab>Tab 3</Tab>
+						<TabButton>Tab 3</TabButton>
 					</Fragment>
 				</TabList>
 				{false}
@@ -79,7 +79,7 @@ describe('Tabs', () => {
 		const tablist = await screen.findByRole('tablist');
 		expect(tablist.childElementCount).toEqual(3);
 
-		// There should be a total of 3 "Tab" components
+		// There should be a total of 3 "TabButton" components
 		const tabs = await screen.findAllByRole('tab');
 		expect(tabs.length).toEqual(3);
 

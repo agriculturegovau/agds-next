@@ -9,9 +9,9 @@ relatedComponents: ['accordion', 'details', 'sub-nav']
 ```jsx live
 <Tabs>
 	<TabList>
-		<Tab>Tab 1</Tab>
-		<Tab>Tab 2</Tab>
-		<Tab>Tab 3</Tab>
+		<TabButton>Tab 1</TabButton>
+		<TabButton>Tab 2</TabButton>
+		<TabButton>Tab 3</TabButton>
 	</TabList>
 	<TabPanels>
 		<TabPanel>
@@ -79,9 +79,9 @@ Set the `contained` prop to `false` to remove the horizontal borders and padding
 ```jsx live
 <Tabs contained={false}>
 	<TabList>
-		<Tab>Tab 1</Tab>
-		<Tab>Tab 2</Tab>
-		<Tab>Tab 3</Tab>
+		<TabButton>Tab 1</TabButton>
+		<TabButton>Tab 2</TabButton>
+		<TabButton>Tab 3</TabButton>
 	</TabList>
 	<TabPanels>
 		<TabPanel>Tab panel 1.</TabPanel>
@@ -103,9 +103,9 @@ Use the `activeTabIndex` and `setActiveIndex` props to control the active tab in
 			<Text>Current tab index: {activeTabIndex}</Text>
 			<Tabs activeIndex={activeTabIndex} onChange={setActiveIndex}>
 				<TabList>
-					<Tab>Tab 1</Tab>
-					<Tab>Tab 2</Tab>
-					<Tab>Tab 3</Tab>
+					<TabButton>Tab 1</TabButton>
+					<TabButton>Tab 2</TabButton>
+					<TabButton>Tab 3</TabButton>
 				</TabList>
 				<TabPanels>
 					<TabPanel>Tab panel 1.</TabPanel>

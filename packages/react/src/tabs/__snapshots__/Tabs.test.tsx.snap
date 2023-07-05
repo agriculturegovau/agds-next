@@ -3,7 +3,7 @@
 exports[`Tabs renders correctly 1`] = `
 <div>
   <div
-    class="css-5dc5s4-Tabs"
+    class="css-1mg55j5-Tabs"
     id="tabs-:r0:"
   >
     <div
@@ -14,7 +14,7 @@ exports[`Tabs renders correctly 1`] = `
       <button
         aria-controls="tabs-:r0:-tab-panel-0"
         aria-selected="true"
-        class="css-814lx-BaseButton-boxStyles-Tab"
+        class="css-1be6reg-BaseButton-boxStyles-TabButton"
         id="tabs-:r0:-tab-0"
         role="tab"
         tabindex="0"
@@ -27,7 +27,7 @@ exports[`Tabs renders correctly 1`] = `
       <button
         aria-controls="tabs-:r0:-tab-panel-1"
         aria-selected="false"
-        class="css-1uhyzty-BaseButton-boxStyles-Tab"
+        class="css-sboc43-BaseButton-boxStyles-TabButton"
         id="tabs-:r0:-tab-1"
         role="tab"
         tabindex="-1"
@@ -40,7 +40,7 @@ exports[`Tabs renders correctly 1`] = `
       <button
         aria-controls="tabs-:r0:-tab-panel-2"
         aria-selected="false"
-        class="css-1uhyzty-BaseButton-boxStyles-Tab"
+        class="css-sboc43-BaseButton-boxStyles-TabButton"
         id="tabs-:r0:-tab-2"
         role="tab"
         tabindex="-1"
@@ -54,7 +54,7 @@ exports[`Tabs renders correctly 1`] = `
     <div>
       <div
         aria-labelledby="tabs-:r0:-tab-0"
-        class="css-1r0dz0s-boxStyles-TabPanel"
+        class="css-1pt1uw1-boxStyles-TabPanel"
         id="tabs-:r0:-tab-panel-0"
         role="tabpanel"
         tabindex="0"
@@ -63,7 +63,7 @@ exports[`Tabs renders correctly 1`] = `
       </div>
       <div
         aria-labelledby="tabs-:r0:-tab-1"
-        class="css-zf0jv0-boxStyles-TabPanel"
+        class="css-1vawut6-boxStyles-TabPanel"
         id="tabs-:r0:-tab-panel-1"
         role="tabpanel"
         tabindex="-1"
@@ -72,7 +72,7 @@ exports[`Tabs renders correctly 1`] = `
       </div>
       <div
         aria-labelledby="tabs-:r0:-tab-2"
-        class="css-zf0jv0-boxStyles-TabPanel"
+        class="css-1vawut6-boxStyles-TabPanel"
         id="tabs-:r0:-tab-panel-2"
         role="tabpanel"
         tabindex="-1"

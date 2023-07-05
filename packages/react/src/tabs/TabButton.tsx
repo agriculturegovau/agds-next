@@ -7,11 +7,11 @@ import { useTabListContext } from './TabListContext';
 import { useTabIds, useTabsOrientation } from './utils';
 import { localPalette } from './localPalette';
 
-export type TabProps = PropsWithChildren<{
+export type TabButtonProps = PropsWithChildren<{
 	endElement?: ReactNode;
 }>;
 
-export function Tab({ children, endElement }: TabProps) {
+export function TabButton({ children, endElement }: TabButtonProps) {
 	const {
 		tabsId,
 		activeIndex,

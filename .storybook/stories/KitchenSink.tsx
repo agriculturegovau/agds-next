@@ -72,7 +72,7 @@ import {
 	SummaryListItemTerm,
 } from '@ag.ds-next/react/summary-list';
 import {
-	Tab,
+	TabButton,
 	TabList,
 	TabPanel,
 	TabPanels,
@@ -349,9 +349,9 @@ function KitchenSink({ background }: KitchenSinkProps) {
 
 							<Tabs>
 								<TabList>
-									<Tab>Tab 1</Tab>
-									<Tab>Tab 2</Tab>
-									<Tab>Tab 3</Tab>
+									<TabButton>Tab 1</TabButton>
+									<TabButton>Tab 2</TabButton>
+									<TabButton>Tab 3</TabButton>
 								</TabList>
 								<TabPanels>
 									<TabPanel>Tab panel 1.</TabPanel>

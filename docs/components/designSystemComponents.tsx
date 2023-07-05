@@ -211,7 +211,7 @@ export { FilterDrawer } from '@ag.ds-next/react/filter-drawer';
 export {
 	Tabs,
 	TabList,
-	Tab,
+	TabButton,
 	TabPanels,
 	TabPanel,
 } from '@ag.ds-next/react/tabs';

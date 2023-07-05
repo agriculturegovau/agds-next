@@ -36,7 +36,7 @@ export function Tabs({
 
 		if (tabElements?.length !== panelElements?.length) {
 			throw Error(
-				'The number of `Tab` components do not match the number of `TabPanel` components.'
+				'The number of `TabButton` components do not match the number of `TabPanel` components.'
 			);
 		}
 

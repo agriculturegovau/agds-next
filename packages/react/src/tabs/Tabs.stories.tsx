@@ -8,7 +8,7 @@ import { IndicatorDot } from '../indicator-dot';
 import { NotificationBadge } from '../notification-badge';
 import { Stack } from '../stack';
 import { Text } from '../text';
-import { Tab, TabList, TabPanel, TabPanels, Tabs } from './index';
+import { TabButton, TabList, TabPanel, TabPanels, Tabs } from './index';
 
 const meta: Meta = {
 	title: 'layout/Tabs',
@@ -20,9 +20,9 @@ const meta: Meta = {
 			>
 				<Tabs {...args}>
 					<TabList>
-						<Tab>Tab 1</Tab>
-						<Tab>Tab 2</Tab>
-						<Tab>Tab 3</Tab>
+						<TabButton>Tab 1</TabButton>
+						<TabButton>Tab 2</TabButton>
+						<TabButton>Tab 3</TabButton>
 					</TabList>
 					<TabPanels>
 						<TabPanel>
@@ -116,9 +116,9 @@ export const Controlled: StoryObj = {
 				</Flex>
 				<Tabs activeIndex={activeTabIndex} onChange={setActiveIndex}>
 					<TabList>
-						<Tab>Tab 1</Tab>
-						<Tab>Tab 2</Tab>
-						<Tab>Tab 3</Tab>
+						<TabButton>Tab 1</TabButton>
+						<TabButton>Tab 2</TabButton>
+						<TabButton>Tab 3</TabButton>
 					</TabList>
 					<TabPanels>
 						<TabPanel>Tab panel 1.</TabPanel>
@@ -137,9 +137,9 @@ export const MultiplePerPage: StoryObj = {
 			<Stack gap={2}>
 				<Tabs>
 					<TabList>
-						<Tab>Tab 1</Tab>
-						<Tab>Tab 2</Tab>
-						<Tab>Tab 3</Tab>
+						<TabButton>Tab 1</TabButton>
+						<TabButton>Tab 2</TabButton>
+						<TabButton>Tab 3</TabButton>
 					</TabList>
 					<TabPanels>
 						<TabPanel>Tab panel 1.</TabPanel>
@@ -149,9 +149,9 @@ export const MultiplePerPage: StoryObj = {
 				</Tabs>
 				<Tabs>
 					<TabList>
-						<Tab>Tab 1</Tab>
-						<Tab>Tab 2</Tab>
-						<Tab>Tab 3</Tab>
+						<TabButton>Tab 1</TabButton>
+						<TabButton>Tab 2</TabButton>
+						<TabButton>Tab 3</TabButton>
 					</TabList>
 					<TabPanels>
 						<TabPanel>Tab panel 1.</TabPanel>
@@ -161,9 +161,9 @@ export const MultiplePerPage: StoryObj = {
 				</Tabs>
 				<Tabs>
 					<TabList>
-						<Tab>Tab 1</Tab>
-						<Tab>Tab 2</Tab>
-						<Tab>Tab 3</Tab>
+						<TabButton>Tab 1</TabButton>
+						<TabButton>Tab 2</TabButton>
+						<TabButton>Tab 3</TabButton>
 					</TabList>
 					<TabPanels>
 						<TabPanel>Tab panel 1.</TabPanel>
@@ -183,7 +183,7 @@ export const ManyItems: StoryObj = {
 				<Tabs>
 					<TabList>
 						{Array.from(Array(10).keys()).map((i) => (
-							<Tab key={i}>Tab {i + 1}</Tab>
+							<TabButton key={i}>Tab {i + 1}</TabButton>
 						))}
 					</TabList>
 					<TabPanels>
@@ -203,15 +203,15 @@ export const WithEndElements: StoryObj = {
 		return (
 			<Tabs {...args}>
 				<TabList>
-					<Tab endElement={<IndicatorDot />}>Tab 1</Tab>
-					<Tab>Tab 2</Tab>
-					<Tab
+					<TabButton endElement={<IndicatorDot />}>Tab 1</TabButton>
+					<TabButton>Tab 2</TabButton>
+					<TabButton
 						endElement={
 							<NotificationBadge value={100} max={99} tone="action" />
 						}
 					>
 						Tab 3
-					</Tab>
+					</TabButton>
 				</TabList>
 				<TabPanels>
 					<TabPanel>
