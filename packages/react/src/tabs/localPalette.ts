@@ -2,36 +2,50 @@ import { boxPalette } from '../core';
 
 const backgroundMap = {
 	body: {
-		background: boxPalette.backgroundBody,
-		inactiveTab: boxPalette.backgroundBodyAlt,
-		inactiveTabHover: boxPalette.backgroundShade,
+		panelBg: boxPalette.backgroundBody,
+		panelFg: boxPalette.foregroundText,
+		buttonBg: boxPalette.backgroundBodyAlt,
+		buttonFg: boxPalette.foregroundAction,
+		buttonBgHover: boxPalette.backgroundShade,
+		buttonFgHover: boxPalette.foregroundText,
 	},
 	bodyAlt: {
-		background: boxPalette.backgroundBodyAlt,
-		inactiveTab: boxPalette.backgroundShadeAlt,
-		inactiveTabHover: boxPalette.backgroundShade,
+		panelBg: boxPalette.backgroundBodyAlt,
+		panelFg: boxPalette.foregroundText,
+		buttonBg: boxPalette.backgroundShadeAlt,
+		buttonFg: boxPalette.foregroundAction,
+		buttonBgHover: boxPalette.backgroundShade,
+		buttonFgHover: boxPalette.foregroundText,
 	},
 } as const;
 
 export type Background = keyof typeof backgroundMap;
 
 const localPaletteVars = {
-	background: '--agds-tabs-background',
-	inactiveTab: '--agds-tabs-inactiveTab',
-	inactiveTabHover: '--agds-tabs-inactiveTabHover',
+	panelBg: '--agds-tabs-panel-bg',
+	panelFg: '--agds-tabs-panel-fg',
+	buttonBg: '--agds-tabs-button-bg',
+	buttonFg: '--agds-tabs-button-fg',
+	buttonBgHover: '--agds-tabs-button-bg-hover',
+	buttonFgHover: '--agds-tabs-button-fg-hover',
 };
 
 export const localPalette = {
-	background: `var(${localPaletteVars.background})`,
-	inactiveTab: `var(${localPaletteVars.inactiveTab})`,
-	inactiveTabHover: `var(${localPaletteVars.inactiveTabHover})`,
+	panelBg: `var(${localPaletteVars.panelBg})`,
+	panelFg: `var(${localPaletteVars.panelFg})`,
+	buttonBg: `var(${localPaletteVars.buttonBg})`,
+	buttonFg: `var(${localPaletteVars.buttonFg})`,
+	buttonBgHover: `var(${localPaletteVars.buttonBgHover})`,
+	buttonFgHover: `var(${localPaletteVars.buttonFgHover})`,
 };
 
 export function setLocalPaletteVars(background: Background) {
 	return {
-		[localPaletteVars.background]: backgroundMap[background].background,
-		[localPaletteVars.inactiveTab]: backgroundMap[background].inactiveTab,
-		[localPaletteVars.inactiveTabHover]:
-			backgroundMap[background].inactiveTabHover,
+		[localPaletteVars.panelBg]: backgroundMap[background].panelBg,
+		[localPaletteVars.panelFg]: backgroundMap[background].panelFg,
+		[localPaletteVars.buttonBg]: backgroundMap[background].buttonBg,
+		[localPaletteVars.buttonFg]: backgroundMap[background].buttonFg,
+		[localPaletteVars.buttonBgHover]: backgroundMap[background].buttonBgHover,
+		[localPaletteVars.buttonFgHover]: backgroundMap[background].buttonFgHover,
 	};
 }

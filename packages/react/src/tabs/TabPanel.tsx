@@ -24,7 +24,8 @@ export function TabPanel({ children }: TabPanelProps) {
 			paddingX={contained ? { xs: 0.75, md: 1.5 } : 0}
 			paddingY={{ xs: 0.75, md: 1.5 }}
 			css={{
-				background: localPalette.background,
+				background: localPalette.panelBg,
+				color: localPalette.panelFg,
 
 				...(contained
 					? {

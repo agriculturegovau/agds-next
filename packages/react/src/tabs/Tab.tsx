@@ -87,22 +87,22 @@ export function Tab({ children, endElement }: TabProps) {
 
 				...(isSelected
 					? {
-							background: localPalette.background,
+							background: localPalette.panelBg,
 							'& > span:first-of-type': {
 								color: boxPalette.foregroundText,
 							},
 					  }
 					: {
-							background: localPalette.inactiveTab,
+							background: localPalette.buttonBg,
 							'&:hover': {
-								background: localPalette.inactiveTabHover,
+								background: localPalette.buttonBgHover,
 							},
 							'& > span:first-of-type': {
 								...packs.underline,
-								color: boxPalette.foregroundAction,
+								color: localPalette.buttonFg,
 							},
 							'&:hover > span:first-of-type': {
-								color: boxPalette.foregroundText,
+								color: localPalette.buttonFgHover,
 								textDecoration: 'none',
 							},
 					  }),
@@ -164,7 +164,7 @@ export function Tab({ children, endElement }: TabProps) {
 							left: 0,
 							right: 0,
 							height: 1,
-							background: localPalette.background,
+							background: localPalette.panelBg,
 						},
 					}),
 				},
