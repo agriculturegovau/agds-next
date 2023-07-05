@@ -1028,9 +1028,9 @@ items={[
 		name: 'Basic',
 		code: `<Tabs>
 		<TabList>
-			<Tab>Tab 1</Tab>
-			<Tab>Tab 2</Tab>
-			<Tab>Tab 3</Tab>
+			<TabButton>Tab 1</TabButton>
+			<TabButton>Tab 2</TabButton>
+			<TabButton>Tab 3</TabButton>
 		</TabList>
 		<TabPanels>
 			<TabPanel>Tab panel 1.</TabPanel>
