@@ -4,7 +4,6 @@ import { Switch } from '@ag.ds-next/react/switch';
 import { Box } from '@ag.ds-next/react/box';
 import { InpageNav } from '@ag.ds-next/react/inpage-nav';
 import { Column, Columns } from '@ag.ds-next/react/columns';
-import { DocumentTitle } from '../../../components/DocumentTitle';
 import {
 	ColorTable,
 	colourTokens,
@@ -12,7 +11,6 @@ import {
 } from '../../../components/TokenColorTable';
 import { TokenLayout } from '../../../components/TokenLayout';
 import { LinkComponent } from '../../../components/LinkComponent';
-import { getTokensBreadcrumbs, TOKEN_PAGES } from '../../../content/tokens';
 import { withBasePath } from '../../../lib/img';
 
 export default function TokensColorPage() {
@@ -22,16 +20,7 @@ export default function TokensColorPage() {
 
 	return (
 		<Box palette={isDarkMode ? 'dark' : 'light'} background="body">
-			<DocumentTitle
-				title={TOKEN_PAGES.colour.pageTitle}
-				description={TOKEN_PAGES.colour.description}
-			/>
-			<TokenLayout
-				title={TOKEN_PAGES.colour.pageTitle}
-				description={TOKEN_PAGES.colour.description}
-				breadcrumbs={getTokensBreadcrumbs(TOKEN_PAGES.colour)}
-				editPath="/docs/pages/foundations/tokens/color.tsx"
-			>
+			<TokenLayout slug="colour">
 				<InpageNav
 					title="On this page"
 					links={[

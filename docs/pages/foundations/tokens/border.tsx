@@ -2,24 +2,13 @@ import { Prose, proseBlockClassname } from '@ag.ds-next/react/prose';
 import { Box } from '@ag.ds-next/react/box';
 import { tokens } from '@ag.ds-next/react/core';
 import { InpageNav } from '@ag.ds-next/react/inpage-nav';
-import { DocumentTitle } from '../../../components/DocumentTitle';
 import { TokenLayout } from '../../../components/TokenLayout';
 import { BorderWidthChart } from '../../../components/TokenCharts';
-import { TOKEN_PAGES, getTokensBreadcrumbs } from '../../../content/tokens';
 
 export default function TokensBorderWidthPage() {
 	return (
 		<>
-			<DocumentTitle
-				title={TOKEN_PAGES.border.pageTitle}
-				description={TOKEN_PAGES.border.description}
-			/>
-			<TokenLayout
-				title={TOKEN_PAGES.border.pageTitle}
-				description={TOKEN_PAGES.border.description}
-				breadcrumbs={getTokensBreadcrumbs(TOKEN_PAGES.border)}
-				editPath="/docs/pages/foundations/tokens/border.tsx"
-			>
+			<TokenLayout slug="border">
 				<InpageNav
 					title="On this page"
 					links={[

@@ -6,24 +6,13 @@ import {
 	SummaryListItemTerm,
 } from '@ag.ds-next/react/summary-list';
 import { InpageNav } from '@ag.ds-next/react/inpage-nav';
-import { DocumentTitle } from '../../../components/DocumentTitle';
 import { TokenLayout } from '../../../components/TokenLayout';
 import { SpacingChart } from '../../../components/TokenCharts';
-import { getTokensBreadcrumbs, TOKEN_PAGES } from '../../../content/tokens';
 
 export default function TokensSpacingPage() {
 	return (
 		<>
-			<DocumentTitle
-				title={TOKEN_PAGES.spacing.pageTitle}
-				description={TOKEN_PAGES.spacing.description}
-			/>
-			<TokenLayout
-				title={TOKEN_PAGES.spacing.pageTitle}
-				description={TOKEN_PAGES.spacing.description}
-				breadcrumbs={getTokensBreadcrumbs(TOKEN_PAGES.spacing)}
-				editPath="/docs/pages/foundations/tokens/spacing.tsx"
-			>
+			<TokenLayout slug="spacing">
 				<InpageNav
 					title="On this page"
 					links={[
