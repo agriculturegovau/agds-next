@@ -14,6 +14,7 @@ const meta: Meta<typeof AppLayoutHeader> = {
 		heading: 'Export Service',
 		subLine: 'Supporting Australian agricultural exports',
 		logo: <Logo />,
+		badgeLabel: 'Beta',
 		accountDetails: {
 			href: '#account',
 			name: 'Toto Wolff',
@@ -39,6 +40,12 @@ export const FocusMode: Story = {
 			<AppLayoutHeader {...props} />
 		</AppLayout>
 	),
+};
+
+export const WithoutBadge: Story = {
+	args: {
+		badgeLabel: undefined,
+	},
 };
 
 export const WithoutSubline: Story = {

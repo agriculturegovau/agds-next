@@ -16,6 +16,8 @@ export type AppLayoutHeaderProps = {
 	heading: string;
 	/** Used to provide additional information to describe your website or service. */
 	subLine?: string;
+	/** Used to indicate if an application is in a prerelease state. */
+	badgeLabel?: string;
 	/** Details for the authenticated account. */
 	accountDetails?: {
 		/** The name of the authenticated user. */
@@ -33,6 +35,7 @@ export function AppLayoutHeader({
 	href,
 	logo,
 	subLine,
+	badgeLabel,
 	accountDetails,
 }: AppLayoutHeaderProps) {
 	return (
@@ -65,6 +68,7 @@ export function AppLayoutHeader({
 					href={href}
 					logo={logo}
 					subLine={subLine}
+					badgeLabel={badgeLabel}
 				/>
 				{accountDetails ? (
 					<AppLayoutHeaderAccount
