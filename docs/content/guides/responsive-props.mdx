@@ -6,34 +6,18 @@ opener: The Agriculture Design System provides first class support for mobile-fi
 
 ## Breakpoints
 
-It is important to understand that our responsive style APIs are dependant on the global `breakpoints` token. Each key in the object refers to the breakpoint name, and each value refers to the the minimum width of the breakpoint.
-
-```tsx
-const breakpoint = {
-	xs: 0,
-	sm: 576,
-	md: 768,
-	lg: 992,
-	xl: 1200,
-};
-```
+Our responsive style APIs are based on the global [Breakpoint tokens](/foundations/tokens/breakpoints). Each key in the object refers to the breakpoint name, and each value refers to the the minimum width of the breakpoint.
 
 > We use the `@media (min-width)` syntax to ensure styles are generated for mobile-first.
 
-## The array syntax
+## Using responsive props
 
-As a simple example, we will create a `Box` with some padding.
+To use responsive props, you can pass an object to any prop that supports responsive values.
 
-```tsx live showCode
-<Box background="shade" padding={2}>
-	Hello world
-</Box>
-```
-
-Now let's update the `padding` prop to make it responsive.
+Here we've made a simple Box, and passed an object to the `padding` prop. The keys in the object refer to the breakpoint name.
 
 ```tsx live showCode
-<Box background="shade" padding={[1, 2, 4]}>
+<Box background="shade" padding={{ xs: 1, sm: 2, md: 4 }}>
 	Hello world
 </Box>
 ```
@@ -58,16 +42,67 @@ Under the hood, this simple example has generated the following CSS:
 }
 ```
 
-To interpret array responsive values, we convert the values defined in our `breakpoints` token and sort them in ascending order. Afterward, we map each value in the array to a `min-width` media query.
+We map each value in the object to a `min-width` media query.
+
+## The array syntax
+
+You can also define responsive styles as an array. To interpret array responsive values, we convert the values defined in our `breakpoints` token and sort them in ascending order.
 
 To skip certain breakpoints, you can pass `null` to any item in the array to avoid generating unnecessary CSS.
 
-## The object syntax
-
-You can also define responsive styles as an object, with each key in the object mapping to a breakpoint name.
-
 ```tsx live showCode
-<Box background="shade" padding={{ xs: 1, xl: 2 }}>
+<Box background="shade" padding={[1, 2, 4]}>
 	Hello world
 </Box>
+```
+
+## CSS-in-JS
+
+There can be situations where the primitive components don't support all of the props you need. In these cases, you can use our breakpoints in your CSS-in-JS styles.
+
+You can add the `mq` and `mapResponsiveProp` functions to add styles at specific breakpoints.
+
+```tsx
+import { tokens } from '@ag.ds-next/react/core';
+
+function AppLayoutGrid({ children }: { children: React.ReactNode }) {
+	return (
+		<div
+			css={mq({
+				display: 'grid',
+				// The value here changes depending on the viewport
+				gridTemplateColumns: mapResponsiveProp({
+					xs: '1fr',
+					xl: '17.5rem 1fr',
+				}),
+			})}
+		>
+			{children}
+		</div>
+	);
+}
+```
+
+Or you can use the `mediaQuery` tokens from `Core` to add styles at specific breakpoints.
+
+```tsx
+import { tokens } from '@ag.ds-next/react/core';
+
+export function AppLayoutHeader() {
+	return (
+		<Flex
+			flexDirection="column"
+			css={{
+				// use the 'minimum width' mediaQuery tokens from Core.
+				// This resolves to `@media (min-width: 1200px)`
+				[tokens.mediaQuery.min.xl]: {
+					gridColumnStart: 1,
+					gridColumnEnd: 3,
+				},
+			}}
+		>
+			...
+		</Flex>
+	);
+}
 ```

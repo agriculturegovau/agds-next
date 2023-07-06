@@ -9,18 +9,6 @@ type Entries<T> = {
 	[K in keyof T]: [K, T[K]];
 }[keyof T][];
 
-export const BreakpointsChart = () => {
-	const breakpoints = tokens.breakpoint;
-	return (
-		<ul>
-			{Object.entries(breakpoints).map(([token, value]) => {
-				const label = `${token} - ${value}px`;
-				return <li key={token}>{label}</li>;
-			})}
-		</ul>
-	);
-};
-
 export const BorderWidthChart = () => {
 	const borderWidths = tokens.borderWidth;
 

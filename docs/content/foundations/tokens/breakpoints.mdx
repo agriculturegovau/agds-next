@@ -1,0 +1,20 @@
+---
+title: Breakpoints
+overview: Breakpoints are a set of predefined viewport widths that can be used to change the layout of a webpage to ensure it accommodates different devices.
+---
+
+The breakpoints are written to be mobile-first. This means that the styles for the smallest breakpoint are applied first, and then progressively overridden as the viewport gets larger.
+
+When desigining a webpage, always consider how it should look on mobile devices.
+
+The best way to take advantage of breakpoints and responsive design is to use our [responsive props](/guides/responsive-props).
+
+```tsx live showCode
+<Box background="shade" padding={{ xs: 1, sm: 2, md: 3 }}>
+	Hello world
+</Box>
+```
+
+In this example, we have created a box with padding of `1em` on mobile, `2em` on tablet, and `4em` on desktop.
+
+In situations where the primitive components don't support all of the props you need, you can use our breakpoints in CSS-in-JS, through the user of the `mapResponsiveProp` function, or the `mediaQuery` helpers. Learn more about these techniques in our [responsive props](/guides/responsive-props) guide.
