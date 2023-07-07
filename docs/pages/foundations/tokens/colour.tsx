@@ -9,9 +9,10 @@ import {
 	colourTokens,
 	getTokensArrayFromObject,
 } from '../../../components/TokenColorTable';
-import { TokenLayout } from '../../../components/TokenLayout';
+import { TokenLayout, TOKEN_PAGES } from '../../../components/TokenLayout';
 import { LinkComponent } from '../../../components/LinkComponent';
 import { withBasePath } from '../../../lib/img';
+import { DocumentTitle } from '../../../components/DocumentTitle';
 
 export default function TokensColorPage() {
 	const [isDarkMode, setDarkMode] = useState(false);
@@ -20,7 +21,15 @@ export default function TokensColorPage() {
 
 	return (
 		<Box palette={isDarkMode ? 'dark' : 'light'} background="body">
-			<TokenLayout slug="colour">
+			<DocumentTitle
+				title={TOKEN_PAGES.colour.pageTitle}
+				description={TOKEN_PAGES.colour.description}
+			/>
+			<TokenLayout
+				title={TOKEN_PAGES.colour.pageTitle}
+				description={TOKEN_PAGES.colour.description}
+				editPath="/docs/pages/foundations/tokens/color.tsx"
+			>
 				<InpageNav
 					title="On this page"
 					links={[

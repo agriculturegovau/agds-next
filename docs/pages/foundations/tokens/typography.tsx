@@ -12,13 +12,22 @@ import { Text } from '@ag.ds-next/react/text';
 import { tokens, FontSize, Font } from '@ag.ds-next/react/core';
 import { Stack } from '@ag.ds-next/react/stack';
 import { InpageNav } from '@ag.ds-next/react/inpage-nav';
-import { TokenLayout } from '../../../components/TokenLayout';
+import { TokenLayout, TOKEN_PAGES } from '../../../components/TokenLayout';
 import { LineHeightChart } from '../../../components/TokenCharts';
+import { DocumentTitle } from '../../../components/DocumentTitle';
 
 export default function TokensTypographyPage() {
 	return (
 		<>
-			<TokenLayout slug="typography">
+			<DocumentTitle
+				title={TOKEN_PAGES.typography.pageTitle}
+				description={TOKEN_PAGES.typography.description}
+			/>
+			<TokenLayout
+				title={TOKEN_PAGES.typography.pageTitle}
+				description={TOKEN_PAGES.typography.description}
+				editPath="/docs/pages/foundations/tokens/typography.tsx"
+			>
 				<InpageNav
 					title="On this page"
 					links={[

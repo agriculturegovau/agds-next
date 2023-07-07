@@ -55,19 +55,40 @@ export const TOKEN_NAV_LINKS = Object.entries(TOKEN_PAGES).map(
 	})
 );
 
+const getBreadcrumbs = (currentPageTitle: string) => {
+	return [
+		{
+			label: 'Home',
+			href: '/',
+		},
+		{
+			label: 'Foundations',
+			href: '/foundations',
+		},
+		{
+			label: 'Tokens',
+			href: '/foundations/tokens',
+		},
+		{
+			label: currentPageTitle,
+		},
+	];
+};
+
+type TokenLayoutProps = PropsWithChildren<{
+	editPath: string;
+	title: string;
+	description: string;
+}>;
+
 export const TokenLayout = ({
-	slug,
+	editPath,
 	children,
-}: PropsWithChildren<{
-	slug: keyof typeof TOKEN_PAGES;
-}>) => {
-	const { pageTitle, description } = TOKEN_PAGES[slug];
-
-	const editPath = `/docs/pages/foundations/tokens/${slug}.tsx`;
-
+	title,
+	description,
+}: TokenLayoutProps) => {
 	return (
 		<SiteLayout applyMainElement={false}>
-			<DocumentTitle title={pageTitle} description={description} />
 			<PageLayout
 				applyMainElement={true}
 				sideNav={{
@@ -76,25 +97,9 @@ export const TokenLayout = ({
 					items: TOKEN_NAV_LINKS,
 				}}
 				editPath={editPath}
-				breadcrumbs={[
-					{
-						label: 'Home',
-						href: '/',
-					},
-					{
-						label: 'Foundations',
-						href: '/foundations',
-					},
-					{
-						label: 'Tokens',
-						href: '/foundations/tokens',
-					},
-					{
-						label: pageTitle,
-					},
-				]}
+				breadcrumbs={getBreadcrumbs(title)}
 			>
-				<PageTitle title={pageTitle} introduction={description} />
+				<PageTitle title={title} introduction={description} />
 				{children}
 			</PageLayout>
 		</SiteLayout>

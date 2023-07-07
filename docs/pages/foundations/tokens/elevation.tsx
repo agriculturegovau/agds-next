@@ -10,7 +10,8 @@ import {
 	TableBody,
 	TableCell,
 } from '@ag.ds-next/react/table';
-import { TokenLayout } from '../../../components/TokenLayout';
+import { TokenLayout, TOKEN_PAGES } from '../../../components/TokenLayout';
+import { DocumentTitle } from '../../../components/DocumentTitle';
 
 const tokenDescriptions: Record<
 	keyof typeof tokens.zIndex,
@@ -70,7 +71,15 @@ const tokenDescriptions: Record<
 export default function TokensElevationPage() {
 	return (
 		<>
-			<TokenLayout slug="elevation">
+			<DocumentTitle
+				title={TOKEN_PAGES.elevation.pageTitle}
+				description={TOKEN_PAGES.elevation.description}
+			/>
+			<TokenLayout
+				title={TOKEN_PAGES.elevation.pageTitle}
+				description={TOKEN_PAGES.elevation.description}
+				editPath="/docs/pages/foundations/tokens/max-width.tsx"
+			>
 				<TableWrapper>
 					<Table>
 						<TableCaption>Z-Index tokens</TableCaption>

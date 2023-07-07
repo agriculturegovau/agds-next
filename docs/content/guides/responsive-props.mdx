@@ -4,11 +4,7 @@ overview: AgDS provides first class support for mobile-first responsive styles.
 opener: The Agriculture Design System provides first class support for mobile-first responsive styles. Instead of manually writing CSS media queries throughout your codebase, our primitive components allow you to provide arrays and objects to generate responsive styles in your project.
 ---
 
-## Breakpoints
-
-Our responsive style APIs are based on the global [Breakpoint tokens](/foundations/tokens/breakpoints). Each key in the object refers to the breakpoint name, and each value refers to the the minimum width of the breakpoint.
-
-> We use the `@media (min-width)` syntax to ensure styles are generated for mobile-first.
+Our responsive style APIs are based on our global [Breakpoint tokens](/foundations/tokens/breakpoints). We use a mobile-first approach to generate the underlying styles.
 
 ## Using responsive props
 
@@ -18,7 +14,7 @@ Here we've made a simple Box, and passed an object to the `padding` prop. The ke
 
 ```tsx live showCode
 <Box background="shade" padding={{ xs: 1, sm: 2, md: 4 }}>
-	Hello world
+	A box with responsive padding.
 </Box>
 ```
 
@@ -42,7 +38,9 @@ Under the hood, this simple example has generated the following CSS:
 }
 ```
 
-We map each value in the object to a `min-width` media query.
+You can see the mobile-first approach in action here in this CSS. The `padding` value is set to `1rem` by default - or from 0px, which is the xs breakpoint - and then we override it at each breakpoint, through a series of `min-width` media queries.
+
+You don't need to provide a value for every breakpoint. Just provide a value for mobile (xs), and add any additional breakpoint values as needed.
 
 ## The array syntax
 
@@ -52,7 +50,7 @@ To skip certain breakpoints, you can pass `null` to any item in the array to avo
 
 ```tsx live showCode
 <Box background="shade" padding={[1, 2, 4]}>
-	Hello world
+	A box with responsive padding.
 </Box>
 ```
 

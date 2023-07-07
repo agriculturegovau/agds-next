@@ -13,9 +13,10 @@ import {
 } from '@ag.ds-next/react/table';
 import { InpageNav } from '@ag.ds-next/react/inpage-nav';
 import { mdxComponents } from '../../../components/mdxComponents';
-import { TokenLayout } from '../../../components/TokenLayout';
+import { TokenLayout, TOKEN_PAGES } from '../../../components/TokenLayout';
 import { getTokenPageData, TokenPage } from '../../../lib/mdx/foundations';
 import { generateToc } from '../../../lib/generateToc';
+import { DocumentTitle } from '../../../components/DocumentTitle';
 
 const BreakpointsChart = () => {
 	const breakpoints = tokens.breakpoint;
@@ -62,7 +63,15 @@ export default function TokensBreakpointsPage({
 }: InferGetStaticPropsType<typeof getStaticProps>) {
 	return (
 		<>
-			<TokenLayout slug="breakpoints">
+			<DocumentTitle
+				title={TOKEN_PAGES.breakpoints.pageTitle}
+				description={TOKEN_PAGES.breakpoints.description}
+			/>
+			<TokenLayout
+				title={TOKEN_PAGES.breakpoints.pageTitle}
+				description={TOKEN_PAGES.breakpoints.description}
+				editPath="/docs/pages/foundations/tokens/breakpoints.tsx"
+			>
 				{toc?.length > 1 ? (
 					<InpageNav
 						title="On this page"
