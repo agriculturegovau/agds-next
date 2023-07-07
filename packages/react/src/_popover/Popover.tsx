@@ -26,7 +26,7 @@ export const Popover = forwardRefWithAs<'div', PopoverProps>(function Popover(
 			rounded
 			css={{
 				position: 'relative',
-				overflowY: 'scroll',
+				overflowY: 'auto',
 				boxShadow: '0 1px 1px rgba(0, 0, 0, 0.3)', // TODO Tokenize
 				zIndex: tokens.zIndex.popover,
 			}}
