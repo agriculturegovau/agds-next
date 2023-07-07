@@ -4,7 +4,7 @@ const backgroundMap = {
 	body: {
 		panelBg: boxPalette.backgroundBody,
 		panelFg: boxPalette.foregroundText,
-		buttonBg: boxPalette.backgroundBodyAlt,
+		buttonBg: boxPalette.backgroundBody,
 		buttonFg: boxPalette.foregroundAction,
 		buttonBgHover: boxPalette.backgroundShade,
 		buttonFgHover: boxPalette.foregroundText,
@@ -12,7 +12,7 @@ const backgroundMap = {
 	bodyAlt: {
 		panelBg: boxPalette.backgroundBodyAlt,
 		panelFg: boxPalette.foregroundText,
-		buttonBg: boxPalette.backgroundShadeAlt,
+		buttonBg: boxPalette.backgroundBodyAlt,
 		buttonFg: boxPalette.foregroundAction,
 		buttonBgHover: boxPalette.backgroundShade,
 		buttonFgHover: boxPalette.foregroundText,

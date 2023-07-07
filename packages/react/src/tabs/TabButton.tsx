@@ -89,6 +89,7 @@ export function TabButton({ children, endElement }: TabButtonProps) {
 					? {
 							background: localPalette.panelBg,
 							'& > span:first-of-type': {
+								fontWeight: tokens.fontWeight.bold,
 								color: boxPalette.foregroundText,
 							},
 					  }
