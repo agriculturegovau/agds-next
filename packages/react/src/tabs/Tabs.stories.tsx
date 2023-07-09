@@ -472,7 +472,10 @@ export const DashboardScreen: StoryObj = {
 
 										<TabPanel>
 											<Box width="300px">
-												<img src="https://www.microsoft.com/en-us/microsoft-365/blog/wp-content/uploads/sites/2/2012/06/Excel-charts-7.png" />
+												<img
+													alt="Screenshot of example chart"
+													src="https://www.microsoft.com/en-us/microsoft-365/blog/wp-content/uploads/sites/2/2012/06/Excel-charts-7.png"
+												/>
 											</Box>
 										</TabPanel>
 									</TabPanels>
