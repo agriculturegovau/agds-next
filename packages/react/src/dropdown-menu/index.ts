@@ -7,3 +7,4 @@ export * from './DropdownMenuItemLink';
 export * from './DropdownMenuList';
 export * from './DropdownMenuRadioGroup';
 export * from './DropdownMenuRadioItem';
+export * from './DropdownMenuRadioGroupLink';

@@ -13,8 +13,8 @@ export const DropdownMenuButton = forwardRef<
 	HTMLButtonElement,
 	DropdownMenuButtonProps
 >(function DropdownMenuButton({ variant = 'text', ...props }, forwardedRef) {
-	const { menuId, isMenuOpen, toggleMenu, popover } = useMenuContext();
-	const { buttonId, listId } = useDropdownMenuControlIds(menuId);
+	const { isMenuOpen, toggleMenu, popover } = useMenuContext();
+	const { buttonId, listId } = useDropdownMenuControlIds();
 
 	const { ref: popoverRef } = popover.getReferenceProps();
 	const mergedRefs = mergeRefs([popoverRef, forwardedRef]);

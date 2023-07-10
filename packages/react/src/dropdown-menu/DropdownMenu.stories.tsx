@@ -13,6 +13,7 @@ import {
 	DeleteIcon,
 	ChevronUpIcon,
 	ChevronDownIcon,
+	ExternalLinkIcon,
 } from '../icon';
 import { IndicatorDot } from '../indicator-dot';
 import { NotificationBadge } from '../notification-badge';
@@ -52,13 +53,13 @@ export const Basic: StoryObj = {
 			<DropdownMenu>
 				<DropdownMenuButton>Open dropdown menu</DropdownMenuButton>
 				<DropdownMenuList>
-					<DropdownMenuItem onSelect={() => console.log('Profile')}>
+					<DropdownMenuItem onClick={() => console.log('Profile')}>
 						Profile
 					</DropdownMenuItem>
-					<DropdownMenuItem onSelect={() => console.log('Messages')}>
-						Messages
+					<DropdownMenuItem onClick={() => console.log('Messages')}>
+						Potato
 					</DropdownMenuItem>
-					<DropdownMenuItem onSelect={() => console.log('Account settings')}>
+					<DropdownMenuItem onClick={() => console.log('Account settings')}>
 						Account settings
 					</DropdownMenuItem>
 				</DropdownMenuList>
@@ -98,13 +99,13 @@ export const Divider: StoryObj = {
 				<DropdownMenuButton>Open dropdown menu</DropdownMenuButton>
 				<DropdownMenuList>
 					<DropdownMenuItem
-						onSelect={() => console.log('Profile')}
+						onClick={() => console.log('Profile')}
 						icon={AvatarIcon}
 					>
 						Profile
 					</DropdownMenuItem>
 					<DropdownMenuItem
-						onSelect={() => console.log('Messages')}
+						onClick={() => console.log('Messages')}
 						icon={EmailIcon}
 						endElement={
 							<NotificationBadge value={100} max={99} tone="action" />
@@ -113,14 +114,14 @@ export const Divider: StoryObj = {
 						Messages
 					</DropdownMenuItem>
 					<DropdownMenuItem
-						onSelect={() => console.log('Account settings')}
+						onClick={() => console.log('Account settings')}
 						icon={SettingsIcon}
 					>
 						Account settings
 					</DropdownMenuItem>
 					<DropdownMenuDivider />
 					<DropdownMenuItem
-						onSelect={() => console.log('Account settings')}
+						onClick={() => console.log('Account settings')}
 						icon={ExitIcon}
 					>
 						Sign out
@@ -188,13 +189,40 @@ export const Links: StoryObj = {
 			<DropdownMenu>
 				<DropdownMenuButton>Open dropdown menu</DropdownMenuButton>
 				<DropdownMenuList>
-					<DropdownMenuItemLink href="https://apple.com">
+					<DropdownMenuItemLink href="#link-1">Link 1</DropdownMenuItemLink>
+					<DropdownMenuItemLink href="#link-2">Link 2</DropdownMenuItemLink>
+					<DropdownMenuItemLink href="#link-3">Link 3</DropdownMenuItemLink>
+				</DropdownMenuList>
+			</DropdownMenu>
+		);
+	},
+};
+
+export const LinksExternal: StoryObj = {
+	render: function Render() {
+		return (
+			<DropdownMenu>
+				<DropdownMenuButton>Open dropdown menu</DropdownMenuButton>
+				<DropdownMenuList>
+					<DropdownMenuItemLink
+						href="https://apple.com"
+						target="_blank"
+						icon={ExternalLinkIcon}
+					>
 						Apple
 					</DropdownMenuItemLink>
-					<DropdownMenuItemLink href="https://google.com">
+					<DropdownMenuItemLink
+						href="https://google.com"
+						target="_blank"
+						icon={ExternalLinkIcon}
+					>
 						Google
 					</DropdownMenuItemLink>
-					<DropdownMenuItemLink href="https://microsoft.com">
+					<DropdownMenuItemLink
+						href="https://microsoft.com"
+						target="_blank"
+						icon={ExternalLinkIcon}
+					>
 						Microsoft
 					</DropdownMenuItemLink>
 				</DropdownMenuList>
@@ -229,6 +257,7 @@ export const RadioGroups: StoryObj = {
 						>
 							Organic Co
 						</DropdownMenuRadioItem>
+						<DropdownMenuItemLink href="#">View all</DropdownMenuItemLink>
 					</DropdownMenuRadioGroup>
 				</DropdownMenuList>
 			</DropdownMenu>
@@ -252,6 +281,7 @@ export const RadioGroupsSecondary: StoryObj = {
 						<DropdownMenuRadioItem checked={false} secondaryText="Canberra">
 							Redfern
 						</DropdownMenuRadioItem>
+						<DropdownMenuItemLink href="#">View all</DropdownMenuItemLink>
 					</DropdownMenuRadioGroup>
 				</DropdownMenuList>
 			</DropdownMenu>
@@ -285,6 +315,7 @@ export const RadioGroupsSecondaryBadges: StoryObj = {
 						<DropdownMenuRadioItem checked={false} secondaryText="Canberra">
 							Redfern
 						</DropdownMenuRadioItem>
+						<DropdownMenuItemLink href="#">View all</DropdownMenuItemLink>
 					</DropdownMenuRadioGroup>
 				</DropdownMenuList>
 			</DropdownMenu>
@@ -326,13 +357,13 @@ export const Complex: StoryObj = {
 						</DropdownMenuRadioGroup>
 						<DropdownMenuDivider />
 						<DropdownMenuItem
-							onSelect={() => setLastAction('Profile')}
+							onClick={() => setLastAction('Profile')}
 							icon={AvatarIcon}
 						>
 							Profile
 						</DropdownMenuItem>
 						<DropdownMenuItem
-							onSelect={() => setLastAction('Messages')}
+							onClick={() => setLastAction('Messages')}
 							icon={EmailIcon}
 							endElement={
 								<NotificationBadge value={100} max={99} tone="action" />
@@ -341,14 +372,14 @@ export const Complex: StoryObj = {
 							Messages
 						</DropdownMenuItem>
 						<DropdownMenuItem
-							onSelect={() => setLastAction('Account settings')}
+							onClick={() => setLastAction('Account settings')}
 							icon={SettingsIcon}
 						>
 							Account settings
 						</DropdownMenuItem>
 						<DropdownMenuDivider />
 						<DropdownMenuItem
-							onSelect={() => console.log('Account settings')}
+							onClick={() => console.log('Account settings')}
 							icon={ExitIcon}
 						>
 							Sign out
@@ -380,6 +411,14 @@ export const Placement: StoryObj = {
 						<DropdownMenuItem>Messages</DropdownMenuItem>
 						<DropdownMenuItem>Account settings</DropdownMenuItem>
 					</DropdownMenuList>
+					<DropdownMenu placement="bottom">
+						<DropdownMenuButton>bottom</DropdownMenuButton>
+						<DropdownMenuList>
+							<DropdownMenuItem>Profile</DropdownMenuItem>
+							<DropdownMenuItem>Messages</DropdownMenuItem>
+							<DropdownMenuItem>Account settings</DropdownMenuItem>
+						</DropdownMenuList>
+					</DropdownMenu>
 				</DropdownMenu>
 			</Stack>
 		);

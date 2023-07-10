@@ -141,7 +141,7 @@ export const DatePicker = ({
 		if (isCalendarOpen) closeCalendar();
 	}, [isCalendarOpen, closeCalendar]);
 
-	useClickOutside(popover.popoverRef, handleClickOutside);
+	useClickOutside([popover.popoverRef], handleClickOutside);
 
 	// Close the calendar when the user presses the escape key
 	useEffect(() => {

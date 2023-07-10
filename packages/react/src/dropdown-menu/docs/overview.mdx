@@ -5,30 +5,36 @@ group: Layout
 storybookPath: /story/layout-dropdownmenu--basic
 ---
 
-## Basic
-
 ```jsx live
 <DropdownMenu>
 	<DropdownMenuButton>Open dropdown menu</DropdownMenuButton>
 	<DropdownMenuList>
-		<DropdownMenuItem onSelect={() => console.log('Profile')}>
+		<DropdownMenuItem onClick={() => console.log('Profile')}>
 			Profile
 		</DropdownMenuItem>
-		<DropdownMenuItem onSelect={() => console.log('Messages')}>
+		<DropdownMenuItem onClick={() => console.log('Messages')}>
 			Messages
 		</DropdownMenuItem>
-		<DropdownMenuItem onSelect={() => console.log('Account settings')}>
+		<DropdownMenuItem onClick={() => console.log('Account settings')}>
 			Account settings
 		</DropdownMenuItem>
 	</DropdownMenuList>
 </DropdownMenu>
 ```
 
+<DoHeading />
+
+- TODO
+
+<DontHeading />
+
+- TODO
+
 ## Icons and badges
 
-Use the `icon` prop to add an [Icon](/components/icon) to the beginnning of a list item.
+Use the `icon` prop to add an [Icon](/components/icon) to the beginnning of list items.
 
-Use the `endElement` prop to add decorative elements such as a [Indicator dots](/components/indicator-dot) or [Notification badge](/components/notification-badge) to the end of the list item.
+Use the `endElement` prop to add decorative elements such as a [Indicator dots](/components/indicator-dot) or [Notification badge](/components/notification-badge) to the end of list items.
 
 ```jsx live
 <DropdownMenu>
@@ -54,36 +60,23 @@ Use the `DropdownMenuDivider` component so visually divide list items.
 <DropdownMenu>
 	<DropdownMenuButton>Open dropdown menu</DropdownMenuButton>
 	<DropdownMenuList>
-		<DropdownMenuItem onSelect={() => console.log('Profile')} icon={AvatarIcon}>
-			Profile
-		</DropdownMenuItem>
+		<DropdownMenuItem icon={AvatarIcon}>Profile</DropdownMenuItem>
 		<DropdownMenuItem
-			onSelect={() => console.log('Messages')}
 			icon={EmailIcon}
 			endElement={<NotificationBadge value={100} max={99} tone="action" />}
 		>
 			Messages
 		</DropdownMenuItem>
-		<DropdownMenuItem
-			onSelect={() => console.log('Account settings')}
-			icon={SettingsIcon}
-		>
-			Account settings
-		</DropdownMenuItem>
+		<DropdownMenuItem icon={SettingsIcon}>Account settings</DropdownMenuItem>
 		<DropdownMenuDivider />
-		<DropdownMenuItem
-			onSelect={() => console.log('Account settings')}
-			icon={ExitIcon}
-		>
-			Sign out
-		</DropdownMenuItem>
+		<DropdownMenuItem icon={ExitIcon}>Sign out</DropdownMenuItem>
 	</DropdownMenuList>
 </DropdownMenu>
 ```
 
-## Groups
+## Grouping items
 
-Use the `DropdownMenuGroup` component to group related items.
+Use the `DropdownMenuGroup` component to group related items. Use the `label` prop to describe the group.
 
 ```jsx live
 <DropdownMenu>
@@ -112,18 +105,17 @@ Use the `DropdownMenuGroup` component to group related items.
 
 ## Dropdown menu button
 
-The `DropdownMenuButton` can accept all of the same props as [Button](/components/button).
+The `DropdownMenuButton` accepts all of the same props as [Button](/components/button). Use props like `variant` and `iconBefore` to visually style the dropdown menu button.
 
 ```jsx live
 <DropdownMenu>
-	<DropdownMenuButton variant="secondary" iconBefore={EditIcon}>
-		Actions
+	<DropdownMenuButton variant="secondary">
+		Open dropdown menu
 	</DropdownMenuButton>
 	<DropdownMenuList>
 		<DropdownMenuItem>Item A</DropdownMenuItem>
 		<DropdownMenuItem>Item B</DropdownMenuItem>
 		<DropdownMenuItem>Item C</DropdownMenuItem>
-		<DropdownMenuItem>Item D</DropdownMenuItem>
 	</DropdownMenuList>
 </DropdownMenu>
 ```
@@ -136,12 +128,29 @@ Use the `DropdownMenuItemLink` component to add links to the dropdown menu list.
 <DropdownMenu>
 	<DropdownMenuButton>Open dropdown menu</DropdownMenuButton>
 	<DropdownMenuList>
-		<DropdownMenuItemLink href="https://apple.com">Apple</DropdownMenuItemLink>
-		<DropdownMenuItemLink href="https://google.com">
-			Google
-		</DropdownMenuItemLink>
-		<DropdownMenuItemLink href="https://microsoft.com">
-			Microsoft
+		<DropdownMenuItemLink href="#link-1">Link 1</DropdownMenuItemLink>
+		<DropdownMenuItemLink href="#link-2">Link 2</DropdownMenuItemLink>
+		<DropdownMenuItemLink href="#link-3">Link 3</DropdownMenuItemLink>
+	</DropdownMenuList>
+</DropdownMenu>
+```
+
+### Opening links in new tabs
+
+If you're opening links in a new tab, we recommend you use the `ExternalLinkIcon`.
+
+```jsx live
+<DropdownMenu>
+	<DropdownMenuButton>Open dropdown menu</DropdownMenuButton>
+	<DropdownMenuList>
+		<DropdownMenuItemLink href="#link-1">Link 1</DropdownMenuItemLink>
+		<DropdownMenuItemLink href="#link-2">Link 2</DropdownMenuItemLink>
+		<DropdownMenuItemLink
+			href="https://www.agriculture.gov.au"
+			target="_blank"
+			icon={ExternalLinkIcon}
+		>
+			External link
 		</DropdownMenuItemLink>
 	</DropdownMenuList>
 </DropdownMenu>
@@ -149,45 +158,57 @@ Use the `DropdownMenuItemLink` component to add links to the dropdown menu list.
 
 ## Radio groups
 
-Use the `DropdownMenuRadioGroup` and `DropdownMenuRadioItem` components to create a radio group.
+Use the `DropdownMenuRadioGroup` and `DropdownMenuRadioItem` components to create a list of options where only 1 item can be selected at a time, similar to a list of [Radios](/component/radios).
+
+Use the `DropdownMenuRadioGroupLink` component to add a link to the bottom of the Radio group.
 
 ```jsx live
 () => {
-	const [selectedItem, setSelectedItem] = React.useState('Antfix');
+	const [selectedItem, setSelectedItem] = React.useState('');
 	return (
-		<DropdownMenu>
-			<DropdownMenuButton>Open dropdown menu</DropdownMenuButton>
-			<DropdownMenuList>
-				<DropdownMenuRadioGroup label="Businesses">
-					<DropdownMenuRadioItem
-						checked={selectedItem === 'Antfix'}
-						onClick={() => setSelectedItem('Antfix')}
-						secondaryText="Sydney"
-					>
-						Antfix
-					</DropdownMenuRadioItem>
-					<DropdownMenuRadioItem
-						checked={selectedItem === 'Produce Fresh'}
-						onClick={() => setSelectedItem('Produce Fresh')}
-						secondaryText="Brisbane"
-					>
-						Produce Fresh
-					</DropdownMenuRadioItem>
-					<DropdownMenuRadioItem
-						checked={selectedItem === 'Organic Co'}
-						onClick={() => setSelectedItem('Organic Co')}
-						secondaryText="Canberra"
-					>
-						Organic Co
-					</DropdownMenuRadioItem>
-				</DropdownMenuRadioGroup>
-			</DropdownMenuList>
-		</DropdownMenu>
+		<Stack gap={2} alignItems="flex-start">
+			<DropdownMenu>
+				<DropdownMenuButton>Open dropdown menu</DropdownMenuButton>
+				<DropdownMenuList>
+					<DropdownMenuRadioGroup label="Businesses">
+						<DropdownMenuRadioItem
+							checked={selectedItem === 'Antfix'}
+							onClick={() => setSelectedItem('Antfix')}
+							secondaryText="Sydney"
+						>
+							Antfix
+						</DropdownMenuRadioItem>
+						<DropdownMenuRadioItem
+							checked={selectedItem === 'Produce Fresh'}
+							onClick={() => setSelectedItem('Produce Fresh')}
+							secondaryText="Brisbane"
+						>
+							Produce Fresh
+						</DropdownMenuRadioItem>
+						<DropdownMenuRadioItem
+							checked={selectedItem === 'Organic Co'}
+							onClick={() => setSelectedItem('Organic Co')}
+							secondaryText="Canberra"
+						>
+							Organic Co
+						</DropdownMenuRadioItem>
+						<DropdownMenuRadioGroupLink href="#">
+							View all
+						</DropdownMenuRadioGroupLink>
+					</DropdownMenuRadioGroup>
+				</DropdownMenuList>
+			</DropdownMenu>
+			<Text>
+				Currently selected: {selectedItem ? selectedItem : 'Unselected'}
+			</Text>
+		</Stack>
 	);
 };
 ```
 
 ## Placement
+
+Use the `placement` prop to change the placement of the dropdown list popover in relation to the dropdown menu button.
 
 ```jsx live
 <Stack gap={2} alignItems="center">
@@ -206,11 +227,21 @@ Use the `DropdownMenuRadioGroup` and `DropdownMenuRadioItem` components to creat
 			<DropdownMenuItem>Messages</DropdownMenuItem>
 			<DropdownMenuItem>Account settings</DropdownMenuItem>
 		</DropdownMenuList>
+		<DropdownMenu placement="bottom">
+			<DropdownMenuButton>bottom</DropdownMenuButton>
+			<DropdownMenuList>
+				<DropdownMenuItem>Profile</DropdownMenuItem>
+				<DropdownMenuItem>Messages</DropdownMenuItem>
+				<DropdownMenuItem>Account settings</DropdownMenuItem>
+			</DropdownMenuList>
+		</DropdownMenu>
 	</DropdownMenu>
 </Stack>
 ```
 
 ## Accessing state
+
+If you need to access the internal state of the Menu, you can provide a render callback to `DropdownMenu`. This is useful is you want to change the appearance of the dropdown menu button based if the dropdown menu is opened or closed.
 
 ```jsx live
 <DropdownMenu>

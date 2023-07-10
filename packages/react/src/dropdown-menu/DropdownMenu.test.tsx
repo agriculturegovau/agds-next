@@ -167,17 +167,17 @@ describe('DropdownMenu', () => {
 		expect(menuList).toHaveAttribute('aria-activedescendant', 'item-3');
 	});
 
-	it('menu items respond to the `onSelect` prop', async () => {
-		const onSelect1 = jest.fn();
-		const onSelect2 = jest.fn();
-		const onSelect3 = jest.fn();
+	it('menu items respond to the `onClick` prop', async () => {
+		const onClick1 = jest.fn();
+		const onClick2 = jest.fn();
+		const onClick3 = jest.fn();
 		render(
 			<DropdownMenu>
 				<DropdownMenuButton>Open dropdown menu</DropdownMenuButton>
 				<DropdownMenuList>
-					<DropdownMenuItem onSelect={onSelect1}>Item 1</DropdownMenuItem>
-					<DropdownMenuItem onSelect={onSelect2}>Item 2</DropdownMenuItem>
-					<DropdownMenuItem onSelect={onSelect3}>Item 3</DropdownMenuItem>
+					<DropdownMenuItem onClick={onClick1}>Item 1</DropdownMenuItem>
+					<DropdownMenuItem onClick={onClick2}>Item 2</DropdownMenuItem>
+					<DropdownMenuItem onClick={onClick3}>Item 3</DropdownMenuItem>
 				</DropdownMenuList>
 			</DropdownMenu>
 		);
@@ -196,9 +196,9 @@ describe('DropdownMenu', () => {
 		// When closing the dropdown menu, the the trigger should be focused again
 		expect(menuButton).toHaveFocus();
 
-		expect(onSelect1).toHaveBeenCalledTimes(1);
-		expect(onSelect2).toHaveBeenCalledTimes(0);
-		expect(onSelect3).toHaveBeenCalledTimes(0);
+		expect(onClick1).toHaveBeenCalledTimes(1);
+		expect(onClick2).toHaveBeenCalledTimes(0);
+		expect(onClick3).toHaveBeenCalledTimes(0);
 	});
 
 	it('changes the button text based on render props', async () => {
