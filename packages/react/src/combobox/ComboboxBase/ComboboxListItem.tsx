@@ -34,10 +34,11 @@ export const ComboboxListItem = forwardRef<
 					? {
 							cursor: 'pointer',
 							color: boxPalette.foregroundAction,
+							'&:hover': hoverStyles,
 					  }
 					: undefined),
 				...(isActiveItem ? hoverStyles : undefined),
-				'&:hover': isInteractive ? hoverStyles : undefined,
+
 				'&:last-of-type': { borderBottom: 'none' },
 			}}
 			{...props}
