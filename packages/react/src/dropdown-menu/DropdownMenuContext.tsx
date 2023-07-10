@@ -1,42 +1,32 @@
-import {
-	createContext,
-	useContext,
-	RefObject,
-	Dispatch,
-	SetStateAction,
-} from 'react';
+import { createContext, useContext, RefObject } from 'react';
 import { usePopover } from '../_popover';
 
-export type MenuContextType = {
-	listRef: RefObject<HTMLDivElement>;
-	menuId: string;
-	popover: ReturnType<typeof usePopover>;
-	itemNodes: NodeListOf<HTMLDivElement> | undefined;
-
+export type DropdownMenuContextType = {
 	// Menu state
 	isMenuOpen: boolean;
 	openMenu: () => void;
 	closeMenu: () => void;
 	toggleMenu: () => void;
-
 	// Actions
 	goToPreviousMenuItem: () => void;
 	goToNextMenuItem: () => void;
 	goToFirstMenuItem: () => void;
 	goToLastMenuItem: () => void;
 	clickSelectedItem: () => void;
-
-	// Active descendant state
+	// Descendants
 	activeDescendantId: string | undefined;
-	activeDescendantIndex: number | undefined;
-	setActiveDescendantIndex: Dispatch<SetStateAction<number | undefined>>;
+	updateDescendantSearchTerm: (eventKey: string) => void;
+	// Other
+	menuId: string;
+	listRef: RefObject<HTMLDivElement>;
+	popover: ReturnType<typeof usePopover<HTMLButtonElement>>;
 };
 
-export const DropdownMenuContext = createContext<MenuContextType | undefined>(
-	undefined
-);
+export const DropdownMenuContext = createContext<
+	DropdownMenuContextType | undefined
+>(undefined);
 
-export function useMenuContext() {
+export function useDropdownMenuContext() {
 	const context = useContext(DropdownMenuContext);
 
 	if (typeof context === 'undefined') {

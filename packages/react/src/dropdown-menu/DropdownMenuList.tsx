@@ -3,12 +3,11 @@ import {
 	useEffect,
 	KeyboardEvent,
 	useCallback,
-	useState,
 } from 'react';
 import { mergeRefs, useClickOutside } from '../core';
 import { Flex, FlexProps } from '../flex';
 import { Popover } from '../_popover';
-import { useMenuContext } from './DropdownMenuContext';
+import { useDropdownMenuContext } from './DropdownMenuContext';
 import { useDropdownMenuControlIds } from './utils';
 
 export type DropdownMenuListProps = PropsWithChildren<{
@@ -16,30 +15,27 @@ export type DropdownMenuListProps = PropsWithChildren<{
 }>;
 
 export function DropdownMenuList({ children, palette }: DropdownMenuListProps) {
-	const {
-		menuId,
-		listRef,
-		isMenuOpen,
-		closeMenu,
-		popover,
-		activeDescendantId,
-	} = useMenuContext();
+	const { listRef, isMenuOpen, closeMenu, popover, activeDescendantId } =
+		useDropdownMenuContext();
 
-	const { buttonId, listId } = useDropdownMenuControlIds(menuId);
+	const { buttonId, listId } = useDropdownMenuControlIds();
 
-	// FIXME when clicking outside on the button, it reopens
+	// When the dropdown is opened, clicking outside should close
 	const handleClickOutside = useCallback(() => {
 		if (isMenuOpen) closeMenu();
 	}, [isMenuOpen, closeMenu]);
 
-	useClickOutside(popover.popoverRef, handleClickOutside);
+	useClickOutside(
+		[popover.popoverRef, popover.referenceRef],
+		handleClickOutside
+	);
 
-	// When the dropdown menu component is opened, the menu list should be focused
+	// When the dropdown is opened, the menu list should be focused
 	useEffect(() => {
 		if (isMenuOpen) listRef.current?.focus();
 	}, [listRef, isMenuOpen]);
 
-	const { onKeyDown } = useDropdownMenuListActions();
+	const { onKeyDown } = useKeydownNavigation();
 
 	const { style, ref: popoverRef } = popover.getPopoverProps();
 
@@ -72,20 +68,16 @@ export function DropdownMenuList({ children, palette }: DropdownMenuListProps) {
 	);
 }
 
-function useDropdownMenuListActions() {
-	const [searchTerm, setSearchTerm] = useState('');
-
+function useKeydownNavigation() {
 	const {
-		itemNodes,
-		isMenuOpen,
 		closeMenu,
 		goToPreviousMenuItem,
 		goToNextMenuItem,
 		goToFirstMenuItem,
 		goToLastMenuItem,
 		clickSelectedItem,
-		setActiveDescendantIndex,
-	} = useMenuContext();
+		updateDescendantSearchTerm,
+	} = useDropdownMenuContext();
 
 	function onKeyDown(event: KeyboardEvent<HTMLDivElement>) {
 		switch (event.code) {
@@ -120,26 +112,10 @@ function useDropdownMenuListActions() {
 			default:
 				if (/^[a-zA-Z]{1}$/.test(event.key)) {
 					event.preventDefault();
-					setSearchTerm((term) => term + event.key);
+					updateDescendantSearchTerm(event.key);
 				}
 		}
 	}
-
-	useEffect(() => {
-		if (isMenuOpen && searchTerm && itemNodes?.length) {
-			const activeItemIndex = Array.from(itemNodes)
-				.map((node) => node.innerText.toLowerCase())
-				.findIndex((label) => label.startsWith(searchTerm.toLowerCase()));
-			if (activeItemIndex !== -1) setActiveDescendantIndex(activeItemIndex);
-		}
-	}, [isMenuOpen, searchTerm, itemNodes, setActiveDescendantIndex]);
-
-	// When the dropdown menu closes, reset the search term
-	useEffect(() => {
-		return () => {
-			if (isMenuOpen) setSearchTerm('');
-		};
-	}, [isMenuOpen]);
 
 	return { onKeyDown };
 }

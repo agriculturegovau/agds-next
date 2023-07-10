@@ -2,30 +2,41 @@ import { ComponentType, PropsWithChildren, ReactNode } from 'react';
 import { boxPalette, forwardRefWithAs } from '../core';
 import { Flex } from '../flex';
 import { IconProps } from '../icon';
-import { useMenuContext } from './DropdownMenuContext';
+import { useDropdownMenuContext } from './DropdownMenuContext';
 import { useDropdownMenuItemId } from './utils';
 
 export type DropdownMenuItemProps = PropsWithChildren<{
+	/** Defines an identifier (ID) which must be unique. */
 	id?: string;
-	onSelect?: () => void;
+	/** Function to be fired following a click event of the item. */
+	onClick?: () => void;
+	/** Used to add an icon to the start of the item. */
 	icon?: ComponentType<IconProps>;
+	/** Used to add decorative elements to the end of the item such as Indicator dot or Notification badge. */
 	endElement?: ReactNode;
 }>;
 
 export const DropdownMenuItem = forwardRefWithAs<'div', DropdownMenuItemProps>(
 	function DropdownMenuItem(
-		{ as, children, onSelect, endElement, icon: Icon, id: idProp, ...props },
+		{
+			as,
+			children,
+			onClick: onClickProp,
+			endElement,
+			icon: Icon,
+			id: idProp,
+			...props
+		},
 		ref
 	) {
-		const { menuId, activeDescendantId, closeMenu } = useMenuContext();
-
-		const id = useDropdownMenuItemId(idProp, menuId);
+		const { activeDescendantId, closeMenu } = useDropdownMenuContext();
 
 		function onClick() {
-			onSelect?.();
+			onClickProp?.();
 			closeMenu();
 		}
 
+		const id = useDropdownMenuItemId(idProp);
 		const isActiveItem = id === activeDescendantId;
 
 		return (

@@ -2,6 +2,7 @@ import { PropsWithChildren } from 'react';
 import { Text } from '../text';
 
 export type DropdownMenuItemGroupProps = PropsWithChildren<{
+	/** The label of the group. */
 	label: string;
 }>;
 

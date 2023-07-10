@@ -1,61 +1,97 @@
-import { ReactNode, useEffect, useMemo, useRef, useState } from 'react';
-import { useTernaryState } from '../core';
+import { ReactNode, useEffect, useRef, useReducer } from 'react';
 import { usePopover } from '../_popover';
 import { DropdownMenuContext } from './DropdownMenuContext';
+import { reducer, initialState } from './reducer';
 import { useDropdownMenuId } from './utils';
 
 export type DropdownMenuProps = {
 	children: ((menuState: { isMenuOpen: boolean }) => ReactNode) | ReactNode;
-	/** The placement of the popover. */
-	placement?: 'bottom-start' | 'bottom-end';
+	/** The placement of the dropdown list popover in relation to the dropdown menu button. */
+	popoverPlacement?: 'bottom' | 'bottom-start' | 'bottom-end';
+	/** The max height of the dropdown list popover. */
+	popoverMaxHeight?: number;
 };
 
 export function DropdownMenu({
 	children,
-	placement = 'bottom-start',
+	popoverPlacement = 'bottom-start',
+	popoverMaxHeight,
 }: DropdownMenuProps) {
+	const [state, dispatch] = useReducer(reducer, initialState);
+
 	const menuId = useDropdownMenuId();
+	const listRef = useRef<HTMLDivElement>(null);
 
-	// Menu state
-	const [isMenuOpen, openMenu, _closeMenu] = useTernaryState(false);
+	const popover = usePopover<HTMLButtonElement>({
+		placement: popoverPlacement,
+		maxHeight: popoverMaxHeight,
+	});
 
-	const { listRef, itemNodes, itemNodesCount } = useDropdownElements(
-		isMenuOpen,
-		children
-	);
-
-	const {
-		activeDescendantIndex,
-		setActiveDescendantIndex,
-		activeDescendantId,
-		goToPreviousMenuItem,
-		goToNextMenuItem,
-		goToFirstMenuItem,
-		goToLastMenuItem,
-	} = useDropdownMenuNavigation(itemNodesCount, itemNodes);
+	function openMenu() {
+		dispatch({ type: 'OPEN_MENU' });
+	}
 
 	function closeMenu() {
-		_closeMenu();
-		setActiveDescendantIndex(undefined);
+		dispatch({ type: 'CLOSE_MENU' });
 		popover.referenceRef.current?.focus();
 	}
 
-	const popover = usePopover<HTMLButtonElement>({ placement });
+	function toggleMenu() {
+		state.isMenuOpen ? closeMenu() : openMenu();
+	}
+
+	function goToFirstMenuItem() {
+		dispatch({ type: 'ACTIVATE_FIRST_DESCENDANT' });
+	}
+
+	function goToLastMenuItem() {
+		dispatch({ type: 'ACTIVATE_LAST_DESCENDANT' });
+	}
+
+	function goToPreviousMenuItem() {
+		dispatch({ type: 'ACTIVATE_PREVIOUS_DESCENDANT' });
+	}
+
+	function goToNextMenuItem() {
+		dispatch({ type: 'ACTIVATE_NEXT_DESCENDANT' });
+	}
+
+	function updateDescendantSearchTerm(eventKey: string) {
+		dispatch({
+			type: 'UPDATE_DESCENDANT_SEARCH_TERM',
+			payload: { eventKey },
+		});
+	}
 
 	function clickSelectedItem() {
-		if (typeof activeDescendantIndex === 'undefined') return;
-		itemNodes?.[activeDescendantIndex]?.click();
+		if (state.activeDescendantIndex === -1) return;
+		state.descendantNodes?.[state.activeDescendantIndex]?.click();
 		closeMenu();
 	}
+
+	useEffect(() => {
+		if (!state.isMenuOpen) return;
+		dispatch({
+			type: 'SET_DESCENDANT_NODES',
+			payload: {
+				nodes: listRef.current?.querySelectorAll(
+					'[role="menuitem"], [role="menuitemradio"]'
+				) as NodeListOf<HTMLDivElement> | undefined,
+			},
+		});
+	}, [state.isMenuOpen, children]);
+
+	const activeDescendantId =
+		state.descendantNodes?.[state.activeDescendantIndex]?.id;
 
 	return (
 		<DropdownMenuContext.Provider
 			value={{
 				// Menu state
-				isMenuOpen,
+				isMenuOpen: state.isMenuOpen,
 				openMenu,
 				closeMenu,
-				toggleMenu: isMenuOpen ? closeMenu : openMenu,
+				toggleMenu,
 				// Actions
 				goToPreviousMenuItem,
 				goToNextMenuItem,
@@ -63,95 +99,17 @@ export function DropdownMenu({
 				goToLastMenuItem,
 				clickSelectedItem,
 				// Active descendant state
-				activeDescendantIndex,
-				setActiveDescendantIndex,
 				activeDescendantId,
+				updateDescendantSearchTerm,
 				// Other
 				menuId,
 				listRef,
-				// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-				// @ts-ignore
 				popover,
-				itemNodes,
 			}}
 		>
-			<div id={menuId}>
-				{typeof children === 'function' ? children({ isMenuOpen }) : children}
-			</div>
+			{typeof children === 'function'
+				? children({ isMenuOpen: state.isMenuOpen })
+				: children}
 		</DropdownMenuContext.Provider>
 	);
-}
-
-function useDropdownElements(
-	isMenuOpen: boolean,
-	children: DropdownMenuProps['children']
-) {
-	const listRef = useRef<HTMLDivElement>(null);
-
-	const [nodes, setNodes] = useState<NodeListOf<HTMLDivElement>>();
-	useEffect(() => {
-		if (!isMenuOpen) return;
-		setNodes(
-			listRef.current?.querySelectorAll(
-				'[role="menuitem"], [role="menuitemradio"]'
-			) as NodeListOf<HTMLDivElement> | undefined
-		);
-	}, [isMenuOpen, children]);
-
-	const itemNodes = isMenuOpen ? nodes : undefined;
-	const itemNodesCount = nodes?.length ? nodes.length - 1 : 0;
-
-	return { listRef, itemNodesCount, itemNodes };
-}
-
-function useDropdownMenuNavigation(
-	itemNodesCount: number,
-	itemNodes: NodeListOf<HTMLDivElement> | undefined
-) {
-	const [activeDescendantIndex, setActiveDescendantIndex] = useState<
-		number | undefined
-	>(undefined);
-
-	function goToPreviousMenuItem() {
-		if (typeof activeDescendantIndex === 'undefined') {
-			setActiveDescendantIndex(0);
-		} else {
-			setActiveDescendantIndex(
-				activeDescendantIndex === 0 ? itemNodesCount : activeDescendantIndex - 1
-			);
-		}
-	}
-
-	function goToNextMenuItem() {
-		if (typeof activeDescendantIndex === 'undefined') {
-			setActiveDescendantIndex(0);
-		} else {
-			setActiveDescendantIndex(
-				activeDescendantIndex === itemNodesCount ? 0 : activeDescendantIndex + 1
-			);
-		}
-	}
-
-	function goToFirstMenuItem() {
-		setActiveDescendantIndex(0);
-	}
-
-	function goToLastMenuItem() {
-		setActiveDescendantIndex(itemNodesCount);
-	}
-
-	const activeDescendantId = useMemo(() => {
-		if (typeof activeDescendantIndex === 'undefined') return;
-		return itemNodes?.[activeDescendantIndex]?.id;
-	}, [itemNodes, activeDescendantIndex]);
-
-	return {
-		activeDescendantIndex,
-		setActiveDescendantIndex,
-		activeDescendantId,
-		goToPreviousMenuItem,
-		goToNextMenuItem,
-		goToFirstMenuItem,
-		goToLastMenuItem,
-	};
 }

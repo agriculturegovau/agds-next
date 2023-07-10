@@ -1,32 +1,40 @@
 import { PropsWithChildren, ReactNode } from 'react';
 import { boxPalette, packs, tokens } from '../core';
 import { Flex } from '../flex';
+import { Stack } from '../stack';
 import { Text } from '../text';
-import { useMenuContext } from './DropdownMenuContext';
+import { useDropdownMenuContext } from './DropdownMenuContext';
 import { useDropdownMenuItemId } from './utils';
 
-export type DropdownMenuRadioItemProps = PropsWithChildren<{
+export type DropdownMenuItemRadioProps = PropsWithChildren<{
+	/** Exposes the radio buttons state to assistive technology. */
 	checked: boolean;
+	/** Used to add decorative elements to the end of the item such as Indicator dot or Notification badge. */
 	endElement?: ReactNode;
+	/** Defines an identifier (ID) which must be unique. */
 	id?: string;
+	/** Function to be fired following a click event of the item. */
 	onClick?: () => void;
+	/** Supporting text for the item. */
 	secondaryText?: string;
 }>;
 
-export function DropdownMenuRadioItem({
+export function DropdownMenuItemRadio({
 	children,
 	onClick: onClickProp,
 	endElement,
 	checked,
 	secondaryText,
 	id: idProp,
-}: DropdownMenuRadioItemProps) {
-	const { menuId, activeDescendantId } = useMenuContext();
+}: DropdownMenuItemRadioProps) {
+	const { activeDescendantId, closeMenu } = useDropdownMenuContext();
 
-	const id = useDropdownMenuItemId(idProp, menuId);
+	const id = useDropdownMenuItemId(idProp);
 
 	function onClick() {
+		console.log('ON CLIK!');
 		onClickProp?.();
+		closeMenu();
 	}
 
 	const isActiveItem = id === activeDescendantId;
@@ -55,7 +63,7 @@ export function DropdownMenuRadioItem({
 				...(checked && {
 					position: 'relative',
 					color: boxPalette.foregroundText,
-					fontWeight: tokens.fontWeight.bold,
+
 					'&:before': {
 						content: "''",
 						position: 'absolute',
@@ -68,12 +76,12 @@ export function DropdownMenuRadioItem({
 				}),
 			}}
 		>
-			<div>
-				<Text>{children}</Text>
+			<Stack>
+				<Text fontWeight={checked ? 'bold' : 'normal'}>{children}</Text>
 				<Text fontSize="xs" color="muted" css={{ textDecoration: 'none' }}>
 					{secondaryText}
 				</Text>
-			</div>
+			</Stack>
 			{endElement}
 		</Flex>
 	);

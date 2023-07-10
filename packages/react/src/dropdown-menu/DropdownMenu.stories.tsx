@@ -1,6 +1,7 @@
 import { Meta, StoryObj } from '@storybook/react';
 import { Fragment, useState } from 'react';
 import { PageContent } from '../content';
+import { Flex } from '../flex';
 import {
 	EditIcon,
 	EmailIcon,
@@ -13,6 +14,7 @@ import {
 	DeleteIcon,
 	ChevronUpIcon,
 	ChevronDownIcon,
+	ExternalLinkIcon,
 } from '../icon';
 import { IndicatorDot } from '../indicator-dot';
 import { NotificationBadge } from '../notification-badge';
@@ -26,18 +28,17 @@ import {
 	TableHeader,
 	TableWrapper,
 } from '../table';
-import { Text } from '../text';
+import { TextLink } from '../text-link';
 import {
 	DropdownMenu,
 	DropdownMenuButton,
 	DropdownMenuDivider,
 	DropdownMenuGroup,
+	DropdownMenuGroupLink,
 	DropdownMenuItem,
 	DropdownMenuItemLink,
+	DropdownMenuItemRadio,
 	DropdownMenuList,
-	DropdownMenuRadioGroup,
-	DropdownMenuRadioGroupLink,
-	DropdownMenuRadioItem,
 } from './index';
 
 const meta: Meta = {
@@ -52,16 +53,100 @@ export const Basic: StoryObj = {
 			<DropdownMenu>
 				<DropdownMenuButton>Open dropdown menu</DropdownMenuButton>
 				<DropdownMenuList>
-					<DropdownMenuItem onSelect={() => console.log('Profile')}>
+					<DropdownMenuItem onClick={() => console.log('Profile')}>
 						Profile
 					</DropdownMenuItem>
-					<DropdownMenuItem onSelect={() => console.log('Messages')}>
-						Messages
+					<DropdownMenuItem onClick={() => console.log('Messages')}>
+						Potato
 					</DropdownMenuItem>
-					<DropdownMenuItem onSelect={() => console.log('Account settings')}>
+					<DropdownMenuItem onClick={() => console.log('Account settings')}>
 						Account settings
 					</DropdownMenuItem>
 				</DropdownMenuList>
+			</DropdownMenu>
+		);
+	},
+};
+
+export const Triggers: StoryObj = {
+	render: function Render() {
+		return (
+			<Stack gap={2}>
+				<Flex gap={2}>
+					<DropdownMenu>
+						<DropdownMenuButton variant="primary" iconAfter={ChevronDownIcon}>
+							Edit
+						</DropdownMenuButton>
+						<DropdownMenuList>
+							<DropdownMenuItem>Item A</DropdownMenuItem>
+							<DropdownMenuItem>Item B</DropdownMenuItem>
+							<DropdownMenuItem>Item C</DropdownMenuItem>
+						</DropdownMenuList>
+					</DropdownMenu>
+					<DropdownMenu>
+						<DropdownMenuButton variant="secondary" iconAfter={ChevronDownIcon}>
+							Edit
+						</DropdownMenuButton>
+						<DropdownMenuList>
+							<DropdownMenuItem>Item A</DropdownMenuItem>
+							<DropdownMenuItem>Item B</DropdownMenuItem>
+							<DropdownMenuItem>Item C</DropdownMenuItem>
+						</DropdownMenuList>
+					</DropdownMenu>
+				</Flex>
+				<Flex gap={2}>
+					<DropdownMenu>
+						<DropdownMenuButton
+							size="sm"
+							variant="primary"
+							iconAfter={ChevronDownIcon}
+						>
+							Actions
+						</DropdownMenuButton>
+						<DropdownMenuList>
+							<DropdownMenuItem>Item A</DropdownMenuItem>
+							<DropdownMenuItem>Item B</DropdownMenuItem>
+							<DropdownMenuItem>Item C</DropdownMenuItem>
+						</DropdownMenuList>
+					</DropdownMenu>
+					<DropdownMenu>
+						<DropdownMenuButton
+							size="sm"
+							variant="secondary"
+							iconAfter={ChevronDownIcon}
+						>
+							Edit
+						</DropdownMenuButton>
+						<DropdownMenuList>
+							<DropdownMenuItem>Item A</DropdownMenuItem>
+							<DropdownMenuItem>Item B</DropdownMenuItem>
+							<DropdownMenuItem>Item C</DropdownMenuItem>
+						</DropdownMenuList>
+					</DropdownMenu>
+				</Flex>
+			</Stack>
+		);
+	},
+};
+
+export const AccessingState: StoryObj = {
+	render: function Render() {
+		return (
+			<DropdownMenu>
+				{({ isMenuOpen }) => (
+					<Fragment>
+						<DropdownMenuButton
+							iconAfter={isMenuOpen ? ChevronUpIcon : ChevronDownIcon}
+						>
+							{isMenuOpen ? 'Close menu' : 'Open menu'}
+						</DropdownMenuButton>
+						<DropdownMenuList>
+							<DropdownMenuItem>Profile</DropdownMenuItem>
+							<DropdownMenuItem>Messages</DropdownMenuItem>
+							<DropdownMenuItem>Account settings</DropdownMenuItem>
+						</DropdownMenuList>
+					</Fragment>
+				)}
 			</DropdownMenu>
 		);
 	},
@@ -98,13 +183,13 @@ export const Divider: StoryObj = {
 				<DropdownMenuButton>Open dropdown menu</DropdownMenuButton>
 				<DropdownMenuList>
 					<DropdownMenuItem
-						onSelect={() => console.log('Profile')}
+						onClick={() => console.log('Profile')}
 						icon={AvatarIcon}
 					>
 						Profile
 					</DropdownMenuItem>
 					<DropdownMenuItem
-						onSelect={() => console.log('Messages')}
+						onClick={() => console.log('Messages')}
 						icon={EmailIcon}
 						endElement={
 							<NotificationBadge value={100} max={99} tone="action" />
@@ -113,14 +198,14 @@ export const Divider: StoryObj = {
 						Messages
 					</DropdownMenuItem>
 					<DropdownMenuItem
-						onSelect={() => console.log('Account settings')}
+						onClick={() => console.log('Account settings')}
 						icon={SettingsIcon}
 					>
 						Account settings
 					</DropdownMenuItem>
 					<DropdownMenuDivider />
 					<DropdownMenuItem
-						onSelect={() => console.log('Account settings')}
+						onClick={() => console.log('Account settings')}
 						icon={ExitIcon}
 					>
 						Sign out
@@ -164,37 +249,46 @@ export const Groups: StoryObj = {
 	},
 };
 
-export const ButtonTrigger: StoryObj = {
-	render: function Render() {
-		return (
-			<DropdownMenu>
-				<DropdownMenuButton variant="secondary" iconBefore={EditIcon}>
-					Actions
-				</DropdownMenuButton>
-				<DropdownMenuList>
-					<DropdownMenuItem>Item A</DropdownMenuItem>
-					<DropdownMenuItem>Item B</DropdownMenuItem>
-					<DropdownMenuItem>Item C</DropdownMenuItem>
-					<DropdownMenuItem>Item D</DropdownMenuItem>
-				</DropdownMenuList>
-			</DropdownMenu>
-		);
-	},
-};
-
 export const Links: StoryObj = {
 	render: function Render() {
 		return (
 			<DropdownMenu>
 				<DropdownMenuButton>Open dropdown menu</DropdownMenuButton>
 				<DropdownMenuList>
-					<DropdownMenuItemLink href="https://apple.com">
+					<DropdownMenuItemLink href="#link-1">Link 1</DropdownMenuItemLink>
+					<DropdownMenuItemLink href="#link-2">Link 2</DropdownMenuItemLink>
+					<DropdownMenuItemLink href="#link-3">Link 3</DropdownMenuItemLink>
+				</DropdownMenuList>
+			</DropdownMenu>
+		);
+	},
+};
+
+export const LinksExternal: StoryObj = {
+	render: function Render() {
+		return (
+			<DropdownMenu>
+				<DropdownMenuButton>Open dropdown menu</DropdownMenuButton>
+				<DropdownMenuList>
+					<DropdownMenuItemLink
+						href="https://apple.com"
+						target="_blank"
+						icon={ExternalLinkIcon}
+					>
 						Apple
 					</DropdownMenuItemLink>
-					<DropdownMenuItemLink href="https://google.com">
+					<DropdownMenuItemLink
+						href="https://google.com"
+						target="_blank"
+						icon={ExternalLinkIcon}
+					>
 						Google
 					</DropdownMenuItemLink>
-					<DropdownMenuItemLink href="https://microsoft.com">
+					<DropdownMenuItemLink
+						href="https://microsoft.com"
+						target="_blank"
+						icon={ExternalLinkIcon}
+					>
 						Microsoft
 					</DropdownMenuItemLink>
 				</DropdownMenuList>
@@ -210,26 +304,27 @@ export const RadioGroups: StoryObj = {
 			<DropdownMenu>
 				<DropdownMenuButton>Open dropdown menu</DropdownMenuButton>
 				<DropdownMenuList>
-					<DropdownMenuRadioGroup label="Businesses">
-						<DropdownMenuRadioItem
+					<DropdownMenuGroup label="Businesses">
+						<DropdownMenuItemRadio
 							checked={selectedItem === 'Antfix'}
 							onClick={() => setSelectedItem('Antfix')}
 						>
 							Antfix
-						</DropdownMenuRadioItem>
-						<DropdownMenuRadioItem
+						</DropdownMenuItemRadio>
+						<DropdownMenuItemRadio
 							checked={selectedItem === 'Produce Fresh'}
 							onClick={() => setSelectedItem('Produce Fresh')}
 						>
 							Produce Fresh
-						</DropdownMenuRadioItem>
-						<DropdownMenuRadioItem
+						</DropdownMenuItemRadio>
+						<DropdownMenuItemRadio
 							checked={selectedItem === 'Organic Co'}
 							onClick={() => setSelectedItem('Organic Co')}
 						>
 							Organic Co
-						</DropdownMenuRadioItem>
-					</DropdownMenuRadioGroup>
+						</DropdownMenuItemRadio>
+						<DropdownMenuGroupLink href="#">View all</DropdownMenuGroupLink>
+					</DropdownMenuGroup>
 				</DropdownMenuList>
 			</DropdownMenu>
 		);
@@ -238,21 +333,35 @@ export const RadioGroups: StoryObj = {
 
 export const RadioGroupsSecondary: StoryObj = {
 	render: function Render() {
+		const [selectedItem, setSelectedItem] = useState<string>('Antfix');
 		return (
 			<DropdownMenu>
 				<DropdownMenuButton>Open dropdown menu</DropdownMenuButton>
 				<DropdownMenuList>
-					<DropdownMenuRadioGroup label="Businesses">
-						<DropdownMenuRadioItem checked={true} secondaryText="Sydney">
+					<DropdownMenuGroup label="Businesses">
+						<DropdownMenuItemRadio
+							secondaryText="Sydney"
+							checked={selectedItem === 'Antfix'}
+							onClick={() => setSelectedItem('Antfix')}
+						>
 							Antfix
-						</DropdownMenuRadioItem>
-						<DropdownMenuRadioItem checked={false} secondaryText="Brisbane">
-							Ashfield
-						</DropdownMenuRadioItem>
-						<DropdownMenuRadioItem checked={false} secondaryText="Canberra">
-							Redfern
-						</DropdownMenuRadioItem>
-					</DropdownMenuRadioGroup>
+						</DropdownMenuItemRadio>
+						<DropdownMenuItemRadio
+							secondaryText="Brisbane"
+							checked={selectedItem === 'Produce Fresh'}
+							onClick={() => setSelectedItem('Produce Fresh')}
+						>
+							Produce Fresh
+						</DropdownMenuItemRadio>
+						<DropdownMenuItemRadio
+							secondaryText="Canberra"
+							checked={selectedItem === 'Organic Co'}
+							onClick={() => setSelectedItem('Organic Co')}
+						>
+							Organic Co
+						</DropdownMenuItemRadio>
+						<DropdownMenuGroupLink href="#">View all</DropdownMenuGroupLink>
+					</DropdownMenuGroup>
 				</DropdownMenuList>
 			</DropdownMenu>
 		);
@@ -261,31 +370,39 @@ export const RadioGroupsSecondary: StoryObj = {
 
 export const RadioGroupsSecondaryBadges: StoryObj = {
 	render: function Render() {
+		const [selectedItem, setSelectedItem] = useState<string>('Antfix');
 		return (
 			<DropdownMenu>
 				<DropdownMenuButton>Open dropdown menu</DropdownMenuButton>
 				<DropdownMenuList>
-					<DropdownMenuRadioGroup label="Businesses">
-						<DropdownMenuRadioItem
-							checked={true}
+					<DropdownMenuGroup label="Businesses">
+						<DropdownMenuItemRadio
 							secondaryText="Sydney"
+							checked={selectedItem === 'Antfix'}
+							onClick={() => setSelectedItem('Antfix')}
 							endElement={<IndicatorDot />}
 						>
 							Antfix
-						</DropdownMenuRadioItem>
-						<DropdownMenuRadioItem
-							checked={false}
+						</DropdownMenuItemRadio>
+						<DropdownMenuItemRadio
 							secondaryText="Brisbane"
+							checked={selectedItem === 'Produce Fresh'}
+							onClick={() => setSelectedItem('Produce Fresh')}
 							endElement={
 								<NotificationBadge value={100} max={99} tone="action" />
 							}
 						>
-							Ashfield
-						</DropdownMenuRadioItem>
-						<DropdownMenuRadioItem checked={false} secondaryText="Canberra">
-							Redfern
-						</DropdownMenuRadioItem>
-					</DropdownMenuRadioGroup>
+							Produce Fresh
+						</DropdownMenuItemRadio>
+						<DropdownMenuItemRadio
+							secondaryText="Canberra"
+							checked={selectedItem === 'Organic Co'}
+							onClick={() => setSelectedItem('Organic Co')}
+						>
+							Organic Co
+						</DropdownMenuItemRadio>
+						<DropdownMenuGroupLink href="#">View all</DropdownMenuGroupLink>
+					</DropdownMenuGroup>
 				</DropdownMenuList>
 			</DropdownMenu>
 		);
@@ -294,69 +411,49 @@ export const RadioGroupsSecondaryBadges: StoryObj = {
 
 export const Complex: StoryObj = {
 	render: function Render() {
-		const [lastAction, setLastAction] = useState<string>();
 		return (
-			<Stack gap={2}>
-				<DropdownMenu>
-					<DropdownMenuButton>Open dropdown menu</DropdownMenuButton>
-					<DropdownMenuList>
-						<DropdownMenuRadioGroup label="Businesses">
-							<DropdownMenuRadioItem
-								checked={true}
-								secondaryText="Sydney"
-								endElement={<IndicatorDot />}
-							>
-								Antfix
-							</DropdownMenuRadioItem>
-							<DropdownMenuRadioItem
-								checked={false}
-								secondaryText="Brisbane"
-								endElement={
-									<NotificationBadge value={100} max={99} tone="action" />
-								}
-							>
-								Ashfield
-							</DropdownMenuRadioItem>
-							<DropdownMenuRadioItem checked={false} secondaryText="Canberra">
-								Redfern
-							</DropdownMenuRadioItem>
-							<DropdownMenuRadioGroupLink href="#">
-								View all
-							</DropdownMenuRadioGroupLink>
-						</DropdownMenuRadioGroup>
-						<DropdownMenuDivider />
-						<DropdownMenuItem
-							onSelect={() => setLastAction('Profile')}
-							icon={AvatarIcon}
+			<DropdownMenu>
+				<DropdownMenuButton>Open dropdown menu</DropdownMenuButton>
+				<DropdownMenuList>
+					<DropdownMenuGroup label="Businesses">
+						<DropdownMenuItemRadio
+							checked={true}
+							secondaryText="Sydney"
+							endElement={<IndicatorDot />}
 						>
-							Profile
-						</DropdownMenuItem>
-						<DropdownMenuItem
-							onSelect={() => setLastAction('Messages')}
-							icon={EmailIcon}
+							Antfix
+						</DropdownMenuItemRadio>
+						<DropdownMenuItemRadio
+							checked={false}
+							secondaryText="Brisbane"
 							endElement={
 								<NotificationBadge value={100} max={99} tone="action" />
 							}
 						>
-							Messages
-						</DropdownMenuItem>
-						<DropdownMenuItem
-							onSelect={() => setLastAction('Account settings')}
-							icon={SettingsIcon}
-						>
-							Account settings
-						</DropdownMenuItem>
-						<DropdownMenuDivider />
-						<DropdownMenuItem
-							onSelect={() => console.log('Account settings')}
-							icon={ExitIcon}
-						>
-							Sign out
-						</DropdownMenuItem>
-					</DropdownMenuList>
-				</DropdownMenu>
-				{lastAction && <Text>Last action: {lastAction}</Text>}
-			</Stack>
+							Ashfield
+						</DropdownMenuItemRadio>
+						<DropdownMenuItemRadio checked={false} secondaryText="Canberra">
+							Redfern
+						</DropdownMenuItemRadio>
+						<DropdownMenuGroupLink href="#">View all</DropdownMenuGroupLink>
+					</DropdownMenuGroup>
+					<DropdownMenuDivider />
+					<DropdownMenuItem icon={AvatarIcon}>Profile</DropdownMenuItem>
+					<DropdownMenuItem
+						icon={EmailIcon}
+						endElement={
+							<NotificationBadge value={100} max={99} tone="action" />
+						}
+					>
+						Messages
+					</DropdownMenuItem>
+					<DropdownMenuItem icon={SettingsIcon}>
+						Account settings
+					</DropdownMenuItem>
+					<DropdownMenuDivider />
+					<DropdownMenuItem icon={ExitIcon}>Sign out</DropdownMenuItem>
+				</DropdownMenuList>
+			</DropdownMenu>
 		);
 	},
 };
@@ -365,7 +462,7 @@ export const Placement: StoryObj = {
 	render: function Render() {
 		return (
 			<Stack gap={2} alignItems="center">
-				<DropdownMenu placement="bottom-start">
+				<DropdownMenu>
 					<DropdownMenuButton>bottom-start (default)</DropdownMenuButton>
 					<DropdownMenuList>
 						<DropdownMenuItem>Profile</DropdownMenuItem>
@@ -373,8 +470,16 @@ export const Placement: StoryObj = {
 						<DropdownMenuItem>Account settings</DropdownMenuItem>
 					</DropdownMenuList>
 				</DropdownMenu>
-				<DropdownMenu placement="bottom-end">
+				<DropdownMenu popoverPlacement="bottom-end">
 					<DropdownMenuButton>bottom-end</DropdownMenuButton>
+					<DropdownMenuList>
+						<DropdownMenuItem>Profile</DropdownMenuItem>
+						<DropdownMenuItem>Messages</DropdownMenuItem>
+						<DropdownMenuItem>Account settings</DropdownMenuItem>
+					</DropdownMenuList>
+				</DropdownMenu>
+				<DropdownMenu popoverPlacement="bottom">
+					<DropdownMenuButton>bottom</DropdownMenuButton>
 					<DropdownMenuList>
 						<DropdownMenuItem>Profile</DropdownMenuItem>
 						<DropdownMenuItem>Messages</DropdownMenuItem>
@@ -386,25 +491,31 @@ export const Placement: StoryObj = {
 	},
 };
 
-export const AccessingState: StoryObj = {
+export const MaxHeight: StoryObj = {
 	render: function Render() {
 		return (
-			<DropdownMenu>
-				{({ isMenuOpen }) => (
-					<Fragment>
-						<DropdownMenuButton
-							iconBefore={isMenuOpen ? ChevronUpIcon : ChevronDownIcon}
-						>
-							{isMenuOpen ? 'Open menu' : 'Close menu'}
-						</DropdownMenuButton>
-						<DropdownMenuList>
-							<DropdownMenuItem>Profile</DropdownMenuItem>
-							<DropdownMenuItem>Messages</DropdownMenuItem>
-							<DropdownMenuItem>Account settings</DropdownMenuItem>
-						</DropdownMenuList>
-					</Fragment>
-				)}
-			</DropdownMenu>
+			<Stack gap={2} alignItems="flex-start">
+				<DropdownMenu>
+					<DropdownMenuButton>
+						Open dropdown menu (without max height)
+					</DropdownMenuButton>
+					<DropdownMenuList>
+						{Array.from(Array(20).keys()).map((i) => (
+							<DropdownMenuItem key={i}>Item {i + 1}</DropdownMenuItem>
+						))}
+					</DropdownMenuList>
+				</DropdownMenu>
+				<DropdownMenu popoverMaxHeight={288}>
+					<DropdownMenuButton>
+						Open dropdown menu (with max height)
+					</DropdownMenuButton>
+					<DropdownMenuList>
+						{Array.from(Array(20).keys()).map((i) => (
+							<DropdownMenuItem key={i}>Item {i + 1}</DropdownMenuItem>
+						))}
+					</DropdownMenuList>
+				</DropdownMenu>
+			</Stack>
 		);
 	},
 };
@@ -415,10 +526,10 @@ export const TableActions: StoryObj = {
 			<PageContent>
 				<TableWrapper>
 					<Table>
-						<TableCaption>Example table</TableCaption>
+						<TableCaption>Example table with actions</TableCaption>
 						<TableHead>
 							<tr>
-								<TableHeader scope="col">Example</TableHeader>
+								<TableHeader scope="col">ID</TableHeader>
 								<TableHeader scope="col">Example</TableHeader>
 								<TableHeader scope="col">Example</TableHeader>
 								<TableHeader scope="col" textAlign="right">
@@ -429,13 +540,13 @@ export const TableActions: StoryObj = {
 						<TableBody>
 							{Array.from(Array(5).keys()).map((idx) => (
 								<tr key={idx}>
-									<TableCell as="th" scope="row">
-										Row {idx + 1}
+									<TableCell as="th" scope="row" fontWeight="bold">
+										<TextLink href="#">Example Row {idx + 1}</TextLink>
 									</TableCell>
 									<TableCell>Example</TableCell>
 									<TableCell>Example</TableCell>
 									<TableCell textAlign="right">
-										<DropdownMenu placement="bottom-end">
+										<DropdownMenu popoverPlacement="bottom-end">
 											<DropdownMenuButton>Actions</DropdownMenuButton>
 											<DropdownMenuList>
 												<DropdownMenuItem icon={EditIcon}>
