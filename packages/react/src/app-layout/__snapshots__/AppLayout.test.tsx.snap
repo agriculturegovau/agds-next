@@ -117,51 +117,236 @@ exports[`AppLayout renders correctly 1`] = `
           </button>
           <div
             aria-labelledby="dropdown-menu-:r0:-button"
-            class="css-5qvxyw-boxStyles-light-boxStyles-Popover-DropdownMenuList"
+            class="css-5vdhcf-boxStyles-light-boxStyles-Popover-DropdownMenuList"
             id="dropdown-menu-:r0:-list"
             role="menu"
             style="position: absolute; left: 0px; top: 0px; display: none; transform: translate(0px, 0px);"
             tabindex="-1"
           >
             <div
+              role="group"
+            >
+              <span
+                class="css-86io8n-boxStyles-Text"
+              >
+                Businesses
+              </span>
+              <div
+                aria-checked="false"
+                class="css-l2bg1s-boxStyles-DropdownMenuRadioItem"
+                id="dropdown-menu-:r0:-item-:r1:"
+                role="menuitemradio"
+              >
+                <span
+                  class="css-o80hmi-boxStyles"
+                >
+                  <div>
+                    Antfix
+                  </div>
+                  <span
+                    class="css-fiaal0-boxStyles-Text-DropdownMenuRadioItem"
+                  >
+                    Sydney
+                  </span>
+                </span>
+                <div
+                  class="css-h9c2dm-boxStyles-IndicatorDot"
+                />
+              </div>
+              <div
+                aria-checked="false"
+                class="css-1opdey7-boxStyles-DropdownMenuRadioItem"
+                id="dropdown-menu-:r0:-item-:r2:"
+                role="menuitemradio"
+              >
+                <span
+                  class="css-o80hmi-boxStyles"
+                >
+                  <div>
+                    Ashfield
+                  </div>
+                  <span
+                    class="css-fiaal0-boxStyles-Text-DropdownMenuRadioItem"
+                  >
+                    Brisbane
+                  </span>
+                </span>
+                <span
+                  class="css-uouzcn-boxStyles-Text-NotificationBadge"
+                >
+                  99+
+                </span>
+              </div>
+              <div
+                aria-checked="false"
+                class="css-1opdey7-boxStyles-DropdownMenuRadioItem"
+                id="dropdown-menu-:r0:-item-:r3:"
+                role="menuitemradio"
+              >
+                <span
+                  class="css-o80hmi-boxStyles"
+                >
+                  <div>
+                    Redfern
+                  </div>
+                  <span
+                    class="css-fiaal0-boxStyles-Text-DropdownMenuRadioItem"
+                  >
+                    Canberra
+                  </span>
+                </span>
+              </div>
+              <a
+                class="css-b7vfyv-boxStyles"
+                href="#"
+                id="dropdown-menu-:r0:-item-:r4:"
+                role="menuitem"
+              >
+                View all
+              </a>
+            </div>
+            <div
+              class="css-1txc41g-DropdownMenuDivider"
+              role="separator"
+            />
+            <div
               class="css-1lgsiwd-boxStyles-DropdownMenuItem"
-              id="dropdown-menu-:r0:-item-:r1:"
+              id="dropdown-menu-:r0:-item-:r5:"
               role="menuitem"
               tabindex="-1"
             >
               <div
                 class="css-4cj67k-boxStyles"
               >
+                <svg
+                  aria-hidden="true"
+                  class="css-dgj9fa-Icon"
+                  clip-rule="evenodd"
+                  focusable="false"
+                  height="24"
+                  role="img"
+                  viewBox="0 0 24 24"
+                  width="24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M4.5 19.1773C6.74319 17.9616 9.42279 17.0003 11.9999 17.0003C14.5769 17.0003 17.2567 17.9618 19.4999 19.1775M15.2053 9.95293C15.2036 10.4573 15.0723 10.9535 14.823 11.3977C14.5737 11.842 14.2141 12.2205 13.7759 12.5C13.3377 12.7794 12.8345 12.9511 12.3106 13C11.7867 13.0489 11.2584 12.9733 10.7722 12.7801C10.286 12.5869 9.85698 12.2819 9.52298 11.892C9.18899 11.5022 8.96036 11.0396 8.85721 10.545C8.75406 10.0504 8.7796 9.53905 8.93158 9.05615C9.08357 8.57326 9.35732 8.13367 9.72865 7.77621C10.1769 7.34467 10.7489 7.05056 11.372 6.93123C11.9951 6.81191 12.6412 6.87274 13.2281 7.10602C13.815 7.3393 14.3164 7.73449 14.6684 8.2414C15.0204 8.7483 15.2073 9.34403 15.2053 9.95293Z"
+                  />
+                  <circle
+                    cx="12"
+                    cy="12"
+                    r="10.5"
+                  />
+                </svg>
                 <span>
-                  Option A
+                  Profile
                 </span>
               </div>
             </div>
             <div
               class="css-1lgsiwd-boxStyles-DropdownMenuItem"
-              id="dropdown-menu-:r0:-item-:r2:"
+              id="dropdown-menu-:r0:-item-:r6:"
               role="menuitem"
               tabindex="-1"
             >
               <div
                 class="css-4cj67k-boxStyles"
               >
+                <svg
+                  aria-hidden="true"
+                  class="css-dgj9fa-Icon"
+                  clip-rule="evenodd"
+                  focusable="false"
+                  height="24"
+                  role="img"
+                  viewBox="0 0 24 24"
+                  width="24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M22 6C22 4.9 21.1 4 20 4H4C2.9 4 2 4.9 2 6M22 6V18C22 19.1 21.1 20 20 20H4C2.9 20 2 19.1 2 18V6M22 6L12 13L2 6"
+                  />
+                </svg>
                 <span>
-                  Option B
+                  Messages
+                </span>
+              </div>
+              <span
+                class="css-uouzcn-boxStyles-Text-NotificationBadge"
+              >
+                99+
+              </span>
+            </div>
+            <div
+              class="css-1lgsiwd-boxStyles-DropdownMenuItem"
+              id="dropdown-menu-:r0:-item-:r7:"
+              role="menuitem"
+              tabindex="-1"
+            >
+              <div
+                class="css-4cj67k-boxStyles"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="css-dgj9fa-Icon"
+                  clip-rule="evenodd"
+                  focusable="false"
+                  height="24"
+                  role="img"
+                  viewBox="0 0 24 24"
+                  width="24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <circle
+                    cx="12"
+                    cy="12"
+                    r="3"
+                  />
+                  <path
+                    d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"
+                  />
+                </svg>
+                <span>
+                  Account settings
                 </span>
               </div>
             </div>
             <div
+              class="css-1txc41g-DropdownMenuDivider"
+              role="separator"
+            />
+            <div
               class="css-1lgsiwd-boxStyles-DropdownMenuItem"
-              id="dropdown-menu-:r0:-item-:r3:"
+              id="dropdown-menu-:r0:-item-:r8:"
               role="menuitem"
               tabindex="-1"
             >
               <div
                 class="css-4cj67k-boxStyles"
               >
+                <svg
+                  aria-hidden="true"
+                  class="css-dgj9fa-Icon"
+                  clip-rule="evenodd"
+                  focusable="false"
+                  height="24"
+                  role="img"
+                  viewBox="0 0 24 24"
+                  width="24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M9 21H5C4.46957 21 3.96086 20.7893 3.58579 20.4142C3.21071 20.0391 3 19.5304 3 19V5C3 4.46957 3.21071 3.96086 3.58579 3.58579C3.96086 3.21071 4.46957 3 5 3H9"
+                  />
+                  <path
+                    d="M16 17L21 12L16 7"
+                  />
+                  <path
+                    d="M21 12H9"
+                  />
+                </svg>
                 <span>
-                  Option C
+                  Sign out
                 </span>
               </div>
             </div>
@@ -201,14 +386,14 @@ exports[`AppLayout renders correctly 1`] = `
           </span>
         </button>
         <div
-          id="dropdown-menu-:r4:"
+          id="dropdown-menu-:r9:"
         >
           <button
-            aria-controls="dropdown-menu-:r4:-list"
+            aria-controls="dropdown-menu-:r9:-list"
             aria-expanded="false"
             aria-haspopup="true"
             class="css-2q9pyw-BaseButton-Button"
-            id="dropdown-menu-:r4:-button"
+            id="dropdown-menu-:r9:-button"
             type="button"
           >
             <span>
@@ -246,52 +431,237 @@ exports[`AppLayout renders correctly 1`] = `
             </span>
           </button>
           <div
-            aria-labelledby="dropdown-menu-:r4:-button"
-            class="css-5qvxyw-boxStyles-light-boxStyles-Popover-DropdownMenuList"
-            id="dropdown-menu-:r4:-list"
+            aria-labelledby="dropdown-menu-:r9:-button"
+            class="css-5vdhcf-boxStyles-light-boxStyles-Popover-DropdownMenuList"
+            id="dropdown-menu-:r9:-list"
             role="menu"
             style="position: absolute; left: 0px; top: 0px; display: none; transform: translate(0px, 0px);"
             tabindex="-1"
           >
             <div
+              role="group"
+            >
+              <span
+                class="css-86io8n-boxStyles-Text"
+              >
+                Businesses
+              </span>
+              <div
+                aria-checked="false"
+                class="css-l2bg1s-boxStyles-DropdownMenuRadioItem"
+                id="dropdown-menu-:r9:-item-:ra:"
+                role="menuitemradio"
+              >
+                <span
+                  class="css-o80hmi-boxStyles"
+                >
+                  <div>
+                    Antfix
+                  </div>
+                  <span
+                    class="css-fiaal0-boxStyles-Text-DropdownMenuRadioItem"
+                  >
+                    Sydney
+                  </span>
+                </span>
+                <div
+                  class="css-h9c2dm-boxStyles-IndicatorDot"
+                />
+              </div>
+              <div
+                aria-checked="false"
+                class="css-1opdey7-boxStyles-DropdownMenuRadioItem"
+                id="dropdown-menu-:r9:-item-:rb:"
+                role="menuitemradio"
+              >
+                <span
+                  class="css-o80hmi-boxStyles"
+                >
+                  <div>
+                    Ashfield
+                  </div>
+                  <span
+                    class="css-fiaal0-boxStyles-Text-DropdownMenuRadioItem"
+                  >
+                    Brisbane
+                  </span>
+                </span>
+                <span
+                  class="css-uouzcn-boxStyles-Text-NotificationBadge"
+                >
+                  99+
+                </span>
+              </div>
+              <div
+                aria-checked="false"
+                class="css-1opdey7-boxStyles-DropdownMenuRadioItem"
+                id="dropdown-menu-:r9:-item-:rc:"
+                role="menuitemradio"
+              >
+                <span
+                  class="css-o80hmi-boxStyles"
+                >
+                  <div>
+                    Redfern
+                  </div>
+                  <span
+                    class="css-fiaal0-boxStyles-Text-DropdownMenuRadioItem"
+                  >
+                    Canberra
+                  </span>
+                </span>
+              </div>
+              <a
+                class="css-b7vfyv-boxStyles"
+                href="#"
+                id="dropdown-menu-:r9:-item-:rd:"
+                role="menuitem"
+              >
+                View all
+              </a>
+            </div>
+            <div
+              class="css-1txc41g-DropdownMenuDivider"
+              role="separator"
+            />
+            <div
               class="css-1lgsiwd-boxStyles-DropdownMenuItem"
-              id="dropdown-menu-:r4:-item-:r5:"
+              id="dropdown-menu-:r9:-item-:re:"
               role="menuitem"
               tabindex="-1"
             >
               <div
                 class="css-4cj67k-boxStyles"
               >
+                <svg
+                  aria-hidden="true"
+                  class="css-dgj9fa-Icon"
+                  clip-rule="evenodd"
+                  focusable="false"
+                  height="24"
+                  role="img"
+                  viewBox="0 0 24 24"
+                  width="24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M4.5 19.1773C6.74319 17.9616 9.42279 17.0003 11.9999 17.0003C14.5769 17.0003 17.2567 17.9618 19.4999 19.1775M15.2053 9.95293C15.2036 10.4573 15.0723 10.9535 14.823 11.3977C14.5737 11.842 14.2141 12.2205 13.7759 12.5C13.3377 12.7794 12.8345 12.9511 12.3106 13C11.7867 13.0489 11.2584 12.9733 10.7722 12.7801C10.286 12.5869 9.85698 12.2819 9.52298 11.892C9.18899 11.5022 8.96036 11.0396 8.85721 10.545C8.75406 10.0504 8.7796 9.53905 8.93158 9.05615C9.08357 8.57326 9.35732 8.13367 9.72865 7.77621C10.1769 7.34467 10.7489 7.05056 11.372 6.93123C11.9951 6.81191 12.6412 6.87274 13.2281 7.10602C13.815 7.3393 14.3164 7.73449 14.6684 8.2414C15.0204 8.7483 15.2073 9.34403 15.2053 9.95293Z"
+                  />
+                  <circle
+                    cx="12"
+                    cy="12"
+                    r="10.5"
+                  />
+                </svg>
                 <span>
-                  Option A
+                  Profile
                 </span>
               </div>
             </div>
             <div
               class="css-1lgsiwd-boxStyles-DropdownMenuItem"
-              id="dropdown-menu-:r4:-item-:r6:"
+              id="dropdown-menu-:r9:-item-:rf:"
               role="menuitem"
               tabindex="-1"
             >
               <div
                 class="css-4cj67k-boxStyles"
               >
+                <svg
+                  aria-hidden="true"
+                  class="css-dgj9fa-Icon"
+                  clip-rule="evenodd"
+                  focusable="false"
+                  height="24"
+                  role="img"
+                  viewBox="0 0 24 24"
+                  width="24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M22 6C22 4.9 21.1 4 20 4H4C2.9 4 2 4.9 2 6M22 6V18C22 19.1 21.1 20 20 20H4C2.9 20 2 19.1 2 18V6M22 6L12 13L2 6"
+                  />
+                </svg>
                 <span>
-                  Option B
+                  Messages
+                </span>
+              </div>
+              <span
+                class="css-uouzcn-boxStyles-Text-NotificationBadge"
+              >
+                99+
+              </span>
+            </div>
+            <div
+              class="css-1lgsiwd-boxStyles-DropdownMenuItem"
+              id="dropdown-menu-:r9:-item-:rg:"
+              role="menuitem"
+              tabindex="-1"
+            >
+              <div
+                class="css-4cj67k-boxStyles"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="css-dgj9fa-Icon"
+                  clip-rule="evenodd"
+                  focusable="false"
+                  height="24"
+                  role="img"
+                  viewBox="0 0 24 24"
+                  width="24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <circle
+                    cx="12"
+                    cy="12"
+                    r="3"
+                  />
+                  <path
+                    d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"
+                  />
+                </svg>
+                <span>
+                  Account settings
                 </span>
               </div>
             </div>
             <div
+              class="css-1txc41g-DropdownMenuDivider"
+              role="separator"
+            />
+            <div
               class="css-1lgsiwd-boxStyles-DropdownMenuItem"
-              id="dropdown-menu-:r4:-item-:r7:"
+              id="dropdown-menu-:r9:-item-:rh:"
               role="menuitem"
               tabindex="-1"
             >
               <div
                 class="css-4cj67k-boxStyles"
               >
+                <svg
+                  aria-hidden="true"
+                  class="css-dgj9fa-Icon"
+                  clip-rule="evenodd"
+                  focusable="false"
+                  height="24"
+                  role="img"
+                  viewBox="0 0 24 24"
+                  width="24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M9 21H5C4.46957 21 3.96086 20.7893 3.58579 20.4142C3.21071 20.0391 3 19.5304 3 19V5C3 4.46957 3.21071 3.96086 3.58579 3.58579C3.96086 3.21071 4.46957 3 5 3H9"
+                  />
+                  <path
+                    d="M16 17L21 12L16 7"
+                  />
+                  <path
+                    d="M21 12H9"
+                  />
+                </svg>
                 <span>
-                  Option C
+                  Sign out
                 </span>
               </div>
             </div>

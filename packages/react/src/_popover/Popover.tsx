@@ -6,6 +6,7 @@ import {
 	offset,
 	flip,
 	size,
+	Placement,
 } from '@floating-ui/react-dom';
 import { Box } from '../box';
 import { forwardRefWithAs, tokens } from '../core';
@@ -41,11 +42,12 @@ export const Popover = forwardRefWithAs<'div', PopoverProps>(function Popover(
 const DEFAULT_OFFSET = 8;
 
 export function usePopover<RT extends ReferenceType = ReferenceType>(options?: {
+	placement: Placement;
 	matchReferenceWidth?: boolean;
 	maxHeight?: number;
 }) {
 	const { refs, floatingStyles } = useFloating<RT>({
-		placement: 'bottom-start',
+		placement: options?.placement ?? 'bottom-start',
 		middleware: [
 			// Adds distance between the reference and floating element
 			// https://floating-ui.com/docs/offset

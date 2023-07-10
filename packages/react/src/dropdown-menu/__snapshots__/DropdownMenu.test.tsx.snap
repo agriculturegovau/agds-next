@@ -26,7 +26,7 @@ exports[`DropdownMenu renders correctly 1`] = `
     </button>
     <div
       aria-labelledby="dropdown-menu-:r0:-button"
-      class="css-l7me97-boxStyles-boxStyles-Popover-DropdownMenuList"
+      class="css-lmn5rh-boxStyles-boxStyles-Popover-DropdownMenuList"
       id="dropdown-menu-:r0:-list"
       role="menu"
       style="position: absolute; left: 0px; top: 0px; display: none; transform: translate(0px, 0px);"
@@ -42,7 +42,7 @@ exports[`DropdownMenu renders correctly 1`] = `
           class="css-4cj67k-boxStyles"
         >
           <span>
-            Profile
+            Item 1
           </span>
         </div>
       </div>
@@ -56,7 +56,7 @@ exports[`DropdownMenu renders correctly 1`] = `
           class="css-4cj67k-boxStyles"
         >
           <span>
-            Messages
+            Item 2
           </span>
         </div>
       </div>
@@ -70,7 +70,7 @@ exports[`DropdownMenu renders correctly 1`] = `
           class="css-4cj67k-boxStyles"
         >
           <span>
-            Account settings
+            Item 3
           </span>
         </div>
       </div>
