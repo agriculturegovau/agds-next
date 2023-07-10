@@ -1039,6 +1039,20 @@ items={[
 		</TabPanels>
 	</Tabs>`,
 	},
+	{
+		group: 'DropdownMenu',
+		name: 'Basic',
+		code: `<DropdownMenu>
+		<DropdownMenuButton>Open menu</DropdownMenuButton>
+		<DropdownMenuList>
+			<DropdownMenuItem>Profile</DropdownMenuItem>
+			<DropdownMenuItem>Messages</DropdownMenuItem>
+			<DropdownMenuItem>Account settings</DropdownMenuItem>
+			<DropdownMenuDivider />
+			<DropdownMenuItem>Sign out</DropdownMenuItem>
+		</DropdownMenuList>
+	</DropdownMenu>`,
+	},
 ];
 
 export default snippets;

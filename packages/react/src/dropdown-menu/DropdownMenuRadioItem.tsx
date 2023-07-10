@@ -7,10 +7,10 @@ import { useDropdownMenuItemId } from './utils';
 
 export type DropdownMenuRadioItemProps = PropsWithChildren<{
 	checked: boolean;
-	onClick?: () => void;
 	endElement?: ReactNode;
-	secondaryText?: string;
 	id?: string;
+	onClick?: () => void;
+	secondaryText?: string;
 }>;
 
 export function DropdownMenuRadioItem({
