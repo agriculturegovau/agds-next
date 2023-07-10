@@ -4,7 +4,7 @@ import { PaginationButtons } from '@ag.ds-next/react/pagination';
 import { Prose } from '@ag.ds-next/react/prose';
 import { Column, Columns } from '@ag.ds-next/react/columns';
 import { FormStack } from '@ag.ds-next/react/form-stack';
-import { DateRangePicker } from '@ag.ds-next/react/date-picker';
+import { DateRangePicker } from '@ag.ds-next/react/date-range-picker';
 import { SkipLinks } from '@ag.ds-next/react/skip-link';
 import { Flex } from '@ag.ds-next/react/flex';
 import { Text } from '@ag.ds-next/react/text';
