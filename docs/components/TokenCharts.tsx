@@ -4,10 +4,58 @@ import { Stack } from '@ag.ds-next/react/stack';
 import { boxPalette, tokens, Spacing, FontSize } from '@ag.ds-next/react/core';
 import { proseBlockClassname } from '@ag.ds-next/react/prose';
 import { Text } from '@ag.ds-next/react/text';
+import {
+	Table,
+	TableBody,
+	TableCaption,
+	TableCell,
+	TableHead,
+	TableHeader,
+	TableWrapper,
+} from '@ag.ds-next/react/table';
 
 type Entries<T> = {
 	[K in keyof T]: [K, T[K]];
 }[keyof T][];
+
+export const BreakpointsTokenChart = () => {
+	const breakpoints = tokens.breakpoint;
+	return (
+		<div className={proseBlockClassname}>
+			<TableWrapper>
+				<Table>
+					<TableCaption>Our Breakpoint tokens</TableCaption>
+					<TableHead>
+						<tr>
+							<TableHeader scope="col">Token</TableHeader>
+							<TableHeader scope="col">Value</TableHeader>
+							<TableHeader scope="col">Media query</TableHeader>
+						</tr>
+					</TableHead>
+					<TableBody>
+						{Object.entries(breakpoints).map(([token, value]) => {
+							return (
+								<tr key={token}>
+									<TableCell as="th" scope="row">
+										{token}
+									</TableCell>
+									<TableCell>{value}px and up</TableCell>
+									<TableCell>
+										{value === 0 ? (
+											'Base styles'
+										) : (
+											<code>{`@media (min-width: ${value}px) { ... }`}</code>
+										)}
+									</TableCell>
+								</tr>
+							);
+						})}
+					</TableBody>
+				</Table>
+			</TableWrapper>
+		</div>
+	);
+};
 
 export const BorderWidthChart = () => {
 	const borderWidths = tokens.borderWidth;

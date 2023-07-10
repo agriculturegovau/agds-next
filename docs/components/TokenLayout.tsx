@@ -2,7 +2,6 @@ import { PropsWithChildren } from 'react';
 import { SiteLayout } from './SiteLayout';
 import { PageLayout } from './PageLayout';
 import { PageTitle } from './PageTitle';
-import { DocumentTitle } from './DocumentTitle';
 
 export const TOKEN_PAGES = {
 	border: {
