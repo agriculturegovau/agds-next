@@ -41,7 +41,7 @@ export function FilterDrawerDialog({
 					marginLeft: 'auto',
 					zIndex: tokens.zIndex.dialog,
 					[tokens.mediaQuery.max.xs]: {
-						overflowY: 'scroll',
+						overflowY: 'auto',
 					},
 				}}
 				style={style}
