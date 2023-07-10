@@ -12,7 +12,7 @@ export function defaultRenderItem<Option extends DefaultComboboxOption>(
 				<Text
 					key={index}
 					as="mark"
-					color="action"
+					color="inherit"
 					fontWeight="bold"
 					css={{ background: 'none', whiteSpace: 'pre' }}
 				>
@@ -21,7 +21,7 @@ export function defaultRenderItem<Option extends DefaultComboboxOption>(
 			);
 		}
 		return (
-			<Text key={index} as="span" color="action" css={{ whiteSpace: 'pre' }}>
+			<Text key={index} as="span" color="inherit" css={{ whiteSpace: 'pre' }}>
 				{part}
 			</Text>
 		);

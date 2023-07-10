@@ -7,6 +7,12 @@ type ComboboxListItemProps = Omit<HTMLAttributes<HTMLLIElement>, 'color'> & {
 	isInteractive: boolean;
 };
 
+const hoverStyles = {
+	color: boxPalette.foregroundText,
+	textDecoration: 'underline',
+	backgroundColor: boxPalette.backgroundShade,
+};
+
 export const ComboboxListItem = forwardRef<
 	HTMLLIElement,
 	ComboboxListItemProps
@@ -19,18 +25,20 @@ export const ComboboxListItem = forwardRef<
 			ref={ref}
 			as="li"
 			alignItems="center"
-			background={isActiveItem ? 'shade' : undefined}
 			paddingX={1}
 			paddingY={0.75}
 			borderBottom
 			borderColor="muted"
 			css={{
-				cursor: isInteractive ? 'pointer' : undefined,
-				'&:hover': {
-					backgroundColor: isInteractive
-						? boxPalette.backgroundShade
-						: undefined,
-				},
+				...(isInteractive
+					? {
+							cursor: 'pointer',
+							color: boxPalette.foregroundAction,
+							'&:hover': hoverStyles,
+					  }
+					: undefined),
+				...(isActiveItem ? hoverStyles : undefined),
+
 				'&:last-of-type': { borderBottom: 'none' },
 			}}
 			{...props}
