@@ -1043,7 +1043,7 @@ items={[
 		group: 'DropdownMenu',
 		name: 'Basic',
 		code: `<DropdownMenu>
-		<DropdownMenuButton>Open menu</DropdownMenuButton>
+		<DropdownMenuButton>Open dropdown menu</DropdownMenuButton>
 		<DropdownMenuList>
 			<DropdownMenuItem>Profile</DropdownMenuItem>
 			<DropdownMenuItem>Messages</DropdownMenuItem>

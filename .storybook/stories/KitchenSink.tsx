@@ -78,6 +78,13 @@ import {
 	TabPanels,
 	Tabs,
 } from '@ag.ds-next/react/tabs';
+import {
+	DropdownMenu,
+	DropdownMenuButton,
+	DropdownMenuList,
+	DropdownMenuItem,
+	DropdownMenuDivider,
+} from '@ag.ds-next/react/dropdown-menu';
 import { COUNTRY_OPTIONS } from '../../docs/components/designSystemComponents';
 import { SiteLayout } from '../../docs/content/templates/__shared/SiteLayout';
 import { AppLayout } from '../../docs/content/templates/__shared/AppLayout';
@@ -435,6 +442,17 @@ function KitchenSink({ background }: KitchenSinkProps) {
 							</DirectionLink>
 
 							<CallToActionLink href="#">Call to action</CallToActionLink>
+
+							<DropdownMenu>
+								<DropdownMenuButton>Open dropdown menu</DropdownMenuButton>
+								<DropdownMenuList>
+									<DropdownMenuItem>Profile</DropdownMenuItem>
+									<DropdownMenuItem>Messages</DropdownMenuItem>
+									<DropdownMenuItem>Account settings</DropdownMenuItem>
+									<DropdownMenuDivider />
+									<DropdownMenuItem>Sign out</DropdownMenuItem>
+								</DropdownMenuList>
+							</DropdownMenu>
 
 							<Flex gap={0.5} flexWrap="wrap">
 								<StatusBadge tone="info" label="In progress" />
