@@ -1,7 +1,10 @@
 import { PropsWithChildren } from 'react';
-import { mapResponsiveProp, mq, tokens, useTernaryState } from '../core';
+import { mapResponsiveProp, mq, useTernaryState } from '../core';
 import { AppLayoutContext } from './AppLayoutContext';
-import { APP_LAYOUT_DESKTOP_BREAKPOINT } from './utils';
+import {
+	APP_LAYOUT_DESKTOP_BREAKPOINT,
+	APP_LAYOUT_SIDEBAR_WIDTH,
+} from './utils';
 
 export type AppLayoutProps = PropsWithChildren<{
 	/** Set to `true` while users are completing multi-page forms to reduce distractions. When true, the app layout sidebar will not be rendered. */
@@ -41,7 +44,7 @@ function AppLayoutGrid({ children, focusMode }: AppLayoutGridProps) {
 					xs: '1fr',
 					[APP_LAYOUT_DESKTOP_BREAKPOINT]: focusMode
 						? '1fr'
-						: `${tokens.maxWidth.mobileMenu} 1fr`,
+						: `${APP_LAYOUT_SIDEBAR_WIDTH} 1fr`,
 				}),
 			})}
 		>

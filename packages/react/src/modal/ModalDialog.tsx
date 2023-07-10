@@ -18,6 +18,8 @@ export type ModalDialogProps = PropsWithChildren<{
 	title: string;
 }>;
 
+const MAX_WIDTH = '45rem'; // 720 px
+
 export const ModalDialog = ({
 	actions,
 	children,
@@ -36,7 +38,7 @@ export const ModalDialog = ({
 				paddingX={{ xs: 0.75, md: 1.5 }}
 				paddingY={{ xs: 1, md: 1.5 }}
 				gap={1}
-				maxWidth={tokens.maxWidth.modalDialog}
+				maxWidth={MAX_WIDTH}
 				css={{
 					position: 'relative',
 					margin: '0 auto',

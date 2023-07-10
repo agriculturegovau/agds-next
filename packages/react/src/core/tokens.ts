@@ -88,8 +88,6 @@ const containerPadding = { xs: 0.75, md: 2 } as const;
 const maxWidth = {
 	bodyText: '42em',
 	container: '80rem', // 1280 px
-	mobileMenu: '17.5rem', // 280 px
-	modalDialog: '45rem', // 720 px
 	field: {
 		xs: '5rem', // 80 px
 		sm: '8rem', // 128 px

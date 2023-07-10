@@ -103,6 +103,8 @@ type NavContainerDialogProps = PropsWithChildren<{
 	palette?: BoxPalette;
 }>;
 
+const MOBILE_MAX_WIDTH = '17.5rem'; // 280 px
+
 function NavContainerDialog({
 	children,
 	close,
@@ -147,7 +149,7 @@ function NavContainerDialog({
 					left: 0,
 					bottom: 0,
 					width: '100%',
-					maxWidth: tokens.maxWidth.mobileMenu,
+					maxWidth: MOBILE_MAX_WIDTH,
 					padding: mapSpacing(1),
 					boxSizing: 'border-box',
 					overflowY: 'auto',
