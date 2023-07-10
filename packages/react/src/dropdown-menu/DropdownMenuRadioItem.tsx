@@ -1,7 +1,6 @@
 import { PropsWithChildren, ReactNode } from 'react';
 import { boxPalette, packs, tokens } from '../core';
 import { Flex } from '../flex';
-import { Stack } from '../stack';
 import { Text } from '../text';
 import { useMenuContext } from './DropdownMenuContext';
 import { useDropdownMenuItemId } from './utils';
@@ -11,6 +10,7 @@ export type DropdownMenuRadioItemProps = PropsWithChildren<{
 	onClick?: () => void;
 	endElement?: ReactNode;
 	secondaryText?: string;
+	id?: string;
 }>;
 
 export function DropdownMenuRadioItem({
@@ -19,10 +19,11 @@ export function DropdownMenuRadioItem({
 	endElement,
 	checked,
 	secondaryText,
+	id: idProp,
 }: DropdownMenuRadioItemProps) {
 	const { menuId, activeDescendantId } = useMenuContext();
 
-	const id = useDropdownMenuItemId(menuId);
+	const id = useDropdownMenuItemId(idProp, menuId);
 
 	function onClick() {
 		onClickProp?.();
@@ -33,7 +34,7 @@ export function DropdownMenuRadioItem({
 	return (
 		<Flex
 			role="menuitemradio"
-			aria-checked={false}
+			aria-checked={checked}
 			id={id}
 			onClick={onClick}
 			alignItems="center"
@@ -67,12 +68,12 @@ export function DropdownMenuRadioItem({
 				}),
 			}}
 		>
-			<Stack as="span">
-				<div>{children}</div>
+			<div>
+				<Text>{children}</Text>
 				<Text fontSize="xs" color="muted" css={{ textDecoration: 'none' }}>
 					{secondaryText}
 				</Text>
-			</Stack>
+			</div>
 			{endElement}
 		</Flex>
 	);

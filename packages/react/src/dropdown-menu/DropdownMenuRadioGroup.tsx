@@ -1,6 +1,6 @@
 import { PropsWithChildren } from 'react';
-import { Box, focusStyles } from '../box';
-import { LinkProps, packs, tokens, useLinkComponent } from '../core';
+import { Box } from '../box';
+import { LinkProps, useLinkComponent } from '../core';
 import { Text } from '../text';
 import { useMenuContext } from './DropdownMenuContext';
 import { useDropdownMenuItemId } from './utils';
@@ -31,16 +31,16 @@ export function DropdownMenuRadioGroup({
 
 export type DropdownMenuRadioGroupLinkProps = LinkProps;
 
-export function DropdownMenuRadioGroupLink(
-	props: DropdownMenuRadioGroupLinkProps
-) {
+export function DropdownMenuRadioGroupLink({
+	id: idProp,
+	...props
+}: DropdownMenuRadioGroupLinkProps) {
 	const Link = useLinkComponent();
 	const { menuId, activeDescendantId } = useMenuContext();
 
-	const id = useDropdownMenuItemId(menuId);
+	const id = useDropdownMenuItemId(idProp, menuId);
 
 	const isActiveItem = id === activeDescendantId;
-	console.log(isActiveItem);
 
 	return (
 		<Box

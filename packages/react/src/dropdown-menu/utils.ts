@@ -12,7 +12,10 @@ export function useDropdownMenuControlIds(menuId: string) {
 	};
 }
 
-export function useDropdownMenuItemId(menuId: string) {
+export function useDropdownMenuItemId(
+	idProp: string | undefined,
+	menuId: string
+) {
 	const autoId = useId();
-	return `${menuId}-item-${autoId}`;
+	return idProp ?? `${menuId}-item-${autoId}`;
 }

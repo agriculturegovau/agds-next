@@ -134,7 +134,7 @@ exports[`AppLayout renders correctly 1`] = `
               <div
                 aria-checked="false"
                 class="css-l2bg1s-boxStyles-DropdownMenuRadioItem"
-                id="dropdown-menu-:r0:-item-:r1:"
+                id="dropdown-menu-:r0:"
                 role="menuitemradio"
               >
                 <span
@@ -156,7 +156,7 @@ exports[`AppLayout renders correctly 1`] = `
               <div
                 aria-checked="false"
                 class="css-1opdey7-boxStyles-DropdownMenuRadioItem"
-                id="dropdown-menu-:r0:-item-:r2:"
+                id="dropdown-menu-:r0:"
                 role="menuitemradio"
               >
                 <span
@@ -180,7 +180,7 @@ exports[`AppLayout renders correctly 1`] = `
               <div
                 aria-checked="false"
                 class="css-1opdey7-boxStyles-DropdownMenuRadioItem"
-                id="dropdown-menu-:r0:-item-:r3:"
+                id="dropdown-menu-:r0:"
                 role="menuitemradio"
               >
                 <span
@@ -199,7 +199,7 @@ exports[`AppLayout renders correctly 1`] = `
               <a
                 class="css-b7vfyv-boxStyles"
                 href="#"
-                id="dropdown-menu-:r0:-item-:r4:"
+                id="dropdown-menu-:r0:"
                 role="menuitem"
               >
                 View all
@@ -449,7 +449,7 @@ exports[`AppLayout renders correctly 1`] = `
               <div
                 aria-checked="false"
                 class="css-l2bg1s-boxStyles-DropdownMenuRadioItem"
-                id="dropdown-menu-:r9:-item-:ra:"
+                id="dropdown-menu-:r9:"
                 role="menuitemradio"
               >
                 <span
@@ -471,7 +471,7 @@ exports[`AppLayout renders correctly 1`] = `
               <div
                 aria-checked="false"
                 class="css-1opdey7-boxStyles-DropdownMenuRadioItem"
-                id="dropdown-menu-:r9:-item-:rb:"
+                id="dropdown-menu-:r9:"
                 role="menuitemradio"
               >
                 <span
@@ -495,7 +495,7 @@ exports[`AppLayout renders correctly 1`] = `
               <div
                 aria-checked="false"
                 class="css-1opdey7-boxStyles-DropdownMenuRadioItem"
-                id="dropdown-menu-:r9:-item-:rc:"
+                id="dropdown-menu-:r9:"
                 role="menuitemradio"
               >
                 <span
@@ -514,7 +514,7 @@ exports[`AppLayout renders correctly 1`] = `
               <a
                 class="css-b7vfyv-boxStyles"
                 href="#"
-                id="dropdown-menu-:r9:-item-:rd:"
+                id="dropdown-menu-:r9:"
                 role="menuitem"
               >
                 View all

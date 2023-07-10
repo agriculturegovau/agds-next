@@ -6,6 +6,7 @@ import { useMenuContext } from './DropdownMenuContext';
 import { useDropdownMenuItemId } from './utils';
 
 export type DropdownMenuItemProps = PropsWithChildren<{
+	id?: string;
 	onSelect?: () => void;
 	icon?: ComponentType<IconProps>;
 	endElement?: ReactNode;
@@ -13,12 +14,12 @@ export type DropdownMenuItemProps = PropsWithChildren<{
 
 export const DropdownMenuItem = forwardRefWithAs<'div', DropdownMenuItemProps>(
 	function DropdownMenuItem(
-		{ as, children, onSelect, endElement, icon: Icon, ...props },
+		{ as, children, onSelect, endElement, icon: Icon, id: idProp, ...props },
 		ref
 	) {
 		const { menuId, activeDescendantId, closeMenu } = useMenuContext();
 
-		const id = useDropdownMenuItemId(menuId);
+		const id = useDropdownMenuItemId(idProp, menuId);
 
 		function onClick() {
 			onSelect?.();
