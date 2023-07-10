@@ -9,7 +9,7 @@ import { mergeRefs, useClickOutside } from '../core';
 import { Flex, FlexProps } from '../flex';
 import { Popover } from '../_popover';
 import { useMenuContext } from './DropdownMenuContext';
-import { useDropdownMenuButtonIds } from './utils';
+import { useDropdownMenuControlIds } from './utils';
 
 export type DropdownMenuListProps = PropsWithChildren<{
 	palette?: FlexProps['palette'];
@@ -25,7 +25,7 @@ export function DropdownMenuList({ children, palette }: DropdownMenuListProps) {
 		activeDescendantId,
 	} = useMenuContext();
 
-	const { buttonId, listId } = useDropdownMenuButtonIds(menuId);
+	const { buttonId, listId } = useDropdownMenuControlIds(menuId);
 
 	// FIXME when clicking outside on the button, it reopens
 	const handleClickOutside = useCallback(() => {
