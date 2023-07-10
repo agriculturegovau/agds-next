@@ -5,20 +5,110 @@ overview: Breakpoints are a set of predefined viewport widths that can be used t
 
 Experiences built with AgDS should be responsive and accessible on any device. Breakpoints allow us to make adjustments to a composition based on the size of the device viewport.
 
-When desigining a webpage or composition, always consider how it should look on mobile devices.
-
 <BreakpointsTokenChart />
 
-The breakpoints are written to be mobile-first. This means that the styles for the smallest breakpoint are applied first, and then progressively overridden as the viewport gets larger.
+## Responsive design in Figma
 
-The best way to take advantage of breakpoints and responsive design is to use our [responsive props](/guides/responsive-props).
+When designing a webpage or composition, always consider how it should look on mobile devices.
+
+Use Autolayout to compose screens - including auto-wrapping and max-widths - to ensure your designs reflow expectedly.
+
+Compose the same layout in multiple frames, to experiment and document how the layout should change for different device widths. You may consider using the following frame widths:
+
+- 320px (mobile)
+- 768px (tablet)
+- 1024px (desktop)
+- 1440px (large desktop)
+
+## Responsive design in code
+
+The AgDS React library provides first class support for responsive styles. The best way to take advantage of our breakpoints and responsive design is to use our **Responsive Props**. Instead of manually writing CSS media queries throughout your codebase, our primitive components allow you to provide objects to generate responsive styles in your project.
+
+In this example, we've made a simple Box, and passed an object to the `padding` prop. The keys in the object refer to the breakpoint name.
 
 ```tsx live showCode
-<Box background="shade" padding={{ xs: 1, sm: 2, md: 3 }}>
-	Hello world
+<Box background="shade" padding={{ xs: 1, sm: 2, md: 4 }}>
+	A box with responsive padding.
 </Box>
 ```
 
-In this example, we have created a box with padding of `1em` on mobile, `2em` on tablet, and `4em` on desktop.
+Under the hood, this simple example has generated the following CSS:
 
-In situations where the primitive components don't support all of the props you need, you can use our breakpoints in CSS-in-JS, through the user of the `mapResponsiveProp` function, or the `mediaQuery` helpers. Learn more about these techniques in our [responsive props](/guides/responsive-props) guide.
+```css
+.css-1ped26i {
+	padding: 1rem;
+}
+
+@media (min-width: 576px) {
+	.css-1ped26i {
+		padding: 2rem;
+	}
+}
+
+@media (min-width: 768px) {
+	.css-1ped26i {
+		padding: 4rem;
+	}
+}
+```
+
+You can see the breakpoints and internal media queries are written to be mobile-first. This means that the styles for the smallest breakpoint are applied first, and then progressively overridden as the viewport gets larger. The `padding` value is set to `1rem` by default - or from 0px, which is the `xs` breakpoint - and then we override it at each breakpoint, through a series of `min-width` media queries.
+
+You don't need to provide a value for every breakpoint. Just provide a value for mobile (xs), and add any additional breakpoint values as needed.
+
+You can also define responsive styles as an array. To interpret array responsive values, we convert the values defined in our `breakpoints` token and sort them in ascending order. To skip certain breakpoints, you can pass `null` to any item in the array to avoid generating unnecessary CSS. This approach is not recommended.
+
+```tsx
+<Box background="shade" padding={[1, 2, 4]}>
+	A box with responsive padding.
+</Box>
+```
+
+### Usage in style objects
+
+Using our primitive components - including Responsive Props - is the best way to compose layouts. But sometimes primitive components don't support all of the style attributes you need. In these cases, you can use our breakpoints in your style objects, through the use of the `mq` and `mapResponsiveProp` functions.
+
+```tsx
+import { mapResponsiveProp, mq } from '@ag.ds-next/react/core';
+
+function AppLayoutGrid({ children }: { children: React.ReactNode }) {
+	return (
+		<div
+			css={mq({
+				display: 'grid',
+				// The value here changes depending on the viewport
+				gridTemplateColumns: mapResponsiveProp({
+					xs: '1fr',
+					xl: '17.5rem 1fr',
+				}),
+			})}
+		>
+			{children}
+		</div>
+	);
+}
+```
+
+Or you can use the `mediaQuery` tokens from `Core` to add styles at specific breakpoints.
+
+```tsx
+import { tokens } from '@ag.ds-next/react/core';
+
+export function AppLayoutHeader() {
+	return (
+		<Flex
+			flexDirection="column"
+			css={{
+				// use the 'minimum width' mediaQuery tokens from Core.
+				// This resolves to `@media (min-width: 1200px)`
+				[tokens.mediaQuery.min.xl]: {
+					gridColumnStart: 1,
+					gridColumnEnd: 3,
+				},
+			}}
+		>
+			...
+		</Flex>
+	);
+}
+```
