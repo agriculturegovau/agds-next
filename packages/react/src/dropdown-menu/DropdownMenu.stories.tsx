@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from '@storybook/react';
-import { useState } from 'react';
+import { Fragment, useState } from 'react';
 import { PageContent } from '../content';
 import {
 	EditIcon,
@@ -11,6 +11,8 @@ import {
 	CalendarIcon,
 	DownloadIcon,
 	DeleteIcon,
+	ChevronUpIcon,
+	ChevronDownIcon,
 } from '../icon';
 import { IndicatorDot } from '../indicator-dot';
 import { NotificationBadge } from '../notification-badge';
@@ -359,6 +361,54 @@ export const Complex: StoryObj = {
 	},
 };
 
+export const Placement: StoryObj = {
+	render: function Render() {
+		return (
+			<Stack gap={2} alignItems="center">
+				<DropdownMenu placement="bottom-start">
+					<DropdownMenuButton>bottom-start (default)</DropdownMenuButton>
+					<DropdownMenuList>
+						<DropdownMenuItem>Profile</DropdownMenuItem>
+						<DropdownMenuItem>Messages</DropdownMenuItem>
+						<DropdownMenuItem>Account settings</DropdownMenuItem>
+					</DropdownMenuList>
+				</DropdownMenu>
+				<DropdownMenu placement="bottom-end">
+					<DropdownMenuButton>bottom-end</DropdownMenuButton>
+					<DropdownMenuList>
+						<DropdownMenuItem>Profile</DropdownMenuItem>
+						<DropdownMenuItem>Messages</DropdownMenuItem>
+						<DropdownMenuItem>Account settings</DropdownMenuItem>
+					</DropdownMenuList>
+				</DropdownMenu>
+			</Stack>
+		);
+	},
+};
+
+export const AccessingState: StoryObj = {
+	render: function Render() {
+		return (
+			<DropdownMenu>
+				{({ isMenuOpen }) => (
+					<Fragment>
+						<DropdownMenuButton
+							iconBefore={isMenuOpen ? ChevronUpIcon : ChevronDownIcon}
+						>
+							{isMenuOpen ? 'Open menu' : 'Close menu'}
+						</DropdownMenuButton>
+						<DropdownMenuList>
+							<DropdownMenuItem>Profile</DropdownMenuItem>
+							<DropdownMenuItem>Messages</DropdownMenuItem>
+							<DropdownMenuItem>Account settings</DropdownMenuItem>
+						</DropdownMenuList>
+					</Fragment>
+				)}
+			</DropdownMenu>
+		);
+	},
+};
+
 export const TableActions: StoryObj = {
 	render: function Render() {
 		return (
@@ -385,7 +435,7 @@ export const TableActions: StoryObj = {
 									<TableCell>Example</TableCell>
 									<TableCell>Example</TableCell>
 									<TableCell textAlign="right">
-										<DropdownMenu>
+										<DropdownMenu placement="bottom-end">
 											<DropdownMenuButton>Actions</DropdownMenuButton>
 											<DropdownMenuList>
 												<DropdownMenuItem icon={EditIcon}>

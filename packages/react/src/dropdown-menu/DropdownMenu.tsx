@@ -1,19 +1,19 @@
-import {
-	PropsWithChildren,
-	ReactNode,
-	useEffect,
-	useMemo,
-	useRef,
-	useState,
-} from 'react';
+import { ReactNode, useEffect, useMemo, useRef, useState } from 'react';
 import { useTernaryState } from '../core';
 import { usePopover } from '../_popover';
 import { DropdownMenuContext } from './DropdownMenuContext';
 import { useDropdownMenuId } from './utils';
 
-export type DropdownMenuProps = PropsWithChildren<{}>;
+export type DropdownMenuProps = {
+	children: ((menuState: { isMenuOpen: boolean }) => ReactNode) | ReactNode;
+	/** The placement of the popover. */
+	placement?: 'bottom-start' | 'bottom-end';
+};
 
-export function DropdownMenu({ children }: DropdownMenuProps) {
+export function DropdownMenu({
+	children,
+	placement = 'bottom-start',
+}: DropdownMenuProps) {
 	const menuId = useDropdownMenuId();
 
 	// Menu state
@@ -40,7 +40,7 @@ export function DropdownMenu({ children }: DropdownMenuProps) {
 		popover.referenceRef.current?.focus();
 	}
 
-	const popover = usePopover<HTMLButtonElement>();
+	const popover = usePopover<HTMLButtonElement>({ placement });
 
 	function clickSelectedItem() {
 		if (typeof activeDescendantIndex === 'undefined') return;
@@ -66,7 +66,6 @@ export function DropdownMenu({ children }: DropdownMenuProps) {
 				activeDescendantIndex,
 				setActiveDescendantIndex,
 				activeDescendantId,
-
 				// Other
 				menuId,
 				listRef,
@@ -76,12 +75,17 @@ export function DropdownMenu({ children }: DropdownMenuProps) {
 				itemNodes,
 			}}
 		>
-			<div id={menuId}>{children}</div>
+			<div id={menuId}>
+				{typeof children === 'function' ? children({ isMenuOpen }) : children}
+			</div>
 		</DropdownMenuContext.Provider>
 	);
 }
 
-function useDropdownElements(isMenuOpen: boolean, children: ReactNode) {
+function useDropdownElements(
+	isMenuOpen: boolean,
+	children: DropdownMenuProps['children']
+) {
 	const listRef = useRef<HTMLDivElement>(null);
 
 	const [nodes, setNodes] = useState<NodeListOf<HTMLDivElement>>();
