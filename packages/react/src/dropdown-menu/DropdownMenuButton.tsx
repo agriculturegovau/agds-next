@@ -2,7 +2,7 @@ import { forwardRef } from 'react';
 import { Button, ButtonProps } from '../button';
 import { mergeRefs } from '../core';
 import { useMenuContext } from './DropdownMenuContext';
-import { useDropdownMenuButtonIds } from './utils';
+import { useDropdownMenuControlIds } from './utils';
 
 export type DropdownMenuButtonProps = Omit<
 	ButtonProps,
@@ -14,7 +14,7 @@ export const DropdownMenuButton = forwardRef<
 	DropdownMenuButtonProps
 >(function DropdownMenuButton({ variant = 'text', ...props }, forwardedRef) {
 	const { menuId, isMenuOpen, toggleMenu, popover } = useMenuContext();
-	const { buttonId, listId } = useDropdownMenuButtonIds(menuId);
+	const { buttonId, listId } = useDropdownMenuControlIds(menuId);
 
 	const { ref: popoverRef } = popover.getReferenceProps();
 	const mergedRefs = mergeRefs([popoverRef, forwardedRef]);

@@ -5,7 +5,7 @@ export function useDropdownMenuId() {
 	return `dropdown-menu-${autoId}`;
 }
 
-export function useDropdownMenuButtonIds(menuId: string) {
+export function useDropdownMenuControlIds(menuId: string) {
 	return {
 		buttonId: `${menuId}-button`,
 		listId: `${menuId}-list`,
