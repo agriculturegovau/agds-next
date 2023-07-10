@@ -1,10 +1,19 @@
+import { ExternalLinkCallout } from '../a11y';
 import { LinkProps, useLinkComponent } from '../core';
 import { DropdownMenuItem } from './DropdownMenuItem';
 
-// Links in dropdown menus can not open in new tabs
-export type DropdownMenuItemLinkProps = Omit<LinkProps, 'target'>;
+export type DropdownMenuItemLinkProps = LinkProps;
 
-export function DropdownMenuItemLink(props: DropdownMenuItemLinkProps) {
+export function DropdownMenuItemLink({
+	children,
+	target,
+	...props
+}: DropdownMenuItemLinkProps) {
 	const Link = useLinkComponent();
-	return <DropdownMenuItem as={Link} {...props} />;
+	return (
+		<DropdownMenuItem as={Link} target={target} {...props}>
+			{children}
+			{target === '_blank' && <ExternalLinkCallout />}
+		</DropdownMenuItem>
+	);
 }
