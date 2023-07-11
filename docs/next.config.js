@@ -10,6 +10,7 @@ const nextConfig = {
 	reactStrictMode: true,
 	basePath,
 	env: {
+		NEXT_PUBLIC_GITHUB_PR_PREVIEW_NUMBER: process.env.GITHUB_PR_PREVIEW_NUMBER,
 		NEXT_PUBLIC_BASE_PATH: basePath,
 	},
 };
