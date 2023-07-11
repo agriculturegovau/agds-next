@@ -12,14 +12,22 @@ import {
 	useWindowSize,
 } from '@ag.ds-next/react/core';
 import { useSideNavIds } from '@ag.ds-next/react/src/side-nav/utils';
-import { ChevronDownIcon, CloseIcon } from '@ag.ds-next/react/icon';
-import { BaseButton, Button } from '@ag.ds-next/react/button';
+import { ChevronDownIcon } from '@ag.ds-next/react/icon';
+import { BaseButton } from '@ag.ds-next/react/button';
 
-export type FilterSidebarProps = {
+export type SidebarProps = {
+	action?: ReactNode;
 	children: ReactNode;
+	title: string;
+	collapseButtonLabel: string;
 };
 
-export function FilterSidebar({ children }: FilterSidebarProps) {
+export function Sidebar({
+	action,
+	children,
+	title,
+	collapseButtonLabel,
+}: SidebarProps) {
 	const { bodyId, buttonId, navId, titleId } = useSideNavIds();
 	const ref = useRef<HTMLDivElement>(null);
 	const [isOpen, onToggle] = useToggleState(false, true);
@@ -50,14 +58,14 @@ export function FilterSidebar({ children }: FilterSidebarProps) {
 
 	return (
 		<Box as="aside">
-			<FilterSidebarCollapseButton
+			<SidebarCollapseButton
 				isOpen={isOpen}
 				onClick={onToggle}
 				ariaControls={bodyId}
 				id={buttonId}
 			>
-				Filters
-			</FilterSidebarCollapseButton>
+				{collapseButtonLabel}
+			</SidebarCollapseButton>
 			<animated.div
 				id={bodyId}
 				// As this component looks similar to an accordion in smaller screen sizes, we need to conditionally add some aria attributes
@@ -90,7 +98,7 @@ export function FilterSidebar({ children }: FilterSidebarProps) {
 						md: 0,
 					}}
 				>
-					<FilterSidebarTitle id={titleId} />
+					<SidebarTitle id={titleId} title={title} action={action} />
 					{children}
 				</Stack>
 			</animated.div>
@@ -98,42 +106,46 @@ export function FilterSidebar({ children }: FilterSidebarProps) {
 	);
 }
 
-export type FilterSidebarTitleProps = PropsWithChildren<{
+export type SidebarTitleProps = PropsWithChildren<{
 	id: string;
+	title: string;
+	action?: ReactNode;
 }>;
 
-function FilterSidebarTitle({ id }: FilterSidebarTitleProps) {
+/** Title of the Sidebar nav */
+function SidebarTitle({ title, id, action }: SidebarTitleProps) {
 	return (
 		<Flex
 			borderBottom
 			paddingY={1}
 			justifyContent="space-between"
 			alignItems="center"
+			display={{ xs: 'none', md: 'flex' }}
+			gap={1}
 		>
 			<Box as="h2" id={id} color="text" fontSize="lg" lineHeight="heading">
-				Filter by
+				{title}
 			</Box>
-			<Button variant="text" iconAfter={() => <CloseIcon size="sm" />}>
-				Clear filters
-			</Button>
+			{action}
 		</Flex>
 	);
 }
 
-type FilterSidebarCollapseButtonProps = PropsWithChildren<{
+type SidebarCollapseButtonProps = PropsWithChildren<{
 	ariaControls: string;
 	id: string;
 	isOpen: boolean;
 	onClick: () => void;
 }>;
 
-const FilterSidebarCollapseButton = ({
+/** Button that toggles the Sidebar. */
+const SidebarCollapseButton = ({
 	ariaControls,
 	children,
 	id,
 	isOpen,
 	onClick,
-}: FilterSidebarCollapseButtonProps) => {
+}: SidebarCollapseButtonProps) => {
 	return (
 		<Flex
 			as={BaseButton}

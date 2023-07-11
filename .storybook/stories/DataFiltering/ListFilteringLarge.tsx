@@ -8,6 +8,8 @@ import { DateRangePicker } from '@ag.ds-next/react/date-range-picker';
 import { SkipLinks } from '@ag.ds-next/react/skip-link';
 import { Flex } from '@ag.ds-next/react/flex';
 import { Text } from '@ag.ds-next/react/text';
+import { Button } from '@ag.ds-next/react/button';
+import { CloseIcon } from '@ag.ds-next/react/icon';
 import { SortBySelect } from './components/SortBySelect';
 import { FilterSearchInput } from './components/FilterSearchInput';
 import { FilterStatusSelect } from './components/FilterStatusSelect';
@@ -18,7 +20,8 @@ import { FilterAssigneeSelect } from './components/FilterAssigneeSelect';
 import { DataList } from './components/DataList';
 import { FilterDestinationsSelect } from './components/FilterDestinationsSelect';
 import { FilterServicesSelect } from './components/FilterServicesSelect';
-import { FilterSidebar } from './components/FilterSidebar';
+import { Sidebar } from './components/Sidebar';
+import { getNumberOfActiveFilters } from './lib/utils';
 
 type ListFilteringLargeProps = {
 	// sort
@@ -46,12 +49,19 @@ export const ListFilteringLarge = ({
 	setSort,
 	filters,
 	setFilters,
+	resetFilters,
 	pagination,
 	setPagination,
 	totalPages,
 	loading,
 	data,
 }: ListFilteringLargeProps) => {
+	const numberOfActiveFilters = getNumberOfActiveFilters(filters);
+
+	const collapseButtonLabel = `Filter by ${
+		numberOfActiveFilters ? `(${numberOfActiveFilters})` : ''
+	}`;
+
 	return (
 		<PageContent>
 			<Stack gap={3}>
@@ -70,7 +80,19 @@ export const ListFilteringLarge = ({
 				</Prose>
 				<Columns gap={{ xs: 1, md: 3 }}>
 					<Column columnSpan={{ xs: 12, md: 4 }}>
-						<FilterSidebar>
+						<Sidebar
+							collapseButtonLabel={collapseButtonLabel}
+							title="Filters"
+							action={
+								<Button
+									variant="text"
+									iconAfter={() => <CloseIcon size="sm" />}
+									onClick={resetFilters}
+								>
+									Clear filters
+								</Button>
+							}
+						>
 							<FormStack>
 								<FilterSearchInput
 									filters={filters}
@@ -123,7 +145,7 @@ export const ListFilteringLarge = ({
 									value={filters.requestDate}
 								/>
 							</FormStack>
-						</FilterSidebar>
+						</Sidebar>
 					</Column>
 					<Column
 						as="main"
