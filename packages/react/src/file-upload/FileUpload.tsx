@@ -298,4 +298,4 @@ const fileInputStyles = ({
 		}),
 
 		'&:focus': packs.outline,
-	} as const);
+	}) as const;

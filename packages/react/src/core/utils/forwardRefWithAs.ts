@@ -33,14 +33,14 @@ type AsProp<Comp extends ElementType, Props> = {
 } & Omit<ComponentPropsWithoutRef<Comp>, 'as' | keyof Props>;
 
 export type CompWithAsProp<Props, DefaultElementType extends ElementType> = <
-	Comp extends ElementType = DefaultElementType
+	Comp extends ElementType = DefaultElementType,
 >(
 	props: AsProp<Comp, Props> & Props
 ) => ReactElement;
 
 export const forwardRefWithAs = <
 	DefaultElementType extends ElementType,
-	BaseProps
+	BaseProps,
 >(
 	render: (
 		props: BaseProps & { as?: ElementType },

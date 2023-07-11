@@ -9,12 +9,11 @@ import {
 } from '../core';
 import { Box, BoxProps, linkStyles, focusStyles } from '../box';
 
-export const Prose = forwardRefWithAs<'div', BoxProps>(function Prose(
-	props,
-	ref
-) {
-	return <Box ref={ref} css={proseClass} {...props} />;
-});
+export const Prose = forwardRefWithAs<'div', BoxProps>(
+	function Prose(props, ref) {
+		return <Box ref={ref} css={proseClass} {...props} />;
+	}
+);
 
 // Allow consumers to unset prose styles from being inherited on specific elements
 export const unsetProseStylesClassname = 'unset-agds-prose-styles';
