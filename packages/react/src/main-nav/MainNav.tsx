@@ -1,7 +1,8 @@
 import { PropsWithChildren } from 'react';
+import { findBestMatch } from '../core';
 import { NavContainer } from './NavContainer';
 import { NavList, NavListItem } from './NavList';
-import { findBestMatch, MainNavBackground } from './utils';
+import { MainNavBackground } from './utils';
 
 export type MainNavProps = PropsWithChildren<{
 	/** Used for highlighting the active navigation item. */

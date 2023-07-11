@@ -103,7 +103,7 @@ exports[`MainNav renders correctly 1`] = `
                   class="css-1iz4dhy-boxStyles-NavListItem"
                 >
                   <a
-                    href="#home"
+                    href="/"
                   >
                     <span>
                       Home
@@ -111,11 +111,10 @@ exports[`MainNav renders correctly 1`] = `
                   </a>
                 </li>
                 <li
-                  class="css-tk5pii-boxStyles-NavListItem"
+                  class="css-1iz4dhy-boxStyles-NavListItem"
                 >
                   <a
-                    aria-current="page"
-                    href="#content"
+                    href="/content"
                   >
                     <span>
                       Content page
@@ -126,7 +125,7 @@ exports[`MainNav renders correctly 1`] = `
                   class="css-1iz4dhy-boxStyles-NavListItem"
                 >
                   <a
-                    href="#form"
+                    href="/form"
                   >
                     <span>
                       Form page
@@ -134,10 +133,11 @@ exports[`MainNav renders correctly 1`] = `
                   </a>
                 </li>
                 <li
-                  class="css-1iz4dhy-boxStyles-NavListItem"
+                  class="css-tk5pii-boxStyles-NavListItem"
                 >
                   <a
-                    href="#simple"
+                    aria-current="page"
+                    href="/simple"
                   >
                     <span>
                       Simple page
