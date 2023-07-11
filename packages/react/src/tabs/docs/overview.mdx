@@ -59,21 +59,35 @@ relatedComponents: ['accordion', 'details', 'sub-nav']
 
 <DoHeading />
 
-- use to categorise content into different sections
-- embed text, tables, summary lists, charts etc
-- use clear labels
+- use to categorise content on the same page into different sections
+- use to embed text, tables, summary lists, charts etc
+- use clear and concise labels
 - order the tabs according to the user needs
-- if the tabs are growing large in size, consider breaking up large chunks of content into separate pages.
+- if the tabs are growing large in size, consider breaking up large chunks of content into separate pages or using an [Accordion](/components/accordion) instead.
 
 <DontHeading />
 
-- disable tabs
-- use a single tab
 - use for page navigation - use the [Sub nav](components) component instead
+- disable tab buttons
+- use a single tab
 - use to indicate progress - use the [Progress indicator](/components/progress-indicator) component instead
 - use if the user needs to compare information between two or more tabs.
 - embed information that is critical for users in tabs
 - embed long-form content – keep tabs concise.
+
+## Tabs vs Sub nav
+
+Tabs and the [Sub nav](/components/sub-nav) component are visually similar, but their functionalities differ significantly.
+
+Tabs allow users to switch between different views within a specific section of the same page and should not serve as links that navigate users to new URLs. If you need tab-like navigation, you should use the [Sub nav](/components/sub-nav) component instead.
+
+## Tabs vs Accordion/Details
+
+Tabs, [Accordions](/components/accordion) and [Details](/components/details) all progressively disclose sections of content which a user can choose to reveal.
+
+If you have a large number of sections, consider using an [Accordion Group](/components/accordion) as they are stacked horizontally unlike Tabs.
+
+If you only have a single peice of short, less important content, use the visually less prominent [Details](/components/details) component.
 
 ## Not contained
 
