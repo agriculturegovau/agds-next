@@ -13,17 +13,17 @@ const meta: Meta<typeof SubNav> = {
 			{ href: '/code', label: 'Code' },
 			{ href: '/content', label: 'Content' },
 			{ href: '/accessibility', label: 'Accessibility' },
-		]
-	}
-}
+		],
+	},
+};
 
-export default meta
+export default meta;
 
 type Story = StoryObj<typeof SubNav>;
 
 export const Basic: Story = {
 	args: {},
-}
+};
 
 export const OnBodyAlt: Story = {
 	args: {
@@ -33,8 +33,8 @@ export const OnBodyAlt: Story = {
 		<Box padding={1.5} background={args.background}>
 			<SubNav {...args} />
 		</Box>
-	)
-}
+	),
+};
 
 export const WithEndElements: Story = {
 	args: {
@@ -48,11 +48,5 @@ export const WithEndElements: Story = {
 			{ href: '/content', label: 'Content' },
 			{ href: '/accessibility', label: 'Accessibility' },
 		],
-	}
-}
-
-
-
-
-
-
+	},
+};
