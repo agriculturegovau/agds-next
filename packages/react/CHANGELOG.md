@@ -1,5 +1,28 @@
 # @ag.ds-next/react
 
+## 1.7.0
+
+### Minor Changes
+
+- bc80cb60f5: status-badge: Added new `weight` prop which can be used to set the visual weight of the badge. The two accepted values are `subtle` and `regular` (default).
+- 44d7a5610a: core: Created a set of tokens for `z-index`
+- afa37f2a43: Upgraded popover positioning dependency from React Popper to Floating UI
+- 03decdf012: filter-drawer: Create initial component
+- cbc0f401a0: page-alert: Added support for dismissing through a new `onDismiss` prop
+
+### Patch Changes
+
+- cf8b7f588f: app-layout: Change responsive behaviour so that the desktop layout is visible from the extra large breakpoint (1200px).
+- f4a2792573: table: Added `fontWeight` prop to `TableCell`
+- 82abee9a79: prose: Improved styles for figcaption
+- 7470452022: modal: Fixed inconsistent padding on mobile
+- beb9e47710: core: Removed `modalDialog` and `mobileMenu` max-width tokens as they are related to specific components.
+- 898ad597d3: icon: Added `FactoryIcon`
+- 57de28f13f: app-layout: Added new prop `badgeLabel` to `AppLayoutHeader` which can be used to indicate if an application is in a prerelease state.
+- 41c7a04b21: prose: Increased margin between `hr` elements
+- 4c4a5729e4: file-input: Removed red tint background from invalid state
+- 2f6ab611e7: combobox: Improved hover styles
+
 ## 1.6.0
 
 ### Minor Changes
