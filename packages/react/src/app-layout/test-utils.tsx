@@ -15,43 +15,42 @@ export const navigationItems = [
 		{
 			label: 'Dashboard',
 			icon: HomeIcon,
-			href: '#dashboard',
+			href: '/',
 		},
 		{
 			label: 'Establishments',
 			icon: FactoryIcon,
-			href: '#establishments',
+			href: '/establishments',
 		},
 		{
 			label: 'Data and Insights',
 			icon: ChartLineIcon,
-			href: '#intelligence',
+			href: '/intelligence',
 		},
 		{
 			label: 'Compliance',
 			icon: SuccessIcon,
-			href: '#compliance',
+			href: '/compliance',
 		},
 	],
 	[
 		{
 			label: 'Messages',
 			icon: EmailIcon,
-			href: '#account/messages',
+			href: '/account/messages',
 			endElement: <NotificationBadge tone="action" value={6} max={99} />,
 		},
 		{
 			label: 'Account settings',
 			icon: SettingsIcon,
-			href: '#account/settings',
+			href: '/account/settings',
 		},
 		{
 			label: 'Help',
 			icon: HelpIcon,
-			href: '#help',
+			href: '/help',
 		},
 	],
-
 	[
 		{
 			label: 'Sign out',
