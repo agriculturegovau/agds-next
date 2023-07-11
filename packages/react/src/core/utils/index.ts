@@ -9,3 +9,4 @@ export { useAriaModalPolyfill } from './useAriaModalPolyfill';
 export { forwardRefWithAs } from './forwardRefWithAs';
 export { mergeRefs } from './mergeRefs';
 export { fontGrid } from './fontGrid';
+export { findBestMatch } from './findBestMatch';
