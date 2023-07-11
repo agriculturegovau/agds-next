@@ -1,5 +1,8 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react';
 import { Text } from '../text';
+import { TextLink } from '../text-link';
+import { StatusBadge } from '../status-badge';
+import { Flex } from '../flex';
 import { Stack } from '../stack';
 import { H1 } from '../heading';
 import { Table } from './Table';
@@ -10,18 +13,266 @@ import { TableHeader } from './TableHeader';
 import { TableHead } from './TableHead';
 import { TableWrapper } from './TableWrapper';
 
-export default {
+const meta: Meta<typeof Table> = {
 	title: 'content/Table',
 	component: Table,
-	subcomponents: {
-		TableBody,
-		TableCaption,
-		TableCell,
-		TableHeader,
-		TableHead,
-		TableWrapper,
+	render: (args) => (
+		<TableWrapper>
+			<Table {...args}>
+				<TableCaption>
+					Population of Australian states and territories, December 2015
+				</TableCaption>
+				<TableHead>
+					<tr>
+						<TableHeader scope="col">Location</TableHeader>
+						<TableHeader textAlign="right" scope="col">
+							Population
+						</TableHeader>
+						<TableHeader textAlign="right" scope="col">
+							Change over previous year %
+						</TableHeader>
+						<TableHeader textAlign="right" scope="col">
+							Change over previous decade %
+						</TableHeader>
+					</tr>
+				</TableHead>
+				<TableBody>
+					{exampleData.map(
+						({ location, population, growthYear, growthDecade }, index) => (
+							<tr key={index}>
+								<TableCell as="th" scope="row">
+									{location}
+								</TableCell>
+								<TableCell textAlign="right">
+									{numberFormatter.format(population)}
+								</TableCell>
+								<TableCell textAlign="right">{growthYear}%</TableCell>
+								<TableCell textAlign="right">{growthDecade}%</TableCell>
+							</tr>
+						)
+					)}
+				</TableBody>
+			</Table>
+		</TableWrapper>
+	),
+};
+
+export default meta;
+
+type Story = StoryObj<typeof Table>;
+
+export const Basic: Story = {
+	args: {},
+};
+
+export const Striped: Story = {
+	args: { striped: true },
+};
+
+export const FixedLayout: Story = {
+	args: {
+		tableLayout: 'fixed',
 	},
-} as ComponentMeta<typeof Table>;
+	render: (args) => (
+		<TableWrapper>
+			<Table {...args}>
+				<TableCaption>
+					Population of Australian states and territories, December 2015
+				</TableCaption>
+				<TableHead>
+					<tr>
+						<TableHeader scope="col" width={{ xs: '14rem', md: '40%' }}>
+							Location
+						</TableHeader>
+						<TableHeader
+							scope="col"
+							textAlign="right"
+							width={{ xs: '10rem', md: '20%' }}
+						>
+							Population
+						</TableHeader>
+						<TableHeader
+							scope="col"
+							textAlign="right"
+							width={{ xs: '14rem', md: '20%' }}
+						>
+							Change over previous year %
+						</TableHeader>
+						<TableHeader
+							scope="col"
+							textAlign="right"
+							width={{ xs: '14rem', md: '20%' }}
+						>
+							Change over previous decade %
+						</TableHeader>
+					</tr>
+				</TableHead>
+				<TableBody>
+					{exampleData.map(
+						({ location, population, growthYear, growthDecade }, index) => (
+							<tr key={index}>
+								<TableCell as="th" scope="row">
+									{location}
+								</TableCell>
+								<TableCell textAlign="right">
+									{numberFormatter.format(population)}
+								</TableCell>
+								<TableCell textAlign="right">{growthYear}%</TableCell>
+								<TableCell textAlign="right">{growthDecade}%</TableCell>
+							</tr>
+						)
+					)}
+				</TableBody>
+			</Table>
+		</TableWrapper>
+	),
+};
+
+export const WithHeading: Story = {
+	args: {},
+	render: (args) => (
+		<Stack gap={1}>
+			<H1 id="table-heading">Population</H1>
+			<Text id="table-description">
+				Population of Australian states and territories, December 2015.
+			</Text>
+			<TableWrapper>
+				<Table
+					aria-labelledby="table-heading"
+					aria-describedby="table-description"
+					{...args}
+				>
+					<TableHead>
+						<tr>
+							<TableHeader scope="col">Location</TableHeader>
+							<TableHeader textAlign="right" scope="col">
+								Population
+							</TableHeader>
+							<TableHeader textAlign="right" scope="col">
+								Change over previous year %
+							</TableHeader>
+							<TableHeader textAlign="right" scope="col">
+								Change over previous decade %
+							</TableHeader>
+						</tr>
+					</TableHead>
+					<TableBody>
+						{exampleData.map(
+							({ location, population, growthYear, growthDecade }, index) => (
+								<tr key={index}>
+									<TableCell as="th" scope="row">
+										{location}
+									</TableCell>
+									<TableCell textAlign="right">
+										{numberFormatter.format(population)}
+									</TableCell>
+									<TableCell textAlign="right">{growthYear}%</TableCell>
+									<TableCell textAlign="right">{growthDecade}%</TableCell>
+								</tr>
+							)
+						)}
+					</TableBody>
+				</Table>
+			</TableWrapper>
+		</Stack>
+	),
+};
+
+export const Actions: Story = {
+	args: {},
+	render: (args) => (
+		<TableWrapper>
+			<Table {...args}>
+				<TableCaption>Applications</TableCaption>
+				<TableHead>
+					<tr>
+						<TableHeader scope="col">Reference</TableHeader>
+						<TableHeader scope="col">Date submitted</TableHeader>
+						<TableHeader scope="col">Status</TableHeader>
+						<TableHeader scope="col">Actions</TableHeader>
+					</tr>
+				</TableHead>
+				<TableBody>
+					<tr>
+						<TableCell as="th" scope="row" fontWeight="bold">
+							<TextLink href="#">REF-AB3CD4EF</TextLink>
+						</TableCell>
+						<TableCell>20/06/2022</TableCell>
+						<TableCell>
+							<StatusBadge weight="subtle" tone="info" label="In progress" />
+						</TableCell>
+						<TableCell>
+							<Flex gap={1}>
+								<TextLink href="#">Edit</TextLink>
+								<TextLink href="#">Download</TextLink>
+							</Flex>
+						</TableCell>
+					</tr>
+					<tr>
+						<TableCell as="th" scope="row" fontWeight="bold">
+							<TextLink href="#">REF-5GH6IJ7K</TextLink>
+						</TableCell>
+						<TableCell>25/06/2022</TableCell>
+						<TableCell>
+							<StatusBadge weight="subtle" tone="info" label="In progress" />
+						</TableCell>
+						<TableCell>
+							<Flex gap={1}>
+								<TextLink href="#">Edit</TextLink>
+								<TextLink href="#">Download</TextLink>
+							</Flex>
+						</TableCell>
+					</tr>
+					<tr>
+						<TableCell as="th" scope="row" fontWeight="bold">
+							<TextLink href="#">REF-M8NO9PQR</TextLink>
+						</TableCell>
+						<TableCell>02/07/2022</TableCell>
+						<TableCell>
+							<StatusBadge weight="subtle" tone="success" label="Completed" />
+						</TableCell>
+						<TableCell>
+							<Flex gap={1}>
+								<TextLink href="#">Edit</TextLink>
+								<TextLink href="#">Download</TextLink>
+							</Flex>
+						</TableCell>
+					</tr>
+					<tr>
+						<TableCell as="th" scope="row" fontWeight="bold">
+							<TextLink href="#">REF-S1TU2VWX</TextLink>
+						</TableCell>
+						<TableCell>05/08/2022</TableCell>
+						<TableCell>
+							<StatusBadge weight="subtle" tone="info" label="In progress" />
+						</TableCell>
+						<TableCell>
+							<Flex gap={1}>
+								<TextLink href="#">Edit</TextLink>
+								<TextLink href="#">Download</TextLink>
+							</Flex>
+						</TableCell>
+					</tr>
+					<tr>
+						<TableCell as="th" scope="row" fontWeight="bold">
+							<TextLink href="#">REF-Y3ZA4B5C</TextLink>
+						</TableCell>
+						<TableCell>19/10/2022</TableCell>
+						<TableCell>
+							<StatusBadge weight="subtle" tone="success" label="Completed" />
+						</TableCell>
+						<TableCell>
+							<Flex gap={1}>
+								<TextLink href="#">Edit</TextLink>
+								<TextLink href="#">Download</TextLink>
+							</Flex>
+						</TableCell>
+					</tr>
+				</TableBody>
+			</Table>
+		</TableWrapper>
+	),
+};
 
 const exampleData = [
 	{
@@ -75,153 +326,3 @@ const exampleData = [
 ];
 
 const numberFormatter = new Intl.NumberFormat('en-AU');
-
-const Template: ComponentStory<typeof Table> = (args) => (
-	<TableWrapper>
-		<Table {...args}>
-			<TableCaption>
-				Population of Australian states and territories, December 2015
-			</TableCaption>
-			<TableHead>
-				<tr>
-					<TableHeader scope="col">Location</TableHeader>
-					<TableHeader textAlign="right" scope="col">
-						Population
-					</TableHeader>
-					<TableHeader textAlign="right" scope="col">
-						Change over previous year %
-					</TableHeader>
-					<TableHeader textAlign="right" scope="col">
-						Change over previous decade %
-					</TableHeader>
-				</tr>
-			</TableHead>
-			<TableBody>
-				{exampleData.map(
-					({ location, population, growthYear, growthDecade }, index) => (
-						<tr key={index}>
-							<TableCell as="th" scope="row">
-								{location}
-							</TableCell>
-							<TableCell textAlign="right">
-								{numberFormatter.format(population)}
-							</TableCell>
-							<TableCell textAlign="right">{growthYear}%</TableCell>
-							<TableCell textAlign="right">{growthDecade}%</TableCell>
-						</tr>
-					)
-				)}
-			</TableBody>
-		</Table>
-	</TableWrapper>
-);
-
-export const Basic = Template.bind({});
-Basic.args = {};
-
-export const Striped = Template.bind({});
-Striped.args = {
-	striped: true,
-};
-
-export const FixedLayout = () => (
-	<TableWrapper>
-		<Table tableLayout="fixed">
-			<TableCaption>
-				Population of Australian states and territories, December 2015
-			</TableCaption>
-			<TableHead>
-				<tr>
-					<TableHeader scope="col" width={{ xs: '14rem', md: '40%' }}>
-						Location
-					</TableHeader>
-					<TableHeader
-						scope="col"
-						textAlign="right"
-						width={{ xs: '10rem', md: '20%' }}
-					>
-						Population
-					</TableHeader>
-					<TableHeader
-						scope="col"
-						textAlign="right"
-						width={{ xs: '14rem', md: '20%' }}
-					>
-						Change over previous year %
-					</TableHeader>
-					<TableHeader
-						scope="col"
-						textAlign="right"
-						width={{ xs: '14rem', md: '20%' }}
-					>
-						Change over previous decade %
-					</TableHeader>
-				</tr>
-			</TableHead>
-			<TableBody>
-				{exampleData.map(
-					({ location, population, growthYear, growthDecade }, index) => (
-						<tr key={index}>
-							<TableCell as="th" scope="row">
-								{location}
-							</TableCell>
-							<TableCell textAlign="right">
-								{numberFormatter.format(population)}
-							</TableCell>
-							<TableCell textAlign="right">{growthYear}%</TableCell>
-							<TableCell textAlign="right">{growthDecade}%</TableCell>
-						</tr>
-					)
-				)}
-			</TableBody>
-		</Table>
-	</TableWrapper>
-);
-
-export const WithHeading = () => {
-	return (
-		<Stack gap={1}>
-			<H1 id="table-heading">Population</H1>
-			<Text id="table-description">
-				Population of Australian states and territories, December 2015.
-			</Text>
-			<TableWrapper>
-				<Table
-					aria-labelledby="table-heading"
-					aria-describedby="table-description"
-				>
-					<TableHead>
-						<tr>
-							<TableHeader scope="col">Location</TableHeader>
-							<TableHeader textAlign="right" scope="col">
-								Population
-							</TableHeader>
-							<TableHeader textAlign="right" scope="col">
-								Change over previous year %
-							</TableHeader>
-							<TableHeader textAlign="right" scope="col">
-								Change over previous decade %
-							</TableHeader>
-						</tr>
-					</TableHead>
-					<TableBody>
-						{exampleData.map(
-							({ location, population, growthYear, growthDecade }, index) => (
-								<tr key={index}>
-									<TableCell as="th" scope="row">
-										{location}
-									</TableCell>
-									<TableCell textAlign="right">
-										{numberFormatter.format(population)}
-									</TableCell>
-									<TableCell textAlign="right">{growthYear}%</TableCell>
-									<TableCell textAlign="right">{growthDecade}%</TableCell>
-								</tr>
-							)
-						)}
-					</TableBody>
-				</Table>
-			</TableWrapper>
-		</Stack>
-	);
-};
