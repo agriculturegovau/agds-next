@@ -5,36 +5,48 @@ import { SubNav, SubNavProps } from './SubNav';
 
 afterEach(cleanup);
 
-function renderSubNav(props: SubNavProps) {
-	return render(<SubNav {...props} />);
+function renderSubNav({
+	activePath = '/code',
+	links = [
+		{ href: '/', label: 'Usage' },
+		{ href: '/code', label: 'Code' },
+		{ href: '/content', label: 'Content' },
+		{ href: '/accessibility', label: 'Accessibility' },
+	],
+}: Partial<SubNavProps>) {
+	return render(<SubNav activePath={activePath} links={links} />);
 }
 
 describe('SubNav', () => {
 	it('renders correctly', () => {
-		const { container } = renderSubNav({
-			activePath: '#code',
-			links: [
-				{ href: '#usage', label: 'Usage' },
-				{ href: '#code', label: 'Code' },
-				{ href: '#content', label: 'Content' },
-				{ href: '#accessibility', label: 'Accessibility' },
-			],
-		});
+		const { container } = renderSubNav({});
 		expect(container).toMatchSnapshot();
 	});
 
 	it('renders a valid HTML structure', () => {
-		const { container } = renderSubNav({
-			activePath: '#code',
-			links: [
-				{ href: '#usage', label: 'Usage' },
-				{ href: '#code', label: 'Code' },
-				{ href: '#content', label: 'Content' },
-				{ href: '#accessibility', label: 'Accessibility' },
-			],
-		});
+		const { container } = renderSubNav({});
 		expect(container).toHTMLValidate({
 			extends: ['html-validate:recommended'],
+		});
+	});
+
+	describe('Highlights the correct item based on the `activePath`', () => {
+		test('matches basic path', async () => {
+			const { container } = renderSubNav({});
+			const currentPage = container.querySelector("[aria-current='page']");
+			expect(currentPage).toHaveTextContent('Code');
+		});
+
+		test('matches path with hash', async () => {
+			const { container } = renderSubNav({ activePath: '/code#heading-id' });
+			const currentPage = container.querySelector("[aria-current='page']");
+			expect(currentPage).toHaveTextContent('Code');
+		});
+
+		test('matches nested path', async () => {
+			const { container } = renderSubNav({ activePath: '/code/sub-path' });
+			const currentPage = container.querySelector("[aria-current='page']");
+			expect(currentPage).toHaveTextContent('Code');
 		});
 	});
 });
