@@ -31,19 +31,19 @@ describe('SubNav', () => {
 	});
 
 	describe('Highlights the correct item based on the `activePath`', () => {
-		test('matches basic path', async () => {
+		test('matches basic path', () => {
 			const { container } = renderSubNav({});
 			const currentPage = container.querySelector("[aria-current='page']");
 			expect(currentPage).toHaveTextContent('Code');
 		});
 
-		test('matches path with hash', async () => {
+		test('matches path with hash', () => {
 			const { container } = renderSubNav({ activePath: '/code#heading-id' });
 			const currentPage = container.querySelector("[aria-current='page']");
 			expect(currentPage).toHaveTextContent('Code');
 		});
 
-		test('matches nested path', async () => {
+		test('matches nested path', () => {
 			const { container } = renderSubNav({ activePath: '/code/sub-path' });
 			const currentPage = container.querySelector("[aria-current='page']");
 			expect(currentPage).toHaveTextContent('Code');
