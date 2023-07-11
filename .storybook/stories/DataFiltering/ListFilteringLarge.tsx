@@ -10,6 +10,7 @@ import { Flex } from '@ag.ds-next/react/flex';
 import { Text } from '@ag.ds-next/react/text';
 import { Button } from '@ag.ds-next/react/button';
 import { CloseIcon } from '@ag.ds-next/react/icon';
+import { Box } from '@ag.ds-next/react/box';
 import { SortBySelect } from './components/SortBySelect';
 import { FilterSearchInput } from './components/FilterSearchInput';
 import { FilterStatusSelect } from './components/FilterStatusSelect';
@@ -22,6 +23,7 @@ import { FilterDestinationsSelect } from './components/FilterDestinationsSelect'
 import { FilterServicesSelect } from './components/FilterServicesSelect';
 import { Sidebar } from './components/Sidebar';
 import { getNumberOfActiveFilters } from './lib/utils';
+import { ActiveFilters } from './components/ActiveFilters';
 
 type ListFilteringLargeProps = {
 	// sort
@@ -41,6 +43,8 @@ type ListFilteringLargeProps = {
 	loading: boolean;
 	data: BusinessForAuditWithIndex[];
 	tableCaption: string;
+	/** This is for demo purposes only, and will be deleted after the next review. */
+	showsTags: boolean;
 };
 
 /** These patterns are draft designs and are not yet ready for production. */
@@ -50,16 +54,18 @@ export const ListFilteringLarge = ({
 	filters,
 	setFilters,
 	resetFilters,
+	removeFilter,
 	pagination,
 	setPagination,
 	totalPages,
 	loading,
 	data,
+	showsTags,
 }: ListFilteringLargeProps) => {
 	const numberOfActiveFilters = getNumberOfActiveFilters(filters);
 
-	const collapseButtonLabel = `Filter by ${
-		numberOfActiveFilters ? `(${numberOfActiveFilters})` : ''
+	const collapseButtonLabel = `Filters ${
+		!showsTags && numberOfActiveFilters ? `(${numberOfActiveFilters})` : ''
 	}`;
 
 	return (
@@ -80,72 +86,92 @@ export const ListFilteringLarge = ({
 				</Prose>
 				<Columns gap={{ xs: 1, md: 3 }}>
 					<Column columnSpan={{ xs: 12, md: 4 }}>
-						<Sidebar
-							collapseButtonLabel={collapseButtonLabel}
-							title="Filters"
-							action={
-								<Button
-									variant="text"
-									iconAfter={() => <CloseIcon size="sm" />}
-									onClick={resetFilters}
-								>
-									Clear filters
-								</Button>
-							}
-						>
-							<FormStack>
-								<FilterSearchInput
+						<Stack gap={1}>
+							<Sidebar
+								collapseButtonLabel={collapseButtonLabel}
+								title="Filters"
+								action={
+									<Button
+										variant="text"
+										iconAfter={() => <CloseIcon size="sm" />}
+										onClick={resetFilters}
+									>
+										Clear filters
+									</Button>
+								}
+							>
+								<FormStack>
+									<FilterSearchInput
+										filters={filters}
+										setFilters={setFilters}
+										block
+									/>
+									<FilterStatusSelect
+										filters={filters}
+										setFilters={setFilters}
+										block
+									/>
+									<FilterStateSelect
+										filters={filters}
+										setFilters={setFilters}
+										block
+									/>
+									<FilterAssigneeSelect
+										filters={filters}
+										setFilters={setFilters}
+										block
+									/>
+									<FilterDestinationsSelect
+										filters={filters}
+										setFilters={setFilters}
+										block
+									/>
+									<FilterServicesSelect
+										filters={filters}
+										setFilters={setFilters}
+									/>
+									<DateRangePicker
+										fromLabel="Registered from"
+										toLabel="Registered to"
+										hideOptionalLabel
+										onChange={(requestDate) =>
+											setFilters({ ...filters, requestDate })
+										}
+										onFromInputChange={(from) =>
+											setFilters({
+												...filters,
+												requestDate: { ...filters.requestDate, from },
+											})
+										}
+										onToInputChange={(to) =>
+											setFilters({
+												...filters,
+												requestDate: { ...filters.requestDate, to },
+											})
+										}
+										value={filters.requestDate}
+									/>
+								</FormStack>
+							</Sidebar>
+
+							{showsTags ? (
+								<ActiveFilters
 									filters={filters}
-									setFilters={setFilters}
-									block
+									removeFilter={removeFilter}
+									resetFilters={resetFilters}
 								/>
-								<FilterStatusSelect
-									filters={filters}
-									setFilters={setFilters}
-									block
-								/>
-								<FilterStateSelect
-									filters={filters}
-									setFilters={setFilters}
-									block
-								/>
-								<FilterAssigneeSelect
-									filters={filters}
-									setFilters={setFilters}
-									block
-								/>
-								<FilterDestinationsSelect
-									filters={filters}
-									setFilters={setFilters}
-									block
-								/>
-								<FilterServicesSelect
-									filters={filters}
-									setFilters={setFilters}
-								/>
-								<DateRangePicker
-									fromLabel="Registered from"
-									toLabel="Registered to"
-									hideOptionalLabel
-									onChange={(requestDate) =>
-										setFilters({ ...filters, requestDate })
-									}
-									onFromInputChange={(from) =>
-										setFilters({
-											...filters,
-											requestDate: { ...filters.requestDate, from },
-										})
-									}
-									onToInputChange={(to) =>
-										setFilters({
-											...filters,
-											requestDate: { ...filters.requestDate, to },
-										})
-									}
-									value={filters.requestDate}
-								/>
-							</FormStack>
-						</Sidebar>
+							) : (
+								<Box>
+									<Button
+										variant="text"
+										iconAfter={() => <CloseIcon size="sm" />}
+										onClick={resetFilters}
+									>
+										Clear filters
+									</Button>
+								</Box>
+							)}
+						</Stack>
 					</Column>
 					<Column
 						as="main"

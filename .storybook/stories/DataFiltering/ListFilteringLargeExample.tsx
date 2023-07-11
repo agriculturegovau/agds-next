@@ -2,7 +2,10 @@ import { ListFilteringLarge } from './ListFilteringLarge';
 import { useSortAndFilter } from './lib/useSortAndFilter';
 import { generateTableCaption, useData } from './lib/utils';
 
-export const ListFilteringLargeExample = () => {
+export const ListFilteringLargeExample = (args: { showsTags: boolean }) => {
+	// This is for demo purposes only, and will be deleted after the next review.
+	const { showsTags } = args;
+
 	const {
 		filters,
 		pagination,
@@ -41,6 +44,7 @@ export const ListFilteringLargeExample = () => {
 			tableCaption={tableCaption}
 			totalPages={totalPages}
 			totalItems={totalItems}
+			showsTags={showsTags}
 		/>
 	);
 };
