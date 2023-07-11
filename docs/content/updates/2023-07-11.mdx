@@ -1,0 +1,65 @@
+---
+date: 11th June 2023
+title: AgDS Beta v1.7.0 release
+description: Initial release of Filter drawer, extended functionality in Page alert and Status badge, plus various bug fixes and improvements.
+---
+
+## Updates
+
+### [App layout](/components/app-layout)
+
+- Changed responsive behaviour so that the desktop layout is visible from the extra large breakpoint (1200px) ([PR #1213](https://github.com/steelthreads/agds-next/pull/1213))
+- Added new prop `badgeLabel` to `AppLayoutHeader` which can be used to indicate if an application is in a prerelease state ([PR #1241](https://github.com/steelthreads/agds-next/pull/1241))
+
+### [Combobox](/components/combobox)
+
+- Improved hover styles ([PR #1242](https://github.com/steelthreads/agds-next/pull/1242))
+
+### [Core](/components/core)
+
+- Upgraded popover positioning dependency from React Popper to Floating UI ([PR #1207](https://github.com/steelthreads/agds-next/pull/1207))
+- Created a set of tokens for `z-index` ([PR #1210](https://github.com/steelthreads/agds-next/pull/1210))
+- Removed `modalDialog` and `mobileMenu` max-width tokens as they are related to specific components ([PR #1240](https://github.com/steelthreads/agds-next/pull/1240))
+
+### [Filter drawer](/components/filter-drawer)
+
+- Create initial component ([PR #1099](https://github.com/steelthreads/agds-next/pull/1099))
+
+### [File input](/components/file-input)
+
+- Removed red tint background from invalid state ([PR #1191](https://github.com/steelthreads/agds-next/pull/1191))
+
+### [Icon](/components/icon)
+
+- Added new icon `FactoryIcon` ([PR #1226](https://github.com/steelthreads/agds-next/pull/1226))
+
+### [Modal](/components/modal)
+
+- Fixed inconsistent padding on mobile ([PR #1205](https://github.com/steelthreads/agds-next/pull/1205))
+
+### [Page alert](/components/page-alert)
+
+- Added support for dismissing through a new `onDismiss` prop ([PR #1171](https://github.com/steelthreads/agds-next/pull/1171))
+
+### [Prose](/components/prose)
+
+- Improved styles for `figcaption` ([PR #1094](https://github.com/steelthreads/agds-next/pull/1094))
+- Increased margin between `hr` elements ([PR #1233](https://github.com/steelthreads/agds-next/pull/1233))
+
+### [Status badge](/components/status-badge)
+
+- Added new `weight` prop which can be used to set the visual weight of the badge. The two accepted values are `subtle` and `regular` (default) ([PR #1218](https://github.com/steelthreads/agds-next/pull/1218))
+
+### [Table](/components/table)
+
+- Added new `fontWeight` prop to `TableCell` ([PR #1238](https://github.com/steelthreads/agds-next/pull/1238))
+
+## Released packages
+
+```sh
+"@ag.ds-next/react": "1.7.0"
+```
+
+## Full Changelog
+
+Aside from the [complete release notes on the @ag.ds-next website](https://design-system.agriculture.gov.au/updates/2023-07-11), you can also view the verbose change log in the [related PR](https://github.com/steelthreads/agds-next/pull/1192) for this release.
