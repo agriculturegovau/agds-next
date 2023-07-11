@@ -14,6 +14,7 @@ import {
 import { useSideNavIds } from '@ag.ds-next/react/src/side-nav/utils';
 import { ChevronDownIcon } from '@ag.ds-next/react/icon';
 import { BaseButton } from '@ag.ds-next/react/button';
+import { ContentBleed } from '@ag.ds-next/react/content';
 
 export type SidebarProps = {
 	action?: ReactNode;
@@ -57,52 +58,58 @@ export function Sidebar({
 	const isMobile = (windowWidth || 0) <= tokens.breakpoint.lg - 1;
 
 	return (
-		<Box as="aside">
-			<SidebarCollapseButton
-				isOpen={isOpen}
-				onClick={onToggle}
-				ariaControls={bodyId}
-				id={buttonId}
-			>
-				{collapseButtonLabel}
-			</SidebarCollapseButton>
-			<animated.div
-				id={bodyId}
-				// As this component looks similar to an accordion in smaller screen sizes, we need to conditionally add some aria attributes
-				{...(isMobile && { role: 'region', 'aria-labelledby': buttonId })}
-				style={animatedHeight}
-				css={{
-					// Overwrite the animated height for tablet/desktop sizes.
-					[tokens.mediaQuery.min.md]: {
-						overflow: 'unset',
-						display: 'block !important',
-						height: 'auto !important',
-					},
-				}}
-			>
-				<Stack
-					gap={1}
-					ref={ref}
-					as="nav"
-					aria-labelledby={titleId}
-					id={navId}
-					fontFamily="body"
-					fontSize="sm"
-					lineHeight="default"
-					background={{
-						xs: 'shade',
-						md: 'body',
-					}}
-					padding={{
-						xs: 1,
-						md: 0,
+		<ContentBleed visible={{ md: false }}>
+			<Box as="aside">
+				<SidebarCollapseButton
+					isOpen={isOpen}
+					onClick={onToggle}
+					ariaControls={bodyId}
+					id={buttonId}
+				>
+					{collapseButtonLabel}
+				</SidebarCollapseButton>
+				<animated.div
+					id={bodyId}
+					// As this component looks similar to an accordion in smaller screen sizes, we need to conditionally add some aria attributes
+					{...(isMobile && { role: 'region', 'aria-labelledby': buttonId })}
+					style={animatedHeight}
+					css={{
+						// Overwrite the animated height for tablet/desktop sizes.
+						[tokens.mediaQuery.min.md]: {
+							overflow: 'unset',
+							display: 'block !important',
+							height: 'auto !important',
+						},
 					}}
 				>
-					<SidebarTitle id={titleId} title={title} action={action} />
-					{children}
-				</Stack>
-			</animated.div>
-		</Box>
+					<Stack
+						gap={1}
+						ref={ref}
+						as="nav"
+						aria-labelledby={titleId}
+						id={navId}
+						fontFamily="body"
+						fontSize="sm"
+						lineHeight="default"
+						borderBottom={{
+							xs: true,
+							md: false,
+						}}
+						background={{
+							xs: 'shade',
+							md: 'body',
+						}}
+						padding={{
+							xs: 1,
+							md: 0,
+						}}
+					>
+						<SidebarTitle id={titleId} title={title} action={action} />
+						{children}
+					</Stack>
+				</animated.div>
+			</Box>
+		</ContentBleed>
 	);
 }
 
@@ -158,11 +165,16 @@ const SidebarCollapseButton = ({
 			lineHeight="heading"
 			fontWeight="bold"
 			paddingY={1}
+			paddingX={{
+				xs: 0.75,
+				md: 0,
+			}}
 			justifyContent="space-between"
 			alignItems="center"
 			width="100%"
 			link
 			focus
+			borderTop
 			borderBottom
 			css={{
 				'&:hover': {
