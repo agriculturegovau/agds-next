@@ -5,6 +5,9 @@ import { GlobalAlert } from './GlobalAlert';
 const meta: Meta<typeof GlobalAlert> = {
 	title: 'content/GlobalAlert',
 	component: GlobalAlert,
+	args: {
+		tone: 'warning',
+	},
 };
 
 export default meta;

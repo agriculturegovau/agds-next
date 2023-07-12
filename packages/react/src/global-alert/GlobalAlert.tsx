@@ -3,40 +3,55 @@ import { Box } from '../box';
 import { Flex } from '../flex';
 import { Stack } from '../stack';
 import { boxPalette, tokens, mapSpacing } from '../core';
-import { WarningFilledIcon } from '../icon';
+import { WarningFilledIcon, InfoFilledIcon } from '../icon';
 import { Heading } from '../heading';
 import {
 	GlobalAlertCloseButton,
 	GLOBAL_ALERT_CLOSE_BUTTON_LABEL_VISIBLE_MQ,
 } from './GlobalAlertCloseButton';
 
+type GlobalAlertTone = 'info' | 'warning';
+
 export type GlobalAlertProps = PropsWithChildren<{
 	/** Function to be called when the 'Close' button is pressed. */
 	onDismiss?: MouseEventHandler<HTMLButtonElement>;
 	/** The title of the alert. */
 	title?: string;
+	/** The tone of the alert. */
+	tone?: GlobalAlertTone;
 }>;
 
-export function GlobalAlert({ children, onDismiss, title }: GlobalAlertProps) {
+const toneMap = {
+	info: {
+		bg: boxPalette.systemInfoMuted,
+		fg: boxPalette.systemInfo,
+		Icon: InfoFilledIcon,
+	},
+	warning: {
+		bg: boxPalette.systemWarningMuted,
+		fg: boxPalette.systemWarning,
+		Icon: WarningFilledIcon,
+	},
+};
+
+export function GlobalAlert({
+	children,
+	onDismiss,
+	title,
+	tone = 'warning',
+}: GlobalAlertProps) {
+	const { bg, Icon } = toneMap[tone];
+
 	return (
-		<section
-			aria-label={title}
-			css={{
-				backgroundColor: boxPalette.systemWarningMuted,
-			}}
-		>
+		<section aria-label={title} css={{ backgroundColor: bg }}>
 			<Flex
 				flexDirection="row"
 				css={{
 					position: 'relative',
 				}}
 			>
-				<GlobalAlertIconContainer>
-					<WarningFilledIcon
-						aria-hidden="false"
-						aria-label="Warning"
-						color="inherit"
-					/>
+				<GlobalAlertIconContainer tone={tone}>
+					<Icon aria-hidden="false" aria-label="Warning" color="inherit" />
 				</GlobalAlertIconContainer>
 
 				<Flex padding={1}>
@@ -78,7 +93,15 @@ export function GlobalAlert({ children, onDismiss, title }: GlobalAlertProps) {
 	);
 }
 
-const GlobalAlertIconContainer = ({ children }: { children: ReactNode }) => {
+const GlobalAlertIconContainer = ({
+	children,
+	tone,
+}: {
+	children: ReactNode;
+	tone: GlobalAlertTone;
+}) => {
+	const { fg } = toneMap[tone];
+
 	return (
 		<Flex
 			// flexShrink={0}
@@ -86,7 +109,7 @@ const GlobalAlertIconContainer = ({ children }: { children: ReactNode }) => {
 			justifyContent="center"
 			padding={1}
 			css={{
-				backgroundColor: boxPalette.systemWarning,
+				backgroundColor: fg,
 				color: boxPalette.backgroundBody,
 			}}
 		>
