@@ -1,19 +1,17 @@
 import { Meta, StoryObj } from '@storybook/react';
 import { useState } from 'react';
-import { AppLayout } from '../../../../docs/content/templates/__shared/AppLayout';
-import { Avatar } from '../avatar';
+import { SiteLayout } from '../../../../docs/content/templates/__shared/SiteLayout';
 import { Box } from '../box';
 import { Breadcrumbs } from '../breadcrumbs';
 import { Button } from '../button';
 import { Column, Columns } from '../columns';
 import { PageContent } from '../content';
-import { boxPalette } from '../core';
 import { Flex } from '../flex';
-import { H1 } from '../heading';
+import { H1, H2, H3 } from '../heading';
 import { IndicatorDot } from '../indicator-dot';
 import { NotificationBadge } from '../notification-badge';
+import { Prose } from '../prose';
 import { Stack } from '../stack';
-import { StatusBadge } from '../status-badge';
 import { SubNav } from '../sub-nav';
 import {
 	SummaryList,
@@ -21,17 +19,7 @@ import {
 	SummaryListItemDescription,
 	SummaryListItemTerm,
 } from '../summary-list';
-import {
-	Table,
-	TableBody,
-	TableCaption,
-	TableCell,
-	TableHead,
-	TableHeader,
-	TableWrapper,
-} from '../table';
 import { Text } from '../text';
-import { TextLink } from '../text-link';
 import { TabButton, TabList, TabPanel, TabPanels, Tabs } from './index';
 
 const meta: Meta = {
@@ -287,11 +275,14 @@ export const WithEndElements: StoryObj = {
 };
 
 export const ExampleComposition: StoryObj = {
+	parameters: {
+		layout: 'fullscreen',
+	},
 	render: function Render() {
 		return (
-			<AppLayout>
+			<SiteLayout>
 				<PageContent>
-					<Columns gap={3}>
+					<Columns>
 						<Column columnSpan={{ xs: 12, lg: 8 }}>
 							<Stack gap={3}>
 								<Breadcrumbs
@@ -322,264 +313,134 @@ export const ExampleComposition: StoryObj = {
 									]}
 								/>
 
-								<SummaryList>
-									<SummaryListItem>
-										<SummaryListItemTerm>Type</SummaryListItemTerm>
-										<SummaryListItemDescription>
-											Fruit and vegetable wholesaler
-										</SummaryListItemDescription>
-									</SummaryListItem>
+								<Stack gap={1.5}>
+									<H2>Population</H2>
+									<Text as="p">Short intro of content.</Text>
+								</Stack>
 
-									<SummaryListItem>
-										<SummaryListItemTerm>Location</SummaryListItemTerm>
-										<SummaryListItemDescription>
-											Gold Coast, Queensland
-										</SummaryListItemDescription>
-									</SummaryListItem>
-								</SummaryList>
-
-								<Tabs contained={false}>
+								<Tabs>
 									<TabList>
-										<TabButton>Overview</TabButton>
-										<TabButton>Contact</TabButton>
-										<TabButton>Staff</TabButton>
-										<TabButton>Insights</TabButton>
+										{examplePopulations.map(({ year }) => (
+											<TabButton key={year}>{year}</TabButton>
+										))}
 									</TabList>
 									<TabPanels>
-										<TabPanel>
-											<SummaryList>
-												<SummaryListItem>
-													<SummaryListItemTerm>Type</SummaryListItemTerm>
-													<SummaryListItemDescription>
-														Fruit and vegetable wholesaler
-													</SummaryListItemDescription>
-												</SummaryListItem>
-											</SummaryList>
-										</TabPanel>
-										<TabPanel>
-											<SummaryList>
-												<SummaryListItem>
-													<SummaryListItemTerm>
-														Representative name
-													</SummaryListItemTerm>
-													<SummaryListItemDescription>
-														Will Power
-													</SummaryListItemDescription>
-												</SummaryListItem>
-												<SummaryListItem>
-													<SummaryListItemTerm>Title</SummaryListItemTerm>
-													<SummaryListItemDescription>
-														General Manager
-													</SummaryListItemDescription>
-												</SummaryListItem>
-												<SummaryListItem>
-													<SummaryListItemTerm>
-														Contact information
-													</SummaryListItemTerm>
-													<SummaryListItemDescription>
-														+61 9912 3456
-														<br />
-														will.power@example.com
-													</SummaryListItemDescription>
-												</SummaryListItem>
-												<SummaryListItem>
-													<SummaryListItemTerm>
-														Date of birth
-													</SummaryListItemTerm>
-													<SummaryListItemDescription>
-														09/06/1995
-													</SummaryListItemDescription>
-												</SummaryListItem>
-											</SummaryList>
-										</TabPanel>
-										<TabPanel>
-											<TableWrapper>
-												<Table>
-													<TableCaption>Staff</TableCaption>
-													<TableHead>
-														<tr>
-															<TableHeader width="50%" scope="col">
-																Name
-															</TableHeader>
-															<TableHeader scope="col">Role</TableHeader>
-															<TableHeader scope="col">Location</TableHeader>
-														</tr>
-													</TableHead>
-													<TableBody>
-														<tr>
-															<TableCell fontWeight="bold">
-																<Flex
-																	gap={0.5}
-																	alignItems="center"
-																	justifyContent="flex-start"
-																	as="a"
-																	href="#"
-																	link
-																	css={{
-																		textDecoration: 'none',
-																		'> span': {
-																			textDecoration: 'underline',
-																		},
-																		'&:hover > span': {
-																			textDecoration: 'none',
-																			color: boxPalette.foregroundText,
-																		},
-																	}}
-																>
-																	<Avatar
-																		name="Nathan Simpson"
-																		size="sm"
-																		tone="action"
-																	/>
-																	<Text
-																		color="action"
-																		fontSize="sm"
-																		fontWeight="bold"
-																	>
-																		Nathan Simpson
-																	</Text>
-																</Flex>
-															</TableCell>
-															<TableCell>Forklift Operator</TableCell>
-															<TableCell>Wharf 3</TableCell>
-														</tr>
-														<tr>
-															<TableCell fontWeight="bold">
-																<Flex
-																	gap={0.5}
-																	alignItems="center"
-																	justifyContent="flex-start"
-																	as="a"
-																	href="#"
-																	link
-																	css={{
-																		textDecoration: 'none',
-																		'> span': {
-																			textDecoration: 'underline',
-																		},
-																		'&:hover > span': {
-																			textDecoration: 'none',
-																			color: boxPalette.foregroundText,
-																		},
-																	}}
-																>
-																	<Avatar
-																		name="Paul Maher"
-																		size="sm"
-																		tone="action"
-																	/>
-																	<Text
-																		color="action"
-																		fontSize="sm"
-																		fontWeight="bold"
-																	>
-																		Paul Maher
-																	</Text>
-																</Flex>
-															</TableCell>
-															<TableCell>Supervisor</TableCell>
-															<TableCell>Wharf 2</TableCell>
-														</tr>
-													</TableBody>
-												</Table>
-											</TableWrapper>
-										</TabPanel>
-
-										<TabPanel>
-											<Box width="300px">
-												<img
-													alt="Screenshot of example chart"
-													src="https://www.microsoft.com/en-us/microsoft-365/blog/wp-content/uploads/sites/2/2012/06/Excel-charts-7.png"
-												/>
-											</Box>
-										</TabPanel>
+										{examplePopulations.map(({ year, stats, data }) => (
+											<TabPanel key={year}>
+												<Stack gap={2}>
+													<Prose>
+														<h3>{year}</h3>
+														<ul>
+															{stats.map((stat, idx) => (
+																<li key={idx}>{stat}</li>
+															))}
+														</ul>
+													</Prose>
+													<Stack gap={1.5}>
+														<H3>Population QuickStats</H3>
+														<SummaryList>
+															<SummaryListItem>
+																<SummaryListItemTerm>
+																	People
+																</SummaryListItemTerm>
+																<SummaryListItemDescription>
+																	{numberFormatter.format(data.people)}
+																</SummaryListItemDescription>
+															</SummaryListItem>
+															<SummaryListItem>
+																<SummaryListItemTerm>Male</SummaryListItemTerm>
+																<SummaryListItemDescription>
+																	{percentageFormatter.format(data.male)}
+																</SummaryListItemDescription>
+															</SummaryListItem>
+															<SummaryListItem>
+																<SummaryListItemTerm>
+																	Female
+																</SummaryListItemTerm>
+																<SummaryListItemDescription>
+																	{percentageFormatter.format(data.female)}
+																</SummaryListItemDescription>
+															</SummaryListItem>
+															<SummaryListItem>
+																<SummaryListItemTerm>
+																	Median age
+																</SummaryListItemTerm>
+																<SummaryListItemDescription>
+																	{data.medianAge}
+																</SummaryListItemDescription>
+															</SummaryListItem>
+														</SummaryList>
+													</Stack>
+												</Stack>
+											</TabPanel>
+										))}
 									</TabPanels>
 								</Tabs>
 							</Stack>
 						</Column>
-
-						<Column columnSpan={{ xs: 12, lg: 4 }}>
-							<Tabs contained={false}>
-								<TabList>
-									<TabButton>Incoming</TabButton>
-									<TabButton>Outgoing</TabButton>
-								</TabList>
-								<TabPanels>
-									<TabPanel>
-										<Text as="p">
-											<Table>
-												<TableCaption>Incoming vessels (SYD)</TableCaption>
-												<TableHead>
-													<tr>
-														<TableHeader width="50%" scope="col">
-															ID
-														</TableHeader>
-														<TableHeader scope="col">Wharf</TableHeader>
-														<TableHeader scope="col">ETA</TableHeader>
-													</tr>
-												</TableHead>
-												<TableBody>
-													<tr>
-														<TableCell fontWeight="bold">
-															<TextLink href="#">QWERTY123</TextLink>
-														</TableCell>
-														<TableCell>3</TableCell>
-														<TableCell>32 mins</TableCell>
-													</tr>
-
-													<tr>
-														<TableCell fontWeight="bold">
-															<TextLink href="#">QWERTY123</TextLink>
-														</TableCell>
-														<TableCell>1</TableCell>
-														<TableCell>45 mins</TableCell>
-													</tr>
-
-													<tr>
-														<TableCell fontWeight="bold">
-															<TextLink href="#">QWERTY123</TextLink>
-														</TableCell>
-														<TableCell>9</TableCell>
-														<TableCell>2 hours</TableCell>
-													</tr>
-
-													<tr>
-														<TableCell fontWeight="bold">
-															<TextLink href="#">QWERTY123</TextLink>
-														</TableCell>
-														<TableCell>12</TableCell>
-														<TableCell>2 hours</TableCell>
-													</tr>
-
-													<tr>
-														<TableCell fontWeight="bold">
-															<TextLink href="#">QWERTY123</TextLink>
-														</TableCell>
-														<TableCell>1</TableCell>
-														<TableCell>3 hours</TableCell>
-													</tr>
-
-													<tr>
-														<TableCell fontWeight="bold">
-															<TextLink href="#">QWERTY123</TextLink>
-														</TableCell>
-														<TableCell>3</TableCell>
-														<TableCell>4 hours</TableCell>
-													</tr>
-												</TableBody>
-											</Table>
-										</Text>
-									</TabPanel>
-
-									<TabPanel>
-										<Text as="p">Outgoing</Text>
-									</TabPanel>
-								</TabPanels>
-							</Tabs>
-						</Column>
 					</Columns>
 				</PageContent>
-			</AppLayout>
+			</SiteLayout>
 		);
 	},
 };
+
+const numberFormatter = new Intl.NumberFormat('en-AU');
+const percentageFormatter = new Intl.NumberFormat('en-AU', {
+	style: 'percent',
+	minimumFractionDigits: 1,
+	maximumFractionDigits: 1,
+});
+
+const examplePopulations = [
+	{
+		year: 2021,
+		stats: [
+			'The 2021 Census counted 25,422,788 people in Australia (excludes overseas visitors), an increase of 8.6 per cent since the 2016 Census.',
+			'49.3 per cent of the population were male with a median age of 37 years old.',
+			'50.7 per cent of the population were female with the median age of 39 years old.',
+		],
+		data: {
+			people: 25422788,
+			male: 0.493,
+			female: 0.507,
+			medianAge: 38,
+		},
+	},
+	{
+		year: 2016,
+		stats: [
+			'In the 2016 Census, there were 23,401,892 people in Australia. Of these 49.3% were male and 50.7% were female. Aboriginal and/or Torres Strait Islander people made up 2.8% of the population.',
+		],
+		data: {
+			people: 23401892,
+			male: 0.493,
+			female: 0.507,
+			medianAge: 38,
+		},
+	},
+	{
+		year: 2011,
+		stats: [
+			'In the 2011 Census, there were 21,507,717 people in Australia of these 49.4% were male and 50.6% were female. Aboriginal and/or Torres Strait Islander people made up 2.5% of the population.',
+		],
+		data: {
+			people: 21507717,
+			male: 0.493,
+			female: 0.507,
+			medianAge: 37,
+		},
+	},
+	{
+		year: 2006,
+		stats: [
+			'In the 2011 Census, there were 21,507,717 people in Australia of these 49.4% were male and 50.6% were female. Aboriginal and/or Torres Strait Islander people made up 2.5% of the population.',
+		],
+		data: {
+			people: 19855288,
+			male: 0.493,
+			female: 0.507,
+			medianAge: 37,
+		},
+	},
+];
