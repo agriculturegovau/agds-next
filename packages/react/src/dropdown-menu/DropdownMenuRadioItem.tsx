@@ -76,13 +76,8 @@ export function DropdownMenuRadioItem({
 			}}
 		>
 			<Stack>
-				<Text>{children}</Text>
-				<Text
-					fontWeight={checked ? 'bold' : 'normal'}
-					fontSize="xs"
-					color="muted"
-					css={{ textDecoration: 'none' }}
-				>
+				<Text fontWeight={checked ? 'bold' : 'normal'}>{children}</Text>
+				<Text fontSize="xs" color="muted" css={{ textDecoration: 'none' }}>
 					{secondaryText}
 				</Text>
 			</Stack>

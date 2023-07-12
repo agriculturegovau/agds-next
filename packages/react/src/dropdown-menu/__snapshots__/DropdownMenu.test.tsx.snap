@@ -270,12 +270,12 @@ exports[`DropdownMenu Radio Group renders correctly 1`] = `
           class="css-o80hmi-boxStyles"
         >
           <span
-            class="css-6j1v6l-boxStyles-Text"
+            class="css-433uqb-boxStyles-Text"
           >
             Produce Fresh
           </span>
           <span
-            class="css-1ll8x99-boxStyles-Text-DropdownMenuRadioItem"
+            class="css-fiaal0-boxStyles-Text-DropdownMenuRadioItem"
           >
             Brisbane
           </span>
