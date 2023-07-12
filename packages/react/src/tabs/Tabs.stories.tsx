@@ -337,7 +337,7 @@ export const ExampleComposition: StoryObj = {
 														</ul>
 													</Prose>
 													<Stack gap={1.5}>
-														<H3>Population QuickStats</H3>
+														<H3>Population quick stats</H3>
 														<SummaryList>
 															<SummaryListItem>
 																<SummaryListItemTerm>
@@ -434,7 +434,8 @@ const examplePopulations = [
 	{
 		year: 2006,
 		stats: [
-			'In the 2011 Census, there were 21,507,717 people in Australia of these 49.4% were male and 50.6% were female. Aboriginal and/or Torres Strait Islander people made up 2.5% of the population.',
+			'In the 2006 Census (held on 8th August 2006), there were 19,855,288 people usually resident in Australia. The population has increased by 6%, or just over 1 million people, since the 2001 Census. As in 2001, female slightly outnumbered male in the population.',
+			'2.3% of the population identified themselves as being Aboriginal and/or Torres Strait Islander people in the 2006 Census which is an increase of 11% or 45,000 people.',
 		],
 		data: {
 			people: 19855288,
