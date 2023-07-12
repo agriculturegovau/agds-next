@@ -16,7 +16,7 @@ export function DropdownMenu({
 }: DropdownMenuProps) {
 	const menuId = useDropdownMenuId();
 	const listRef = useRef<HTMLDivElement>(null);
-	const popover = usePopover({ placement });
+	const popover = usePopover<HTMLButtonElement>({ placement });
 
 	const [state, dispatch] = useReducer(reducer, initialState);
 
@@ -26,8 +26,6 @@ export function DropdownMenu({
 
 	function closeMenu() {
 		dispatch({ type: 'CLOSE_MENU' });
-		// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-		// @ts-ignore
 		popover.referenceRef.current?.focus();
 	}
 

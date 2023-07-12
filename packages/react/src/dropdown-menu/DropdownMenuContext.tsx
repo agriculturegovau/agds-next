@@ -19,7 +19,7 @@ export type MenuContextType = {
 	// Other
 	menuId: string;
 	listRef: RefObject<HTMLDivElement>;
-	popover: ReturnType<typeof usePopover>;
+	popover: ReturnType<typeof usePopover<HTMLButtonElement>>;
 };
 
 export const DropdownMenuContext = createContext<MenuContextType | undefined>(

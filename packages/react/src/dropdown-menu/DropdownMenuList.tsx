@@ -26,8 +26,6 @@ export function DropdownMenuList({ children, palette }: DropdownMenuListProps) {
 	}, [isMenuOpen, closeMenu]);
 
 	useClickOutside(
-		// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-		// @ts-ignore
 		[popover.popoverRef, popover.referenceRef],
 		handleClickOutside
 	);
