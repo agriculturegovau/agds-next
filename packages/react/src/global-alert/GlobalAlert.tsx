@@ -1,12 +1,14 @@
-import { MouseEventHandler, PropsWithChildren } from 'react';
+import { MouseEventHandler, PropsWithChildren, ReactNode } from 'react';
 import { Box } from '../box';
 import { Flex } from '../flex';
 import { Stack } from '../stack';
-import { boxPalette } from '../core';
+import { boxPalette, tokens, mapSpacing } from '../core';
 import { WarningFilledIcon } from '../icon';
-import { Content } from '../content';
 import { Heading } from '../heading';
-import { GlobalAlertCloseButton } from './GlobalAlertCloseButton';
+import {
+	GlobalAlertCloseButton,
+	GLOBAL_ALERT_CLOSE_BUTTON_LABEL_VISIBLE_MQ,
+} from './GlobalAlertCloseButton';
 
 export type GlobalAlertProps = PropsWithChildren<{
 	/** Function to be called when the 'Close' button is pressed. */
@@ -23,48 +25,72 @@ export function GlobalAlert({ children, onDismiss, title }: GlobalAlertProps) {
 				backgroundColor: boxPalette.systemWarningMuted,
 			}}
 		>
-			<Content>
-				<Flex
-					flexDirection={{ xs: 'column', sm: 'row' }}
-					alignItems="flex-start"
-					justifyContent="space-between"
-					gap={[1, 1.5]}
-					paddingY={1}
-					css={{
-						position: 'relative',
-					}}
-				>
-					<Flex flexDirection={{ xs: 'column', sm: 'row' }} gap={[0.5, 1]}>
-						<Flex
-							// flexShrink={0}
-							alignItems="center"
-							justifyContent="center"
-							padding={1}
-							rounded
-							css={{
-								backgroundColor: boxPalette.systemWarning,
-								color: boxPalette.systemWarningMuted,
-							}}
+			<Flex
+				flexDirection="row"
+				css={{
+					position: 'relative',
+				}}
+			>
+				<GlobalAlertIconContainer>
+					<WarningFilledIcon
+						aria-hidden="false"
+						aria-label="Warning"
+						color="inherit"
+					/>
+				</GlobalAlertIconContainer>
+
+				<Flex padding={1}>
+					<Stack gap={0.5} maxWidth={tokens.maxWidth.bodyText}>
+						{title ? (
+							<Heading
+								as="h2"
+								type="h3"
+								css={{
+									marginRight: mapSpacing(2),
+									[GLOBAL_ALERT_CLOSE_BUTTON_LABEL_VISIBLE_MQ]: {
+										marginRight: '0rem',
+									},
+								}}
+							>
+								{title}
+							</Heading>
+						) : null}
+						<Box
+							flexGrow={1}
+							css={
+								title
+									? null
+									: {
+											marginRight: mapSpacing(2),
+											[GLOBAL_ALERT_CLOSE_BUTTON_LABEL_VISIBLE_MQ]: {
+												marginRight: '0rem',
+											},
+									  }
+							}
 						>
-							<WarningFilledIcon
-								aria-hidden="false"
-								aria-label="Warning"
-								color="inherit"
-								css={{ display: 'block' }}
-							/>
-						</Flex>
-						<Stack gap={0.5}>
-							{title ? (
-								<Heading as="h2" type="h3">
-									{title}
-								</Heading>
-							) : null}
-							<Box flexGrow={1}>{children}</Box>
-						</Stack>
-					</Flex>
-					{onDismiss ? <GlobalAlertCloseButton onClick={onDismiss} /> : null}
+							{children}
+						</Box>
+					</Stack>
 				</Flex>
-			</Content>
+				{onDismiss ? <GlobalAlertCloseButton onClick={onDismiss} /> : null}
+			</Flex>
 		</section>
 	);
 }
+
+const GlobalAlertIconContainer = ({ children }: { children: ReactNode }) => {
+	return (
+		<Flex
+			// flexShrink={0}
+			alignItems="center"
+			justifyContent="center"
+			padding={1}
+			css={{
+				backgroundColor: boxPalette.systemWarning,
+				color: boxPalette.backgroundBody,
+			}}
+		>
+			{children}
+		</Flex>
+	);
+};
