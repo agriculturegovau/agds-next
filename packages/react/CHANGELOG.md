@@ -1,5 +1,15 @@
 # @ag.ds-next/react
 
+## 1.7.1
+
+### Patch Changes
+
+- 6d4cf66cae: core: Deduplicated use of `findBestMatch` from navigational components and moved into the `core` entrypoint.
+
+  app-layout: Used `findBestMatch` utility function to ensure nav items are highlighted correctly based on the `activePath`.
+
+  sub-nav: Used `findBestMatch` utility function to ensure nav items are highlighted correctly based on the `activePath`.
+
 ## 1.7.0
 
 ### Minor Changes
