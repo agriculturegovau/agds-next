@@ -211,4 +211,4 @@ const selectStyles = ({
 		},
 
 		'&:focus': packs.outline,
-	} as const);
+	}) as const;

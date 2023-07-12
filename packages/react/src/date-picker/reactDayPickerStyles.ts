@@ -137,4 +137,4 @@ export const reactDayPickerStyles = (range: boolean) =>
 				borderBottomRightRadius: '50%',
 			},
 		}),
-	} as const);
+	}) as const;

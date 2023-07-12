@@ -131,4 +131,4 @@ export const textInputStyles = ({
 		},
 
 		'&:focus': packs.outline,
-	} as const);
+	}) as const;
