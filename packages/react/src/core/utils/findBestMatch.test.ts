@@ -34,8 +34,12 @@ describe('findBestMatch', () => {
 			findBestMatch(testLinks, '/services/service-a/service-b/service-c')
 		).toEqual('/services');
 		expect(findBestMatch(testLinks, '/contact/message')).toEqual('/contact');
-		expect(findBestMatch(testLinks, '/help/account/create-account')).toEqual('/help/account');
-		expect(findBestMatch(testLinks, '/help/about/create-account')).toEqual('/help');
+		expect(findBestMatch(testLinks, '/help/account/create-account')).toEqual(
+			'/help/account'
+		);
+		expect(findBestMatch(testLinks, '/help/about/create-account')).toEqual(
+			'/help'
+		);
 	});
 
 	it('matches path with hashes and query params', () => {
@@ -45,6 +49,4 @@ describe('findBestMatch', () => {
 			'/contact'
 		);
 	});
-
-
 });
