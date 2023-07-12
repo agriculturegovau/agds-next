@@ -5,14 +5,22 @@ import { HeaderBrand } from './HeaderBrand';
 import { HeaderContainer } from './HeaderContainer';
 
 export type HeaderProps = {
-	badgeLabel?: string;
-	heading: string;
+	/** The logo to display. */
 	logo?: JSX.Element;
-	rightContent?: ReactNode;
+	/** The heading should be set to the website or service title. */
+	heading: string;
+	/** Used to provide additional information to describe your website or service. */
 	subline?: string;
-	size?: 'sm' | 'md';
-	background?: 'body' | 'bodyAlt';
+	/** Used to indicate if an application is in a prerelease state. */
+	badgeLabel?: string;
+	/** The href to link to, for example "/". */
 	href?: string;
+	/** Content to placed on the right side of the Header. */
+	rightContent?: ReactNode;
+	/** The size of the Header controls the vertical height. */
+	size?: 'sm' | 'md';
+	/** The background color of the Header. */
+	background?: 'body' | 'bodyAlt';
 };
 
 export function Header({
