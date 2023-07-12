@@ -1,0 +1,29 @@
+---
+date: 12th June 2023
+title: AgDS Beta v1.7.1 release
+description: Patch release to ensure items in navigational components are highlighted correctly based on the active path.
+---
+
+## Updates
+
+### [App layout](/components/app-layout)
+
+- Used `findBestMatch` utility function to ensure nav items are highlighted correctly based on the `activePath` ([PR #1251](https://github.com/steelthreads/agds-next/pull/1251))
+
+### [Core](/components/sub-nav)
+
+- Deduplicated use of `findBestMatch` from navigational components () and moved into the core entry point ([PR #1251](https://github.com/steelthreads/agds-next/pull/1251))
+
+### [Sub nav](/components/sub-nav)
+
+- Used `findBestMatch` utility function to ensure nav items are highlighted correctly based on the `activePath` ([PR #1251](https://github.com/steelthreads/agds-next/pull/1251))
+
+## Released packages
+
+```sh
+"@ag.ds-next/react": "1.7.1"
+```
+
+## Full Changelog
+
+Aside from the [complete release notes on the @ag.ds-next website](https://design-system.agriculture.gov.au/updates/2023-07-12), you can also view the verbose change log in the [related PR](https://github.com/steelthreads/agds-next/pull/1254) for this release.
