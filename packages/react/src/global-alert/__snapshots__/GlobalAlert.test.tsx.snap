@@ -10,7 +10,7 @@ exports[`GlobalAlert with tone info and a close button renders correctly 1`] = `
       class="css-12hrmkx-boxStyles-GlobalAlert"
     >
       <div
-        class="css-9gg6gl-boxStyles-GlobalAlertIconContainer"
+        class="css-1vjykjm-boxStyles-GlobalAlertIconContainer"
       >
         <svg
           aria-hidden="false"
@@ -104,7 +104,7 @@ exports[`GlobalAlert with tone info renders correctly 1`] = `
       class="css-12hrmkx-boxStyles-GlobalAlert"
     >
       <div
-        class="css-9gg6gl-boxStyles-GlobalAlertIconContainer"
+        class="css-1vjykjm-boxStyles-GlobalAlertIconContainer"
       >
         <svg
           aria-hidden="false"
@@ -164,7 +164,7 @@ exports[`GlobalAlert with tone warning and a close button renders correctly 1`] 
       class="css-12hrmkx-boxStyles-GlobalAlert"
     >
       <div
-        class="css-9gg6gl-boxStyles-GlobalAlertIconContainer"
+        class="css-1vjykjm-boxStyles-GlobalAlertIconContainer"
       >
         <svg
           aria-hidden="false"
@@ -258,7 +258,7 @@ exports[`GlobalAlert with tone warning renders correctly 1`] = `
       class="css-12hrmkx-boxStyles-GlobalAlert"
     >
       <div
-        class="css-9gg6gl-boxStyles-GlobalAlertIconContainer"
+        class="css-1vjykjm-boxStyles-GlobalAlertIconContainer"
       >
         <svg
           aria-hidden="false"
