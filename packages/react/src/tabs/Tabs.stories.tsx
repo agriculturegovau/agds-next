@@ -14,6 +14,7 @@ import { IndicatorDot } from '../indicator-dot';
 import { NotificationBadge } from '../notification-badge';
 import { Stack } from '../stack';
 import { StatusBadge } from '../status-badge';
+import { SubNav } from '../sub-nav';
 import {
 	SummaryList,
 	SummaryListItem,
@@ -285,7 +286,7 @@ export const WithEndElements: StoryObj = {
 	},
 };
 
-export const DashboardScreen: StoryObj = {
+export const ExampleComposition: StoryObj = {
 	render: function Render() {
 		return (
 			<AppLayout>
@@ -296,16 +297,30 @@ export const DashboardScreen: StoryObj = {
 								<Breadcrumbs
 									links={[
 										{ href: '#', label: 'Home' },
-										{ href: '#', label: 'Services' },
-										{ label: 'Establishments' },
+										{ href: '#', label: 'Category 1' },
+										{ href: '#', label: 'Subcategory 1' },
+										{ label: 'Population trends' },
 									]}
 								/>
-								<Stack>
-									<Text color="muted" fontWeight="bold">
-										SYD - Sydney, New South Wales
+								<Stack gap={1.5}>
+									<H1>Population trends</H1>
+									<Text as="p" fontSize="md" color="muted">
+										Introductory paragraph providing context for this single
+										page of the multipage form. All questions on page must be
+										related - md/default (P).
 									</Text>
-									<H1>Dashboard</H1>
 								</Stack>
+
+								<SubNav
+									activePath="/population"
+									links={[
+										{ href: '/population', label: 'Population' },
+										{ href: '/immigration', label: 'Immigration' },
+										{ href: '/demographics', label: 'Demographics' },
+										{ href: '/births', label: 'Births' },
+										{ href: '/deaths', label: 'Deaths' },
+									]}
+								/>
 
 								<SummaryList>
 									<SummaryListItem>
@@ -563,186 +578,6 @@ export const DashboardScreen: StoryObj = {
 							</Tabs>
 						</Column>
 					</Columns>
-				</PageContent>
-			</AppLayout>
-		);
-	},
-};
-
-export const ArtifactDetailsScreen: StoryObj = {
-	render: function Render() {
-		return (
-			<AppLayout>
-				<PageContent>
-					<Stack gap={3} alignItems="flex-start">
-						<Stack>
-							<Text color="muted" fontWeight="bold">
-								Voyage Details
-							</Text>
-							<H1>9378462 BAO BSD</H1>
-						</Stack>
-						<StatusBadge tone="info" label="Pending" />
-
-						<SummaryList>
-							<SummaryListItem>
-								<SummaryListItemTerm>Port</SummaryListItemTerm>
-								<SummaryListItemDescription>Sydney</SummaryListItemDescription>
-							</SummaryListItem>
-							<SummaryListItem>
-								<SummaryListItemTerm>
-									Estimated time of arrival
-								</SummaryListItemTerm>
-								<SummaryListItemDescription>
-									02/11/2023 12:07 (19 hours)
-								</SummaryListItemDescription>
-							</SummaryListItem>
-							<SummaryListItem>
-								<SummaryListItemTerm>Tyoe of vessel</SummaryListItemTerm>
-								<SummaryListItemDescription>
-									Bulk Carrier
-								</SummaryListItemDescription>
-							</SummaryListItem>
-
-							<SummaryListItem>
-								<SummaryListItemTerm>Port Agency</SummaryListItemTerm>
-								<SummaryListItemDescription>
-									<TextLink href="#">Mark Triple S</TextLink>
-								</SummaryListItemDescription>
-							</SummaryListItem>
-							<SummaryListItem>
-								<SummaryListItemTerm>Billing Agency</SummaryListItemTerm>
-								<SummaryListItemDescription>
-									<TextLink href="#">Mark Triple S</TextLink>
-								</SummaryListItemDescription>
-							</SummaryListItem>
-						</SummaryList>
-
-						<Box width="100%">
-							<Tabs>
-								<TabList>
-									<TabButton>Checks</TabButton>
-									<TabButton>Contact</TabButton>
-									<TabButton>Applications</TabButton>
-									<TabButton>Insights</TabButton>
-								</TabList>
-								<TabPanels>
-									<TabPanel>
-										<SummaryList>
-											<SummaryListItem>
-												<SummaryListItemTerm>
-													Approval to Berth
-												</SummaryListItemTerm>
-												<SummaryListItemDescription>
-													<StatusBadge tone="success" label="Approved" />
-												</SummaryListItemDescription>
-											</SummaryListItem>
-											<SummaryListItem>
-												<SummaryListItemTerm>
-													Non first point of Entry
-												</SummaryListItemTerm>
-												<SummaryListItemDescription>
-													<StatusBadge tone="error" label="Not approved" />
-												</SummaryListItemDescription>
-											</SummaryListItem>
-											<SummaryListItem>
-												<SummaryListItemTerm>
-													Biosecurity Inspection
-												</SummaryListItemTerm>
-												<SummaryListItemDescription>
-													<StatusBadge tone="warning" label="Pending" />
-												</SummaryListItemDescription>
-											</SummaryListItem>
-											<SummaryListItem>
-												<SummaryListItemTerm>Pratique</SummaryListItemTerm>
-												<SummaryListItemDescription>
-													<StatusBadge tone="success" label="Approved" />
-												</SummaryListItemDescription>
-											</SummaryListItem>
-										</SummaryList>
-									</TabPanel>
-									<TabPanel>
-										<SummaryList>
-											<SummaryListItem>
-												<SummaryListItemTerm>
-													Representative name
-												</SummaryListItemTerm>
-												<SummaryListItemDescription>
-													Will Power
-												</SummaryListItemDescription>
-											</SummaryListItem>
-											<SummaryListItem>
-												<SummaryListItemTerm>Title</SummaryListItemTerm>
-												<SummaryListItemDescription>
-													General Manager
-												</SummaryListItemDescription>
-											</SummaryListItem>
-											<SummaryListItem>
-												<SummaryListItemTerm>
-													Contact information
-												</SummaryListItemTerm>
-												<SummaryListItemDescription>
-													+61 9912 3456
-													<br />
-													will.power@example.com
-												</SummaryListItemDescription>
-											</SummaryListItem>
-											<SummaryListItem>
-												<SummaryListItemTerm>Date of birth</SummaryListItemTerm>
-												<SummaryListItemDescription>
-													09/06/1995
-												</SummaryListItemDescription>
-											</SummaryListItem>
-										</SummaryList>
-									</TabPanel>
-									<TabPanel>
-										<TableWrapper>
-											<TableWrapper>
-												<Table>
-													<TableCaption>Applications Received</TableCaption>
-													<TableHead>
-														<tr>
-															<TableHeader width="50%" scope="col">
-																Type
-															</TableHeader>
-															<TableHeader scope="col">Port</TableHeader>
-															<TableHeader scope="col">Status</TableHeader>
-															<TableHeader scope="col">
-																Date submitted
-															</TableHeader>
-														</tr>
-													</TableHead>
-													<TableBody>
-														<tr>
-															<TableCell fontWeight="bold">
-																<TextLink href="#">PAR (Commercial)</TextLink>
-															</TableCell>
-															<TableCell>Sydney</TableCell>
-															<TableCell>
-																<StatusBadge
-																	tone="success"
-																	weight="subtle"
-																	label="Completed"
-																/>
-															</TableCell>
-															<TableCell>01/11/2023 11:57</TableCell>
-														</tr>
-													</TableBody>
-												</Table>
-											</TableWrapper>
-										</TableWrapper>
-									</TabPanel>
-									<TabPanel>
-										<Box width="300px">
-											<img
-												alt="example chart"
-												src="https://www.microsoft.com/en-us/microsoft-365/blog/wp-content/uploads/sites/2/2012/06/Excel-charts-7.png"
-											/>
-										</Box>
-									</TabPanel>
-								</TabPanels>
-							</Tabs>
-						</Box>
-					</Stack>
 				</PageContent>
 			</AppLayout>
 		);
