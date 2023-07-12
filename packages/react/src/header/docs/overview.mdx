@@ -36,4 +36,20 @@ Subline can provide additional information to describe your website or service.
 
 ## Badge
 
-We use a badge to indicate if an application is in a prerelease state. Add `badgeLabel` prop to implement.
+We use a badge to indicate if an application is in a prerelease state. Use the `badgeLabel` prop to implement.
+
+## Size
+
+The `size` prop can be used control the vertical height of the Header. Use the `sm` variant for internal applications.
+
+```jsx live
+<Box palette="dark">
+	<Header
+		heading="Export Service"
+		subline="Supporting Australian agricultural exports"
+		logo={<Logo />}
+		variant="bodyAlt"
+		size="sm"
+	/>
+</Box>
+```
