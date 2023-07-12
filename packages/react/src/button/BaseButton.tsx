@@ -25,9 +25,19 @@ export type BaseButtonProps = PropsWithChildren<{
 	disabled?: boolean;
 	/** Defines an identifier (ID) which must be unique. */
 	id?: string;
+	/** Function to be fired following a keydown event of the button. */
+	onKeyDown?: NativeButtonProps['onKeyDown'];
+	/** Function to be fired following a blur event of the button. */
+	onBlur?: NativeButtonProps['onBlur'];
 	/** Function to be fired following a click event of the button. */
 	onClick?: NativeButtonProps['onClick'];
-	/** Provide an alternate type if the button is within a form. */
+	/** Function to be fired following a focus event of the button. */
+	onFocus?: NativeButtonProps['onFocus'];
+	/** WAI-ARIA role. */
+	role?: NativeButtonProps['role'];
+	/** The `tabIndex` attribute of the button. */
+	tabIndex?: NativeButtonProps['tabIndex'];
+	/** The `type` attribute of the button. */
 	type?: NativeButtonProps['type'];
 }>;
 

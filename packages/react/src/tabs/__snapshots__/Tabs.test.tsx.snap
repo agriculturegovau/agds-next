@@ -1,0 +1,85 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Tabs renders correctly 1`] = `
+<div>
+  <div
+    class="css-1b120x5-Tabs"
+    id="tabs-:r0:"
+  >
+    <div
+      aria-orientation="horizontal"
+      class="css-1be2o1s-boxStyles"
+      role="tablist"
+    >
+      <button
+        aria-controls="tabs-:r0:-tab-panel-0"
+        aria-selected="true"
+        class="css-1njaf3v-BaseButton-boxStyles-TabButton"
+        id="tabs-:r0:-tab-button-0"
+        role="tab"
+        tabindex="0"
+        type="button"
+      >
+        <span>
+          Tab 1
+        </span>
+      </button>
+      <button
+        aria-controls="tabs-:r0:-tab-panel-1"
+        aria-selected="false"
+        class="css-sboc43-BaseButton-boxStyles-TabButton"
+        id="tabs-:r0:-tab-button-1"
+        role="tab"
+        tabindex="-1"
+        type="button"
+      >
+        <span>
+          Tab 2
+        </span>
+      </button>
+      <button
+        aria-controls="tabs-:r0:-tab-panel-2"
+        aria-selected="false"
+        class="css-sboc43-BaseButton-boxStyles-TabButton"
+        id="tabs-:r0:-tab-button-2"
+        role="tab"
+        tabindex="-1"
+        type="button"
+      >
+        <span>
+          Tab 3
+        </span>
+      </button>
+    </div>
+    <div>
+      <div
+        aria-labelledby="tabs-:r0:-tab-button-0"
+        class="css-1vebsfu-boxStyles-TabPanel"
+        id="tabs-:r0:-tab-panel-0"
+        role="tabpanel"
+        tabindex="0"
+      >
+        Tab panel 1
+      </div>
+      <div
+        aria-labelledby="tabs-:r0:-tab-button-1"
+        class="css-14or9bv-boxStyles-TabPanel"
+        id="tabs-:r0:-tab-panel-1"
+        role="tabpanel"
+        tabindex="-1"
+      >
+        Tab panel 2
+      </div>
+      <div
+        aria-labelledby="tabs-:r0:-tab-button-2"
+        class="css-14or9bv-boxStyles-TabPanel"
+        id="tabs-:r0:-tab-panel-2"
+        role="tabpanel"
+        tabindex="-1"
+      >
+        Tab panel 3
+      </div>
+    </div>
+  </div>
+</div>
+`;

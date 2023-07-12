@@ -71,6 +71,13 @@ import {
 	SummaryListItemDescription,
 	SummaryListItemTerm,
 } from '@ag.ds-next/react/summary-list';
+import {
+	TabButton,
+	TabList,
+	TabPanel,
+	TabPanels,
+	Tabs,
+} from '@ag.ds-next/react/tabs';
 import { COUNTRY_OPTIONS } from '../../docs/components/designSystemComponents';
 import { SiteLayout } from '../../docs/content/templates/__shared/SiteLayout';
 import { AppLayout } from '../../docs/content/templates/__shared/AppLayout';
@@ -339,6 +346,19 @@ function KitchenSink({ background }: KitchenSinkProps) {
 									</CardInner>
 								</Card>
 							</Columns>
+
+							<Tabs>
+								<TabList>
+									<TabButton>Tab 1</TabButton>
+									<TabButton>Tab 2</TabButton>
+									<TabButton>Tab 3</TabButton>
+								</TabList>
+								<TabPanels>
+									<TabPanel>Tab panel 1.</TabPanel>
+									<TabPanel>Tab panel 2.</TabPanel>
+									<TabPanel>Tab panel 3.</TabPanel>
+								</TabPanels>
+							</Tabs>
 
 							<H2>Forms</H2>
 							<FormStack>

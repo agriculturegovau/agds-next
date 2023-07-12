@@ -208,5 +208,12 @@ export {
 } from '@ag.ds-next/react/app-layout';
 export { Divider } from '@ag.ds-next/react/divider';
 export { FilterDrawer } from '@ag.ds-next/react/filter-drawer';
+export {
+	Tabs,
+	TabList,
+	TabButton,
+	TabPanels,
+	TabPanel,
+} from '@ag.ds-next/react/tabs';
 // Used to populate options on documentation site and playroom
 export { COUNTRY_OPTIONS } from '@ag.ds-next/react/src/combobox/test-utils';

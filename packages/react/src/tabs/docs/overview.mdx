@@ -1,0 +1,137 @@
+---
+title: Tabs
+description: Tabs are used to categorise content into seperate views. A user can navigate between each section of content, displaying one section at a time.
+group: Layout
+figmaGalleryNodeId: 18875-97171
+storybookPath: /story/layout-tabs--basic
+relatedComponents: ['accordion', 'details', 'sub-nav']
+---
+
+```jsx live
+<Tabs>
+	<TabList>
+		<TabButton>Tab 1</TabButton>
+		<TabButton>Tab 2</TabButton>
+		<TabButton>Tab 3</TabButton>
+	</TabList>
+	<TabPanels>
+		<TabPanel>
+			<Text as="p">
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque
+				fermentum lacus ac magna elementum, ac laoreet leo facilisis. Nulla at
+				bibendum diam. Pellentesque vel accumsan eros, nec egestas leo. Etiam
+				lacinia, ligula non cursus sodales, diam odio posuere eros, pharetra
+				convallis lacus magna in urna. Etiam condimentum iaculis mattis.
+				Vestibulum eget felis in orci eleifend vulputate vestibulum id mi.
+				Curabitur at lacus vitae urna tincidunt vehicula at quis nibh. Quisque
+				id aliquet sapien. Quisque ultricies nibh nisl, eu pellentesque dui
+				semper a. Aliquam vestibulum justo vitae feugiat sodales. Aenean
+				efficitur sodales diam, et volutpat enim faucibus a. Nulla mollis est eu
+				velit malesuada ornare ultrices in neque.
+			</Text>
+		</TabPanel>
+		<TabPanel>
+			<Text as="p">
+				Praesent metus leo, ultrices porta sodales quis, molestie vitae nisl.
+				Fusce at eros ultricies, pharetra eros id, faucibus dolor. Nam et nibh
+				lacus. Etiam pellentesque eros finibus ultricies malesuada. Sed eget
+				libero suscipit, dictum lacus sit amet, venenatis dolor. Sed porttitor
+				lorem turpis, ac suscipit lacus vehicula id. Aliquam id venenatis augue.
+				Orci varius natoque penatibus et magnis dis parturient montes, nascetur
+				ridiculus mus. Integer viverra metus sed dolor euismod consectetur. Cras
+				mauris nisi, elementum vel eros sed, faucibus rhoncus mauris. Phasellus
+				eu ante vehicula, luctus libero in, malesuada nulla.
+			</Text>
+		</TabPanel>
+		<TabPanel>
+			<Text as="p">
+				Duis eu bibendum urna. Integer nisl massa, aliquam scelerisque hendrerit
+				at, ullamcorper quis turpis. Proin vulputate tincidunt neque ut
+				sollicitudin. In ullamcorper neque justo, vitae euismod ante aliquam
+				eget. Orci varius natoque penatibus et magnis dis parturient montes,
+				nascetur ridiculus mus. Donec eu purus ac ante tempus vulputate ac vel
+				mauris. Duis congue augue augue, quis elementum nisl ultricies
+				fermentum. Sed pellentesque leo ut est semper vulputate.
+			</Text>
+		</TabPanel>
+	</TabPanels>
+</Tabs>
+```
+
+<DoHeading />
+
+- use to categorise content on the same page into different sections
+- use to embed text, tables, summary lists, charts etc
+- use clear and concise labels
+- order the tabs according to the user needs
+- if the tabs are growing large in size, consider breaking up large chunks of content into separate pages or using an [Accordion](/components/accordion) instead.
+
+<DontHeading />
+
+- use for page navigation - use the [Sub nav](components) component instead
+- disable tab buttons
+- use a single tab
+- use to indicate progress - use the [Progress indicator](/components/progress-indicator) component instead
+- use if the user needs to compare information between two or more tabs.
+- embed information that is critical for users in tabs
+- embed long-form content – keep tabs concise.
+
+## Tabs vs Sub nav
+
+Tabs and the [Sub nav](/components/sub-nav) component are visually similar, but their functionalities differ significantly.
+
+Tabs allow users to switch between different views within a specific section of the same page and should not serve as links that navigate users to new URLs. If you need tab-like navigation, you should use the [Sub nav](/components/sub-nav) component instead.
+
+## Tabs vs Accordion/Details
+
+Tabs, [Accordions](/components/accordion) and [Details](/components/details) all progressively disclose sections of content which a user can choose to reveal.
+
+If you have a large number of sections, consider using an [Accordion Group](/components/accordion) as they are stacked horizontally unlike Tabs.
+
+If you only have a single peice of short, less important content, use the visually less prominent [Details](/components/details) component.
+
+## Not contained
+
+Set the `contained` prop to `false` to remove the horizontal borders and padding from the tab panels.
+
+```jsx live
+<Tabs contained={false}>
+	<TabList>
+		<TabButton>Tab 1</TabButton>
+		<TabButton>Tab 2</TabButton>
+		<TabButton>Tab 3</TabButton>
+	</TabList>
+	<TabPanels>
+		<TabPanel>Tab panel 1.</TabPanel>
+		<TabPanel>Tab panel 2.</TabPanel>
+		<TabPanel>Tab panel 3.</TabPanel>
+	</TabPanels>
+</Tabs>
+```
+
+## Controlled
+
+Use the `activeTabIndex` and `setActiveIndex` props to control the active tab index. This is useful if you want to store the active tab state in the browser URL.
+
+```jsx live
+() => {
+	const [activeTabIndex, setActiveIndex] = React.useState(0);
+	return (
+		<Stack gap={2}>
+			<Text>Current tab index: {activeTabIndex}</Text>
+			<Tabs activeIndex={activeTabIndex} onChange={setActiveIndex}>
+				<TabList>
+					<TabButton>Tab 1</TabButton>
+					<TabButton>Tab 2</TabButton>
+					<TabButton>Tab 3</TabButton>
+				</TabList>
+				<TabPanels>
+					<TabPanel>Tab panel 1.</TabPanel>
+					<TabPanel>Tab panel 2.</TabPanel>
+					<TabPanel>Tab panel 3.</TabPanel>
+				</TabPanels>
+			</Tabs>
+		</Stack>
+	);
+};
+```

@@ -4,7 +4,7 @@ description: A horizontal list of links typically placed between the main naviga
 group: Navigation
 storybookPath: /story/navigation-subnav--basic
 figmaGalleryNodeId: 11981%3A101155
-relatedComponents: ['inpage-nav', 'link-list', 'side-nav']
+relatedComponents: ['inpage-nav', 'link-list', 'side-nav', 'tabs']
 ---
 
 ```jsx live
@@ -19,11 +19,9 @@ relatedComponents: ['inpage-nav', 'link-list', 'side-nav']
 />
 ```
 
-The `SubNav` component is a horizontal list of links that can accommodate up to 5 items. It is best suited for navigation to persistent links, or to reveal additional content on the same page. The `SubNav` component sometimes accommodates the third level of the information architecture, following the [Side nav](/components/side-nav) on a content page. If you need more space for longer lists, consider another form of navigation such as the [Side nav](/components/side-nav), [Link list](/components/link-list), [Inpage nav](/components/inpage-nav) or [Card lists](/components/card#card-lists).
+The Sub nav component is a horizontal list of links that can accommodate up to 5 items. It is best suited for navigation to persistent links, or to reveal additional content on the same page. The Sub nav component sometimes accommodates the third level of the information architecture, following the [Side nav](/components/side-nav) on a content page. If you need more space for longer lists, consider another form of navigation such as the [Side nav](/components/side-nav), [Link list](/components/link-list), [Inpage nav](/components/inpage-nav) or [Card lists](/components/card#card-lists).
 
-The `SubNav` component is designed to collapse down to a static vertical list on smaller devices. Progressive disclosure should not be used to enclose the SubNav on small screens.
-
-The background of the `SubNav` must match the background it is being placed on. For example, if `SubNav` is placed on a 'bodyAlt' background, please set the `background` prop to `bodyAlt`.
+The Sub nav component is designed to collapse down to a static vertical list on smaller devices. Progressive disclosure should not be used to enclose the SubNav on small screens.
 
 <DoHeading />
 
@@ -37,4 +35,29 @@ The background of the `SubNav` must match the background it is being placed on. 
 - use more than 5 items
 - apply more than one SubNav on a page
 - use to replicate Tabs behaviour
-- use to link to items on the same page – use Inpage nav.
+- use to link to items on the same page – use [Inpage nav](/components/inpage-nav) instead.
+
+## Sub nav vs Tabs
+
+The [Tabs](/components/tabs) component and Sub nav are visually similar, but their functionalities differ significantly.
+
+[Tabs](/components/tabs) allow users to switch between different views within a specific section of the same page and should not serve as links that navigate users to new URLs. If you need tab-like navigation, you should use the Sub nav component instead.
+
+## Background
+
+The background of the Sub nav must match the background it is being placed on. For example, if Sub nav is placed on a `bodyAlt` background, set the `background` prop to `bodyAlt`.
+
+```jsx live
+<Box background="bodyAlt" padding={1}>
+	<SubNav
+		background="bodyAlt"
+		activePath="#usage"
+		links={[
+			{ href: '#usage', label: 'Usage' },
+			{ href: '#code', label: 'Code' },
+			{ href: '#code', label: 'Content' },
+			{ href: '#accessibility', label: 'Accessibility' },
+		]}
+	/>
+</Box>
+```

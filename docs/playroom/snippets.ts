@@ -1023,6 +1023,22 @@ items={[
 		name: 'Basic',
 		code: `<Divider />`,
 	},
+	{
+		group: 'Tabs',
+		name: 'Basic',
+		code: `<Tabs>
+		<TabList>
+			<TabButton>Tab 1</TabButton>
+			<TabButton>Tab 2</TabButton>
+			<TabButton>Tab 3</TabButton>
+		</TabList>
+		<TabPanels>
+			<TabPanel>Tab panel 1.</TabPanel>
+			<TabPanel>Tab panel 2.</TabPanel>
+			<TabPanel>Tab panel 3.</TabPanel>
+		</TabPanels>
+	</Tabs>`,
+	},
 ];
 
 export default snippets;
