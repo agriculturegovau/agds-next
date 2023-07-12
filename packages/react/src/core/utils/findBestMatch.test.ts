@@ -5,6 +5,8 @@ const testLinks = [
 	{ href: '/about' },
 	{ href: '/services' },
 	{ href: '/contact' },
+	{ href: '/help' },
+	{ href: '/help/account' },
 ];
 
 describe('findBestMatch', () => {
@@ -13,6 +15,8 @@ describe('findBestMatch', () => {
 		expect(findBestMatch(testLinks, '/about')).toEqual('/about');
 		expect(findBestMatch(testLinks, '/services')).toEqual('/services');
 		expect(findBestMatch(testLinks, '/contact')).toEqual('/contact');
+		expect(findBestMatch(testLinks, '/help')).toEqual('/help');
+		expect(findBestMatch(testLinks, '/help/account')).toEqual('/help/account');
 	});
 
 	it('matches paths with trailing slashes ', () => {
@@ -20,6 +24,8 @@ describe('findBestMatch', () => {
 		expect(findBestMatch(testLinks, '/about/')).toEqual('/about');
 		expect(findBestMatch(testLinks, '/services/')).toEqual('/services');
 		expect(findBestMatch(testLinks, '/contact/')).toEqual('/contact');
+		expect(findBestMatch(testLinks, '/help/')).toEqual('/help');
+		expect(findBestMatch(testLinks, '/help/account/')).toEqual('/help/account');
 	});
 
 	it('matches nested paths', () => {
@@ -28,6 +34,8 @@ describe('findBestMatch', () => {
 			findBestMatch(testLinks, '/services/service-a/service-b/service-c')
 		).toEqual('/services');
 		expect(findBestMatch(testLinks, '/contact/message')).toEqual('/contact');
+		expect(findBestMatch(testLinks, '/help/account/create-account')).toEqual('/help/account');
+		expect(findBestMatch(testLinks, '/help/about/create-account')).toEqual('/help');
 	});
 
 	it('matches path with hashes and query params', () => {
@@ -37,4 +45,6 @@ describe('findBestMatch', () => {
 			'/contact'
 		);
 	});
+
+
 });
