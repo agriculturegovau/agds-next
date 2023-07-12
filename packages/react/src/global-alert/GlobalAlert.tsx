@@ -107,7 +107,7 @@ const GlobalAlertIconContainer = ({
 			// flexShrink={0}
 			alignItems="center"
 			justifyContent="center"
-			padding={1}
+			padding={0.75}
 			css={{
 				backgroundColor: fg,
 				color: boxPalette.backgroundBody,
