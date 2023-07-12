@@ -1,5 +1,5 @@
 import { Fragment } from 'react';
-import { tokens } from '../core';
+import { findBestMatch, tokens } from '../core';
 import { Stack } from '../stack';
 import { AppLayoutSidebarNav, NavItem } from './AppLayoutSidebarNav';
 import { useAppLayoutContext } from './AppLayoutContext';
@@ -18,6 +18,7 @@ export type AppLayoutSidebarProps = {
 
 export function AppLayoutSidebar({ activePath, items }: AppLayoutSidebarProps) {
 	const { focusMode } = useAppLayoutContext();
+	const bestMatch = findBestMatch(items.flat(), activePath);
 	return (
 		<Fragment>
 			{/* Desktop */}
@@ -37,14 +38,14 @@ export function AppLayoutSidebar({ activePath, items }: AppLayoutSidebarProps) {
 				}}
 			>
 				<AppLayoutSidebarNav
-					activePath={activePath}
+					activePath={bestMatch}
 					items={items}
 					css={{ position: 'sticky', top: 0 }}
 				/>
 			</Stack>
 			{/* Mobile */}
 			<AppLayoutSidebarDialog>
-				<AppLayoutSidebarNav activePath={activePath} items={items} />
+				<AppLayoutSidebarNav activePath={bestMatch} items={items} />
 			</AppLayoutSidebarDialog>
 		</Fragment>
 	);

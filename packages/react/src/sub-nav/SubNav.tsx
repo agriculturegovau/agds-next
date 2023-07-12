@@ -1,4 +1,5 @@
 import { PropsWithChildren } from 'react';
+import { findBestMatch } from '../core';
 import { SubNavContainer, SubNavBackground } from './SubNavContainer';
 import { SubNavList, SubNavListLink } from './SubNavList';
 
@@ -19,9 +20,10 @@ export function SubNav({
 	'aria-label': ariaLabel = 'secondary',
 	background = 'body',
 }: SubNavProps) {
+	const bestMatch = findBestMatch(links, activePath);
 	return (
 		<SubNavContainer id={id} aria-label={ariaLabel} background={background}>
-			<SubNavList links={links} activePath={activePath} />
+			<SubNavList links={links} activePath={bestMatch} />
 		</SubNavContainer>
 	);
 }

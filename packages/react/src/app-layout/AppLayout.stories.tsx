@@ -39,7 +39,7 @@ function AppLayoutTemplate({ focusMode = false }: AppLayoutProps) {
 						secondaryText: 'Orange Meat Works',
 					}}
 				/>
-				<AppLayoutSidebar activePath="#dashboard" items={navigationItems} />
+				<AppLayoutSidebar activePath="/" items={navigationItems} />
 				<AppLayoutContent>
 					<main
 						id="main-content"

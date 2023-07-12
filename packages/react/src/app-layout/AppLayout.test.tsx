@@ -17,7 +17,13 @@ import {
 
 afterEach(cleanup);
 
-function renderAppLayout({ focusMode }: { focusMode: boolean }) {
+function renderAppLayout({
+	activePath = '/establishments',
+	focusMode = false,
+}: {
+	activePath?: string;
+	focusMode?: boolean;
+}) {
 	return render(
 		<AppLayout focusMode={focusMode}>
 			<AppLayoutHeader
@@ -33,7 +39,7 @@ function renderAppLayout({ focusMode }: { focusMode: boolean }) {
 					secondaryText: 'Orange Meat Works',
 				}}
 			/>
-			<AppLayoutSidebar activePath="#dashboard" items={navigationItems} />
+			<AppLayoutSidebar activePath={activePath} items={navigationItems} />
 			<AppLayoutContent>
 				<main
 					id="main-content"
@@ -64,12 +70,12 @@ function renderAppLayout({ focusMode }: { focusMode: boolean }) {
 
 describe('AppLayout', () => {
 	it('renders correctly', () => {
-		const { container } = renderAppLayout({ focusMode: false });
+		const { container } = renderAppLayout({});
 		expect(container).toMatchSnapshot();
 	});
 
 	it('renders a valid HTML structure', () => {
-		const { container } = renderAppLayout({ focusMode: false });
+		const { container } = renderAppLayout({});
 		expect(container).toHTMLValidate({
 			extends: ['html-validate:recommended'],
 		});
@@ -81,6 +87,30 @@ describe('AppLayout', () => {
 			expect(container).toHTMLValidate({
 				extends: ['html-validate:recommended'],
 			});
+		});
+	});
+
+	describe('Highlights the correct item based on the `activePath`', () => {
+		test('matches basic path', () => {
+			const { container } = renderAppLayout({});
+			const currentPage = container.querySelector("[aria-current='page']");
+			expect(currentPage).toHaveTextContent('Establishments');
+		});
+
+		test('matches path with hash', () => {
+			const { container } = renderAppLayout({
+				activePath: '/establishments#heading-id',
+			});
+			const currentPage = container.querySelector("[aria-current='page']");
+			expect(currentPage).toHaveTextContent('Establishments');
+		});
+
+		test('matches nested path', () => {
+			const { container } = renderAppLayout({
+				activePath: '/establishments/sub-path',
+			});
+			const currentPage = container.querySelector("[aria-current='page']");
+			expect(currentPage).toHaveTextContent('Establishments');
 		});
 	});
 });
