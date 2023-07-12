@@ -98,4 +98,3 @@ export const WithMainNav: Story = {
 		</Fragment>
 	),
 };
-
