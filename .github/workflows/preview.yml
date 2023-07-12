@@ -48,6 +48,7 @@ jobs:
           yarn example-form:build
           yarn docs:build
         env:
+          GITHUB_PR_PREVIEW_NUMBER: ${{ github.event.number }}
           BASE_PATH: /pr-preview/pr-${{ github.event.number }}
           # Github has a maximum RAM size of 7 GiB by default
           # Building storybook requires extra RAM, so we are bumping the `max-old-space-size` to 6 GiB
