@@ -1,66 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`GlobalAlert renders correctly 1`] = `
-<div>
-  <section
-    aria-label="Alert title"
-    class="css-1fzkvbf-GlobalAlert"
-  >
-    <div
-      class="css-12hrmkx-boxStyles-GlobalAlert"
-    >
-      <div
-        class="css-9gg6gl-boxStyles-GlobalAlertIconContainer"
-      >
-        <svg
-          aria-hidden="false"
-          aria-label="Warning"
-          class="css-qhpjst-Icon"
-          clip-rule="evenodd"
-          focusable="true"
-          height="24"
-          role="img"
-          viewBox="0 0 24 24"
-          width="24"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            clip-rule="evenodd"
-            d="M0 20.8L12 0L24 20.8H0ZM12 7C12.5523 7 13 7.44772 13 8V13C13 13.5523 12.5523 14 12 14C11.4477 14 11 13.5523 11 13V8C11 7.44772 11.4477 7 12 7ZM12 18C12.5523 18 13 17.5523 13 17C13 16.4477 12.5523 16 12 16C11.4477 16 11 16.4477 11 17C11 17.5523 11.4477 18 12 18Z"
-            fill="currentColor"
-            fill-rule="evenodd"
-            stroke="none"
-          />
-        </svg>
-      </div>
-      <div
-        class="css-12c125f-boxStyles"
-      >
-        <div
-          class="css-1loydx5-boxStyles"
-        >
-          <h2
-            class="css-1i4j18k-boxStyles-GlobalAlert"
-          >
-            Alert title
-          </h2>
-          <div
-            class="css-14gilwc-boxStyles"
-          >
-            <p
-              class="css-6j1v6l-boxStyles-Text"
-            >
-              Alert description.
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-</div>
-`;
-
-exports[`GlobalAlert with a close button renders correctly 1`] = `
+exports[`GlobalAlert with tone info and a close button renders correctly 1`] = `
 <div>
   <section
     aria-label="Alert title"
@@ -149,6 +89,220 @@ exports[`GlobalAlert with a close button renders correctly 1`] = `
           />
         </svg>
       </button>
+    </div>
+  </section>
+</div>
+`;
+
+exports[`GlobalAlert with tone info renders correctly 1`] = `
+<div>
+  <section
+    aria-label="Alert title"
+    class="css-1fzkvbf-GlobalAlert"
+  >
+    <div
+      class="css-12hrmkx-boxStyles-GlobalAlert"
+    >
+      <div
+        class="css-9gg6gl-boxStyles-GlobalAlertIconContainer"
+      >
+        <svg
+          aria-hidden="false"
+          aria-label="Warning"
+          class="css-qhpjst-Icon"
+          clip-rule="evenodd"
+          focusable="true"
+          height="24"
+          role="img"
+          viewBox="0 0 24 24"
+          width="24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            clip-rule="evenodd"
+            d="M0 20.8L12 0L24 20.8H0ZM12 7C12.5523 7 13 7.44772 13 8V13C13 13.5523 12.5523 14 12 14C11.4477 14 11 13.5523 11 13V8C11 7.44772 11.4477 7 12 7ZM12 18C12.5523 18 13 17.5523 13 17C13 16.4477 12.5523 16 12 16C11.4477 16 11 16.4477 11 17C11 17.5523 11.4477 18 12 18Z"
+            fill="currentColor"
+            fill-rule="evenodd"
+            stroke="none"
+          />
+        </svg>
+      </div>
+      <div
+        class="css-12c125f-boxStyles"
+      >
+        <div
+          class="css-1loydx5-boxStyles"
+        >
+          <h2
+            class="css-1i4j18k-boxStyles-GlobalAlert"
+          >
+            Alert title
+          </h2>
+          <div
+            class="css-14gilwc-boxStyles"
+          >
+            <p
+              class="css-6j1v6l-boxStyles-Text"
+            >
+              Alert description.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+`;
+
+exports[`GlobalAlert with tone warning and a close button renders correctly 1`] = `
+<div>
+  <section
+    aria-label="Alert title"
+    class="css-1fzkvbf-GlobalAlert"
+  >
+    <div
+      class="css-12hrmkx-boxStyles-GlobalAlert"
+    >
+      <div
+        class="css-9gg6gl-boxStyles-GlobalAlertIconContainer"
+      >
+        <svg
+          aria-hidden="false"
+          aria-label="Warning"
+          class="css-qhpjst-Icon"
+          clip-rule="evenodd"
+          focusable="true"
+          height="24"
+          role="img"
+          viewBox="0 0 24 24"
+          width="24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            clip-rule="evenodd"
+            d="M0 20.8L12 0L24 20.8H0ZM12 7C12.5523 7 13 7.44772 13 8V13C13 13.5523 12.5523 14 12 14C11.4477 14 11 13.5523 11 13V8C11 7.44772 11.4477 7 12 7ZM12 18C12.5523 18 13 17.5523 13 17C13 16.4477 12.5523 16 12 16C11.4477 16 11 16.4477 11 17C11 17.5523 11.4477 18 12 18Z"
+            fill="currentColor"
+            fill-rule="evenodd"
+            stroke="none"
+          />
+        </svg>
+      </div>
+      <div
+        class="css-12c125f-boxStyles"
+      >
+        <div
+          class="css-1loydx5-boxStyles"
+        >
+          <h2
+            class="css-1i4j18k-boxStyles-GlobalAlert"
+          >
+            Alert title
+          </h2>
+          <div
+            class="css-14gilwc-boxStyles"
+          >
+            <p
+              class="css-6j1v6l-boxStyles-Text"
+            >
+              Alert description.
+            </p>
+          </div>
+        </div>
+      </div>
+      <button
+        aria-label="Close"
+        class="css-p9l9nl-BaseButton-GlobalAlertCloseButton"
+        type="button"
+      >
+        <span>
+          <span
+            class="css-oobk4c-Button"
+          >
+            Close
+          </span>
+          <span
+            aria-live="assertive"
+          />
+        </span>
+        <svg
+          aria-hidden="true"
+          class="css-9s3cfn-Icon"
+          clip-rule="evenodd"
+          focusable="false"
+          height="24"
+          role="img"
+          viewBox="0 0 24 24"
+          width="24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M5 19L19 5"
+          />
+          <path
+            d="M19 19L5 5"
+          />
+        </svg>
+      </button>
+    </div>
+  </section>
+</div>
+`;
+
+exports[`GlobalAlert with tone warning renders correctly 1`] = `
+<div>
+  <section
+    aria-label="Alert title"
+    class="css-1fzkvbf-GlobalAlert"
+  >
+    <div
+      class="css-12hrmkx-boxStyles-GlobalAlert"
+    >
+      <div
+        class="css-9gg6gl-boxStyles-GlobalAlertIconContainer"
+      >
+        <svg
+          aria-hidden="false"
+          aria-label="Warning"
+          class="css-qhpjst-Icon"
+          clip-rule="evenodd"
+          focusable="true"
+          height="24"
+          role="img"
+          viewBox="0 0 24 24"
+          width="24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            clip-rule="evenodd"
+            d="M0 20.8L12 0L24 20.8H0ZM12 7C12.5523 7 13 7.44772 13 8V13C13 13.5523 12.5523 14 12 14C11.4477 14 11 13.5523 11 13V8C11 7.44772 11.4477 7 12 7ZM12 18C12.5523 18 13 17.5523 13 17C13 16.4477 12.5523 16 12 16C11.4477 16 11 16.4477 11 17C11 17.5523 11.4477 18 12 18Z"
+            fill="currentColor"
+            fill-rule="evenodd"
+            stroke="none"
+          />
+        </svg>
+      </div>
+      <div
+        class="css-12c125f-boxStyles"
+      >
+        <div
+          class="css-1loydx5-boxStyles"
+        >
+          <h2
+            class="css-1i4j18k-boxStyles-GlobalAlert"
+          >
+            Alert title
+          </h2>
+          <div
+            class="css-14gilwc-boxStyles"
+          >
+            <p
+              class="css-6j1v6l-boxStyles-Text"
+            >
+              Alert description.
+            </p>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 </div>
