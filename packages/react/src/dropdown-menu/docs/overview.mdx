@@ -3,6 +3,7 @@ title: Dropdown menu
 description: The Dropdown menu component displays an accessible dropdown menu to the user, such as a set of actions or links.
 group: Layout
 storybookPath: /story/layout-dropdownmenu--basic
+relatedComponents: ['combobox', 'select']
 ---
 
 ```jsx live
@@ -22,13 +23,125 @@ storybookPath: /story/layout-dropdownmenu--basic
 </DropdownMenu>
 ```
 
+A dropdown menu displays a list of actions when triggered by a `DropdownMenuButton`. Dropdown menu's float on top of the content they sit on. Consider using them when there isn't sufficient space to display actions.
+
+Dropdown menus pose multiple usability problems which you should consider before using them:
+
+- Since the actions in a dropdown menu are hidden by default, they could be missed.
+- Dropdown menus can increase cognitive load, as users need to recall what the actions were. This can be especially problematic for users with cognitive impairments.
+- Due to their fiddly nature, some users can struggle to use dropdown menus. Elderly people and people with motor impairments in particular often have difficulty using dropdown menus.
+
 <DoHeading />
 
-- TODO
+- use a dropdown menu if there's insufficient space to display actions
+- trigger a dropdown menu on click of an element
+- keep the dropdown menu open until a user has made a selection or clicked outside the menu
+- organise actions in a logical way
+- consider listing actions in alphabetical order by default
+- group related actions
+- consider setting a maximum height when there are 10 or more actions.
 
 <DontHeading />
 
-- TODO
+- use a dropdown menu if there's space to display actions.
+- trigger a dropdown menu on hover of an element, ensure it's triggered on click.
+- make dropdown menus so long that they go beyond the browser window. This makes them difficult to reach. Consider setting a maximum height for the dropdown menu instead.
+
+## Triggers
+
+Dropdown menu’s can be triggered by a `DropdownMenuButton`, which can accept all of the same props as [Button](/components/button). This gives you flexibility in what your trigger looks like.
+
+```jsx live
+<Stack gap={2}>
+	<Flex gap={2}>
+		<DropdownMenu>
+			<DropdownMenuButton variant="primary" iconAfter={ChevronDownIcon}>
+				Edit
+			</DropdownMenuButton>
+			<DropdownMenuList>
+				<DropdownMenuItem>Item A</DropdownMenuItem>
+				<DropdownMenuItem>Item B</DropdownMenuItem>
+				<DropdownMenuItem>Item C</DropdownMenuItem>
+			</DropdownMenuList>
+		</DropdownMenu>
+		<DropdownMenu>
+			<DropdownMenuButton variant="secondary" iconAfter={ChevronDownIcon}>
+				Edit
+			</DropdownMenuButton>
+			<DropdownMenuList>
+				<DropdownMenuItem>Item A</DropdownMenuItem>
+				<DropdownMenuItem>Item B</DropdownMenuItem>
+				<DropdownMenuItem>Item C</DropdownMenuItem>
+			</DropdownMenuList>
+		</DropdownMenu>
+	</Flex>
+	<Flex gap={2}>
+		<DropdownMenu>
+			<DropdownMenuButton
+				size="sm"
+				variant="primary"
+				iconAfter={ChevronDownIcon}
+			>
+				Actions
+			</DropdownMenuButton>
+			<DropdownMenuList>
+				<DropdownMenuItem>Item A</DropdownMenuItem>
+				<DropdownMenuItem>Item B</DropdownMenuItem>
+				<DropdownMenuItem>Item C</DropdownMenuItem>
+			</DropdownMenuList>
+		</DropdownMenu>
+		<DropdownMenu>
+			<DropdownMenuButton
+				size="sm"
+				variant="secondary"
+				iconAfter={ChevronDownIcon}
+			>
+				Edit
+			</DropdownMenuButton>
+			<DropdownMenuList>
+				<DropdownMenuItem>Item A</DropdownMenuItem>
+				<DropdownMenuItem>Item B</DropdownMenuItem>
+				<DropdownMenuItem>Item C</DropdownMenuItem>
+			</DropdownMenuList>
+		</DropdownMenu>
+	</Flex>
+</Stack>
+```
+
+## Placement
+
+By default the dropdown menu is aligned to the bottom left (`bottom-start`) of the `DropdownMenuButton` when opened. It can alternatively be aligned to the bottom right (`bottom-end`) or the bottom center (`bottom`).
+
+If there's not enough space to align the menu on the desired side, the compponet will detect this and automatically flip to another side.
+
+```jsx live
+<Stack gap={2} alignItems="center">
+	<DropdownMenu placement="bottom-start">
+		<DropdownMenuButton>bottom-start (default)</DropdownMenuButton>
+		<DropdownMenuList>
+			<DropdownMenuItem>Profile</DropdownMenuItem>
+			<DropdownMenuItem>Messages</DropdownMenuItem>
+			<DropdownMenuItem>Account settings</DropdownMenuItem>
+		</DropdownMenuList>
+	</DropdownMenu>
+	<DropdownMenu placement="bottom-end">
+		<DropdownMenuButton>bottom-end</DropdownMenuButton>
+		<DropdownMenuList>
+			<DropdownMenuItem>Profile</DropdownMenuItem>
+			<DropdownMenuItem>Messages</DropdownMenuItem>
+			<DropdownMenuItem>Account settings</DropdownMenuItem>
+		</DropdownMenuList>
+		<DropdownMenu placement="bottom">
+			<DropdownMenuButton>bottom</DropdownMenuButton>
+			<DropdownMenuList>
+				<DropdownMenuItem>Profile</DropdownMenuItem>
+				<DropdownMenuItem>Messages</DropdownMenuItem>
+				<DropdownMenuItem>Account settings</DropdownMenuItem>
+			</DropdownMenuList>
+		</DropdownMenu>
+	</DropdownMenu>
+</Stack>
+```
 
 ## Icons and badges
 
@@ -54,7 +167,7 @@ Use the `endElement` prop to add decorative elements such as a [Indicator dots](
 
 ## Divider
 
-Use the `DropdownMenuDivider` component so visually divide list items.
+Use a `DropdownMenuDivider` to separate destructive actions from others.
 
 ```jsx live
 <DropdownMenu>
@@ -99,23 +212,6 @@ Use the `DropdownMenuGroup` component to group related items. Use the `label` pr
 		</DropdownMenuGroup>
 		<DropdownMenuDivider />
 		<DropdownMenuItem icon={ExitIcon}>Sign out</DropdownMenuItem>
-	</DropdownMenuList>
-</DropdownMenu>
-```
-
-## Dropdown menu button
-
-The `DropdownMenuButton` accepts all of the same props as [Button](/components/button). Use props like `variant` and `iconBefore` to visually style the dropdown menu button.
-
-```jsx live
-<DropdownMenu>
-	<DropdownMenuButton variant="secondary">
-		Open dropdown menu
-	</DropdownMenuButton>
-	<DropdownMenuList>
-		<DropdownMenuItem>Item A</DropdownMenuItem>
-		<DropdownMenuItem>Item B</DropdownMenuItem>
-		<DropdownMenuItem>Item C</DropdownMenuItem>
 	</DropdownMenuList>
 </DropdownMenu>
 ```
@@ -206,51 +302,20 @@ Use the `DropdownMenuRadioGroupLink` component to add a link to the bottom of th
 };
 ```
 
-## Placement
-
-Use the `placement` prop to change the placement of the dropdown list popover in relation to the dropdown menu button.
-
-```jsx live
-<Stack gap={2} alignItems="center">
-	<DropdownMenu placement="bottom-start">
-		<DropdownMenuButton>bottom-start (default)</DropdownMenuButton>
-		<DropdownMenuList>
-			<DropdownMenuItem>Profile</DropdownMenuItem>
-			<DropdownMenuItem>Messages</DropdownMenuItem>
-			<DropdownMenuItem>Account settings</DropdownMenuItem>
-		</DropdownMenuList>
-	</DropdownMenu>
-	<DropdownMenu placement="bottom-end">
-		<DropdownMenuButton>bottom-end</DropdownMenuButton>
-		<DropdownMenuList>
-			<DropdownMenuItem>Profile</DropdownMenuItem>
-			<DropdownMenuItem>Messages</DropdownMenuItem>
-			<DropdownMenuItem>Account settings</DropdownMenuItem>
-		</DropdownMenuList>
-		<DropdownMenu placement="bottom">
-			<DropdownMenuButton>bottom</DropdownMenuButton>
-			<DropdownMenuList>
-				<DropdownMenuItem>Profile</DropdownMenuItem>
-				<DropdownMenuItem>Messages</DropdownMenuItem>
-				<DropdownMenuItem>Account settings</DropdownMenuItem>
-			</DropdownMenuList>
-		</DropdownMenu>
-	</DropdownMenu>
-</Stack>
-```
-
 ## Accessing state
 
-If you need to access the internal state of the Menu, you can provide a render callback to `DropdownMenu`. This is useful is you want to change the appearance of the dropdown menu button based if the dropdown menu is opened or closed.
+If you need to access the internal state of the Menu, you can provide a render callback to `DropdownMenu`.
+
+This is useful is you want to change the appearance of the dropdown menu button based if the dropdown menu is opened or closed.
 
 ```jsx live
 <DropdownMenu>
 	{({ isMenuOpen }) => (
 		<React.Fragment>
 			<DropdownMenuButton
-				iconBefore={isMenuOpen ? ChevronUpIcon : ChevronDownIcon}
+				iconAfter={isMenuOpen ? ChevronUpIcon : ChevronDownIcon}
 			>
-				{isMenuOpen ? 'Open menu' : 'Close menu'}
+				{isMenuOpen ? 'Close menu' : 'Open menu'}
 			</DropdownMenuButton>
 			<DropdownMenuList>
 				<DropdownMenuItem>Profile</DropdownMenuItem>
