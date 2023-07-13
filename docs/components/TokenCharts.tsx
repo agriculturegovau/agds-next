@@ -42,7 +42,7 @@ export const BreakpointsTokenChart = () => {
 									<TableCell>{value}px and up</TableCell>
 									<TableCell>
 										{value === 0 ? (
-											'Base styles'
+											'Mobile devices'
 										) : (
 											<code>{`@media (min-width: ${value}px) { ... }`}</code>
 										)}
