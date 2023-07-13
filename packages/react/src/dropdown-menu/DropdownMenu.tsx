@@ -7,18 +7,25 @@ import { useDropdownMenuId } from './utils';
 export type DropdownMenuProps = {
 	children: ((menuState: { isMenuOpen: boolean }) => ReactNode) | ReactNode;
 	/** The placement of the dropdown list popover in relation to the dropdown menu button. */
-	placement?: 'bottom' | 'bottom-start' | 'bottom-end';
+	popoverPlacement?: 'bottom' | 'bottom-start' | 'bottom-end';
+	/** The max height of the dropdown list popover. */
+	popoverMaxHeight?: number;
 };
 
 export function DropdownMenu({
 	children,
-	placement = 'bottom-start',
+	popoverPlacement = 'bottom-start',
+	popoverMaxHeight,
 }: DropdownMenuProps) {
+	const [state, dispatch] = useReducer(reducer, initialState);
+
 	const menuId = useDropdownMenuId();
 	const listRef = useRef<HTMLDivElement>(null);
-	const popover = usePopover<HTMLButtonElement>({ placement });
 
-	const [state, dispatch] = useReducer(reducer, initialState);
+	const popover = usePopover<HTMLButtonElement>({
+		placement: popoverPlacement,
+		maxHeight: popoverMaxHeight,
+	});
 
 	function openMenu() {
 		dispatch({ type: 'OPEN_MENU' });

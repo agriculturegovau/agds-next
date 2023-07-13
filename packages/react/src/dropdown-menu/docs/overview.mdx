@@ -116,7 +116,7 @@ If there's not enough space to align the menu on the desired side, the compponet
 
 ```jsx live
 <Stack gap={2} alignItems="center">
-	<DropdownMenu placement="bottom-start">
+	<DropdownMenu popoverPlacement="bottom-start">
 		<DropdownMenuButton>bottom-start (default)</DropdownMenuButton>
 		<DropdownMenuList>
 			<DropdownMenuItem>Profile</DropdownMenuItem>
@@ -124,14 +124,14 @@ If there's not enough space to align the menu on the desired side, the compponet
 			<DropdownMenuItem>Account settings</DropdownMenuItem>
 		</DropdownMenuList>
 	</DropdownMenu>
-	<DropdownMenu placement="bottom-end">
+	<DropdownMenu popoverPlacement="bottom-end">
 		<DropdownMenuButton>bottom-end</DropdownMenuButton>
 		<DropdownMenuList>
 			<DropdownMenuItem>Profile</DropdownMenuItem>
 			<DropdownMenuItem>Messages</DropdownMenuItem>
 			<DropdownMenuItem>Account settings</DropdownMenuItem>
 		</DropdownMenuList>
-		<DropdownMenu placement="bottom">
+		<DropdownMenu popoverPlacement="bottom">
 			<DropdownMenuButton>bottom</DropdownMenuButton>
 			<DropdownMenuList>
 				<DropdownMenuItem>Profile</DropdownMenuItem>
