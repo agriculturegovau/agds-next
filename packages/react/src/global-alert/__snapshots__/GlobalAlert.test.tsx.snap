@@ -34,10 +34,10 @@ exports[`GlobalAlert with tone info and a close button renders correctly 1`] = `
         </svg>
       </div>
       <div
-        class="css-12c125f-boxStyles"
+        class="css-17ogi1a-boxStyles"
       >
         <div
-          class="css-1loydx5-boxStyles"
+          class="css-hc5oqq-boxStyles"
         >
           <h2
             class="css-1i4j18k-boxStyles-GlobalAlert"
@@ -128,10 +128,10 @@ exports[`GlobalAlert with tone info renders correctly 1`] = `
         </svg>
       </div>
       <div
-        class="css-12c125f-boxStyles"
+        class="css-17ogi1a-boxStyles"
       >
         <div
-          class="css-1loydx5-boxStyles"
+          class="css-hc5oqq-boxStyles"
         >
           <h2
             class="css-1i4j18k-boxStyles-GlobalAlert"
@@ -188,10 +188,10 @@ exports[`GlobalAlert with tone warning and a close button renders correctly 1`] 
         </svg>
       </div>
       <div
-        class="css-12c125f-boxStyles"
+        class="css-17ogi1a-boxStyles"
       >
         <div
-          class="css-1loydx5-boxStyles"
+          class="css-hc5oqq-boxStyles"
         >
           <h2
             class="css-1i4j18k-boxStyles-GlobalAlert"
@@ -282,10 +282,10 @@ exports[`GlobalAlert with tone warning renders correctly 1`] = `
         </svg>
       </div>
       <div
-        class="css-12c125f-boxStyles"
+        class="css-17ogi1a-boxStyles"
       >
         <div
-          class="css-1loydx5-boxStyles"
+          class="css-hc5oqq-boxStyles"
         >
           <h2
             class="css-1i4j18k-boxStyles-GlobalAlert"
