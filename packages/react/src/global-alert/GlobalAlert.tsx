@@ -54,8 +54,8 @@ export function GlobalAlert({
 					<Icon aria-hidden="false" aria-label="Warning" color="inherit" />
 				</GlobalAlertIconContainer>
 
-				<Flex padding={1}>
-					<Stack gap={0.5} maxWidth={tokens.maxWidth.bodyText}>
+				<Flex padding={1.5}>
+					<Stack gap={0.75} maxWidth={tokens.maxWidth.bodyText}>
 						{title ? (
 							<Heading
 								as="h2"
