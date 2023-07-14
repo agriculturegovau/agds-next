@@ -1,5 +1,15 @@
 # @ag.ds-next/react
 
+## 1.8.0
+
+### Minor Changes
+
+- 7906df7e2f: tabs: Created new component
+
+### Patch Changes
+
+- 7906df7e2f: button: Extended `BaseButton` to support `onKeyDown`, `onBlur`, `onFocus`, `role` and `tabIndex`.
+
 ## 1.7.1
 
 ### Patch Changes
