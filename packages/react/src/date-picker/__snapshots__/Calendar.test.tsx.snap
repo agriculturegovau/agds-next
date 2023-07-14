@@ -11,7 +11,7 @@ exports[`Calendar Range renders correctly 1`] = `
     data-focus-lock-disabled="false"
   >
     <div
-      class="css-1al18cj-boxStyles-CalendarContainer"
+      class="css-h1sl1h-boxStyles-CalendarContainer"
     >
       <div
         class="rdp "
@@ -314,13 +314,43 @@ exports[`Calendar Range renders correctly 1`] = `
                 >
                   <td
                     class="rdp-cell"
-                  />
+                  >
+                    <button
+                      aria-label="29th May 2022 (Sunday)"
+                      class="rdp-button_reset rdp-button rdp-day rdp-day_outside"
+                      name="day"
+                      tabindex="-1"
+                      type="button"
+                    >
+                      29
+                    </button>
+                  </td>
                   <td
                     class="rdp-cell"
-                  />
+                  >
+                    <button
+                      aria-label="30th May 2022 (Monday)"
+                      class="rdp-button_reset rdp-button rdp-day rdp-day_outside"
+                      name="day"
+                      tabindex="-1"
+                      type="button"
+                    >
+                      30
+                    </button>
+                  </td>
                   <td
                     class="rdp-cell"
-                  />
+                  >
+                    <button
+                      aria-label="31st May 2022 (Tuesday)"
+                      class="rdp-button_reset rdp-button rdp-day rdp-day_outside"
+                      name="day"
+                      tabindex="-1"
+                      type="button"
+                    >
+                      31
+                    </button>
+                  </td>
                   <td
                     class="rdp-cell"
                   >
@@ -736,10 +766,30 @@ exports[`Calendar Range renders correctly 1`] = `
                   </td>
                   <td
                     class="rdp-cell"
-                  />
+                  >
+                    <button
+                      aria-label="1st July 2022 (Friday)"
+                      class="rdp-button_reset rdp-button rdp-day rdp-day_outside"
+                      name="day"
+                      tabindex="-1"
+                      type="button"
+                    >
+                      1
+                    </button>
+                  </td>
                   <td
                     class="rdp-cell"
-                  />
+                  >
+                    <button
+                      aria-label="2nd July 2022 (Saturday)"
+                      class="rdp-button_reset rdp-button rdp-day rdp-day_outside"
+                      name="day"
+                      tabindex="-1"
+                      type="button"
+                    >
+                      2
+                    </button>
+                  </td>
                 </tr>
               </tbody>
             </table>
@@ -767,7 +817,7 @@ exports[`Calendar Single renders correctly 1`] = `
     data-focus-lock-disabled="false"
   >
     <div
-      class="css-1i5ckhj-boxStyles-CalendarContainer"
+      class="css-18lsiup-boxStyles-CalendarContainer"
     >
       <div
         class="rdp "
@@ -1070,13 +1120,43 @@ exports[`Calendar Single renders correctly 1`] = `
                 >
                   <td
                     class="rdp-cell"
-                  />
+                  >
+                    <button
+                      aria-label="29th May 2022 (Sunday)"
+                      class="rdp-button_reset rdp-button rdp-day rdp-day_outside"
+                      name="day"
+                      tabindex="-1"
+                      type="button"
+                    >
+                      29
+                    </button>
+                  </td>
                   <td
                     class="rdp-cell"
-                  />
+                  >
+                    <button
+                      aria-label="30th May 2022 (Monday)"
+                      class="rdp-button_reset rdp-button rdp-day rdp-day_outside"
+                      name="day"
+                      tabindex="-1"
+                      type="button"
+                    >
+                      30
+                    </button>
+                  </td>
                   <td
                     class="rdp-cell"
-                  />
+                  >
+                    <button
+                      aria-label="31st May 2022 (Tuesday)"
+                      class="rdp-button_reset rdp-button rdp-day rdp-day_outside"
+                      name="day"
+                      tabindex="-1"
+                      type="button"
+                    >
+                      31
+                    </button>
+                  </td>
                   <td
                     class="rdp-cell"
                   >
@@ -1486,10 +1566,30 @@ exports[`Calendar Single renders correctly 1`] = `
                   </td>
                   <td
                     class="rdp-cell"
-                  />
+                  >
+                    <button
+                      aria-label="1st July 2022 (Friday)"
+                      class="rdp-button_reset rdp-button rdp-day rdp-day_outside"
+                      name="day"
+                      tabindex="-1"
+                      type="button"
+                    >
+                      1
+                    </button>
+                  </td>
                   <td
                     class="rdp-cell"
-                  />
+                  >
+                    <button
+                      aria-label="2nd July 2022 (Saturday)"
+                      class="rdp-button_reset rdp-button rdp-day rdp-day_outside"
+                      name="day"
+                      tabindex="-1"
+                      type="button"
+                    >
+                      2
+                    </button>
+                  </td>
                 </tr>
               </tbody>
             </table>

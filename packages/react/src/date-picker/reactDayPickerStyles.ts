@@ -86,6 +86,9 @@ export const reactDayPickerStyles = (range: boolean) =>
 			},
 			'&:focus, &:active': packs.outline,
 		},
+		'.rdp-day_outside': {
+			color: boxPalette.foregroundMuted,
+		},
 		// Table
 		'.rdp-months': {
 			display: 'flex',

@@ -250,4 +250,5 @@ function useCalendarLabelContext() {
 const defaultDayPickerProps = {
 	components: calendarComponents,
 	labels: calendarLabels,
+	showOutsideDays: true,
 };
