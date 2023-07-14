@@ -5,7 +5,6 @@ exports[`GlobalAlert with tone info and a close button renders correctly 1`] = `
   <section
     aria-label="Alert title"
     class="css-1fzkvbf-GlobalAlert"
-    role="alert"
   >
     <div
       class="css-12hrmkx-boxStyles-GlobalAlert"
@@ -100,7 +99,6 @@ exports[`GlobalAlert with tone info renders correctly 1`] = `
   <section
     aria-label="Alert title"
     class="css-1fzkvbf-GlobalAlert"
-    role="alert"
   >
     <div
       class="css-12hrmkx-boxStyles-GlobalAlert"
@@ -161,7 +159,6 @@ exports[`GlobalAlert with tone warning and a close button renders correctly 1`] 
   <section
     aria-label="Alert title"
     class="css-1fzkvbf-GlobalAlert"
-    role="alert"
   >
     <div
       class="css-12hrmkx-boxStyles-GlobalAlert"
@@ -256,7 +253,6 @@ exports[`GlobalAlert with tone warning renders correctly 1`] = `
   <section
     aria-label="Alert title"
     class="css-1fzkvbf-GlobalAlert"
-    role="alert"
   >
     <div
       class="css-12hrmkx-boxStyles-GlobalAlert"
