@@ -43,12 +43,10 @@ type ListFilteringLargeProps = {
 	loading: boolean;
 	data: BusinessForAuditWithIndex[];
 	tableCaption: string;
-	/** This is for demo purposes only, and will be deleted after the next review. */
-	showsTags: boolean;
 };
 
 /** These patterns are draft designs and are not yet ready for production. */
-export const ListFilteringLarge = ({
+export const ListFiltering = ({
 	sort,
 	setSort,
 	filters,
@@ -60,12 +58,12 @@ export const ListFilteringLarge = ({
 	totalPages,
 	loading,
 	data,
-	showsTags,
+	tableCaption,
 }: ListFilteringLargeProps) => {
 	const numberOfActiveFilters = getNumberOfActiveFilters(filters);
 
 	const collapseButtonLabel = `Filters ${
-		!showsTags && numberOfActiveFilters ? `(${numberOfActiveFilters})` : ''
+		numberOfActiveFilters ? `(${numberOfActiveFilters})` : ''
 	}`;
 
 	return (
@@ -154,23 +152,13 @@ export const ListFilteringLarge = ({
 								</FormStack>
 							</Sidebar>
 
-							{showsTags ? (
+							<Box display={{ xs: 'block', lg: 'none' }}>
 								<ActiveFilters
 									filters={filters}
 									removeFilter={removeFilter}
 									resetFilters={resetFilters}
 								/>
-							) : (
-								<Box>
-									<Button
-										variant="text"
-										iconAfter={() => <CloseIcon size="sm" />}
-										onClick={resetFilters}
-									>
-										Clear filters
-									</Button>
-								</Box>
-							)}
+							</Box>
 						</Stack>
 					</Column>
 					<Column
@@ -195,7 +183,7 @@ export const ListFilteringLarge = ({
 										md: 'lg',
 									}}
 								>
-									163 Items
+									{tableCaption}
 								</Text>
 								<SortBySelect sort={sort} setSort={setSort} />
 							</Flex>
