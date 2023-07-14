@@ -43,7 +43,7 @@ export function GlobalAlert({
 	const { bg, Icon } = toneMap[tone];
 
 	return (
-		<section aria-label={title} css={{ backgroundColor: bg }}>
+		<section aria-label={title} role="alert" css={{ backgroundColor: bg }}>
 			<Flex
 				flexDirection="row"
 				css={{
