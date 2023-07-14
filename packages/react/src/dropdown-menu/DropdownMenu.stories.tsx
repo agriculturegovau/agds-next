@@ -54,6 +54,28 @@ export const Basic: StoryObj = {
 	},
 };
 
+export const LongNames: StoryObj = {
+	render: function Render() {
+		return (
+			<DropdownMenu>
+				<DropdownMenuButton>Toggle dropdown menu</DropdownMenuButton>
+				<DropdownMenuPanel>
+					<DropdownMenuItem onClick={() => console.log('Profile')}>
+						Profile Profile Profile Profile Profile Profile Profile Profile
+						Profile Profile Profile Profile
+					</DropdownMenuItem>
+					<DropdownMenuItem onClick={() => console.log('Messages')}>
+						Messages
+					</DropdownMenuItem>
+					<DropdownMenuItem onClick={() => console.log('Account settings')}>
+						Account settings
+					</DropdownMenuItem>
+				</DropdownMenuPanel>
+			</DropdownMenu>
+		);
+	},
+};
+
 export const AccessingState: StoryObj = {
 	render: function Render() {
 		return (

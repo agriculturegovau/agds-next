@@ -2,6 +2,19 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { Logo } from '../ag-branding';
 import { AppLayout } from './AppLayout';
 import { AppLayoutHeader } from './AppLayoutHeader';
+import { ExampleAccountDropdown, exampleData } from './test-utils';
+
+const accountDetails = {
+	name: exampleData.userNames.regular,
+	secondaryText: 'My account',
+	dropdown: (
+		<ExampleAccountDropdown
+			businesses={exampleData.businessNames.regular}
+			selectedBusinessName={exampleData.businessNames.regular[0]}
+			onBusinessChange={console.log}
+		/>
+	),
+};
 
 const meta: Meta<typeof AppLayoutHeader> = {
 	title: 'Layout/AppLayout/AppLayoutHeader',
@@ -15,11 +28,7 @@ const meta: Meta<typeof AppLayoutHeader> = {
 		subLine: 'Supporting Australian agricultural exports',
 		logo: <Logo />,
 		badgeLabel: 'Beta',
-		accountDetails: {
-			href: '#account',
-			name: 'Toto Wolff',
-			secondaryText: 'Orange Meat Works',
-		},
+		accountDetails,
 	},
 	render: (props) => (
 		<AppLayout focusMode={false}>
@@ -54,27 +63,36 @@ export const WithoutSubline: Story = {
 	},
 };
 
-export const WithoutUser: Story = {
+export const WithoutAccount: Story = {
 	args: {
 		accountDetails: undefined,
 	},
 };
 
-export const WithoutUserSecondaryText: Story = {
+export const WithoutDropdown: Story = {
 	args: {
 		accountDetails: {
-			href: '#account',
-			name: 'Toto Wolff',
+			name: exampleData.userNames.regular,
 		},
 	},
 };
 
-export const WithLongUserName: Story = {
+export const WithAccountLink: Story = {
 	args: {
 		accountDetails: {
-			href: '#account',
-			name: 'Mobutu Sese Seko Kuku Ngbendu Wa Za Banga',
-			secondaryText: 'Orange Meat Works',
+			name: exampleData.userNames.regular,
+			secondaryText: exampleData.businessNames.regular[0],
+			href: '#',
+		},
+	},
+};
+
+export const WithAccountLinkLongName: Story = {
+	args: {
+		accountDetails: {
+			name: exampleData.userNames.long,
+			secondaryText: exampleData.businessNames.regular[0],
+			href: '#',
 		},
 	},
 };
