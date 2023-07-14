@@ -537,7 +537,7 @@ export const WesbsiteLayout = {
 	name: 'Website layout',
 	render: (args: KitchenSinkProps) => (
 		<Fragment>
-			<GlobalAlert onDismiss={console.log}>
+			<GlobalAlert onDismiss={console.log} title="Scheduled outage">
 				<Text as="p">
 					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce massa
 					nibh, aliquam vel dolor non, gravida porttitor nulla. Pellentesque
@@ -555,7 +555,7 @@ export const ApplicationLayout = {
 	name: 'Application layout',
 	render: (args: KitchenSinkProps) => (
 		<Fragment>
-			<GlobalAlert onDismiss={console.log}>
+			<GlobalAlert onDismiss={console.log} title="Scheduled outage">
 				<Text as="p">
 					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce massa
 					nibh, aliquam vel dolor non, gravida porttitor nulla. Pellentesque
