@@ -7,7 +7,7 @@ import {
 import { mergeRefs, useClickOutside } from '../core';
 import { Flex, FlexProps } from '../flex';
 import { Popover } from '../_popover';
-import { useMenuContext } from './DropdownMenuContext';
+import { useDropdownMenuContext } from './DropdownMenuContext';
 import { useDropdownMenuControlIds } from './utils';
 
 export type DropdownMenuListProps = PropsWithChildren<{
@@ -16,7 +16,7 @@ export type DropdownMenuListProps = PropsWithChildren<{
 
 export function DropdownMenuList({ children, palette }: DropdownMenuListProps) {
 	const { listRef, isMenuOpen, closeMenu, popover, activeDescendantId } =
-		useMenuContext();
+		useDropdownMenuContext();
 
 	const { buttonId, listId } = useDropdownMenuControlIds();
 
@@ -77,7 +77,7 @@ function useKeydownNavigation() {
 		goToLastMenuItem,
 		clickSelectedItem,
 		updateDescendantSearchTerm,
-	} = useMenuContext();
+	} = useDropdownMenuContext();
 
 	function onKeyDown(event: KeyboardEvent<HTMLDivElement>) {
 		switch (event.code) {

@@ -1,7 +1,7 @@
 import { createContext, useContext, RefObject } from 'react';
 import { usePopover } from '../_popover';
 
-export type MenuContextType = {
+export type DropdownMenuContextType = {
 	// Menu state
 	isMenuOpen: boolean;
 	openMenu: () => void;
@@ -22,11 +22,11 @@ export type MenuContextType = {
 	popover: ReturnType<typeof usePopover<HTMLButtonElement>>;
 };
 
-export const DropdownMenuContext = createContext<MenuContextType | undefined>(
-	undefined
-);
+export const DropdownMenuContext = createContext<
+	DropdownMenuContextType | undefined
+>(undefined);
 
-export function useMenuContext() {
+export function useDropdownMenuContext() {
 	const context = useContext(DropdownMenuContext);
 
 	if (typeof context === 'undefined') {

@@ -3,7 +3,7 @@ import { boxPalette, packs, tokens } from '../core';
 import { Flex } from '../flex';
 import { Stack } from '../stack';
 import { Text } from '../text';
-import { useMenuContext } from './DropdownMenuContext';
+import { useDropdownMenuContext } from './DropdownMenuContext';
 import { useDropdownMenuItemId } from './utils';
 
 export type DropdownMenuRadioItemProps = PropsWithChildren<{
@@ -27,7 +27,7 @@ export function DropdownMenuRadioItem({
 	secondaryText,
 	id: idProp,
 }: DropdownMenuRadioItemProps) {
-	const { activeDescendantId, closeMenu } = useMenuContext();
+	const { activeDescendantId, closeMenu } = useDropdownMenuContext();
 
 	const id = useDropdownMenuItemId(idProp);
 

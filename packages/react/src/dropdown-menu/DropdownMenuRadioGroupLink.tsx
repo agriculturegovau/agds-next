@@ -1,6 +1,6 @@
 import { Box } from '../box';
 import { LinkProps, useLinkComponent } from '../core';
-import { useMenuContext } from './DropdownMenuContext';
+import { useDropdownMenuContext } from './DropdownMenuContext';
 import { useDropdownMenuItemId } from './utils';
 
 export type DropdownMenuRadioGroupLinkProps = LinkProps;
@@ -9,7 +9,7 @@ export function DropdownMenuRadioGroupLink({
 	id: idProp,
 	...props
 }: DropdownMenuRadioGroupLinkProps) {
-	const { activeDescendantId } = useMenuContext();
+	const { activeDescendantId } = useDropdownMenuContext();
 	const Link = useLinkComponent();
 
 	const id = useDropdownMenuItemId(idProp);

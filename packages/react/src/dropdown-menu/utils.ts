@@ -1,5 +1,5 @@
 import { useId } from '../core';
-import { useMenuContext } from './DropdownMenuContext';
+import { useDropdownMenuContext } from './DropdownMenuContext';
 
 /**
  * Generates the ID of the dropdown menu container element
@@ -15,7 +15,7 @@ export function useDropdownMenuId() {
  * The `menuId` prefix ensures that multiple dropdowns can be placed on the same page
  */
 export function useDropdownMenuControlIds() {
-	const { menuId } = useMenuContext();
+	const { menuId } = useDropdownMenuContext();
 	return {
 		buttonId: `${menuId}-button`,
 		listId: `${menuId}-list`,
@@ -27,7 +27,7 @@ export function useDropdownMenuControlIds() {
  * The `menuId` prefix ensures that multiple dropdowns can be placed on the same page
  */
 export function useDropdownMenuItemId(idProp: string | undefined) {
-	const { menuId } = useMenuContext();
+	const { menuId } = useDropdownMenuContext();
 	const autoId = useId();
 	return idProp ?? `${menuId}-item-${autoId}`;
 }

@@ -2,7 +2,7 @@ import { ComponentType, PropsWithChildren, ReactNode } from 'react';
 import { boxPalette, forwardRefWithAs } from '../core';
 import { Flex } from '../flex';
 import { IconProps } from '../icon';
-import { useMenuContext } from './DropdownMenuContext';
+import { useDropdownMenuContext } from './DropdownMenuContext';
 import { useDropdownMenuItemId } from './utils';
 
 export type DropdownMenuItemProps = PropsWithChildren<{
@@ -29,7 +29,7 @@ export const DropdownMenuItem = forwardRefWithAs<'div', DropdownMenuItemProps>(
 		},
 		ref
 	) {
-		const { activeDescendantId, closeMenu } = useMenuContext();
+		const { activeDescendantId, closeMenu } = useDropdownMenuContext();
 
 		function onClick() {
 			onClickProp?.();

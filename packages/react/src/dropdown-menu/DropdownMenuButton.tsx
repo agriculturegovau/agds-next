@@ -1,7 +1,7 @@
-import { forwardRef } from 'react';
+import { ForwardedRef, forwardRef } from 'react';
 import { Button, ButtonProps } from '../button';
 import { mergeRefs } from '../core';
-import { useMenuContext } from './DropdownMenuContext';
+import { useDropdownMenuContext } from './DropdownMenuContext';
 import { useDropdownMenuControlIds } from './utils';
 
 export type DropdownMenuButtonProps = Omit<
@@ -13,22 +13,23 @@ export const DropdownMenuButton = forwardRef<
 	HTMLButtonElement,
 	DropdownMenuButtonProps
 >(function DropdownMenuButton({ variant = 'text', ...props }, forwardedRef) {
-	const { isMenuOpen, toggleMenu, popover } = useMenuContext();
-	const { buttonId, listId } = useDropdownMenuControlIds();
-
-	const { ref: popoverRef } = popover.getReferenceProps();
-	const mergedRefs = mergeRefs([popoverRef, forwardedRef]);
-
-	return (
-		<Button
-			ref={mergedRefs}
-			variant={variant}
-			id={buttonId}
-			aria-haspopup="true"
-			aria-controls={listId}
-			aria-expanded={isMenuOpen}
-			onClick={toggleMenu}
-			{...props}
-		/>
-	);
+	const dropdownProps = useDropdownMenuButton(forwardedRef);
+	return <Button variant={variant} {...dropdownProps} {...props} />;
 });
+
+export function useDropdownMenuButton(
+	forwardedRef?: ForwardedRef<HTMLButtonElement>
+) {
+	const { isMenuOpen, toggleMenu, popover } = useDropdownMenuContext();
+	const { buttonId, listId } = useDropdownMenuControlIds();
+	const { ref: popoverRef } = popover.getReferenceProps();
+
+	return {
+		ref: mergeRefs([popoverRef, forwardedRef ?? null]),
+		id: buttonId,
+		'aria-haspopup': true,
+		'aria-controls': listId,
+		'aria-expanded': isMenuOpen,
+		onClick: toggleMenu,
+	};
+}
