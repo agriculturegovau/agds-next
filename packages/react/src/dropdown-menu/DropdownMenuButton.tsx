@@ -1,4 +1,4 @@
-import { ForwardedRef, forwardRef } from 'react';
+import { ForwardedRef, forwardRef, KeyboardEvent } from 'react';
 import { Button, ButtonProps } from '../button';
 import { mergeRefs } from '../core';
 import { useDropdownMenuContext } from './DropdownMenuContext';
@@ -20,9 +20,30 @@ export const DropdownMenuButton = forwardRef<
 export function useDropdownMenuButton(
 	forwardedRef?: ForwardedRef<HTMLButtonElement>
 ) {
-	const { isMenuOpen, toggleMenu, popover } = useDropdownMenuContext();
+	const {
+		isMenuOpen,
+		openMenu,
+		toggleMenu,
+		goToFirstMenuItem,
+		goToLastMenuItem,
+		popover,
+	} = useDropdownMenuContext();
 	const { buttonId, listId } = useDropdownMenuControlIds();
 	const { ref: popoverRef } = popover.getReferenceProps();
+
+	function onKeyDown(event: KeyboardEvent<HTMLButtonElement>) {
+		switch (event.key) {
+			case 'ArrowDown':
+				event.preventDefault();
+				openMenu();
+				goToFirstMenuItem();
+				break;
+			case 'ArrowUp':
+				event.preventDefault();
+				openMenu();
+				goToLastMenuItem();
+		}
+	}
 
 	return {
 		ref: mergeRefs([popoverRef, forwardedRef ?? null]),
@@ -31,5 +52,6 @@ export function useDropdownMenuButton(
 		'aria-controls': listId,
 		'aria-expanded': isMenuOpen,
 		onClick: toggleMenu,
+		onKeyDown,
 	};
 }

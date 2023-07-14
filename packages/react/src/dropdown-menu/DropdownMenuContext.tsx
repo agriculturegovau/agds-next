@@ -12,7 +12,6 @@ export type DropdownMenuContextType = {
 	goToNextMenuItem: () => void;
 	goToFirstMenuItem: () => void;
 	goToLastMenuItem: () => void;
-	clickSelectedItem: () => void;
 	// Descendants
 	activeDescendantId: string | undefined;
 	updateDescendantSearchTerm: (eventKey: string) => void;

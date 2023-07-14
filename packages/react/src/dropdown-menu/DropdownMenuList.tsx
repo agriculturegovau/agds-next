@@ -1,9 +1,4 @@
-import {
-	PropsWithChildren,
-	useEffect,
-	KeyboardEvent,
-	useCallback,
-} from 'react';
+import { PropsWithChildren, KeyboardEvent, useCallback } from 'react';
 import { mergeRefs, useClickOutside } from '../core';
 import { Flex, FlexProps } from '../flex';
 import { Popover } from '../_popover';
@@ -30,11 +25,6 @@ export function DropdownMenuList({ children, palette }: DropdownMenuListProps) {
 		handleClickOutside
 	);
 
-	// When the dropdown is opened, the menu list should be focused
-	useEffect(() => {
-		if (isMenuOpen) listRef.current?.focus();
-	}, [listRef, isMenuOpen]);
-
 	const { onKeyDown } = useKeydownNavigation();
 
 	const { style, ref: popoverRef } = popover.getPopoverProps();
@@ -46,7 +36,6 @@ export function DropdownMenuList({ children, palette }: DropdownMenuListProps) {
 			// @ts-ignore
 			ref={mergeRefs([popoverRef, listRef])}
 			role="menu"
-			tabIndex={-1}
 			id={listId}
 			aria-labelledby={buttonId}
 			aria-activedescendant={activeDescendantId}
@@ -75,7 +64,6 @@ function useKeydownNavigation() {
 		goToNextMenuItem,
 		goToFirstMenuItem,
 		goToLastMenuItem,
-		clickSelectedItem,
 		updateDescendantSearchTerm,
 	} = useDropdownMenuContext();
 
@@ -100,10 +88,6 @@ function useKeydownNavigation() {
 			case 'Escape':
 				event.preventDefault();
 				closeMenu();
-				break;
-			case 'Enter':
-				event.preventDefault();
-				clickSelectedItem();
 				break;
 			case 'Tab':
 				// Don't prevent default

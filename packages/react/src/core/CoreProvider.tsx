@@ -36,6 +36,8 @@ export type LinkProps = PropsWithChildren<{
 	role?: NativeLinkProps['role'];
 	/** Where to display the linked URL, as the name for a browsing context (a tab, window, or <iframe>). */
 	target?: NativeLinkProps['target'];
+	/** Tab index */
+	tabIndex?: number;
 }>;
 
 export const coreContext = createContext({

@@ -53,10 +53,19 @@ export const initialState: State = {
 export function reducer(state: State, action: Action): State {
 	switch (action.type) {
 		case 'OPEN_MENU':
-			return { ...state, isMenuOpen: true };
+			return {
+				...state,
+				isMenuOpen: true,
+				activeDescendantIndex: 0,
+			};
 		case 'CLOSE_MENU':
 			// When the menu closes, the state of the dropdown menu should be reset
-			return initialState;
+			return {
+				...state,
+				isMenuOpen: false,
+				activeDescendantIndex: -1,
+				itemSearchTerm: '',
+			};
 		case 'SET_DESCENDANT_NODES':
 			return {
 				...state,

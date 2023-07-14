@@ -63,14 +63,7 @@ export function DropdownMenu({
 		});
 	}
 
-	function clickSelectedItem() {
-		if (state.activeDescendantIndex === -1) return;
-		state.descendantNodes?.[state.activeDescendantIndex]?.click();
-		closeMenu();
-	}
-
 	useEffect(() => {
-		if (!state.isMenuOpen) return;
 		dispatch({
 			type: 'SET_DESCENDANT_NODES',
 			payload: {
@@ -79,12 +72,18 @@ export function DropdownMenu({
 				) as NodeListOf<HTMLDivElement> | undefined,
 			},
 		});
-	}, [state.isMenuOpen, children]);
+	}, [children]);
 
-	const activeDescendantId =
+	const activeDescendant =
 		state.activeDescendantIndex === -1
 			? undefined
-			: state.descendantNodes?.[state.activeDescendantIndex]?.id;
+			: state.descendantNodes?.[state.activeDescendantIndex];
+
+	const activeDescendantId = activeDescendant?.id;
+
+	useEffect(() => {
+		if (activeDescendant) activeDescendant.focus();
+	}, [activeDescendant]);
 
 	return (
 		<DropdownMenuContext.Provider
@@ -99,7 +98,6 @@ export function DropdownMenu({
 				goToNextMenuItem,
 				goToFirstMenuItem,
 				goToLastMenuItem,
-				clickSelectedItem,
 				// Active descendant state
 				activeDescendantId,
 				updateDescendantSearchTerm,

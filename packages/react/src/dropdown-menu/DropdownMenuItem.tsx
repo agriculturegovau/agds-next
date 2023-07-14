@@ -1,5 +1,11 @@
-import { ComponentType, PropsWithChildren, ReactNode } from 'react';
-import { boxPalette, forwardRefWithAs } from '../core';
+import {
+	ComponentType,
+	KeyboardEvent,
+	PropsWithChildren,
+	ReactNode,
+	useRef,
+} from 'react';
+import { boxPalette, forwardRefWithAs, mergeRefs } from '../core';
 import { Flex } from '../flex';
 import { IconProps } from '../icon';
 import { useDropdownMenuContext } from './DropdownMenuContext';
@@ -27,9 +33,20 @@ export const DropdownMenuItem = forwardRefWithAs<'div', DropdownMenuItemProps>(
 			id: idProp,
 			...props
 		},
-		ref
+		forwardedRef
 	) {
+		const ref = useRef<HTMLDivElement>(null);
 		const { activeDescendantId, closeMenu } = useDropdownMenuContext();
+
+		function onKeyDown(event: KeyboardEvent<HTMLDivElement>) {
+			switch (event.key) {
+				case 'Enter':
+					event.preventDefault();
+					onClickProp?.();
+					closeMenu();
+					break;
+			}
+		}
 
 		function onClick() {
 			onClickProp?.();
@@ -42,11 +59,12 @@ export const DropdownMenuItem = forwardRefWithAs<'div', DropdownMenuItemProps>(
 		return (
 			<Flex
 				as={as}
-				ref={ref}
+				ref={mergeRefs([forwardedRef, ref])}
 				role="menuitem"
-				tabIndex={-1}
+				tabIndex={isActiveItem ? 0 : -1}
 				id={id}
 				onClick={onClick}
+				onKeyDown={onKeyDown}
 				alignItems="center"
 				justifyContent="space-between"
 				background={isActiveItem ? 'shade' : 'body'}
@@ -62,6 +80,10 @@ export const DropdownMenuItem = forwardRefWithAs<'div', DropdownMenuItemProps>(
 					}),
 					'&:hover': {
 						backgroundColor: boxPalette.backgroundShade,
+					},
+					'&:focus': {
+						zIndex: 1,
+						outlineOffset: -3,
 					},
 				}}
 				{...props}

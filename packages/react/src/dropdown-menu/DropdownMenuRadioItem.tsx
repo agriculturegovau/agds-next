@@ -43,12 +43,13 @@ export function DropdownMenuRadioItem({
 			role="menuitemradio"
 			aria-checked={checked}
 			id={id}
+			tabIndex={isActiveItem ? 0 : -1}
 			onClick={onClick}
 			alignItems="center"
 			justifyContent="space-between"
-			background={isActiveItem ? 'shade' : 'body'}
 			gap={1}
 			padding={1}
+			focus
 			css={{
 				cursor: 'pointer',
 				color: boxPalette.foregroundAction,

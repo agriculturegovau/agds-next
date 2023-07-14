@@ -1,5 +1,5 @@
 import { Box } from '../box';
-import { LinkProps, useLinkComponent } from '../core';
+import { LinkProps, mapSpacing, useLinkComponent } from '../core';
 import { useDropdownMenuContext } from './DropdownMenuContext';
 import { useDropdownMenuItemId } from './utils';
 
@@ -19,13 +19,13 @@ export function DropdownMenuRadioGroupLink({
 		<Box
 			as={Link}
 			id={id}
-			display="block"
+			tabIndex={isActiveItem ? 0 : -1}
+			display="inline-block"
 			role="menuitem"
 			fontSize="xs"
-			padding={1}
-			paddingTop={0}
-			background={isActiveItem ? 'shade' : undefined}
 			link
+			focus
+			css={{ margin: mapSpacing(1), marginTop: 0 }}
 			{...props}
 		/>
 	);
