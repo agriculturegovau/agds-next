@@ -11,6 +11,7 @@ import { Text } from '@ag.ds-next/react/text';
 import { Button } from '@ag.ds-next/react/button';
 import { CloseIcon } from '@ag.ds-next/react/icon';
 import { Box } from '@ag.ds-next/react/box';
+import { SideBar } from '@ag.ds-next/react/side-bar';
 import { SortBySelect } from './components/SortBySelect';
 import { FilterSearchInput } from './components/FilterSearchInput';
 import { FilterStatusSelect } from './components/FilterStatusSelect';
@@ -21,7 +22,6 @@ import { FilterAssigneeSelect } from './components/FilterAssigneeSelect';
 import { DataList } from './components/DataList';
 import { FilterDestinationsSelect } from './components/FilterDestinationsSelect';
 import { FilterServicesSelect } from './components/FilterServicesSelect';
-import { Sidebar } from './components/Sidebar';
 import { getNumberOfActiveFilters } from './lib/utils';
 import { ActiveFilters } from './components/ActiveFilters';
 
@@ -85,7 +85,7 @@ export const ListFiltering = ({
 				<Columns gap={{ xs: 1, md: 3 }}>
 					<Column columnSpan={{ xs: 12, md: 4 }}>
 						<Stack gap={1}>
-							<Sidebar
+							<SideBar
 								collapseButtonLabel={collapseButtonLabel}
 								title="Filters"
 								action={
@@ -150,7 +150,7 @@ export const ListFiltering = ({
 										value={filters.requestDate}
 									/>
 								</FormStack>
-							</Sidebar>
+							</SideBar>
 
 							<Box display={{ xs: 'block', lg: 'none' }}>
 								<ActiveFilters

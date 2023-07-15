@@ -16,19 +16,19 @@ import { ChevronDownIcon } from '@ag.ds-next/react/icon';
 import { BaseButton } from '@ag.ds-next/react/button';
 import { ContentBleed } from '@ag.ds-next/react/content';
 
-export type SidebarProps = {
+export type SideBarProps = {
 	action?: ReactNode;
 	children: ReactNode;
 	title: string;
 	collapseButtonLabel: string;
 };
 
-export function Sidebar({
+export function SideBar({
 	action,
 	children,
 	title,
 	collapseButtonLabel,
-}: SidebarProps) {
+}: SideBarProps) {
 	const { bodyId, buttonId, navId, titleId } = useSideNavIds();
 	const ref = useRef<HTMLDivElement>(null);
 	const [isOpen, onToggle] = useToggleState(false, true);
@@ -60,14 +60,14 @@ export function Sidebar({
 	return (
 		<ContentBleed visible={{ md: false }}>
 			<Box as="aside">
-				<SidebarCollapseButton
+				<SideBarCollapseButton
 					isOpen={isOpen}
 					onClick={onToggle}
 					ariaControls={bodyId}
 					id={buttonId}
 				>
 					{collapseButtonLabel}
-				</SidebarCollapseButton>
+				</SideBarCollapseButton>
 				<animated.div
 					id={bodyId}
 					// As this component looks similar to an accordion in smaller screen sizes, we need to conditionally add some aria attributes
@@ -104,7 +104,7 @@ export function Sidebar({
 							md: 0,
 						}}
 					>
-						<SidebarTitle id={titleId} title={title} action={action} />
+						<SideBarTitle id={titleId} title={title} action={action} />
 						{children}
 					</Stack>
 				</animated.div>
@@ -113,14 +113,14 @@ export function Sidebar({
 	);
 }
 
-export type SidebarTitleProps = PropsWithChildren<{
+export type SideBarTitleProps = PropsWithChildren<{
 	id: string;
 	title: string;
 	action?: ReactNode;
 }>;
 
-/** Title of the Sidebar nav */
-function SidebarTitle({ title, id, action }: SidebarTitleProps) {
+/** Title of the SideBar nav */
+function SideBarTitle({ title, id, action }: SideBarTitleProps) {
 	return (
 		<Flex
 			borderBottom
@@ -138,21 +138,21 @@ function SidebarTitle({ title, id, action }: SidebarTitleProps) {
 	);
 }
 
-type SidebarCollapseButtonProps = PropsWithChildren<{
+type SideBarCollapseButtonProps = PropsWithChildren<{
 	ariaControls: string;
 	id: string;
 	isOpen: boolean;
 	onClick: () => void;
 }>;
 
-/** Button that toggles the Sidebar. */
-const SidebarCollapseButton = ({
+/** Button that toggles the SideBar. */
+const SideBarCollapseButton = ({
 	ariaControls,
 	children,
 	id,
 	isOpen,
 	onClick,
-}: SidebarCollapseButtonProps) => {
+}: SideBarCollapseButtonProps) => {
 	return (
 		<Flex
 			as={BaseButton}
