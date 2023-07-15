@@ -15,11 +15,14 @@ import { useSideNavIds } from '@ag.ds-next/react/src/side-nav/utils';
 import { ChevronDownIcon } from '@ag.ds-next/react/icon';
 import { BaseButton } from '@ag.ds-next/react/button';
 import { ContentBleed } from '@ag.ds-next/react/content';
+import { SideBarTitle } from './SideBarTitle';
 
 export type SideBarProps = {
 	action?: ReactNode;
 	children: ReactNode;
 	title: string;
+	titleHref?: string;
+	subTitle?: string;
 	collapseButtonLabel: string;
 };
 
@@ -27,6 +30,8 @@ export function SideBar({
 	action,
 	children,
 	title,
+	titleHref,
+	subTitle,
 	collapseButtonLabel,
 }: SideBarProps) {
 	const { bodyId, buttonId, navId, titleId } = useSideNavIds();
@@ -104,37 +109,18 @@ export function SideBar({
 							md: 0,
 						}}
 					>
-						<SideBarTitle id={titleId} title={title} action={action} />
+						<SideBarTitle
+							id={titleId}
+							title={title}
+							titleHref={titleHref}
+							action={action}
+							subTitle={subTitle}
+						/>
 						{children}
 					</Stack>
 				</animated.div>
 			</Box>
 		</ContentBleed>
-	);
-}
-
-export type SideBarTitleProps = PropsWithChildren<{
-	id: string;
-	title: string;
-	action?: ReactNode;
-}>;
-
-/** Title of the SideBar nav */
-function SideBarTitle({ title, id, action }: SideBarTitleProps) {
-	return (
-		<Flex
-			borderBottom
-			paddingY={1}
-			justifyContent="space-between"
-			alignItems="center"
-			display={{ xs: 'none', md: 'flex' }}
-			gap={1}
-		>
-			<Box as="h2" id={id} color="text" fontSize="lg" lineHeight="heading">
-				{title}
-			</Box>
-			{action}
-		</Flex>
 	);
 }
 
