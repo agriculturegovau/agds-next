@@ -48,7 +48,7 @@ type UsePopoverOptions = {
 };
 
 export function usePopover<RT extends ReferenceType = ReferenceType>(
-	options: UsePopoverOptions | undefined
+	options?: UsePopoverOptions
 ) {
 	const {
 		placement = 'bottom-start',
