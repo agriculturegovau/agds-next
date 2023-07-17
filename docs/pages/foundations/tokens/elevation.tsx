@@ -10,9 +10,8 @@ import {
 	TableBody,
 	TableCell,
 } from '@ag.ds-next/react/table';
+import { TokenLayout, TOKEN_PAGES } from '../../../components/TokenLayout';
 import { DocumentTitle } from '../../../components/DocumentTitle';
-import { TokenLayout } from '../../../components/TokenLayout';
-import { getTokensBreadcrumbs, TOKEN_PAGES } from '../../../content/tokens';
 
 const tokenDescriptions: Record<
 	keyof typeof tokens.zIndex,
@@ -79,7 +78,6 @@ export default function TokensElevationPage() {
 			<TokenLayout
 				title={TOKEN_PAGES.elevation.pageTitle}
 				description={TOKEN_PAGES.elevation.description}
-				breadcrumbs={getTokensBreadcrumbs(TOKEN_PAGES.elevation)}
 				editPath="/docs/pages/foundations/tokens/max-width.tsx"
 			>
 				<TableWrapper>

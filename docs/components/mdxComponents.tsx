@@ -32,6 +32,7 @@ import { Code } from './Code';
 import { ComponentPropsTable } from './ComponentPropsTable';
 import { DoHeading, DontHeading } from './DoDontHeading';
 import { AllIconsPlayground } from './AllIconsPlayground';
+import { BreakpointsTokenChart } from './TokenCharts';
 
 export const mdxComponents: MDXRemoteProps['components'] = {
 	Fragment,
@@ -190,4 +191,5 @@ export const mdxComponents: MDXRemoteProps['components'] = {
 			{children}
 		</ol>
 	),
+	BreakpointsTokenChart,
 };

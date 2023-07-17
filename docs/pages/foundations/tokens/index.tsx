@@ -5,15 +5,16 @@ import { Stack } from '@ag.ds-next/react/stack';
 import { Card, CardInner, CardLink } from '@ag.ds-next/react/card';
 import { Columns } from '@ag.ds-next/react/columns';
 import { Text } from '@ag.ds-next/react/text';
+import { tokens } from '@ag.ds-next/react/core';
 import { DocumentTitle } from '../../../components/DocumentTitle';
 import { SubcategoryPageTemplate } from '../../../components/SubcategoryPageTemplate';
-import { TOKEN_NAV_LINKS } from '../../../content/tokens';
+import { TOKEN_NAV_LINKS } from '../../../components/TokenLayout';
 import {
 	getFoundation,
 	getFoundationBreadcrumbs,
 } from '../../../lib/mdx/foundations';
 
-export default function IconsPage({
+export default function TokensPage({
 	breadcrumbs,
 	description,
 	title,
@@ -26,6 +27,9 @@ export default function IconsPage({
 				breadcrumbs={breadcrumbs}
 				editPath="/docs/pages/foundations/tokens/index.tsx"
 			>
+				<Text as="p" fontSize="md" maxWidth={tokens.maxWidth.bodyText}>
+					{description}
+				</Text>
 				<Columns as="ul" cols={{ xs: 1, sm: 2, lg: 3 }}>
 					{TOKEN_NAV_LINKS.map(({ href, label, description }) => (
 						<Card key={href} as="li" clickable shadow>

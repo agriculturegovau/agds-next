@@ -12,8 +12,7 @@ import {
 } from '@ag.ds-next/react/table';
 import { Text } from '@ag.ds-next/react/text';
 import { DocumentTitle } from '../../../components/DocumentTitle';
-import { TokenLayout } from '../../../components/TokenLayout';
-import { getTokensBreadcrumbs, TOKEN_PAGES } from '../../../content/tokens';
+import { TokenLayout, TOKEN_PAGES } from '../../../components/TokenLayout';
 
 const tokenDescriptions: Record<
 	Exclude<keyof (typeof tokens)['maxWidth'], 'field'>,
@@ -34,13 +33,12 @@ export default function TokensMaxWidthsPage() {
 	return (
 		<>
 			<DocumentTitle
-				title={TOKEN_PAGES.maxWidth.pageTitle}
-				description={TOKEN_PAGES.maxWidth.description}
+				title={TOKEN_PAGES['max-width'].pageTitle}
+				description={TOKEN_PAGES['max-width'].description}
 			/>
 			<TokenLayout
-				title={TOKEN_PAGES.maxWidth.pageTitle}
-				description={TOKEN_PAGES.maxWidth.description}
-				breadcrumbs={getTokensBreadcrumbs(TOKEN_PAGES.maxWidth)}
+				title={TOKEN_PAGES['max-width'].pageTitle}
+				description={TOKEN_PAGES['max-width'].description}
 				editPath="/docs/pages/foundations/tokens/max-width.tsx"
 			>
 				<Prose>
