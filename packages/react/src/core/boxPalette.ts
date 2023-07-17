@@ -5,27 +5,59 @@ import { themeVars } from './theme';
 // Box Palette
 
 const boxPaletteVars = {
-	palette: '--agds-palette',
-	foregroundText: '--agds-foreground-text',
-	foregroundAction: '--agds-foreground-action',
-	foregroundFocus: '--agds-foreground-focus',
-	foregroundMuted: '--agds-foreground-muted',
-	backgroundBody: '--agds-background-body',
-	backgroundShade: '--agds-background-shade',
-	backgroundBodyAlt: '--agds-background-body-alt',
-	backgroundShadeAlt: '--agds-background-shade-alt',
+	// palette: '--agds-palette',
+	// text (foreground)
+	text: '--agds-text', // or text default
+	textMuted: '--agds-text-muted',
+	textLink: '--agds-text-action',
+	textError: '--agds-text-error',
+	textDisabled: '--agds-text-disabled',
+	textInverse: '--agds-text-inverse',
+
+	// background
+	background: '--agds-background',
+	backgroundAlt: '--agds-background-alt',
+	backgroundSunken: '--agds-background-shade',
+	backgroundSunkenAlt: '--agds-background-shade', // delete this?
+	backgroundSuccess: '--agds-background-success',
+	backgroundSuccessBold: '--agds-background-success-bold', // used for PageAlert icon blocks
+	backgroundWarning: '--agds-background-warning',
+	backgroundWarningBold: '--agds-background-warning-bold', // used for PageAlert icon blocks
+	backgroundInfo: '--agds-background-info',
+	backgroundInfoBold: '--agds-background-info-bold', // used for PageAlert icon blocks
+	backgroundError: '--agds-background-error',
+	backgroundErrorBold: '--agds-background-error-bold', // used for PageAlert icon blocks
+	backgroundDisabled: '--agds-background-disabled',
+	backgroundInput: '--agds-background-input',
+	backgroundInputHover: '--agds-background-input-hover',
+
+	// border
 	border: '--agds-border',
 	borderMuted: '--agds-border-muted',
-	accent: '--agds-accent',
-	overlay: '--agds-overlay',
-	systemSuccess: '--agds-system-success',
-	systemSuccessMuted: '--agds-system-success-muted',
-	systemWarning: '--agds-system-warning',
-	systemWarningMuted: '--agds-system-warning-muted',
-	systemInfo: '--agds-system-info',
-	systemInfoMuted: '--agds-system-info-muted',
-	systemError: '--agds-system-error',
-	systemErrorMuted: '--agds-system-error-muted',
+	borderAccent: '--agds-accent',
+	borderSelected: '--agds-border-selected',
+	borderDisabled: '--agds-border-disabled',
+
+	// icon
+	iconSuccess: '--agds-icon-success',
+	iconWarning: '--agds-icon-warning',
+	iconInfo: '--agds-icon-info',
+	iconError: '--agds-icon-error',
+	iconNeutral: '--agds-icon-neutral',
+
+	// interaction - for buttons and inputs
+	interaction: '--agds-interaction',
+	interactionHover: '--agds-interaction-hover',
+	interactionSelected: '--agds-interaction-selected',
+	interactionFocus: '--agds-interaction-focus',
+	interactionBorder: '--agds-interaction-border',
+	interactionBackground: '--agds-interaction-background',
+	interactionBackgroundHover: '--agds-interaction-background-hover',
+	interactionBackgroundAlt: '--agds-interaction-background-alt',
+	interactionBackgroundAltHover: '--agds-interactive-background-alt-hover',
+	// modal
+	modalOverlay: '--agds-modal-overlay',
+	modalPanelBackground: '--agds-modal-panel',
 };
 
 export const boxPalettes = {

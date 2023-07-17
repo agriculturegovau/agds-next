@@ -43,7 +43,7 @@ export const themeVars = {
 	darkSystemWarningMuted: '--agds-dark-system-warning-muted',
 } as const;
 
-export type Theme = Partial<Record<keyof typeof themeVars, string>>;
+export type Theme = Record<keyof typeof themeVars, string>;
 
 type ThemeKey = keyof typeof themeVars;
 
