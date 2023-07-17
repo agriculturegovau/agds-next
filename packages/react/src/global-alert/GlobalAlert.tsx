@@ -1,16 +1,11 @@
-import { MouseEventHandler, PropsWithChildren, ReactNode } from 'react';
+import { MouseEventHandler, PropsWithChildren } from 'react';
 import { Box } from '../box';
 import { Flex } from '../flex';
 import { Stack } from '../stack';
-import { boxPalette, tokens, mapSpacing } from '../core';
+import { boxPalette, tokens } from '../core';
 import { WarningFilledIcon, InfoFilledIcon } from '../icon';
 import { Heading } from '../heading';
-import {
-	GlobalAlertCloseButton,
-	GLOBAL_ALERT_CLOSE_BUTTON_LABEL_VISIBLE_MQ,
-} from './GlobalAlertCloseButton';
-
-type GlobalAlertTone = 'info' | 'warning';
+import { GlobalAlertCloseButton } from './GlobalAlertCloseButton';
 
 export type GlobalAlertProps = PropsWithChildren<{
 	/** Function to be called when the 'Close' button is pressed. */
@@ -20,6 +15,69 @@ export type GlobalAlertProps = PropsWithChildren<{
 	/** The tone of the alert. */
 	tone?: GlobalAlertTone;
 }>;
+
+export function GlobalAlert({
+	children,
+	onDismiss,
+	title,
+	tone = 'warning',
+}: GlobalAlertProps) {
+	const { bg, fg, Icon } = toneMap[tone];
+
+	const addTitleMargin = Boolean(onDismiss);
+	const addContentMargin = Boolean(onDismiss && !title);
+
+	return (
+		<Flex as="section" aria-label={title} css={{ backgroundColor: bg }}>
+			<Flex
+				alignItems="center"
+				justifyContent="center"
+				padding={0.75}
+				flexShrink={0}
+				css={{ backgroundColor: fg, color: boxPalette.backgroundBody }}
+			>
+				<Icon aria-hidden="false" aria-label="Warning" color="inherit" />
+			</Flex>
+			<Flex
+				flexGrow={1}
+				alignItems="flex-start"
+				padding={1.5}
+				gap={2}
+				css={{ position: 'relative' }}
+			>
+				<Stack flexGrow={1} gap={0.75}>
+					{title ? (
+						<Heading
+							as="h2"
+							type="h3"
+							maxWidth={tokens.maxWidth.bodyText}
+							css={{
+								...(addTitleMargin && {
+									marginRight: '2.5rem', // (1.5rem icon + 1rem gap)
+									[tokens.mediaQuery.min.lg]: { marginRight: 0 },
+								}),
+							}}
+						>
+							{title}
+						</Heading>
+					) : null}
+					<Box
+						maxWidth={tokens.maxWidth.bodyText}
+						css={{
+							...(addContentMargin && {
+								marginRight: '2.5rem', // (1.5rem icon + 1rem gap)
+								[tokens.mediaQuery.min.lg]: { marginRight: 0 },
+							}),
+						}}
+					>
+						{children}
+					</Box>
+				</Stack>
+				{onDismiss ? <GlobalAlertCloseButton onClick={onDismiss} /> : null}
+			</Flex>
+		</Flex>
+	);
+}
 
 const toneMap = {
 	info: {
@@ -34,86 +92,4 @@ const toneMap = {
 	},
 };
 
-export function GlobalAlert({
-	children,
-	onDismiss,
-	title,
-	tone = 'warning',
-}: GlobalAlertProps) {
-	const { bg, Icon } = toneMap[tone];
-
-	return (
-		<section aria-label={title} css={{ backgroundColor: bg }}>
-			<Flex
-				flexDirection="row"
-				css={{
-					position: 'relative',
-				}}
-			>
-				<GlobalAlertIconContainer tone={tone}>
-					<Icon aria-hidden="false" aria-label="Warning" color="inherit" />
-				</GlobalAlertIconContainer>
-
-				<Flex padding={1.5}>
-					<Stack gap={0.75} maxWidth={tokens.maxWidth.bodyText}>
-						{title ? (
-							<Heading
-								as="h2"
-								type="h3"
-								css={{
-									marginRight: mapSpacing(2),
-									[GLOBAL_ALERT_CLOSE_BUTTON_LABEL_VISIBLE_MQ]: {
-										marginRight: '0rem',
-									},
-								}}
-							>
-								{title}
-							</Heading>
-						) : null}
-						<Box
-							flexGrow={1}
-							css={
-								title
-									? null
-									: {
-											marginRight: mapSpacing(2),
-											[GLOBAL_ALERT_CLOSE_BUTTON_LABEL_VISIBLE_MQ]: {
-												marginRight: '0rem',
-											},
-									  }
-							}
-						>
-							{children}
-						</Box>
-					</Stack>
-				</Flex>
-				{onDismiss ? <GlobalAlertCloseButton onClick={onDismiss} /> : null}
-			</Flex>
-		</section>
-	);
-}
-
-const GlobalAlertIconContainer = ({
-	children,
-	tone,
-}: {
-	children: ReactNode;
-	tone: GlobalAlertTone;
-}) => {
-	const { fg } = toneMap[tone];
-
-	return (
-		<Flex
-			// flexShrink={0}
-			alignItems="center"
-			justifyContent="center"
-			padding={0.75}
-			css={{
-				backgroundColor: fg,
-				color: boxPalette.backgroundBody,
-			}}
-		>
-			{children}
-		</Flex>
-	);
-};
+export type GlobalAlertTone = keyof typeof toneMap;

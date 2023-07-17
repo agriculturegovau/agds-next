@@ -16,7 +16,6 @@ type Story = StoryObj<typeof GlobalAlert>;
 
 export const Basic: Story = {
 	args: {
-		title: 'Alert title',
 		onDismiss: undefined,
 		children: (
 			<Text as="p">
@@ -30,7 +29,6 @@ export const Basic: Story = {
 
 export const WithDismiss: Story = {
 	args: {
-		title: 'Alert title',
 		onDismiss: console.log,
 		children: (
 			<Text as="p">
@@ -42,9 +40,9 @@ export const WithDismiss: Story = {
 	},
 };
 
-export const WithoutTitle: Story = {
+export const WithTitle: Story = {
 	args: {
-		title: undefined,
+		title: 'Alert title',
 		onDismiss: undefined,
 		children: (
 			<Text as="p">
@@ -56,9 +54,9 @@ export const WithoutTitle: Story = {
 	},
 };
 
-export const WithDismissAndWithoutTitle: Story = {
+export const WithTitleAndDismiss: Story = {
 	args: {
-		title: undefined,
+		title: 'Alert title',
 		onDismiss: console.log,
 		children: (
 			<Text as="p">
@@ -74,6 +72,36 @@ export const WithLongMessage: Story = {
 	args: {
 		title: 'Alert title',
 		onDismiss: undefined,
+		children: (
+			<Text as="p">
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce massa
+				nibh, aliquam vel dolor non, gravida porttitor nulla. Pellentesque
+				cursus orci vulputate nibh sagittis blandit. Nulla facilisis id orci vel
+				placerat. Nam nisl enim, efficitur id mattis eget, commodo at tortor.
+			</Text>
+		),
+	},
+};
+
+export const WithLongMessageAndTitle: Story = {
+	args: {
+		title: 'The Export Service is currently down due to regular maintenance',
+		onDismiss: undefined,
+		children: (
+			<Text as="p">
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce massa
+				nibh, aliquam vel dolor non, gravida porttitor nulla. Pellentesque
+				cursus orci vulputate nibh sagittis blandit. Nulla facilisis id orci vel
+				placerat. Nam nisl enim, efficitur id mattis eget, commodo at tortor.
+			</Text>
+		),
+	},
+};
+
+export const WithLongMessageAndTitleAndDismiss: Story = {
+	args: {
+		title: 'The Export Service is currently down due to regular maintenance',
+		onDismiss: console.log,
 		children: (
 			<Text as="p">
 				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce massa
