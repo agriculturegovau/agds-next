@@ -11,8 +11,8 @@ export function DropdownMenuButton({
 	variant = 'text',
 	...props
 }: DropdownMenuButtonProps) {
-	const dropdownProps = useDropdownMenuButton();
-	return <Button variant={variant} {...dropdownProps} {...props} />;
+	const buttonProps = useDropdownMenuButton();
+	return <Button variant={variant} {...buttonProps} {...props} />;
 }
 
 export function useDropdownMenuButton() {

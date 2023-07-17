@@ -1,32 +1,18 @@
-import { Box } from '../box';
-import { LinkProps, useLinkComponent } from '../core';
-import { useDropdownMenuContext } from './DropdownMenuContext';
-import { useDropdownMenuItemId } from './utils';
+import { fontGrid, LinkProps, mapSpacing } from '../core';
+import { DropdownMenuItemLink } from './DropdownMenuItemLink';
 
 export type DropdownMenuGroupLinkProps = LinkProps;
 
-export function DropdownMenuGroupLink({
-	id: idProp,
-	...props
-}: DropdownMenuGroupLinkProps) {
-	const { activeDescendantId } = useDropdownMenuContext();
-	const Link = useLinkComponent();
-
-	const id = useDropdownMenuItemId(idProp);
-	const isActiveItem = id === activeDescendantId;
-
+export function DropdownMenuGroupLink(props: DropdownMenuGroupLinkProps) {
 	return (
-		<Box
-			as={Link}
-			id={id}
-			display="block"
-			role="menuitem"
-			fontSize="xs"
-			padding={1}
-			paddingTop={0}
-			background={isActiveItem ? 'shade' : undefined}
-			link
+		<DropdownMenuItemLink
 			{...props}
+			css={{
+				...fontGrid('xs', 'default'),
+				paddingTop: mapSpacing(0.25),
+				paddingBottom: mapSpacing(0.25),
+				marginBottom: mapSpacing(0.75),
+			}}
 		/>
 	);
 }

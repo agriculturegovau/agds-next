@@ -29,14 +29,12 @@ export function DropdownMenuItemRadio({
 }: DropdownMenuItemRadioProps) {
 	const { activeDescendantId, closeMenu } = useDropdownMenuContext();
 
-	const id = useDropdownMenuItemId(idProp);
-
 	function onClick() {
-		console.log('ON CLIK!');
 		onClickProp?.();
 		closeMenu();
 	}
 
+	const id = useDropdownMenuItemId(idProp);
 	const isActiveItem = id === activeDescendantId;
 
 	return (

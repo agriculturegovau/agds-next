@@ -170,14 +170,12 @@ describe('DropdownMenu', () => {
 	it('menu items respond to the `onClick` prop', async () => {
 		const onClick1 = jest.fn();
 		const onClick2 = jest.fn();
-		const onClick3 = jest.fn();
 		render(
 			<DropdownMenu>
 				<DropdownMenuButton>Open dropdown menu</DropdownMenuButton>
 				<DropdownMenuList>
 					<DropdownMenuItem onClick={onClick1}>Item 1</DropdownMenuItem>
 					<DropdownMenuItem onClick={onClick2}>Item 2</DropdownMenuItem>
-					<DropdownMenuItem onClick={onClick3}>Item 3</DropdownMenuItem>
 				</DropdownMenuList>
 			</DropdownMenu>
 		);
@@ -198,7 +196,6 @@ describe('DropdownMenu', () => {
 
 		expect(onClick1).toHaveBeenCalledTimes(1);
 		expect(onClick2).toHaveBeenCalledTimes(0);
-		expect(onClick3).toHaveBeenCalledTimes(0);
 	});
 
 	it('changes the button text based on render props', async () => {
@@ -432,5 +429,62 @@ describe('DropdownMenu Radio Group', () => {
 		expect(thirdListItem).toBeInTheDocument();
 		expect(thirdListItem).toHaveAttribute('aria-checked', 'false');
 		expect(thirdListItem).toHaveAccessibleName('Organic Co Canberra');
+	});
+
+	it.only('items respond to the `onClick` prop', async () => {
+		const onClick1 = jest.fn();
+		const onClick2 = jest.fn();
+		const onClick3 = jest.fn();
+		render(
+			<DropdownMenu>
+				<DropdownMenuButton>Open dropdown menu</DropdownMenuButton>
+				<DropdownMenuList>
+					<DropdownMenuGroup label="Businesses">
+						<DropdownMenuItemRadio
+							id="item-1"
+							checked={false}
+							secondaryText="Sydney"
+							onClick={onClick1}
+						>
+							Antfix
+						</DropdownMenuItemRadio>
+						<DropdownMenuItemRadio
+							id="item-2"
+							checked={true}
+							secondaryText="Brisbane"
+							onClick={onClick2}
+						>
+							Produce Fresh
+						</DropdownMenuItemRadio>
+						<DropdownMenuItemRadio
+							id="item-3"
+							checked={false}
+							secondaryText="Canberra"
+							onClick={onClick3}
+						>
+							Organic Co
+						</DropdownMenuItemRadio>
+					</DropdownMenuGroup>
+				</DropdownMenuList>
+			</DropdownMenu>
+		);
+
+		const menuButton = await screen.findByRole('button');
+
+		// Open the dropdown menu
+		menuButton.focus();
+		expect(menuButton).toHaveFocus();
+		await userEvent.click(menuButton);
+
+		// Once the dropdown menu is opened, the menu list should be focused
+		const firstListItem = await screen.findByText('Antfix');
+		await userEvent.click(firstListItem);
+
+		// When closing the dropdown menu, the the trigger should be focused again
+		expect(menuButton).toHaveFocus();
+
+		expect(onClick1).toHaveBeenCalledTimes(1);
+		expect(onClick2).toHaveBeenCalledTimes(0);
+		expect(onClick3).toHaveBeenCalledTimes(0);
 	});
 });
