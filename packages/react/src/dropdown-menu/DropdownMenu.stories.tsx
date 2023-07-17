@@ -1,17 +1,13 @@
 import { Meta, StoryObj } from '@storybook/react';
 import { Fragment, useState } from 'react';
-import { PageContent } from '../content';
 import { Flex } from '../flex';
 import {
-	EditIcon,
 	EmailIcon,
 	ExitIcon,
 	SettingsIcon,
 	AvatarIcon,
 	PrintIcon,
 	CalendarIcon,
-	DownloadIcon,
-	DeleteIcon,
 	ChevronUpIcon,
 	ChevronDownIcon,
 	ExternalLinkIcon,
@@ -19,16 +15,6 @@ import {
 import { IndicatorDot } from '../indicator-dot';
 import { NotificationBadge } from '../notification-badge';
 import { Stack } from '../stack';
-import {
-	Table,
-	TableBody,
-	TableCaption,
-	TableCell,
-	TableHead,
-	TableHeader,
-	TableWrapper,
-} from '../table';
-import { TextLink } from '../text-link';
 import {
 	DropdownMenu,
 	DropdownMenuButton,
@@ -57,7 +43,7 @@ export const Basic: StoryObj = {
 						Profile
 					</DropdownMenuItem>
 					<DropdownMenuItem onClick={() => console.log('Messages')}>
-						Potato
+						Messages
 					</DropdownMenuItem>
 					<DropdownMenuItem onClick={() => console.log('Account settings')}>
 						Account settings
@@ -516,61 +502,6 @@ export const MaxHeight: StoryObj = {
 					</DropdownMenuList>
 				</DropdownMenu>
 			</Stack>
-		);
-	},
-};
-
-export const TableActions: StoryObj = {
-	render: function Render() {
-		return (
-			<PageContent>
-				<TableWrapper>
-					<Table>
-						<TableCaption>Example table with actions</TableCaption>
-						<TableHead>
-							<tr>
-								<TableHeader scope="col">ID</TableHeader>
-								<TableHeader scope="col">Example</TableHeader>
-								<TableHeader scope="col">Example</TableHeader>
-								<TableHeader scope="col" textAlign="right">
-									Actions
-								</TableHeader>
-							</tr>
-						</TableHead>
-						<TableBody>
-							{Array.from(Array(5).keys()).map((idx) => (
-								<tr key={idx}>
-									<TableCell as="th" scope="row" fontWeight="bold">
-										<TextLink href="#">Example Row {idx + 1}</TextLink>
-									</TableCell>
-									<TableCell>Example</TableCell>
-									<TableCell>Example</TableCell>
-									<TableCell textAlign="right">
-										<DropdownMenu popoverPlacement="bottom-end">
-											<DropdownMenuButton>Actions</DropdownMenuButton>
-											<DropdownMenuList>
-												<DropdownMenuItem icon={EditIcon}>
-													Edit
-												</DropdownMenuItem>
-												<DropdownMenuItem icon={PrintIcon}>
-													Print
-												</DropdownMenuItem>
-												<DropdownMenuItem icon={DownloadIcon}>
-													Download
-												</DropdownMenuItem>
-												<DropdownMenuDivider />
-												<DropdownMenuItem icon={DeleteIcon}>
-													Delete
-												</DropdownMenuItem>
-											</DropdownMenuList>
-										</DropdownMenu>
-									</TableCell>
-								</tr>
-							))}
-						</TableBody>
-					</Table>
-				</TableWrapper>
-			</PageContent>
 		);
 	},
 };
