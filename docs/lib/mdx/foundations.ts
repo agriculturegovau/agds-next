@@ -79,10 +79,9 @@ export function getFoundationBreadcrumbs(slug: string) {
 export type Foundation = Awaited<ReturnType<typeof getFoundation>>;
 
 // foundations/tokens
-export async function getTokenPageData(slug: string) {
+export async function getTokenPage(slug: string) {
 	const tokenPagePath = (slug: string) =>
 		normalize(`${FOUNDATIONS_PATH}/tokens/${slug}.mdx`);
-
 	const { content, data } = await getMarkdownData(tokenPagePath(slug));
 	const source = await serializeMarkdown(content, data);
 	return {
@@ -95,4 +94,4 @@ export async function getTokenPageData(slug: string) {
 	};
 }
 
-export type TokenPage = Awaited<ReturnType<typeof getTokenPageData>>;
+export type TokenPage = Awaited<ReturnType<typeof getTokenPage>>;

@@ -93,7 +93,7 @@ export const TokenLayout = ({
 				sideNav={{
 					title: 'Tokens',
 					titleLink: '/foundations/tokens',
-					items: TOKEN_NAV_LINKS,
+					items: TOKEN_NAV_LINKS.map(({ href, label }) => ({ href, label })),
 				}}
 				editPath={editPath}
 				breadcrumbs={getBreadcrumbs(title)}
