@@ -251,4 +251,5 @@ const defaultDayPickerProps = {
 	components: calendarComponents,
 	labels: calendarLabels,
 	showOutsideDays: true,
+	fixedWeeks: true,
 };
