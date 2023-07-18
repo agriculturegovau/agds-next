@@ -1,38 +1,11 @@
 ---
 title: Global alert
-description: Global Alerts show pressing and high-signal messages, such as system alerts.
+description: Global alerts display prominent service or system wide messages at the top of the screen.
 group: Content
 storybookPath: /story/content-globalalert--basic
 figmaGalleryNodeId: 15243%3A46718
 relatedComponents: ['callout', 'page-alert']
 ---
-
-```jsx live
-<GlobalAlert>
-	<Text as="p">
-		Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce massa nibh,
-		aliquam vel dolor non, gravida porttitor nulla. Pellentesque cursus orci
-		vulputate nibh sagittis blandit.
-	</Text>
-</GlobalAlert>
-```
-
-<DoHeading />
-
-- place alerts at the top of the page above the Header
-- keep text concise
-- explain the problem/issue and (if possible) when it will be resolved
-- offer an alternative path to contact or support if possible
-- consider adding a Close button so users can easily dismiss the alert.
-
-<DontHeading />
-
-- use for anything that's not system level
-- let alert banners time out.
-
-## Title
-
-Use the `title` prop to set the title of the alert.
 
 ```jsx live
 <GlobalAlert title="Alert title">
@@ -44,12 +17,48 @@ Use the `title` prop to set the title of the alert.
 </GlobalAlert>
 ```
 
+Global alerts are intrusive alerts that appear at the top of a page. They are used to communicate system or service messages not page or feature messages. Global alerts are not initiated by the user and should persist for a session but can be dismissed by the user.
+
+Global alerts should be used sparingly due to their prominent nature and should be coordinated across product teams if used on microfrontend applications.
+
+<DoHeading />
+
+- place alerts at the top of the page above the Header
+- keep text concise
+- explain the problem/issue and (if possible) when it will be resolved
+- offer an alternative path to contact or support if possible
+- consider adding a Close button so users can easily dismiss the alert
+- use a title to provide a short summary of the alert.
+
+<DontHeading />
+
+- use for anything that's not system level
+- let alert banners time out.
+
 ## Dismissable
 
-Use the `onDismiss` prop to make the alert dismissable.
+Global alerts can be dismissed by a user if they have understood the message and no longer need to see it.
+
+Use the `onDismiss` prop to make the alert dismissable. Ensure Global alerts that are closed by the user are never seen again. You could do this through a feature flag in a database, or by setting a value in the browser.
 
 ```jsx live
 <GlobalAlert title="Alert title" onDismiss={console.log}>
+	<Text as="p">
+		Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce massa nibh,
+		aliquam vel dolor non, gravida porttitor nulla. Pellentesque cursus orci
+		vulputate nibh sagittis blandit.
+	</Text>
+</GlobalAlert>
+```
+
+## Infomation alert
+
+An `info` version of Global alert is also available, which can be used to display system-wide information messages which are not negative in nature.
+
+This could include a general announcement about a feature or policy. This variant should be used sparingly.
+
+```jsx live
+<GlobalAlert title="Information" tone="info">
 	<Text as="p">
 		Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce massa nibh,
 		aliquam vel dolor non, gravida porttitor nulla. Pellentesque cursus orci
