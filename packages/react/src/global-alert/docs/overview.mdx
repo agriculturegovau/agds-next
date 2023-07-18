@@ -1,6 +1,6 @@
 ---
 title: Global alert
-description: Global alerts show pressing and high-signal messages, such as system alerts.
+description: Global alerts display prominent service or system wide messages at the top of the screen.
 group: Content
 storybookPath: /story/content-globalalert--basic
 figmaGalleryNodeId: 15243%3A46718
@@ -17,9 +17,9 @@ relatedComponents: ['callout', 'page-alert']
 </GlobalAlert>
 ```
 
-Global alerts are used to display system-wide alerts that are critical for a user to see. They are used to communicate high-signal messages, such as system alerts.
+Global alerts are intrusive alerts that appear at the top of a page. They are used to communicate system or service messages not page or feature messages. Global alerts are not initiated by the user and should persist for a session but can be dismissed by the user. 
 
-Global alerts should be used sparingly due to their prominent nature. They should also be used in coordination with every product team, to ensure it is treated consistently across microfrontends.
+Global alerts should be used sparingly due to their prominent nature and should be coordinated across product teams if used on microfrontend applications.
 
 <DoHeading />
 
@@ -27,8 +27,8 @@ Global alerts should be used sparingly due to their prominent nature. They shoul
 - keep text concise
 - explain the problem/issue and (if possible) when it will be resolved
 - offer an alternative path to contact or support if possible
-- consider adding a Close button so users can easily dismiss the alert.
-- use a title to provide a short summary of the alert
+- consider adding a Close button so users can easily dismiss the alert
+- use a title to provide a short summary of the alert.
 
 <DontHeading />
 
