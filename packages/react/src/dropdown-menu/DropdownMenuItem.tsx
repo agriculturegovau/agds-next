@@ -1,5 +1,11 @@
-import { ComponentType, PropsWithChildren, ReactNode } from 'react';
-import { boxPalette, forwardRefWithAs } from '../core';
+import {
+	ComponentType,
+	PropsWithChildren,
+	ReactNode,
+	useEffect,
+	useRef,
+} from 'react';
+import { boxPalette, forwardRefWithAs, mergeRefs } from '../core';
 import { Flex } from '../flex';
 import { IconProps } from '../icon';
 import { useDropdownMenuContext } from './DropdownMenuContext';
@@ -27,35 +33,43 @@ export const DropdownMenuItem = forwardRefWithAs<'div', DropdownMenuItemProps>(
 			id: idProp,
 			...props
 		},
-		ref
+		forwardedRef
 	) {
+		const ref = useRef<HTMLElement>(null);
 		const { activeDescendantId, closeMenu } = useDropdownMenuContext();
+
+		const id = useDropdownMenuItemId(idProp);
+		const isActiveDescendant = id === activeDescendantId;
+
+		// Ensure the active descendant is visible in long lists with overflow
+		// Without this, the active item may not be visible on the screen
+		useEffect(() => {
+			if (!isActiveDescendant) return;
+			ref.current?.scrollIntoView({ block: 'nearest' });
+		}, [isActiveDescendant]);
 
 		function onClick() {
 			onClickProp?.();
 			closeMenu();
 		}
 
-		const id = useDropdownMenuItemId(idProp);
-		const isActiveItem = id === activeDescendantId;
-
 		return (
 			<Flex
 				as={as}
-				ref={ref}
+				ref={mergeRefs([forwardedRef, ref])}
 				role="menuitem"
 				tabIndex={-1}
 				id={id}
 				onClick={onClick}
 				alignItems="center"
 				justifyContent="space-between"
-				background={isActiveItem ? 'shade' : 'body'}
+				background={isActiveDescendant ? 'shade' : 'body'}
 				gap={1}
 				padding={1}
 				link
 				focus
 				css={{
-					...(isActiveItem && {
+					...(isActiveDescendant && {
 						textDecoration: 'none',
 						color: boxPalette.foregroundText,
 						backgroundColor: boxPalette.backgroundShade,

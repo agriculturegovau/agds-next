@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from '@storybook/react';
 import { Fragment, useState } from 'react';
-import { ButtonGroup } from '../button';
+import { BaseButton, ButtonGroup } from '../button';
 import {
 	EmailIcon,
 	ExitIcon,
@@ -25,6 +25,7 @@ import {
 	DropdownMenuItemLink,
 	DropdownMenuItemRadio,
 	DropdownMenuList,
+	useDropdownMenuButton,
 } from './index';
 
 const meta: Meta = {
@@ -57,7 +58,7 @@ export const Basic: StoryObj = {
 export const Triggers: StoryObj = {
 	render: function Render() {
 		const sizes = ['md', 'sm'] as const;
-		const variants= ['primary', 'secondary', 'tertiary', 'text'] as const;
+		const variants = ['primary', 'secondary', 'tertiary', 'text'] as const;
 		return (
 			<Stack gap={1}>
 				{sizes.map((size) => (
@@ -85,13 +86,29 @@ export const Triggers: StoryObj = {
 	},
 };
 
+export const UnstyledTrigger: StoryObj = {
+	render: function Render() {
+		return (
+			<DropdownMenu>
+				<DropdownMenuCustomTrigger />
+				<DropdownMenuList>
+					<DropdownMenuItem>Item A</DropdownMenuItem>
+					<DropdownMenuItem>Item B</DropdownMenuItem>
+					<DropdownMenuItem>Item C</DropdownMenuItem>
+				</DropdownMenuList>
+			</DropdownMenu>
+		);
+	},
+};
+
+function DropdownMenuCustomTrigger() {
+	const buttonProps = useDropdownMenuButton();
+	return <BaseButton {...buttonProps}>Unstyled button</BaseButton>;
+}
+
 export const Placement: StoryObj = {
 	render: function Render() {
-		const placements= [
-			'bottom-start',
-			'bottom-end',
-			'bottom',
-		] as const;
+		const placements = ['bottom-start', 'bottom-end', 'bottom'] as const;
 		return (
 			<Stack gap={2} alignItems="center">
 				{placements.map((placement) => (

@@ -1,4 +1,4 @@
-import { PropsWithChildren, ReactNode } from 'react';
+import { PropsWithChildren, ReactNode, useEffect, useRef } from 'react';
 import { boxPalette, packs, tokens } from '../core';
 import { Flex } from '../flex';
 import { Stack } from '../stack';
@@ -27,25 +27,34 @@ export function DropdownMenuItemRadio({
 	secondaryText,
 	id: idProp,
 }: DropdownMenuItemRadioProps) {
+	const ref = useRef<HTMLDivElement>(null);
 	const { activeDescendantId, closeMenu } = useDropdownMenuContext();
+
+	const id = useDropdownMenuItemId(idProp);
+	const isActiveDescendant = id === activeDescendantId;
+
+	// Ensure the active descendant is visible in long lists with overflow
+	// Without this, the active item may not be visible on the screen
+	useEffect(() => {
+		if (!isActiveDescendant) return;
+		ref.current?.scrollIntoView({ block: 'nearest' });
+	}, [isActiveDescendant]);
 
 	function onClick() {
 		onClickProp?.();
 		closeMenu();
 	}
 
-	const id = useDropdownMenuItemId(idProp);
-	const isActiveItem = id === activeDescendantId;
-
 	return (
 		<Flex
+			ref={ref}
 			role="menuitemradio"
 			aria-checked={checked}
 			id={id}
 			onClick={onClick}
 			alignItems="center"
 			justifyContent="space-between"
-			background={isActiveItem ? 'shade' : 'body'}
+			background={isActiveDescendant ? 'shade' : 'body'}
 			gap={1}
 			padding={1}
 			css={{

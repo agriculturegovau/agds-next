@@ -1,6 +1,7 @@
 import '@testing-library/jest-dom';
 import 'html-validate/jest';
 import userEvent from '@testing-library/user-event';
+import '@testing-library/jest-dom/extend-expect';
 import { Fragment } from 'react';
 import { render, cleanup, screen } from '../../../../test-utils';
 import { AvatarIcon, EmailIcon, SettingsIcon } from '../icon';
@@ -15,6 +16,10 @@ import {
 	DropdownMenuGroup,
 	DropdownMenuItemRadio,
 } from './index';
+
+// `DropdownMenuItem` and `DropdownMenuItemRadio` use `scrollIntoView` which is not available in jsdom
+// https://github.com/jsdom/jsdom/issues/1695
+Element.prototype.scrollIntoView = jest.fn();
 
 afterEach(cleanup);
 
@@ -431,7 +436,7 @@ describe('DropdownMenu Radio Group', () => {
 		expect(thirdListItem).toHaveAccessibleName('Organic Co Canberra');
 	});
 
-	it.only('items respond to the `onClick` prop', async () => {
+	it('items respond to the `onClick` prop', async () => {
 		const onClick1 = jest.fn();
 		const onClick2 = jest.fn();
 		const onClick3 = jest.fn();
