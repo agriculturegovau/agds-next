@@ -51,9 +51,10 @@ const primitives = {
 
 // What has changed?
 // 1. Create interaction set, featuring colours for buttons and inputs
-// 2. Rejig the foreground set, rename to text and create a new set for icons.
+// 2. Rejig the foreground set, rename to text and add a few more colours.
 // 3. Move 'system colours' to the background set.
 // 4. Create modal set, featuring colours for modal panels and overlays.
+// 5. Create icon set, featuring colours for icons.
 
 // The semantic colours for the Export Service theme.
 export const theme: Theme = {
@@ -88,6 +89,8 @@ export const theme: Theme = {
 	lightBorderInput: '#808080',
 	lightBorderDisabled: '#D3D3D3',
 	// light-icon
+	lightIcon: primitives.grey7,
+	lightIconInverse: primitives.white,
 	lightIconSuccess: primitives.green,
 	lightIconWarning: primitives.yellow,
 	lightIconInfo: primitives.blue,
