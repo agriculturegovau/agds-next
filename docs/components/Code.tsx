@@ -12,7 +12,7 @@ import { createUrl } from 'playroom/utils';
 import { Highlight, Prism } from 'prism-react-renderer';
 import copy from 'clipboard-copy';
 import { ExternalLinkCallout } from '@ag.ds-next/react/a11y';
-import { CardHeader } from '@ag.ds-next/react/card';
+import { Card, CardHeader } from '@ag.ds-next/react/card';
 import {
 	globalPalette,
 	mapSpacing,
@@ -55,11 +55,11 @@ const PlaceholderImage = () => (
 function LiveCode({
 	showCode = false,
 	enableProse = false,
-	headingType,
+	exampleContentHeadingType,
 }: {
 	showCode?: boolean;
 	enableProse?: boolean;
-	headingType?: 'h2' | 'h3' | 'h4';
+	exampleContentHeadingType?: 'h2' | 'h3' | 'h4';
 }) {
 	const liveCodeToggleButton = useRef<HTMLButtonElement>(null);
 	const live = useContext(LiveContext);
@@ -107,10 +107,10 @@ function LiveCode({
 	);
 
 	return (
-		<Box border rounded borderColor="muted" className={proseBlockClassname}>
-			{headingType && (
+		<Card className={proseBlockClassname}>
+			{exampleContentHeadingType && (
 				<CardHeader>
-					<Heading type={headingType}>Example</Heading>
+					<Heading type={exampleContentHeadingType}>Example</Heading>
 				</CardHeader>
 			)}
 			<LivePreview
@@ -203,7 +203,7 @@ function LiveCode({
 					{live.error}
 				</Box>
 			) : null}
-		</Box>
+		</Card>
 	);
 }
 
@@ -288,7 +288,7 @@ type CodeProps = {
 	live?: boolean;
 	showCode?: boolean;
 	enableProse?: boolean;
-	headingType?: 'h2' | 'h3' | 'h4';
+	exampleContentHeadingType?: 'h2' | 'h3' | 'h4';
 };
 
 export function Code({
@@ -297,7 +297,7 @@ export function Code({
 	showCode,
 	enableProse,
 	className,
-	headingType,
+	exampleContentHeadingType,
 }: CodeProps) {
 	const childrenAsString = children?.toString().trim();
 	const language = className?.replace(/language-/, '');
@@ -314,7 +314,7 @@ export function Code({
 				<LiveCode
 					showCode={showCode}
 					enableProse={enableProse}
-					headingType={headingType}
+					exampleContentHeadingType={exampleContentHeadingType}
 				/>
 			</LiveProvider>
 		);
