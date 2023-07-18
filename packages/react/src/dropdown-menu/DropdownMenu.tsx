@@ -4,10 +4,15 @@ import { DropdownMenuContext } from './DropdownMenuContext';
 import { reducer, initialState } from './reducer';
 import { useDropdownMenuId } from './utils';
 
+export type DropdownMenuPopoverPlacement =
+	| 'bottom'
+	| 'bottom-start'
+	| 'bottom-end';
+
 export type DropdownMenuProps = {
 	children: ((menuState: { isMenuOpen: boolean }) => ReactNode) | ReactNode;
 	/** The placement of the dropdown list popover in relation to the dropdown menu button. */
-	popoverPlacement?: 'bottom' | 'bottom-start' | 'bottom-end';
+	popoverPlacement?: DropdownMenuPopoverPlacement;
 	/** The max height of the dropdown list popover. */
 	popoverMaxHeight?: number;
 };

@@ -1,6 +1,6 @@
 ---
 title: Dropdown menu
-description: The Dropdown menu component displays an accessible dropdown menu to the user, such as a set of actions or links.
+description: A dropdown menu displays a list of actions when a trigger is pressed.
 group: Layout
 storybookPath: /story/layout-dropdownmenu--basic
 relatedComponents: ['combobox', 'select']
@@ -27,13 +27,14 @@ A dropdown menu displays a list of actions when triggered by a `DropdownMenuButt
 
 Dropdown menus pose multiple usability problems which you should consider before using them:
 
-- Since the actions in a dropdown menu are hidden by default, they could be missed.
-- Dropdown menus can increase cognitive load, as users need to recall what the actions were. This can be especially problematic for users with cognitive impairments.
-- Due to their fiddly nature, some users can struggle to use dropdown menus. Elderly people and people with motor impairments in particular often have difficulty using dropdown menus.
+- since the actions in a dropdown menu are hidden by default, they could be missed.
+- dropdown menus can increase cognitive load, as users need to recall what the actions were. This can be especially problematic for users with cognitive impairments.
+- due to their fiddly nature, some users can struggle to use dropdown menus. Elderly people and people with motor impairments in particular often have difficulty using dropdown menus.
 
 <DoHeading />
 
-- use a dropdown menu if there's insufficient space to display actions
+- ensure that actions in the dropdown can be accessed elsewhere, as some users won't be able to access them via the dropdown menu
+- only use a dropdown menu if there's insufficient space to display actions
 - trigger a dropdown menu on click of an element
 - keep the dropdown menu open until a user has made a selection or clicked outside the menu
 - organise actions in a logical way
@@ -43,111 +44,103 @@ Dropdown menus pose multiple usability problems which you should consider before
 
 <DontHeading />
 
-- use a dropdown menu if there's space to display actions.
-- trigger a dropdown menu on hover of an element, ensure it's triggered on click.
-- make dropdown menus so long that they go beyond the browser window. This makes them difficult to reach. Consider setting a maximum height for the dropdown menu instead.
+- use a dropdown menu if there's space to display actions
+- trigger a dropdown menu on hover of an element, ensure it's triggered on click
+- use a dropdown menu in a form where users need to select a single option - use a [Select](/components/select) component instead.
 
 ## Triggers
 
-Dropdown menu’s can be triggered by a `DropdownMenuButton`, which can accept all of the same props as [Button](/components/button). This gives you flexibility in what your trigger looks like.
+Dropdown menu's can be triggered by a`DropdownMenuButton`, which can accept all of the same props as [Button](/components/button). This gives you flexibility in what your trigger looks like.
 
 ```jsx live
-<Stack gap={2}>
-	<Flex gap={2}>
-		<DropdownMenu>
-			<DropdownMenuButton variant="primary" iconAfter={ChevronDownIcon}>
-				Edit
-			</DropdownMenuButton>
-			<DropdownMenuList>
-				<DropdownMenuItem>Item A</DropdownMenuItem>
-				<DropdownMenuItem>Item B</DropdownMenuItem>
-				<DropdownMenuItem>Item C</DropdownMenuItem>
-			</DropdownMenuList>
-		</DropdownMenu>
-		<DropdownMenu>
-			<DropdownMenuButton variant="secondary" iconAfter={ChevronDownIcon}>
-				Edit
-			</DropdownMenuButton>
-			<DropdownMenuList>
-				<DropdownMenuItem>Item A</DropdownMenuItem>
-				<DropdownMenuItem>Item B</DropdownMenuItem>
-				<DropdownMenuItem>Item C</DropdownMenuItem>
-			</DropdownMenuList>
-		</DropdownMenu>
-	</Flex>
-	<Flex gap={2}>
-		<DropdownMenu>
-			<DropdownMenuButton
-				size="sm"
-				variant="primary"
-				iconAfter={ChevronDownIcon}
-			>
-				Actions
-			</DropdownMenuButton>
-			<DropdownMenuList>
-				<DropdownMenuItem>Item A</DropdownMenuItem>
-				<DropdownMenuItem>Item B</DropdownMenuItem>
-				<DropdownMenuItem>Item C</DropdownMenuItem>
-			</DropdownMenuList>
-		</DropdownMenu>
-		<DropdownMenu>
-			<DropdownMenuButton
-				size="sm"
-				variant="secondary"
-				iconAfter={ChevronDownIcon}
-			>
-				Edit
-			</DropdownMenuButton>
-			<DropdownMenuList>
-				<DropdownMenuItem>Item A</DropdownMenuItem>
-				<DropdownMenuItem>Item B</DropdownMenuItem>
-				<DropdownMenuItem>Item C</DropdownMenuItem>
-			</DropdownMenuList>
-		</DropdownMenu>
-	</Flex>
+<Stack gap={1}>
+	{['md', 'sm'].map((size) => (
+		<ButtonGroup key={size}>
+			{['primary', 'secondary', 'tertiary', 'text'].map((variant) => (
+				<DropdownMenu key={variant}>
+					<DropdownMenuButton
+						variant={variant}
+						size={size}
+						iconAfter={ChevronDownIcon}
+					>
+						Edit
+					</DropdownMenuButton>
+					<DropdownMenuList>
+						<DropdownMenuItem>Item A</DropdownMenuItem>
+						<DropdownMenuItem>Item B</DropdownMenuItem>
+						<DropdownMenuItem>Item C</DropdownMenuItem>
+					</DropdownMenuList>
+				</DropdownMenu>
+			))}
+		</ButtonGroup>
+	))}
 </Stack>
 ```
 
 ## Placement
 
-By default the dropdown menu is aligned to the bottom left (`bottom-start`) of the `DropdownMenuButton` when opened. It can alternatively be aligned to the bottom right (`bottom-end`) or the bottom center (`bottom`).
-
-If there's not enough space to align the menu on the desired side, the compponet will detect this and automatically flip to another side.
+By default the dropdown menu is aligned to the bottom left (`bottom-start`) of the `DropdownMenuButton` when opened. It can alternatively be aligned to the bottom right (`bottom-end`) or the bottom (`bottom`). If there's not enough space in the browser window to align the menu on the left, the dropdown menu will automatically be aligned to the right to help ensure it fits on the screen.
 
 ```jsx live
 <Stack gap={2} alignItems="center">
-	<DropdownMenu popoverPlacement="bottom-start">
-		<DropdownMenuButton>bottom-start (default)</DropdownMenuButton>
-		<DropdownMenuList>
-			<DropdownMenuItem>Profile</DropdownMenuItem>
-			<DropdownMenuItem>Messages</DropdownMenuItem>
-			<DropdownMenuItem>Account settings</DropdownMenuItem>
-		</DropdownMenuList>
-	</DropdownMenu>
-	<DropdownMenu popoverPlacement="bottom-end">
-		<DropdownMenuButton>bottom-end</DropdownMenuButton>
-		<DropdownMenuList>
-			<DropdownMenuItem>Profile</DropdownMenuItem>
-			<DropdownMenuItem>Messages</DropdownMenuItem>
-			<DropdownMenuItem>Account settings</DropdownMenuItem>
-		</DropdownMenuList>
-		<DropdownMenu popoverPlacement="bottom">
-			<DropdownMenuButton>bottom</DropdownMenuButton>
+	{['bottom-start', 'bottom-end', 'bottom'].map((size) => (
+		<DropdownMenu key={size} popoverPlacement={size}>
+			<DropdownMenuButton>{size}</DropdownMenuButton>
 			<DropdownMenuList>
 				<DropdownMenuItem>Profile</DropdownMenuItem>
 				<DropdownMenuItem>Messages</DropdownMenuItem>
 				<DropdownMenuItem>Account settings</DropdownMenuItem>
 			</DropdownMenuList>
 		</DropdownMenu>
-	</DropdownMenu>
+	))}
 </Stack>
+```
+
+## Text only
+
+The simplest dropdown menu contains text only list items. Use `DropdownMenuItem` to perform on page actions and `DropdownMenuItemLink` to link to separate pages.
+
+```jsx live
+<DropdownMenu>
+	<DropdownMenuButton>Open dropdown menu</DropdownMenuButton>
+	<DropdownMenuList>
+		<DropdownMenuItem onClick={() => console.log('Profile')}>
+			Profile
+		</DropdownMenuItem>
+		<DropdownMenuItem onClick={() => console.log('Messages')}>
+			Messages
+		</DropdownMenuItem>
+		<DropdownMenuItemLink href="#">
+			Account settings
+		</DropdownMenuItem>
+	</DropdownMenuList>
+</DropdownMenu>
+```
+
+If you're opening links in a new tab, we recommend you use the `ExternalLinkIcon`.
+
+```jsx live
+<DropdownMenu>
+	<DropdownMenuButton>Open dropdown menu</DropdownMenuButton>
+	<DropdownMenuList>
+		<DropdownMenuItemLink href="#link-1">Link 1</DropdownMenuItemLink>
+		<DropdownMenuItemLink href="#link-2">Link 2</DropdownMenuItemLink>
+		<DropdownMenuItemLink
+			href="https://www.agriculture.gov.au"
+			target="_blank"
+			icon={ExternalLinkIcon}
+		>
+			External link
+		</DropdownMenuItemLink>
+	</DropdownMenuList>
+</DropdownMenu>
 ```
 
 ## Icons and badges
 
-Use the `icon` prop to add an [Icon](/components/icon) to the beginnning of list items.
+Icons can be added to list items to help users recognise actions more quickly. Use the icon prop to add an [Icon](/components/icon) to the beginning of list items.
 
-Use the `endElement` prop to add decorative elements such as a [Indicator dots](/components/indicator-dot) or [Notification badge](/components/notification-badge) to the end of list items.
+Use the `endElement` prop to add elements such as an [Indicator dot](/components/indicator-dot) or [Notification badge](/components/notification-badge) to the end of list items.
 
 ```jsx live
 <DropdownMenu>
@@ -167,7 +160,7 @@ Use the `endElement` prop to add decorative elements such as a [Indicator dots](
 
 ## Divider
 
-Use a `DropdownMenuDivider` to separate destructive actions from others.
+Use a `DropdownMenuDivider` to separate destructive actions at the bottom of the list. This helps ensure they're not actioned by mistake.
 
 ```jsx live
 <DropdownMenu>
@@ -187,9 +180,11 @@ Use a `DropdownMenuDivider` to separate destructive actions from others.
 </DropdownMenu>
 ```
 
-## Grouping items
+## Grouping
 
-Use the `DropdownMenuGroup` component to group related items. Use the `label` prop to describe the group.
+Consider grouping long lists of items under headings to help decrease cognitive load. Each group should be separated by a `DropdownMenuDivider`.
+
+Use the `DropdownMenuGroup` component to group related items. Use the label prop to describe the group.
 
 ```jsx live
 <DropdownMenu>
@@ -216,45 +211,9 @@ Use the `DropdownMenuGroup` component to group related items. Use the `label` pr
 </DropdownMenu>
 ```
 
-## Links
-
-Use the `DropdownMenuItemLink` component to add links to the dropdown menu list.
-
-```jsx live
-<DropdownMenu>
-	<DropdownMenuButton>Open dropdown menu</DropdownMenuButton>
-	<DropdownMenuList>
-		<DropdownMenuItemLink href="#link-1">Link 1</DropdownMenuItemLink>
-		<DropdownMenuItemLink href="#link-2">Link 2</DropdownMenuItemLink>
-		<DropdownMenuItemLink href="#link-3">Link 3</DropdownMenuItemLink>
-	</DropdownMenuList>
-</DropdownMenu>
-```
-
-### Opening links in new tabs
-
-If you're opening links in a new tab, we recommend you use the `ExternalLinkIcon`.
-
-```jsx live
-<DropdownMenu>
-	<DropdownMenuButton>Open dropdown menu</DropdownMenuButton>
-	<DropdownMenuList>
-		<DropdownMenuItemLink href="#link-1">Link 1</DropdownMenuItemLink>
-		<DropdownMenuItemLink href="#link-2">Link 2</DropdownMenuItemLink>
-		<DropdownMenuItemLink
-			href="https://www.agriculture.gov.au"
-			target="_blank"
-			icon={ExternalLinkIcon}
-		>
-			External link
-		</DropdownMenuItemLink>
-	</DropdownMenuList>
-</DropdownMenu>
-```
-
 ## Radio groups
 
-Use the `DropdownMenuGroup` and `DropdownMenuItemRadio` components to create a list of options where only 1 item can be selected at a time, similar to a list of [Radios](/component/radios).
+Use the `DropdownMenuGroup` and `DropdownMenuRadioItem` components to create a list of options that users can switch between. Only 1 item can be selected at a time, similar to a list of Radios.
 
 Use the `DropdownMenuGroupLink` component to add a link to the bottom of the Radio group.
 
@@ -300,11 +259,38 @@ Use the `DropdownMenuGroupLink` component to add a link to the bottom of the Rad
 };
 ```
 
+## Overflow
+
+For dropdown menus with many items, consider setting a maximum height using the `maxHeight` prop. This will make the actions in the dropdown menu scrollable. If the height is taller than the screen height, the dropdown menu will automatically
+
+```jsx live
+<Stack gap={2} alignItems="flex-start">
+	<DropdownMenu>
+		<DropdownMenuButton>
+			Open dropdown menu (without max height)
+		</DropdownMenuButton>
+		<DropdownMenuList>
+			{Array.from(Array(20).keys()).map((i) => (
+				<DropdownMenuItem key={i}>Item {i + 1}</DropdownMenuItem>
+			))}
+		</DropdownMenuList>
+	</DropdownMenu>
+	<DropdownMenu popoverMaxHeight={288}>
+		<DropdownMenuButton>
+			Open dropdown menu (with max height)
+		</DropdownMenuButton>
+		<DropdownMenuList>
+			{Array.from(Array(20).keys()).map((i) => (
+				<DropdownMenuItem key={i}>Item {i + 1}</DropdownMenuItem>
+			))}
+		</DropdownMenuList>
+	</DropdownMenu>
+</Stack>
+```
+
 ## Accessing state
 
-If you need to access the internal state of the Menu, you can provide a render callback to `DropdownMenu`.
-
-This is useful is you want to change the appearance of the dropdown menu button based if the dropdown menu is opened or closed.
+If you need to access the internal state of the menu, you can provide a render callback to `DropdownMenu`. This is useful if you want to change the appearance of the dropdown menu button based on whether the dropdown menu is opened or closed.
 
 ```jsx live
 <DropdownMenu>

@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from '@storybook/react';
 import { Fragment, useState } from 'react';
-import { Flex } from '../flex';
+import { ButtonGroup } from '../button';
 import {
 	EmailIcon,
 	ExitIcon,
@@ -56,84 +56,55 @@ export const Basic: StoryObj = {
 
 export const Triggers: StoryObj = {
 	render: function Render() {
+		const sizes = ['md', 'sm'] as const;
+		const variants= ['primary', 'secondary', 'tertiary', 'text'] as const;
 		return (
-			<Stack gap={2}>
-				<Flex gap={2}>
-					<DropdownMenu>
-						<DropdownMenuButton variant="primary" iconAfter={ChevronDownIcon}>
-							Edit
-						</DropdownMenuButton>
-						<DropdownMenuList>
-							<DropdownMenuItem>Item A</DropdownMenuItem>
-							<DropdownMenuItem>Item B</DropdownMenuItem>
-							<DropdownMenuItem>Item C</DropdownMenuItem>
-						</DropdownMenuList>
-					</DropdownMenu>
-					<DropdownMenu>
-						<DropdownMenuButton variant="secondary" iconAfter={ChevronDownIcon}>
-							Edit
-						</DropdownMenuButton>
-						<DropdownMenuList>
-							<DropdownMenuItem>Item A</DropdownMenuItem>
-							<DropdownMenuItem>Item B</DropdownMenuItem>
-							<DropdownMenuItem>Item C</DropdownMenuItem>
-						</DropdownMenuList>
-					</DropdownMenu>
-				</Flex>
-				<Flex gap={2}>
-					<DropdownMenu>
-						<DropdownMenuButton
-							size="sm"
-							variant="primary"
-							iconAfter={ChevronDownIcon}
-						>
-							Actions
-						</DropdownMenuButton>
-						<DropdownMenuList>
-							<DropdownMenuItem>Item A</DropdownMenuItem>
-							<DropdownMenuItem>Item B</DropdownMenuItem>
-							<DropdownMenuItem>Item C</DropdownMenuItem>
-						</DropdownMenuList>
-					</DropdownMenu>
-					<DropdownMenu>
-						<DropdownMenuButton
-							size="sm"
-							variant="secondary"
-							iconAfter={ChevronDownIcon}
-						>
-							Edit
-						</DropdownMenuButton>
-						<DropdownMenuList>
-							<DropdownMenuItem>Item A</DropdownMenuItem>
-							<DropdownMenuItem>Item B</DropdownMenuItem>
-							<DropdownMenuItem>Item C</DropdownMenuItem>
-						</DropdownMenuList>
-					</DropdownMenu>
-				</Flex>
+			<Stack gap={1}>
+				{sizes.map((size) => (
+					<ButtonGroup key={size}>
+						{variants.map((variant) => (
+							<DropdownMenu key={variant}>
+								<DropdownMenuButton
+									variant={variant}
+									size={size}
+									iconAfter={ChevronDownIcon}
+								>
+									Edit
+								</DropdownMenuButton>
+								<DropdownMenuList>
+									<DropdownMenuItem>Item A</DropdownMenuItem>
+									<DropdownMenuItem>Item B</DropdownMenuItem>
+									<DropdownMenuItem>Item C</DropdownMenuItem>
+								</DropdownMenuList>
+							</DropdownMenu>
+						))}
+					</ButtonGroup>
+				))}
 			</Stack>
 		);
 	},
 };
 
-export const AccessingState: StoryObj = {
+export const Placement: StoryObj = {
 	render: function Render() {
+		const placements= [
+			'bottom-start',
+			'bottom-end',
+			'bottom',
+		] as const;
 		return (
-			<DropdownMenu>
-				{({ isMenuOpen }) => (
-					<Fragment>
-						<DropdownMenuButton
-							iconAfter={isMenuOpen ? ChevronUpIcon : ChevronDownIcon}
-						>
-							{isMenuOpen ? 'Close menu' : 'Open menu'}
-						</DropdownMenuButton>
+			<Stack gap={2} alignItems="center">
+				{placements.map((placement) => (
+					<DropdownMenu key={placement} popoverPlacement={placement}>
+						<DropdownMenuButton>{placement}</DropdownMenuButton>
 						<DropdownMenuList>
 							<DropdownMenuItem>Profile</DropdownMenuItem>
 							<DropdownMenuItem>Messages</DropdownMenuItem>
 							<DropdownMenuItem>Account settings</DropdownMenuItem>
 						</DropdownMenuList>
-					</Fragment>
-				)}
-			</DropdownMenu>
+					</DropdownMenu>
+				))}
+			</Stack>
 		);
 	},
 };
@@ -243,39 +214,12 @@ export const Links: StoryObj = {
 				<DropdownMenuList>
 					<DropdownMenuItemLink href="#link-1">Link 1</DropdownMenuItemLink>
 					<DropdownMenuItemLink href="#link-2">Link 2</DropdownMenuItemLink>
-					<DropdownMenuItemLink href="#link-3">Link 3</DropdownMenuItemLink>
-				</DropdownMenuList>
-			</DropdownMenu>
-		);
-	},
-};
-
-export const LinksExternal: StoryObj = {
-	render: function Render() {
-		return (
-			<DropdownMenu>
-				<DropdownMenuButton>Open dropdown menu</DropdownMenuButton>
-				<DropdownMenuList>
 					<DropdownMenuItemLink
-						href="https://apple.com"
+						href="https://www.agriculture.gov.au"
 						target="_blank"
 						icon={ExternalLinkIcon}
 					>
-						Apple
-					</DropdownMenuItemLink>
-					<DropdownMenuItemLink
-						href="https://google.com"
-						target="_blank"
-						icon={ExternalLinkIcon}
-					>
-						Google
-					</DropdownMenuItemLink>
-					<DropdownMenuItemLink
-						href="https://microsoft.com"
-						target="_blank"
-						icon={ExternalLinkIcon}
-					>
-						Microsoft
+						External link
 					</DropdownMenuItemLink>
 				</DropdownMenuList>
 			</DropdownMenu>
@@ -395,6 +339,58 @@ export const RadioGroupsSecondaryBadges: StoryObj = {
 	},
 };
 
+export const Overflow: StoryObj = {
+	render: function Render() {
+		return (
+			<Stack gap={2} alignItems="flex-start">
+				<DropdownMenu>
+					<DropdownMenuButton>
+						Open dropdown menu (without max height)
+					</DropdownMenuButton>
+					<DropdownMenuList>
+						{Array.from(Array(20).keys()).map((i) => (
+							<DropdownMenuItem key={i}>Item {i + 1}</DropdownMenuItem>
+						))}
+					</DropdownMenuList>
+				</DropdownMenu>
+				<DropdownMenu popoverMaxHeight={288}>
+					<DropdownMenuButton>
+						Open dropdown menu (with max height)
+					</DropdownMenuButton>
+					<DropdownMenuList>
+						{Array.from(Array(20).keys()).map((i) => (
+							<DropdownMenuItem key={i}>Item {i + 1}</DropdownMenuItem>
+						))}
+					</DropdownMenuList>
+				</DropdownMenu>
+			</Stack>
+		);
+	},
+};
+
+export const AccessingState: StoryObj = {
+	render: function Render() {
+		return (
+			<DropdownMenu>
+				{({ isMenuOpen }) => (
+					<Fragment>
+						<DropdownMenuButton
+							iconAfter={isMenuOpen ? ChevronUpIcon : ChevronDownIcon}
+						>
+							{isMenuOpen ? 'Close menu' : 'Open menu'}
+						</DropdownMenuButton>
+						<DropdownMenuList>
+							<DropdownMenuItem>Profile</DropdownMenuItem>
+							<DropdownMenuItem>Messages</DropdownMenuItem>
+							<DropdownMenuItem>Account settings</DropdownMenuItem>
+						</DropdownMenuList>
+					</Fragment>
+				)}
+			</DropdownMenu>
+		);
+	},
+};
+
 export const Complex: StoryObj = {
 	render: function Render() {
 		return (
@@ -440,68 +436,6 @@ export const Complex: StoryObj = {
 					<DropdownMenuItem icon={ExitIcon}>Sign out</DropdownMenuItem>
 				</DropdownMenuList>
 			</DropdownMenu>
-		);
-	},
-};
-
-export const Placement: StoryObj = {
-	render: function Render() {
-		return (
-			<Stack gap={2} alignItems="center">
-				<DropdownMenu>
-					<DropdownMenuButton>bottom-start (default)</DropdownMenuButton>
-					<DropdownMenuList>
-						<DropdownMenuItem>Profile</DropdownMenuItem>
-						<DropdownMenuItem>Messages</DropdownMenuItem>
-						<DropdownMenuItem>Account settings</DropdownMenuItem>
-					</DropdownMenuList>
-				</DropdownMenu>
-				<DropdownMenu popoverPlacement="bottom-end">
-					<DropdownMenuButton>bottom-end</DropdownMenuButton>
-					<DropdownMenuList>
-						<DropdownMenuItem>Profile</DropdownMenuItem>
-						<DropdownMenuItem>Messages</DropdownMenuItem>
-						<DropdownMenuItem>Account settings</DropdownMenuItem>
-					</DropdownMenuList>
-				</DropdownMenu>
-				<DropdownMenu popoverPlacement="bottom">
-					<DropdownMenuButton>bottom</DropdownMenuButton>
-					<DropdownMenuList>
-						<DropdownMenuItem>Profile</DropdownMenuItem>
-						<DropdownMenuItem>Messages</DropdownMenuItem>
-						<DropdownMenuItem>Account settings</DropdownMenuItem>
-					</DropdownMenuList>
-				</DropdownMenu>
-			</Stack>
-		);
-	},
-};
-
-export const MaxHeight: StoryObj = {
-	render: function Render() {
-		return (
-			<Stack gap={2} alignItems="flex-start">
-				<DropdownMenu>
-					<DropdownMenuButton>
-						Open dropdown menu (without max height)
-					</DropdownMenuButton>
-					<DropdownMenuList>
-						{Array.from(Array(20).keys()).map((i) => (
-							<DropdownMenuItem key={i}>Item {i + 1}</DropdownMenuItem>
-						))}
-					</DropdownMenuList>
-				</DropdownMenu>
-				<DropdownMenu popoverMaxHeight={288}>
-					<DropdownMenuButton>
-						Open dropdown menu (with max height)
-					</DropdownMenuButton>
-					<DropdownMenuList>
-						{Array.from(Array(20).keys()).map((i) => (
-							<DropdownMenuItem key={i}>Item {i + 1}</DropdownMenuItem>
-						))}
-					</DropdownMenuList>
-				</DropdownMenu>
-			</Stack>
 		);
 	},
 };
