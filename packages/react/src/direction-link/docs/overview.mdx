@@ -34,7 +34,7 @@ relatedComponents: ['call-to-action', 'text-link']
 
 - use a link in place of a button.
 
-### Direction button
+## Direction button
 
 The `DirectionLink` component will render a HTML anchor tag. We strongly recommend using this wherever possible as it is the most inclusive and accessible solution for users.
 
@@ -52,3 +52,10 @@ But sometimes using a link may be technically inappropriate for some experiences
 	</DirectionButton>
 </Stack>
 ```
+## When to use a direction link as a back button
+
+A Back button can be used in place of a breadcrumb when you want to keep a user in a flow or to maintain the parent child relationship between two pages. Multi-page forms and side-flows are examples of where to apply back buttons.
+
+Back buttons should not be used on content pages as they do not show a user where they are in relation to the rest of a site structure. They allow a user to navigate up only one level whereas a breadcrumb allow navigation back through the entire site.
+
+When using Back buttons always use the label 'Back' rather than the name of the parent page. The label 'Back' is universal, can be understood in any context and does not require the user to remember the name of the parent page.
