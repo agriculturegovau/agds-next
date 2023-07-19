@@ -1,5 +1,7 @@
 import { CSSProperties, PropsWithChildren } from 'react';
 import {
+	type Placement,
+	type ReferenceType,
 	useFloating,
 	autoUpdate,
 	offset,
@@ -39,12 +41,22 @@ export const Popover = forwardRefWithAs<'div', PopoverProps>(function Popover(
 
 const DEFAULT_OFFSET = 8;
 
-export function usePopover(options?: {
+type UsePopoverOptions = {
+	placement?: Placement;
 	matchReferenceWidth?: boolean;
 	maxHeight?: number;
-}) {
-	const { refs, floatingStyles } = useFloating({
-		placement: 'bottom-start',
+};
+
+export function usePopover<RT extends ReferenceType = ReferenceType>(
+	options?: UsePopoverOptions
+) {
+	const {
+		placement = 'bottom-start',
+		matchReferenceWidth = false,
+		maxHeight,
+	} = options || {};
+	const { refs, floatingStyles } = useFloating<RT>({
+		placement,
 		middleware: [
 			// Adds distance between the reference and floating element
 			// https://floating-ui.com/docs/offset
@@ -61,12 +73,12 @@ export function usePopover(options?: {
 						maxWidth: `${availableWidth}px`,
 						maxHeight: `${
 							// Popovers can have a predefined max-height if there is enough room on the screen
-							options?.maxHeight && availableHeight > options.maxHeight
-								? options.maxHeight
+							maxHeight && availableHeight > maxHeight
+								? maxHeight
 								: availableHeight
 						}px`,
 						// https://floating-ui.com/docs/size#match-reference-width
-						...(options?.matchReferenceWidth && {
+						...(matchReferenceWidth && {
 							width: `${rects.reference.width}px`,
 						}),
 					});
