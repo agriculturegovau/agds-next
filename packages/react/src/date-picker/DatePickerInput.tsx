@@ -14,7 +14,7 @@ export type DateInputProps = Omit<TextInputProps, 'invalid'> & {
 		/** If true, only the input element will be rendered in an invalids state. */
 		input: boolean;
 	};
-	buttonRef?: RefObject<HTMLButtonElement>;
+	buttonRef: RefObject<HTMLButtonElement>;
 	buttonOnClick: MouseEventHandler<HTMLButtonElement>;
 };
 

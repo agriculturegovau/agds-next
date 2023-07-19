@@ -5,6 +5,7 @@ import {
 	useCallback,
 	useEffect,
 	useMemo,
+	useRef,
 	useState,
 } from 'react';
 import { SelectSingleEventHandler } from 'react-day-picker';
@@ -90,6 +91,9 @@ export const DatePicker = ({
 	...props
 }: DatePickerProps) => {
 	const [isCalendarOpen, openCalendar, closeCalendar] = useTernaryState(false);
+	const toggleCalendar = isCalendarOpen ? closeCalendar : openCalendar;
+
+	const triggerRef = useRef<HTMLButtonElement>(null);
 
 	const popover = usePopover();
 
@@ -141,7 +145,7 @@ export const DatePicker = ({
 		if (isCalendarOpen) closeCalendar();
 	}, [isCalendarOpen, closeCalendar]);
 
-	useClickOutside([popover.popoverRef], handleClickOutside);
+	useClickOutside([popover.popoverRef, triggerRef], handleClickOutside);
 
 	// Close the calendar when the user presses the escape key
 	useEffect(() => {
@@ -176,7 +180,8 @@ export const DatePicker = ({
 				ref={inputRef}
 				value={inputValue}
 				onChange={onInputChange}
-				buttonOnClick={openCalendar}
+				buttonRef={triggerRef}
+				buttonOnClick={toggleCalendar}
 			/>
 			{isCalendarOpen && (
 				<Popover {...popover.getPopoverProps()}>
