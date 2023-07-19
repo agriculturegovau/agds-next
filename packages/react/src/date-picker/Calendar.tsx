@@ -60,14 +60,7 @@ export function CalendarRange({
 	...props
 }: CalendarRangeProps) {
 	return (
-		<FocusLock
-			autoFocus={false}
-			onDeactivation={() => {
-				// https://github.com/theKashey/react-focus-lock#unmounting-and-focus-management
-				if (!returnFocusRef) return;
-				window.setTimeout(() => returnFocusRef.current?.focus(), 0);
-			}}
-		>
+		<FocusLock autoFocus={false} returnFocus>
 			<CalendarContainer range={true}>
 				<CalendarLabelContext.Provider value={{ yearRange }}>
 					<DayPicker mode="range" {...defaultDayPickerProps} {...props} />

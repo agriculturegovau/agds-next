@@ -90,10 +90,10 @@ export const DatePicker = ({
 	maxWidth = 'md',
 	...props
 }: DatePickerProps) => {
+	const triggerRef = useRef<HTMLButtonElement>(null);
+
 	const [isCalendarOpen, openCalendar, closeCalendar] = useTernaryState(false);
 	const toggleCalendar = isCalendarOpen ? closeCalendar : openCalendar;
-
-	const triggerRef = useRef<HTMLButtonElement>(null);
 
 	const popover = usePopover();
 

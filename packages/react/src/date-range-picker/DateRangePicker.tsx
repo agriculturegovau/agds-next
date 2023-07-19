@@ -118,6 +118,7 @@ export const DateRangePicker = ({
 	function onFromTriggerClick() {
 		if (isCalendarOpen) {
 			closeCalendar();
+			setInputMode(undefined);
 		} else {
 			setInputMode('from');
 			openCalendar();
@@ -127,6 +128,7 @@ export const DateRangePicker = ({
 	function onToTriggerClick() {
 		if (isCalendarOpen) {
 			closeCalendar();
+			setInputMode(undefined);
 		} else {
 			setInputMode('to');
 			openCalendar();
@@ -349,9 +351,6 @@ export const DateRangePicker = ({
 							onSelect={onSelect}
 							numberOfMonths={numberOfMonths}
 							disabled={disabledCalendarDays}
-							returnFocusRef={
-								inputMode === 'from' ? fromTriggerRef : toTriggerRef
-							}
 							yearRange={yearRange}
 						/>
 					</Popover>
