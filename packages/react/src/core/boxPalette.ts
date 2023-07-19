@@ -28,8 +28,6 @@ const boxPaletteVars = {
 	backgroundError: '--agds-background-error',
 	backgroundErrorBold: '--agds-background-error-bold', // used for PageAlert icon blocks
 	backgroundDisabled: '--agds-background-disabled',
-	backgroundInput: '--agds-background-input',
-	backgroundInputHover: '--agds-background-input-hover',
 
 	// border
 	border: '--agds-border',

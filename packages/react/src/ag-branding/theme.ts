@@ -4,14 +4,14 @@ import { Theme } from '../core';
 const primitives = {
 	// shades for neutrals
 	// // grey
-	white: '#ffffff',
-	grey1: '#f5f5f5',
-	grey2: '#ebebeb',
-	grey3: '#e0e0e0',
-	grey4: '#D3D3D3',
-	grey5: '#808080',
-	grey6: '#626262',
-	grey7: '#313131',
+	white: '#ffffff', // body
+	grey1: '#f5f5f5', // body-alt
+	grey2: '#ebebeb', // shade
+	grey3: '#e0e0e0', // shade-alt
+	grey4: '#D3D3D3', // border muted
+	grey5: '#808080', // border
+	grey6: '#626262', // text-muted
+	grey7: '#313131', // text
 	// // slate
 	slate1: '#bdd2d7',
 	slate2: '#95b7bf',
