@@ -11,7 +11,7 @@ Don’t use the ampersand symbol (&) instead of ‘and’ in a heading or senten
 
 That’s unless it’s a part of a proper noun or name.
 
-```jsx live enableProse
+```jsx live enableProse exampleContentHeadingType='h3'
 <Prose>
 	<h1>Summary and findings</h1>
 
@@ -86,10 +86,13 @@ Avoid complex contractions which are harder to interpret. Some users may find th
 
 Conduct research where possible to see if you should use contractions in Export Service content.
 
-### Examples
+<ExampleContent heading={<H3>Example</H3>}>
+	We’ll get back to you within 2 days.
+</ExampleContent>
 
-- "We’ll get back to you within 2 days".
-- "You don’t have access to this business".
+<ExampleContent heading={<H3>Example</H3>}>
+	You don’t have access to this business.
+</ExampleContent>
 
 For more information, see [Contractions](https://www.stylemanual.gov.au/grammar-punctuation-and-conventions/shortened-words-and-phrases/contractions). Also see Abbreviations and other shortened forms in the DAFF Style guide (internal DAFF staff only).
 
@@ -115,24 +118,15 @@ Don’t include a full stop after an email address if it’s part of sentence fr
 
 You can use a full stop after an email address if it’s at the end of a sentence. But make sure the full stop is not included in the link text. Otherwise, users may confuse it with being a part of the email address.
 
-```jsx live
-<Text>
-	Email address{' '}
-	<TextLink href="mailto:exportservice@agriculture.gov.au">
-		exportservice@agriculture.gov.au
-	</TextLink>
-</Text>
-```
+<ExampleContent heading={<H3>Example</H3>}>
+	Email address
+	[exportservice@agriculture.gov.au](mailto:exportservice@agriculture.gov.au)
+</ExampleContent>
 
-```jsx live
-<Text>
-	If you're interested in taking part or would like to find out more, email{' '}
-	<TextLink href="mailto:exportassurance@agriculture.gov.au">
-		exportassurance@agriculture.gov.au
-	</TextLink>
-	.
-</Text>
-```
+<ExampleContent heading={<H3>Example</H3>}>
+	If you're interested in taking part or would like to find out more, email
+	[exportassurance@agriculture.gov.au](mailto:exportassurance@agriculture.gov.au)
+</ExampleContent>
 
 For more information, see [Text link](/components/text-link) and [Full stops](https://www.stylemanual.gov.au/grammar-punctuation-and-conventions/punctuation-and-capitalisation/full-stops#dont_end_web_or_email_addresses_with_full_stops).
 
@@ -205,7 +199,7 @@ If the information applies to all users, don’t hide an FAQ in an accordion or 
 
 Monitor and measure the success of FAQs. If no one is using them, remove FAQ content.
 
-```jsx live enableProse
+```jsx live enableProse exampleContentHeadingType="h3"
 <Details label="How were my details prefilled?" iconBefore>
 	<Prose>
 		<p>
@@ -245,7 +239,7 @@ A H1 can also be a question. But try to use questions as headings minimally or i
 
 For more information, see Structuring headings and labels in [Content structure](/content/content-structure#structuring-headings-and-labels). Also see Frequently Asked Questions in [Content styles](#frequently-asked-questions) and [Headings](/components/heading).
 
-```jsx live
+```jsx live exampleContentHeadingType="h3"
 <Stack gap={3}>
 	<H1>Find an export guide for agricultural goods</H1>
 	<Text as="p" fontSize="lg" color="muted">
@@ -304,36 +298,27 @@ Ideally, include one action the user needs to take in each step. But if space is
 
 Use a forward arrow (>) to separate the tabs or buttons users need to select.
 
-### Examples
-
-```jsx live
-<Text>
+<ExampleContent heading={<H3>Example</H3>}>
 	To carry out any of these actions, sign in to the Export Service and select
 	the 'Establishments' tab.
-</Text>
-```
+</ExampleContent>
 
-```jsx live
-<Text>
+<ExampleContent heading={<H3>Example</H3>}>
 	On the Insert tab, select Symbol > More symbols > Special characters > En
 	dash.
-</Text>
-```
+</ExampleContent>
 
-```jsx live enableProse
-<Prose>
-	<p>You can see details of your audit in your Export Service account.</p>
-	<p>To find a summary and findings of your audit:</p>
-	<ol>
-		<li>Sign in to your Export Service account.</li>
-		<li>Select ‘Compliance’.</li>
-		<li>
-			Under Audit reports, find the audit reference number and select ‘View’.
-		</li>
-		<li>Go to the Findings section.</li>
-	</ol>
-</Prose>
-```
+<ExampleContent heading={<H3>Example</H3>}>
+	You can see details of your audit in your Export Service account.
+
+    To find a summary and findings of your audit:
+
+    	1. Sign in to your Export Service account.
+    	2. Select ‘Compliance’.
+    	3. Under Audit reports, find the audit reference number and select ‘View’.
+    	4. Go to the Findings section.
+
+</ExampleContent>
 
 For more information, see Technical guidance in [How to create guidance in the Export Service](/guides/how-to-write-guidance/how-to-present-guidance#technical-guidance).
 
@@ -343,7 +328,7 @@ For more information, see Technical guidance in [How to create guidance in the E
 
 Include a short introduction that describes a page’s content under the heading (H1). It should be 1 to 2 sentences (about 30 words) and end with a full stop.
 
-```jsx live
+```jsx live exampleContentHeadingType="h3"
 <Stack gap={1.5}>
 	<H1>Business owner or principal authority</H1>
 	<Text as="p" fontSize="md" color="muted">
@@ -376,7 +361,7 @@ For more information on links, see:
 
 - External links I DAFF Style guide (internal DAFF staff only).
 
-```jsx live enableProse
+```jsx live enableProse exampleContentHeadingType="h3"
 <Prose>
 <p>To create your myGovID:</a>
 <ol>
@@ -389,7 +374,7 @@ For more information on links, see:
 </Prose>
 ```
 
-```jsx live enableProse
+```jsx live enableProse exampleContentHeadingType="h3"
 <p>
 	You can propose an arrangement to us to approve. You can do this at the same
 	time you apply to{' '}
@@ -410,7 +395,7 @@ Don't use full stops at the end of the last item on a list if the item is next t
 
 Use a capital letter on the first word of listed items next to radio buttons or multi-select checkboxes.
 
-```jsx live
+```jsx live exampleContentHeadingType="h3"
 <Fieldset legend="Select commodities">
 	<ControlGroup
 		label="Which commodities are you applying to register?"
@@ -457,7 +442,7 @@ When you create microcopy in the Export Service, make sure content:
 - offers a specific solution to fix any problem. For example, accepted formats
 - uses [‘Please and thanks’](#please-and-thanks) sparingly and only if the user’s action will be something extra.
 
-```jsx live
+```jsx live exampleContentHeadingType="h3"
 <FormStack>
 	<TextInput
 		label="Email address"
@@ -489,7 +474,7 @@ Always spell out ‘one’ and ‘zero’ in words, so users don’t confuse the
 
 For more information, see Numbers in the DAFF Style guide (internal DAFF staff only). Also see [Numbers and measurements](https://www.stylemanual.gov.au/grammar-punctuation-and-conventions/numbers-and-measurements).
 
-```jsx live
+```jsx live exampleContentHeadingType="h3"
 <Prose>
 	<h1>Linking a business in RAM</h1>
 	<p>
@@ -516,7 +501,7 @@ Use ‘please’ and ‘thanks’ sparingly. Only add it to content when you’r
 
 For example, if you are asking them to give feedback on a web page. Use ‘thanks’ instead of ‘thank you’ in these instances.
 
-```jsx live
+```jsx live exampleContentHeadingType="h3"
 <FormStack>
 	<H2>Thanks for your feedback</H2>
 	<Textarea label="Please tell us more" hint="Don't provide personal details" />
@@ -529,7 +514,7 @@ For example, if you are asking them to give feedback on a web page. Use ‘thank
 
 Use ‘(s)’ to indicate one or more of a word to users in the Export Service.
 
-```jsx live
+```jsx live exampleContentHeadingType="h3"
 <Stack gap={1.5}>
 	<SummaryList>
 		<SummaryListItem>
@@ -550,7 +535,7 @@ Use commas minimally in Export Service content. Instead, break up content into s
 
 Don’t use the Oxford comma. That is, a comma before the final ‘and’ in a sentence.
 
-```jsx live
+```jsx live exampleContentHeadingType="h4"
 <Card shadow clickable>
 	<CardInner>
 		<Stack gap={1}>
@@ -615,7 +600,7 @@ Some of the preferred terms we use on common button labels in the Export Service
 - Change (instead of 'edit' or 'update')
 - Manage [element]
 
-```jsx live
+```jsx live exampleContentHeadingType="h4"
 <Button>Edit registered establishments</Button>
 ```
 
@@ -653,17 +638,13 @@ Don’t use ‘such as’ or ‘includes’ in place of ‘for example’.
 
 For more information, see ‘e.g.’ or ‘for example’ in the DAFF Style guide (internal DAFF staff only).
 
-```jsx live
-<Text as="p">
+<ExampleContent heading={<H3>Example</H3>}>
 	This tool is for exporting citrus fruits (for example, oranges and lemons).
-</Text>
-```
+</ExampleContent>
 
-```jsx live
-<Text as="p">
+<ExampleContent heading={<H3>Example</H3>}>
 	You’ll need identity documents, for example a driver licence.
-</Text>
-```
+</ExampleContent>
 
 <BackToTop />
 
@@ -680,11 +661,13 @@ A search engine optimised (SEO) URL:
 - has 20 to 70 characters if possible
 - is consistent with the H1 on the page if possible. But try not to repeat a word if it's already a part of the URL domain/folder URL stem.
 
-### Examples
+<ExampleContent heading={<H4>Example</H4>}>
+	https://exports.agriculture.gov.au/help/register-establishment
+</ExampleContent>
 
-`https://exports.agriculture.gov.au/help/register-establishment`
-
-`https://exports.agriculture.gov.au/guides/export-guide-agricultural-goods`
+<ExampleContent heading={<H4>Example</H4>}>
+	https://exports.agriculture.gov.au/guides/export-guide-agricultural-goods
+</ExampleContent>
 
 <BackToTop />
 

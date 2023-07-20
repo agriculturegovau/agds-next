@@ -12,6 +12,7 @@ import { createUrl } from 'playroom/utils';
 import { Highlight, Prism } from 'prism-react-renderer';
 import copy from 'clipboard-copy';
 import { ExternalLinkCallout } from '@ag.ds-next/react/a11y';
+import { Card, CardHeader } from '@ag.ds-next/react/card';
 import {
 	globalPalette,
 	mapSpacing,
@@ -22,6 +23,7 @@ import {
 } from '@ag.ds-next/react/core';
 import { Box } from '@ag.ds-next/react/box';
 import { Flex } from '@ag.ds-next/react/flex';
+import { Heading } from '@ag.ds-next/react/heading';
 import {
 	unsetProseStylesClassname,
 	proseBlockClassname,
@@ -53,9 +55,11 @@ const PlaceholderImage = () => (
 function LiveCode({
 	showCode = false,
 	enableProse = false,
+	exampleContentHeadingType,
 }: {
 	showCode?: boolean;
 	enableProse?: boolean;
+	exampleContentHeadingType?: 'h2' | 'h3' | 'h4';
 }) {
 	const liveCodeToggleButton = useRef<HTMLButtonElement>(null);
 	const live = useContext(LiveContext);
@@ -103,7 +107,12 @@ function LiveCode({
 	);
 
 	return (
-		<Box border rounded borderColor="muted" className={proseBlockClassname}>
+		<Card className={proseBlockClassname}>
+			{exampleContentHeadingType && (
+				<CardHeader>
+					<Heading type={exampleContentHeadingType}>Example</Heading>
+				</CardHeader>
+			)}
 			<LivePreview
 				aria-label="Rendered code snippet example"
 				// Prevents prose styles from being inherited in live code examples (except for the prose example)
@@ -194,7 +203,7 @@ function LiveCode({
 					{live.error}
 				</Box>
 			) : null}
-		</Box>
+		</Card>
 	);
 }
 
@@ -279,6 +288,7 @@ type CodeProps = {
 	live?: boolean;
 	showCode?: boolean;
 	enableProse?: boolean;
+	exampleContentHeadingType?: 'h2' | 'h3' | 'h4';
 };
 
 export function Code({
@@ -287,6 +297,7 @@ export function Code({
 	showCode,
 	enableProse,
 	className,
+	exampleContentHeadingType,
 }: CodeProps) {
 	const childrenAsString = children?.toString().trim();
 	const language = className?.replace(/language-/, '');
@@ -300,7 +311,11 @@ export function Code({
 				scope={LIVE_SCOPE}
 				language={language}
 			>
-				<LiveCode showCode={showCode} enableProse={enableProse} />
+				<LiveCode
+					showCode={showCode}
+					enableProse={enableProse}
+					exampleContentHeadingType={exampleContentHeadingType}
+				/>
 			</LiveProvider>
 		);
 	}

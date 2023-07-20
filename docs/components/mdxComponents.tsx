@@ -5,6 +5,8 @@ import {
 	HTMLAttributes,
 	AnchorHTMLAttributes,
 	ImgHTMLAttributes,
+	ReactNode,
+	PropsWithChildren,
 } from 'react';
 import type { MDXRemoteProps } from 'next-mdx-remote';
 import Link from 'next/link';
@@ -25,6 +27,8 @@ import { boxPalette, fontGrid, mapSpacing } from '@ag.ds-next/react/core';
 import { Text } from '@ag.ds-next/react/text';
 import { TextLink } from '@ag.ds-next/react/text-link';
 import { DirectionLink } from '@ag.ds-next/react/direction-link';
+import { Card, CardHeader, CardInner } from '@ag.ds-next/react/card';
+import { H3, H4 } from '@ag.ds-next/react/heading';
 import { slugify } from '../lib/slugify';
 import { withBasePath } from '../lib/img';
 import generatedComponentPropsData from '../__generated__/componentProps.json';
@@ -41,10 +45,12 @@ export const mdxComponents: MDXRemoteProps['components'] = {
 		live,
 		showCode,
 		enableProse,
+		exampleContentHeadingType,
 	}: HTMLAttributes<HTMLPreElement> & {
 		live?: boolean;
 		showCode?: boolean;
 		enableProse?: boolean;
+		exampleContentHeadingType?: 'h2' | 'h3' | 'h4';
 	}) => {
 		return (
 			<Fragment>
@@ -56,6 +62,7 @@ export const mdxComponents: MDXRemoteProps['components'] = {
 							live={live}
 							showCode={showCode}
 							enableProse={enableProse}
+							exampleContentHeadingType={exampleContentHeadingType}
 							{...element.props}
 						/>
 					);
@@ -128,6 +135,8 @@ export const mdxComponents: MDXRemoteProps['components'] = {
 			</h3>
 		);
 	},
+	H3,
+	H4,
 	PageAlert: (props: PageAlertProps) => (
 		<div className={proseBlockClassname}>
 			<PageAlert {...props} />
@@ -177,6 +186,17 @@ export const mdxComponents: MDXRemoteProps['components'] = {
 		>
 			Back to top
 		</DirectionLink>
+	),
+	ExampleContent: ({
+		heading = <H4>Example</H4>,
+		children,
+	}: PropsWithChildren<{
+		heading?: ReactNode;
+	}>) => (
+		<Card className={proseBlockClassname}>
+			{heading ? <CardHeader>{heading}</CardHeader> : null}
+			<CardInner>{children}</CardInner>
+		</Card>
 	),
 	Box,
 	FootnotesList: ({ children }: HTMLAttributes<HTMLOListElement>) => (
