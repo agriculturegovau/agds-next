@@ -36,7 +36,7 @@ export type CalendarSingleProps = Omit<
 
 export function CalendarSingle({ yearRange, ...props }: CalendarSingleProps) {
 	return (
-		<FocusLock autoFocus={false} returnFocus>
+		<FocusLock autoFocus={false}>
 			<CalendarContainer range={false}>
 				<CalendarLabelContext.Provider value={{ yearRange }}>
 					<DayPicker mode="single" {...defaultDayPickerProps} {...props} />
@@ -60,7 +60,14 @@ export function CalendarRange({
 	...props
 }: CalendarRangeProps) {
 	return (
-		<FocusLock autoFocus={false} returnFocus>
+		<FocusLock
+			autoFocus={false}
+			onDeactivation={() => {
+				// https://github.com/theKashey/react-focus-lock#unmounting-and-focus-management
+				if (!returnFocusRef) return;
+				window.setTimeout(() => returnFocusRef.current?.focus(), 0);
+			}}
+		>
 			<CalendarContainer range={true}>
 				<CalendarLabelContext.Provider value={{ yearRange }}>
 					<DayPicker mode="range" {...defaultDayPickerProps} {...props} />

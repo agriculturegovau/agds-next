@@ -110,29 +110,21 @@ export const DateRangePicker = ({
 	yearRange,
 }: DateRangePickerProps) => {
 	const [isCalendarOpen, openCalendar, closeCalendar] = useTernaryState(false);
+	const toggleCalendar = isCalendarOpen ? closeCalendar : openCalendar;
+
 	const [inputMode, setInputMode] = useState<'from' | 'to'>();
 
 	const fromTriggerRef = useRef<HTMLButtonElement>(null);
 	const toTriggerRef = useRef<HTMLButtonElement>(null);
 
 	function onFromTriggerClick() {
-		if (isCalendarOpen) {
-			closeCalendar();
-			setInputMode(undefined);
-		} else {
-			setInputMode('from');
-			openCalendar();
-		}
+		setInputMode('from');
+		toggleCalendar();
 	}
 
 	function onToTriggerClick() {
-		if (isCalendarOpen) {
-			closeCalendar();
-			setInputMode(undefined);
-		} else {
-			setInputMode('to');
-			openCalendar();
-		}
+		setInputMode('to');
+		toggleCalendar();
 	}
 
 	const popover = usePopover();
@@ -351,6 +343,9 @@ export const DateRangePicker = ({
 							onSelect={onSelect}
 							numberOfMonths={numberOfMonths}
 							disabled={disabledCalendarDays}
+							returnFocusRef={
+								inputMode === 'from' ? fromTriggerRef : toTriggerRef
+							}
 							yearRange={yearRange}
 						/>
 					</Popover>
