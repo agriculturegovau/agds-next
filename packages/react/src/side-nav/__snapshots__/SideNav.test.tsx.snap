@@ -3,19 +3,19 @@
 exports[`SideNav renders correctly 1`] = `
 <div>
   <aside
-    class="css-d977xg-boxStyles-SideNavContainer"
+    class="css-1ibrqf4-boxStyles-SideBarContainer"
   >
     <button
-      aria-controls="sideNav-:r0:-body"
+      aria-controls="side-bar-:r1:-body"
       aria-expanded="false"
-      class="css-10gm9gu-BaseButton-boxStyles-SideNavCollapseButton"
-      id="sideNav-:r0:-button"
+      class="css-pwp7qi-BaseButton-boxStyles-SideBarCollapseButton"
+      id="side-bar-:r1:-button"
       type="button"
     >
       In this section
       <svg
         aria-hidden="true"
-        class="css-1ju3rg1-SideNavCollapseButton"
+        class="css-129zfw4-SideBarCollapseButton"
         clip-rule="evenodd"
         focusable="false"
         height="24"
@@ -30,218 +30,222 @@ exports[`SideNav renders correctly 1`] = `
       </svg>
     </button>
     <div
-      class="css-1wh7zb4-SideNav"
-      id="sideNav-:r0:-body"
+      class="css-1urfsrs-SideBar"
+      id="side-bar-:r1:-body"
       style="display: none; height: 0px; overflow: hidden;"
     >
-      <nav
-        aria-labelledby="sideNav-:r0:-title"
-        class="css-zipzg2-boxStyles"
-        id="sideNav-:r0:-nav"
+      <div
+        class="css-td3mpi-boxStyles"
       >
-        <h2
-          class="css-dueube-boxStyles"
-          id="sideNav-:r0:-title"
+        <nav
+          aria-labelledby="sideNav-:r0:-title"
+          class="css-zipzg2-boxStyles"
+          id="sideNav-:r0:-nav"
         >
-          <a
-            class="css-1qbo8fu-boxStyles-SideNavTitle"
-            href="/"
-          >
-            Lodging your tax return
-          </a>
-        </h2>
-        <ul
-          class="css-79i25n-boxStyles"
-        >
-          <li
-            class="css-0"
+          <h2
+            class="css-dueube-boxStyles"
+            id="sideNav-:r0:-title"
           >
             <a
-              class="css-1g2ohmo-boxStyles-SideNavLink"
-              href="/welcome"
+              class="css-1m9alv4-boxStyles-SideNavTitle"
+              href="/"
             >
-              <span>
-                Welcome
-              </span>
+              Lodging your tax return
             </a>
-          </li>
-          <li
-            class="css-0"
+          </h2>
+          <ul
+            class="css-79i25n-boxStyles"
           >
-            <a
-              class="css-1g2ohmo-boxStyles-SideNavLink"
-              href="/do-you-need-to-lodge-a-tax-return"
+            <li
+              class="css-0"
             >
-              <span>
-                Do you need to lodge a tax return?
-              </span>
-            </a>
-          </li>
-          <li
-            class="css-0"
-          >
-            <a
-              class="css-1g2ohmo-boxStyles-SideNavLink"
-              href="/lodge-online"
-            >
-              <span>
-                Lodge online
-              </span>
-            </a>
-            <ul
-              class="css-79i25n-boxStyles"
-            >
-              <li
-                class="css-0"
+              <a
+                class="css-10by0n8-boxStyles-SideNavLink"
+                href="/welcome"
               >
-                <a
-                  class="css-10ikwfr-boxStyles-SideNavLink"
-                  href="/lodge-online/pre-filling"
-                >
-                  <span
-                    aria-hidden="true"
-                  >
-                    –
-                  </span>
-                  <span>
-                    Pre-filling your online tax return
-                  </span>
-                </a>
-              </li>
-            </ul>
-          </li>
-          <li
-            class="css-0"
-          >
-            <a
-              class="css-1g2ohmo-boxStyles-SideNavLink"
-              href="/whats-new-for-individuals"
+                <span>
+                  Welcome
+                </span>
+              </a>
+            </li>
+            <li
+              class="css-0"
             >
-              <span>
-                What's new for individuals
-              </span>
-            </a>
-          </li>
-          <li
-            class="css-0"
-          >
-            <a
-              class="css-1g2ohmo-boxStyles-SideNavLink"
-              href="/why-you-may-receive-a-tax-bill"
-            >
-              <span>
-                Why you may receive a tax bill
-              </span>
-            </a>
-          </li>
-          <li
-            class="css-1aajr8x-SideNavListItem"
-          >
-            <a
-              aria-current="page"
-              class="css-6eahlq-boxStyles-SideNavLink"
-              href="/in-detail"
-            >
-              <span>
-                In detail
-              </span>
-            </a>
-            <ul
-              class="css-79i25n-boxStyles"
-            >
-              <li
-                class="css-0"
+              <a
+                class="css-10by0n8-boxStyles-SideNavLink"
+                href="/do-you-need-to-lodge-a-tax-return"
               >
-                <a
-                  class="css-10ikwfr-boxStyles-SideNavLink"
-                  href="/in-detail/record-keeping"
+                <span>
+                  Do you need to lodge a tax return?
+                </span>
+              </a>
+            </li>
+            <li
+              class="css-0"
+            >
+              <a
+                class="css-10by0n8-boxStyles-SideNavLink"
+                href="/lodge-online"
+              >
+                <span>
+                  Lodge online
+                </span>
+              </a>
+              <ul
+                class="css-79i25n-boxStyles"
+              >
+                <li
+                  class="css-0"
                 >
-                  <span
-                    aria-hidden="true"
+                  <a
+                    class="css-18dfpa6-boxStyles-SideNavLink"
+                    href="/lodge-online/pre-filling"
                   >
-                    –
-                  </span>
-                  <span>
-                    Record keeping
-                  </span>
-                </a>
-                <ul
-                  class="css-79i25n-boxStyles"
-                >
-                  <li
-                    class="css-0"
-                  >
-                    <a
-                      class="css-kf7fih-boxStyles-SideNavLink"
-                      href="/in-detail/record-keeping/tax"
+                    <span
+                      aria-hidden="true"
                     >
-                      <span
-                        aria-hidden="true"
-                      >
-                        —
-                      </span>
-                      <span>
-                        Keeping your tax records
-                      </span>
-                    </a>
-                  </li>
-                  <li
-                    class="css-0"
+                      –
+                    </span>
+                    <span>
+                      Pre-filling your online tax return
+                    </span>
+                  </a>
+                </li>
+              </ul>
+            </li>
+            <li
+              class="css-0"
+            >
+              <a
+                class="css-10by0n8-boxStyles-SideNavLink"
+                href="/whats-new-for-individuals"
+              >
+                <span>
+                  What's new for individuals
+                </span>
+              </a>
+            </li>
+            <li
+              class="css-0"
+            >
+              <a
+                class="css-10by0n8-boxStyles-SideNavLink"
+                href="/why-you-may-receive-a-tax-bill"
+              >
+                <span>
+                  Why you may receive a tax bill
+                </span>
+              </a>
+            </li>
+            <li
+              class="css-1aajr8x-SideNavListItem"
+            >
+              <a
+                aria-current="page"
+                class="css-1g07ixz-boxStyles-SideNavLink"
+                href="/in-detail"
+              >
+                <span>
+                  In detail
+                </span>
+              </a>
+              <ul
+                class="css-79i25n-boxStyles"
+              >
+                <li
+                  class="css-0"
+                >
+                  <a
+                    class="css-18dfpa6-boxStyles-SideNavLink"
+                    href="/in-detail/record-keeping"
                   >
-                    <a
-                      class="css-kf7fih-boxStyles-SideNavLink"
-                      href="/in-detail/record-keeping/incorrect-amounts"
+                    <span
+                      aria-hidden="true"
                     >
-                      <span
-                        aria-hidden="true"
+                      –
+                    </span>
+                    <span>
+                      Record keeping
+                    </span>
+                  </a>
+                  <ul
+                    class="css-79i25n-boxStyles"
+                  >
+                    <li
+                      class="css-0"
+                    >
+                      <a
+                        class="css-am0216-boxStyles-SideNavLink"
+                        href="/in-detail/record-keeping/tax"
                       >
-                        —
-                      </span>
-                      <span>
-                        Incorrect amounts
-                      </span>
-                    </a>
-                  </li>
-                </ul>
-              </li>
-              <li
-                class="css-0"
-              >
-                <a
-                  class="css-10ikwfr-boxStyles-SideNavLink"
-                  href="/tax-receipt"
+                        <span
+                          aria-hidden="true"
+                        >
+                          —
+                        </span>
+                        <span>
+                          Keeping your tax records
+                        </span>
+                      </a>
+                    </li>
+                    <li
+                      class="css-0"
+                    >
+                      <a
+                        class="css-am0216-boxStyles-SideNavLink"
+                        href="/in-detail/record-keeping/incorrect-amounts"
+                      >
+                        <span
+                          aria-hidden="true"
+                        >
+                          —
+                        </span>
+                        <span>
+                          Incorrect amounts
+                        </span>
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+                <li
+                  class="css-0"
                 >
-                  <span
-                    aria-hidden="true"
+                  <a
+                    class="css-18dfpa6-boxStyles-SideNavLink"
+                    href="/tax-receipt"
                   >
-                    –
-                  </span>
-                  <span>
-                    Tax receipt
-                  </span>
-                </a>
-              </li>
-              <li
-                class="css-0"
-              >
-                <a
-                  class="css-10ikwfr-boxStyles-SideNavLink"
-                  href="/pre-fill availability"
+                    <span
+                      aria-hidden="true"
+                    >
+                      –
+                    </span>
+                    <span>
+                      Tax receipt
+                    </span>
+                  </a>
+                </li>
+                <li
+                  class="css-0"
                 >
-                  <span
-                    aria-hidden="true"
+                  <a
+                    class="css-18dfpa6-boxStyles-SideNavLink"
+                    href="/pre-fill availability"
                   >
-                    –
-                  </span>
-                  <span>
-                    Pre-fill availability
-                  </span>
-                </a>
-              </li>
-            </ul>
-          </li>
-        </ul>
-      </nav>
+                    <span
+                      aria-hidden="true"
+                    >
+                      –
+                    </span>
+                    <span>
+                      Pre-fill availability
+                    </span>
+                  </a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </nav>
+      </div>
     </div>
   </aside>
 </div>

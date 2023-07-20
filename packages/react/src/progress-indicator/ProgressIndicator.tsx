@@ -1,16 +1,8 @@
 import { useRef } from 'react';
-import { useSpring, animated } from '@react-spring/web';
-import {
-	packs,
-	tokens,
-	useId,
-	usePrefersReducedMotion,
-	useToggleState,
-	useWindowSize,
-} from '../core';
+import { packs, useId } from '../core';
 import { Box } from '../box';
-import { ProgressIndicatorHeading } from './ProgressIndicatorHeading';
-import { ProgressIndicatorCollapseButton } from './ProgressIndicatorCollapseButton';
+import { SideBar } from '../side-bar';
+import { SideBarTitle } from '../side-bar/SideBarTitle';
 import {
 	ProgressIndicatorItem,
 	ProgressIndicatorItemButton,
@@ -29,63 +21,23 @@ export const ProgressIndicator = ({
 	background,
 	items,
 }: ProgressIndicatorProps) => {
-	const { buttonId, bodyId } = useProgressIndicatorIds();
 	const ref = useRef<HTMLUListElement>(null);
-	const [isOpen, onToggle] = useToggleState(false, true);
-
-	const prefersReducedMotion = usePrefersReducedMotion();
-	const animatedHeight = useSpring({
-		from: { display: 'none', height: 0 },
-		to: async (next) => {
-			// Show the element so it's height can be animated
-			if (isOpen) await next({ display: 'block', overflow: 'hidden' });
-			// Animate the elements height
-			await next({
-				overflow: 'hidden',
-				height: isOpen ? ref.current?.offsetHeight : 0,
-				immediate: prefersReducedMotion,
-			});
-			// Animation end state
-			await next(
-				isOpen
-					? { height: 'auto', overflow: 'initial' }
-					: { display: 'none', overflow: 'initial' }
-			);
-		},
-	});
-
-	const { windowWidth } = useWindowSize();
-	const isMobile = (windowWidth || 0) <= tokens.breakpoint.lg - 1;
 	const stepsCompleted = items.filter((item) => item.status === 'done').length;
 	const totalSteps = items.length;
 	const subHeading = `${stepsCompleted} of ${totalSteps} steps completed`;
 
 	return (
-		<Box as="section" borderBottom>
-			<ProgressIndicatorHeading heading="Progress" subHeading={subHeading} />
-			<ProgressIndicatorCollapseButton
-				background={background}
-				isOpen={isOpen}
-				onClick={onToggle}
-				ariaControls={bodyId}
-				id={buttonId}
-				label={subHeading}
-			/>
-			<animated.div
-				id={bodyId}
-				// As this component looks similar to an accordion in smaller screen sizes, we need to conditionally add some aria attributes
-				{...(isMobile && { role: 'region', 'aria-labelledby': buttonId })}
-				style={animatedHeight}
+		<SideBar
+			as="section"
+			collapseButtonLabel={subHeading}
+			background={background}
+		>
+			<Box
 				css={{
-					// Overwrite the animated height for tablet/desktop sizes.
-					[tokens.mediaQuery.min.md]: {
-						overflow: 'unset',
-						display: 'block !important',
-						height: 'auto !important',
-					},
 					...packs.print.visible,
 				}}
 			>
+				<SideBarTitle title="Progress" subTitle={subHeading} />
 				<ProgressIndicatorList ref={ref}>
 					{items.map(({ label, ...props }, index) => {
 						if (isItemLink(props)) {
@@ -110,8 +62,8 @@ export const ProgressIndicator = ({
 						);
 					})}
 				</ProgressIndicatorList>
-			</animated.div>
-		</Box>
+			</Box>
+		</SideBar>
 	);
 };
 
