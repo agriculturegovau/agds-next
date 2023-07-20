@@ -110,20 +110,22 @@ export const DateRangePicker = ({
 	yearRange,
 }: DateRangePickerProps) => {
 	const [isCalendarOpen, openCalendar, closeCalendar] = useTernaryState(false);
+	const toggleCalendar = isCalendarOpen ? closeCalendar : openCalendar;
+
 	const [inputMode, setInputMode] = useState<'from' | 'to'>();
 
 	const fromTriggerRef = useRef<HTMLButtonElement>(null);
 	const toTriggerRef = useRef<HTMLButtonElement>(null);
 
-	const onFromTriggerClick = useCallback(() => {
+	function onFromTriggerClick() {
 		setInputMode('from');
-		openCalendar();
-	}, [openCalendar]);
+		toggleCalendar();
+	}
 
-	const onToTriggerClick = useCallback(() => {
+	function onToTriggerClick() {
 		setInputMode('to');
-		openCalendar();
-	}, [openCalendar]);
+		toggleCalendar();
+	}
 
 	const popover = usePopover();
 
@@ -239,7 +241,10 @@ export const DateRangePicker = ({
 		if (isCalendarOpen) closeCalendar();
 	}, [isCalendarOpen, closeCalendar]);
 
-	useClickOutside([popover.popoverRef], handleClickOutside);
+	useClickOutside(
+		[popover.popoverRef, fromTriggerRef, toTriggerRef],
+		handleClickOutside
+	);
 
 	// Close the calendar when the user presses the escape key
 	useEffect(() => {
@@ -350,10 +355,10 @@ export const DateRangePicker = ({
 	);
 };
 
-export const useDateRangePickerIds = (idProp?: string) => {
+export function useDateRangePickerIds(idProp?: string) {
 	const autoId = useId(idProp);
 	const fieldsetId = idProp ? idProp : `date-range-picker-${autoId}`;
 	const hintId = `date-range-picker-${autoId}-hint`;
 	const messageId = `date-range-picker-${autoId}-message`;
 	return { fieldsetId, hintId, messageId };
-};
+}
