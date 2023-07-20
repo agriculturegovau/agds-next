@@ -36,7 +36,7 @@ export type CalendarSingleProps = Omit<
 
 export function CalendarSingle({ yearRange, ...props }: CalendarSingleProps) {
 	return (
-		<FocusLock autoFocus={false}>
+		<FocusLock autoFocus={false} returnFocus>
 			<CalendarContainer range={false}>
 				<CalendarLabelContext.Provider value={{ yearRange }}>
 					<DayPicker mode="single" {...defaultDayPickerProps} {...props} />
