@@ -11,7 +11,7 @@ import { Text } from '@ag.ds-next/react/text';
 import { Button } from '@ag.ds-next/react/button';
 import { CloseIcon } from '@ag.ds-next/react/icon';
 import { Box } from '@ag.ds-next/react/box';
-import { SideBar } from '@ag.ds-next/react/side-bar';
+import { SideBar, SideBarTitle } from '@ag.ds-next/react/side-bar';
 import { SortBySelect } from './components/SortBySelect';
 import { FilterSearchInput } from './components/FilterSearchInput';
 import { FilterStatusSelect } from './components/FilterStatusSelect';
@@ -85,19 +85,19 @@ export const ListFiltering = ({
 				<Columns gap={{ xs: 1, md: 3 }}>
 					<Column columnSpan={{ xs: 12, md: 4 }}>
 						<Stack gap={1}>
-							<SideBar
-								collapseButtonLabel={collapseButtonLabel}
-								title="Filters"
-								action={
-									<Button
-										variant="text"
-										iconAfter={() => <CloseIcon size="sm" />}
-										onClick={resetFilters}
-									>
-										Clear filters
-									</Button>
-								}
-							>
+							<SideBar collapseButtonLabel={collapseButtonLabel}>
+								<SideBarTitle
+									title="Filters"
+									action={
+										<Button
+											variant="text"
+											iconAfter={() => <CloseIcon size="sm" />}
+											onClick={resetFilters}
+										>
+											Clear filters
+										</Button>
+									}
+								/>
 								<FormStack>
 									<FilterSearchInput
 										filters={filters}

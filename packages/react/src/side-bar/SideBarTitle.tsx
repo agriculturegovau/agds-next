@@ -12,7 +12,6 @@ export type SideBarTitleProps = PropsWithChildren<{
 	action?: ReactNode;
 }>;
 
-/** Title of the SideBar nav */
 export function SideBarTitle({
 	title,
 	id,
