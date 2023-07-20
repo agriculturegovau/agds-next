@@ -97,9 +97,9 @@ exports[`DropdownMenu Decorative renders correctly 1`] = `
         99+
       </span>
     </div>
-    <div
-      class="css-1txc41g-DropdownMenuDivider"
-      role="separator"
+    <hr
+      aria-hidden="true"
+      class="css-1th2zfi-Divider"
     />
     <div
       class="css-1lgsiwd-boxStyles-DropdownMenuItem"

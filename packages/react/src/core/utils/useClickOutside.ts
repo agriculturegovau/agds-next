@@ -17,7 +17,6 @@ export function useClickOutside(
 			// Do nothing if clicking any of ref elements or descendent elements
 			if (anyRefContainsTarget) return;
 
-			event.preventDefault();
 			handler(event);
 		};
 
