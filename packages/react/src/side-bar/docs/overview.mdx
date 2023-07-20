@@ -25,3 +25,27 @@ Side bar is used internally by the [SideNav](/components/side-nav) and [Progress
 <DontHeading />
 
 - Compose custom navigation components without considering if [SideNav](/components/side-nav) or [ProgressIndicator](/components/progress-indicator) is right for your usecase.
+
+## Collapse button label
+
+For narrower screens, the SideBar collapses into an accordion. The collapse button label is used to describe the content of the SideBar to screen readers.
+
+Navigation components use the label 'In this section'. Consider what is the most appropriate label for your usecase.
+
+```jsx live
+<SideBar collapseButtonLabel="1 of 5 steps completed">
+	<SideBarTitle title="Side bar title" />
+	<Box paddingY={1}>Side bar Content area</Box>
+</SideBar>
+```
+
+## Side bar title
+
+The SideBarTitle component is used to add a title above the content area.
+
+```jsx live
+<SideBar collapseButtonLabel="1 of 5 steps completed">
+	<SideBarTitle title="Progress" subtitle="Step 1 of 5" />
+	<Box paddingY={1}>Side bar Content area</Box>
+</SideBar>
+```

@@ -8,7 +8,7 @@ import { Text } from '../text';
 export type SideBarTitleProps = PropsWithChildren<{
 	id?: string;
 	title: string | { label: string; href?: string; isCurrentPage?: boolean };
-	subTitle?: string;
+	subtitle?: string;
 	action?: ReactNode;
 }>;
 
@@ -16,7 +16,7 @@ export function SideBarTitle({
 	title,
 	id,
 	action,
-	subTitle,
+	subtitle,
 }: SideBarTitleProps) {
 	const Link = useLinkComponent();
 	const titlelabel = typeof title === 'object' ? title.label : title;
@@ -61,7 +61,7 @@ export function SideBarTitle({
 					)}
 				</Box>
 				<Text color="muted" fontSize="xs">
-					{subTitle}
+					{subtitle}
 				</Text>
 			</Stack>
 			{action}

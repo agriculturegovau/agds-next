@@ -37,7 +37,7 @@ export const ProgressIndicator = ({
 					...packs.print.visible,
 				}}
 			>
-				<SideBarTitle title="Progress" subTitle={subHeading} />
+				<SideBarTitle title="Progress" subtitle={subHeading} />
 				<ProgressIndicatorList ref={ref}>
 					{items.map(({ label, ...props }, index) => {
 						if (isItemLink(props)) {

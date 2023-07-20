@@ -133,7 +133,7 @@ export const ProgressIndicator = {
 		collapseButtonLabel: '1 of 5 steps completed',
 		children: (
 			<>
-				<SideBarTitle title="Progress" subTitle="1 of 5 steps completed" />
+				<SideBarTitle title="Progress" subtitle="1 of 5 steps completed" />
 				<Box paddingY={1}>SideBar Content area</Box>
 			</>
 		),
