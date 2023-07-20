@@ -1,6 +1,27 @@
 ---
-title: SideBar
-description: Description of SideBar
+title: Side bar
+description: A layout component which frames secondary navigation content.
 group: Layout
 storybookPath: /story/Layout-SideBar--basic
+relatedComponents: [side-nav, progress-indicator]
 ---
+
+Side bar is a layout component which frames secondary navigation content. It's collapses on mobile to allow the user to focus on the primary content.
+
+Side bar is used internally by the [SideNav](/components/side-nav) and [ProgressIndicator](/components/progress-indicator) components. You should consider using those components before using Side bar directly.
+
+```jsx live
+<SideBar collapseButtonLabel="Collapse button label">
+	<SideBarTitle title="Side bar title" />
+	<Box paddingY={1}>Side bar Content area</Box>
+</SideBar>
+```
+
+<DoHeading />
+
+- Use Side bar to contain data filters.
+- Use the SideBarTitle component to add a title above the content area.
+
+<DontHeading />
+
+- Compose custom navigation components without considering if [SideNav](/components/side-nav) or [ProgressIndicator](/components/progress-indicator) is right for your usecase.
