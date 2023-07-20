@@ -1,21 +1,19 @@
 import { Meta, StoryObj, StoryFn } from '@storybook/react';
 import { Column, Columns } from '@ag.ds-next/react/columns';
 import { PageContent } from '@ag.ds-next/react/content';
-import { Button } from '../button';
-import { Prose } from '../prose';
-import { CloseIcon } from '../icon';
+import { Button } from '@ag.ds-next/react/button';
+import { Prose } from '@ag.ds-next/react/prose';
+import { CloseIcon } from '@ag.ds-next/react/icon';
+import { Box } from '../box';
 import { SideBar } from './SideBar';
+import { SideBarTitle } from './SideBarTitle';
 
-const SideBarExample: StoryFn<typeof SideBar> = (args) => {
+const SideBarExampleFrame: StoryFn<typeof SideBar> = (args) => {
 	return (
 		<PageContent>
 			<Columns gap={{ xs: 1, md: 3 }}>
 				<Column columnSpan={{ xs: 12, md: 4 }}>
-					<SideBar {...args}>
-						<Prose>
-							<p>SideBar Content area</p>
-						</Prose>
-					</SideBar>
+					<SideBar {...args} />
 				</Column>
 				<Column
 					as="main"
@@ -37,11 +35,15 @@ const SideBarExample: StoryFn<typeof SideBar> = (args) => {
 const meta: Meta<typeof SideBar> = {
 	title: 'Layout/SideBar',
 	component: SideBar,
-	render: SideBarExample,
+	render: (args) => <SideBarExampleFrame {...args} />,
 	args: {
-		title: 'Title of SideBar',
-		titleHref: undefined,
 		collapseButtonLabel: 'Collapse button label',
+		children: (
+			<>
+				<SideBarTitle title="SideBarTitle" />
+				<Box paddingY={1}>SideBar Content area</Box>
+			</>
+		),
 	},
 };
 
@@ -53,40 +55,87 @@ export const Basic: Story = {};
 
 export const WithAction: Story = {
 	args: {
-		action: <Button variant="text">Action</Button>,
+		children: (
+			<>
+				<SideBarTitle
+					title="SideBarTitle"
+					action={<Button variant="text">Action</Button>}
+				/>
+				<Box paddingY={1}>SideBar Content area</Box>
+			</>
+		),
 	},
 };
 
 export const withTitleLink: Story = {
+	name: 'With title link',
 	args: {
-		titleHref: '#',
+		children: (
+			<>
+				<SideBarTitle title={{ label: 'SideBarTitle', href: '#link' }} />
+				<Box paddingY={1}>SideBar Content area</Box>
+			</>
+		),
+	},
+};
+
+export const withTitleLinkCurrentPage: Story = {
+	name: 'With title link (current page)',
+	args: {
+		children: (
+			<>
+				<SideBarTitle
+					title={{ label: 'SideBarTitle', href: '#link', isCurrentPage: true }}
+				/>
+				<Box paddingY={1}>SideBar Content area</Box>
+			</>
+		),
 	},
 };
 
 export const Filtering: Story = {
 	args: {
-		title: 'Filters',
 		collapseButtonLabel: 'Filters (3)',
-		action: (
-			<Button variant="text" iconAfter={() => <CloseIcon size="sm" />}>
-				Clear filters
-			</Button>
+		children: (
+			<>
+				<SideBarTitle
+					title="Filters"
+					action={
+						<Button variant="text" iconAfter={() => <CloseIcon size="sm" />}>
+							Clear filters
+						</Button>
+					}
+				/>
+			</>
 		),
 	},
 };
 
 export const SideNav: Story = {
 	args: {
-		title: 'Components',
-		titleHref: '#components',
 		collapseButtonLabel: 'In this section',
+		children: (
+			<>
+				<SideBarTitle
+					title={{
+						label: 'Components',
+						href: '#components',
+					}}
+				/>
+				<Box paddingY={1}>SideBar Content area</Box>
+			</>
+		),
 	},
 };
 
 export const ProgressIndicator = {
 	args: {
-		title: 'Progress',
-		subTitle: '1 of 5 steps completed',
 		collapseButtonLabel: '1 of 5 steps completed',
+		children: (
+			<>
+				<SideBarTitle title="Progress" subTitle="1 of 5 steps completed" />
+				<Box paddingY={1}>SideBar Content area</Box>
+			</>
+		),
 	},
 };

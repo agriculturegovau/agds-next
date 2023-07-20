@@ -6,9 +6,8 @@ import { Stack } from '../stack';
 import { Text } from '../text';
 
 export type SideBarTitleProps = PropsWithChildren<{
-	id: string;
-	title: string;
-	titleHref?: string;
+	id?: string;
+	title: string | { label: string; href?: string; isCurrentPage?: boolean };
 	subTitle?: string;
 	action?: ReactNode;
 }>;
@@ -16,12 +15,15 @@ export type SideBarTitleProps = PropsWithChildren<{
 /** Title of the SideBar nav */
 export function SideBarTitle({
 	title,
-	titleHref,
 	id,
 	action,
 	subTitle,
 }: SideBarTitleProps) {
 	const Link = useLinkComponent();
+	const titlelabel = typeof title === 'object' ? title.label : title;
+	const titleHref = typeof title === 'object' ? title.href : undefined;
+	const isCurrentPage =
+		typeof title === 'object' && title.href && title.isCurrentPage;
 
 	return (
 		<Flex
@@ -47,16 +49,16 @@ export function SideBarTitle({
 							color="text"
 							focus
 							href={titleHref}
-							// aria-current={isCurrentPage ? 'page' : undefined}
+							aria-current={isCurrentPage ? 'page' : undefined}
 							css={{
 								textDecoration: 'none',
 								'&:hover': packs.underline,
 							}}
 						>
-							{title}
+							{titlelabel}
 						</Box>
 					) : (
-						title
+						titlelabel
 					)}
 				</Box>
 				<Text color="muted" fontSize="xs">

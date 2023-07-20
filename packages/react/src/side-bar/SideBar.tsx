@@ -1,40 +1,35 @@
-import { ReactNode, useRef } from 'react';
+import { PropsWithChildren, useRef } from 'react';
 import { useSpring, animated } from '@react-spring/web';
-import { PropsWithChildren } from 'react';
 import { Box } from '@ag.ds-next/react/box';
-import { Flex } from '@ag.ds-next/react/flex';
-import { Stack } from '@ag.ds-next/react/stack';
 import {
-	boxPalette,
 	tokens,
 	usePrefersReducedMotion,
 	useToggleState,
 	useWindowSize,
 } from '@ag.ds-next/react/core';
-import { useSideNavIds } from '@ag.ds-next/react/src/side-nav/utils';
-import { ChevronDownIcon } from '@ag.ds-next/react/icon';
-import { BaseButton } from '@ag.ds-next/react/button';
-import { ContentBleed } from '@ag.ds-next/react/content';
-import { SideBarTitle } from './SideBarTitle';
+import { SideBarBackground, useSideBarIds } from './utils';
+import { SideBarCollapseButton } from './SideBarCollapseButton';
+import {
+	SideBarContainer,
+	SideBarContainerElementType,
+} from './SideBarContainer';
 
-export type SideBarProps = {
-	action?: ReactNode;
-	children: ReactNode;
-	title: string;
-	titleHref?: string;
-	subTitle?: string;
+export type SideBarProps = PropsWithChildren<{
+	/** The HTML element to render the SideBar as. */
+	as?: SideBarContainerElementType;
+	/** If SideBar is placed on 'bodyAlt' background, please set this to 'bodyAlt'. */
+	background?: SideBarBackground;
+	/** Used as the title of the expand/collapse trigger on smaller screen sizes. */
 	collapseButtonLabel: string;
-};
+}>;
 
 export function SideBar({
-	action,
+	as = 'div',
+	background = 'body',
 	children,
-	title,
-	titleHref,
-	subTitle,
 	collapseButtonLabel,
 }: SideBarProps) {
-	const { bodyId, buttonId, navId, titleId } = useSideNavIds();
+	const { bodyId, buttonId } = useSideBarIds();
 	const ref = useRef<HTMLDivElement>(null);
 	const [isOpen, onToggle] = useToggleState(false, true);
 
@@ -63,123 +58,33 @@ export function SideBar({
 	const isMobile = (windowWidth || 0) <= tokens.breakpoint.lg - 1;
 
 	return (
-		<ContentBleed visible={{ md: false }}>
-			<Box as="aside">
-				<SideBarCollapseButton
-					isOpen={isOpen}
-					onClick={onToggle}
-					ariaControls={bodyId}
-					id={buttonId}
-				>
-					{collapseButtonLabel}
-				</SideBarCollapseButton>
-				<animated.div
-					id={bodyId}
-					// As this component looks similar to an accordion in smaller screen sizes, we need to conditionally add some aria attributes
-					{...(isMobile && { role: 'region', 'aria-labelledby': buttonId })}
-					style={animatedHeight}
-					css={{
-						// Overwrite the animated height for tablet/desktop sizes.
-						[tokens.mediaQuery.min.md]: {
-							overflow: 'unset',
-							display: 'block !important',
-							height: 'auto !important',
-						},
-					}}
-				>
-					<Stack
-						gap={1}
-						ref={ref}
-						as="nav"
-						aria-labelledby={titleId}
-						id={navId}
-						fontFamily="body"
-						fontSize="sm"
-						lineHeight="default"
-						borderBottom={{
-							xs: true,
-							md: false,
-						}}
-						background={{
-							xs: 'shade',
-							md: 'body',
-						}}
-						padding={{
-							xs: 1,
-							md: 0,
-						}}
-					>
-						<SideBarTitle
-							id={titleId}
-							title={title}
-							titleHref={titleHref}
-							action={action}
-							subTitle={subTitle}
-						/>
-						{children}
-					</Stack>
-				</animated.div>
-			</Box>
-		</ContentBleed>
+		<SideBarContainer as={as} background={background}>
+			<SideBarCollapseButton
+				isOpen={isOpen}
+				onClick={onToggle}
+				ariaControls={bodyId}
+				id={buttonId}
+			>
+				{collapseButtonLabel}
+			</SideBarCollapseButton>
+			<animated.div
+				id={bodyId}
+				// As this component looks similar to an accordion in smaller screen sizes, we need to conditionally add some aria attributes
+				{...(isMobile && { role: 'region', 'aria-labelledby': buttonId })}
+				style={animatedHeight}
+				css={{
+					// Overwrite the animated height for tablet/desktop sizes.
+					[tokens.mediaQuery.min.md]: {
+						overflow: 'unset',
+						display: 'block !important',
+						height: 'auto !important',
+					},
+				}}
+			>
+				<Box ref={ref} borderBottom={{ xs: true, md: false }}>
+					{children}
+				</Box>
+			</animated.div>
+		</SideBarContainer>
 	);
 }
-
-type SideBarCollapseButtonProps = PropsWithChildren<{
-	ariaControls: string;
-	id: string;
-	isOpen: boolean;
-	onClick: () => void;
-}>;
-
-/** Button that toggles the SideBar. */
-const SideBarCollapseButton = ({
-	ariaControls,
-	children,
-	id,
-	isOpen,
-	onClick,
-}: SideBarCollapseButtonProps) => {
-	return (
-		<Flex
-			as={BaseButton}
-			aria-controls={ariaControls}
-			aria-expanded={isOpen}
-			onClick={onClick}
-			id={id}
-			color="action"
-			fontSize="md"
-			lineHeight="heading"
-			fontWeight="bold"
-			paddingY={1}
-			paddingX={{
-				xs: 0.75,
-				md: 0,
-			}}
-			justifyContent="space-between"
-			alignItems="center"
-			width="100%"
-			link
-			focus
-			borderTop
-			borderBottom
-			css={{
-				'&:hover': {
-					background: boxPalette.backgroundShade,
-				},
-				[tokens.mediaQuery.min.md]: {
-					display: 'none',
-				},
-			}}
-		>
-			{children}
-			<ChevronDownIcon
-				size="sm"
-				weight="bold"
-				css={{
-					transition: `transform ${tokens.transition.duration}ms ${tokens.transition.timingFunction}`,
-					transform: `rotate(${isOpen ? 180 : 0}deg)`,
-				}}
-			/>
-		</Flex>
-	);
-};
