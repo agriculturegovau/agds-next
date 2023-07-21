@@ -5,8 +5,6 @@ import { Flex } from '@ag.ds-next/react/flex';
 import { Prose } from '@ag.ds-next/react/prose';
 import { SkipLinksProps } from '@ag.ds-next/react/skip-link';
 import { SubNav } from '@ag.ds-next/react/sub-nav';
-import { Callout } from '@ag.ds-next/react/callout';
-import { Details } from '@ag.ds-next/react/details';
 import { Text } from '@ag.ds-next/react/text';
 import { getPkgBreadcrumbs, getPkgNavLinks, Pkg } from '../lib/mdx/packages';
 import { PageTitle } from './PageTitle';
@@ -88,16 +86,20 @@ export function PkgLayout({
 				/>
 				{!pkg.deprecated && (
 					<Fragment>
-						{/* <Prose>
-							<pre>
-								<code>{`import { ... } from '@ag.ds-next/react/${pkg.name}';`}</code>
-							</pre>
-						</Prose> */}
-						<PageAlert tone="info">
-							<Text>
-								This component will be available from the next release.
-							</Text>
-						</PageAlert>
+						{!pkg.unreleased ? (
+							<Prose>
+								<pre>
+									<code>{`import { ... } from '@ag.ds-next/react/${pkg.name}';`}</code>
+								</pre>
+							</Prose>
+						) : (
+							<PageAlert tone="info">
+								<Text>
+									This component is unreleased and will be available in the next
+									release.
+								</Text>
+							</PageAlert>
+						)}
 						{pkg.subNavItems?.length ? (
 							<SubNav
 								activePath={asPath}

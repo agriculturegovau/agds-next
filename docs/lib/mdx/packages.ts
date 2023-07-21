@@ -28,6 +28,7 @@ export async function getPkg(slug: string) {
 		subNavItems: subNavItems ?? null,
 		relatedComponents: (data.relatedComponents ?? null) as string[] | null,
 		deprecated: (data.deprecated ?? false) as boolean,
+		unreleased: (data.unreleased ?? false) as boolean,
 	};
 }
 
