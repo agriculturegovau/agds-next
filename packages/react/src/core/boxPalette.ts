@@ -5,20 +5,17 @@ import { themeVars } from './theme';
 // Box Palette
 
 const boxPaletteVars = {
-	// palette: '--agds-palette',
+	palette: '--agds-palette',
 	// text (foreground)
-	text: '--agds-text', // or text default
+	text: '--agds-text',
 	textMuted: '--agds-text-muted',
-	textLink: '--agds-text-action',
-	textError: '--agds-text-error',
 	textDisabled: '--agds-text-disabled',
 	textInverse: '--agds-text-inverse',
-
 	// background
-	background: '--agds-background',
-	backgroundAlt: '--agds-background-alt',
-	backgroundSunken: '--agds-background-shade',
-	backgroundSunkenAlt: '--agds-background-shade', // delete this?
+	backgroundBody: '--agds-background-body',
+	backgroundBodyAlt: '--agds-background-body-alt',
+	backgroundShade: '--agds-background-shade',
+	backgroundShadeAlt: '--agds-background-shade-alt',
 	backgroundSuccess: '--agds-background-success',
 	backgroundSuccessBold: '--agds-background-success-bold', // used for PageAlert icon blocks
 	backgroundWarning: '--agds-background-warning',
@@ -27,27 +24,17 @@ const boxPaletteVars = {
 	backgroundInfoBold: '--agds-background-info-bold', // used for PageAlert icon blocks
 	backgroundError: '--agds-background-error',
 	backgroundErrorBold: '--agds-background-error-bold', // used for PageAlert icon blocks
-	backgroundDisabled: '--agds-background-disabled',
-
 	// border
 	border: '--agds-border',
 	borderMuted: '--agds-border-muted',
-	borderAccent: '--agds-accent',
-	borderSelected: '--agds-border-selected',
-	borderDisabled: '--agds-border-disabled',
-
-	// icon
-	iconSuccess: '--agds-icon-success',
-	iconWarning: '--agds-icon-warning',
-	iconInfo: '--agds-icon-info',
-	iconError: '--agds-icon-error',
-	iconNeutral: '--agds-icon-neutral',
-
-	// interaction - for buttons and inputs
+	// base
+	action: '--agds-action',
+	accent: '--agds-accent',
+	selected: '--agds-border-selected',
 	interaction: '--agds-interaction',
 	interactionHover: '--agds-interaction-hover',
 	interactionSelected: '--agds-interaction-selected',
-	interactionFocus: '--agds-interaction-focus',
+	focus: '--agds-focus',
 	interactionBorder: '--agds-interaction-border',
 	interactionBackground: '--agds-interaction-background',
 	interactionBackgroundHover: '--agds-interaction-background-hover',
