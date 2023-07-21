@@ -36,7 +36,7 @@ export const Basic: StoryObj = {
 	render: function Render() {
 		return (
 			<DropdownMenu>
-				<DropdownMenuButton>Open dropdown menu</DropdownMenuButton>
+				<DropdownMenuButton>Toggle dropdown menu</DropdownMenuButton>
 				<DropdownMenuPanel>
 					<DropdownMenuItem onClick={() => console.log('Profile')}>
 						Profile
@@ -60,7 +60,7 @@ export const AccessingState: StoryObj = {
 				{({ isMenuOpen }) => (
 					<Fragment>
 						<DropdownMenuButton>
-							{isMenuOpen ? 'Close menu' : 'Open menu'}
+							{isMenuOpen ? 'Close dropdown menu' : 'Open dropdown menu'}
 						</DropdownMenuButton>
 						<DropdownMenuPanel>
 							<DropdownMenuItem>Profile</DropdownMenuItem>
@@ -145,7 +145,7 @@ export const IconsAndBadges: StoryObj = {
 	render: function Render() {
 		return (
 			<DropdownMenu>
-				<DropdownMenuButton>Open dropdown menu</DropdownMenuButton>
+				<DropdownMenuButton>Toggle dropdown menu</DropdownMenuButton>
 				<DropdownMenuPanel>
 					<DropdownMenuItem icon={AvatarIcon}>Profile</DropdownMenuItem>
 					<DropdownMenuItem
@@ -169,7 +169,7 @@ export const Divider: StoryObj = {
 	render: function Render() {
 		return (
 			<DropdownMenu>
-				<DropdownMenuButton>Open dropdown menu</DropdownMenuButton>
+				<DropdownMenuButton>Toggle dropdown menu</DropdownMenuButton>
 				<DropdownMenuPanel>
 					<DropdownMenuItem
 						onClick={() => console.log('Profile')}
@@ -209,7 +209,7 @@ export const Groups: StoryObj = {
 	render: function Render() {
 		return (
 			<DropdownMenu>
-				<DropdownMenuButton>Open dropdown menu</DropdownMenuButton>
+				<DropdownMenuButton>Toggle dropdown menu</DropdownMenuButton>
 				<DropdownMenuPanel>
 					<DropdownMenuGroup label="Services">
 						<DropdownMenuItem icon={PrintIcon}>Print online</DropdownMenuItem>
@@ -242,7 +242,7 @@ export const Links: StoryObj = {
 	render: function Render() {
 		return (
 			<DropdownMenu>
-				<DropdownMenuButton>Open dropdown menu</DropdownMenuButton>
+				<DropdownMenuButton>Toggle dropdown menu</DropdownMenuButton>
 				<DropdownMenuPanel>
 					<DropdownMenuItemLink href="#link-1">Link 1</DropdownMenuItemLink>
 					<DropdownMenuItemLink href="#link-2">Link 2</DropdownMenuItemLink>
@@ -264,7 +264,7 @@ export const RadioGroups: StoryObj = {
 		const [selectedItem, setSelectedItem] = useState<string>('Antfix');
 		return (
 			<DropdownMenu>
-				<DropdownMenuButton>Open dropdown menu</DropdownMenuButton>
+				<DropdownMenuButton>Toggle dropdown menu</DropdownMenuButton>
 				<DropdownMenuPanel>
 					<DropdownMenuGroup label="Businesses">
 						<DropdownMenuItemRadio
@@ -298,7 +298,7 @@ export const RadioGroupsSecondary: StoryObj = {
 		const [selectedItem, setSelectedItem] = useState<string>('Antfix');
 		return (
 			<DropdownMenu>
-				<DropdownMenuButton>Open dropdown menu</DropdownMenuButton>
+				<DropdownMenuButton>Toggle dropdown menu</DropdownMenuButton>
 				<DropdownMenuPanel>
 					<DropdownMenuGroup label="Businesses">
 						<DropdownMenuItemRadio
@@ -335,7 +335,7 @@ export const RadioGroupsSecondaryBadges: StoryObj = {
 		const [selectedItem, setSelectedItem] = useState<string>('Antfix');
 		return (
 			<DropdownMenu>
-				<DropdownMenuButton>Open dropdown menu</DropdownMenuButton>
+				<DropdownMenuButton>Toggle dropdown menu</DropdownMenuButton>
 				<DropdownMenuPanel>
 					<DropdownMenuGroup label="Businesses">
 						<DropdownMenuItemRadio
@@ -377,7 +377,7 @@ export const Overflow: StoryObj = {
 			<Stack gap={2} alignItems="flex-start">
 				<DropdownMenu>
 					<DropdownMenuButton>
-						Open dropdown menu (without max height)
+						Toggle dropdown menu (without max height)
 					</DropdownMenuButton>
 					<DropdownMenuPanel>
 						{Array.from(Array(20).keys()).map((i) => (
@@ -387,7 +387,7 @@ export const Overflow: StoryObj = {
 				</DropdownMenu>
 				<DropdownMenu popoverMaxHeight={288}>
 					<DropdownMenuButton>
-						Open dropdown menu (with max height)
+						Toggle dropdown menu (with max height)
 					</DropdownMenuButton>
 					<DropdownMenuPanel>
 						{Array.from(Array(20).keys()).map((i) => (
@@ -404,7 +404,7 @@ export const Complex: StoryObj = {
 	render: function Render() {
 		return (
 			<DropdownMenu>
-				<DropdownMenuButton>Open dropdown menu</DropdownMenuButton>
+				<DropdownMenuButton>Toggle dropdown menu</DropdownMenuButton>
 				<DropdownMenuPanel>
 					<DropdownMenuGroup label="Businesses">
 						<DropdownMenuItemRadio

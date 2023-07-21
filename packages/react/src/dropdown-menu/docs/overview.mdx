@@ -8,7 +8,7 @@ relatedComponents: ['combobox', 'select']
 
 ```jsx live
 <DropdownMenu>
-	<DropdownMenuButton>Open dropdown menu</DropdownMenuButton>
+	<DropdownMenuButton>Toggle dropdown menu</DropdownMenuButton>
 	<DropdownMenuPanel>
 		<DropdownMenuItem onClick={() => console.log('Profile')}>
 			Profile
@@ -58,12 +58,8 @@ Dropdown menu's can be triggered by a`DropdownMenuButton`, which can accept all 
 		<ButtonGroup key={size}>
 			{['primary', 'secondary', 'tertiary', 'text'].map((variant) => (
 				<DropdownMenu key={variant}>
-					<DropdownMenuButton
-						variant={variant}
-						size={size}
-						iconAfter={ChevronDownIcon}
-					>
-						Edit
+					<DropdownMenuButton variant={variant} size={size}>
+						Actions
 					</DropdownMenuButton>
 					<DropdownMenuPanel>
 						<DropdownMenuItem>Item A</DropdownMenuItem>
@@ -102,7 +98,7 @@ The simplest dropdown menu contains text only list items. Use `DropdownMenuItem`
 
 ```jsx live
 <DropdownMenu>
-	<DropdownMenuButton>Open dropdown menu</DropdownMenuButton>
+	<DropdownMenuButton>Toggle dropdown menu</DropdownMenuButton>
 	<DropdownMenuPanel>
 		<DropdownMenuItem onClick={() => console.log('Profile')}>
 			Profile
@@ -121,7 +117,7 @@ If you're opening links in a new tab, we recommend you use the `ExternalLinkIcon
 
 ```jsx live
 <DropdownMenu>
-	<DropdownMenuButton>Open dropdown menu</DropdownMenuButton>
+	<DropdownMenuButton>Toggle dropdown menu</DropdownMenuButton>
 	<DropdownMenuPanel>
 		<DropdownMenuItemLink href="#link-1">Link 1</DropdownMenuItemLink>
 		<DropdownMenuItemLink href="#link-2">Link 2</DropdownMenuItemLink>
@@ -144,7 +140,7 @@ Use the `endElement` prop to add elements such as an [Indicator dot](/components
 
 ```jsx live
 <DropdownMenu>
-	<DropdownMenuButton>Open dropdown menu</DropdownMenuButton>
+	<DropdownMenuButton>Toggle dropdown menu</DropdownMenuButton>
 	<DropdownMenuPanel>
 		<DropdownMenuItem icon={AvatarIcon}>Profile</DropdownMenuItem>
 		<DropdownMenuItem
@@ -164,7 +160,7 @@ Use a `DropdownMenuDivider` to separate destructive actions at the bottom of the
 
 ```jsx live
 <DropdownMenu>
-	<DropdownMenuButton>Open dropdown menu</DropdownMenuButton>
+	<DropdownMenuButton>Toggle dropdown menu</DropdownMenuButton>
 	<DropdownMenuPanel>
 		<DropdownMenuItem icon={AvatarIcon}>Profile</DropdownMenuItem>
 		<DropdownMenuItem
@@ -188,7 +184,7 @@ Use the `DropdownMenuGroup` component to group related items. Use the label prop
 
 ```jsx live
 <DropdownMenu>
-	<DropdownMenuButton>Open dropdown menu</DropdownMenuButton>
+	<DropdownMenuButton>Toggle dropdown menu</DropdownMenuButton>
 	<DropdownMenuPanel>
 		<DropdownMenuGroup label="Services">
 			<DropdownMenuItem icon={PrintIcon}>Print online</DropdownMenuItem>
@@ -223,7 +219,7 @@ Use the `DropdownMenuGroupLink` component to add a link to the bottom of the Rad
 	return (
 		<Stack gap={2} alignItems="flex-start">
 			<DropdownMenu>
-				<DropdownMenuButton>Open dropdown menu</DropdownMenuButton>
+				<DropdownMenuButton>Toggle dropdown menu</DropdownMenuButton>
 				<DropdownMenuPanel>
 					<DropdownMenuGroup label="Businesses">
 						<DropdownMenuItemRadio
@@ -267,7 +263,7 @@ For dropdown menus with many items, consider setting a maximum height using the 
 <Stack gap={2} alignItems="flex-start">
 	<DropdownMenu>
 		<DropdownMenuButton>
-			Open dropdown menu (without max height)
+			Toggle dropdown menu (without max height)
 		</DropdownMenuButton>
 		<DropdownMenuPanel>
 			{Array.from(Array(20).keys()).map((i) => (
@@ -277,7 +273,7 @@ For dropdown menus with many items, consider setting a maximum height using the 
 	</DropdownMenu>
 	<DropdownMenu popoverMaxHeight={288}>
 		<DropdownMenuButton>
-			Open dropdown menu (with max height)
+			Toggle dropdown menu (with max height)
 		</DropdownMenuButton>
 		<DropdownMenuPanel>
 			{Array.from(Array(20).keys()).map((i) => (
@@ -299,7 +295,7 @@ If you need to access the internal state of the menu, you can provide a render c
 			<DropdownMenuButton
 				iconAfter={isMenuOpen ? ChevronUpIcon : ChevronDownIcon}
 			>
-				{isMenuOpen ? 'Close menu' : 'Open menu'}
+				{isMenuOpen ? 'Close dropdown menu' : 'Open dropdown menu'}
 			</DropdownMenuButton>
 			<DropdownMenuPanel>
 				<DropdownMenuItem>Profile</DropdownMenuItem>
