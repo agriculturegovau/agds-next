@@ -16,18 +16,17 @@ exports[`Checkbox renders correctly 1`] = `
     >
       <svg
         aria-hidden="true"
-        class="css-po1mz2-CheckboxIcon"
+        class="css-1xyaayo-Icon"
         clip-rule="evenodd"
         focusable="false"
+        height="24"
         role="img"
         viewBox="0 0 24 24"
+        width="24"
         xmlns="http://www.w3.org/2000/svg"
       >
-        <path
-          d="M3 13.4286L8.4 19L21 6"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-width="3"
+        <polyline
+          points="20 6 9 17 4 12"
         />
       </svg>
     </span>

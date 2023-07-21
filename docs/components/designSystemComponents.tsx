@@ -82,6 +82,7 @@ export {
 	CalendarIcon,
 	ChartBarIcon,
 	ChartLineIcon,
+	CheckIcon,
 	ChevronDownIcon,
 	ChevronLeftIcon,
 	ChevronRightIcon,
