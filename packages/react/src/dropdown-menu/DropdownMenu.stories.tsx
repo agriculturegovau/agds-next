@@ -8,8 +8,6 @@ import {
 	AvatarIcon,
 	PrintIcon,
 	CalendarIcon,
-	ChevronUpIcon,
-	ChevronDownIcon,
 	ExternalLinkIcon,
 } from '../icon';
 import { IndicatorDot } from '../indicator-dot';
@@ -55,6 +53,27 @@ export const Basic: StoryObj = {
 	},
 };
 
+export const AccessingState: StoryObj = {
+	render: function Render() {
+		return (
+			<DropdownMenu>
+				{({ isMenuOpen }) => (
+					<Fragment>
+						<DropdownMenuButton>
+							{isMenuOpen ? 'Close menu' : 'Open menu'}
+						</DropdownMenuButton>
+						<DropdownMenuPanel>
+							<DropdownMenuItem>Profile</DropdownMenuItem>
+							<DropdownMenuItem>Messages</DropdownMenuItem>
+							<DropdownMenuItem>Account settings</DropdownMenuItem>
+						</DropdownMenuPanel>
+					</Fragment>
+				)}
+			</DropdownMenu>
+		);
+	},
+};
+
 export const Triggers: StoryObj = {
 	render: function Render() {
 		const sizes = ['md', 'sm'] as const;
@@ -65,12 +84,8 @@ export const Triggers: StoryObj = {
 					<ButtonGroup key={size}>
 						{variants.map((variant) => (
 							<DropdownMenu key={variant}>
-								<DropdownMenuButton
-									variant={variant}
-									size={size}
-									iconAfter={ChevronDownIcon}
-								>
-									Edit
+								<DropdownMenuButton variant={variant} size={size}>
+									Actions
 								</DropdownMenuButton>
 								<DropdownMenuPanel>
 									<DropdownMenuItem>Item A</DropdownMenuItem>
@@ -381,29 +396,6 @@ export const Overflow: StoryObj = {
 					</DropdownMenuPanel>
 				</DropdownMenu>
 			</Stack>
-		);
-	},
-};
-
-export const AccessingState: StoryObj = {
-	render: function Render() {
-		return (
-			<DropdownMenu>
-				{({ isMenuOpen }) => (
-					<Fragment>
-						<DropdownMenuButton
-							iconAfter={isMenuOpen ? ChevronUpIcon : ChevronDownIcon}
-						>
-							{isMenuOpen ? 'Close menu' : 'Open menu'}
-						</DropdownMenuButton>
-						<DropdownMenuPanel>
-							<DropdownMenuItem>Profile</DropdownMenuItem>
-							<DropdownMenuItem>Messages</DropdownMenuItem>
-							<DropdownMenuItem>Account settings</DropdownMenuItem>
-						</DropdownMenuPanel>
-					</Fragment>
-				)}
-			</DropdownMenu>
 		);
 	},
 };

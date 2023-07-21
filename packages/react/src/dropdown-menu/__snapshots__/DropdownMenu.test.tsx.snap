@@ -20,6 +20,21 @@ exports[`DropdownMenu Decorative renders correctly 1`] = `
         aria-live="assertive"
       />
     </span>
+    <svg
+      aria-hidden="true"
+      class="css-9s3cfn-Icon"
+      clip-rule="evenodd"
+      focusable="false"
+      height="24"
+      role="img"
+      viewBox="0 0 24 24"
+      width="24"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M21 8L12 17L3 8"
+      />
+    </svg>
   </button>
   <div
     aria-labelledby="dropdown-menu-:ru:-button"
@@ -159,6 +174,21 @@ exports[`DropdownMenu Links renders correctly 1`] = `
         aria-live="assertive"
       />
     </span>
+    <svg
+      aria-hidden="true"
+      class="css-9s3cfn-Icon"
+      clip-rule="evenodd"
+      focusable="false"
+      height="24"
+      role="img"
+      viewBox="0 0 24 24"
+      width="24"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M21 8L12 17L3 8"
+      />
+    </svg>
   </button>
   <div
     aria-labelledby="dropdown-menu-:r16:-button"
@@ -222,6 +252,21 @@ exports[`DropdownMenu Radio Group renders correctly 1`] = `
         aria-live="assertive"
       />
     </span>
+    <svg
+      aria-hidden="true"
+      class="css-9s3cfn-Icon"
+      clip-rule="evenodd"
+      focusable="false"
+      height="24"
+      role="img"
+      viewBox="0 0 24 24"
+      width="24"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M21 8L12 17L3 8"
+      />
+    </svg>
   </button>
   <div
     aria-labelledby="dropdown-menu-:r1i:-button"
@@ -327,6 +372,21 @@ exports[`DropdownMenu renders correctly 1`] = `
         aria-live="assertive"
       />
     </span>
+    <svg
+      aria-hidden="true"
+      class="css-9s3cfn-Icon"
+      clip-rule="evenodd"
+      focusable="false"
+      height="24"
+      role="img"
+      viewBox="0 0 24 24"
+      width="24"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M21 8L12 17L3 8"
+      />
+    </svg>
   </button>
   <div
     aria-labelledby="dropdown-menu-:r0:-button"

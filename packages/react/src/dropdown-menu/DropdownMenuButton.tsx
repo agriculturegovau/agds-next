@@ -1,4 +1,5 @@
 import { Button, ButtonProps } from '../button';
+import { ChevronUpIcon, ChevronDownIcon } from '../icon';
 import { useDropdownMenuContext } from './DropdownMenuContext';
 import { useDropdownMenuControlIds } from './utils';
 
@@ -9,10 +10,20 @@ export type DropdownMenuButtonProps = Omit<
 
 export function DropdownMenuButton({
 	variant = 'text',
+	iconAfter,
 	...props
 }: DropdownMenuButtonProps) {
+	const { isMenuOpen } = useDropdownMenuContext();
 	const buttonProps = useDropdownMenuButton();
-	return <Button variant={variant} {...buttonProps} {...props} />;
+	const defaultIconAfter = isMenuOpen ? ChevronUpIcon : ChevronDownIcon;
+	return (
+		<Button
+			variant={variant}
+			iconAfter={iconAfter ? iconAfter : defaultIconAfter}
+			{...buttonProps}
+			{...props}
+		/>
+	);
 }
 
 export function useDropdownMenuButton() {
