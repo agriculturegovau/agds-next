@@ -63,10 +63,8 @@ export const theme: Theme = {
 	lightText: '#313131',
 	lightTextMuted: '#626262',
 	lightTextLink: primitives.deepBlue,
-	lightTextFocus: primitives.purple,
 	lightTextSuccess: primitives.green,
 	lightTextError: primitives.red,
-	lightTextDisabled: '--agds-text-disabled',
 	lightTextInverse: primitives.white,
 	// light-background
 	lightBackground: primitives.white,
@@ -86,8 +84,6 @@ export const theme: Theme = {
 	lightBorderMuted: '#D3D3D3',
 	lightBorderAccent: primitives.exportServiceOrange,
 	lightBorderSelected: primitives.deepBlue,
-	lightBorderInput: '#808080',
-	lightBorderDisabled: '#D3D3D3',
 	// light-icon
 	lightIcon: primitives.grey7,
 	lightIconInverse: primitives.white,
@@ -97,15 +93,14 @@ export const theme: Theme = {
 	lightIconError: primitives.red,
 	lightIconNeutral: primitives.grey6,
 	// light interaction
-	lightInteraction: '--agds-interaction',
-	lightInteractionHover: '--agds-interaction-hover',
-	lightInteractionSelected: '--agds-interaction-selected',
-	lightInteractionFocus: primitives.purple,
-	lightInteractionBorder: '--agds-interaction-border',
-	lightInteractionBackground: '--agds-interaction-background',
-	lightInteractionBackgroundHover: '--agds-interaction-background-hover',
-	lightInteractionBackgroundAlt: '--agds-interaction-background-alt',
-	lightInteractionBackgroundAltHover: '--agds-interactive-background-alt-hover',
+	lightInteraction: primitives.deepBlue, // used for buttons (primary actions)
+	lightInteractionHover: primitives.grey7, // used for buttons-hover
+	lightInteractionFocus: primitives.purple, // used for focus rings
+	lightInteractionBorder: '--agds-interaction-border', // used for inputs
+	lightInteractionBackground: '--agds-interaction-background', // used for inputs and secondary buttons
+	lightInteractionBackgroundHover: '--agds-interaction-background-hover', // used for secondary buttons
+	lightInteractionBackgroundAlt: '--agds-interaction-background-alt', // used for secondary buttons
+	lightInteractionBackgroundAltHover: '--agds-interactive-background-alt-hover', // used for secondary buttons
 	// light-modal
 	lightModalPanel: primitives.white,
 	lightModalOverlay: primitives.blackOverlay,
