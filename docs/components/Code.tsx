@@ -107,7 +107,13 @@ function LiveCode({
 	);
 
 	return (
-		<Card className={proseBlockClassname}>
+		<Card
+			className={proseBlockClassname}
+			css={{
+				// Code snippets with popovers (date picker, dropdown menu etc) need overflow
+				overflow: 'visible',
+			}}
+		>
 			{exampleContentHeadingType && (
 				<CardHeader>
 					<Heading type={exampleContentHeadingType}>Example</Heading>
