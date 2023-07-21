@@ -9,31 +9,30 @@ const boxPaletteVars = {
 	// text (foreground)
 	text: '--agds-text',
 	textMuted: '--agds-text-muted',
-	textDisabled: '--agds-text-disabled',
+	textLink: '--agds-text-link',
 	textInverse: '--agds-text-inverse',
 	// background
 	backgroundBody: '--agds-background-body',
 	backgroundBodyAlt: '--agds-background-body-alt',
 	backgroundShade: '--agds-background-shade',
 	backgroundShadeAlt: '--agds-background-shade-alt',
-	backgroundSuccess: '--agds-background-success',
-	backgroundSuccessBold: '--agds-background-success-bold', // used for PageAlert icon blocks
-	backgroundWarning: '--agds-background-warning',
-	backgroundWarningBold: '--agds-background-warning-bold', // used for PageAlert icon blocks
-	backgroundInfo: '--agds-background-info',
-	backgroundInfoBold: '--agds-background-info-bold', // used for PageAlert icon blocks
-	backgroundError: '--agds-background-error',
-	backgroundErrorBold: '--agds-background-error-bold', // used for PageAlert icon blocks
 	// border
 	border: '--agds-border',
 	borderMuted: '--agds-border-muted',
-	// base
-	action: '--agds-action',
 	accent: '--agds-accent',
+	// system
+	systemSuccess: '--agds-system-success',
+	systemSuccessMuted: '--agds-system-success-muted',
+	systemWarning: '--agds-system-warning',
+	systemWarningMuted: '--agds-system-warning-muted',
+	systemInfo: '--agds-system-info',
+	systemInfoMuted: '--agds-system-info-muted',
+	systemError: '--agds-system-error',
+	systemErrorMuted: '--agds-system-error-muted',
+	// interaction
 	selected: '--agds-border-selected',
-	interaction: '--agds-interaction',
-	interactionHover: '--agds-interaction-hover',
-	interactionSelected: '--agds-interaction-selected',
+	action: '--agds-action',
+	actionHover: '--agds-action-hover',
 	focus: '--agds-focus',
 	interactionBorder: '--agds-interaction-border',
 	interactionBackground: '--agds-interaction-background',
@@ -118,6 +117,51 @@ export const boxPalette = {
 	systemInfo: `var(${boxPaletteVars.systemInfo})`,
 	systemInfoMuted: `var(${boxPaletteVars.systemInfoMuted})`,
 };
+
+export const textPack = {
+	text: boxPalette.foregroundText,
+	muted: boxPalette.foregroundMuted,
+	action: boxPalette.foregroundAction,
+	success: boxPalette.systemSuccess,
+	error: boxPalette.systemError,
+	inverse: boxPalette.backgroundBody,
+	inherit: 'inherit',
+};
+
+export const iconPack = {
+	default: boxPalette.foregroundText,
+	action: boxPalette.foregroundAction,
+	neutral: boxPalette.foregroundMuted,
+	success: boxPalette.systemSuccess,
+	error: boxPalette.systemError,
+	warning: boxPalette.systemWarning,
+	info: boxPalette.systemInfo,
+	inherit: 'inherit',
+};
+
+export const backgroundPack = {
+	body: boxPalette.backgroundBody,
+	shade: boxPalette.backgroundShade,
+	bodyAlt: boxPalette.backgroundBodyAlt,
+	shadeAlt: boxPalette.backgroundShadeAlt,
+	error: `var(${boxPaletteVars.systemErrorMuted})`,
+	errorBold: `var(${boxPaletteVars.systemError})`,
+	success: `var(${boxPaletteVars.systemSuccessMuted})`,
+	successBold: `var(${boxPaletteVars.systemSuccess})`,
+	warning: `var(${boxPaletteVars.systemWarningMuted})`,
+	warningBold: `var(${boxPaletteVars.systemWarning})`,
+	info: `var(${boxPaletteVars.systemInfoMuted})`,
+	infoBold: `var(${boxPaletteVars.systemInfo})`,
+};
+
+export const borderPack = {
+	border: boxPalette.border,
+	muted: boxPalette.borderMuted,
+	accent: boxPalette.accent,
+	selected: boxPalette.selected,
+};
+
+export const interactionPack = {};
 
 /**
  * Returns the current palette for a specific DOM element
