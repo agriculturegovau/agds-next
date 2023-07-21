@@ -6,6 +6,7 @@ import { Prose } from '@ag.ds-next/react/prose';
 import { SkipLinksProps } from '@ag.ds-next/react/skip-link';
 import { SubNav } from '@ag.ds-next/react/sub-nav';
 import { Text } from '@ag.ds-next/react/text';
+import { TextLink } from '@ag.ds-next/react/text-link';
 import { getPkgBreadcrumbs, getPkgNavLinks, Pkg } from '../lib/mdx/packages';
 import { PageTitle } from './PageTitle';
 import { PageLayout } from './PageLayout';
@@ -95,8 +96,8 @@ export function PkgLayout({
 						) : (
 							<PageAlert tone="info">
 								<Text>
-									This component is unreleased and will be available in the next
-									release.
+									This component is unreleased and will be available as part of
+									the next <TextLink href="/updates">update</TextLink>.
 								</Text>
 							</PageAlert>
 						)}
