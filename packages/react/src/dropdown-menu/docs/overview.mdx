@@ -9,7 +9,7 @@ relatedComponents: ['combobox', 'select']
 ```jsx live
 <DropdownMenu>
 	<DropdownMenuButton>Open dropdown menu</DropdownMenuButton>
-	<DropdownMenuList>
+	<DropdownMenuPanel>
 		<DropdownMenuItem onClick={() => console.log('Profile')}>
 			Profile
 		</DropdownMenuItem>
@@ -19,7 +19,7 @@ relatedComponents: ['combobox', 'select']
 		<DropdownMenuItem onClick={() => console.log('Account settings')}>
 			Account settings
 		</DropdownMenuItem>
-	</DropdownMenuList>
+	</DropdownMenuPanel>
 </DropdownMenu>
 ```
 
@@ -65,11 +65,11 @@ Dropdown menu's can be triggered by a`DropdownMenuButton`, which can accept all 
 					>
 						Edit
 					</DropdownMenuButton>
-					<DropdownMenuList>
+					<DropdownMenuPanel>
 						<DropdownMenuItem>Item A</DropdownMenuItem>
 						<DropdownMenuItem>Item B</DropdownMenuItem>
 						<DropdownMenuItem>Item C</DropdownMenuItem>
-					</DropdownMenuList>
+					</DropdownMenuPanel>
 				</DropdownMenu>
 			))}
 		</ButtonGroup>
@@ -86,11 +86,11 @@ By default the dropdown menu is aligned to the bottom left (`bottom-start`) of t
 	{['bottom-start', 'bottom-end', 'bottom'].map((size) => (
 		<DropdownMenu key={size} popoverPlacement={size}>
 			<DropdownMenuButton>{size}</DropdownMenuButton>
-			<DropdownMenuList>
+			<DropdownMenuPanel>
 				<DropdownMenuItem>Profile</DropdownMenuItem>
 				<DropdownMenuItem>Messages</DropdownMenuItem>
 				<DropdownMenuItem>Account settings</DropdownMenuItem>
-			</DropdownMenuList>
+			</DropdownMenuPanel>
 		</DropdownMenu>
 	))}
 </Stack>
@@ -103,7 +103,7 @@ The simplest dropdown menu contains text only list items. Use `DropdownMenuItem`
 ```jsx live
 <DropdownMenu>
 	<DropdownMenuButton>Open dropdown menu</DropdownMenuButton>
-	<DropdownMenuList>
+	<DropdownMenuPanel>
 		<DropdownMenuItem onClick={() => console.log('Profile')}>
 			Profile
 		</DropdownMenuItem>
@@ -113,7 +113,7 @@ The simplest dropdown menu contains text only list items. Use `DropdownMenuItem`
 		<DropdownMenuItemLink href="#">
 			Account settings
 		</DropdownMenuItem>
-	</DropdownMenuList>
+	</DropdownMenuPanel>
 </DropdownMenu>
 ```
 
@@ -122,7 +122,7 @@ If you're opening links in a new tab, we recommend you use the `ExternalLinkIcon
 ```jsx live
 <DropdownMenu>
 	<DropdownMenuButton>Open dropdown menu</DropdownMenuButton>
-	<DropdownMenuList>
+	<DropdownMenuPanel>
 		<DropdownMenuItemLink href="#link-1">Link 1</DropdownMenuItemLink>
 		<DropdownMenuItemLink href="#link-2">Link 2</DropdownMenuItemLink>
 		<DropdownMenuItemLink
@@ -132,7 +132,7 @@ If you're opening links in a new tab, we recommend you use the `ExternalLinkIcon
 		>
 			External link
 		</DropdownMenuItemLink>
-	</DropdownMenuList>
+	</DropdownMenuPanel>
 </DropdownMenu>
 ```
 
@@ -145,7 +145,7 @@ Use the `endElement` prop to add elements such as an [Indicator dot](/components
 ```jsx live
 <DropdownMenu>
 	<DropdownMenuButton>Open dropdown menu</DropdownMenuButton>
-	<DropdownMenuList>
+	<DropdownMenuPanel>
 		<DropdownMenuItem icon={AvatarIcon}>Profile</DropdownMenuItem>
 		<DropdownMenuItem
 			icon={EmailIcon}
@@ -154,7 +154,7 @@ Use the `endElement` prop to add elements such as an [Indicator dot](/components
 			Messages
 		</DropdownMenuItem>
 		<DropdownMenuItem icon={SettingsIcon}>Account settings</DropdownMenuItem>
-	</DropdownMenuList>
+	</DropdownMenuPanel>
 </DropdownMenu>
 ```
 
@@ -165,7 +165,7 @@ Use a `DropdownMenuDivider` to separate destructive actions at the bottom of the
 ```jsx live
 <DropdownMenu>
 	<DropdownMenuButton>Open dropdown menu</DropdownMenuButton>
-	<DropdownMenuList>
+	<DropdownMenuPanel>
 		<DropdownMenuItem icon={AvatarIcon}>Profile</DropdownMenuItem>
 		<DropdownMenuItem
 			icon={EmailIcon}
@@ -176,7 +176,7 @@ Use a `DropdownMenuDivider` to separate destructive actions at the bottom of the
 		<DropdownMenuItem icon={SettingsIcon}>Account settings</DropdownMenuItem>
 		<DropdownMenuDivider />
 		<DropdownMenuItem icon={ExitIcon}>Sign out</DropdownMenuItem>
-	</DropdownMenuList>
+	</DropdownMenuPanel>
 </DropdownMenu>
 ```
 
@@ -189,7 +189,7 @@ Use the `DropdownMenuGroup` component to group related items. Use the label prop
 ```jsx live
 <DropdownMenu>
 	<DropdownMenuButton>Open dropdown menu</DropdownMenuButton>
-	<DropdownMenuList>
+	<DropdownMenuPanel>
 		<DropdownMenuGroup label="Services">
 			<DropdownMenuItem icon={PrintIcon}>Print online</DropdownMenuItem>
 			<DropdownMenuItem icon={CalendarIcon}>Scheduler</DropdownMenuItem>
@@ -207,7 +207,7 @@ Use the `DropdownMenuGroup` component to group related items. Use the label prop
 		</DropdownMenuGroup>
 		<DropdownMenuDivider />
 		<DropdownMenuItem icon={ExitIcon}>Sign out</DropdownMenuItem>
-	</DropdownMenuList>
+	</DropdownMenuPanel>
 </DropdownMenu>
 ```
 
@@ -224,7 +224,7 @@ Use the `DropdownMenuGroupLink` component to add a link to the bottom of the Rad
 		<Stack gap={2} alignItems="flex-start">
 			<DropdownMenu>
 				<DropdownMenuButton>Open dropdown menu</DropdownMenuButton>
-				<DropdownMenuList>
+				<DropdownMenuPanel>
 					<DropdownMenuGroup label="Businesses">
 						<DropdownMenuItemRadio
 							checked={selectedItem === 'Antfix'}
@@ -249,7 +249,7 @@ Use the `DropdownMenuGroupLink` component to add a link to the bottom of the Rad
 						</DropdownMenuItemRadio>
 						<DropdownMenuGroupLink href="#">View all</DropdownMenuGroupLink>
 					</DropdownMenuGroup>
-				</DropdownMenuList>
+				</DropdownMenuPanel>
 			</DropdownMenu>
 			<Text>
 				Currently selected: {selectedItem ? selectedItem : 'Unselected'}
@@ -269,21 +269,21 @@ For dropdown menus with many items, consider setting a maximum height using the 
 		<DropdownMenuButton>
 			Open dropdown menu (without max height)
 		</DropdownMenuButton>
-		<DropdownMenuList>
+		<DropdownMenuPanel>
 			{Array.from(Array(20).keys()).map((i) => (
 				<DropdownMenuItem key={i}>Item {i + 1}</DropdownMenuItem>
 			))}
-		</DropdownMenuList>
+		</DropdownMenuPanel>
 	</DropdownMenu>
 	<DropdownMenu popoverMaxHeight={288}>
 		<DropdownMenuButton>
 			Open dropdown menu (with max height)
 		</DropdownMenuButton>
-		<DropdownMenuList>
+		<DropdownMenuPanel>
 			{Array.from(Array(20).keys()).map((i) => (
 				<DropdownMenuItem key={i}>Item {i + 1}</DropdownMenuItem>
 			))}
-		</DropdownMenuList>
+		</DropdownMenuPanel>
 	</DropdownMenu>
 </Stack>
 ```
@@ -301,11 +301,11 @@ If you need to access the internal state of the menu, you can provide a render c
 			>
 				{isMenuOpen ? 'Close menu' : 'Open menu'}
 			</DropdownMenuButton>
-			<DropdownMenuList>
+			<DropdownMenuPanel>
 				<DropdownMenuItem>Profile</DropdownMenuItem>
 				<DropdownMenuItem>Messages</DropdownMenuItem>
 				<DropdownMenuItem>Account settings</DropdownMenuItem>
-			</DropdownMenuList>
+			</DropdownMenuPanel>
 		</React.Fragment>
 	)}
 </DropdownMenu>

@@ -81,7 +81,7 @@ import {
 import {
 	DropdownMenu,
 	DropdownMenuButton,
-	DropdownMenuList,
+	DropdownMenuPanel,
 	DropdownMenuItem,
 	DropdownMenuDivider,
 } from '@ag.ds-next/react/dropdown-menu';
@@ -445,13 +445,13 @@ function KitchenSink({ background }: KitchenSinkProps) {
 
 							<DropdownMenu>
 								<DropdownMenuButton>Open dropdown menu</DropdownMenuButton>
-								<DropdownMenuList>
+								<DropdownMenuPanel>
 									<DropdownMenuItem>Profile</DropdownMenuItem>
 									<DropdownMenuItem>Messages</DropdownMenuItem>
 									<DropdownMenuItem>Account settings</DropdownMenuItem>
 									<DropdownMenuDivider />
 									<DropdownMenuItem>Sign out</DropdownMenuItem>
-								</DropdownMenuList>
+								</DropdownMenuPanel>
 							</DropdownMenu>
 
 							<Flex gap={0.5} flexWrap="wrap">

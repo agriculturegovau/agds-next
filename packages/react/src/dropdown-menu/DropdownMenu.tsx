@@ -11,9 +11,9 @@ export type DropdownMenuPopoverPlacement =
 
 export type DropdownMenuProps = {
 	children: ((menuState: { isMenuOpen: boolean }) => ReactNode) | ReactNode;
-	/** The placement of the dropdown list popover in relation to the dropdown menu button. */
+	/** The placement of the dropdown panel popover in relation to the dropdown menu button. */
 	popoverPlacement?: DropdownMenuPopoverPlacement;
-	/** The max height of the dropdown list popover. */
+	/** The max height of the dropdown panel popover. */
 	popoverMaxHeight?: number;
 };
 

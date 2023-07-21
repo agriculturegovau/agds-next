@@ -12,7 +12,7 @@ import {
 	DropdownMenuDivider,
 	DropdownMenuItem,
 	DropdownMenuItemLink,
-	DropdownMenuList,
+	DropdownMenuPanel,
 	DropdownMenuGroup,
 	DropdownMenuItemRadio,
 } from './index';
@@ -27,11 +27,11 @@ function renderBasicDropdownMenu() {
 	return render(
 		<DropdownMenu>
 			<DropdownMenuButton>Open dropdown menu</DropdownMenuButton>
-			<DropdownMenuList>
+			<DropdownMenuPanel>
 				<DropdownMenuItem>Item 1</DropdownMenuItem>
 				<DropdownMenuItem>Item 2</DropdownMenuItem>
 				<DropdownMenuItem>Item 3</DropdownMenuItem>
-			</DropdownMenuList>
+			</DropdownMenuPanel>
 		</DropdownMenu>
 	);
 }
@@ -100,11 +100,11 @@ describe('DropdownMenu', () => {
 		render(
 			<DropdownMenu>
 				<DropdownMenuButton>Open dropdown menu</DropdownMenuButton>
-				<DropdownMenuList>
+				<DropdownMenuPanel>
 					<DropdownMenuItem id="item-1">Item 1</DropdownMenuItem>
 					<DropdownMenuItem id="item-2">Item 2</DropdownMenuItem>
 					<DropdownMenuItem id="item-3"> Item 3</DropdownMenuItem>
-				</DropdownMenuList>
+				</DropdownMenuPanel>
 			</DropdownMenu>
 		);
 
@@ -146,11 +146,11 @@ describe('DropdownMenu', () => {
 		render(
 			<DropdownMenu>
 				<DropdownMenuButton>Open dropdown menu</DropdownMenuButton>
-				<DropdownMenuList>
+				<DropdownMenuPanel>
 					<DropdownMenuItem id="item-1">Item 1</DropdownMenuItem>
 					<DropdownMenuItem id="item-2">Item 2</DropdownMenuItem>
 					<DropdownMenuItem id="item-3"> Item 3</DropdownMenuItem>
-				</DropdownMenuList>
+				</DropdownMenuPanel>
 			</DropdownMenu>
 		);
 
@@ -178,10 +178,10 @@ describe('DropdownMenu', () => {
 		render(
 			<DropdownMenu>
 				<DropdownMenuButton>Open dropdown menu</DropdownMenuButton>
-				<DropdownMenuList>
+				<DropdownMenuPanel>
 					<DropdownMenuItem onClick={onClick1}>Item 1</DropdownMenuItem>
 					<DropdownMenuItem onClick={onClick2}>Item 2</DropdownMenuItem>
-				</DropdownMenuList>
+				</DropdownMenuPanel>
 			</DropdownMenu>
 		);
 
@@ -211,10 +211,10 @@ describe('DropdownMenu', () => {
 						<DropdownMenuButton>
 							{isMenuOpen ? 'Close' : 'Open'}
 						</DropdownMenuButton>
-						<DropdownMenuList>
+						<DropdownMenuPanel>
 							<DropdownMenuItem>Item 1</DropdownMenuItem>
 							<DropdownMenuItem>Item 2</DropdownMenuItem>
-						</DropdownMenuList>
+						</DropdownMenuPanel>
 					</Fragment>
 				)}
 			</DropdownMenu>
@@ -241,7 +241,7 @@ function renderDecorativeDropdownMenu() {
 					<DropdownMenuButton>
 						{isMenuOpen ? 'Close' : 'Open'}
 					</DropdownMenuButton>
-					<DropdownMenuList>
+					<DropdownMenuPanel>
 						<DropdownMenuItem icon={AvatarIcon}>Profile</DropdownMenuItem>
 						<DropdownMenuItem
 							icon={EmailIcon}
@@ -255,7 +255,7 @@ function renderDecorativeDropdownMenu() {
 						<DropdownMenuItem icon={SettingsIcon}>
 							Account settings
 						</DropdownMenuItem>
-					</DropdownMenuList>
+					</DropdownMenuPanel>
 				</Fragment>
 			)}
 		</DropdownMenu>
@@ -287,10 +287,10 @@ function renderDropdownMenuLinks() {
 	return render(
 		<DropdownMenu>
 			<DropdownMenuButton>Open dropdown menu</DropdownMenuButton>
-			<DropdownMenuList>
+			<DropdownMenuPanel>
 				<DropdownMenuItemLink href="/about">About</DropdownMenuItemLink>
 				<DropdownMenuItemLink href="/contact">Contact</DropdownMenuItemLink>
-			</DropdownMenuList>
+			</DropdownMenuPanel>
 		</DropdownMenu>
 	);
 }
@@ -334,14 +334,14 @@ describe('DropdownMenu Links', () => {
 		render(
 			<DropdownMenu>
 				<DropdownMenuButton>Open dropdown menu</DropdownMenuButton>
-				<DropdownMenuList>
+				<DropdownMenuPanel>
 					<DropdownMenuItemLink href="/about" target="_blank" rel="noopener">
 						About
 					</DropdownMenuItemLink>
 					<DropdownMenuItemLink href="/contact" target="_blank" rel="noopener">
 						Contact
 					</DropdownMenuItemLink>
-				</DropdownMenuList>
+				</DropdownMenuPanel>
 			</DropdownMenu>
 		);
 
@@ -370,7 +370,7 @@ function renderDropdownMenuRadio() {
 	return render(
 		<DropdownMenu>
 			<DropdownMenuButton>Open dropdown menu</DropdownMenuButton>
-			<DropdownMenuList>
+			<DropdownMenuPanel>
 				<DropdownMenuGroup label="Businesses">
 					<DropdownMenuItemRadio
 						id="item-1"
@@ -394,7 +394,7 @@ function renderDropdownMenuRadio() {
 						Organic Co
 					</DropdownMenuItemRadio>
 				</DropdownMenuGroup>
-			</DropdownMenuList>
+			</DropdownMenuPanel>
 		</DropdownMenu>
 	);
 }
@@ -443,7 +443,7 @@ describe('DropdownMenu Radio Group', () => {
 		render(
 			<DropdownMenu>
 				<DropdownMenuButton>Open dropdown menu</DropdownMenuButton>
-				<DropdownMenuList>
+				<DropdownMenuPanel>
 					<DropdownMenuGroup label="Businesses">
 						<DropdownMenuItemRadio
 							id="item-1"
@@ -470,7 +470,7 @@ describe('DropdownMenu Radio Group', () => {
 							Organic Co
 						</DropdownMenuItemRadio>
 					</DropdownMenuGroup>
-				</DropdownMenuList>
+				</DropdownMenuPanel>
 			</DropdownMenu>
 		);
 

@@ -1044,13 +1044,13 @@ items={[
 		name: 'Basic',
 		code: `<DropdownMenu>
 		<DropdownMenuButton>Open dropdown menu</DropdownMenuButton>
-		<DropdownMenuList>
+		<DropdownMenuPanel>
 			<DropdownMenuItem>Profile</DropdownMenuItem>
 			<DropdownMenuItem>Messages</DropdownMenuItem>
 			<DropdownMenuItem>Account settings</DropdownMenuItem>
 			<DropdownMenuDivider />
 			<DropdownMenuItem>Sign out</DropdownMenuItem>
-		</DropdownMenuList>
+		</DropdownMenuPanel>
 	</DropdownMenu>`,
 	},
 ];

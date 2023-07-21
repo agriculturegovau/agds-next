@@ -24,7 +24,7 @@ import {
 	DropdownMenuItem,
 	DropdownMenuItemLink,
 	DropdownMenuItemRadio,
-	DropdownMenuList,
+	DropdownMenuPanel,
 	useDropdownMenuButton,
 } from './index';
 
@@ -39,7 +39,7 @@ export const Basic: StoryObj = {
 		return (
 			<DropdownMenu>
 				<DropdownMenuButton>Open dropdown menu</DropdownMenuButton>
-				<DropdownMenuList>
+				<DropdownMenuPanel>
 					<DropdownMenuItem onClick={() => console.log('Profile')}>
 						Profile
 					</DropdownMenuItem>
@@ -49,7 +49,7 @@ export const Basic: StoryObj = {
 					<DropdownMenuItem onClick={() => console.log('Account settings')}>
 						Account settings
 					</DropdownMenuItem>
-				</DropdownMenuList>
+				</DropdownMenuPanel>
 			</DropdownMenu>
 		);
 	},
@@ -72,11 +72,11 @@ export const Triggers: StoryObj = {
 								>
 									Edit
 								</DropdownMenuButton>
-								<DropdownMenuList>
+								<DropdownMenuPanel>
 									<DropdownMenuItem>Item A</DropdownMenuItem>
 									<DropdownMenuItem>Item B</DropdownMenuItem>
 									<DropdownMenuItem>Item C</DropdownMenuItem>
-								</DropdownMenuList>
+								</DropdownMenuPanel>
 							</DropdownMenu>
 						))}
 					</ButtonGroup>
@@ -91,11 +91,11 @@ export const UnstyledTrigger: StoryObj = {
 		return (
 			<DropdownMenu>
 				<DropdownMenuCustomTrigger />
-				<DropdownMenuList>
+				<DropdownMenuPanel>
 					<DropdownMenuItem>Item A</DropdownMenuItem>
 					<DropdownMenuItem>Item B</DropdownMenuItem>
 					<DropdownMenuItem>Item C</DropdownMenuItem>
-				</DropdownMenuList>
+				</DropdownMenuPanel>
 			</DropdownMenu>
 		);
 	},
@@ -114,11 +114,11 @@ export const Placement: StoryObj = {
 				{placements.map((placement) => (
 					<DropdownMenu key={placement} popoverPlacement={placement}>
 						<DropdownMenuButton>{placement}</DropdownMenuButton>
-						<DropdownMenuList>
+						<DropdownMenuPanel>
 							<DropdownMenuItem>Profile</DropdownMenuItem>
 							<DropdownMenuItem>Messages</DropdownMenuItem>
 							<DropdownMenuItem>Account settings</DropdownMenuItem>
-						</DropdownMenuList>
+						</DropdownMenuPanel>
 					</DropdownMenu>
 				))}
 			</Stack>
@@ -131,7 +131,7 @@ export const IconsAndBadges: StoryObj = {
 		return (
 			<DropdownMenu>
 				<DropdownMenuButton>Open dropdown menu</DropdownMenuButton>
-				<DropdownMenuList>
+				<DropdownMenuPanel>
 					<DropdownMenuItem icon={AvatarIcon}>Profile</DropdownMenuItem>
 					<DropdownMenuItem
 						icon={EmailIcon}
@@ -144,7 +144,7 @@ export const IconsAndBadges: StoryObj = {
 					<DropdownMenuItem icon={SettingsIcon}>
 						Account settings
 					</DropdownMenuItem>
-				</DropdownMenuList>
+				</DropdownMenuPanel>
 			</DropdownMenu>
 		);
 	},
@@ -155,7 +155,7 @@ export const Divider: StoryObj = {
 		return (
 			<DropdownMenu>
 				<DropdownMenuButton>Open dropdown menu</DropdownMenuButton>
-				<DropdownMenuList>
+				<DropdownMenuPanel>
 					<DropdownMenuItem
 						onClick={() => console.log('Profile')}
 						icon={AvatarIcon}
@@ -184,7 +184,7 @@ export const Divider: StoryObj = {
 					>
 						Sign out
 					</DropdownMenuItem>
-				</DropdownMenuList>
+				</DropdownMenuPanel>
 			</DropdownMenu>
 		);
 	},
@@ -195,7 +195,7 @@ export const Groups: StoryObj = {
 		return (
 			<DropdownMenu>
 				<DropdownMenuButton>Open dropdown menu</DropdownMenuButton>
-				<DropdownMenuList>
+				<DropdownMenuPanel>
 					<DropdownMenuGroup label="Services">
 						<DropdownMenuItem icon={PrintIcon}>Print online</DropdownMenuItem>
 						<DropdownMenuItem icon={CalendarIcon}>Scheduler</DropdownMenuItem>
@@ -217,7 +217,7 @@ export const Groups: StoryObj = {
 					</DropdownMenuGroup>
 					<DropdownMenuDivider />
 					<DropdownMenuItem icon={ExitIcon}>Sign out</DropdownMenuItem>
-				</DropdownMenuList>
+				</DropdownMenuPanel>
 			</DropdownMenu>
 		);
 	},
@@ -228,7 +228,7 @@ export const Links: StoryObj = {
 		return (
 			<DropdownMenu>
 				<DropdownMenuButton>Open dropdown menu</DropdownMenuButton>
-				<DropdownMenuList>
+				<DropdownMenuPanel>
 					<DropdownMenuItemLink href="#link-1">Link 1</DropdownMenuItemLink>
 					<DropdownMenuItemLink href="#link-2">Link 2</DropdownMenuItemLink>
 					<DropdownMenuItemLink
@@ -238,7 +238,7 @@ export const Links: StoryObj = {
 					>
 						External link
 					</DropdownMenuItemLink>
-				</DropdownMenuList>
+				</DropdownMenuPanel>
 			</DropdownMenu>
 		);
 	},
@@ -250,7 +250,7 @@ export const RadioGroups: StoryObj = {
 		return (
 			<DropdownMenu>
 				<DropdownMenuButton>Open dropdown menu</DropdownMenuButton>
-				<DropdownMenuList>
+				<DropdownMenuPanel>
 					<DropdownMenuGroup label="Businesses">
 						<DropdownMenuItemRadio
 							checked={selectedItem === 'Antfix'}
@@ -272,7 +272,7 @@ export const RadioGroups: StoryObj = {
 						</DropdownMenuItemRadio>
 						<DropdownMenuGroupLink href="#">View all</DropdownMenuGroupLink>
 					</DropdownMenuGroup>
-				</DropdownMenuList>
+				</DropdownMenuPanel>
 			</DropdownMenu>
 		);
 	},
@@ -284,7 +284,7 @@ export const RadioGroupsSecondary: StoryObj = {
 		return (
 			<DropdownMenu>
 				<DropdownMenuButton>Open dropdown menu</DropdownMenuButton>
-				<DropdownMenuList>
+				<DropdownMenuPanel>
 					<DropdownMenuGroup label="Businesses">
 						<DropdownMenuItemRadio
 							secondaryText="Sydney"
@@ -309,7 +309,7 @@ export const RadioGroupsSecondary: StoryObj = {
 						</DropdownMenuItemRadio>
 						<DropdownMenuGroupLink href="#">View all</DropdownMenuGroupLink>
 					</DropdownMenuGroup>
-				</DropdownMenuList>
+				</DropdownMenuPanel>
 			</DropdownMenu>
 		);
 	},
@@ -321,7 +321,7 @@ export const RadioGroupsSecondaryBadges: StoryObj = {
 		return (
 			<DropdownMenu>
 				<DropdownMenuButton>Open dropdown menu</DropdownMenuButton>
-				<DropdownMenuList>
+				<DropdownMenuPanel>
 					<DropdownMenuGroup label="Businesses">
 						<DropdownMenuItemRadio
 							secondaryText="Sydney"
@@ -350,7 +350,7 @@ export const RadioGroupsSecondaryBadges: StoryObj = {
 						</DropdownMenuItemRadio>
 						<DropdownMenuGroupLink href="#">View all</DropdownMenuGroupLink>
 					</DropdownMenuGroup>
-				</DropdownMenuList>
+				</DropdownMenuPanel>
 			</DropdownMenu>
 		);
 	},
@@ -364,21 +364,21 @@ export const Overflow: StoryObj = {
 					<DropdownMenuButton>
 						Open dropdown menu (without max height)
 					</DropdownMenuButton>
-					<DropdownMenuList>
+					<DropdownMenuPanel>
 						{Array.from(Array(20).keys()).map((i) => (
 							<DropdownMenuItem key={i}>Item {i + 1}</DropdownMenuItem>
 						))}
-					</DropdownMenuList>
+					</DropdownMenuPanel>
 				</DropdownMenu>
 				<DropdownMenu popoverMaxHeight={288}>
 					<DropdownMenuButton>
 						Open dropdown menu (with max height)
 					</DropdownMenuButton>
-					<DropdownMenuList>
+					<DropdownMenuPanel>
 						{Array.from(Array(20).keys()).map((i) => (
 							<DropdownMenuItem key={i}>Item {i + 1}</DropdownMenuItem>
 						))}
-					</DropdownMenuList>
+					</DropdownMenuPanel>
 				</DropdownMenu>
 			</Stack>
 		);
@@ -396,11 +396,11 @@ export const AccessingState: StoryObj = {
 						>
 							{isMenuOpen ? 'Close menu' : 'Open menu'}
 						</DropdownMenuButton>
-						<DropdownMenuList>
+						<DropdownMenuPanel>
 							<DropdownMenuItem>Profile</DropdownMenuItem>
 							<DropdownMenuItem>Messages</DropdownMenuItem>
 							<DropdownMenuItem>Account settings</DropdownMenuItem>
-						</DropdownMenuList>
+						</DropdownMenuPanel>
 					</Fragment>
 				)}
 			</DropdownMenu>
@@ -413,7 +413,7 @@ export const Complex: StoryObj = {
 		return (
 			<DropdownMenu>
 				<DropdownMenuButton>Open dropdown menu</DropdownMenuButton>
-				<DropdownMenuList>
+				<DropdownMenuPanel>
 					<DropdownMenuGroup label="Businesses">
 						<DropdownMenuItemRadio
 							checked={true}
@@ -451,7 +451,7 @@ export const Complex: StoryObj = {
 					</DropdownMenuItem>
 					<DropdownMenuDivider />
 					<DropdownMenuItem icon={ExitIcon}>Sign out</DropdownMenuItem>
-				</DropdownMenuList>
+				</DropdownMenuPanel>
 			</DropdownMenu>
 		);
 	},

@@ -225,7 +225,7 @@ export {
 	DropdownMenuItem,
 	DropdownMenuItemLink,
 	DropdownMenuItemRadio,
-	DropdownMenuList,
+	DropdownMenuPanel,
 } from '@ag.ds-next/react/dropdown-menu';
 // Used to populate options on documentation site and playroom
 export { COUNTRY_OPTIONS } from '@ag.ds-next/react/src/combobox/test-utils';

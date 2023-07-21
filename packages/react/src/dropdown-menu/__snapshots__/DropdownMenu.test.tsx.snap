@@ -23,7 +23,7 @@ exports[`DropdownMenu Decorative renders correctly 1`] = `
   </button>
   <div
     aria-labelledby="dropdown-menu-:ru:-button"
-    class="css-lmn5rh-boxStyles-boxStyles-Popover-DropdownMenuList"
+    class="css-bu1ul2-boxStyles-boxStyles-Popover-DropdownMenuPanel"
     id="dropdown-menu-:ru:-list"
     role="menu"
     style="position: absolute; left: 0px; top: 0px; display: none; transform: translate(0px, 0px);"
@@ -162,7 +162,7 @@ exports[`DropdownMenu Links renders correctly 1`] = `
   </button>
   <div
     aria-labelledby="dropdown-menu-:r16:-button"
-    class="css-lmn5rh-boxStyles-boxStyles-Popover-DropdownMenuList"
+    class="css-bu1ul2-boxStyles-boxStyles-Popover-DropdownMenuPanel"
     id="dropdown-menu-:r16:-list"
     role="menu"
     style="position: absolute; left: 0px; top: 0px; display: none; transform: translate(0px, 0px);"
@@ -225,7 +225,7 @@ exports[`DropdownMenu Radio Group renders correctly 1`] = `
   </button>
   <div
     aria-labelledby="dropdown-menu-:r1i:-button"
-    class="css-lmn5rh-boxStyles-boxStyles-Popover-DropdownMenuList"
+    class="css-bu1ul2-boxStyles-boxStyles-Popover-DropdownMenuPanel"
     id="dropdown-menu-:r1i:-list"
     role="menu"
     style="position: absolute; left: 0px; top: 0px; display: none; transform: translate(0px, 0px);"
@@ -330,7 +330,7 @@ exports[`DropdownMenu renders correctly 1`] = `
   </button>
   <div
     aria-labelledby="dropdown-menu-:r0:-button"
-    class="css-lmn5rh-boxStyles-boxStyles-Popover-DropdownMenuList"
+    class="css-bu1ul2-boxStyles-boxStyles-Popover-DropdownMenuPanel"
     id="dropdown-menu-:r0:-list"
     role="menu"
     style="position: absolute; left: 0px; top: 0px; display: none; transform: translate(0px, 0px);"

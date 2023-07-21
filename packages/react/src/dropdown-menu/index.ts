@@ -5,6 +5,6 @@ export * from './DropdownMenuDivider';
 export * from './DropdownMenuGroup';
 export * from './DropdownMenuItem';
 export * from './DropdownMenuItemLink';
-export * from './DropdownMenuList';
+export * from './DropdownMenuPanel';
 export * from './DropdownMenuItemRadio';
 export * from './DropdownMenuGroupLink';

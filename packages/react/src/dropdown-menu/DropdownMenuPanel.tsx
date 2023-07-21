@@ -10,11 +10,14 @@ import { Popover } from '../_popover';
 import { useDropdownMenuContext } from './DropdownMenuContext';
 import { useDropdownMenuControlIds } from './utils';
 
-export type DropdownMenuListProps = PropsWithChildren<{
+export type DropdownMenuPanelProps = PropsWithChildren<{
 	palette?: FlexProps['palette'];
 }>;
 
-export function DropdownMenuList({ children, palette }: DropdownMenuListProps) {
+export function DropdownMenuPanel({
+	children,
+	palette,
+}: DropdownMenuPanelProps) {
 	const { listRef, isMenuOpen, closeMenu, popover, activeDescendantId } =
 		useDropdownMenuContext();
 
