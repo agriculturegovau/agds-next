@@ -18,10 +18,10 @@ export function DropdownMenuPanel({
 	children,
 	palette,
 }: DropdownMenuPanelProps) {
-	const { listRef, isMenuOpen, closeMenu, popover, activeDescendantId } =
+	const { panelRef, isMenuOpen, closeMenu, popover, activeDescendantId } =
 		useDropdownMenuContext();
 
-	const { buttonId, listId } = useDropdownMenuControlIds();
+	const { buttonId, panelId } = useDropdownMenuControlIds();
 
 	// When the dropdown is opened, clicking outside should close
 	const handleClickOutside = useCallback(() => {
@@ -35,8 +35,8 @@ export function DropdownMenuPanel({
 
 	// When the dropdown is opened, the menu list should be focused
 	useEffect(() => {
-		if (isMenuOpen) listRef.current?.focus();
-	}, [listRef, isMenuOpen]);
+		if (isMenuOpen) panelRef.current?.focus();
+	}, [panelRef, isMenuOpen]);
 
 	const { onKeyDown } = useKeydownNavigation();
 
@@ -47,10 +47,10 @@ export function DropdownMenuPanel({
 			as={Flex}
 			// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 			// @ts-ignore
-			ref={mergeRefs([popoverRef, listRef])}
+			ref={mergeRefs([popoverRef, panelRef])}
 			role="menu"
 			tabIndex={-1}
-			id={listId}
+			id={panelId}
 			aria-labelledby={buttonId}
 			aria-activedescendant={activeDescendantId}
 			onKeyDown={onKeyDown}

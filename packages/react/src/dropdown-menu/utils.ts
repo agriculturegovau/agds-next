@@ -10,7 +10,7 @@ export function useDropdownMenuId() {
 }
 
 /**
- * Generates the ID of the dropdown menu button and dropdown menu list
+ * Generates the ID of the dropdown menu button and dropdown menu panel
  * These are generated together as they are connected by aria-controls/aria-labelledby
  * The `menuId` prefix ensures that multiple dropdowns can be placed on the same page
  */
@@ -18,7 +18,7 @@ export function useDropdownMenuControlIds() {
 	const { menuId } = useDropdownMenuContext();
 	return {
 		buttonId: `${menuId}-button`,
-		listId: `${menuId}-list`,
+		panelId: `${menuId}-panel`,
 	};
 }
 

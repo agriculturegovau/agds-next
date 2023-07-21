@@ -25,7 +25,7 @@ export function DropdownMenu({
 	const [state, dispatch] = useReducer(reducer, initialState);
 
 	const menuId = useDropdownMenuId();
-	const listRef = useRef<HTMLDivElement>(null);
+	const panelRef = useRef<HTMLDivElement>(null);
 
 	const popover = usePopover<HTMLButtonElement>({
 		placement: popoverPlacement,
@@ -79,7 +79,7 @@ export function DropdownMenu({
 		dispatch({
 			type: 'SET_DESCENDANT_NODES',
 			payload: {
-				nodes: listRef.current?.querySelectorAll(
+				nodes: panelRef.current?.querySelectorAll(
 					'[role="menuitem"], [role="menuitemradio"]'
 				) as NodeListOf<HTMLDivElement> | undefined,
 			},
@@ -108,7 +108,7 @@ export function DropdownMenu({
 				updateDescendantSearchTerm,
 				// Other
 				menuId,
-				listRef,
+				panelRef,
 				popover,
 			}}
 		>

@@ -28,13 +28,13 @@ export function DropdownMenuButton({
 
 export function useDropdownMenuButton() {
 	const { isMenuOpen, toggleMenu, popover } = useDropdownMenuContext();
-	const { buttonId, listId } = useDropdownMenuControlIds();
+	const { buttonId, panelId } = useDropdownMenuControlIds();
 	const { ref: popoverRef } = popover.getReferenceProps();
 	return {
 		ref: popoverRef,
 		id: buttonId,
 		'aria-haspopup': true,
-		'aria-controls': listId,
+		'aria-controls': panelId,
 		'aria-expanded': isMenuOpen,
 		onClick: toggleMenu,
 	};

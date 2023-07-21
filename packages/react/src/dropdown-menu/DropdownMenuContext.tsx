@@ -18,7 +18,7 @@ export type DropdownMenuContextType = {
 	updateDescendantSearchTerm: (eventKey: string) => void;
 	// Other
 	menuId: string;
-	listRef: RefObject<HTMLDivElement>;
+	panelRef: RefObject<HTMLDivElement>;
 	popover: ReturnType<typeof usePopover<HTMLButtonElement>>;
 };
 
