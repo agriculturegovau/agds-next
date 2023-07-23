@@ -63,6 +63,7 @@ export const foregroundColorMap = {
 	info: boxPalette.systemInfo,
 	inherit: 'inherit',
 };
+type ForegroundColor = keyof typeof foregroundColorMap;
 
 export const backgroundColorMap = {
 	body: boxPalette.backgroundBody,
@@ -70,10 +71,19 @@ export const backgroundColorMap = {
 	bodyAlt: boxPalette.backgroundBodyAlt,
 	shadeAlt: boxPalette.backgroundShadeAlt,
 };
+type BackgroundColor = keyof typeof backgroundColorMap;
+
+const borderColorMap = {
+	border: boxPalette.border,
+	muted: boxPalette.borderMuted,
+	accent: boxPalette.accent,
+} as const;
+
+type BorderColor = keyof typeof borderColorMap;
 
 type ColorProps = Partial<{
-	color: ResponsiveProp<keyof typeof foregroundColorMap>;
-	background: ResponsiveProp<keyof typeof backgroundColorMap>;
+	color: ResponsiveProp<ForegroundColor>;
+	background: ResponsiveProp<BackgroundColor>;
 }>;
 
 function colorStyles({ color, background }: ColorProps) {
@@ -228,15 +238,6 @@ function layoutStyles({
 		maxHeight: mapResponsiveProp(maxHeight),
 	};
 }
-
-const borderColorMap = {
-	border: boxPalette.border,
-	muted: boxPalette.borderMuted,
-	accent: boxPalette.accent,
-} as const;
-
-type BorderColor = keyof typeof borderColorMap;
-
 type BorderProps = Partial<{
 	border: ResponsiveProp<boolean>;
 	borderWidth: ResponsiveProp<BorderWidth>;
