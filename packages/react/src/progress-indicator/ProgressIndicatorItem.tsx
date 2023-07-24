@@ -182,7 +182,7 @@ const ProgressIndicatorItemIcon = ({
 							right: 0,
 							borderRadius: '100%',
 							content: '""',
-							border: `${ringWidth}px solid ${boxPalette.foregroundSelected}`,
+							border: `${ringWidth}px solid ${boxPalette.selected}`,
 						},
 					}),
 				}}

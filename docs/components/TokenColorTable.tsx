@@ -48,8 +48,8 @@ export const colourTokens: {
 			desc: 'Used to indicate interactive components like links and buttons. Don’t use the action colour for non-interactive components as it could confuse users. Also make sure you don’t rely on colour alone to indicate that a component is interactive, use additional visual cues.',
 		},
 		selected: {
-			light: theme.lightForegroundSelected,
-			dark: theme.darkForegroundSelected,
+			light: theme.lightSelected,
+			dark: theme.darkSelected,
 			desc: 'Used to indicate if an item is selected or active. For example, selected navigation items and tabs.',
 		},
 	},

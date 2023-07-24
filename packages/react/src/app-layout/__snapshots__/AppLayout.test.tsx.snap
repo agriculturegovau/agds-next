@@ -6,7 +6,7 @@ exports[`AppLayout renders correctly 1`] = `
     class="css-4lqw0h-AppLayoutGrid"
   >
     <header
-      class="css-1intfvk-dark-boxStyles-AppLayoutHeader"
+      class="css-1ygvviu-dark-boxStyles-AppLayoutHeader"
       id="header"
     >
       <div
@@ -195,7 +195,7 @@ exports[`AppLayout renders correctly 1`] = `
             </a>
           </li>
           <li
-            class="css-ktzmgn-AppLayoutSidebarNavItemInner"
+            class="css-9fl0nt-AppLayoutSidebarNavItemInner"
           >
             <a
               aria-current="page"

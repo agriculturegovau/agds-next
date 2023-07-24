@@ -58,7 +58,7 @@ export function SideNavLink({
 							bottom: 0,
 							borderLeftWidth: tokens.borderWidth.xl,
 							borderLeftStyle: 'solid',
-							borderLeftColor: boxPalette.foregroundSelected,
+							borderLeftColor: boxPalette.selected,
 							pointerEvents: 'none',
 						},
 					}),
