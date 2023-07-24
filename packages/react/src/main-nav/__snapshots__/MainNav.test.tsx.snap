@@ -7,7 +7,7 @@ exports[`MainNav renders correctly 1`] = `
     tabindex="-1"
   >
     <div
-      class="css-1fl9qli-boxStyles-BottomBar"
+      class="css-ejhmth-boxStyles-BottomBar"
     />
     <div
       class="css-zlf9wg-boxStyles-NavContainer"
@@ -50,7 +50,7 @@ exports[`MainNav renders correctly 1`] = `
           </button>
         </div>
         <div
-          class="css-1cxgfke-light-boxStyles-element"
+          class="css-3nr864-light-boxStyles-element"
           id="main-nav-dialog"
         >
           <div

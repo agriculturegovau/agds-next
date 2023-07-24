@@ -16,7 +16,7 @@ const boxPaletteVars = {
 	border: '--agds-border',
 	borderMuted: '--agds-border-muted',
 	accent: '--agds-accent',
-	focus: '--agds-focus',
+	focus: '--agds-foreground-focus',
 	overlay: '--agds-overlay',
 	systemSuccess: '--agds-system-success',
 	systemSuccessMuted: '--agds-system-success-muted',
