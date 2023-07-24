@@ -5,6 +5,8 @@ import { Flex } from '@ag.ds-next/react/flex';
 import { Prose } from '@ag.ds-next/react/prose';
 import { SkipLinksProps } from '@ag.ds-next/react/skip-link';
 import { SubNav } from '@ag.ds-next/react/sub-nav';
+import { Text } from '@ag.ds-next/react/text';
+import { TextLink } from '@ag.ds-next/react/text-link';
 import { getPkgBreadcrumbs, getPkgNavLinks, Pkg } from '../lib/mdx/packages';
 import { PageTitle } from './PageTitle';
 import { PageLayout } from './PageLayout';
@@ -12,6 +14,7 @@ import { FigmaLogo } from './FigmaLogo';
 import { StorybookLogo } from './StorybookLogo';
 import { GithubLogo } from './GithubLogo';
 import { SiteLayout } from './SiteLayout';
+import { PageAlert } from './designSystemComponents';
 
 export function PkgLayout({
 	children,
@@ -84,11 +87,20 @@ export function PkgLayout({
 				/>
 				{!pkg.deprecated && (
 					<Fragment>
-						<Prose>
-							<pre>
-								<code>{`import { ... } from '@ag.ds-next/react/${pkg.name}';`}</code>
-							</pre>
-						</Prose>
+						{!pkg.unreleased ? (
+							<Prose>
+								<pre>
+									<code>{`import { ... } from '@ag.ds-next/react/${pkg.name}';`}</code>
+								</pre>
+							</Prose>
+						) : (
+							<PageAlert tone="warning">
+								<Text>
+									This component is unreleased and will be available as part of
+									the next <TextLink href="/updates">update</TextLink>.
+								</Text>
+							</PageAlert>
+						)}
 						{pkg.subNavItems?.length ? (
 							<SubNav
 								activePath={asPath}
