@@ -5,6 +5,7 @@ import { Button } from '@ag.ds-next/react/button';
 import { CloseIcon } from '@ag.ds-next/react/icon';
 import { Tags } from '@ag.ds-next/react/tags';
 import { GetDataFilters } from '../lib/getData';
+import { useSortAndFilterContext } from '../lib/SortAndFilterContext';
 import { STATUS_MAP } from './DashboardTable';
 import { STATE_OPTIONS } from './FilterStateSelect';
 
@@ -86,15 +87,8 @@ function formatFilterKey(key: keyof GetDataFilters) {
 	}[key];
 }
 
-export const ActiveFilters = ({
-	filters,
-	removeFilter,
-	resetFilters,
-}: {
-	filters: GetDataFilters;
-	removeFilter: (filter: keyof GetDataFilters) => void;
-	resetFilters: () => void;
-}) => {
+export const ActiveFilters = () => {
+	const { filters, removeFilter, resetFilters } = useSortAndFilterContext();
 	const tags = getTagsFromFilters({ filters, removeFilter });
 
 	if (tags.length === 0) {

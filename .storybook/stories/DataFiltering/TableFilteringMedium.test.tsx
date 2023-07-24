@@ -4,20 +4,13 @@ import { cleanup, render, waitFor } from '../../../test-utils';
 import { TableFilteringMedium } from './TableFilteringMedium';
 import { useSortAndFilter } from './lib/useSortAndFilter';
 import { generateTableCaption, useData } from './lib/utils';
+import { SortAndFilterProvider } from './lib/SortAndFilterContext';
 
 afterEach(cleanup);
 
 function TableFilteringMediumTest({ loading }: { loading: boolean }) {
-	const {
-		sort,
-		filters,
-		pagination,
-		setSort,
-		setFilters,
-		resetFilters,
-		removeFilter,
-		setPagination,
-	} = useSortAndFilter();
+	const sortAndFilter = useSortAndFilter();
+	const { filters, pagination, sort } = sortAndFilter;
 
 	const { data, totalPages, totalItems } = useData({
 		filters,
@@ -32,23 +25,17 @@ function TableFilteringMediumTest({ loading }: { loading: boolean }) {
 	});
 
 	return (
-		<TableFilteringMedium
-			{...{
-				sort,
-				setSort,
-				filters,
-				setFilters,
-				resetFilters,
-				removeFilter,
-				pagination,
-				setPagination,
-				totalPages,
-				totalItems,
-				loading,
-				data,
-				tableCaption,
-			}}
-		/>
+		<SortAndFilterProvider value={sortAndFilter}>
+			<TableFilteringMedium
+				{...{
+					totalPages,
+					totalItems,
+					loading,
+					data,
+					tableCaption,
+				}}
+			/>
+		</SortAndFilterProvider>
 	);
 }
 

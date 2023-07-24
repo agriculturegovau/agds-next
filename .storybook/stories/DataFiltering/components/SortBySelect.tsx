@@ -1,15 +1,11 @@
 import { Select } from '@ag.ds-next/react/select';
-import { GetDataSort } from '../lib/getData';
 import { BusinessForAudit } from '../lib/generateBusinessData';
+import { useSortAndFilterContext } from '../lib/SortAndFilterContext';
 import { tableId } from './DashboardTable';
 
-export const SortBySelect = ({
-	sort,
-	setSort,
-}: {
-	sort: GetDataSort;
-	setSort: (sort: GetDataSort) => void;
-}) => {
+export const SortBySelect = () => {
+	const { sort, setSort } = useSortAndFilterContext();
+
 	return (
 		<Select
 			label="Sort by"

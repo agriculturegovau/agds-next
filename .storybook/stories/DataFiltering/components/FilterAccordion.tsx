@@ -3,7 +3,7 @@ import { useRef } from 'react';
 import { Flex } from '@ag.ds-next/react/flex';
 import { DateRangePicker } from '@ag.ds-next/react/date-range-picker';
 import { usePrefersReducedMotion } from '@ag.ds-next/react/core';
-import { GetDataFilters } from '../lib/getData';
+import { useSortAndFilterContext } from '../lib/SortAndFilterContext';
 import { FilterAssigneeSelect } from './FilterAssigneeSelect';
 import { FilterStateSelect } from './FilterStateSelect';
 
@@ -11,15 +11,13 @@ export const FilterAccordion = ({
 	ariaLabelledBy,
 	id,
 	isOpen,
-	filters,
-	setFilters,
 }: {
 	ariaLabelledBy: string;
 	id: string;
 	isOpen: boolean;
-	filters: GetDataFilters;
-	setFilters: (filters: GetDataFilters) => void;
 }) => {
+	const { filters, setFilters } = useSortAndFilterContext();
+
 	// This code has been copied from the Accordion component.
 	const ref = useRef<HTMLDivElement>(null);
 	const prefersReducedMotion = usePrefersReducedMotion();
@@ -57,8 +55,8 @@ export const FilterAccordion = ({
 				border
 				borderColor="muted"
 			>
-				<FilterStateSelect filters={filters} setFilters={setFilters} />
-				<FilterAssigneeSelect filters={filters} setFilters={setFilters} />
+				<FilterStateSelect />
+				<FilterAssigneeSelect />
 				<DateRangePicker
 					fromLabel="Registered from"
 					toLabel="Registered to"

@@ -1,15 +1,11 @@
 import { Select } from '@ag.ds-next/react/select';
-import { GetDataFilters } from '../lib/getData';
 import { assignees } from '../lib/generateBusinessData';
+import { useSortAndFilterContext } from '../lib/SortAndFilterContext';
 import { tableId } from './DashboardTable';
 
-export const FilterAssigneeSelect = ({
-	filters,
-	setFilters,
-}: {
-	filters: GetDataFilters;
-	setFilters: (filters: GetDataFilters) => void;
-}) => {
+export const FilterAssigneeSelect = () => {
+	const { filters, setFilters } = useSortAndFilterContext();
+
 	return (
 		<Select
 			label="Assignee"

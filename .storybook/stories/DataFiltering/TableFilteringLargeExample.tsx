@@ -1,18 +1,11 @@
 import { TableFilteringLarge } from './TableFilteringLarge';
 import { useSortAndFilter } from './lib/useSortAndFilter';
 import { generateTableCaption, useData } from './lib/utils';
+import { SortAndFilterProvider } from './lib/SortAndFilterContext';
 
 export const TableFilteringLargeExample = () => {
-	const {
-		filters,
-		pagination,
-		resetFilters,
-		removeFilter,
-		setFilters,
-		setPagination,
-		setSort,
-		sort,
-	} = useSortAndFilter();
+	const sortAndFilter = useSortAndFilter();
+	const { filters, pagination, sort } = sortAndFilter;
 
 	const { loading, data, totalPages, totalItems } = useData({
 		filters,
@@ -27,20 +20,14 @@ export const TableFilteringLargeExample = () => {
 	});
 
 	return (
-		<TableFilteringLarge
-			data={data}
-			filters={filters}
-			loading={loading}
-			pagination={pagination}
-			resetFilters={resetFilters}
-			setFilters={setFilters}
-			removeFilter={removeFilter}
-			setPagination={setPagination}
-			setSort={setSort}
-			sort={sort}
-			tableCaption={tableCaption}
-			totalPages={totalPages}
-			totalItems={totalItems}
-		/>
+		<SortAndFilterProvider value={sortAndFilter}>
+			<TableFilteringLarge
+				data={data}
+				loading={loading}
+				tableCaption={tableCaption}
+				totalPages={totalPages}
+				totalItems={totalItems}
+			/>
+		</SortAndFilterProvider>
 	);
 };

@@ -1,12 +1,10 @@
 import { Stack } from '@ag.ds-next/react/stack';
 import { ButtonLink } from '@ag.ds-next/react/button';
 import { PageContent } from '@ag.ds-next/react/content';
-import { PaginationButtons } from '@ag.ds-next/react/pagination';
 import { PlusIcon } from '@ag.ds-next/react/icon';
 import { Prose } from '@ag.ds-next/react/prose';
 import { FilterStatusSelect } from './components/FilterStatusSelect';
 import { DashboardTable } from './components/DashboardTable';
-import { GetDataFilters, GetDataPagination, GetDataSort } from './lib/getData';
 import { BusinessForAuditWithIndex } from './lib/generateBusinessData';
 import { SortBySelect } from './components/SortBySelect';
 import { FilterAssigneeSelect } from './components/FilterAssigneeSelect';
@@ -15,18 +13,10 @@ import {
 	FilterBarGroup,
 	FilterRegion,
 } from './components/FilterBar';
+import { useSortAndFilterContext } from './lib/SortAndFilterContext';
+import { DashboardPagination } from './components/DashboardPagination';
 
 export type SmallExampleProps = {
-	// sort
-	sort: GetDataSort;
-	setSort: (sort: GetDataSort) => void;
-	// filter
-	filters: GetDataFilters;
-	setFilters: (filters: GetDataFilters) => void;
-	// pagination
-	pagination: GetDataPagination;
-	setPagination: (pagination: GetDataPagination) => void;
-	// data
 	totalPages: number;
 	totalItems: number;
 	loading: boolean;
@@ -35,18 +25,15 @@ export type SmallExampleProps = {
 };
 
 export const TableFilteringSmall = ({
-	sort,
-	setSort,
-	filters,
-	setFilters,
-	pagination,
-	setPagination,
 	totalPages,
 	totalItems,
 	loading,
 	data,
 	tableCaption,
 }: SmallExampleProps) => {
+	// TODO: Delete
+	const { pagination, setPagination } = useSortAndFilterContext();
+
 	return (
 		<PageContent>
 			<Stack gap={2}>
@@ -66,10 +53,10 @@ export const TableFilteringSmall = ({
 				<FilterRegion>
 					<FilterBar>
 						<FilterBarGroup>
-							<FilterStatusSelect filters={filters} setFilters={setFilters} />
-							<FilterAssigneeSelect filters={filters} setFilters={setFilters} />
+							<FilterStatusSelect />
+							<FilterAssigneeSelect />
 						</FilterBarGroup>
-						<SortBySelect sort={sort} setSort={setSort} />
+						<SortBySelect />
 					</FilterBar>
 				</FilterRegion>
 
@@ -80,13 +67,8 @@ export const TableFilteringSmall = ({
 					itemsPerPage={pagination.perPage}
 					totalItems={totalItems}
 				/>
-				{data.length ? (
-					<PaginationButtons
-						currentPage={pagination.page}
-						onChange={(page) => setPagination({ ...pagination, page })}
-						totalPages={totalPages}
-					/>
-				) : null}
+
+				<DashboardPagination data={data} totalPages={totalPages} />
 			</Stack>
 		</PageContent>
 	);

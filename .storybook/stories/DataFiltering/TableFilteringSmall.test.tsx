@@ -4,12 +4,13 @@ import { cleanup, render, waitFor } from '../../../test-utils';
 import { TableFilteringSmall } from './TableFilteringSmall';
 import { useSortAndFilter } from './lib/useSortAndFilter';
 import { generateTableCaption, useData } from './lib/utils';
+import { SortAndFilterProvider } from './lib/SortAndFilterContext';
 
 afterEach(cleanup);
 
 function TableFilteringSmallTest({ loading }: { loading: boolean }) {
-	const { sort, filters, pagination, setSort, setFilters, setPagination } =
-		useSortAndFilter();
+	const sortAndFilter = useSortAndFilter();
+	const { filters, pagination, sort } = sortAndFilter;
 
 	const { data, totalPages, totalItems } = useData({
 		filters,
@@ -24,21 +25,17 @@ function TableFilteringSmallTest({ loading }: { loading: boolean }) {
 	});
 
 	return (
-		<TableFilteringSmall
-			{...{
-				sort,
-				setSort,
-				filters,
-				setFilters,
-				pagination,
-				setPagination,
-				totalPages,
-				totalItems,
-				loading,
-				data,
-				tableCaption,
-			}}
-		/>
+		<SortAndFilterProvider value={sortAndFilter}>
+			<TableFilteringSmall
+				{...{
+					totalPages,
+					totalItems,
+					loading,
+					data,
+					tableCaption,
+				}}
+			/>
+		</SortAndFilterProvider>
 	);
 }
 

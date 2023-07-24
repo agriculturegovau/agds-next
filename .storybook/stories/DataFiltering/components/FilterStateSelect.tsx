@@ -1,14 +1,10 @@
 import { Select } from '@ag.ds-next/react/select';
-import { GetDataFilters } from '../lib/getData';
+import { useSortAndFilterContext } from '../lib/SortAndFilterContext';
 import { tableId } from './DashboardTable';
 
-export const FilterStateSelect = ({
-	filters,
-	setFilters,
-}: {
-	filters: GetDataFilters;
-	setFilters: (filters: GetDataFilters) => void;
-}) => {
+export const FilterStateSelect = () => {
+	const { filters, setFilters } = useSortAndFilterContext();
+
 	return (
 		<Select
 			label="State"

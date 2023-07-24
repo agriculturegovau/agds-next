@@ -22,7 +22,7 @@ import {
 	BusinessForAudit,
 	BusinessForAuditWithIndex,
 } from '../lib/generateBusinessData';
-import { GetDataSort } from '../lib/getData';
+import { useSortAndFilterContext } from '../lib/SortAndFilterContext';
 
 const DashboardTableRowAssignee = ({
 	assignee,
@@ -49,10 +49,6 @@ export type DashboardTableProps = {
 	caption: string;
 	/** The data to display in the table */
 	data: BusinessForAuditWithIndex[];
-	/** The current sort */
-	sort?: GetDataSort;
-	/** A function to set the sort */
-	setSort?: (sort: GetDataSort) => void;
 	/** Whether the table is loading */
 	loading?: boolean;
 	/** The total number of items found in the search */
@@ -65,17 +61,10 @@ export const tableId = 'dashboard-table';
 
 export const DashboardTable = forwardRef<HTMLTableElement, DashboardTableProps>(
 	function DashboardTable(
-		{
-			caption,
-			data,
-			loading,
-			sort,
-			setSort,
-			itemsPerPage = 10,
-			totalItems,
-		}: DashboardTableProps,
+		{ caption, data, loading, totalItems }: DashboardTableProps,
 		ref
 	) {
+		const { sort, setSort, pagination } = useSortAndFilterContext();
 		const isTableSortable = !!sort || !!setSort;
 
 		if (!loading && data.length === 0) {
@@ -148,7 +137,7 @@ export const DashboardTable = forwardRef<HTMLTableElement, DashboardTableProps>(
 					<TableBody>
 						{loading ? (
 							<Fragment>
-								{Array.from(Array(itemsPerPage).keys()).map((i) => (
+								{Array.from(Array(pagination.perPage).keys()).map((i) => (
 									<tr key={i}>
 										<TableCell>
 											<SkeletonText />
