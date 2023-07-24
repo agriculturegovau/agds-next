@@ -303,7 +303,7 @@ function borderStyles({
 				? mapBorderWidth(borderBottomWidth || borderWidth)
 				: undefined,
 		borderColor: anyBorder
-			? mapResponsiveProp(borderColor, (t) => boxPalette[borderColorMap[t]])
+			? mapResponsiveProp(borderColor, (t) => borderColorMap[t])
 			: undefined,
 		borderStyle: anyBorder ? 'solid' : undefined,
 		borderRadius: rounded ? tokens.borderRadius : undefined,
