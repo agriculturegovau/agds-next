@@ -234,6 +234,7 @@ const borderColorMap = {
 	border: boxPalette.border,
 	muted: boxPalette.borderMuted,
 	accent: boxPalette.accent,
+	selected: boxPalette.foregroundSelected,
 } as const;
 
 type BorderColor = keyof typeof borderColorMap;
