@@ -41,7 +41,7 @@ exports[`ProgressIndicator With anchors renders correctly 1`] = `
           class="css-cxc1ii-boxStyles-ProgressIndicator"
         >
           <div
-            class="css-162wfi7-boxStyles"
+            class="css-5o6q7r-boxStyles"
           >
             <div
               class="css-1wcx0lf-boxStyles"
@@ -306,7 +306,7 @@ exports[`ProgressIndicator With buttons renders correctly 1`] = `
           class="css-cxc1ii-boxStyles-ProgressIndicator"
         >
           <div
-            class="css-162wfi7-boxStyles"
+            class="css-5o6q7r-boxStyles"
           >
             <div
               class="css-1wcx0lf-boxStyles"
