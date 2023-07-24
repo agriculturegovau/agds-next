@@ -51,13 +51,13 @@ export function AppLayoutSidebarDialog({
 
 	// Animation styles
 	const prefersReducedMotion = usePrefersReducedMotion();
-	const [dialogTransitions] = useTransition(isMobileMenuOpen, () => ({
+	const dialogTransitions = useTransition([isMobileMenuOpen], {
 		from: { translateX: '-100%', opacity: 0 },
 		enter: { translateX: '0%', opacity: 1 },
 		leave: { translateX: '-100%', opacity: 0 },
 		config: { duration: 150 },
 		immediate: prefersReducedMotion,
-	}));
+	});
 
 	// Since react portals can not be rendered on the server and this component is always closed by default
 	// This component doesn't need to be server side rendered

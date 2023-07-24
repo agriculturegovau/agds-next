@@ -53,13 +53,13 @@ export const FilterDrawer: FunctionComponent<FilterDrawerProps> = ({
 
 	// Animation styles
 	const prefersReducedMotion = usePrefersReducedMotion();
-	const [dialogTransitions] = useTransition(isOpen, () => ({
+	const dialogTransitions = useTransition([isOpen], {
 		from: { translateX: '100%', opacity: 0 },
 		enter: { translateX: '0%', opacity: 1 },
 		leave: { translateX: '100%', opacity: 0 },
 		config: { duration: 150 },
 		immediate: prefersReducedMotion,
-	}));
+	});
 
 	return createPortal(
 		<Fragment>
