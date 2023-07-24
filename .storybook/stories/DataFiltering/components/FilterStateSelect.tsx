@@ -1,5 +1,5 @@
 import { Select } from '@ag.ds-next/react/select';
-import { useSortAndFilterContext } from '../lib/SortAndFilterContext';
+import { useSortAndFilterContext } from '../lib/contexts';
 import { tableId } from './DashboardTable';
 
 export const FilterStateSelect = () => {

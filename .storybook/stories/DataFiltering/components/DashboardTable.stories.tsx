@@ -1,4 +1,4 @@
-import { SortAndFilterContext } from '../lib/SortAndFilterContext';
+import { SortAndFilterContext } from '../lib/contexts';
 import { useSortAndFilter } from '../lib/useSortAndFilter';
 import { generateTableCaption, useData } from '../lib/utils';
 import { DashboardTable } from './DashboardTable';

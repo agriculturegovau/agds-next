@@ -1,7 +1,7 @@
 import { TableFilteringSmall } from './TableFilteringSmall';
 import { useSortAndFilter } from './lib/useSortAndFilter';
 import { generateTableCaption, useData } from './lib/utils';
-import { SortAndFilterProvider } from './lib/SortAndFilterContext';
+import { DataProvider, SortAndFilterProvider } from './lib/contexts';
 
 export const TableFilteringSmallExample = () => {
 	const sortAndFilter = useSortAndFilter();
@@ -21,13 +21,16 @@ export const TableFilteringSmallExample = () => {
 
 	return (
 		<SortAndFilterProvider value={sortAndFilter}>
-			<TableFilteringSmall
-				totalPages={totalPages}
-				loading={loading}
-				data={data}
-				tableCaption={tableCaption}
-				totalItems={totalItems}
-			/>
+			<DataProvider
+				value={{
+					data: data,
+					loading: loading,
+					totalPages: totalPages,
+					totalItems: totalItems,
+				}}
+			>
+				<TableFilteringSmall tableCaption={tableCaption} />
+			</DataProvider>
 		</SortAndFilterProvider>
 	);
 };

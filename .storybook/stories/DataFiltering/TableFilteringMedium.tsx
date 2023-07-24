@@ -16,7 +16,6 @@ import { SortBySelect } from './components/SortBySelect';
 import { DashboardTable } from './components/DashboardTable';
 import { FilterSearchInput } from './components/FilterSearchInput';
 import { FilterStatusSelect } from './components/FilterStatusSelect';
-import { BusinessForAuditWithIndex } from './lib/generateBusinessData';
 import {
 	FilterBar,
 	FilterBarGroup,
@@ -25,19 +24,10 @@ import {
 import { DashboardPagination } from './components/DashboardPagination';
 
 type TableFilteringMediumProps = {
-	// data
-	totalPages: number;
-	totalItems: number;
-	loading: boolean;
-	data: BusinessForAuditWithIndex[];
 	tableCaption: string;
 };
 
 export const TableFilteringMedium = ({
-	totalPages,
-	totalItems,
-	loading,
-	data,
 	tableCaption,
 }: TableFilteringMediumProps) => {
 	const [isOpen, toggleIsOpen] = useToggleState(false, true);
@@ -109,14 +99,8 @@ export const TableFilteringMedium = ({
 					<ActiveFilters />
 				</FilterRegion>
 
-				<DashboardTable
-					data={data}
-					loading={loading}
-					caption={tableCaption}
-					totalItems={totalItems}
-				/>
-
-				<DashboardPagination data={data} totalPages={totalPages} />
+				<DashboardTable caption={tableCaption} />
+				<DashboardPagination />
 			</Stack>
 		</PageContent>
 	);

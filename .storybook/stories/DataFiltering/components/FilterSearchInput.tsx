@@ -1,5 +1,5 @@
 import { SearchInput } from '@ag.ds-next/react/search-input';
-import { useSortAndFilterContext } from '../lib/SortAndFilterContext';
+import { useSortAndFilterContext } from '../lib/contexts';
 import { tableId } from './DashboardTable';
 
 export const FilterSearchInput = () => {

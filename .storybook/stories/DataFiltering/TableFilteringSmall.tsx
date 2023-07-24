@@ -5,7 +5,6 @@ import { PlusIcon } from '@ag.ds-next/react/icon';
 import { Prose } from '@ag.ds-next/react/prose';
 import { FilterStatusSelect } from './components/FilterStatusSelect';
 import { DashboardTable } from './components/DashboardTable';
-import { BusinessForAuditWithIndex } from './lib/generateBusinessData';
 import { SortBySelect } from './components/SortBySelect';
 import { FilterAssigneeSelect } from './components/FilterAssigneeSelect';
 import {
@@ -16,20 +15,10 @@ import {
 import { DashboardPagination } from './components/DashboardPagination';
 
 export type SmallExampleProps = {
-	totalPages: number;
-	totalItems: number;
-	loading: boolean;
-	data: BusinessForAuditWithIndex[];
 	tableCaption: string;
 };
 
-export const TableFilteringSmall = ({
-	totalPages,
-	totalItems,
-	loading,
-	data,
-	tableCaption,
-}: SmallExampleProps) => {
+export const TableFilteringSmall = ({ tableCaption }: SmallExampleProps) => {
 	return (
 		<PageContent>
 			<Stack gap={2}>
@@ -56,14 +45,8 @@ export const TableFilteringSmall = ({
 					</FilterBar>
 				</FilterRegion>
 
-				<DashboardTable
-					data={data}
-					loading={loading}
-					caption={tableCaption}
-					totalItems={totalItems}
-				/>
-
-				<DashboardPagination data={data} totalPages={totalPages} />
+				<DashboardTable caption={tableCaption} />
+				<DashboardPagination />
 			</Stack>
 		</PageContent>
 	);

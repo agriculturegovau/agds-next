@@ -18,11 +18,11 @@ import { TextLink } from '@ag.ds-next/react/text-link';
 import { Text } from '@ag.ds-next/react/text';
 import { Avatar } from '@ag.ds-next/react/avatar';
 import { Flex } from '@ag.ds-next/react/flex';
+import { BusinessForAudit } from '../lib/generateBusinessData';
 import {
-	BusinessForAudit,
-	BusinessForAuditWithIndex,
-} from '../lib/generateBusinessData';
-import { useSortAndFilterContext } from '../lib/SortAndFilterContext';
+	useDashboardTableDataContext,
+	useSortAndFilterContext,
+} from '../lib/contexts';
 
 const DashboardTableRowAssignee = ({
 	assignee,
@@ -47,22 +47,14 @@ const DashboardTableRowAssignee = ({
 export type DashboardTableProps = {
 	/** The caption for the table */
 	caption: string;
-	/** The data to display in the table */
-	data: BusinessForAuditWithIndex[];
-	/** Whether the table is loading */
-	loading?: boolean;
-	/** The total number of items found in the search */
-	totalItems?: number;
 };
 
 export const tableId = 'dashboard-table';
 
 export const DashboardTable = forwardRef<HTMLTableElement, DashboardTableProps>(
-	function DashboardTable(
-		{ caption, data, loading, totalItems }: DashboardTableProps,
-		ref
-	) {
+	function DashboardTable({ caption }: DashboardTableProps, ref) {
 		const { sort, setSort, pagination } = useSortAndFilterContext();
+		const { data, loading, totalItems } = useDashboardTableDataContext();
 		const isTableSortable = !!sort || !!setSort;
 
 		if (!loading && data.length === 0) {

@@ -10,7 +10,6 @@ import { SortBySelect } from './components/SortBySelect';
 import { DashboardTable } from './components/DashboardTable';
 import { DashboardFilterDrawer } from './components/DashboardFilterDrawer';
 import { FilterSearchInput } from './components/FilterSearchInput';
-import { BusinessForAuditWithIndex } from './lib/generateBusinessData';
 import {
 	FilterBar,
 	FilterBarGroup,
@@ -19,20 +18,11 @@ import {
 import { DashboardPagination } from './components/DashboardPagination';
 
 type TableFilteringLargeProps = {
-	// data
-	totalPages: number;
-	totalItems: number;
-	loading: boolean;
-	data: BusinessForAuditWithIndex[];
 	tableCaption: string;
 	tableRef?: RefObject<HTMLTableElement>;
 };
 
 export const TableFilteringLarge = ({
-	totalPages,
-	totalItems,
-	loading,
-	data,
 	tableCaption,
 	tableRef,
 }: TableFilteringLargeProps) => {
@@ -77,15 +67,8 @@ export const TableFilteringLarge = ({
 						<ActiveFilters />
 					</FilterRegion>
 				</Stack>
-				<DashboardTable
-					ref={tableRef}
-					data={data}
-					loading={loading}
-					totalItems={totalItems}
-					caption={tableCaption}
-				/>
-
-				<DashboardPagination data={data} totalPages={totalPages} />
+				<DashboardTable ref={tableRef} caption={tableCaption} />
+				<DashboardPagination />
 			</Stack>
 		</PageContent>
 	);

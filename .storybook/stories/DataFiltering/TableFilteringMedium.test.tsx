@@ -4,7 +4,7 @@ import { cleanup, render, waitFor } from '../../../test-utils';
 import { TableFilteringMedium } from './TableFilteringMedium';
 import { useSortAndFilter } from './lib/useSortAndFilter';
 import { generateTableCaption, useData } from './lib/utils';
-import { SortAndFilterProvider } from './lib/SortAndFilterContext';
+import { DataProvider, SortAndFilterProvider } from './lib/contexts';
 
 afterEach(cleanup);
 
@@ -26,15 +26,16 @@ function TableFilteringMediumTest({ loading }: { loading: boolean }) {
 
 	return (
 		<SortAndFilterProvider value={sortAndFilter}>
-			<TableFilteringMedium
-				{...{
-					totalPages,
-					totalItems,
-					loading,
-					data,
-					tableCaption,
+			<DataProvider
+				value={{
+					data: data,
+					loading: loading,
+					totalPages: totalPages,
+					totalItems: totalItems,
 				}}
-			/>
+			>
+				<TableFilteringMedium tableCaption={tableCaption} />
+			</DataProvider>
 		</SortAndFilterProvider>
 	);
 }

@@ -3,7 +3,7 @@ import { useRef } from 'react';
 import { Flex } from '@ag.ds-next/react/flex';
 import { DateRangePicker } from '@ag.ds-next/react/date-range-picker';
 import { usePrefersReducedMotion } from '@ag.ds-next/react/core';
-import { useSortAndFilterContext } from '../lib/SortAndFilterContext';
+import { useSortAndFilterContext } from '../lib/contexts';
 import { FilterAssigneeSelect } from './FilterAssigneeSelect';
 import { FilterStateSelect } from './FilterStateSelect';
 

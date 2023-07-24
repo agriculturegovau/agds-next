@@ -10,7 +10,7 @@ import { GetDataFilters } from '../lib/getData';
 import {
 	SortAndFilterProvider,
 	useSortAndFilterContext,
-} from '../lib/SortAndFilterContext';
+} from '../lib/contexts';
 import { FilterStatusSelect } from './FilterStatusSelect';
 import { FilterAssigneeSelect } from './FilterAssigneeSelect';
 import { FilterStateSelect } from './FilterStateSelect';
