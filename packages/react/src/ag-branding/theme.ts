@@ -4,6 +4,7 @@ export const theme: Theme = {
 	lightForegroundAction: '#00558b',
 	lightAccent: '#F36C52',
 	lightSelected: '#00558b',
+	lightSelectedMuted: '#E5F6FF', // TODO: Generate appropriate color.
 	lightSystemError: '#D10000',
 	lightSystemErrorMuted: '#FFF0F0',
 	lightSystemSuccess: '#00754E',
@@ -18,6 +19,7 @@ export const theme: Theme = {
 	darkBackgroundShadeAlt: '#20365B',
 	darkForegroundAction: '#9EE8FF',
 	darkSelected: '#9EE8FF',
+	darkSelectedMuted: '#193A5B', // TODO: Generate appropriate color.
 	darkAccent: '#F36C52',
 	darkSystemError: '#FF4F4F',
 	darkSystemErrorMuted: '#422F47',

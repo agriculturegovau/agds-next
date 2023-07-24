@@ -11,6 +11,7 @@ export const goldTheme: Theme = {
 	lightBackgroundBodyAlt: '#ebebeb',
 	lightBackgroundShadeAlt: '#e0e0e0',
 	lightSelected: '#00698f',
+	lightSelectedMuted: '#f2fcfe', // TODO: Generate appropriate color.
 	lightBorder: '#808080',
 	lightBorderMuted: '#D3D3D3',
 	lightAccent: '#00698f',
@@ -32,6 +33,7 @@ export const goldTheme: Theme = {
 	darkBackgroundBodyAlt: '#0d414d',
 	darkBackgroundShadeAlt: '#0a323c',
 	darkSelected: '#61daff',
+	darkSelectedMuted: '#193A5B', // TODO: Generate appropriate color.
 	darkBorder: '#95b7bf',
 	darkBorderMuted: '#4D7680',
 	darkAccent: '#61daff',

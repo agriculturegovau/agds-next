@@ -119,7 +119,7 @@ export const reactDayPickerStyles = (range: boolean) =>
 				fontWeight: tokens.fontWeight.bold,
 			},
 		'.rdp-day_selected:not([disabled]).rdp-day_range_middle': {
-			backgroundColor: boxPalette.backgroundShade,
+			backgroundColor: boxPalette.selectedMuted,
 			color: boxPalette.foregroundText,
 			fontWeight: tokens.fontWeight.bold,
 			borderRadius: 0,
