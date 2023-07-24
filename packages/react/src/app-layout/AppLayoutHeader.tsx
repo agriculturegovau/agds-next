@@ -1,5 +1,5 @@
 import { Flex } from '../flex';
-import { boxPalette, tokens } from '../core';
+import { tokens } from '../core';
 import { AppLayoutHeaderBrand } from './AppLayoutHeaderBrand';
 import { AppLayoutHeaderAccount } from './AppLayoutHeaderAccount';
 import { AppLayoutHeaderNav } from './AppLayoutHeaderNav';
@@ -44,10 +44,10 @@ export function AppLayoutHeader({
 			id={id}
 			palette="dark"
 			flexDirection="column"
+			borderBottom
+			borderBottomWidth="xxl"
+			borderColor="accent"
 			css={{
-				borderBottomWidth: tokens.borderWidth.xxl,
-				borderBottomStyle: 'solid',
-				borderColor: boxPalette.accent,
 				[tokens.mediaQuery.min[APP_LAYOUT_DESKTOP_BREAKPOINT]]: {
 					gridColumnStart: 1,
 					gridColumnEnd: 3,

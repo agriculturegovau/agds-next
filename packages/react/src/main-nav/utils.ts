@@ -13,5 +13,4 @@ export const localPaletteVars = {
 export const localPalette = {
 	linkHoverBg: `var(${localPaletteVars.linkHoverBg})`,
 	linkActiveBg: `var(${localPaletteVars.linkActiveBg})`,
-	bottomBar: `var(${localPaletteVars.bottomBar})`,
 };

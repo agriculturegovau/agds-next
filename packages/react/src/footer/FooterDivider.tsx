@@ -1,4 +1,4 @@
-import { localPalette } from './localPalette';
+import { boxPalette } from '../core';
 
 export function FooterDivider() {
 	return (
@@ -12,7 +12,7 @@ export function FooterDivider() {
 				border: 'none',
 				borderTopWidth: 1,
 				borderTopStyle: 'solid',
-				borderColor: localPalette.border,
+				borderColor: boxPalette.accent,
 				width: '100%',
 			}}
 		/>

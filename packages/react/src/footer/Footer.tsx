@@ -1,8 +1,7 @@
 import type { PropsWithChildren } from 'react';
 import { Flex } from '../flex';
 import { Stack } from '../stack';
-import { tokens, boxPalette } from '../core';
-import { localPaletteVars } from './localPalette';
+import { tokens } from '../core';
 
 export type FooterProps = PropsWithChildren<{
 	background?: 'body' | 'bodyAlt';
@@ -18,10 +17,8 @@ export const Footer = ({ background = 'body', children }: FooterProps) => {
 			paddingY={3}
 			borderTop
 			borderTopWidth="xl"
+			borderColor="accent"
 			css={{
-				borderColor: boxPalette.accent,
-				[localPaletteVars.border]: boxPalette.accent,
-
 				li: { marginLeft: 0 },
 			}}
 		>
