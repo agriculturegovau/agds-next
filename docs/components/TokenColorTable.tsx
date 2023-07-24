@@ -131,8 +131,8 @@ export const colourTokens: {
 			desc: 'Used as an overlay for modals and other components that sit on top of the main background. The main content area beneath is considered disabled and not interactive.',
 		},
 		focus: {
-			light: theme.lightForegroundFocus,
-			dark: theme.darkForegroundFocus,
+			light: theme.lightFocus,
+			dark: theme.darkFocus,
 			desc: 'Used to highlight interactive components for those navigating via keyboard.',
 		},
 		accent: {

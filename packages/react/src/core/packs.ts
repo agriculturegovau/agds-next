@@ -31,7 +31,7 @@ const input = {
 const outline = {
 	outlineWidth: '3px',
 	outlineStyle: 'solid',
-	outlineColor: boxPalette.foregroundFocus,
+	outlineColor: boxPalette.focus,
 	outlineOffset: 0.5 * tokens.unit,
 };
 

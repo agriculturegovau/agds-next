@@ -2,7 +2,6 @@ export const themeVars = {
 	// Light
 	lightForegroundText: '--agds-light-foreground-text',
 	lightForegroundAction: '--agds-light-foreground-action',
-	lightForegroundFocus: '--agds-light-foreground-focus',
 	lightForegroundMuted: '--agds-light-foreground-muted',
 	lightBackgroundBody: '--agds-light-background-body',
 	lightBackgroundShade: '--agds-light-background-shade',
@@ -11,6 +10,7 @@ export const themeVars = {
 	lightBorder: '--agds-light-border',
 	lightBorderMuted: '--agds-light-border-muted',
 	lightAccent: '--agds-light-accent',
+	lightFocus: '--agds-light-focus',
 	lightOverlay: '--agds-light-overlay',
 	lightSystemSuccess: '--agds-light-system-success',
 	lightSystemSuccessMuted: '--agds-light-system-success-muted',
@@ -23,7 +23,6 @@ export const themeVars = {
 	// Dark
 	darkForegroundText: '--agds-dark-foreground-text',
 	darkForegroundAction: '--agds-dark-foreground-action',
-	darkForegroundFocus: '--agds-dark-foreground-focus',
 	darkForegroundMuted: '--agds-dark-foreground-muted',
 	darkBackgroundBody: '--agds-dark-background-body',
 	darkBackgroundShade: '--agds-dark-background-shade',
@@ -32,6 +31,7 @@ export const themeVars = {
 	darkBorder: '--agds-dark-border',
 	darkBorderMuted: '--agds-dark-border-muted',
 	darkAccent: '--agds-dark-accent',
+	darkFocus: '--agds-dark-focus',
 	darkOverlay: '--agds-dark-overlay',
 	darkSystemSuccess: '--agds-dark-system-success',
 	darkSystemSuccessMuted: '--agds-dark-system-success-muted',
