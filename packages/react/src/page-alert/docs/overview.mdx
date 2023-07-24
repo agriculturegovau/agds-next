@@ -116,3 +116,17 @@ You can also use the `PageAlertTitle` component in the title prop, to change the
 	<Text as="p">Your application has been successfully submitted.</Text>
 </PageAlert>
 ```
+
+## Dismissable
+
+Page alerts can be dismissed by a user if they have understood the message and no longer need to see it.
+
+Use the `onDismiss` prop to make the alert dismissable. Ensure Page alerts that are closed by the user are never seen again. You could do this through a feature flag in a database, or by setting a value in the browser.
+
+```jsx live
+<PageAlert tone="info" title="New update" onDismiss={console.log}>
+	<Text as="p">
+		A new feature has been added to the service. <a href="#">Learn more</a>.
+	</Text>
+</PageAlert>
+```
