@@ -1,5 +1,30 @@
 # @ag.ds-next/react
 
+## 1.9.0
+
+### Minor Changes
+
+- ea766db901: global-alert: Visual refresh. Added support for 'info' tone.
+
+### Patch Changes
+
+- e075dbd59f: box: Extended the `Box` component so borders can be applied with the `accent` colour. For example:
+
+  ```tsx
+  <Box borderBottom borderBottomWidth="xxl" borderColor="accent">
+  	Hello world
+  </Box>
+  ```
+
+- f86f2d8275: core: Extended utility function `useClickOutside` to accept multiple refs
+- d25b299afd: app-layout: Fixed usage of `useTransition` by `@react-spring/web` to ensure compatibility with latest version.
+
+  filter-drawer: Fixed usage of `useTransition` by `@react-spring/web` to ensure compatibility with latest version.
+
+- 4ce8d27e2b: date-picker: Clicking the calendar button trigger while the calendar popover is open will now close the calendar popover.
+
+  date-range-picker: Clicking the calendar button trigger while the calendar popover is open will now close the calendar popover.
+
 ## 1.8.0
 
 ### Minor Changes
