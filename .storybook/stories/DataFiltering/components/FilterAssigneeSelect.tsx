@@ -4,7 +4,7 @@ import { useSortAndFilterContext } from '../lib/contexts';
 import { tableId } from './DashboardTable';
 
 export const FilterAssigneeSelect = () => {
-	const { filters, setFilters } = useSortAndFilterContext();
+	const { filters, setFilter } = useSortAndFilterContext();
 
 	return (
 		<Select
@@ -19,8 +19,7 @@ export const FilterAssigneeSelect = () => {
 			value={filters.assignee || ''}
 			onChange={(e) => {
 				const value = e.target.value;
-				setFilters({
-					...filters,
+				setFilter({
 					assignee: value === '' ? undefined : value,
 				});
 			}}

@@ -16,7 +16,7 @@ export const FilterAccordion = ({
 	id: string;
 	isOpen: boolean;
 }) => {
-	const { filters, setFilters } = useSortAndFilterContext();
+	const { filters, setFilter } = useSortAndFilterContext();
 
 	// This code has been copied from the Accordion component.
 	const ref = useRef<HTMLDivElement>(null);
@@ -61,16 +61,14 @@ export const FilterAccordion = ({
 					fromLabel="Registered from"
 					toLabel="Registered to"
 					hideOptionalLabel
-					onChange={(requestDate) => setFilters({ ...filters, requestDate })}
+					onChange={(requestDate) => setFilter({ requestDate })}
 					onFromInputChange={(from) =>
-						setFilters({
-							...filters,
+						setFilter({
 							requestDate: { ...filters.requestDate, from },
 						})
 					}
 					onToInputChange={(to) =>
-						setFilters({
-							...filters,
+						setFilter({
 							requestDate: { ...filters.requestDate, to },
 						})
 					}

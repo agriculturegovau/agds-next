@@ -3,7 +3,7 @@ import { useSortAndFilterContext } from '../lib/contexts';
 import { tableId } from './DashboardTable';
 
 export const FilterStatusSelect = () => {
-	const { filters, setFilters } = useSortAndFilterContext();
+	const { filters, setFilter } = useSortAndFilterContext();
 
 	return (
 		<Select
@@ -26,8 +26,7 @@ export const FilterStatusSelect = () => {
 					| 'completed'
 					| 'cancelled';
 
-				setFilters({
-					...filters,
+				setFilter({
 					status: value === '' ? undefined : value,
 				});
 			}}

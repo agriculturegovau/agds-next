@@ -3,7 +3,7 @@ import { useSortAndFilterContext } from '../lib/contexts';
 import { tableId } from './DashboardTable';
 
 export const FilterStateSelect = () => {
-	const { filters, setFilters } = useSortAndFilterContext();
+	const { filters, setFilter } = useSortAndFilterContext();
 
 	return (
 		<Select
@@ -15,8 +15,7 @@ export const FilterStateSelect = () => {
 			aria-controls={tableId}
 			onChange={(e) => {
 				const value = e.target.value;
-				setFilters({
-					...filters,
+				setFilter({
 					state: value === '' ? undefined : value,
 				});
 			}}

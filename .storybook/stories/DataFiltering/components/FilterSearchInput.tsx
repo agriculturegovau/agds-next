@@ -3,7 +3,7 @@ import { useSortAndFilterContext } from '../lib/contexts';
 import { tableId } from './DashboardTable';
 
 export const FilterSearchInput = () => {
-	const { filters, setFilters } = useSortAndFilterContext();
+	const { filters, setFilter } = useSortAndFilterContext();
 
 	return (
 		<SearchInput
@@ -14,8 +14,7 @@ export const FilterSearchInput = () => {
 			value={filters.businessName}
 			onChange={(searchString) => {
 				// TODO debounce
-				setFilters({
-					...filters,
+				setFilter({
 					businessName: searchString,
 				});
 			}}

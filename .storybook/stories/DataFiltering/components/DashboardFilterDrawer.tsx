@@ -32,6 +32,10 @@ export const DashboardFilterDrawer = ({
 		closeDrawer();
 	};
 
+	const setLocalFilter = (filter: Partial<GetDataFilters>) => {
+		setFormState({ ...formState, ...filter });
+	};
+
 	const clearFilters = () => {
 		resetFilters();
 		setFormState({
@@ -54,6 +58,7 @@ export const DashboardFilterDrawer = ({
 				// Ensures the table doesn't change until the user clicks "Apply filters"
 				filters: formState,
 				setFilters: setFormState,
+				setFilter: setLocalFilter,
 				// The rest of these won't be called in the filter drawer
 				sort: { field: 'requestDate', order: 'ASC' },
 				setSort: () => {
