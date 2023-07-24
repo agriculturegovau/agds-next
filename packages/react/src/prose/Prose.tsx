@@ -63,7 +63,7 @@ export const proseClass = css({
 	 * `mark` styling.
 	 */
 	[`mark${notSelector}`]: {
-		color: boxPalette.backgroundBody,
+		color: boxPalette.foregroundInverse,
 		backgroundColor: boxPalette.foregroundAction,
 	},
 
@@ -71,7 +71,7 @@ export const proseClass = css({
 	 * Text selection styling
 	 */
 	'& ::selection': {
-		color: boxPalette.backgroundBody,
+		color: boxPalette.foregroundInverse,
 		backgroundColor: boxPalette.foregroundAction,
 	},
 

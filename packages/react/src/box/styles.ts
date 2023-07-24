@@ -123,7 +123,7 @@ function typographyStyles({
 		fontSize,
 		lineHeight,
 		'& ::selection': {
-			color: boxPalette.backgroundBody,
+			color: boxPalette.foregroundInverse,
 			backgroundColor: boxPalette.foregroundAction,
 		},
 	};

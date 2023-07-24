@@ -57,7 +57,7 @@ export const PageAlert = forwardRef<HTMLDivElement, PageAlertProps>(
 						borderTopLeftRadius: tokens.borderRadius,
 						borderBottomLeftRadius: tokens.borderRadius,
 						backgroundColor: fg,
-						color: boxPalette.backgroundBody,
+						color: boxPalette.foregroundInverse,
 					}}
 				>
 					{icon}

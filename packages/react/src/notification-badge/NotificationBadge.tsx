@@ -33,7 +33,7 @@ export const NotificationBadge = ({
 			lineHeight="nospace"
 			aria-hidden={ariaHidden}
 			css={{
-				color: boxPalette.backgroundBody,
+				color: boxPalette.foregroundInverse,
 				backgroundColor,
 				minWidth: mapSpacing(1.5),
 				borderRadius: mapSpacing(0.75),

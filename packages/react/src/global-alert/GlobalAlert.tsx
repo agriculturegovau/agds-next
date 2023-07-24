@@ -34,7 +34,7 @@ export function GlobalAlert({
 				justifyContent="center"
 				padding={0.75}
 				flexShrink={0}
-				css={{ backgroundColor: fg, color: boxPalette.backgroundBody }}
+				css={{ backgroundColor: fg, color: boxPalette.foregroundInverse }}
 			>
 				<Icon aria-hidden="false" aria-label="Warning" color="inherit" />
 			</Flex>

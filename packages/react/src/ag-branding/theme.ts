@@ -2,6 +2,7 @@ import { Theme } from '../core';
 
 export const theme: Theme = {
 	lightForegroundAction: '#00558b',
+	lightForegroundInverse: '#FFFFFF',
 	lightAccent: '#F36C52',
 	lightSystemError: '#D10000',
 	lightSystemErrorMuted: '#FFF0F0',
@@ -11,6 +12,7 @@ export const theme: Theme = {
 	lightSystemWarningMuted: '#FFF2E5',
 	lightSystemInfo: '#008BD1',
 	lightSystemInfoMuted: '#E5F6FF',
+	darkForegroundInverse: '#0A1629',
 	darkBackgroundBody: '#0A1629',
 	darkBackgroundShade: '#122440',
 	darkBackgroundBodyAlt: '#162846',

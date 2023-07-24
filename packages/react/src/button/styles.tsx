@@ -4,13 +4,13 @@ const variants = {
 	primary: {
 		background: boxPalette.foregroundAction,
 		borderColor: boxPalette.foregroundAction,
-		color: boxPalette.backgroundBody,
+		color: boxPalette.foregroundInverse,
 		textDecoration: 'none',
 
 		'&:not(:disabled):hover': {
 			background: boxPalette.foregroundText,
 			borderColor: boxPalette.foregroundText,
-			color: boxPalette.backgroundBody,
+			color: boxPalette.foregroundInverse,
 			...packs.underline,
 		},
 	},
