@@ -1,8 +1,7 @@
 import { useRef } from 'react';
 import { packs, useId } from '../core';
 import { Box } from '../box';
-import { SideBar } from '../side-bar';
-import { SideBarTitle } from '../side-bar/SideBarTitle';
+import { SideBar, SideBarTitle } from '../side-bar';
 import {
 	ProgressIndicatorItem,
 	ProgressIndicatorItemButton,

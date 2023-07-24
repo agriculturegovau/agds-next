@@ -7,27 +7,28 @@ import { Text } from '../text';
 
 export type SideBarTitleProps = PropsWithChildren<{
 	id?: string;
-	title: string | { label: string; href?: string; isCurrentPage?: boolean };
+	title: string;
+	/** If the title is a link, this is the href. */
+	href?: string;
+	/** Whether the title href is the current page */
+	isCurrentPage?: boolean;
 	subtitle?: string;
 	action?: ReactNode;
 }>;
 
 export function SideBarTitle({
-	title,
 	id,
+	title,
+	href,
+	isCurrentPage,
 	action,
 	subtitle,
 }: SideBarTitleProps) {
 	const Link = useLinkComponent();
-	const titlelabel = typeof title === 'object' ? title.label : title;
-	const titleHref = typeof title === 'object' ? title.href : undefined;
-	const isCurrentPage =
-		typeof title === 'object' && title.href && title.isCurrentPage;
-
 	return (
 		<Flex
 			borderBottom
-			paddingY={1}
+			paddingBottom={1}
 			justifyContent="space-between"
 			alignItems="center"
 			display={{ xs: 'none', md: 'flex' }}
@@ -42,27 +43,29 @@ export function SideBarTitle({
 					fontWeight="bold"
 					lineHeight="heading"
 				>
-					{titleHref ? (
+					{href ? (
 						<Box
 							as={Link}
 							color="text"
 							focus
-							href={titleHref}
+							href={href}
 							aria-current={isCurrentPage ? 'page' : undefined}
 							css={{
 								textDecoration: 'none',
 								'&:hover': packs.underline,
 							}}
 						>
-							{titlelabel}
+							{title}
 						</Box>
 					) : (
-						titlelabel
+						title
 					)}
 				</Box>
-				<Text color="muted" fontSize="xs">
-					{subtitle}
-				</Text>
+				{subtitle && (
+					<Text color="muted" fontSize="xs">
+						{subtitle}
+					</Text>
+				)}
 			</Stack>
 			{action}
 		</Flex>

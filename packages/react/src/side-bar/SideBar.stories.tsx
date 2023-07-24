@@ -53,6 +53,18 @@ type Story = StoryObj<typeof SideBar>;
 
 export const Basic: Story = {};
 
+export const withSubTitle: Story = {
+	name: 'With subtitle',
+	args: {
+		children: (
+			<>
+				<SideBarTitle title="SideBarTitle" subtitle="Subtitle" />
+				<Box paddingY={1}>SideBar Content area</Box>
+			</>
+		),
+	},
+};
+
 export const WithAction: Story = {
 	args: {
 		children: (
@@ -72,7 +84,7 @@ export const withTitleLink: Story = {
 	args: {
 		children: (
 			<>
-				<SideBarTitle title={{ label: 'SideBarTitle', href: '#link' }} />
+				<SideBarTitle title="SideBarTitle" href="#link" />
 				<Box paddingY={1}>SideBar Content area</Box>
 			</>
 		),
@@ -84,9 +96,7 @@ export const withTitleLinkCurrentPage: Story = {
 	args: {
 		children: (
 			<>
-				<SideBarTitle
-					title={{ label: 'SideBarTitle', href: '#link', isCurrentPage: true }}
-				/>
+				<SideBarTitle title="SideBarTitle" href="#link" isCurrentPage={true} />
 				<Box paddingY={1}>SideBar Content area</Box>
 			</>
 		),
@@ -116,12 +126,7 @@ export const SideNav: Story = {
 		collapseButtonLabel: 'In this section',
 		children: (
 			<>
-				<SideBarTitle
-					title={{
-						label: 'Components',
-						href: '#components',
-					}}
-				/>
+				<SideBarTitle title="Components" href="#components" />
 				<Box paddingY={1}>SideBar Content area</Box>
 			</>
 		),
