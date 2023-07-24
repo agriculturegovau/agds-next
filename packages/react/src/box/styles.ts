@@ -73,14 +73,6 @@ export const backgroundColorMap = {
 };
 type BackgroundColor = keyof typeof backgroundColorMap;
 
-const borderColorMap = {
-	border: boxPalette.border,
-	muted: boxPalette.borderMuted,
-	accent: boxPalette.accent,
-} as const;
-
-type BorderColor = keyof typeof borderColorMap;
-
 type ColorProps = Partial<{
 	color: ResponsiveProp<ForegroundColor>;
 	background: ResponsiveProp<BackgroundColor>;
@@ -238,6 +230,14 @@ function layoutStyles({
 		maxHeight: mapResponsiveProp(maxHeight),
 	};
 }
+
+const borderColorMap = {
+	border: boxPalette.border,
+	muted: boxPalette.borderMuted,
+	accent: boxPalette.accent,
+} as const;
+
+type BorderColor = keyof typeof borderColorMap;
 
 type BorderProps = Partial<{
 	border: ResponsiveProp<boolean>;
