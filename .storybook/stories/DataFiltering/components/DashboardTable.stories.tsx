@@ -1,6 +1,6 @@
-import { SortAndFilterContext } from '../lib/contexts';
+import { DataProvider, SortAndFilterContext } from '../lib/contexts';
 import { useSortAndFilter } from '../lib/useSortAndFilter';
-import { generateTableCaption, useData } from '../lib/utils';
+import { useData } from '../lib/utils';
 import { DashboardTable } from './DashboardTable';
 
 export default {
@@ -19,23 +19,18 @@ export const Application = () => {
 		sort,
 	});
 
-	const tableCaption = generateTableCaption({
-		loading,
-		totalItems: 10,
-		pagination,
-	});
-
 	return (
 		<SortAndFilterContext.Provider value={sortAndFilter}>
-			<DashboardTable
-				{...{
-					totalPages,
-					totalItems,
-					loading,
-					data,
-					caption: tableCaption,
+			<DataProvider
+				value={{
+					data: data,
+					loading: loading,
+					totalPages: totalPages,
+					totalItems: totalItems,
 				}}
-			/>
+			>
+				<DashboardTable />
+			</DataProvider>
 		</SortAndFilterContext.Provider>
 	);
 };

@@ -23,13 +23,7 @@ import {
 } from './components/FilterBar';
 import { DashboardPagination } from './components/DashboardPagination';
 
-type TableFilteringMediumProps = {
-	tableCaption: string;
-};
-
-export const TableFilteringMedium = ({
-	tableCaption,
-}: TableFilteringMediumProps) => {
+export const TableFilteringMedium = () => {
 	const [isOpen, toggleIsOpen] = useToggleState(false, true);
 
 	// IDs for accordion to ensure accessibility
@@ -99,7 +93,7 @@ export const TableFilteringMedium = ({
 					<ActiveFilters />
 				</FilterRegion>
 
-				<DashboardTable caption={tableCaption} />
+				<DashboardTable />
 				<DashboardPagination />
 			</Stack>
 		</PageContent>

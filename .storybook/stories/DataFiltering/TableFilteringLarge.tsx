@@ -18,14 +18,10 @@ import {
 import { DashboardPagination } from './components/DashboardPagination';
 
 type TableFilteringLargeProps = {
-	tableCaption: string;
 	tableRef?: RefObject<HTMLTableElement>;
 };
 
-export const TableFilteringLarge = ({
-	tableCaption,
-	tableRef,
-}: TableFilteringLargeProps) => {
+export const TableFilteringLarge = ({ tableRef }: TableFilteringLargeProps) => {
 	const [isDrawerOpen, openDrawer, closeDrawer] = useTernaryState(false);
 	return (
 		<PageContent>
@@ -67,7 +63,7 @@ export const TableFilteringLarge = ({
 						<ActiveFilters />
 					</FilterRegion>
 				</Stack>
-				<DashboardTable ref={tableRef} caption={tableCaption} />
+				<DashboardTable ref={tableRef} />
 				<DashboardPagination />
 			</Stack>
 		</PageContent>

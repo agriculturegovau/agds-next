@@ -3,7 +3,7 @@ import 'html-validate/jest';
 import { cleanup, render, waitFor } from '../../../test-utils';
 import { TableFilteringSmall } from './TableFilteringSmall';
 import { useSortAndFilter } from './lib/useSortAndFilter';
-import { generateTableCaption, useData } from './lib/utils';
+import { useData } from './lib/utils';
 import { DataProvider, SortAndFilterProvider } from './lib/contexts';
 
 afterEach(cleanup);
@@ -18,12 +18,6 @@ function TableFilteringSmallTest({ loading }: { loading: boolean }) {
 		sort,
 	});
 
-	const tableCaption = generateTableCaption({
-		loading,
-		totalItems,
-		pagination,
-	});
-
 	return (
 		<SortAndFilterProvider value={sortAndFilter}>
 			<DataProvider
@@ -34,7 +28,7 @@ function TableFilteringSmallTest({ loading }: { loading: boolean }) {
 					totalItems: totalItems,
 				}}
 			>
-				<TableFilteringSmall tableCaption={tableCaption} />
+				<TableFilteringSmall />
 			</DataProvider>
 		</SortAndFilterProvider>
 	);

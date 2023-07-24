@@ -23,6 +23,7 @@ import {
 	useDashboardTableDataContext,
 	useSortAndFilterContext,
 } from '../lib/contexts';
+import { generateTableCaption } from '../lib/utils';
 
 const DashboardTableRowAssignee = ({
 	assignee,
@@ -44,18 +45,19 @@ const DashboardTableRowAssignee = ({
 	);
 };
 
-export type DashboardTableProps = {
-	/** The caption for the table */
-	caption: string;
-};
-
 export const tableId = 'dashboard-table';
 
-export const DashboardTable = forwardRef<HTMLTableElement, DashboardTableProps>(
-	function DashboardTable({ caption }: DashboardTableProps, ref) {
+export const DashboardTable = forwardRef<HTMLTableElement>(
+	function DashboardTable(_, ref) {
 		const { sort, setSort, pagination } = useSortAndFilterContext();
 		const { data, loading, totalItems } = useDashboardTableDataContext();
 		const isTableSortable = !!sort || !!setSort;
+
+		const caption = generateTableCaption({
+			loading,
+			totalItems,
+			pagination,
+		});
 
 		if (!loading && data.length === 0) {
 			return <Text>No results</Text>;

@@ -1,6 +1,6 @@
 import { TableFilteringLarge } from './TableFilteringLarge';
 import { useSortAndFilter } from './lib/useSortAndFilter';
-import { generateTableCaption, useData } from './lib/utils';
+import { useData } from './lib/utils';
 import { DataProvider, SortAndFilterProvider } from './lib/contexts';
 
 export const TableFilteringLargeExample = () => {
@@ -13,12 +13,6 @@ export const TableFilteringLargeExample = () => {
 		sort,
 	});
 
-	const tableCaption = generateTableCaption({
-		loading,
-		totalItems,
-		pagination,
-	});
-
 	return (
 		<SortAndFilterProvider value={sortAndFilter}>
 			<DataProvider
@@ -29,7 +23,7 @@ export const TableFilteringLargeExample = () => {
 					totalItems: totalItems,
 				}}
 			>
-				<TableFilteringLarge tableCaption={tableCaption} />
+				<TableFilteringLarge />
 			</DataProvider>
 		</SortAndFilterProvider>
 	);

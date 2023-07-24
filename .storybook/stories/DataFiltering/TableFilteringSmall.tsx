@@ -14,11 +14,7 @@ import {
 } from './components/FilterBar';
 import { DashboardPagination } from './components/DashboardPagination';
 
-export type SmallExampleProps = {
-	tableCaption: string;
-};
-
-export const TableFilteringSmall = ({ tableCaption }: SmallExampleProps) => {
+export const TableFilteringSmall = () => {
 	return (
 		<PageContent>
 			<Stack gap={2}>
@@ -45,7 +41,7 @@ export const TableFilteringSmall = ({ tableCaption }: SmallExampleProps) => {
 					</FilterBar>
 				</FilterRegion>
 
-				<DashboardTable caption={tableCaption} />
+				<DashboardTable />
 				<DashboardPagination />
 			</Stack>
 		</PageContent>
