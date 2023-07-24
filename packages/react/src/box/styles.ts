@@ -238,6 +238,7 @@ function layoutStyles({
 		maxHeight: mapResponsiveProp(maxHeight),
 	};
 }
+
 type BorderProps = Partial<{
 	border: ResponsiveProp<boolean>;
 	borderWidth: ResponsiveProp<BorderWidth>;
@@ -302,7 +303,7 @@ function borderStyles({
 				? mapBorderWidth(borderBottomWidth || borderWidth)
 				: undefined,
 		borderColor: anyBorder
-			? mapResponsiveProp(borderColor, (t) => borderColorMap[t])
+			? mapResponsiveProp(borderColor, (t) => boxPalette[borderColorMap[t]])
 			: undefined,
 		borderStyle: anyBorder ? 'solid' : undefined,
 		borderRadius: rounded ? tokens.borderRadius : undefined,
