@@ -53,8 +53,6 @@ export type DashboardTableProps = {
 	loading?: boolean;
 	/** The total number of items found in the search */
 	totalItems?: number;
-	/** The number of items to display per page */
-	itemsPerPage?: number;
 };
 
 export const tableId = 'dashboard-table';

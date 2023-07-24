@@ -13,7 +13,6 @@ import {
 	FilterBarGroup,
 	FilterRegion,
 } from './components/FilterBar';
-import { useSortAndFilterContext } from './lib/SortAndFilterContext';
 import { DashboardPagination } from './components/DashboardPagination';
 
 export type SmallExampleProps = {
@@ -31,9 +30,6 @@ export const TableFilteringSmall = ({
 	data,
 	tableCaption,
 }: SmallExampleProps) => {
-	// TODO: Delete
-	const { pagination, setPagination } = useSortAndFilterContext();
-
 	return (
 		<PageContent>
 			<Stack gap={2}>
@@ -64,7 +60,6 @@ export const TableFilteringSmall = ({
 					data={data}
 					loading={loading}
 					caption={tableCaption}
-					itemsPerPage={pagination.perPage}
 					totalItems={totalItems}
 				/>
 

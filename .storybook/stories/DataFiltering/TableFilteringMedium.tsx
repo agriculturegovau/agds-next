@@ -22,7 +22,6 @@ import {
 	FilterBarGroup,
 	FilterRegion,
 } from './components/FilterBar';
-import { useSortAndFilterContext } from './lib/SortAndFilterContext';
 import { DashboardPagination } from './components/DashboardPagination';
 
 type TableFilteringMediumProps = {
@@ -42,9 +41,6 @@ export const TableFilteringMedium = ({
 	tableCaption,
 }: TableFilteringMediumProps) => {
 	const [isOpen, toggleIsOpen] = useToggleState(false, true);
-
-	// TODO: Delete
-	const { pagination, setPagination } = useSortAndFilterContext();
 
 	// IDs for accordion to ensure accessibility
 	const buttonId = 'filter-button';
@@ -116,7 +112,6 @@ export const TableFilteringMedium = ({
 				<DashboardTable
 					data={data}
 					loading={loading}
-					itemsPerPage={pagination.perPage}
 					caption={tableCaption}
 					totalItems={totalItems}
 				/>
