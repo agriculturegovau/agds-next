@@ -1,0 +1,52 @@
+---
+date: 24th July 2023
+title: AgDS Beta v1.9.0 release
+description: Visual refresh of the Global alert component, updated App layout for easier integration, plus various bug fixes and improvements.
+---
+
+## Updates
+
+### [App layout](/components/app-layout)
+
+Fixed usage of `useTransition` by `@react-spring/web` to ensure compatibility with latest version ([#PR 1281](https://github.com/steelthreads/agds-next/pull/1281))
+
+### [Box](/components/box)
+
+Extended the `Box` component so borders can be applied with the `accent` colour ([#PR 1185](https://github.com/steelthreads/agds-next/pull/1185))
+
+```tsx
+<Box borderBottom borderBottomWidth="xxl" borderColor="accent">
+	Hello world
+</Box>
+```
+
+### [Core](/components/core)
+
+Extended utility function `useClickOutside` to accept multiple refs ([#PR 1266](https://github.com/steelthreads/agds-next/pull/1266))
+
+### [Date picker](/components/date-picker)
+
+Clicking the calendar button trigger while the calendar popover is open will now close the calendar popover ([#PR 1270](https://github.com/steelthreads/agds-next/pull/1270))
+
+### [Date range picker](/components/date-range-picker)
+
+Clicking the calendar button trigger while the calendar popover is open will now close the calendar popover ([#PR 1270](https://github.com/steelthreads/agds-next/pull/1270))
+
+### [Filter drawer](/components/filter-drawer)
+
+Fixed usage of `useTransition` by `@react-spring/web` to ensure compatibility with latest version. ([#PR 1281](https://github.com/steelthreads/agds-next/pull/1281))
+
+### [Global alert](/components/global-alert)
+
+- Visual refresh ([#PR 1256](https://github.com/steelthreads/agds-next/pull/1256))
+- Added support for 'info' tone ([#PR 1256](https://github.com/steelthreads/agds-next/pull/1256))
+
+## Released packages
+
+```sh
+"@ag.ds-next/react": "1.9.0"
+```
+
+## Full Changelog
+
+Aside from the complete release notes on the @ag.ds-next website, you can also view the verbose change log in the [related PR](https://github.com/steelthreads/agds-next/pull/1269) for this release.
