@@ -1,4 +1,4 @@
-import { ReactNode, useState } from 'react';
+import { ReactNode, Ref, useState } from 'react';
 import { useCombobox } from 'downshift';
 import { FieldMaxWidth } from '../core';
 import { ComboboxBase } from './ComboboxBase';
@@ -8,7 +8,9 @@ import {
 	useComboboxInputId,
 } from './utils';
 
-export type ComboboxProps<Option extends DefaultComboboxOption> = {
+export type ComboboxProps<
+	Option extends DefaultComboboxOption = DefaultComboboxOption,
+> = {
 	/** Describes the purpose of the field. */
 	label: string;
 	/** If true, "(optional)" will never be appended to the label. */
@@ -41,6 +43,8 @@ export type ComboboxProps<Option extends DefaultComboboxOption> = {
 	renderItem?: (item: Option, inputValue: string) => ReactNode;
 	/** Message to display when no options match the users search term. */
 	emptyResultsMessage?: string;
+	/** Ref to the input element. */
+	inputRef?: Ref<HTMLInputElement>;
 };
 
 export function Combobox<Option extends DefaultComboboxOption>({
@@ -48,6 +52,7 @@ export function Combobox<Option extends DefaultComboboxOption>({
 	value,
 	onChange,
 	options,
+	inputRef: inputRefProp,
 	...props
 }: ComboboxProps<Option>) {
 	const inputId = useComboboxInputId(id);
@@ -90,6 +95,7 @@ export function Combobox<Option extends DefaultComboboxOption>({
 			combobox={combobox}
 			inputItems={inputItems}
 			inputId={inputId}
+			inputRef={inputRefProp}
 			{...props}
 		/>
 	);

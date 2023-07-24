@@ -1,4 +1,4 @@
-export type Option = (typeof COUNTRY_OPTIONS)[number];
+export type Option = { label: string; value: string };
 
 export const COUNTRY_OPTIONS = [
 	'Afghanistan',
@@ -197,3 +197,14 @@ export const COUNTRY_OPTIONS = [
 	'Zambia',
 	'Zimbabwe',
 ].map((country) => ({ label: country, value: country }));
+
+export const STATE_OPTIONS = [
+	{ label: 'Australian Capital Territory', value: 'act' },
+	{ label: 'New South Wales', value: 'nsw' },
+	{ label: 'Northern Territory', value: 'nt' },
+	{ label: 'Queensland', value: 'qld' },
+	{ label: 'South Australia', value: 'sa' },
+	{ label: 'Tasmania', value: 'tas' },
+	{ label: 'Victoria', value: 'vic' },
+	{ label: 'Western Australia', value: 'wa' },
+];

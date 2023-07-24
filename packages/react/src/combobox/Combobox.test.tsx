@@ -1,26 +1,21 @@
+import { useRef } from 'react';
 import '@testing-library/jest-dom';
 import 'html-validate/jest';
+import { renderHook } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { render, cleanup, act } from '../../../../test-utils';
-import { Combobox } from './Combobox';
+import { Combobox, ComboboxProps } from './Combobox';
+import { STATE_OPTIONS, Option } from './test-utils';
 
 afterEach(cleanup);
 
-function renderCombobox() {
+function renderCombobox(props?: Partial<ComboboxProps<Option>>) {
 	return render(
 		<Combobox
 			label="Find your state"
 			hint="Start typing to see results"
-			options={[
-				{ label: 'Australian Capital Territory', value: 'act' },
-				{ label: 'New South Wales', value: 'nsw' },
-				{ label: 'Northern Territory', value: 'nt' },
-				{ label: 'Queensland', value: 'qld' },
-				{ label: 'South Australia', value: 'sa' },
-				{ label: 'Tasmania', value: 'tas' },
-				{ label: 'Victoria', value: 'vic' },
-				{ label: 'Western Australia', value: 'wa' },
-			]}
+			options={STATE_OPTIONS}
+			{...props}
 		/>
 	);
 }
@@ -64,5 +59,15 @@ describe('Combobox', () => {
 		expect(options[0].textContent).toBe('Australian Capital Territory');
 		await userEvent.click(options[0]);
 		expect(input.value).toBe('Australian Capital Territory');
+	});
+
+	it('accepts `inputRef` prop', () => {
+		const { result } = renderHook(() => useRef<HTMLInputElement>(null));
+		const inputRef = result.current;
+		const id = 'test-id';
+		renderCombobox({ inputRef, id });
+		expect(inputRef.current).toBeInTheDocument();
+		expect(inputRef.current).toBeInstanceOf(HTMLInputElement);
+		expect(inputRef.current?.id).toBe(id);
 	});
 });

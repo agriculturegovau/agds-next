@@ -1,28 +1,28 @@
 import '@testing-library/jest-dom';
 import 'html-validate/jest';
+import { useRef } from 'react';
 import userEvent from '@testing-library/user-event';
-import { render, cleanup, act, waitFor } from '../../../../test-utils';
-import { Autocomplete } from './Autocomplete';
+import {
+	render,
+	cleanup,
+	act,
+	waitFor,
+	renderHook,
+} from '../../../../test-utils';
+import { STATE_OPTIONS, Option } from '../combobox/test-utils';
+import { Autocomplete, AutocompleteProps } from './Autocomplete';
 
 afterEach(cleanup);
 
-const mockLoadOptions = jest.fn().mockResolvedValue([
-	{ label: 'Australian Capital Territory', value: 'act' },
-	{ label: 'New South Wales', value: 'nsw' },
-	{ label: 'Northern Territory', value: 'nt' },
-	{ label: 'Queensland', value: 'qld' },
-	{ label: 'South Australia', value: 'sa' },
-	{ label: 'Tasmania', value: 'tas' },
-	{ label: 'Victoria', value: 'vic' },
-	{ label: 'Western Australia', value: 'wa' },
-]);
+const mockLoadOptions = jest.fn().mockResolvedValue(STATE_OPTIONS);
 
-function renderAutocomplete() {
+function renderAutocomplete(props?: Partial<AutocompleteProps<Option>>) {
 	return render(
 		<Autocomplete
 			label="Find your state"
 			hint="Start typing to see results"
 			loadOptions={mockLoadOptions}
+			{...props}
 		/>
 	);
 }
@@ -80,5 +80,15 @@ describe('Autocomplete', () => {
 
 		// Expect the input to be updated
 		expect(input.value).toBe('');
+	});
+
+	it('accepts `inputRef` prop', () => {
+		const { result } = renderHook(() => useRef<HTMLInputElement>(null));
+		const inputRef = result.current;
+		const id = 'test-id';
+		renderAutocomplete({ inputRef, id });
+		expect(inputRef.current).toBeInTheDocument();
+		expect(inputRef.current).toBeInstanceOf(HTMLInputElement);
+		expect(inputRef.current?.id).toBe(id);
 	});
 });

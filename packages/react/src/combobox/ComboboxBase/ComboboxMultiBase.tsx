@@ -1,10 +1,11 @@
 import {
 	Fragment,
 	ReactNode,
-	RefObject,
+	Ref,
 	useCallback,
 	MouseEvent,
 	useRef,
+	RefObject,
 } from 'react';
 import {
 	UseComboboxReturnValue,
@@ -16,6 +17,7 @@ import {
 	FieldMaxWidth,
 	fontGrid,
 	mapSpacing,
+	mergeRefs,
 	packs,
 	tokens,
 	useTernaryState,
@@ -57,12 +59,14 @@ type ComboboxMultiBaseProps<Option extends DefaultComboboxOption> = {
 	multiSelection: UseMultipleSelectionReturnValue<Option>;
 	selectedItems: Option[];
 	onClear: () => void;
-	inputRef: RefObject<HTMLInputElement>;
 	loading?: boolean;
 	inputItems?: Option[];
 	networkError?: boolean;
 	emptyResultsMessage?: string;
 	renderItem?: (item: Option, inputValue: string) => ReactNode;
+	// input ref
+	inputRef: RefObject<HTMLInputElement>;
+	inputRefProp?: Ref<HTMLInputElement>;
 };
 
 export function ComboboxMultiBase<Option extends DefaultComboboxOption>({
@@ -87,6 +91,7 @@ export function ComboboxMultiBase<Option extends DefaultComboboxOption>({
 	multiSelection,
 	onClear,
 	inputRef,
+	inputRefProp,
 }: ComboboxMultiBaseProps<Option>) {
 	const [isInputFocused, setInputFocused, setInputBlurred] =
 		useTernaryState(false);
@@ -125,6 +130,10 @@ export function ComboboxMultiBase<Option extends DefaultComboboxOption>({
 		},
 		[inputRef]
 	);
+
+	const inputRefs = inputRefProp
+		? mergeRefs([inputRef, inputRefProp])
+		: inputRef;
 
 	return (
 		<Field
@@ -168,7 +177,7 @@ export function ComboboxMultiBase<Option extends DefaultComboboxOption>({
 								{...a11yProps}
 								{...combobox.getInputProps(
 									multiSelection.getDropdownProps({
-										ref: inputRef,
+										ref: inputRefs,
 										type: 'text',
 										preventKeyAction: combobox.isOpen,
 										onFocus: setInputFocused,
