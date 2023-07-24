@@ -112,7 +112,6 @@ export function PkgLayout({
 						) : null}
 					</Fragment>
 				)}
-
 				{children}
 			</PageLayout>
 		</SiteLayout>
