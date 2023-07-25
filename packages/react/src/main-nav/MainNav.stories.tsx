@@ -1,4 +1,6 @@
 import { Meta, StoryObj } from '@storybook/react';
+import { Fragment } from 'react';
+import { VisuallyHidden } from '../a11y';
 import { AvatarIcon } from '../icon';
 import { NotificationBadge } from '../notification-badge';
 import { MainNav } from './MainNav';
@@ -43,7 +45,12 @@ export const SecondaryLinks: Story = {
 			{
 				href: '#messages',
 				label: 'Messages',
-				endElement: <NotificationBadge tone="action" value={5} />,
+				endElement: (
+					<Fragment>
+						<NotificationBadge tone="action" value={5} aria-hidden />
+						<VisuallyHidden>, 5 unread</VisuallyHidden>
+					</Fragment>
+				),
 			},
 			{
 				href: '#sign-in',
@@ -88,7 +95,12 @@ export const EndElement: Story = {
 			{
 				href: '#issues',
 				label: 'Issues',
-				endElement: <NotificationBadge tone="action" value={5} />,
+				endElement: (
+					<Fragment>
+						<NotificationBadge tone="action" value={5} aria-hidden />
+						<VisuallyHidden>, 5 notifications</VisuallyHidden>
+					</Fragment>
+				),
 			},
 			{ href: '#pull-requests', label: 'Pull requests' },
 			{ href: '#security', label: 'Security' },
