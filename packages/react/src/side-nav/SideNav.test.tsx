@@ -28,6 +28,13 @@ describe('SideNav', () => {
 		});
 	});
 
+	it('nav is accessibly labelled', () => {
+		// Ensure that the nav is labelled with the title
+		renderSideNav(defaultTestingProps);
+		const el = screen.getByRole('navigation', { hidden: true });
+		expect(el).toHaveAccessibleName(defaultTestingProps.title);
+	});
+
 	describe('renders the title correctly', () => {
 		test('with link', () => {
 			renderSideNav(defaultTestingProps);
