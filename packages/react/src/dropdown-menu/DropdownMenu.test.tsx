@@ -6,6 +6,7 @@ import { Fragment } from 'react';
 import { render, cleanup, screen } from '../../../../test-utils';
 import { AvatarIcon, EmailIcon, SettingsIcon } from '../icon';
 import { NotificationBadge } from '../notification-badge';
+import { VisuallyHidden } from '../a11y';
 import {
 	DropdownMenu,
 	DropdownMenuButton,
@@ -246,7 +247,15 @@ function renderDecorativeDropdownMenu() {
 						<DropdownMenuItem
 							icon={EmailIcon}
 							endElement={
-								<NotificationBadge value={100} max={99} tone="action" />
+								<Fragment>
+									<NotificationBadge
+										value={100}
+										max={99}
+										tone="action"
+										aria-hidden
+									/>
+									<VisuallyHidden>, 100 unread</VisuallyHidden>
+								</Fragment>
 							}
 						>
 							Messages

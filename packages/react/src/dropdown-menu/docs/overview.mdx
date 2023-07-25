@@ -145,7 +145,12 @@ Use the `endElement` prop to add elements such as an [Indicator dot](/components
 		<DropdownMenuItem icon={AvatarIcon}>Profile</DropdownMenuItem>
 		<DropdownMenuItem
 			icon={EmailIcon}
-			endElement={<NotificationBadge value={100} max={99} tone="action" />}
+			endElement={
+				<React.Fragment>
+					<NotificationBadge value={100} max={99} tone="action" aria-hidden />
+					<VisuallyHidden>, 100 unread</VisuallyHidden>
+				</React.Fragment>
+			}
 		>
 			Messages
 		</DropdownMenuItem>
@@ -165,7 +170,12 @@ Use a `DropdownMenuDivider` to separate destructive actions at the bottom of the
 		<DropdownMenuItem icon={AvatarIcon}>Profile</DropdownMenuItem>
 		<DropdownMenuItem
 			icon={EmailIcon}
-			endElement={<NotificationBadge value={100} max={99} tone="action" />}
+			endElement={
+				<React.Fragment>
+					<NotificationBadge value={100} max={99} tone="action" aria-hidden />
+					<VisuallyHidden>, 100 unread</VisuallyHidden>
+				</React.Fragment>
+			}
 		>
 			Messages
 		</DropdownMenuItem>
@@ -195,7 +205,12 @@ Use the `DropdownMenuGroup` component to group related items. Use the label prop
 			<DropdownMenuItem icon={AvatarIcon}>Profile</DropdownMenuItem>
 			<DropdownMenuItem
 				icon={EmailIcon}
-				endElement={<NotificationBadge value={100} max={99} tone="action" />}
+				endElement={
+					<React.Fragment>
+						<NotificationBadge value={100} max={99} tone="action" aria-hidden />
+						<VisuallyHidden>, 100 unread</VisuallyHidden>
+					</React.Fragment>
+				}
 			>
 				Messages
 			</DropdownMenuItem>

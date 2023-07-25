@@ -13,6 +13,7 @@ import {
 import { IndicatorDot } from '../indicator-dot';
 import { NotificationBadge } from '../notification-badge';
 import { Stack } from '../stack';
+import { VisuallyHidden } from '../a11y';
 import {
 	DropdownMenu,
 	DropdownMenuButton,
@@ -151,7 +152,15 @@ export const IconsAndBadges: StoryObj = {
 					<DropdownMenuItem
 						icon={EmailIcon}
 						endElement={
-							<NotificationBadge value={100} max={99} tone="action" />
+							<Fragment>
+								<NotificationBadge
+									value={100}
+									max={99}
+									tone="action"
+									aria-hidden
+								/>
+								<VisuallyHidden>, 100 unread</VisuallyHidden>
+							</Fragment>
 						}
 					>
 						Messages
@@ -181,7 +190,15 @@ export const Divider: StoryObj = {
 						onClick={() => console.log('Messages')}
 						icon={EmailIcon}
 						endElement={
-							<NotificationBadge value={100} max={99} tone="action" />
+							<Fragment>
+								<NotificationBadge
+									value={100}
+									max={99}
+									tone="action"
+									aria-hidden
+								/>
+								<VisuallyHidden>, 100 unread</VisuallyHidden>
+							</Fragment>
 						}
 					>
 						Messages
@@ -221,7 +238,15 @@ export const Groups: StoryObj = {
 						<DropdownMenuItem
 							icon={EmailIcon}
 							endElement={
-								<NotificationBadge value={100} max={99} tone="action" />
+								<Fragment>
+									<NotificationBadge
+										value={100}
+										max={99}
+										tone="action"
+										aria-hidden
+									/>
+									<VisuallyHidden>, 100 unread</VisuallyHidden>
+								</Fragment>
 							}
 						>
 							Messages
@@ -351,7 +376,15 @@ export const RadioGroupsSecondaryBadges: StoryObj = {
 							checked={selectedItem === 'Produce Fresh'}
 							onClick={() => setSelectedItem('Produce Fresh')}
 							endElement={
-								<NotificationBadge value={100} max={99} tone="action" />
+								<Fragment>
+									<NotificationBadge
+										value={100}
+										max={99}
+										tone="action"
+										aria-hidden
+									/>
+									<VisuallyHidden>, 100 notifications</VisuallyHidden>
+								</Fragment>
 							}
 						>
 							Produce Fresh
@@ -418,7 +451,15 @@ export const Complex: StoryObj = {
 							checked={false}
 							secondaryText="Brisbane"
 							endElement={
-								<NotificationBadge value={100} max={99} tone="action" />
+								<Fragment>
+									<NotificationBadge
+										value={100}
+										max={99}
+										tone="action"
+										aria-hidden
+									/>
+									<VisuallyHidden>, 100 notifications</VisuallyHidden>
+								</Fragment>
 							}
 						>
 							Ashfield
@@ -433,7 +474,15 @@ export const Complex: StoryObj = {
 					<DropdownMenuItem
 						icon={EmailIcon}
 						endElement={
-							<NotificationBadge value={100} max={99} tone="action" />
+							<Fragment>
+								<NotificationBadge
+									value={100}
+									max={99}
+									tone="action"
+									aria-hidden
+								/>
+								<VisuallyHidden>, 100 unread</VisuallyHidden>
+							</Fragment>
 						}
 					>
 						Messages
