@@ -105,6 +105,7 @@ function useKeydownNavigation() {
 				closeMenu();
 				break;
 			case 'Enter':
+			case 'Space':
 				event.preventDefault();
 				clickSelectedItem();
 				break;
