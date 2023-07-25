@@ -107,9 +107,15 @@ exports[`DropdownMenu Decorative renders correctly 1`] = `
         </span>
       </div>
       <span
+        aria-hidden="true"
         class="css-uouzcn-boxStyles-Text-NotificationBadge"
       >
         99+
+      </span>
+      <span
+        class="css-avudkd-VisuallyHidden"
+      >
+        , 100 unread
       </span>
     </div>
     <hr
@@ -277,10 +283,12 @@ exports[`DropdownMenu Radio Group renders correctly 1`] = `
     tabindex="-1"
   >
     <div
+      aria-labelledby="dropdown-menu-:r1i:-group-:r1j:"
       role="group"
     >
       <span
         class="css-86io8n-boxStyles-Text"
+        id="dropdown-menu-:r1i:-group-:r1j:"
       >
         Businesses
       </span>

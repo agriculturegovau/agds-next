@@ -23,6 +23,15 @@ export function useDropdownMenuControlIds() {
 }
 
 /**
+ * Generates the ID of the dropdown menu group
+ */
+export function useDropdownMenuGroupId() {
+	const { menuId } = useDropdownMenuContext();
+	const autoId = useId();
+	return `${menuId}-group-${autoId}`;
+}
+
+/**
  * Generates the ID of the dropdown menu list item
  * The `menuId` prefix ensures that multiple dropdowns can be placed on the same page
  */
