@@ -310,10 +310,18 @@ exports[`AppLayout renders correctly 1`] = `
               <span>
                 Messages
               </span>
-              <span
-                class="css-uouzcn-boxStyles-Text-NotificationBadge"
-              >
-                6
+              <span>
+                <span
+                  aria-hidden="true"
+                  class="css-uouzcn-boxStyles-Text-NotificationBadge"
+                >
+                  6
+                </span>
+                <span
+                  class="css-avudkd-VisuallyHidden"
+                >
+                  , 6 unread
+                </span>
               </span>
             </a>
           </li>
