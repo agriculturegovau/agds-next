@@ -3,8 +3,8 @@ import { SortAndFilter } from './useSortAndFilter';
 import { DashboardTableData } from './utils';
 
 // Sort and filter context
-export const SortAndFilterContext = createContext<SortAndFilter>(
-	{} as SortAndFilter
+export const SortAndFilterContext = createContext<SortAndFilter | undefined>(
+	undefined
 );
 
 export const SortAndFilterProvider = ({
@@ -32,8 +32,8 @@ export const useSortAndFilterContext = () => {
 };
 
 // Data context
-export const DashboardTableDataContext = createContext<DashboardTableData>(
-	{} as DashboardTableData
+export const DataContext = createContext<DashboardTableData | undefined>(
+	undefined
 );
 
 export const DataProvider = ({
@@ -43,15 +43,11 @@ export const DataProvider = ({
 	children: ReactNode;
 	value: DashboardTableData;
 }) => {
-	return (
-		<DashboardTableDataContext.Provider value={value}>
-			{children}
-		</DashboardTableDataContext.Provider>
-	);
+	return <DataContext.Provider value={value}>{children}</DataContext.Provider>;
 };
 
-export const useDashboardTableDataContext = () => {
-	const context = useContext(DashboardTableDataContext);
+export const useDataContext = () => {
+	const context = useContext(DataContext);
 	if (context === undefined) {
 		throw new Error('useDataContext must be used within a DataProvider');
 	}

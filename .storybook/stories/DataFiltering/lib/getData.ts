@@ -41,10 +41,7 @@ type GetDataResponse = {
 	totalItems: number;
 };
 
-export const filterData = (
-	business: BusinessForAudit,
-	filters: GetDataFilters
-) => {
+const filterData = (business: BusinessForAudit, filters: GetDataFilters) => {
 	let isValid = true;
 
 	const { requestDate, state, status, businessName, assignee } = filters;
@@ -95,7 +92,7 @@ export const filterData = (
 };
 
 // TODO: write tests for this
-export const sortData = (
+const sortData = (
 	a: BusinessForAudit,
 	b: BusinessForAudit,
 	sort: GetDataSort

@@ -1,12 +1,9 @@
 import { PaginationButtons } from '@ag.ds-next/react/pagination';
-import {
-	useDashboardTableDataContext,
-	useSortAndFilterContext,
-} from '../lib/contexts';
+import { useDataContext, useSortAndFilterContext } from '../lib/contexts';
 
 export const DashboardPagination = () => {
 	const { pagination, setPagination } = useSortAndFilterContext();
-	const { data, totalPages } = useDashboardTableDataContext();
+	const { data, totalPages } = useDataContext();
 
 	if (!data.length) return null;
 

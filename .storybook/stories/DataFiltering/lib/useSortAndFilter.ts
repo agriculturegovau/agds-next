@@ -1,20 +1,7 @@
 import { useReducer } from 'react';
 import { GetDataFilters, GetDataPagination, GetDataSort } from './getData';
 
-export type SortAndFilter = {
-	// sort
-	sort: GetDataSort;
-	setSort(sort: GetDataSort): void;
-	// filter
-	filters: GetDataFilters;
-	setFilter: (filters: Partial<GetDataFilters>) => void;
-	setFilters: (filters: GetDataFilters) => void;
-	removeFilter: (key: keyof GetDataFilters) => void;
-	resetFilters: () => void;
-	// pagination
-	pagination: GetDataPagination;
-	setPagination: (pagination: GetDataPagination) => void;
-};
+export type SortAndFilter = ReturnType<typeof useSortAndFilter>;
 
 const defaultFilters: GetDataFilters = {
 	assignee: undefined,
@@ -32,7 +19,7 @@ export const useSortAndFilter = (
 		filters?: Partial<GetDataFilters>;
 		itemsPerPage?: number;
 	} = {}
-): SortAndFilter => {
+) => {
 	const [state, dispatch] = useReducer(sortFilterReducer, {
 		pagination: {
 			page: 1,

@@ -19,10 +19,7 @@ import { Text } from '@ag.ds-next/react/text';
 import { Avatar } from '@ag.ds-next/react/avatar';
 import { Flex } from '@ag.ds-next/react/flex';
 import { BusinessForAudit } from '../lib/generateBusinessData';
-import {
-	useDashboardTableDataContext,
-	useSortAndFilterContext,
-} from '../lib/contexts';
+import { useDataContext, useSortAndFilterContext } from '../lib/contexts';
 import { generateTableCaption } from '../lib/utils';
 
 const DashboardTableRowAssignee = ({
@@ -50,7 +47,7 @@ export const tableId = 'dashboard-table';
 export const DashboardTable = forwardRef<HTMLTableElement>(
 	function DashboardTable(_, ref) {
 		const { sort, setSort, pagination } = useSortAndFilterContext();
-		const { data, loading, totalItems } = useDashboardTableDataContext();
+		const { data, loading, totalItems } = useDataContext();
 		const isTableSortable = !!sort || !!setSort;
 
 		const caption = generateTableCaption({

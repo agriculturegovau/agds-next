@@ -11,23 +11,10 @@ afterEach(cleanup);
 function TableFilteringMediumTest({ loading }: { loading: boolean }) {
 	const sortAndFilter = useSortAndFilter();
 	const { filters, pagination, sort } = sortAndFilter;
-
-	const { data, totalPages, totalItems } = useData({
-		filters,
-		pagination,
-		sort,
-	});
-
+	const data = useData({ filters, pagination, sort });
 	return (
 		<SortAndFilterProvider value={sortAndFilter}>
-			<DataProvider
-				value={{
-					data: data,
-					loading: loading,
-					totalPages: totalPages,
-					totalItems: totalItems,
-				}}
-			>
+			<DataProvider value={{ ...data, loading }}>
 				<TableFilteringMedium />
 			</DataProvider>
 		</SortAndFilterProvider>
