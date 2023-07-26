@@ -41,10 +41,10 @@
 		"test": "jest"
 	},
 	"devDependencies": {
-		"@babel/core": "^7.16.5",
+		"@babel/core": "^7.22.8",
 		"@babel/plugin-transform-runtime": "^7.16.4",
 		"@babel/preset-env": "^7.16.5",
-		"@babel/preset-typescript": "^7.16.5",
+		"@babel/preset-typescript": "^7.22.5",
 		"@changesets/cli": "^2.26.0",
 		"@emotion/babel-preset-css-prop": "^11.2.0",
 		"@emotion/react": "^11.7.0",

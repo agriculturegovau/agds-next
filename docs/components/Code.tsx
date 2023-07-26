@@ -12,7 +12,7 @@ import { createUrl } from 'playroom/utils';
 import { Highlight, Prism } from 'prism-react-renderer';
 import copy from 'clipboard-copy';
 import { ExternalLinkCallout } from '@ag.ds-next/react/a11y';
-import { Card, CardHeader } from '@ag.ds-next/react/card';
+import { CardHeader } from '@ag.ds-next/react/card';
 import {
 	globalPalette,
 	mapSpacing,
@@ -106,14 +106,9 @@ function LiveCode({
 		[toggleIsCodeVisible]
 	);
 
+	// Using `Box` here instead of Code snippets with popovers (date picker, combobox, dropdown menu etc) need overflow
 	return (
-		<Card
-			className={proseBlockClassname}
-			css={{
-				// Code snippets with popovers (date picker, dropdown menu etc) need overflow
-				overflow: 'visible',
-			}}
-		>
+		<Box border borderColor="muted" rounded className={proseBlockClassname}>
 			{exampleContentHeadingType && (
 				<CardHeader>
 					<Heading type={exampleContentHeadingType}>Example</Heading>
@@ -209,7 +204,7 @@ function LiveCode({
 					{live.error}
 				</Box>
 			) : null}
-		</Card>
+		</Box>
 	);
 }
 

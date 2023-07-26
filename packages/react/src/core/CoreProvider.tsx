@@ -32,6 +32,8 @@ export type LinkProps = PropsWithChildren<{
 	referrerPolicy?: NativeLinkProps['referrerPolicy'];
 	/** The relationship of the linked URL as space-separated link types. */
 	rel?: string;
+	/** WAI-ARIA role. */
+	role?: NativeLinkProps['role'];
 	/** Where to display the linked URL, as the name for a browsing context (a tab, window, or <iframe>). */
 	target?: NativeLinkProps['target'];
 }>;
