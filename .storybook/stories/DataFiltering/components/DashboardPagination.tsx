@@ -8,7 +8,7 @@ export const DashboardPagination = () => {
 	const { pagination, setPagination } = useSortAndFilterContext();
 	const { data, totalPages } = useDashboardTableDataContext();
 
-	if (data.length) return null;
+	if (!data.length) return null;
 
 	return (
 		<PaginationButtons
