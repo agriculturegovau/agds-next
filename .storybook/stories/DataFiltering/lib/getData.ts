@@ -7,12 +7,16 @@ import {
 } from './generateBusinessData';
 
 export type GetDataSort = {
+	/** The field to sort by */
 	field: keyof BusinessForAudit;
+	/** The order to sort by */
 	order: 'ASC' | 'DESC';
 };
 
 export type GetDataPagination = {
+	/** The current page number */
 	page: number;
+	/** The number of items to display per page */
 	perPage: number;
 };
 

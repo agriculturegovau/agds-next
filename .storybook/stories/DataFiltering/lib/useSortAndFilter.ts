@@ -1,5 +1,16 @@
-import { useState } from 'react';
+import { useReducer } from 'react';
 import { GetDataFilters, GetDataPagination, GetDataSort } from './getData';
+
+const defaultFilters: GetDataFilters = {
+	assignee: undefined,
+	businessName: undefined,
+	state: undefined,
+	status: undefined,
+	requestDate: {
+		from: undefined,
+		to: undefined,
+	},
+};
 
 export const useSortAndFilter = (
 	args: {
@@ -7,65 +18,78 @@ export const useSortAndFilter = (
 		itemsPerPage?: number;
 	} = {}
 ) => {
-	const [pagination, setPaginationObj] = useState<GetDataPagination>({
-		page: 1,
-		perPage: args.itemsPerPage || 10,
-	});
-	const [sort, setSortObj] = useState<GetDataSort>({
-		field: 'businessName',
-		order: 'ASC',
-	});
-	const [filters, setFiltersObj] = useState<GetDataFilters>({
-		assignee: undefined,
-		businessName: undefined,
-		state: undefined,
-		status: undefined,
-		requestDate: {
-			from: undefined,
-			to: undefined,
+	const [state, dispatch] = useReducer(sortFilterReducer, {
+		pagination: {
+			page: 1,
+			perPage: args.itemsPerPage || 10,
 		},
-		...args.filters,
+		sort: {
+			field: 'businessName',
+			order: 'ASC',
+		},
+		filters: {
+			...defaultFilters,
+			...args.filters,
+		},
 	});
 
-	const setSort = (sort: GetDataSort) => {
-		setSortObj(sort);
-		resetPagination();
-	};
+	const { sort, filters, pagination } = state;
 
-	const setPagination = (pagination: GetDataPagination) => {
-		setPaginationObj(pagination);
-	};
-
-	const resetPagination = () => {
-		setPaginationObj({ ...pagination, page: 1 });
-	};
-
-	const setFilters = (filters: GetDataFilters) => {
-		setFiltersObj(filters);
-		resetPagination();
-	};
-
-	const resetFilters = () => {
-		setFiltersObj({
-			assignee: undefined,
-			businessName: undefined,
-			state: undefined,
-			status: undefined,
-			requestDate: {
-				from: undefined,
-				to: undefined,
-			},
+	function setSort(sort: GetDataSort) {
+		dispatch({
+			type: 'SET_SORT',
+			payload: sort,
 		});
-		resetPagination();
-	};
 
-	const removeFilter = (key: keyof GetDataFilters) => {
-		setFiltersObj({
-			...filters,
-			[key]: undefined,
+		dispatch({
+			type: 'RESET_PAGINATION',
 		});
-		resetPagination();
-	};
+	}
+
+	function setPagination(pagination: GetDataPagination) {
+		dispatch({
+			type: 'SET_PAGINATION',
+			payload: pagination,
+		});
+	}
+
+	function setFilter(filters: Partial<GetDataFilters>) {
+		dispatch({
+			type: 'SET_FILTER',
+			payload: filters,
+		});
+
+		dispatch({
+			type: 'RESET_PAGINATION',
+		});
+	}
+
+	function setFilters(filters: GetDataFilters) {
+		dispatch({
+			type: 'SET_FILTERS',
+			payload: filters,
+		});
+
+		dispatch({
+			type: 'RESET_PAGINATION',
+		});
+	}
+
+	function resetFilters() {
+		dispatch({ type: 'RESET_FILTERS' });
+		dispatch({ type: 'RESET_PAGINATION' });
+	}
+
+	function removeFilter(key: keyof GetDataFilters) {
+		dispatch({
+			type: 'REMOVE_FILTER',
+			payload: key,
+		});
+
+		dispatch({
+			type: 'RESET_PAGINATION',
+		});
+	}
 
 	return {
 		// sort
@@ -73,6 +97,7 @@ export const useSortAndFilter = (
 		setSort,
 		// filter
 		filters,
+		setFilter,
 		setFilters,
 		removeFilter,
 		// pagination
@@ -82,3 +107,74 @@ export const useSortAndFilter = (
 		resetFilters,
 	};
 };
+
+type SortFilterState = {
+	sort: GetDataSort;
+	filters: GetDataFilters;
+	pagination: GetDataPagination;
+};
+
+type SortFilterReducerAction =
+	| { type: 'SET_SORT'; payload: GetDataSort }
+	| { type: 'SET_FILTERS'; payload: GetDataFilters }
+	| { type: 'SET_FILTER'; payload: Partial<GetDataFilters> }
+	| { type: 'REMOVE_FILTER'; payload: keyof GetDataFilters }
+	| { type: 'RESET_FILTERS' }
+	| { type: 'SET_PAGINATION'; payload: GetDataPagination }
+	| { type: 'RESET_PAGINATION' };
+
+export function sortFilterReducer(
+	state: SortFilterState,
+	action: SortFilterReducerAction
+) {
+	switch (action.type) {
+		case 'SET_SORT':
+			return {
+				...state,
+				sort: action.payload,
+			};
+		case 'SET_FILTERS':
+			return {
+				...state,
+				filters: action.payload,
+			};
+		case 'SET_FILTER':
+			return {
+				...state,
+				filters: {
+					...state.filters,
+					...action.payload,
+				},
+			};
+		case 'REMOVE_FILTER':
+			return {
+				...state,
+				filters: {
+					...state.filters,
+					[action.payload]: undefined,
+				},
+			};
+		case 'RESET_FILTERS':
+			return {
+				...state,
+				filters: {
+					...defaultFilters,
+				},
+			};
+		case 'SET_PAGINATION':
+			return {
+				...state,
+				pagination: action.payload,
+			};
+		case 'RESET_PAGINATION':
+			return {
+				...state,
+				pagination: {
+					...state.pagination,
+					page: 1,
+				},
+			};
+		default:
+			return state;
+	}
+}
