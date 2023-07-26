@@ -62,7 +62,6 @@ const CheckboxIcon = ({ size }: { size: Spacing }) => (
 		css={{
 			width: mapSpacing(size),
 			height: mapSpacing(size),
-			display: 'none',
 			color: 'currentcolor',
 			fill: 'none',
 			stroke: 'currentColor',
