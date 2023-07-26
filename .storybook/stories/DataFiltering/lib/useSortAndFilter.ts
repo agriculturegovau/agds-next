@@ -157,9 +157,7 @@ export function sortFilterReducer(
 		case 'RESET_FILTERS':
 			return {
 				...state,
-				filters: {
-					...defaultFilters,
-				},
+				filters: defaultFilters,
 			};
 		case 'SET_PAGINATION':
 			return {
