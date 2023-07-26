@@ -1,9 +1,7 @@
 import { Meta, StoryObj, StoryFn } from '@storybook/react';
 import { Column, Columns } from '@ag.ds-next/react/columns';
 import { PageContent } from '@ag.ds-next/react/content';
-import { Button } from '@ag.ds-next/react/button';
 import { Prose } from '@ag.ds-next/react/prose';
-import { CloseIcon } from '@ag.ds-next/react/icon';
 import { Box } from '../box';
 import { SideBar } from './SideBar';
 import { SideBarTitle } from './SideBarTitle';
@@ -65,33 +63,12 @@ export const withSubTitle: Story = {
 	},
 };
 
-export const WithAction: Story = {
-	args: {
-		children: (
-			<>
-				<SideBarTitle
-					title="SideBarTitle"
-					action={<Button variant="text">Action</Button>}
-				/>
-				<Box paddingY={1}>SideBar Content area</Box>
-			</>
-		),
-	},
-};
-
 export const Filtering: Story = {
 	args: {
 		collapseButtonLabel: 'Filters (3)',
 		children: (
 			<>
-				<SideBarTitle
-					title="Filters"
-					action={
-						<Button variant="text" iconAfter={() => <CloseIcon size="sm" />}>
-							Clear filters
-						</Button>
-					}
-				/>
+				<SideBarTitle title="Filters" />
 			</>
 		),
 	},

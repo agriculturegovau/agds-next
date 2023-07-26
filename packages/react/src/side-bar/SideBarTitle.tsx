@@ -1,4 +1,4 @@
-import { PropsWithChildren, ReactNode } from 'react';
+import { PropsWithChildren } from 'react';
 import { Box } from '../box';
 import { Flex } from '../flex';
 import { Stack } from '../stack';
@@ -8,15 +8,9 @@ export type SideBarTitleProps = PropsWithChildren<{
 	id?: string;
 	title: string;
 	subtitle?: string;
-	action?: ReactNode;
 }>;
 
-export function SideBarTitle({
-	id,
-	title,
-	action,
-	subtitle,
-}: SideBarTitleProps) {
+export function SideBarTitle({ id, title, subtitle }: SideBarTitleProps) {
 	return (
 		<Flex
 			borderBottom
@@ -43,7 +37,6 @@ export function SideBarTitle({
 					</Text>
 				)}
 			</Stack>
-			{action}
 		</Flex>
 	);
 }
