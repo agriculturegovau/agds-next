@@ -79,30 +79,6 @@ export const WithAction: Story = {
 	},
 };
 
-export const withTitleLink: Story = {
-	name: 'With title link',
-	args: {
-		children: (
-			<>
-				<SideBarTitle title="SideBarTitle" href="#link" />
-				<Box paddingY={1}>SideBar Content area</Box>
-			</>
-		),
-	},
-};
-
-export const withTitleLinkCurrentPage: Story = {
-	name: 'With title link (current page)',
-	args: {
-		children: (
-			<>
-				<SideBarTitle title="SideBarTitle" href="#link" isCurrentPage={true} />
-				<Box paddingY={1}>SideBar Content area</Box>
-			</>
-		),
-	},
-};
-
 export const Filtering: Story = {
 	args: {
 		collapseButtonLabel: 'Filters (3)',
@@ -116,18 +92,6 @@ export const Filtering: Story = {
 						</Button>
 					}
 				/>
-			</>
-		),
-	},
-};
-
-export const SideNav: Story = {
-	args: {
-		collapseButtonLabel: 'In this section',
-		children: (
-			<>
-				<SideBarTitle title="Components" href="#components" />
-				<Box paddingY={1}>SideBar Content area</Box>
 			</>
 		),
 	},
