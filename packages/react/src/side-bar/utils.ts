@@ -15,12 +15,7 @@ export const hoverColorMap = {
 
 export type SideBarBackground = keyof typeof hoverColorMap;
 
-export type SideBarIds = {
-	buttonId: string;
-	bodyId: string;
-};
-
-export function useSideBarIds(): SideBarIds {
+export function useSideBarIds() {
 	const autoId = useId();
 	return {
 		buttonId: `side-bar-${autoId}-button`,
