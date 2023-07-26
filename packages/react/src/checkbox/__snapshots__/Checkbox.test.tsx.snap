@@ -6,7 +6,7 @@ exports[`Checkbox renders correctly 1`] = `
     class="css-hp3wbe-boxStyles-CheckboxContainer"
   >
     <input
-      class="css-ovafqv-CheckboxInput"
+      class="css-2fffox-CheckboxInput"
       data-testid="example"
       name="my-checkbox"
       type="checkbox"
@@ -16,7 +16,7 @@ exports[`Checkbox renders correctly 1`] = `
     >
       <svg
         aria-hidden="true"
-        class="css-umoisd-CheckboxIcon"
+        class="css-po1mz2-CheckboxIcon"
         clip-rule="evenodd"
         focusable="false"
         role="img"

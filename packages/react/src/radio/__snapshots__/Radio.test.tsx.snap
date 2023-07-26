@@ -6,7 +6,7 @@ exports[`Radio renders correctly 1`] = `
     class="css-6pplfb-boxStyles-RadioContainer"
   >
     <input
-      class="css-1gurbk-RadioInput"
+      class="css-o6md8t-RadioInput"
       data-testid="example"
       name="my-radio"
       type="radio"
@@ -15,7 +15,7 @@ exports[`Radio renders correctly 1`] = `
       class="css-osss6w-boxStyles-RadioIndicator"
     >
       <span
-        class="css-1f428uy-boxStyles-RadioIndicator"
+        class="css-1sqol0e-boxStyles-RadioIndicator"
       />
     </span>
     <span
