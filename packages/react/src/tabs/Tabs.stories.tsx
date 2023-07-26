@@ -1,6 +1,7 @@
 import { Meta, StoryObj } from '@storybook/react';
-import { useState } from 'react';
+import { Fragment, useState } from 'react';
 import { SiteLayout } from '../../../../docs/content/templates/__shared/SiteLayout';
+import { VisuallyHidden } from '../a11y';
 import { Box } from '../box';
 import { Breadcrumbs } from '../breadcrumbs';
 import { Button } from '../button';
@@ -219,7 +220,15 @@ export const WithEndElements: StoryObj = {
 					<TabButton>Tab 2</TabButton>
 					<TabButton
 						endElement={
-							<NotificationBadge value={100} max={99} tone="action" />
+							<Fragment>
+								<NotificationBadge
+									value={100}
+									max={99}
+									tone="action"
+									aria-hidden
+								/>
+								<VisuallyHidden>, 100 notifications</VisuallyHidden>
+							</Fragment>
 						}
 					>
 						Tab 3

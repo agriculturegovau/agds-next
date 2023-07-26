@@ -1,4 +1,5 @@
 import { NotificationBadge } from '../notification-badge';
+import { VisuallyHidden } from '../a11y';
 import {
 	ChartLineIcon,
 	EmailIcon,
@@ -38,7 +39,12 @@ export const navigationItems = [
 			label: 'Messages',
 			icon: EmailIcon,
 			href: '/account/messages',
-			endElement: <NotificationBadge tone="action" value={6} max={99} />,
+			endElement: (
+				<span>
+					<NotificationBadge tone="action" value={6} max={99} aria-hidden />
+					<VisuallyHidden>, 6 unread</VisuallyHidden>
+				</span>
+			),
 		},
 		{
 			label: 'Account settings',

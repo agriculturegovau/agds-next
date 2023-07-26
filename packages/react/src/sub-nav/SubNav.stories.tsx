@@ -1,4 +1,6 @@
 import { Meta, StoryObj } from '@storybook/react';
+import { Fragment } from 'react';
+import { VisuallyHidden } from '../a11y';
 import { Box } from '../box';
 import { NotificationBadge } from '../notification-badge';
 import { SubNav } from './SubNav';
@@ -43,7 +45,12 @@ export const WithEndElements: Story = {
 			{
 				href: '/code',
 				label: 'Code',
-				endElement: <NotificationBadge value={5} tone="action" />,
+				endElement: (
+					<Fragment>
+						<NotificationBadge value={5} tone="action" aria-hidden />
+						<VisuallyHidden>, 5 notifications</VisuallyHidden>
+					</Fragment>
+				),
 			},
 			{ href: '/content', label: 'Content' },
 			{ href: '/accessibility', label: 'Accessibility' },
