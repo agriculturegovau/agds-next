@@ -152,7 +152,10 @@ export function sortFilterReducer(
 				...state,
 				filters: {
 					...state.filters,
-					[action.payload]: undefined,
+					[action.payload]:
+						action.payload === 'requestDate'
+							? { from: undefined, to: undefined }
+							: undefined,
 				},
 			};
 		case 'RESET_FILTERS':
