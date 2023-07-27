@@ -1,4 +1,4 @@
-const boilerplatePageTemplate = (content: string) => `
+const boilerplateSiteTemplate = (content: string) => `
 	<Box dark><Header background="bodyAlt" logo={<Logo />} heading="Export Service" />
     <MainNav items={[{ label: "Home", href: "/" }]} secondaryItems={[{ label: 'Sign in', endElement: <AvatarIcon />}]} /></Box>
 		<PageContent as="main">${content}</PageContent>
@@ -16,11 +16,44 @@ const boilerplatePageTemplate = (content: string) => `
     </nav>
     </Footer></Box>`;
 
+const boilerplateAppTemplate = (content: string) => `
+<AppLayout>
+	<AppLayoutHeader
+		heading="Service name"
+		subLine="Service description that could be a little longer"
+		logo={<Logo />}
+		href="#"
+	/>
+	<AppLayoutSidebar
+		items={[
+			[{ label: 'Label', href: '#', icon: WebsiteIcon }, { label: 'Label', href: '#', icon: WebsiteIcon } ],
+			[{ label: 'Label', icon: ExitIcon }],
+		]}
+	/>
+	<AppLayoutContent>
+		<PageContent as="main">${content}</PageContent>
+		<AppLayoutFooter>
+			<nav aria-label="footer">
+				<LinkList
+					links={[
+						{ label: 'Label', href: '#' },
+						{ label: 'Label', href: '#' },
+						{ label: 'Label', href: '#' },
+						{ label: 'Label', href: '#' },
+					]}
+					horizontal
+				/>
+			</nav>
+		</AppLayoutFooter>
+	</AppLayoutContent>
+</AppLayout>
+`;
+
 const snippets = [
 	{
 		group: 'Boilerplate',
 		name: 'Basic',
-		code: boilerplatePageTemplate(`
+		code: boilerplateSiteTemplate(`
 		<Prose>
       <h1>Page heading</h1>
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque at arcu eleifend, varius enim non, eleifend nibh. Quisque ac lacinia elit. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Integer scelerisque at ligula tempor eleifend. Vestibulum volutpat, dolor eu rutrum consequat, libero justo lacinia tortor, id varius tortor ante sit amet nisl. Aenean at dui diam. Cras a ligula a ante aliquam lacinia. Ut dolor quam, gravida eu dui quis, molestie lacinia dolor. Fusce lacus mi, pharetra molestie tortor eu, finibus lacinia libero.</p>
@@ -30,7 +63,7 @@ const snippets = [
 	{
 		group: 'Boilerplate',
 		name: 'Single-page form',
-		code: boilerplatePageTemplate(`
+		code: boilerplateSiteTemplate(`
 		<Columns>
 			<Column columnSpan={{ xs: 12, md: 8 }}>
 				<Stack gap={3}>
@@ -151,6 +184,16 @@ const snippets = [
 				</Stack>
 			</Column>
 		</Columns>`),
+	},
+	{
+		group: 'Boilerplate',
+		name: 'AppLayout',
+		code: boilerplateAppTemplate(`
+		<Prose>
+      <h1>Page heading</h1>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque at arcu eleifend, varius enim non, eleifend nibh. Quisque ac lacinia elit. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Integer scelerisque at ligula tempor eleifend. Vestibulum volutpat, dolor eu rutrum consequat, libero justo lacinia tortor, id varius tortor ante sit amet nisl. Aenean at dui diam. Cras a ligula a ante aliquam lacinia. Ut dolor quam, gravida eu dui quis, molestie lacinia dolor. Fusce lacus mi, pharetra molestie tortor eu, finibus lacinia libero.</p>
+  		<p>Suspendisse feugiat rhoncus magna eleifend aliquam. Morbi euismod ex convallis viverra eleifend. Nullam vel finibus libero. Maecenas leo sem, consectetur sit amet ipsum vel, commodo porttitor quam. Nullam libero nulla, cursus a turpis et, ullamcorper lobortis metus. Aliquam aliquam sodales malesuada. Phasellus sit amet libero ut nulla porta ornare. In elit lectus, iaculis et volutpat eget, tempor ornare eros. Interdum et malesuada fames ac ante ipsum primis in faucibus. Suspendisse sodales metus quis vulputate convallis. Morbi congue lectus eget massa finibus luctus. Pellentesque tempus dui vel auctor ullamcorper.</p>
+		</Prose>`),
 	},
 	{
 		group: 'Prose',
