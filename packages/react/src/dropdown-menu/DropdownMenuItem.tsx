@@ -74,21 +74,21 @@ export const DropdownMenuItem = forwardRefWithAs<'div', DropdownMenuItemProps>(
 					...(isActiveDescendant && {
 						color: boxPalette.foregroundText,
 						backgroundColor: boxPalette.backgroundShade,
-						'& div > span': {
+						'& > div > span': {
 							textDecoration: 'underline',
 						},
 					}),
 
 					'&:hover': {
 						backgroundColor: boxPalette.backgroundShade,
-						'& div > span': {
+						'& > div > span': {
 							textDecoration: 'underline',
 						},
 					},
 				}}
 				{...props}
 			>
-				<Flex alignItems="center" gap={0.5}>
+				<Flex alignItems="center" gap={1}>
 					{Icon ? <Icon color="inherit" size="md" /> : null}
 					<span>{children}</span>
 				</Flex>
