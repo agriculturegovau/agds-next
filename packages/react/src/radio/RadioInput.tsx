@@ -14,7 +14,8 @@ export const RadioInput = forwardRef<HTMLInputElement, RadioInputProps>(
 					// When this component is focused, outline the indicator (`RadioIndicator` and `CheckboxIndicator`)
 					'&:focus ~ span:first-of-type': packs.outline,
 					// When this component is checked, show the indicators active state
-					'&:checked ~ span > *': { display: 'block' },
+					'~ span > span': { opacity: 0 },
+					'&:checked ~ span > span': { opacity: 1 },
 				}}
 				{...props}
 			/>

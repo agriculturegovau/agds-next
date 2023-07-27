@@ -49,7 +49,6 @@ export function RadioIndicator({
 				height="calc(100% - 0.5rem)"
 				highContrastOutline
 				css={{
-					display: 'none',
 					borderRadius: '100%',
 					backgroundColor: boxPalette.foregroundText,
 
