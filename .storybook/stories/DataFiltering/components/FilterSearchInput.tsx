@@ -1,14 +1,10 @@
 import { SearchInput } from '@ag.ds-next/react/search-input';
-import { GetDataFilters } from '../lib/getData';
+import { useSortAndFilterContext } from '../lib/contexts';
 import { tableId } from './DashboardTable';
 
-export const FilterSearchInput = ({
-	filters,
-	setFilters,
-}: {
-	filters: GetDataFilters;
-	setFilters: (filters: GetDataFilters) => void;
-}) => {
+export const FilterSearchInput = () => {
+	const { filters, setFilter } = useSortAndFilterContext();
+
 	return (
 		<SearchInput
 			label="Search Business name"
@@ -18,8 +14,7 @@ export const FilterSearchInput = ({
 			value={filters.businessName}
 			onChange={(searchString) => {
 				// TODO debounce
-				setFilters({
-					...filters,
+				setFilter({
 					businessName: searchString,
 				});
 			}}

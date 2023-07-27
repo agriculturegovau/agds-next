@@ -3,52 +3,21 @@ import 'html-validate/jest';
 import { cleanup, render, waitFor } from '../../../test-utils';
 import { TableFilteringMedium } from './TableFilteringMedium';
 import { useSortAndFilter } from './lib/useSortAndFilter';
-import { generateTableCaption, useData } from './lib/utils';
+import { useData } from './lib/utils';
+import { DataProvider, SortAndFilterProvider } from './lib/contexts';
 
 afterEach(cleanup);
 
 function TableFilteringMediumTest({ loading }: { loading: boolean }) {
-	const {
-		sort,
-		filters,
-		pagination,
-		setSort,
-		setFilters,
-		resetFilters,
-		removeFilter,
-		setPagination,
-	} = useSortAndFilter();
-
-	const { data, totalPages, totalItems } = useData({
-		filters,
-		pagination,
-		sort,
-	});
-
-	const tableCaption = generateTableCaption({
-		loading,
-		totalItems,
-		pagination,
-	});
-
+	const sortAndFilter = useSortAndFilter();
+	const { filters, pagination, sort } = sortAndFilter;
+	const data = useData({ filters, pagination, sort });
 	return (
-		<TableFilteringMedium
-			{...{
-				sort,
-				setSort,
-				filters,
-				setFilters,
-				resetFilters,
-				removeFilter,
-				pagination,
-				setPagination,
-				totalPages,
-				totalItems,
-				loading,
-				data,
-				tableCaption,
-			}}
-		/>
+		<SortAndFilterProvider value={sortAndFilter}>
+			<DataProvider value={{ ...data, loading }}>
+				<TableFilteringMedium />
+			</DataProvider>
+		</SortAndFilterProvider>
 	);
 }
 

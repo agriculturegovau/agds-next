@@ -5,57 +5,23 @@ import { useTernaryState } from '@ag.ds-next/react/core';
 import { PageContent } from '@ag.ds-next/react/content';
 import { FilterIcon, PlusIcon } from '@ag.ds-next/react/icon';
 import { Prose } from '@ag.ds-next/react/prose';
-import { PaginationButtons } from '@ag.ds-next/react/pagination';
 import { ActiveFilters } from './components/ActiveFilters';
 import { SortBySelect } from './components/SortBySelect';
 import { DashboardTable } from './components/DashboardTable';
 import { DashboardFilterDrawer } from './components/DashboardFilterDrawer';
 import { FilterSearchInput } from './components/FilterSearchInput';
-import { GetDataFilters, GetDataPagination, GetDataSort } from './lib/getData';
-import { BusinessForAuditWithIndex } from './lib/generateBusinessData';
 import {
 	FilterBar,
 	FilterBarGroup,
 	FilterRegion,
 } from './components/FilterBar';
+import { DashboardPagination } from './components/DashboardPagination';
 
 type TableFilteringLargeProps = {
-	// sort
-	sort: GetDataSort;
-	setSort: (sort: GetDataSort) => void;
-	// filter
-	filters: GetDataFilters;
-	setFilters: (filters: GetDataFilters) => void;
-	resetFilters: () => void;
-	removeFilter: (filter: keyof GetDataFilters) => void;
-	// pagination
-	pagination: GetDataPagination;
-	setPagination: (pagination: GetDataPagination) => void;
-	// data
-	totalPages: number;
-	totalItems: number;
-	loading: boolean;
-	data: BusinessForAuditWithIndex[];
-	tableCaption: string;
 	tableRef?: RefObject<HTMLTableElement>;
 };
 
-export const TableFilteringLarge = ({
-	sort,
-	setSort,
-	filters,
-	setFilters,
-	removeFilter,
-	resetFilters,
-	pagination,
-	setPagination,
-	totalPages,
-	totalItems,
-	loading,
-	data,
-	tableCaption,
-	tableRef,
-}: TableFilteringLargeProps) => {
+export const TableFilteringLarge = ({ tableRef }: TableFilteringLargeProps) => {
 	const [isDrawerOpen, openDrawer, closeDrawer] = useTernaryState(false);
 	return (
 		<PageContent>
@@ -79,7 +45,7 @@ export const TableFilteringLarge = ({
 					<FilterRegion>
 						<FilterBar>
 							<FilterBarGroup>
-								<FilterSearchInput filters={filters} setFilters={setFilters} />
+								<FilterSearchInput />
 								<Button
 									onClick={openDrawer}
 									variant="secondary"
@@ -88,39 +54,17 @@ export const TableFilteringLarge = ({
 									Show filters
 								</Button>
 							</FilterBarGroup>
-							<SortBySelect sort={sort} setSort={setSort} />
+							<SortBySelect />
 						</FilterBar>
 						<DashboardFilterDrawer
 							isDrawerOpen={isDrawerOpen}
 							closeDrawer={closeDrawer}
-							filters={filters}
-							setFilters={setFilters}
-							resetFilters={resetFilters}
 						/>
-						<ActiveFilters
-							filters={filters}
-							removeFilter={removeFilter}
-							resetFilters={resetFilters}
-						/>
+						<ActiveFilters />
 					</FilterRegion>
 				</Stack>
-				<DashboardTable
-					ref={tableRef}
-					data={data}
-					loading={loading}
-					itemsPerPage={pagination.perPage}
-					totalItems={totalItems}
-					caption={tableCaption}
-					sort={sort}
-					setSort={setSort}
-				/>
-				{data.length ? (
-					<PaginationButtons
-						currentPage={pagination.page}
-						onChange={(page) => setPagination({ ...pagination, page })}
-						totalPages={totalPages}
-					/>
-				) : null}
+				<DashboardTable ref={tableRef} />
+				<DashboardPagination />
 			</Stack>
 		</PageContent>
 	);

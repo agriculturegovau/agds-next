@@ -1,14 +1,10 @@
 import { Select } from '@ag.ds-next/react/select';
-import { GetDataFilters } from '../lib/getData';
+import { useSortAndFilterContext } from '../lib/contexts';
 import { tableId } from './DashboardTable';
 
-export const FilterStatusSelect = ({
-	filters,
-	setFilters,
-}: {
-	filters: GetDataFilters;
-	setFilters: (sort: GetDataFilters) => void;
-}) => {
+export const FilterStatusSelect = () => {
+	const { filters, setFilter } = useSortAndFilterContext();
+
 	return (
 		<Select
 			label="Status"
@@ -30,8 +26,7 @@ export const FilterStatusSelect = ({
 					| 'completed'
 					| 'cancelled';
 
-				setFilters({
-					...filters,
+				setFilter({
 					status: value === '' ? undefined : value,
 				});
 			}}

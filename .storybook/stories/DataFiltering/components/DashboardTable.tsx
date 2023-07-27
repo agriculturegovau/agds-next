@@ -18,11 +18,9 @@ import { TextLink } from '@ag.ds-next/react/text-link';
 import { Text } from '@ag.ds-next/react/text';
 import { Avatar } from '@ag.ds-next/react/avatar';
 import { Flex } from '@ag.ds-next/react/flex';
-import {
-	BusinessForAudit,
-	BusinessForAuditWithIndex,
-} from '../lib/generateBusinessData';
-import { GetDataSort } from '../lib/getData';
+import { BusinessForAudit } from '../lib/generateBusinessData';
+import { useDataContext, useSortAndFilterContext } from '../lib/contexts';
+import { generateTableCaption } from '../lib/utils';
 
 const DashboardTableRowAssignee = ({
 	assignee,
@@ -44,39 +42,19 @@ const DashboardTableRowAssignee = ({
 	);
 };
 
-export type DashboardTableProps = {
-	/** The caption for the table */
-	caption: string;
-	/** The data to display in the table */
-	data: BusinessForAuditWithIndex[];
-	/** The current sort */
-	sort?: GetDataSort;
-	/** A function to set the sort */
-	setSort?: (sort: GetDataSort) => void;
-	/** Whether the table is loading */
-	loading?: boolean;
-	/** The total number of items found in the search */
-	totalItems?: number;
-	/** The number of items to display per page */
-	itemsPerPage?: number;
-};
-
 export const tableId = 'dashboard-table';
 
-export const DashboardTable = forwardRef<HTMLTableElement, DashboardTableProps>(
-	function DashboardTable(
-		{
-			caption,
-			data,
-			loading,
-			sort,
-			setSort,
-			itemsPerPage = 10,
-			totalItems,
-		}: DashboardTableProps,
-		ref
-	) {
+export const DashboardTable = forwardRef<HTMLTableElement>(
+	function DashboardTable(_, ref) {
+		const { sort, setSort, pagination } = useSortAndFilterContext();
+		const { data, loading, totalItems } = useDataContext();
 		const isTableSortable = !!sort || !!setSort;
+
+		const caption = generateTableCaption({
+			loading,
+			totalItems,
+			pagination,
+		});
 
 		if (!loading && data.length === 0) {
 			return <Text>No results</Text>;
@@ -148,7 +126,7 @@ export const DashboardTable = forwardRef<HTMLTableElement, DashboardTableProps>(
 					<TableBody>
 						{loading ? (
 							<Fragment>
-								{Array.from(Array(itemsPerPage).keys()).map((i) => (
+								{Array.from(Array(pagination.perPage).keys()).map((i) => (
 									<tr key={i}>
 										<TableCell>
 											<SkeletonText />

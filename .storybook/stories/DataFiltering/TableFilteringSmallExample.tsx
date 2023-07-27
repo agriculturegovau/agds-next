@@ -1,36 +1,17 @@
 import { TableFilteringSmall } from './TableFilteringSmall';
 import { useSortAndFilter } from './lib/useSortAndFilter';
-import { generateTableCaption, useData } from './lib/utils';
+import { useData } from './lib/utils';
+import { DataProvider, SortAndFilterProvider } from './lib/contexts';
 
 export const TableFilteringSmallExample = () => {
-	const { sort, filters, pagination, setSort, setFilters, setPagination } =
-		useSortAndFilter();
-
-	const { loading, data, totalPages, totalItems } = useData({
-		filters,
-		pagination,
-		sort,
-	});
-
-	const tableCaption = generateTableCaption({
-		loading,
-		totalItems,
-		pagination,
-	});
-
+	const sortAndFilter = useSortAndFilter();
+	const { filters, pagination, sort } = sortAndFilter;
+	const data = useData({ filters, pagination, sort });
 	return (
-		<TableFilteringSmall
-			sort={sort}
-			setSort={setSort}
-			filters={filters}
-			setFilters={setFilters}
-			pagination={pagination}
-			setPagination={setPagination}
-			totalPages={totalPages}
-			loading={loading}
-			data={data}
-			tableCaption={tableCaption}
-			totalItems={totalItems}
-		/>
+		<SortAndFilterProvider value={sortAndFilter}>
+			<DataProvider value={data}>
+				<TableFilteringSmall />
+			</DataProvider>
+		</SortAndFilterProvider>
 	);
 };

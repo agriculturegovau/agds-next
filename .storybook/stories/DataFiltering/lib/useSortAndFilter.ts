@@ -1,6 +1,8 @@
 import { useReducer } from 'react';
 import { GetDataFilters, GetDataPagination, GetDataSort } from './getData';
 
+export type SortAndFilter = ReturnType<typeof useSortAndFilter>;
+
 const defaultFilters: GetDataFilters = {
 	assignee: undefined,
 	businessName: undefined,
@@ -100,11 +102,10 @@ export const useSortAndFilter = (
 		setFilter,
 		setFilters,
 		removeFilter,
+		resetFilters,
 		// pagination
 		pagination,
 		setPagination,
-		// reset
-		resetFilters,
 	};
 };
 
@@ -151,7 +152,10 @@ export function sortFilterReducer(
 				...state,
 				filters: {
 					...state.filters,
-					[action.payload]: undefined,
+					[action.payload]:
+						action.payload === 'requestDate'
+							? { from: undefined, to: undefined }
+							: undefined,
 				},
 			};
 		case 'RESET_FILTERS':
