@@ -1,6 +1,5 @@
 import { Meta, StoryObj } from '@storybook/react';
 import { Text } from '../text';
-import { Prose } from '../prose';
 import { List, ListItem } from '../list';
 import { TextLink } from '../text-link';
 import { Stack } from '../stack';
