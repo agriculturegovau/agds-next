@@ -61,8 +61,8 @@ export function DropdownMenuItemRadio({
 				cursor: 'pointer',
 
 				...(isActiveDescendant && {
-					color: boxPalette.foregroundText,
 					backgroundColor: boxPalette.backgroundShade,
+					color: boxPalette.foregroundText,
 					'& > div:first-of-type > span': {
 						...packs.underline,
 						color: boxPalette.foregroundText,
@@ -78,6 +78,7 @@ export function DropdownMenuItemRadio({
 				},
 
 				...(checked && {
+					backgroundColor: boxPalette.backgroundShade,
 					position: 'relative',
 					'&:before': {
 						content: "''",
