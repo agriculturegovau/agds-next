@@ -5,7 +5,6 @@ import {
 	useCallback,
 	MouseEvent,
 	useRef,
-	RefObject,
 } from 'react';
 import {
 	UseComboboxReturnValue,
@@ -58,15 +57,14 @@ type ComboboxMultiBaseProps<Option extends DefaultComboboxOption> = {
 	combobox: UseComboboxReturnValue<Option>;
 	multiSelection: UseMultipleSelectionReturnValue<Option>;
 	selectedItems: Option[];
-	onClear: () => void;
+	setSelectedItems: (value: Option[]) => void;
 	loading?: boolean;
 	inputItems?: Option[];
 	networkError?: boolean;
 	emptyResultsMessage?: string;
 	renderItem?: (item: Option, inputValue: string) => ReactNode;
 	// input ref
-	inputRef: RefObject<HTMLInputElement>;
-	inputRefProp?: Ref<HTMLInputElement>;
+	inputRef?: Ref<HTMLInputElement>;
 };
 
 export function ComboboxMultiBase<Option extends DefaultComboboxOption>({
@@ -88,11 +86,12 @@ export function ComboboxMultiBase<Option extends DefaultComboboxOption>({
 	combobox,
 	inputItems,
 	selectedItems,
+	setSelectedItems,
 	multiSelection,
-	onClear,
-	inputRef,
-	inputRefProp,
+	inputRef: inputRefProp,
 }: ComboboxMultiBaseProps<Option>) {
+	const inputRef = useRef<HTMLInputElement>(null);
+
 	const [isInputFocused, setInputFocused, setInputBlurred] =
 		useTernaryState(false);
 
@@ -130,6 +129,11 @@ export function ComboboxMultiBase<Option extends DefaultComboboxOption>({
 		},
 		[inputRef]
 	);
+
+	const onClear = useCallback(() => {
+		setSelectedItems([]);
+		inputRef.current?.focus();
+	}, [setSelectedItems]);
 
 	const inputRefs = inputRefProp
 		? mergeRefs([inputRef, inputRefProp])
@@ -190,10 +194,7 @@ export function ComboboxMultiBase<Option extends DefaultComboboxOption>({
 						<ComboboxButtonContainer>
 							{showClearButton && (
 								<Fragment>
-									<ComboboxClearButton
-										disabled={disabled}
-										onClick={() => onClear()}
-									/>
+									<ComboboxClearButton disabled={disabled} onClick={onClear} />
 									<ComboboxButtonDivider />
 								</Fragment>
 							)}

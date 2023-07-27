@@ -59,7 +59,6 @@ export function ComboboxAsyncMulti<Option extends DefaultComboboxOption>({
 	value,
 	onChange,
 	loadOptions: loadOptionsProp,
-	inputRef: inputRefProp,
 	...props
 }: ComboboxAsyncMultiProps<Option>) {
 	const inputId = useComboboxInputId(id);
@@ -231,13 +230,6 @@ export function ComboboxAsyncMulti<Option extends DefaultComboboxOption>({
 		loadOptions(shouldLoadOptions);
 	}, [shouldLoadOptions, debouncedInputValue, loadOptionsProp]);
 
-	const inputRef = useRef<HTMLInputElement>(null);
-
-	const onClear = useCallback(() => {
-		setSelectedItems([]);
-		inputRef.current?.focus();
-	}, [setSelectedItems]);
-
 	return (
 		<ComboboxMultiBase
 			combobox={combobox}
@@ -247,9 +239,7 @@ export function ComboboxAsyncMulti<Option extends DefaultComboboxOption>({
 			loading={state.loading}
 			networkError={state.networkError}
 			selectedItems={selectedItems}
-			onClear={onClear}
-			inputRef={inputRef}
-			inputRefProp={inputRefProp}
+			setSelectedItems={setSelectedItems}
 			clearable
 			{...props}
 		/>

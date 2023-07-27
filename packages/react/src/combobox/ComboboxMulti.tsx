@@ -1,4 +1,4 @@
-import { ReactNode, Ref, useCallback, useMemo, useRef, useState } from 'react';
+import { ReactNode, Ref, useCallback, useMemo, useState } from 'react';
 import { useCombobox, useMultipleSelection } from 'downshift';
 import { FieldMaxWidth } from '../core';
 import { ComboboxMultiBase } from './ComboboxBase';
@@ -50,7 +50,6 @@ export function ComboboxMulti<Option extends DefaultComboboxOption>({
 	value,
 	onChange,
 	options,
-	inputRef: inputRefProp,
 	...props
 }: ComboboxMultiProps<Option>) {
 	const [inputValue, setInputValue] = useState('');
@@ -133,13 +132,6 @@ export function ComboboxMulti<Option extends DefaultComboboxOption>({
 		},
 	});
 
-	const inputRef = useRef<HTMLInputElement>(null);
-
-	const onClear = useCallback(() => {
-		setSelectedItems([]);
-		inputRef.current?.focus();
-	}, [setSelectedItems]);
-
 	return (
 		<ComboboxMultiBase
 			combobox={combobox}
@@ -147,9 +139,7 @@ export function ComboboxMulti<Option extends DefaultComboboxOption>({
 			inputItems={items}
 			inputId={inputId}
 			selectedItems={selectedItems}
-			onClear={onClear}
-			inputRef={inputRef}
-			inputRefProp={inputRefProp}
+			setSelectedItems={setSelectedItems}
 			{...props}
 		/>
 	);
