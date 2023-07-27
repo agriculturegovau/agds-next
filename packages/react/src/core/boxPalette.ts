@@ -44,7 +44,7 @@ export const boxPalettes = {
 		[boxPaletteVars.border]: `var(${themeVars.lightBorder})`,
 		[boxPaletteVars.borderMuted]: `var(${themeVars.lightBorderMuted})`,
 		[boxPaletteVars.selected]: `var(${themeVars.lightSelected})`,
-		[boxPalette.selectedMuted]: `var(${themeVars.lightSelectedMuted})`,
+		[boxPaletteVars.selectedMuted]: `var(${themeVars.lightSelectedMuted})`,
 		[boxPaletteVars.accent]: `var(${themeVars.lightAccent})`,
 		[boxPaletteVars.overlay]: `var(${themeVars.lightOverlay})`,
 		[boxPaletteVars.systemError]: `var(${themeVars.lightSystemError})`,
