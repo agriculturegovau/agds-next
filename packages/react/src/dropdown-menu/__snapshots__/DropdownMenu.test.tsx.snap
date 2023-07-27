@@ -45,7 +45,7 @@ exports[`DropdownMenu Decorative renders correctly 1`] = `
     tabindex="-1"
   >
     <div
-      class="css-1diosr3-boxStyles-DropdownMenuItem"
+      class="css-1ophp8v-boxStyles-DropdownMenuItem"
       id="dropdown-menu-:ru:-item-:rv:"
       role="menuitem"
       tabindex="-1"
@@ -79,7 +79,7 @@ exports[`DropdownMenu Decorative renders correctly 1`] = `
       </div>
     </div>
     <div
-      class="css-1diosr3-boxStyles-DropdownMenuItem"
+      class="css-1ophp8v-boxStyles-DropdownMenuItem"
       id="dropdown-menu-:ru:-item-:r10:"
       role="menuitem"
       tabindex="-1"
@@ -123,7 +123,7 @@ exports[`DropdownMenu Decorative renders correctly 1`] = `
       class="css-1th2zfi-Divider"
     />
     <div
-      class="css-1diosr3-boxStyles-DropdownMenuItem"
+      class="css-1ophp8v-boxStyles-DropdownMenuItem"
       id="dropdown-menu-:ru:-item-:r11:"
       role="menuitem"
       tabindex="-1"
@@ -205,7 +205,7 @@ exports[`DropdownMenu Links renders correctly 1`] = `
     tabindex="-1"
   >
     <a
-      class="css-1diosr3-boxStyles-DropdownMenuItem"
+      class="css-1ophp8v-boxStyles-DropdownMenuItem"
       href="/about"
       id="dropdown-menu-:r16:-item-:r17:"
       role="menuitem"
@@ -220,7 +220,7 @@ exports[`DropdownMenu Links renders correctly 1`] = `
       </div>
     </a>
     <a
-      class="css-1diosr3-boxStyles-DropdownMenuItem"
+      class="css-1ophp8v-boxStyles-DropdownMenuItem"
       href="/contact"
       id="dropdown-menu-:r16:-item-:r18:"
       role="menuitem"
@@ -294,7 +294,7 @@ exports[`DropdownMenu Radio Group renders correctly 1`] = `
       </span>
       <div
         aria-checked="false"
-        class="css-473x9-boxStyles-DropdownMenuItemRadio"
+        class="css-1us24yp-boxStyles-DropdownMenuItemRadio"
         id="item-1"
         role="menuitemradio"
       >
@@ -302,12 +302,12 @@ exports[`DropdownMenu Radio Group renders correctly 1`] = `
           class="css-o80hmi-boxStyles"
         >
           <span
-            class="css-6j1v6l-boxStyles-Text"
+            class="css-goz1ed-boxStyles-Text"
           >
             Antfix
           </span>
           <span
-            class="css-13r6ltm-boxStyles-Text-DropdownMenuItemRadio"
+            class="css-1lp7dl8-boxStyles-Text"
           >
             Sydney
           </span>
@@ -315,7 +315,7 @@ exports[`DropdownMenu Radio Group renders correctly 1`] = `
       </div>
       <div
         aria-checked="true"
-        class="css-n7b2lk-boxStyles-DropdownMenuItemRadio"
+        class="css-1rlo8ud-boxStyles-DropdownMenuItemRadio"
         id="item-2"
         role="menuitemradio"
       >
@@ -328,7 +328,7 @@ exports[`DropdownMenu Radio Group renders correctly 1`] = `
             Produce Fresh
           </span>
           <span
-            class="css-13r6ltm-boxStyles-Text-DropdownMenuItemRadio"
+            class="css-1lp7dl8-boxStyles-Text"
           >
             Brisbane
           </span>
@@ -336,7 +336,7 @@ exports[`DropdownMenu Radio Group renders correctly 1`] = `
       </div>
       <div
         aria-checked="false"
-        class="css-473x9-boxStyles-DropdownMenuItemRadio"
+        class="css-1us24yp-boxStyles-DropdownMenuItemRadio"
         id="item-3"
         role="menuitemradio"
       >
@@ -344,12 +344,12 @@ exports[`DropdownMenu Radio Group renders correctly 1`] = `
           class="css-o80hmi-boxStyles"
         >
           <span
-            class="css-6j1v6l-boxStyles-Text"
+            class="css-goz1ed-boxStyles-Text"
           >
             Organic Co
           </span>
           <span
-            class="css-13r6ltm-boxStyles-Text-DropdownMenuItemRadio"
+            class="css-1lp7dl8-boxStyles-Text"
           >
             Canberra
           </span>
@@ -405,7 +405,7 @@ exports[`DropdownMenu renders correctly 1`] = `
     tabindex="-1"
   >
     <div
-      class="css-1diosr3-boxStyles-DropdownMenuItem"
+      class="css-1ophp8v-boxStyles-DropdownMenuItem"
       id="dropdown-menu-:r0:-item-:r1:"
       role="menuitem"
       tabindex="-1"
@@ -419,7 +419,7 @@ exports[`DropdownMenu renders correctly 1`] = `
       </div>
     </div>
     <div
-      class="css-1diosr3-boxStyles-DropdownMenuItem"
+      class="css-1ophp8v-boxStyles-DropdownMenuItem"
       id="dropdown-menu-:r0:-item-:r2:"
       role="menuitem"
       tabindex="-1"
@@ -433,7 +433,7 @@ exports[`DropdownMenu renders correctly 1`] = `
       </div>
     </div>
     <div
-      class="css-1diosr3-boxStyles-DropdownMenuItem"
+      class="css-1ophp8v-boxStyles-DropdownMenuItem"
       id="dropdown-menu-:r0:-item-:r3:"
       role="menuitem"
       tabindex="-1"

@@ -54,23 +54,31 @@ export function DropdownMenuItemRadio({
 			onClick={onClick}
 			alignItems="center"
 			justifyContent="space-between"
-			background={isActiveDescendant ? 'shade' : 'body'}
+			background="body"
 			gap={1}
 			padding={1}
 			css={{
 				cursor: 'pointer',
-				color: boxPalette.foregroundAction,
 
-				'&:hover': {
-					...packs.underline,
+				...(isActiveDescendant && {
 					color: boxPalette.foregroundText,
 					backgroundColor: boxPalette.backgroundShade,
+					'& > div:first-of-type > span': {
+						...packs.underline,
+						color: boxPalette.foregroundText,
+					},
+				}),
+
+				'&:hover': {
+					backgroundColor: boxPalette.backgroundShade,
+					'& > div:first-of-type > span': {
+						...packs.underline,
+						color: boxPalette.foregroundText,
+					},
 				},
 
 				...(checked && {
 					position: 'relative',
-					color: boxPalette.foregroundText,
-
 					'&:before': {
 						content: "''",
 						position: 'absolute',
@@ -84,8 +92,13 @@ export function DropdownMenuItemRadio({
 			}}
 		>
 			<Stack>
-				<Text fontWeight={checked ? 'bold' : 'normal'}>{children}</Text>
-				<Text fontSize="xs" color="muted" css={{ textDecoration: 'none' }}>
+				<Text
+					color={checked ? 'text' : 'action'}
+					fontWeight={checked ? 'bold' : 'normal'}
+				>
+					{children}
+				</Text>
+				<Text fontSize="xs" color="muted">
 					{secondaryText}
 				</Text>
 			</Stack>
