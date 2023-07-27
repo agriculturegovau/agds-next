@@ -69,19 +69,27 @@ export const DropdownMenuItem = forwardRefWithAs<'div', DropdownMenuItemProps>(
 				link
 				focus
 				css={{
+					textDecoration: 'none',
+
 					...(isActiveDescendant && {
-						textDecoration: 'none',
 						color: boxPalette.foregroundText,
 						backgroundColor: boxPalette.backgroundShade,
+						'& div > span': {
+							textDecoration: 'underline',
+						},
 					}),
+
 					'&:hover': {
 						backgroundColor: boxPalette.backgroundShade,
+						'& div > span': {
+							textDecoration: 'underline',
+						},
 					},
 				}}
 				{...props}
 			>
-				<Flex alignItems="center" gap={1}>
-					{Icon ? <Icon color="action" size="md" /> : null}
+				<Flex alignItems="center" gap={0.5}>
+					{Icon ? <Icon color="inherit" size="md" /> : null}
 					<span>{children}</span>
 				</Flex>
 				{endElement}
