@@ -1,16 +1,23 @@
 import '@testing-library/jest-dom';
 import 'html-validate/jest';
 import { cleanup, render } from '../../../../test-utils';
-import { UnorderedList } from './UnorderedList';
-import type { UnorderedListProps } from './UnorderedList';
+import { List } from './List';
+import type { UnorderedListProps } from './List';
+import { ListItem } from './ListItem';
 
 afterEach(cleanup);
 
 function renderUnorderedList(props?: Partial<UnorderedListProps>) {
-	return render(<UnorderedList {...props} />);
+	return render(
+		<List {...props}>
+			<ListItem>Item 1</ListItem>
+			<ListItem>Item 2</ListItem>
+			<ListItem>Item 3</ListItem>
+		</List>
+	);
 }
 
-describe('UnorderedList', () => {
+describe('List', () => {
 	it('renders correctly', () => {
 		const { container } = renderUnorderedList();
 		expect(container).toMatchSnapshot();

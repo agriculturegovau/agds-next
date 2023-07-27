@@ -1,6 +1,9 @@
 import { Meta, StoryObj } from '@storybook/react';
 import { Text } from '../text';
 import { Prose } from '../prose';
+import { List, ListItem } from '../list';
+import { TextLink } from '../text-link';
+import { Stack } from '../stack';
 import { PageAlert } from './PageAlert';
 import { PageAlertTitle } from './PageAlertTitle';
 
@@ -31,27 +34,6 @@ export const Basic: Story = {
 export const WithNoTitle: Story = {
 	args: {
 		tone: 'success',
-	},
-};
-
-export const WithProse: Story = {
-	render: (args) => (
-		<PageAlert {...args}>
-			<Prose>
-				<ul>
-					<li>
-						<a href="#">Full name must not be empty</a>
-					</li>
-					<li>
-						<a href="#">Phone number must not be empty</a>
-					</li>
-				</ul>
-			</Prose>
-		</PageAlert>
-	),
-	args: {
-		title: 'Page alert',
-		tone: 'error',
 	},
 };
 
@@ -117,5 +99,28 @@ export const WithCloseAndChildTitle: Story = {
 		tone: 'success',
 		title: <PageAlertTitle as="h2">Page Alert title as H2</PageAlertTitle>,
 		onDismiss: () => console.log('Closed'),
+	},
+};
+
+export const FormErrorsExample: Story = {
+	name: 'Form errors example',
+	render: (args) => (
+		<PageAlert {...args}>
+			<Stack gap={1}>
+				<Text as="p">Please correct the following fields and try again</Text>
+				<List>
+					<ListItem>
+						<TextLink href="#">Full name must not be empty</TextLink>
+					</ListItem>
+					<ListItem>
+						<TextLink href="#">Phone number must not be empty</TextLink>
+					</ListItem>
+				</List>
+			</Stack>
+		</PageAlert>
+	),
+	args: {
+		title: 'There is a problem',
+		tone: 'error',
 	},
 };
