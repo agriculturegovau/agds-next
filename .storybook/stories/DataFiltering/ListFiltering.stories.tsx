@@ -1,48 +1,20 @@
 import { Meta } from '@storybook/react';
+import { DataProvider, SortAndFilterProvider } from './lib/contexts';
 import { useSortAndFilter } from './lib/useSortAndFilter';
-import { generateTableCaption, useData } from './lib/utils';
+import { useData } from './lib/utils';
 import { ListFiltering } from './ListFiltering';
 
 const ListFilteringExample = () => {
-	const {
-		filters,
-		pagination,
-		resetFilters,
-		removeFilter,
-		setFilters,
-		setPagination,
-		setSort,
-		sort,
-	} = useSortAndFilter({});
-
-	const { loading, data, totalPages, totalItems } = useData({
-		filters,
-		pagination,
-		sort,
-	});
-
-	const tableCaption = generateTableCaption({
-		loading,
-		totalItems,
-		pagination,
-	});
+	const sortAndFilter = useSortAndFilter();
+	const { filters, pagination, sort } = sortAndFilter;
+	const data = useData({ filters, pagination, sort });
 
 	return (
-		<ListFiltering
-			data={data}
-			filters={filters}
-			loading={loading}
-			pagination={pagination}
-			resetFilters={resetFilters}
-			setFilters={setFilters}
-			removeFilter={removeFilter}
-			setPagination={setPagination}
-			setSort={setSort}
-			sort={sort}
-			tableCaption={tableCaption}
-			totalPages={totalPages}
-			totalItems={totalItems}
-		/>
+		<SortAndFilterProvider value={sortAndFilter}>
+			<DataProvider value={data}>
+				<ListFiltering />
+			</DataProvider>
+		</SortAndFilterProvider>
 	);
 };
 

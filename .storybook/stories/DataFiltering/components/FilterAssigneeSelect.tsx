@@ -5,6 +5,7 @@ import { tableId } from './DataTable';
 
 export const FilterAssigneeSelect = ({ block }: { block?: boolean }) => {
 	const { filters, setFilter } = useSortAndFilterContext();
+
 	return (
 		<Select
 			label="Assignee"

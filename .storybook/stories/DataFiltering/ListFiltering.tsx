@@ -1,6 +1,5 @@
 import { Stack } from '@ag.ds-next/react/stack';
 import { PageContent } from '@ag.ds-next/react/content';
-import { PaginationButtons } from '@ag.ds-next/react/pagination';
 import { Prose } from '@ag.ds-next/react/prose';
 import { Column, Columns } from '@ag.ds-next/react/columns';
 import { FormStack } from '@ag.ds-next/react/form-stack';
@@ -15,52 +14,27 @@ import { SideBar, SideBarTitle } from '@ag.ds-next/react/side-bar';
 import { SortBySelect } from './components/SortBySelect';
 import { FilterSearchInput } from './components/FilterSearchInput';
 import { FilterStatusSelect } from './components/FilterStatusSelect';
-import { GetDataFilters, GetDataPagination, GetDataSort } from './lib/getData';
-import { BusinessForAuditWithIndex } from './lib/generateBusinessData';
 import { FilterStateSelect } from './components/FilterStateSelect';
 import { FilterAssigneeSelect } from './components/FilterAssigneeSelect';
 import { DataList } from './components/DataList';
 import { FilterDestinationsSelect } from './components/FilterDestinationsSelect';
 import { FilterServicesSelect } from './components/FilterServicesSelect';
-import { getNumberOfActiveFilters } from './lib/utils';
+import { generateTableCaption, getNumberOfActiveFilters } from './lib/utils';
 import { ActiveFilters } from './components/ActiveFilters';
-
-type ListFilteringLargeProps = {
-	// sort
-	sort: GetDataSort;
-	setSort: (sort: GetDataSort) => void;
-	// filter
-	filters: GetDataFilters;
-	setFilters: (filters: GetDataFilters) => void;
-	resetFilters: () => void;
-	removeFilter: (filter: keyof GetDataFilters) => void;
-	// pagination
-	pagination: GetDataPagination;
-	setPagination: (pagination: GetDataPagination) => void;
-	// data
-	totalPages: number;
-	totalItems: number;
-	loading: boolean;
-	data: BusinessForAuditWithIndex[];
-	tableCaption: string;
-};
+import { useDataContext, useSortAndFilterContext } from './lib/contexts';
+import { DashboardPagination } from './components/DashboardPagination';
 
 /** These patterns are draft designs and are not yet ready for production. */
-export const ListFiltering = ({
-	sort,
-	setSort,
-	filters,
-	setFilters,
-	resetFilters,
-	removeFilter,
-	pagination,
-	setPagination,
-	totalPages,
-	loading,
-	data,
-	tableCaption,
-}: ListFilteringLargeProps) => {
+export const ListFiltering = () => {
+	const { filters, resetFilters, setFilter, pagination } =
+		useSortAndFilterContext();
+	const { data, loading, totalItems } = useDataContext();
 	const numberOfActiveFilters = getNumberOfActiveFilters(filters);
+	const tableCaption = generateTableCaption({
+		loading,
+		totalItems,
+		pagination,
+	});
 
 	const collapseButtonLabel = `Filters ${
 		numberOfActiveFilters ? `(${numberOfActiveFilters})` : ''
@@ -86,64 +60,34 @@ export const ListFiltering = ({
 					<Column columnSpan={{ xs: 12, md: 4 }}>
 						<Stack gap={1}>
 							<SideBar collapseButtonLabel={collapseButtonLabel}>
-								<SideBarTitle
-									title="Filters"
-									action={
-										<Button
-											variant="text"
-											iconAfter={() => <CloseIcon size="sm" />}
-											onClick={resetFilters}
-										>
-											Clear filters
-										</Button>
-									}
-								/>
+								<SideBarTitle title="Filters" />
+
 								<FormStack>
-									<FilterSearchInput
-										filters={filters}
-										setFilters={setFilters}
-										block
-									/>
-									<FilterStatusSelect
-										filters={filters}
-										setFilters={setFilters}
-										block
-									/>
-									<FilterStateSelect
-										filters={filters}
-										setFilters={setFilters}
-										block
-									/>
-									<FilterAssigneeSelect
-										filters={filters}
-										setFilters={setFilters}
-										block
-									/>
-									<FilterDestinationsSelect
-										filters={filters}
-										setFilters={setFilters}
-										block
-									/>
-									<FilterServicesSelect
-										filters={filters}
-										setFilters={setFilters}
-									/>
+									<Button
+										variant="text"
+										iconAfter={() => <CloseIcon size="sm" />}
+										onClick={resetFilters}
+									>
+										Clear filters
+									</Button>
+									<FilterSearchInput block />
+									<FilterStatusSelect block />
+									<FilterStateSelect block />
+									<FilterAssigneeSelect block />
+									<FilterDestinationsSelect block />
+									<FilterServicesSelect />
 									<DateRangePicker
 										fromLabel="Registered from"
 										toLabel="Registered to"
 										hideOptionalLabel
-										onChange={(requestDate) =>
-											setFilters({ ...filters, requestDate })
-										}
+										onChange={(requestDate) => setFilter({ requestDate })}
 										onFromInputChange={(from) =>
-											setFilters({
-												...filters,
+											setFilter({
 												requestDate: { ...filters.requestDate, from },
 											})
 										}
 										onToInputChange={(to) =>
-											setFilters({
-												...filters,
+											setFilter({
 												requestDate: { ...filters.requestDate, to },
 											})
 										}
@@ -153,11 +97,7 @@ export const ListFiltering = ({
 							</SideBar>
 
 							<Box display={{ xs: 'block', lg: 'none' }}>
-								<ActiveFilters
-									filters={filters}
-									removeFilter={removeFilter}
-									resetFilters={resetFilters}
-								/>
+								<ActiveFilters />
 							</Box>
 						</Stack>
 					</Column>
@@ -185,18 +125,10 @@ export const ListFiltering = ({
 								>
 									{tableCaption}
 								</Text>
-								<SortBySelect sort={sort} setSort={setSort} />
+								<SortBySelect />
 							</Flex>
 							<DataList data={data} loading={loading} />
-							{data.length ? (
-								<Stack>
-									<PaginationButtons
-										currentPage={pagination.page}
-										onChange={(page) => setPagination({ ...pagination, page })}
-										totalPages={totalPages}
-									/>
-								</Stack>
-							) : null}
+							<DashboardPagination />
 						</Stack>
 					</Column>
 				</Columns>
