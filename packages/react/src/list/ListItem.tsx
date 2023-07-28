@@ -1,4 +1,5 @@
 import { PropsWithChildren } from 'react';
+import { mapSpacing } from '../core';
 import { Text } from '../text';
 
 type ListItemProps = PropsWithChildren<{}>;
@@ -10,7 +11,7 @@ export function ListItem({ children, ...props }: ListItemProps) {
 			css={{
 				listStyle: 'unset',
 				'&:not(:first-of-type)': {
-					marginTop: '0.5rem',
+					marginTop: mapSpacing(0.5),
 				},
 			}}
 			{...props}

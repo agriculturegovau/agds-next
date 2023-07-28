@@ -3,20 +3,20 @@
 exports[`UnorderedList renders correctly 1`] = `
 <div>
   <ul
-    class="css-131gdsi-boxStyles-UnorderedList"
+    class="css-1qfj7jm-UnorderedList"
   >
     <li
-      class="css-18qcoee-boxStyles-ListItem"
+      class="css-tdgyc3-boxStyles-Text-ListItem"
     >
       Item 1
     </li>
     <li
-      class="css-18qcoee-boxStyles-ListItem"
+      class="css-tdgyc3-boxStyles-Text-ListItem"
     >
       Item 2
     </li>
     <li
-      class="css-18qcoee-boxStyles-ListItem"
+      class="css-tdgyc3-boxStyles-Text-ListItem"
     >
       Item 3
     </li>
