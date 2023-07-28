@@ -1,4 +1,11 @@
-import { ReactNode, useEffect, useMemo, useRef, useState } from 'react';
+import {
+	ReactNode,
+	RefObject,
+	useEffect,
+	useMemo,
+	useRef,
+	useState,
+} from 'react';
 import { useCombobox } from 'downshift';
 import { FieldMaxWidth } from '../core';
 import { ComboboxBase } from './ComboboxBase';
@@ -48,6 +55,8 @@ export type ComboboxAsyncProps<Option extends DefaultComboboxOption> = {
 	showDropdownTrigger?: boolean;
 	/** If true, the dropdown will open when the user focuses on the element  */
 	openDropdownOnFocus?: boolean;
+	/** Ref to the input element. */
+	inputRef?: RefObject<HTMLInputElement>;
 };
 
 export function ComboboxAsync<Option extends DefaultComboboxOption>({
@@ -58,6 +67,7 @@ export function ComboboxAsync<Option extends DefaultComboboxOption>({
 	clearable = false,
 	showDropdownTrigger = true,
 	openDropdownOnFocus = true,
+	inputRef: inputRefProp,
 	...props
 }: ComboboxAsyncProps<Option>) {
 	const inputId = useComboboxInputId(id);
@@ -197,6 +207,7 @@ export function ComboboxAsync<Option extends DefaultComboboxOption>({
 			inputItems={state.inputItems}
 			showDropdownTrigger={showDropdownTrigger}
 			clearable={clearable}
+			inputRef={inputRefProp}
 			{...props}
 		/>
 	);

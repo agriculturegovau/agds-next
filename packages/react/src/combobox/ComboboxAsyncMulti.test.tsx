@@ -1,27 +1,26 @@
 import '@testing-library/jest-dom';
 import 'html-validate/jest';
-import { render, cleanup } from '../../../../test-utils';
-import { ComboboxAsyncMulti } from './ComboboxAsyncMulti';
+import { useRef } from 'react';
+import { render, cleanup, renderHook } from '../../../../test-utils';
+import {
+	ComboboxAsyncMulti,
+	ComboboxAsyncMultiProps,
+} from './ComboboxAsyncMulti';
+import { STATE_OPTIONS, Option } from './test-utils';
 
 afterEach(cleanup);
 
-const mockLoadOptions = jest.fn().mockResolvedValue([
-	{ label: 'Australian Capital Territory', value: 'act' },
-	{ label: 'New South Wales', value: 'nsw' },
-	{ label: 'Northern Territory', value: 'nt' },
-	{ label: 'Queensland', value: 'qld' },
-	{ label: 'South Australia', value: 'sa' },
-	{ label: 'Tasmania', value: 'tas' },
-	{ label: 'Victoria', value: 'vic' },
-	{ label: 'Western Australia', value: 'wa' },
-]);
+const mockLoadOptions = jest.fn().mockResolvedValue(STATE_OPTIONS);
 
-function renderComboboxAsyncMulti() {
+function renderComboboxAsyncMulti(
+	props?: Partial<ComboboxAsyncMultiProps<Option>>
+) {
 	return render(
 		<ComboboxAsyncMulti
 			label="Find your state"
 			hint="Start typing to see results"
 			loadOptions={mockLoadOptions}
+			{...props}
 		/>
 	);
 }
@@ -44,5 +43,15 @@ describe('ComboboxAsyncMulti', () => {
 				'valid-id': 'off',
 			},
 		});
+	});
+
+	it('accepts `inputRef` prop', () => {
+		const { result } = renderHook(() => useRef<HTMLInputElement>(null));
+		const inputRef = result.current;
+		const id = 'test-id';
+		renderComboboxAsyncMulti({ inputRef, id });
+		expect(inputRef.current).toBeInTheDocument();
+		expect(inputRef.current).toBeInstanceOf(HTMLInputElement);
+		expect(inputRef.current?.id).toBe(id);
 	});
 });

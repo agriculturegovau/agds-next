@@ -1,4 +1,4 @@
-import { ReactNode, useCallback, useMemo, useRef, useState } from 'react';
+import { ReactNode, Ref, useCallback, useMemo, useState } from 'react';
 import { useCombobox, useMultipleSelection } from 'downshift';
 import { FieldMaxWidth } from '../core';
 import { ComboboxMultiBase } from './ComboboxBase';
@@ -41,6 +41,8 @@ export type ComboboxMultiProps<Option extends DefaultComboboxOption> = {
 	renderItem?: (item: Option, inputValue: string) => ReactNode;
 	/** Message to display when no options match the users search term. */
 	emptyResultsMessage?: string;
+	/** Ref to the input element. */
+	inputRef?: Ref<HTMLInputElement>;
 };
 
 export function ComboboxMulti<Option extends DefaultComboboxOption>({
@@ -130,13 +132,6 @@ export function ComboboxMulti<Option extends DefaultComboboxOption>({
 		},
 	});
 
-	const inputRef = useRef<HTMLInputElement>(null);
-
-	const onClear = useCallback(() => {
-		setSelectedItems([]);
-		inputRef.current?.focus();
-	}, [setSelectedItems]);
-
 	return (
 		<ComboboxMultiBase
 			combobox={combobox}
@@ -144,8 +139,7 @@ export function ComboboxMulti<Option extends DefaultComboboxOption>({
 			inputItems={items}
 			inputId={inputId}
 			selectedItems={selectedItems}
-			onClear={onClear}
-			inputRef={inputRef}
+			setSelectedItems={setSelectedItems}
 			{...props}
 		/>
 	);

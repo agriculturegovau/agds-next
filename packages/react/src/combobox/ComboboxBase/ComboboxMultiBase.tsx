@@ -1,7 +1,7 @@
 import {
 	Fragment,
 	ReactNode,
-	RefObject,
+	Ref,
 	useCallback,
 	MouseEvent,
 	useRef,
@@ -16,6 +16,7 @@ import {
 	FieldMaxWidth,
 	fontGrid,
 	mapSpacing,
+	mergeRefs,
 	packs,
 	tokens,
 	useTernaryState,
@@ -56,13 +57,14 @@ type ComboboxMultiBaseProps<Option extends DefaultComboboxOption> = {
 	combobox: UseComboboxReturnValue<Option>;
 	multiSelection: UseMultipleSelectionReturnValue<Option>;
 	selectedItems: Option[];
-	onClear: () => void;
-	inputRef: RefObject<HTMLInputElement>;
+	setSelectedItems: (value: Option[]) => void;
 	loading?: boolean;
 	inputItems?: Option[];
 	networkError?: boolean;
 	emptyResultsMessage?: string;
 	renderItem?: (item: Option, inputValue: string) => ReactNode;
+	// input ref
+	inputRef?: Ref<HTMLInputElement>;
 };
 
 export function ComboboxMultiBase<Option extends DefaultComboboxOption>({
@@ -84,10 +86,12 @@ export function ComboboxMultiBase<Option extends DefaultComboboxOption>({
 	combobox,
 	inputItems,
 	selectedItems,
+	setSelectedItems,
 	multiSelection,
-	onClear,
-	inputRef,
+	inputRef: inputRefProp,
 }: ComboboxMultiBaseProps<Option>) {
+	const inputRef = useRef<HTMLInputElement>(null);
+
 	const [isInputFocused, setInputFocused, setInputBlurred] =
 		useTernaryState(false);
 
@@ -125,6 +129,15 @@ export function ComboboxMultiBase<Option extends DefaultComboboxOption>({
 		},
 		[inputRef]
 	);
+
+	const onClear = useCallback(() => {
+		setSelectedItems([]);
+		inputRef.current?.focus();
+	}, [setSelectedItems]);
+
+	const inputRefs = inputRefProp
+		? mergeRefs([inputRef, inputRefProp])
+		: inputRef;
 
 	return (
 		<Field
@@ -168,7 +181,7 @@ export function ComboboxMultiBase<Option extends DefaultComboboxOption>({
 								{...a11yProps}
 								{...combobox.getInputProps(
 									multiSelection.getDropdownProps({
-										ref: inputRef,
+										ref: inputRefs,
 										type: 'text',
 										preventKeyAction: combobox.isOpen,
 										onFocus: setInputFocused,
@@ -181,10 +194,7 @@ export function ComboboxMultiBase<Option extends DefaultComboboxOption>({
 						<ComboboxButtonContainer>
 							{showClearButton && (
 								<Fragment>
-									<ComboboxClearButton
-										disabled={disabled}
-										onClick={() => onClear()}
-									/>
+									<ComboboxClearButton disabled={disabled} onClick={onClear} />
 									<ComboboxButtonDivider />
 								</Fragment>
 							)}

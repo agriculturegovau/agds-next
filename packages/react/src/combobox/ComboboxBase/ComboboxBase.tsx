@@ -1,4 +1,4 @@
-import { Fragment, ReactNode } from 'react';
+import { Fragment, Ref, ReactNode } from 'react';
 import { UseComboboxReturnValue } from 'downshift';
 import { FieldMaxWidth } from '../../core';
 import { Popover, usePopover } from '../../_popover';
@@ -34,12 +34,13 @@ type ComboboxBaseProps<Option extends DefaultComboboxOption> = {
 	showDropdownTrigger?: boolean;
 	clearable?: boolean;
 	// Downshift
-	combobox: UseComboboxReturnValue<Option>;
+	inputRef?: Ref<HTMLInputElement>;
 	loading?: boolean;
 	inputItems?: Option[];
 	networkError?: boolean;
 	emptyResultsMessage?: string;
 	renderItem?: (item: Option, inputValue: string) => ReactNode;
+	combobox: UseComboboxReturnValue<Option>;
 };
 
 export function ComboboxBase<Option extends DefaultComboboxOption>({
@@ -62,6 +63,7 @@ export function ComboboxBase<Option extends DefaultComboboxOption>({
 	networkError,
 	combobox,
 	inputItems,
+	inputRef: inputRefProp,
 }: ComboboxBaseProps<Option>) {
 	const showClearButton = clearable && combobox.selectedItem;
 	const hasButtons = showDropdownTrigger || showClearButton;
@@ -105,6 +107,7 @@ export function ComboboxBase<Option extends DefaultComboboxOption>({
 						disabled={disabled}
 						{...combobox.getInputProps({
 							...a11yProps,
+							ref: inputRefProp,
 							type: 'text',
 							name: inputName,
 						})}

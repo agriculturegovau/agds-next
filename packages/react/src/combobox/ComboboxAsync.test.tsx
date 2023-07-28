@@ -1,28 +1,28 @@
+import { useRef } from 'react';
 import '@testing-library/jest-dom';
 import 'html-validate/jest';
 import userEvent from '@testing-library/user-event';
-import { render, cleanup, act, waitFor } from '../../../../test-utils';
-import { ComboboxAsync } from './ComboboxAsync';
+import {
+	render,
+	cleanup,
+	act,
+	waitFor,
+	renderHook,
+} from '../../../../test-utils';
+import { ComboboxAsync, ComboboxAsyncProps } from './ComboboxAsync';
+import { STATE_OPTIONS, Option } from './test-utils';
 
 afterEach(cleanup);
 
-const mockLoadOptions = jest.fn().mockResolvedValue([
-	{ label: 'Australian Capital Territory', value: 'act' },
-	{ label: 'New South Wales', value: 'nsw' },
-	{ label: 'Northern Territory', value: 'nt' },
-	{ label: 'Queensland', value: 'qld' },
-	{ label: 'South Australia', value: 'sa' },
-	{ label: 'Tasmania', value: 'tas' },
-	{ label: 'Victoria', value: 'vic' },
-	{ label: 'Western Australia', value: 'wa' },
-]);
+const mockLoadOptions = jest.fn().mockResolvedValue(STATE_OPTIONS);
 
-function renderComboboxAsync() {
+function renderComboboxAsync(props?: Partial<ComboboxAsyncProps<Option>>) {
 	return render(
 		<ComboboxAsync
 			label="Find your state"
 			hint="Start typing to see results"
 			loadOptions={mockLoadOptions}
+			{...props}
 		/>
 	);
 }
@@ -70,5 +70,15 @@ describe('ComboboxAsync', () => {
 
 		// Expect the input to be updated
 		expect(input.value).toBe('Queensland');
+	});
+
+	it('accepts `inputRef` prop', () => {
+		const { result } = renderHook(() => useRef<HTMLInputElement>(null));
+		const inputRef = result.current;
+		const id = 'test-id';
+		renderComboboxAsync({ inputRef, id });
+		expect(inputRef.current).toBeInTheDocument();
+		expect(inputRef.current).toBeInstanceOf(HTMLInputElement);
+		expect(inputRef.current?.id).toBe(id);
 	});
 });

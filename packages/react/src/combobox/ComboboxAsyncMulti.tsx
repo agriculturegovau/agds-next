@@ -1,5 +1,6 @@
 import {
 	ReactNode,
+	Ref,
 	useCallback,
 	useEffect,
 	useMemo,
@@ -49,6 +50,8 @@ export type ComboboxAsyncMultiProps<Option extends DefaultComboboxOption> = {
 	renderItem?: (item: Option, inputValue: string) => ReactNode;
 	/** Message to display when no options match the users search term. */
 	emptyResultsMessage?: string;
+	/** Ref to the input element. */
+	inputRef?: Ref<HTMLInputElement>;
 };
 
 export function ComboboxAsyncMulti<Option extends DefaultComboboxOption>({
@@ -227,13 +230,6 @@ export function ComboboxAsyncMulti<Option extends DefaultComboboxOption>({
 		loadOptions(shouldLoadOptions);
 	}, [shouldLoadOptions, debouncedInputValue, loadOptionsProp]);
 
-	const inputRef = useRef<HTMLInputElement>(null);
-
-	const onClear = useCallback(() => {
-		setSelectedItems([]);
-		inputRef.current?.focus();
-	}, [setSelectedItems]);
-
 	return (
 		<ComboboxMultiBase
 			combobox={combobox}
@@ -243,8 +239,7 @@ export function ComboboxAsyncMulti<Option extends DefaultComboboxOption>({
 			loading={state.loading}
 			networkError={state.networkError}
 			selectedItems={selectedItems}
-			onClear={onClear}
-			inputRef={inputRef}
+			setSelectedItems={setSelectedItems}
 			clearable
 			{...props}
 		/>
