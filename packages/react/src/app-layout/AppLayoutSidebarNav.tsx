@@ -116,7 +116,7 @@ function AppLayoutSidebarNavItemInner({
 				' a, button': {
 					display: 'flex',
 					alignItems: 'center',
-					gap: mapSpacing(1),
+					gap: mapSpacing(0.75),
 					width: '100%',
 					boxSizing: 'border-box',
 					paddingLeft: mapSpacing(1.5),
