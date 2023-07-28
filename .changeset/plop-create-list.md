@@ -2,4 +2,4 @@
 '@ag.ds-next/react': minor
 ---
 
-list: Created new `List` component
+list: Created new components `UnorderedList` and `OrderedList`

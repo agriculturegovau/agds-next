@@ -1,9 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`List renders correctly 1`] = `
+exports[`UnorderedList renders correctly 1`] = `
 <div>
   <ul
-    class="css-6vt92m-boxStyles-List"
+    class="css-131gdsi-boxStyles-UnorderedList"
   >
     <li
       class="css-18qcoee-boxStyles-ListItem"

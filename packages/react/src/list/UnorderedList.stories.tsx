@@ -1,29 +1,29 @@
 import { StoryObj, Meta, StoryFn } from '@storybook/react';
 import { Stack } from '../stack';
 import { Text } from '../text';
-import { List } from './List';
+import { UnorderedList } from './UnorderedList';
 import { ListItem } from './ListItem';
 
-const Example: StoryFn<typeof List> = (args) => (
+const Example: StoryFn<typeof UnorderedList> = (args) => (
 	<Stack gap={1}>
 		<Text as="p">This is a paragraph, wrapped in a Stack.</Text>
-		<List {...args}>
+		<UnorderedList {...args}>
 			<ListItem>Item 1</ListItem>
 			<ListItem>Item 2</ListItem>
 			<ListItem>Item 3</ListItem>
-		</List>
+		</UnorderedList>
 	</Stack>
 );
 
-const meta: Meta<typeof List> = {
+const meta: Meta<typeof UnorderedList> = {
 	title: 'Content/List',
-	component: List,
+	component: UnorderedList,
 	render: Example,
 };
 
 export default meta;
 
-type Story = StoryObj<typeof List>;
+type Story = StoryObj<typeof UnorderedList>;
 
 export const Basic: Story = {};
 
