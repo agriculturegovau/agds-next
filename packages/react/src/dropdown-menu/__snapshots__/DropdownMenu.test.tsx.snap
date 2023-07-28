@@ -287,7 +287,7 @@ exports[`DropdownMenu Radio Group renders correctly 1`] = `
       role="group"
     >
       <span
-        class="css-v459nx-boxStyles-Text"
+        class="css-190t308-boxStyles-Text"
         id="dropdown-menu-:r1i:-group-:r1j:"
       >
         Businesses
