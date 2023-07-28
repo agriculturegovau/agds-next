@@ -1,7 +1,37 @@
 ---
 title: List
-description: Description of List
+description: Unordered and ordered HTML lists
 group: Content
 storybookPath: /story/Content-UnorderedList--basic
 unreleased: true
+relatedComponents: ['text', 'prose', 'link-list']
 ---
+
+`UnorderedList` and `OrderedList` are used to render simple HTML lists.
+
+These can be used inside our block section components like PageAlert and Modal, which enforce 1rem spacing between elements.
+
+For long-form content, it's best to render plain `ol` or `ul` elements in our Prose component.
+
+```jsx live
+<UnorderedList>
+	<ListItem>
+		Unordered List level 1
+		<UnorderedList>
+			<ListItem>Unordered List level 2</ListItem>
+			<ListItem>
+				<TextLink href="#">Unordered List level 2, with a TextLink</TextLink>
+			</ListItem>
+			<ListItem>
+				Unordered List level 2
+				<OrderedList>
+					<ListItem>Ordered List level 3</ListItem>
+					<ListItem>Ordered List level 3</ListItem>
+				</OrderedList>
+			</ListItem>
+		</UnorderedList>
+	</ListItem>
+	<ListItem>Unordered List level 1</ListItem>
+	<ListItem>Unordered List level 1</ListItem>
+</UnorderedList>
+```
