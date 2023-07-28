@@ -83,7 +83,7 @@ export const DropdownMenuItem = forwardRefWithAs<'div', DropdownMenuItemProps>(
 				}}
 				{...props}
 			>
-				<Flex alignItems="center" gap={1}>
+				<Flex alignItems="center" gap={0.75}>
 					{Icon ? <Icon color="inherit" size="md" /> : null}
 					<span>{children}</span>
 				</Flex>
