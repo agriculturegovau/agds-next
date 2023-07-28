@@ -2,17 +2,15 @@ import { PropsWithChildren } from 'react';
 import { Stack } from '../stack';
 import { mapSpacing } from '../core';
 
-export type UnorderedListProps = PropsWithChildren<{
-	type?: 'ordered' | 'unordered';
-}>;
+export type OrderedListProps = PropsWithChildren<{}>;
 
-export function UnorderedList({ children, ...props }: UnorderedListProps) {
+export function OrderedList({ children, ...props }: OrderedListProps) {
 	return (
 		<Stack
-			as="ul"
+			as="ol"
 			gap={0.5}
 			css={{
-				listStyle: 'disc',
+				listStyle: 'decimal',
 				margin: 0,
 				paddingLeft: mapSpacing(2),
 			}}
