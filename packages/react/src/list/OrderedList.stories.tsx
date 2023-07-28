@@ -25,4 +25,29 @@ export default meta;
 
 type Story = StoryObj<typeof OrderedList>;
 
-export const Basic: Story = {};
+export const Ordered: Story = {
+	storyName: 'OrderedList',
+};
+
+export const NestedOl: Story = {
+	storyName: 'OrderedList (nested)',
+	render: (args) => (
+		<OrderedList {...args}>
+			<ListItem>
+				Ordered List level 1
+				<OrderedList>
+					<ListItem>Ordered List level 2</ListItem>
+					<ListItem>
+						Ordered List level 2
+						<OrderedList>
+							<ListItem>Ordered List level 3</ListItem>
+							<ListItem>Ordered List level 3</ListItem>
+						</OrderedList>
+					</ListItem>
+				</OrderedList>
+			</ListItem>
+			<ListItem>Ordered List level 1</ListItem>
+			<ListItem>Ordered List level 1</ListItem>
+		</OrderedList>
+	),
+};

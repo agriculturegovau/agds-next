@@ -1,22 +1,26 @@
 import { PropsWithChildren } from 'react';
-import { Stack } from '../stack';
 import { mapSpacing } from '../core';
+import { ListContext, useListDepth } from './context';
 
 export type OrderedListProps = PropsWithChildren<{}>;
 
-export function OrderedList({ children, ...props }: OrderedListProps) {
+export function OrderedList({ children }: OrderedListProps) {
+	const depth = useListDepth();
+	const value = depth + 1;
 	return (
-		<Stack
-			as="ol"
-			gap={0.5}
-			css={{
-				listStyle: 'decimal',
-				margin: 0,
-				paddingLeft: mapSpacing(2),
-			}}
-			{...props}
-		>
-			{children}
-		</Stack>
+		<ListContext.Provider value={value}>
+			<ListContext.Consumer>
+				{(depth) => (
+					<ol
+						css={{
+							marginTop: depth > 1 ? mapSpacing(0.5) : 0,
+							marginBottom: 0,
+						}}
+					>
+						{children}
+					</ol>
+				)}
+			</ListContext.Consumer>
+		</ListContext.Provider>
 	);
 }

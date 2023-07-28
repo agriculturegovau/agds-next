@@ -2,7 +2,6 @@ import { Meta, StoryObj } from '@storybook/react';
 import { Text } from '../text';
 import { UnorderedList, ListItem } from '../list';
 import { TextLink } from '../text-link';
-import { Stack } from '../stack';
 import { PageAlert } from './PageAlert';
 import { PageAlertTitle } from './PageAlertTitle';
 
@@ -105,17 +104,15 @@ export const FormErrorsExample: Story = {
 	name: 'Form errors example',
 	render: (args) => (
 		<PageAlert {...args}>
-			<Stack gap={1}>
-				<Text as="p">Please correct the following fields and try again</Text>
-				<UnorderedList>
-					<ListItem>
-						<TextLink href="#">Full name must not be empty</TextLink>
-					</ListItem>
-					<ListItem>
-						<TextLink href="#">Phone number must not be empty</TextLink>
-					</ListItem>
-				</UnorderedList>
-			</Stack>
+			<Text as="p">Please correct the following fields and try again</Text>
+			<UnorderedList>
+				<ListItem>
+					<TextLink href="#">Full name must not be empty</TextLink>
+				</ListItem>
+				<ListItem>
+					<TextLink href="#">Phone number must not be empty</TextLink>
+				</ListItem>
+			</UnorderedList>
 		</PageAlert>
 	),
 	args: {

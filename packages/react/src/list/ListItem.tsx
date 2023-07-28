@@ -1,18 +1,21 @@
 import { PropsWithChildren } from 'react';
-import { Box } from '../box';
+import { Text } from '../text';
 
 type ListItemProps = PropsWithChildren<{}>;
 
 export function ListItem({ children, ...props }: ListItemProps) {
 	return (
-		<Box
+		<Text
 			as="li"
 			css={{
 				listStyle: 'unset',
+				'&:not(:first-of-type)': {
+					marginTop: '0.5rem',
+				},
 			}}
 			{...props}
 		>
 			{children}
-		</Box>
+		</Text>
 	);
 }
