@@ -62,13 +62,13 @@ export type ButtonVariant = keyof typeof variants;
 const sizes = {
 	sm: {
 		...packs.input.sm,
-		gap: mapSpacing(0.25),
+		gap: mapSpacing(0.5),
 		paddingLeft: mapSpacing(0.75),
 		paddingRight: mapSpacing(0.75),
 	},
 	md: {
 		...packs.input.md,
-		gap: mapSpacing(0.5),
+		gap: mapSpacing(0.75),
 		paddingLeft: mapSpacing(1.5),
 		paddingRight: mapSpacing(1.5),
 	},
