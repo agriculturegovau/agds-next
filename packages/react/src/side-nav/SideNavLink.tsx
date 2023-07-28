@@ -2,7 +2,7 @@ import { PropsWithChildren, ReactNode } from 'react';
 import { Flex } from '../flex';
 import { useLinkComponent, LinkProps, tokens } from '../core';
 import { boxPalette, packs } from '../core';
-import { sideBarLocalPalette } from '../side-bar';
+import { sideBarLocalPalette } from '../_collapsing-side-bar';
 import { useLinkListDepth } from './context';
 
 export type SideNavLinkType = LinkProps & {

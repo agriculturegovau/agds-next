@@ -1,14 +1,14 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`SideBar renders correctly 1`] = `
+exports[`CollapsingSideBar renders correctly 1`] = `
 <div>
   <div
-    class="css-1ibrqf4-boxStyles-SideBarContainer"
+    class="css-1mgi1mm-boxStyles-CollapsingSideBarContainer"
   >
     <button
       aria-controls="side-bar-:r0:-body"
       aria-expanded="false"
-      class="css-pwp7qi-BaseButton-boxStyles-SideBarCollapseButton"
+      class="css-ez4joz-BaseButton-boxStyles-SideBarCollapseButton"
       id="side-bar-:r0:-button"
       type="button"
     >
@@ -30,14 +30,14 @@ exports[`SideBar renders correctly 1`] = `
       </svg>
     </button>
     <div
-      class="css-1urfsrs-SideBar"
+      class="css-1x3p89f-CollapsingSideBar"
       id="side-bar-:r0:-body"
       style="display: none; height: 0px; overflow: hidden;"
     >
       <div
         class="css-td3mpi-boxStyles"
       >
-        SideBar Content
+        CollapsingSideBar Content
       </div>
     </div>
   </div>

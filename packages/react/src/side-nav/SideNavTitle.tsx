@@ -1,7 +1,7 @@
 import { PropsWithChildren } from 'react';
 import { Box } from '../box';
 import { packs, useLinkComponent } from '../core';
-import { sideBarLocalPalette } from '../side-bar';
+import { sideBarLocalPalette } from '../_collapsing-side-bar';
 
 export type SideNavTitleProps = PropsWithChildren<{
 	id: string;

@@ -1,7 +1,7 @@
 import { useRef } from 'react';
 import { Box } from '../box';
 import { LinkProps } from '../core';
-import { SideBar, SideBarBackground } from '../side-bar';
+import { CollapsingSideBar, SideBarBackground } from '../_collapsing-side-bar';
 import { SideNavTitle } from './SideNavTitle';
 import { findBestMatch, useSideNavIds } from './utils';
 import { SideNavLinkList } from './SideNavLinkList';
@@ -40,7 +40,7 @@ export function SideNav({
 	const bestMatch = findBestMatch(items, activePath);
 
 	return (
-		<SideBar
+		<CollapsingSideBar
 			as="aside"
 			collapseButtonLabel={collapseTitle}
 			background={background}
@@ -63,6 +63,6 @@ export function SideNav({
 				</SideNavTitle>
 				<SideNavLinkList activePath={bestMatch} items={items} />
 			</Box>
-		</SideBar>
+		</CollapsingSideBar>
 	);
 }

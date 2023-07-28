@@ -1,7 +1,10 @@
 import { useRef } from 'react';
 import { packs, useId } from '../core';
 import { Box } from '../box';
-import { SideBar, SideBarTitle } from '../side-bar';
+import {
+	CollapsingSideBar,
+	CollapsingSideBarTitle,
+} from '../_collapsing-side-bar';
 import {
 	ProgressIndicatorItem,
 	ProgressIndicatorItemButton,
@@ -26,7 +29,7 @@ export const ProgressIndicator = ({
 	const subHeading = `${stepsCompleted} of ${totalSteps} steps completed`;
 
 	return (
-		<SideBar
+		<CollapsingSideBar
 			as="section"
 			collapseButtonLabel={subHeading}
 			background={background}
@@ -36,7 +39,7 @@ export const ProgressIndicator = ({
 					...packs.print.visible,
 				}}
 			>
-				<SideBarTitle title="Progress" subtitle={subHeading} />
+				<CollapsingSideBarTitle title="Progress" subtitle={subHeading} />
 				<ProgressIndicatorList ref={ref}>
 					{items.map(({ label, ...props }, index) => {
 						if (isItemLink(props)) {
@@ -62,7 +65,7 @@ export const ProgressIndicator = ({
 					})}
 				</ProgressIndicatorList>
 			</Box>
-		</SideBar>
+		</CollapsingSideBar>
 	);
 };
 

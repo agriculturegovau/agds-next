@@ -10,7 +10,11 @@ export type SideBarTitleProps = PropsWithChildren<{
 	subtitle?: string;
 }>;
 
-export function SideBarTitle({ id, title, subtitle }: SideBarTitleProps) {
+export function CollapsingSideBarTitle({
+	id,
+	title,
+	subtitle,
+}: SideBarTitleProps) {
 	return (
 		<Flex
 			borderBottom

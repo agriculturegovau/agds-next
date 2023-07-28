@@ -3,15 +3,15 @@ import { Column, Columns } from '@ag.ds-next/react/columns';
 import { PageContent } from '@ag.ds-next/react/content';
 import { Prose } from '@ag.ds-next/react/prose';
 import { Box } from '../box';
-import { SideBar } from './SideBar';
-import { SideBarTitle } from './SideBarTitle';
+import { CollapsingSideBar } from './CollapsingSideBar';
+import { CollapsingSideBarTitle } from './CollapsingSideBarTitle';
 
-const SideBarExampleFrame: StoryFn<typeof SideBar> = (args) => {
+const SideBarExampleFrame: StoryFn<typeof CollapsingSideBar> = (args) => {
 	return (
 		<PageContent>
 			<Columns gap={{ xs: 1, md: 3 }}>
 				<Column columnSpan={{ xs: 12, md: 4 }}>
-					<SideBar {...args} />
+					<CollapsingSideBar {...args} />
 				</Column>
 				<Column
 					as="main"
@@ -30,16 +30,16 @@ const SideBarExampleFrame: StoryFn<typeof SideBar> = (args) => {
 	);
 };
 
-const meta: Meta<typeof SideBar> = {
-	title: 'Layout/SideBar',
-	component: SideBar,
+const meta: Meta<typeof CollapsingSideBar> = {
+	title: 'Layout/CollapsingSideBar',
+	component: CollapsingSideBar,
 	render: (args) => <SideBarExampleFrame {...args} />,
 	args: {
 		collapseButtonLabel: 'Collapse button label',
 		children: (
 			<>
-				<SideBarTitle title="SideBarTitle" />
-				<Box paddingY={1}>SideBar Content area</Box>
+				<CollapsingSideBarTitle title="CollapsingSideBarTitle" />
+				<Box paddingY={1}>CollapsingSideBar Content area</Box>
 			</>
 		),
 	},
@@ -47,7 +47,7 @@ const meta: Meta<typeof SideBar> = {
 
 export default meta;
 
-type Story = StoryObj<typeof SideBar>;
+type Story = StoryObj<typeof CollapsingSideBar>;
 
 export const Basic: Story = {};
 
@@ -56,8 +56,11 @@ export const withSubTitle: Story = {
 	args: {
 		children: (
 			<>
-				<SideBarTitle title="SideBarTitle" subtitle="Subtitle" />
-				<Box paddingY={1}>SideBar Content area</Box>
+				<CollapsingSideBarTitle
+					title="CollapsingSideBarTitle"
+					subtitle="Subtitle"
+				/>
+				<Box paddingY={1}>CollapsingSideBar Content area</Box>
 			</>
 		),
 	},
@@ -68,7 +71,7 @@ export const Filtering: Story = {
 		collapseButtonLabel: 'Filters (3)',
 		children: (
 			<>
-				<SideBarTitle title="Filters" />
+				<CollapsingSideBarTitle title="Filters" />
 			</>
 		),
 	},
@@ -79,8 +82,11 @@ export const ProgressIndicator = {
 		collapseButtonLabel: '1 of 5 steps completed',
 		children: (
 			<>
-				<SideBarTitle title="Progress" subtitle="1 of 5 steps completed" />
-				<Box paddingY={1}>SideBar Content area</Box>
+				<CollapsingSideBarTitle
+					title="Progress"
+					subtitle="1 of 5 steps completed"
+				/>
+				<Box paddingY={1}>CollapsingSideBar Content area</Box>
 			</>
 		),
 	},

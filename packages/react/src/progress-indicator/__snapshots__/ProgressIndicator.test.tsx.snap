@@ -3,12 +3,12 @@
 exports[`ProgressIndicator With anchors renders correctly 1`] = `
 <div>
   <section
-    class="css-1ibrqf4-boxStyles-SideBarContainer"
+    class="css-1mgi1mm-boxStyles-CollapsingSideBarContainer"
   >
     <button
       aria-controls="side-bar-:r0:-body"
       aria-expanded="false"
-      class="css-pwp7qi-BaseButton-boxStyles-SideBarCollapseButton"
+      class="css-ez4joz-BaseButton-boxStyles-SideBarCollapseButton"
       id="side-bar-:r0:-button"
       type="button"
     >
@@ -30,7 +30,7 @@ exports[`ProgressIndicator With anchors renders correctly 1`] = `
       </svg>
     </button>
     <div
-      class="css-1urfsrs-SideBar"
+      class="css-1x3p89f-CollapsingSideBar"
       id="side-bar-:r0:-body"
       style="display: none; height: 0px; overflow: hidden;"
     >
@@ -268,12 +268,12 @@ exports[`ProgressIndicator With anchors renders correctly 1`] = `
 exports[`ProgressIndicator With buttons renders correctly 1`] = `
 <div>
   <section
-    class="css-1ibrqf4-boxStyles-SideBarContainer"
+    class="css-1mgi1mm-boxStyles-CollapsingSideBarContainer"
   >
     <button
       aria-controls="side-bar-:r2:-body"
       aria-expanded="false"
-      class="css-pwp7qi-BaseButton-boxStyles-SideBarCollapseButton"
+      class="css-ez4joz-BaseButton-boxStyles-SideBarCollapseButton"
       id="side-bar-:r2:-button"
       type="button"
     >
@@ -295,7 +295,7 @@ exports[`ProgressIndicator With buttons renders correctly 1`] = `
       </svg>
     </button>
     <div
-      class="css-1urfsrs-SideBar"
+      class="css-1x3p89f-CollapsingSideBar"
       id="side-bar-:r2:-body"
       style="display: none; height: 0px; overflow: hidden;"
     >

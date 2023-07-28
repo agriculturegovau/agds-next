@@ -1,7 +1,7 @@
 import { useId } from '../core';
 
 export const sideBarLocalPaletteVars = {
-	hover: '--side-bar-hover',
+	hover: '--collapsing-side-bar-hover',
 };
 
 export const sideBarLocalPalette = {
