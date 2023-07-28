@@ -202,8 +202,10 @@ export {
 } from '@ag.ds-next/react/summary-list';
 export { FileInput } from '@ag.ds-next/react/file-input';
 export {
-	AppLayoutSidebar,
+	AppLayout,
 	AppLayoutHeader,
+	AppLayoutSidebar,
+	AppLayoutContent,
 	AppLayoutFooter,
 	AppLayoutFooterDivider,
 } from '@ag.ds-next/react/app-layout';
