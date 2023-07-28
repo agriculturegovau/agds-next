@@ -59,7 +59,7 @@ exports[`FileInput invalid renders correctly 1`] = `
       aria-describedby="field-:r2:-message"
       aria-invalid="true"
       aria-required="false"
-      class="css-15vg304-FileInput"
+      class="css-s898fa-FileInput"
       id="field-:r2:"
       type="file"
     />
@@ -91,7 +91,7 @@ exports[`FileInput renders correctly 1`] = `
     <input
       aria-invalid="false"
       aria-required="false"
-      class="css-15vg304-FileInput"
+      class="css-s898fa-FileInput"
       id="field-:r0:"
       type="file"
     />

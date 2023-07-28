@@ -3,7 +3,7 @@
 exports[`Button Loading renders correctly 1`] = `
 <div>
   <button
-    class="css-3jmmp1-BaseButton-Button"
+    class="css-c40ne8-BaseButton-Button"
     data-testid="example"
     type="button"
   >
@@ -47,7 +47,7 @@ exports[`Button Loading renders correctly 1`] = `
 exports[`Button renders correctly 1`] = `
 <div>
   <button
-    class="css-3jmmp1-BaseButton-Button"
+    class="css-c40ne8-BaseButton-Button"
     data-testid="example"
     type="button"
   >
@@ -68,7 +68,7 @@ exports[`Button renders correctly 1`] = `
 exports[`ButtonLink renders correctly 1`] = `
 <div>
   <a
-    class="css-1wxekme-ButtonLink"
+    class="css-kqlqag-ButtonLink"
     data-testid="example"
     href="#"
   >

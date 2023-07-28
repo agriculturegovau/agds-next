@@ -30,7 +30,7 @@ exports[`SearchBox renders correctly 1`] = `
       >
         <button
           aria-label="Search"
-          class="css-1bk1du9-BaseButton-SearchBoxButton"
+          class="css-15swsqo-BaseButton-SearchBoxButton"
           type="submit"
         >
           <span>

@@ -166,7 +166,7 @@ exports[`AppLayout renders correctly 1`] = `
           class="css-o80hmi-boxStyles"
         >
           <li
-            class="css-1t06xnm-AppLayoutSidebarNavItemInner"
+            class="css-1v34oq2-AppLayoutSidebarNavItemInner"
           >
             <a
               href="/"
@@ -195,7 +195,7 @@ exports[`AppLayout renders correctly 1`] = `
             </a>
           </li>
           <li
-            class="css-1y1qeh5-AppLayoutSidebarNavItemInner"
+            class="css-1lswzx7-AppLayoutSidebarNavItemInner"
           >
             <a
               aria-current="page"
@@ -222,7 +222,7 @@ exports[`AppLayout renders correctly 1`] = `
             </a>
           </li>
           <li
-            class="css-1t06xnm-AppLayoutSidebarNavItemInner"
+            class="css-1v34oq2-AppLayoutSidebarNavItemInner"
           >
             <a
               href="/intelligence"
@@ -248,7 +248,7 @@ exports[`AppLayout renders correctly 1`] = `
             </a>
           </li>
           <li
-            class="css-1t06xnm-AppLayoutSidebarNavItemInner"
+            class="css-1v34oq2-AppLayoutSidebarNavItemInner"
           >
             <a
               href="/compliance"
@@ -287,7 +287,7 @@ exports[`AppLayout renders correctly 1`] = `
             />
           </li>
           <li
-            class="css-1c7lu52-AppLayoutSidebarNavItemInner"
+            class="css-19yqy58-AppLayoutSidebarNavItemInner"
           >
             <a
               href="/account/messages"
@@ -326,7 +326,7 @@ exports[`AppLayout renders correctly 1`] = `
             </a>
           </li>
           <li
-            class="css-1t06xnm-AppLayoutSidebarNavItemInner"
+            class="css-1v34oq2-AppLayoutSidebarNavItemInner"
           >
             <a
               href="/account/settings"
@@ -357,7 +357,7 @@ exports[`AppLayout renders correctly 1`] = `
             </a>
           </li>
           <li
-            class="css-1t06xnm-AppLayoutSidebarNavItemInner"
+            class="css-1v34oq2-AppLayoutSidebarNavItemInner"
           >
             <a
               href="/help"
@@ -391,7 +391,7 @@ exports[`AppLayout renders correctly 1`] = `
             />
           </li>
           <li
-            class="css-1t06xnm-AppLayoutSidebarNavItemInner"
+            class="css-1v34oq2-AppLayoutSidebarNavItemInner"
           >
             <button
               class="css-6e6ykx-BaseButton"
