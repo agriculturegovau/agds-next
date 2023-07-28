@@ -18,6 +18,8 @@ export function DropdownMenuGroup({
 				display="block"
 				padding={1}
 				paddingBottom={0}
+				lineHeight="heading"
+				fontWeight="bold"
 				fontSize="xs"
 				color="muted"
 				id={id}

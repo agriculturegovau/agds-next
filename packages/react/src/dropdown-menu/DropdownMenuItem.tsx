@@ -5,7 +5,7 @@ import {
 	useEffect,
 	useRef,
 } from 'react';
-import { boxPalette, forwardRefWithAs, mergeRefs } from '../core';
+import { boxPalette, forwardRefWithAs, mergeRefs, packs } from '../core';
 import { Flex } from '../flex';
 import { IconProps } from '../icon';
 import { useDropdownMenuContext } from './DropdownMenuContext';
@@ -63,25 +63,28 @@ export const DropdownMenuItem = forwardRefWithAs<'div', DropdownMenuItemProps>(
 				onClick={onClick}
 				alignItems="center"
 				justifyContent="space-between"
-				background={isActiveDescendant ? 'shade' : 'body'}
+				background="body"
 				gap={1}
 				padding={1}
 				link
 				focus
 				css={{
+					textDecoration: 'none',
+
 					...(isActiveDescendant && {
-						textDecoration: 'none',
-						color: boxPalette.foregroundText,
 						backgroundColor: boxPalette.backgroundShade,
+						'& > div > span': packs.underline,
 					}),
+
 					'&:hover': {
 						backgroundColor: boxPalette.backgroundShade,
+						'& > div > span': packs.underline,
 					},
 				}}
 				{...props}
 			>
 				<Flex alignItems="center" gap={1}>
-					{Icon ? <Icon color="action" size="md" /> : null}
+					{Icon ? <Icon color="inherit" size="md" /> : null}
 					<span>{children}</span>
 				</Flex>
 				{endElement}

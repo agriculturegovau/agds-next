@@ -443,16 +443,18 @@ function KitchenSink({ background }: KitchenSinkProps) {
 
 							<CallToActionLink href="#">Call to action</CallToActionLink>
 
-							<DropdownMenu>
-								<DropdownMenuButton>Open dropdown menu</DropdownMenuButton>
-								<DropdownMenuPanel>
-									<DropdownMenuItem>Profile</DropdownMenuItem>
-									<DropdownMenuItem>Messages</DropdownMenuItem>
-									<DropdownMenuItem>Account settings</DropdownMenuItem>
-									<DropdownMenuDivider />
-									<DropdownMenuItem>Sign out</DropdownMenuItem>
-								</DropdownMenuPanel>
-							</DropdownMenu>
+							<div>
+								<DropdownMenu>
+									<DropdownMenuButton>Open dropdown menu</DropdownMenuButton>
+									<DropdownMenuPanel>
+										<DropdownMenuItem>Profile</DropdownMenuItem>
+										<DropdownMenuItem>Messages</DropdownMenuItem>
+										<DropdownMenuItem>Account settings</DropdownMenuItem>
+										<DropdownMenuDivider />
+										<DropdownMenuItem>Sign out</DropdownMenuItem>
+									</DropdownMenuPanel>
+								</DropdownMenu>
+							</div>
 
 							<Flex gap={0.5} flexWrap="wrap">
 								<StatusBadge tone="info" label="In progress" />
