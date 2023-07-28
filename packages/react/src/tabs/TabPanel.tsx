@@ -23,7 +23,7 @@ export function TabPanel({ children }: TabPanelProps) {
 			focus
 			border
 			paddingX={{ xs: 0.75, md: 1.5 }}
-			paddingY={{ xs: 0.75, md: 1.5 }}
+			paddingY={1.5}
 			css={{
 				background: localPalette.panelBg,
 				color: localPalette.panelFg,
