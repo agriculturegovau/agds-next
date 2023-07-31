@@ -51,7 +51,7 @@ exports[`DropdownMenu Decorative renders correctly 1`] = `
       tabindex="-1"
     >
       <div
-        class="css-4cj67k-boxStyles"
+        class="css-16gtkc6-boxStyles"
       >
         <svg
           aria-hidden="true"
@@ -85,7 +85,7 @@ exports[`DropdownMenu Decorative renders correctly 1`] = `
       tabindex="-1"
     >
       <div
-        class="css-4cj67k-boxStyles"
+        class="css-16gtkc6-boxStyles"
       >
         <svg
           aria-hidden="true"
@@ -129,7 +129,7 @@ exports[`DropdownMenu Decorative renders correctly 1`] = `
       tabindex="-1"
     >
       <div
-        class="css-4cj67k-boxStyles"
+        class="css-16gtkc6-boxStyles"
       >
         <svg
           aria-hidden="true"
@@ -212,7 +212,7 @@ exports[`DropdownMenu Links renders correctly 1`] = `
       tabindex="-1"
     >
       <div
-        class="css-4cj67k-boxStyles"
+        class="css-16gtkc6-boxStyles"
       >
         <span>
           About
@@ -227,7 +227,7 @@ exports[`DropdownMenu Links renders correctly 1`] = `
       tabindex="-1"
     >
       <div
-        class="css-4cj67k-boxStyles"
+        class="css-16gtkc6-boxStyles"
       >
         <span>
           Contact
@@ -411,7 +411,7 @@ exports[`DropdownMenu renders correctly 1`] = `
       tabindex="-1"
     >
       <div
-        class="css-4cj67k-boxStyles"
+        class="css-16gtkc6-boxStyles"
       >
         <span>
           Item 1
@@ -425,7 +425,7 @@ exports[`DropdownMenu renders correctly 1`] = `
       tabindex="-1"
     >
       <div
-        class="css-4cj67k-boxStyles"
+        class="css-16gtkc6-boxStyles"
       >
         <span>
           Item 2
@@ -439,7 +439,7 @@ exports[`DropdownMenu renders correctly 1`] = `
       tabindex="-1"
     >
       <div
-        class="css-4cj67k-boxStyles"
+        class="css-16gtkc6-boxStyles"
       >
         <span>
           Item 3
