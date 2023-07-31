@@ -2,16 +2,16 @@ import '@testing-library/jest-dom';
 import 'html-validate/jest';
 import { cleanup, render } from '../../../../test-utils';
 import { CollapsingSideBar } from './CollapsingSideBar';
-import type { SideBarProps } from './CollapsingSideBar';
+import type { CollapsingSideBarProps } from './CollapsingSideBar';
 
 afterEach(cleanup);
 
-const defaultSideBarProps: SideBarProps = {
+const defaultSideBarProps: CollapsingSideBarProps = {
 	children: 'CollapsingSideBar Content',
 	collapseButtonLabel: 'Collapse button label',
 };
 
-function renderSideBar(props: SideBarProps) {
+function renderSideBar(props: CollapsingSideBarProps) {
 	return render(<CollapsingSideBar {...props} />);
 }
 
