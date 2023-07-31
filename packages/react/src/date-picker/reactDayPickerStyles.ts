@@ -83,6 +83,8 @@ export const reactDayPickerStyles = (range: boolean) =>
 			},
 			'&:not([disabled]):hover': {
 				backgroundColor: boxPalette.backgroundShade,
+				color: boxPalette.foregroundText,
+				textDecoration: 'underline',
 			},
 			'&:focus, &:active': packs.outline,
 		},
