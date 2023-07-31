@@ -1,7 +1,7 @@
 import { Fragment, FunctionComponent, useEffect } from 'react';
 import { Global } from '@emotion/react';
 import { createPortal } from 'react-dom';
-import { useAriaModalPolyfill } from '../core';
+import { canUseDOM, useAriaModalPolyfill } from '../core';
 import { ModalCover } from './ModalCover';
 import { ModalDialog, ModalDialogProps } from './ModalDialog';
 
@@ -34,6 +34,10 @@ export const Modal: FunctionComponent<ModalProps> = ({
 	const { modalContainerRef } = useAriaModalPolyfill(isOpen);
 
 	if (!isOpen) return null;
+
+	// Since react portals can not be rendered on the server and this component is always closed by default
+	// This component doesn't need to be server side rendered
+	if (!canUseDOM()) return null;
 
 	return createPortal(
 		<Fragment>
