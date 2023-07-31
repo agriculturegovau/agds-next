@@ -1,6 +1,5 @@
 import { useRef } from 'react';
 import { packs, useId } from '../core';
-import { Box } from '../box';
 import {
 	CollapsingSideBar,
 	CollapsingSideBarTitle,
