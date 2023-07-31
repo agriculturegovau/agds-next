@@ -11,6 +11,7 @@ import { createPortal } from 'react-dom';
 import { useTransition, animated, SpringValue } from '@react-spring/web';
 import {
 	boxPalette,
+	canUseDOM,
 	tokens,
 	useAriaModalPolyfill,
 	usePrefersReducedMotion,
@@ -60,6 +61,10 @@ export const FilterDrawer: FunctionComponent<FilterDrawerProps> = ({
 		config: { duration: 150 },
 		immediate: prefersReducedMotion,
 	});
+
+	// Since react portals can not be rendered on the server and this component is always closed by default
+	// This component doesn't need to be server side rendered
+	if (!canUseDOM()) return null;
 
 	return createPortal(
 		<Fragment>
