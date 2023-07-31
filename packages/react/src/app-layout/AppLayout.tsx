@@ -8,10 +8,10 @@ import {
 
 export type AppLayoutProps = PropsWithChildren<{
 	/** Set to `true` while users are completing multi-page forms to reduce distractions. When true, the app layout sidebar will not be rendered. */
-	focusMode: boolean;
+	focusMode?: boolean;
 }>;
 
-export function AppLayout({ children, focusMode }: AppLayoutProps) {
+export function AppLayout({ children, focusMode = false }: AppLayoutProps) {
 	const [isMobileMenuOpen, openMobileMenu, closeMobileMenu] =
 		useTernaryState(false);
 	return (
