@@ -2,4 +2,4 @@
 '@ag.ds-next/react': patch
 ---
 
-app-layout: Decreased the gap in the sidebar between icons and labels from 1rem to 0.75rem
+app-layout: Decreased the gap between icons and labels in the sidebar from `1rem` to `0.75rem`
