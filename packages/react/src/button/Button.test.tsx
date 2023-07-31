@@ -2,6 +2,7 @@ import '@testing-library/jest-dom';
 import 'html-validate/jest';
 import userEvent from '@testing-library/user-event';
 import { render, screen, cleanup } from '../../../../test-utils';
+import { AvatarIcon } from '../icon';
 import { Button, ButtonLink, ButtonLinkProps, ButtonProps } from './Button';
 
 afterEach(cleanup);
@@ -31,6 +32,7 @@ describe('Button', () => {
 		renderButton();
 		const el = screen.getByTestId('example');
 		expect(el.tagName).toBe('BUTTON');
+		expect(el).toHaveAttribute('type', 'button');
 		expect(el).toHaveAccessibleName('My button');
 	});
 
@@ -82,6 +84,50 @@ describe('Button', () => {
 			const { container } = renderButton({ loading: true });
 			const liveRegion = container.querySelector('[aria-live]');
 			expect(liveRegion).toHaveTextContent('Busy');
+		});
+	});
+
+	describe('With Icon', () => {
+		it('renders correctly', () => {
+			const { container } = renderButton({ iconAfter: AvatarIcon });
+			expect(container).toMatchSnapshot();
+		});
+
+		it('renders a valid HTML structure', () => {
+			const { container } = renderButton({ iconAfter: AvatarIcon });
+			expect(container).toHTMLValidate({
+				extends: ['html-validate:recommended'],
+			});
+		});
+
+		it('renders correctly with minimal props', () => {
+			renderButton({ iconAfter: AvatarIcon });
+			const el = screen.getByTestId('example');
+			expect(el.tagName).toBe('BUTTON');
+			expect(el).toHaveAttribute('type', 'button');
+			expect(el).toHaveAccessibleName('My button');
+		});
+	});
+
+	describe('Small Button', () => {
+		it('renders correctly', () => {
+			const { container } = renderButton({ size: 'sm' });
+			expect(container).toMatchSnapshot();
+		});
+
+		it('renders a valid HTML structure', () => {
+			const { container } = renderButton({ size: 'sm' });
+			expect(container).toHTMLValidate({
+				extends: ['html-validate:recommended'],
+			});
+		});
+
+		it('renders correctly with minimal props', () => {
+			renderButton({ size: 'sm' });
+			const el = screen.getByTestId('example');
+			expect(el.tagName).toBe('BUTTON');
+			expect(el).toHaveAttribute('type', 'button');
+			expect(el).toHaveAccessibleName('My button');
 		});
 	});
 });
