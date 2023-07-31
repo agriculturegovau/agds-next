@@ -1,37 +1,81 @@
 ---
 title: List
-description: Unordered and ordered HTML lists
-group: Content
-storybookPath: /story/Content-UnorderedList--basic
+description: Lists are vertical groupings of related items that can be displayed either in an unordered or ordered format.
+group: Foundations
+storybookPath: /story/foundations-list-orderedlist--basic
 unreleased: true
 relatedComponents: ['text', 'prose', 'link-list']
 ---
 
-`UnorderedList` and `OrderedList` are used to render simple HTML lists.
+```jsx live
+<Stack gap={1.5}>
+	<UnorderedList>
+		<ListItem>Ordered list item</ListItem>
+		<ListItem>Ordered list item</ListItem>
+		<ListItem>Ordered list item</ListItem>
+	</UnorderedList>
+	<OrderedList>
+		<ListItem>Unordered list item</ListItem>
+		<ListItem>Unordered list item</ListItem>
+		<ListItem>Unordered list item</ListItem>
+	</OrderedList>
+</Stack>
+```
 
-These can be used inside our block section components like PageAlert and Modal, which enforce 1rem spacing between elements.
+<DoHeading />
 
-For long-form content, it's best to render plain `ol` or `ul` elements in our Prose component.
+- use inside block section components like [Page alert](/components/page-alert) and [Modal](/components/modal), which enforce 1rem spacing between elements.
+- use unordered lists when you do not need to convey a specific order for list items
+- use ordered lists when you need to convey a priority, hierarchy, or sequence between list items.
+
+<DontHeading />
+
+- use for long form content - `ol` or `ul` HTML elements inside of the [Prose](/components/prose) component.
+
+## Unordered
+
+The `UnorderedList` component renders a bulleted list.
 
 ```jsx live
 <UnorderedList>
 	<ListItem>
-		Unordered List level 1
+		Ordered List level 1
 		<UnorderedList>
-			<ListItem>Unordered List level 2</ListItem>
+			<ListItem>Ordered List level 2</ListItem>
 			<ListItem>
-				<TextLink href="#">Unordered List level 2, with a TextLink</TextLink>
+				Ordered List level 2
+				<UnorderedList>
+					<ListItem>Ordered List level 3</ListItem>
+					<ListItem>Ordered List level 3</ListItem>
+				</UnorderedList>
 			</ListItem>
+		</UnorderedList>
+	</ListItem>
+	<ListItem>Ordered List level 1</ListItem>
+	<ListItem>Ordered List level 1</ListItem>
+</UnorderedList>
+```
+
+## Ordered
+
+The `OrderedList` component renders a numbered list.
+
+```jsx live
+<OrderedList>
+	<ListItem>
+		Ordered List level 1
+		<OrderedList>
+			<ListItem>Ordered List level 2</ListItem>
 			<ListItem>
-				Unordered List level 2
+				Ordered List level 2
 				<OrderedList>
 					<ListItem>Ordered List level 3</ListItem>
 					<ListItem>Ordered List level 3</ListItem>
 				</OrderedList>
 			</ListItem>
-		</UnorderedList>
+		</OrderedList>
 	</ListItem>
-	<ListItem>Unordered List level 1</ListItem>
-	<ListItem>Unordered List level 1</ListItem>
-</UnorderedList>
+	<ListItem>Ordered List level 1</ListItem>
+	<ListItem>Ordered List level 1</ListItem>
+</OrderedList>
 ```
