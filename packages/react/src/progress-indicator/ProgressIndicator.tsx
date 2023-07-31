@@ -34,7 +34,7 @@ export const ProgressIndicator = ({
 			collapseButtonLabel={subHeading}
 			background={background}
 		>
-			<Box
+			<div
 				css={{
 					...packs.print.visible,
 				}}
@@ -64,7 +64,7 @@ export const ProgressIndicator = ({
 						);
 					})}
 				</ProgressIndicatorList>
-			</Box>
+			</div>
 		</CollapsingSideBar>
 	);
 };

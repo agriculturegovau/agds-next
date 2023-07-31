@@ -99,7 +99,6 @@ export const pictograms = {
 	'progress-indicator': progressIndicator,
 	prose,
 	sideNav,
-	'side-bar': sideNav,
 	'search-box': searchBox,
 	'search-input': searchBox,
 	select,
