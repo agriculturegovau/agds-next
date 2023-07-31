@@ -1,6 +1,7 @@
 import { PropsWithChildren, useRef } from 'react';
 import { useSpring, animated } from '@react-spring/web';
 import {
+	boxPalette,
 	tokens,
 	usePrefersReducedMotion,
 	useToggleState,
@@ -78,17 +79,17 @@ export function CollapsingSideBar({
 				{...(isMobile && { role: 'region', 'aria-labelledby': buttonId })}
 				style={animatedHeight}
 				css={{
+					borderBottom: `1px solid ${boxPalette.border}`,
 					// Overwrite the animated height for tablet/desktop sizes.
 					[tokens.mediaQuery.min.md]: {
+						borderBottom: 'none',
 						overflow: 'unset',
 						display: 'block !important',
 						height: 'auto !important',
 					},
 				}}
 			>
-				<Box ref={ref} borderBottom={{ xs: true, md: false }}>
-					{children}
-				</Box>
+				<Box ref={ref}>{children}</Box>
 			</animated.div>
 		</CollapsingSideBarContainer>
 	);
@@ -164,7 +165,6 @@ export const SideBarCollapseButton = ({
 			width="100%"
 			link
 			focus
-			borderTop
 			borderBottom
 			css={{
 				'&:hover': {
