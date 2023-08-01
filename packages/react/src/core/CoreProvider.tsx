@@ -28,8 +28,6 @@ export type LinkProps = PropsWithChildren<{
 	href?: string;
 	/** The ID of the hyperlink. */
 	id?: string;
-	/** Function to be fired following a click event of the link. */
-	onClick?: NativeLinkProps['onClick'];
 	/** How much of the referrer to send when following the link. */
 	referrerPolicy?: NativeLinkProps['referrerPolicy'];
 	/** The relationship of the linked URL as space-separated link types. */
