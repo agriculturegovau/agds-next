@@ -1,7 +1,8 @@
+import { tokens } from '@ag.ds-next/react/core';
 import { Columns } from '@ag.ds-next/react/columns';
 import { SectionContent } from '@ag.ds-next/react/content';
 import { Stack } from '@ag.ds-next/react/stack';
-import { Prose } from '@ag.ds-next/react/prose';
+import { Text } from '@ag.ds-next/react/text';
 import { TextLink } from '@ag.ds-next/react/text-link';
 import {
 	HeroBanner,
@@ -76,20 +77,18 @@ export default function Homepage() {
 								/>
 							</Columns>
 						</Stack>
-						<Prose>
-							<p>
-								<TextLink href="/about">
-									The Agriculture Design System (AgDS)
-								</TextLink>{' '}
-								enables the development of consistent, intuitive and accessible
-								applications with efficiency, scale and collaboration, in line
-								with the{' '}
-								<a href="https://www.dta.gov.au/help-and-advice/about-digital-service-standard">
-									Digital Service Standard
-								</a>
-								.
-							</p>
-						</Prose>
+						<Text as="p" maxWidth={tokens.maxWidth.bodyText}>
+							<TextLink href="/about">
+								The Agriculture Design System (AgDS)
+							</TextLink>{' '}
+							enables the development of consistent, intuitive and accessible
+							applications with efficiency, scale and collaboration, in line
+							with the{' '}
+							<TextLink href="https://www.dta.gov.au/help-and-advice/about-digital-service-standard">
+								Digital Service Standard
+							</TextLink>
+							.
+						</Text>
 					</Stack>
 				</SectionContent>
 			</SiteLayout>

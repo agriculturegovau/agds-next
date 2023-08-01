@@ -10,8 +10,8 @@ import { PageContent } from '../content';
 import { Flex } from '../flex';
 import { H1, H2, H3 } from '../heading';
 import { IndicatorDot } from '../indicator-dot';
+import { ListItem, UnorderedList } from '../list';
 import { NotificationBadge } from '../notification-badge';
-import { Prose } from '../prose';
 import { Stack } from '../stack';
 import { SubNav } from '../sub-nav';
 import {
@@ -337,14 +337,14 @@ export const ExampleComposition: StoryObj = {
 										{examplePopulations.map(({ year, stats, data }) => (
 											<TabPanel key={year}>
 												<Stack gap={2}>
-													<Prose>
-														<h3>{year}</h3>
-														<ul>
+													<Stack gap={1.5}>
+														<H3>{year}</H3>
+														<UnorderedList>
 															{stats.map((stat, idx) => (
-																<li key={idx}>{stat}</li>
+																<ListItem key={idx}>{stat}</ListItem>
 															))}
-														</ul>
-													</Prose>
+														</UnorderedList>
+													</Stack>
 													<Stack gap={1.5}>
 														<H3>Population quick stats</H3>
 														<SummaryList>

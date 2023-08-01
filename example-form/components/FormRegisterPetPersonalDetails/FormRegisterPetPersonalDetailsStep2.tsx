@@ -2,7 +2,9 @@ import { useEffect, useRef, useState } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
-import { Prose } from '@ag.ds-next/react/prose';
+import { Text } from '@ag.ds-next/react/text';
+import { TextLink } from '@ag.ds-next/react/text-link';
+import { UnorderedList, ListItem } from '@ag.ds-next/react/list';
 import { Stack } from '@ag.ds-next/react/stack';
 import { Radio } from '@ag.ds-next/react/radio';
 import { ControlGroup } from '@ag.ds-next/react/control-group';
@@ -96,18 +98,18 @@ export const FormRegisterPetPersonalDetailsStep2 = () => {
 							title="There is a problem"
 							tabIndex={-1}
 						>
-							<Prose>
-								<p>Please correct the following fields and try again</p>
-								<ul>
-									{Object.entries(errors).map(([key, value]) => (
-										<li key={key}>
-											<a href={`#${key}`} onClick={scrollToField}>
-												{value.message}
-											</a>
-										</li>
-									))}
-								</ul>
-							</Prose>
+							<Text as="p">
+								Please correct the following fields and try again
+							</Text>
+							<UnorderedList>
+								{Object.entries(errors).map(([key, value]) => (
+									<ListItem key={key}>
+										<TextLink href={`#${key}`} onClick={scrollToField}>
+											{value.message}
+										</TextLink>
+									</ListItem>
+								))}
+							</UnorderedList>
 						</PageAlert>
 					)}
 					<ControlGroup

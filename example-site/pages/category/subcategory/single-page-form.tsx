@@ -10,13 +10,14 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { Button, ButtonGroup } from '@ag.ds-next/react/button';
 import { Checkbox } from '@ag.ds-next/react/checkbox';
-import { Prose } from '@ag.ds-next/react/prose';
+import { UnorderedList, ListItem } from '@ag.ds-next/react/list';
 import { Stack } from '@ag.ds-next/react/stack';
 import { Fieldset } from '@ag.ds-next/react/fieldset';
 import { FormStack } from '@ag.ds-next/react/form-stack';
 import { Select } from '@ag.ds-next/react/select';
 import { H2, H3 } from '@ag.ds-next/react/heading';
 import { TextInput } from '@ag.ds-next/react/text-input';
+import { TextLink } from '@ag.ds-next/react/text-link';
 import { PageAlert } from '@ag.ds-next/react/page-alert';
 import { useScrollToField } from '@ag.ds-next/react/field';
 import { PageContent } from '@ag.ds-next/react/content';
@@ -165,18 +166,18 @@ const SinglePageForm = () => {
 						tone="error"
 						title="There is a problem"
 					>
-						<Prose>
-							<p>Please correct the following fields and try again</p>
-							<ul>
-								{flatErrors.map((error) => (
-									<li key={error.key}>
-										<a href={`#${error.key}`} onClick={scrollToField}>
-											{error.message}
-										</a>
-									</li>
-								))}
-							</ul>
-						</Prose>
+						<Text as="p">
+							Please correct the following fields and try again
+						</Text>
+						<UnorderedList>
+							{flatErrors.map((error) => (
+								<ListItem key={error.key}>
+									<TextLink href={`#${error.key}`} onClick={scrollToField}>
+										{error.message}
+									</TextLink>
+								</ListItem>
+							))}
+						</UnorderedList>
 					</PageAlert>
 				)}
 				<Fieldset

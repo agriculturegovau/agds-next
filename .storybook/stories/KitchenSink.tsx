@@ -27,7 +27,6 @@ import { NotificationBadge } from '@ag.ds-next/react/notification-badge';
 import { PageAlert } from '@ag.ds-next/react/page-alert';
 import { PageContent } from '@ag.ds-next/react/content';
 import { ProgressIndicator } from '@ag.ds-next/react/progress-indicator';
-import { Prose } from '@ag.ds-next/react/prose';
 import { Radio } from '@ag.ds-next/react/radio';
 import { SearchInput } from '@ag.ds-next/react/search-input';
 import { Select } from '@ag.ds-next/react/select';
@@ -41,6 +40,7 @@ import { Text } from '@ag.ds-next/react/text';
 import { Textarea } from '@ag.ds-next/react/textarea';
 import { TextInput } from '@ag.ds-next/react/text-input';
 import { TextLink } from '@ag.ds-next/react/text-link';
+import { UnorderedList, ListItem } from '@ag.ds-next/react/list';
 import {
 	Accordion,
 	AccordionItem,
@@ -212,16 +212,14 @@ function KitchenSink({ background }: KitchenSinkProps) {
 								</PageAlert>
 
 								<PageAlert tone="error" title="There is a problem">
-									<Prose>
-										<ul>
-											<li>
-												<a href="#email">Name is required</a>
-											</li>
-											<li>
-												<a href="#email">Email is required</a>
-											</li>
-										</ul>
-									</Prose>
+									<UnorderedList>
+										<ListItem>
+											<TextLink href="#email">Name is required</TextLink>
+										</ListItem>
+										<ListItem>
+											<TextLink href="#email">Email is required</TextLink>
+										</ListItem>
+									</UnorderedList>
 								</PageAlert>
 
 								<PageAlert tone="warning" title="Browser out of date">

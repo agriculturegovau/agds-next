@@ -40,19 +40,20 @@ exports[`PageAlert tone: error renders correctly 1`] = `
         >
           There is a problem
         </h3>
-        <div
-          class="css-1x94sgg-boxStyles-proseClass"
+        <ul
+          class="css-1qfj7jm-UnorderedList"
         >
-          <ul>
-            <li>
-              <a
-                href="#"
-              >
-                Full name must not be empty
-              </a>
-            </li>
-          </ul>
-        </div>
+          <li
+            class="css-tdgyc3-boxStyles-Text-ListItem"
+          >
+            <a
+              class="css-38ppen-TextLink"
+              href="#"
+            >
+              Full name must not be empty
+            </a>
+          </li>
+        </ul>
       </div>
     </div>
   </div>

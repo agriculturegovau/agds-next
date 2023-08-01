@@ -40,7 +40,7 @@ export const InAppSuccessPage = {
 	name: 'Application form success',
 	render: () => (
 		<AppLayout>
-			<SinglePageFormPage />
+			<SinglePageFormSuccess />
 		</AppLayout>
 	),
 };

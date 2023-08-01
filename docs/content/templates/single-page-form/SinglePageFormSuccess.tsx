@@ -6,6 +6,7 @@ import { Columns, Column } from '@ag.ds-next/react/columns';
 import { PageAlert, PageAlertTitle } from '@ag.ds-next/react/page-alert';
 import { Prose } from '@ag.ds-next/react/prose';
 import { H1 } from '@ag.ds-next/react/heading';
+import { Text } from '@ag.ds-next/react/text';
 
 export function SinglePageFormSuccess() {
 	const successPageAlertRef = useRef<HTMLDivElement>(null);
@@ -40,12 +41,10 @@ export function SinglePageFormSuccess() {
 								</PageAlertTitle>
 							}
 						>
-							<Prose>
-								<p>Supporting paragraph for the success message</p>
-								<p>
-									<strong>Reference: 00000000</strong>
-								</p>
-							</Prose>
+							<Text as="p">Supporting paragraph for the success message</Text>
+							<Text as="p" fontWeight="bold">
+								Reference: 00000000
+							</Text>
 						</PageAlert>
 						<Prose>
 							<h2>What happens next? (H2)</h2>

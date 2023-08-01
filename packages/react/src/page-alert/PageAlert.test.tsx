@@ -2,7 +2,8 @@ import '@testing-library/jest-dom';
 import 'html-validate/jest';
 import userEvent from '@testing-library/user-event';
 import { Text } from '../text';
-import { Prose } from '../prose';
+import { TextLink } from '../text-link';
+import { ListItem, UnorderedList } from '../list';
 import { cleanup, render, screen } from '../../../../test-utils';
 import { PageAlert, PageAlertProps } from './PageAlert';
 import { PageAlertTitle } from './PageAlertTitle';
@@ -35,13 +36,11 @@ const tones = [
 		tone: 'error',
 		title: 'There is a problem',
 		children: (
-			<Prose>
-				<ul>
-					<li>
-						<a href="#">Full name must not be empty</a>
-					</li>
-				</ul>
-			</Prose>
+			<UnorderedList>
+				<ListItem>
+					<TextLink href="#">Full name must not be empty</TextLink>
+				</ListItem>
+			</UnorderedList>
 		),
 	},
 	{

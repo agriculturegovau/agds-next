@@ -95,7 +95,7 @@ export function PkgLayout({
 							</Prose>
 						) : (
 							<PageAlert tone="warning">
-								<Text>
+								<Text as="p">
 									This component is unreleased and will be available as part of
 									the next <TextLink href="/updates">update</TextLink>.
 								</Text>
