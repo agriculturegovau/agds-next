@@ -1,6 +1,7 @@
 import { Meta, StoryObj } from '@storybook/react';
 import { Text } from '../text';
-import { Prose } from '../prose';
+import { TextLink } from '../text-link';
+import { ListItem, UnorderedList } from '../list';
 import { PageAlert } from './PageAlert';
 import { PageAlertTitle } from './PageAlertTitle';
 
@@ -34,19 +35,17 @@ export const WithNoTitle: Story = {
 	},
 };
 
-export const WithProse: Story = {
+export const WithList: Story = {
 	render: (args) => (
 		<PageAlert {...args}>
-			<Prose>
-				<ul>
-					<li>
-						<a href="#">Full name must not be empty</a>
-					</li>
-					<li>
-						<a href="#">Phone number must not be empty</a>
-					</li>
-				</ul>
-			</Prose>
+			<UnorderedList>
+				<ListItem>
+					<TextLink href="#">Full name must not be empty</TextLink>
+				</ListItem>
+				<ListItem>
+					<TextLink href="#">Phone number must not be empty</TextLink>
+				</ListItem>
+			</UnorderedList>
 		</PageAlert>
 	),
 	args: {

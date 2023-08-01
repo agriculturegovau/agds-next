@@ -16,7 +16,9 @@ import { Radio } from '@ag.ds-next/react/radio';
 import { ControlGroup } from '@ag.ds-next/react/control-group';
 import { useScrollToField } from '@ag.ds-next/react/field';
 import { PageAlert } from '@ag.ds-next/react/page-alert';
-import { Prose } from '@ag.ds-next/react/prose';
+import { Text } from '@ag.ds-next/react/text';
+import { TextLink } from '@ag.ds-next/react/text-link';
+import { UnorderedList, ListItem } from '@ag.ds-next/react/list';
 import { FormRequiredFieldsMessage } from '../FormRequiredFieldsMessage';
 import { FormRegisterPetDetailsContainer } from './FormRegisterPetDetailsContainer';
 import { FormRegisterPetDetailsActions } from './FormRegisterPetDetailsActions';
@@ -91,20 +93,18 @@ export const FormRegisterPetDetailsStep1 = () => {
 							title="There is a problem"
 							tabIndex={-1}
 						>
-							<Prose>
-								<p>Please correct the following fields and try again</p>
-								<ul>
-									{Object.entries(errors).map(([key, value]) => (
-										<li key={key}>
-											<a href={`#${key}`} onClick={scrollToField}>
-												{Array.isArray(value)
-													? value[0].message
-													: value.message}
-											</a>
-										</li>
-									))}
-								</ul>
-							</Prose>
+							<Text as="p">
+								Please correct the following fields and try again
+							</Text>
+							<UnorderedList>
+								{Object.entries(errors).map(([key, value]) => (
+									<ListItem key={key}>
+										<TextLink href={`#${key}`} onClick={scrollToField}>
+											{Array.isArray(value) ? value[0].message : value.message}
+										</TextLink>
+									</ListItem>
+								))}
+							</UnorderedList>
 						</PageAlert>
 					)}
 					<TextInput

@@ -8,6 +8,7 @@ import { TextInput } from '@ag.ds-next/react/text-input';
 import { Stack } from '@ag.ds-next/react/stack';
 import { PageAlert } from '@ag.ds-next/react/page-alert';
 import { Prose } from '@ag.ds-next/react/prose';
+import { UnorderedList, ListItem } from '@ag.ds-next/react/list';
 import { useScrollToField } from '@ag.ds-next/react/field';
 import { TextLink } from '@ag.ds-next/react/text-link';
 import { PageContent } from '@ag.ds-next/react/content';
@@ -77,9 +78,7 @@ const SignInForm = () => {
 		<Stack gap={3}>
 			{hasNetworkErrors && (
 				<PageAlert ref={networkErrorPageAlertRef} tabIndex={-1} tone="error">
-					<Prose>
-						<p>{networkErrorMessage}</p>
-					</Prose>
+					<Text as="p">{networkErrorMessage}</Text>
 				</PageAlert>
 			)}
 			{hasClientErrors && (
@@ -89,18 +88,16 @@ const SignInForm = () => {
 					tone="error"
 					title="There is a problem"
 				>
-					<Prose>
-						<p>Please correct the following fields and try again</p>
-						<ul>
-							{Object.entries(errors).map(([key, value]) => (
-								<li key={key}>
-									<a href={`#${key}`} onClick={scrollToField}>
-										{value.message}
-									</a>
-								</li>
-							))}
-						</ul>
-					</Prose>
+					<Text as="p">Please correct the following fields and try again</Text>
+					<UnorderedList>
+						{Object.entries(errors).map(([key, value]) => (
+							<ListItem key={key}>
+								<TextLink href={`#${key}`} onClick={scrollToField}>
+									{value.message}
+								</TextLink>
+							</ListItem>
+						))}
+					</UnorderedList>
 				</PageAlert>
 			)}
 			<form onSubmit={handleSubmit(onSubmit, onError)} noValidate>

@@ -44,19 +44,17 @@ Instead, allow users to interact with buttons and receive feedback.
 
 A form should validate when a user attempts to submit. Validation errors should be summarised as a list inside of a [Page alert](/components/page-alert) with the 'error' tone. The page alert should be placed at the top of the form, and focused immediately after a submission attempt. When clicked, each error in the list should scroll and focus the user focus respective form field.
 
-```tsx live enableProse
+```tsx live
 <PageAlert tone="error" title="There is a problem">
-	<Prose>
-		<p>Please correct the following fields and try again</p>
-		<ul>
-			<li>
-				<a href="#field_name">Enter your Name</a>
-			</li>
-			<li>
-				<a href="#field_dob">Enter a valid birth date</a>
-			</li>
-		</ul>
-	</Prose>
+	<Text as="p">Please correct the following fields and try again</Text>
+	<UnorderedList>
+		<ListItem>
+			<TextLink href="#field_name">Enter your Name</TextLink>
+		</ListItem>
+		<ListItem>
+			<TextLink href="#field_dob">Enter a valid birth date</TextLink>
+		</ListItem>
+	</UnorderedList>
 </PageAlert>
 ```
 
@@ -87,7 +85,7 @@ An invalid field is highlighted with a red border and a red error message. They 
 
 When a form is successfully completed, return the user to the entry point of the form and display a [Page alert](/components/page-alert) with the 'success' tone and a clear message which communicates the successful submission. When possible, provide persistent methods for a user to return and see the status of the submitted artefact, for example a reference number.
 
-```tsx live enableProse
+```tsx live
 <PageAlert
 	tabIndex={-1}
 	tone="success"
@@ -95,11 +93,9 @@ When a form is successfully completed, return the user to the entry point of the
 		<PageAlertTitle as="h2">Descriptive success message (H2)</PageAlertTitle>
 	}
 >
-	<Prose>
-		<p>Supporting paragraph for the success message</p>
-		<p>
-			<strong>Reference: 00000000</strong>
-		</p>
-	</Prose>
+	<Text as="p">Supporting paragraph for the success message</Text>
+	<Text as="p" fontWeight="bold">
+		Reference: 00000000
+	</Text>
 </PageAlert>
 ```

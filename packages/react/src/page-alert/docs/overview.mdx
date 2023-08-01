@@ -60,19 +60,17 @@ The success page alert is used for notifying the user that a task is fully compl
 
 The error page alert should be used with form validation errors or other errors which the user must action before they can can continue.
 
-```jsx live enableProse
+```jsx live
 <PageAlert tone="error" title="There is a problem">
-	<Prose>
-		<p>Please correct the following fields and try again</p>
-		<ul>
-			<li>
-				<a href="#">Full name must not be empty</a>
-			</li>
-			<li>
-				<a href="#">Email must not be empty</a>
-			</li>
-		</ul>
-	</Prose>
+	<Text as="p">Please correct the following fields and try again</Text>
+	<UnorderedList>
+		<ListItem>
+			<TextLink href="#">Full name must not be empty</TextLink>
+		</ListItem>
+		<ListItem>
+			<TextLink href="#">Email must not be empty</TextLink>
+		</ListItem>
+	</UnorderedList>
 </PageAlert>
 ```
 
@@ -86,27 +84,9 @@ Use warning page alerts to tell the user something urgent. Only use an alert if 
 </PageAlert>
 ```
 
-## Composition
+## Title
 
-You can take advantage of our `Prose` component to ensure consistant spacing between HTML elements.
-
-```jsx live enableProse
-<PageAlert tone="error" title="There is a problem">
-	<Prose>
-		<p>Please correct the following fields and try again</p>
-		<ul>
-			<li>
-				<a href="#">Full name must not be empty</a>
-			</li>
-			<li>
-				<a href="#">Email must not be empty</a>
-			</li>
-		</ul>
-	</Prose>
-</PageAlert>
-```
-
-You can also use the `PageAlertTitle` component in the title prop, to change the element used for the title.
+You can use the `PageAlertTitle` component in the title prop to change the element used for the title.
 
 ```jsx live
 <PageAlert

@@ -20,10 +20,11 @@ import { FormStack } from '@ag.ds-next/react/form-stack';
 import { H1, H2, H3 } from '@ag.ds-next/react/heading';
 import { PageAlert } from '@ag.ds-next/react/page-alert';
 import { PageContent } from '@ag.ds-next/react/content';
-import { Prose } from '@ag.ds-next/react/prose';
+import { UnorderedList, ListItem } from '@ag.ds-next/react/list';
 import { Select } from '@ag.ds-next/react/select';
 import { Stack } from '@ag.ds-next/react/stack';
 import { Text } from '@ag.ds-next/react/text';
+import { TextLink } from '@ag.ds-next/react/text-link';
 import { TextInput } from '@ag.ds-next/react/text-input';
 import { useScrollToField } from '@ag.ds-next/react/field';
 
@@ -162,18 +163,18 @@ const SinglePageForm = () => {
 						tone="error"
 						title="There is a problem"
 					>
-						<Prose>
-							<p>Please correct the following fields and try again</p>
-							<ul>
-								{flatErrors.map((error) => (
-									<li key={error.key}>
-										<a href={`#${error.key}`} onClick={scrollToField}>
-											{error.message}
-										</a>
-									</li>
-								))}
-							</ul>
-						</Prose>
+						<Text as="p">
+							Please correct the following fields and try again
+						</Text>
+						<UnorderedList>
+							{flatErrors.map((error) => (
+								<ListItem key={error.key}>
+									<TextLink href={`#${error.key}`} onClick={scrollToField}>
+										{error.message}
+									</TextLink>
+								</ListItem>
+							))}
+						</UnorderedList>
 					</PageAlert>
 				)}
 				<Fieldset

@@ -658,35 +658,33 @@ items={[
 		group: 'PageAlert',
 		name: 'Info',
 		code: `<PageAlert tone="info" title="Notice">
-      <Prose><p>All vacancies close on the advertised closing date unless otherwise specified.</p></Prose>
-    </PageAlert>`,
+			<Text as="p">All vacancies close on the advertised closing date unless otherwise specified.</Text>
+		</PageAlert>`,
 	},
 	{
 		group: 'PageAlert',
 		name: 'Success',
 		code: `<PageAlert tone="success" title="Submission successful">
-      <Prose><p>Your application has been successfully submitted.</p></Prose>
-    </PageAlert>`,
+			<Text as="p">Your application has been successfully submitted.</Text>
+		</PageAlert>`,
 	},
 	{
 		group: 'PageAlert',
 		name: 'Error',
 		code: `<PageAlert tone="error" title="There is a problem">
-      <Prose>
-        <ul>
-          <li><a href="#">Full name must not be empty</a></li>
-          <li><a href="#">Email must not be empty</a></li>
-          <li><a href="#">Description must not be empty</a></li>
-        </ul>
-      </Prose>
+			<UnorderedList>
+				<ListItem><TextLink href="#">Full name must not be empty</TextLink></ListItem>
+				<ListItem><TextLink href="#">Email must not be empty</TextLink></ListItem>
+				<ListItem><TextLink href="#">Description must not be empty</TextLink></ListItem>
+			</UnorderedList>
     </PageAlert>`,
 	},
 	{
 		group: 'PageAlert',
 		name: 'Warning',
 		code: `<PageAlert tone="warning" title="Browser out of date">
-      <Prose><p>Your web browser is out of date.</p></Prose>
-    </PageAlert>`,
+			<Text as="p">Your web browser is out of date.</Text>
+		</PageAlert>`,
 	},
 	{
 		group: 'Table',

@@ -4,11 +4,13 @@ import { Column, Columns } from '@ag.ds-next/react/columns';
 import { PageAlert, PageAlertTitle } from '@ag.ds-next/react/page-alert';
 import { PageContent } from '@ag.ds-next/react/content';
 import { Prose } from '@ag.ds-next/react/prose';
+import { Text } from '@ag.ds-next/react/text';
 import { Stack } from '@ag.ds-next/react/stack';
 import { DocumentTitle } from '../../../../components/DocumentTitle';
 import { FormHelpCallout } from '../../../../components/FormHelpCallout';
 import { PageTitle } from '../../../../components/PageTitle';
 import { SiteLayout } from '../../../../components/SiteLayout';
+import { H2 } from '@ag.ds-next/react/heading';
 
 export default function FormMultiPageFormPage() {
 	const successPageAlertRef = useRef<HTMLDivElement>(null);
@@ -54,12 +56,12 @@ export default function FormMultiPageFormPage() {
 										</PageAlertTitle>
 									}
 								>
-									<Prose>
-										<p>Supporting paragraph for the success message</p>
-										<p>
-											<strong>Reference: 00000000</strong>
-										</p>
-									</Prose>
+									<Text as="p">
+										Supporting paragraph for the success message
+									</Text>
+									<Text as="p" fontWeight="bold">
+										Reference: 00000000
+									</Text>
 								</PageAlert>
 								<Prose>
 									<h2>What happens next? (H2)</h2>

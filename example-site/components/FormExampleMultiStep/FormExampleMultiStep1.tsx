@@ -7,7 +7,9 @@ import {
 } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
-import { Prose } from '@ag.ds-next/react/prose';
+import { Text } from '@ag.ds-next/react/text';
+import { TextLink } from '@ag.ds-next/react/text-link';
+import { UnorderedList, ListItem } from '@ag.ds-next/react/list';
 import { FileUpload } from '@ag.ds-next/react/file-upload';
 import { FormStack } from '@ag.ds-next/react/form-stack';
 import { LoadingBlanket } from '@ag.ds-next/react/loading';
@@ -84,20 +86,18 @@ export const FormExampleMultiStep1 = () => {
 							title="There is a problem"
 							tabIndex={-1}
 						>
-							<Prose>
-								<p>Please correct the following fields and try again</p>
-								<ul>
-									{Object.entries(errors).map(([key, value]) => (
-										<li key={key}>
-											<a href={`#${key}`} onClick={scrollToField}>
-												{Array.isArray(value)
-													? value[0].message
-													: value.message}
-											</a>
-										</li>
-									))}
-								</ul>
-							</Prose>
+							<Text as="p">
+								Please correct the following fields and try again
+							</Text>
+							<UnorderedList>
+								{Object.entries(errors).map(([key, value]) => (
+									<ListItem key={key}>
+										<TextLink href={`#${key}`} onClick={scrollToField}>
+											{Array.isArray(value) ? value[0].message : value.message}
+										</TextLink>
+									</ListItem>
+								))}
+							</UnorderedList>
 						</PageAlert>
 					)}
 					<Textarea
