@@ -136,7 +136,7 @@ function AppLayoutSidebarNavItemInner({
 							top: 0,
 							left: 0,
 							bottom: 0,
-							borderLeftWidth: tokens.borderWidth.xxl,
+							borderLeftWidth: tokens.borderWidth.xl,
 							borderLeftStyle: 'solid',
 							borderLeftColor: boxPalette.foregroundAction,
 						},
