@@ -10,7 +10,6 @@ import { DocumentTitle } from '../../../../components/DocumentTitle';
 import { FormHelpCallout } from '../../../../components/FormHelpCallout';
 import { PageTitle } from '../../../../components/PageTitle';
 import { SiteLayout } from '../../../../components/SiteLayout';
-import { H2 } from '@ag.ds-next/react/heading';
 
 export default function FormMultiPageFormPage() {
 	const successPageAlertRef = useRef<HTMLDivElement>(null);

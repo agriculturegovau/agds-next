@@ -1,3 +1,4 @@
+import { tokens } from '@ag.ds-next/react/core';
 import { Columns } from '@ag.ds-next/react/columns';
 import { SectionContent } from '@ag.ds-next/react/content';
 import { Stack } from '@ag.ds-next/react/stack';
@@ -14,7 +15,6 @@ import { SiteLayout } from '../components/SiteLayout';
 import { PictogramCard } from '../components/PictogramCard';
 import { DocumentTitle } from '../components/DocumentTitle';
 import { withBasePath } from '../lib/img';
-import { tokens } from '@ag.ds-next/react/core';
 
 const description =
 	'AgDS is a suite of tools and guidelines to help designers and developers build the steel threads of the Export Service with efficiency and consistency.';
