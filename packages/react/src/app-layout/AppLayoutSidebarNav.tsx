@@ -116,7 +116,7 @@ function AppLayoutSidebarNavItemInner({
 				' a, button': {
 					display: 'flex',
 					alignItems: 'center',
-					gap: mapSpacing(1),
+					gap: mapSpacing(0.75),
 					width: '100%',
 					boxSizing: 'border-box',
 					paddingLeft: mapSpacing(1.5),
@@ -151,7 +151,7 @@ function AppLayoutSidebarNavItemInner({
 					'&:hover': {
 						background: boxPalette.backgroundShadeAlt,
 						color: boxPalette.foregroundText,
-						'& span:first-of-type': {
+						'& > span:first-of-type': {
 							textDecoration: 'underline',
 						},
 					},
