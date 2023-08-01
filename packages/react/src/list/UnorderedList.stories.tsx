@@ -5,7 +5,7 @@ import { UnorderedList } from './UnorderedList';
 import { ListItem } from './ListItem';
 
 const meta: Meta<typeof UnorderedList> = {
-	title: 'Foundations/List/UnorderedList',
+	title: 'Content/List/UnorderedList',
 	component: UnorderedList,
 };
 

@@ -5,7 +5,7 @@ import { OrderedList } from './OrderedList';
 import { ListItem } from './ListItem';
 
 const meta: Meta<typeof OrderedList> = {
-	title: 'Foundations/List/OrderedList',
+	title: 'Content/List/OrderedList',
 	component: OrderedList,
 };
 
