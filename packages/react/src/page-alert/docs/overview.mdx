@@ -106,7 +106,8 @@ Use the `onDismiss` prop to make the alert dismissable. Ensure Page alerts that 
 ```jsx live
 <PageAlert tone="info" title="New update" onDismiss={console.log}>
 	<Text as="p">
-		A new feature has been added to the service. <a href="#">Learn more</a>.
+		A new feature has been added to the service.{' '}
+		<TextLink href="#">Learn more</TextLink>.
 	</Text>
 </PageAlert>
 ```
