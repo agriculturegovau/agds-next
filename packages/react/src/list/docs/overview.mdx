@@ -1,0 +1,81 @@
+---
+title: List
+description: Lists are vertical groupings of related items that can be displayed either in an unordered or ordered format.
+group: Content
+storybookPath: /story/content-list-orderedlist--basic
+unreleased: true
+relatedComponents: ['text', 'prose', 'link-list']
+---
+
+```jsx live
+<Stack gap={1.5}>
+	<UnorderedList>
+		<ListItem>Ordered list item</ListItem>
+		<ListItem>Ordered list item</ListItem>
+		<ListItem>Ordered list item</ListItem>
+	</UnorderedList>
+	<OrderedList>
+		<ListItem>Unordered list item</ListItem>
+		<ListItem>Unordered list item</ListItem>
+		<ListItem>Unordered list item</ListItem>
+	</OrderedList>
+</Stack>
+```
+
+<DoHeading />
+
+- use with block section components like [Page alert](/components/page-alert) and [Modal](/components/modal), which enforce 1rem spacing between elements.
+- use unordered lists when you do not need to convey a specific order for list items
+- use ordered lists when you need to convey a priority, hierarchy, or sequence between list items.
+
+<DontHeading />
+
+- use for long form content - instead use a plain `ol` or `ul` HTML element inside of the [Prose](/components/prose) component.
+
+## Unordered
+
+The `UnorderedList` component renders a bulleted list.
+
+```jsx live
+<UnorderedList>
+	<ListItem>
+		Ordered List level 1
+		<UnorderedList>
+			<ListItem>Ordered List level 2</ListItem>
+			<ListItem>
+				Ordered List level 2
+				<UnorderedList>
+					<ListItem>Ordered List level 3</ListItem>
+					<ListItem>Ordered List level 3</ListItem>
+				</UnorderedList>
+			</ListItem>
+		</UnorderedList>
+	</ListItem>
+	<ListItem>Ordered List level 1</ListItem>
+	<ListItem>Ordered List level 1</ListItem>
+</UnorderedList>
+```
+
+## Ordered
+
+The `OrderedList` component renders a numbered list.
+
+```jsx live
+<OrderedList>
+	<ListItem>
+		Ordered List level 1
+		<OrderedList>
+			<ListItem>Ordered List level 2</ListItem>
+			<ListItem>
+				Ordered List level 2
+				<OrderedList>
+					<ListItem>Ordered List level 3</ListItem>
+					<ListItem>Ordered List level 3</ListItem>
+				</OrderedList>
+			</ListItem>
+		</OrderedList>
+	</ListItem>
+	<ListItem>Ordered List level 1</ListItem>
+	<ListItem>Ordered List level 1</ListItem>
+</OrderedList>
+```

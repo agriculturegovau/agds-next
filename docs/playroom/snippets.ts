@@ -1096,6 +1096,16 @@ items={[
 		</DropdownMenuPanel>
 	</DropdownMenu>`,
 	},
+	{
+		group: 'List',
+		name: 'Unordered',
+		code: `<UnorderedList><ListItem>List item</ListItem><ListItem>List item</ListItem><ListItem>List item</ListItem></UnorderedList>`,
+	},
+	{
+		group: 'List',
+		name: 'Ordered',
+		code: `<OrderedList><ListItem>List item</ListItem><ListItem>List item</ListItem><ListItem>List item</ListItem></OrderedList>`,
+	},
 ];
 
 export default snippets;
