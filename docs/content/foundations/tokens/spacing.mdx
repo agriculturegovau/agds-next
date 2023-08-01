@@ -1,0 +1,122 @@
+Use the following guidelines when making decisions about spacing:
+
+- the amount of spacing between elements should depend on how closely related they are
+- elements spaced closer together appear to be grouped and are assumed to be related
+- placing more space between elements helps separate them
+- placing more space around elements can help make them more prominent
+- ensure there is sufficient space between elements to help users distinguish between them.
+
+## Spacing tokens
+
+All spacing between interface elements should use the following
+predefined spacing options to help ensure consistency and speed up
+design and development time.
+
+Spacing options are based on increments of 8px in order to align to
+an 8px grid.
+
+<SpacingTokenChart />
+
+## How to use spacing tokens
+
+In order to improve consistency, each spacing token is used for a
+specific purpose. More closely related elements have less spacing
+between them.
+
+<SummaryList>
+	<SummaryListItem>
+		<SummaryListItemTerm>0.5rem (8px)</SummaryListItemTerm>
+		<SummaryListItemDescription>
+			<ul>
+				<li>Spacing between icons and text.</li>
+				<li>Spacing between labels/hints and input fields.</li>
+			</ul>
+		</SummaryListItemDescription>
+	</SummaryListItem>
+	<SummaryListItem>
+		<SummaryListItemTerm>0.75rem (12px)</SummaryListItemTerm>
+		<SummaryListItemDescription>
+			<ul>
+				<li>
+					Spacing between icons and text in primary navigation list components,
+					like [App layout](/components/app-layout) and [Dropdown
+					menu](/components/dropdown-menu).
+				</li>
+			</ul>
+		</SummaryListItemDescription>
+	</SummaryListItem>
+	<SummaryListItem>
+		<SummaryListItemTerm>1rem (16px)</SummaryListItemTerm>
+		<SummaryListItemDescription>
+			<ul>
+				<li>
+					Used in medium sized components, like [Callout](/components/callout),
+					for the space between typography.
+				</li>
+				<li>
+					Used for the padding in small sized components like
+					[Accordion](/components/accordion).
+				</li>
+			</ul>
+		</SummaryListItemDescription>
+	</SummaryListItem>
+	<SummaryListItem>
+		<SummaryListItemTerm>1.5rem (24px)</SummaryListItemTerm>
+		<SummaryListItemDescription>
+			<ul>
+				<li>Used for the gutter between layout columns.</li>
+				<li>
+					Used for the padding inside medium sized components, like
+					[Callout](/components/callout), [Card](/components/card) and [Page
+					alert](/components/page-alert).
+				</li>
+				<li>
+					Used as a top margin for paragraphs in [Prose](/components/prose) body
+					text.
+				</li>
+			</ul>
+		</SummaryListItemDescription>
+	</SummaryListItem>
+	<SummaryListItem>
+		<SummaryListItemTerm>2rem (32px)</SummaryListItemTerm>
+		<SummaryListItemDescription>
+			<ul>
+				<li>
+					Used in [Form stack](/components/form-stack) as the gap between form
+					fields.
+				</li>
+			</ul>
+		</SummaryListItemDescription>
+	</SummaryListItem>
+	<SummaryListItem>
+		<SummaryListItemTerm>3rem (48px)</SummaryListItemTerm>
+		<SummaryListItemDescription>
+			<ul>
+				<li>
+					Used for the top padding in
+					[PageContent](/components/content#pagecontent).
+				</li>
+				<li>
+					Used in [SectionContent](/components/content#sectioncontent) as the
+					gap between component blocks.
+				</li>
+				<li>Used in forms as the gap between fieldsets and input groups.</li>
+			</ul>
+		</SummaryListItemDescription>
+	</SummaryListItem>
+	<SummaryListItem>
+		<SummaryListItemTerm>4rem (64px)</SummaryListItemTerm>
+		<SummaryListItemDescription>
+			<ul>
+				<li>
+					Used for the bottom padding in
+					[PageContent](/components/content#pagecontent).
+				</li>
+				<li>
+					Used for top and bottom padding in
+					[SectionContent](/components/content#sectioncontent).
+				</li>
+			</ul>
+		</SummaryListItemDescription>
+	</SummaryListItem>
+</SummaryList>

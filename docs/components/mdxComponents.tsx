@@ -15,6 +15,12 @@ import { proseBlockClassname } from '@ag.ds-next/react/prose';
 import { PageAlert, PageAlertProps } from '@ag.ds-next/react/page-alert';
 import { ButtonLink } from '@ag.ds-next/react/button';
 import {
+	SummaryList,
+	SummaryListItem,
+	SummaryListItemDescription,
+	SummaryListItemTerm,
+} from '@ag.ds-next/react/summary-list';
+import {
 	Table as TableComponent,
 	TableBody,
 	TableCaption,
@@ -36,7 +42,7 @@ import { Code } from './Code';
 import { ComponentPropsTable } from './ComponentPropsTable';
 import { DoHeading, DontHeading } from './DoDontHeading';
 import { AllIconsPlayground } from './AllIconsPlayground';
-import { BreakpointsTokenChart } from './TokenCharts';
+import { BreakpointsTokenChart, SpacingTokenChart } from './TokenCharts';
 
 export const mdxComponents: MDXRemoteProps['components'] = {
 	Fragment,
@@ -212,4 +218,13 @@ export const mdxComponents: MDXRemoteProps['components'] = {
 		</ol>
 	),
 	BreakpointsTokenChart,
+	SpacingTokenChart,
+	SummaryList: ({ children }: PropsWithChildren<{}>) => (
+		<div className={proseBlockClassname}>
+			<SummaryList>{children}</SummaryList>
+		</div>
+	),
+	SummaryListItem,
+	SummaryListItemDescription,
+	SummaryListItemTerm,
 };
