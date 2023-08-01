@@ -6,7 +6,7 @@ import { CloseIcon } from '@ag.ds-next/react/icon';
 import { Tags } from '@ag.ds-next/react/tags';
 import { GetDataFilters } from '../lib/getData';
 import { useSortAndFilterContext } from '../lib/contexts';
-import { STATUS_MAP } from './DashboardTable';
+import { STATUS_MAP } from '../lib/utils';
 import { STATE_OPTIONS } from './FilterStateSelect';
 
 const formatDate = (date: Date | undefined) => {

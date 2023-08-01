@@ -20,35 +20,27 @@ import { Avatar } from '@ag.ds-next/react/avatar';
 import { Flex } from '@ag.ds-next/react/flex';
 import { BusinessForAudit } from '../lib/generateBusinessData';
 import { useDataContext, useSortAndFilterContext } from '../lib/contexts';
-import { generateTableCaption } from '../lib/utils';
-
-const DashboardTableRowAssignee = ({
-	assignee,
-}: {
-	/** The name of the assignee, if set */
-	assignee: string | undefined;
-}) => {
-	if (!assignee) {
-		return <TableCell>-</TableCell>;
-	}
-
-	return (
-		<TableCell>
-			<Flex alignItems="center" gap={0.25}>
-				<Avatar name={assignee} size="sm" aria-hidden />
-				<Text>{assignee}</Text>
-			</Flex>
-		</TableCell>
-	);
-};
+import { generateTableCaption, STATUS_MAP } from '../lib/utils';
 
 export const tableId = 'dashboard-table';
 
+type DashboardTableProps = {
+	columns?: (keyof BusinessForAudit)[];
+};
+
 export const DashboardTable = forwardRef<HTMLTableElement>(
-	function DashboardTable(_, ref) {
+	function DashboardTable(
+		{ columns: declaredColumns }: DashboardTableProps,
+		ref
+	) {
 		const { sort, setSort, pagination } = useSortAndFilterContext();
 		const { data, loading, totalItems } = useDataContext();
 		const isTableSortable = !!sort || !!setSort;
+
+		// filter out any columns that are not sortable
+		const tableHeaders = declaredColumns
+			? headers.filter((header) => declaredColumns.includes(header.sortKey))
+			: headers;
 
 		const caption = generateTableCaption({
 			loading,
@@ -77,7 +69,7 @@ export const DashboardTable = forwardRef<HTMLTableElement>(
 					</TableCaption>
 					<TableHead>
 						<tr>
-							{headers.map(
+							{tableHeaders.map(
 								({
 									label,
 									sortKey,
@@ -128,26 +120,23 @@ export const DashboardTable = forwardRef<HTMLTableElement>(
 							<Fragment>
 								{Array.from(Array(pagination.perPage).keys()).map((i) => (
 									<tr key={i}>
-										<TableCell>
-											<SkeletonText />
-											<VisuallyHidden>Loading</VisuallyHidden>
-										</TableCell>
-										<TableCell>
-											<SkeletonText />
-											<VisuallyHidden>Loading</VisuallyHidden>
-										</TableCell>
-										<TableCell>
-											<SkeletonText />
-											<VisuallyHidden>Loading</VisuallyHidden>
-										</TableCell>
-										<TableCell>
-											<SkeletonText />
-											<VisuallyHidden>Loading</VisuallyHidden>
-										</TableCell>
-										<TableCell>
-											<SkeletonBox height={32} />
-											<VisuallyHidden>Loading</VisuallyHidden>
-										</TableCell>
+										{tableHeaders.map(({ sortKey }) => {
+											if (sortKey === 'status') {
+												return (
+													<TableCell key={sortKey}>
+														<SkeletonBox height={32} />
+														<VisuallyHidden>Loading</VisuallyHidden>
+													</TableCell>
+												);
+											}
+
+											return (
+												<TableCell key={sortKey}>
+													<SkeletonText />
+													<VisuallyHidden>Loading</VisuallyHidden>
+												</TableCell>
+											);
+										})}
 									</tr>
 								))}
 							</Fragment>
@@ -168,22 +157,47 @@ export const DashboardTable = forwardRef<HTMLTableElement>(
 										const rowIndex = index + 1;
 										return (
 											<tr key={id} aria-rowindex={rowIndex}>
-												<TableCell as="th" scope="row">
-													<TextLink href={`#${id}`}>{businessName}</TextLink>
-												</TableCell>
-												<DashboardTableRowAssignee assignee={assignee} />
-												<TableCell>
-													{city}, {state}
-												</TableCell>
-												<TableCell>
-													{format(requestDate, 'dd/MM/yyyy')}
-												</TableCell>
-												<TableCell>
-													<StatusBadge
-														weight="subtle"
-														{...STATUS_MAP[status]}
-													/>
-												</TableCell>
+												{tableHeaders.map(({ sortKey }) => {
+													switch (sortKey) {
+														case 'businessName':
+															return (
+																<TableCell as="th" scope="row">
+																	<TextLink href={`#${id}`}>
+																		{businessName}
+																	</TextLink>
+																</TableCell>
+															);
+														case 'assignee':
+															return (
+																<DashboardTableRowAssignee
+																	assignee={assignee}
+																/>
+															);
+														case 'requestDate':
+															return (
+																<TableCell>
+																	{format(requestDate, 'dd/MM/yyyy')}
+																</TableCell>
+															);
+														case 'status':
+															return (
+																<TableCell>
+																	<StatusBadge
+																		weight="subtle"
+																		{...STATUS_MAP[status]}
+																	/>
+																</TableCell>
+															);
+														case 'city':
+															return (
+																<TableCell>
+																	{city}, {state}
+																</TableCell>
+															);
+														default:
+															return null;
+													}
+												})}
 											</tr>
 										);
 									}
@@ -196,25 +210,6 @@ export const DashboardTable = forwardRef<HTMLTableElement>(
 		);
 	}
 );
-
-export const STATUS_MAP = {
-	notBooked: {
-		label: 'Not booked',
-		tone: 'neutral',
-	},
-	booked: {
-		label: 'Booked',
-		tone: 'info',
-	},
-	completed: {
-		label: 'Completed',
-		tone: 'success',
-	},
-	cancelled: {
-		label: 'Cancelled',
-		tone: 'error',
-	},
-} as const;
 
 const headers: {
 	label: string;
@@ -255,3 +250,23 @@ const headers: {
 		isSortable: true,
 	},
 ];
+
+const DashboardTableRowAssignee = ({
+	assignee,
+}: {
+	/** The name of the assignee, if set */
+	assignee: string | undefined;
+}) => {
+	if (!assignee) {
+		return <TableCell>-</TableCell>;
+	}
+
+	return (
+		<TableCell>
+			<Flex alignItems="center" gap={0.25}>
+				<Avatar name={assignee} size="sm" aria-hidden />
+				<Text>{assignee}</Text>
+			</Flex>
+		</TableCell>
+	);
+};

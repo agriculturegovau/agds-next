@@ -57,3 +57,22 @@ export const generateTableCaption = ({
 
 	return `Audits (${firstItem} - ${lastItem} of ${totalItemsPlural})`;
 };
+
+export const STATUS_MAP = {
+	notBooked: {
+		label: 'Not booked',
+		tone: 'neutral',
+	},
+	booked: {
+		label: 'Booked',
+		tone: 'info',
+	},
+	completed: {
+		label: 'Completed',
+		tone: 'success',
+	},
+	cancelled: {
+		label: 'Cancelled',
+		tone: 'error',
+	},
+} as const;
