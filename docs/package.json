@@ -37,9 +37,9 @@
 		"remark-mdx-code-meta": "^2.0.0"
 	},
 	"devDependencies": {
-		"glob": "^10.2.2",
-		"puppeteer": "^19.2.2",
+		"glob": "^10.3.3",
+		"puppeteer": "^21.0.0",
 		"react-docgen-typescript": "^2.2.2",
-		"sharp": "0.31.2"
+		"sharp": "0.32.4"
 	}
 }
