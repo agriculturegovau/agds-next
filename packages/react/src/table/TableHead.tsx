@@ -3,7 +3,7 @@ import { Box } from '../box';
 
 export type TableHeadProps = { children: ReactNode };
 
-export const TableHead = ({ children }: TableHeadProps) => {
+export const TableHead = ({ children, ...props }: TableHeadProps) => {
 	return (
 		<Box
 			as="thead"
@@ -11,6 +11,7 @@ export const TableHead = ({ children }: TableHeadProps) => {
 			borderBottomWidth="xl"
 			borderColor="muted"
 			display="table-header-group"
+			{...props}
 		>
 			{children}
 		</Box>

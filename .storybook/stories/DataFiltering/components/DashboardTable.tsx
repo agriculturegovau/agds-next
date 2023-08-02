@@ -12,7 +12,6 @@ import {
 	TableHeader,
 	TableHeaderProps,
 	TableHeaderSortable,
-	TableWrapper,
 } from '@ag.ds-next/react/table';
 import { TextLink } from '@ag.ds-next/react/text-link';
 import { Text } from '@ag.ds-next/react/text';
@@ -25,12 +24,13 @@ import { generateTableCaption, STATUS_MAP } from '../lib/utils';
 export const tableId = 'dashboard-table';
 
 type DashboardTableProps = {
+	selectedItemIndex?: number;
 	columns?: (keyof BusinessForAudit)[];
 };
 
 export const DashboardTable = forwardRef<HTMLTableElement>(
 	function DashboardTable(
-		{ columns: declaredColumns }: DashboardTableProps,
+		{ columns: declaredColumns, selectedItemIndex }: DashboardTableProps,
 		ref
 	) {
 		const { sort, setSort, pagination } = useSortAndFilterContext();
@@ -53,97 +53,100 @@ export const DashboardTable = forwardRef<HTMLTableElement>(
 		}
 
 		return (
-			<TableWrapper>
-				<Table
-					aria-rowcount={totalItems}
-					id={tableId}
-					ref={ref}
-					tabIndex={-1}
-					tableLayout="fixed"
+			<Table
+				aria-rowcount={totalItems}
+				id={tableId}
+				ref={ref}
+				tabIndex={-1}
+				tableLayout="fixed"
+			>
+				<TableCaption>
+					{caption}
+					<VisuallyHidden>
+						, column headers with buttons are sortable.
+					</VisuallyHidden>
+				</TableCaption>
+				<TableHead
+					css={{
+						position: 'sticky',
+						top: 0,
+					}}
 				>
-					<TableCaption>
-						{caption}
-						<VisuallyHidden>
-							, column headers with buttons are sortable.
-						</VisuallyHidden>
-					</TableCaption>
-					<TableHead>
-						<tr>
-							{tableHeaders.map(
-								({
-									label,
-									sortKey,
-									textAlign,
-									width,
-									isSortable: isFieldSortable,
-								}) => {
-									if (isTableSortable && isFieldSortable) {
-										const isFieldTheActiveSortField = sort?.field === sortKey;
-										const onClick = () =>
-											setSort?.({
-												field: sortKey,
-												order:
-													sort?.field === sortKey && sort?.order === 'ASC'
-														? 'DESC'
-														: 'ASC',
-											});
-										return (
-											<TableHeaderSortable
-												key={sortKey}
-												textAlign={textAlign}
-												width={width}
-												sort={
-													isFieldTheActiveSortField ? sort?.order : undefined
-												}
-												onClick={onClick}
-											>
-												{label}
-											</TableHeaderSortable>
-										);
-									}
+					<tr>
+						{tableHeaders.map(
+							({
+								label,
+								sortKey,
+								textAlign,
+								width,
+								isSortable: isFieldSortable,
+							}) => {
+								if (isTableSortable && isFieldSortable) {
+									const isFieldTheActiveSortField = sort?.field === sortKey;
+									const onClick = () =>
+										setSort?.({
+											field: sortKey,
+											order:
+												sort?.field === sortKey && sort?.order === 'ASC'
+													? 'DESC'
+													: 'ASC',
+										});
 									return (
-										<TableHeader
+										<TableHeaderSortable
 											key={sortKey}
-											scope="col"
 											textAlign={textAlign}
 											width={width}
+											sort={isFieldTheActiveSortField ? sort?.order : undefined}
+											onClick={onClick}
 										>
 											{label}
-										</TableHeader>
+										</TableHeaderSortable>
 									);
 								}
-							)}
-						</tr>
-					</TableHead>
-					<TableBody>
-						{loading ? (
-							<Fragment>
-								{Array.from(Array(pagination.perPage).keys()).map((i) => (
-									<tr key={i}>
-										{tableHeaders.map(({ sortKey }) => {
-											if (sortKey === 'status') {
-												return (
-													<TableCell key={sortKey}>
-														<SkeletonBox height={32} />
-														<VisuallyHidden>Loading</VisuallyHidden>
-													</TableCell>
-												);
-											}
-
+								return (
+									<TableHeader
+										key={sortKey}
+										scope="col"
+										textAlign={textAlign}
+										width={width}
+									>
+										{label}
+									</TableHeader>
+								);
+							}
+						)}
+					</tr>
+				</TableHead>
+				<TableBody>
+					{loading ? (
+						<Fragment>
+							{Array.from(Array(pagination.perPage).keys()).map((i) => (
+								<tr key={i}>
+									{tableHeaders.map(({ sortKey }) => {
+										if (sortKey === 'status') {
 											return (
 												<TableCell key={sortKey}>
-													<SkeletonText />
+													<SkeletonBox height={32} />
 													<VisuallyHidden>Loading</VisuallyHidden>
 												</TableCell>
 											);
-										})}
-									</tr>
-								))}
-							</Fragment>
-						) : (
-							<Fragment>
-								{data.map(
-									({
+										}
+
+										return (
+											<TableCell key={sortKey}>
+												<SkeletonText />
+												<VisuallyHidden>Loading</VisuallyHidden>
+											</TableCell>
+										);
+									})}
+								</tr>
+							))}
+						</Fragment>
+					) : (
+						<Fragment>
+							{data.map(
+								(
+									{
 										index,
 										id,
 										assignee,
@@ -152,61 +155,69 @@ export const DashboardTable = forwardRef<HTMLTableElement>(
 										state,
 										requestDate,
 										status,
-									}) => {
-										// Adding 1 because the table header row is the first row
-										const rowIndex = index + 1;
-										return (
-											<tr key={id} aria-rowindex={rowIndex}>
-												{tableHeaders.map(({ sortKey }) => {
-													switch (sortKey) {
-														case 'businessName':
-															return (
-																<TableCell as="th" scope="row">
-																	<TextLink href={`#${id}`}>
-																		{businessName}
-																	</TextLink>
-																</TableCell>
-															);
-														case 'assignee':
-															return (
-																<DashboardTableRowAssignee
-																	assignee={assignee}
+									},
+									pageIndex
+								) => {
+									// Adding 1 because the table header row is the first row
+									const rowIndex = index + 1;
+									const isActive = pageIndex === selectedItemIndex;
+									return (
+										<tr
+											key={id}
+											aria-rowindex={rowIndex}
+											css={{
+												...(isActive
+													? { backgroundColor: '#E5F6FF!important' }
+													: {}),
+											}}
+										>
+											{tableHeaders.map(({ sortKey }) => {
+												switch (sortKey) {
+													case 'businessName':
+														return (
+															<TableCell as="th" scope="row">
+																<TextLink href={`#${id}`}>
+																	{businessName}
+																</TextLink>
+															</TableCell>
+														);
+													case 'assignee':
+														return (
+															<DashboardTableRowAssignee assignee={assignee} />
+														);
+													case 'requestDate':
+														return (
+															<TableCell>
+																{format(requestDate, 'dd/MM/yyyy')}
+															</TableCell>
+														);
+													case 'status':
+														return (
+															<TableCell>
+																<StatusBadge
+																	weight="subtle"
+																	{...STATUS_MAP[status]}
 																/>
-															);
-														case 'requestDate':
-															return (
-																<TableCell>
-																	{format(requestDate, 'dd/MM/yyyy')}
-																</TableCell>
-															);
-														case 'status':
-															return (
-																<TableCell>
-																	<StatusBadge
-																		weight="subtle"
-																		{...STATUS_MAP[status]}
-																	/>
-																</TableCell>
-															);
-														case 'city':
-															return (
-																<TableCell>
-																	{city}, {state}
-																</TableCell>
-															);
-														default:
-															return null;
-													}
-												})}
-											</tr>
-										);
-									}
-								)}
-							</Fragment>
-						)}
-					</TableBody>
-				</Table>
-			</TableWrapper>
+															</TableCell>
+														);
+													case 'city':
+														return (
+															<TableCell>
+																{city}, {state}
+															</TableCell>
+														);
+													default:
+														return null;
+												}
+											})}
+										</tr>
+									);
+								}
+							)}
+						</Fragment>
+					)}
+				</TableBody>
+			</Table>
 		);
 	}
 );

@@ -1,5 +1,7 @@
+import { Box } from '@ag.ds-next/react/box';
 import { Button, ButtonLink } from '@ag.ds-next/react/button';
-import { useTernaryState } from '@ag.ds-next/react/core';
+import { useTernaryState, mq, tokens } from '@ag.ds-next/react/core';
+import { DirectionLink } from '@ag.ds-next/react/direction-link';
 import {
 	DropdownMenu,
 	DropdownMenuButton,
@@ -22,6 +24,8 @@ import { FilterSearchInput } from '../../DataFiltering/components/FilterSearchIn
 import { useSortAndFilterContext } from '../../DataFiltering/lib/contexts';
 import { BusinessForAudit } from '../../DataFiltering/lib/generateBusinessData';
 import { GetDataSort } from '../../DataFiltering/lib/getData';
+import { useSelectedItemContext } from '../lib/context';
+import { LIST_SECTION_ID } from '../lib/utils';
 
 const SortMenu = () => {
 	const { sort, setSort } = useSortAndFilterContext();
@@ -86,8 +90,9 @@ const SortMenu = () => {
 	);
 };
 
-export const DenseDashbaordTable = () => {
+export const DenseDashboardTable = () => {
 	const [isDrawerOpen, openDrawer, closeDrawer] = useTernaryState(false);
+	const { selectedItemIndex } = useSelectedItemContext();
 	const tableColumns: (keyof BusinessForAudit)[] = [
 		'businessName',
 		'status',
@@ -95,21 +100,29 @@ export const DenseDashbaordTable = () => {
 	];
 
 	return (
-		<Stack gap={2}>
+		<Stack
+			gap={1}
+			as="aside"
+			aria-label="List of businesses"
+			id={LIST_SECTION_ID}
+			tabIndex={-1}
+			css={{
+				overflowX: 'auto',
+				maxHeight: '100%',
+				// maxHeight: 'calc(40vh - 100px)',
+				// [tokens.mediaQuery.min.md]: {
+				// 	maxHeight: 'calc(50vh - 100px)',
+				// },
+				// [tokens.mediaQuery.min.xxl]: {
+				// 	maxHeight: 'calc(100vh - 100px)',
+				// },
+			}}
+		>
 			<Stack gap={1} padding={1}>
 				<FilterRegion>
 					<FilterBar>
 						<FilterBarGroup>
-							<div
-								css={{
-									'> div': {
-										flexDirection: 'row',
-										alignItems: 'center',
-									},
-								}}
-							>
-								<FilterSearchInput />
-							</div>
+							<FilterSearchInput />
 							<SortMenu />
 							<Button
 								onClick={openDrawer}
@@ -131,8 +144,17 @@ export const DenseDashbaordTable = () => {
 					<ActiveFilters />
 				</FilterRegion>
 			</Stack>
-			<DashboardTable columns={tableColumns} />
+			<DashboardTable
+				selectedItemIndex={selectedItemIndex}
+				columns={tableColumns}
+			/>
 			<DashboardPagination />
+
+			<Box padding={1}>
+				<DirectionLink direction="up" href={`#${LIST_SECTION_ID}`}>
+					Back to top
+				</DirectionLink>
+			</Box>
 		</Stack>
 	);
 };

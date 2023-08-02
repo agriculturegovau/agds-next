@@ -1,118 +1,61 @@
-import { format } from 'date-fns';
-import { Stack } from '@ag.ds-next/react/stack';
+import { useState } from 'react';
 import { Columns } from '@ag.ds-next/react/columns';
-import {
-	SummaryList,
-	SummaryListItem,
-	SummaryListItemDescription,
-	SummaryListItemTerm,
-} from '@ag.ds-next/react/summary-list';
-import { H2 } from '@ag.ds-next/react/heading';
-import { StatusBadge } from '@ag.ds-next/react/status-badge';
-import { Box } from '@ag.ds-next/react/box';
+import { mq, mapResponsiveProp } from '@ag.ds-next/react/core';
+import { SkipLinks } from '@ag.ds-next/react/skip-link';
 import { useSortAndFilter } from '../DataFiltering/lib/useSortAndFilter';
-import { STATUS_MAP, useData } from '../DataFiltering/lib/utils';
+import { useData } from '../DataFiltering/lib/utils';
 import {
 	DataProvider,
 	SortAndFilterProvider,
 } from '../DataFiltering/lib/contexts';
-import { BusinessForAudit } from '../DataFiltering/lib/generateBusinessData';
-import { ErrorBoundary } from './ErrorBoundary';
 import { AppFrame } from './components/AppFrame';
-import { DenseDashbaordTable } from './components/DenseDashboardTable';
-
-type ActiveItemProps = {
-	data: BusinessForAudit;
-};
-
-export const ActiveItem = ({ data }: ActiveItemProps) => {
-	return (
-		<Stack gap={2}>
-			<Stack gap={1}>
-				<H2>{data.businessName}</H2>
-				<StatusBadge weight="subtle" {...STATUS_MAP[data.status]} />
-			</Stack>
-
-			<SummaryList>
-				<SummaryListItem>
-					<SummaryListItemTerm>Business name</SummaryListItemTerm>
-					<SummaryListItemDescription>
-						{data.businessName}
-					</SummaryListItemDescription>
-				</SummaryListItem>
-				<SummaryListItem>
-					<SummaryListItemTerm>Location</SummaryListItemTerm>
-					<SummaryListItemDescription>
-						{data.city}, {data.state}
-					</SummaryListItemDescription>
-				</SummaryListItem>
-				<SummaryListItem>
-					<SummaryListItemTerm>Request date</SummaryListItemTerm>
-					<SummaryListItemDescription>
-						{format(data.requestDate, 'dd/MM/yyyy')}
-					</SummaryListItemDescription>
-				</SummaryListItem>
-			</SummaryList>
-
-			<SummaryList>
-				<SummaryListItem>
-					<SummaryListItemTerm>Assigned too</SummaryListItemTerm>
-					<SummaryListItemDescription>
-						{data.assignee || '-'}
-					</SummaryListItemDescription>
-				</SummaryListItem>
-				<SummaryListItem>
-					<SummaryListItemTerm>Term</SummaryListItemTerm>
-					<SummaryListItemDescription>Definition</SummaryListItemDescription>
-				</SummaryListItem>
-				<SummaryListItem>
-					<SummaryListItemTerm>Term</SummaryListItemTerm>
-					<SummaryListItemDescription>Definition</SummaryListItemDescription>
-				</SummaryListItem>
-			</SummaryList>
-
-			<Stack gap={1}>
-				<Box background="bodyAlt" rounded padding={3}>
-					Comment
-				</Box>
-
-				<Box background="bodyAlt" rounded padding={3}>
-					Comment
-				</Box>
-
-				<Box background="bodyAlt" rounded padding={3}>
-					Comment
-				</Box>
-			</Stack>
-		</Stack>
-	);
-};
+import { DenseDashboardTable } from './components/DenseDashboardTable';
+import { ItemDetailsPanel } from './components/ItemDetailsPanel';
+import { ITEM_SECTION_ID } from './lib/utils';
+import { SelectedItemContext } from './lib/context';
 
 export const DenseDashboard = () => {
-	const sortAndFilter = useSortAndFilter();
+	const sortAndFilter = useSortAndFilter({
+		itemsPerPage: 20,
+	});
 	const { filters, pagination, sort } = sortAndFilter;
 	const data = useData({ filters, pagination, sort });
+	const [selectedItemIndex, setSelectedItemIndex] = useState(0);
 
 	return (
-		<SortAndFilterProvider value={sortAndFilter}>
-			<DataProvider value={data}>
-				<AppFrame focusMode={false}>
-					<Columns
-						gap={0}
-						cols={{
-							xs: 1,
-							xxl: 2,
-						}}
-					>
-						<DenseDashbaordTable />
-						<Box padding={1} borderLeft={true} borderTop={true}>
-							<ErrorBoundary>
-								<ActiveItem data={data?.data[1]} />
-							</ErrorBoundary>
-						</Box>
-					</Columns>
-				</AppFrame>
-			</DataProvider>
-		</SortAndFilterProvider>
+		<SelectedItemContext.Provider
+			value={{
+				selectedItemIndex,
+				setSelectedItemIndex,
+			}}
+		>
+			<SortAndFilterProvider value={sortAndFilter}>
+				<DataProvider value={data}>
+					<AppFrame focusMode={false}>
+						<SkipLinks
+							links={[{ href: `#${ITEM_SECTION_ID}`, label: 'Skip to item' }]}
+						/>
+						<Columns
+							gap={0}
+							cols={{
+								xs: 1,
+								xxl: 2,
+							}}
+							css={mq({
+								overflow: 'hidden',
+								height: mapResponsiveProp({
+									xs: 'calc(100vh - 498px)',
+									md: 'calc(100vh - 184px)',
+									lg: 'calc(100vh - 100px)',
+								}),
+							})}
+						>
+							<DenseDashboardTable />
+							<ItemDetailsPanel />
+						</Columns>
+					</AppFrame>
+				</DataProvider>
+			</SortAndFilterProvider>
+		</SelectedItemContext.Provider>
 	);
 };

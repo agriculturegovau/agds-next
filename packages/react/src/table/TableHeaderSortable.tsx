@@ -55,6 +55,7 @@ export const TableHeaderSortable = ({
 				alignItems="center"
 				focus
 				css={{
+					backgroundColor: boxPalette.backgroundBody,
 					textDecoration: 'underline',
 					svg: {
 						display: sort ? 'block' : 'none',
