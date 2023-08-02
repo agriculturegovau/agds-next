@@ -14,14 +14,14 @@ export function defaultRenderItem<Option extends DefaultComboboxOption>(
 					as="mark"
 					color="inherit"
 					fontWeight="bold"
-					css={{ background: 'none' }}
+					css={{ background: 'none', whiteSpace: 'pre' }}
 				>
 					{part}
 				</Text>
 			);
 		}
 		return (
-			<Text key={index} as="span" color="inherit">
+			<Text key={index} as="span" color="inherit" css={{ whiteSpace: 'pre' }}>
 				{part}
 			</Text>
 		);

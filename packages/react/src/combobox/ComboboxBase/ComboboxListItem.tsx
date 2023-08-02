@@ -1,6 +1,6 @@
 import { forwardRef, HTMLAttributes } from 'react';
 import { Flex } from '../../flex';
-import { boxPalette, packs } from '../../core';
+import { boxPalette } from '../../core';
 
 type ComboboxListItemProps = Omit<HTMLAttributes<HTMLLIElement>, 'color'> & {
 	isActiveItem: boolean;
@@ -9,8 +9,8 @@ type ComboboxListItemProps = Omit<HTMLAttributes<HTMLLIElement>, 'color'> & {
 
 const hoverStyles = {
 	color: boxPalette.foregroundText,
+	textDecoration: 'underline',
 	backgroundColor: boxPalette.backgroundShade,
-	...packs.underline,
 };
 
 export const ComboboxListItem = forwardRef<
