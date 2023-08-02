@@ -40,6 +40,12 @@ const underline = {
 	textDecorationSkipInk: 'auto',
 } as const;
 
+const truncate = {
+	overflow: 'hidden',
+	whiteSpace: 'nowrap',
+	textOverflow: 'ellipsis',
+} as const;
+
 export const print = {
 	hidden: {
 		'@media print': {
@@ -60,4 +66,5 @@ export const packs = {
 	outline,
 	underline,
 	print,
+	truncate,
 };
