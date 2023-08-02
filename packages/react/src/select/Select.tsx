@@ -191,6 +191,7 @@ const selectStyles = ({
 		fontFamily: tokens.font.body,
 		...packs.input.md,
 		lineHeight: tokens.lineHeight.default,
+		...packs.truncate,
 
 		...(block && {
 			maxWidth: 'none',
