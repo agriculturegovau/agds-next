@@ -319,6 +319,8 @@ function comboboxMultiStyles({
 				color: boxPalette.foregroundMuted,
 				backgroundColor: boxPalette.backgroundShade,
 			},
+
+			...packs.truncate,
 		},
 	} as const;
 }

@@ -1,6 +1,6 @@
 import { Fragment, Ref, ReactNode } from 'react';
 import { UseComboboxReturnValue } from 'downshift';
-import { FieldMaxWidth } from '../../core';
+import { FieldMaxWidth, packs } from '../../core';
 import { Popover, usePopover } from '../../_popover';
 import { textInputStyles } from '../../text-input';
 import { Field } from '../../field';
@@ -71,6 +71,7 @@ export function ComboboxBase<Option extends DefaultComboboxOption>({
 
 	const { maxWidth, ...inputStyles } = {
 		...textInputStyles({ block, maxWidth: maxWidthProp, invalid }),
+		...packs.truncate,
 		paddingRight: hasBothButtons ? '5rem' : '3rem',
 	};
 
