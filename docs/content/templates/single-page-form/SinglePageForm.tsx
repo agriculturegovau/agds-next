@@ -67,21 +67,21 @@ const formSchema = yup
 		isPostalAddressSameAsStreetAddress: yup.boolean(),
 		postalAddress: yup.string().when('isPostalAddressSameAsStreetAddress', {
 			is: false,
-			then: yup.string().required('Enter your postal address'),
+			then: () => yup.string().required('Enter your postal address'),
 		}),
 		postalSuburbTownCity: yup
 			.string()
 			.when('isPostalAddressSameAsStreetAddress', {
 				is: false,
-				then: yup.string().required('Enter your suburb, town or city'),
+				then: () => yup.string().required('Enter your suburb, town or city'),
 			}),
 		postalState: yup.string().when('isPostalAddressSameAsStreetAddress', {
 			is: false,
-			then: yup.string().required('Enter your state'),
+			then: () => yup.string().required('Enter your state'),
 		}),
 		postalPostcode: yup.string().when('isPostalAddressSameAsStreetAddress', {
 			is: false,
-			then: yup.string().required('Enter your postcode'),
+			then: () => yup.string().required('Enter your postcode'),
 		}),
 	})
 	.required();

@@ -24,11 +24,9 @@ export const formSchema = yup
 			.string()
 			.typeError('Select an option')
 			.required('Select an option'),
-		mobileNumber: yup.string().when('contactMethod', (value, schema) => {
-			if (value === 'SMS') {
-				return schema.required('Mobile number is required');
-			}
-			return schema;
+		mobileNumber: yup.string().when('contactMethod', {
+			is: (val: string) => val === 'SMS',
+			then: (schema) => schema.required('Mobile number is required'),
 		}),
 	})
 	.required();
