@@ -71,7 +71,7 @@
 		"babel-jest": "^27.4.5",
 		"babel-loader": "^9.1.2",
 		"eslint": "^8.39.0",
-		"eslint-config-next": "^13.3.1",
+		"eslint-config-next": "^13.4.12",
 		"eslint-config-prettier": "^8.8.0",
 		"facepaint": "^1.2.1",
 		"html-validate": "^7.4.1",
