@@ -12,7 +12,7 @@
 	},
 	"dependencies": {
 		"@ag.ds-next/react": "^1.0.0",
-		"@hookform/resolvers": "^3.1.1",
+		"@hookform/resolvers": "^2.8.8",
 		"@preconstruct/next": "^4.0.0",
 		"next": "^13.4.12",
 		"react": "18.1.0",
