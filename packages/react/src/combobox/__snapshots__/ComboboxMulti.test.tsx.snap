@@ -28,13 +28,13 @@ exports[`ComboboxMulti renders correctly 1`] = `
       Start typing to see results
     </span>
     <div
-      class="css-1ok16nw-Field"
+      class="css-0"
     >
       <div
-        class="css-llvxcm-boxStyles-Field"
+        class="css-8mqth-boxStyles"
       >
         <div
-          class="css-1yak57b-Field"
+          class="css-1e6s4pi"
         >
           <input
             aria-activedescendant=""
@@ -46,7 +46,7 @@ exports[`ComboboxMulti renders correctly 1`] = `
             aria-labelledby="downshift-0-label"
             aria-required="false"
             autocomplete="off"
-            class="css-17gol01-Field"
+            class="css-1l74t3i"
             id="combobox-input-:r0:"
             role="combobox"
             type="text"
