@@ -24,7 +24,7 @@ exports[`Textarea Basic renders correctly 1`] = `
     <textarea
       aria-invalid="false"
       aria-required="false"
-      class="css-1b7ypc-Field"
+      class="css-18qypsc"
       id="field-:r0:"
     />
   </div>
@@ -90,7 +90,7 @@ exports[`Textarea Invalid renders correctly 1`] = `
       aria-describedby="field-:r4:-message"
       aria-invalid="true"
       aria-required="false"
-      class="css-1e5l0za-Field"
+      class="css-y6rxld"
       id="field-:r4:"
     />
   </div>
@@ -128,7 +128,7 @@ exports[`Textarea With hint renders correctly 1`] = `
       aria-describedby="field-:r2:-hint"
       aria-invalid="false"
       aria-required="false"
-      class="css-1b7ypc-Field"
+      class="css-18qypsc"
       id="field-:r2:"
     />
   </div>

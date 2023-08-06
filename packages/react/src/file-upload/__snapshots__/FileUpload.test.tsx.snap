@@ -31,7 +31,7 @@ exports[`FileUpload Basic renders correctly 1`] = `
       class="css-1mxr31d-boxStyles"
     >
       <div
-        class="css-1vwhuhv-boxStyles-Field"
+        class="css-ten69t-boxStyles"
       >
         <svg
           aria-hidden="true"
@@ -62,7 +62,7 @@ exports[`FileUpload Basic renders correctly 1`] = `
           aria-invalid="false"
           aria-required="false"
           autocomplete="off"
-          class="css-1qmg1ry-Field"
+          class="css-5ur8x"
           id="field-:r0:"
           tabindex="-1"
           type="file"
