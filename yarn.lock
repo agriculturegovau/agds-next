@@ -2940,10 +2940,10 @@
   resolved "https://registry.yarnpkg.com/@hookform/resolvers/-/resolvers-2.9.11.tgz#9ce96e7746625a89239f68ca57c4f654264c17ef"
   integrity sha512-bA3aZ79UgcHj7tFV7RlgThzwSSHZgvfbt2wprldRkYBcMopdMvHyO17Wwp/twcJasNFischFfS7oz8Katz8DdQ==
 
-"@html-validate/stylish@^3.0.0":
-  version "3.0.1"
-  resolved "https://registry.yarnpkg.com/@html-validate/stylish/-/stylish-3.0.1.tgz#9d0304c6fd91e4b19467b8b7d6f3f112fc7831ff"
-  integrity sha512-jQNDrSnWvJEPSlqC1tFqcbmVuJy2x61UwqFsXHxYT2sgCXFW4AVhsoIcHkECCmUHtQ8hpHU6yOBGA+rMLZhS7A==
+"@html-validate/stylish@^4.1.0":
+  version "4.2.0"
+  resolved "https://registry.yarnpkg.com/@html-validate/stylish/-/stylish-4.2.0.tgz#75620160c073c907ab575433c0cc36ff10c70cab"
+  integrity sha512-Nl8HCv0hGRSLQ+n1OD4Hk3a+Urwk9HH0vQkAzzCarT4KlA7bRl+6xEiS5PZVwOmjtC7XiH/oNe3as9Fxcr2A1w==
   dependencies:
     kleur "^4.0.0"
 
@@ -5805,7 +5805,7 @@ acorn-walk@^7.2.0:
   resolved "https://registry.yarnpkg.com/acorn-walk/-/acorn-walk-7.2.0.tgz#0de889a601203909b0fbe07b8938dc21d2e967bc"
   integrity sha512-OPdCF6GsMIP+Az+aWfAAOEt2/+iVDKE7oy6lJ098aoe59oAmK76qV6Gw60SbZ8jHuG2wH058GF4pLFbYamYrVA==
 
-acorn-walk@^8.0.0, acorn-walk@^8.0.2:
+acorn-walk@^8.0.2:
   version "8.2.0"
   resolved "https://registry.yarnpkg.com/acorn-walk/-/acorn-walk-8.2.0.tgz#741210f2e2426454508853a2f44d0ab83b7f69c1"
   integrity sha512-k+iyHEuPgSw6SbuDpGQM+06HQUa04DZ3o+F6CSzXMvvI5KMvnaEqXe+YVe555R9nn6GPt404fos4wcgpw12SDA==
@@ -8353,15 +8353,6 @@ eslint@^8.39.0:
     strip-json-comments "^3.1.0"
     text-table "^0.2.0"
 
-espree@^9.0.0:
-  version "9.4.0"
-  resolved "https://registry.yarnpkg.com/espree/-/espree-9.4.0.tgz#cd4bc3d6e9336c433265fc0aa016fc1aaf182f8a"
-  integrity sha512-DQmnRpLj7f6TgN/NYb0MTzJXL+vJF9h3pHy4JhCIs3zwcgez8xmGg3sXHcEO97BrmO2OSvCwMdfdlyl+E9KjOw==
-  dependencies:
-    acorn "^8.8.0"
-    acorn-jsx "^5.3.2"
-    eslint-visitor-keys "^3.3.0"
-
 espree@^9.5.1:
   version "9.5.1"
   resolved "https://registry.yarnpkg.com/espree/-/espree-9.5.1.tgz#4f26a4d5f18905bf4f2e0bd99002aab807e96dd4"
@@ -9285,17 +9276,6 @@ glob@^7.1.3, glob@^7.1.4, glob@^7.1.6, glob@^7.2.0:
     once "^1.3.0"
     path-is-absolute "^1.0.0"
 
-glob@^8.0.0:
-  version "8.0.3"
-  resolved "https://registry.yarnpkg.com/glob/-/glob-8.0.3.tgz#415c6eb2deed9e502c68fa44a272e6da6eeca42e"
-  integrity sha512-ull455NHSHI/Y1FqGaaYFaLGkNMMJbavMrEGFXG/PGrg6y7sutWHUHrz6gy6WEBH6akM1M414dWKCNs+IhKdiQ==
-  dependencies:
-    fs.realpath "^1.0.0"
-    inflight "^1.0.4"
-    inherits "2"
-    minimatch "^5.0.1"
-    once "^1.3.0"
-
 global-modules@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/global-modules/-/global-modules-1.0.0.tgz#6d770f0eb523ac78164d72b5e71a8877265cc3ea"
@@ -9631,19 +9611,17 @@ html-tags@^3.1.0:
   resolved "https://registry.yarnpkg.com/html-tags/-/html-tags-3.1.0.tgz#7b5e6f7e665e9fb41f30007ed9e0d41e97fb2140"
   integrity sha512-1qYz89hW3lFDEazhjW0yVAV87lw8lVkrJocr72XmBkMKsoSVJCQx3W8BXsC7hO2qAt8BoVjYjtAcZ9perqGnNg==
 
-html-validate@^7.4.1:
-  version "7.4.1"
-  resolved "https://registry.yarnpkg.com/html-validate/-/html-validate-7.4.1.tgz#7f5171906f2840e191ab2f427b3a867dd0bb9f22"
-  integrity sha512-HJQQVmD2TWkwniaKonQo2BWQ7gWICSjumDFLG+DAY0TJM2oqqPMX9KJFXCpTsNorTuJAOR5kQss4HNjDZCvz6w==
+html-validate@^8.1.0:
+  version "8.1.0"
+  resolved "https://registry.yarnpkg.com/html-validate/-/html-validate-8.1.0.tgz#7b1ada45dc3c8a5e0c6b50c5ce254d534851cee7"
+  integrity sha512-vXXHzG/Kto8wUhaCKQAZsHA20VG2Y/il58VnFdeg25jV46ZSMGPajZ6nFW+0Xv0S+R7qGu16bFmUo50W7iaO1g==
   dependencies:
     "@babel/code-frame" "^7.10.0"
-    "@html-validate/stylish" "^3.0.0"
+    "@html-validate/stylish" "^4.1.0"
     "@sidvind/better-ajv-errors" "^2.0.0"
-    acorn-walk "^8.0.0"
     ajv "^8.0.0"
     deepmerge "^4.2.0"
-    espree "^9.0.0"
-    glob "^8.0.0"
+    glob "^10.0.0"
     ignore "^5.0.0"
     kleur "^4.1.0"
     minimist "^1.2.0"
