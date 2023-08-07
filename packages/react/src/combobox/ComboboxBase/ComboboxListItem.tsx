@@ -1,5 +1,5 @@
 import { forwardRef, HTMLAttributes } from 'react';
-import { Flex } from '../../flex';
+import { Box } from '../../box';
 import { boxPalette } from '../../core';
 
 type ComboboxListItemProps = Omit<HTMLAttributes<HTMLLIElement>, 'color'> & {
@@ -21,10 +21,9 @@ export const ComboboxListItem = forwardRef<
 	ref
 ) {
 	return (
-		<Flex
+		<Box
 			ref={ref}
 			as="li"
-			alignItems="center"
 			paddingX={1}
 			paddingY={0.75}
 			borderBottom
@@ -44,6 +43,6 @@ export const ComboboxListItem = forwardRef<
 			{...props}
 		>
 			{children}
-		</Flex>
+		</Box>
 	);
 });
