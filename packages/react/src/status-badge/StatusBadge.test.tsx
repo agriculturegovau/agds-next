@@ -1,5 +1,6 @@
 import '@testing-library/jest-dom';
 import 'html-validate/jest';
+import { axe, toHaveNoViolations } from 'jest-axe';
 import { cleanup, render } from '../../../../test-utils';
 import {
 	StatusBadge,
@@ -7,6 +8,8 @@ import {
 	StatusBadgeTone,
 	StatusBadgeWeight,
 } from './StatusBadge';
+
+expect.extend(toHaveNoViolations);
 
 afterEach(cleanup);
 
@@ -38,7 +41,7 @@ describe('StatusBadge', () => {
 						expect(container).toMatchSnapshot();
 					});
 
-					it('renders a valid HTML structure', () => {
+					it('renders valid HTML with no a11y violations', async () => {
 						const { container } = renderStatusBadge({
 							weight,
 							tone,
@@ -47,6 +50,7 @@ describe('StatusBadge', () => {
 						expect(container).toHTMLValidate({
 							extends: ['html-validate:recommended'],
 						});
+						expect(await axe(container)).toHaveNoViolations();
 					});
 				});
 			});

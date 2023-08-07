@@ -1,8 +1,11 @@
 import '@testing-library/jest-dom';
 import 'html-validate/jest';
+import { axe, toHaveNoViolations } from 'jest-axe';
 import { cleanup, render, screen } from '../../../../test-utils';
 import { Breadcrumbs } from './Breadcrumbs';
 import type { BreadcrumbsProps } from './Breadcrumbs';
+
+expect.extend(toHaveNoViolations);
 
 afterEach(cleanup);
 
@@ -23,11 +26,12 @@ describe('Breadcrumbs', () => {
 		expect(container).toMatchSnapshot();
 	});
 
-	it('renders a valid HTML structure', () => {
+	it('renders valid HTML with no a11y violations', async () => {
 		const { container } = renderBreadcrumbs({});
 		expect(container).toHTMLValidate({
 			extends: ['html-validate:recommended'],
 		});
+		expect(await axe(container)).toHaveNoViolations();
 	});
 
 	it('renders a default aria-label', async () => {

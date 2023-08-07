@@ -1,7 +1,10 @@
 import '@testing-library/jest-dom';
 import 'html-validate/jest';
+import { axe, toHaveNoViolations } from 'jest-axe';
 import { render, cleanup, screen } from '../../../../test-utils';
 import { InpageNav, InpageNavProps } from './InpageNav';
+
+expect.extend(toHaveNoViolations);
 
 afterEach(cleanup);
 
@@ -26,11 +29,12 @@ describe('InpageNav', () => {
 		expect(container).toMatchSnapshot();
 	});
 
-	it('renders a valid HTML structure', () => {
+	it('renders valid HTML with no a11y violations', async () => {
 		const { container } = renderInpageNav();
 		expect(container).toHTMLValidate({
 			extends: ['html-validate:recommended'],
 		});
+		expect(await axe(container)).toHaveNoViolations();
 	});
 
 	it('renders title when supplied', async () => {

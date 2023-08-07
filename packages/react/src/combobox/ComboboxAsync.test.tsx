@@ -1,6 +1,7 @@
 import { useRef } from 'react';
 import '@testing-library/jest-dom';
 import 'html-validate/jest';
+import { axe, toHaveNoViolations } from 'jest-axe';
 import userEvent from '@testing-library/user-event';
 import {
 	render,
@@ -11,6 +12,8 @@ import {
 } from '../../../../test-utils';
 import { ComboboxAsync, ComboboxAsyncProps } from './ComboboxAsync';
 import { STATE_OPTIONS, Option } from './test-utils';
+
+expect.extend(toHaveNoViolations);
 
 afterEach(cleanup);
 
@@ -33,7 +36,7 @@ describe('ComboboxAsync', () => {
 		expect(container).toMatchSnapshot();
 	});
 
-	it('renders a valid HTML structure', () => {
+	it('renders valid HTML with no a11y violations', async () => {
 		const { container } = renderComboboxAsync();
 		expect(container).toHTMLValidate({
 			extends: ['html-validate:recommended'],
@@ -44,6 +47,9 @@ describe('ComboboxAsync', () => {
 				// react 18s `useId` break this rule
 				'valid-id': 'off',
 			},
+		});
+		await act(async () => {
+			expect(await axe(container)).toHaveNoViolations();
 		});
 	});
 

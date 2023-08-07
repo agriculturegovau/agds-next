@@ -1,10 +1,12 @@
 import '@testing-library/jest-dom';
 import 'html-validate/jest';
-import userEvent from '@testing-library/user-event';
 import { axe, toHaveNoViolations } from 'jest-axe';
+import userEvent from '@testing-library/user-event';
 import { render, screen, cleanup } from '../../../../test-utils';
 import { AvatarIcon } from '../icon';
 import { Button, ButtonLink, ButtonLinkProps, ButtonProps } from './Button';
+
+expect.extend(toHaveNoViolations);
 
 afterEach(cleanup);
 
@@ -24,11 +26,12 @@ describe('Button', () => {
 		expect(container).toMatchSnapshot();
 	});
 
-	it('renders a valid HTML structure', () => {
+	it('renders valid HTML with no a11y violations', async () => {
 		const { container } = renderButton();
 		expect(container).toHTMLValidate({
 			extends: ['html-validate:recommended'],
 		});
+		expect(await axe(container)).toHaveNoViolations();
 	});
 
 	it('should pass axe linting', async () => {
@@ -72,11 +75,12 @@ describe('Button', () => {
 			expect(el).toHaveAccessibleName('My button Busy');
 		});
 
-		it('renders a valid HTML structure', () => {
+		it('renders valid HTML with no a11y violations', async () => {
 			const { container } = renderButton({ loading: true });
 			expect(container).toHTMLValidate({
 				extends: ['html-validate:recommended'],
 			});
+			expect(await axe(container)).toHaveNoViolations();
 		});
 
 		it('announces loading label correctly', () => {
@@ -101,11 +105,12 @@ describe('Button', () => {
 			expect(container).toMatchSnapshot();
 		});
 
-		it('renders a valid HTML structure', () => {
+		it('renders valid HTML with no a11y violations', async () => {
 			const { container } = renderButton({ iconAfter: AvatarIcon });
 			expect(container).toHTMLValidate({
 				extends: ['html-validate:recommended'],
 			});
+			expect(await axe(container)).toHaveNoViolations();
 		});
 
 		it('renders correctly with minimal props', () => {
@@ -123,11 +128,12 @@ describe('Button', () => {
 			expect(container).toMatchSnapshot();
 		});
 
-		it('renders a valid HTML structure', () => {
+		it('renders valid HTML with no a11y violations', async () => {
 			const { container } = renderButton({ size: 'sm' });
 			expect(container).toHTMLValidate({
 				extends: ['html-validate:recommended'],
 			});
+			expect(await axe(container)).toHaveNoViolations();
 		});
 
 		it('renders correctly with minimal props', () => {
@@ -163,10 +169,11 @@ describe('ButtonLink', () => {
 		expect(el).toHaveAccessibleName('My button link');
 	});
 
-	it('renders a valid HTML structure', () => {
+	it('renders valid HTML with no a11y violations', async () => {
 		const { container } = renderButtonLink();
 		expect(container).toHTMLValidate({
 			extends: ['html-validate:recommended'],
 		});
+		expect(await axe(container)).toHaveNoViolations();
 	});
 });

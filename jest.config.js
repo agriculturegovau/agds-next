@@ -4,6 +4,7 @@ const config = {
 	testEnvironment: 'jsdom',
 	clearMocks: true,
 	verbose: true,
+	testTimeout: 10000,
 	collectCoverageFrom: [
 		'**/packages/**/*.{ts,tsx}',
 		'!**/dist/**',

@@ -1,7 +1,10 @@
 import '@testing-library/jest-dom';
 import 'html-validate/jest';
+import { axe, toHaveNoViolations } from 'jest-axe';
 import { render, screen, cleanup } from '../../../../test-utils';
 import { LoadingDots, LoadingDotsProps } from './LoadingDots';
+
+expect.extend(toHaveNoViolations);
 
 afterEach(cleanup);
 
@@ -17,16 +20,18 @@ describe('LoadingDots', () => {
 		expect(el.tagName).toBe('SPAN');
 		expect(el).toHaveTextContent('Busy');
 	});
-	it('renders a valid HTML structure', () => {
+	it('renders valid HTML with no a11y violations', async () => {
 		const { container } = render(<LoadingDotsExample />);
 		expect(container).toHTMLValidate({
 			extends: ['html-validate:recommended'],
 		});
+		expect(await axe(container)).toHaveNoViolations();
 	});
-	it('renders a valid HTML structure with role="status"', () => {
+	it('renders valid HTML with no a11y violations and role="status"', async () => {
 		const { container } = render(<LoadingDotsExample role="status" />);
 		expect(container).toHTMLValidate({
 			extends: ['html-validate:recommended'],
 		});
+		expect(await axe(container)).toHaveNoViolations();
 	});
 });

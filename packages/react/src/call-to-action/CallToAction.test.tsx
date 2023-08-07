@@ -1,5 +1,6 @@
 import '@testing-library/jest-dom';
 import 'html-validate/jest';
+import { axe, toHaveNoViolations } from 'jest-axe';
 import userEvent from '@testing-library/user-event';
 import { cleanup, render, screen } from '../../../../test-utils';
 import {
@@ -8,6 +9,8 @@ import {
 	CallToActionButton,
 	CallToActionButtonProps,
 } from './CallToAction';
+
+expect.extend(toHaveNoViolations);
 
 afterEach(cleanup);
 
@@ -25,11 +28,12 @@ describe('CallToActionLink', () => {
 		expect(container).toMatchSnapshot();
 	});
 
-	it('renders a valid HTML structure', () => {
+	it('renders valid HTML with no a11y violations', async () => {
 		const { container } = renderCallToActionLink();
 		expect(container).toHTMLValidate({
 			extends: ['html-validate:recommended'],
 		});
+		expect(await axe(container)).toHaveNoViolations();
 	});
 
 	it('renders basic attributes correctly', () => {
@@ -56,11 +60,12 @@ describe('CallToActionButton', () => {
 		expect(container).toMatchSnapshot();
 	});
 
-	it('renders a valid HTML structure', () => {
+	it('renders valid HTML with no a11y violations', async () => {
 		const { container } = renderCallToActionButton({});
 		expect(container).toHTMLValidate({
 			extends: ['html-validate:recommended'],
 		});
+		expect(await axe(container)).toHaveNoViolations();
 	});
 
 	it('responds to an onClick event', async () => {

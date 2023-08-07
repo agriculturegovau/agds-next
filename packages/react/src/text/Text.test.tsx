@@ -1,7 +1,10 @@
 import '@testing-library/jest-dom';
 import 'html-validate/jest';
+import { axe, toHaveNoViolations } from 'jest-axe';
 import { cleanup, render, screen } from '../../../../test-utils';
 import { Text, TextProps } from './Text';
+
+expect.extend(toHaveNoViolations);
 
 afterEach(cleanup);
 
@@ -15,11 +18,12 @@ describe('Text', () => {
 		expect(container).toMatchSnapshot();
 	});
 
-	it('renders a valid HTML structure', () => {
+	it('renders valid HTML with no a11y violations', async () => {
 		const { container } = renderText({});
 		expect(container).toHTMLValidate({
 			extends: ['html-validate:recommended'],
 		});
+		expect(await axe(container)).toHaveNoViolations();
 	});
 
 	it('can render a paragraph tag using the `as` prop', () => {

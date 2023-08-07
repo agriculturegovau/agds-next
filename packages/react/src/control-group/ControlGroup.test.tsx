@@ -1,9 +1,12 @@
 import '@testing-library/jest-dom';
 import 'html-validate/jest';
+import { axe, toHaveNoViolations } from 'jest-axe';
 import { render, cleanup, screen } from '../../../../test-utils';
 import { Checkbox } from '../checkbox';
 import { Radio } from '../radio';
 import { ControlGroup, ControlGroupProps } from './ControlGroup';
+
+expect.extend(toHaveNoViolations);
 
 afterEach(cleanup);
 
@@ -38,7 +41,7 @@ describe('ControlGroup ', () => {
 			expect(container).toMatchSnapshot();
 		});
 
-		it('renders a valid HTML structure', () => {
+		it('renders valid HTML with no a11y violations', async () => {
 			const { container } = renderCheckboxGroup({
 				label: 'Control group label',
 			});
@@ -49,6 +52,7 @@ describe('ControlGroup ', () => {
 					'valid-id': 'off',
 				},
 			});
+			expect(await axe(container)).toHaveNoViolations();
 		});
 
 		it('renders correctly when invalid', () => {
@@ -80,7 +84,7 @@ describe('ControlGroup ', () => {
 			});
 		});
 
-		it('renders a valid HTML structure when invalid', () => {
+		it('renders valid HTML with no a11y violations when invalid', () => {
 			const { container } = renderCheckboxGroup({
 				label: 'Control group label',
 				hint: 'Hint text',
@@ -103,7 +107,7 @@ describe('ControlGroup ', () => {
 			expect(container).toMatchSnapshot();
 		});
 
-		it('renders a valid HTML structure', () => {
+		it('renders valid HTML with no a11y violations', async () => {
 			const { container } = renderRadioGroup({ label: 'Control group label' });
 			expect(container).toHTMLValidate({
 				extends: ['html-validate:recommended'],
@@ -143,7 +147,7 @@ describe('ControlGroup ', () => {
 			});
 		});
 
-		it('renders a valid HTML structure invalid', () => {
+		it('renders valid HTML with no a11y violations when invalid', () => {
 			const { container } = renderRadioGroup({
 				label: 'Control group label',
 				hint: 'Hint text',

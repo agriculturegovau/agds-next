@@ -1,5 +1,6 @@
 import '@testing-library/jest-dom';
 import 'html-validate/jest';
+import { axe, toHaveNoViolations } from 'jest-axe';
 import { Stack } from '@ag.ds-next/react/stack';
 import { H1 } from '@ag.ds-next/react/heading';
 import { Text } from '@ag.ds-next/react/text';
@@ -11,6 +12,8 @@ import { TableCell } from './TableCell';
 import { TableHead } from './TableHead';
 import { TableHeader } from './TableHeader';
 import { TableWrapper } from './TableWrapper';
+
+expect.extend(toHaveNoViolations);
 
 afterEach(cleanup);
 
@@ -212,11 +215,12 @@ describe('Table', () => {
 			expect(container).toMatchSnapshot();
 		});
 
-		it('renders a valid HTML structure', () => {
+		it('renders valid HTML with no a11y violations', async () => {
 			const { container } = renderTableWithCaption();
 			expect(container).toHTMLValidate({
 				extends: ['html-validate:recommended'],
 			});
+			expect(await axe(container)).toHaveNoViolations();
 		});
 
 		it('has correct accessible name and description', () => {
@@ -230,11 +234,12 @@ describe('Table', () => {
 	});
 
 	describe('with headings', () => {
-		it('renders a valid HTML structure', () => {
+		it('renders valid HTML with no a11y violations', async () => {
 			const { container } = renderTableWithHeadings();
 			expect(container).toHTMLValidate({
 				extends: ['html-validate:recommended'],
 			});
+			expect(await axe(container)).toHaveNoViolations();
 		});
 
 		it('has correct accessible name and description', () => {

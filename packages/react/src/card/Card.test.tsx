@@ -1,5 +1,6 @@
 import '@testing-library/jest-dom';
 import 'html-validate/jest';
+import { axe, toHaveNoViolations } from 'jest-axe';
 import { Stack } from '../stack';
 import { Heading } from '../heading';
 import { Text } from '../text';
@@ -8,6 +9,8 @@ import { render, cleanup } from '../../../../test-utils';
 import { Card } from './Card';
 import { CardInner } from './CardInner';
 import { CardLink } from './CardLink';
+
+expect.extend(toHaveNoViolations);
 
 afterEach(cleanup);
 
@@ -57,11 +60,12 @@ describe('Card', () => {
 			const { container } = render(<CardExample />);
 			expect(container).toMatchSnapshot();
 		});
-		it('renders a valid HTML structure', () => {
+		it('renders valid HTML with no a11y violations', async () => {
 			const { container } = render(<CardExample />);
 			expect(container).toHTMLValidate({
 				extends: ['html-validate:recommended'],
 			});
+			expect(await axe(container)).toHaveNoViolations();
 		});
 	});
 
@@ -70,11 +74,12 @@ describe('Card', () => {
 			const { container } = render(<CardLinkExample />);
 			expect(container).toMatchSnapshot();
 		});
-		it('renders a valid HTML structure', () => {
+		it('renders valid HTML with no a11y violations', async () => {
 			const { container } = render(<CardLinkExample />);
 			expect(container).toHTMLValidate({
 				extends: ['html-validate:recommended'],
 			});
+			expect(await axe(container)).toHaveNoViolations();
 		});
 	});
 });

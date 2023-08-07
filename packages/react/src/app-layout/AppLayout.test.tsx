@@ -16,6 +16,8 @@ import {
 	AppLayoutFooterDivider,
 } from './index';
 
+expect.extend(toHaveNoViolations);
+
 afterEach(cleanup);
 
 function renderAppLayout({
@@ -69,32 +71,27 @@ function renderAppLayout({
 	);
 }
 
-expect.extend(toHaveNoViolations);
-
 describe('AppLayout', () => {
 	it('renders correctly', () => {
 		const { container } = renderAppLayout({});
 		expect(container).toMatchSnapshot();
 	});
 
-	it('renders a valid HTML structure', () => {
+	it('renders valid HTML with no a11y violations', async () => {
 		const { container } = renderAppLayout({});
 		expect(container).toHTMLValidate({
 			extends: ['html-validate:recommended'],
 		});
-	});
-
-	it('should pass axe linting', async () => {
-		const { container } = renderAppLayout({});
 		expect(await axe(container)).toHaveNoViolations();
 	});
 
 	describe('Focus mode', () => {
-		it('renders a valid HTML structure', () => {
+		it('renders valid HTML with no a11y violations', async () => {
 			const { container } = renderAppLayout({ focusMode: true });
 			expect(container).toHTMLValidate({
 				extends: ['html-validate:recommended'],
 			});
+			expect(await axe(container)).toHaveNoViolations();
 		});
 	});
 

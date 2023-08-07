@@ -1,7 +1,10 @@
 import '@testing-library/jest-dom';
 import 'html-validate/jest';
+import { axe, toHaveNoViolations } from 'jest-axe';
 import { render, cleanup } from '../../../../test-utils';
 import { ProgressIndicator, ProgressIndicatorProps } from './ProgressIndicator';
+
+expect.extend(toHaveNoViolations);
 
 afterEach(cleanup);
 
@@ -22,7 +25,7 @@ describe('ProgressIndicator', () => {
 			const { container } = renderProgressIndicator(exampleProps);
 			expect(container).toMatchSnapshot();
 		});
-		it('renders a valid HTML structure', () => {
+		it('renders valid HTML with no a11y violations', async () => {
 			const { container } = renderProgressIndicator(exampleProps);
 			expect(container).toHTMLValidate({
 				extends: ['html-validate:recommended'],
@@ -32,6 +35,7 @@ describe('ProgressIndicator', () => {
 					'valid-id': 'off',
 				},
 			});
+			expect(await axe(container)).toHaveNoViolations();
 		});
 	});
 	describe('With buttons', () => {
@@ -58,7 +62,7 @@ describe('ProgressIndicator', () => {
 			const { container } = renderProgressIndicator(exampleProps);
 			expect(container).toMatchSnapshot();
 		});
-		it('renders a valid HTML structure', () => {
+		it('renders valid HTML with no a11y violations', async () => {
 			const { container } = renderProgressIndicator(exampleProps);
 			expect(container).toHTMLValidate({
 				extends: ['html-validate:recommended'],
@@ -68,6 +72,7 @@ describe('ProgressIndicator', () => {
 					'valid-id': 'off',
 				},
 			});
+			expect(await axe(container)).toHaveNoViolations();
 		});
 	});
 });

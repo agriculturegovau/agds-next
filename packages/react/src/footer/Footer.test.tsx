@@ -1,11 +1,14 @@
 import '@testing-library/jest-dom';
 import 'html-validate/jest';
+import { axe, toHaveNoViolations } from 'jest-axe';
 import { tokens } from '../core';
 import { Text } from '../text';
 import { LinkList } from '../link-list';
 import { render, cleanup } from '../../../../test-utils';
 import { Footer, FooterProps } from './Footer';
 import { FooterDivider } from './FooterDivider';
+
+expect.extend(toHaveNoViolations);
 
 afterEach(cleanup);
 
@@ -42,10 +45,11 @@ describe('Footer', () => {
 		expect(container).toMatchSnapshot();
 	});
 
-	it('renders a valid HTML structure', () => {
+	it('renders valid HTML with no a11y violations', async () => {
 		const { container } = renderFooter();
 		expect(container).toHTMLValidate({
 			extends: ['html-validate:recommended'],
 		});
+		expect(await axe(container)).toHaveNoViolations();
 	});
 });

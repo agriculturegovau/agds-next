@@ -1,7 +1,10 @@
 import '@testing-library/jest-dom';
 import 'html-validate/jest';
+import { axe, toHaveNoViolations } from 'jest-axe';
 import { cleanup, render } from '../../../../test-utils';
 import { Select, SelectProps } from './Select';
+
+expect.extend(toHaveNoViolations);
 
 afterEach(cleanup);
 
@@ -43,7 +46,7 @@ describe('Select', () => {
 			});
 			expect(container).toMatchSnapshot();
 		});
-		it('renders a valid HTML structure', () => {
+		it('renders valid HTML with no a11y violations', async () => {
 			const { container } = renderSelect({
 				label: 'Example',
 				options: basicOptions,
@@ -53,6 +56,7 @@ describe('Select', () => {
 				// react 18s `useId` break this rule
 				rules: { 'valid-id': 'off' },
 			});
+			expect(await axe(container)).toHaveNoViolations();
 		});
 	});
 
@@ -64,7 +68,7 @@ describe('Select', () => {
 			});
 			expect(container).toMatchSnapshot();
 		});
-		it('renders a valid HTML structure', () => {
+		it('renders valid HTML with no a11y violations', async () => {
 			const { container } = renderSelect({
 				label: 'Example',
 				options: groupedOptions,
@@ -74,6 +78,7 @@ describe('Select', () => {
 				// react 18s `useId` break this rule
 				rules: { 'valid-id': 'off' },
 			});
+			expect(await axe(container)).toHaveNoViolations();
 		});
 	});
 
@@ -85,7 +90,7 @@ describe('Select', () => {
 			});
 			expect(container).toMatchSnapshot();
 		});
-		it('renders a valid HTML structure', () => {
+		it('renders valid HTML with no a11y violations', async () => {
 			const { container } = renderSelect({
 				label: 'Example',
 				options: basicOptions,
@@ -95,6 +100,7 @@ describe('Select', () => {
 				// react 18s `useId` break this rule
 				rules: { 'valid-id': 'off' },
 			});
+			expect(await axe(container)).toHaveNoViolations();
 		});
 	});
 
@@ -109,7 +115,7 @@ describe('Select', () => {
 			expect(container).toMatchSnapshot();
 		});
 
-		it('renders a valid HTML structure', () => {
+		it('renders valid HTML with no a11y violations', async () => {
 			const { container } = renderSelect({
 				label: 'Example',
 				options: basicOptions,
@@ -121,6 +127,7 @@ describe('Select', () => {
 				// react 18s `useId` break this rule
 				rules: { 'valid-id': 'off' },
 			});
+			expect(await axe(container)).toHaveNoViolations();
 		});
 	});
 });

@@ -1,9 +1,12 @@
 import '@testing-library/jest-dom';
 import 'html-validate/jest';
+import { axe, toHaveNoViolations } from 'jest-axe';
 import { cleanup, render } from '../../../../test-utils';
 import { OrderedList } from './OrderedList';
 import type { OrderedListProps } from './OrderedList';
 import { ListItem } from './ListItem';
+
+expect.extend(toHaveNoViolations);
 
 afterEach(cleanup);
 
@@ -22,10 +25,11 @@ describe('OrderedList', () => {
 		const { container } = renderOrderedList();
 		expect(container).toMatchSnapshot();
 	});
-	it('renders a valid HTML structure', () => {
+	it('renders valid HTML with no a11y violations', async () => {
 		const { container } = renderOrderedList();
 		expect(container).toHTMLValidate({
 			extends: ['html-validate:recommended'],
 		});
+		expect(await axe(container)).toHaveNoViolations();
 	});
 });

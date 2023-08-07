@@ -1,8 +1,11 @@
 import '@testing-library/jest-dom';
 import 'html-validate/jest';
+import { axe, toHaveNoViolations } from 'jest-axe';
 import userEvent from '@testing-library/user-event';
 import { cleanup, render } from '../../../../test-utils';
 import { SearchInput, SearchInputProps } from './SearchInput';
+
+expect.extend(toHaveNoViolations);
 
 afterEach(cleanup);
 
@@ -19,13 +22,14 @@ describe('SearchInput', () => {
 			expect(container).toMatchSnapshot();
 		});
 
-		it('renders a valid HTML structure', () => {
+		it('renders valid HTML with no a11y violations', async () => {
 			const { container } = renderSearchInput({ label: 'Search' });
 			expect(container).toHTMLValidate({
 				extends: ['html-validate:recommended'],
 				// react 18s `useId` break this rule
 				rules: { 'valid-id': 'off' },
 			});
+			expect(await axe(container)).toHaveNoViolations();
 		});
 	});
 
@@ -37,7 +41,7 @@ describe('SearchInput', () => {
 			});
 			expect(container).toMatchSnapshot();
 		});
-		it('renders a valid HTML structure', () => {
+		it('renders valid HTML with no a11y violations', async () => {
 			const { container } = renderSearchInput({
 				label: 'Search',
 				hint: 'Hint text',
@@ -47,6 +51,7 @@ describe('SearchInput', () => {
 				// react 18s `useId` break this rule
 				rules: { 'valid-id': 'off' },
 			});
+			expect(await axe(container)).toHaveNoViolations();
 		});
 	});
 
@@ -60,7 +65,7 @@ describe('SearchInput', () => {
 			expect(container).toMatchSnapshot();
 		});
 
-		it('renders a valid HTML structure', () => {
+		it('renders valid HTML with no a11y violations', async () => {
 			const { container } = renderSearchInput({
 				label: 'Name',
 				message: 'A search term is required to see results',
@@ -71,6 +76,7 @@ describe('SearchInput', () => {
 				// react 18s `useId` break this rule
 				rules: { 'valid-id': 'off' },
 			});
+			expect(await axe(container)).toHaveNoViolations();
 		});
 	});
 

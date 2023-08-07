@@ -1,12 +1,15 @@
 import '@testing-library/jest-dom';
 import 'html-validate/jest';
+import { axe, toHaveNoViolations } from 'jest-axe';
 import { useRef } from 'react';
-import { render, cleanup, renderHook } from '../../../../test-utils';
+import { render, cleanup, renderHook, act } from '../../../../test-utils';
 import {
 	ComboboxAsyncMulti,
 	ComboboxAsyncMultiProps,
 } from './ComboboxAsyncMulti';
 import { STATE_OPTIONS, Option } from './test-utils';
+
+expect.extend(toHaveNoViolations);
 
 afterEach(cleanup);
 
@@ -31,7 +34,7 @@ describe('ComboboxAsyncMulti', () => {
 		expect(container).toMatchSnapshot();
 	});
 
-	it('renders a valid HTML structure', () => {
+	it('renders valid HTML with no a11y violations', async () => {
 		const { container } = renderComboboxAsyncMulti();
 		expect(container).toHTMLValidate({
 			extends: ['html-validate:recommended'],
@@ -42,6 +45,9 @@ describe('ComboboxAsyncMulti', () => {
 				// react 18s `useId` break this rule
 				'valid-id': 'off',
 			},
+		});
+		await act(async () => {
+			expect(await axe(container)).toHaveNoViolations();
 		});
 	});
 

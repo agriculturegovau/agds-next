@@ -1,8 +1,11 @@
 import '@testing-library/jest-dom';
 import 'html-validate/jest';
+import { axe, toHaveNoViolations } from 'jest-axe';
 import userEvent from '@testing-library/user-event';
 import { render, screen, cleanup } from '../../../../test-utils';
 import { Checkbox, CheckboxProps } from './Checkbox';
+
+expect.extend(toHaveNoViolations);
 
 afterEach(cleanup);
 
@@ -32,11 +35,12 @@ describe('Checkbox', () => {
 		expect(el).toHaveAttribute('aria-invalid', 'true');
 	});
 
-	it('renders a valid HTML structure', () => {
+	it('renders valid HTML with no a11y violations', async () => {
 		const { container } = render(<CheckboxExample />);
 		expect(container).toHTMLValidate({
 			extends: ['html-validate:recommended'],
 		});
+		expect(await axe(container)).toHaveNoViolations();
 	});
 
 	it('renders correctly', () => {

@@ -1,11 +1,14 @@
 import '@testing-library/jest-dom';
 import 'html-validate/jest';
+import { axe, toHaveNoViolations } from 'jest-axe';
 import userEvent from '@testing-library/user-event';
 import { useTernaryState } from '../core';
 import { Button } from '../button';
 import { Text } from '../text';
 import { render, screen, cleanup, waitFor } from '../../../../test-utils';
 import { FilterDrawer } from './FilterDrawer';
+
+expect.extend(toHaveNoViolations);
 
 afterEach(cleanup);
 
@@ -55,7 +58,7 @@ describe('FilterDrawer', () => {
 		expect(baseElement).toMatchSnapshot();
 	});
 
-	it('renders a valid HTML structure', () => {
+	it('renders valid HTML with no a11y violations', async () => {
 		const { baseElement } = renderBaseFilterDrawer();
 		expect(baseElement).toHTMLValidate({
 			extends: ['html-validate:recommended'],
@@ -65,6 +68,7 @@ describe('FilterDrawer', () => {
 				'valid-id': 'off',
 			},
 		});
+		expect(await axe(baseElement)).toHaveNoViolations();
 	});
 
 	it('focuses the correct elements when opening and closing', async () => {

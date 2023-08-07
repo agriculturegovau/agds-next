@@ -1,8 +1,11 @@
 import '@testing-library/jest-dom';
 import 'html-validate/jest';
+import { axe, toHaveNoViolations } from 'jest-axe';
 import { TextLink } from '../text-link';
 import { render, screen, cleanup } from '../../../../test-utils';
 import { ExternalLinkCallout } from './ExternalLinkCallout';
+
+expect.extend(toHaveNoViolations);
 
 afterEach(cleanup);
 
@@ -21,11 +24,12 @@ describe('ExternalLinkCallout', () => {
 		expect(container).toMatchSnapshot();
 	});
 
-	it('renders a valid HTML structure', () => {
+	it('renders valid HTML with no a11y violations', async () => {
 		const { container } = render(<ExternalLinkCalloutExample />);
 		expect(container).toHTMLValidate({
 			extends: ['html-validate:recommended'],
 		});
+		expect(await axe(container)).toHaveNoViolations();
 	});
 
 	it('announces to a screen reader user that a link will open in a new tab', () => {

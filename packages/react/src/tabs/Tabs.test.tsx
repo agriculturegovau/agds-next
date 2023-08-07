@@ -1,5 +1,6 @@
 import '@testing-library/jest-dom';
 import 'html-validate/jest';
+import { axe, toHaveNoViolations } from 'jest-axe';
 import { Fragment } from 'react';
 import userEvent from '@testing-library/user-event';
 import { render, cleanup, screen } from '../../../../test-utils';
@@ -8,6 +9,8 @@ import { TabList } from './TabList';
 import { TabPanel } from './TabPanel';
 import { TabPanels } from './TabPanels';
 import { Tabs } from './Tabs';
+
+expect.extend(toHaveNoViolations);
 
 afterEach(cleanup);
 
@@ -38,7 +41,7 @@ describe('Tabs', () => {
 		expect(container).toMatchSnapshot();
 	});
 
-	it('renders a valid HTML structure', () => {
+	it('renders valid HTML with no a11y violations', async () => {
 		const { container } = renderTabs();
 		expect(container).toHTMLValidate({
 			extends: ['html-validate:recommended'],
@@ -47,6 +50,7 @@ describe('Tabs', () => {
 				'valid-id': 'off',
 			},
 		});
+		expect(await axe(container)).toHaveNoViolations();
 	});
 
 	it('flattens children correctly', async () => {

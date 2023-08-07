@@ -1,11 +1,14 @@
 import '@testing-library/jest-dom';
 import 'html-validate/jest';
+import { axe, toHaveNoViolations } from 'jest-axe';
 import { FormStack } from '../form-stack';
 import { TextInput } from '../text-input';
 import { H1 } from '../heading';
 import { Text } from '../text';
 import { cleanup, render, screen } from '../../../../test-utils';
 import { Fieldset } from './Fieldset';
+
+expect.extend(toHaveNoViolations);
 
 afterEach(cleanup);
 
@@ -48,7 +51,7 @@ describe('Fieldset', () => {
 			expect(container).toMatchSnapshot();
 		});
 
-		it('renders a valid HTML structure', () => {
+		it('renders valid HTML with no a11y violations', async () => {
 			const { container } = render(<FieldsetBasic />);
 			expect(container).toHTMLValidate({
 				extends: ['html-validate:recommended'],
@@ -57,6 +60,7 @@ describe('Fieldset', () => {
 					'valid-id': 'off',
 				},
 			});
+			expect(await axe(container)).toHaveNoViolations();
 		});
 
 		it('has correct aria attributes', async () => {
@@ -74,7 +78,7 @@ describe('Fieldset', () => {
 			const { container } = render(<FieldsetLegendAsPageHeading />);
 			expect(container).toMatchSnapshot();
 		});
-		it('renders a valid HTML structure', () => {
+		it('renders valid HTML with no a11y violations', async () => {
 			const { container } = render(<FieldsetLegendAsPageHeading />);
 			expect(container).toHTMLValidate({
 				extends: ['html-validate:recommended'],

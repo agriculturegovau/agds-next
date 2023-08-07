@@ -1,7 +1,10 @@
 import '@testing-library/jest-dom';
 import 'html-validate/jest';
+import { axe, toHaveNoViolations } from 'jest-axe';
 import { cleanup, render } from '../../../../test-utils';
 import { Textarea, TextareaProps } from './Textarea';
+
+expect.extend(toHaveNoViolations);
 
 afterEach(cleanup);
 
@@ -15,13 +18,14 @@ describe('Textarea', () => {
 			const { container } = renderTextarea({ label: 'Message' });
 			expect(container).toMatchSnapshot();
 		});
-		it('renders a valid HTML structure', () => {
+		it('renders valid HTML with no a11y violations', async () => {
 			const { container } = renderTextarea({ label: 'Message' });
 			expect(container).toHTMLValidate({
 				extends: ['html-validate:recommended'],
 				// react 18s `useId` break this rule
 				rules: { 'valid-id': 'off' },
 			});
+			expect(await axe(container)).toHaveNoViolations();
 		});
 	});
 
@@ -33,7 +37,7 @@ describe('Textarea', () => {
 			});
 			expect(container).toMatchSnapshot();
 		});
-		it('renders a valid HTML structure', () => {
+		it('renders valid HTML with no a11y violations', async () => {
 			const { container } = renderTextarea({
 				label: 'Message',
 				hint: 'Hint text',
@@ -43,6 +47,7 @@ describe('Textarea', () => {
 				// react 18s `useId` break this rule
 				rules: { 'valid-id': 'off' },
 			});
+			expect(await axe(container)).toHaveNoViolations();
 		});
 	});
 
@@ -56,7 +61,7 @@ describe('Textarea', () => {
 			expect(container).toMatchSnapshot();
 		});
 
-		it('renders a valid HTML structure', () => {
+		it('renders valid HTML with no a11y violations', async () => {
 			const { container } = renderTextarea({
 				label: 'Message',
 				message: 'This field is required',
@@ -67,6 +72,7 @@ describe('Textarea', () => {
 				// react 18s `useId` break this rule
 				rules: { 'valid-id': 'off' },
 			});
+			expect(await axe(container)).toHaveNoViolations();
 		});
 	});
 });
