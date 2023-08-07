@@ -1,5 +1,6 @@
 import '@testing-library/jest-dom';
 import 'html-validate/jest';
+import { axe, toHaveNoViolations } from 'jest-axe';
 import { cleanup, render } from '../../../../test-utils';
 import { Text } from '../text';
 import { LinkList } from '../link-list';
@@ -68,6 +69,8 @@ function renderAppLayout({
 	);
 }
 
+expect.extend(toHaveNoViolations);
+
 describe('AppLayout', () => {
 	it('renders correctly', () => {
 		const { container } = renderAppLayout({});
@@ -79,6 +82,11 @@ describe('AppLayout', () => {
 		expect(container).toHTMLValidate({
 			extends: ['html-validate:recommended'],
 		});
+	});
+
+	it('should pass axe linting', async () => {
+		const { container } = renderAppLayout({});
+		expect(await axe(container)).toHaveNoViolations();
 	});
 
 	describe('Focus mode', () => {

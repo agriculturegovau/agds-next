@@ -1,6 +1,7 @@
 import '@testing-library/jest-dom';
 import 'html-validate/jest';
 import userEvent from '@testing-library/user-event';
+import { axe, toHaveNoViolations } from 'jest-axe';
 import { render, screen, cleanup } from '../../../../test-utils';
 import { AvatarIcon } from '../icon';
 import { Button, ButtonLink, ButtonLinkProps, ButtonProps } from './Button';
@@ -15,6 +16,8 @@ function renderButton(props?: Partial<ButtonProps>) {
 	);
 }
 
+expect.extend(toHaveNoViolations);
+
 describe('Button', () => {
 	it('renders correctly', () => {
 		const { container } = renderButton();
@@ -26,6 +29,11 @@ describe('Button', () => {
 		expect(container).toHTMLValidate({
 			extends: ['html-validate:recommended'],
 		});
+	});
+
+	it('should pass axe linting', async () => {
+		const { container } = renderButton();
+		expect(await axe(container)).toHaveNoViolations();
 	});
 
 	it('renders basic attributes correctly', () => {
