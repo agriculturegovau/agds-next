@@ -133,7 +133,7 @@ exports[`Calendar Range renders correctly 1`] = `
                       xmlns="http://www.w3.org/2000/svg"
                     >
                       <path
-                        d="M21 8L12 17L3 8"
+                        d="m20 9-7.646 7.646a.5.5 0 0 1-.708 0L4 9"
                       />
                     </svg>
                   </div>
@@ -160,7 +160,7 @@ exports[`Calendar Range renders correctly 1`] = `
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
-                      d="M16 21L7 12L16 3"
+                      d="m15 20-7.646-7.646a.5.5 0 0 1 0-.708L15 4"
                     />
                   </svg>
                 </button>
@@ -182,7 +182,7 @@ exports[`Calendar Range renders correctly 1`] = `
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
-                      d="M8 3L17 12L8 21"
+                      d="m9 4 7.646 7.646a.5.5 0 0 1 0 .708L9 20"
                     />
                   </svg>
                 </button>
@@ -889,7 +889,7 @@ exports[`Calendar Single renders correctly 1`] = `
                       xmlns="http://www.w3.org/2000/svg"
                     >
                       <path
-                        d="M21 8L12 17L3 8"
+                        d="m20 9-7.646 7.646a.5.5 0 0 1-.708 0L4 9"
                       />
                     </svg>
                   </div>
@@ -916,7 +916,7 @@ exports[`Calendar Single renders correctly 1`] = `
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
-                      d="M16 21L7 12L16 3"
+                      d="m15 20-7.646-7.646a.5.5 0 0 1 0-.708L15 4"
                     />
                   </svg>
                 </button>
@@ -938,7 +938,7 @@ exports[`Calendar Single renders correctly 1`] = `
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
-                      d="M8 3L17 12L8 21"
+                      d="m9 4 7.646 7.646a.5.5 0 0 1 0 .708L9 20"
                     />
                   </svg>
                 </button>
