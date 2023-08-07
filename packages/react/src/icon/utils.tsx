@@ -4,6 +4,7 @@ import { ArrowDownIcon } from './icons/ArrowDownIcon';
 import { ArrowLeftIcon } from './icons/ArrowLeftIcon';
 import { ArrowRightIcon } from './icons/ArrowRightIcon';
 import { ArrowUpIcon } from './icons/ArrowUpIcon';
+import { ArrowUpDownIcon } from './icons/ArrowUpDownIcon';
 import { AvatarIcon } from './icons/AvatarIcon';
 import { ChartBarIcon } from './icons/ChartBarIcon';
 import { ChartLineIcon } from './icons/ChartLineIcon';
@@ -56,6 +57,7 @@ export const allIcons = {
 	ArrowLeftIcon,
 	ArrowRightIcon,
 	ArrowUpIcon,
+	ArrowUpDownIcon,
 	AvatarIcon,
 	ChartBarIcon,
 	ChartLineIcon,
