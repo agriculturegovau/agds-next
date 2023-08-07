@@ -8,13 +8,13 @@ exports[`TableHeaderSortable with sort direction ASC renders correctly 1`] = `
     scope="col"
   >
     <button
-      class="css-1bb77vf-BaseButton-boxStyles-TableHeaderSortable"
+      class="css-t6se6b-BaseButton-boxStyles-TableHeaderSortable"
       type="button"
     >
       Example
       <svg
         aria-hidden="true"
-        class="css-t181ux-Icon"
+        class="css-dgj9fa-Icon"
         clip-rule="evenodd"
         focusable="false"
         height="24"
@@ -43,13 +43,13 @@ exports[`TableHeaderSortable with sort direction DESC renders correctly 1`] = `
     scope="col"
   >
     <button
-      class="css-1bb77vf-BaseButton-boxStyles-TableHeaderSortable"
+      class="css-t6se6b-BaseButton-boxStyles-TableHeaderSortable"
       type="button"
     >
       Example
       <svg
         aria-hidden="true"
-        class="css-t181ux-Icon"
+        class="css-dgj9fa-Icon"
         clip-rule="evenodd"
         focusable="false"
         height="24"
@@ -77,13 +77,13 @@ exports[`TableHeaderSortable with sort direction undefined renders correctly 1`]
     scope="col"
   >
     <button
-      class="css-16z398q-BaseButton-boxStyles-TableHeaderSortable"
+      class="css-t6se6b-BaseButton-boxStyles-TableHeaderSortable"
       type="button"
     >
       Example
       <svg
         aria-hidden="true"
-        class="css-t181ux-Icon"
+        class="css-dgj9fa-Icon"
         clip-rule="evenodd"
         focusable="false"
         height="24"
@@ -93,10 +93,7 @@ exports[`TableHeaderSortable with sort direction undefined renders correctly 1`]
         xmlns="http://www.w3.org/2000/svg"
       >
         <path
-          d="M12 3L12 20"
-        />
-        <path
-          d="M17 16L12 21L7 16"
+          d="m17 16-4.646 4.646a.5.5 0 0 1-.708 0L7 16M7 7.793l4.646-4.646a.5.5 0 0 1 .708 0L17 7.793"
         />
       </svg>
     </button>

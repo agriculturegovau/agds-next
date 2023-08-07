@@ -3,7 +3,7 @@ import { Box } from '../box';
 import { Flex } from '../flex';
 import { BaseButton } from '../button';
 import { boxPalette, ResponsiveProp } from '../core';
-import { ArrowDownIcon, ArrowUpIcon } from '../icon';
+import { ArrowDownIcon, ArrowUpIcon, ArrowUpDownIcon } from '../icon';
 
 export type TableSortDirection = 'ASC' | 'DESC';
 
@@ -27,12 +27,13 @@ export const TableHeaderSortable = ({
 	textAlign = 'left',
 	width,
 }: PropsWithChildren<TableHeaderSortableProps>) => {
-	const Icon = sort === 'DESC' ? ArrowUpIcon : ArrowDownIcon;
+	const Icon = getSortIcon(sort);
+	const sortLabel = getSortLabel(sort);
 	return (
 		<Box
 			as="th"
 			scope="col"
-			aria-sort={getSortLabel(sort)}
+			aria-sort={sortLabel}
 			width={width}
 			{...(sort && {
 				borderBottom: true,
@@ -56,21 +57,14 @@ export const TableHeaderSortable = ({
 				focus
 				css={{
 					textDecoration: 'underline',
-					svg: {
-						display: sort ? 'block' : 'none',
-					},
 					'&:hover': {
 						backgroundColor: boxPalette.backgroundShade,
 						textDecoration: 'none',
-						svg: {
-							display: 'block',
-							transform: sort ? 'rotate(180deg)' : 'rotate(0deg)',
-						},
 					},
 				}}
 			>
 				{children}
-				<Icon size="sm" color="action" />
+				<Icon size="md" color="action" />
 			</Flex>
 		</Box>
 	);
@@ -79,4 +73,15 @@ export const TableHeaderSortable = ({
 const getSortLabel = (sort?: TableSortDirection) => {
 	if (sort === 'ASC') return 'ascending';
 	if (sort === 'DESC') return 'descending';
+};
+
+const getSortIcon = (sort?: TableSortDirection) => {
+	switch (sort) {
+		case 'ASC':
+			return ArrowDownIcon;
+		case 'DESC':
+			return ArrowUpIcon;
+		default:
+			return ArrowUpDownIcon;
+	}
 };
