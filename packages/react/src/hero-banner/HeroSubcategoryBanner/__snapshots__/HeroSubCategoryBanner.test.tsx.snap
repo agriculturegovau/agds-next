@@ -35,7 +35,7 @@ exports[`HeroSubcategoryBanner renders correctly 1`] = `
                   xmlns="http://www.w3.org/2000/svg"
                 >
                   <path
-                    d="M8 3L17 12L8 21"
+                    d="m9 4 7.646 7.646a.5.5 0 0 1 0 .708L9 20"
                   />
                 </svg>
                 <a
@@ -60,7 +60,7 @@ exports[`HeroSubcategoryBanner renders correctly 1`] = `
                   xmlns="http://www.w3.org/2000/svg"
                 >
                   <path
-                    d="M8 3L17 12L8 21"
+                    d="m9 4 7.646 7.646a.5.5 0 0 1 0 .708L9 20"
                   />
                 </svg>
                 <button
@@ -87,7 +87,7 @@ exports[`HeroSubcategoryBanner renders correctly 1`] = `
                   xmlns="http://www.w3.org/2000/svg"
                 >
                   <path
-                    d="M8 3L17 12L8 21"
+                    d="m9 4 7.646 7.646a.5.5 0 0 1 0 .708L9 20"
                   />
                 </svg>
                 <a
@@ -112,7 +112,7 @@ exports[`HeroSubcategoryBanner renders correctly 1`] = `
                   xmlns="http://www.w3.org/2000/svg"
                 >
                   <path
-                    d="M8 3L17 12L8 21"
+                    d="m9 4 7.646 7.646a.5.5 0 0 1 0 .708L9 20"
                   />
                 </svg>
                 Subcategory page
