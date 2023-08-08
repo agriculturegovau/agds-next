@@ -2,7 +2,7 @@ import { PropsWithChildren } from 'react';
 import { Box } from '../box';
 import { Flex } from '../flex';
 import { BaseButton } from '../button';
-import { boxPalette, ResponsiveProp } from '../core';
+import { boxPalette, packs, ResponsiveProp } from '../core';
 import { ArrowDownIcon, ArrowUpIcon, ArrowUpDownIcon } from '../icon';
 
 export type TableSortDirection = 'ASC' | 'DESC';
@@ -56,7 +56,7 @@ export const TableHeaderSortable = ({
 				alignItems="center"
 				focus
 				css={{
-					textDecoration: 'underline',
+					...packs.underline,
 					svg: {
 						color: boxPalette.foregroundAction,
 					},

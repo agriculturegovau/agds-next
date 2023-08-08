@@ -2,8 +2,8 @@
 '@ag.ds-next/react': patch
 ---
 
-icon: Added `ChevronUpDownIcon`
+icon: Added `ArrowUpDownIcon`
 
-icon: Deprecated ChevronsUpDownIcon
+icon: Deprecated `ChevronsUpDownIcon`, use `ArrowUpDownIcon` instead. This will be removed in the next major version.
 
-table: Updated icons in TableHeaderSortable
+table: Updated icons in `TableHeaderSortable`
