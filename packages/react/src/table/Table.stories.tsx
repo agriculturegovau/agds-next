@@ -5,6 +5,8 @@ import { StatusBadge } from '../status-badge';
 import { Flex } from '../flex';
 import { Stack } from '../stack';
 import { H1 } from '../heading';
+import { Button } from '../button';
+import { EditIcon } from '../icon';
 import { Table } from './Table';
 import { TableBody } from './TableBody';
 import { TableCaption } from './TableCaption';
@@ -179,6 +181,7 @@ export const WithHeading: Story = {
 };
 
 export const Actions: Story = {
+	name: 'with actions (links)',
 	args: {},
 	render: (args) => (
 		<TableWrapper>
@@ -273,6 +276,89 @@ export const Actions: Story = {
 		</TableWrapper>
 	),
 };
+
+export const ActionsButtons: Story = {
+	name: 'with actions (buttons)',
+	args: {},
+	render: (args) => (
+		<TableWrapper>
+			<Table {...args}>
+				<TableCaption>Applications</TableCaption>
+				<TableHead>
+					<tr>
+						<TableHeader scope="col">Reference</TableHeader>
+						<TableHeader scope="col">Date submitted</TableHeader>
+						<TableHeader scope="col">Status</TableHeader>
+						<TableHeader scope="col">Actions</TableHeader>
+					</tr>
+				</TableHead>
+				<TableBody>
+					<tr>
+						<TableCell as="th" scope="row" fontWeight="bold">
+							<TextLink href="#">REF-AB3CD4EF</TextLink>
+						</TableCell>
+						<TableCell>20/06/2022</TableCell>
+						<TableCell>
+							<StatusBadge weight="subtle" tone="info" label="In progress" />
+						</TableCell>
+						<TableCell>
+							<Button variant="text" iconAfter={EditIcon}>Edit</Button>
+						</TableCell>
+					</tr>
+					<tr>
+						<TableCell as="th" scope="row" fontWeight="bold">
+							<TextLink href="#">REF-5GH6IJ7K</TextLink>
+						</TableCell>
+						<TableCell>25/06/2022</TableCell>
+						<TableCell>
+							<StatusBadge weight="subtle" tone="info" label="In progress" />
+						</TableCell>
+						<TableCell>
+						<Button variant="text" iconAfter={EditIcon}>Edit</Button>
+						</TableCell>
+					</tr>
+					<tr>
+						<TableCell as="th" scope="row" fontWeight="bold">
+							<TextLink href="#">REF-M8NO9PQR</TextLink>
+						</TableCell>
+						<TableCell>02/07/2022</TableCell>
+						<TableCell>
+							<StatusBadge weight="subtle" tone="success" label="Completed" />
+						</TableCell>
+						<TableCell>
+							<Button variant="text" iconAfter={EditIcon}>Edit</Button>
+						</TableCell>
+					</tr>
+					<tr>
+						<TableCell as="th" scope="row" fontWeight="bold">
+							<TextLink href="#">REF-S1TU2VWX</TextLink>
+						</TableCell>
+						<TableCell>05/08/2022</TableCell>
+						<TableCell>
+							<StatusBadge weight="subtle" tone="info" label="In progress" />
+						</TableCell>
+						<TableCell>
+							<Button variant="text" iconAfter={EditIcon}>Edit</Button>
+						</TableCell>
+					</tr>
+					<tr>
+						<TableCell as="th" scope="row" fontWeight="bold">
+							<TextLink href="#">REF-Y3ZA4B5C</TextLink>
+						</TableCell>
+						<TableCell>19/10/2022</TableCell>
+						<TableCell>
+							<StatusBadge weight="subtle" tone="success" label="Completed" />
+						</TableCell>
+						<TableCell>
+							<Button variant="text" iconAfter={EditIcon}>Edit</Button>
+						</TableCell>
+					</tr>
+				</TableBody>
+			</Table>
+		</TableWrapper>
+	),
+};
+
 
 const exampleData = [
 	{
