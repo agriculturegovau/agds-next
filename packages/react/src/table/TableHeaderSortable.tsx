@@ -63,9 +63,9 @@ export const TableHeaderSortable = ({
 					'&:hover': {
 						backgroundColor: boxPalette.backgroundShade,
 						textDecoration: 'none',
-						'svg': {
+						svg: {
 							color: boxPalette.foregroundText,
-						}
+						},
 					},
 				}}
 			>
