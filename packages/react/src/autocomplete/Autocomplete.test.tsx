@@ -48,7 +48,9 @@ describe('Autocomplete', () => {
 				'valid-id': 'off',
 			},
 		});
-		expect(await axe(container)).toHaveNoViolations();
+		await act(async () => {
+			expect(await axe(container)).toHaveNoViolations();
+		});
 	});
 
 	it('can load and clear async options', async () => {
