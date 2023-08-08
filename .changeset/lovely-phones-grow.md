@@ -4,4 +4,6 @@
 
 icon: Added `ChevronUpDownIcon`
 
+icon: Deprecated ChevronsUpDownIcon
+
 table: Updated icons in TableHeaderSortable

@@ -4,6 +4,13 @@ export type IconProps = _IconProps;
 export { createIcon } from './Icon';
 export * from './utils';
 
+/**
+ * @deprecated This icon has been deprecated.
+ * Use `ArrowUpDownIcon` instead.
+ * This will be removed in the next major version.
+ */
+export { ChevronsUpDownIcon } from './icons/ChevronsUpDownIcon';
+
 export { AlertIcon } from './icons/AlertIcon';
 export { AlertFilledIcon } from './icons/AlertFilledIcon';
 export { ArrowUpIcon } from './icons/ArrowUpIcon';
@@ -21,7 +28,6 @@ export { ChevronLeftIcon } from './icons/ChevronLeftIcon';
 export { ChevronRightIcon } from './icons/ChevronRightIcon';
 export { ChevronsLeftIcon } from './icons/ChevronsLeftIcon';
 export { ChevronsRightIcon } from './icons/ChevronsRightIcon';
-export { ChevronsUpDownIcon } from './icons/ChevronsUpDownIcon';
 export { CloseIcon } from './icons/CloseIcon';
 export { CopyIcon } from './icons/CopyIcon';
 export { DeleteIcon } from './icons/DeleteIcon';
