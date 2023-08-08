@@ -1,0 +1,132 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TableHeaderSortable with sort direction: ASC renders correctly 1`] = `
+<div>
+  <table
+    class="css-1lii0zf-boxStyles-Table"
+  >
+    <thead
+      class="css-11khhn7-boxStyles"
+    >
+      <tr>
+        <th
+          aria-sort="ascending"
+          class="css-7wxia7-boxStyles-TableHeaderSortable"
+          scope="col"
+        >
+          <button
+            class="css-19jhtto-BaseButton-boxStyles-TableHeaderSortable"
+            type="button"
+          >
+            Example
+            <svg
+              aria-hidden="true"
+              class="css-qhpjst-Icon"
+              clip-rule="evenodd"
+              focusable="false"
+              height="24"
+              role="img"
+              viewBox="0 0 24 24"
+              width="24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M12 3L12 20"
+              />
+              <path
+                d="M17 16L12 21L7 16"
+              />
+            </svg>
+          </button>
+        </th>
+      </tr>
+    </thead>
+  </table>
+</div>
+`;
+
+exports[`TableHeaderSortable with sort direction: DESC renders correctly 1`] = `
+<div>
+  <table
+    class="css-1lii0zf-boxStyles-Table"
+  >
+    <thead
+      class="css-11khhn7-boxStyles"
+    >
+      <tr>
+        <th
+          aria-sort="descending"
+          class="css-7wxia7-boxStyles-TableHeaderSortable"
+          scope="col"
+        >
+          <button
+            class="css-19jhtto-BaseButton-boxStyles-TableHeaderSortable"
+            type="button"
+          >
+            Example
+            <svg
+              aria-hidden="true"
+              class="css-qhpjst-Icon"
+              clip-rule="evenodd"
+              focusable="false"
+              height="24"
+              role="img"
+              viewBox="0 0 24 24"
+              width="24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M12 21V4"
+              />
+              <path
+                d="M7 8L12 3L17 8"
+              />
+            </svg>
+          </button>
+        </th>
+      </tr>
+    </thead>
+  </table>
+</div>
+`;
+
+exports[`TableHeaderSortable with sort direction: undefined renders correctly 1`] = `
+<div>
+  <table
+    class="css-1lii0zf-boxStyles-Table"
+  >
+    <thead
+      class="css-11khhn7-boxStyles"
+    >
+      <tr>
+        <th
+          class="css-1vsi0cy-boxStyles-TableHeaderSortable"
+          scope="col"
+        >
+          <button
+            class="css-19jhtto-BaseButton-boxStyles-TableHeaderSortable"
+            type="button"
+          >
+            Example
+            <svg
+              aria-hidden="true"
+              class="css-qhpjst-Icon"
+              clip-rule="evenodd"
+              focusable="false"
+              height="24"
+              role="img"
+              viewBox="0 0 24 24"
+              width="24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="m17 16-4.646 4.646a.5.5 0 0 1-.708 0L7 16M7 7.793l4.646-4.646a.5.5 0 0 1 .708 0L17 7.793"
+              />
+            </svg>
+          </button>
+        </th>
+      </tr>
+    </thead>
+  </table>
+</div>
+`;

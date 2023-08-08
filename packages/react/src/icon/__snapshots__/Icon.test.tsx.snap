@@ -119,6 +119,26 @@ exports[`Icon ArrowRightIcon renders correctly 1`] = `
 </div>
 `;
 
+exports[`Icon ArrowUpDownIcon renders correctly 1`] = `
+<div>
+  <svg
+    aria-hidden="true"
+    class="css-9s3cfn-Icon"
+    clip-rule="evenodd"
+    focusable="false"
+    height="24"
+    role="img"
+    viewBox="0 0 24 24"
+    width="24"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="m17 16-4.646 4.646a.5.5 0 0 1-.708 0L7 16M7 7.793l4.646-4.646a.5.5 0 0 1 .708 0L17 7.793"
+    />
+  </svg>
+</div>
+`;
+
 exports[`Icon ArrowUpIcon renders correctly 1`] = `
 <div>
   <svg

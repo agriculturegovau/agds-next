@@ -10,6 +10,7 @@ export { ArrowUpIcon } from './icons/ArrowUpIcon';
 export { ArrowDownIcon } from './icons/ArrowDownIcon';
 export { ArrowLeftIcon } from './icons/ArrowLeftIcon';
 export { ArrowRightIcon } from './icons/ArrowRightIcon';
+export { ArrowUpDownIcon } from './icons/ArrowUpDownIcon';
 export { AvatarIcon } from './icons/AvatarIcon';
 export { CalendarIcon } from './icons/CalendarIcon';
 export { ChartBarIcon } from './icons/ChartBarIcon';
