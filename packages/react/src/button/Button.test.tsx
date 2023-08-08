@@ -34,11 +34,6 @@ describe('Button', () => {
 		expect(await axe(container)).toHaveNoViolations();
 	});
 
-	it('should pass axe linting', async () => {
-		const { container } = renderButton();
-		expect(await axe(container)).toHaveNoViolations();
-	});
-
 	it('renders basic attributes correctly', () => {
 		renderButton();
 		const el = screen.getByTestId('example');
