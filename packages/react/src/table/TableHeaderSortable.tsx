@@ -57,14 +57,20 @@ export const TableHeaderSortable = ({
 				focus
 				css={{
 					textDecoration: 'underline',
+					svg: {
+						color: boxPalette.foregroundAction,
+					},
 					'&:hover': {
 						backgroundColor: boxPalette.backgroundShade,
 						textDecoration: 'none',
+						'svg': {
+							color: boxPalette.foregroundText,
+						}
 					},
 				}}
 			>
 				{children}
-				<Icon size="md" color="action" />
+				<Icon size="md" color="inherit" />
 			</Flex>
 		</Box>
 	);
