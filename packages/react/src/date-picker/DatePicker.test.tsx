@@ -1,16 +1,19 @@
 import '@testing-library/jest-dom';
 import 'html-validate/jest';
+import { axe, toHaveNoViolations } from 'jest-axe';
 import { useState } from 'react';
 import userEvent from '@testing-library/user-event';
 import { useForm, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
-import { cleanup, render, screen } from '../../../../test-utils';
+import { cleanup, render, screen, act } from '../../../../test-utils';
 import { Stack } from '../stack';
 import { Button } from '../button';
 import { DatePicker, DatePickerProps } from './DatePicker';
 import { formatHumanReadableDate, parseDate } from './utils';
 import { yupDateField, errorMessage } from './test-utils';
+
+expect.extend(toHaveNoViolations);
 
 afterEach(cleanup);
 
@@ -114,7 +117,7 @@ describe('DatePicker', () => {
 		expect(container).toMatchSnapshot();
 	});
 
-	it('renders a valid HTML structure', () => {
+	it('renders valid HTML with no a11y violations', async () => {
 		const { container } = renderDatePicker({
 			label: 'Example',
 			value: new Date(2000, 1, 1),
@@ -124,6 +127,9 @@ describe('DatePicker', () => {
 			extends: ['html-validate:recommended'],
 			// react 18s `useId` break this rule
 			rules: { 'valid-id': 'off' },
+		});
+		await act(async () => {
+			expect(await axe(container)).toHaveNoViolations();
 		});
 	});
 

@@ -1,8 +1,11 @@
 import '@testing-library/jest-dom';
 import 'html-validate/jest';
+import { axe, toHaveNoViolations } from 'jest-axe';
 import { TextLink } from '../text-link';
 import { render, screen, cleanup } from '../../../../test-utils';
 import { VisuallyHidden } from './VisuallyHidden';
+
+expect.extend(toHaveNoViolations);
 
 afterEach(cleanup);
 
@@ -21,11 +24,12 @@ describe('VisuallyHidden', () => {
 		expect(container).toMatchSnapshot();
 	});
 
-	it('renders a valid HTML structure', () => {
+	it('renders valid HTML with no a11y violations', async () => {
 		const { container } = render(<VisuallyHiddenExample />);
 		expect(container).toHTMLValidate({
 			extends: ['html-validate:recommended'],
 		});
+		expect(await axe(container)).toHaveNoViolations();
 	});
 
 	it('reads out visually hidden text to a screen reader user', () => {

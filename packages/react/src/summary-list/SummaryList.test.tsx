@@ -1,5 +1,6 @@
 import '@testing-library/jest-dom';
 import 'html-validate/jest';
+import { axe, toHaveNoViolations } from 'jest-axe';
 import { TextLink } from '../text-link';
 import { cleanup, render } from '../../../../test-utils';
 import {
@@ -10,6 +11,8 @@ import {
 	SummaryListItemAction,
 } from './SummaryList';
 import type { SummaryListProps } from './SummaryList';
+
+expect.extend(toHaveNoViolations);
 
 afterEach(cleanup);
 
@@ -58,10 +61,11 @@ describe('SummaryList', () => {
 		expect(container).toMatchSnapshot();
 	});
 
-	it('renders a valid HTML structure', () => {
+	it('renders valid HTML with no a11y violations', async () => {
 		const { container } = renderSummaryList();
 		expect(container).toHTMLValidate({
 			extends: ['html-validate:recommended'],
 		});
+		expect(await axe(container)).toHaveNoViolations();
 	});
 });

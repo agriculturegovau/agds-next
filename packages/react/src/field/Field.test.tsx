@@ -1,7 +1,10 @@
 import '@testing-library/jest-dom';
 import 'html-validate/jest';
+import { axe, toHaveNoViolations } from 'jest-axe';
 import { cleanup, render, screen } from '../../../../test-utils';
 import { Field, FieldProps } from './Field';
+
+expect.extend(toHaveNoViolations);
 
 afterEach(cleanup);
 
@@ -50,7 +53,7 @@ describe('Field', () => {
 			const { container } = renderField({ label });
 			expect(container).toMatchSnapshot();
 		});
-		it('renders a valid HTML structure', () => {
+		it('renders valid HTML with no a11y violations', async () => {
 			const { container } = renderField({ label });
 			expect(container).toHTMLValidate({
 				extends: ['html-validate:recommended'],
@@ -65,7 +68,7 @@ describe('Field', () => {
 			const { container } = renderField({ label, hint });
 			expect(container).toMatchSnapshot();
 		});
-		it('renders a valid HTML structure', () => {
+		it('renders valid HTML with no a11y violations', async () => {
 			const { container } = renderField({ label, hint });
 			expect(container).toHTMLValidate({
 				extends: ['html-validate:recommended'],
@@ -81,13 +84,14 @@ describe('Field', () => {
 			expect(container).toMatchSnapshot();
 		});
 
-		it('renders a valid HTML structure', () => {
+		it('renders valid HTML with no a11y violations', async () => {
 			const { container } = renderField({ label, message, invalid: true });
 			expect(container).toHTMLValidate({
 				extends: ['html-validate:recommended'],
 				// react 18s `useId` break this rule
 				rules: { 'valid-id': 'off' },
 			});
+			expect(await axe(container)).toHaveNoViolations();
 		});
 	});
 

@@ -1,11 +1,14 @@
 import '@testing-library/jest-dom';
 import 'html-validate/jest';
+import { axe, toHaveNoViolations } from 'jest-axe';
 import userEvent from '@testing-library/user-event';
 import { useTernaryState } from '../core';
 import { Button } from '../button';
 import { Text } from '../text';
 import { render, screen, cleanup } from '../../../../test-utils';
 import { Modal } from './Modal';
+
+expect.extend(toHaveNoViolations);
 
 afterEach(cleanup);
 
@@ -55,7 +58,7 @@ describe('Modal', () => {
 		expect(baseElement).toMatchSnapshot();
 	});
 
-	it('renders a valid HTML structure', () => {
+	it('renders valid HTML with no a11y violations', async () => {
 		const { baseElement } = renderBaseModal();
 		expect(baseElement).toHTMLValidate({
 			extends: ['html-validate:recommended'],
@@ -65,6 +68,7 @@ describe('Modal', () => {
 				'valid-id': 'off',
 			},
 		});
+		expect(await axe(baseElement)).toHaveNoViolations();
 	});
 
 	it('focuses the correct elements when opening and closing', async () => {

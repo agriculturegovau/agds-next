@@ -1,7 +1,10 @@
 import '@testing-library/jest-dom';
 import 'html-validate/jest';
+import { axe, toHaveNoViolations } from 'jest-axe';
 import { render, cleanup, screen } from '../../../../test-utils';
 import { LinkList, LinkListProps } from './LinkList';
+
+expect.extend(toHaveNoViolations);
 
 afterEach(cleanup);
 
@@ -30,11 +33,12 @@ describe('LinkList', () => {
 		expect(container).toMatchSnapshot();
 	});
 
-	it('renders a valid HTML structure', () => {
+	it('renders valid HTML with no a11y violations', async () => {
 		const { container } = renderLinkList();
 		expect(container).toHTMLValidate({
 			extends: ['html-validate:recommended'],
 		});
+		expect(await axe(container)).toHaveNoViolations();
 	});
 
 	it('handles external links correctly', async () => {

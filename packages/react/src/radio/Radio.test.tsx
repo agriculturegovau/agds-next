@@ -1,8 +1,11 @@
 import '@testing-library/jest-dom';
 import 'html-validate/jest';
+import { axe, toHaveNoViolations } from 'jest-axe';
 import userEvent from '@testing-library/user-event';
 import { render, screen, cleanup } from '../../../../test-utils';
 import { Radio, RadioProps } from './Radio';
+
+expect.extend(toHaveNoViolations);
 
 afterEach(cleanup);
 
@@ -37,11 +40,12 @@ describe('Radio', () => {
 		expect(container).toMatchSnapshot();
 	});
 
-	it('renders a valid HTML structure', () => {
+	it('renders valid HTML with no a11y violations', async () => {
 		const { container } = render(<RadioExample />);
 		expect(container).toHTMLValidate({
 			extends: ['html-validate:recommended'],
 		});
+		expect(await axe(container)).toHaveNoViolations();
 	});
 
 	it('responds to a change event', async () => {

@@ -1,11 +1,13 @@
 import { useRef } from 'react';
 import '@testing-library/jest-dom';
 import 'html-validate/jest';
-import { renderHook } from '@testing-library/react';
+import { axe, toHaveNoViolations } from 'jest-axe';
 import userEvent from '@testing-library/user-event';
-import { render, cleanup, act } from '../../../../test-utils';
+import { render, cleanup, act, renderHook } from '../../../../test-utils';
 import { Combobox, ComboboxProps } from './Combobox';
 import { STATE_OPTIONS, Option } from './test-utils';
+
+expect.extend(toHaveNoViolations);
 
 afterEach(cleanup);
 
@@ -26,7 +28,7 @@ describe('Combobox', () => {
 		expect(container).toMatchSnapshot();
 	});
 
-	it('renders a valid HTML structure', () => {
+	it('renders valid HTML with no a11y violations', async () => {
 		const { container } = renderCombobox();
 		expect(container).toHTMLValidate({
 			extends: ['html-validate:recommended'],
@@ -38,11 +40,13 @@ describe('Combobox', () => {
 				'valid-id': 'off',
 			},
 		});
+		await act(async () => {
+			expect(await axe(container)).toHaveNoViolations();
+		});
 	});
 
 	it('filters options', async () => {
 		const { container } = renderCombobox();
-
 		const input = container.querySelector('input');
 		expect(input).toBeInTheDocument();
 		if (!input) return;

@@ -1,9 +1,10 @@
 import '@testing-library/jest-dom';
 import 'html-validate/jest';
+import { axe, toHaveNoViolations } from 'jest-axe';
 import userEvent from '@testing-library/user-event';
 import '@testing-library/jest-dom/extend-expect';
 import { Fragment } from 'react';
-import { render, cleanup, screen } from '../../../../test-utils';
+import { render, cleanup, screen, act } from '../../../../test-utils';
 import { AvatarIcon, EmailIcon, SettingsIcon } from '../icon';
 import { NotificationBadge } from '../notification-badge';
 import { VisuallyHidden } from '../a11y';
@@ -21,6 +22,8 @@ import {
 // `DropdownMenuItem` and `DropdownMenuItemRadio` use `scrollIntoView` which is not available in jsdom
 // https://github.com/jsdom/jsdom/issues/1695
 Element.prototype.scrollIntoView = jest.fn();
+
+expect.extend(toHaveNoViolations);
 
 afterEach(cleanup);
 
@@ -43,7 +46,7 @@ describe('DropdownMenu', () => {
 		expect(container).toMatchSnapshot();
 	});
 
-	it('renders a valid HTML structure', () => {
+	it('renders valid HTML with no a11y violations', async () => {
 		const { container } = renderBasicDropdownMenu();
 		expect(container).toHTMLValidate({
 			extends: ['html-validate:recommended'],
@@ -52,6 +55,9 @@ describe('DropdownMenu', () => {
 				'valid-id': 'off',
 				'no-inline-style': 'off',
 			},
+		});
+		await act(async () => {
+			expect(await axe(container)).toHaveNoViolations();
 		});
 	});
 
@@ -277,7 +283,7 @@ describe('DropdownMenu Decorative', () => {
 		expect(container).toMatchSnapshot();
 	});
 
-	it('renders a valid HTML structure', () => {
+	it('renders valid HTML with no a11y violations', async () => {
 		const { container } = renderDecorativeDropdownMenu();
 		expect(container).toHTMLValidate({
 			extends: ['html-validate:recommended'],
@@ -310,7 +316,7 @@ describe('DropdownMenu Links', () => {
 		expect(container).toMatchSnapshot();
 	});
 
-	it('renders a valid HTML structure', () => {
+	it('renders valid HTML with no a11y violations', async () => {
 		const { container } = renderDropdownMenuLinks();
 		expect(container).toHTMLValidate({
 			extends: ['html-validate:recommended'],
@@ -414,7 +420,7 @@ describe('DropdownMenu Radio Group', () => {
 		expect(container).toMatchSnapshot();
 	});
 
-	it('renders a valid HTML structure', () => {
+	it('renders valid HTML with no a11y violations', async () => {
 		const { container } = renderDropdownMenuRadio();
 		expect(container).toHTMLValidate({
 			extends: ['html-validate:recommended'],

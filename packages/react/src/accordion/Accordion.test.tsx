@@ -1,10 +1,13 @@
 import '@testing-library/jest-dom';
 import 'html-validate/jest';
+import { axe, toHaveNoViolations } from 'jest-axe';
 import userEvent from '@testing-library/user-event';
 import { Text } from '../text';
 import { cleanup, render, screen } from '../../../../test-utils';
 import { Accordion } from './Accordion';
 import { AccordionItem, AccordionItemContent } from './AccordionItem';
+
+expect.extend(toHaveNoViolations);
 
 afterEach(cleanup);
 
@@ -31,7 +34,7 @@ describe('Accordion', () => {
 		expect(container).toMatchSnapshot();
 	});
 
-	it('renders a valid HTML structure', () => {
+	it('renders valid HTML with no a11y violations', async () => {
 		const { container } = renderAccordion();
 		expect(container).toHTMLValidate({
 			extends: ['html-validate:recommended'],
@@ -43,6 +46,7 @@ describe('Accordion', () => {
 				'valid-id': 'off',
 			},
 		});
+		expect(await axe(container)).toHaveNoViolations();
 	});
 
 	it('to have correct aria attributes when toggling accordion item', async () => {

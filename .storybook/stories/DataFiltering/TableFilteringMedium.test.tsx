@@ -1,10 +1,13 @@
 import '@testing-library/jest-dom';
 import 'html-validate/jest';
-import { cleanup, render, waitFor } from '../../../test-utils';
+import { axe, toHaveNoViolations } from 'jest-axe';
+import { cleanup, render, waitFor, act } from '../../../test-utils';
 import { TableFilteringMedium } from './TableFilteringMedium';
 import { useSortAndFilter } from './lib/useSortAndFilter';
 import { useData } from './lib/utils';
 import { DataProvider, SortAndFilterProvider } from './lib/contexts';
+
+expect.extend(toHaveNoViolations);
 
 afterEach(cleanup);
 
@@ -22,7 +25,7 @@ function TableFilteringMediumTest({ loading }: { loading: boolean }) {
 }
 
 describe('MediumFilteringPattern', () => {
-	it('renders a valid HTML structure when loading', async () => {
+	it('renders valid HTML with no a11y violations when loading', async () => {
 		const { container } = render(<TableFilteringMediumTest loading />);
 		expect(container).toHTMLValidate({
 			extends: ['html-validate:recommended'],
@@ -32,9 +35,12 @@ describe('MediumFilteringPattern', () => {
 				'no-inline-style': 'off',
 			},
 		});
+		await act(async () => {
+			expect(await axe(container)).toHaveNoViolations();
+		});
 	});
 
-	it('renders a valid HTML structure when loaded', async () => {
+	it('renders valid HTML with no a11y violations when loaded', async () => {
 		const { container } = render(<TableFilteringMediumTest loading={false} />);
 
 		// Wait for the data to be loaded
@@ -49,6 +55,10 @@ describe('MediumFilteringPattern', () => {
 				'valid-id': 'off',
 				'no-inline-style': 'off',
 			},
+		});
+
+		await act(async () => {
+			expect(await axe(container)).toHaveNoViolations();
 		});
 	});
 });

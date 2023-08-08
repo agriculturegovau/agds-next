@@ -1,5 +1,6 @@
 import '@testing-library/jest-dom';
 import 'html-validate/jest';
+import { axe, toHaveNoViolations } from 'jest-axe';
 import { cleanup, render } from '../../../../test-utils';
 import { Text } from '../text';
 import { LinkList } from '../link-list';
@@ -14,6 +15,8 @@ import {
 	AppLayoutFooter,
 	AppLayoutFooterDivider,
 } from './index';
+
+expect.extend(toHaveNoViolations);
 
 afterEach(cleanup);
 
@@ -74,19 +77,21 @@ describe('AppLayout', () => {
 		expect(container).toMatchSnapshot();
 	});
 
-	it('renders a valid HTML structure', () => {
+	it('renders valid HTML with no a11y violations', async () => {
 		const { container } = renderAppLayout({});
 		expect(container).toHTMLValidate({
 			extends: ['html-validate:recommended'],
 		});
+		expect(await axe(container)).toHaveNoViolations();
 	});
 
 	describe('Focus mode', () => {
-		it('renders a valid HTML structure', () => {
+		it('renders valid HTML with no a11y violations', async () => {
 			const { container } = renderAppLayout({ focusMode: true });
 			expect(container).toHTMLValidate({
 				extends: ['html-validate:recommended'],
 			});
+			expect(await axe(container)).toHaveNoViolations();
 		});
 	});
 

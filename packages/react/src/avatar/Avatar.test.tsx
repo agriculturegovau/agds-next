@@ -1,8 +1,11 @@
 import '@testing-library/jest-dom';
 import 'html-validate/jest';
+import { axe, toHaveNoViolations } from 'jest-axe';
 import { cleanup, render } from '../../../../test-utils';
 import { Avatar } from './Avatar';
 import type { AvatarProps } from './Avatar';
+
+expect.extend(toHaveNoViolations);
 
 afterEach(cleanup);
 
@@ -18,13 +21,14 @@ describe('Avatar', () => {
 		expect(container).toMatchSnapshot();
 	});
 
-	it('renders a valid HTML structure', () => {
+	it('renders valid HTML with no a11y violations', async () => {
 		const { container } = renderAvatar({
 			name: 'William Mead',
 		});
 		expect(container).toHTMLValidate({
 			extends: ['html-validate:recommended'],
 		});
+		expect(await axe(container)).toHaveNoViolations();
 	});
 
 	it('renders the correct aria attributes', () => {

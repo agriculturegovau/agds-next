@@ -1,7 +1,10 @@
 import '@testing-library/jest-dom';
 import 'html-validate/jest';
+import { axe, toHaveNoViolations } from 'jest-axe';
 import { render, cleanup } from '../../../../test-utils';
 import { SkeletonBox, SkeletonBoxProps } from './SkeletonBox';
+
+expect.extend(toHaveNoViolations);
 
 afterEach(cleanup);
 
@@ -18,7 +21,7 @@ describe('SkeletonBox', () => {
 		expect(container).toMatchSnapshot();
 	});
 
-	it('renders a valid HTML structure', () => {
+	it('renders valid HTML with no a11y violations', async () => {
 		const { container } = renderSkeletonBox({
 			width: '200px',
 			height: '200px',
@@ -26,5 +29,6 @@ describe('SkeletonBox', () => {
 		expect(container).toHTMLValidate({
 			extends: ['html-validate:recommended'],
 		});
+		expect(await axe(container)).toHaveNoViolations();
 	});
 });

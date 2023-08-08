@@ -1,9 +1,12 @@
 import '@testing-library/jest-dom';
 import 'html-validate/jest';
+import { axe, toHaveNoViolations } from 'jest-axe';
 import { useState } from 'react';
 import { cleanup, render } from '../../../../test-utils';
 import { FileWithStatus } from './utils';
 import { FileUpload, FileUploadProps } from './FileUpload';
+
+expect.extend(toHaveNoViolations);
 
 afterEach(cleanup);
 
@@ -31,7 +34,7 @@ describe('FileUpload', () => {
 			expect(container).toMatchSnapshot();
 		});
 
-		it('renders a valid HTML structure', () => {
+		it('renders valid HTML with no a11y violations', async () => {
 			const { container } = render(<FileUploadExample />);
 			expect(container).toHTMLValidate({
 				extends: ['html-validate:recommended'],
@@ -43,6 +46,7 @@ describe('FileUpload', () => {
 					'aria-label-misuse': 'off',
 				},
 			});
+			expect(await axe(container)).toHaveNoViolations();
 		});
 	});
 });

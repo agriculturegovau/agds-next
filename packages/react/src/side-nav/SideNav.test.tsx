@@ -1,8 +1,11 @@
 import '@testing-library/jest-dom';
 import 'html-validate/jest';
+import { axe, toHaveNoViolations } from 'jest-axe';
 import { render, screen, cleanup } from '../../../../test-utils';
 import { SideNav, SideNavProps } from './SideNav';
 import { defaultTestingProps } from './test-utils';
+
+expect.extend(toHaveNoViolations);
 
 afterEach(cleanup);
 
@@ -16,7 +19,7 @@ describe('SideNav', () => {
 		expect(container).toMatchSnapshot();
 	});
 
-	it('renders a valid HTML structure', () => {
+	it('renders valid HTML with no a11y violations', async () => {
 		const { container } = renderSideNav(defaultTestingProps);
 		expect(container).toHTMLValidate({
 			extends: ['html-validate:recommended'],
@@ -26,6 +29,7 @@ describe('SideNav', () => {
 				'valid-id': 'off',
 			},
 		});
+		expect(await axe(container)).toHaveNoViolations();
 	});
 
 	it('nav is accessibly labelled', () => {

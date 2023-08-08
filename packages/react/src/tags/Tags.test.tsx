@@ -1,9 +1,12 @@
 import '@testing-library/jest-dom';
 import 'html-validate/jest';
+import { axe, toHaveNoViolations } from 'jest-axe';
 import userEvent from '@testing-library/user-event';
 import { Text } from '../text';
 import { cleanup, render, screen } from '../../../../test-utils';
 import { Tags, TagsProps } from './Tags';
+
+expect.extend(toHaveNoViolations);
 
 afterEach(cleanup);
 
@@ -29,7 +32,7 @@ describe('Tags', () => {
 			expect(container).toMatchSnapshot();
 		});
 
-		it('renders a valid HTML structure', () => {
+		it('renders valid HTML with no a11y violations', async () => {
 			const { container } = renderTags({
 				heading: (
 					<Text as="h2" fontWeight="bold">
@@ -45,6 +48,7 @@ describe('Tags', () => {
 			expect(container).toHTMLValidate({
 				extends: ['html-validate:recommended'],
 			});
+			expect(await axe(container)).toHaveNoViolations();
 		});
 	});
 
@@ -61,7 +65,7 @@ describe('Tags', () => {
 			expect(container).toMatchSnapshot();
 		});
 
-		it('renders a valid HTML structure', () => {
+		it('renders valid HTML with no a11y violations', async () => {
 			const { container } = renderTags({
 				heading: (
 					<Text as="h2" fontWeight="bold">
@@ -73,6 +77,7 @@ describe('Tags', () => {
 			expect(container).toHTMLValidate({
 				extends: ['html-validate:recommended'],
 			});
+			expect(await axe(container)).toHaveNoViolations();
 		});
 	});
 
@@ -93,7 +98,7 @@ describe('Tags', () => {
 			expect(container).toMatchSnapshot();
 		});
 
-		it('renders a valid HTML structure', () => {
+		it('renders valid HTML with no a11y violations', async () => {
 			const { container } = renderTags({
 				heading: (
 					<Text as="h2" fontWeight="bold">
@@ -109,6 +114,7 @@ describe('Tags', () => {
 			expect(container).toHTMLValidate({
 				extends: ['html-validate:recommended'],
 			});
+			expect(await axe(container)).toHaveNoViolations();
 		});
 
 		it('calls `onRemove` when pressed', async () => {

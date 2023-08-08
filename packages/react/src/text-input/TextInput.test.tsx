@@ -1,7 +1,10 @@
 import '@testing-library/jest-dom';
 import 'html-validate/jest';
+import { axe, toHaveNoViolations } from 'jest-axe';
 import { cleanup, render } from '../../../../test-utils';
 import { TextInput, TextInputProps } from './TextInput';
+
+expect.extend(toHaveNoViolations);
 
 afterEach(cleanup);
 
@@ -17,13 +20,14 @@ describe('TextInput', () => {
 			});
 			expect(container).toMatchSnapshot();
 		});
-		it('renders a valid HTML structure', () => {
+		it('renders valid HTML with no a11y violations', async () => {
 			const { container } = renderTextInput({ label: 'Name' });
 			expect(container).toHTMLValidate({
 				extends: ['html-validate:recommended'],
 				// react 18s `useId` break this rule
 				rules: { 'valid-id': 'off' },
 			});
+			expect(await axe(container)).toHaveNoViolations();
 		});
 	});
 
@@ -35,7 +39,7 @@ describe('TextInput', () => {
 			});
 			expect(container).toMatchSnapshot();
 		});
-		it('renders a valid HTML structure', () => {
+		it('renders valid HTML with no a11y violations', async () => {
 			const { container } = renderTextInput({
 				label: 'Name',
 				hint: 'Hint text',
@@ -45,6 +49,7 @@ describe('TextInput', () => {
 				// react 18s `useId` break this rule
 				rules: { 'valid-id': 'off' },
 			});
+			expect(await axe(container)).toHaveNoViolations();
 		});
 	});
 
@@ -58,7 +63,7 @@ describe('TextInput', () => {
 			expect(container).toMatchSnapshot();
 		});
 
-		it('renders a valid HTML structure', () => {
+		it('renders valid HTML with no a11y violations', async () => {
 			const { container } = renderTextInput({
 				label: 'Name',
 				message: 'This field is required',
@@ -69,6 +74,7 @@ describe('TextInput', () => {
 				// react 18s `useId` break this rule
 				rules: { 'valid-id': 'off' },
 			});
+			expect(await axe(container)).toHaveNoViolations();
 		});
 	});
 

@@ -1,5 +1,6 @@
 import '@testing-library/jest-dom';
 import 'html-validate/jest';
+import { axe, toHaveNoViolations } from 'jest-axe';
 import userEvent from '@testing-library/user-event';
 import { Text } from '../text';
 import { TextLink } from '../text-link';
@@ -7,6 +8,8 @@ import { ListItem, UnorderedList } from '../list';
 import { cleanup, render, screen } from '../../../../test-utils';
 import { PageAlert, PageAlertProps } from './PageAlert';
 import { PageAlertTitle } from './PageAlertTitle';
+
+expect.extend(toHaveNoViolations);
 
 afterEach(cleanup);
 
@@ -58,11 +61,12 @@ describe('PageAlert', () => {
 				expect(container).toMatchSnapshot();
 			});
 
-			it('renders a valid HTML structure', () => {
+			it('renders valid HTML with no a11y violations', async () => {
 				const { container } = renderPageAlert(props);
 				expect(container).toHTMLValidate({
 					extends: ['html-validate:recommended'],
 				});
+				expect(await axe(container)).toHaveNoViolations();
 			});
 		});
 	});
@@ -89,7 +93,7 @@ describe('PageAlert', () => {
 			expect(container).toMatchSnapshot();
 		});
 
-		it('renders a valid HTML structure', () => {
+		it('renders valid HTML with no a11y violations', async () => {
 			const { container } = renderPageAlert({
 				tone: 'info',
 				title: 'PageAlert with close button',
@@ -99,6 +103,7 @@ describe('PageAlert', () => {
 			expect(container).toHTMLValidate({
 				extends: ['html-validate:recommended'],
 			});
+			expect(await axe(container)).toHaveNoViolations();
 		});
 
 		it('responds to an onDismiss event', async () => {

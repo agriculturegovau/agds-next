@@ -1,9 +1,12 @@
 import '@testing-library/jest-dom';
 import 'html-validate/jest';
+import { axe, toHaveNoViolations } from 'jest-axe';
 import { Text } from '../text';
 import { cleanup, render } from '../../../../test-utils';
 import { Details } from './Details';
 import type { DetailsProps } from './Details';
+
+expect.extend(toHaveNoViolations);
 
 afterEach(cleanup);
 
@@ -25,7 +28,7 @@ describe('Details', () => {
 		expect(container).toMatchSnapshot();
 	});
 
-	it('renders a valid HTML structure', () => {
+	it('renders valid HTML with no a11y violations', async () => {
 		const { container } = renderDetail({
 			label: 'Details',
 			children: (
@@ -38,5 +41,6 @@ describe('Details', () => {
 		expect(container).toHTMLValidate({
 			extends: ['html-validate:recommended'],
 		});
+		expect(await axe(container)).toHaveNoViolations();
 	});
 });

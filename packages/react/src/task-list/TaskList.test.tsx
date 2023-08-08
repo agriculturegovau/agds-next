@@ -1,7 +1,10 @@
 import '@testing-library/jest-dom';
 import 'html-validate/jest';
+import { axe, toHaveNoViolations } from 'jest-axe';
 import { render, cleanup } from '../../../../test-utils';
 import { TaskList, TaskListProps } from './TaskList';
+
+expect.extend(toHaveNoViolations);
 
 afterEach(cleanup);
 
@@ -32,7 +35,7 @@ describe('TaskList', () => {
 			const { container } = renderTaskList(exampleProps);
 			expect(container).toMatchSnapshot();
 		});
-		it('renders a valid HTML structure', () => {
+		it('renders valid HTML with no a11y violations', async () => {
 			const { container } = renderTaskList(exampleProps);
 			expect(container).toHTMLValidate({
 				extends: ['html-validate:recommended'],
@@ -42,6 +45,7 @@ describe('TaskList', () => {
 					'valid-id': 'off',
 				},
 			});
+			expect(await axe(container)).toHaveNoViolations();
 		});
 	});
 	describe('With buttons', () => {
@@ -74,7 +78,7 @@ describe('TaskList', () => {
 			const { container } = renderTaskList(exampleProps);
 			expect(container).toMatchSnapshot();
 		});
-		it('renders a valid HTML structure', () => {
+		it('renders valid HTML with no a11y violations', async () => {
 			const { container } = renderTaskList(exampleProps);
 			expect(container).toHTMLValidate({
 				extends: ['html-validate:recommended'],
@@ -84,6 +88,7 @@ describe('TaskList', () => {
 					'valid-id': 'off',
 				},
 			});
+			expect(await axe(container)).toHaveNoViolations();
 		});
 	});
 });
