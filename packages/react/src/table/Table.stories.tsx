@@ -314,7 +314,7 @@ export const ActionsButtons: Story = {
 							<StatusBadge weight="subtle" tone="info" label="In progress" />
 						</TableCell>
 						<TableCell>
-						<Button variant="text">Edit</Button>
+							<Button variant="text">Edit</Button>
 						</TableCell>
 					</tr>
 					<tr>
@@ -358,7 +358,6 @@ export const ActionsButtons: Story = {
 		</TableWrapper>
 	),
 };
-
 
 export const ActionsButtonsIcons: Story = {
 	name: 'with actions (buttons with icons)',
@@ -385,7 +384,9 @@ export const ActionsButtonsIcons: Story = {
 							<StatusBadge weight="subtle" tone="info" label="In progress" />
 						</TableCell>
 						<TableCell>
-							<Button variant="text" iconAfter={EditIcon}>Edit</Button>
+							<Button variant="text" iconAfter={EditIcon}>
+								Edit
+							</Button>
 						</TableCell>
 					</tr>
 					<tr>
@@ -397,7 +398,9 @@ export const ActionsButtonsIcons: Story = {
 							<StatusBadge weight="subtle" tone="info" label="In progress" />
 						</TableCell>
 						<TableCell>
-						<Button variant="text" iconAfter={EditIcon}>Edit</Button>
+							<Button variant="text" iconAfter={EditIcon}>
+								Edit
+							</Button>
 						</TableCell>
 					</tr>
 					<tr>
@@ -409,7 +412,9 @@ export const ActionsButtonsIcons: Story = {
 							<StatusBadge weight="subtle" tone="success" label="Completed" />
 						</TableCell>
 						<TableCell>
-							<Button variant="text" iconAfter={EditIcon}>Edit</Button>
+							<Button variant="text" iconAfter={EditIcon}>
+								Edit
+							</Button>
 						</TableCell>
 					</tr>
 					<tr>
@@ -421,7 +426,9 @@ export const ActionsButtonsIcons: Story = {
 							<StatusBadge weight="subtle" tone="info" label="In progress" />
 						</TableCell>
 						<TableCell>
-							<Button variant="text" iconAfter={EditIcon}>Edit</Button>
+							<Button variant="text" iconAfter={EditIcon}>
+								Edit
+							</Button>
 						</TableCell>
 					</tr>
 					<tr>
@@ -433,7 +440,9 @@ export const ActionsButtonsIcons: Story = {
 							<StatusBadge weight="subtle" tone="success" label="Completed" />
 						</TableCell>
 						<TableCell>
-							<Button variant="text" iconAfter={EditIcon}>Edit</Button>
+							<Button variant="text" iconAfter={EditIcon}>
+								Edit
+							</Button>
 						</TableCell>
 					</tr>
 				</TableBody>
@@ -441,7 +450,6 @@ export const ActionsButtonsIcons: Story = {
 		</TableWrapper>
 	),
 };
-
 
 const exampleData = [
 	{
