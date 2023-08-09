@@ -1,7 +1,7 @@
 import { PropsWithChildren } from 'react';
 import { Box } from '../box';
 import { packs, useLinkComponent } from '../core';
-import { sideBarLocalPalette } from '../_collapsing-side-bar';
+import { collapsingSideBarLocalPalette } from '../_collapsing-side-bar';
 
 export type SideNavTitleProps = PropsWithChildren<{
 	id: string;
@@ -35,7 +35,7 @@ export function SideNavTitle({
 						textDecoration: 'none',
 						'&:hover': {
 							...packs.underline,
-							backgroundColor: sideBarLocalPalette.hover,
+							backgroundColor: collapsingSideBarLocalPalette.hover,
 						},
 					}}
 				>

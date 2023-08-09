@@ -1,7 +1,9 @@
-import { useRef } from 'react';
 import { Box } from '../box';
 import { LinkProps } from '../core';
-import { CollapsingSideBar, SideBarBackground } from '../_collapsing-side-bar';
+import {
+	CollapsingSideBar,
+	CollapsingSideBarBackground,
+} from '../_collapsing-side-bar';
 import { SideNavTitle } from './SideNavTitle';
 import { findBestMatch, useSideNavIds } from './utils';
 import { SideNavLinkList } from './SideNavLinkList';
@@ -17,7 +19,7 @@ export type SideNavProps = {
 	/** Used as the title of the expand/collapse trigger on smaller screen sizes. */
 	collapseTitle: string;
 	/** If SideNav is placed on 'bodyAlt' background, please set this to 'bodyAlt'. */
-	background?: SideBarBackground;
+	background?: CollapsingSideBarBackground;
 	/** The list of links. */
 	items: SideNavMenuItemType[];
 	/** The title is placed at the top of the list of links. */
@@ -35,8 +37,6 @@ export function SideNav({
 	titleLink,
 }: SideNavProps) {
 	const { navId, titleId } = useSideNavIds();
-	const ref = useRef<HTMLDivElement>(null);
-
 	const bestMatch = findBestMatch(items, activePath);
 
 	return (
@@ -46,7 +46,6 @@ export function SideNav({
 			background={background}
 		>
 			<Box
-				ref={ref}
 				as="nav"
 				aria-labelledby={titleId}
 				id={navId}

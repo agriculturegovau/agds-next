@@ -1,9 +1,5 @@
-import { useRef } from 'react';
-import { packs, useId } from '../core';
-import {
-	CollapsingSideBar,
-	CollapsingSideBarTitle,
-} from '../_collapsing-side-bar';
+import { useId } from '../core';
+import { CollapsingSideBar } from '../_collapsing-side-bar';
 import {
 	ProgressIndicatorItem,
 	ProgressIndicatorItemButton,
@@ -22,48 +18,42 @@ export const ProgressIndicator = ({
 	background,
 	items,
 }: ProgressIndicatorProps) => {
-	const ref = useRef<HTMLUListElement>(null);
 	const stepsCompleted = items.filter((item) => item.status === 'done').length;
 	const totalSteps = items.length;
-	const subHeading = `${stepsCompleted} of ${totalSteps} steps completed`;
+	const subTitle = `${stepsCompleted} of ${totalSteps} steps completed`;
 
 	return (
 		<CollapsingSideBar
 			as="section"
-			collapseButtonLabel={subHeading}
+			collapseButtonLabel={subTitle}
 			background={background}
+			title="Progress"
+			subTitle={subTitle}
 		>
-			<div
-				css={{
-					...packs.print.visible,
-				}}
-			>
-				<CollapsingSideBarTitle title="Progress" subtitle={subHeading} />
-				<ProgressIndicatorList ref={ref}>
-					{items.map(({ label, ...props }, index) => {
-						if (isItemLink(props)) {
-							return (
-								<ProgressIndicatorItemLink
-									key={index}
-									background={background}
-									{...props}
-								>
-									{label}
-								</ProgressIndicatorItemLink>
-							);
-						}
+			<ProgressIndicatorList>
+				{items.map(({ label, ...props }, index) => {
+					if (isItemLink(props)) {
 						return (
-							<ProgressIndicatorItemButton
+							<ProgressIndicatorItemLink
 								key={index}
 								background={background}
 								{...props}
 							>
 								{label}
-							</ProgressIndicatorItemButton>
+							</ProgressIndicatorItemLink>
 						);
-					})}
-				</ProgressIndicatorList>
-			</div>
+					}
+					return (
+						<ProgressIndicatorItemButton
+							key={index}
+							background={background}
+							{...props}
+						>
+							{label}
+						</ProgressIndicatorItemButton>
+					);
+				})}
+			</ProgressIndicatorList>
 		</CollapsingSideBar>
 	);
 };

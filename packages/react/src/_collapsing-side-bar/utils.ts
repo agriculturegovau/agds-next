@@ -1,11 +1,11 @@
 import { useId } from '../core';
 
-export const sideBarLocalPaletteVars = {
+export const collapsingSideBarLocalPaletteVars = {
 	hover: '--collapsing-side-bar-hover',
 };
 
-export const sideBarLocalPalette = {
-	hover: `var(${sideBarLocalPaletteVars.hover})`,
+export const collapsingSideBarLocalPalette = {
+	hover: `var(${collapsingSideBarLocalPaletteVars.hover})`,
 };
 
 export const hoverColorMap = {
@@ -13,12 +13,12 @@ export const hoverColorMap = {
 	bodyAlt: 'shadeAlt',
 } as const;
 
-export type SideBarBackground = keyof typeof hoverColorMap;
+export type CollapsingSideBarBackground = keyof typeof hoverColorMap;
 
-export function useSideBarIds() {
+export function useCollapsingSideBarIds() {
 	const autoId = useId();
 	return {
-		buttonId: `side-bar-${autoId}-button`,
-		bodyId: `side-bar-${autoId}-body`,
+		buttonId: `collapsing-side-bar-${autoId}-button`,
+		bodyId: `collapsing-side-bar-${autoId}-body`,
 	};
 }

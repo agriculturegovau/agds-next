@@ -1,7 +1,6 @@
 import { PropsWithChildren, useRef } from 'react';
 import { useSpring, animated } from '@react-spring/web';
 import {
-	boxPalette,
 	tokens,
 	usePrefersReducedMotion,
 	useToggleState,
@@ -11,22 +10,28 @@ import { backgroundColorMap, Box } from '@ag.ds-next/react/box';
 import { mapResponsiveProp, mq } from '@ag.ds-next/react/core';
 import { BaseButton } from '@ag.ds-next/react/button';
 import { Flex } from '@ag.ds-next/react/flex';
+import { Stack } from '@ag.ds-next/react/stack';
 import { ChevronDownIcon } from '@ag.ds-next/react/icon';
 import {
 	hoverColorMap,
-	SideBarBackground,
-	sideBarLocalPalette,
-	sideBarLocalPaletteVars,
-	useSideBarIds,
+	CollapsingSideBarBackground,
+	collapsingSideBarLocalPalette,
+	collapsingSideBarLocalPaletteVars,
+	useCollapsingSideBarIds,
 } from './utils';
+import { CollapsingSideBarTitle } from './CollapsingSideBarTitle';
 
 export type CollapsingSideBarProps = PropsWithChildren<{
 	/** The HTML element to render the CollapsingSideBar as. */
 	as?: CollapsingSideBarContainerElementType;
 	/** If CollapsingSideBar is placed on 'bodyAlt' background, please set this to 'bodyAlt'. */
-	background?: SideBarBackground;
+	background?: CollapsingSideBarBackground;
 	/** Used as the title of the expand/collapse trigger on smaller screen sizes. */
 	collapseButtonLabel: string;
+	/** The title of the CollapsingSideBar. */
+	title?: string;
+	/** The sub title of the CollapsingSideBar. */
+	subTitle?: string;
 }>;
 
 export function CollapsingSideBar({
@@ -34,8 +39,10 @@ export function CollapsingSideBar({
 	background = 'body',
 	children,
 	collapseButtonLabel,
+	title,
+	subTitle,
 }: CollapsingSideBarProps) {
-	const { bodyId, buttonId } = useSideBarIds();
+	const { bodyId, buttonId } = useCollapsingSideBarIds();
 	const ref = useRef<HTMLDivElement>(null);
 	const [isOpen, onToggle] = useToggleState(false, true);
 
@@ -65,6 +72,7 @@ export function CollapsingSideBar({
 
 	return (
 		<CollapsingSideBarContainer as={as} background={background}>
+			{title && <CollapsingSideBarTitle title={title} subtitle={subTitle} />}
 			<SideBarCollapseButton
 				isOpen={isOpen}
 				onClick={onToggle}
@@ -79,10 +87,8 @@ export function CollapsingSideBar({
 				{...(isMobile && { role: 'region', 'aria-labelledby': buttonId })}
 				style={animatedHeight}
 				css={{
-					borderBottom: `1px solid ${boxPalette.border}`,
 					// Overwrite the animated height for tablet/desktop sizes.
 					[tokens.mediaQuery.min.md]: {
-						borderBottom: 'none',
 						overflow: 'unset',
 						display: 'block !important',
 						height: 'auto !important',
@@ -104,7 +110,7 @@ type CollapsingSideBarContainerElementType =
 
 type CollapsingSideBarContainerProps = PropsWithChildren<{
 	as: CollapsingSideBarContainerElementType;
-	background: SideBarBackground;
+	background: CollapsingSideBarBackground;
 }>;
 
 const CollapsingSideBarContainer = ({
@@ -114,18 +120,19 @@ const CollapsingSideBarContainer = ({
 }: CollapsingSideBarContainerProps) => {
 	const hoverColor = hoverColorMap[background];
 	return (
-		<Box
+		<Stack
 			as={as}
 			background={background}
+			gap={{ xs: 0, md: 1 }}
 			css={mq({
-				[sideBarLocalPaletteVars.hover]: mapResponsiveProp(
+				[collapsingSideBarLocalPaletteVars.hover]: mapResponsiveProp(
 					hoverColor,
 					(t) => backgroundColorMap[t]
 				),
 			})}
 		>
 			{children}
-		</Box>
+		</Stack>
 	);
 };
 
@@ -168,7 +175,7 @@ export const SideBarCollapseButton = ({
 			borderBottom
 			css={{
 				'&:hover': {
-					background: sideBarLocalPalette.hover,
+					background: collapsingSideBarLocalPalette.hover,
 				},
 				[tokens.mediaQuery.min.md]: {
 					display: 'none',

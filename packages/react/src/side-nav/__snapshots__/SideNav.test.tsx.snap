@@ -3,13 +3,13 @@
 exports[`SideNav renders correctly 1`] = `
 <div>
   <aside
-    class="css-1mgi1mm-boxStyles-CollapsingSideBarContainer"
+    class="css-109i52p-boxStyles-CollapsingSideBarContainer"
   >
     <button
-      aria-controls="side-bar-:r1:-body"
+      aria-controls="collapsing-side-bar-:r1:-body"
       aria-expanded="false"
       class="css-egsa7l-BaseButton-boxStyles-SideBarCollapseButton"
-      id="side-bar-:r1:-button"
+      id="collapsing-side-bar-:r1:-button"
       type="button"
     >
       In this section
@@ -30,8 +30,8 @@ exports[`SideNav renders correctly 1`] = `
       </svg>
     </button>
     <div
-      class="css-ly33cb-CollapsingSideBar"
-      id="side-bar-:r1:-body"
+      class="css-1x3p89f-CollapsingSideBar"
+      id="collapsing-side-bar-:r1:-body"
       style="display: none; height: 0px; overflow: hidden;"
     >
       <div
