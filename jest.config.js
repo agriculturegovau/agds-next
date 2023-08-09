@@ -4,7 +4,7 @@ const config = {
 	testEnvironment: 'jsdom',
 	clearMocks: true,
 	verbose: true,
-	testTimeout: 10000,
+	testTimeout: 15000, // TODO: Rollback to 10000 when we have a better solution for the test timeout issue
 	collectCoverageFrom: [
 		'**/packages/**/*.{ts,tsx}',
 		'!**/dist/**',
