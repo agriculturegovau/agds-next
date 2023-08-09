@@ -3,10 +3,10 @@
 exports[`ProgressIndicator With anchors renders correctly 1`] = `
 <div>
   <section
-    class="css-td3mpi-boxStyles"
+    class="css-109i52p-boxStyles-CollapsingSideBarContainer"
   >
     <div
-      class="css-1ufb6od-boxStyles-ProgressIndicatorHeading"
+      class="css-w0ukyp-boxStyles"
     >
       <h2
         class="css-kip0vn-boxStyles-Text"
@@ -20,16 +20,16 @@ exports[`ProgressIndicator With anchors renders correctly 1`] = `
       </span>
     </div>
     <button
-      aria-controls="progress-indicator-:r0:-body"
+      aria-controls="collapsing-side-bar-:r0:-body"
       aria-expanded="false"
-      class="css-1rwe9m2-BaseButton-boxStyles-ProgressIndicatorCollapseButton"
-      id="progress-indicator-:r0:-button"
+      class="css-egsa7l-BaseButton-boxStyles-SideBarCollapseButton"
+      id="collapsing-side-bar-:r0:-button"
       type="button"
     >
       1 of 3 steps completed
       <svg
         aria-hidden="true"
-        class="css-1mmdn60-ProgressIndicatorCollapseButton"
+        class="css-129zfw4-SideBarCollapseButton"
         clip-rule="evenodd"
         focusable="false"
         height="24"
@@ -44,210 +44,214 @@ exports[`ProgressIndicator With anchors renders correctly 1`] = `
       </svg>
     </button>
     <div
-      class="css-fmb23f-ProgressIndicator"
-      id="progress-indicator-:r0:-body"
+      class="css-1x3p89f-CollapsingSideBar"
+      id="collapsing-side-bar-:r0:-body"
       style="display: none; height: 0px; overflow: hidden;"
     >
-      <ul
-        class="css-14adt79-boxStyles"
+      <div
+        class="css-79i25n-boxStyles"
       >
-        <li
-          class="css-10qlzin-boxStyles-ProgressIndicatorItem"
+        <ul
+          class="css-d1p7wm-boxStyles-ProgressIndicatorList"
         >
-          <a
-            class="css-1942wg8-TextLink-boxStyles-ProgressIndicatorItem"
-            href="#"
+          <li
+            class="css-10qlzin-boxStyles-ProgressIndicatorItem"
           >
-            <span
-              class="css-11emnjx-boxStyles"
+            <a
+              class="css-1942wg8-TextLink-boxStyles-ProgressIndicatorItem"
+              href="#"
             >
               <span
-                class="css-rz0ge3-ProgressIndicatorItemTimeline"
-                data-agds-progress-indicator-item-timeline-action=""
-              />
-              <span
-                class="css-yagt2a-ProgressIndicatorItemIcon"
-                data-agds-progress-indicator-item-ring=""
+                class="css-11emnjx-boxStyles"
               >
-                <svg
-                  aria-hidden="true"
-                  class="css-4r8qyn-ProgressIndicatorItemIcon"
-                  clip-rule="evenodd"
-                  focusable="false"
-                  height="24"
-                  role="img"
-                  viewBox="0 0 24 24"
-                  width="24"
-                  xmlns="http://www.w3.org/2000/svg"
+                <span
+                  class="css-rz0ge3-ProgressIndicatorItemTimeline"
+                  data-agds-progress-indicator-item-timeline-action=""
+                />
+                <span
+                  class="css-yagt2a-ProgressIndicatorItemIcon"
+                  data-agds-progress-indicator-item-ring=""
                 >
-                  <path
+                  <svg
+                    aria-hidden="true"
+                    class="css-4r8qyn-ProgressIndicatorItemIcon"
                     clip-rule="evenodd"
-                    d="M12 24C18.6274 24 24 18.6274 24 12C24 5.37258 18.6274 0 12 0C5.37258 0 0 5.37258 0 12C0 18.6274 5.37258 24 12 24ZM17.7071 9.70711C18.0976 9.31658 18.0976 8.68342 17.7071 8.29289C17.3166 7.90237 16.6834 7.90237 16.2929 8.29289L10 14.5858L7.70711 12.2929C7.31658 11.9024 6.68342 11.9024 6.29289 12.2929C5.90237 12.6834 5.90237 13.3166 6.29289 13.7071L9.29289 16.7071C9.68342 17.0976 10.3166 17.0976 10.7071 16.7071L17.7071 9.70711Z"
-                    fill="currentColor"
-                    fill-rule="evenodd"
-                    stroke="none"
-                  />
-                </svg>
+                    focusable="false"
+                    height="24"
+                    role="img"
+                    viewBox="0 0 24 24"
+                    width="24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      clip-rule="evenodd"
+                      d="M12 24C18.6274 24 24 18.6274 24 12C24 5.37258 18.6274 0 12 0C5.37258 0 0 5.37258 0 12C0 18.6274 5.37258 24 12 24ZM17.7071 9.70711C18.0976 9.31658 18.0976 8.68342 17.7071 8.29289C17.3166 7.90237 16.6834 7.90237 16.2929 8.29289L10 14.5858L7.70711 12.2929C7.31658 11.9024 6.68342 11.9024 6.29289 12.2929C5.90237 12.6834 5.90237 13.3166 6.29289 13.7071L9.29289 16.7071C9.68342 17.0976 10.3166 17.0976 10.7071 16.7071L17.7071 9.70711Z"
+                      fill="currentColor"
+                      fill-rule="evenodd"
+                      stroke="none"
+                    />
+                  </svg>
+                </span>
+                <span
+                  class="css-rz0ge3-ProgressIndicatorItemTimeline"
+                  data-agds-progress-indicator-item-timeline-action=""
+                />
               </span>
               <span
-                class="css-rz0ge3-ProgressIndicatorItemTimeline"
-                data-agds-progress-indicator-item-timeline-action=""
-              />
-            </span>
-            <span
-              class="css-1bt7nbc-boxStyles"
-              data-agds-progress-indicator-item-text-container=""
-            >
-              <span
-                class="css-6j1v6l-boxStyles-Text"
-                data-agds-progress-indicator-item-text=""
+                class="css-1bt7nbc-boxStyles"
+                data-agds-progress-indicator-item-text-container=""
               >
-                Introduction
-              </span>
-              <span
-                class="css-117pubc-boxStyles-Text-ProgressIndicatorItem"
-              >
-                Completed
-              </span>
-            </span>
-          </a>
-        </li>
-        <li
-          class="css-10qlzin-boxStyles-ProgressIndicatorItem"
-        >
-          <a
-            class="css-1dfp5fk-TextLink-boxStyles-ProgressIndicatorItem"
-            href="#"
-          >
-            <span
-              class="css-11emnjx-boxStyles"
-            >
-              <span
-                class="css-rz0ge3-ProgressIndicatorItemTimeline"
-                data-agds-progress-indicator-item-timeline-action=""
-              />
-              <span
-                class="css-fkz13n-ProgressIndicatorItemIcon"
-                data-agds-progress-indicator-item-ring=""
-              >
-                <svg
-                  aria-hidden="true"
-                  class="css-12mttc2-ProgressIndicatorItemIcon"
-                  clip-rule="evenodd"
-                  focusable="false"
-                  height="24"
-                  role="img"
-                  viewBox="0 0 24 24"
-                  width="24"
-                  xmlns="http://www.w3.org/2000/svg"
+                <span
+                  class="css-6j1v6l-boxStyles-Text"
+                  data-agds-progress-indicator-item-text=""
                 >
-                  <path
-                    d="M6.5 13.5C7.32843 13.5 8 12.8284 8 12C8 11.1716 7.32843 10.5 6.5 10.5C5.67157 10.5 5 11.1716 5 12C5 12.8284 5.67157 13.5 6.5 13.5Z"
-                    fill="currentColor"
-                    stroke="none"
-                  />
-                  <path
-                    d="M12 13.5C12.8284 13.5 13.5 12.8284 13.5 12C13.5 11.1716 12.8284 10.5 12 10.5C11.1716 10.5 10.5 11.1716 10.5 12C10.5 12.8284 11.1716 13.5 12 13.5Z"
-                    fill="currentColor"
-                    stroke="none"
-                  />
-                  <path
-                    d="M17.5 13.5C18.3284 13.5 19 12.8284 19 12C19 11.1716 18.3284 10.5 17.5 10.5C16.6716 10.5 16 11.1716 16 12C16 12.8284 16.6716 13.5 17.5 13.5Z"
-                    fill="currentColor"
-                    stroke="none"
-                  />
-                  <circle
-                    cx="12"
-                    cy="12"
-                    r="10.5"
-                  />
-                </svg>
-              </span>
-              <span
-                class="css-rz0ge3-ProgressIndicatorItemTimeline"
-                data-agds-progress-indicator-item-timeline-action=""
-              />
-            </span>
-            <span
-              class="css-48tv73-boxStyles"
-              data-agds-progress-indicator-item-text-container=""
-            >
-              <span
-                class="css-6j1v6l-boxStyles-Text"
-                data-agds-progress-indicator-item-text=""
-              >
-                Business Contacts
-              </span>
-              <span
-                class="css-117pubc-boxStyles-Text-ProgressIndicatorItem"
-              >
-                In progress
-              </span>
-            </span>
-          </a>
-        </li>
-        <li
-          class="css-10qlzin-boxStyles-ProgressIndicatorItem"
-        >
-          <a
-            class="css-1942wg8-TextLink-boxStyles-ProgressIndicatorItem"
-            href="#"
-          >
-            <span
-              class="css-11emnjx-boxStyles"
-            >
-              <span
-                class="css-rz0ge3-ProgressIndicatorItemTimeline"
-                data-agds-progress-indicator-item-timeline-action=""
-              />
-              <span
-                class="css-yagt2a-ProgressIndicatorItemIcon"
-                data-agds-progress-indicator-item-ring=""
-              >
-                <svg
-                  aria-hidden="true"
-                  class="css-cyyqnp-ProgressIndicatorItemIcon"
-                  clip-rule="evenodd"
-                  focusable="false"
-                  height="24"
-                  role="img"
-                  viewBox="0 0 24 24"
-                  width="24"
-                  xmlns="http://www.w3.org/2000/svg"
+                  Introduction
+                </span>
+                <span
+                  class="css-117pubc-boxStyles-Text-ProgressIndicatorItem"
                 >
-                  <circle
-                    cx="12"
-                    cy="12"
-                    r="10.5"
-                    stroke-dasharray="4 4"
-                    stroke-linecap="round"
-                  />
-                </svg>
+                  Completed
+                </span>
               </span>
-              <span
-                class="css-rz0ge3-ProgressIndicatorItemTimeline"
-                data-agds-progress-indicator-item-timeline-action=""
-              />
-            </span>
-            <span
-              class="css-1bt7nbc-boxStyles"
-              data-agds-progress-indicator-item-text-container=""
+            </a>
+          </li>
+          <li
+            class="css-10qlzin-boxStyles-ProgressIndicatorItem"
+          >
+            <a
+              class="css-1dfp5fk-TextLink-boxStyles-ProgressIndicatorItem"
+              href="#"
             >
               <span
-                class="css-6j1v6l-boxStyles-Text"
-                data-agds-progress-indicator-item-text=""
+                class="css-11emnjx-boxStyles"
               >
-                Case Studies
+                <span
+                  class="css-rz0ge3-ProgressIndicatorItemTimeline"
+                  data-agds-progress-indicator-item-timeline-action=""
+                />
+                <span
+                  class="css-fkz13n-ProgressIndicatorItemIcon"
+                  data-agds-progress-indicator-item-ring=""
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="css-12mttc2-ProgressIndicatorItemIcon"
+                    clip-rule="evenodd"
+                    focusable="false"
+                    height="24"
+                    role="img"
+                    viewBox="0 0 24 24"
+                    width="24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M6.5 13.5C7.32843 13.5 8 12.8284 8 12C8 11.1716 7.32843 10.5 6.5 10.5C5.67157 10.5 5 11.1716 5 12C5 12.8284 5.67157 13.5 6.5 13.5Z"
+                      fill="currentColor"
+                      stroke="none"
+                    />
+                    <path
+                      d="M12 13.5C12.8284 13.5 13.5 12.8284 13.5 12C13.5 11.1716 12.8284 10.5 12 10.5C11.1716 10.5 10.5 11.1716 10.5 12C10.5 12.8284 11.1716 13.5 12 13.5Z"
+                      fill="currentColor"
+                      stroke="none"
+                    />
+                    <path
+                      d="M17.5 13.5C18.3284 13.5 19 12.8284 19 12C19 11.1716 18.3284 10.5 17.5 10.5C16.6716 10.5 16 11.1716 16 12C16 12.8284 16.6716 13.5 17.5 13.5Z"
+                      fill="currentColor"
+                      stroke="none"
+                    />
+                    <circle
+                      cx="12"
+                      cy="12"
+                      r="10.5"
+                    />
+                  </svg>
+                </span>
+                <span
+                  class="css-rz0ge3-ProgressIndicatorItemTimeline"
+                  data-agds-progress-indicator-item-timeline-action=""
+                />
               </span>
               <span
-                class="css-117pubc-boxStyles-Text-ProgressIndicatorItem"
+                class="css-48tv73-boxStyles"
+                data-agds-progress-indicator-item-text-container=""
               >
-                Not started
+                <span
+                  class="css-6j1v6l-boxStyles-Text"
+                  data-agds-progress-indicator-item-text=""
+                >
+                  Business Contacts
+                </span>
+                <span
+                  class="css-117pubc-boxStyles-Text-ProgressIndicatorItem"
+                >
+                  In progress
+                </span>
               </span>
-            </span>
-          </a>
-        </li>
-      </ul>
+            </a>
+          </li>
+          <li
+            class="css-10qlzin-boxStyles-ProgressIndicatorItem"
+          >
+            <a
+              class="css-1942wg8-TextLink-boxStyles-ProgressIndicatorItem"
+              href="#"
+            >
+              <span
+                class="css-11emnjx-boxStyles"
+              >
+                <span
+                  class="css-rz0ge3-ProgressIndicatorItemTimeline"
+                  data-agds-progress-indicator-item-timeline-action=""
+                />
+                <span
+                  class="css-yagt2a-ProgressIndicatorItemIcon"
+                  data-agds-progress-indicator-item-ring=""
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="css-cyyqnp-ProgressIndicatorItemIcon"
+                    clip-rule="evenodd"
+                    focusable="false"
+                    height="24"
+                    role="img"
+                    viewBox="0 0 24 24"
+                    width="24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <circle
+                      cx="12"
+                      cy="12"
+                      r="10.5"
+                      stroke-dasharray="4 4"
+                      stroke-linecap="round"
+                    />
+                  </svg>
+                </span>
+                <span
+                  class="css-rz0ge3-ProgressIndicatorItemTimeline"
+                  data-agds-progress-indicator-item-timeline-action=""
+                />
+              </span>
+              <span
+                class="css-1bt7nbc-boxStyles"
+                data-agds-progress-indicator-item-text-container=""
+              >
+                <span
+                  class="css-6j1v6l-boxStyles-Text"
+                  data-agds-progress-indicator-item-text=""
+                >
+                  Case Studies
+                </span>
+                <span
+                  class="css-117pubc-boxStyles-Text-ProgressIndicatorItem"
+                >
+                  Not started
+                </span>
+              </span>
+            </a>
+          </li>
+        </ul>
+      </div>
     </div>
   </section>
 </div>
@@ -256,10 +260,10 @@ exports[`ProgressIndicator With anchors renders correctly 1`] = `
 exports[`ProgressIndicator With buttons renders correctly 1`] = `
 <div>
   <section
-    class="css-td3mpi-boxStyles"
+    class="css-109i52p-boxStyles-CollapsingSideBarContainer"
   >
     <div
-      class="css-1ufb6od-boxStyles-ProgressIndicatorHeading"
+      class="css-w0ukyp-boxStyles"
     >
       <h2
         class="css-kip0vn-boxStyles-Text"
@@ -273,16 +277,16 @@ exports[`ProgressIndicator With buttons renders correctly 1`] = `
       </span>
     </div>
     <button
-      aria-controls="progress-indicator-:r2:-body"
+      aria-controls="collapsing-side-bar-:r2:-body"
       aria-expanded="false"
-      class="css-1rwe9m2-BaseButton-boxStyles-ProgressIndicatorCollapseButton"
-      id="progress-indicator-:r2:-button"
+      class="css-egsa7l-BaseButton-boxStyles-SideBarCollapseButton"
+      id="collapsing-side-bar-:r2:-button"
       type="button"
     >
       1 of 3 steps completed
       <svg
         aria-hidden="true"
-        class="css-1mmdn60-ProgressIndicatorCollapseButton"
+        class="css-129zfw4-SideBarCollapseButton"
         clip-rule="evenodd"
         focusable="false"
         height="24"
@@ -297,210 +301,214 @@ exports[`ProgressIndicator With buttons renders correctly 1`] = `
       </svg>
     </button>
     <div
-      class="css-fmb23f-ProgressIndicator"
-      id="progress-indicator-:r2:-body"
+      class="css-1x3p89f-CollapsingSideBar"
+      id="collapsing-side-bar-:r2:-body"
       style="display: none; height: 0px; overflow: hidden;"
     >
-      <ul
-        class="css-14adt79-boxStyles"
+      <div
+        class="css-79i25n-boxStyles"
       >
-        <li
-          class="css-10qlzin-boxStyles-ProgressIndicatorItem"
+        <ul
+          class="css-d1p7wm-boxStyles-ProgressIndicatorList"
         >
-          <button
-            class="css-1siasd1-BaseButton-boxStyles-ProgressIndicatorItem"
-            type="button"
+          <li
+            class="css-10qlzin-boxStyles-ProgressIndicatorItem"
           >
-            <span
-              class="css-11emnjx-boxStyles"
+            <button
+              class="css-1siasd1-BaseButton-boxStyles-ProgressIndicatorItem"
+              type="button"
             >
               <span
-                class="css-rz0ge3-ProgressIndicatorItemTimeline"
-                data-agds-progress-indicator-item-timeline-action=""
-              />
-              <span
-                class="css-yagt2a-ProgressIndicatorItemIcon"
-                data-agds-progress-indicator-item-ring=""
+                class="css-11emnjx-boxStyles"
               >
-                <svg
-                  aria-hidden="true"
-                  class="css-4r8qyn-ProgressIndicatorItemIcon"
-                  clip-rule="evenodd"
-                  focusable="false"
-                  height="24"
-                  role="img"
-                  viewBox="0 0 24 24"
-                  width="24"
-                  xmlns="http://www.w3.org/2000/svg"
+                <span
+                  class="css-rz0ge3-ProgressIndicatorItemTimeline"
+                  data-agds-progress-indicator-item-timeline-action=""
+                />
+                <span
+                  class="css-yagt2a-ProgressIndicatorItemIcon"
+                  data-agds-progress-indicator-item-ring=""
                 >
-                  <path
+                  <svg
+                    aria-hidden="true"
+                    class="css-4r8qyn-ProgressIndicatorItemIcon"
                     clip-rule="evenodd"
-                    d="M12 24C18.6274 24 24 18.6274 24 12C24 5.37258 18.6274 0 12 0C5.37258 0 0 5.37258 0 12C0 18.6274 5.37258 24 12 24ZM17.7071 9.70711C18.0976 9.31658 18.0976 8.68342 17.7071 8.29289C17.3166 7.90237 16.6834 7.90237 16.2929 8.29289L10 14.5858L7.70711 12.2929C7.31658 11.9024 6.68342 11.9024 6.29289 12.2929C5.90237 12.6834 5.90237 13.3166 6.29289 13.7071L9.29289 16.7071C9.68342 17.0976 10.3166 17.0976 10.7071 16.7071L17.7071 9.70711Z"
-                    fill="currentColor"
-                    fill-rule="evenodd"
-                    stroke="none"
-                  />
-                </svg>
+                    focusable="false"
+                    height="24"
+                    role="img"
+                    viewBox="0 0 24 24"
+                    width="24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      clip-rule="evenodd"
+                      d="M12 24C18.6274 24 24 18.6274 24 12C24 5.37258 18.6274 0 12 0C5.37258 0 0 5.37258 0 12C0 18.6274 5.37258 24 12 24ZM17.7071 9.70711C18.0976 9.31658 18.0976 8.68342 17.7071 8.29289C17.3166 7.90237 16.6834 7.90237 16.2929 8.29289L10 14.5858L7.70711 12.2929C7.31658 11.9024 6.68342 11.9024 6.29289 12.2929C5.90237 12.6834 5.90237 13.3166 6.29289 13.7071L9.29289 16.7071C9.68342 17.0976 10.3166 17.0976 10.7071 16.7071L17.7071 9.70711Z"
+                      fill="currentColor"
+                      fill-rule="evenodd"
+                      stroke="none"
+                    />
+                  </svg>
+                </span>
+                <span
+                  class="css-rz0ge3-ProgressIndicatorItemTimeline"
+                  data-agds-progress-indicator-item-timeline-action=""
+                />
               </span>
               <span
-                class="css-rz0ge3-ProgressIndicatorItemTimeline"
-                data-agds-progress-indicator-item-timeline-action=""
-              />
-            </span>
-            <span
-              class="css-1bt7nbc-boxStyles"
-              data-agds-progress-indicator-item-text-container=""
-            >
-              <span
-                class="css-6j1v6l-boxStyles-Text"
-                data-agds-progress-indicator-item-text=""
+                class="css-1bt7nbc-boxStyles"
+                data-agds-progress-indicator-item-text-container=""
               >
-                Introduction
-              </span>
-              <span
-                class="css-117pubc-boxStyles-Text-ProgressIndicatorItem"
-              >
-                Completed
-              </span>
-            </span>
-          </button>
-        </li>
-        <li
-          class="css-10qlzin-boxStyles-ProgressIndicatorItem"
-        >
-          <button
-            class="css-1nvyvc4-BaseButton-boxStyles-ProgressIndicatorItem"
-            type="button"
-          >
-            <span
-              class="css-11emnjx-boxStyles"
-            >
-              <span
-                class="css-rz0ge3-ProgressIndicatorItemTimeline"
-                data-agds-progress-indicator-item-timeline-action=""
-              />
-              <span
-                class="css-fkz13n-ProgressIndicatorItemIcon"
-                data-agds-progress-indicator-item-ring=""
-              >
-                <svg
-                  aria-hidden="true"
-                  class="css-12mttc2-ProgressIndicatorItemIcon"
-                  clip-rule="evenodd"
-                  focusable="false"
-                  height="24"
-                  role="img"
-                  viewBox="0 0 24 24"
-                  width="24"
-                  xmlns="http://www.w3.org/2000/svg"
+                <span
+                  class="css-6j1v6l-boxStyles-Text"
+                  data-agds-progress-indicator-item-text=""
                 >
-                  <path
-                    d="M6.5 13.5C7.32843 13.5 8 12.8284 8 12C8 11.1716 7.32843 10.5 6.5 10.5C5.67157 10.5 5 11.1716 5 12C5 12.8284 5.67157 13.5 6.5 13.5Z"
-                    fill="currentColor"
-                    stroke="none"
-                  />
-                  <path
-                    d="M12 13.5C12.8284 13.5 13.5 12.8284 13.5 12C13.5 11.1716 12.8284 10.5 12 10.5C11.1716 10.5 10.5 11.1716 10.5 12C10.5 12.8284 11.1716 13.5 12 13.5Z"
-                    fill="currentColor"
-                    stroke="none"
-                  />
-                  <path
-                    d="M17.5 13.5C18.3284 13.5 19 12.8284 19 12C19 11.1716 18.3284 10.5 17.5 10.5C16.6716 10.5 16 11.1716 16 12C16 12.8284 16.6716 13.5 17.5 13.5Z"
-                    fill="currentColor"
-                    stroke="none"
-                  />
-                  <circle
-                    cx="12"
-                    cy="12"
-                    r="10.5"
-                  />
-                </svg>
-              </span>
-              <span
-                class="css-rz0ge3-ProgressIndicatorItemTimeline"
-                data-agds-progress-indicator-item-timeline-action=""
-              />
-            </span>
-            <span
-              class="css-48tv73-boxStyles"
-              data-agds-progress-indicator-item-text-container=""
-            >
-              <span
-                class="css-6j1v6l-boxStyles-Text"
-                data-agds-progress-indicator-item-text=""
-              >
-                Business Contacts
-              </span>
-              <span
-                class="css-117pubc-boxStyles-Text-ProgressIndicatorItem"
-              >
-                In progress
-              </span>
-            </span>
-          </button>
-        </li>
-        <li
-          class="css-10qlzin-boxStyles-ProgressIndicatorItem"
-        >
-          <button
-            class="css-1siasd1-BaseButton-boxStyles-ProgressIndicatorItem"
-            type="button"
-          >
-            <span
-              class="css-11emnjx-boxStyles"
-            >
-              <span
-                class="css-rz0ge3-ProgressIndicatorItemTimeline"
-                data-agds-progress-indicator-item-timeline-action=""
-              />
-              <span
-                class="css-yagt2a-ProgressIndicatorItemIcon"
-                data-agds-progress-indicator-item-ring=""
-              >
-                <svg
-                  aria-hidden="true"
-                  class="css-cyyqnp-ProgressIndicatorItemIcon"
-                  clip-rule="evenodd"
-                  focusable="false"
-                  height="24"
-                  role="img"
-                  viewBox="0 0 24 24"
-                  width="24"
-                  xmlns="http://www.w3.org/2000/svg"
+                  Introduction
+                </span>
+                <span
+                  class="css-117pubc-boxStyles-Text-ProgressIndicatorItem"
                 >
-                  <circle
-                    cx="12"
-                    cy="12"
-                    r="10.5"
-                    stroke-dasharray="4 4"
-                    stroke-linecap="round"
-                  />
-                </svg>
+                  Completed
+                </span>
               </span>
-              <span
-                class="css-rz0ge3-ProgressIndicatorItemTimeline"
-                data-agds-progress-indicator-item-timeline-action=""
-              />
-            </span>
-            <span
-              class="css-1bt7nbc-boxStyles"
-              data-agds-progress-indicator-item-text-container=""
+            </button>
+          </li>
+          <li
+            class="css-10qlzin-boxStyles-ProgressIndicatorItem"
+          >
+            <button
+              class="css-1nvyvc4-BaseButton-boxStyles-ProgressIndicatorItem"
+              type="button"
             >
               <span
-                class="css-6j1v6l-boxStyles-Text"
-                data-agds-progress-indicator-item-text=""
+                class="css-11emnjx-boxStyles"
               >
-                Case Studies
+                <span
+                  class="css-rz0ge3-ProgressIndicatorItemTimeline"
+                  data-agds-progress-indicator-item-timeline-action=""
+                />
+                <span
+                  class="css-fkz13n-ProgressIndicatorItemIcon"
+                  data-agds-progress-indicator-item-ring=""
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="css-12mttc2-ProgressIndicatorItemIcon"
+                    clip-rule="evenodd"
+                    focusable="false"
+                    height="24"
+                    role="img"
+                    viewBox="0 0 24 24"
+                    width="24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M6.5 13.5C7.32843 13.5 8 12.8284 8 12C8 11.1716 7.32843 10.5 6.5 10.5C5.67157 10.5 5 11.1716 5 12C5 12.8284 5.67157 13.5 6.5 13.5Z"
+                      fill="currentColor"
+                      stroke="none"
+                    />
+                    <path
+                      d="M12 13.5C12.8284 13.5 13.5 12.8284 13.5 12C13.5 11.1716 12.8284 10.5 12 10.5C11.1716 10.5 10.5 11.1716 10.5 12C10.5 12.8284 11.1716 13.5 12 13.5Z"
+                      fill="currentColor"
+                      stroke="none"
+                    />
+                    <path
+                      d="M17.5 13.5C18.3284 13.5 19 12.8284 19 12C19 11.1716 18.3284 10.5 17.5 10.5C16.6716 10.5 16 11.1716 16 12C16 12.8284 16.6716 13.5 17.5 13.5Z"
+                      fill="currentColor"
+                      stroke="none"
+                    />
+                    <circle
+                      cx="12"
+                      cy="12"
+                      r="10.5"
+                    />
+                  </svg>
+                </span>
+                <span
+                  class="css-rz0ge3-ProgressIndicatorItemTimeline"
+                  data-agds-progress-indicator-item-timeline-action=""
+                />
               </span>
               <span
-                class="css-117pubc-boxStyles-Text-ProgressIndicatorItem"
+                class="css-48tv73-boxStyles"
+                data-agds-progress-indicator-item-text-container=""
               >
-                Not started
+                <span
+                  class="css-6j1v6l-boxStyles-Text"
+                  data-agds-progress-indicator-item-text=""
+                >
+                  Business Contacts
+                </span>
+                <span
+                  class="css-117pubc-boxStyles-Text-ProgressIndicatorItem"
+                >
+                  In progress
+                </span>
               </span>
-            </span>
-          </button>
-        </li>
-      </ul>
+            </button>
+          </li>
+          <li
+            class="css-10qlzin-boxStyles-ProgressIndicatorItem"
+          >
+            <button
+              class="css-1siasd1-BaseButton-boxStyles-ProgressIndicatorItem"
+              type="button"
+            >
+              <span
+                class="css-11emnjx-boxStyles"
+              >
+                <span
+                  class="css-rz0ge3-ProgressIndicatorItemTimeline"
+                  data-agds-progress-indicator-item-timeline-action=""
+                />
+                <span
+                  class="css-yagt2a-ProgressIndicatorItemIcon"
+                  data-agds-progress-indicator-item-ring=""
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="css-cyyqnp-ProgressIndicatorItemIcon"
+                    clip-rule="evenodd"
+                    focusable="false"
+                    height="24"
+                    role="img"
+                    viewBox="0 0 24 24"
+                    width="24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <circle
+                      cx="12"
+                      cy="12"
+                      r="10.5"
+                      stroke-dasharray="4 4"
+                      stroke-linecap="round"
+                    />
+                  </svg>
+                </span>
+                <span
+                  class="css-rz0ge3-ProgressIndicatorItemTimeline"
+                  data-agds-progress-indicator-item-timeline-action=""
+                />
+              </span>
+              <span
+                class="css-1bt7nbc-boxStyles"
+                data-agds-progress-indicator-item-text-container=""
+              >
+                <span
+                  class="css-6j1v6l-boxStyles-Text"
+                  data-agds-progress-indicator-item-text=""
+                >
+                  Case Studies
+                </span>
+                <span
+                  class="css-117pubc-boxStyles-Text-ProgressIndicatorItem"
+                >
+                  Not started
+                </span>
+              </span>
+            </button>
+          </li>
+        </ul>
+      </div>
     </div>
   </section>
 </div>

@@ -2,8 +2,8 @@ import { PropsWithChildren, ReactNode } from 'react';
 import { Flex } from '../flex';
 import { useLinkComponent, LinkProps, tokens } from '../core';
 import { boxPalette, packs } from '../core';
+import { collapsingSideBarLocalPalette } from '../_collapsing-side-bar';
 import { useLinkListDepth } from './context';
-import { localPalette } from './utils';
 
 export type SideNavLinkType = LinkProps & {
 	isActive?: boolean;
@@ -41,14 +41,14 @@ export function SideNavLink({
 
 					'&:hover': {
 						color: boxPalette.foregroundText,
-						backgroundColor: localPalette.hover,
+						backgroundColor: collapsingSideBarLocalPalette.hover,
 						'& span:last-of-type': packs.underline,
 					},
 
 					...(isCurrentPage && {
 						position: 'relative',
 						color: boxPalette.foregroundText,
-						backgroundColor: localPalette.hover,
+						backgroundColor: collapsingSideBarLocalPalette.hover,
 						fontWeight: tokens.fontWeight.bold,
 						':before': {
 							content: '""',

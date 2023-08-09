@@ -1,17 +1,25 @@
-import { forwardRef, ReactNode } from 'react';
+import { PropsWithChildren } from 'react';
 import { Box } from '../box';
+import { tokens } from '../core';
 
-export type ProgressIndicatorListProps = {
-	children: ReactNode;
-};
+export type ProgressIndicatorListProps = PropsWithChildren<{}>;
 
-export const ProgressIndicatorList = forwardRef<
-	HTMLUListElement,
-	ProgressIndicatorListProps
->(function ProgressIndicatorList({ children }, ref) {
+export function ProgressIndicatorList({
+	children,
+}: ProgressIndicatorListProps) {
 	return (
-		<Box ref={ref} as="ul" borderTop>
+		<Box
+			as="ul"
+			borderTop
+			borderBottom
+			css={{
+				// Avoid double border on smaller devices
+				[tokens.mediaQuery.max.sm]: {
+					borderTopWidth: 0,
+				},
+			}}
+		>
 			{children}
 		</Box>
 	);
-});
+}
