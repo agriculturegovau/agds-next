@@ -49,7 +49,11 @@ export type IconProps = {
 	weight?: IconWeight;
 };
 
-export const createIcon = (children: ReactNode, name: string) => {
+export const createIcon = (
+	children: ReactNode,
+	name: string,
+	defaultWeight?: IconWeight
+) => {
 	const Icon = ({
 		'aria-hidden': ariaHidden = 'true',
 		'aria-label': ariaLabel,
@@ -57,8 +61,9 @@ export const createIcon = (children: ReactNode, name: string) => {
 		color,
 		size = 'md',
 		style,
-		weight = 'regular',
+		weight: weightProp,
 	}: IconProps) => {
+		const weight = defaultWeight ?? weightProp ?? 'regular';
 		const resolvedSize = mapResponsiveProp(size, (s) => `${iconSizes[s]}rem`);
 		const resolvedWeight = mapResponsiveProp(
 			size,
