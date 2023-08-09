@@ -26,6 +26,11 @@ describe('FilterSidebar', () => {
 		});
 		expect(container).toHTMLValidate({
 			extends: ['html-validate:recommended'],
+			rules: {
+				'no-inline-style': 'off',
+				// react 18s `useId` break this rule
+				'valid-id': 'off',
+			},
 		});
 		expect(await axe(container)).toHaveNoViolations();
 	});

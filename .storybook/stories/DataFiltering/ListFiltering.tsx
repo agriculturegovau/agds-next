@@ -1,27 +1,27 @@
-import { Stack } from '@ag.ds-next/react/stack';
-import { PageContent } from '@ag.ds-next/react/content';
-import { Prose } from '@ag.ds-next/react/prose';
-import { Column, Columns } from '@ag.ds-next/react/columns';
-import { DateRangePicker } from '@ag.ds-next/react/date-range-picker';
-import { SkipLinks } from '@ag.ds-next/react/skip-link';
-import { Flex } from '@ag.ds-next/react/flex';
-import { Text } from '@ag.ds-next/react/text';
+import { Box } from '@ag.ds-next/react/box';
 import { Button } from '@ag.ds-next/react/button';
 import { CloseIcon } from '@ag.ds-next/react/icon';
-import { Box } from '@ag.ds-next/react/box';
+import { Column, Columns } from '@ag.ds-next/react/columns';
+import { DateRangePicker } from '@ag.ds-next/react/date-range-picker';
 import { FilterSidebar } from '@ag.ds-next/react/filter-sidebar';
-import { SortBySelect } from './components/SortBySelect';
-import { FilterSearchInput } from './components/FilterSearchInput';
-import { FilterStatusSelect } from './components/FilterStatusSelect';
-import { FilterStateSelect } from './components/FilterStateSelect';
-import { FilterAssigneeSelect } from './components/FilterAssigneeSelect';
+import { Flex } from '@ag.ds-next/react/flex';
+import { PageContent } from '@ag.ds-next/react/content';
+import { Prose } from '@ag.ds-next/react/prose';
+import { SkipLinks } from '@ag.ds-next/react/skip-link';
+import { Stack } from '@ag.ds-next/react/stack';
+import { Text } from '@ag.ds-next/react/text';
+import { DashboardPagination } from './components/DashboardPagination';
 import { DataList } from './components/DataList';
+import { FilterAssigneeSelect } from './components/FilterAssigneeSelect';
 import { FilterDestinationsSelect } from './components/FilterDestinationsSelect';
+import { FilterSearchInput } from './components/FilterSearchInput';
 import { FilterServicesSelect } from './components/FilterServicesSelect';
+import { FilterStateSelect } from './components/FilterStateSelect';
+import { FilterStatusSelect } from './components/FilterStatusSelect';
 import { generateTableCaption, getNumberOfActiveFilters } from './lib/utils';
+import { SortBySelect } from './components/SortBySelect';
 import { ActiveFilters } from './components/ActiveFilters';
 import { useDataContext, useSortAndFilterContext } from './lib/contexts';
-import { DashboardPagination } from './components/DashboardPagination';
 
 /** These patterns are draft designs and are not yet ready for production. */
 export const ListFiltering = () => {
@@ -55,13 +55,15 @@ export const ListFiltering = () => {
 					<Column columnSpan={{ xs: 12, md: 4 }}>
 						<Stack gap={1}>
 							<FilterSidebar numberOfActiveFilters={numberOfActiveFilters}>
-								<Button
-									variant="text"
-									iconAfter={() => <CloseIcon size="sm" />}
-									onClick={resetFilters}
-								>
-									Clear filters
-								</Button>
+								<Box>
+									<Button
+										variant="text"
+										iconAfter={() => <CloseIcon size="sm" />}
+										onClick={resetFilters}
+									>
+										Clear filters
+									</Button>
+								</Box>
 								<FilterSearchInput block />
 								<FilterStatusSelect block />
 								<FilterStateSelect block />

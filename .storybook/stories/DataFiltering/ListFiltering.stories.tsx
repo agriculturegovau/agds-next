@@ -4,6 +4,15 @@ import { useSortAndFilter } from './lib/useSortAndFilter';
 import { useData } from './lib/utils';
 import { ListFiltering } from './ListFiltering';
 
+const meta: Meta = {
+	title: 'Patterns/Data filtering and sorting',
+	parameters: {
+		layout: 'fullscreen',
+	},
+};
+
+export default meta;
+
 const ListFilteringExample = () => {
 	const sortAndFilter = useSortAndFilter();
 	const { filters, pagination, sort } = sortAndFilter;
@@ -17,15 +26,6 @@ const ListFilteringExample = () => {
 		</SortAndFilterProvider>
 	);
 };
-
-const meta: Meta = {
-	title: 'Patterns/Data filtering and sorting',
-	parameters: {
-		layout: 'fullscreen',
-	},
-};
-
-export default meta;
 
 export const List = {
 	name: 'List filtering',

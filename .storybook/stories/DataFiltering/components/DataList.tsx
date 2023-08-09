@@ -1,5 +1,5 @@
 import { VisuallyHidden } from '@ag.ds-next/react/a11y';
-import { Stack } from '@ag.ds-next/react/box';
+import { Stack } from '@ag.ds-next/react/stack';
 import { Card, CardInner, CardLink } from '@ag.ds-next/react/card';
 import { H3 } from '@ag.ds-next/react/heading';
 import { SkeletonHeading, SkeletonText } from '@ag.ds-next/react/skeleton';
