@@ -3,13 +3,7 @@ import '@testing-library/jest-dom';
 import 'html-validate/jest';
 import { axe, toHaveNoViolations } from 'jest-axe';
 import userEvent from '@testing-library/user-event';
-import {
-	render,
-	cleanup,
-	act,
-	waitFor,
-	renderHook,
-} from '../../../../test-utils';
+import { render, cleanup, act, renderHook } from '../../../../test-utils';
 import { ComboboxAsync, ComboboxAsyncProps } from './ComboboxAsync';
 import { STATE_OPTIONS, Option } from './test-utils';
 
@@ -58,17 +52,23 @@ describe('ComboboxAsync', () => {
 
 		const input = container.querySelector('input');
 		expect(input).toBeInTheDocument();
+		expect(input).toHaveAttribute('aria-expanded', 'false');
 		if (!input) return;
 
-		// Focus the input and start typing a search term
-		act(() => input.focus());
-		await userEvent.type(input, 'qld');
+		// Focus the input
+		await act(async () => await input.focus());
+		expect(input).toHaveFocus();
+		expect(input).toHaveAttribute('aria-expanded', 'true');
+
+		// All options should be visible
+		expect(container.querySelectorAll('li').length).toBe(STATE_OPTIONS.length);
+
+		// Start typing a search term
+		await act(async () => await userEvent.type(input, 'qld'));
 
 		// Wait for the data to be loaded
 		// When searching for 'qld', only 1 option should be visible
-		await waitFor(() =>
-			expect(container.querySelectorAll('li').length).toBe(1)
-		);
+		expect(container.querySelectorAll('li').length).toBe(1);
 
 		// Select the QLD option
 		const options = container.querySelectorAll('li');
@@ -76,6 +76,14 @@ describe('ComboboxAsync', () => {
 
 		// Expect the input to be updated
 		expect(input.value).toBe('Queensland');
+		expect(input).toHaveAttribute('aria-expanded', 'false');
+		expect(input).toHaveFocus();
+
+		// Since the input is focused, use the arrow down key to open the menu
+		await userEvent.keyboard('[ArrowDown]');
+
+		// All options should be visible
+		expect(container.querySelectorAll('li').length).toBe(1);
 	});
 
 	it('accepts `inputRef` prop', () => {

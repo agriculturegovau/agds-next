@@ -1,21 +1,13 @@
-import {
-	ReactNode,
-	Ref,
-	useCallback,
-	useEffect,
-	useMemo,
-	useRef,
-	useState,
-} from 'react';
+import { ReactNode, Ref, useCallback, useMemo, useState } from 'react';
 import { useCombobox, useMultipleSelection } from 'downshift';
 import { FieldMaxWidth } from '../core';
-import { useDebounceValue } from './useDebounceValue';
 import { ComboboxMultiBase } from './ComboboxBase';
 import {
 	DefaultComboboxOption,
 	useComboboxInputId,
 	filterOptions,
 } from './utils';
+import { useLoadOptions } from './useLoadOptions';
 
 export type ComboboxAsyncMultiProps<Option extends DefaultComboboxOption> = {
 	/** Describes the purpose of the field. */
@@ -62,17 +54,7 @@ export function ComboboxAsyncMulti<Option extends DefaultComboboxOption>({
 	...props
 }: ComboboxAsyncMultiProps<Option>) {
 	const inputId = useComboboxInputId(id);
-	const [inputValue, setInputValue] = useState('');
-
-	const [state, setState] = useState<{
-		inputItems: Option[] | undefined;
-		loading: boolean;
-		networkError: boolean;
-	}>({
-		inputItems: undefined,
-		loading: false,
-		networkError: false,
-	});
+	const [inputValue, setInputValue] = useState<string>();
 
 	// If no `value` has been supplied, use the internal state
 	const [_selectedItems, _setSelectedItems] = useState<Option[]>([]);
@@ -102,48 +84,62 @@ export function ComboboxAsyncMulti<Option extends DefaultComboboxOption>({
 		},
 	});
 
+	const {
+		loading,
+		networkError,
+		inputItems,
+		onInputValueChange,
+		onIsOpenChange,
+		dispatch,
+	} = useLoadOptions<Option>(loadOptionsProp);
+
 	const items = useMemo(
-		() => filterOptions(state.inputItems ?? [], inputValue, selectedItems),
-		[state.inputItems, inputValue, selectedItems]
+		() => filterOptions(inputItems ?? [], inputValue, selectedItems),
+		[inputItems, inputValue, selectedItems]
 	);
 
 	const combobox = useCombobox({
-		inputValue,
 		inputId,
 		items,
 		itemToString: (item) => item?.label ?? '',
-		selectedItem: null, // TODO
+		selectedItem: null,
 		defaultHighlightedIndex: 0, // after selection, highlight the first item.
 		stateReducer(state, actionAndChanges) {
 			const { changes, type } = actionAndChanges;
 			switch (type) {
+				case useCombobox.stateChangeTypes.FunctionReset:
+					dispatch({ type: 'RESET_ITEMS' });
+					return changes;
 				case useCombobox.stateChangeTypes.InputKeyDownEnter:
 				case useCombobox.stateChangeTypes.ItemClick:
 					return {
 						...changes,
-						isOpen: true, // keep the menu open after selection.
-						highlightedIndex: 0, // with the first option highlighted.
+						inputValue: '', // clear the input after selection
+						isOpen: true, // keep the menu open after selection. highlightedIndex: 0, // with the first option highlighted.
 					};
+				case useCombobox.stateChangeTypes.InputBlur:
+					return { inputValue: '' };
+					// case useCombobox.stateChangeTypes.InputChange:
+					// 	if (changes.inputValue === '') {
+					// 		dispatch({ type: 'RESET_ITEMS' });
+					// 	}
+					return changes;
 				default:
 					return changes;
 			}
 		},
-		onStateChange({
-			inputValue: newInputValue = '',
-			type,
-			selectedItem: newSelectedItem,
-		}) {
+		onInputValueChange: (options) => {
+			setInputValue(options.inputValue ?? '');
+			onInputValueChange(options);
+		},
+		onIsOpenChange,
+		onStateChange({ type, selectedItem: newSelectedItem }) {
 			switch (type) {
-				case useCombobox.stateChangeTypes.InputKeyDownEnter:
+				case useCombobox.stateChangeTypes.FunctionSelectItem:
 				case useCombobox.stateChangeTypes.ItemClick:
 				case useCombobox.stateChangeTypes.InputBlur:
-					if (newSelectedItem) {
+					if (newSelectedItem)
 						setSelectedItems([...selectedItems, newSelectedItem]);
-					}
-					setInputValue('');
-					break;
-				case useCombobox.stateChangeTypes.InputChange:
-					setInputValue(newInputValue);
 					break;
 				default:
 					break;
@@ -151,93 +147,14 @@ export function ComboboxAsyncMulti<Option extends DefaultComboboxOption>({
 		},
 	});
 
-	// Keep track of the debounced input value to prevent unnecessary network requests
-	const debouncedInputValue = useDebounceValue(combobox.inputValue, 300);
-
-	const shouldLoadOptions = useMemo(() => {
-		// Do load options when...
-		if (
-			// User has just started typing, so this avoids the flicker of the empty state
-			(!debouncedInputValue && combobox.inputValue) ||
-			// User has manually triggered the dropdown menu open
-			(combobox.isOpen && !combobox.selectedItem)
-		) {
-			return true;
-		}
-		// Do NOT load options when...
-		const selectedItemLabel = combobox.selectedItem?.label;
-		if (
-			// Options are already being loaded
-			state.loading ||
-			// Options have failed to load
-			state.networkError ||
-			// Dropdown is closed
-			!combobox.isOpen ||
-			// If a selection has just been made, no not need to load options again
-			(selectedItemLabel && selectedItemLabel === debouncedInputValue)
-		) {
-			return false;
-		}
-		return true;
-	}, [
-		debouncedInputValue,
-		combobox.inputValue,
-		combobox.isOpen,
-		combobox.selectedItem,
-		state.loading,
-		state.networkError,
-	]);
-
-	// Keep track of search terms/loaded options to prevent unnecessary network requests
-	const cache = useRef<Record<string, Option[]>>({});
-
-	useEffect(() => {
-		async function loadOptions(shouldLoadOptions: boolean) {
-			if (!shouldLoadOptions) return;
-			// sanitize the input value
-			const inputValue = debouncedInputValue?.toLowerCase() ?? '';
-
-			// If there are cached options for the search term, use that
-			const cachedInputItems = cache.current[inputValue];
-			if (cachedInputItems) {
-				setState({
-					inputItems: cachedInputItems,
-					loading: false,
-					networkError: false,
-				});
-				return;
-			}
-
-			// No cached options found, so kick off the loading state
-			setState({ inputItems: undefined, loading: true, networkError: false });
-			try {
-				// Load the options
-				const inputItems = await loadOptionsProp(inputValue);
-				// Update the cache
-				cache.current[inputValue] = inputItems;
-				// Update the UI
-				setState({
-					inputItems: inputItems,
-					loading: false,
-					networkError: false,
-				});
-			} catch {
-				// An error occurred while loading options
-				setState({ inputItems: undefined, loading: false, networkError: true });
-			}
-		}
-
-		loadOptions(shouldLoadOptions);
-	}, [shouldLoadOptions, debouncedInputValue, loadOptionsProp]);
-
 	return (
 		<ComboboxMultiBase
 			combobox={combobox}
 			multiSelection={multiSelection}
 			inputId={inputId}
 			inputItems={items}
-			loading={state.loading}
-			networkError={state.networkError}
+			loading={loading}
+			networkError={networkError}
 			selectedItems={selectedItems}
 			setSelectedItems={setSelectedItems}
 			clearable
