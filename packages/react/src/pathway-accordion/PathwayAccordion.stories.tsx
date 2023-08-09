@@ -1,4 +1,4 @@
-import { Meta, StoryObj } from '@storybook/react';
+import { StoryObj, Meta } from '@storybook/react';
 import { Box } from '@ag.ds-next/react/box';
 import { Card, CardInner, CardLink } from '@ag.ds-next/react/card';
 import { Text } from '@ag.ds-next/react/text';
@@ -6,10 +6,17 @@ import { Stack } from '@ag.ds-next/react/stack';
 import { Flex } from '@ag.ds-next/react/flex';
 import { PageContent } from '@ag.ds-next/react/content';
 import { PathwayAccordion } from './PathwayAccordion';
+import { colourPacks } from './utils';
 
 const meta: Meta<typeof PathwayAccordion> = {
 	title: 'BizGov/PathwayAccordion',
 	component: PathwayAccordion,
+	argTypes: {
+		tone: {
+			options: Object.keys(colourPacks),
+			control: { type: 'radio' },
+		},
+	},
 };
 
 export default meta;
