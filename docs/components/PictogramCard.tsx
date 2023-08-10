@@ -24,7 +24,7 @@ export const PictogramCard = ({
 		<CardInner>
 			<CardLink {...props}>
 				{title}
-				<ChevronRightIcon size="sm" weight="bold" />
+				<ChevronRightIcon />
 			</CardLink>
 		</CardInner>
 	</Card>

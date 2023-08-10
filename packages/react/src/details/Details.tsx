@@ -34,9 +34,9 @@ export const Details = forwardRef<HTMLDetailsElement, DetailsProps>(
 					paddingY={0.5}
 					rounded
 				>
-					{iconBefore && <InfoIcon weight="regular" size="md" />}
+					{iconBefore && <InfoIcon weight="regular" />}
 					{label}
-					<ChevronDownIcon weight="bold" size="sm" />
+					<ChevronDownIcon weight="bold" />
 				</Flex>
 
 				<Box

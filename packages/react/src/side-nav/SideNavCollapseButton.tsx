@@ -49,7 +49,6 @@ export const SideNavCollapseButton = ({
 			{children}
 			<ChevronDownIcon
 				size="sm"
-				weight="bold"
 				css={{
 					transition: `transform ${tokens.transition.duration}ms ${tokens.transition.timingFunction}`,
 					transform: `rotate(${isOpen ? 180 : 0}deg)`,

@@ -95,7 +95,7 @@ const ComboboxIconButton = forwardRef<HTMLButtonElement, IconButtonProps>(
 				}}
 				{...props}
 			>
-				<Icon size="sm" weight="bold" color="inherit" />
+				<Icon color="inherit" weight="bold" />
 			</BaseButton>
 		);
 	}

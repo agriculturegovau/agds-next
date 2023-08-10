@@ -42,7 +42,7 @@ const CallToAction = ({
 				{...props}
 			>
 				{children}
-				<ChevronRightIcon weight="bold" size="sm" />
+				<ChevronRightIcon />
 			</Flex>
 		</Flex>
 	);
