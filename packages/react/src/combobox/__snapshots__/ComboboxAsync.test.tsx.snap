@@ -60,7 +60,7 @@ exports[`ComboboxAsync renders correctly 1`] = `
         >
           <svg
             aria-hidden="true"
-            class="css-vfodg1-Icon"
+            class="css-qhpjst-Icon"
             clip-rule="evenodd"
             focusable="false"
             height="24"
@@ -69,8 +69,8 @@ exports[`ComboboxAsync renders correctly 1`] = `
             width="24"
             xmlns="http://www.w3.org/2000/svg"
           >
-            <path
-              d="m20 9-7.646 7.646a.5.5 0 0 1-.708 0L4 9"
+            <polyline
+              points="6 9 12 15 18 9"
             />
           </svg>
         </button>

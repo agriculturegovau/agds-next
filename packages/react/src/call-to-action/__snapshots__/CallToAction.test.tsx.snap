@@ -6,14 +6,14 @@ exports[`CallToActionButton renders correctly 1`] = `
     class="css-zce95a-boxStyles-CallToAction"
   >
     <button
-      class="css-t28hm-BaseButton-boxStyles"
+      class="css-sob7pd-BaseButton-boxStyles"
       data-testid="example"
       type="button"
     >
       Sign up
       <svg
         aria-hidden="true"
-        class="css-u8huve-Icon"
+        class="css-1xyaayo-Icon"
         clip-rule="evenodd"
         focusable="false"
         height="24"
@@ -22,8 +22,8 @@ exports[`CallToActionButton renders correctly 1`] = `
         width="24"
         xmlns="http://www.w3.org/2000/svg"
       >
-        <path
-          d="m9 4 7.646 7.646a.5.5 0 0 1 0 .708L9 20"
+        <polyline
+          points="9 18 15 12 9 6"
         />
       </svg>
     </button>
@@ -37,14 +37,14 @@ exports[`CallToActionLink renders correctly 1`] = `
     class="css-zce95a-boxStyles-CallToAction"
   >
     <a
-      class="css-mzhcw2-TextLink-boxStyles"
+      class="css-142h143-TextLink-boxStyles"
       data-testid="example"
       href="#"
     >
       Sign up
       <svg
         aria-hidden="true"
-        class="css-u8huve-Icon"
+        class="css-1xyaayo-Icon"
         clip-rule="evenodd"
         focusable="false"
         height="24"
@@ -53,8 +53,8 @@ exports[`CallToActionLink renders correctly 1`] = `
         width="24"
         xmlns="http://www.w3.org/2000/svg"
       >
-        <path
-          d="m9 4 7.646 7.646a.5.5 0 0 1 0 .708L9 20"
+        <polyline
+          points="9 18 15 12 9 6"
         />
       </svg>
     </a>

@@ -54,7 +54,7 @@ exports[`Calendar Range renders correctly 1`] = `
                       Year
                     </label>
                     <select
-                      class="css-golef1-boxStyles-YearSelect"
+                      class="css-iqumvh-boxStyles-YearSelect"
                       id="calendar-:r2:-year"
                     >
                       <option>
@@ -123,7 +123,7 @@ exports[`Calendar Range renders correctly 1`] = `
                     </select>
                     <svg
                       aria-hidden="true"
-                      class="css-1it4hii-YearSelect"
+                      class="css-a48iug-YearSelect"
                       clip-rule="evenodd"
                       focusable="false"
                       height="24"
@@ -132,8 +132,8 @@ exports[`Calendar Range renders correctly 1`] = `
                       width="24"
                       xmlns="http://www.w3.org/2000/svg"
                     >
-                      <path
-                        d="m20 9-7.646 7.646a.5.5 0 0 1-.708 0L4 9"
+                      <polyline
+                        points="6 9 12 15 18 9"
                       />
                     </svg>
                   </div>
@@ -150,7 +150,7 @@ exports[`Calendar Range renders correctly 1`] = `
                 >
                   <svg
                     aria-hidden="true"
-                    class="css-vfodg1-Icon"
+                    class="css-1mv3vy-Icon"
                     clip-rule="evenodd"
                     focusable="false"
                     height="24"
@@ -159,8 +159,8 @@ exports[`Calendar Range renders correctly 1`] = `
                     width="24"
                     xmlns="http://www.w3.org/2000/svg"
                   >
-                    <path
-                      d="m15 20-7.646-7.646a.5.5 0 0 1 0-.708L15 4"
+                    <polyline
+                      points="15 18 9 12 15 6"
                     />
                   </svg>
                 </button>
@@ -172,7 +172,7 @@ exports[`Calendar Range renders correctly 1`] = `
                 >
                   <svg
                     aria-hidden="true"
-                    class="css-vfodg1-Icon"
+                    class="css-1mv3vy-Icon"
                     clip-rule="evenodd"
                     focusable="false"
                     height="24"
@@ -181,8 +181,8 @@ exports[`Calendar Range renders correctly 1`] = `
                     width="24"
                     xmlns="http://www.w3.org/2000/svg"
                   >
-                    <path
-                      d="m9 4 7.646 7.646a.5.5 0 0 1 0 .708L9 20"
+                    <polyline
+                      points="9 18 15 12 9 6"
                     />
                   </svg>
                 </button>
@@ -810,7 +810,7 @@ exports[`Calendar Single renders correctly 1`] = `
                       Year
                     </label>
                     <select
-                      class="css-golef1-boxStyles-YearSelect"
+                      class="css-iqumvh-boxStyles-YearSelect"
                       id="calendar-:r0:-year"
                     >
                       <option>
@@ -879,7 +879,7 @@ exports[`Calendar Single renders correctly 1`] = `
                     </select>
                     <svg
                       aria-hidden="true"
-                      class="css-1it4hii-YearSelect"
+                      class="css-a48iug-YearSelect"
                       clip-rule="evenodd"
                       focusable="false"
                       height="24"
@@ -888,8 +888,8 @@ exports[`Calendar Single renders correctly 1`] = `
                       width="24"
                       xmlns="http://www.w3.org/2000/svg"
                     >
-                      <path
-                        d="m20 9-7.646 7.646a.5.5 0 0 1-.708 0L4 9"
+                      <polyline
+                        points="6 9 12 15 18 9"
                       />
                     </svg>
                   </div>
@@ -906,7 +906,7 @@ exports[`Calendar Single renders correctly 1`] = `
                 >
                   <svg
                     aria-hidden="true"
-                    class="css-vfodg1-Icon"
+                    class="css-1mv3vy-Icon"
                     clip-rule="evenodd"
                     focusable="false"
                     height="24"
@@ -915,8 +915,8 @@ exports[`Calendar Single renders correctly 1`] = `
                     width="24"
                     xmlns="http://www.w3.org/2000/svg"
                   >
-                    <path
-                      d="m15 20-7.646-7.646a.5.5 0 0 1 0-.708L15 4"
+                    <polyline
+                      points="15 18 9 12 15 6"
                     />
                   </svg>
                 </button>
@@ -928,7 +928,7 @@ exports[`Calendar Single renders correctly 1`] = `
                 >
                   <svg
                     aria-hidden="true"
-                    class="css-vfodg1-Icon"
+                    class="css-1mv3vy-Icon"
                     clip-rule="evenodd"
                     focusable="false"
                     height="24"
@@ -937,8 +937,8 @@ exports[`Calendar Single renders correctly 1`] = `
                     width="24"
                     xmlns="http://www.w3.org/2000/svg"
                   >
-                    <path
-                      d="m9 4 7.646 7.646a.5.5 0 0 1 0 .708L9 20"
+                    <polyline
+                      points="9 18 15 12 9 6"
                     />
                   </svg>
                 </button>

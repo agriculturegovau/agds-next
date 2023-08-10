@@ -184,7 +184,6 @@ export const SideBarCollapseButton = ({
 		>
 			{children}
 			<ChevronDownIcon
-				size="sm"
 				weight="bold"
 				css={{
 					transition: `transform ${tokens.transition.duration}ms ${tokens.transition.timingFunction}`,
