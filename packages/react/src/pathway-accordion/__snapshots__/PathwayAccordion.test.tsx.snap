@@ -1,0 +1,69 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PathwayAccordion renders correctly 1`] = `
+<div>
+  <div
+    class="css-m9ny6n-boxStyles-PathwayAccordion"
+  >
+    <button
+      aria-controls="accordion-:r0:-body"
+      aria-expanded="false"
+      class="css-lhju8g-BaseButton-boxStyles-PathwayAccordionTitle"
+      id="accordion-:r0:-title"
+      type="button"
+    >
+      <img
+        alt="Signpost"
+        class="css-1rk9b9e-boxStyles-PathwayAccordionTitle"
+        src="https://ausgov.github.io/bga-style-guide/assets/refresh-illustrations/signpost.svg"
+      />
+      <div
+        class="css-1u7h2qt-boxStyles"
+      >
+        <h3
+          class="css-5k6djv-boxStyles-Text"
+        >
+          1. Make key decisions
+        </h3>
+        <span
+          class="css-6j1v6l-boxStyles-Text"
+        >
+          The decisions you make early on can affect many areas of your business. Including the licences you need, how much tax you pay and the volume of paperwork.
+        </span>
+      </div>
+      <div
+        class="css-naudd7-boxStyles"
+      >
+        <svg
+          aria-hidden="true"
+          class="css-1esum2a-PathwayAccordionTitle"
+          clip-rule="evenodd"
+          focusable="false"
+          height="24"
+          role="img"
+          viewBox="0 0 24 24"
+          width="24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M21 8L12 17L3 8"
+          />
+        </svg>
+      </div>
+    </button>
+    <div
+      aria-labelledby="accordion-:r0:-title"
+      class="css-1y3wtk8-PathwayAccordionBody"
+      id="accordion-:r0:-body"
+      role="region"
+      style="display: none; height: 0px;"
+    >
+      <div
+        class="css-1sbwrll-boxStyles"
+      >
+        Content goes here.
+      </div>
+    </div>
+  </div>
+</div>
+`;

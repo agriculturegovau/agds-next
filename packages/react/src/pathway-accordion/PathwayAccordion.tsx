@@ -33,6 +33,12 @@ type PathwayAccordionProps = {
 	tone?: PathwayAccordionTone;
 };
 
+/**
+ * TODO:
+ * - Responsive
+ * - flex sizing for images
+ */
+
 export const PathwayAccordion = ({
 	title,
 	tone = 'blue',
@@ -102,7 +108,7 @@ export const PathwayAccordionTitle = ({
 	isOpen,
 	onClick,
 }: PathwayAccordionTitleProps) => {
-	const colourTokens = {
+	const pathwayAccordionTokens = {
 		panel: {
 			default: colourPacks[tone].light,
 			hover: colourPacks[tone].mid,
@@ -118,7 +124,7 @@ export const PathwayAccordionTitle = ({
 	};
 
 	const selectors = {
-		image: `> div:nth-child(1)`,
+		image: `> img`,
 		button: `> div:nth-child(3)`,
 	};
 
@@ -138,43 +144,43 @@ export const PathwayAccordionTitle = ({
 			link
 			focus
 			css={{
-				backgroundColor: colourTokens.panel.default,
+				backgroundColor: pathwayAccordionTokens.panel.default,
 				textDecoration: 'none',
 				[selectors.image]: {
-					backgroundColor: colourTokens.image.default,
+					backgroundColor: pathwayAccordionTokens.image.default,
 				},
 				[selectors.button]: {
-					backgroundColor: colourTokens.button.default,
+					backgroundColor: pathwayAccordionTokens.button.default,
 				},
 
 				'&:hover': {
-					backgroundColor: colourTokens.panel.hover,
+					backgroundColor: pathwayAccordionTokens.panel.hover,
 					[selectors.image]: {
-						backgroundColor: colourTokens.image.hover,
+						backgroundColor: pathwayAccordionTokens.image.hover,
 					},
 					'> div:nth-child(2) > h3': {
 						...packs.underline,
 					},
 					[selectors.button]: {
-						backgroundColor: colourTokens.button.hover,
+						backgroundColor: pathwayAccordionTokens.button.hover,
 					},
 				},
 			}}
 		>
 			<Box
+				as="img"
+				alt={imageAlt}
+				src={image}
 				css={{
 					width: '16rem',
+					objectFit: 'cover',
+					display: 'none',
+					[tokens.mediaQuery.min.sm]: {
+						display: 'block',
+					},
 				}}
-			>
-				<img
-					alt={imageAlt}
-					src={image}
-					css={{
-						width: '100%',
-					}}
-				/>
-			</Box>
-			<Flex flexDirection="column" gap={1} padding={1.5}>
+			/>
+			<Flex flexDirection="column" gap={1} padding={1.5} flexGrow={1}>
 				<Text as={tag} lineHeight="heading" fontSize="lg" fontWeight="bold">
 					{title}
 				</Text>
