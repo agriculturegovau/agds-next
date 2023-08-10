@@ -17,7 +17,7 @@ import { colourPacks } from './utils';
 
 type PathwayAccordionTone = keyof typeof colourPacks;
 
-type PathwayAccordionProps = {
+export type PathwayAccordionProps = {
 	children: ReactNode;
 	/** The underlying HTML tag of the title element. */
 	titleHeadingTag?: PathwayAccordionTitleProps['tag'];
