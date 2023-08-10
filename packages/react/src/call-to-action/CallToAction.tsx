@@ -33,7 +33,7 @@ const CallToAction = ({
 			<Flex
 				as={as}
 				className={className}
-				gap={0.5}
+				gap={0.25}
 				alignItems="center"
 				fontWeight="bold"
 				fontSize="md"
@@ -42,7 +42,7 @@ const CallToAction = ({
 				{...props}
 			>
 				{children}
-				<ChevronRightIcon weight="bold" size="sm" />
+				<ChevronRightIcon />
 			</Flex>
 		</Flex>
 	);

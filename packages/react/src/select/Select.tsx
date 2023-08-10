@@ -153,8 +153,6 @@ const SelectOptions = ({
 
 const SelectIcon = ({ disabled }: { disabled?: boolean }) => (
 	<ChevronDownIcon
-		size="sm"
-		weight="bold"
 		css={{
 			position: 'absolute',
 			top: '50%',

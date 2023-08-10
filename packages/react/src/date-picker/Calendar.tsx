@@ -88,8 +88,8 @@ const calendarLabels: Partial<Labels> = {
 const currentYear = getYear(new Date());
 
 const calendarComponents: CustomComponents = {
-	IconLeft: () => <ChevronLeftIcon size="sm" color="inherit" weight="bold" />,
-	IconRight: () => <ChevronRightIcon size="sm" color="inherit" weight="bold" />,
+	IconLeft: () => <ChevronLeftIcon color="inherit" />,
+	IconRight: () => <ChevronRightIcon color="inherit" />,
 	// Customizing the label to include a year dropdown
 	// By default, the year select will include the previous and next 10 years
 	// Context  is used to pass props between the react components we own (e.g. CalendarRange) and react-day-picker components
@@ -218,8 +218,6 @@ function YearSelect({
 				))}
 			</Box>
 			<ChevronDownIcon
-				size="sm"
-				weight="bold"
 				css={{
 					position: 'absolute',
 					top: '50%',

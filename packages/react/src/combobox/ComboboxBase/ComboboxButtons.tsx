@@ -48,6 +48,7 @@ export const ComboboxClearButton = forwardRef<
 			ref={ref}
 			aria-label="Clear input"
 			icon={CloseIcon}
+			size="md"
 			{...props}
 		/>
 	);
@@ -62,6 +63,7 @@ export const ComboboxDropdownTrigger = forwardRef<
 			ref={ref}
 			aria-label="Toggle menu"
 			icon={ChevronDownIcon}
+			size="md"
 			{...props}
 		/>
 	);
@@ -69,10 +71,11 @@ export const ComboboxDropdownTrigger = forwardRef<
 
 type IconButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
 	icon: ComponentType<IconProps>;
+	size: 'sm' | 'md';
 };
 
 const ComboboxIconButton = forwardRef<HTMLButtonElement, IconButtonProps>(
-	function ComboboxIconButton({ disabled, icon: Icon, ...props }, ref) {
+	function ComboboxIconButton({ disabled, icon: Icon, size, ...props }, ref) {
 		return (
 			<BaseButton
 				ref={ref}
@@ -95,7 +98,7 @@ const ComboboxIconButton = forwardRef<HTMLButtonElement, IconButtonProps>(
 				}}
 				{...props}
 			>
-				<Icon size="sm" weight="bold" color="inherit" />
+				<Icon color="inherit" size={size} />
 			</BaseButton>
 		);
 	}

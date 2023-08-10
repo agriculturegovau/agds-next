@@ -36,7 +36,7 @@ export const Details = forwardRef<HTMLDetailsElement, DetailsProps>(
 				>
 					{iconBefore && <InfoIcon weight="regular" size="md" />}
 					{label}
-					<ChevronDownIcon weight="bold" size="sm" />
+					<ChevronDownIcon />
 				</Flex>
 
 				<Box
