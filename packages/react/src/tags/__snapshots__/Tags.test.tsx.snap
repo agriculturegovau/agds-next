@@ -101,11 +101,17 @@ exports[`Tags With onRemove renders correctly 1`] = `
               width="24"
               xmlns="http://www.w3.org/2000/svg"
             >
-              <path
-                d="M5 19L19 5"
+              <line
+                x1="18"
+                x2="6"
+                y1="6"
+                y2="18"
               />
-              <path
-                d="M19 19L5 5"
+              <line
+                x1="6"
+                x2="18"
+                y1="6"
+                y2="18"
               />
             </svg>
           </button>
@@ -139,11 +145,17 @@ exports[`Tags With onRemove renders correctly 1`] = `
               width="24"
               xmlns="http://www.w3.org/2000/svg"
             >
-              <path
-                d="M5 19L19 5"
+              <line
+                x1="18"
+                x2="6"
+                y1="6"
+                y2="18"
               />
-              <path
-                d="M19 19L5 5"
+              <line
+                x1="6"
+                x2="18"
+                y1="6"
+                y2="18"
               />
             </svg>
           </button>
@@ -177,11 +189,17 @@ exports[`Tags With onRemove renders correctly 1`] = `
               width="24"
               xmlns="http://www.w3.org/2000/svg"
             >
-              <path
-                d="M5 19L19 5"
+              <line
+                x1="18"
+                x2="6"
+                y1="6"
+                y2="18"
               />
-              <path
-                d="M19 19L5 5"
+              <line
+                x1="6"
+                x2="18"
+                y1="6"
+                y2="18"
               />
             </svg>
           </button>

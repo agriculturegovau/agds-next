@@ -1,5 +1,6 @@
 import { forwardRef, PropsWithChildren } from 'react';
 import { Box } from '../box';
+import { mapSpacing } from '../core';
 import { Flex } from '../flex';
 import { InfoIcon, ChevronDownIcon } from '../icon';
 
@@ -26,7 +27,6 @@ export const Details = forwardRef<HTMLDetailsElement, DetailsProps>(
 			>
 				<Flex
 					as="summary"
-					gap={0.5}
 					link
 					focus
 					alignItems="center"
@@ -34,11 +34,19 @@ export const Details = forwardRef<HTMLDetailsElement, DetailsProps>(
 					paddingY={0.5}
 					rounded
 				>
-					{iconBefore && <InfoIcon weight="regular" size="md" />}
+					{iconBefore && (
+						<InfoIcon
+							weight="regular"
+							size="md"
+							css={{ marginRight: mapSpacing(0.5) }}
+						/>
+					)}
 					{label}
-					<ChevronDownIcon />
+					<ChevronDownIcon
+						weight="bold"
+						css={{ marginLeft: mapSpacing(0.25) }}
+					/>
 				</Flex>
-
 				<Box
 					background="shade"
 					padding={1.5}

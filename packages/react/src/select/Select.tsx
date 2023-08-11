@@ -156,7 +156,7 @@ const SelectIcon = ({ disabled }: { disabled?: boolean }) => (
 		css={{
 			position: 'absolute',
 			top: '50%',
-			right: mapSpacing(1),
+			right: mapSpacing(0.75),
 			transform: 'translateY(-50%)',
 			opacity: disabled ? 0.3 : undefined,
 			pointerEvents: 'none',
@@ -177,7 +177,8 @@ const selectStyles = ({
 		appearance: 'none',
 		boxSizing: 'border-box',
 		paddingLeft: mapSpacing(1),
-		paddingRight: mapSpacing(3),
+		// border width + icon size + desired padding
+		paddingRight: `calc(${tokens.borderWidth.lg}px + 2.5rem)`,
 		margin: 0,
 		background: boxPalette.backgroundBody,
 		borderWidth: tokens.borderWidth.lg,

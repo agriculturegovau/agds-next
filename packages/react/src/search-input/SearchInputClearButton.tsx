@@ -36,7 +36,7 @@ export function SearchInputClearButton({
 				'&:hover': { color: boxPalette.foregroundText },
 			}}
 		>
-			<CloseIcon size="sm" weight="bold" color="inherit" />
+			<CloseIcon color="inherit" />
 		</Flex>
 	);
 }
