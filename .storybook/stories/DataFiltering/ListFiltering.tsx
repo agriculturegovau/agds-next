@@ -44,10 +44,8 @@ export const ListFiltering = () => {
 				<Prose>
 					<h1>List Filtering (Large)</h1>
 					<p>
-						The medium filtering pattern is for cases where the number of
-						filterable fields is between 1 and 4 secondary filters. Our
-						FilterBar is used to reveal all filterable fields when the button is
-						pressed.
+						The list filtering pattern is used for filtering and sorting a list
+						of cards, rather than a table.
 					</p>
 					<p>Here it is applied to a list of establishments.</p>
 				</Prose>
