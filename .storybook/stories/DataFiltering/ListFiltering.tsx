@@ -42,9 +42,9 @@ export const ListFiltering = () => {
 					links={[{ href: '#main-content', label: 'Skip to main content' }]}
 				/>
 				<Prose>
-					<h1>List Filtering (Large)</h1>
+					<h1>Card Filtering</h1>
 					<p>
-						The list filtering pattern is used for filtering and sorting a list
+						The Card Filtering pattern is used for filtering and sorting a list
 						of cards, rather than a table.
 					</p>
 					<p>Here it is applied to a list of establishments.</p>
@@ -53,15 +53,6 @@ export const ListFiltering = () => {
 					<Column columnSpan={{ xs: 12, md: 4 }}>
 						<Stack gap={1}>
 							<FilterSidebar numberOfActiveFilters={numberOfActiveFilters}>
-								<Box>
-									<Button
-										variant="text"
-										iconAfter={() => <CloseIcon size="sm" />}
-										onClick={resetFilters}
-									>
-										Clear filters
-									</Button>
-								</Box>
 								<FilterSearchInput block />
 								<FilterStatusSelect block />
 								<FilterStateSelect block />
@@ -85,6 +76,15 @@ export const ListFiltering = () => {
 									}
 									value={filters.requestDate}
 								/>
+								<Box>
+									<Button
+										variant="text"
+										iconAfter={() => <CloseIcon size="sm" />}
+										onClick={resetFilters}
+									>
+										Clear filters
+									</Button>
+								</Box>
 							</FilterSidebar>
 
 							<Box display={{ xs: 'block', lg: 'none' }}>
