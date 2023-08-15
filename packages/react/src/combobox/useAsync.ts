@@ -1,11 +1,11 @@
-import { useCallback, useReducer, useRef, Reducer } from 'react';
-import { DefaultComboboxOption, filterOptions } from './utils';
+import { useCallback, useReducer, useRef, Reducer, useMemo } from 'react';
+import { DefaultComboboxOption, filterOptions, debounce } from './utils';
 
 type Action<Option> =
-	| { type: 'SET_LOADING' }
+	| { type: 'START_LOADING' }
 	| { type: 'SET_ERROR' }
-	| { type: 'SET_ITEMS'; payload: { items: Option[] } }
-	| { type: 'RESET_ITEMS' };
+	| { type: 'SET_INPUT_ITEMS'; payload: { items: Option[] } }
+	| { type: 'RESET_INPUT_ITEMS' };
 
 type State<Option> = {
 	loading: boolean;
@@ -24,7 +24,7 @@ function reducer<Option>(
 	action: Action<Option>
 ): State<Option> {
 	switch (action.type) {
-		case 'SET_LOADING':
+		case 'START_LOADING':
 			return {
 				loading: true,
 				networkError: false,
@@ -36,20 +36,20 @@ function reducer<Option>(
 				networkError: true,
 				inputItems: [],
 			};
-		case 'SET_ITEMS':
+		case 'SET_INPUT_ITEMS':
 			return {
 				loading: false,
 				networkError: false,
 				inputItems: action.payload.items,
 			};
-		case 'RESET_ITEMS':
+		case 'RESET_INPUT_ITEMS':
 			return initialState;
 		default:
 			return state;
 	}
 }
 
-export function useLoadOptions<Option extends DefaultComboboxOption>(
+export function useAsync<Option extends DefaultComboboxOption>(
 	loadOptionsProp: (inputValue: string) => Promise<Option[]>
 ) {
 	const [{ loading, networkError, inputItems }, dispatch] = useReducer<
@@ -61,47 +61,48 @@ export function useLoadOptions<Option extends DefaultComboboxOption>(
 	// Keep track of search terms/loaded options to prevent unnecessary network requests
 	const cache = useRef<Record<string, Option[]>>({});
 
-	const loadOptions = useCallback(
-		async function loadOptions(searchTerm: string) {
+	const loadOptions = useMemo(() => {
+		return debounce(async function loadOptions(searchTerm: string) {
 			// sanitize the input value
 			const inputValue = searchTerm?.toLowerCase() ?? '';
-
-			console.log({ inputValue });
 
 			// If there are cached options for the search term, use that
 			const cachedInputItems = cache.current[inputValue];
 			if (cachedInputItems) {
-				dispatch({ type: 'SET_ITEMS', payload: { items: cachedInputItems } });
+				dispatch({
+					type: 'SET_INPUT_ITEMS',
+					payload: { items: cachedInputItems },
+				});
 				return;
 			}
 
-			lastRequest.current = inputValue;
-
 			// No cached options found, so kick off the loading state
-			dispatch({ type: 'SET_LOADING' });
+			const request = (lastRequest.current = {});
+			dispatch({ type: 'START_LOADING' });
+
 			try {
-				const request = (lastRequest.current = {});
 				// Load the options
 				const inputItems = await loadOptionsProp(inputValue);
 				const filteredInputItems = filterOptions(inputItems, inputValue);
+
 				// Update the cache
 				cache.current[inputValue] = filteredInputItems;
-				// Update the UI
-				if (request !== lastRequest.current) return;
-				lastRequest.current = undefined;
 
+				// Don't update "stale" requests
+				if (request !== lastRequest.current) return;
+
+				// Update the UI
+				lastRequest.current = undefined;
 				dispatch({
-					type: 'SET_ITEMS',
+					type: 'SET_INPUT_ITEMS',
 					payload: { items: filteredInputItems },
 				});
 			} catch (e) {
-				console.log({ e });
 				// An error occurred while loading options
 				dispatch({ type: 'SET_ERROR' });
 			}
-		},
-		[loadOptionsProp]
-	);
+		}, 150);
+	}, [loadOptionsProp]);
 
 	const onInputValueChange = useCallback(
 		({ inputValue = '' }: { inputValue?: string }) => {
@@ -128,7 +129,6 @@ export function useLoadOptions<Option extends DefaultComboboxOption>(
 		loading,
 		networkError,
 		inputItems,
-		dispatch,
 		onInputValueChange,
 		onIsOpenChange,
 	};

@@ -3,7 +3,7 @@ import { useCombobox } from 'downshift';
 import { FieldMaxWidth } from '../core';
 import { ComboboxBase } from './ComboboxBase';
 import { DefaultComboboxOption, useComboboxInputId } from './utils';
-import { useLoadOptions } from './useLoadOptions';
+import { useAsync } from './useAsync';
 
 export type ComboboxAsyncProps<Option extends DefaultComboboxOption> = {
 	/** Describes the purpose of the field. */
@@ -68,8 +68,7 @@ export function ComboboxAsync<Option extends DefaultComboboxOption>({
 		inputItems,
 		onInputValueChange,
 		onIsOpenChange,
-		dispatch,
-	} = useLoadOptions<Option>(loadOptionsProp);
+	} = useAsync<Option>(loadOptionsProp);
 
 	const combobox = useCombobox<Option>({
 		selectedItem: value,
@@ -81,13 +80,6 @@ export function ComboboxAsync<Option extends DefaultComboboxOption>({
 		onIsOpenChange,
 		onSelectedItemChange: ({ selectedItem = null }) => {
 			onChange?.(selectedItem);
-		},
-		onStateChange(changes) {
-			switch (changes.type) {
-				case useCombobox.stateChangeTypes.FunctionReset:
-					dispatch({ type: 'RESET_ITEMS' });
-					break;
-			}
 		},
 		stateReducer: (state, actionAndChanges) => {
 			const { type: actionAndChangesType, changes } = actionAndChanges;

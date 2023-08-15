@@ -3,7 +3,13 @@ import 'html-validate/jest';
 import { axe, toHaveNoViolations } from 'jest-axe';
 import { useRef } from 'react';
 import userEvent from '@testing-library/user-event';
-import { render, cleanup, act, renderHook } from '../../../../test-utils';
+import {
+	render,
+	cleanup,
+	act,
+	renderHook,
+	waitFor,
+} from '../../../../test-utils';
 import { STATE_OPTIONS, Option } from '../combobox/test-utils';
 import { Autocomplete, AutocompleteProps } from './Autocomplete';
 
@@ -48,7 +54,8 @@ describe('Autocomplete', () => {
 	});
 
 	it('can load and clear async options', async () => {
-		const { container } = renderAutocomplete();
+		const loadOptions = jest.fn().mockResolvedValue(STATE_OPTIONS);
+		const { container } = renderAutocomplete({ loadOptions });
 
 		const input = container.querySelector('input');
 		expect(input).toBeInTheDocument();
@@ -59,12 +66,18 @@ describe('Autocomplete', () => {
 		await act(async () => await input.focus());
 		expect(input).toHaveFocus();
 
+		expect(loadOptions).not.toHaveBeenCalled();
+
 		// Start typing a search term
 		await userEvent.type(input, 'qld');
 
 		// Wait for the data to be loaded
 		// When searching for 'qld', only 1 option should be visible
-		expect(container.querySelectorAll('li').length).toBe(1);
+		await waitFor(() => {
+			expect(loadOptions).toHaveBeenCalledTimes(1);
+			expect(loadOptions).toHaveBeenCalledWith('qld');
+			expect(container.querySelectorAll('li').length).toBe(1);
+		});
 
 		// Select the QLD option
 		const options = container.querySelectorAll('li');
@@ -96,6 +109,10 @@ describe('Autocomplete', () => {
 
 		// Expect the input to be updated
 		expect(input.value).toBe('');
+
+		// No other calls to `loadOptions` should have been made
+		expect(loadOptions).toHaveBeenCalledTimes(1);
+		expect(loadOptions).toHaveBeenCalledWith('qld');
 	});
 
 	it('accepts `inputRef` prop', () => {

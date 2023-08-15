@@ -7,7 +7,7 @@ import {
 	useComboboxInputId,
 	filterOptions,
 } from './utils';
-import { useLoadOptions } from './useLoadOptions';
+import { useAsync } from './useAsync';
 
 export type ComboboxAsyncMultiProps<Option extends DefaultComboboxOption> = {
 	/** Describes the purpose of the field. */
@@ -90,8 +90,7 @@ export function ComboboxAsyncMulti<Option extends DefaultComboboxOption>({
 		inputItems,
 		onInputValueChange,
 		onIsOpenChange,
-		dispatch,
-	} = useLoadOptions<Option>(loadOptionsProp);
+	} = useAsync<Option>(loadOptionsProp);
 
 	const items = useMemo(
 		() => filterOptions(inputItems ?? [], inputValue, selectedItems),
@@ -107,9 +106,6 @@ export function ComboboxAsyncMulti<Option extends DefaultComboboxOption>({
 		stateReducer(state, actionAndChanges) {
 			const { changes, type } = actionAndChanges;
 			switch (type) {
-				case useCombobox.stateChangeTypes.FunctionReset:
-					dispatch({ type: 'RESET_ITEMS' });
-					return changes;
 				case useCombobox.stateChangeTypes.InputKeyDownEnter:
 				case useCombobox.stateChangeTypes.ItemClick:
 					return {
@@ -119,11 +115,6 @@ export function ComboboxAsyncMulti<Option extends DefaultComboboxOption>({
 					};
 				case useCombobox.stateChangeTypes.InputBlur:
 					return { inputValue: '' };
-					// case useCombobox.stateChangeTypes.InputChange:
-					// 	if (changes.inputValue === '') {
-					// 		dispatch({ type: 'RESET_ITEMS' });
-					// 	}
-					return changes;
 				default:
 					return changes;
 			}

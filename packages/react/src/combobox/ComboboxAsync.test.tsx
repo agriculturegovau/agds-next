@@ -3,7 +3,13 @@ import '@testing-library/jest-dom';
 import 'html-validate/jest';
 import { axe, toHaveNoViolations } from 'jest-axe';
 import userEvent from '@testing-library/user-event';
-import { render, cleanup, act, renderHook } from '../../../../test-utils';
+import {
+	render,
+	cleanup,
+	act,
+	renderHook,
+	waitFor,
+} from '../../../../test-utils';
 import { ComboboxAsync, ComboboxAsyncProps } from './ComboboxAsync';
 import { STATE_OPTIONS, Option } from './test-utils';
 
@@ -48,7 +54,8 @@ describe('ComboboxAsync', () => {
 	});
 
 	it('can load async options', async () => {
-		const { container } = renderComboboxAsync();
+		const loadOptions = jest.fn().mockResolvedValue(STATE_OPTIONS);
+		const { container } = renderComboboxAsync({ loadOptions });
 
 		const input = container.querySelector('input');
 		expect(input).toBeInTheDocument();
@@ -60,15 +67,25 @@ describe('ComboboxAsync', () => {
 		expect(input).toHaveFocus();
 		expect(input).toHaveAttribute('aria-expanded', 'true');
 
+		// Focusing the input should trigger `loadOptions`
+		await waitFor(() => {
+			expect(loadOptions).toHaveBeenCalledTimes(1);
+			expect(loadOptions).toHaveBeenCalledWith('');
+		});
+
 		// All options should be visible
 		expect(container.querySelectorAll('li').length).toBe(STATE_OPTIONS.length);
 
 		// Start typing a search term
-		await act(async () => await userEvent.type(input, 'qld'));
+		await userEvent.type(input, 'qld');
 
 		// Wait for the data to be loaded
 		// When searching for 'qld', only 1 option should be visible
-		expect(container.querySelectorAll('li').length).toBe(1);
+		await waitFor(() => {
+			expect(loadOptions).toHaveBeenCalledTimes(2);
+			expect(loadOptions).toHaveBeenCalledWith('qld');
+			expect(container.querySelectorAll('li').length).toBe(1);
+		});
 
 		// Select the QLD option
 		const options = container.querySelectorAll('li');
@@ -84,6 +101,10 @@ describe('ComboboxAsync', () => {
 
 		// All options should be visible
 		expect(container.querySelectorAll('li').length).toBe(1);
+
+		// No other calls to `loadOptions` should have been made
+		expect(loadOptions).toHaveBeenCalledTimes(2);
+		expect(loadOptions).toHaveBeenCalledWith('qld');
 	});
 
 	it('accepts `inputRef` prop', () => {
