@@ -12,7 +12,7 @@ expect.extend(toHaveNoViolations);
 afterEach(cleanup);
 
 const generatedData = generateBusinessData()
-	.slice(0, 1)
+	.slice(0, 10)
 	.map((i, index) => ({ ...i, index }));
 
 function TableFilteringMediumLoaded() {
