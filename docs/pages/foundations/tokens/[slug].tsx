@@ -4,7 +4,11 @@ import { Prose } from '@ag.ds-next/react/prose';
 import { InpageNav } from '@ag.ds-next/react/inpage-nav';
 import { mdxComponents } from '../../../components/mdxComponents';
 import { TokenLayout, TOKEN_PAGES } from '../../../components/TokenLayout';
-import { getTokenPage, TokenPage } from '../../../lib/mdx/foundations';
+import {
+	getTokenPage,
+	getTokenSlugs,
+	TokenPage,
+} from '../../../lib/mdx/tokens';
 import { generateToc } from '../../../lib/generateToc';
 import { DocumentTitle } from '../../../components/DocumentTitle';
 
@@ -77,9 +81,9 @@ export const getStaticProps: GetStaticProps<
 };
 
 export const getStaticPaths = async () => {
-	const mdxPageSlugs = ['breakpoints', 'spacing', 'shadows'];
+	const slugs = await getTokenSlugs();
 	return {
-		paths: mdxPageSlugs.map((slug) => ({
+		paths: slugs.map((slug) => ({
 			params: { slug },
 		})),
 		fallback: false,
