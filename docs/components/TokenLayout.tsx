@@ -45,6 +45,11 @@ export const TOKEN_PAGES = {
 		description:
 			'A set of predefined tokens for handling the relative distance between two surfaces along the z-axis.',
 	},
+	shadow: {
+		label: 'Shadow',
+		pageTitle: 'Shadow tokens',
+		description: 'A set of predefined drop shadows',
+	},
 } as const;
 
 export const TOKEN_NAV_LINKS = Object.entries(TOKEN_PAGES).map(
