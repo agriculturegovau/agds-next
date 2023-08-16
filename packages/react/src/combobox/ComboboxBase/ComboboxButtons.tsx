@@ -55,14 +55,17 @@ export const ComboboxClearButton = forwardRef<
 
 export const ComboboxDropdownTrigger = forwardRef<
 	HTMLButtonElement,
-	ButtonHTMLAttributes<HTMLButtonElement>
->(function ComboboxDropdownTrigger(props, ref) {
+	ButtonHTMLAttributes<HTMLButtonElement> & { isOpen: boolean }
+>(function ComboboxDropdownTrigger({ isOpen, ...props }, ref) {
 	return (
 		<ComboboxIconButton
 			ref={ref}
 			aria-label="Toggle menu"
 			icon={ChevronDownIcon}
 			{...props}
+			css={{
+				...(isOpen && { transform: 'rotate(180deg)' }),
+			}}
 		/>
 	);
 });
