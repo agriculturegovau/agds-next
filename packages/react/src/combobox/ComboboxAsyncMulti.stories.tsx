@@ -74,10 +74,3 @@ export const Block: Story = {
 		block: true,
 	},
 };
-
-export const MinCharacters: Story = {
-	args: {
-		...defaultArgs,
-		block: true,
-	},
-};
