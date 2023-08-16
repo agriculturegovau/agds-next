@@ -29,7 +29,7 @@ export const Popover = forwardRefWithAs<'div', PopoverProps>(function Popover(
 			css={{
 				position: 'relative',
 				overflowY: 'auto',
-				boxShadow: tokens.shadows.medium,
+				boxShadow: tokens.shadow.medium,
 				zIndex: tokens.zIndex.popover,
 			}}
 			{...props}

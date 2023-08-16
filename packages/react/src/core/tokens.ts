@@ -128,13 +128,13 @@ const zIndex = {
 
 export type ZIndex = keyof typeof zIndex;
 
-const shadows = {
+const shadow = {
 	small: '0px 2px 8px rgba(0, 0, 0, 0.15)',
 	medium: '0px 8px 16px rgba(0, 0, 0, 0.15)',
 	large: '0px 8px 16px rgba(0, 0, 0, 0.15)',
 };
 
-export type Shadow = keyof typeof shadows;
+export type Shadow = keyof typeof shadow;
 
 export const tokens = {
 	breakpoint,
@@ -151,5 +151,5 @@ export const tokens = {
 	borderWidth,
 	transition,
 	zIndex,
-	shadows,
+	shadow,
 };
