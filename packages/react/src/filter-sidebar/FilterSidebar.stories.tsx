@@ -5,13 +5,14 @@ import { FilterSidebar } from './FilterSidebar';
 const meta: Meta<typeof FilterSidebar> = {
 	title: 'Layout/FilterSidebar',
 	component: FilterSidebar,
-	args: {
-		children: <TextInput label="Example input" value="Example" />,
-	},
 };
 
 export default meta;
 
 type Story = StoryObj<typeof FilterSidebar>;
 
-export const Basic: Story = {};
+export const Basic: Story = {
+	args: {
+		children: <TextInput label="Example input" value="Example" />,
+	},
+};

@@ -1,11 +1,13 @@
-import { Meta } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react';
+import { FilterSidebar } from '@ag.ds-next/react/filter-sidebar';
 import { DataProvider, SortAndFilterProvider } from './lib/contexts';
 import { useSortAndFilter } from './lib/useSortAndFilter';
 import { useData } from './lib/utils';
 import { ListFiltering } from './ListFiltering';
 
-const meta: Meta = {
-	title: 'Patterns/Data filtering and sorting',
+const meta: Meta<typeof FilterSidebar> = {
+	title: 'Layout/FilterSidebar',
+	component: FilterSidebar,
 	parameters: {
 		layout: 'fullscreen',
 	},
@@ -27,7 +29,7 @@ const ListFilteringExample = () => {
 	);
 };
 
-export const List = {
-	name: 'Card lists',
+export const Full: StoryObj<typeof FilterSidebar> = {
+	name: 'Full example',
 	render: ListFilteringExample,
 };

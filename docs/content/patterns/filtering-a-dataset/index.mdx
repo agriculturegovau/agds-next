@@ -37,9 +37,9 @@ Filters need to work within a limited space, so consider using input methods tha
 - [Date picker](/components/date-picker)
 - [Date range picker](/components/date-picker)
 
-## Filter patterns
+## Filtering in tables
 
-Filter patterns are available in 3 sizes to accommodate a wide range of use cases and data sets:
+Table filtering patterns are available in 3 sizes to accommodate a wide range of use cases and data sets:
 
 - **Small:** 1-2 filters
 - **Medium:** 3-6 filters
@@ -97,7 +97,7 @@ Filter patterns are available in 3 sizes to accommodate a wide range of use case
 	</TableBody>
 </Table>
 
-## Small filter pattern
+### Small table filtering pattern
 
 Small is intended for 1-2 filters that are visible and sit above the dataset.
 
@@ -107,10 +107,10 @@ The small pattern is typically comprised of primary filters.
 
 <ImageWithBorder
 	src="/img/patterns/filtering-a-dataset-small.png"
-	alt="Screenshot of the small filter pattern"
+	alt="Screenshot of the small table filtering pattern"
 />
 
-## Medium filter pattern
+### Medium table filtering pattern
 
 Medium is intended to display 3-6 filters in an accordion that is opened and closed by a button.
 
@@ -122,10 +122,10 @@ Tags are added below the filters to show which are active and give the user an e
 
 <ImageWithBorder
 	src="/img/patterns/filtering-a-dataset-medium.png"
-	alt="Screenshot of the medium filter pattern"
+	alt="Screenshot of the medium table filtering pattern"
 />
 
-## Large filter pattern
+### Large table filtering pattern
 
 Large is intended to display 6+ filters in a [Drawer](/components/drawer).
 
@@ -146,7 +146,11 @@ The [Drawer](/components/drawer) component should contain a total of 4 actions:
 
 <ImageWithBorder
 	src="/img/patterns/filtering-a-dataset-large.png"
-	alt="Screenshot of the large filter pattern"
+	alt="Screenshot of the large table filtering pattern"
 />
 
 [View Storybook preview](https://design-system.agriculture.gov.au/storybook/index.html?path=/story/patterns-data-filtering-and-sorting--large)
+
+## Filtering lists of cards
+
+When filtering a list of cards, we use a two-column layout with the [Filter sidebar](/components/filter-sidebar) component containing the filters. The cards are displayed in the main content area.
