@@ -1,6 +1,6 @@
 import { PropsWithChildren, ElementType } from 'react';
 import { Box } from '../box';
-import { packs } from '../core';
+import { packs, tokens } from '../core';
 
 export type CardProps = PropsWithChildren<{
 	as?: ElementType;
@@ -10,11 +10,6 @@ export type CardProps = PropsWithChildren<{
 	shadow?: boolean;
 	clickable?: boolean;
 }>;
-
-const componentTokens = {
-	shadow: '0 2px 4px rgba(0, 0, 0, 0.3)',
-	hoverShadow: '0 1px 1px rgba(0, 0, 0, 0.3)',
-};
 
 export const Card = ({
 	as,
@@ -43,9 +38,9 @@ export const Card = ({
 				}),
 
 				...(shadow && {
-					boxShadow: componentTokens.shadow,
+					boxShadow: tokens.shadows.small,
 					'&:hover': clickable
-						? { boxShadow: componentTokens.hoverShadow }
+						? { boxShadow: tokens.shadows.medium }
 						: undefined,
 				}),
 			}}
