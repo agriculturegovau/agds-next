@@ -3,3 +3,5 @@
 ---
 
 combobox: Improved async logic in `ComboboxAsync` and `ComboboxAsyncMulti`
+
+combobox: Deprecated prop `openDropdownOnFocus` as it is no longer used.
