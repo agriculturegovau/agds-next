@@ -46,7 +46,7 @@ function CardLinkExample() {
 					</Text>
 					<CardLink href="#">
 						Linking out
-						<ChevronRightIcon weight="bold" size="sm" />
+						<ChevronRightIcon />
 					</CardLink>
 				</Stack>
 			</CardInner>

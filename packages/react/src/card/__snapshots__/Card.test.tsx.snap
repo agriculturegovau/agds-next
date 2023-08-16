@@ -55,7 +55,7 @@ exports[`Card With link renders correctly 1`] = `
           Linking out
           <svg
             aria-hidden="true"
-            class="css-u8huve-Icon"
+            class="css-9s3cfn-Icon"
             clip-rule="evenodd"
             focusable="false"
             height="24"
@@ -64,8 +64,8 @@ exports[`Card With link renders correctly 1`] = `
             width="24"
             xmlns="http://www.w3.org/2000/svg"
           >
-            <path
-              d="M8 3L17 12L8 21"
+            <polyline
+              points="9 18 15 12 9 6"
             />
           </svg>
         </a>

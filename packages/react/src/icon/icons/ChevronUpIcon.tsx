@@ -1,6 +1,6 @@
 import { createIcon } from '../Icon';
 
 export const ChevronUpIcon = createIcon(
-	<path d="M3 16L12 7L21 16" />,
+	<polyline points="18 15 12 9 6 15" />,
 	'ChevronUpIcon'
 );

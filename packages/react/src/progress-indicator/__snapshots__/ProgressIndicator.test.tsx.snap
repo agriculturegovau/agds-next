@@ -29,7 +29,7 @@ exports[`ProgressIndicator With anchors renders correctly 1`] = `
       1 of 3 steps completed
       <svg
         aria-hidden="true"
-        class="css-129zfw4-SideBarCollapseButton"
+        class="css-1te2wbi-SideBarCollapseButton"
         clip-rule="evenodd"
         focusable="false"
         height="24"
@@ -38,8 +38,8 @@ exports[`ProgressIndicator With anchors renders correctly 1`] = `
         width="24"
         xmlns="http://www.w3.org/2000/svg"
       >
-        <path
-          d="M21 8L12 17L3 8"
+        <polyline
+          points="6 9 12 15 18 9"
         />
       </svg>
     </button>
@@ -286,7 +286,7 @@ exports[`ProgressIndicator With buttons renders correctly 1`] = `
       1 of 3 steps completed
       <svg
         aria-hidden="true"
-        class="css-129zfw4-SideBarCollapseButton"
+        class="css-1te2wbi-SideBarCollapseButton"
         clip-rule="evenodd"
         focusable="false"
         height="24"
@@ -295,8 +295,8 @@ exports[`ProgressIndicator With buttons renders correctly 1`] = `
         width="24"
         xmlns="http://www.w3.org/2000/svg"
       >
-        <path
-          d="M21 8L12 17L3 8"
+        <polyline
+          points="6 9 12 15 18 9"
         />
       </svg>
     </button>

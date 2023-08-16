@@ -6,12 +6,12 @@ exports[`Details renders correctly 1`] = `
     class="css-jx8h3p-Details"
   >
     <summary
-      class="css-16s1ql8-boxStyles"
+      class="css-93g24g-boxStyles"
     >
       Details
       <svg
         aria-hidden="true"
-        class="css-u8huve-Icon"
+        class="css-1eyzkac-Details"
         clip-rule="evenodd"
         focusable="false"
         height="24"
@@ -20,8 +20,8 @@ exports[`Details renders correctly 1`] = `
         width="24"
         xmlns="http://www.w3.org/2000/svg"
       >
-        <path
-          d="M21 8L12 17L3 8"
+        <polyline
+          points="6 9 12 15 18 9"
         />
       </svg>
     </summary>

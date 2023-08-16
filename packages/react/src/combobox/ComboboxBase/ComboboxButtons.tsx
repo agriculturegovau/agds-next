@@ -18,7 +18,7 @@ export function ComboboxButtonContainer({ children }: PropsWithChildren<{}>) {
 			css={{
 				position: 'absolute',
 				top: '50%',
-				right: `calc(${mapSpacing(0.5)} + ${tokens.borderWidth.lg}px)`, // Align from the inner border
+				right: `calc(${mapSpacing(0.25)} + ${tokens.borderWidth.lg}px)`, // Align from the inner border
 				transform: 'translateY(-50%)',
 			}}
 		>
@@ -95,7 +95,7 @@ const ComboboxIconButton = forwardRef<HTMLButtonElement, IconButtonProps>(
 				}}
 				{...props}
 			>
-				<Icon size="sm" weight="bold" color="inherit" />
+				<Icon color="inherit" size="md" />
 			</BaseButton>
 		);
 	}

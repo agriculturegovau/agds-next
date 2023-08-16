@@ -52,7 +52,6 @@ export const AccordionTitle = ({
 				{children}
 				<ChevronDownIcon
 					weight="bold"
-					size="sm"
 					css={{
 						transition: `transform ${tokens.transition.duration}ms ${tokens.transition.timingFunction}`,
 						transform: `rotate(${isOpen ? 180 : 0}deg)`,

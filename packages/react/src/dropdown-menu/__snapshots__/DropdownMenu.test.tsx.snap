@@ -31,8 +31,8 @@ exports[`DropdownMenu Decorative renders correctly 1`] = `
       width="24"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <path
-        d="M21 8L12 17L3 8"
+      <polyline
+        points="6 9 12 15 18 9"
       />
     </svg>
   </button>
@@ -191,8 +191,8 @@ exports[`DropdownMenu Links renders correctly 1`] = `
       width="24"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <path
-        d="M21 8L12 17L3 8"
+      <polyline
+        points="6 9 12 15 18 9"
       />
     </svg>
   </button>
@@ -269,8 +269,8 @@ exports[`DropdownMenu Radio Group renders correctly 1`] = `
       width="24"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <path
-        d="M21 8L12 17L3 8"
+      <polyline
+        points="6 9 12 15 18 9"
       />
     </svg>
   </button>
@@ -391,8 +391,8 @@ exports[`DropdownMenu renders correctly 1`] = `
       width="24"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <path
-        d="M21 8L12 17L3 8"
+      <polyline
+        points="6 9 12 15 18 9"
       />
     </svg>
   </button>

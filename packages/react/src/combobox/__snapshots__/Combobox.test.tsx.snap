@@ -47,7 +47,7 @@ exports[`Combobox renders correctly 1`] = `
         value=""
       />
       <div
-        class="css-1733k8b-boxStyles-ComboboxButtonContainer"
+        class="css-1fu4g2k-boxStyles-ComboboxButtonContainer"
       >
         <button
           aria-controls="downshift-0-menu"
@@ -60,7 +60,7 @@ exports[`Combobox renders correctly 1`] = `
         >
           <svg
             aria-hidden="true"
-            class="css-vfodg1-Icon"
+            class="css-qhpjst-Icon"
             clip-rule="evenodd"
             focusable="false"
             height="24"
@@ -69,8 +69,8 @@ exports[`Combobox renders correctly 1`] = `
             width="24"
             xmlns="http://www.w3.org/2000/svg"
           >
-            <path
-              d="M21 8L12 17L3 8"
+            <polyline
+              points="6 9 12 15 18 9"
             />
           </svg>
         </button>

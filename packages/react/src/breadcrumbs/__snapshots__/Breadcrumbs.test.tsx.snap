@@ -13,7 +13,7 @@ exports[`Breadcrumbs renders correctly 1`] = `
       >
         <svg
           aria-hidden="true"
-          class="css-1kvtdkq-BreadcrumbsDivider"
+          class="css-1smg743-BreadcrumbsDivider"
           clip-rule="evenodd"
           focusable="false"
           height="24"
@@ -22,8 +22,8 @@ exports[`Breadcrumbs renders correctly 1`] = `
           width="24"
           xmlns="http://www.w3.org/2000/svg"
         >
-          <path
-            d="M8 3L17 12L8 21"
+          <polyline
+            points="9 18 15 12 9 6"
           />
         </svg>
         <a
@@ -38,7 +38,7 @@ exports[`Breadcrumbs renders correctly 1`] = `
       >
         <svg
           aria-hidden="true"
-          class="css-1kvtdkq-BreadcrumbsDivider"
+          class="css-1smg743-BreadcrumbsDivider"
           clip-rule="evenodd"
           focusable="false"
           height="24"
@@ -47,8 +47,8 @@ exports[`Breadcrumbs renders correctly 1`] = `
           width="24"
           xmlns="http://www.w3.org/2000/svg"
         >
-          <path
-            d="M8 3L17 12L8 21"
+          <polyline
+            points="9 18 15 12 9 6"
           />
         </svg>
         <button
@@ -65,7 +65,7 @@ exports[`Breadcrumbs renders correctly 1`] = `
       >
         <svg
           aria-hidden="true"
-          class="css-1kvtdkq-BreadcrumbsDivider"
+          class="css-1smg743-BreadcrumbsDivider"
           clip-rule="evenodd"
           focusable="false"
           height="24"
@@ -74,8 +74,8 @@ exports[`Breadcrumbs renders correctly 1`] = `
           width="24"
           xmlns="http://www.w3.org/2000/svg"
         >
-          <path
-            d="M8 3L17 12L8 21"
+          <polyline
+            points="9 18 15 12 9 6"
           />
         </svg>
         <a
@@ -90,7 +90,7 @@ exports[`Breadcrumbs renders correctly 1`] = `
       >
         <svg
           aria-hidden="true"
-          class="css-1kvtdkq-BreadcrumbsDivider"
+          class="css-1smg743-BreadcrumbsDivider"
           clip-rule="evenodd"
           focusable="false"
           height="24"
@@ -99,8 +99,8 @@ exports[`Breadcrumbs renders correctly 1`] = `
           width="24"
           xmlns="http://www.w3.org/2000/svg"
         >
-          <path
-            d="M8 3L17 12L8 21"
+          <polyline
+            points="9 18 15 12 9 6"
           />
         </svg>
         Applications

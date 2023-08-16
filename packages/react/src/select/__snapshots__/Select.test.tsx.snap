@@ -27,7 +27,7 @@ exports[`Select Basic renders correctly 1`] = `
       <select
         aria-invalid="false"
         aria-required="false"
-        class="css-1iwg0rd"
+        class="css-naousk"
         id="field-:r0:"
       >
         <option
@@ -48,7 +48,7 @@ exports[`Select Basic renders correctly 1`] = `
       </select>
       <svg
         aria-hidden="true"
-        class="css-1j4iiu7-SelectIcon"
+        class="css-hjf33j-SelectIcon"
         clip-rule="evenodd"
         focusable="false"
         height="24"
@@ -57,8 +57,8 @@ exports[`Select Basic renders correctly 1`] = `
         width="24"
         xmlns="http://www.w3.org/2000/svg"
       >
-        <path
-          d="M21 8L12 17L3 8"
+        <polyline
+          points="6 9 12 15 18 9"
         />
       </svg>
     </div>
@@ -93,7 +93,7 @@ exports[`Select Grouped options renders correctly 1`] = `
       <select
         aria-invalid="false"
         aria-required="false"
-        class="css-1iwg0rd"
+        class="css-naousk"
         id="field-:r2:"
       >
         <optgroup
@@ -137,7 +137,7 @@ exports[`Select Grouped options renders correctly 1`] = `
       </select>
       <svg
         aria-hidden="true"
-        class="css-1j4iiu7-SelectIcon"
+        class="css-hjf33j-SelectIcon"
         clip-rule="evenodd"
         focusable="false"
         height="24"
@@ -146,8 +146,8 @@ exports[`Select Grouped options renders correctly 1`] = `
         width="24"
         xmlns="http://www.w3.org/2000/svg"
       >
-        <path
-          d="M21 8L12 17L3 8"
+        <polyline
+          points="6 9 12 15 18 9"
         />
       </svg>
     </div>
@@ -217,7 +217,7 @@ exports[`Select Invalid renders correctly 1`] = `
         aria-describedby="field-:r6:-message"
         aria-invalid="true"
         aria-required="false"
-        class="css-g5l3o5"
+        class="css-d1mr8q"
         id="field-:r6:"
       >
         <option
@@ -238,7 +238,7 @@ exports[`Select Invalid renders correctly 1`] = `
       </select>
       <svg
         aria-hidden="true"
-        class="css-1j4iiu7-SelectIcon"
+        class="css-hjf33j-SelectIcon"
         clip-rule="evenodd"
         focusable="false"
         height="24"
@@ -247,8 +247,8 @@ exports[`Select Invalid renders correctly 1`] = `
         width="24"
         xmlns="http://www.w3.org/2000/svg"
       >
-        <path
-          d="M21 8L12 17L3 8"
+        <polyline
+          points="6 9 12 15 18 9"
         />
       </svg>
     </div>
@@ -283,7 +283,7 @@ exports[`Select With hint renders correctly 1`] = `
       <select
         aria-invalid="false"
         aria-required="false"
-        class="css-1iwg0rd"
+        class="css-naousk"
         id="field-:r4:"
       >
         <option
@@ -304,7 +304,7 @@ exports[`Select With hint renders correctly 1`] = `
       </select>
       <svg
         aria-hidden="true"
-        class="css-1j4iiu7-SelectIcon"
+        class="css-hjf33j-SelectIcon"
         clip-rule="evenodd"
         focusable="false"
         height="24"
@@ -313,8 +313,8 @@ exports[`Select With hint renders correctly 1`] = `
         width="24"
         xmlns="http://www.w3.org/2000/svg"
       >
-        <path
-          d="M21 8L12 17L3 8"
+        <polyline
+          points="6 9 12 15 18 9"
         />
       </svg>
     </div>
