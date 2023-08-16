@@ -106,7 +106,9 @@ export function useAsync<Option extends DefaultComboboxOption>(
 		[loadOptionsProp]
 	);
 
-	const debouncedLoadOptions = useDebouncedCallback(loadOptions, 150);
+	const debouncedLoadOptions = useDebouncedCallback(loadOptions, 150, {
+		leading: true,
+	});
 
 	const onInputValueChange = useCallback(
 		({ inputValue = '' }: { inputValue?: string }) => {
