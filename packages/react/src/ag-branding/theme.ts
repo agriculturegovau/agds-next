@@ -25,7 +25,7 @@ const primitives = {
 	exportServiceOrange: '#F36C52',
 
 	// green
-	// TODO: We should consider regenrating these shades to ensure they are consistent hues
+	// TODO: We should consider regenerating these shades to ensure they are consistent hues
 	green100: '#E5FFF6',
 	green400: '#00A36D',
 	green600: '#00754E',
@@ -40,25 +40,25 @@ const primitives = {
 	tomato900: '#422F47',
 
 	// yellow
-	// TODO: We should consider regenrating these shades to ensure they are consistent hues
+	// TODO: We should consider regenerating these shades to ensure they are consistent hues
 	yellow100: '#FFF2E5',
 	yellow400: '#FF9933',
 	yellow600: '#D16900',
 	yellow900: '#393942',
 
 	// blue
-	// TODO: We should consider regenrating these shades to ensure they are consistent hues
+	// TODO: We should consider regenerating these shades to ensure they are consistent hues
 	blue100: '#E5F6FF',
 	blue400: '#008BD1',
 	blue600: '#00558b',
 
 	// purple
-	// TODO: We should consider regenrating these shades to ensure they are consistent hues
+	// TODO: We should consider regenerating these shades to ensure they are consistent hues
 	purple400: '#c390f9',
 	purple600: '#9263de',
 
 	// blueberry
-	// TODO: We should consider regenrating these shades to ensure they are consistent hues
+	// TODO: We should consider regenerating these shades to ensure they are consistent hues
 	blueberry100: '#9EE8FF',
 	blueberry400: '#33BAFF',
 	blueberry900: '#193A5B',
