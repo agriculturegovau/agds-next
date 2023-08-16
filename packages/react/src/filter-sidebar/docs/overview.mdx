@@ -1,7 +1,21 @@
 ---
 title: Filter sidebar
-description: Used to contain filters options for a list of Cards.
+description: Used for filtering options in search pages.
 group: Layout
-storybookPath: /story/Layout-FilterSidebar--basic
+storybookPath: /story/layout-filtersidebar--full
 unreleased: true
 ---
+
+Filter sidebar is used in search pages to contain filtering options for a list of Cards.
+
+```jsx live
+<FilterSidebar numberOfActiveFilters={3}>
+	<TextInput label="Example filtering input 1" value="Example" />
+	<TextInput label="Example filtering input 2" value="Example" />
+	<TextInput label="Example filtering input 3" value="Example" />
+</FilterSidebar>
+```
+
+The FilterSidebar collapses on mobile devices, and displays a number of active filter options in the header.
+
+[Visit the example page in Storybook](/storybook/index.html?path=/story/layout-filtersidebar--full) to see it used in context.
