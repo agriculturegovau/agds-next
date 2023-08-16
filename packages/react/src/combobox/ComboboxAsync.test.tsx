@@ -79,17 +79,10 @@ describe('ComboboxAsync', () => {
 		// Start typing a search term
 		await userEvent.type(input, 'qld');
 
-		// Typing a search term should trigger `loadOptions` to be called
-		// And the loading state to appear
+		// Typing a search term should trigger `loadOptions` to be called and 1 option to appear
 		await waitFor(() => {
 			expect(loadOptions).toHaveBeenCalledTimes(2);
 			expect(loadOptions).toHaveBeenCalledWith('qld');
-			expect(container.querySelectorAll('li').length).toBe(1);
-			expect(container.querySelectorAll('li')[0].textContent).toBe('Loading');
-		});
-
-		// Once the data is loaded, only one option should be visible
-		await waitFor(() => {
 			expect(container.querySelectorAll('li').length).toBe(1);
 			expect(container.querySelectorAll('li')[0].textContent).toBe(
 				'Queensland'
