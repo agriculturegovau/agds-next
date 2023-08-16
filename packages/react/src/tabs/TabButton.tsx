@@ -136,7 +136,7 @@ export function TabButton({ children, endElement }: TabButtonProps) {
 						bottom: 0,
 						width: isSelected ? tokens.borderWidth.xxl : tokens.borderWidth.xl,
 						background: isSelected
-							? boxPalette.foregroundAction
+							? boxPalette.selected
 							: boxPalette.borderMuted,
 					},
 				},
@@ -156,7 +156,7 @@ export function TabButton({ children, endElement }: TabButtonProps) {
 							left: 0,
 							right: 0,
 							height: tokens.borderWidth.xl,
-							background: boxPalette.foregroundAction,
+							background: boxPalette.selected,
 						},
 						':after': {
 							content: "''",

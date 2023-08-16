@@ -14,7 +14,7 @@ exports[`Tabs renders correctly 1`] = `
       <button
         aria-controls="tabs-:r0:-tab-panel-0"
         aria-selected="true"
-        class="css-1njaf3v-BaseButton-boxStyles-TabButton"
+        class="css-1tz5xdy-BaseButton-boxStyles-TabButton"
         id="tabs-:r0:-tab-button-0"
         role="tab"
         tabindex="0"
