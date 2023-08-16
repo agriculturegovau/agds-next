@@ -24,52 +24,47 @@ const primitives = {
 
 	exportServiceOrange: '#F36C52',
 
-	deepBlue: '#00558b',
 	// green
-	greenPale: '#E5FFF6',
-	green: '#00754E',
-
-	// cucumber: used in dark mode but are very different to greens
-	cucumber: '#00A36D',
-	cucumberDim: '#133A4B',
+	green100: '#E5FFF6',
+	green400: '#00A36D',
+	green600: '#00754E',
+	green900: '#133A4B',
 
 	// red
-	red: '#D10000',
-	redPale: '#FFF0F0',
+	red100: '#FFF0F0',
+	red400: '#D10000',
 
 	// tomato: used in dark mode but are very different to reds
-	tomato: '#FF4F4F',
-	tomatoDim: '#422F47',
+	tomato400: '#FF4F4F',
+	tomato900: '#422F47',
 
 	// yellow
-	yellow: '#D16900',
-	yellowPale: '#FFF2E5',
+	yellow100: '#FFF2E5',
+	yellow400: '#FF9933',
+	yellow600: '#D16900',
+	yellow900: '#393942',
 
-	blue: '#008BD1',
-	bluePale: '#E5F6FF',
+	// blue
+	blue100: '#E5F6FF',
+	blue400: '#008BD1',
+	blue600: '#00558b',
 
-	purple: '#9263de',
-
-	blackOverlay: 'rgba(0, 0, 0, 0.8)',
-
-	skyBlue: '#9EE8FF',
-
-	// pumpkin
-	pumpkin: '#FF9933',
-	pumpkinDim: '#393942',
+	// purple
+	purple400: '#c390f9',
+	purple600: '#9263de',
 
 	// blueberry
-	blueberry: '#33BAFF',
-	blueberryDim: '#193A5B',
+	blueberry100: '#9EE8FF',
+	blueberry400: '#33BAFF',
+	blueberry900: '#193A5B',
 
-	// eggplant
-	eggplant: '#c390f9',
+	blackOverlay: 'rgba(0, 0, 0, 0.8)',
 };
 
 export const theme: Theme = {
-	// gold values
+	// gold values:  light
 	lightForegroundText: primitives.grey7,
-	lightForegroundFocus: primitives.purple,
+	lightForegroundFocus: primitives.purple600,
 	lightForegroundMuted: primitives.grey6,
 	lightBackgroundBody: primitives.white,
 	lightBackgroundShade: primitives.grey1,
@@ -78,36 +73,40 @@ export const theme: Theme = {
 	lightBorder: primitives.grey5,
 	lightBorderMuted: primitives.grey4,
 	lightOverlay: primitives.blackOverlay,
+
+	// gold values: dark
 	darkForegroundText: primitives.white,
-	darkForegroundFocus: primitives.eggplant,
+	darkForegroundFocus: primitives.purple400,
 	darkForegroundMuted: primitives.slate1,
 	darkBorder: primitives.slate2,
 	darkBorderMuted: primitives.slate3,
 	darkOverlay: primitives.blackOverlay,
 
-	// agds overrides
-	lightForegroundAction: primitives.deepBlue,
+	// agds overrides: light
+	lightForegroundAction: primitives.blue600,
 	lightAccent: primitives.exportServiceOrange,
-	lightSystemError: primitives.red,
-	lightSystemErrorMuted: primitives.redPale,
-	lightSystemSuccess: primitives.green,
-	lightSystemSuccessMuted: primitives.greenPale,
-	lightSystemWarning: primitives.yellow,
-	lightSystemWarningMuted: primitives.yellowPale,
-	lightSystemInfo: primitives.blue,
-	lightSystemInfoMuted: primitives.bluePale,
+	lightSystemError: primitives.red400,
+	lightSystemErrorMuted: primitives.red100,
+	lightSystemSuccess: primitives.green600,
+	lightSystemSuccessMuted: primitives.green100,
+	lightSystemWarning: primitives.yellow600,
+	lightSystemWarningMuted: primitives.yellow100,
+	lightSystemInfo: primitives.blue400,
+	lightSystemInfoMuted: primitives.blue100,
+
+	// agds overrides: dark
 	darkBackgroundBody: primitives.navy1,
 	darkBackgroundShade: primitives.navy2,
 	darkBackgroundBodyAlt: primitives.navy3,
 	darkBackgroundShadeAlt: primitives.navy4,
-	darkForegroundAction: primitives.skyBlue,
+	darkForegroundAction: primitives.blueberry100,
 	darkAccent: primitives.exportServiceOrange,
-	darkSystemError: primitives.tomato,
-	darkSystemErrorMuted: primitives.tomatoDim,
-	darkSystemSuccess: primitives.cucumber,
-	darkSystemSuccessMuted: primitives.cucumberDim,
-	darkSystemWarning: primitives.pumpkin,
-	darkSystemWarningMuted: primitives.pumpkinDim,
-	darkSystemInfo: primitives.blueberry,
-	darkSystemInfoMuted: primitives.blueberryDim,
+	darkSystemError: primitives.tomato400,
+	darkSystemErrorMuted: primitives.tomato900,
+	darkSystemSuccess: primitives.green400,
+	darkSystemSuccessMuted: primitives.green900,
+	darkSystemWarning: primitives.yellow400,
+	darkSystemWarningMuted: primitives.yellow900,
+	darkSystemInfo: primitives.blueberry400,
+	darkSystemInfoMuted: primitives.blueberry900,
 };
