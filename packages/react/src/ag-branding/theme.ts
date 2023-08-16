@@ -22,30 +22,47 @@ const primitives = {
 	navy3: '#162846',
 	navy4: '#20365B',
 
-	// colours
 	exportServiceOrange: '#F36C52',
-	deepBlue: '#00558b',
-	red: '#D10000',
-	redPale: '#FFF0F0',
-	green: '#00754E',
-	greenPale: '#E5FFF6',
-	yellow: '#D16900',
-	yellowPale: '#FFF2E5',
-	blue: '#008BD1',
-	bluePale: '#E5F6FF',
-	purple: '#9263de',
-	blackOverlay: 'rgba(0, 0, 0, 0.8)',
 
-	// alt colours for dark palette
-	skyBlue: '#9EE8FF',
-	tomato: '#FF4F4F',
-	tomatoDim: '#422F47',
+	deepBlue: '#00558b',
+	// green
+	greenPale: '#E5FFF6',
+	green: '#00754E',
+
+	// cucumber: used in dark mode but are very different to greens
 	cucumber: '#00A36D',
 	cucumberDim: '#133A4B',
+
+	// red
+	red: '#D10000',
+	redPale: '#FFF0F0',
+
+	// tomato: used in dark mode but are very different to reds
+	tomato: '#FF4F4F',
+	tomatoDim: '#422F47',
+
+	// yellow
+	yellow: '#D16900',
+	yellowPale: '#FFF2E5',
+
+	blue: '#008BD1',
+	bluePale: '#E5F6FF',
+
+	purple: '#9263de',
+
+	blackOverlay: 'rgba(0, 0, 0, 0.8)',
+
+	skyBlue: '#9EE8FF',
+
+	// pumpkin
 	pumpkin: '#FF9933',
 	pumpkinDim: '#393942',
+
+	// blueberry
 	blueberry: '#33BAFF',
 	blueberryDim: '#193A5B',
+
+	// eggplant
 	eggplant: '#c390f9',
 };
 
