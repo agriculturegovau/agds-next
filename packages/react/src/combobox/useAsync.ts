@@ -1,5 +1,6 @@
-import { useCallback, useReducer, useRef, Reducer, useMemo } from 'react';
-import { DefaultComboboxOption, filterOptions, debounce } from './utils';
+import { useCallback, useReducer, useRef, Reducer } from 'react';
+import { useDebouncedCallback } from 'use-debounce';
+import { DefaultComboboxOption, filterOptions } from './utils';
 
 type Action<Option> =
 	| { type: 'START_LOADING' }
@@ -61,8 +62,8 @@ export function useAsync<Option extends DefaultComboboxOption>(
 	// Keep track of search terms/loaded options to prevent unnecessary network requests
 	const cache = useRef<Record<string, Option[]>>({});
 
-	const loadOptions = useMemo(() => {
-		return debounce(async function loadOptions(searchTerm: string) {
+	const loadOptions = useCallback(
+		async function loadOptions(searchTerm: string) {
 			// sanitize the input value
 			const inputValue = searchTerm?.toLowerCase() ?? '';
 
@@ -101,14 +102,17 @@ export function useAsync<Option extends DefaultComboboxOption>(
 				// An error occurred while loading options
 				dispatch({ type: 'SET_ERROR' });
 			}
-		}, 150);
-	}, [loadOptionsProp]);
+		},
+		[loadOptionsProp]
+	);
+
+	const debouncedLoadOptions = useDebouncedCallback(loadOptions, 150);
 
 	const onInputValueChange = useCallback(
 		({ inputValue = '' }: { inputValue?: string }) => {
-			loadOptions(inputValue);
+			debouncedLoadOptions(inputValue);
 		},
-		[loadOptions]
+		[debouncedLoadOptions]
 	);
 
 	const onIsOpenChange = useCallback(
@@ -120,9 +124,9 @@ export function useAsync<Option extends DefaultComboboxOption>(
 			inputValue?: string;
 		}) => {
 			if (!isOpen) return;
-			loadOptions(inputValue);
+			debouncedLoadOptions(inputValue);
 		},
-		[loadOptions]
+		[debouncedLoadOptions]
 	);
 
 	return {
