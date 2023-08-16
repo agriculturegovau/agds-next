@@ -11,7 +11,7 @@ const meta: Meta<typeof AppLayoutSidebar> = {
 		layout: 'fullscreen',
 	},
 	args: {
-		activePath: '#dashboard',
+		activePath: '/establishments',
 		items: navigationItems,
 	},
 	render: (props) => (
@@ -38,7 +38,7 @@ export const Basic: Story = {};
 
 export const WithoutIcons: Story = {
 	args: {
-		activePath: '#dashboard',
+		activePath: '/establishments',
 		items: navigationItems.map((group) => {
 			return group.map((item) => {
 				return { ...item, icon: undefined };
