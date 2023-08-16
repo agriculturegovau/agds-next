@@ -4,7 +4,12 @@ import {
 	forwardRef,
 	PropsWithChildren,
 } from 'react';
-import { IconProps, CloseIcon, ChevronDownIcon } from '../../icon';
+import {
+	IconProps,
+	CloseIcon,
+	ChevronDownIcon,
+	ChevronUpIcon,
+} from '../../icon';
 import { BaseButton } from '../../button';
 import { boxPalette, mapSpacing, tokens } from '../../core';
 import { Box, focusStyles } from '../../box';
@@ -61,11 +66,8 @@ export const ComboboxDropdownTrigger = forwardRef<
 		<ComboboxIconButton
 			ref={ref}
 			aria-label="Toggle menu"
-			icon={ChevronDownIcon}
+			icon={isOpen ? ChevronUpIcon : ChevronDownIcon}
 			{...props}
-			css={{
-				...(isOpen && { transform: 'rotate(180deg)' }),
-			}}
 		/>
 	);
 });
