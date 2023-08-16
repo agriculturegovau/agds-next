@@ -1,4 +1,4 @@
-import { useCallback, useReducer, useRef, Reducer } from 'react';
+import { useCallback, useReducer, useRef, Reducer, useMemo } from 'react';
 import { useDebouncedCallback } from 'use-debounce';
 import { DefaultComboboxOption, filterOptions } from './utils';
 
@@ -62,25 +62,10 @@ export function useAsync<Option extends DefaultComboboxOption>(
 	// Keep track of search terms/loaded options to prevent unnecessary network requests
 	const cache = useRef<Record<string, Option[]>>({});
 
-	const loadOptions = useCallback(
-		async function loadOptions(searchTerm: string) {
-			// sanitize the input value
-			const inputValue = searchTerm?.toLowerCase() ?? '';
-
-			// If there are cached options for the search term, use that
-			const cachedInputItems = cache.current[inputValue];
-			if (cachedInputItems) {
-				dispatch({
-					type: 'SET_INPUT_ITEMS',
-					payload: { items: cachedInputItems },
-				});
-				return;
-			}
-
-			// No cached options found, so kick off the loading state
+	const fetchOptions = useMemo(() => {
+		return async function fetchOptions(inputValue: string) {
+			console.log({ inputValue });
 			const request = (lastRequest.current = {});
-			dispatch({ type: 'START_LOADING' });
-
 			try {
 				// Load the options
 				const inputItems = await loadOptionsProp(inputValue);
@@ -102,19 +87,45 @@ export function useAsync<Option extends DefaultComboboxOption>(
 				// An error occurred while loading options
 				dispatch({ type: 'SET_ERROR' });
 			}
-		},
-		[loadOptionsProp]
-	);
+		};
+	}, [loadOptionsProp]);
 
-	const debouncedLoadOptions = useDebouncedCallback(loadOptions, 150, {
-		leading: true,
-	});
+	const debouncedFetchOptions = useDebouncedCallback(fetchOptions, 200);
+
+	const loadOptions = useMemo(() => {
+		return function loadOptions(searchTerm: string) {
+			// sanitize the input value
+			searchTerm = searchTerm?.toLowerCase() ?? '';
+
+			// If there are cached options for the search term, use that
+			const cachedInputItems = cache.current[searchTerm];
+
+			if (cachedInputItems) {
+				dispatch({
+					type: 'SET_INPUT_ITEMS',
+					payload: { items: cachedInputItems },
+				});
+				return;
+			}
+
+			// No cached options found - so kick off the loading state and start fetching
+			dispatch({ type: 'START_LOADING' });
+			debouncedFetchOptions(searchTerm);
+		};
+	}, [debouncedFetchOptions]);
 
 	const onInputValueChange = useCallback(
-		({ inputValue = '' }: { inputValue?: string }) => {
-			debouncedLoadOptions(inputValue);
+		({
+			isOpen,
+			inputValue = '',
+		}: {
+			isOpen?: boolean;
+			inputValue?: string;
+		}) => {
+			if (!isOpen) return;
+			loadOptions(inputValue);
 		},
-		[debouncedLoadOptions]
+		[loadOptions]
 	);
 
 	const onIsOpenChange = useCallback(
@@ -126,9 +137,9 @@ export function useAsync<Option extends DefaultComboboxOption>(
 			inputValue?: string;
 		}) => {
 			if (!isOpen) return;
-			debouncedLoadOptions(inputValue);
+			loadOptions(inputValue);
 		},
-		[debouncedLoadOptions]
+		[loadOptions]
 	);
 
 	return {

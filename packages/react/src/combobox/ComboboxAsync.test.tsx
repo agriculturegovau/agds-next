@@ -79,12 +79,21 @@ describe('ComboboxAsync', () => {
 		// Start typing a search term
 		await userEvent.type(input, 'qld');
 
-		// Wait for the data to be loaded
-		// When searching for 'qld', only 1 option should be visible
+		// Typing a search term should trigger `loadOptions` to be called
+		// And the loading state to appear
 		await waitFor(() => {
 			expect(loadOptions).toHaveBeenCalledTimes(2);
 			expect(loadOptions).toHaveBeenCalledWith('qld');
 			expect(container.querySelectorAll('li').length).toBe(1);
+			expect(container.querySelectorAll('li')[0].textContent).toBe('Loading');
+		});
+
+		// Once the data is loaded, only one option should be visible
+		await waitFor(() => {
+			expect(container.querySelectorAll('li').length).toBe(1);
+			expect(container.querySelectorAll('li')[0].textContent).toBe(
+				'Queensland'
+			);
 		});
 
 		// Select the QLD option
@@ -99,12 +108,30 @@ describe('ComboboxAsync', () => {
 		// Since the input is focused, use the arrow down key to open the menu
 		await userEvent.keyboard('[ArrowDown]');
 
-		// All options should be visible
+		// Loading state should be visible
 		expect(container.querySelectorAll('li').length).toBe(1);
+		expect(container.querySelectorAll('li')[0].textContent).toBe('Loading');
+
+		// Only qld option should be visible
+		await waitFor(() => {
+			expect(container.querySelectorAll('li').length).toBe(1);
+			expect(container.querySelectorAll('li')[0].textContent).toBe(
+				'Queensland'
+			);
+			expect(loadOptions).toHaveBeenCalledTimes(3);
+			expect(loadOptions).toHaveBeenCalledWith('queensland');
+		});
+
+		// Press escape to close the menu
+		await userEvent.keyboard('[Escape]');
+		expect(input).toHaveAttribute('aria-expanded', 'false');
+		expect(input).toHaveFocus();
 
 		// No other calls to `loadOptions` should have been made
-		expect(loadOptions).toHaveBeenCalledTimes(2);
-		expect(loadOptions).toHaveBeenCalledWith('qld');
+		expect(loadOptions).toHaveBeenCalledTimes(3);
+		expect(loadOptions).toHaveBeenNthCalledWith(1, '');
+		expect(loadOptions).toHaveBeenNthCalledWith(2, 'qld');
+		expect(loadOptions).toHaveBeenNthCalledWith(3, 'queensland');
 	});
 
 	it('accepts `inputRef` prop', () => {

@@ -84,31 +84,42 @@ describe('ComboboxAsyncMulti', () => {
 		// Start typing a search term
 		await userEvent.type(input, 'qld');
 
-		// Wait for the data to be loaded
-		// When searching for 'qld', only 1 option should be visible
+		// Typing a search term should trigger `loadOptions` to be called
 		await waitFor(() => {
 			expect(loadOptions).toHaveBeenCalledTimes(2);
 			expect(loadOptions).toHaveBeenCalledWith('qld');
 			expect(container.querySelectorAll('li').length).toBe(1);
+			expect(container.querySelectorAll('li')[0].textContent).toBe(
+				'Queensland'
+			);
 		});
 
 		// Select the QLD option
 		const options = container.querySelectorAll('li');
 		await userEvent.click(options[0]);
 
-		// Expect the options to be updated
-		expect(input).toHaveFocus();
+		// Expect the input to be updated
+		expect(input.value).toBe('');
 		expect(input).toHaveAttribute('aria-expanded', 'true');
+		expect(input).toHaveFocus();
 
-		await waitFor(() => {
-			expect(container.querySelectorAll('li').length).toBe(
-				STATE_OPTIONS.length - 1
-			);
-		});
+		// Since the input is focused, use the arrow down key to open the menu
+		await userEvent.keyboard('[ArrowDown]');
+
+		// All options should be cached and visible
+		expect(container.querySelectorAll('li').length).toBe(
+			STATE_OPTIONS.length - 1
+		);
+
+		// Press escape to close the menu
+		await userEvent.keyboard('[Escape]');
+		expect(input).toHaveAttribute('aria-expanded', 'false');
+		expect(input).toHaveFocus();
 
 		// No other calls to `loadOptions` should have been made
 		expect(loadOptions).toHaveBeenCalledTimes(2);
-		expect(loadOptions).toHaveBeenCalledWith('qld');
+		expect(loadOptions).toHaveBeenNthCalledWith(1, '');
+		expect(loadOptions).toHaveBeenNthCalledWith(2, 'qld');
 	});
 
 	it('accepts `inputRef` prop', () => {
