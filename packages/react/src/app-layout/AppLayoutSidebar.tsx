@@ -1,9 +1,10 @@
 import { Fragment } from 'react';
 import { findBestMatch, tokens } from '../core';
 import { Stack } from '../stack';
-import { AppLayoutSidebarNav, NavItem } from './AppLayoutSidebarNav';
+import { AppLayoutSidebarNav } from './AppLayoutSidebarNav';
 import { useAppLayoutContext } from './AppLayoutContext';
 import { AppLayoutSidebarDialog } from './AppLayoutSidebarDialog';
+import { NavItem } from './AppLayoutSidebarNavListItem';
 import {
 	APP_LAYOUT_DESKTOP_BREAKPOINT,
 	APP_LAYOUT_SIDEBAR_WIDTH,
