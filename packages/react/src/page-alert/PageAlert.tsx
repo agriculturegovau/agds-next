@@ -17,7 +17,7 @@ import {
 import { PageAlertTitle } from './PageAlertTitle';
 import { PageAlertCloseButton } from './PageAlertCloseButton';
 
-export type PageAlertTone = 'success' | 'error' | 'warning' | 'info';
+export type PageAlertTone = keyof typeof pageAlertToneMap;
 
 type DivProps = HTMLAttributes<HTMLDivElement>;
 
