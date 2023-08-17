@@ -200,6 +200,7 @@ export function ComboboxMultiBase<Option extends DefaultComboboxOption>({
 							)}
 							<ComboboxDropdownTrigger
 								disabled={disabled}
+								isOpen={combobox.isOpen}
 								{...combobox.getToggleButtonProps()}
 							/>
 						</ComboboxButtonContainer>

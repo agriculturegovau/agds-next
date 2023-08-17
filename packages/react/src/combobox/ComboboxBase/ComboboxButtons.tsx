@@ -4,7 +4,12 @@ import {
 	forwardRef,
 	PropsWithChildren,
 } from 'react';
-import { IconProps, CloseIcon, ChevronDownIcon } from '../../icon';
+import {
+	IconProps,
+	CloseIcon,
+	ChevronDownIcon,
+	ChevronUpIcon,
+} from '../../icon';
 import { BaseButton } from '../../button';
 import { boxPalette, mapSpacing, tokens } from '../../core';
 import { Box, focusStyles } from '../../box';
@@ -55,13 +60,13 @@ export const ComboboxClearButton = forwardRef<
 
 export const ComboboxDropdownTrigger = forwardRef<
 	HTMLButtonElement,
-	ButtonHTMLAttributes<HTMLButtonElement>
->(function ComboboxDropdownTrigger(props, ref) {
+	ButtonHTMLAttributes<HTMLButtonElement> & { isOpen: boolean }
+>(function ComboboxDropdownTrigger({ isOpen, ...props }, ref) {
 	return (
 		<ComboboxIconButton
 			ref={ref}
 			aria-label="Toggle menu"
-			icon={ChevronDownIcon}
+			icon={isOpen ? ChevronUpIcon : ChevronDownIcon}
 			{...props}
 		/>
 	);
