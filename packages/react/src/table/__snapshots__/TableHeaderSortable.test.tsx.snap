@@ -11,7 +11,7 @@ exports[`TableHeaderSortable with sort direction: ASC renders correctly 1`] = `
       <tr>
         <th
           aria-sort="ascending"
-          class="css-7wxia7-boxStyles-TableHeaderSortable"
+          class="css-15z6ccd-boxStyles-TableHeaderSortable"
           scope="col"
         >
           <button
@@ -56,7 +56,7 @@ exports[`TableHeaderSortable with sort direction: DESC renders correctly 1`] = `
       <tr>
         <th
           aria-sort="descending"
-          class="css-7wxia7-boxStyles-TableHeaderSortable"
+          class="css-15z6ccd-boxStyles-TableHeaderSortable"
           scope="col"
         >
           <button
@@ -100,7 +100,7 @@ exports[`TableHeaderSortable with sort direction: undefined renders correctly 1`
     >
       <tr>
         <th
-          class="css-1vsi0cy-boxStyles-TableHeaderSortable"
+          class="css-1qjmip9-boxStyles-TableHeaderSortable"
           scope="col"
         >
           <button

@@ -21,7 +21,7 @@ exports[`SubNav renders correctly 1`] = `
         </a>
       </li>
       <li
-        class="css-tzzdp7-boxStyles-SubNavListItem"
+        class="css-1og4i3p-boxStyles-SubNavListItem"
       >
         <a
           aria-current="page"

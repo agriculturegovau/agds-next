@@ -39,8 +39,8 @@ export const SwitchTrack = ({ checked, size }: SwitchTrackProps) => {
 				inset: 0,
 				...(checked
 					? {
-							backgroundColor: boxPalette.foregroundAction,
-							borderColor: boxPalette.foregroundAction,
+							backgroundColor: boxPalette.selected,
+							borderColor: boxPalette.selected,
 					  }
 					: {
 							borderColor: boxPalette.border,
@@ -74,7 +74,9 @@ export const SwitchThumb = ({ checked, size }: SwitchThumbProps) => {
 				borderRadius: thumbSize,
 				borderWidth,
 				borderStyle: 'solid',
-				borderColor: boxPalette.foregroundAction,
+				borderColor: checked
+					? boxPalette.selected
+					: boxPalette.foregroundAction,
 				position: 'absolute',
 				transition: `left ${tokens.transition.duration}ms ${tokens.transition.timingFunction}`,
 				left: checked ? thumbCheckedPos : '0rem',
@@ -97,6 +99,7 @@ const switchThumbIconSizeMap = {
 		stroke: 4,
 	},
 };
+
 const SwitchThumbIcon = ({ size }: { size: SwitchSize }) => {
 	const { height, width, stroke } = switchThumbIconSizeMap[size];
 	return (
@@ -106,7 +109,7 @@ const SwitchThumbIcon = ({ size }: { size: SwitchSize }) => {
 			viewBox="0 0 18 14"
 			fill="none"
 			css={{ width, height }}
-			stroke={boxPalette.foregroundAction}
+			stroke={boxPalette.selected}
 			strokeWidth={stroke}
 			strokeLinecap="round"
 			strokeLinejoin="round"

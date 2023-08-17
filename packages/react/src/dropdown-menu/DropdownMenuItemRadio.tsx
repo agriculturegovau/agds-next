@@ -78,7 +78,7 @@ export function DropdownMenuItemRadio({
 				},
 
 				...(checked && {
-					backgroundColor: boxPalette.backgroundShade,
+					backgroundColor: boxPalette.selectedMuted,
 					position: 'relative',
 					'&:before': {
 						content: "''",
@@ -87,7 +87,7 @@ export function DropdownMenuItemRadio({
 						bottom: 0,
 						left: 0,
 						width: tokens.borderWidth.xl,
-						background: boxPalette.foregroundAction,
+						background: boxPalette.selected,
 					},
 				}),
 			}}

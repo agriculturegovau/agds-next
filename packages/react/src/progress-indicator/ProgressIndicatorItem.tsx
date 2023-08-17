@@ -182,7 +182,7 @@ const ProgressIndicatorItemIcon = ({
 							right: 0,
 							borderRadius: '100%',
 							content: '""',
-							border: `${ringWidth}px solid ${boxPalette.foregroundAction}`,
+							border: `${ringWidth}px solid ${boxPalette.selected}`,
 						},
 					}),
 				}}
@@ -220,7 +220,7 @@ const statusMap = {
 	doing: {
 		label: 'In progress',
 		icon: ProgressDoingIcon,
-		iconColor: 'action',
+		iconColor: 'selected',
 	},
 	started: {
 		label: 'In progress',

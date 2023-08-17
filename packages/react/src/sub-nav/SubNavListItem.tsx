@@ -22,7 +22,7 @@ export function SubNavListItem({ children, active }: SubNavListItemProps) {
 			css={mq({
 				borderBottomColor: mapResponsiveProp([
 					boxPalette.borderMuted,
-					active ? boxPalette.foregroundAction : boxPalette.borderMuted,
+					active ? boxPalette.selected : boxPalette.borderMuted,
 				]),
 				borderBottomWidth: mapResponsiveProp([
 					tokens.borderWidth.sm,
@@ -49,7 +49,7 @@ export function SubNavListItem({ children, active }: SubNavListItemProps) {
 					textDecoration: 'none',
 					borderLeftStyle: 'solid',
 					borderLeftWidth: mapResponsiveProp([tokens.borderWidth.xl, 0]),
-					borderLeftColor: active ? boxPalette.foregroundAction : 'transparent',
+					borderLeftColor: active ? boxPalette.selected : 'transparent',
 
 					// Underline overlay for active menu item
 					'&:after': {

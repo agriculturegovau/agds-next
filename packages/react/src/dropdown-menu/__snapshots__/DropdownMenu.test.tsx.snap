@@ -315,7 +315,7 @@ exports[`DropdownMenu Radio Group renders correctly 1`] = `
       </div>
       <div
         aria-checked="true"
-        class="css-k7jhta-boxStyles-DropdownMenuItemRadio"
+        class="css-4naupb-boxStyles-DropdownMenuItemRadio"
         id="item-2"
         role="menuitemradio"
       >

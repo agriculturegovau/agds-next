@@ -55,6 +55,7 @@ function paletteStyles({ palette, dark, light }: PaletteProps) {
 export const foregroundColorMap = {
 	text: boxPalette.foregroundText,
 	action: boxPalette.foregroundAction,
+	selected: boxPalette.selected,
 	muted: boxPalette.foregroundMuted,
 	accent: boxPalette.accent,
 	error: boxPalette.systemError,
@@ -233,6 +234,7 @@ const borderColorMap = {
 	border: boxPalette.border,
 	muted: boxPalette.borderMuted,
 	accent: boxPalette.accent,
+	selected: boxPalette.selected,
 } as const;
 
 type BorderColor = keyof typeof borderColorMap;

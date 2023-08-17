@@ -125,6 +125,16 @@ export const colourTokens: {
 		},
 	},
 	miscellaneous: {
+		selected: {
+			light: theme.lightSelected,
+			dark: theme.darkSelected,
+			desc: 'Used to indicate if an item is selected or active. For example, selected navigation items and tabs.',
+		},
+		selectedMuted: {
+			light: theme.lightSelectedMuted,
+			dark: theme.darkSelectedMuted,
+			desc: 'Used as a background for a component with a `selected` tone.',
+		},
 		overlay: {
 			light: theme.lightOverlay,
 			dark: theme.darkOverlay,

@@ -36,12 +36,12 @@ export const TableHeaderSortable = ({
 			aria-sort={sortLabel}
 			width={width}
 			{...(sort && {
+				borderColor: 'selected',
 				borderBottom: true,
 				borderBottomWidth: 'xl',
 			})}
 			css={{
 				textAlign,
-				borderBottomColor: boxPalette.foregroundAction,
 			}}
 		>
 			<Flex

@@ -130,12 +130,12 @@ exports[`ProgressIndicator With anchors renders correctly 1`] = `
                   data-agds-progress-indicator-item-timeline-action=""
                 />
                 <span
-                  class="css-fkz13n-ProgressIndicatorItemIcon"
+                  class="css-liqiuw-ProgressIndicatorItemIcon"
                   data-agds-progress-indicator-item-ring=""
                 >
                   <svg
                     aria-hidden="true"
-                    class="css-12mttc2-ProgressIndicatorItemIcon"
+                    class="css-jip0vh-ProgressIndicatorItemIcon"
                     clip-rule="evenodd"
                     focusable="false"
                     height="24"
@@ -387,12 +387,12 @@ exports[`ProgressIndicator With buttons renders correctly 1`] = `
                   data-agds-progress-indicator-item-timeline-action=""
                 />
                 <span
-                  class="css-fkz13n-ProgressIndicatorItemIcon"
+                  class="css-liqiuw-ProgressIndicatorItemIcon"
                   data-agds-progress-indicator-item-ring=""
                 >
                   <svg
                     aria-hidden="true"
-                    class="css-12mttc2-ProgressIndicatorItemIcon"
+                    class="css-jip0vh-ProgressIndicatorItemIcon"
                     clip-rule="evenodd"
                     focusable="false"
                     height="24"
