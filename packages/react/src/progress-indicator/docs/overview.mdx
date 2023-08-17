@@ -19,17 +19,21 @@ relatedComponents: ['task-list']
 />
 ```
 
-Our design system provides a progress indicator for larger tasks that can be completed out of order and returned to at a later date, like doing a tax return or applying for a driver’s licence.
+Our design system provides a progress indicator for larger tasks that can be completed out of order and returned to at a later date, like doing a tax return or applying for a driver's licence.
 
-The background of the `ProgressIndicator` must match the background it is being placed on. For example, if `ProgressIndicator` is placed on a 'bodyAlt' background, please set the `background` prop to `bodyAlt`.
+Progress indicators can be applied to multi-step forms if the form has a known number of steps to be completed. <sup><a href="#cite-1">1</a></sup>
+
+Progress indicators are used to set a users expectation of how long a form will take to complete by displaying the total number of steps required to complete the form and the users progress through the form.
+
+Avoid adding or removing pages to a multi-step form where a progress indicator is used as this can confuse and misinform users. Consider another approach if the number of steps might change due to user input. <sup><a href="#cite-2">2</a></sup>
 
 <DoHeading />
 
 - display steps in order from top to bottom
 - use in forms and multi-page processes
-- use for processes of 2 – 10 steps
-- always present mobile menu Closed by default
-- pair with Task list if nesting is required
+- use for processes of 2 - 10 steps
+- always present mobile menu closed by default
+- pair with [Task list](/components/task-list) if nesting is required
 - ensure step names match H1s and truncate if long
 - keyword frontload
 - group related form fields.
@@ -40,9 +44,15 @@ The background of the `ProgressIndicator` must match the background it is being 
 - use for fewer than 2 steps
 - have any other components in the left-hand column
 - add the step number to the text - list only the action the user needs to take
-- mix with other navigation patterns – for example, Side-nav
+- mix with other navigation patterns - for example, [Side nav](/components/side-nav)
 - change labels or icons
 - make progress indicators a sticky nav item as this may cause reading order issues.
+
+## Background
+
+The background of the Progress indicator must match the background it is being placed on.
+
+If the Progress indicator is placed on a `bodyAlt` background, please set the `background` prop to `bodyAlt`.
 
 ## Status
 
@@ -113,3 +123,18 @@ If an item does not specify a `href` attribute a `button` element will be render
 	]}
 />
 ```
+
+## Notes
+
+<ol>
+	<li id="cite-1">
+		<a href="https://www.w3.org/WAI/tutorials/forms/multi-page/#using-step-by-step-indicator">
+			W3C Multi-page Forms
+		</a>
+	</li>
+	<li id="cite-2">
+		<a href="https://designsystem.digital.gov/components/step-indicator">
+			U.S. Web Design System (USWDS) Step indicator
+		</a>
+	</li>
+</ol>
