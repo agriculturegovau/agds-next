@@ -10,12 +10,95 @@ Filter sidebar is used in search pages to contain filtering options for a list o
 
 ```jsx live
 <FilterSidebar numberOfActiveFilters={3}>
-	<TextInput label="Example filtering input 1" value="Example" />
-	<TextInput label="Example filtering input 2" value="Example" />
-	<TextInput label="Example filtering input 3" value="Example" />
+	<TextInput label="Example filtering input 1" value="Example" block />
+	<TextInput label="Example filtering input 2" value="Example" block />
+	<TextInput label="Example filtering input 3" value="Example" block />
 </FilterSidebar>
 ```
 
 The FilterSidebar collapses on mobile devices, and displays a number of active filter options in the header.
 
 [Visit the example page in Storybook](/storybook/index.html?path=/story/layout-filtersidebar--full) to see it used in context.
+
+```jsx live
+(() => {
+	const listData = [
+		{
+			title: 'Example article one',
+			desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec auctor, nisl eget ultricies aliquam, nunc nisl aliquet nunc, quis aliquam nisl nunc eget nunc. Donec auctor, nisl eget ultricies aliquam, nunc nisl aliquet nunc, quis aliquam nisl nunc eget nunc.',
+			author: 'Lando Norris',
+		},
+		{
+			title: 'Example article two',
+			desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec auctor, nisl eget ultricies aliquam, nunc nisl aliquet nunc, quis aliquam nisl nunc eget nunc. Donec auctor, nisl eget ultricies aliquam, nunc nisl aliquet nunc, quis aliquam nisl nunc eget nunc.',
+			author: 'Toto Wolff',
+		},
+		{
+			title: 'Example article three',
+			desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec auctor, nisl eget ultricies aliquam, nunc nisl aliquet nunc, quis aliquam nisl nunc eget nunc. Donec auctor, nisl eget ultricies aliquam, nunc nisl aliquet nunc, quis aliquam nisl nunc eget nunc.',
+			author: 'Stefano Domenicali',
+		},
+	];
+
+	return (
+		<Columns gap={{ xs: 1, md: 3 }}>
+			<Column columnSpan={{ xs: 12, md: 4 }}>
+				<FilterSidebar numberOfActiveFilters={3}>
+					<TextInput block label="Example input 2" value="Example" />
+					<TextInput block label="Example input 3" value="Example" />
+					<TextInput block label="Example input 1" value="Example" />
+					<TextInput block label="Example input 4" value="Example" />
+				</FilterSidebar>
+			</Column>
+			<Column columnSpan={{ xs: 12, md: 8 }}>
+				<Stack gap={2}>
+					<Flex
+						flexDirection={{ xs: 'column', md: 'row' }}
+						justifyContent={{ xs: 'flex-start', md: 'space-between' }}
+						alignItems={{ xs: 'flex-start', md: 'flex-end' }}
+						gap={1.5}
+						borderBottom
+						paddingBottom={1}
+					>
+						<Text
+							fontSize={{
+								xs: 'sm',
+								md: 'lg',
+							}}
+						>
+							Search results
+						</Text>
+					</Flex>
+
+					<Stack as="ul" gap={1}>
+						{listData.map((item) => (
+							<Card as="li" shadow clickable key={item.id}>
+								<CardInner>
+									<Stack gap={0.5} width="100%" flexWrap="wrap">
+										<H3>
+											<CardLink href="#">{item.title}</CardLink>
+										</H3>
+
+										<Text as="p">{item.desc}</Text>
+
+										<Flex
+											gap={0.5}
+											flexWrap="wrap"
+											justifyContent="space-between"
+											alignItems="center"
+										>
+											<Text color="muted" fontSize="xs">
+												{item.author}
+											</Text>
+										</Flex>
+									</Stack>
+								</CardInner>
+							</Card>
+						))}
+					</Stack>
+				</Stack>
+			</Column>
+		</Columns>
+	);
+})();
+```
