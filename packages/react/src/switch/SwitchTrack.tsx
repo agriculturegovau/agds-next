@@ -74,7 +74,9 @@ export const SwitchThumb = ({ checked, size }: SwitchThumbProps) => {
 				borderRadius: thumbSize,
 				borderWidth,
 				borderStyle: 'solid',
-				borderColor: boxPalette.foregroundAction,
+				borderColor: checked
+					? boxPalette.selected
+					: boxPalette.foregroundAction,
 				position: 'absolute',
 				transition: `left ${tokens.transition.duration}ms ${tokens.transition.timingFunction}`,
 				left: checked ? thumbCheckedPos : '0rem',
