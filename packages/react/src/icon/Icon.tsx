@@ -5,7 +5,6 @@ import { foregroundColorMap } from '../box';
 export const iconColors = {
 	...foregroundColorMap,
 	border: boxPalette.border,
-	selected: boxPalette.selected,
 };
 
 type IconColor = keyof typeof iconColors;
