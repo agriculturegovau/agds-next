@@ -7,8 +7,8 @@ import {
 	render,
 	cleanup,
 	act,
-	waitFor,
 	renderHook,
+	waitFor,
 } from '../../../../test-utils';
 import { STATE_OPTIONS, Option } from '../combobox/test-utils';
 import { Autocomplete, AutocompleteProps } from './Autocomplete';
@@ -54,21 +54,39 @@ describe('Autocomplete', () => {
 	});
 
 	it('can load and clear async options', async () => {
-		const { container } = renderAutocomplete();
+		const loadOptions = jest.fn().mockResolvedValue(STATE_OPTIONS);
+		const { container } = renderAutocomplete({ loadOptions });
 
 		const input = container.querySelector('input');
 		expect(input).toBeInTheDocument();
+		expect(input).toHaveAttribute('aria-expanded', 'false');
 		if (!input) return;
 
-		// Focus the input and start typing a search term
-		act(() => input.focus());
+		// Focus the input
+		await act(async () => await input.focus());
+		expect(input).toHaveFocus();
+
+		expect(loadOptions).not.toHaveBeenCalled();
+
+		// Start typing a search term
 		await userEvent.type(input, 'qld');
 
-		// Wait for the data to be loaded
-		// When searching for 'qld', only 1 option should be visible
-		await waitFor(() =>
-			expect(container.querySelectorAll('li').length).toBe(1)
-		);
+		// Typing a search term should trigger `loadOptions` to be called
+		// And the loading state to appear
+		await waitFor(() => {
+			expect(loadOptions).toHaveBeenCalledTimes(1);
+			expect(loadOptions).toHaveBeenCalledWith('qld');
+			expect(container.querySelectorAll('li').length).toBe(1);
+			expect(container.querySelectorAll('li')[0].textContent).toBe('Loading');
+		});
+
+		// Once the data is loaded, only one option should be visible
+		await waitFor(() => {
+			expect(container.querySelectorAll('li').length).toBe(1);
+			expect(container.querySelectorAll('li')[0].textContent).toBe(
+				'Queensland'
+			);
+		});
 
 		// Select the QLD option
 		const options = container.querySelectorAll('li');
@@ -76,6 +94,30 @@ describe('Autocomplete', () => {
 
 		// Expect the input to be updated
 		expect(input.value).toBe('Queensland');
+		expect(input).toHaveAttribute('aria-expanded', 'false');
+		expect(input).toHaveFocus();
+
+		// Since the input is focused, use the arrow down key to open the menu
+		await userEvent.keyboard('[ArrowDown]');
+
+		// Loading state should be visible
+		expect(container.querySelectorAll('li').length).toBe(1);
+		expect(container.querySelectorAll('li')[0].textContent).toBe('Loading');
+
+		// Only qld option should be visible
+		await waitFor(() => {
+			expect(container.querySelectorAll('li').length).toBe(1);
+			expect(container.querySelectorAll('li')[0].textContent).toBe(
+				'Queensland'
+			);
+			expect(loadOptions).toHaveBeenCalledTimes(2);
+			expect(loadOptions).toHaveBeenCalledWith('queensland');
+		});
+
+		// Press escape to close the menu
+		await userEvent.keyboard('[Escape]');
+		expect(input).toHaveAttribute('aria-expanded', 'false');
+		expect(input).toHaveFocus();
 
 		// Press the "Clear button"
 		const clearButton = container.querySelector('button');
@@ -86,6 +128,11 @@ describe('Autocomplete', () => {
 
 		// Expect the input to be updated
 		expect(input.value).toBe('');
+
+		// No other calls to `loadOptions` should have been made
+		expect(loadOptions).toHaveBeenCalledTimes(2);
+		expect(loadOptions).toHaveBeenNthCalledWith(1, 'qld');
+		expect(loadOptions).toHaveBeenNthCalledWith(2, 'queensland');
 	});
 
 	it('accepts `inputRef` prop', () => {

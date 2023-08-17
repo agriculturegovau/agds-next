@@ -1,20 +1,9 @@
-import {
-	ReactNode,
-	RefObject,
-	useEffect,
-	useMemo,
-	useRef,
-	useState,
-} from 'react';
+import { ReactNode, RefObject } from 'react';
 import { useCombobox } from 'downshift';
 import { FieldMaxWidth } from '../core';
 import { ComboboxBase } from './ComboboxBase';
-import { useDebounceValue } from './useDebounceValue';
-import {
-	DefaultComboboxOption,
-	filterOptions,
-	useComboboxInputId,
-} from './utils';
+import { DefaultComboboxOption, useComboboxInputId } from './utils';
+import { useAsync } from './useAsync';
 
 export type ComboboxAsyncProps<Option extends DefaultComboboxOption> = {
 	/** Describes the purpose of the field. */
@@ -51,10 +40,10 @@ export type ComboboxAsyncProps<Option extends DefaultComboboxOption> = {
 	emptyResultsMessage?: string;
 	/** If true, the clear button will be rendered. */
 	clearable?: boolean;
+	/** @deprecated This prop is no longer being used. When true, the dropdown will open when the user focuses on the element  */
+	openDropdownOnFocus?: boolean;
 	/** If true, the dropdown trigger will be rendered. */
 	showDropdownTrigger?: boolean;
-	/** If true, the dropdown will open when the user focuses on the element  */
-	openDropdownOnFocus?: boolean;
 	/** Ref to the input element. */
 	inputRef?: RefObject<HTMLInputElement>;
 };
@@ -66,48 +55,50 @@ export function ComboboxAsync<Option extends DefaultComboboxOption>({
 	loadOptions: loadOptionsProp,
 	clearable = false,
 	showDropdownTrigger = true,
-	openDropdownOnFocus = true,
 	inputRef: inputRefProp,
 	...props
 }: ComboboxAsyncProps<Option>) {
 	const inputId = useComboboxInputId(id);
 
-	const [state, setState] = useState<{
-		inputItems: Option[] | undefined;
-		loading: boolean;
-		networkError: boolean;
-	}>({
-		inputItems: undefined,
-		loading: false,
-		networkError: false,
-	});
+	const isAutocomplete = !showDropdownTrigger;
 
-	const isInputDirty = useRef(false);
+	const {
+		loading,
+		networkError,
+		inputItems,
+		onInputValueChange,
+		onIsOpenChange,
+	} = useAsync<Option>(loadOptionsProp);
 
 	const combobox = useCombobox<Option>({
 		selectedItem: value,
 		inputId,
-		items: state.inputItems ?? [],
+		items: inputItems,
 		defaultHighlightedIndex: 0,
 		itemToString: (item) => item?.label ?? '',
+		onInputValueChange,
+		onIsOpenChange,
 		onSelectedItemChange: ({ selectedItem = null }) => {
 			onChange?.(selectedItem);
 		},
-		onInputValueChange: () => {
-			isInputDirty.current = true;
-		},
 		stateReducer: (state, actionAndChanges) => {
 			const { type: actionAndChangesType, changes } = actionAndChanges;
+			const shouldOpen = (changes.inputValue?.length ?? 0) > 0;
 			switch (actionAndChangesType) {
-				case useCombobox.stateChangeTypes.InputFocus:
-					// In downshift v7 the dropdown is opened automatically when the user focuses
-					// We want to disable this functionality in the `Autocomplete` component
-					return { ...changes, isOpen: openDropdownOnFocus };
-				// Reset the input value when the menu is closed
 				case useCombobox.stateChangeTypes.InputBlur:
 					return {
 						...changes,
 						inputValue: state.selectedItem?.label ?? '',
+					};
+				case useCombobox.stateChangeTypes.InputFocus:
+					if (!isAutocomplete) return changes;
+					return { ...changes, isOpen: false };
+
+				case useCombobox.stateChangeTypes.InputChange:
+					if (!isAutocomplete) return changes;
+					return {
+						...changes,
+						isOpen: shouldOpen,
 					};
 				default:
 					return changes;
@@ -115,96 +106,13 @@ export function ComboboxAsync<Option extends DefaultComboboxOption>({
 		},
 	});
 
-	// Keep track of the debounced input value to prevent unnecessary network requests
-	const debouncedInputValue = useDebounceValue(combobox.inputValue, 300);
-
-	const shouldLoadOptions = useMemo(() => {
-		// Do load options when...
-		if (
-			// User has just started typing, so this avoids the flicker of the empty state
-			(!debouncedInputValue && combobox.inputValue) ||
-			// User has manually triggered the dropdown menu open
-			(showDropdownTrigger && combobox.isOpen && !combobox.selectedItem)
-		) {
-			return true;
-		}
-		// Do NOT load options when...
-		const selectedItemLabel = combobox.selectedItem?.label;
-		if (
-			// Options are already being loaded
-			state.loading ||
-			// Options have failed to load
-			state.networkError ||
-			// Dropdown is closed
-			!combobox.isOpen ||
-			// If a selection has just been made, no not need to load options again
-			(selectedItemLabel && selectedItemLabel === debouncedInputValue) ||
-			// When there is no dropdown trigger (e.g. Autocomplete), only load the options if the user has interacted with the input
-			(!showDropdownTrigger && !isInputDirty.current)
-		) {
-			return false;
-		}
-		return true;
-	}, [
-		debouncedInputValue,
-		combobox.inputValue,
-		combobox.isOpen,
-		combobox.selectedItem,
-		showDropdownTrigger,
-		state.loading,
-		state.networkError,
-	]);
-
-	// Keep track of search terms/loaded options to prevent unnecessary network requests
-	const cache = useRef<Record<string, Option[]>>({});
-
-	useEffect(() => {
-		async function loadOptions(shouldLoadOptions: boolean) {
-			if (!shouldLoadOptions) return;
-			// sanitize the input value
-			const inputValue = debouncedInputValue?.toLowerCase() ?? '';
-
-			// If there are cached options for the search term, use that
-			const cachedInputItems = cache.current[inputValue];
-			if (cachedInputItems) {
-				setState({
-					inputItems: cachedInputItems,
-					loading: false,
-					networkError: false,
-				});
-				return;
-			}
-
-			// No cached options found, so kick off the loading state
-			setState({ inputItems: undefined, loading: true, networkError: false });
-			try {
-				// Load the options
-				const inputItems = await loadOptionsProp(inputValue);
-				const filteredInputItems = filterOptions(inputItems, inputValue);
-				// Update the cache
-				cache.current[inputValue] = filteredInputItems;
-				// Update the UI
-				setState({
-					inputItems: filteredInputItems,
-					loading: false,
-					networkError: false,
-				});
-			} catch {
-				// An error occurred while loading options
-				setState({ inputItems: undefined, loading: false, networkError: true });
-			}
-		}
-
-		loadOptions(shouldLoadOptions);
-	}, [shouldLoadOptions, debouncedInputValue, loadOptionsProp]);
-
 	return (
 		<ComboboxBase
 			combobox={combobox}
 			inputId={inputId}
-			loading={state.loading}
-			networkError={state.networkError}
-			inputItems={state.inputItems}
+			loading={loading}
+			networkError={networkError}
+			inputItems={inputItems}
 			showDropdownTrigger={showDropdownTrigger}
 			clearable={clearable}
 			inputRef={inputRefProp}

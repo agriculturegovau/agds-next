@@ -17,7 +17,6 @@ export function Autocomplete<Option extends DefaultComboboxOption>({
 		<ComboboxAsync
 			{...props}
 			emptyResultsMessage={emptyResultsMessage}
-			openDropdownOnFocus={false}
 			showDropdownTrigger={false}
 			clearable={true}
 		/>
