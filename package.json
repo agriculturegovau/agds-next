@@ -38,7 +38,8 @@
 		"publish-changed": "yarn build && yarn changeset publish",
 		"storybook:build": "storybook build -o docs/public/storybook",
 		"storybook:dev": "storybook dev --port 6006 --no-open",
-		"test": "jest"
+		"test:jest": "jest",
+		"test:vite": "vitest run"
 	},
 	"devDependencies": {
 		"@babel/core": "^7.22.9",
@@ -89,7 +90,8 @@
 		"storybook-addon-next-router": "^4.0.2",
 		"swr": "^1.3.0",
 		"typescript": "^4.7.4",
-		"vite": "^4.2.3"
+		"vite": "^4.2.3",
+		"vitest": "^0.34.2"
 	},
 	"engines": {
 		"node": "18"

@@ -43,8 +43,11 @@ jobs:
       - name: Install dependencies
         run: yarn
 
-      - name: Unit tests
-        run: yarn test
+      - name: Unit tests (vite)
+        run: yarn test:vite
+
+      - name: Unit tests (jest)
+        run: yarn test:test
 
   linting:
     name: Linting
