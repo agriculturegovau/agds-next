@@ -47,7 +47,7 @@ exports[`Combobox renders correctly 1`] = `
         value=""
       />
       <div
-        class="css-1fu4g2k-boxStyles-ComboboxButtonContainer"
+        class="css-1733k8b-boxStyles-ComboboxButtonContainer"
       >
         <button
           aria-controls="downshift-0-menu"

@@ -64,7 +64,6 @@ export function useAsync<Option extends DefaultComboboxOption>(
 
 	const fetchOptions = useMemo(() => {
 		return async function fetchOptions(inputValue: string) {
-			console.log({ inputValue });
 			const request = (lastRequest.current = {});
 			try {
 				// Load the options
