@@ -16,6 +16,7 @@ import {
 	ComboboxClearButton,
 	ComboboxButtonDivider,
 } from './ComboboxButtons';
+import { ComboboxSearchIcon } from './ComboboxSearchIcon';
 
 type ComboboxBaseProps<Option extends DefaultComboboxOption> = {
 	// Field props
@@ -65,6 +66,8 @@ export function ComboboxBase<Option extends DefaultComboboxOption>({
 	inputItems,
 	inputRef: inputRefProp,
 }: ComboboxBaseProps<Option>) {
+	const isAutocomplete = !showDropdownTrigger;
+
 	const showClearButton = clearable && combobox.selectedItem;
 	const hasButtons = showDropdownTrigger || showClearButton;
 	const hasBothButtons = showDropdownTrigger && showClearButton;
@@ -103,8 +106,13 @@ export function ComboboxBase<Option extends DefaultComboboxOption>({
 					{...popover.getReferenceProps()}
 					css={{ position: 'relative', maxWidth }}
 				>
+					{isAutocomplete && <ComboboxSearchIcon disabled={disabled} />}
 					<input
-						css={{ ...inputStyles, width: '100%' }}
+						css={{
+							...inputStyles,
+							width: '100%',
+							...(isAutocomplete && { paddingLeft: '3rem' }),
+						}}
 						disabled={disabled}
 						{...combobox.getInputProps({
 							...a11yProps,
