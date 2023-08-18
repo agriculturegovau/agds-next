@@ -71,21 +71,18 @@ describe('Autocomplete', () => {
 		// Start typing a search term
 		await userEvent.type(input, 'qld');
 
-		// Typing a search term should trigger `loadOptions` to be called
-		// And the loading state to appear
-		await waitFor(() => {
-			expect(loadOptions).toHaveBeenCalledTimes(1);
-			expect(loadOptions).toHaveBeenCalledWith('qld');
-			expect(container.querySelectorAll('li').length).toBe(1);
-			expect(container.querySelectorAll('li')[0].textContent).toBe('Loading');
-		});
+		// Loading state should be visible
+		expect(container.querySelectorAll('li').length).toBe(1);
+		expect(container.querySelectorAll('li')[0].textContent).toBe('Loading');
 
-		// Once the data is loaded, only one option should be visible
+		// Only qld option should be visible
 		await waitFor(() => {
 			expect(container.querySelectorAll('li').length).toBe(1);
 			expect(container.querySelectorAll('li')[0].textContent).toBe(
 				'Queensland'
 			);
+			expect(loadOptions).toHaveBeenCalledTimes(1);
+			expect(loadOptions).toHaveBeenCalledWith('qld');
 		});
 
 		// Select the QLD option
