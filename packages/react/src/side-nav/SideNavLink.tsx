@@ -48,7 +48,7 @@ export function SideNavLink({
 					...(isCurrentPage && {
 						position: 'relative',
 						color: boxPalette.foregroundText,
-						backgroundColor: collapsingSideBarLocalPalette.hover,
+						backgroundColor: boxPalette.selectedMuted,
 						fontWeight: tokens.fontWeight.bold,
 						':before': {
 							content: '""',
