@@ -16,7 +16,7 @@ import { mdxComponents } from '../../../components/mdxComponents';
 import { DocumentTitle } from '../../../components/DocumentTitle';
 import { PkgLayout } from '../../../components/PkgLayout';
 import { generateToc } from '../../../lib/generateToc';
-import { getPattern } from '../../../lib/mdx/patterns';
+import { getPattern, Pattern } from '../../../lib/mdx/patterns';
 
 export default function Packages({
 	pkg,
@@ -50,11 +50,11 @@ export default function Packages({
 				) : null}
 				<Prose id="pkg-content">
 					<MDXRemote {...source} components={mdxComponents} />
-					{relatedPatterns?.length ? (
+					{relatedComponents?.length ? (
 						<Fragment>
-							<h2 id="related-patterns">Related patterns</h2>
+							<h2 id="related-components">Related components</h2>
 							<ul>
-								{relatedPatterns.map(({ slug, title, description }) => (
+								{relatedComponents.map(({ slug, title, description }) => (
 									<li key={slug}>
 										<TextLink href={`/components/${slug}`}>{title}</TextLink>{' '}
 										&ndash; {description}
@@ -63,13 +63,13 @@ export default function Packages({
 							</ul>
 						</Fragment>
 					) : null}
-					{relatedComponents?.length ? (
+					{relatedPatterns?.length ? (
 						<Fragment>
-							<h2 id="related-components">Related components</h2>
+							<h2 id="related-patterns">Related patterns</h2>
 							<ul>
-								{relatedComponents.map(({ slug, title, description }) => (
+								{relatedPatterns.map(({ slug, title, description }) => (
 									<li key={slug}>
-										<TextLink href={`/components/${slug}`}>{title}</TextLink>{' '}
+										<TextLink href={`/patterns/${slug}`}>{title}</TextLink>{' '}
 										&ndash; {description}
 									</li>
 								))}
@@ -91,7 +91,7 @@ export const getStaticProps: GetStaticProps<
 		source: NonNullable<
 			Awaited<ReturnType<typeof getPkgDocsContent>>
 		>['source'];
-		relatedPatterns: Awaited<Pkg[]> | null;
+		relatedPatterns: Awaited<Pattern[]> | null;
 		relatedComponents: Awaited<Pkg[]> | null;
 	},
 	{ slug: string }
