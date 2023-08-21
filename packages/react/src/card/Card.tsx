@@ -38,10 +38,8 @@ export const Card = ({
 				}),
 
 				...(shadow && {
-					boxShadow: tokens.shadow.small,
-					'&:hover': clickable
-						? { boxShadow: tokens.shadow.medium }
-						: undefined,
+					boxShadow: tokens.shadow.sm,
+					'&:hover': clickable ? { boxShadow: tokens.shadow.md } : undefined,
 				}),
 			}}
 		>

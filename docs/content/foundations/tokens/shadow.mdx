@@ -1,5 +1,41 @@
-We have three drop shadow tokens
+Our shadow tokens enable us to use drop shadows consistently and systematically across the Export Service.
 
-- **small**: For clickable cards
-- **medium**: For popovers
-- **large**: For modals
+We have three drop shadow tokens:
+
+- **sm**: For clickable cards
+- **md**: For popovers
+- **lg**: For modals
+
+```jsx live
+<Flex
+	gap={1.5}
+	css={{
+		width: '100%',
+	}}
+>
+	<Flex
+		flexGrow={1}
+		paddingX={1}
+		paddingY={2}
+		css={{ boxShadow: tokens.shadow.sm }}
+	>
+		sm
+	</Flex>
+	<Flex
+		flexGrow={1}
+		paddingX={1}
+		paddingY={2}
+		css={{ boxShadow: tokens.shadow.md }}
+	>
+		md
+	</Flex>
+	<Flex
+		flexGrow={1}
+		paddingX={1}
+		paddingY={2}
+		css={{ boxShadow: tokens.shadow.lg }}
+	>
+		lg
+	</Flex>
+</Flex>
+```

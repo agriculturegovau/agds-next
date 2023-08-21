@@ -36,7 +36,7 @@ export function FilterDrawerDialog({
 				aria-labelledby={titleId}
 				maxWidth="32rem"
 				css={{
-					boxShadow: tokens.shadow.large,
+					boxShadow: tokens.shadow.lg,
 					position: 'fixed',
 					inset: 0,
 					marginLeft: 'auto',

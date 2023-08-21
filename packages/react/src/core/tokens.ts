@@ -128,10 +128,14 @@ const zIndex = {
 
 export type ZIndex = keyof typeof zIndex;
 
+/** A set of predefined box-shadows. */
 const shadow = {
-	small: '0px 2px 4px rgba(0, 0, 0, 0.15)',
-	medium: '0px 4px 16px rgba(0, 0, 0, 0.15)',
-	large: '0px 16px 32px rgba(0, 0, 0, 0.20)',
+	/** Use for clickable cards */
+	sm: '0px 2px 4px rgba(0, 0, 0, 0.15)',
+	/** Use for pop-overs like DatePicker and Dropdown. Use also for clickable card hover states. */
+	md: '0px 4px 16px rgba(0, 0, 0, 0.15)',
+	/** Use for Modals and FilterDrawer */
+	lg: '0px 16px 32px rgba(0, 0, 0, 0.20)',
 };
 
 export type Shadow = keyof typeof shadow;
