@@ -47,22 +47,26 @@ const primitives = {
 	yellow3: '#D16900',
 	yellow4: '#393942',
 
-	// blue
+	// blue (action)
 	// TODO: We should consider regenerating these shades to ensure they are consistent hues
-	blue1: '#E5F6FF',
-	blue2: '#008BD1',
-	blue3: '#00558b',
+	blue1: '#EBF4FA',
+	blue2: '#00558b',
+
+	// sky (info)
+	// TODO: We should consider regenerating these shades to ensure they are consistent hues
+	sky1: '#E5F6FF',
+	sky2: '#008BD1',
+
+	// cyan
+	// TODO: We should consider regenerating these shades to ensure they are consistent hues
+	cyan1: '#9EE8FF',
+	cyan2: '#33BAFF',
+	cyan3: '#193A5B',
 
 	// purple
 	// TODO: We should consider regenerating these shades to ensure they are consistent hues
 	purple1: '#c390f9',
 	purple2: '#9263de',
-
-	// sky
-	// TODO: We should consider regenerating these shades to ensure they are consistent hues
-	sky1: '#9EE8FF',
-	sky2: '#33BAFF',
-	sky3: '#193A5B',
 
 	blackOverlay: 'rgba(0, 0, 0, 0.8)',
 };
@@ -89,7 +93,7 @@ export const theme: Theme = {
 	darkOverlay: primitives.blackOverlay,
 
 	// agds overrides: light
-	lightForegroundAction: primitives.blue3,
+	lightForegroundAction: primitives.blue2,
 	lightAccent: primitives.exportServiceOrange,
 	lightSystemError: primitives.red2,
 	lightSystemErrorMuted: primitives.red1,
@@ -97,15 +101,15 @@ export const theme: Theme = {
 	lightSystemSuccessMuted: primitives.green1,
 	lightSystemWarning: primitives.yellow3,
 	lightSystemWarningMuted: primitives.yellow1,
-	lightSystemInfo: primitives.blue2,
-	lightSystemInfoMuted: primitives.blue1,
+	lightSystemInfo: primitives.sky2,
+	lightSystemInfoMuted: primitives.sky1,
 
 	// agds overrides: dark
 	darkBackgroundBody: primitives.navy1,
 	darkBackgroundShade: primitives.navy2,
 	darkBackgroundBodyAlt: primitives.navy3,
 	darkBackgroundShadeAlt: primitives.navy4,
-	darkForegroundAction: primitives.sky1,
+	darkForegroundAction: primitives.cyan1,
 	darkAccent: primitives.exportServiceOrange,
 	darkSystemError: primitives.tomato1,
 	darkSystemErrorMuted: primitives.tomato2,
@@ -113,6 +117,6 @@ export const theme: Theme = {
 	darkSystemSuccessMuted: primitives.green4,
 	darkSystemWarning: primitives.yellow2,
 	darkSystemWarningMuted: primitives.yellow4,
-	darkSystemInfo: primitives.sky2,
-	darkSystemInfoMuted: primitives.sky3,
+	darkSystemInfo: primitives.cyan2,
+	darkSystemInfoMuted: primitives.cyan3,
 };
