@@ -27,6 +27,7 @@ export async function getPkg(slug: string) {
 		figmaGalleryNodeId: (data.figmaGalleryNodeId ?? null) as string | null,
 		subNavItems: subNavItems ?? null,
 		relatedComponents: (data.relatedComponents ?? null) as string[] | null,
+		relatedPatterns: (data.relatedPatterns ?? null) as string[] | null,
 		deprecated: (data.deprecated ?? false) as boolean,
 		unreleased: (data.unreleased ?? false) as boolean,
 	};

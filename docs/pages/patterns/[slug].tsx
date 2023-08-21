@@ -1,7 +1,9 @@
+import { Fragment } from 'react';
 import { GetStaticProps, InferGetStaticPropsType } from 'next';
 import { MDXRemote } from 'next-mdx-remote';
 import { Prose } from '@ag.ds-next/react/prose';
 import { InpageNav } from '@ag.ds-next/react/inpage-nav';
+import { TextLink } from '@ag.ds-next/react/text-link';
 import {
 	getPattern,
 	getPatternSlugs,
@@ -13,12 +15,14 @@ import { generateToc } from '../../lib/generateToc';
 import { PatternLayout } from '../../components/PatternLayout';
 import { mdxComponents } from '../../components/mdxComponents';
 import { DocumentTitle } from '../../components/DocumentTitle';
+import { getPkg, Pkg } from '../../lib/mdx/packages';
 
 export default function PatternPage({
 	breadcrumbs,
 	pattern,
 	navLinks,
 	toc,
+	relatedComponents,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
 	return (
 		<>
@@ -40,6 +44,19 @@ export default function PatternPage({
 				) : null}
 				<Prose id="page-content">
 					<MDXRemote {...pattern.source} components={mdxComponents} />
+					{relatedComponents?.length ? (
+						<Fragment>
+							<h2 id="related-components">Related components</h2>
+							<ul>
+								{relatedComponents.map(({ slug, title, description }) => (
+									<li key={slug}>
+										<TextLink href={`/components/${slug}`}>{title}</TextLink>{' '}
+										&ndash; {description}
+									</li>
+								))}
+							</ul>
+						</Fragment>
+					) : null}
 				</Prose>
 			</PatternLayout>
 		</>
@@ -52,6 +69,7 @@ export const getStaticProps: GetStaticProps<
 		navLinks: Awaited<ReturnType<typeof getPatternNavLinks>>;
 		breadcrumbs: Awaited<ReturnType<typeof getPatternBreadcrumbs>>;
 		toc: Awaited<ReturnType<typeof generateToc>>;
+		relatedComponents: Awaited<Pkg[]> | null;
 	},
 	{ slug: string }
 > = async ({ params }) => {
@@ -66,12 +84,27 @@ export const getStaticProps: GetStaticProps<
 	const breadcrumbs = await getPatternBreadcrumbs(slug);
 	const toc = await generateToc(pattern.content);
 
+	// Get related components
+	const relatedComponents = pattern.relatedComponents?.length
+		? await Promise.all(pattern.relatedComponents.sort().map(getPkg))
+		: null;
+	if (relatedComponents?.length) {
+		toc.push({
+			title: 'Related components',
+			slug: 'related-components',
+			id: 'related-components',
+			level: 2,
+			items: [],
+		});
+	}
+
 	return {
 		props: {
 			breadcrumbs,
 			navLinks,
 			pattern,
 			toc,
+			relatedComponents,
 		},
 	};
 };
