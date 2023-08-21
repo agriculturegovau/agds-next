@@ -129,9 +129,9 @@ const zIndex = {
 export type ZIndex = keyof typeof zIndex;
 
 const shadow = {
-	small: '0px 2px 8px rgba(0, 0, 0, 0.15)',
-	medium: '0px 8px 16px rgba(0, 0, 0, 0.15)',
-	large: '0px 8px 16px rgba(0, 0, 0, 0.15)',
+	small: '0px 2px 4px rgba(0, 0, 0, 0.15)',
+	medium: '0px 4px 16px rgba(0, 0, 0, 0.15)',
+	large: '0px 16px 32px rgba(0, 0, 0, 0.20)',
 };
 
 export type Shadow = keyof typeof shadow;
