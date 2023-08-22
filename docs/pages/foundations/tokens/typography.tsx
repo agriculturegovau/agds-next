@@ -13,7 +13,7 @@ import { tokens, FontSize, Font } from '@ag.ds-next/react/core';
 import { Stack } from '@ag.ds-next/react/stack';
 import { InpageNav } from '@ag.ds-next/react/inpage-nav';
 import { TokenLayout, TOKEN_PAGES } from '../../../components/TokenLayout';
-import { LineHeightChart } from '../../../components/TokenCharts';
+import { LineHeightTokenChart } from '../../../components/TokenCharts';
 import { DocumentTitle } from '../../../components/DocumentTitle';
 
 export default function TokensTypographyPage() {
@@ -51,7 +51,7 @@ export default function TokensTypographyPage() {
 						A set of predefined line heights that align to a 4px grid. This
 						helps achieve better alignment across website elements.
 					</p>
-					<LineHeightChart />
+					<LineHeightTokenChart />
 
 					<h2 id="font-family">Font family</h2>
 					<p>

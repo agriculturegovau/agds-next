@@ -42,7 +42,12 @@ import { Code } from './Code';
 import { ComponentPropsTable } from './ComponentPropsTable';
 import { DoHeading, DontHeading } from './DoDontHeading';
 import { AllIconsPlayground } from './AllIconsPlayground';
-import { BreakpointsTokenChart, SpacingTokenChart } from './TokenCharts';
+import {
+	BreakpointsTokenChart,
+	SpacingTokenChart,
+	ZIndexTokenChart,
+	ShadowTokenChart,
+} from './TokenCharts';
 
 export const mdxComponents: MDXRemoteProps['components'] = {
 	Fragment,
@@ -219,6 +224,8 @@ export const mdxComponents: MDXRemoteProps['components'] = {
 	),
 	BreakpointsTokenChart,
 	SpacingTokenChart,
+	ZIndexTokenChart,
+	ShadowTokenChart,
 	SummaryList: ({ children }: PropsWithChildren<{}>) => (
 		<div className={proseBlockClassname}>
 			<SummaryList>{children}</SummaryList>

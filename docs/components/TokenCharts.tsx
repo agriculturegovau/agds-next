@@ -1,6 +1,8 @@
+import { Fragment, ReactNode } from 'react';
 import { Box } from '@ag.ds-next/react/box';
 import { Flex } from '@ag.ds-next/react/flex';
 import { Stack } from '@ag.ds-next/react/stack';
+import { Columns } from '@ag.ds-next/react/columns';
 import { boxPalette, tokens, Spacing, FontSize } from '@ag.ds-next/react/core';
 import { proseBlockClassname } from '@ag.ds-next/react/prose';
 import { Text } from '@ag.ds-next/react/text';
@@ -13,6 +15,7 @@ import {
 	TableHeader,
 	TableWrapper,
 } from '@ag.ds-next/react/table';
+import { TextLink } from './designSystemComponents';
 
 type Entries<T> = {
 	[K in keyof T]: [K, T[K]];
@@ -57,7 +60,7 @@ export const BreakpointsTokenChart = () => {
 	);
 };
 
-export const BorderWidthChart = () => {
+export const BorderWidthTokenChart = () => {
 	const borderWidths = tokens.borderWidth;
 
 	return (
@@ -106,7 +109,7 @@ export const SpacingTokenChart = () => {
 	);
 };
 
-export const LineHeightChart = () => {
+export const LineHeightTokenChart = () => {
 	const fontSizes = ['xxxl', 'xxl', 'xl', 'lg', 'md', 'sm', 'xs'] as FontSize[];
 	return (
 		<Flex gap={1} className={proseBlockClassname}>
@@ -145,5 +148,117 @@ export const LineHeightChart = () => {
 				))}
 			</Flex>
 		</Flex>
+	);
+};
+
+export const ZIndexTokenChart = () => {
+	const zIndextokens: Record<
+		keyof typeof tokens.zIndex,
+		{ value: number; description: ReactNode }
+	> = {
+		base: {
+			value: tokens.zIndex.base,
+			description: 'The base z-index.',
+		},
+		elevated: {
+			value: tokens.zIndex.elevated,
+			description:
+				'Used to elevate elements above adjacent elements that sit on the base z-index.',
+		},
+		overlay: {
+			value: tokens.zIndex.overlay,
+			description: (
+				<Fragment>
+					Used for overlays in modals and other components that sit on top of
+					the page - e.g. <TextLink href="/components/modal">Modal</TextLink>,{' '}
+					<TextLink href="/components/filter-drawer">Filter drawer</TextLink>,{' '}
+					<TextLink href="/components/main-nav">Main nav (mobile)</TextLink>.
+				</Fragment>
+			),
+		},
+		dialog: {
+			value: tokens.zIndex.dialog,
+			description: (
+				<Fragment>
+					Used for the main dialog element in modals and other components that
+					sit on top of the - e.g.{' '}
+					<TextLink href="/components/modal">Modal</TextLink>,{' '}
+					<TextLink href="/components/filter-drawer">Filter drawer</TextLink>,{' '}
+					<TextLink href="/components/main-nav">Main nav (mobile)</TextLink>.
+				</Fragment>
+			),
+		},
+		popover: {
+			value: tokens.zIndex.popover,
+			description: (
+				<Fragment>
+					Used for popover elements - e.g. the calendar popover in the{' '}
+					<TextLink href="/components/date-picker">Date picker</TextLink>.
+				</Fragment>
+			),
+		},
+		skipLink: {
+			value: tokens.zIndex.skipLink,
+			description: (
+				<Fragment>
+					Used for focused{' '}
+					<TextLink href="/components/skip-link">Skip links</TextLink>.
+				</Fragment>
+			),
+		},
+	};
+	return (
+		<div className={proseBlockClassname}>
+			<TableWrapper>
+				<Table>
+					<TableCaption>All z-Index tokens</TableCaption>
+					<TableHead>
+						<tr>
+							<TableHeader scope="col" width="25%">
+								Token
+							</TableHeader>
+							<TableHeader scope="col" width="25%">
+								Value
+							</TableHeader>
+							<TableHeader scope="col" width="50%">
+								Description
+							</TableHeader>
+						</tr>
+					</TableHead>
+					<TableBody>
+						{Object.entries(zIndextokens).map(
+							([token, { value, description }]) => {
+								return (
+									<tr key={token}>
+										<TableCell>{token}</TableCell>
+										<TableCell>{value}</TableCell>
+										<TableCell>{description}</TableCell>
+									</tr>
+								);
+							}
+						)}
+					</TableBody>
+				</Table>
+			</TableWrapper>
+		</div>
+	);
+};
+
+export const ShadowTokenChart = () => {
+	const shadowTokens = ['sm', 'md', 'lg'] as const;
+	return (
+		<Columns cols={3} gap={1.5} className={proseBlockClassname}>
+			{shadowTokens.map((t) => (
+				<Flex
+					key={t}
+					paddingX={1}
+					paddingY={2}
+					rounded
+					css={{ boxShadow: tokens.shadow[t] }}
+				>
+					{t}
+				</Flex>
+			))}
+		</Columns>
 	);
 };

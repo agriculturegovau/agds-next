@@ -43,12 +43,7 @@ export const TOKEN_PAGES = {
 		label: 'Elevation',
 		pageTitle: 'Elevation tokens',
 		description:
-			'A set of predefined tokens for handling the relative distance between two surfaces along the z-axis.',
-	},
-	shadow: {
-		label: 'Shadow',
-		pageTitle: 'Shadow tokens',
-		description: 'A set of predefined drop shadows',
+			'A set of predefined tokens which are used to establish a sense of depth and perspective.',
 	},
 } as const;
 
