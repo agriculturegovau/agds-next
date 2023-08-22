@@ -120,8 +120,8 @@ export function ComboboxMulti<Option extends DefaultComboboxOption>({
 				case useCombobox.stateChangeTypes.InputBlur:
 					if (newSelectedItem) {
 						setSelectedItems([...selectedItems, newSelectedItem]);
+						setInputValue('');
 					}
-					setInputValue('');
 					break;
 				case useCombobox.stateChangeTypes.InputChange:
 					setInputValue(newInputValue);
