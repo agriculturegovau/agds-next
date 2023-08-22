@@ -3,7 +3,13 @@ import 'html-validate/jest';
 import userEvent from '@testing-library/user-event';
 import { axe, toHaveNoViolations } from 'jest-axe';
 import { useRef } from 'react';
-import { render, cleanup, renderHook, act } from '../../../../test-utils';
+import {
+	render,
+	cleanup,
+	renderHook,
+	act,
+	waitFor,
+} from '../../../../test-utils';
 import { ComboboxMulti, ComboboxMultiProps } from './ComboboxMulti';
 import { STATE_OPTIONS } from './test-utils';
 
@@ -65,9 +71,9 @@ describe('ComboboxMulti', () => {
 		expect(input).toHaveAttribute('aria-expanded', 'false');
 		if (!input) return;
 
-		// Focus the input
-		await act(async () => await input.focus());
-		expect(input).toHaveFocus();
+		// Click the input, which should focus the element
+		await act(async () => await input.click());
+		await waitFor(() => expect(input).toHaveFocus());
 		expect(input).toHaveAttribute('aria-expanded', 'true');
 
 		// All options should be visible

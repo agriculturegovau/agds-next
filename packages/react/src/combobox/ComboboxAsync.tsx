@@ -90,10 +90,12 @@ export function ComboboxAsync<Option extends DefaultComboboxOption>({
 						...changes,
 						inputValue: state.selectedItem?.label ?? '',
 					};
-				case useCombobox.stateChangeTypes.InputFocus:
+				case useCombobox.stateChangeTypes.InputClick:
 					if (!isAutocomplete) return changes;
-					return { ...changes, isOpen: false };
-
+					return {
+						...changes,
+						isOpen: false,
+					};
 				case useCombobox.stateChangeTypes.InputChange:
 					if (!isAutocomplete) return changes;
 					return {

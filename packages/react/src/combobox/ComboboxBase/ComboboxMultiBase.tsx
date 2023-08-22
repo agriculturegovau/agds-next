@@ -199,9 +199,10 @@ export function ComboboxMultiBase<Option extends DefaultComboboxOption>({
 								</Fragment>
 							)}
 							<ComboboxDropdownTrigger
-								disabled={disabled}
-								isOpen={combobox.isOpen}
-								{...combobox.getToggleButtonProps()}
+								{...combobox.getToggleButtonProps({
+									isOpen: combobox.isOpen,
+									disabled,
+								})}
 							/>
 						</ComboboxButtonContainer>
 					</Flex>
