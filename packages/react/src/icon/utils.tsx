@@ -8,6 +8,7 @@ import { ArrowUpDownIcon } from './icons/ArrowUpDownIcon';
 import { AvatarIcon } from './icons/AvatarIcon';
 import { ChartBarIcon } from './icons/ChartBarIcon';
 import { ChartLineIcon } from './icons/ChartLineIcon';
+import { CheckIcon } from './icons/CheckIcon';
 import { ChevronDownIcon } from './icons/ChevronDownIcon';
 import { ChevronLeftIcon } from './icons/ChevronLeftIcon';
 import { ChevronRightIcon } from './icons/ChevronRightIcon';
@@ -61,6 +62,7 @@ export const allIcons = {
 	AvatarIcon,
 	ChartBarIcon,
 	ChartLineIcon,
+	CheckIcon,
 	ChevronDownIcon,
 	ChevronLeftIcon,
 	ChevronRightIcon,
