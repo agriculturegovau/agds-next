@@ -2,6 +2,7 @@ import { PropsWithChildren } from 'react';
 import { boxPalette, tokens } from '../core';
 import { Box } from '../box';
 import { Flex } from '../flex';
+import { CheckIcon } from '../icon';
 import { switchTrackStyles } from './utils';
 
 export type SwitchSize = 'sm' | 'md';
@@ -56,12 +57,18 @@ type SwitchThumbProps = {
 	size: SwitchSize;
 };
 
+const ICON_SIZE_MAP = {
+	sm: { prop: 'sm', actual: '0.875rem' }, // 14px
+	md: { prop: 'md', actual: '1.375rem' }, // 22px
+} as const;
+
 export const SwitchThumb = ({ checked, size }: SwitchThumbProps) => {
 	const {
 		thumbCheckedPos,
 		borderWidth,
 		height: thumbSize,
 	} = switchTrackStyles[size];
+	const iconSize = ICON_SIZE_MAP[size];
 	return (
 		<Flex
 			as="span"
@@ -82,40 +89,15 @@ export const SwitchThumb = ({ checked, size }: SwitchThumbProps) => {
 				left: checked ? thumbCheckedPos : '0rem',
 			}}
 		>
-			{checked && <SwitchThumbIcon size={size} />}
+			{checked && (
+				<CheckIcon
+					weight="bold"
+					color="selected"
+					// This component requires a custom icon size
+					size={iconSize.prop}
+					css={{ width: iconSize.actual, height: iconSize.actual }}
+				/>
+			)}
 		</Flex>
-	);
-};
-
-const switchThumbIconSizeMap = {
-	md: {
-		width: 18,
-		height: 14,
-		stroke: 3,
-	},
-	sm: {
-		width: 10,
-		height: 7,
-		stroke: 4,
-	},
-};
-
-const SwitchThumbIcon = ({ size }: { size: SwitchSize }) => {
-	const { height, width, stroke } = switchThumbIconSizeMap[size];
-	return (
-		<svg
-			width="18"
-			height="14"
-			viewBox="0 0 18 14"
-			fill="none"
-			css={{ width, height }}
-			stroke={boxPalette.selected}
-			strokeWidth={stroke}
-			strokeLinecap="round"
-			strokeLinejoin="round"
-			xmlns="http://www.w3.org/2000/svg"
-		>
-			<path d="M2 7.71429L6.15385 12L15.8462 2" />
-		</svg>
 	);
 };
