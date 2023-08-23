@@ -46,7 +46,7 @@ export default function TokensTypographyPage() {
 					</p>
 
 					<p>
-						Using the design system's typography values means any object
+						Using the design system&apos;s typography values means any object
 						containing text is more likely to align with another element. This
 						appearance of a baseline grid is created by automatically rounding
 						the line-heights to the nearest grid value 4px, then converting them
