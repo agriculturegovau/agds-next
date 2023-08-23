@@ -8,3 +8,4 @@ export * from './TableHeaderSortable';
 export * from './TableRow';
 export * from './TableCell';
 export * from './TableWrapper';
+export * from './TableBatchActions';

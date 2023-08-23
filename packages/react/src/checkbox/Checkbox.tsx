@@ -16,6 +16,7 @@ import { CheckboxSize } from './utils';
 type NativeCheckboxProps = InputHTMLAttributes<HTMLInputElement>;
 
 type BaseCheckboxProps = PropsWithChildren<{
+	'aria-label'?: NativeCheckboxProps['aria-label'];
 	autoFocus?: NativeCheckboxProps['autoFocus'];
 	disabled?: NativeCheckboxProps['disabled'];
 	checked?: NativeCheckboxProps['checked'];
@@ -88,9 +89,11 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
 					size={size}
 					indeterminate={indeterminate}
 				/>
-				<CheckboxLabel disabled={disabled} size={size}>
-					{children}
-				</CheckboxLabel>
+				{children ? (
+					<CheckboxLabel disabled={disabled} size={size}>
+						{children}
+					</CheckboxLabel>
+				) : null}
 			</CheckboxContainer>
 		);
 	}

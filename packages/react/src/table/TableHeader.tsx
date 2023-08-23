@@ -3,6 +3,7 @@ import { Box } from '../box';
 import { ResponsiveProp } from '../core';
 
 export type TableHeaderProps = PropsWithChildren<{
+	'aria-label'?: string;
 	/** Can be used to conditionally hide or show table cells at different breakpoints. */
 	display?: ResponsiveProp<'none' | 'table-cell'>;
 	/** Defines the cells that the header (defined in the <th>) element relates to. */
@@ -27,9 +28,7 @@ export const TableHeader = ({
 			fontWeight="bold"
 			focus
 			width={width}
-			css={{
-				textAlign,
-			}}
+			css={{ textAlign }}
 			{...props}
 		>
 			{children}
