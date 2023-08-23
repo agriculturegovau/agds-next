@@ -16,6 +16,7 @@ import { mdxComponents } from '../../../components/mdxComponents';
 import { DocumentTitle } from '../../../components/DocumentTitle';
 import { PkgLayout } from '../../../components/PkgLayout';
 import { generateToc } from '../../../lib/generateToc';
+import { getPattern, Pattern } from '../../../lib/mdx/patterns';
 
 export default function Packages({
 	pkg,
@@ -23,6 +24,7 @@ export default function Packages({
 	breadcrumbs,
 	toc,
 	source,
+	relatedPatterns,
 	relatedComponents,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
 	return (
@@ -61,6 +63,19 @@ export default function Packages({
 							</ul>
 						</Fragment>
 					) : null}
+					{relatedPatterns?.length ? (
+						<Fragment>
+							<h2 id="related-patterns">Related patterns</h2>
+							<ul>
+								{relatedPatterns.map(({ slug, title, description }) => (
+									<li key={slug}>
+										<TextLink href={`/patterns/${slug}`}>{title}</TextLink>{' '}
+										&ndash; {description}
+									</li>
+								))}
+							</ul>
+						</Fragment>
+					) : null}
 				</Prose>
 			</PkgLayout>
 		</>
@@ -76,6 +91,7 @@ export const getStaticProps: GetStaticProps<
 		source: NonNullable<
 			Awaited<ReturnType<typeof getPkgDocsContent>>
 		>['source'];
+		relatedPatterns: Awaited<Pattern[]> | null;
 		relatedComponents: Awaited<Pkg[]> | null;
 	},
 	{ slug: string }
@@ -93,6 +109,20 @@ export const getStaticProps: GetStaticProps<
 	const navLinks = await getPkgNavLinks();
 	const breadcrumbs = await getPkgBreadcrumbs(slug);
 	const toc = await generateToc(pkgContent.content);
+
+	// Get related patterns
+	const relatedPatterns = pkg.relatedPatterns?.length
+		? await Promise.all(pkg.relatedPatterns.sort().map(getPattern))
+		: null;
+	if (relatedPatterns?.length) {
+		toc.push({
+			title: 'Related patterns',
+			slug: 'related-patterns',
+			id: 'related-patterns',
+			level: 2,
+			items: [],
+		});
+	}
 
 	// Get related components
 	const relatedComponents = pkg.relatedComponents?.length
@@ -115,6 +145,7 @@ export const getStaticProps: GetStaticProps<
 			breadcrumbs,
 			toc,
 			source: pkgContent.source,
+			relatedPatterns,
 			relatedComponents,
 		},
 	};
