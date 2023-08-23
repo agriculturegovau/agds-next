@@ -8,7 +8,7 @@ relatedComponents: ['accordion', 'tabs']
 ---
 
 ```jsx live
-<Details label="Details">
+<Details label="How does the 120-day processing time work?" iconBefore>
 	<Text as="p">
 		This is a small paragraph of text that is supplementary to the main page
 		content.
@@ -18,29 +18,23 @@ relatedComponents: ['accordion', 'tabs']
 
 Information is visible only when the widget is toggled into an "open" state. Unlike Accordion, inner content is surfacable in a page search (cmd/ctrl-f).
 
+Details should only be used for 1 piece of content. If more sections are required, use an Accordion or Tab.
+
+Setting the `iconBefore` prop to `true` will render the `InfoIcon` before the label.
+
 <DoHeading />
 
 - use in forms to help explain information only some users need
-- ensure links open on a new page
 - position immediately after the related content
-- use instead of Tool tip or Modal
+- use instead of Tool tip or Modal where possible
+- use short sentences
 - include a clear description
+- consider using an accordion if there are multiple paragraphs of content
 - use sparingly as they disrupt the user flow.
 
 <DontHeading />
 
-- use for hint text and other important information
-- use more than 1 per page.
-
-## With icon
-
-Setting the `iconBefore` prop to `true` will render the `InfoIcon` before the label.
-
-```jsx live
-<Details label="Details" iconBefore>
-	<Text as="p">
-		This is a small paragraph of text that is supplementary to the main page
-		content.
-	</Text>
-</Details>
-```
+- use for information all users need to read
+- use more than 1 per page
+- include other components inside a Details area
+- use a dark theme callout on a light theme.
