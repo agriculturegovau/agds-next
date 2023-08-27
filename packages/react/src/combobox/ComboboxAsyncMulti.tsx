@@ -126,11 +126,13 @@ export function ComboboxAsyncMulti<Option extends DefaultComboboxOption>({
 		onIsOpenChange,
 		onStateChange({ type, selectedItem: newSelectedItem }) {
 			switch (type) {
-				case useCombobox.stateChangeTypes.FunctionSelectItem:
+				case useCombobox.stateChangeTypes.InputKeyDownEnter:
 				case useCombobox.stateChangeTypes.ItemClick:
 				case useCombobox.stateChangeTypes.InputBlur:
-					if (newSelectedItem)
+					if (newSelectedItem) {
 						setSelectedItems([...selectedItems, newSelectedItem]);
+						setInputValue('');
+					}
 					break;
 				default:
 					break;

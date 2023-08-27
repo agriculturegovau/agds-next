@@ -3,7 +3,13 @@ import '@testing-library/jest-dom';
 import 'html-validate/jest';
 import { axe, toHaveNoViolations } from 'jest-axe';
 import userEvent from '@testing-library/user-event';
-import { render, cleanup, act, renderHook } from '../../../../test-utils';
+import {
+	render,
+	cleanup,
+	act,
+	renderHook,
+	waitFor,
+} from '../../../../test-utils';
 import { Combobox, ComboboxProps } from './Combobox';
 import { STATE_OPTIONS, Option } from './test-utils';
 
@@ -51,9 +57,11 @@ describe('Combobox', () => {
 		expect(input).toBeInTheDocument();
 		if (!input) return;
 
-		// Focus the input and start type a search term
-		act(() => input.focus());
-		expect(input).toHaveFocus();
+		// Click the input, which should focus the element
+		await act(async () => await input.click());
+		await waitFor(() => expect(input).toHaveFocus());
+		expect(input).toHaveAttribute('aria-expanded', 'true');
+
 		await userEvent.type(input, 'capital');
 		expect(input.value).toBe('capital');
 

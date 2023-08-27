@@ -65,6 +65,7 @@ describe('Autocomplete', () => {
 		// Focus the input
 		await act(async () => await input.focus());
 		expect(input).toHaveFocus();
+		expect(input).toHaveAttribute('aria-expanded', 'false');
 
 		expect(loadOptions).not.toHaveBeenCalled();
 
