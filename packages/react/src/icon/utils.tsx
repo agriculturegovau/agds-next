@@ -34,6 +34,7 @@ import { PlusIcon } from './icons/PlusIcon';
 import { InfoFilledIcon } from './icons/InfoFilledIcon';
 import { InstagramIcon } from './icons/InstagramIcon';
 import { MenuIcon } from './icons/MenuIcon';
+import { MinusIcon } from './icons/MinusIcon';
 import { LinkedInIcon } from './icons/LinkedInIcon';
 import { PrintIcon } from './icons/PrintIcon';
 import { ProgressBlockedIcon } from './icons/ProgressBlockedIcon';
@@ -88,6 +89,7 @@ export const allIcons = {
 	InstagramIcon,
 	LinkedInIcon,
 	MenuIcon,
+	MinusIcon,
 	PrintIcon,
 	PlusIcon,
 	ProgressBlockedIcon,
