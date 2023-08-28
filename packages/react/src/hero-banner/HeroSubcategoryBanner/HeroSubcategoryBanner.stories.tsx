@@ -1,4 +1,4 @@
-import { ComponentMeta, Story } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react';
 import { Breadcrumbs } from '../../breadcrumbs';
 import { Box } from '../../box';
 import {
@@ -7,52 +7,54 @@ import {
 } from './HeroSubcategoryBanner';
 import { HeroSubcategoryBannerTitle } from './HeroSubcategoryBannerTitle';
 
-export default {
-	title: 'layout/HeroBanner/HeroSubcategoryBanner',
-	component: HeroSubcategoryBanner,
-	subcomponents: {
-		HeroSubcategoryBannerTitle,
-	},
-	argTypes: {
-		title: { control: 'text' },
-		subtitle: { control: 'text' },
-	},
-} as ComponentMeta<typeof HeroSubcategoryBanner>;
-
 type HeroSubcategoryBannerStoryProps = HeroSubcategoryBannerProps & {
 	title: string;
 	subtitle: string;
 };
 
-const Template: Story<HeroSubcategoryBannerStoryProps> = (args) => (
-	<HeroSubcategoryBanner {...args}>
-		<Breadcrumbs
-			links={[
-				{ href: '#', label: 'Section 1' },
-				{ href: '#', label: 'Category page' },
-				{ label: 'Subcategory page' },
-			]}
-		/>
-		<HeroSubcategoryBannerTitle>{args.title}</HeroSubcategoryBannerTitle>
-	</HeroSubcategoryBanner>
-);
+function Template({ title, ...props }: HeroSubcategoryBannerStoryProps) {
+	return (
+		<HeroSubcategoryBanner {...props}>
+			<Breadcrumbs
+				links={[
+					{ href: '#', label: 'Section 1' },
+					{ href: '#', label: 'Category page' },
+					{ label: 'Subcategory page' },
+				]}
+			/>
+			<HeroSubcategoryBannerTitle>{title}</HeroSubcategoryBannerTitle>
+		</HeroSubcategoryBanner>
+	);
+}
 
-const commonArgs = {
-	title: 'Subcategory banner title - xxl/display (H1)',
+const meta: Meta<HeroSubcategoryBannerStoryProps> = {
+	title: 'layout/HeroBanner/HeroSubcategoryBanner',
+	component: HeroSubcategoryBanner,
+	parameters: {
+		layout: 'fullscreen',
+	},
+	args: {
+		title: 'Subcategory banner title - xxl/display (H1)',
+	},
+	render: Template,
 };
 
-export const Basic = Template.bind({});
-Basic.args = {
-	...commonArgs,
+export default meta;
+
+type Story = StoryObj<HeroSubcategoryBannerStoryProps>;
+
+export const Basic: Story = {
+	args: {},
 };
 
-export const OnBodyAlt: Story<HeroSubcategoryBannerStoryProps> = (args) => (
-	<Box paddingY={3} background="bodyAlt">
-		<Template {...args} />
-	</Box>
-);
-OnBodyAlt.storyName = 'On bodyAlt background';
-OnBodyAlt.args = {
-	...commonArgs,
-	background: 'body',
+export const OnBodyAlt: Story = {
+	name: 'On bodyAlt background',
+	args: {
+		background: 'body',
+	},
+	render: (args) => (
+		<Box paddingY={3} background="bodyAlt">
+			<Template {...args} />
+		</Box>
+	),
 };
