@@ -25,12 +25,14 @@ import {
 	APP_LAYOUT_DESKTOP_BREAKPOINT,
 	APP_LAYOUT_SIDEBAR_WIDTH,
 } from './utils';
+import { useAppLayoutSidebarWidth } from './AppLayoutSidebar';
 
 export type AppLayoutSidebarDialogProps = PropsWithChildren<{}>;
 
 export function AppLayoutSidebarDialog({
 	children,
 }: AppLayoutSidebarDialogProps) {
+	const width = useAppLayoutSidebarWidth();
 	const { isMobileMenuOpen, closeMobileMenu } = useAppLayoutContext();
 
 	// Polyfill usage of `aria-modal`
@@ -76,7 +78,7 @@ export function AppLayoutSidebarDialog({
 								role="dialog"
 								aria-modal="true"
 								background="shade"
-								width={APP_LAYOUT_SIDEBAR_WIDTH}
+								width={APP_LAYOUT_SIDEBAR_WIDTH[width]}
 								css={{
 									position: 'fixed',
 									zIndex: tokens.zIndex.dialog,

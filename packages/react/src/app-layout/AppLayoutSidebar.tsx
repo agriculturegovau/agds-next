@@ -1,4 +1,4 @@
-import { Fragment } from 'react';
+import { createContext, useContext } from 'react';
 import { findBestMatch, tokens } from '../core';
 import { Stack } from '../stack';
 import { AppLayoutSidebarNav, NavItem } from './AppLayoutSidebarNav';
@@ -14,13 +14,19 @@ export type AppLayoutSidebarProps = {
 	activePath?: string;
 	/** Groups of navigation items to display. */
 	items: NavItem[][];
+	/** TODO naming seems wrong */
+	width?: 'slim' | 'default';
 };
 
-export function AppLayoutSidebar({ activePath, items }: AppLayoutSidebarProps) {
+export function AppLayoutSidebar({
+	activePath,
+	items,
+	width = 'default',
+}: AppLayoutSidebarProps) {
 	const { focusMode } = useAppLayoutContext();
 	const bestMatch = findBestMatch(items.flat(), activePath);
 	return (
-		<Fragment>
+		<AppLayoutSidebarWidthContext.Provider value={width}>
 			{/* Desktop */}
 			<Stack
 				as="aside"
@@ -31,22 +37,28 @@ export function AppLayoutSidebar({ activePath, items }: AppLayoutSidebarProps) {
 				flexGrow={1}
 				css={{
 					display: 'none',
-					width: APP_LAYOUT_SIDEBAR_WIDTH,
+					width: APP_LAYOUT_SIDEBAR_WIDTH[width],
 					[tokens.mediaQuery.min[APP_LAYOUT_DESKTOP_BREAKPOINT]]: {
 						display: focusMode ? 'none' : 'flex',
 					},
 				}}
 			>
-				<AppLayoutSidebarNav
-					activePath={bestMatch}
-					items={items}
-					css={{ position: 'sticky', top: 0 }}
-				/>
+				<AppLayoutSidebarNav activePath={bestMatch} items={items} />
 			</Stack>
 			{/* Mobile */}
 			<AppLayoutSidebarDialog>
 				<AppLayoutSidebarNav activePath={bestMatch} items={items} />
 			</AppLayoutSidebarDialog>
-		</Fragment>
+		</AppLayoutSidebarWidthContext.Provider>
 	);
+}
+
+// Sidebar width context
+export const AppLayoutSidebarWidthContext = createContext<
+	'slim' | 'default' | undefined
+>(undefined);
+
+export function useAppLayoutSidebarWidth() {
+	const value = useContext(AppLayoutSidebarWidthContext);
+	return value || 'default';
 }

@@ -1,10 +1,7 @@
 import { PropsWithChildren } from 'react';
 import { mapResponsiveProp, mq, useTernaryState } from '../core';
 import { AppLayoutContext } from './AppLayoutContext';
-import {
-	APP_LAYOUT_DESKTOP_BREAKPOINT,
-	APP_LAYOUT_SIDEBAR_WIDTH,
-} from './utils';
+import { APP_LAYOUT_DESKTOP_BREAKPOINT } from './utils';
 
 export type AppLayoutProps = PropsWithChildren<{
 	/** Set to `true` while users are completing multi-page forms to reduce distractions. When true, the app layout sidebar will not be rendered. */
@@ -33,6 +30,7 @@ type AppLayoutGridProps = PropsWithChildren<{
 }>;
 
 function AppLayoutGrid({ children, focusMode }: AppLayoutGridProps) {
+	console.log({ focusMode });
 	return (
 		<div
 			css={mq({
@@ -42,9 +40,7 @@ function AppLayoutGrid({ children, focusMode }: AppLayoutGridProps) {
 				gridTemplateColumns: mapResponsiveProp({
 					// There is no sidebar in focus mode or on mobile
 					xs: '1fr',
-					[APP_LAYOUT_DESKTOP_BREAKPOINT]: focusMode
-						? '1fr'
-						: `${APP_LAYOUT_SIDEBAR_WIDTH} 1fr`,
+					[APP_LAYOUT_DESKTOP_BREAKPOINT]: focusMode ? '1fr' : `auto 1fr`,
 				}),
 			})}
 		>
