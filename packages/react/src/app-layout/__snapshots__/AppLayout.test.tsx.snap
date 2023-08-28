@@ -13,7 +13,11 @@ exports[`AppLayout renders correctly 1`] = `
         class="css-k6tsvc-boxStyles"
       >
         <a
+<<<<<<< HEAD
           class="css-1qgwds3-boxStyles-AppLayoutHeaderBrand"
+=======
+          class="css-10e1rls-boxStyles-AppLayoutHeaderBrand"
+>>>>>>> dafd796774 (add business name to sidebar)
           href="#"
         >
           <svg
@@ -70,8 +74,14 @@ exports[`AppLayout renders correctly 1`] = `
             </span>
           </div>
         </a>
+<<<<<<< HEAD
         <div
           class="css-10mrbgs-boxStyles"
+=======
+        <a
+          class="css-32sbo0-boxStyles-AppLayoutHeaderAccount"
+          href="/account/preferences"
+>>>>>>> dafd796774 (add business name to sidebar)
         >
           <button
             aria-controls="dropdown-menu-:r0:-panel"
@@ -132,7 +142,7 @@ exports[`AppLayout renders correctly 1`] = `
         class="css-o9emw-boxStyles-AppLayoutHeaderNav"
       >
         <button
-          class="css-zbjn2b-BaseButton-boxStyles-AppLayoutHeaderNavMenuButton"
+          class="css-lha977-BaseButton-boxStyles-AppLayoutHeaderNavMenuButton"
           type="button"
         >
           <svg
@@ -160,6 +170,7 @@ exports[`AppLayout renders correctly 1`] = `
             Menu
           </span>
         </button>
+<<<<<<< HEAD
         <button
           aria-controls="dropdown-menu-:r1:-panel"
           aria-expanded="false"
@@ -167,6 +178,11 @@ exports[`AppLayout renders correctly 1`] = `
           class="css-v49j9x-BaseButton-boxStyles-AppLayoutHeaderAccountDropdownButton"
           id="dropdown-menu-:r1:-button"
           type="button"
+=======
+        <a
+          class="css-ewmtp9-boxStyles-AppLayoutHeaderAccount"
+          href="/account/preferences"
+>>>>>>> dafd796774 (add business name to sidebar)
         >
           <span
             class="css-avudkd-VisuallyHidden"
@@ -220,13 +236,76 @@ exports[`AppLayout renders correctly 1`] = `
     >
       <nav
         aria-label="main"
-        class="css-1gsgqbm-boxStyles"
+        class="css-wutooc-boxStyles"
       >
         <ul
           class="css-o80hmi-boxStyles"
         >
           <li
-            class="css-147t09t-AppLayoutSidebarNavItemInner"
+            class="css-hjgjnj-AppLayoutSidebarNavItemInner"
+          >
+            <a
+              href="/account"
+            >
+              <svg
+                aria-hidden="true"
+                class="css-qhpjst-Icon"
+                clip-rule="evenodd"
+                focusable="false"
+                height="24"
+                role="img"
+                viewBox="0 0 24 24"
+                width="24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <polyline
+                  points="11 17 6 12 11 7"
+                />
+                <polyline
+                  points="18 17 13 12 18 7"
+                />
+              </svg>
+              <span>
+                Back to my account
+              </span>
+            </a>
+          </li>
+          <li
+            aria-hidden="true"
+            class="css-1dz6j0b-boxStyles"
+          >
+            <hr
+              class="css-166wurb-AppLayoutSidebarNavDivider"
+            />
+          </li>
+          <li
+            class="css-hjgjnj-AppLayoutSidebarNavItemInner"
+          >
+            <span
+              class="css-1i7cdx8-boxStyles"
+            >
+              <span
+                class="css-1yrx73q-boxStyles-Text"
+              >
+                Transcontinental Consolidated Agricultural Export Group of Australia PTY LTD
+              </span>
+              <span
+                class="css-1lp7dl8-boxStyles-Text"
+              >
+                ABN: 00 000 000 000
+              </span>
+            </span>
+          </li>
+          <li
+            aria-hidden="true"
+            class="css-1dz6j0b-boxStyles"
+          >
+            <hr
+              class="css-166wurb-AppLayoutSidebarNavDivider"
+            />
+          </li>
+          <li
+            class="css-hjgjnj-AppLayoutSidebarNavItemInner"
           >
             <a
               href="/"
@@ -255,7 +334,7 @@ exports[`AppLayout renders correctly 1`] = `
             </a>
           </li>
           <li
-            class="css-1eeqpv2-AppLayoutSidebarNavItemInner"
+            class="css-13k7gd4-AppLayoutSidebarNavItemInner"
           >
             <a
               aria-current="page"
@@ -282,7 +361,7 @@ exports[`AppLayout renders correctly 1`] = `
             </a>
           </li>
           <li
-            class="css-147t09t-AppLayoutSidebarNavItemInner"
+            class="css-hjgjnj-AppLayoutSidebarNavItemInner"
           >
             <a
               href="/intelligence"
@@ -308,7 +387,7 @@ exports[`AppLayout renders correctly 1`] = `
             </a>
           </li>
           <li
-            class="css-147t09t-AppLayoutSidebarNavItemInner"
+            class="css-hjgjnj-AppLayoutSidebarNavItemInner"
           >
             <a
               href="/compliance"
@@ -340,14 +419,14 @@ exports[`AppLayout renders correctly 1`] = `
           </li>
           <li
             aria-hidden="true"
-            class="css-f0nqxn-boxStyles"
+            class="css-boytaj-boxStyles"
           >
             <hr
               class="css-166wurb-AppLayoutSidebarNavDivider"
             />
           </li>
           <li
-            class="css-1u0qk1y-AppLayoutSidebarNavItemInner"
+            class="css-1d44z1e-AppLayoutSidebarNavItemInner"
           >
             <a
               href="/account/messages"
@@ -386,7 +465,7 @@ exports[`AppLayout renders correctly 1`] = `
             </a>
           </li>
           <li
-            class="css-147t09t-AppLayoutSidebarNavItemInner"
+            class="css-hjgjnj-AppLayoutSidebarNavItemInner"
           >
             <a
               href="/account/settings"
@@ -417,7 +496,7 @@ exports[`AppLayout renders correctly 1`] = `
             </a>
           </li>
           <li
-            class="css-147t09t-AppLayoutSidebarNavItemInner"
+            class="css-hjgjnj-AppLayoutSidebarNavItemInner"
           >
             <a
               href="/help"
@@ -444,14 +523,14 @@ exports[`AppLayout renders correctly 1`] = `
           </li>
           <li
             aria-hidden="true"
-            class="css-f0nqxn-boxStyles"
+            class="css-1dz6j0b-boxStyles"
           >
             <hr
               class="css-166wurb-AppLayoutSidebarNavDivider"
             />
           </li>
           <li
-            class="css-147t09t-AppLayoutSidebarNavItemInner"
+            class="css-hjgjnj-AppLayoutSidebarNavItemInner"
           >
             <button
               class="css-6e6ykx-BaseButton"
@@ -520,7 +599,7 @@ exports[`AppLayout renders correctly 1`] = `
                     class="css-79i25n-boxStyles"
                   >
                     <a
-                      class="css-ma0bjl-TextLink"
+                      class="css-38ppen-TextLink"
                       href="/"
                     >
                       Home

@@ -1,3 +1,5 @@
+import { Stack } from '../stack';
+import { Text } from '../text';
 import { NotificationBadge } from '../notification-badge';
 import { VisuallyHidden } from '../a11y';
 import {
@@ -10,6 +12,7 @@ import {
 	SettingsIcon,
 	FactoryIcon,
 	AvatarIcon,
+	ChevronsLeftIcon,
 } from '../icon';
 import {
 	DropdownMenuDivider,
@@ -22,6 +25,28 @@ import {
 } from '../dropdown-menu';
 
 export const navigationItems = [
+	[
+		{
+			label: 'Back to my account',
+			icon: ChevronsLeftIcon,
+			href: '/account',
+		},
+	],
+	[
+		{
+			label: (
+				<Stack as="span" gap={0.25}>
+					<Text fontWeight="bold" fontSize="xs">
+						Transcontinental Consolidated Agricultural Export Group of Australia
+						PTY LTD
+					</Text>
+					<Text color="muted" fontSize="xs">
+						ABN: 00 000 000 000
+					</Text>
+				</Stack>
+			),
+		},
+	],
 	[
 		{
 			label: 'Dashboard',

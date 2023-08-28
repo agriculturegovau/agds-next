@@ -3,6 +3,7 @@ import {
 	boxPalette,
 	LinkProps,
 	mapSpacing,
+	packs,
 	tokens,
 	useLinkComponent,
 } from '../core';
@@ -32,9 +33,11 @@ export function AppLayoutSidebarNav({
 	items,
 }: AppLayoutSidebarNavProps) {
 	return (
-		<Flex as="nav" flexDirection="column" aria-label="main" paddingY={1.5}>
+		<Flex as="nav" flexDirection="column" aria-label="main" paddingBottom={1.5}>
 			<Flex as="ul" flexDirection="column">
 				{items.map((group, idx, arr) => {
+					const groupHasSingleItem = group.length === 1;
+					const nextGroupHasSingleItem = items[idx + 1]?.length === 1;
 					const isLastItem = idx === arr.length - 1;
 					return (
 						<Fragment key={idx}>
@@ -45,7 +48,11 @@ export function AppLayoutSidebarNav({
 									activePath={activePath}
 								/>
 							))}
-							{!isLastItem ? <AppLayoutSidebarNavDivider /> : null}
+							{!isLastItem ? (
+								<AppLayoutSidebarNavDivider
+									disablePaddingY={groupHasSingleItem || nextGroupHasSingleItem}
+								/>
+							) : null}
 						</Fragment>
 					);
 				})}
@@ -82,16 +89,24 @@ function AppLayoutSidebarNavListItem({
 		);
 	}
 
+	if ('onClick' in item) {
+		return (
+			<AppLayoutSidebarNavItemInner
+				isActive={false}
+				hasEndElement={Boolean(endElement)}
+			>
+				<BaseButton {...restItemProps}>
+					{Icon ? <Icon color="inherit" /> : null}
+					<span>{label}</span>
+					{endElement}
+				</BaseButton>
+			</AppLayoutSidebarNavItemInner>
+		);
+	}
+
 	return (
-		<AppLayoutSidebarNavItemInner
-			isActive={false}
-			hasEndElement={Boolean(endElement)}
-		>
-			<BaseButton {...restItemProps}>
-				{Icon ? <Icon color="inherit" /> : null}
-				<span>{label}</span>
-				{endElement}
-			</BaseButton>
+		<AppLayoutSidebarNavItemInner isActive={false} hasEndElement={false}>
+			{label}
 		</AppLayoutSidebarNavItemInner>
 	);
 }
@@ -109,24 +124,28 @@ function AppLayoutSidebarNavItemInner({
 	return (
 		<li
 			css={{
-				' a': {
+				'> a': {
 					textDecoration: 'none',
 				},
 
-				' a, button': {
+				'> a, > button, > span': {
+					width: '100%',
+					boxSizing: 'border-box',
+					wordBreak: 'break-word',
+					paddingTop: mapSpacing(1),
+					paddingBottom: mapSpacing(1),
+					paddingLeft: mapSpacing(1.5),
+					paddingRight: mapSpacing(1.5),
+				},
+
+				'> a, > button': {
+					position: 'relative',
 					display: 'flex',
 					alignItems: 'center',
 					gap: mapSpacing(1),
-					width: '100%',
-					boxSizing: 'border-box',
-					paddingLeft: mapSpacing(1.5),
-					paddingRight: mapSpacing(1.5),
-					paddingTop: mapSpacing(1),
-					paddingBottom: mapSpacing(1),
 					color: boxPalette[isActive ? 'foregroundText' : 'foregroundAction'],
 
 					...(isActive && {
-						position: 'relative',
 						fontWeight: tokens.fontWeight.bold,
 						background: boxPalette.backgroundShadeAlt,
 						color: boxPalette.foregroundText,
@@ -136,9 +155,9 @@ function AppLayoutSidebarNavItemInner({
 							top: 0,
 							left: 0,
 							bottom: 0,
-							borderLeftWidth: tokens.borderWidth.xxl,
 							borderLeftStyle: 'solid',
 							borderLeftColor: boxPalette.selected,
+							borderLeftWidth: tokens.borderWidth.xxl,
 						},
 					}),
 
@@ -151,9 +170,7 @@ function AppLayoutSidebarNavItemInner({
 					'&:hover': {
 						background: boxPalette.backgroundShadeAlt,
 						color: boxPalette.foregroundText,
-						'& > span:first-of-type': {
-							textDecoration: 'underline',
-						},
+						'& > span:first-of-type': packs.underline,
 					},
 
 					...focusStyles,
@@ -165,9 +182,13 @@ function AppLayoutSidebarNavItemInner({
 	);
 }
 
-function AppLayoutSidebarNavDivider() {
+function AppLayoutSidebarNavDivider({
+	disablePaddingY,
+}: {
+	disablePaddingY: boolean;
+}) {
 	return (
-		<Box as="li" paddingY={1} paddingX={1.5} aria-hidden="true">
+		<Box as="li" paddingY={disablePaddingY ? 0 : 1} aria-hidden="true">
 			<hr
 				css={{
 					boxSizing: 'content-box',
