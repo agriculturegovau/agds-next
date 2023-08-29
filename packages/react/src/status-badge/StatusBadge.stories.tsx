@@ -7,6 +7,7 @@ import {
 	TableHead,
 	TableHeader,
 	TableWrapper,
+	TableRow,
 } from '../table';
 import { TextLink } from '../text-link';
 import { StatusBadge } from './StatusBadge';
@@ -135,17 +136,17 @@ export const InTable = () => {
 			<Table>
 				<TableCaption>Corrective action requests (CAR)</TableCaption>
 				<TableHead>
-					<tr>
+					<TableRow>
 						<TableHeader>CAR number</TableHeader>
 						<TableHeader>Establishment name</TableHeader>
 						<TableHeader>Activity and severity</TableHeader>
 						<TableHeader>Status</TableHeader>
 						<TableHeader>Actions</TableHeader>
-					</tr>
+					</TableRow>
 				</TableHead>
 				<TableBody>
 					{data.map(({ id, businessName, status, type }) => (
-						<tr key={id}>
+						<TableRow key={id}>
 							<TableCell>{id}</TableCell>
 							<TableCell>{businessName}</TableCell>
 							<TableCell>{type}</TableCell>
@@ -161,7 +162,7 @@ export const InTable = () => {
 									{status == 'Closed' ? 'View' : 'Manage'}
 								</TextLink>
 							</TableCell>
-						</tr>
+						</TableRow>
 					))}
 				</TableBody>
 			</Table>

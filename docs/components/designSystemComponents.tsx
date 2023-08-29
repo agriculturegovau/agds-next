@@ -162,6 +162,7 @@ export {
 	Table,
 	TableBody,
 	TableCaption,
+	TableRow,
 	TableCell,
 	TableHeader,
 	TableHeaderSortable,

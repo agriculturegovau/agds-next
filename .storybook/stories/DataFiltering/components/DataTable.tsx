@@ -13,6 +13,7 @@ import {
 	TableHeaderProps,
 	TableHeaderSortable,
 	TableWrapper,
+	TableRow,
 } from '@ag.ds-next/react/table';
 import { TextLink } from '@ag.ds-next/react/text-link';
 import { Text } from '@ag.ds-next/react/text';
@@ -76,7 +77,7 @@ export const DataTable = forwardRef<HTMLTableElement>(
 						</VisuallyHidden>
 					</TableCaption>
 					<TableHead>
-						<tr>
+						<TableRow>
 							{headers.map(
 								({
 									label,
@@ -121,13 +122,13 @@ export const DataTable = forwardRef<HTMLTableElement>(
 									);
 								}
 							)}
-						</tr>
+						</TableRow>
 					</TableHead>
 					<TableBody>
 						{loading ? (
 							<Fragment>
 								{Array.from(Array(pagination.perPage).keys()).map((i) => (
-									<tr key={i}>
+									<TableRow key={i}>
 										<TableCell>
 											<SkeletonText />
 											<VisuallyHidden>Loading</VisuallyHidden>
@@ -148,7 +149,7 @@ export const DataTable = forwardRef<HTMLTableElement>(
 											<SkeletonBox height={32} />
 											<VisuallyHidden>Loading</VisuallyHidden>
 										</TableCell>
-									</tr>
+									</TableRow>
 								))}
 							</Fragment>
 						) : (
@@ -167,7 +168,7 @@ export const DataTable = forwardRef<HTMLTableElement>(
 										// Adding 1 because the table header row is the first row
 										const rowIndex = index + 1;
 										return (
-											<tr key={id} aria-rowindex={rowIndex}>
+											<TableRow key={id} aria-rowindex={rowIndex}>
 												<TableCell as="th" scope="row">
 													<TextLink href={`#${id}`}>{businessName}</TextLink>
 												</TableCell>
@@ -184,7 +185,7 @@ export const DataTable = forwardRef<HTMLTableElement>(
 														{...STATUS_MAP[status]}
 													/>
 												</TableCell>
-											</tr>
+											</TableRow>
 										);
 									}
 								)}

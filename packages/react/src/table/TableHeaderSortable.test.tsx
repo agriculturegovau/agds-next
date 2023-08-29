@@ -4,6 +4,7 @@ import { axe, toHaveNoViolations } from 'jest-axe';
 import { cleanup, render } from '../../../../test-utils';
 import { Table } from './Table';
 import { TableHead } from './TableHead';
+import { TableRow } from './TableRow';
 import {
 	TableHeaderSortable,
 	TableHeaderSortableProps,
@@ -18,9 +19,9 @@ function renderTableHeaderSortable(props: TableHeaderSortableProps) {
 	return render(
 		<Table>
 			<TableHead>
-				<tr>
+				<TableRow>
 					<TableHeaderSortable {...props}>Example</TableHeaderSortable>
-				</tr>
+				</TableRow>
 			</TableHead>
 		</Table>
 	);

@@ -14,6 +14,7 @@ import {
 	TableHead,
 	TableHeader,
 	TableWrapper,
+	TableRow,
 } from '@ag.ds-next/react/table';
 import { TextLink } from './designSystemComponents';
 
@@ -29,16 +30,16 @@ export const BreakpointsTokenChart = () => {
 				<Table>
 					<TableCaption>Our Breakpoint tokens</TableCaption>
 					<TableHead>
-						<tr>
+						<TableRow>
 							<TableHeader scope="col">Token</TableHeader>
 							<TableHeader scope="col">Value</TableHeader>
 							<TableHeader scope="col">Media query</TableHeader>
-						</tr>
+						</TableRow>
 					</TableHead>
 					<TableBody>
 						{Object.entries(breakpoints).map(([token, value]) => {
 							return (
-								<tr key={token}>
+								<TableRow key={token}>
 									<TableCell as="th" scope="row">
 										{token}
 									</TableCell>
@@ -50,7 +51,7 @@ export const BreakpointsTokenChart = () => {
 											<code>{`@media (min-width: ${value}px) { ... }`}</code>
 										)}
 									</TableCell>
-								</tr>
+								</TableRow>
 							);
 						})}
 					</TableBody>
@@ -213,7 +214,7 @@ export const ZIndexTokenChart = () => {
 				<Table>
 					<TableCaption>All z-Index tokens</TableCaption>
 					<TableHead>
-						<tr>
+						<TableRow>
 							<TableHeader scope="col" width="25%">
 								Token
 							</TableHeader>
@@ -223,17 +224,17 @@ export const ZIndexTokenChart = () => {
 							<TableHeader scope="col" width="50%">
 								Description
 							</TableHeader>
-						</tr>
+						</TableRow>
 					</TableHead>
 					<TableBody>
 						{Object.entries(zIndextokens).map(
 							([token, { value, description }]) => {
 								return (
-									<tr key={token}>
+									<TableRow key={token}>
 										<TableCell>{token}</TableCell>
 										<TableCell>{value}</TableCell>
 										<TableCell>{description}</TableCell>
-									</tr>
+									</TableRow>
 								);
 							}
 						)}

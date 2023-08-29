@@ -5,5 +5,6 @@ export * from './TableHead';
 export * from './TableBody';
 export * from './TableHeader';
 export * from './TableHeaderSortable';
+export * from './TableRow';
 export * from './TableCell';
 export * from './TableWrapper';

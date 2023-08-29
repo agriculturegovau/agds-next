@@ -9,6 +9,7 @@ import {
 	TableHeader,
 	TableBody,
 	TableCell,
+	TableRow,
 } from '@ag.ds-next/react/table';
 import { Text } from '@ag.ds-next/react/text';
 import { DocumentTitle } from '../../../components/DocumentTitle';
@@ -47,7 +48,7 @@ export default function TokensMaxWidthsPage() {
 							<Table>
 								<TableCaption>Max-width tokens</TableCaption>
 								<TableHead>
-									<tr>
+									<TableRow>
 										<TableHeader scope="col" width="25%">
 											Token
 										</TableHeader>
@@ -57,17 +58,17 @@ export default function TokensMaxWidthsPage() {
 										<TableHeader scope="col" width="50%">
 											Description
 										</TableHeader>
-									</tr>
+									</TableRow>
 								</TableHead>
 								<TableBody>
 									{Object.entries(tokenDescriptions).map(
 										([token, { value, description }]) => {
 											return (
-												<tr key={token}>
+												<TableRow key={token}>
 													<TableCell>{token}</TableCell>
 													<TableCell>{value}</TableCell>
 													<TableCell>{description}</TableCell>
-												</tr>
+												</TableRow>
 											);
 										}
 									)}
@@ -90,18 +91,18 @@ export default function TokensMaxWidthsPage() {
 							<Table>
 								<TableCaption>Max-width form field tokens</TableCaption>
 								<TableHead>
-									<tr>
+									<TableRow>
 										<TableHeader scope="col" width="25%">
 											Token
 										</TableHeader>
 										<TableHeader scope="col">Value</TableHeader>
-									</tr>
+									</TableRow>
 								</TableHead>
 								<TableBody>
 									{Object.entries(tokens.maxWidth.field).map(
 										([token, value]) => {
 											return (
-												<tr key={token}>
+												<TableRow key={token}>
 													<TableCell>{token}</TableCell>
 													<TableCell>
 														<Box
@@ -115,7 +116,7 @@ export default function TokensMaxWidthsPage() {
 															<Text>{value}</Text>
 														</Box>
 													</TableCell>
-												</tr>
+												</TableRow>
 											);
 										}
 									)}

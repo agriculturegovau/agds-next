@@ -23,17 +23,17 @@ Below is an example of a [Table](/components/table) in a loading state.
 <TableWrapper>
 	<Table tableLayout="fixed">
 		<TableHead>
-			<tr>
+			<TableRow>
 				<TableHeader width="6rem" scope="col">
 					ID
 				</TableHeader>
 				<TableHeader scope="col">Name</TableHeader>
 				<TableHeader scope="col">Email</TableHeader>
-			</tr>
+			</TableRow>
 		</TableHead>
 		<TableBody>
 			{Array.from(Array(5)).map((_, idx) => (
-				<tr key={idx}>
+				<TableRow key={idx}>
 					<TableCell>
 						<SkeletonText />
 						<VisuallyHidden>Loading</VisuallyHidden>
@@ -46,7 +46,7 @@ Below is an example of a [Table](/components/table) in a loading state.
 						<SkeletonText />
 						<VisuallyHidden>Loading</VisuallyHidden>
 					</TableCell>
-				</tr>
+				</TableRow>
 			))}
 		</TableBody>
 	</Table>

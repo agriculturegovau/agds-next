@@ -6,7 +6,7 @@ exports[`Table with TableCaption renders correctly 1`] = `
     class="css-2ebmvj-TableWrapper"
   >
     <table
-      class="css-teqxv1-boxStyles-Table"
+      class="css-r11i27-boxStyles-Table"
       id="table"
     >
       <caption
@@ -17,7 +17,9 @@ exports[`Table with TableCaption renders correctly 1`] = `
       <thead
         class="css-11khhn7-boxStyles"
       >
-        <tr>
+        <tr
+          class="css-1tx0oac-TableRow"
+        >
           <th
             class="css-10w2jzf-boxStyles-TableHeader"
             scope="col"
@@ -47,7 +49,9 @@ exports[`Table with TableCaption renders correctly 1`] = `
       <tbody
         class="css-8u32cd-boxStyles"
       >
-        <tr>
+        <tr
+          class="css-1tx0oac-TableRow"
+        >
           <th
             class="css-eaiq6e-boxStyles-TableCell"
             scope="row"
@@ -70,7 +74,9 @@ exports[`Table with TableCaption renders correctly 1`] = `
             12.9%
           </td>
         </tr>
-        <tr>
+        <tr
+          class="css-1tx0oac-TableRow"
+        >
           <th
             class="css-eaiq6e-boxStyles-TableCell"
             scope="row"
@@ -93,7 +99,9 @@ exports[`Table with TableCaption renders correctly 1`] = `
             9.3%
           </td>
         </tr>
-        <tr>
+        <tr
+          class="css-1tx0oac-TableRow"
+        >
           <th
             class="css-eaiq6e-boxStyles-TableCell"
             scope="row"
@@ -116,7 +124,9 @@ exports[`Table with TableCaption renders correctly 1`] = `
             13.3%
           </td>
         </tr>
-        <tr>
+        <tr
+          class="css-1tx0oac-TableRow"
+        >
           <th
             class="css-eaiq6e-boxStyles-TableCell"
             scope="row"
@@ -139,7 +149,9 @@ exports[`Table with TableCaption renders correctly 1`] = `
             11.6%
           </td>
         </tr>
-        <tr>
+        <tr
+          class="css-1tx0oac-TableRow"
+        >
           <th
             class="css-eaiq6e-boxStyles-TableCell"
             scope="row"
@@ -162,7 +174,9 @@ exports[`Table with TableCaption renders correctly 1`] = `
             6.8%
           </td>
         </tr>
-        <tr>
+        <tr
+          class="css-1tx0oac-TableRow"
+        >
           <th
             class="css-eaiq6e-boxStyles-TableCell"
             scope="row"
@@ -185,7 +199,9 @@ exports[`Table with TableCaption renders correctly 1`] = `
             5.3%
           </td>
         </tr>
-        <tr>
+        <tr
+          class="css-1tx0oac-TableRow"
+        >
           <th
             class="css-eaiq6e-boxStyles-TableCell"
             scope="row"
@@ -208,7 +224,9 @@ exports[`Table with TableCaption renders correctly 1`] = `
             4.5%
           </td>
         </tr>
-        <tr>
+        <tr
+          class="css-1tx0oac-TableRow"
+        >
           <th
             class="css-eaiq6e-boxStyles-TableCell"
             scope="row"

@@ -7,6 +7,7 @@ import {
 	TableBody,
 	TableHeader,
 	TableCell,
+	TableRow,
 } from '@ag.ds-next/react/table';
 import { Text } from '@ag.ds-next/react/text';
 import { tokens, FontSize, Font } from '@ag.ds-next/react/core';
@@ -118,16 +119,16 @@ function FontFamilyTable() {
 				<Table>
 					<TableCaption>Font family tokens</TableCaption>
 					<TableHead>
-						<tr>
+						<TableRow>
 							<TableHeader scope="col">Token</TableHeader>
 							<TableHeader scope="col">Value</TableHeader>
 							<TableHeader scope="col">Description</TableHeader>
-						</tr>
+						</TableRow>
 					</TableHead>
 					<TableBody>
 						{(Object.entries(tokens.font) as [key: Font, value: string][]).map(
 							([key, value]) => (
-								<tr key={key}>
+								<TableRow key={key}>
 									<TableCell>
 										<Text as="span" fontFamily={key}>
 											{key}
@@ -135,7 +136,7 @@ function FontFamilyTable() {
 									</TableCell>
 									<TableCell>{value}</TableCell>
 									<TableCell>{fontDescriptions[key]}</TableCell>
-								</tr>
+								</TableRow>
 							)
 						)}
 					</TableBody>
@@ -152,18 +153,18 @@ function FontSizeTable() {
 				<Table>
 					<TableCaption>Font size tokens</TableCaption>
 					<TableHead>
-						<tr>
+						<TableRow>
 							<TableHeader scope="col">Token</TableHeader>
 							<TableHeader scope="col">Value</TableHeader>
 							<TableHeader scope="col">Value (mobile viewports)</TableHeader>
-						</tr>
+						</TableRow>
 					</TableHead>
 					<TableBody>
 						{(Object.keys(tokens.fontSize.sm) as FontSize[]).map((token) => {
 							const xs = tokens.fontSize.xs[token];
 							const sm = tokens.fontSize.sm[token];
 							return (
-								<tr key={token}>
+								<TableRow key={token}>
 									<TableCell>
 										<Text as="span" fontSize={token} lineHeight="nospace">
 											{token}
@@ -175,7 +176,7 @@ function FontSizeTable() {
 									<TableCell>
 										{xs}rem ({xs * 16}px)
 									</TableCell>
-								</tr>
+								</TableRow>
 							);
 						})}
 					</TableBody>
@@ -192,23 +193,23 @@ function FontWeightTable() {
 				<Table>
 					<TableCaption>Font weight tokens</TableCaption>
 					<TableHead>
-						<tr>
+						<TableRow>
 							<TableHeader scope="col">Token</TableHeader>
 							<TableHeader scope="col">Value</TableHeader>
 							<TableHeader scope="col" width="75%">
 								Description
 							</TableHeader>
-						</tr>
+						</TableRow>
 					</TableHead>
 					<TableBody>
-						<tr>
+						<TableRow>
 							<TableCell>
 								<Text as="span">Normal</Text>
 							</TableCell>
 							<TableCell>normal</TableCell>
 							<TableCell>Used for the majority of body text</TableCell>
-						</tr>
-						<tr>
+						</TableRow>
+						<TableRow>
 							<TableCell>
 								<Text as="span" fontWeight="bold">
 									Bold
@@ -216,7 +217,7 @@ function FontWeightTable() {
 							</TableCell>
 							<TableCell>bold</TableCell>
 							<TableCell>Used to draw emphasis</TableCell>
-						</tr>
+						</TableRow>
 					</TableBody>
 				</Table>
 			</TableWrapper>
