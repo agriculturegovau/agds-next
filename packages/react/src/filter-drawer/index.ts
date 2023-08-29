@@ -1,4 +1,4 @@
-import { Drawer as _Drawer, DrawerProps as _DrawerProps } from '../drawer';
+import { Drawer, DrawerProps } from '../drawer';
 
 /**
  * @deprecated This component has been renamed.
@@ -6,7 +6,7 @@ import { Drawer as _Drawer, DrawerProps as _DrawerProps } from '../drawer';
  * Example: `import { Drawer } from '@ag.ds-next/react/drawer'`".
  * This will be removed in the next major version.
  */
-export const FilterDrawer = _Drawer;
+export const FilterDrawer = Drawer;
 
 /**
  * @deprecated This type has been renamed.
@@ -14,4 +14,4 @@ export const FilterDrawer = _Drawer;
  * Example: `import { DrawerProps } from '@ag.ds-next/react/drawer'`".
  * This will be removed in the next major version.
  */
-export type FilterDrawerProps = _DrawerProps;
+export type FilterDrawerProps = DrawerProps;

@@ -2,7 +2,7 @@
 '@ag.ds-next/react': minor
 ---
 
-Filter drawer has been renamed to [Drawer](/components/drawer);
+Filter drawer has been renamed to Drawer;
 
 The `FilterDrawer` component will continue to work out of the the `@ag.ds-next/react/filter-drawer` entrypoint, but this usage has been marked as deprecated and will be removed in the next major release.
 
