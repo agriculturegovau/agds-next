@@ -245,7 +245,7 @@ export const ZIndexTokenChart = () => {
 };
 
 export const ShadowTokenChart = () => {
-	const shadowTokens = ['sm', 'md', 'lg'] as const;
+	const shadowTokens = ['sm', 'lg'] as const;
 	return (
 		<Columns cols={3} gap={1.5} className={proseBlockClassname}>
 			{shadowTokens.map((t) => (
