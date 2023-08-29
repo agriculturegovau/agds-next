@@ -33,6 +33,7 @@ type BaseCheckboxProps = PropsWithChildren<{
 }>;
 
 export type CheckboxProps = BaseCheckboxProps & {
+	/** Used to represent a group of checkboxes that has a mix of selected and unselected values. */
 	indeterminate?: boolean;
 	/** If true, the invalid state will be rendered. */
 	invalid?: boolean;
@@ -72,6 +73,7 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
 					aria-describedby={
 						invalid ? controlGroupContext?.messageId : undefined
 					}
+					aria-checked={indeterminate ? 'mixed' : undefined}
 					{...props}
 				/>
 				<CheckboxIndicator

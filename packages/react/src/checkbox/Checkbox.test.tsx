@@ -9,18 +9,35 @@ expect.extend(toHaveNoViolations);
 
 afterEach(cleanup);
 
-function CheckboxExample(props: CheckboxProps) {
-	return (
+function renderCheckbox(props?: CheckboxProps) {
+	return render(
 		<Checkbox data-testid="example" name="my-checkbox" {...props}>
 			My checkbox
 		</Checkbox>
 	);
 }
 
+function getCheckbox() {
+	return screen.getByTestId('example');
+}
+
 describe('Checkbox', () => {
-	it('renders correctly with minimal props', () => {
-		render(<CheckboxExample />);
-		const el = screen.getByTestId('example');
+	it('renders correctly', () => {
+		const { container } = renderCheckbox();
+		expect(container).toMatchSnapshot();
+	});
+
+	it('renders valid HTML with no a11y violations', async () => {
+		const { container } = renderCheckbox();
+		expect(container).toHTMLValidate({
+			extends: ['html-validate:recommended'],
+		});
+		expect(await axe(container)).toHaveNoViolations();
+	});
+
+	it('renders correct attributes', () => {
+		renderCheckbox();
+		const el = getCheckbox();
 		expect(el).toBeInTheDocument();
 		expect(el.tagName).toBe('INPUT');
 		expect(el).toHaveAttribute('type', 'checkbox');
@@ -29,28 +46,51 @@ describe('Checkbox', () => {
 		expect(el).toHaveAccessibleName('My checkbox');
 	});
 
-	it('renders correctly when invalid ', () => {
-		render(<CheckboxExample invalid />);
-		const el = screen.getByTestId('example');
-		expect(el).toHaveAttribute('aria-invalid', 'true');
+	it('responds when clicked', async () => {
+		renderCheckbox();
+		expect(getCheckbox()).not.toBeChecked();
+		await userEvent.click(getCheckbox());
+		expect(getCheckbox()).toBeChecked();
 	});
 
-	it('renders valid HTML with no a11y violations', async () => {
-		const { container } = render(<CheckboxExample />);
-		expect(container).toHTMLValidate({
-			extends: ['html-validate:recommended'],
+	describe('checked', () => {
+		it('renders correct attributes', () => {
+			renderCheckbox({ checked: true, onChange: jest.fn() });
+			const el = getCheckbox();
+			expect(el).toBeChecked();
 		});
-		expect(await axe(container)).toHaveNoViolations();
 	});
 
-	it('renders correctly', () => {
-		const { container } = render(<CheckboxExample />);
-		expect(container).toMatchSnapshot();
+	describe('invalid', () => {
+		it('renders valid HTML with no a11y violations', async () => {
+			const { container } = renderCheckbox({ invalid: true });
+			expect(container).toHTMLValidate({
+				extends: ['html-validate:recommended'],
+			});
+			expect(await axe(container)).toHaveNoViolations();
+		});
+
+		it('renders correct attributes', () => {
+			renderCheckbox({ invalid: true });
+			const el = getCheckbox();
+			expect(el).toHaveAttribute('aria-invalid', 'true');
+		});
 	});
 
-	it('responds to a change event', async () => {
-		render(<CheckboxExample />);
-		await userEvent.click(screen.getByTestId('example'));
-		expect(screen.getByTestId('example')).toBeChecked();
+	describe('indeterminate', () => {
+		it('renders valid HTML with no a11y violations', async () => {
+			const { container } = renderCheckbox({ indeterminate: true });
+			expect(container).toHTMLValidate({
+				extends: ['html-validate:recommended'],
+			});
+			expect(await axe(container)).toHaveNoViolations();
+		});
+
+		it('renders correct attributes', () => {
+			renderCheckbox({ indeterminate: true });
+			const el = getCheckbox();
+			expect(el).not.toHaveAttribute('checked');
+			expect(el).toHaveAttribute('aria-checked', 'mixed');
+		});
 	});
 });

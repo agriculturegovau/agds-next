@@ -6,7 +6,7 @@ exports[`Checkbox renders correctly 1`] = `
     class="css-hp3wbe-boxStyles-CheckboxContainer"
   >
     <input
-      class="css-2fffox-CheckboxInput"
+      class="css-142kh0r-CheckboxInput"
       data-testid="example"
       name="my-checkbox"
       type="checkbox"
