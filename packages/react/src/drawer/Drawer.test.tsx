@@ -6,60 +6,60 @@ import { useTernaryState } from '../core';
 import { Button } from '../button';
 import { Text } from '../text';
 import { render, screen, cleanup, waitFor } from '../../../../test-utils';
-import { FilterDrawer } from './FilterDrawer';
+import { Drawer } from './Drawer';
 
 expect.extend(toHaveNoViolations);
 
 afterEach(cleanup);
 
-function renderBaseFilterDrawer() {
+function renderBaseDrawer() {
 	return render(
-		<FilterDrawer
+		<Drawer
 			isOpen
 			onDismiss={() => undefined}
-			title="Filter drawer title"
+			title="Drawer title"
 			actions={<Button>Example action</Button>}
 		>
 			<Text as="p">Example content.</Text>
-		</FilterDrawer>
+		</Drawer>
 	);
 }
 
-function FilterDrawerExample() {
+function DrawerExample() {
 	const [isOpen, open, close] = useTernaryState(false);
 	return (
 		<div>
 			<Button onClick={open} data-testid="open-button">
 				Open
 			</Button>
-			<FilterDrawer
+			<Drawer
 				isOpen={isOpen}
 				onDismiss={close}
-				title="Filter drawer title"
+				title="Drawer title"
 				actions={
 					<Button onClick={close} data-testid="close-button">
 						Close
 					</Button>
 				}
 			>
-				<Text as="p">This is the Filter drawer content.</Text>
-			</FilterDrawer>
+				<Text as="p">This is the Drawer content.</Text>
+			</Drawer>
 		</div>
 	);
 }
 
-function renderFilterDrawer() {
-	return render(<FilterDrawerExample />);
+function renderDrawer() {
+	return render(<DrawerExample />);
 }
 
-describe('FilterDrawer', () => {
+describe('Drawer', () => {
 	it('renders correctly', () => {
-		const { baseElement } = renderBaseFilterDrawer();
+		const { baseElement } = renderBaseDrawer();
 		expect(baseElement).toMatchSnapshot();
 	});
 
 	it('renders valid HTML with no a11y violations', async () => {
-		const { baseElement } = renderBaseFilterDrawer();
+		const { baseElement } = renderBaseDrawer();
 		expect(baseElement).toHTMLValidate({
 			extends: ['html-validate:recommended'],
 			rules: {
@@ -72,19 +72,19 @@ describe('FilterDrawer', () => {
 	});
 
 	it('focuses the correct elements when opening and closing', async () => {
-		renderFilterDrawer();
+		renderDrawer();
 
-		// Open the FilterDrawer by clicking the "Open" button
+		// Open the Drawer by clicking the "Open" button
 		await userEvent.click(screen.getByTestId('open-button'));
 		expect(await screen.findByRole('dialog')).toBeInTheDocument();
 
 		// Title should have focus
-		expect(await screen.getByText('Filter drawer title')).toHaveFocus();
+		expect(await screen.getByText('Drawer title')).toHaveFocus();
 
-		// Close the FilterDrawer by clicking the "Close" button
+		// Close the Drawer by clicking the "Close" button
 		await userEvent.click(screen.getByTestId('close-button'));
 
-		// After closing the FilterDrawer, the "Open" button should be focused
+		// After closing the Drawer, the "Open" button should be focused
 		// Note: We need to wait for the closing animation
 		await waitFor(() =>
 			expect(screen.getByTestId('open-button')).toHaveFocus()

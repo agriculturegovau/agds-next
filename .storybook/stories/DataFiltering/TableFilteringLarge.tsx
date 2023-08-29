@@ -30,9 +30,9 @@ export const TableFilteringLarge = ({ tableRef }: TableFilteringLargeProps) => {
 					<h1>Table Filtering (Large)</h1>
 					<p>
 						The large filtering pattern is for cases where the number of
-						filterable fields exceeds 6. Our Filter drawer component is used to
-						reveal all filters as the user elects to show them. You may elect to
-						show up to two primary filters in the main content area next to the
+						filterable fields exceeds 6. Our Drawer component is used to reveal
+						all filters as the user elects to show them. You may elect to show
+						up to two primary filters in the main content area next to the
 						button which opens the drawer.
 					</p>
 				</Prose>

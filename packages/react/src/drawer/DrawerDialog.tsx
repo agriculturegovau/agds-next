@@ -7,9 +7,9 @@ import { mapResponsiveProp, mapSpacing, mq, tokens } from '../core';
 import { CloseIcon } from '../icon';
 import { Button } from '../button';
 import { Text } from '../text';
-import { useFilterDrawerId } from './utils';
+import { useDrawerId } from './utils';
 
-export type FilterDrawerDialogProps = PropsWithChildren<{
+export type DrawerDialogProps = PropsWithChildren<{
 	actions?: ReactNode;
 	onDismiss: () => void;
 	title: string;
@@ -18,14 +18,14 @@ export type FilterDrawerDialogProps = PropsWithChildren<{
 
 const AnimatedFlex = animated(Flex);
 
-export function FilterDrawerDialog({
+export function DrawerDialog({
 	actions,
 	children,
 	title,
 	onDismiss,
 	style,
-}: FilterDrawerDialogProps) {
-	const { titleId } = useFilterDrawerId();
+}: DrawerDialogProps) {
+	const { titleId } = useDrawerId();
 	return (
 		<FocusLock returnFocus>
 			<AnimatedFlex
@@ -47,13 +47,11 @@ export function FilterDrawerDialog({
 				}}
 				style={style}
 			>
-				<FilterDrawerHeader>
-					<FilterDrawerHeaderTitle id={titleId}>
-						{title}
-					</FilterDrawerHeaderTitle>
-				</FilterDrawerHeader>
-				<FilterDrawerContent>{children}</FilterDrawerContent>
-				{actions ? <FilterDrawerFooter>{actions}</FilterDrawerFooter> : null}
+				<DrawerHeader>
+					<DrawerHeaderTitle id={titleId}>{title}</DrawerHeaderTitle>
+				</DrawerHeader>
+				<DrawerContent>{children}</DrawerContent>
+				{actions ? <DrawerFooter>{actions}</DrawerFooter> : null}
 				<Button
 					variant="text"
 					onClick={onDismiss}
@@ -75,11 +73,11 @@ export function FilterDrawerDialog({
 	);
 }
 
-// Filter drawer header
+// Drawer header
 
-type FilterDrawerHeaderProps = PropsWithChildren<{}>;
+type DrawerHeaderProps = PropsWithChildren<{}>;
 
-function FilterDrawerHeader({ children }: FilterDrawerHeaderProps) {
+function DrawerHeader({ children }: DrawerHeaderProps) {
 	return (
 		<Box
 			background="body"
@@ -100,12 +98,9 @@ function FilterDrawerHeader({ children }: FilterDrawerHeaderProps) {
 	);
 }
 
-type FilterDrawerHeaderTitleProps = PropsWithChildren<{ id: string }>;
+type DrawerHeaderTitleProps = PropsWithChildren<{ id: string }>;
 
-function FilterDrawerHeaderTitle({
-	children,
-	id,
-}: FilterDrawerHeaderTitleProps) {
+function DrawerHeaderTitle({ children, id }: DrawerHeaderTitleProps) {
 	return (
 		<Text
 			as="h2"
@@ -125,11 +120,11 @@ function FilterDrawerHeaderTitle({
 	);
 }
 
-// Filter drawer content
+// Drawer content
 
-type FilterDrawerContentProps = PropsWithChildren<{}>;
+type DrawerContentProps = PropsWithChildren<{}>;
 
-function FilterDrawerContent({ children }: FilterDrawerContentProps) {
+function DrawerContent({ children }: DrawerContentProps) {
 	return (
 		<Box
 			background="body"
@@ -147,11 +142,11 @@ function FilterDrawerContent({ children }: FilterDrawerContentProps) {
 	);
 }
 
-// Filter drawer footer
+// Drawer footer
 
-type FilterDrawerFooterProps = PropsWithChildren<{}>;
+type DrawerFooterProps = PropsWithChildren<{}>;
 
-function FilterDrawerFooter({ children }: FilterDrawerFooterProps) {
+function DrawerFooter({ children }: DrawerFooterProps) {
 	return (
 		<Box
 			background="body"

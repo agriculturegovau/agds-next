@@ -1,0 +1,80 @@
+---
+title: Drawer
+description: Drawer can be used to display 6+ filters for a data set. It is overlayed on top of the main area of the page to capture the users attention while keeping the context of the current task.
+group: Layout
+storybookPath: /story/layout-filterdrawer--basic
+figmaGalleryNodeId: 18684%3A85147
+relatedComponents: ['modal']
+relatedPatterns: ['filtering-a-dataset']
+---
+
+```jsx live
+() => {
+	const [isDrawerOpen, openDrawer, closeDrawer] = useTernaryState(false);
+	return (
+		<React.Fragment>
+			<Button onClick={openDrawer}>Open Drawer</Button>
+			<Drawer
+				isOpen={isDrawerOpen}
+				onDismiss={closeDrawer}
+				title="Filter by"
+				actions={
+					<ButtonGroup>
+						<Button onClick={closeDrawer}>Apply filters</Button>
+						<Button variant="secondary" onClick={closeDrawer}>
+							Clear filters
+						</Button>
+						<Button variant="tertiary" onClick={closeDrawer}>
+							Cancel
+						</Button>
+					</ButtonGroup>
+				}
+			>
+				<Text as="p">Filter area</Text>
+			</Drawer>
+		</React.Fragment>
+	);
+};
+```
+
+<DoHeading />
+
+- read the [Filtering a dataset pattern](/patterns/filtering-a-dataset)
+- use to display 6+ filters for a data set
+- use a [Button group](/components/button#button-group) to display actions
+- use a [Fieldset](/components/fieldset) to group related filters
+- include a Close button in the top right
+- include a meaingful title - e.g. "Filter by"
+- close the Drawer when filters are applied.
+
+<DontHeading />
+
+- remove the Close button
+- remove the overlay
+- change default behaviour
+- use for anything else besides filters.
+
+## Opening the Drawer
+
+When the Drawer is opened, an overlay is displayed over the main area of the page. This prevents the main area of the page from being interactive.
+
+## Closing the Drawer
+
+The Drawer can be closed by either:
+
+1. Pressing the "Close" button
+2. Pressing the "Apply filters" button
+3. Pressing the "Cancel" button
+4. Pressing the "Escape" key
+5. Pressing the overlay
+
+When closing the Drawer, focus should be returned to the button that opened the Drawer.
+
+## Actions
+
+The Drawer component should contain a total of 4 actions:
+
+1. **"Apply filters" button**: When a user presses the "Apply filters" button, filters should be applied and the Drawer should be closed.
+2. **"Clear filters" button**: When a user presses the "Clear filters" button, filters should be cleared and reset to their original state. The Drawer should stay open.
+3. **"Close" button**: When a user presses the "Close" button, the Drawer should close. Any changes that have been made since opening the Drawer should be discarded. This is essentially the same as the "Cancel" button.
+4. **"Cancel" button**: When a user presses the "Cancel" button, the Drawer should close. Any changes that have been made since opening the Drawer should be discarded. This is essentially the same as the "Close" button.

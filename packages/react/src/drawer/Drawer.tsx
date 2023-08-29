@@ -16,9 +16,9 @@ import {
 	useAriaModalPolyfill,
 	usePrefersReducedMotion,
 } from '../core';
-import { FilterDrawerDialog } from './FilterDrawerDialog';
+import { DrawerDialog } from './DrawerDialog';
 
-export type FilterDrawerProps = PropsWithChildren<{
+export type DrawerProps = PropsWithChildren<{
 	/** The actions to display at the bottom of the drawer. Typically a `ButtonGroup`. */
 	actions?: ReactNode;
 	/** If true, the drawer will be displayed. */
@@ -29,14 +29,14 @@ export type FilterDrawerProps = PropsWithChildren<{
 	title: string;
 }>;
 
-export const FilterDrawer: FunctionComponent<FilterDrawerProps> = ({
+export const Drawer: FunctionComponent<DrawerProps> = ({
 	actions,
 	children,
 	isOpen = false,
 	onDismiss,
 	title,
 }) => {
-	// Close the FilterDrawer when the user presses the escape key
+	// Close the Drawer when the user presses the escape key
 	useEffect(() => {
 		const handleKeyDown = (e: KeyboardEvent) => {
 			if (isOpen && e.code === 'Escape') {
@@ -73,14 +73,14 @@ export const FilterDrawer: FunctionComponent<FilterDrawerProps> = ({
 				item ? (
 					<div ref={modalContainerRef}>
 						<Overlay onClick={() => onDismiss()} style={{ opacity }} />
-						<FilterDrawerDialog
+						<DrawerDialog
 							onDismiss={onDismiss}
 							title={title}
 							actions={actions}
 							style={{ translateX }}
 						>
 							{children}
-						</FilterDrawerDialog>
+						</DrawerDialog>
 					</div>
 				) : null
 			)}

@@ -4,7 +4,7 @@ import { DateRangePicker } from '@ag.ds-next/react/date-range-picker';
 import { Fieldset } from '@ag.ds-next/react/fieldset';
 import { FormStack } from '@ag.ds-next/react/form-stack';
 import { Divider } from '@ag.ds-next/react/divider';
-import { FilterDrawer } from '@ag.ds-next/react/src/filter-drawer';
+import { Drawer } from '@ag.ds-next/react/src/drawer';
 import { Button, ButtonGroup } from '@ag.ds-next/react/button';
 import { GetDataFilters } from '../lib/getData';
 import {
@@ -80,7 +80,7 @@ export const DashboardFilterDrawer = ({
 				},
 			}}
 		>
-			<FilterDrawer
+			<Drawer
 				title="Filter by"
 				isOpen={isDrawerOpen}
 				onDismiss={cancel}
@@ -120,7 +120,7 @@ export const DashboardFilterDrawer = ({
 						</FormStack>
 					</Fieldset>
 				</Stack>
-			</FilterDrawer>
+			</Drawer>
 		</SortAndFilterProvider>
 	);
 };

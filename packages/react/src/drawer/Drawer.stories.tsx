@@ -15,16 +15,16 @@ import { Select } from '../select';
 import { Stack } from '../stack';
 import { Switch } from '../switch';
 import { Text } from '../text';
-import { FilterDrawer } from './FilterDrawer';
+import { Drawer } from './Drawer';
 
-const meta: Meta<typeof FilterDrawer> = {
-	title: 'layout/FilterDrawer',
-	component: FilterDrawer,
+const meta: Meta<typeof Drawer> = {
+	title: 'layout/Drawer',
+	component: Drawer,
 };
 
 export default meta;
 
-type Story = StoryObj<typeof FilterDrawer>;
+type Story = StoryObj<typeof Drawer>;
 
 export const Basic: Story = {
 	args: {
@@ -34,8 +34,8 @@ export const Basic: Story = {
 		const [isOpen, open, close] = useTernaryState(false);
 		return (
 			<Fragment>
-				<Button onClick={open}>Open Filter drawer</Button>
-				<FilterDrawer
+				<Button onClick={open}>Open Drawer</Button>
+				<Drawer
 					isOpen={isOpen}
 					onDismiss={close}
 					title={props.title}
@@ -52,7 +52,7 @@ export const Basic: Story = {
 					}
 				>
 					<Text as="p">Filter area</Text>
-				</FilterDrawer>
+				</Drawer>
 			</Fragment>
 		);
 	},
@@ -112,8 +112,8 @@ export const WithFieldsets: Story = {
 
 		return (
 			<Fragment>
-				<Button onClick={openDrawer}>Open Filter drawer</Button>
-				<FilterDrawer
+				<Button onClick={openDrawer}>Open Drawer</Button>
+				<Drawer
 					isOpen={isDrawerOpen}
 					onDismiss={onCloseClick}
 					title={props.title}
@@ -253,7 +253,7 @@ export const WithFieldsets: Story = {
 							</FormStack>
 						</Fieldset>
 					</Stack>
-				</FilterDrawer>
+				</Drawer>
 			</Fragment>
 		);
 	},
