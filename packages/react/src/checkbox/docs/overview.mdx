@@ -114,7 +114,20 @@ Disabled checkboxes can be used to indicate inputs that are no longer valid or e
 	<Checkbox value="tablet" checked disabled>
 		Disabled and checked checkbox
 	</Checkbox>
+	<Checkbox value="laptop" indeterminate disabled>
+		Disabled and indeterminate checkbox
+	</Checkbox>
 </Stack>
+```
+
+## Indeterminate
+
+An [indeterminate checkbox](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/checkbox#indeterminate_state_checkboxes) is used to represent a group of checkboxes that has a mix of selected and unselected values.
+
+When a checkbox is indeterminate, it overrides the checked state.
+
+```jsx live
+<Checkbox indeterminate>Indeterminate</Checkbox>
 ```
 
 ## Small checkboxes

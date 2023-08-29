@@ -1,16 +1,18 @@
 import { Flex } from '../flex';
 import { boxPalette, packs } from '../core';
-import { CheckIcon } from '../icon';
+import { CheckIcon, MinusIcon } from '../icon';
 import { CheckboxSize } from './utils';
 
 export type CheckboxIndicatorProps = {
 	disabled?: boolean;
+	indeterminate?: boolean;
 	invalid?: boolean;
 	size: CheckboxSize;
 };
 
 export const CheckboxIndicator = ({
 	disabled,
+	indeterminate,
 	invalid,
 	size,
 }: CheckboxIndicatorProps) => {
@@ -43,7 +45,11 @@ export const CheckboxIndicator = ({
 			}}
 			rounded
 		>
-			<CheckIcon size={size} weight="bold" />
+			{indeterminate ? (
+				<MinusIcon size={size} weight="bold" />
+			) : (
+				<CheckIcon size={size} weight="bold" />
+			)}
 		</Flex>
 	);
 };

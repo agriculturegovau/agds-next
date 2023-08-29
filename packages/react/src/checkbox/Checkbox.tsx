@@ -1,4 +1,11 @@
-import { forwardRef, InputHTMLAttributes, PropsWithChildren } from 'react';
+import {
+	forwardRef,
+	InputHTMLAttributes,
+	PropsWithChildren,
+	useEffect,
+	useRef,
+} from 'react';
+import { mergeRefs } from '../core';
 import { useControlGroupContext } from '../control-group/ControlGroupProvider';
 import { CheckboxIndicator } from './CheckboxIndicator';
 import { CheckboxInput } from './CheckboxInput';
@@ -26,6 +33,7 @@ type BaseCheckboxProps = PropsWithChildren<{
 }>;
 
 export type CheckboxProps = BaseCheckboxProps & {
+	indeterminate?: boolean;
 	/** If true, the invalid state will be rendered. */
 	invalid?: boolean;
 	/** The size of the input. */
@@ -34,15 +42,30 @@ export type CheckboxProps = BaseCheckboxProps & {
 
 export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
 	function Checkbox(
-		{ children, disabled, invalid: invalidProp, size = 'md', ...props },
-		ref
+		{
+			children,
+			disabled,
+			invalid: invalidProp,
+			size = 'md',
+			indeterminate,
+			...props
+		},
+		forwardedRef
 	) {
+		const ref = useRef<HTMLInputElement>(null);
 		const controlGroupContext = useControlGroupContext();
 		const invalid = invalidProp || controlGroupContext?.invalid;
+
+		// `indeterminate` cannot be set using an HTML attribute
+		useEffect(() => {
+			if (!ref.current) return;
+			ref.current.indeterminate = Boolean(indeterminate);
+		}, [indeterminate]);
+
 		return (
 			<CheckboxContainer disabled={disabled}>
 				<CheckboxInput
-					ref={ref}
+					ref={mergeRefs([forwardedRef, ref])}
 					type="checkbox"
 					disabled={disabled}
 					aria-invalid={invalid ? 'true' : undefined}
@@ -51,7 +74,12 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
 					}
 					{...props}
 				/>
-				<CheckboxIndicator disabled={disabled} invalid={invalid} size={size} />
+				<CheckboxIndicator
+					disabled={disabled}
+					invalid={invalid}
+					size={size}
+					indeterminate={indeterminate}
+				/>
 				<CheckboxLabel disabled={disabled} size={size}>
 					{children}
 				</CheckboxLabel>
