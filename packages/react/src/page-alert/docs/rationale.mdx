@@ -1,0 +1,50 @@
+Page alerts warn, inform or prompt a user and are generally triggered in response to actions such as save, delete, confirm, submit and cancel.
+
+## Keep it short
+
+Content should be easily understood at a glance.
+
+Use constructive, no-blame language, avoid vague descriptions and always provide a solution.
+
+<ExampleContent heading={<DoHeading />}>
+	<PageAlert tone="error" title="We can't find an account with those details">
+		<Text as="p">Please check your information and try again</Text>
+	</PageAlert>
+</ExampleContent>
+
+<ExampleContent heading={<DontHeading />}>
+	<PageAlert tone="error" title="You have entered the wrong information">
+		<Text as="p">Please come back later</Text>
+	</PageAlert>
+</ExampleContent>
+
+## Don't repeat yourself
+
+Avoid duplicating the title in the body copy. If the alert title is enough to conveys the message, body copy may not be necessary.
+
+```jsx live
+<PageAlert tone="warning" title="Browser out of date">
+	<Text as="p">Your web browser out of date</Text>
+</PageAlert>
+```
+
+## Effective buttons
+
+Always include a Primary and Secondary button CTA that provides a clear path.
+Buttons should be clearly labelled with 1-2 verbs such as
+
+- View
+
+- Cancel
+
+- Go back
+
+- Submit
+
+Only use Ok for blue information alerts that require no action, and don’t use ambiguous words such as Yes, or No.
+
+## Validation in forms
+
+Page alert can be used to display validation errors in forms, if there is more that one error. The Page alert contains a bullet list of links as TOC to all the errors below. Focus is set on the page alert as it appears.
+
+If there is a single error in a form, we dont apply the page alert but rather just the standard field-level error, and focus on the input.
