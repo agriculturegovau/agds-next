@@ -49,6 +49,7 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
 			invalid: invalidProp,
 			size = 'md',
 			indeterminate,
+			checked: checkedProp,
 			...props
 		},
 		forwardedRef
@@ -63,6 +64,9 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
 			ref.current.indeterminate = Boolean(indeterminate);
 		}, [indeterminate]);
 
+		// `indeterminate` should override the `checked` prop
+		const checked = indeterminate ? false : checkedProp;
+
 		return (
 			<CheckboxContainer disabled={disabled}>
 				<CheckboxInput
@@ -73,6 +77,7 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
 					aria-describedby={
 						invalid ? controlGroupContext?.messageId : undefined
 					}
+					checked={checked}
 					aria-checked={indeterminate ? 'mixed' : undefined}
 					{...props}
 				/>

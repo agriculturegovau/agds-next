@@ -79,7 +79,11 @@ describe('Checkbox', () => {
 
 	describe('indeterminate', () => {
 		it('renders valid HTML with no a11y violations', async () => {
-			const { container } = renderCheckbox({ indeterminate: true });
+			const { container } = renderCheckbox({
+				checked: false,
+				indeterminate: true,
+				onChange: jest.fn(),
+			});
 			expect(container).toHTMLValidate({
 				extends: ['html-validate:recommended'],
 			});
@@ -87,7 +91,22 @@ describe('Checkbox', () => {
 		});
 
 		it('renders correct attributes', () => {
-			renderCheckbox({ indeterminate: true });
+			renderCheckbox({
+				checked: false,
+				indeterminate: true,
+				onChange: jest.fn(),
+			});
+			const el = getCheckbox();
+			expect(el).not.toHaveAttribute('checked');
+			expect(el).toHaveAttribute('aria-checked', 'mixed');
+		});
+
+		it('overrides checked prop', () => {
+			renderCheckbox({
+				indeterminate: true,
+				checked: true,
+				onChange: jest.fn(),
+			});
 			const el = getCheckbox();
 			expect(el).not.toHaveAttribute('checked');
 			expect(el).toHaveAttribute('aria-checked', 'mixed');
