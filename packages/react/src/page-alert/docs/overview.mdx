@@ -15,10 +15,7 @@ Typically page alerts appear at the top of a page following a submit action.
 - place the Page alert component at the top of the page, under the breadcrumb or back button and above the h1, when validating forms and focus immediately after a submission attempt
 - use constructive, no-blame language, avoid vague descriptions and always provide a solution
 - keep it short – content should be understood at a glance
-- use red error alerts for errors that must be actioned before the user can continue
-- use orange warning alerts to tell the user how to avoid a problem
-- use green success alerts to confirm a task is completed
-- use blue information alerts to highlight important information to the user before they move on.
+- use the correct colour tone for the message (see [tones](#tones) below)
 
 <DontHeading />
 
@@ -26,6 +23,8 @@ Typically page alerts appear at the top of a page following a submit action.
 - repeat the title in the description
 - if the alert title is enough to convey the message a description may not be necessary
 - use for common actions such as deleting an email or tasks where an action can be undone
+- use for information unrelated to the specific journey
+- use in a form with only one input error - assign focus to the input where the error occurred
 - include a close button for error messages.
 
 ## Tones
@@ -36,7 +35,7 @@ The four supported tones are `info`, `success`, `error` and `warning`.
 
 ### Info
 
-The information page alert is used to highlight important information to the user. Info alerts should be used sparingly.
+The information page alert (blue) is used to highlight important information to the user before they move on. Info alerts should be used sparingly.
 
 ```jsx live
 <PageAlert tone="info" title="Notice">
@@ -49,7 +48,7 @@ The information page alert is used to highlight important information to the use
 
 ### Success
 
-The success page alert is used for notifying the user that a task is fully completed.
+The success page alert (green) is used for notifying the user that a task is fully completed.
 
 ```jsx live
 <PageAlert tone="success" title="Submission successful">
@@ -59,7 +58,7 @@ The success page alert is used for notifying the user that a task is fully compl
 
 ### Error
 
-The error page alert should be used with form validation errors or other errors which the user must action before they can can continue.
+The error page alert (red) should be used with form validation errors or other errors which the user must action before they can can continue.
 
 ```jsx live
 <PageAlert tone="error" title="There is a problem">
@@ -77,7 +76,7 @@ The error page alert should be used with form validation errors or other errors 
 
 ### Warning
 
-Use warning page alerts to tell the user something urgent. Only use an alert if the information will help the user avoid a problem.
+Use warning page alerts (yellow) to tell the user how to avoid a problem. Only use an alert if the information will help the user avoid a problem.
 
 ```jsx live
 <PageAlert tone="warning" title="Browser out of date">
