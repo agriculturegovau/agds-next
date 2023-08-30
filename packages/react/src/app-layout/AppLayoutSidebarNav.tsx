@@ -116,7 +116,7 @@ function AppLayoutSidebarNavItemInner({
 				' a, button': {
 					display: 'flex',
 					alignItems: 'center',
-					gap: mapSpacing(0.75),
+					gap: mapSpacing(1),
 					width: '100%',
 					boxSizing: 'border-box',
 					paddingLeft: mapSpacing(1.5),
@@ -136,7 +136,7 @@ function AppLayoutSidebarNavItemInner({
 							top: 0,
 							left: 0,
 							bottom: 0,
-							borderLeftWidth: tokens.borderWidth.xl,
+							borderLeftWidth: tokens.borderWidth.xxl,
 							borderLeftStyle: 'solid',
 							borderLeftColor: boxPalette.selected,
 						},
