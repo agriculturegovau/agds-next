@@ -67,9 +67,9 @@ describe('ComboboxAsyncMulti', () => {
 		expect(input).toHaveAttribute('aria-expanded', 'false');
 		if (!input) return;
 
-		// Focus the input
-		await act(async () => await input.focus());
-		expect(input).toHaveFocus();
+		// Click the input, which should focus the element
+		await act(async () => await input.click());
+		await waitFor(() => expect(input).toHaveFocus());
 		expect(input).toHaveAttribute('aria-expanded', 'true');
 
 		// Focusing the input should trigger `loadOptions`

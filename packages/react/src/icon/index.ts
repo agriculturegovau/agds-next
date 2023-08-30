@@ -15,6 +15,7 @@ export { AvatarIcon } from './icons/AvatarIcon';
 export { CalendarIcon } from './icons/CalendarIcon';
 export { ChartBarIcon } from './icons/ChartBarIcon';
 export { ChartLineIcon } from './icons/ChartLineIcon';
+export { CheckIcon } from './icons/CheckIcon';
 export { ChevronUpIcon } from './icons/ChevronUpIcon';
 export { ChevronDownIcon } from './icons/ChevronDownIcon';
 export { ChevronLeftIcon } from './icons/ChevronLeftIcon';

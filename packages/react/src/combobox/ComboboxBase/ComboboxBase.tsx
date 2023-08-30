@@ -117,9 +117,10 @@ export function ComboboxBase<Option extends DefaultComboboxOption>({
 						<ComboboxButtonContainer>
 							{showDropdownTrigger && (
 								<ComboboxDropdownTrigger
-									disabled={disabled}
-									isOpen={combobox.isOpen}
-									{...combobox.getToggleButtonProps()}
+									{...combobox.getToggleButtonProps({
+										isOpen: combobox.isOpen,
+										disabled,
+									})}
 								/>
 							)}
 							{hasBothButtons && <ComboboxButtonDivider />}

@@ -27,6 +27,7 @@ export async function getPattern(slug: string) {
 		figmaTemplateNodeId: (data.figmaTemplateNodeId ?? null) as string | null,
 		githubTemplatePath: (data.githubTemplatePath ?? null) as string | null,
 		storybookPath: (data.storybookPath ?? null) as string | null,
+		relatedComponents: (data.relatedComponents ?? null) as string[] | null,
 	};
 }
 

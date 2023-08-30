@@ -33,11 +33,11 @@ exports[`ComboboxAsync renders correctly 1`] = `
       <input
         aria-activedescendant=""
         aria-autocomplete="list"
-        aria-controls="downshift-0-menu"
+        aria-controls="downshift-:r1:-menu"
         aria-describedby="field-combobox-input-:r0:-hint"
         aria-expanded="false"
         aria-invalid="false"
-        aria-labelledby="downshift-0-label"
+        aria-labelledby="downshift-:r1:-label"
         aria-required="false"
         autocomplete="off"
         class="css-8coje4-ComboboxBase"
@@ -50,11 +50,11 @@ exports[`ComboboxAsync renders correctly 1`] = `
         class="css-1733k8b-boxStyles-ComboboxButtonContainer"
       >
         <button
-          aria-controls="downshift-0-menu"
+          aria-controls="downshift-:r1:-menu"
           aria-expanded="false"
           aria-label="Toggle menu"
           class="css-q06sws-BaseButton-ComboboxIconButton"
-          id="downshift-0-toggle-button"
+          id="downshift-:r1:-toggle-button"
           tabindex="-1"
           type="button"
         >
@@ -76,9 +76,9 @@ exports[`ComboboxAsync renders correctly 1`] = `
         </button>
       </div>
       <ul
-        aria-labelledby="downshift-0-label"
+        aria-labelledby="downshift-:r1:-label"
         class="css-xh5q2i-boxStyles-Popover"
-        id="downshift-0-menu"
+        id="downshift-:r1:-menu"
         role="listbox"
         style="position: absolute; left: 0px; top: 0px; display: none; transform: translate(0px, 0px);"
       />
