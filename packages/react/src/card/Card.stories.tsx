@@ -1,5 +1,5 @@
 import { Fragment } from 'react';
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react';
 import { VisuallyHidden } from '../a11y';
 import { Box } from '../box';
 import { Flex } from '../flex';
@@ -19,204 +19,224 @@ import { CardLink } from './CardLink';
 import { CardHeader } from './CardHeader';
 import { CardFooter } from './CardFooter';
 
-export default {
+const meta: Meta<typeof Card> = {
 	title: 'layout/Card',
 	component: Card,
-	subcomponents: { CardInner, CardLink, CardHeader, CardFooter },
-} as ComponentMeta<typeof Card>;
-
-export const Basic: ComponentStory<typeof Card> = (args) => (
-	<Box maxWidth={300}>
-		<Card {...args}>
-			<CardInner>
-				<Stack gap={1}>
-					<Heading as="h2" type="h3">
-						Card heading
-					</Heading>
-					<Text as="p">
-						Lorem ipsum dolor, sit amet consectetur adipisicing elit. In,
-						voluptat
-					</Text>
-				</Stack>
-			</CardInner>
-		</Card>
-	</Box>
-);
-Basic.args = {};
-
-export const Link: ComponentStory<typeof Card> = (args) => (
-	<Box maxWidth={300}>
-		<Card {...args}>
-			<CardInner>
-				<Stack gap={1}>
-					<Heading as="h2" type="h3">
-						Card heading
-					</Heading>
-					<Text as="p">
-						Lorem ipsum dolor, sit amet consectetur adipisicing elit. In,
-						voluptat
-					</Text>
-					<CardLink href="#">
-						Linking out
-						<ChevronRightIcon />
-					</CardLink>
-				</Stack>
-			</CardInner>
-		</Card>
-	</Box>
-);
-Link.args = {
-	clickable: true,
-	shadow: true,
 };
 
-export const FeatureHeader: ComponentStory<typeof Card> = (args) => (
-	<Columns>
-		<Column columnSpan={6}>
-			<Card {...args}>
-				<CardHeader>
-					<Heading type="h4">Feature card title</Heading>
-				</CardHeader>
-				<CardInner>
-					<Text as="p">Additional conent relating to the card</Text>
-				</CardInner>
-			</Card>
-		</Column>
-		<Column columnSpan={6}>
-			<Card {...args}>
-				<CardHeader background="bodyAlt">
-					<Heading type="h4">Feature card title</Heading>
-				</CardHeader>
-				<CardInner>
-					<Text as="p">Additional conent relating to the card</Text>
-				</CardInner>
-			</Card>
-		</Column>
-	</Columns>
-);
-FeatureHeader.args = {
-	background: 'body',
+export default meta;
+
+type Story = StoryObj<typeof Card>;
+
+export const Basic: Story = {
+	args: {},
+	render: function Render(props) {
+		return (
+			<Box maxWidth={300}>
+				<Card {...props}>
+					<CardInner>
+						<Stack gap={1}>
+							<Heading as="h2" type="h3">
+								Card heading
+							</Heading>
+							<Text as="p">
+								Lorem ipsum dolor, sit amet consectetur adipisicing elit. In,
+								voluptat
+							</Text>
+						</Stack>
+					</CardInner>
+				</Card>
+			</Box>
+		);
+	},
 };
 
-export const FeatureFooter: ComponentStory<typeof Card> = (args) => (
-	<Columns>
-		<Column columnSpan={6}>
-			<Card {...args}>
-				<CardInner>
-					<Stack gap={1}>
-						<Heading type="h3">Card title</Heading>
-						<Text as="p">
-							Lorem ipsum dolor, sit amet consectetur adipisicing elit. In,
-							voluptatibus.
-						</Text>
-					</Stack>
-				</CardInner>
-				<CardFooter>
-					<TextLink href="#">Action</TextLink>
-				</CardFooter>
-			</Card>
-		</Column>
-		<Column columnSpan={6}>
-			<Card {...args}>
-				<CardInner>
-					<Stack gap={1}>
-						<Heading type="h3">Card title</Heading>
-						<Text as="p">
-							Lorem ipsum dolor, sit amet consectetur adipisicing elit. In,
-							voluptatibus.
-						</Text>
-					</Stack>
-				</CardInner>
-				<CardFooter background="bodyAlt">
-					<TextLink href="#">Action</TextLink>
-				</CardFooter>
-			</Card>
-		</Column>
-	</Columns>
-);
-FeatureFooter.args = {
-	background: 'body',
+export const Link: Story = {
+	args: {
+		clickable: true,
+		shadow: true,
+	},
+	render: function Render(props) {
+		return (
+			<Box maxWidth={300}>
+				<Card {...props}>
+					<CardInner>
+						<Stack gap={1}>
+							<Heading as="h2" type="h3">
+								Card heading
+							</Heading>
+							<Text as="p">
+								Lorem ipsum dolor, sit amet consectetur adipisicing elit. In,
+								voluptat
+							</Text>
+							<CardLink href="#">
+								Linking out
+								<ChevronRightIcon />
+							</CardLink>
+						</Stack>
+					</CardInner>
+				</Card>
+			</Box>
+		);
+	},
 };
 
-export const CardListStory = () => {
-	const toneMapper = {
-		Closed: 'success',
-		Open: 'warning',
-		Pending: 'info',
-	} as const;
+export const FeatureHeader: Story = {
+	args: {
+		background: 'body',
+	},
+	render: function Render(props) {
+		return (
+			<Columns>
+				<Column columnSpan={6}>
+					<Card {...props}>
+						<CardHeader>
+							<Heading type="h4">Feature card title</Heading>
+						</CardHeader>
+						<CardInner>
+							<Text as="p">Additional content relating to the card</Text>
+						</CardInner>
+					</Card>
+				</Column>
+				<Column columnSpan={6}>
+					<Card {...props}>
+						<CardHeader background="bodyAlt">
+							<Heading type="h4">Feature card title</Heading>
+						</CardHeader>
+						<CardInner>
+							<Text as="p">Additional content relating to the card</Text>
+						</CardInner>
+					</Card>
+				</Column>
+			</Columns>
+		);
+	},
+};
 
-	const listData = [
-		{
-			id: 'RE4321–2201–03',
-			businessName: 'Orange Meat Works',
-			type: 'Record keeping (Minor)',
-			status: 'Pending',
-		},
-		{
-			id: 'RE4321–2201–02',
-			businessName: 'Orange Meat Works',
-			type: 'Hygiene (Major)',
-			status: 'Open',
-		},
-		{
-			id: 'RE4321–2201–01',
-			businessName: 'Orange Meat Works',
-			type: 'Record keeping (Minor)',
-			status: 'Closed',
-		},
-	] as const;
+export const FeatureFooter: Story = {
+	args: {
+		background: 'body',
+	},
+	render: function Render(props) {
+		return (
+			<Columns>
+				<Column columnSpan={6}>
+					<Card {...props}>
+						<CardInner>
+							<Stack gap={1}>
+								<Heading type="h3">Card title</Heading>
+								<Text as="p">
+									Lorem ipsum dolor, sit amet consectetur adipisicing elit. In,
+									voluptatibus.
+								</Text>
+							</Stack>
+						</CardInner>
+						<CardFooter>
+							<TextLink href="#">Action</TextLink>
+						</CardFooter>
+					</Card>
+				</Column>
+				<Column columnSpan={6}>
+					<Card {...props}>
+						<CardInner>
+							<Stack gap={1}>
+								<Heading type="h3">Card title</Heading>
+								<Text as="p">
+									Lorem ipsum dolor, sit amet consectetur adipisicing elit. In,
+									voluptatibus.
+								</Text>
+							</Stack>
+						</CardInner>
+						<CardFooter background="bodyAlt">
+							<TextLink href="#">Action</TextLink>
+						</CardFooter>
+					</Card>
+				</Column>
+			</Columns>
+		);
+	},
+};
 
-	return (
-		<PageContent>
-			<Stack gap={1.5}>
-				<H2>Active CARs</H2>
-				<Text as="p">You may now manage your CARs online.</Text>
-				<Columns as="ul" gap={1} cols={{ xs: 1, sm: 2, lg: 3 }}>
-					{listData.map((item) => (
-						<Card as="li" shadow clickable key={item.id}>
-							<CardInner>
-								<Stack gap={0.5} width="100%" flexWrap="wrap">
-									<H3>
-										<CardLink href={`#${item.id}`}>
-											{item.businessName}
-										</CardLink>
-									</H3>
+export const CardList: Story = {
+	name: 'List of Cards',
+	render: function Render() {
+		const toneMapper = {
+			Closed: 'success',
+			Open: 'warning',
+			Pending: 'info',
+		} as const;
+		const listData = [
+			{
+				id: 'RE4321-2201-03',
+				businessName: 'Orange Meat Works',
+				type: 'Record keeping (Minor)',
+				status: 'Pending',
+			},
+			{
+				id: 'RE4321-2201-02',
+				businessName: 'Orange Meat Works',
+				type: 'Hygiene (Major)',
+				status: 'Open',
+			},
+			{
+				id: 'RE4321-2201-01',
+				businessName: 'Orange Meat Works',
+				type: 'Record keeping (Minor)',
+				status: 'Closed',
+			},
+		] as const;
 
-									<Text as="p">
-										<VisuallyHidden>Type: </VisuallyHidden>
-										{item.type}
-									</Text>
+		return (
+			<PageContent>
+				<Stack gap={1.5}>
+					<H2>Active CARs</H2>
+					<Text as="p">You may now manage your CARs online.</Text>
+					<Columns as="ul" gap={1} cols={{ xs: 1, sm: 2, lg: 3 }}>
+						{listData.map((item) => (
+							<Card as="li" shadow clickable key={item.id}>
+								<CardInner>
+									<Stack gap={0.5} width="100%" flexWrap="wrap">
+										<H3>
+											<CardLink href={`#${item.id}`}>
+												{item.businessName}
+											</CardLink>
+										</H3>
 
-									<Flex
-										gap={0.5}
-										flexWrap="wrap"
-										justifyContent="space-between"
-										alignItems="center"
-									>
-										<Text color="muted" fontSize="xs">
-											<VisuallyHidden>{'CAR ID: '}</VisuallyHidden>
-											{item.id}
+										<Text as="p">
+											<VisuallyHidden>Type: </VisuallyHidden>
+											{item.type}
 										</Text>
-										<StatusBadge
-											tone={toneMapper[item.status]}
-											label={
-												<Fragment>
-													<VisuallyHidden>{'Status: '}</VisuallyHidden>
-													{item.status}
-												</Fragment>
-											}
-										/>
-									</Flex>
-								</Stack>
-							</CardInner>
-						</Card>
-					))}
-				</Columns>
-			</Stack>
-		</PageContent>
-	);
+
+										<Flex
+											gap={0.5}
+											flexWrap="wrap"
+											justifyContent="space-between"
+											alignItems="center"
+										>
+											<Text color="muted" fontSize="xs">
+												<VisuallyHidden>{'CAR ID: '}</VisuallyHidden>
+												{item.id}
+											</Text>
+											<StatusBadge
+												tone={toneMapper[item.status]}
+												label={
+													<Fragment>
+														<VisuallyHidden>{'Status: '}</VisuallyHidden>
+														{item.status}
+													</Fragment>
+												}
+											/>
+										</Flex>
+									</Stack>
+								</CardInner>
+							</Card>
+						))}
+					</Columns>
+				</Stack>
+			</PageContent>
+		);
+	},
 };
-CardListStory.storyName = 'List of Cards';
 
 export const Compositions = () => {
 	return (

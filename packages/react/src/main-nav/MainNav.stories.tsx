@@ -25,14 +25,14 @@ export default meta;
 type Story = StoryObj<typeof MainNav>;
 
 export const Body: Story = {
-	storyName: 'Body background',
+	name: 'Body background',
 	args: {
 		background: 'body',
 	},
 };
 
 export const BodyAlt: Story = {
-	storyName: 'BodyAlt background',
+	name: 'BodyAlt background',
 	args: {
 		background: 'bodyAlt',
 	},

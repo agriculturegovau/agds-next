@@ -1,33 +1,48 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { StoryObj, Meta } from '@storybook/react';
 import { Box } from '../box';
 import { Text } from '../text';
 import { Callout } from './Callout';
-import { CalloutTitle } from './CalloutTitle';
 
-export default {
+const meta: Meta<typeof Callout> = {
 	title: 'content/Callout',
 	component: Callout,
-	subcomponents: { CalloutTitle },
-} as ComponentMeta<typeof Callout>;
-
-export const Basic: ComponentStory<typeof Callout> = (args) => (
-	<Callout {...args}>
-		<Text as="p">Description of the callout.</Text>
-	</Callout>
-);
-Basic.args = {
-	title: 'Callout heading',
 };
 
-export const OnBodyAlt: ComponentStory<typeof Callout> = (args) => (
-	<Box background="bodyAlt" padding={1.5}>
+export default meta;
+
+type Story = StoryObj<typeof Callout>;
+
+export const Basic: Story = {
+	args: {
+		title: 'Callout heading',
+	},
+	render: (args) => (
 		<Callout {...args}>
-			<Text as="p">Description of the callout</Text>
+			<Text as="p">Description of the callout.</Text>
 		</Callout>
-	</Box>
-);
-OnBodyAlt.storyName = 'On bodyAlt background';
-OnBodyAlt.args = {
-	title: 'Callout heading',
-	background: 'shadeAlt',
+	),
+};
+
+export const WithoutHeading: Story = {
+	args: {},
+	render: (args) => (
+		<Callout {...args}>
+			<Text as="p">Description of the callout.</Text>
+		</Callout>
+	),
+};
+
+export const OnBodyAltBackground: Story = {
+	name: 'On bodyAlt background',
+	args: {
+		title: 'Callout heading',
+		background: 'shadeAlt',
+	},
+	render: (args) => (
+		<Box background="bodyAlt" padding={1.5}>
+			<Callout {...args}>
+				<Text as="p">Description of the callout</Text>
+			</Callout>
+		</Box>
+	),
 };
