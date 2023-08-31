@@ -85,7 +85,7 @@ exports[`ComboboxMulti renders correctly 1`] = `
       </div>
       <ul
         aria-labelledby="downshift-:r1:-label"
-        class="css-1loxbfe-boxStyles-Popover"
+        class="css-1qdxsf8-boxStyles-Popover"
         id="downshift-:r1:-menu"
         role="listbox"
         style="position: absolute; left: 0px; top: 0px; display: none; transform: translate(0px, 0px);"
