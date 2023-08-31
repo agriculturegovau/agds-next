@@ -130,11 +130,11 @@ export type ZIndex = keyof typeof zIndex;
 
 /** A set of predefined box-shadows. */
 const shadow = {
-	/** Use for clickable cards */
+	/** Used to slightly elevate interactive elements like cards */
 	sm: '0px 2px 4px rgba(0, 0, 0, 0.15)',
-	/** Use for pop-overs like DatePicker and Dropdown. Use also for clickable card hover states. */
+	/** Used to further elevate interactive elements on hover */
 	md: '0px 4px 16px rgba(0, 0, 0, 0.15)',
-	/** Use for Modals and FilterDrawer */
+	/** Used for elements that float above the page like dropdowns and modals. */
 	lg: '0px 16px 32px rgba(0, 0, 0, 0.20)',
 };
 
