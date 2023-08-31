@@ -58,7 +58,8 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
 		const controlGroupContext = useControlGroupContext();
 		const invalid = invalidProp || controlGroupContext?.invalid;
 
-		// `indeterminate` cannot be set using an HTML attribute
+		//`indeterminate` is set using the HTMLInputElement object's indeterminate property via JavaScript (it cannot be set using an HTML attribute)
+		// Read more about this here https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/checkbox#indeterminate_state_checkboxes
 		useEffect(() => {
 			if (!ref.current) return;
 			ref.current.indeterminate = Boolean(indeterminate);
