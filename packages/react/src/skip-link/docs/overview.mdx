@@ -21,4 +21,19 @@ relatedComponents: ['a11y']
 </React.Fragment>
 ```
 
-Skip links are not visual until they receive focus. Include skip links after the opening of the `<body>` tag.
+Skip links help keyboard-only users skip top-level navigation items and go to the main content on a page. Skip links are not visual until they receive focus. Include skip links after the opening of the `<body>` tag.
+
+Skip links can be read by screen readers and exist to address [WCAG2.0 Criterion 2.4.1](https://www.w3.org/TR/UNDERSTANDING-WCAG20/navigation-mechanisms-skip.html).
+
+<DoHeading />
+
+- include between the opening of the <body> and the page <header>
+- use a label for screen readers – for example, Skip to main content
+- use for skipping to important UI elements such as Main navigation and Main content
+- make sure links go to the correct location.
+
+<DontHeading />
+
+- have more than 5 on a page
+- use for unimportant elements such as the footer
+- link to content on other pages.
