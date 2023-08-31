@@ -81,24 +81,34 @@ relatedComponents: ['summary-list']
 </TableWrapper>
 ```
 
+Tables are used to scan for information and compare values. They are useful for displaying exact values or information that would be hard to read in body text.
+
 For data tables with a small amount of rows use the default table. Align text columns and corresponding data cells to the left. When comparing numbers in a column, align data cells and column headers to the right.
 
 <DoHeading />
 
 - use for datasets with more than 2 columns
+- Use for tabular data - not layouts
 - provide a meaningful caption (heading), or use aria-labelledby to reference a heading
+- Keep row heights small.
+- Use a simple table structure - complex tables are difficult to navigate.
 - use Pagination to break up tables with many rows
 - align text left and numeric data right
 - only include text, tags, links and status badges as content
 - use a human readable format for numeric data – for example, 1,234,000 instead of 12340000.
+- allow row sorting by using `TableHeaderSortable`.
 
 <DontHeading />
 
 - repeat information across cells. If each cell has the same content, add it as the column header – for example, Width (cm).
 - nest tables inside tables
 - use if a list, paragraph of text or diagram will work
-- use to summarise form collection data - use a SummaryList
+- use to summarise form collection data - use a [SummaryList](/components/summary-list)
 - add lists, diagrams or images.
+- have too many rows. Use pagination or start another table where logical – for example, an alphabetical list, Table 1: A to D, Table 2: E to H and so on
+- use bespoke styling - follow consistent layouts and styles
+- nest tables inside tables
+- don’t use inside an accorion.
 
 ## Striped
 
