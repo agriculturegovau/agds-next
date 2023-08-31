@@ -817,6 +817,29 @@ exports[`Icon MenuIcon renders correctly 1`] = `
 </div>
 `;
 
+exports[`Icon MinusIcon renders correctly 1`] = `
+<div>
+  <svg
+    aria-hidden="true"
+    class="css-9s3cfn-Icon"
+    clip-rule="evenodd"
+    focusable="false"
+    height="24"
+    role="img"
+    viewBox="0 0 24 24"
+    width="24"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <line
+      x1="5"
+      x2="19"
+      y1="12"
+      y2="12"
+    />
+  </svg>
+</div>
+`;
+
 exports[`Icon PlusIcon renders correctly 1`] = `
 <div>
   <svg

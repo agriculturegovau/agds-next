@@ -13,9 +13,11 @@ export const CheckboxInput = forwardRef<HTMLInputElement, ControlInputProps>(
 					...visuallyHiddenStyles,
 					// When this component is focused, outline the `CheckboxIndicator`
 					'&:focus ~ span:first-of-type': packs.outline,
-					// When this component is checked, show the indicators active state
+					// When this component is checked or indeterminate, show the indicators active state
 					'~ span > svg': { opacity: 0 },
-					'&:checked ~ span > svg': { opacity: 1 },
+					'&:checked ~ span > svg, &:indeterminate ~ span > svg': {
+						opacity: 1,
+					},
 				}}
 				{...props}
 			/>

@@ -45,6 +45,7 @@ export { ProgressBlockedIcon } from './icons/ProgressBlockedIcon';
 export { ProgressDoingIcon } from './icons/ProgressDoingIcon';
 export { ExternalLinkIcon } from './icons/ExternalLinkIcon';
 export { MenuIcon } from './icons/MenuIcon';
+export { MinusIcon } from './icons/MinusIcon';
 export { SearchIcon } from './icons/SearchIcon';
 export { SettingsIcon } from './icons/SettingsIcon';
 export { SuccessIcon } from './icons/SuccessIcon';

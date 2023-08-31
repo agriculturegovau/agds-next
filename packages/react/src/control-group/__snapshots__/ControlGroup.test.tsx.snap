@@ -34,7 +34,7 @@ exports[`ControlGroup  With Checkboxes renders correctly 1`] = `
             class="css-hp3wbe-boxStyles-CheckboxContainer"
           >
             <input
-              class="css-2fffox-CheckboxInput"
+              class="css-142kh0r-CheckboxInput"
               data-testid="option-a"
               type="checkbox"
             />
@@ -67,7 +67,7 @@ exports[`ControlGroup  With Checkboxes renders correctly 1`] = `
             class="css-hp3wbe-boxStyles-CheckboxContainer"
           >
             <input
-              class="css-2fffox-CheckboxInput"
+              class="css-142kh0r-CheckboxInput"
               data-testid="option-b"
               type="checkbox"
             />
@@ -100,7 +100,7 @@ exports[`ControlGroup  With Checkboxes renders correctly 1`] = `
             class="css-hp3wbe-boxStyles-CheckboxContainer"
           >
             <input
-              class="css-2fffox-CheckboxInput"
+              class="css-142kh0r-CheckboxInput"
               data-testid="option-c"
               type="checkbox"
             />
@@ -133,7 +133,7 @@ exports[`ControlGroup  With Checkboxes renders correctly 1`] = `
             class="css-hp3wbe-boxStyles-CheckboxContainer"
           >
             <input
-              class="css-2fffox-CheckboxInput"
+              class="css-142kh0r-CheckboxInput"
               data-testid="option-d"
               type="checkbox"
             />
@@ -246,7 +246,7 @@ exports[`ControlGroup  With Checkboxes renders correctly when invalid 1`] = `
             <input
               aria-describedby="control-group-:r2:-message"
               aria-invalid="true"
-              class="css-2fffox-CheckboxInput"
+              class="css-142kh0r-CheckboxInput"
               data-testid="option-a"
               type="checkbox"
             />
@@ -281,7 +281,7 @@ exports[`ControlGroup  With Checkboxes renders correctly when invalid 1`] = `
             <input
               aria-describedby="control-group-:r2:-message"
               aria-invalid="true"
-              class="css-2fffox-CheckboxInput"
+              class="css-142kh0r-CheckboxInput"
               data-testid="option-b"
               type="checkbox"
             />
@@ -316,7 +316,7 @@ exports[`ControlGroup  With Checkboxes renders correctly when invalid 1`] = `
             <input
               aria-describedby="control-group-:r2:-message"
               aria-invalid="true"
-              class="css-2fffox-CheckboxInput"
+              class="css-142kh0r-CheckboxInput"
               data-testid="option-c"
               type="checkbox"
             />
@@ -351,7 +351,7 @@ exports[`ControlGroup  With Checkboxes renders correctly when invalid 1`] = `
             <input
               aria-describedby="control-group-:r2:-message"
               aria-invalid="true"
-              class="css-2fffox-CheckboxInput"
+              class="css-142kh0r-CheckboxInput"
               data-testid="option-d"
               type="checkbox"
             />

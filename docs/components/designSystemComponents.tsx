@@ -108,6 +108,7 @@ export {
 	InstagramIcon,
 	LinkedInIcon,
 	MenuIcon,
+	MinusIcon,
 	PlusIcon,
 	PrintIcon,
 	ProgressBlockedIcon,

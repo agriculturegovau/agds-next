@@ -515,7 +515,16 @@ items={[
 	{
 		group: 'Checkbox',
 		name: 'Basic',
-		code: `<Checkbox checked={false}>Label</Checkbox>`,
+		code: `<Checkbox>Label</Checkbox>`,
+	},
+	{
+		group: 'Checkbox',
+		name: 'Group',
+		code: `<ControlGroup>
+			<Checkbox>Phone</Checkbox>
+			<Checkbox>Tablet</Checkbox>
+			<Checkbox>Laptop</Checkbox>
+		</ControlGroup>`,
 	},
 	{
 		group: 'Radio',
