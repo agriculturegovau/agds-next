@@ -39,7 +39,7 @@ export const Card = ({
 
 				...(shadow && {
 					boxShadow: tokens.shadow.sm,
-					'&:hover': clickable ? { boxShadow: tokens.shadow.lg } : undefined,
+					'&:hover': clickable ? { boxShadow: tokens.shadow.md } : undefined,
 				}),
 			}}
 		>
