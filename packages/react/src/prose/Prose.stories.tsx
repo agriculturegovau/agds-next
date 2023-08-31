@@ -1,11 +1,35 @@
 import { Fragment } from 'react';
-import { ComponentMeta } from '@storybook/react';
-import { Prose } from './index';
+import { Meta, StoryObj } from '@storybook/react';
+import { Box } from '../box';
+import { Prose } from './Prose';
 
-export default {
+const meta: Meta<typeof Prose> = {
 	title: 'content/Prose',
 	component: Prose,
-} as ComponentMeta<typeof Prose>;
+};
+
+export default meta;
+
+type Story = StoryObj<typeof Prose>;
+
+export const Basic: Story = {
+	render: () => (
+		<Prose>
+			<UnstyledContent />
+		</Prose>
+	),
+};
+
+export const BodyAlt: Story = {
+	name: 'On BodyAlt background',
+	render: () => (
+		<Box background="bodyAlt" padding={1.5}>
+			<Prose>
+				<UnstyledContent />
+			</Prose>
+		</Box>
+	),
+};
 
 const UnstyledContent = () => (
 	<Fragment>
@@ -139,7 +163,7 @@ const UnstyledContent = () => (
 		</p>
 
 		<p>
-			Now to the <code>mark</code> element. This has a few useful applications:
+			Now to the <mark>mark</mark> element. This has a few useful applications:
 		</p>
 
 		<ul>
@@ -220,10 +244,4 @@ const UnstyledContent = () => (
 
 		<p>And that&apos;s a wrap.</p>
 	</Fragment>
-);
-
-export const Basic = () => (
-	<Prose>
-		<UnstyledContent />
-	</Prose>
 );
