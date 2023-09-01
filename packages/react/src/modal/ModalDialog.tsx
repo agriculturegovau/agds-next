@@ -40,6 +40,7 @@ export const ModalDialog = ({
 				gap={1}
 				maxWidth={MAX_WIDTH}
 				css={{
+					boxShadow: tokens.shadow.lg,
 					position: 'relative',
 					margin: '0 auto',
 					minHeight: '100vh',

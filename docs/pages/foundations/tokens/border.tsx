@@ -4,7 +4,7 @@ import { tokens } from '@ag.ds-next/react/core';
 import { InpageNav } from '@ag.ds-next/react/inpage-nav';
 import { DocumentTitle } from '../../../components/DocumentTitle';
 import { TokenLayout, TOKEN_PAGES } from '../../../components/TokenLayout';
-import { BorderWidthChart } from '../../../components/TokenCharts';
+import { BorderWidthTokenChart } from '../../../components/TokenCharts';
 
 export default function TokensBorderWidthPage() {
 	return (
@@ -31,7 +31,7 @@ export default function TokensBorderWidthPage() {
 						The following {Object.keys(tokens.borderWidth).length} tokens can be
 						used to set the thickness of borders.
 					</p>
-					<BorderWidthChart />
+					<BorderWidthTokenChart />
 					<h2 id="border-radius-tokens">Border radius tokens</h2>
 					<p>
 						Use the following border radius token to apply rounded corners to

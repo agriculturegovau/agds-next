@@ -21,6 +21,12 @@ export const TOKEN_PAGES = {
 		description:
 			'How to use colour to design consistent, purposeful, and accessible products.',
 	},
+	elevation: {
+		label: 'Elevation',
+		pageTitle: 'Elevation tokens',
+		description:
+			'A set of predefined tokens which are used to establish a sense of depth and perspective.',
+	},
 	'max-width': {
 		label: 'Max width',
 		pageTitle: 'Max width tokens',
@@ -38,12 +44,6 @@ export const TOKEN_PAGES = {
 		pageTitle: 'Typography tokens',
 		description:
 			'A set of predefined text styles to ensure text is consistent and legible.',
-	},
-	elevation: {
-		label: 'Elevation',
-		pageTitle: 'Elevation tokens',
-		description:
-			'A set of predefined tokens for handling the relative distance between two surfaces along the z-axis.',
 	},
 } as const;
 
