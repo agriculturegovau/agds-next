@@ -6,6 +6,7 @@ import { Card, CardInner } from '../card';
 import { H2 } from '../heading';
 import { Prose } from '../prose';
 import { Columns } from '../columns';
+import { ShadowTokenChart } from '../../../../docs/components/TokenCharts';
 import { boxPalette } from './boxPalette';
 import { mapSpacing, Spacing } from './tokens';
 
@@ -115,3 +116,5 @@ export const Space = () => {
 		</Stack>
 	);
 };
+
+export const Shadow = () => <ShadowTokenChart />;

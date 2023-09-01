@@ -245,18 +245,24 @@ export const ZIndexTokenChart = () => {
 };
 
 export const ShadowTokenChart = () => {
-	const shadowTokens = ['sm', 'md', 'lg'] as const;
+	const shadowTokens = Object.entries(tokens.shadow) as [
+		keyof typeof tokens.shadow,
+		string,
+	][];
+
 	return (
 		<Columns cols={3} gap={1.5} className={proseBlockClassname}>
-			{shadowTokens.map((t) => (
+			{shadowTokens.map(([token, shadow]) => (
 				<Flex
-					key={t}
+					key={token}
 					paddingX={1}
 					paddingY={2}
 					rounded
-					css={{ boxShadow: tokens.shadow[t] }}
+					flexDirection="column"
+					css={{ boxShadow: shadow }}
 				>
-					{t}
+					<Text fontWeight="bold">{token}</Text>
+					<Text fontSize="xs">{shadow}</Text>
 				</Flex>
 			))}
 		</Columns>
