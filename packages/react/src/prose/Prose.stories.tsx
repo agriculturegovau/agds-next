@@ -163,7 +163,7 @@ const UnstyledContent = () => (
 		</p>
 
 		<p>
-			Now to the <mark>mark</mark> element. This has a few useful applications:
+			Now to the <code>mark</code> element. This has a few useful applications:
 		</p>
 
 		<ul>
