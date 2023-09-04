@@ -15,18 +15,20 @@ export type AppLayoutSidebarProps = {
 	/** Groups of navigation items to display. */
 	items: NavItem[][];
 	/** TODO naming seems wrong */
-	width?: 'slim' | 'default';
+	variant?: 'slim' | 'regular';
+	width?: string | number;
 };
 
 export function AppLayoutSidebar({
 	activePath,
 	items,
-	width = 'default',
+	variant = 'regular',
+	width: widthProp,
 }: AppLayoutSidebarProps) {
 	const { focusMode } = useAppLayoutContext();
 	const bestMatch = findBestMatch(items.flat(), activePath);
 	return (
-		<AppLayoutSidebarWidthContext.Provider value={width}>
+		<AppLayoutSidebarVariantContext.Provider value={variant}>
 			{/* Desktop */}
 			<Stack
 				as="aside"
@@ -37,7 +39,7 @@ export function AppLayoutSidebar({
 				flexGrow={1}
 				css={{
 					display: 'none',
-					width: APP_LAYOUT_SIDEBAR_WIDTH[width],
+					width: widthProp || APP_LAYOUT_SIDEBAR_WIDTH[variant],
 					[tokens.mediaQuery.min[APP_LAYOUT_DESKTOP_BREAKPOINT]]: {
 						display: focusMode ? 'none' : 'flex',
 					},
@@ -49,16 +51,16 @@ export function AppLayoutSidebar({
 			<AppLayoutSidebarDialog>
 				<AppLayoutSidebarNav activePath={bestMatch} items={items} />
 			</AppLayoutSidebarDialog>
-		</AppLayoutSidebarWidthContext.Provider>
+		</AppLayoutSidebarVariantContext.Provider>
 	);
 }
 
-// Sidebar width context
-export const AppLayoutSidebarWidthContext = createContext<
-	'slim' | 'default' | undefined
+// Sidebar variant context
+export const AppLayoutSidebarVariantContext = createContext<
+	'slim' | 'regular' | undefined
 >(undefined);
 
-export function useAppLayoutSidebarWidth() {
-	const value = useContext(AppLayoutSidebarWidthContext);
-	return value || 'default';
+export function useAppLayoutSidebarVariant() {
+	const value = useContext(AppLayoutSidebarVariantContext);
+	return value || 'regular';
 }

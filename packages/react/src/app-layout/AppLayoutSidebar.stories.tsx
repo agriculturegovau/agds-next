@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { Flex } from '../flex';
 import { AppLayoutContext } from './AppLayoutContext';
 import { AppLayoutSidebar } from './AppLayoutSidebar';
-import { navigationItems } from './test-utils';
+import { navigationItems, slimNavigationItems } from './test-utils';
 
 const meta: Meta<typeof AppLayoutSidebar> = {
 	title: 'Layout/AppLayout/AppLayoutSidebar',
@@ -55,5 +55,26 @@ export const LargeList: Story = {
 				return { href: `#${groupIdx}-${itemIdx}`, label: 'Example item' };
 			});
 		}),
+	},
+};
+
+export const CustomWidth: Story = {
+	args: {
+		width: '20rem',
+	},
+};
+
+export const Slim: Story = {
+	args: {
+		items: slimNavigationItems,
+		variant: 'slim',
+	},
+};
+
+export const SlimCustomWidth: Story = {
+	args: {
+		items: slimNavigationItems,
+		variant: 'slim',
+		width: '10rem',
 	},
 };

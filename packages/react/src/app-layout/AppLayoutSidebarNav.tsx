@@ -11,7 +11,8 @@ import { Box, focusStyles } from '../box';
 import { Flex } from '../flex';
 import { BaseButton, BaseButtonProps } from '../button';
 import { IconProps } from '../icon';
-import { useAppLayoutSidebarWidth } from './AppLayoutSidebar';
+import { useAppLayoutSidebarVariant } from './AppLayoutSidebar';
+import { APP_LAYOUT_DESKTOP_BREAKPOINT } from './utils';
 
 type NavLink = Omit<LinkProps, 'children'>;
 
@@ -33,10 +34,19 @@ export function AppLayoutSidebarNav({
 	activePath,
 	items,
 }: AppLayoutSidebarNavProps) {
+	const variant = useAppLayoutSidebarVariant();
 	return (
-		<Flex as="nav" flexDirection="column" aria-label="main" paddingBottom={1.5}>
+		<Flex
+			as="nav"
+			flexDirection="column"
+			aria-label="main"
+			paddingTop={variant === 'slim' ? 1.5 : 0}
+			paddingBottom={1.5}
+		>
 			<Flex as="ul" flexDirection="column">
 				{items.map((group, idx, arr) => {
+					const groupHasSingleItem = group.length === 1;
+					const nextGroupHasSingleItem = items[idx + 1]?.length === 1;
 					const isLastItem = idx === arr.length - 1;
 					return (
 						<Fragment key={idx}>
@@ -47,7 +57,11 @@ export function AppLayoutSidebarNav({
 									activePath={activePath}
 								/>
 							))}
-							{!isLastItem ? <AppLayoutSidebarNavDivider /> : null}
+							{!isLastItem ? (
+								<AppLayoutSidebarNavDivider
+									disablePaddingY={groupHasSingleItem || nextGroupHasSingleItem}
+								/>
+							) : null}
 						</Fragment>
 					);
 				})}
@@ -116,7 +130,8 @@ function AppLayoutSidebarNavItemInner({
 	children,
 	hasEndElement,
 }: AppLayoutSidebarNavItemInnerProps) {
-	const width = useAppLayoutSidebarWidth();
+	const variant = useAppLayoutSidebarVariant();
+	const isSlimVariant = variant === 'slim';
 	return (
 		<li
 			css={{
@@ -132,12 +147,12 @@ function AppLayoutSidebarNavItemInner({
 					paddingBottom: mapSpacing(1),
 					paddingLeft: mapSpacing(1.5),
 					paddingRight: mapSpacing(1.5),
-
-					...(width === 'slim' && {
-						...fontGrid('xs', 'default'),
-
-						paddingLeft: mapSpacing(0.75),
-						paddingRight: mapSpacing(0.75),
+					...(isSlimVariant && {
+						[tokens.mediaQuery.min[APP_LAYOUT_DESKTOP_BREAKPOINT]]: {
+							...fontGrid('xs', 'default'),
+							paddingLeft: mapSpacing(0.5),
+							paddingRight: mapSpacing(0.5),
+						},
 					}),
 				},
 
@@ -146,14 +161,14 @@ function AppLayoutSidebarNavItemInner({
 					display: 'flex',
 					alignItems: 'center',
 					gap: mapSpacing(1),
-					paddingTop: mapSpacing(1),
-					paddingBottom: mapSpacing(1),
 					color: boxPalette[isActive ? 'foregroundText' : 'foregroundAction'],
 
-					...(width === 'slim' && {
-						gap: mapSpacing(0.5),
-						flexDirection: 'column',
-						textAlign: 'center',
+					...(isSlimVariant && {
+						[tokens.mediaQuery.min[APP_LAYOUT_DESKTOP_BREAKPOINT]]: {
+							gap: mapSpacing(0.5),
+							flexDirection: 'column',
+							textAlign: 'center',
+						},
 					}),
 
 					...(isActive && {
@@ -166,25 +181,29 @@ function AppLayoutSidebarNavItemInner({
 							top: 0,
 							left: 0,
 							bottom: 0,
-							borderLeftWidth: tokens.borderWidth.xxl,
 							borderLeftStyle: 'solid',
 							borderLeftColor: boxPalette.selected,
+							borderLeftWidth: tokens.borderWidth.xxl,
+							...(isSlimVariant && {
+								[tokens.mediaQuery.min[APP_LAYOUT_DESKTOP_BREAKPOINT]]: {
+									borderLeftWidth: tokens.borderWidth.xl,
+								},
+							}),
 						},
 					}),
 
 					...(hasEndElement && {
-						...(width === 'default' && {
-							'& > :last-child': {
-								marginLeft: 'auto',
-							},
-						}),
-						...(width === 'slim' && {
-							'& > :last-child': {
-								position: 'absolute',
-								top: mapSpacing(1),
-								right: mapSpacing(1),
-							},
-						}),
+						'& > :last-child': {
+							marginLeft: 'auto',
+							...(isSlimVariant && {
+								[tokens.mediaQuery.min[APP_LAYOUT_DESKTOP_BREAKPOINT]]: {
+									marginLeft: 'unset',
+									position: 'absolute',
+									top: mapSpacing(1),
+									right: mapSpacing(1),
+								},
+							}),
+						},
 					}),
 
 					'&:hover': {
@@ -204,15 +223,13 @@ function AppLayoutSidebarNavItemInner({
 	);
 }
 
-function AppLayoutSidebarNavDivider() {
-	const width = useAppLayoutSidebarWidth();
+function AppLayoutSidebarNavDivider({
+	disablePaddingY,
+}: {
+	disablePaddingY: boolean;
+}) {
 	return (
-		<Box
-			as="li"
-			paddingY={0}
-			paddingX={width === 'default' ? 1.5 : 0.75}
-			aria-hidden="true"
-		>
+		<Box as="li" paddingY={disablePaddingY ? 0 : 1} aria-hidden="true">
 			<hr
 				css={{
 					boxSizing: 'content-box',

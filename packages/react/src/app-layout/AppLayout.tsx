@@ -30,7 +30,6 @@ type AppLayoutGridProps = PropsWithChildren<{
 }>;
 
 function AppLayoutGrid({ children, focusMode }: AppLayoutGridProps) {
-	console.log({ focusMode });
 	return (
 		<div
 			css={mq({

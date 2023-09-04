@@ -160,13 +160,13 @@ exports[`AppLayout renders correctly 1`] = `
     >
       <nav
         aria-label="main"
-        class="css-wutooc-boxStyles"
+        class="css-dtqus-boxStyles"
       >
         <ul
           class="css-o80hmi-boxStyles"
         >
           <li
-            class="css-1syt18r-AppLayoutSidebarNavItemInner"
+            class="css-18a1sse-AppLayoutSidebarNavItemInner"
           >
             <a
               href="/account"
@@ -196,14 +196,14 @@ exports[`AppLayout renders correctly 1`] = `
           </li>
           <li
             aria-hidden="true"
-            class="css-1vjag3g-boxStyles"
+            class="css-1dz6j0b-boxStyles"
           >
             <hr
               class="css-166wurb-AppLayoutSidebarNavDivider"
             />
           </li>
           <li
-            class="css-1syt18r-AppLayoutSidebarNavItemInner"
+            class="css-18a1sse-AppLayoutSidebarNavItemInner"
           >
             <span
               class="css-1i7cdx8-boxStyles"
@@ -222,14 +222,14 @@ exports[`AppLayout renders correctly 1`] = `
           </li>
           <li
             aria-hidden="true"
-            class="css-1vjag3g-boxStyles"
+            class="css-1dz6j0b-boxStyles"
           >
             <hr
               class="css-166wurb-AppLayoutSidebarNavDivider"
             />
           </li>
           <li
-            class="css-1syt18r-AppLayoutSidebarNavItemInner"
+            class="css-18a1sse-AppLayoutSidebarNavItemInner"
           >
             <a
               href="/"
@@ -258,7 +258,7 @@ exports[`AppLayout renders correctly 1`] = `
             </a>
           </li>
           <li
-            class="css-5fc47p-AppLayoutSidebarNavItemInner"
+            class="css-12guayj-AppLayoutSidebarNavItemInner"
           >
             <a
               aria-current="page"
@@ -285,7 +285,7 @@ exports[`AppLayout renders correctly 1`] = `
             </a>
           </li>
           <li
-            class="css-1syt18r-AppLayoutSidebarNavItemInner"
+            class="css-18a1sse-AppLayoutSidebarNavItemInner"
           >
             <a
               href="/intelligence"
@@ -311,7 +311,7 @@ exports[`AppLayout renders correctly 1`] = `
             </a>
           </li>
           <li
-            class="css-1syt18r-AppLayoutSidebarNavItemInner"
+            class="css-18a1sse-AppLayoutSidebarNavItemInner"
           >
             <a
               href="/compliance"
@@ -343,14 +343,14 @@ exports[`AppLayout renders correctly 1`] = `
           </li>
           <li
             aria-hidden="true"
-            class="css-1vjag3g-boxStyles"
+            class="css-boytaj-boxStyles"
           >
             <hr
               class="css-166wurb-AppLayoutSidebarNavDivider"
             />
           </li>
           <li
-            class="css-c3r0hv-AppLayoutSidebarNavItemInner"
+            class="css-11es6gh-AppLayoutSidebarNavItemInner"
           >
             <a
               href="/account/messages"
@@ -389,7 +389,7 @@ exports[`AppLayout renders correctly 1`] = `
             </a>
           </li>
           <li
-            class="css-1syt18r-AppLayoutSidebarNavItemInner"
+            class="css-18a1sse-AppLayoutSidebarNavItemInner"
           >
             <a
               href="/account/settings"
@@ -420,7 +420,7 @@ exports[`AppLayout renders correctly 1`] = `
             </a>
           </li>
           <li
-            class="css-1syt18r-AppLayoutSidebarNavItemInner"
+            class="css-18a1sse-AppLayoutSidebarNavItemInner"
           >
             <a
               href="/help"
@@ -447,14 +447,14 @@ exports[`AppLayout renders correctly 1`] = `
           </li>
           <li
             aria-hidden="true"
-            class="css-1vjag3g-boxStyles"
+            class="css-1dz6j0b-boxStyles"
           >
             <hr
               class="css-166wurb-AppLayoutSidebarNavDivider"
             />
           </li>
           <li
-            class="css-1syt18r-AppLayoutSidebarNavItemInner"
+            class="css-18a1sse-AppLayoutSidebarNavItemInner"
           >
             <button
               class="css-6e6ykx-BaseButton"
