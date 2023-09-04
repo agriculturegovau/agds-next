@@ -12,6 +12,8 @@ const defaultFilters: GetDataFilters = {
 		from: undefined,
 		to: undefined,
 	},
+	services: undefined,
+	destinations: undefined,
 };
 
 export const useSortAndFilter = (

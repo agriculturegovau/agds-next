@@ -1,5 +1,10 @@
 import { useEffect, useState } from 'react';
-import { getData, GetDataParams, GetDataPagination } from './getData';
+import {
+	getData,
+	GetDataParams,
+	GetDataPagination,
+	GetDataFilters,
+} from './getData';
 import { BusinessForAuditWithIndex } from './generateBusinessData';
 
 export type DashboardTableData = {
@@ -57,3 +62,36 @@ export const generateTableCaption = ({
 
 	return `Audits (${firstItem} - ${lastItem} of ${totalItemsPlural})`;
 };
+
+export const STATUS_MAP = {
+	notBooked: {
+		label: 'Not booked',
+		tone: 'neutral',
+	},
+	booked: {
+		label: 'Booked',
+		tone: 'info',
+	},
+	completed: {
+		label: 'Completed',
+		tone: 'success',
+	},
+	cancelled: {
+		label: 'Cancelled',
+		tone: 'error',
+	},
+} as const;
+
+export const getNumberOfActiveFilters = (filters: GetDataFilters) =>
+	Object.keys(filters).reduce((acc, key) => {
+		if (key === 'requestDate') {
+			if (filters.requestDate?.from || filters.requestDate?.to) {
+				return acc + 1;
+			} else {
+				return acc;
+			}
+		}
+
+		if (filters[key as keyof GetDataFilters] !== undefined) return acc + 1;
+		return acc;
+	}, 0);

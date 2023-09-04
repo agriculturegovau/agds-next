@@ -4,7 +4,7 @@ import { PageContent } from '@ag.ds-next/react/content';
 import { PlusIcon } from '@ag.ds-next/react/icon';
 import { Prose } from '@ag.ds-next/react/prose';
 import { FilterStatusSelect } from './components/FilterStatusSelect';
-import { DashboardTable } from './components/DashboardTable';
+import { DataTable } from './components/DataTable';
 import { SortBySelect } from './components/SortBySelect';
 import { FilterAssigneeSelect } from './components/FilterAssigneeSelect';
 import {
@@ -41,7 +41,7 @@ export const TableFilteringSmall = () => {
 					</FilterBar>
 				</FilterRegion>
 
-				<DashboardTable />
+				<DataTable />
 				<DashboardPagination />
 			</Stack>
 		</PageContent>

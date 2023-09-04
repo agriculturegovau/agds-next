@@ -1,9 +1,9 @@
 import { Select } from '@ag.ds-next/react/select';
 import { assignees } from '../lib/generateBusinessData';
 import { useSortAndFilterContext } from '../lib/contexts';
-import { tableId } from './DashboardTable';
+import { tableId } from './DataTable';
 
-export const FilterAssigneeSelect = () => {
+export const FilterAssigneeSelect = ({ block }: { block?: boolean }) => {
 	const { filters, setFilter } = useSortAndFilterContext();
 
 	return (
@@ -11,6 +11,7 @@ export const FilterAssigneeSelect = () => {
 			label="Assignee"
 			placeholder="All"
 			hideOptionalLabel
+			block={block}
 			aria-controls={tableId}
 			options={assignees.map((option) => ({
 				label: option,

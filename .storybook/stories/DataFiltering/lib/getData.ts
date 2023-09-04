@@ -26,6 +26,8 @@ export type GetDataFilters = {
 	state: string | undefined;
 	requestDate: DateRangeWithString;
 	status: BusinessForAuditStatus | undefined;
+	services: string[] | undefined;
+	destinations: { label: string; value: string }[] | undefined;
 };
 
 export type GetDataParams = {
@@ -41,18 +43,29 @@ type GetDataResponse = {
 	totalItems: number;
 };
 
-const filterData = (business: BusinessForAudit, filters: GetDataFilters) => {
+export const doesBusinessMatchFilters = (
+	business: BusinessForAudit,
+	filters: Partial<GetDataFilters>
+) => {
 	let isValid = true;
 
-	const { requestDate, state, status, businessName, assignee } = filters;
+	const {
+		requestDate,
+		state,
+		status,
+		businessName,
+		assignee,
+		services,
+		destinations,
+	} = filters;
 
-	if (requestDate.from && typeof requestDate.from !== 'string') {
+	if (requestDate && requestDate.from && typeof requestDate.from !== 'string') {
 		if (business.requestDate < requestDate.from) {
 			isValid = false;
 		}
 	}
 
-	if (requestDate.to && typeof requestDate.to !== 'string') {
+	if (requestDate && requestDate.to && typeof requestDate.to !== 'string') {
 		if (business.requestDate > requestDate.to) {
 			isValid = false;
 		}
@@ -84,6 +97,30 @@ const filterData = (business: BusinessForAudit, filters: GetDataFilters) => {
 			!business.assignee ||
 			(business.assignee && business.assignee !== assignee)
 		) {
+			isValid = false;
+		}
+	}
+
+	if (services && services.length > 0) {
+		// ensures a business has all the services selected.
+		const hasAllServices = services.map((service) => {
+			return (business.services || []).includes(service);
+		});
+
+		if (hasAllServices.includes(false)) {
+			isValid = false;
+		}
+	}
+
+	if (destinations && destinations.length > 0) {
+		// ensures a business sends to at least one of the destinations selected.
+		let hasDestination = false;
+		destinations.forEach((destination) => {
+			if ((business.destinations || []).includes(destination.value)) {
+				hasDestination = true;
+			}
+		});
+		if (!hasDestination) {
 			isValid = false;
 		}
 	}
@@ -121,7 +158,7 @@ export async function getData(params: GetDataParams): Promise<GetDataResponse> {
 	const { page, perPage } = params.pagination;
 
 	const filteredData = allData.filter((business) =>
-		filterData(business, params.filters)
+		doesBusinessMatchFilters(business, params.filters)
 	);
 
 	const sortedData = filteredData

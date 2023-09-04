@@ -14,6 +14,8 @@ import {
 import { FilterStatusSelect } from './FilterStatusSelect';
 import { FilterAssigneeSelect } from './FilterAssigneeSelect';
 import { FilterStateSelect } from './FilterStateSelect';
+import { FilterDestinationsSelect } from './FilterDestinationsSelect';
+import { FilterServicesSelect } from './FilterServicesSelect';
 
 type DashboardFilterDrawerProps = {
 	isDrawerOpen: boolean;
@@ -44,6 +46,8 @@ export const DashboardFilterDrawer = ({
 			requestDate: { from: undefined, to: undefined },
 			state: undefined,
 			status: undefined,
+			services: undefined,
+			destinations: undefined,
 		});
 	};
 
@@ -95,14 +99,16 @@ export const DashboardFilterDrawer = ({
 				<Stack gap={3}>
 					<Fieldset legend="Fieldset">
 						<FormStack>
-							<FilterStatusSelect />
-							<FilterStateSelect />
+							<FilterStatusSelect block />
+							<FilterStateSelect block />
+							<FilterDestinationsSelect block />
+							<FilterServicesSelect block />
 						</FormStack>
 					</Fieldset>
 					<Divider />
 					<Fieldset legend="Fieldset">
 						<FormStack>
-							<FilterAssigneeSelect />
+							<FilterAssigneeSelect block />
 							<DateRangePicker
 								fromLabel="Registered from"
 								toLabel="Registered to"

@@ -1,7 +1,7 @@
 import { DataProvider, SortAndFilterContext } from '../lib/contexts';
 import { useSortAndFilter } from '../lib/useSortAndFilter';
 import { useData } from '../lib/utils';
-import { DashboardTable } from './DashboardTable';
+import { DataTable } from './DataTable';
 
 export default {
 	title: 'content/Table',
@@ -29,7 +29,7 @@ export const Application = () => {
 					totalItems: totalItems,
 				}}
 			>
-				<DashboardTable />
+				<DataTable />
 			</DataProvider>
 		</SortAndFilterContext.Provider>
 	);

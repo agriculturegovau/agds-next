@@ -13,7 +13,7 @@ import { Prose } from '@ag.ds-next/react/prose';
 import { ActiveFilters } from './components/ActiveFilters';
 import { FilterAccordion } from './components/FilterAccordion';
 import { SortBySelect } from './components/SortBySelect';
-import { DashboardTable } from './components/DashboardTable';
+import { DataTable } from './components/DataTable';
 import { FilterSearchInput } from './components/FilterSearchInput';
 import { FilterStatusSelect } from './components/FilterStatusSelect';
 import {
@@ -93,7 +93,7 @@ export const TableFilteringMedium = () => {
 					<ActiveFilters />
 				</FilterRegion>
 
-				<DashboardTable />
+				<DataTable />
 				<DashboardPagination />
 			</Stack>
 		</PageContent>
