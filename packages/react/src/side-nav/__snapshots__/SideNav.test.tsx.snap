@@ -142,7 +142,7 @@ exports[`SideNav renders correctly 1`] = `
             >
               <a
                 aria-current="page"
-                class="css-c4ilhd-boxStyles-SideNavLink"
+                class="css-c1d473-boxStyles-SideNavLink"
                 href="/in-detail"
               >
                 <span>
