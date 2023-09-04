@@ -60,7 +60,7 @@ export const Switch = ({
 					css={{
 						...visuallyHiddenStyles,
 						// When this component is focused, outline the track
-						'&:focus ~ span:first-of-type': packs.outline,
+						'&:focus-visible ~ span:first-of-type': packs.outline,
 					}}
 				/>
 				<SwitchTrack size={size} checked={checked} />

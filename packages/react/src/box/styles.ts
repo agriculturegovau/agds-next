@@ -372,9 +372,8 @@ export const linkStyles = {
 type FocusProps = Partial<{ focus: boolean }>;
 export const focusStyles = {
 	':focus': packs.outline,
-	'&::-moz-focus-inner': {
-		border: 0,
-	},
+	':focus:not(:focus-visible)': { outline: 'none' },
+	':focus-visible': packs.outline,
 };
 
 type HighContrastProps = Partial<{

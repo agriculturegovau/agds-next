@@ -13,7 +13,7 @@ exports[`PaginationButtons renders correctly 1`] = `
       >
         <button
           aria-label="Go to previous page"
-          class="css-rheow1-BaseButton-boxStyles-BaseDirectionLink"
+          class="css-rs8ftg-BaseButton-boxStyles-BaseDirectionLink"
           type="button"
         >
           <svg
@@ -44,7 +44,7 @@ exports[`PaginationButtons renders correctly 1`] = `
       <li>
         <button
           aria-label="Go to page 1"
-          class="css-znbpsc-BaseButton-boxStyles"
+          class="css-1yifu8x-BaseButton-boxStyles"
           type="button"
         >
           1
@@ -62,7 +62,7 @@ exports[`PaginationButtons renders correctly 1`] = `
       <li>
         <button
           aria-label="Go to page 4"
-          class="css-znbpsc-BaseButton-boxStyles"
+          class="css-1yifu8x-BaseButton-boxStyles"
           type="button"
         >
           4
@@ -72,7 +72,7 @@ exports[`PaginationButtons renders correctly 1`] = `
         <button
           aria-current="page"
           aria-label="Go to page 5"
-          class="css-4qmtwe-BaseButton-boxStyles-PaginationItemPageButton"
+          class="css-1gs1cx7-BaseButton-boxStyles-PaginationItemPageButton"
           type="button"
         >
           5
@@ -81,7 +81,7 @@ exports[`PaginationButtons renders correctly 1`] = `
       <li>
         <button
           aria-label="Go to page 6"
-          class="css-znbpsc-BaseButton-boxStyles"
+          class="css-1yifu8x-BaseButton-boxStyles"
           type="button"
         >
           6
@@ -99,7 +99,7 @@ exports[`PaginationButtons renders correctly 1`] = `
       <li>
         <button
           aria-label="Go to page 10"
-          class="css-znbpsc-BaseButton-boxStyles"
+          class="css-1yifu8x-BaseButton-boxStyles"
           type="button"
         >
           10
@@ -110,7 +110,7 @@ exports[`PaginationButtons renders correctly 1`] = `
       >
         <button
           aria-label="Go to next page"
-          class="css-rheow1-BaseButton-boxStyles-BaseDirectionLink"
+          class="css-rs8ftg-BaseButton-boxStyles-BaseDirectionLink"
           type="button"
         >
           <span

@@ -30,7 +30,7 @@ exports[`Card Basic renders correctly 1`] = `
 exports[`Card With link renders correctly 1`] = `
 <div>
   <div
-    class="css-xey5yh-boxStyles-Card"
+    class="css-pywoxr-boxStyles-Card"
   >
     <div
       class="css-z5u98n-boxStyles"

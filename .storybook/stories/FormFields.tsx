@@ -104,15 +104,9 @@ const AllFormFields = ({
 							/>
 
 							<ControlGroup label="Control group" {...commonProps} block>
-								<Checkbox checked={false} {...commonProps}>
-									Option A
-								</Checkbox>
-								<Checkbox checked={true} {...commonProps}>
-									Option B
-								</Checkbox>
-								<Checkbox checked={false} {...commonProps}>
-									Option C
-								</Checkbox>
+								<Checkbox {...commonProps}>Option A</Checkbox>
+								<Checkbox {...commonProps}>Option B</Checkbox>
+								<Checkbox {...commonProps}>Option C</Checkbox>
 							</ControlGroup>
 
 							<Autocomplete

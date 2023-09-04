@@ -29,7 +29,7 @@ exports[`FilterDrawer renders correctly 1`] = `
           class="css-rlusyu-boxStyles-FilterDrawerHeader"
         >
           <h2
-            class="css-4kc494-boxStyles-Text-FilterDrawerHeaderTitle"
+            class="css-bvrsye-boxStyles-Text-FilterDrawerHeaderTitle"
             data-autofocus="true"
             id="filter-drawer-:r0:-title"
             tabindex="-1"
@@ -50,7 +50,7 @@ exports[`FilterDrawer renders correctly 1`] = `
           class="css-1lcrni6-boxStyles-FilterDrawerFooter"
         >
           <button
-            class="css-3jmmp1-BaseButton-Button"
+            class="css-1me5i3x-BaseButton-Button"
             type="button"
           >
             <span>
@@ -66,7 +66,7 @@ exports[`FilterDrawer renders correctly 1`] = `
           </button>
         </div>
         <button
-          class="css-1vsr4nb-BaseButton-FilterDrawerDialog"
+          class="css-5le4p6-BaseButton-FilterDrawerDialog"
           type="button"
         >
           <span>

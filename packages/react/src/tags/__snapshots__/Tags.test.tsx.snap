@@ -20,7 +20,7 @@ exports[`Tags With links renders correctly 1`] = `
           class="css-k8ctd8-boxStyles"
         >
           <a
-            class="css-1as6xcj-TextLink-boxStyles"
+            class="css-oplj7x-TextLink-boxStyles"
             href="#"
           >
             Foo
@@ -34,7 +34,7 @@ exports[`Tags With links renders correctly 1`] = `
           class="css-k8ctd8-boxStyles"
         >
           <a
-            class="css-1as6xcj-TextLink-boxStyles"
+            class="css-oplj7x-TextLink-boxStyles"
             href="#"
           >
             Bar
@@ -48,7 +48,7 @@ exports[`Tags With links renders correctly 1`] = `
           class="css-k8ctd8-boxStyles"
         >
           <a
-            class="css-1as6xcj-TextLink-boxStyles"
+            class="css-oplj7x-TextLink-boxStyles"
             href="#"
           >
             Baz
@@ -80,14 +80,14 @@ exports[`Tags With onRemove renders correctly 1`] = `
           class="css-198oft9-boxStyles"
         >
           <a
-            class="css-1as6xcj-TextLink-boxStyles"
+            class="css-oplj7x-TextLink-boxStyles"
             href="#"
           >
             Foo
           </a>
           <button
             aria-label="Remove Foo"
-            class="css-96drji-BaseButton-boxStyles-TagRemoveButton"
+            class="css-1mpot0i-BaseButton-boxStyles-TagRemoveButton"
             type="button"
           >
             <svg
@@ -124,14 +124,14 @@ exports[`Tags With onRemove renders correctly 1`] = `
           class="css-198oft9-boxStyles"
         >
           <a
-            class="css-1as6xcj-TextLink-boxStyles"
+            class="css-oplj7x-TextLink-boxStyles"
             href="#"
           >
             Bar
           </a>
           <button
             aria-label="Remove Bar"
-            class="css-96drji-BaseButton-boxStyles-TagRemoveButton"
+            class="css-1mpot0i-BaseButton-boxStyles-TagRemoveButton"
             type="button"
           >
             <svg
@@ -168,14 +168,14 @@ exports[`Tags With onRemove renders correctly 1`] = `
           class="css-198oft9-boxStyles"
         >
           <a
-            class="css-1as6xcj-TextLink-boxStyles"
+            class="css-oplj7x-TextLink-boxStyles"
             href="#"
           >
             Baz
           </a>
           <button
             aria-label="Remove Baz"
-            class="css-96drji-BaseButton-boxStyles-TagRemoveButton"
+            class="css-1mpot0i-BaseButton-boxStyles-TagRemoveButton"
             type="button"
           >
             <svg

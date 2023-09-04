@@ -3,7 +3,7 @@
 exports[`TableHeaderSortable with sort direction: ASC renders correctly 1`] = `
 <div>
   <table
-    class="css-1lii0zf-boxStyles-Table"
+    class="css-teqxv1-boxStyles-Table"
   >
     <thead
       class="css-11khhn7-boxStyles"
@@ -15,7 +15,7 @@ exports[`TableHeaderSortable with sort direction: ASC renders correctly 1`] = `
           scope="col"
         >
           <button
-            class="css-19jhtto-BaseButton-boxStyles-TableHeaderSortable"
+            class="css-1gm7gt9-BaseButton-boxStyles-TableHeaderSortable"
             type="button"
           >
             Example
@@ -48,7 +48,7 @@ exports[`TableHeaderSortable with sort direction: ASC renders correctly 1`] = `
 exports[`TableHeaderSortable with sort direction: DESC renders correctly 1`] = `
 <div>
   <table
-    class="css-1lii0zf-boxStyles-Table"
+    class="css-teqxv1-boxStyles-Table"
   >
     <thead
       class="css-11khhn7-boxStyles"
@@ -60,7 +60,7 @@ exports[`TableHeaderSortable with sort direction: DESC renders correctly 1`] = `
           scope="col"
         >
           <button
-            class="css-19jhtto-BaseButton-boxStyles-TableHeaderSortable"
+            class="css-1gm7gt9-BaseButton-boxStyles-TableHeaderSortable"
             type="button"
           >
             Example
@@ -93,7 +93,7 @@ exports[`TableHeaderSortable with sort direction: DESC renders correctly 1`] = `
 exports[`TableHeaderSortable with sort direction: undefined renders correctly 1`] = `
 <div>
   <table
-    class="css-1lii0zf-boxStyles-Table"
+    class="css-teqxv1-boxStyles-Table"
   >
     <thead
       class="css-11khhn7-boxStyles"
@@ -104,7 +104,7 @@ exports[`TableHeaderSortable with sort direction: undefined renders correctly 1`
           scope="col"
         >
           <button
-            class="css-19jhtto-BaseButton-boxStyles-TableHeaderSortable"
+            class="css-1gm7gt9-BaseButton-boxStyles-TableHeaderSortable"
             type="button"
           >
             Example

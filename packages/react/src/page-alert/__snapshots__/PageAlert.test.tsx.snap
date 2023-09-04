@@ -3,7 +3,7 @@
 exports[`PageAlert tone: error renders correctly 1`] = `
 <div>
   <div
-    class="css-6b0oeo-boxStyles-PageAlert"
+    class="css-nrc1qj-boxStyles-PageAlert"
   >
     <div
       class="css-1k8g9lc-boxStyles-PageAlert"
@@ -47,7 +47,7 @@ exports[`PageAlert tone: error renders correctly 1`] = `
             class="css-tdgyc3-boxStyles-Text-ListItem"
           >
             <a
-              class="css-38ppen-TextLink"
+              class="css-ma0bjl-TextLink"
               href="#"
             >
               Full name must not be empty
@@ -63,7 +63,7 @@ exports[`PageAlert tone: error renders correctly 1`] = `
 exports[`PageAlert tone: info renders correctly 1`] = `
 <div>
   <div
-    class="css-mgpque-boxStyles-PageAlert"
+    class="css-i0rwwd-boxStyles-PageAlert"
   >
     <div
       class="css-11095yd-boxStyles-PageAlert"
@@ -114,7 +114,7 @@ exports[`PageAlert tone: info renders correctly 1`] = `
 exports[`PageAlert tone: success renders correctly 1`] = `
 <div>
   <div
-    class="css-12s1p7i-boxStyles-PageAlert"
+    class="css-12967ez-boxStyles-PageAlert"
   >
     <div
       class="css-pnbgw6-boxStyles-PageAlert"
@@ -165,7 +165,7 @@ exports[`PageAlert tone: success renders correctly 1`] = `
 exports[`PageAlert tone: warning renders correctly 1`] = `
 <div>
   <div
-    class="css-1c4dk5p-boxStyles-PageAlert"
+    class="css-6yhwwh-boxStyles-PageAlert"
   >
     <div
       class="css-11ssqox-boxStyles-PageAlert"
@@ -216,7 +216,7 @@ exports[`PageAlert tone: warning renders correctly 1`] = `
 exports[`PageAlert with a close button renders correctly 1`] = `
 <div>
   <div
-    class="css-mgpque-boxStyles-PageAlert"
+    class="css-i0rwwd-boxStyles-PageAlert"
   >
     <div
       class="css-11095yd-boxStyles-PageAlert"
@@ -261,7 +261,7 @@ exports[`PageAlert with a close button renders correctly 1`] = `
       </div>
       <button
         aria-label="Close"
-        class="css-ajxfbb-BaseButton-PageAlertCloseButton"
+        class="css-motjk1-BaseButton-PageAlertCloseButton"
         type="button"
       >
         <span>

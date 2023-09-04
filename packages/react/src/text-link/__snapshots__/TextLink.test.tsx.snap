@@ -3,7 +3,7 @@
 exports[`TextLink renders correctly 1`] = `
 <div>
   <a
-    class="css-38ppen-TextLink"
+    class="css-ma0bjl-TextLink"
     data-testid="example"
     href="/example"
   >

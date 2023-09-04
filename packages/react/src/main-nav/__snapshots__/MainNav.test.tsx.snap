@@ -22,7 +22,7 @@ exports[`MainNav renders correctly 1`] = `
             aria-controls="main-nav-dialog"
             aria-expanded="false"
             aria-label="Open main menu"
-            class="css-beci8r-BaseButton-boxStyles-MainNavButton"
+            class="css-1fh9aza-BaseButton-boxStyles-MainNavButton"
             type="button"
           >
             <svg
@@ -68,7 +68,7 @@ exports[`MainNav renders correctly 1`] = `
                 aria-controls="main-nav-dialog"
                 aria-expanded="true"
                 aria-label="Close main menu"
-                class="css-beci8r-BaseButton-boxStyles-MainNavButton"
+                class="css-1fh9aza-BaseButton-boxStyles-MainNavButton"
                 type="button"
               >
                 <svg
@@ -106,7 +106,7 @@ exports[`MainNav renders correctly 1`] = `
                 class="css-5nrt7j-boxStyles-NavListContainer"
               >
                 <li
-                  class="css-1iz4dhy-boxStyles-NavListItem"
+                  class="css-1a7bmr9-boxStyles-NavListItem"
                 >
                   <a
                     href="/"
@@ -117,7 +117,7 @@ exports[`MainNav renders correctly 1`] = `
                   </a>
                 </li>
                 <li
-                  class="css-1iz4dhy-boxStyles-NavListItem"
+                  class="css-1a7bmr9-boxStyles-NavListItem"
                 >
                   <a
                     href="/content"
@@ -128,7 +128,7 @@ exports[`MainNav renders correctly 1`] = `
                   </a>
                 </li>
                 <li
-                  class="css-1iz4dhy-boxStyles-NavListItem"
+                  class="css-1a7bmr9-boxStyles-NavListItem"
                 >
                   <a
                     href="/form"
@@ -139,7 +139,7 @@ exports[`MainNav renders correctly 1`] = `
                   </a>
                 </li>
                 <li
-                  class="css-tk5pii-boxStyles-NavListItem"
+                  class="css-1a57hfp-boxStyles-NavListItem"
                 >
                   <a
                     aria-current="page"
@@ -167,7 +167,7 @@ exports[`MainNav renders correctly 1`] = `
             class="css-1ltfh56-boxStyles"
           >
             <li
-              class="css-1ieyr45-boxStyles-NavListItem"
+              class="css-majnjc-boxStyles-NavListItem"
             >
               <a
                 href="#sign-in"

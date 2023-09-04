@@ -9,7 +9,7 @@ exports[`LinkList renders correctly 1`] = `
       class="css-79i25n-boxStyles"
     >
       <a
-        class="css-38ppen-TextLink"
+        class="css-ma0bjl-TextLink"
         href="#"
       >
         Home
@@ -19,7 +19,7 @@ exports[`LinkList renders correctly 1`] = `
       class="css-79i25n-boxStyles"
     >
       <a
-        class="css-38ppen-TextLink"
+        class="css-ma0bjl-TextLink"
         href="#"
       >
         Establishments
@@ -29,7 +29,7 @@ exports[`LinkList renders correctly 1`] = `
       class="css-79i25n-boxStyles"
     >
       <a
-        class="css-38ppen-TextLink"
+        class="css-ma0bjl-TextLink"
         href="#"
       >
         Applications
@@ -39,7 +39,7 @@ exports[`LinkList renders correctly 1`] = `
       class="css-79i25n-boxStyles"
     >
       <a
-        class="css-38ppen-TextLink"
+        class="css-ma0bjl-TextLink"
         href="https://design-system.agriculture.gov.au"
         rel="noopener"
         target="_blank"

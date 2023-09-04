@@ -23,7 +23,7 @@ exports[`Modal renders correctly 1`] = `
         role="dialog"
       >
         <h2
-          class="css-n64ezu-boxStyles-Text"
+          class="css-jhnu76-boxStyles-Text"
           data-autofocus="true"
           id="modal-:r0:-title"
           tabindex="-1"
@@ -43,7 +43,7 @@ exports[`Modal renders correctly 1`] = `
           class="css-1kzq3kl-boxStyles-ModalDialog"
         >
           <button
-            class="css-3jmmp1-BaseButton-Button"
+            class="css-1me5i3x-BaseButton-Button"
             type="button"
           >
             <span>
@@ -60,7 +60,7 @@ exports[`Modal renders correctly 1`] = `
         </div>
         <button
           aria-label="Close modal"
-          class="css-14ch2j2-BaseButton-ModalDialog"
+          class="css-1h2z8qx-BaseButton-ModalDialog"
           type="button"
         >
           <span>

@@ -8,7 +8,7 @@ exports[`SideNav renders correctly 1`] = `
     <button
       aria-controls="collapsing-side-bar-:r1:-body"
       aria-expanded="false"
-      class="css-egsa7l-BaseButton-boxStyles-SideBarCollapseButton"
+      class="css-15g5ot9-BaseButton-boxStyles-SideBarCollapseButton"
       id="collapsing-side-bar-:r1:-button"
       type="button"
     >
@@ -47,7 +47,7 @@ exports[`SideNav renders correctly 1`] = `
             id="sideNav-:r0:-title"
           >
             <a
-              class="css-1z11tde-boxStyles-SideNavTitle"
+              class="css-xmyg48-boxStyles-SideNavTitle"
               href="/"
             >
               Lodging your tax return
@@ -60,7 +60,7 @@ exports[`SideNav renders correctly 1`] = `
               class="css-0"
             >
               <a
-                class="css-n28rsj-boxStyles-SideNavLink"
+                class="css-12injsc-boxStyles-SideNavLink"
                 href="/welcome"
               >
                 <span>
@@ -72,7 +72,7 @@ exports[`SideNav renders correctly 1`] = `
               class="css-0"
             >
               <a
-                class="css-n28rsj-boxStyles-SideNavLink"
+                class="css-12injsc-boxStyles-SideNavLink"
                 href="/do-you-need-to-lodge-a-tax-return"
               >
                 <span>
@@ -84,7 +84,7 @@ exports[`SideNav renders correctly 1`] = `
               class="css-0"
             >
               <a
-                class="css-n28rsj-boxStyles-SideNavLink"
+                class="css-12injsc-boxStyles-SideNavLink"
                 href="/lodge-online"
               >
                 <span>
@@ -98,7 +98,7 @@ exports[`SideNav renders correctly 1`] = `
                   class="css-0"
                 >
                   <a
-                    class="css-1prved-boxStyles-SideNavLink"
+                    class="css-esqyjf-boxStyles-SideNavLink"
                     href="/lodge-online/pre-filling"
                   >
                     <span
@@ -117,7 +117,7 @@ exports[`SideNav renders correctly 1`] = `
               class="css-0"
             >
               <a
-                class="css-n28rsj-boxStyles-SideNavLink"
+                class="css-12injsc-boxStyles-SideNavLink"
                 href="/whats-new-for-individuals"
               >
                 <span>
@@ -129,7 +129,7 @@ exports[`SideNav renders correctly 1`] = `
               class="css-0"
             >
               <a
-                class="css-n28rsj-boxStyles-SideNavLink"
+                class="css-12injsc-boxStyles-SideNavLink"
                 href="/why-you-may-receive-a-tax-bill"
               >
                 <span>
@@ -142,7 +142,7 @@ exports[`SideNav renders correctly 1`] = `
             >
               <a
                 aria-current="page"
-                class="css-c1d473-boxStyles-SideNavLink"
+                class="css-10q8mzo-boxStyles-SideNavLink"
                 href="/in-detail"
               >
                 <span>
@@ -156,7 +156,7 @@ exports[`SideNav renders correctly 1`] = `
                   class="css-0"
                 >
                   <a
-                    class="css-1prved-boxStyles-SideNavLink"
+                    class="css-esqyjf-boxStyles-SideNavLink"
                     href="/in-detail/record-keeping"
                   >
                     <span
@@ -175,7 +175,7 @@ exports[`SideNav renders correctly 1`] = `
                       class="css-0"
                     >
                       <a
-                        class="css-18pltva-boxStyles-SideNavLink"
+                        class="css-qh1skz-boxStyles-SideNavLink"
                         href="/in-detail/record-keeping/tax"
                       >
                         <span
@@ -192,7 +192,7 @@ exports[`SideNav renders correctly 1`] = `
                       class="css-0"
                     >
                       <a
-                        class="css-18pltva-boxStyles-SideNavLink"
+                        class="css-qh1skz-boxStyles-SideNavLink"
                         href="/in-detail/record-keeping/incorrect-amounts"
                       >
                         <span
@@ -211,7 +211,7 @@ exports[`SideNav renders correctly 1`] = `
                   class="css-0"
                 >
                   <a
-                    class="css-1prved-boxStyles-SideNavLink"
+                    class="css-esqyjf-boxStyles-SideNavLink"
                     href="/tax-receipt"
                   >
                     <span
@@ -228,7 +228,7 @@ exports[`SideNav renders correctly 1`] = `
                   class="css-0"
                 >
                   <a
-                    class="css-1prved-boxStyles-SideNavLink"
+                    class="css-esqyjf-boxStyles-SideNavLink"
                     href="/pre-fill availability"
                   >
                     <span

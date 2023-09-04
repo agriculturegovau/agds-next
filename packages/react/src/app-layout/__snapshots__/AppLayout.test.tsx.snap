@@ -13,7 +13,7 @@ exports[`AppLayout renders correctly 1`] = `
         class="css-1aywuo5-boxStyles"
       >
         <a
-          class="css-10e1rls-boxStyles-AppLayoutHeaderBrand"
+          class="css-nfczdl-boxStyles-AppLayoutHeaderBrand"
           href="#"
         >
           <svg
@@ -71,7 +71,7 @@ exports[`AppLayout renders correctly 1`] = `
           </div>
         </a>
         <a
-          class="css-32sbo0-boxStyles-AppLayoutHeaderAccount"
+          class="css-xust8k-boxStyles-AppLayoutHeaderAccount"
           href="/account/preferences"
         >
           <div
@@ -100,7 +100,7 @@ exports[`AppLayout renders correctly 1`] = `
         class="css-1sjsayx-boxStyles-AppLayoutHeaderNav"
       >
         <button
-          class="css-lha977-BaseButton-boxStyles-AppLayoutHeaderNavMenuButton"
+          class="css-zbjn2b-BaseButton-boxStyles-AppLayoutHeaderNavMenuButton"
           type="button"
         >
           <svg
@@ -129,7 +129,7 @@ exports[`AppLayout renders correctly 1`] = `
           </span>
         </button>
         <a
-          class="css-ewmtp9-boxStyles-AppLayoutHeaderAccount"
+          class="css-10klk4k-boxStyles-AppLayoutHeaderAccount"
           href="/account/preferences"
         >
           <div
@@ -166,7 +166,7 @@ exports[`AppLayout renders correctly 1`] = `
           class="css-o80hmi-boxStyles"
         >
           <li
-            class="css-4cl6ms-AppLayoutSidebarNavItemInner"
+            class="css-147t09t-AppLayoutSidebarNavItemInner"
           >
             <a
               href="/"
@@ -195,7 +195,7 @@ exports[`AppLayout renders correctly 1`] = `
             </a>
           </li>
           <li
-            class="css-wr0h17-AppLayoutSidebarNavItemInner"
+            class="css-1eeqpv2-AppLayoutSidebarNavItemInner"
           >
             <a
               aria-current="page"
@@ -222,7 +222,7 @@ exports[`AppLayout renders correctly 1`] = `
             </a>
           </li>
           <li
-            class="css-4cl6ms-AppLayoutSidebarNavItemInner"
+            class="css-147t09t-AppLayoutSidebarNavItemInner"
           >
             <a
               href="/intelligence"
@@ -248,7 +248,7 @@ exports[`AppLayout renders correctly 1`] = `
             </a>
           </li>
           <li
-            class="css-4cl6ms-AppLayoutSidebarNavItemInner"
+            class="css-147t09t-AppLayoutSidebarNavItemInner"
           >
             <a
               href="/compliance"
@@ -287,7 +287,7 @@ exports[`AppLayout renders correctly 1`] = `
             />
           </li>
           <li
-            class="css-oyhr1z-AppLayoutSidebarNavItemInner"
+            class="css-1u0qk1y-AppLayoutSidebarNavItemInner"
           >
             <a
               href="/account/messages"
@@ -326,7 +326,7 @@ exports[`AppLayout renders correctly 1`] = `
             </a>
           </li>
           <li
-            class="css-4cl6ms-AppLayoutSidebarNavItemInner"
+            class="css-147t09t-AppLayoutSidebarNavItemInner"
           >
             <a
               href="/account/settings"
@@ -357,7 +357,7 @@ exports[`AppLayout renders correctly 1`] = `
             </a>
           </li>
           <li
-            class="css-4cl6ms-AppLayoutSidebarNavItemInner"
+            class="css-147t09t-AppLayoutSidebarNavItemInner"
           >
             <a
               href="/help"
@@ -391,7 +391,7 @@ exports[`AppLayout renders correctly 1`] = `
             />
           </li>
           <li
-            class="css-4cl6ms-AppLayoutSidebarNavItemInner"
+            class="css-147t09t-AppLayoutSidebarNavItemInner"
           >
             <button
               class="css-6e6ykx-BaseButton"
@@ -460,7 +460,7 @@ exports[`AppLayout renders correctly 1`] = `
                     class="css-79i25n-boxStyles"
                   >
                     <a
-                      class="css-38ppen-TextLink"
+                      class="css-ma0bjl-TextLink"
                       href="/"
                     >
                       Home

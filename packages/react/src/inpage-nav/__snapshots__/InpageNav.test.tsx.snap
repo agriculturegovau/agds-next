@@ -13,7 +13,7 @@ exports[`InpageNav renders correctly 1`] = `
         class="css-79i25n-boxStyles"
       >
         <a
-          class="css-38ppen-TextLink"
+          class="css-ma0bjl-TextLink"
           href="#section-1"
         >
           Section 1
@@ -23,7 +23,7 @@ exports[`InpageNav renders correctly 1`] = `
         class="css-79i25n-boxStyles"
       >
         <a
-          class="css-38ppen-TextLink"
+          class="css-ma0bjl-TextLink"
           href="#section-2"
         >
           Section 2
@@ -33,7 +33,7 @@ exports[`InpageNav renders correctly 1`] = `
         class="css-79i25n-boxStyles"
       >
         <a
-          class="css-38ppen-TextLink"
+          class="css-ma0bjl-TextLink"
           href="#section-3"
         >
           Section 3
@@ -43,7 +43,7 @@ exports[`InpageNav renders correctly 1`] = `
         class="css-79i25n-boxStyles"
       >
         <a
-          class="css-38ppen-TextLink"
+          class="css-ma0bjl-TextLink"
           href="#section-4"
         >
           Section 4
@@ -53,7 +53,7 @@ exports[`InpageNav renders correctly 1`] = `
         class="css-79i25n-boxStyles"
       >
         <a
-          class="css-38ppen-TextLink"
+          class="css-ma0bjl-TextLink"
           href="#section-5"
         >
           Section 5

@@ -6,13 +6,13 @@ exports[`SkipLinks renders correctly 1`] = `
     aria-label="skip links"
   >
     <a
-      class="css-r7btdr-SkipLinkItem"
+      class="css-1n5lci-SkipLinkItem"
       href="#main-content"
     >
       Skip to main content
     </a>
     <a
-      class="css-r7btdr-SkipLinkItem"
+      class="css-1n5lci-SkipLinkItem"
       href="#main-nav"
     >
       Skip to main navigation

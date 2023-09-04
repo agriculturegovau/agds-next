@@ -34,7 +34,12 @@ export const Card = ({
 
 				...(clickable && {
 					// If any element inside the card receives focus, add a focus ring around the wrapper card div
-					'&:focus-within': packs.outline,
+					':focus-within': packs.outline,
+					// If the browser supports :has, only show the focus ring when focus-visible
+					'@supports selector(:has(*))': {
+						':focus-within': { outline: 'none' },
+						':has(:focus-visible)': packs.outline,
+					},
 				}),
 
 				...(shadow && {
