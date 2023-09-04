@@ -60,14 +60,6 @@ export const proseClass = css({
 	'[tabindex="0"]:focus, :target': packs.outline,
 
 	/**
-	 * `mark` styling.
-	 */
-	[`mark${notSelector}`]: {
-		color: boxPalette.backgroundBody,
-		backgroundColor: boxPalette.foregroundAction,
-	},
-
-	/**
 	 * Text selection styling
 	 */
 	'& ::selection': {
