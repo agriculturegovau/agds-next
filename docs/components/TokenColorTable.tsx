@@ -133,7 +133,7 @@ export const colourTokens: {
 		selectedMuted: {
 			light: theme.lightSelectedMuted,
 			dark: theme.darkSelectedMuted,
-			desc: 'Used as a background for a component with a `selected` tone.',
+			desc: 'Used as a background to communicate the selected state of input components. It is not intended to be used to convey the active item in navigational components.',
 		},
 		overlay: {
 			light: theme.lightOverlay,

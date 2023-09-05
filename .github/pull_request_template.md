@@ -1,6 +1,6 @@
 Provide an overview of your changes here. Include screenshots, photos or links if necessary.
 
-[View preview](https://design-system.agriculture.gov.au/pr-preview/pr-PR-NUMBER)
+[View preview](https://design-system.agriculture.gov.au/pr-preview/pr-[PR_NUMBER])
 
 ## Checklist
 

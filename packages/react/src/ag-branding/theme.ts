@@ -4,7 +4,7 @@ export const theme: Theme = {
 	lightForegroundAction: '#00558b',
 	lightAccent: '#F36C52',
 	lightSelected: '#00558b', // use same color as action
-	lightSelectedMuted: '#f5f5f5', // use same color as shade
+	lightSelectedMuted: '#EBF4FA',
 	lightSystemError: '#D10000',
 	lightSystemErrorMuted: '#FFF0F0',
 	lightSystemSuccess: '#00754E',
@@ -19,7 +19,7 @@ export const theme: Theme = {
 	darkBackgroundShadeAlt: '#20365B',
 	darkForegroundAction: '#9EE8FF',
 	darkSelected: '#9EE8FF', // use same color as action
-	darkSelectedMuted: '#122440', // use same color as shade
+	darkSelectedMuted: '#162C50',
 	darkAccent: '#F36C52',
 	darkSystemError: '#FF4F4F',
 	darkSystemErrorMuted: '#422F47',
