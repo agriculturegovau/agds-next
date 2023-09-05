@@ -71,15 +71,6 @@ const getTagsFromFilters = ({
 			continue;
 		}
 
-		if (key === 'destinations') {
-			const formattedValue = value.map((v) => v.label).join(', ');
-			tags.push({
-				label: `${formattedKey}: ${formattedValue}`,
-				onRemove,
-			});
-			continue;
-		}
-
 		if (Array.isArray(value)) {
 			if (value.length === 0) continue;
 

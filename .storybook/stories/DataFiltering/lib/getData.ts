@@ -27,7 +27,7 @@ export type GetDataFilters = {
 	requestDate: DateRangeWithString;
 	status: BusinessForAuditStatus | undefined;
 	services: string[] | undefined;
-	destinations: { label: string; value: string }[] | undefined;
+	destinations: string[] | undefined;
 };
 
 export type GetDataParams = {
@@ -103,22 +103,18 @@ export const doesBusinessMatchFilters = (
 
 	if (services && services.length > 0) {
 		// ensures a business has all the services selected.
-		const hasAllServices = services.map((service) => {
+		const hasAllServices = services.every((service) => {
 			return (business.services || []).includes(service);
 		});
-
-		if (hasAllServices.includes(false)) {
+		if (!hasAllServices) {
 			isValid = false;
 		}
 	}
 
 	if (destinations && destinations.length > 0) {
 		// ensures a business sends to at least one of the destinations selected.
-		let hasDestination = false;
-		destinations.forEach((destination) => {
-			if ((business.destinations || []).includes(destination.value)) {
-				hasDestination = true;
-			}
+		const hasDestination = destinations.some((destination) => {
+			return (business.destinations || []).includes(destination);
 		});
 		if (!hasDestination) {
 			isValid = false;

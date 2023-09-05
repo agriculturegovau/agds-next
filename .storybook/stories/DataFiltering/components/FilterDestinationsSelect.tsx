@@ -15,10 +15,14 @@ export const FilterDestinationsSelect = ({ block }: { block?: boolean }) => {
 			hideOptionalLabel
 			block={block}
 			aria-controls={tableId}
-			value={filters.destinations ?? []}
+			value={(filters.destinations ?? []).map((country) => ({
+				label: country,
+				value: country,
+			}))}
 			onChange={(countries) => {
+				const countryLabels = countries.map((country) => country.label);
 				setFilter({
-					destinations: countries,
+					destinations: countryLabels,
 				});
 			}}
 		/>

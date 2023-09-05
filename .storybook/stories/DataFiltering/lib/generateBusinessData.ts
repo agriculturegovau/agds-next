@@ -1,4 +1,5 @@
 import { faker } from '@faker-js/faker';
+import { COUNTRY_OPTIONS } from '@ag.ds-next/react/src/combobox/test-utils';
 
 export type BusinessForAuditStatus =
 	| 'notBooked'
@@ -169,7 +170,10 @@ export const generateBusinessData = (): BusinessForAudit[] => {
 				'cancelled',
 			]),
 			requestDate: faker.date.past(),
-			destinations: [faker.address.country(), faker.address.country()],
+			destinations: faker.helpers.arrayElements(
+				COUNTRY_OPTIONS.map((c) => c.value),
+				2
+			),
 			services: faker.helpers.arrayElements(
 				services,
 				faker.datatype.number({ min: 1, max: 3 })
