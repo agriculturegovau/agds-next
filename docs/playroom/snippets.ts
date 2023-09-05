@@ -536,6 +536,24 @@ items={[
   </ControlGroup>`,
 	},
 	{
+		group: 'ControlGroup',
+		name: 'Checkbox',
+		code: `<ControlGroup>
+			<Checkbox>Phone</Checkbox>
+			<Checkbox>Tablet</Checkbox>
+			<Checkbox>Laptop</Checkbox>
+		</ControlGroup>`,
+	},
+	{
+		group: 'ControlGroup',
+		name: 'Radio',
+		code: `<ControlGroup>
+    <Radio checked={false}>Phone</Radio>
+    <Radio checked={false}>Tablet</Radio>
+    <Radio checked={true}>Laptop</Radio>
+  </ControlGroup>`,
+	},
+	{
 		group: 'Switch',
 		name: 'Basic',
 		code: `<Switch checked={false} label="Show establishments" />`,
