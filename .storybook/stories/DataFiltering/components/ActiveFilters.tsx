@@ -6,7 +6,7 @@ import { CloseIcon } from '@ag.ds-next/react/icon';
 import { Tags } from '@ag.ds-next/react/tags';
 import { GetDataFilters } from '../lib/getData';
 import { useSortAndFilterContext } from '../lib/contexts';
-import { STATUS_MAP } from './DashboardTable';
+import { STATUS_MAP } from '../lib/utils';
 import { STATE_OPTIONS } from './FilterStateSelect';
 
 const formatDate = (date: Date | undefined) => {
@@ -71,6 +71,16 @@ const getTagsFromFilters = ({
 			continue;
 		}
 
+		if (Array.isArray(value)) {
+			if (value.length === 0) continue;
+
+			tags.push({
+				label: `${formattedKey}: ${value.join(', ')}`,
+				onRemove,
+			});
+			continue;
+		}
+
 		tags.push({ label: `${formattedKey}: ${value}`, onRemove });
 	}
 
@@ -84,6 +94,8 @@ function formatFilterKey(key: keyof GetDataFilters) {
 		businessName: 'Business name',
 		state: 'State',
 		status: 'Status',
+		services: 'Services',
+		destinations: 'Destinations',
 	}[key];
 }
 

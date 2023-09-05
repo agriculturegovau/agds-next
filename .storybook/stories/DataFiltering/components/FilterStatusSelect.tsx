@@ -1,8 +1,8 @@
 import { Select } from '@ag.ds-next/react/select';
 import { useSortAndFilterContext } from '../lib/contexts';
-import { tableId } from './DashboardTable';
+import { tableId } from './DataTable';
 
-export const FilterStatusSelect = () => {
+export const FilterStatusSelect = ({ block }: { block?: boolean }) => {
 	const { filters, setFilter } = useSortAndFilterContext();
 
 	return (
@@ -11,6 +11,7 @@ export const FilterStatusSelect = () => {
 			placeholder="All"
 			aria-controls={tableId}
 			hideOptionalLabel
+			block={block}
 			options={[
 				{ value: 'booked', label: 'Booked' },
 				{ value: 'notBooked', label: 'Not booked' },

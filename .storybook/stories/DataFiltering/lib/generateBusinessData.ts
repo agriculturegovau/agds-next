@@ -1,4 +1,5 @@
 import { faker } from '@faker-js/faker';
+import { COUNTRY_OPTIONS } from '@ag.ds-next/react/src/combobox/test-utils';
 
 export type BusinessForAuditStatus =
 	| 'notBooked'
@@ -14,6 +15,8 @@ export type BusinessForAudit = {
 	state: string;
 	requestDate: Date;
 	status: BusinessForAuditStatus;
+	services: string[];
+	destinations: string[];
 };
 
 export type BusinessForAuditWithIndex = BusinessForAudit & { index: number };
@@ -140,6 +143,7 @@ const EXAMPLE_BUSINESSES: Partial<BusinessForAudit>[] = [
 ];
 
 export const assignees = ['Oscar Piastri', 'George Russell', 'Lando Norris'];
+export const services = ['Loading', 'Packing', 'Producing'];
 
 export const generateBusinessData = (): BusinessForAudit[] => {
 	return Array.from({ length: 150 }).map((_, index) => {
@@ -166,6 +170,15 @@ export const generateBusinessData = (): BusinessForAudit[] => {
 				'cancelled',
 			]),
 			requestDate: faker.date.past(),
+			destinations: faker.helpers.arrayElements(
+				COUNTRY_OPTIONS.map(({ label }) => label),
+				2
+			),
+			services: faker.helpers.arrayElements(
+				services,
+				faker.datatype.number({ min: 1, max: 3 })
+			),
+
 			...exampleAustralianBusiness,
 		};
 	});

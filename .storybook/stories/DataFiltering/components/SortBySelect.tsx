@@ -1,7 +1,7 @@
 import { Select } from '@ag.ds-next/react/select';
 import { BusinessForAudit } from '../lib/generateBusinessData';
 import { useSortAndFilterContext } from '../lib/contexts';
-import { tableId } from './DashboardTable';
+import { tableId } from './DataTable';
 
 export const SortBySelect = () => {
 	const { sort, setSort } = useSortAndFilterContext();

@@ -7,7 +7,7 @@ import { FilterIcon, PlusIcon } from '@ag.ds-next/react/icon';
 import { Prose } from '@ag.ds-next/react/prose';
 import { ActiveFilters } from './components/ActiveFilters';
 import { SortBySelect } from './components/SortBySelect';
-import { DashboardTable } from './components/DashboardTable';
+import { DataTable } from './components/DataTable';
 import { DashboardFilterDrawer } from './components/DashboardFilterDrawer';
 import { FilterSearchInput } from './components/FilterSearchInput';
 import {
@@ -63,7 +63,7 @@ export const TableFilteringLarge = ({ tableRef }: TableFilteringLargeProps) => {
 						<ActiveFilters />
 					</FilterRegion>
 				</Stack>
-				<DashboardTable ref={tableRef} />
+				<DataTable ref={tableRef} />
 				<DashboardPagination />
 			</Stack>
 		</PageContent>

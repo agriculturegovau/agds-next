@@ -22,7 +22,7 @@ import { BusinessForAudit } from '../lib/generateBusinessData';
 import { useDataContext, useSortAndFilterContext } from '../lib/contexts';
 import { generateTableCaption } from '../lib/utils';
 
-const DashboardTableRowAssignee = ({
+const DataTableRowAssignee = ({
 	assignee,
 }: {
 	/** The name of the assignee, if set */
@@ -42,10 +42,10 @@ const DashboardTableRowAssignee = ({
 	);
 };
 
-export const tableId = 'dashboard-table';
+export const tableId = 'data-table';
 
-export const DashboardTable = forwardRef<HTMLTableElement>(
-	function DashboardTable(_, ref) {
+export const DataTable = forwardRef<HTMLTableElement>(
+	function DataTable(_, ref) {
 		const { sort, setSort, pagination } = useSortAndFilterContext();
 		const { data, loading, totalItems } = useDataContext();
 		const isTableSortable = !!sort || !!setSort;
@@ -171,7 +171,7 @@ export const DashboardTable = forwardRef<HTMLTableElement>(
 												<TableCell as="th" scope="row">
 													<TextLink href={`#${id}`}>{businessName}</TextLink>
 												</TableCell>
-												<DashboardTableRowAssignee assignee={assignee} />
+												<DataTableRowAssignee assignee={assignee} />
 												<TableCell>
 													{city}, {state}
 												</TableCell>
