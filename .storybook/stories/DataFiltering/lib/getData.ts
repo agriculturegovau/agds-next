@@ -104,7 +104,7 @@ export const doesBusinessMatchFilters = (
 	if (services && services.length > 0) {
 		// ensures a business has all the services selected.
 		const hasAllServices = services.every((service) => {
-			return (business.services || []).includes(service);
+			return business.services.includes(service);
 		});
 		if (!hasAllServices) {
 			isValid = false;
@@ -113,10 +113,10 @@ export const doesBusinessMatchFilters = (
 
 	if (destinations && destinations.length > 0) {
 		// ensures a business sends to at least one of the destinations selected.
-		const hasDestination = destinations.some((destination) => {
-			return (business.destinations || []).includes(destination);
+		const hasAnyDestination = destinations.some((destination) => {
+			return business.destinations.includes(destination);
 		});
-		if (!hasDestination) {
+		if (!hasAnyDestination) {
 			isValid = false;
 		}
 	}

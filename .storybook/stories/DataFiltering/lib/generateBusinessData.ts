@@ -171,7 +171,7 @@ export const generateBusinessData = (): BusinessForAudit[] => {
 			]),
 			requestDate: faker.date.past(),
 			destinations: faker.helpers.arrayElements(
-				COUNTRY_OPTIONS.map((c) => c.value),
+				COUNTRY_OPTIONS.map(({ label }) => label),
 				2
 			),
 			services: faker.helpers.arrayElements(

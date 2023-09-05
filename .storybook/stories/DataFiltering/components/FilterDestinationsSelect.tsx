@@ -19,10 +19,9 @@ export const FilterDestinationsSelect = ({ block }: { block?: boolean }) => {
 				label: country,
 				value: country,
 			}))}
-			onChange={(countries) => {
-				const countryLabels = countries.map((country) => country.label);
+			onChange={(selectedCountries) => {
 				setFilter({
-					destinations: countryLabels,
+					destinations: selectedCountries.map(({ label }) => label),
 				});
 			}}
 		/>
