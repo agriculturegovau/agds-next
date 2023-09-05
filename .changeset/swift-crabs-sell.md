@@ -2,4 +2,4 @@
 '@ag.ds-next/react': patch
 ---
 
-core: Updated selectedMuted to a new blue color
+ag-branding: Updated selectedMuted tokens to new blue colours
