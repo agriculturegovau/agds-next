@@ -129,13 +129,13 @@ describe('doesBusinessMatchFilters', () => {
 	it('should filter results based on destination', () => {
 		expect(
 			doesBusinessMatchFilters(testBusiness, {
-				destinations: [{ label: 'Japan', value: 'Japan' }],
+				destinations: ['Japan'],
 			})
 		).toBe(true);
 
 		expect(
 			doesBusinessMatchFilters(testBusiness, {
-				destinations: [{ label: 'China', value: 'China' }],
+				destinations: ['China'],
 			})
 		).toBe(false);
 	});
