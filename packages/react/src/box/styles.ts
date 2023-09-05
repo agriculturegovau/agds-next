@@ -369,7 +369,10 @@ export const linkStyles = {
 	},
 };
 
-type FocusProps = Partial<{ focus: boolean }>;
+type FocusProps = Partial<{
+	/** If true, the focus indicator will be shown when the element receives keyboard focus. */
+	focus: boolean;
+}>;
 export const focusStyles = {
 	':focus': packs.outline,
 	':focus:not(:focus-visible)': { outline: 'none' },
