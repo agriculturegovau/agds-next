@@ -16,10 +16,13 @@ export const mq = facepaint([
 	tokens.mediaQuery.min.md,
 	tokens.mediaQuery.min.lg,
 	tokens.mediaQuery.min.xl,
+	tokens.mediaQuery.min.xxl,
 ]);
 
 type NamedBreakpoint = keyof typeof tokens.breakpoint;
-export const breakpointNames = ['xs', 'sm', 'md', 'lg', 'xl'] as const;
+export const breakpointNames = Object.keys(
+	tokens.breakpoint
+) as NamedBreakpoint[];
 
 export function mapResponsiveProp<T>(
 	value: ResponsiveProp<T>,

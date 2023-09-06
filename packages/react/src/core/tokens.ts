@@ -16,12 +16,14 @@ const mediaQuery = {
 		md: `@media(min-width: ${breakpoint.md}px)`,
 		lg: `@media(min-width: ${breakpoint.lg}px)`,
 		xl: `@media(min-width: ${breakpoint.xl}px)`,
+		xxl: `@media(min-width: ${breakpoint.xxl}px)`,
 	},
 	max: {
 		xs: `@media(max-width: ${breakpoint.sm - 1}px)`,
 		sm: `@media(max-width: ${breakpoint.md - 1}px)`,
 		md: `@media(max-width: ${breakpoint.lg - 1}px)`,
 		lg: `@media(max-width: ${breakpoint.xl - 1}px)`,
+		xl: `@media(max-width: ${breakpoint.xxl - 1}px)`,
 	},
 };
 
