@@ -1,3 +1,4 @@
+import { focusStyles } from '../box';
 import { packs, boxPalette, tokens, mapSpacing } from '../core';
 
 const variants = {
@@ -119,8 +120,7 @@ export function buttonStyles({
 			opacity: 0.3,
 		},
 
-		'&:focus': packs.outline,
-
+		...focusStyles,
 		...sizes[size],
 		...variants[variant],
 	} as const;

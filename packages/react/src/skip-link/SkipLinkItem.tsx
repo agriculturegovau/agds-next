@@ -16,7 +16,7 @@ export const SkipLinkItem = forwardRef<HTMLAnchorElement, SkipLinkItemProps>(
 					buttonStyles({ block: false, size: 'md', variant: 'primary' }),
 					{
 						position: 'absolute',
-						'&:focus': {
+						'&:focus-visible': {
 							top: mapSpacing(1),
 							left: mapSpacing(1),
 							clip: 'auto',

@@ -1,12 +1,6 @@
 import type { PropsWithChildren } from 'react';
-import {
-	boxPalette,
-	mapSpacing,
-	mq,
-	mapResponsiveProp,
-	packs,
-	tokens,
-} from '../core';
+import { focusStyles } from '../box';
+import { boxPalette, mapSpacing, mq, mapResponsiveProp, packs } from '../core';
 import { Flex } from '../flex';
 import { localPalette } from './utils';
 
@@ -81,18 +75,12 @@ export function NavListItem({
 						},
 
 						// Focus styles
-						'&:focus': {
-							outline: 'none',
-							'&:before': {
-								content: '""',
-								position: 'absolute',
-								inset: 0,
-								zIndex: tokens.zIndex.elevated,
-								...packs.outline,
-							},
-							'&::-moz-focus-inner': {
-								border: 0,
-							},
+						...focusStyles,
+						'&:focus-visible': {
+							...focusStyles[':focus-visible'],
+							// Make sure the outline is not cut off by the pseudo element
+							zIndex: 1,
+							'&:after': { zIndex: -1 },
 						},
 
 						'&:hover': {

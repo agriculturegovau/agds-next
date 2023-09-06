@@ -108,7 +108,8 @@ export function TabButton({ children, endElement }: TabButtonProps) {
 							},
 					  }),
 
-				'&:focus': {
+				// Make sure the focus ring is not cut off by siblings
+				'&:focus-visible': {
 					zIndex: tokens.zIndex.elevated,
 				},
 

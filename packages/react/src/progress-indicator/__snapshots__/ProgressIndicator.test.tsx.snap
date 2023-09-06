@@ -22,7 +22,7 @@ exports[`ProgressIndicator With anchors renders correctly 1`] = `
     <button
       aria-controls="collapsing-side-bar-:r0:-body"
       aria-expanded="false"
-      class="css-egsa7l-BaseButton-boxStyles-SideBarCollapseButton"
+      class="css-15g5ot9-BaseButton-boxStyles-SideBarCollapseButton"
       id="collapsing-side-bar-:r0:-button"
       type="button"
     >
@@ -58,7 +58,7 @@ exports[`ProgressIndicator With anchors renders correctly 1`] = `
             class="css-10qlzin-boxStyles-ProgressIndicatorItem"
           >
             <a
-              class="css-1942wg8-TextLink-boxStyles-ProgressIndicatorItem"
+              class="css-12el6hy-TextLink-boxStyles-ProgressIndicatorItem"
               href="#"
             >
               <span
@@ -119,7 +119,7 @@ exports[`ProgressIndicator With anchors renders correctly 1`] = `
             class="css-10qlzin-boxStyles-ProgressIndicatorItem"
           >
             <a
-              class="css-1dfp5fk-TextLink-boxStyles-ProgressIndicatorItem"
+              class="css-tc9df-TextLink-boxStyles-ProgressIndicatorItem"
               href="#"
             >
               <span
@@ -193,7 +193,7 @@ exports[`ProgressIndicator With anchors renders correctly 1`] = `
             class="css-10qlzin-boxStyles-ProgressIndicatorItem"
           >
             <a
-              class="css-1942wg8-TextLink-boxStyles-ProgressIndicatorItem"
+              class="css-12el6hy-TextLink-boxStyles-ProgressIndicatorItem"
               href="#"
             >
               <span
@@ -279,7 +279,7 @@ exports[`ProgressIndicator With buttons renders correctly 1`] = `
     <button
       aria-controls="collapsing-side-bar-:r2:-body"
       aria-expanded="false"
-      class="css-egsa7l-BaseButton-boxStyles-SideBarCollapseButton"
+      class="css-15g5ot9-BaseButton-boxStyles-SideBarCollapseButton"
       id="collapsing-side-bar-:r2:-button"
       type="button"
     >
@@ -315,7 +315,7 @@ exports[`ProgressIndicator With buttons renders correctly 1`] = `
             class="css-10qlzin-boxStyles-ProgressIndicatorItem"
           >
             <button
-              class="css-1siasd1-BaseButton-boxStyles-ProgressIndicatorItem"
+              class="css-b1b1hj-BaseButton-boxStyles-ProgressIndicatorItem"
               type="button"
             >
               <span
@@ -376,7 +376,7 @@ exports[`ProgressIndicator With buttons renders correctly 1`] = `
             class="css-10qlzin-boxStyles-ProgressIndicatorItem"
           >
             <button
-              class="css-1nvyvc4-BaseButton-boxStyles-ProgressIndicatorItem"
+              class="css-locwej-BaseButton-boxStyles-ProgressIndicatorItem"
               type="button"
             >
               <span
@@ -450,7 +450,7 @@ exports[`ProgressIndicator With buttons renders correctly 1`] = `
             class="css-10qlzin-boxStyles-ProgressIndicatorItem"
           >
             <button
-              class="css-1siasd1-BaseButton-boxStyles-ProgressIndicatorItem"
+              class="css-b1b1hj-BaseButton-boxStyles-ProgressIndicatorItem"
               type="button"
             >
               <span

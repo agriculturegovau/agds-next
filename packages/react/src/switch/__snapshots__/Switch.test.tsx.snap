@@ -9,7 +9,7 @@ exports[`Switch renders correctly 1`] = `
       class="css-o9fx7j-boxStyles-SwitchContainer"
     >
       <input
-        class="css-1kwkge7-Switch"
+        class="css-1pfc16v-Switch"
         role="switch"
         type="checkbox"
       />

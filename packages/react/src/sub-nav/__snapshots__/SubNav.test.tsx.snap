@@ -10,7 +10,7 @@ exports[`SubNav renders correctly 1`] = `
       class="css-1ipxjn1-boxStyles-SubNavList"
     >
       <li
-        class="css-18z49hf-boxStyles-SubNavListItem"
+        class="css-16llfk1-boxStyles-SubNavListItem"
       >
         <a
           href="/"
@@ -21,7 +21,7 @@ exports[`SubNav renders correctly 1`] = `
         </a>
       </li>
       <li
-        class="css-1og4i3p-boxStyles-SubNavListItem"
+        class="css-yxjwge-boxStyles-SubNavListItem"
       >
         <a
           aria-current="page"
@@ -33,7 +33,7 @@ exports[`SubNav renders correctly 1`] = `
         </a>
       </li>
       <li
-        class="css-18z49hf-boxStyles-SubNavListItem"
+        class="css-16llfk1-boxStyles-SubNavListItem"
       >
         <a
           href="/content"
@@ -44,7 +44,7 @@ exports[`SubNav renders correctly 1`] = `
         </a>
       </li>
       <li
-        class="css-18z49hf-boxStyles-SubNavListItem"
+        class="css-16llfk1-boxStyles-SubNavListItem"
       >
         <a
           href="/accessibility"

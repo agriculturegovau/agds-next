@@ -57,7 +57,7 @@ export const proseClass = css({
 	/**
 	 * Highlighting in-page sections that are in focus
 	 */
-	'[tabindex="0"]:focus, :target': packs.outline,
+	'[tabindex="0"]:focus-visible, :target': packs.outline,
 
 	/**
 	 * Text selection styling

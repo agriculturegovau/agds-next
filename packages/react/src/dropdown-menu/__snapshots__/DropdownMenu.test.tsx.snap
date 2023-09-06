@@ -6,7 +6,7 @@ exports[`DropdownMenu Decorative renders correctly 1`] = `
     aria-controls="dropdown-menu-:ru:-panel"
     aria-expanded="false"
     aria-haspopup="true"
-    class="css-2q9pyw-BaseButton-Button"
+    class="css-1clbjuu-BaseButton-Button"
     id="dropdown-menu-:ru:-button"
     type="button"
   >
@@ -38,14 +38,14 @@ exports[`DropdownMenu Decorative renders correctly 1`] = `
   </button>
   <div
     aria-labelledby="dropdown-menu-:ru:-button"
-    class="css-14l94pk-boxStyles-boxStyles-Popover-DropdownMenuPanel"
+    class="css-o0kjrt-boxStyles-boxStyles-Popover-DropdownMenuPanel"
     id="dropdown-menu-:ru:-panel"
     role="menu"
     style="position: absolute; left: 0px; top: 0px; display: none; transform: translate(0px, 0px);"
     tabindex="-1"
   >
     <div
-      class="css-1ophp8v-boxStyles-DropdownMenuItem"
+      class="css-7ts4j-boxStyles-DropdownMenuItem"
       id="dropdown-menu-:ru:-item-:rv:"
       role="menuitem"
       tabindex="-1"
@@ -79,7 +79,7 @@ exports[`DropdownMenu Decorative renders correctly 1`] = `
       </div>
     </div>
     <div
-      class="css-1ophp8v-boxStyles-DropdownMenuItem"
+      class="css-7ts4j-boxStyles-DropdownMenuItem"
       id="dropdown-menu-:ru:-item-:r10:"
       role="menuitem"
       tabindex="-1"
@@ -123,7 +123,7 @@ exports[`DropdownMenu Decorative renders correctly 1`] = `
       class="css-1th2zfi-Divider"
     />
     <div
-      class="css-1ophp8v-boxStyles-DropdownMenuItem"
+      class="css-7ts4j-boxStyles-DropdownMenuItem"
       id="dropdown-menu-:ru:-item-:r11:"
       role="menuitem"
       tabindex="-1"
@@ -166,7 +166,7 @@ exports[`DropdownMenu Links renders correctly 1`] = `
     aria-controls="dropdown-menu-:r16:-panel"
     aria-expanded="false"
     aria-haspopup="true"
-    class="css-2q9pyw-BaseButton-Button"
+    class="css-1clbjuu-BaseButton-Button"
     id="dropdown-menu-:r16:-button"
     type="button"
   >
@@ -198,14 +198,14 @@ exports[`DropdownMenu Links renders correctly 1`] = `
   </button>
   <div
     aria-labelledby="dropdown-menu-:r16:-button"
-    class="css-14l94pk-boxStyles-boxStyles-Popover-DropdownMenuPanel"
+    class="css-o0kjrt-boxStyles-boxStyles-Popover-DropdownMenuPanel"
     id="dropdown-menu-:r16:-panel"
     role="menu"
     style="position: absolute; left: 0px; top: 0px; display: none; transform: translate(0px, 0px);"
     tabindex="-1"
   >
     <a
-      class="css-1ophp8v-boxStyles-DropdownMenuItem"
+      class="css-7ts4j-boxStyles-DropdownMenuItem"
       href="/about"
       id="dropdown-menu-:r16:-item-:r17:"
       role="menuitem"
@@ -220,7 +220,7 @@ exports[`DropdownMenu Links renders correctly 1`] = `
       </div>
     </a>
     <a
-      class="css-1ophp8v-boxStyles-DropdownMenuItem"
+      class="css-7ts4j-boxStyles-DropdownMenuItem"
       href="/contact"
       id="dropdown-menu-:r16:-item-:r18:"
       role="menuitem"
@@ -244,7 +244,7 @@ exports[`DropdownMenu Radio Group renders correctly 1`] = `
     aria-controls="dropdown-menu-:r1i:-panel"
     aria-expanded="false"
     aria-haspopup="true"
-    class="css-2q9pyw-BaseButton-Button"
+    class="css-1clbjuu-BaseButton-Button"
     id="dropdown-menu-:r1i:-button"
     type="button"
   >
@@ -276,7 +276,7 @@ exports[`DropdownMenu Radio Group renders correctly 1`] = `
   </button>
   <div
     aria-labelledby="dropdown-menu-:r1i:-button"
-    class="css-14l94pk-boxStyles-boxStyles-Popover-DropdownMenuPanel"
+    class="css-o0kjrt-boxStyles-boxStyles-Popover-DropdownMenuPanel"
     id="dropdown-menu-:r1i:-panel"
     role="menu"
     style="position: absolute; left: 0px; top: 0px; display: none; transform: translate(0px, 0px);"
@@ -366,7 +366,7 @@ exports[`DropdownMenu renders correctly 1`] = `
     aria-controls="dropdown-menu-:r0:-panel"
     aria-expanded="false"
     aria-haspopup="true"
-    class="css-2q9pyw-BaseButton-Button"
+    class="css-1clbjuu-BaseButton-Button"
     id="dropdown-menu-:r0:-button"
     type="button"
   >
@@ -398,14 +398,14 @@ exports[`DropdownMenu renders correctly 1`] = `
   </button>
   <div
     aria-labelledby="dropdown-menu-:r0:-button"
-    class="css-14l94pk-boxStyles-boxStyles-Popover-DropdownMenuPanel"
+    class="css-o0kjrt-boxStyles-boxStyles-Popover-DropdownMenuPanel"
     id="dropdown-menu-:r0:-panel"
     role="menu"
     style="position: absolute; left: 0px; top: 0px; display: none; transform: translate(0px, 0px);"
     tabindex="-1"
   >
     <div
-      class="css-1ophp8v-boxStyles-DropdownMenuItem"
+      class="css-7ts4j-boxStyles-DropdownMenuItem"
       id="dropdown-menu-:r0:-item-:r1:"
       role="menuitem"
       tabindex="-1"
@@ -419,7 +419,7 @@ exports[`DropdownMenu renders correctly 1`] = `
       </div>
     </div>
     <div
-      class="css-1ophp8v-boxStyles-DropdownMenuItem"
+      class="css-7ts4j-boxStyles-DropdownMenuItem"
       id="dropdown-menu-:r0:-item-:r2:"
       role="menuitem"
       tabindex="-1"
@@ -433,7 +433,7 @@ exports[`DropdownMenu renders correctly 1`] = `
       </div>
     </div>
     <div
-      class="css-1ophp8v-boxStyles-DropdownMenuItem"
+      class="css-7ts4j-boxStyles-DropdownMenuItem"
       id="dropdown-menu-:r0:-item-:r3:"
       role="menuitem"
       tabindex="-1"

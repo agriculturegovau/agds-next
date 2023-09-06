@@ -3,7 +3,7 @@
 exports[`TextLinkExternal renders correctly 1`] = `
 <div>
   <a
-    class="css-38ppen-TextLink"
+    class="css-ma0bjl-TextLink"
     data-testid="example"
     href="https://design-system.agriculture.gov.au"
     rel="noopener"

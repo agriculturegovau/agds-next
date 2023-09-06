@@ -8,7 +8,7 @@ exports[`CollapsingSideBar renders correctly 1`] = `
     <button
       aria-controls="collapsing-side-bar-:r0:-body"
       aria-expanded="false"
-      class="css-egsa7l-BaseButton-boxStyles-SideBarCollapseButton"
+      class="css-15g5ot9-BaseButton-boxStyles-SideBarCollapseButton"
       id="collapsing-side-bar-:r0:-button"
       type="button"
     >

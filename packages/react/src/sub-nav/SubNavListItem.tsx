@@ -1,4 +1,5 @@
 import type { PropsWithChildren } from 'react';
+import { focusStyles } from '../box';
 import {
 	boxPalette,
 	mapSpacing,
@@ -51,29 +52,7 @@ export function SubNavListItem({ children, active }: SubNavListItemProps) {
 					borderLeftWidth: mapResponsiveProp([tokens.borderWidth.xl, 0]),
 					borderLeftColor: active ? boxPalette.selected : 'transparent',
 
-					// Underline overlay for active menu item
-					'&:after': {
-						content: mapResponsiveProp({ xs: undefined, lg: '""' }),
-						height: mapSpacing(0.5),
-						position: 'absolute',
-						top: '100%',
-						left: 0,
-						right: 0,
-					},
-
-					// Focus styles
-					'&:focus': {
-						outline: 'none',
-						'&:before': {
-							content: '""',
-							position: 'absolute',
-							inset: 0,
-							...packs.outline,
-						},
-						'&::-moz-focus-inner': {
-							border: 0,
-						},
-					},
+					...focusStyles,
 
 					'&:hover': {
 						color: boxPalette.foregroundText,

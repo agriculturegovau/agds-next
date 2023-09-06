@@ -1,4 +1,4 @@
-import { boxPalette, fontGrid, mapSpacing, packs, tokens } from '../core';
+import { boxPalette, fontGrid, mapSpacing, tokens } from '../core';
 import { visuallyHiddenStyles } from '../a11y';
 import { focusStyles, highContrastOutlineStyles } from '../box';
 
@@ -86,7 +86,7 @@ export const reactDayPickerStyles = (range: boolean) =>
 				color: boxPalette.foregroundText,
 				textDecoration: 'underline',
 			},
-			'&:focus, &:active': packs.outline,
+			...focusStyles,
 		},
 		// Table
 		'.rdp-months': {

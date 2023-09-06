@@ -6,7 +6,7 @@ exports[`Radio renders correctly 1`] = `
     class="css-6pplfb-boxStyles-RadioContainer"
   >
     <input
-      class="css-o6md8t-RadioInput"
+      class="css-yl6hsu-RadioInput"
       data-testid="example"
       name="my-radio"
       type="radio"
