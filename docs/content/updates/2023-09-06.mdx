@@ -1,0 +1,134 @@
+---
+date: 6th September 2023
+title: AgDS Beta v1.10.0 release
+description: Initial release of Dropdown menu and List components, improved focus indicators, plus various bug fixes and improvements.
+---
+
+## Updates
+
+### [App layout](/components/app-layout)
+
+- Made `focusMode` prop optional (`false` by default)
+
+### [AG Branding](/components/ag-branding)
+
+- Updated `selectedMuted` tokens to new blue colour
+
+### [Autocomplete](/components/autocomplete)
+
+- Added new `inputRef` prop
+
+### [Box](/components/box)
+
+- Remove `focus` from supported text styles
+- Updated `focusStyles` to use the `:focus-visible` selector so the focus indicator will only be shown when the element receives keyboard focus.
+
+### [Button](/components/button)
+
+- Increased the gap between icons and labels in the small button variant from `0.25rem` to `0.5rem`
+
+### [Card](/components/card)
+
+- Updated box-shadow with new tokens
+
+### [Checkbox](/components/checkbox)
+
+- Added support for indeterminate checkboxes via a new `indeterminate` prop
+- Updated indicator icon
+- Updated CSS for toggling the display of the checkbox indicator which stops the checkbox from shifting slightly in certain browsers
+
+### [Combobox](/components/combobox)
+
+- Added new `inputRef` prop
+- Improved async logic in `ComboboxAsync` and `ComboboxAsyncMulti`
+- Deprecated prop `openDropdownOnFocus` as it is no longer used.
+- Upgraded dependency on `downshift` to version 8, which implements ARIA version 1.2
+- Added truncation to better handle options with long labels
+- Updated dropdown chevron indicator to flip when combobox is opened.
+- Updated box-shadow with new tokens
+
+### [Core](/components/core)
+
+- Added new `selected` and `selectedMuted` tokens
+- Added new `shadow` tokens for box-shadows
+- Added new `truncate` pack
+
+### [Date picker](/components/date-picker)
+
+- Update hover state styles in Calendar
+- Updated box-shadow with new tokens
+
+### [Date range picker](/components/date-range-picker)
+
+- Update hover state styles in Calendar
+- Updated box-shadow with new tokens
+
+### [Dropdown menu](/components/dropdown-menu)
+
+- Created component
+
+### [Filter drawer](/components/filter-drawer)
+
+- Update usage of `createPortal` to fix server side render issues
+- Updated box-shadow with new tokens
+
+### [Icon](/components/icon)
+
+- Added new icons: `ArrowUpDownIcon`, `CheckIcon` and `MinusIcon`
+- Updated `ChevronUpIcon`, `ChevronDownIcon`, `ChevronLeftIcon` and `ChevronRightIcon`
+- Deprecated `ChevronsUpDownIcon`, use `ArrowUpDownIcon` instead. This will be removed in the next major version.
+
+### [List](/components/list)
+
+- Created new components `UnorderedList` and `OrderedList`
+
+### [Modal](/components/modal)
+
+- Update usage of `createPortal` to fix server side render issues
+- Updated box-shadow with new tokens
+
+### [Progress indicator](/components/progress-indicator)
+
+- Refactor logic for collapsing on mobile
+
+### [Prose](/components/prose)
+
+- Updated `mark` styles
+
+### [Radio](/components/radio)
+
+- Updated CSS for toggling the display of the radio indicator for consistency with the `Checkbox` component
+
+### [Select](/components/select)
+
+- Added truncation to selects to better handle long options that extend the width of the select box
+
+### [Side nav](/components/side-nav)
+
+- Refactor logic for collapsing on mobile
+
+### [Switch](/components/switch)
+
+- Updated indicator icon
+
+### [Table](/components/table)
+
+- Updated icons in `TableHeaderSortable`
+
+### [Tabs](/components/tabs)
+
+- Increased vertical padding in the tab panel on mobile devices
+
+### [Text Link](/components/text-link)
+
+- Added `onClick` prop to `TextLink` and `TextLinkExternal`
+
+## Released packages
+
+```sh
+"@ag.ds-next/react": "1.10.0"
+```
+
+## Full Changelog
+
+Aside from the complete release notes on the @ag.ds-next website, you can also view the verbose change log in the [related PR](https://github.com/steelthreads/agds-next/pull/1288) for this release.
