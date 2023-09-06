@@ -30,7 +30,7 @@ exports[`Card Basic renders correctly 1`] = `
 exports[`Card With link renders correctly 1`] = `
 <div>
   <div
-    class="css-pywoxr-boxStyles-Card"
+    class="css-e7y0n5-boxStyles-Card"
   >
     <div
       class="css-z5u98n-boxStyles"
@@ -49,7 +49,7 @@ exports[`Card With link renders correctly 1`] = `
           Lorem ipsum dolor, sit amet consectetur adipisicing elit. In, voluptat
         </p>
         <a
-          class="css-n0hvbj-CardLink"
+          class="css-190821o-CardLink"
           href="#"
         >
           Linking out
