@@ -4,7 +4,7 @@ import { DateRangePicker } from '@ag.ds-next/react/date-range-picker';
 import { Fieldset } from '@ag.ds-next/react/fieldset';
 import { FormStack } from '@ag.ds-next/react/form-stack';
 import { Divider } from '@ag.ds-next/react/divider';
-import { Drawer } from '@ag.ds-next/react/src/drawer';
+import { Drawer } from '@ag.ds-next/react/drawer';
 import { Button, ButtonGroup } from '@ag.ds-next/react/button';
 import { GetDataFilters } from '../lib/getData';
 import {

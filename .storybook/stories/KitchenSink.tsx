@@ -85,7 +85,7 @@ import {
 	DropdownMenuItem,
 	DropdownMenuDivider,
 } from '@ag.ds-next/react/dropdown-menu';
-import { Drawer } from '@ag.ds-next/react/src/drawer';
+import { Drawer } from '@ag.ds-next/react/drawer';
 import {
 	COUNTRY_OPTIONS,
 	Modal,
