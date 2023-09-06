@@ -1,5 +1,84 @@
 # @ag.ds-next/react
 
+## 1.10.0
+
+### Minor Changes
+
+- 139067e47f: Create new `DropdownMenu` component
+- fc54a6b2f4: core: Created `shadow` tokens for box-shadows
+- 400db2e88c: combobox: Improved async logic in `ComboboxAsync` and `ComboboxAsyncMulti`
+
+  combobox: Deprecated prop `openDropdownOnFocus` as it is no longer used.
+
+- bc983c340a: filter-drawer: Update usage of `createPortal` to fix server side render issues
+
+  modal: Update usage of `createPortal` to fix server side render issues
+
+- c76354fc4e: box: Remove 'focus' from supported text styles
+- 6dbdd207d6: list: Created new components `UnorderedList` and `OrderedList`
+- 4ea9dda045: icon: Add new `CheckIcon`
+
+  checkbox: Updated indicator icon
+
+  switch: Updated indicator icon
+
+- bd7049b95b: combobox: Upgraded dependency on `downshift` to version 8, which implements ARIA version 1.2.
+- cc39fb8d27: box: Updated `focusStyles` to use the `:focus-visible` selector so the focus indicator will only be shown when the element receives keyboard focus.
+
+  all: Updated component styles to use the `:focus-visible` selector so the focus indicator will only be shown when the element receives keyboard focus.
+
+### Patch Changes
+
+- 81c37e8d10: checkbox: Updated CSS for toggling the display of the checkbox indicator which stops the checkbox from shifting slightly in certain browsers
+
+  radio: Updated CSS for toggling the display of the radio indicator for consistency with the `Checkbox` component
+
+- fc54a6b2f4: card: Updated box-shadow with new tokens
+
+  combobox: Updated box-shadow with new tokens
+
+  date picker: Updated box-shadow with new tokens
+
+  drop down: Updated box-shadow with new tokens
+
+  filter drawer: Updated box-shadow with new tokens
+
+  modal: Updated box-shadow with new tokens
+
+- a64e44811b: date-picker: Update hover state styles in Calendar
+- f6a1d78305: autocomplete: Added new `inputRef` prop
+
+  combobox: Added new `inputRef` prop
+
+- 8651809c39: core: Added new `truncate` pack
+
+  select: Added truncation to selects to better handle long options that extend the width of the select box
+
+- e06ede5f03: icon: Updated ChevronUpIcon, ChevronDownIcon, ChevronLeftIcon and ChevronRightIcon
+- 9eee66fc71: icon: Added `ArrowUpDownIcon`
+
+  icon: Deprecated `ChevronsUpDownIcon`, use `ArrowUpDownIcon` instead. This will be removed in the next major version.
+
+  table: Updated icons in `TableHeaderSortable`
+
+- c3d3ba7aac: text-link: Added `onClick` prop to `TextLink` and `TextLinkExternal`
+- a77f9e9225: patch: Updated `mark` styles
+- 3ca4f01619: tabs: Increased vertical padding in the tab panel on mobile devices
+- 024245c81d: combobox: Added truncation to better handle options with long labels
+- e38b29f41a: core: Added `selected` and `selectedMuted` tokens
+- 1edda17cc9: button: Increased the gap between icons and labels in the small button variant from `0.25rem` to `0.5rem`
+- 559d286e02: combobox: Updated dropdown chevron indicator to flip when combobox is opened.
+- 960e74b889: icon: Add new icon `MinusIcon`
+
+  checkbox: Added support for indeterminate checkboxes via a new `indeterminate` prop
+
+- 944e26eb6f: ag-branding: Updated selectedMuted tokens to new blue colours
+- 82bfdd4449: - progress-indicator: Refactor logic for collapsing on mobile
+
+  - side-nav: Refactor logic for collapsing on mobile
+
+- af09a5f3e2: app-layout: Made focusMode prop optional
+
 ## 1.9.0
 
 ### Minor Changes
