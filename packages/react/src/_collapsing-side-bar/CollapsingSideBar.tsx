@@ -24,6 +24,8 @@ import { CollapsingSideBarTitle } from './CollapsingSideBarTitle';
 export type CollapsingSideBarProps = PropsWithChildren<{
 	/** The HTML element to render the CollapsingSideBar as. */
 	as?: CollapsingSideBarContainerElementType;
+	/** The aria-label for the CollapsingSideBar. */
+	'aria-label'?: string;
 	/** If CollapsingSideBar is placed on 'bodyAlt' background, please set this to 'bodyAlt'. */
 	background?: CollapsingSideBarBackground;
 	/** Used as the title of the expand/collapse trigger on smaller screen sizes. */
@@ -36,6 +38,7 @@ export type CollapsingSideBarProps = PropsWithChildren<{
 
 export function CollapsingSideBar({
 	as = 'div',
+	'aria-label': ariaLabel,
 	background = 'body',
 	children,
 	collapseButtonLabel,
@@ -71,7 +74,11 @@ export function CollapsingSideBar({
 	const isMobile = (windowWidth || 0) <= tokens.breakpoint.lg - 1;
 
 	return (
-		<CollapsingSideBarContainer as={as} background={background}>
+		<CollapsingSideBarContainer
+			as={as}
+			background={background}
+			ariaLabel={ariaLabel}
+		>
 			{title && <CollapsingSideBarTitle title={title} subtitle={subTitle} />}
 			<SideBarCollapseButton
 				isOpen={isOpen}
@@ -110,11 +117,13 @@ type CollapsingSideBarContainerElementType =
 
 type CollapsingSideBarContainerProps = PropsWithChildren<{
 	as: CollapsingSideBarContainerElementType;
+	ariaLabel?: string;
 	background: CollapsingSideBarBackground;
 }>;
 
 const CollapsingSideBarContainer = ({
 	as,
+	ariaLabel,
 	background,
 	children,
 }: CollapsingSideBarContainerProps) => {
@@ -122,6 +131,7 @@ const CollapsingSideBarContainer = ({
 	return (
 		<Stack
 			as={as}
+			aria-label={ariaLabel}
 			background={background}
 			gap={{ xs: 0, md: 1 }}
 			css={mq({

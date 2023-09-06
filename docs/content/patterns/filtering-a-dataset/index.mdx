@@ -4,7 +4,8 @@ description: Filters allows a user to refine the data they want to display in a 
 figmaTemplateNodeId: 18586-56265
 githubTemplatePath: /.storybook/stories/DataFiltering
 storybookPath: /story/patterns-data-filtering-and-sorting--small
-relatedComponents: ['drawer', 'pagination']
+relatedComponents:
+  ['filter-drawer', 'filter-sidebar', 'table', 'card', 'pagination']
 ---
 
 Filters can help a user find something they're looking for and see available options within a certain criteria.
@@ -153,7 +154,7 @@ The [Drawer](/components/drawer) component should contain a total of 4 actions:
 
 ## Filtering a list of cards
 
-This pattern is used to display a collection of filterable links ([Cards](/components/card)) in a search results page.
+This pattern is used to display a collection of filterable links ([Cards](/components/card)) in a search results or catalogue page.
 
 We use a two-column layout featuring the [Filter sidebar](/components/filter-sidebar) component, which contains all of the filter options. It collapses on mobile devices, and displays a number of active filter options in the header.
 

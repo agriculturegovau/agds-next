@@ -94,6 +94,7 @@ export const ListFiltering = () => {
 					</Column>
 					<Column
 						as="main"
+						aria-label="List of establishments"
 						id="main-content"
 						tabIndex={-1}
 						css={{ '&:focus': { outline: 'none' } }}
