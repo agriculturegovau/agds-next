@@ -1,0 +1,13 @@
+# *
+User-agent: *
+Allow: /
+
+# *
+User-agent: *
+Disallow: /pr-preview/
+
+# Host
+Host: https://design-system.agriculture.gov.au
+
+# Sitemaps
+Sitemap: https://design-system.agriculture.gov.au/sitemap.xml
