@@ -57,11 +57,11 @@ export default function TokensTypographyPage() {
 					<ul>
 						<li>
 							Designers can use font-size and line-height values from the
-							typographic scale.{' '}
+							typographic scale.
 						</li>
 						<li>
 							Developers can use the fontSize and lineHeight props available on
-							typographic components which use of the fontGrid function.{' '}
+							typographic components which use of the fontGrid function.
 						</li>
 					</ul>
 					<h2 id="font-size">Font size</h2>
