@@ -16,19 +16,26 @@ relatedComponents: ['file-input']
 />
 ```
 
+File upload is used in forms to enable users to upload files they need. There are 2 ways to upload – via drag and drop or file selection via search.
+
 `FileUpload` is a [controlled component](https://reactjs.org/docs/forms.html#controlled-components).
 
 <DoHeading />
 
 - upload selected files instantly as they are selected or on submission
-- provide the accepted file types, maximum file size and whether the user can upload one file at a time or several at once
-- include hint text to provide information about the field
+- specify accepted file types, maximum file size and whether the user can upload one file at a time or several at once
+- include hint text to provide more general information about the field/file
 - indicate file uploading state
-- indicate successful file upload
-- indicate unsuccessful file uploads with a meaningful error message.
+- indicate a successful file upload using a [Page alert](/components/page-alert), including file name
+- indicate unsuccessful file uploads using a [Page alert](/components/page-alert)with a meaningful error message, solution and support contact
+- Make use of the 'instant upload' pattern if your backend supports it
+- Consider the 'simple download' pattern for small screens
 
 <DontHeading />
 
+- add a standalone Submit file button inside a form
+- include other unrelated fields on the page
+- use in modals or page alerts
 - change the default behaviour of the component by adding a standalone upload file button.
 
 ## Indicating upload status

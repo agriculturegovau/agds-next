@@ -40,13 +40,24 @@ relatedComponents: ['filter-drawer']
 };
 ```
 
-Modals are ideal for prompting a user to confirm a destructive action.
+Modals advise users an action may be detrimental or irreversible. They are triggered by a user interaction and announce important or critical information that requires a decision. For other uses, other patterns are preferred.
 
-For other uses, other patterns are preferred.
+Modals require a clear explanation of what will happen if the user proceeds, an alternative option, and an easy way to dismiss.
+
+The user must act or dismiss the modal before they can return to the parent page.
+
+The Primary button should support the user to achieve what they initially elected to do – for example, cancel out of a form.
 
 <DoHeading />
 
 - use to confirm a destructive action – for example, when cancelling a form and user input will be lost
+- use modals to inform people if:
+  - an account or information is about to be deleted
+  - work or data is about to be lost
+  - an error will occur
+  - of a cost increase
+- use sparingly as they disrupt the user flow
+- make sure the modal experience is a brief interaction with no more than two action buttons and a dismiss option (X in the top right corner)
 - use a Button or Button group for actions
 - include a Close button in the top right corner
 - ensure the modal closes when the action is completed.
@@ -56,6 +67,7 @@ For other uses, other patterns are preferred.
 - change the Button group order
 - remove the Close button
 - change default behaviour
-- use a Modal to explain why a user cannot continue in a flow - use PageAlert
+- use a Modal to explain why a user cannot continue in a flow. Use PageAlert instead
+- use to guiding navigation patterns unless the outcome will result in lost data
 - embed forms in a modal
 - use for error, success or loading messages.

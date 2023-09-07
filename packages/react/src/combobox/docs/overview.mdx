@@ -8,6 +8,10 @@ relatedComponents: ['autocomplete', 'select', 'text-input', 'dropdown-menu']
 relatedPatterns: ['selecting-multiple-options']
 ---
 
+When closed, the Combobox shows placeholder text. When a user hovers over the field, a cursor appears, and a dropdown menu opens.
+
+As the user enters text into the field, autocomplete offers suggestions, highlighting the one that best matches the text that has been entered. The list closes when an option is selected.
+
 All Combobox components are [controlled components](https://reactjs.org/docs/forms.html#controlled-components) which means consumers of these components need to manage the state of these components by using the `value` and `onChange` props.
 
 ```jsx live
@@ -27,7 +31,7 @@ All Combobox components are [controlled components](https://reactjs.org/docs/for
 
 <DoHeading />
 
-- include to help users select from a large list
+- use to help users select from a large list
 - provide concise options
 - create hint text to let the user know they can search or select
 - use a pre-filled list so users can search or scroll
@@ -36,7 +40,7 @@ All Combobox components are [controlled components](https://reactjs.org/docs/for
 
 <DontHeading />
 
-- use if the list of possible results is small – use Select
+- use if the list of possible results is small – use Select instead
 - leave the list open once an option is selected.
 
 ## Combobox

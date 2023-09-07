@@ -38,6 +38,32 @@ export default function TokensTypographyPage() {
 					]}
 				/>
 				<Prose>
+					<p>
+						A typographic scale was used to create a set of font-size and
+						line-height values which have been designed for legibility and can
+						be easily be implemented by designers or developers with a
+						predictable output.
+					</p>
+
+					<p>
+						Using the design system&apos;s typography values means any object
+						containing text is more likely to align with another element. This
+						appearance of a baseline grid is created by automatically rounding
+						the line-heights to the nearest grid value 4px, then converting them
+						back to a unit-less value.
+					</p>
+
+					<p>To ensure consistency with other components in the system:</p>
+					<ul>
+						<li>
+							Designers can use font-size and line-height values from the
+							typographic scale.{' '}
+						</li>
+						<li>
+							Developers can use the fontSize and lineHeight props available on
+							typographic components which use of the fontGrid function.{' '}
+						</li>
+					</ul>
 					<h2 id="font-size">Font size</h2>
 					<p>
 						A typographic scale of 1.25 was used to create a limited set of font
