@@ -29,7 +29,7 @@ exports[`Drawer renders correctly 1`] = `
           class="css-1fzj2hl-boxStyles-DrawerHeader"
         >
           <h2
-            class="css-10n83p-boxStyles-Text-DrawerHeaderTitle"
+            class="css-17ywrtq-boxStyles-Text-DrawerHeaderTitle"
             data-autofocus="true"
             id="drawer-:r0:-title"
             tabindex="-1"
@@ -50,7 +50,7 @@ exports[`Drawer renders correctly 1`] = `
           class="css-10pjjkw-boxStyles-DrawerFooter"
         >
           <button
-            class="css-3jmmp1-BaseButton-Button"
+            class="css-1me5i3x-BaseButton-Button"
             type="button"
           >
             <span>
@@ -66,7 +66,7 @@ exports[`Drawer renders correctly 1`] = `
           </button>
         </div>
         <button
-          class="css-16wj18j-BaseButton-DrawerDialog"
+          class="css-1sdyl83-BaseButton-DrawerDialog"
           type="button"
         >
           <span>
