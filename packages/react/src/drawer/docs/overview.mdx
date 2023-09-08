@@ -1,0 +1,67 @@
+---
+title: Drawer
+description: A drawer is a panel that slides in from the right side of the screen. The Drawer is overlayed on top of the main area of the page to capture the users attention while keeping the context of the current task.
+group: Layout
+storybookPath: /story/layout-drawer--basic
+figmaGalleryNodeId: 18684%3A85147
+relatedComponents: ['modal']
+relatedPatterns: ['filtering-a-dataset']
+---
+
+```jsx live
+() => {
+	const [isDrawerOpen, openDrawer, closeDrawer] = useTernaryState(false);
+	return (
+		<React.Fragment>
+			<Button onClick={openDrawer}>Open Drawer</Button>
+			<Drawer
+				isOpen={isDrawerOpen}
+				onDismiss={closeDrawer}
+				title="Drawer title"
+				actions={
+					<ButtonGroup>
+						<Button onClick={closeDrawer}>Primary</Button>
+						<Button variant="secondary" onClick={closeDrawer}>
+							Secondary
+						</Button>
+						<Button variant="tertiary" onClick={closeDrawer}>
+							Tertiary
+						</Button>
+					</ButtonGroup>
+				}
+			>
+				<Text as="p">Drawer body area.</Text>
+			</Drawer>
+		</React.Fragment>
+	);
+};
+```
+
+<DoHeading />
+
+- read the [Filtering a dataset pattern](/patterns/filtering-a-dataset)
+- use a [Button group](/components/button#button-group) to display actions
+- include a "Close" button in the top right
+- include a meaningful title - e.g. "Filter by"
+- close the Drawer when an action are pressed (optional)
+
+<DontHeading />
+
+- remove the "Close" button
+- remove the overlay
+- change default behaviour
+
+## Opening the Drawer
+
+When the Drawer is opened, an overlay is displayed over the main area of the page. This prevents the main area of the page from being interactive.
+
+## Closing the Drawer
+
+The Drawer can be closed by either:
+
+1. Pressing the "Close" button
+2. Pressing the "Escape" key
+3. Pressing the overlay
+4. Pressing a button in the actions area (optional)
+
+When closing the Drawer, focus should be returned to the button that opened the Drawer.

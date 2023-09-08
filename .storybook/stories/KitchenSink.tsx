@@ -85,7 +85,12 @@ import {
 	DropdownMenuItem,
 	DropdownMenuDivider,
 } from '@ag.ds-next/react/dropdown-menu';
-import { COUNTRY_OPTIONS } from '../../docs/components/designSystemComponents';
+import { Drawer } from '@ag.ds-next/react/drawer';
+import {
+	COUNTRY_OPTIONS,
+	Modal,
+	useTernaryState,
+} from '../../docs/components/designSystemComponents';
 import { SiteLayout } from '../../docs/content/templates/__shared/SiteLayout';
 import { AppLayout } from '../../docs/content/templates/__shared/AppLayout';
 
@@ -143,6 +148,8 @@ type KitchenSinkProps = { background: 'body' | 'bodyAlt' };
 
 function KitchenSink({ background }: KitchenSinkProps) {
 	const { page, shade, opposite } = backgroundMapper[background];
+	const [isModalOpen, openModal, closeModal] = useTernaryState(false);
+	const [isDrawerOpen, openDrawer, closeDrawer] = useTernaryState(false);
 	return (
 		<Fragment>
 			<HeroBanner background={opposite}>
@@ -365,6 +372,18 @@ function KitchenSink({ background }: KitchenSinkProps) {
 								</TabPanels>
 							</Tabs>
 
+							<H2>Modals</H2>
+							<div>
+								<Button variant="secondary" onClick={openModal}>
+									Open Modal
+								</Button>
+							</div>
+							<div>
+								<Button variant="secondary" onClick={openDrawer}>
+									Open Drawer
+								</Button>
+							</div>
+
 							<H2>Forms</H2>
 							<FormStack>
 								<SearchInput label="Search" />
@@ -567,6 +586,46 @@ function KitchenSink({ background }: KitchenSinkProps) {
 					</Column>
 				</Columns>
 			</PageContent>
+			<Drawer
+				isOpen={isDrawerOpen}
+				onDismiss={closeDrawer}
+				title="Drawer title"
+				actions={
+					<ButtonGroup>
+						<Button onClick={closeDrawer}>Primary</Button>
+						<Button variant="secondary" onClick={closeDrawer}>
+							Secondary
+						</Button>
+						<Button variant="tertiary" onClick={closeDrawer}>
+							Tertiary
+						</Button>
+					</ButtonGroup>
+				}
+			>
+				<Text as="p">Drawer body area.</Text>
+			</Drawer>
+			<Modal
+				isOpen={isModalOpen}
+				onDismiss={closeModal}
+				title="This is the title of the modal dialog, it can span lines but should not be too long."
+				actions={
+					<ButtonGroup>
+						<Button onClick={closeModal}>Primary button</Button>
+						<Button variant="secondary" onClick={closeModal}>
+							Secondary button
+						</Button>
+						<Button variant="tertiary" onClick={closeModal}>
+							Tertiary button
+						</Button>
+					</ButtonGroup>
+				}
+			>
+				<Text as="p">
+					This is the Modal Body paragraph, it provides detailed instruction and
+					context for the the modal action. It can also span lines but long form
+					content should be avoided.
+				</Text>
+			</Modal>
 		</Fragment>
 	);
 }

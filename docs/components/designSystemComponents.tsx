@@ -213,7 +213,7 @@ export {
 	AppLayoutFooterDivider,
 } from '@ag.ds-next/react/app-layout';
 export { Divider } from '@ag.ds-next/react/divider';
-export { FilterDrawer } from '@ag.ds-next/react/filter-drawer';
+export { Drawer } from '@ag.ds-next/react/drawer';
 export {
 	Tabs,
 	TabList,

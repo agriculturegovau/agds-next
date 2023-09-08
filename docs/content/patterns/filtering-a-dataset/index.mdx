@@ -4,7 +4,7 @@ description: Filters allows a user to refine the data they want to display in a 
 figmaTemplateNodeId: 18586-56265
 githubTemplatePath: /.storybook/stories/DataFiltering
 storybookPath: /story/patterns-data-filtering-and-sorting--small
-relatedComponents: ['filter-drawer', 'pagination']
+relatedComponents: ['drawer', 'pagination']
 ---
 
 Filters can help a user find something they're looking for and see available options within a certain criteria.
@@ -127,13 +127,22 @@ Tags are added below the filters to show which are active and give the user an e
 
 ## Large filter pattern
 
-Large is intended to display 6+ filters in a [Filter drawer](/components/filter-drawer).
+Large is intended to display 6+ filters in a [Drawer](/components/drawer).
 
-1 to 2 of the most used filters should be displayed as the primary filters outside the Filter drawer to make them easier and faster to access.
+1 to 2 of the most used filters should be displayed as the primary filters outside the drawer to make them easier and faster to access.
 
 Related filters should be grouped together in a [Fieldset](/components/fieldset).
 
 Tags are added below the primary filters to show which are active and give the user an easy way to clear them.
+
+### Actions
+
+The [Drawer](/components/drawer) component should contain a total of 4 actions:
+
+1. **"Apply filters" button**: When a user presses the "Apply filters" button, filters should be applied and the Drawer should be closed.
+2. **"Clear filters" button**: When a user presses the "Clear filters" button, filters should be cleared and reset to their original state. The Drawer should stay open.
+3. **"Close" button**: When a user presses the "Close" button, the Drawer should close. Any changes that have been made since opening the Drawer should be discarded. This is essentially the same as the "Cancel" button.
+4. **"Cancel" button**: When a user presses the "Cancel" button, the Drawer should close. Any changes that have been made since opening the Drawer should be discarded. This is essentially the same as the "Close" button.
 
 <ImageWithBorder
 	src="/img/patterns/filtering-a-dataset-large.png"

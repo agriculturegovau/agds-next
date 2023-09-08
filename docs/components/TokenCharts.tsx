@@ -171,7 +171,7 @@ export const ZIndexTokenChart = () => {
 				<Fragment>
 					Used for overlays in modals and other components that sit on top of
 					the page - e.g. <TextLink href="/components/modal">Modal</TextLink>,{' '}
-					<TextLink href="/components/filter-drawer">Filter drawer</TextLink>,{' '}
+					<TextLink href="/components/drawer">Drawer</TextLink>,{' '}
 					<TextLink href="/components/main-nav">Main nav (mobile)</TextLink>.
 				</Fragment>
 			),
@@ -183,7 +183,7 @@ export const ZIndexTokenChart = () => {
 					Used for the main dialog element in modals and other components that
 					sit on top of the - e.g.{' '}
 					<TextLink href="/components/modal">Modal</TextLink>,{' '}
-					<TextLink href="/components/filter-drawer">Filter drawer</TextLink>,{' '}
+					<TextLink href="/components/drawer">Drawer</TextLink>,{' '}
 					<TextLink href="/components/main-nav">Main nav (mobile)</TextLink>.
 				</Fragment>
 			),

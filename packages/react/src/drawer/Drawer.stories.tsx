@@ -15,50 +15,169 @@ import { Select } from '../select';
 import { Stack } from '../stack';
 import { Switch } from '../switch';
 import { Text } from '../text';
-import { FilterDrawer } from './FilterDrawer';
+import { Drawer } from './Drawer';
 
-const meta: Meta<typeof FilterDrawer> = {
-	title: 'layout/FilterDrawer',
-	component: FilterDrawer,
+const meta: Meta<typeof Drawer> = {
+	title: 'layout/Drawer',
+	component: Drawer,
 };
 
 export default meta;
 
-type Story = StoryObj<typeof FilterDrawer>;
+type Story = StoryObj<typeof Drawer>;
 
 export const Basic: Story = {
 	args: {
-		title: 'Filter by',
+		title: 'Drawer title',
 	},
 	render: function Render(props) {
 		const [isOpen, open, close] = useTernaryState(false);
 		return (
 			<Fragment>
-				<Button onClick={open}>Open Filter drawer</Button>
-				<FilterDrawer
+				<Button onClick={open}>Open Drawer</Button>
+				<Drawer
 					isOpen={isOpen}
 					onDismiss={close}
 					title={props.title}
 					actions={
 						<ButtonGroup>
-							<Button onClick={close}>Apply filters</Button>
+							<Button onClick={close}>Primary</Button>
 							<Button variant="secondary" onClick={close}>
-								Clear filters
+								Secondary
 							</Button>
 							<Button variant="tertiary" onClick={close}>
-								Cancel
+								Tertiary
 							</Button>
 						</ButtonGroup>
 					}
 				>
-					<Text as="p">Filter area</Text>
-				</FilterDrawer>
+					<Text as="p">Drawer body area.</Text>
+				</Drawer>
 			</Fragment>
 		);
 	},
 };
 
-export const WithFieldsets: Story = {
+export const FiltersBasic: Story = {
+	args: {
+		title: 'Filter by',
+	},
+	render: function Render(props) {
+		const [isDrawerOpen, openDrawer, closeDrawer] = useTernaryState(false);
+
+		type FormState = {
+			select: string;
+			radio: string;
+		};
+
+		const initialFilterState: FormState = {
+			select: '',
+			radio: 'a',
+		};
+
+		const [filters, setFilters] = useState(initialFilterState);
+		const [formState, setFormState] = useState(initialFilterState);
+
+		const updateFormState = (formState: Partial<FormState>) => {
+			setFormState((currentState) => ({
+				...currentState,
+				...formState,
+			}));
+		};
+
+		const onApplyFiltersClick = () => {
+			setFilters(formState);
+			closeDrawer();
+		};
+
+		const onClearFiltersClick = () => {
+			setFormState(initialFilterState);
+			setFilters(initialFilterState);
+		};
+
+		const onCloseClick = () => {
+			setFormState(filters);
+			closeDrawer();
+		};
+
+		return (
+			<Fragment>
+				<Button onClick={openDrawer}>Open Drawer</Button>
+				<Drawer
+					isOpen={isDrawerOpen}
+					onDismiss={onCloseClick}
+					title={props.title}
+					actions={
+						<ButtonGroup>
+							<Button onClick={onApplyFiltersClick}>Apply filters</Button>
+							<Button variant="secondary" onClick={onClearFiltersClick}>
+								Clear filters
+							</Button>
+							<Button variant="tertiary" onClick={onCloseClick}>
+								Cancel
+							</Button>
+						</ButtonGroup>
+					}
+				>
+					<FormStack>
+						<Select
+							label="Example filter"
+							hideOptionalLabel
+							placeholder="Please select"
+							options={[
+								{ value: 'a', label: 'Option A' },
+								{ value: 'b', label: 'Option B' },
+								{ value: 'c', label: 'Option C' },
+								{ value: 'd', label: 'Option D' },
+								{ value: 'e', label: 'Option E' },
+								{ value: 'f', label: 'Option F' },
+							]}
+							value={formState.select}
+							onChange={(e) => updateFormState({ select: e.target.value })}
+						/>
+						<ControlGroup label="Example filter" hideOptionalLabel block>
+							<Radio
+								value="a"
+								checked={formState.radio === 'a'}
+								onChange={(e) =>
+									updateFormState({
+										radio: e.target.value,
+									})
+								}
+							>
+								Option A
+							</Radio>
+							<Radio
+								value="b"
+								checked={formState.radio === 'b'}
+								onChange={(e) =>
+									updateFormState({
+										radio: e.target.value,
+									})
+								}
+							>
+								Option B
+							</Radio>
+							<Radio
+								value="c"
+								checked={formState.radio === 'c'}
+								onChange={(e) =>
+									updateFormState({
+										radio: e.target.value,
+									})
+								}
+							>
+								Option C
+							</Radio>
+						</ControlGroup>
+					</FormStack>
+				</Drawer>
+			</Fragment>
+		);
+	},
+};
+
+export const FiltersWithFieldsets: Story = {
 	args: {
 		title: 'Filter by',
 	},
@@ -112,8 +231,8 @@ export const WithFieldsets: Story = {
 
 		return (
 			<Fragment>
-				<Button onClick={openDrawer}>Open Filter drawer</Button>
-				<FilterDrawer
+				<Button onClick={openDrawer}>Open Drawer</Button>
+				<Drawer
 					isOpen={isDrawerOpen}
 					onDismiss={onCloseClick}
 					title={props.title}
@@ -253,7 +372,7 @@ export const WithFieldsets: Story = {
 							</FormStack>
 						</Fieldset>
 					</Stack>
-				</FilterDrawer>
+				</Drawer>
 			</Fragment>
 		);
 	},

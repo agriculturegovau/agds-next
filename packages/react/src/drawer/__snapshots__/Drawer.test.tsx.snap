@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`FilterDrawer renders correctly 1`] = `
+exports[`Drawer renders correctly 1`] = `
 <body>
   <div
     aria-hidden="true"
@@ -19,26 +19,26 @@ exports[`FilterDrawer renders correctly 1`] = `
       data-focus-lock-disabled="false"
     >
       <div
-        aria-labelledby="filter-drawer-:r0:-title"
+        aria-labelledby="drawer-:r0:-title"
         aria-modal="true"
-        class="css-390n5-boxStyles-FilterDrawerDialog"
+        class="css-bugcec-boxStyles-DrawerDialog"
         role="dialog"
         style="transform: translateX(100%);"
       >
         <div
-          class="css-rlusyu-boxStyles-FilterDrawerHeader"
+          class="css-1fzj2hl-boxStyles-DrawerHeader"
         >
           <h2
-            class="css-bvrsye-boxStyles-Text-FilterDrawerHeaderTitle"
+            class="css-17ywrtq-boxStyles-Text-DrawerHeaderTitle"
             data-autofocus="true"
-            id="filter-drawer-:r0:-title"
+            id="drawer-:r0:-title"
             tabindex="-1"
           >
-            Filter drawer title
+            Drawer title
           </h2>
         </div>
         <div
-          class="css-su8s1i-boxStyles-FilterDrawerContent"
+          class="css-1r9s54p-boxStyles-DrawerContent"
         >
           <p
             class="css-6j1v6l-boxStyles-Text"
@@ -47,7 +47,7 @@ exports[`FilterDrawer renders correctly 1`] = `
           </p>
         </div>
         <div
-          class="css-1lcrni6-boxStyles-FilterDrawerFooter"
+          class="css-10pjjkw-boxStyles-DrawerFooter"
         >
           <button
             class="css-1me5i3x-BaseButton-Button"
@@ -66,7 +66,7 @@ exports[`FilterDrawer renders correctly 1`] = `
           </button>
         </div>
         <button
-          class="css-5le4p6-BaseButton-FilterDrawerDialog"
+          class="css-1sdyl83-BaseButton-DrawerDialog"
           type="button"
         >
           <span>
