@@ -70,6 +70,16 @@ Use a calendar callout to notify and alert users of important dates and events.
 </Callout>
 ```
 
+## Information Callout
+
+Use an information callout to notify and alert users of important information.
+
+```jsx live
+<Callout title="Callout heading" tone="info">
+	<Text as="p">Description of the callout.</Text>
+</Callout>
+```
+
 ## Backgrounds
 
 The background of the `Callout` must pair with the background it is being placed on. For example, if `Callout` is placed on a 'bodyAlt' background, please set the `background` prop to `shadeAlt`.
@@ -77,7 +87,7 @@ The background of the `Callout` must pair with the background it is being placed
 ```jsx live
 <Stack background="bodyAlt" padding={3} gap={1}>
 	<Text>An area with `bodyAlt` background</Text>
-	<Callout title="Callout heading" background="shadeAlt">
+	<Callout title="Callout heading" tone="neutralAlt">
 		<Text as="p">Description of the callout.</Text>
 	</Callout>
 </Stack>

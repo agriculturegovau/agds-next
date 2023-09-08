@@ -1,14 +1,13 @@
-import { ElementType, PropsWithChildren, ReactNode } from 'react';
-import { BackgroundColor, BorderColor } from '../box';
+import { ElementType, PropsWithChildren } from 'react';
 import { Flex } from '../flex';
-import { InfoFilledIcon, WarningFilledIcon } from '../icon';
+import { InfoFilledIcon } from '../icon';
 import { Stack } from '../stack';
 import { CalloutTitle } from './CalloutTitle';
 
 export type CalloutProps = PropsWithChildren<{
 	as?: ElementType;
-	/** If Callout is placed on "bodyAlt" background, please set this to "shadeAlt". */
-	background?: 'shade' | 'shadeAlt';
+	/** Size will change the padding and gap */
+	size?: keyof typeof calloutSizeMap;
 	/** Title will appear in bold */
 	title?: string;
 	/** Tone will change the background color */
@@ -18,25 +17,27 @@ export type CalloutProps = PropsWithChildren<{
 export const Callout = ({
 	as,
 	children,
+	size = 'md',
 	title,
 	tone = 'neutral',
 }: CalloutProps) => {
 	const { background, border, icon } = calloutToneMap[tone];
+	const { gap, padding } = calloutSizeMap[size];
 
 	return (
 		<Flex
 			as={as}
 			flexDirection="row"
-			gap={1}
+			gap={gap}
 			background={background}
-			padding={1.5}
+			padding={padding}
 			borderColor={border}
 			borderLeft
 			borderLeftWidth="xl"
 			highContrastOutline
 		>
 			{icon}
-			<Stack gap={1}>
+			<Stack gap={gap}>
 				{title ? <CalloutTitle>{title}</CalloutTitle> : null}
 				{children}
 			</Stack>
@@ -44,13 +45,7 @@ export const Callout = ({
 	);
 };
 
-export const calloutToneMap: {
-	[key: string]: {
-		background: BackgroundColor;
-		border: BorderColor;
-		icon?: ReactNode;
-	};
-} = {
+export const calloutToneMap = {
 	neutral: {
 		background: 'shade',
 		border: 'border',
@@ -72,15 +67,15 @@ export const calloutToneMap: {
 			/>
 		),
 	},
-	warning: {
-		background: 'warning',
-		border: 'warning',
-		icon: (
-			<WarningFilledIcon
-				aria-hidden="false"
-				aria-label="Warning"
-				color="warning"
-			/>
-		),
+} as const;
+
+export const calloutSizeMap = {
+	sm: {
+		gap: 0.5,
+		padding: 1,
 	},
-};
+	md: {
+		gap: 1,
+		padding: 1.5,
+	},
+} as const;
