@@ -28,7 +28,7 @@ exports[`ControlGroup  With Checkboxes renders correctly 1`] = `
         class="css-1ypnbyi-boxStyles-ControlGroup"
       >
         <div
-          class="css-1n3rct3-boxStyles"
+          class="css-1lk80kr-boxStyles"
         >
           <label
             class="css-hp3wbe-boxStyles-CheckboxContainer"
@@ -238,7 +238,7 @@ exports[`ControlGroup  With Checkboxes renders correctly when invalid 1`] = `
           </span>
         </div>
         <div
-          class="css-1n3rct3-boxStyles"
+          class="css-1lk80kr-boxStyles"
         >
           <label
             class="css-hp3wbe-boxStyles-CheckboxContainer"
@@ -415,7 +415,7 @@ exports[`ControlGroup  With Radios renders correctly 1`] = `
         class="css-1ypnbyi-boxStyles-ControlGroup"
       >
         <div
-          class="css-1n3rct3-boxStyles"
+          class="css-1lk80kr-boxStyles"
         >
           <label
             class="css-6pplfb-boxStyles-RadioContainer"
@@ -577,7 +577,7 @@ exports[`ControlGroup  With Radios renders correctly when invalid 1`] = `
           </span>
         </div>
         <div
-          class="css-1n3rct3-boxStyles"
+          class="css-1lk80kr-boxStyles"
         >
           <label
             class="css-6pplfb-boxStyles-RadioContainer"
