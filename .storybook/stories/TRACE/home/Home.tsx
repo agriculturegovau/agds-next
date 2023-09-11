@@ -23,13 +23,11 @@ export function Home() {
 				image={<img src={placeholderBanner} role="presentation" alt="" />}
 			>
 				<HeroBannerTitleContainer>
-					<HeroBannerTitle>Welcome to NEXDOC</HeroBannerTitle>
+					<HeroBannerTitle>Welcome to TRACE</HeroBannerTitle>
 					<HeroBannerSubtitle>
-						The NEXDOC system is used to generate export documents. This
-						includes export permits and certificates and related documents as
-						required by importing countries. Refer to the Dept of Agriculture,
-						Fisheries and Forestry's Exporting from Australia page for more
-						information about NEXDOC.
+						The Tracking Animal Certification for Export system (TRACE) manages
+						the application and approval processes for consignments of livestock
+						and animal reproductive material exported from Australia.
 					</HeroBannerSubtitle>
 				</HeroBannerTitleContainer>
 				<ButtonGroup>

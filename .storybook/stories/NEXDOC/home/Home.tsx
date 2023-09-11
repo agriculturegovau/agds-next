@@ -28,7 +28,7 @@ export function Home() {
 						The NEXDOC system is used to generate export documents. This
 						includes export permits and certificates and related documents as
 						required by importing countries. Refer to the Dept of Agriculture,
-						Fisheries and Forestry's Exporting from Australia page for more
+						Fisheries and Forestry&apos;s Exporting from Australia page for more
 						information about NEXDOC.
 					</HeroBannerSubtitle>
 				</HeroBannerTitleContainer>
