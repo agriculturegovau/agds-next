@@ -3,11 +3,15 @@ import { RouterContext } from 'next/dist/shared/lib/router-context';
 import { Box } from '../packages/react/src/box';
 import { Core } from '../packages/react/src/core';
 import { theme as agriculture } from '../packages/react/src/ag-branding';
+import { theme as nexdoc } from './theme-nexdoc';
+import { theme as trace } from './theme-trace';
 import { LinkComponent } from './components/LinkComponent';
 
 const storybookThemes = {
 	gold: {},
 	agriculture,
+	nexdoc,
+	trace,
 } as const;
 
 type StorybookThemes = keyof typeof storybookThemes;
