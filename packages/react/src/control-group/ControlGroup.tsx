@@ -73,6 +73,7 @@ export const ControlGroup = ({
 						<Flex
 							gap={1}
 							flexDirection={block ? 'column' : 'row'}
+							flexWrap={block ? undefined : 'wrap'}
 							width="100%"
 							paddingTop={0.5}
 						>
