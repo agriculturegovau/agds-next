@@ -58,12 +58,12 @@ export const NoTitle: Story = {
 	},
 };
 
-export const Small: Story = {
+export const Compact: Story = {
 	args: {
 		title: 'Callout heading',
 		children: <Text as="p">Description of the callout.</Text>,
 		tone: 'info',
-		size: 'sm',
+		variant: 'compact',
 	},
 };
 

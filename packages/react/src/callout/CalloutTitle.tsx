@@ -6,7 +6,7 @@ export type CalloutTitleProps = PropsWithChildren<{
 }>;
 
 export const CalloutTitle = ({ as = 'h2', children }: CalloutTitleProps) => (
-	<Text as={as} fontSize="md" fontWeight="bold">
+	<Text as={as} fontSize="md" fontWeight="bold" lineHeight="heading">
 		{children}
 	</Text>
 );

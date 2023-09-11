@@ -6,8 +6,8 @@ import { CalloutTitle } from './CalloutTitle';
 
 export type CalloutProps = PropsWithChildren<{
 	as?: ElementType;
-	/** Size will change the padding and gap */
-	size?: keyof typeof calloutSizeMap;
+	/** Variant will change the padding and gap */
+	variant?: keyof typeof calloutVariantMap;
 	/** Title will appear in bold */
 	title?: string;
 	/** Tone will change the background color */
@@ -17,12 +17,12 @@ export type CalloutProps = PropsWithChildren<{
 export const Callout = ({
 	as,
 	children,
-	size = 'md',
+	variant = 'regular',
 	title,
 	tone = 'neutral',
 }: CalloutProps) => {
 	const { background, border, icon } = calloutToneMap[tone];
-	const { gap, padding } = calloutSizeMap[size];
+	const { gap, padding } = calloutVariantMap[variant];
 
 	return (
 		<Flex
@@ -69,13 +69,13 @@ export const calloutToneMap = {
 	},
 } as const;
 
-export const calloutSizeMap = {
-	sm: {
-		gap: 0.5,
-		padding: 1,
-	},
-	md: {
+export const calloutVariantMap = {
+	regular: {
 		gap: 1,
 		padding: 1.5,
+	},
+	compact: {
+		gap: 0.5,
+		padding: 1,
 	},
 } as const;
