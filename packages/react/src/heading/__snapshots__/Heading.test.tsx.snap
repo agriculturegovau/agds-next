@@ -3,7 +3,7 @@
 exports[`Heading renders correctly 1`] = `
 <div>
   <h2
-    class="css-s8h0nj-boxStyles"
+    class="css-1qcty0s-boxStyles"
   >
     Heading element
   </h2>

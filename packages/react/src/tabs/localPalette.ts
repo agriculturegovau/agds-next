@@ -1,25 +1,4 @@
-import { boxPalette } from '../core';
-
-const backgroundMap = {
-	body: {
-		panelBg: boxPalette.backgroundBody,
-		panelFg: boxPalette.foregroundText,
-		buttonBg: boxPalette.backgroundBody,
-		buttonFg: boxPalette.foregroundAction,
-		buttonBgHover: boxPalette.backgroundShade,
-		buttonFgHover: boxPalette.foregroundText,
-	},
-	bodyAlt: {
-		panelBg: boxPalette.backgroundBodyAlt,
-		panelFg: boxPalette.foregroundText,
-		buttonBg: boxPalette.backgroundBodyAlt,
-		buttonFg: boxPalette.foregroundAction,
-		buttonBgHover: boxPalette.backgroundShade,
-		buttonFgHover: boxPalette.foregroundText,
-	},
-} as const;
-
-export type Background = keyof typeof backgroundMap;
+import { backgroundContextPalette, boxPalette } from '../core';
 
 const localPaletteVars = {
 	panelBg: '--agds-tabs-panel-bg',
@@ -39,13 +18,13 @@ export const localPalette = {
 	buttonFgHover: `var(${localPaletteVars.buttonFgHover})`,
 };
 
-export function setLocalPaletteVars(background: Background) {
+export function setLocalPaletteVars() {
 	return {
-		[localPaletteVars.panelBg]: backgroundMap[background].panelBg,
-		[localPaletteVars.panelFg]: backgroundMap[background].panelFg,
-		[localPaletteVars.buttonBg]: backgroundMap[background].buttonBg,
-		[localPaletteVars.buttonFg]: backgroundMap[background].buttonFg,
-		[localPaletteVars.buttonBgHover]: backgroundMap[background].buttonBgHover,
-		[localPaletteVars.buttonFgHover]: backgroundMap[background].buttonFgHover,
+		[localPaletteVars.panelBg]: backgroundContextPalette.current,
+		[localPaletteVars.panelFg]: boxPalette.foregroundText,
+		[localPaletteVars.buttonBg]: backgroundContextPalette.current,
+		[localPaletteVars.buttonFg]: boxPalette.foregroundAction,
+		[localPaletteVars.buttonBgHover]: backgroundContextPalette.shade,
+		[localPaletteVars.buttonFgHover]: boxPalette.foregroundText,
 	};
 }

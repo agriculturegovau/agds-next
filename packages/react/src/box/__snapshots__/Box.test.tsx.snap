@@ -3,7 +3,7 @@
 exports[`Box renders correctly 1`] = `
 <div>
   <div
-    class="css-79i25n-boxStyles"
+    class="css-1l5cwjh-boxStyles"
   >
     Box element
   </div>

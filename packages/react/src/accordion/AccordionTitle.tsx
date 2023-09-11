@@ -1,14 +1,12 @@
 import { MouseEventHandler, PropsWithChildren } from 'react';
 import { Box } from '../box';
 import { Flex } from '../flex';
-import { tokens } from '../core';
+import { backgroundContextPalette, tokens } from '../core';
 import { ChevronDownIcon } from '../icon';
 import { BaseButton } from '../button/';
-import { hoverColorMap, AccordionBackground } from './utils';
 
 export type AccordionTitleProps = PropsWithChildren<{
 	id: string;
-	background?: AccordionBackground;
 	ariaControls: string;
 	isOpen?: boolean;
 	onClick?: MouseEventHandler<HTMLButtonElement>;
@@ -17,7 +15,6 @@ export type AccordionTitleProps = PropsWithChildren<{
 
 export const AccordionTitle = ({
 	ariaControls,
-	background = 'body',
 	children,
 	id,
 	isOpen,
@@ -36,7 +33,6 @@ export const AccordionTitle = ({
 				fontSize="md"
 				lineHeight="heading"
 				fontWeight="bold"
-				background={background}
 				paddingY={1}
 				justifyContent="space-between"
 				alignItems="center"
@@ -45,7 +41,7 @@ export const AccordionTitle = ({
 				focus
 				css={{
 					'&:hover': {
-						backgroundColor: hoverColorMap[background],
+						backgroundColor: backgroundContextPalette.shade,
 					},
 				}}
 			>

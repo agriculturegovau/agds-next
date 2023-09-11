@@ -4,7 +4,7 @@ exports[`SkeletonText renders correctly 1`] = `
 <div>
   <div
     aria-hidden="true"
-    class="css-1yf6wyz-boxStyles-SkeletonBox"
+    class="css-14g2wk7-boxStyles-SkeletonBox"
   />
 </div>
 `;

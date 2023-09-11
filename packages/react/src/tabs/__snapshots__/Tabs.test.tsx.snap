@@ -3,18 +3,18 @@
 exports[`Tabs renders correctly 1`] = `
 <div>
   <div
-    class="css-1b120x5-Tabs"
+    class="css-2fax0n-Tabs"
     id="tabs-:r0:"
   >
     <div
       aria-orientation="horizontal"
-      class="css-1be2o1s-boxStyles"
+      class="css-rynewa-boxStyles"
       role="tablist"
     >
       <button
         aria-controls="tabs-:r0:-tab-panel-0"
         aria-selected="true"
-        class="css-mt14g7-BaseButton-boxStyles-TabButton"
+        class="css-97n5u3-BaseButton-boxStyles-TabButton"
         id="tabs-:r0:-tab-button-0"
         role="tab"
         tabindex="0"
@@ -27,7 +27,7 @@ exports[`Tabs renders correctly 1`] = `
       <button
         aria-controls="tabs-:r0:-tab-panel-1"
         aria-selected="false"
-        class="css-zu3sbg-BaseButton-boxStyles-TabButton"
+        class="css-14ktmyt-BaseButton-boxStyles-TabButton"
         id="tabs-:r0:-tab-button-1"
         role="tab"
         tabindex="-1"
@@ -40,7 +40,7 @@ exports[`Tabs renders correctly 1`] = `
       <button
         aria-controls="tabs-:r0:-tab-panel-2"
         aria-selected="false"
-        class="css-zu3sbg-BaseButton-boxStyles-TabButton"
+        class="css-14ktmyt-BaseButton-boxStyles-TabButton"
         id="tabs-:r0:-tab-button-2"
         role="tab"
         tabindex="-1"
@@ -54,7 +54,7 @@ exports[`Tabs renders correctly 1`] = `
     <div>
       <div
         aria-labelledby="tabs-:r0:-tab-button-0"
-        class="css-mbs2xi-boxStyles-TabPanel"
+        class="css-17qxr32-boxStyles-TabPanel"
         id="tabs-:r0:-tab-panel-0"
         role="tabpanel"
         tabindex="0"
@@ -63,7 +63,7 @@ exports[`Tabs renders correctly 1`] = `
       </div>
       <div
         aria-labelledby="tabs-:r0:-tab-button-1"
-        class="css-h9s0k-boxStyles-TabPanel"
+        class="css-1nmk5po-boxStyles-TabPanel"
         id="tabs-:r0:-tab-panel-1"
         role="tabpanel"
         tabindex="-1"
@@ -72,7 +72,7 @@ exports[`Tabs renders correctly 1`] = `
       </div>
       <div
         aria-labelledby="tabs-:r0:-tab-button-2"
-        class="css-h9s0k-boxStyles-TabPanel"
+        class="css-1nmk5po-boxStyles-TabPanel"
         id="tabs-:r0:-tab-panel-2"
         role="tabpanel"
         tabindex="-1"

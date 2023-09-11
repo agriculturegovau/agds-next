@@ -37,9 +37,7 @@ export const WithoutTitleLinks: Story = {
 };
 
 export const OnBodyAlt: Story = {
-	args: {
-		background: 'bodyAlt',
-	},
+	args: {},
 	name: 'On bodyAlt background',
 	render: (args) => (
 		<Box padding={2} background="bodyAlt">

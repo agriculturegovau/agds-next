@@ -3,18 +3,18 @@
 exports[`ProgressIndicator With anchors renders correctly 1`] = `
 <div>
   <section
-    class="css-109i52p-boxStyles-CollapsingSideBarContainer"
+    class="css-gkrtqa-boxStyles"
   >
     <div
-      class="css-w0ukyp-boxStyles"
+      class="css-1upttg4-boxStyles"
     >
       <h2
-        class="css-kip0vn-boxStyles-Text"
+        class="css-18vadwj-boxStyles-Text"
       >
         Progress
       </h2>
       <span
-        class="css-1lp7dl8-boxStyles-Text"
+        class="css-1q2emlt-boxStyles-Text"
       >
         1 of 3 steps completed
       </span>
@@ -22,7 +22,7 @@ exports[`ProgressIndicator With anchors renders correctly 1`] = `
     <button
       aria-controls="collapsing-side-bar-:r0:-body"
       aria-expanded="false"
-      class="css-15g5ot9-BaseButton-boxStyles-SideBarCollapseButton"
+      class="css-14aotnf-BaseButton-boxStyles-SideBarCollapseButton"
       id="collapsing-side-bar-:r0:-button"
       type="button"
     >
@@ -49,20 +49,20 @@ exports[`ProgressIndicator With anchors renders correctly 1`] = `
       style="display: none; height: 0px; overflow: hidden;"
     >
       <div
-        class="css-79i25n-boxStyles"
+        class="css-1l5cwjh-boxStyles"
       >
         <ul
-          class="css-d1p7wm-boxStyles-ProgressIndicatorList"
+          class="css-ggltr2-boxStyles-ProgressIndicatorList"
         >
           <li
-            class="css-10qlzin-boxStyles-ProgressIndicatorItem"
+            class="css-jx6rss-boxStyles-ProgressIndicatorItem"
           >
             <a
-              class="css-12el6hy-TextLink-boxStyles-ProgressIndicatorItem"
+              class="css-p21cw4-TextLink-boxStyles-ProgressIndicatorItem"
               href="#"
             >
               <span
-                class="css-11emnjx-boxStyles"
+                class="css-18cnah9-boxStyles"
               >
                 <span
                   class="css-rz0ge3-ProgressIndicatorItemTimeline"
@@ -98,17 +98,17 @@ exports[`ProgressIndicator With anchors renders correctly 1`] = `
                 />
               </span>
               <span
-                class="css-1bt7nbc-boxStyles"
+                class="css-1veqpy5-boxStyles"
                 data-agds-progress-indicator-item-text-container=""
               >
                 <span
-                  class="css-6j1v6l-boxStyles-Text"
+                  class="css-7njy8a-boxStyles-Text"
                   data-agds-progress-indicator-item-text=""
                 >
                   Introduction
                 </span>
                 <span
-                  class="css-117pubc-boxStyles-Text-ProgressIndicatorItem"
+                  class="css-1sbzqg7-boxStyles-Text-ProgressIndicatorItem"
                 >
                   Completed
                 </span>
@@ -116,14 +116,14 @@ exports[`ProgressIndicator With anchors renders correctly 1`] = `
             </a>
           </li>
           <li
-            class="css-10qlzin-boxStyles-ProgressIndicatorItem"
+            class="css-jx6rss-boxStyles-ProgressIndicatorItem"
           >
             <a
-              class="css-tc9df-TextLink-boxStyles-ProgressIndicatorItem"
+              class="css-1a1phxe-TextLink-boxStyles-ProgressIndicatorItem"
               href="#"
             >
               <span
-                class="css-11emnjx-boxStyles"
+                class="css-18cnah9-boxStyles"
               >
                 <span
                   class="css-rz0ge3-ProgressIndicatorItemTimeline"
@@ -172,17 +172,17 @@ exports[`ProgressIndicator With anchors renders correctly 1`] = `
                 />
               </span>
               <span
-                class="css-48tv73-boxStyles"
+                class="css-82cgfm-boxStyles"
                 data-agds-progress-indicator-item-text-container=""
               >
                 <span
-                  class="css-6j1v6l-boxStyles-Text"
+                  class="css-7njy8a-boxStyles-Text"
                   data-agds-progress-indicator-item-text=""
                 >
                   Business Contacts
                 </span>
                 <span
-                  class="css-117pubc-boxStyles-Text-ProgressIndicatorItem"
+                  class="css-1sbzqg7-boxStyles-Text-ProgressIndicatorItem"
                 >
                   In progress
                 </span>
@@ -190,14 +190,14 @@ exports[`ProgressIndicator With anchors renders correctly 1`] = `
             </a>
           </li>
           <li
-            class="css-10qlzin-boxStyles-ProgressIndicatorItem"
+            class="css-jx6rss-boxStyles-ProgressIndicatorItem"
           >
             <a
-              class="css-12el6hy-TextLink-boxStyles-ProgressIndicatorItem"
+              class="css-p21cw4-TextLink-boxStyles-ProgressIndicatorItem"
               href="#"
             >
               <span
-                class="css-11emnjx-boxStyles"
+                class="css-18cnah9-boxStyles"
               >
                 <span
                   class="css-rz0ge3-ProgressIndicatorItemTimeline"
@@ -233,17 +233,17 @@ exports[`ProgressIndicator With anchors renders correctly 1`] = `
                 />
               </span>
               <span
-                class="css-1bt7nbc-boxStyles"
+                class="css-1veqpy5-boxStyles"
                 data-agds-progress-indicator-item-text-container=""
               >
                 <span
-                  class="css-6j1v6l-boxStyles-Text"
+                  class="css-7njy8a-boxStyles-Text"
                   data-agds-progress-indicator-item-text=""
                 >
                   Case Studies
                 </span>
                 <span
-                  class="css-117pubc-boxStyles-Text-ProgressIndicatorItem"
+                  class="css-1sbzqg7-boxStyles-Text-ProgressIndicatorItem"
                 >
                   Not started
                 </span>
@@ -260,18 +260,18 @@ exports[`ProgressIndicator With anchors renders correctly 1`] = `
 exports[`ProgressIndicator With buttons renders correctly 1`] = `
 <div>
   <section
-    class="css-109i52p-boxStyles-CollapsingSideBarContainer"
+    class="css-gkrtqa-boxStyles"
   >
     <div
-      class="css-w0ukyp-boxStyles"
+      class="css-1upttg4-boxStyles"
     >
       <h2
-        class="css-kip0vn-boxStyles-Text"
+        class="css-18vadwj-boxStyles-Text"
       >
         Progress
       </h2>
       <span
-        class="css-1lp7dl8-boxStyles-Text"
+        class="css-1q2emlt-boxStyles-Text"
       >
         1 of 3 steps completed
       </span>
@@ -279,7 +279,7 @@ exports[`ProgressIndicator With buttons renders correctly 1`] = `
     <button
       aria-controls="collapsing-side-bar-:r2:-body"
       aria-expanded="false"
-      class="css-15g5ot9-BaseButton-boxStyles-SideBarCollapseButton"
+      class="css-14aotnf-BaseButton-boxStyles-SideBarCollapseButton"
       id="collapsing-side-bar-:r2:-button"
       type="button"
     >
@@ -306,20 +306,20 @@ exports[`ProgressIndicator With buttons renders correctly 1`] = `
       style="display: none; height: 0px; overflow: hidden;"
     >
       <div
-        class="css-79i25n-boxStyles"
+        class="css-1l5cwjh-boxStyles"
       >
         <ul
-          class="css-d1p7wm-boxStyles-ProgressIndicatorList"
+          class="css-ggltr2-boxStyles-ProgressIndicatorList"
         >
           <li
-            class="css-10qlzin-boxStyles-ProgressIndicatorItem"
+            class="css-jx6rss-boxStyles-ProgressIndicatorItem"
           >
             <button
-              class="css-b1b1hj-BaseButton-boxStyles-ProgressIndicatorItem"
+              class="css-ujttmb-BaseButton-boxStyles-ProgressIndicatorItem"
               type="button"
             >
               <span
-                class="css-11emnjx-boxStyles"
+                class="css-18cnah9-boxStyles"
               >
                 <span
                   class="css-rz0ge3-ProgressIndicatorItemTimeline"
@@ -355,17 +355,17 @@ exports[`ProgressIndicator With buttons renders correctly 1`] = `
                 />
               </span>
               <span
-                class="css-1bt7nbc-boxStyles"
+                class="css-1veqpy5-boxStyles"
                 data-agds-progress-indicator-item-text-container=""
               >
                 <span
-                  class="css-6j1v6l-boxStyles-Text"
+                  class="css-7njy8a-boxStyles-Text"
                   data-agds-progress-indicator-item-text=""
                 >
                   Introduction
                 </span>
                 <span
-                  class="css-117pubc-boxStyles-Text-ProgressIndicatorItem"
+                  class="css-1sbzqg7-boxStyles-Text-ProgressIndicatorItem"
                 >
                   Completed
                 </span>
@@ -373,14 +373,14 @@ exports[`ProgressIndicator With buttons renders correctly 1`] = `
             </button>
           </li>
           <li
-            class="css-10qlzin-boxStyles-ProgressIndicatorItem"
+            class="css-jx6rss-boxStyles-ProgressIndicatorItem"
           >
             <button
-              class="css-locwej-BaseButton-boxStyles-ProgressIndicatorItem"
+              class="css-1ydt447-BaseButton-boxStyles-ProgressIndicatorItem"
               type="button"
             >
               <span
-                class="css-11emnjx-boxStyles"
+                class="css-18cnah9-boxStyles"
               >
                 <span
                   class="css-rz0ge3-ProgressIndicatorItemTimeline"
@@ -429,17 +429,17 @@ exports[`ProgressIndicator With buttons renders correctly 1`] = `
                 />
               </span>
               <span
-                class="css-48tv73-boxStyles"
+                class="css-82cgfm-boxStyles"
                 data-agds-progress-indicator-item-text-container=""
               >
                 <span
-                  class="css-6j1v6l-boxStyles-Text"
+                  class="css-7njy8a-boxStyles-Text"
                   data-agds-progress-indicator-item-text=""
                 >
                   Business Contacts
                 </span>
                 <span
-                  class="css-117pubc-boxStyles-Text-ProgressIndicatorItem"
+                  class="css-1sbzqg7-boxStyles-Text-ProgressIndicatorItem"
                 >
                   In progress
                 </span>
@@ -447,14 +447,14 @@ exports[`ProgressIndicator With buttons renders correctly 1`] = `
             </button>
           </li>
           <li
-            class="css-10qlzin-boxStyles-ProgressIndicatorItem"
+            class="css-jx6rss-boxStyles-ProgressIndicatorItem"
           >
             <button
-              class="css-b1b1hj-BaseButton-boxStyles-ProgressIndicatorItem"
+              class="css-ujttmb-BaseButton-boxStyles-ProgressIndicatorItem"
               type="button"
             >
               <span
-                class="css-11emnjx-boxStyles"
+                class="css-18cnah9-boxStyles"
               >
                 <span
                   class="css-rz0ge3-ProgressIndicatorItemTimeline"
@@ -490,17 +490,17 @@ exports[`ProgressIndicator With buttons renders correctly 1`] = `
                 />
               </span>
               <span
-                class="css-1bt7nbc-boxStyles"
+                class="css-1veqpy5-boxStyles"
                 data-agds-progress-indicator-item-text-container=""
               >
                 <span
-                  class="css-6j1v6l-boxStyles-Text"
+                  class="css-7njy8a-boxStyles-Text"
                   data-agds-progress-indicator-item-text=""
                 >
                   Case Studies
                 </span>
                 <span
-                  class="css-117pubc-boxStyles-Text-ProgressIndicatorItem"
+                  class="css-1sbzqg7-boxStyles-Text-ProgressIndicatorItem"
                 >
                   Not started
                 </span>

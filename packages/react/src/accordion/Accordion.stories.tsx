@@ -25,7 +25,7 @@ type AccordionTemplateProps = {
 const AccordionBasicTemplate = ({ background }: AccordionTemplateProps) => (
 	<Box padding={1.5} background={background}>
 		<Accordion>
-			<AccordionItem title="Accordion title" background={background}>
+			<AccordionItem title="Accordion title">
 				<AccordionItemContent>
 					<Text as="p">This is some text inside an Accordion</Text>
 				</AccordionItemContent>
@@ -46,12 +46,12 @@ export const onBodyAlt: Story = {
 const AccordionGroupTemplate = ({ background }: AccordionTemplateProps) => (
 	<Box padding={1.5} background={background}>
 		<Accordion>
-			<AccordionItem title="Accordion 1" background={background}>
+			<AccordionItem title="Accordion 1">
 				<AccordionItemContent>
 					<Text as="p">This is some text inside an Accordion</Text>
 				</AccordionItemContent>
 			</AccordionItem>
-			<AccordionItem title="Accordion 2" background={background}>
+			<AccordionItem title="Accordion 2">
 				<AccordionItemContent>
 					<Prose>
 						<p>
@@ -85,7 +85,7 @@ const AccordionGroupTemplate = ({ background }: AccordionTemplateProps) => (
 					</Prose>
 				</AccordionItemContent>
 			</AccordionItem>
-			<AccordionItem title="Accordion 3" background={background}>
+			<AccordionItem title="Accordion 3">
 				<AccordionItemContent>
 					<Text as="p">This is some text inside an Accordion</Text>
 				</AccordionItemContent>

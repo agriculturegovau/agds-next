@@ -11,7 +11,7 @@ exports[`Calendar Range renders correctly 1`] = `
     data-focus-lock-disabled="false"
   >
     <div
-      class="css-8rf7ev-boxStyles-CalendarContainer"
+      class="css-11crvwi-boxStyles-CalendarContainer"
     >
       <div
         class="rdp "
@@ -34,15 +34,15 @@ exports[`Calendar Range renders correctly 1`] = `
                 June 2022
               </h2>
               <div
-                class="css-4d2b9s-boxStyles"
+                class="css-14xdr69-boxStyles"
               >
                 <span
-                  class="css-1ia12kz-boxStyles"
+                  class="css-40pctp-boxStyles"
                 >
                   June
                 </span>
                 <div
-                  class="css-1imz916-boxStyles"
+                  class="css-wrhuza-boxStyles"
                 >
                   <div
                     class="css-11igi7-YearSelect"
@@ -54,7 +54,7 @@ exports[`Calendar Range renders correctly 1`] = `
                       Year
                     </label>
                     <select
-                      class="css-1hkiszp-boxStyles-YearSelect"
+                      class="css-1bjwffw-boxStyles-YearSelect"
                       id="calendar-:r2:-year"
                     >
                       <option>
@@ -767,7 +767,7 @@ exports[`Calendar Single renders correctly 1`] = `
     data-focus-lock-disabled="false"
   >
     <div
-      class="css-1srct80-boxStyles-CalendarContainer"
+      class="css-1eurj4m-boxStyles-CalendarContainer"
     >
       <div
         class="rdp "
@@ -790,15 +790,15 @@ exports[`Calendar Single renders correctly 1`] = `
                 June 2022
               </h2>
               <div
-                class="css-4d2b9s-boxStyles"
+                class="css-14xdr69-boxStyles"
               >
                 <span
-                  class="css-1ia12kz-boxStyles"
+                  class="css-40pctp-boxStyles"
                 >
                   June
                 </span>
                 <div
-                  class="css-1imz916-boxStyles"
+                  class="css-wrhuza-boxStyles"
                 >
                   <div
                     class="css-11igi7-YearSelect"
@@ -810,7 +810,7 @@ exports[`Calendar Single renders correctly 1`] = `
                       Year
                     </label>
                     <select
-                      class="css-1hkiszp-boxStyles-YearSelect"
+                      class="css-1bjwffw-boxStyles-YearSelect"
                       id="calendar-:r0:-year"
                     >
                       <option>

@@ -25,12 +25,9 @@ import { TabButton, TabList, TabPanel, TabPanels, Tabs } from './index';
 
 const meta: Meta = {
 	title: 'layout/Tabs',
-	render: function Render(args) {
+	render: function Render({ background, ...args }) {
 		return (
-			<Box
-				padding={args.background === 'bodyAlt' ? 1.5 : 0}
-				background={args.background}
-			>
+			<Box padding={background === 'bodyAlt' ? 1.5 : 0} background={background}>
 				<Tabs {...args}>
 					<TabList>
 						<TabButton>Tab 1</TabButton>

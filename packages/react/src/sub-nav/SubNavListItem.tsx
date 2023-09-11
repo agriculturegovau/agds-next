@@ -7,9 +7,9 @@ import {
 	mapResponsiveProp,
 	packs,
 	tokens,
+	backgroundContextPalette,
 } from '../core';
 import { Flex } from '../flex';
-import { localPalette } from './utils';
 
 export type SubNavListItemProps = PropsWithChildren<{
 	active?: boolean;
@@ -56,7 +56,7 @@ export function SubNavListItem({ children, active }: SubNavListItemProps) {
 
 					'&:hover': {
 						color: boxPalette.foregroundText,
-						backgroundColor: localPalette.linkHoverBg,
+						backgroundColor: backgroundContextPalette.shade,
 						// Underline the label
 						'& > span:first-of-type': packs.underline,
 					},

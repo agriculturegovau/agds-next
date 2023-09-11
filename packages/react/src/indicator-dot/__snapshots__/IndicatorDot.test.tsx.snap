@@ -3,7 +3,7 @@
 exports[`IndicatorDot renders correctly 1`] = `
 <div>
   <div
-    class="css-h9c2dm-boxStyles-IndicatorDot"
+    class="css-1gm6kfr-boxStyles-IndicatorDot"
   />
 </div>
 `;

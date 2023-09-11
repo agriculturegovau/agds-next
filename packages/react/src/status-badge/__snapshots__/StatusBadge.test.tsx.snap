@@ -3,7 +3,7 @@
 exports[`StatusBadge weight: regular tone: error renders correctly 1`] = `
 <div>
   <div
-    class="css-16xnn81-boxStyles-StatusBadge"
+    class="css-1avt26p-boxStyles-StatusBadge"
   >
     <svg
       aria-hidden="true"
@@ -27,7 +27,7 @@ exports[`StatusBadge weight: regular tone: error renders correctly 1`] = `
       />
     </svg>
     <span
-      class="css-10dvol5-boxStyles-Text-StatusBadge"
+      class="css-1r5adv-boxStyles-Text-StatusBadge"
     >
       Example
     </span>
@@ -38,7 +38,7 @@ exports[`StatusBadge weight: regular tone: error renders correctly 1`] = `
 exports[`StatusBadge weight: regular tone: info renders correctly 1`] = `
 <div>
   <div
-    class="css-11uollg-boxStyles-StatusBadge"
+    class="css-1tlhgvu-boxStyles-StatusBadge"
   >
     <svg
       aria-hidden="true"
@@ -67,7 +67,7 @@ exports[`StatusBadge weight: regular tone: info renders correctly 1`] = `
       />
     </svg>
     <span
-      class="css-10dvol5-boxStyles-Text-StatusBadge"
+      class="css-1r5adv-boxStyles-Text-StatusBadge"
     >
       Example
     </span>
@@ -78,13 +78,13 @@ exports[`StatusBadge weight: regular tone: info renders correctly 1`] = `
 exports[`StatusBadge weight: regular tone: neutral renders correctly 1`] = `
 <div>
   <div
-    class="css-mazyxq-boxStyles-StatusBadge"
+    class="css-8jjqci-boxStyles-StatusBadge"
   >
     <div
-      class="css-1ttchuf-boxStyles-NeutralDot"
+      class="css-7rfxu9-boxStyles-NeutralDot"
     />
     <span
-      class="css-10dvol5-boxStyles-Text-StatusBadge"
+      class="css-1r5adv-boxStyles-Text-StatusBadge"
     >
       Example
     </span>
@@ -95,7 +95,7 @@ exports[`StatusBadge weight: regular tone: neutral renders correctly 1`] = `
 exports[`StatusBadge weight: regular tone: success renders correctly 1`] = `
 <div>
   <div
-    class="css-1j8vzzn-boxStyles-StatusBadge"
+    class="css-1scy3q2-boxStyles-StatusBadge"
   >
     <svg
       aria-hidden="true"
@@ -118,7 +118,7 @@ exports[`StatusBadge weight: regular tone: success renders correctly 1`] = `
       />
     </svg>
     <span
-      class="css-10dvol5-boxStyles-Text-StatusBadge"
+      class="css-1r5adv-boxStyles-Text-StatusBadge"
     >
       Example
     </span>
@@ -129,7 +129,7 @@ exports[`StatusBadge weight: regular tone: success renders correctly 1`] = `
 exports[`StatusBadge weight: regular tone: warning renders correctly 1`] = `
 <div>
   <div
-    class="css-1mxhjjp-boxStyles-StatusBadge"
+    class="css-4kcbuf-boxStyles-StatusBadge"
   >
     <svg
       aria-hidden="true"
@@ -156,7 +156,7 @@ exports[`StatusBadge weight: regular tone: warning renders correctly 1`] = `
       />
     </svg>
     <span
-      class="css-10dvol5-boxStyles-Text-StatusBadge"
+      class="css-1r5adv-boxStyles-Text-StatusBadge"
     >
       Example
     </span>
@@ -167,7 +167,7 @@ exports[`StatusBadge weight: regular tone: warning renders correctly 1`] = `
 exports[`StatusBadge weight: subtle tone: error renders correctly 1`] = `
 <div>
   <div
-    class="css-1ab91q-boxStyles-StatusBadge"
+    class="css-1er6y36-boxStyles-StatusBadge"
   >
     <svg
       aria-hidden="true"
@@ -191,7 +191,7 @@ exports[`StatusBadge weight: subtle tone: error renders correctly 1`] = `
       />
     </svg>
     <span
-      class="css-10dvol5-boxStyles-Text-StatusBadge"
+      class="css-1r5adv-boxStyles-Text-StatusBadge"
     >
       Example
     </span>
@@ -202,7 +202,7 @@ exports[`StatusBadge weight: subtle tone: error renders correctly 1`] = `
 exports[`StatusBadge weight: subtle tone: info renders correctly 1`] = `
 <div>
   <div
-    class="css-1ab91q-boxStyles-StatusBadge"
+    class="css-1er6y36-boxStyles-StatusBadge"
   >
     <svg
       aria-hidden="true"
@@ -231,7 +231,7 @@ exports[`StatusBadge weight: subtle tone: info renders correctly 1`] = `
       />
     </svg>
     <span
-      class="css-10dvol5-boxStyles-Text-StatusBadge"
+      class="css-1r5adv-boxStyles-Text-StatusBadge"
     >
       Example
     </span>
@@ -242,13 +242,13 @@ exports[`StatusBadge weight: subtle tone: info renders correctly 1`] = `
 exports[`StatusBadge weight: subtle tone: neutral renders correctly 1`] = `
 <div>
   <div
-    class="css-1ab91q-boxStyles-StatusBadge"
+    class="css-1er6y36-boxStyles-StatusBadge"
   >
     <div
-      class="css-1ttchuf-boxStyles-NeutralDot"
+      class="css-7rfxu9-boxStyles-NeutralDot"
     />
     <span
-      class="css-10dvol5-boxStyles-Text-StatusBadge"
+      class="css-1r5adv-boxStyles-Text-StatusBadge"
     >
       Example
     </span>
@@ -259,7 +259,7 @@ exports[`StatusBadge weight: subtle tone: neutral renders correctly 1`] = `
 exports[`StatusBadge weight: subtle tone: success renders correctly 1`] = `
 <div>
   <div
-    class="css-1ab91q-boxStyles-StatusBadge"
+    class="css-1er6y36-boxStyles-StatusBadge"
   >
     <svg
       aria-hidden="true"
@@ -282,7 +282,7 @@ exports[`StatusBadge weight: subtle tone: success renders correctly 1`] = `
       />
     </svg>
     <span
-      class="css-10dvol5-boxStyles-Text-StatusBadge"
+      class="css-1r5adv-boxStyles-Text-StatusBadge"
     >
       Example
     </span>
@@ -293,7 +293,7 @@ exports[`StatusBadge weight: subtle tone: success renders correctly 1`] = `
 exports[`StatusBadge weight: subtle tone: warning renders correctly 1`] = `
 <div>
   <div
-    class="css-1ab91q-boxStyles-StatusBadge"
+    class="css-1er6y36-boxStyles-StatusBadge"
   >
     <svg
       aria-hidden="true"
@@ -320,7 +320,7 @@ exports[`StatusBadge weight: subtle tone: warning renders correctly 1`] = `
       />
     </svg>
     <span
-      class="css-10dvol5-boxStyles-Text-StatusBadge"
+      class="css-1r5adv-boxStyles-Text-StatusBadge"
     >
       Example
     </span>

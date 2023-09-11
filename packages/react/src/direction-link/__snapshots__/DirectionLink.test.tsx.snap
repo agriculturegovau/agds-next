@@ -3,7 +3,7 @@
 exports[`DirectionButton direction: down renders correctly 1`] = `
 <div>
   <button
-    class="css-p2yjdo-BaseButton-boxStyles-BaseDirectionLink"
+    class="css-ev5jvr-BaseButton-boxStyles-BaseDirectionLink"
     type="button"
   >
     Skip to footer
@@ -32,7 +32,7 @@ exports[`DirectionButton direction: down renders correctly 1`] = `
 exports[`DirectionButton direction: left renders correctly 1`] = `
 <div>
   <button
-    class="css-p2yjdo-BaseButton-boxStyles-BaseDirectionLink"
+    class="css-ev5jvr-BaseButton-boxStyles-BaseDirectionLink"
     type="button"
   >
     <svg
@@ -61,7 +61,7 @@ exports[`DirectionButton direction: left renders correctly 1`] = `
 exports[`DirectionButton direction: right renders correctly 1`] = `
 <div>
   <button
-    class="css-p2yjdo-BaseButton-boxStyles-BaseDirectionLink"
+    class="css-ev5jvr-BaseButton-boxStyles-BaseDirectionLink"
     type="button"
   >
     Next
@@ -90,7 +90,7 @@ exports[`DirectionButton direction: right renders correctly 1`] = `
 exports[`DirectionButton direction: up renders correctly 1`] = `
 <div>
   <button
-    class="css-p2yjdo-BaseButton-boxStyles-BaseDirectionLink"
+    class="css-ev5jvr-BaseButton-boxStyles-BaseDirectionLink"
     type="button"
   >
     Top
@@ -119,7 +119,7 @@ exports[`DirectionButton direction: up renders correctly 1`] = `
 exports[`DirectionLink direction: down renders correctly 1`] = `
 <div>
   <a
-    class="css-mpuvkh-TextLink-boxStyles-BaseDirectionLink"
+    class="css-xen2d9-TextLink-boxStyles-BaseDirectionLink"
   >
     Skip to footer
     <svg
@@ -147,7 +147,7 @@ exports[`DirectionLink direction: down renders correctly 1`] = `
 exports[`DirectionLink direction: left renders correctly 1`] = `
 <div>
   <a
-    class="css-mpuvkh-TextLink-boxStyles-BaseDirectionLink"
+    class="css-xen2d9-TextLink-boxStyles-BaseDirectionLink"
   >
     <svg
       aria-hidden="true"
@@ -175,7 +175,7 @@ exports[`DirectionLink direction: left renders correctly 1`] = `
 exports[`DirectionLink direction: right renders correctly 1`] = `
 <div>
   <a
-    class="css-mpuvkh-TextLink-boxStyles-BaseDirectionLink"
+    class="css-xen2d9-TextLink-boxStyles-BaseDirectionLink"
   >
     Next
     <svg
@@ -203,7 +203,7 @@ exports[`DirectionLink direction: right renders correctly 1`] = `
 exports[`DirectionLink direction: up renders correctly 1`] = `
 <div>
   <a
-    class="css-mpuvkh-TextLink-boxStyles-BaseDirectionLink"
+    class="css-xen2d9-TextLink-boxStyles-BaseDirectionLink"
   >
     Top
     <svg

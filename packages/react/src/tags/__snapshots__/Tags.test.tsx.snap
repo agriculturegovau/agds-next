@@ -3,24 +3,24 @@
 exports[`Tags With links renders correctly 1`] = `
 <div>
   <div
-    class="css-1i7cdx8-boxStyles"
+    class="css-1vkozb1-boxStyles"
   >
     <h2
-      class="css-433uqb-boxStyles-Text"
+      class="css-1gsq1zi-boxStyles-Text"
     >
       Tags:
     </h2>
     <ul
-      class="css-15pioji-boxStyles"
+      class="css-r6rwhv-boxStyles"
     >
       <li
-        class="css-79i25n-boxStyles"
+        class="css-1l5cwjh-boxStyles"
       >
         <span
-          class="css-k8ctd8-boxStyles"
+          class="css-to68c9-boxStyles"
         >
           <a
-            class="css-oplj7x-TextLink-boxStyles"
+            class="css-15d9p2r-TextLink-boxStyles"
             href="#"
           >
             Foo
@@ -28,13 +28,13 @@ exports[`Tags With links renders correctly 1`] = `
         </span>
       </li>
       <li
-        class="css-79i25n-boxStyles"
+        class="css-1l5cwjh-boxStyles"
       >
         <span
-          class="css-k8ctd8-boxStyles"
+          class="css-to68c9-boxStyles"
         >
           <a
-            class="css-oplj7x-TextLink-boxStyles"
+            class="css-15d9p2r-TextLink-boxStyles"
             href="#"
           >
             Bar
@@ -42,13 +42,13 @@ exports[`Tags With links renders correctly 1`] = `
         </span>
       </li>
       <li
-        class="css-79i25n-boxStyles"
+        class="css-1l5cwjh-boxStyles"
       >
         <span
-          class="css-k8ctd8-boxStyles"
+          class="css-to68c9-boxStyles"
         >
           <a
-            class="css-oplj7x-TextLink-boxStyles"
+            class="css-15d9p2r-TextLink-boxStyles"
             href="#"
           >
             Baz
@@ -63,31 +63,31 @@ exports[`Tags With links renders correctly 1`] = `
 exports[`Tags With onRemove renders correctly 1`] = `
 <div>
   <div
-    class="css-1i7cdx8-boxStyles"
+    class="css-1vkozb1-boxStyles"
   >
     <h2
-      class="css-433uqb-boxStyles-Text"
+      class="css-1gsq1zi-boxStyles-Text"
     >
       Tags:
     </h2>
     <ul
-      class="css-15pioji-boxStyles"
+      class="css-r6rwhv-boxStyles"
     >
       <li
-        class="css-79i25n-boxStyles"
+        class="css-1l5cwjh-boxStyles"
       >
         <span
-          class="css-198oft9-boxStyles"
+          class="css-2a7aao-boxStyles"
         >
           <a
-            class="css-oplj7x-TextLink-boxStyles"
+            class="css-15d9p2r-TextLink-boxStyles"
             href="#"
           >
             Foo
           </a>
           <button
             aria-label="Remove Foo"
-            class="css-1mpot0i-BaseButton-boxStyles-TagRemoveButton"
+            class="css-a86tzs-BaseButton-boxStyles-TagRemoveButton"
             type="button"
           >
             <svg
@@ -118,20 +118,20 @@ exports[`Tags With onRemove renders correctly 1`] = `
         </span>
       </li>
       <li
-        class="css-79i25n-boxStyles"
+        class="css-1l5cwjh-boxStyles"
       >
         <span
-          class="css-198oft9-boxStyles"
+          class="css-2a7aao-boxStyles"
         >
           <a
-            class="css-oplj7x-TextLink-boxStyles"
+            class="css-15d9p2r-TextLink-boxStyles"
             href="#"
           >
             Bar
           </a>
           <button
             aria-label="Remove Bar"
-            class="css-1mpot0i-BaseButton-boxStyles-TagRemoveButton"
+            class="css-a86tzs-BaseButton-boxStyles-TagRemoveButton"
             type="button"
           >
             <svg
@@ -162,20 +162,20 @@ exports[`Tags With onRemove renders correctly 1`] = `
         </span>
       </li>
       <li
-        class="css-79i25n-boxStyles"
+        class="css-1l5cwjh-boxStyles"
       >
         <span
-          class="css-198oft9-boxStyles"
+          class="css-2a7aao-boxStyles"
         >
           <a
-            class="css-oplj7x-TextLink-boxStyles"
+            class="css-15d9p2r-TextLink-boxStyles"
             href="#"
           >
             Baz
           </a>
           <button
             aria-label="Remove Baz"
-            class="css-1mpot0i-BaseButton-boxStyles-TagRemoveButton"
+            class="css-a86tzs-BaseButton-boxStyles-TagRemoveButton"
             type="button"
           >
             <svg
@@ -213,50 +213,50 @@ exports[`Tags With onRemove renders correctly 1`] = `
 exports[`Tags Without links renders correctly 1`] = `
 <div>
   <div
-    class="css-1i7cdx8-boxStyles"
+    class="css-1vkozb1-boxStyles"
   >
     <h2
-      class="css-433uqb-boxStyles-Text"
+      class="css-1gsq1zi-boxStyles-Text"
     >
       Tags:
     </h2>
     <ul
-      class="css-15pioji-boxStyles"
+      class="css-r6rwhv-boxStyles"
     >
       <li
-        class="css-79i25n-boxStyles"
+        class="css-1l5cwjh-boxStyles"
       >
         <span
-          class="css-7ymoik-boxStyles"
+          class="css-1uqwk9u-boxStyles"
         >
           <span
-            class="css-79i25n-boxStyles"
+            class="css-1l5cwjh-boxStyles"
           >
             Foo
           </span>
         </span>
       </li>
       <li
-        class="css-79i25n-boxStyles"
+        class="css-1l5cwjh-boxStyles"
       >
         <span
-          class="css-7ymoik-boxStyles"
+          class="css-1uqwk9u-boxStyles"
         >
           <span
-            class="css-79i25n-boxStyles"
+            class="css-1l5cwjh-boxStyles"
           >
             Bar
           </span>
         </span>
       </li>
       <li
-        class="css-79i25n-boxStyles"
+        class="css-1l5cwjh-boxStyles"
       >
         <span
-          class="css-7ymoik-boxStyles"
+          class="css-1uqwk9u-boxStyles"
         >
           <span
-            class="css-79i25n-boxStyles"
+            class="css-1l5cwjh-boxStyles"
           >
             Baz
           </span>

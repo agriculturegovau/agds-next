@@ -3,12 +3,12 @@
 exports[`SideNav renders correctly 1`] = `
 <div>
   <aside
-    class="css-109i52p-boxStyles-CollapsingSideBarContainer"
+    class="css-gkrtqa-boxStyles"
   >
     <button
       aria-controls="collapsing-side-bar-:r1:-body"
       aria-expanded="false"
-      class="css-15g5ot9-BaseButton-boxStyles-SideBarCollapseButton"
+      class="css-14aotnf-BaseButton-boxStyles-SideBarCollapseButton"
       id="collapsing-side-bar-:r1:-button"
       type="button"
     >
@@ -35,32 +35,32 @@ exports[`SideNav renders correctly 1`] = `
       style="display: none; height: 0px; overflow: hidden;"
     >
       <div
-        class="css-79i25n-boxStyles"
+        class="css-1l5cwjh-boxStyles"
       >
         <nav
           aria-labelledby="sideNav-:r0:-title"
-          class="css-zipzg2-boxStyles"
+          class="css-1ro2p3e-boxStyles"
           id="sideNav-:r0:-nav"
         >
           <h2
-            class="css-dueube-boxStyles"
+            class="css-124rpzq-boxStyles"
             id="sideNav-:r0:-title"
           >
             <a
-              class="css-xmyg48-boxStyles-SideNavTitle"
+              class="css-1mnnonc-boxStyles-SideNavTitle"
               href="/"
             >
               Lodging your tax return
             </a>
           </h2>
           <ul
-            class="css-79i25n-boxStyles"
+            class="css-1l5cwjh-boxStyles"
           >
             <li
               class="css-0"
             >
               <a
-                class="css-12injsc-boxStyles-SideNavLink"
+                class="css-s6xhqr-boxStyles-SideNavLink"
                 href="/welcome"
               >
                 <span>
@@ -72,7 +72,7 @@ exports[`SideNav renders correctly 1`] = `
               class="css-0"
             >
               <a
-                class="css-12injsc-boxStyles-SideNavLink"
+                class="css-s6xhqr-boxStyles-SideNavLink"
                 href="/do-you-need-to-lodge-a-tax-return"
               >
                 <span>
@@ -84,7 +84,7 @@ exports[`SideNav renders correctly 1`] = `
               class="css-0"
             >
               <a
-                class="css-12injsc-boxStyles-SideNavLink"
+                class="css-s6xhqr-boxStyles-SideNavLink"
                 href="/lodge-online"
               >
                 <span>
@@ -92,13 +92,13 @@ exports[`SideNav renders correctly 1`] = `
                 </span>
               </a>
               <ul
-                class="css-79i25n-boxStyles"
+                class="css-1l5cwjh-boxStyles"
               >
                 <li
                   class="css-0"
                 >
                   <a
-                    class="css-esqyjf-boxStyles-SideNavLink"
+                    class="css-v60vh9-boxStyles-SideNavLink"
                     href="/lodge-online/pre-filling"
                   >
                     <span
@@ -117,7 +117,7 @@ exports[`SideNav renders correctly 1`] = `
               class="css-0"
             >
               <a
-                class="css-12injsc-boxStyles-SideNavLink"
+                class="css-s6xhqr-boxStyles-SideNavLink"
                 href="/whats-new-for-individuals"
               >
                 <span>
@@ -129,7 +129,7 @@ exports[`SideNav renders correctly 1`] = `
               class="css-0"
             >
               <a
-                class="css-12injsc-boxStyles-SideNavLink"
+                class="css-s6xhqr-boxStyles-SideNavLink"
                 href="/why-you-may-receive-a-tax-bill"
               >
                 <span>
@@ -142,7 +142,7 @@ exports[`SideNav renders correctly 1`] = `
             >
               <a
                 aria-current="page"
-                class="css-10q8mzo-boxStyles-SideNavLink"
+                class="css-1fqeoil-boxStyles-SideNavLink"
                 href="/in-detail"
               >
                 <span>
@@ -150,13 +150,13 @@ exports[`SideNav renders correctly 1`] = `
                 </span>
               </a>
               <ul
-                class="css-79i25n-boxStyles"
+                class="css-1l5cwjh-boxStyles"
               >
                 <li
                   class="css-0"
                 >
                   <a
-                    class="css-esqyjf-boxStyles-SideNavLink"
+                    class="css-v60vh9-boxStyles-SideNavLink"
                     href="/in-detail/record-keeping"
                   >
                     <span
@@ -169,13 +169,13 @@ exports[`SideNav renders correctly 1`] = `
                     </span>
                   </a>
                   <ul
-                    class="css-79i25n-boxStyles"
+                    class="css-1l5cwjh-boxStyles"
                   >
                     <li
                       class="css-0"
                     >
                       <a
-                        class="css-qh1skz-boxStyles-SideNavLink"
+                        class="css-12m7nzx-boxStyles-SideNavLink"
                         href="/in-detail/record-keeping/tax"
                       >
                         <span
@@ -192,7 +192,7 @@ exports[`SideNav renders correctly 1`] = `
                       class="css-0"
                     >
                       <a
-                        class="css-qh1skz-boxStyles-SideNavLink"
+                        class="css-12m7nzx-boxStyles-SideNavLink"
                         href="/in-detail/record-keeping/incorrect-amounts"
                       >
                         <span
@@ -211,7 +211,7 @@ exports[`SideNav renders correctly 1`] = `
                   class="css-0"
                 >
                   <a
-                    class="css-esqyjf-boxStyles-SideNavLink"
+                    class="css-v60vh9-boxStyles-SideNavLink"
                     href="/tax-receipt"
                   >
                     <span
@@ -228,7 +228,7 @@ exports[`SideNav renders correctly 1`] = `
                   class="css-0"
                 >
                   <a
-                    class="css-esqyjf-boxStyles-SideNavLink"
+                    class="css-v60vh9-boxStyles-SideNavLink"
                     href="/pre-fill availability"
                   >
                     <span

@@ -3,18 +3,15 @@ import { tokens } from '../../core';
 import { Flex } from '../../flex';
 import { Stack } from '../../stack';
 import { Content } from '../../content';
-import { HeroBannerBackground } from '../utils';
 import { HeroCategoryBannerImage } from './HeroCategoryBannerImage';
 
 export type HeroCategoryBannerContentProps = PropsWithChildren<{
 	image?: ReactNode;
-	background: HeroBannerBackground;
 }>;
 
 export const HeroCategoryBannerContent = ({
 	children,
 	image,
-	background,
 }: HeroCategoryBannerContentProps) => {
 	return (
 		<Content>
@@ -29,9 +26,7 @@ export const HeroCategoryBannerContent = ({
 					{children}
 				</Stack>
 				{image ? (
-					<HeroCategoryBannerImage background={background}>
-						{image}
-					</HeroCategoryBannerImage>
+					<HeroCategoryBannerImage>{image}</HeroCategoryBannerImage>
 				) : null}
 			</Flex>
 		</Content>

@@ -3,15 +3,15 @@
 exports[`Callout renders correctly 1`] = `
 <div>
   <div
-    class="css-11w0n76-boxStyles"
+    class="css-17qs7sg-boxStyles"
   >
     <h2
-      class="css-ixats2-boxStyles-Text"
+      class="css-jqezff-boxStyles-Text"
     >
       Callout heading
     </h2>
     <p
-      class="css-6j1v6l-boxStyles-Text"
+      class="css-7njy8a-boxStyles-Text"
     >
       Description of the callout.
     </p>

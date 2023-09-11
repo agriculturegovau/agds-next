@@ -3,35 +3,35 @@
 exports[`FileUpload Basic renders correctly 1`] = `
 <div>
   <div
-    class="css-1904cz9-boxStyles-FieldContainer"
+    class="css-1uvazka-boxStyles-FieldContainer"
   >
     <label
-      class="css-79i25n-boxStyles"
+      class="css-1l5cwjh-boxStyles"
       for="field-:r0:"
     >
       <span
-        class="css-433uqb-boxStyles-Text"
+        class="css-1gsq1zi-boxStyles-Text"
       >
         Upload file
       </span>
       <span
-        class="css-1rpt3h8-boxStyles-Text"
+        class="css-1kw34xt-boxStyles-Text"
       >
          
         (optional)
       </span>
     </label>
     <span
-      class="css-lw0v8u-boxStyles-Text"
+      class="css-1h0knip-boxStyles-Text"
       id="field-:r0:-hint"
     >
       General hint information
     </span>
     <div
-      class="css-1mxr31d-boxStyles"
+      class="css-6chvas-boxStyles"
     >
       <div
-        class="css-ten69t-boxStyles"
+        class="css-1nhobe1-boxStyles"
       >
         <svg
           aria-hidden="true"
@@ -68,10 +68,10 @@ exports[`FileUpload Basic renders correctly 1`] = `
           type="file"
         />
         <div
-          class="css-107qz7x-boxStyles-FileUpload"
+          class="css-19mfs9k-boxStyles-FileUpload"
         >
           <span
-            class="css-g6olve-boxStyles-Text"
+            class="css-12c25lb-boxStyles-Text"
           >
             Drag and drop file here or select file to upload.
           </span>
@@ -94,26 +94,26 @@ exports[`FileUpload Basic renders correctly 1`] = `
         </button>
       </div>
       <div
-        class="css-1wcx0lf-boxStyles"
+        class="css-8wiall-boxStyles"
       >
         <span
-          class="css-1rpt3h8-boxStyles-Text"
+          class="css-1kw34xt-boxStyles-Text"
         >
           1 file selected (23 B)
         </span>
         <ul
           aria-label="Selected files"
-          class="css-1wcx0lf-boxStyles"
+          class="css-8wiall-boxStyles"
         >
           <li
             aria-label="File. example.jpg"
-            class="css-ckdkoy-boxStyles-FileUploadFile"
+            class="css-c58k39-boxStyles-FileUploadFile"
           >
             <div
-              class="css-1xkbxzi-boxStyles"
+              class="css-huun0a-boxStyles"
             >
               <span
-                class="css-1fikbx5-boxStyles-Text-FileUploadFile"
+                class="css-drua7-boxStyles-Text-FileUploadFile"
               >
                 example.jpg
                  (
@@ -122,7 +122,7 @@ exports[`FileUpload Basic renders correctly 1`] = `
               </span>
             </div>
             <div
-              class="css-1ldvxqr-boxStyles"
+              class="css-qt8kse-boxStyles"
             >
               <button
                 aria-label="Remove file, example.jpg"

@@ -17,7 +17,7 @@ export default function HomePage() {
 		<>
 			<DocumentTitle title="Home" />
 			<SiteLayout>
-				<HeroBanner background="bodyAlt">
+				<HeroBanner>
 					<HeroBannerTitleContainer>
 						<HeroBannerTitle>My Government services account</HeroBannerTitle>
 						<HeroBannerSubtitle>

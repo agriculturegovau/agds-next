@@ -1,9 +1,4 @@
-export const hoverMap = {
-	body: 'shade',
-	bodyAlt: 'shadeAlt',
-} as const;
-
-export type MainNavBackground = keyof typeof hoverMap;
+export type MainNavBackground = 'body' | 'bodyAlt';
 
 export const localPaletteVars = {
 	linkHoverBg: '--nav-linkHoverBg',

@@ -9,15 +9,10 @@ import {
 import { ProgressIndicatorList } from './ProgressIndicatorList';
 
 export type ProgressIndicatorProps = {
-	/** If the ProgressIndicator is placed on a page with 'bodyAlt' background, please set this to "bodyAlt". */
-	background?: 'body' | 'bodyAlt';
 	items: ProgressIndicatorItem[];
 };
 
-export const ProgressIndicator = ({
-	background,
-	items,
-}: ProgressIndicatorProps) => {
+export const ProgressIndicator = ({ items }: ProgressIndicatorProps) => {
 	const stepsCompleted = items.filter((item) => item.status === 'done').length;
 	const totalSteps = items.length;
 	const subTitle = `${stepsCompleted} of ${totalSteps} steps completed`;
@@ -26,7 +21,6 @@ export const ProgressIndicator = ({
 		<CollapsingSideBar
 			as="section"
 			collapseButtonLabel={subTitle}
-			background={background}
 			title="Progress"
 			subTitle={subTitle}
 		>
@@ -34,21 +28,13 @@ export const ProgressIndicator = ({
 				{items.map(({ label, ...props }, index) => {
 					if (isItemLink(props)) {
 						return (
-							<ProgressIndicatorItemLink
-								key={index}
-								background={background}
-								{...props}
-							>
+							<ProgressIndicatorItemLink key={index} {...props}>
 								{label}
 							</ProgressIndicatorItemLink>
 						);
 					}
 					return (
-						<ProgressIndicatorItemButton
-							key={index}
-							background={background}
-							{...props}
-						>
+						<ProgressIndicatorItemButton key={index} {...props}>
 							{label}
 						</ProgressIndicatorItemButton>
 					);

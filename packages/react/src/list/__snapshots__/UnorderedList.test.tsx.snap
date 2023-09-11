@@ -6,17 +6,17 @@ exports[`UnorderedList renders correctly 1`] = `
     class="css-1qfj7jm-UnorderedList"
   >
     <li
-      class="css-tdgyc3-boxStyles-Text-ListItem"
+      class="css-19y56hx-boxStyles-Text-ListItem"
     >
       Item 1
     </li>
     <li
-      class="css-tdgyc3-boxStyles-Text-ListItem"
+      class="css-19y56hx-boxStyles-Text-ListItem"
     >
       Item 2
     </li>
     <li
-      class="css-tdgyc3-boxStyles-Text-ListItem"
+      class="css-19y56hx-boxStyles-Text-ListItem"
     >
       Item 3
     </li>

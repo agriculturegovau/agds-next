@@ -3,10 +3,10 @@
 exports[`Switch renders correctly 1`] = `
 <div>
   <label
-    class="css-9rj97c-boxStyles-Switch"
+    class="css-q6wa43-boxStyles-Switch"
   >
     <span
-      class="css-o9fx7j-boxStyles-SwitchContainer"
+      class="css-16de5jy-boxStyles-SwitchContainer"
     >
       <input
         class="css-1pfc16v-Switch"
@@ -14,14 +14,14 @@ exports[`Switch renders correctly 1`] = `
         type="checkbox"
       />
       <span
-        class="css-k2d2eq-boxStyles-SwitchTrack"
+        class="css-1ot4ptv-boxStyles-SwitchTrack"
       />
       <span
-        class="css-oj5g50-boxStyles-SwitchThumb"
+        class="css-19kt2on-boxStyles-SwitchThumb"
       />
     </span>
     <span
-      class="css-6j1v6l-boxStyles-Text"
+      class="css-7njy8a-boxStyles-Text"
     >
       Show establishments
     </span>

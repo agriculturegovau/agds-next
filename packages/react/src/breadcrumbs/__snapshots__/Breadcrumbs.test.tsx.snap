@@ -6,10 +6,10 @@ exports[`Breadcrumbs renders correctly 1`] = `
     aria-label="breadcrumb"
   >
     <ol
-      class="css-njrw75-boxStyles-BreadcrumbsContainer"
+      class="css-1x9rdqd-boxStyles-BreadcrumbsContainer"
     >
       <li
-        class="css-v6k7t1-boxStyles"
+        class="css-1nk0of2-boxStyles"
       >
         <svg
           aria-hidden="true"
@@ -34,7 +34,7 @@ exports[`Breadcrumbs renders correctly 1`] = `
         </a>
       </li>
       <li
-        class="css-v6k7t1-boxStyles"
+        class="css-1nk0of2-boxStyles"
       >
         <svg
           aria-hidden="true"
@@ -54,14 +54,14 @@ exports[`Breadcrumbs renders correctly 1`] = `
         <button
           aria-expanded="false"
           aria-label="Expand list"
-          class="css-1idhw1e-BaseButton-boxStyles"
+          class="css-m261dh-BaseButton-boxStyles"
           type="button"
         >
           …
         </button>
       </li>
       <li
-        class="css-v6k7t1-boxStyles"
+        class="css-1nk0of2-boxStyles"
       >
         <svg
           aria-hidden="true"
@@ -86,7 +86,7 @@ exports[`Breadcrumbs renders correctly 1`] = `
         </a>
       </li>
       <li
-        class="css-v6k7t1-boxStyles"
+        class="css-1nk0of2-boxStyles"
       >
         <svg
           aria-hidden="true"

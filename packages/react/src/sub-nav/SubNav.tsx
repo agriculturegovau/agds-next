@@ -1,6 +1,6 @@
 import { PropsWithChildren } from 'react';
 import { findBestMatch } from '../core';
-import { SubNavContainer, SubNavBackground } from './SubNavContainer';
+import { SubNavContainer } from './SubNavContainer';
 import { SubNavList, SubNavListLink } from './SubNavList';
 
 export type SubNavProps = PropsWithChildren<{
@@ -9,8 +9,6 @@ export type SubNavProps = PropsWithChildren<{
 	id?: string;
 	/** The navigation list items. */
 	links: SubNavListLink[];
-	/** If the SubNav is placed on a page with 'bodyAlt' background, please set this to 'bodyAlt'. */
-	background?: SubNavBackground;
 }>;
 
 export function SubNav({
@@ -18,11 +16,10 @@ export function SubNav({
 	activePath,
 	id,
 	'aria-label': ariaLabel = 'secondary',
-	background = 'body',
 }: SubNavProps) {
 	const bestMatch = findBestMatch(links, activePath);
 	return (
-		<SubNavContainer id={id} aria-label={ariaLabel} background={background}>
+		<SubNavContainer id={id} aria-label={ariaLabel}>
 			<SubNavList links={links} activePath={bestMatch} />
 		</SubNavContainer>
 	);

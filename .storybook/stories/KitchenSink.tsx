@@ -87,6 +87,7 @@ import {
 } from '@ag.ds-next/react/dropdown-menu';
 import { Drawer } from '@ag.ds-next/react/drawer';
 import {
+	Box,
 	COUNTRY_OPTIONS,
 	Modal,
 	useTernaryState,
@@ -131,28 +132,14 @@ const sideNavItems = [
 	{ href: '#five', label: 'Why you may receive a tax bill' },
 ];
 
-const backgroundMapper = {
-	body: {
-		page: 'body',
-		shade: 'shade',
-		opposite: 'bodyAlt',
-	},
-	bodyAlt: {
-		page: 'bodyAlt',
-		shade: 'shadeAlt',
-		opposite: 'body',
-	},
-} as const;
-
 type KitchenSinkProps = { background: 'body' | 'bodyAlt' };
 
-function KitchenSink({ background }: KitchenSinkProps) {
-	const { page, shade, opposite } = backgroundMapper[background];
+function KitchenSink() {
 	const [isModalOpen, openModal, closeModal] = useTernaryState(false);
 	const [isDrawerOpen, openDrawer, closeDrawer] = useTernaryState(false);
 	return (
 		<Fragment>
-			<HeroBanner background={opposite}>
+			<HeroBanner>
 				<HeroBannerTitleContainer>
 					<HeroBannerTitle>
 						Website hero banner title - xxxl/display (H1)
@@ -173,7 +160,6 @@ function KitchenSink({ background }: KitchenSinkProps) {
 					<Column columnSpan={{ xs: 12, md: 4 }}>
 						<Stack gap={2}>
 							<SideNav
-								background={page}
 								title="Lodging your tax return"
 								titleLink="#"
 								collapseTitle="In this section"
@@ -181,7 +167,6 @@ function KitchenSink({ background }: KitchenSinkProps) {
 								activePath="#in-detail/record-keeping/incorrect-amounts"
 							/>
 							<ProgressIndicator
-								background={page}
 								items={[
 									{ href: '#', label: 'Introduction', status: 'doing' },
 									{ href: '#', label: 'Business Contacts', status: 'todo' },
@@ -194,7 +179,6 @@ function KitchenSink({ background }: KitchenSinkProps) {
 					<Column columnSpan={{ xs: 12, md: 8 }}>
 						<Stack gap={2}>
 							<SubNav
-								background={page}
 								activePath="#usage"
 								links={[
 									{ href: '#usage', label: 'Usage' },
@@ -266,12 +250,12 @@ function KitchenSink({ background }: KitchenSinkProps) {
 								tortor eu, finibus lacinia libero.
 							</Text>
 
-							<Callout title="Callout heading" background={shade}>
+							<Callout title="Callout heading">
 								<Text as="p">Description of the callout.</Text>
 							</Callout>
 
 							<Accordion>
-								<AccordionItem title="Accordion One" background={page}>
+								<AccordionItem title="Accordion One">
 									<AccordionItemContent>
 										<Text as="p">
 											Lorem ipsum dolor sit amet, consectetur adipiscing elit.
@@ -288,7 +272,7 @@ function KitchenSink({ background }: KitchenSinkProps) {
 										</Text>
 									</AccordionItemContent>
 								</AccordionItem>
-								<AccordionItem title="Accordion Two" background={page}>
+								<AccordionItem title="Accordion Two">
 									<AccordionItemContent>
 										<Text as="p">
 											Lorem ipsum dolor sit amet, consectetur adipiscing elit.
@@ -641,9 +625,11 @@ export const WesbsiteLayout = {
 					cursus orci vulputate nibh sagittis blandit.
 				</Text>
 			</GlobalAlert>
-			<SiteLayout>
-				<KitchenSink {...args} />
-			</SiteLayout>
+			<Box background={args.background}>
+				<SiteLayout>
+					<KitchenSink />
+				</SiteLayout>
+			</Box>
 		</Fragment>
 	),
 };
@@ -659,9 +645,11 @@ export const ApplicationLayout = {
 					cursus orci vulputate nibh sagittis blandit.
 				</Text>
 			</GlobalAlert>
-			<AppLayout>
-				<KitchenSink {...args} />
-			</AppLayout>
+			<Box background={args.background}>
+				<AppLayout>
+					<KitchenSink />
+				</AppLayout>
+			</Box>
 		</Fragment>
 	),
 };

@@ -3,18 +3,18 @@
 exports[`Accordion renders correctly 1`] = `
 <div>
   <div
-    class="css-xgo9nn-boxStyles"
+    class="css-1p5kxrh-boxStyles"
   >
     <div
-      class="css-td3mpi-boxStyles"
+      class="css-170wy6k-boxStyles"
     >
       <h3
-        class="css-79i25n-boxStyles"
+        class="css-1l5cwjh-boxStyles"
       >
         <button
           aria-controls="accordion-:r0:-body"
           aria-expanded="false"
-          class="css-ira57b-BaseButton-boxStyles-AccordionTitle"
+          class="css-8njxyc-BaseButton-boxStyles-AccordionTitle"
           id="accordion-:r0:-title"
           type="button"
         >
@@ -45,10 +45,10 @@ exports[`Accordion renders correctly 1`] = `
       >
         <div>
           <div
-            class="css-1u803sw-boxStyles"
+            class="css-19oc5iu-boxStyles"
           >
             <p
-              class="css-6j1v6l-boxStyles-Text"
+              class="css-7njy8a-boxStyles-Text"
             >
               Accordion 1 text content.
             </p>
@@ -57,15 +57,15 @@ exports[`Accordion renders correctly 1`] = `
       </div>
     </div>
     <div
-      class="css-td3mpi-boxStyles"
+      class="css-170wy6k-boxStyles"
     >
       <h3
-        class="css-79i25n-boxStyles"
+        class="css-1l5cwjh-boxStyles"
       >
         <button
           aria-controls="accordion-:r1:-body"
           aria-expanded="false"
-          class="css-ira57b-BaseButton-boxStyles-AccordionTitle"
+          class="css-8njxyc-BaseButton-boxStyles-AccordionTitle"
           id="accordion-:r1:-title"
           type="button"
         >
@@ -96,10 +96,10 @@ exports[`Accordion renders correctly 1`] = `
       >
         <div>
           <div
-            class="css-1u803sw-boxStyles"
+            class="css-19oc5iu-boxStyles"
           >
             <p
-              class="css-6j1v6l-boxStyles-Text"
+              class="css-7njy8a-boxStyles-Text"
             >
               Accordion 2 text content.
             </p>

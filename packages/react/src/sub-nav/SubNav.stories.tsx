@@ -28,11 +28,9 @@ export const Basic: Story = {
 };
 
 export const OnBodyAlt: Story = {
-	args: {
-		background: 'bodyAlt',
-	},
+	args: {},
 	render: (args) => (
-		<Box padding={1.5} background={args.background}>
+		<Box padding={1.5} background="bodyAlt">
 			<SubNav {...args} />
 		</Box>
 	),

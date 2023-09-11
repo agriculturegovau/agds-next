@@ -4,13 +4,13 @@ exports[`InpageNav renders correctly 1`] = `
 <div>
   <nav
     aria-label="in page"
-    class="css-1hxu0qr-boxStyles-InpageNavContainer"
+    class="css-1gixve5-boxStyles-InpageNavContainer"
   >
     <ul
-      class="css-1wcx0lf-boxStyles"
+      class="css-8wiall-boxStyles"
     >
       <li
-        class="css-79i25n-boxStyles"
+        class="css-1l5cwjh-boxStyles"
       >
         <a
           class="css-ma0bjl-TextLink"
@@ -20,7 +20,7 @@ exports[`InpageNav renders correctly 1`] = `
         </a>
       </li>
       <li
-        class="css-79i25n-boxStyles"
+        class="css-1l5cwjh-boxStyles"
       >
         <a
           class="css-ma0bjl-TextLink"
@@ -30,7 +30,7 @@ exports[`InpageNav renders correctly 1`] = `
         </a>
       </li>
       <li
-        class="css-79i25n-boxStyles"
+        class="css-1l5cwjh-boxStyles"
       >
         <a
           class="css-ma0bjl-TextLink"
@@ -40,7 +40,7 @@ exports[`InpageNav renders correctly 1`] = `
         </a>
       </li>
       <li
-        class="css-79i25n-boxStyles"
+        class="css-1l5cwjh-boxStyles"
       >
         <a
           class="css-ma0bjl-TextLink"
@@ -50,7 +50,7 @@ exports[`InpageNav renders correctly 1`] = `
         </a>
       </li>
       <li
-        class="css-79i25n-boxStyles"
+        class="css-1l5cwjh-boxStyles"
       >
         <a
           class="css-ma0bjl-TextLink"

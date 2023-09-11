@@ -1,17 +1,10 @@
 import { PropsWithChildren } from 'react';
 import { Box } from '../../box';
-import { boxPalette } from '../../core';
-import { HeroBannerBackground, backgroundMap } from '../utils';
+import { backgroundContextPaletteVars } from '../../core';
 
-export type HeroBannerImageProps = PropsWithChildren<{
-	background: HeroBannerBackground;
-}>;
+export type HeroBannerImageProps = PropsWithChildren<{}>;
 
-export const HeroBannerImage = ({
-	children,
-	background,
-}: HeroBannerImageProps) => {
-	const backgroundVar = backgroundMap[background];
+export const HeroBannerImage = ({ children }: HeroBannerImageProps) => {
 	return (
 		<Box
 			display={['none', 'none', 'block']}
@@ -27,7 +20,7 @@ export const HeroBannerImage = ({
 					pointerEvents: 'none',
 					position: 'absolute',
 					inset: 0,
-					background: `linear-gradient(90deg, ${boxPalette[backgroundVar]} 0px, rgba(255, 255, 255, 0.0) 360px)`,
+					background: `linear-gradient(90deg, ${backgroundContextPaletteVars.alt} 0px, rgba(255, 255, 255, 0.0) 360px)`,
 				},
 
 				img: {

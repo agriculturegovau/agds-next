@@ -6,7 +6,7 @@ exports[`Details renders correctly 1`] = `
     class="css-jx8h3p-Details"
   >
     <summary
-      class="css-q3yfak-boxStyles"
+      class="css-1r6hp1t-boxStyles"
     >
       Details
       <svg
@@ -26,10 +26,10 @@ exports[`Details renders correctly 1`] = `
       </svg>
     </summary>
     <div
-      class="css-725nwa-boxStyles"
+      class="css-m8dcfe-boxStyles"
     >
       <p
-        class="css-6j1v6l-boxStyles-Text"
+        class="css-7njy8a-boxStyles-Text"
       >
         This is a small paragraph of text that is supplementary to the main page content.
       </p>

@@ -1,5 +1,5 @@
 import { ButtonHTMLAttributes, ElementType, PropsWithChildren } from 'react';
-import { Box, backgroundColorMap } from '../box';
+import { Box } from '../box';
 import { Flex } from '../flex';
 import { Stack } from '../stack';
 import { Text } from '../text';
@@ -10,9 +10,14 @@ import {
 	SuccessFilledIcon,
 	ProgressTodoIcon,
 } from '../icon';
-import { boxPalette, LinkProps, packs, tokens } from '../core';
+import {
+	backgroundContextPalette,
+	boxPalette,
+	LinkProps,
+	packs,
+	tokens,
+} from '../core';
 import { BaseButton } from '../button';
-import { hoverColorMap, ProgressIndicatorBackground } from './utils';
 
 export type ProgressIndicatorItem = (
 	| ProgressIndicatorItemButtonProps
@@ -24,7 +29,6 @@ export type ProgressIndicatorItem = (
 export type ProgressIndicatorItemStatus = keyof typeof statusMap;
 
 export type ProgressIndicatorItemLinkProps = LinkProps & {
-	background?: ProgressIndicatorBackground;
 	status: ProgressIndicatorItemStatus;
 };
 
@@ -39,7 +43,6 @@ export const ProgressIndicatorItemLink = ({
 
 export type ProgressIndicatorItemButtonProps =
 	ButtonHTMLAttributes<HTMLButtonElement> & {
-		background?: ProgressIndicatorBackground;
 		status: ProgressIndicatorItemStatus;
 	};
 
@@ -54,13 +57,11 @@ export const ProgressIndicatorItemButton = ({
 
 type ProgressIndicatorItemProps = PropsWithChildren<{
 	as: ElementType;
-	background?: ProgressIndicatorBackground;
 	status: ProgressIndicatorItemStatus;
 }>;
 
 const ProgressIndicatorItem = ({
 	as,
-	background = 'body',
 	children,
 	status,
 	...props
@@ -73,7 +74,6 @@ const ProgressIndicatorItem = ({
 	return (
 		<Box
 			as="li"
-			background={background}
 			css={{
 				'&:first-of-type': {
 					[`[${progressIndicatorItemTimelineDataAttr}]:first-of-type`]: {
@@ -97,15 +97,15 @@ const ProgressIndicatorItem = ({
 					width: '100%',
 					textDecoration: 'none',
 					[`[${progressIndicatorItemRingDataAttr}]:before`]: {
-						backgroundColor: backgroundColorMap[background],
+						backgroundColor: backgroundContextPalette.shade,
 					},
 					[listItemLinkTextSelector]: {
 						fontWeight: active ? 'bold' : 'normal',
 					},
 					'&:hover': {
-						backgroundColor: hoverColorMap[background],
+						backgroundColor: backgroundContextPalette.shade,
 						[`[${progressIndicatorItemRingDataAttr}]:before`]: {
-							backgroundColor: hoverColorMap[background],
+							backgroundColor: backgroundContextPalette.shade,
 						},
 						[listItemLinkTextSelector]: packs.underline,
 					},

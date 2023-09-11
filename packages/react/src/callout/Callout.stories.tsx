@@ -36,7 +36,6 @@ export const OnBodyAltBackground: Story = {
 	name: 'On bodyAlt background',
 	args: {
 		title: 'Callout heading',
-		background: 'shadeAlt',
 	},
 	render: (args) => (
 		<Box background="bodyAlt" padding={1.5}>

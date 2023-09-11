@@ -3,26 +3,26 @@
 exports[`MainNav renders correctly 1`] = `
 <div>
   <div
-    class="css-13crp22-boxStyles-NavContainer"
+    class="css-1urce2d-boxStyles-NavContainer"
     tabindex="-1"
   >
     <div
-      class="css-1fl9qli-boxStyles-BottomBar"
+      class="css-1nt71s8-boxStyles-BottomBar"
     />
     <div
-      class="css-zlf9wg-boxStyles-NavContainer"
+      class="css-shrc38-boxStyles-NavContainer"
     >
       <div
-        class="css-7k4rge-boxStyles"
+        class="css-1o6xwnb-boxStyles"
       >
         <div
-          class="css-1ff37wg-boxStyles"
+          class="css-bl1e1c-boxStyles"
         >
           <button
             aria-controls="main-nav-dialog"
             aria-expanded="false"
             aria-label="Open main menu"
-            class="css-1fh9aza-BaseButton-boxStyles-MainNavButton"
+            class="css-ijnvkb-BaseButton-boxStyles-MainNavButton"
             type="button"
           >
             <svg
@@ -50,7 +50,7 @@ exports[`MainNav renders correctly 1`] = `
           </button>
         </div>
         <div
-          class="css-1pzon0t-light-boxStyles-element"
+          class="css-1pgbz93-light-boxStyles-element"
           id="main-nav-dialog"
         >
           <div
@@ -62,13 +62,13 @@ exports[`MainNav renders correctly 1`] = `
             data-focus-lock-disabled="disabled"
           >
             <div
-              class="css-1ff37wg-boxStyles"
+              class="css-bl1e1c-boxStyles"
             >
               <button
                 aria-controls="main-nav-dialog"
                 aria-expanded="true"
                 aria-label="Close main menu"
-                class="css-1fh9aza-BaseButton-boxStyles-MainNavButton"
+                class="css-ijnvkb-BaseButton-boxStyles-MainNavButton"
                 type="button"
               >
                 <svg
@@ -100,13 +100,13 @@ exports[`MainNav renders correctly 1`] = `
             </div>
             <nav
               aria-label="main"
-              class="css-ijor8a-boxStyles"
+              class="css-c36anu-boxStyles"
             >
               <ul
-                class="css-5nrt7j-boxStyles-NavListContainer"
+                class="css-c6jx78-boxStyles-NavListContainer"
               >
                 <li
-                  class="css-1a7bmr9-boxStyles-NavListItem"
+                  class="css-sldd8s-boxStyles-NavListItem"
                 >
                   <a
                     href="/"
@@ -117,7 +117,7 @@ exports[`MainNav renders correctly 1`] = `
                   </a>
                 </li>
                 <li
-                  class="css-1a7bmr9-boxStyles-NavListItem"
+                  class="css-sldd8s-boxStyles-NavListItem"
                 >
                   <a
                     href="/content"
@@ -128,7 +128,7 @@ exports[`MainNav renders correctly 1`] = `
                   </a>
                 </li>
                 <li
-                  class="css-1a7bmr9-boxStyles-NavListItem"
+                  class="css-sldd8s-boxStyles-NavListItem"
                 >
                   <a
                     href="/form"
@@ -139,7 +139,7 @@ exports[`MainNav renders correctly 1`] = `
                   </a>
                 </li>
                 <li
-                  class="css-1a57hfp-boxStyles-NavListItem"
+                  class="css-13evjob-boxStyles-NavListItem"
                 >
                   <a
                     aria-current="page"
@@ -161,13 +161,13 @@ exports[`MainNav renders correctly 1`] = `
         </div>
         <nav
           aria-label="secondary"
-          class="css-1ltfh56-boxStyles"
+          class="css-1az22zd-boxStyles"
         >
           <ul
-            class="css-1ltfh56-boxStyles"
+            class="css-1az22zd-boxStyles"
           >
             <li
-              class="css-majnjc-boxStyles-NavListItem"
+              class="css-coogam-boxStyles-NavListItem"
             >
               <a
                 href="#sign-in"

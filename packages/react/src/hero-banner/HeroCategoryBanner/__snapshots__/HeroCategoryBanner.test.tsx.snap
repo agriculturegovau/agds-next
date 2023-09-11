@@ -3,10 +3,10 @@
 exports[`HeroCategoryBanner renders correctly 1`] = `
 <div>
   <section
-    class="css-1p0zx3h-boxStyles-HeroCategoryBannerContainer"
+    class="css-1mzfc9-boxStyles-HeroCategoryBannerContainer"
   >
     <div
-      class="css-1g5msad-boxStyles-HeroCategoryBannerMobileImage"
+      class="css-1fiuwdp-boxStyles-HeroCategoryBannerMobileImage"
     >
       <img
         alt=""
@@ -15,30 +15,30 @@ exports[`HeroCategoryBanner renders correctly 1`] = `
       />
     </div>
     <div
-      class="css-ou39vu-boxStyles"
+      class="css-8hkmr3-boxStyles"
     >
       <div
-        class="css-1rhmzip-boxStyles"
+        class="css-hg4f57-boxStyles"
       >
         <div
-          class="css-1jhrbpg-boxStyles"
+          class="css-gilg86-boxStyles"
         >
           <div
-            class="css-shh8uh-boxStyles-HeroCategoryBannerContent"
+            class="css-ae2qxy-boxStyles-HeroCategoryBannerContent"
           >
             <h1
-              class="css-18pa81a-boxStyles"
+              class="css-veetfv-boxStyles"
             >
               Website hero banner title
             </h1>
             <p
-              class="css-kvrtyp-boxStyles-Text"
+              class="css-1ulhyzf-boxStyles-Text"
             >
               Hero banner sub title
             </p>
           </div>
           <div
-            class="css-uhwge9-boxStyles-HeroCategoryBannerImage"
+            class="css-6p9nqh-boxStyles-HeroCategoryBannerImage"
           >
             <img
               alt=""

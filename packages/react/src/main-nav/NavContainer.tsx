@@ -8,7 +8,7 @@ import {
 import { createPortal } from 'react-dom';
 import FocusLock from 'react-focus-lock';
 import { Global } from '@emotion/react';
-import { Box, backgroundColorMap } from '../box';
+import { Box } from '../box';
 import { Flex } from '../flex';
 import {
 	boxPalette,
@@ -20,8 +20,9 @@ import {
 	packs,
 	useBoxPalette,
 	BoxPalette,
+	backgroundContextPalette,
 } from '../core';
-import { hoverMap, MainNavBackground, localPaletteVars } from './utils';
+import { MainNavBackground, localPaletteVars } from './utils';
 import { CloseButton, OpenButton } from './MenuButtons';
 
 export type NavContainerProps = PropsWithChildren<{
@@ -39,7 +40,6 @@ export function NavContainer({
 	hasItems,
 }: NavContainerProps) {
 	const containerRef = useRef<HTMLDivElement>(null);
-	const hover = hoverMap[background];
 
 	const { windowWidth } = useWindowSize();
 	const [menuOpen, open, close] = useTernaryState(false);
@@ -60,8 +60,8 @@ export function NavContainer({
 			css={{
 				position: 'relative',
 				'&:focus': { outline: 'none' },
-				[localPaletteVars.linkHoverBg]: backgroundColorMap[hover],
-				[localPaletteVars.linkActiveBg]: backgroundColorMap[background],
+				[localPaletteVars.linkHoverBg]: backgroundContextPalette.shade,
+				[localPaletteVars.linkActiveBg]: backgroundContextPalette.current,
 				...packs.print.hidden,
 			}}
 		>

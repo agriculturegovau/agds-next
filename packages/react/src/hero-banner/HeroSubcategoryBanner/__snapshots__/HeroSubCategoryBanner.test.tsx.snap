@@ -3,25 +3,25 @@
 exports[`HeroSubcategoryBanner renders correctly 1`] = `
 <div>
   <section
-    class="css-d9obf2-boxStyles"
+    class="css-lat7b0-boxStyles"
   >
     <div
-      class="css-ou39vu-boxStyles"
+      class="css-8hkmr3-boxStyles"
     >
       <div
-        class="css-1rhmzip-boxStyles"
+        class="css-hg4f57-boxStyles"
       >
         <div
-          class="css-eg651i-boxStyles"
+          class="css-18hsdls-boxStyles"
         >
           <nav
             aria-label="breadcrumb"
           >
             <ol
-              class="css-njrw75-boxStyles-BreadcrumbsContainer"
+              class="css-1x9rdqd-boxStyles-BreadcrumbsContainer"
             >
               <li
-                class="css-v6k7t1-boxStyles"
+                class="css-1nk0of2-boxStyles"
               >
                 <svg
                   aria-hidden="true"
@@ -46,7 +46,7 @@ exports[`HeroSubcategoryBanner renders correctly 1`] = `
                 </a>
               </li>
               <li
-                class="css-v6k7t1-boxStyles"
+                class="css-1nk0of2-boxStyles"
               >
                 <svg
                   aria-hidden="true"
@@ -66,14 +66,14 @@ exports[`HeroSubcategoryBanner renders correctly 1`] = `
                 <button
                   aria-expanded="false"
                   aria-label="Expand list"
-                  class="css-1idhw1e-BaseButton-boxStyles"
+                  class="css-m261dh-BaseButton-boxStyles"
                   type="button"
                 >
                   …
                 </button>
               </li>
               <li
-                class="css-v6k7t1-boxStyles"
+                class="css-1nk0of2-boxStyles"
               >
                 <svg
                   aria-hidden="true"
@@ -98,7 +98,7 @@ exports[`HeroSubcategoryBanner renders correctly 1`] = `
                 </a>
               </li>
               <li
-                class="css-v6k7t1-boxStyles"
+                class="css-1nk0of2-boxStyles"
               >
                 <svg
                   aria-hidden="true"
@@ -125,7 +125,7 @@ exports[`HeroSubcategoryBanner renders correctly 1`] = `
             </ol>
           </nav>
           <h1
-            class="css-18pa81a-boxStyles"
+            class="css-veetfv-boxStyles"
           >
             Subcategory banner title - xxl/display (H1)
           </h1>

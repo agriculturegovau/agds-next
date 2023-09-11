@@ -4,6 +4,8 @@ import {
 	BoxPalette,
 	boxPalettes,
 	boxPalette,
+	backgroundContextPalettes,
+	backgroundContextPalette,
 	ResponsiveProp,
 	mapResponsiveProp,
 	mapSpacing,
@@ -70,6 +72,8 @@ export const backgroundColorMap = {
 	shade: boxPalette.backgroundShade,
 	bodyAlt: boxPalette.backgroundBodyAlt,
 	shadeAlt: boxPalette.backgroundShadeAlt,
+	contextShade: backgroundContextPalette.shade,
+	contextAlt: backgroundContextPalette.alt,
 };
 
 type ColorProps = Partial<{
@@ -86,6 +90,35 @@ function colorStyles({ color, background }: ColorProps) {
 			? mapResponsiveProp(background, (t) => backgroundColorMap[t])
 			: undefined,
 	};
+}
+
+function backgroundPaletteStyles({ background }: ColorProps) {
+	if (!background) return;
+	// If the `palette` prop is a string, nothing special is required
+	if (typeof background === 'string') {
+		if (!(background in backgroundContextPalettes)) return;
+		return backgroundContextPalettes[
+			background as keyof typeof backgroundContextPalettes
+		];
+	}
+
+	// // Use the `mapResponsiveProp` utility to convert the prop to an array matching each named breakpoints
+	// const [xsBreakpointPalette, ...breakpointPalettes] = mapResponsiveProp(
+	// 	palette
+	// ) as BoxPalette[];
+
+	// // The first item in the array does not need a media query since it is for devices larger than 0px
+	// return [
+	// 	boxPalettes[xsBreakpointPalette],
+	// 	Object.fromEntries(
+	// 		breakpointNames
+	// 			.filter((name) => name !== 'xs')
+	// 			.map((name, idx) => [
+	// 				tokens.mediaQuery.min[name],
+	// 				boxPalettes[breakpointPalettes[idx]],
+	// 			])
+	// 	),
+	// ];
 }
 
 type TypographyProps = Partial<{
@@ -455,6 +488,7 @@ export function boxStyles({
 	return [
 		css([
 			paletteStyles({ palette, dark, light }),
+			backgroundPaletteStyles({ background }),
 
 			// common resets
 			{

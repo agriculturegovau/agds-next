@@ -6,14 +6,14 @@ exports[`AppLayout renders correctly 1`] = `
     class="css-4lqw0h-AppLayoutGrid"
   >
     <header
-      class="css-10whlof-dark-boxStyles-AppLayoutHeader"
+      class="css-ofa4iz-dark-boxStyles-AppLayoutHeader"
       id="header"
     >
       <div
-        class="css-1aywuo5-boxStyles"
+        class="css-9g2edl-boxStyles"
       >
         <a
-          class="css-nfczdl-boxStyles-AppLayoutHeaderBrand"
+          class="css-1smrtou-boxStyles-AppLayoutHeaderBrand"
           href="#"
         >
           <svg
@@ -47,60 +47,60 @@ exports[`AppLayout renders correctly 1`] = `
             />
           </svg>
           <div
-            class="css-1l41q-boxStyles-AppLayoutHeaderBrand"
+            class="css-1occfzn-boxStyles-AppLayoutHeaderBrand"
           >
             <div
-              class="css-1qp4da6-boxStyles"
+              class="css-1kd3mkv-boxStyles"
             >
               <span
-                class="css-1lv1g9v-boxStyles-Text"
+                class="css-lcls5c-boxStyles-Text"
               >
                 Export Service
               </span>
               <div
-                class="css-c5y8sd-boxStyles-AppLayoutHeaderBrandBadge"
+                class="css-fkudqc-boxStyles-AppLayoutHeaderBrandBadge"
               >
                 Beta
               </div>
             </div>
             <span
-              class="css-1lp7dl8-boxStyles-Text"
+              class="css-1q2emlt-boxStyles-Text"
             >
               Supporting Australian agricultural exports
             </span>
           </div>
         </a>
         <a
-          class="css-xust8k-boxStyles-AppLayoutHeaderAccount"
+          class="css-lk1dyq-boxStyles-AppLayoutHeaderAccount"
           href="/account/preferences"
         >
           <div
-            class="css-1bv5hke-boxStyles-AppLayoutHeaderAccount"
+            class="css-gu6rbc-boxStyles-AppLayoutHeaderAccount"
           >
             <span
-              class="css-19uuw7q-boxStyles-Text"
+              class="css-iegym3-boxStyles-Text"
             >
               Toto Wolff
             </span>
             <span
-              class="css-1lp7dl8-boxStyles-Text"
+              class="css-1q2emlt-boxStyles-Text"
             >
               Orange Meat Works
             </span>
           </div>
           <span
             aria-hidden="true"
-            class="css-1cow25h-boxStyles-Avatar"
+            class="css-1xz2ghg-boxStyles-Avatar"
           >
             TW
           </span>
         </a>
       </div>
       <div
-        class="css-1sjsayx-boxStyles-AppLayoutHeaderNav"
+        class="css-h429bl-boxStyles-AppLayoutHeaderNav"
       >
         <button
-          class="css-zbjn2b-BaseButton-boxStyles-AppLayoutHeaderNavMenuButton"
+          class="css-17iqdrc-BaseButton-boxStyles-AppLayoutHeaderNavMenuButton"
           type="button"
         >
           <svg
@@ -129,26 +129,26 @@ exports[`AppLayout renders correctly 1`] = `
           </span>
         </button>
         <a
-          class="css-10klk4k-boxStyles-AppLayoutHeaderAccount"
+          class="css-mvbwdy-boxStyles-AppLayoutHeaderAccount"
           href="/account/preferences"
         >
           <div
-            class="css-1bv5hke-boxStyles-AppLayoutHeaderAccount"
+            class="css-gu6rbc-boxStyles-AppLayoutHeaderAccount"
           >
             <span
-              class="css-19uuw7q-boxStyles-Text"
+              class="css-iegym3-boxStyles-Text"
             >
               Toto Wolff
             </span>
             <span
-              class="css-1lp7dl8-boxStyles-Text"
+              class="css-1q2emlt-boxStyles-Text"
             >
               Orange Meat Works
             </span>
           </div>
           <span
             aria-hidden="true"
-            class="css-1cow25h-boxStyles-Avatar"
+            class="css-1xz2ghg-boxStyles-Avatar"
           >
             TW
           </span>
@@ -156,14 +156,14 @@ exports[`AppLayout renders correctly 1`] = `
       </div>
     </header>
     <aside
-      class="css-odyicp-boxStyles-AppLayoutSidebar"
+      class="css-9vvskb-boxStyles-AppLayoutSidebar"
     >
       <nav
         aria-label="main"
-        class="css-1gsgqbm-boxStyles"
+        class="css-16nv715-boxStyles"
       >
         <ul
-          class="css-o80hmi-boxStyles"
+          class="css-120nxx4-boxStyles"
         >
           <li
             class="css-147t09t-AppLayoutSidebarNavItemInner"
@@ -280,7 +280,7 @@ exports[`AppLayout renders correctly 1`] = `
           </li>
           <li
             aria-hidden="true"
-            class="css-f0nqxn-boxStyles"
+            class="css-1sy7ob9-boxStyles"
           >
             <hr
               class="css-166wurb-AppLayoutSidebarNavDivider"
@@ -313,7 +313,7 @@ exports[`AppLayout renders correctly 1`] = `
               <span>
                 <span
                   aria-hidden="true"
-                  class="css-uouzcn-boxStyles-Text-NotificationBadge"
+                  class="css-6zx2l8-boxStyles-Text-NotificationBadge"
                 >
                   6
                 </span>
@@ -384,7 +384,7 @@ exports[`AppLayout renders correctly 1`] = `
           </li>
           <li
             aria-hidden="true"
-            class="css-f0nqxn-boxStyles"
+            class="css-1sy7ob9-boxStyles"
           >
             <hr
               class="css-166wurb-AppLayoutSidebarNavDivider"
@@ -427,7 +427,7 @@ exports[`AppLayout renders correctly 1`] = `
       </nav>
     </aside>
     <div
-      class="css-yurbt-boxStyles-AppLayoutContent"
+      class="css-geyvcv-boxStyles-AppLayoutContent"
     >
       <main
         class="css-z5n8zt-renderAppLayout"
@@ -442,22 +442,22 @@ exports[`AppLayout renders correctly 1`] = `
         class="css-owhoi8-AppLayoutFooter"
       >
         <div
-          class="css-ou39vu-boxStyles"
+          class="css-8hkmr3-boxStyles"
         >
           <div
-            class="css-1rhmzip-boxStyles"
+            class="css-hg4f57-boxStyles"
           >
             <div
-              class="css-1yys21m-boxStyles"
+              class="css-ssw7j4-boxStyles"
             >
               <nav
                 aria-label="footer"
               >
                 <ul
-                  class="css-u0m30q-boxStyles"
+                  class="css-fthc4p-boxStyles"
                 >
                   <li
-                    class="css-79i25n-boxStyles"
+                    class="css-1l5cwjh-boxStyles"
                   >
                     <a
                       class="css-ma0bjl-TextLink"
@@ -473,12 +473,12 @@ exports[`AppLayout renders correctly 1`] = `
                 class="css-14u6sul-AppLayoutFooterDivider"
               />
               <span
-                class="css-1sbhbx-boxStyles-Text"
+                class="css-1lkvett-boxStyles-Text"
               >
                 We acknowledge the traditional owners of country throughout Australia and recognise their continuing connection to land, waters and culture. We pay our respects to their Elders past, present and emerging.
               </span>
               <span
-                class="css-1sbhbx-boxStyles-Text"
+                class="css-1lkvett-boxStyles-Text"
               >
                 © 2023 Department of Agriculture, Fisheries and Forestry
               </span>

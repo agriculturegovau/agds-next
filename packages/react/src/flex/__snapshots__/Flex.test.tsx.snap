@@ -3,7 +3,7 @@
 exports[`Flex renders correctly 1`] = `
 <div>
   <div
-    class="css-1jhrbpg-boxStyles"
+    class="css-gilg86-boxStyles"
   >
     Flex element
   </div>

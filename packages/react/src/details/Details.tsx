@@ -48,7 +48,7 @@ export const Details = forwardRef<HTMLDetailsElement, DetailsProps>(
 					/>
 				</Flex>
 				<Box
-					background="shade"
+					background="contextShade"
 					padding={1.5}
 					borderLeft
 					borderLeftWidth="xl"

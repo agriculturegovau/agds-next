@@ -3,29 +3,29 @@
 exports[`FileInput invalid renders correctly 1`] = `
 <div>
   <div
-    class="css-1n67ua0-boxStyles-FieldContainer"
+    class="css-uwqihr-boxStyles-FieldContainer"
   >
     <label
-      class="css-79i25n-boxStyles"
+      class="css-1l5cwjh-boxStyles"
       for="field-:r2:"
     >
       <span
-        class="css-433uqb-boxStyles-Text"
+        class="css-1gsq1zi-boxStyles-Text"
       >
         Example
       </span>
       <span
-        class="css-1rpt3h8-boxStyles-Text"
+        class="css-1kw34xt-boxStyles-Text"
       >
          
         (optional)
       </span>
     </label>
     <div
-      class="css-1xkbxzi-boxStyles"
+      class="css-huun0a-boxStyles"
     >
       <div
-        class="css-1ldvxqr-boxStyles"
+        class="css-qt8kse-boxStyles"
       >
         <svg
           aria-hidden="false"
@@ -49,7 +49,7 @@ exports[`FileInput invalid renders correctly 1`] = `
         </svg>
       </div>
       <span
-        class="css-tfsyf8-boxStyles-Text"
+        class="css-oi0v0a-boxStyles-Text"
         id="field-:r2:-message"
       >
         This file is not valid
@@ -70,19 +70,19 @@ exports[`FileInput invalid renders correctly 1`] = `
 exports[`FileInput renders correctly 1`] = `
 <div>
   <div
-    class="css-1904cz9-boxStyles-FieldContainer"
+    class="css-1uvazka-boxStyles-FieldContainer"
   >
     <label
-      class="css-79i25n-boxStyles"
+      class="css-1l5cwjh-boxStyles"
       for="field-:r0:"
     >
       <span
-        class="css-433uqb-boxStyles-Text"
+        class="css-1gsq1zi-boxStyles-Text"
       >
         Example
       </span>
       <span
-        class="css-1rpt3h8-boxStyles-Text"
+        class="css-1kw34xt-boxStyles-Text"
       >
          
         (optional)

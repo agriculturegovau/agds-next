@@ -3,54 +3,54 @@
 exports[`DateRangePicker renders correctly 1`] = `
 <div>
   <div
-    class="css-1904cz9-boxStyles-FieldContainer"
+    class="css-1uvazka-boxStyles-FieldContainer"
     id="date-range-picker-:r0:"
   >
     <fieldset
       class="css-1lbpzz2-DateRangePicker"
     >
       <legend
-        class="css-1r0k8hi-boxStyles-DateRangePicker"
+        class="css-1v3uv2r-boxStyles-DateRangePicker"
       >
         <span
-          class="css-433uqb-boxStyles-Text"
+          class="css-1gsq1zi-boxStyles-Text"
         >
           Date range
         </span>
         <span
-          class="css-1rpt3h8-boxStyles-Text"
+          class="css-1kw34xt-boxStyles-Text"
         >
            
           (optional)
         </span>
       </legend>
       <div
-        class="css-1fqlpl4-boxStyles-DateRangePicker"
+        class="css-1ii93io-boxStyles-DateRangePicker"
       >
         <div
-          class="css-72257o-boxStyles"
+          class="css-3789b5-boxStyles"
         >
           <div
-            class="css-1904cz9-boxStyles-FieldContainer"
+            class="css-1uvazka-boxStyles-FieldContainer"
           >
             <label
-              class="css-79i25n-boxStyles"
+              class="css-1l5cwjh-boxStyles"
               for="field-:r1:"
             >
               <span
-                class="css-433uqb-boxStyles-Text"
+                class="css-1gsq1zi-boxStyles-Text"
               >
                 Start date
               </span>
               <span
-                class="css-1rpt3h8-boxStyles-Text"
+                class="css-1kw34xt-boxStyles-Text"
               >
                  
                 (dd/mm/yyyy) (optional)
               </span>
             </label>
             <div
-              class="css-7swrfr-boxStyles-DateInput"
+              class="css-1vi2zmu-boxStyles-DateInput"
             >
               <input
                 aria-invalid="false"
@@ -106,26 +106,26 @@ exports[`DateRangePicker renders correctly 1`] = `
             </div>
           </div>
           <div
-            class="css-1904cz9-boxStyles-FieldContainer"
+            class="css-1uvazka-boxStyles-FieldContainer"
           >
             <label
-              class="css-79i25n-boxStyles"
+              class="css-1l5cwjh-boxStyles"
               for="field-:r2:"
             >
               <span
-                class="css-433uqb-boxStyles-Text"
+                class="css-1gsq1zi-boxStyles-Text"
               >
                 End date
               </span>
               <span
-                class="css-1rpt3h8-boxStyles-Text"
+                class="css-1kw34xt-boxStyles-Text"
               >
                  
                 (dd/mm/yyyy) (optional)
               </span>
             </label>
             <div
-              class="css-7swrfr-boxStyles-DateInput"
+              class="css-1vi2zmu-boxStyles-DateInput"
             >
               <input
                 aria-invalid="false"

@@ -3,12 +3,12 @@
 exports[`CollapsingSideBar renders correctly 1`] = `
 <div>
   <div
-    class="css-109i52p-boxStyles-CollapsingSideBarContainer"
+    class="css-gkrtqa-boxStyles"
   >
     <button
       aria-controls="collapsing-side-bar-:r0:-body"
       aria-expanded="false"
-      class="css-15g5ot9-BaseButton-boxStyles-SideBarCollapseButton"
+      class="css-14aotnf-BaseButton-boxStyles-SideBarCollapseButton"
       id="collapsing-side-bar-:r0:-button"
       type="button"
     >
@@ -35,7 +35,7 @@ exports[`CollapsingSideBar renders correctly 1`] = `
       style="display: none; height: 0px; overflow: hidden;"
     >
       <div
-        class="css-79i25n-boxStyles"
+        class="css-1l5cwjh-boxStyles"
       >
         CollapsingSideBar Content
       </div>

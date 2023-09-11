@@ -3,10 +3,10 @@
 exports[`LinkList renders correctly 1`] = `
 <div>
   <ul
-    class="css-pa8edo-boxStyles"
+    class="css-16ia2s5-boxStyles"
   >
     <li
-      class="css-79i25n-boxStyles"
+      class="css-1l5cwjh-boxStyles"
     >
       <a
         class="css-ma0bjl-TextLink"
@@ -16,7 +16,7 @@ exports[`LinkList renders correctly 1`] = `
       </a>
     </li>
     <li
-      class="css-79i25n-boxStyles"
+      class="css-1l5cwjh-boxStyles"
     >
       <a
         class="css-ma0bjl-TextLink"
@@ -26,7 +26,7 @@ exports[`LinkList renders correctly 1`] = `
       </a>
     </li>
     <li
-      class="css-79i25n-boxStyles"
+      class="css-1l5cwjh-boxStyles"
     >
       <a
         class="css-ma0bjl-TextLink"
@@ -36,7 +36,7 @@ exports[`LinkList renders correctly 1`] = `
       </a>
     </li>
     <li
-      class="css-79i25n-boxStyles"
+      class="css-1l5cwjh-boxStyles"
     >
       <a
         class="css-ma0bjl-TextLink"

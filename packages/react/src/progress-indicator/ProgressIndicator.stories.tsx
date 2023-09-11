@@ -40,7 +40,6 @@ export const Basic: Story = {
 export const OnBodyAlt: Story = {
 	name: 'On bodyAlt background',
 	args: {
-		background: 'bodyAlt',
 		items: exampleButtonItems,
 	},
 	parameters: {

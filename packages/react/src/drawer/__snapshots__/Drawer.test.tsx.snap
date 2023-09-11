@@ -21,15 +21,15 @@ exports[`Drawer renders correctly 1`] = `
       <div
         aria-labelledby="drawer-:r0:-title"
         aria-modal="true"
-        class="css-bugcec-boxStyles-DrawerDialog"
+        class="css-11wedwk-boxStyles-DrawerDialog"
         role="dialog"
         style="transform: translateX(100%);"
       >
         <div
-          class="css-1fzj2hl-boxStyles-DrawerHeader"
+          class="css-1e4k9lr-boxStyles-DrawerHeader"
         >
           <h2
-            class="css-17ywrtq-boxStyles-Text-DrawerHeaderTitle"
+            class="css-1q1u6g1-boxStyles-Text-DrawerHeaderTitle"
             data-autofocus="true"
             id="drawer-:r0:-title"
             tabindex="-1"
@@ -38,16 +38,16 @@ exports[`Drawer renders correctly 1`] = `
           </h2>
         </div>
         <div
-          class="css-1r9s54p-boxStyles-DrawerContent"
+          class="css-1093hd9-boxStyles-DrawerContent"
         >
           <p
-            class="css-6j1v6l-boxStyles-Text"
+            class="css-7njy8a-boxStyles-Text"
           >
             Example content.
           </p>
         </div>
         <div
-          class="css-10pjjkw-boxStyles-DrawerFooter"
+          class="css-2r9bif-boxStyles-DrawerFooter"
         >
           <button
             class="css-1me5i3x-BaseButton-Button"

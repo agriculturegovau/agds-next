@@ -3,19 +3,19 @@
 exports[`TableHeaderSortable with sort direction: ASC renders correctly 1`] = `
 <div>
   <table
-    class="css-teqxv1-boxStyles-Table"
+    class="css-8gr3gq-boxStyles-Table"
   >
     <thead
-      class="css-11khhn7-boxStyles"
+      class="css-k7fmr5-boxStyles"
     >
       <tr>
         <th
           aria-sort="ascending"
-          class="css-15z6ccd-boxStyles-TableHeaderSortable"
+          class="css-1s2dy4i-boxStyles-TableHeaderSortable"
           scope="col"
         >
           <button
-            class="css-1gm7gt9-BaseButton-boxStyles-TableHeaderSortable"
+            class="css-115uj86-BaseButton-boxStyles-TableHeaderSortable"
             type="button"
           >
             Example
@@ -48,19 +48,19 @@ exports[`TableHeaderSortable with sort direction: ASC renders correctly 1`] = `
 exports[`TableHeaderSortable with sort direction: DESC renders correctly 1`] = `
 <div>
   <table
-    class="css-teqxv1-boxStyles-Table"
+    class="css-8gr3gq-boxStyles-Table"
   >
     <thead
-      class="css-11khhn7-boxStyles"
+      class="css-k7fmr5-boxStyles"
     >
       <tr>
         <th
           aria-sort="descending"
-          class="css-15z6ccd-boxStyles-TableHeaderSortable"
+          class="css-1s2dy4i-boxStyles-TableHeaderSortable"
           scope="col"
         >
           <button
-            class="css-1gm7gt9-BaseButton-boxStyles-TableHeaderSortable"
+            class="css-115uj86-BaseButton-boxStyles-TableHeaderSortable"
             type="button"
           >
             Example
@@ -93,18 +93,18 @@ exports[`TableHeaderSortable with sort direction: DESC renders correctly 1`] = `
 exports[`TableHeaderSortable with sort direction: undefined renders correctly 1`] = `
 <div>
   <table
-    class="css-teqxv1-boxStyles-Table"
+    class="css-8gr3gq-boxStyles-Table"
   >
     <thead
-      class="css-11khhn7-boxStyles"
+      class="css-k7fmr5-boxStyles"
     >
       <tr>
         <th
-          class="css-1qjmip9-boxStyles-TableHeaderSortable"
+          class="css-22l4z5-boxStyles-TableHeaderSortable"
           scope="col"
         >
           <button
-            class="css-1gm7gt9-BaseButton-boxStyles-TableHeaderSortable"
+            class="css-115uj86-BaseButton-boxStyles-TableHeaderSortable"
             type="button"
           >
             Example

@@ -3,7 +3,7 @@
 exports[`Text renders correctly 1`] = `
 <div>
   <span
-    class="css-6j1v6l-boxStyles-Text"
+    class="css-7njy8a-boxStyles-Text"
   >
     Text element
   </span>

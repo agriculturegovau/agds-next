@@ -1,31 +1,23 @@
 import { PropsWithChildren, useRef } from 'react';
 import { useSpring, animated } from '@react-spring/web';
 import {
+	backgroundContextPalette,
 	tokens,
 	usePrefersReducedMotion,
 	useToggleState,
 	useWindowSize,
-} from '@ag.ds-next/react/core';
-import { backgroundColorMap, Box } from '@ag.ds-next/react/box';
-import { mapResponsiveProp, mq } from '@ag.ds-next/react/core';
-import { BaseButton } from '@ag.ds-next/react/button';
-import { Flex } from '@ag.ds-next/react/flex';
-import { Stack } from '@ag.ds-next/react/stack';
-import { ChevronDownIcon } from '@ag.ds-next/react/icon';
-import {
-	hoverColorMap,
-	CollapsingSideBarBackground,
-	collapsingSideBarLocalPalette,
-	collapsingSideBarLocalPaletteVars,
-	useCollapsingSideBarIds,
-} from './utils';
+} from '../core';
+import { Box } from '../box';
+import { BaseButton } from '../button';
+import { Flex } from '../flex';
+import { Stack } from '../stack';
+import { ChevronDownIcon } from '../icon';
+import { useCollapsingSideBarIds } from './utils';
 import { CollapsingSideBarTitle } from './CollapsingSideBarTitle';
 
 export type CollapsingSideBarProps = PropsWithChildren<{
 	/** The HTML element to render the CollapsingSideBar as. */
 	as?: CollapsingSideBarContainerElementType;
-	/** If CollapsingSideBar is placed on 'bodyAlt' background, please set this to 'bodyAlt'. */
-	background?: CollapsingSideBarBackground;
 	/** Used as the title of the expand/collapse trigger on smaller screen sizes. */
 	collapseButtonLabel: string;
 	/** The title of the CollapsingSideBar. */
@@ -36,7 +28,6 @@ export type CollapsingSideBarProps = PropsWithChildren<{
 
 export function CollapsingSideBar({
 	as = 'div',
-	background = 'body',
 	children,
 	collapseButtonLabel,
 	title,
@@ -71,7 +62,7 @@ export function CollapsingSideBar({
 	const isMobile = (windowWidth || 0) <= tokens.breakpoint.lg - 1;
 
 	return (
-		<CollapsingSideBarContainer as={as} background={background}>
+		<CollapsingSideBarContainer as={as}>
 			{title && <CollapsingSideBarTitle title={title} subtitle={subTitle} />}
 			<SideBarCollapseButton
 				isOpen={isOpen}
@@ -110,27 +101,14 @@ type CollapsingSideBarContainerElementType =
 
 type CollapsingSideBarContainerProps = PropsWithChildren<{
 	as: CollapsingSideBarContainerElementType;
-	background: CollapsingSideBarBackground;
 }>;
 
 const CollapsingSideBarContainer = ({
 	as,
-	background,
 	children,
 }: CollapsingSideBarContainerProps) => {
-	const hoverColor = hoverColorMap[background];
 	return (
-		<Stack
-			as={as}
-			background={background}
-			gap={{ xs: 0, md: 1 }}
-			css={mq({
-				[collapsingSideBarLocalPaletteVars.hover]: mapResponsiveProp(
-					hoverColor,
-					(t) => backgroundColorMap[t]
-				),
-			})}
-		>
+		<Stack as={as} gap={{ xs: 0, md: 1 }}>
 			{children}
 		</Stack>
 	);
@@ -175,7 +153,7 @@ export const SideBarCollapseButton = ({
 			borderBottom
 			css={{
 				'&:hover': {
-					background: collapsingSideBarLocalPalette.hover,
+					background: backgroundContextPalette.shade,
 				},
 				[tokens.mediaQuery.min.md]: {
 					display: 'none',

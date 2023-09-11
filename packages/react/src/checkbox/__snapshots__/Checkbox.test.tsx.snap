@@ -3,7 +3,7 @@
 exports[`Checkbox renders correctly 1`] = `
 <div>
   <label
-    class="css-hp3wbe-boxStyles-CheckboxContainer"
+    class="css-15xlepk-boxStyles-CheckboxContainer"
   >
     <input
       class="css-rw5u1c-CheckboxInput"
@@ -12,7 +12,7 @@ exports[`Checkbox renders correctly 1`] = `
       type="checkbox"
     />
     <span
-      class="css-fhfj02-boxStyles-CheckboxIndicator"
+      class="css-1g0233o-boxStyles-CheckboxIndicator"
     >
       <svg
         aria-hidden="true"
@@ -31,7 +31,7 @@ exports[`Checkbox renders correctly 1`] = `
       </svg>
     </span>
     <span
-      class="css-1929o1r-boxStyles-Text-CheckboxLabel"
+      class="css-147u5fb-boxStyles-Text-CheckboxLabel"
     >
       My checkbox
     </span>
