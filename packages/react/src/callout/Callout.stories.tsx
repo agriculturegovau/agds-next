@@ -33,7 +33,7 @@ export const OnBodyAlt: Story = {
 	args: {
 		title: 'Callout heading',
 		children: <Text as="p">Description of the callout.</Text>,
-		tone: 'neutral',
+		tone: 'neutralAlt',
 	},
 	render: (args) => (
 		<Box background="bodyAlt" padding={1.5}>

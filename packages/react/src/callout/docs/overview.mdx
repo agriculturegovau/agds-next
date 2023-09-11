@@ -33,44 +33,34 @@ Use callout to notify and alert users of important snippets of information.
 - use more than 1 per page
 - mix colour palettes.
 
-## Callout heading screen reader only
+## Tones
 
-A callout with a heading that can be read by screen readers. Markup for the title is included for screen reader users.
+Callouts can be used to convey different tones of information. The tone of a callout is conveyed through the background colour and icon.
+
+### Neutral Callout
+
+The normal tone of a callout is `neutral`.
 
 ```jsx live
-<Callout>
-	<VisuallyHidden>
-		<h2>Title of the callout</h2>
-	</VisuallyHidden>
-	<Text as="p">Description of the callout</Text>
+<Callout title="Callout heading">
+	<Text as="p">Description of the callout.</Text>
 </Callout>
 ```
 
-## Calendar
+By default, neutral Callouts make use of the `shade` [background token](/foundations/tokens/colour#background-colours), which must be paired with the normal `body` background.
 
-Use a calendar callout to notify and alert users of important dates and events.
+If a neutral Callout is placed on an area with a `bodyAlt` background, you must set the `tone` prop to `neutralAlt` to ensure the Callout uses the correct `shadeAlt` background. This is to ensure correct contrast and a consistent visual style.
 
 ```jsx live
-<Callout as="section">
-	<Flex flexDirection="column">
-		<VisuallyHidden>
-			<h2>Description of the callout</h2>
-		</VisuallyHidden>
-		<Text as="p">The next public holiday is:</Text>
-		<Text
-			as="time"
-			fontSize="xl"
-			fontWeight="bold"
-			dateTime="2017-01-01T00:00:00+00:00"
-		>
-			Sunday 1 January
-		</Text>
-		<Text>New Year’s Day</Text>
-	</Flex>
-</Callout>
+<Stack background="bodyAlt" padding={2} gap={1}>
+	<Text>An area with `bodyAlt` background</Text>
+	<Callout title="Callout heading" tone="neutralAlt">
+		<Text as="p">Description of the callout.</Text>
+	</Callout>
+</Stack>
 ```
 
-## Information Callout
+### Information Callout
 
 Use an information callout to notify and alert users of important information.
 
@@ -78,17 +68,4 @@ Use an information callout to notify and alert users of important information.
 <Callout title="Callout heading" tone="info">
 	<Text as="p">Description of the callout.</Text>
 </Callout>
-```
-
-## Backgrounds
-
-The background of the `Callout` must pair with the background it is being placed on. For example, if `Callout` is placed on a 'bodyAlt' background, please set the `background` prop to `shadeAlt`.
-
-```jsx live
-<Stack background="bodyAlt" padding={3} gap={1}>
-	<Text>An area with `bodyAlt` background</Text>
-	<Callout title="Callout heading" tone="neutralAlt">
-		<Text as="p">Description of the callout.</Text>
-	</Callout>
-</Stack>
 ```
