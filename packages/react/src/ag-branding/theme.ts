@@ -72,6 +72,7 @@ const primitives = {
 };
 
 export const theme: Theme = {
+	// light
 	// gold values:  light
 	lightForegroundText: primitives.grey7,
 	lightForegroundFocus: primitives.purple2,
@@ -83,18 +84,11 @@ export const theme: Theme = {
 	lightBorder: primitives.grey5,
 	lightBorderMuted: primitives.grey4,
 	lightOverlay: primitives.blackOverlay,
-
-	// gold values: dark
-	darkForegroundText: primitives.white,
-	darkForegroundFocus: primitives.purple1,
-	darkForegroundMuted: primitives.slate1,
-	darkBorder: primitives.slate2,
-	darkBorderMuted: primitives.slate3,
-	darkOverlay: primitives.blackOverlay,
-
 	// agds overrides: light
 	lightForegroundAction: primitives.blue2,
 	lightAccent: primitives.exportServiceOrange,
+	lightSelected: primitives.blue2,
+	lightSelectedMuted: primitives.blue1,
 	lightSystemError: primitives.red2,
 	lightSystemErrorMuted: primitives.red1,
 	lightSystemSuccess: primitives.green3,
@@ -104,12 +98,22 @@ export const theme: Theme = {
 	lightSystemInfo: primitives.sky2,
 	lightSystemInfoMuted: primitives.sky1,
 
+	// dark
+	// gold values: dark
+	darkForegroundText: primitives.white,
+	darkForegroundFocus: primitives.purple1,
+	darkForegroundMuted: primitives.slate1,
+	darkBorder: primitives.slate2,
+	darkBorderMuted: primitives.slate3,
+	darkOverlay: primitives.blackOverlay,
 	// agds overrides: dark
 	darkBackgroundBody: primitives.navy1,
 	darkBackgroundShade: primitives.navy2,
 	darkBackgroundBodyAlt: primitives.navy3,
 	darkBackgroundShadeAlt: primitives.navy4,
 	darkForegroundAction: primitives.cyan1,
+	darkSelected: primitives.cyan1,
+	darkSelectedMuted: primitives.navy3,
 	darkAccent: primitives.exportServiceOrange,
 	darkSystemError: primitives.tomato1,
 	darkSystemErrorMuted: primitives.tomato2,
