@@ -56,6 +56,7 @@ const borderColorMap = {
 	border: boxPalette.border,
 	muted: boxPalette.borderMuted,
 	accent: boxPalette.accent,
+	selected: boxPalette.selected,
 	info: boxPalette.systemInfo,
 	warning: boxPalette.systemWarning,
 } as const;
