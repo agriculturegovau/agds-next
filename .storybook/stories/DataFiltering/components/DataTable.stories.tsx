@@ -11,6 +11,7 @@ export const Application = () => {
 	const sortAndFilter = useSortAndFilter({
 		itemsPerPage: 10,
 	});
+
 	const { filters, pagination, sort } = sortAndFilter;
 
 	const { data, totalPages, totalItems, loading } = useData({
