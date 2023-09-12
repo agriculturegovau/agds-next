@@ -13,6 +13,8 @@ export const useAccordionItemIds = () => {
 };
 
 type AccordionItemProps = PropsWithChildren<{
+	/** @deprecated This prop is no longer used and will be removed in the next major version. */
+	background?: 'body' | 'bodyAlt';
 	/** If true, the item will initially be rendered in an open state. */
 	isInitiallyOpen?: boolean;
 	/** The current open state. */

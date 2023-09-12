@@ -4,6 +4,8 @@ import { CalloutTitle } from './CalloutTitle';
 
 export type CalloutProps = PropsWithChildren<{
 	as?: ElementType;
+	/** @deprecated This prop is no longer used and will be removed in the next major version. */
+	background?: 'shade' | 'shadeAlt';
 	/** Title will appear in bold */
 	title?: string;
 }>;
