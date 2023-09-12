@@ -3,7 +3,7 @@
 exports[`HeroBanner renders correctly 1`] = `
 <div>
   <section
-    class="css-hp2pnd-boxStyles-HeroBannerContainer"
+    class="css-t4n8jr-boxStyles-HeroBannerContainer"
   >
     <div
       class="css-3ugtfj-boxStyles-HeroBannerMobileImage"

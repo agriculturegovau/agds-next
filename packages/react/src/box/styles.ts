@@ -33,19 +33,19 @@ function paletteStyles({ palette, dark, light }: PaletteProps) {
 		if (typeof palette === 'string') return boxPalettes[palette];
 
 		// Use the `mapResponsiveProp` utility to convert the prop to an array matching each named breakpoints
-		const [xsBreakpointPalette, ...breakpointPalettes] = mapResponsiveProp(
+		const [xsBreakpointValue, ...breakpointValues] = mapResponsiveProp(
 			palette
 		) as BoxPalette[];
 
 		// The first item in the array does not need a media query since it is for devices larger than 0px
 		return [
-			boxPalettes[xsBreakpointPalette],
+			boxPalettes[xsBreakpointValue],
 			Object.fromEntries(
 				breakpointNames
 					.filter((name) => name !== 'xs')
 					.map((name, idx) => [
 						tokens.mediaQuery.min[name],
-						boxPalettes[breakpointPalettes[idx]],
+						boxPalettes[breakpointValues[idx]],
 					])
 			),
 		];
@@ -67,18 +67,32 @@ export const foregroundColorMap = {
 	inherit: 'inherit',
 };
 
-export const backgroundColorMap = {
+type Color = keyof typeof foregroundColorMap;
+
+export const coreBackgroundColorMap = {
 	body: boxPalette.backgroundBody,
 	shade: boxPalette.backgroundShade,
 	bodyAlt: boxPalette.backgroundBodyAlt,
 	shadeAlt: boxPalette.backgroundShadeAlt,
+};
+
+type CoreBackground = keyof typeof coreBackgroundColorMap;
+
+export const contextualBackgroundColorMap = {
 	contextShade: backgroundContextPalette.shade,
 	contextAlt: backgroundContextPalette.alt,
 };
 
+export const backgroundColorMap = {
+	...coreBackgroundColorMap,
+	...contextualBackgroundColorMap,
+};
+
+type Background = keyof typeof backgroundColorMap;
+
 type ColorProps = Partial<{
-	color: ResponsiveProp<keyof typeof foregroundColorMap>;
-	background: ResponsiveProp<keyof typeof backgroundColorMap>;
+	color: ResponsiveProp<Color>;
+	background: ResponsiveProp<Background>;
 }>;
 
 function colorStyles({ color, background }: ColorProps) {
@@ -94,31 +108,39 @@ function colorStyles({ color, background }: ColorProps) {
 
 function backgroundPaletteStyles({ background }: ColorProps) {
 	if (!background) return;
-	// If the `palette` prop is a string, nothing special is required
+
+	// If the `background` prop is a string, nothing special is required
 	if (typeof background === 'string') {
-		if (!(background in backgroundContextPalettes)) return;
-		return backgroundContextPalettes[
-			background as keyof typeof backgroundContextPalettes
-		];
+		if (background in coreBackgroundColorMap) {
+			return backgroundContextPalettes[background as CoreBackground];
+		}
 	}
 
-	// // Use the `mapResponsiveProp` utility to convert the prop to an array matching each named breakpoints
-	// const [xsBreakpointPalette, ...breakpointPalettes] = mapResponsiveProp(
-	// 	palette
-	// ) as BoxPalette[];
+	// Use the `mapResponsiveProp` utility to convert the prop to an array matching each named breakpoints
+	const [xsBreakpointValue, ...breakpointValues] = mapResponsiveProp(
+		background
+	) as Background[];
 
-	// // The first item in the array does not need a media query since it is for devices larger than 0px
-	// return [
-	// 	boxPalettes[xsBreakpointPalette],
-	// 	Object.fromEntries(
-	// 		breakpointNames
-	// 			.filter((name) => name !== 'xs')
-	// 			.map((name, idx) => [
-	// 				tokens.mediaQuery.min[name],
-	// 				boxPalettes[breakpointPalettes[idx]],
-	// 			])
-	// 	),
-	// ];
+	// The first item in the array does not need a media query since it is for devices larger than 0px
+	return [
+		xsBreakpointValue in coreBackgroundColorMap
+			? backgroundContextPalettes[xsBreakpointValue as CoreBackground]
+			: null,
+
+		Object.fromEntries(
+			breakpointNames
+				.filter((name) => name !== 'xs')
+				.map((name, idx) => {
+					const breakpointValue = breakpointValues[idx];
+					return [
+						tokens.mediaQuery.min[name],
+						breakpointValue in backgroundContextPalettes
+							? backgroundContextPalettes[breakpointValue as CoreBackground]
+							: null,
+					];
+				})
+		),
+	];
 }
 
 type TypographyProps = Partial<{
