@@ -34,6 +34,7 @@ type ComboboxBaseProps<Option extends DefaultComboboxOption> = {
 	maxWidth?: Extract<FieldMaxWidth, 'md' | 'lg' | 'xl'>;
 	showDropdownTrigger?: boolean;
 	clearable?: boolean;
+	isAutocomplete: boolean;
 	// Downshift
 	inputRef?: Ref<HTMLInputElement>;
 	loading?: boolean;
@@ -58,6 +59,7 @@ export function ComboboxBase<Option extends DefaultComboboxOption>({
 	maxWidth: maxWidthProp = 'xl',
 	showDropdownTrigger = true,
 	clearable = false,
+	isAutocomplete,
 	renderItem = defaultRenderItem,
 	emptyResultsMessage = 'No options found.',
 	loading,
@@ -66,8 +68,6 @@ export function ComboboxBase<Option extends DefaultComboboxOption>({
 	inputItems,
 	inputRef: inputRefProp,
 }: ComboboxBaseProps<Option>) {
-	const isAutocomplete = !showDropdownTrigger;
-
 	const showClearButton = clearable && combobox.selectedItem;
 	const hasButtons = showDropdownTrigger || showClearButton;
 	const hasBothButtons = showDropdownTrigger && showClearButton;

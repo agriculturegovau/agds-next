@@ -30,6 +30,29 @@ exports[`Autocomplete renders correctly 1`] = `
     <div
       class="css-ep8qz0-ComboboxBase"
     >
+      <svg
+        aria-hidden="true"
+        class="css-4vrme3-ComboboxSearchIcon"
+        clip-rule="evenodd"
+        focusable="false"
+        height="24"
+        role="img"
+        viewBox="0 0 24 24"
+        width="24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <line
+          x1="15.5568"
+          x2="21.9208"
+          y1="15.5562"
+          y2="21.9201"
+        />
+        <circle
+          cx="9.8995"
+          cy="9.89941"
+          r="7"
+        />
+      </svg>
       <input
         aria-activedescendant=""
         aria-autocomplete="list"
@@ -40,7 +63,7 @@ exports[`Autocomplete renders correctly 1`] = `
         aria-labelledby="downshift-:r1:-label"
         aria-required="false"
         autocomplete="off"
-        class="css-8coje4-ComboboxBase"
+        class="css-4zz2a6-ComboboxBase"
         id="combobox-input-:r0:"
         role="combobox"
         type="text"

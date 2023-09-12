@@ -118,6 +118,7 @@ export function ComboboxAsync<Option extends DefaultComboboxOption>({
 			showDropdownTrigger={showDropdownTrigger}
 			clearable={clearable}
 			inputRef={inputRefProp}
+			isAutocomplete={isAutocomplete}
 			{...props}
 		/>
 	);

@@ -26,7 +26,7 @@ exports[`SearchInput Basic renders correctly 1`] = `
     >
       <svg
         aria-hidden="true"
-        class="css-c3auo9-SearchInputIcon"
+        class="css-1237ufu-SearchInputIcon"
         clip-rule="evenodd"
         focusable="false"
         height="24"
@@ -121,7 +121,7 @@ exports[`SearchInput Invalid renders correctly 1`] = `
     >
       <svg
         aria-hidden="true"
-        class="css-c3auo9-SearchInputIcon"
+        class="css-1237ufu-SearchInputIcon"
         clip-rule="evenodd"
         focusable="false"
         height="24"
@@ -189,7 +189,7 @@ exports[`SearchInput With hint renders correctly 1`] = `
     >
       <svg
         aria-hidden="true"
-        class="css-c3auo9-SearchInputIcon"
+        class="css-1237ufu-SearchInputIcon"
         clip-rule="evenodd"
         focusable="false"
         height="24"
