@@ -9,6 +9,8 @@ export type SubNavProps = PropsWithChildren<{
 	id?: string;
 	/** The navigation list items. */
 	links: SubNavListLink[];
+	/** @deprecated This prop is no longer used and will be removed in the next major version. */
+	background?: 'body' | 'bodyAlt';
 }>;
 
 export function SubNav({

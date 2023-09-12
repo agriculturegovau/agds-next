@@ -4,6 +4,8 @@ import { useTabsId } from './utils';
 import { setLocalPaletteVars } from './localPalette';
 
 export type TabsProps = PropsWithChildren<{
+	/** @deprecated This prop is no longer used and will be removed in the next major version. */
+	background?: 'body' | 'bodyAlt';
 	/** If `false`, the horizontal padding and borders will be removed. */
 	contained?: boolean;
 	/** The index of the active tab. */
