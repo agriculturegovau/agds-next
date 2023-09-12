@@ -314,7 +314,7 @@ export const Selectable: Story = {
 					</TableCaption>
 					<TableHead>
 						<TableRow>
-							<TableHeader scope="col">
+							<TableCell>
 								<Checkbox
 									size="sm"
 									checked={allRowsSelected}
@@ -323,7 +323,7 @@ export const Selectable: Story = {
 								>
 									<VisuallyHidden>Select all rows</VisuallyHidden>
 								</Checkbox>
-							</TableHeader>
+							</TableCell>
 							<TableHeader scope="col">Location</TableHeader>
 							<TableHeader textAlign="right" scope="col">
 								Population
