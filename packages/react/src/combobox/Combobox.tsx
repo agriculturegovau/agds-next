@@ -96,6 +96,7 @@ export function Combobox<Option extends DefaultComboboxOption>({
 			inputItems={inputItems}
 			inputId={inputId}
 			inputRef={inputRefProp}
+			isAutocomplete={false}
 			{...props}
 		/>
 	);

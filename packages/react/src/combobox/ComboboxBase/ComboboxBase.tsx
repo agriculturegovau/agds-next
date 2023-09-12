@@ -16,6 +16,7 @@ import {
 	ComboboxClearButton,
 	ComboboxButtonDivider,
 } from './ComboboxButtons';
+import { ComboboxSearchIcon } from './ComboboxSearchIcon';
 
 type ComboboxBaseProps<Option extends DefaultComboboxOption> = {
 	// Field props
@@ -33,6 +34,7 @@ type ComboboxBaseProps<Option extends DefaultComboboxOption> = {
 	maxWidth?: Extract<FieldMaxWidth, 'md' | 'lg' | 'xl'>;
 	showDropdownTrigger?: boolean;
 	clearable?: boolean;
+	isAutocomplete: boolean;
 	// Downshift
 	inputRef?: Ref<HTMLInputElement>;
 	loading?: boolean;
@@ -57,6 +59,7 @@ export function ComboboxBase<Option extends DefaultComboboxOption>({
 	maxWidth: maxWidthProp = 'xl',
 	showDropdownTrigger = true,
 	clearable = false,
+	isAutocomplete,
 	renderItem = defaultRenderItem,
 	emptyResultsMessage = 'No options found.',
 	loading,
@@ -103,8 +106,13 @@ export function ComboboxBase<Option extends DefaultComboboxOption>({
 					{...popover.getReferenceProps()}
 					css={{ position: 'relative', maxWidth }}
 				>
+					{isAutocomplete && <ComboboxSearchIcon disabled={disabled} />}
 					<input
-						css={{ ...inputStyles, width: '100%' }}
+						css={{
+							...inputStyles,
+							width: '100%',
+							...(isAutocomplete && { paddingLeft: '3rem' }),
+						}}
 						disabled={disabled}
 						{...combobox.getInputProps({
 							...a11yProps,

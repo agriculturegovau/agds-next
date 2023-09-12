@@ -1,9 +1,9 @@
-import { SearchIcon } from '../icon';
-import { mapSpacing, tokens } from '../core';
+import { mapSpacing, tokens } from '../../core';
+import { SearchIcon } from '../../icon';
 
-export type SearchIconProps = { disabled?: boolean };
+export type ComboboxSearchIconProps = { disabled?: boolean };
 
-export function SearchInputIcon({ disabled }: SearchIconProps) {
+export function ComboboxSearchIcon({ disabled }: ComboboxSearchIconProps) {
 	return (
 		<SearchIcon
 			size="md"
