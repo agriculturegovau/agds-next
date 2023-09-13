@@ -9,6 +9,8 @@ import {
 import { ProgressIndicatorList } from './ProgressIndicatorList';
 
 export type ProgressIndicatorProps = {
+	/** @deprecated This prop is no longer used and will be removed in the next major version. */
+	background?: 'body' | 'bodyAlt';
 	items: ProgressIndicatorItem[];
 };
 

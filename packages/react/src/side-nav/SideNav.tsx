@@ -15,6 +15,8 @@ export type SideNavProps = {
 	activePath: string;
 	/** Used as the title of the expand/collapse trigger on smaller screen sizes. */
 	collapseTitle: string;
+	/** @deprecated This prop is no longer used and will be removed in the next major version. */
+	background?: 'body' | 'bodyAlt';
 	/** The list of links. */
 	items: SideNavMenuItemType[];
 	/** The title is placed at the top of the list of links. */
