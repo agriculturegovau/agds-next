@@ -35,7 +35,13 @@ export function DropdownMenuPanel({
 
 	// When the dropdown is opened, the menu list should be focused
 	useEffect(() => {
-		if (isMenuOpen) panelRef.current?.focus();
+		if (isMenuOpen) {
+			panelRef.current?.focus({
+				// Stops the browser jumping to the top of the page when focusing the element
+				// https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/focus
+				preventScroll: true,
+			});
+		}
 	}, [panelRef, isMenuOpen]);
 
 	const { onKeyDown } = useKeydownNavigation();
