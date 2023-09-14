@@ -59,7 +59,7 @@ export function DropdownMenuPanel({
 			onKeyDown={onKeyDown}
 			palette={palette}
 			flexDirection="column"
-			width={matchReferenceWidth ? undefined : '18rem'}
+			minWidth={matchReferenceWidth ? undefined : '18rem'}
 			focus
 			style={style}
 		>
