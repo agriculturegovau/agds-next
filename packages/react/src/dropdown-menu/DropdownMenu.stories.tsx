@@ -128,11 +128,7 @@ export const Placement: StoryObj = {
 		return (
 			<Stack gap={2} alignItems="center">
 				{placements.map((placement) => (
-					<DropdownMenu
-						key={placement}
-						popoverPlacement={placement}
-						matchReferenceWidth={true}
-					>
+					<DropdownMenu key={placement} popoverPlacement={placement}>
 						<DropdownMenuButton variant="primary">
 							{placement}
 						</DropdownMenuButton>
