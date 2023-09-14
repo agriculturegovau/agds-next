@@ -5,6 +5,8 @@ import { Flex } from '../flex';
 import { InfoIcon, ChevronDownIcon } from '../icon';
 
 export type DetailsProps = PropsWithChildren<{
+	/** If the Details component is placed on a page with `bodyAlt` background, set this prop to `true`. */
+	onBodyAlt?: boolean;
 	/** If true, the InfoIcon will be shown. */
 	iconBefore?: boolean;
 	/** The label that will be present in the trigger. */
@@ -12,7 +14,10 @@ export type DetailsProps = PropsWithChildren<{
 }>;
 
 export const Details = forwardRef<HTMLDetailsElement, DetailsProps>(
-	function Details({ children, iconBefore = false, label = 'Details' }, ref) {
+	function Details(
+		{ children, onBodyAlt = false, iconBefore = false, label = 'Details' },
+		ref
+	) {
 		return (
 			<details
 				ref={ref}
@@ -48,7 +53,7 @@ export const Details = forwardRef<HTMLDetailsElement, DetailsProps>(
 					/>
 				</Flex>
 				<Box
-					background="shade"
+					background={onBodyAlt ? 'shadeAlt' : 'shade'}
 					padding={1.5}
 					borderLeft
 					borderLeftWidth="xl"
