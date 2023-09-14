@@ -44,3 +44,18 @@ Setting the `iconBefore` prop to `true` will render the `InfoIcon` before the la
 	</Text>
 </Details>
 ```
+
+## On Body Alt
+
+If the Details component is placed on a page with `bodyAlt` background, set the `onBodyAlt` prop to `true`. This ensures the correct shade background token is used by the component.
+
+```jsx live
+<Box background="bodyAlt" padding={1.5}>
+	<Details label="Details" iconBefore onBodyAlt>
+		<Text as="p">
+			This is a small paragraph of text that is supplementary to the main page
+			content.
+		</Text>
+	</Details>
+</Box>
+```

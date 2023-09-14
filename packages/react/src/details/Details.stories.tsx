@@ -1,28 +1,39 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react';
+import { Box } from '../box';
 import { Text } from '../text';
 import { Details } from './Details';
 
-export default {
+const meta: Meta<typeof Details> = {
 	title: 'content/Details',
 	component: Details,
-} as ComponentMeta<typeof Details>;
+	args: {
+		label: 'Details',
+		iconBefore: false,
+		onBodyAlt: false,
+		children: (
+			<Text as="p">
+				This is a small paragraph of text that is supplementary to the main page
+				content.
+			</Text>
+		),
+	},
+};
 
-export const Basic: ComponentStory<typeof Details> = (args) => (
-	<Details {...args}>
-		<Text as="p">
-			This is a small paragraph of text that is supplementary to the main page
-			content.
-		</Text>
-	</Details>
-);
-Basic.args = { label: 'Details' };
+export default meta;
 
-export const WithIcon: ComponentStory<typeof Details> = (args) => (
-	<Details {...args}>
-		<Text as="p">
-			This is a small paragraph of text that is supplementary to the main page
-			content.
-		</Text>
-	</Details>
-);
-WithIcon.args = { label: 'Details', iconBefore: true };
+type Story = StoryObj<typeof Details>;
+
+export const Basic: Story = {};
+
+export const WithIcon: Story = {
+	args: { iconBefore: true },
+};
+
+export const OnBodyAlt: Story = {
+	args: { onBodyAlt: true },
+	render: (args) => (
+		<Box background="bodyAlt" padding={1.5}>
+			<Details {...args} />
+		</Box>
+	),
+};
