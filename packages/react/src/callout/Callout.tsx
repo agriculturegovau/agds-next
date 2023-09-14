@@ -38,7 +38,7 @@ export const Callout = ({
 		>
 			{icon}
 			<Stack gap={gap}>
-				{title ? <CalloutTitle>{title}</CalloutTitle> : null}
+				{title ? <CalloutTitle variant={variant}>{title}</CalloutTitle> : null}
 				{children}
 			</Stack>
 		</Flex>

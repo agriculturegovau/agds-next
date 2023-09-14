@@ -66,7 +66,7 @@ exports[`Callout with tone info and compact variant renders correctly 1`] = `
 </div>
 `;
 
-exports[`Callout with tone info and default variant renders correctly 1`] = `
+exports[`Callout with tone info and regular variant renders correctly 1`] = `
 <div>
   <div
     class="css-1y9rka1-boxStyles"
@@ -132,7 +132,7 @@ exports[`Callout with tone neutral and compact variant renders correctly 1`] = `
 </div>
 `;
 
-exports[`Callout with tone neutral and default variant renders correctly 1`] = `
+exports[`Callout with tone neutral and regular variant renders correctly 1`] = `
 <div>
   <div
     class="css-171bubh-boxStyles"
@@ -178,7 +178,7 @@ exports[`Callout with tone neutralAlt and compact variant renders correctly 1`] 
 </div>
 `;
 
-exports[`Callout with tone neutralAlt and default variant renders correctly 1`] = `
+exports[`Callout with tone neutralAlt and regular variant renders correctly 1`] = `
 <div>
   <div
     class="css-1oanjko-boxStyles"
