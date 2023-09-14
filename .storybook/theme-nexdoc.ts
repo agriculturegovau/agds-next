@@ -15,6 +15,7 @@ export const theme: Theme = {
 	...agdsTheme,
 	lightForegroundAction: primitives.maroon,
 	lightAccent: primitives.maroon,
+	darkForegroundAction: '#ffffff',
 	darkAccent: primitives.maroon,
 	darkBackgroundBody: primitives.charcoal1,
 	darkBackgroundShade: primitives.charcoal2,
