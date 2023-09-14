@@ -41,7 +41,7 @@ exports[`DropdownMenu Decorative renders correctly 1`] = `
     class="css-1p1tvpk-boxStyles-boxStyles-Popover"
     id="dropdown-menu-:ru:-panel"
     role="menu"
-    style="position: absolute; left: 0px; top: 0px; transform: translate(0px, 8px); max-width: -16px; max-height: -16px;"
+    style="position: absolute; left: 0px; top: 0px; transform: translate(0px, 8px); max-height: -16px; max-width: -16px;"
     tabindex="-1"
   >
     <div
@@ -201,7 +201,7 @@ exports[`DropdownMenu Links renders correctly 1`] = `
     class="css-1p1tvpk-boxStyles-boxStyles-Popover"
     id="dropdown-menu-:r16:-panel"
     role="menu"
-    style="position: absolute; left: 0px; top: 0px; transform: translate(0px, 8px); max-width: -16px; max-height: -16px;"
+    style="position: absolute; left: 0px; top: 0px; transform: translate(0px, 8px); max-height: -16px; max-width: -16px;"
     tabindex="-1"
   >
     <a
@@ -279,7 +279,7 @@ exports[`DropdownMenu Radio Group renders correctly 1`] = `
     class="css-1p1tvpk-boxStyles-boxStyles-Popover"
     id="dropdown-menu-:r1i:-panel"
     role="menu"
-    style="position: absolute; left: 0px; top: 0px; transform: translate(0px, 8px); max-width: -16px; max-height: -16px;"
+    style="position: absolute; left: 0px; top: 0px; transform: translate(0px, 8px); max-height: -16px; max-width: -16px;"
     tabindex="-1"
   >
     <div
@@ -401,7 +401,7 @@ exports[`DropdownMenu renders correctly 1`] = `
     class="css-1p1tvpk-boxStyles-boxStyles-Popover"
     id="dropdown-menu-:r0:-panel"
     role="menu"
-    style="position: absolute; left: 0px; top: 0px; transform: translate(0px, 8px); max-width: -16px; max-height: -16px;"
+    style="position: absolute; left: 0px; top: 0px; transform: translate(0px, 8px); max-height: -16px; max-width: -16px;"
     tabindex="-1"
   >
     <div

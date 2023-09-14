@@ -41,6 +41,7 @@ export function DropdownMenuPanel({
 	const { onKeyDown } = useKeydownNavigation();
 
 	const { style, ref: popoverRef } = popover.getPopoverProps();
+	const { matchReferenceWidth } = popover.getOptions();
 
 	if (!isMenuOpen) return null;
 
@@ -57,8 +58,8 @@ export function DropdownMenuPanel({
 			aria-activedescendant={activeDescendantId}
 			onKeyDown={onKeyDown}
 			palette={palette}
-			width="18rem"
 			flexDirection="column"
+			width={matchReferenceWidth ? undefined : '18rem'}
 			focus
 			style={style}
 		>

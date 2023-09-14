@@ -73,7 +73,6 @@ export function usePopover<RT extends ReferenceType = ReferenceType>(
 				padding: DEFAULT_OFFSET, // Prevents the floating element hit the edge of the screen
 				apply({ availableWidth, availableHeight, elements, rects }) {
 					Object.assign(elements.floating.style, {
-						maxWidth: `${availableWidth}px`,
 						maxHeight: `${
 							// Popovers can have a predefined max-height if there is enough room on the screen
 							maxHeight && availableHeight > maxHeight
@@ -81,9 +80,13 @@ export function usePopover<RT extends ReferenceType = ReferenceType>(
 								: availableHeight
 						}px`,
 						// https://floating-ui.com/docs/size#match-reference-width
-						...(matchReferenceWidth && {
-							width: `${rects.reference.width}px`,
-						}),
+						...(matchReferenceWidth
+							? {
+									width: `${rects.reference.width}px`,
+							  }
+							: {
+									maxWidth: `${availableWidth}px`,
+							  }),
 					});
 				},
 			}),
@@ -113,9 +116,19 @@ export function usePopover<RT extends ReferenceType = ReferenceType>(
 		};
 	}
 
+	function getOptions() {
+		return {
+			placement,
+			matchReferenceWidth,
+			maxHeight,
+			offset: offsetOption,
+		};
+	}
+
 	return {
 		getReferenceProps,
 		getPopoverProps,
+		getOptions,
 		referenceRef: refs.reference,
 		popoverRef: refs.floating,
 	};

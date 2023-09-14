@@ -439,6 +439,52 @@ export const Overflow: StoryObj = {
 	},
 };
 
+export const Offset: StoryObj = {
+	render: function Render() {
+		return (
+			<DropdownMenu offset={-8}>
+				<DropdownMenuButton variant="primary">
+					Toggle dropdown menu
+				</DropdownMenuButton>
+				<DropdownMenuPanel>
+					<DropdownMenuItem onClick={() => console.log('Profile')}>
+						Profile
+					</DropdownMenuItem>
+					<DropdownMenuItem onClick={() => console.log('Messages')}>
+						Messages
+					</DropdownMenuItem>
+					<DropdownMenuItem onClick={() => console.log('Account settings')}>
+						Account settings
+					</DropdownMenuItem>
+				</DropdownMenuPanel>
+			</DropdownMenu>
+		);
+	},
+};
+
+export const MatchReferenceWith: StoryObj = {
+	render: function Render() {
+		return (
+			<DropdownMenu matchReferenceWidth={true}>
+				<DropdownMenuButton variant="primary" css={{ width: '40rem' }}>
+					Toggle dropdown menu
+				</DropdownMenuButton>
+				<DropdownMenuPanel>
+					<DropdownMenuItem onClick={() => console.log('Profile')}>
+						Profile
+					</DropdownMenuItem>
+					<DropdownMenuItem onClick={() => console.log('Messages')}>
+						Messages
+					</DropdownMenuItem>
+					<DropdownMenuItem onClick={() => console.log('Account settings')}>
+						Account settings
+					</DropdownMenuItem>
+				</DropdownMenuPanel>
+			</DropdownMenu>
+		);
+	},
+};
+
 export const Complex: StoryObj = {
 	render: function Render() {
 		return (
