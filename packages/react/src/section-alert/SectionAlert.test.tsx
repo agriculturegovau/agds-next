@@ -1,25 +1,72 @@
 import '@testing-library/jest-dom';
 import 'html-validate/jest';
+import { Text } from '@ag.ds-next/react/text';
 import { cleanup, render } from '../../../../test-utils';
 import { SectionAlert } from './SectionAlert';
 import type { SectionAlertProps } from './SectionAlert';
+import { sectionAlertIconMap, SectionAlertTone } from './utils';
+
+const sectionAlertTones = Object.keys(
+	sectionAlertIconMap
+) as Array<SectionAlertTone>;
 
 afterEach(cleanup);
 
 function renderSectionAlert(props?: Partial<SectionAlertProps>) {
-	const tone = props?.tone || 'info';
-	return render(<SectionAlert tone={tone} {...props} />);
+	return render(
+		<SectionAlert tone="info" title="Title of Section alert" {...props} />
+	);
 }
 
 describe('SectionAlert', () => {
-	it('renders correctly', () => {
-		const { container } = renderSectionAlert();
-		expect(container).toMatchSnapshot();
+	{
+		sectionAlertTones.forEach((tone) => {
+			describe(`with ${tone} tone`, () => {
+				it('renders correctly', () => {
+					const { container } = renderSectionAlert({ tone });
+					expect(container).toMatchSnapshot();
+				});
+				it('renders a valid HTML structure', () => {
+					const { container } = renderSectionAlert({ tone });
+					expect(container).toHTMLValidate({
+						extends: ['html-validate:recommended'],
+					});
+				});
+			});
+		});
+	}
+
+	describe(`with a description`, () => {
+		it('renders correctly', () => {
+			const { container } = renderSectionAlert({
+				children: <Text as="p"> Section alert description text</Text>,
+			});
+			expect(container).toMatchSnapshot();
+		});
+		it('renders a valid HTML structure', () => {
+			const { container } = renderSectionAlert({
+				children: <Text as="p"> Section alert description text</Text>,
+			});
+			expect(container).toHTMLValidate({
+				extends: ['html-validate:recommended'],
+			});
+		});
 	});
-	it('renders a valid HTML structure', () => {
-		const { container } = renderSectionAlert();
-		expect(container).toHTMLValidate({
-			extends: ['html-validate:recommended'],
+
+	describe(`which is dismissable`, () => {
+		it('renders correctly', () => {
+			const { container } = renderSectionAlert({
+				onDismiss: () => console.log('dismissed'),
+			});
+			expect(container).toMatchSnapshot();
+		});
+		it('renders a valid HTML structure', () => {
+			const { container } = renderSectionAlert({
+				onDismiss: () => console.log('dismissed'),
+			});
+			expect(container).toHTMLValidate({
+				extends: ['html-validate:recommended'],
+			});
 		});
 	});
 });

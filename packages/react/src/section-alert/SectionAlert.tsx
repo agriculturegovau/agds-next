@@ -2,23 +2,17 @@ import {
 	forwardRef,
 	HTMLAttributes,
 	MouseEventHandler,
-	PropsWithChildren,
+	ReactNode,
 } from 'react';
 import { Flex } from '@ag.ds-next/react/flex';
 import { Text } from '@ag.ds-next/react/text';
-import {
-	AlertFilledIcon,
-	InfoFilledIcon,
-	SuccessFilledIcon,
-	WarningFilledIcon,
-} from '@ag.ds-next/react/icon';
 import { SectionAlertDismissButton } from './SectionAlertDismissButton';
-
-type SectionAlertTone = keyof typeof sectionAlertIconMap;
+import { sectionAlertIconMap, SectionAlertTone } from './utils';
 
 type DivProps = HTMLAttributes<HTMLDivElement>;
 
-export type SectionAlertProps = PropsWithChildren<{
+export type SectionAlertProps = {
+	children?: ReactNode;
 	id?: string;
 	role?: DivProps['role'];
 	tabIndex?: number;
@@ -26,8 +20,8 @@ export type SectionAlertProps = PropsWithChildren<{
 	/** Function to be called when the 'Close' button is pressed. */
 	onDismiss?: MouseEventHandler<HTMLButtonElement>;
 	/** The title of the alert. */
-	title?: string;
-}>;
+	title: string;
+};
 
 export const SectionAlert = forwardRef<HTMLDivElement, SectionAlertProps>(
 	function SectionAlert(
@@ -54,9 +48,9 @@ export const SectionAlert = forwardRef<HTMLDivElement, SectionAlertProps>(
 				justifyContent="space-between"
 				{...props}
 			>
-				<Flex gap={0.5} alignItems="center">
+				<Flex gap={0.5}>
 					{Icon}
-					<Flex gap={0.25} alignItems="center">
+					<Flex gap={0.25} flexDirection={'column'}>
 						{title && <Text fontWeight="bold">{title}</Text>}
 						{children}
 					</Flex>
@@ -66,26 +60,3 @@ export const SectionAlert = forwardRef<HTMLDivElement, SectionAlertProps>(
 		);
 	}
 );
-
-const sectionAlertIconMap = {
-	success: (
-		<SuccessFilledIcon
-			color="success"
-			aria-hidden="false"
-			aria-label="Success"
-		/>
-	),
-	error: (
-		<AlertFilledIcon color="error" aria-hidden="false" aria-label="Error" />
-	),
-	info: (
-		<InfoFilledIcon color="info" aria-hidden="false" aria-label="Information" />
-	),
-	warning: (
-		<WarningFilledIcon
-			color="warning"
-			aria-hidden="false"
-			aria-label="Warning"
-		/>
-	),
-};

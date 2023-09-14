@@ -41,11 +41,11 @@ export const Info: Story = {
 	},
 };
 
-export const WithChildren: Story = {
+export const WithDescription: Story = {
 	args: {
 		title: 'This is a title',
 		tone: 'info',
-		children: 'This is a message',
+		children: 'This is a description which is optional',
 	},
 };
 
@@ -54,13 +54,5 @@ export const OnDismiss: Story = {
 		title: 'This is a SectionAlert',
 		tone: 'success',
 		onDismiss: () => console.log('dismissed'),
-	},
-};
-
-export const WithTitle: Story = {
-	args: {
-		children: 'This is a message',
-		tone: 'success',
-		title: 'This is a title',
 	},
 };

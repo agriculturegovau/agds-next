@@ -273,7 +273,7 @@ function KitchenSink({ background }: KitchenSinkProps) {
 								<Text as="p">Description of the callout.</Text>
 							</Callout>
 
-							<SectionAlert tone="success">This is a message</SectionAlert>
+							<SectionAlert tone="success" title="This is a Section alert" />
 
 							<SectionAlert tone="info" title="Information">
 								This is a message

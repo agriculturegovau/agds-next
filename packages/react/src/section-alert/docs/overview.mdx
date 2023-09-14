@@ -1,10 +1,89 @@
 ---
-title: SectionAlert
-description: Description of SectionAlert
+title: Section alert
+description: Section alert notifies uses about a state change in a section of a page.
 group: Content
 storybookPath: /story/Content-SectionAlert--basic
+relatedComponents: ['page-alert']
 ---
+
+Section alert are used in regions or sections of a page to notify users about a change in state - such saving changes or a widget throwing an error.
 
 ```jsx live
 <SectionAlert title="Your changes have been saved" tone="success" />
+```
+
+<DoHeading />
+
+- Use to notify users about a change in state in a section of a
+  page
+- Use to communicate error or success messages
+- Allow it to be dismissed if it is not critical.
+
+<DontHeading />
+
+- Use to communicate messages which relate to the entire page - use [Page alert](/components/page-alert) instead
+- Use to communicate messages which relate to the entire application - use [Global alert](/components/global-alert) instead
+- Use to contain text in articles or other blocks of text content - use [Callout](/components/callout) instead
+- Hide the message automatically. Let the user dismiss the message instead.
+
+## Tones
+
+Section alert can be used to communicate different types of messages. Choosing a tone for a Section alert allows the user to understand the importance and severity of the message at a glance.
+
+The four supported tones are info, success, error and warning.
+
+### Success
+
+Use to communicate a successful action.
+
+```jsx live
+<SectionAlert title="Your changes have been saved" tone="success" />
+```
+
+### Error
+
+Use to communicate an error, such as a failed action within a widget.
+
+```jsx live
+<SectionAlert title="There was an error saving your changes" tone="error" />
+```
+
+### Warning
+
+Use warning page alerts to tell the user something urgent. Only use an alert if the information will help the user avoid a problem.
+
+```jsx live
+<SectionAlert title="A warning message for this section" tone="warning" />
+```
+
+### Info
+
+The information page alert is used to highlight important information to the user. Consider if a [Callout](/components/callout) would be more appropriate for your use case.
+
+```jsx live
+<SectionAlert title="Important information for this section" tone="info" />
+```
+
+## Description
+
+The description prop can be used to provide more information about the alert. This is useful for providing more context to the user.
+
+```jsx live
+<SectionAlert title="Your changes have been saved" tone="success">
+	<Text as="p">Your application has been successfully submitted.</Text>
+</SectionAlert>
+```
+
+## Dismissable
+
+Section alerts can be dismissed by a user if they have understood the message and no longer need to see it. Use the onDismiss prop to make the alert dismissable.
+
+Avoid dismissing error messages which block the user from completing a task. Instead, provide a way for the user to fix the error, then dismiss the alert once the error has been resolved.
+
+```jsx live
+<SectionAlert
+	title="Your changes have been saved"
+	tone="success"
+	onDismiss={console.log}
+/>
 ```
