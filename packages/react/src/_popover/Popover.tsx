@@ -42,9 +42,13 @@ export const Popover = forwardRefWithAs<'div', PopoverProps>(function Popover(
 const DEFAULT_OFFSET = 8;
 
 type UsePopoverOptions = {
+	/** The placement of the popover element in relation to the reference element. */
 	placement?: Placement;
-	matchReferenceWidth?: boolean;
+	/** The maximum height of the popover element. */
 	maxHeight?: number;
+	/** If true, the popover element will match the width of the reference element. */
+	matchReferenceWidth?: boolean;
+	/** Used to control the distance between the reference element and popover element. */
 	offset?: number;
 };
 
@@ -116,19 +120,9 @@ export function usePopover<RT extends ReferenceType = ReferenceType>(
 		};
 	}
 
-	function getOptions() {
-		return {
-			placement,
-			matchReferenceWidth,
-			maxHeight,
-			offset: offsetOption,
-		};
-	}
-
 	return {
 		getReferenceProps,
 		getPopoverProps,
-		getOptions,
 		referenceRef: refs.reference,
 		popoverRef: refs.floating,
 	};

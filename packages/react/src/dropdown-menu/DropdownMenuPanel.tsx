@@ -47,7 +47,6 @@ export function DropdownMenuPanel({
 	const { onKeyDown } = useKeydownNavigation();
 
 	const { style, ref: popoverRef } = popover.getPopoverProps();
-	const { matchReferenceWidth } = popover.getOptions();
 
 	if (!isMenuOpen) return null;
 
@@ -65,7 +64,7 @@ export function DropdownMenuPanel({
 			onKeyDown={onKeyDown}
 			palette={palette}
 			flexDirection="column"
-			minWidth={matchReferenceWidth ? undefined : '18rem'}
+			minWidth="18rem"
 			focus
 			style={style}
 		>

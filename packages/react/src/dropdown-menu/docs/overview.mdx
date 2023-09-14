@@ -303,34 +303,11 @@ For dropdown menus with many items, consider setting a maximum height using the 
 
 ## Offset
 
-Use the `offset` prop control the distance between the button and panel.
+Use the `popoverOffset` prop control the distance between the button and panel.
 
 ```jsx live
-<DropdownMenu offset={-8}>
+<DropdownMenu popoverOffset={-8}>
 	<DropdownMenuButton variant="primary">
-		Toggle dropdown menu
-	</DropdownMenuButton>
-	<DropdownMenuPanel>
-		<DropdownMenuItem onClick={() => console.log('Profile')}>
-			Profile
-		</DropdownMenuItem>
-		<DropdownMenuItem onClick={() => console.log('Messages')}>
-			Messages
-		</DropdownMenuItem>
-		<DropdownMenuItem onClick={() => console.log('Account settings')}>
-			Account settings
-		</DropdownMenuItem>
-	</DropdownMenuPanel>
-</DropdownMenu>
-```
-
-## Matching reference width
-
-Use the `matchReferenceWidth` prop to make the panel width match the width of the button.
-
-```jsx live
-<DropdownMenu matchReferenceWidth={true}>
-	<DropdownMenuButton variant="primary" block>
 		Toggle dropdown menu
 	</DropdownMenuButton>
 	<DropdownMenuPanel>

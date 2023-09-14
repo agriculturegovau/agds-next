@@ -2,7 +2,7 @@
 '@ag.ds-next/react': minor
 ---
 
-dropdown-menu: Added new props `offset` and `matchReferenceWidth`
+dropdown-menu: Added new prop `offset`
 
 dropdown-menu: Updated padding of label element in `DropdownMenuGroup` 
 
