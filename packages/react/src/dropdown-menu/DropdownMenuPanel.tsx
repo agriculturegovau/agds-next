@@ -42,6 +42,8 @@ export function DropdownMenuPanel({
 
 	const { style, ref: popoverRef } = popover.getPopoverProps();
 
+	if (!isMenuOpen) return null;
+
 	return (
 		<Popover
 			as={Flex}
@@ -55,16 +57,10 @@ export function DropdownMenuPanel({
 			aria-activedescendant={activeDescendantId}
 			onKeyDown={onKeyDown}
 			palette={palette}
+			width="18rem"
+			flexDirection="column"
 			focus
-			css={{
-				display: 'flex',
-				flexDirection: 'column',
-				minWidth: '18rem',
-			}}
-			style={{
-				...style,
-				...(!isMenuOpen && { display: 'none' }),
-			}}
+			style={style}
 		>
 			{children}
 		</Popover>

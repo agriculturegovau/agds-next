@@ -4,7 +4,7 @@ exports[`DropdownMenu Decorative renders correctly 1`] = `
 <div>
   <button
     aria-controls="dropdown-menu-:ru:-panel"
-    aria-expanded="false"
+    aria-expanded="true"
     aria-haspopup="true"
     class="css-1clbjuu-BaseButton-Button"
     id="dropdown-menu-:ru:-button"
@@ -14,7 +14,7 @@ exports[`DropdownMenu Decorative renders correctly 1`] = `
       <span
         class="css-oobk4c-Button"
       >
-        Open
+        Close
       </span>
       <span
         aria-live="assertive"
@@ -32,16 +32,16 @@ exports[`DropdownMenu Decorative renders correctly 1`] = `
       xmlns="http://www.w3.org/2000/svg"
     >
       <polyline
-        points="6 9 12 15 18 9"
+        points="18 15 12 9 6 15"
       />
     </svg>
   </button>
   <div
     aria-labelledby="dropdown-menu-:ru:-button"
-    class="css-o0kjrt-boxStyles-boxStyles-Popover-DropdownMenuPanel"
+    class="css-1p1tvpk-boxStyles-boxStyles-Popover"
     id="dropdown-menu-:ru:-panel"
     role="menu"
-    style="position: absolute; left: 0px; top: 0px; display: none; transform: translate(0px, 0px);"
+    style="position: absolute; left: 0px; top: 0px; transform: translate(0px, 8px); max-width: -16px; max-height: -16px;"
     tabindex="-1"
   >
     <div
@@ -164,7 +164,7 @@ exports[`DropdownMenu Links renders correctly 1`] = `
 <div>
   <button
     aria-controls="dropdown-menu-:r16:-panel"
-    aria-expanded="false"
+    aria-expanded="true"
     aria-haspopup="true"
     class="css-1clbjuu-BaseButton-Button"
     id="dropdown-menu-:r16:-button"
@@ -192,16 +192,16 @@ exports[`DropdownMenu Links renders correctly 1`] = `
       xmlns="http://www.w3.org/2000/svg"
     >
       <polyline
-        points="6 9 12 15 18 9"
+        points="18 15 12 9 6 15"
       />
     </svg>
   </button>
   <div
     aria-labelledby="dropdown-menu-:r16:-button"
-    class="css-o0kjrt-boxStyles-boxStyles-Popover-DropdownMenuPanel"
+    class="css-1p1tvpk-boxStyles-boxStyles-Popover"
     id="dropdown-menu-:r16:-panel"
     role="menu"
-    style="position: absolute; left: 0px; top: 0px; display: none; transform: translate(0px, 0px);"
+    style="position: absolute; left: 0px; top: 0px; transform: translate(0px, 8px); max-width: -16px; max-height: -16px;"
     tabindex="-1"
   >
     <a
@@ -242,7 +242,7 @@ exports[`DropdownMenu Radio Group renders correctly 1`] = `
 <div>
   <button
     aria-controls="dropdown-menu-:r1i:-panel"
-    aria-expanded="false"
+    aria-expanded="true"
     aria-haspopup="true"
     class="css-1clbjuu-BaseButton-Button"
     id="dropdown-menu-:r1i:-button"
@@ -270,16 +270,16 @@ exports[`DropdownMenu Radio Group renders correctly 1`] = `
       xmlns="http://www.w3.org/2000/svg"
     >
       <polyline
-        points="6 9 12 15 18 9"
+        points="18 15 12 9 6 15"
       />
     </svg>
   </button>
   <div
     aria-labelledby="dropdown-menu-:r1i:-button"
-    class="css-o0kjrt-boxStyles-boxStyles-Popover-DropdownMenuPanel"
+    class="css-1p1tvpk-boxStyles-boxStyles-Popover"
     id="dropdown-menu-:r1i:-panel"
     role="menu"
-    style="position: absolute; left: 0px; top: 0px; display: none; transform: translate(0px, 0px);"
+    style="position: absolute; left: 0px; top: 0px; transform: translate(0px, 8px); max-width: -16px; max-height: -16px;"
     tabindex="-1"
   >
     <div
@@ -287,7 +287,7 @@ exports[`DropdownMenu Radio Group renders correctly 1`] = `
       role="group"
     >
       <span
-        class="css-190t308-boxStyles-Text"
+        class="css-1xlltnd-boxStyles-Text"
         id="dropdown-menu-:r1i:-group-:r1j:"
       >
         Businesses
@@ -364,7 +364,7 @@ exports[`DropdownMenu renders correctly 1`] = `
 <div>
   <button
     aria-controls="dropdown-menu-:r0:-panel"
-    aria-expanded="false"
+    aria-expanded="true"
     aria-haspopup="true"
     class="css-1clbjuu-BaseButton-Button"
     id="dropdown-menu-:r0:-button"
@@ -392,16 +392,16 @@ exports[`DropdownMenu renders correctly 1`] = `
       xmlns="http://www.w3.org/2000/svg"
     >
       <polyline
-        points="6 9 12 15 18 9"
+        points="18 15 12 9 6 15"
       />
     </svg>
   </button>
   <div
     aria-labelledby="dropdown-menu-:r0:-button"
-    class="css-o0kjrt-boxStyles-boxStyles-Popover-DropdownMenuPanel"
+    class="css-1p1tvpk-boxStyles-boxStyles-Popover"
     id="dropdown-menu-:r0:-panel"
     role="menu"
-    style="position: absolute; left: 0px; top: 0px; display: none; transform: translate(0px, 0px);"
+    style="position: absolute; left: 0px; top: 0px; transform: translate(0px, 8px); max-width: -16px; max-height: -16px;"
     tabindex="-1"
   >
     <div
