@@ -4,9 +4,8 @@ import {
 	MouseEventHandler,
 	PropsWithChildren,
 } from 'react';
-import { Box, Flex } from '@ag.ds-next/react/box';
+import { Flex } from '@ag.ds-next/react/flex';
 import { Text } from '@ag.ds-next/react/text';
-import { boxPalette, tokens } from '@ag.ds-next/react/core';
 import {
 	AlertFilledIcon,
 	InfoFilledIcon,
@@ -15,7 +14,7 @@ import {
 } from '@ag.ds-next/react/icon';
 import { SectionAlertDismissButton } from './SectionAlertDismissButton';
 
-type SectionAlertTone = keyof typeof sectionAlertToneMap;
+type SectionAlertTone = keyof typeof sectionAlertIconMap;
 
 type DivProps = HTMLAttributes<HTMLDivElement>;
 
@@ -35,7 +34,7 @@ export const SectionAlert = forwardRef<HTMLDivElement, SectionAlertProps>(
 		{ id, role, tabIndex, tone, title, children, onDismiss, ...props },
 		ref
 	) {
-		const { fg, bg, icon } = sectionAlertToneMap[tone];
+		const Icon = sectionAlertIconMap[tone];
 		return (
 			<Flex
 				ref={ref}
@@ -44,28 +43,20 @@ export const SectionAlert = forwardRef<HTMLDivElement, SectionAlertProps>(
 				tabIndex={tabIndex}
 				rounded
 				focus
+				background={tone}
+				borderColor={tone}
+				borderLeft
+				borderLeftWidth="xl"
 				highContrastOutline
-				css={{ backgroundColor: bg }}
 				gap={0.5}
-				paddingRight={1}
+				padding={1}
 				alignItems="center"
 				justifyContent="space-between"
 				{...props}
 			>
 				<Flex gap={0.5} alignItems="center">
-					<Box
-						css={{
-							borderTopLeftRadius: tokens.borderRadius,
-							borderBottomLeftRadius: tokens.borderRadius,
-							backgroundColor: fg,
-							width: 4,
-							height: '100%',
-						}}
-					/>
-
-					<Flex css={{ color: fg }}>{icon}</Flex>
-
-					<Flex paddingY={1} gap={0.25} alignItems="center">
+					{Icon}
+					<Flex gap={0.25} alignItems="center">
 						{title && <Text fontWeight="bold">{title}</Text>}
 						{children}
 					</Flex>
@@ -76,25 +67,25 @@ export const SectionAlert = forwardRef<HTMLDivElement, SectionAlertProps>(
 	}
 );
 
-const sectionAlertToneMap = {
-	success: {
-		fg: boxPalette.systemSuccess,
-		bg: boxPalette.systemSuccessMuted,
-		icon: <SuccessFilledIcon aria-hidden="false" aria-label="Success" />,
-	},
-	error: {
-		fg: boxPalette.systemError,
-		bg: boxPalette.systemErrorMuted,
-		icon: <AlertFilledIcon aria-hidden="false" aria-label="Error" />,
-	},
-	info: {
-		fg: boxPalette.systemInfo,
-		bg: boxPalette.systemInfoMuted,
-		icon: <InfoFilledIcon aria-hidden="false" aria-label="Information" />,
-	},
-	warning: {
-		fg: boxPalette.systemWarning,
-		bg: boxPalette.systemWarningMuted,
-		icon: <WarningFilledIcon aria-hidden="false" aria-label="Warning" />,
-	},
+const sectionAlertIconMap = {
+	success: (
+		<SuccessFilledIcon
+			color="success"
+			aria-hidden="false"
+			aria-label="Success"
+		/>
+	),
+	error: (
+		<AlertFilledIcon color="error" aria-hidden="false" aria-label="Error" />
+	),
+	info: (
+		<InfoFilledIcon color="info" aria-hidden="false" aria-label="Information" />
+	),
+	warning: (
+		<WarningFilledIcon
+			color="warning"
+			aria-hidden="false"
+			aria-label="Warning"
+		/>
+	),
 };
