@@ -28,6 +28,7 @@ export const Callout = ({
 		<Flex
 			as={as}
 			flexDirection="row"
+			rounded
 			gap={gap}
 			background={background}
 			padding={padding}

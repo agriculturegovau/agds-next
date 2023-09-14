@@ -3,7 +3,7 @@
 exports[`Callout renders correctly 1`] = `
 <div>
   <div
-    class="css-171bubh-boxStyles"
+    class="css-eaebe2-boxStyles"
   >
     <div
       class="css-1lvzxao-boxStyles"
@@ -26,7 +26,7 @@ exports[`Callout renders correctly 1`] = `
 exports[`Callout with tone info and compact variant renders correctly 1`] = `
 <div>
   <div
-    class="css-1uyuomf-boxStyles"
+    class="css-tgtnb7-boxStyles"
   >
     <svg
       aria-hidden="false"
@@ -69,7 +69,7 @@ exports[`Callout with tone info and compact variant renders correctly 1`] = `
 exports[`Callout with tone info and regular variant renders correctly 1`] = `
 <div>
   <div
-    class="css-1y9rka1-boxStyles"
+    class="css-vz3ah2-boxStyles"
   >
     <svg
       aria-hidden="false"
@@ -112,7 +112,7 @@ exports[`Callout with tone info and regular variant renders correctly 1`] = `
 exports[`Callout with tone neutral and compact variant renders correctly 1`] = `
 <div>
   <div
-    class="css-tf6bp4-boxStyles"
+    class="css-1qwxuo7-boxStyles"
   >
     <div
       class="css-1wcx0lf-boxStyles"
@@ -135,7 +135,7 @@ exports[`Callout with tone neutral and compact variant renders correctly 1`] = `
 exports[`Callout with tone neutral and regular variant renders correctly 1`] = `
 <div>
   <div
-    class="css-171bubh-boxStyles"
+    class="css-eaebe2-boxStyles"
   >
     <div
       class="css-1lvzxao-boxStyles"
@@ -158,7 +158,7 @@ exports[`Callout with tone neutral and regular variant renders correctly 1`] = `
 exports[`Callout with tone neutralAlt and compact variant renders correctly 1`] = `
 <div>
   <div
-    class="css-1f72isn-boxStyles"
+    class="css-1ky8n0y-boxStyles"
   >
     <div
       class="css-1wcx0lf-boxStyles"
@@ -181,7 +181,7 @@ exports[`Callout with tone neutralAlt and compact variant renders correctly 1`] 
 exports[`Callout with tone neutralAlt and regular variant renders correctly 1`] = `
 <div>
   <div
-    class="css-1oanjko-boxStyles"
+    class="css-12c49we-boxStyles"
   >
     <div
       class="css-1lvzxao-boxStyles"
