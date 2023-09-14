@@ -1,4 +1,4 @@
-import { ElementType, PropsWithChildren } from 'react';
+import { ElementType, PropsWithChildren, ReactNode } from 'react';
 import { Flex } from '../flex';
 import { InfoFilledIcon } from '../icon';
 import { Stack } from '../stack';
@@ -8,6 +8,8 @@ export type CalloutProps = PropsWithChildren<{
 	as?: ElementType;
 	/** @deprecated Use `onBodyAlt` instead to flag if the Callout is placed on an area with a "bodyAlt" background. */
 	background?: 'shade' | 'shadeAlt';
+	/** Specify a custom icon to overwrite the default icon */
+	icon?: ReactNode;
 	/** If the Callout component is placed on a page with `bodyAlt` background, set this prop to `true`. */
 	onBodyAlt?: boolean;
 	/** Title will appear in bold */
@@ -22,6 +24,7 @@ export const Callout = ({
 	as,
 	background: backgroundProp,
 	children,
+	icon: iconProp,
 	onBodyAlt: onBodyAltProp,
 	title,
 	tone = 'neutral',
@@ -47,7 +50,7 @@ export const Callout = ({
 			borderLeftWidth="xl"
 			highContrastOutline
 		>
-			{icon}
+			{iconProp || icon ? <Flex flexShrink={0}>{iconProp || icon}</Flex> : null}
 			<Stack gap={gap}>
 				{title ? <CalloutTitle variant={variant}>{title}</CalloutTitle> : null}
 				{children}

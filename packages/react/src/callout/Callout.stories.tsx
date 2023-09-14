@@ -4,6 +4,7 @@ import { VisuallyHidden } from '../a11y';
 import { Box } from '../box';
 import { ControlGroup } from '../control-group';
 import { Flex } from '../flex';
+import { CalendarIcon } from '../icon';
 import { Radio } from '../radio';
 import { Text } from '../text';
 import { Callout, calloutToneMap } from './Callout';
@@ -68,6 +69,15 @@ export const Compact: Story = {
 		children: <Text as="p">Description of the callout.</Text>,
 		tone: 'info',
 		variant: 'compact',
+	},
+};
+
+export const WithIcon: Story = {
+	name: 'with custom icon',
+	args: {
+		title: 'Callout heading',
+		children: <Text as="p">Description of the callout.</Text>,
+		icon: <CalendarIcon />,
 	},
 };
 
