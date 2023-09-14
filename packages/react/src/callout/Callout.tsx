@@ -6,23 +6,33 @@ import { CalloutTitle } from './CalloutTitle';
 
 export type CalloutProps = PropsWithChildren<{
 	as?: ElementType;
-	/** Variant will change the padding and gap */
-	variant?: keyof typeof calloutVariantMap;
+	/** @deprecated Use `onBodyAlt` instead to flag if the Callout is placed on an area with a "bodyAlt" background. */
+	background?: 'shade' | 'shadeAlt';
+	/** If Callout is placed on "bodyAlt" background, please set this to "shadeAlt". */
+	onBodyAlt?: boolean;
 	/** Title will appear in bold */
 	title?: string;
 	/** Tone will change the background color */
 	tone?: keyof typeof calloutToneMap;
+	/** Variant will change the padding and gap */
+	variant?: keyof typeof calloutVariantMap;
 }>;
 
 export const Callout = ({
 	as,
+	background: backgroundProp,
 	children,
-	variant = 'regular',
+	onBodyAlt: onBodyAltProp,
 	title,
 	tone = 'neutral',
+	variant = 'regular',
 }: CalloutProps) => {
 	const { background, border, icon } = calloutToneMap[tone];
 	const { gap, padding } = calloutVariantMap[variant];
+
+	/** Decides whether the neutral tone should use the norman 'shade' or 'shadeAlt' bg. */
+	const onBodyAlt =
+		tone === 'neutral' && (onBodyAltProp ?? backgroundProp === 'shadeAlt');
 
 	return (
 		<Flex
@@ -30,9 +40,9 @@ export const Callout = ({
 			flexDirection="row"
 			rounded
 			gap={gap}
-			background={background}
-			padding={padding}
+			background={onBodyAlt ? 'shadeAlt' : background}
 			borderColor={border}
+			padding={padding}
 			borderLeft
 			borderLeftWidth="xl"
 			highContrastOutline
@@ -49,11 +59,6 @@ export const Callout = ({
 export const calloutToneMap = {
 	neutral: {
 		background: 'shade',
-		border: 'border',
-		icon: undefined,
-	},
-	neutralAlt: {
-		background: 'shadeAlt',
 		border: 'border',
 		icon: undefined,
 	},

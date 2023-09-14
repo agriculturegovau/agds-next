@@ -136,20 +136,18 @@ const backgroundMapper = {
 		page: 'body',
 		shade: 'shade',
 		opposite: 'bodyAlt',
-		callout: 'neutral',
 	},
 	bodyAlt: {
 		page: 'bodyAlt',
 		shade: 'shadeAlt',
 		opposite: 'body',
-		callout: 'neutralAlt',
 	},
 } as const;
 
 type KitchenSinkProps = { background: 'body' | 'bodyAlt' };
 
 function KitchenSink({ background }: KitchenSinkProps) {
-	const { page, callout, opposite } = backgroundMapper[background];
+	const { page, opposite } = backgroundMapper[background];
 	const [isModalOpen, openModal, closeModal] = useTernaryState(false);
 	const [isDrawerOpen, openDrawer, closeDrawer] = useTernaryState(false);
 	return (
@@ -268,7 +266,11 @@ function KitchenSink({ background }: KitchenSinkProps) {
 								tortor eu, finibus lacinia libero.
 							</Text>
 
-							<Callout title="Callout heading" tone={callout}>
+							<Callout
+								title="Callout heading"
+								tone="neutral"
+								onBodyAlt={background === 'bodyAlt'}
+							>
 								<Text as="p">Description of the callout.</Text>
 							</Callout>
 
