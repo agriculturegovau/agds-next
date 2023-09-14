@@ -8,7 +8,7 @@ export type CalloutProps = PropsWithChildren<{
 	as?: ElementType;
 	/** @deprecated Use `onBodyAlt` instead to flag if the Callout is placed on an area with a "bodyAlt" background. */
 	background?: 'shade' | 'shadeAlt';
-	/** If Callout is placed on "bodyAlt" background, please set this to "shadeAlt". */
+	/** If the Callout component is placed on a page with `bodyAlt` background, set this prop to `true`. */
 	onBodyAlt?: boolean;
 	/** Title will appear in bold */
 	title?: string;

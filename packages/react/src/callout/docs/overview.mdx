@@ -49,12 +49,12 @@ The normal tone of a callout is `neutral`.
 
 By default, neutral Callouts make use of the `shade` [background token](/foundations/tokens/colour#background-colours), which must be paired with the normal `body` background.
 
-If a neutral Callout is placed on an area with a `bodyAlt` background, you must set the `tone` prop to `neutralAlt` to ensure the Callout uses the correct `shadeAlt` background. This is to ensure correct contrast and a consistent visual style.
+If the neutral Callout component is placed on a page with `bodyAlt` background, set the `onBodyAlt` prop to `true`. This ensures the correct shade background token is used by the component.
 
 ```jsx live
 <Stack background="bodyAlt" padding={2} gap={1}>
 	<Text>An area with `bodyAlt` background</Text>
-	<Callout title="Callout heading" tone="neutralAlt">
+	<Callout title="Callout heading" tone="neutral" onBodyAlt>
 		<Text as="p">Description of the callout.</Text>
 	</Callout>
 </Stack>
