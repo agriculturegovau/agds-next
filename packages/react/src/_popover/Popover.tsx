@@ -48,7 +48,7 @@ type UsePopoverOptions = {
 	maxHeight?: number;
 	/** If true, the popover element will match the width of the reference element. */
 	matchReferenceWidth?: boolean;
-	/** Used to control the distance between the reference element and popover element. */
+	/** Used to control the vertical distance between the reference element and popover element. Value is in pixels. */
 	offset?: number;
 };
 

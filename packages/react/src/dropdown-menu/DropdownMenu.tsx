@@ -15,7 +15,7 @@ export type DropdownMenuProps = {
 	popoverPlacement?: DropdownMenuPopoverPlacement;
 	/** The max height of the dropdown panel popover. */
 	popoverMaxHeight?: number;
-	/** Used to control the distance between the dropdown menu button and dropdown menu panel. */
+	/** Used to control the vertical distance between the reference element and popover element. Value is in pixels. */
 	popoverOffset?: number;
 };
 
