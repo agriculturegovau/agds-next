@@ -52,7 +52,7 @@ exports[`Callout with tone info and compact variant renders correctly 1`] = `
       class="css-1wcx0lf-boxStyles"
     >
       <h2
-        class="css-kip0vn-boxStyles-Text"
+        class="css-1nbyqjf-boxStyles-Text"
       >
         Callout heading
       </h2>
@@ -118,7 +118,7 @@ exports[`Callout with tone neutral and compact variant renders correctly 1`] = `
       class="css-1wcx0lf-boxStyles"
     >
       <h2
-        class="css-kip0vn-boxStyles-Text"
+        class="css-1nbyqjf-boxStyles-Text"
       >
         Callout heading
       </h2>
@@ -164,7 +164,7 @@ exports[`Callout with tone neutralAlt and compact variant renders correctly 1`] 
       class="css-1wcx0lf-boxStyles"
     >
       <h2
-        class="css-kip0vn-boxStyles-Text"
+        class="css-1nbyqjf-boxStyles-Text"
       >
         Callout heading
       </h2>
