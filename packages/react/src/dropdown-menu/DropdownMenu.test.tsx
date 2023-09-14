@@ -27,6 +27,17 @@ expect.extend(toHaveNoViolations);
 
 afterEach(cleanup);
 
+async function getDropdownMenuButton() {
+	return await screen.findByRole('button');
+}
+
+async function openDropdownMenu() {
+	const menuButton = await getDropdownMenuButton();
+	menuButton.focus();
+	expect(menuButton).toHaveFocus();
+	await userEvent.click(menuButton);
+}
+
 function renderBasicDropdownMenu() {
 	return render(
 		<DropdownMenu>
@@ -41,13 +52,15 @@ function renderBasicDropdownMenu() {
 }
 
 describe('DropdownMenu', () => {
-	it('renders correctly', () => {
+	it('renders correctly', async () => {
 		const { container } = renderBasicDropdownMenu();
+		await openDropdownMenu();
 		expect(container).toMatchSnapshot();
 	});
 
 	it('renders valid HTML with no a11y violations', async () => {
 		const { container } = renderBasicDropdownMenu();
+		await openDropdownMenu();
 		expect(container).toHTMLValidate({
 			extends: ['html-validate:recommended'],
 			rules: {
@@ -64,21 +77,21 @@ describe('DropdownMenu', () => {
 	it('renders the correct basic aria attributes', async () => {
 		renderBasicDropdownMenu();
 
-		const menuButton = await screen.findByRole('button');
-		const menuList = await screen.findByRole('menu', { hidden: true });
+		const menuButton = await getDropdownMenuButton();
 
 		expect(menuButton).toHaveAttribute('aria-haspopup', 'true');
 		expect(menuButton).toHaveAttribute('aria-expanded', 'false');
+
+		// Open the dropdown menu
+		await openDropdownMenu();
+		const menuList = await screen.findByRole('menu');
+
+		expect(menuButton).toHaveAttribute('aria-expanded', 'true');
 		expect(menuButton).toHaveAttribute('aria-controls', menuList.id);
 
 		expect(menuList).toHaveAttribute('role', 'menu');
 		expect(menuList).toHaveAttribute('tabIndex', '-1');
 		expect(menuList).toHaveAttribute('aria-labelledby', menuButton.id);
-
-		// Open the dropdown menu
-		await userEvent.click(menuButton);
-
-		expect(menuButton).toHaveAttribute('aria-expanded', 'true');
 
 		// Close the dropdown menu
 		await userEvent.keyboard('{Escape}');
@@ -89,7 +102,7 @@ describe('DropdownMenu', () => {
 	it('focuses the correct element when opening/closing', async () => {
 		renderBasicDropdownMenu();
 
-		const menuButton = await screen.findByRole('button');
+		const menuButton = await getDropdownMenuButton();
 
 		// Open the dropdown menu
 		await userEvent.click(menuButton);
@@ -115,11 +128,10 @@ describe('DropdownMenu', () => {
 			</DropdownMenu>
 		);
 
-		const menuButton = await screen.findByRole('button');
-		const menuList = await screen.findByRole('menu', { hidden: true });
-
 		// Open the dropdown menu
-		await userEvent.click(menuButton);
+		await openDropdownMenu();
+
+		const menuList = await screen.findByRole('menu');
 
 		// aria-activedescendant should be empty
 		expect(menuList).not.toHaveAttribute('aria-activedescendant');
@@ -161,11 +173,10 @@ describe('DropdownMenu', () => {
 			</DropdownMenu>
 		);
 
-		const menuButton = await screen.findByRole('button');
-		const menuList = await screen.findByRole('menu', { hidden: true });
-
 		// Open the dropdown menu
-		await userEvent.click(menuButton);
+		await openDropdownMenu();
+
+		const menuList = await screen.findByRole('menu');
 
 		// aria-activedescendant should be empty
 		expect(menuList).not.toHaveAttribute('aria-activedescendant');
@@ -192,18 +203,14 @@ describe('DropdownMenu', () => {
 			</DropdownMenu>
 		);
 
-		const menuButton = await screen.findByRole('button');
-
-		// Open the dropdown menu
-		menuButton.focus();
-		expect(menuButton).toHaveFocus();
-		await userEvent.click(menuButton);
+		await openDropdownMenu();
 
 		// Once the dropdown menu is opened, the menu list should be focused
 		const firstListItem = await screen.findByText('Item 1');
 		await userEvent.click(firstListItem);
 
 		// When closing the dropdown menu, the the trigger should be focused again
+		const menuButton = await getDropdownMenuButton();
 		expect(menuButton).toHaveFocus();
 
 		expect(onClick1).toHaveBeenCalledTimes(1);
@@ -227,7 +234,7 @@ describe('DropdownMenu', () => {
 			</DropdownMenu>
 		);
 
-		const menuButton = await screen.findByRole('button');
+		const menuButton = await getDropdownMenuButton();
 
 		expect(menuButton).toHaveTextContent('Open');
 
@@ -278,13 +285,15 @@ function renderDecorativeDropdownMenu() {
 }
 
 describe('DropdownMenu Decorative', () => {
-	it('renders correctly', () => {
+	it('renders correctly', async () => {
 		const { container } = renderDecorativeDropdownMenu();
+		await openDropdownMenu();
 		expect(container).toMatchSnapshot();
 	});
 
 	it('renders valid HTML with no a11y violations', async () => {
 		const { container } = renderDecorativeDropdownMenu();
+		await openDropdownMenu();
 		expect(container).toHTMLValidate({
 			extends: ['html-validate:recommended'],
 			rules: {
@@ -313,11 +322,13 @@ function renderDropdownMenuLinks() {
 describe('DropdownMenu Links', () => {
 	it('renders correctly', async () => {
 		const { container } = renderDropdownMenuLinks();
+		await openDropdownMenu();
 		expect(container).toMatchSnapshot();
 	});
 
 	it('renders valid HTML with no a11y violations', async () => {
 		const { container } = renderDropdownMenuLinks();
+		await openDropdownMenu();
 		expect(container).toHTMLValidate({
 			extends: ['html-validate:recommended'],
 			rules: {
@@ -330,10 +341,10 @@ describe('DropdownMenu Links', () => {
 
 	it('basic attributes render correctly', async () => {
 		renderDropdownMenuLinks();
+		await openDropdownMenu();
 
 		const [firstListItem, secondListItem] = await screen.findAllByRole(
-			'menuitem',
-			{ hidden: true }
+			'menuitem'
 		);
 
 		expect(firstListItem).toBeInTheDocument();
@@ -360,9 +371,10 @@ describe('DropdownMenu Links', () => {
 			</DropdownMenu>
 		);
 
+		await openDropdownMenu();
+
 		const [firstListItem, secondListItem] = await screen.findAllByRole(
-			'menuitem',
-			{ hidden: true }
+			'menuitem'
 		);
 
 		expect(firstListItem).toBeInTheDocument();
@@ -417,11 +429,13 @@ function renderDropdownMenuRadio() {
 describe('DropdownMenu Radio Group', () => {
 	it('renders correctly', async () => {
 		const { container } = renderDropdownMenuRadio();
+		await openDropdownMenu();
 		expect(container).toMatchSnapshot();
 	});
 
 	it('renders valid HTML with no a11y violations', async () => {
 		const { container } = renderDropdownMenuRadio();
+		await openDropdownMenu();
 		expect(container).toHTMLValidate({
 			extends: ['html-validate:recommended'],
 			rules: {
@@ -435,8 +449,10 @@ describe('DropdownMenu Radio Group', () => {
 	it('renders the correct basic aria attributes', async () => {
 		renderDropdownMenuRadio();
 
+		await openDropdownMenu();
+
 		const [firstListItem, secondListItem, thirdListItem] =
-			await screen.findAllByRole('menuitemradio', { hidden: true });
+			await screen.findAllByRole('menuitemradio');
 
 		expect(firstListItem).toBeInTheDocument();
 		expect(firstListItem).toHaveAttribute('aria-checked', 'false');
@@ -489,12 +505,8 @@ describe('DropdownMenu Radio Group', () => {
 			</DropdownMenu>
 		);
 
-		const menuButton = await screen.findByRole('button');
-
-		// Open the dropdown menu
-		menuButton.focus();
-		expect(menuButton).toHaveFocus();
-		await userEvent.click(menuButton);
+		const menuButton = await getDropdownMenuButton();
+		await openDropdownMenu();
 
 		// Once the dropdown menu is opened, the menu list should be focused
 		const firstListItem = await screen.findByText('Antfix');

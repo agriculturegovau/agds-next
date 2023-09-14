@@ -35,12 +35,20 @@ export function DropdownMenuPanel({
 
 	// When the dropdown is opened, the menu list should be focused
 	useEffect(() => {
-		if (isMenuOpen) panelRef.current?.focus();
+		if (isMenuOpen) {
+			panelRef.current?.focus({
+				// Stops the browser jumping to the top of the page when focusing the element
+				// https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/focus
+				preventScroll: true,
+			});
+		}
 	}, [panelRef, isMenuOpen]);
 
 	const { onKeyDown } = useKeydownNavigation();
 
 	const { style, ref: popoverRef } = popover.getPopoverProps();
+
+	if (!isMenuOpen) return null;
 
 	return (
 		<Popover
@@ -55,16 +63,10 @@ export function DropdownMenuPanel({
 			aria-activedescendant={activeDescendantId}
 			onKeyDown={onKeyDown}
 			palette={palette}
+			flexDirection="column"
+			minWidth="18rem"
 			focus
-			css={{
-				display: 'flex',
-				flexDirection: 'column',
-				minWidth: '18rem',
-			}}
-			style={{
-				...style,
-				...(!isMenuOpen && { display: 'none' }),
-			}}
+			style={style}
 		>
 			{children}
 		</Popover>

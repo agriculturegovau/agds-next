@@ -129,7 +129,9 @@ export const Placement: StoryObj = {
 			<Stack gap={2} alignItems="center">
 				{placements.map((placement) => (
 					<DropdownMenu key={placement} popoverPlacement={placement}>
-						<DropdownMenuButton>{placement}</DropdownMenuButton>
+						<DropdownMenuButton variant="primary">
+							{placement}
+						</DropdownMenuButton>
 						<DropdownMenuPanel>
 							<DropdownMenuItem>Profile</DropdownMenuItem>
 							<DropdownMenuItem>Messages</DropdownMenuItem>
@@ -429,6 +431,29 @@ export const Overflow: StoryObj = {
 					</DropdownMenuPanel>
 				</DropdownMenu>
 			</Stack>
+		);
+	},
+};
+
+export const Offset: StoryObj = {
+	render: function Render() {
+		return (
+			<DropdownMenu popoverOffset={-8}>
+				<DropdownMenuButton variant="primary">
+					Toggle dropdown menu
+				</DropdownMenuButton>
+				<DropdownMenuPanel>
+					<DropdownMenuItem onClick={() => console.log('Profile')}>
+						Profile
+					</DropdownMenuItem>
+					<DropdownMenuItem onClick={() => console.log('Messages')}>
+						Messages
+					</DropdownMenuItem>
+					<DropdownMenuItem onClick={() => console.log('Account settings')}>
+						Account settings
+					</DropdownMenuItem>
+				</DropdownMenuPanel>
+			</DropdownMenu>
 		);
 	},
 };

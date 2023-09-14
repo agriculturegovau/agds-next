@@ -301,6 +301,29 @@ For dropdown menus with many items, consider setting a maximum height using the 
 </Stack>
 ```
 
+## Offset
+
+Use the `popoverOffset` prop to control the vertical distance between the button and panel. This value needs to be specified in pixels
+
+```jsx live
+<DropdownMenu popoverOffset={-8}>
+	<DropdownMenuButton variant="primary">
+		Toggle dropdown menu
+	</DropdownMenuButton>
+	<DropdownMenuPanel>
+		<DropdownMenuItem onClick={() => console.log('Profile')}>
+			Profile
+		</DropdownMenuItem>
+		<DropdownMenuItem onClick={() => console.log('Messages')}>
+			Messages
+		</DropdownMenuItem>
+		<DropdownMenuItem onClick={() => console.log('Account settings')}>
+			Account settings
+		</DropdownMenuItem>
+	</DropdownMenuPanel>
+</DropdownMenu>
+```
+
 ## Accessing state
 
 If you need to access the internal state of the menu, you can provide a render callback to `DropdownMenu`. This is useful if you want to change the appearance of the dropdown menu button based on whether the dropdown menu is opened or closed.

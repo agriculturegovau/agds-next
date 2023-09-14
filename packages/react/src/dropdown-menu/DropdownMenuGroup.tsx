@@ -16,8 +16,9 @@ export function DropdownMenuGroup({
 		<div role="group" aria-labelledby={id}>
 			<Text
 				display="block"
-				padding={1}
-				paddingBottom={0}
+				paddingX={1}
+				paddingTop={1.5}
+				paddingBottom={0.5}
 				lineHeight="heading"
 				fontWeight="bold"
 				fontSize="xs"

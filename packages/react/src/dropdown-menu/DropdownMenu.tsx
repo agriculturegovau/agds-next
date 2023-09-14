@@ -15,12 +15,15 @@ export type DropdownMenuProps = {
 	popoverPlacement?: DropdownMenuPopoverPlacement;
 	/** The max height of the dropdown panel popover. */
 	popoverMaxHeight?: number;
+	/** Used to control the vertical distance between the reference element and popover element. Value is in pixels. */
+	popoverOffset?: number;
 };
 
 export function DropdownMenu({
 	children,
 	popoverPlacement = 'bottom-start',
 	popoverMaxHeight,
+	popoverOffset,
 }: DropdownMenuProps) {
 	const [state, dispatch] = useReducer(reducer, initialState);
 
@@ -30,6 +33,7 @@ export function DropdownMenu({
 	const popover = usePopover<HTMLButtonElement>({
 		placement: popoverPlacement,
 		maxHeight: popoverMaxHeight,
+		offset: popoverOffset,
 	});
 
 	function openMenu() {

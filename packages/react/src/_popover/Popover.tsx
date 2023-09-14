@@ -42,9 +42,14 @@ export const Popover = forwardRefWithAs<'div', PopoverProps>(function Popover(
 const DEFAULT_OFFSET = 8;
 
 type UsePopoverOptions = {
+	/** The placement of the popover element in relation to the reference element. */
 	placement?: Placement;
-	matchReferenceWidth?: boolean;
+	/** The maximum height of the popover element. */
 	maxHeight?: number;
+	/** If true, the popover element will match the width of the reference element. */
+	matchReferenceWidth?: boolean;
+	/** Used to control the vertical distance between the reference element and popover element. Value is in pixels. */
+	offset?: number;
 };
 
 export function usePopover<RT extends ReferenceType = ReferenceType>(
@@ -54,23 +59,24 @@ export function usePopover<RT extends ReferenceType = ReferenceType>(
 		placement = 'bottom-start',
 		matchReferenceWidth = false,
 		maxHeight,
+		offset: offsetOption = DEFAULT_OFFSET,
 	} = options || {};
+
 	const { refs, floatingStyles } = useFloating<RT>({
 		placement,
 		middleware: [
 			// Adds distance between the reference and floating element
 			// https://floating-ui.com/docs/offset
-			offset(DEFAULT_OFFSET),
+			offset(offsetOption),
 			// Changes the placement of the floating element in order to keep it in view
 			// https://floating-ui.com/docs/flip
 			flip(),
 			// Allows you to change the size of the floating element
 			// https://floating-ui.com/docs/size
 			size({
-				padding: DEFAULT_OFFSET,
+				padding: DEFAULT_OFFSET, // Prevents the floating element hit the edge of the screen
 				apply({ availableWidth, availableHeight, elements, rects }) {
 					Object.assign(elements.floating.style, {
-						maxWidth: `${availableWidth}px`,
 						maxHeight: `${
 							// Popovers can have a predefined max-height if there is enough room on the screen
 							maxHeight && availableHeight > maxHeight
@@ -78,9 +84,13 @@ export function usePopover<RT extends ReferenceType = ReferenceType>(
 								: availableHeight
 						}px`,
 						// https://floating-ui.com/docs/size#match-reference-width
-						...(matchReferenceWidth && {
-							width: `${rects.reference.width}px`,
-						}),
+						...(matchReferenceWidth
+							? {
+									width: `${rects.reference.width}px`,
+							  }
+							: {
+									maxWidth: `${availableWidth}px`,
+							  }),
 					});
 				},
 			}),
