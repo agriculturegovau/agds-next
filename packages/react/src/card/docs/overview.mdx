@@ -6,6 +6,14 @@ storybookPath: /story/layout-card--basic
 figmaGalleryNodeId: 11960%3A99772
 ---
 
+Cards are often used to curate groups of related information – for example, Top tasks. There are 2 types of cards – basic and link. They are frequently used on landing pages to help users find what they need.
+
+Cards can contain multiple elements, such as images, links, actions, text and more.
+
+Cards can be placed in a 2, 3, or 4-column layout. Cards in a grid layout should be equal in height and the same type.
+
+Consider using other formats such as tables if more than 12 cards are required.
+
 ```jsx live
 <Flex gap={1} flexDirection="row">
 	<Flex
@@ -53,24 +61,23 @@ figmaGalleryNodeId: 11960%3A99772
 </Flex>
 ```
 
-Cards are used to organise information related to a single topic. Cards can contain multiple elements, such as images, links, actions, text and more.
-
 <DoHeading />
 
 - use link cards to provide a contextual link to another page
-- only have one link per card
-- avoid images for the most part unless they add information and are relevant
-- use a pictogram only if it provides meaningful context
+- limit links to one per card
+- avoid images for the most part unless they add relevant information
+- use a pictogram (64 pixels) if it provides meaningful context
 - use appropriate alt text for images.
 
 <DontHeading />
 
 - include more than 1 topic per card
 - use decorative images
-- use formatted or rich text such as lists, links etc. in the content area
+- use formatted/rich text (lists, links etc.) in the card content area
 - include more than 3 lines of body copy
 - repeat images in card groups
-- use different card types in the same grid.
+- use different card types in the same grid
+- add links in the text.
 
 ## Images
 
