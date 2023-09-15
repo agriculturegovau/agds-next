@@ -38,14 +38,14 @@ exports[`DropdownMenu Decorative renders correctly 1`] = `
   </button>
   <div
     aria-labelledby="dropdown-menu-:ru:-button"
-    class="css-mbg1mh-boxStyles-boxStyles-Popover"
+    class="css-1191aff-boxStyles-boxStyles-Popover"
     id="dropdown-menu-:ru:-panel"
     role="menu"
     style="position: absolute; left: 0px; top: 0px; transform: translate(0px, 8px); max-height: -16px; max-width: -16px;"
     tabindex="-1"
   >
     <div
-      class="css-7ts4j-boxStyles-DropdownMenuItem"
+      class="css-17dk25j-boxStyles-DropdownMenuItem"
       id="dropdown-menu-:ru:-item-:rv:"
       role="menuitem"
       tabindex="-1"
@@ -55,7 +55,7 @@ exports[`DropdownMenu Decorative renders correctly 1`] = `
       >
         <svg
           aria-hidden="true"
-          class="css-qhpjst-Icon"
+          class="css-1qwfqs8-DropdownMenuItem"
           clip-rule="evenodd"
           focusable="false"
           height="24"
@@ -73,13 +73,18 @@ exports[`DropdownMenu Decorative renders correctly 1`] = `
             r="10.5"
           />
         </svg>
-        <span>
+        <span
+          class="css-1bvtrd1-boxStyles-Text"
+        >
           Profile
         </span>
       </div>
+      <div
+        class="css-azld6j-DropdownMenuItem"
+      />
     </div>
     <div
-      class="css-7ts4j-boxStyles-DropdownMenuItem"
+      class="css-17dk25j-boxStyles-DropdownMenuItem"
       id="dropdown-menu-:ru:-item-:r10:"
       role="menuitem"
       tabindex="-1"
@@ -89,7 +94,7 @@ exports[`DropdownMenu Decorative renders correctly 1`] = `
       >
         <svg
           aria-hidden="true"
-          class="css-qhpjst-Icon"
+          class="css-1qwfqs8-DropdownMenuItem"
           clip-rule="evenodd"
           focusable="false"
           height="24"
@@ -102,28 +107,34 @@ exports[`DropdownMenu Decorative renders correctly 1`] = `
             d="M22 6C22 4.9 21.1 4 20 4H4C2.9 4 2 4.9 2 6M22 6V18C22 19.1 21.1 20 20 20H4C2.9 20 2 19.1 2 18V6M22 6L12 13L2 6"
           />
         </svg>
-        <span>
+        <span
+          class="css-1bvtrd1-boxStyles-Text"
+        >
           Messages
         </span>
       </div>
-      <span
-        aria-hidden="true"
-        class="css-uouzcn-boxStyles-Text-NotificationBadge"
+      <div
+        class="css-azld6j-DropdownMenuItem"
       >
-        99+
-      </span>
-      <span
-        class="css-avudkd-VisuallyHidden"
-      >
-        , 100 unread
-      </span>
+        <span
+          aria-hidden="true"
+          class="css-uouzcn-boxStyles-Text-NotificationBadge"
+        >
+          99+
+        </span>
+        <span
+          class="css-avudkd-VisuallyHidden"
+        >
+          , 100 unread
+        </span>
+      </div>
     </div>
     <hr
       aria-hidden="true"
       class="css-1th2zfi-Divider"
     />
     <div
-      class="css-7ts4j-boxStyles-DropdownMenuItem"
+      class="css-17dk25j-boxStyles-DropdownMenuItem"
       id="dropdown-menu-:ru:-item-:r11:"
       role="menuitem"
       tabindex="-1"
@@ -133,7 +144,7 @@ exports[`DropdownMenu Decorative renders correctly 1`] = `
       >
         <svg
           aria-hidden="true"
-          class="css-qhpjst-Icon"
+          class="css-1qwfqs8-DropdownMenuItem"
           clip-rule="evenodd"
           focusable="false"
           height="24"
@@ -151,10 +162,15 @@ exports[`DropdownMenu Decorative renders correctly 1`] = `
             d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"
           />
         </svg>
-        <span>
+        <span
+          class="css-1bvtrd1-boxStyles-Text"
+        >
           Account settings
         </span>
       </div>
+      <div
+        class="css-azld6j-DropdownMenuItem"
+      />
     </div>
   </div>
 </div>
@@ -198,14 +214,14 @@ exports[`DropdownMenu Links renders correctly 1`] = `
   </button>
   <div
     aria-labelledby="dropdown-menu-:r16:-button"
-    class="css-mbg1mh-boxStyles-boxStyles-Popover"
+    class="css-1191aff-boxStyles-boxStyles-Popover"
     id="dropdown-menu-:r16:-panel"
     role="menu"
     style="position: absolute; left: 0px; top: 0px; transform: translate(0px, 8px); max-height: -16px; max-width: -16px;"
     tabindex="-1"
   >
     <a
-      class="css-7ts4j-boxStyles-DropdownMenuItem"
+      class="css-17dk25j-boxStyles-DropdownMenuItem"
       href="/about"
       id="dropdown-menu-:r16:-item-:r17:"
       role="menuitem"
@@ -214,13 +230,18 @@ exports[`DropdownMenu Links renders correctly 1`] = `
       <div
         class="css-16gtkc6-boxStyles"
       >
-        <span>
+        <span
+          class="css-1bvtrd1-boxStyles-Text"
+        >
           About
         </span>
       </div>
+      <div
+        class="css-azld6j-DropdownMenuItem"
+      />
     </a>
     <a
-      class="css-7ts4j-boxStyles-DropdownMenuItem"
+      class="css-17dk25j-boxStyles-DropdownMenuItem"
       href="/contact"
       id="dropdown-menu-:r16:-item-:r18:"
       role="menuitem"
@@ -229,10 +250,15 @@ exports[`DropdownMenu Links renders correctly 1`] = `
       <div
         class="css-16gtkc6-boxStyles"
       >
-        <span>
+        <span
+          class="css-1bvtrd1-boxStyles-Text"
+        >
           Contact
         </span>
       </div>
+      <div
+        class="css-azld6j-DropdownMenuItem"
+      />
     </a>
   </div>
 </div>
@@ -276,7 +302,7 @@ exports[`DropdownMenu Radio Group renders correctly 1`] = `
   </button>
   <div
     aria-labelledby="dropdown-menu-:r1i:-button"
-    class="css-mbg1mh-boxStyles-boxStyles-Popover"
+    class="css-1191aff-boxStyles-boxStyles-Popover"
     id="dropdown-menu-:r1i:-panel"
     role="menu"
     style="position: absolute; left: 0px; top: 0px; transform: translate(0px, 8px); max-height: -16px; max-width: -16px;"
@@ -294,7 +320,7 @@ exports[`DropdownMenu Radio Group renders correctly 1`] = `
       </span>
       <div
         aria-checked="false"
-        class="css-1us24yp-boxStyles-DropdownMenuItemRadio"
+        class="css-1e5dgxr-boxStyles-DropdownMenuItemRadio"
         id="item-1"
         role="menuitemradio"
       >
@@ -312,10 +338,13 @@ exports[`DropdownMenu Radio Group renders correctly 1`] = `
             Sydney
           </span>
         </div>
+        <div
+          class="css-r8b31l-DropdownMenuItemRadio"
+        />
       </div>
       <div
         aria-checked="true"
-        class="css-4naupb-boxStyles-DropdownMenuItemRadio"
+        class="css-1yrn77q-boxStyles-DropdownMenuItemRadio"
         id="item-2"
         role="menuitemradio"
       >
@@ -333,10 +362,13 @@ exports[`DropdownMenu Radio Group renders correctly 1`] = `
             Brisbane
           </span>
         </div>
+        <div
+          class="css-r8b31l-DropdownMenuItemRadio"
+        />
       </div>
       <div
         aria-checked="false"
-        class="css-1us24yp-boxStyles-DropdownMenuItemRadio"
+        class="css-1e5dgxr-boxStyles-DropdownMenuItemRadio"
         id="item-3"
         role="menuitemradio"
       >
@@ -354,6 +386,9 @@ exports[`DropdownMenu Radio Group renders correctly 1`] = `
             Canberra
           </span>
         </div>
+        <div
+          class="css-r8b31l-DropdownMenuItemRadio"
+        />
       </div>
     </div>
   </div>
@@ -398,14 +433,14 @@ exports[`DropdownMenu renders correctly 1`] = `
   </button>
   <div
     aria-labelledby="dropdown-menu-:r0:-button"
-    class="css-mbg1mh-boxStyles-boxStyles-Popover"
+    class="css-1191aff-boxStyles-boxStyles-Popover"
     id="dropdown-menu-:r0:-panel"
     role="menu"
     style="position: absolute; left: 0px; top: 0px; transform: translate(0px, 8px); max-height: -16px; max-width: -16px;"
     tabindex="-1"
   >
     <div
-      class="css-7ts4j-boxStyles-DropdownMenuItem"
+      class="css-17dk25j-boxStyles-DropdownMenuItem"
       id="dropdown-menu-:r0:-item-:r1:"
       role="menuitem"
       tabindex="-1"
@@ -413,13 +448,18 @@ exports[`DropdownMenu renders correctly 1`] = `
       <div
         class="css-16gtkc6-boxStyles"
       >
-        <span>
+        <span
+          class="css-1bvtrd1-boxStyles-Text"
+        >
           Item 1
         </span>
       </div>
+      <div
+        class="css-azld6j-DropdownMenuItem"
+      />
     </div>
     <div
-      class="css-7ts4j-boxStyles-DropdownMenuItem"
+      class="css-17dk25j-boxStyles-DropdownMenuItem"
       id="dropdown-menu-:r0:-item-:r2:"
       role="menuitem"
       tabindex="-1"
@@ -427,13 +467,18 @@ exports[`DropdownMenu renders correctly 1`] = `
       <div
         class="css-16gtkc6-boxStyles"
       >
-        <span>
+        <span
+          class="css-1bvtrd1-boxStyles-Text"
+        >
           Item 2
         </span>
       </div>
+      <div
+        class="css-azld6j-DropdownMenuItem"
+      />
     </div>
     <div
-      class="css-7ts4j-boxStyles-DropdownMenuItem"
+      class="css-17dk25j-boxStyles-DropdownMenuItem"
       id="dropdown-menu-:r0:-item-:r3:"
       role="menuitem"
       tabindex="-1"
@@ -441,10 +486,15 @@ exports[`DropdownMenu renders correctly 1`] = `
       <div
         class="css-16gtkc6-boxStyles"
       >
-        <span>
+        <span
+          class="css-1bvtrd1-boxStyles-Text"
+        >
           Item 3
         </span>
       </div>
+      <div
+        class="css-azld6j-DropdownMenuItem"
+      />
     </div>
   </div>
 </div>
