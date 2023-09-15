@@ -1,15 +1,11 @@
 import { PropsWithChildren } from 'react';
 import { Text } from '../text';
+import { CalloutVariant, calloutVariantMap } from './utils';
 
 export type CalloutTitleProps = PropsWithChildren<{
 	as?: 'h2' | 'h3' | 'h4' | 'h5';
-	variant: 'regular' | 'compact';
+	variant: CalloutVariant;
 }>;
-
-const fontSizeMap = {
-	regular: 'md',
-	compact: 'sm',
-} as const;
 
 export const CalloutTitle = ({
 	as = 'h2',
@@ -18,7 +14,7 @@ export const CalloutTitle = ({
 }: CalloutTitleProps) => (
 	<Text
 		as={as}
-		fontSize={fontSizeMap[variant]}
+		fontSize={calloutVariantMap[variant].titleSize}
 		fontWeight="bold"
 		lineHeight="heading"
 	>

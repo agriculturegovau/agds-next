@@ -58,6 +58,8 @@ const borderColorMap = {
 	accent: boxPalette.accent,
 	selected: boxPalette.selected,
 	info: boxPalette.systemInfo,
+	success: boxPalette.systemSuccess,
+	error: boxPalette.systemError,
 	warning: boxPalette.systemWarning,
 } as const;
 
@@ -69,10 +71,10 @@ export const foregroundColorMap = {
 	selected: boxPalette.selected,
 	muted: boxPalette.foregroundMuted,
 	accent: boxPalette.accent,
-	error: boxPalette.systemError,
-	success: boxPalette.systemSuccess,
-	warning: boxPalette.systemWarning,
 	info: boxPalette.systemInfo,
+	success: boxPalette.systemSuccess,
+	error: boxPalette.systemError,
+	warning: boxPalette.systemWarning,
 	inherit: 'inherit',
 };
 
@@ -85,8 +87,8 @@ export const backgroundColorMap = {
 	shadeAlt: boxPalette.backgroundShadeAlt,
 	info: boxPalette.systemInfoMuted,
 	success: boxPalette.systemSuccessMuted,
-	warning: boxPalette.systemWarningMuted,
 	error: boxPalette.systemErrorMuted,
+	warning: boxPalette.systemWarningMuted,
 };
 
 export type BackgroundColor = keyof typeof backgroundColorMap;
