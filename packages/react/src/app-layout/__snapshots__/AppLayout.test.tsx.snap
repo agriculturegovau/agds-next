@@ -3,7 +3,7 @@
 exports[`AppLayout renders correctly 1`] = `
 <div>
   <div
-    class="css-4lqw0h-AppLayoutGrid"
+    class="css-jlzmfo-AppLayoutGrid"
   >
     <header
       class="css-10whlof-dark-boxStyles-AppLayoutHeader"
@@ -13,11 +13,7 @@ exports[`AppLayout renders correctly 1`] = `
         class="css-k6tsvc-boxStyles"
       >
         <a
-<<<<<<< HEAD
           class="css-1qgwds3-boxStyles-AppLayoutHeaderBrand"
-=======
-          class="css-10e1rls-boxStyles-AppLayoutHeaderBrand"
->>>>>>> dafd796774 (add business name to sidebar)
           href="#"
         >
           <svg
@@ -74,14 +70,8 @@ exports[`AppLayout renders correctly 1`] = `
             </span>
           </div>
         </a>
-<<<<<<< HEAD
         <div
           class="css-10mrbgs-boxStyles"
-=======
-        <a
-          class="css-32sbo0-boxStyles-AppLayoutHeaderAccount"
-          href="/account/preferences"
->>>>>>> dafd796774 (add business name to sidebar)
         >
           <button
             aria-controls="dropdown-menu-:r0:-panel"
@@ -142,7 +132,7 @@ exports[`AppLayout renders correctly 1`] = `
         class="css-o9emw-boxStyles-AppLayoutHeaderNav"
       >
         <button
-          class="css-lha977-BaseButton-boxStyles-AppLayoutHeaderNavMenuButton"
+          class="css-zbjn2b-BaseButton-boxStyles-AppLayoutHeaderNavMenuButton"
           type="button"
         >
           <svg
@@ -170,7 +160,6 @@ exports[`AppLayout renders correctly 1`] = `
             Menu
           </span>
         </button>
-<<<<<<< HEAD
         <button
           aria-controls="dropdown-menu-:r1:-panel"
           aria-expanded="false"
@@ -178,11 +167,6 @@ exports[`AppLayout renders correctly 1`] = `
           class="css-v49j9x-BaseButton-boxStyles-AppLayoutHeaderAccountDropdownButton"
           id="dropdown-menu-:r1:-button"
           type="button"
-=======
-        <a
-          class="css-ewmtp9-boxStyles-AppLayoutHeaderAccount"
-          href="/account/preferences"
->>>>>>> dafd796774 (add business name to sidebar)
         >
           <span
             class="css-avudkd-VisuallyHidden"
@@ -232,7 +216,7 @@ exports[`AppLayout renders correctly 1`] = `
       </div>
     </header>
     <aside
-      class="css-odyicp-boxStyles-AppLayoutSidebar"
+      class="css-4plgz3-boxStyles-AppLayoutSidebar"
     >
       <nav
         aria-label="main"
@@ -242,7 +226,7 @@ exports[`AppLayout renders correctly 1`] = `
           class="css-o80hmi-boxStyles"
         >
           <li
-            class="css-hjgjnj-AppLayoutSidebarNavItemInner"
+            class="css-1qdaebs-AppLayoutSidebarNavItemInner"
           >
             <a
               href="/account"
@@ -279,7 +263,7 @@ exports[`AppLayout renders correctly 1`] = `
             />
           </li>
           <li
-            class="css-hjgjnj-AppLayoutSidebarNavItemInner"
+            class="css-1qdaebs-AppLayoutSidebarNavItemInner"
           >
             <span
               class="css-1i7cdx8-boxStyles"
@@ -287,7 +271,7 @@ exports[`AppLayout renders correctly 1`] = `
               <span
                 class="css-1yrx73q-boxStyles-Text"
               >
-                Transcontinental Consolidated Agricultural Export Group of Australia PTY LTD
+                Malesuada lacus a tortor blandit fermentum phasellus
               </span>
               <span
                 class="css-1lp7dl8-boxStyles-Text"
@@ -305,7 +289,7 @@ exports[`AppLayout renders correctly 1`] = `
             />
           </li>
           <li
-            class="css-hjgjnj-AppLayoutSidebarNavItemInner"
+            class="css-1qdaebs-AppLayoutSidebarNavItemInner"
           >
             <a
               href="/"
@@ -334,7 +318,7 @@ exports[`AppLayout renders correctly 1`] = `
             </a>
           </li>
           <li
-            class="css-13k7gd4-AppLayoutSidebarNavItemInner"
+            class="css-nfe4e4-AppLayoutSidebarNavItemInner"
           >
             <a
               aria-current="page"
@@ -361,7 +345,7 @@ exports[`AppLayout renders correctly 1`] = `
             </a>
           </li>
           <li
-            class="css-hjgjnj-AppLayoutSidebarNavItemInner"
+            class="css-1qdaebs-AppLayoutSidebarNavItemInner"
           >
             <a
               href="/intelligence"
@@ -387,7 +371,7 @@ exports[`AppLayout renders correctly 1`] = `
             </a>
           </li>
           <li
-            class="css-hjgjnj-AppLayoutSidebarNavItemInner"
+            class="css-1qdaebs-AppLayoutSidebarNavItemInner"
           >
             <a
               href="/compliance"
@@ -426,7 +410,7 @@ exports[`AppLayout renders correctly 1`] = `
             />
           </li>
           <li
-            class="css-1d44z1e-AppLayoutSidebarNavItemInner"
+            class="css-13mhly7-AppLayoutSidebarNavItemInner"
           >
             <a
               href="/account/messages"
@@ -465,7 +449,7 @@ exports[`AppLayout renders correctly 1`] = `
             </a>
           </li>
           <li
-            class="css-hjgjnj-AppLayoutSidebarNavItemInner"
+            class="css-1qdaebs-AppLayoutSidebarNavItemInner"
           >
             <a
               href="/account/settings"
@@ -496,7 +480,7 @@ exports[`AppLayout renders correctly 1`] = `
             </a>
           </li>
           <li
-            class="css-hjgjnj-AppLayoutSidebarNavItemInner"
+            class="css-1qdaebs-AppLayoutSidebarNavItemInner"
           >
             <a
               href="/help"
@@ -530,7 +514,7 @@ exports[`AppLayout renders correctly 1`] = `
             />
           </li>
           <li
-            class="css-hjgjnj-AppLayoutSidebarNavItemInner"
+            class="css-1qdaebs-AppLayoutSidebarNavItemInner"
           >
             <button
               class="css-6e6ykx-BaseButton"
@@ -599,7 +583,7 @@ exports[`AppLayout renders correctly 1`] = `
                     class="css-79i25n-boxStyles"
                   >
                     <a
-                      class="css-38ppen-TextLink"
+                      class="css-ma0bjl-TextLink"
                       href="/"
                     >
                       Home

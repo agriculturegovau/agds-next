@@ -52,7 +52,10 @@ function renderAppLayout({
 					),
 				}}
 			/>
-			<AppLayoutSidebar activePath={activePath} items={navigationItems} />
+			<AppLayoutSidebar
+				activePath={activePath}
+				items={navigationItems(exampleData.businessNames.medium[0])}
+			/>
 			<AppLayoutContent>
 				<main
 					id="main-content"

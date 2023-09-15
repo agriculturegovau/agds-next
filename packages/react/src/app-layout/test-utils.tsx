@@ -1,4 +1,4 @@
-import { Stack } from '../stack';
+import { Fragment } from 'react';
 import { Text } from '../text';
 import { NotificationBadge } from '../notification-badge';
 import { VisuallyHidden } from '../a11y';
@@ -24,7 +24,7 @@ import {
 	DropdownMenuItemRadio,
 } from '../dropdown-menu';
 
-export const navigationItems = [
+export const navigationItems = (businessName: string) => [
 	[
 		{
 			label: 'Back to my account',
@@ -35,15 +35,14 @@ export const navigationItems = [
 	[
 		{
 			label: (
-				<Stack as="span" gap={0.25}>
+				<Fragment>
 					<Text fontWeight="bold" fontSize="xs">
-						Transcontinental Consolidated Agricultural Export Group of Australia
-						PTY LTD
+						{businessName}
 					</Text>
 					<Text color="muted" fontSize="xs">
 						ABN: 00 000 000 000
 					</Text>
-				</Stack>
+				</Fragment>
 			),
 		},
 	],

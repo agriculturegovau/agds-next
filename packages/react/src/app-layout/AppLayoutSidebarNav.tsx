@@ -11,6 +11,7 @@ import { Box, focusStyles } from '../box';
 import { Flex } from '../flex';
 import { BaseButton, BaseButtonProps } from '../button';
 import { IconProps } from '../icon';
+import { Stack } from '../stack';
 
 type NavLink = Omit<LinkProps, 'children'>;
 
@@ -73,6 +74,7 @@ function AppLayoutSidebarNavListItem({
 	const Link = useLinkComponent();
 	const { endElement, icon: Icon, label, ...restItemProps } = item;
 
+	// Link list item
 	if ('href' in item) {
 		const active = item.href === activePath;
 		return (
@@ -89,6 +91,7 @@ function AppLayoutSidebarNavListItem({
 		);
 	}
 
+	// Button list item
 	if ('onClick' in item) {
 		return (
 			<AppLayoutSidebarNavItemInner
@@ -104,9 +107,12 @@ function AppLayoutSidebarNavListItem({
 		);
 	}
 
+	// Text-only list item
 	return (
 		<AppLayoutSidebarNavItemInner isActive={false} hasEndElement={false}>
-			{label}
+			<Stack as="span" gap={0.25}>
+				{label}
+			</Stack>
 		</AppLayoutSidebarNavItemInner>
 	);
 }
@@ -131,18 +137,22 @@ function AppLayoutSidebarNavItemInner({
 				'> a, > button, > span': {
 					width: '100%',
 					boxSizing: 'border-box',
-					wordBreak: 'break-word',
+					wordBreak: 'break-word', // Prevent long labels from causing overflow
 					paddingTop: mapSpacing(1),
 					paddingBottom: mapSpacing(1),
 					paddingLeft: mapSpacing(1.5),
 					paddingRight: mapSpacing(1.5),
+
+					'& > svg': {
+						flexShrink: 0,
+					},
 				},
 
 				'> a, > button': {
 					position: 'relative',
 					display: 'flex',
 					alignItems: 'center',
-					gap: mapSpacing(1),
+					gap: mapSpacing(0.75),
 					color: boxPalette[isActive ? 'foregroundText' : 'foregroundAction'],
 
 					...(isActive && {
@@ -157,7 +167,7 @@ function AppLayoutSidebarNavItemInner({
 							bottom: 0,
 							borderLeftStyle: 'solid',
 							borderLeftColor: boxPalette.selected,
-							borderLeftWidth: tokens.borderWidth.xxl,
+							borderLeftWidth: tokens.borderWidth.xl,
 						},
 					}),
 
