@@ -467,14 +467,14 @@ export const Complex: StoryObj = {
 					<DropdownMenuGroup label="Businesses">
 						<DropdownMenuItemRadio
 							checked={true}
-							secondaryText="Sydney"
+							secondaryText="ABN 00 000 000 000"
 							endElement={<IndicatorDot />}
 						>
 							Antfix
 						</DropdownMenuItemRadio>
 						<DropdownMenuItemRadio
 							checked={false}
-							secondaryText="Brisbane"
+							secondaryText="ABN 00 000 000 000"
 							endElement={
 								<Fragment>
 									<NotificationBadge
@@ -489,7 +489,10 @@ export const Complex: StoryObj = {
 						>
 							Ashfield
 						</DropdownMenuItemRadio>
-						<DropdownMenuItemRadio checked={false} secondaryText="Canberra">
+						<DropdownMenuItemRadio
+							checked={false}
+							secondaryText="ABN 00 000 000 000"
+						>
 							Redfern
 						</DropdownMenuItemRadio>
 						<DropdownMenuGroupLink href="#">View all</DropdownMenuGroupLink>
@@ -511,6 +514,61 @@ export const Complex: StoryObj = {
 						}
 					>
 						Messages
+					</DropdownMenuItem>
+					<DropdownMenuItem icon={SettingsIcon}>
+						Account settings
+					</DropdownMenuItem>
+					<DropdownMenuDivider />
+					<DropdownMenuItem icon={ExitIcon}>Sign out</DropdownMenuItem>
+				</DropdownMenuPanel>
+			</DropdownMenu>
+		);
+	},
+};
+
+export const LongLabels: StoryObj = {
+	render: function Render() {
+		const businessNames = [
+			'Blandit iaculis iaculis quis ante diam viverra elementum ui risus nec luctus purus tortor lacus malesuada consectetur',
+			'Iaculis tortor duis ante nec risus elementum id ui',
+			'APurus tortor lacus malesuada phasellus ipsum ex duis libero ante id',
+		];
+		return (
+			<DropdownMenu>
+				<DropdownMenuButton>Toggle dropdown menu</DropdownMenuButton>
+				<DropdownMenuPanel>
+					<DropdownMenuGroup label="Businesses">
+						{businessNames.map((name) => (
+							<DropdownMenuItemRadio
+								key={name}
+								checked={true}
+								secondaryText="ABN 00 000 000 000"
+								endElement={<IndicatorDot />}
+							>
+								{name}
+							</DropdownMenuItemRadio>
+						))}
+						<DropdownMenuGroupLink href="#">View all</DropdownMenuGroupLink>
+					</DropdownMenuGroup>
+					<DropdownMenuDivider />
+					<DropdownMenuItem icon={AvatarIcon}>
+						Phasellus ipsum ex duis libero ante
+					</DropdownMenuItem>
+					<DropdownMenuItem
+						icon={EmailIcon}
+						endElement={
+							<Fragment>
+								<NotificationBadge
+									value={100}
+									max={99}
+									tone="action"
+									aria-hidden
+								/>
+								<VisuallyHidden>, 100 unread</VisuallyHidden>
+							</Fragment>
+						}
+					>
+						APurus tortor lacus malesuada phasellus ipsum ex duis libero ante
 					</DropdownMenuItem>
 					<DropdownMenuItem icon={SettingsIcon}>
 						Account settings

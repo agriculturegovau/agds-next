@@ -57,6 +57,7 @@ export function DropdownMenuItemRadio({
 			background="body"
 			gap={1}
 			padding={1}
+			width="18rem"
 			css={{
 				cursor: 'pointer',
 
@@ -103,7 +104,7 @@ export function DropdownMenuItemRadio({
 					{secondaryText}
 				</Text>
 			</Stack>
-			{endElement}
+			<div css={{ flexShrink: 0 }}>{endElement}</div>
 		</Flex>
 	);
 }

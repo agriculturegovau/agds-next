@@ -66,6 +66,7 @@ export const DropdownMenuItem = forwardRefWithAs<'div', DropdownMenuItemProps>(
 				background="body"
 				gap={1}
 				padding={1}
+				width="18rem"
 				link
 				focus
 				css={{
