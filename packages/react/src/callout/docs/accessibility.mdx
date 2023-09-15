@@ -1,0 +1,16 @@
+## Apply aria-labels to custom icons
+
+You can use custom icons by passing an icon component to the icon prop.
+
+When doing this, you must apply the correct aria attributes to the icon.
+
+```jsx
+<Callout
+	title="Callout heading"
+	icon={
+		<CalendarIcon aria-hidden="false" aria-label="Information" color="border" />
+	}
+>
+	<Text as="p">Description of the callout.</Text>
+</Callout>
+```

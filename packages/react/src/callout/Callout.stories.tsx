@@ -7,7 +7,8 @@ import { Flex } from '../flex';
 import { CalendarIcon } from '../icon';
 import { Radio } from '../radio';
 import { Text } from '../text';
-import { Callout, calloutToneMap } from './Callout';
+import { Callout } from './Callout';
+import { calloutToneMap } from './utils';
 
 const meta: Meta<typeof Callout> = {
 	title: 'content/Callout',
@@ -77,7 +78,13 @@ export const WithIcon: Story = {
 	args: {
 		title: 'Callout heading',
 		children: <Text as="p">Description of the callout.</Text>,
-		icon: <CalendarIcon />,
+		icon: (
+			<CalendarIcon
+				aria-hidden="false"
+				aria-label="Information"
+				color="border"
+			/>
+		),
 	},
 };
 
