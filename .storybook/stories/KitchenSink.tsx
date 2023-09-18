@@ -168,7 +168,7 @@ function KitchenSink({ background }: KitchenSinkProps) {
 					</SearchBoxButton>
 				</SearchBox>
 			</HeroBanner>
-			<PageContent>
+			<PageContent background={page}>
 				<Columns>
 					<Column columnSpan={{ xs: 12, md: 4 }}>
 						<Stack gap={2}>
@@ -307,7 +307,7 @@ function KitchenSink({ background }: KitchenSinkProps) {
 								</AccordionItem>
 							</Accordion>
 
-							<Details label="Details">
+							<Details label="Details" onBodyAlt={page === 'bodyAlt'}>
 								<Text as="p">
 									This is a small paragraph of text that is supplementary to the
 									main page content.
