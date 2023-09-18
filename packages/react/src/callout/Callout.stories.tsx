@@ -68,6 +68,7 @@ export const CompactVariant: Story = {
 
 export const FeatureVariant: Story = {
 	args: {
+		title: 'Feature Callout heading',
 		children: <Text as="p">Description of the callout.</Text>,
 		tone: 'info',
 		variant: 'feature',

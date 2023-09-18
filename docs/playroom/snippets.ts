@@ -455,8 +455,29 @@ items={[
 	},
 	{
 		group: 'Callout',
-		name: 'Basic',
+		name: 'Neutral',
 		code: `<Callout title="Callout heading">
+      <Text>Description of the callout.</Text>
+    </Callout>`,
+	},
+	{
+		group: 'Callout',
+		name: 'Info',
+		code: `<Callout title="Callout heading" tone="info">
+      <Text>Description of the callout.</Text>
+    </Callout>`,
+	},
+	{
+		group: 'Callout',
+		name: 'Compact',
+		code: `<Callout title="Callout heading" tone="info" variant="compact">
+      <Text>Description of the callout.</Text>
+    </Callout>`,
+	},
+	{
+		group: 'Callout',
+		name: 'Feature',
+		code: `<Callout title="Callout heading" tone="info" variant="feature">
       <Text>Description of the callout.</Text>
     </Callout>`,
 	},
