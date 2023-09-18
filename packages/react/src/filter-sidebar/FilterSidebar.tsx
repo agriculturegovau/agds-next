@@ -13,8 +13,8 @@ export function FilterSidebar({
 	children,
 	numberOfActiveFilters,
 }: FilterSidebarProps) {
-	const collapseButtonLabel = `Filters ${
-		numberOfActiveFilters ? `(${numberOfActiveFilters})` : ''
+	const collapseButtonLabel = `Filters${
+		numberOfActiveFilters ? ` (${numberOfActiveFilters})` : ''
 	}`;
 
 	return (
