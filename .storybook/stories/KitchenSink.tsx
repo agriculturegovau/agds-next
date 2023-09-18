@@ -134,12 +134,10 @@ const sideNavItems = [
 const backgroundMapper = {
 	body: {
 		page: 'body',
-		shade: 'shade',
 		opposite: 'bodyAlt',
 	},
 	bodyAlt: {
 		page: 'bodyAlt',
-		shade: 'shadeAlt',
 		opposite: 'body',
 	},
 } as const;
@@ -269,7 +267,7 @@ function KitchenSink({ background }: KitchenSinkProps) {
 							<Callout
 								title="Callout heading"
 								tone="neutral"
-								onBodyAlt={background === 'bodyAlt'}
+								onBodyAlt={page === 'bodyAlt'}
 							>
 								<Text as="p">Description of the callout.</Text>
 							</Callout>
