@@ -48,7 +48,7 @@ export const OnBodyAlt: Story = {
 	),
 };
 
-export const Info: Story = {
+export const InfoTone: Story = {
 	args: {
 		title: 'Callout heading',
 		children: <Text as="p">Description of the callout.</Text>,
@@ -56,15 +56,7 @@ export const Info: Story = {
 	},
 };
 
-export const NoTitle: Story = {
-	args: {
-		title: undefined,
-		children: <Text as="p">Description of the callout.</Text>,
-		tone: 'neutral',
-	},
-};
-
-export const Compact: Story = {
+export const CompactVariant: Story = {
 	args: {
 		title: 'Callout heading',
 		children: <Text as="p">Description of the callout.</Text>,
@@ -73,8 +65,49 @@ export const Compact: Story = {
 	},
 };
 
-export const WithIcon: Story = {
-	name: 'with custom icon',
+export const FeatureVariant: Story = {
+	args: {
+		children: <Text as="p">Description of the callout.</Text>,
+		tone: 'info',
+		variant: 'feature',
+	},
+};
+
+export const CompactVariantWithIcon: Story = {
+	args: {
+		title: 'Feature Callout heading',
+		children: <Text as="p">Description of the callout.</Text>,
+		tone: 'info',
+		variant: 'compact',
+		icon: (
+			<CalendarIcon
+				aria-hidden="false"
+				aria-label="Information"
+				color="info"
+				size="md"
+			/>
+		),
+	},
+};
+
+export const FeatureVariantWithIcon: Story = {
+	args: {
+		title: 'Feature Callout heading',
+		children: <Text as="p">Description of the callout.</Text>,
+		tone: 'info',
+		variant: 'feature',
+		icon: (
+			<CalendarIcon
+				aria-hidden="false"
+				aria-label="Information"
+				color="info"
+				size="lg"
+			/>
+		),
+	},
+};
+
+export const RegularVariantWithIcon: Story = {
 	args: {
 		title: 'Callout heading',
 		children: <Text as="p">Description of the callout.</Text>,
@@ -83,13 +116,25 @@ export const WithIcon: Story = {
 				aria-hidden="false"
 				aria-label="Information"
 				color="border"
+				size="md"
 			/>
 		),
 	},
 };
 
-export const Calendar: Story = {
-	name: 'Calendar example',
+export const CalendarExample: Story = {
+	args: {
+		as: 'section',
+		tone: 'neutral',
+		icon: (
+			<CalendarIcon
+				aria-hidden="false"
+				aria-label="Information"
+				color="border"
+				size="md"
+			/>
+		),
+	},
 	render: (args) => (
 		<Callout {...args}>
 			<Flex flexDirection="column">
@@ -109,10 +154,6 @@ export const Calendar: Story = {
 			</Flex>
 		</Callout>
 	),
-	args: {
-		as: 'section',
-		tone: 'neutral',
-	},
 };
 
 export const InControlGroup: Story = {
@@ -131,5 +172,13 @@ export const InControlGroup: Story = {
 		children: <Text as="p">Description of the callout.</Text>,
 		tone: 'info',
 		variant: 'compact',
+	},
+};
+
+export const NoTitle: Story = {
+	args: {
+		title: undefined,
+		children: <Text as="p">Description of the callout.</Text>,
+		tone: 'neutral',
 	},
 };

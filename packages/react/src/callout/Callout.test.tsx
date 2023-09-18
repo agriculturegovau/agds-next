@@ -3,12 +3,8 @@ import 'html-validate/jest';
 import { axe, toHaveNoViolations } from 'jest-axe';
 import { Text } from '../text';
 import { cleanup, render } from '../../../../test-utils';
-import {
-	Callout,
-	calloutToneMap,
-	calloutVariantMap,
-	CalloutProps,
-} from './Callout';
+import { Callout, CalloutProps } from './Callout';
+import { calloutToneMap, calloutVariantMap } from './utils';
 
 expect.extend(toHaveNoViolations);
 
@@ -21,10 +17,6 @@ function renderCallout(props?: Partial<CalloutProps>) {
 		</Callout>
 	);
 }
-
-const calloutTones = Object.keys(calloutToneMap) as Array<
-	keyof typeof calloutToneMap
->;
 
 const calloutVariants = Object.keys(calloutVariantMap) as Array<
 	keyof typeof calloutVariantMap
@@ -44,10 +36,13 @@ describe('Callout', () => {
 		expect(await axe(container)).toHaveNoViolations();
 	});
 
-	calloutTones.forEach((tone) => {
-		describe(`with tone ${tone}`, () => {
-			calloutVariants.forEach((variant) => {
-				describe(`and ${variant} variant`, () => {
+	calloutVariants.forEach((variant) => {
+		describe(`with ${variant} variant`, () => {
+			const calloutTones = Object.keys(calloutToneMap(variant)) as Array<
+				keyof typeof calloutToneMap
+			>;
+			calloutTones.forEach((tone) => {
+				describe(`and ${tone} tone`, () => {
 					it('renders correctly', () => {
 						const { container } = renderCallout({
 							variant: variant,

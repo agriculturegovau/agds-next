@@ -35,8 +35,9 @@ export const Callout = ({
 	tone = 'neutral',
 	variant = 'regular',
 }: CalloutProps) => {
-	const { background, border, icon } = calloutToneMap[tone];
-	const { gap, padding } = calloutVariantMap[variant];
+	const { gap, padding, flexDirection, titlePaddingTop } =
+		calloutVariantMap[variant];
+	const { background, border, icon } = calloutToneMap(variant)[tone];
 
 	/** Decides whether the neutral tone should use the norman 'shade' or 'shadeAlt' bg. */
 	const onBodyAlt =
@@ -45,7 +46,7 @@ export const Callout = ({
 	return (
 		<Flex
 			as={as}
-			flexDirection="row"
+			flexDirection={flexDirection}
 			rounded
 			gap={gap}
 			background={onBodyAlt ? 'shadeAlt' : background}
@@ -56,7 +57,7 @@ export const Callout = ({
 			highContrastOutline
 		>
 			{iconProp || icon ? <Flex flexShrink={0}>{iconProp || icon}</Flex> : null}
-			<Stack gap={gap}>
+			<Stack gap={gap} css={{ paddingTop: titlePaddingTop }}>
 				{title ? <CalloutTitle variant={variant}>{title}</CalloutTitle> : null}
 				{children}
 			</Stack>
