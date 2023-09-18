@@ -456,8 +456,7 @@ items={[
 	{
 		group: 'Callout',
 		name: 'Basic',
-		code: `<Callout>
-    <CalloutTitle as="h3">Callout heading</CalloutTitle>
+		code: `<Callout title="Callout heading">
       <Text>Description of the callout.</Text>
     </Callout>`,
 	},

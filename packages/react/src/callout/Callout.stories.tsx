@@ -8,6 +8,7 @@ import { CalendarIcon } from '../icon';
 import { Radio } from '../radio';
 import { Text } from '../text';
 import { Callout } from './Callout';
+import { CalloutTitle } from './CalloutTitle';
 import { calloutToneMap } from './utils';
 
 const meta: Meta<typeof Callout> = {
@@ -180,5 +181,20 @@ export const NoTitle: Story = {
 		title: undefined,
 		children: <Text as="p">Description of the callout.</Text>,
 		tone: 'neutral',
+	},
+};
+
+export const CustomTitleSize: Story = {
+	render: (args) => (
+		<Callout {...args}>
+			<CalloutTitle as="h3" variant={args.variant}>
+				Callout heading
+			</CalloutTitle>
+			<Text as="p">Description of the callout.</Text>
+		</Callout>
+	),
+	args: {
+		tone: 'neutral',
+		variant: 'regular',
 	},
 };

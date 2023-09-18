@@ -4,13 +4,13 @@ import { CalloutVariant, calloutVariantMap } from './utils';
 
 export type CalloutTitleProps = PropsWithChildren<{
 	as?: 'h2' | 'h3' | 'h4' | 'h5';
-	variant: CalloutVariant;
+	variant?: CalloutVariant;
 }>;
 
 export const CalloutTitle = ({
 	as = 'h2',
 	children,
-	variant,
+	variant = 'regular',
 }: CalloutTitleProps) => (
 	<Text
 		as={as}
