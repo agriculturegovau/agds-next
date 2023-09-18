@@ -57,7 +57,7 @@ export const Layout: Story = {
 				<Columns gap={{ xs: 1, md: 3 }}>
 					<Column columnSpan={{ xs: 12, md: 4 }}>
 						<Stack gap={1}>
-							<FilterSidebar numberOfActiveFilters={args.numberOfActiveFilters}>
+							<FilterSidebar activeFiltersCount={args.activeFiltersCount}>
 								<TextInput block label="Example input 2" value="Example" />
 								<TextInput block label="Example input 3" value="Example" />
 								<TextInput block label="Example input 1" value="Example" />

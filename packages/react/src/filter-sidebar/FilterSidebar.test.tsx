@@ -16,13 +16,13 @@ function renderFilterSidebar(props?: Partial<FilterSidebarProps>) {
 describe('FilterSidebar', () => {
 	it('renders correctly', () => {
 		const { container } = renderFilterSidebar({
-			numberOfActiveFilters: 1,
+			activeFiltersCount: 1,
 		});
 		expect(container).toMatchSnapshot();
 	});
 	it('renders valid HTML with no a11y violations', async () => {
 		const { container } = renderFilterSidebar({
-			numberOfActiveFilters: 1,
+			activeFiltersCount: 1,
 		});
 		expect(container).toHTMLValidate({
 			extends: ['html-validate:recommended'],

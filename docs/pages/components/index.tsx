@@ -73,7 +73,7 @@ export default function PackagesHome({
 					<Column columnSpan={{ xs: 12, md: 6, lg: 4 }}>
 						<Stack gap={1}>
 							<FilterSidebar
-							// numberOfActiveFilters={numberOfActiveFilters}
+							// activeFiltersCount={activeFiltersCount}
 							>
 								<div role="search" aria-label="components">
 									<SearchInput

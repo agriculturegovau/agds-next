@@ -5,16 +5,16 @@ import { CollapsingSideBar } from '../_collapsing-side-bar';
 export type FilterSidebarProps = PropsWithChildren<{
 	/** The aria-label for the FilterSidebar. */
 	'aria-label'?: string;
-	numberOfActiveFilters?: number;
+	activeFiltersCount?: number;
 }>;
 
 export function FilterSidebar({
 	'aria-label': ariaLabel = 'filters',
 	children,
-	numberOfActiveFilters,
+	activeFiltersCount,
 }: FilterSidebarProps) {
 	const collapseButtonLabel = `Filters${
-		numberOfActiveFilters ? ` (${numberOfActiveFilters})` : ''
+		activeFiltersCount ? ` (${activeFiltersCount})` : ''
 	}`;
 
 	return (

@@ -28,7 +28,7 @@ export const ListFiltering = () => {
 	const { filters, resetFilters, setFilter, pagination } =
 		useSortAndFilterContext();
 	const { data, loading, totalItems } = useDataContext();
-	const numberOfActiveFilters = getNumberOfActiveFilters(filters);
+	const activeFiltersCount = getNumberOfActiveFilters(filters);
 	const tableCaption = generateTableCaption({
 		loading,
 		totalItems,
@@ -52,7 +52,7 @@ export const ListFiltering = () => {
 				<Columns gap={{ xs: 1, md: 3 }}>
 					<Column columnSpan={{ xs: 12, md: 4 }}>
 						<Stack gap={1}>
-							<FilterSidebar numberOfActiveFilters={numberOfActiveFilters}>
+							<FilterSidebar activeFiltersCount={activeFiltersCount}>
 								<FilterSearchInput block />
 								<FilterStatusSelect block />
 								<FilterStateSelect block />
