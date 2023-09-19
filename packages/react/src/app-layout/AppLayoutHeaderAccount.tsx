@@ -1,6 +1,6 @@
 import { Avatar } from '../avatar';
 import { Flex } from '../flex';
-import { packs, useLinkComponent } from '../core';
+import { mq, packs, useLinkComponent } from '../core';
 import { Text } from '../text';
 import type { AppLayoutHeaderProps } from './AppLayoutHeader';
 import { AppLayoutHeaderAccountDropdown } from './AppLayoutHeaderAccountDropdown';
@@ -39,10 +39,10 @@ export function AppLayoutHeaderAccount({
 			alignItems="center"
 			flexShrink={0}
 			gap={0.5}
-			css={{
+			css={mq({
 				textDecoration: 'none',
 				textAlign: 'right',
-				maxWidth: '18rem',
+				maxWidth: ['16rem', '18rem'],
 				...(hasLink && {
 					'&:hover': {
 						'& > span > span': {
@@ -50,7 +50,7 @@ export function AppLayoutHeaderAccount({
 						},
 					},
 				}),
-			}}
+			})}
 		>
 			<Flex as="span" flexDirection="column" css={{ overflow: 'hidden' }}>
 				<Text

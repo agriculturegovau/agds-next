@@ -2,7 +2,7 @@ import { PropsWithChildren } from 'react';
 import { VisuallyHidden } from '../a11y';
 import { Avatar } from '../avatar';
 import { BaseButton } from '../button';
-import { boxPalette, packs } from '../core';
+import { boxPalette, mq, packs } from '../core';
 import {
 	useDropdownMenuButton,
 	useDropdownMenuContext,
@@ -58,16 +58,16 @@ function AppLayoutHeaderAccountDropdownButton({
 			gap={1}
 			color="action"
 			focus
-			css={{
+			css={mq({
 				height: '100%',
-				maxWidth: '18rem',
+				maxWidth: ['16rem', '18rem'],
 				overflow: 'hidden',
 				'&:hover': {
 					backgroundColor: boxPalette.backgroundShade,
 					// Underline the name + secondary text
 					'& > span:last-of-type > span:last-of-type': packs.underline,
 				},
-			}}
+			})}
 		>
 			<VisuallyHidden>Account menu</VisuallyHidden>
 			<Flex
