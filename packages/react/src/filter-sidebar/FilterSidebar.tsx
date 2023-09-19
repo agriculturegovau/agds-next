@@ -14,7 +14,7 @@ export type FilterSidebarProps = PropsWithChildren<{
 	/** Shown at the top of Filter sidebar. */
 	title?: string;
 	/** Called when the user clicks the "Clear filters" button. */
-	onClearFilters: () => void;
+	onClearFilters?: () => void;
 }>;
 
 export type FilterSidebarTitleProps = {
