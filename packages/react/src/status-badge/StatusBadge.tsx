@@ -80,20 +80,28 @@ const toneMap = {
 	},
 	success: {
 		borderColor: boxPalette.systemSuccess,
-		icon: () => <SuccessIcon color="success" />,
+		icon: () => (
+			<SuccessIcon color="success" aria-hidden="false" aria-label="Success" />
+		),
 	},
 	error: {
 		borderColor: boxPalette.systemError,
-		icon: () => <AlertIcon color="error" />,
+		icon: () => (
+			<AlertIcon color="error" aria-hidden="false" aria-label="Error" />
+		),
 	},
 
 	info: {
 		borderColor: boxPalette.systemInfo,
-		icon: () => <InfoIcon color="info" />,
+		icon: () => (
+			<InfoIcon color="info" aria-hidden="false" aria-label="Information" />
+		),
 	},
 	warning: {
 		borderColor: boxPalette.systemWarning,
-		icon: () => <WarningIcon color="warning" />,
+		icon: () => (
+			<WarningIcon color="warning" aria-hidden="false" aria-label="Warning" />
+		),
 	},
 } as const;
 
