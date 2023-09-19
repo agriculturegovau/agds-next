@@ -64,7 +64,10 @@ export const Layout: Story = {
 				<Columns gap={{ xs: 1, md: 3 }}>
 					<Column columnSpan={{ xs: 12, md: 4 }}>
 						<Stack gap={1}>
-							<FilterSidebar activeFiltersCount={args.activeFiltersCount}>
+							<FilterSidebar
+								activeFiltersCount={args.activeFiltersCount}
+								onClearFilters={console.log}
+							>
 								<TextInput block label="Example input 2" value="Example" />
 								<TextInput block label="Example input 3" value="Example" />
 								<TextInput block label="Example input 1" value="Example" />
@@ -80,11 +83,12 @@ export const Layout: Story = {
 						columnSpan={{ xs: 12, md: 8 }}
 					>
 						<Stack gap={2}>
-							<Flex borderBottom paddingBottom={1}>
+							<Flex>
 								<Text
-									fontSize={{
-										xs: 'sm',
-										md: 'lg',
+									fontSize="md"
+									fontWeight={{
+										xs: 'normal',
+										md: 'bold',
 									}}
 								>
 									Search results (3)
