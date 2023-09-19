@@ -139,6 +139,7 @@ export default function PackagesHome({
 										xs: 'normal',
 										md: 'bold',
 									}}
+									lineHeight="heading"
 								>
 									{hasFilters ? 'Components' : 'All Components'} (
 									{filteredPkgs.length} items)
