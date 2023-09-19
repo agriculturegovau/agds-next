@@ -26,6 +26,10 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
 
+      - name: Get number of CPU cores
+        id: cpu-cores
+        uses: SimenB/github-actions-cpu-cores@v2
+
       - name: Get yarn cache directory path
         id: yarn-cache-dir-path
         run: echo "dir=$(yarn cache dir)" >> $GITHUB_OUTPUT
@@ -44,7 +48,7 @@ jobs:
         run: yarn
 
       - name: Unit tests
-        run: yarn test
+        run: yarn test --max-workers ${{ steps.cpu-cores.outputs.count }}
 
   linting:
     name: Linting

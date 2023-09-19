@@ -4,7 +4,9 @@ const config = {
 	testEnvironment: 'jsdom',
 	clearMocks: true,
 	verbose: true,
-	testTimeout: 15000, // TODO: Rollback to 10000 when we have a better solution for the test timeout issue
+	// Some of our tests using jest-axe can take a long time in CI
+	// We should rollback to 10000 once we have a better solution for test timeout issues
+	testTimeout: 20000,
 	collectCoverageFrom: [
 		'**/packages/**/*.{ts,tsx}',
 		'!**/dist/**',
