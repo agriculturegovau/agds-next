@@ -129,7 +129,7 @@ exports[`AppLayout renders correctly 1`] = `
         </div>
       </div>
       <div
-        class="css-1k3ccjt-boxStyles-AppLayoutHeaderNav"
+        class="css-o9emw-boxStyles-AppLayoutHeaderNav"
       >
         <button
           class="css-zbjn2b-BaseButton-boxStyles-AppLayoutHeaderNavMenuButton"

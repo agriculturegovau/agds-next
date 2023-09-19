@@ -23,7 +23,7 @@ export function AppLayoutHeaderNav({
 			alignItems="center"
 			justifyContent={focusMode ? 'flex-end' : 'space-between'}
 			paddingLeft={0.75}
-			paddingRight={tokens.containerPadding}
+			paddingRight={accountDetails?.dropdown ? 0.75 : tokens.containerPadding}
 			minHeight="5.25rem"
 			css={{
 				'& > a, button': {
