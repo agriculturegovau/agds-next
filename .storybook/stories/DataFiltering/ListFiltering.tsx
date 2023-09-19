@@ -58,7 +58,7 @@ export const ListFiltering = () => {
 								<FilterStateSelect block />
 								<FilterAssigneeSelect block />
 								<FilterDestinationsSelect block />
-								<FilterServicesSelect />
+								<FilterServicesSelect block />
 								<DateRangePicker
 									fromLabel="Registered from"
 									toLabel="Registered to"
