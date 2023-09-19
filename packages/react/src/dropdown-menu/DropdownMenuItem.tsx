@@ -8,6 +8,7 @@ import {
 import { boxPalette, forwardRefWithAs, mergeRefs, packs } from '../core';
 import { Flex } from '../flex';
 import { IconProps } from '../icon';
+import { Text } from '../text';
 import { useDropdownMenuContext } from './DropdownMenuContext';
 import { useDropdownMenuItemId } from './utils';
 
@@ -66,6 +67,7 @@ export const DropdownMenuItem = forwardRefWithAs<'div', DropdownMenuItemProps>(
 				background="body"
 				gap={1}
 				padding={1}
+				width="18rem"
 				link
 				focus
 				css={{
@@ -78,16 +80,18 @@ export const DropdownMenuItem = forwardRefWithAs<'div', DropdownMenuItemProps>(
 
 					'&:hover': {
 						backgroundColor: boxPalette.backgroundShade,
-						'& > div > span': packs.underline,
+						'& > div:first-of-type > span': packs.underline,
 					},
 				}}
 				{...props}
 			>
 				<Flex alignItems="center" gap={0.75}>
-					{Icon ? <Icon color="inherit" size="md" /> : null}
-					<span>{children}</span>
+					{Icon ? (
+						<Icon color="inherit" size="md" css={{ flexShrink: 0 }} />
+					) : null}
+					<Text color="inherit">{children}</Text>
 				</Flex>
-				{endElement}
+				<div css={{ flexShrink: 0 }}>{endElement}</div>
 			</Flex>
 		);
 	}
