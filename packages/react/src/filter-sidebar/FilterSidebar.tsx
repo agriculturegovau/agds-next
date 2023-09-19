@@ -36,31 +36,7 @@ export function FilterSidebar({
 	return (
 		<CollapsingSideBar
 			title={
-				<Flex
-					display={{ xs: 'none', md: 'flex' }}
-					flexDirection="row"
-					justifyContent="space-between"
-					gap={0.5}
-				>
-					<Text
-						as="h2"
-						color="text"
-						fontSize="md"
-						fontWeight="bold"
-						lineHeight="heading"
-					>
-						{title}
-					</Text>
-					{onClearFilters && (
-						<Button
-							variant="text"
-							iconAfter={() => <CloseIcon size="sm" />}
-							onClick={onClearFilters}
-						>
-							Clear filters
-						</Button>
-					)}
-				</Flex>
+				<CollapsingSideBarTitle title={title} onClearFilters={onClearFilters} />
 			}
 			collapseButtonLabel={collapseButtonLabel}
 			as="aside"
@@ -87,3 +63,40 @@ export function FilterSidebar({
 		</CollapsingSideBar>
 	);
 }
+
+const CollapsingSideBarTitle = ({
+	title,
+	onClearFilters,
+}: {
+	title: string;
+	onClearFilters?: () => void;
+}) => {
+	return (
+		<Flex
+			display={{ xs: 'none', md: 'flex' }}
+			flexDirection="row"
+			justifyContent="space-between"
+			gap={0.5}
+			flexWrap="wrap"
+		>
+			<Text
+				as="h2"
+				color="text"
+				fontSize="md"
+				fontWeight="bold"
+				lineHeight="heading"
+			>
+				{title}
+			</Text>
+			{onClearFilters && (
+				<Button
+					variant="text"
+					iconAfter={() => <CloseIcon size="sm" />}
+					onClick={onClearFilters}
+				>
+					Clear filters
+				</Button>
+			)}
+		</Flex>
+	);
+};
