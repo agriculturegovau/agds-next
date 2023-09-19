@@ -35,12 +35,7 @@ jobs:
         run: yarn
 
       - name: Build
-        run: |
-          yarn storybook:build
-          yarn playroom:build
-          yarn example:build
-          yarn example-form:build
-          yarn docs:build
+        run: yarn docs:build-all
         env:
           # Github has a maximum RAM size of 7 GiB by default
           # Building storybook requires extra RAM, so we are bumping the `max-old-space-size` to 6 GiB
