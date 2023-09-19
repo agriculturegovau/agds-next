@@ -15,6 +15,7 @@ export const FilterServicesSelect = ({ block }: { block?: boolean }) => {
 		>
 			{services.map((service) => (
 				<Checkbox
+					block
 					key={service}
 					value={service}
 					checked={(filters.services || []).includes(service)}

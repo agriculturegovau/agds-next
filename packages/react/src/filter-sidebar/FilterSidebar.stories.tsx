@@ -1,4 +1,11 @@
 import { StoryObj, Meta } from '@storybook/react';
+import {
+	DataProvider,
+	SortAndFilterProvider,
+} from '../../../../.storybook/stories/DataFiltering/lib/contexts';
+import { useSortAndFilter } from '../../../../.storybook/stories/DataFiltering/lib/useSortAndFilter';
+import { useData } from '../../../../.storybook/stories/DataFiltering/lib/utils';
+import { ListFiltering } from '../../../../.storybook/stories/DataFiltering/ListFiltering';
 import { Card, CardInner, CardLink } from '../card';
 import { Column, Columns } from '../columns';
 import { PageContent } from '../content';
@@ -116,4 +123,23 @@ export const Layout: Story = {
 			</PageContent>
 		);
 	},
+};
+
+const ListFilteringExample = () => {
+	const sortAndFilter = useSortAndFilter();
+	const { filters, pagination, sort } = sortAndFilter;
+	const data = useData({ filters, pagination, sort });
+
+	return (
+		<SortAndFilterProvider value={sortAndFilter}>
+			<DataProvider value={data}>
+				<ListFiltering />
+			</DataProvider>
+		</SortAndFilterProvider>
+	);
+};
+
+export const Full: StoryObj<typeof FilterSidebar> = {
+	name: 'Full example',
+	render: ListFilteringExample,
 };

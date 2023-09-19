@@ -1,5 +1,6 @@
 import { PropsWithChildren } from 'react';
 import { FormStack } from '@ag.ds-next/react/form-stack';
+import { Box } from '@ag.ds-next/react/box';
 import { CollapsingSideBar } from '../_collapsing-side-bar';
 
 export type FilterSidebarProps = PropsWithChildren<{
@@ -14,7 +15,7 @@ export function FilterSidebar({
 	activeFiltersCount,
 	'aria-label': ariaLabel = 'filters',
 	children,
-	title = 'Filters',
+	title = 'Filter by',
 }: FilterSidebarProps) {
 	const collapseButtonLabel = `Filters${
 		activeFiltersCount ? ` (${activeFiltersCount})` : ''
@@ -27,7 +28,16 @@ export function FilterSidebar({
 			as="aside"
 			aria-label={ariaLabel}
 		>
-			<FormStack>{children}</FormStack>
+			<Box
+				borderTop
+				paddingTop={1}
+				borderTopWidth={{
+					xs: 'none',
+					md: 'sm',
+				}}
+			>
+				<FormStack>{children}</FormStack>
+			</Box>
 		</CollapsingSideBar>
 	);
 }

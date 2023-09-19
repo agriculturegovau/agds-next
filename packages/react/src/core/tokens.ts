@@ -106,6 +106,7 @@ export type FieldMaxWidth = keyof typeof maxWidth.field;
 const borderRadius = unit;
 
 const borderWidth = {
+	none: 0,
 	sm: 1,
 	md: 2,
 	lg: 3,
