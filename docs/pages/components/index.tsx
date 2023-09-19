@@ -7,9 +7,6 @@ import { Column, Columns } from '@ag.ds-next/react/columns';
 import { FilterSidebar } from '@ag.ds-next/react/filter-sidebar';
 import { ControlGroup } from '@ag.ds-next/react/control-group';
 import { Checkbox } from '@ag.ds-next/react/checkbox';
-import { Button } from '@ag.ds-next/react/button';
-import { Box } from '@ag.ds-next/react/box';
-import { CloseIcon } from '@ag.ds-next/react/icon';
 import { getMarkdownData, serializeMarkdown } from '../../lib/mdxUtils';
 import {
 	COMPONENTS_PATH,
@@ -73,7 +70,8 @@ export default function PackagesHome({
 					<Column columnSpan={{ xs: 12, md: 6, lg: 4 }}>
 						<Stack gap={1}>
 							<FilterSidebar
-							// activeFiltersCount={activeFiltersCount}
+								onClearFilters={resetFilters}
+								// activeFiltersCount={activeFiltersCount}
 							>
 								<div role="search" aria-label="components">
 									<SearchInput
@@ -110,16 +108,6 @@ export default function PackagesHome({
 										</Checkbox>
 									))}
 								</ControlGroup>
-
-								<Box>
-									<Button
-										variant="text"
-										iconAfter={() => <CloseIcon size="sm" />}
-										onClick={resetFilters}
-									>
-										Clear filters
-									</Button>
-								</Box>
 							</FilterSidebar>
 						</Stack>
 					</Column>

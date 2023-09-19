@@ -1,6 +1,4 @@
 import { Box } from '@ag.ds-next/react/box';
-import { Button } from '@ag.ds-next/react/button';
-import { CloseIcon } from '@ag.ds-next/react/icon';
 import { Column, Columns } from '@ag.ds-next/react/columns';
 import { DateRangePicker } from '@ag.ds-next/react/date-range-picker';
 import { FilterSidebar } from '@ag.ds-next/react/filter-sidebar';
@@ -52,7 +50,10 @@ export const ListFiltering = () => {
 				<Columns gap={{ xs: 1, md: 3 }}>
 					<Column columnSpan={{ xs: 12, md: 4 }}>
 						<Stack gap={1}>
-							<FilterSidebar activeFiltersCount={activeFiltersCount}>
+							<FilterSidebar
+								activeFiltersCount={activeFiltersCount}
+								onClearFilters={resetFilters}
+							>
 								<FilterSearchInput block />
 								<FilterStatusSelect block />
 								<FilterStateSelect block />
@@ -76,15 +77,6 @@ export const ListFiltering = () => {
 									}
 									value={filters.requestDate}
 								/>
-								<Box display={{ xs: 'none', lg: 'block' }}>
-									<Button
-										variant="text"
-										iconAfter={() => <CloseIcon size="sm" />}
-										onClick={resetFilters}
-									>
-										Clear filters
-									</Button>
-								</Box>
 							</FilterSidebar>
 
 							<Box display={{ xs: 'block', lg: 'none' }}>

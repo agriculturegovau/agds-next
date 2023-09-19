@@ -1,5 +1,8 @@
 import { useId } from '../core';
-import { CollapsingSideBar } from '../_collapsing-side-bar';
+import {
+	CollapsingSideBar,
+	CollapsingSideBarTitle,
+} from '../_collapsing-side-bar';
 import {
 	ProgressIndicatorItem,
 	ProgressIndicatorItemButton,
@@ -27,8 +30,7 @@ export const ProgressIndicator = ({
 			as="section"
 			collapseButtonLabel={subTitle}
 			background={background}
-			title="Progress"
-			subTitle={subTitle}
+			title={<CollapsingSideBarTitle title="Progress" subtitle={subTitle} />}
 		>
 			<ProgressIndicatorList>
 				{items.map(({ label, ...props }, index) => {
