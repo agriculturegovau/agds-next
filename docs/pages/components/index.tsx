@@ -134,9 +134,10 @@ export default function PackagesHome({
 						{filteredPkgs?.length ? (
 							<Stack gap={2}>
 								<Text
-									fontSize={{
-										xs: 'sm',
-										md: 'lg',
+									fontSize="md"
+									fontWeight={{
+										xs: 'normal',
+										md: 'bold',
 									}}
 								>
 									{hasFilters ? 'Components' : 'All Components'} (

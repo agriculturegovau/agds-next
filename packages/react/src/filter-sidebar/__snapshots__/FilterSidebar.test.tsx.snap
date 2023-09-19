@@ -12,7 +12,7 @@ exports[`FilterSidebar renders correctly 1`] = `
       <h2
         class="css-kip0vn-boxStyles-Text"
       >
-        Filters
+        Filter by
       </h2>
     </div>
     <button
@@ -48,8 +48,12 @@ exports[`FilterSidebar renders correctly 1`] = `
         class="css-79i25n-boxStyles"
       >
         <div
-          class="css-h0krvw-boxStyles"
-        />
+          class="css-16ved0q-boxStyles"
+        >
+          <div
+            class="css-h0krvw-boxStyles"
+          />
+        </div>
       </div>
     </div>
   </aside>

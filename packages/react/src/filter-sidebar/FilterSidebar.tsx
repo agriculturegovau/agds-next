@@ -29,12 +29,20 @@ export function FilterSidebar({
 			aria-label={ariaLabel}
 		>
 			<Box
+				background={{
+					xs: 'shade',
+					md: 'body',
+				}}
 				borderTop
-				paddingTop={1}
 				borderTopWidth={{
 					xs: 'none',
 					md: 'sm',
 				}}
+				padding={{
+					xs: 1,
+					md: 0,
+				}}
+				paddingTop={{ xs: 1, md: 2 }}
 			>
 				<FormStack>{children}</FormStack>
 			</Box>

@@ -76,7 +76,7 @@ export const ListFiltering = () => {
 									}
 									value={filters.requestDate}
 								/>
-								<Box>
+								<Box display={{ xs: 'none', lg: 'block' }}>
 									<Button
 										variant="text"
 										iconAfter={() => <CloseIcon size="sm" />}
@@ -106,13 +106,12 @@ export const ListFiltering = () => {
 								justifyContent={{ xs: 'flex-start', md: 'space-between' }}
 								alignItems={{ xs: 'flex-start', md: 'flex-end' }}
 								gap={1.5}
-								borderBottom
-								paddingBottom={1}
 							>
 								<Text
-									fontSize={{
-										xs: 'sm',
-										md: 'lg',
+									fontSize="md"
+									fontWeight={{
+										xs: 'normal',
+										md: 'bold',
 									}}
 								>
 									{tableCaption}
