@@ -3,18 +3,232 @@
 exports[`Callout renders correctly 1`] = `
 <div>
   <div
-    class="css-11w0n76-boxStyles"
+    class="css-eaebe2-boxStyles"
   >
-    <h2
-      class="css-ixats2-boxStyles-Text"
+    <div
+      class="css-1iiypnu-boxStyles-Callout"
     >
-      Callout heading
-    </h2>
-    <p
-      class="css-6j1v6l-boxStyles-Text"
+      <h2
+        class="css-kip0vn-boxStyles-Text"
+      >
+        Callout heading
+      </h2>
+      <p
+        class="css-6j1v6l-boxStyles-Text"
+      >
+        Description of the callout.
+      </p>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Callout with compact variant and info tone renders correctly 1`] = `
+<div>
+  <div
+    class="css-tgtnb7-boxStyles"
+  >
+    <div
+      class="css-vspen0-boxStyles"
     >
-      Description of the callout.
-    </p>
+      <svg
+        aria-hidden="false"
+        aria-label="Information"
+        class="css-1curl5b-Icon"
+        clip-rule="evenodd"
+        focusable="true"
+        height="24"
+        role="img"
+        viewBox="0 0 24 24"
+        width="24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          clip-rule="evenodd"
+          d="M12 1C5.9 1 1 5.9 1 12C1 18.1 5.9 23 12 23C18.1 23 23 18.1 23 12C23 5.9 18.1 1 12 1ZM12 18C11.4477 18 11 17.5523 11 17V11C11 10.4477 11.4477 10 12 10C12.5523 10 13 10.4477 13 11V17C13 17.5523 12.5523 18 12 18ZM12 8C12.5523 8 13 7.55228 13 7C13 6.44772 12.5523 6 12 6C11.4477 6 11 6.44772 11 7C11 7.55228 11.4477 8 12 8Z"
+          fill="currentColor"
+          fill-rule="evenodd"
+          stroke="none"
+        />
+      </svg>
+    </div>
+    <div
+      class="css-1be1aj7-boxStyles-Callout"
+    >
+      <h2
+        class="css-1nbyqjf-boxStyles-Text"
+      >
+        Callout heading
+      </h2>
+      <p
+        class="css-6j1v6l-boxStyles-Text"
+      >
+        Description of the callout.
+      </p>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Callout with compact variant and neutral tone renders correctly 1`] = `
+<div>
+  <div
+    class="css-1qwxuo7-boxStyles"
+  >
+    <div
+      class="css-1be1aj7-boxStyles-Callout"
+    >
+      <h2
+        class="css-1nbyqjf-boxStyles-Text"
+      >
+        Callout heading
+      </h2>
+      <p
+        class="css-6j1v6l-boxStyles-Text"
+      >
+        Description of the callout.
+      </p>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Callout with feature variant and info tone renders correctly 1`] = `
+<div>
+  <div
+    class="css-10b68go-boxStyles"
+  >
+    <div
+      class="css-vspen0-boxStyles"
+    >
+      <svg
+        aria-hidden="false"
+        aria-label="Information"
+        class="css-1nu5b1r-Icon"
+        clip-rule="evenodd"
+        focusable="true"
+        height="24"
+        role="img"
+        viewBox="0 0 24 24"
+        width="24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          clip-rule="evenodd"
+          d="M12 1C5.9 1 1 5.9 1 12C1 18.1 5.9 23 12 23C18.1 23 23 18.1 23 12C23 5.9 18.1 1 12 1ZM12 18C11.4477 18 11 17.5523 11 17V11C11 10.4477 11.4477 10 12 10C12.5523 10 13 10.4477 13 11V17C13 17.5523 12.5523 18 12 18ZM12 8C12.5523 8 13 7.55228 13 7C13 6.44772 12.5523 6 12 6C11.4477 6 11 6.44772 11 7C11 7.55228 11.4477 8 12 8Z"
+          fill="currentColor"
+          fill-rule="evenodd"
+          stroke="none"
+        />
+      </svg>
+    </div>
+    <div
+      class="css-1iiypnu-boxStyles-Callout"
+    >
+      <h2
+        class="css-zmcwms-boxStyles-Text"
+      >
+        Callout heading
+      </h2>
+      <p
+        class="css-6j1v6l-boxStyles-Text"
+      >
+        Description of the callout.
+      </p>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Callout with feature variant and neutral tone renders correctly 1`] = `
+<div>
+  <div
+    class="css-12qxj53-boxStyles"
+  >
+    <div
+      class="css-1iiypnu-boxStyles-Callout"
+    >
+      <h2
+        class="css-zmcwms-boxStyles-Text"
+      >
+        Callout heading
+      </h2>
+      <p
+        class="css-6j1v6l-boxStyles-Text"
+      >
+        Description of the callout.
+      </p>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Callout with regular variant and info tone renders correctly 1`] = `
+<div>
+  <div
+    class="css-vz3ah2-boxStyles"
+  >
+    <div
+      class="css-vspen0-boxStyles"
+    >
+      <svg
+        aria-hidden="false"
+        aria-label="Information"
+        class="css-1curl5b-Icon"
+        clip-rule="evenodd"
+        focusable="true"
+        height="24"
+        role="img"
+        viewBox="0 0 24 24"
+        width="24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          clip-rule="evenodd"
+          d="M12 1C5.9 1 1 5.9 1 12C1 18.1 5.9 23 12 23C18.1 23 23 18.1 23 12C23 5.9 18.1 1 12 1ZM12 18C11.4477 18 11 17.5523 11 17V11C11 10.4477 11.4477 10 12 10C12.5523 10 13 10.4477 13 11V17C13 17.5523 12.5523 18 12 18ZM12 8C12.5523 8 13 7.55228 13 7C13 6.44772 12.5523 6 12 6C11.4477 6 11 6.44772 11 7C11 7.55228 11.4477 8 12 8Z"
+          fill="currentColor"
+          fill-rule="evenodd"
+          stroke="none"
+        />
+      </svg>
+    </div>
+    <div
+      class="css-1iiypnu-boxStyles-Callout"
+    >
+      <h2
+        class="css-kip0vn-boxStyles-Text"
+      >
+        Callout heading
+      </h2>
+      <p
+        class="css-6j1v6l-boxStyles-Text"
+      >
+        Description of the callout.
+      </p>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Callout with regular variant and neutral tone renders correctly 1`] = `
+<div>
+  <div
+    class="css-eaebe2-boxStyles"
+  >
+    <div
+      class="css-1iiypnu-boxStyles-Callout"
+    >
+      <h2
+        class="css-kip0vn-boxStyles-Text"
+      >
+        Callout heading
+      </h2>
+      <p
+        class="css-6j1v6l-boxStyles-Text"
+      >
+        Description of the callout.
+      </p>
+    </div>
   </div>
 </div>
 `;

@@ -1,32 +1,66 @@
-import { ElementType, PropsWithChildren } from 'react';
+import { ElementType, PropsWithChildren, ReactNode } from 'react';
 import { Flex } from '../flex';
+import { Stack } from '../stack';
 import { CalloutTitle } from './CalloutTitle';
+import {
+	CalloutTone,
+	calloutToneMap,
+	CalloutVariant,
+	calloutVariantMap,
+} from './utils';
 
 export type CalloutProps = PropsWithChildren<{
 	as?: ElementType;
-	/** If Callout is placed on "bodyAlt" background, please set this to "shadeAlt". */
+	/** @deprecated Use `onBodyAlt` instead to flag if the Callout is placed on an area with a "bodyAlt" background. */
 	background?: 'shade' | 'shadeAlt';
+	/** Specify a custom icon to overwrite the default icon */
+	icon?: ReactNode;
+	/** If the Callout component is placed on a page with `bodyAlt` background, set this prop to `true`. */
+	onBodyAlt?: boolean;
 	/** Title will appear in bold */
 	title?: string;
+	/** Tone will change the background color */
+	tone?: CalloutTone;
+	/** Variant will change the padding and gap */
+	variant?: CalloutVariant;
 }>;
 
 export const Callout = ({
 	as,
-	background = 'shade',
+	background: backgroundProp,
 	children,
+	icon: iconProp,
+	onBodyAlt: onBodyAltProp,
 	title,
-}: CalloutProps) => (
-	<Flex
-		as={as}
-		flexDirection="column"
-		gap={1}
-		background={background}
-		padding={1.5}
-		borderLeft
-		borderLeftWidth="xl"
-		highContrastOutline
-	>
-		{title ? <CalloutTitle>{title}</CalloutTitle> : null}
-		{children}
-	</Flex>
-);
+	tone = 'neutral',
+	variant = 'regular',
+}: CalloutProps) => {
+	const { gap, padding, flexDirection, titlePaddingTop } =
+		calloutVariantMap[variant];
+	const { background, border, icon } = calloutToneMap(variant)[tone];
+
+	/** Decides whether the neutral tone should use the norman 'shade' or 'shadeAlt' bg. */
+	const onBodyAlt =
+		tone === 'neutral' && (onBodyAltProp ?? backgroundProp === 'shadeAlt');
+
+	return (
+		<Flex
+			as={as}
+			flexDirection={flexDirection}
+			rounded
+			gap={gap}
+			background={onBodyAlt ? 'shadeAlt' : background}
+			borderColor={border}
+			padding={padding}
+			borderLeft
+			borderLeftWidth="xl"
+			highContrastOutline
+		>
+			{iconProp || icon ? <Flex flexShrink={0}>{iconProp || icon}</Flex> : null}
+			<Stack gap={gap} css={{ paddingTop: titlePaddingTop }}>
+				{title ? <CalloutTitle variant={variant}>{title}</CalloutTitle> : null}
+				{children}
+			</Stack>
+		</Flex>
+	);
+};

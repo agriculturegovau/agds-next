@@ -13,7 +13,7 @@ relatedComponents: ['global-alert', 'page-alert']
 </Callout>
 ```
 
-Use callout to notify and alert users of important snippets of information.
+Use callout to notify and alert users of important snippets of static information.
 
 <DoHeading />
 
@@ -21,6 +21,7 @@ Use callout to notify and alert users of important snippets of information.
 - use to help users quickly scan to find essential information in a long text page
 - use to reiterate important content
 - use for quotes in long-form content
+- use different tones and variants on the same page to convey information hierarchy
 - use for additional content formats not included in the main text such as support and contact details, checklists, definitions and
   Did you know? content.
 
@@ -33,52 +34,66 @@ Use callout to notify and alert users of important snippets of information.
 - use more than 1 per page
 - mix colour palettes.
 
-## Callout heading screen reader only
+## Tones
 
-A callout with a heading that can be read by screen readers. Markup for the title is included for screen reader users.
+Callouts can be used to convey different tones of information. The tone of a callout is conveyed through the background colour and icon.
+
+### Neutral Callout
+
+The default tone of a callout is `neutral`.
 
 ```jsx live
-<Callout>
-	<VisuallyHidden>
-		<h2>Title of the callout</h2>
-	</VisuallyHidden>
-	<Text as="p">Description of the callout</Text>
+<Callout title="Callout heading">
+	<Text as="p">Description of the callout.</Text>
 </Callout>
 ```
 
-## Calendar
+By default, neutral Callouts make use of the `shade` [background token](/foundations/tokens/colour#background-colours), which must be paired with the normal `body` background.
 
-Use a calendar callout to notify and alert users of important dates and events.
-
-```jsx live
-<Callout as="section">
-	<Flex flexDirection="column">
-		<VisuallyHidden>
-			<h2>Description of the callout</h2>
-		</VisuallyHidden>
-		<Text as="p">The next public holiday is:</Text>
-		<Text
-			as="time"
-			fontSize="xl"
-			fontWeight="bold"
-			dateTime="2017-01-01T00:00:00+00:00"
-		>
-			Sunday 1 January
-		</Text>
-		<Text>New Year’s Day</Text>
-	</Flex>
-</Callout>
-```
-
-## Backgrounds
-
-The background of the `Callout` must pair with the background it is being placed on. For example, if `Callout` is placed on a 'bodyAlt' background, please set the `background` prop to `shadeAlt`.
+If the neutral Callout component is placed on a page with `bodyAlt` background, set the `onBodyAlt` prop to `true`. This ensures the correct shade background token is used by the component.
 
 ```jsx live
-<Stack background="bodyAlt" padding={3} gap={1}>
+<Stack background="bodyAlt" padding={2} gap={1}>
 	<Text>An area with `bodyAlt` background</Text>
-	<Callout title="Callout heading" background="shadeAlt">
+	<Callout title="Callout heading" tone="neutral" onBodyAlt>
 		<Text as="p">Description of the callout.</Text>
 	</Callout>
 </Stack>
+```
+
+### Information Callout
+
+Use an `info` tone to highlight information which is important for users.
+
+```jsx live
+<Callout title="Callout heading" tone="info">
+	<Text as="p">Description of the callout.</Text>
+</Callout>
+```
+
+## Compact
+
+Compact version of the callout can be used when there is limited space, such as inside of a Control group to let the user know that, based on their response, they may need to provide additional information.
+
+```jsx live
+<ControlGroup label="Control group label" required block>
+	<Radio checked={false}>Radio option one</Radio>
+	<Radio checked={true}>Radio option two</Radio>
+	<ConditionalFieldContainer>
+		<Callout title="Callout heading" tone="info" variant="compact">
+			<Text as="p">Description of the callout.</Text>
+		</Callout>
+	</ConditionalFieldContainer>
+	<Radio checked={false}>Text message</Radio>
+</ControlGroup>
+```
+
+## Feature
+
+The feature variant of the callout can be used to draw even more emphasis to the content.
+
+```jsx live
+<Callout title="Feature Callout heading" tone="info" variant="feature">
+	<Text as="p">Description of the callout.</Text>
+</Callout>
 ```

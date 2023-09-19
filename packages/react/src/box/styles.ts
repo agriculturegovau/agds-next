@@ -52,29 +52,50 @@ function paletteStyles({ palette, dark, light }: PaletteProps) {
 	if (light) return boxPalettes.light;
 }
 
+const borderColorMap = {
+	border: boxPalette.border,
+	muted: boxPalette.borderMuted,
+	accent: boxPalette.accent,
+	selected: boxPalette.selected,
+	info: boxPalette.systemInfo,
+	success: boxPalette.systemSuccess,
+	error: boxPalette.systemError,
+	warning: boxPalette.systemWarning,
+} as const;
+
+export type BorderColor = keyof typeof borderColorMap;
+
 export const foregroundColorMap = {
 	text: boxPalette.foregroundText,
 	action: boxPalette.foregroundAction,
 	selected: boxPalette.selected,
 	muted: boxPalette.foregroundMuted,
 	accent: boxPalette.accent,
-	error: boxPalette.systemError,
-	success: boxPalette.systemSuccess,
-	warning: boxPalette.systemWarning,
 	info: boxPalette.systemInfo,
+	success: boxPalette.systemSuccess,
+	error: boxPalette.systemError,
+	warning: boxPalette.systemWarning,
 	inherit: 'inherit',
 };
+
+export type ForegroundColor = keyof typeof foregroundColorMap;
 
 export const backgroundColorMap = {
 	body: boxPalette.backgroundBody,
 	shade: boxPalette.backgroundShade,
 	bodyAlt: boxPalette.backgroundBodyAlt,
 	shadeAlt: boxPalette.backgroundShadeAlt,
+	info: boxPalette.systemInfoMuted,
+	success: boxPalette.systemSuccessMuted,
+	error: boxPalette.systemErrorMuted,
+	warning: boxPalette.systemWarningMuted,
 };
 
+export type BackgroundColor = keyof typeof backgroundColorMap;
+
 type ColorProps = Partial<{
-	color: ResponsiveProp<keyof typeof foregroundColorMap>;
-	background: ResponsiveProp<keyof typeof backgroundColorMap>;
+	color: ResponsiveProp<ForegroundColor>;
+	background: ResponsiveProp<BackgroundColor>;
 }>;
 
 function colorStyles({ color, background }: ColorProps) {
@@ -229,15 +250,6 @@ function layoutStyles({
 		maxHeight: mapResponsiveProp(maxHeight),
 	};
 }
-
-const borderColorMap = {
-	border: boxPalette.border,
-	muted: boxPalette.borderMuted,
-	accent: boxPalette.accent,
-	selected: boxPalette.selected,
-} as const;
-
-type BorderColor = keyof typeof borderColorMap;
 
 type BorderProps = Partial<{
 	border: ResponsiveProp<boolean>;

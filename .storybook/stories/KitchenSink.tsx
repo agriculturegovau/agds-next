@@ -134,12 +134,10 @@ const sideNavItems = [
 const backgroundMapper = {
 	body: {
 		page: 'body',
-		shade: 'shade',
 		opposite: 'bodyAlt',
 	},
 	bodyAlt: {
 		page: 'bodyAlt',
-		shade: 'shadeAlt',
 		opposite: 'body',
 	},
 } as const;
@@ -147,7 +145,7 @@ const backgroundMapper = {
 type KitchenSinkProps = { background: 'body' | 'bodyAlt' };
 
 function KitchenSink({ background }: KitchenSinkProps) {
-	const { page, shade, opposite } = backgroundMapper[background];
+	const { page, opposite } = backgroundMapper[background];
 	const [isModalOpen, openModal, closeModal] = useTernaryState(false);
 	const [isDrawerOpen, openDrawer, closeDrawer] = useTernaryState(false);
 	return (
@@ -266,7 +264,11 @@ function KitchenSink({ background }: KitchenSinkProps) {
 								tortor eu, finibus lacinia libero.
 							</Text>
 
-							<Callout title="Callout heading" background={shade}>
+							<Callout
+								title="Callout heading"
+								tone="neutral"
+								onBodyAlt={page === 'bodyAlt'}
+							>
 								<Text as="p">Description of the callout.</Text>
 							</Callout>
 
