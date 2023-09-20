@@ -87,6 +87,7 @@ export const Layout: Story = {
 					>
 						<Stack gap={2}>
 							<Text
+								as="h2"
 								fontSize="md"
 								lineHeight="heading"
 								fontWeight={{ xs: 'normal', md: 'bold' }}

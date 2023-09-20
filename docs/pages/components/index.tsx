@@ -122,6 +122,7 @@ export default function PackagesHome({
 						{filteredPkgs?.length ? (
 							<Stack gap={2}>
 								<Text
+									as="h2"
 									fontSize="md"
 									fontWeight={{
 										xs: 'normal',

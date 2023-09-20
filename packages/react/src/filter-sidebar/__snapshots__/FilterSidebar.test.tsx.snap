@@ -3,7 +3,7 @@
 exports[`FilterSidebar renders correctly 1`] = `
 <div>
   <aside
-    aria-label="filters"
+    aria-label="Filters"
     class="css-109i52p-boxStyles-CollapsingSideBarContainer"
   >
     <div
@@ -49,11 +49,7 @@ exports[`FilterSidebar renders correctly 1`] = `
       >
         <div
           class="css-16ved0q-boxStyles"
-        >
-          <div
-            class="css-h0krvw-boxStyles"
-          />
-        </div>
+        />
       </div>
     </div>
   </aside>

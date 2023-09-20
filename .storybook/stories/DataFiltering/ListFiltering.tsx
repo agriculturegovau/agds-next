@@ -98,6 +98,7 @@ export const ListFiltering = () => {
 								gap={1.5}
 							>
 								<Text
+									as="h2"
 									lineHeight="heading"
 									fontSize="md"
 									fontWeight={{
