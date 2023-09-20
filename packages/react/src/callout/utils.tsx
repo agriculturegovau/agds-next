@@ -25,7 +25,8 @@ export type CalloutTone = keyof ReturnType<typeof calloutToneMap>;
 
 export const calloutVariantMap = {
 	compact: {
-		gap: 0.5,
+		textGap: 0.5,
+		iconGap: 0.5,
 		padding: 1,
 		titleSize: 'sm',
 		titlePaddingTop: '0.125rem', // 2px
@@ -33,7 +34,8 @@ export const calloutVariantMap = {
 		flexDirection: 'row',
 	},
 	regular: {
-		gap: 1,
+		textGap: 1,
+		iconGap: 0.5,
 		padding: 1.5,
 		titleSize: 'md',
 		titlePaddingTop: undefined,
@@ -41,7 +43,8 @@ export const calloutVariantMap = {
 		flexDirection: 'row',
 	},
 	feature: {
-		gap: 1,
+		textGap: 1,
+		iconGap: 1,
 		padding: 1.5,
 		titleSize: 'xl',
 		titlePaddingTop: undefined,

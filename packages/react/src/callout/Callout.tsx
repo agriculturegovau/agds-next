@@ -35,7 +35,7 @@ export const Callout = ({
 	tone = 'neutral',
 	variant = 'regular',
 }: CalloutProps) => {
-	const { gap, padding, flexDirection, titlePaddingTop } =
+	const { textGap, iconGap, padding, flexDirection, titlePaddingTop } =
 		calloutVariantMap[variant];
 	const { background, border, icon } = calloutToneMap(variant)[tone];
 
@@ -48,7 +48,7 @@ export const Callout = ({
 			as={as}
 			flexDirection={flexDirection}
 			rounded
-			gap={gap}
+			gap={iconGap}
 			background={onBodyAlt ? 'shadeAlt' : background}
 			borderColor={border}
 			padding={padding}
@@ -57,7 +57,7 @@ export const Callout = ({
 			highContrastOutline
 		>
 			{iconProp || icon ? <Flex flexShrink={0}>{iconProp || icon}</Flex> : null}
-			<Stack gap={gap} css={{ paddingTop: titlePaddingTop }}>
+			<Stack gap={textGap} css={{ paddingTop: titlePaddingTop }}>
 				{title ? <CalloutTitle variant={variant}>{title}</CalloutTitle> : null}
 				{children}
 			</Stack>
