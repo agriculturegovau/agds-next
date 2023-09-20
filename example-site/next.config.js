@@ -1,8 +1,6 @@
 const withPreconstruct = require('@preconstruct/next');
 
-const basePath = [process.env.BASE_PATH, 'example-site']
-	.filter(Boolean)
-	.join('/');
+const basePath = `${process.env.BASE_PATH ?? ''}/example-site`;
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
