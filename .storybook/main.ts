@@ -19,7 +19,6 @@ const config: StorybookConfig = {
 		'@storybook/addon-links',
 		'@storybook/addon-a11y',
 		{ name: '@storybook/addon-essentials', options: { background: false } },
-		'storybook-addon-next-router',
 	],
 	stories: [
 		'../packages/*/src/**/*.stories.@(ts|tsx)',
@@ -40,6 +39,11 @@ const config: StorybookConfig = {
 			define: {
 				...config.define,
 				'process.env': {},
+			},
+			resolve: {
+				alias: {
+					'next/router': 'next-router-mock',
+				},
 			},
 			optimizeDeps: {
 				...config.optimizeDeps,

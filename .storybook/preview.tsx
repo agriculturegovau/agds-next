@@ -1,5 +1,4 @@
 import { Preview } from '@storybook/react';
-import { RouterContext } from 'next/dist/shared/lib/router-context';
 import { Box } from '../packages/react/src/box';
 import { Core } from '../packages/react/src/core';
 import { theme as agriculture } from '../packages/react/src/ag-branding';
@@ -88,9 +87,6 @@ const parameters = {
 	},
 	viewport: {
 		viewports: makeViewports(),
-	},
-	nextRouter: {
-		Provider: RouterContext.Provider,
 	},
 };
 
