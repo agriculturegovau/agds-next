@@ -1,0 +1,57 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FilterSidebar renders correctly 1`] = `
+<div>
+  <aside
+    aria-label="Filters"
+    class="css-109i52p-boxStyles-CollapsingSideBarContainer"
+  >
+    <div
+      class="css-1w8myos-boxStyles"
+    >
+      <h2
+        class="css-kip0vn-boxStyles-Text"
+      >
+        Filter by
+      </h2>
+    </div>
+    <button
+      aria-controls="collapsing-side-bar-:r0:-body"
+      aria-expanded="false"
+      class="css-15g5ot9-BaseButton-boxStyles-SideBarCollapseButton"
+      id="collapsing-side-bar-:r0:-button"
+      type="button"
+    >
+      Filters (1)
+      <svg
+        aria-hidden="true"
+        class="css-1te2wbi-SideBarCollapseButton"
+        clip-rule="evenodd"
+        focusable="false"
+        height="24"
+        role="img"
+        viewBox="0 0 24 24"
+        width="24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <polyline
+          points="6 9 12 15 18 9"
+        />
+      </svg>
+    </button>
+    <div
+      class="css-1x3p89f-CollapsingSideBar"
+      id="collapsing-side-bar-:r0:-body"
+      style="display: none; height: 0px; overflow: hidden;"
+    >
+      <div
+        class="css-79i25n-boxStyles"
+      >
+        <div
+          class="css-16ved0q-boxStyles"
+        />
+      </div>
+    </div>
+  </aside>
+</div>
+`;

@@ -1,4 +1,4 @@
-import { PropsWithChildren, useRef } from 'react';
+import { PropsWithChildren, ReactNode, useRef } from 'react';
 import { useSpring, animated } from '@react-spring/web';
 import {
 	tokens,
@@ -19,28 +19,29 @@ import {
 	collapsingSideBarLocalPaletteVars,
 	useCollapsingSideBarIds,
 } from './utils';
-import { CollapsingSideBarTitle } from './CollapsingSideBarTitle';
 
 export type CollapsingSideBarProps = PropsWithChildren<{
 	/** The HTML element to render the CollapsingSideBar as. */
 	as?: CollapsingSideBarContainerElementType;
+	/** The aria-label for the CollapsingSideBar. */
+	'aria-label'?: string;
 	/** If CollapsingSideBar is placed on 'bodyAlt' background, please set this to 'bodyAlt'. */
 	background?: CollapsingSideBarBackground;
 	/** Used as the title of the expand/collapse trigger on smaller screen sizes. */
 	collapseButtonLabel: string;
-	/** The title of the CollapsingSideBar. */
-	title?: string;
+	/** The title of the CollapsingSideBar. Place a CollapsingSideBarTitle here unless you implement something custom. */
+	title?: ReactNode;
 	/** The sub title of the CollapsingSideBar. */
 	subTitle?: string;
 }>;
 
 export function CollapsingSideBar({
 	as = 'div',
+	'aria-label': ariaLabel,
 	background = 'body',
 	children,
 	collapseButtonLabel,
 	title,
-	subTitle,
 }: CollapsingSideBarProps) {
 	const { bodyId, buttonId } = useCollapsingSideBarIds();
 	const ref = useRef<HTMLDivElement>(null);
@@ -71,8 +72,12 @@ export function CollapsingSideBar({
 	const isMobile = (windowWidth || 0) <= tokens.breakpoint.lg - 1;
 
 	return (
-		<CollapsingSideBarContainer as={as} background={background}>
-			{title && <CollapsingSideBarTitle title={title} subtitle={subTitle} />}
+		<CollapsingSideBarContainer
+			as={as}
+			background={background}
+			ariaLabel={ariaLabel}
+		>
+			{title}
 			<SideBarCollapseButton
 				isOpen={isOpen}
 				onClick={onToggle}
@@ -110,11 +115,13 @@ type CollapsingSideBarContainerElementType =
 
 type CollapsingSideBarContainerProps = PropsWithChildren<{
 	as: CollapsingSideBarContainerElementType;
+	ariaLabel?: string;
 	background: CollapsingSideBarBackground;
 }>;
 
 const CollapsingSideBarContainer = ({
 	as,
+	ariaLabel,
 	background,
 	children,
 }: CollapsingSideBarContainerProps) => {
@@ -122,6 +129,7 @@ const CollapsingSideBarContainer = ({
 	return (
 		<Stack
 			as={as}
+			aria-label={ariaLabel}
 			background={background}
 			gap={{ xs: 0, md: 1 }}
 			css={mq({

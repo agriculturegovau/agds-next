@@ -1,9 +1,13 @@
 import { normalize } from 'path';
 import { useMemo, useState } from 'react';
 import { Stack } from '@ag.ds-next/react/stack';
-import { H2 } from '@ag.ds-next/react/heading';
 import { Text } from '@ag.ds-next/react/text';
 import { SearchInput } from '@ag.ds-next/react/search-input';
+import { Column, Columns } from '@ag.ds-next/react/columns';
+import { FilterSidebar } from '@ag.ds-next/react/filter-sidebar';
+import { ControlGroup } from '@ag.ds-next/react/control-group';
+import { Checkbox } from '@ag.ds-next/react/checkbox';
+import { FormStack } from '@ag.ds-next/react/form-stack';
 import { getMarkdownData, serializeMarkdown } from '../../lib/mdxUtils';
 import {
 	COMPONENTS_PATH,
@@ -12,10 +16,15 @@ import {
 	getPkgNavLinks,
 } from '../../lib/mdx/packages';
 import { DocumentTitle } from '../../components/DocumentTitle';
-import { PkgCardList } from '../../components/PkgCardList';
+import {
+	PkgCardList,
+	PkgCardListEmptyState,
+} from '../../components/PkgCardList';
 import { CategoryPageTemplate } from '../../components/CategoryPageTemplate';
 
 type StaticProps = Awaited<ReturnType<typeof getStaticProps>>['props'];
+
+const listId = 'agds-components-list';
 
 export default function PackagesHome({
 	groupList,
@@ -24,17 +33,32 @@ export default function PackagesHome({
 	description,
 }: StaticProps) {
 	const [searchTerm, setSearchTerm] = useState('');
+	const [activeCategories, setActiveCategories] = useState<string[]>([]);
 
-	const filteredPkgs = useMemo(() => {
-		if (!searchTerm) return null;
-		return pkgList.filter((p) => {
-			return (
-				p.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-				p.groupName.toLowerCase().includes(searchTerm.toLowerCase()) ||
-				p.description?.toLowerCase().includes(searchTerm.toLowerCase())
-			);
-		});
-	}, [pkgList, searchTerm]);
+	const resetFilters = () => {
+		setSearchTerm('');
+		setActiveCategories([]);
+	};
+
+	const hasFilters = searchTerm !== '' || activeCategories.length > 0;
+
+	const filteredPkgs = useMemo(
+		() =>
+			pkgList.filter((p) => {
+				if (activeCategories.length) {
+					if (!activeCategories.includes(p.groupName)) return false;
+				}
+
+				if (!searchTerm) return true;
+
+				return (
+					p.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+					p.groupName.toLowerCase().includes(searchTerm.toLowerCase()) ||
+					p.description?.toLowerCase().includes(searchTerm.toLowerCase())
+				);
+			}),
+		[pkgList, searchTerm, activeCategories]
+	);
 
 	return (
 		<>
@@ -44,40 +68,79 @@ export default function PackagesHome({
 				description={description}
 				editPath="/docs/content/components/index.mdx"
 			>
-				<Stack gap={3}>
-					<div role="search" aria-label="components">
-						<SearchInput
-							label="Find a component"
-							hint="Filter by name or category"
-							value={searchTerm}
-							onChange={setSearchTerm}
-							maxWidth="xl"
-							hideOptionalLabel
-						/>
-					</div>
-					<Stack gap={1}>
-						{searchTerm ? (
-							filteredPkgs?.length ? (
-								<PkgCardList items={filteredPkgs} />
-							) : (
-								<Text as="p">
-									No results found. Please change your search term.
-								</Text>
-							)
-						) : (
-							<Stack gap={3}>
-								{groupList.map((group) => (
-									<Stack gap={1.5} key={group.slug}>
-										<H2>{group.title}</H2>
-										<PkgCardList
-											items={pkgList.filter((p) => p.group === group.slug)}
+				<Columns gap={{ xs: 1, md: 3 }}>
+					<Column columnSpan={{ xs: 12, md: 6, lg: 4 }}>
+						<Stack gap={1}>
+							<FilterSidebar onClearFilters={resetFilters}>
+								<FormStack>
+									<div role="search" aria-label="components">
+										<SearchInput
+											label="Find a component"
+											hint="Filter by name or category"
+											value={searchTerm}
+											onChange={setSearchTerm}
+											maxWidth="xl"
+											hideOptionalLabel
 										/>
-									</Stack>
-								))}
+									</div>
+									<ControlGroup
+										label="Category"
+										block={true}
+										hideOptionalLabel
+										aria-controls={listId}
+									>
+										{groupList.map(({ title }) => (
+											<Checkbox
+												key={title}
+												value={title}
+												checked={activeCategories.includes(title)}
+												onChange={(e) => {
+													const checked = e.target.checked;
+													setActiveCategories(
+														checked
+															? [...activeCategories, title]
+															: activeCategories?.filter((s) => s !== title)
+													);
+												}}
+											>
+												{title}
+											</Checkbox>
+										))}
+									</ControlGroup>
+								</FormStack>
+							</FilterSidebar>
+						</Stack>
+					</Column>
+
+					<Column
+						as="main"
+						id={listId}
+						tabIndex={-1}
+						css={{ '&:focus': { outline: 'none' } }}
+						columnSpan={{ xs: 12, md: 6, lg: 8 }}
+					>
+						{filteredPkgs?.length ? (
+							<Stack gap={2}>
+								<Text
+									as="h2"
+									fontSize="md"
+									fontWeight={{
+										xs: 'normal',
+										md: 'bold',
+									}}
+									lineHeight="heading"
+								>
+									{hasFilters ? 'Components' : 'All Components'} (
+									{filteredPkgs.length} items)
+								</Text>
+
+								<PkgCardList items={filteredPkgs} />
 							</Stack>
+						) : (
+							<PkgCardListEmptyState onClear={resetFilters} />
 						)}
-					</Stack>
-				</Stack>
+					</Column>
+				</Columns>
 			</CategoryPageTemplate>
 		</>
 	);
