@@ -12,6 +12,17 @@ The Filter sidebar collapses on mobile devices, and displays a number of active 
 
 [Visit the example page in Storybook](/storybook/index.html?path=/story/layout-filtersidebar--full) to see it used in context.
 
+<DoHeading />
+
+- Read the [Filter a list of cards pattern](/patterns/filtering-a-dataset#filtering-a-list-of-cards) to understand how and
+  when to use this component
+- Use the `activeFiltersCount` prop to display the number of active filters in the header on mobile devices
+- Use the `onClearFilters` prop to enable a reset button at the top of Filter sidebar.
+
+<DontHeading />
+
+- Use outside of the context of filtering items.
+
 ```jsx live
 (() => {
 	const listData = [
@@ -36,32 +47,23 @@ The Filter sidebar collapses on mobile devices, and displays a number of active 
 		<Columns gap={{ xs: 1, md: 3 }}>
 			<Column columnSpan={{ xs: 12, md: 4 }}>
 				<FilterSidebar activeFiltersCount={3}>
-					<TextInput block label="Example input 2" value="Example" />
-					<TextInput block label="Example input 3" value="Example" />
-					<TextInput block label="Example input 1" value="Example" />
-					<TextInput block label="Example input 4" value="Example" />
+					<FormStack>
+						<TextInput block label="Example input 2" value="Example" />
+						<TextInput block label="Example input 3" value="Example" />
+						<TextInput block label="Example input 1" value="Example" />
+						<TextInput block label="Example input 4" value="Example" />
+					</FormStack>
 				</FilterSidebar>
 			</Column>
 			<Column columnSpan={{ xs: 12, md: 8 }}>
 				<Stack gap={2}>
-					<Flex
-						flexDirection={{ xs: 'column', md: 'row' }}
-						justifyContent={{ xs: 'flex-start', md: 'space-between' }}
-						alignItems={{ xs: 'flex-start', md: 'flex-end' }}
-						gap={1.5}
-						borderBottom
-						paddingBottom={1}
+					<Text
+						fontSize="md"
+						fontWeight={{ xs: 'normal', md: 'bold' }}
+						lineHeight="heading"
 					>
-						<Text
-							fontSize={{
-								xs: 'sm',
-								md: 'lg',
-							}}
-						>
-							Search results
-						</Text>
-					</Flex>
-
+						Search results
+					</Text>
 					<Stack as="ul" gap={1}>
 						{listData.map((item) => (
 							<Card as="li" shadow clickable key={item.id}>
@@ -94,14 +96,3 @@ The Filter sidebar collapses on mobile devices, and displays a number of active 
 	);
 })();
 ```
-
-<DoHeading />
-
-- Read the [Filter a list of cards pattern](/patterns/filtering-a-dataset#filtering-a-list-of-cards) to understand how and
-  when to use this component
-- Use the `activeFiltersCount` prop to display the number of active filters in the header on mobile devices
-- Use the `onClearFilters` prop to enable a reset button at the top of Filter sidebar.
-
-<DontHeading />
-
-- Use outside of the context of filtering items.

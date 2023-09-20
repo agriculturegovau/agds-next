@@ -4,10 +4,10 @@ import { Button } from '@ag.ds-next/react/button';
 import { Flex } from '@ag.ds-next/react/flex';
 import { CloseIcon } from '@ag.ds-next/react/icon';
 import { Text } from '@ag.ds-next/react/text';
-import { FormStack } from '@ag.ds-next/react/form-stack';
 import { CollapsingSideBar } from '../_collapsing-side-bar';
 
 export type FilterSidebarProps = PropsWithChildren<{
+	/** The number of active filters. */
 	activeFiltersCount?: number;
 	/** The aria-label for the Filter sidebar. */
 	'aria-label'?: string;
@@ -24,7 +24,7 @@ export type FilterSidebarTitleProps = {
 
 export function FilterSidebar({
 	activeFiltersCount,
-	'aria-label': ariaLabel = 'filters',
+	'aria-label': ariaLabel = 'Filters',
 	onClearFilters,
 	children,
 	title = 'Filter by',
@@ -58,7 +58,7 @@ export function FilterSidebar({
 				}}
 				paddingTop={{ xs: 1, md: 2 }}
 			>
-				<FormStack>{children}</FormStack>
+				{children}
 			</Box>
 		</CollapsingSideBar>
 	);

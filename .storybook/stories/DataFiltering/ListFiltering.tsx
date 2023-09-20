@@ -5,9 +5,9 @@ import { FilterSidebar } from '@ag.ds-next/react/filter-sidebar';
 import { Flex } from '@ag.ds-next/react/flex';
 import { PageContent } from '@ag.ds-next/react/content';
 import { Prose } from '@ag.ds-next/react/prose';
-import { SkipLinks } from '@ag.ds-next/react/skip-link';
 import { Stack } from '@ag.ds-next/react/stack';
 import { Text } from '@ag.ds-next/react/text';
+import { FormStack } from '@ag.ds-next/react/form-stack';
 import { DashboardPagination } from './components/DashboardPagination';
 import { DataList } from './components/DataList';
 import { FilterAssigneeSelect } from './components/FilterAssigneeSelect';
@@ -36,9 +36,6 @@ export const ListFiltering = () => {
 	return (
 		<PageContent>
 			<Stack gap={3}>
-				<SkipLinks
-					links={[{ href: '#main-content', label: 'Skip to main content' }]}
-				/>
 				<Prose>
 					<h1>Card Filtering</h1>
 					<p>
@@ -54,31 +51,32 @@ export const ListFiltering = () => {
 								activeFiltersCount={activeFiltersCount}
 								onClearFilters={resetFilters}
 							>
-								<FilterSearchInput block />
-								<FilterStatusSelect block />
-								<FilterStateSelect block />
-								<FilterAssigneeSelect block />
-								<FilterDestinationsSelect block />
-								<FilterServicesSelect block />
-								<DateRangePicker
-									fromLabel="Registered from"
-									toLabel="Registered to"
-									hideOptionalLabel
-									onChange={(requestDate) => setFilter({ requestDate })}
-									onFromInputChange={(from) =>
-										setFilter({
-											requestDate: { ...filters.requestDate, from },
-										})
-									}
-									onToInputChange={(to) =>
-										setFilter({
-											requestDate: { ...filters.requestDate, to },
-										})
-									}
-									value={filters.requestDate}
-								/>
+								<FormStack>
+									<FilterSearchInput block />
+									<FilterStatusSelect block />
+									<FilterStateSelect block />
+									<FilterAssigneeSelect block />
+									<FilterDestinationsSelect block />
+									<FilterServicesSelect block />
+									<DateRangePicker
+										fromLabel="Registered from"
+										toLabel="Registered to"
+										hideOptionalLabel
+										onChange={(requestDate) => setFilter({ requestDate })}
+										onFromInputChange={(from) =>
+											setFilter({
+												requestDate: { ...filters.requestDate, from },
+											})
+										}
+										onToInputChange={(to) =>
+											setFilter({
+												requestDate: { ...filters.requestDate, to },
+											})
+										}
+										value={filters.requestDate}
+									/>
+								</FormStack>
 							</FilterSidebar>
-
 							<Box display={{ xs: 'block', lg: 'none' }}>
 								<ActiveFilters />
 							</Box>
@@ -100,6 +98,7 @@ export const ListFiltering = () => {
 								gap={1.5}
 							>
 								<Text
+									lineHeight="heading"
 									fontSize="md"
 									fontWeight={{
 										xs: 'normal',

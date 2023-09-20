@@ -10,6 +10,7 @@ import { Card, CardInner, CardLink } from '../card';
 import { Column, Columns } from '../columns';
 import { PageContent } from '../content';
 import { Flex } from '../flex';
+import { FormStack } from '../form-stack';
 import { H3 } from '../heading';
 import { SkipLinks } from '../skip-link';
 import { Stack } from '../stack';
@@ -68,10 +69,12 @@ export const Layout: Story = {
 								activeFiltersCount={args.activeFiltersCount}
 								onClearFilters={console.log}
 							>
-								<TextInput block label="Example input 2" value="Example" />
-								<TextInput block label="Example input 3" value="Example" />
-								<TextInput block label="Example input 1" value="Example" />
-								<TextInput block label="Example input 4" value="Example" />
+								<FormStack>
+									<TextInput block label="Example input 2" value="Example" />
+									<TextInput block label="Example input 3" value="Example" />
+									<TextInput block label="Example input 1" value="Example" />
+									<TextInput block label="Example input 4" value="Example" />
+								</FormStack>
 							</FilterSidebar>
 						</Stack>
 					</Column>
@@ -83,18 +86,13 @@ export const Layout: Story = {
 						columnSpan={{ xs: 12, md: 8 }}
 					>
 						<Stack gap={2}>
-							<Flex>
-								<Text
-									fontSize="md"
-									fontWeight={{
-										xs: 'normal',
-										md: 'bold',
-									}}
-								>
-									Search results (3)
-								</Text>
-							</Flex>
-
+							<Text
+								fontSize="md"
+								lineHeight="heading"
+								fontWeight={{ xs: 'normal', md: 'bold' }}
+							>
+								Search results (3)
+							</Text>
 							<Stack as="ul" gap={1}>
 								{listData.map((item) => (
 									<Card as="li" shadow clickable key={item.title}>

@@ -7,6 +7,7 @@ import { Column, Columns } from '@ag.ds-next/react/columns';
 import { FilterSidebar } from '@ag.ds-next/react/filter-sidebar';
 import { ControlGroup } from '@ag.ds-next/react/control-group';
 import { Checkbox } from '@ag.ds-next/react/checkbox';
+import { FormStack } from '@ag.ds-next/react/form-stack';
 import { getMarkdownData, serializeMarkdown } from '../../lib/mdxUtils';
 import {
 	COMPONENTS_PATH,
@@ -33,6 +34,7 @@ export default function PackagesHome({
 }: StaticProps) {
 	const [searchTerm, setSearchTerm] = useState('');
 	const [activeCategories, setActiveCategories] = useState<string[]>([]);
+
 	const resetFilters = () => {
 		setSearchTerm('');
 		setActiveCategories([]);
@@ -69,45 +71,43 @@ export default function PackagesHome({
 				<Columns gap={{ xs: 1, md: 3 }}>
 					<Column columnSpan={{ xs: 12, md: 6, lg: 4 }}>
 						<Stack gap={1}>
-							<FilterSidebar
-								onClearFilters={resetFilters}
-								// activeFiltersCount={activeFiltersCount}
-							>
-								<div role="search" aria-label="components">
-									<SearchInput
-										label="Find a component"
-										hint="Filter by name or category"
-										value={searchTerm}
-										onChange={setSearchTerm}
-										maxWidth="xl"
+							<FilterSidebar onClearFilters={resetFilters}>
+								<FormStack>
+									<div role="search" aria-label="components">
+										<SearchInput
+											label="Find a component"
+											hint="Filter by name or category"
+											value={searchTerm}
+											onChange={setSearchTerm}
+											maxWidth="xl"
+											hideOptionalLabel
+										/>
+									</div>
+									<ControlGroup
+										label="Category"
+										block={true}
 										hideOptionalLabel
-									/>
-								</div>
-
-								<ControlGroup
-									label="Category"
-									block={true}
-									hideOptionalLabel
-									aria-controls={listId}
-								>
-									{groupList.map(({ title }) => (
-										<Checkbox
-											key={title}
-											value={title}
-											checked={activeCategories.includes(title)}
-											onChange={(e) => {
-												const checked = e.target.checked;
-												setActiveCategories(
-													checked
-														? [...activeCategories, title]
-														: activeCategories?.filter((s) => s !== title)
-												);
-											}}
-										>
-											{title}
-										</Checkbox>
-									))}
-								</ControlGroup>
+										aria-controls={listId}
+									>
+										{groupList.map(({ title }) => (
+											<Checkbox
+												key={title}
+												value={title}
+												checked={activeCategories.includes(title)}
+												onChange={(e) => {
+													const checked = e.target.checked;
+													setActiveCategories(
+														checked
+															? [...activeCategories, title]
+															: activeCategories?.filter((s) => s !== title)
+													);
+												}}
+											>
+												{title}
+											</Checkbox>
+										))}
+									</ControlGroup>
+								</FormStack>
 							</FilterSidebar>
 						</Stack>
 					</Column>
