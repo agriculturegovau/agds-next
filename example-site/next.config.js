@@ -1,6 +1,6 @@
 const withPreconstruct = require('@preconstruct/next');
 
-const basePath = [process.env.BASE_PATH, '/example-site']
+const basePath = [process.env.BASE_PATH, 'example-site']
 	.filter(Boolean)
 	.join('/');
 
