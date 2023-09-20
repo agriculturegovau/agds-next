@@ -5,7 +5,7 @@
 	"repository": "https://github.com/steelthreads/agds-next/tree/main/docs",
 	"license": "MIT",
 	"scripts": {
-		"build": "yarn generate-component-props && next build && next-sitemap && next export",
+		"build": "yarn generate-component-props && next build && next-sitemap",
 		"dev": "yarn generate-component-props && next dev",
 		"dev:watch": "next-remote-watch ../packages",
 		"generate-component-props": "node scripts/generateComponentProps.js",
@@ -22,7 +22,7 @@
 		"@types/gtag.js": "^0.0.12",
 		"clipboard-copy": "^4.0.1",
 		"gray-matter": "^4.0.3",
-		"next": "^13.4.12",
+		"next": "^13.5.1",
 		"next-mdx-remote": "^4.4.1",
 		"next-remote-watch": "^2.0.0",
 		"next-sitemap": "^3.1.32",

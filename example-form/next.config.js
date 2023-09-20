@@ -8,6 +8,8 @@ const basePath = [process.env.BASE_PATH, '/example-form']
 const nextConfig = {
 	reactStrictMode: true,
 	basePath,
+	output: 'export',
+	distDir: '../docs/public/example-site',
 };
 
 module.exports = withPreconstruct(nextConfig);

@@ -8,6 +8,8 @@ const basePath = [process.env.BASE_PATH, '/example-site']
 const nextConfig = {
 	reactStrictMode: true,
 	basePath,
+	output: 'export',
+	distDir: '../docs/public/example-site',
 	experimental: {
 		/**
 		 * WARNING: If you are a consumer of the design system reading this you DO NOT need this config in your project.
