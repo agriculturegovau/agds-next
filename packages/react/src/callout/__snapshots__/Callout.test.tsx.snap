@@ -3,7 +3,7 @@
 exports[`Callout renders correctly 1`] = `
 <div>
   <div
-    class="css-eaebe2-boxStyles"
+    class="css-1gkhklp-boxStyles"
   >
     <div
       class="css-1iiypnu-boxStyles-Callout"
@@ -166,7 +166,7 @@ exports[`Callout with feature variant and neutral tone renders correctly 1`] = `
 exports[`Callout with regular variant and info tone renders correctly 1`] = `
 <div>
   <div
-    class="css-vz3ah2-boxStyles"
+    class="css-15cw9y2-boxStyles"
   >
     <div
       class="css-vspen0-boxStyles"
@@ -213,7 +213,7 @@ exports[`Callout with regular variant and info tone renders correctly 1`] = `
 exports[`Callout with regular variant and neutral tone renders correctly 1`] = `
 <div>
   <div
-    class="css-eaebe2-boxStyles"
+    class="css-1gkhklp-boxStyles"
   >
     <div
       class="css-1iiypnu-boxStyles-Callout"
