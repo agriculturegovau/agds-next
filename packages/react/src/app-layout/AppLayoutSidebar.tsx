@@ -37,11 +37,7 @@ export function AppLayoutSidebar({ activePath, items }: AppLayoutSidebarProps) {
 					},
 				}}
 			>
-				<AppLayoutSidebarNav
-					activePath={bestMatch}
-					items={items}
-					css={{ position: 'sticky', top: 0 }}
-				/>
+				<AppLayoutSidebarNav activePath={bestMatch} items={items} />
 			</Stack>
 			{/* Mobile */}
 			<AppLayoutSidebarDialog>
