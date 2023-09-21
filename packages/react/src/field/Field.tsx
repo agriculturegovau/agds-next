@@ -9,13 +9,13 @@ export type FieldProps = {
 	children: ((a11yProps: A11yProps) => ReactNode) | ReactNode;
 	/** Provides extra information about the field. */
 	hint: string | undefined;
-	/** Defines an identifier (ID) of the field element, which must be unique. */
+	/** Defines an identifier (ID) of the field, which must be unique. */
 	id?: string;
 	/** If true, the invalid state will be rendered. */
 	invalid?: boolean;
 	/** Describes the purpose of the field. */
 	label: string;
-	/** Defines an identifier (ID) for the label element which must be unique. */
+	/** Defines an identifier (ID) of the label element, which must be unique. */
 	labelId?: string;
 	/** Text to prepend to the default secondary label. */
 	secondaryLabel?: string;
