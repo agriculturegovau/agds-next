@@ -8,6 +8,7 @@ exports[`ComboboxAsync renders correctly 1`] = `
     <label
       class="css-79i25n-boxStyles"
       for="combobox-input-:r0:"
+      id="downshift-:r1:-label"
     >
       <span
         class="css-433uqb-boxStyles-Text"
@@ -75,6 +76,11 @@ exports[`ComboboxAsync renders correctly 1`] = `
           </svg>
         </button>
       </div>
+      <div
+        class="css-up4hzm-ComboboxBase"
+        id="downshift-:r1:-menu"
+        role="listbox"
+      />
     </div>
   </div>
 </div>

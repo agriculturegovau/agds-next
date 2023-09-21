@@ -8,6 +8,7 @@ exports[`ComboboxAsyncMulti renders correctly 1`] = `
     <label
       class="css-79i25n-boxStyles"
       for="combobox-input-:r0:"
+      id="downshift-:r1:-label"
     >
       <span
         class="css-433uqb-boxStyles-Text"
@@ -83,6 +84,11 @@ exports[`ComboboxAsyncMulti renders correctly 1`] = `
           </button>
         </div>
       </div>
+      <div
+        class="css-g7opkl-ComboboxMultiBase"
+        id="downshift-:r1:-menu"
+        role="listbox"
+      />
     </div>
   </div>
 </div>

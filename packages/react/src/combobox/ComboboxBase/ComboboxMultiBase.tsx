@@ -136,9 +136,12 @@ export function ComboboxMultiBase<Option extends DefaultComboboxOption>({
 		? mergeRefs([inputRef, inputRefProp])
 		: inputRef;
 
+	const { id: labelId } = combobox.getLabelProps();
+
 	return (
 		<Field
 			label={label}
+			labelId={labelId}
 			hideOptionalLabel={hideOptionalLabel}
 			required={Boolean(required)}
 			hint={hint}
@@ -203,37 +206,37 @@ export function ComboboxMultiBase<Option extends DefaultComboboxOption>({
 							/>
 						</ComboboxButtonContainer>
 					</Flex>
-					{combobox.isOpen && (
+					{combobox.isOpen ? (
 						<Popover as="ul" {...comboboxPopoverMenuProps}>
-							{combobox.isOpen ? (
+							{loading ? (
+								<ComboboxListLoading />
+							) : networkError ? (
+								<ComboboxListError />
+							) : (
 								<Fragment>
-									{loading ? (
-										<ComboboxListLoading />
-									) : networkError ? (
-										<ComboboxListError />
+									{inputItems?.length ? (
+										inputItems.map((item, index) => (
+											<ComboboxListItem
+												key={`${item.value}-${index}`}
+												isActiveItem={combobox.highlightedIndex === index}
+												isInteractive={true}
+												{...combobox.getItemProps({ item, index })}
+											>
+												{renderItem(item, combobox.inputValue)}
+											</ComboboxListItem>
+										))
 									) : (
-										<Fragment>
-											{inputItems?.length ? (
-												inputItems.map((item, index) => (
-													<ComboboxListItem
-														key={`${item.value}-${index}`}
-														isActiveItem={combobox.highlightedIndex === index}
-														isInteractive={true}
-														{...combobox.getItemProps({ item, index })}
-													>
-														{renderItem(item, combobox.inputValue)}
-													</ComboboxListItem>
-												))
-											) : (
-												<ComboboxListEmptyResults
-													message={emptyResultsMessage}
-												/>
-											)}
-										</Fragment>
+										<ComboboxListEmptyResults message={emptyResultsMessage} />
 									)}
 								</Fragment>
-							) : null}
+							)}
 						</Popover>
+					) : (
+						<div
+							id={comboboxPopoverMenuProps.id}
+							role="listbox"
+							css={{ visibility: 'hidden' }}
+						/>
 					)}
 				</div>
 			)}
