@@ -15,7 +15,7 @@ type Story = StoryObj<typeof SectionAlert>;
 
 export const Success: Story = {
 	args: {
-		title: 'Your changes have been saved,
+		title: 'Your changes have been saved',
 		tone: 'success',
 	},
 };
@@ -36,9 +36,9 @@ export const Error: Story = {
 
 export const WithDescription: Story = {
 	args: {
-		title: 'This is a title',
+		title: 'There was an error saving your changes',
 		tone: 'success',
-		children: 'This is a description which is optional',
+		children: 'Please try again later.',
 	},
 };
 

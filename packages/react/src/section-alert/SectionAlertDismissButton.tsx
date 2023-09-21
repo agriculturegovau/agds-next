@@ -4,6 +4,7 @@ import { tokens } from '../core';
 import { CloseIcon } from '../icon';
 
 type SectionAlertDismissButtonProps = {
+	/** Function to be called when the button is pressed. */
 	onClick: MouseEventHandler<HTMLButtonElement>;
 };
 

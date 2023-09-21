@@ -12,15 +12,20 @@ import { sectionAlertIconMap, SectionAlertTone } from './utils';
 type DivProps = HTMLAttributes<HTMLDivElement>;
 
 export type SectionAlertProps = {
+	/** The title of the alert. */
+	title: string;
+	/** The content of the alert description. */
 	children?: ReactNode;
+	/** The ID of the alert. */
 	id?: string;
+	/** The role of the alert. */
 	role?: DivProps['role'];
+	/** The tab index of the alert. */
 	tabIndex?: number;
+	/** The tone of the alert. */
 	tone: SectionAlertTone;
 	/** Function to be called when the 'Close' button is pressed. */
 	onDismiss?: MouseEventHandler<HTMLButtonElement>;
-	/** The title of the alert. */
-	title: string;
 };
 
 export const SectionAlert = forwardRef<HTMLDivElement, SectionAlertProps>(
