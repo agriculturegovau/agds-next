@@ -48,7 +48,10 @@ export function DropdownMenuPanel({
 
 	const { style, ref: popoverRef } = popover.getPopoverProps();
 
-	if (!isMenuOpen) return null;
+	if (!isMenuOpen) {
+		// Ensure the ARIA property `aria-controls` on `DropdownMenuButton` is valid
+		return <div id={panelId} css={{ visibility: 'hidden' }} />;
+	}
 
 	return (
 		<Popover
