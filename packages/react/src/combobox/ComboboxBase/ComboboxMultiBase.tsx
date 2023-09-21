@@ -139,9 +139,12 @@ export function ComboboxMultiBase<Option extends DefaultComboboxOption>({
 		? mergeRefs([inputRef, inputRefProp])
 		: inputRef;
 
+	const { id: labelId } = combobox.getLabelProps();
+
 	return (
 		<Field
 			label={label}
+			labelId={labelId}
 			hideOptionalLabel={hideOptionalLabel}
 			required={Boolean(required)}
 			hint={hint}
