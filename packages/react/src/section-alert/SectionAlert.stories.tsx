@@ -37,14 +37,14 @@ export const Error: Story = {
 export const WithDescription: Story = {
 	args: {
 		title: 'There was an error saving your changes',
-		tone: 'success',
+		tone: 'error',
 		children: 'Please try again later.',
 	},
 };
 
 export const OnDismiss: Story = {
 	args: {
-		title: 'This is a SectionAlert',
+		title: 'Your changes have been saved',
 		tone: 'success',
 		onDismiss: () => console.log('dismissed'),
 	},
