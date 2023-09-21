@@ -32,6 +32,7 @@ export const Switch = ({
 			gap={0.75}
 			alignItems="center"
 			css={{
+				width: 'fit-content',
 				cursor: 'pointer',
 				'&:hover': {
 					// Hover state for SwitchTrack

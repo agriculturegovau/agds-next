@@ -32,6 +32,7 @@ export const Details = forwardRef<HTMLDetailsElement, DetailsProps>(
 			>
 				<Flex
 					as="summary"
+					inline
 					link
 					focus
 					alignItems="center"

@@ -3,7 +3,7 @@
 exports[`Switch renders correctly 1`] = `
 <div>
   <label
-    class="css-9rj97c-boxStyles-Switch"
+    class="css-131fe2s-boxStyles-Switch"
   >
     <span
       class="css-o9fx7j-boxStyles-SwitchContainer"
