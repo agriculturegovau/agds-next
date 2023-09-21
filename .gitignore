@@ -3,7 +3,8 @@
 **/dist
 docs/public/storybook
 docs/public/playroom
-docs/public/*/cache/eslint
+docs/public/example-site
+docs/public/example-form
 
 # dependencies
 node_modules
