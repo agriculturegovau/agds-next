@@ -1,6 +1,6 @@
 ---
 title: Section alert
-description: Section alerts are non-disruptive notifications that provide information and messages about a state change in a section of a page.
+description: Section alerts are non-disruptive notifications that provide Success, Error and Warning messages about a state change in a section of a page.
 group: Content
 storybookPath: /story/Content-SectionAlert--basic
 relatedComponents: ['page-alert', 'global-alert']
@@ -16,12 +16,12 @@ Section alerts appear inside of the main content area of the page and are used t
 
 - use to notify users about a change in state in a section of a
   page
-- use to communicate error or success messages
-- allow it to be dismissed if it is not critical.
-- place above interactive components or at the top of page sections to show information or status
+- use to communicate error, warning or success messages
+- allow users to dismiss alerts that are not critical
+- place above interactive components or at the top of page sections 
 - use constructive no-blame language, avoid vague descriptions and always provide a solution
 - keep it short - content should be understood at a glance
-- use the appropriate status of success, info, error or warning
+- use the appropriate status and tone of success, error or warning.
 
 <DontHeading />
 
@@ -32,17 +32,17 @@ Section alerts appear inside of the main content area of the page and are used t
 - use for form errors - use [Page alert](/components/page-alert) instead
 - repeat the title in the description
 - use the description if the title is enough to convey the message
-- include a close button for error messages which block further progress
+- include a close button for error messages.
 
 ## Tones
 
 Section alert can be used to communicate different types of messages. Choosing a tone for a Section alert allows the user to understand the importance and severity of the message at a glance.
 
-The three supported tones are success, error and warning.
+The three supported tones are `success`, `error` and `warning`.
 
 ### Success
 
-The success section alert is used for notifying the user that a task is fully completed.
+The success section alert (green) is used for notifying the user that a task is fully completed.
 
 ```jsx live
 <SectionAlert title="Your changes have been saved" tone="success" />
@@ -50,7 +50,7 @@ The success section alert is used for notifying the user that a task is fully co
 
 ### Error
 
-The error section alert should be used when something destructive or critical has happened.
+The error section alert (red) should be used when something destructive or critical has happened.
 
 ```jsx live
 <SectionAlert title="There was an error saving your changes" tone="error" />
@@ -58,7 +58,7 @@ The error section alert should be used when something destructive or critical ha
 
 ### Warning
 
-Use warning section alerts to tell the user something urgent. Only use an alert if the information will help the user avoid a problem.
+Use warning section alerts (orange) to tell the user something urgent. Only use an alert if the information will help the user avoid a problem.
 
 ```jsx live
 <SectionAlert title="A warning message for this section" tone="warning" />
