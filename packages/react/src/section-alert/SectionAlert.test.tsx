@@ -39,13 +39,13 @@ describe('SectionAlert', () => {
 	describe(`with a description`, () => {
 		it('renders correctly', () => {
 			const { container } = renderSectionAlert({
-				children: <Text as="p"> Section alert description text</Text>,
+				children: <Text as="p">Section alert description text</Text>,
 			});
 			expect(container).toMatchSnapshot();
 		});
 		it('renders a valid HTML structure', () => {
 			const { container } = renderSectionAlert({
-				children: <Text as="p"> Section alert description text</Text>,
+				children: <Text as="p">Section alert description text</Text>,
 			});
 			expect(container).toHTMLValidate({
 				extends: ['html-validate:recommended'],
