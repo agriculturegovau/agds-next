@@ -427,7 +427,7 @@ exports[`AppLayout renders correctly 1`] = `
       </nav>
     </aside>
     <div
-      class="css-yurbt-boxStyles-AppLayoutContent"
+      class="css-zu5yim-boxStyles-AppLayoutContent"
     >
       <main
         class="css-z5n8zt-renderAppLayout"
