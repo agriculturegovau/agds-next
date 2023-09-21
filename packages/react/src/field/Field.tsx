@@ -9,12 +9,14 @@ export type FieldProps = {
 	children: ((a11yProps: A11yProps) => ReactNode) | ReactNode;
 	/** Provides extra information about the field. */
 	hint: string | undefined;
-	/** Defines an identifier (ID) which must be unique. */
+	/** Defines an identifier (ID) of the field element, which must be unique. */
 	id?: string;
 	/** If true, the invalid state will be rendered. */
 	invalid?: boolean;
 	/** Describes the purpose of the field. */
 	label: string;
+	/** Defines an identifier (ID) for the label element which must be unique. */
+	labelId?: string;
 	/** Text to prepend to the default secondary label. */
 	secondaryLabel?: string;
 	/** If true, "(optional)" will never be appended to the label even when `required` is `false`. */
@@ -31,6 +33,7 @@ export const Field = ({
 	id,
 	invalid,
 	label,
+	labelId,
 	secondaryLabel,
 	hideOptionalLabel,
 	message,
@@ -51,6 +54,7 @@ export const Field = ({
 	return (
 		<FieldContainer invalid={invalid}>
 			<FieldLabel
+				id={labelId}
 				htmlFor={fieldId}
 				secondaryLabel={secondaryLabel}
 				hideOptionalLabel={hideOptionalLabel}
@@ -67,7 +71,7 @@ export const Field = ({
 	);
 };
 
-export const useFieldIds = (idProp?: string) => {
+export const useFieldIds = (idProp: string | undefined) => {
 	const autoId = useId(idProp);
 	const fieldId = idProp ? idProp : `field-${autoId}`;
 	const hintId = `field-${autoId}-hint`;

@@ -4,6 +4,7 @@ import { Text } from '../text';
 
 export type FieldLabelProps = PropsWithChildren<{
 	as?: ElementType;
+	id?: string;
 	/** The ID of the form element this label relates to. */
 	htmlFor?: string;
 	/** The CSS class name, typically generated from the `css` prop. */
@@ -20,6 +21,7 @@ export const FieldLabel = ({
 	as = 'label',
 	children,
 	className,
+	id,
 	htmlFor,
 	required,
 	secondaryLabel: secondaryLabelProp,
@@ -34,7 +36,7 @@ export const FieldLabel = ({
 			.join(' ');
 	}, [required, secondaryLabelProp, hideOptionalLabel]);
 	return (
-		<Box as={as} htmlFor={htmlFor} className={className}>
+		<Box as={as} id={id} htmlFor={htmlFor} className={className}>
 			<Text as="span" fontWeight="bold">
 				{children}
 			</Text>
