@@ -121,7 +121,7 @@ exports[`SectionAlert with a description renders correctly 1`] = `
         <p
           class="css-6j1v6l-boxStyles-Text"
         >
-           Section alert description text
+          Section alert description text
         </p>
       </div>
     </div>

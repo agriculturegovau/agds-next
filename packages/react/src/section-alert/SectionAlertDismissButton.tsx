@@ -1,15 +1,17 @@
-import { forwardRef, MouseEventHandler } from 'react';
+import { MouseEventHandler } from 'react';
 import { Button } from '../button';
 import { tokens } from '../core';
 import { CloseIcon } from '../icon';
 
-export const SectionAlertDismissButton = forwardRef<
-	HTMLButtonElement,
-	{ onClick: MouseEventHandler<HTMLButtonElement> }
->(function SectionAlertDismissButton({ onClick }, ref) {
+type SectionAlertDismissButtonProps = {
+	onClick: MouseEventHandler<HTMLButtonElement>;
+};
+
+export const SectionAlertDismissButton = ({
+	onClick,
+}: SectionAlertDismissButtonProps) => {
 	return (
 		<Button
-			ref={ref}
 			onClick={onClick}
 			iconAfter={CloseIcon}
 			variant="text"
@@ -28,4 +30,4 @@ export const SectionAlertDismissButton = forwardRef<
 			Dismiss
 		</Button>
 	);
-});
+};
