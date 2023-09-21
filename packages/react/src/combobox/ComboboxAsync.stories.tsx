@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from '@storybook/react';
-import { useState } from 'react';
+import { Fragment, useState } from 'react';
 import { ComboboxAsync } from './ComboboxAsync';
 import { COUNTRY_OPTIONS } from './test-utils';
 
@@ -9,16 +9,19 @@ const meta: Meta<typeof ComboboxAsync> = {
 	render: function ComboboxAsyncStory(props) {
 		const [value, onChange] = useState<Option | null>(null);
 		return (
-			<ComboboxAsync
-				{...props}
-				value={value}
-				onChange={onChange}
-				loadOptions={async function loadOptions() {
-					// Simulate a slow network connection
-					await new Promise((resolve) => setTimeout(resolve, 1000));
-					return COUNTRY_OPTIONS;
-				}}
-			/>
+			<Fragment>
+				<div style={{ height: '80vh', background: 'red' }} />
+				<ComboboxAsync
+					{...props}
+					value={value}
+					onChange={onChange}
+					loadOptions={async function loadOptions() {
+						// Simulate a slow network connection
+						await new Promise((resolve) => setTimeout(resolve, 1000));
+						return COUNTRY_OPTIONS;
+					}}
+				/>
+			</Fragment>
 		);
 	},
 };

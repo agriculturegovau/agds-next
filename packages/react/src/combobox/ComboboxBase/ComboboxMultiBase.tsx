@@ -100,12 +100,9 @@ export function ComboboxMultiBase<Option extends DefaultComboboxOption>({
 		maxHeight: 295,
 	});
 	const popoverProps = popover.getPopoverProps();
-	const comboboxPopoverMenuProps = combobox.getMenuProps({
-		...popoverProps,
-		style: {
-			...popoverProps.style,
-			display: combobox.isOpen ? 'block' : 'none',
-		},
+	const comboboxPopoverMenuProps = combobox.getMenuProps(popoverProps, {
+		// The menu is rendered conditionally, so the ref will not be available on first render
+		suppressRefError: true,
 	});
 
 	const showClearButton = selectedItems?.length > 0;
@@ -206,34 +203,38 @@ export function ComboboxMultiBase<Option extends DefaultComboboxOption>({
 							/>
 						</ComboboxButtonContainer>
 					</Flex>
-					<Popover as="ul" {...comboboxPopoverMenuProps}>
-						{combobox.isOpen ? (
-							<Fragment>
-								{loading ? (
-									<ComboboxListLoading />
-								) : networkError ? (
-									<ComboboxListError />
-								) : (
-									<Fragment>
-										{inputItems?.length ? (
-											inputItems.map((item, index) => (
-												<ComboboxListItem
-													key={`${item.value}-${index}`}
-													isActiveItem={combobox.highlightedIndex === index}
-													isInteractive={true}
-													{...combobox.getItemProps({ item, index })}
-												>
-													{renderItem(item, combobox.inputValue)}
-												</ComboboxListItem>
-											))
-										) : (
-											<ComboboxListEmptyResults message={emptyResultsMessage} />
-										)}
-									</Fragment>
-								)}
-							</Fragment>
-						) : null}
-					</Popover>
+					{combobox.isOpen && (
+						<Popover as="ul" {...comboboxPopoverMenuProps}>
+							{combobox.isOpen ? (
+								<Fragment>
+									{loading ? (
+										<ComboboxListLoading />
+									) : networkError ? (
+										<ComboboxListError />
+									) : (
+										<Fragment>
+											{inputItems?.length ? (
+												inputItems.map((item, index) => (
+													<ComboboxListItem
+														key={`${item.value}-${index}`}
+														isActiveItem={combobox.highlightedIndex === index}
+														isInteractive={true}
+														{...combobox.getItemProps({ item, index })}
+													>
+														{renderItem(item, combobox.inputValue)}
+													</ComboboxListItem>
+												))
+											) : (
+												<ComboboxListEmptyResults
+													message={emptyResultsMessage}
+												/>
+											)}
+										</Fragment>
+									)}
+								</Fragment>
+							) : null}
+						</Popover>
+					)}
 				</div>
 			)}
 		</Field>

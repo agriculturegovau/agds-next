@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from '@storybook/react';
-import { useState } from 'react';
+import { Fragment, useState } from 'react';
 import { Combobox } from './Combobox';
 import { COUNTRY_OPTIONS } from './test-utils';
 
@@ -8,7 +8,12 @@ const meta: Meta<typeof Combobox> = {
 	component: Combobox,
 	render: function ComboboxStory(props) {
 		const [value, onChange] = useState<Option | null>(null);
-		return <Combobox {...props} value={value} onChange={onChange} />;
+		return (
+			<Fragment>
+				<div style={{ height: '80vh', background: 'red' }} />
+				<Combobox {...props} value={value} onChange={onChange} />
+			</Fragment>
+		);
 	},
 };
 

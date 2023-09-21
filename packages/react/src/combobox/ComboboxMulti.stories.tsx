@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from '@storybook/react';
-import { useState } from 'react';
+import { Fragment, useState } from 'react';
 import { ComboboxMulti } from './ComboboxMulti';
 import { COUNTRY_OPTIONS } from './test-utils';
 
@@ -8,7 +8,12 @@ const meta: Meta<typeof ComboboxMulti> = {
 	component: ComboboxMulti,
 	render: function ComboboxMultiStory(props) {
 		const [value, onChange] = useState<Option[]>([]);
-		return <ComboboxMulti {...props} value={value} onChange={onChange} />;
+		return (
+			<Fragment>
+				<div style={{ background: 'red', height: '75vh' }} />
+				<ComboboxMulti {...props} value={value} onChange={onChange} />
+			</Fragment>
+		);
 	},
 };
 
