@@ -14,7 +14,7 @@ afterEach(cleanup);
 
 function renderSectionAlert(props?: Partial<SectionAlertProps>) {
 	return render(
-		<SectionAlert tone="info" title="Title of Section alert" {...props} />
+		<SectionAlert tone="success" title="Title of Section alert" {...props} />
 	);
 }
 

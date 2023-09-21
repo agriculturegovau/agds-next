@@ -1,6 +1,5 @@
 import {
 	AlertFilledIcon,
-	InfoFilledIcon,
 	SuccessFilledIcon,
 	WarningFilledIcon,
 } from '@ag.ds-next/react/icon';
@@ -15,9 +14,6 @@ export const sectionAlertIconMap = {
 	),
 	error: (
 		<AlertFilledIcon color="error" aria-hidden="false" aria-label="Error" />
-	),
-	info: (
-		<InfoFilledIcon color="info" aria-hidden="false" aria-label="Information" />
 	),
 	warning: (
 		<WarningFilledIcon

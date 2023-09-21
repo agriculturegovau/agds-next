@@ -34,17 +34,10 @@ export const Error: Story = {
 	},
 };
 
-export const Info: Story = {
-	args: {
-		title: 'This is a SectionAlert',
-		tone: 'info',
-	},
-};
-
 export const WithDescription: Story = {
 	args: {
 		title: 'This is a title',
-		tone: 'info',
+		tone: 'success',
 		children: 'This is a description which is optional',
 	},
 };
