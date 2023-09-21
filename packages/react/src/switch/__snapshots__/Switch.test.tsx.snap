@@ -2,33 +2,29 @@
 
 exports[`Switch renders correctly 1`] = `
 <div>
-  <div
-    class="css-grt3i-boxStyles-Switch"
+  <label
+    class="css-131fe2s-boxStyles-Switch"
   >
-    <label
-      class="css-1en3fj9-boxStyles-Switch"
+    <span
+      class="css-o9fx7j-boxStyles-SwitchContainer"
     >
+      <input
+        class="css-1pfc16v-Switch"
+        role="switch"
+        type="checkbox"
+      />
       <span
-        class="css-o9fx7j-boxStyles-SwitchContainer"
-      >
-        <input
-          class="css-1pfc16v-Switch"
-          role="switch"
-          type="checkbox"
-        />
-        <span
-          class="css-k2d2eq-boxStyles-SwitchTrack"
-        />
-        <span
-          class="css-oj5g50-boxStyles-SwitchThumb"
-        />
-      </span>
+        class="css-k2d2eq-boxStyles-SwitchTrack"
+      />
       <span
-        class="css-6j1v6l-boxStyles-Text"
-      >
-        Show establishments
-      </span>
-    </label>
-  </div>
+        class="css-oj5g50-boxStyles-SwitchThumb"
+      />
+    </span>
+    <span
+      class="css-6j1v6l-boxStyles-Text"
+    >
+      Show establishments
+    </span>
+  </label>
 </div>
 `;

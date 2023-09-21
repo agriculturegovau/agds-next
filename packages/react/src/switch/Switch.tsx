@@ -27,49 +27,47 @@ export const Switch = ({
 	checked,
 }: SwitchProps) => {
 	return (
-		<Flex inline css={{ alignSelf: 'flex-start' }}>
-			<Flex
-				as="label"
-				gap={0.75}
-				alignItems="center"
-				css={{
-					alignSelf: 'flex-start',
-					cursor: 'pointer',
-					'&:hover': {
-						// Hover state for SwitchTrack
-						'& input:not(:focus) ~ span:first-of-type': {
-							borderColor: boxPalette.foregroundText,
-							backgroundColor: checked
-								? boxPalette.foregroundText
-								: boxPalette.backgroundShadeAlt,
-						},
-						// Hover state for SwitchThumb
-						'& input:not(:focus) ~ span:last-of-type': {
-							borderColor: boxPalette.foregroundText,
-							'& svg': {
-								stroke: checked ? boxPalette.foregroundText : undefined,
-							},
+		<Flex
+			as="label"
+			gap={0.75}
+			alignItems="center"
+			css={{
+				width: 'fit-content',
+				cursor: 'pointer',
+				'&:hover': {
+					// Hover state for SwitchTrack
+					'& input:not(:focus) ~ span:first-of-type': {
+						borderColor: boxPalette.foregroundText,
+						backgroundColor: checked
+							? boxPalette.foregroundText
+							: boxPalette.backgroundShadeAlt,
+					},
+					// Hover state for SwitchThumb
+					'& input:not(:focus) ~ span:last-of-type': {
+						borderColor: boxPalette.foregroundText,
+						'& svg': {
+							stroke: checked ? boxPalette.foregroundText : undefined,
 						},
 					},
-				}}
-			>
-				<SwitchContainer size={size}>
-					<input
-						type="checkbox"
-						role="switch"
-						checked={checked}
-						onChange={() => onChange(!checked)}
-						css={{
-							...visuallyHiddenStyles,
-							// When this component is focused, outline the track
-							'&:focus-visible ~ span:first-of-type': packs.outline,
-						}}
-					/>
-					<SwitchTrack size={size} checked={checked} />
-					<SwitchThumb size={size} checked={checked} />
-				</SwitchContainer>
-				<Text>{label}</Text>
-			</Flex>
+				},
+			}}
+		>
+			<SwitchContainer size={size}>
+				<input
+					type="checkbox"
+					role="switch"
+					checked={checked}
+					onChange={() => onChange(!checked)}
+					css={{
+						...visuallyHiddenStyles,
+						// When this component is focused, outline the track
+						'&:focus-visible ~ span:first-of-type': packs.outline,
+					}}
+				/>
+				<SwitchTrack size={size} checked={checked} />
+				<SwitchThumb size={size} checked={checked} />
+			</SwitchContainer>
+			<Text>{label}</Text>
 		</Flex>
 	);
 };
