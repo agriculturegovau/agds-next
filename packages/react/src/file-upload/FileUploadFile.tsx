@@ -6,6 +6,7 @@ import { Text } from '../text';
 import { Button } from '../button';
 import { LoadingDots } from '../loading';
 import { SuccessFilledIcon } from '../icon';
+import { FileIcon } from '../icon/icons/FileIcon';
 import { FileWithStatus, formatFileSize } from './utils';
 
 type FileUploadFileProps = {
@@ -38,6 +39,7 @@ export const FileUploadFile = ({ file, onRemove }: FileUploadFileProps) => {
 						/>
 					</Box>
 				)}
+				<FileIcon />
 				<Text css={{ wordBreak: 'break-all' }}>
 					{name} ({formatFileSize(size)})
 				</Text>
