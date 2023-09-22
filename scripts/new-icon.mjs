@@ -35,9 +35,9 @@ export default function newIcon(
 
 			actions.push({
 				type: 'append',
-				path: '../packages/react/src/icon/utils.ts',
+				path: '../packages/react/src/icon/utils.tsx',
 				template:
-					"import { {{iconName}} } from './icons/{{iconName}}'; // Please add this to object below",
+					"import { {{iconName}} } from './icons/{{iconName}}'; // Please add this to object above",
 			});
 
 			actions.push({
@@ -53,6 +53,8 @@ export default function newIcon(
 				template:
 					"---\n'@ag.ds-next/react': minor\n---\n\nicon: Created {{iconName}}\n",
 			});
+
+			return actions;
 		},
 	});
 }
