@@ -1,0 +1,74 @@
+---
+date: 22nd September 2023
+title: AgDS Beta v1.11.0 release
+description: Initial release of Section alert and Filter sidebar, rename `Filter drawer` to `Drawer`, added `info` tone in Callout, plus various bug fixes and improvements.
+---
+
+## Updates
+
+### [App layout](/components/app-layout)
+
+- Removed `overflow: hidden` from `AppLayoutContent` to support sticky elements. Added `min-width: 0` to fix large tables breaking layout on smaller devices.
+
+### [Autocomplete](/components/autocomplete)
+
+- Added search icon.
+
+### [Box](/components/box)
+
+- Add support for more colours in background, foreground and border props.
+
+### [Callout](/components/callout)
+
+- Added info tone and compact variant
+- Added support for custom icons.
+
+### [Control group](/components/control-group)
+
+- Added flex wrapping so horizontal options can break into multiple lines if required.
+
+### [Core](/components/core)
+
+- Added `xxl` breakpoint token
+- Added `none` border-width.
+
+### [Details](/components/details)
+
+- Added new prop `onBodyAlt`. If the Details component is placed on a page with bodyAlt background, set the `onBodyAlt` prop to true
+- Updated width of interactive element to match content.
+
+### [Drawer](/components/drawer)
+
+`Filter drawer` has been renamed to `Drawer`.
+
+The `FilterDrawer` component will continue to work out of the the `@ag.ds-next/react/filter-drawer` entrypoint, but this usage has been marked as deprecated and will be removed in the next major release.
+
+To upgrade, update the import and component name when using these components.
+
+```diff
+- import { FilterDrawer } from '@ag.ds-next/react/filter-drawer';
++ import { Drawer } from '@ag.ds-next/react/drawer';
+```
+
+### [Dropdown menu](/components/dropdown-menu)
+
+- Added new prop `offset`
+- Updated padding of label element in `DropdownMenuGroup`
+- Swapped from display style to conditional rendering to improve panel element anchoring
+- Improve handling of menu items with long labels.
+
+### [Filter sidebar](/components/filter-sidebar)
+
+- Created new component for filtering layouts.
+
+### [Search input](/components/search-input)
+
+- Updated search icon position.
+
+### [SectionAlert](/components/section-alert)
+
+- Created new component.
+
+### [Switch](/components/switch)
+
+- Updated width of interactive element to match content.

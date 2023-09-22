@@ -39,7 +39,7 @@
 
 - 6a0b8f1942: app-layout: Removed `overflow: hidden` from `AppLayoutContent` to support sticky elements. Added `min-width: 0` to fix large tables breaking layout on smaller devices.
 - cb153916a0: dropdown-menu: Improve handling of menu items with long labels
-- 17009235df: box: Add 'none' border-width
+- 17009235df: core: Add 'none' border-width
 - a73f20ab97: control-group: Added flex wrapping so horizontal options can break into multiple lines if required.
 - d87f1599b3: autocomplete: Added search icon
 
