@@ -6,21 +6,15 @@ import { Text } from '../text';
 import { Button } from '../button';
 import { LoadingDots } from '../loading';
 import { SuccessFilledIcon } from '../icon';
-import { FileStatus, formatFileSize } from './utils';
+import { FileWithStatus, formatFileSize } from './utils';
 
 type FileUploadFileProps = {
-	name: string;
-	size: number;
-	status?: FileStatus;
+	file: FileWithStatus;
 	onRemove: MouseEventHandler<HTMLButtonElement>;
 };
 
-export const FileUploadFile = ({
-	status = 'none',
-	size,
-	name,
-	onRemove,
-}: FileUploadFileProps) => {
+export const FileUploadFile = ({ file, onRemove }: FileUploadFileProps) => {
+	const { name, size, status = 'none' } = file;
 	return (
 		<Flex
 			rounded

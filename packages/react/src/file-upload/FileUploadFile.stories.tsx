@@ -1,5 +1,6 @@
 import { Meta, StoryObj } from '@storybook/react';
 import { FileUploadFile } from './FileUploadFile';
+import { createExampleFileWithStatus } from './test-utils';
 
 const meta: Meta = {
 	title: 'forms/FileUpload/Primitives/FileUploadFile',
@@ -12,23 +13,18 @@ type Story = StoryObj<typeof FileUploadFile>;
 
 export const Basic: Story = {
 	args: {
-		name: 'Example.jpg',
-		size: 2345,
+		file: createExampleFileWithStatus(),
 	},
 };
 
 export const Uploading: Story = {
 	args: {
-		name: 'Example.jpg',
-		size: 2345,
-		status: 'uploading',
+		file: createExampleFileWithStatus('uploading'),
 	},
 };
 
 export const Success: Story = {
 	args: {
-		name: 'Example.jpg',
-		size: 2345,
-		status: 'success',
+		file: createExampleFileWithStatus('success'),
 	},
 };
