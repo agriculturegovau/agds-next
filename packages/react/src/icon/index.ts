@@ -32,6 +32,7 @@ export { EmailIcon } from './icons/EmailIcon';
 export { ExitIcon } from './icons/ExitIcon';
 export { FacebookIcon } from './icons/FacebookIcon';
 export { FactoryIcon } from './icons/FactoryIcon';
+export { FileIcon } from './icons/FileIcon';
 export { FilterIcon } from './icons/FilterIcon';
 export { HelpIcon } from './icons/HelpIcon';
 export { HomeIcon } from './icons/HomeIcon';
