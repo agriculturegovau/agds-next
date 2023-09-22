@@ -7,7 +7,6 @@ import { DirectionButton } from '@ag.ds-next/react/direction-link';
 import { Divider } from '@ag.ds-next/react/divider';
 import { Button, ButtonGroup } from '@ag.ds-next/react/button';
 import { Text } from '@ag.ds-next/react/text';
-import { FormStack } from '@ag.ds-next/react/form-stack';
 import { Textarea } from '@ag.ds-next/react/textarea';
 import { PageTitle } from '../../../components/PageTitle';
 
@@ -27,7 +26,7 @@ export function MultiPageFormStep() {
 					</ContentBleed>
 				</Column>
 				<Column columnSpan={{ xs: 12, md: 8 }} columnStart={{ lg: 5 }}>
-					<Stack gap={3} alignItems="flex-start">
+					<Stack gap={3}>
 						<DirectionButton direction="left">Back</DirectionButton>
 						<PageTitle
 							pretext="Title of multi-page form"
@@ -41,15 +40,13 @@ export function MultiPageFormStep() {
 							}
 						/>
 						<Stack as="form" gap={3} noValidate>
-							<FormStack>
-								<Textarea
-									label="Text area field label"
-									hint="Hint text"
-									id="description"
-									required
-									block
-								/>
-							</FormStack>
+							<Textarea
+								label="Text area field label"
+								hint="Hint text"
+								id="description"
+								required
+								block
+							/>
 							<Divider />
 							<ButtonGroup>
 								<Button type="submit" variant="primary">
