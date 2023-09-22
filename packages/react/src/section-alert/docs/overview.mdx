@@ -1,0 +1,98 @@
+---
+title: Section alert
+description: Section alerts are non-disruptive notifications that provide Success, Error and Warning messages about a state change in a section of a page.
+group: Content
+storybookPath: /story/Content-SectionAlert--basic
+figmaGalleryNodeId: 19223%3A12705
+relatedComponents: ['page-alert', 'global-alert']
+---
+
+Section alerts appear inside of the main content area of the page and are used to alert users to a particular section of the screen. They should not be confused with Callouts.
+
+```jsx live
+<SectionAlert title="Your changes have been saved" tone="success" />
+```
+
+<DoHeading />
+
+- use to notify users about a change in state in a section of a
+  page
+- use to communicate error, warning or success messages
+- allow users to dismiss alerts that are not critical
+- place above interactive components or at the top of page sections
+- use constructive no-blame language, avoid vague descriptions and always provide a solution
+- keep it short - content should be understood at a glance
+- use the appropriate status and tone of success, error or warning.
+
+<DontHeading />
+
+- use to communicate messages which relate to the entire page - use [Page alert](/components/page-alert) instead
+- use to communicate messages which relate to the entire application - use [Global alert](/components/global-alert) instead
+- use to contain text in articles or other blocks of text content - use [Callout](/components/callout) instead
+- hide the message automatically. Let the user dismiss the message instead
+- repeat the title in the description
+- use the description if the title is enough to convey the message
+- include a close button for error messages.
+
+## Tones
+
+Section alert can be used to communicate different types of messages. Choosing a tone for a Section alert allows the user to understand the importance and severity of the message at a glance.
+
+The three supported tones are `success`, `error` and `warning`.
+
+### Success
+
+The success section alert (green) is used for notifying the user that a task is fully completed.
+
+```jsx live
+<SectionAlert title="Your changes have been saved" tone="success" />
+```
+
+### Error
+
+The error section alert (red) should be used when something destructive or critical has happened.
+
+```jsx live
+<SectionAlert title="There was an error saving your changes" tone="error" />
+```
+
+### Warning
+
+Use warning section alerts (orange) to tell the user something urgent. Only use an alert if the information will help the user avoid a problem.
+
+```jsx live
+<SectionAlert title="A warning message for this section" tone="warning" />
+```
+
+## Composition
+
+Section alerts are composed of an icon, heading, description, action and close action.
+
+The icon and heading are mandatory and achieve a compact alert, but we encourage the use of description when more information might be helpful to the user.
+
+Section alerts can be dismissed by a user if they have understood the message and no longer need to see it. Only use the close action when the alert does not impact the user’s available actions.
+Avoid dismissing error messages which block the user from completing a task. Instead, provide a way for the user to fix the error, then dismiss the alert once the error has been resolved.
+
+```jsx live
+<Stack gap={1}>
+	<SectionAlert
+		title="Section alert title"
+		tone="success"
+		onDismiss={console.log}
+	/>
+
+	<SectionAlert title="Section alert title" tone="success">
+		<Text as="p">Description</Text>
+	</SectionAlert>
+
+	<SectionAlert title="Section alert title" tone="warning">
+		<Stack gap={0.5} alignItems="flex-start">
+			<Text as="p">Description</Text>
+			<ButtonGroup>
+				<Button variant="text">Action</Button>
+				<Button variant="text">Action</Button>
+			</ButtonGroup>
+		</Stack>
+	</SectionAlert>
+</Stack>
+```

@@ -1151,6 +1151,21 @@ items={[
 		name: 'Ordered',
 		code: `<OrderedList><ListItem>List item</ListItem><ListItem>List item</ListItem><ListItem>List item</ListItem></OrderedList>`,
 	},
+	{
+		group: 'SectionAlert',
+		name: 'Success',
+		code: `<SectionAlert tone="success" title="Success"><Text as="p">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</Text></SectionAlert>`,
+	},
+	{
+		group: 'SectionAlert',
+		name: 'Error',
+		code: `<SectionAlert tone="error" title="Error"><Text as="p">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</Text></SectionAlert>`,
+	},
+	{
+		group: 'SectionAlert',
+		name: 'Warning',
+		code: `<SectionAlert tone="warning" title="Warning"><Text as="p">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</Text></SectionAlert>`,
+	},
 ];
 
 export default snippets;

@@ -86,6 +86,7 @@ import {
 	DropdownMenuDivider,
 } from '@ag.ds-next/react/dropdown-menu';
 import { Drawer } from '@ag.ds-next/react/drawer';
+import { SectionAlert } from '@ag.ds-next/react/section-alert';
 import {
 	COUNTRY_OPTIONS,
 	Modal,
@@ -271,6 +272,18 @@ function KitchenSink({ background }: KitchenSinkProps) {
 							>
 								<Text as="p">Description of the callout.</Text>
 							</Callout>
+
+							<SectionAlert tone="error" title="This is a Section alert" />
+
+							<SectionAlert
+								tone="success"
+								title="This is a Section alert"
+								onDismiss={console.log}
+							/>
+
+							<SectionAlert tone="warning" title="This is a Section alert">
+								This is a description.
+							</SectionAlert>
 
 							<Accordion>
 								<AccordionItem title="Accordion One" background={page}>

@@ -1,0 +1,256 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SectionAlert which is dismissable renders correctly 1`] = `
+<div>
+  <div
+    class="css-h23zy0-boxStyles"
+  >
+    <div
+      class="css-1urm0li-boxStyles"
+    >
+      <svg
+        aria-hidden="false"
+        aria-label="Success"
+        class="css-1esj8rc-Icon"
+        clip-rule="evenodd"
+        focusable="true"
+        height="24"
+        role="img"
+        viewBox="0 0 24 24"
+        width="24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          clip-rule="evenodd"
+          d="M12 24C18.6274 24 24 18.6274 24 12C24 5.37258 18.6274 0 12 0C5.37258 0 0 5.37258 0 12C0 18.6274 5.37258 24 12 24ZM17.7071 9.70711C18.0976 9.31658 18.0976 8.68342 17.7071 8.29289C17.3166 7.90237 16.6834 7.90237 16.2929 8.29289L10 14.5858L7.70711 12.2929C7.31658 11.9024 6.68342 11.9024 6.29289 12.2929C5.90237 12.6834 5.90237 13.3166 6.29289 13.7071L9.29289 16.7071C9.68342 17.0976 10.3166 17.0976 10.7071 16.7071L17.7071 9.70711Z"
+          fill="currentColor"
+          fill-rule="evenodd"
+          stroke="none"
+        />
+      </svg>
+      <div
+        class="css-1i7cdx8-boxStyles"
+      >
+        <span
+          class="css-433uqb-boxStyles-Text"
+        >
+          Title of Section alert
+        </span>
+      </div>
+    </div>
+    <button
+      aria-label="Close"
+      class="css-16p43b8-BaseButton-SectionAlertDismissButton"
+      type="button"
+    >
+      <span>
+        <span
+          class="css-oobk4c-Button"
+        >
+          Dismiss
+        </span>
+        <span
+          aria-live="assertive"
+        />
+      </span>
+      <svg
+        aria-hidden="true"
+        class="css-9s3cfn-Icon"
+        clip-rule="evenodd"
+        focusable="false"
+        height="24"
+        role="img"
+        viewBox="0 0 24 24"
+        width="24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <line
+          x1="18"
+          x2="6"
+          y1="6"
+          y2="18"
+        />
+        <line
+          x1="6"
+          x2="18"
+          y1="6"
+          y2="18"
+        />
+      </svg>
+    </button>
+  </div>
+</div>
+`;
+
+exports[`SectionAlert with a description renders correctly 1`] = `
+<div>
+  <div
+    class="css-h23zy0-boxStyles"
+  >
+    <div
+      class="css-1urm0li-boxStyles"
+    >
+      <svg
+        aria-hidden="false"
+        aria-label="Success"
+        class="css-1esj8rc-Icon"
+        clip-rule="evenodd"
+        focusable="true"
+        height="24"
+        role="img"
+        viewBox="0 0 24 24"
+        width="24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          clip-rule="evenodd"
+          d="M12 24C18.6274 24 24 18.6274 24 12C24 5.37258 18.6274 0 12 0C5.37258 0 0 5.37258 0 12C0 18.6274 5.37258 24 12 24ZM17.7071 9.70711C18.0976 9.31658 18.0976 8.68342 17.7071 8.29289C17.3166 7.90237 16.6834 7.90237 16.2929 8.29289L10 14.5858L7.70711 12.2929C7.31658 11.9024 6.68342 11.9024 6.29289 12.2929C5.90237 12.6834 5.90237 13.3166 6.29289 13.7071L9.29289 16.7071C9.68342 17.0976 10.3166 17.0976 10.7071 16.7071L17.7071 9.70711Z"
+          fill="currentColor"
+          fill-rule="evenodd"
+          stroke="none"
+        />
+      </svg>
+      <div
+        class="css-1i7cdx8-boxStyles"
+      >
+        <span
+          class="css-433uqb-boxStyles-Text"
+        >
+          Title of Section alert
+        </span>
+        <p
+          class="css-6j1v6l-boxStyles-Text"
+        >
+          Section alert description text
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`SectionAlert with error tone renders correctly 1`] = `
+<div>
+  <div
+    class="css-vnrke9-boxStyles"
+  >
+    <div
+      class="css-1urm0li-boxStyles"
+    >
+      <svg
+        aria-hidden="false"
+        aria-label="Error"
+        class="css-1h89p7b-Icon"
+        clip-rule="evenodd"
+        focusable="true"
+        height="24"
+        role="img"
+        viewBox="0 0 24 24"
+        width="24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          clip-rule="evenodd"
+          d="M16.4661 0.5C16.7332 0.5 16.9893 0.6069 17.1771 0.796862L23.2111 6.89871C23.3962 7.08591 23.5 7.33857 23.5 7.60185V16.3935C23.5 16.6595 23.394 16.9146 23.2055 17.1023L17.0712 23.2087C16.8838 23.3953 16.6301 23.5 16.3657 23.5H7.63889C7.37177 23.5 7.11576 23.3931 6.92792 23.2032L0.789033 16.9968C0.60386 16.8095 0.5 16.5569 0.5 16.2935V7.60646C0.5 7.34045 0.605983 7.08541 0.794505 6.89774L6.92885 0.791284C7.11625 0.604732 7.36991 0.5 7.63434 0.5H16.4661ZM16.7071 7.29289C17.0976 7.68342 17.0976 8.31658 16.7071 8.70711L13.4142 12L16.7071 15.2929C17.0976 15.6834 17.0976 16.3166 16.7071 16.7071C16.3166 17.0976 15.6834 17.0976 15.2929 16.7071L12 13.4142L8.70711 16.7071C8.31658 17.0976 7.68342 17.0976 7.29289 16.7071C6.90237 16.3166 6.90237 15.6834 7.29289 15.2929L10.5858 12L7.29289 8.70711C6.90237 8.31658 6.90237 7.68342 7.29289 7.29289C7.68342 6.90237 8.31658 6.90237 8.70711 7.29289L12 10.5858L15.2929 7.29289C15.6834 6.90237 16.3166 6.90237 16.7071 7.29289Z"
+          fill="currentColor"
+          fill-rule="evenodd"
+          stroke="none"
+        />
+      </svg>
+      <div
+        class="css-1i7cdx8-boxStyles"
+      >
+        <span
+          class="css-433uqb-boxStyles-Text"
+        >
+          Title of Section alert
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`SectionAlert with success tone renders correctly 1`] = `
+<div>
+  <div
+    class="css-h23zy0-boxStyles"
+  >
+    <div
+      class="css-1urm0li-boxStyles"
+    >
+      <svg
+        aria-hidden="false"
+        aria-label="Success"
+        class="css-1esj8rc-Icon"
+        clip-rule="evenodd"
+        focusable="true"
+        height="24"
+        role="img"
+        viewBox="0 0 24 24"
+        width="24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          clip-rule="evenodd"
+          d="M12 24C18.6274 24 24 18.6274 24 12C24 5.37258 18.6274 0 12 0C5.37258 0 0 5.37258 0 12C0 18.6274 5.37258 24 12 24ZM17.7071 9.70711C18.0976 9.31658 18.0976 8.68342 17.7071 8.29289C17.3166 7.90237 16.6834 7.90237 16.2929 8.29289L10 14.5858L7.70711 12.2929C7.31658 11.9024 6.68342 11.9024 6.29289 12.2929C5.90237 12.6834 5.90237 13.3166 6.29289 13.7071L9.29289 16.7071C9.68342 17.0976 10.3166 17.0976 10.7071 16.7071L17.7071 9.70711Z"
+          fill="currentColor"
+          fill-rule="evenodd"
+          stroke="none"
+        />
+      </svg>
+      <div
+        class="css-1i7cdx8-boxStyles"
+      >
+        <span
+          class="css-433uqb-boxStyles-Text"
+        >
+          Title of Section alert
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`SectionAlert with warning tone renders correctly 1`] = `
+<div>
+  <div
+    class="css-xkbh3e-boxStyles"
+  >
+    <div
+      class="css-1urm0li-boxStyles"
+    >
+      <svg
+        aria-hidden="false"
+        aria-label="Warning"
+        class="css-qz15ef-Icon"
+        clip-rule="evenodd"
+        focusable="true"
+        height="24"
+        role="img"
+        viewBox="0 0 24 24"
+        width="24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          clip-rule="evenodd"
+          d="M0 20.8L12 0L24 20.8H0ZM12 7C12.5523 7 13 7.44772 13 8V13C13 13.5523 12.5523 14 12 14C11.4477 14 11 13.5523 11 13V8C11 7.44772 11.4477 7 12 7ZM12 18C12.5523 18 13 17.5523 13 17C13 16.4477 12.5523 16 12 16C11.4477 16 11 16.4477 11 17C11 17.5523 11.4477 18 12 18Z"
+          fill="currentColor"
+          fill-rule="evenodd"
+          stroke="none"
+        />
+      </svg>
+      <div
+        class="css-1i7cdx8-boxStyles"
+      >
+        <span
+          class="css-433uqb-boxStyles-Text"
+        >
+          Title of Section alert
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+`;
