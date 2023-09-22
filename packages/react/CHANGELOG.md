@@ -1,5 +1,50 @@
 # @ag.ds-next/react
 
+## 1.11.0
+
+### Minor Changes
+
+- bccb34e3ac: Filter drawer has been renamed to Drawer;
+
+  The `FilterDrawer` component will continue to work out of the the `@ag.ds-next/react/filter-drawer` entrypoint, but this usage has been marked as deprecated and will be removed in the next major release.
+
+  To upgrade, update the import and component name when using these components.
+
+  ```diff
+  - import { FilterDrawer } from '@ag.ds-next/react/filter-drawer';
+  + import { Drawer } from '@ag.ds-next/react/drawer';
+  ```
+
+- 645d7b66d0: callout: Added info tone and compact variant
+
+  callout: Added support for custom icons
+
+  box: Add support for more colours in background, foreground and border props
+
+- 17009235df: Created new component `FilterSidebar`
+- 46f4df84c3: SectionAlert: Created new component
+- ad8d8d1d35: dropdown-menu: Added new prop `offset`
+
+  dropdown-menu: Updated padding of label element in `DropdownMenuGroup`
+
+  dropdown-menu: Swapped from display style to conditional rendering to improve panel element anchoring
+
+### Patch Changes
+
+- 75134caaaf: details: Added new prop `onBodyAlt`. If the Details component is placed on a page with bodyAlt background, set the `onBodyAlt` prop to true.
+- 746108cbd0: Core: Added xxl breakpoint token
+- 4d1c302e75: details: Updated width of interactive element to match content
+
+  switch: Updated width of interactive element to match content
+
+- 6a0b8f1942: app-layout: Removed `overflow: hidden` from `AppLayoutContent` to support sticky elements. Added `min-width: 0` to fix large tables breaking layout on smaller devices.
+- cb153916a0: dropdown-menu: Improve handling of menu items with long labels
+- 17009235df: box: Add 'none' border-width
+- a73f20ab97: control-group: Added flex wrapping so horizontal options can break into multiple lines if required.
+- d87f1599b3: autocomplete: Added search icon
+
+  search-input: Updated search icon position
+
 ## 1.10.0
 
 ### Minor Changes
