@@ -21,35 +21,35 @@ export default function newIcon(
 
 			actions.push({
 				type: 'addMany',
-				templateFiles: '../plop-templates/icon/**',
-				base: '../plop-templates/icon/',
-				destination: `../packages/react/src/icon/icons`,
+				templateFiles: '../../plop-templates/icon/**',
+				base: '../../plop-templates/icon/',
+				destination: `../../packages/react/src/icon/icons`,
 				data: { iconName },
 			});
 
 			actions.push({
 				type: 'append',
-				path: '../packages/react/src/icon/index.ts',
+				path: '../../packages/react/src/icon/index.ts',
 				template: "export { {{iconName}} } from './icons/{{iconName}}';",
 			});
 
 			actions.push({
 				type: 'append',
-				path: '../packages/react/src/icon/utils.tsx',
+				path: '../../packages/react/src/icon/utils.tsx',
 				template:
 					"import { {{iconName}} } from './icons/{{iconName}}'; // Please add this to object above",
 			});
 
 			actions.push({
 				type: 'append',
-				path: '../docs/components/designSystemComponents.tsx',
+				path: '../../docs/components/designSystemComponents.tsx',
 				template:
 					'// Please add {{iconName}} to "@ag.ds-next/react/icons above"\n',
 			});
 
 			actions.push({
 				type: 'add',
-				path: '../.changeset/plop-create-{{iconName}}.md',
+				path: '../../.changeset/plop-create-{{iconName}}.md',
 				template:
 					"---\n'@ag.ds-next/react': minor\n---\n\nicon: Created {{iconName}}\n",
 			});
