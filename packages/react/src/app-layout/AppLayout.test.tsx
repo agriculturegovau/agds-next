@@ -6,7 +6,11 @@ import { Text } from '../text';
 import { LinkList } from '../link-list';
 import { tokens } from '../core';
 import { Logo } from '../ag-branding';
-import { navigationItems } from './test-utils';
+import {
+	navigationItems,
+	ExampleAccountDropdown,
+	exampleData,
+} from './test-utils';
 import {
 	AppLayout,
 	AppLayoutHeader,
@@ -37,9 +41,15 @@ function renderAppLayout({
 				subLine="Supporting Australian agricultural exports"
 				badgeLabel="Beta"
 				accountDetails={{
-					href: '/account/preferences',
-					name: 'Toto Wolff',
-					secondaryText: 'Orange Meat Works',
+					name: exampleData.userNames.regular,
+					secondaryText: 'My account',
+					dropdown: (
+						<ExampleAccountDropdown
+							businesses={exampleData.businessNames.medium}
+							selectedBusinessName={exampleData.businessNames.medium[0]}
+							onBusinessChange={jest.fn()}
+						/>
+					),
 				}}
 			/>
 			<AppLayoutSidebar activePath={activePath} items={navigationItems} />
@@ -81,6 +91,11 @@ describe('AppLayout', () => {
 		const { container } = renderAppLayout({});
 		expect(container).toHTMLValidate({
 			extends: ['html-validate:recommended'],
+			rules: {
+				// react 18s `useId` break this rule
+				'valid-id': 'off',
+				'no-inline-style': 'off',
+			},
 		});
 		expect(await axe(container)).toHaveNoViolations();
 	});
@@ -90,6 +105,11 @@ describe('AppLayout', () => {
 			const { container } = renderAppLayout({ focusMode: true });
 			expect(container).toHTMLValidate({
 				extends: ['html-validate:recommended'],
+				rules: {
+					// react 18s `useId` break this rule
+					'valid-id': 'off',
+					'no-inline-style': 'off',
+				},
 			});
 			expect(await axe(container)).toHaveNoViolations();
 		});

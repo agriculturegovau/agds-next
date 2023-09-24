@@ -1,4 +1,4 @@
-import { Fragment, useMemo } from 'react';
+import { Fragment, useMemo, useState } from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 import { Logo } from '../ag-branding';
 import { PageContent } from '../content';
@@ -8,7 +8,11 @@ import { SkipLinks } from '../skip-link';
 import { Text } from '../text';
 import { Prose } from '../prose';
 import { GlobalAlert } from '../global-alert';
-import { navigationItems } from './test-utils';
+import {
+	navigationItems,
+	ExampleAccountDropdown,
+	exampleData,
+} from './test-utils';
 import {
 	AppLayout,
 	AppLayoutProps,
@@ -19,8 +23,13 @@ import {
 	AppLayoutFooterDivider,
 } from './index';
 
-function AppLayoutTemplate({ focusMode = false }: AppLayoutProps) {
+function AppLayoutTemplate({
+	focusMode = false,
+	namesLength = 'regular',
+}: AppLayoutProps & { namesLength?: 'regular' | 'short' | 'medium' | 'long' }) {
 	const year = useMemo(() => new Date().getFullYear(), []);
+	const businesses = exampleData.businessNames[namesLength];
+	const [businessName, setBusinessName] = useState(businesses[0]);
 	return (
 		<Fragment>
 			<SkipLinks
@@ -34,9 +43,15 @@ function AppLayoutTemplate({ focusMode = false }: AppLayoutProps) {
 					badgeLabel="Beta"
 					logo={<Logo />}
 					accountDetails={{
-						href: '#account',
-						name: 'Toto Wolff',
-						secondaryText: 'Orange Meat Works',
+						name: exampleData.userNames[namesLength],
+						secondaryText: 'My account',
+						dropdown: (
+							<ExampleAccountDropdown
+								businesses={businesses}
+								selectedBusinessName={businessName}
+								onBusinessChange={setBusinessName}
+							/>
+						),
 					}}
 				/>
 				<AppLayoutSidebar activePath="/" items={navigationItems} />
@@ -111,7 +126,7 @@ const meta: Meta<typeof AppLayout> = {
 		layout: 'fullscreen',
 	},
 	component: AppLayout,
-	render: AppLayoutTemplate,
+	render: (args) => <AppLayoutTemplate {...args} />,
 };
 
 export default meta;
@@ -136,4 +151,16 @@ export const WithGlobalAlert: StoryObj<typeof AppLayout> = {
 			<AppLayoutTemplate {...args} />
 		</Fragment>
 	),
+};
+
+export const WithLongNames: StoryObj<typeof AppLayout> = {
+	render: (args) => <AppLayoutTemplate {...args} namesLength="long" />,
+};
+
+export const WithMediumNames: StoryObj<typeof AppLayout> = {
+	render: (args) => <AppLayoutTemplate {...args} namesLength="medium" />,
+};
+
+export const WithShortNames: StoryObj<typeof AppLayout> = {
+	render: (args) => <AppLayoutTemplate {...args} namesLength="short" />,
 };

@@ -10,10 +10,10 @@ exports[`AppLayout renders correctly 1`] = `
       id="header"
     >
       <div
-        class="css-1aywuo5-boxStyles"
+        class="css-k6tsvc-boxStyles"
       >
         <a
-          class="css-nfczdl-boxStyles-AppLayoutHeaderBrand"
+          class="css-1qgwds3-boxStyles-AppLayoutHeaderBrand"
           href="#"
         >
           <svg
@@ -70,34 +70,66 @@ exports[`AppLayout renders correctly 1`] = `
             </span>
           </div>
         </a>
-        <a
-          class="css-xust8k-boxStyles-AppLayoutHeaderAccount"
-          href="/account/preferences"
+        <div
+          class="css-10mrbgs-boxStyles"
         >
-          <div
-            class="css-1bv5hke-boxStyles-AppLayoutHeaderAccount"
+          <button
+            aria-controls="dropdown-menu-:r0:-panel"
+            aria-expanded="false"
+            aria-haspopup="true"
+            class="css-v49j9x-BaseButton-boxStyles-AppLayoutHeaderAccountDropdownButton"
+            id="dropdown-menu-:r0:-button"
+            type="button"
           >
             <span
-              class="css-19uuw7q-boxStyles-Text"
+              class="css-avudkd-VisuallyHidden"
             >
-              Toto Wolff
+              Account menu
             </span>
             <span
-              class="css-1lp7dl8-boxStyles-Text"
+              aria-hidden="true"
+              class="css-1hgloe3-boxStyles-AppLayoutHeaderAccountDropdownButton"
             >
-              Orange Meat Works
+              <span
+                class="css-1cow25h-boxStyles-Avatar"
+              >
+                TW
+              </span>
+              <span
+                class="css-hv1d8s-boxStyles-AppLayoutHeaderAccountDropdownButton"
+              >
+                <span
+                  class="css-tr7opw-boxStyles-Text-AppLayoutHeaderAccountDropdownButton"
+                >
+                  Toto Wolff
+                </span>
+                <span
+                  class="css-1mrgx2f-boxStyles-Text-AppLayoutHeaderAccountDropdownButton"
+                >
+                  My account
+                </span>
+              </span>
             </span>
-          </div>
-          <span
-            aria-hidden="true"
-            class="css-1cow25h-boxStyles-Avatar"
-          >
-            TW
-          </span>
-        </a>
+            <svg
+              aria-hidden="true"
+              class="css-bza5ds-AppLayoutHeaderAccountDropdownButton"
+              clip-rule="evenodd"
+              focusable="false"
+              height="24"
+              role="img"
+              viewBox="0 0 24 24"
+              width="24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <polyline
+                points="6 9 12 15 18 9"
+              />
+            </svg>
+          </button>
+        </div>
       </div>
       <div
-        class="css-1sjsayx-boxStyles-AppLayoutHeaderNav"
+        class="css-o9emw-boxStyles-AppLayoutHeaderNav"
       >
         <button
           class="css-zbjn2b-BaseButton-boxStyles-AppLayoutHeaderNavMenuButton"
@@ -128,31 +160,59 @@ exports[`AppLayout renders correctly 1`] = `
             Menu
           </span>
         </button>
-        <a
-          class="css-10klk4k-boxStyles-AppLayoutHeaderAccount"
-          href="/account/preferences"
+        <button
+          aria-controls="dropdown-menu-:r1:-panel"
+          aria-expanded="false"
+          aria-haspopup="true"
+          class="css-v49j9x-BaseButton-boxStyles-AppLayoutHeaderAccountDropdownButton"
+          id="dropdown-menu-:r1:-button"
+          type="button"
         >
-          <div
-            class="css-1bv5hke-boxStyles-AppLayoutHeaderAccount"
+          <span
+            class="css-avudkd-VisuallyHidden"
           >
-            <span
-              class="css-19uuw7q-boxStyles-Text"
-            >
-              Toto Wolff
-            </span>
-            <span
-              class="css-1lp7dl8-boxStyles-Text"
-            >
-              Orange Meat Works
-            </span>
-          </div>
+            Account menu
+          </span>
           <span
             aria-hidden="true"
-            class="css-1cow25h-boxStyles-Avatar"
+            class="css-1hgloe3-boxStyles-AppLayoutHeaderAccountDropdownButton"
           >
-            TW
+            <span
+              class="css-1cow25h-boxStyles-Avatar"
+            >
+              TW
+            </span>
+            <span
+              class="css-hv1d8s-boxStyles-AppLayoutHeaderAccountDropdownButton"
+            >
+              <span
+                class="css-tr7opw-boxStyles-Text-AppLayoutHeaderAccountDropdownButton"
+              >
+                Toto Wolff
+              </span>
+              <span
+                class="css-1mrgx2f-boxStyles-Text-AppLayoutHeaderAccountDropdownButton"
+              >
+                My account
+              </span>
+            </span>
           </span>
-        </a>
+          <svg
+            aria-hidden="true"
+            class="css-bza5ds-AppLayoutHeaderAccountDropdownButton"
+            clip-rule="evenodd"
+            focusable="false"
+            height="24"
+            role="img"
+            viewBox="0 0 24 24"
+            width="24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <polyline
+              points="6 9 12 15 18 9"
+            />
+          </svg>
+        </button>
       </div>
     </header>
     <aside

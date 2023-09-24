@@ -1,52 +1,68 @@
 import { Avatar } from '../avatar';
-import { Flex, FlexProps } from '../box';
-import { useLinkComponent } from '../core';
+import { Flex } from '../flex';
+import { mq, packs, useLinkComponent } from '../core';
 import { Text } from '../text';
 import type { AppLayoutHeaderProps } from './AppLayoutHeader';
+import { AppLayoutHeaderAccountDropdown } from './AppLayoutHeaderAccountDropdown';
 
-export type AppLayoutHeaderAccountProps =
-	AppLayoutHeaderProps['accountDetails'] & {
-		display?: FlexProps['display'];
-	};
+export type AppLayoutHeaderAccountProps = NonNullable<
+	AppLayoutHeaderProps['accountDetails']
+>;
 
 export function AppLayoutHeaderAccount({
 	name,
 	secondaryText,
 	href,
-	display,
+	dropdown,
 }: AppLayoutHeaderAccountProps) {
 	const Link = useLinkComponent();
+
+	// Dropdown component
+	if (dropdown) {
+		return (
+			<AppLayoutHeaderAccountDropdown name={name} secondaryText={secondaryText}>
+				{dropdown}
+			</AppLayoutHeaderAccountDropdown>
+		);
+	}
+
+	const hasLink = Boolean(href);
+
 	return (
 		<Flex
-			as={Link}
-			display={display}
-			href={href}
+			as="span"
+			{...(hasLink && {
+				as: Link,
+				href,
+				focus: true,
+			})}
 			alignItems="center"
-			focus
 			flexShrink={0}
 			gap={0.5}
-			css={{
+			css={mq({
 				textDecoration: 'none',
 				textAlign: 'right',
-				'&:hover': {
-					'& > div > span': {
-						textDecoration: 'underline',
+				maxWidth: ['16rem', '18rem'],
+				...(hasLink && {
+					'&:hover': {
+						'& > span > span': {
+							textDecoration: 'underline',
+						},
 					},
-				},
-			}}
+				}),
+			})}
 		>
-			<Flex
-				flexDirection="column"
-				css={{
-					// Wrap long names at a sensible width
-					maxWidth: '16rem',
-				}}
-			>
-				<Text color="action" fontWeight="bold" fontSize="xs">
+			<Flex as="span" flexDirection="column" css={{ overflow: 'hidden' }}>
+				<Text
+					color="action"
+					fontWeight="bold"
+					fontSize="xs"
+					css={packs.truncate}
+				>
 					{name}
 				</Text>
 				{secondaryText ? (
-					<Text color="muted" fontSize="xs">
+					<Text color="muted" fontSize="xs" css={packs.truncate}>
 						{secondaryText}
 					</Text>
 				) : null}

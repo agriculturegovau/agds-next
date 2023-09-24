@@ -1,3 +1,5 @@
+import { ReactNode } from 'react';
+import { Box } from '../box';
 import { Flex } from '../flex';
 import { tokens } from '../core';
 import { AppLayoutHeaderBrand } from './AppLayoutHeaderBrand';
@@ -25,7 +27,9 @@ export type AppLayoutHeaderProps = {
 		/** Displayed under the users name if needed e.g. to show the business name. */
 		secondaryText?: string;
 		/** The href to link to, for example "/account". */
-		href: string;
+		href?: string;
+		/** Dropdown menu for account switching. */
+		dropdown?: ReactNode;
 	};
 };
 
@@ -56,7 +60,6 @@ export function AppLayoutHeader({
 		>
 			<Flex
 				gap={1}
-				paddingY={1}
 				paddingX={tokens.containerPadding}
 				justifyContent="space-between"
 				background="bodyAlt"
@@ -70,12 +73,14 @@ export function AppLayoutHeader({
 					subLine={subLine}
 					badgeLabel={badgeLabel}
 				/>
-				{accountDetails ? (
-					<AppLayoutHeaderAccount
-						display={{ xs: 'none', [APP_LAYOUT_DESKTOP_BREAKPOINT]: 'flex' }}
-						{...accountDetails}
-					/>
-				) : null}
+				<Box
+					height="100%"
+					display={{ xs: 'none', [APP_LAYOUT_DESKTOP_BREAKPOINT]: 'flex' }}
+				>
+					{accountDetails ? (
+						<AppLayoutHeaderAccount {...accountDetails} />
+					) : null}
+				</Box>
 			</Flex>
 			<AppLayoutHeaderNav accountDetails={accountDetails} />
 		</Flex>

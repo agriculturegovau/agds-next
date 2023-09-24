@@ -30,6 +30,7 @@ export function AppLayoutHeaderBrand({
 		<Flex
 			as={Link}
 			href={href}
+			paddingY={1}
 			flexDirection={{ xs: 'column', md: 'row' }}
 			alignItems={{ xs: 'flex-start', md: 'center' }}
 			gap={{ xs: 1, md: 0 }}

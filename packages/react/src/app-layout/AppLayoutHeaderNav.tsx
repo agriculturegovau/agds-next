@@ -1,4 +1,4 @@
-import { Fragment, MouseEventHandler } from 'react';
+import { MouseEventHandler } from 'react';
 import { Flex } from '../flex';
 import { boxPalette, tokens } from '../core';
 import { MenuIcon } from '../icon';
@@ -9,7 +9,7 @@ import { useAppLayoutContext } from './AppLayoutContext';
 import { APP_LAYOUT_DESKTOP_BREAKPOINT } from './utils';
 
 export type AppLayoutHeaderNavProps = {
-	accountDetails: AppLayoutHeaderProps['accountDetails'];
+	accountDetails?: AppLayoutHeaderProps['accountDetails'];
 };
 
 export function AppLayoutHeaderNav({
@@ -17,27 +17,25 @@ export function AppLayoutHeaderNav({
 }: AppLayoutHeaderNavProps) {
 	const { focusMode, openMobileMenu } = useAppLayoutContext();
 	return (
-		<Fragment>
-			<Flex
-				display={{ xs: 'flex', [APP_LAYOUT_DESKTOP_BREAKPOINT]: 'none' }}
-				background="body"
-				alignItems="center"
-				justifyContent={focusMode ? 'flex-end' : 'space-between'}
-				paddingLeft={0.75}
-				paddingRight={tokens.containerPadding}
-				height="5.25rem"
-				css={{
-					'& > a, button': {
-						height: '100%',
-					},
-				}}
-			>
-				{!focusMode ? (
-					<AppLayoutHeaderNavMenuButton onClick={openMobileMenu} />
-				) : null}
-				{accountDetails ? <AppLayoutHeaderAccount {...accountDetails} /> : null}
-			</Flex>
-		</Fragment>
+		<Flex
+			display={{ xs: 'flex', [APP_LAYOUT_DESKTOP_BREAKPOINT]: 'none' }}
+			background="body"
+			alignItems="center"
+			justifyContent={focusMode ? 'flex-end' : 'space-between'}
+			paddingLeft={0.75}
+			paddingRight={accountDetails?.dropdown ? 0.75 : tokens.containerPadding}
+			minHeight="5.25rem"
+			css={{
+				'& > a, button': {
+					height: '100%',
+				},
+			}}
+		>
+			{!focusMode ? (
+				<AppLayoutHeaderNavMenuButton onClick={openMobileMenu} />
+			) : null}
+			{accountDetails ? <AppLayoutHeaderAccount {...accountDetails} /> : null}
+		</Flex>
 	);
 }
 
