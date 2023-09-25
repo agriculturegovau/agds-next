@@ -99,4 +99,14 @@ describe('ComboboxMulti', () => {
 			STATE_OPTIONS.length - 1
 		);
 	});
+
+	it('listBox is described by the label correctly', async () => {
+		const { container } = renderComboboxMulti();
+		const label = container.querySelector('label');
+		const listBox = container.querySelector('[role="listbox"]');
+		expect(label).toBeInTheDocument();
+		expect(label).toHaveTextContent('Find your state (optional)');
+		expect(listBox).toBeInTheDocument();
+		expect(listBox).toHaveAttribute('aria-labelledby', label?.id);
+	});
 });

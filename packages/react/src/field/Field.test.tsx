@@ -113,6 +113,13 @@ describe('Field', () => {
 		expect(inputEl.id).toBe(id);
 	});
 
+	it('uses labelID prop if provided ', () => {
+		const labelId = 'label-id';
+		renderField({ label, labelId });
+		const labelEl = getLabelElement();
+		expect(labelEl.id).toBe(labelId);
+	});
+
 	describe('Field a11yProps', () => {
 		it('provides the correct a11y props', () => {
 			renderField({ label, hint });
