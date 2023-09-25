@@ -1,4 +1,4 @@
-import { MouseEventHandler } from 'react';
+import { MouseEventHandler, useMemo } from 'react';
 import { Box } from '../box';
 import { Flex } from '../flex';
 import { boxPalette } from '../core';
@@ -7,7 +7,7 @@ import { Button } from '../button';
 import { LoadingDots } from '../loading';
 import { SuccessFilledIcon } from '../icon';
 import { FileIcon } from '../icon/icons/FileIcon';
-import { FileWithStatus, formatFileSize } from './utils';
+import { FileWithStatus, formatFileSize, getImageThumbnail } from './utils';
 
 type FileUploadFileProps = {
 	file: FileWithStatus;
@@ -16,7 +16,8 @@ type FileUploadFileProps = {
 
 export const FileUploadFile = ({ file, onRemove }: FileUploadFileProps) => {
 	const { name, size, status = 'none' } = file;
-	const imagePreview = URL.createObjectURL(file);
+	const imagePreview = useMemo(() => getImageThumbnail(file), [file]);
+
 	return (
 		<Flex
 			rounded
