@@ -26,7 +26,7 @@ const meta: Meta<typeof FileUpload> = {
 };
 
 const exampleFile = new File(['this is an example file'], 'example.jpg', {
-	type: 'image/jpg',
+	type: 'image/jpeg',
 });
 
 export default meta;
@@ -81,18 +81,26 @@ export const OnlyAcceptedFormats: Story = {
 		label: 'Identity documents',
 		required: true,
 		hint: 'May include images of your passport, drivers licence etc.',
-		maxSize: 200,
 		accept: [
 			'image/jpeg',
-			'image/jpg',
 			'image/png',
 			'application/pdf',
 			'application/msword',
-			'application/vnd.ms-excel',
 			'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+			'application/vnd.ms-excel',
 			'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
 		],
 		multiple: true,
+	},
+};
+
+export const AdvancedAcceptedFormat: Story = {
+	args: {
+		label: 'Upload file',
+		accept: [
+			{ mimeType: 'application/json', extensions: ['.json'] },
+			{ mimeType: 'text/javascript', extensions: ['.js'] },
+		],
 	},
 };
 
@@ -101,7 +109,7 @@ export const MultipleImages: Story = {
 		label: 'Photos from your holiday',
 		maxSize: 2000,
 		maxFiles: 3,
-		accept: ['image/jpeg', 'image/jpg', 'image/png', 'image/heic'],
+		accept: ['image/jpeg', 'image/png', 'image/heic'],
 		multiple: true,
 	},
 };
@@ -194,7 +202,7 @@ const UploadSingleFileOnSubmitTemplate = (args: FileUploadProps) => {
 							<FileUpload
 								{...args}
 								id="file"
-								accept={['image/jpeg', 'image/jpg', 'image/png']}
+								accept={['image/jpeg', 'image/png']}
 								maxSize={500} // 500kb
 								multiple={false}
 								value={value}
@@ -205,7 +213,6 @@ const UploadSingleFileOnSubmitTemplate = (args: FileUploadProps) => {
 								message={error?.message}
 								required
 							/>
-
 							{
 								// We use a LoadingBlanket to communicate that this field is causing the form
 								// to take longer than usual to submit

@@ -13,7 +13,7 @@ type Story = StoryObj<typeof FileUploadFileList>;
 
 function createExampleFile(status?: FileStatus) {
 	const file: FileWithStatus = new File(['example'], 'example.jpg', {
-		type: 'image/jpg',
+		type: 'image/jpeg',
 	});
 	file.status = status;
 	return file;

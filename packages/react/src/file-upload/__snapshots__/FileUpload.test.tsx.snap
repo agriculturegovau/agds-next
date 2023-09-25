@@ -61,7 +61,6 @@ exports[`FileUpload Basic renders correctly 1`] = `
           aria-describedby="field-:r0:-hint"
           aria-invalid="false"
           aria-required="false"
-          autocomplete="off"
           class="css-5ur8x"
           id="field-:r0:"
           tabindex="-1"

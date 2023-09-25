@@ -10,13 +10,13 @@ relatedComponents: ['file-input']
 ```jsx live
 <FileUpload
 	label="Avatar image"
-	hint="Formats accepted: .png, .jpg."
+	hint="Formats accepted: .png, .jpg, .jpeg"
 	multiple={false}
-	accept={['image/jpeg', 'image/jpg', 'image/png']}
+	accept={['image/jpeg', 'image/png']}
 />
 ```
 
-File upload is used in forms to enable users to upload files they need. There are 2 ways to upload – via drag and drop or file selection via search.
+File upload is used in forms to enable users to upload files they need. There are 2 ways to upload - via drag and drop or file selection via search.
 
 `FileUpload` is a [controlled component](https://reactjs.org/docs/forms.html#controlled-components).
 
@@ -46,7 +46,7 @@ When using FileUpload, you need to consider how to communicate to the user that 
 
 In this example, we are submitting a file as part of a typical form submission to an API.
 
-We recommend wrapping the FileUpload in a LoadingBanner as the form submits, to indicate to the user that any delays are being caused by a potentially larger file being uploaded. If your backend system supports it, you can also use this UI to indicate upload status as a percentage.
+We recommend wrapping the FileUpload in a [LoadingBlanket](/components/loading) as the form submits, to indicate to the user that any delays are being caused by a potentially larger file being uploaded. If your backend system supports it, you can also use this UI to indicate upload status as a percentage.
 
 As normal, we indicate that the form is submitting by adding a `loading={true}` to the submit button. This will show animated dots to signify that the user has to wait for the operation to complete.
 
@@ -55,14 +55,14 @@ As normal, we indicate that the form is submitting by adding a `loading={true}` 
 	<div style={{ position: 'relative' }}>
 		<FileUpload
 			label="Avatar image"
-			hint="Formats accepted: .png, .jpg."
+			hint="Formats accepted: .png, .jpg, .jpeg"
 			multiple={false}
-			accept={['image/jpeg', 'image/jpg', 'image/png']}
+			accept={['image/jpeg' 'image/png']}
 		/>
 		<LoadingBlanket label="Uploading file (53%)" />
 	</div>
 	<div>
-		<Button loading>Submit</Button>
+		<Button loading={true}>Submit</Button>
 	</div>
 </FormStack>
 ```
@@ -76,23 +76,23 @@ In this example, the file is instantly uploaded to a file hosting service, and t
 ```jsx live
 () => {
 	const uploadingFile = new File(['this is an example file'], 'example.jpg', {
-		type: 'image/jpg',
+		type: 'image/jpeg',
 	});
 	uploadingFile.status = 'uploading';
 	const uploadedFile = new File(
 		['this is another example file that has uploaded'],
 		'example.jpg',
 		{
-			type: 'image/jpg',
+			type: 'image/jpeg',
 		}
 	);
 	uploadedFile.status = 'success';
 	return (
 		<FileUpload
 			label="Avatar image"
-			hint="Formats accepted: .png, .jpg."
+			hint="Formats accepted: .png, .jpg, .jpeg"
 			multiple={false}
-			accept={['image/jpeg', 'image/jpg', 'image/png']}
+			accept={['image/jpeg', 'image/png']}
 			value={[uploadedFile, uploadingFile]}
 			onChange={console.log}
 		/>
@@ -100,11 +100,7 @@ In this example, the file is instantly uploaded to a file hosting service, and t
 };
 ```
 
----
-
-## Props
-
-### Multiple files
+## Multiple files
 
 Selecting multiple files is also supported with FileUpload. Simply add `multiple={true}`, and you can select as many files as you want. You can also set `maxFiles` to limit how many files can be selected.
 
@@ -112,47 +108,31 @@ Selecting multiple files is also supported with FileUpload. Simply add `multiple
 <FileUpload multiple={true} maxFiles={3} />
 ```
 
-### Maximum size
+## Maximum file size
 
-Use the `maxSize` prop to set a maximum size for each file. This value is measured in kB.
+Use the `maxSize` prop to set a maximum size for each file. This value is measured in kilobytes (kB).
 
 ```jsx
 <FileUpload maxSize={200} /> // 200kB
 <FileUpload maxSize={20000} /> // 20MB
 ```
 
-### Accepted files
+## Accepted files
 
-Using the `accept` prop, you can specify what filetypes are allowed to be selected. Filetypes include...
+Use the `accept` prop to specify what file types are allowed to be selected. Each item in the array should be a [MIME type](https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types/Common_types).
 
-- `application/msword`
-- `application/pdf`
-- `application/rtf`
-- `application/vnd.ms-excel`
-- `application/vnd.openxmlformats-officedocument.spreadsheetml.sheet` (.xls)
-- `application/vnd.openxmlformats-officedocument.wordprocessingml.document` (.doc)
-- `application/zip`
-- `application/xml`
-- `audio/*`
-- `audio/mpeg`
-- `audio/wav`
-- `image/*`
-- `image/gif`
-- `image/heic`
-- `image/jpeg`
-- `image/png`
-- `image/svg+xml`
-- `image/tiff`
-- `image/webp`
-- `text/*`
-- `text/csv`
-- `text/plain`
-- `text/rtf`
-- `text/xml`
-- `video/*`
-- `video/mp4`
-- `video/mpeg`
+For the full list of accepted MIME types, please refer to code [here](https://github.com/steelthreads/agds-next/blob/main/packages/react/src/file-upload/utils.tsx).
 
 ```jsx
-<FileUpload accept={['image/jpeg', 'image/jpg', 'image/png']} />
+<FileUpload accept={['image/jpeg', 'image/png']} />
+```
+
+### Advanced MIME types
+
+You can extend the list of accepted MIME types if the file type you need to support is not included in the predefined list.
+
+To do this, pass an object instead of a string with `mimeType` and `extensions` as keys. Optionally, a `label` key can be used for the summary inside of the component, e.g. "Any font file"
+
+```jsx
+<FileUpload accept={[{ mimeType: 'text/javascript', extensions: ['.js'] }]} />
 ```
