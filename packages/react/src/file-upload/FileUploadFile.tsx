@@ -16,6 +16,7 @@ type FileUploadFileProps = {
 
 export const FileUploadFile = ({ file, onRemove }: FileUploadFileProps) => {
 	const { name, size, status = 'none' } = file;
+	const imagePreview = URL.createObjectURL(file);
 	return (
 		<Flex
 			rounded
@@ -39,7 +40,18 @@ export const FileUploadFile = ({ file, onRemove }: FileUploadFileProps) => {
 						/>
 					</Box>
 				)}
-				<FileIcon />
+				{imagePreview ? (
+					<img
+						alt=""
+						src={imagePreview}
+						css={{
+							width: 100,
+							height: 100,
+						}}
+					/>
+				) : (
+					<FileIcon />
+				)}
 				<Text css={{ wordBreak: 'break-all' }}>
 					{name} ({formatFileSize(size)})
 				</Text>
