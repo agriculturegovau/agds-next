@@ -1,7 +1,7 @@
 import { MouseEventHandler, useMemo } from 'react';
 import { Box } from '../box';
 import { Flex } from '../flex';
-import { boxPalette } from '../core';
+import { boxPalette, mapSpacing, tokens } from '../core';
 import { Text } from '../text';
 import { Button } from '../button';
 import { LoadingDots } from '../loading';
@@ -25,7 +25,7 @@ export const FileUploadFile = ({ file, onRemove }: FileUploadFileProps) => {
 			as="li"
 			aria-label={`${status === 'success' ? 'Uploaded file' : 'File'}. ${name}`}
 			paddingY={0.5}
-			paddingLeft={1}
+			paddingLeft={0.5}
 			justifyContent="space-between"
 			css={{ backgroundColor: TONE_MAP[status] }}
 		>
@@ -46,12 +46,16 @@ export const FileUploadFile = ({ file, onRemove }: FileUploadFileProps) => {
 						alt=""
 						src={imagePreview}
 						css={{
-							width: 100,
-							height: 100,
+							width: mapSpacing(4),
+							height: mapSpacing(4),
+							'object-fit': 'cover',
+							borderRadius: tokens.borderRadius,
 						}}
 					/>
 				) : (
-					<FileIcon />
+					<Box paddingLeft={0.5}>
+						<FileIcon />
+					</Box>
 				)}
 				<Text css={{ wordBreak: 'break-all' }}>
 					{name} ({formatFileSize(size)})
