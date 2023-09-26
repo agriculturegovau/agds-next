@@ -15,13 +15,13 @@ export type AppLayoutHeaderNavProps = {
 export function AppLayoutHeaderNav({
 	accountDetails,
 }: AppLayoutHeaderNavProps) {
-	const { focusMode, openMobileMenu } = useAppLayoutContext();
+	const { openMobileMenu } = useAppLayoutContext();
 	return (
 		<Flex
 			display={{ xs: 'flex', [APP_LAYOUT_DESKTOP_BREAKPOINT]: 'none' }}
 			background="body"
 			alignItems="center"
-			justifyContent={focusMode ? 'flex-end' : 'space-between'}
+			justifyContent="space-between"
 			paddingLeft={0.75}
 			paddingRight={accountDetails?.dropdown ? 0.75 : tokens.containerPadding}
 			minHeight="5.25rem"
@@ -31,9 +31,7 @@ export function AppLayoutHeaderNav({
 				},
 			}}
 		>
-			{!focusMode ? (
-				<AppLayoutHeaderNavMenuButton onClick={openMobileMenu} />
-			) : null}
+			<AppLayoutHeaderNavMenuButton onClick={openMobileMenu} />
 			{accountDetails ? <AppLayoutHeaderAccount {...accountDetails} /> : null}
 		</Flex>
 	);

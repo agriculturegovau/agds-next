@@ -1,0 +1,61 @@
+---
+title: Focus mode
+description: Used to help reduce distractions so that users can focus on completing a specific task.
+relatedComponents: ['app-layout', 'modal', 'header', 'main-nav']
+---
+
+Focus mode refers to temporarily hiding the main navigation of a website or application to reduce distractions and cognitive load.
+
+<DoHeading />
+
+- use focus mode on multi-page forms
+- trigger a [Modal](/components/modal) dialog if users navigate away from the form flow to help prevent them from losing data
+- always ensure the user can escape focus mode via a 'back', 'save and exit' or 'cancel' button.
+
+<DontHeading />
+
+- allow users to control whether focus mode is on or off, it should be controlled by the system.
+
+## Focus mode in App layout
+
+The [App layout sidebar](/components/app-layout#app-layout-sidebar) should be hidden while users are completing multi-page forms to reduce distractions and cognitive load. This can be achieved by setting the `focusMode` prop to `true` on the `AppLayout` component.
+
+<DontHeading />
+
+Display the [App layout sidebar](/components/app-layout#app-layout-sidebar) with the [Progress indicator](/components/progress-indicator), as they're both navigational items that compete for attention. Displaying both on the screen also limits space for the main content.
+
+<ImageWithBorder
+	alt="Screenshot of App layout components with an outlined box highlighting the App layout sidebar component"
+	src="/img/patterns/focus-mode-app-layout-wrong.png"
+/>
+
+<DoHeading />
+
+Remove the [App layout sidebar](/components/app-layout#app-layout-sidebar) to simplify the screen and reduce distractions.
+
+<ImageWithBorder
+	alt="Screenshot of App layout components in focus mode, with an outlined box highlighting where the App layout sidebar would usually be placed"
+	src="/img/patterns/focus-mode-app-layout.png"
+/>
+
+## Focus mode in Informational websites
+
+On informational websites, focus mode hides the main navigation and changes the header component to the small variant to save vertical space.
+
+To do this, please refer the code example in the [example site](https://github.com/steelthreads/agds-next/blob/main/example-site/components/SiteHeader.tsx).
+
+<ImageWithBorder
+	alt="Example usage of the Header and Main nav components with an arrow pointing down to another example of these components in focus mode"
+	src="/img/patterns/focus-mode-informational-website.png"
+/>
+
+## Modal dialog
+
+Even though focus mode hides the main navigation, users could still navigate away from the form via the links in the header, footer, or even the browser back button. To help prevent users from losing data they've already entered into a form, trigger a [Modal](/components/modal) dialog in case they mistakenly navigated away from the form.
+
+[View storybook preview](/storybook/index.html?path=/story/content-modal--leaving-form-page)
+
+<ImageWithBorder
+	alt="Screenshot of an open Modal dialog with the title 'Are you sure you want to leave this page' and description 'You will lose all changes made since your last save.'"
+	src="/img/patterns/focus-mode-modal.png"
+/>

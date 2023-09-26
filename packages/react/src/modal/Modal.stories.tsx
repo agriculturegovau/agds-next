@@ -112,3 +112,34 @@ export const ConfirmingFormCancellation: Story = {
 		);
 	},
 };
+
+export const LeavingFormPage: Story = {
+	args: {
+		title: 'Are you sure you want to leave this page?',
+	},
+	render: function Render(props) {
+		const [isModalOpen, openModal, closeModal] = useTernaryState(false);
+		return (
+			<div>
+				<Button onClick={openModal}>Open modal</Button>
+				<Modal
+					isOpen={isModalOpen}
+					onDismiss={closeModal}
+					title={props.title}
+					actions={
+						<ButtonGroup>
+							<Button onClick={closeModal}>Leave this page</Button>
+							<Button variant="secondary" onClick={closeModal}>
+								Stay on this page
+							</Button>
+						</ButtonGroup>
+					}
+				>
+					<Text as="p">
+						You will lose all changes made since your last save.
+					</Text>
+				</Modal>
+			</div>
+		);
+	},
+};
