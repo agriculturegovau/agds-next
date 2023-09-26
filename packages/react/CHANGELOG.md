@@ -1,5 +1,26 @@
 # @ag.ds-next/react
 
+## 1.12.0
+
+### Minor Changes
+
+- 7b32460743: app-layout: Added support for displaying the active business name and ABN in `AppLayoutSidebar`
+
+  app-layout: Decreased border left width of active item in sidebar from `8px` to `4px`
+
+  app-layout: Decreased the width of the `AppLayoutSidebar` from `17.5rem` to `16rem`
+
+  app-layout: Decreased the gap between icons and labels in `AppLayoutSidebar` from `1rem` to `0.75rem`
+
+- d201d49ac4: field: Added new `labelId` prop
+- 626ca776b7: app-layout: Updated app layout header to show hamburger menu in focus mode
+- d201d49ac4: combobox: Improved accessibility by ensuring that the popover listbox element is described correctly by the field label
+- 2bf3c6f9ef: app-layout: Added ability to have an account dropdown menu via a new `dropdown` key on the `accountDetails` prop.
+
+### Patch Changes
+
+- 72773ba7af: file-upload: Add support for the `application/vnd.ms-outlook` MIME type
+
 ## 1.11.0
 
 ### Minor Changes
