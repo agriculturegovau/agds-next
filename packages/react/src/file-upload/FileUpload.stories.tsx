@@ -13,6 +13,10 @@ import { Button } from '../button';
 import { LoadingBlanket } from '../loading';
 import { FileUpload, FileUploadProps } from './FileUpload';
 import { FileWithStatus } from './utils';
+import {
+	createExampleFileWithStatus,
+	createExampleImageFileWithStatus,
+} from './test-utils';
 
 const meta: Meta<typeof FileUpload> = {
 	title: 'forms/FileUpload',
@@ -23,9 +27,7 @@ const meta: Meta<typeof FileUpload> = {
 	},
 };
 
-const exampleFile = new File(['this is an example file'], 'example.jpg', {
-	type: 'image/jpeg',
-});
+const exampleFile = createExampleFileWithStatus();
 
 export default meta;
 
@@ -107,6 +109,11 @@ export const MultipleImages: Story = {
 		maxFiles: 3,
 		accept: ['image/jpeg', 'image/png', 'image/heic'],
 		multiple: true,
+		value: [
+			createExampleImageFileWithStatus(),
+			createExampleImageFileWithStatus(),
+			createExampleImageFileWithStatus(),
+		],
 	},
 };
 
