@@ -29,6 +29,7 @@ const fileTypeMapping = {
 	'application/pdf': 'pdf',
 	'application/rtf': 'rtf',
 	'application/vnd.ms-excel': 'xlsx',
+	'application/vnd.ms-outlook': 'msg',
 	'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet': 'xls',
 	'application/vnd.openxmlformats-officedocument.wordprocessingml.document':
 		'doc',
