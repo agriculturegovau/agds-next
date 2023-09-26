@@ -12,7 +12,7 @@ const meta: Meta<typeof AppLayoutSidebar> = {
 	},
 	args: {
 		activePath: '/establishments',
-		items: navigationItems,
+		items: navigationItems('Antfix'),
 	},
 	render: (props) => (
 		<AppLayoutContext.Provider
@@ -39,7 +39,7 @@ export const Basic: Story = {};
 export const WithoutIcons: Story = {
 	args: {
 		activePath: '/establishments',
-		items: navigationItems.map((group) => {
+		items: navigationItems('Antfix').map((group) => {
 			return group.map((item) => {
 				return { ...item, icon: undefined };
 			});

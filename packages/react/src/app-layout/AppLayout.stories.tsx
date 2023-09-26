@@ -54,7 +54,10 @@ function AppLayoutTemplate({
 						),
 					}}
 				/>
-				<AppLayoutSidebar activePath="/" items={navigationItems} />
+				<AppLayoutSidebar
+					activePath="/"
+					items={navigationItems(businessName)}
+				/>
 				<AppLayoutContent>
 					<main
 						id="main-content"

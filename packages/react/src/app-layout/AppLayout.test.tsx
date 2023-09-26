@@ -31,6 +31,8 @@ function renderAppLayout({
 	activePath?: string;
 	focusMode?: boolean;
 }) {
+	const businessList = exampleData.businessNames.medium;
+	const businessName = exampleData.businessNames.medium[0];
 	return render(
 		<AppLayout focusMode={focusMode}>
 			<AppLayoutHeader
@@ -45,14 +47,17 @@ function renderAppLayout({
 					secondaryText: 'My account',
 					dropdown: (
 						<ExampleAccountDropdown
-							businesses={exampleData.businessNames.medium}
-							selectedBusinessName={exampleData.businessNames.medium[0]}
+							businesses={businessList}
+							selectedBusinessName={businessName}
 							onBusinessChange={jest.fn()}
 						/>
 					),
 				}}
 			/>
-			<AppLayoutSidebar activePath={activePath} items={navigationItems} />
+			<AppLayoutSidebar
+				activePath={activePath}
+				items={navigationItems(businessName)}
+			/>
 			<AppLayoutContent>
 				<main
 					id="main-content"

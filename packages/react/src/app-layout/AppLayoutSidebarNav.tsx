@@ -3,6 +3,7 @@ import {
 	boxPalette,
 	LinkProps,
 	mapSpacing,
+	packs,
 	tokens,
 	useLinkComponent,
 } from '../core';
@@ -10,6 +11,7 @@ import { Box, focusStyles } from '../box';
 import { Flex } from '../flex';
 import { BaseButton, BaseButtonProps } from '../button';
 import { IconProps } from '../icon';
+import { Stack } from '../stack';
 
 type NavLink = Omit<LinkProps, 'children'>;
 
@@ -32,9 +34,11 @@ export function AppLayoutSidebarNav({
 	items,
 }: AppLayoutSidebarNavProps) {
 	return (
-		<Flex as="nav" flexDirection="column" aria-label="main" paddingY={1.5}>
+		<Flex as="nav" flexDirection="column" aria-label="main" paddingBottom={1.5}>
 			<Flex as="ul" flexDirection="column">
 				{items.map((group, idx, arr) => {
+					const groupHasSingleItem = group.length === 1;
+					const nextGroupHasSingleItem = items[idx + 1]?.length === 1;
 					const isLastItem = idx === arr.length - 1;
 					return (
 						<Fragment key={idx}>
@@ -45,7 +49,11 @@ export function AppLayoutSidebarNav({
 									activePath={activePath}
 								/>
 							))}
-							{!isLastItem ? <AppLayoutSidebarNavDivider /> : null}
+							{!isLastItem ? (
+								<AppLayoutSidebarNavDivider
+									disablePaddingY={groupHasSingleItem || nextGroupHasSingleItem}
+								/>
+							) : null}
 						</Fragment>
 					);
 				})}
@@ -66,6 +74,7 @@ function AppLayoutSidebarNavListItem({
 	const Link = useLinkComponent();
 	const { endElement, icon: Icon, label, ...restItemProps } = item;
 
+	// Link list item
 	if ('href' in item) {
 		const active = item.href === activePath;
 		return (
@@ -82,16 +91,28 @@ function AppLayoutSidebarNavListItem({
 		);
 	}
 
+	// Button list item
+	if ('onClick' in item) {
+		return (
+			<AppLayoutSidebarNavItemInner
+				isActive={false}
+				hasEndElement={Boolean(endElement)}
+			>
+				<BaseButton {...restItemProps}>
+					{Icon ? <Icon color="inherit" /> : null}
+					<span>{label}</span>
+					{endElement}
+				</BaseButton>
+			</AppLayoutSidebarNavItemInner>
+		);
+	}
+
+	// Text-only list item
 	return (
-		<AppLayoutSidebarNavItemInner
-			isActive={false}
-			hasEndElement={Boolean(endElement)}
-		>
-			<BaseButton {...restItemProps}>
-				{Icon ? <Icon color="inherit" /> : null}
-				<span>{label}</span>
-				{endElement}
-			</BaseButton>
+		<AppLayoutSidebarNavItemInner isActive={false} hasEndElement={false}>
+			<Stack as="span" gap={0.25}>
+				{label}
+			</Stack>
 		</AppLayoutSidebarNavItemInner>
 	);
 }
@@ -109,24 +130,32 @@ function AppLayoutSidebarNavItemInner({
 	return (
 		<li
 			css={{
-				' a': {
+				'> a': {
 					textDecoration: 'none',
 				},
 
-				' a, button': {
-					display: 'flex',
-					alignItems: 'center',
-					gap: mapSpacing(1),
+				'> a, > button, > span': {
 					width: '100%',
 					boxSizing: 'border-box',
-					paddingLeft: mapSpacing(1.5),
-					paddingRight: mapSpacing(1.5),
+					wordBreak: 'break-word', // Prevent long labels from causing overflow
 					paddingTop: mapSpacing(1),
 					paddingBottom: mapSpacing(1),
+					paddingLeft: mapSpacing(1.5),
+					paddingRight: mapSpacing(1.5),
+
+					'& > svg': {
+						flexShrink: 0,
+					},
+				},
+
+				'> a, > button': {
+					position: 'relative',
+					display: 'flex',
+					alignItems: 'center',
+					gap: mapSpacing(0.75),
 					color: boxPalette[isActive ? 'foregroundText' : 'foregroundAction'],
 
 					...(isActive && {
-						position: 'relative',
 						fontWeight: tokens.fontWeight.bold,
 						background: boxPalette.backgroundShadeAlt,
 						color: boxPalette.foregroundText,
@@ -136,9 +165,9 @@ function AppLayoutSidebarNavItemInner({
 							top: 0,
 							left: 0,
 							bottom: 0,
-							borderLeftWidth: tokens.borderWidth.xxl,
 							borderLeftStyle: 'solid',
 							borderLeftColor: boxPalette.selected,
+							borderLeftWidth: tokens.borderWidth.xl,
 						},
 					}),
 
@@ -151,9 +180,7 @@ function AppLayoutSidebarNavItemInner({
 					'&:hover': {
 						background: boxPalette.backgroundShadeAlt,
 						color: boxPalette.foregroundText,
-						'& > span:first-of-type': {
-							textDecoration: 'underline',
-						},
+						'& > span:first-of-type': packs.underline,
 					},
 
 					...focusStyles,
@@ -165,9 +192,13 @@ function AppLayoutSidebarNavItemInner({
 	);
 }
 
-function AppLayoutSidebarNavDivider() {
+function AppLayoutSidebarNavDivider({
+	disablePaddingY,
+}: {
+	disablePaddingY: boolean;
+}) {
 	return (
-		<Box as="li" paddingY={1} paddingX={1.5} aria-hidden="true">
+		<Box as="li" paddingY={disablePaddingY ? 0 : 1} aria-hidden="true">
 			<hr
 				css={{
 					boxSizing: 'content-box',

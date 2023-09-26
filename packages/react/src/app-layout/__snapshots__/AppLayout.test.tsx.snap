@@ -3,7 +3,7 @@
 exports[`AppLayout renders correctly 1`] = `
 <div>
   <div
-    class="css-4lqw0h-AppLayoutGrid"
+    class="css-jlzmfo-AppLayoutGrid"
   >
     <header
       class="css-10whlof-dark-boxStyles-AppLayoutHeader"
@@ -216,17 +216,80 @@ exports[`AppLayout renders correctly 1`] = `
       </div>
     </header>
     <aside
-      class="css-odyicp-boxStyles-AppLayoutSidebar"
+      class="css-4plgz3-boxStyles-AppLayoutSidebar"
     >
       <nav
         aria-label="main"
-        class="css-1gsgqbm-boxStyles"
+        class="css-wutooc-boxStyles"
       >
         <ul
           class="css-o80hmi-boxStyles"
         >
           <li
-            class="css-147t09t-AppLayoutSidebarNavItemInner"
+            class="css-1qdaebs-AppLayoutSidebarNavItemInner"
+          >
+            <a
+              href="/account"
+            >
+              <svg
+                aria-hidden="true"
+                class="css-qhpjst-Icon"
+                clip-rule="evenodd"
+                focusable="false"
+                height="24"
+                role="img"
+                viewBox="0 0 24 24"
+                width="24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <polyline
+                  points="11 17 6 12 11 7"
+                />
+                <polyline
+                  points="18 17 13 12 18 7"
+                />
+              </svg>
+              <span>
+                Back to my account
+              </span>
+            </a>
+          </li>
+          <li
+            aria-hidden="true"
+            class="css-1dz6j0b-boxStyles"
+          >
+            <hr
+              class="css-166wurb-AppLayoutSidebarNavDivider"
+            />
+          </li>
+          <li
+            class="css-1qdaebs-AppLayoutSidebarNavItemInner"
+          >
+            <span
+              class="css-1i7cdx8-boxStyles"
+            >
+              <span
+                class="css-1yrx73q-boxStyles-Text"
+              >
+                Malesuada lacus a tortor blandit fermentum phasellus
+              </span>
+              <span
+                class="css-1lp7dl8-boxStyles-Text"
+              >
+                ABN: 00 000 000 000
+              </span>
+            </span>
+          </li>
+          <li
+            aria-hidden="true"
+            class="css-1dz6j0b-boxStyles"
+          >
+            <hr
+              class="css-166wurb-AppLayoutSidebarNavDivider"
+            />
+          </li>
+          <li
+            class="css-1qdaebs-AppLayoutSidebarNavItemInner"
           >
             <a
               href="/"
@@ -255,7 +318,7 @@ exports[`AppLayout renders correctly 1`] = `
             </a>
           </li>
           <li
-            class="css-1eeqpv2-AppLayoutSidebarNavItemInner"
+            class="css-nfe4e4-AppLayoutSidebarNavItemInner"
           >
             <a
               aria-current="page"
@@ -282,7 +345,7 @@ exports[`AppLayout renders correctly 1`] = `
             </a>
           </li>
           <li
-            class="css-147t09t-AppLayoutSidebarNavItemInner"
+            class="css-1qdaebs-AppLayoutSidebarNavItemInner"
           >
             <a
               href="/intelligence"
@@ -308,7 +371,7 @@ exports[`AppLayout renders correctly 1`] = `
             </a>
           </li>
           <li
-            class="css-147t09t-AppLayoutSidebarNavItemInner"
+            class="css-1qdaebs-AppLayoutSidebarNavItemInner"
           >
             <a
               href="/compliance"
@@ -340,14 +403,14 @@ exports[`AppLayout renders correctly 1`] = `
           </li>
           <li
             aria-hidden="true"
-            class="css-f0nqxn-boxStyles"
+            class="css-boytaj-boxStyles"
           >
             <hr
               class="css-166wurb-AppLayoutSidebarNavDivider"
             />
           </li>
           <li
-            class="css-1u0qk1y-AppLayoutSidebarNavItemInner"
+            class="css-13mhly7-AppLayoutSidebarNavItemInner"
           >
             <a
               href="/account/messages"
@@ -386,7 +449,7 @@ exports[`AppLayout renders correctly 1`] = `
             </a>
           </li>
           <li
-            class="css-147t09t-AppLayoutSidebarNavItemInner"
+            class="css-1qdaebs-AppLayoutSidebarNavItemInner"
           >
             <a
               href="/account/settings"
@@ -417,7 +480,7 @@ exports[`AppLayout renders correctly 1`] = `
             </a>
           </li>
           <li
-            class="css-147t09t-AppLayoutSidebarNavItemInner"
+            class="css-1qdaebs-AppLayoutSidebarNavItemInner"
           >
             <a
               href="/help"
@@ -444,14 +507,14 @@ exports[`AppLayout renders correctly 1`] = `
           </li>
           <li
             aria-hidden="true"
-            class="css-f0nqxn-boxStyles"
+            class="css-1dz6j0b-boxStyles"
           >
             <hr
               class="css-166wurb-AppLayoutSidebarNavDivider"
             />
           </li>
           <li
-            class="css-147t09t-AppLayoutSidebarNavItemInner"
+            class="css-1qdaebs-AppLayoutSidebarNavItemInner"
           >
             <button
               class="css-6e6ykx-BaseButton"

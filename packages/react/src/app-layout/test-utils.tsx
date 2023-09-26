@@ -1,3 +1,5 @@
+import { Fragment } from 'react';
+import { Text } from '../text';
 import { NotificationBadge } from '../notification-badge';
 import { VisuallyHidden } from '../a11y';
 import {
@@ -10,6 +12,7 @@ import {
 	SettingsIcon,
 	FactoryIcon,
 	AvatarIcon,
+	ChevronsLeftIcon,
 } from '../icon';
 import {
 	DropdownMenuDivider,
@@ -21,7 +24,28 @@ import {
 	DropdownMenuItemRadio,
 } from '../dropdown-menu';
 
-export const navigationItems = [
+export const navigationItems = (businessName: string) => [
+	[
+		{
+			label: 'Back to my account',
+			icon: ChevronsLeftIcon,
+			href: '/account',
+		},
+	],
+	[
+		{
+			label: (
+				<Fragment>
+					<Text fontWeight="bold" fontSize="xs">
+						{businessName}
+					</Text>
+					<Text color="muted" fontSize="xs">
+						ABN: 00 000 000 000
+					</Text>
+				</Fragment>
+			),
+		},
+	],
 	[
 		{
 			label: 'Dashboard',
