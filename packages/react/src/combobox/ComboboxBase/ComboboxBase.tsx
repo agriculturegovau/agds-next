@@ -91,9 +91,12 @@ export function ComboboxBase<Option extends DefaultComboboxOption>({
 		},
 	});
 
+	const { id: labelId } = combobox.getLabelProps();
+
 	return (
 		<Field
 			label={label}
+			labelId={labelId}
 			hideOptionalLabel={hideOptionalLabel}
 			required={Boolean(required)}
 			hint={hint}
