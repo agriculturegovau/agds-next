@@ -1,9 +1,6 @@
 import { Meta, StoryObj } from '@storybook/react';
 import { FileUploadFile } from './FileUploadFile';
-import {
-	createExampleFileWithStatus,
-	createExampleImageFileWithStatus,
-} from './test-utils';
+import { createExampleFile, createExampleImageFile } from './test-utils';
 
 const meta: Meta = {
 	title: 'forms/FileUpload/Primitives/FileUploadFile',
@@ -16,24 +13,42 @@ type Story = StoryObj<typeof FileUploadFile>;
 
 export const Basic: Story = {
 	args: {
-		file: createExampleFileWithStatus(),
+		file: createExampleFile(),
 	},
 };
 
 export const Uploading: Story = {
 	args: {
-		file: createExampleFileWithStatus('uploading'),
+		file: createExampleFile({ status: 'uploading' }),
 	},
 };
 
 export const Success: Story = {
 	args: {
-		file: createExampleFileWithStatus('success'),
+		file: createExampleFile({ status: 'success' }),
 	},
 };
 
 export const Image: Story = {
 	args: {
-		file: createExampleImageFileWithStatus(),
+		file: createExampleImageFile(),
+	},
+};
+
+export const Pdf: Story = {
+	args: {
+		file: createExampleFile({
+			name: 'example.pdf',
+			type: 'application/pdf',
+		}),
+	},
+};
+
+export const Word: Story = {
+	args: {
+		file: createExampleFile({
+			name: 'example.doc',
+			type: 'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+		}),
 	},
 };
