@@ -14,15 +14,13 @@ import { LoadingBlanket } from '../loading';
 import { FileUpload, FileUploadProps } from './FileUpload';
 import { FileWithStatus } from './utils';
 
-const Template = ({ value: initialValue = [], ...props }: FileUploadProps) => {
-	const [value, setValue] = useState<FileWithStatus[]>(initialValue);
-	return <FileUpload {...props} value={value} onChange={setValue} />;
-};
-
 const meta: Meta<typeof FileUpload> = {
 	title: 'forms/FileUpload',
-	component: FileUpload,a
-	render: (args) => <Template {...args} />,
+	component: FileUpload,
+	render: function Render({ value: initialValue = [], ...props }) {
+		const [value, setValue] = useState<FileWithStatus[]>(initialValue);
+		return <FileUpload {...props} value={value} onChange={setValue} />;
+	},
 };
 
 const exampleFile = new File(['this is an example file'], 'example.jpg', {
