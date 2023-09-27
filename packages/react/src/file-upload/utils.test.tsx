@@ -71,7 +71,7 @@ describe('getAcceptedFilesSummary', () => {
 				'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
 				'application/pdf',
 			])
-		).toEqual('word, pdf');
+		).toEqual('doc, docx, pdf');
 	});
 
 	it('uses the MIME type label if supplied', () => {
