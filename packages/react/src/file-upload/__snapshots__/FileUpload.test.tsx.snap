@@ -106,11 +106,33 @@ exports[`FileUpload Basic renders correctly 1`] = `
         >
           <li
             aria-label="File. example.jpg"
-            class="css-ckdkoy-boxStyles-FileUploadFile"
+            class="css-1s35t4y-boxStyles-FileUploadFile"
           >
             <div
               class="css-1xkbxzi-boxStyles"
             >
+              <div
+                class="css-5zup41-boxStyles"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="css-9s3cfn-Icon"
+                  clip-rule="evenodd"
+                  focusable="false"
+                  height="24"
+                  role="img"
+                  viewBox="0 0 24 24"
+                  width="24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"
+                  />
+                  <polyline
+                    points="13 2 13 9 20 9"
+                  />
+                </svg>
+              </div>
               <span
                 class="css-1fikbx5-boxStyles-Text-FileUploadFile"
               >
