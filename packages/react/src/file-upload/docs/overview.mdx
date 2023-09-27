@@ -16,13 +16,13 @@ relatedComponents: ['file-input']
 />
 ```
 
-File upload is used in forms to enable users to upload files they need. There are 2 ways to upload - via drag and drop or file selection via search.
+File upload is used in forms to enable users to upload files they need. There are 2 ways to upload – via drag and drop or file selection via search.
 
 `FileUpload` is a [controlled component](https://reactjs.org/docs/forms.html#controlled-components).
 
 <DoHeading />
 
-- upload selected files instantly as they are selected or on submission
+- upload selected files instantly as they are selected or on submissionLoadingBlankete
 - specify accepted file types, maximum file size and whether the user can upload one file at a time or several at once
 - include hint text to provide more general information about the field/file
 - indicate file uploading state
@@ -46,7 +46,7 @@ When using FileUpload, you need to consider how to communicate to the user that 
 
 In this example, we are submitting a file as part of a typical form submission to an API.
 
-We recommend wrapping the FileUpload in a [LoadingBlanket](/components/loading) as the form submits, to indicate to the user that any delays are being caused by a potentially larger file being uploaded. If your backend system supports it, you can also use this UI to indicate upload status as a percentage.
+We recommend wrapping the FileUpload in a [LoadingBlanket](/components/loading) component as the form submits, to indicate to the user that any delays are being caused by a potentially larger file being uploaded. If your backend system supports it, you can also use this UI to indicate upload status as a percentage.
 
 As normal, we indicate that the form is submitting by adding a `loading={true}` to the submit button. This will show animated dots to signify that the user has to wait for the operation to complete.
 

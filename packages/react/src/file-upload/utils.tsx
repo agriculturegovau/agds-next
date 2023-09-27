@@ -25,52 +25,24 @@ export function getFilesTotal(files: { size: number }[]) {
 
 export const fileTypeMapping = {
 	// Application
-	'application/msword': {
-		extensions: ['.doc'],
-		label: 'word',
-	},
+	'application/msword': { extensions: ['.doc'] },
 	'application/vnd.openxmlformats-officedocument.wordprocessingml.document': {
 		extensions: ['.docx'],
-		label: 'word',
 	},
-	'application/pdf': {
-		extensions: ['.pdf'],
-	},
-	'application/rtf': {
-		extensions: ['.rtf'],
-	},
-	'application/vnd.ms-excel': {
-		extensions: ['.xls'],
-		label: 'excel',
-	},
+	'application/pdf': { extensions: ['.pdf'] },
+	'application/rtf': { extensions: ['.rtf'] },
+	'application/vnd.ms-excel': { extensions: ['.xls'] },
 	'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet': {
 		extensions: ['.xlsx'],
-		label: 'excel',
 	},
-	'application/vnd.ms-outlook': {
-		extensions: ['.msg'],
-	},
-	'application/zip': {
-		extensions: ['.zip'],
-	},
-	'application/xml': {
-		extensions: ['.xml'],
-	},
+	'application/vnd.ms-outlook': { extensions: ['.msg'] },
+	'application/zip': { extensions: ['.zip'] },
+	'application/xml': { extensions: ['.xml'] },
 	// Audio
-	'audio/*': {
-		extensions: [],
-		label: 'Any audio file',
-	},
-	'audio/mpeg': {
-		extensions: ['.mp3'],
-	},
-	'audio/wav': {
-		extensions: ['.wav'],
-	},
-	'image/*': {
-		extensions: [],
-		label: 'Any image file',
-	},
+	'audio/*': { extensions: [], label: 'Any audio file' },
+	'audio/mpeg': { extensions: ['.mp3'] },
+	'audio/wav': { extensions: ['.wav'] },
+	'image/*': { extensions: [], label: 'Any image file' },
 	'image/gif': { extensions: ['.gif'] },
 	'image/heic': { extensions: ['.heic'] },
 	'image/jpg': { extensions: ['.jpeg', '.jpg'] },
@@ -192,5 +164,5 @@ export function getErrorSummary(
 		}
 	}
 
-	return "There's an issue with one or more of your files";
+	return 'There’s an issue with one or more of your files';
 }
