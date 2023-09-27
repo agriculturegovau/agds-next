@@ -29,8 +29,9 @@ export const FileUploadFile = ({ file, onRemove }: FileUploadFileProps) => {
 			css={{ backgroundColor: TONE_MAP[status] }}
 		>
 			<Flex alignItems="center" gap={0.5}>
+				<FileUploadFileThumbnail file={file} />
 				{status == 'success' && (
-					<Box flexShrink={0} paddingX={0.5}>
+					<Box flexShrink={0}>
 						<SuccessFilledIcon
 							color="success"
 							size="md"
@@ -40,7 +41,6 @@ export const FileUploadFile = ({ file, onRemove }: FileUploadFileProps) => {
 						/>
 					</Box>
 				)}
-				<FileUploadFileThumbnail file={file} />
 				<Text css={{ wordBreak: 'break-all' }}>
 					{name} ({formatFileSize(size)})
 				</Text>
