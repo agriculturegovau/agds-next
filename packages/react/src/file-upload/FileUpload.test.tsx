@@ -13,7 +13,7 @@ afterEach(cleanup);
 function FileUploadExample(props?: Partial<FileUploadProps>) {
 	const [value, setValue] = useState<FileWithStatus[]>([
 		new File(['this is an example file'], 'example.jpg', {
-			type: 'image/jpg',
+			type: 'image/jpeg',
 		}),
 	]);
 	return (
@@ -41,8 +41,7 @@ describe('FileUpload', () => {
 				rules: {
 					// react 18s `useId` break this rule
 					'valid-id': 'off',
-					// TODO the following rules are broken. Once fixed these should be removed.
-					'input-attributes': 'off',
+					// html-validate doesn't like aria-label on list elements, even though it's valid
 					'aria-label-misuse': 'off',
 				},
 			});

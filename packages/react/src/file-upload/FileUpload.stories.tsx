@@ -14,19 +14,17 @@ import { LoadingBlanket } from '../loading';
 import { FileUpload, FileUploadProps } from './FileUpload';
 import { FileWithStatus } from './utils';
 
-const Template = ({ value: initialValue = [], ...props }: FileUploadProps) => {
-	const [value, setValue] = useState<FileWithStatus[]>(initialValue);
-	return <FileUpload {...props} value={value} onChange={setValue} />;
-};
-
 const meta: Meta<typeof FileUpload> = {
 	title: 'forms/FileUpload',
 	component: FileUpload,
-	render: (args) => <Template {...args} />,
+	render: function Render({ value: initialValue = [], ...props }) {
+		const [value, setValue] = useState<FileWithStatus[]>(initialValue);
+		return <FileUpload {...props} value={value} onChange={setValue} />;
+	},
 };
 
 const exampleFile = new File(['this is an example file'], 'example.jpg', {
-	type: 'image/jpg',
+	type: 'image/jpeg',
 });
 
 export default meta;
@@ -84,7 +82,6 @@ export const OnlyAcceptedFormats: Story = {
 		maxSize: 200,
 		accept: [
 			'image/jpeg',
-			'image/jpg',
 			'image/png',
 			'application/pdf',
 			'application/msword',
@@ -96,12 +93,19 @@ export const OnlyAcceptedFormats: Story = {
 	},
 };
 
+export const CustomAcceptedFormats: Story = {
+	args: {
+		label: 'Upload JavaScript file',
+		accept: [{ mimeType: 'text/javascript', extensions: ['.js'] }],
+	},
+};
+
 export const MultipleImages: Story = {
 	args: {
 		label: 'Photos from your holiday',
 		maxSize: 2000,
 		maxFiles: 3,
-		accept: ['image/jpeg', 'image/jpg', 'image/png', 'image/heic'],
+		accept: ['image/jpeg', 'image/png', 'image/heic'],
 		multiple: true,
 	},
 };
@@ -194,7 +198,7 @@ const UploadSingleFileOnSubmitTemplate = (args: FileUploadProps) => {
 							<FileUpload
 								{...args}
 								id="file"
-								accept={['image/jpeg', 'image/jpg', 'image/png']}
+								accept={['image/jpeg', 'image/png']}
 								maxSize={500} // 500kb
 								multiple={false}
 								value={value}
@@ -205,7 +209,6 @@ const UploadSingleFileOnSubmitTemplate = (args: FileUploadProps) => {
 								message={error?.message}
 								required
 							/>
-
 							{
 								// We use a LoadingBlanket to communicate that this field is causing the form
 								// to take longer than usual to submit

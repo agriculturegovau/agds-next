@@ -1,4 +1,10 @@
-import { forwardRef, InputHTMLAttributes, useEffect, useState } from 'react';
+import {
+	forwardRef,
+	InputHTMLAttributes,
+	useEffect,
+	useMemo,
+	useState,
+} from 'react';
 import { useDropzone, DropzoneOptions } from 'react-dropzone';
 import { Flex } from '../flex';
 import { Stack } from '../stack';
@@ -11,6 +17,8 @@ import { visuallyHiddenStyles } from '../a11y';
 import { FileUploadRejectedFileList } from './FileUploadRejectedFileList';
 import {
 	AcceptedFileMimeTypes,
+	CustomFileMimeType,
+	fileTypeMapping,
 	FileWithStatus,
 	formatFileSize,
 	getAcceptedFilesSummary,
@@ -32,8 +40,8 @@ type BaseInputProps = {
 };
 
 export type FileUploadProps = BaseInputProps & {
-	/** List of acceptable file types, e.g.`image/jpeg`, `application/pdf` */
-	accept?: AcceptedFileMimeTypes[];
+	/** List of acceptable file MIME types, e.g. `image/jpeg`, `application/pdf`. */
+	accept?: (AcceptedFileMimeTypes | CustomFileMimeType)[];
 	/** Describes the purpose of the field. */
 	label: string;
 	/** If true, "(optional)" will never be appended to the label. */
@@ -61,7 +69,7 @@ export type FileUploadProps = BaseInputProps & {
 export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 	function FileUpload(
 		{
-			accept,
+			accept: acceptProp,
 			disabled,
 			label,
 			hideOptionalLabel,
@@ -105,6 +113,21 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 			}
 		};
 
+		// Converts an array of mime types, e.g. `image/jpeg`, `application/pdf` into a format accepted by react-dropzone
+		const accept = useMemo(() => {
+			if (!acceptProp) return;
+			return Object.fromEntries(
+				acceptProp.map((item) => {
+					// If the array item is a string, it's a key of `fileTypeMapping`
+					if (typeof item === 'string') {
+						return [item, fileTypeMapping[item].extensions];
+					} else {
+						return [item.mimeType, item.extensions];
+					}
+				})
+			);
+		}, [acceptProp]);
+
 		const {
 			getRootProps,
 			getInputProps,
@@ -129,7 +152,7 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 			maxFiles
 		);
 
-		const acceptedFilesSummary = getAcceptedFilesSummary(accept);
+		const acceptedFilesSummary = getAcceptedFilesSummary(acceptProp);
 
 		const styles = fileInputStyles({
 			isDragActive,

@@ -1,4 +1,9 @@
-import { getErrorSummary, formatFileSize } from './utils';
+import {
+	getErrorSummary,
+	getAcceptedFilesSummary,
+	formatFileSize,
+	formatFileExtension,
+} from './utils';
 
 describe('getErrorSummary', () => {
 	it('returns undefined if there are no rejections', () => {
@@ -51,6 +56,40 @@ describe('getErrorSummary', () => {
 		expect(getErrorSummary(rejections, '1MB', 2)).toEqual(
 			'Each file must be smaller than 1MB'
 		);
+	});
+});
+
+describe('getAcceptedFilesSummary', () => {
+	it('returns undefined if the accept prop is undefined', () => {
+		expect(getAcceptedFilesSummary(undefined)).toBeUndefined();
+	});
+
+	it('removes MIME types with duplicate extensions correctly', () => {
+		expect(
+			getAcceptedFilesSummary([
+				'application/msword',
+				'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+				'application/pdf',
+			])
+		).toEqual('doc, docx, pdf');
+	});
+
+	it('uses the MIME type label if supplied', () => {
+		expect(getAcceptedFilesSummary(['video/*'])).toEqual('Any video file');
+	});
+
+	it('can pass MIME types that are not in the predefined list', () => {
+		expect(
+			getAcceptedFilesSummary([
+				{ mimeType: 'application/json', extensions: ['.json'] },
+				{ mimeType: 'text/javascript', extensions: ['.js'] },
+				{
+					mimeType: 'application/epub+zip',
+					extensions: ['.epub'],
+					label: 'electronic publication',
+				},
+			])
+		).toEqual('json, js, electronic publication');
 	});
 });
 
@@ -118,5 +157,16 @@ describe('formatFileSize', () => {
 		// expect(formatFileSize(9995)).toEqual('10 kB'); // this should round up but does not. Ignoring as this is the same behaviour as filesize
 		expect(formatFileSize(9996)).toEqual('10 kB');
 		expect(formatFileSize(9999)).toEqual('10 kB');
+	});
+});
+
+describe('formatFileExtension', () => {
+	it('formats file extensions correctly', () => {
+		expect(formatFileExtension('')).toEqual('');
+		expect(formatFileExtension('.txt')).toEqual('txt');
+		expect(formatFileExtension('.mdx')).toEqual('mdx');
+		expect(formatFileExtension('.tsx')).toEqual('tsx');
+		expect(formatFileExtension('.pdf')).toEqual('pdf');
+		expect(formatFileExtension('.docx')).toEqual('docx');
 	});
 });
