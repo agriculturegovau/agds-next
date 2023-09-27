@@ -21,7 +21,7 @@ const Template = ({ value: initialValue = [], ...props }: FileUploadProps) => {
 
 const meta: Meta<typeof FileUpload> = {
 	title: 'forms/FileUpload',
-	component: FileUpload,
+	component: FileUpload,a
 	render: (args) => <Template {...args} />,
 };
 
@@ -81,6 +81,7 @@ export const OnlyAcceptedFormats: Story = {
 		label: 'Identity documents',
 		required: true,
 		hint: 'May include images of your passport, drivers licence etc.',
+		maxSize: 200,
 		accept: [
 			'image/jpeg',
 			'image/png',
@@ -94,13 +95,14 @@ export const OnlyAcceptedFormats: Story = {
 	},
 };
 
-export const AdvancedAcceptedFormat: Story = {
+export const CustomAcceptedFormats: Story = {
 	args: {
 		label: 'Upload file',
 		accept: [
 			{ mimeType: 'application/json', extensions: ['.json'] },
 			{ mimeType: 'text/javascript', extensions: ['.js'] },
 		],
+		multiple: true,
 	},
 };
 

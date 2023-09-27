@@ -119,20 +119,23 @@ Use the `maxSize` prop to set a maximum size for each file. This value is measur
 
 ## Accepted files
 
-Use the `accept` prop to specify what file types are allowed to be selected. Each item in the array should be a [MIME type](https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types/Common_types).
+Use the `accept` prop to specify what file types are allowed to be selected.
 
-For the full list of accepted MIME types, please refer to code [here](https://github.com/steelthreads/agds-next/blob/main/packages/react/src/file-upload/utils.tsx).
+For a complete list allowed file formats, please refer to [the source code](https://github.com/steelthreads/agds-next/blob/main/packages/react/src/file-upload/utils.ts).
 
 ```jsx
-<FileUpload accept={['image/jpeg', 'image/png']} />
+<FileUpload label="Upload image" accept={['image/jpeg', 'image/png']} />
 ```
 
-### Advanced MIME types
+### Custom accepted file types
 
-You can extend the list of accepted MIME types if the file type you need to support is not included in the predefined list.
+If the file type you need to support isn't list of allowed file formats, you can pass in your own file type to the `accept` prop.
 
-To do this, pass an object instead of a string with `mimeType` and `extensions` as keys. Optionally, a `label` key can be used for the summary inside of the component, e.g. "Any font file"
+This can be done by passing an object instead of a string with `mimeType` and `extensions` as keys. Optionally, a `label` key can be used for the summary inside of the component. By default, the label will be generated using the file extension.
 
 ```jsx
-<FileUpload accept={[{ mimeType: 'text/javascript', extensions: ['.js'] }]} />
+<FileUpload
+	label="Upload Javascript file"
+	accept={[{ mimeType: 'text/javascript', extensions: ['.js'] }]}
+/>
 ```
