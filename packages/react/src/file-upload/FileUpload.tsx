@@ -100,7 +100,7 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 
 		const handleRemoveRejection = (fileName: string) => {
 			setFileRejections(
-				fileRejections.filter((err) => err.fileName !== fileName)
+				fileRejections.filter((err) => err.file.name !== fileName)
 			);
 		};
 
@@ -163,8 +163,7 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 		useEffect(() => {
 			setFileRejections(
 				dropzoneFileRejections.map(({ file, errors }) => ({
-					fileName: file.name,
-					fileSize: file.size,
+					file,
 					errors: errors.map((error) => ({
 						code: error.code,
 						message: getFileRejectionErrorMessage(

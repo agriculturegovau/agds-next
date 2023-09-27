@@ -15,9 +15,9 @@ export const FileUploadRejectedFileList = ({
 		<Stack as="ul" aria-label="Invalid files" gap={0.5}>
 			{fileRejections.map((rejection) => (
 				<FileUploadRejectedFile
-					key={rejection.fileName}
+					key={rejection.file.name}
 					{...rejection}
-					onRemove={() => handleRemoveRejection(rejection.fileName)}
+					onRemove={() => handleRemoveRejection(rejection.file.name)}
 				/>
 			))}
 		</Stack>

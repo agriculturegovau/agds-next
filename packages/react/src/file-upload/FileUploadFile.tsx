@@ -64,7 +64,7 @@ export const FileUploadFile = ({ file, onRemove }: FileUploadFileProps) => {
 	);
 };
 
-const FileUploadFileThumbnail = ({ file }: { file: FileWithStatus }) => {
+export const FileUploadFileThumbnail = ({ file }: { file: FileWithStatus }) => {
 	const imagePreview = useMemo(() => getImageThumbnail(file), [file]);
 	return imagePreview ? (
 		<img

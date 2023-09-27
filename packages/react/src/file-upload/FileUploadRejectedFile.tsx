@@ -1,4 +1,5 @@
 import { MouseEventHandler } from 'react';
+import { FileWithPath } from 'react-dropzone';
 import { Box } from '../box';
 import { Flex } from '../flex';
 import { Stack } from '../stack';
@@ -7,17 +8,16 @@ import { boxPalette } from '../core';
 import { AlertFilledIcon } from '../icon';
 import { Text } from '../text';
 import { formatFileSize } from './utils';
+import { FileUploadFileThumbnail } from './FileUploadFile';
 
 type FileUploadRejectedFileProps = {
-	fileName: string;
-	fileSize: number;
+	file: FileWithPath;
 	errors: { message: string; code: string }[];
 	onRemove: MouseEventHandler<HTMLButtonElement>;
 };
 
 export const FileUploadRejectedFile = ({
-	fileName,
-	fileSize,
+	file,
 	errors,
 	onRemove,
 }: FileUploadRejectedFileProps) => {
@@ -36,6 +36,7 @@ export const FileUploadRejectedFile = ({
 			}}
 		>
 			<Flex gap={0.5}>
+				<FileUploadFileThumbnail file={file} />
 				<Box flexShrink={0}>
 					<AlertFilledIcon
 						color="error"
@@ -47,7 +48,7 @@ export const FileUploadRejectedFile = ({
 				</Box>
 				<Stack gap={0.5}>
 					<Text fontWeight="bold" color="error">
-						{fileName} ({formatFileSize(fileSize)}) could not be selected
+						{file.name} ({formatFileSize(file.size)}) could not be selected
 					</Text>
 					<ul css={{ margin: 0, padding: 0 }}>
 						{errors.map(({ message }, index) => (

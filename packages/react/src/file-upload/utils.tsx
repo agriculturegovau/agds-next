@@ -8,8 +8,7 @@ export type FileWithStatus = FileWithPath & {
 };
 
 export type RejectedFile = {
-	fileName: string;
-	fileSize: number;
+	file: FileWithPath;
 	errors: { message: string; code: string }[];
 };
 
