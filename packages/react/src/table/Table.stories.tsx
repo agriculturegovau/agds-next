@@ -5,9 +5,10 @@ import { VisuallyHidden } from '../a11y';
 import { Text } from '../text';
 import { TextLink } from '../text-link';
 import { StatusBadge } from '../status-badge';
+import { Box } from '../box';
 import { Flex } from '../flex';
 import { Stack } from '../stack';
-import { H1 } from '../heading';
+import { H1, H2 } from '../heading';
 import { Table } from './Table';
 import { TableBody } from './TableBody';
 import { TableCaption } from './TableCaption';
@@ -278,7 +279,7 @@ export const Actions: Story = {
 	),
 };
 
-export const Selectable: Story = {
+export const SelectableBasic: Story = {
 	render: function Render(props) {
 		const [selectedRowIds, setSelectedRowIds] = useState<string[]>([]);
 
@@ -306,66 +307,73 @@ export const Selectable: Story = {
 			setSelectedRowIds(noRowsSelected ? exampleData.map((i) => i.id) : []);
 		}
 
+		// The TableCaption` component can not be used with selectable tables due to a11y reasons
+		// So we need to connect the heading with the table via `aria-labelledby`
+		const headingId = 'table-heading';
+
 		return (
-			<TableWrapper>
-				<Table {...props}>
-					<TableCaption>
-						Population of Australian states and territories, December 2015
-					</TableCaption>
-					<TableHead>
-						<TableRow>
-							<TableCell>
-								<Checkbox
-									size="sm"
-									checked={allRowsSelected}
-									indeterminate={isIndeterminate}
-									onChange={toggleAllRows}
-								>
-									<VisuallyHidden>Select all rows</VisuallyHidden>
-								</Checkbox>
-							</TableCell>
-							<TableHeader scope="col">Location</TableHeader>
-							<TableHeader textAlign="right" scope="col">
-								Population
-							</TableHeader>
-							<TableHeader textAlign="right" scope="col">
-								Change over previous year %
-							</TableHeader>
-							<TableHeader textAlign="right" scope="col">
-								Change over previous decade %
-							</TableHeader>
-						</TableRow>
-					</TableHead>
-					<TableBody>
-						{exampleData.map(
-							({ id, location, population, growthYear, growthDecade }) => {
-								const isSelected = isRowSelected(id);
-								return (
-									<TableRow key={id} selected={isSelected}>
-										<TableCell>
-											<Checkbox
-												checked={isSelected}
-												onChange={() => toggleRow(id)}
-												size="sm"
-											>
-												<VisuallyHidden>Select {location}</VisuallyHidden>
-											</Checkbox>
-										</TableCell>
-										<TableCell as="th" scope="row">
-											{location}
-										</TableCell>
-										<TableCell textAlign="right">
-											{numberFormatter.format(population)}
-										</TableCell>
-										<TableCell textAlign="right">{growthYear}%</TableCell>
-										<TableCell textAlign="right">{growthDecade}%</TableCell>
-									</TableRow>
-								);
-							}
-						)}
-					</TableBody>
-				</Table>
-			</TableWrapper>
+			<Stack gap={1.5}>
+				<H2 id={headingId}>Basic selectable table</H2>
+				<Stack gap={0}>
+					<Box paddingLeft={0.75} paddingBottom={0.75} borderBottom>
+						<Checkbox
+							size="sm"
+							checked={allRowsSelected}
+							indeterminate={isIndeterminate}
+							onChange={toggleAllRows}
+						>
+							Select all rows
+						</Checkbox>
+					</Box>
+					<TableWrapper>
+						<Table {...props} aria-labelledby={headingId}>
+							<TableHead>
+								<TableRow>
+									<TableHeader scope="col">Select</TableHeader>
+									<TableHeader scope="col">Location</TableHeader>
+									<TableHeader textAlign="right" scope="col">
+										Population
+									</TableHeader>
+									<TableHeader textAlign="right" scope="col">
+										Change over previous year %
+									</TableHeader>
+									<TableHeader textAlign="right" scope="col">
+										Change over previous decade %
+									</TableHeader>
+								</TableRow>
+							</TableHead>
+							<TableBody>
+								{exampleData.map(
+									({ id, location, population, growthYear, growthDecade }) => {
+										const isSelected = isRowSelected(id);
+										return (
+											<TableRow key={id} selected={isSelected}>
+												<TableCell>
+													<Checkbox
+														size="sm"
+														checked={isSelected}
+														onChange={() => toggleRow(id)}
+													>
+														<VisuallyHidden>Select {location}</VisuallyHidden>
+													</Checkbox>
+												</TableCell>
+												<TableCell as="th" scope="row">
+													{location}
+												</TableCell>
+												<TableCell textAlign="right">
+													{numberFormatter.format(population)}
+												</TableCell>
+												<TableCell textAlign="right">{growthYear}%</TableCell>
+												<TableCell textAlign="right">{growthDecade}%</TableCell>
+											</TableRow>
+										);
+									}
+								)}
+							</TableBody>
+						</Table>
+					</TableWrapper>
+				</Stack>
+			</Stack>
 		);
 	},
 };
