@@ -16,7 +16,6 @@ type FileUploadFileProps = {
 
 export const FileUploadFile = ({ file, onRemove }: FileUploadFileProps) => {
 	const { name, size, status = 'none' } = file;
-	const imagePreview = useMemo(() => getImageThumbnail(file), [file]);
 
 	return (
 		<Flex
@@ -31,7 +30,7 @@ export const FileUploadFile = ({ file, onRemove }: FileUploadFileProps) => {
 		>
 			<Flex alignItems="center" gap={0.5}>
 				{status == 'success' && (
-					<Box flexShrink={0}>
+					<Box flexShrink={0} paddingX={0.5}>
 						<SuccessFilledIcon
 							color="success"
 							size="md"
@@ -41,22 +40,7 @@ export const FileUploadFile = ({ file, onRemove }: FileUploadFileProps) => {
 						/>
 					</Box>
 				)}
-				{imagePreview ? (
-					<img
-						alt=""
-						src={imagePreview}
-						css={{
-							width: mapSpacing(4),
-							height: mapSpacing(4),
-							'object-fit': 'cover',
-							borderRadius: tokens.borderRadius,
-						}}
-					/>
-				) : (
-					<Box paddingLeft={0.5}>
-						<FileIcon />
-					</Box>
-				)}
+				<FileUploadFileThumbnail file={file} />
 				<Text css={{ wordBreak: 'break-all' }}>
 					{name} ({formatFileSize(size)})
 				</Text>
@@ -76,6 +60,34 @@ export const FileUploadFile = ({ file, onRemove }: FileUploadFileProps) => {
 					</Button>
 				)}
 			</Box>
+		</Flex>
+	);
+};
+
+const FileUploadFileThumbnail = ({ file }: { file: FileWithStatus }) => {
+	const imagePreview = useMemo(() => getImageThumbnail(file), [file]);
+	return imagePreview ? (
+		<img
+			alt=""
+			role="presentation"
+			src={imagePreview}
+			css={{
+				width: mapSpacing(4),
+				height: mapSpacing(4),
+				'object-fit': 'cover',
+				borderRadius: tokens.borderRadius,
+			}}
+		/>
+	) : (
+		<Flex
+			background="shadeAlt"
+			rounded
+			alignItems="center"
+			justifyContent="center"
+			width={mapSpacing(4)}
+			height={mapSpacing(4)}
+		>
+			<FileIcon size="lg" />
 		</Flex>
 	);
 };

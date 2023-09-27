@@ -32,7 +32,7 @@ export function createExampleImageFile(args?: {
 	return file;
 }
 
-const generateImageBlobFromBase64 = (imageBase64: string) => {
+function generateImageBlobFromBase64(imageBase64: string) {
 	// copied from https://stackoverflow.com/questions/35940290/how-to-convert-base64-string-to-javascript-file-object-like-as-from-file-input-f
 	const bstr = atob(imageBase64);
 	let n = bstr.length;
@@ -41,4 +41,4 @@ const generateImageBlobFromBase64 = (imageBase64: string) => {
 		u8arr[n] = bstr.charCodeAt(n);
 	}
 	return [u8arr];
-};
+}

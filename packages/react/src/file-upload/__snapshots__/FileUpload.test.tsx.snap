@@ -112,11 +112,11 @@ exports[`FileUpload Basic renders correctly 1`] = `
               class="css-1xkbxzi-boxStyles"
             >
               <div
-                class="css-5zup41-boxStyles"
+                class="css-1uuu2h8-boxStyles"
               >
                 <svg
                   aria-hidden="true"
-                  class="css-9s3cfn-Icon"
+                  class="css-11dck4c-Icon"
                   clip-rule="evenodd"
                   focusable="false"
                   height="24"

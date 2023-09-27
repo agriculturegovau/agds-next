@@ -33,6 +33,12 @@ type Story = StoryObj<typeof FileUpload>;
 export const Basic: Story = {
 	args: {
 		label: 'Drivers licence',
+	},
+};
+
+export const Populated: Story = {
+	args: {
+		label: 'Drivers licence',
 		value: [exampleFile],
 	},
 };

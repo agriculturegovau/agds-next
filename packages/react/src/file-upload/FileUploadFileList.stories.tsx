@@ -1,6 +1,6 @@
 import { StoryObj, Meta } from '@storybook/react';
 import { FileUploadFileList } from './FileUploadFileList';
-import { createExampleFile } from './test-utils';
+import { createExampleFile, createExampleImageFile } from './test-utils';
 
 const meta: Meta<typeof FileUploadFileList> = {
 	title: 'forms/FileUpload/Primitives/FileUploadFileList',
@@ -19,6 +19,20 @@ export const Basic: Story = {
 				type: 'application/pdf',
 			}),
 			createExampleFile(),
+			createExampleFile(),
+		],
+		onRemove: (id) => console.log(id),
+	},
+};
+
+export const MixedFiles: Story = {
+	args: {
+		files: [
+			createExampleFile({
+				name: 'example.pdf',
+				type: 'application/pdf',
+			}),
+			createExampleImageFile(),
 			createExampleFile(),
 		],
 		onRemove: (id) => console.log(id),
