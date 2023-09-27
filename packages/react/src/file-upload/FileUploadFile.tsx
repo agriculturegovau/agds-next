@@ -1,13 +1,13 @@
-import { MouseEventHandler, useMemo } from 'react';
+import { MouseEventHandler } from 'react';
 import { Box } from '../box';
 import { Flex } from '../flex';
-import { boxPalette, mapSpacing, tokens } from '../core';
+import { boxPalette } from '../core';
 import { Text } from '../text';
 import { Button } from '../button';
 import { LoadingDots } from '../loading';
 import { SuccessFilledIcon } from '../icon';
-import { FileIcon } from '../icon/icons/FileIcon';
-import { FileWithStatus, formatFileSize, getImageThumbnail } from './utils';
+import { FileUploadFileThumbnail } from './FileUploadFileThumbnail';
+import { FileWithStatus, formatFileSize } from './utils';
 
 type FileUploadFileProps = {
 	file: FileWithStatus;
@@ -60,34 +60,6 @@ export const FileUploadFile = ({ file, onRemove }: FileUploadFileProps) => {
 					</Button>
 				)}
 			</Box>
-		</Flex>
-	);
-};
-
-export const FileUploadFileThumbnail = ({ file }: { file: FileWithStatus }) => {
-	const imagePreview = useMemo(() => getImageThumbnail(file), [file]);
-	return imagePreview ? (
-		<img
-			alt=""
-			role="presentation"
-			src={imagePreview}
-			css={{
-				width: mapSpacing(4),
-				height: mapSpacing(4),
-				'object-fit': 'cover',
-				borderRadius: tokens.borderRadius,
-			}}
-		/>
-	) : (
-		<Flex
-			background="shadeAlt"
-			rounded
-			alignItems="center"
-			justifyContent="center"
-			width={mapSpacing(4)}
-			height={mapSpacing(4)}
-		>
-			<FileIcon size="lg" />
 		</Flex>
 	);
 };

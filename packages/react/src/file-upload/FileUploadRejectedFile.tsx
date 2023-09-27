@@ -8,7 +8,7 @@ import { boxPalette } from '../core';
 import { AlertFilledIcon } from '../icon';
 import { Text } from '../text';
 import { formatFileSize } from './utils';
-import { FileUploadFileThumbnail } from './FileUploadFile';
+import { FileUploadFileThumbnail } from './FileUploadFileThumbnail';
 
 type FileUploadRejectedFileProps = {
 	file: FileWithPath;
