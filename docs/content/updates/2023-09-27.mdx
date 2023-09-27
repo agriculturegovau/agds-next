@@ -1,0 +1,38 @@
+---
+date: 27th September 2023
+title: AgDS Beta v1.12.0 release
+description: Extended App layout components to support the new account dropdown menu, plus various bug fixes and improvements.
+---
+
+## Updates
+
+### [App layout](/components/app-layout)
+
+- Added support for an account dropdown menu via a new `dropdown` key in the `accountDetails` prop in `AppLayoutHeader`
+- Added support for displaying the active business name and ABN in `AppLayoutSidebar`
+- Decreased the width of the `AppLayoutSidebar` from `17.5rem` to `16rem`
+- Decreased border left width of active item in `AppLayoutSidebar` from `8px` to `4px`
+- Decreased the gap between icons and labels in `AppLayoutSidebar` from `1rem` to `0.75rem`
+- Updated `AppLaoutHeader` to show hamburger menu in focus mode
+
+### [Combobox](/components/combobox)
+
+- Improved accessibility by ensuring that the popover listbox element is described correctly by the field label
+
+### [Field](/components/field)
+
+- Added new `labelId` prop
+
+### [File upload](/components/file-upload)
+
+- Added support for the `application/vnd.ms-outlook` MIME type
+
+## Released packages
+
+```sh
+"@ag.ds-next/react": "1.12.0"
+```
+
+## Full Changelog
+
+Aside from the complete release notes on the @ag.ds-next website, you can also view the verbose change log in the [related PR](https://github.com/steelthreads/agds-next/pull/1395) for this release.
