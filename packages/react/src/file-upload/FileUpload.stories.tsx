@@ -95,12 +95,8 @@ export const OnlyAcceptedFormats: Story = {
 
 export const CustomAcceptedFormats: Story = {
 	args: {
-		label: 'Upload file',
-		accept: [
-			{ mimeType: 'application/json', extensions: ['.json'] },
-			{ mimeType: 'text/javascript', extensions: ['.js'] },
-		],
-		multiple: true,
+		label: 'Upload JavaScript file',
+		accept: [{ mimeType: 'text/javascript', extensions: ['.js'] }],
 	},
 };
 
