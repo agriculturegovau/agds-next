@@ -26,6 +26,8 @@ export type LinkProps = PropsWithChildren<{
 	download?: NativeLinkProps['download'];
 	/** The URL that the hyperlink points to. */
 	href?: string;
+	/** Function to be fired following a click event of the link. */
+	onClick?: NativeLinkProps['onClick'];
 	/** The ID of the hyperlink. */
 	id?: string;
 	/** How much of the referrer to send when following the link. */
