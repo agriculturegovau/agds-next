@@ -19,7 +19,10 @@ export type BusinessForAudit = {
 	destinations: string[];
 };
 
-export type BusinessForAuditWithIndex = BusinessForAudit & { index: number };
+export type BusinessForAuditWithIndex = BusinessForAudit & {
+	index: number;
+	selected?: boolean;
+};
 
 const EXAMPLE_BUSINESSES: Partial<BusinessForAudit>[] = [
 	{

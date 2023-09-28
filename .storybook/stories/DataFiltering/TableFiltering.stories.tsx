@@ -5,6 +5,7 @@ import { TableFilteringMedium } from './TableFilteringMedium';
 import { useSortAndFilter } from './lib/useSortAndFilter';
 import { useFetchData } from './lib/useFetchData';
 import { DataProvider, SortAndFilterProvider } from './lib/contexts';
+import { TableSelection } from './TableSelection';
 
 const args = { throwError: false };
 
@@ -84,6 +85,22 @@ export const FilterLarge = {
 			<SortAndFilterProvider value={sortAndFilter}>
 				<DataProvider value={data}>
 					<TableFilteringLarge />
+				</DataProvider>
+			</SortAndFilterProvider>
+		);
+	},
+};
+
+export const Selection = {
+	name: 'Row Selection',
+	render: function Render() {
+		const sortAndFilter = useSortAndFilter();
+		const { filters, pagination, sort } = sortAndFilter;
+		const data = useFetchData({ filters, pagination, sort });
+		return (
+			<SortAndFilterProvider value={sortAndFilter}>
+				<DataProvider value={data}>
+					<TableSelection />
 				</DataProvider>
 			</SortAndFilterProvider>
 		);

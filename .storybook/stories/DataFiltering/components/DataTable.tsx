@@ -17,8 +17,6 @@ import {
 } from '@ag.ds-next/react/table';
 import { TextLink } from '@ag.ds-next/react/text-link';
 import { Text } from '@ag.ds-next/react/text';
-import { Avatar } from '@ag.ds-next/react/avatar';
-import { Flex } from '@ag.ds-next/react/flex';
 import { Stack } from '@ag.ds-next/react/stack';
 import { AlertFilledIcon, HelpIcon } from '@ag.ds-next/react/icon';
 import { Heading } from '@ag.ds-next/react/heading';
@@ -26,31 +24,19 @@ import { Button } from '@ag.ds-next/react/button';
 import { generateTableCaption } from '../lib/utils';
 import { useDataContext, useSortAndFilterContext } from '../lib/contexts';
 import { BusinessForAudit } from '../lib/generateBusinessData';
-
-const DataTableRowAssignee = ({
-	assignee,
-}: {
-	/** The name of the assignee, if set */
-	assignee: string | undefined;
-}) => {
-	if (!assignee) {
-		return <TableCell>-</TableCell>;
-	}
-
-	return (
-		<TableCell>
-			<Flex alignItems="center" gap={0.25}>
-				<Avatar name={assignee} size="sm" aria-hidden />
-				<Text>{assignee}</Text>
-			</Flex>
-		</TableCell>
-	);
-};
+import { DataTableRowAssignee, DataTableRowCheckbox } from './DataTableRow';
 
 export const tableId = 'data-table';
 
-export const DataTable = forwardRef<HTMLTableElement>(
-	function DataTable(_, ref) {
+type DataTableProps = {
+	/** The id of the heading that describes the table */
+	headingId?: string;
+	/** Whether the table should be selectable */
+	selectable?: boolean;
+};
+
+export const DataTable = forwardRef<HTMLTableElement, DataTableProps>(
+	function DataTable({ headingId, selectable }, ref) {
 		const { sort, setSort, pagination, resetFilters } =
 			useSortAndFilterContext();
 		const { data, loading, totalItems, error } = useDataContext();
@@ -96,19 +82,27 @@ export const DataTable = forwardRef<HTMLTableElement>(
 			<TableWrapper>
 				<Table
 					aria-rowcount={totalItems}
+					{...(headingId && { 'aria-labelledby': headingId })}
 					id={tableId}
 					ref={ref}
 					tabIndex={-1}
 					tableLayout="fixed"
 				>
-					<TableCaption>
-						{caption}
-						<VisuallyHidden>
-							, column headers with buttons are sortable.
-						</VisuallyHidden>
-					</TableCaption>
+					{!headingId && (
+						<TableCaption>
+							{caption}
+							<VisuallyHidden>
+								, column headers with buttons are sortable.
+							</VisuallyHidden>
+						</TableCaption>
+					)}
 					<TableHead>
 						<TableRow aria-rowindex={1}>
+							{selectable && (
+								<TableHeader scope="col" width="5rem">
+									Select
+								</TableHeader>
+							)}
 							{headers.map(
 								({
 									label,
@@ -160,6 +154,12 @@ export const DataTable = forwardRef<HTMLTableElement>(
 							<Fragment>
 								{Array.from(Array(pagination.perPage).keys()).map((i) => (
 									<TableRow key={i}>
+										{selectable && (
+											<TableCell>
+												<SkeletonText />
+												<VisuallyHidden>Loading</VisuallyHidden>
+											</TableCell>
+										)}
 										<TableCell>
 											<SkeletonText />
 											<VisuallyHidden>Loading</VisuallyHidden>
@@ -200,6 +200,12 @@ export const DataTable = forwardRef<HTMLTableElement>(
 										const rowIndex = index + 2;
 										return (
 											<TableRow key={id} aria-rowindex={rowIndex}>
+												{selectable && (
+													<DataTableRowCheckbox
+														itemId={id}
+														businessName={businessName}
+													/>
+												)}
 												<TableCell as="th" scope="row">
 													<TextLink href={`#${id}`}>{businessName}</TextLink>
 												</TableCell>
