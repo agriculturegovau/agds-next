@@ -1,13 +1,23 @@
-import { Fragment, useMemo, useState } from 'react';
+import {
+	Fragment,
+	useMemo,
+	useState,
+	MouseEvent,
+	useRef,
+	forwardRef,
+	AnchorHTMLAttributes,
+} from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 import { Logo } from '../ag-branding';
 import { PageContent } from '../content';
-import { tokens } from '../core';
+import { CoreProvider, mergeRefs, tokens, useTernaryState } from '../core';
 import { LinkList } from '../link-list';
 import { SkipLinks } from '../skip-link';
 import { Text } from '../text';
 import { Prose } from '../prose';
 import { GlobalAlert } from '../global-alert';
+import { Modal } from '../modal';
+import { Button, ButtonGroup } from '../button';
 import {
 	navigationItems,
 	ExampleAccountDropdown,
@@ -26,10 +36,25 @@ import {
 function AppLayoutTemplate({
 	focusMode = false,
 	namesLength = 'regular',
-}: AppLayoutProps & { namesLength?: 'regular' | 'short' | 'medium' | 'long' }) {
+	businessDetails,
+}: AppLayoutProps & {
+	namesLength?: 'regular' | 'short' | 'medium' | 'long';
+	businessDetails?: {
+		businesses: string[];
+		businessName: string;
+		setBusinessName: (businessName: string) => void;
+	};
+}) {
 	const year = useMemo(() => new Date().getFullYear(), []);
-	const businesses = exampleData.businessNames[namesLength];
-	const [businessName, setBusinessName] = useState(businesses[0]);
+
+	// State for managing selected business
+	// Use values in props if passed, otherwise use internal state
+	const businesses =
+		businessDetails?.businesses ?? exampleData.businessNames[namesLength];
+	const [_businessName, _setBusinessName] = useState(businesses[0]);
+	const businessName = businessDetails?.businessName ?? _businessName;
+	const setBusinessName = businessDetails?.setBusinessName ?? _setBusinessName;
+
 	return (
 		<Fragment>
 			<SkipLinks
@@ -44,7 +69,7 @@ function AppLayoutTemplate({
 					logo={<Logo />}
 					accountDetails={{
 						name: exampleData.userNames[namesLength],
-						secondaryText: 'My account',
+						secondaryText: businessName,
 						dropdown: (
 							<ExampleAccountDropdown
 								businesses={businesses}
@@ -140,6 +165,106 @@ export const Default: StoryObj<typeof AppLayout> = {
 
 export const FocusMode: StoryObj<typeof AppLayout> = {
 	args: { focusMode: true },
+};
+
+export const FocusModeWithModal: StoryObj<typeof AppLayout> = {
+	args: { focusMode: true },
+	render: function Render(args: AppLayoutProps) {
+		const { focusMode } = args;
+		// If true, the "Are you sure you want to leave this page" modal is open
+		const [isModalOpen, openModal, closeModal] = useTernaryState(false);
+
+		// The link the user wants to go to
+		const [destinationHref, setDestinationHref] = useState<string>();
+
+		// The business the user wants to switch to
+		const [destinationBusiness, setDestinationBusiness] = useState<string>();
+
+		const businesses = exampleData.businessNames.medium;
+		const [businessName, setBusinessName] = useState(businesses[0]);
+
+		// When a user attempts to change business, open the modal
+		function onBusinessChange(businessName: string) {
+			setDestinationBusiness(businessName);
+			openModal();
+		}
+
+		// When a user confirms they want to leave the page, change the page url or change the business
+		function onModalConfirm() {
+			if (destinationHref) {
+				window.location.href = destinationHref;
+				setDestinationHref(undefined);
+			} else if (destinationBusiness) {
+				setBusinessName(destinationBusiness);
+				setDestinationBusiness(undefined);
+			}
+			closeModal();
+		}
+
+		// This is a custom link component that demonstrates how to trigger a modal when a link is pressed
+		// The modal should only be triggered in focus mode, and only for internal links
+		const appLayoutLinkComponent = useMemo(() => {
+			return forwardRef<
+				HTMLAnchorElement,
+				AnchorHTMLAttributes<HTMLAnchorElement>
+			>(function LinkComponent(linkProps, ref) {
+				const internalRef = useRef<HTMLAnchorElement>(null);
+
+				function onClick(event: MouseEvent<HTMLAnchorElement>) {
+					if (!focusMode) {
+						linkProps.onClick?.(event);
+					} else {
+						linkProps.onClick?.(event);
+						if (linkProps.target !== '_blank') {
+							event.preventDefault();
+							setDestinationHref(linkProps.href);
+							openModal();
+						}
+					}
+				}
+
+				return (
+					<a
+						ref={mergeRefs([internalRef, ref])}
+						{...linkProps}
+						onClick={onClick}
+					/>
+				);
+			});
+		}, [focusMode, openModal]);
+
+		return (
+			<Fragment>
+				<CoreProvider linkComponent={appLayoutLinkComponent}>
+					<AppLayoutTemplate
+						{...args}
+						businessDetails={{
+							businesses,
+							businessName,
+							setBusinessName: onBusinessChange,
+						}}
+					/>
+				</CoreProvider>
+				<Modal
+					isOpen={isModalOpen}
+					onDismiss={closeModal}
+					title="Are you sure you want to leave this page?"
+					actions={
+						<ButtonGroup>
+							<Button onClick={() => onModalConfirm()}>Leave this page</Button>
+							<Button variant="secondary" onClick={closeModal}>
+								Stay on this page
+							</Button>
+						</ButtonGroup>
+					}
+				>
+					<Text as="p">
+						You will lose all changes made since your last save.
+					</Text>
+				</Modal>
+			</Fragment>
+		);
+	},
 };
 
 export const WithGlobalAlert: StoryObj<typeof AppLayout> = {
