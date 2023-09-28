@@ -7,7 +7,7 @@ export default {
 	title: 'content/Table',
 };
 
-export const Application = () => {
+export const LoadingAndSort = () => {
 	const sortAndFilter = useSortAndFilter({
 		itemsPerPage: 10,
 	});
