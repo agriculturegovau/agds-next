@@ -192,7 +192,9 @@ export const FocusModeWithModal: StoryObj<typeof AppLayout> = {
 		// When a user confirms they want to leave the page, change the page url or change the business
 		function onModalConfirm() {
 			if (destinationHref) {
-				window.location.href = destinationHref;
+				// window.location.href = destinationHref;
+				// window.location.href is correct, but we are using a window.alert so we don't navigate away from storybook
+				window.alert(`Navigate to ${destinationHref}`);
 				setDestinationHref(undefined);
 			} else if (destinationBusiness) {
 				setBusinessName(destinationBusiness);
