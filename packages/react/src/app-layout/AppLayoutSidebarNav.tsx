@@ -94,7 +94,7 @@ function AppLayoutSidebarNavListItem({
 	}
 
 	// Link list item
-	if ('href' in item) {
+	if (isItemLink(item)) {
 		const active = item.href === activePath;
 		return (
 			<AppLayoutSidebarNavItemInner
@@ -103,7 +103,7 @@ function AppLayoutSidebarNavListItem({
 			>
 				<Link
 					aria-current={active ? 'page' : undefined}
-					{...(restItemProps as NavLink)}
+					{...restItemProps}
 					onClick={onClick}
 				>
 					{Icon ? <Icon color="inherit" /> : null}
@@ -115,13 +115,13 @@ function AppLayoutSidebarNavListItem({
 	}
 
 	// Button list item
-	if ('onClick' in item) {
+	if (isItemButton(item)) {
 		return (
 			<AppLayoutSidebarNavItemInner
 				isActive={false}
 				hasEndElement={Boolean(endElement)}
 			>
-				<BaseButton {...(restItemProps as NavButton)} onClick={onClick}>
+				<BaseButton {...restItemProps} onClick={onClick}>
 					{Icon ? <Icon color="inherit" /> : null}
 					<span>{label}</span>
 					{endElement}
@@ -139,6 +139,12 @@ function AppLayoutSidebarNavListItem({
 		</AppLayoutSidebarNavItemInner>
 	);
 }
+
+const isItemLink = (item: Omit<NavItem, 'label'>): item is NavLink =>
+	'href' in item;
+
+const isItemButton = (item: Omit<NavItem, 'label'>): item is NavButton =>
+	'onClick' in item;
 
 type AppLayoutSidebarNavItemInnerProps = PropsWithChildren<{
 	isActive: boolean;

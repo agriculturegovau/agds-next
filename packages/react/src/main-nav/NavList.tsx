@@ -32,7 +32,7 @@ export function NavList({
 	return (
 		<NavListContainer aria-label={ariaLabel} type={type}>
 			{items?.map(({ label, endElement, ...item }, index) => {
-				if ('href' in item) {
+				if (isItemLink(item)) {
 					const active = item.href === activePath;
 					return (
 						<NavListItem
@@ -55,7 +55,7 @@ export function NavList({
 						type={type}
 						hasEndElement={Boolean(endElement)}
 					>
-						<BaseButton {...(item as NavListButton)}>
+						<BaseButton {...item}>
 							<span>{label}</span>
 							{endElement}
 						</BaseButton>
@@ -65,6 +65,9 @@ export function NavList({
 		</NavListContainer>
 	);
 }
+
+const isItemLink = (item: Omit<NavListItem, 'label'>): item is NavListLink =>
+	'href' in item;
 
 type NavListContainerProps = PropsWithChildren<{
 	'aria-label': string;
