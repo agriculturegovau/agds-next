@@ -4,7 +4,9 @@ import { LinkProps, useLinkComponent } from '../core';
 import { IconProps } from '../icon';
 import { DropdownMenuItem } from './DropdownMenuItem';
 
-export type DropdownMenuItemLinkProps = LinkProps & {
+export type DropdownMenuItemLinkProps = Omit<LinkProps, 'onClick'> & {
+	/** Function to be fired following a click event of the item. */
+	onClick?: () => void;
 	/** Used to add an icon to the start of the item. */
 	icon?: ComponentType<IconProps>;
 	/** Used to add decorative elements to the end of the item such as Indicator dot or Notification badge. */

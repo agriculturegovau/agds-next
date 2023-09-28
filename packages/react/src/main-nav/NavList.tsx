@@ -55,7 +55,7 @@ export function NavList({
 						type={type}
 						hasEndElement={Boolean(endElement)}
 					>
-						<BaseButton {...item}>
+						<BaseButton {...(item as NavListButton)}>
 							<span>{label}</span>
 							{endElement}
 						</BaseButton>
