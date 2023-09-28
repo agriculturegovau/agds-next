@@ -1,4 +1,10 @@
-import { ComponentType, Fragment, PropsWithChildren, ReactNode } from 'react';
+import {
+	Fragment,
+	ReactNode,
+	PropsWithChildren,
+	ComponentType,
+	MouseEvent,
+} from 'react';
 import {
 	boxPalette,
 	LinkProps,
@@ -12,6 +18,7 @@ import { Flex } from '../flex';
 import { BaseButton, BaseButtonProps } from '../button';
 import { IconProps } from '../icon';
 import { Stack } from '../stack';
+import { useAppLayoutContext } from './AppLayoutContext';
 
 type NavLink = Omit<LinkProps, 'children'>;
 
@@ -72,7 +79,19 @@ function AppLayoutSidebarNavListItem({
 	item,
 }: AppLayoutSidebarNavListItemProps) {
 	const Link = useLinkComponent();
+	const { closeMobileMenu } = useAppLayoutContext();
 	const { endElement, icon: Icon, label, ...restItemProps } = item;
+
+	function onClick(event: MouseEvent<HTMLAnchorElement | HTMLButtonElement>) {
+		// Close the mobile menu when a link or button has been pressed
+		closeMobileMenu();
+		// Important: Trigger the `onClick` prop if it exists, as we've overridden this prop with this function
+		if (typeof item.onClick === 'function') {
+			// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+			// @ts-ignore
+			item.onClick(event);
+		}
+	}
 
 	// Link list item
 	if ('href' in item) {
@@ -82,7 +101,11 @@ function AppLayoutSidebarNavListItem({
 				isActive={activePath === item.href}
 				hasEndElement={Boolean(endElement)}
 			>
-				<Link aria-current={active ? 'page' : undefined} {...restItemProps}>
+				<Link
+					aria-current={active ? 'page' : undefined}
+					{...(restItemProps as NavLink)}
+					onClick={onClick}
+				>
 					{Icon ? <Icon color="inherit" /> : null}
 					<span>{label}</span>
 					{endElement}
@@ -98,7 +121,7 @@ function AppLayoutSidebarNavListItem({
 				isActive={false}
 				hasEndElement={Boolean(endElement)}
 			>
-				<BaseButton {...restItemProps}>
+				<BaseButton {...(restItemProps as NavButton)} onClick={onClick}>
 					{Icon ? <Icon color="inherit" /> : null}
 					<span>{label}</span>
 					{endElement}
