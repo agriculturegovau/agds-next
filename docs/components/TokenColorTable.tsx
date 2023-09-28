@@ -9,6 +9,7 @@ import {
 	TableHead,
 	TableHeader,
 	TableWrapper,
+	TableRow,
 } from '@ag.ds-next/react/table';
 
 const theme: Theme = {
@@ -186,7 +187,7 @@ export const ColorTable = ({
 					aria-describedby={ariaDescribedby}
 				>
 					<TableHead>
-						<tr>
+						<TableRow>
 							<TableHeader width="25%" scope="col">
 								Name
 							</TableHeader>
@@ -196,12 +197,12 @@ export const ColorTable = ({
 							<TableHeader width="50%" scope="col">
 								Description
 							</TableHeader>
-						</tr>
+						</TableRow>
 					</TableHead>
 					<TableBody>
 						{tokens.map(({ name, color, desc }) => {
 							return (
-								<tr key={name}>
+								<TableRow key={name}>
 									<TableCell>
 										<Flex gap={0.5} alignItems="center">
 											<ColorSquare color={color} />
@@ -210,7 +211,7 @@ export const ColorTable = ({
 									</TableCell>
 									<TableCell>{color}</TableCell>
 									<TableCell>{desc}</TableCell>
-								</tr>
+								</TableRow>
 							);
 						})}
 					</TableBody>

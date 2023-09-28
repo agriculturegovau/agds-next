@@ -2,6 +2,7 @@ import { Stack } from '@ag.ds-next/react/stack';
 import {
 	TableWrapper,
 	Table,
+	TableRow,
 	TableCell,
 	TableHeader,
 	TableHead,
@@ -50,7 +51,7 @@ function LoadingState() {
 			<TableWrapper>
 				<Table tableLayout="fixed" aria-labelledby={tableHeadingId}>
 					<TableHead>
-						<tr>
+						<TableRow>
 							<TableHeader width="10rem" scope="col">
 								ID
 							</TableHeader>
@@ -59,11 +60,11 @@ function LoadingState() {
 							<TableHeader width="10rem" textAlign="right" scope="col">
 								Population
 							</TableHeader>
-						</tr>
+						</TableRow>
 					</TableHead>
 					<TableBody>
 						{Array.from(Array(9).keys()).map((i) => (
-							<tr key={i}>
+							<TableRow key={i}>
 								<TableCell>
 									<SkeletonText />
 									<VisuallyHidden>Loading</VisuallyHidden>
@@ -80,7 +81,7 @@ function LoadingState() {
 									<SkeletonText />
 									<VisuallyHidden>Loading</VisuallyHidden>
 								</TableCell>
-							</tr>
+							</TableRow>
 						))}
 					</TableBody>
 				</Table>
@@ -143,7 +144,7 @@ function FinalState({ items }: { items: NonNullable<ApiData['results']> }) {
 			<TableWrapper>
 				<Table tableLayout="fixed" aria-labelledby={tableHeadingId}>
 					<TableHead>
-						<tr>
+						<TableRow>
 							<TableHeader width="10rem" scope="col">
 								ID
 							</TableHeader>
@@ -152,12 +153,12 @@ function FinalState({ items }: { items: NonNullable<ApiData['results']> }) {
 							<TableHeader width="10rem" textAlign="right" scope="col">
 								Population
 							</TableHeader>
-						</tr>
+						</TableRow>
 					</TableHead>
 					<TableBody>
 						{items.map((item) => {
 							return (
-								<tr key={item.id}>
+								<TableRow key={item.id}>
 									<TableCell>{item.id}</TableCell>
 									<TableCell>{item.name}</TableCell>
 									<TableCell>{item.climate}</TableCell>
@@ -166,7 +167,7 @@ function FinalState({ items }: { items: NonNullable<ApiData['results']> }) {
 											? numberFormatter.format(item.population)
 											: 'Unknown'}
 									</TableCell>
-								</tr>
+								</TableRow>
 							);
 						})}
 					</TableBody>

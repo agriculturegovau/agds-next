@@ -60,6 +60,7 @@ import {
 import {
 	Table,
 	TableCaption,
+	TableRow,
 	TableCell,
 	TableHeader,
 	TableHead,
@@ -555,46 +556,46 @@ function KitchenSink({ background }: KitchenSinkProps) {
 									Population of Australian states and territories, December 2015
 								</TableCaption>
 								<TableHead>
-									<tr>
+									<TableRow>
 										<TableHeader scope="col">Location</TableHeader>
 										<TableHeader textAlign="right" scope="col">
 											Population
 										</TableHeader>
-									</tr>
+									</TableRow>
 								</TableHead>
 								<TableBody>
-									<tr>
+									<TableRow>
 										<TableCell>New South Wales</TableCell>
 										<TableCell textAlign="right">7,670,700</TableCell>
-									</tr>
-									<tr>
+									</TableRow>
+									<TableRow>
 										<TableCell>Victoria</TableCell>
 										<TableCell textAlign="right">5,996,400</TableCell>
-									</tr>
-									<tr>
+									</TableRow>
+									<TableRow>
 										<TableCell>Queensland</TableCell>
 										<TableCell textAlign="right">4,808,800</TableCell>
-									</tr>
-									<tr>
+									</TableRow>
+									<TableRow>
 										<TableCell>Western Australia</TableCell>
 										<TableCell textAlign="right">2,603,900</TableCell>
-									</tr>
-									<tr>
+									</TableRow>
+									<TableRow>
 										<TableCell>South Australia</TableCell>
 										<TableCell textAlign="right">1,702,800</TableCell>
-									</tr>
-									<tr>
+									</TableRow>
+									<TableRow>
 										<TableCell>Tasmania</TableCell>
 										<TableCell textAlign="right">517,400</TableCell>
-									</tr>
-									<tr>
+									</TableRow>
+									<TableRow>
 										<TableCell>Northern Territory</TableCell>
 										<TableCell textAlign="right">244,400</TableCell>
-									</tr>
-									<tr>
+									</TableRow>
+									<TableRow>
 										<TableCell>Australian Capital Territory</TableCell>
 										<TableCell textAlign="right">393,000</TableCell>
-									</tr>
+									</TableRow>
 								</TableBody>
 							</Table>
 						</Stack>

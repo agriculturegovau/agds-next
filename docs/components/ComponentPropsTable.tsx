@@ -5,6 +5,7 @@ import {
 	TableBody,
 	TableCell,
 	TableCaption,
+	TableRow,
 } from '@ag.ds-next/react/table';
 
 export type ComponentPropsTableProps = {
@@ -28,7 +29,7 @@ export const ComponentPropsTable = ({ data }: ComponentPropsTableProps) => (
 	<Table striped>
 		<TableCaption>{data.displayName} Props</TableCaption>
 		<TableHead>
-			<tr>
+			<TableRow>
 				<TableHeader scope="col" width="25%">
 					Prop
 				</TableHeader>
@@ -38,12 +39,12 @@ export const ComponentPropsTable = ({ data }: ComponentPropsTableProps) => (
 				<TableHeader scope="col" width="40%">
 					Description
 				</TableHeader>
-			</tr>
+			</TableRow>
 		</TableHead>
 		<TableBody>
 			{Object.values(data.props).map((prop) => {
 				return (
-					<tr key={prop.name}>
+					<TableRow key={prop.name}>
 						<TableCell>
 							<span css={{ wordBreak: 'break-word' }}>
 								{prop.name}
@@ -64,7 +65,7 @@ export const ComponentPropsTable = ({ data }: ComponentPropsTableProps) => (
 						<TableCell>
 							<span css={{ wordBreak: 'break-word' }}>{prop.description}</span>
 						</TableCell>
-					</tr>
+					</TableRow>
 				);
 			})}
 		</TableBody>

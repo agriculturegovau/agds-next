@@ -1,10 +1,14 @@
+import { useState } from 'react';
 import { Meta, StoryObj } from '@storybook/react';
+import { Checkbox } from '../checkbox';
+import { VisuallyHidden } from '../a11y';
 import { Text } from '../text';
 import { TextLink } from '../text-link';
 import { StatusBadge } from '../status-badge';
+import { Box } from '../box';
 import { Flex } from '../flex';
 import { Stack } from '../stack';
-import { H1 } from '../heading';
+import { H1, H2 } from '../heading';
 import { Table } from './Table';
 import { TableBody } from './TableBody';
 import { TableCaption } from './TableCaption';
@@ -12,6 +16,7 @@ import { TableCell } from './TableCell';
 import { TableHeader } from './TableHeader';
 import { TableHead } from './TableHead';
 import { TableWrapper } from './TableWrapper';
+import { TableRow } from './TableRow';
 
 const meta: Meta<typeof Table> = {
 	title: 'content/Table',
@@ -23,7 +28,7 @@ const meta: Meta<typeof Table> = {
 					Population of Australian states and territories, December 2015
 				</TableCaption>
 				<TableHead>
-					<tr>
+					<TableRow>
 						<TableHeader scope="col">Location</TableHeader>
 						<TableHeader textAlign="right" scope="col">
 							Population
@@ -34,12 +39,12 @@ const meta: Meta<typeof Table> = {
 						<TableHeader textAlign="right" scope="col">
 							Change over previous decade %
 						</TableHeader>
-					</tr>
+					</TableRow>
 				</TableHead>
 				<TableBody>
 					{exampleData.map(
 						({ location, population, growthYear, growthDecade }, index) => (
-							<tr key={index}>
+							<TableRow key={index}>
 								<TableCell as="th" scope="row">
 									{location}
 								</TableCell>
@@ -48,7 +53,7 @@ const meta: Meta<typeof Table> = {
 								</TableCell>
 								<TableCell textAlign="right">{growthYear}%</TableCell>
 								<TableCell textAlign="right">{growthDecade}%</TableCell>
-							</tr>
+							</TableRow>
 						)
 					)}
 				</TableBody>
@@ -80,7 +85,7 @@ export const FixedLayout: Story = {
 					Population of Australian states and territories, December 2015
 				</TableCaption>
 				<TableHead>
-					<tr>
+					<TableRow>
 						<TableHeader scope="col" width={{ xs: '14rem', md: '40%' }}>
 							Location
 						</TableHeader>
@@ -105,12 +110,12 @@ export const FixedLayout: Story = {
 						>
 							Change over previous decade %
 						</TableHeader>
-					</tr>
+					</TableRow>
 				</TableHead>
 				<TableBody>
 					{exampleData.map(
 						({ location, population, growthYear, growthDecade }, index) => (
-							<tr key={index}>
+							<TableRow key={index}>
 								<TableCell as="th" scope="row">
 									{location}
 								</TableCell>
@@ -119,7 +124,7 @@ export const FixedLayout: Story = {
 								</TableCell>
 								<TableCell textAlign="right">{growthYear}%</TableCell>
 								<TableCell textAlign="right">{growthDecade}%</TableCell>
-							</tr>
+							</TableRow>
 						)
 					)}
 				</TableBody>
@@ -143,7 +148,7 @@ export const WithHeading: Story = {
 					{...args}
 				>
 					<TableHead>
-						<tr>
+						<TableRow>
 							<TableHeader scope="col">Location</TableHeader>
 							<TableHeader textAlign="right" scope="col">
 								Population
@@ -154,12 +159,12 @@ export const WithHeading: Story = {
 							<TableHeader textAlign="right" scope="col">
 								Change over previous decade %
 							</TableHeader>
-						</tr>
+						</TableRow>
 					</TableHead>
 					<TableBody>
 						{exampleData.map(
 							({ location, population, growthYear, growthDecade }, index) => (
-								<tr key={index}>
+								<TableRow key={index}>
 									<TableCell as="th" scope="row">
 										{location}
 									</TableCell>
@@ -168,7 +173,7 @@ export const WithHeading: Story = {
 									</TableCell>
 									<TableCell textAlign="right">{growthYear}%</TableCell>
 									<TableCell textAlign="right">{growthDecade}%</TableCell>
-								</tr>
+								</TableRow>
 							)
 						)}
 					</TableBody>
@@ -185,15 +190,15 @@ export const Actions: Story = {
 			<Table {...args}>
 				<TableCaption>Applications</TableCaption>
 				<TableHead>
-					<tr>
+					<TableRow>
 						<TableHeader scope="col">Reference</TableHeader>
 						<TableHeader scope="col">Date submitted</TableHeader>
 						<TableHeader scope="col">Status</TableHeader>
 						<TableHeader scope="col">Actions</TableHeader>
-					</tr>
+					</TableRow>
 				</TableHead>
 				<TableBody>
-					<tr>
+					<TableRow>
 						<TableCell as="th" scope="row" fontWeight="bold">
 							<TextLink href="#">REF-AB3CD4EF</TextLink>
 						</TableCell>
@@ -207,8 +212,8 @@ export const Actions: Story = {
 								<TextLink href="#">Download</TextLink>
 							</Flex>
 						</TableCell>
-					</tr>
-					<tr>
+					</TableRow>
+					<TableRow>
 						<TableCell as="th" scope="row" fontWeight="bold">
 							<TextLink href="#">REF-5GH6IJ7K</TextLink>
 						</TableCell>
@@ -222,8 +227,8 @@ export const Actions: Story = {
 								<TextLink href="#">Download</TextLink>
 							</Flex>
 						</TableCell>
-					</tr>
-					<tr>
+					</TableRow>
+					<TableRow>
 						<TableCell as="th" scope="row" fontWeight="bold">
 							<TextLink href="#">REF-M8NO9PQR</TextLink>
 						</TableCell>
@@ -237,8 +242,8 @@ export const Actions: Story = {
 								<TextLink href="#">Download</TextLink>
 							</Flex>
 						</TableCell>
-					</tr>
-					<tr>
+					</TableRow>
+					<TableRow>
 						<TableCell as="th" scope="row" fontWeight="bold">
 							<TextLink href="#">REF-S1TU2VWX</TextLink>
 						</TableCell>
@@ -252,8 +257,8 @@ export const Actions: Story = {
 								<TextLink href="#">Download</TextLink>
 							</Flex>
 						</TableCell>
-					</tr>
-					<tr>
+					</TableRow>
+					<TableRow>
 						<TableCell as="th" scope="row" fontWeight="bold">
 							<TextLink href="#">REF-Y3ZA4B5C</TextLink>
 						</TableCell>
@@ -267,57 +272,164 @@ export const Actions: Story = {
 								<TextLink href="#">Download</TextLink>
 							</Flex>
 						</TableCell>
-					</tr>
+					</TableRow>
 				</TableBody>
 			</Table>
 		</TableWrapper>
 	),
 };
 
+export const SelectableBasic: Story = {
+	render: function Render(props) {
+		const [selectedRowIds, setSelectedRowIds] = useState<string[]>([]);
+
+		function isRowSelected(rowId: string) {
+			return selectedRowIds.includes(rowId);
+		}
+
+		function toggleRow(rowId: string) {
+			setSelectedRowIds((selectedRowIds) => {
+				if (selectedRowIds.includes(rowId)) {
+					return selectedRowIds.filter((i) => i !== rowId);
+				} else {
+					return [...selectedRowIds, rowId];
+				}
+			});
+		}
+
+		const allRowsSelected = selectedRowIds.length === exampleData.length;
+		const isIndeterminate = allRowsSelected ? false : selectedRowIds.length > 0;
+
+		function toggleAllRows() {
+			// When no rows are selected, select every row
+			// When any row is selected, deselect every row
+			const noRowsSelected = selectedRowIds.length === 0;
+			setSelectedRowIds(noRowsSelected ? exampleData.map((i) => i.id) : []);
+		}
+
+		// The TableCaption` component can not be used with selectable tables due to a11y reasons
+		// So we need to connect the heading with the table via `aria-labelledby`
+		const headingId = 'table-heading';
+
+		return (
+			<Stack gap={1.5}>
+				<H2 id={headingId}>Basic selectable table</H2>
+				<Stack gap={0}>
+					<Box paddingLeft={0.75} paddingBottom={0.75} borderBottom>
+						<Checkbox
+							size="sm"
+							checked={allRowsSelected}
+							indeterminate={isIndeterminate}
+							onChange={toggleAllRows}
+						>
+							Select all rows
+						</Checkbox>
+					</Box>
+					<TableWrapper>
+						<Table {...props} aria-labelledby={headingId}>
+							<TableHead>
+								<TableRow>
+									<TableHeader scope="col">Select</TableHeader>
+									<TableHeader scope="col">Location</TableHeader>
+									<TableHeader textAlign="right" scope="col">
+										Population
+									</TableHeader>
+									<TableHeader textAlign="right" scope="col">
+										Change over previous year %
+									</TableHeader>
+									<TableHeader textAlign="right" scope="col">
+										Change over previous decade %
+									</TableHeader>
+								</TableRow>
+							</TableHead>
+							<TableBody>
+								{exampleData.map(
+									({ id, location, population, growthYear, growthDecade }) => {
+										const isSelected = isRowSelected(id);
+										return (
+											<TableRow key={id} selected={isSelected}>
+												<TableCell>
+													<Checkbox
+														size="sm"
+														checked={isSelected}
+														onChange={() => toggleRow(id)}
+													>
+														<VisuallyHidden>Select {location}</VisuallyHidden>
+													</Checkbox>
+												</TableCell>
+												<TableCell as="th" scope="row">
+													{location}
+												</TableCell>
+												<TableCell textAlign="right">
+													{numberFormatter.format(population)}
+												</TableCell>
+												<TableCell textAlign="right">{growthYear}%</TableCell>
+												<TableCell textAlign="right">{growthDecade}%</TableCell>
+											</TableRow>
+										);
+									}
+								)}
+							</TableBody>
+						</Table>
+					</TableWrapper>
+				</Stack>
+			</Stack>
+		);
+	},
+};
+
 const exampleData = [
 	{
+		id: 'nsw',
 		location: 'New South Wales',
 		population: 7670700,
 		growthYear: 3.1,
 		growthDecade: 12.9,
 	},
 	{
+		id: 'vic',
 		location: 'Victoria',
 		population: 5996400,
 		growthYear: 2.5,
 		growthDecade: 9.3,
 	},
 	{
+		id: 'qld',
 		location: 'Queensland',
 		population: 4808800,
 		growthYear: 1.7,
 		growthDecade: 13.3,
 	},
 	{
+		id: 'wa',
 		location: 'Western Australia',
 		population: 2603900,
 		growthYear: 2.3,
 		growthDecade: 11.6,
 	},
 	{
+		id: 'sa',
 		location: 'South Australia',
 		population: 1702800,
 		growthYear: 2.0,
 		growthDecade: 6.8,
 	},
 	{
+		id: 'tas',
 		location: 'Tasmania',
 		population: 517400,
 		growthYear: 4,
 		growthDecade: 5.3,
 	},
 	{
+		id: 'nt',
 		location: 'Northern Territory',
 		population: 244400,
 		growthYear: 1.2,
 		growthDecade: 4.5,
 	},
 	{
+		id: 'act',
 		location: 'Australian Capital Territory',
 		population: 393000,
 		growthYear: 2.4,
