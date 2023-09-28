@@ -5,7 +5,7 @@ import { useData } from './lib/utils';
 import { ListFiltering } from './ListFiltering';
 
 const meta: Meta = {
-	title: 'Patterns/Data filtering and sorting',
+	title: 'Patterns/Search results',
 	parameters: {
 		layout: 'fullscreen',
 	},
@@ -13,21 +13,19 @@ const meta: Meta = {
 
 export default meta;
 
-const ListFilteringExample = () => {
-	const sortAndFilter = useSortAndFilter();
-	const { filters, pagination, sort } = sortAndFilter;
-	const data = useData({ filters, pagination, sort });
-
-	return (
-		<SortAndFilterProvider value={sortAndFilter}>
-			<DataProvider value={data}>
-				<ListFiltering />
-			</DataProvider>
-		</SortAndFilterProvider>
-	);
-};
-
 export const List = {
 	name: 'Card lists',
-	render: ListFilteringExample,
+	render: function Render() {
+		const sortAndFilter = useSortAndFilter();
+		const { filters, pagination, sort } = sortAndFilter;
+		const data = useData({ filters, pagination, sort });
+
+		return (
+			<SortAndFilterProvider value={sortAndFilter}>
+				<DataProvider value={data}>
+					<ListFiltering />
+				</DataProvider>
+			</SortAndFilterProvider>
+		);
+	},
 };

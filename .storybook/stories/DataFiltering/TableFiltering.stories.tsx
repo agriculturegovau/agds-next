@@ -1,10 +1,13 @@
 import { Meta } from '@storybook/react';
-import { TableFilteringSmallExample } from './TableFilteringSmallExample';
-import { TableFilteringMediumExample } from './TableFilteringMediumExample';
-import { TableFilteringLargeExample } from './TableFilteringLargeExample';
+import { TableFilteringLarge } from './TableFilteringLarge';
+import { TableFilteringSmall } from './TableFilteringSmall';
+import { TableFilteringMedium } from './TableFilteringMedium';
+import { useSortAndFilter } from './lib/useSortAndFilter';
+import { useData } from './lib/utils';
+import { DataProvider, SortAndFilterProvider } from './lib/contexts';
 
 const meta: Meta = {
-	title: 'Patterns/Data filtering and sorting',
+	title: 'Patterns/Tables',
 	parameters: {
 		layout: 'fullscreen',
 	},
@@ -12,17 +15,50 @@ const meta: Meta = {
 
 export default meta;
 
-export const Small = {
-	name: 'Tables (Small)',
-	render: TableFilteringSmallExample,
+export const FilterSmall = {
+	name: 'Filter and sort (Small)',
+	render: function Render() {
+		const sortAndFilter = useSortAndFilter();
+		const { filters, pagination, sort } = sortAndFilter;
+		const data = useData({ filters, pagination, sort });
+		return (
+			<SortAndFilterProvider value={sortAndFilter}>
+				<DataProvider value={data}>
+					<TableFilteringSmall />
+				</DataProvider>
+			</SortAndFilterProvider>
+		);
+	},
 };
 
-export const Medium = {
-	name: 'Tables (Medium)',
-	render: TableFilteringMediumExample,
+export const FilterMedium = {
+	name: 'Filter and sort (Medium)',
+	render: function Render() {
+		const sortAndFilter = useSortAndFilter();
+		const { filters, pagination, sort } = sortAndFilter;
+		const data = useData({ filters, pagination, sort });
+		return (
+			<SortAndFilterProvider value={sortAndFilter}>
+				<DataProvider value={data}>
+					<TableFilteringMedium />
+				</DataProvider>
+			</SortAndFilterProvider>
+		);
+	},
 };
 
-export const Large = {
-	name: 'Tables (Large)',
-	render: TableFilteringLargeExample,
+export const FilterLarge = {
+	name: 'Filter and sort (Large)',
+	render: function Render() {
+		const sortAndFilter = useSortAndFilter();
+		const { filters, pagination, sort } = sortAndFilter;
+		const data = useData({ filters, pagination, sort });
+		return (
+			<SortAndFilterProvider value={sortAndFilter}>
+				<DataProvider value={data}>
+					<TableFilteringLarge />
+				</DataProvider>
+			</SortAndFilterProvider>
+		);
+	},
 };
