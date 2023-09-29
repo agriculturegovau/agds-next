@@ -1,6 +1,6 @@
 import { Flex } from '@ag.ds-next/react/flex';
 import { Avatar } from '@ag.ds-next/react/avatar';
-import { TableCell } from '@ag.ds-next/react/table';
+import { TableCell, TableRow } from '@ag.ds-next/react/table';
 import { Text } from '@ag.ds-next/react/text';
 import { Checkbox } from '@ag.ds-next/react/checkbox';
 import { VisuallyHidden } from '@ag.ds-next/react/a11y';
@@ -26,23 +26,37 @@ export const DataTableRowAssignee = ({
 	);
 };
 
-export const DataTableRowCheckbox = ({
-	itemId,
+export const DataTableRow = ({
 	businessName,
+	children,
+	itemId,
+	rowIndex,
+	selectable,
 }: {
-	itemId: string;
 	businessName: string;
+	children: React.ReactNode;
+	itemId: string;
+	rowIndex: number;
+	selectable?: boolean;
 }) => {
 	const { isRowSelected, toggleRowSelected } = useSortAndFilterContext();
-	return (
-		<TableCell>
-			<Checkbox
-				size="sm"
-				checked={isRowSelected(itemId)}
-				onChange={() => toggleRowSelected(itemId)}
-			>
-				<VisuallyHidden>{`Select ${businessName}`}</VisuallyHidden>
-			</Checkbox>
-		</TableCell>
-	);
+
+	if (selectable) {
+		return (
+			<TableRow aria-rowindex={rowIndex} selected={isRowSelected(itemId)}>
+				<TableCell>
+					<Checkbox
+						size="sm"
+						checked={isRowSelected(itemId)}
+						onChange={() => toggleRowSelected(itemId)}
+					>
+						<VisuallyHidden>{`Select ${businessName}`}</VisuallyHidden>
+					</Checkbox>
+				</TableCell>
+				{children}
+			</TableRow>
+		);
+	}
+
+	return <TableRow aria-rowindex={rowIndex}>{children}</TableRow>;
 };

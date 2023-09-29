@@ -24,7 +24,7 @@ import { Button } from '@ag.ds-next/react/button';
 import { generateTableCaption } from '../lib/utils';
 import { useDataContext, useSortAndFilterContext } from '../lib/contexts';
 import { BusinessForAudit } from '../lib/generateBusinessData';
-import { DataTableRowAssignee, DataTableRowCheckbox } from './DataTableRow';
+import { DataTableRowAssignee, DataTableRow } from './DataTableRow';
 
 export const tableId = 'data-table';
 
@@ -199,13 +199,13 @@ export const DataTable = forwardRef<HTMLTableElement, DataTableProps>(
 										// Adding 2 because the table header row is the first row
 										const rowIndex = index + 2;
 										return (
-											<TableRow key={id} aria-rowindex={rowIndex}>
-												{selectable && (
-													<DataTableRowCheckbox
-														itemId={id}
-														businessName={businessName}
-													/>
-												)}
+											<DataTableRow
+												key={id}
+												selectable={selectable}
+												itemId={id}
+												businessName={businessName}
+												rowIndex={rowIndex}
+											>
 												<TableCell as="th" scope="row">
 													<TextLink href={`#${id}`}>{businessName}</TextLink>
 												</TableCell>
@@ -222,7 +222,7 @@ export const DataTable = forwardRef<HTMLTableElement, DataTableProps>(
 														{...STATUS_MAP[status]}
 													/>
 												</TableCell>
-											</TableRow>
+											</DataTableRow>
 										);
 									}
 								)}
